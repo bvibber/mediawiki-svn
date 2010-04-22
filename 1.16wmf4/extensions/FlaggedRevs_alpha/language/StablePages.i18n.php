@@ -375,22 +375,24 @@ $messages['ia'] = array(
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author Iwan Novirion
  * @author Rex
  */
 $messages['id'] = array(
-	'stablepages' => 'Halaman stabil',
-	'stablepages-text' => 'Di bawah ini adalah daftar halaman yang dikonfigurasi secara manual untuk menampilkan versi stabil sebagai isi halaman baku bagi para pembaca.',
+	'stablepages' => 'Halaman menggunakan suntingan persetujuan',
+	'stablepages-text' => 'Di bawah ini adalah daftar halaman yang dibatasi sehingga hanya pengguna tertentu dapat melakukan penyuntingan yang tidak membutuhkan peninjauan. Suntingan tersebut tidak akan dipublikasikan sampai seorang pengguna yang diberi kuasa meninjaunya.',
 	'stablepages-none' => 'Tidak ada halaman di dalam daftar ini',
 	'stablepages-config' => 'Konfigurasi',
 );
 
 /** Italian (Italiano)
+ * @author Beta16
  * @author Darth Kule
  * @author Pietrodn
  */
 $messages['it'] = array(
-	'stablepages' => 'Pagine stabili',
-	'stablepages-text' => 'Di seguito sono elencate le pagine configurate manualmente in modo tale da mostrare per default le versioni stabili ai visitatori.',
+	'stablepages' => "Pagine che utilizzano l'approvazione delle modifiche",
+	'stablepages-text' => 'Di seguito sono elencate le pagine configurate in modo tale che solo determinati utenti possono fare modifiche che non necessitano di revisione. Le altre modifiche non sono pubblicate fino a quando un utente autorizzato non le revisioni.',
 	'stablepages-none' => 'Non ci sono pagine in questo elenco',
 	'stablepages-config' => 'Configurazione',
 );
@@ -425,10 +427,11 @@ $messages['km'] = array(
 );
 
 /** Korean (한국어)
+ * @author Devunt
  * @author Kwj2772
  */
 $messages['ko'] = array(
-	'stablepages' => '안정 문서',
+	'stablepages' => '편집 가능한 문서들',
 	'stablepages-text' => '다음은 독자들에게 보여 줄 안정 버전으로서의 기본 문서 내용을 어떻게 보여 줄 것인지 수동으로 설정된 문서의 목록입니다.',
 	'stablepages-none' => '이 목록에 문서가 없습니다.',
 	'stablepages-config' => '설정',
@@ -578,7 +581,7 @@ $messages['pms'] = array(
  * @author Waldir
  */
 $messages['pt'] = array(
-	'stablepages' => 'Páginas que usam aprovação de edições',
+	'stablepages' => 'Páginas sujeitas à aprovação de edições',
 	'stablepages-text' => 'Segue-se uma lista de páginas restringidas, cujas edições só são publicadas após revisão por um utilizador autorizado. Só certos utilizadores podem editá-las sem ser sujeitos a revisão.',
 	'stablepages-none' => 'Não há páginas nesta lista.',
 	'stablepages-config' => 'Configuração',
@@ -613,7 +616,7 @@ $messages['ro'] = array(
  */
 $messages['roa-tara'] = array(
 	'stablepages' => "Pàggene ca ausane 'nu cangiamende approvate",
-	'stablepages-text' => "Sotte ste 'na liste de pàggene ca onne state configurete manualmende pe fa vedè 'a versiona pubblecate cumme pàgene cu 'u condenute iniziale pe le visitature.",
+	'stablepages-text' => "Sotte ste 'na liste de pàggene ca onne state ristrette accussì ca sulamende certe utinde ponne fà cangiaminde ca non ge richiedene 'na revisione. Certe cangiaminde non ge ponne essere pubblecate fine ca 'n'utende autorizzate non ge le rivede.",
 	'stablepages-none' => "Non ge stonne pàggene jndr'à sta liste",
 	'stablepages-config' => 'Configurazione',
 );
@@ -627,6 +630,13 @@ $messages['ru'] = array(
 	'stablepages-text' => 'Ниже показан список страниц, редактировать которые без проверки могут только определённые участники. Правки этих статей не будут опубликованы, пока не будут проверены уполномоченными участниками.',
 	'stablepages-none' => 'В данном списке отсутствуют страницы',
 	'stablepages-config' => 'настройка',
+);
+
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'stablepages-config' => 'Конфіґурація',
 );
 
 /** Yakut (Саха тыла)

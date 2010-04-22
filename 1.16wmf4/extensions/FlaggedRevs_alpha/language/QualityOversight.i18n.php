@@ -288,20 +288,22 @@ $messages['ia'] = array(
 );
 
 /** Indonesian (Bahasa Indonesia)
+ * @author Iwan Novirion
  * @author Rex
  */
 $messages['id'] = array(
-	'qualityoversight' => 'Pemeriksaan kelayakan',
+	'qualityoversight' => 'Catatan peninjauan lebih lanjut',
 	'qualityoversight-list' => 'Berikut adalah daftar persetujuan dan penurunan tingkat kualitas revisi-revisi.',
 	'qualityoversight-legend' => 'Cari log peninjauan terkini',
 );
 
 /** Italian (Italiano)
+ * @author Beta16
  * @author Darth Kule
  * @author Pietrodn
  */
 $messages['it'] = array(
-	'qualityoversight' => 'Supervisione della qualità',
+	'qualityoversight' => 'Registro avanzato delle revisioni',
 	'qualityoversight-list' => 'Questa pagina elenca le più recenti approvazioni e deprezzamenti delle revisioni.',
 	'qualityoversight-legend' => 'Cerca i log delle revisioni recenti',
 );
@@ -441,7 +443,7 @@ $messages['pms'] = array(
  */
 $messages['pt'] = array(
 	'qualityoversight' => 'Registo avançado de revisões',
-	'qualityoversight-list' => 'Esta página lista as mais recentes aprovações e desaprovações de edições.',
+	'qualityoversight-list' => 'Esta página lista as mais recentes aprovações e reprovações de edições.',
 	'qualityoversight-legend' => 'Pesquisar registos das revisões recentes',
 );
 

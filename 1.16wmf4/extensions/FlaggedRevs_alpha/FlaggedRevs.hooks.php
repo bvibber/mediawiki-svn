@@ -18,7 +18,7 @@ class FlaggedRevsHooks {
 		if ( $wgUseTagFilter && ChangeTags::listDefinedTags() ) {
 			$list['ProblemChanges'] = $wgSpecialPages['ProblemChanges'] = 'ProblemChanges';
 		}
-		if( !FlaggedRevs::stableOnlyIfConfigured() ) {
+		if ( !FlaggedRevs::stableOnlyIfConfigured() ) {
 			$list['ReviewedPages'] = $wgSpecialPages['ReviewedPages'] = 'ReviewedPages';
 			$list['UnreviewedPages'] = $wgSpecialPages['UnreviewedPages'] = 'UnreviewedPages';
 		}
@@ -65,12 +65,12 @@ class FlaggedRevsHooks {
 		$msgs = (object) array(
 			'diffToggleShow' => wfMsgHtml( 'revreview-diff-toggle-show' ),
 			'diffToggleHide' => wfMsgHtml( 'revreview-diff-toggle-hide' ),
-			'logToggleShow'	 => wfMsgHtml( 'revreview-log-toggle-show'),
-			'logToggleHide'  => wfMsgHtml( 'revreview-log-toggle-hide'),
-			'logDetailsShow' => wfMsgHtml( 'revreview-log-details-show'),
-			'logDetailsHide' => wfMsgHtml( 'revreview-log-details-hide'),
-			'toggleShow'	 => wfMsgHtml( 'revreview-toggle-show'),
-			'toggleHide'     => wfMsgHtml( 'revreview-toggle-hide')
+			'logToggleShow'	 => wfMsgHtml( 'revreview-log-toggle-show' ),
+			'logToggleHide'  => wfMsgHtml( 'revreview-log-toggle-hide' ),
+			'logDetailsShow' => wfMsgHtml( 'revreview-log-details-show' ),
+			'logDetailsHide' => wfMsgHtml( 'revreview-log-details-hide' ),
+			'toggleShow'	 => wfMsgHtml( 'revreview-toggle-show' ),
+			'toggleHide'     => wfMsgHtml( 'revreview-toggle-hide' )
 		);
 		$head .= "\n<script type=\"{$wgJsMimeType}\">" .
 			"FlaggedRevs.messages = " . Xml::encodeJsVar( $msgs ) . ";</script>\n";
@@ -155,7 +155,7 @@ class FlaggedRevsHooks {
 
 	public static function onMediaWikiPerformAction( $output, $article, $title, $user, $request ) {
 		$fa = FlaggedArticle::getTitleInstance( $title );
-		if( $fa->isReviewable() ) {
+		if ( $fa->isReviewable() ) {
 			self::maybeMarkUnderReview( $article, $user, $request );
 		}
 		return true;
@@ -163,7 +163,7 @@ class FlaggedRevsHooks {
 
 	// Mark when an unreviewed page is being reviewed
 	public static function maybeMarkUnderReview( $article, $user, $request ) {
-		if( !$user->isAllowed( 'review' ) ) {
+		if ( !$user->isAllowed( 'review' ) ) {
 			return true; // user cannot review
 		}
 		# Set a key to note when someone is reviewing this.
@@ -806,14 +806,14 @@ class FlaggedRevsHooks {
 				return false;
 			}
 		# Enforce autoreview/review restrictions
-		} else if( $action === 'autoreview' || $action === 'review' ) {
+		} else if ( $action === 'autoreview' || $action === 'review' ) {
 			# Get autoreview restriction settings...
 			$config = FlaggedRevs::getPageVisibilitySettings( $title, FR_MASTER );
 			# Convert Sysop -> protect
 			$right = ( $config['autoreview'] === 'sysop' ) ?
 				'protect' : $config['autoreview'];
 			# Check if the user has the required right, if any
-			if( $right != '' && !$user->isAllowed( $right ) ) {
+			if ( $right != '' && !$user->isAllowed( $right ) ) {
 				$result = false;
 				return false;
 			}
@@ -890,12 +890,12 @@ class FlaggedRevsHooks {
 			&& $wgRequest->getCheck( 'wpReviewEdit' )
 			&& $user->isAllowed( 'review' ) )
 		{
-			if( self::editCheckReview( $article, $rev, $user, $editTimestamp ) ) {
+			if ( self::editCheckReview( $article, $rev, $user, $editTimestamp ) ) {
 				return true; // reviewed...done!
 			}
 		}
 		# All cases below require auto-review of edits to be enabled
-		if( !FlaggedRevs::autoReviewEdits() ) {
+		if ( !FlaggedRevs::autoReviewEdits() ) {
 			return true;
 		}
 		# If a $baseRevId is passed in this is a null edit
@@ -983,7 +983,7 @@ class FlaggedRevsHooks {
 	* Check if a user reverted himself to the stable version
 	*/
 	protected static function isSelfRevertToStable( $rev, $srev, $baseRevId, $user ) {
-		if( !$srev || $baseRevId != $srev->getRevId() ) {
+		if ( !$srev || $baseRevId != $srev->getRevId() ) {
 			return false; // user reports they are not the same
 		}
 		$dbw = wfGetDB( DB_MASTER );
@@ -996,7 +996,7 @@ class FlaggedRevsHooks {
 				'rev_user_text' => $user->getName()
 			), __METHOD__
 		);
-		if( !$revertedRevs ) {
+		if ( !$revertedRevs ) {
 			return false; // can't be a revert
 		}
 		# Check that this user is ONLY reverting his/herself.
@@ -1007,7 +1007,7 @@ class FlaggedRevsHooks {
 				'rev_user_text != ' . $dbw->addQuotes( $user->getName() )
 			), __METHOD__
 		);
-		if( $otherUsers ) {
+		if ( $otherUsers ) {
 			return false; // only looking for self-reverts
 		}
 		# Confirm the text because we can't trust this user.
@@ -1034,7 +1034,7 @@ class FlaggedRevsHooks {
 		$title = $article->getTitle(); // convenience
 		# Get the current revision ID
 		$rev = Revision::newFromTitle( $title );
-		if( !$rev ) {
+		if ( !$rev ) {
 			return true; // wtf?
 		}
 		$flags = null;
@@ -1045,7 +1045,7 @@ class FlaggedRevsHooks {
 			if ( $frev ) {
 				# Review this revision of the page...
 				$ok = FlaggedRevs::autoReviewEdit( $article, $user, $rev->getText(), $rev, $flags );
-				if( $ok ) {
+				if ( $ok ) {
 					FlaggedRevs::markRevisionPatrolled( $rev ); // reviewed -> patrolled
 					return true;
 				}
@@ -1064,7 +1064,7 @@ class FlaggedRevsHooks {
 			if ( $rev->getTimestamp() != $editTimestamp ) {
 				$dbw = wfGetDB( DB_MASTER );
 				$rev = Revision::loadFromTimestamp( $dbw, $title, $editTimestamp );
-				if( !$rev ) {
+				if ( !$rev ) {
 					return true; // deleted?
 				}
 			}
@@ -1107,7 +1107,7 @@ class FlaggedRevsHooks {
 		} else {
 			global $wgUseNPPatrol;
 			// Is this is a new page edit and $wgUseNPPatrol is enabled?
-			if( $wgUseNPPatrol && !empty( $rc->mAttribs['rc_new'] ) ) {
+			if ( $wgUseNPPatrol && !empty( $rc->mAttribs['rc_new'] ) ) {
 				# Automatically mark it patrolled if the user can do so
 				$patrol = $wgUser->isAllowed( 'autopatrol' );
 				$record = true;
@@ -1740,7 +1740,7 @@ class FlaggedRevsHooks {
 			$queryInfo['join_conds']['flaggedrevs'] = array( 'LEFT JOIN',
 				"fr_page_id = rev_page AND fr_rev_id = rev_id" );
 			# Find reviewer name. Sanity check that no extensions added a `user` query.
-			if( !in_array( 'user', $queryInfo['tables'] ) ) {
+			if ( !in_array( 'user', $queryInfo['tables'] ) ) {
 				$queryInfo['tables'][] = 'user';
 				$queryInfo['fields'][] = 'user_name AS reviewer';
 				$queryInfo['join_conds']['user'] = array( 'LEFT JOIN', "user_id = fr_user" );
@@ -1784,9 +1784,8 @@ class FlaggedRevsHooks {
 	public static function addToRCQuery( &$conds, &$tables, &$join_conds, $opts ) {
 		global $wgUser;
 		if ( $wgUser->isAllowed( 'review' ) ) {
-			$tables[] = 'flaggedpage_pending';
-			$join_conds['flaggedpage_pending'] = array( 'LEFT JOIN',
-				'fpp_page_id = rc_cur_id AND fpp_quality = ' . FR_SIGHTED );
+			$tables[] = 'flaggedpages';
+			$join_conds['flaggedpages'] = array( 'LEFT JOIN', 'fp_page_id = rc_cur_id' );
 		}
 		return true;
 	}
@@ -1794,10 +1793,9 @@ class FlaggedRevsHooks {
 	public static function addToWatchlistQuery( &$conds, &$tables, &$join_conds, &$fields ) {
 		global $wgUser;
 		if ( $wgUser->isAllowed( 'review' ) ) {
-			$fields[] = 'fpp_rev_id';
-			$tables[] = 'flaggedpage_pending';
-			$join_conds['flaggedpage_pending'] = array( 'LEFT JOIN',
-				'fpp_page_id = rc_cur_id AND fpp_quality = ' . FR_SIGHTED );
+			$fields[] = 'fp_stable';
+			$tables[] = 'flaggedpages';
+			$join_conds['flaggedpages'] = array( 'LEFT JOIN', 'fp_page_id = rc_cur_id' );
 		}
 		return true;
 	}
@@ -1872,7 +1870,7 @@ class FlaggedRevsHooks {
 				? 'fr-hist-quality-user'
 				: 'fr-hist-basic-user';
 		}
-		$name = isset($row->reviewer) ?
+		$name = isset( $row->reviewer ) ?
 			$row->reviewer : User::whoIs( $row->fr_user );
 		$link = wfMsgExt( $msg, 'parseinline', $title->getPrefixedDBkey(), $row->rev_id, $name );
 		$link = "<span class='$css plainlinks'>[$link]</span>";
@@ -1920,20 +1918,33 @@ class FlaggedRevsHooks {
 	public static function addToChangeListLine(
 		&$list, &$articlelink, &$s, &$rc, $unpatrolled, $watched
 	) {
-		if ( empty( $rc->mAttribs['fpp_rev_id'] ) ) {
-			return true; // page is not listed in pending edit table
-		}
-		if ( !FlaggedRevs::inReviewNamespace( $rc->getTitle() ) ) {
+		$title = $rc->getTitle(); // convenience
+		if ( !FlaggedRevs::inReviewNamespace( $title )
+			|| empty( $rc->mAttribs['rc_this_oldid'] ) )
+		{
 			return true; // confirm that page is in reviewable namespace
 		}
-		$rlink = $list->skin->link(
-			$rc->getTitle(),
-			wfMsgHtml( 'revreview-reviewlink' ),
-			array( 'title' => wfMsg( 'revreview-reviewlink-title' ) ),
-			array( 'oldid' => $rc->mAttribs['fpp_rev_id'], 'diff' => 'cur' )
-		);
-		$rlink = wfMsgHtml( 'parentheses', $rlink );
-		$articlelink .= " <span class=\"mw-fr-reviewlink\">$rlink</span>";
+		$rlink = '';
+		// page is not reviewed
+		if ( empty( $rc->mAttribs['fp_stable'] ) ) {
+			// Is this a config were pages start off reviewable?
+			if ( !FlaggedRevs::stableOnlyIfConfigured() ) {
+				$rlink = wfMsgHtml( 'revreview-unreviewedpage' );
+				$css = 'flaggedrevs-unreviewed';
+			}
+		// page is reviewed and has pending edits
+		} elseif ( $rc->mAttribs['fp_stable'] < $rc->mAttribs['rc_this_oldid'] ) {
+			$rlink = $list->skin->link(
+				$title,
+				wfMsgHtml( 'revreview-reviewlink' ),
+				array( 'title' => wfMsg( 'revreview-reviewlink-title' ) ),
+				array( 'oldid' => $rc->mAttribs['fp_stable'], 'diff' => 'cur' )
+			);
+			$css = 'flaggedrevs-pending';
+		}
+		if ( $rlink != '' ) {
+			$articlelink .= " <span class=\"mw-fr-reviewlink $css\">[$rlink]</span>";
+		}
 		return true;
 	}
 	
@@ -2085,7 +2096,7 @@ class FlaggedRevsHooks {
 		# Load the requested expiry time (field)
 		$expiryOther = $wgRequest->getVal( 'mwStabilizeExpiryOther', '' );
 		if ( $expiryOther != '' ) $expirySelect = 'othertime'; // mutual exclusion
-		
+
 		# Add an extra row to the protection fieldset tables.
 		# Includes restriction dropdown and expiry dropdown & field.
 		$output .= "<tr><td>";
@@ -2142,7 +2153,7 @@ class FlaggedRevsHooks {
 			}
 			$show = htmlspecialchars( $show );
 			$value = htmlspecialchars( $value );
-			$expiryFormOptions .= Xml::option( $show, $value, $expirySelect == $value )."\n";
+			$expiryFormOptions .= Xml::option( $show, $value, $expirySelect == $value ) . "\n";
 		}
 		# Actually add expiry dropdown to form
 		$scExpiryOptions = wfMsgForContent( 'protect-expiry-options' );

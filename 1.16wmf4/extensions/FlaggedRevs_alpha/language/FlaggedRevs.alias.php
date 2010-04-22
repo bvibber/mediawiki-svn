@@ -42,6 +42,7 @@ $aliases['ar'] = array(
 	'RevisionReview' => array( 'مراجعة_نسخة' ),
 	'Stabilization' => array( 'استقرار' ),
 	'StablePages' => array( 'صفحات_مستقرة' ),
+	'ConfiguredPages' => array( 'صفحات_مضبوطة' ),
 	'ReviewedVersions' => array( 'نسخ_مراجعة', 'نسخ_مستقرة' ),
 	'UnreviewedPages' => array( 'صفحات_غير_مراجعة' ),
 	'ValidationStatistics' => array( 'إحصاءات_التحقق' ),

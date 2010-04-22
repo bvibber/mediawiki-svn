@@ -406,7 +406,7 @@ $messages['frp'] = array(
 $messages['gl'] = array(
 	'reviewedpages' => 'Páxinas revisadas',
 	'reviewedpages-leg' => 'Listar as páxinas que foron revisadas',
-	'reviewedpages-list' => "Estas listas conteñen as páxinas [[{{MediaWiki:Validationpage}}|revisadas]] cuxo nivel de revisión ''maior alcanzado'' (dunha revisión) é o nivel especificado.
+	'reviewedpages-list' => "Estas listas conteñen as páxinas [[{{MediaWiki:Validationpage}}|revisadas]] cuxo nivel de revisión ''máis alto'' (dunha revisión) é o nivel especificado.
 Dáse unha ligazón cara á última revisión dese nivel.",
 	'reviewedpages-none' => 'Non hai páxinas nesta lista',
 	'reviewedpages-lev-0' => 'Revisado',
@@ -548,18 +548,20 @@ $messages['ia'] = array(
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
  * @author IvanLanin
+ * @author Iwan Novirion
  * @author Rex
  */
 $messages['id'] = array(
 	'reviewedpages' => 'Halaman tertinjau',
-	'reviewedpages-leg' => 'Daftar halaman menurut tingkat tinjauan tertinggi',
-	'reviewedpages-list' => 'Halaman berikut berisi daftar halaman yang telah ditinjau hingga tingkat tertentu',
+	'reviewedpages-leg' => 'Daftar halaman yang telah ditinjau',
+	'reviewedpages-list' => "Daftar ini berisi [[{{MediaWiki:Validationpage}}|peninjauan]] halaman yang telah ''mencapai tingkat tertinggi'' level peninjauan (dari perbaikan) pada level tertentu.
+Sebuah pranala diberikan pada perbaikan terakhir level tersebut.",
 	'reviewedpages-none' => 'Tidak ada halaman di dalam daftar ini',
 	'reviewedpages-lev-0' => 'Terperiksa',
 	'reviewedpages-lev-1' => 'Layak',
 	'reviewedpages-lev-2' => '{{int:revreview-lev-pristine}}',
 	'reviewedpages-all' => 'versi tertinjau',
-	'reviewedpages-best' => 'revisi berperingkat tertinggi terakhir',
+	'reviewedpages-best' => 'Perbaikan terbaik',
 );
 
 /** Icelandic (Íslenska)
@@ -578,7 +580,7 @@ $messages['is'] = array(
  */
 $messages['it'] = array(
 	'reviewedpages' => 'Pagine revisionate',
-	'reviewedpages-leg' => 'Elenca le pagine per livello (decrescente)',
+	'reviewedpages-leg' => 'Elenca le pagine revisionate',
 	'reviewedpages-list' => 'Di seguito sono elencate le pagine che sono state revisionate (al massimo) al livello specificato.',
 	'reviewedpages-none' => 'Non ci sono pagine in questo elenco',
 	'reviewedpages-lev-0' => 'Visionata',

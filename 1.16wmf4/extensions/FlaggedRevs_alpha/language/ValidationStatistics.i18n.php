@@ -327,6 +327,7 @@ $messages['cu'] = array(
 
 /** German (Deutsch)
  * @author ChrisiPK
+ * @author Kghbln
  * @author Melancholie
  * @author The Evil IP address
  * @author Umherirrender
@@ -655,7 +656,7 @@ $messages['ga'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
-	'validationstatistics' => 'Estatísticas de revisión da páxina',
+	'validationstatistics' => 'Estatísticas de revisión das páxinas',
 	'validationstatistics-users' => "Actualmente, '''{{SITENAME}}''' ten '''[[Special:ListUsers/editor|$1]]''' {{PLURAL:$1|usuario|usuarios}} con
 dereitos de [[{{MediaWiki:Validationpage}}|editor]].
 
@@ -908,23 +909,23 @@ Le version publicate de un pagina es le version le plus nove que ha essite appro
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
  * @author Irwangatot
+ * @author Iwan Novirion
  * @author Rex
  */
 $messages['id'] = array(
-	'validationstatistics' => 'Statistik validasi',
-	'validationstatistics-users' => "'''{{SITENAME}}''' saat ini memiliki '''[[Special:ListUsers/editor|$1]]''' {{PLURAL:$1|pengguna|pengguna}} dengan hak akses [[{{MediaWiki:Validationpage}}|Editor]] dan
-'''[[Special:ListUsers/reviewer|$2]]''' {{PLURAL:$2|pengguna|pengguna}} dengan hak akses [[{{MediaWiki:Validationpage}}|Peninjau]].
+	'validationstatistics' => 'Statistik tinjauan halaman',
+	'validationstatistics-users' => "'''{{SITENAME}}''' saat ini memiliki '''[[Special:ListUsers/editor|$1]]''' {{PLURAL:$1|pengguna|pengguna}} dengan hak akses [[{{MediaWiki:Validationpage}}|Penerjemah]].
 
-Editor dan Peninjau adalah para pengguna terpercaya yang dapat melakukan pemeriksaan revisi di setiap halaman.",
+Penerjemah adalah para pengguna tetap yang dapat melakukan pemeriksaan perbaikan di setiap halaman.",
 	'validationstatistics-time' => "''Data berikut ini diperbaharui pada $5 saat $6.'' 
 
-Suntingan yang telah diperiksa oleh pengguna terpercaya dianggap telah ditinjau. 
+Suntingan yang telah diperiksa oleh pengguna tetap dianggap telah ditinjau. 
 
-Rata-rata menunggu suntingan oleh ''pengguna yang belum masuk log'' untuk ditinjau adalah '' '$1'''; paling banyak adalah '''$3'''. 
+Jumlah rata-rata menunggu suntingan oleh ''pengguna yang belum masuk log'' untuk ditinjau adalah '''$1'''; paling banyak '''$3'''. 
 $4 
-Lag rata-rata untuk [[Special:OldReviewedPages|halaman dengan suntingan penundaan pemeriksaan]] adalah '''$2'''. 
-Halaman ini dianggap ''belum diperbaharui''. Demikian juga, halaman akan dianggap telah ''disinkronkan'' jika  [[{{MediaWiki:Validationpage}}|versi stabil]] merupakan versi rancangan saat ini. 
-Versi stabil suatu halaman adalah revisi terbaru yang telah disetujui untuk ditunjukkan secara default kepada semua pembaca.",
+Lag rata-rata untuk [[Special:OldReviewedPages|halaman dengan suntingan tertunda belum ditinjau]] adalah '''$2'''. 
+Halaman ini dianggap ''belum diperbaharui''. Demikian juga, halaman akan dianggap telah ''disinkronkan'' jika  tidak ada suntingan tertunda belum ditinjau. 
+Versi publikasi suatu halaman adalah perbaikan terbaru yang telah disetujui untuk ditunjukkan secara baku kepada semua pembaca.",
 	'validationstatistics-table' => "Statistik untuk setiap ruang nama ditampilkan di bawah ini, ''kecuali'' halaman pengalihan.",
 	'validationstatistics-ns' => 'Ruang nama',
 	'validationstatistics-total' => 'Halaman',
@@ -952,6 +953,7 @@ $messages['is'] = array(
 );
 
 /** Italian (Italiano)
+ * @author Beta16
  * @author Darth Kule
  * @author Gianfranco
  * @author Melos
@@ -976,7 +978,9 @@ La versione stabile di una pagina è la revisione più recente fra quelle che so
 	'validationstatistics-latest' => 'Sincronizzate',
 	'validationstatistics-synced' => 'Sincronizzate/Revisionate',
 	'validationstatistics-old' => 'Non aggiornate',
+	'validationstatistics-utable' => "Di seguito è riportato l'elenco dei primi 5 revisori nell'ultima ora.",
 	'validationstatistics-user' => 'Utente',
+	'validationstatistics-reviews' => 'Revisioni',
 );
 
 /** Japanese (日本語)
@@ -1056,15 +1060,16 @@ $messages['kn'] = array(
 );
 
 /** Korean (한국어)
+ * @author Devunt
  * @author Klutzy
  * @author Kwj2772
  * @author Yknok29
  */
 $messages['ko'] = array(
-	'validationstatistics' => '검토 통계',
-	'validationstatistics-users' => "'''{{SITENAME}}'''에는 [[Special:ListUsers/editor|$1]]명의 [[{{MediaWiki:Validationpage}}|편집자]] 권한을 가진 사용자와 [[Special:ListUsers/reviewer|$2]]명의 [[{{MediaWiki:Validationpage}}|평론가]] 권한을 가진 사용자가 있습니다.
+	'validationstatistics' => '페이지의 검토 통계',
+	'validationstatistics-users' => "'''{{SITENAME}}'''에는 [[Special:ListUsers/editor|$1]]명의 [[{{MediaWiki:Validationpage}}|편집자]] 권한을 가진 사용자가 있습니다.
 
-편집자와 평론자가 문서를 검토할 수 있습니다.",
+편집자가 문서를 검토할 수 있습니다.",
 	'validationstatistics-time' => "'''다음의 수치는 $5 $6에 마지막으로 업데이트되었습니다.'''
 
 숙련된 사용자가 확인한 편집을 검토된 편집으로 간주합니다.
@@ -1321,7 +1326,7 @@ $messages['no'] = array(
 	'validationstatistics' => 'Siderevideringsstatistikk',
 	'validationstatistics-users' => "'''{{SITENAME}}''' har på nåværende tidspunkt '''[[Special:ListUsers/editor|$1]]''' {{PLURAL:$1|bruker|brukere}} med [[{{MediaWiki:Validationpage}}|skribentrettigheter]].
 
-Skribenter er etablerte brukere som kan punktsjekke revisjoner på siden.",
+Skribenter er etablerte brukere som kan punktsjekke siderevisjoner.",
 	'validationstatistics-time' => "''Følgende data ble sist oppdatert $5, kl $6.''
 
 Endringer som har blitt sjekket av etablerte brukere blir ansett som godkjent.

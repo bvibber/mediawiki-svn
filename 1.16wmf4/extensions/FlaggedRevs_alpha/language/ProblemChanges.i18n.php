@@ -299,9 +299,10 @@ $messages['ia'] = array(
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
  * @author IvanLanin
+ * @author Iwan Novirion
  */
 $messages['id'] = array(
-	'problemchanges' => 'Periksa perubahan yang diberi tag',
+	'problemchanges' => 'Pemberian label penundaan perubahan',
 	'problemchanges-legend' => 'Daftarkan halaman dengan suntingan bertag menunggu tinjauan',
 	'problemchanges-none' => 'Saat ini tidak ada halaman yang memenuhi kriteria tersebut',
 	'problemchanges-category' => 'Kategori:',
@@ -315,10 +316,12 @@ $messages['io'] = array(
 );
 
 /** Italian (Italiano)
+ * @author Beta16
  * @author Melos
  */
 $messages['it'] = array(
 	'problemchanges' => 'Revisiona le modifiche che hanno etichette',
+	'problemchanges-legend' => 'Elenco delle pagine con modifiche etichettate in attesa di revisione',
 	'problemchanges-none' => 'Al momento non ci sono pagine che soddisfino tale criterio.',
 	'problemchanges-category' => 'Categoria:',
 );

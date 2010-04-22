@@ -66,7 +66,7 @@ $messages['an'] = array(
  * @author OsamaK
  */
 $messages['ar'] = array(
-	'reviewedversions' => 'عرض النسخ المستقرة',
+	'reviewedversions' => 'النسخ المُراجعة',
 	'reviewedversions-leg1' => 'عرض المراجعات المراجعة لصفحة',
 	'reviewedversions-page' => 'اسم الصفحة:',
 	'reviewedversions-none' => '"[[:$1]]" لا يوجد بها مراجعات مراجعة.',
@@ -497,10 +497,11 @@ $messages['ia'] = array(
 );
 
 /** Indonesian (Bahasa Indonesia)
+ * @author Iwan Novirion
  * @author Rex
  */
 $messages['id'] = array(
-	'reviewedversions' => 'Tampilkan versi stabil',
+	'reviewedversions' => 'Versi yang telah ditinjau',
 	'reviewedversions-leg1' => 'Menampilkan revisi tertinjau dari suatu halaman',
 	'reviewedversions-page' => 'Nama halaman:',
 	'reviewedversions-none' => '"[[:$1]]" tidak memiliki revisi tertinjau.',
@@ -517,10 +518,11 @@ $messages['is'] = array(
 );
 
 /** Italian (Italiano)
+ * @author Beta16
  * @author Darth Kule
  */
 $messages['it'] = array(
-	'reviewedversions' => 'Visualizza versioni stabili',
+	'reviewedversions' => 'Versioni revisionate',
 	'reviewedversions-leg1' => 'Elenco delle versioni revisionate per una pagina',
 	'reviewedversions-page' => 'Nome della pagina:',
 	'reviewedversions-none' => '"[[:$1]]" non ha versioni revisionate.',
@@ -595,10 +597,11 @@ $messages['km'] = array(
 );
 
 /** Korean (한국어)
+ * @author Devunt
  * @author Kwj2772
  */
 $messages['ko'] = array(
-	'reviewedversions' => '안정 버전 보기',
+	'reviewedversions' => '검토된 버전',
 	'reviewedversions-page' => '문서 이름:',
 	'reviewedversions-none' => '"[[:$1]]"의 검토된 판이 없습니다.',
 	'reviewedversions-list' => '다음은 [[:$1]] 문서의 검토된 {{PLURAL:$2|편집}}의 목록입니다:',
@@ -896,6 +899,13 @@ $messages['ru'] = array(
 	'reviewedversions-none' => '«[[:$1]]» не имеет проверенных версий.',
 	'reviewedversions-list' => '{{PLURAL:$2|Была проверена следующая версия|Были проверены следующие версии}} страницы «[[:$1]]»:',
 	'reviewedversions-review' => 'Проверена <i>$1</i> участником $2',
+);
+
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'reviewedversions-page' => 'Назва сторінкы:',
 );
 
 /** Yakut (Саха тыла)

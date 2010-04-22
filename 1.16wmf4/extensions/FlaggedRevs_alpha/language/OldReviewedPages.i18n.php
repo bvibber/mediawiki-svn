@@ -77,6 +77,13 @@ Used on [http://en.labs.wikimedia.org/wiki/Special:OldReviewedPages Special:OldR
 Used on [http://en.labs.wikimedia.org/wiki/Special:OldReviewedPages Special:OldReviewedPages] when someone has recently requested the sighting page for a listed page.',
 );
 
+/** Abkhazian (Аҧсуа)
+ * @author Temuri rajavi
+ */
+$messages['ab'] = array(
+	'oldreviewed-category' => 'Акатегориа:',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
  * @author Naudefj
@@ -344,6 +351,7 @@ $messages['cu'] = array(
  * @author Melancholie
  * @author Michawiki
  * @author Raimond Spekking
+ * @author The Evil IP address
  * @author Umherirrender
  */
 $messages['de'] = array(
@@ -355,7 +363,7 @@ $messages['de'] = array(
 	'oldreviewedpages-days' => '($1 {{PLURAL:$1|Tag|Tage}})',
 	'oldreviewedpages-recent' => '(weniger als 1 Stunde)',
 	'oldreviewed-category' => 'Kategorie:',
-	'oldreviewed-watched' => 'Auf meiner Beobachtungsliste',
+	'oldreviewed-watched' => 'Seiten auf meiner Beobachtungsliste',
 	'oldreviewed-stable' => 'Stabile Version',
 	'oldreviewed-diff' => 'sichten',
 	'oldreviewed-size' => 'Maximale Änderungsgröße in Byte:',
@@ -784,10 +792,11 @@ $messages['ia'] = array(
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author Iwan Novirion
  * @author Rex
  */
 $messages['id'] = array(
-	'oldreviewedpages' => 'Halaman tertinjau telah usang',
+	'oldreviewedpages' => 'Halaman dengan penundaan perubahan',
 	'oldreviewedpages-legend' => 'Daftar halaman tertinjau yang memiliki revisi yang belum ditinjau',
 	'oldreviewedpages-list' => 'Di bawah ini adalah daftar {{PLURAL:$1||}}halaman tertinjau yang memiliki suntingan yang ditangguhkan.',
 	'oldreviewedpages-none' => 'Tidak ada halaman yang sesuai dengan kriteria ini',
@@ -795,7 +804,7 @@ $messages['id'] = array(
 	'oldreviewedpages-days' => '($1 {{PLURAL:$1|hari|hari}})',
 	'oldreviewedpages-recent' => '(kurang dari 1 jam)',
 	'oldreviewed-category' => 'Kategori:',
-	'oldreviewed-watched' => 'Ada di daftar pantauan saya',
+	'oldreviewed-watched' => 'Halaman pada daftar pantauan saya',
 	'oldreviewed-stable' => 'Distabilkan',
 	'oldreviewed-diff' => 'meninjau',
 	'oldreviewed-size' => 'Perubahan maks. (byte):',
@@ -825,12 +834,14 @@ $messages['is'] = array(
 );
 
 /** Italian (Italiano)
+ * @author Beta16
+ * @author Civvì
  * @author Darth Kule
  * @author Melos
  * @author Pietrodn
  */
 $messages['it'] = array(
-	'oldreviewedpages' => 'Pagine non revisionate di recente',
+	'oldreviewedpages' => 'Pagine con modifiche non revisionate',
 	'oldreviewedpages-legend' => 'Elenco delle pagine revisionate ma con versioni non revisionate',
 	'oldreviewedpages-list' => 'Di seguito {{PLURAL:$1|è elencata una pagina revisionata ma che ha|sono elencate pagine revisionate ma che hanno}} delle modifiche ancora da revisionare.',
 	'oldreviewedpages-none' => 'Al momento non ci sono pagine che soddisfino i criteri di ricerca.',
@@ -838,7 +849,7 @@ $messages['it'] = array(
 	'oldreviewedpages-days' => '($1 {{PLURAL:$1|giorno|giorni}})',
 	'oldreviewedpages-recent' => "(meno di un'ora)",
 	'oldreviewed-category' => 'Categoria:',
-	'oldreviewed-watched' => 'Sulla mia watchlist',
+	'oldreviewed-watched' => 'Pagine nei miei osservati speciali',
 	'oldreviewed-stable' => 'Stabile',
 	'oldreviewed-diff' => 'revisiona',
 	'oldreviewed-size' => 'Cambiamento massimo (byte):',
