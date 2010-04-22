@@ -2,15 +2,15 @@
 * Sequencer loader
 */
 mw.addClassFilePaths( {
-	"mw.PlayList"			: "modules/Sequencer/mw.PlayList.js",
-	"mw.Sequencer"			: "modules/Sequencer/mw.Sequencer.js",
-	"mw.SeqRemoteSearchDriver" : "modules/Sequencer/mw.SeqRemoteSearchDriver.js",	
-	"mw.TimedEffectsEdit"	: "modules/Sequencer/mvTimedEffectsEdit.js",
-	"mw.FirefoggRender"		: "modules/Sequencer/mw.FirefoggRender.js",
+	"mw.PlayList"			: "mw.PlayList.js",
+	"mw.Sequencer"			: "mw.Sequencer.js",
+	"mw.SeqRemoteSearchDriver" : "mw.SeqRemoteSearchDriver.js",	
+	"mw.TimedEffectsEdit"	: "mvTimedEffectsEdit.js",
+	"mw.FirefoggRender"		: "mw.FirefoggRender.js",
 	
-	"RemoteMwSequencer" :	"modules/Sequencer/remotes/RemoteMwSequencer.js",
+	"RemoteMwSequencer" :	"remotes/RemoteMwSequencer.js",
 	
-	"playlistEmbed" : "modules/Sequencer/playlistEmbed.js"
+	"playlistEmbed" : "playlistEmbed.js"
 } );
 
 mw.addModuleLoader( 'FirefoggRender', function( callback) {
@@ -25,7 +25,7 @@ mw.addModuleLoader( 'FirefoggRender', function( callback) {
 
 mw.addModuleLoader( 'Sequencer', function( callback ) {
 	//Get sequencer style sheet	
-	mw.getStyleSheet( mw.getMwEmbedPath() + 'modules/Sequencer/css/mv_sequence.css' );
+	mw.getStyleSheet( mw.getMwEmbedPath() + 'css/mv_sequence.css' );
 	// Make sure we have the required mwEmbed libs:			
 	mw.load( [
 		[	// Load the EmbedPlayer Module ( includes lots of dependent classes )   

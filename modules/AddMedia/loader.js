@@ -11,25 +11,26 @@
 	
 	// Add class file paths ( From ROOT )
 	mw.addClassFilePaths( {
-		"$j.fn.dragDropFile"	: "modules/AddMedia/jquery.dragDropFile.js",
+		"$j.fn.dragDropFile"	: "jquery.dragDropFile.js",
 			
-		"mw.UploadForm"			: "modules/AddMedia/mw.UploadForm.js",
+		"mw.UploadForm"			: "mw.UploadForm.js",
 		
-		"mw.UploadHandler"		: "modules/AddMedia/mw.UploadHandler.js",
-		"mw.UploadInterface"	: "modules/AddMedia/mw.UploadInterface.js",
-		"mw.Firefogg"			: "modules/AddMedia/mw.Firefogg.js",
-		"mw.FirefoggGUI"		: "modules/AddMedia/mw.FirefoggGUI.js",
+		"mw.UploadHandler"		: "mw.UploadHandler.js",
+		"mw.UploadInterface"	: "mw.UploadInterface.js",
+		"mw.Firefogg"			: "mw.Firefogg.js",
+		"mw.FirefoggGUI"		: "mw.FirefoggGUI.js",
 		"mw.FirefoggRender"		: "modules/libSequencer/mw.FirefoggRender.js",
-		"mw.RemoteSearchDriver"	: "modules/AddMedia/mw.RemoteSearchDriver.js",			
+		"mw.RemoteSearchDriver"	: "mw.RemoteSearchDriver.js",			
 		
-		"baseRemoteSearch"		: "modules/AddMedia/searchLibs/baseRemoteSearch.js",
-		"mediaWikiSearch"		: "modules/AddMedia/searchLibs/mediaWikiSearch.js",
-		"metavidSearch"			: "modules/AddMedia/searchLibs/metavidSearch.js",
-		"archiveOrgSearch"		: "modules/AddMedia/searchLibs/archiveOrgSearch.js",
-		"flickrSearch"			: "modules/AddMedia/searchLibs/flickrSearch.js",
-		"baseRemoteSearch"		: "modules/AddMedia/searchLibs/baseRemoteSearch.js",
-		"kalturaSearch"			: "modules/AddMedia/searchLibs/kalturaSearch.js"
-	});	
+		"baseRemoteSearch"		: "searchLibs/baseRemoteSearch.js",
+		"mediaWikiSearch"		: "searchLibs/mediaWikiSearch.js",
+		"metavidSearch"			: "searchLibs/metavidSearch.js",
+		"archiveOrgSearch"		: "searchLibs/archiveOrgSearch.js",
+		"flickrSearch"			: "searchLibs/flickrSearch.js",
+		"baseRemoteSearch"		: "searchLibs/baseRemoteSearch.js",
+		"kalturaSearch"			: "searchLibs/kalturaSearch.js"
+		
+	} );	
 	
 	// Upload form includes "datapicker" 
 	mw.addModuleLoader( 'AddMedia.UploadForm', function( callback ){
@@ -46,8 +47,7 @@
 			callback( 'AddMedia.UploadForm' );
 		} );
 	})
-	
-	
+		
 	//Setup the addMediaWizard module
 	mw.addModuleLoader( 'AddMedia.addMediaWizard', function( callback ) {
 		// Load all the required libs:

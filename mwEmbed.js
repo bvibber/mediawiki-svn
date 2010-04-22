@@ -10,7 +10,7 @@
  * also see: http://svn.wikimedia.org/viewvc/mediawiki/trunk/phase3/COPYING?view=markup
  *
  * @author Michael Dale ( mdale at wikimedia.org )
- * @author and many others, see svn log for details
+ * @author and others
  *
  * mwEmbed uses the following libraries: 
  *
@@ -25,14 +25,14 @@
 /*
 * Setup the mw global: 
 */
-if ( !window['mw'] ) {
-	window['mw'] = { }
+if ( ! window['mw'] ) {
+	window['mw'] = { };
 }
 
 /*
 * Set the mwEmbedVersion
 */
-var MW_EMBED_VERSION = '1.1e';
+var MW_EMBED_VERSION = '1.1f';
 
 /**
 * The global mw object:
@@ -617,7 +617,7 @@ var MW_EMBED_VERSION = '1.1e';
 			}else{									
 				// Check if its a dependency set ( nested objects ) 
 				if( typeof loadSet [ 0 ] == 'object' ) {		
-					_this.dependencyChainCallFlag[loadSet] = false;
+					_this.dependencyChainCallFlag[ loadSet ] = false;
 					//Load sets of classes ( to preserver order for some browsers )
 					_this.loadDependencyChain( loadSet, callback );
 					return ;
@@ -711,15 +711,16 @@ var MW_EMBED_VERSION = '1.1e';
 			return loadStates;
 		},
 		
-				
+		// Array to register that a callback has been called 
+		dependencyChainCallFlag: { },
+								
 		/**
-		* Load a sets of scripts satisfy dependency order for browsers that execute out of order
+		* Load a sets of scripts satisfy dependency order for browsers that execute 
+		* dynamically included scripts out of order
 		* 
 		* @param {Object} loadChain A set of javascript arrays to be loaded. 
 		*	Sets are requested in array order. 		   
 		*/ 
-		dependencyChainCallFlag: { },
-		
 		loadDependencyChain: function( loadChain, callback ) {
 			var _this = this;						
 			// Load with dependency checks
@@ -728,9 +729,8 @@ var MW_EMBED_VERSION = '1.1e';
 				if ( loadChain.length != 0 ) {
 					_this.loadDependencyChain( loadChain, callback );
 				} else {
-					// NOTE: IE is playing tricks with me 
-					//  Need to figure out why this callback gets called twice 
-					//  and remove this flag
+					// NOTE: IE gets called twice so we have check the 
+					// dependencyChainCallFlag before calling the callback					
 					if( _this.dependencyChainCallFlag[ callSet ] == callback ) {
 						mw.log("... already called this callback for " + callSet );
 						return ;
@@ -799,7 +799,7 @@ var MW_EMBED_VERSION = '1.1e';
 					&& mwLoadDoneCB[ className ] != 'done' ) {
 					mw.log( 'Possible Error: ' + className +' not set in time, or not defined in:' + "\n" +  _this.getClassPath( className ) );
 				}
-				// Call load done (incase the script did not include a loadDone callback ) 
+				// Call load done (in case the script did not include a loadDone callback ) 
 				// if the script loader (did call loadDone this loadDone will be ignored
 				mw.loadDone( className );
 			} );	
@@ -848,7 +848,7 @@ var MW_EMBED_VERSION = '1.1e';
 	 		
 	 		for( var i in classSet ) {
 				this.classPaths[ i ] = prefix + classSet[ i ];
-			}
+			}			
 	 	},
 	 	
 	 	/**
@@ -1502,7 +1502,7 @@ var MW_EMBED_VERSION = '1.1e';
 	* 
 	* This is different from jQuery(document).ready() 
 	* ( jQuery ready is not friendly with dynamic includes
-	*  and core interface asynchronous build out. ) 
+	*  and not friendly with core interface asynchronous build out. ) 
 	*
 	* @param {Function} callback Function to run once DOM and jQuery are ready
 	*/
@@ -1995,7 +1995,7 @@ var MW_EMBED_VERSION = '1.1e';
 	*/
 	mw.parseUri.options = {
 		strictMode: false,
-		key: ["source", "protocol", "authority", "userInfo", "user","password","host","port","relative","path","directory","file","query","anchor"],
+		key: ["source", "protocol", "authority", "userInfo", "user", "password", "host", "port", "relative", "path", "directory", "file", "query", "anchor"],
 		q:   {
 			name:   "queryKey",
 			parser: /(?:^|&)([^&=]*)=?([^&]*)/g
@@ -2212,20 +2212,41 @@ var MW_EMBED_VERSION = '1.1e';
 			// Load all the "loaders" of the enabled modules:
 			var loaderRequest = [];			
 			
-			// Add enabled componet classes:
-			var enabledComponents = mw.getConfig( 'coreComponents' );
-			for(var i=0; i < enabledComponents.length; i++ ) {
-				loaderRequest.push( enabledComponents[ i ] );
-			};
 			
-			// Add the enabledModules loaders:
-			var enabledModules = mw.getConfig( 'enabledModules' );		
-			for(var i=0; i < enabledModules.length; i++ ) {
-				loaderRequest.push( 'modules/' + enabledModules[ i ] + '/loader.js' );
-			};	
+			//Load enabled components
+			var enabledComponents = mw.getConfig( 'coreComponents' );
+			function loadEnabledComponents( enabledComponents ){				
+				if( ! enabledComponents.length ){
+					// If no more components load modules::
 					
-			mw.setConfig('loaderContext', '' );
-			mw.load( loaderRequest, function() {
+					// Add the enabledModules loaders:
+					var enabledModules = mw.getConfig( 'enabledModules' );
+					loadEnabledModules( enabledModules );
+					return ;							
+				}
+				var componentName = enabledComponents.pop();
+				mw.load( componentName, function(){
+					loadEnabledComponents( enabledComponents );
+				} );
+			}
+			loadEnabledComponents( enabledComponents );						
+			
+						
+			//Set the loader context and get each loader individually ( only in debug mode )  				
+			function loadEnabledModules( enabledModules ){
+				if( ! enabledModules.length ){
+					// If no more modules left load the LanguageFile
+					addLanguageFile();
+					return ;
+				}
+				var moduleName = enabledModules.pop();
+				mw.setConfig( 'loaderContext',  'modules/' + moduleName + '/' );	
+				mw.load( 'modules/' + moduleName + '/loader.js', function(){
+					loadEnabledModules( enabledModules );		
+				} );
+			}	
+			
+			function addLanguageFile(){
 				// Add the language file
 				var langLoaderRequest = [];
 				
@@ -2249,7 +2270,7 @@ var MW_EMBED_VERSION = '1.1e';
 					mwModuleLoaderCheckFlag = true;
 					callback();
 				} );
-			} );
+			}		
 		} );				
 	}
 	
@@ -2594,7 +2615,7 @@ function doScrollCheck() {
 
 
 // Hack to keep jQuery in $ when its
-// already there, but also use noConflict to get $j. 
+// already there, but also use noConflict to get $j = jQuery 
 if( window.jQuery ){
 	var dollarFlag = false;	
 	if( $ && $.fn && $.fn.jquery ){

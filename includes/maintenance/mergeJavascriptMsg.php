@@ -94,7 +94,9 @@ $objects = new RecursiveIteratorIterator( new RecursiveDirectoryIterator( $path 
 foreach ( $objects as $fname => $object ) {
 	if ( substr( $fname, - 3 ) == '.js'
 		&& strpos( $fname, '/cache/' ) === false
-		&& strpos( $fname, '/tests/' ) === false ) {
+		&& strpos( $fname, '/tests/' ) === false )
+	{
+
 		$jsFileText = file_get_contents( $fname );
 		$mwPos = strpos( $fname, 'mwEmbed' ) + 7;
 		$curFileName = substr( $fname, $mwPos );

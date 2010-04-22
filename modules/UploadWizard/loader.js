@@ -11,16 +11,16 @@
 	
 	// Add class file paths ( From ROOT )
 	mw.addClassFilePaths( {
-		"mw.LanguageUpWiz"			: "modules/UploadWizard/mw.LanguageUpWiz.js",
-		"mw.UploadWizard"		: "modules/UploadWizard/mw.UploadWizard.js",
-		"mw.style.uploadWizard" : "modules/UploadWizard/css/uploadWizard.css",
+		"mw.LanguageUpWiz"			: "mw.LanguageUpWiz.js",
+		"mw.UploadWizard"		: "mw.UploadWizard.js",
+		"mw.style.uploadWizard" : "css/uploadWizard.css",
 		
-		"mw.UploadApiProcessor"		: "modules/UploadWizard/mw.UploadApiProcessor.js",
-		"mw.IframeTransport"		: "modules/UploadWizard/mw.IframeTransport.js",
-		"mw.ApiUploadHandler"		: "modules/UploadWizard/mw.ApiUploadHandler.js",
-		"mw.DestinationChecker"		: "modules/UploadWizard/mw.DestinationChecker.js",
+		"mw.UploadApiProcessor"		: "mw.UploadApiProcessor.js",
+		"mw.IframeTransport"		: "mw.IframeTransport.js",
+		"mw.ApiUploadHandler"		: "mw.ApiUploadHandler.js",
+		"mw.DestinationChecker"		: "mw.DestinationChecker.js",
 
-		"mw.MockUploadHandler"		: "modules/UploadWizard/mw.MockUploadHandler.js"			
+		"mw.MockUploadHandler"		: "mw.MockUploadHandler.js"			
 		
 	});	
 	

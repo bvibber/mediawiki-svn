@@ -30,7 +30,7 @@ class jsClassLoader {
 	 */
 	public static function loadClassPaths(){
 		global $wgMwEmbedDirectory, $wgExtensionJavascriptLoader,
-			$wgJSAutoloadClasses, $wgJSAutoloadLocalClasses, $IP;
+		$wgScriptLoaderNamedPaths, $wgExtensionMessagesFiles, $IP;
 
 		// Only run once
 		if( self::$classesLoaded ) {
@@ -38,18 +38,19 @@ class jsClassLoader {
 		}
 		self::$classesLoaded = true;
 
-		// Load classes from mediaWiki $wgJSAutoloadLocalClasses var:
-		$wgJSAutoloadClasses = array_merge( $wgJSAutoloadClasses, $wgJSAutoloadLocalClasses );
+		// Add the mwEmbed localizations
+		$wgExtensionMessagesFiles[ 'mwEmbed' ] = $IP . '/' . $wgMwEmbedDirectory . '/languages/mwEmbed.i18n.php';
+
 
 		// Load javascript classes from mwEmbed.js
-		if ( !is_file( $wgMwEmbedDirectory . 'loader.js' ) ) {
+		if ( !is_file( $wgMwEmbedDirectory . '/loader.js' ) ) {
 			// throw error no mwEmbed found
 			throw new MWException( "mwEmbed loader.js missing check \$wgMwEmbedDirectory path\n" );
 			return false;
 		}
 
 		// Read the mwEmbed loader file:
-		$fileContent = file_get_contents( $wgMwEmbedDirectory . 'loader.js' );
+		$fileContent = file_get_contents( $wgMwEmbedDirectory . '/loader.js' );
 
 		// Get class paths from mwEmbed.js
 		self::$directoryContext = $wgMwEmbedDirectory;
@@ -59,41 +60,56 @@ class jsClassLoader {
 		preg_replace_callback(
 			'/mwCoreComponentList\s*\=\s*\[(.*)\]/siU',
 			'jsClassLoader::preg_buildComponentList',
-			$fileContent
+		$fileContent
 		);
 
 		// Get the list of enabled modules into $moduleList
 		preg_replace_callback(
 			'/mwEnabledModuleList\s*\=\s*\[(.*)\]/siU',
 			'jsClassLoader::preg_buildModuleList',
-			$fileContent
+		$fileContent
 		);
 
-		// Get all the classes from the loader files:
+		// Get all the classes from the enabled mwEmbed modules folder
 		foreach( self::$moduleList as  $na => $moduleName){
-			// Setup the directory context for mwEmbed modules:
-			self::$directoryContext = $wgMwEmbedDirectory;
-
-			self::proccessLoaderPath( $wgMwEmbedDirectory .
-				'modules/' . $moduleName . '/loader.js' );
+			self::proccessModulePath(  $IP . '/' . $wgMwEmbedDirectory . '/modules/' . $moduleName );
 		}
 
 		// Get all the extension loader paths registered mwEmbed modules
 		foreach( $wgExtensionJavascriptLoader as $na => $loaderPath){
-			// Setup the directory context for extensions
-			self::$directoryContext = 'extensions/' .str_replace('loader.js', '' , $loaderPath);
-			self::proccessLoaderPath( $IP . '/extensions/' .  $loaderPath );
+			// Setup the directory context for extensions relative to loader.js file:
+			$modulePath = str_replace('loader.js', '' , $loaderPath);
+			self::proccessModulePath( $modulePath );
 		}
 	}
 	/**
 	 * Process a loader path, passes off to proccessLoaderContent
 	 *
-	 * @param String $path
+	 * @param String $path Path to module to be processed
 	 */
-	private static function proccessLoaderPath( $path ){
-		// Get the loader content
-		$fileContent = file_get_contents( $path );
+	private static function proccessModulePath( $path ){
+		global $wgExtensionMessagesFiles;
+		// Get the module name
+		$moduleName = end( explode('/', $path ) );
+
+		// Set the directory context for js defined paths
+		self::$directoryContext = $path;
+
+		// Check for the loader.js
+		if( !is_file( $path . '/loader.js' ) ){
+			throw new MWException( "Module missing loader.js in root \n" );
+			return false;
+		}
+
+		$fileContent = file_get_contents( $path . '/loader.js');
 		self::proccessLoaderContent( $fileContent );
+
+		$i18nPath = realpath( $path . '/' . $moduleName . '.i18n.php' );
+
+		// Add the module localization file if present:
+		if( is_file( $i18nPath ) ) {
+			$wgExtensionMessagesFiles[ $moduleName ] = $i18nPath;
+		}
 	}
 
 	/**
@@ -108,7 +124,7 @@ class jsClassLoader {
 		self::$combinedLoadersJs .=  $fileContent;
 
 		preg_replace_callback(
-			self::$classReplaceExp,
+		self::$classReplaceExp,
 			'jsClassLoader::preg_classPathLoader',
 			$fileContent
 		);
@@ -119,7 +135,7 @@ class jsClassLoader {
 	 */
 	public static function getLanguageJs( $langKey = 'en' ){
 		global $wgMwEmbedDirectory;
-		$path =  $wgMwEmbedDirectory . 'languages/classes/Language' . ucfirst( $langKey ) . '.js';
+		$path =  $wgMwEmbedDirectory . '/languages/classes/Language' . ucfirst( $langKey ) . '.js';
 		if( is_file( $path ) ){
 			$languageJs = file_get_contents( $path );
 			return $languageJs;
@@ -157,10 +173,16 @@ class jsClassLoader {
 	}
 
 	/**
+	 * Get the list of enabled modules
+	 */
+	public static function getModuleList(){
+		self::loadClassPaths();
+		return self::$moduleList;
+	}
+	/**
 	 * Build a list of components to be included with mwEmbed
 	 */
 	private static function preg_buildComponentList( $jsvar ){
-		global $wgMwEmbedDirectory;
 		if(! isset( $jsvar[1] )){
 			return false;
 		}
@@ -188,8 +210,10 @@ class jsClassLoader {
 		foreach( $moduleSet as $na => $moduleName ){
 			$moduleName = str_replace( array( '../', '\'', '"'), '', trim( $moduleName ));
 			// Check if there is there are module loader files
-			if( is_file( $wgMwEmbedDirectory . 'modules/' . $moduleName . '/loader.js' )){
+			if( is_file( $wgMwEmbedDirectory . '/modules/' . $moduleName . '/loader.js' )){
 				array_push( self::$moduleList, $moduleName );
+			} else {
+				// Not valid module ( missing loader.js )
 			}
 		}
 		// Enabled modules is not reused.
@@ -197,12 +221,12 @@ class jsClassLoader {
 	}
 	/**
 	 * Adds javascript autoloader class names and paths
-	 * to $wgJSAutoloadClasses global
+	 * to $wgScriptLoaderNamedPaths global
 	 *
 	 * @param string $jvar Json string with class name list
 	 */
 	private static function preg_classPathLoader( $jsvar ) {
-		global $wgJSAutoloadClasses;
+		global $wgScriptLoaderNamedPaths;
 		if ( !isset( $jsvar[1] ) ) {
 			return false;
 		}
@@ -211,7 +235,7 @@ class jsClassLoader {
 		foreach ( $jClassSet as $jClass => $jPath ) {
 			// Strip $ from class (as they are stripped on URL request parameter input)
 			$jClass = str_replace( '$', '', $jClass );
-			$wgJSAutoloadClasses[ $jClass ] =  self::$directoryContext . $jPath;
+			$wgScriptLoaderNamedPaths[ $jClass ] =  self::$directoryContext . '/' . $jPath;
 		}
 	}
 }
