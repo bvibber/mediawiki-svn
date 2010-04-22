@@ -22,10 +22,10 @@ $wgExtensionCredits["other"][] = array(
 $wgAutoloadClasses["ParseEngine"] = dirname( __FILE__ ) . "/ParseEngine.php";
 
 $wgTheParserWiki = new ParserWiki();
-$wgHooks["ParserBeforeStrip"][] = array($wgTheParserWiki, "callFromParse");
+$wgHooks["ParserBeforeStrip"][] = array( $wgTheParserWiki, "callFromParse" );
 
-define ( "NS_GRAMMAR" , 91628);
-define ( "NS_GRAMMAR_TALK" , 91629);
+define ( "NS_GRAMMAR" , 91628 );
+define ( "NS_GRAMMAR_TALK" , 91629 );
 $wgExtraNamespaces[NS_GRAMMAR] = "Grammar";
 $wgExtraNamespaces[NS_GRAMMAR_TALK] = "Grammar_talk";
 
@@ -36,20 +36,20 @@ class ParserWiki {
 		$this->mEngines = array();
 	}
 
-	function callFromParse($unUsed, &$text) {
+	function callFromParse( $unUsed, &$text ) {
 		global $wgParserWikiGrammar;
 		$engine = $this->mEngines[$wgParserWikiGrammar];
-		if ($engine == NULL) {
-			$revision = Revision::newFromTitle(Title::newFromText($wgParserWikiGrammar, NS_GRAMMAR));
+		if ( $engine == NULL ) {
+			$revision = Revision::newFromTitle( Title::newFromText( $wgParserWikiGrammar, NS_GRAMMAR ) );
 			$grammar = new DOMDocument();
-			if ($revision == NULL || ! $grammar->loadXML($revision->getText(), LIBXML_NOBLANKS)) {
+			if ( $revision == NULL || ! $grammar->loadXML( $revision->getText(), LIBXML_NOBLANKS ) ) {
 				return TRUE;
 			}
-			$engine = new ParseEngine($grammar);
+			$engine = new ParseEngine( $grammar );
 			$this->mEngines[$wgParserWikiGrammar] = $engine;
 		}
-		$parseTree = $engine->parse($text);
-		if ($parseTree == NULL) {
+		$parseTree = $engine->parse( $text );
+		if ( $parseTree == NULL ) {
 			return TRUE;
 		}
 		$text = $parseTree->saveXML();
