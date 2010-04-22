@@ -1,5 +1,6 @@
 package de.brightbyte.wikiword.disambig;
 
+import de.brightbyte.data.ByteSequence;
 import de.brightbyte.data.ByteString;
 import de.brightbyte.data.CodecException;
 import de.brightbyte.data.LabeledVector;
@@ -35,7 +36,7 @@ public class IntFeatureCodec implements BlockCodec<LabeledVector<Integer>> {
 		return v;
 	}
 
-	public LabeledVector<Integer> decode(ByteString b) throws CodecException {
+	public LabeledVector<Integer> decode(ByteSequence b) throws CodecException {
 		return decode(b.getBytes(), 0, b.length());
 	}
 

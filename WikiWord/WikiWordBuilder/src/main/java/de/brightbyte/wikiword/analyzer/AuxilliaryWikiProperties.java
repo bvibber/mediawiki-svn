@@ -58,7 +58,7 @@ public class AuxilliaryWikiProperties {
 		wiki = wiki.toLowerCase().replace('-', '_');
 		
 		ClassLoader cl = AuxilliaryWikiProperties.class.getClassLoader();
-		String basePackage = "de.brightbyte.wikiword.wikis";
+		String basePackage = "de.brightbyte.wikiword.wikis"; //TODO: extra packages from Tweaks 
 		
 		while (true) {
 			String n = prefix+"_"+wiki+".properties";

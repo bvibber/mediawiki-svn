@@ -460,7 +460,7 @@ public class ConceptImporter extends AbstractImporter {
 		return rcId;
 	}
 	
-	protected int storeAlias(WikiPage analyzerPage, int rcId) throws PersistenceException {
+	protected void storeAlias(WikiPage analyzerPage, int rcId) throws PersistenceException {
 		String name = analyzerPage.getConceptName();
 		String rcName = analyzerPage.getResourceName();
 		String text = analyzerPage.getText().toString();
@@ -509,17 +509,20 @@ public class ConceptImporter extends AbstractImporter {
 				//       C:B is Category about (A)
 				//       C:A is Redirect to C:B
 				//       in that case, we really just need C:A <about> (A), not C:A <alias> C:B. but how?
+				//       what if C:A is parsed *before* A? the concept record would need to be updated...
 				
-				conceptId = store.storeConcept(rcId, name, ConceptType.ALIAS);  //FIXME: a concept with that name may already exist! if the concept-store doesn't dedupe, this will fail!
+				//conceptId = store.storeConcept(rcId, name, ConceptType.ALIAS);  //FIXME: a concept with that name may already exist! if the concept-store doesn't dedupe, this will fail!
 				storePageTerms(rcId, analyzerPage.getTitleTerms(), -1, tgtConcept, ExtractionRule.TERM_FROM_REDIRECT );
-				storeConceptAlias(rcId, conceptId, name, -1, tgtConcept, AliasScope.REDIRECT);
+				storeConceptAlias(rcId, -1, name, -1, tgtConcept, AliasScope.REDIRECT);
 				if (link.getSection()!=null) storeSection(rcId, link.getTargetConcept().toString(), link.getTargetConceptPage().toString());
+				
+				//NOTE: conceptId is not set!
 			}
 		} else if (link.getInterwiki()!=null ) {
 			out.info("skipped uninterresting redirect "+rcName+" -> "+link);
 		}
 		
-		return conceptId;
+		//return conceptId;
 	}
 	
 	public static void declareOptions(Arguments args) {

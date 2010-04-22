@@ -83,6 +83,13 @@ dbstore.idManager=false
 #dbstore.auxFileDir="/tmp" 
 dbstore.idManager.bufferSize=16384 
 
+#idStoreParameters:
+# basic: string (default), utf8, or utf16
+# for utf8 and utf16: md5, sha1, or huffman (or nothing)
+# for utf8 and utf16: wrap8, fold64
+# "utf16+md5+fold64" uses about half as much memory as "string"
+#dbstore.idManager.idStoreParameters="utf16+md5+fold64"
+
 ### CycleFinder #####################################
 dbstore.CycleFinder.levelWarningThreshold=32
 dbstore.CycleFinder.degreeWarningThreshold=1024

@@ -10,8 +10,12 @@ import java.util.Random;
 
 import javax.sql.DataSource;
 
+import sun.security.action.GetLongAction;
+
 import de.brightbyte.application.Agenda;
 import de.brightbyte.data.ChunkyBitSet;
+import de.brightbyte.data.Functor;
+import de.brightbyte.data.KeyValueStore;
 import de.brightbyte.data.Pair;
 import de.brightbyte.data.PersistentIdManager;
 import de.brightbyte.data.cursor.CursorProcessor;
@@ -171,8 +175,11 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 				log("storing ID mappings in "+f);
 				int bsz = tweaks.getTweak("dbstore.idManager.bufferSize", 16*1024);
 				
-				Map<String, Integer> map = NameMaps.newMap(tweaks.getTweak("dbstore.idManager.mapType", "hash"));
-				idManager = new PersistentIdManager(map, f, "UTF-8", bsz);
+				KeyValueStore<String, Integer> store = NameMaps.newStore(tweaks.getTweak("dbstore.idManager.idStoreParameters", "string"), getCorpus().getLanguage());
+				
+				if (store==null) idManager = new PersistentIdManager(f, bsz);
+				else idManager = new PersistentIdManager(store, f, bsz); //XXX: ugly cast. 
+				
 			} catch (SQLException e) {
 				throw new PersistenceException(e);
 			}
@@ -196,9 +203,9 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 			} else {
 				log("building persisted ID map..."+" memory used: "+(Runtime.getRuntime().totalMemory() -  Runtime.getRuntime().freeMemory())/1024+"KB");
 				DataCursor<Pair<String, Integer>> cursor = getConceptIdAssociationCursor();
-				idManager.slurp(cursor);
+				int c = idManager.slurp(cursor);
 				cursor.close();
-				log("IP map size: "+idManager.size()+"; Max persisted ID: "+idManager.getMaxId()+"; memory used: "+(Runtime.getRuntime().totalMemory() -  Runtime.getRuntime().freeMemory())/1024+"KB");
+				log("ID entries loaded: "+c+"; Max persisted ID: "+idManager.getMaxId()+"; memory used: "+(Runtime.getRuntime().totalMemory() -  Runtime.getRuntime().freeMemory())/1024+"KB");
 			}
 		}
 	}
@@ -816,6 +823,16 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 				endTask("finishMissingConcpets", "buildMissingConcepts:about", n+" concepts");
 			}
 			
+			if (beginTask("finishMissingConcpets", "buildMissingConcepts:alias.source")) {
+				int n = buildMissingConcepts(aliasTable, "source", "source_name");     
+				endTask("finishMissingConcpets", "buildMissingConcepts:alias.source", n+" concepts");
+			}
+
+			if (beginTask("finishMissingConcpets", "buildMissingConcepts:alias.target")) {
+				int n = buildMissingConcepts(aliasTable, "target", "target_name");     
+				endTask("finishMissingConcpets", "buildMissingConcepts:alias.target", n+" concepts");
+			}
+
 			if (beginTask("finishMissingConcpets", "buildMissingConcepts:link")) {
 				int n = buildMissingConcepts(linkTable, "target", "target_name");     
 				endTask("finishMissingConcpets", "buildMissingConcepts:link", n+" concepts");

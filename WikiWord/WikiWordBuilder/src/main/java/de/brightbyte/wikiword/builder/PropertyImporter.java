@@ -58,15 +58,14 @@ public class PropertyImporter extends ConceptImporter {
 			rcId = storeResource(rcName, rcType, timestamp);	
 			
 			if (rcType == ResourceType.REDIRECT) {
-				cid = storeAlias(analyzerPage, rcId);
+				storeAlias(analyzerPage, rcId);
+				cid = -1; //XXX: hack!
 			} else {
 				cid = storeConcept(rcId, name, ctype);
 			}
 			
 			storeSuffixInfo(analyzerPage, rcId, cid, name);
-		} 
-		
-		if (rcType == ResourceType.ARTICLE || rcType == ResourceType.SUPPLEMENT) {
+		}  else if (rcType == ResourceType.ARTICLE || rcType == ResourceType.SUPPLEMENT) {
 			conceptTracker.step();
 
 			MultiMap<String, CharSequence, Set<CharSequence>> properties = analyzerPage.getProperties();

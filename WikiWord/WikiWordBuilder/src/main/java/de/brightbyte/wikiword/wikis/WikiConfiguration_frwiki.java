@@ -25,8 +25,9 @@ public class WikiConfiguration_frwiki extends WikiConfiguration {
 		stripClutterManglers.add( new RegularExpressionMangler(templatePattern("romain|rom|rom-min|rom-maj|APIb|IPA", 1, true), "$2"));
 		stripClutterManglers.add( new RegularExpressionMangler(templatePattern("0", 0, true), " "));
 		stripClutterManglers.add( new RegularExpressionMangler(templatePattern("avjc", 0, false), "av. J.-C."));
-		stripClutterManglers.add( new RegularExpressionMangler(templatePattern("[XVI]+es", 0, false), "$1"));
-		stripClutterManglers.add( new RegularExpressionMangler(templatePattern("formatnum", 1, true), "$2"));
+		stripClutterManglers.add( new RegularExpressionMangler(templatePattern("[XVI]+es|\u00e8|\u00e8me|num\u00e9ro|n\u00b0|gr|r|lle|2|3", 0, false), "$1"));
+		stripClutterManglers.add( new RegularExpressionMangler(templatePattern("formatnum|nobr|sub|p", 1, true), "$2"));
+		stripClutterManglers.add( new RegularExpressionMangler(templatePattern("unit\u00e9|fchim|nombre|-m-", 2, true), "$2$3"));
 		stripClutterManglers.add( new RegularExpressionMangler(templatePattern("exp|me|gr|lle|\\d", 1, false), "<sup>$2</sup>"));
 		stripClutterManglers.add( new RegularExpressionMangler(templatePattern("ind", 1, false), "<sub>$2</sub>"));
 		stripClutterManglers.add( new RegularExpressionMangler(templatePattern("s(?: mini)?-?", 2, false), "$1$2 si\u00e8cle"));
