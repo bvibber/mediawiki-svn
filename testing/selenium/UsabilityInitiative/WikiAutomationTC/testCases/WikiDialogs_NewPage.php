@@ -1,0 +1,168 @@
+<?php
+require_once 'WikiDialogs_TC.php';
+/**
+ * Description of WikiNewPageDialogs
+ *
+ * @author bhagyag
+ */
+class WikiDialogs_NewPage extends WikiDialogs_TC {
+    // Set up the testing environment
+    function setup(){
+        parent::setUp();
+    }
+
+     // Add a internal link and verify
+    function testInternalLink(){
+       parent::doOpenLink();
+       parent::doLogin();
+       $this->open("/deployment-en/Main_Page");
+       $this->waitForPageToLoad("30000");
+       parent::doCreateNewPageTemporary();
+       parent::verifyInternalLink();
+       parent::doLogout();
+    }
+
+     // Add a internal link with different display text and verify
+    function testInternalLinkWithDisplayText(){
+       parent::doOpenLink();
+       parent::doLogin();
+       $this->open("/deployment-en/Main_Page");
+       $this->waitForPageToLoad("30000");
+       parent::doCreateNewPageTemporary();
+       parent::verifyInternalLinkWithDisplayText();
+       parent::doLogout();
+    }
+
+     // Add a internal link with blank display text and verify
+    function testInternalLinkWithBlankDisplayText(){
+       parent::doOpenLink();
+       parent::doLogin();
+       $this->open("/deployment-en/Main_Page");
+       $this->waitForPageToLoad("30000");
+       parent::doCreateNewPageTemporary();
+       parent::verifyInternalLinkWithBlankDisplayText();
+       parent::doLogout();
+    }
+
+    // Add external link and verify
+    function testExternalLink(){
+       parent::doOpenLink();
+       parent::doLogin();
+       $this->open("/deployment-en/Main_Page");
+       $this->waitForPageToLoad("30000");
+       parent::doCreateNewPageTemporary();
+       parent::verifyExternalLink();
+       parent::doLogout();
+    }
+
+     // Add external link with different display text and verify
+    function testExternalLinkWithDisplayText(){
+       parent::doOpenLink();
+       parent::doLogin();
+       $this->open("/deployment-en/Main_Page");
+       $this->waitForPageToLoad("30000");
+       parent::doCreateNewPageTemporary();
+       parent::verifyExternalLinkWithDisplayText();
+       parent::doLogout();
+    }
+
+     // Add external link with Blank display text and verify
+    function testExternalLinkWithBlankDisplayText(){
+       parent::doOpenLink();
+       parent::doLogin();
+       $this->open("/deployment-en/Main_Page");
+       $this->waitForPageToLoad("30000");
+       parent::doCreateNewPageTemporary();
+       parent::verifyExternalLinkWithBlankDisplayText();
+       parent::doLogout();
+    }
+
+    // Add a table and verify
+    function testCreateTable(){
+       parent::doOpenLink();
+       parent::doLogin();
+       $this->open("/deployment-en/Main_Page");
+       $this->waitForPageToLoad("30000");
+       parent::doCreateNewPageTemporary();
+       parent::verifyCreateTable();
+       parent::doLogout();
+    }
+
+    // Add a table and verify only with head row
+    function testCreateTableWithHeadRow(){
+       parent::doOpenLink();
+       parent::doLogin();
+       $this->open("/deployment-en/Main_Page");
+       $this->waitForPageToLoad("30000");
+       parent::doCreateNewPageTemporary();
+       parent::verifyCreateTableWithHeadRow();
+       parent::doLogout();
+    }
+
+    // Add a table and verify only with borders
+    function testCreateTableWithBorders(){
+       parent::doOpenLink();
+       parent::doLogin();
+       $this->open("/deployment-en/Main_Page");
+       $this->waitForPageToLoad("30000");
+       parent::doCreateNewPageTemporary();
+       parent::verifyCreateTableWithBorders();
+       parent::doLogout();
+    }
+
+    // Add a table and verify only with sort row
+    function testCreateTableWithSortRow(){
+       parent::doOpenLink();
+       parent::doLogin();
+       $this->open("/deployment-en/Main_Page");
+       $this->waitForPageToLoad("30000");
+       parent::doCreateNewPageTemporary();
+       parent::verifyCreateTableWithSortRow();
+       parent::doLogout();
+    }
+
+    // Add a table without headers,borders and sort rows
+    function testCreateTableWithNoSpecialEffects(){
+       parent::doOpenLink();
+       parent::doLogin();
+       $this->open("/deployment-en/Main_Page");
+       $this->waitForPageToLoad("30000");
+       parent::doCreateNewPageTemporary();
+       parent::verifyCreateTableWithNoSpecialEffects();
+       parent::doLogout();
+    }
+
+     // Verify the replace all function on Search and Replace
+     function testTextSearchReplaceAll(){
+       parent::doOpenLink();
+       parent::doLogin();
+       $this->open("/deployment-en/Main_Page");
+       $this->waitForPageToLoad("30000");
+       parent::doCreateNewPageTemporary();
+       parent::verifyTextSearchReplaceAll();
+       parent::doLogout();
+     }
+
+      // Verify the replace next function on Search and Replace
+    function testTextSearchReplaceNext(){
+       parent::doOpenLink();
+       parent::doLogin();
+       $this->open("/deployment-en/Main_Page");
+       $this->waitForPageToLoad("30000");
+       parent::doCreateNewPageTemporary();
+       parent::verifyTextSearchReplaceNext();
+       parent::doLogout();
+    }
+
+    // When user click on find, text highlight on back which is not captured in Selenium directly. */
+    function testTextSearchFindNext(){
+       parent::doOpenLink();
+       parent::doLogin();
+       $this->open("/deployment-en/Main_Page");
+       $this->waitForPageToLoad("30000");
+       parent::doCreateNewPageTemporary();
+       parent::verifyTextSearchFindNext();
+       parent::doLogout();
+    }
+}
+?>
