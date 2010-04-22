@@ -12,7 +12,7 @@ class RPEDHooks {
 		global $wgExtNewTables;
 		
 		$wgExtNewTables[] = array(
-			'blanked_pages',
+			'rped_page',
 			dirname( __FILE__ ) . '/rpedtable.sql'
 		);
 		return true;

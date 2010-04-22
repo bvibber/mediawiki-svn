@@ -26,7 +26,7 @@ EOT;
 	exit( 1 );
 }
 
-$wgExtensionCredits['specialpage'][] = array(
+$wgExtensionCredits['other'][] = array(
 	'name' => 'Remote Page Existence Detection',
 	'author' => 'Tisane',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:RemotePageExistenceDetection',
@@ -37,7 +37,6 @@ $wgExtensionCredits['specialpage'][] = array(
 $dir = dirname( __FILE__ ) . '/';
 $wgAutoloadClasses['RPEDHooks'] = $dir . 'RPED.hooks.php';
 $wgExtensionMessagesFiles['RPED'] = $dir . 'RPED.i18n.php';
-$wgExtensionAliasesFiles['RPED'] = $dir . 'RPED.alias.php';
 
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'RPEDHooks::RPEDCreateTable';
 $wgHooks['LinkBegin'][] = 'RPEDHooks::wikipediaLink';
