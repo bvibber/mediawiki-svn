@@ -54,7 +54,7 @@ class PagedTiffHandler extends ImageHandler {
 	}
 
 	function isEnabled() { return true; }
-	function mustRender() { return true; }
+	function mustRender( $img ) { return true; }
 	function isMultiPage( $img = false ) {
 		if ( !$img ) return true;
 		$meta = unserialize( $img->metadata );
