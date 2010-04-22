@@ -525,8 +525,7 @@ ctrlBuilder.prototype = {
 			} );
 			// Add a special absolute overlay for hover ( to keep menu displayed 
 			$interface.hover(
-				function(){	
-					mw.log("CALL HOVER");
+				function(){						
 					// Show controls with a set timeout ( avoid fade in fade out on short mouse over )				
 					setTimeout( function() {
 						if( mouseIn ){

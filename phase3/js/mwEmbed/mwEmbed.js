@@ -787,11 +787,10 @@ var MW_EMBED_VERSION = '1.1f';
 			
 			// Issue the request to load the class (include class name in result callback:					
 			mw.getScript( scriptRequest, function( scriptRequest ) {
-				
 				// If its a "syle sheet" manually set its class to true
-				var ext = scriptRequest.substr( scriptRequest.lastIndexOf( '.' ), 4 ).toLowerCase();
+				var ext = scriptRequest.substr( scriptRequest.split('?')[0].lastIndexOf( '.' ), 4 ).toLowerCase();
 				if( ext == '.css' &&	className.substr(0,8) == 'mw.style' ){				
-					window [ className ] = true;
+					mw.style[ className.substr( 8 ) ] = true;
 				}
 				
 				// Debug output				
