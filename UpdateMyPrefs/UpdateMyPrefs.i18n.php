@@ -68,9 +68,12 @@ $messages['ca'] = array(
 
 /** Czech (Česky)
  * @author Kuvaly
+ * @author Mormegil
  */
 $messages['cs'] = array(
 	'prefs-updates' => 'Aktualizace',
+	'updatemyprefs-desc' => 'Uživatelské nastavení umožňující uvést, že uživatel chce pravidelné aktualizace uživatelského rozhraní, kdykoli se stanou dostupné',
+	'updatemyprefs-label-message' => 'Automaticky aktualizovat moje nastavení na nové implicitní hodnoty a použití nových nástrojů, jakmile se stanou dostupné',
 );
 
 /** German (Deutsch) */
