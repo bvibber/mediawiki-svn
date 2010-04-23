@@ -25,7 +25,7 @@ class ListredirectsPage extends QueryPage {
 
 	function getQueryInfo() {
 		return array(
-			'tables' => array( 'page AS p1', 'redirect', 'page AS p2' ),
+			'tables' => array( 'page p1', 'redirect', 'page p2' ),
 			'fields' => array( 'p1.page_namespace AS namespace',
 					'p1.page_title AS title',
 					'rd_namespace',
@@ -34,7 +34,7 @@ class ListredirectsPage extends QueryPage {
 			'conds' => array( 'p1.page_is_redirect' => 1 ),
 			'join_conds' => array( 'redirect' => array(
 					'LEFT JOIN', 'rd_from=p1.page_id' ),
-				'page AS p2' => array( 'LEFT JOIN', array(
+				'page p2' => array( 'LEFT JOIN', array(
 					'p2.page_namespace=rd_namespace',
 					'p2.page_title=rd_title' ) ) )
 		);

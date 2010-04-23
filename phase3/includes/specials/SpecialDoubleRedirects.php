@@ -27,9 +27,9 @@ class DoubleRedirectsPage extends PageQueryPage {
 	function reallyGetQueryInfo( $namespace = null, $title = null ) {
 		$limitToTitle = !( $namespace === null && $title === null );
 		$retval = array (
-			'tables' => array ( 'redirect AS ra', 'redirect AS rb',
-					'page AS pa', 'page AS pb',
-					'page AS pc' ),
+			'tables' => array ( 'redirect ra', 'redirect rb',
+					'page pa', 'page pb',
+					'page pc' ),
 			'fields' => array ( 'pa.page_namespace AS namespace',
 					'pa.page_title AS title',
 					'pb.page_namespace AS nsb',
