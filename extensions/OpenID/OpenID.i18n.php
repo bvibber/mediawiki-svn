@@ -2870,6 +2870,7 @@ $messages['kn'] = array(
 	'openidoptional' => 'ಐಚ್ಛಿಕ',
 	'openidlanguage' => 'ಭಾಷೆ',
 	'openidtimezone' => 'ಸಮಯ ವಲಯ',
+	'openid-urls-delete' => 'ಅಳಿಸು',
 );
 
 /** Korean (한국어)

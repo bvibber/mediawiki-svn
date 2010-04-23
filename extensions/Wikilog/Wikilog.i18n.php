@@ -3433,6 +3433,7 @@ $messages['kn'] = array(
 	'wikilog-form-preview' => 'ಮುನ್ನೋಟ:',
 	'wikilog-show-published' => 'ಪ್ರಕಟಿತ',
 	'wikilog-preview' => 'ಮುನ್ನೋಟ',
+	'wikilog-delete-lc' => 'ಅಳಿಸು',
 	'wikilog-history-lc' => 'ಇತಿಹಾಸ',
 );
 

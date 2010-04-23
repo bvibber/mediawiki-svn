@@ -597,6 +597,7 @@ $messages['km'] = array(
  * @author Nayvik
  */
 $messages['kn'] = array(
+	'inspectcache-delete' => 'ಅಳಿಸು',
 	'inspectcache-list' => 'ಪಟ್ಟಿ',
 );
 

@@ -795,6 +795,13 @@ $messages['km'] = array(
 	'deletebatch-select-yourself' => 'អ្នក',
 );
 
+/** Kannada (ಕನ್ನಡ)
+ * @author Nayvik
+ */
+$messages['kn'] = array(
+	'deletebatch-delete' => 'ಅಳಿಸು',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

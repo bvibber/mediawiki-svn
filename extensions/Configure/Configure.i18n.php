@@ -1184,6 +1184,7 @@ $messages['br'] = array(
 	'configure-ext-doc' => 'Gwelet an teuliadoù enlinenn',
 	'configure-ext-schemachange' => "'''Diwallit :''' an astenn-mañ en deus ezhomm un hizivadenn eus ar bank roadennoù evit mon en-dro en un doare reizh !",
 	'configure-ext-settings' => 'Arventennoù',
+	'configure-ext-settings-dep-errors' => "Ne c'hell ket bezañ diellaouet an astenn-mañ dre {{PLURAL:$1|m'en deus an arventenn|m'o deus an arventennoù}} un dalvoudenn direizh :",
 	'configure-ext-settings-dep-error' => '$1: talvoud rekis : $2, talvoud red : $3',
 	'configure-ext-use-extension' => 'Ober gant an astenn-mañ',
 	'configure-ext-use' => 'Implijout',
@@ -5435,6 +5436,7 @@ $messages['km'] = array(
  */
 $messages['kn'] = array(
 	'configure-form-reason' => 'ಕಾರಣ:',
+	'configure-js-remove' => 'ಅಳಿಸು',
 	'configure-section-pages' => 'ಪುಟಗಳು',
 	'configure-section-email' => 'ಇ-ಅಂಚೆ',
 	'configure-section-timezone' => 'ಸಮಯ ವಲಯ',

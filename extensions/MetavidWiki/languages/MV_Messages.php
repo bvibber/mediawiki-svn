@@ -7689,6 +7689,22 @@ opura a peul vorèj <a href="$3">Gionté ël fluss</a>.',
 	'mv_tool_embed' => 'Ancastra',
 	'mv_tool_embed_title' => "Ancastra opsion për ël corent segment d'arcesta",
 	'mv_tool_overlay' => 'Covërtura dlë stamp',
+	'mv_tool_overlay_title' => 'Stamp basà su covërture ëd metadat',
+	'mv_results_found' => 'Arzultà ëd video da <b>$1</b> a <b>$2</b> ëd <b>$3</b>',
+	'mv_tool_mang_layers' => 'Gestì livej',
+	'mv_update_layers' => 'Modifiché livej',
+	'mv_watch_clip' => 'Speté clip',
+	'mv_close_clip' => 'Saré clip',
+	'mv_improve_transcript' => 'Mejoré transcript',
+	'mv_people_matches' => 'Confront ëd përson-e',
+	'mv_category_matches' => 'Confront ëd categorìe',
+	'mv_bill_matches' => 'Confront ëd fature',
+	'mv_interest_group_matches' => "Confront ëd partìe d'antëresse",
+	'mv_click_to_edit' => 'Sgnaca për modifiché',
+	'ht_en' => 'Trascrission',
+	'ht_en_desc' => "Trascrission anglèisa.
+Sta sòrt ëd covërtura-sì a l'é për test parlà",
+	'anno_en' => 'Anotassion e categorìe',
 );
 
 /** Pashto (پښتو)

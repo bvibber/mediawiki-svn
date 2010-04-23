@@ -350,11 +350,15 @@ $messages['ca'] = array(
 
 /** Czech (Česky)
  * @author Kuvaly
+ * @author Mormegil
  */
 $messages['cs'] = array(
+	'prefswitch' => 'Přepínač nastavení Iniciativy použitelnosti',
+	'prefswitch-desc' => 'Umožňuje uživatelům přepínat sady nastavení',
 	'prefswitch-survey-true' => 'Ano',
 	'prefswitch-survey-false' => 'Ne',
 	'prefswitch-survey-submit-off' => 'Vypnout nové funkce',
+	'prefswitch-survey-cancel-off' => 'Pokud chcete i nadále používat nové vlastnosti, můžete se vrátit na stránku $1.',
 	'prefswitch-survey-submit-feedback' => 'Odeslat zpětnou vazbu',
 	'prefswitch-survey-cancel-feedback' => 'Pokud nechcete poskytnout zpětnou vazbu, můžete se vrátit na $1.',
 	'prefswitch-survey-question-likedislike' => 'Co se vám na Betě líbilo? Co se vám na Betě nelíbilo?',

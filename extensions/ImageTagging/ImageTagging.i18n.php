@@ -1106,6 +1106,7 @@ $messages['km'] = array(
  */
 $messages['kn'] = array(
 	'imagetagging-imghistory' => 'ಇತಿಹಾಸ',
+	'imagetagging-images' => 'ಚಿತ್ರಗಳು',
 );
 
 /** Krio (Krio)

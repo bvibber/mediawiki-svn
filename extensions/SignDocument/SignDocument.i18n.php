@@ -153,6 +153,7 @@ $messages['el'] = array(
 $messages['eo'] = array(
 	'signaturelogpage' => 'Protokolo pri subskriboj',
 	'signaturelogentry' => 'subskribas la dokumenton $1',
+	'right-sigadmin' => 'Administri subskribadon de dokumentoj',
 );
 
 /** Spanish (Español)

@@ -140,6 +140,13 @@ $messages['el'] = array(
 	'pf-header-approve' => 'Έγκριση',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'pf-header-edit' => 'Redakti ligilon',
+);
+
 /** Spanish (Español)
  * @author Pertile
  */

@@ -539,6 +539,7 @@ $messages['br'] = array(
 	'hiderevision-status' => 'Adweladenn $1 : $2',
 	'hiderevision-success' => 'Diellaouet ha dilammet eo bet.',
 	'hiderevision-error-missing' => "N'eo ket bet kavet er bank roadennoù.",
+	'hiderevision-error-delete' => "Ne c'hell ket bezañ diellaouet ; ha diverket e vefe bet ar bajenn ?",
 	'hiderevision-archive-status' => 'Adweladennoù dilammet eus $1 : $2',
 	'oversight-log-hiderev' => "en deus dilemet ur c'hemm eus $1",
 	'oversight' => 'Oversight',

@@ -561,6 +561,7 @@ $messages['br'] = array(
 	'contrib-hist-previous' => 'Donezonoù diwezhañ',
 	'contrib-hist-anonymous' => 'Dizanv',
 	'contributionstatistics' => 'Stadegoù an degasadennoù',
+	'contribstats-desc' => "Diskouez stadegoù an degasadennoù bet graet d'ar Wikimedia Foundation",
 	'contribstats-daily-totals' => '{{PLURAL:$1|Hollad evit hiziv|Hollad dre zevez evit ar $1 devez ziwezhañ}}',
 	'contribstats-monthly-totals' => '{{PLURAL:$1|Hollad evit ar miz-mañ|Hollad dre miz evit ar $1 miz ziwezhañ}}',
 	'contribstats-month-range-totals' => '{{PLURAL:$1|Hollad evit $1 miz|Holladoù miziek evit $1 miz}}',
@@ -2714,7 +2715,7 @@ $messages['ko'] = array(
 	'fundraiserstats-tab-maximums' => '최댓값 (USD)',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -3274,7 +3275,7 @@ $messages['nl'] = array(
 	'fundraiserstats-tab-averages' => 'Gemiddelden (USD)',
 	'fundraiserstats-tab-maximums' => 'Maxima (USD)',
 	'fundraiserstats-tab-ytd' => 'Jaar tot op heden (USD)',
-	'specialpages-group-contribution' => 'Giften/Fondsenwervingsactie',
+	'specialpages-group-contribution' => 'Bijdrage',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)

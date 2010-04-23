@@ -1086,13 +1086,16 @@ $messages['eo'] = array(
 	'sign-viewfield-email' => 'Retadreso',
 	'sign-viewfield-age' => 'Aĝo',
 	'sign-viewfield-options' => 'Preferoj',
+	'sign-sigadmin-currentlyopen' => 'Subskribado estas nune ŝalta por ĉi tiu dokumento.',
 	'sign-sigadmin-close' => 'Malŝalti subskribadon',
+	'sign-sigadmin-currentlyclosed' => 'Subskribado estas nune malŝalta por ĉi tiu dokumento.',
 	'sign-sigadmin-open' => 'Ŝalti subskribadon',
 	'sign-signatures' => 'Subskriboj',
 	'sign-sigadmin-closesuccess' => 'Subskribado estis sukcese malŝaltita.',
 	'sign-sigadmin-opensuccess' => 'Subskribado estis sukcese ŝaltita.',
 	'sign-viewsignatures' => 'vidi subskribojn',
 	'sign-closed' => 'fermita',
+	'sign-error-closed' => 'Subskribado de ĉi tiu dokumento estas nune malŝalta.',
 	'sig-anonymous' => "''Anonima''",
 	'sig-private' => "''Privata''",
 	'sign-sigdetails' => 'Subskribaj detaloj',
@@ -2472,6 +2475,7 @@ $messages['kn'] = array(
 	'sign-viewfield-country' => 'ದೇಶ',
 	'sign-viewfield-email' => 'ಇ-ಅಂಚೆ',
 	'sign-viewfield-age' => 'ವಯಸ್ಸು',
+	'sign-signatures' => 'ಸಹಿಗಳು',
 );
 
 /** Kinaray-a (Kinaray-a)

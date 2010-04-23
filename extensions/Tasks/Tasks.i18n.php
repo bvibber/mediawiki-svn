@@ -2148,6 +2148,7 @@ $messages['km'] = array(
  * @author Nayvik
  */
 $messages['kn'] = array(
+	'tasks_delete' => 'ಅಳಿಸು',
 	'tasks_search_status' => 'ಸ್ಥಾನಮಾನ',
 );
 

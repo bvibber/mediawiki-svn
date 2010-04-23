@@ -467,6 +467,7 @@ $messages['br'] = array(
 	'ogg-short-general' => 'Restr media Ogg $1, $2',
 	'ogg-long-audio' => '(Restr son Ogg $1, pad $2, $3)',
 	'ogg-long-video' => '(Restr video Ogg $1, pad $2, $4×$5 piksel, $3)',
+	'ogg-long-multiplexed' => '(Restr Ogg klevet/video liesplezhet $1, pad $2, $4×$5 piksel, $3 hollad)',
 	'ogg-long-general' => '(Restr media Ogg, pad $2, $3)',
 	'ogg-long-error' => '(Restr ogg direizh : $1)',
 	'ogg-play' => 'Lenn',

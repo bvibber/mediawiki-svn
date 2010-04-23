@@ -168,6 +168,9 @@ $messages['el'] = array(
  */
 $messages['eo'] = array(
 	'sendmailtowiki-inemail' => 'Dediĉita retadreso:',
+	'sendmailtowiki-inpin' => 'Persona identignumero:',
+	'sendmailtowiki-err-pinlength' => 'Persona identignumero nepre havu precize 5 numerojn.',
+	'sendmailtowiki-err-invalidpin' => 'Malvalida persona identignumero. Atingo malpermesigita.',
 );
 
 /** Spanish (Español)
