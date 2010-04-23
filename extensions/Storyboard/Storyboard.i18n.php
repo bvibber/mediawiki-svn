@@ -44,7 +44,7 @@ It might have been removed.',
 	'storyboard-authoroccupation' => 'Author occupation',
 	'storyboard-authoremail' => 'Author e-mail address',
 	'storyboard-thestory' => 'The story',
-	'storyboard-storystate' => 'Story state',
+	'storyboard-storystate' => 'State:',
 
 	// Special:StorySubmission
 	'storyboard-submissioncomplete' => 'Submission complete',
@@ -63,7 +63,7 @@ It might have been removed.',
 	'storyboard-photo' => 'Have a photo of yourself?
 Why not share it?',
 	'storyboard-email' => 'Your e-mail address',
-	'storyboard-storytitle' => 'A short, descriptive title',
+	'storyboard-storytitle' => 'A short, descriptive title:',
 	'storyboard-agreement' => 'I agree with the publication and use of this story under the terms of the [http://creativecommons.org/licenses/by-sa/3.0/ Creative Commons Attribution/Share-Alike License].',
 	'storyboard-charsleft' => '($1 {{PLURAL:$1|character|characters}} left)',
 	'storyboard-cannotbelonger' => 'Your story is <b>$1</b> {{PLURAL:$1|character|characters}} too long!',
