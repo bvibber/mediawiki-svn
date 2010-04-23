@@ -9,13 +9,17 @@
 	$( document ).ready( function() {
 		$( '.storyboard' ).ajaxScroll( {
 			updateBatch: updateStoryboard,
+			maxOffset: 500,
 			batchSize: 4,
-			batchNum: 2
+			batchNum: 2,
+			batchClass: "batch",
+			boxClass: "storyboard-box",
+			emptyBatchClass: "storyboard-empty",
+			scrollPaneClass: "scrollpane"
 		} );
 	} );
 	
 	function updateStoryboard( $storyboard ) {
-		// TODO: fix eternal load, broken when swicthing from .load to .getJSON.	
 		$.getJSON( wgScriptPath + '/api.php',
 			{
 				'action': 'query',

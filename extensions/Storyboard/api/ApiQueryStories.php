@@ -54,7 +54,8 @@ class ApiQueryStories extends ApiQueryBase {
 			'story_author_image',
 			'story_title',
 			'story_text',
-			'story_created'
+			'story_created',
+			'story_modified'
 		) );
 		$this->addWhere( array(
 			'story_state' => Storyboard_STORY_PUBLISHED
@@ -73,11 +74,12 @@ class ApiQueryStories extends ApiQueryBase {
 			
 			$storyModified = $continueParams[0];
 			$storyId = intval( $continueParams[1] );
-			var_dump($storyModified);exit;
+			/* FIXME
 			$this->addWhere(
 				"story_modified > $storyModified OR " .
 				"(story_modified = $storyId AND story_id <= $storyModified)"
 			);
+			*/
 			
 		}
 		
@@ -88,7 +90,7 @@ class ApiQueryStories extends ApiQueryBase {
 			if ( ++$count > $params['limit'] ) {
 				// We've reached the one extra which shows that
 				// there are additional pages to be had. Stop here...
-				$this->setContinueEnumParameter( 'continue', wfTimestamp( TS_MW, $row->story_modified ) . '-' . $row->story_id );
+				$this->setContinueEnumParameter( 'continue', wfTimestamp( TS_MW, $story->story_modified ) . '-' . $story->story_id );
 				break;
 			}
 			$res = array(
