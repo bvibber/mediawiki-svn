@@ -1,6 +1,7 @@
 package de.brightbyte.wikiword.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class PhraseOccurance implements Serializable, Comparable<PhraseOccurance>, TermReference {
 
@@ -23,7 +24,7 @@ public class PhraseOccurance implements Serializable, Comparable<PhraseOccurance
 			this.offset = offset;
 			this.length = length;
 		}
-
+		
 		public int getLength() {
 			return length;
 		}
@@ -99,4 +100,5 @@ public class PhraseOccurance implements Serializable, Comparable<PhraseOccurance
 			
 			return 0;
 		}
+
 }

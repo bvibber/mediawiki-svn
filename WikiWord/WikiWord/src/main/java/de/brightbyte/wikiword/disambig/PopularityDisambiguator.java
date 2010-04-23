@@ -9,6 +9,7 @@ import java.util.Map;
 import de.brightbyte.data.measure.Measure;
 import de.brightbyte.data.measure.Measure.Comparator;
 import de.brightbyte.wikiword.model.LocalConcept;
+import de.brightbyte.wikiword.model.PhraseNode;
 import de.brightbyte.wikiword.model.TermReference;
 import de.brightbyte.wikiword.model.WikiWordConcept;
 
@@ -36,7 +37,7 @@ public class PopularityDisambiguator extends AbstractDisambiguator<TermReference
 		this.popularityComparator = new Measure.Comparator<LocalConcept>(popularityMeasure, true);
 	}
 
-	public <X extends TermReference>Result<X, LocalConcept> disambiguate(List<X> terms, Map<X, List<? extends LocalConcept>> meanings, Collection<LocalConcept> context) {
+	public <X extends TermReference>Result<X, LocalConcept> disambiguate(PhraseNode<X> root, Collection<X> terms, Map<X, List<? extends LocalConcept>> meanings, Collection<LocalConcept> context) {
 		if (terms.isEmpty() || meanings.isEmpty()) return new Disambiguator.Result<X, LocalConcept>(Collections.<X, LocalConcept>emptyMap(), 0.0, "no terms or meanings");
 
 		Map<X, LocalConcept> disambig = new HashMap<X, LocalConcept>();

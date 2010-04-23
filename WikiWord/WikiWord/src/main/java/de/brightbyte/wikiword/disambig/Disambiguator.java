@@ -6,6 +6,7 @@ import java.util.Map;
 
 import de.brightbyte.io.Output;
 import de.brightbyte.util.PersistenceException;
+import de.brightbyte.wikiword.model.PhraseNode;
 import de.brightbyte.wikiword.model.TermReference;
 import de.brightbyte.wikiword.model.WikiWordConcept;
 
@@ -54,5 +55,6 @@ public interface Disambiguator<T extends TermReference, C extends WikiWordConcep
 	public void setTrace(Output trace);
 
 	public <X extends T>Result<X, C> disambiguate(List<X> terms, Collection<C> context) throws PersistenceException;
+	public <X extends T>Result<X, C> disambiguate(PhraseNode<X> root, Collection<C> context) throws PersistenceException;
 
 }

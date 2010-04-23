@@ -110,9 +110,9 @@ public class WordSenseIndexer extends StreamProcessorApp<String, String, WikiWor
 
 	@Override
 	protected void process(String line) throws PersistenceException, ParseException {
-		//TODO: logic for handling overlapping phrases in a PhraseOccuranceSequence
+		//TODO: logic for handling overlapping phrases in a PhraseOccuranceSet
 		/*
-		PhraseOccuranceSequence sequence = analyzer.extractPhrases(line, phraseLength); //TODO: alternative tokenizer/splitter //TODO: split by sentence first.
+		PhraseOccuranceSet sequence = analyzer.extractPhrases(line, phraseLength); //TODO: alternative tokenizer/splitter //TODO: split by sentence first.
 		List<PhraseOccurance> phrases = sequence.getDisjointPhraseSequence(null);
 		Disambiguator.Result<PhraseOccurance, LocalConcept> result = disambiguator.disambiguate(phrases);
 		return result.toString(); //FIXME: annotate!

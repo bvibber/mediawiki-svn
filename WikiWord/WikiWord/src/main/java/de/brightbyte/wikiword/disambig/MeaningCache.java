@@ -1,6 +1,7 @@
 package de.brightbyte.wikiword.disambig;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -79,7 +80,7 @@ public class MeaningCache<C extends WikiWordConcept> implements MeaningFetcher<C
 	}
 
 
-	public <X extends TermReference> Map<X, List<? extends C>> getMeanings(List<X> terms) throws PersistenceException {
+	public <X extends TermReference> Map<X, List<? extends C>> getMeanings(Collection<X> terms) throws PersistenceException {
 		Map<X, List<? extends C>> meanings= new HashMap<X, List<? extends C>>();
 		List<X> todo = new ArrayList<X>(terms.size());
 		

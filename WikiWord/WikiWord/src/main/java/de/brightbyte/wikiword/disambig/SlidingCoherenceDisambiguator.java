@@ -16,6 +16,7 @@ import de.brightbyte.data.measure.ScalarVectorSimilarity;
 import de.brightbyte.data.measure.Similarity;
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.model.LocalConcept;
+import de.brightbyte.wikiword.model.PhraseNode;
 import de.brightbyte.wikiword.model.TermReference;
 import de.brightbyte.wikiword.model.WikiWordConcept;
 
@@ -39,14 +40,14 @@ public class SlidingCoherenceDisambiguator extends CoherenceDisambiguator {
 	/* (non-Javadoc)
 	 * @see de.brightbyte.wikiword.disambig.Disambiguator#disambiguate(java.util.List)
 	 */
-	public <X extends TermReference>Result<X, LocalConcept> disambiguate(List<X> terms, Map<X, List<? extends LocalConcept>> meanings, Collection<LocalConcept> context) throws PersistenceException {
+	public <X extends TermReference>Result<X, LocalConcept> disambiguate(PhraseNode<X> root, Collection<X> terms, Map<X, List<? extends LocalConcept>> meanings, Collection<LocalConcept> context) throws PersistenceException {
 		if (terms.isEmpty() || meanings.isEmpty()) return new Disambiguator.Result<X, LocalConcept>(Collections.<X, LocalConcept>emptyMap(), 0.0, "no terms or meanings");
 
 		int sz = Math.min(terms.size(), meanings.size());
 		if (context!=null) sz += context.size();
 
 		if (window < 2 || sz<2) { 
-				return popularityDisambiguator.disambiguate(terms, meanings, context);
+				return popularityDisambiguator.disambiguate(root, terms, meanings, context);
 		}
 		
 		pruneMeanings(meanings);
@@ -55,7 +56,7 @@ public class SlidingCoherenceDisambiguator extends CoherenceDisambiguator {
 		if (context!=null) sz += context.size();
 
 		if (sz<2) { 
-			return popularityDisambiguator.disambiguate(terms, meanings, context);
+			return popularityDisambiguator.disambiguate(root, terms, meanings, context);
 		}
 		
 		//CAVEAT: because the map disambig can contain only one meaning per term, the same term can not occur with two meanings within the same term sequence.
@@ -77,7 +78,7 @@ public class SlidingCoherenceDisambiguator extends CoherenceDisambiguator {
 			Result r ;
 			
 			if (to-from < 2) {
-				r = popularityDisambiguator.disambiguate(terms.subList(from, to), meanings, context);
+				r = popularityDisambiguator.disambiguate(root..., terms.subList(from, to), meanings, context);
 			} else {
 				List<Map<X, LocalConcept>> interpretations = getInterpretations(from, to, terms,  disambig, meanings);
 				r = getBestInterpretation(terms, meanings, context, interpretations, similarities, features);
@@ -124,7 +125,7 @@ public class SlidingCoherenceDisambiguator extends CoherenceDisambiguator {
 			mset.put(t, m);
 		}
 		
-		return getInterpretations(terms.subList(from, to), mset);
+		return getSequenceInterpretations(terms.subList(from, to), mset);
 	}
 
 	public boolean getRunningStart() {

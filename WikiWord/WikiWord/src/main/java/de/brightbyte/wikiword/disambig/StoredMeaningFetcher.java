@@ -1,5 +1,6 @@
 package de.brightbyte.wikiword.disambig;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -34,7 +35,7 @@ public class StoredMeaningFetcher implements MeaningFetcher<LocalConcept> {
 		return m.load();
 	}
 
-	public <X extends TermReference> Map<X, List<? extends LocalConcept>> getMeanings(List<X> terms) throws PersistenceException {
+	public <X extends TermReference> Map<X, List<? extends LocalConcept>> getMeanings(Collection<X> terms) throws PersistenceException {
 		Map<X, List<? extends LocalConcept>> meanings = new HashMap<X, List<? extends LocalConcept>>();
 		
 	   for (X t: terms) {

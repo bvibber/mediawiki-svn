@@ -22,6 +22,7 @@ import de.brightbyte.data.measure.Similarity;
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.model.ConceptFeatures;
 import de.brightbyte.wikiword.model.LocalConcept;
+import de.brightbyte.wikiword.model.PhraseNode;
 import de.brightbyte.wikiword.model.TermReference;
 import de.brightbyte.wikiword.model.WikiWordConcept;
 
@@ -180,14 +181,14 @@ public class CoherenceDisambiguator extends AbstractDisambiguator<TermReference,
 	/* (non-Javadoc)
 	 * @see de.brightbyte.wikiword.disambig.Disambiguator#disambiguate(java.util.List)
 	 */
-	public <X extends TermReference>Disambiguator.Result<X, LocalConcept> disambiguate(List<X> terms, Map<X, List<? extends LocalConcept>> meanings, Collection<LocalConcept> context) throws PersistenceException {
+	public <X extends TermReference>Disambiguator.Result<X, LocalConcept> disambiguate(PhraseNode<X> root, Collection<X> terms, Map<X, List<? extends LocalConcept>> meanings, Collection<LocalConcept> context) throws PersistenceException {
 		if (terms.isEmpty() || meanings.isEmpty()) return new Disambiguator.Result<X, LocalConcept>(Collections.<X, LocalConcept>emptyMap(), 0.0, "no terms or meanings");
 		
 		int sz = Math.min(terms.size(), meanings.size());
 		if (context!=null) sz += context.size();
 		
 		if (sz<2) { 
-				return popularityDisambiguator.disambiguate(terms, meanings, context);
+				return popularityDisambiguator.disambiguate(root, terms, meanings, context);
 		}
 		
 		pruneMeanings(meanings);
@@ -195,7 +196,7 @@ public class CoherenceDisambiguator extends AbstractDisambiguator<TermReference,
 		sz = Math.min(terms.size(), meanings.size());
 		if (context!=null) sz += context.size();
 		if (sz <2) {
-			return popularityDisambiguator.disambiguate(terms, meanings, context);
+			return popularityDisambiguator.disambiguate(root, terms, meanings, context);
 		}
 		
 		//CAVEAT: because the map disambig can contain only one meaning per term, the same term can not occur with two meanings within the same term sequence.
@@ -203,9 +204,10 @@ public class CoherenceDisambiguator extends AbstractDisambiguator<TermReference,
 		LabeledMatrix<LocalConcept, LocalConcept> similarities = new MapLabeledMatrix<LocalConcept, LocalConcept>(true);
 		FeatureFetcher<LocalConcept, Integer> features = getFeatureCache(meanings, context); 
 		
-		List<Map<X, LocalConcept>> interpretations = getInterpretations(terms, meanings);
+		Collection<List<X>> sequences = getSequences(root);
+		List<Map<X, LocalConcept>> interpretations = getInterpretations(sequences, meanings);
 
-		return getBestInterpretation(terms, meanings, context, interpretations, similarities, features);
+		return getBestInterpretation(root, terms, meanings, context, interpretations, similarities, features);
 	}
 	
 	protected void pruneMeanings(Map<? extends TermReference, List<? extends LocalConcept>> meanings) {
@@ -235,7 +237,7 @@ public class CoherenceDisambiguator extends AbstractDisambiguator<TermReference,
 		}
 	}
 
-	protected <X extends TermReference>Result<X, LocalConcept> getBestInterpretation(List<X> terms, Map<X, List<? extends LocalConcept>> meanings, 
+	protected <X extends TermReference>Result<X, LocalConcept> getBestInterpretation(PhraseNode<X> root, Collection<X> terms, Map<X, List<? extends LocalConcept>> meanings, 
 			Collection<LocalConcept> context, List<Map<X, LocalConcept>> interpretations, 
 			LabeledMatrix<LocalConcept, LocalConcept> similarities, FeatureFetcher<LocalConcept, Integer> features) throws PersistenceException {
 		
@@ -254,7 +256,7 @@ public class CoherenceDisambiguator extends AbstractDisambiguator<TermReference,
 		}
 		
 		if (rankings.size()==0) {
-			return popularityDisambiguator.disambiguate(terms, meanings, context);
+			return popularityDisambiguator.disambiguate(root, terms, meanings, context);
 		}
 		
 		Collections.sort(rankings);
@@ -265,7 +267,17 @@ public class CoherenceDisambiguator extends AbstractDisambiguator<TermReference,
 		return r;
 	}
 
-	protected <X extends TermReference>List<Map<X, LocalConcept>> getInterpretations(List<X> terms, Map<X, List<? extends LocalConcept>> meanings) {
+	protected <X extends TermReference>List<Map<X, LocalConcept>> getInterpretations(Collection<List<X>> sequences, Map<X, List<? extends LocalConcept>> meanings) {
+		List<Map<X, LocalConcept>> interpretations = new ArrayList<Map<X, LocalConcept>>();
+		for (List<X> sq: sequences) {
+			List<Map<X, LocalConcept>> sqint = getSequenceInterpretations(sq, meanings);
+			interpretations.addAll(sqint);
+		}
+		
+		return interpretations;
+	}
+	
+	protected <X extends TermReference>List<Map<X, LocalConcept>> getSequenceInterpretations(List<X> terms, Map<X, List<? extends LocalConcept>> meanings) {
 		if (terms.size()==0) {
 			return Collections.singletonList(Collections.<X, LocalConcept>emptyMap());
 		}
@@ -273,7 +285,7 @@ public class CoherenceDisambiguator extends AbstractDisambiguator<TermReference,
 		X t = terms.get(0);
 		List<? extends LocalConcept> m = meanings.get(t);
 		
-		List<Map<X, LocalConcept>> base = getInterpretations(terms.subList(1, terms.size()), meanings);
+		List<Map<X, LocalConcept>> base = getSequenceInterpretations(terms.subList(1, terms.size()), meanings);
 
 		if (m==null || m.size()==0) return base;
 		

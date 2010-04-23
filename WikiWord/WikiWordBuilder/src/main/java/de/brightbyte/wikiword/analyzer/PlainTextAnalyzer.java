@@ -21,7 +21,7 @@ import de.brightbyte.io.ConsoleIO;
 import de.brightbyte.wikiword.Corpus;
 import de.brightbyte.wikiword.TweakSet;
 import de.brightbyte.wikiword.model.PhraseOccurance;
-import de.brightbyte.wikiword.model.PhraseOccuranceSequence;
+import de.brightbyte.wikiword.model.PhraseOccuranceSet;
 
 public class PlainTextAnalyzer extends AbstractAnalyzer {
 	private LanguageConfiguration config; 
@@ -190,7 +190,7 @@ public class PlainTextAnalyzer extends AbstractAnalyzer {
 		return corpus;
 	}
 	
-	public PhraseOccuranceSequence extractPhrases(CharSequence text, int maxWeight) {
+	public PhraseOccuranceSet extractPhrases(CharSequence text, int maxWeight) {
 		ArrayList<PhraseOccurance> phrases = new ArrayList<PhraseOccurance>();
 		
 		text = applyManglers(config.sentenceManglers, text);
@@ -204,7 +204,7 @@ public class PlainTextAnalyzer extends AbstractAnalyzer {
 			buildPhrases(s, ofs, phrases, maxWeight);
 		}
 		
-		return new PhraseOccuranceSequence(text.toString(), phrases);
+		return new PhraseOccuranceSet(text.toString(), phrases);
 	}
 
 	private PhraseAggregator buildPhrasesAggregator = null; 
@@ -261,7 +261,7 @@ public class PlainTextAnalyzer extends AbstractAnalyzer {
 		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 		String s ;
 		 while ( (s = in.readLine()) != null ) {
-			 PhraseOccuranceSequence phrases = analyzer.extractPhrases(s, 6);
+			 PhraseOccuranceSet phrases = analyzer.extractPhrases(s, 6);
 			 DebugUtil.dump("", phrases, ConsoleIO.output);
 		}
 	}
