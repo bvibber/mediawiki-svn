@@ -10,7 +10,6 @@
  * 
  * TODO: implement eternal load stuff for each list
  * TODO: fix layout
- * TODO: fix story blocks to work with new story state handling
  * TODO: ajax load tab contents?
  */
 
@@ -97,14 +96,14 @@ EOT;
 			array( 'story_state' => $storyState )
 		);
 		
-		$html = '';
+		$storyBlocks = array();
 		
 		// Loop through all stories, get their html, and add it to the appropriate string.
 		while ( $story = $dbr->fetchObject( $stories ) ) {
-			$html .= $this->getStorySegments( $story, $storyState );
+			$storyBlocks[] = $this->getStoryBlock( $story, $storyState );
 		}
 		
-		return "<div id='storyreview-tabs-$storyState'>$html</div>";
+		return "<div id='storyreview-tabs-$storyState'>" . implode( '<br />', $storyBlocks ) . '</div>';
 	}
 	
 	/**
@@ -114,7 +113,7 @@ EOT;
 	 * 
 	 * @return string
 	 */
-	private function getStorySegments( $story, $storyState ) {
+	private function getStoryBlock( $story, $storyState ) {
 		global $wgTitle;
 		
 		$editUrl = SpecialPage::getTitleFor( 'story', $story->story_title )->getFullURL( 'action=edit&returnto=' . $wgTitle->getPrefixedText() );
@@ -131,7 +130,24 @@ EOT;
 		$hideMsg = htmlspecialchars( wfMsg( 'hide' ) );
 		
 		$imageHtml = '';
-		$imageButtonsHtml = '';
+		
+		$buttons = array();
+		
+		if ( $storyState != Storyboard_STORY_PUBLISHED ) {
+			$buttons[] = $this->getStateActionButton( $story->story_id, 'publish', 'storyboard-publish' );
+		}
+
+		if ( $storyState != Storyboard_STORY_UNPUBLISHED ) {
+			$buttons[] = $this->getStateActionButton( $story->story_id, 'unpublish', 'storyboard-unpublish' );
+		}	
+
+		if ( $storyState != Storyboard_STORY_HIDDEN ) {
+			$buttons[] = $this->getStateActionButton( $story->story_id, 'hide', 'storyboard-hide' );
+		}			
+		
+		$buttons[] = <<<EOT
+		<button type="button" onclick="window.location='$editUrl'">$editMsg</button>
+EOT;
 		
 		if ( $story->story_author_image ) {
 			$imageAction = $story->story_image_hidden ? 'unhideimage' : 'hideimage';
@@ -154,12 +170,17 @@ EOT;
 			
 			$imageHtml = Html::element( 'img', $imgAttribs );
 			
-			$imageButtonsHtml = <<<EOT
-				&nbsp;&nbsp;&nbsp;<button type="button" 
-					onclick="stbDoStoryAction( this, $story->story_id, '$imageAction' )" id="image_button_$story->story_id">$imageMsg</button>
-				&nbsp;&nbsp;&nbsp;<button type="button" onclick="stbDeleteStoryImage( this, $story->story_id )">$deleteImageMsg</button>			
+			$buttons[] = <<<EOT
+				<button type="button" onclick="stbDoStoryAction( this, $story->story_id, '$imageAction' )"
+					id="image_button_$story->story_id">$imageMsg</button>
 EOT;
+			$buttons[] = <<<EOT
+				<button type="button" onclick="stbDeleteStoryImage( this, $story->story_id )">$deleteImageMsg</button>
+EOT;
+			
 		}
+		
+		$buttonHtml = implode( '&nbsp;&nbsp;&nbsp;', $buttons );
 		
 		return <<<EOT
 		<table width="100%" border="1" id="story_$story->story_id">
@@ -174,12 +195,17 @@ EOT;
 			</tr>
 			<tr>
 				<td align="center" height="35">
-					<button type="button" onclick="stbDoStoryAction( this, $story->story_id, '$publishAction' )">$publishMsg</button>&nbsp;&nbsp;&nbsp;
-					<button type="button" onclick="window.location='$editUrl'">$editMsg</button>&nbsp;&nbsp;&nbsp;
-					<button type="button" onclick="stbDoStoryAction( this, $story->story_id, 'hide' )">$hideMsg</button>$imageButtonsHtml
+					$buttonHtml
 				</td>
 			</tr>
 		</table>
+EOT;
+	}
+	
+	private function getStateActionButton( $storyId, $action, $messageKey ) {
+		$message = htmlspecialchars( wfMsg( $messageKey ) );
+		return <<<EOT
+				<button type="button" onclick="stbDoStoryAction( this, $storyId, '$action' )">$message</button>
 EOT;
 	}
 }

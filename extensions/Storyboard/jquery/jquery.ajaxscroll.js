@@ -6,7 +6,6 @@
  * @author Jeroen De Dauw
  * @license GPL
  * @version 0.2
- *
  */
 (function($) {
 	$.fn.ajaxScroll=function(opt){
