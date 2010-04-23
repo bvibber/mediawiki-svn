@@ -86,9 +86,10 @@ dbstore.idManager.bufferSize=16384
 #idStoreParameters:
 # basic: string (default), utf8, or utf16
 # for utf8 and utf16: md5, sha1, or huffman (or nothing)
-# for utf8 and utf16: wrap8, fold64
-# "utf16+md5+fold64" uses about half as much memory as "string"
-#dbstore.idManager.idStoreParameters="utf16+md5+fold64"
+# for utf8 and utf16: wrap8 (wrap to 8 bytes), fold64 (wrap to single long value)
+# for fold64: primitive (use gnu trove primitive hash)
+# "utf16+md5+fold64+primitive" uses about one third of the memory used by "string"
+#dbstore.idManager.idStoreParameters="utf16+md5+fold64+primitive"
 
 ### CycleFinder #####################################
 dbstore.CycleFinder.levelWarningThreshold=32

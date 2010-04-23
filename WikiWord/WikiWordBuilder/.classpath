@@ -9,12 +9,7 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/3.8.1"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/BrightByteDB"/>
 	<classpathentry kind="var" path="M2_REPO/mysql/mysql-connector-java/3.1.11/mysql-connector-java-3.1.11.jar"/>
-	<classpathentry kind="lib" path="lib/patricia-trie-0.1.jar" sourcepath="/home/daniel/src/patricia-trie-0.1/patricia-trie-0.1.jar">
-		<attributes>
-			<attribute name="javadoc_location" value="file:/home/daniel/src/patricia-trie-0.1/api/"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="var" path="M2_REPO/org/javolution/javolution/5.2.6/javolution-5.2.6.jar"/>
-	<classpathentry kind="lib" path="lib/jzlib-1.0.7.jar" sourcepath="/home/daniel/src/jzlib-1.0.7"/>
+	<classpathentry kind="var" path="M2_REPO/trove/trove/3.0.0a3/trove-3.0.0a3.jar"/>
+	<classpathentry kind="var" path="M2_REPO/kapsi/patricia-trie/0.1/patricia-trie-0.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -1,0 +1,6 @@
+#!/bin/bash
+
+for pom in *.pom; do
+	jar="${pom%%.pom}.jar"
+	mvn install:install-file -Dfile="$jar" -DpomFile="$pom"
+done

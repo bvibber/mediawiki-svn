@@ -1,0 +1,7 @@
+This directory contains libraries that are not readily available from 
+a well known Maven repository. For each jar file, there should be
+a corresponding pom file as well as a license text.
+
+Before using Apache Maven, please install these libraries into your local
+maven repository. You can use the script "install-all" to do this. Maven
+will automatically download any other libraries required for building.

@@ -20,6 +20,7 @@ import de.brightbyte.data.Codec;
 import de.brightbyte.data.Functor;
 import de.brightbyte.data.KeyDigestingValueStore;
 import de.brightbyte.data.KeyValueStore;
+import de.brightbyte.data.LongIntLookup;
 import de.brightbyte.data.MapLookup;
 import de.brightbyte.data.XorFold32;
 import de.brightbyte.data.XorFold64;
@@ -42,8 +43,8 @@ public class NameMaps {
 			return new HashMap<String, V>();
 		}*/
 
-		public static <V>KeyValueStore<String, V> newStore(String storeParams, String lang) {
-			KeyValueStore<String, V> store = null;
+		public static KeyValueStore<String, Integer> newStore(String storeParams, String lang) {
+			KeyValueStore<String, Integer> store = null;
 			
 			String[] tt = storeParams.split("[,;|+/ &]+");
 			
@@ -51,7 +52,7 @@ public class NameMaps {
 			params.addAll(Arrays.asList(tt));
 			
 			if (params.contains("none") || params.contains("null")) store = null;
-			else if (params.contains("string")) store = new MapLookup<String, V>(new HashMap<String, V>());
+			else if (params.contains("string")) store = new MapLookup<String, Integer>(new HashMap<String, Integer>());
 			else if (params.contains("utf8") || params.contains("utf16")) {
 				//initial digest turns string into UTF-8 bytes
 				Functor<byte[], String> digest;
@@ -72,16 +73,19 @@ public class NameMaps {
 					throw new RuntimeException(e);
 				}
 				
-				if (params.contains("fold64") || params.contains("fold32")) { //fold into Long
-					Functor<? extends Number, byte[]> fold;
+				if (params.contains("fold64")) { //fold into Long
+					Functor<Long, byte[]> fold;
+					fold = XorFold64.instance;
 					
-					if (params.contains("fold32")) fold = XorFold32.instance;
-					else fold = XorFold64.instance;
-					
-					Functor<Number, String> convert = new Functor.Composite<Number, byte[], String>(digest, fold);
+					Functor<Long, String> convert = new Functor.Composite<Long, byte[], String>(digest, fold);
 
-					MapLookup<Number, V> numStore = new MapLookup<Number, V>(new HashMap<Number, V>());
-					store = new KeyDigestingValueStore<String, Number, V>(numStore, convert);
+					if (params.contains("primitive")) {
+						LongIntLookup<Long> numStore = new LongIntLookup<Long>();
+						store = new KeyDigestingValueStore<String, Long, Integer>(numStore, convert);
+					} else {
+						MapLookup<Long, Integer> numStore = new MapLookup<Long, Integer>(new HashMap<Long, Integer>());
+						store = new KeyDigestingValueStore<String, Long, Integer>(numStore, convert);
+					}
 				} else { //keep bytes, wrap in ByteArray
 						if (params.contains("wrap8")) digest = new Functor.Composite<byte[], byte[], String>(digest, new XorWrap(8));
 						else if (params.contains("wrap6")) digest = new Functor.Composite<byte[], byte[], String>(digest, new XorWrap(6));
@@ -92,8 +96,8 @@ public class NameMaps {
 						Functor<ByteString, String> convert = new Functor.Composite<ByteString, byte[], String>(digest, ByteString.wrap);
 			
 						//set up the store
-						MapLookup<ByteString, V> byteStore = new MapLookup<ByteString, V>(new HashMap<ByteString, V>());
-						store = new KeyDigestingValueStore<String, ByteString, V>(byteStore, convert);
+						MapLookup<ByteString, Integer> byteStore = new MapLookup<ByteString, Integer>(new HashMap<ByteString, Integer>());
+						store = new KeyDigestingValueStore<String, ByteString, Integer>(byteStore, convert);
 				}
 			}  else {
 				throw new IllegalArgumentException("bad store spec: "+storeParams+"; expected 'none' or 'string' or 'utf8' or 'utf16' as part of the type spec");
