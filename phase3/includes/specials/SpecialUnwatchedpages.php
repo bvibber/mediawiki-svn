@@ -16,7 +16,7 @@
 class UnwatchedpagesPage extends QueryPage {
 
 	function __construct() {
-		SpecialPage::__construct( 'Unwatchedpages' );
+		SpecialPage::__construct( 'Unwatchedpages', 'unwatchedpages' );
 	}
 	
 	// inexpensive?

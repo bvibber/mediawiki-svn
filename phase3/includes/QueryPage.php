@@ -28,7 +28,7 @@ $wgQueryPages = array(
 	array( 'MostcategoriesPage',            'Mostcategories'                ),
 	array( 'MostimagesPage',                'Mostimages'                    ),
 	array( 'MostlinkedCategoriesPage',      'Mostlinkedcategories'          ),
-	array( 'SpecialMostlinkedtemplates',    'Mostlinkedtemplates'           ),
+	array( 'MostlinkedtemplatesPage',       'Mostlinkedtemplates'           ),
 	array( 'MostlinkedPage',                'Mostlinked'                    ),
 	array( 'MostrevisionsPage',             'Mostrevisions'                 ),
 	array( 'FewestrevisionsPage',           'Fewestrevisions'               ),
@@ -388,6 +388,11 @@ abstract class QueryPage extends SpecialPage {
 	 */
 	function execute( $par ) {
 		global $wgUser, $wgOut, $wgLang;
+
+		if ( !$this->userCanExecute( $wgUser ) ) {
+			$this->displayRestrictionError();
+			return;
+		}
 		
 		if( $this->limit == 0 && $this->offset == 0 )
 			list( $this->limit, $this->offset ) = wfCheckLimits();
