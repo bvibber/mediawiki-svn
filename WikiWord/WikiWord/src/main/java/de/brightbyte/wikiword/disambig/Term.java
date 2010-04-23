@@ -9,14 +9,23 @@ import de.brightbyte.wikiword.model.TermReference;
 public class Term implements TermReference {
 
 	private final String term;
-
+	private final double  weight;
+	
 	public Term(final String term) {
-		super();
+		this(term, 1);
+	}
+	
+	public Term(final String term, final double weight) {
 		this.term = term;
+		this.weight = weight;
 	}
 
 	public String getTerm() {
 		return term;
+	}
+
+	public double getWeight() {
+		return weight;
 	}
 
 	public String toString() {

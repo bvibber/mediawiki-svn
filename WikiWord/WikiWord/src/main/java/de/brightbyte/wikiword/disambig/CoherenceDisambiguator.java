@@ -12,6 +12,7 @@ import java.util.Map.Entry;
 
 import de.brightbyte.data.Functor;
 import de.brightbyte.data.Functor2;
+import de.brightbyte.data.Functors;
 import de.brightbyte.data.LabeledMatrix;
 import de.brightbyte.data.LabeledVector;
 import de.brightbyte.data.MapLabeledMatrix;
@@ -38,6 +39,7 @@ public class CoherenceDisambiguator extends AbstractDisambiguator<TermReference,
 
 	protected Similarity<LabeledVector<Integer>> similarityMeasure;
 	protected Measure<WikiWordConcept> popularityMeasure;
+	protected Functor2<? extends Number, Number, Number> weightCombiner;
 	protected PopularityDisambiguator popularityDisambiguator;
 	protected Comparator<LocalConcept> popularityComparator;
 	
@@ -65,11 +67,11 @@ public class CoherenceDisambiguator extends AbstractDisambiguator<TermReference,
 	};
 	
 	public CoherenceDisambiguator(MeaningFetcher<LocalConcept> meaningFetcher, FeatureFetcher<LocalConcept, Integer> featureFetcher, boolean featuresAreNormalized) {
-		this(meaningFetcher, featureFetcher, WikiWordConcept.theCardinality, 
+		this(meaningFetcher, featureFetcher, WikiWordConcept.theCardinality, Functors.Double.product2,
 					featuresAreNormalized ? ScalarVectorSimilarity.<Integer>getInstance() : CosineVectorSimilarity.<Integer>getInstance());  //if pre-normalized, use scalar to calc cosin
 	}
 	
-	public CoherenceDisambiguator(MeaningFetcher<LocalConcept> meaningFetcher, FeatureFetcher<LocalConcept, Integer> featureFetcher, Measure<WikiWordConcept> popularityMeasure, Similarity<LabeledVector<Integer>> sim) {
+	public CoherenceDisambiguator(MeaningFetcher<LocalConcept> meaningFetcher, FeatureFetcher<LocalConcept, Integer> featureFetcher, Measure<WikiWordConcept> popularityMeasure, Functor2<? extends Number, Number, Number> weightCombiner, Similarity<LabeledVector<Integer>> sim) {
 		super(meaningFetcher);
 		
 		if (popularityMeasure==null) throw new NullPointerException();
@@ -77,9 +79,10 @@ public class CoherenceDisambiguator extends AbstractDisambiguator<TermReference,
 		if (featureFetcher==null) throw new NullPointerException();
 		
 		this.featureCacheManager = new FeatureCache.Manager<LocalConcept, Integer>(featureFetcher, 10); //TODO: depth
-		this.popularityDisambiguator = new PopularityDisambiguator(meaningFetcher, popularityMeasure);
+		this.popularityDisambiguator = new PopularityDisambiguator(meaningFetcher, popularityMeasure, weightCombiner);
 		
 		this.setPopularityMeasure(popularityMeasure);
+		this.setWeightCombiner(weightCombiner);
 		this.setSimilarityMeasure(sim);
 	}
 	
@@ -99,6 +102,11 @@ public class CoherenceDisambiguator extends AbstractDisambiguator<TermReference,
 		this.popularityMeasure = popularityMeasure;
 		this.popularityDisambiguator.setPopularityMeasure(popularityMeasure);
 		this.popularityComparator = new Measure.Comparator<LocalConcept>(popularityMeasure, true);
+	}
+
+	public void setWeightCombiner(Functor2<? extends Number, Number, Number> weightCombiner) {
+		this.weightCombiner = weightCombiner;
+		this.popularityDisambiguator.setWeightCombiner(weightCombiner);
 	}
 
 	public Functor2.Double getScoreCombiner() {
@@ -306,23 +314,31 @@ public class CoherenceDisambiguator extends AbstractDisambiguator<TermReference,
 	}
 
 	protected <X extends TermReference>Result<X, LocalConcept> getScore(Map<X, LocalConcept> interp, Collection<LocalConcept> context, LabeledMatrix<LocalConcept, LocalConcept> similarities, FeatureFetcher<LocalConcept, Integer> features) throws PersistenceException {
-		double sim = 0;
-		double pop = 0;
-
-		Collection<LocalConcept> concepts;
+		Map<? extends TermReference, LocalConcept> concepts;
 		if (context!=null) {
-			concepts = new ArrayList<LocalConcept>();
-			concepts.addAll(interp.values());
-			concepts.addAll(context);
+			concepts = new HashMap<TermReference, LocalConcept>();
+			
+			for (Map.Entry<X, LocalConcept> e: interp.entrySet()) {
+				((HashMap<TermReference, LocalConcept>)concepts).put(e.getKey(), e.getValue());
+			}
+			
+			for (LocalConcept c: context) {
+				((HashMap<TermReference, LocalConcept>)concepts).put(new Term("", 1), c);
+			}
 		} else {
-			concepts = interp.values();
+			concepts = interp;
 		}
 		
+		double sim = 0, pop = 0, weight = 0;
 		int i=0, j=0, n=0, c=0;
-		for (LocalConcept a: concepts) {
+		for (Map.Entry<? extends TermReference, LocalConcept> ea: concepts.entrySet()) {
+			LocalConcept a = ea.getValue();
+			TermReference term = ea.getKey();
+			
 			i++;
 			j=0;
-			for (LocalConcept b: concepts) {
+			for (Map.Entry<? extends TermReference, LocalConcept> eb: concepts.entrySet()) {
+				LocalConcept b = eb.getValue();
 				j++;
 				if (i==j) break;
 				
@@ -357,21 +373,27 @@ public class CoherenceDisambiguator extends AbstractDisambiguator<TermReference,
 			}
 			
 			double p = popularityMeasure.measure(a); 
+			double w = term.getWeight();
 			if (p<1) p= 1;
-			pop += p; 
+			if (w<1) w= 1;
+			
+			pop += weightCombiner.apply(p, w).doubleValue(); 
+			
+			weight += w; 
 			c ++;
 		}
 		
 		//normalize
 		sim = sim / n; //normalize
 		pop = pop / c; //normalize
+		weight = weight / c; //normalize
 		
 		double popf = popularityFactor.apply(pop);
 		double simf = similarityFactor.apply(sim);
 		
 		double score = scoreCombiner.apply(popf, simf);
 		
-		return new Result<X, LocalConcept>(interp, score, "simf="+simf+", popf="+popf+", sim="+sim+", pop="+pop);
+		return new Result<X, LocalConcept>(interp, score, "simf="+simf+", popf="+popf+", sim="+sim+", pop="+pop+", weight="+weight);
 	}
 
 }

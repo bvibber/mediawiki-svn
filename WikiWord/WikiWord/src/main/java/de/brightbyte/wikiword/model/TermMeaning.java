@@ -27,6 +27,10 @@ public class TermMeaning implements TermReference, Serializable  {
 	public double getScore() {
 		return score;
 	}
+	
+	public double getWeight() {
+		return getScore();
+	}
 
 	public String getTerm() {
 		return term;

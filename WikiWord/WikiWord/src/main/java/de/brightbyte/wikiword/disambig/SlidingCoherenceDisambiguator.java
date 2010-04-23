@@ -7,6 +7,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import de.brightbyte.data.Functor2;
+import de.brightbyte.data.Functors;
 import de.brightbyte.data.LabeledMatrix;
 import de.brightbyte.data.LabeledVector;
 import de.brightbyte.data.MapLabeledMatrix;
@@ -23,20 +25,45 @@ import de.brightbyte.wikiword.model.WikiWordConcept;
 public class SlidingCoherenceDisambiguator extends CoherenceDisambiguator {
 
 	protected int window ; 
-	protected boolean runningStart = false;
 	
 	public SlidingCoherenceDisambiguator(MeaningFetcher<LocalConcept> meaningFetcher, FeatureFetcher<LocalConcept, Integer> featureFetcher, boolean featuresAreNormalized) {
-		this(meaningFetcher, featureFetcher, WikiWordConcept.theCardinality, 
+		this(meaningFetcher, featureFetcher, WikiWordConcept.theCardinality, Functors.Double.product2,
 					featuresAreNormalized ? ScalarVectorSimilarity.<Integer>getInstance() : CosineVectorSimilarity.<Integer>getInstance(),  //if pre-normalized, use scalar to calc cosin
 					5);
 	}
 	
-	public SlidingCoherenceDisambiguator(MeaningFetcher<LocalConcept> meaningFetcher, FeatureFetcher<LocalConcept, Integer> featureFetcher, Measure<WikiWordConcept> popularityMeasure, Similarity<LabeledVector<Integer>> sim, int window) {
-		super(meaningFetcher, featureFetcher, popularityMeasure, sim);
+	public SlidingCoherenceDisambiguator(MeaningFetcher<LocalConcept> meaningFetcher, FeatureFetcher<LocalConcept, Integer> featureFetcher, Measure<WikiWordConcept> popularityMeasure, Functor2<? extends Number, Number, Number> weightCombiner, Similarity<LabeledVector<Integer>> sim, int window) {
+		super(meaningFetcher, featureFetcher, popularityMeasure, weightCombiner, sim);
 		
 		this.window = window;
 	}
 
+	public <X extends TermReference>Result<X, LocalConcept> evalStep(List<X> baseSequence, Map<X, LocalConcept> interpretation, PhraseNode<X> node, 
+			Map<X, List<? extends LocalConcept>> meanings, Collection<LocalConcept> context, 
+			LabeledMatrix<LocalConcept, LocalConcept> similarities, FeatureFetcher<LocalConcept, Integer> features) throws PersistenceException {
+		X term = node.getTermReference();
+		
+		List<X> sequence = new ArrayList<X>(baseSequence);
+		sequence.add(term);
+
+		int to = sequence.size();
+		int from = to - window;
+		if (from<0) from = 0;
+
+		List<X> frame = sequence.subList(from, to);
+		
+		Result<X, LocalConcept> r ;
+		
+		if (to-from < 2) {
+			r = popularityDisambiguator.disambiguate(node, frame, meanings, context);
+		} else {
+			List<Map<X, LocalConcept>> interpretations = getInterpretations(from, to, frame,  interpretation, meanings);
+			r = getBestInterpretation(node, frame, meanings, context, interpretations, similarities, features);
+		}
+		
+		return r;
+	}
+	
 	/* (non-Javadoc)
 	 * @see de.brightbyte.wikiword.disambig.Disambiguator#disambiguate(java.util.List)
 	 */
@@ -60,41 +87,35 @@ public class SlidingCoherenceDisambiguator extends CoherenceDisambiguator {
 		}
 		
 		//CAVEAT: because the map disambig can contain only one meaning per term, the same term can not occur with two meanings within the same term sequence.
-
-		Map<X, LocalConcept> disambig = new HashMap<X, LocalConcept>(meanings.size()); 
 		
 		LabeledMatrix<LocalConcept, LocalConcept> similarities = new MapLabeledMatrix<LocalConcept, LocalConcept>(true);
 		FeatureFetcher<LocalConcept, Integer> features = getFeatureCache(meanings, context); 
-		
-		int start = runningStart ? 0 : window;
-		
-		for (int i= start; ; i++) {
-			int from = i-window;
-			int to = i+1;
-			
-			if (from<0) from = 0;
-			if (to>terms.size()) to = terms.size();
-			
-			Result r ;
-			
-			if (to-from < 2) {
-				r = popularityDisambiguator.disambiguate(root..., terms.subList(from, to), meanings, context);
-			} else {
-				List<Map<X, LocalConcept>> interpretations = getInterpretations(from, to, terms,  disambig, meanings);
-				r = getBestInterpretation(terms, meanings, context, interpretations, similarities, features);
-			}
 
-			for (int j=from; j<to; j++) {
-				X t = terms.get(j);
-				if (disambig.containsKey(t)) continue;
-				
-				LocalConcept m;
-				
-				m = (LocalConcept)r.getMeanings().get(t); //UGLY cast
-				if (m!=null) disambig.put(t, m);
+		Map<X, LocalConcept> disambig = new HashMap<X, LocalConcept>(meanings.size()); 
+		PhraseNode<X> currentNode = root;
+		List<X> sequence = new ArrayList<X>();
+		
+		while (true) {
+			List<? extends PhraseNode<X>> successors = currentNode.getSuccessors();
+			if (successors==null || successors.isEmpty()) break;
+			
+			Result<X, LocalConcept> best = null;
+			PhraseNode<X>  bestNode = null;
+			
+			for (PhraseNode<X> n: successors) {
+				Result<X, LocalConcept> r = evalStep(sequence, disambig, currentNode, meanings, context, similarities, features);
+				if (best == null || best.getScore() < r.getScore()) {
+					best = r;
+					bestNode = n;
+				}
 			}
 			
-			if (to+1>terms.size()) break;
+			X term = bestNode.getTermReference();
+			currentNode = bestNode;
+			sequence.add(term);
+			
+			LocalConcept meaning = best.getMeanings().get(term);
+			disambig.put(term, meaning);
 		}
 		
 		return getScore(disambig, context, similarities, features); //FIXME: this is unnecessarily expensive, we usually don't need the scores this calculates. 
@@ -126,14 +147,6 @@ public class SlidingCoherenceDisambiguator extends CoherenceDisambiguator {
 		}
 		
 		return getSequenceInterpretations(terms.subList(from, to), mset);
-	}
-
-	public boolean getRunningStart() {
-		return runningStart;
-	}
-
-	public void setRunningStart(boolean runningStart) {
-		this.runningStart = runningStart;
 	}
 
 }

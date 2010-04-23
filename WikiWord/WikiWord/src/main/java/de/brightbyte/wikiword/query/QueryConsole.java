@@ -19,16 +19,23 @@ import de.brightbyte.rdf.RdfException;
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.ConsoleApp;
 import de.brightbyte.wikiword.Corpus;
+import de.brightbyte.wikiword.TweakSet;
 import de.brightbyte.wikiword.disambig.Disambiguator;
+import de.brightbyte.wikiword.disambig.PhraseExtractor;
 import de.brightbyte.wikiword.disambig.SlidingCoherenceDisambiguator;
 import de.brightbyte.wikiword.disambig.StoredFeatureFetcher;
 import de.brightbyte.wikiword.disambig.StoredMeaningFetcher;
+import de.brightbyte.wikiword.disambig.Term;
 import de.brightbyte.wikiword.model.AbstractConceptOutput;
 import de.brightbyte.wikiword.model.ConceptFeatures;
 import de.brightbyte.wikiword.model.ConceptOutput;
 import de.brightbyte.wikiword.model.ConceptRelations;
 import de.brightbyte.wikiword.model.GlobalConcept;
 import de.brightbyte.wikiword.model.LocalConcept;
+import de.brightbyte.wikiword.model.PhraseNode;
+import de.brightbyte.wikiword.model.PhraseOccuranceSet;
+import de.brightbyte.wikiword.model.TermListNode;
+import de.brightbyte.wikiword.model.TermReference;
 import de.brightbyte.wikiword.model.WikiWordConcept;
 import de.brightbyte.wikiword.rdf.RdfOutput;
 import de.brightbyte.wikiword.store.DatabaseConceptStores;
@@ -45,6 +52,7 @@ public class QueryConsole extends ConsoleApp<WikiWordConceptStore> {
 	protected ConceptQuerySpec minimalConceptSpec;
 	protected ConceptQuerySpec resolvedConceptSpec;
 	protected ConceptQuerySpec detailedConceptSpec;
+	private PhraseExtractor phraseExtractor;
 	
 	public QueryConsole() {
 		super(true, true);
@@ -80,6 +88,9 @@ public class QueryConsole extends ConsoleApp<WikiWordConceptStore> {
 					throw new PersistenceException(e);
 				}
 			}
+			
+			//FIXME: make the line below possible...
+			//phraseExtractor = PlaintextAnalyzer.getPlaintextAnalyzer(getCorpus(), getTweaks());
 		}
 		
 		public ConceptOutput getOutput() {
@@ -375,12 +386,8 @@ public class QueryConsole extends ConsoleApp<WikiWordConceptStore> {
 					showFeatureVector(id, out);
 			}
 			else if (cmd.equals("d") || cmd.equals("dis") || cmd.equals("disambig")  || cmd.equals("disambiguate")) {
-				List<String> terms = new ArrayList<String>(params.size()-1);
-				for (Object t: params.subList(1,params.size())) {
-					terms.add(t.toString());
-				}
-				
-				showDisambiguation(terms, out);
+				PhraseNode<? extends TermReference> root = getPhrases(params.get(1).toString());
+				showDisambiguation(root, out);
 		}
 			else if (cmd.equals("ls") || cmd.equals("list")) {
 				listConcepts(out);
@@ -388,6 +395,21 @@ public class QueryConsole extends ConsoleApp<WikiWordConceptStore> {
 		}
 		finally {
 			out.close();
+		}
+	}
+
+	protected PhraseNode<? extends TermReference> getPhrases(String  s) {
+		if (s.indexOf('|')>0) {
+			String[] ss = s.split("\\s\\|\\s");
+			List<Term> terms = new ArrayList<Term>(ss.length);
+			for (String t: ss) {
+				terms.add(new Term(t));
+			}
+			
+			return new TermListNode<Term>(terms, 0);
+		} else {
+			PhraseOccuranceSet occurances = phraseExtractor.extractPhrases(s, 6);
+			return occurances.getRootNode();
 		}
 	}
 
@@ -499,8 +521,8 @@ public class QueryConsole extends ConsoleApp<WikiWordConceptStore> {
 		out.writeFeatureVector(conceptFeatures.getFeatureVector());
 	}		
 
-	public void showDisambiguation(List<String> terms, ConsoleOutput out) throws PersistenceException {
-		Disambiguator.Result r = getDisambiguator().disambiguate(terms, null);
+	public void showDisambiguation(PhraseNode<? extends TermReference> root, ConsoleOutput out) throws PersistenceException {
+		Disambiguator.Result r = getDisambiguator().disambiguate(root, null);
 		out.writeInterpretation(r.getMeanings());
 	}		
 

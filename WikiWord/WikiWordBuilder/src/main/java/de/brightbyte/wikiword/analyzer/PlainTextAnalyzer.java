@@ -20,10 +20,11 @@ import de.brightbyte.data.filter.FixedSetFilter;
 import de.brightbyte.io.ConsoleIO;
 import de.brightbyte.wikiword.Corpus;
 import de.brightbyte.wikiword.TweakSet;
+import de.brightbyte.wikiword.disambig.PhraseExtractor;
 import de.brightbyte.wikiword.model.PhraseOccurance;
 import de.brightbyte.wikiword.model.PhraseOccuranceSet;
 
-public class PlainTextAnalyzer extends AbstractAnalyzer {
+public class PlainTextAnalyzer extends AbstractAnalyzer implements PhraseExtractor {
 	private LanguageConfiguration config; 
 	
 	private Matcher sentenceMatcher;
