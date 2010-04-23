@@ -29,19 +29,17 @@ class SpecialStory extends IncludableSpecialPage {
 			if ( $wgUser->isAllowed( 'storyreview' ) ) {
 				// If the user is allowed to actually modify the story, save it.
 				$this->saveStory();
-				
-				// Redirect the user when the redirect parameter is set.
-				if ( $wgRequest->getVal( 'returnto' ) ) {
-		 			$titleObj = Title::newFromText( $wgRequest->getVal( 'returnto' ) );
-					$wgOut->redirect( $titleObj->getFullURL() );
-				}
 			} else {
 				// If the user is not allowed to modify stories, show an error.
 				$wgOut->addWikiMsg( 'storyboard-cantedit' );
 			}
 		}
 		
-		if ( trim( $title ) != '' || $wgRequest->getIntOrNull( 'id' ) ) {
+		// Redirect the user when the redirect parameter is set.
+		if ( $wgRequest->getVal( 'returnto' ) ) {
+ 			$titleObj = Title::newFromText( $wgRequest->getVal( 'returnto' ) );
+			$wgOut->redirect( $titleObj->getFullURL() );
+		} else if ( trim( $title ) != '' || $wgRequest->getIntOrNull( 'id' ) ) {
 			$this->queryAndShowStory( $title );
 		} else {
 			$wgOut->setPageTitle( wfMsg( 'storyboard-viewstories' ) );
