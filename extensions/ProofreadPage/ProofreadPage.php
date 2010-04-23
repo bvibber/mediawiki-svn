@@ -28,9 +28,10 @@ $wgHooks['EditPage::importFormData'][] = 'pr_formData';
 
 
 # special page
-$wgAutoloadClasses['ProofreadPages'] = $dir . 'SpecialProofreadPages.php';
-$wgSpecialPages['IndexPages'] = 'ProofreadPages';
+$wgAutoloadClasses['IndexPagesPage'] = $dir . 'SpecialProofreadPages.php';
+$wgSpecialPages['IndexPages'] = 'IndexPagesPage';
 $wgSpecialPageGroups['IndexPages'] = 'pages';
+$wgQueryPages['IndexPagesPage'] = 'IndexPages';
 
 # Bump the version number every time you change proofread.js
 $wgProofreadPageVersion = 26;
