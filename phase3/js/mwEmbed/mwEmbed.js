@@ -1520,8 +1520,7 @@ var MW_EMBED_VERSION = '1.1f';
 				mw.log( 'run setup directly' );
 				//DOM is already ready run setup directly ( will run mwOnLoadFunctions on finish )
 				mw.setupMwEmbed(); 
-			} 			
-			
+			}			
 			return ;
 		}
 		// If mwReadyFlag is already "true" issue the callback directly:
@@ -1534,7 +1533,7 @@ var MW_EMBED_VERSION = '1.1f';
 	mw.runReadyHooks = function ( ) {		
 		// Run all the queued functions: 
 		while( mwOnLoadFunctions.length ) {
-			mwOnLoadFunctions.pop()();
+			mwOnLoadFunctions.shift()();
 		}
 		
 		// Sets mwReadyFlag to true so that future addOnLoadHook calls 
@@ -1631,7 +1630,7 @@ var MW_EMBED_VERSION = '1.1f';
 	* @param {String} cssClassName Name of style sheet that has been defined
 	* @param {String} cssString Css Payload to be added to head of document
 	*/
-	mw.addStyleString = function( cssClassName, cssString ) {
+	mw.addStyleString = function( cssClassName, cssString ) {			
 		if( mw.style[ cssClassName ] ) {
 			mw.log(" Style: ( " + cssClassName + ' ) already set' );
 			return true;
@@ -1639,8 +1638,8 @@ var MW_EMBED_VERSION = '1.1f';
 		// Set the style to true ( to not request it again )
 		mw.style[ cssClassName ] = true;
 		// Wait for the DOM to be ready before adding in the css:
-		mw.ready( function() {
-			mw.log('Adding style:' + cssClassName +" to dom");
+		mw.ready( function() {				
+			mw.log( 'Adding style:' + cssClassName + " to dom " );
 			var styleNode = document.createElement('style');
 			styleNode.type = "text/css";
 			// Use cssText or createTextNode depending on browser: 

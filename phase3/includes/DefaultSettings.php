@@ -2863,13 +2863,6 @@ $wgSpecialPages = array();
  */
 $wgAutoloadClasses = array();
 
-
-/*
- * Array mapping JavaScript class to web path for use by the script loader.
- * This is populated in AutoLoader.php.
- */
-$wgScriptLoaderNamedPaths = array();
-
 /**
  * For defining the location of loader.js files of
  * Extension mwEmbed modules. ( ie modules hosted inside of extensions )

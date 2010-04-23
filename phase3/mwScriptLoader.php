@@ -24,11 +24,14 @@
  * http://www.gnu.org/copyleft/gpl.html
  */
 
+// Set a constant so the script-loader knows its not being used in "stand alone mode"
+define( 'SCRIPTLOADER_MEDIAWIKI', true);
+
 //First do a quick static check for the cached file
-define('MW_CACHE_SCRIPT_CHECK', true);
 require_once( dirname(__FILE__) . '/js/mwEmbed/jsScriptLoader.php');
 $myScriptLoader = new jsScriptLoader();
 if( $myScriptLoader->outputFromCache() ){
+	// We do a simple exit call since we have not touch mediaWiki code yet
 	exit();
 }
 
