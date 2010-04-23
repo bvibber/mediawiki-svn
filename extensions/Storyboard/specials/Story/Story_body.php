@@ -118,14 +118,9 @@ class SpecialStory extends IncludableSpecialPage {
 					
 					if ( $wgUser->isAllowed( 'storyreview' ) ) {
 						global $wgTitle;
-						$wgOut->addHTML( // TODO: this still isn't working properly
-							wfMsgHtml(
-								'storyboard-canedit',
-								$wgUser->getSkin()->link(
-									$wgTitle,
-									strtolower( wfMsg( 'edit' ) )
-								)
-							)
+						$wgOut->addWikiMsg( 
+							'storyboard-canedit',
+							$wgTitle->getFullURL( array( 'action' => 'edit' ) )
 						);
 					}
 				}
