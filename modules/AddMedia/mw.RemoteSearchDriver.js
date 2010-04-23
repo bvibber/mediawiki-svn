@@ -2692,23 +2692,21 @@ mw.RemoteSearchDriver.prototype = {
 		// First check the api for imagerepository
 		mw.getJSON( mw.getLocalApiUrl(), request, function( data ) {
 			if ( data.query.pages ) {
-				for ( var i in data.query.pages ) {
-					if( i == '-1' ) {
-						callback( false );
-						return ;
-					}
-					for ( var j in data.query.pages[i] ) {
-						if ( j == 'missing' 
-							&& data.query.pages[i].imagerepository != 'shared'
-							&& data.query.pages[i].imagerepository != 'commons' ) 
-						{							
-							callback( false );
-							return;
+				for ( var i in data.query.pages ) {					
+					if( i != 'undefined' ){
+						//If assset is missing check if is shared or on commons
+						if( data.query.pages[i]['missing'] || i == -1 ) {
+							if( data.query.pages[i].imagerepository != 'shared'
+								&& data.query.pages[i].imagerepository != 'commons' ) 
+							{						
+								callback( false );
+								return;
+							}						
 						}
+						// else page is found:
+						mw.log( fileName + "  found" );
+						callback( data.query.pages[i] );
 					}
-					// else page is found:
-					mw.log( fileName + "  found" );
-					callback( data.query.pages[i] );
 				}
 			}
 		} );
