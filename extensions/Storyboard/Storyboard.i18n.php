@@ -71,7 +71,7 @@ Why not share it?',
 	'storyboard-needtoagree' => 'You need to agree to the publication of your story to submit it.',
 	'storyboard-createdsucessfully' => 'Thank you for sharing your story with us!
 We will review it shortly.
-Published stories are visible at $1.',
+Published stories are visible [$1 here].',
 );
 
 /** Afrikaans (Afrikaans)

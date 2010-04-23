@@ -63,13 +63,13 @@ class SpecialStorySubmission extends UnlistedSpecialPage {
 	}
 	
 	private function displayResult() {
-		global $wgOut;
+		global $wgOut, $wgTitle;
 		
 		$wgOut->setPageTitle( wfMsg( 'storyboard-submissioncomplete' ) );
 		
-		$storyboardLink = ''; // TODO: create html link to the page containing stories. 
+		$storyboardLink = $wgTitle->getFullURL(); // TODO: magically get location of the page containing stories
 
-		$wgOut->addWikiText( wfMsgExt( 'storyboard-createdsucessfully', 'parsemag', $storyboardLink ) );
+		$wgOut->addWikiMsg( 'storyboard-createdsucessfully', $storyboardLink );
 	}
 	
 }
