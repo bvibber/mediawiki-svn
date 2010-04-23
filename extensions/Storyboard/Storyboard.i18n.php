@@ -16,7 +16,7 @@ $messages = array();
 $messages['en'] = array(
 	// General
 	'storyboard-name' => 'Storyboard',
-	'storyboard-desc' => 'Provides a landing page for donors, a page where stories can be submitted, and a story moderation interface',
+	'storyboard-desc' => 'Provides a [[Special:Story|landing page for donors]], a page where stories can be [[Special:StorySubmission|submitted]] and a [[Special:StoryReview|story moderation interface]]',
 	'right-storyreview' => 'Review, edit, publish, and hide stories',
 	'specialpages-group-contribution' => 'Contribution',
 
@@ -35,7 +35,7 @@ $messages['en'] = array(
 	'storyboard-nosuchstory' => 'The story you requested does not exist.
 It might have been removed.',
 	'storyboard-storyunpublished' => 'The story you requested has not been published yet.',
-	'storyboard-nostorytitle' => 'You need to specify the title or id of the story you want to view.',
+	'storyboard-nostorytitle' => 'You need to specify the title or ID of the story you want to view.',
 	'storyboard-cantedit' => 'You are not allowed to edit stories.',
 	'storyboard-canedit' => 'You can [$1 edit] and publish this story.',
 	'storyboard-createdandmodified' => 'Created on $1, $2 and last modified on $3, $4',
@@ -69,7 +69,8 @@ Why not share it?',
 	'storyboard-cannotbelonger' => 'Your story is <b>$1</b> {{PLURAL:$1|character|characters}} too long!',
 	'storyboard-charsneeded' => '($1 more {{PLURAL:$1|character|characters}} needed)',
 	'storyboard-needtoagree' => 'You need to agree to the publication of your story to submit it.',
-	'storyboard-createdsucessfully' => 'Thank you for sharing your story with us! We will review it shortly.
+	'storyboard-createdsucessfully' => 'Thank you for sharing your story with us!
+We will review it shortly.
 Published stories are visible at $1.',
 );
 
