@@ -10,7 +10,6 @@
  * @ingroup SpecialPage
  */
 class BrokenRedirectsPage extends PageQueryPage {
-	var $targets = array();
 
 	function __construct() {
 		SpecialPage::__construct( 'BrokenRedirects' );
