@@ -1,0 +1,184 @@
+<?php
+/**
+ * Internationalisation file for MetadataEdit extension.
+ *
+ * @file
+ * @ingroup Extensions
+ */
+
+$messages = array();
+
+$messages['en'] = array(
+	'metadataedit-desc' => 'Put categories, language links and allowed templates in a separate text box while editing pages',
+	'metadata_help' => 'Metadata:',
+);
+
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ * @author Red Winged Duck
+ */
+$messages['be-tarask'] = array(
+	'metadataedit-desc' => 'Дазваляе ўстаўляць катэгорыі, моўныя спасылкі і дазволеныя шаблёны ў асобных тэкставых палях пад час рэдагаваньня старонак',
+	'metadata_help' => 'Мэтазьвесткі:',
+);
+
+/** Breton (Brezhoneg)
+ * @author Fulup
+ * @author Y-M D
+ */
+$messages['br'] = array(
+	'metadataedit-desc' => "A lak ar rummadoù, al liammoù etrewiki hag ar patromoù aotreet en ur zonenn testenn diforc'het, e-pad kemmadur ar pajennoù",
+	'metadata_help' => 'Metaroadennoù :',
+);
+
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
+$messages['cy'] = array(
+	'metadataedit-desc' => "Tra wrthi'n golygu, gosod categorïau, cysylltiadau ag ieithoedd eraill, a nodiadau a ganiateir mewn ail flwch golygu",
+	'metadata_help' => 'Metadata:',
+);
+
+/** German (Deutsch)
+ * @author LWChris
+ */
+$messages['de'] = array(
+	'metadataedit-desc' => 'Kategorien, Sprachlinks und erlaubte Vorlagen während der Bearbeitung von Seiten in einem separaten Textfeld anzeigen',
+	'metadata_help' => 'Metadaten:',
+);
+
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ * @author Qualia
+ */
+$messages['dsb'] = array(
+	'metadataedit-desc' => 'Pśi wobźěłowanju bokow kategorije, rěcne wótkaze a dowólone pśedłogi we wósebnem tekstowem kašćiku stajiś',
+	'metadata_help' => 'Metadaty:',
+);
+
+/** Spanish (Español)
+ * @author Crazymadlover
+ * @author Piolinfax
+ */
+$messages['es'] = array(
+	'metadataedit-desc' => 'Colocar categorías, enlaces de idiomas y plantillas permitidas en un cuadro de texto separado cuando edite páginas',
+	'metadata_help' => 'Metadatos:',
+);
+
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'metadataedit-desc' => 'Kategorije, rěčne wotkazy a dowolene předłohi při wobdźěkowanju stronow do separatneho tekstoweho pola stajić',
+	'metadata_help' => 'Metadaty:',
+);
+
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'metadataedit-desc' => 'Lapok szerkesztésekor a kategóriákat, nyelvközi hivatkozásokat és az engedélyezett sablonokat egy külön szerkesztőmezőbe teszi',
+	'metadata_help' => 'Metaadatok:',
+);
+
+/** Italian (Italiano)
+ * @author Civvì
+ */
+$messages['it'] = array(
+	'metadataedit-desc' => 'Inserire le categorie, i collegamenti alle lingue e template permessi in una casella di testo separata durante la modifica delle pagine',
+	'metadata_help' => 'Metadati:',
+);
+
+/** Japanese (日本語)
+ * @author Aotake
+ */
+$messages['ja'] = array(
+	'metadataedit-desc' => '編集の際に、カテゴリ、言語間リンク、許可されたテンプレートを独立のテキストボックスに入れる',
+	'metadata_help' => 'メタデータ:',
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'metadataedit-desc' => 'Legg kategorier, språklenker og tillatte maler i en egen tekstboks under redigering av sider',
+	'metadata_help' => 'Metadata:',
+);
+
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'metadataedit-desc' => 'Met las categorias, los ligams interlengas e los modèls autorizats dins una zòna de tèxte distincta, al moment de la modificacion de paginas',
+	'metadata_help' => 'Metadonadas :',
+);
+
+/** Polish (Polski)
+ * @author Derbeth
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'metadataedit-desc' => 'Umieszcza kategorie, linki językowe i dostępne szablony w oddzielnym polu tekstowym w czasie edycji stron',
+	'metadata_help' => 'Metadane:',
+);
+
+/** Piedmontese (Piemontèis)
+ * @author Borichèt
+ */
+$messages['pms'] = array(
+	'metadataedit-desc' => "A buta le categorìe, le liure antra le lenghe e jë stamp disponìbij ant na casela ëd test separà antramentre ch'as modìfico le pàgine",
+	'metadata_help' => 'Metadat:',
+);
+
+/** Portuguese (Português)
+ * @author Giro720
+ * @author Hamilton Abreu
+ */
+$messages['pt'] = array(
+	'metadataedit-desc' => 'Durante a edição de páginas, colocar as categorias, links de línguas e predefinições permitidas numa caixa de texto separada.',
+	'metadata_help' => 'Metadados:',
+);
+
+/** Russian (Русский)
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'metadataedit-desc' => 'При редактировании страниц указывайте категории, языковые ссылки и допустимые шаблоны в отдельном текстовом поле',
+	'metadata_help' => 'Метаданные:',
+);
+
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'metadataedit-desc' => 'Med urejanjem strani postavi kategorije, jezikovne povezave in dovoljene predloge v ločeno besedilno polje',
+	'metadata_help' => 'Metapodatki:',
+);
+
+/** Sundanese (Basa Sunda)
+ * @author Kandar
+ */
+$messages['su'] = array(
+	'metadataedit-desc' => 'Méré kategori, tutumbu basa, jeung citakan anu diwenangkeun dina kotak téks anu misah sabari ngédit kaca',
+	'metadata_help' => 'Métadata:',
+);
+
+/** Swedish (Svenska)
+ * @author M.M.S.
+ * @author Sertion
+ */
+$messages['sv'] = array(
+	'metadataedit-desc' => 'Lägg kategorier, språklänkar och tillåtna mallar i en separat ruta när du redigerar sidor',
+	'metadata_help' => 'Metadata:',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'metadataedit-desc' => 'Cho các thể loại, liên kết liên wiki, và bản mẫu được chỉ định vào hộp văn bản riêng trong lúc sửa đổi trang',
+	'metadata_help' => 'Đặc tính hình:',
+);
+

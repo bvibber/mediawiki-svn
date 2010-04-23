@@ -1,0 +1,68 @@
+/**
+  * Css for the Storyboard extension.
+  *
+  * @file storyboard.css
+  * @ingroup Storyboard
+  *
+  * @author Jeroen De Dauw
+  */
+
+/**
+ * Css for stories
+ */
+.story {
+	margin: 5px 10px 0px 0px;
+	float: left;
+	overflow: hidden;	
+}
+.story-title {
+	font: 16px "Lucida Sans", Verdana;
+	margin-left: 15px;
+	margin-top: 5px;	
+	font-weight: bold;
+	overflow: hidden;	
+}
+.story-image {
+	margin: 5px 15px 0px 15px;
+	float: right;
+}
+
+.story-sharing {
+	height: 30px;
+	width: 110px;
+	float: right;
+}
+.story-sharing-item {
+	float: left;
+	padding-right: 5px;
+}
+
+/**
+ * Css for story submission/editting
+ */
+.storysubmission-charcount {
+	display: inline;
+	float: right;
+}
+
+/**
+ * Css for <storyboard> tags
+ */
+.storyboard {
+border: 1px solid #ddd;
+}
+.storyboard .storyboard-batch {
+	margin: 0;
+	padding: 0;
+}
+.storyboard .storyboard-box {
+	display: inline-block;
+	border: 1px solid #eee;
+	width: 99%;
+	min-height: 100px;
+	margin: 5px;
+}
+.storyboard .storyboard-empty .storyboard-box {
+	border: 1px solid #ddd;
+	background: #FCFCFC url(images/storyboard-loader.gif) no-repeat scroll center center;
+}
