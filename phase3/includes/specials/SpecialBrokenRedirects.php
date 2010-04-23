@@ -26,7 +26,8 @@ class BrokenRedirectsPage extends PageQueryPage {
 
 	function getQueryInfo() {
 		return array(
-			'tables' => array( 'redirect', 'page p1', 'page p2' ),
+			'tables' => array( 'redirect', 'p1' => 'page',
+					'p2' => 'page' ),
 			'fields' => array( 'p1.page_namespace AS namespace',
 					'p1.page_title AS title',
 					'rd_namespace',
@@ -35,10 +36,10 @@ class BrokenRedirectsPage extends PageQueryPage {
 			'conds' => array( 'rd_namespace >= 0',
 					'p2.page_namespace IS NULL'
 			),
-			'join_conds' => array( 'page p1' => array( 'LEFT JOIN', array(
+			'join_conds' => array( 'p1' => array( 'LEFT JOIN', array(
 						'rd_from=p1.page_id',
 					) ),
-					'page p2' => array( 'LEFT JOIN', array(
+					'p2' => array( 'LEFT JOIN', array(
 						'rd_namespace=p2.page_namespace',
 						'rd_title=p2.page_title'
 					) )

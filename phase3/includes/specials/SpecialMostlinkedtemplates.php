@@ -14,7 +14,7 @@
 class MostlinkedTemplatesPage extends QueryPage {
 
 	function __construct() {
-			SpecialPage::__construct( 'MostlinkedTemplatesPage' );
+		SpecialPage::__construct( 'Mostlinkedtemplates' );
 	}
 
 	/**
@@ -113,13 +113,3 @@ class MostlinkedTemplatesPage extends QueryPage {
 	}
 }
 
-/**
- * Execution function
- *
- * @param $par Mixed: parameters passed to the page
- */
-function wfSpecialMostlinkedtemplates( $par = false ) {
-	list( $limit, $offset ) = wfCheckLimits();
-	$mlt = new SpecialMostlinkedtemplates();
-	$mlt->doQuery( $offset, $limit );
-}
