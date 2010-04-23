@@ -39,7 +39,6 @@ class jsClassLoader {
 		self::$classesLoaded = true;
 
 		$mwEmbedAbsolutePath = ( $wgMwEmbedDirectory == '' )? $IP:  $IP .'/' .$wgMwEmbedDirectory;
-
 		// Add the mwEmbed localizations
 		$wgExtensionMessagesFiles[ 'mwEmbed' ] = $mwEmbedAbsolutePath . '/languages/mwEmbed.i18n.php';
 
@@ -73,7 +72,8 @@ class jsClassLoader {
 
 		// Get all the classes from the enabled mwEmbed modules folder
 		foreach( self::$moduleList as  $na => $moduleName){
-			self::proccessModulePath( $mwEmbedAbsolutePath . '/modules/' . $moduleName );
+			$relativeSlash = ( $wgMwEmbedDirectory == '' )? '' : '/';
+			self::proccessModulePath( $wgMwEmbedDirectory . $relativeSlash . 'modules/' . $moduleName );
 		}
 
 		// Get all the extension loader paths registered mwEmbed modules
@@ -93,7 +93,7 @@ class jsClassLoader {
 		// Get the module name
 		$moduleName = end( explode('/', $path ) );
 
-		// Set the directory context for js defined paths
+		// Set the directory context for relative js/css paths
 		self::$directoryContext = $path;
 
 		// Check for the loader.js
@@ -125,7 +125,7 @@ class jsClassLoader {
 		self::$combinedLoadersJs .=  $fileContent;
 
 		preg_replace_callback(
-		self::$classReplaceExp,
+			self::$classReplaceExp,
 			'jsClassLoader::preg_classPathLoader',
 			$fileContent
 		);

@@ -4,7 +4,7 @@
  */
 var urlparts = getRemoteEmbedPath();
 var mwEmbedHostPath = urlparts[0];
-var mwRemoteVersion = 'r120';
+var mwRemoteVersion = 'r121';
 var mwUseScriptLoader = true;
 
 // Log the mwRemote version ( will determine what version of js we get )
@@ -173,7 +173,6 @@ function mwSetPageToLoading(){
 function mwLoadPlayer( callback ){
 	// the jsPlayerRequest includes both javascript and style sheets for the embedPlayer 
 	var jsPlayerRequest = [
-		'mw.style.common',
 		'mw.EmbedPlayer', 
 		'$j.ui', 
 		'ctrlBuilder', 
@@ -194,7 +193,7 @@ function mwLoadPlayer( callback ){
 	if ( navigator.userAgent &&  navigator.userAgent.indexOf("Firefox") != -1 ){
 		jsPlayerRequest.push( 'nativeEmbed' );
 	}
-
+	
 	loadMwEmbed( jsPlayerRequest, function() {
 		callback();
 	});

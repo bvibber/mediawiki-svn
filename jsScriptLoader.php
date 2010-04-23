@@ -15,6 +15,7 @@ if ( !defined( 'MEDIAWIKI' ) && !defined( 'SCRIPTLOADER_MEDIAWIKI') ) {
 		exit();
 	}
 	// No cache hit, load stand alone ScriptLoader config
+
 	// ( if running as a remote, mediaWiki variables are already included as part of mediaWiki
 	require_once( realpath( dirname( __FILE__ ) ) . '/includes/noMediaWikiConfig.php' );
 	$myScriptLoader->doScriptLoader();
@@ -22,8 +23,8 @@ if ( !defined( 'MEDIAWIKI' ) && !defined( 'SCRIPTLOADER_MEDIAWIKI') ) {
 
 class jsScriptLoader {
 
-	// The list of javascript files
-	var $jsFileList = array();
+	// The list of named javascript & css files
+	var $namedFileList = array();
 
 	// The language code for the script-loader request
 	var $langCode = '';
@@ -107,13 +108,11 @@ class jsScriptLoader {
 
 		// Build the output
 		// Swap in the appropriate language per js_file
-		foreach ( $this->jsFileList as $classKey => $filePath ) {
-
+		foreach ( $this->namedFileList as $classKey => $filePath ) {
 			// Get the localized script content
 			$this->output .= $this->getLocalizedScriptText( $classKey );
 
-			// If the core mwEmbed class entry point add some
-			// other "core" files:
+			// If the core mwEmbed class request add some other "core" files:
 			if( $classKey == 'mwEmbed' ){
 				// Output core components ( parts of mwEmbed that are in different files )
 				$this->output .= jsClassLoader::getCombinedComponentJs( $this );
@@ -124,11 +123,14 @@ class jsScriptLoader {
 				// Output the current language class js
 				$this->output .= jsClassLoader::getLanguageJs( $this->langCode );
 
-				// Output the "common" css file
-				$this->output .= $this->getScriptText( 'mw.style.common' );
-
-				// Output the jQuery ui theme css
-				$this->output .= $this->getScriptText( 'mw.style.redmond' );
+				// Check that mwEmbed required style sheets are part of the request,
+				// if not include them here
+				// This is so mwEmbed requests gets basic interface css
+				foreach( array('mw.style.mw-common', 'mw.style.jquery-ui-redmond' ) as $styleKey ){
+					if( !isset( $this->namedFileList[ $styleKey ] ) ) {
+						$this->output .= $this->getScriptText( $styleKey );
+					}
+				}
 
 				// Output special IE comment tag to support special mwEmbed tags.
 				$this->notMinifiedTopOutput .='/*@cc_on\'video source itext playlist\'.replace(/\w+/g,function(n){document.createElement(n)})@*/'."\n";
@@ -545,7 +547,7 @@ class jsScriptLoader {
 
 		// Check for the requested classes
 		if ( $reqClassList ) {
-			// sanitize the class list and populate jsFileList
+			// sanitize the class list and populate namedFileList
 			foreach ( $reqClassList as $reqClass ) {
 				if ( trim( $reqClass ) != '' ) {
 					if ( substr( $reqClass, 0, 3 ) == 'WT:' ) {
@@ -565,7 +567,7 @@ class jsScriptLoader {
 							}
 						}
 						if( $doAddWT ){
-							$this->jsFileList[$reqClass] = true;
+							$this->namedFileList[$reqClass] = true;
 							$this->requestKey .= $reqClass;
 							$this->jsvarurl = true;
 						}
@@ -578,7 +580,7 @@ class jsScriptLoader {
 					if( !$filePath ){
 						$this->errorMsg .= 'Requested class: ' . xml::escapeJsString( $reqClass ) . ' not found' . "\n";
 					}else{
-						$this->jsFileList[ $reqClass ] = $filePath;
+						$this->namedFileList[ $reqClass ] = $filePath;
 						$this->requestKey .= $reqClass;
 					}
 				}
@@ -636,7 +638,7 @@ class jsScriptLoader {
 
 		// Check for the requested classes
 		if ( $reqClassList && count( $reqClassList ) > 0 ) {
-			// Clean the class list and populate jsFileList
+			// Clean the class list and populate namedFileList
 			foreach (  $reqClassList as $reqClass ) {
 				//do some simple checks:
 				if ( trim( $reqClass ) != '' ){
@@ -710,6 +712,7 @@ class jsScriptLoader {
 		global $wgScriptLoaderNamedPaths;
 		// Make sure the class is loaded:
 		jsClassLoader::loadClassPaths();
+
 		if ( isset( $wgScriptLoaderNamedPaths[ $reqClass ] ) ) {
 			return $wgScriptLoaderNamedPaths[ $reqClass ];
 		} else {

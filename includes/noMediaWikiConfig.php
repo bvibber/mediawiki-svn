@@ -34,6 +34,10 @@ $wgExtensionMessagesFiles = array();
 
 /*Localization:*/
 $wgEnableScriptLocalization = true;
+// Array to store all loaded msgs
+$wgMessageCache = array();
+// flag for loading msgs
+$wgLoadedMsgKeysFlag = false;
 
 $mwLanguageCode = 'en';
 $wgLang = false;
@@ -99,6 +103,8 @@ function wfMkdirParents( $dir, $mode = null, $caller = null ) {
 
 /**
  * Copied from mediaWIki GlobalFunctions.php wfMsgGetKey
+ * but we return [] instead of &lt; &gt; since &lt; does not
+ * look good in javascript msg strings
  *
  * Fetch a message string value, but don't replace any keys yet.
  * @param $key String
@@ -109,25 +115,40 @@ function wfMkdirParents( $dir, $mode = null, $caller = null ) {
  * @return string
  * @private
  */
-function wfMsgGetKey( $msgKey, $na, $langKey=false ) {
-    global $messages, $mwLanguageCode;
-    if(!$langKey){
+function wfMsgGetKey( $msgKey, $na, $langKey = false ) {
+    global $wgLoadedMsgKeysFlag, $wgMessageCache, $mwLanguageCode;
+
+   if( !$langKey ){
     	$langKey = $mwLanguageCode;
     }
-    if ( isset( $messages[$mwLanguageCode] ) && isset( $messages[$langKey][$msgKey] ) ) {
-        return $messages[$langKey][$msgKey];
+
+    // Make sure msg Keys are loaded
+    if( !$wgLoadedMsgKeysFlag ) {
+    	wfLoadMsgKeys( $langKey );
+    }
+
+
+    if ( isset( $wgMessageCache[$msgKey] ) ) {
+        return $wgMessageCache[$msgKey];
     } else {
-        return '&lt;' . $msgKey . '&gt;';
+        return '[' . $msgKey . ']';
     }
 }
-$wgLoadedMsgKeysFlag = false;
-function loadMsgKeys(){
-	global $wgLoadedMsgKeysFlag;
-	if( $wgLoadedMsgKeysFlag ) {
-		return true;
+/**
+ * Load all the msg keys into $wgMessageCache
+ * @param $langKey String Language key to be used
+ */
+function wfLoadMsgKeys( $langKey ){
+	global $wgExtensionMessagesFiles, $wgMessageCache;
+	foreach( $wgExtensionMessagesFiles as $msgFile ){
+		if( !is_file( $msgFile ) ) {
+			throw new MWException( "Missing msgFile: " . htmlspecialchars( $msgFile ) . "\n" );
+		}
+		require( $msgFile );
+		// Save some time by only including the current language in the cache:
+		$wgMessageCache = array_merge( $wgMessageCache, $messages[ $langKey ] );
 	}
-	// Get the messages file:
-	require_once( realpath( dirname( __FILE__ ) ) . '/../languages/mwEmbed.i18n.php' );
+	$wgLoadedMsgKeysFlag = true;
 }
 
 /**

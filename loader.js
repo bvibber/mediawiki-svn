@@ -141,9 +141,9 @@ mw.addClassFilePaths( {
 	"$j.fn.datePicker"		: "jquery/plugins/jquery.datePicker.js",
 	"$j.ui"					: "jquery/jquery.ui/ui/ui.core.js",	
 	
-	"mw.style.redmond"		: "jquery/jquery.ui/themes/redmond/jquery-ui-1.7.1.custom.css",
-	"mw.style.smoothness"	: "jquery/jquery.ui/themes/smoothness/jquery-ui-1.7.1.custom.css",
-	"mw.style.common"		: "skins/common/common.css",
+	"mw.style.jquery-ui-redmond" : "jquery/jquery.ui/themes/redmond/jquery-ui-1.7.1.custom.css",
+	"mw.style.jquery-ui-smoothness"	: "jquery/jquery.ui/themes/smoothness/jquery-ui-1.7.1.custom.css",
+	"mw.style.mw-common"		: "skins/common/common.css",
 	
 	"mw.testLang"			:  "tests/testLang.js",		
 
