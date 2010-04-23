@@ -10,6 +10,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/BrightByteDB"/>
 	<classpathentry kind="var" path="M2_REPO/mysql/mysql-connector-java/3.1.11/mysql-connector-java-3.1.11.jar"/>
 	<classpathentry kind="var" path="M2_REPO/trove/trove/3.0.0a3/trove-3.0.0a3.jar"/>
-	<classpathentry kind="var" path="M2_REPO/kapsi/patricia-trie/0.1/patricia-trie-0.1.jar"/>
+	<classpathentry kind="var" path="M2_REPO/ardverk/patricia-trie/0.1/patricia-trie-0.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

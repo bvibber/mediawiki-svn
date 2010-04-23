@@ -48,8 +48,7 @@
           <groupId>ardverk</groupId>
           <artifactId>patricia-trie</artifactId>
           <version>0.1</version>
-          <scope>system</scope>
-          <systemPath>${basedir}/lib/patricia-trie-0.1.jar</systemPath>
+          <scope>compile</scope>
 	      <optional>true</optional> 
        </dependency>
  
