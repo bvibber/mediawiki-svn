@@ -91,16 +91,6 @@ abstract class QueryPage extends SpecialPage {
 	}
 
 	/**
-	 * Subclasses return their name here. Make sure the name is also
-	 * specified in SpecialPage.php and in Language.php as a language 
-	 * message param.
-	 *
-	 * @return String
-	 */
-//	abstract function getName();
-//	}
-
-	/**
 	 * Return title object representing this page
 	 *
 	 * @return Title
