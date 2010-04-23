@@ -1,6 +1,5 @@
 package de.brightbyte.wikiword.builder;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URL;
@@ -8,11 +7,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Map;
 import java.util.Set;
-
-import org.ardverk.collection.PatriciaTrie;
-import org.ardverk.collection.StringKeyAnalyzer;
 
 import de.brightbyte.data.BlockDigest;
 import de.brightbyte.data.ByteString;
@@ -22,7 +17,6 @@ import de.brightbyte.data.KeyDigestingValueStore;
 import de.brightbyte.data.KeyValueStore;
 import de.brightbyte.data.LongIntLookup;
 import de.brightbyte.data.MapLookup;
-import de.brightbyte.data.XorFold32;
 import de.brightbyte.data.XorFold64;
 import de.brightbyte.data.XorWrap;
 import de.brightbyte.io.HuffmanDataCodec;
@@ -43,13 +37,61 @@ public class NameMaps {
 			return new HashMap<String, V>();
 		}*/
 
+	protected static Set<String> parseParams(String spec) {
+		String[] tt = spec.split("[,;|+/ &]+");
+		
+		Set<String> params = new HashSet<String>();
+		params.addAll(Arrays.asList(tt));
+		
+		return params;
+	}
+	
+	public static Functor<?, String> newHash(String params, String lang) {
+		return newHash(parseParams(params), lang);
+	}
+	
+	public static Functor<?, String> newHash(Set<String> params, String lang) {
+		//initial digest turns string into UTF-8 bytes
+		Functor<byte[], String> digest;
+		
+		try {
+			if (params.contains("utf8")) digest = new Codec.Encoder<String, byte[]>(new CharsetCodec("UTF-8"));
+			else digest = new Codec.Encoder<String, byte[]>(new CharsetCodec("UTF-16"));
+			
+			//apply md5 digest or huffman compression
+			if (params.contains("md5")) digest = new Functor.Composite<byte[], byte[], String>(digest, new BlockDigest("MD5"));
+			else if (params.contains("sha1")) digest = new Functor.Composite<byte[], byte[], String>(digest, new BlockDigest("SHA-1"));
+			else if (params.contains("huff") || params.contains("huffman")) digest = new Functor.Composite<byte[], byte[], String>(digest, getHuffmanEncoder(lang));
+		} catch (UnsupportedEncodingException e) {
+			throw new IllegalArgumentException(e);
+		} catch (NoSuchAlgorithmException e) {
+			throw new IllegalArgumentException(e);
+		} catch (IOException e) {
+			throw new RuntimeException(e);
+		}
+		
+		if (params.contains("fold64")) { //fold into Long
+			Functor<Long, byte[]> fold;
+			fold = XorFold64.instance;
+			
+			Functor<Long, String> convert = new Functor.Composite<Long, byte[], String>(digest, fold);
+			return convert;
+		} else { //keep bytes, wrap in ByteArray
+				if (params.contains("wrap8")) digest = new Functor.Composite<byte[], byte[], String>(digest, new XorWrap(8));
+				else if (params.contains("wrap6")) digest = new Functor.Composite<byte[], byte[], String>(digest, new XorWrap(6));
+				else if (params.contains("wrap4")) digest = new Functor.Composite<byte[], byte[], String>(digest, new XorWrap(4));
+				else if (params.contains("wrap4")) digest = new Functor.Composite<byte[], byte[], String>(digest, new XorWrap(4));
+				
+				//create converter that includes wrapping the byte array in a ByteString
+				Functor<ByteString, String> convert = new Functor.Composite<ByteString, byte[], String>(digest, ByteString.wrap);
+				return convert;
+		}
+	}
+	
 		public static KeyValueStore<String, Integer> newStore(String storeParams, String lang) {
 			KeyValueStore<String, Integer> store = null;
 			
-			String[] tt = storeParams.split("[,;|+/ &]+");
-			
-			Set<String> params = new HashSet<String>();
-			params.addAll(Arrays.asList(tt));
+			Set<String> params = parseParams(storeParams);
 			
 			if (params.contains("none") || params.contains("null")) store = null;
 			else if (params.contains("string")) store = new MapLookup<String, Integer>(new HashMap<String, Integer>());
@@ -74,10 +116,7 @@ public class NameMaps {
 				}
 				
 				if (params.contains("fold64")) { //fold into Long
-					Functor<Long, byte[]> fold;
-					fold = XorFold64.instance;
-					
-					Functor<Long, String> convert = new Functor.Composite<Long, byte[], String>(digest, fold);
+					Functor<Long, String> convert = (Functor<Long, String>)newHash(params, lang); //XXX: ugly cast
 
 					if (params.contains("primitive")) {
 						LongIntLookup<Long> numStore = new LongIntLookup<Long>();
@@ -87,13 +126,9 @@ public class NameMaps {
 						store = new KeyDigestingValueStore<String, Long, Integer>(numStore, convert);
 					}
 				} else { //keep bytes, wrap in ByteArray
-						if (params.contains("wrap8")) digest = new Functor.Composite<byte[], byte[], String>(digest, new XorWrap(8));
-						else if (params.contains("wrap6")) digest = new Functor.Composite<byte[], byte[], String>(digest, new XorWrap(6));
-						else if (params.contains("wrap4")) digest = new Functor.Composite<byte[], byte[], String>(digest, new XorWrap(4));
-						else if (params.contains("wrap4")) digest = new Functor.Composite<byte[], byte[], String>(digest, new XorWrap(4));
-						
+
 						//create converter that includes wrapping the byte array in a ByteString
-						Functor<ByteString, String> convert = new Functor.Composite<ByteString, byte[], String>(digest, ByteString.wrap);
+						Functor<ByteString, String> convert = (Functor<ByteString, String>)newHash(params, lang); //XXX: ugly cast
 			
 						//set up the store
 						MapLookup<ByteString, Integer> byteStore = new MapLookup<ByteString, Integer>(new HashMap<ByteString, Integer>());
