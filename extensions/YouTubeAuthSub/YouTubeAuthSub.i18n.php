@@ -1337,7 +1337,7 @@ Pro includer tu video in un pagina in le wiki, insere le sequente codice in un p
 <code>{{&#35;ev:youtube|$1}}</code>",
 	'youtubeauthsub_authsubinstructions' => 'Pro cargar un video, tu debera primo aperir un session in YouTube.',
 	'youtubeauthsub_uploadhere' => 'Carga tu video ab hic:',
-	'youtubeauthsub_uploadbutton' => 'Cargar',
+	'youtubeauthsub_uploadbutton' => 'Incargar',
 	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
 
 [http://www.youtube.com/watch?v=$1 Vider iste video]',

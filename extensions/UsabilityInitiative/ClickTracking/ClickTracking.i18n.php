@@ -551,9 +551,13 @@ $messages['et'] = array(
 
 /** Basque (Euskara)
  * @author An13sa
+ * @author Joxemai
  * @author Unai Fdz. de Betoño
  */
 $messages['eu'] = array(
+	'clicktracking' => 'Erabilgarritasun Ekimenerako klik laburpena',
+	'clicktracking-desc' => 'Orriaren berritzea ez dakarten gertakari laburpenen klik laburpena',
+	'ct-title' => 'Gehitutako erabiltzailearen klikak',
 	'ct-event-name' => 'Ekintzaren izena',
 	'ct-expert-header' => '"Aditu" klikak',
 	'ct-intermediate-header' => '"Maila ertaineko" klikak',

@@ -2543,6 +2543,7 @@ $messages['ja'] = array(
 );
 
 /** Javanese (Basa Jawa)
+ * @author Meursault2004
  * @author Pras
  */
 $messages['jv'] = array(
@@ -2575,6 +2576,8 @@ $messages['jv'] = array(
 	'contribstats-max' => 'Paling akèh (USD)',
 	'contribstats-percentage-ytd' => 'Persèntase (YTD)',
 	'contribstats-total-ytd' => 'Gunggung (YTD)',
+	'contribstats-week' => 'Minggu',
+	'contribstats-donations' => 'Sumbangan',
 	'fundraiserstatistics' => 'Statistik pangumpul dana',
 	'fundraiserstats-date' => 'Tanggal',
 	'fundraiserstats-day' => 'Dina ka-$1 saka $2 dina',

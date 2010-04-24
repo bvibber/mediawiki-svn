@@ -1254,6 +1254,31 @@ Per favor completa le questionario facultative hic infra.',
 Pro adjutar nos a meliorar los, per favor completa le questionario facultative hic infra.',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Kenrick95
+ */
+$messages['id'] = array(
+	'prefswitch-survey-true' => 'Ya',
+	'prefswitch-survey-false' => 'Tidak',
+	'prefswitch-survey-submit-off' => 'Matikan fitur baru',
+	'prefswitch-survey-submit-feedback' => 'Kirim umpan balik',
+	'prefswitch-survey-question-likedislike' => 'Apa yang Anda sukai tentang fitur baru ini?
+Apa yang Anda tidak sukai tentang fitur baru ini?',
+	'prefswitch-survey-answer-whyoff-hard' => 'Terlalu sulit untuk digunakan.',
+	'prefswitch-survey-answer-whyoff-didntwork' => 'Tidak berfungsi dengan baik.',
+	'prefswitch-survey-answer-whyoff-other' => 'Alasan lainnya:',
+	'prefswitch-survey-question-os' => 'Sistem operasi apa yang Anda gunakan?',
+	'prefswitch-survey-answer-os-other' => 'Sistem operasi lainnya:',
+	'prefswitch-survey-question-res' => 'Berapa besar resolusi layar Anda?',
+	'prefswitch-title-switched-on' => 'Selamat menikmati!',
+	'prefswitch-title-off' => 'Matikan fitur baru',
+	'prefswitch-title-switched-off' => 'Terima kasih',
+	'prefswitch-title-feedback' => 'Umpan balik',
+	'prefswitch-success-on' => 'Fitur baru sekarang telah dihidupkan.',
+	'prefswitch-success-off' => 'Fitur baru sekarang telah dimatikan.',
+	'prefswitch-success-feedback' => 'Umpan balik Anda telah terkirim.',
+);
+
 /** Italian (Italiano)
  * @author Una giornata uggiosa '94
  */

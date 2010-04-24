@@ -3277,6 +3277,55 @@ $messages['ig'] = array(
 	'wikilog-history-lc' => 'akíkó mbu',
 );
 
+/** Italian (Italiano)
+ * @author Civvì
+ */
+$messages['it'] = array(
+	'wikilog-new-item-go' => 'Crea',
+	'wikilog-item-name' => 'Nome articolo:',
+	'wikilog-published' => 'Pubblicato',
+	'wikilog-updated' => 'Aggiornato',
+	'wikilog-draft' => 'Bozza',
+	'wikilog-authors' => 'Autori',
+	'wikilog-wikilog' => 'Wikilog',
+	'wikilog-title' => 'Titolo',
+	'wikilog-actions' => 'Azioni',
+	'wikilog-comments' => 'Commenti',
+	'wikilog-replies' => 'Risposte',
+	'wikilog-view-archives' => 'Archivi',
+	'wikilog-view-summary' => 'Sommario',
+	'wikilog-draft-title-mark' => '(Bozza)',
+	'wikilog-anonymous-mark' => '(Anonimo)',
+	'wikilog-pager-newest' => 'più recente',
+	'wikilog-pager-oldest' => 'più datato',
+	'wikilog-pager-prev' => 'precedente',
+	'wikilog-pager-next' => 'successivo',
+	'wikilog-pager-first' => 'primo',
+	'wikilog-pager-last' => 'ultimo',
+	'wikilog-pager-empty' => '(senza articoli)',
+	'wikilog-no-comments' => 'nessun commento',
+	'wikilog-has-comments' => '{{PLURAL:$1|un commento|$1 commenti}}',
+	'wikilog-summary-uncategorized' => 'Non categorizzato',
+	'wikilog-summary-categories' => 'Archiviato in $2',
+	'wikilog-summary-more' => '[[$3|→ continua a leggere...]]',
+	'wikilog-edit-fieldset-legend' => 'Wikilog opzioni:',
+	'wikilog-edit-signpub' => 'Firma e pubblica questo articolo',
+	'wikilog-comment-note-edited' => 'Ultima modifica il $1 alle $2',
+	'wikilog-comment-anonsig' => '$3 (anonimo)',
+	'wikilog-comment-pending' => 'Questo commento è in attesa di approvazione.',
+	'wikilog-comment-deleted' => 'Il commento è stato cancellato.',
+	'wikilog-comment-autosumm' => 'Nuovo commento di $1: $2',
+	'wikilog-reply-to-comment' => 'Inviare una risposta a questo commento',
+	'wikilog-comment-page' => 'Vai alla pagina di questo commento',
+	'wikilog-comment-edit' => 'Modifica questo commento',
+	'wikilog-comment-delete' => 'Elimina questo commento',
+	'wikilog-comment-history' => 'Vedi cronologia del commento',
+	'wikilog-comment-approve' => 'Approvare questo commento (azione immediata)',
+	'wikilog-comment-reject' => 'Rifiuta questo commento (azione immediata)',
+	'wikilog-newtalk-text' => '<!-- pagina vuota creata da Wikilog -->',
+	'wikilog-newtalk-summary' => 'creato automaticamente da Wikilog',
+);
+
 /** Japanese (日本語)
  * @author Aotake
  * @author Fryed-peach

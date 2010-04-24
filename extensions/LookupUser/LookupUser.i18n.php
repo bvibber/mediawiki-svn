@@ -146,10 +146,11 @@ $messages['bg'] = array(
 
 /** Breton (Brezhoneg)
  * @author Fulup
+ * @author Y-M D
  */
 $messages['br'] = array(
 	'lookupuser' => 'Sellet ouzh titouroù an implijer',
-	'lookupuser-desc' => "[[Special:LookupUser|Adpakañ a ra an titouroù]] a denn d'un implijer bennak evel ar chomlec'h elektronek hag an niverenn ID",
+	'lookupuser-desc' => "[[Special:LookupUser|Adpakañ a ra an titouroù]] a denn d'un implijer bennak evel ar chomlec'h postel hag an niverenn ID",
 	'lookupuser-intro' => 'Merkaén un anv implijer da sellet ouzh e benndibaboù.',
 	'lookupuser-nonexistent' => "Fazi : n'eus ket eus an implijer-mañ",
 	'lookupuser-authenticated' => 'Aotreet e $1',

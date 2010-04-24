@@ -287,6 +287,7 @@ $messages['id'] = array(
 );
 
 /** Italian (Italiano)
+ * @author Civvì
  * @author Darth Kule
  */
 $messages['it'] = array(
@@ -295,6 +296,7 @@ $messages['it'] = array(
 	'transliterator-error-syntax' => 'Sintassi <code>$1</code> non valida in [[MediaWiki:$2]]',
 	'transliterator-error-rulecount' => 'Più di $1 {{PLURAL:$1|regola|regole}} in [[MediaWiki:$2]]',
 	'transliterator-error-rulesize' => 'Regola <code>$1</code> ha più di $3 {{PLURAL:$3|carattere|caratteri}} a sinistra in [[MediaWiki:$2]]',
+	'transliterator-error-prefix' => '[[MediaWiki:$2]] deve essere lungo almeno $1 {{PLURAL:$1|carattere|caratteri}}.',
 );
 
 /** Japanese (日本語)

@@ -67,11 +67,25 @@ $messages['ia'] = array(
 	'parserwiki-desc' => 'Permitte definir un grammatica in un wiki, postea usar iste grammatica pro inserer information in le mesme wiki',
 );
 
+/** Italian (Italiano)
+ * @author Civvì
+ */
+$messages['it'] = array(
+	'parserwiki-desc' => 'Consente di definire una grammatica in un wiki e quindi si utilizzare quella grammatica per inserire informazioni nel wiki stesso',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
 	'parserwiki-desc' => 'Овозможува утврдување на граматика во едно вики и употреба на таа граматика за внос на информации во тоа вики',
+);
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'parserwiki-desc' => 'Maakt het mogelijk grammatica te definiëren en deze grammatica dan te gebruiken om informatie in te voeren',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

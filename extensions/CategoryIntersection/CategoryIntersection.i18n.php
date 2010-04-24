@@ -410,6 +410,7 @@ $messages['lb'] = array(
 	'categoryintersection-desc' => "Säit mat enger Tabell mat den ''Hashwerter'' vun de [[Special:CategoryIntersection|Kategorieniwwerschneidungen]]",
 	'categoryintersection-doit' => 'Lëscht vun de Säiten aus all dëse Kategorien',
 	'categoryintersection-maxcategories' => 'Déi maximal Zuel vu Kategorien déi sech iwwerschneiden däerfen ass $1.',
+	'categoryintersection-mincategories' => 'Dir musst mindestens zwou Kategorien drasetzen.',
 	'categoryintersection-results' => "D'Resultat vun der der Sich  {{PLURAL:$1|ass $1 Titel|si(nn) $1 Titelen}}.",
 );
 

@@ -184,6 +184,14 @@ $messages['ia'] = array(
 	'tooltip-pt-prefswitch-link' => 'Probar nove functiones',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Kenrick95
+ */
+$messages['id'] = array(
+	'prefswitch-link' => 'Baru!',
+	'tooltip-pt-prefswitch-link' => 'Coba fitur baru',
+);
+
 /** Italian (Italiano)
  * @author Una giornata uggiosa '94
  */
