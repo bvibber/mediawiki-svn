@@ -24,18 +24,20 @@ import de.brightbyte.wikiword.model.WikiWordConcept;
 
 public class SlidingCoherenceDisambiguator extends CoherenceDisambiguator {
 
-	protected int window ; 
+	protected int window;
+	protected int initialWindow; 
 	
 	public SlidingCoherenceDisambiguator(MeaningFetcher<LocalConcept> meaningFetcher, FeatureFetcher<LocalConcept, Integer> featureFetcher, boolean featuresAreNormalized) {
 		this(meaningFetcher, featureFetcher, WikiWordConcept.theCardinality, Functors.Double.product2,
 					featuresAreNormalized ? ScalarVectorSimilarity.<Integer>getInstance() : CosineVectorSimilarity.<Integer>getInstance(),  //if pre-normalized, use scalar to calc cosin
-					5);
+					5, 5);
 	}
 	
-	public SlidingCoherenceDisambiguator(MeaningFetcher<LocalConcept> meaningFetcher, FeatureFetcher<LocalConcept, Integer> featureFetcher, Measure<WikiWordConcept> popularityMeasure, Functor2<? extends Number, Number, Number> weightCombiner, Similarity<LabeledVector<Integer>> sim, int window) {
+	public SlidingCoherenceDisambiguator(MeaningFetcher<LocalConcept> meaningFetcher, FeatureFetcher<LocalConcept, Integer> featureFetcher, Measure<WikiWordConcept> popularityMeasure, Functor2<? extends Number, Number, Number> weightCombiner, Similarity<LabeledVector<Integer>> sim, int window, int initialWindow) {
 		super(meaningFetcher, featureFetcher, popularityMeasure, weightCombiner, sim);
 		
-		this.window = window;
+ 		this.window = window;
+ 		this.initialWindow = initialWindow;
 	}
 
 	public <X extends TermReference>Result<X, LocalConcept> evalStep(List<X> baseSequence, Map<X, LocalConcept> interpretation, PhraseNode<X> node, 
@@ -57,7 +59,7 @@ public class SlidingCoherenceDisambiguator extends CoherenceDisambiguator {
 		if (to-from < 2) {
 			r = popularityDisambiguator.disambiguate(node, frame, meanings, context);
 		} else {
-			List<Map<X, LocalConcept>> interpretations = getInterpretations(from, to, frame,  interpretation, meanings);
+			List<Disambiguator.Interpretation<X, LocalConcept>> interpretations = getInterpretations(from, to, frame,  interpretation, meanings);
 			r = getBestInterpretation(node, frame, meanings, context, interpretations, similarities, features);
 		}
 		
@@ -68,7 +70,7 @@ public class SlidingCoherenceDisambiguator extends CoherenceDisambiguator {
 	 * @see de.brightbyte.wikiword.disambig.Disambiguator#disambiguate(java.util.List)
 	 */
 	public <X extends TermReference>Result<X, LocalConcept> disambiguate(PhraseNode<X> root, Collection<X> terms, Map<X, List<? extends LocalConcept>> meanings, Collection<LocalConcept> context) throws PersistenceException {
-		if (terms.isEmpty() || meanings.isEmpty()) return new Disambiguator.Result<X, LocalConcept>(Collections.<X, LocalConcept>emptyMap(), 0.0, "no terms or meanings");
+		if (terms.isEmpty() || meanings.isEmpty()) return new Disambiguator.Result<X, LocalConcept>(Collections.<X, LocalConcept>emptyMap(), Collections.<X>emptyList(), 0.0, "no terms or meanings");
 
 		int sz = Math.min(terms.size(), meanings.size());
 		if (context!=null) sz += context.size();
@@ -95,6 +97,12 @@ public class SlidingCoherenceDisambiguator extends CoherenceDisambiguator {
 		PhraseNode<X> currentNode = root;
 		List<X> sequence = new ArrayList<X>();
 		
+		if (initialWindow > 0) { //apply full coherence disambig to initial window size. initialWindow == 1 will trigger a popularity disambig.
+			Collection<List<X>> sequences = getSequences(root, initialWindow);
+			Result<X, LocalConcept> r = disambiguate(sequences, root, terms, meanings, context);
+			sequence.addAll(r.getSequence());
+		}
+		
 		while (true) {
 			List<? extends PhraseNode<X>> successors = currentNode.getSuccessors();
 			if (successors==null || successors.isEmpty()) break;
@@ -103,7 +111,7 @@ public class SlidingCoherenceDisambiguator extends CoherenceDisambiguator {
 			PhraseNode<X>  bestNode = null;
 			
 			for (PhraseNode<X> n: successors) {
-				Result<X, LocalConcept> r = evalStep(sequence, disambig, currentNode, meanings, context, similarities, features);
+				Result<X, LocalConcept> r = evalStep(sequence, disambig, currentNode, meanings, context, similarities, features); //empty sequence will trigger popularity disambig
 				if (best == null || best.getScore() < r.getScore()) {
 					best = r;
 					bestNode = n;
@@ -118,10 +126,10 @@ public class SlidingCoherenceDisambiguator extends CoherenceDisambiguator {
 			disambig.put(term, meaning);
 		}
 		
-		return getScore(disambig, context, similarities, features); //FIXME: this is unnecessarily expensive, we usually don't need the scores this calculates. 
+		return getScore(new Disambiguator.Interpretation<X, LocalConcept>(disambig, sequence), context, similarities, features); //FIXME: this is unnecessarily expensive, we usually don't need the scores this calculates. 
 	}
 
-	protected <X extends TermReference>List<Map<X, LocalConcept>> getInterpretations(int from, int to, List<X> terms,  Map<X, ? extends LocalConcept> known, Map<? extends TermReference, List<? extends LocalConcept>> meanings) {
+	protected <X extends TermReference>List<Disambiguator.Interpretation<X, LocalConcept>> getInterpretations(int from, int to, List<X> terms,  Map<X, ? extends LocalConcept> known, Map<? extends TermReference, List<? extends LocalConcept>> meanings) {
 		//strip out all terms with no known meaning
 		if (meanings.keySet().size() != terms.size()) {
 			List<X> t = new ArrayList<X>(terms.size());

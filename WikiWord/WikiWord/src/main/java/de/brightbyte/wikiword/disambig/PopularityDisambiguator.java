@@ -46,13 +46,31 @@ public class PopularityDisambiguator extends AbstractDisambiguator<TermReference
 	}
 
 	public <X extends TermReference>Result<X, LocalConcept> disambiguate(PhraseNode<X> root, Collection<X> terms, Map<X, List<? extends LocalConcept>> meanings, Collection<LocalConcept> context) {
-		if (terms.isEmpty() || meanings.isEmpty()) return new Disambiguator.Result<X, LocalConcept>(Collections.<X, LocalConcept>emptyMap(), 0.0, "no terms or meanings");
+		Collection<List<X>> sequences = getSequences(root, Integer.MAX_VALUE);
+		return disambiguate(sequences, root, terms, meanings, context);
+	}
+	
+	public <X extends TermReference>Result<X, LocalConcept> disambiguate(Collection<List<X>> sequences, PhraseNode<X> root, Collection<X> terms, Map<X, List<? extends LocalConcept>> meanings, Collection<LocalConcept> context) {
+		Result<X, LocalConcept> best = null;
+		
+		for (List<X> sequence: sequences) {
+			Result<X, LocalConcept> r = disambiguate(sequence, meanings, context);
+			if (best == null || best.getScore() < r.getScore()) {
+				best = r;
+			}
+		}
+		
+		return best;
+	}
+	
+	public <X extends TermReference>Result<X, LocalConcept> disambiguate(List<X> sequence, Map<X, List<? extends LocalConcept>> meanings, Collection<LocalConcept> context) {
+		if (sequence.isEmpty() || meanings.isEmpty()) return new Disambiguator.Result<X, LocalConcept>(Collections.<X, LocalConcept>emptyMap(), Collections.<X>emptyList(), 0.0, "no terms or meanings");
 
 		Map<X, LocalConcept> disambig = new HashMap<X, LocalConcept>();
 		double score = 0;
 		int totalPop = 0;
 		
-		for (X t: terms) {
+		for (X t: sequence) {
 			List<? extends LocalConcept> m = meanings.get(t);
 			if (m==null || m.size()==0) continue;
 			
@@ -70,7 +88,7 @@ public class PopularityDisambiguator extends AbstractDisambiguator<TermReference
 
 		if (disambig.size()>0) score = score / disambig.size();
 		
-		Result<X, LocalConcept> r = new Result<X, LocalConcept>(disambig, score, "score="+score+"; pop="+totalPop);
+		Result<X, LocalConcept> r = new Result<X, LocalConcept>(disambig, sequence, score, "score="+score+"; pop="+totalPop);
 		return r;
 	}
 

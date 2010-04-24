@@ -70,19 +70,20 @@ public abstract class AbstractDisambiguator<T extends TermReference, C extends W
 		this.meaningOverrides = overrideMap;
 	}	
 
-	protected <X extends T>Collection<X> getTerms(PhraseNode<X> root) {
+	protected <X extends T>Collection<X> getTerms(PhraseNode<X> root, int depth) {
 		TermSetBuilder<X> builder = new TermSetBuilder<X>();
-		walk(root, null, builder);
+		walk(root, null, builder, depth);
 		return builder.getTerms();
 	}
 	
-	protected <X extends T>Collection<List<X>> getSequences(PhraseNode<X> root) {
+	protected <X extends T>Collection<List<X>> getSequences(PhraseNode<X> root, int depth) {
 		SequenceSetBuilder<X> builder = new SequenceSetBuilder<X>();
-		walk(root, null, builder);
+		walk(root, null, builder, depth);
 		return builder.getSequences();
 	}
 	
-	protected <X extends T>void walk(PhraseNode<X> root, List<X> seqence, NodeListener<? super X> nodeListener) {
+	protected <X extends T>void walk(PhraseNode<X> root, List<X> seqence, NodeListener<? super X> nodeListener, int depth) {
+		if (depth<1) return;
 		if (seqence == null) seqence = new ArrayList<X>();
 		
 		X t = root.getTermReference();
@@ -93,15 +94,17 @@ public abstract class AbstractDisambiguator<T extends TermReference, C extends W
 		
 		List<? extends PhraseNode<X>> successors = root.getSuccessors();
 		
-		for (PhraseNode<X> n: successors) {
-			walk(n, seqence, nodeListener);
+		if (depth>1) {
+			for (PhraseNode<X> n: successors) {
+				walk(n, seqence, nodeListener, depth-1);
+			}
 		}
 		
 		if (t.getTerm().length()>0) seqence.remove(t); //pop
 	}
 	
 	protected <X extends T>Map<X, List<? extends C>> getMeanings(PhraseNode<X> root) throws PersistenceException {
-		Collection<X> terms = getTerms(root);
+		Collection<X> terms = getTerms(root, Integer.MAX_VALUE);
 		return getMeanings(terms);
 	}
 	
@@ -133,7 +136,7 @@ public abstract class AbstractDisambiguator<T extends TermReference, C extends W
 	}
 	
 	public <X extends T>Result<X, C> disambiguate(PhraseNode<X> root, Collection<C> context) throws PersistenceException {
-		Collection<X> terms = getTerms(root);
+		Collection<X> terms = getTerms(root, Integer.MAX_VALUE);
 		Map<X, List<? extends C>> meanings = getMeanings(terms);
 		return disambiguate(root, terms, meanings, context);
 	}

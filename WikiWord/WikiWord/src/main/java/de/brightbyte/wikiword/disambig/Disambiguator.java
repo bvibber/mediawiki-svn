@@ -12,14 +12,33 @@ import de.brightbyte.wikiword.model.WikiWordConcept;
 
 public interface Disambiguator<T extends TermReference, C extends WikiWordConcept> {
 
+	public static class Interpretation<T extends TermReference, C extends WikiWordConcept> {
+		private final Map<T, C> meanings; 		
+		private final List<T> sequence;
+		
+		public Interpretation(final Map<T, C> meanings, final List<T> sequence) {
+			this.meanings = meanings;
+			this.sequence = sequence;
+		}
+		
+		public Map<T, C> getMeanings() {
+			return meanings;
+		}
+		public List<T> getSequence() {
+			return sequence;
+		}
+	}
+	
 	public static class Result<T extends TermReference, C extends WikiWordConcept> implements Comparable {
 		private Map<? extends T, ? extends C> meanings;
+		private List<? extends T> sequence;
 		private double score;
 		private String description;
 		
-		public Result(Map<? extends T, ? extends C> meanings, double score, String description) {
+		public Result(Map<? extends T, ? extends C> meanings, List<? extends T> sequence, double score, String description) {
 			super();
 			this.meanings = meanings;
+			this.sequence = sequence;
 			this.score = score;
 			this.description = description;
 		}
@@ -28,6 +47,10 @@ public interface Disambiguator<T extends TermReference, C extends WikiWordConcep
 			return meanings;
 		}
 		
+		public List<? extends T> getSequence() {
+			return sequence;
+		}
+
 		public double getScore() {
 			return score;
 		}
