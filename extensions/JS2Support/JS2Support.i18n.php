@@ -61,13 +61,6 @@ $messages['gl'] = array(
 	'js2support-desc' => 'Apoio JS2 en forma de extensión',
 );
 
-/** Swiss German (Alemannisch)
- * @author Als-Holder
- */
-$messages['gsw'] = array(
-	'js2support-desc' => 'JS2-Unterstitzig dur e Erwyterig',
-);
-
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

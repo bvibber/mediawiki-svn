@@ -6,7 +6,7 @@ if ( !defined( 'MEDIAWIKI' ) ) die();
  */
 
 /**
- * ScriptLoaderOutputPage extends OutputPage with script-loader calls 
+ * ScriptLoaderOutputPage extends OutputPage with script-loader calls
  */
 class ScriptLoaderOutputPage extends OutputPage {
 	// Flag javascript Classes loaded
@@ -22,11 +22,15 @@ class ScriptLoaderOutputPage extends OutputPage {
 	 * Default Buckets include:
 	 * 'page' - Default, Script part of the "current page"
 	 * 				to improve cache hit rate only put scripts / css
-	 * 				into the page bucket if specific to a page
+	 * 				into the page bucket if specific to a particular page ( and no other )
 	 * 				( ie Special:Upload or action=edit )
 	 * 'user' - scripts /css specific to the current logged in user
-	 * 'core' - scripts /css loaded on every page view
-	 * 				( mwEmbed.js, jQuery, and wikibits are in this bucket by deafult )
+	 * 'allpage' - scripts /css loaded on every page view
+	 * 				( jQuery, mwEmbed.js and wikibits are in this bucket by default )
+	 * 'abritraryString' - Arbitrary script grouping bucket string
+	 * 				For example if you had a script that was included on
+	 *				all category pages then the bucket could be 'category'
+	 *				this way you would not break the cache for other per page scripts
 	 */
 	var $mScriptLoaderClassList = array(
 		'js'=> array(),
@@ -39,7 +43,7 @@ class ScriptLoaderOutputPage extends OutputPage {
 	// Local scriptLoader instance object
 	var $mScriptLoader = null;
 
-/**
+	/**
 	 * Add a JavaScript file out of skins/common, or a given relative path.
 	 *
 	 * @param $file String: filename in skins/common or complete on-server path
@@ -83,9 +87,9 @@ class ScriptLoaderOutputPage extends OutputPage {
 			if( isset( $reqSet['title'] ) && $reqSet != '' ) {
 				// Make sure the title ends with .js or css
 				if( substr( $reqSet['title'], -3 ) != '.js' &&
-					substr( $reqSet['title'], -3 ) != 'css' &&
-					$reqSet['title'] != '-' ){
-						return false;
+				substr( $reqSet['title'], -3 ) != 'css' &&
+				$reqSet['title'] != '-' ){
+					return false;
 				}
 
 				$className = 'WT:' . $reqSet['title'];
@@ -119,7 +123,7 @@ class ScriptLoaderOutputPage extends OutputPage {
 		// Add site JS if enabled:
 		if( $wgUseSiteJs ) {
 			$this->addScriptClass( 'WT:-|useskin=' .
-				urlencode( $sk->getSkinName() ) .'|gen=js' );
+			urlencode( $sk->getSkinName() ) .'|gen=js' );
 		}
 
 		// Add user js if enabled:
@@ -145,7 +149,7 @@ class ScriptLoaderOutputPage extends OutputPage {
 		}
 
 		// Add our core scripts to mScripts ( includes jQuery, mwEmbed & wikibits )
-		$this->includeCoreJS();
+		$this->includeAllPageJS();
 
 
 		// If the script-loader is enabled get script-loader classes per buckets
@@ -227,7 +231,7 @@ class ScriptLoaderOutputPage extends OutputPage {
 				return '';
 			}
 		}
-		
+
 		// If script-loader enabled check if we can add the script via script-loader
 		if( $wgEnableScriptLoader ) {
 			global $wgStylePath, $wgScript;
@@ -235,7 +239,7 @@ class ScriptLoaderOutputPage extends OutputPage {
 			if( strpos( $style, $wgScript ) === false ) {
 				$style = $wgStylePath ."/". $style;
 			}
-			$cssClass = $this->getClassFromPath( $style );			
+			$cssClass = $this->getClassFromPath( $style );
 			if( $cssClass ) {
 				$this->addScriptClass( $cssClass, $bucketKey, 'css');
 				// Update the options for this script bucket. ( css has per-bucket options )
@@ -251,7 +255,7 @@ class ScriptLoaderOutputPage extends OutputPage {
 	 * These will be applied to various media & IE conditionals.
 	 */
 	public function buildCssLinks() {
-		global $wgEnableScriptLoader;		
+		global $wgEnableScriptLoader;
 		$scriptLoaderCss = '';
 		if( $wgEnableScriptLoader ){
 			$scriptLoaderCss = $this->getScriptLoaderCss();
@@ -269,16 +273,18 @@ class ScriptLoaderOutputPage extends OutputPage {
 	 *
 	 * @since 1.17
 	 */
-	public function includeCoreJS ( ) {
+	public function includeAllPageJS ( ) {
 		global $wgExtensionJavascriptLoader, $wgEnableScriptLoader,
-		$wgJSAutoloadClasses, $wgScriptPath;
+		$wgScriptLoaderNamedPaths, $wgScriptPath;
 
-		// Set core Classes ( note wikibits will be phased out )
+		// Set core Classes
 		$coreClasses = array( 'wikibits', 'window.jQuery', 'mwEmbed' );
 
-		// Merge in any scripts that have been set as "core"
-		if( isset( $this->mScriptLoaderClassList[ 'js' ][ 'core' ] ) ) {
-			$coreClasses = array_merge($coreClasses, $this->mScriptLoaderClassList[ 'js' ][ 'core' ] );
+		// Merge in any scripts that have been set as "allpage"
+		// Since the all page are on every page view they should just be part of the core
+		// script request.
+		if( isset( $this->mScriptLoaderClassList[ 'js' ][ 'allpage' ] ) ) {
+			$coreClasses = array_merge($coreClasses, $this->mScriptLoaderClassList[ 'js' ][ 'allpage' ] );
 		}
 
 		// Make sure scripts are the first scripts include on the page.
@@ -288,6 +294,7 @@ class ScriptLoaderOutputPage extends OutputPage {
 		$this->mScripts = '';
 
 		if( $wgEnableScriptLoader ) {
+			$this->mScripts = "\n<!-- Script bucket: allpage --> \n";
 			$this->mScripts = $this->getLinkedScriptLoaderJs( $coreClasses );
 		} else {
 			// No ScriptLoader manually add the classes:
@@ -309,12 +316,12 @@ class ScriptLoaderOutputPage extends OutputPage {
 	 * Get style sheets grouped by  "media", "condition" & "bucket" attributes
 	 * call getLinkedScriptLoaderCss for each group
 	 */
-	private function getScriptLoaderCss( ){		
-		
+	private function getScriptLoaderCss( ){
+
 		$s='';
 		foreach( $this->mScriptLoaderClassList['css'] as $bucketKey => $classSet ){
 			// Note we don't include the "core" bucket since its handled by
-			// includeCoreJS
+			// includeAllPageJS
 			if( count( $classSet) ) {
 				$options = $this->getClassBucketOptions( $bucketKey );
 				$s .= "\n<!-- Css bucket: " . htmlspecialchars( $bucketKey ) . "--> \n";
@@ -354,9 +361,11 @@ class ScriptLoaderOutputPage extends OutputPage {
 	private function getScriptLoaderJs(){
 		$s='';
 		foreach( $this->mScriptLoaderClassList['js'] as $bucket => $classSet ){
-			// Note we don't include the "core" bucket since its handled by
-			// includeCoreJS
-			if( count( $classSet) && $bucket != 'core' ){
+			// Note we don't include the "allpage" bucket since its handled by
+			// includeAllPageJS
+			// allpage scripts are handled separately to ensure
+			// they are at the top of the page.
+			if( count( $classSet) && $bucket != 'allpage' ){
 				$s .= "\n<!-- Script bucket: $bucket --> \n";
 				$s .= $this->getLinkedScriptLoaderJs( $classSet );
 			}
@@ -383,7 +392,7 @@ class ScriptLoaderOutputPage extends OutputPage {
 	 * @return boolean False if the class wasn't found, True on success
 	 */
 	function addScriptClass( $className, $scriptRequestBucket = 'page' , $type='js') {
-		global $wgDebugJavaScript, $wgJSAutoloadClasses, $IP,
+		global $wgDebugJavaScript, $wgScriptLoaderNamedPaths, $IP,
 		$wgEnableScriptLoader, $wgStyleVersion, $wgScriptPath, $wgStylePath,
 		$wgUser;
 
@@ -458,12 +467,12 @@ class ScriptLoaderOutputPage extends OutputPage {
 	 * @return String script path or Boolean false if not found
 	 */
 	function getClassFromPath( $path ) {
-		global $wgJSAutoloadClasses, $wgScriptPath;
+		global $wgScriptLoaderNamedPaths, $wgScriptPath;
 		// Make sure we have the scriptClass paths loaded:
 		jsClassLoader::loadClassPaths();
 
 		// Check the autoload js class list
-		foreach( $wgJSAutoloadClasses as $className => $classPath ) {
+		foreach( $wgScriptLoaderNamedPaths as $className => $classPath ) {
 			$classPath = "{$wgScriptPath}/{$classPath}";
 			if( $path == $classPath ){
 				return $className;
@@ -560,7 +569,7 @@ class ScriptLoaderOutputPage extends OutputPage {
 			}
 
 			// Add the latest msg rev id if $wgScriptModifiedMsgCheck is enabled
-			// NOTE this is too slow so its disabled ( we need to cache the msg key in the database )
+			// NOTE this is too slow so its disabled ( we need to cache the most recent msg key in the database )
 			/*
 			if( $wgScriptModifiedMsgCheck ){
 			$dbr = wfGetDB( DB_SLAVE );
