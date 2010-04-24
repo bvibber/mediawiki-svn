@@ -1,6 +1,6 @@
 <?
 /**
- * Internationalisation for Add Media Wizard extension
+ * Internationalisation for Upload Wizard extension
  *
  * @file
  * @ingroup Extensions
@@ -12,6 +12,6 @@ $messages = array();
  * @author Neil Kandalgaonkar
  */
 $messages['en'] = array(
-	'uploadwizard' => 'Upload Wizard',
-	'uploadwizard-desc' => 'Upload Wizard, Developed for the Multimedia Usability grant'
+	'uploadwizard' => 'Upload wizard',
+	'uploadwizard-desc' => 'Upload wizard, developed for the Multimedia Usability grant'
 );

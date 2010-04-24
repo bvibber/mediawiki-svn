@@ -41,6 +41,7 @@ $wgExtensionAliasesFiles['UploadWizard'] = $dir . 'UploadWizard.alias.php';
 # Add the special page
 $wgAutoloadLocalClasses[ 'SpecialUploadWizard' ] = $dir . 'SpecialUploadWizard.php';
 $wgSpecialPages['UploadWizard'] = 'SpecialUploadWizard';
+$wgSpecialPageGroups['UploadWizard'] = 'media';
 
 $wgScriptLoaderNamedPaths[ 'UploadWizardPage' ] = 'extensions/JS2Support/UploadWizard/UploadWizardPage.js';
 

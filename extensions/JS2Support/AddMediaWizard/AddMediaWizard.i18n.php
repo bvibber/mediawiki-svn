@@ -12,5 +12,5 @@ $messages = array();
  * @author Michael Dale
  */
 $messages['en'] = array(
-	'addmediawizard-desc' => 'Add Media Wizard, Developed in partnership by kaltura and wikimedia foundation'
+	'addmediawizard-desc' => 'Add media wizard, developed in partnership by Kaltura and Wikimedia Foundation',
 );

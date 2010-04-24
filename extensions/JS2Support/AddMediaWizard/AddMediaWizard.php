@@ -24,11 +24,14 @@
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'Add Media Wizard',
-	'author' => 'Michael Dale and others',
+	'author' => array( 'Michael Dale', 'others' ),
 	'version' => '0.1.1',
 	'descriptionmsg' => 'addmediawizard-desc',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:AddMediaWizard'
 );
+
+$dir = dirname(__FILE__) . '/';
+$wgExtensionMessagesFiles['AddMediaWizard'] = $dir . 'AddMediaWizard.i18n.php';
 
 // Includes parent JS2Support
 require_once( dirname( dirname( __FILE__ ) ) . "/JS2Support.php" );

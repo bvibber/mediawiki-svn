@@ -8,6 +8,6 @@ $aliases = array();
 
 /** English */
 $aliases['en'] = array(
-    'UploadWizard' => array( 'UploadWizard' ),
+	'UploadWizard' => array( 'UploadWizard' ),
 );
 
