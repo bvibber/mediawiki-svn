@@ -28,14 +28,14 @@ void png_read(FILE* fin, FILE* fout, pngcallbacks* callbacks, void* extra1, void
 	info.fout = fout;
 	if (callbacks == NULL)
 	{
-		callbacks = malloc(sizeof(pngcallbacks));
-		callbacks->completed_scanline = NULL;
-		callbacks->read_header = NULL;
-		callbacks->done = NULL;
+		info.callbacks.completed_scanline = NULL;
+		info.callbacks.read_header = NULL;
+		info.callbacks.done = NULL;
 	}
-	if (callbacks->completed_scanline == NULL)
-		callbacks->completed_scanline = &png_write_scanline_raw;
-	info.callbacks = callbacks;
+	else
+		info.callbacks = *callbacks;
+	if (info.callbacks.completed_scanline == NULL)
+		info.callbacks.completed_scanline = &png_write_scanline_raw;
 	
 	info.extra1 = extra1;
 	info.extra2 = extra2;
@@ -46,8 +46,8 @@ void png_read(FILE* fin, FILE* fout, pngcallbacks* callbacks, void* extra1, void
 	
 	while (png_read_chunk(&info));
 		
-	if (callbacks->done != NULL)
-		(*callbacks->done)(&info);
+	if (info.callbacks.done != NULL)
+		(*info.callbacks.done)(&info);
 	
 	// Cleanup
 	free(info.header);
@@ -61,11 +61,9 @@ int png_read_chunk(pngreader *info)
 	chunkheader c_head;
 	uint32_t crc;
 
-	png_read_int(&c_head.length, info->fin, NULL);
-	
+	c_head.length = png_read_int(info->fin, NULL);
 	info->crc = crc32(0, Z_NULL, 0);
-	c_head.type = malloc(4);
-	png_fread(c_head.type, 4, info->fin, &info->crc);
+	png_fread(c_head.type, sizeof(c_head.type), info->fin, &info->crc);
 	
 	if (strncmp(c_head.type, "IHDR", 4) == 0)
 	{
@@ -88,14 +86,11 @@ int png_read_chunk(pngreader *info)
 		png_die("critical_chunk", c_head.type);
 	}
 	
-	png_read_int(&crc, info->fin, NULL);
+	crc = png_read_int(info->fin, NULL);
 #ifndef NO_CRC	
 	if (crc != info->crc)
 		png_die("crc_mismatch", &info->crc);
 #endif
-	
-	// When I free this, I get a read error. Wtf?
-	// free(c_head.type);
 	
 	return strncmp(c_head.type, "IEND", 4);
 }
@@ -108,8 +103,8 @@ void png_read_header(pngreader *info, uint32_t length)
 		png_die("unexpected_header_length", &length);
 	
 	info->header = malloc(sizeof(pngheader));
-	png_read_int(&info->header->width, info->fin, &info->crc);
-	png_read_int(&info->header->height, info->fin, &info->crc);
+	info->header->width = png_read_int(info->fin, &info->crc);
+	info->header->height = png_read_int(info->fin, &info->crc);
 	
 	// Read the last 5 members
 	png_fread(((uint32_t*)info->header) + 2, 5, info->fin, &info->crc);
@@ -160,8 +155,8 @@ void png_read_header(pngreader *info, uint32_t length)
 	if (ret != Z_OK)
 		png_die("zlib_init_error", &ret);
 	
-	if (info->callbacks->read_header != NULL)
-		(*info->callbacks->read_header)(info);
+	if (info->callbacks.read_header != NULL)
+		(*info->callbacks.read_header)(info);
 }
 
 void png_read_palette(pngreader *info, uint32_t length)
@@ -292,8 +287,8 @@ void png_defilter(pngreader *info, unsigned char *buffer, unsigned int size)
 			unsigned char *tmp;
 				
 			info->line_count++;
-			if (info->callbacks->completed_scanline != NULL)
-				(*info->callbacks->completed_scanline)(info->current_scanline, 
+			if (info->callbacks.completed_scanline != NULL)
+				(*info->callbacks.completed_scanline)(info->current_scanline, 
 				info->previous_scanline, info->scan_pos, info);
 			tmp = info->previous_scanline;
 			info->previous_scanline = info->current_scanline;

@@ -51,7 +51,7 @@ typedef struct
 typedef struct
 {
 	uint32_t length;
-	char *type;
+	char type[4];
 } chunkheader;
 
 typedef struct
@@ -93,7 +93,7 @@ typedef struct
 	FILE *fin;
 	FILE *fout;
 	
-	pngcallbacks *callbacks;
+	pngcallbacks callbacks;
 	
 	void *extra1;
 	void *extra2;
