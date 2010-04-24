@@ -300,9 +300,11 @@ $messages['ia'] = array(
 
 /** Indonesian (Bahasa Indonesia)
  * @author IvanLanin
+ * @author Kenrick95
  */
 $messages['id'] = array(
 	'wikieditor-template-editor-preference' => 'Aktifkan penyuntingan berbasis form dari templat wiki',
+	'wikieditor-template-editor-dialog-cancel' => 'Batalkan',
 );
 
 /** Italian (Italiano)

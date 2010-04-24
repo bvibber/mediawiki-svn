@@ -354,9 +354,11 @@ $messages['ka'] = array(
 
 /** Korean (한국어)
  * @author Devunt
+ * @author Kwj2772
  */
 $messages['ko'] = array(
 	'wikieditor' => '확장된 위키텍스트 편집 인터페이스',
+	'wikieditor-desc' => '확장된 위키 문법 편집 인터페이스와 다양한 기능을 제공하는 모듈을 제공',
 	'wikieditor-wikitext-tab' => '위키텍스트',
 	'wikieditor-loading' => '로딩중',
 );

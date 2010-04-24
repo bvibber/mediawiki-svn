@@ -342,11 +342,14 @@ $messages['ia'] = array(
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author Kenrick95
  * @author Rex
  */
 $messages['id'] = array(
 	'usabilityinitiative' => 'Proyek Inisiatif Kebergunaan',
 	'usabilityinitiative-desc' => 'Fitur-fitur yang dikembangkan oleh Proyek Inisiatif Kebergunaan Wikipedia untuk meningkatkan kebergunaan MediaWiki',
+	'prefs-beta' => 'Fitur Beta',
+	'prefs-labs' => 'Fitur Labs',
 );
 
 /** Italian (Italiano)

@@ -1931,6 +1931,20 @@ Gure itxura berriari buruz pentsatzen duzuna nahi genuke jakin.  Eskertuko genuk
 	'optin-survey-answer-changes-nav' => 'Gunean nabigatzea errazten du.',
 	'optin-survey-answer-changes-upload' => 'Edukiak eta artxiboen igoera hobetu.',
 	'optin-survey-answer-changes-other' => 'Bestelakoak:',
+	'optin-improvements2' => '== Zer da hobetu dena? ==
+[[File:UsabilityToolbar.png|left|link=|Editatzeko tresna-barra berriaren itxura.]]
+[[File:UsabilityDialogs.png|left|link=|Edukia sortzeko elkarrizketa berrien itxura.]]
+;Hobetutako Tresna-barra
+Tresna-barra berriak artikuluak editatzea erraztu egiten du.
+Ikono berriak hobeak dira eta argiago erakusten dute tresna bakoitzaren erabilgarritasuna.
+Atal zabalduen gainezka-itxura hobetu egiten da, gutxitan erabilitako ikonoak klik bat aparte jarriz.
+;Elkarrizketa
+Loturak eta taulak sortzean, tresna sakatzean elkarrizketa-koadro bat zabaltzen du, loturak eta taulak zehaztapen zenbait emanez sortzen dituena.
+;Eta gehiago
+Hobekuntza gehiago sortu ditugu, hala nola, nabigazio berria, mailakatutako tab, bilaketa hobetua, eta abar.
+== Nola lagundu ==
+Erabilgarritasunerako Ekimenari buruz gehiago jakiteko, bisitatu [http://usability.wikimedia.org/wiki/Wikipedia_Usability_Initiative homepage].
+<div style="clear:both"></div>',
 );
 
 /** Persian (فارسی)
