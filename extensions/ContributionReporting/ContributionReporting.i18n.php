@@ -92,8 +92,6 @@ $messages['en'] = array(
 	'fundraiserstats-tab-averages' => 'Averages (USD)',
 	'fundraiserstats-tab-maximums' => 'Maximums (USD)',
 	'fundraiserstats-tab-ytd' => 'Year-to-date (USD)',
-
-	'specialpages-group-contribution' => 'Contributions/Fundraiser',
 );
 
 /** Message documentation (Message documentation)

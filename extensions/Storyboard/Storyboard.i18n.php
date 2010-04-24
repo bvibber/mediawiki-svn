@@ -18,7 +18,6 @@ $messages['en'] = array(
 	'storyboard-name' => 'Storyboard',
 	'storyboard-desc' => 'Provides a [[Special:Story|landing page for donors]], a page where stories can be [[Special:StorySubmission|submitted]] and a [[Special:StoryReview|story moderation interface]]',
 	'right-storyreview' => 'Review, edit, publish, and hide stories',
-	'specialpages-group-contribution' => 'Contribution',
 
 	// Story states
 	'storyboard-unpublished' => 'Unpublished',
