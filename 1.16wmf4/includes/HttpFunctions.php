@@ -723,7 +723,7 @@ class CurlHttpRequest extends HttpRequest {
 		}
 		$this->curlOptions[CURLOPT_USERAGENT] = $this->reqHeaders['User-Agent'];
 
-		if ( $this->sslVerifyHost ) {
+		if ( isset( $this->sslVerifyHost ) ) {
 			$this->curlOptions[CURLOPT_SSL_VERIFYHOST] = $this->sslVerifyHost;
 		}
 
