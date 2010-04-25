@@ -234,7 +234,7 @@ $messages['ko'] = array(
 	'wikieditor-highlight-preference' => '편집할때, 구문 강조를 활성화함',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

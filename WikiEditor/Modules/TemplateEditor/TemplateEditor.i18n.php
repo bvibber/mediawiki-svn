@@ -18,6 +18,15 @@ $messages['en'] = array(
 	'wikieditor-template-editor-dialog-cancel' => 'Cancel',
 );
 
+/** Message documentation (Message documentation)
+ * @author EugeneZelenko
+ * @author Raymond
+ */
+$messages['qqq'] = array(
+	'wikieditor-template-editor-dialog-submit' => '{{Identical|Update}}',
+	'wikieditor-template-editor-dialog-cancel' => '{{Identical|Cancel}}',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */
@@ -350,7 +359,7 @@ $messages['ko'] = array(
 	'wikieditor-template-editor-dialog-cancel' => '취소',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -431,6 +440,7 @@ $messages['oc'] = array(
 	'wikieditor-template-editor-preference' => 'Activar la modificacion a basa de formularis dels modèls wiki',
 	'wikieditor-template-editor-dialog-title' => 'Modificar lo modèl',
 	'wikieditor-template-editor-dialog-submit' => 'Metre a jorn',
+	'wikieditor-template-editor-dialog-cancel' => 'Anullar',
 );
 
 /** Polish (Polski)
@@ -569,6 +579,7 @@ $messages['tr'] = array(
  * @author AS
  * @author Prima klasy4na
  * @author Test
+ * @author Тест
  */
 $messages['uk'] = array(
 	'wikieditor-template-editor-preference' => 'Увімкнути редагування шаблонів за допомогою форм',

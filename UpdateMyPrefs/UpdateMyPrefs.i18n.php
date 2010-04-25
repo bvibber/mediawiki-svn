@@ -271,6 +271,13 @@ $messages['no'] = array(
 	'updatemyprefs-label-message' => 'Automatisk oppdater mine preferanser med nye standardinnstillinger og verktøy etterhvert som de blir tilgjengelige',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'prefs-updates' => 'Mesas a jorn',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  */

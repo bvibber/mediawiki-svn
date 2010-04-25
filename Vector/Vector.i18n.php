@@ -18,8 +18,10 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Fryed-peach
+ * @author Lloffiwr
  */
 $messages['qqq'] = array(
+	'vector' => 'UI means User Interface. Vector is the name of an interface skin.',
 	'vector-desc' => '{{desc}}',
 );
 
@@ -274,7 +276,7 @@ $messages['ko'] = array(
 	'vector-desc' => '벡터 스킨의 사용자 인터페이스를 향상',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

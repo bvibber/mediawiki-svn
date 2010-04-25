@@ -428,7 +428,7 @@ $messages['ko'] = array(
 	'wikieditor-preview-loading' => '불러오는 중...',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

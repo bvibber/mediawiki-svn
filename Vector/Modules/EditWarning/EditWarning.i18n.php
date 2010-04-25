@@ -284,9 +284,7 @@ $messages['he'] = array(
 	'vector-editwarning-preference' => 'הצגת אזהרה אם אני עומד לעזוב דף עריכה עם שינויים שטרם נשמרו',
 );
 
-/** Croatian (Hrvatski)
- * @author Suradnik13
- */
+/** Croatian (Hrvatski) */
 $messages['hr'] = array(
 	'vector-editwarning-warning' => 'Napuštanje ove stranice može uzrokovati gubitak svake izmjene koju ste napravili.
 Možete onemogućiti ovo upozorenje u odjeljku "{{int:prefs-editing}}" Vaših postavki.',
@@ -390,7 +388,7 @@ $messages['ko'] = array(
 	'vector-editwarning-preference' => '수정한 내용을 저장하지 않고 편집 양식을 닫거나 다른 페이지로 이동할 때 알림',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Als-Holder
  * @author Purodha
  */
@@ -676,7 +674,7 @@ $messages['yi'] = array(
 	'vector-editwarning-preference' => 'שטעלן א ווארענונג ווען איך לאז איבער א רעדאקטירונג בלאט מיט נישט אויפגעהיטענע ענדערונגען',
 );
 
-/** Yue (粵語)
+/** Cantonese (粵語)
  * @author Shinjiman
  */
 $messages['yue'] = array(

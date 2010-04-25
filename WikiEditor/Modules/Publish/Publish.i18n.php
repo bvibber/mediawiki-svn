@@ -624,7 +624,7 @@ $messages['ko'] = array(
 	'wikieditor-publish-dialog-goback' => '돌아가기',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
