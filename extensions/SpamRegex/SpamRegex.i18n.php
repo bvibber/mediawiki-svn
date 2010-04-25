@@ -960,7 +960,7 @@ $messages['kn'] = array(
 	'spamregex-summary-log' => '(ಸಾರಾಂಶ)',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

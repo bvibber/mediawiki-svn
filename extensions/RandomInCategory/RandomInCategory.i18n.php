@@ -541,7 +541,7 @@ $messages['krj'] = array(
 	'randomincategory-submit' => 'Agto',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -553,7 +553,7 @@ $messages['ksh'] = array(
 	'randomincategory-submit' => 'Loß Jonn!',
 );
 
-/** Cornish (Kernowek)
+/** Cornish (Kernewek)
  * @author Kw-Moon
  */
 $messages['kw'] = array(

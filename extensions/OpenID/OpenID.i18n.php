@@ -1068,6 +1068,7 @@ Ohne OpenID könntest du dich nicht mehr anmelden.',
 /** German (formal address) (Deutsch (Sie-Form))
  * @author ChrisiPK
  * @author Imre
+ * @author LWChris
  * @author Umherirrender
  */
 $messages['de-formal'] = array(
@@ -1077,6 +1078,7 @@ Bitte benachrichtigen Sie einen [[Special:ListUsers/sysop|Administrator]].',
 	'openidtrustinstructions' => 'Prüfen Sie, ob Sie Daten mit $1 teilen möchten.',
 	'openidchooseinstructions' => 'Alle Benutzer benötigen einen Benutzernamen;
 Sie können einen aus der untenstehenden Liste auswählen.',
+	'openidchoosenick' => 'Ihr Spitzname ($1)',
 	'openidchoosefull' => 'Ihr vollständiger Name ($1)',
 	'openidchooseurl' => 'Ein Name aus Ihrer OpenID ($1)',
 	'openidchoosemanual' => 'Ein Name Ihrer Wahl:',
@@ -1098,6 +1100,10 @@ Wenn Sie in Zukunft OpenID verwenden möchten, können Sie [[Special:OpenIDConve
 Es gibt viele [http://openid.net/get/ OpenID-Provider] und möglicherweise haben Sie bereits ein Benutzerkonto mit aktiviertem OpenID bei einem anderen Anbieter.',
 	'openiddelete-text' => 'Wenn Sie auf den Button „{{int:openiddelete-button}}“ klicken, löschen Sie die OpenID $1 von Ihrem Benutzerkonto.
 Sie werden sich nicht mehr mit dieser OpenID anmelden können.',
+	'openiddeleteerrornopassword' => 'Sie können nicht alle Ihre OpenIDs löschen, da Sie kein Passwort gesetzt haben.
+Ohne OpenID könnten Sie sich nicht mehr anmelden.',
+	'openiddeleteerroropenidonly' => 'Sie können nicht alle Ihre OpenIDs löschen, weil Sie sich nur mit OpenID einloggen dürfen.
+Ohne OpenID könnten Sie sich nicht mehr anmelden.',
 	'openiddelete-sucess' => 'Die OpenID wurde erfolgreich von Ihrem Benutzerkonto entfernt.',
 	'openiddelete-error' => 'Beim Entfernen der OpenID von Ihrem Benutzerkonto ist ein Fehler aufgetreten.',
 	'openid-pref-hide' => 'Verstecken Sie Ihre OpenID auf Ihrer Benutzerseite, wenn Sie sich mit OpenID anmelden.',
@@ -2972,7 +2978,7 @@ OpenID 없이 로그인 할 수 없습니다.',
 	'openid-provider-label-other-username' => '$1 사용자명을 입력하십시오',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -4706,7 +4712,6 @@ $messages['sr-ec'] = array(
 /** Serbian Latin ekavian (Srpski (latinica))
  * @author Ex13
  * @author Michaello
- * @author Suradnik13
  */
 $messages['sr-el'] = array(
 	'openidserver' => 'OpenID server',

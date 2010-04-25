@@ -218,7 +218,7 @@ $messages['km'] = array(
 	'csshooks-desc' => 'បន្ថែម CSS ទៅ​ក្នុង​ទិន្នផល HTML នៃ​ទំព័រ​សម្រាប់​រចនាបទ​​ប្រសើរ​ជាង​នេះ',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

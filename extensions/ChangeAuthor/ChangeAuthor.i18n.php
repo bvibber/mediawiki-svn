@@ -1250,7 +1250,7 @@ $messages['krj'] = array(
 	'changeauthor-pagenameform-go' => 'Agto',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -2303,7 +2303,7 @@ $messages['yi'] = array(
 	'changeauthor-pagenameform-go' => 'גיין',
 );
 
-/** Yue (粵語)
+/** Cantonese (粵語)
  * @author Shinjiman
  */
 $messages['yue'] = array(

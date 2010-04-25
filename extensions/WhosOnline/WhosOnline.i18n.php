@@ -329,7 +329,7 @@ $messages['ko'] = array(
 	'whosonline-desc' => '로그인 하거나 하지 않은 지금 접속해 있는 사용자의 [[Special:WhosOnline|목록]]을 보여줍니다.',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -587,7 +587,7 @@ $messages['vi'] = array(
 	'whosonline-desc' => 'Hiển thị [[Special:WhosOnline|danh sách]] các thành viên đã đăng nhập lẫn vô danh hiện đang trực tuyến',
 );
 
-/** Yue (粵語) */
+/** Cantonese (粵語) */
 $messages['yue'] = array(
 	'whosonline' => '邊位上線',
 	'whosonline-desc' => '顯示而家在線嘅登入同匿名用戶嘅[[Special:WhosOnline一覽]]',

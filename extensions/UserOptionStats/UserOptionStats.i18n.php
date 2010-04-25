@@ -420,7 +420,7 @@ $messages['km'] = array(
 	'uos-other' => '*ដទៃទៀត​',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

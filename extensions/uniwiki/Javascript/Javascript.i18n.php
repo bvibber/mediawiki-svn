@@ -221,7 +221,7 @@ $messages['km'] = array(
 	'javascript-desc' => 'បន្ថែម uniwiki.js ទៅ​គ្រប់​ទំព័រ​មាន​កូដ JavaScript ដែល​​បាន​ចែករំលែក​រវាង​ផ្នែកបន្ថែម Uniwiki',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

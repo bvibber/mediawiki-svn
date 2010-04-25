@@ -451,7 +451,7 @@ $messages['kri'] = array(
 	'createbox-create' => 'Mek sohmtin',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

@@ -480,7 +480,7 @@ $messages['ko'] = array(
 	'intersection_noincludecats' => '오류: 분류를 추가하거나 이름공간을 명시해야 합니다!',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -873,7 +873,7 @@ $messages['vo'] = array(
 	'intersection_noincludecats' => 'Error: Nedol välön kladi pu bali, u nemaspadi!',
 );
 
-/** Yue (粵語)
+/** Cantonese (粵語)
  * @author Shinjiman
  */
 $messages['yue'] = array(

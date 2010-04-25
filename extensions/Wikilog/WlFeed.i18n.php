@@ -162,7 +162,7 @@ $messages['ja'] = array(
 	'wlfeed-desc' => '強化されたフィード生成クラス',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

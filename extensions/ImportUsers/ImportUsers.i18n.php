@@ -1057,7 +1057,7 @@ $messages['krj'] = array(
 	'importusers-email' => 'e-mail',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

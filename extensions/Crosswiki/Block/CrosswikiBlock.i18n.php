@@ -1489,7 +1489,7 @@ $messages['ko'] = array(
 	'crosswikiblock-alreadyblocked' => '사용자 $3은 이미 차단되었습니다.',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

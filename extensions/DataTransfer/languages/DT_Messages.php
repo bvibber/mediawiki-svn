@@ -1110,7 +1110,7 @@ $messages['ksh'] = array(
 	'right-datatransferimport' => 'Daate empoteere',
 );
 
-/** Cornish (Kernowek)
+/** Cornish (Kernewek)
  * @author Kernoweger
  * @author Kw-Moon
  */

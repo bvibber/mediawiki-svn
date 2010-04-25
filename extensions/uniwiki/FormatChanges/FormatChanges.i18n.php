@@ -348,7 +348,7 @@ $messages['km'] = array(
 	'formatchanges-editedby' => '$1 - ត្រូវ​បាន​កែប្រែ​ដោយ $2 ($3)',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

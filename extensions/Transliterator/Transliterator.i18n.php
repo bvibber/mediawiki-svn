@@ -311,7 +311,7 @@ $messages['ja'] = array(
 	'transliterator-error-prefix' => '[[MediaWiki:$2]] は最低でも$1文字の長さが必要です。',
 );
 
-/** Ripoarisch (Ripoarisch) */
+/** Colognian (Ripoarisch) */
 $messages['ksh'] = array(
 	'transliterator-desc' => 'Deiht en ennstellbaa Paaserfunxjuhn en et Wiki, di Boochshtabe tuusche kann.',
 	'transliterator-error-ambiguous' => 'En unkloh Rejel <code>$1</code> es en [[MediaWiki:$2]]',

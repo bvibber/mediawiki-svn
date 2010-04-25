@@ -214,7 +214,7 @@ $messages['ka'] = array(
 	'userdailycontribs-desc' => 'დაჭერის გაფართოების გამოყენების ყოველდღიური წვლილი.',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

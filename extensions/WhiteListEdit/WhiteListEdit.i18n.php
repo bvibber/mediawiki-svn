@@ -2109,7 +2109,7 @@ Dës Säit ass nëmme valabel fir limitéiert Benotzer.",
 	'group-manager-member' => 'Manager',
 );
 
-/** Laz (Laz)
+/** Lazuri (Lazuri)
  * @author Bombola
  */
 $messages['lzz'] = array(

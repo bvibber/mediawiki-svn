@@ -303,7 +303,7 @@ $messages['ko'] = array(
 	'didyoumean-desc' => '"비슷한" 이름을 가진 문서로 향하는 링크를 추가합니다.',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

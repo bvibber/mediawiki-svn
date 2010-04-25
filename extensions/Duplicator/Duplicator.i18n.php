@@ -912,7 +912,7 @@ $messages['km'] = array(
 លីមីត​បច្ចុប្បន្ន​គឺ $3 ។',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -1744,7 +1744,7 @@ Pöl nesevädik ejenon.',
 	'duplicator-toomanyrevisions' => 'Pad: [[$1]] labon revidis tu mödikis ($1) e no kanon pakopiedön. Mied anuik binon $3.',
 );
 
-/** Yue (粵語)
+/** Cantonese (粵語)
  * @author Shinjiman
  */
 $messages['yue'] = array(

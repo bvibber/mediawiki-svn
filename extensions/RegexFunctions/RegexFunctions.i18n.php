@@ -193,7 +193,7 @@ $messages['ko'] = array(
 	'regexfunctions-desc' => '정규 표현식 파서 함수',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

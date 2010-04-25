@@ -433,7 +433,7 @@ $messages['ja'] = array(
 	'rt-nomatches' => '一致する RT チケットは見つかりませんでした',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -536,6 +536,8 @@ Avètz ensajat : '''$1'''",
 	'rt-badorderby' => "Argument ORDER BY (ob) invalid : deu èsser un camp estandard (vejatz la documentacion).
 Avètz ensajat : '''$1'''",
 	'rt-badstatus' => "Argument status (s) invalid : deu èsser un camp estandard (vejatz la documentacion).
+Avètz ensajat : '''$1'''",
+	'rt-badcfield' => "Argument de camp personalizat invalid : deu èsser un mot simple (veire documentacion).
 Avètz ensajat : '''$1'''",
 	'rt-badqueue' => "Argument queue (q) invalid : deu èsser un mot simple.
 Avètz ensajat : '''$1'''",

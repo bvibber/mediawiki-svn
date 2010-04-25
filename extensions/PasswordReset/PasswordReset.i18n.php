@@ -906,7 +906,7 @@ $messages['ko'] = array(
 	'passwordreset-confirmpass' => '암호 확인:',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -1342,7 +1342,7 @@ $messages['pt-br'] = array(
 	'right-passwordreset' => 'Repor palavra-chave de um utilizador ([[Special:PasswordReset|página especial]])',
 );
 
-/** Rhaeto-Romance (Rumantsch)
+/** Romansh (Rumantsch)
  * @author Gion-andri
  */
 $messages['rm'] = array(
@@ -1720,7 +1720,7 @@ $messages['yi'] = array(
 	'passwordreset-confirmpass' => 'באַשטעטיקן פאַסוואָרט:',
 );
 
-/** Yue (粵語) */
+/** Cantonese (粵語) */
 $messages['yue'] = array(
 	'passwordreset' => '密碼重設',
 	'passwordreset-invalidusername' => '無效嘅用戶名',

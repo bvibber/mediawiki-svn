@@ -1288,7 +1288,7 @@ $messages['ko'] = array(
 	'action-povwatch_user' => '다른 사용자의 주시 목록에 문서를 추가할 수 있는',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

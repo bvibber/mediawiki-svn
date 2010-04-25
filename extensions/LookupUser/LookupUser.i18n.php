@@ -256,10 +256,11 @@ $messages['de'] = array(
 );
 
 /** German (formal address) (Deutsch (Sie-Form))
+ * @author LWChris
  * @author Raimond Spekking
  */
 $messages['de-formal'] = array(
-	'lookupuser-intro' => 'Geben Sie einen Benutzernamen ein, um die persönlichen Einstellungen eines Benutzers anzusehen.',
+	'lookupuser-intro' => 'Geben Sie einen Benutzernamen ein, um die persönlichen Einstellungen des Benutzers anzusehen.',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -755,7 +756,7 @@ $messages['ko'] = array(
 	'lookupuser-realname' => '실명: $1',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

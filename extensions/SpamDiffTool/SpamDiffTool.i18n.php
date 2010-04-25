@@ -878,7 +878,7 @@ $messages['km'] = array(
 	'spamdifftool_submit_buttom' => 'ដាក់ស្នើ',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -1138,6 +1138,7 @@ $messages['oc'] = array(
 	'spamdifftool' => 'Gestion de la Lista Negra dels Spams',
 	'spamdifftool-desc' => "Provesís un metòde simple per apondre d'entradas dins la lista negra dels spams a partir de las dif",
 	'spamdifftool_cantedit' => 'O planhèm - Avètz pas la permission d’editar la Lista Negra dels Spams.',
+	'spamdifftool-no-title' => "'''Error :''' pas de títol de pagina especificat.",
 	'spamdifftool_notext' => "I a pas de tèxte d'apondre a la Lista Negra dels Spams. Clicatz <a href='$1'>aicí</a> per contunhar.",
 	'spamdifftool_confirm' => "Confirmatz que volètz apondre aquestas entradas dins la Lista Negra dels Spams. (Clicatz <a href='$1' target='new'>aicí</a> per senhalar tot problèma.)",
 	'spamdifftool_summary' => 'Apondut a la Tièra Negra dels Spams',

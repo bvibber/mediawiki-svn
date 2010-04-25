@@ -728,7 +728,7 @@ $messages['ko'] = array(
 	'tog-riched_toggle_remember_state' => '마지막 토글 상태를 기억하기',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

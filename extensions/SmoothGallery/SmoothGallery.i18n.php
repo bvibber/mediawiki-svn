@@ -521,7 +521,7 @@ $messages['km'] = array(
 	'smoothgallery-javascript-disabled' => 'តម្រូវឱ្យមាន Javascript ដើម្បី​មើលបានល្អ​វិចិត្រសាលនេះ​។',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

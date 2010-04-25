@@ -190,7 +190,7 @@ $messages['ja'] = array(
 	'editsectionhilitelink-desc' => 'セクションの編集リンクの上にカーソルを乗せた際に、ページ中の該当するセクションをハイライト表示する',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -347,7 +347,7 @@ $messages['vi'] = array(
 	'editsectionhilitelink-desc' => 'Tô đậm phần trang khi để con trỏ trên liên kết sửa đổi',
 );
 
-/** Yue (粵語)
+/** Cantonese (粵語)
  * @author Shinjiman
  */
 $messages['yue'] = array(

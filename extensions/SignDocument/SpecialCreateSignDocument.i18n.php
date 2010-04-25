@@ -80,7 +80,7 @@ $messages['an'] = array(
 	'createsigndoc-pagename' => 'Pachina:',
 );
 
-/** Old English (Anglo-Saxon)
+/** Old English (Ænglisc)
  * @author Meno25
  */
 $messages['ang'] = array(
@@ -381,6 +381,7 @@ Es kann nicht erneut signiert werden.',
 
 /** German (formal address) (Deutsch (Sie-Form))
  * @author Revolus
+ * @author The Evil IP address
  * @author Umherirrender
  */
 $messages['de-formal'] = array(
@@ -1035,7 +1036,7 @@ $messages['krj'] = array(
 	'createsigndoc-pagename' => 'Pahina:',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

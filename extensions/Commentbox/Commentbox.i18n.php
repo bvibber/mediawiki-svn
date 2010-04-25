@@ -507,7 +507,7 @@ $messages['kn'] = array(
 	'commentbox-name' => 'ಹೆಸರು:',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

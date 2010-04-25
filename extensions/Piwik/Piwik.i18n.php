@@ -354,7 +354,7 @@ $messages['km'] = array(
 	'piwik-browsers' => 'កម្មវិធីរុករក',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -488,7 +488,7 @@ $messages['pt-br'] = array(
 	'right-viewpiwik' => 'Ver [[Special:Piwik|estatísticas Piwik]]',
 );
 
-/** Rhaeto-Romance (Rumantsch)
+/** Romansh (Rumantsch)
  * @author Gion-andri
  */
 $messages['rm'] = array(

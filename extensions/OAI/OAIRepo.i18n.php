@@ -287,7 +287,7 @@ $messages['ko'] = array(
 	'oai-desc' => '[http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH] 저장소 인터페이스를 제공한다.',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -509,7 +509,7 @@ $messages['vi'] = array(
 	'oairepository' => 'Kho OAI',
 );
 
-/** Yue (粵語)
+/** Cantonese (粵語)
  * @author Shinjiman
  */
 $messages['yue'] = array(

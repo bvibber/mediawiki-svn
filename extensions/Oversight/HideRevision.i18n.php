@@ -2290,7 +2290,7 @@ un wat domet zosamme hängk, flöck quitt.',
 	'oversight-offender' => 'Dä Väsjohn ier Schriever:',
 );
 
-/** Cornish (Kernowek)
+/** Cornish (Kernewek)
  * @author Kw-Moon
  */
 $messages['kw'] = array(
@@ -2893,8 +2893,8 @@ $messages['oc'] = array(
 	'group-oversight' => 'Supervisors',
 	'group-oversight-member' => 'Supervisor',
 	'grouppage-oversight' => '{{ns:project}}:Supervisor',
-	'right-oversight' => 'Veire las revisions precedentament amagadas',
-	'right-hiderevision' => 'Amagar de revisions als administrators',
+	'right-oversight' => "Veire las revisions precedentament amagadas amb l'extension « Oversight »",
+	'right-hiderevision' => "Amagar de revisions als administrators amb l'extension « Oversight »",
 	'hiderevision-prompt' => 'Numèro d’edicion de suprimir :',
 	'hiderevision-continue' => 'Contunhar',
 	'hiderevision-text' => "Aquesta foncionalitat deu èsser utilizada '''unicament''' pels cases seguents : * Entresenha personala inapropriada, *: ''Adreça personala e numèro de telefòn, numèro de seguretat sociala, etc...'' ''' L'abús d'aquesta foncionalitat implicarà la pèrda d'aquestes privilègis.''' Los articles escafats son pas mai visibles dins aqueste sistèma, mas aquestas supressions son jornalizadas e pòdon èsser restauradas manualament per un administrator qu'a un accès dirècte sus la banca de donadas se avètz facha una error.",
@@ -4051,6 +4051,7 @@ Bu bilgiyi yaymak, Gözetmen ayrıcalıklarının kalıcı olarak kaybıyla sonu
  * @author Aleksandrit
  * @author Prima klasy4na
  * @author Test
+ * @author Тест
  */
 $messages['uk'] = array(
 	'hiderevision' => 'Приховати версії',

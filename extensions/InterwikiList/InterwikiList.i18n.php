@@ -38,7 +38,7 @@ $messages['af'] = array(
 	'interwikilist-prefix' => 'Interwikivoorvoegsel:',
 );
 
-/** Old English (Anglo-Saxon)
+/** Old English (Ænglisc)
  * @author Wōdenhelm
  */
 $messages['ang'] = array(
@@ -447,7 +447,7 @@ $messages['km'] = array(
 	'interwikilist-prefix' => 'បុព្វបទអន្តរវិគី៖',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

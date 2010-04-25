@@ -1008,7 +1008,7 @@ $messages['km'] = array(
 	'wah-long-general' => '(ឯកសារមេឌា, រយៈពេល$2, $3)',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -1082,7 +1082,7 @@ $messages['lb'] = array(
 	'wah-api-error' => 'Et gouf e Feeler mat dem API. Probéiert w.e.g. méi spéit nach eng Kéier.',
 );
 
-/** Laz (Laz)
+/** Lazuri (Lazuri)
  * @author Bombola
  */
 $messages['lzz'] = array(

@@ -18,6 +18,13 @@ $messages['be-tarask'] = array(
 	'parserwiki-desc' => 'Дазваляе вызначыць граматыку ў вікі, потым выкарыстоўваць гэту граматыку для ўводу інфармацыі ў такую самую вікі',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'parserwiki-desc' => "Talvezout a ra da dermeniñ ur yezhadur en ur wiki ha d'e evit enporzhiañ titouroù er wiki-se",
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */

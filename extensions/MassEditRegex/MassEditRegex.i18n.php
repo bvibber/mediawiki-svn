@@ -337,8 +337,10 @@ Die Ersetzungswerte sollten nicht ausgelassen werden.',
 
 /** German (formal address) (Deutsch (Sie-Form))
  * @author Imre
+ * @author LWChris
  */
 $messages['de-formal'] = array(
+	'masseditregextext' => 'Geben Sie einen oder mehrere reguläre Ausdrücke (eine pro Zeile) für die Suche an, und einen oder mehrere Ausdrücke um einen jeweiligen Treffer zu ersetzen. Der erste Such-Ausdruck wird bei Übereinstimmung durch den ersten Ersatz-Ausdruck ersetzt, und so weiter. Siehe [ http://php.net/manual/de/function.preg-replace.php der PHP-Funktion preg_replace ()] für Details.',
 	'masseditregex-err-nopages' => 'Sie müssen mindestens eine Seite festlegen, die geändert werden soll.',
 );
 
@@ -832,7 +834,7 @@ $messages['ja'] = array(
 	'masseditregex-tooltip-execute' => 'これらの変更を各ページに適用する',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Als-Holder
  * @author Purodha
  */

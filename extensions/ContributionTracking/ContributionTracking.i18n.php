@@ -549,7 +549,7 @@ $messages['ko'] = array(
 	'contrib-tracking-button' => '계속',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -562,7 +562,7 @@ $messages['ksh'] = array(
 	'contrib-tracking-button' => 'Wigger',
 );
 
-/** Cornish (Kernowek)
+/** Cornish (Kernewek)
  * @author Kw-Moon
  */
 $messages['kw'] = array(

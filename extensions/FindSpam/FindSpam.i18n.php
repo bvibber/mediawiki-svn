@@ -544,7 +544,7 @@ $messages['krj'] = array(
 	'findspam-ok' => 'OK dun',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

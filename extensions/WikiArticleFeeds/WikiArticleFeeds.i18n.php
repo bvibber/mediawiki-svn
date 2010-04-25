@@ -215,7 +215,7 @@ $messages['ja'] = array(
 	'wikiarticlefeeds_combined_description' => 'これは合成されたフィードで、いくつかのフィード元からの項目を含んでいます。',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

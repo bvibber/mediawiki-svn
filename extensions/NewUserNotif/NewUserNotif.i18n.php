@@ -35,7 +35,7 @@ $1 is replaced with the wiki site name.',
 * $6 (optional) is replaced with the time of the account's creation.",
 );
 
-/** Old English (Anglo-Saxon)
+/** Old English (Ænglisc)
  * @author Wōdenhelm
  */
 $messages['ang'] = array(
@@ -389,7 +389,7 @@ $messages['km'] = array(
 គណនី​របស់​អ្នកប្រើប្រាស់ថ្មី, $2, បានត្រូវបង្កើត លើ $3 នៅ $4 ហើយ ។',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -747,7 +747,7 @@ $messages['vo'] = array(
 Gebanakal nulik: $2, pejafon su $3 tü $4.',
 );
 
-/** Yue (粵語) */
+/** Cantonese (粵語) */
 $messages['yue'] = array(
 	'newusernotifsubj' => '$1嘅新用戶通知',
 	'newusernotifbody' => '你好 $1，

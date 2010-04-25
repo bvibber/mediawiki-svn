@@ -880,7 +880,7 @@ $messages['kn'] = array(
 	'imstatus_example' => 'ಉದಾಹರಣೆ',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

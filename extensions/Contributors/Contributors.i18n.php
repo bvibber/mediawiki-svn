@@ -843,7 +843,7 @@ $messages['krj'] = array(
 	'contributors-submit' => 'Ipakita',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -876,7 +876,7 @@ $messages['ku-latn'] = array(
 	'contributors-nosuchpage' => 'Gotarê $2 tune ye.',
 );
 
-/** Cornish (Kernowek)
+/** Cornish (Kernewek)
  * @author Kw-Moon
  */
 $messages['kw'] = array(
@@ -1240,7 +1240,7 @@ $messages['rif'] = array(
 	'contributors-submit' => 'Smmrad',
 );
 
-/** Rhaeto-Romance (Rumantsch) */
+/** Romansh (Rumantsch) */
 $messages['rm'] = array(
 	'contributors-target' => 'Titel:',
 );
@@ -1609,7 +1609,7 @@ $messages['yi'] = array(
 	'contributors-target' => 'טיטל:',
 );
 
-/** Yue (粵語)
+/** Cantonese (粵語)
  * @author Shinjiman
  */
 $messages['yue'] = array(

@@ -196,7 +196,7 @@ $messages['ja'] = array(
 	'templateinfo-header' => 'このテンプレートの XML 定義は以下のようになっています:',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

@@ -253,7 +253,7 @@ $messages['ko'] = array(
 	'emailaddressimage-desc' => '이메일 주소를 그림으로 표시할 수 있도록 <tt>&lt;email&gt;</tt> 태그를 추가',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -366,7 +366,7 @@ $messages['pt-br'] = array(
 	'emailaddressimage-desc' => 'Adiciona <tt>&lt;email&gt;</tt> para apresentar um endereço de e-mail como imagem',
 );
 
-/** Rhaeto-Romance (Rumantsch)
+/** Romansh (Rumantsch)
  * @author Gion-andri
  */
 $messages['rm'] = array(

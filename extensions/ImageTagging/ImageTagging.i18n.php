@@ -1116,7 +1116,7 @@ $messages['kri'] = array(
 	'imagetagging-imghistory' => 'Istri',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

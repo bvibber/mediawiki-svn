@@ -260,7 +260,7 @@ $messages['km'] = array(
 	'othersites' => 'គេហទំព័រផ្សេងទៀត',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

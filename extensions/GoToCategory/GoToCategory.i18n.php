@@ -186,7 +186,7 @@ $messages['ja'] = array(
 	'gotocategory-desc' => '「ページへ移動」機能において、{{ns:category}}: 名前空間に対して検索語の照合を行う',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

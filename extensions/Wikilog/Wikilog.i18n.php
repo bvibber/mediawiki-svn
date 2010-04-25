@@ -307,12 +307,6 @@ Parameters:
 	'wikilog-feed-title' => 'Parameters:
 * $1 is a title
 * $2 is the content language of the wiki',
-	'wikilog-title-item-full' => '{{optional}}
-Parameters:
-* $1 a page title
-* $2 is the wikilog title',
-	'wikilog-title-comments' => 'Parameters:
-* $1 is a page title',
 	'wikilog-comment-feed-title1' => 'Parameters:
 * $1 is a comment number (to make unique titles for different comments)
 * $2 is the commenter name',
@@ -320,6 +314,12 @@ Parameters:
 * $1 is a comment number (to make unique titles for different comments)
 * $2 is the commenter name
 * $3 is the title of the article the comment was posted to',
+	'wikilog-title-item-full' => '{{optional}}
+Parameters:
+* $1 a page title
+* $2 is the wikilog title',
+	'wikilog-title-comments' => 'Parameters:
+* $1 is a page title',
 	'wikilog-error-msg' => 'Parameters:
 * $1 is an error message',
 	'wikilog-invalid-param' => 'Parameters:
@@ -330,8 +330,8 @@ Parameters:
 * $1 is the invalid date',
 	'wikilog-invalid-tag' => 'Parameters:
 * $1 is the invalid tag',
-	'wikilog-invalid-file' => 'Parametre:
-* $1 er den ugyldige filen',
+	'wikilog-invalid-file' => 'Parameters:
+* $1 is the invalid file name.',
 	'wikilog-file-not-found' => 'Parameters:
 * $1 is the non-existing file',
 	'wikilog-not-an-image' => 'Parameters:
@@ -1525,6 +1525,7 @@ Der Kommentar wird erst erscheinen, nachdem er von einem Moderator geprüft wurd
  * @author Imre
  */
 $messages['de-formal'] = array(
+	'wikilog-comment-feed-description' => 'Lesen Sie die neuesten Kommentare dieses Feeds.',
 	'wikilog-posting-anonymously' => 'Sie sind zur Zeit nicht angemeldet; Ihr Kommentar wird anonym versendet, identifiziert durch Ihre Internetverbindungsadresse. Sie sollten oben entweder ein Pseudonym angeben, um den Kommentar zu identifizieren oder sich $1, damit er passend zugeordnet wird.',
 	'wikilog-anonymous-moderated' => 'Nachdem Sie Ihren Kommentar absenden, wird er nicht sofort auf dieser Seite angezeigt.
 Der Kommentar wird nur erscheinen, nachdem er von einem Moderator freigegeben wurde.',
@@ -1766,6 +1767,13 @@ $messages['el'] = array(
 	'wikilog-reject-lc' => 'απόρριψη',
 	'wikilog-page-lc' => 'σελίδα',
 	'wikilog-history-lc' => 'ιστορικό',
+);
+
+/** British English (British English)
+ * @author Reedy
+ */
+$messages['en-gb'] = array(
+	'wikilog-summary-uncategorized' => 'Uncategorised',
 );
 
 /** Esperanto (Esperanto)
@@ -3493,7 +3501,7 @@ $messages['kn'] = array(
 	'wikilog-history-lc' => 'ಇತಿಹಾಸ',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -3729,7 +3737,7 @@ $messages['lg'] = array(
 	'wikilog-preview' => 'Lingiza',
 );
 
-/** Laz (Laz)
+/** Lazuri (Lazuri)
  * @author Bombola
  */
 $messages['lzz'] = array(
@@ -4344,8 +4352,13 @@ D\'en primièr, deu èsser creat per poder publicar d\'articles e utilizar las a
 	'wikilog-edit-signpub' => 'Signar e publicar aqueste article',
 	'wikilog-edit-signpub-tooltip' => "Fa que l'article es signat e publicat dins son wikilog al moment del salvament.
 Desmarcatz aquesta casa per que l'article demòre a l'estat de borrolhon.",
+	'wikilog-comment-permalink' => '$1 a $2',
+	'wikilog-comment-note-item' => 'Postat a $1',
+	'wikilog-comment-note-edited' => 'darrièra modificacion lo $1 a $2',
+	'wikilog-comment-anonsig' => '$3 (anonim)',
 	'wikilog-comment-pending' => "Aqueste comentari es en espèra d'una aprovacion.",
 	'wikilog-comment-deleted' => 'Aqueste comentari es estat suprimit.',
+	'wikilog-comment-omitted-x' => 'Comentari omés (#$1).',
 	'wikilog-comment-autosumm' => 'Comentari novèl de $1 : $2',
 	'wikilog-reply-to-comment' => 'Postar una responsa a aqueste comentari',
 	'wikilog-comment-page' => "Anar a la pagina d'aqueste comentari",
@@ -4357,6 +4370,9 @@ Desmarcatz aquesta casa per que l'article demòre a l'estat de borrolhon.",
 	'wikilog-newtalk-text' => '<!-- pagina vèrja creada per Wikilog -->',
 	'wikilog-newtalk-summary' => 'creat automaticament per Wikilog',
 	'wikilog-feed-description' => 'Legir los posts mai recents dins aqueste feed.',
+	'wikilog-comment-feed-title1' => 'Comentari de $2 (#$1)',
+	'wikilog-comment-feed-title2' => 'Comentari de $2 a $3 (# $1)',
+	'wikilog-comment-feed-description' => 'Legir los comentaris los mai recents dins aqueste fial de nòvas.',
 	'wikilog-title-comments' => 'Comentaris - $1',
 	'wikilog-error-msg' => 'Wikilog : $1',
 	'wikilog-error-title' => 'Error de wikilog',

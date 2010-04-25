@@ -189,7 +189,6 @@ $messages['af'] = array(
 	'fundraiserstats-tab-averages' => 'Gemiddeldes (in USD)',
 	'fundraiserstats-tab-maximums' => 'Maksimums (in USD)',
 	'fundraiserstats-tab-ytd' => 'Jaar-tot-datum (USD)',
-	'specialpages-group-contribution' => 'Skenkings/Fondsinsameling',
 );
 
 /** Amharic (አማርኛ)
@@ -318,7 +317,6 @@ $messages['ar'] = array(
 	'fundraiserstats-tab-averages' => 'المتوسطات (USD)',
 	'fundraiserstats-tab-maximums' => 'القيم القصوى (USD)',
 	'fundraiserstats-tab-ytd' => 'العام حتى الآن (USD)',
-	'specialpages-group-contribution' => 'المساهمات/جمع التبرعات',
 );
 
 /** Aramaic (ܐܪܡܝܐ)
@@ -383,7 +381,6 @@ $messages['arz'] = array(
 	'fundraiserstats-tab-contributions' => 'عدد المساهمات',
 	'fundraiserstats-tab-averages' => 'متوسطات',
 	'fundraiserstats-tab-maximums' => 'الحدود القصوى (بالدولار الامريكاني)',
-	'specialpages-group-contribution' => 'المساهمين/جامعين التبرعات',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
@@ -458,7 +455,6 @@ $messages['be-tarask'] = array(
 	'fundraiserstats-tab-averages' => 'Сярэдні (USD)',
 	'fundraiserstats-tab-maximums' => 'Максымальныя (USD)',
 	'fundraiserstats-tab-ytd' => 'На цяперашні год (USD)',
-	'specialpages-group-contribution' => 'Ахвяраваньні/Збор сродкаў',
 );
 
 /** Bulgarian (Български)
@@ -613,7 +609,6 @@ $messages['br'] = array(
 	'fundraiserstats-tab-averages' => 'Keidennoù (SUA)',
 	'fundraiserstats-tab-maximums' => 'Sammadoù brasañ (dollaroù SUA)',
 	'fundraiserstats-tab-ytd' => 'Er bloavezh (USD)',
-	'specialpages-group-contribution' => 'Degasadenn/dastum fontoù',
 );
 
 /** Bosnian (Bosanski)
@@ -686,7 +681,6 @@ $messages['bs'] = array(
 	'fundraiserstats-tab-averages' => 'Prosjek (USD)',
 	'fundraiserstats-tab-maximums' => 'Najviše (USD)',
 	'fundraiserstats-tab-ytd' => 'Od početka godine (USD)',
-	'specialpages-group-contribution' => 'Doprinosi/donacije',
 );
 
 /** Catalan (Català)
@@ -818,7 +812,6 @@ $messages['cs'] = array(
 	'fundraiserstats-tab-averages' => 'Průměry (USD)',
 	'fundraiserstats-tab-maximums' => 'Maxima (USD)',
 	'fundraiserstats-tab-ytd' => 'Od začátku roku (USD)',
-	'specialpages-group-contribution' => 'Příspěvky/financování',
 );
 
 /** Church Slavic (Словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)
@@ -878,7 +871,6 @@ $messages['da'] = array(
 	'fundraiserstats-tab-contributions' => 'Antal bidrag',
 	'fundraiserstats-tab-averages' => 'Gennemsnit (USD)',
 	'fundraiserstats-tab-maximums' => 'Maksimum (USD)',
-	'specialpages-group-contribution' => 'Bidrag/Indsamling',
 );
 
 /** German (Deutsch)
@@ -957,7 +949,6 @@ $messages['de'] = array(
 	'fundraiserstats-tab-averages' => 'Durchschnittswerte (USD)',
 	'fundraiserstats-tab-maximums' => 'Maxima (USD)',
 	'fundraiserstats-tab-ytd' => 'Aufgelaufen im Jahr (USD)',
-	'specialpages-group-contribution' => 'Spenden/Fundraiser',
 );
 
 /** Zazaki (Zazaki)
@@ -1031,7 +1022,6 @@ $messages['diq'] = array(
 	'fundraiserstats-tab-averages' => 'Orta (USD)',
 	'fundraiserstats-tab-maximums' => 'Tewr zaf (USD)',
 	'fundraiserstats-tab-ytd' => 'Serre be hetan nıka (USD)',
-	'specialpages-group-contribution' => 'Destek dayoğan/Pere berz kerdoğ',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -1104,7 +1094,6 @@ $messages['dsb'] = array(
 	'fundraiserstats-tab-averages' => 'Pśerězki (USD)',
 	'fundraiserstats-tab-maximums' => 'Maksimumy (USD)',
 	'fundraiserstats-tab-ytd' => 'Doněnta w lěśe (USD)',
-	'specialpages-group-contribution' => 'Dary/Pósćiwańska akcija',
 );
 
 /** Greek (Ελληνικά)
@@ -1175,7 +1164,6 @@ $messages['el'] = array(
 	'fundraiserstats-tab-contributions' => 'Αριθμός συνεισφορών',
 	'fundraiserstats-tab-averages' => 'Μέσοι όροι (USD)',
 	'fundraiserstats-tab-maximums' => 'Μέγιστα (USD)',
-	'specialpages-group-contribution' => 'Συνεισφορές/Έρανος',
 );
 
 /** Esperanto (Esperanto)
@@ -1249,7 +1237,6 @@ $messages['eo'] = array(
 	'fundraiserstats-tab-averages' => 'Averaĝoj (USD)',
 	'fundraiserstats-tab-maximums' => 'Maksimumoj (USD)',
 	'fundraiserstats-tab-ytd' => 'Jaro ĝis nun (usonaj dolaroj)',
-	'specialpages-group-contribution' => 'Kontribuoj/Monkolekto',
 );
 
 /** Spanish (Español)
@@ -1328,7 +1315,6 @@ $messages['es'] = array(
 	'fundraiserstats-tab-averages' => 'Promedios (USD)',
 	'fundraiserstats-tab-maximums' => 'Máximos (USD)',
 	'fundraiserstats-tab-ytd' => 'Año hasta la fecha (USD)',
-	'specialpages-group-contribution' => 'Contribuciones/Recaudador de fondos',
 );
 
 /** Estonian (Eesti)
@@ -1394,7 +1380,6 @@ $messages['et'] = array(
 	'fundraiserstats-tab-averages' => 'Keskmised (USD)',
 	'fundraiserstats-tab-maximums' => 'Maksimumid (USD)',
 	'fundraiserstats-tab-ytd' => 'Sel aastal (USD)',
-	'specialpages-group-contribution' => 'Annetamine / korjandused',
 );
 
 /** Basque (Euskara)
@@ -1495,7 +1480,6 @@ $messages['ext'] = array(
 	'fundraiserstats-tab-contributions' => 'Númeru de contribucionis',
 	'fundraiserstats-tab-averages' => 'Meyas (USD)',
 	'fundraiserstats-tab-maximums' => 'Máissimus (USD)',
-	'specialpages-group-contribution' => 'Contribucionis/Fundraiser',
 );
 
 /** Persian (فارسی)
@@ -1547,7 +1531,6 @@ $messages['fa'] = array(
 	'fundraiserstats-tab-contributions' => 'تعداد مشارکت‌کنندگان',
 	'fundraiserstats-tab-averages' => 'میانگین‌ها (دلار آمریکا)',
 	'fundraiserstats-tab-maximums' => 'بیشینه‌ها (دلار آمریکا)',
-	'specialpages-group-contribution' => 'مشارکت‌ها/جمع‌آوری کمک',
 );
 
 /** Finnish (Suomi)
@@ -1621,7 +1604,6 @@ $messages['fi'] = array(
 	'fundraiserstats-tab-contributions' => 'Lahjoitusten määrä',
 	'fundraiserstats-tab-averages' => 'Keskiarvot (USD)',
 	'fundraiserstats-tab-maximums' => 'Maksimit (USD)',
-	'specialpages-group-contribution' => 'Lahjoituksia/Rahankeräys',
 );
 
 /** French (Français)
@@ -1702,7 +1684,6 @@ $messages['fr'] = array(
 	'fundraiserstats-tab-averages' => 'Moyennes (dollars US)',
 	'fundraiserstats-tab-maximums' => 'Maximums (dollars US)',
 	'fundraiserstats-tab-ytd' => 'Année en cours (dollars US)',
-	'specialpages-group-contribution' => 'Contributions / levée de fonds',
 );
 
 /** Franco-Provençal (Arpetan)
@@ -1775,7 +1756,6 @@ $messages['frp'] = array(
 	'fundraiserstats-tab-averages' => 'Moyenes (dolars US)',
 	'fundraiserstats-tab-maximums' => 'Més (dolars US)',
 	'fundraiserstats-tab-ytd' => 'An en cors (dolars US)',
-	'specialpages-group-contribution' => 'Contribucions / levâ de fonds',
 );
 
 /** Friulian (Furlan)
@@ -1858,7 +1838,6 @@ $messages['gl'] = array(
 	'fundraiserstats-tab-averages' => 'Medias (dólar estadounidense)',
 	'fundraiserstats-tab-maximums' => 'Máximas (dólar estadounidense)',
 	'fundraiserstats-tab-ytd' => 'Total anual ata o de agora (USD)',
-	'specialpages-group-contribution' => 'Contribucións/Recadación',
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
@@ -1952,7 +1931,6 @@ $messages['gsw'] = array(
 	'fundraiserstats-tab-averages' => 'Durchschnittswärt (USD)',
 	'fundraiserstats-tab-maximums' => 'Maxima (USD)',
 	'fundraiserstats-tab-ytd' => 'Kaländerjohr (USD)',
-	'specialpages-group-contribution' => 'Spände/Spändeufruef',
 );
 
 /** Hebrew (עברית)
@@ -2022,7 +2000,6 @@ $messages['he'] = array(
 	'fundraiserstats-tab-contributions' => 'מספר התורמים',
 	'fundraiserstats-tab-averages' => 'ממוצע (USD)',
 	'fundraiserstats-tab-maximums' => 'מקסימום (USD)',
-	'specialpages-group-contribution' => 'תרומות/התרמה',
 );
 
 /** Croatian (Hrvatski)
@@ -2082,7 +2059,6 @@ $messages['hr'] = array(
 	'fundraiserstats-tab-contributions' => 'Broj doprinosa',
 	'fundraiserstats-tab-averages' => 'Prosjeci (USD)',
 	'fundraiserstats-tab-maximums' => 'Maksimumi (USD)',
-	'specialpages-group-contribution' => 'Doprinosi/Prikupljanje',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -2157,7 +2133,6 @@ $messages['hsb'] = array(
 	'fundraiserstats-tab-averages' => 'Přerězki (USD)',
 	'fundraiserstats-tab-maximums' => 'Maksimumy (USD)',
 	'fundraiserstats-tab-ytd' => 'Dotal w lěće (USD)',
-	'specialpages-group-contribution' => 'Dary/Darjenska akcija',
 );
 
 /** Hungarian (Magyar)
@@ -2228,7 +2203,6 @@ $messages['hu'] = array(
 	'fundraiserstats-tab-contributions' => 'Közreműködések száma',
 	'fundraiserstats-tab-averages' => 'Átlagosan (USD)',
 	'fundraiserstats-tab-maximums' => 'Maximum (USD)',
-	'specialpages-group-contribution' => 'Adományok/Adománygyűjtés',
 );
 
 /** Interlingua (Interlingua)
@@ -2301,7 +2275,6 @@ $messages['ia'] = array(
 	'fundraiserstats-tab-averages' => 'Medias (USD)',
 	'fundraiserstats-tab-maximums' => 'Maximos (USD)',
 	'fundraiserstats-tab-ytd' => 'Anno in curso (USD)',
-	'specialpages-group-contribution' => 'Contributiones/Collecta de fundos',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -2377,7 +2350,6 @@ $messages['id'] = array(
 	'fundraiserstats-tab-averages' => 'Rata-rata (USD)',
 	'fundraiserstats-tab-maximums' => 'Tertinggi (USD)',
 	'fundraiserstats-tab-ytd' => 'Tahun berjalan (USD)',
-	'specialpages-group-contribution' => 'Kontribusi/Penggalang dana',
 );
 
 /** Ido (Ido)
@@ -2466,7 +2438,6 @@ $messages['it'] = array(
 	'fundraiserstats-tab-contributions' => 'Numero di contributi',
 	'fundraiserstats-tab-averages' => 'Medie (USD)',
 	'fundraiserstats-tab-maximums' => 'Massimi (USD)',
-	'specialpages-group-contribution' => 'Donazioni/Raccolta fondi',
 );
 
 /** Japanese (日本語)
@@ -2539,7 +2510,6 @@ $messages['ja'] = array(
 	'fundraiserstats-tab-averages' => '平均 (米ドル)',
 	'fundraiserstats-tab-maximums' => '最大 (米ドル)',
 	'fundraiserstats-tab-ytd' => '年度累計 (米ドル)',
-	'specialpages-group-contribution' => '寄付/資金調達',
 );
 
 /** Javanese (Basa Jawa)
@@ -2778,7 +2748,6 @@ $messages['ksh'] = array(
 	'fundraiserstats-tab-contributions' => 'Aanzahl Beidrääsch',
 	'fundraiserstats-tab-averages' => 'De Schnette (en Dollar us de USA)',
 	'fundraiserstats-tab-maximums' => 'de Deckste Spende (en Dollar us de USA)',
-	'specialpages-group-contribution' => 'Spendebeidrääsch',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -2852,7 +2821,6 @@ $messages['lb'] = array(
 	'fundraiserstats-tab-averages' => 'Duerchschnëtt (USD)',
 	'fundraiserstats-tab-maximums' => 'Maximumen (USD)',
 	'fundraiserstats-tab-ytd' => 'Joer-bis-Datum (USD)',
-	'specialpages-group-contribution' => 'Donen/Quêteur',
 );
 
 /** Limburgish (Limburgs)
@@ -2904,7 +2872,6 @@ $messages['li'] = array(
 	'fundraiserstats-tab-contributions' => 'Aantal gifter',
 	'fundraiserstats-tab-averages' => 'Gemiddelde (USD)',
 	'fundraiserstats-tab-maximums' => 'Maxima (USD)',
-	'specialpages-group-contribution' => 'Gifte/Fónswèrvingsaksie',
 );
 
 /** Lumbaart (Lumbaart)
@@ -3015,7 +2982,6 @@ $messages['mk'] = array(
 	'fundraiserstats-tab-averages' => 'Просеци (USD)',
 	'fundraiserstats-tab-maximums' => 'Највисоки (USD)',
 	'fundraiserstats-tab-ytd' => 'Догодина на овој ден (USD)',
-	'specialpages-group-contribution' => 'Придонеси/Обезб. средства',
 );
 
 /** Malayalam (മലയാളം)
@@ -3085,7 +3051,6 @@ $messages['ml'] = array(
 	'fundraiserstats-tab-contributions' => 'സംഭാവനകളുടെ എണ്ണം',
 	'fundraiserstats-tab-averages' => 'ശരാശരികൾ (USD)',
 	'fundraiserstats-tab-maximums' => 'പരമാവധികൾ (USD)',
-	'specialpages-group-contribution' => 'സംഭാവനകൾ/ഫണ്ട്‌‌റെയ്സർ',
 );
 
 /** Malay (Bahasa Melayu)
@@ -3137,7 +3102,6 @@ $messages['ms'] = array(
 	'fundraiserstats-tab-contributions' => 'Bilangan sumbangan',
 	'fundraiserstats-tab-averages' => 'Purata (USD)',
 	'fundraiserstats-tab-maximums' => 'Maksimum (USD)',
-	'specialpages-group-contribution' => 'Sumbangan/Tabung',
 );
 
 /** Erzya (Эрзянь)
@@ -3204,7 +3168,6 @@ $messages['nds'] = array(
 	'fundraiserstats-tab-contributions' => 'Tall Spennen',
 	'fundraiserstats-tab-averages' => 'Dörsneden (in USD)',
 	'fundraiserstats-tab-maximums' => 'Maximaltallen (in USD)',
-	'specialpages-group-contribution' => 'Spennen/Fundraiser',
 );
 
 /** Dutch (Nederlands)
@@ -3277,7 +3240,6 @@ $messages['nl'] = array(
 	'fundraiserstats-tab-averages' => 'Gemiddelden (USD)',
 	'fundraiserstats-tab-maximums' => 'Maxima (USD)',
 	'fundraiserstats-tab-ytd' => 'Jaar tot op heden (USD)',
-	'specialpages-group-contribution' => 'Bijdrage',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
@@ -3341,7 +3303,6 @@ $messages['nn'] = array(
 	'fundraiserstats-tab-contributions' => 'Tal på bidrag',
 	'fundraiserstats-tab-averages' => 'Snitt (USD)',
 	'fundraiserstats-tab-maximums' => 'Maksimum (USD)',
-	'specialpages-group-contribution' => 'Bidrag/Innsamling',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -3415,7 +3376,6 @@ $messages['no'] = array(
 	'fundraiserstats-tab-averages' => 'Gjennomsnitt (USD)',
 	'fundraiserstats-tab-maximums' => 'Maksimum (USD)',
 	'fundraiserstats-tab-ytd' => 'Året til idag (USD)',
-	'specialpages-group-contribution' => 'Bidrag/Innsamling',
 );
 
 /** Occitan (Occitan)
@@ -3488,7 +3448,6 @@ $messages['oc'] = array(
 	'fundraiserstats-tab-averages' => 'Mejanas (USD)',
 	'fundraiserstats-tab-maximums' => 'Maximums (USD)',
 	'fundraiserstats-tab-ytd' => 'Annada en cors (dolars US)',
-	'specialpages-group-contribution' => 'Contribucions / Levada de fonses',
 );
 
 /** Ossetic (Иронау)
@@ -3585,7 +3544,6 @@ $messages['pl'] = array(
 	'fundraiserstats-tab-averages' => 'Średnie (USD)',
 	'fundraiserstats-tab-maximums' => 'Maksima (USD)',
 	'fundraiserstats-tab-ytd' => 'Rok do danej chwili (USD)',
-	'specialpages-group-contribution' => 'Darowizny/Zbieranie funduszy',
 );
 
 /** Piedmontese (Piemontèis)
@@ -3659,7 +3617,6 @@ $messages['pms'] = array(
 	'fundraiserstats-tab-averages' => 'Medie (USD)',
 	'fundraiserstats-tab-maximums' => 'Màssim (USD)',
 	'fundraiserstats-tab-ytd' => 'Ann an cors (USD)',
-	'specialpages-group-contribution' => 'Contribussion/Racòlta fond',
 );
 
 /** Pashto (پښتو)
@@ -3759,7 +3716,6 @@ $messages['pt'] = array(
 	'fundraiserstats-tab-averages' => 'Médias (USD)',
 	'fundraiserstats-tab-maximums' => 'Máximos (USD)',
 	'fundraiserstats-tab-ytd' => 'Desde o início do ano (USD)',
-	'specialpages-group-contribution' => 'Contribuições/Angariação de fundos',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
@@ -3823,7 +3779,6 @@ $messages['pt-br'] = array(
 	'fundraiserstats-tab-contributions' => 'Número de contribuições',
 	'fundraiserstats-tab-averages' => 'Médias (USD)',
 	'fundraiserstats-tab-maximums' => 'Máximos (USD)',
-	'specialpages-group-contribution' => 'Contribuições/Angariação de fundos',
 );
 
 /** Romanian (Română)
@@ -3959,7 +3914,6 @@ $messages['ru'] = array(
 	'fundraiserstats-tab-averages' => 'Средние (USD)',
 	'fundraiserstats-tab-maximums' => 'Максимумы (USD)',
 	'fundraiserstats-tab-ytd' => 'На данный год (USD)',
-	'specialpages-group-contribution' => 'Пожертвования/Сбор средств',
 );
 
 /** Yakut (Саха тыла)
@@ -4018,7 +3972,6 @@ $messages['sah'] = array(
 	'fundraiserstats-tab-contributions' => 'Үп киллэриитин ахсаана',
 	'fundraiserstats-tab-averages' => 'Ортотунан (USD)',
 	'fundraiserstats-tab-maximums' => 'Саамай үрдээбитэ (USD)',
-	'specialpages-group-contribution' => 'Сиэртибэлээһин/Үп хомуйуу',
 );
 
 /** Slovak (Slovenčina)
@@ -4091,7 +4044,6 @@ $messages['sk'] = array(
 	'fundraiserstats-tab-averages' => 'Priemer (USD)',
 	'fundraiserstats-tab-maximums' => 'Maximum (USD)',
 	'fundraiserstats-tab-ytd' => 'Rok do dátumu (USD)',
-	'specialpages-group-contribution' => 'Prispievateľov/fundraising',
 );
 
 /** Slovenian (Slovenščina)
@@ -4252,7 +4204,6 @@ $messages['sv'] = array(
 	'fundraiserstats-tab-averages' => 'Genomsnitt (USD)',
 	'fundraiserstats-tab-maximums' => 'Maximum (USD)',
 	'fundraiserstats-tab-ytd' => 'Total i år (USD)',
-	'specialpages-group-contribution' => 'Bidrag/Insamling',
 );
 
 /** Telugu (తెలుగు)
@@ -4317,7 +4268,6 @@ $messages['te'] = array(
 	'fundraiserstats-tab-averages' => 'సగటులు (USD)',
 	'fundraiserstats-tab-maximums' => 'గరిష్ఠాలు (USD)',
 	'fundraiserstats-tab-ytd' => 'సంవత్సరంలో-ఇప్పటివరకు (USD)',
-	'specialpages-group-contribution' => 'విరాళాలు/నిధుల సేకరణ',
 );
 
 /** Tetum (Tetun)
@@ -4457,7 +4407,6 @@ $messages['th'] = array(
 	'fundraiserstats-tab-averages' => 'ค่าเฉลี่ย (ดอลลาร์สหรัฐ)',
 	'fundraiserstats-tab-maximums' => 'สูงสุด (ดอลลาร์สหรัฐ)',
 	'fundraiserstats-tab-ytd' => 'ย้อนหลังจากวันนี้ 1 ปี (ดอลลาร์สหรัฐ)',
-	'specialpages-group-contribution' => 'การบริจาค/ระดมทุน',
 );
 
 /** Turkmen (Türkmençe)
@@ -4530,7 +4479,6 @@ $messages['tk'] = array(
 	'fundraiserstats-tab-averages' => 'Ortaçalar (USD)',
 	'fundraiserstats-tab-maximums' => 'Maksimumlar (USD)',
 	'fundraiserstats-tab-ytd' => 'Üstümizdäki ýyl (USD)',
-	'specialpages-group-contribution' => 'Goşantlar/Fond ýygnaýjy',
 );
 
 /** Tagalog (Tagalog)
@@ -4581,7 +4529,6 @@ $messages['tl'] = array(
 	'fundraiserstats-tab-contributions' => 'Bilang ng mga ambag',
 	'fundraiserstats-tab-averages' => 'Pinatakang mga halaga (dolyar ng Estados Unidos)',
 	'fundraiserstats-tab-maximums' => 'Mga pinakamatataas (dolyar ng Estados Unidos)',
-	'specialpages-group-contribution' => 'Mga ambag/Pangangalap ng salaping panustos',
 );
 
 /** Turkish (Türkçe)
@@ -4655,7 +4602,6 @@ $messages['tr'] = array(
 	'fundraiserstats-tab-averages' => 'Ortalamalar (USD)',
 	'fundraiserstats-tab-maximums' => 'Maksimumlar (USD)',
 	'fundraiserstats-tab-ytd' => 'Bugüne kadarki (USD)',
-	'specialpages-group-contribution' => 'Katkı/Fonsağlayıcı',
 );
 
 /** Ukrainian (Українська)
@@ -4731,7 +4677,6 @@ $messages['uk'] = array(
 	'fundraiserstats-tab-averages' => 'У середньому (долари США)',
 	'fundraiserstats-tab-maximums' => 'Максимуми (долари США)',
 	'fundraiserstats-tab-ytd' => 'З початку року (USD)',
-	'specialpages-group-contribution' => 'Пожертвування/Збір коштів',
 );
 
 /** Vèneto (Vèneto)
@@ -4803,7 +4748,6 @@ $messages['vec'] = array(
 	'fundraiserstats-tab-averages' => 'Medie (dolari mericani)',
 	'fundraiserstats-tab-maximums' => 'Massimi (dolari mericani)',
 	'fundraiserstats-tab-ytd' => 'Ano in corso (Dòlari USA)',
-	'specialpages-group-contribution' => 'Contributi/Racolta fondi',
 );
 
 /** Veps (Vepsan kel')
@@ -4835,7 +4779,6 @@ $messages['vep'] = array(
 	'fundraiserstats-tab-contributions' => 'Lahjoičendoiden lugu',
 	'fundraiserstats-tab-averages' => 'Keskmäine (USD)',
 	'fundraiserstats-tab-maximums' => 'Maksimumad (USD)',
-	'specialpages-group-contribution' => 'Lahjoičendad/Rahoidenkeradand',
 );
 
 /** Vietnamese (Tiếng Việt)
@@ -4903,7 +4846,6 @@ $messages['vi'] = array(
 	'fundraiserstats-tab-contributions' => 'Số khoản quyên góp',
 	'fundraiserstats-tab-averages' => 'Trung bình (USD)',
 	'fundraiserstats-tab-maximums' => 'Tối đa (USD)',
-	'specialpages-group-contribution' => 'Quyên góp/Vận động gây quỹ',
 );
 
 /** Volapük (Volapük)
@@ -4991,7 +4933,6 @@ $messages['zh-hans'] = array(
 	'fundraiserstats-tab-contributions' => '贡献数',
 	'fundraiserstats-tab-averages' => '平均（美元）',
 	'fundraiserstats-tab-maximums' => '最大（美元）',
-	'specialpages-group-contribution' => '贡献/募捐者',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
@@ -5042,6 +4983,5 @@ $messages['zh-hant'] = array(
 	'fundraiserstats-tab-contributions' => '貢獻數',
 	'fundraiserstats-tab-averages' => '平均（美元）',
 	'fundraiserstats-tab-maximums' => '最大（美元）',
-	'specialpages-group-contribution' => '貢獻/募捐者',
 );
 

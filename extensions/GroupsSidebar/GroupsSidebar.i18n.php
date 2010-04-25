@@ -144,7 +144,7 @@ $messages['ja'] = array(
 	'groupssidebar-desc' => 'この拡張機能は、サイト管理者が特定の利用者グループ向けにサイドバー項目を加えることができるようにする',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

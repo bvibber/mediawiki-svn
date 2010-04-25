@@ -1593,6 +1593,9 @@ Dibabit un dastumad da enporzhiañ. E prenestr testenn ar yezhoù, merkit ur rol
 	'ow_exporttsv_not_allowed' => "N'oc'h ket aotreet da seveniñ un ezporzhiadenn roadennoù TSV.",
 	'ow_exporttsv_export_failed' => "C'hwitet eo an ezporzhiadenn",
 	'addcollection' => 'Wikidata : ouzhpennañ un dastumad',
+	'ow_searchnoresult' => "<p>Gallout a rit :<br />
+* '''Krouiñ an droienn \"[[Expression:\$1]]\"''' (hag ouzhpennañ un termenadur)<br />
+* '''Krouiñ ar bajenn \"[[:\$1]]\"''' (ur bajenn wiki voutin)</p>",
 	'ow_save' => 'Enrollañ',
 	'ow_history' => 'Istor',
 	'ow_datasets' => 'Dibab an diaz',
@@ -2647,6 +2650,7 @@ Bitte kontaktiere den Serveradminstrator.',
 /** German (formal address) (Deutsch (Sie-Form))
  * @author ChrisiPK
  * @author Imre
+ * @author Kghbln
  * @author Umherirrender
  */
 $messages['de-formal'] = array(
@@ -2662,6 +2666,9 @@ Stellen Sie sicher, dass die Anwendung die Datei richtig gespeichert oder export
 	'ow_exporttsv_header' => '<p>Eine Sammlung in eine Textdatei exportieren, die Tabulatoren als Trenner verwendet. Diese kann in OpenOffice.org, Excel oder andere Tabellenkalkulationsprogramme importiert werden.<br />
 Wählen Sie eine Sammlung aus, die Sie exportieren wollen. Geben Sie im Sprachen-Textfeld eine durch Kommata getrennte Liste von ISO 639-3-Sprachcodes an. Geben Sie zuerst die Sprachen an, aus denen Sie übersetzen werden (geben Sie so viele an, wie Sie wollen) und dann diejenigen, in die Sie übersetzen werden. Klicken Sie danach auf „Erstellen“, um die Datei zu erstellen.</p>',
 	'ow_exporttsv_not_allowed' => 'Sie haben nicht die Berechtigung, einen TSV-Export durchzuführen.',
+	'ow_searchnoresult' => "<p>Sie können...:<br />
+* '''...einen Ausdruck erstellen „[[Expression:$1]]“''' (und eine Definition hinzufügen) oder<br />
+* '''...eine Seite erstellen „[[:$1]]“''' (eine reguläre Seite)</p>",
 	'ow_noedit' => 'Sie haben nicht die Erlaubnis, Seiten im Dataset „$1“ zu bearbeiten.
 Siehe [[{{MediaWiki:Ow editing policy url}}|unsere Richtlinien]].',
 	'ow_dm_badtitle' => 'Diese Seite weist nicht zu einer DefinedMeaning (Konzept).
@@ -7130,7 +7137,7 @@ $messages['krj'] = array(
 	'ow_dm_OK' => 'OK dun',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -7384,7 +7391,7 @@ $messages['ku-latn'] = array(
 	'ow_Source' => 'Çavkanî',
 );
 
-/** Cornish (Kernowek)
+/** Cornish (Kernewek)
  * @author Kernoweger
  * @author Kw-Moon
  */
@@ -7729,7 +7736,7 @@ $messages['lt'] = array(
 	'datasearch' => 'Wikidata: Duomenų paieška',
 );
 
-/** Laz (Laz)
+/** Lazuri (Lazuri)
  * @author Bombola
  */
 $messages['lzz'] = array(
@@ -9127,6 +9134,9 @@ Seleccionatz una colleccion d'exportar. Dins la bóstia de tèxte de lengas, pic
 	'ow_exporttsv_not_allowed' => 'Avètz pas la permission d’efectuar una exportacion al format TSV.',
 	'ow_exporttsv_export_failed' => "L'expòrt a fracassat",
 	'addcollection' => 'Wikidata : Apondre una colleccion',
+	'ow_searchnoresult' => "<p>Podètz :<br />
+* '''Crear l’expression « [[Expression:$1]] »''' (e apondre una definicion)<br />
+* '''Crear la pagina « [[:$1]] »''' (una page wiki estandarda)</p>",
 	'ow_save' => 'Salvar',
 	'ow_history' => 'Istoric',
 	'ow_datasets' => 'Seleccion de las donadas definidas',
@@ -13663,7 +13673,7 @@ $messages['yi'] = array(
 	'ow_suggest_previous' => 'פֿריערדיקער',
 );
 
-/** Yue (粵語) */
+/** Cantonese (粵語) */
 $messages['yue'] = array(
 	'languages' => 'Wikidata: 語言管理員',
 	'langman_title' => '語言管理員',
@@ -14058,7 +14068,7 @@ $messages['zh-tw'] = array(
 	'datasearch' => 'Wikidata: 資料搜尋',
 );
 
-/** Yue (粵語) */
+/** Cantonese (粵語) */
 $messages['zh-yue'] = array(
 	'languages' => 'Wikidata: 語言管理員',
 	'langman_title' => '語言管理員',

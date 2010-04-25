@@ -39,6 +39,7 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Bennylin
+ * @author EugeneZelenko
  * @author Fryed-peach
  * @author Meno25
  * @author Purodha
@@ -68,6 +69,7 @@ $messages['qqq'] = array(
 	'amazonplus-cp-gbp' => '{{optional}}',
 	'amazonplus-cp-eur' => '{{optional}}',
 	'amazonplus-cp-jpy' => '{{optional}}',
+	'amazonplus-more' => '{{Identical|More}}',
 );
 
 /** Afrikaans (Afrikaans)
@@ -336,6 +338,13 @@ $messages['el'] = array(
 	'amazonplus-cp-none' => 'Κανένας',
 	'amazonplus-more' => 'περισσότερα',
 	'amazonplus-less' => 'λιγότερο',
+);
+
+/** British English (British English)
+ * @author Reedy
+ */
+$messages['en-gb'] = array(
+	'amazonplus-desc' => 'A highly customisable extension to display Amazon information',
 );
 
 /** Esperanto (Esperanto)
@@ -791,7 +800,7 @@ $messages['ko'] = array(
 	'amazonplus-less' => '간단하게 보기',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

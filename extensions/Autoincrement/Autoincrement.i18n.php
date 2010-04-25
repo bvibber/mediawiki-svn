@@ -176,7 +176,7 @@ $messages['ja'] = array(
 	'autoincrement-desc' => '自動インクリメント変数 <nowiki>{{AUTOINCREMENT}}</nowiki> を追加する変数フック',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

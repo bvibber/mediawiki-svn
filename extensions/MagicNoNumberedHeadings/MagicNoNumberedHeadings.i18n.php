@@ -195,7 +195,7 @@ $messages['ja'] = array(
 	'magicnonumberedheadings-desc' => 'マジックワード "<nowiki>__NONUMBEREDHEADINGS__</nowiki>" を追加する',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

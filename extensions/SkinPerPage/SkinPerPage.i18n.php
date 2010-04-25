@@ -290,7 +290,7 @@ $messages['ko'] = array(
 	'skinperpage-desc' => '문서마다 다른 스킨을 사용할 수 있게 <tt>&lt;skin&gt;</tt> 태그를 추가',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -514,7 +514,7 @@ $messages['vi'] = array(
 	'skinperpage-desc' => 'Thêm thẻ <tt>&lt;skin&gt;</tt> để dùng các hình dạng khác nhau cho mỗi trang',
 );
 
-/** Yue (粵語)
+/** Cantonese (粵語)
  * @author Shinjiman
  */
 $messages['yue'] = array(

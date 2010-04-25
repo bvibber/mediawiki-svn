@@ -528,7 +528,7 @@ $messages['ko'] = array(
 	'communityvoice-ratings-scale-status-thanks' => '투표해 주셔서 감사합니다!',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

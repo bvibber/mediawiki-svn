@@ -759,7 +759,7 @@ $messages['krj'] = array(
 	'player-goto-file' => 'inayap',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

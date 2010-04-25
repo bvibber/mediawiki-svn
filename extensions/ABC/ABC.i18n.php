@@ -25,6 +25,7 @@ $messages['en'] = array(
  * @author Meno25
  * @author Purodha
  * @author Raymond
+ * @author Siebrand
  */
 $messages['qqq'] = array(
 	'abc-desc' => 'Short description of the ABC extension, shown in [[Special:Version]]. Do not translate or change links.',
@@ -52,7 +53,7 @@ $messages['aln'] = array(
 	'abcdownload' => 'Shkarko:',
 );
 
-/** Old English (Anglo-Saxon)
+/** Old English (Ænglisc)
  * @author Wōdenhelm
  */
 $messages['ang'] = array(
@@ -446,7 +447,7 @@ $messages['krc'] = array(
 	'abcdownload' => 'Джюкле:',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -461,7 +462,7 @@ $messages['ku-latn'] = array(
 	'abcdownload' => 'Daxistin:',
 );
 
-/** Cornish (Kernowek)
+/** Cornish (Kernewek)
  * @author Kernoweger
  * @author Kw-Moon
  */
@@ -695,7 +696,7 @@ $messages['rif'] = array(
 	'abcdownload' => 'Zdm/Download',
 );
 
-/** Rhaeto-Romance (Rumantsch)
+/** Romansh (Rumantsch)
  * @author Gion
  */
 $messages['rm'] = array(

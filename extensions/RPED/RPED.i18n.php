@@ -119,6 +119,14 @@ $messages['no'] = array(
 	'rped-desc' => 'Lenker wikilenker til Wikipedia om siden ikke finnes på den lokale wikien men finnes på Wikipedia',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'rped' => "Deteccion d'existéncia de las paginas a distància",
+	'rped-desc' => 'Liga los wikiligams cap a Wikipèdia se la pagina existís pas sul wiki local mas existís sus Wikipèdia',
+);
+
 /** Piedmontese (Piemontèis)
  * @author Borichèt
  */

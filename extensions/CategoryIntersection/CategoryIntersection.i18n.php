@@ -95,6 +95,7 @@ $messages['br'] = array(
 	'categoryintersection-desc' => "Derc'hel a ra un daolenn gant talvoudennoù diouzh an drask evit ar [[Special:CategoryIntersection|c'hengej rummadoù]] e diabarzh ur bajenn",
 	'categoryintersection-doit' => 'Rollañ a ra ar pajennoù en holl rummadoù-se',
 	'categoryintersection-maxcategories' => "$1 eo an niver brasañ a rummadoù a c'hall kengejañ.",
+	'categoryintersection-mincategories' => "Ret eo deoc'h lakaat daou rummad da nebeutañ.",
 	'categoryintersection-results' => 'Kavez ez eus bet $1 {{PLURAL:$1|titl|titl}} gant an taol klask.',
 );
 
@@ -144,6 +145,13 @@ $messages['de'] = array(
 	'categoryintersection-maxcategories' => 'Die maximale Anzahl von Kategorien für Schnittmengen ist $1.',
 	'categoryintersection-mincategories' => 'Du musst mindestens zwei Kategorien angeben.',
 	'categoryintersection-results' => 'Die Suche ergab $1 {{PLURAL:$1|Treffer|Treffer}}.',
+);
+
+/** German (formal address) (Deutsch (Sie-Form))
+ * @author Kghbln
+ */
+$messages['de-formal'] = array(
+	'categoryintersection-mincategories' => 'Sie müssen mindestens zwei Kategorien angeben.',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -391,7 +399,7 @@ $messages['km'] = array(
 	'categoryintersection-results' => 'ការស្វែងរកផ្ដល់ $1 {{PLURAL:$1|លទ្ឋផល|លទ្ឋផល}}។',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

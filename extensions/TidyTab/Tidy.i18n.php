@@ -246,7 +246,7 @@ $messages['km'] = array(
 	'untidy' => 'គ្មានសណ្ដាប់ធ្នាប់',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

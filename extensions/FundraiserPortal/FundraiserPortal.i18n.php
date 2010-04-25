@@ -679,7 +679,7 @@ $messages['ko'] = array(
 	'fundraiserportal-tourmaline-button' => '지금 기부하기',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -1131,7 +1131,7 @@ $messages['yi'] = array(
 	'fundraiserportal-tourmaline-close' => 'באַהאַלטן דאָס פֿון איצט און ווײַטער',
 );
 
-/** Yue (粵語)
+/** Cantonese (粵語)
  * @author Shinjiman
  */
 $messages['yue'] = array(

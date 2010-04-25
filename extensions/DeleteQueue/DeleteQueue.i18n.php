@@ -3528,7 +3528,7 @@ $messages['kri'] = array(
 	'deletequeue-list-search' => 'Luk foh am',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -3694,7 +3694,7 @@ Do kanns Ding [{{fullurl:{{FULLPAGENAME}}|action=delvote}} eije Zoshtemmung odde
 	'deletequeue-case-needs-review' => 'Hee dä Fall moß [[$1|nohjeloort wääde]].',
 );
 
-/** Cornish (Kernowek)
+/** Cornish (Kernewek)
  * @author Kernoweger
  * @author Kw-Moon
  */

@@ -42,7 +42,7 @@ $messages['af'] = array(
 	'newuseredit-summary' => 'Plaas [[{{int:newusermessage-template}}|welkomboodskap]] op nuwe gebruiker se besprekingsblad',
 );
 
-/** Old English (Anglo-Saxon)
+/** Old English (Ænglisc)
  * @author Wōdenhelm
  */
 $messages['ang'] = array(
@@ -388,7 +388,7 @@ $messages['ko'] = array(
 	'newuseredit-summary' => '새 사용자의 토론 문서에 [[{{int:newusermessage-template}}|환영 메시지]]를 추가',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -689,7 +689,7 @@ $messages['vo'] = array(
 	'newuseredit-summary' => '[[{{int:newusermessage-template}}|Benokömanun]] paläükon lä bespikapad gebana nulik',
 );
 
-/** Yue (粵語)
+/** Cantonese (粵語)
  * @author Shinjiman
  */
 $messages['yue'] = array(

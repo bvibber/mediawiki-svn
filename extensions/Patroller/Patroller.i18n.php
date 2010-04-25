@@ -89,7 +89,7 @@ $messages['an'] = array(
 	'patrol-revert-reason' => 'Razón:',
 );
 
-/** Old English (Anglo-Saxon)
+/** Old English (Ænglisc)
  * @author Wōdenhelm
  */
 $messages['ang'] = array(
@@ -1014,7 +1014,7 @@ $messages['ko'] = array(
 	'group-patroller-member' => '검토자',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -1514,7 +1514,7 @@ $messages['pt-br'] = array(
 	'right-patroller' => 'Patrulhar páginas',
 );
 
-/** Rhaeto-Romance (Rumantsch) */
+/** Romansh (Rumantsch) */
 $messages['rm'] = array(
 	'patrol-revert-reason' => 'Motiv:',
 );
@@ -1991,7 +1991,7 @@ $messages['yi'] = array(
 	'right-patroller' => 'פאטראלירן בלעטער',
 );
 
-/** Yue (粵語)
+/** Cantonese (粵語)
  * @author Hillgentleman
  * @author Shinjiman
  */

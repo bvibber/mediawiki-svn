@@ -232,7 +232,7 @@ $messages['km'] = array(
 	'mootools12core-desc' => 'បន្ថែម [http://mootools.net mootools-1.2-core-yc.js] ដែល​ជា​ការបង្រួម​គ្រោង JavaScript ទៅ​ទំព័រ​នីមួយៗ',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

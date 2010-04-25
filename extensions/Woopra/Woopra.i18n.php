@@ -246,7 +246,7 @@ $messages['krc'] = array(
 	'woopra-desc' => '[http://www.woopra.com/ Woopra Live Tracking Software]-ге MediaWiki инсталляциягъыз бла ишлерге къояды.',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

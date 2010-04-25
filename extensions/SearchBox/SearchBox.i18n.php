@@ -49,7 +49,7 @@ $messages['am'] = array(
 	'searchbox-namespaces' => 'ክፍለ-ዊኪዎች:',
 );
 
-/** Old English (Anglo-Saxon)
+/** Old English (Ænglisc)
  * @author Wōdenhelm
  */
 $messages['ang'] = array(
@@ -437,7 +437,7 @@ $messages['kn'] = array(
 	'searchbox-go' => 'ಹೋಗು',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

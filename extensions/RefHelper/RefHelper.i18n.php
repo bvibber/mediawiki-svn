@@ -40,6 +40,18 @@ $messages['en'] = array(
 You can [[Special:RefHelper|add the reference manually]] or [[Special:RefSearch|search for the citation to add]].',
 );
 
+/** Message documentation (Message documentation)
+ * @author EugeneZelenko
+ */
+$messages['qqq'] = array(
+	'refhelper-title' => '{{Identical|Title}}',
+	'refhelper-pages' => '{{Identical|Pages}}',
+	'refhelper-year' => '{{Identical|Year}}',
+	'refhelper-category' => '{{Identical|Category}}',
+	'refhelper-create' => '{{Identical|Create}}',
+	'refhelper-search' => '{{Identical|Search}}',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */
@@ -183,6 +195,18 @@ $messages['de'] = array(
 <h2>Vorschläge</h2>',
 	'refhelper-newarticle_nosuggestions' => 'Es war leider nicht möglich einen Literaturhinweis vorzuschlagen.
 Du kannst [[Special:RefHelper|den Literaturhinweis selbst erstellen]] oder [[Special:RefSearch|nach dem hinzuzufügenden Autorenzitat suchen]].',
+);
+
+/** German (formal address) (Deutsch (Sie-Form))
+ * @author Kghbln
+ * @author The Evil IP address
+ */
+$messages['de-formal'] = array(
+	'refhelper-newarticle_suggestions' => 'Sofern ein zutreffendes Autorenzitat verfügbar ist, können Sie den Literaturhinweis durch Klicken auf die zugehörige Schaltfläche „Erstellen” erzeugen.
+
+<h2>Vorschläge</h2>',
+	'refhelper-newarticle_nosuggestions' => 'Es war leider nicht möglich einen Literaturhinweis vorzuschlagen.
+Sie können [[Special:RefHelper|den Literaturhinweis selbst erstellen]] oder [[Special:RefSearch|nach dem hinzuzufügenden Autorenzitat suchen]].',
 );
 
 /** Lower Sorbian (Dolnoserbski)

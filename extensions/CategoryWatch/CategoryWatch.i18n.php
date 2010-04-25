@@ -428,7 +428,7 @@ $messages['ko'] = array(
 	'categorywatch-autocat' => '$1에 의해 자동 주시됨',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

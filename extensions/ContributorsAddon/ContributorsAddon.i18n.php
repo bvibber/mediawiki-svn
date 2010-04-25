@@ -247,7 +247,7 @@ $messages['ko'] = array(
 	'contributorsaddon-desc' => '자바스크립트를 이용해 ‘주 기여자’를 표시하는 기능',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

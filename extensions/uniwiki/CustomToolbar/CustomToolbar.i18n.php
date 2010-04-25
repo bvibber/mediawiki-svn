@@ -1570,7 +1570,7 @@ $wgCustomToolbarMessages['kn'] = array(
 	'ct_submit' => 'ಹೋಗು!',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $wgCustomToolbarMessages['ksh'] = array(
@@ -1669,7 +1669,7 @@ Kuckt w.e.g. d'Astellunge vu ärem Popup-Blocker no.",
 	'ct_user_sample' => 'Benotzernumm',
 );
 
-/** Laz (Laz)
+/** Lazuri (Lazuri)
  * @author Bombola
  */
 $wgCustomToolbarMessages['lzz'] = array(

@@ -210,7 +210,7 @@ $messages['ja'] = array(
 	'i18ntags-desc' => '対応言語における数値書式、文法、複数形に関するi18n関数へのアクセスを提供する',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -393,7 +393,7 @@ $messages['vi'] = array(
 	'i18ntags-desc' => 'Truy cập các hàm quốc tế hóa về định dạng số, ngữ pháp, và biến cách trong các ngôn ngữ có sẵn',
 );
 
-/** Yue (粵語)
+/** Cantonese (粵語)
  * @author Shinjiman
  */
 $messages['yue'] = array(

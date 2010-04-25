@@ -629,7 +629,7 @@ $messages['km'] = array(
 	'call-save-failed' => 'អត្ថបទដូចតទៅនេះមិនត្រូវបានរក្សាទុកទៅក្នុងទំព័រ <big>[[$1]]</big> ពីព្រោះទំព័រនោះមានរួចហើយ។',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

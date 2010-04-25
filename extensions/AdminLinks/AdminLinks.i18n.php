@@ -718,7 +718,7 @@ $messages['ko'] = array(
 	'right-adminlinks' => '[[Special:AdminLinks|관리자용 링크]]를 보기',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -773,7 +773,7 @@ $messages['li'] = array(
 	'right-adminlinks' => 'De verwiezing nao [[Special:AdminLinks|verwiezinge veur systeemwèrkers]] betrachte',
 );
 
-/** Latgaļu (Latgaļu)
+/** Latgalian (Latgaļu)
  * @author Dark Eagle
  */
 $messages['ltg'] = array(
@@ -781,7 +781,7 @@ $messages['ltg'] = array(
 	'adminlinks_createuser' => 'Sataiseit jaunu lītuotuoju',
 );
 
-/** Laz (Laz)
+/** Lazuri (Lazuri)
  * @author Bombola
  */
 $messages['lzz'] = array(

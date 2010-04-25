@@ -1220,7 +1220,7 @@ $messages['ko'] = array(
 	'right-feedback' => '문서를 평가하는 피드백 양식을 이용',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

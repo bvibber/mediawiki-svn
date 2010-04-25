@@ -1785,7 +1785,7 @@ $messages['krj'] = array(
 	'ogg-more' => 'Raku pa...',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -3296,7 +3296,7 @@ $messages['wa'] = array(
 	'ogg-dismiss' => 'Clôre',
 );
 
-/** Yue (粵語) */
+/** Cantonese (粵語) */
 $messages['yue'] = array(
 	'ogg-desc' => 'Ogg Theora 同 Vorbis 檔案嘅處理器，加埋 JavaScript 播放器',
 	'ogg-short-audio' => 'Ogg $1 聲檔，$2',

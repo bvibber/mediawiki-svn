@@ -348,7 +348,7 @@ $messages['ko'] = array(
 	'categorystepper-start' => '(분류의 시작)',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

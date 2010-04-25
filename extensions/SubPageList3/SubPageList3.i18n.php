@@ -285,7 +285,7 @@ $messages['km'] = array(
 	'spl3_nosubpages' => '$1 មិនមាន​ទំព័ររង​ក្នុង​បញ្ជី​ទេ​។',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

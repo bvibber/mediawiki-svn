@@ -196,7 +196,7 @@ $messages['ja'] = array(
 	'interlanguage-desc' => '言語間リンクをほかのウィキから取得する',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

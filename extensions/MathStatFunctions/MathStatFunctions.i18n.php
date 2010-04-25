@@ -394,7 +394,7 @@ $messages['ko'] = array(
 	'msfunc_div_zero' => '0으로 나눔',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -685,7 +685,7 @@ $messages['vo'] = array(
 	'msfunc_div_zero' => 'Müedam mü ser',
 );
 
-/** Yue (粵語) */
+/** Cantonese (粵語) */
 $messages['yue'] = array(
 	'msfunc_nan' => '結果唔係個數',
 	'msfunc_inf' => '結果數值係無限',

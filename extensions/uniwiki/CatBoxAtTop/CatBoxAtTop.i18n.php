@@ -304,7 +304,7 @@ $messages['kn'] = array(
 	'catboxattop-categories' => 'ವರ್ಗಗಳು',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -320,7 +320,7 @@ $messages['lb'] = array(
 	'catboxattop-categories' => 'Kategorien',
 );
 
-/** Laz (Laz)
+/** Lazuri (Lazuri)
  * @author Bombola
  */
 $messages['lzz'] = array(

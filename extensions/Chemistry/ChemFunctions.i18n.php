@@ -659,7 +659,7 @@ $messages['ko'] = array(
 	'chemFunctions_ChemFormInputError' => '화학식: 입력 오류!',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

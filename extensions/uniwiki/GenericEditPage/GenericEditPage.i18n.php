@@ -846,7 +846,7 @@ $messages['kn'] = array(
 	'gep-categories' => 'ವರ್ಗಗಳು',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -905,7 +905,7 @@ $messages['lmo'] = array(
 	'gep-addsection' => 'Gionta una sezión',
 );
 
-/** Laz (Laz)
+/** Lazuri (Lazuri)
  * @author Bombola
  */
 $messages['lzz'] = array(

@@ -83,6 +83,7 @@ Do not translate or change tag names, or link anchors.',
 	'recordadmin-buttonsave' => '{{Identical|Save}}',
 	'recordadmin-editlink' => '{{Identical|Edit}}',
 	'recordadmin-actions' => '{{Identical|Action}}',
+	'recordadmin-editwithform' => '{{Identical|Property}}',
 	'recordadmin-typeinfo' => '$1 is a record type. Could be read as "A record of type $1"',
 	'right-recordadmin' => '{{doc-right|recordadmin}}',
 	'recordadmin-export-csv' => '{{Optional}}',
@@ -1234,7 +1235,7 @@ $messages['kn'] = array(
 	'recordadmin-buttonsearch' => 'ಹುಡುಕು',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

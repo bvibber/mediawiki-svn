@@ -44,6 +44,7 @@ $messages['en'] = array(
 $messages['qqq'] = array(
 	'errorhandler-desc' => 'Extension description displayed on [[Special:Version]].',
 	'errorhandler-errors' => '{{Identical|Error}}',
+	'errorhandler-error-warning' => '{{Identical|Warning}}',
 	'errorhandler-msg-text' => '*$1 - error name
 *$2 - error message
 *$3 - filename
@@ -737,7 +738,7 @@ $messages['km'] = array(
 	'errorhandler-trace-line' => '$1 (បន្ទាត់ទី$2): $3',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

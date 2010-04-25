@@ -201,11 +201,12 @@ $messages['de'] = array(
 );
 
 /** German (formal address) (Deutsch (Sie-Form))
+ * @author Kghbln
  * @author Umherirrender
  */
 $messages['de-formal'] = array(
 	'badaccess-read' => 'Warnung: „$1“ verweist hierher, aber Sie haben keine ausreichende Berechtigung um die Seite zu sehen.',
-	'security-infosysops' => 'Für Sie sind keine Begrenzungen aktiv, weil Sie der Gruppe „Administratoren“ angehören',
+	'security-infosysops' => 'Für Sie sind keine Einschränkungen aktiv, weil Sie der Gruppe „Administratoren“ angehören.',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -573,7 +574,7 @@ $messages['kn'] = array(
 	'security-type-category' => 'ವರ್ಗ',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

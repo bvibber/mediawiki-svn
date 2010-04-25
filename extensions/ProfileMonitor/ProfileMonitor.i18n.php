@@ -554,7 +554,7 @@ $messages['krj'] = array(
 	'profiling-ok' => 'OK dun',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -1041,7 +1041,7 @@ $messages['vo'] = array(
 	'profiling-no-data' => 'Nünods leigöl nonik petuvons.',
 );
 
-/** Yue (粵語)
+/** Cantonese (粵語)
  * @author Shinjiman
  */
 $messages['yue'] = array(

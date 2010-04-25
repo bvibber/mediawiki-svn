@@ -1063,7 +1063,7 @@ riddler|리들러',
 	'right-voteadmin' => '투표 결과 보기',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -2008,7 +2008,7 @@ $messages['vo'] = array(
 	'vote-invalid-choice' => 'Mutol välön bali välas gebidik.',
 );
 
-/** Yue (粵語)
+/** Cantonese (粵語)
  * @author Shinjiman
  */
 $messages['yue'] = array(

@@ -190,7 +190,7 @@ $messages['ja'] = array(
 	'preloader-desc' => '新しいページ用に名前空間ごとのカスタマイズ可能な雛形文章を用意する',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

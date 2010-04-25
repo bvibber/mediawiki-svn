@@ -53,7 +53,7 @@ Hierdie funksie kan 'n aansienlike lading op die bediener plaas, gebruik dit ass
 	'right-asksql' => 'Skep SQL-soekopdragte',
 );
 
-/** Old English (Anglo-Saxon)
+/** Old English (Ænglisc)
  * @author Wōdenhelm
  */
 $messages['ang'] = array(
@@ -726,7 +726,7 @@ $messages['ko'] = array(
 	'right-asksql' => 'SQL 쿼리를 제출',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -1311,7 +1311,7 @@ Việc làm này thường kéo tải của máy chủ một cách đáng kể, 
 	'right-asksql' => 'Tạo truy vấn SQL',
 );
 
-/** Yue (粵語)
+/** Cantonese (粵語)
  * @author Shinjiman
  */
 $messages['yue'] = array(

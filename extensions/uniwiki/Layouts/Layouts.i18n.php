@@ -525,7 +525,7 @@ $messages['km'] = array(
 	'layouts_tagline' => "ទំព័រ​នេះ​ត្រូវ​បាន​បង្កើតឡើង​ដោយ​ប្លង់ '''$1''' ។",
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

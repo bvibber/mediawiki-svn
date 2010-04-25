@@ -316,7 +316,7 @@ $messages['ko'] = array(
 	'categoryonupload-label' => '분류:',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -325,7 +325,7 @@ $messages['ksh'] = array(
 	'categoryonupload-none' => '-',
 );
 
-/** Cornish (Kernowek)
+/** Cornish (Kernewek)
  * @author Kernoweger
  * @author Kw-Moon
  */

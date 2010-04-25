@@ -121,6 +121,7 @@ $messages['qqq'] = array(
 	'sign-viewfield-email' => '{{Identical|E-mail}}',
 	'sign-viewfield-options' => '{{Identical|Options}}',
 	'sign-signatures' => '{{Identical|Signature}}',
+	'sign-closed' => '{{Identical|Closed}}',
 	'sig-private' => '{{Identical|Private}}',
 	'sign-emailto' => '{{optional}}',
 	'sign-viewfield-reviewedby' => '{{Identical|Reviewer}}',
@@ -200,7 +201,7 @@ $messages['an'] = array(
 	'sign-submitreview' => 'Nimbiar rebisión',
 );
 
-/** Old English (Anglo-Saxon) */
+/** Old English (Ænglisc) */
 $messages['ang'] = array(
 	'sign-realname' => 'Nama:',
 );
@@ -870,8 +871,8 @@ $1',
  */
 $messages['de-formal'] = array(
 	'sign-nodocselected' => 'Bitte wählen Sie das zu signierende Dokument aus.',
-	'sign-docheader' => '<div class="noarticletext">Bitte benutzen Sie dieses Formular, um das hierunter angezeigte Dokument „[[$1]]“ zu signieren.
-Bitte lesen Sie das gesammte Dokument und wenn Sie ihm Ihre Zustimmung geben, füllen Sie bitte die nötigen Felder aus, um es zu signieren.</div>',
+	'sign-docheader' => 'Bitte benutzen Sie dieses Formular, um das hierunter angezeigte Dokument „[[$1]]“ zu signieren.
+Bitte lesen Sie das gesammte Dokument und wenn Sie ihm Ihre Zustimmung geben, füllen Sie bitte die nötigen Felder aus, um es zu signieren.',
 	'sign-information' => '<div class="noarticletext">Danke, dass Sie sich die Zeit genommen haben, dieses Dokument durchzulesen.
 Wenn Sie ihm zustimmen, zeigen Sie dies bitte indem Sie die benötigten Felder unten ausfüllen und anschließend auf „Dokument unterschreiben“ klicken.
 Bitte stellen Sie sicher, dass Ihre persönlichen Informationen korrekt sind und dass wir die Möglichkeit haben, Sie zur Feststellung Ihrer Identität zu kontaktieren.
@@ -1045,6 +1046,20 @@ $messages['el'] = array(
 	'sign-uniquequery-similaraddress' => 'Παρόμοια διεύθυνση',
 	'sign-uniquequery-similarphone' => 'Παρόμοιο τηλέφωνο',
 	'sign-uniquequery-similaremail' => 'Παρόμοιο email',
+);
+
+/** British English (British English)
+ * @author Reedy
+ */
+$messages['en-gb'] = array(
+	'sign-information' => '<div class="noarticletext">Thank you for taking the time to read through this document.
+If you agree with it, please indicate your support by filling in the required fields below and clicking "Sign document".
+Please ensure that your personal information is correct and that we have some way to contact you to verify your identity.
+Note that your IP address and other identifying information will be recorded by this form and used by moderators to eliminate duplicate signatures and confirm the correctness of your personal information.
+As the use of open and anonymising proxies inhibits our ability to perform this task, signatures from such proxies will likely not be counted.
+If you are currently connected through a proxy server, please disconnect from it and use a standard connection while signing.</div>
+
+$1',
 );
 
 /** Esperanto (Esperanto)
@@ -3789,7 +3804,7 @@ $messages['qu'] = array(
 	'sign-uniquequery-1signed2' => "[{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1] sutiyuqqa [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs}} $2] nisqa qillqarimata silq'un.",
 );
 
-/** Rhaeto-Romance (Rumantsch) */
+/** Romansh (Rumantsch) */
 $messages['rm'] = array(
 	'sign-viewfield-realname' => 'Num',
 );

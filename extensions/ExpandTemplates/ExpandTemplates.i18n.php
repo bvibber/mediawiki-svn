@@ -1129,7 +1129,7 @@ $messages['krj'] = array(
 	'expand_templates_preview' => 'Bilid',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -2153,7 +2153,7 @@ $messages['yi'] = array(
 	'expand_templates_preview' => 'פֿאראויסשטעלונג',
 );
 
-/** Yue (粵語) */
+/** Cantonese (粵語) */
 $messages['yue'] = array(
 	'expandtemplates' => '展開模',
 	'expandtemplates-desc' => '[[Special:ExpandTemplates|展開模、parser functions同埋變數]]去顯示展開嘅wiki文字同埋預覽處理後嘅版',

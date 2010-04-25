@@ -54,7 +54,7 @@ $messages['af'] = array(
 	'watchers_less_than_x' => 'Minder as $1 gebruikers hou die bladsy dop.',
 );
 
-/** Old English (Anglo-Saxon)
+/** Old English (Ænglisc)
  * @author Wōdenhelm
  */
 $messages['ang'] = array(
@@ -601,7 +601,7 @@ $messages['km'] = array(
 	'watchers_less_than_x' => '{{PLURAL:$1|អ្នកប្រើប្រាស់|អ្នកប្រើប្រាស់}} ​តិចជាង $1 ​កំពុងតាមដានទំព័រនេះ​។',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

@@ -1344,7 +1344,7 @@ $messages['ja'] = array(
 	'qp_error_unique' => 'タイプが unique() の質問には回答可能なものより多くの質問が定義されています。すべてに記入することはできません',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

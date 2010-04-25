@@ -105,6 +105,22 @@ $messages['be-tarask'] = array(
 	'storyboard-unpublish' => 'Прыбраць',
 	'storyboard-publish' => 'Апублікаваць',
 	'storyboard-hide' => 'Схаваць',
+	'story' => 'Гісторыя',
+	'storyboard-submittedbyon' => 'Адпраўлена $1 $2, $3.',
+	'storyboard-viewstories' => 'Прагляд гісторыяў',
+	'storyboard-nosuchstory' => 'Гісторыя, якую Вы запыталі не існуе.
+Верагодна яна была выдалена.',
+	'storyboard-storyunpublished' => 'Гісторыя, якую Вы запыталі, яшчэ не была апублікавана.',
+	'storyboard-nostorytitle' => 'Вам неабходна падаць назву ці ідэнтыфікатар гісторыі, якую жадаеце праглядзець.',
+	'storyboard-cantedit' => 'Вам не дазволена рэдагаваць гісторыі.',
+	'storyboard-canedit' => 'Вы можаце [$1 рэдагаваць] і апублікаваць гэтую гісторыю.',
+	'storyboard-createdandmodified' => 'Створана $1, $2 і апошні раз зьмянялася $3, $4',
+	'storyboard-authorname' => 'Імя аўтара',
+	'storyboard-authorlocation' => 'Месцазнаходжаньне аўтара',
+	'storyboard-authoroccupation' => 'Род заняткаў аўтара',
+	'storyboard-authoremail' => 'Адрас электроннай пошты аўтара',
+	'storyboard-thestory' => 'Гісторыя',
+	'storyboard-storystate' => 'Штат:',
 );
 
 /** Breton (Brezhoneg)
@@ -138,6 +154,76 @@ $messages['br'] = array(
 	'storyboard-photo' => "Ur poltred ouzhoc'h o peus ?
 Perak chom hep rannañ anezhi ?",
 	'storyboard-email' => "Ho chomlec'h postel",
+);
+
+/** German (Deutsch)
+ * @author Kghbln
+ */
+$messages['de'] = array(
+	'storyboard-name' => 'Schwarzes Brett für Botschaften',
+	'storyboard-desc' => 'Stellt eine [[Special:Story|Anlaufstelle]] für Förderer, eine Seite auf der Botschaften [[Special:StorySubmission|eingereicht]], sowie eine Seite mit der diese [[Special:StoryReview|betreut]] werden können, zur Verfügung.',
+	'right-storyreview' => 'Überprüfen, Bearbeiten, Veröffentlichen und Verbergen von Botschaften',
+	'storyboard-unpublished' => 'Unveröffentlicht',
+	'storyboard-published' => 'Veröffentlicht',
+	'storyboard-hidden' => 'Verborgen',
+	'storyboard-unpublish' => 'Veröffentlichung zurückziehen',
+	'storyboard-publish' => 'Veröffentlichen',
+	'storyboard-hide' => 'Verbergen',
+	'story' => 'Botschaft',
+	'storyboard-submittedbyon' => 'Eingereicht von $1 am $2, $3.',
+	'storyboard-viewstories' => 'Botschaften lesen',
+	'storyboard-nosuchstory' => 'Die Botschaft, die du aufrufen wolltest, existiert nicht. Vielleicht wurde sie gelöscht.',
+	'storyboard-storyunpublished' => 'Die Botschaft, die du aufrufen wolltest, wurde bislang noch nicht veröffentlicht.',
+	'storyboard-nostorytitle' => 'Du musst den Titel oder die Kennung der Botschaft angeben, die du lesen möchtest.',
+	'storyboard-cantedit' => 'Du hast nicht die Berechtigung Botschaften zu bearbeiten.',
+	'storyboard-canedit' => 'Du kannst diese Botschaft [$1 bearbeiten] und veröffentlichen.',
+	'storyboard-createdandmodified' => 'Am $1, $2 erstellt und letztmalig am $3, $4 bearbeitet.',
+	'storyboard-authorname' => 'Name des Autors',
+	'storyboard-authorlocation' => 'Standort des Autors',
+	'storyboard-authoroccupation' => 'Beruf des Autors',
+	'storyboard-authoremail' => 'E-Mail-Adresse des Autors',
+	'storyboard-thestory' => 'Die Botschaft',
+	'storyboard-storystate' => 'Land:',
+	'storyboard-submissioncomplete' => 'Die Einreichung ist abgeschlossen',
+	'storyreview' => 'Botschaft überprüfen',
+	'storyboard-hideimage' => 'Bild verbergen',
+	'storyboard-unhideimage' => 'Bild anzeigen',
+	'storyboard-deleteimage' => 'Bild löschen',
+	'storyboard-yourname' => 'Dein Name',
+	'storyboard-location' => 'Dein Standort',
+	'storyboard-occupation' => 'Dein Beruf',
+	'storyboard-story' => 'Deine Botschaft',
+	'storyboard-photo' => 'Gibt es ein Foto von Dir? Was spricht dagegen es zu veröffentlichen?',
+	'storyboard-email' => 'Deine E-Mail-Adresse:',
+	'storyboard-storytitle' => 'Ein kurzer, aussagekräftiger Titel:',
+	'storyboard-agreement' => 'Ich stimme der Veröffentlichung und Nutzung dieser Botschaft unter den Bedingungen der Lizenz [http://creativecommons.org/licenses/by-sa/3.0/ Creative Commons Namensnennung-Weitergabe unter gleichen Bedingungen] zu.',
+	'storyboard-charsleft' => '($1 {{PLURAL:$1|Anschlag|Anschläge}} verfügbar)',
+	'storyboard-cannotbelonger' => "Deine Botschaft ist '''$1''' {{PLURAL:$1|Anschlag|Anschläge}} zu lang!",
+	'storyboard-charsneeded' => '($1 {{PLURAL:$1|weiterer|weitere}} {{PLURAL:$1|Anschlag|Anschläge}} notwendig)',
+	'storyboard-needtoagree' => 'Du musst der Veröffentlichung deiner Botschaft zustimmen, um sie einreichen zu können.',
+	'storyboard-createdsucessfully' => 'Vielen Dank, dass du uns deine Botschaft mitgeteilt hast! Wir werden sie in Kürze überprüfen.
+Du kannst bereits veröffentlichte Botschaften [$1 hier] lesen.',
+);
+
+/** German (formal address) (Deutsch (Sie-Form))
+ * @author Kghbln
+ */
+$messages['de-formal'] = array(
+	'storyboard-nosuchstory' => 'Die Botschaft, die Sie aufrufen wollten, existiert nicht. Vielleicht wurde sie gelöscht.',
+	'storyboard-storyunpublished' => 'Die Botschaft, die Sie aufrufen wollten, wurde bislang noch nicht veröffentlicht.',
+	'storyboard-nostorytitle' => 'Sie müssen den Titel oder die Kennung der Botschaft angeben, die Sie lesen möchten.',
+	'storyboard-cantedit' => 'Sie haben nicht die Berechtigung Botschaften zu bearbeiten.',
+	'storyboard-canedit' => 'Sie können diese Botschaft [$1 bearbeiten] und veröffentlichen.',
+	'storyboard-yourname' => 'Ihre Name',
+	'storyboard-location' => 'Ihr Standort',
+	'storyboard-occupation' => 'Ihr Beruf',
+	'storyboard-story' => 'Ihre Botschaft',
+	'storyboard-photo' => 'Gibt es ein Foto von Ihnen? Was spricht dagegen es zu veröffentlichen?',
+	'storyboard-email' => 'Ihre E-Mail-Adresse:',
+	'storyboard-cannotbelonger' => "Ihre Botschaft ist '''$1''' {{PLURAL:$1|Anschlag|Anschläge}} zu lang!",
+	'storyboard-needtoagree' => 'Sie müssen der Veröffentlichung Ihrer Botschaft zustimmen, um sie einreichen zu können.',
+	'storyboard-createdsucessfully' => 'Vielen Dank, dass Sie uns Ihre Botschaft mitgeteilt haben! Wir werden sie in Kürze überprüfen.
+Sie können bereits veröffentlichte Botschaften [$1 hier] lesen.',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -357,8 +443,8 @@ Móžeće [$1 wozjewjene powědančka čitać].',
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
-	'storyboard-publish' => 'Közzététel',
 	'storyboard-unpublish' => 'Közzététel visszavonása',
+	'storyboard-publish' => 'Közzététel',
 );
 
 /** Interlingua (Interlingua)

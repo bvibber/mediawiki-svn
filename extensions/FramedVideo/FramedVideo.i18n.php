@@ -521,7 +521,7 @@ $messages['km'] = array(
 	'framedvideo_helppage' => 'Help: វិដេអូ',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

@@ -546,7 +546,7 @@ $messages['ko'] = array(
 	'languageselector-setlang' => '설정',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -555,7 +555,7 @@ $messages['ksh'] = array(
 	'languageselector-setlang' => 'Setze',
 );
 
-/** Cornish (Kernowek)
+/** Cornish (Kernewek)
  * @author Kw-Moon
  */
 $messages['kw'] = array(
@@ -1025,7 +1025,7 @@ $messages['vo'] = array(
 	'languageselector' => 'Pük',
 );
 
-/** Yue (粵語)
+/** Cantonese (粵語)
  * @author Shinjiman
  */
 $messages['yue'] = array(

@@ -281,7 +281,7 @@ $messages['km'] = array(
 	'stalepages-summary' => 'នេះ​ជា​បញ្ជី​នៃ​ទំព័រ​ដែល​ត្រូវ​បាន​កែប្រែ​ក្នុង​រយៈពេល $1 {{PLURAL:$1|ថ្ងៃ|ថ្ងៃ}} ចុងក្រោយនេះ​។',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

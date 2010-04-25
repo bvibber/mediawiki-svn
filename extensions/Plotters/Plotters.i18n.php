@@ -457,7 +457,7 @@ $messages['ja'] = array(
 	'plotters-errors' => 'プロッターの{{PLURAL:$1|エラー}}:',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

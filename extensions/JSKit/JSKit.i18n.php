@@ -191,7 +191,7 @@ $messages['ja'] = array(
 	'jskit-desc' => 'JS-Kit のツールをウィキページに統合する',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

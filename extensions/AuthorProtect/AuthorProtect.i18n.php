@@ -875,7 +875,7 @@ $messages['ko'] = array(
 	'right-authorprotect' => '작성한 문서를 보호하기',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

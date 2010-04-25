@@ -101,7 +101,7 @@ $messages['an'] = array(
 	'badimages-reason' => 'Razón:',
 );
 
-/** Old English (Anglo-Saxon)
+/** Old English (Ænglisc)
  * @author Wōdenhelm
  */
 $messages['ang'] = array(
@@ -1948,7 +1948,7 @@ $messages['pt-br'] = array(
 	'right-badimages' => 'Atualizar a lista de imagens problemáticas',
 );
 
-/** Rhaeto-Romance (Rumantsch) */
+/** Romansh (Rumantsch) */
 $messages['rm'] = array(
 	'badimages-name' => 'Num:',
 	'badimages-reason' => 'Motiv:',

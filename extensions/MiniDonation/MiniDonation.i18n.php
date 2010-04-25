@@ -298,7 +298,7 @@ $messages['km'] = array(
 	'donationform-submit' => 'វិភាគទានតាមរយៈ PayPal',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -556,7 +556,7 @@ $messages['vi'] = array(
 	'donationform-submit' => 'Quyên góp dùng PayPal',
 );
 
-/** Yue (粵語) */
+/** Cantonese (粵語) */
 $messages['yue'] = array(
 	'donationform-submit' => '透過PayPal捐款',
 );

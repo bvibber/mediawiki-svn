@@ -454,7 +454,7 @@ $messages['km'] = array(
 	'specialwhoiswatchingaddbtn' => 'បន្ថែមអ្នកប្រើប្រាស់ ដែលបានជ្រើសយក',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

@@ -122,7 +122,7 @@ $messages['an'] = array(
 	'youtubeauthsub_submit' => 'Nimbiar',
 );
 
-/** Old English (Anglo-Saxon)
+/** Old English (Ænglisc)
  * @author Wōdenhelm
  */
 $messages['ang'] = array(
@@ -662,10 +662,12 @@ Bitte habe Geduld.',
 /** German (formal address) (Deutsch (Sie-Form))
  * @author ChrisiPK
  * @author Imre
+ * @author LWChris
  * @author Umherirrender
  */
 $messages['de-formal'] = array(
 	'youtubeauthsub_info' => 'Um ein Video zu YouTube hochzuladen, um es anschließend auf einer Seite einzubetten, müssen Sie folgende Felder ausfüllen:',
+	'youtubeauthsub_tokenerror' => 'Fehler beim Erstellen eines Authorisierungstokens. Versuchen Sie die Seite neu zuladen.',
 	'youtubeauthsub_success' => "Gratulation!
 Ihr Video wurde hochgeladen.
 <a href='http://www.youtube.com/watch?v=$1'>Sehen Sie sich ihr Video an</a>.
@@ -766,6 +768,13 @@ $messages['el'] = array(
 	'youtubeauthsub_jserror_nokeywords' => 'Παρακαλούμε εισάγεται 1 ή περισσότερες λέξεις κλειδιά.',
 	'youtubeauthsub_jserror_notitle' => 'Παρακαλώ εισάγετε έναν τίτλο για το βίντεο.',
 	'youtubeauthsub_jserror_nodesc' => 'Παρακαλούμε εισάγετε μια περιγραφή για το βίντεο.',
+);
+
+/** British English (British English)
+ * @author Reedy
+ */
+$messages['en-gb'] = array(
+	'youtubeauthsub_tokenerror' => 'Error generating authorisation token, try refreshing.',
 );
 
 /** Esperanto (Esperanto)
@@ -1731,7 +1740,7 @@ $messages['krj'] = array(
 	'youtubeauthsub_category' => 'Kategorya',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -1775,7 +1784,7 @@ Bes jet jedoldesch.',
 	'youtubeauthsub_jserror_nodesc' => 'Don dä Viddejo winneßtens med enem Satz udder zwei beschrieve, söns weet dat nix, hee.',
 );
 
-/** Cornish (Kernowek)
+/** Cornish (Kernewek)
  * @author Kernoweger
  * @author Kw-Moon
  */
@@ -1861,14 +1870,14 @@ $messages['lt'] = array(
 	'youtubeauthsub_summary' => 'Įkeliamas YouTube video',
 );
 
-/** Latgaļu (Latgaļu)
+/** Latgalian (Latgaļu)
  * @author Dark Eagle
  */
 $messages['ltg'] = array(
 	'youtubeauthsub_category' => 'Kategoreja',
 );
 
-/** Laz (Laz)
+/** Lazuri (Lazuri)
  * @author Bombola
  */
 $messages['lzz'] = array(

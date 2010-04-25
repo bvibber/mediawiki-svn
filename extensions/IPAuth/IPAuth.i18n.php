@@ -191,7 +191,7 @@ $messages['krc'] = array(
 	'ipauth-desc' => 'Дайым IP-адреследен автомат кириу',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

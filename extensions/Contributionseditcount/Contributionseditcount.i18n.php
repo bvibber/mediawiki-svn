@@ -365,7 +365,7 @@ $messages['ko'] = array(
 	'contributionseditcount-desc' => '[[Special:Contributions|사용자 기여 목록]]에서 편집 횟수를 표시합니다.',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -733,7 +733,7 @@ $messages['yo'] = array(
 	'contributionseditcount-desc' => 'Ìgbéhàn iye àtúnṣe lórí [[Special:Contributions|ojúewé àwọn àfikún oníṣe]]',
 );
 
-/** Yue (粵語) */
+/** Cantonese (粵語) */
 $messages['yue'] = array(
 	'contributionseditcount' => '呢個用戶有 $1 次編輯。',
 );

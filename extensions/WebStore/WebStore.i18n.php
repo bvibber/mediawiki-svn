@@ -1529,7 +1529,7 @@ $1',
 	'webstore_php_error' => 'មានកំហុស PHP:',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

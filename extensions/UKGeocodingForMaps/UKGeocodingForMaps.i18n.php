@@ -160,6 +160,13 @@ $messages['no'] = array(
 	'ukgeocoding_couldNotGeocode' => 'En eller fler postkoder kunne ikke geokodes og har blitt utelatt fra kartet.',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'ukgeocoding_name' => 'Geoencodatge del Reialme Unit per las mapas',
+);
+
 /** Piedmontese (Piemontèis)
  * @author Borichèt
  * @author Dragonòt

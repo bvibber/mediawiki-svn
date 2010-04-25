@@ -22,11 +22,25 @@ $messages['de'] = array(
 	'addmediawizard-desc' => 'Assistent zum Einfügen von Mediendateien in Seiten. Entwickelt in Zusammenarbeit von Kaltura und der Wikimedia Foundation.',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'addmediawizard-desc' => 'Medijowy asistent pśidaś, wuwity w zgromadnem źěle wót Laltury a załožby Wikimedia Foundation',
+);
+
 /** French (Français)
  * @author Peter17
  */
 $messages['fr'] = array(
 	'addmediawizard-desc' => 'Ajouter un assistant pour les média, développé dans un partenariat entre Kaltura et la Wikimedia Foundation',
+);
+
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'addmediawizard-desc' => 'Medijowy asistent přidać, wuwity w zhromadnym dźěle wot Kaltury a załožby Wikimedia Foundation',
 );
 
 /** Interlingua (Interlingua)

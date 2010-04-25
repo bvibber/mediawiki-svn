@@ -418,7 +418,7 @@ $messages['ko'] = array(
 	'ratedpages-graphs' => '평가 데이터',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

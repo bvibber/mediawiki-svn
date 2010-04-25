@@ -1682,7 +1682,7 @@ $messages['krj'] = array(
 	'regexblock-view-go' => 'Agto',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

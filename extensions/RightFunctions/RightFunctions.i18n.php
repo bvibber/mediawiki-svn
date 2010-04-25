@@ -281,7 +281,7 @@ $messages['km'] = array(
 	'rightfunctions-ns' => '(ពីការការពារលំហឈ្មោះ)',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

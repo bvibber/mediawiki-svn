@@ -374,7 +374,7 @@ $messages['km'] = array(
 	'purgecache-button' => 'លុបបំបាត់',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

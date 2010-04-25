@@ -787,7 +787,7 @@ $messages['km'] = array(
 	'right-refreshspecial' => 'ធ្វើឱ្យ​ទំព័រពិសេសស្រស់',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

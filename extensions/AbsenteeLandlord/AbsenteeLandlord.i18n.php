@@ -359,7 +359,7 @@ $messages['ko'] = array(
 	'absenteelandlord-desc' => '모든 관리자가 일정한 기간동안 활동하지 않으면 자동으로 위키 데이터베이스를 잠금',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

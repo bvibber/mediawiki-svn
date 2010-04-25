@@ -255,7 +255,7 @@ $messages['ko'] = array(
 	'opensearchxml-desc' => '텍스트 인용을 위한 [http://www.opensearch.org OpenSearch] XML 인터페이스를 제공',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -473,7 +473,7 @@ $messages['vi'] = array(
 	'opensearchxml-desc' => 'Giao diện [http://www.opensearch.org/ OpenSearch] cung cấp đoạn trích văn bản dạng XML',
 );
 
-/** Yue (粵語)
+/** Cantonese (粵語)
  * @author Shinjiman
  */
 $messages['yue'] = array(

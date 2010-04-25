@@ -278,7 +278,7 @@ $messages['ko'] = array(
 	'titlekey-desc' => '문서 제목의 접두어로 검색어를 제안',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -502,7 +502,7 @@ $messages['vi'] = array(
 	'titlekey-desc' => 'Bộ giúp đỡ tìm kiếm theo tiền tố của tựa đề',
 );
 
-/** Yue (粵語)
+/** Cantonese (粵語)
  * @author Shinjiman
  */
 $messages['yue'] = array(

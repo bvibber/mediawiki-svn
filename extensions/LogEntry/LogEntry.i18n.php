@@ -329,7 +329,7 @@ $messages['km'] = array(
 	'logentry-invalidpage' => 'ទំព័រ​មិនត្រឹមត្រូវ',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

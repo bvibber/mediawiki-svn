@@ -39,7 +39,7 @@ $messages['af'] = array(
 	'discussionthreading-threadnewsectionhint' => "Begin 'n nuwe onderwerp",
 );
 
-/** Old English (Anglo-Saxon)
+/** Old English (Ænglisc)
  * @author Wōdenhelm
  */
 $messages['ang'] = array(
@@ -392,7 +392,7 @@ $messages['km'] = array(
 	'discussionthreading-threadnewsectionhint' => 'ចាប់ផ្ដើម​ខ្សែស្រឡាយ​ថ្មី​មួយ',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -403,7 +403,7 @@ $messages['ksh'] = array(
 	'discussionthreading-threadnewsectionhint' => 'Ene neue Fäddem aanfange',
 );
 
-/** Cornish (Kernowek)
+/** Cornish (Kernewek)
  * @author Kw-Moon
  */
 $messages['kw'] = array(

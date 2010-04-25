@@ -1376,7 +1376,7 @@ $messages['ko'] = array(
 	'specialpages-group-feedback' => '독자 의견',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

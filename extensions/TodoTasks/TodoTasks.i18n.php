@@ -325,9 +325,10 @@ Dein freundliches %s-Benachrichtungssystem',
 
 /** German (formal address) (Deutsch (Sie-Form))
  * @author Imre
+ * @author The Evil IP address
  */
 $messages['de-formal'] = array(
-	'tasklistnowguseprojects' => 'Sie haben $wgUseProjects auf "false" gesetzt und können diese Seite nicht benutzen.',
+	'tasklistnowguseprojects' => 'Sie haben $wgUseProjects auf „false“ gesetzt und können diese Seite nicht benutzen.',
 	'tasklistemailbody' => ',
 
 Jemand hat Ihnen eine neue Aufgabe bei %s zugeordnet.
@@ -858,7 +859,7 @@ $messages['km'] = array(
 	'tasklistbyname' => '== បញ្ជី​កិច្ចការ​ដែលត្រូវ​ធ្វើ​ សម្រាប់​ %s ==',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

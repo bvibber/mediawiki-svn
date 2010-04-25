@@ -202,7 +202,7 @@ $messages['ja'] = array(
 	'randomimage-desc' => '<tt>&lt;randomimage /&gt;</tt>を使って、ランダムにメディアをピックアップする機能を提供する',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

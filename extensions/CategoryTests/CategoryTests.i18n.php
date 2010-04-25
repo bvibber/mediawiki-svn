@@ -225,7 +225,7 @@ $messages['ko'] = array(
 	'categorytests-desc' => '분류 테스트를 위한 기능',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

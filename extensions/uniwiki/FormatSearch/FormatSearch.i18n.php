@@ -235,7 +235,7 @@ $messages['km'] = array(
 	'formatsearch-desc' => 'សំអាត​ទំព័រ​លទ្ធផល​ស្វែងរក',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

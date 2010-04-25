@@ -417,7 +417,7 @@ $messages['km'] = array(
 	'newschannel_exclude_category' => 'ចំណាត់ថ្នាក់មិនរាប់បញ្ចូល:',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

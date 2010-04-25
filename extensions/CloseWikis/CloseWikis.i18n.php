@@ -1041,7 +1041,7 @@ $messages['ko'] = array(
 	'closewikis-list' => '닫힌 위키의 목록',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

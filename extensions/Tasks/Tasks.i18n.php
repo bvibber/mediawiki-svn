@@ -105,6 +105,7 @@ Don't change '|' character.",
 	'tasks_sidebar_title' => 'Tasks that are open.',
 	'tasks_here' => 'Used as a parameter in {{msg-mw|Tasks returnto}}',
 	'tasks_returnto' => '$1 is {{msg-mw|tasks_here}}',
+	'tasks_more_like_it' => '{{Identical|More}}',
 	'tasks_task_types' => 'This is a list to select from. Do not alter numbers and interpunctuation. Do not translate the lowercase markers between <code>:</code> and <code>:</code> and do translate the words between <code>:</code> and <code>|</code> only.',
 	'tasks_link_your_assignments' => 'Used as a parameter in {{msg-mw|Tasks see your assignments}}',
 	'tasks_see_your_assignments' => "*'''$1''': number of open assignments
@@ -115,6 +116,7 @@ Don't change '|' character.",
 	'tasks_previous' => '{{Identical|Previous}}',
 	'tasks_next' => '{{Identical|Next}}',
 	'tasks_status_open' => 'This is an adjective.',
+	'tasks_status_closed' => '{{Identical|Closed}}',
 );
 
 /** Afrikaans (Afrikaans)
@@ -2154,7 +2156,7 @@ $messages['kn'] = array(
 	'tasks_search_status' => 'ಸ್ಥಾನಮಾನ',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -2293,7 +2295,7 @@ $messages['lb'] = array(
 	'tasks_logentry' => 'Fir "[[$1]]"',
 );
 
-/** Laz (Laz)
+/** Lazuri (Lazuri)
  * @author Bombola
  */
 $messages['lzz'] = array(

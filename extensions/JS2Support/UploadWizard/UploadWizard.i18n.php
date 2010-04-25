@@ -24,12 +24,28 @@ $messages['de'] = array(
 	'uploadwizard-desc' => 'Assistent zum Hochladen von Dateien. Entwicklung wurde durch Fördergelder zur Verbesserung der Benutzerfreundlichkeit ermöglicht (Multimedia Usability Project).',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'uploadwizard' => 'Asistent za nagraśa',
+	'uploadwizard-desc' => 'Aistent za nagraśa, uwity za spěchowanje wužywajobnosći multimedijow',
+);
+
 /** French (Français)
  * @author Peter17
  */
 $messages['fr'] = array(
 	'uploadwizard' => "Assistant d'import",
 	'uploadwizard-desc' => "Assistant d'import, développé pour la subvention Multimedia Usability",
+);
+
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'uploadwizard' => 'Asistent za nahraća',
+	'uploadwizard-desc' => 'Asistent za nahraćow, wuwity za spěchowanje wužiwajomnosće multimedijow',
 );
 
 /** Interlingua (Interlingua)
@@ -54,6 +70,14 @@ $messages['mk'] = array(
 $messages['nl'] = array(
 	'uploadwizard' => 'Wizard uploaden',
 	'uploadwizard-desc' => 'Wizard uploaden, ontwikkeld voor de schenking voor Multimediabruikbaarheid',
+);
+
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'uploadwizard' => "Assistent d'impòrt",
+	'uploadwizard-desc' => "Assistent d'impòrt, desvolopat per la subvencion Multimedia Usability",
 );
 
 /** Portuguese (Português)

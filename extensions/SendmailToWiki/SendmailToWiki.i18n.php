@@ -363,7 +363,7 @@ $messages['ja'] = array(
 	'sendmailtowiki-err-onlyplain' => '誤った解釈を防ぐために、純粋なテキストのメッセージのみを受け付けます。',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

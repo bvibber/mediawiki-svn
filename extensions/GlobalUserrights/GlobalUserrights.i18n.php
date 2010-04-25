@@ -345,7 +345,7 @@ $messages['ko'] = array(
 	'gur-rightslog-entry' => '$1의 공통 권한을 $2에서 $3으로 변경',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

@@ -429,7 +429,7 @@ $messages['ko'] = array(
 	'simpleantispam-desc' => '스팸/봇 확인 장치를 추가',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -758,7 +758,7 @@ $messages['vo'] = array(
 	'simpleantispam' => 'Redakam olik ekodon blokami fa sul taspamik',
 );
 
-/** Yue (粵語)
+/** Cantonese (粵語)
  * @author Shinjiman
  */
 $messages['yue'] = array(

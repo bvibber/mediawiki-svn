@@ -421,7 +421,7 @@ $messages['ko'] = array(
 	'unicodeconverter-newtext' => '변환된 문자열:',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -616,7 +616,7 @@ $messages['pt-br'] = array(
 	'unicodeconverter-newtext' => 'Texto convertido:',
 );
 
-/** Rhaeto-Romance (Rumantsch)
+/** Romansh (Rumantsch)
  * @author Gion-andri
  */
 $messages['rm'] = array(

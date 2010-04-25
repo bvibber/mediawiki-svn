@@ -530,7 +530,7 @@ $messages['ko'] = array(
 철자를 다시 확인해보십시오.',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

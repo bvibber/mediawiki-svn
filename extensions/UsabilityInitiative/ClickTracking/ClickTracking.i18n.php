@@ -1024,7 +1024,7 @@ $messages['krc'] = array(
 	'ct-update-table' => 'Таблицаны джангырт',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -1087,7 +1087,7 @@ $messages['lv'] = array(
 	'ct-and' => 'un',
 );
 
-/** Laz (Laz)
+/** Lazuri (Lazuri)
  * @author Bombola
  */
 $messages['lzz'] = array(
@@ -1794,7 +1794,7 @@ $messages['yi'] = array(
 	'ct-and' => 'און',
 );
 
-/** Yue (粵語)
+/** Cantonese (粵語)
  * @author Shinjiman
  */
 $messages['yue'] = array(

@@ -183,7 +183,7 @@ $messages['ja'] = array(
 	'stockcharts-missingticker' => '株式チャートを埋め込むためには、最低でもチッカーを指定する必要があります。以下を使用してください: &lt;stockchart ticker="AAPL"/&gt;',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

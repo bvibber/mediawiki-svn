@@ -1189,7 +1189,9 @@ $wgGoogleMapsMessages['de'] = array(
 );
 
 /** German (formal address) (Deutsch (Sie-Form))
+ * @author LWChris
  * @author Raimond Spekking
+ * @author The Evil IP address
  * @author Umherirrender
  * @author [[mw:User:Helge.at]]
  */
@@ -1197,12 +1199,12 @@ $wgGoogleMapsMessages['de-formal'] = array(
 	'gm-incompatible-browser' => 'Um die Karte sehen zu können, die hier angezeigt werden soll, brauchen Sie einen kompatiblen Browser.',
 	'gm-incompatible-browser-link' => 'Klicken Sie hier für eine Liste kompatibler Browser.',
 	'gm-no-editor' => 'Leider unterstützt Ihr Browser den interaktiven Karten-Editor nicht. Versuchen Sie es mit der neuesten Version von <a href="http://www.mozilla.org/products/firefox">Firefox</a> (Windows, Mac und Linux) oder <a href="http://www.microsoft.com/ie">Internet Explorer</a> (Windows).',
-	'gm-note' => 'Achtung: Kopieren Sie die Wiki-Syntax in die Seite (unten), bevor Sie „Karte laden“, „Speichern“ oder „Vorschau“ klicken!',
+	'gm-note' => 'Achtung: Kopieren Sie alles, was Sie speichern möchten, in die Seite (unten), bevor Sie „Karte laden“, „Speichern“ oder „Vorschau“ klicken!',
 	'gm-are-you-sure' => 'Sind Sie sicher?',
-	'gm-search-preface' => 'Klicken Sie auf die Karte, um einen Punkt hinzuzufügen. Oder springen Sie zu einer Stadt, Land, Adresse oder einem Geschäft:',
-	'gm-geocode-preface' => 'Klicken Sie auf die Karte, um einen Punkt hinzuzufügen. Oder springen Sie zu einer Stadt, Land oder Adresse:',
+	'gm-search-preface' => 'Klicken Sie auf die Karte, um einen Punkt hinzuzufügen, oder springen Sie zu einer Stadt, Land, Adresse oder einem Geschäft:',
+	'gm-geocode-preface' => 'Klicken Sie auf die Karte, um einen Punkt hinzuzufügen, oder springen Sie zu einer Stadt, Land oder Adresse:',
 	'gm-no-search-preface' => 'Klicken Sie auf die Karte, um einen Punkt hinzuzufügen.',
-	'gm-editing-path' => 'Klicken Sie auf die Karte, um diesen Pfad zu verlängern.',
+	'gm-editing-path' => 'Klicken Sie auf die Karte, um mehr Punkte zum Pfad hinzuzufügen.',
 );
 
 /** Zazaki (Zazaki)
@@ -1361,6 +1363,16 @@ $wgGoogleMapsMessages['el'] = array(
 	'gm-earth' => 'Γη',
 	'gm-moon' => 'Σελήνη',
 	'gm-mars' => 'Άρης',
+);
+
+/** British English (British English)
+ * @author Lcawte
+ */
+$wgGoogleMapsMessages['en-gb'] = array(
+	'gm-color-path' => 'change colour',
+	'gm-color-fill' => 'change colour fill',
+	'gm-fill-color' => 'Fill colour',
+	'gm-line-color' => 'Line colour',
 );
 
 /** Esperanto (Esperanto)
@@ -3038,7 +3050,7 @@ $wgGoogleMapsMessages['krj'] = array(
 	'gm-search' => 'Sagap',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $wgGoogleMapsMessages['ksh'] = array(
@@ -6034,7 +6046,7 @@ $wgGoogleMapsMessages['yi'] = array(
 	'gm-mars' => 'מאַרס',
 );
 
-/** Yue (粵語)
+/** Cantonese (粵語)
  * @author Shinjiman
  */
 $wgGoogleMapsMessages['yue'] = array(

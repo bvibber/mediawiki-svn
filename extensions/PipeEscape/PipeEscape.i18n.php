@@ -176,7 +176,7 @@ $messages['ja'] = array(
 	'pipeescape-desc' => 'パイプ記号をパイプ記号のまま扱いたい場合のために、パーサー関数 <code>#!</code> を追加する',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

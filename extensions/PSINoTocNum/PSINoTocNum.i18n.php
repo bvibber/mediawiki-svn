@@ -196,7 +196,7 @@ $messages['km'] = array(
 	'psinotocnum-desc' => 'ពាក្យទិព្វថ្មី "<nowiki>__NOTOCNUM__</nowiki>"',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

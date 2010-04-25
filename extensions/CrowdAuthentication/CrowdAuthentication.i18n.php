@@ -201,7 +201,7 @@ $messages['ja'] = array(
 	'crowdauthentication-desc' => 'Atlassian社のCrowdシングルサインオンツールを利用する認証プラグイン',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -390,7 +390,7 @@ $messages['vi'] = array(
 	'crowdauthentication-desc' => 'Phần bổ sung xác minh cho Atlassian Crowd',
 );
 
-/** Yue (粵語)
+/** Cantonese (粵語)
  * @author Shinjiman
  */
 $messages['yue'] = array(

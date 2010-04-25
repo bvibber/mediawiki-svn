@@ -91,6 +91,15 @@ Please fill out the optional survey below.",
 To help us improve them, please fill out the optional survey below.',
 );
 
+/** Message documentation (Message documentation)
+ * @author EugeneZelenko
+ */
+$messages['qqq'] = array(
+	'prefswitch-survey-true' => '{{Identical|Yes}}',
+	'prefswitch-survey-false' => '{{Identical|No}}',
+	'prefswitch-survey-answer-whyoff-other' => '{{Identical|Other reason}}',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK
@@ -506,6 +515,23 @@ Wenn du die neuen Features einschalten möchtest, <span class="plainlinks">[$1 k
 Bitte fülle die freiwillige Umfrage aus.',
 	'prefswitch-survey-intro-off' => 'Danke für das Ausprobieren unserer neuen Features
 Damit wir besser werden können, fülle bitte die freiwillige Umfrage aus.',
+);
+
+/** German (formal address) (Deutsch (Sie-Form))
+ * @author The Evil IP address
+ */
+$messages['de-formal'] = array(
+	'prefswitch-main' => 'Wir haben hart gearbeitet, um die Arbeit für unsere Benutzer einfacher zu machen. Wir freuen uns sehr, dass wir nun einige Neuheiten präsentieren können, darunter ein neues Aussehen und vereinfachte Bearbeitungs-Möglichkeiten. Die Verbesserung der Bedienbarkeit unserer Projekte hat Priorität für die Wikimedia Foundation und wir werden auch in Zukunft weitere Neuheiten vorstellen.
+
+[[File:UsabilityNavigation.png|right|link=|Screenshot der neuen Navigation]]
+[[File:UsabilityToolbar.png|right|link=|Screenshot der erweiterten Werkzeugleiste]]
+[[File:UsabilityDialogs.png|right|link=|Screenshot der neuen Dialoge]]
+===Was sich geändert hat===
+* Navigation: Wir haben die Navigation zum Lesen und zur Bearbeitung der Seiten verbessert. Die Reiter am Kopf jeder Seite zeigen klarer, ob Sie eine Seite oder eine Diskussionsseite lesen und ob Sie eine Seite lesen oder bearbeiten.
+* Werkzeugleiste: Wir haben die Werkzeugleiste einfacher bedienbar gemacht. Die Formatierung von Seiten ist nun einfacher und intuitiver.
+* Link-Assistent: Ein einfach zu bedienender Dialog ermöglicht das Hinzufügen von Links sowohl zu anderen Wiki-Seiten als auch zu externen Seiten.
+* Suche: Wir haben die Suchvorschläge verbessert, damit Sie schneller zu der von Ihnen gesuchten Seite kommen.
+* Weiteres: Ein Tabellen-Assistent ermöglicht das einfache Erstellen von Tabellen und ein Suchen-und-Ersetzen-Dialog vereinfacht die Seitenbearbeitung.',
 );
 
 /** Lower Sorbian (Dolnoserbski)

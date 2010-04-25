@@ -48,7 +48,7 @@ $messages['am'] = array(
 	'backforth-next' => 'ቀጥሎ ($1)',
 );
 
-/** Old English (Anglo-Saxon) */
+/** Old English (Ænglisc) */
 $messages['ang'] = array(
 	'backforth-next' => 'Nīehst ($1)',
 	'backforth-prev' => 'Beforan ($1)',
@@ -505,7 +505,7 @@ $messages['ksh'] = array(
 	'backforth-prev' => 'Förije ($1)',
 );
 
-/** Cornish (Kernowek)
+/** Cornish (Kernewek)
  * @author Kernoweger
  * @author Kw-Moon
  */

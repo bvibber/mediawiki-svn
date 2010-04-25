@@ -169,7 +169,7 @@ $messages['ja'] = array(
 	'semanticinternalobjects-desc' => 'Semantic MediaWiki の内部オブジェクトの設定',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

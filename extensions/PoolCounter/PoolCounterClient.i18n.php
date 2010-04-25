@@ -196,7 +196,7 @@ $messages['ja'] = array(
 	'poolcounter-remote-error' => 'プールカウンター・サーバーのエラー: $1',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

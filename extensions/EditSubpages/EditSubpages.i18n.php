@@ -373,7 +373,7 @@ $messages['ja'] = array(
   #</pre><!-- leave this line alone -->',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

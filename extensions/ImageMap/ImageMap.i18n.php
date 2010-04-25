@@ -921,7 +921,7 @@ $messages['ko'] = array(
 	'imagemap_poly_odd' => '오류: $1번째 줄에 정의된 좌표 값의 수가 홀수 개입니다.',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -1742,7 +1742,7 @@ $messages['vo'] = array(
 	'imagemap_description' => 'Tefü magod at',
 );
 
-/** Yue (粵語)
+/** Cantonese (粵語)
  * @author Shinjiman
  */
 $messages['yue'] = array(

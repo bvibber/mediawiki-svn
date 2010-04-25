@@ -111,6 +111,14 @@ $messages['nl'] = array(
 	'active-task-forces-intro' => "Aantal bewerkingen aan taskforcepagina's in de afgelopen {{PLURAL:$1|dag|$1 dagen}}.",
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'activetaskforces' => 'Gropes de trabalh actius',
+	'active-task-forces-intro' => 'Nombre de modificacions de las paginas del grop de trabalh al cors {{PLURAL:$1|del darrièr jorn|dels $1 darrièrs jorns}}.',
+);
+
 /** Piedmontese (Piemontèis)
  * @author Borichèt
  */

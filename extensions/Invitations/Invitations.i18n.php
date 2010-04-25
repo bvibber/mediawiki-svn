@@ -810,7 +810,7 @@ $messages['km'] = array(
 	'invitations-invite-success' => 'អ្នកបានអញ្ជើញ $1 ឱ្យប្រើប្រាស់មុខងារនេះដោយជោគជ័យ!',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

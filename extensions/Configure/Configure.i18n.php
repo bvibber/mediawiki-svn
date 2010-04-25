@@ -273,6 +273,7 @@ In addition, you may want to append "<code>&uselang=</code>" with your language 
 * $3 time',
 	'configure-section-pages' => '{{Identical|Pages}}',
 	'configure-section-paths' => '{{Identical|Path}}',
+	'configure-section-db' => '{{Identical|Database}}',
 	'configure-section-email' => '{{Identical|E-mail}}',
 	'configure-section-timezone' => '{{Identical|Time zone}}',
 	'configure-section-html' => '{{optional}}',
@@ -5490,7 +5491,7 @@ $messages['krj'] = array(
 	'configure-section-specialpages' => 'Manga espesyal nga pahina',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -5682,7 +5683,7 @@ et Appachtemang. Do kresß en Vör-Aansich jezeich, wann De uß dämm Feld jeih�
 	'configure-farmer-extensions-list' => 'De [[Special:Extensions|Projramm-Zohsäz för dat Wiki hee opleßte]]',
 );
 
-/** Cornish (Kernowek)
+/** Cornish (Kernewek)
  * @author Kernoweger
  * @author Kw-Moon
  */

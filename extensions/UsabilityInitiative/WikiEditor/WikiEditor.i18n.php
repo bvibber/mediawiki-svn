@@ -19,6 +19,7 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author EugeneZelenko
  * @author Fryed-peach
  * @author Lloffiwr
  */
@@ -27,7 +28,8 @@ $messages['qqq'] = array(
 
 I guess that 'feature-providing modules' means the same as 'modules providing features'.",
 	'wikieditor-wikitext-tab' => 'Caption of the tab containing the edit box',
-	'wikieditor-loading' => 'Explanatory text for the temporary cover placed over the wikiediort while it\'s being assembled',
+	'wikieditor-loading' => "Explanatory text for the temporary cover placed over the wikiediort while it's being assembled
+{{Identical|Loading}}",
 );
 
 /** Afrikaans (Afrikaans)
@@ -363,7 +365,7 @@ $messages['ko'] = array(
 	'wikieditor-loading' => '로딩중',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

@@ -63,7 +63,7 @@ $messages['am'] = array(
 	'editmsg-search' => 'ፍለጋ',
 );
 
-/** Old English (Anglo-Saxon)
+/** Old English (Ænglisc)
  * @author Wōdenhelm
  */
 $messages['ang'] = array(
@@ -809,7 +809,7 @@ $messages['krj'] = array(
 	'editmsg-search' => 'Sagap',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -838,7 +838,7 @@ $messages['ku-latn'] = array(
 	'editmsg-search' => 'Lêbigere',
 );
 
-/** Cornish (Kernowek)
+/** Cornish (Kernewek)
  * @author Kernoweger
  * @author Kw-Moon
  */

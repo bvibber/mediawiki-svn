@@ -24,6 +24,14 @@ $messages['en'] = array(
 	'right-lastlogin' => 'View the last time a user logged in',
 );
 
+/** Message documentation (Message documentation)
+ * @author Siebrand
+ */
+$messages['qqq'] = array(
+	'lastuserlogin_daysago' => 'This message is used as a column header in a table.',
+	'right-lastlogin' => '{{doc-right}}',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */

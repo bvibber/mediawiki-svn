@@ -449,7 +449,7 @@ $messages['ko'] = array(
 	'dplforum-toomany' => 'DPL 포럼: 분류가 너무 많습니다!',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

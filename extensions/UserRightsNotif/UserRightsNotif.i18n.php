@@ -660,7 +660,7 @@ $2',
 	'userrightsnotif-desc' => '사용자 권한 변경 후 사용자에게 알림 이메일을 보냄',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

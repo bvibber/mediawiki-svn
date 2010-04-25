@@ -5536,7 +5536,7 @@ $messages['krj'] = array(
 	'mv_category' => 'kategorya',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

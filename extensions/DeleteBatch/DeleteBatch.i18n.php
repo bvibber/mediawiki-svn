@@ -802,7 +802,7 @@ $messages['kn'] = array(
 	'deletebatch-delete' => 'ಅಳಿಸು',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

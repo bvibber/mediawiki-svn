@@ -241,6 +241,7 @@ Klicke auf den Pfeil, um alle unter diesem Titel indizierten Seiten anzuzeigen.'
 
 /** German (formal address) (Deutsch (Sie-Form))
  * @author Imre
+ * @author The Evil IP address
  */
 $messages['de-formal'] = array(
 	'indexfunc-editwarning' => 'Achtung:
@@ -249,12 +250,12 @@ $1
 Stellen Sie sicher, dass die Seite, die Sie erstellen, nicht bereits unter anderem Titel existiert.
 Wenn Sie diese Seite erstellen, entfernen Sie diesen Titel vom <nowiki>{{#index:}}</nowiki> auf {{PLURAL:$2|der obigen Seite|den obigen Seiten}}.',
 	'indexfunc-movewarn' => 'Achtung:
-"$1" ist ein Indextitel für die {{PLURAL:$3|folgende Seite|folgenden Seiten}}:
+„$1” ist ein Indextitel für die {{PLURAL:$3|folgende Seite|folgenden Seiten}}:
 $2
-Bitte entfernen Sie "$1" von <nowiki>{{#index:}}</nowiki> auf {{PLURAL:$3|obiger Seite|obigen Seiten}}.',
+Bitte entfernen Sie „$1” von <nowiki>{{#index:}}</nowiki> auf {{PLURAL:$3|der obiger Seite|den obigen Seiten}}.',
 	'index-search-explain' => 'Diese Seite benutzt eine Präfix-Suche.
 
-Geben Sie die ersten Zeichen ein und drücken Sie die {{int:index-submit ("Enviar")}}-Schaltfläche, um nach Seitentiteln und Indexeinträgen zu suchen, die mit dem Suchstring beginnen',
+Geben Sie die ersten Zeichen ein und drücken Sie die {{int:index-submit}}-Schaltfläche, um nach Seitentiteln und Indexeinträgen zu suchen, die mit dem Suchstring beginnen',
 	'index-details-explain' => 'Einträge mit Pfeilen sind Indexeinträge.
 Klicken Sie auf den Pfeil, um alle unter diesem Titel indizierten Seiten anzuzeigen.',
 );
@@ -704,7 +705,7 @@ $messages['kn'] = array(
 	'index-search' => 'ಹುಡುಕು;',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

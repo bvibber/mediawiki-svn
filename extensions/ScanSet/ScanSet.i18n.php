@@ -797,7 +797,7 @@ $messages['ko'] = array(
 	'scanset_prev' => '&lt; 이전',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -815,7 +815,7 @@ $messages['ksh'] = array(
 	'scanset_prev' => '← Vörijje',
 );
 
-/** Cornish (Kernowek)
+/** Cornish (Kernewek)
  * @author Kernoweger
  * @author Kw-Moon
  */
@@ -1528,7 +1528,7 @@ $messages['yi'] = array(
 	'scanset_next' => 'קומענדיק &gt;',
 );
 
-/** Yue (粵語)
+/** Cantonese (粵語)
  * @author Shinjiman
  */
 $messages['yue'] = array(

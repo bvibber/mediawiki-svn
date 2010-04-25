@@ -218,7 +218,7 @@ $messages['km'] = array(
 	'pnghandler-desc' => 'ប្តូរទំហំ PNGs ដោយប្រើ pngds',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

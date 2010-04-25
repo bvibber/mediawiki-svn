@@ -384,7 +384,7 @@ $messages['ko'] = array(
 	'right-webchat' => '[[Special:WebChat|웹 채팅]] 이용을 허용하기',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

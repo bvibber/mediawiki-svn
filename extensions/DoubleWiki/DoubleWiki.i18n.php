@@ -321,7 +321,7 @@ $messages['ko'] = array(
 	'doublewiki-desc' => '문서와 다른 위키의 번역본을 한 페이지의 두 단으로 보여 줌',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -603,7 +603,7 @@ $messages['yi'] = array(
 	'doublewiki-desc' => 'ווײַזט א בלאַט און זיין איבערזעצונג פון אַן אַנדער וויקי אויף צוויי עמודים אין איין בלאַט',
 );
 
-/** Yue (粵語)
+/** Cantonese (粵語)
  * @author Shinjiman
  */
 $messages['yue'] = array(

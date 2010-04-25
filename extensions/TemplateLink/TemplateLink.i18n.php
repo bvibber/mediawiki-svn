@@ -330,7 +330,7 @@ $messages['km'] = array(
 	'templatelink_empty' => 'អ្នក​ត្រូវតែ​ផ្ដល់​ប៉ារ៉ាម៉ែត្រ​មួយ​។',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
