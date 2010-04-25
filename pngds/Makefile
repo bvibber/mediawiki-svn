@@ -5,11 +5,11 @@ OBJS		= $(SRCS:.c=.o)
 
 all: pngds
 
-pngreader:
+pngreader: $(SRCS)
 	$(CC) $(CFLAGS) $(SRCS) -o pngreader -DPNGREADER
-pngresize:
+pngresize: $(SRCS)
 	$(CC) $(CFLAGS) $(SRCS) -o pngresize -DPNGRESIZE
-pngds:
+pngds: $(SRCS)
 	$(CC) $(CFLAGS) $(SRCS) -o pngds -DPNGDS
 
 clean:

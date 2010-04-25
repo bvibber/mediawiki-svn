@@ -6,9 +6,6 @@
 #include "pngutil.h"
 #include "pngcmd.h"
 
-// TODO: support other architectures
-#define SWAP_BYTES(x) ((((x) & 0x000000FF) << 24) | (((x) & 0x0000FF00) << 8) | (((x) & 0x00FF0000) >> 8) | ((x) >> 24))
-
 void png_die(char *msg, void *data)
 {
 	if (strcmp(msg, "critical_chunk") == 0)
@@ -22,9 +19,9 @@ void png_die(char *msg, void *data)
 
 uint32_t png_read_int(FILE *stream, uint32_t *crc)
 {
-	uint32_t result = 0;
-	png_fread(&result, 4, stream, crc);
-	return SWAP_BYTES(result);
+	unsigned char bytes[4];
+	png_fread(bytes, 4, stream, crc);
+	return (((((bytes[0] << 8) | bytes[1]) << 8) | bytes[2]) << 8) | bytes[3];
 }
 
 unsigned int png_fread(void *ptr, unsigned int size, 
