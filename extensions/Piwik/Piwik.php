@@ -4,7 +4,7 @@
  *
  * @addtogroup Extensions
  * @author Isb1009 <isb1009 at gmail dot com>
- * @copyright © 2008 Isb1009
+ * @copyright © 2008-2010 Isb1009
  * @licence GNU General Public Licence 2.0
  */
 
@@ -15,7 +15,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 $wgExtensionCredits['specialpage'][] = array(
 	'path'           => __FILE__,
 	'name'           => 'Piwik Integration',
-	'version'        => '1.5.1-piwik0.4.3',
+	'version'        => '1.5.2-piwik0.5.5',
 	'author'         => 'Isb1009',
 	'descriptionmsg' => 'piwik-desc',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:Piwik_Integration',
@@ -30,6 +30,7 @@ $wgPiwikIgnoreBots = true;
 $wgPiwikCustomJS = "";
 $wgPiwikUsePageTitle = false;
 $wgPiwikActionName = "";
+$wgPiwikSpecialPageDate = 'yesterday';
 
 function efPiwikHookText( $skin, &$text = '' ) {
 	$text .= efAddPiwik();
