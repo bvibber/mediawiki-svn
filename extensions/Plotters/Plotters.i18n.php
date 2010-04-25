@@ -646,7 +646,7 @@ $messages['pt'] = array(
 	'plotters' => 'Plotters',
 	'plotters-title' => 'Plotters',
 	'plotters-pagetext' => "Abaixo encontra uma lista de ''plotters'' especiais que podem ser usadas pelos utilizadores nas ''tags'' jsplot, como definido em [[MediaWiki:Plotters-definition]].
-Este resumo permite um fácil acesso às páginas das mensagens de sistema que definem o código e a descrição de cada ''plotter''.",
+Este resumo permite acesso fácil às páginas das mensagens de sistema que definem o código e a descrição de cada ''plotter''.",
 	'plotters-uses' => 'Usos',
 	'plotters-missing-script' => "Não foi definido nenhum''script''.",
 	'plotters-missing-arguments' => 'Não foram fornecidos argumentos.',

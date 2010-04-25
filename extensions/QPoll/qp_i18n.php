@@ -1778,7 +1778,7 @@ $messages['ps'] = array(
 $messages['pt'] = array(
 	'pollresults' => 'Resultados das sondagens neste síte',
 	'qp_desc' => 'Permite a criação de sondagens',
-	'qp_desc-sp' => '[[Special:PollResults|Página especial]] para visualizar os resultados das sondagens',
+	'qp_desc-sp' => '[[Special:PollResults|Página especial]] para ver os resultados das sondagens',
 	'qp_result_NA' => 'Sem resposta',
 	'qp_result_error' => 'Erro sintáctico',
 	'qp_vote_button' => 'Vote',
@@ -1817,7 +1817,7 @@ Verifique que a sondagem foi declarada e gravada, certifique-se também de que f
 	'qp_error_address_in_decl_mode' => 'Não é possível obter um endereço da sondagem em modo declarativo',
 	'qp_error_question_not_implemented' => 'Não estão implementadas perguntas do tipo: $1',
 	'qp_error_invalid_question_type' => 'Tipo de pergunta inválido: $1',
-	'qp_error_type_in_stats_mode' => 'Não é possível definir em modo de visualização estatística o tipo de pergunta: $1',
+	'qp_error_type_in_stats_mode' => 'Não é possível definir no modo de visionamento estatístico o tipo de pergunta: $1',
 	'qp_error_no_poll_id' => "Não foi definido um atributo de identificação no marcador ''(tag)'' da sondagem",
 	'qp_error_invalid_poll_id' => 'Identificador de sondagem inválido (id=$1).
 O identificador só pode conter letras, números e espaços',

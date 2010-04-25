@@ -1559,6 +1559,7 @@ Për piasì speta che l'assion an cors a sia completa.",
 
 /** Portuguese (Português)
  * @author 555
+ * @author Hamilton Abreu
  * @author MF-Warburg
  * @author Malafaya
  * @author Waldir
@@ -1569,7 +1570,7 @@ $messages['pt'] = array(
 	'imagetagging-addimagetag' => 'Etiquetar esta imagem',
 	'imagetagging-article' => 'Página:',
 	'imagetagging-articletotag' => 'Página a etiquetar',
-	'imagetagging-canteditothermessage' => 'Você não pode editar esta página, porque não possui permissões para isso, ou porque a página está bloqueada por outros motivos.',
+	'imagetagging-canteditothermessage' => 'Não pode editar esta página, porque não possui permissões para isso, ou porque a página está bloqueada por outros motivos.',
 	'imagetagging-imghistory' => 'Histórico',
 	'imagetagging-images' => 'imagens',
 	'imagetagging-inthisimage' => 'Nesta imagem: $1',
@@ -1585,8 +1586,8 @@ $messages['pt'] = array(
 	'imagetagging-removingtag' => 'A remover etiqueta…',
 	'imagetagging-addtagsuccess' => 'Etiqueta adicionada.',
 	'imagetagging-removetagsuccess' => 'Etiqueta removida.',
-	'imagetagging-canteditneedloginmessage' => 'Você não pode editar esta página.
-Poderá ser porque você precisa de se autenticar para etiquetar imagens.
+	'imagetagging-canteditneedloginmessage' => 'Não pode editar esta página.
+Pode ser porque precisa de se autenticar para etiquetar imagens.
 Deseja autenticar-se agora?',
 	'imagetagging-oneactionatatimemessage' => 'Apenas uma ação de etiquetagem é permitida de cada vez.
 Por favor, aguarde que a ação existente finalize.',

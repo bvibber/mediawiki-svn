@@ -763,16 +763,17 @@ $messages['pms'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Malafaya
  * @author Waldir
  */
 $messages['pt'] = array(
-	'contributiontracking-desc' => 'Seguimento de doações para a coleta de fundos da Wikimedia',
-	'contributiontracking' => 'Seguimento de doações',
+	'contributiontracking-desc' => 'Monitorização de donativos para a angariação de fundos da Wikimedia',
+	'contributiontracking' => 'Monitorização de donativos',
 	'contrib-tracking-error' => 'Erro',
-	'contrib-tracking-error-text' => 'Submissão de formulário inválido',
-	'contrib-tracking-submitting' => 'Em submissão ao processador de pagamentos...',
-	'contrib-tracking-continue' => 'Se você não for redireccionado automaticamente, clique no botão para completar a sua doação no PayPal.',
+	'contrib-tracking-error-text' => 'Envio de formulário inválido',
+	'contrib-tracking-submitting' => 'A enviar ao processador de pagamentos...',
+	'contrib-tracking-continue' => 'Se não for redireccionado automaticamente, clique no botão para completar o seu donativo no PayPal.',
 	'contrib-tracking-button' => 'Continuar',
 );
 

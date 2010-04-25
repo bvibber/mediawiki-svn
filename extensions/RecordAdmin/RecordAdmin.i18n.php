@@ -1227,6 +1227,13 @@ $messages['km'] = array(
 	'right-recordadmin' => 'ស្វែងរក និង​កែប្រែ​ទំព័រ​កំណត់ត្រា',
 );
 
+/** Kannada (ಕನ್ನಡ)
+ * @author Nayvik
+ */
+$messages['kn'] = array(
+	'recordadmin-buttonsearch' => 'ಹುಡುಕು',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */
@@ -1574,7 +1581,7 @@ $messages['oc'] = array(
 	'recordadmin-modified' => 'Modificat',
 	'recordadmin-actions' => 'Accions',
 	'recordadmin-needscontent' => 'Apondre lo contengut...',
-	'recordadmin-editwithform' => 'Modificar amb un formulari',
+	'recordadmin-editwithform' => 'Proprietats',
 	'recordadmin-typeinfo' => 'enregistrament $1',
 	'right-recordadmin' => 'Trobar e modificar las paginas d’enregistrament',
 	'recordadmin-export-csv' => 'CSV',

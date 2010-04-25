@@ -2667,6 +2667,7 @@ $messages['km'] = array(
 $messages['kn'] = array(
 	'contrib-hist-name' => 'ಹೆಸರು',
 	'contrib-hist-date' => 'ಸಮಯ ಮತ್ತು ದಿನಾಂಕ',
+	'contribstats-month' => 'ತಿಂಗಳು',
 	'fundraiserstats-date' => 'ದಿನಾಂಕ',
 );
 

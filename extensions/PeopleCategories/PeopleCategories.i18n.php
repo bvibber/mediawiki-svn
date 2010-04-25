@@ -131,6 +131,13 @@ $messages['no'] = array(
 	'peoplecategories-desc' => 'Endrer vist sidenavn fra «Fornavn Etternavn» til «Etternavn, Fornavn» på spesifiserte kategorisider',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'peoplecategories-desc' => 'Càmbia los noms de pagina afichats de « Pichon nom, Nom » a « Nom, Pichon nom » dins las categorias especificadas.',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  */

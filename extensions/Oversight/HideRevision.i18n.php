@@ -545,7 +545,7 @@ $messages['br'] = array(
 	'oversight' => 'Oversight',
 	'oversight-view' => 'munudoù',
 	'oversight-difference' => "(Diforc'hioù da geñver d'an adweladenn a-raok)",
-	'oversight-prev' => 'Adweladenn ziwezhañ en a-raok',
+	'oversight-prev' => 'Adweladenn ziwezhañ kent',
 	'oversight-hidden' => 'Adweladennoù kuzhet',
 	'oversight-legend' => 'Marilh klaskoù ar stummoù kuzhet',
 	'oversight-offender' => 'Aozer an adweladenn :',
@@ -3091,7 +3091,7 @@ por um administrador da base de dados caso tenha cometido um engano.",
 	'hiderevision-success' => 'Arquivado e apagado com sucesso.',
 	'hiderevision-error-missing' => 'Não foi localizada na base de dados.',
 	'hiderevision-error-current' => 'Não é possível ocultar a edição mais recente de uma página. Reverta a alteração primeiro.',
-	'hiderevision-error-delete' => 'Não é possível arquivar; não teria sido eliminada antes da tentativa?',
+	'hiderevision-error-delete' => 'Não foi possível arquivar; não terá sido eliminada antes da tentativa?',
 	'hiderevision-archive-status' => 'Revisão ocultada de $1: $2',
 	'oversight-nodiff' => 'Não foi possível verificar as alterações, uma vez que não há edições anteriores para esta página. Motivos possíveis:
 *A página foi eliminada
@@ -3102,8 +3102,8 @@ por um administrador da base de dados caso tenha cometido um engano.",
 	'oversight-difference' => '(Diferenças entre as edições anteriores restantes)',
 	'oversight-prev' => 'Última edição anterior',
 	'oversight-hidden' => 'Edição oculta',
-	'oversight-header' => 'Listagem de edições permanentemente ocultas de serem vistas publicamente.
-Liberar tais dados poderá resultar na perda em definitivo dos privilégios de oversight.',
+	'oversight-header' => 'Listagem de edições permanentemente ocultas do visionamento público.
+Disponibilizar esta informação pode resultar na perda definitiva dos privilégios de Oversight.',
 	'oversight-legend' => 'Pesquisar registo de ocultação de revisões',
 	'oversight-oversighter' => 'Supervisor:',
 	'oversight-offender' => 'Autor da revisão:',

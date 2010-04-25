@@ -1113,7 +1113,8 @@ $messages['ps'] = array(
 $messages['pt'] = array(
 	'deletebatch' => 'Apagar páginas em bloco',
 	'deletebatch-desc' => 'Permite [[Special:DeleteBatch|eliminar páginas em bloco]]',
-	'deletebatch-help' => 'Elimine um bloco de páginas. Pode fazer a eliminação de um bloco, ou de todas as páginas que listar num ficheiro.
+	'deletebatch-help' => 'Eliminar um bloco de páginas.
+Pode fazer a eliminação de uma página, ou de todas as páginas que listar num ficheiro.
 Escolha um utilizador que será mostrado nos registos de eliminação.
 O ficheiro carregado deverá conter o nome da página e um motivo opcional, separados por um carácter "|" em cada linha.',
 	'deletebatch-caption' => 'Lista de páginas:',
@@ -1130,8 +1131,8 @@ O ficheiro carregado deverá conter o nome da página e um motivo opcional, sepa
 	'deletebatch-omitting-invalid' => 'A omitir página inválida $1.',
 	'deletebatch-file-bad-format' => 'O ficheiro deve conter texto pleno',
 	'deletebatch-file-missing' => 'Não foi possível ler o ficheiro fornecido',
-	'deletebatch-select-script' => 'script de eliminação de páginas',
-	'deletebatch-select-yourself' => 'você',
+	'deletebatch-select-script' => 'Script de eliminação de páginas',
+	'deletebatch-select-yourself' => 'Você',
 	'deletebatch-no-page' => 'Por favor, especifique pelo menos uma página para eliminar OU escolha um ficheiro contendo uma lista de páginas.',
 	'right-deletebatch' => 'Apagar páginas em bloco',
 );

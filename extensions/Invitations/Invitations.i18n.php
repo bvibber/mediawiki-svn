@@ -1132,6 +1132,7 @@ $messages['ps'] = array(
 
 /** Portuguese (Português)
  * @author 555
+ * @author Hamilton Abreu
  * @author Malafaya
  * @author Waldir
  */
@@ -1141,17 +1142,17 @@ $messages['pt'] = array(
 	'invite-logentry' => 'convidou $1 a usar a funcionalidade <i>$2</i>.',
 	'invitations' => 'Gerir convites para funcionalidades de software',
 	'invitations-desc' => 'Permite [[Special:Invitations|a gestão de novas funcionalidades]] através da sua restrição a um sistema baseado em convites',
-	'invitations-invitedlist-description' => 'Você tem acesso às seguintes funcionalidades do software atribuídas apenas por convite. Para gerir convites para uma funcionalidade individual, clique no seu nome.',
-	'invitations-invitedlist-none' => 'Você não foi convidado a usar nenhuma funcionalidade do software atribuída apenas por convite.',
+	'invitations-invitedlist-description' => 'Tem acesso às seguintes funcionalidades do software atribuídas apenas por convite. Para gerir convites para uma funcionalidade individual, clique no seu nome.',
+	'invitations-invitedlist-none' => 'Não foi convidado a usar nenhuma funcionalidade do software atribuída apenas por convite.',
 	'invitations-invitedlist-item-count' => '({{PLURAL:$1|Um convite disponível|$1 convites disponíveis}})',
 	'invitations-pagetitle' => 'Funcionalidades do software atribuídas apenas por convite',
-	'invitations-uninvitedlist-description' => 'Você não tem acesso a estas outras funcionalidades do software atribuídas apenas por convite.',
+	'invitations-uninvitedlist-description' => 'Não tem acesso a estas outras funcionalidades do software atribuídas apenas por convite.',
 	'invitations-uninvitedlist-none' => 'Neste momento, mais nenhumas funcionalidades do software são atribuídas apenas por convite.',
 	'invitations-feature-pagetitle' => 'Gestão de Convites - $1',
 	'invitations-feature-access' => 'Actualmente não possui acesso ao uso de <i>$1</i>.',
 	'invitations-feature-numleft' => 'Ainda lhe {{PLURAL:$2|resta um|restam <b>$1</b>}} dos seus $2 convites.',
-	'invitations-feature-noneleft' => 'Você já utilizou toda a sua quota de convites para esta funcionalidade',
-	'invitations-feature-noneyet' => 'Você ainda não recebeu a sua quota de convites para esta funcionalidade.',
+	'invitations-feature-noneleft' => 'Já utilizou toda a sua quota de convites para esta funcionalidade',
+	'invitations-feature-noneyet' => 'Ainda não recebeu a sua quota de convites para esta funcionalidade.',
 	'invitations-feature-notallowed' => 'Não tem acesso ao uso de <i>$1</i>.',
 	'invitations-inviteform-title' => 'Convidar um utilizador a usar $1',
 	'invitations-inviteform-username' => 'Utilizador a convidar',

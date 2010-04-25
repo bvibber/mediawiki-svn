@@ -95,6 +95,13 @@ $messages['no'] = array(
 	'parserwiki-desc' => 'Gjør det mulig å definere en grammatikk i en wiki og deretter bruke denne grammatikken til å legge inn informasjon til den samme wikien',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'parserwiki-desc' => "Permet de definir una gramatica dins un wiki e d'utilizar aquela gramatica per importar d'informacion sus aqueste wiki",
+);
+
 /** Piedmontese (Piemontèis)
  * @author Dragonòt
  */

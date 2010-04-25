@@ -73,6 +73,14 @@ We will review it shortly.
 You can [$1 read published stories].',
 );
 
+/** Message documentation (Message documentation)
+ * @author EugeneZelenko
+ */
+$messages['qqq'] = array(
+	'storyboard-publish' => '{{Identical|Publish}}',
+	'storyboard-hide' => '{{Identical|Hide}}',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */
@@ -89,9 +97,9 @@ $messages['af'] = array(
  */
 $messages['be-tarask'] = array(
 	'storyboard-name' => 'Дошка гісторыяў',
-	'storyboard-desc' => 'Прадстаўляе [[Special:Story|старонку]] [[Special:StorySubmission|разьмяшчэньня]] гісторыяў ахвяравальнікаў, а так сама [[Special:StoryReview|інтэрфэйс яе мадэрацыі]].',
+	'storyboard-desc' => 'Прадстаўляе [[Special:Story|старонку]] для [[Special:StorySubmission|разьмяшчэньня]] гісторыяў ахвяравальнікаў, а таксама [[Special:StoryReview|інтэрфэйс яе мадэрацыі]].',
 	'right-storyreview' => 'рэцэнзаваньне, рэдагаваньне, публікацыя і хаваньне гісторыяў',
-	'storyboard-unpublished' => 'Неапублікаваная',
+	'storyboard-unpublished' => 'Неапублікаваныя',
 	'storyboard-published' => 'Апублікаваныя',
 	'storyboard-hidden' => 'Схаваная',
 	'storyboard-unpublish' => 'Прыбраць',
@@ -182,6 +190,32 @@ Cogodla  njestajaśo jo k našej dispoziciji?',
 	'storyboard-createdsucessfully' => 'Źěkujomy se wam, až sćo nam swójo tšojenje k dispoziciji stajił!
 Buźomy se skóro pśeglědowaś.
 Móžośo [$1 wózjawjone tšojenja cytaś].',
+);
+
+/** Spanish (Español)
+ * @author Crazymadlover
+ */
+$messages['es'] = array(
+	'storyboard-unpublished' => 'Inédito',
+	'storyboard-published' => 'Publicado',
+	'storyboard-hidden' => 'Oculto',
+	'storyboard-unpublish' => 'No publicar',
+	'storyboard-publish' => 'Publicar',
+	'storyboard-hide' => 'Ocultar',
+	'story' => 'Historia',
+	'storyboard-submittedbyon' => 'Enviado por $1 en $2, $3.',
+	'storyboard-authorname' => 'Nombre de autor',
+	'storyboard-authorlocation' => 'Ubicación de autor',
+	'storyboard-authoroccupation' => 'Ocupación de autor',
+	'storyboard-authoremail' => 'Dirección de correo electrónico de autor',
+	'storyboard-hideimage' => 'Ocultar imagen',
+	'storyboard-unhideimage' => 'Mostrar imagen',
+	'storyboard-deleteimage' => 'Borrar imagen',
+	'storyboard-yourname' => 'Tu nombre',
+	'storyboard-location' => 'Tu ubicación',
+	'storyboard-occupation' => 'Tu ocupación',
+	'storyboard-email' => 'Tu dirección de correo electrónico',
+	'storyboard-storytitle' => 'Un título corto y descriptivo:',
 );
 
 /** Finnish (Suomi)
@@ -405,6 +439,7 @@ Et ka sinn datt se ewechgeholl gouf.",
 	'storyboard-authoremail' => 'E-Mailadress vum Auteur',
 	'storyboard-thestory' => "D'Anekdot",
 	'storyboard-storystate' => 'Staat',
+	'storyreview' => 'Anekdot nokucken',
 	'storyboard-hideimage' => 'Bild verstoppen',
 	'storyboard-unhideimage' => 'Bild weisen',
 	'storyboard-deleteimage' => 'Bild läschen',
@@ -480,7 +515,7 @@ $messages['mk'] = array(
  */
 $messages['nl'] = array(
 	'storyboard-name' => 'Storyboard',
-	'storyboard-desc' => 'Biedt een aankomstpagina voor donateurs, een pagina waar verhalen ingezonden kunnen worden en een interface voor beoordeling van verhalen',
+	'storyboard-desc' => 'Biedt een [[Special:Story|aankomstpagina voor donateurs]], een [[Special:StorySubmission|pagina waar verhalen ingezonden kunnen worden]] en een [[Special:StoryReview|interface voor beoordeling van verhalen]]',
 	'right-storyreview' => 'Verhalen beoordelen, bewerken, publiceren en verbergen',
 	'storyboard-unpublished' => 'Ongepubliceerd',
 	'storyboard-published' => 'Gepubliceerd',
@@ -489,7 +524,19 @@ $messages['nl'] = array(
 	'storyboard-publish' => 'Publiceren',
 	'storyboard-hide' => 'Verbergen',
 	'story' => 'Verhaal',
+	'storyboard-submittedbyon' => 'Ingezonden door $1 op $2 om $3.',
 	'storyboard-viewstories' => 'Verhalen bekijken',
+	'storyboard-nosuchstory' => 'Het door u opgevraagde verhaal bestaat niet.
+Mogelijk is het verwijderd.',
+	'storyboard-storyunpublished' => 'Het verhaal dat u heeft opgevraagd is nog niet gepubliceerd.',
+	'storyboard-nostorytitle' => 'U moet de naam of het ID van het verhaal dat u wilt bekijken opgeven.',
+	'storyboard-cantedit' => 'U mag verhalen niet bewerken.',
+	'storyboard-canedit' => 'U kunt dit verhaal [$1 bewerken] en publiceren.',
+	'storyboard-createdandmodified' => 'Aangemaakt op $1 om $2 en voor het laatst bewerkt op $3 om $4',
+	'storyboard-authorname' => 'Naam auteur',
+	'storyboard-authorlocation' => 'Locatie auteur',
+	'storyboard-authoroccupation' => 'Beroep auteur',
+	'storyboard-authoremail' => 'E-mailadres auteur',
 	'storyboard-thestory' => 'Het verhaal',
 	'storyboard-storystate' => 'Status:',
 	'storyboard-submissioncomplete' => 'Verzenden is voltooid',
@@ -504,8 +551,11 @@ $messages['nl'] = array(
 	'storyboard-photo' => 'Wilt u een foto van uzelf toevoegen?',
 	'storyboard-email' => 'Uw e-mailadres',
 	'storyboard-storytitle' => 'Een korte, beschrijvende titel:',
-	'storyboard-agreement' => 'Ik ga akkoord met de publicatie van dit verhaal.',
+	'storyboard-agreement' => 'Ik ga akkoord met de publicatie van dit verhaal onder de voorwaarden van de licentie [http://creativecommons.org/licenses/by-sa/3.0/ Creative Commons Naamsvermelding-Gelijk delen].',
 	'storyboard-charsleft' => '($1 {{PLURAL:$1|teken|tekens}} over)',
+	'storyboard-cannotbelonger' => 'Uw verhaal is <b>$1</b> {{PLURAL:$1|teken|tekens}} te lang!',
+	'storyboard-charsneeded' => '(er {{PLURAL:$1|is nog 1 teken|zijn nog $1 tekens}} meer nodig)',
+	'storyboard-needtoagree' => 'U moet akkoord gaan met het publiceren van uw verhaal voordat u het kunt inzenden.',
 	'storyboard-createdsucessfully' => 'Bedankt voor het delen van uw verhaal!
 We gaan het snel beoordelen.
 U kunt [$1 gepubliceerde verhalen lezen].',
@@ -612,6 +662,37 @@ $messages['ru'] = array(
 	'storyboard-nosuchstory' => 'Запрошенной вами истории не существует.
 Возможно, она была удалена.',
 	'storyboard-storyunpublished' => 'Запрашиваемая вами история ещё не была опубликована.',
+	'storyboard-nostorytitle' => 'Вы должны указать название или идентификатор истории, которую вы хотите просмотреть.',
+	'storyboard-cantedit' => 'Вы не можете редактировать истории.',
+	'storyboard-canedit' => 'Вы можете [$1 изменить] и опубликовать эту историю.',
+	'storyboard-createdandmodified' => 'Создана $1 $2, изменена $3 $4',
+	'storyboard-authorname' => 'Имя автора',
+	'storyboard-authorlocation' => 'Местонахождение автора',
+	'storyboard-authoroccupation' => 'Род занятий автора',
+	'storyboard-authoremail' => 'Адрес эл. почты автора',
+	'storyboard-thestory' => 'История',
+	'storyboard-storystate' => 'Состояние:',
+	'storyboard-submissioncomplete' => 'Подача произведена',
+	'storyreview' => 'Проверка истории',
+	'storyboard-hideimage' => 'Скрыть изображение',
+	'storyboard-unhideimage' => 'Показать изображение',
+	'storyboard-deleteimage' => 'Удалить изображение',
+	'storyboard-yourname' => 'Ваше имя',
+	'storyboard-location' => 'Ваше местоположение',
+	'storyboard-occupation' => 'Ваш род занятий',
+	'storyboard-story' => 'Ваша история',
+	'storyboard-photo' => 'У вас есть ваша фотография?
+Почему бы не разместить её?',
+	'storyboard-email' => 'Ваш адрес эл. почты',
+	'storyboard-storytitle' => 'Короткий описательный заголовок:',
+	'storyboard-agreement' => 'Я согласен с публикацией и использованием этой истории в соответствии с условиями [http://creativecommons.org/licenses/by-sa/3.0/ Creative Commons Attribution/Share-Alike License].',
+	'storyboard-charsleft' => '({{PLURAL:$1|осталcя $1 символ|осталось $1 символа|осталось $1 символов}})',
+	'storyboard-cannotbelonger' => 'Ваша история длиннее на <b>$1</b> {{PLURAL:$1|символ|символа|символов}}!',
+	'storyboard-charsneeded' => '({{PLURAL:$1|необходим ещё $1 символ|необходимо ещё $1 символа|необходимо ещё $1 символов}})',
+	'storyboard-needtoagree' => 'Вы должны дать согласие на публикацию своей истории перед её отправкой.',
+	'storyboard-createdsucessfully' => 'Спасибо, что рассказали нам свою историю!
+Мы рассмотрим её в ближайшее время.
+Вы можете [$1 прочитать уже опубликованные истории].',
 );
 
 /** Telugu (తెలుగు)

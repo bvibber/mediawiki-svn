@@ -2756,13 +2756,13 @@ $messages['pt'] = array(
 	'whitelisttablenewdate' => 'Nova Data:',
 	'whitelisttablechangedate' => 'Alterar validade',
 	'whitelisttablesetedit' => 'Activar edição',
-	'whitelisttablesetview' => 'Activar visualização',
+	'whitelisttablesetview' => 'Activar visionamento',
 	'whitelisttableremove' => 'Remover',
 	'whitelistnewpagesfor' => 'Adicione novas páginas à lista branca de <b>$1</b><br />
 Use * ou % como caracteres de substituição',
 	'whitelistnewtabledate' => 'Validade:',
 	'whitelistnewtableedit' => 'Activar edição',
-	'whitelistnewtableview' => 'Activar visualização',
+	'whitelistnewtableview' => 'Activar visionamento',
 	'whitelistnowhitelistedusers' => 'Não há utilizadores no grupo "{{MediaWiki:Group-restricted}}".
 Tem de [[Special:UserRights|adicionar utilizadores ao grupo]] antes de poder adicionar páginas à lista branca de um utilizador.',
 	'whitelistnewtableprocess' => 'Processar',

@@ -80,10 +80,12 @@ $messages['am'] = array(
 );
 
 /** Aragonese (Aragonés)
+ * @author Juanpabl
  * @author Remember the dot
  */
 $messages['an'] = array(
 	'player-goto-page' => 'Pachina',
+	'player-goto-file' => 'fichero',
 );
 
 /** Arabic (العربية)

@@ -1307,3 +1307,11 @@ $messages['vi'] = array(
 	'chemFunctions_ChemFormInputError' => 'Chemform: lỗi nhập!',
 );
 
+/** Yoruba (Yorùbá)
+ * @author Demmy
+ */
+$messages['yo'] = array(
+	'chemFunctions_CAS' => 'Nọ́mbà CAS',
+	'chemFunctions_Name' => 'Orúkọ IUPAC',
+);
+

@@ -697,6 +697,13 @@ $2
 	'index-details-explain' => '矢印の付いた項目は索引項目で、矢印をクリックするとその名前で索引に載っているすべてのページを表示します。',
 );
 
+/** Kannada (ಕನ್ನಡ)
+ * @author Nayvik
+ */
+$messages['kn'] = array(
+	'index-search' => 'ಹುಡುಕು;',
+);
+
 /** Ripoarisch (Ripoarisch)
  * @author Purodha
  */

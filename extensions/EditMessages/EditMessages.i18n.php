@@ -777,6 +777,13 @@ $messages['km'] = array(
 	'editmsg-patch-success' => 'បាន​ប៉ះ​ដោយជោគជ័យ​។',
 );
 
+/** Kannada (ಕನ್ನಡ)
+ * @author Nayvik
+ */
+$messages['kn'] = array(
+	'editmsg-search' => 'ಹುಡುಕು',
+);
+
 /** Korean (한국어)
  * @author Klutzy
  * @author ToePeu

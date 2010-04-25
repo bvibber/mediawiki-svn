@@ -219,3 +219,10 @@ $messages['sv'] = array(
 	'nll-lastseparator' => ' och',
 );
 
+/** Yoruba (Yorùbá)
+ * @author Demmy
+ */
+$messages['yo'] = array(
+	'nll-lastseparator' => '&#32;àti&#32;',
+);
+

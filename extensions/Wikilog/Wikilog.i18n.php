@@ -459,6 +459,13 @@ $messages['af'] = array(
 	'wikilog-history-lc' => 'geskiedenis',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'wikilog-page-lc' => 'pachina',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -3699,6 +3706,7 @@ $messages['lb'] = array(
 	'wikilog-form-status' => 'Status:',
 	'wikilog-form-preview' => 'Kucken ouni ze späicheren:',
 	'wikilog-form-comment' => 'Bemierkung:',
+	'wikilog-show-all' => 'All Beiträg',
 	'wikilog-show-published' => 'Verëffentlecht',
 	'wikilog-show-drafts' => 'Virbereedungen',
 	'wikilog-submit' => 'Schécken',
@@ -3928,6 +3936,13 @@ $messages['ms'] = array(
 	'wikilog-log-cmt-rejdel' => 'Ulasan wikilog oleh [[Special:Contributions/$1|$1]] ditolak',
 	'wikilog-tab' => 'Wikilog',
 	'wikilog-tab-title' => 'Tindakan Wikilog',
+);
+
+/** Nedersaksisch (Nedersaksisch)
+ * @author Servien
+ */
+$messages['nds-nl'] = array(
+	'wikilog-form-date' => 'Daotum:',
 );
 
 /** Dutch (Nederlands)

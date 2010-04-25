@@ -2465,8 +2465,8 @@ $messages['pt'] = array(
 	'youtubeauthsub_tokenerror' => 'Erro ao gerar o token de autorização. Tente refrescar a página.',
 	'youtubeauthsub_success' => "Parabéns!
 O seu vídeo foi carregado.
-<a href='http://www.youtube.com/watch?v=$1'>Veja o seu video</a>.
-O YouTube pode necessitar de algum tempo para processar o seu vídeo, de modo que poderá não estar já disponível.
+<a href='http://www.youtube.com/watch?v=$1'>Ver o seu vídeo</a>.
+O YouTube pode necessitar de algum tempo para processar o seu vídeo, e este pode ainda não estar disponível.
 
 Para incluir o seu vídeo numa página da wiki, insira o seguinte código numa página:
 <code>{{&#35;ev:youtube|$1}}</code>",
@@ -2475,7 +2475,7 @@ Para incluir o seu vídeo numa página da wiki, insira o seguinte código numa p
 	'youtubeauthsub_uploadbutton' => 'Carregar',
 	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
 
-[http://www.youtube.com/watch?v=$1 Veja este vídeo]',
+[http://www.youtube.com/watch?v=$1 Ver este vídeo]',
 	'youtubeauthsub_summary' => 'A carregar vídeo YouTube',
 	'youtubeauthsub_uploading' => 'O seu vídeo está a ser carregado.
 Por favor seja paciente.',

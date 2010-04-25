@@ -1477,7 +1477,7 @@ $messages['pt'] = array(
 * Teste de principiante
 * Ver página de discussão',
 	'patrol-another' => 'Mostrar outra edição, se disponível.',
-	'patrol-stopped' => 'Você optou por não patrulhar uma outra edição. $1',
+	'patrol-stopped' => 'Optou por não patrulhar uma outra edição. $1',
 	'patrol-resume' => 'Carregue aqui para continuar.',
 	'group-patroller' => 'Patrulhadores',
 	'group-patroller-member' => 'patrulhador',

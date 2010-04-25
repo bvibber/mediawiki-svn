@@ -677,6 +677,7 @@ $messages['km'] = array(
  */
 $messages['kn'] = array(
 	'edituser-username' => 'ಹೆಸರು',
+	'edituser-dosearch' => 'ಹುಡುಕು',
 );
 
 /** Korean (한국어)

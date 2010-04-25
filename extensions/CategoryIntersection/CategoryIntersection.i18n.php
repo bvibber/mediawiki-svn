@@ -508,6 +508,7 @@ $messages['oc'] = array(
 	'categoryintersection-desc' => "Manten una taula amb de valors a la volada pels [[Special:CategoryIntersection|recopatges de categorias]] al mejan d'una pagina",
 	'categoryintersection-doit' => 'Lista las paginas dins totas aquestas categorias',
 	'categoryintersection-maxcategories' => 'Lo nombre maximum de las categorias que s’entrecopan es de $1.',
+	'categoryintersection-mincategories' => 'Vos cal inclure al mens doas categorias.',
 	'categoryintersection-results' => 'La recèrca a tornat $1 {{PLURAL:$1|títol|títols}}.',
 );
 

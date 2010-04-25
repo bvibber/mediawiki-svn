@@ -1845,8 +1845,8 @@ $messages['pt'] = array(
 	'readerfeedback-tier-medium' => 'Moderado',
 	'readerfeedback-tier-poor' => 'Pobre',
 	'tooltip-ca-ratinghist' => 'Opinião dos leitores sobre esta página',
-	'specialpages-group-feedback' => 'Opinião de leitores',
-	'readerfeedback-tt-review' => 'Submeter revisão',
+	'specialpages-group-feedback' => 'Opinião dos leitores',
+	'readerfeedback-tt-review' => 'Enviar revisão',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

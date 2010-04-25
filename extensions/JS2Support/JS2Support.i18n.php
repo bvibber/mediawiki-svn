@@ -117,6 +117,13 @@ $messages['no'] = array(
 	'js2support-desc' => 'JS2-støtte som en utvidelse',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'js2support-desc' => "Supòrt de JS2 en tant qu'extension",
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  */

@@ -618,7 +618,7 @@ $messages['pt'] = array(
 	'createbox-create' => 'Criar',
 	'createbox-exists' => "Desculpe, \"'''{{FULLPAGENAME}}'''\" já existe.
 
-Você não pode criar esta página, mas pode [{{fullurl:{{FULLPAGENAME}}|action=edit}} editá-la], 
+Não pode criar esta página, mas pode [{{fullurl:{{FULLPAGENAME}}|action=edit}} editá-la], 
 [{{fullurl:{{FULLPAGENAME}}}} lê-la], ou optar por criar uma página diferente usando a caixa abaixo.
 
 <createbox>break=no</createbox>",

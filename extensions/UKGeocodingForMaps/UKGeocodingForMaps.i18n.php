@@ -126,6 +126,13 @@ $messages['ja'] = array(
 	'ukgeocoding_couldNotGeocode' => '郵便番号のジオコードを認識できなかったため、地図から省略されています。',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'ukgeocoding_name' => 'UK Geocoding fir Kaarten',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

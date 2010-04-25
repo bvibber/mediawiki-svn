@@ -226,10 +226,11 @@ $messages['pms'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Indech
  */
 $messages['pt'] = array(
-	'semanticinternalobjects-desc' => 'Configuração de objetos internos na MediaWiki Semântica',
+	'semanticinternalobjects-desc' => 'Configuração de objetos internos no MediaWiki Semântico',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

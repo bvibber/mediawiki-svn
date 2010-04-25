@@ -823,7 +823,7 @@ $messages['ps'] = array(
  */
 $messages['pt'] = array(
 	'watchers' => 'Vigiadores',
-	'watchers-desc' => 'Mostra [[Special:Watchers|quais utilizadores têm uma dada página na sua lista de vigiados]]',
+	'watchers-desc' => 'Mostra [[Special:Watchers|quais os utilizadores que têm uma dada página na sua lista de páginas vigiadas]]',
 	'watchers_link_title' => 'Quem está vigiando esta página?',
 	'watchers_error_article' => '<b>Erro:</b> Página inexistente.',
 	'watchers-error-invalid-page' => "'''Erro:''' \"\$1\" é um título de página inválido.",

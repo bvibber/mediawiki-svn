@@ -767,7 +767,7 @@ Seblantout a ra ned a ket APC en-dro.",
 	'viewapc-memoryfragmentation' => 'Implij eus ar memor dre ar munud ha divruzunañ',
 	'viewapc-fragmentation-info' => 'Divruzunañ : $1 ($2 diwar $3 e$4 bruzunenn{{PLURAL:$4||s}})',
 	'viewapc-fragmentation-none' => 'Bruzunañ : bruzunadur ebet',
-	'viewapc-display-attribute' => 'Doareenn',
+	'viewapc-display-attribute' => 'Perzh',
 	'viewapc-display-value' => 'Talvoudenn',
 	'viewapc-display-filename' => 'Anv ar restr',
 	'viewapc-display-device' => 'Trobarzhell',
@@ -4745,7 +4745,7 @@ $messages['ps'] = array(
  */
 $messages['pt'] = array(
 	'viewapc' => 'Informação da APC',
-	'apc-desc' => "[[Special:ViewAPC|Visualização e gestão da ''cache'' APC]] ''(Alternative PHP Cache)'' com o MediaWiki",
+	'apc-desc' => "[[Special:ViewAPC|Visionamento e gestão da ''cache'' APC]] ''(Alternative PHP Cache)'' usando o MediaWiki",
 	'right-apc' => 'Usar todas as funcionalidades da extensão [[Special:ViewAPC|ViewAPC]]',
 	'viewapc-apc-not-available' => "Não há informação disponível sobre a ''cache''.
 A APC não parece estar a correr.",

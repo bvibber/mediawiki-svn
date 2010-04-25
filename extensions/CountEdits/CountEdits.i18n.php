@@ -957,10 +957,11 @@ $messages['ms'] = array(
 );
 
 /** Maltese (Malti)
+ * @author Chrisportelli
  * @author Roderick Mallia
  */
 $messages['mt'] = array(
-	'countedits-username' => 'Isem l-utent:',
+	'countedits-username' => 'Isem tal-utent:',
 );
 
 /** Nahuatl (Nāhuatl)

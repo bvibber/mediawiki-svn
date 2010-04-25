@@ -433,6 +433,7 @@ $messages['km'] = array(
  * @author Nayvik
  */
 $messages['kn'] = array(
+	'searchbox-search' => 'ಹುಡುಕು',
 	'searchbox-go' => 'ಹೋಗು',
 );
 

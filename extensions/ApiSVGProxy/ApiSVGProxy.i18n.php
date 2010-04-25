@@ -161,6 +161,13 @@ $messages['no'] = array(
 	'apisvgproxy-desc' => 'Sender SVG-filer via en mellomtjener fra et (muligens eksternt) fillager til det lokale domenet',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'apisvgproxy-desc' => 'Provesís de fichièrs SVG dempuèi un depaus de fichièrs (eventualament a distància) dins lo domeni local',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  */

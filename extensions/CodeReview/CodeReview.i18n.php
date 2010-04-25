@@ -1060,13 +1060,13 @@ $messages['br'] = array(
 	'code-release-badrange' => 'Re vras eo al levezon !',
 	'codereview-subtitle' => 'Evit $1',
 	'codereview-reply-link' => 'respont',
-	'codereview-tests-succeeded2' => '$1 {{PLURAL:$2|arnod a zo deuet a-benn|arnod a zo deuet a-benn}}',
-	'codereview-tests-failed2' => "$1 {{PLURAL:$2|arnod a zo deuet a-benn|arnod a zo deuet a-benn}},  $3 {{PLURAL:$4|arnod o deus c'hwitet|arnod o deus c'hwitet}}:",
+	'codereview-tests-succeeded2' => '$1 {{PLURAL:$2|amprouadenn|amprouadenn}} aet da benn vat',
+	'codereview-tests-failed2' => "$1 {{PLURAL:$2|amprouadenn|amprouadenn}} aet da benn vat,  $3 {{PLURAL:$4|amprouadenn|amprouadenn}} c'hwitet:",
 	'codereview-tests-running' => 'Ho amprouiñ...',
 	'codereview-tests-aborted' => 'Ehanet eo bet an amprouadenn.',
 	'codereview-tests-failed' => "C'hwitet",
 	'codereview-email-subj' => '[$1] [$2] : evezhiadenn nevez bet ouzhpennet',
-	'codereview-email-body' => 'An implijer "$1" en deus embannet un evezhiadenn war $3.
+	'codereview-email-body' => 'Lakaet en deus an implijer "$1" un evezhiadenn war $3.
 
 URL klok : $2
 
@@ -1074,33 +1074,33 @@ Evezhiadenn :
 
 $4',
 	'codereview-email-subj2' => "[$1] [$2] : Heuliadenn ar c'hemm",
-	'codereview-email-body2' => 'An implijer "$1" en deus degaset kemmoù liammet gant $2.
+	'codereview-email-body2' => 'Degaset ez eus bet kemmoù liammet ouzh $2 gant an implijer "$1".
 
 URL klok : $3
 
-Diverañ eus ar c\'hemmoù :
+Diverrañ eus ar c\'hemmoù :
 
 $4',
-	'codereview-email-subj3' => '[$1] [$2] : an arnod emgefre en deus merzhet ur regresadur',
-	'codereview-email-body3' => "An arnod emgefre en deus merzhet ur regresadur en abeg d'ar c'hemmoù bet graet er stumm $1.
+	'codereview-email-subj3' => '[$1] [$2] : merzet ez eus bet ur giladenn gant an amprouadenn emgefre',
+	'codereview-email-body3' => "Merzet ez eus bet ur giladenn gant an amprouadenn emgefre en abeg d'ar c'hemmoù degaset er stumm $1.
 
 URL klok : $2
 
-Diverañ e-pad an arnod :
+Diverrañ evit ar c'has :
 
 $3",
 	'repoadmin' => "Melestradurezh an dastumlec'hioù",
-	'repoadmin-new-legend' => "Krouiñ un dastumlec'h nevez",
-	'repoadmin-new-label' => "Anv an dastumlec'h :",
+	'repoadmin-new-legend' => 'Krouiñ ur sanailh nevez',
+	'repoadmin-new-label' => 'Anv ar sanailh :',
 	'repoadmin-new-button' => 'Krouiñ',
 	'repoadmin-edit-legend' => 'Kemmañ an dastumlec\'h "$1"',
-	'repoadmin-edit-path' => "Hent an dastumlec'h :",
+	'repoadmin-edit-path' => 'Hent ar sanailh :',
 	'repoadmin-edit-bug' => 'Hent moned Bugzilla :',
 	'repoadmin-edit-view' => 'Hent moned ViewVC :',
 	'repoadmin-edit-button' => 'Mat eo',
 	'repoadmin-edit-sucess' => 'Kemmet eo bet an dastumlec\'h "[[Special:Code/$1|$1]]".',
 	'right-repoadmin' => 'Melestriñ ar fiziadoù kod',
-	'right-codereview-use' => 'Implijout Special:Code',
+	'right-codereview-use' => 'Implijout Dibar:Kod',
 	'right-codereview-add-tag' => "Ouzhpennañ balizennoù nevez d'an adweladennoù",
 	'right-codereview-remove-tag' => "Tennañ balizennoù d'an adweladennoù",
 	'right-codereview-post-comment' => "Ouzhpennañ evezhiadennoù d'an adweladennoù",
@@ -6163,6 +6163,18 @@ $4',
 	'right-codereview-set-status' => 'Versionsstatus ännern',
 	'right-codereview-link-user' => 'Autoren mit Wiki-Brukers verbinnen',
 	'specialpages-group-developer' => 'Developer-Warktüüch',
+);
+
+/** Nedersaksisch (Nedersaksisch)
+ * @author Servien
+ */
+$messages['nds-nl'] = array(
+	'code-rev-author' => 'Auteur:',
+	'code-rev-date' => 'Daotum:',
+	'code-rev-message' => 'Opmarking:',
+	'code-rev-repo' => 'Repositorium:',
+	'code-rev-rev' => 'Versie:',
+	'code-rev-rev-viewvc' => 'in ViewVC',
 );
 
 /** Dutch (Nederlands)

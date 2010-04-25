@@ -3000,6 +3000,7 @@ $wgGoogleMapsMessages['kn'] = array(
 	'gm-balloon-title' => 'ಶೀರ್ಷಿಕೆ:',
 	'gm-yes' => 'ಹೌದು',
 	'gm-no' => 'ಇಲ್ಲ',
+	'gm-search' => 'ಹುಡುಕು',
 );
 
 /** Korean (한국어)
@@ -3669,7 +3670,7 @@ $wgGoogleMapsMessages['nl'] = array(
 	'gm-balloon-link-article' => 'Verwijzing naar deze pagina (optioneel):',
 	'gm-make-marker' => 'Beschrijving (wikiopmaak toegestaan):',
 	'gm-remove' => 'verwijderen',
-	'gm-caption' => 'Omschrijving',
+	'gm-caption' => 'Bijschrift',
 	'gm-tab-title' => 'Tabbladtitel',
 	'gm-tab' => 'Tab',
 	'gm-start-path' => 'pad toevoegen',
@@ -4270,8 +4271,8 @@ Experimente a última versão do <a href="http://www.microsoft.com/ie">Internet 
 	'gm-make-marker' => 'Legenda (notação wiki OK):',
 	'gm-remove' => 'remover',
 	'gm-caption' => 'Legenda',
-	'gm-tab-title' => 'Título da pestana',
-	'gm-tab' => 'Pestana',
+	'gm-tab-title' => 'Título do separador',
+	'gm-tab' => 'Separador',
 	'gm-start-path' => 'iniciar um caminho',
 	'gm-trace-area' => 'traçar uma área',
 	'gm-save-point' => 'gravar &amp; fechar',

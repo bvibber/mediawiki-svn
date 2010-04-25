@@ -505,7 +505,7 @@ $messages['oc'] = array(
 	'newschannel_limit' => 'Limit :',
 	'newschannel_include_category' => 'Categoria(s) addicionala(s) :',
 	'newschannel_exclude_category' => 'Categoria(s) excluida(s) :',
-	'newschannel_submit_button' => 'Crear lo flus',
+	'newschannel_submit_button' => 'Crear lo flux',
 );
 
 /** Deitsch (Deitsch)

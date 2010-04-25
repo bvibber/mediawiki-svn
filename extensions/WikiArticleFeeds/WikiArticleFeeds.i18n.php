@@ -269,7 +269,7 @@ $messages['no'] = array(
  */
 $messages['oc'] = array(
 	'wikiarticlefeeds-desc' => 'Genèra de fluxes dempuèi de paginas MediaWiki',
-	'wikiarticlefeeds_combined_description' => "Aquò es un flus combinat que conten d'elements eissits de mantuna font.",
+	'wikiarticlefeeds_combined_description' => "Aquò es un flux combinat que conten d'elements eissits de mantuna font.",
 );
 
 /** Polish (Polski)

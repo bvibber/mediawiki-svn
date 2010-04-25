@@ -10079,7 +10079,8 @@ Por favor, contacte um administrador do servidor.',
 Por favor, contacte um administrador do servidor.',
 	'ow_copy_successful' => '<h2>Cópia com Sucesso</h2>
 Os seus dados aparentam ter sido copiados com sucesso. Não se esqueça de verificar para ter a certeza!',
-	'ow_copy_unsuccessful' => '<h3>Cópia sem sucesso</h3> Não houve lugar a nenhuma operação de cópia.',
+	'ow_copy_unsuccessful' => '<h3>Cópia sem sucesso</h3>
+Não foi feita nenhuma operação de cópia.',
 	'ow_no_action_specified' => '<h3>Nenhuma acção foi especificada</h3> Talvez tenha vindo a esta página directamente? Em condições normais, não precisaria de estar aqui.',
 	'ow_db_consistency_not_found' => '<h2>Erro</h2>Há um problema com a consistência da base de dados, wikidata não consegue encontrar dados válidos relacionados com o ID deste significado definido, poderá ter-se perdido. Por favor, contacte o operador ou administrador do servidor.',
 	'ow_history_transaction' => 'Transacção:',

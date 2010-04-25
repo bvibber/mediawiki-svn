@@ -46,6 +46,13 @@ $messages['af'] = array(
 	'uos-title' => 'Verdeling van die waardes vir van gebruikersinstelling $1',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'uos-other' => '*Atras',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK

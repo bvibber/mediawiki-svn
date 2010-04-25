@@ -33,6 +33,13 @@ $messages['ca'] = array(
 	'firefoggcu-desc' => 'Protocol de Càrrega Fragmentada de Firefogg',
 );
 
+/** German (Deutsch)
+ * @author Umherirrender
+ */
+$messages['de'] = array(
+	'firefoggcu-desc' => 'Hochlade-Protokoll für Firefogg-Stücke',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
@@ -143,6 +150,13 @@ $messages['nl'] = array(
  */
 $messages['no'] = array(
 	'firefoggcu-desc' => 'Firefoggs bulkopplastingsprotokoll',
+);
+
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'firefoggcu-desc' => 'Protocòl de mandadís per tròces de Firefogg',
 );
 
 /** Polish (Polski)

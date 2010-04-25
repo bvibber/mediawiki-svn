@@ -565,6 +565,7 @@ $messages['kn'] = array(
 	'refhelper-pages' => 'ಪುಟಗಳು:',
 	'refhelper-year' => 'ವರ್ಷ:',
 	'refhelper-category' => 'ವರ್ಗ $1:',
+	'refhelper-search' => 'ಹುಡುಕು',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

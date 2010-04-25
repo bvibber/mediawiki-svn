@@ -740,24 +740,25 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Malafaya
  * @author Waldir
  */
 $messages['pt'] = array(
-	'emergencydesysop' => 'Remoção de Emergência do Acesso de Sysop',
-	'emergencydesysop-desc' => 'Permite que um sysop sacrifique os seus próprios privilégios para retirar privilégios de sysop a outro',
-	'emergencydesysop-title' => 'Remover acesso de sysop de ambos o utilizador atual e outro sysop',
-	'emergencydesysop-otheradmin' => 'Outro sysop a retirar do grupo',
-	'emergencydesysop-reason' => 'Razão para a remoção',
+	'emergencydesysop' => 'Remoção de Emergência dos Privilégios de Administrador',
+	'emergencydesysop-desc' => 'Permite que um administrador sacrifique os seus próprios privilégios para retirar o privilégio de administrador a outro utilizador',
+	'emergencydesysop-title' => 'Remover o acesso de administrador tanto ao utilizador actual como a outro administrador',
+	'emergencydesysop-otheradmin' => 'Outro administrador a retirar do grupo',
+	'emergencydesysop-reason' => 'Motivo para a remoção',
 	'emergencydesysop-submit' => 'Submeter',
-	'emergencydesysop-incomplete' => 'Todos os campos do formulário são obrigatórios. Por favor, tente novamente.',
-	'emergencydesysop-notasysop' => 'O utilizador alvo não está no grupo de sysops.',
+	'emergencydesysop-incomplete' => 'Todos os campos do formulário são obrigatórios. Tente novamente, por favor.',
+	'emergencydesysop-notasysop' => 'O utilizador alvo não está no grupo dos administradores.',
 	'emergencydesysop-nogroups' => 'Nenhum',
-	'emergencydesysop-done' => 'Ação completa, tanto a você como a [[$1]] foi removido o acesso de sysop.',
+	'emergencydesysop-done' => 'Operação completa; foram removidos os privilégios de administardor a si e a [[$1]].',
 	'emergencydesysop-invalidtarget' => 'O utilizador alvo não existe.',
-	'emergencydesysop-blocked' => 'Você não pode aceder a esta página enquanto estiver bloqueado',
-	'emergencydesysop-noright' => 'Você não possui permissões suficientes para aceder a esta página',
-	'right-emergencydesysop' => 'Remover privilégios de sysop a outro utilizador, mutuamente',
+	'emergencydesysop-blocked' => 'Não pode aceder a esta página enquanto estiver bloqueado',
+	'emergencydesysop-noright' => 'Não possui permissões suficientes para aceder a esta página',
+	'right-emergencydesysop' => 'Remover privilégios de administrador a outro utilizador, com efeito mútuo',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

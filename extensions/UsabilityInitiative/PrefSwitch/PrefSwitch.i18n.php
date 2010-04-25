@@ -1447,6 +1447,7 @@ $messages['ka'] = array(
  * @author Kwj2772
  */
 $messages['ko'] = array(
+	'prefswitch' => 'Usability Initiative 환경 설정 바꾸기',
 	'prefswitch-desc' => '사용자가 여러 설정을 한번에 바꿀 수 있도록 함',
 	'prefswitch-survey-true' => '예',
 	'prefswitch-survey-false' => '아니오',
@@ -1474,8 +1475,22 @@ $messages['ko'] = array(
 	'prefswitch-title-off' => '새 기능 끄기',
 	'prefswitch-title-switched-off' => '감사합니다.',
 	'prefswitch-title-feedback' => '피드백',
+	'prefswitch-success-on' => '새 기능이 켜졌습니다.',
+	'prefswitch-success-off' => '새 기능이 꺼졌습니다.',
+	'prefswitch-success-feedback' => '당신의 피드백을 보냈습니다.',
 	'prefswitch-return' => '<hr style="clear:both">
 <span class="plainlinks">[$1 $2]</span>로 돌아갑니다.',
+	'prefswitch-main' => '우리는 사용자를 더욱 편리하게 하기 위해 노력하고 있습니다. 새로운 스킨과 간단해진 편집 기능을 포함한 개선 사항을 보여 주게 되어 영광입니다. 프로젝트 이용을 편리하게 하는 것은 위키미디어 재단의 주 목표이며 나중에 더 많은 업데이트를 제공할 것입니다.
+
+[[File:UsabilityNavigation.png|right|link=|새로운 둘러보기 탭의 스크린샷]]
+[[File:UsabilityToolbar.png|right|link=|향상된 편집 툴바의 스크린샷]]
+[[File:UsabilityDialogs.png|right|link=|새로운 편집 대화상자의 스크린샷]]
+===새롭게 바뀐 점===
+* 둘러보기: 문서 읽기와 편집에 대한 둘러보기 메뉴가 향상되었습니다. 각 문서의 상단의 탭이 당신이 일반 문서를 보고 있는지 토론 문서를 보고 있는지, 문서를 읽고 있는지 편집하고 있는지 명확하게 나타내게 됩니다.
+* 편집 툴바 향상:  편집 툴바를 더욱 사용하기 쉽게 재구성했습니다. 이제 문서를 꾸미는 것이 더욱 간단하고 쉬워질 것입니다.
+* 링크 마법사:  사용하기 쉬운 도구가 다른 문서나 외부로 링크를 쉽게 걸 수 있도록 도와 줄 것입니다.
+* 검색 기능 향상: 찾는 문서를 더욱 쉽게 찾을 수 있도록 검색어 제안 기능을 향상시켰습니다.
+* 다른 새로운 기능:  표를 쉽게 만들 수 있도록 표 마법사와 문서 편집을 간단하게 하기 위해 찾아 바꾸기 기능을 도입했습니다.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

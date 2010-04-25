@@ -228,6 +228,7 @@ Baie dankie, ons sien daarna uit om u mening te hoor!',
  */
 $messages['an'] = array(
 	'optin-survey-answer-whyoptout-other' => 'Atra razón:',
+	'optin-survey-answer-changes-other' => 'Atros:',
 );
 
 /** Arabic (العربية)

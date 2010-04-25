@@ -1470,12 +1470,12 @@ $messages['ps'] = array(
  * @author Waldir
  */
 $messages['pt'] = array(
-	'createsigndocument' => 'Ativar a assinatura de documentos',
+	'createsigndocument' => 'Activar a assinatura de documentos',
 	'createsigndoc-head' => "Use este formulário para criar uma página \"Assinar o documento\" para a página relacionada, de forma a que os utilizadores [[Special:SignDocument|o possam assinar]].
 Por favor, especifique o nome da página na qual quer activar a assinatura digital, o grupo de utilizadores cujos membros podem assiná-lo, quais os campos que quer que estejam visíveis aos utilizadores e quais deverão ser opcionais, a idade mínima a exigir dos utilizadores para poderem assinar o documento (sem mínimo se omitido);
 e um breve texto introdutório que descreva o documento e forneça instruções aos utilizadores.
 
-'''Actualmente não há forma de eliminar ou modificar os documentos de assinatura depois de serem criados''' sem acesso directo à base de dados. Além disso, o texto da página apresentado na página de assinaturas será o texto ''actual'' da página, independentemente das alterações que lhe sejam feitas a partir de hoje.
+<b>Actualmente não há forma de eliminar ou modificar os documentos de assinatura depois de serem criados</b> sem acesso directo à base de dados. Além disso, o texto da página apresentado na página de assinaturas será o texto ''actual'' da página, independentemente das alterações que lhe sejam feitas a partir de hoje.
 Por favor, certifique-se com o máximo rigor de que o documento está numa situação de estabilidade antes de assiná-lo.
 Assegure-se também de que especificou todos os campos exactamente como devem ser, ''antes de enviar este formulário''.",
 	'createsigndoc-pagename' => 'Página:',
@@ -1493,7 +1493,7 @@ Assegure-se também de que especificou todos os campos exactamente como devem se
 	'createsigndoc-error-generic' => 'Erro: $1',
 	'createsigndoc-error-pagenoexist' => 'Erro: A página [[$1]] não existe.',
 	'createsigndoc-success' => 'A assinatura de documentos foi activada com sucesso em [[$1]].
-Pode agora [{{fullurl:{{#Special:SignDocument}}|doc=$2}} testá-la].',
+Pode agora [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} testá-la].',
 	'createsigndoc-error-alreadycreated' => 'A assinatura de documentos "$1" já existe.
 Isto não pode ser feito segunda vez.',
 );

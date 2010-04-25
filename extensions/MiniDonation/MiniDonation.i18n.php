@@ -399,11 +399,12 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Malafaya
  * @author Waldir
  */
 $messages['pt'] = array(
-	'donationform-desc' => 'Adiciona uma tag <tt>&lt;donateform&gt;</tt> para suportar doações via PayPal',
+	'donationform-desc' => 'Adiciona um elemento <tt>&lt;donateform&gt;</tt> para suportar donativos via PayPal',
 	'donationform-submit' => 'Doe pelo PayPal',
 );
 

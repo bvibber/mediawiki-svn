@@ -810,14 +810,15 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Malafaya
  * @author Waldir
  */
 $messages['pt'] = array(
 	'postcomment-desc' => 'Permite que utilizadores coloquem comentários directamente em páginas de discussão.',
 	'postcomment_discussionprotected' => 'Esta página de discussão foi protegida contra mais comentários.',
-	'postcomment_notloggedin' => 'Você não se encontra autenticado.',
-	'postcomment_youareloggedinas' => 'Você está autenticado como $1',
+	'postcomment_notloggedin' => 'Não está autenticado.',
+	'postcomment_youareloggedinas' => 'Está autenticado como $1',
 	'postcomment_addcommentdiscussionpage' => 'Acrescente o seu comentário a esta página de discussão',
 	'postcomment_leavemessagefor' => 'Deixe uma mensagem para $1',
 	'postcomment_post' => 'Colocar',

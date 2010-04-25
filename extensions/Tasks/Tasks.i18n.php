@@ -157,6 +157,7 @@ $messages['am'] = array(
  */
 $messages['an'] = array(
 	'tasks_delete' => 'Borrar',
+	'tasks_table_header_page' => 'Pachina',
 );
 
 /** Arabic (العربية)
@@ -2149,6 +2150,7 @@ $messages['km'] = array(
  */
 $messages['kn'] = array(
 	'tasks_delete' => 'ಅಳಿಸು',
+	'tasks_search_form_title' => 'ಹುಡುಕು',
 	'tasks_search_status' => 'ಸ್ಥಾನಮಾನ',
 );
 

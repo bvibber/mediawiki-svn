@@ -730,7 +730,7 @@ $messages['yi'] = array(
  */
 $messages['yo'] = array(
 	'contributionseditcount' => 'Oníṣe yìí ti ṣe àtúnṣe $1.',
-	'contributionseditcount-desc' => 'Ìgbéhàn iye àtúnṣe ní [[Special:Contributions|ojúewé àfikún oníṣe]]',
+	'contributionseditcount-desc' => 'Ìgbéhàn iye àtúnṣe lórí [[Special:Contributions|ojúewé àwọn àfikún oníṣe]]',
 );
 
 /** Yue (粵語) */

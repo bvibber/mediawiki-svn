@@ -1747,7 +1747,7 @@ Para monitorizá-las configure $wgPrefStatsTrackPrefs.',
 ** $3 {{PLURAL:$3|utilizador desactivou-a|utilizadores desactivaram-na}} desde então
 * No total, $4 {{PLURAL:$4|utilizador tem|utilizadores têm}} esta preferência activada',
 	'prefstats-xaxis' => 'Duração (horas)',
-	'prefstats-factors' => 'Visualizar por: $1',
+	'prefstats-factors' => 'Visionar por: $1',
 	'prefstats-factor-hour' => 'hora',
 	'prefstats-factor-sixhours' => 'seis horas',
 	'prefstats-factor-day' => 'dia',

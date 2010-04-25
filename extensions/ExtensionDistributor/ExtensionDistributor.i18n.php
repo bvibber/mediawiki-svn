@@ -2259,11 +2259,12 @@ $messages['pt'] = array(
 	'extdist-wc-empty' => 'A directoria de cópia de trabalho não possui extensões distribuíveis!',
 	'extdist-submit-extension' => 'Continuar',
 	'extdist-current-version' => 'Versão de desenvolvimento (tronco)',
-	'extdist-choose-version' => '<big>Você está a descarregar a extensão <b>$1</b>.</big>
+	'extdist-choose-version' => '
+<big>Está a descarregar a extensão <b>$1</b>.</big>
 
-Selecione a versão do seu MediaWiki.
+Seleccione a sua versão do MediaWiki.
 
-A maioria das extensões funciona através de múltiplas versões do MediaWiki, portanto, se a versão do seu MediaWiki não estiver aqui, ou se tiver necessidade das últimas funcionalidades da extensão, experimente usar a versão atual.',
+A maioria das extensões funciona em várias versões do MediaWiki, portanto se a sua versão do MediaWiki não aparecer aqui, ou se precisa das últimas funcionalidades da extensão, experimente usar a versão mais recente.',
 	'extdist-no-versions' => 'A extensão selecionada ($1) não está disponível em nenhuma versão!',
 	'extdist-submit-version' => 'Continuar',
 	'extdist-no-remote' => 'Não foi possível contactar o cliente Subversion remoto.',
