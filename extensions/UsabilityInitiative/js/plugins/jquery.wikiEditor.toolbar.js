@@ -311,7 +311,7 @@ fn: {
 				var $button;
 				if ( 'offset' in tool ) {
 					var offset = $.wikiEditor.autoLang( tool.offset );
-					$button = $( '<a href="#" />' )
+					$button = $( '<span />' )
 						.attr( {
 							'alt' : label,
 							'title' : label,
