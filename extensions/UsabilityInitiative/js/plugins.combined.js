@@ -11421,7 +11421,7 @@ fn: {
 		}
 		if ( 'action' in character && 'label' in character ) {
 			actions[character.label] = character.action;
-			return '<a rel="' + character.label + '" href="#">' + character.label + '</a>';
+			return '<span rel="' + character.label + '">' + character.label + '</span>';
 		}
 	},
 	buildTab : function( context, id, section ) {
