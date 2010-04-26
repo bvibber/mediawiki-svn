@@ -451,9 +451,20 @@ if ( !context || typeof context == 'undefined' ) {
 					pasteContent = pasteContent.nextSibling;
 					if ( currentNode.nodeName == '#text' && currentNode.nodeValue == currentNode.wholeText ) {				
 						$( currentNode ).wrap( $( '<p></p>' ) );
+						$( currentNode ).addClass( 'wikiEditor' );
 						removeNextBR = true;
-					} else if ( currentNode.nodeName == 'BR' && removeNextBR ) {
-						$( currentNode ).remove();
+					} else if ( currentNode.nodeName == 'SPAN' ) {
+						var text = $( currentNode ).text();
+						if ( text.length  == 0 ) {
+							$( currentNode ).remove();
+						} 
+						removeNextBR = false;
+					} else if ( currentNode.nodeName == 'BR' ) {
+						if (removeNextBR ) {
+							$( currentNode ).remove();
+						} else {
+							$( currentNode ).addClass( 'wikiEditor' );
+						}
 						removeNextBR = false;
 					} else {
 						removeNextBR = false;
@@ -467,12 +478,7 @@ if ( !context || typeof context == 'undefined' ) {
 						$currentElement = $currentElement.parent();
 					}
 					var html = $( '<div></div>' ).text( $currentElement.text().replace( /\r|\n/g, ' ' ) ).html();
-					if ( $currentElement.is( 'br' ) ) {
-						$currentElement.addClass( 'wikiEditor' );
-					} else if ( $currentElement.is( 'span' ) && html.length == 0 ) {
-						// Markers!
-						$currentElement.remove();
-					} else if ( $currentElement.is( 'p' ) || $currentElement.is( 'div' ) ) {
+					if ( $currentElement.is( 'p' ) || $currentElement.is( 'div' ) ) {
 						$newElement = $( '<p></p>' )
 							.addClass( 'wikiEditor' )
 							.insertAfter( $currentElement );
@@ -496,7 +502,8 @@ if ( !context || typeof context == 'undefined' ) {
 				
 				// Restore cursor position
 				context.fn.purgeOffsets();
-				var restoreTo = cursorPos[0] + context.fn.getContents().length - oldLength;
+				var newLength = context.$content.html().length;
+				var restoreTo = cursorPos[0] + newLength - oldLength;
 				context.fn.setSelection( { start: restoreTo, end: restoreTo } );
 			}, 0 );
 			return true;
