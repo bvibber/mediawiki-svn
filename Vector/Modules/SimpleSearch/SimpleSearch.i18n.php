@@ -117,7 +117,7 @@ $messages['ckb-arab'] = array(
  */
 $messages['cs'] = array(
 	'vector-simplesearch-search' => 'Hledat',
-	'vector-simplesearch-containing' => 'přidává se do obsahu…',
+	'vector-simplesearch-containing' => 'obsahující…',
 );
 
 /** Kashubian (Kaszëbsczi)
