@@ -22,7 +22,7 @@ class RPEDHooks {
 		&$customAttribs, &$query, &$options, &$ret
 	) {
 		global $wgLocalStyle, $wgRemoteStyle, $wgPureWikiDeletionInEffect, $wgTitle, $wgRequest;
-
+		wfLoadExtensionMessages('RPED');
 		if ( $wgTitle->getNamespace () == -1 ) {
 			return true;
 		}
@@ -86,8 +86,7 @@ class RPEDHooks {
 				return true;
 			} else {
 				$title = htmlentities( $title );
-				// FIXME: make language configurable, or the same as content language.
-				$url = 'http://en.wikipedia.org/wiki/' . $title;
+				$url = wfMsgExt( 'rped-wikipedia-url','parsemag') . $title;
 
 				// The page that we'll link to
 				$text = '<a href="' . $url . '">' . $text . '</a>';
