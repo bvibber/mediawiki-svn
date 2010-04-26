@@ -110,10 +110,10 @@ class PureWikiDeletionHooks {
        }
        
        public static function PureWikiDeletionEditHook( $editPage ) {
-	      global $wgTitle,$wgLang;
+	      global $wgLang;
 	      wfLoadExtensionMessages('PureWikiDeletion');
 	      $dbr = wfGetDB( DB_SLAVE );
-	      $blank_page_id=$wgTitle->getArticleID();
+	      $blank_page_id=$editPage->getArticle()->getID();
 	      $blank_row=array(
 		     'blank_user_id',
 		     'blank_user_name',
