@@ -27,6 +27,7 @@ EOT;
 }
 
 $wgExtensionCredits['other'][] = array(
+	'path' => __FILE__,
 	'name' => 'Remote Page Existence Detection',
 	'author' => 'Tisane',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:RemotePageExistenceDetection',
