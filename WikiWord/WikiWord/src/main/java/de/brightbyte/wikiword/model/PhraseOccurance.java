@@ -12,7 +12,7 @@ public class PhraseOccurance implements Serializable, Comparable<PhraseOccurance
 		protected int length;
 		
 		public PhraseOccurance(String phrase, int weight, int offset, int length) {
-			if (length <= 0) throw new IllegalArgumentException("bad length: "+length);
+			if (length < 0) throw new IllegalArgumentException("bad length: "+length);
 			if (length > phrase.length()) throw new IllegalArgumentException("length larger than base string");
 			//if (length == phrase.length() && offset > 0) throw new IllegalArgumentException("region outside than base string");
 			if (length < phrase.length() && offset+length > phrase.length()) throw new IllegalArgumentException("region outside than base string");

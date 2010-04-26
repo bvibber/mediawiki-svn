@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
@@ -19,9 +20,7 @@ import de.brightbyte.rdf.RdfException;
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.ConsoleApp;
 import de.brightbyte.wikiword.Corpus;
-import de.brightbyte.wikiword.TweakSet;
 import de.brightbyte.wikiword.disambig.Disambiguator;
-import de.brightbyte.wikiword.disambig.PhraseExtractor;
 import de.brightbyte.wikiword.disambig.SlidingCoherenceDisambiguator;
 import de.brightbyte.wikiword.disambig.StoredFeatureFetcher;
 import de.brightbyte.wikiword.disambig.StoredMeaningFetcher;
@@ -33,7 +32,6 @@ import de.brightbyte.wikiword.model.ConceptRelations;
 import de.brightbyte.wikiword.model.GlobalConcept;
 import de.brightbyte.wikiword.model.LocalConcept;
 import de.brightbyte.wikiword.model.PhraseNode;
-import de.brightbyte.wikiword.model.PhraseOccuranceSet;
 import de.brightbyte.wikiword.model.TermListNode;
 import de.brightbyte.wikiword.model.TermReference;
 import de.brightbyte.wikiword.model.WikiWordConcept;
@@ -52,7 +50,6 @@ public class QueryConsole extends ConsoleApp<WikiWordConceptStore> {
 	protected ConceptQuerySpec minimalConceptSpec;
 	protected ConceptQuerySpec resolvedConceptSpec;
 	protected ConceptQuerySpec detailedConceptSpec;
-	private PhraseExtractor phraseExtractor;
 	
 	public QueryConsole() {
 		super(true, true);
@@ -88,9 +85,6 @@ public class QueryConsole extends ConsoleApp<WikiWordConceptStore> {
 					throw new PersistenceException(e);
 				}
 			}
-			
-			//FIXME: make the line below possible...
-			//phraseExtractor = PlaintextAnalyzer.getPlaintextAnalyzer(getCorpus(), getTweaks());
 		}
 		
 		public ConceptOutput getOutput() {
@@ -153,16 +147,38 @@ public class QueryConsole extends ConsoleApp<WikiWordConceptStore> {
 		}
 		
 		public void writeInterpretation(Map<String, ? extends WikiWordConcept> interp) throws PersistenceException  {
-			//XXX: hack!
+			write(interp.toString()); //FIXME
+		}
+		
+		public void writeList(List<?> list) throws PersistenceException  {
+			write(list.toString()); //FIXME
+		}
+	
+		public void write(Object obj) throws PersistenceException  {
 			try {
-				writer.write(interp.toString());
+				writer.write(obj.toString());
 				writer.write("\n");
 				writer.flush();
 			} catch (IOException e) {
 				throw new PersistenceException(e);
 			}
 		}
-		
+
+		public void dumpPhraseTree(PhraseNode n) throws PersistenceException  {
+			dumpPhraseTree(n, "");
+		}
+	
+		public void dumpPhraseTree(PhraseNode n, String dent) throws PersistenceException  {
+			write(dent+n);
+			dent += " + ";
+			Collection<PhraseNode> successors = n.getSuccessors();
+			if (successors!=null) {
+					for (PhraseNode m: successors) {
+						dumpPhraseTree(m, dent);
+					}
+			}
+		}
+	
 	}
 	
 	protected class ConceptDumper extends AbstractConceptOutput {
@@ -343,8 +359,15 @@ public class QueryConsole extends ConsoleApp<WikiWordConceptStore> {
 		}
 		
 		ConsoleOutput out = getConceptOutput(format, target);
-		
+
 		try {
+			runCommand(cmd, params, out);
+		} finally {
+			out.close();
+		}
+	}
+		
+	public void runCommand(String cmd, List<Object> params, ConsoleOutput out) throws Exception {
 			if (cmd.equals("statistics") || cmd.equals("stats")) {
 				dumpStats();
 			}
@@ -388,29 +411,20 @@ public class QueryConsole extends ConsoleApp<WikiWordConceptStore> {
 			else if (cmd.equals("d") || cmd.equals("dis") || cmd.equals("disambig")  || cmd.equals("disambiguate")) {
 				PhraseNode<? extends TermReference> root = getPhrases(params.get(1).toString());
 				showDisambiguation(root, out);
-		}
+			}
 			else if (cmd.equals("ls") || cmd.equals("list")) {
 				listConcepts(out);
 			}
-		}
-		finally {
-			out.close();
-		}
 	}
 
 	protected PhraseNode<? extends TermReference> getPhrases(String  s) {
-		if (s.indexOf('|')>0) {
-			String[] ss = s.split("\\s\\|\\s");
+			String[] ss = s.split("\\s\\[|;]\\s");
 			List<Term> terms = new ArrayList<Term>(ss.length);
 			for (String t: ss) {
 				terms.add(new Term(t));
 			}
 			
 			return new TermListNode<Term>(terms, 0);
-		} else {
-			PhraseOccuranceSet occurances = phraseExtractor.extractPhrases(s, 6);
-			return occurances.getRootNode();
-		}
 	}
 
 	public boolean isGlobalThesaurus() {

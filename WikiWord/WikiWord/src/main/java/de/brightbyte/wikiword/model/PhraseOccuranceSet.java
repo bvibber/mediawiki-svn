@@ -2,11 +2,12 @@ package de.brightbyte.wikiword.model;
 
 import java.util.AbstractList;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.RandomAccess;
-
-import de.brightbyte.wikiword.disambig.Term;
+import java.util.Set;
 
 public class PhraseOccuranceSet extends AbstractList<PhraseOccurance> implements RandomAccess {
 
@@ -18,8 +19,8 @@ public class PhraseOccuranceSet extends AbstractList<PhraseOccurance> implements
 			this.phrase = phrase;
 		}
 
-		public List<? extends PhraseNode<PhraseOccurance>> getSuccessors() {
-			return PhraseOccuranceSet.this.getPhraseNodesAt(phrase.getEndOffset());
+		public Collection<? extends PhraseNode<PhraseOccurance>> getSuccessors() {
+			return getSuccessorsAt(phrase.getEndOffset());
 		}
 
 		public PhraseOccurance getTermReference() {
@@ -29,6 +30,33 @@ public class PhraseOccuranceSet extends AbstractList<PhraseOccurance> implements
 		public String toString() {
 			return phrase.toString();
 		}
+
+		@Override
+		public int hashCode() {
+			final int PRIME = 31;
+			int result = 1;
+			result = PRIME * result + ((phrase == null) ? 0 : phrase.hashCode());
+			return result;
+		}
+
+		@Override
+		public boolean equals(Object obj) {
+			if (this == obj)
+				return true;
+			if (obj == null)
+				return false;
+			if (getClass() != obj.getClass())
+				return false;
+			final Node other = (Node) obj;
+			if (phrase == null) {
+				if (other.phrase != null)
+					return false;
+			} else if (!phrase.equals(other.phrase))
+				return false;
+			return true;
+		}
+		
+		
 	}
 	
 	protected List<PhraseOccurance> phrases;
@@ -65,8 +93,8 @@ public class PhraseOccuranceSet extends AbstractList<PhraseOccurance> implements
 				return new PhraseOccurance("", 0, ofs, 0);
 			}
 		
-			public List<? extends PhraseNode<PhraseOccurance>> getSuccessors() {
-				return getPhraseNodesAt(ofs);
+			public Collection<? extends PhraseNode<PhraseOccurance>> getSuccessors() {
+				return getSuccessorsAt(ofs);
 			}
 			
 			public String toString() {
@@ -75,8 +103,38 @@ public class PhraseOccuranceSet extends AbstractList<PhraseOccurance> implements
 		}; 
 	}
 	
-	public List<? extends PhraseNode<PhraseOccurance>> getPhraseNodesAt(int offs) {
+	public Collection<? extends PhraseNode<PhraseOccurance>> getSuccessorsAt(int pos) {
+		Set<PhraseNode<PhraseOccurance>> successors = new HashSet<PhraseNode<PhraseOccurance>>();
+		
+		while (true) {
+			    Collection<? extends PhraseNode<PhraseOccurance>> nodes = PhraseOccuranceSet.this.getPhraseNodesAt(pos);
+				if (nodes == null || nodes.isEmpty()) break;
+				
+				successors.addAll(nodes);
+				int horizon = getHorizon(successors);
+				
+				pos ++;
+				if (pos>=horizon) break;
+		}
+		
+		return successors;
+	}
+	
+	private int getHorizon(Collection<? extends PhraseNode<PhraseOccurance>> successors) {
+		int horizon = Integer.MAX_VALUE;
+		for (PhraseNode<PhraseOccurance> n: successors) {
+			int end = n.getTermReference().getEndOffset();
+			if (end < horizon) horizon = end;
+		}
+		
+		return horizon;
+	}
+
+	
+	public Collection<? extends PhraseNode<PhraseOccurance>> getPhraseNodesAt(int offs) {
 		List<PhraseOccurance> phrases = getPhrasesAt(offs);
+		if (phrases == null) return null;
+		
 		List<Node> nodes = new ArrayList<Node>(phrases.size());
 		
 		for (PhraseOccurance p: phrases) {

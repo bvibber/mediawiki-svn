@@ -57,10 +57,10 @@ public class SlidingCoherenceDisambiguator extends CoherenceDisambiguator {
 		Result<X, LocalConcept> r ;
 		
 		if (to-from < 2) {
-			r = popularityDisambiguator.disambiguate(node, frame, meanings, context);
+			r = popularityDisambiguator.disambiguate(frame, meanings, context);
 		} else {
-			List<Disambiguator.Interpretation<X, LocalConcept>> interpretations = getInterpretations(from, to, frame,  interpretation, meanings);
-			r = getBestInterpretation(node, frame, meanings, context, interpretations, similarities, features);
+			List<Disambiguator.Interpretation<X, LocalConcept>> interpretations = getInterpretations(frame,  interpretation, meanings);
+			r = getBestInterpretation(node, meanings, context, interpretations, similarities, features);
 		}
 		
 		return r;
@@ -69,23 +69,23 @@ public class SlidingCoherenceDisambiguator extends CoherenceDisambiguator {
 	/* (non-Javadoc)
 	 * @see de.brightbyte.wikiword.disambig.Disambiguator#disambiguate(java.util.List)
 	 */
-	public <X extends TermReference>Result<X, LocalConcept> disambiguate(PhraseNode<X> root, Collection<X> terms, Map<X, List<? extends LocalConcept>> meanings, Collection<LocalConcept> context) throws PersistenceException {
-		if (terms.isEmpty() || meanings.isEmpty()) return new Disambiguator.Result<X, LocalConcept>(Collections.<X, LocalConcept>emptyMap(), Collections.<X>emptyList(), 0.0, "no terms or meanings");
+	public <X extends TermReference>Result<X, LocalConcept> disambiguate(PhraseNode<X> root, Map<X, List<? extends LocalConcept>> meanings, Collection<LocalConcept> context) throws PersistenceException {
+		if (meanings.isEmpty()) return new Disambiguator.Result<X, LocalConcept>(Collections.<X, LocalConcept>emptyMap(), Collections.<X>emptyList(), 0.0, "no terms or meanings");
 
-		int sz = Math.min(terms.size(), meanings.size());
+		int sz = meanings.size();
 		if (context!=null) sz += context.size();
 
 		if (window < 2 || sz<2) { 
-				return popularityDisambiguator.disambiguate(root, terms, meanings, context);
+				return popularityDisambiguator.disambiguate(root, meanings, context);
 		}
 		
 		pruneMeanings(meanings);
 		
-		sz = Math.min(terms.size(), meanings.size());
+		sz = meanings.size();
 		if (context!=null) sz += context.size();
 
 		if (sz<2) { 
-			return popularityDisambiguator.disambiguate(root, terms, meanings, context);
+			return popularityDisambiguator.disambiguate(root, meanings, context);
 		}
 		
 		//CAVEAT: because the map disambig can contain only one meaning per term, the same term can not occur with two meanings within the same term sequence.
@@ -99,12 +99,15 @@ public class SlidingCoherenceDisambiguator extends CoherenceDisambiguator {
 		
 		if (initialWindow > 0) { //apply full coherence disambig to initial window size. initialWindow == 1 will trigger a popularity disambig.
 			Collection<List<X>> sequences = getSequences(root, initialWindow);
-			Result<X, LocalConcept> r = disambiguate(sequences, root, terms, meanings, context);
+			Result<X, LocalConcept> r = disambiguate(sequences, root, meanings, context);
+			
 			sequence.addAll(r.getSequence());
+			currentNode = getLastNode(root, sequence);
+			disambig.putAll(r.getMeanings());
 		}
 		
 		while (true) {
-			List<? extends PhraseNode<X>> successors = currentNode.getSuccessors();
+			Collection<? extends PhraseNode<X>> successors = currentNode.getSuccessors();
 			if (successors==null || successors.isEmpty()) break;
 			
 			Result<X, LocalConcept> best = null;
@@ -129,23 +132,20 @@ public class SlidingCoherenceDisambiguator extends CoherenceDisambiguator {
 		return getScore(new Disambiguator.Interpretation<X, LocalConcept>(disambig, sequence), context, similarities, features); //FIXME: this is unnecessarily expensive, we usually don't need the scores this calculates. 
 	}
 
-	protected <X extends TermReference>List<Disambiguator.Interpretation<X, LocalConcept>> getInterpretations(int from, int to, List<X> terms,  Map<X, ? extends LocalConcept> known, Map<? extends TermReference, List<? extends LocalConcept>> meanings) {
+	protected <X extends TermReference>List<Disambiguator.Interpretation<X, LocalConcept>> getInterpretations(List<X> frame,  Map<X, ? extends LocalConcept> known, Map<? extends TermReference, List<? extends LocalConcept>> meanings) {
 		//strip out all terms with no known meaning
-		if (meanings.keySet().size() != terms.size()) {
-			List<X> t = new ArrayList<X>(terms.size());
-			t.addAll(terms);
+		if (meanings.keySet().size() != frame.size()) {
+			List<X> t = new ArrayList<X>(frame.size());
+			t.addAll(frame);
 			t.retainAll(meanings.keySet());
-			terms = t;
+			frame = t;
 		}
 		
 		Map<X, List<? extends LocalConcept>> mset = new HashMap<X, List<? extends LocalConcept>>();
 		
-		if (to>terms.size()) to = terms.size();
-		
-		for (int i=from; i<to; i++) {
+		for (X t: frame) {
 			List<? extends LocalConcept> m;
 			
-			X t = terms.get(i);
 			LocalConcept c = known.get(t);
 
 			if (c!=null) m = Collections.singletonList(c);
@@ -154,7 +154,7 @@ public class SlidingCoherenceDisambiguator extends CoherenceDisambiguator {
 			mset.put(t, m);
 		}
 		
-		return getSequenceInterpretations(terms.subList(from, to), mset);
+		return getSequenceInterpretations(frame, mset);
 	}
 
 }

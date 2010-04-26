@@ -32,4 +32,32 @@ public class TermListNode<T extends TermReference>  implements PhraseNode<T> {
 		return successors;
 	}
 
+	@Override
+	public int hashCode() {
+		final int PRIME = 31;
+		int result = 1;
+		result = PRIME * result + index;
+		result = PRIME * result + ((terms == null) ? 0 : terms.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		final TermListNode other = (TermListNode) obj;
+		if (index != other.index)
+			return false;
+		if (terms == null) {
+			if (other.terms != null)
+				return false;
+		} else if (!terms.equals(other.terms))
+			return false;
+		return true;
+	}
+
 }

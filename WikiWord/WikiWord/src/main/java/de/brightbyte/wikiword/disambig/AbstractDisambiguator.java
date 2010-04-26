@@ -3,8 +3,10 @@ package de.brightbyte.wikiword.disambig;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import de.brightbyte.io.Output;
 import de.brightbyte.util.PersistenceException;
@@ -27,7 +29,8 @@ public abstract class AbstractDisambiguator<T extends TermReference, C extends W
 		}
 		
 		public void onNode(PhraseNode<? extends T> node, List<? extends T> seqence) {
-			if (node.getSuccessors().isEmpty()) { //is leaf
+			Collection<?> successors = node.getSuccessors();
+			if (successors==null || successors.isEmpty()) { //is leaf
 				List<T> p = new ArrayList<T>(seqence);  //clone
 				seqencees.add(p);
 			}
@@ -39,10 +42,10 @@ public abstract class AbstractDisambiguator<T extends TermReference, C extends W
 	}
 
 	public static class TermSetBuilder <T extends TermReference> implements NodeListener<T> {
-		protected List<T> terms;
+		protected Set<T> terms;
 		
 		public TermSetBuilder() {
-			terms = new ArrayList<T>();
+			terms = new HashSet<T>();
 		}
 		
 		public void onNode(PhraseNode<? extends T> node, List<? extends T> seqence) {
@@ -50,7 +53,7 @@ public abstract class AbstractDisambiguator<T extends TermReference, C extends W
 			if (t.getTerm().length()>0) terms.add(t);
 		}
 		
-		public List<T> getTerms() {
+		public Collection<T> getTerms() {
 			return terms;
 		}
 	}
@@ -82,6 +85,25 @@ public abstract class AbstractDisambiguator<T extends TermReference, C extends W
 		return builder.getSequences();
 	}
 	
+	protected <X extends T>PhraseNode<X> getLastNode(PhraseNode<X> root, List<X> sequence) {
+		terms: for (X t: sequence) {
+			Collection<? extends PhraseNode<X>> successors = root.getSuccessors();
+			if (successors==null || successors.isEmpty()) 
+				throw new IllegalArgumentException("sequence too long, no nodes left along this path.");
+			
+			for (PhraseNode<X> n: successors) {
+				if (n.getTermReference().equals(t)) {
+					root = n;
+					continue terms;
+				}
+			}
+			
+			throw new IllegalArgumentException("sequence does not match node structure; no node found matching "+t);
+		}
+		
+		return root;
+	}
+	
 	protected <X extends T>void walk(PhraseNode<X> root, List<X> seqence, NodeListener<? super X> nodeListener, int depth) {
 		if (depth<1) return;
 		if (seqence == null) seqence = new ArrayList<X>();
@@ -92,9 +114,9 @@ public abstract class AbstractDisambiguator<T extends TermReference, C extends W
 		if (nodeListener!=null) 
 			nodeListener.onNode(root, seqence);
 		
-		List<? extends PhraseNode<X>> successors = root.getSuccessors();
+		Collection<? extends PhraseNode<X>> successors = root.getSuccessors();
 		
-		if (depth>1) {
+		if (depth>1 && successors!=null) {
 			for (PhraseNode<X> n: successors) {
 				walk(n, seqence, nodeListener, depth-1);
 			}
@@ -138,10 +160,10 @@ public abstract class AbstractDisambiguator<T extends TermReference, C extends W
 	public <X extends T>Result<X, C> disambiguate(PhraseNode<X> root, Collection<C> context) throws PersistenceException {
 		Collection<X> terms = getTerms(root, Integer.MAX_VALUE);
 		Map<X, List<? extends C>> meanings = getMeanings(terms);
-		return disambiguate(root, terms, meanings, context);
+		return disambiguate(root, meanings, context);
 	}
 	
-	public abstract <X extends T>Result<X, C> disambiguate(PhraseNode<X> root, Collection<X> terms, Map<X, List<? extends C>> meanings, Collection<C> context) throws PersistenceException;
+	public abstract <X extends T>Result<X, C> disambiguate(PhraseNode<X> root, Map<X, List<? extends C>> meanings, Collection<C> context) throws PersistenceException;
 
 	public Output getTrace() {
 		return trace;

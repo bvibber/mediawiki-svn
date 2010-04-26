@@ -189,29 +189,29 @@ public class CoherenceDisambiguator extends AbstractDisambiguator<TermReference,
 	/* (non-Javadoc)
 	 * @see de.brightbyte.wikiword.disambig.Disambiguator#disambiguate(java.util.List)
 	 */
-	public <X extends TermReference>Disambiguator.Result<X, LocalConcept> disambiguate(PhraseNode<X> root, Collection<X> terms, Map<X, List<? extends LocalConcept>> meanings, Collection<LocalConcept> context) throws PersistenceException {
-		if (terms.isEmpty() || meanings.isEmpty()) return new Disambiguator.Result<X, LocalConcept>(Collections.<X, LocalConcept>emptyMap(), Collections.<X>emptyList(), 0.0, "no terms or meanings");
+	public <X extends TermReference>Disambiguator.Result<X, LocalConcept> disambiguate(PhraseNode<X> root, Map<X, List<? extends LocalConcept>> meanings, Collection<LocalConcept> context) throws PersistenceException {
+		if (meanings.isEmpty()) return new Disambiguator.Result<X, LocalConcept>(Collections.<X, LocalConcept>emptyMap(), Collections.<X>emptyList(), 0.0, "no terms or meanings");
 		
-		int sz = Math.min(terms.size(), meanings.size());
+		int sz = meanings.size();
 		if (context!=null) sz += context.size();
 		
 		if (sz<2) { 
-				return popularityDisambiguator.disambiguate(root, terms, meanings, context);
+				return popularityDisambiguator.disambiguate(root, meanings, context);
 		}
 		
 		pruneMeanings(meanings);
 		
-		sz = Math.min(terms.size(), meanings.size());
+		sz = meanings.size();
 		if (context!=null) sz += context.size();
 		if (sz <2) {
-			return popularityDisambiguator.disambiguate(root, terms, meanings, context);
+			return popularityDisambiguator.disambiguate(root, meanings, context);
 		}
 		
 		Collection<List<X>> sequences = getSequences(root, Integer.MAX_VALUE);
-		return disambiguate(sequences, root, terms, meanings, context);
+		return disambiguate(sequences, root, meanings, context);
 	}
 	
-	public <X extends TermReference>Disambiguator.Result<X, LocalConcept> disambiguate(Collection<List<X>> sequences, PhraseNode<X> root, Collection<X> terms, Map<X, List<? extends LocalConcept>> meanings, Collection<LocalConcept> context) throws PersistenceException {
+	public <X extends TermReference>Disambiguator.Result<X, LocalConcept> disambiguate(Collection<List<X>> sequences, PhraseNode<X> root, Map<X, List<? extends LocalConcept>> meanings, Collection<LocalConcept> context) throws PersistenceException {
 		
 		//CAVEAT: because the map disambig can contain only one meaning per term, the same term can not occur with two meanings within the same term sequence.
 
@@ -220,7 +220,7 @@ public class CoherenceDisambiguator extends AbstractDisambiguator<TermReference,
 		
 		List<Disambiguator.Interpretation<X, LocalConcept>> interpretations = getInterpretations(sequences, meanings);
 
-		return getBestInterpretation(root, terms, meanings, context, interpretations, similarities, features);
+		return getBestInterpretation(root, meanings, context, interpretations, similarities, features);
 	}
 	
 	protected void pruneMeanings(Map<? extends TermReference, List<? extends LocalConcept>> meanings) {
@@ -250,7 +250,7 @@ public class CoherenceDisambiguator extends AbstractDisambiguator<TermReference,
 		}
 	}
 
-	protected <X extends TermReference>Result<X, LocalConcept> getBestInterpretation(PhraseNode<X> root, Collection<X> terms, Map<X, List<? extends LocalConcept>> meanings, 
+	protected <X extends TermReference>Result<X, LocalConcept> getBestInterpretation(PhraseNode<X> root, Map<X, List<? extends LocalConcept>> meanings, 
 			Collection<LocalConcept> context, List<Disambiguator.Interpretation<X, LocalConcept>> interpretations, 
 			LabeledMatrix<LocalConcept, LocalConcept> similarities, FeatureFetcher<LocalConcept, Integer> features) throws PersistenceException {
 		
@@ -269,7 +269,7 @@ public class CoherenceDisambiguator extends AbstractDisambiguator<TermReference,
 		}
 		
 		if (rankings.size()==0) {
-			return popularityDisambiguator.disambiguate(root, terms, meanings, context);
+			return popularityDisambiguator.disambiguate(root,  meanings, context);
 		}
 		
 		Collections.sort(rankings);

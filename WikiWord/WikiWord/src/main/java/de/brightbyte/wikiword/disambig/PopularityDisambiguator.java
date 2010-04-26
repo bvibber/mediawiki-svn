@@ -45,12 +45,12 @@ public class PopularityDisambiguator extends AbstractDisambiguator<TermReference
 		this.weigthCombiner = weightCombiner;
 	}
 
-	public <X extends TermReference>Result<X, LocalConcept> disambiguate(PhraseNode<X> root, Collection<X> terms, Map<X, List<? extends LocalConcept>> meanings, Collection<LocalConcept> context) {
+	public <X extends TermReference>Result<X, LocalConcept> disambiguate(PhraseNode<X> root, Map<X, List<? extends LocalConcept>> meanings, Collection<LocalConcept> context) {
 		Collection<List<X>> sequences = getSequences(root, Integer.MAX_VALUE);
-		return disambiguate(sequences, root, terms, meanings, context);
+		return disambiguate(sequences, root, meanings, context);
 	}
 	
-	public <X extends TermReference>Result<X, LocalConcept> disambiguate(Collection<List<X>> sequences, PhraseNode<X> root, Collection<X> terms, Map<X, List<? extends LocalConcept>> meanings, Collection<LocalConcept> context) {
+	public <X extends TermReference>Result<X, LocalConcept> disambiguate(Collection<List<X>> sequences, PhraseNode<X> root, Map<X, List<? extends LocalConcept>> meanings, Collection<LocalConcept> context) {
 		Result<X, LocalConcept> best = null;
 		
 		for (List<X> sequence: sequences) {
