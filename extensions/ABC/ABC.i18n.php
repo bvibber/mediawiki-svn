@@ -155,10 +155,11 @@ $messages['ca'] = array(
 );
 
 /** Czech (Česky)
+ * @author Mormegil
  * @author Reaperman
  */
 $messages['cs'] = array(
-	'abc-desc' => 'Přidává značku <tt>&lt;abc&gt;</tt> pro práci s hudební notací',
+	'abc-desc' => 'Přidává značku <tt>&lt;abc&gt;</tt> pro hudbu ve formátu ABC',
 	'abcdownload' => 'Stáhnout:',
 );
 

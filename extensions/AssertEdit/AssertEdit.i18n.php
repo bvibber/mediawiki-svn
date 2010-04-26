@@ -421,6 +421,15 @@ $messages['kk-latn'] = array(
 	'assert_edit_message' => 'Engizilgen maquldaw ($1) sätsiz.',
 );
 
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'assert_edit_title' => '검증 실패',
+	'assertedit-desc' => '봇이 사용하는 편집 검증 기능을 추가',
+	'assert_edit_message' => '지정한 검사($1)를 실시하지 못했습니다.',
+);
+
 /** Colognian (Ripoarisch)
  * @author Purodha
  */

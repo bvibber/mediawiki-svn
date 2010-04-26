@@ -73,6 +73,17 @@ $messages['bs'] = array(
 	'poolcounter-remote-error' => 'Greška na serveru pool brojača: $1',
 );
 
+/** German (Deutsch)
+ * @author Kghbln
+ */
+$messages['de'] = array(
+	'poolcounter-desc' => 'Stellt einen MediaWiki-Client für den Daemon „poolcounter.py“ als Zählwerk eines Computerclusters bereit',
+	'poolcounter-connection-error' => 'Fehler beim Verbinden zum Server $1, auf dem sich das Zählwerk des Computerclusters befindet',
+	'poolcounter-read-error' => 'Fehler beim Lesen vom Server, auf dem sich das Zählwerk des Computerclusters befindet',
+	'poolcounter-write-error' => 'Fehler beim Schreiben auf dem Server, auf dem sich das Zählwerk des Computerclusters befindet',
+	'poolcounter-remote-error' => 'Fehler beim Server $1, auf dem sich das Zählwerk des Computerclusters befindet',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

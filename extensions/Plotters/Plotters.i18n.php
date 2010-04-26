@@ -150,6 +150,7 @@ Molimo definirajte klasu tabele tako da ima najviše 255 znakova.',
 /** German (Deutsch)
  * @author Avatar
  * @author Imre
+ * @author Kghbln
  * @author MF-Warburg
  * @author Sebastian Wallroth
  * @author Umherirrender
@@ -158,6 +159,8 @@ $messages['de'] = array(
 	'plotters-desc' => 'Erlaubt Benutzern die Verwendung von spezifischem JavaScript in jsplot-Tags',
 	'plotters' => 'Plotter',
 	'plotters-title' => 'Plotter',
+	'plotters-pagetext' => 'Die folgende Liste gibt spezielle Plotter an, die ein Benutzer innerhalb der jsplot-Tags verwenden kann. Diese sind auf der Spezialseite [[MediaWiki:Plotters-definition|Plotterdefinitionen]] beschrieben.
+Die Übersicht ermöglicht ein einfaches Auffinden der Seiten mit den Systemnachrichten, die die einzelnen Plotter, mitsamt dem zugehörigen Code, definieren.',
 	'plotters-uses' => 'Nutzungen',
 	'plotters-missing-script' => 'Es wurde kein Skript definiert.',
 	'plotters-missing-arguments' => 'Keine Argumente festgelegt.',
@@ -167,6 +170,8 @@ Bitte lege ein Skript fest, dessen Titel 255 Zeichen nicht übersteigt.',
 Bitte lege einen Präprozessor fest, dessen Name 255 Zeichen nicht übersteigt.',
 	'plotters-excessively-long-name' => 'Der Entwurfsname ist zu lang. 
 Bitte definiere einen Entwurfsnamen, der aus höchstens 255 Zeichen besteht.',
+	'plotters-excessively-long-tableclass' => 'Die Tabellenklasse ist zu lang.
+Bitte definiere eine Tabellenklasse, die maximal 255 Zeichen aufweist.',
 	'plotters-no-data' => 'Es wurden keine Daten angegeben.',
 	'plotters-invalid-renderer' => 'Es wurde ein ungültiger Renderer ausgewählt.',
 	'plotters-errors' => 'Plotter{{PLURAL:$1|fehler|fehler}}:',

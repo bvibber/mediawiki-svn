@@ -3489,6 +3489,7 @@ $messages['kn'] = array(
 	'wikilog-authors' => 'ಕರ್ತೃಗಳು',
 	'wikilog-title' => 'ಶೀರ್ಷಿಕೆ',
 	'wikilog-view-summary' => 'ಸಾರಾಂಶ',
+	'wikilog-pager-last' => 'ಕೊನೆಯ',
 	'wikilog-form-category' => 'ವರ್ಗ:',
 	'wikilog-form-name' => 'ಹೆಸರು:',
 	'wikilog-form-author' => 'ಕರ್ತೃ:',

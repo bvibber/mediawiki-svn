@@ -985,6 +985,7 @@ $messages['km'] = array(
  */
 $messages['kn'] = array(
 	'sitematrix-language' => 'ಭಾಷೆ',
+	'sitematrix-sitetotal' => 'ಒಟ್ಟು',
 );
 
 /** Korean (한국어)

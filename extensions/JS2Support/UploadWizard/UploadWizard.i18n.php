@@ -16,6 +16,14 @@ $messages['en'] = array(
 	'uploadwizard-desc' => 'Upload wizard, developed for the Multimedia Usability grant'
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'uploadwizard' => 'Майстар загрузкі',
+	'uploadwizard-desc' => 'Майстар загрузкі, распрацавацы па гранту Multimedia Usability',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
@@ -32,12 +40,28 @@ $messages['dsb'] = array(
 	'uploadwizard-desc' => 'Aistent za nagraśa, uwity za spěchowanje wužywajobnosći multimedijow',
 );
 
+/** Spanish (Español)
+ * @author Locos epraix
+ */
+$messages['es'] = array(
+	'uploadwizard' => 'Asistente de subida',
+	'uploadwizard-desc' => 'Asistente de subida, desarrollado por el equipo de de Usabilidad Multimedia',
+);
+
 /** French (Français)
  * @author Peter17
  */
 $messages['fr'] = array(
 	'uploadwizard' => "Assistant d'import",
 	'uploadwizard-desc' => "Assistant d'import, développé pour la subvention Multimedia Usability",
+);
+
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'uploadwizard' => 'Asistente de cargas',
+	'uploadwizard-desc' => 'Asistente de cargas, desenvolvido para o equipo da Usabilidade multimedia',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -54,6 +78,14 @@ $messages['hsb'] = array(
 $messages['ia'] = array(
 	'uploadwizard' => 'Assistente de incargamento',
 	'uploadwizard-desc' => 'Assistente de incargamento, disveloppate pro le bursa Initiativa de Usabilitate',
+);
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'uploadwizard' => 'Assistent fir eropzelueden',
+	'uploadwizard-desc' => "Assistent fir eropzelueden, entwéckelt fir d'Subventioun vun der Multimedia Benotzerfrëndlechkeet",
 );
 
 /** Macedonian (Македонски)

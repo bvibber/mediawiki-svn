@@ -15,6 +15,13 @@ $messages['en'] = array(
 	'addmediawizard-desc' => 'Add media wizard, developed in partnership by Kaltura and Wikimedia Foundation',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ */
+$messages['be-tarask'] = array(
+	'addmediawizard-desc' => 'Майстар даданьня мэдыя, распрацаваны ў супрацоўніцтве Kaltura і фундацыі «Вікімэдыя»',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
@@ -29,11 +36,25 @@ $messages['dsb'] = array(
 	'addmediawizard-desc' => 'Medijowy asistent pśidaś, wuwity w zgromadnem źěle wót Laltury a załožby Wikimedia Foundation',
 );
 
+/** Spanish (Español)
+ * @author Locos epraix
+ */
+$messages['es'] = array(
+	'addmediawizard-desc' => 'Asistente para agregar multimedia, desarrollado en colaboración por Kaltura y la Fundación Wikimedia',
+);
+
 /** French (Français)
  * @author Peter17
  */
 $messages['fr'] = array(
 	'addmediawizard-desc' => 'Ajouter un assistant pour les média, développé dans un partenariat entre Kaltura et la Wikimedia Foundation',
+);
+
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'addmediawizard-desc' => 'Engade un asistente para os ficheiros multimedia, desenvolvido por Kaltura e mais a Fundación Wikimedia',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

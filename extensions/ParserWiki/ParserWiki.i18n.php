@@ -39,6 +39,13 @@ $messages['dsb'] = array(
 	'parserwiki-desc' => 'Zmóžnja gramatiku we wikiju definěrowaś, aby se pótom ta gramatika wužywała, aby se zapódali informacije do togo samego wikija',
 );
 
+/** Spanish (Español)
+ * @author Locos epraix
+ */
+$messages['es'] = array(
+	'parserwiki-desc' => 'Permite definir una gramática en un wiki luego usar esa gramática para ingresar información a dicha wiki',
+);
+
 /** French (Français)
  * @author Peter17
  */
@@ -48,9 +55,10 @@ $messages['fr'] = array(
 
 /** Galician (Galego)
  * @author Gallaecio
+ * @author Toliño
  */
 $messages['gl'] = array(
-	'parserwiki-desc' => 'Permite establecer unha gramática nunha wiki e, a continuación, utilizar esa gramática para introducir información nesa wiki',
+	'parserwiki-desc' => 'Permite establecer unha gramática nun wiki e, a continuación, utilizar esa gramática para introducir información nese mesmo wiki',
 );
 
 /** Swiss German (Alemannisch)
