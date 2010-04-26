@@ -502,7 +502,7 @@ if ( !context || typeof context == 'undefined' ) {
 				
 				// Restore cursor position
 				context.fn.purgeOffsets();
-				var newLength = context.$content.html().length;
+				var newLength = context.fn.getContents().length;
 				var restoreTo = cursorPos[0] + newLength - oldLength;
 				context.fn.setSelection( { start: restoreTo, end: restoreTo } );
 			}, 0 );
