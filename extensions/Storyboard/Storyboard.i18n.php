@@ -26,7 +26,11 @@ $messages['en'] = array(
 	'storyboard-unpublish' => 'Unpublish',
 	'storyboard-publish' => 'Publish',
 	'storyboard-hide' => 'Hide',
-		
+
+	'storyboard-option-unpublished' => 'unpublished',
+	'storyboard-option-published' => 'published',
+	'storyboard-option-hidden' => 'hidden',
+
 	// Special:Story
 	'story' => 'Story',
 	'storyboard-submittedbyon' => 'Submitted by $1 on $2, $3.',

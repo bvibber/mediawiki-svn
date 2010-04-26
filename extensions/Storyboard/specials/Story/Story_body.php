@@ -217,9 +217,9 @@ class SpecialStory extends IncludableSpecialPage {
 					'name' => 'storystate',
 					'id' => 'storystate'
 				),
-				'<option value="' . Storyboard_STORY_UNPUBLISHED . '">' . wfMsg( 'storyboard-unpublished' ) . '</option>' .
-				'<option value="' . Storyboard_STORY_PUBLISHED . '">' . wfMsg( 'storyboard-published' ) . '</option>' .
-				'<option value="' . Storyboard_STORY_HIDDEN . '">' . wfMsg( 'storyboard-hidden' ) . '</option>'
+				'<option value="' . Storyboard_STORY_UNPUBLISHED . '">' . wfMsg( 'storyboard-option-unpublished' ) . '</option>' .
+				'<option value="' . Storyboard_STORY_PUBLISHED . '">' . wfMsg( 'storyboard-option-published' ) . '</option>' .
+				'<option value="' . Storyboard_STORY_HIDDEN . '">' . wfMsg( 'storyboard-option-hidden' ) . '</option>'
 			) .
 		'</td></tr>';
 		
