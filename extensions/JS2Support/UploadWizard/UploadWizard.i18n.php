@@ -112,6 +112,14 @@ $messages['oc'] = array(
 	'uploadwizard-desc' => "Assistent d'impòrt, desvolopat per la subvencion Multimedia Usability",
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'uploadwizard' => 'Modìfica ël wizard',
+	'uploadwizard-desc' => "Modìfica ël wizard, dësvilupà për ël programa d'Usabilità Multimedia",
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  */

@@ -385,6 +385,7 @@ $messages['km'] = array(
  */
 $messages['ko'] = array(
 	'vector-simplesearch-search' => '검색',
+	'vector-simplesearch-containing' => '전문에 포함된 어구 찾기',
 );
 
 /** Colognian (Ripoarisch)

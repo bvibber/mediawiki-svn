@@ -1977,6 +1977,7 @@ $2',
  */
 $messages['kn'] = array(
 	'whitelisttablepage' => 'ವಿಕಿ ಪುಟ',
+	'whitelisttableedit' => 'ಸಂಪಾದಿಸಿ',
 	'whitelisttablenewdate' => 'ಹೊಸ ದಿನಾಂಕ:',
 );
 

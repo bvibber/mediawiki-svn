@@ -738,6 +738,13 @@ $messages['km'] = array(
 	'errorhandler-trace-line' => '$1 (បន្ទាត់ទី$2): $3',
 );
 
+/** Kannada (ಕನ್ನಡ)
+ * @author Nayvik
+ */
+$messages['kn'] = array(
+	'errorhandler-error-warning' => 'ಎಚ್ಚರಿಕೆ',
+);
+
 /** Colognian (Ripoarisch)
  * @author Purodha
  */

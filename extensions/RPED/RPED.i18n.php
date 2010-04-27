@@ -106,6 +106,13 @@ $messages['ia'] = array(
 	'rped-wikipedia-url' => 'http://ia.wikipedia.org/',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Kenrick95
+ */
+$messages['id'] = array(
+	'rped-wikipedia-url' => 'http://id.wikipedia.org/wiki/',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

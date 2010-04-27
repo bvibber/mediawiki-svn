@@ -534,6 +534,14 @@ $messages['ia'] = array(
 Tu pote [[Special:RefHelper|adder le referentia manualmente]] o [[Special:RefSearch|cercar le citation a adder]].',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Kenrick95
+ */
+$messages['id'] = array(
+	'refhelper-year' => 'Tahun:',
+	'refhelper-search' => 'Cari',
+);
+
 /** Italian (Italiano) */
 $messages['it'] = array(
 	'refhelper-title' => 'Titolo:',

@@ -3122,6 +3122,7 @@ $messages['bg'] = array(
 	'configure-setting-wgVersion' => 'Версия на MediaWiki',
 	'configure-setting-wgSpecialPageGroups' => 'Групи специални страници',
 	'configure-setting-wgSpecialPageGroups-key' => 'Група',
+	'configure-setting-wgAutopromote-value' => 'Условия',
 	'configure-setting-wgAccountCreationThrottle' => 'Брой сметки, които могат да бъдат създадени от един IP адрес',
 	'configure-setting-wgRestrictionTypes' => 'Действия, които могат да бъдат ограничени',
 	'configure-setting-wgEmergencyContact' => 'Адрес за е-поща на системния администратор',
@@ -4681,6 +4682,7 @@ $messages['eo'] = array(
  * @author Locos epraix
  * @author McDutchie
  * @author Pertile
+ * @author Tempestas
  */
 $messages['es'] = array(
 	'configure-setting-wgSitename' => 'Nombre de sitio',
@@ -4739,6 +4741,7 @@ $messages['es'] = array(
 	'configure-setting-wgAllowExternalImages' => 'Permitir el hotlinking de archivos en línea',
 	'configure-setting-wgAllowExternalImagesFrom' => 'Excepciónes de $wgAllowExternalImages = false',
 	'configure-setting-wgEnableImageWhitelist' => 'Habilitar el uso de "MediaWiki:External file whitelist"',
+	'configure-setting-wgAllowImageTag' => 'Permitir <nowiki><img></nowiki> etiqueta para ser usada en wikitexto.',
 	'configure-setting-wgExpensiveParserFunctionLimit' => 'Máximo número de llamadas por análisis sintáctico para funciones costosas en términos de tiempo de ejecución del analizador sintáctico',
 	'configure-setting-wgExternalLinkTarget' => 'Atributo de destino por defecto para enlaces externos',
 	'configure-setting-wgCleanSignatures' => 'Sustituir plantillas en firma',
@@ -5058,6 +5061,7 @@ $messages['es'] = array(
 	'configure-setting-wgMaxSigChars' => 'Largo máximo de firma personalizada',
 	'configure-setting-wgMinimalPasswordLength' => 'Tamaño mínimo de contraseña',
 	'configure-setting-wgNewUserLog' => 'antener un registro de nuevo usuario',
+	'configure-setting-wgLogAutocreatedAccounts' => 'Registra automaticamente la creacion de cuentas de nuevos usuarios',
 	'configure-setting-wgReservedUsernames' => 'Nombres de cuenta reservados para el software',
 	'configure-setting-wgShowIPinHeader' => 'Mostrar la dirección IP en la barra de usuario',
 	'configure-setting-wgBrowserBlackList' => 'Lista negra de navegadores para navegadores que no cumplen con Unicode',
@@ -6329,6 +6333,7 @@ $messages['gl'] = array(
 	'configure-setting-wgAllowExternalImages' => 'Permitir as ligazóns a ficheiros en liña',
 	'configure-setting-wgAllowExternalImagesFrom' => 'Excepcións a $wgAllowExternalImages = false',
 	'configure-setting-wgEnableImageWhitelist' => 'Permitir o uso de "MediaWiki:External file whitelist"',
+	'configure-setting-wgAllowImageTag' => 'Permitir o uso das etiquetas <nowiki><img></nowiki> no texto wiki.',
 	'configure-setting-wgExpensiveParserFunctionLimit' => 'Número máximo de chamadas por análise para encarecer as funcións analíticas',
 	'configure-setting-wgExternalLinkTarget' => 'Atributo por defecto para as ligazóns externas',
 	'configure-setting-wgCleanSignatures' => 'Substituír os modelos nas sinaturas',
@@ -6648,6 +6653,7 @@ $messages['gl'] = array(
 	'configure-setting-wgMaxSigChars' => 'Lonxitude máxima da sinatura personalizada',
 	'configure-setting-wgMinimalPasswordLength' => 'Lonxitude mínima do contrasinal',
 	'configure-setting-wgNewUserLog' => 'Manter un novo rexistro de usuarios',
+	'configure-setting-wgLogAutocreatedAccounts' => 'Rexistrar as creacións automáticas de novas contas de usuario',
 	'configure-setting-wgReservedUsernames' => 'Nomes da contas reservadas para o software',
 	'configure-setting-wgShowIPinHeader' => 'Mostrar o enderezo IP na barra de usuario',
 	'configure-setting-wgBrowserBlackList' => 'Lista negra de navegadores que non soportan unicode',

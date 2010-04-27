@@ -92,6 +92,13 @@ $messages['oc'] = array(
 	'addmediawizard-desc' => 'Apondre un assistent pels mèdias, desvolopat dins un partenariat entre Kaltura e la Wikimedia Foundation',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'addmediawizard-desc' => 'Gionta un media wizard, dësvilupà ansema da Kaltura e da la Fondassion Wikimedia',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  */

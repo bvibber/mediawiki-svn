@@ -293,6 +293,20 @@ $messages['ia'] = array(
 	'pf-header-approve' => 'Approbar',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Kenrick95
+ */
+$messages['id'] = array(
+	'pf-admin-menu-default' => 'Setelan baku',
+	'pf-admin-link-editlink-page' => 'Sunting halaman',
+	'pf-admin-link-approve' => 'Setujui halaman',
+	'pf-header-documentation' => 'Dokumentasi',
+	'pf-header-edit' => 'Sunting pranala',
+	'pf-header-type' => 'Jenis halaman',
+	'pf-header-page_title' => 'Judul',
+	'pf-header-approve' => 'Setujui',
+);
+
 /** Italian (Italiano) */
 $messages['it'] = array(
 	'pf-admin-menu-default' => 'Default',

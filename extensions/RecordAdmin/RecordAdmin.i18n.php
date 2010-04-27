@@ -1233,6 +1233,7 @@ $messages['km'] = array(
  */
 $messages['kn'] = array(
 	'recordadmin-buttonsearch' => 'ಹುಡುಕು',
+	'recordadmin-editlink' => 'ಸಂಪಾದಿಸಿ',
 );
 
 /** Colognian (Ripoarisch)

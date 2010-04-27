@@ -1258,7 +1258,7 @@ Clique <a href='$1'>aqui</a> para continuar.",
 (Clique <a href='$1' target='new'>aqui</a> para reportar um problema.)",
 	'spamdifftool_summary' => 'A adicionar à lista negra de spam',
 	'spamdifftool_urls_detected' => 'Foram detectadas as seguintes URLs na edição ou edições. Quais pretende que sejam adicionadas à lista negra de spam?
-Estas opções estão ordenadas desde a mais restritiva até à menos restritiva. O bloqueio de um domínio inteiro irá bloquear todas a ligações provenientes daquele domínio.
+Estas opções estão ordenadas desde a mais restritiva até à menos restritiva. O bloqueio de um domínio inteiro irá bloquear todas as ligações provenientes daquele domínio.
 
 Certifique-se de que não bloqueia domínios inteiros que sejam anfitriões de contas de utilizadores, tais como blogspot.com, geocities.com, etc.',
 	'spamdifftool_no_urls_detected' => "Nenhuns URL foram detectados.

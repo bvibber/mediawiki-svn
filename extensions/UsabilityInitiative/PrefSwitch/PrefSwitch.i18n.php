@@ -93,10 +93,12 @@ To help us improve them, please fill out the optional survey below.',
 
 /** Message documentation (Message documentation)
  * @author EugeneZelenko
+ * @author McDutchie
  */
 $messages['qqq'] = array(
 	'prefswitch-survey-true' => '{{Identical|Yes}}',
 	'prefswitch-survey-false' => '{{Identical|No}}',
+	'prefswitch-survey-cancel-feedback' => '$1 is a link to the main page of the wiki in question.',
 	'prefswitch-survey-answer-whyoff-other' => '{{Identical|Other reason}}',
 );
 
@@ -1293,6 +1295,8 @@ Apa yang Anda tidak sukai tentang fitur baru ini?',
 	'prefswitch-survey-answer-whyoff-hard' => 'Terlalu sulit untuk digunakan.',
 	'prefswitch-survey-answer-whyoff-didntwork' => 'Tidak berfungsi dengan baik.',
 	'prefswitch-survey-answer-whyoff-other' => 'Alasan lainnya:',
+	'prefswitch-survey-question-browser' => 'Penjelajah web apa yang Anda gunakan?',
+	'prefswitch-survey-answer-browser-other' => 'Penjelajah web lainnya:',
 	'prefswitch-survey-question-os' => 'Sistem operasi apa yang Anda gunakan?',
 	'prefswitch-survey-answer-os-other' => 'Sistem operasi lainnya:',
 	'prefswitch-survey-question-res' => 'Berapa besar resolusi layar Anda?',
@@ -1517,6 +1521,16 @@ $messages['ko'] = array(
 * 링크 마법사:  사용하기 쉬운 도구가 다른 문서나 외부로 링크를 쉽게 걸 수 있도록 도와 줄 것입니다.
 * 검색 기능 향상: 찾는 문서를 더욱 쉽게 찾을 수 있도록 검색어 제안 기능을 향상시켰습니다.
 * 다른 새로운 기능:  표를 쉽게 만들 수 있도록 표 마법사와 문서 편집을 간단하게 하기 위해 찾아 바꾸기 기능을 도입했습니다.',
+	'prefswitch-main-on' => '===피드백?===
+우리는 당신에게 피드백을 받기를 원합니다. <span class="plainlinks">[$1 피드백]</span>을 남겨주세요.
+===돌아갈래요!===
+새 기능을 끄기를 원하신다면 <span class="plainlinks">[$2 여기]</span>를 클릭해주세요.',
+	'prefswitch-main-off' => '===새 기능을 써 보세요!===
+새 기능을 켜려면 <span class="plainlinks">[$1 여기]</span>를 클릭해주세요.',
+	'prefswitch-survey-intro-feedback' => '당신에게 피드백을 받고자 합니다.
+아래의 설문 조사에 답해주세요.',
+	'prefswitch-survey-intro-off' => '새 기능을 사용해 주셔서 감사합니다.
+기능을 향상시키는 것을 돕기 위해 아래 설문 조사에 답해 주세요.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

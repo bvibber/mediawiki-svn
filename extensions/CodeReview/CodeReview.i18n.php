@@ -901,6 +901,8 @@ $messages['bg'] = array(
 	'code-status-deferred' => 'отложено',
 	'code-pathsearch-legend' => 'Търсене на версии в това хранилище по път',
 	'code-pathsearch-path' => 'Път:',
+	'code-revfilter-cr_status' => 'Статут = $1',
+	'code-revfilter-cr_author' => 'Автор = $1',
 	'code-rev-submit' => 'Съхраняване на промените',
 	'code-batch-status' => 'Промяна на статуса:',
 	'code-batch-tags' => 'Промяна на етикетите:',

@@ -1346,6 +1346,7 @@ $messages['vi'] = array(
  * @author פוילישער
  */
 $messages['yi'] = array(
+	'adminlinks_editcss' => 'רעדאַקטירן CSS טעקע',
 	'adminlinks_users' => 'באַניצער',
 	'adminlinks_createuser' => 'שאַפֿן אַ באַניצער',
 	'adminlinks_browsesearch' => 'בלעטערן און זוכן',

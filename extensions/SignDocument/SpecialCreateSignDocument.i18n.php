@@ -1011,6 +1011,7 @@ $messages['km'] = array(
  * @author Nayvik
  */
 $messages['kn'] = array(
+	'createsigndoc-introtext' => 'ಪರಿಚಯ:',
 	'createsigndoc-optional' => 'ಐಚ್ಛಿಕ',
 );
 

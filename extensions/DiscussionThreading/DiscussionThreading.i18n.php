@@ -86,6 +86,7 @@ $messages['be-tarask'] = array(
  */
 $messages['bg'] = array(
 	'discussionthreading-replysection' => 'отговаряне',
+	'discussionthreading-threadnewsectionhint' => 'Започване на нова нишка',
 );
 
 /** Breton (Brezhoneg)

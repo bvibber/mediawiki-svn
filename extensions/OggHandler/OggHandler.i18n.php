@@ -592,6 +592,8 @@ $messages['cs'] = array(
 	'ogg-dismiss' => 'Zavřít',
 	'ogg-download' => 'Stáhnout soubor',
 	'ogg-desc-link' => 'O tomto souboru',
+	'ogg-oggThumb-version' => 'OggHandler vyžaduje oggThumb verze $1 nebo novější.',
+	'ogg-oggThumb-failed' => 'oggThumb nedokázal vytvořit náhled.',
 );
 
 /** Danish (Dansk)

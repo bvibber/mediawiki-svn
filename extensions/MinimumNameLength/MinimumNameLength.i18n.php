@@ -565,6 +565,13 @@ $messages['vo'] = array(
 	'minnamelength-desc' => 'Zesüdükön gebananemalunoti puik',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'minnamelength-error' => 'אײַער באַניצער־נאָמען איז צו קורץ. די מינימאַלע לענג איז $1.',
+);
+
 /** Cantonese (粵語)
  * @author Shinjiman
  */

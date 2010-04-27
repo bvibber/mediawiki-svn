@@ -650,7 +650,12 @@ $messages['km'] = array(
  * @author Kwj2772
  */
 $messages['ko'] = array(
+	'chemicalsources' => '화학 자료',
 	'chemicalsource-desc' => '화학식 표현을 위해 <nowiki><chemform></nowiki> 태그를 추가',
+	'chemFunctions_ListPage' => '화학 자료',
+	'chemFunctions_DataList' => '다음은 당신이 찾는 화학 물질에 대한 정보를 제공해 줄 수 있는 사이트입니다.<br /><br />
+* <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">NIST의 $MIXCASNameFormula 화합물</a><br />
+* <a href="http://ptcl.chem.ox.ac.uk/MSDS/">옥스포드 대학의 물질안전보건자료 (영국) (검색 불가능)</a><br />',
 	'chemFunctions_CAS' => 'CAS 등록 번호',
 	'chemFunctions_ATCCode' => 'ATC 코드',
 	'chemFunctions_ECNumber' => '효소 번호',

@@ -2499,6 +2499,7 @@ Il esserea impossibile aperir un session sin OpenID.',
  * @author -iNu-
  * @author Bennylin
  * @author IvanLanin
+ * @author Kenrick95
  * @author Rex
  */
 $messages['id'] = array(
@@ -2541,6 +2542,7 @@ Anda dapat memilih dari salah satu opsi berikut.',
 	'openidchooseauto' => 'Nama yang dibuat secara otomatis ($1)',
 	'openidchoosemanual' => 'Nama pilihan Anda:',
 	'openidchooseexisting' => 'Akun yang telah ada di wiki ini',
+	'openidchooseusername' => 'Nama pengguna:',
 	'openidchoosepassword' => 'kata sandi:',
 	'openidconvertinstructions' => 'Formulir ini mengijinkan Anda untuk mengganti akun pengguna Anda menjadi OpenID atau menambahkan pranala OpenID',
 	'openidconvertoraddmoreids' => 'Konversi ke OpenID atau tambahkan URL OpenID yang lain',

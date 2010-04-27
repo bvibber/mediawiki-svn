@@ -1058,7 +1058,7 @@ $messages['bg'] = array(
 	'configure-ext-doc' => 'Вижте онлайн документацията',
 	'configure-ext-settings' => 'Настройки',
 	'configure-ext-use-extension' => 'Използване на разширението',
-	'configure-form-reason' => 'Причина за промяната:',
+	'configure-form-reason' => 'Причина:',
 	'configure-arrayinput-oneperline' => "''(по едно на ред)''",
 	'configure-summary' => 'Тази специална страница позволява на потребителите да конфигурират уикито; за повече информация, вижте [http://www.mediawiki.org/wiki/Manual:Configuration_settings настройките за конфигуриране].',
 	'configure-btn-save' => 'Съхраняване на настройките',
@@ -5444,6 +5444,7 @@ $messages['kn'] = array(
 	'configure-section-timezone' => 'ಸಮಯ ವಲಯ',
 	'configure-section-category' => 'ವರ್ಗಗಳು',
 	'configure-section-search' => 'ಹುಡುಕು',
+	'configure-throttle-action-edit' => 'ಸಂಪಾದಿಸಿ',
 	'configure-condition-operator-and' => 'ಮತ್ತು',
 );
 
@@ -10119,6 +10120,9 @@ Jafolös oni u votükolös oni ad gebön veitükumami at.',
  */
 $messages['yi'] = array(
 	'configure-js-remove' => 'אויסמעקן',
+	'configure-section-css-js' => 'CSS און JavaScript',
+	'configure-section-namespaces' => 'נאָמענטיילן',
+	'configure-section-category' => 'קאַטעגאָריעס',
 	'configure-section-users' => 'באַניצער',
 	'configure-section-search' => 'זוכן',
 	'configure-section-copyright' => 'קאפירעכט',
