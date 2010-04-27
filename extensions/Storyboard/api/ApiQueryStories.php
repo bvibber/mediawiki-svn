@@ -63,6 +63,10 @@ class ApiQueryStories extends ApiQueryBase {
 		$this->addOption( 'LIMIT', $params['limit'] + 1 );
 		$this->addOption( 'ORDER BY', 'story_modified, story_id DESC' );
 
+		if ( !is_null( $params['language'] ) ) {
+			$this->addWhere( "story_lang_code = '$params[language]'" );
+		}
+		
 		if ( !is_null( $params['continue'] ) ) {
 			$continueParams = explode( '-', $params['continue'] );
 			if ( count( $continueParams ) != 2 ) {
@@ -123,6 +127,9 @@ class ApiQueryStories extends ApiQueryBase {
 				ApiBase :: PARAM_MAX2 => ApiBase :: LIMIT_BIG2
 			),
 			'continue' => null,
+			'language' => array(
+				ApiBase :: PARAM_TYPE => 'string',
+			)
 		);
 	}
 
@@ -134,6 +141,7 @@ class ApiQueryStories extends ApiQueryBase {
 		return array (
 			'continue' => 'Number of the first story to return',
 			'limit'   => 'Amount of stories to return',
+			'language' => 'The language of the stories to return',
 		);
 	}
 
@@ -152,7 +160,7 @@ class ApiQueryStories extends ApiQueryBase {
 	protected function getExamples() {
 		return array (
 			'api.php?action=query&list=stories',
-			'api.php?action=query&list=stories&stlimit=42',
+			'api.php?action=query&list=stories&stlimit=42&stlanguage=en',
 			'api.php?action=query&list=stories&stcontinue=20100319202223|4&stlimit=2',
 		);
 	}

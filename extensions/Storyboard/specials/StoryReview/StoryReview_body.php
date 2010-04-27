@@ -75,6 +75,23 @@ $html
 	jQuery(function() {
 		jQuery("#storyreview-tabs").tabs();
 	});
+	/*
+	$('#$unpublished').click( stbLoadStoriesForReview );
+	
+	function stbLoadStoriesForReview() {
+		$.getJSON(
+			wgScriptPath + '/api.php',
+			{
+				'action': 'query',
+				'list': 'stories', 
+				
+			},
+			function ( data ) {
+				
+			}
+		);
+	}
+	*/
 </script>	
 EOT;
 	
@@ -177,7 +194,6 @@ EOT;
 			$buttons[] = <<<EOT
 				<button type="button" onclick="stbDeleteStoryImage( this, $story->story_id )">$deleteImageMsg</button>
 EOT;
-			
 		}
 		
 		$buttonHtml = implode( '&nbsp;&nbsp;&nbsp;', $buttons );
@@ -198,7 +214,7 @@ EOT;
 					$buttonHtml
 				</td>
 			</tr>
-		</table>
+		</table>		
 EOT;
 	}
 	

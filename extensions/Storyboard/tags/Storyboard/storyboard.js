@@ -11,7 +11,7 @@
 			updateBatch: updateStoryboard,
 			maxOffset: 500,
 			batchSize: 4,
-			batchNum: 2,
+			batchNum: 1,
 			batchClass: "batch",
 			boxClass: "storyboard-box",
 			emptyBatchClass: "storyboard-empty",
@@ -26,6 +26,7 @@
 				'list': 'stories', 
 				'stcontinue': $storyboard.attr( 'offset' ) + '-0', // TODO: get modification date and id of the last story
 				'stlimit': 4,
+				'stlanguage': window.storyboardLanguage,
 				'format': 'json'
 			},
 			function( data ) {
