@@ -95,8 +95,6 @@
 				)
 				.appendTo( $header );
 			
-			// TODO: fix html here - should be the same structure as on story review
-			
 			var textAndImg = $( "<div />" ).addClass( "story-text" ).text( story["*"] );
 			
 			if ( story.imageurl ) {
@@ -106,6 +104,12 @@
 			}
 			
 			$storyBody.append( textAndImg );
+			
+			$storyBody.append( // TODO: get the actual message here
+				$( "<div />" ).addClass( "story-metadata" ).append(
+					$("<span />").addClass( "story-metadata" ).text( " Submitted by $1 from $2 on $3, $4.")
+				)
+			);
 			
 			// TODO: add hide and delete buttons
 			

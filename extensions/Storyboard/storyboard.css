@@ -32,6 +32,20 @@
 	float: right;
 }
 
+.story-metadata div {
+	margin: 5px 15px 5px 15px;	
+	overflow: hidden;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border: 1px solid #aaaaaa;
+	background: #eeeeee ;
+	color: #222222;
+}
+
+.story-metadata span {
+	margin-left: 5px;
+}
+
 .story-sharing {
 	height: 30px;
 	width: 110px;
