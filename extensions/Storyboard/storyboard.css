@@ -11,8 +11,13 @@
  * Css for stories
  */
 .story {
-	margin: 5px 10px 0px 0px;
+	margin: 5px 10px 10px 0px;
 	float: left;
+	overflow: hidden;	
+}
+.story-text {
+	margin-left: 15px;
+	margin-top: 5px;	
 	overflow: hidden;	
 }
 .story-title {

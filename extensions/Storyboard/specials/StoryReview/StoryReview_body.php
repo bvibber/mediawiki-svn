@@ -189,7 +189,7 @@ EOT;
 					<div class="story">
 						$imageHtml
 						<div class="story-title">$title</div><br />
-						$text
+						<div class="story-text">$text</div>
 					</div>
 				</td>
 			</tr>

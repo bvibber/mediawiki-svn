@@ -49,8 +49,6 @@
 			var $header = $( "<div />" ).addClass( "story-header" ).appendTo( $storyBody );
 			$( "<div />" ).addClass( "story-title" ).text( story.title ).appendTo( $header );
 			
-			// TODO: move social sharing to a jQuery UI pop-up that's triggered by a link above each storyboard-box
-			
 			var deliciousUrl = "http://delicious.com/save?jump=yes&url=" + encodeURIComponent( story.permalink ) + "&title=" + encodeURIComponent( story.title );
 			var facebookUrl = "http://www.facebook.com/sharer.php?u=" + encodeURIComponent( story.permalink ) + '&t=' + encodeURIComponent( story.title );
 			
@@ -68,7 +66,7 @@
 							wgScriptPath + "/extensions/Storyboard/images/storyboard-delicious.png"
 						) )
 					)
-				) //TODO
+				)
 				.append(
 					$( "<div />" ).addClass( "story-sharing-item" ).append(
 						$( "<a />" ).attr( {
@@ -87,14 +85,16 @@
 						$( "<a />" ).attr( {
 							"target": "_blank",
 							"rel": "nofollow",
-							"href": "http://twitter.com/home?status=" + story.permalink
+							"href": "http://twitter.com/home?status=" + encodeURIComponent( story.permalink )
 						 } )
 						.append( $( "<img />" ).attr( "src",
 							wgScriptPath + "/extensions/Storyboard/images/storyboard-twitter.png"
 						) )
 					)
-				) //TODO
+				)
 				.appendTo( $header );
+			
+			// TODO: fix html here - should be the same structure as on story review
 			
 			var textAndImg = $( "<div />" ).addClass( "story-text" ).text( story["*"] );
 			
@@ -106,7 +106,7 @@
 			
 			$storyBody.append( textAndImg );
 			
-			// TODO: add hide button
+			// TODO: add hide and delete buttons
 			
 			$storyboard.append( $storyBody );	
 		}
