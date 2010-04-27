@@ -21,7 +21,7 @@ mw.ready( function() {
 		// Commons already had a template called 'tl', though.
 		// so, this workaround will cause tagalog descriptions to be saved with this template instead.
 		mw.setConfig( 'languageTemplateFixups', { tl: 'tgl' } );
-		mw.setConfig( 'defaultLicenses', [ 'cc_by_sa_30', 'gfdl' ] );
+		mw.setConfig( 'defaultLicenses', [ 'cc_by_sa_30' ] );
 
 		var uploadWizard = new mw.UploadWizard();
 		uploadWizard.createInterface( '#upload-wizard' );

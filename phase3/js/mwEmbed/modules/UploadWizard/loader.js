@@ -80,7 +80,6 @@
 		
 		//Add uploadwizard classes to a new "request" var: 
 		//request.push( libraries );
-		
 		mw.load( libraries, function() {
 			callback( 'UploadWizard.UploadWizard' );
 		} );
@@ -94,7 +93,6 @@
 		//Add uploadwizard classes to a new "request" var: 
 		//request.push( testLibraries );
 		//debugger;
-	
 		mw.load( testLibraries, function() {
 			callback( 'UploadWizard.UploadWizardTest' );
 		} );

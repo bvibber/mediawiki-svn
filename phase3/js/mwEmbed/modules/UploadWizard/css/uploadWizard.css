@@ -113,7 +113,7 @@ form.mwe-upwiz-form {
 
 /* file inputs are freakishly large to overflow the containing div -- we get a div 
    that can act as a more styleable single-click file input */
-.mwe-upwiz-file-input {
+.mwe-upwiz-file-input, .disabler {
 	font-size: 100px;
 	-moz-opacity: 0.3; 
 	filter:alpha(opacity: 0);
@@ -278,6 +278,11 @@ a[disabled=true]:hover {
 	background: yellow;
 }
 
+.mwe-upwiz-tabdiv {
+	height: 0px;
+	overflow: hidden;
+}
+
 #mwe-upwiz-tabdiv-file {
 	width: 550px;
 }
@@ -345,10 +350,14 @@ a[disabled=true]:hover {
 	margin-bottom: 12px;
 }
 
+#mwe-upwiz-macro-files {
+	margin-top: 12px;
+}
 .mwe-upwiz-details-file {
 	border-bottom: 1px solid #e0e0e0;
 	margin-bottom: 12px;
 	padding-bottom: 12px;
+	width: 660px;
 }
 
 
@@ -395,4 +404,27 @@ a[disabled=true]:hover {
 
 }
 
-.
+#mwe-upwiz-details-filename. {
+	overflow: hidden;
+	width: 350px;
+}
+
+#mwe-upwiz-other-textarea, fieldset.mwe-fieldset {
+	width: 450px;
+}
+
+fieldset.mwe-fieldset {
+	border: 1px solid #cccccc;
+	padding-left: 12px;
+	padding-right: 12px;
+}
+
+legend.mwe-legend {
+	padding: 0.5em 0.5em 0.5em 0.33em;
+	color: #666666;
+}
+
+.masked-hidden {
+	visibility: hidden !important;
+}
+
