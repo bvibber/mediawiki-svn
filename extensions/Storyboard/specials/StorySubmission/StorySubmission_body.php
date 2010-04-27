@@ -22,7 +22,9 @@ class SpecialStorySubmission extends UnlistedSpecialPage {
 	public function execute( $title ) {
 		global $wgOut, $wgRequest, $wgUser;
 		
-		if ( $wgRequest->wasPosted() && $wgUser->matchEditToken( $wgRequest->getVal( 'wpStoryEditToken' ) ) ) {
+		if ( $wgRequest->wasPosted() && 
+			!( $wgUser->isLoggedIn() && $wgUser->matchEditToken( $wgRequest->getVal( 'wpStoryEditToken' ) ) )
+			) {
 			$this->saveStory();
 			$this->displayResult();
 		} else {
