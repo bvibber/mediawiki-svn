@@ -1,7 +1,9 @@
 <?php
 /**
- * No mediaWikiConfig sets variables for using the script-loader and mwEmbed modules
+ * NoMediaWikiConfig sets variables for using the script-loader and mwEmbed modules
  * without a complete mediaWiki install.
+ * 
+ * NoMediaWikiConfig also copies some utility functions from mediaWiki
  */
 
 // Google Closure Compiler ( for improved minification )
@@ -195,6 +197,28 @@ function wfSuppressWarnings( $end = false ) {
 function wfRestoreWarnings() {
 	wfSuppressWarnings( true );
 }
+
+
+/**
+ * Simplifed MediaWiki wfShellExec Function
+ * 
+ * Execute a shell command, with time and memory limits mirrored from the PHP
+ * configuration if supported.
+ * @param $cmd Command line, properly escaped for shell.
+ * @param &$retval optional, will receive the program's exit code.
+ *                 (non-zero is usually failure)
+ * @return collected stdout as a string (trailing newlines stripped)
+ */
+function wfShellExec( $cmd, &$retval=null ) {
+	$retval = 1; // error by default?
+	ob_start();
+	passthru( $cmd, $retval );
+	$output = ob_get_contents();
+	ob_end_clean();
+	return $output;
+}
+
+/* Stubs for mediawiki XML class */
 class Xml {
 	public static function escapeJsString( $string ) {
 		// See ECMA 262 section 7.8.4 for string literal format

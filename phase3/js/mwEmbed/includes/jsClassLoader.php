@@ -38,7 +38,7 @@ class jsClassLoader {
 		}
 		self::$classesLoaded = true;
 
-		$mwEmbedAbsolutePath = ( $wgMwEmbedDirectory == '' )? $IP:  $IP .'/' .$wgMwEmbedDirectory;
+		$mwEmbedAbsolutePath = ( $wgMwEmbedDirectory == '' ) ? $IP :  $IP .'/' .$wgMwEmbedDirectory;
 		// Add the mwEmbed localizations
 		$wgExtensionMessagesFiles[ 'mwEmbed' ] = $mwEmbedAbsolutePath . '/languages/mwEmbed.i18n.php';
 

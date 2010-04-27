@@ -395,6 +395,7 @@ class Skin extends Linker {
 			'wgUrlProtocols' => wfUrlProtocols(),
 			'wgArticlePath' => $wgArticlePath,
 			'wgScriptPath' => $wgScriptPath,
+			'wgScriptLoaderLocation' => $wgScriptPath . 'mwScriptLoader.php',
 			'wgScriptExtension' => $wgScriptExtension,
 			'wgScript' => $wgScript,
 			'wgVariantArticlePath' => $wgVariantArticlePath,

@@ -2201,7 +2201,7 @@ class OutputPage {
 
 		$ret .= implode( "\n", array(
 		$this->getHeadLinks(),
-		$this->getCssLinks(),
+		$this->buildCssLinks(),
 		$this->getHeadScripts( $sk ),
 		$this->getHeadItems(),
 		) );
@@ -2532,7 +2532,7 @@ class OutputPage {
 	 * Build a set of <link>s for the stylesheets specified in the $this->styles array.
 	 * These will be applied to various media & IE conditionals.
 	 */
-	public function getCssLinks() {
+	public function buildCssLinks() {
 		global $wgEnableScriptLoader;
 
 		$scriptLoaderCss = '';

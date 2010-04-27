@@ -28,30 +28,35 @@
 			messageCache[ i ] = msgSet[i];
 		}
 	}
-	
-	var messageKeyQueue = [];
+		
+	mw.currentClassMissingMessages = true;
 	/**
 	* mw.addMessagesKey function
 	* Adds a msgKey to be pulled in remotely.
 	* 
-	* NOTE the script-loader should replace this with localized addMessages calls
+	* NOTE the script-loader should replace addMessageKeys with localized addMessages calls
 	*
 	* If addMessagesKey is called then we are running in raw file debug mode.
 	* it populates the messegeKeyQueue and loads the values in a separate request callback
 	*
 	* @param {Array} msgSet The set of msgs to be loaded
 	*/
-	mw.addMessageKeys = function( msgSet ) {		
-		messageKeyQueue.concat( msgSet );
+	mw.addMessageKeys = function( msgSet ) {
+		// Msg set is ignored ( we use class names to retrive msgs from script-loader )
+		mw.currentClassMissingMessages = true;
 	}
 	
 	/**
 	* NOTE: this is somewhat of a hack. But its only used in debug mode since
 	* normal msg loading happens via script-loader
 	*/ 
-	mw.loadQueuedMessages = function( classSet, callback ){		
-		// Load the queued msgs ( requires access to the mediaWiki entry point )
-		
+	mw.loadQueuedMessages = function( classSet, callback ) {		
+		// Check if wgScriptLoaderPath is set ( else guess the path relative to mwEmbed)
+		if ( wgScriptLoaderLocation == 'undefined' || !wgScriptLoaderLocation ){
+			wgScriptLoaderLocation = mw.getMwEmbedPath() + 'jsScriptLoader.php';
+		}
+		// Run the addMessages script-loader call
+		$j.getScript( wgScriptLoaderLocation + '?class=' + classSet.join(',') + '&ctype=onlymsg', callback);		
 	}
 	
 	
