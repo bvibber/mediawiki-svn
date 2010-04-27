@@ -1,0 +1,7 @@
+This is just a quick hack that re-maps the UsabilityInitiative javascript handling to JS2 style. 
+( obviusly it would be better to do this natively in the extension but this is "just a demo" )
+
+to use simply include the following in your localsettings.php
+
+require_once( "$IP/extensions/JS2Support/UsabilityInitiative/ScriptLoaderUsabilityInitiative.php" );
+

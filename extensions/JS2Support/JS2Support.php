@@ -79,7 +79,18 @@ function wfReMapOutputPage(){
 	$wgOut = new StubObject( 'wgOut', 'ScriptLoaderOutputPage' );
 }
 
-
+/**
+ * MakeGlobalVariablesScript hook ( add the wgScriptLoaderPath var )
+ */
+$wgHooks['MakeGlobalVariablesScript'][] = 'js2SupportAddJSVars';
+function js2SupportAddJSVars( &$vars ) {
+	$vars = array_merge( $vars, 
+		array(
+			'wgScriptLoaderLocation' => $wgExtensionAssetsPath . 'JS2Support/mwScriptLoader.php'  
+		)
+	);
+	return true;
+}
 
 /***************************
 * LocalSettings.php enabled js extensions

@@ -68,7 +68,8 @@ class ScriptLoaderOutputPage extends OutputPage {
 		// Add script without grouping
 		$this->addScript( Html::linkedScript( wfAppendQuery( $path, $wgStyleVersion ) ) );
 	}
-	/*
+	
+	/**
 	 * Gets the class name From an internal wiki title link
 	 * @param $path String: script include path
 	 */
@@ -160,6 +161,7 @@ class ScriptLoaderOutputPage extends OutputPage {
 		$scripts .= "\n" . $this->mScripts;
 		return $scripts;
 	}
+	
 	/**
 	 * Add a className to an output Bucket
 	 */
@@ -169,6 +171,7 @@ class ScriptLoaderOutputPage extends OutputPage {
 		}
 		$this->mScriptLoaderClassList[ $type ][ $bucket ][] = $className;
 	}
+	
 	/**
 	 * Set the embed options for a given bucketKey
 	 * @param $bucketKey String: the bucketkey to apply the options to.
@@ -176,6 +179,7 @@ class ScriptLoaderOutputPage extends OutputPage {
 	protected function setClassBucketOptions( $bucketKey, $options ){
 		$this->mScriptLoaderBucketOptions[ $bucketKey ] = $options;
 	}
+	
 	/**
 	 * Get class bucket options
 	 */
@@ -185,6 +189,7 @@ class ScriptLoaderOutputPage extends OutputPage {
 		}
 		return array();
 	}
+	
 	/**
 	 * Add a local or specified stylesheet, with the given media options.
 	 * Meant primarily for internal use...
@@ -250,6 +255,7 @@ class ScriptLoaderOutputPage extends OutputPage {
 		// Else use normal styles output:
 		$this->styles[ $style ] = $options;
 	}
+	
 	/**
 	 * Build a set of <link>s for the stylesheets specified in the $this->styles array.
 	 * These will be applied to various media & IE conditionals.
@@ -312,6 +318,7 @@ class ScriptLoaderOutputPage extends OutputPage {
 		//Now re-append any scripts that got added prior to the includeJQuery call
 		$this->mScripts = $this->mScripts . $postScripts;
 	}
+	
 	/**
 	 * Get style sheets grouped by  "media", "condition" & "bucket" attributes
 	 * call getLinkedScriptLoaderCss for each group
@@ -330,6 +337,7 @@ class ScriptLoaderOutputPage extends OutputPage {
 		}
 		return $s;
 	}
+	
 	/**
 	 * Get the linked css script-loader calls
 	 * @param Array $stylesAry Array of style sheets to be added.
@@ -355,7 +363,8 @@ class ScriptLoaderOutputPage extends OutputPage {
 
 		return $link;
 	}
-	/*
+	
+	/**
 	 * Adds the script loader to mScripts
 	 */
 	private function getScriptLoaderJs(){
@@ -372,6 +381,7 @@ class ScriptLoaderOutputPage extends OutputPage {
 		}
 		return $s;
 	}
+	
 	/**
 	 * Get the <script> tag which will invoke the script loader
 	 * @param $classAry A class array
