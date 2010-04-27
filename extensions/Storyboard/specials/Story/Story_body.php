@@ -36,7 +36,7 @@ class SpecialStory extends IncludableSpecialPage {
 		}
 		
 		// Redirect the user when the redirect parameter is set.
-		if ( $wgRequest->getVal( 'returnto' ) ) {
+		if ( $wgRequest->getVal( 'returnto' ) && !$wgRequest->getCheck( 'action' ) ) {
  			$titleObj = Title::newFromText( $wgRequest->getVal( 'returnto' ) );
 			$wgOut->redirect( $titleObj->getFullURL() );
 		} else if ( trim( $title ) != '' || $wgRequest->getIntOrNull( 'id' ) ) {
