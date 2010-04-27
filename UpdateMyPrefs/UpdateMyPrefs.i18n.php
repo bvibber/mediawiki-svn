@@ -221,9 +221,12 @@ $messages['ka'] = array(
 
 /** Korean (한국어)
  * @author Devunt
+ * @author Kwj2772
  */
 $messages['ko'] = array(
 	'prefs-updates' => '업데이트',
+	'updatemyprefs-desc' => '새로운 기능이 나올 때마다 주기적으로 인터페이스를 업데이트를 원하는지 표시하는 사용자 환경 설정',
+	'updatemyprefs-label-message' => '새로운 기능이 나올 때마다 기본 환경 설정을 자동적으로 업데이트하기',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
