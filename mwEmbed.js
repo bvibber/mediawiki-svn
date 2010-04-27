@@ -798,20 +798,32 @@ var MW_EMBED_VERSION = '1.1f';
 			
 			// Issue the request to load the class (include class name in result callback:					
 			mw.getScript( scriptRequest, function( scriptRequest ) {
+			
 				// If its a "syle sheet" manually set its class to true
 				var ext = scriptRequest.substr( scriptRequest.split('?')[0].lastIndexOf( '.' ), 4 ).toLowerCase();
 				if( ext == '.css' &&	className.substr(0,8) == 'mw.style' ){				
-					mw.style[ className.substr( 8 ) ] = true;
-				}
+					mw.style[ className.substr( 9 ) ] = true;
+				}						
 				
-				// Debug output				
-				if(! mw.isset( className )  
+				// Send warning if className is not defined
+				if(! mw.isset( className )
 					&& mwLoadDoneCB[ className ] != 'done' ) {
 					mw.log( 'Possible Error: ' + className +' not set in time, or not defined in:' + "\n" +  _this.getClassPath( className ) );
 				}
-				// Call load done (in case the script did not include a loadDone callback ) 
-				// if the script loader (did call loadDone this loadDone will be ignored
-				mw.loadDone( className );
+				
+				// If ( debug mode ) and the script include 
+				if( mw.currentClassMissingMessages ){
+					mw.loadClassMessages( className, function(){
+						//reset the currentClassMissingMessages flag
+						mw.currentClassMissingMessages = false;
+						// Run the onDone callback 
+						mw.loadDone( className );
+					});
+				} else { 				
+					// Call load done ( when in debug mode the scriptLoader
+					// is not able to append the loadDone call
+					mw.loadDone( className );
+				}
 			} );	
 			//mw.log( 'done with running getScript request ' );
 			

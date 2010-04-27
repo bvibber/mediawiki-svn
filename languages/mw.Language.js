@@ -29,7 +29,7 @@
 		}
 	}
 		
-	mw.currentClassMissingMessages = true;
+	mw.currentClassMissingMessages = true;	
 	/**
 	* mw.addMessagesKey function
 	* Adds a msgKey to be pulled in remotely.
@@ -42,21 +42,28 @@
 	* @param {Array} msgSet The set of msgs to be loaded
 	*/
 	mw.addMessageKeys = function( msgSet ) {
-		// Msg set is ignored ( we use class names to retrive msgs from script-loader )
-		mw.currentClassMissingMessages = true;
+		// Check if any msg key from this class is missing
+		for( var i in msgSet ){
+			if( ! messageCache[ i ] ) {
+				// Set the missing messages flag ( script-loader is probably off) 
+				mw.currentClassMissingMessages = true;
+				return false;
+			}
+		}
+		return true;
 	}
 	
 	/**
 	* NOTE: this is somewhat of a hack. But its only used in debug mode since
 	* normal msg loading happens via script-loader
 	*/ 
-	mw.loadQueuedMessages = function( classSet, callback ) {		
+	mw.loadClassMessages = function( className, callback ) {		
 		// Check if wgScriptLoaderPath is set ( else guess the path relative to mwEmbed)
-		if ( wgScriptLoaderLocation == 'undefined' || !wgScriptLoaderLocation ){
+		if ( typeof wgScriptLoaderLocation == 'undefined' || ! wgScriptLoaderLocation ){
 			wgScriptLoaderLocation = mw.getMwEmbedPath() + 'jsScriptLoader.php';
 		}
 		// Run the addMessages script-loader call
-		$j.getScript( wgScriptLoaderLocation + '?class=' + classSet.join(',') + '&ctype=onlymsg', callback);		
+		mw.getScript( wgScriptLoaderLocation + '?class=' + className + '&format=messages', callback);		
 	}
 	
 	
