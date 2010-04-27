@@ -36,8 +36,11 @@ class mwEmbedFrame {
 	// The default height of the embedFrame
 	var $height = null;
 
-	// The apiTitleKey used for asset lookup
+	// The apiTitleKey used for mediaWiki asset lookup
 	var $apiTitleKey = null;
+
+	// The entryId used for kaltura media asset lookup
+	var $entryId = null;
 
 	// The player skin ( can be mvpcf or kskin )
 	var $skin = null;

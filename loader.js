@@ -57,13 +57,13 @@ var mwEnabledModuleList = [
 */  	
 mw.setDefaultConfig ( {
 	// Default coreComponents: 
-	"coreComponents" : mwCoreComponentList,
+	'coreComponents' : mwCoreComponentList,
 
 	// Default enabled modules: 
-	"enabledModules" : mwEnabledModuleList, 
+	'enabledModules' : mwEnabledModuleList, 
 	
 	// Default jquery ui skin name
-	"jQueryUISkin" : "redmond",	
+	'jQueryUISkin' : 'jqueryUiRedmond',	
 	
 	/**
 	* If jQuery / mwEmbed should be loaded.
@@ -80,12 +80,12 @@ mw.setDefaultConfig ( {
 	* mwEmbed will only load extra js on blog posts that include the video tag.
 	*
 	* NOTE: Future architecture will probably do away with this flag and refactor it into 
-	* a smaller "remotePageMwEmbed.js" script similar to ../remoteMwEmbed.js
+	* a smaller 'remotePageMwEmbed.js' script similar to ../remoteMwEmbed.js
 	*/ 
-	"runSetupMwEmbed" : false,	
+	'runSetupMwEmbed' : false,	
 
 	// The mediaWiki path of mwEmbed  
-	"mediaWikiEmbedPath" : "js/mwEmbed/",
+	'mediaWikiEmbedPath' : 'js/mwEmbed/',
 	
 	// Api actions that must be submitted in a POST, and need an api proxy for cross domain calls
 	'apiPostActions': [ 'login', 'purge', 'rollback', 'delete', 'undelete',
@@ -118,7 +118,7 @@ mw.setDefaultConfig ( {
 */
 
 // Set the loaderContext for the classFiles paths call:  
-mw.setConfig('loaderContext', '' );
+mw.setConfig( 'loaderContext', '' );
 
 /**
  * Core set of mwEmbed classes:
@@ -141,9 +141,9 @@ mw.addClassFilePaths( {
 	"$j.fn.datePicker"		: "jquery/plugins/jquery.datePicker.js",
 	"$j.ui"					: "jquery/jquery.ui/ui/ui.core.js",	
 	
-	"mw.style.jquery-ui-redmond" : "jquery/jquery.ui/themes/redmond/jquery-ui-1.7.1.custom.css",
-	"mw.style.jquery-ui-smoothness"	: "jquery/jquery.ui/themes/smoothness/jquery-ui-1.7.1.custom.css",
-	"mw.style.mw-common"		: "skins/common/common.css",
+	"mw.style.jqueryUiRedmond" : "jquery/jquery.ui/themes/redmond/jquery-ui-1.7.1.custom.css",
+	"mw.style.jqueryUiSmoothness"	: "jquery/jquery.ui/themes/smoothness/jquery-ui-1.7.1.custom.css",
+	"mw.style.mwCommon"		: "skins/common/common.css",
 	
 	"mw.testLang"			:  "tests/testLang.js",		
 

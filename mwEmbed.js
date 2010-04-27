@@ -72,7 +72,14 @@ var MW_EMBED_VERSION = '1.1f';
 			}
 			return ;
 		}
-		mwConfig[ name ] = value;
+		// Check if we should "merge" the config
+		if( typeof value == 'object' && typeof mwConfig[ name ] == 'object' ) {
+			for( var i in value ){
+				mwConfig[ name ][ i ] = value[ i ];
+			}
+		} else {
+			mwConfig[ name ] = value;
+		}
 	}	
 	
 	/**
@@ -447,7 +454,8 @@ var MW_EMBED_VERSION = '1.1f';
 	*
 	* @param {Object} targetObj Interface Object to add hook system to.   
 	*/
-	mw.addHookSystem = function( targetObj ) {		
+	mw.addHookSystem = function( targetObj ) {
+	
 		// Setup the target object hook holder:
 		targetObj[ 'hooks' ] = { };
 		 
@@ -476,16 +484,19 @@ var MW_EMBED_VERSION = '1.1f';
 		* 	true interface should continue function execution
 		*	false interface should stop or return from method
 		*/
-		targetObj.runHook = function( hookName ) {								
+		targetObj.runHook = function( hookName, options ) {		
 			if( this.hooks[ hookName ] ) {
-				for( var i in this.hooks[ hookName ]) {
-					if( typeof( this.hooks[ hookName ][ i ] ) == 'function') {
-						return this.hooks[ hookName ][ i ]( this );
+				for( var i =0; i < this.hooks[ hookName ].length; i ++ ) {
+					if( typeof( this.hooks[ hookName ][ i ] ) == 'function' ) {
+						return this.hooks[ hookName ][ i ]( options );
 					}
 				}
 			}
 		}
 	} 
+	
+	// Add hooks system to the core "mw" object
+	mw.addHookSystem( mw );
 	
 	// Stores callbacks for script-loader loading
 	var mwLoadDoneCB = { };
@@ -1530,7 +1541,7 @@ var MW_EMBED_VERSION = '1.1f';
 	/**
 	* Runs all the queued functions
 	*/ 
-	mw.runReadyHooks = function ( ) {		
+	mw.runReadyFunctions = function ( ) {		
 		// Run all the queued functions: 
 		while( mwOnLoadFunctions.length ) {
 			mwOnLoadFunctions.shift()();
@@ -2104,8 +2115,8 @@ var MW_EMBED_VERSION = '1.1f';
 	var mwSetupFunctions = [];
 	
 	/**
-	* Add a function to be run durring setup ( prior to mw.ready) 
-	* this is usefull for building out interfaces that 
+	* Add a function to be run during setup ( prior to mw.ready) 
+	* this is useful for building out interfaces that 
 	* should be ready before mw.ready is called. 
 	*
 	* @param {callback} Function Callback function must
@@ -2126,9 +2137,9 @@ var MW_EMBED_VERSION = '1.1f';
 		// Only run the setup once: 
 		if( mwSetupFlag ) {
 			return ;
-		}	
-			  
-		mwSetupFlag = true;
+		}				 
+		mwSetupFlag = true;			
+		
 		
 		mw.log( 'mw:setupMwEmbed :: ' + mw.getMwEmbedSrc() );			
 		
@@ -2144,7 +2155,7 @@ var MW_EMBED_VERSION = '1.1f';
 		}
 	
 		// Make sure we have jQuery and the common skin
-		// NOTE mw.style.common should be factored out into 
+		// NOTE mw.style.mwCommon should be factored out into 
 		// seperate module specifc classes 
 		mw.load( 'window.jQuery', function() {							
 			if ( ! window[ '$j' ] ) {
@@ -2166,7 +2177,7 @@ var MW_EMBED_VERSION = '1.1f';
 			
 			// Make sure style sheets are loaded: 
 			mw.load( [
-				'mw.style.common',
+				'mw.style.mwCommon',
 				'mw.style.' + mw.getConfig( 'jQueryUISkin' )				 
 			], function(){	
 				// Run all the setup function hooks
@@ -2177,7 +2188,7 @@ var MW_EMBED_VERSION = '1.1f';
 							runSetupFunctions();
 						} );
 					}else{
-						mw.runReadyHooks();
+						mw.runReadyFunctions();
 					}
 				}
 				runSetupFunctions();	
@@ -2213,7 +2224,7 @@ var MW_EMBED_VERSION = '1.1f';
 			
 			//Load enabled components
 			var enabledComponents = mw.getConfig( 'coreComponents' );
-			function loadEnabledComponents( enabledComponents ){				
+			function loadEnabledComponents( enabledComponents ){						
 				if( ! enabledComponents.length ){
 					// If no more components load modules::
 					
@@ -2222,7 +2233,7 @@ var MW_EMBED_VERSION = '1.1f';
 					loadEnabledModules( enabledModules );
 					return ;							
 				}
-				var componentName = enabledComponents.pop();
+				var componentName = enabledComponents.shift();
 				mw.load( componentName, function(){
 					loadEnabledComponents( enabledComponents );
 				} );
@@ -2237,7 +2248,7 @@ var MW_EMBED_VERSION = '1.1f';
 					addLanguageFile();
 					return ;
 				}
-				var moduleName = enabledModules.pop();
+				var moduleName = enabledModules.shift();
 				mw.setConfig( 'loaderContext',  'modules/' + moduleName + '/' );	
 				mw.load( 'modules/' + moduleName + '/loader.js', function(){
 					loadEnabledModules( enabledModules );		
@@ -2256,11 +2267,16 @@ var MW_EMBED_VERSION = '1.1f';
 					if( transformKey != 'en' ){				
 						// Upper case the first letter:
 						langCode = langCode.substr(0,1).toUpperCase() + langCode.substr( 1, langCode.length );
-						loaderRequest.push( 'languages/classes/Language' +
+						langLoaderRequest.push( 'languages/classes/Language' +
 							langCode + '.js' );
 					}
 					
 				}
+				if ( ! langLoaderRequest.length ) {
+					callback();
+					return ;
+				}
+					
 				// Load the launage if set
 				mw.load( langLoaderRequest, function(){			
 					mw.log( 'Done moduleLoaderCheck request' );

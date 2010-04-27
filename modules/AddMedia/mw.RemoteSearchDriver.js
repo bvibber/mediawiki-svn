@@ -2698,7 +2698,7 @@ mw.RemoteSearchDriver.prototype = {
 						if( data.query.pages[i]['missing'] || i == -1 ) {
 							if( data.query.pages[i].imagerepository != 'shared'
 								&& data.query.pages[i].imagerepository != 'commons' ) 
-							{						
+							{
 								callback( false );
 								return;
 							}						
