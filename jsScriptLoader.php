@@ -194,7 +194,7 @@ class jsScriptLoader {
 
 
 		// Check if google closure compiler is enabled and we can get its output
-		if( $wgJavaPath && $wgClosureCompilerPath && wfShellExecEnabled() ){
+		if( $wgJavaPath && $wgClosureCompilerPath ){
 			$jsMinVal = self::getClosureMinifiedJs( $js_string, $requestKey );
 			if( $jsMinVal ){
 				return $jsMinVal;
@@ -239,13 +239,14 @@ class jsScriptLoader {
 		$cmd.= ' --compilation_level ' .  wfEscapeShellArg( $wgClosureCompilerLevel );
 
 		// only output js ( no warnings )
-		$cmd.= ' --warning_level QUIET';
-		//print "run: $cmd";
+		$cmd.= ' --warning_level QUIET';		
 		// Run the command:
 		$jsMinVal = wfShellExec($cmd , $retval);
 
 		// Clean up ( remove temporary file )
+		wfSuppressWarnings();
 		unlink( $jsFileName );
+		wfRestoreWarnings();
 
 		if( strlen( $jsMinVal ) != 0 && $retval === 0){
 			//die( "used closure" );
@@ -530,14 +531,7 @@ class jsScriptLoader {
 			//set English as default
 			$this->langCode = 'en';
 		}
-		$this->langCode = self::checkForCommonsLanguageFormHack( $this->langCode );
-
-		// Check if the outupt format is "css" or "js"
-		if( isset( $_GET['ctype'] ) && $_GET['ctype'] == 'css' ){
-			$this->outputFormat = 'css';
-		} else {
-			$this->outputFormat = 'js';
-		}
+		$this->langCode = self::checkForCommonsLanguageFormHack( $this->langCode );		
 
 		$reqClassList = false;
 		if ( isset( $_GET['class'] ) && $_GET['class'] != '' ) {
@@ -657,9 +651,9 @@ class jsScriptLoader {
 		}
 		// Check if the outupt format is "css" or "js"
 		if( isset( $_GET['ctype'] ) && $_GET['ctype'] == 'css' ){
-			$outputFormat = 'css';
+			$this->outputFormat = 'css';
 		} else {
-			$outputFormat = 'js';
+			$this->outputFormat = 'js';
 		}
 
 		// Add the language code to the requestKey:
