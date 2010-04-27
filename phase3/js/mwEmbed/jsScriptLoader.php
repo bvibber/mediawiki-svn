@@ -109,11 +109,17 @@ class jsScriptLoader {
 		// Build the output
 		// Swap in the appropriate language per js_file
 		foreach ( $this->namedFileList as $classKey => $filePath ) {
-			// Get the localized script content
-			$this->output .= $this->getLocalizedScriptText( $classKey );
+			// Check if we are exclusively getting messages
+			if( $this->outputFormat == 'messages' ) {
+				// Get only the message code
+				$this->output .= $this->getInlineMsgFromClass( $classKey );
+			} else {
+				// Process the full class
+				$this->output .= $this->getLocalizedScriptText( $classKey );
+			}
 
-			// If the core mwEmbed class request add some other "core" files:
-			if( $classKey == 'mwEmbed' ){
+			// mwEmbed is a core component so it includes loaders and other styles
+			if( $classKey == 'mwEmbed' && $this->outputFormat != 'messages' ){
 				// Output core components ( parts of mwEmbed that are in different files )
 				$this->output .= jsClassLoader::getCombinedComponentJs( $this );
 
@@ -132,7 +138,7 @@ class jsScriptLoader {
 					}
 				}
 
-				// Output special IE comment tag to support special mwEmbed tags.
+				// Output "special" IE comment tag to support "special" mwEmbed tags.
 				$this->notMinifiedTopOutput .='/*@cc_on\'video source itext playlist\'.replace(/\w+/g,function(n){document.createElement(n)})@*/'."\n";
 			}
 		}
@@ -182,6 +188,7 @@ class jsScriptLoader {
 		return 'if(mw && mw.loadDone){mw.loadDone(\'' .
 		htmlspecialchars( self::$rawClassList ) . '\');};';
 	}
+
 	/**
 	 * Get Minified js
 	 *
@@ -239,7 +246,7 @@ class jsScriptLoader {
 		$cmd.= ' --compilation_level ' .  wfEscapeShellArg( $wgClosureCompilerLevel );
 
 		// only output js ( no warnings )
-		$cmd.= ' --warning_level QUIET';		
+		$cmd.= ' --warning_level QUIET';
 		// Run the command:
 		$jsMinVal = wfShellExec($cmd , $retval);
 
@@ -253,21 +260,6 @@ class jsScriptLoader {
 			return $jsMinVal;
 		}
 		return false;
-	}
-
-	/**
-	 * Get loclized ScriptText from a classKey
-	 *
-	 * @param String $classKey
-	 * @return String javascript to be included.
-	 */
-	function getLocalizedScriptText( $classKey ){
-		$scriptText = $this->getScriptText( $classKey );
-		if( $scriptText ){
-			return $this->doProcessJs( $scriptText );
-		}
-		// Return an empty string ( error is put into $this->errorMsg  )
-		return '';
 	}
 
 	/**
@@ -333,10 +325,11 @@ class jsScriptLoader {
 					if ( $this->debug ) {
 						$output .= "\n/**\n* ScriptLoader WikiPage: " . xml::escapeJsString( $titleBlock ) . " rev: " . $a->getID() . " \n*/\n";
 					}
-					$fileStr = $a->getContent() . "\n";
+					$fileContents = $a->getContent() . "\n";
+					// transform the output if the file is of type css:
 					$output.= ( $ext == 'css' ) ?
-					$this->transformCssOutput( $classKey, $fileStr ) :
-					$fileStr;
+						$this->transformCssOutput( $classKey, $fileContents ) :
+						$fileContents;
 					return $output;
 				}
 			}
@@ -355,15 +348,16 @@ class jsScriptLoader {
 
 		// Dealing with files
 		if ( trim( $filePath ) != '' ) {
-			$fileStr = $this->getFileContents( $filePath ) . "\n";
-			if( $fileStr ){
+			$fileContents = $this->getFileContents( $filePath ) . "\n";
+			if( $fileContents ){
 				// Add the file name if debug is enabled
 				if ( $this->debug ){
 					$output .= "\n/**\n* File: " . xml::escapeJsString( $filePath ) . "\n*/\n";
 				}
+				// Transform the css output if the file is css
 				$output.= ( $ext == 'css' ) ?
-				$this->transformCssOutput( $classKey, $fileStr, $filePath ) :
-				$fileStr;
+					$this->transformCssOutput( $classKey, $fileContents, $filePath ) :
+					$fileContents;
 
 				return $output;
 			}else{
@@ -401,7 +395,7 @@ class jsScriptLoader {
 			. dirname( $path ) . '/';
 		}
 
-		// We always run minify to update css urls
+		// We always run minify to update css image urls
 		$cssString = Minify_CSS::minify( $cssString, $cssOptions);
 
 		// Check output format ( if format is "css" ) return the css string directly
@@ -501,7 +495,7 @@ class jsScriptLoader {
 	}
 
 	/**
-	 * Post process request uses globals, configuration to
+	 * Post process request uses globals and mediaWiki configuration to
 	 * validate classes and generate request key
 	 */
 	function postProcRequestVars(){
@@ -531,12 +525,12 @@ class jsScriptLoader {
 			//set English as default
 			$this->langCode = 'en';
 		}
-		$this->langCode = self::checkForCommonsLanguageFormHack( $this->langCode );		
+		$this->langCode = self::checkForCommonsLanguageFormHack( $this->langCode );
 
 		$reqClassList = false;
 		if ( isset( $_GET['class'] ) && $_GET['class'] != '' ) {
 			$reqClassList = explode( ',', $_GET['class'] );
-			self::$rawClassList= $_GET['class'];
+			self::$rawClassList = $_GET['class'];
 		}
 
 		// Check for the requested classes
@@ -600,6 +594,16 @@ class jsScriptLoader {
 	 */
 	function preProcRequestVars() {
 		$requestKey = '';
+
+		// Update the outupt format is "css", "messages" or "js"
+		if( isset( $_GET['format'] ) &&
+			(  $_GET['format'] == 'css' || $_GET['format'] == 'messages')
+		){
+			$this->outputFormat = $_GET['format'];
+		} else {
+			$this->outputFormat = 'js';
+		}
+
 		// Check for debug ( won't use the cache)
 		if ( ( isset( $_GET['debug'] ) && $_GET['debug'] == 'true' ) ) {
 			// We are going to have to run postProcRequest
@@ -649,18 +653,12 @@ class jsScriptLoader {
 				}
 			}
 		}
-		// Check if the outupt format is "css" or "js"
-		if( isset( $_GET['ctype'] ) && $_GET['ctype'] == 'css' ){
-			$this->outputFormat = 'css';
-		} else {
-			$this->outputFormat = 'js';
-		}
 
 		// Add the language code to the requestKey:
 		$requestKey .= '_' . $langCode;
 
 		// Add the format to the requestKey:
-		$requestKey .= '_' . $outputFormat;
+		$requestKey .= '_' . $this->outputFormat;
 
 		// Add the unique rid
 		$requestKey .= '_' . $urid;
@@ -741,47 +739,64 @@ class jsScriptLoader {
 		}
 		// Load the file
 		wfSuppressWarnings();
-		$str = file_get_contents( realpath( $filePath ) );
+		$fileContents = file_get_contents( realpath( $filePath ) );
 		wfRestoreWarnings();
 
-		if ( $str === false ) {
+		if ( $fileContents === false ) {
 			$fname = explode( '/',$filePath);
 			$fname = end( $fname );
 			// NOTE: check PHP error level. Don't want to expose paths if errors are hidden.
 			$this->errorMsg .= 'Requested File: ' . htmlspecialchars( $filePath ) . ' could not be read' . "\n";
 			return false;
 		}
-		return $str;
+		return $fileContents;
 	}
 
 	/**
-	 * Process the javascript string
+	 * Get a localized script javascript
 	 *
 	 * Strips debug statements:  mw.log( 'msg' );
 	 * Localizes the javascript calling the languageMsgReplace function
 	 *
-	 * @param {String} $str Javascript string to be processed.
+	 * @param {String} $className Name of class to be processed.
 	 * @return processed javascript string
 	 */
-	function doProcessJs( $str ){
+	function getLocalizedScriptText( $className ){
 		global $wgEnableScriptLocalization;
+
+		// Get the script text:
+		$scriptText = $this->getScriptText( $className );
+		if( !$scriptText ) {
+			// Specific error already reported in getScriptText
+			return '';
+		}
 
 		// Strip out mw.log debug lines (if not in debug mode)
 		if( !$this->debug ){
-			$str = preg_replace( '/\n\s*mw\.log\(([^\)]*\))*\s*[\;\n]/U', "\n", $str );
+			$scriptText = preg_replace( '/\n\s*mw\.log\(([^\)]*\))*\s*[\;\n]/U', "\n", $scriptText );
 		}
 
 		// Do language swap by index:
 		if ( $wgEnableScriptLocalization ){
-			$inx = self::getAddMessagesIndex( $str );
-			if($inx){
-				$translated = $this->languageMsgReplace( substr($str, $inx['s'], ($inx['e']-$inx['s']) ));
+			// Get the mw.addMessage javascript from class name
+			$translatedJs = $this->getInlineMsgFromClass( $className );
+
+			// Replace mw.addMessages with localized msgs in javascript string
+			$inx = self::getAddMessagesIndex( $scriptText );
+			if( $inx ){
 				// Return the final string (without double {})
-				return substr($str, 0, $inx['s']-1) . $translated . substr($str, $inx['e']+1);
+				return substr($scriptText, 0, $inx['sfull']-1) . $translatedJs . substr($scriptText, $inx['efull']+1);
+			}
+
+			// Replace mw.addMessageKeys with localized msgs in javascript string
+			$inx = self::getAddMessageKeyIndex( $scriptText );
+			if( $inx ) {
+				// Return the final string (without double {})
+				return substr($scriptText, 0, $inx['sfull']) . $translatedJs . substr($scriptText, $inx['efull']+1 );
 			}
 		}
 		// Return the js str unmodified if we did not transform with the localisation.
-		return $str;
+		return $scriptText;
 	}
 
 	/**
@@ -799,7 +814,8 @@ class jsScriptLoader {
 		if( count( $matches ) > 0 ){
 			//offset + match str length gives startIndex:
 			$returnIndex['s'] = strlen( $matches[0][0] ) + $matches[0][1];
-			$foundMatch = true;
+			// Also store the full replacement index
+			$returnIndex['sfull'] = $matches[0][1];
 		}
 		$ignorenext = false;
 		$inquote = false;
@@ -817,8 +833,7 @@ class jsScriptLoader {
 						break;
 					case '}':
 						if( ! $inquote){
-							$returnIndex['e'] =$i;
-							return $returnIndex;
+							$returnIndex['e'] = $i;
 						}
 						break;
 					case '\\':
@@ -826,7 +841,76 @@ class jsScriptLoader {
 						break;
 				}
 			}
+			// If return index is set break out
+			if( isset( $returnIndex['e'] ) ) {
+				break;
+			}
 		}
+		// Check for ); at the end
+		preg_match( '/\s*\)\s*\;?/', $str, $matches, PREG_OFFSET_CAPTURE, $returnIndex['e']  );
+		if( $matches[0][1] ){
+			$returnIndex[ 'efull' ] = $matches[0][1] + strlen( $matches[0][0] );
+		}
+
+		return $returnIndex;
+	}
+
+	/**
+	 * Get the "addMessageKey" function index ( for replacing msg keys with localized json addMessage call)
+	 *
+	 * @param {String} $str Javascript string to grab msg text from
+	 * @return {Array} Array with start and end points character indexes
+	 */
+	static public function getAddMessageKeyIndex( $str ){
+		$returnIndex = array();
+		preg_match( '/mw.addMessageKeys\s*\(\s*\[/', $str, $matches, PREG_OFFSET_CAPTURE );
+		if( count( $matches ) == 0 ) {
+			return false;
+		}
+		if( count( $matches ) > 0 ) {
+			//offset + match str length gives startIndex:
+			$returnIndex['s'] = strlen( $matches[0][0] ) + $matches[0][1];
+			// Also store the full replacement index
+			$returnIndex['sfull'] = $matches[0][1];
+		}
+		$inquote = false;
+		$ignorenext = false;
+		$inSingleQuote = false;
+		// Look for closing ] not inside quotes::
+		for ( $i = $returnIndex['s']; $i < strlen( $str ); $i++ ) {
+			$char = $str[$i];
+			if ( $ignorenext ) {
+				$ignorenext = false;
+			} else {
+				// Search for a close ] that is not in quotes or escaped
+				switch( $char ) {
+					case '"':
+						$inquote = !$inquote;
+						break;
+					case '\'':
+						$inSingleQuote = !$inSingleQuote;
+						break;
+					case ']':
+						if( ! $inquote){
+							$returnIndex['e'] = $i;
+						}
+						break;
+					case '\\':
+						if ( $inquote || $inSingleQuote ) $ignorenext = true;
+						break;
+				}
+				if( isset( $returnIndex['e'] ) ){
+					break;
+				}
+			}
+		}
+		// look for at ); end
+		preg_match( '/\s*\)\s*\;?/', $str, $matches, PREG_OFFSET_CAPTURE , $returnIndex['e']);
+		if( $matches[0][1] ){
+			$returnIndex[ 'efull' ] = $matches[0][1] + strlen( $matches[0][0] );
+		}
+
+		return $returnIndex;
 	}
 
 	/**
@@ -834,13 +918,13 @@ class jsScriptLoader {
 	 * For use with OutputPage when the script-loader is disabled.
 	 *
 	 * @param {String} $class Name of class to get inin-lineline messages for.
-	 * @return in-line msg javascript text or empty string if no msgs need to be localised.
+	 * @return in-line msg javascript text or empty string if no msgs need to be localized.
 	 */
 	function getInlineMsgFromClass( $class ){
-		$jsmsg = $this->getMsgKeysFromClass( $class );
-		if( $jsmsg ){
-			self::updateMsgKeys ( $jsmsg );
-			return 'mw.addMessages(' . FormatJson::encode( $jsmsg ) . ');';
+		$messageSet = $this->getMsgKeysFromClass( $class );
+		if( $messageSet ){
+			self::updateMessageValues ( $messageSet );
+			return 'mw.addMessages(' . FormatJson::encode( $messageSet ) . ');';
 		}else{
 			//if could not parse return empty string:
 			return '';
@@ -850,18 +934,34 @@ class jsScriptLoader {
 	/**
 	 * Get the set of message associated with a given javascript class
 	 *
-	 * @param {String} $class Class to restive msgs from
+	 * @param {String} $className Class to restive msgs from
 	 * @return {Array} decoded json array of message key value pairs
 	 */
-	function getMsgKeysFromClass( $class ){
-		$str = $this->getScriptText( $class );
+	function getMsgKeysFromClass( $className ){
+		$scriptString = $this->getScriptText( $className );
 
-		$inx = self::getAddMessagesIndex( $str );
-		if( ! $inx ) {
-			return false;
+		// Try for AddMessagesIndex
+		$inx = self::getAddMessagesIndex( $scriptString );
+		if( $inx ) {
+			return FormatJson::decode( '{' . substr($scriptString, $inx['s'], ($inx['e']-$inx['s'])) . '}', true);
 		}
 
-		return FormatJson::decode( '{' . substr($str, $inx['s'], ($inx['e']-$inx['s'])) . '}', true);
+		// Try for 'AddMessageKey' Index array type
+		$inx = self::getAddMessageKeyIndex( $scriptString );
+		if( $inx ) {
+			// get the javascript array string:
+			$javaScriptArrayString =  substr($scriptString, $inx['s'], ($inx['e']-$inx['s'])) ;
+			// Match all the quoted msg keys
+			preg_match_all( "/\"([^\"]*)\"/", $javaScriptArrayString, $matches);
+			$messageSet = array();
+			if( $matches[1] ) {
+				// Flip the matches array
+				// The keys are msg keys the message values ( indexes ) are not used
+				return array_flip( $matches[1] );
+			}
+		}
+		// return an empty array if we are not able to grab any message keys
+		return array();
 	}
 
 	/**
@@ -870,7 +970,7 @@ class jsScriptLoader {
 	 * @param {Array} $jmsg Associative array of message key -> message value pairs
 	 * @param {String} $langCode Language code override
 	 */
-	static public function updateMsgKeys(& $jmsg, $langCode = false){
+	static public function updateMessageValues(& $messegeArray, $langCode = false){
 		global $wgLang;
 		// Check the langCode
 		if(!$langCode && $wgLang) {
@@ -878,10 +978,10 @@ class jsScriptLoader {
 		}
 
 		// Get the msg keys for the a json array
-		foreach ( $jmsg as $msgKey => $na ) {
+		foreach ( $messegeArray as $msgKey => $na ) {
 			// Language codes use dash instead of underscore internally
 			$msgLangCode = str_replace('_', '-', $langCode );
-			$jmsg[ $msgKey ] = wfMsgGetKey( $msgKey, true, $msgLangCode, false );
+			$messegeArray[ $msgKey ] = wfMsgGetKey( $msgKey, true, $msgLangCode, false );
 		}
 	}
 
@@ -891,12 +991,12 @@ class jsScriptLoader {
 	 * @param {String} $json_str Json string to be replaced
 	 * @return {String} of msgs updated with the given language code
 	 */
-	function languageMsgReplace( $json_str ) {
+	function languageMsgReplace( $json_str , $format='json') {
 		$jmsg = FormatJson::decode( '{' . $json_str . '}', true );
 		// Do the language lookup
 		if ( $jmsg ) {
 
-			self::updateMsgKeys( $jmsg, $this->langCode );
+			self::updateMessageValues( $jmsg, $this->langCode );
 
 			// Return the updated JSON with Msgs:
 			return FormatJson::encode( $jmsg );

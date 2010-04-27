@@ -2,7 +2,7 @@
 /**
  * NoMediaWikiConfig sets variables for using the script-loader and mwEmbed modules
  * without a complete mediaWiki install.
- * 
+ *
  * NoMediaWikiConfig also copies some utility functions from mediaWiki
  */
 
@@ -129,7 +129,6 @@ function wfMsgGetKey( $msgKey, $na, $langKey = false ) {
     	wfLoadMsgKeys( $langKey );
     }
 
-
     if ( isset( $wgMessageCache[$msgKey] ) ) {
         return $wgMessageCache[$msgKey];
     } else {
@@ -201,7 +200,7 @@ function wfRestoreWarnings() {
 
 /**
  * Simplifed MediaWiki wfShellExec Function
- * 
+ *
  * Execute a shell command, with time and memory limits mirrored from the PHP
  * configuration if supported.
  * @param $cmd Command line, properly escaped for shell.

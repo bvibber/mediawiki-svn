@@ -377,10 +377,11 @@ var nativeEmbed = {
 	* Local method for seeking event
 	*  fired when "seeking" 
 	*/
-	onseeking:function() {
+	onseeking: function() {
 		//mw.log( "onseeking" );
 		this.seeking = true;
 		this.setStatus( gM( 'mwe-seeking' ) );
+		$j( this ).trigger( 'seeking' ); 
 	},
 	
 	/**
@@ -390,18 +391,8 @@ var nativeEmbed = {
 	onseeked: function() {
 		//mw.log("onseeked");
 		this.seeking = false;
-	},
-	
-	/**
-	* Local method for can play through
-	*  fired when done video can play through without re-buffering
-	*/	
-	oncanplaythrough: function() {
-		mw.log('f:oncanplaythrough');
-		this.getPlayerElement();
-		if ( ! this.paused ) {
-			this.playerElement.play();
-		}		
+		// trigger the html5 action on the parent 
+		$j( this ).trigger( 'seeked' );
 	},
 	
 	/**
@@ -432,6 +423,8 @@ var nativeEmbed = {
 	*/
 	onprogress: function( e ) {
 		this.bufferedPercent =   e.loaded / e.total;		
+		// fire the parent html5 action
+		$j( this ).trigger( 'progress', e );
 	},
 	
 	/**

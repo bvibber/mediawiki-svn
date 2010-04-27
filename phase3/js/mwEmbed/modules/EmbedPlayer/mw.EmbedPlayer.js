@@ -1828,6 +1828,9 @@ mw.EmbedPlayer.prototype = {
 	onClipDone: function() {
 		mw.log( 'base:onClipDone' );		
 		
+		// Fire the html5 ended binding
+		$j( this ).trigger( 'ended' );
+		
 		// Stop the clip (load the thumbnail etc) 
 		this.stop();
 		this.seek_time_sec = 0;
