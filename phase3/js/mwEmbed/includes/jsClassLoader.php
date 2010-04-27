@@ -234,6 +234,11 @@ class jsClassLoader {
 		}
 
 		$jClassSet = FormatJson::decode( '{' . $jsvar[1] . '}', true );
+		// Check for null json decode:
+		if( $jClassSet == NULL ){
+			return false;
+		}
+
 		foreach ( $jClassSet as $className => $classPath ) {
 			// Strip $ from class (as they are stripped on URL request parameter input)
 			$className = str_replace( '$', '', $className );

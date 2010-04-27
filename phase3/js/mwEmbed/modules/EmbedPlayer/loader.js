@@ -29,27 +29,27 @@ mw.setDefaultConfig( {
 	"videoSize" : "400x300",
 
 	// If the video player should attribute kaltura	
-	 "kalturaAttribution" : true,
+	"kalturaAttribution" : true,
 	 
 	 // Set the browser player warning flag to true by default ( applies to all players so its not part of attribute defaults above ) 
-	'showNativePlayerWarning' : true,
+	"showNativePlayerWarning" : true,
 	
 	// If fullscreen is global enabled. 
-	'enableFullscreen' : true,
+	"enableFullscreen" : true,
 	
 	// If mwEmbed should use the Native player controls
 	// this will prevent video tag rewriting and skinning
 	// usefull for devices such as iPad / iPod that
 	// don't fully support DOM overlays or don't expose full-screen 
 	// functionality to javascript  
-	'nativePlayerControls': false,
+	"nativePlayerControls" : false,
 	
 	// If mwembed should use native controls on mobile safari
-	'nativePlayerControlsMobileSafari' : true,
+	"nativePlayerControlsMobileSafari" : true,
 	
 	
 	// The z-index given to the player interface during full screen ( high z-index )  
-	'fullScreenIndex' : 999998,
+	"fullScreenIndex" : 999998,
 	
 	// The default share embed mode ( can be "object" or "videojs" )
 	//
@@ -60,7 +60,7 @@ mw.setDefaultConfig( {
 	//	 	rewrite the player on the remote page DOM  
 	//		Video tag embedding is much more mash-up friendly but exposes
 	//		the remote site to the mwEmbed js. 
-	'shareEmbedMode' : 'object',
+	"shareEmbedMode" : 'object',
 	
 	// Default player skin name
 	"playerSkinName" : "mvpcf"	
@@ -181,14 +181,8 @@ mw.addModuleLoader( 'EmbedPlayer', function( callback ) {
 			'mw.style.jquerymenu',
 			'$j.ui.slider'
 		]
+		
 	];
-		
-	var addTimedTextReqFlag = false;
-		
-	// Merge in the timed text libs 
-	if( mw.getConfig( 'textInterface' ) == 'always' ) {		
-		addTimedTextReqFlag = true;	
-	}
 	
 	var playerSkins = {};
 	// Get the class of all embed video elements 
@@ -205,23 +199,10 @@ mw.addModuleLoader( 'EmbedPlayer', function( callback ) {
 			// That way skin js can be part of the single script-loader request: 
 			if( playerClassName.indexOf( mw.valid_skins[ n ] ) !== -1) {
 				// Add skin name to playerSkins
-				playerSkins[ mw.valid_skins[ n ] ] = true;	
+				playerSkins[ mw.valid_skins[ n ] ] = true;
 			}
-		}		
-		
-		// If add timed text flag not already set check for itext, and sources
-		if( !addTimedTextReqFlag ) {
-			if( $j( playerElement ).find( 'itext' ).length != 0 ) {
-				// Has an itext child include timed text request
-				addTimedTextReqFlag = true;
-			}
-			// Check for ROE pointer or apiTitleKey
-			if ( $j( playerElement ).attr('roe') 
-				|| $j( playerElement ).attr( 'apiTitleKey' ) )
-			{				
-				addTimedTextReqFlag = true;
-			}			
 		}
+		mw.runHook( 'LoaderEmbedPlayerVisitTag', playerElement );
 	} );
 	
 	// Add the player skins css and js to the load request:	
@@ -231,11 +212,6 @@ mw.addModuleLoader( 'EmbedPlayer', function( callback ) {
 		// Add the skin css 
 		dependencyRequest[0].push( 'mw.style.' + pSkin );
 	}	
-	
-	// Add timed text items if flag set.  	
-	if( addTimedTextReqFlag ) {
-		dependencyRequest[0].push( 'mw.TimedText' )
-	}
 	
 	// Add PNG fix code needed:
 	if ( $j.browser.msie && $j.browser.version < 7 ) {
@@ -252,6 +228,10 @@ mw.addModuleLoader( 'EmbedPlayer', function( callback ) {
 	if( typeof HTMLVideoElement == 'object' &&  !$j.browser.safari  ) {
 		dependencyRequest[0].push( 'nativeEmbed' )
 	}
+		
+	// Run the EmbedPlayer loader hook ( so that modules can add dependencies to the request ) 
+	mw.runHook( 'LoaderEmbedPlayerUpdateRequest', dependencyRequest[ 0 ] );
+	
 	
 	// Load the video libs:
 	mw.load( dependencyRequest, function() {

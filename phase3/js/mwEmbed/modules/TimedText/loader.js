@@ -1,6 +1,9 @@
 /**
 * TimedText loader.    
 */
+// Scope everything in "mw"  ( keeps the global namespace clean ) 
+( function( mw ) {
+
 mw.addClassFilePaths( {
 	"mw.TimedText" : "mw.TimedText.js",
 	"mw.style.TimedText" : "css/mw.style.TimedText.css",
@@ -11,19 +14,57 @@ mw.addClassFilePaths( {
 	"RemoteMwTimedText" : "remotes/RemoteMwTimedText.js"
 });
 
+var mwTimedTextRequestSet = [ 
+	'$j.fn.menu', 
+	'mw.TimedText',
+	'mw.style.TimedText',
+	'mw.style.jquerymenu'
+];
+
 // TimedText module
 mw.addModuleLoader( 'TimedText', function( callback ) {
-	mw.load( [ 
-		'$j.fn.menu', 
-		'mw.TimedText',
-		'mw.style.TimedText',
-		'mw.style.jquerymenu'
-	], function() {
+	mw.load( mwTimedTextRequestSet , function() {
 		callback( 'TimedText' );
 	} );
 });
 
-// TimedText editor: 
+var mwLoadTimedTextFlag = false;
+// Merge in the timed text libs 
+if( mw.getConfig( 'textInterface' ) == 'always' ) {
+	mwLoadTimedTextFlag = true;	
+}
+/**
+* Setup the load embedPlayer visit tag function hook.
+*
+* Check if the video tags in the page support timed text
+* this way we can add our timed text libraries to the initial 
+* request and avoid an extra round trip to the server
+*/
+mw.addHook( 'LoaderEmbedPlayerVisitTag', function( playerElement ) {	
+	// If add timed text flag not already set check for itext, and sources
+	if( ! mwLoadTimedTextFlag ) {
+		if( $j( playerElement ).find( 'itext' ).length != 0 ) {
+			// Has an itext child include timed text request
+			mwLoadTimedTextFlag = true;
+		}
+		// Check for ROE pointer or apiTitleKey
+		if ( $j( playerElement ).attr('roe') 
+			|| $j( playerElement ).attr( 'apiTitleKey' ) )
+		{
+			mwLoadTimedTextFlag = true;
+		}
+	}
+} );
+
+// Update the player loader request with timedText if the flag has been set 
+mw.addHook( 'LoaderEmbedPlayerUpdateRequest', function( classRequest ) {	
+	// Add timed text items if flag set.  	
+	if( mwLoadTimedTextFlag ) {
+		$j.merge( classRequest, mwTimedTextRequestSet );
+	}
+} );
+
+// TimedText editor:
 mw.addModuleLoader( 'TimedText.Edit', function( callback ) {
 	mw.load([ 
 		[
@@ -45,3 +86,5 @@ mw.addModuleLoader( 'TimedText.Edit', function( callback ) {
 		callback( 'TimedText.Edit' );
 	});
 });
+
+} )( window.mw );

@@ -407,8 +407,7 @@ function waitMwEmbedReady( callback ) {
  * run after mwEmbed setup so $j and mw interface is available: 
  */
 function mwCheckForGadget(){
-	mw.log('mwCheckForGadget');
-	
+	//mw.log('mwCheckForGadget');	
 	if( $j('#mwe-gadget-button').length != 0){
 		//Gadget button already in dom
 		return false;
@@ -427,7 +426,7 @@ function mwCheckForGadget(){
 			scripts[i].src 
 			&& scripts[i].src.indexOf( 'MediaWiki:Gadget-mwEmbed.js' ) !== -1 
 		){
-			mw.log( 'gadget already installed: ' + scripts[i].src );
+			//mw.log( 'gadget already installed: ' + scripts[i].src );
 			// Gadget found / enabled
 			return false;
 		}		
