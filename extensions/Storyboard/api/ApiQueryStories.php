@@ -62,7 +62,7 @@ class ApiQueryStories extends ApiQueryBase {
 		) );
 		$this->addOption( 'LIMIT', $params['limit'] + 1 );
 		$this->addOption( 'ORDER BY', 'story_modified, story_id DESC' );
-		
+
 		if ( !is_null( $params['continue'] ) ) {
 			$continueParams = explode( '-', $params['continue'] );
 			if ( count( $continueParams ) != 2 ) {
@@ -74,6 +74,7 @@ class ApiQueryStories extends ApiQueryBase {
 			
 			$storyModified = $continueParams[0];
 			$storyId = intval( $continueParams[1] );
+
 			/* FIXME
 			$this->addWhere(
 				"story_modified > $storyModified OR " .
@@ -98,7 +99,8 @@ class ApiQueryStories extends ApiQueryBase {
 				'author' => $story->story_author_name,
 				'title' => $story->story_title,
 				'created' => wfTimestamp(  TS_ISO_8601, $story->story_created ),
-				'imageurl' => $story->story_author_image
+				'imageurl' => $story->story_author_image,
+				'permalink' => SpecialPage::getTitleFor( 'story', $story->story_title )->getFullURL()
 			);
 			ApiResult::setContent( $res, ( is_null( $story->story_text ) ? '' : $story->story_text ) );
 			$this->getResult()->addValue( array( 'query', $this->getModuleName() ), null, $res );

@@ -51,13 +51,18 @@
 			
 			// TODO: move social sharing to a jQuery UI pop-up that's triggered by a link above each storyboard-box
 			
+			var deliciousUrl = "http://delicious.com/save?jump=yes&url=" + encodeURIComponent( story.permalink ) + "&title=" + encodeURIComponent( story.title );
+			var facebookUrl = "http://www.facebook.com/sharer.php?u=" + encodeURIComponent( story.permalink ) + '&t=' + encodeURIComponent( story.title );
+			
 			$( "<div />" )
 				.addClass( "story-sharing" )
 				.append(
 					$( "<div />" ).addClass( "story-sharing-item" ).append(
 						$( "<a />" ).attr( {
 							"target": "_blank",
-							"href": "http://delicious.com/save?jump=yes&url=" + ""
+							"rel": "nofollow",
+							"href": deliciousUrl,
+							"onclick": "window.open( '" + deliciousUrl + "', 'delicious-sharer', 'toolbar=0, status=0, width=850, height=650' ); return false;"
 						} )
 						.append( $( "<img />" ).attr( "src",
 							wgScriptPath + "/extensions/Storyboard/images/storyboard-delicious.png"
@@ -68,18 +73,21 @@
 					$( "<div />" ).addClass( "story-sharing-item" ).append(
 						$( "<a />" ).attr( {
 							"target": "_blank",
-							"href": "http://www.facebook.com/sharer.php?u=" + "" + "&t=" + story.title
+							"rel": "nofollow",
+							"href": facebookUrl,
+							"onclick": "window.open( '" + facebookUrl + "', 'facebook-sharer', 'toolbar=0, status=0, width=626, height=436' ); return false;"
 						} )
 						.append( $( "<img />" ).attr( "src",
 							wgScriptPath + "/extensions/Storyboard/images/storyboard-facebook.png"
 						) )
 					)
-				) //TODO
+				)
 				.append(
 					$( "<div />" ).addClass( "story-sharing-item" ).append(
 						$( "<a />" ).attr( {
 							"target": "_blank",
-							"href": "http://twitter.com/home?status=" + ""
+							"rel": "nofollow",
+							"href": "http://twitter.com/home?status=" + story.permalink
 						 } )
 						.append( $( "<img />" ).attr( "src",
 							wgScriptPath + "/extensions/Storyboard/images/storyboard-twitter.png"
@@ -103,5 +111,11 @@
 			$storyboard.append( $storyBody );	
 		}
 	}
+	
+	function fbsClick( url, title ) {
+		alert('');
+		
+		return false;
+	}	
 		
 })(jQuery);
