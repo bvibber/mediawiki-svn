@@ -37,11 +37,12 @@ class OggHandler extends MediaHandler {
 	function parseTimeString( $seekString, $length = false ) {
 		$parts = explode( ':', $seekString );
 		$time = 0;
-		for ( $i = 0; $i < count( $parts ); $i++ ) {
+		$multiplier = 1;
+		for ( $i = count( $parts ) - 1; $i >= 0; $i--, $multiplier *= 60 ) {
 			if ( !is_numeric( $parts[$i] ) ) {
 				return false;
 			}
-			$time += intval( $parts[$i] ) * pow( 60, count( $parts ) - $i - 1 );
+			$time +=  $parts[$i] * $multiplier;
 		}
 
 		if ( $time < 0 ) {
@@ -51,6 +52,8 @@ class OggHandler extends MediaHandler {
 			wfDebug( __METHOD__.": specified near-end or past-the-end time {$time}s, using end minus 1s\n" );
 			$time = $length - 1;
 		}
+		// Round to nearest 0.1s
+		$time = round( $time, 1 );
 		return $time;
 	}
 
@@ -58,7 +61,11 @@ class OggHandler extends MediaHandler {
 		if ( isset( $params['thumbtime'] ) ) {
 			$time = $this->parseTimeString( $params['thumbtime'] );
 			if ( $time !== false ) {
-				return 'seek=' . $time;
+				$s = sprintf( "%.1f", $time );
+				if ( substr( $s, -2 ) == '.0' ) {
+					$s = substr( $s, 0, -2 );
+				}
+				return 'seek=' . $s;
 			}
 		}
 		return 'mid';
@@ -167,7 +174,6 @@ class OggHandler extends MediaHandler {
 	}
 
 	function doTransform( $file, $dstPath, $dstUrl, $params, $flags = 0 ) {
-		global $wgFFmpegLocation;
 
 		$width = $params['width'];
 		$srcWidth = $file->getWidth();
@@ -215,59 +221,46 @@ class OggHandler extends MediaHandler {
 			return new OggVideoDisplay( $file, $targetFileUrl, $dstUrl, $width, $height, $length, $dstPath, $noIcon );
 		}
 
-		$thumbStatus = $this->generateThumb($file, $dstPath, $params, $width, $height);
-		if( $thumbStatus !== true ) {
-			return $thumbStatus;
-		}
 
-		return new OggVideoDisplay( $file, $file->getURL(), $dstUrl, $width, $height, $length, $dstPath );
-	}
-	/**
-	 * Generate a thumbnail at a specified path
-	 * @param $file The source ogg file
-	 * @param $dstPath The target location for the jpeg
-	 * @param $params The parameters / options for the thumb request
-	 * @param $width The target output width
-	 * @param $height The target output height
-	 */
-	function generateThumb($file, $dstPath, $params, $width, $height){
-		global $wgFFmpegLocation, $wgOggThumbLocation;
-
-		$length = $this->getLength( $file );
-		$thumbtime = false;
+		$thumbTime = false;
 		if ( isset( $params['thumbtime'] ) ) {
-			$thumbtime = $this->parseTimeString( $params['thumbtime'], $length );
+			$thumbTime = $this->parseTimeString( $params['thumbtime'], $length );
 		}
-		if ( $thumbtime === false ) {
-			// If start time param isset use that for the thumb:
-			if( isset( $params['start'] ) ){
-				$thumbtime = $this->parseTimeString( $params['start'], $length );
-			}else{
-				# Seek to midpoint by default, it tends to be more interesting than the start
-				$thumbtime = $length / 2;
-			}
+		if ( $thumbTime === false ) {
+			# Seek to midpoint by default, it tends to be more interesting than the start
+			$thumbTime = $length / 2;
 		}
+
 		wfMkdirParents( dirname( $dstPath ) );
 
-		wfDebug( "Creating video thumbnail at $dstPath\n" );
-
-		// First check for oggThumb
-		if( $wgOggThumbLocation && is_file( $wgOggThumbLocation ) ){
-			$cmd = wfEscapeShellArg( $wgOggThumbLocation ) .
-				' -t '. intval( $thumbtime ) . ' ' .
-				' -n ' . wfEscapeShellArg( $dstPath ) . ' ' .
-				' ' . wfEscapeShellArg( $file->getPath() ) . ' 2>&1';
-			$returnText = wfShellExec( $cmd, $retval );
-			//check if it was successful or if we should try ffmpeg:
-			if ( !$this->removeBadFile( $dstPath, $retval ) ) {
-				return true;
-			}
+		global $wgOggThumbLocation;
+		if ( $wgOggThumbLocation !== false ) {
+			$status = $this->runOggThumb( $file->getPath(), $dstPath, $thumbTime );
+		} else {
+			$status = $this->runFFmpeg( $file->getPath(), $dstPath, $thumbTime );
 		}
+		if ( $status === true ) {
+			return new OggVideoDisplay( $file, $file->getURL(), $dstUrl, $width, $height, 
+				$length, $dstPath );
+		} else {
+			return new MediaTransformError( 'thumbnail_error', $width, $height, $status );
+		}
+	}
 
-		$cmd = wfEscapeShellArg( $wgFFmpegLocation ) .
-			' -ss ' . intval( $thumbtime ) . ' ' .
-			' -i ' . wfEscapeShellArg( $file->getPath() ) .
-			# MJPEG, that's the same as JPEG except it's supported by the windows build of ffmpeg
+	/**
+	 * Run FFmpeg to generate a still image from a video file, using a frame close 
+	 * to the given number of seconds from the start.
+	 *
+	 * Returns true on success, or an error message on failure.
+	 */
+	function runFFmpeg( $videoPath, $dstPath, $time ) {
+		global $wgFFmpegLocation;
+		wfDebug( __METHOD__." creating thumbnail at $dstPath\n" );
+		$cmd = wfEscapeShellArg( $wgFFmpegLocation ) . 
+			# FFmpeg only supports integer numbers of seconds
+			' -ss ' . intval( $time ) . ' ' .
+			' -i ' . wfEscapeShellArg( $videoPath ) . 
+			# MJPEG, that's the same as JPEG except it's supported ffmpeg
 			# No audio, one frame
 			' -f mjpeg -an -vframes 1 ' .
 			wfEscapeShellArg( $dstPath ) . ' 2>&1';
@@ -276,44 +269,53 @@ class OggHandler extends MediaHandler {
 		$returnText = wfShellExec( $cmd, $retval );
 
 		if ( $this->removeBadFile( $dstPath, $retval ) || $retval ) {
-			#re-attempt encode command on frame time 1 and with mapping (special case for chopped oggs)
-			$cmd = wfEscapeShellArg( $wgFFmpegLocation ) .
-			' -map 0:1 '.
-			' -ss 1 ' .
-			' -i ' . wfEscapeShellArg( $file->getPath() ) .
-			' -f mjpeg -an -vframes 1 ' .
-			wfEscapeShellArg( $dstPath ) . ' 2>&1';
-			$retval = 0;
-			$returnText = wfShellExec( $cmd, $retval );
+			// Filter nonsense
+			$lines = explode( "\n", str_replace( "\r\n", "\n", $returnText ) );
+			if ( substr( $lines[0], 0, 6 ) == 'FFmpeg' ) {
+				for ( $i = 1; $i < count( $lines ); $i++ ) {
+					if ( substr( $lines[$i], 0, 2 ) != '  ' ) {
+						break;
+					}
+				}
+				$lines = array_slice( $lines, $i );
+			}
+			// Return error message
+			return implode( "\n", $lines );
 		}
+		// Success
+		return true;
+	}
+
+	/**
+	 * Run oggThumb to generate a still image from a video file, using a frame 
+	 * close to the given number of seconds from the start.
+	 *
+	 * Returns true on success, or an error message on failure.
+	 */
+	function runOggThumb( $videoPath, $dstPath, $time ) {
+		global $wgOggThumbLocation;
+		wfDebug( __METHOD__." creating thumbnail at $dstPath\n" );
+		$cmd = wfEscapeShellArg( $wgOggThumbLocation ) .
+			' -t ' . floatval( $time ) .
+			' -n ' . wfEscapeShellArg( $dstPath ) .
+			' ' . wfEscapeShellArg( $videoPath ) . ' 2>&1';
+		$retval = 0;
+		$returnText = wfShellExec( $cmd, $retval );
 
 		if ( $this->removeBadFile( $dstPath, $retval ) || $retval ) {
-			#No mapping, time zero. A last ditch attempt.
-			$cmd = wfEscapeShellArg( $wgFFmpegLocation ) .
-			' -ss 0 ' .
-			' -i ' . wfEscapeShellArg( $file->getPath() ) .
-			' -f mjpeg -an -vframes 1 ' .
-			wfEscapeShellArg( $dstPath ) . ' 2>&1';
-
-			$retval = 0;
-			$returnText = wfShellExec( $cmd, $retval );
-			// If still bad return error:
-			if ( $this->removeBadFile( $dstPath, $retval ) || $retval ) {
-				// Filter nonsense
-				$lines = explode( "\n", str_replace( "\r\n", "\n", $returnText ) );
-				if ( substr( $lines[0], 0, 6 ) == 'FFmpeg' ) {
-					for ( $i = 1; $i < count( $lines ); $i++ ) {
-						if ( substr( $lines[$i], 0, 2 ) != '  ' ) {
-							break;
-						}
-					}
-					$lines = array_slice( $lines, $i );
-				}
-				// Return error box
-				return new MediaTransformError( 'thumbnail_error', $width, $height, implode( "\n", $lines ) );
+			// oggThumb spams both stderr and stdout with useless progress
+			// messages, and then often forgets to output anything when 
+			// something actually does go wrong. So interpreting its output is
+			// a challenge.
+			$lines = explode( "\n", str_replace( "\r\n", "\n", $returnText ) );
+			if ( count( $lines ) > 0 
+				&& preg_match( '/invalid option -- \'n\'$/', $lines[0] ) )
+			{
+				return wfMsgForContent( 'ogg-oggThumb-version', '0.9' );
+			} else {
+				return wfMsgForContent( 'ogg-oggThumb-failed' );
 			}
 		}
-		// If we did not return an error return true to continue media thum display
 		return true;
 	}
 
