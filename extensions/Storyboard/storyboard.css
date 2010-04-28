@@ -64,11 +64,15 @@
 	float: right;
 }
 
+.validationerror {
+	color: red;
+}
+
 /**
  * Css for <storyboard> tags
  */
 .storyboard {
-border: 1px solid #ddd;
+	border: 1px solid #ddd;
 }
 .storyboard .storyboard-batch {
 	margin: 0;

@@ -83,7 +83,11 @@ class SpecialStorySubmission extends UnlistedSpecialPage {
 			$wgOut->setPageTitle( wfMsg( 'storyboard-submissionincomplete' ) );
 			
 			$wgOut->addWikiMsg( 'storyboard-alreadyexists', $title, $wgTitle->getFullURL() );
-			$wgOut->addHtml( '<a href="#" onclick="history.go(-1); return false;">' . wfMsg( 'storyboard-changetitle' ) . '</a>' );
+			
+			// Let's not give a null link to people with no JS.
+			// TODO: change this to the last page somehow
+			$fallBackUrl = Title::newMainPage()->getFullURL(); 
+			$wgOut->addHtml( "<a href='$fallBackUrl' onclick='history.go(-1); return false;'>" . wfMsg( 'storyboard-changetitle' ) . '</a>' );
 		}
 	}
 	

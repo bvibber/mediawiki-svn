@@ -27,8 +27,6 @@ class TagStorysubmission {
 	 * @param $frame
 	 * 
 	 * @return array
-	 * 
-	 * FIXME: the submission broke somehow
 	 */
 	public static function render( $input, array $args, Parser $parser, $frame ) {
 		wfProfileIn( __METHOD__ );
@@ -213,15 +211,13 @@ EOT
 
 		$formBody .= Html::hidden( 'lang', $args['language'] );
 		
-		$submissionUrl = SpecialPage::getTitleFor( 'StorySubmission' )->getFullURL();
-		
 		return Html::rawElement(
 			'form',
 			array(
 				'id' => 'storyform',
 				'name' => 'storyform',
 				'method' => 'post',
-				'action' => $submissionUrl,
+				'action' => SpecialPage::getTitleFor( 'StorySubmission' )->getFullURL(),
 				'onsubmit' => 'return stbValidateSubmission( "storyboard-agreement" );'
 			),
 			$formBody
