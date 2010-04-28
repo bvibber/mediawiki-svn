@@ -14,7 +14,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 }
 
 function fnBreadCrumbsShowHook( &$m_pageObj ) {
-	global $wgTitle, $wgOut, $wgUser;
+	global $wgOut, $wgUser;
 	global $wgBreadCrumbsDelimiter, $wgBreadCrumbsCount, $wgBreadCrumbsShowAnons;
 
 	if ( !$wgBreadCrumbsShowAnons && $wgUser->isAnon() )
@@ -25,15 +25,17 @@ function fnBreadCrumbsShowHook( &$m_pageObj ) {
 	if ( isset( $_SESSION['BreadCrumbs'] ) ) $m_BreadCrumbs = $_SESSION['BreadCrumbs'];
 	# cache index of last element:
 	$m_count = count( $m_BreadCrumbs ) - 1;
+	# Title object for the page we're viewing
+	$title = $m_pageObj->getTitle();
 
 	# check for doubles:
-	if ( $m_count < 1 || $m_BreadCrumbs[ $m_count ] != $wgTitle->getPrefixedText() ) {
+	if ( $m_count < 1 || $m_BreadCrumbs[ $m_count ] != $title->getPrefixedText() ) {
 		if ( $m_count >= 1 ) {
 			# reduce the array set, remove older elements:
 			$m_BreadCrumbs = array_slice( $m_BreadCrumbs, ( 1 - $wgBreadCrumbsCount ) );
 		}
 		# add new page:
-		array_push( $m_BreadCrumbs, $wgTitle->getPrefixedText() );
+		array_push( $m_BreadCrumbs, $title->getPrefixedText() );
 	}
 	# serialize data from array to session:
 	$_SESSION['BreadCrumbs'] = $m_BreadCrumbs;
@@ -52,7 +54,7 @@ function fnBreadCrumbsShowHook( &$m_pageObj ) {
 	$wgOut->addHTML( $m_trail );
 
 	# invalidate internal MediaWiki cache:
-	$wgTitle->invalidateCache();
+	$title->invalidateCache();
 	$wgUser->invalidateCache();
 
 	# Return true to let the rest work:
