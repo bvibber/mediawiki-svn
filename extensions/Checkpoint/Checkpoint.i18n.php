@@ -1,4 +1,9 @@
 <?php
+/**
+ * Internationalisation file for Checkpoint extension.
+ *
+ * @addtogroup Extensions
+ */
 
 $messages = array();
 
