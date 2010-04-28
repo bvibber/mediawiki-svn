@@ -834,6 +834,7 @@ body.rtl .wikiEditor-ui-toolbar .sections .section {
 	background-repeat: no-repeat;
 	padding-left: 32px;
 	margin-left: 1em;
+	height: 22px;
 	float: left;
 	color: #666666;
 }

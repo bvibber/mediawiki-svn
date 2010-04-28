@@ -45,7 +45,13 @@ api: {
 	},
 	openDialog: function( context, module ) {
 		if ( module in $.wikiEditor.modules.dialogs.modules ) {
-			$( '#' + $.wikiEditor.modules.dialogs.modules[module].id ).dialog( 'open' );
+			var mod = $.wikiEditor.modules.dialogs.modules[module];
+			var $dialog = $( '#' + mod.id );
+			if ( $dialog.length == 0 ) {
+				$.wikiEditor.modules.dialogs.fn.reallyCreate( context, mod );
+				$dialog = $( '#' + mod.id );
+			}
+			$dialog.dialog( 'open' );
 		}
 	},
 	closeDialog: function( context, module ) {
@@ -65,72 +71,75 @@ fn: {
 	 * @param {Object} config Configuration object to create module from
 	 */
 	create: function( context, config ) {
-		// Add modules
-		for ( module in config ) {
-			$.wikiEditor.modules.dialogs.modules[module] = config[module];
-		}
-		// Build out modules immediately
-		// TODO: Move mw.usability.load() call down to where we're sure we're really gonna build a dialog
-		mw.usability.load( [ '$j.ui', '$j.ui.dialog', '$j.ui.draggable', '$j.ui.resizable' ], function() {
-			for ( mod in $.wikiEditor.modules.dialogs.modules ) {
-				var module = $.wikiEditor.modules.dialogs.modules[mod];
-				// Only create the dialog if it's supported, not filtered and doesn't exist yet
-				var filtered = false;
-				if ( typeof module.filters != 'undefined' ) {
-					for ( var i = 0; i < module.filters.length; i++ ) {
-						if ( $( module.filters[i] ).length == 0 ) {
-							filtered = true;
-							break;
-						}
+		// Defer building of modules, but do check whether they need the iframe rightaway
+		for ( mod in config ) {
+			var module = config[mod];
+			// Only create the dialog if it's supported, isn't filtered and doesn't exist yet
+			var filtered = false;
+			if ( typeof module.filters != 'undefined' ) {
+				for ( var i = 0; i < module.filters.length; i++ ) {
+					if ( $( module.filters[i] ).length == 0 ) {
+						filtered = true;
+						break;
 					}
-				}
-				if ( !filtered && $.wikiEditor.isSupported( module ) && $( '#' + module.id ).size() == 0 ) {
-					// If this dialog requires the iframe, set it up
-					if ( typeof context.$iframe == 'undefined' && $.wikiEditor.isRequired( module, 'iframe' ) ) {
-						context.fn.setupIframe();
-					}
-					
-					var configuration = module.dialog;
-					// Add some stuff to configuration
-					configuration.bgiframe = true;
-					configuration.autoOpen = false;
-					configuration.modal = true;
-					configuration.title = $.wikiEditor.autoMsg( module, 'title' );
-					// Transform messages in keys
-					// Stupid JS won't let us do stuff like
-					// foo = { mw.usability.getMsg( 'bar' ): baz }
-					configuration.newButtons = {};
-					for ( msg in configuration.buttons )
-						configuration.newButtons[mw.usability.getMsg( msg )] = configuration.buttons[msg];
-					configuration.buttons = configuration.newButtons;
-					// Create the dialog <div>
-					var dialogDiv = $( '<div />' )
-						.attr( 'id', module.id )
-						.html( module.html )
-						.data( 'context', context )
-						.appendTo( $( 'body' ) )
-						.each( module.init )
-						.dialog( configuration );
-					// Set tabindexes on buttons added by .dialog()
-					$.wikiEditor.modules.dialogs.fn.setTabindexes( dialogDiv.closest( '.ui-dialog' )
-						.find( 'button' ).not( '[tabindex]' ) );
-					if ( !( 'resizeme' in module ) || module.resizeme ) {
-						dialogDiv
-							.bind( 'dialogopen', $.wikiEditor.modules.dialogs.fn.resize )
-							.find( '.ui-tabs' ).bind( 'tabsshow', function() {
-								$(this).closest( '.ui-dialog-content' ).each(
-									$.wikiEditor.modules.dialogs.fn.resize );
-							});
-					}
-					dialogDiv.bind( 'dialogclose', function() {
-						context.fn.restoreSelection();
-					} );
-					
-					// Let the outside world know we set up this dialog
-					context.$textarea.trigger( 'wikiEditor-dialogs-loaded-' + mod );
 				}
 			}
-		});
+			if ( !filtered && $.wikiEditor.isSupported( module ) && $( '#' + module.id ).size() == 0 ) {
+				$.wikiEditor.modules.dialogs.modules[mod] = module;
+				// If this dialog requires the iframe, set it up
+				if ( typeof context.$iframe == 'undefined' && $.wikiEditor.isRequired( module, 'iframe' ) ) {
+					context.fn.setupIframe();
+				}
+				context.$textarea.trigger( 'wikiEditor-dialogs-setup-' + mod );
+			}
+		}
+	},
+	/**
+	 * Build the actual dialog. This done on-demand rather than in create()
+	 * @param {Object} context Context object of editor dialog belongs to
+	 * @param {Object} module Dialog module object
+	 */
+	reallyCreate: function( context, module ) {
+		mw.usability.load( [ '$j.ui', '$j.ui.dialog', '$j.ui.draggable', '$j.ui.resizable' ], function() {
+			var configuration = module.dialog;
+			// Add some stuff to configuration
+			configuration.bgiframe = true;
+			configuration.autoOpen = false;
+			configuration.modal = true;
+			configuration.title = $.wikiEditor.autoMsg( module, 'title' );
+			// Transform messages in keys
+			// Stupid JS won't let us do stuff like
+			// foo = { mw.usability.getMsg( 'bar' ): baz }
+			configuration.newButtons = {};
+			for ( msg in configuration.buttons )
+				configuration.newButtons[mw.usability.getMsg( msg )] = configuration.buttons[msg];
+			configuration.buttons = configuration.newButtons;
+			// Create the dialog <div>
+			var dialogDiv = $( '<div />' )
+				.attr( 'id', module.id )
+				.html( module.html )
+				.data( 'context', context )
+				.appendTo( $( 'body' ) )
+				.each( module.init )
+				.dialog( configuration );
+			// Set tabindexes on buttons added by .dialog()
+			$.wikiEditor.modules.dialogs.fn.setTabindexes( dialogDiv.closest( '.ui-dialog' )
+				.find( 'button' ).not( '[tabindex]' ) );
+			if ( !( 'resizeme' in module ) || module.resizeme ) {
+				dialogDiv
+					.bind( 'dialogopen', $.wikiEditor.modules.dialogs.fn.resize )
+					.find( '.ui-tabs' ).bind( 'tabsshow', function() {
+						$(this).closest( '.ui-dialog-content' ).each(
+							$.wikiEditor.modules.dialogs.fn.resize );
+					});
+			}
+			dialogDiv.bind( 'dialogclose', function() {
+				context.fn.restoreSelection();
+			} );
+			
+			// Let the outside world know we set up this dialog
+			context.$textarea.trigger( 'wikiEditor-dialogs-loaded-' + mod );
+		} );
 	},
 	/**
 	 * Resize a dialog so its contents fit
