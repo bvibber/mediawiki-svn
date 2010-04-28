@@ -84,9 +84,10 @@ function wfReMapOutputPage(){
  */
 $wgHooks['MakeGlobalVariablesScript'][] = 'js2SupportAddJSVars';
 function js2SupportAddJSVars( &$vars ) {
-	$vars = array_merge( $vars, 
+	global $wgExtensionAssetsPath;
+	$vars = array_merge( $vars,
 		array(
-			'wgScriptLoaderLocation' => $wgExtensionAssetsPath . 'JS2Support/mwScriptLoader.php'  
+			'wgScriptLoaderLocation' => $wgExtensionAssetsPath . 'JS2Support/mwScriptLoader.php'
 		)
 	);
 	return true;
@@ -180,5 +181,3 @@ $wgMwEmbedDirectory = "extensions/JS2Support/js/mwEmbed";
  * on every request.
  */
 $wgDebugJavaScript = false;
-
-

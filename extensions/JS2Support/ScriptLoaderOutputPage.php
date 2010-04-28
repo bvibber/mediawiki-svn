@@ -68,7 +68,7 @@ class ScriptLoaderOutputPage extends OutputPage {
 		// Add script without grouping
 		$this->addScript( Html::linkedScript( wfAppendQuery( $path, $wgStyleVersion ) ) );
 	}
-	
+
 	/**
 	 * Gets the class name From an internal wiki title link
 	 * @param $path String: script include path
@@ -161,7 +161,7 @@ class ScriptLoaderOutputPage extends OutputPage {
 		$scripts .= "\n" . $this->mScripts;
 		return $scripts;
 	}
-	
+
 	/**
 	 * Add a className to an output Bucket
 	 */
@@ -171,7 +171,7 @@ class ScriptLoaderOutputPage extends OutputPage {
 		}
 		$this->mScriptLoaderClassList[ $type ][ $bucket ][] = $className;
 	}
-	
+
 	/**
 	 * Set the embed options for a given bucketKey
 	 * @param $bucketKey String: the bucketkey to apply the options to.
@@ -179,7 +179,7 @@ class ScriptLoaderOutputPage extends OutputPage {
 	protected function setClassBucketOptions( $bucketKey, $options ){
 		$this->mScriptLoaderBucketOptions[ $bucketKey ] = $options;
 	}
-	
+
 	/**
 	 * Get class bucket options
 	 */
@@ -189,7 +189,7 @@ class ScriptLoaderOutputPage extends OutputPage {
 		}
 		return array();
 	}
-	
+
 	/**
 	 * Add a local or specified stylesheet, with the given media options.
 	 * Meant primarily for internal use...
@@ -255,7 +255,7 @@ class ScriptLoaderOutputPage extends OutputPage {
 		// Else use normal styles output:
 		$this->styles[ $style ] = $options;
 	}
-	
+
 	/**
 	 * Build a set of <link>s for the stylesheets specified in the $this->styles array.
 	 * These will be applied to various media & IE conditionals.
@@ -318,7 +318,7 @@ class ScriptLoaderOutputPage extends OutputPage {
 		//Now re-append any scripts that got added prior to the includeJQuery call
 		$this->mScripts = $this->mScripts . $postScripts;
 	}
-	
+
 	/**
 	 * Get style sheets grouped by  "media", "condition" & "bucket" attributes
 	 * call getLinkedScriptLoaderCss for each group
@@ -337,7 +337,7 @@ class ScriptLoaderOutputPage extends OutputPage {
 		}
 		return $s;
 	}
-	
+
 	/**
 	 * Get the linked css script-loader calls
 	 * @param Array $stylesAry Array of style sheets to be added.
@@ -347,7 +347,7 @@ class ScriptLoaderOutputPage extends OutputPage {
 		$stylesString = implode( ',', $stylesAry );
 
 		$url = wfScript( self::$mScriptLoaderPath ) .
-			"?class={$stylesString}&" . $this->getURIDparam( $stylesAry ). "&ctype=css";
+			"?class={$stylesString}&" . $this->getURIDparam( $stylesAry ). "&format=css";
 
 		// Check for the media option:
 		if( isset( $options['media'] ) && $options['media']!='' ){
@@ -363,7 +363,7 @@ class ScriptLoaderOutputPage extends OutputPage {
 
 		return $link;
 	}
-	
+
 	/**
 	 * Adds the script loader to mScripts
 	 */
@@ -381,7 +381,7 @@ class ScriptLoaderOutputPage extends OutputPage {
 		}
 		return $s;
 	}
-	
+
 	/**
 	 * Get the <script> tag which will invoke the script loader
 	 * @param $classAry A class array
@@ -401,72 +401,82 @@ class ScriptLoaderOutputPage extends OutputPage {
 	 * @param $type 'js' or 'css' for type of head item being included
 	 * @return boolean False if the class wasn't found, True on success
 	 */
-	function addScriptClass( $className, $scriptRequestBucket = 'page' , $type='js') {
+/**
+	 * @param $className String Name of the class
+	 * @param $scriptRequestBucket Name of bucket for the class
+	 * @param $type 'js' or 'css' for type of head item being included
+	 * @return boolean False if the class wasn't found, True on success
+	 */
+function addScriptClass( $className, $scriptRequestBucket = 'page' , $type='js') {
 		global $wgDebugJavaScript, $wgScriptLoaderNamedPaths, $IP,
 		$wgEnableScriptLoader, $wgStyleVersion, $wgScriptPath, $wgStylePath,
 		$wgUser;
+
+		if( !$this->mScriptLoader ){
+			$this->mScriptLoader = new jsScriptLoader();
+		}
 
 		// Check for wikiTitle:
 		if ( substr( $className, 0, 3 ) == 'WT:' ) {
 			if( $wgEnableScriptLoader ) {
 				// Add to the mScriptLoaderClassList list
 				$this->addClassToOutputBucket( $className, $scriptRequestBucket, $type);
+				return true;
 			} else {
+
 				$jsCache = $wgUser->isLoggedIn() ? '&smaxage=0' : '';
 				$titlePage =  substr( $className, 3 );
 				$titleArg = '';
+
 				//  Deal with arguments after the "|" syntax
 				if( stripos( $titlePage, "|") !== false ) {
 					$parts = explode( '|', $titlePage );
 					$titlePage = $parts[0];
 					$titleArg = '&' . $parts[1];
 				}
+				// Check script-loader for msg text
 				$this->addScriptFile(
-				Skin::makeUrl( $titlePage,
-						"action=raw$jsCache&gen=js$titleArg"
-				)
+					Skin::makeUrl( $titlePage,
+							"action=raw$jsCache&gen=js$titleArg"
+					)
 				);
 			}
-			// Done with addScriptClass used className as wikiTitle
-			return true;
-		}
 
-		// Get js or css path:
-		$path = jsScriptLoader::getPathFromClass( $className );
-		if( $path == false ){
-			// NOTE:: could throw an error here
-			//print "could not find: $className\n";
-			wfDebug( __METHOD__ . ' scriptLoader could not find class: ' . $className );
-			return false; // could not find the class
-		}
-		// Valid path add it to script-loader or "link" directly
-		if( $wgEnableScriptLoader ) {
-			// Register it with the script loader
-			$this->addClassToOutputBucket( $className, $scriptRequestBucket, $type );
-		} else {
-			// Source the script directly
-			$prefix = "skins/common/";
-			if( substr( $path, 0, 1 ) == '/' ) {
-				// Straight path
-			} elseif( substr( $path, 0, strlen( $prefix ) ) == $prefix ) {
-				// Respect $wgStypePath
-				$path = "{$wgStylePath}/common/" . substr( $path, strlen( $prefix ) );
+		} else { //dealing with a file not WikiText
+
+			// Get js or css path:
+			$path = jsScriptLoader::getPathFromClass( $className );
+			if( $path == false ){
+				// NOTE:: could throw an error here
+				//print "could not find: $className\n";
+				wfDebug( __METHOD__ . ' scriptLoader could not find class: ' . $className );
+				return false; // could not find the class
+			}
+			// Valid path add it to script-loader or "link" directly
+			if( $wgEnableScriptLoader ) {
+				// Register it with the script loader
+				$this->addClassToOutputBucket( $className, $scriptRequestBucket, $type );
+				return true;
 			} else {
-				$path = $wgScriptPath . '/' . $path;
-			}
-			$this->addScript( Html::linkedScript( $path . "?" . $this->getURIDparam( $className ) ) );
-
-			// Merge in language text for non-script loader scripts
-			if( !$this->mScriptLoader ){
-				$this->mScriptLoader = new jsScriptLoader();
-			}
-			$inlineMsg = $this->mScriptLoader->getInlineMsgFromClass( $className );
-			if( $inlineMsg != '' ){
-				$this->addScript( Html::inlineScript( $inlineMsg ));
+				// Source the script directly
+				$prefix = "skins/common/";
+				if( substr( $path, 0, 1 ) == '/' ) {
+					// Straight path
+				} elseif( substr( $path, 0, strlen( $prefix ) ) == $prefix ) {
+					// Respect $wgStypePath
+					$path = "{$wgStylePath}/common/" . substr( $path, strlen( $prefix ) );
+				} else {
+					$path = $wgScriptPath . '/' . $path;
+				}
+				$this->addScript( Html::linkedScript( $path . "?" . $this->getURIDparam( $className ) ) );
 			}
 		}
-		return true;
-
+		// Included script without script-loader
+		// Generate the localized msgs inline since we can't rely on scriptloader to localize
+		$inlineMsg = $this->mScriptLoader->getInlineMsgFromClass( $className );
+		if( $inlineMsg != '' ) {
+			$this->addScript( Html::inlineScript( $inlineMsg ) );
+		}
 	}
 
 	/**
