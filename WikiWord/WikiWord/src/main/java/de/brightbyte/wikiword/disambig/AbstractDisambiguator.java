@@ -86,10 +86,16 @@ public abstract class AbstractDisambiguator<T extends TermReference, C extends W
 	}
 	
 	protected <X extends T>PhraseNode<X> getLastNode(PhraseNode<X> root, List<X> sequence) {
+		PhraseNode<X> n = findLastNode(root, sequence);
+		if (n==null) throw new IllegalArgumentException("sequence does not match node structure: "+sequence);
+		return n;
+	}
+	
+	private <X extends T>PhraseNode<X> findLastNode(PhraseNode<X> root, List<X> sequence) {
 		terms: for (X t: sequence) {
 			Collection<? extends PhraseNode<X>> successors = root.getSuccessors();
 			if (successors==null || successors.isEmpty()) 
-				throw new IllegalArgumentException("sequence too long, no nodes left along this path.");
+				return null;
 			
 			for (PhraseNode<X> n: successors) {
 				if (n.getTermReference().equals(t)) {
@@ -98,7 +104,12 @@ public abstract class AbstractDisambiguator<T extends TermReference, C extends W
 				}
 			}
 			
-			throw new IllegalArgumentException("sequence does not match node structure; no node found matching "+t);
+			for (PhraseNode<X> n: successors) {
+				PhraseNode<X> m = findLastNode(n, sequence);
+				if (m != null) return m;
+			}
+			
+			return null;
 		}
 		
 		return root;

@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.Map;
 
 import de.brightbyte.data.Functor2;
-import de.brightbyte.data.Functors;
 import de.brightbyte.data.measure.Measure;
 import de.brightbyte.data.measure.Measure.Comparator;
 import de.brightbyte.wikiword.model.LocalConcept;
@@ -18,18 +17,18 @@ import de.brightbyte.wikiword.model.WikiWordConcept;
 public class PopularityDisambiguator extends AbstractDisambiguator<TermReference, LocalConcept> {
 	
 	protected Measure<WikiWordConcept> popularityMeasure;
-	protected Functor2<? extends Number, Number, Number> weigthCombiner;
 	protected Comparator<LocalConcept> popularityComparator;
 	
+	protected Functor2.Double weigthCombiner = new LinearCombiner(0.5);
+	
 	public PopularityDisambiguator(MeaningFetcher<LocalConcept> meaningFetcher) {
-		this(meaningFetcher, WikiWordConcept.theCardinality, Functors.Double.product2);
+		this(meaningFetcher, WikiWordConcept.theCardinality);
 	}
 	
-	public PopularityDisambiguator(MeaningFetcher<LocalConcept> meaningFetcher, Measure<WikiWordConcept> popularityMeasure, Functor2<? extends Number, Number, Number> weightCombiner) {
+	public PopularityDisambiguator(MeaningFetcher<LocalConcept> meaningFetcher, Measure<WikiWordConcept> popularityMeasure) {
 		super(meaningFetcher);
 		
 		this.setPopularityMeasure(popularityMeasure);
-		this.setWeightCombiner(weightCombiner);
 	}
 
 	public Measure<WikiWordConcept> getPopularityMeasure() {
@@ -41,7 +40,7 @@ public class PopularityDisambiguator extends AbstractDisambiguator<TermReference
 		this.popularityComparator = new Measure.Comparator<LocalConcept>(popularityMeasure, true);
 	}
 
-	public void setWeightCombiner(Functor2<? extends Number, Number, Number> weightCombiner) {
+	public void setWeightCombiner(Functor2.Double weightCombiner) {
 		this.weigthCombiner = weightCombiner;
 	}
 

@@ -12,7 +12,6 @@ import java.util.Map.Entry;
 
 import de.brightbyte.data.Functor;
 import de.brightbyte.data.Functor2;
-import de.brightbyte.data.Functors;
 import de.brightbyte.data.LabeledMatrix;
 import de.brightbyte.data.LabeledVector;
 import de.brightbyte.data.MapLabeledMatrix;
@@ -32,46 +31,44 @@ public class CoherenceDisambiguator extends AbstractDisambiguator<TermReference,
 	protected int minPopularity = 2; //FIXME: use complex cutoff specifier!
 	protected int maxMeanings = 8; //FIXME: magic...
 	
-	protected double minScore = 0.1; //FIXME: magic number. should "somehow" match popularityFactor and similarityFactor
-	protected double popularityBias = 0.2; //FIXME: magic number. should "somehow" match popularityFactor and similarityFactor
+	protected double minScore = 0.1; //FIXME: magic number. should "somehow" match popularityNormalizer and similarityNormalizer
+	//protected double popularityBias = 0.2; //FIXME: magic number. should "somehow" match popularityNormalizer and similarityNormalizer
+	//protected double weightBias = 0.5; //FIXME: magic number. should "somehow" match popularityNormalizer 
 	
 	protected FeatureCache.Manager<LocalConcept, Integer> featureCacheManager;
 
 	protected Similarity<LabeledVector<Integer>> similarityMeasure;
 	protected Measure<WikiWordConcept> popularityMeasure;
-	protected Functor2<? extends Number, Number, Number> weightCombiner;
 	protected PopularityDisambiguator popularityDisambiguator;
 	protected Comparator<LocalConcept> popularityComparator;
 	
-	private Functor.Double popularityFactor = new Functor.Double() { //NOTE: must map [0:inf] to [0:1] and grow monotonously
-	
+	private Functor.Double popularityNormalizer = new Functor.Double() { //NOTE: must map [0:inf] to [0:1] and grow monotonously
 		public double apply(double pop) {
 			return 1 - 1/(Math.sqrt(Math.log(pop))+1);  //XXX: black voodoo magic ad hoc formula with no deeper meaing.
 		}
-	
 	};
 	
-	private Functor.Double similarityFactor = new Functor.Double() { //NOTE: must map [0:1] to [0:1] and grow monotonously
+	private Functor.Double weightNormalizer = new Functor.Double() { //NOTE: must map [0:inf] to [0:1] and grow monotonously
+		public double apply(double pop) {
+			return 1 - 1/(Math.sqrt(Math.log(pop))+1);  //XXX: black voodoo magic ad hoc formula with no deeper meaing.
+		}
+	};
+	
+	private Functor.Double similarityNormalizer = new Functor.Double() { //NOTE: must map [0:1] to [0:1] and grow monotonously
 		public double apply(double sim) {
 			return Math.sqrt(Math.sqrt(sim));  //XXX: black voodoo magic ad hoc formula with no deeper meaing.
 		}
 	};
 
-	private Functor2.Double scoreCombiner = new Functor2.Double() { //NOTE: must map ([0:1][0:1]) to [0:1] and grow monotonously over both params.
-		
-		public double apply(double popf, double simf) {
-			return  popf * popularityBias + simf * ( 1 - popularityBias ); //linear combination
-			//return =  Math.sqrt( popf * simf ); //normalized produkt
-		}
-	
-	};
+	protected Functor2.Double scoreCombiner = new LinearCombiner(0.8);
+	protected Functor2.Double weightCombiner = new LinearCombiner(0.5);
 	
 	public CoherenceDisambiguator(MeaningFetcher<LocalConcept> meaningFetcher, FeatureFetcher<LocalConcept, Integer> featureFetcher, boolean featuresAreNormalized) {
-		this(meaningFetcher, featureFetcher, WikiWordConcept.theCardinality, Functors.Double.product2,
+		this(meaningFetcher, featureFetcher, WikiWordConcept.theCardinality, 
 					featuresAreNormalized ? ScalarVectorSimilarity.<Integer>getInstance() : CosineVectorSimilarity.<Integer>getInstance());  //if pre-normalized, use scalar to calc cosin
 	}
 	
-	public CoherenceDisambiguator(MeaningFetcher<LocalConcept> meaningFetcher, FeatureFetcher<LocalConcept, Integer> featureFetcher, Measure<WikiWordConcept> popularityMeasure, Functor2<? extends Number, Number, Number> weightCombiner, Similarity<LabeledVector<Integer>> sim) {
+	public CoherenceDisambiguator(MeaningFetcher<LocalConcept> meaningFetcher, FeatureFetcher<LocalConcept, Integer> featureFetcher, Measure<WikiWordConcept> popularityMeasure, Similarity<LabeledVector<Integer>> sim) {
 		super(meaningFetcher);
 		
 		if (popularityMeasure==null) throw new NullPointerException();
@@ -79,19 +76,18 @@ public class CoherenceDisambiguator extends AbstractDisambiguator<TermReference,
 		if (featureFetcher==null) throw new NullPointerException();
 		
 		this.featureCacheManager = new FeatureCache.Manager<LocalConcept, Integer>(featureFetcher, 10); //TODO: depth
-		this.popularityDisambiguator = new PopularityDisambiguator(meaningFetcher, popularityMeasure, weightCombiner);
+		this.popularityDisambiguator = new PopularityDisambiguator(meaningFetcher, popularityMeasure);
 		
 		this.setPopularityMeasure(popularityMeasure);
-		this.setWeightCombiner(weightCombiner);
 		this.setSimilarityMeasure(sim);
 	}
 	
-	public Functor.Double getPopularityFactor() {
-		return popularityFactor;
+	public Functor.Double getPopularityNormalizer() {
+		return popularityNormalizer;
 	}
 
-	public void setPopularityFactor(Functor.Double popularityFactor) {
-		this.popularityFactor = popularityFactor;
+	public void setPopularityNormalizer(Functor.Double popularityFactor) {
+		this.popularityNormalizer = popularityFactor;
 	}
 
 	public Measure<WikiWordConcept> getPopularityMeasure() {
@@ -104,7 +100,7 @@ public class CoherenceDisambiguator extends AbstractDisambiguator<TermReference,
 		this.popularityComparator = new Measure.Comparator<LocalConcept>(popularityMeasure, true);
 	}
 
-	public void setWeightCombiner(Functor2<? extends Number, Number, Number> weightCombiner) {
+	public void setWeightCombiner(Functor2.Double weightCombiner) {
 		this.weightCombiner = weightCombiner;
 		this.popularityDisambiguator.setWeightCombiner(weightCombiner);
 	}
@@ -117,12 +113,12 @@ public class CoherenceDisambiguator extends AbstractDisambiguator<TermReference,
 		this.scoreCombiner = scoreCombiner;
 	}
 
-	public Functor.Double getSimilarityFactor() {
-		return similarityFactor;
+	public Functor.Double getSimilarityNormalizer() {
+		return similarityNormalizer;
 	}
 
-	public void setSimilarityFactor(Functor.Double similarityFactor) {
-		this.similarityFactor = similarityFactor;
+	public void setSimilarityNormalizer(Functor.Double similarityFactor) {
+		this.similarityNormalizer = similarityFactor;
 	}
 
 	public void setFeatureFetcher(FeatureFetcher<LocalConcept, Integer> featureFetcher) {
@@ -137,14 +133,6 @@ public class CoherenceDisambiguator extends AbstractDisambiguator<TermReference,
 			Similarity<LabeledVector<Integer>> similarityMeasure) {
 		if (similarityMeasure==null) throw new NullPointerException();
 		this.similarityMeasure = similarityMeasure;
-	}
-
-	public double getPopularityBias() {
-		return popularityBias;
-	}
-
-	public void setPopularityBias(double popularityBias) {
-		this.popularityBias = popularityBias;
 	}
 
 	public int getMinPopularity() {
@@ -382,8 +370,7 @@ public class CoherenceDisambiguator extends AbstractDisambiguator<TermReference,
 			if (p<1) p= 1;
 			if (w<1) w= 1;
 			
-			pop += weightCombiner.apply(p, w).doubleValue(); 
-			
+			pop += p; 
 			weight += w; 
 			c ++;
 		}
@@ -393,10 +380,12 @@ public class CoherenceDisambiguator extends AbstractDisambiguator<TermReference,
 		pop = pop / c; //normalize
 		weight = weight / c; //normalize
 		
-		double popf = popularityFactor.apply(pop);
-		double simf = similarityFactor.apply(sim);
+		double popf = popularityNormalizer.apply(pop);
+		double simf = similarityNormalizer.apply(sim);
+		double weightf = weightNormalizer.apply(weight);
 		
-		double score = scoreCombiner.apply(popf, simf);
+		double score = weightCombiner.apply(weightf, popf);
+		score = scoreCombiner.apply(score, simf);
 		
 		return new Result<X, LocalConcept>(interp.getMeanings(), interp.getSequence(), score, "simf="+simf+", popf="+popf+", sim="+sim+", pop="+pop+", weight="+weight);
 	}

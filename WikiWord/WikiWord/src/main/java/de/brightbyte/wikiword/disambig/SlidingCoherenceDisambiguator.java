@@ -7,8 +7,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import de.brightbyte.data.Functor2;
-import de.brightbyte.data.Functors;
 import de.brightbyte.data.LabeledMatrix;
 import de.brightbyte.data.LabeledVector;
 import de.brightbyte.data.MapLabeledMatrix;
@@ -28,13 +26,13 @@ public class SlidingCoherenceDisambiguator extends CoherenceDisambiguator {
 	protected int initialWindow; 
 	
 	public SlidingCoherenceDisambiguator(MeaningFetcher<LocalConcept> meaningFetcher, FeatureFetcher<LocalConcept, Integer> featureFetcher, boolean featuresAreNormalized) {
-		this(meaningFetcher, featureFetcher, WikiWordConcept.theCardinality, Functors.Double.product2,
+		this(meaningFetcher, featureFetcher, WikiWordConcept.theCardinality, 
 					featuresAreNormalized ? ScalarVectorSimilarity.<Integer>getInstance() : CosineVectorSimilarity.<Integer>getInstance(),  //if pre-normalized, use scalar to calc cosin
 					5, 5);
 	}
 	
-	public SlidingCoherenceDisambiguator(MeaningFetcher<LocalConcept> meaningFetcher, FeatureFetcher<LocalConcept, Integer> featureFetcher, Measure<WikiWordConcept> popularityMeasure, Functor2<? extends Number, Number, Number> weightCombiner, Similarity<LabeledVector<Integer>> sim, int window, int initialWindow) {
-		super(meaningFetcher, featureFetcher, popularityMeasure, weightCombiner, sim);
+	public SlidingCoherenceDisambiguator(MeaningFetcher<LocalConcept> meaningFetcher, FeatureFetcher<LocalConcept, Integer> featureFetcher, Measure<WikiWordConcept> popularityMeasure, Similarity<LabeledVector<Integer>> sim, int window, int initialWindow) {
+		super(meaningFetcher, featureFetcher, popularityMeasure, sim);
 		
  		this.window = window;
  		this.initialWindow = initialWindow;
