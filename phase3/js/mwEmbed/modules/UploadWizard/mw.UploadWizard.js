@@ -2318,7 +2318,7 @@ mw.UploadWizardDeedChooser.prototype = {
 		if ( deed === mw.UploadWizardNullDeed ) {
 			$j( _this ).trigger( 'chooseNullDeed' );
 			$j( _this.selector )
-				.find( 'input[type="checkbox"]' )
+				.find( 'input.mwe-accept-deed' )
 				.attr( 'checked', false )
 			mw.log("choose null deed");
 		} else {
@@ -2403,14 +2403,14 @@ mw.UploadWizardDeedChooser.prototype = {
 						if ( $j( this ).is( ':checked' ) ) {
 							$j( _this.selector )
 								.find( '.mwe-upwiz-deed-accept-ownwork-custom' )
-								.attr( 'checked', false )
+								.attr( 'checked', false );
 							ownWorkDeed.licenseInput.setDefaultValues();
 							_this.choose( ownWorkDeed );
 						} else {
 							_this.choose( mw.UploadWizardNullDeed );
 						}
 					} )
-					.addClass( 'mwe-upwiz-deed-accept-ownwork-default mwe-checkbox-hang-indent' ),
+					.addClass( 'mwe-upwiz-deed-accept-ownwork-default mwe-accept-deed mwe-checkbox-hang-indent' ),
 				$j( '<p />' )
 					.addClass( 'mwe-checkbox-hang-indent-text' )
 					.html( gM( 'mwe-upwiz-source-ownwork-assert', 
@@ -2439,13 +2439,13 @@ mw.UploadWizardDeedChooser.prototype = {
 							_this.choose( mw.UploadWizardNullDeed );
 						}
 					} )
-					.addClass( 'mwe-upwiz-deed-accept-ownwork-custom mwe-checkbox-hang-indent' ),
+					.addClass( 'mwe-upwiz-deed-accept-ownwork-custom mwe-accept-deed mwe-checkbox-hang-indent' ),
 				$j( '<p />' )
 					.addClass( 'mwe-checkbox-hang-indent-text' )
 					.append( gM( 'mwe-upwiz-source-ownwork-assert-custom', 
-							'<span id="mwe-custom-author-input"></span>' ) ),
-				licenseInputDiv )
-			.maskSafeHide();
+							'<span class="mwe-custom-author-input"></span>' ) ),
+				licenseInputDiv 
+			).maskSafeHide();
 
 		$j( _this.selector ).find( '.mwe-upwiz-macro-deed-ownwork .mwe-upwiz-deed-form' )
 			.append( $j( '<div class="mwe-upwiz-deed-form-internal" />' )
@@ -2453,8 +2453,21 @@ mw.UploadWizardDeedChooser.prototype = {
 					 toggleDiv, 
 					 customDiv )
 			);
+
+		
 		
 		mw.UploadWizardUtil.makeFadingToggler( standardDiv, toggleDiv, customDiv );
+
+		// if they select 'fewer options', and they have selected the deed in there, we should unselect it
+		$j( toggleDiv ).bind( 'close', function(e) {
+			e.stopPropagation();
+			if ( $j( _this.selector ).find( '.mwe-upwiz-deed-accept-ownwork-custom' ).is( ':checked' ) ) {
+				$j( _this.selector )
+					.find( '.mwe-upwiz-deed-accept-ownwork-custom' )
+					.attr( 'checked', false );
+				_this.choose( mw.UploadWizardNullDeed );
+			}
+		} );
 
 		// have to add the author input this way -- gM() will flatten it to a string and we'll lose it as a dom object
 		$j( _this.selector ).find( '.mwe-custom-author-input' ).append( authorInput );
@@ -2607,6 +2620,7 @@ mw.UploadWizardUtil = {
 				if (fade) {
 					standardDiv.unmask();
 				}
+				$j( this ).trigger( 'close' );
 			}
 		};
 
