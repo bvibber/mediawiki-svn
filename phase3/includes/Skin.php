@@ -395,7 +395,7 @@ class Skin extends Linker {
 			'wgUrlProtocols' => wfUrlProtocols(),
 			'wgArticlePath' => $wgArticlePath,
 			'wgScriptPath' => $wgScriptPath,
-			'wgScriptLoaderLocation' => $wgScriptPath . 'mwScriptLoader.php',
+			'wgScriptLoaderLocation' => $wgScriptPath . '/mwScriptLoader.php',
 			'wgScriptExtension' => $wgScriptExtension,
 			'wgScript' => $wgScript,
 			'wgVariantArticlePath' => $wgVariantArticlePath,
@@ -2104,14 +2104,14 @@ CSS;
 	 * Currently only used for MediaWiki:Sidebar (but may be used by Extensions)
 	 *
 	 * This is just a wrapper around addToSidebarPlain() for backwards compatibility
-	 * 
+	 *
 	 * @param &$bar array
 	 * @param $message String
 	 */
 	function addToSidebar( &$bar, $message ) {
 		$this->addToSidebarPlain( $bar, wfMsgForContent( $message ) );
 	}
-	
+
 	/**
 	 * Add content from plain text
 	 * @since 1.17

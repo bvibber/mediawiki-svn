@@ -50,13 +50,6 @@ if( $wgRequest->isPathInfoBad() ){
 		'mwScriptLoader must be accessed through the primary script entry point.' );
 	return;
 }
-// Verify the script loader is on:
-if ( !$wgEnableScriptLoader ) {
-	echo '/*ScriptLoader is not enabled for this site. To enable add the following line to your LocalSettings.php';
-	echo '<pre><b>$wgEnableScriptLoader=true;</b></pre>*/';
-	echo 'alert(\'Script loader is disabled\');';
-	die( 1 );
-}
 
 //load the language file and
 // Run jsScriptLoader action:

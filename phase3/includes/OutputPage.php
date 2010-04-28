@@ -2296,7 +2296,6 @@ class OutputPage {
 		// Add our core scripts to mScripts ( includes jQuery, mwEmbed & wikibits )
 		$this->includeCoreJS();
 
-
 		// If the script-loader is enabled get script-loader classes per buckets
 		if( $wgEnableScriptLoader ) {
 			$this->mScripts .= $this->getScriptLoaderJS();
@@ -2840,7 +2839,7 @@ class OutputPage {
 		$stylesString = implode( ',', $stylesAry );
 
 		$url = wfScript( 'mwScriptLoader' ) .
-			"?class={$stylesString}&" . $this->getURIDparam( $stylesAry ). "&ctype=css";
+			"?class={$stylesString}&" . $this->getURIDparam( $stylesAry ). "&format=css";
 
 		// Check for the media option:
 		if( isset( $options['media'] ) && $options['media']!='' ){
@@ -2895,67 +2894,71 @@ class OutputPage {
 		$wgEnableScriptLoader, $wgStyleVersion, $wgScriptPath, $wgStylePath,
 		$wgUser;
 
+		if( !$this->mScriptLoader ){
+			$this->mScriptLoader = new jsScriptLoader();
+		}
+
 		// Check for wikiTitle:
 		if ( substr( $className, 0, 3 ) == 'WT:' ) {
 			if( $wgEnableScriptLoader ) {
 				// Add to the mScriptLoaderClassList list
 				$this->addClassToOutputBucket( $className, $scriptRequestBucket, $type);
+				return true;
 			} else {
+
 				$jsCache = $wgUser->isLoggedIn() ? '&smaxage=0' : '';
 				$titlePage =  substr( $className, 3 );
 				$titleArg = '';
+
 				//  Deal with arguments after the "|" syntax
 				if( stripos( $titlePage, "|") !== false ) {
 					$parts = explode( '|', $titlePage );
 					$titlePage = $parts[0];
 					$titleArg = '&' . $parts[1];
 				}
+				// Check script-loader for msg text
 				$this->addScriptFile(
-				Skin::makeUrl( $titlePage,
-						"action=raw$jsCache&gen=js$titleArg"
-				)
+					Skin::makeUrl( $titlePage,
+							"action=raw$jsCache&gen=js$titleArg"
+					)
 				);
 			}
-			// Done with addScriptClass used className as wikiTitle
-			return true;
-		}
 
-		// Get js or css path:
-		$path = jsScriptLoader::getPathFromClass( $className );
-		if( $path == false ){
-			// NOTE:: could throw an error here
-			//print "could not find: $className\n";
-			wfDebug( __METHOD__ . ' scriptLoader could not find class: ' . $className );
-			return false; // could not find the class
-		}
-		// Valid path add it to script-loader or "link" directly
-		if( $wgEnableScriptLoader ) {
-			// Register it with the script loader
-			$this->addClassToOutputBucket( $className, $scriptRequestBucket, $type );
-		} else {
-			// Source the script directly
-			$prefix = "skins/common/";
-			if( substr( $path, 0, 1 ) == '/' ) {
-				// Straight path
-			} elseif( substr( $path, 0, strlen( $prefix ) ) == $prefix ) {
-				// Respect $wgStypePath
-				$path = "{$wgStylePath}/common/" . substr( $path, strlen( $prefix ) );
+		} else { //dealing with a file not WikiText
+
+			// Get js or css path:
+			$path = jsScriptLoader::getPathFromClass( $className );
+			if( $path == false ){
+				// NOTE:: could throw an error here
+				//print "could not find: $className\n";
+				wfDebug( __METHOD__ . ' scriptLoader could not find class: ' . $className );
+				return false; // could not find the class
+			}
+			// Valid path add it to script-loader or "link" directly
+			if( $wgEnableScriptLoader ) {
+				// Register it with the script loader
+				$this->addClassToOutputBucket( $className, $scriptRequestBucket, $type );
+				return true;
 			} else {
-				$path = $wgScriptPath . '/' . $path;
-			}
-			$this->addScript( Html::linkedScript( $path . "?" . $this->getURIDparam( $className ) ) );
-
-			// Merge in language text for non-script loader scripts
-			if( !$this->mScriptLoader ){
-				$this->mScriptLoader = new jsScriptLoader();
-			}
-			$inlineMsg = $this->mScriptLoader->getInlineMsgFromClass( $className );
-			if( $inlineMsg != '' ){
-				$this->addScript( Html::inlineScript( $inlineMsg ));
+				// Source the script directly
+				$prefix = "skins/common/";
+				if( substr( $path, 0, 1 ) == '/' ) {
+					// Straight path
+				} elseif( substr( $path, 0, strlen( $prefix ) ) == $prefix ) {
+					// Respect $wgStypePath
+					$path = "{$wgStylePath}/common/" . substr( $path, strlen( $prefix ) );
+				} else {
+					$path = $wgScriptPath . '/' . $path;
+				}
+				$this->addScript( Html::linkedScript( $path . "?" . $this->getURIDparam( $className ) ) );
 			}
 		}
-		return true;
-
+		// Included script without script-loader
+		// Generate the localized msgs inline since we can't rely on scriptloader to localize
+		$inlineMsg = $this->mScriptLoader->getInlineMsgFromClass( $className );
+		if( $inlineMsg != '' ) {
+			$this->addScript( Html::inlineScript( $inlineMsg ) );
+		}
 	}
 
 	/**
