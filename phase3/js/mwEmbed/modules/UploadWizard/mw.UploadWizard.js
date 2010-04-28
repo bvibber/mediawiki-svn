@@ -2317,6 +2317,9 @@ mw.UploadWizardDeedChooser.prototype = {
 		mw.log( deed );
 		if ( deed === mw.UploadWizardNullDeed ) {
 			$j( _this ).trigger( 'chooseNullDeed' );
+			$j( _this.selector )
+				.find( 'input[type="checkbox"]' )
+				.attr( 'checked', false )
 			mw.log("choose null deed");
 		} else {
 			$j( _this ).trigger( 'chooseDeed' );
@@ -2398,6 +2401,9 @@ mw.UploadWizardDeedChooser.prototype = {
 					.attr( { type: 'checkbox' } )
 					.click( function() {
 						if ( $j( this ).is( ':checked' ) ) {
+							$j( _this.selector )
+								.find( '.mwe-upwiz-deed-accept-ownwork-custom' )
+								.attr( 'checked', false )
 							ownWorkDeed.licenseInput.setDefaultValues();
 							_this.choose( ownWorkDeed );
 						} else {
@@ -2425,6 +2431,9 @@ mw.UploadWizardDeedChooser.prototype = {
 					.attr( { type: 'checkbox' } )
 					.click( function() { 
 						if ( $j( this ).is( ':checked' ) ) {
+							$j( _this.selector )
+								.find( '.mwe-upwiz-deed-accept-ownwork-default' )
+								.attr( 'checked', false )
 							_this.choose( ownWorkDeed ); 
 						} else {
 							_this.choose( mw.UploadWizardNullDeed );
@@ -2518,12 +2527,6 @@ mw.UploadWizardDeedChooser.prototype = {
 					licenseInputDiv
 				)
 		);
-
-		$j( _this.selector ).find( '.mwe-upwiz-deed-thirdparty-accept' )
-			.attr( { value: gM( 'mwe-upwiz-source-thirdparty-accept' ) } )
-			.click( function() {
-				_this.choose( thirdPartyDeed );
-			} );	
 
 		$j( _this.selector ).find( '.mwe-upwiz-macro-deed-thirdparty .mwe-upwiz-deed-header-link').click( 
 			function() { 
