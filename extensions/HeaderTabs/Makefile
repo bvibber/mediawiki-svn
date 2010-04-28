@@ -20,7 +20,7 @@ else
 	rm HeaderTabs/Makefile
 	tar -c HeaderTabs |gzip > HeaderTabs_${v}.tgz
 	zip -r HeaderTabs_${v}.zip HeaderTabs
-	rm -rf Widgets
+	rm -rf HeaderTabs 
 
 	# upload to Google Code repository (need account with enough permissions)
 	googlecode/googlecode_upload.py -s "MediaWiki HeaderTabs Extension v${v} (tarball)" -p mediawiki-header-tabs -l "Featured,Type-Archive,OpSys-All" HeaderTabs_${v}.tgz
