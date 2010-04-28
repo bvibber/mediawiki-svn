@@ -14,12 +14,11 @@ $wgExtensionFunctions[] = 'htSetupExtension';
 $wgExtensionCredits['parserhook'][] = array(
 	'name' => 'Header Tabs',
 	'description' => 'Adds tabs to the page separating top-level sections. Originally developed for [http://www.ardorado.com Ardorado.com]',
-	'version' => '0.6.6',
+	'version' => '0.7',
 	'author' => '[http://www.sergeychernyshev.com Sergey Chernyshev]',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Header_Tabs'
 );
 
-$htYUIBase = 'http://yui.yahooapis.com/2.5.1/build/';
 $htUseHistory = true;
 
 function htSetupExtension() {
@@ -113,12 +112,6 @@ function htReplaceFirstLevelHeaders( &$parser, &$text ) {
 		$tabhtml .= '<div class="yui-content">';
 		$firsttab = true;
 		foreach ( $tabs as $tab ) {
-			if ( $firsttab ) {
-				$style = '';
-				$firsttab = false;
-			} else {
-				$style = ' style="display:none"';
-			}
 			$tabhtml .= '<div id="' . $tab['tabid'] . '"' . $style . '><p>' . $tab['tabcontent'] . '</p></div>';
 		}
 		$tabhtml .= '</div></div>';
@@ -136,10 +129,9 @@ function htReplaceFirstLevelHeaders( &$parser, &$text ) {
 }
 
 function htAddHTMLHeader( &$wgOut ) {
-	global $htScriptPath, $htYUIBase, $htUseHistory;
+	global $htScriptPath, $htUseHistory;
 
 	if ( $htUseHistory ) {
-		// TODO Rewrite it using latest History package so we can update $htYUIBase to latest version
 		$wgOut->addScript( '<script type="text/javascript" src="'.$htScriptPath.'/skins/combined-history-min.js"></script>' );
 	} else {
 		$wgOut->addScript( '<script type="text/javascript" src="'.$htScriptPath.'/skins/combined-min.js"></script>' );
