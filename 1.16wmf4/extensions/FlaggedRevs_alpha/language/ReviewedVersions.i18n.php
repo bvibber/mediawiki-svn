@@ -602,13 +602,14 @@ $messages['km'] = array(
  */
 $messages['ko'] = array(
 	'reviewedversions' => '검토된 버전',
+	'reviewedversions-leg1' => '문서의 검토된 판의 목록',
 	'reviewedversions-page' => '문서 이름:',
 	'reviewedversions-none' => '"[[:$1]]"의 검토된 판이 없습니다.',
 	'reviewedversions-list' => '다음은 [[:$1]] 문서의 검토된 {{PLURAL:$2|편집}}의 목록입니다:',
 	'reviewedversions-review' => '<i>$1</i>에 $2에게 검토됨',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -789,7 +790,7 @@ $messages['nso'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'reviewedversions' => 'Visionar las versions establas',
+	'reviewedversions' => 'Versions repassadas',
 	'reviewedversions-leg1' => "Darrièras revisions revistas d'una pagina",
 	'reviewedversions-page' => 'Nom de la pagina :',
 	'reviewedversions-none' => 'La lista que seguís conten de versions de « [[:$1]] » que son estadas revisadas :',
@@ -1169,7 +1170,7 @@ $messages['yi'] = array(
 	'reviewedversions-page' => 'בלאט נאמען:',
 );
 
-/** Yue (粵語) */
+/** Cantonese (粵語) */
 $messages['yue'] = array(
 	'reviewedversions' => '穩定版',
 	'reviewedversions-leg1' => '列示一版複審過嘅修訂',
