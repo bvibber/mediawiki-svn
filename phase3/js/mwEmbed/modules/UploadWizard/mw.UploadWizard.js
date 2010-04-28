@@ -88,11 +88,11 @@ mw.UploadWizardDeed.prototype = {
 	},
 
 	getSourceWikiText: function() {
-		return $j( _this.sourceInput ).val();
+		return $j( this.sourceInput ).val();
 	},
 
 	getAuthorWikiText: function() {
-		return $j( _this.authorInput ).val(); 
+		return $j( this.authorInput ).val(); 
 	},
 
 	/**
@@ -102,10 +102,8 @@ mw.UploadWizardDeed.prototype = {
 	getLicenseWikiText: function() {
 		var _this = this;
 		var wikiText = ''; 
-		$j.each ( _this.licenses, function( key, data ) {
-			if (data.input.checked) {
-				wikiText += "{{" + data.template + "}}\n";
-			}		
+		$j.each ( _this.licenseInput.getTemplates(), function( i, template ) {
+			wikiText += "{{" + template + "}}\n";
 		} );
 	
 		return wikiText;
@@ -296,17 +294,40 @@ mw.UploadWizardLicenseInput.prototype = {
 	},
 
 	/**
-	 * Gets which values are set 
-	 * Always returns the full set of licenses, even if most are false
-	 * @return object of object of license-key to boolean values, e.g. { cc_by: false; cc_by_sa_30: true, gfdl: true }
+	 * Gets which values are set to true
+	 * @return object of object of license-key to boolean values, e.g. { cc_by_sa_30: true, gfdl: true }
 	 */ 
 	getValues: function() {
 		var _this = this;
 		var values = {};
 		$j.each( _this.licenses, function( key, data ) {
-			values[key] = $j( _this.licenses[key].input ).is( ':checked' ); 
+			if ( $j( _this.licenses[key].input ).is( ':checked' ) ) {
+				values[key] = data;
+			} 
 		} );
 		return values;
+	},
+
+	/**
+	 * Gets the templates associated with values set to true
+	 * @return templates of licenses selected
+  	 */
+	getTemplates: function() {
+		var _this = this;
+		var templates = [];
+		$j.each( _this.getValues(), function( key, data ) {
+			templates.push( data.template );
+		} );
+		return templates;
+	},
+
+	/**
+  	 * Returns true if any license is set
+	 * @return boolean
+	 */
+	isSet: function() {
+		var _this = this;
+		return ( _this.getValues().length !== 0 );
 	}
 
 };
@@ -1518,9 +1539,11 @@ mw.UploadWizardDetails.prototype = {
 		// XXX add a sanity check here for good date
 		information['date'] = $j( _this.dateInput ).val().trim();
 
-		information['source'] = _this.deedChooser.deed.getSourceWikiText();
+		var deed = _this.upload.deedChooser.deed;
 
-		information['author'] = _this.deedChooser.deed.getAuthorWikiText();
+		information['source'] = deed.getSourceWikiText();
+
+		information['author'] = deed.getAuthorWikiText();
 		
 		var info = '';
 		for ( var key in information ) {
@@ -1534,7 +1557,7 @@ mw.UploadWizardDetails.prototype = {
 	
 		wikiText += "=={{int:license-header}}==\n";
 		
-		wikiText += _this.deedChooser.deed.getLicenseWikiText();
+		wikiText += deed.getLicenseWikiText();
 
 		// add a location template
 
@@ -1553,7 +1576,7 @@ mw.UploadWizardDetails.prototype = {
 	 */
 	isReady: function() {
 		var _this = this;
-		return _this.deedChooser.deed.isReady();
+		return _this.upload.deedChooser.deed.isReady();
 
 		// somehow, all the various issues discovered with this upload should be present in a single place
 		// where we can then check on
@@ -2370,8 +2393,11 @@ mw.UploadWizardDeedChooser.prototype = {
 			licenseInput: licenseInput,
 
 			isReady: function() {
-				$j( _this.selector ).find( '.mwe-upwiz-deed-accept-ownwork-default' ).is( ':checked' ) 
-				|| $j( _this.selector ).find( '.mwe-upwiz-deed-accept-ownwork-custom'  ).is( ':checked' )
+				return ( 
+					( $j( _this.selector ).find( '.mwe-accept-deed' ).is( ':checked' ) !== 0 )
+						&&
+					licenseInput.isSet()
+				);
 			},
 
 			getSourceWikiText: function() {
@@ -2385,10 +2411,8 @@ mw.UploadWizardDeedChooser.prototype = {
 
 			getLicenseWikiText: function() {
 				var wikiText = '{{self';
-				$j.each ( _this.licenseInput.licenses, function( key, data ) {
-					if ( data.input.checked ) {
-						wikiText += '|' + data.template;
-					}
+				$j.each ( licenseInput.getTemplates(), function( i, template ) {
+					wikiText += '|' + template;
 				} );
 				wikiText += '}}';
 				return wikiText;
@@ -2511,9 +2535,9 @@ mw.UploadWizardDeedChooser.prototype = {
 			licenseInput: licenseInput,
 
 			isReady: function() {
-				return     (! mw.isEmpty( $j( _this.sourceInput  ).val() ) ) 
-					&& (! mw.isEmpty( $j( _this.authorInput  ).val() ) )
-					&& (! mw.isEmpty( $j( _this.licenseInput ).val() ) )
+				return     (! mw.isEmpty( $j( this.sourceInput  ).val() ) ) 
+					&& (! mw.isEmpty( $j( this.authorInput  ).val() ) )
+					&& this.licenseInput.isSet()
 			}
 				
 		} );
