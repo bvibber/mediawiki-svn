@@ -98,7 +98,7 @@ public class LanguageConfiguration {
 	}
 	
 	public void defaults() throws IOException {
-		if (this.wordPattern==null) this.wordPattern = Pattern.compile("\\p{L}+|\\p{Nd}+"); 
+		if (this.wordPattern==null) this.wordPattern = Pattern.compile("[\\p{L}'']+(?:[\\p{Pc}\\p{Pd}][\\p{L}'']+)*|\\p{Nd}+(?:.\\p{Nd}+)?"); 
 
 		this.sentenceManglers.add( new RegularExpressionMangler("\\s+\\(.*?\\)", "", 0) ); //strip parentacized blocks 
 		this.sentenceManglers.add( new RegularExpressionMangler("^([^\\p{L}]*(\\r\\n|\\r|\\n))+[^\\p{L}0-9]*\\s*", "", 0) ); //strip leading cruft (lines without any characters)
