@@ -8442,7 +8442,13 @@ api: {
 	},
 	openDialog: function( context, module ) {
 		if ( module in $.wikiEditor.modules.dialogs.modules ) {
-			$( '#' + $.wikiEditor.modules.dialogs.modules[module].id ).dialog( 'open' );
+			var mod = $.wikiEditor.modules.dialogs.modules[module];
+			var $dialog = $( '#' + mod.id );
+			if ( $dialog.length == 0 ) {
+				$.wikiEditor.modules.dialogs.fn.reallyCreate( context, mod );
+				$dialog = $( '#' + mod.id );
+			}
+			$dialog.dialog( 'open' );
 		}
 	},
 	closeDialog: function( context, module ) {
@@ -8462,72 +8468,75 @@ fn: {
 	 * @param {Object} config Configuration object to create module from
 	 */
 	create: function( context, config ) {
-		// Add modules
-		for ( module in config ) {
-			$.wikiEditor.modules.dialogs.modules[module] = config[module];
-		}
-		// Build out modules immediately
-		// TODO: Move mw.usability.load() call down to where we're sure we're really gonna build a dialog
-		mw.usability.load( [ '$j.ui', '$j.ui.dialog', '$j.ui.draggable', '$j.ui.resizable' ], function() {
-			for ( mod in $.wikiEditor.modules.dialogs.modules ) {
-				var module = $.wikiEditor.modules.dialogs.modules[mod];
-				// Only create the dialog if it's supported, not filtered and doesn't exist yet
-				var filtered = false;
-				if ( typeof module.filters != 'undefined' ) {
-					for ( var i = 0; i < module.filters.length; i++ ) {
-						if ( $( module.filters[i] ).length == 0 ) {
-							filtered = true;
-							break;
-						}
+		// Defer building of modules, but do check whether they need the iframe rightaway
+		for ( mod in config ) {
+			var module = config[mod];
+			// Only create the dialog if it's supported, isn't filtered and doesn't exist yet
+			var filtered = false;
+			if ( typeof module.filters != 'undefined' ) {
+				for ( var i = 0; i < module.filters.length; i++ ) {
+					if ( $( module.filters[i] ).length == 0 ) {
+						filtered = true;
+						break;
 					}
-				}
-				if ( !filtered && $.wikiEditor.isSupported( module ) && $( '#' + module.id ).size() == 0 ) {
-					// If this dialog requires the iframe, set it up
-					if ( typeof context.$iframe == 'undefined' && $.wikiEditor.isRequired( module, 'iframe' ) ) {
-						context.fn.setupIframe();
-					}
-					
-					var configuration = module.dialog;
-					// Add some stuff to configuration
-					configuration.bgiframe = true;
-					configuration.autoOpen = false;
-					configuration.modal = true;
-					configuration.title = $.wikiEditor.autoMsg( module, 'title' );
-					// Transform messages in keys
-					// Stupid JS won't let us do stuff like
-					// foo = { mw.usability.getMsg( 'bar' ): baz }
-					configuration.newButtons = {};
-					for ( msg in configuration.buttons )
-						configuration.newButtons[mw.usability.getMsg( msg )] = configuration.buttons[msg];
-					configuration.buttons = configuration.newButtons;
-					// Create the dialog <div>
-					var dialogDiv = $( '<div />' )
-						.attr( 'id', module.id )
-						.html( module.html )
-						.data( 'context', context )
-						.appendTo( $( 'body' ) )
-						.each( module.init )
-						.dialog( configuration );
-					// Set tabindexes on buttons added by .dialog()
-					$.wikiEditor.modules.dialogs.fn.setTabindexes( dialogDiv.closest( '.ui-dialog' )
-						.find( 'button' ).not( '[tabindex]' ) );
-					if ( !( 'resizeme' in module ) || module.resizeme ) {
-						dialogDiv
-							.bind( 'dialogopen', $.wikiEditor.modules.dialogs.fn.resize )
-							.find( '.ui-tabs' ).bind( 'tabsshow', function() {
-								$(this).closest( '.ui-dialog-content' ).each(
-									$.wikiEditor.modules.dialogs.fn.resize );
-							});
-					}
-					dialogDiv.bind( 'dialogclose', function() {
-						context.fn.restoreSelection();
-					} );
-					
-					// Let the outside world know we set up this dialog
-					context.$textarea.trigger( 'wikiEditor-dialogs-loaded-' + mod );
 				}
 			}
-		});
+			if ( !filtered && $.wikiEditor.isSupported( module ) && $( '#' + module.id ).size() == 0 ) {
+				$.wikiEditor.modules.dialogs.modules[mod] = module;
+				// If this dialog requires the iframe, set it up
+				if ( typeof context.$iframe == 'undefined' && $.wikiEditor.isRequired( module, 'iframe' ) ) {
+					context.fn.setupIframe();
+				}
+				context.$textarea.trigger( 'wikiEditor-dialogs-setup-' + mod );
+			}
+		}
+	},
+	/**
+	 * Build the actual dialog. This done on-demand rather than in create()
+	 * @param {Object} context Context object of editor dialog belongs to
+	 * @param {Object} module Dialog module object
+	 */
+	reallyCreate: function( context, module ) {
+		mw.usability.load( [ '$j.ui', '$j.ui.dialog', '$j.ui.draggable', '$j.ui.resizable' ], function() {
+			var configuration = module.dialog;
+			// Add some stuff to configuration
+			configuration.bgiframe = true;
+			configuration.autoOpen = false;
+			configuration.modal = true;
+			configuration.title = $.wikiEditor.autoMsg( module, 'title' );
+			// Transform messages in keys
+			// Stupid JS won't let us do stuff like
+			// foo = { mw.usability.getMsg( 'bar' ): baz }
+			configuration.newButtons = {};
+			for ( msg in configuration.buttons )
+				configuration.newButtons[mw.usability.getMsg( msg )] = configuration.buttons[msg];
+			configuration.buttons = configuration.newButtons;
+			// Create the dialog <div>
+			var dialogDiv = $( '<div />' )
+				.attr( 'id', module.id )
+				.html( module.html )
+				.data( 'context', context )
+				.appendTo( $( 'body' ) )
+				.each( module.init )
+				.dialog( configuration );
+			// Set tabindexes on buttons added by .dialog()
+			$.wikiEditor.modules.dialogs.fn.setTabindexes( dialogDiv.closest( '.ui-dialog' )
+				.find( 'button' ).not( '[tabindex]' ) );
+			if ( !( 'resizeme' in module ) || module.resizeme ) {
+				dialogDiv
+					.bind( 'dialogopen', $.wikiEditor.modules.dialogs.fn.resize )
+					.find( '.ui-tabs' ).bind( 'tabsshow', function() {
+						$(this).closest( '.ui-dialog-content' ).each(
+							$.wikiEditor.modules.dialogs.fn.resize );
+					});
+			}
+			dialogDiv.bind( 'dialogclose', function() {
+				context.fn.restoreSelection();
+			} );
+			
+			// Let the outside world know we set up this dialog
+			context.$textarea.trigger( 'wikiEditor-dialogs-loaded-' + mod );
+		} );
 	},
 	/**
 	 * Resize a dialog so its contents fit
@@ -11222,13 +11231,13 @@ fn: {
 							e.preventDefault();
 							return false;
 						} );
-					// If the action is a dialog that hasn't been loaded yet, hide the button
+					// If the action is a dialog that hasn't been set up yet, hide the button
 					// until the dialog is loaded
 					if ( tool.action.type == 'dialog' &&
 							!( tool.action.module in $.wikiEditor.modules.dialogs.modules ) ) {
 						$button.hide();
 						// JavaScript won't propagate the $button variable itself, it needs help
-						context.$textarea.bind( 'wikiEditor-dialogs-loaded-' + tool.action.module,
+						context.$textarea.bind( 'wikiEditor-dialogs-setup-' + tool.action.module,
 							{ button: $button }, function( event ) {
 								event.data.button.show().parent().show();
 						} );
@@ -11463,6 +11472,10 @@ fn: {
 									context.fn.trigger( 'resize' );
 								} );
 							$(this).addClass( 'current' );
+							if ( $section.hasClass( 'loading' ) ) {
+								// Loading of this section was deferred, load it now
+								setTimeout( function() { $section.trigger( 'loadSection' ); }, 0 );
+							}
 						} else {
 							$sections
 								.css( 'height', $section.outerHeight() )
@@ -11472,8 +11485,8 @@ fn: {
 								} );
 						}
 						// Click tracking
-						if($.trackAction != undefined){
-							$.trackAction($section.attr('rel') + '.' + ( show ? 'show': 'hide' )  );
+						if ( $.trackAction != undefined ) {
+							$.trackAction( $section.attr('rel') + '.' + ( show ? 'show': 'hide' )  );
 						}
 						// Save the currently visible section
 						$.cookie(
@@ -11485,13 +11498,34 @@ fn: {
 					} )
 			);
 	},
-	buildSection : function( context, id, section ) {
-		context.$textarea.trigger( 'wikiEditor-toolbar-buildSection-' + id, [section] );
+	buildSection: function( context, id, section ) {
+		var $section = $( '<div />' ).attr( { 'class': section.type + ' section section-' + id, 'rel': id } );
 		var selected = $.cookie( 'wikiEditor-' + context.instance + '-toolbar-section' );
-		var $section;
+		var show = selected == id;
+		
+		if ( typeof section.deferLoad != 'undefined' && section.deferLoad && id !== 'main' && !show ) {
+			// This class shows the spinner and serves as a marker for the click handler in buildTab()
+			$section.addClass( 'loading' ).append( $( '<div />' ).addClass( 'spinner' ) );
+			$section.bind( 'loadSection', function() {
+				$.wikiEditor.modules.toolbar.fn.reallyBuildSection( context, section, $section );
+				$section.removeClass( 'loading' );
+			} );
+		} else {
+			$.wikiEditor.modules.toolbar.fn.reallyBuildSection( context, section, $section );
+		}
+		
+		// Show or hide section
+		if ( id !== 'main' ) {
+			$section.css( 'display', show ? 'block' : 'none' );
+			if ( show )
+				$section.addClass( 'section-visible' );
+		}
+		return $section;
+	},
+	reallyBuildSection : function( context, section, $section ) {
+		context.$textarea.trigger( 'wikiEditor-toolbar-buildSection-' + $section.attr( 'rel' ), [section] );
 		switch ( section.type ) {
 			case 'toolbar':
-				var $section = $( '<div />' ).attr( { 'class' : 'toolbar section section-' + id, 'rel' : id } );
 				if ( 'groups' in section ) {
 					for ( group in section.groups ) {
 						$section.append(
@@ -11513,18 +11547,10 @@ fn: {
 						);
 					}
 				}
-				$section = $( '<div />' ).attr( { 'class' : 'booklet section section-' + id, 'rel' : id } )
-					.append( $index )
-					.append( $pages );
+				$section.append( $index ).append( $pages );
 				$.wikiEditor.modules.toolbar.fn.updateBookletSelection( context, page, $pages, $index );
 				break;
 		}
-		if ( $section !== null && id !== 'main' ) {
-			var show = selected == id;
-			$section.css( 'display', show ? 'block' : 'none' );
-			if ( show ) $section.addClass( 'section-visible' );
-		}
-		return $section;
 	},
 	updateBookletSelection : function( context, id, $pages, $index ) {
 		var cookie = 'wikiEditor-' + context.instance + '-booklet-' + id + '-page';

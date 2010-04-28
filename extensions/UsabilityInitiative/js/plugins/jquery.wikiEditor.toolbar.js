@@ -348,13 +348,13 @@ fn: {
 							e.preventDefault();
 							return false;
 						} );
-					// If the action is a dialog that hasn't been loaded yet, hide the button
+					// If the action is a dialog that hasn't been set up yet, hide the button
 					// until the dialog is loaded
 					if ( tool.action.type == 'dialog' &&
 							!( tool.action.module in $.wikiEditor.modules.dialogs.modules ) ) {
 						$button.hide();
 						// JavaScript won't propagate the $button variable itself, it needs help
-						context.$textarea.bind( 'wikiEditor-dialogs-loaded-' + tool.action.module,
+						context.$textarea.bind( 'wikiEditor-dialogs-setup-' + tool.action.module,
 							{ button: $button }, function( event ) {
 								event.data.button.show().parent().show();
 						} );
@@ -589,6 +589,10 @@ fn: {
 									context.fn.trigger( 'resize' );
 								} );
 							$(this).addClass( 'current' );
+							if ( $section.hasClass( 'loading' ) ) {
+								// Loading of this section was deferred, load it now
+								setTimeout( function() { $section.trigger( 'loadSection' ); }, 0 );
+							}
 						} else {
 							$sections
 								.css( 'height', $section.outerHeight() )
@@ -598,8 +602,8 @@ fn: {
 								} );
 						}
 						// Click tracking
-						if($.trackAction != undefined){
-							$.trackAction($section.attr('rel') + '.' + ( show ? 'show': 'hide' )  );
+						if ( $.trackAction != undefined ) {
+							$.trackAction( $section.attr('rel') + '.' + ( show ? 'show': 'hide' )  );
 						}
 						// Save the currently visible section
 						$.cookie(
@@ -611,13 +615,34 @@ fn: {
 					} )
 			);
 	},
-	buildSection : function( context, id, section ) {
-		context.$textarea.trigger( 'wikiEditor-toolbar-buildSection-' + id, [section] );
+	buildSection: function( context, id, section ) {
+		var $section = $( '<div />' ).attr( { 'class': section.type + ' section section-' + id, 'rel': id } );
 		var selected = $.cookie( 'wikiEditor-' + context.instance + '-toolbar-section' );
-		var $section;
+		var show = selected == id;
+		
+		if ( typeof section.deferLoad != 'undefined' && section.deferLoad && id !== 'main' && !show ) {
+			// This class shows the spinner and serves as a marker for the click handler in buildTab()
+			$section.addClass( 'loading' ).append( $( '<div />' ).addClass( 'spinner' ) );
+			$section.bind( 'loadSection', function() {
+				$.wikiEditor.modules.toolbar.fn.reallyBuildSection( context, section, $section );
+				$section.removeClass( 'loading' );
+			} );
+		} else {
+			$.wikiEditor.modules.toolbar.fn.reallyBuildSection( context, section, $section );
+		}
+		
+		// Show or hide section
+		if ( id !== 'main' ) {
+			$section.css( 'display', show ? 'block' : 'none' );
+			if ( show )
+				$section.addClass( 'section-visible' );
+		}
+		return $section;
+	},
+	reallyBuildSection : function( context, section, $section ) {
+		context.$textarea.trigger( 'wikiEditor-toolbar-buildSection-' + $section.attr( 'rel' ), [section] );
 		switch ( section.type ) {
 			case 'toolbar':
-				var $section = $( '<div />' ).attr( { 'class' : 'toolbar section section-' + id, 'rel' : id } );
 				if ( 'groups' in section ) {
 					for ( group in section.groups ) {
 						$section.append(
@@ -639,18 +664,10 @@ fn: {
 						);
 					}
 				}
-				$section = $( '<div />' ).attr( { 'class' : 'booklet section section-' + id, 'rel' : id } )
-					.append( $index )
-					.append( $pages );
+				$section.append( $index ).append( $pages );
 				$.wikiEditor.modules.toolbar.fn.updateBookletSelection( context, page, $pages, $index );
 				break;
 		}
-		if ( $section !== null && id !== 'main' ) {
-			var show = selected == id;
-			$section.css( 'display', show ? 'block' : 'none' );
-			if ( show ) $section.addClass( 'section-visible' );
-		}
-		return $section;
 	},
 	updateBookletSelection : function( context, id, $pages, $index ) {
 		var cookie = 'wikiEditor-' + context.instance + '-booklet-' + id + '-page';
