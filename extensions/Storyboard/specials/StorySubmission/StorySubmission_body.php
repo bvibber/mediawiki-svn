@@ -21,9 +21,9 @@ class SpecialStorySubmission extends UnlistedSpecialPage {
 
 	public function execute( $title ) {
 		global $wgOut, $wgRequest, $wgUser;
-		
+
 		if ( $wgRequest->wasPosted() && 
-			!( $wgUser->isLoggedIn() && $wgUser->matchEditToken( $wgRequest->getVal( 'wpStoryEditToken' ) ) )
+			( $wgUser->matchEditToken( $wgRequest->getVal( 'wpStoryEditToken' ) ) || !$wgUser->isLoggedIn() )
 			) {
 				$title = $wgRequest->getText( 'storytitle' );	
 			
@@ -36,6 +36,7 @@ class SpecialStorySubmission extends UnlistedSpecialPage {
 	
 				$this->displayResult( !$exists, $title );
 		} else {
+			$wgOut->setPageTitle( wfMsg( 'storyboard-notsubmitted' ) );
 			$wgOut->returnToMain();
 		}
 	}

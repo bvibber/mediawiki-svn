@@ -46,13 +46,15 @@ class ApiStoryExists extends ApiBase {
 			$this->dieUsageMsg( array( 'missingparam', 'storytitle' ) );
 		}
 		
+		$exists = self::StoryExists( $params );
+		
 		$result = array(
-			'exists' => self::StoryExists( $params )
+			'exists' => $exists
 		);
 
 		// Just return true or false.
 		// If there is a way of doing this via the API, this should oviously be changed.
-		die( $story == false ? 'true' : 'false' );
+		die( $exists ? 'false' : 'true' );
 		
 		//$this->getResult()->setIndexedTagName( $result, 'story' );
 		//$this->getResult()->addValue( null, $this->getModuleName(), $result );

@@ -57,6 +57,7 @@ It might have been removed.',
 	'storyboard-submissionincomplete' => 'Submission failed',
 	'storyboard-alreadyexists' => '"$1" is already taken.',
 	'storyboard-changetitle' => 'Change the title.',
+	'storyboard-notsubmitted' => 'Authentication failed, no story has been saved.',
 
 	// Story review
 	'storyreview' => 'Story review',
