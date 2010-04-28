@@ -3,7 +3,7 @@ mw.addMessages( {
 	"mwe-upwiz-tab-details": "2. Add licenses and descriptions",
 	"mwe-upwiz-tab-thanks": "3. Use your files",
 	"mwe-upwiz-intro": "Welcome to Wikimedia Commons, a repository of images, sounds, and movies that anyone can freely download and use. Add to humanity's knowledge by uploading files that could be used for an educational purpose.",
-	//"mwe-upwiz-select-files": "Select files:",
+	
 	"mwe-upwiz-add-file-n": "Add another file",
 	"mwe-upwiz-add-file-0": "Click here to add a file for upload",
 	"mwe-upwiz-browse": "Browse...",
@@ -66,7 +66,6 @@ mw.addMessages( {
 	"mwe-upwiz-cancel": "Cancel",
 	"mwe-upwiz-change": "(change)",
 
-	/* copied from mw.UploadHandler :(  */
 	"mwe-fileexists" : "A file with this name exists already. Please check <b><tt>$1<\/tt><\/b> if you are not sure if you want to replace it.",
 	"mwe-thumbnail-more" : "Enlarge",
 	"mwe-upwiz-overwrite" : "Replace the file"

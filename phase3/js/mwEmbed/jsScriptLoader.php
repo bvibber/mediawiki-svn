@@ -779,7 +779,7 @@ class jsScriptLoader {
 		// Do language swap by index:
 		if ( $wgEnableScriptLocalization ){
 			// Get the mw.addMessage javascript from class name
-			$translatedJs = $this->getInlineMsgFromClass( $className );
+			$translatedJs = "\n" . $this->getInlineMsgFromClass( $className ) . "\n";
 
 			// Replace mw.addMessages with localized msgs in javascript string
 			$inx = self::getAddMessagesIndex( $scriptText );
