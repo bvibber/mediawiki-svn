@@ -1,9 +1,9 @@
-
 mw.addMessages( {
 	"mwe-upwiz-tab-file": "1. Upload your files",
 	"mwe-upwiz-tab-details": "2. Add licenses and descriptions",
 	"mwe-upwiz-tab-thanks": "3. Use your files",
-	"mwe-upwiz-intro": "Welcome to Wikimedia Commons, a repository of images, sounds, and movies that anyone can freely download and use. Add to humanity's knowledge by uploading files that could be used for an educational purpose.",	
+	"mwe-upwiz-intro": "Welcome to Wikimedia Commons, a repository of images, sounds, and movies that anyone can freely download and use. Add to humanity's knowledge by uploading files that could be used for an educational purpose.",
+	//"mwe-upwiz-select-files": "Select files:",
 	"mwe-upwiz-add-file-n": "Add another file",
 	"mwe-upwiz-add-file-0": "Click here to add a file for upload",
 	"mwe-upwiz-browse": "Browse...",
@@ -66,6 +66,7 @@ mw.addMessages( {
 	"mwe-upwiz-cancel": "Cancel",
 	"mwe-upwiz-change": "(change)",
 
+	/* copied from mw.UploadHandler :(  */
 	"mwe-fileexists" : "A file with this name exists already. Please check <b><tt>$1<\/tt><\/b> if you are not sure if you want to replace it.",
 	"mwe-thumbnail-more" : "Enlarge",
 	"mwe-upwiz-overwrite" : "Replace the file"
@@ -2438,9 +2439,11 @@ mw.UploadWizardDeedChooser.prototype = {
 			.maskSafeHide();
 
 		$j( _this.selector ).find( '.mwe-upwiz-macro-deed-ownwork .mwe-upwiz-deed-form' )
-			.append( standardDiv,
-		 		 toggleDiv, 
-				 customDiv );
+			.append( $j( '<div class="mwe-upwiz-deed-form-internal" />' )
+				.append( standardDiv,
+					 toggleDiv, 
+					 customDiv )
+			);
 		
 		mw.UploadWizardUtil.makeFadingToggler( standardDiv, toggleDiv, customDiv );
 
@@ -2493,7 +2496,9 @@ mw.UploadWizardDeedChooser.prototype = {
 				
 		} );
 
-		var customDiv = $j( '<div />' )
+		
+		$j( _this.selector ).find( '.mwe-upwiz-macro-deed-thirdparty .mwe-upwiz-deed-form' ).append( 
+			$j( '<div class="mwe-upwiz-deed-form-internal"/>' )
 				.append( 
 					$j( '<div />' ).append( gM( 'mwe-upwiz-source-thirdparty-custom-intro' ) ),
 					$j( '<div />' )
@@ -2508,11 +2513,11 @@ mw.UploadWizardDeedChooser.prototype = {
 								.attr( { 'for' : 'author' } )
 								.text( gM( 'mwe-upwiz-author' ) ) )
 						.append( authorInput ),
-					$j( '<div />' ).text( gM( 'mwe-upwiz-source-thirdparty-license' ) ),
+					$j( '<div />' ).addClass( 'mwe-upwiz-thirdparty-license' )
+						       .text( gM( 'mwe-upwiz-source-thirdparty-license' ) ),
 					licenseInputDiv
-				);
-
-		$j( _this.selector ).find( '.mwe-upwiz-macro-deed-thirdparty .mwe-upwiz-deed-form' ).append( customDiv );
+				)
+		);
 
 		$j( _this.selector ).find( '.mwe-upwiz-deed-thirdparty-accept' )
 			.attr( { value: gM( 'mwe-upwiz-source-thirdparty-accept' ) } )
@@ -2729,8 +2734,8 @@ jQuery.fn.mask = function( options ) {
 
 			var mask = $j( '<div />' )
 					.css( { 'position' : 'absolute',
-						'top'      : '0px', // el.offsetTop + 'px',
-						'left'     : '0px', // el.offsetLeft + 'px',
+						'top'      : '0px', 
+						'left'     : '0px',
 						'width'	   : el.offsetWidth + 'px',
 						'height'   : el.offsetHeight + 'px',
 						'z-index'  : 100 } )

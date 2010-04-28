@@ -347,7 +347,7 @@ a[disabled=true]:hover {
 
 #mwe-upwiz-macro-deeds {
 	margin-top: 12px;
-	margin-bottom: 12px;
+	margin-bottom: 24px;
 }
 
 #mwe-upwiz-macro-files {
@@ -427,4 +427,24 @@ legend.mwe-legend {
 .masked-hidden {
 	visibility: hidden !important;
 }
+
+.mwe-upwiz-thirdparty-fields label {
+	width: 100px;
+	display: inline-block;
+}
+
+.mwe-upwiz-thirdparty-fields textarea {
+	margin: 5px 0px -3px 5px;
+}
+
+.mwe-upwiz-thirdparty-license {
+	margin-top: 8px;
+}
+
+.mwe-upwiz-deed-form-internal {
+	padding: 5px 0px 20px 20px;
+}
+
+
+
 
