@@ -8,7 +8,7 @@
  * @file
  * @ingroup Extensions
  * @author Roan Kattouw <roan.kattouw@home.nl>
- * @copyright Copyright © 2007 Roan Kattouw 
+ * @copyright Copyright © 2007 Roan Kattouw
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License
  *
  * An extension that allows changing the author of a revision
@@ -16,7 +16,7 @@
  * For information how to install and use this extension, see the README file.
  */
 # Alert the user that this is not a valid entry point to MediaWiki if they try to access the extension file directly.
-if( !defined( 'MEDIAWIKI' ) ) {
+if ( !defined( 'MEDIAWIKI' ) ) {
 	echo <<<EOT
 To install the ChangeAuthor extension, put the following line in LocalSettings.php:
 require_once( "\$IP/extensions/ChangeAuthor/ChangeAuthor.php" );
@@ -35,7 +35,7 @@ $wgExtensionCredits['specialpage'][] = array(
 );
 
 // Set up the new special page
-$dir = dirname(__FILE__) . '/';
+$dir = dirname( __FILE__ ) . '/';
 $wgExtensionMessagesFiles['ChangeAuthor'] = $dir . 'ChangeAuthor.i18n.php';
 $wgExtensionAliasesFiles['ChangeAuthor'] = $dir . 'ChangeAuthor.alias.php';
 $wgAutoloadClasses['ChangeAuthor'] = $dir . 'ChangeAuthor.body.php';

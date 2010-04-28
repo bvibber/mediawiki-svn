@@ -15,8 +15,9 @@
  * Written for the Bokt Wiki <http://www.bokt.nl/wiki/> by Roan Kattouw <roan.kattouw@home.nl>
  * For information how to install and use this extension, see the README file.
  */
+
 # Alert the user that this is not a valid entry point to MediaWiki if they try to access the extension file directly.
-if( !defined( 'MEDIAWIKI' ) ) {
+if ( !defined( 'MEDIAWIKI' ) ) {
 	echo <<<EOT
 To install the ChangeAuthor extension, put the following line in LocalSettings.php:
 require_once( "\$IP/extensions/ChangeAuthor/ChangeAuthor.setup.php" );
@@ -423,8 +424,8 @@ Només cal que canvieu el nom de l'usuari, afegiu un comentari (opcional) i pitg
 	'changeauthor-nosuchuser' => 'L\'usuari "$1" no existeix.',
 	'changeauthor-revview' => 'Revisió número $1 de $2',
 	'changeauthor-nosuchtitle' => 'No hi ha cap pàgina anomenada "$1".',
-	'changeauthor-weirderror' => "Ha ocorregut un error poc comú. 
-Si us plau, intenteu-ho de nou. 
+	'changeauthor-weirderror' => "Ha ocorregut un error poc comú.
+Si us plau, intenteu-ho de nou.
 Si l'error persisteix, és probable que la base de dades estigui avariada.",
 	'changeauthor-invalidform' => 'Useu el formulari de la [[Special:ChangeAuthor|pàgina especial]] adient.',
 	'changeauthor-success' => 'La vostra petició ha estat processada satisfactòriament.',
@@ -1397,7 +1398,7 @@ $messages['ml'] = array(
 	'changeauthor-pagenameform-go' => 'പോകൂ',
 	'changeauthor-comment' => 'അഭിപ്രായം:',
 	'changeauthor-changeauthors-multi' => 'ലേഖകരെ മാറ്റുക',
-	'changeauthor-explanation-multi' => "ഈ താൾ ഉപയോഗിച്ച് താങ്കൾക്ക് ഒരു പതിപ്പിന്റെ ലേഖകനെ മാറ്റാവുന്നതാണ്‌. 
+	'changeauthor-explanation-multi' => "ഈ താൾ ഉപയോഗിച്ച് താങ്കൾക്ക് ഒരു പതിപ്പിന്റെ ലേഖകനെ മാറ്റാവുന്നതാണ്‌.
 താഴെയുള്ള പട്ടികയിൽ ഒന്നോ അതിലധികമോ ഉപയോക്തൃനാമങ്ങൾ മാറ്റിയിട്ട്, അഭിപ്രായം രേഖപ്പെടുത്തിയതിനു ശേഷം (നിർബന്ധമില്ല), 'ലേഖകരെ മാറ്റുക' എന്ന ബട്ടൺ ഞെക്കുക.",
 	'changeauthor-changeauthors-single' => 'ലേഖകനെ മാറ്റുക',
 	'changeauthor-explanation-single' => "ഈ ഫോം ഉപയോഗിച്ച് ഒരു പതിപ്പിന്റെ ലേഖകനെ താങ്കൾക്ക് മാറ്റാവുന്നതാണ്‌. താഴെയുള്ള ഫോമിൽ ഉപയോക്തൃനാമം മാറ്റി, ലേഖകനെ മാറ്റാനുള്ള കാരണവും രേഖപ്പെടുത്തി (നിർബന്ധമില്ല), 'ലേഖകനെ മാറ്റുക' എന്ന ബട്ടൺ ഞെക്കുക.",
@@ -1520,7 +1521,7 @@ $messages['nn'] = array(
 	'changeauthor-pagenameform-go' => 'Gå',
 	'changeauthor-comment' => 'Kommentar:',
 	'changeauthor-changeauthors-multi' => 'Endra {{PLURAL:$1|forfattar|forfattarar}}',
-	'changeauthor-explanation-multi' => 'Med dette skjemaet kan du endra kven som blir oppgjeve som forfattar til versjonar. 
+	'changeauthor-explanation-multi' => 'Med dette skjemaet kan du endra kven som blir oppgjeve som forfattar til versjonar.
 Endra eitt eller fleire av brukarnamna i lista nedanfor, legg til ein (valfri) kommentar og trykk knappen «Endra forfattar(ar)».',
 	'changeauthor-changeauthors-single' => 'Endra forfattar',
 	'changeauthor-explanation-single' => 'Med dette skjemaet kan du endra på kven som blir oppgjeve som forfattaren til ein versjon. Endra brukarnamnet nedanfor, legg til ein (valfri) kommentar, og trykk på knappen «Endra forfattar».',
@@ -1740,8 +1741,8 @@ $messages['pt-br'] = array(
 	'changeauthor-nosuchuser' => 'Utilizador "$1" não existe.',
 	'changeauthor-revview' => 'Revisão #$1 de $2',
 	'changeauthor-nosuchtitle' => 'Não existe nenhuma página chamada "$1".',
-	'changeauthor-weirderror' => 'Ocorreu um erro muito estranho. 
-Por favor, tente o seu pedido de novo. 
+	'changeauthor-weirderror' => 'Ocorreu um erro muito estranho.
+Por favor, tente o seu pedido de novo.
 Se este erro persistir, provavelmente a base de dados não está em boas condições.',
 	'changeauthor-invalidform' => 'Por favor, utilize o formulário fornecido pela [[Special:ChangeAuthor|página especial]] em vez de um formulário personalizado.',
 	'changeauthor-success' => 'O seu pedido foi processado com sucesso.',
@@ -2394,4 +2395,3 @@ $messages['zh-hant'] = array(
 	'changeauthor-logentry' => '更改[[$1]]修訂版本$2的作者從 $3 到 $4',
 	'changeauthor-logpagename' => '作者更改日誌',
 );
-
