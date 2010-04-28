@@ -1,11 +1,9 @@
 package de.brightbyte.wikiword.schema;
 
 import java.sql.Connection;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.Map;
 
 import javax.sql.DataSource;
@@ -27,7 +25,7 @@ public class GlobalConceptStoreSchema extends WikiWordConceptStoreSchema {
 	protected RelationTable mergeTable;
 	protected RelationTable langprepTable;
 
-	protected ConceptTypeSet conceptTypes;
+	private ConceptTypeSet conceptTypes;
 	protected TweakSet tweaks;
 	
 	public GlobalConceptStoreSchema(DatasetIdentifier dataset, Connection connection, TweakSet tweaks, boolean useFlushQueue) throws SQLException {
@@ -40,7 +38,7 @@ public class GlobalConceptStoreSchema extends WikiWordConceptStoreSchema {
 		init(tweaks);
 	}
 	
-	protected Corpus[] languages;
+	private Corpus[] languages;
 	
 	private void init(TweakSet tweaks) throws SQLException {
 		int nameSize = 32*255+32*16; //TODO: from tweaks!
@@ -100,7 +98,7 @@ public class GlobalConceptStoreSchema extends WikiWordConceptStoreSchema {
 		
 		//TODO: reference table (aka link)
 		
-		getLanguages(); //initialize knownlanguages, corpuses and content types#
+		//getLanguages(); //initialize knownlanguages, corpuses and content types#
 	}
 	
 	/**
@@ -166,6 +164,27 @@ public class GlobalConceptStoreSchema extends WikiWordConceptStoreSchema {
 		return null;
 	}
 	
+	protected Corpus[] getCorpuses(String[] languages) throws SQLException {
+		Corpus[] cc = new Corpus[languages.length];
+		
+		int i = 0;
+		for (String l: languages) {
+			if (!getLanguageNames().containsKey(l)) {
+				throw new SQLException("bad corpus prefix: "+l+" is not a language name. Hint: check tweaks languages.*AsLanguage"); 
+			}
+			
+			cc[i++] = Corpus.forName(getCollectionName(), l, tweaks);
+		}
+		
+		return cc;
+	}
+	
+	public Corpus[] setLanguages(String[] languages) throws SQLException {
+		Corpus[] cc = getCorpuses(languages);
+		setLanguages(cc);
+		return cc;
+	}
+	
 	public void setLanguages(Corpus[] languages) {
 		if (languages.length>32) throw new IllegalArgumentException("only up to 32 languages are supported!");
 
@@ -203,24 +222,19 @@ public class GlobalConceptStoreSchema extends WikiWordConceptStoreSchema {
 	
 	public Corpus[] getLanguages() throws SQLException {
 		if (languages!=null) return languages;
+		setLanguages( detectLanguages() );
+		return languages;
+	}
+	
+	private Corpus[] allLanguages = null;
+	public Corpus[] detectLanguages() throws SQLException {
+		if (allLanguages!=null) return allLanguages;
 		
 		String[] ll = listPrefixes("resource");
-		if (ll.length>32) throw new IllegalArgumentException("only up to 32 languages are supported! found "+ll.length+" prefixes: "+Arrays.toString(ll));
-
 		Arrays.sort(ll); //FIXME: sort by size!
-		Corpus[] cc = new Corpus[ll.length];
 		
-		int i = 0;
-		for (String l: ll) {
-			if (!getLanguageNames().containsKey(l)) {
-				throw new SQLException("database inconsistency: encountered bad corpus prefix: "+l+" is not a language name. Hint: check tweaks languages.*AsLanguage"); 
-			}
-			
-			cc[i++] = Corpus.forName(getCollectionName(), l, tweaks);
-		}
-		
-		setLanguages(cc);
-		return languages;
+		allLanguages = getCorpuses(ll);
+		return allLanguages;
 	}
 	
 	@Override

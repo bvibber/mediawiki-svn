@@ -59,7 +59,6 @@ public class DatabaseGlobalConceptStoreBuilder extends DatabaseWikiWordConceptSt
 	protected TweakSet tweaks;
 	
 	protected int idOffsetGranularity;
-	private Corpus[] languages;
 
 	/**
 	 * Constructs a DatabaseWikiStore, soring information from/about the given Corpus
@@ -136,7 +135,7 @@ public class DatabaseGlobalConceptStoreBuilder extends DatabaseWikiWordConceptSt
 	//-------------------------------
 	public Corpus[] detectLanguages() throws PersistenceException {
 		try {
-			Corpus[] languages = ((GlobalConceptStoreSchema)database).getLanguages();
+			Corpus[] languages = ((GlobalConceptStoreSchema)database).detectLanguages();
 			return languages;
 		} catch (SQLException e) {
 			throw new PersistenceException(e);
@@ -145,15 +144,24 @@ public class DatabaseGlobalConceptStoreBuilder extends DatabaseWikiWordConceptSt
 	
 	public void setLanguages(Corpus[] languages) {
 		if (languages==null) throw new NullPointerException();
-		if (this.languages!=null) throw new IllegalStateException("languages already set");
-		//XXX: set languages in GlobalConceptStoreSchema too?
-		
-		this.languages = languages;
+		((GlobalConceptStoreSchema)database).setLanguages(languages);
+	}
+	
+	public void setLanguages(String[] languages) throws PersistenceException {
+		if (languages==null) throw new NullPointerException();
+		try {
+			((GlobalConceptStoreSchema)database).setLanguages(languages);
+		} catch (SQLException e) {
+			throw new PersistenceException(e);
+		}
 	}
 	
 	public Corpus[] getLanguages() throws PersistenceException {
-		if (languages==null) languages = detectLanguages();
-		return languages;
+		try {
+			return ((GlobalConceptStoreSchema)database).getLanguages();
+		} catch (SQLException e) {
+			throw new PersistenceException(e);
+		}
 	}
 	
 	public int getNextIdOffset() throws PersistenceException {
