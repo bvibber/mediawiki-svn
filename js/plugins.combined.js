@@ -7029,57 +7029,58 @@ if ( !context || typeof context == 'undefined' ) {
 					$(this).replaceWith( this.childNodes );
 				} );
 				
+				// If the pasted content is plain text then wrap it in a <p> and adjust the <br> accordingly 
 				var pasteContent = context.fn.getOffset( cursorPos[0] ).node;
 				var removeNextBR = false
 				while ( pasteContent != null && ! $( pasteContent ).hasClass( 'wikiEditor' ) ) {
 					var currentNode = pasteContent;
 					pasteContent = pasteContent.nextSibling;
-					if ( currentNode.nodeName == '#text' && currentNode.nodeValue == currentNode.wholeText ) {				
-						$( currentNode ).wrap( $( '<p></p>' ) );
+					if ( currentNode.nodeName == '#text' && currentNode.nodeValue == currentNode.wholeText ) {
+						var pWrapper = $( '<p></p>' ).addClass( 'wikiEditor' );
+						$( currentNode ).wrap( pWrapper );
 						$( currentNode ).addClass( 'wikiEditor' );
 						removeNextBR = true;
-					} else if ( currentNode.nodeName == 'SPAN' ) {
-						var text = $( currentNode ).text();
-						if ( text.length  == 0 ) {
-							$( currentNode ).remove();
-						} 
-						removeNextBR = false;
-					} else if ( currentNode.nodeName == 'BR' ) {
-						if (removeNextBR ) {
-							$( currentNode ).remove();
-						} else {
-							$( currentNode ).addClass( 'wikiEditor' );
-						}
+					} else if ( currentNode.nodeName == 'BR' && removeNextBR ) {
+						$( currentNode ).remove();
 						removeNextBR = false;
 					} else {
 						removeNextBR = false;
 					}
-				}
-				
+				}	
 				var $selection = context.$content.find( ':not(.wikiEditor)' );
 				while ( $selection.length && $selection.length > 0 ) {
 					var $currentElement = $selection.eq( 0 );
 					while ( !$currentElement.parent().is( 'body' ) && !$currentElement.parent().is( '.wikiEditor' ) ) {
 						$currentElement = $currentElement.parent();
 					}
-					var html = $( '<div></div>' ).text( $currentElement.text().replace( /\r|\n/g, ' ' ) ).html();
-					if ( $currentElement.is( 'p' ) || $currentElement.is( 'div' ) ) {
-						$newElement = $( '<p></p>' )
-							.addClass( 'wikiEditor' )
-							.insertAfter( $currentElement );
-						if ( html.length ) {
-							$newElement.html( html );
-						} else {
-							$newElement.append( $( '<br>' ).addClass( 'wikiEditor' ) );
-						}
-						$currentElement.remove();
+					
+					var $newElement;
+					if ( $currentElement.is( 'p' ) || $currentElement.is( 'div' ) || $currentElement.is( 'pre' ) ) {
+						//Convert all <div>, <p> and <pre> that was pasted into a <p> element
+						$newElement = $( '<p></p>' );
 					} else {
-						$newElement = $( '<span></span>' ).html( html ).insertAfter( $currentElement );
-						$newElement.replaceWith( $newElement[0].childNodes );
-						$currentElement.remove();
+						// everything else becomes a <span>
+						$newElement = $( '<span></span>' ).addClass( 'wikiEditor' );
 					}
+					
+					// If the pasted content was html, just convert it into text and <br>
+					var text = $.trim( $currentElement.text() );
+					var pieces = text.split('\n');					
+					for ( var i = 0; i < pieces.length; i++ ) {
+            			if ( pieces[i] ) {
+							$newElement.html( $newElement.html() + $.trim( pieces[i] ) );
+						} else {
+							var $brElement =  $( '<span></span>' ).html( '<br class = "wikiEditor" />' );
+							$newElement.html( $newElement.html() + $brElement.html() );
+						}
+            		}
+					$newElement.insertAfter( $currentElement );
+					$newElement.addClass( 'wikiEditor' );
+					$currentElement.remove();
+
 					$selection = context.$content.find( ':not(.wikiEditor)' );
 				}
+
 				context.$content.find( '.wikiEditor' ).removeClass( 'wikiEditor' );
 				if ( $.layout.name !== 'webkit' ) {
 					context.$content.removeClass( 'pasting' );
