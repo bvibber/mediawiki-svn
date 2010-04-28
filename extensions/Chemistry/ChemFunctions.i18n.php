@@ -1,5 +1,4 @@
 <?php
-
 /**
  * MediaWiki Internationalisation file for ChemFunctions.php and SpecialChemicalsources.php.
  *
@@ -13,6 +12,7 @@ $messages = array();
 $messages['en'] = array(
 	'chemicalsources'        => 'Chemical sources',
 	'chemicalsource-desc'    => 'Adds the tag <nowiki><chemform></nowiki>, for chemical formulae',
+	'chemicalsources-desc'   => '[[Special:ChemicalSources|Special page]] for chemical sources',
 	'chemFunctions_ListPage' => 'Chemical sources',
 	'chemFunctions_DataList' => 'Below is a list of links to sites that may provide information about the chemical substance you are looking for.<br /><br />
 * <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Compound $MIXCASNameFormula at NIST</a><br />
@@ -416,7 +416,7 @@ $messages['gl'] = array(
 	'chemicalsources' => 'Fontes químicas',
 	'chemicalsource-desc' => 'Engada a etiqueta <nowiki><chemform></nowiki>, para fórmulas químicas',
 	'chemFunctions_ListPage' => 'Fontes químicas',
-	'chemFunctions_DataList' => 'Embaixo hai unha lista das ligazóns aos sitios que poden proporcionar información acerca da sustancia química que procura.<br /><br /> * <a 
+	'chemFunctions_DataList' => 'Embaixo hai unha lista das ligazóns aos sitios que poden proporcionar información acerca da sustancia química que procura.<br /><br /> * <a
 href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Composto $MIXCASNameFormula en NIST</a><br /> * <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS na Universidade de Oxford (UK) (non consultábel)</a><br />',
 	'chemFunctions_CAS' => 'número CAS',
 	'chemFunctions_ATCCode' => 'Código ATC',
