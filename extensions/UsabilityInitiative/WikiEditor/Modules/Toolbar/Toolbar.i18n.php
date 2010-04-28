@@ -10884,6 +10884,7 @@ $messages['pdc'] = array(
 
 /** Polish (Polski)
  * @author Leinad
+ * @author Nux
  * @author Sp5uhe
  * @author ToSter
  */
@@ -11077,7 +11078,7 @@ $messages['pl'] = array(
 	'wikieditor-toolbar-help-content-showreferences-description' => 'Wyświetl przypisy',
 	'wikieditor-toolbar-help-content-showreferences-result' => "<ol class='references'><li id='cite_note-test-0'><b><a title='' href='#'>^</a></b> <a rel='nofollow' title='http://www.przyklad.org' class='external text' href='#'>Opis linku</a>, dodatkowy tekst.</li></ol>",
 	'wikieditor-toolbar-help-content-signaturetimestamp-description' => 'Podpis wraz z datą i czasem',
-	'wikieditor-toolbar-help-content-signaturetimestamp-result' => "<a href='#' title='{{#special:mypage}}'>Nazwa użytkownika</a> (<a href='#' title='{{#special:mytalk}}'>talk</a>) 15:54, 10 czerwca 2009 (UTC)",
+	'wikieditor-toolbar-help-content-signaturetimestamp-result' => "<a href='#' title='{{#special:mypage}}'>Nazwa użytkownika</a> (<a href='#' title='{{#special:mytalk}}'>dyskusja</a>) 15:54, 10 czerwca 2009 (UTC)",
 	'wikieditor-toolbar-help-content-signature-description' => 'Podpis',
 	'wikieditor-toolbar-help-content-signature-result' => "<a href='#' title='{{#special:mypage}}'>Nazwa użytkownika</a> (<a href='#' title='{{#special:mytalk}}'>talk</a>)",
 	'wikieditor-toolbar-help-content-indent-description' => 'Wcięcie',

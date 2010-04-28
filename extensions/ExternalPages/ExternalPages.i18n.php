@@ -319,6 +319,16 @@ $messages['ka'] = array(
 	'externalpages-no-page' => 'გვერდი არ არის მითითებული',
 );
 
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'externalpages' => '외부 문서',
+	'externalpages-desc' => '원격 위키미디어 사이트에서 문서를 읽어들여 보여 줌',
+	'externalpages-bad-page' => '문서 이름이 잘못되었습니다.',
+	'externalpages-no-page' => '문서를 지정하지 않았습니다.',
+);
+
 /** Colognian (Ripoarisch)
  * @author Purodha
  */

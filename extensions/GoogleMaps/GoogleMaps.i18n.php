@@ -4632,6 +4632,19 @@ $wgGoogleMapsMessages['ru'] = array(
 	'gm-mars' => 'Марс',
 );
 
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$wgGoogleMapsMessages['rue'] = array(
+	'gm-zoom-control' => 'Навіґація',
+	'gm-large' => 'Великый',
+	'gm-medium' => 'Середнїй',
+	'gm-small' => 'Маленькый',
+	'gm-earth' => 'Земля',
+	'gm-moon' => 'Місяць',
+	'gm-mars' => 'Марс',
+);
+
 /** Sardinian (Sardu)
  * @author Marzedu
  */

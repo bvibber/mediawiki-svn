@@ -113,6 +113,14 @@ $messages['id'] = array(
 	'rped-wikipedia-url' => 'http://id.wikipedia.org/wiki/',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'rped' => 'Entdecke vu Säiten op externe Siten',
+	'rped-wikipedia-url' => 'http://lb.wikipedia.org/wiki/',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

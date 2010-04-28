@@ -3339,6 +3339,19 @@ $messages['it'] = array(
 	'wikilog-comment-reject' => 'Rifiuta questo commento (azione immediata)',
 	'wikilog-newtalk-text' => '<!-- pagina vuota creata da Wikilog -->',
 	'wikilog-newtalk-summary' => 'creato automaticamente da Wikilog',
+	'wikilog-form-category' => 'Categoria:',
+	'wikilog-form-name' => 'Nome:',
+	'wikilog-form-author' => 'Autore:',
+	'wikilog-form-tag' => 'Tag:',
+	'wikilog-form-date' => 'Data:',
+	'wikilog-form-status' => 'Status:',
+	'wikilog-form-preview' => 'Anteprima:',
+	'wikilog-form-comment' => 'Commento:',
+	'wikilog-show-all' => 'Tutti i post',
+	'wikilog-show-published' => 'Pubblicato',
+	'wikilog-show-drafts' => 'Bozze',
+	'wikilog-submit' => 'Invia',
+	'wikilog-preview' => 'Anteprima',
 );
 
 /** Japanese (日本語)
@@ -5336,6 +5349,45 @@ $messages['ru'] = array(
 	'wikilog-page-lc' => 'страница',
 	'wikilog-history-lc' => 'история',
 	'wikilog-doc-import-comment' => 'Импортированная документация Викилога',
+);
+
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'wikilog-new-item' => 'Створити нову вікі статю',
+	'wikilog-new-item-go' => 'Створити',
+	'wikilog-item-name' => 'Назва статї:',
+	'wikilog-published' => 'Публікована',
+	'wikilog-updated' => 'Актуалізоване',
+	'wikilog-authors' => 'Авторы',
+	'wikilog-wikilog' => 'Вікілоґ',
+	'wikilog-title' => 'Назва',
+	'wikilog-actions' => 'Дїї',
+	'wikilog-comments' => 'Коментарї',
+	'wikilog-replies' => 'Одповідї',
+	'wikilog-view-archives' => 'Архівы',
+	'wikilog-anonymous-mark' => '(анонім)',
+	'wikilog-pager-newest' => 'найновшы',
+	'wikilog-pager-oldest' => 'найстаршы',
+	'wikilog-pager-prev' => 'попередня',
+	'wikilog-pager-next' => 'далша',
+	'wikilog-pager-first' => 'перша',
+	'wikilog-pager-last' => 'послїдня',
+	'wikilog-pager-empty' => '(жадны елементы)',
+	'wikilog-no-comments' => 'жадны коментарї',
+	'wikilog-has-comments' => '$1 {{PLURAL:$1|коментарь|коментарї|коментарів}}',
+	'wikilog-summary-uncategorized' => 'Некатеґорізованы',
+	'wikilog-form-wikilog' => 'Вікілоґ:',
+	'wikilog-form-category' => 'Катеґорія:',
+	'wikilog-form-name' => 'Назва:',
+	'wikilog-form-author' => 'Автор:',
+	'wikilog-form-date' => 'Датум:',
+	'wikilog-form-status' => 'Став:',
+	'wikilog-form-preview' => 'Нагляд:',
+	'wikilog-form-comment' => 'Коментарь:',
+	'wikilog-show-all' => 'Вшыткы приспевкы',
+	'wikilog-show-published' => 'Публіковане',
 );
 
 /** Sinhala (සිංහල)

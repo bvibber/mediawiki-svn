@@ -2651,6 +2651,19 @@ YouTube, возможно, будет некоторое время обраба
 	'youtubeauthsub_jserror_nodesc' => 'Пожалуйста, введите описание видео.',
 );
 
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'youtubeauthsub_description' => 'Попис',
+	'youtubeauthsub_password' => 'Гесло на YouTube',
+	'youtubeauthsub_username' => 'Мено хоснователя на YouTube',
+	'youtubeauthsub_keywords' => 'Ключовы слова',
+	'youtubeauthsub_category' => 'Катеґорія',
+	'youtubeauthsub_submit' => 'Послати',
+	'youtubeauthsub_clickhere' => 'Кликнутём ту ся приголосите до YouTube',
+);
+
 /** Yakut (Саха тыла)
  * @author HalanTul
  */

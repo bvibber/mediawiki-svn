@@ -89,6 +89,13 @@ $messages['it'] = array(
 	'parserwiki-desc' => 'Consente di definire una grammatica in un wiki e quindi si utilizzare quella grammatica per inserire informazioni nel wiki stesso',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'parserwiki-desc' => 'Erlaabt et eng Grammaire an enger Wiki ze definéieren an déi Grammaire benotze fir Informatiounen an déi Wiki derbäizesetzen',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
@@ -118,10 +125,11 @@ $messages['oc'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'parserwiki-desc' => 'A përmëtt ëd defin^ na gramàtica ant na wiki peui ëd dovré cola gramàtica për anserì anformassion ant la midema wiki',
+	'parserwiki-desc' => "A përmët ëd definì na gramàtica ant na wiki peui ëd dovré cola gramàtica për anserì dl'anformassion an sla wiki midema",
 );
 
 /** Portuguese (Português)

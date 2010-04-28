@@ -5158,6 +5158,13 @@ $4',
 
 $4',
 	'codereview-email-subj3' => '[$1] [$2]: 자동 회귀 테스트를 감지',
+	'codereview-email-body3' => '자동 테스트 과정에서 $1의 변경 사항으로 인한 회귀 버그를 발견했습니다.
+
+전체 URL: $2
+
+커밋 요약:
+
+$3',
 	'repoadmin' => '저장소 관리',
 	'repoadmin-new-legend' => '새 저장소 만들기',
 	'repoadmin-new-label' => '저장소 이름:',
@@ -6036,6 +6043,7 @@ $messages['myv'] = array(
 	'code-rev-purge-link' => 'панемс',
 	'code-status-new' => 'од',
 	'code-status-fixme' => 'витемак',
+	'code-pathsearch-path' => 'Яннэсь:',
 	'repoadmin-new-button' => 'Шкик-теик',
 );
 

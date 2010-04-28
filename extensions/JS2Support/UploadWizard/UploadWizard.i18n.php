@@ -113,11 +113,12 @@ $messages['oc'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'uploadwizard' => 'Modìfica ël wizard',
-	'uploadwizard-desc' => "Modìfica ël wizard, dësvilupà për ël programa d'Usabilità Multimedia",
+	'uploadwizard' => "Assistent d'amportassion",
+	'uploadwizard-desc' => "Assistent d'amportassion, dësvlupà për ël programa d'Usabilità Multimojen",
 );
 
 /** Portuguese (Português)

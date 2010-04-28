@@ -746,6 +746,8 @@ Pšosym <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Cient_downlo
 	'ogg-dismiss' => 'Zacyniś',
 	'ogg-download' => 'Dataju ześěgnuś',
 	'ogg-desc-link' => 'Wó toś tej dataji',
+	'ogg-oggThumb-version' => 'OggHandler trjeba wersiju $1 oggThumb abo nowšu.',
+	'ogg-oggThumb-failed' => 'oggThumb njejo mógł wobrazk napóraś.',
 );
 
 /** Greek (Ελληνικά)
@@ -991,6 +993,7 @@ $messages['fo'] = array(
  * @author Crochet.david
  * @author Grondin
  * @author Jean-Frédéric
+ * @author Peter17
  * @author Seb35
  * @author Sherbrooke
  * @author Urhixidur
@@ -1023,6 +1026,8 @@ $messages['fr'] = array(
 	'ogg-dismiss' => 'Fermer',
 	'ogg-download' => 'Télécharger le fichier',
 	'ogg-desc-link' => 'À propos de ce fichier',
+	'ogg-oggThumb-version' => 'OggHandler nécessite oggThumb, version $1 ou supérieure.',
+	'ogg-oggThumb-failed' => 'oggThumb n’a pas réussi à créer la miniature.',
 );
 
 /** Franco-Provençal (Arpetan)
@@ -1134,6 +1139,8 @@ $messages['gl'] = array(
 	'ogg-dismiss' => 'Fechar',
 	'ogg-download' => 'Descargar o ficheiro',
 	'ogg-desc-link' => 'Acerca deste ficheiro',
+	'ogg-oggThumb-version' => 'O OggHandler necesita a versión $1 ou unha posterior do oggThumb.',
+	'ogg-oggThumb-failed' => 'Houbo un erro por parte do oggThumb ao crear a miniatura.',
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
@@ -1326,6 +1333,8 @@ $messages['hsb'] = array(
 	'ogg-dismiss' => 'Začinić',
 	'ogg-download' => 'Dataju sćahnyć',
 	'ogg-desc-link' => 'Wo tutej dataji',
+	'ogg-oggThumb-version' => 'OggHandler trjeba wersiju $1 oggThumb abo nowšu.',
+	'ogg-oggThumb-failed' => 'oggThumb njemóžeše wobrazk wutworić.',
 );
 
 /** Haitian (Kreyòl ayisyen)
@@ -1403,6 +1412,8 @@ Per favor <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_dow
 	'ogg-dismiss' => 'Clauder',
 	'ogg-download' => 'Discargar file',
 	'ogg-desc-link' => 'A proposito de iste file',
+	'ogg-oggThumb-version' => 'OggHandler require oggThumb version $1 o plus recente.',
+	'ogg-oggThumb-failed' => 'oggThumb ha fallite de crear le miniatura.',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -1537,6 +1548,8 @@ $messages['ja'] = array(
 	'ogg-dismiss' => '閉じる',
 	'ogg-download' => 'ファイルをダウンロード',
 	'ogg-desc-link' => 'ファイルの詳細',
+	'ogg-oggThumb-version' => 'OggHandler は oggThumb バージョン$1またはそれ以降が必要です。',
+	'ogg-oggThumb-failed' => 'oggThumb によるサムネイル作成に失敗しました。',
 );
 
 /** Jutish (Jysk)
@@ -1780,6 +1793,8 @@ QuickTime은 이 구성 요소 없이는 Ogg 파일을 재생할 수 없습니�
 	'ogg-dismiss' => '닫기',
 	'ogg-download' => '파일 다운로드',
 	'ogg-desc-link' => '파일 정보',
+	'ogg-oggThumb-version' => 'OggHandler는 oggThumb 버전 $1 이상을 요구합니다.',
+	'ogg-oggThumb-failed' => 'oggThumb가 섬네일을 생성하지 못했습니다.',
 );
 
 /** Kinaray-a (Kinaray-a)
@@ -2002,6 +2017,8 @@ QuickTime не може да преслушува/прегледува Ogg по�
 	'ogg-dismiss' => 'Затвори',
 	'ogg-download' => 'Симни податотека',
 	'ogg-desc-link' => 'Информации за оваа податотека',
+	'ogg-oggThumb-version' => 'OggHandler бара oggThumb верзија $1 или понова.',
+	'ogg-oggThumb-failed' => 'oggThumb не успеа да ја создаде минијатурата.',
 );
 
 /** Malayalam (മലയാളം)
@@ -2228,6 +2245,8 @@ Download <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_down
 	'ogg-dismiss' => 'Sluiten',
 	'ogg-download' => 'Bestand downloaden',
 	'ogg-desc-link' => 'Over dit bestand',
+	'ogg-oggThumb-version' => 'OggHandler vereist oggThumb versie $1 of hoger.',
+	'ogg-oggThumb-failed' => 'oggThumb kon geen miniatuur aanmaken.',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
@@ -2383,6 +2402,8 @@ $messages['pl'] = array(
 	'ogg-dismiss' => 'Zamknij',
 	'ogg-download' => 'Pobierz plik',
 	'ogg-desc-link' => 'Właściwości pliku',
+	'ogg-oggThumb-version' => 'OggHandler wymaga oggThumb w wersji $1 lub późniejszej.',
+	'ogg-oggThumb-failed' => 'oggThumb nie udało się utworzyć miniaturki.',
 );
 
 /** Piedmontese (Piemontèis)
@@ -2627,6 +2648,8 @@ $messages['ru'] = array(
 	'ogg-dismiss' => 'Скрыть',
 	'ogg-download' => 'Загрузить файл',
 	'ogg-desc-link' => 'Информация об этом файле',
+	'ogg-oggThumb-version' => 'OggHandler требует oggThumb версии $1 или более поздней.',
+	'ogg-oggThumb-failed' => 'oggThumb не удалось создать миниатюру.',
 );
 
 /** Yakut (Саха тыла)

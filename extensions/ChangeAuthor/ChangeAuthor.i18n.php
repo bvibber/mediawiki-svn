@@ -1841,6 +1841,14 @@ $messages['ru'] = array(
 	'right-changeauthor' => 'изменение автора правки',
 );
 
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'changeauthor-pagenameform-go' => 'Выконати',
+	'changeauthor-comment' => 'Коментарь:',
+);
+
 /** Yakut (Саха тыла)
  * @author HalanTul
  */

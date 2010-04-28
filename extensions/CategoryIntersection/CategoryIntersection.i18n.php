@@ -375,6 +375,7 @@ $messages['ja'] = array(
 	'categoryintersection-desc' => '[[Special:CategoryIntersection|カテゴリの交差検索]]に利用するハッシュ値を含むテーブルを保持する',
 	'categoryintersection-doit' => 'これらのカテゴリすべてに属しているページを列挙する',
 	'categoryintersection-maxcategories' => '交差できるカテゴリの最大数は$1です。',
+	'categoryintersection-mincategories' => '最低でも2つカテゴリを指定する必要があります。',
 	'categoryintersection-results' => '検索結果は$1{{PLURAL:$1|件}}です。',
 );
 

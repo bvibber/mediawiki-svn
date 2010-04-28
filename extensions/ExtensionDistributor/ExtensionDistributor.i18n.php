@@ -1532,9 +1532,13 @@ $messages['km'] = array(
  */
 $messages['ko'] = array(
 	'extensiondistributor' => '미디어위키 확장 기능 내려받기',
+	'extensiondistributor-desc' => '확장 기능 스냅샷 배포를 위한 확장 기능',
 	'extdist-not-configured' => '$wgExtDistTarDir 과 $wgExtDistWorkingCopy를 설정하십시오.',
+	'extdist-wc-missing' => '설정된 복제 디렉토리가 존재하지 않습니다!',
+	'extdist-no-such-extension' => '"$1" 확장 기능이 없습니다.',
 	'extdist-no-such-version' => '확장 기능 "$1"은 "$2" 버전용이 존재하지 않습니다.',
 	'extdist-choose-extension' => '당신이 다운로드하기를 원하는 확장 기능을 선택하십시오:',
+	'extdist-wc-empty' => '설정된 복제 디렉토리에 배포 가능한 확장 기능이 없습니다!',
 	'extdist-submit-extension' => '계속',
 	'extdist-current-version' => '개발 중인 버전 (trunk)',
 	'extdist-choose-version' => '
@@ -1543,10 +1547,14 @@ $messages['ko'] = array(
 당신의 미디어위키 버전을 선택하십시오.
 
 대부분의 확장 기능은 미디어위키의 여러 버전에서도 동작합니다, 당신의 미디어위키 확장 기능이 여기 없거나 최신 버전이 필요하다면, 현재 버전 다운로드를 선택하십시오.',
+	'extdist-no-versions' => '선택한 확장 기능($1)이 어떤 버전으로도 존재하지 않습니다.',
 	'extdist-submit-version' => '계속',
 	'extdist-no-remote' => '외부 서브버전 클라이언트와 연결할 수 없습니다.',
 	'extdist-remote-error' => '외부 서브버전 클라이언트에서 오류 발생: <pre>$1</pre>',
+	'extdist-remote-invalid-response' => '원격 서브버전 클라이언트에서 잘못된 응답이 도착했습니다.',
 	'extdist-svn-error' => 'SVN에서 오류가 발생하렸습니다: <pre>$1</pre>',
+	'extdist-svn-parse-error' => '"svn info"의 XML을 처리할 수 없습니다: <pre>$1</pre>',
+	'extdist-tar-error' => 'Tar에서 종료 코드 $1을(를) 반환하였습니다:',
 	'extdist-created' => "미디어위키 확장 기능 <b>$1</b>의 <b>$2</b> 버전의 묶음 <b>$3</b> 이 생성되었습니다. 5초 후에 다운로드가 자동적으로 실행될 것입니다.
 
 묶음의 URL은 다음에 있습니다:

@@ -71,6 +71,13 @@ $messages['ia'] = array(
 	'addmediawizard-desc' => 'Assistente de addition de multimedia, disveloppate in collaboration per Kaltura e le Fundation Wikimedia',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'addmediawizard-desc' => 'En Assistent fir Medien derbäisetzen, deen an engem Partenariat tëschent Kaltura a n der Wikimedia Foundatioun entwéckelt gouf',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
@@ -93,10 +100,11 @@ $messages['oc'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'addmediawizard-desc' => 'Gionta un media wizard, dësvilupà ansema da Kaltura e da la Fondassion Wikimedia',
+	'addmediawizard-desc' => "Gionté n'assistent për ij mojen, dësvlupà ansema da Kaltura e da la Fondassion Wikimedia",
 );
 
 /** Portuguese (Português)
