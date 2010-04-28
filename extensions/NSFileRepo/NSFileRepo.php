@@ -90,6 +90,9 @@ class NSLocalRepo extends LocalRepo {
 		$result->value = $this->getVirtualUrl( 'temp' ) . '/' . $dstUrlRel;
 		return $result;
 	}
+	function getFileNameStripped($suffix) {
+		return(NSLocalFile::getFileNameStripped($suffix));
+	}
 }
 
 class NSLocalFile extends LocalFile
@@ -425,9 +428,6 @@ class NSOldLocalFile extends OldLocalFile
 	}
 	function getVirtualUrl( $suffix = false ) {
 		return(NSLocalFile::getVirtualUrl( $suffix ));
-	}
-	function getThumbStripped($suffix) {
-		return(NSLocalFile::getThumbStripped($suffix));
 	}
 	function getFileNameStripped($suffix) {
 		return(NSLocalFile::getFileNameStripped($suffix));
