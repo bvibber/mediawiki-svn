@@ -10,7 +10,7 @@
 		$( '.storyboard' ).ajaxScroll( {
 			updateBatch: updateStoryboard,
 			maxOffset: 500,
-			batchSize: 4,
+			batchSize: 8,
 			batchNum: 1,
 			batchClass: "batch",
 			boxClass: "storyboard-box",
@@ -116,11 +116,5 @@
 			$storyboard.append( $storyBody );	
 		}
 	}
-	
-	function fbsClick( url, title ) {
-		alert('');
-		
-		return false;
-	}	
 		
 })(jQuery);

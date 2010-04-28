@@ -46,6 +46,19 @@ class ApiStoryExists extends ApiBase {
 			$this->dieUsageMsg( array( 'missingparam', 'storytitle' ) );
 		}
 		
+		$result = array(
+			'exists' => self::StoryExists( $params )
+		);
+
+		// Just return true or false.
+		// If there is a way of doing this via the API, this should oviously be changed.
+		die( $story == false ? 'true' : 'false' );
+		
+		//$this->getResult()->setIndexedTagName( $result, 'story' );
+		//$this->getResult()->addValue( null, $this->getModuleName(), $result );
+	}
+	
+	public static function StoryExists( array $params ) {
 		$dbr = wfGetDB( DB_SLAVE );
 		
 		$conditions = array(
@@ -61,16 +74,8 @@ class ApiStoryExists extends ApiBase {
 			array( 'story_id' ),
 			$conditions
 		);
-		
-		$result = array(
-			'exists' => $story != false
-		);
 
-		// Just return true or false untill a better solution here is found.
-		die( $story == false ? 'true' : 'false' );
-		
-		$this->getResult()->setIndexedTagName( $result, 'story' );
-		$this->getResult()->addValue( null, $this->getModuleName(), $result );
+		return $story != false;
 	}
 	
 	public function getAllowedParams() {

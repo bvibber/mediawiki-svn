@@ -25,8 +25,16 @@ class SpecialStorySubmission extends UnlistedSpecialPage {
 		if ( $wgRequest->wasPosted() && 
 			!( $wgUser->isLoggedIn() && $wgUser->matchEditToken( $wgRequest->getVal( 'wpStoryEditToken' ) ) )
 			) {
-			$this->saveStory();
-			$this->displayResult();
+				$title = $wgRequest->getText( 'storytitle' );	
+			
+				// This might happen when the user has javascript disabled, or something in the client side validation breaks down.
+				$exists = ApiStoryExists::StoryExists( array( 'storytitle' => $title ) );
+
+				if ( !$exists ) {
+					$this->saveStory( $title );
+				}
+	
+				$this->displayResult( !$exists, $title );
 		} else {
 			$wgOut->returnToMain();
 		}
@@ -35,13 +43,11 @@ class SpecialStorySubmission extends UnlistedSpecialPage {
 	/**
 	 * Store the submitted story in the database, and return a page telling the user his story has been submitted.
 	 */
-	private function saveStory() {
+	private function saveStory( $title ) {
 		global $wgRequest, $wgUser;
 		
 		$dbw = wfGetDB( DB_MASTER );
-
-		$title = $wgRequest->getText( 'storytitle' );
-
+		
 		$story = array(
 			'story_lang_code' => $wgRequest->getText( 'lang' ),
 			'story_author_name' => $wgRequest->getText( 'name' ),
@@ -57,21 +63,27 @@ class SpecialStorySubmission extends UnlistedSpecialPage {
 		// If the user is logged in, also store his user id.
 		if ( $wgUser->isLoggedIn() ) {
 			$story[ 'story_author_id' ] = $wgUser->getId();
-		}
+		}	
 
 		// TODO: email confirmation would be nice
 
-		$dbw->insert( 'storyboard', $story );
+		$dbw->insert( 'storyboard', $story );			
 	}
 	
-	private function displayResult() {
+	private function displayResult( $wasSaved, $title ) {
 		global $wgOut, $wgTitle;
 		
-		$wgOut->setPageTitle( wfMsg( 'storyboard-submissioncomplete' ) );
-		
-		$storyboardLink = $wgTitle->getFullURL(); // TODO: magically get location of the page containing stories
-
-		$wgOut->addWikiMsg( 'storyboard-createdsucessfully', $storyboardLink );
+		if ( $wasSaved ) {
+			$wgOut->setPageTitle( wfMsg( 'storyboard-submissioncomplete' ) );
+			
+			// TODO: magically get location of the page containing stories
+			$wgOut->addWikiMsg( 'storyboard-createdsucessfully', $wgTitle->getFullURL() ); 		
+		} else {
+			$wgOut->setPageTitle( wfMsg( 'storyboard-submissionincomplete' ) );
+			
+			$wgOut->addWikiMsg( 'storyboard-alreadyexists', $title, $wgTitle->getFullURL() );
+			$wgOut->addHtml( '<a href="#" onclick="history.go(-1); return false;">' . wfMsg( 'storyboard-changetitle' ) . '</a>' );
+		}
 	}
 	
 }

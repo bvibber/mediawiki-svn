@@ -54,6 +54,9 @@ It might have been removed.',
 
 	// Special:StorySubmission
 	'storyboard-submissioncomplete' => 'Submission complete',
+	'storyboard-submissionincomplete' => 'Submission failed',
+	'storyboard-alreadyexists' => '"$1" is already taken.',
+	'storyboard-changetitle' => 'Change the title.',
 
 	// Story review
 	'storyreview' => 'Story review',

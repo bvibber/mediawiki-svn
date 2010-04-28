@@ -27,6 +27,8 @@ class TagStorysubmission {
 	 * @param $frame
 	 * 
 	 * @return array
+	 * 
+	 * FIXME: the submission broke somehow
 	 */
 	public static function render( $input, array $args, Parser $parser, $frame ) {
 		wfProfileIn( __METHOD__ );
@@ -165,7 +167,7 @@ EOT
 					'maxlength' => 255,
 					'minlength' => 2,
 					'remote' => "$wgScriptPath/api.php?format=json&action=storyexists"
-				)
+				) 
 			) . '</td></tr>';
 		
 		$formBody .= '<tr><td colspan="2">' .
@@ -196,7 +198,7 @@ EOT
 			'</td></tr>';
 			
 		$formBody .= '<tr><td colspan="2">' .
-			Html::input( '', wfMsg( 'htmlform-submit' ), 'submit', array( 'id' => 'storysubmission-button' ) ) .
+			Html::input( 'storysubmission-button', wfMsg( 'htmlform-submit' ), 'submit', array( 'id' => 'storysubmission-button' ) ) .
 			'</td></tr>';
 			
 		$formBody .= '</table>';
