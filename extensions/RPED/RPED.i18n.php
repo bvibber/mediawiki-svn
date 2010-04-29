@@ -113,6 +113,13 @@ $messages['id'] = array(
 	'rped-wikipedia-url' => 'http://id.wikipedia.org/wiki/',
 );
 
+/** Japanese (日本語)
+ * @author 青子守歌
+ */
+$messages['ja'] = array(
+	'rped-wikipedia-url' => 'http://ja.wikipedia.org/wiki/',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

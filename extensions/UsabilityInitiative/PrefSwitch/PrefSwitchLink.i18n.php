@@ -113,6 +113,13 @@ $messages['es'] = array(
 	'tooltip-pt-prefswitch-link' => 'Probar las nuevas características',
 );
 
+/** Estonian (Eesti)
+ * @author Hendrik
+ */
+$messages['et'] = array(
+	'prefswitch-link' => 'Uus!',
+);
+
 /** Basque (Euskara)
  * @author Joxemai
  */

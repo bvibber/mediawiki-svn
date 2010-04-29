@@ -389,6 +389,8 @@ QuickTime ня можа прайграваць файлы ў фармаце Ogg 
 	'ogg-dismiss' => 'Зачыніць',
 	'ogg-download' => 'Загрузіць файл',
 	'ogg-desc-link' => 'Інфармацыя пра гэты файл',
+	'ogg-oggThumb-version' => 'OggHandler патрабуе oggThumb вэрсіі $1 ці больш позьняй.',
+	'ogg-oggThumb-failed' => 'oggThumb не атрымалася стварыць мініятуру.',
 );
 
 /** Bulgarian (Български)
@@ -2496,6 +2498,8 @@ Por favor, faça o <a href=\"http://www.mediawiki.org/wiki/Extension:OggHandler/
 	'ogg-dismiss' => 'Fechar',
 	'ogg-download' => 'Fazer download do ficheiro',
 	'ogg-desc-link' => 'Sobre este ficheiro',
+	'ogg-oggThumb-version' => 'O oggHandler requer o oggThumb versão $1 ou posterior.',
+	'ogg-oggThumb-failed' => 'O oggThumb não conseguiu criar a miniatura.',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

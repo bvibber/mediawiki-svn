@@ -2723,6 +2723,13 @@ Saltar a visualización de flujo: $2',
 	'right-mv_edit_stream' => 'Editar archivos stream',
 );
 
+/** Estonian (Eesti)
+ * @author Hendrik
+ */
+$messages['et'] = array(
+	'mv_time_separator' => '$1 – $2',
+);
+
 /** Basque (Euskara)
  * @author An13sa
  * @author Kobazulo

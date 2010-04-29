@@ -2395,3 +2395,4 @@ $messages['zh-hant'] = array(
 	'changeauthor-logentry' => '更改[[$1]]修訂版本$2的作者從 $3 到 $4',
 	'changeauthor-logpagename' => '作者更改日誌',
 );
+

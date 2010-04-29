@@ -3528,6 +3528,7 @@ Contacta por favor el operador o el administrador del servicio.',
 /** Estonian (Eesti)
  * @author AivoK
  * @author Avjoska
+ * @author Hendrik
  * @author Pikne
  * @author Silvar
  */
@@ -3626,6 +3627,7 @@ $messages['et'] = array(
 	'ow_meaningsoftitle' => '"$1" tähendus',
 	'ow_Permission_denied' => '<h2>Õigused puuduvad</h2>',
 	'ow_history_show_life_span' => 'Näita kirje eluiga:',
+	'ow_class_attr_type_xlate' => 'Tõlgitav tekst',
 	'needstranslation' => 'Wikidata: Tõlget vajavad väljendid',
 	'ow_needs_xlation_title' => 'Tõlget vajavad väljendid',
 	'ow_needs_xlation_source_lang' => 'Lähtekeel:',
@@ -6449,6 +6451,9 @@ $messages['ja'] = array(
 	'ow_exporttsv_not_allowed' => 'あなたはTSVの書き出しをするための権限をもっていません。',
 	'ow_exporttsv_export_failed' => '書き出し失敗',
 	'addcollection' => 'ウィキデータ: コレクション追加',
+	'ow_searchnoresult' => "<p>以下の操作が可能です:<br />
+* '''式 \"[[Expression:\$1]]\" の作成''' (および定義の追加)<br />
+* '''ページ \"[[:\$1]]\" の作成''' (通常のウィキページ)</p>",
 	'ow_save' => '保存',
 	'ow_history' => '履歴',
 	'ow_datasets' => 'データ集合の選択',

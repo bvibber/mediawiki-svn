@@ -14,3 +14,4 @@ $messages = array();
 $messages['en'] = array(
     'wikieditor-addMediaWizard-preference' => 'Enable "Add media wizard" gadget',
 );
+

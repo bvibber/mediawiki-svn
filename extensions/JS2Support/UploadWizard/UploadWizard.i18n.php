@@ -80,6 +80,14 @@ $messages['ia'] = array(
 	'uploadwizard-desc' => 'Assistente de incargamento, disveloppate pro le bursa Initiativa de Usabilitate',
 );
 
+/** Japanese (日本語)
+ * @author 青子守歌
+ */
+$messages['ja'] = array(
+	'uploadwizard' => 'アップロード・ウィザード',
+	'uploadwizard-desc' => 'アップロード・ウィザード（マルチメディア・ユーザビリティで開発された機能）',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

@@ -254,6 +254,7 @@ $messages['bn'] = array(
  */
 $messages['br'] = array(
 	'povwatch' => 'PovWatch',
+	'povwatch_desc' => 'Astenn hag a ro an tu da [[Special:PovWatch|ouzhpennañ pajennoù da roll evezhiañ]] implijerien all',
 	'povwatch_no_session' => "Fazi : Ne c'haller ket kas ar furmskrid abalamour m'eo bet kollet roadennoù an dalc'h.",
 	'povwatch_not_allowed_push' => "N'oc'h ket ur merour eus PovWatch, ne c'hallit ket ouzhpennañ pajennoù d'ar rolloù evezhiañ.",
 	'povwatch_already_subscribed' => "Koumanantet oc'h da bPovWatch dija",
@@ -261,6 +262,7 @@ $messages['br'] = array(
 	'povwatch_not_subscribed' => "N'och ket koumanantet da bPovWatch, setu ne c'hallit ket digoumanantiñ.",
 	'povwatch_unsubscribed' => 'Tennet eo bet ho enskrivadur da PovWatch.',
 	'povwatch_invalid_title' => 'Direizh eo an titl diferet',
+	'povwatch_pushed' => 'Ouzhpennet eo bet ar bajenn [[$1]] da roll evezhiañ {{PLURAL:$2|un|$2}} implijer.',
 	'povwatch_subscriber_list' => 'Ur [[Special:PovWatch/subscribers|roll koumananterien]] zo da gaout.',
 	'povwatch_subscriber_list_intro' => '<strong>Roll an dud koumanantet</strong>',
 	'povwatch_not_allowed_subscribers' => "N'oc'h ket aotreet da welet roll ar goumananterien PovWatch.",
@@ -277,6 +279,8 @@ Klikit war ar bouton a-is evit digoumanantiñ.",
 Evit en em enskrivañ klikit war ar bouton da-heul.",
 	'povwatch_subscribe' => 'Koumanantiñ',
 	'povwatch_added' => 'ouzhpennet',
+	'right-povwatch_admin' => 'Merañ gwirioù an implijerien evit ouzhpennañ pajennoù da roll evezhiañ implijerien all.',
+	'right-povwatch_user' => 'Ouzhpennañ pajennoù da roll evezhiañ implijerien all',
 	'action-povwatch_admin' => 'melestriñ ar gwirioù implijer evit PovWatch',
 	'action-povwatch_user' => 'ouzhpennañ ar bajenn-mañ da roll evezhiañ un implijer all',
 );

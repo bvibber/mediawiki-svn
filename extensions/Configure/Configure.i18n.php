@@ -5893,6 +5893,7 @@ $messages['lfn'] = array(
  * @author Kizito
  */
 $messages['lg'] = array(
+	'configure-view' => 'Lukebere',
 	'configure-throttle-action-rollback' => 'Jjulula nkyukakyuka',
 );
 

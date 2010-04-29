@@ -783,12 +783,23 @@ Para ayudarnos a mejorarlas, por favor llena la encuesta opcional de abajo.',
 
 /** Estonian (Eesti)
  * @author AivoK
+ * @author Hendrik
  * @author Pikne
  */
 $messages['et'] = array(
+	'prefswitch-survey-true' => 'Jah',
+	'prefswitch-survey-false' => 'Ei',
 	'prefswitch-survey-submit-feedback' => 'Saada tagasiside',
+	'prefswitch-survey-answer-whyoff-hard' => 'Seda oli liiga keeruline kasutada.',
+	'prefswitch-survey-answer-whyoff-didntwork' => 'See ei toiminud korralikult.',
+	'prefswitch-survey-answer-whyoff-notpredictable' => 'See ei toiminud oodatult.',
+	'prefswitch-survey-answer-whyoff-didntlike-look' => 'Mulle ei meeldinud selle välimus.',
+	'prefswitch-survey-answer-whyoff-didntlike-toolbar' => 'Mulle ei meeldinud uus tööriistariba.',
+	'prefswitch-survey-answer-whyoff-other' => 'Muu põhus:',
 	'prefswitch-survey-question-browser' => 'Millist internetilehitsejat sa kasutad?',
+	'prefswitch-survey-answer-browser-other' => 'Muu brauser:',
 	'prefswitch-survey-question-os' => 'Millist operatsioonisüsteemi sa kasutad?',
+	'prefswitch-survey-answer-os-other' => 'Muu operatsioonisüsteem:',
 	'prefswitch-survey-question-res' => 'Milline on su kuvari eraldusvõime?',
 	'prefswitch-title-feedback' => 'Tagasiside',
 	'prefswitch-survey-intro-feedback' => 'Meile meeldiks teada saada sinu arvamust.

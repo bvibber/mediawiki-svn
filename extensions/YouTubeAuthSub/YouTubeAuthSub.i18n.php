@@ -856,6 +856,7 @@ Por favor, sé paciente.',
 
 /** Estonian (Eesti)
  * @author Avjoska
+ * @author Hendrik
  * @author KalmerE.
  */
 $messages['et'] = array(
@@ -871,6 +872,9 @@ $messages['et'] = array(
 	'youtubeauthsub_authsubinstructions' => "Enne video üleslaadimist on vajalik YouTube'i sisselogimine.",
 	'youtubeauthsub_uploadhere' => 'Lae oma video üles siit:',
 	'youtubeauthsub_uploadbutton' => 'Lae üles',
+	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
+
+[http://www.youtube.com/watch?v=$1 Vaata seda videot]',
 	'youtubeauthsub_summary' => "YouTube'i video üleslaadimine",
 	'youtubeauthsub_uploading' => 'Sinu videot laetakse üles.
 Ole kannatlik.',

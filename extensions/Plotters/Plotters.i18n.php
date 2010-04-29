@@ -119,7 +119,14 @@ $messages['br'] = array(
 	'plotters-missing-arguments' => "N'eus bet spisaet arguzenn ebet.",
 	'plotters-excessively-long-scriptname' => "Re hir eo anv ar skript.
 Termenit ur skript gant un anv 255 arouezenn hir d'ar muiañ.",
+	'plotters-excessively-long-preprocessorname' => "Re hir eo anv ar rakprosesor.
+Termenit un anv hag a vefe gant un hirder a 255 arouezenn pe nebeutoc'h.",
+	'plotters-excessively-long-name' => "Re hir eo anv ar graf.
+Termenit un anv hag a vefe gant un hirder a 255 arouezenn pe nebeutoc'h.",
+	'plotters-excessively-long-tableclass' => "Re hir eo renk an daolenn. 
+Termenit un anv hag a vefe gant un hirder a 255 arouezenn pe nebeutoc'h.",
 	'plotters-no-data' => "N'eus bet pourchaset roadenn ebet.",
+	'plotters-invalid-renderer' => "Diuzet eo bet ur c'heflusker deouez direizh.",
 	'plotters-errors' => '{{PLURAL:$1|fazi|fazioù}} treselloù :',
 );
 

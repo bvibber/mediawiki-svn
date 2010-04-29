@@ -2163,6 +2163,7 @@ $messages['te'] = array(
 	'readerfeedback-tierfilter' => 'మూల్యాంకనం:',
 	'readerfeedback-tier-high' => 'ఉన్నతం',
 	'readerfeedback-tier-medium' => 'సామాన్యం',
+	'tooltip-ca-ratinghist' => 'ఈ పుట యొక్క చదువరుల మూల్యాంకనం',
 	'specialpages-group-feedback' => 'వీక్షకుల అభిప్రాయం',
 );
 
