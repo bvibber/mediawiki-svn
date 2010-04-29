@@ -353,7 +353,7 @@ a[disabled=true]:hover {
 #mwe-upwiz-macro-files {
 	margin-top: 12px;
 }
-.mwe-upwiz-details-file {
+.mwe-upwiz-info-file {
 	border-bottom: 1px solid #e0e0e0;
 	margin-bottom: 12px;
 	padding-bottom: 12px;
@@ -472,6 +472,5 @@ legend.mwe-legend {
 .mwe-upwiz-custom-deed {
 	margin-top: 5px;
 }
-
 
 

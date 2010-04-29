@@ -61,8 +61,8 @@ mw.addMessages( {
 	"mwe-upwiz-macro-edit": "Update descriptions",
 	"mwe-upwiz-thanks-intro": "Thanks for uploading your works! You can now use your files on a Wikipedia article or link to them from elsewhere on the web.",
 	"mwe-upwiz-thanks-link": "This file is now available at <b><tt>$1</tt></b>.",
-	"mwe-upwiz-thanks-wikitext": "To use it in a Wikipedia article, copy this text into an article: ",
-	"mwe-upwiz-thanks-url": "To link to it in HTML, copy this HTML code: ",
+	"mwe-upwiz-thanks-wikitext": "<b>To use it in a Wikipedia article</b>, copy this text into an article: ",
+	"mwe-upwiz-thanks-url": "<b>To link to it in HTML</b>, copy this HTML code: ",
 
 	"mwe-upwiz-upload-error-bad-filename-extension": "This wiki does not accept filenames with the extension \"$1\".",
 	"mwe-upwiz-upload-error-duplicate": "This file was previously uploaded to this wiki.",
@@ -961,7 +961,7 @@ mw.UploadWizardDetails = function( upload, containerDiv ) {
 
 	_this.descriptions = [];
 
-	_this.div = $j( '<div class="mwe-upwiz-details-file"></div>' );
+	_this.div = $j( '<div class="mwe-upwiz-info-file"></div>' );
 
 	_this.thumbnailDiv = $j( '<div class="mwe-upwiz-thumbnail"></div>' );
 	
@@ -1840,14 +1840,10 @@ mw.UploadWizard.prototype = {
 		       +     '<div id="mwe-upwiz-macro">'
 		       +       '<div id="mwe-upwiz-macro-choice">' 
 		       +  	 '<div>' + gM( 'mwe-upwiz-intro-details' ) + '</div>'
-		       +         '<div id="mwe-upwiz-macro-deeds" />'
-		       +       '</div>'
-		       +       '<div id="mwe-upwiz-macro-edit">'
-		       +       '<div>'
-		       //+ 	    '<p>' + gM( 'mwe-upwiz-macro-edit-intro' ) + '</p>' 
+		       +         '<div id="mwe-upwiz-macro-deeds"></div>'
 		       +       '</div>'
 		       +       '<div id="mwe-upwiz-macro-progress"></div>'
-		       +         '<div id="mwe-upwiz-macro-files"></div>'
+		       +       '<div id="mwe-upwiz-macro-files"></div>'
 		       +       '<div class="mwe-upwiz-macro-edit-submit"></div>' // button added below			
 		       +     '</div>'
 		       +   '</div>'
@@ -2226,12 +2222,11 @@ mw.UploadWizard.prototype = {
 	prefillThanksPage: function() {
 		var _this = this;
 		
-		var thanksDiv = $j( '#mwe-upwiz-thanks' );
-
-		thanksDiv.append( $j( '<p>' ).append( gM( 'mwe-upwiz-thanks-intro' ) ) );
+		$j( '#mwe-upwiz-thanks' ).append( $j( '<p>' ).append( gM( 'mwe-upwiz-thanks-intro' ) ) );
 		var width = mw.getConfig( 'thumbnailWidth' );
 
 		$j.each( _this.uploads, function(i, upload) {
+			var thanksDiv = $j( '<div class="mwe-thanks ui-helper-clearfix" />' );
 			var thumbnailDiv = $j( '<div></div>' ).addClass( 'mwe-upwiz-links-thumbnail' );
 			thanksDiv.append( thumbnailDiv );
 
@@ -2255,29 +2250,36 @@ mw.UploadWizard.prototype = {
 			/* end evil copied code */
 
 			var thumbTitle = upload.title.replace(/^File/, 'Image'); // XXX is this really necessary?
-			var thumbWikiText = "[[" + thumbTitle + "|thumb|right]]";
+			var thumbWikiText = "[[" + thumbTitle + "|thumb]]";
 
 			thanksDiv.append(
-				$j( '<div></div>' )
+				$j( '<div class="mwe-upwiz-info-file"></div>' )
 					.addClass( 'mwe-upwiz-thanks-links' )
-					.append( $j('<p/>')
-						.append( gM( 'mwe-upwiz-thanks-link',
-							      $j( '<a />' )
-								.attr( { target: '_new', href: upload.imageinfo.descriptionurl } )
-								.text( upload.title ) ) ) ) 
-					.append( $j('<p/>')
-						.append( gM( 'mwe-upwiz-thanks-wikitext' ),
-							 $j( '<textarea></textarea>' )
-								.addClass( 'mwe-thanks-input-textarea' )
-								.append( thumbWikiText ) ) )
-					.append( $j('<p/>')
-						.append( gM( 'mwe-upwiz-thanks-url' ),
-							 $j( '<input />' )
-								.addClass( 'mwe-thanks-input' )
-								.attr( { type: 'text', value: upload.imageinfo.descriptionurl } ) ) )
-
+					.append( 
+						$j('<p/>').append( 
+							gM( 'mwe-upwiz-thanks-link',
+								$j( '<a />' )
+									.attr( { target: '_new', 
+										 href: upload.imageinfo.descriptionurl } )
+									.text( upload.title ) 
+							) 
+						), 
+						$j('<p/>').append( 
+							gM( 'mwe-upwiz-thanks-wikitext' ),
+							$j( '<br />' ),
+						 	$j( '<textarea class="mwe-long-textarea" rows="1"/>' )
+								.append( thumbWikiText ) 
+						),
+						$j('<p/>').append( 
+							gM( 'mwe-upwiz-thanks-url' ),
+							$j( '<br />' ),
+						 	$j( '<textarea class="mwe-long-textarea" rows="1"/>' )
+								.append( upload.imageinfo.descriptionurl ) 
+						)
+					)
 			);
 
+			$j( '#mwe-upwiz-thanks' ).append( thanksDiv );
 		} ); 
 	},
 
