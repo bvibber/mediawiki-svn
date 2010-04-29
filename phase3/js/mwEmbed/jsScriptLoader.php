@@ -16,7 +16,7 @@ if ( !defined( 'MEDIAWIKI' ) && !defined( 'SCRIPTLOADER_MEDIAWIKI') ) {
 	}
 	// No cache hit, load stand alone ScriptLoader config
 
-	// ( if running as a remote, mediaWiki variables are already included as part of mediaWiki
+	// ( if running as a remote, mediaWiki variables / functions are already included as part of mediaWiki )
 	require_once( realpath( dirname( __FILE__ ) ) . '/includes/noMediaWikiConfig.php' );
 	$myScriptLoader->doScriptLoader();
 }
@@ -42,7 +42,7 @@ class jsScriptLoader {
 	// Error msg
 	var $errorMsg = '';
 
-	// Output format is either 'js' or 'css';
+	// Output format is either 'js' or 'css' or 'messages' for exclusivly msg text;
 	var $outputFormat = 'js';
 
 	// Debug flag
@@ -414,7 +414,6 @@ class jsScriptLoader {
 	 * Get the URI of the scriptLoader
 	 */
 	private function getScriptLoaderUri() {
-
 		// protocol is http or https
 		$protocol = 'http';
 		if ($_SERVER['SERVER_PORT'] == 443 || (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on')) {
@@ -694,6 +693,7 @@ class jsScriptLoader {
 		// Else just return the key unchanged:
 		return $langKey;
 	}
+
 	/**
 	 * Get a file path for a given class
 	 *
@@ -1119,7 +1119,7 @@ class simpleFileCache {
 		return true;
 	}
 	/**
-	 * Checks cache directories and makes the dirs if not present
+	 * Checks cache directories and creates the directories if not present
 	 */
 	protected function checkCacheDirs() {
 		$mydir2 = substr( $this->filename, 0, strrpos( $this->filename, '/' ) ); # subdirectory level 2
