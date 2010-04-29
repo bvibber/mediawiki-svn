@@ -1,6 +1,6 @@
 <?php 
 /**
- * Internationalisation for the AddMediaWizard gadget
+ * Internationalisation for the AddMediaWizard gadget of the Usability Initiative wikiEditor extension 
  *
  * @file
  * @ingroup Extensions
@@ -12,5 +12,5 @@ $messages = array();
  * @author Michael Dale
  */
 $messages['en'] = array(
-    'wikieditor-addMediaWizard-preference' => 'Enable Add Media Wizard Gadget',
+    'wikieditor-addMediaWizard-preference' => 'Enable "Add media wizard" gadget',
 );
