@@ -4935,9 +4935,11 @@ Beta-ны боруобалаары гынаҕын дуо?',
 );
 
 /** Sicilian (Sicilianu)
+ * @author Gmelfi
  * @author Melos
  */
 $messages['scn'] = array(
+	'optin' => 'Adisioni ô priggettu usabbilità',
 	'optin-accept-short' => 'Prova!',
 	'optin-accept-long' => 'Prova a Beta',
 	'optin-accept-long-anon' => 'Accedi e prova a Beta',
