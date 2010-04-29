@@ -12,13 +12,11 @@ mw.addMessages( {
 	"ajax-remove-category-error" : "[RemoveErr]"
 } );
 
-var defaultAjaxCategoriesOptions = {
-	
+var defaultAjaxCategoriesOptions = {	
 	// The edit mode can be api, or text box.
 	// When set to api, category changes are saved to the target article page
-	// when set to textbox category changes are outputed to a text box.  
-	'editMode' : 'api'
-	
+	// when set to textbox category changes are outputted to a text box.  
+	'editMode' : 'api'	
 }
 
 /**
