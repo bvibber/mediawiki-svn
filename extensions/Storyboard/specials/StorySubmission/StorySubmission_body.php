@@ -22,10 +22,10 @@ class SpecialStorySubmission extends UnlistedSpecialPage {
 	public function execute( $title ) {
 		global $wgOut, $wgRequest, $wgUser;
 
-		if ( $wgRequest->wasPosted() && 
+		if ( $wgRequest->wasPosted() &&
 			( $wgUser->matchEditToken( $wgRequest->getVal( 'wpStoryEditToken' ) ) || !$wgUser->isLoggedIn() )
 			) {
-				$title = $wgRequest->getText( 'storytitle' );	
+				$title = $wgRequest->getText( 'storytitle' );
 			
 				// This might happen when the user has javascript disabled, or something in the client side validation breaks down.
 				$exists = ApiStoryExists::StoryExists( array( 'storytitle' => $title ) );
@@ -64,11 +64,11 @@ class SpecialStorySubmission extends UnlistedSpecialPage {
 		// If the user is logged in, also store his user id.
 		if ( $wgUser->isLoggedIn() ) {
 			$story[ 'story_author_id' ] = $wgUser->getId();
-		}	
+		}
 
 		// TODO: email confirmation would be nice
 
-		$dbw->insert( 'storyboard', $story );			
+		$dbw->insert( 'storyboard', $story );
 	}
 	
 	private function displayResult( $wasSaved, $title ) {
@@ -78,7 +78,7 @@ class SpecialStorySubmission extends UnlistedSpecialPage {
 			$wgOut->setPageTitle( wfMsg( 'storyboard-submissioncomplete' ) );
 			
 			// TODO: magically get location of the page containing stories
-			$wgOut->addWikiMsg( 'storyboard-createdsucessfully', $wgTitle->getFullURL() ); 		
+			$wgOut->addWikiMsg( 'storyboard-createdsucessfully', $wgTitle->getFullURL() );
 		} else {
 			$wgOut->setPageTitle( wfMsg( 'storyboard-submissionincomplete' ) );
 			
@@ -86,7 +86,7 @@ class SpecialStorySubmission extends UnlistedSpecialPage {
 			
 			// Let's not give a null link to people with no JS.
 			// TODO: change this to the last page somehow
-			$fallBackUrl = Title::newMainPage()->getFullURL(); 
+			$fallBackUrl = Title::newMainPage()->getFullURL();
 			$wgOut->addHtml( "<a href='$fallBackUrl' onclick='history.go(-1); return false;'>" . wfMsg( 'storyboard-changetitle' ) . '</a>' );
 		}
 	}

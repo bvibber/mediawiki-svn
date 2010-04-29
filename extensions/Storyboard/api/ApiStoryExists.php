@@ -56,8 +56,8 @@ class ApiStoryExists extends ApiBase {
 		// If there is a way of doing this via the API, this should oviously be changed.
 		die( $exists ? 'false' : 'true' );
 		
-		//$this->getResult()->setIndexedTagName( $result, 'story' );
-		//$this->getResult()->addValue( null, $this->getModuleName(), $result );
+		// $this->getResult()->setIndexedTagName( $result, 'story' );
+		// $this->getResult()->addValue( null, $this->getModuleName(), $result );
 	}
 	
 	public static function StoryExists( array $params ) {
@@ -87,7 +87,7 @@ class ApiStoryExists extends ApiBase {
 			),
 			'currentid' => array(
 				ApiBase :: PARAM_TYPE => 'integer',
-			),			
+			),
 		);
 	}
 	

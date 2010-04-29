@@ -56,7 +56,7 @@ class SpecialStoryReview extends SpecialPage {
 		
 		$unpublished = htmlspecialchars( wfMsg( 'storyboard-unpublished' ) );
 		$published = htmlspecialchars( wfMsg( 'storyboard-published' ) );
-		$hidden = htmlspecialchars( wfMsg( 'storyboard-hidden' ) );		
+		$hidden = htmlspecialchars( wfMsg( 'storyboard-hidden' ) );
 		
 		$html = $this->getTabHtml( $dbr, Storyboard_STORY_UNPUBLISHED, $unpublished );
 		$html .= $this->getTabHtml( $dbr, Storyboard_STORY_PUBLISHED, $published );
@@ -156,11 +156,11 @@ EOT;
 
 		if ( $storyState != Storyboard_STORY_UNPUBLISHED ) {
 			$buttons[] = $this->getStateActionButton( $story->story_id, 'unpublish', 'storyboard-unpublish' );
-		}	
+		}
 
 		if ( $storyState != Storyboard_STORY_HIDDEN ) {
 			$buttons[] = $this->getStateActionButton( $story->story_id, 'hide', 'storyboard-hide' );
-		}			
+		}
 		
 		$buttons[] = <<<EOT
 		<button type="button" onclick="window.location='$editUrl'">$editMsg</button>
