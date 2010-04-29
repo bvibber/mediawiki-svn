@@ -967,7 +967,7 @@ mw.UploadWizardDetails = function( upload, containerDiv ) {
 	
 	_this.errorDiv = $j( '<div class="mwe-upwiz-details-error"></div>' );
 
-	_this.dataDiv = $j( '<div class="mwe-upwiz-details-data"></div>' );
+	_this.dataDiv = $j( '<div class="mwe-upwiz-data"></div>' );
 
 	// descriptions
 	_this.descriptionsDiv = $j( '<div class="mwe-upwiz-details-descriptions mwe-upwiz-details-input"></div>' );
@@ -1838,11 +1838,11 @@ mw.UploadWizard.prototype = {
 		       +   '</div>'
 		       +   '<div class="mwe-upwiz-tabdiv" id="mwe-upwiz-tabdiv-details">'
 		       +     '<div id="mwe-upwiz-macro">'
+		       +       '<div id="mwe-upwiz-macro-progress" class="ui-helper-clearfix"></div>'
 		       +       '<div id="mwe-upwiz-macro-choice">' 
 		       +  	 '<div>' + gM( 'mwe-upwiz-intro-details' ) + '</div>'
 		       +         '<div id="mwe-upwiz-macro-deeds"></div>'
 		       +       '</div>'
-		       +       '<div id="mwe-upwiz-macro-progress"></div>'
 		       +       '<div id="mwe-upwiz-macro-files"></div>'
 		       +       '<div class="mwe-upwiz-macro-edit-submit"></div>' // button added below			
 		       +     '</div>'
@@ -2218,7 +2218,6 @@ mw.UploadWizard.prototype = {
 	},
 
 
-	// might as well hardcode more of this?
 	prefillThanksPage: function() {
 		var _this = this;
 		
@@ -2226,11 +2225,11 @@ mw.UploadWizard.prototype = {
 		var width = mw.getConfig( 'thumbnailWidth' );
 
 		$j.each( _this.uploads, function(i, upload) {
-			var thanksDiv = $j( '<div class="mwe-thanks ui-helper-clearfix" />' );
-			var thumbnailDiv = $j( '<div></div>' ).addClass( 'mwe-upwiz-links-thumbnail' );
+			var thanksDiv = $j( '<div class="mwe-upwiz-thanks ui-helper-clearfix" />' );
+			var thumbnailDiv = $j( '<div></div>' ).addClass( 'mwe-upwiz-thumbnail' );
 			thanksDiv.append( thumbnailDiv );
 
-			/* this is copied code, evil */
+			/* XXX this is copied code, evil */
 			var callback = function( thumbnail ) { 
 				// side effect: will replace thumbnail's loadingSpinner
 				thumbnailDiv.html(
@@ -2253,8 +2252,7 @@ mw.UploadWizard.prototype = {
 			var thumbWikiText = "[[" + thumbTitle + "|thumb]]";
 
 			thanksDiv.append(
-				$j( '<div class="mwe-upwiz-info-file"></div>' )
-					.addClass( 'mwe-upwiz-thanks-links' )
+				$j( '<div class="mwe-upwiz-data"></div>' )
 					.append( 
 						$j('<p/>').append( 
 							gM( 'mwe-upwiz-thanks-link',
@@ -2268,13 +2266,17 @@ mw.UploadWizard.prototype = {
 							gM( 'mwe-upwiz-thanks-wikitext' ),
 							$j( '<br />' ),
 						 	$j( '<textarea class="mwe-long-textarea" rows="1"/>' )
+								.growTextArea()
 								.append( thumbWikiText ) 
+								.trigger( 'change' )  // to make it grow to fit
 						),
 						$j('<p/>').append( 
 							gM( 'mwe-upwiz-thanks-url' ),
 							$j( '<br />' ),
 						 	$j( '<textarea class="mwe-long-textarea" rows="1"/>' )
+								.growTextArea()
 								.append( upload.imageinfo.descriptionurl ) 
+								.trigger( 'change' )  // to make it grow to fit
 						)
 					)
 			);
