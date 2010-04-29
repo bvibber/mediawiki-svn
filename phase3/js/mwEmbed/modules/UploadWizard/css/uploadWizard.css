@@ -395,6 +395,10 @@ a[disabled=true]:hover {
 	width: 370px;
 }
 
+fieldset .mwe-long-textarea {
+	width: 280px;
+}
+
 .mwe-upwiz-details-label {
 	width: 100px;
 	float: left;
@@ -404,16 +408,17 @@ a[disabled=true]:hover {
 
 }
 
-#mwe-upwiz-details-filename. {
+.mwe-upwiz-details-filename. {
 	overflow: hidden;
 	width: 350px;
 }
 
-#mwe-upwiz-other-textarea, fieldset.mwe-fieldset {
-	width: 450px;
-}
+.mwe-upwiz-other-textarea {
+	width: 468px;
+} 
 
 fieldset.mwe-fieldset {
+	width: 450px;
 	border: 1px solid #cccccc;
 	padding-left: 12px;
 	padding-right: 12px;
@@ -445,6 +450,28 @@ legend.mwe-legend {
 	padding: 5px 0px 20px 20px;
 }
 
+
+.mwe-upwiz-copyright-info label {
+	display: inline-block;
+	padding-left: 15px;
+	text-indent: -15px;
+	margin-right: 15px;
+}
+
+.mwe-upwiz-copyright-info input {
+	width: 13px;
+	height: 13px;
+	padding: 0;
+	margin: 0px 3px 0px 0px;
+	vertical-align: bottom;
+	position: relative;
+	top: -1px;
+}
+
+
+.mwe-upwiz-custom-deed {
+	margin-top: 5px;
+}
 
 
 
