@@ -268,7 +268,7 @@ a[disabled=true]:hover {
 	margin-right: 12px;
 }
 
-.mwe-upwiz-details-data {
+.mwe-upwiz-data {
 	float: left;
 }
 
@@ -399,6 +399,8 @@ fieldset .mwe-long-textarea {
 	width: 280px;
 }
 
+
+
 .mwe-upwiz-details-label {
 	width: 100px;
 	float: left;
@@ -472,5 +474,4 @@ legend.mwe-legend {
 .mwe-upwiz-custom-deed {
 	margin-top: 5px;
 }
-
 
