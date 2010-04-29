@@ -18,6 +18,7 @@ class WikiEditorHooks {
 			array( 'src' => 'Modules/Toc/Toc.js', 'version' => 7 ),
 			array( 'src' => 'Modules/Toolbar/Toolbar.js', 'version' => 83 ),
 			array( 'src' => 'Modules/TemplateEditor/TemplateEditor.js', 'version' => 6 ),
+			array( 'src' => 'Modules/AddMediaWizard/AddMediaWizard.js', 'version' => 6 ),
 		),
 		'combined' => array(
 			array( 'src' => 'WikiEditor.combined.js', 'version' => 87 ),
@@ -66,6 +67,19 @@ class WikiEditorHooks {
 				'wikieditor-template-editor-dialog-submit',
 				'wikieditor-template-editor-dialog-cancel',
 			),
+		),
+		'addMediaWizard' => array(
+			'i18n' => 'addMediaWizard',
+			'preferences' => array(
+				'enable' => array(
+				 	'key' => 'addmediawizard-gadget',
+					'ui' => array(
+						'type' => 'toggle',
+						'label-message' => 'wikieditor-addMediaWizard-preference',
+						'section' => 'editing/labs',
+					),
+				),
+			)
 		),
 		'preview' => array(
 			'i18n' => 'WikiEditorPreview',
@@ -130,7 +144,7 @@ class WikiEditorHooks {
 				'wikieditor-toc-show',
 				'wikieditor-toc-hide',
 			),
-		),
+		),		
 		'toolbar' => array(
 			'i18n' => 'WikiEditorToolbar',
 			'preferences' => array(
@@ -443,7 +457,6 @@ class WikiEditorHooks {
 					if ( $key == 'enable' && !$enable['user'] ) {
 						continue;
 					}
-					
 					// The preference with the key 'enable' determines if the rest are even relevant, so in the future
 					// setting up some dependencies on that might make sense
 					$defaultPreferences[$preference['key']] = $preference['ui'];
