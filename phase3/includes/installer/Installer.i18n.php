@@ -126,10 +126,22 @@ Image thumbnailing will be disabled.',
 	'config-uri'                      => 'Script URI path: <code>$1</code>.',
 	'config-no-uri'                   => "'''Error:''' Could not determine the current URI.
 Installation aborted.",
-	'config-dir-not-writable'         => "'''Error:''' Cannot write config file.
+	'config-dir-not-writable-group'   => "'''Error:''' Cannot write config file.
 Installation aborted.
 
-To make the directory writable on a Unix/Linux system:
+We've determined the user your webserver is running as. Make the
+<code><nowiki>config</nowiki></code> directory writable by it to continue. On a Unix/Linux system:
+
+<pre>cd $1
+chgrp $2 config
+chmod g+w config</pre>",
+	'config-dir-not-writable-nogroup'   => "'''Error:''' Cannot write config file.
+Installation aborted.
+
+We couldn't determine the user your webserver is running as. Make the
+<code><nowiki>config</nowiki></code> directory globally writable by it (and others!) to continue. On
+a Unix/Linux system do:
+
 <pre>cd $1
 chmod a+w config</pre>",
 	'config-file-extension'           => 'Installing MediaWiki with <code>$1</code> file extensions.',
@@ -505,12 +517,6 @@ Het maken van miniaturen van afbeeldingen wordt uitgeschakeld.',
 	'config-uri' => 'Script URI-pad: <code>$1</code>.',
 	'config-no-uri' => "'''Fout:''' de huidige URI kon niet vastgesteld worden.
 De installatie is afgebroken.",
-	'config-dir-not-writable' => "'''Fout:''' het bestand met instellingen kon niet weggeschreven worden.
-De installatie is afgebroken.
-
-Om de map beschrijfbaar te maken op een Unix/Linux-systeem:
-<pre>cd $1
-chmod a+w config</pre>",
 	'config-file-extension' => 'MediaWiki wordt geinstalleerd met <code>$1</code> als bestandsextensie.',
 	'config-shell-locale' => 'Als shelllocale is "$1" herkend',
 	'config-uploads-safe' => 'De uploadmap is beveiligd tegen het arbitrair uitvoeren van scripts.',

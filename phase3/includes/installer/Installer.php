@@ -611,7 +611,12 @@ abstract class Installer {
 		$ipDir = $this->getVar( 'IP' );
 		$configDir = $ipDir . '/config';
 		if( !is_writeable( $configDir ) ) {
-			$this->showMessage( 'config-dir-not-writable', $ipDir );
+			$webserverGroup = self::maybeGetWebserverPrimaryGroup();
+			if ( $webserverGroup !== null ) {
+				$this->showMessage( 'config-dir-not-writable-group', $ipDir, $webserverGroup );
+			} else {
+				$this->showMessage( 'config-dir-not-writable-nogroup', $ipDir, $webserverGroup );
+			}
 			return false;
 		}
 	}
@@ -888,5 +893,31 @@ abstract class Installer {
 	public function installLocalsettings() {
 		$localSettings = new LocalSettings( $this );
 		return $localSettings->writeLocalSettings();
+	}
+
+	/*
+	 * On POSIX systems return the primary group of the webserver we're running under.
+	 * On other systems just returns null.
+	 *
+	 * This is used to advice the user that he should chgrp his config/data/images directory as the
+	 * webserver user before he can install.
+	 *
+	 * Public because SqliteInstaller needs it, and doesn't subclass Installer.
+	 *
+	 * @return string
+	 */
+	public static function maybeGetWebserverPrimaryGroup() {
+		if ( ! function_exists('posix_getegid') || ! function_exists('posix_getpwuid') ) {
+			# I don't know this, this isn't UNIX
+			return null;
+		}
+
+		# posix_getegid() *not* getmygid() because we want the group of the webserver,
+		# not whoever owns the current script
+		$gid = posix_getegid();
+		$getpwuid = posix_getpwuid( $gid );
+		$group = $getpwuid["name"];
+
+		return $group;
 	}
 }
