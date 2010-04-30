@@ -190,9 +190,18 @@ but it will not let you store characters above the [http://en.wikipedia.org/wiki
 	'config-db-schema-help'           => 'The above schemas are usually correct.
 Only change them if you know you need to.',
 	'config-sqlite-dir'               => 'SQLite data directory:',
-	'config-sqlite-dir-help'          => "SQLite stores data in a file in the filesystem.
-This directory must be writable by the webserver.
-It should '''not''' be accessible via the web.",
+	'config-sqlite-dir-help'          => "SQLite stores all data in a single file.
+
+The directory you provide must be writable by the webserver during installation.
+
+It should '''not''' be accessible via the web, this is why we're not putting it where your PHP files
+are.
+
+We'll write out a <code>.htaccess</code> file along with it, but if that fails someone can gain
+access to your raw database. That includes raw user data (E-Mails, hashed passwords) as well as
+deleted revisions and other restricted data on the wiki.
+
+Consider putting the database somewhere altogether, for example <code>/var/lib/mediawiki/yourwiki</code>.",
 	'config-type-mysql'               => 'MySQL',
 	'config-type-postgres'            => 'PostgreSQL',
 	'config-type-sqlite'              => 'SQLite',
