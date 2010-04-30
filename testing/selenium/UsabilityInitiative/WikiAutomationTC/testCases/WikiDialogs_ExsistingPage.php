@@ -1,6 +1,5 @@
 <?php
 require_once 'WikiDialogs_TC.php';
-
 /**
  * Description of WikiExsistingPageDialogs
  *
@@ -12,145 +11,100 @@ class WikiDialogs_ExsistingPage  extends WikiDialogs_TC  {
         parent::setUp();
     }
 
-     // Add a internal link and verify
-    function testInternalLink(){
+    //Open a random page
+    function openRandomPage(){
        parent::doOpenLink();
        parent::doLogin();
-       $this->open("/deployment-en/Main_Page");
-       $this->waitForPageToLoad("30000");
        parent::doAccessRandomPage();
+       parent::doEditPage();
+    }
+     // Add a internal link and verify
+    function testInternalLink(){
+       $this->openRandomPage();
        parent::verifyInternalLink();
        parent::doLogout();
     }
 
      // Add a internal link with different display text and verify
     function testInternalLinkWithDisplayText(){
-       parent::doOpenLink();
-       parent::doLogin();
-       $this->open("/deployment-en/Main_Page");
-       $this->waitForPageToLoad("30000");
-       parent::doAccessRandomPage();
+       $this->openRandomPage();
        parent::verifyInternalLinkWithDisplayText();
        parent::doLogout();
     }
 
      // Add a internal link with blank display text and verify
     function testInternalLinkWithBlankDisplayText(){
-       parent::doOpenLink();
-       parent::doLogin();
-       $this->open("/deployment-en/Main_Page");
-       $this->waitForPageToLoad("30000");
-       parent::doAccessRandomPage();
+       $this->openRandomPage();
        parent::verifyInternalLinkWithBlankDisplayText();
        parent::doLogout();
     }
 
     // Add external link and verify
     function testExternalLink(){
-       parent::doOpenLink();
-       parent::doLogin();
-       $this->open("/deployment-en/Main_Page");
-       $this->waitForPageToLoad("30000");
-       parent::doAccessRandomPage();
+       $this->openRandomPage();
        parent::verifyExternalLink();
        parent::doLogout();
     }
 
      // Add external link with different display text and verify
     function testExternalLinkWithDisplayText(){
-       parent::doOpenLink();
-       parent::doLogin();
-       $this->open("/deployment-en/Main_Page");
-       $this->waitForPageToLoad("30000");
-       parent::doAccessRandomPage();
+       $this->openRandomPage();
        parent::verifyExternalLinkWithDisplayText();
        parent::doLogout();
     }
 
      // Add external link with Blank display text and verify
     function testExternalLinkWithBlankDisplayText(){
-       parent::doOpenLink();
-       parent::doLogin();
-       $this->open("/deployment-en/Main_Page");
-       $this->waitForPageToLoad("30000");
-       parent::doAccessRandomPage();
+       $this->openRandomPage();
        parent::verifyExternalLinkWithBlankDisplayText();
        parent::doLogout();
     }
 
     // Add a table and verify
     function testCreateTable(){
-       parent::doOpenLink();
-       parent::doLogin();
-       $this->open("/deployment-en/Main_Page");
-       $this->waitForPageToLoad("30000");
-       parent::doAccessRandomPage();
+       $this->openRandomPage();
        parent::verifyCreateTable();
        parent::doLogout();
     }
 
     // Add a table and verify only with head row
     function testCreateTableWithHeadRow(){
-       parent::doOpenLink();
-       parent::doLogin();
-       $this->open("/deployment-en/Main_Page");
-       $this->waitForPageToLoad("30000");
-       parent::doAccessRandomPage();
+       $this->openRandomPage();
        parent::verifyCreateTableWithHeadRow();
        parent::doLogout();
     }
 
     // Add a table and verify only with borders
     function testCreateTableWithBorders(){
-       parent::doOpenLink();
-       parent::doLogin();
-       $this->open("/deployment-en/Main_Page");
-       $this->waitForPageToLoad("30000");
-       parent::doAccessRandomPage();
+       $this->openRandomPage();
        parent::verifyCreateTableWithBorders();
        parent::doLogout();
     }
 
     // Add a table and verify only with sort row
     function testCreateTableWithSortRow(){
-       parent::doOpenLink();
-       parent::doLogin();
-       $this->open("/deployment-en/Main_Page");
-       $this->waitForPageToLoad("30000");
-       parent::doAccessRandomPage();
+       $this->openRandomPage();
        parent::verifyCreateTableWithSortRow();
        parent::doLogout();
     }
 
     // Add a table without headers,borders and sort rows
     function testCreateTableWithNoSpecialEffects(){
-       parent::doOpenLink();
-       parent::doLogin();
-       $this->open("/deployment-en/Main_Page");
-       $this->waitForPageToLoad("30000");
-       parent::doAccessRandomPage();
+       $this->openRandomPage();
        parent::verifyCreateTableWithNoSpecialEffects();
        parent::doLogout();
     }
 
      // Verify the replace all function on Search and Replace
      function testTextSearchReplaceAll(){
-       parent::doOpenLink();
-       parent::doLogin();
-       $this->open("/deployment-en/Main_Page");
-       $this->waitForPageToLoad("30000");
-       parent::doAccessRandomPage();
+       $this->openRandomPage();
        parent::verifyTextSearchReplaceAll();
        parent::doLogout();
      }
 
       // Verify the replace next function on Search and Replace
     function testTextSearchReplaceNext(){
-       parent::doOpenLink();
-       parent::doLogin();
-       $this->open("/deployment-en/Main_Page");
-       $this->waitForPageToLoad("30000");
-       parent::doAccessRandomPage();
+       $this->openRandomPage();
        parent::verifyTextSearchReplaceNext();
        parent::doLogout();
     }

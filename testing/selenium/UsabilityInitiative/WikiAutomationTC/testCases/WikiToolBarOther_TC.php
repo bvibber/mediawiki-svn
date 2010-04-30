@@ -1,5 +1,7 @@
 <?php
+session_start();
 require_once 'WikiCommonFunction_TC.php';
+require_once 'Config.php';
 /**
  * This test case will be handling the general tool bar functions
  * Date : Apr - 2010
@@ -12,7 +14,7 @@ class WikiToolBarOther_TC extends WikiCommonFunction_TC {
         $this->type("wpTextbox1", "\" \"");
         $this->type("wpTextbox1", "[[File:Example.jpg]]");
         $this->click("wpPreview");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad($_SESSION["WIKI_TEST_WAIT_TIME"]);
         try {
             $this->assertEquals("", $this->getText("//img[@alt='Example.jpg']"));
         } catch (PHPUnit_Framework_AssertionFailedError $e) {
@@ -48,7 +50,7 @@ class WikiToolBarOther_TC extends WikiCommonFunction_TC {
         $this->type("wpTextbox1", "");
         $this->click("link=Picture gallery");
         $this->click("wpPreview");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad($_SESSION["WIKI_TEST_WAIT_TIME"]);
         try {
             $this->assertEquals("", $this->getText("//div[@id='wikiPreview']/table/tbody/tr/td[1]/div/div[1]/div"));
         } catch (PHPUnit_Framework_AssertionFailedError $e) {

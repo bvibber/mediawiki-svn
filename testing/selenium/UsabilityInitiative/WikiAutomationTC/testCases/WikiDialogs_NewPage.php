@@ -11,156 +11,107 @@ class WikiDialogs_NewPage extends WikiDialogs_TC {
         parent::setUp();
     }
 
-     // Add a internal link and verify
-    function testInternalLink(){
+     //Create a new page temporary
+    function createNewPage(){
        parent::doOpenLink();
        parent::doLogin();
-       $this->open("/deployment-en/Main_Page");
-       $this->waitForPageToLoad("30000");
        parent::doCreateNewPageTemporary();
+    }
+
+     // Add a internal link and verify
+    function testInternalLink(){
+       $this->createNewPage();
        parent::verifyInternalLink();
        parent::doLogout();
     }
 
      // Add a internal link with different display text and verify
     function testInternalLinkWithDisplayText(){
-       parent::doOpenLink();
-       parent::doLogin();
-       $this->open("/deployment-en/Main_Page");
-       $this->waitForPageToLoad("30000");
-       parent::doCreateNewPageTemporary();
+       $this->createNewPage();
        parent::verifyInternalLinkWithDisplayText();
        parent::doLogout();
     }
 
      // Add a internal link with blank display text and verify
     function testInternalLinkWithBlankDisplayText(){
-       parent::doOpenLink();
-       parent::doLogin();
-       $this->open("/deployment-en/Main_Page");
-       $this->waitForPageToLoad("30000");
-       parent::doCreateNewPageTemporary();
+       $this->createNewPage();
        parent::verifyInternalLinkWithBlankDisplayText();
        parent::doLogout();
     }
 
     // Add external link and verify
     function testExternalLink(){
-       parent::doOpenLink();
-       parent::doLogin();
-       $this->open("/deployment-en/Main_Page");
-       $this->waitForPageToLoad("30000");
-       parent::doCreateNewPageTemporary();
+       $this->createNewPage();
        parent::verifyExternalLink();
        parent::doLogout();
     }
 
      // Add external link with different display text and verify
     function testExternalLinkWithDisplayText(){
-       parent::doOpenLink();
-       parent::doLogin();
-       $this->open("/deployment-en/Main_Page");
-       $this->waitForPageToLoad("30000");
-       parent::doCreateNewPageTemporary();
+       $this->createNewPage();
        parent::verifyExternalLinkWithDisplayText();
        parent::doLogout();
     }
 
      // Add external link with Blank display text and verify
     function testExternalLinkWithBlankDisplayText(){
-       parent::doOpenLink();
-       parent::doLogin();
-       $this->open("/deployment-en/Main_Page");
-       $this->waitForPageToLoad("30000");
-       parent::doCreateNewPageTemporary();
+       $this->createNewPage();
        parent::verifyExternalLinkWithBlankDisplayText();
        parent::doLogout();
     }
 
     // Add a table and verify
     function testCreateTable(){
-       parent::doOpenLink();
-       parent::doLogin();
-       $this->open("/deployment-en/Main_Page");
-       $this->waitForPageToLoad("30000");
-       parent::doCreateNewPageTemporary();
+       $this->createNewPage();
        parent::verifyCreateTable();
        parent::doLogout();
     }
 
     // Add a table and verify only with head row
     function testCreateTableWithHeadRow(){
-       parent::doOpenLink();
-       parent::doLogin();
-       $this->open("/deployment-en/Main_Page");
-       $this->waitForPageToLoad("30000");
-       parent::doCreateNewPageTemporary();
+       $this->createNewPage();;
        parent::verifyCreateTableWithHeadRow();
        parent::doLogout();
     }
 
     // Add a table and verify only with borders
     function testCreateTableWithBorders(){
-       parent::doOpenLink();
-       parent::doLogin();
-       $this->open("/deployment-en/Main_Page");
-       $this->waitForPageToLoad("30000");
-       parent::doCreateNewPageTemporary();
+       $this->createNewPage();
        parent::verifyCreateTableWithBorders();
        parent::doLogout();
     }
 
     // Add a table and verify only with sort row
     function testCreateTableWithSortRow(){
-       parent::doOpenLink();
-       parent::doLogin();
-       $this->open("/deployment-en/Main_Page");
-       $this->waitForPageToLoad("30000");
-       parent::doCreateNewPageTemporary();
+       $this->createNewPage();
        parent::verifyCreateTableWithSortRow();
        parent::doLogout();
     }
 
     // Add a table without headers,borders and sort rows
     function testCreateTableWithNoSpecialEffects(){
-       parent::doOpenLink();
-       parent::doLogin();
-       $this->open("/deployment-en/Main_Page");
-       $this->waitForPageToLoad("30000");
-       parent::doCreateNewPageTemporary();
+       $this->createNewPage();
        parent::verifyCreateTableWithNoSpecialEffects();
        parent::doLogout();
     }
 
      // Verify the replace all function on Search and Replace
      function testTextSearchReplaceAll(){
-       parent::doOpenLink();
-       parent::doLogin();
-       $this->open("/deployment-en/Main_Page");
-       $this->waitForPageToLoad("30000");
-       parent::doCreateNewPageTemporary();
+       $this->createNewPage();
        parent::verifyTextSearchReplaceAll();
        parent::doLogout();
      }
 
       // Verify the replace next function on Search and Replace
     function testTextSearchReplaceNext(){
-       parent::doOpenLink();
-       parent::doLogin();
-       $this->open("/deployment-en/Main_Page");
-       $this->waitForPageToLoad("30000");
-       parent::doCreateNewPageTemporary();
+       $this->createNewPage();
        parent::verifyTextSearchReplaceNext();
        parent::doLogout();
     }
 
     // When user click on find, text highlight on back which is not captured in Selenium directly. */
     function testTextSearchFindNext(){
-       parent::doOpenLink();
-       parent::doLogin();
-       $this->open("/deployment-en/Main_Page");
-       $this->waitForPageToLoad("30000");
-       parent::doCreateNewPageTemporary();
+       $this->createNewPage();
        parent::verifyTextSearchFindNext();
        parent::doLogout();
     }

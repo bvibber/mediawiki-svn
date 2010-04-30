@@ -13,35 +13,31 @@ class WikiTextFormat_ExistingPage extends WikiTextFormat_TC {
         parent::setUp();
     }
 
-    // Mark text Bold and verify output
-     function testTextBold(){
+    //Open a random page
+    function openRandomPage(){
        parent::doOpenLink();
        parent::doLogin();
-       $this->open("/deployment-en/Main_Page");
-       $this->waitForPageToLoad("30000");
        parent::doAccessRandomPage();
+       parent::doEditPage();
+    }
+
+    // Mark text Bold and verify output
+     function testTextBold(){
+       $this->openRandomPage();
        parent::verifyTextBold();
        parent::doLogout();
      }
 
      // Mark text Italic and verify output
     function testTextItalic(){
-       parent::doOpenLink();
-       parent::doLogin();
-       $this->open("/deployment-en/Main_Page");
-       $this->waitForPageToLoad("30000");
-       parent::doAccessRandomPage();
+       $this->openRandomPage();
        parent::verifyTextItalic();
        parent::doLogout();
     }
 
        // Mark text Italic & Bold and verify output
     function testTextItalicandBold(){
-       parent::doOpenLink();
-       parent::doLogin();
-       $this->open("/deployment-en/Main_Page");
-       $this->waitForPageToLoad("30000");
-       parent::doAccessRandomPage();
+       $this->openRandomPage();
        parent::verifyTextItalicandBold();
        parent::doLogout();
     }
@@ -49,88 +45,56 @@ class WikiTextFormat_ExistingPage extends WikiTextFormat_TC {
 
      // Use Bullet Item function and verify output
     function testBulletItem(){
-       parent::doOpenLink();
-       parent::doLogin();
-       $this->open("/deployment-en/Main_Page");
-       $this->waitForPageToLoad("30000");
-       parent::doAccessRandomPage();
+       $this->openRandomPage();
        parent::verifyBulletItem();
        parent::doLogout();
     }
 
     // Use Numbered Item function and verify output
     function testNumberedItem(){
-       parent::doOpenLink();
-       parent::doLogin();
-       $this->open("/deployment-en/Main_Page");
-       $this->waitForPageToLoad("30000");
-       parent::doAccessRandomPage();
+       $this->openRandomPage();
        parent::verifyNumberedItem();
        parent::doLogout();
     }
 
     // Mark text as Nowiki and verify output
     function testNoWiki(){
-       parent::doOpenLink();
-       parent::doLogin();
-       $this->open("/deployment-en/Main_Page");
-       $this->waitForPageToLoad("30000");
-       parent::doAccessRandomPage();
+       $this->openRandomPage();
        parent::verifyNoWiki();
        parent::doLogout();
     }
 
     // Create a line break and verify output
     function testLineBreak(){
-       parent::doOpenLink();
-       parent::doLogin();
-       $this->open("/deployment-en/Main_Page");
-       $this->waitForPageToLoad("30000");
-       parent::doAccessRandomPage();
+       $this->openRandomPage();
        parent::verifyLineBreak();
        parent::doLogout();
     }
 
     // Mark text as Big and verify output
     function testTextBig(){
-       parent::doOpenLink();
-       parent::doLogin();
-       $this->open("/deployment-en/Main_Page");
-       $this->waitForPageToLoad("30000");
-       parent::doAccessRandomPage();
+       $this->openRandomPage();
        parent::verifyTextBig();
        parent::doLogout();
     }
 
      // Mark text as Small and verify output
     function testTextSmall(){
-       parent::doOpenLink();
-       parent::doLogin();
-       $this->open("/deployment-en/Main_Page");
-       $this->waitForPageToLoad("30000");
-       parent::doAccessRandomPage();
+       $this->openRandomPage();
        parent::verifyTextSmall();
        parent::doLogout();
     }
 
     // Mark text as Super Script and verify output
      function testTextSuperscript(){
-       parent::doOpenLink();
-       parent::doLogin();
-       $this->open("/deployment-en/Main_Page");
-       $this->waitForPageToLoad("30000");
-       parent::doAccessRandomPage();
+       $this->openRandomPage();
        parent::verifyTextSuperscript();
        parent::doLogout();
      }
 
      // Mark text as Sub Script and verify output
      function testTextSubscript(){
-       parent::doOpenLink();
-       parent::doLogin();
-       $this->open("/deployment-en/Main_Page");
-       $this->waitForPageToLoad("30000");
-       parent::doAccessRandomPage();
+       $this->openRandomPage();
        parent::verifyTextSubscript();
        parent::doLogout();
      }

@@ -1,6 +1,5 @@
 <?php
 require_once 'WikiToolBarOther_TC.php';
-
 /**
  * Description of WikiNewPageOther
  *
@@ -13,24 +12,24 @@ class WikiToolBarOther_NewPage extends WikiToolBarOther_TC {
         parent::setUp();
     }
 
-     // Click on Embedded file function and verify the output
-    function testEmbeddedFile(){
+
+     //Create a new page temporary
+    function createNewPage(){
        parent::doOpenLink();
        parent::doLogin();
-       $this->open("/deployment-en/Main_Page");
-       $this->waitForPageToLoad("30000");
        parent::doCreateNewPageTemporary();
+    }
+
+     // Click on Embedded file function and verify the output
+    function testEmbeddedFile(){
+        $this->createNewPage();
        parent::verifyEmbeddedFile();
        parent::doLogout();
     }
 
     // Click on Picture Gallery function and verify the output
     function testPictureGallery(){
-       parent::doOpenLink();
-       parent::doLogin();
-       $this->open("/deployment-en/Main_Page");
-       $this->waitForPageToLoad("30000");
-       parent::doCreateNewPageTemporary();
+      $this->createNewPage();
        parent::verifyPictureGallery();
        parent::doLogout();
     }

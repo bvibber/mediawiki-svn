@@ -1,5 +1,7 @@
 <?php
+session_start();
 require_once 'WikiCommonFunction_TC.php';
+require_once 'Config.php';
 /**
  * This test case will be handling the Wiki Tool bar Dialog functions
  * Date : Apr - 2010
@@ -11,21 +13,21 @@ class WikiDialogs_TC extends WikiCommonFunction_TC {
     function verifyInternalLink(){
         $this->type("wpTextbox1", "");
         $this->click("link=Link");
-        $this->type("wikieditor-toolbar-link-int-target", "Daimler-Chrysler");
+        $this->type("wikieditor-toolbar-link-int-target", $_SESSION["WIKI_INTERNAL_LINK"]);
         $this->assertTrue($this->isElementPresent("wikieditor-toolbar-link-int-target-status-exists"));
         $this->assertEquals("on", $this->getValue("wikieditor-toolbar-link-type-int"));
         $this->click("//div[13]/div[11]/button[1]");
         $this->click("wpPreview");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad($_SESSION["WIKI_TEST_WAIT_TIME"]);
         try {
-            $this->assertEquals("Daimler-Chrysler", $this->getText("link=Daimler-Chrysler"));
+            $this->assertEquals($_SESSION["WIKI_INTERNAL_LINK"], $this->getText("link=" . $_SESSION["WIKI_INTERNAL_LINK"]));
         } catch (PHPUnit_Framework_AssertionFailedError $e) {
             array_push($this->verificationErrors, $e->toString());
         }
         $this->click("link=Daimler-Chrysler");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad($_SESSION["WIKI_TEST_WAIT_TIME"]);
         try {
-            $this->assertTrue($this->isTextPresent("Daimler-Chrysler"), $this->getText("firstHeading"));
+            $this->assertTrue($this->isTextPresent($_SESSION["WIKI_INTERNAL_LINK"]), $this->getText("firstHeading"));
         } catch (PHPUnit_Framework_AssertionFailedError $e) {
             array_push($this->verificationErrors, $e->toString());
         }
@@ -36,22 +38,22 @@ class WikiDialogs_TC extends WikiCommonFunction_TC {
         $this->type("wpTextbox1", "");
         $this->click("link=Link");
         $this->type("wpTextbox1", "");
-        $this->type("wikieditor-toolbar-link-int-target", "Fashion Island");
-        $this->type("wikieditor-toolbar-link-int-text", "Fashion Island Test");
+        $this->type("wikieditor-toolbar-link-int-target", $_SESSION["WIKI_INTERNAL_LINK"]);
+        $this->type("wikieditor-toolbar-link-int-text", $_SESSION["WIKI_INTERNAL_LINK"] . " Test");
         $this->assertTrue($this->isElementPresent("wikieditor-toolbar-link-int-target-status-exists"));
         $this->assertEquals("on", $this->getValue("wikieditor-toolbar-link-type-int"));
         $this->click("//div[13]/div[11]/button[1]");
         $this->click("wpPreview");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad($_SESSION["WIKI_TEST_WAIT_TIME"]);
         try {
-            $this->assertEquals("Fashion Island Test", $this->getText("link=Fashion Island Test"));
+            $this->assertEquals($_SESSION["WIKI_INTERNAL_LINK"]." Test", $this->getText("link=" .$_SESSION["WIKI_INTERNAL_LINK"] ." Test"));
         } catch (PHPUnit_Framework_AssertionFailedError $e) {
             array_push($this->verificationErrors, $e->toString());
         }
-        $this->click("link=Fashion Island Test");
-        $this->waitForPageToLoad("30000");
+        $this->click("link=" .$_SESSION["WIKI_INTERNAL_LINK"]." Test");
+        $this->waitForPageToLoad($_SESSION["WIKI_TEST_WAIT_TIME"]);
         try {
-            $this->assertTrue($this->isTextPresent("Fashion Island"), $this->getText("firstHeading"));
+            $this->assertTrue($this->isTextPresent($_SESSION["WIKI_INTERNAL_LINK"]), $this->getText("firstHeading"));
         } catch (PHPUnit_Framework_AssertionFailedError $e) {
             array_push($this->verificationErrors, $e->toString());
         }
@@ -60,22 +62,22 @@ class WikiDialogs_TC extends WikiCommonFunction_TC {
     // Add a internal link with blank display text and verify
     function verifyInternalLinkWithBlankDisplayText(){
         $this->click("link=Link");
-        $this->type("wikieditor-toolbar-link-int-target", "Magical Mystery Tour (film)");
+        $this->type("wikieditor-toolbar-link-int-target", $_SESSION["WIKI_INTERNAL_LINK"]);
         $this->type("wikieditor-toolbar-link-int-text", "");
         $this->assertTrue($this->isElementPresent("wikieditor-toolbar-link-int-target-status-exists"));
         $this->assertEquals("on", $this->getValue("wikieditor-toolbar-link-type-int"));
         $this->click("//div[13]/div[11]/button[1]");
         $this->click("wpPreview");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad($_SESSION["WIKI_TEST_WAIT_TIME"]);
         try {
-            $this->assertEquals("Magical Mystery Tour (film)", $this->getText("link=Magical Mystery Tour (film)"));
+            $this->assertEquals($_SESSION["WIKI_INTERNAL_LINK"], $this->getText("link=".$_SESSION["WIKI_INTERNAL_LINK"]));
         } catch (PHPUnit_Framework_AssertionFailedError $e) {
             array_push($this->verificationErrors, $e->toString());
         }
-        $this->click("link=Magical Mystery Tour (film)");
-        $this->waitForPageToLoad("30000");
+        $this->click("link=".$_SESSION["WIKI_INTERNAL_LINK"]);
+        $this->waitForPageToLoad($_SESSION["WIKI_TEST_WAIT_TIME"]);
         try {
-            $this->assertEquals("Magical Mystery Tour (film)", $this->getText("firstHeading"));
+            $this->assertEquals($_SESSION["WIKI_INTERNAL_LINK"], $this->getText("firstHeading"));
         } catch (PHPUnit_Framework_AssertionFailedError $e) {
             array_push($this->verificationErrors, $e->toString());
         }
@@ -94,16 +96,16 @@ class WikiDialogs_TC extends WikiCommonFunction_TC {
         $this->assertEquals("on", $this->getValue("wikieditor-toolbar-link-type-ext"));
         $this->click("//div[13]/div[11]/button[1]");
         $this->click("wpPreview");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad($_SESSION["WIKI_TEST_WAIT_TIME"]);
          try {
-            $this->assertEquals("www.google.com", $this->getText("link=www.google.com"));
+            $this->assertEquals($_SESSION["WIKI_EXTERNAL_LINK"], $this->getText("link=".$_SESSION["WIKI_EXTERNAL_LINK"]));
         } catch (PHPUnit_Framework_AssertionFailedError $e) {
             array_push($this->verificationErrors, $e->toString());
         }
-        $this->click("link=www.google.com");
-        $this->waitForPageToLoad("30000");
+        $this->click("link=".$_SESSION["WIKI_EXTERNAL_LINK"]);
+        $this->waitForPageToLoad($_SESSION["WIKI_TEST_WAIT_TIME"]);
         try {
-            $this->assertEquals("Google", $this->getTitle());
+            $this->assertEquals($_SESSION["WIKI_EXTERNAL_LINK_TITLE"], $this->getTitle());
         } catch (PHPUnit_Framework_AssertionFailedError $e) {
             array_push($this->verificationErrors, $e->toString());
         }
@@ -113,8 +115,8 @@ class WikiDialogs_TC extends WikiCommonFunction_TC {
     function verifyExternalLinkWithDisplayText(){
         $this->type("wpTextbox1", "");
         $this->click("link=Link");
-        $this->type("wikieditor-toolbar-link-int-target", "www.google.com");
-        $this->type("wikieditor-toolbar-link-int-text", "Google");
+        $this->type("wikieditor-toolbar-link-int-target", $_SESSION["WIKI_EXTERNAL_LINK"]);
+        $this->type("wikieditor-toolbar-link-int-text", $_SESSION["WIKI_EXTERNAL_LINK_TITLE"]);
         try {
             $this->assertEquals("External link", $this->getText("wikieditor-toolbar-link-int-target-status-external"));
         } catch (PHPUnit_Framework_AssertionFailedError $e) {
@@ -123,16 +125,16 @@ class WikiDialogs_TC extends WikiCommonFunction_TC {
         $this->assertEquals("on", $this->getValue("wikieditor-toolbar-link-type-ext"));
         $this->click("//div[13]/div[11]/button[1]");
         $this->click("wpPreview");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad($_SESSION["WIKI_TEST_WAIT_TIME"]);
         try {
-            $this->assertEquals("Google", $this->getText("link=Google"));
+            $this->assertEquals($_SESSION["WIKI_EXTERNAL_LINK_TITLE"], $this->getText("link=".$_SESSION["WIKI_EXTERNAL_LINK_TITLE"]));
         } catch (PHPUnit_Framework_AssertionFailedError $e) {
             array_push($this->verificationErrors, $e->toString());
         }
-        $this->click("link=Google");
-        $this->waitForPageToLoad("30000");
+        $this->click("link=".$_SESSION["WIKI_EXTERNAL_LINK_TITLE"]);
+        $this->waitForPageToLoad($_SESSION["WIKI_TEST_WAIT_TIME"]);
         try {
-            $this->assertEquals("Google", $this->getTitle());
+            $this->assertEquals($_SESSION["WIKI_EXTERNAL_LINK_TITLE"], $this->getTitle());
         } catch (PHPUnit_Framework_AssertionFailedError $e) {
             array_push($this->verificationErrors, $e->toString());
         }
@@ -143,7 +145,7 @@ class WikiDialogs_TC extends WikiCommonFunction_TC {
     function verifyExternalLinkWithBlankDisplayText(){
         $this->type("wpTextbox1", "");
         $this->click("link=Link");
-        $this->type("wikieditor-toolbar-link-int-target", "www.google.com");
+        $this->type("wikieditor-toolbar-link-int-target", $_SESSION["WIKI_EXTERNAL_LINK"]);
         $this->type("wikieditor-toolbar-link-int-text", "");
         try {
             $this->assertEquals("External link", $this->getText("wikieditor-toolbar-link-int-target-status-external"));
@@ -153,16 +155,16 @@ class WikiDialogs_TC extends WikiCommonFunction_TC {
         $this->assertEquals("on", $this->getValue("wikieditor-toolbar-link-type-ext"));
         $this->click("//div[13]/div[11]/button[1]");
         $this->click("wpPreview");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad($_SESSION["WIKI_TEST_WAIT_TIME"]);
         try {
         $this->assertEquals("[1]", $this->getText("link=[1]"));
         } catch (PHPUnit_Framework_AssertionFailedError $e) {
             array_push($this->verificationErrors, $e->toString());
         }
         $this->click("link=[1]");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad($_SESSION["WIKI_TEST_WAIT_TIME"]);
         try {
-            $this->assertEquals("Google", $this->getTitle());
+            $this->assertEquals($_SESSION["WIKI_EXTERNAL_LINK_TITLE"], $this->getTitle());
         } catch (PHPUnit_Framework_AssertionFailedError $e) {
             array_push($this->verificationErrors, $e->toString());
         }
@@ -178,7 +180,7 @@ class WikiDialogs_TC extends WikiCommonFunction_TC {
         $this->click("//div[3]/button[1]");
         $this->click("wikieditor-toolbar-table-sortable");
         $this->click("wpPreview");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad($_SESSION["WIKI_TEST_WAIT_TIME"]);
         try {
             $this->assertEquals("Header text", $this->getText("//table[@id='sortable_table_id_0']/tbody/tr[1]/th[3]"));
         } catch (PHPUnit_Framework_AssertionFailedError $e) {
@@ -197,7 +199,7 @@ class WikiDialogs_TC extends WikiCommonFunction_TC {
         $this->click("//div[3]/button[1]");
         $this->click("wikieditor-toolbar-table-wikitable");
         $this->click("wpPreview");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad($_SESSION["WIKI_TEST_WAIT_TIME"]);
         try {
             $this->assertEquals("Header text", $this->getTable("//div[@id='wikiPreview']/table.0.0"));
         } catch (PHPUnit_Framework_AssertionFailedError $e) {
@@ -214,7 +216,7 @@ class WikiDialogs_TC extends WikiCommonFunction_TC {
         $this->click("//div[3]/button[1]");
         $this->click("wikieditor-toolbar-table-dimensions-header");
         $this->click("wpPreview");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad($_SESSION["WIKI_TEST_WAIT_TIME"]);
         try {
             $this->assertEquals("Example", $this->getTable("//div[@id='wikiPreview']/table.1.3"));
         } catch (PHPUnit_Framework_AssertionFailedError $e) {
@@ -236,7 +238,7 @@ class WikiDialogs_TC extends WikiCommonFunction_TC {
         $this->click("wikieditor-toolbar-table-wikitable");
         $this->click("wikieditor-toolbar-table-sortable");
         $this->click("wpPreview");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad($_SESSION["WIKI_TEST_WAIT_TIME"]);
         try {
             $this->assertEquals("Example", $this->getTable("sortable_table_id_0.0.0"));
         } catch (PHPUnit_Framework_AssertionFailedError $e) {
@@ -257,7 +259,7 @@ class WikiDialogs_TC extends WikiCommonFunction_TC {
         $this->click("wikieditor-toolbar-table-dimensions-header");
         $this->click("wikieditor-toolbar-table-wikitable");
         $this->click("wpPreview");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad($_SESSION["WIKI_TEST_WAIT_TIME"]);
         try {
             $this->assertEquals("Example", $this->getTable("//div[@id='wikiPreview']/table.0.0"));
         } catch (PHPUnit_Framework_AssertionFailedError $e) {
@@ -270,26 +272,25 @@ class WikiDialogs_TC extends WikiCommonFunction_TC {
         parent::doExpandAdvanceSection();
         $this->type("wpTextbox1", "");
         $this->click("link=Search and replace");
-        $this->type("wpTextbox1", "calcey qa\n\ncalcey qa\n\ncalcey qa");
-        $this->type("wikieditor-toolbar-replace-search", "calcey");
-        $this->type("wikieditor-toolbar-replace-search", "calcey qa");
-        $this->type("wikieditor-toolbar-replace-replace", "test team");
+        $this->type("wpTextbox1", $_SESSION["WIKI_SAMPLE_TEXT"]);
+        $this->type("wikieditor-toolbar-replace-search", $_SESSION["WIKI_SEARCH_TEXT"]);
+        $this->type("wikieditor-toolbar-replace-replace", $_SESSION["WIKI_REPLACE_TEXT"]);
         $this->click("//button[3]");
         $this->click("//button[4]");
         $this->click("wpPreview");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad($_SESSION["WIKI_TEST_WAIT_TIME"]);
         try {
-            $this->assertEquals("test team", $this->getText("//div[@id='wikiPreview']/p[1]"));
+            $this->assertEquals($_SESSION["WIKI_REPLACE_TEXT"], $this->getText("//div[@id='wikiPreview']/p[1]"));
         } catch (PHPUnit_Framework_AssertionFailedError $e) {
             array_push($this->verificationErrors, $e->toString());
         }
         try {
-            $this->assertEquals("test team", $this->getText("//div[@id='wikiPreview']/p[2]"));
+            $this->assertEquals($_SESSION["WIKI_REPLACE_TEXT"], $this->getText("//div[@id='wikiPreview']/p[2]"));
         } catch (PHPUnit_Framework_AssertionFailedError $e) {
             array_push($this->verificationErrors, $e->toString());
         }
         try {
-            $this->assertEquals("test team", $this->getText("//div[@id='wikiPreview']/p[3]"));
+            $this->assertEquals($_SESSION["WIKI_REPLACE_TEXT"], $this->getText("//div[@id='wikiPreview']/p[3]"));
         } catch (PHPUnit_Framework_AssertionFailedError $e) {
             array_push($this->verificationErrors, $e->toString());
         }
@@ -300,28 +301,28 @@ class WikiDialogs_TC extends WikiCommonFunction_TC {
         parent::doExpandAdvanceSection();
         $this->type("wpTextbox1", "");
         $this->click("link=Search and replace");
-        $this->type("wpTextbox1", "calcey qa\n\ncalcey qa\n\ncalcey qa");
+        $this->type("wpTextbox1", $_SESSION["WIKI_SAMPLE_TEXT"]);
         $this->click("link=Search and replace");
-        $this->type("wpTextbox1", "calcey qa\n\ncalcey qa\n\ncalcey qa");
-        $this->type("wikieditor-toolbar-replace-search", "calcey qa");
-        $this->type("wikieditor-toolbar-replace-replace", "test team");
+        $this->type("wpTextbox1", $_SESSION["WIKI_SAMPLE_TEXT"]);
+        $this->type("wikieditor-toolbar-replace-search", $_SESSION["WIKI_SEARCH_TEXT"]);
+        $this->type("wikieditor-toolbar-replace-replace", $_SESSION["WIKI_REPLACE_TEXT"]);
         $this->click("//div[13]/div[11]/button[2]");
         $this->click("//div[13]/div[11]/button[2]");
         $this->click("//button[4]");
         $this->click("wpPreview");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad($_SESSION["WIKI_TEST_WAIT_TIME"]);
         try {
-            $this->assertEquals("test team", $this->getText("//div[@id='wikiPreview']/p[1]"));
+            $this->assertEquals($_SESSION["WIKI_REPLACE_TEXT"], $this->getText("//div[@id='wikiPreview']/p[1]"));
         } catch (PHPUnit_Framework_AssertionFailedError $e) {
             array_push($this->verificationErrors, $e->toString());
         }
         try {
-            $this->assertEquals("test team", $this->getText("//div[@id='wikiPreview']/p[2]"));
+            $this->assertEquals($_SESSION["WIKI_REPLACE_TEXT"], $this->getText("//div[@id='wikiPreview']/p[2]"));
         } catch (PHPUnit_Framework_AssertionFailedError $e) {
             array_push($this->verificationErrors, $e->toString());
         }
         try {
-            $this->assertEquals("calcey qa", $this->getText("//div[@id='wikiPreview']/p[3]"));
+            $this->assertEquals($_SESSION["WIKI_SEARCH_TEXT"], $this->getText("//div[@id='wikiPreview']/p[3]"));
         } catch (PHPUnit_Framework_AssertionFailedError $e) {
             array_push($this->verificationErrors, $e->toString());
         }

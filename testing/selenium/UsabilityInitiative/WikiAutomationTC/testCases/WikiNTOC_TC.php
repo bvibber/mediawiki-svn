@@ -1,5 +1,7 @@
 <?php
+session_start();
 require_once 'WikiCommonFunction_TC.php';
+require_once 'Config.php';
 /*
  * This test case will be handling the NTOC related functions.
  * Adding different header levels via tool bar and verify the output
@@ -17,7 +19,7 @@ class WikiNTOC_TC extends WikiCommonFunction_TC {
         $this->click("link=Level 2");
         $this->type("wpTextbox1", "==Heading text==");
         $this->click("wpPreview");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad($_SESSION["WIKI_TEST_WAIT_TIME"]);
         try {
             $this->assertEquals("Heading text", $this->getText("//*[@id='wikiPreview']/h2"));
         } catch (PHPUnit_Framework_AssertionFailedError $e) {
@@ -34,7 +36,7 @@ class WikiNTOC_TC extends WikiCommonFunction_TC {
         $this->click("link=Level 3");
         $this->type("wpTextbox1", "===Heading text===");
         $this->click("wpPreview");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad($_SESSION["WIKI_TEST_WAIT_TIME"]);
         try {
             $this->assertEquals("Heading text", $this->getText("//*[@id='wikiPreview']/h3"));
         } catch (PHPUnit_Framework_AssertionFailedError $e) {
@@ -50,7 +52,7 @@ class WikiNTOC_TC extends WikiCommonFunction_TC {
         $this->click("link=Level 4");
         $this->type("wpTextbox1", "====Heading text====");
         $this->click("wpPreview");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad($_SESSION["WIKI_TEST_WAIT_TIME"]);
         try {
             $this->assertEquals("Heading text", $this->getText("//*[@id='wikiPreview']/h4"));
         } catch (PHPUnit_Framework_AssertionFailedError $e) {
@@ -66,7 +68,7 @@ class WikiNTOC_TC extends WikiCommonFunction_TC {
         $this->click("link=Level 5");
         $this->type("wpTextbox1", "=====Heading text=====");
         $this->click("wpPreview");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad($_SESSION["WIKI_TEST_WAIT_TIME"]);
         try {
             $this->assertEquals("Heading text", $this->getText("//*[@id='wikiPreview']/h5"));
         } catch (PHPUnit_Framework_AssertionFailedError $e) {
@@ -83,7 +85,7 @@ class WikiNTOC_TC extends WikiCommonFunction_TC {
         $this->click("link=Level 3");
         $this->type("wpTextbox1", "==Heading text==\n===Heading text===");
         $this->click("wpPreview");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad($_SESSION["WIKI_TEST_WAIT_TIME"]);
         try {
             $this->assertEquals("Heading text", $this->getText("//*[@id='wikiPreview']/h2"));
         } catch (PHPUnit_Framework_AssertionFailedError $e) {
@@ -107,7 +109,7 @@ class WikiNTOC_TC extends WikiCommonFunction_TC {
         $this->click("link=Level 4");
         $this->type("wpTextbox1", "==Heading text==\n===Heading text===\n====Heading text====");
         $this->click("wpPreview");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad($_SESSION["WIKI_TEST_WAIT_TIME"]);
         try {
             $this->assertEquals("Heading text", $this->getText("//*[@id='wikiPreview']/h2"));
         } catch (PHPUnit_Framework_AssertionFailedError $e) {
@@ -138,7 +140,7 @@ class WikiNTOC_TC extends WikiCommonFunction_TC {
         $this->click("link=Level 5");
         $this->type("wpTextbox1", "==Heading text==\n===Heading text===\n====Heading text====\n=====Heading text=====");
         $this->click("wpPreview");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad($_SESSION["WIKI_TEST_WAIT_TIME"]);
         try {
             $this->assertEquals("Heading text", $this->getText("//*[@id='wikiPreview']/h2"));
         } catch (PHPUnit_Framework_AssertionFailedError $e) {

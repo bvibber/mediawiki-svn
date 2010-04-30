@@ -1,11 +1,13 @@
 <?php
+session_start();
 require_once 'PHPUnit/Extensions/SeleniumTestCase.php';
+require_once 'Config.php';
 /**
  * This test case will be handling the common functions on test.
  * Date : Apr - 2010
  * @author : BhagyaG - Calcey
  */
-class WikiCommonFunction_TC extends PHPUnit_Extensions_SeleniumTestCase {
+class WikiCommonFunction_TC extends PHPUnit_Extensions_SeleniumTestCase{
     /** Wiki server environment details.This array should be commented if the test
      * run on local browsers.  
     
@@ -24,43 +26,48 @@ class WikiCommonFunction_TC extends PHPUnit_Extensions_SeleniumTestCase {
         // Setting the local browser. this should be disabled if the test run in Wiki environment.
         $this->setBrowser("*firefox");
         // Main link to be connected
-         $this->setBrowserUrl("http://prototype.wikimedia.org");
+         $this->setBrowserUrl($_SESSION["WIKI_WEB_URL"]);
+
     }
 
     // Open the page.
     function doOpenLink(){
-        $this->open("/deployment-en/Main_Page");
-        $this->waitForPageToLoad("30000");
+        $this->open($_SESSION["WIKI_OPEN_PAGE"]);
+        $this->waitForPageToLoad($_SESSION["WIKI_TEST_WAIT_TIME"]);
     }
 
     // Login to the application
     function doLogin() {  
         if (!$this->isTextPresent("Log out")) {
             $this->click("link=Log in / create account");
-            $this->waitForPageToLoad("30000");
-            $this->type("wpName1", "bhagya_qa");
-            $this->type("wpPassword1", "test");
+            $this->waitForPageToLoad($_SESSION["WIKI_TEST_WAIT_TIME"]);
+            $this->type("wpName1", $_SESSION["WIKI_USER_NAME"]);
+            $this->type("wpPassword1", $_SESSION["WIKI_USER_PASSWORD"]);
             $this->click("wpLoginAttempt");
-            $this->waitForPageToLoad("30000");
+            $this->waitForPageToLoad($_SESSION["WIKI_TEST_WAIT_TIME"]);
             try {
-                $this->assertEquals("Bhagya qa", $this->getText("link=Bhagya qa"));
+                $this->assertEquals($_SESSION["WIKI_USER_DISPLAY_NAME"], $this->getText("link=" . $_SESSION["WIKI_USER_DISPLAY_NAME"]));
             } catch (PHPUnit_Framework_AssertionFailedError $e) {
                 array_push($this->verificationErrors, $e->toString());
             }
+            $this->open($_SESSION["WIKI_OPEN_PAGE"]);
+            $this->waitForPageToLoad($_SESSION["WIKI_TEST_WAIT_TIME"]);
         }
     }
 
     // Log out from the application
     function doLogout() {
-        $this->open("/deployment-en/Main_Page");
+        $this->open($_SESSION["WIKI_OPEN_PAGE"]);
          if ($this->isTextPresent("Log out")) {
             $this->click("link=Log out");
-            $this->waitForPageToLoad("30000");
+            $this->waitForPageToLoad($_SESSION["WIKI_TEST_WAIT_TIME"]);
             try {
                 $this->assertEquals("Log in / create account", $this->getText("link=Log in / create account"));
             } catch (PHPUnit_Framework_AssertionFailedError $e) {
                 array_push($this->verificationErrors, $e->toString());
             }
+            $this->open($_SESSION["WIKI_OPEN_PAGE"]);
+            $this->waitForPageToLoad($_SESSION["WIKI_TEST_WAIT_TIME"]);
          }
     }
 
@@ -75,17 +82,21 @@ class WikiCommonFunction_TC extends PHPUnit_Extensions_SeleniumTestCase {
     function doCreateNewPageTemporary() {
        $this->type("//*[@id='searchInput']", "TestWikiPaget");
        $this->click("//*[@id='searchButton']");
-       $this->waitForPageToLoad("30000");
+       $this->waitForPageToLoad($_SESSION["WIKI_TEST_WAIT_TIME"]);
        $this->click("link=TestWikiPaget");
-       $this->waitForPageToLoad("30000");
+       $this->waitForPageToLoad($_SESSION["WIKI_TEST_WAIT_TIME"]);
     }
 
     //Access a random page
     function doAccessRandomPage() {
        $this->click("link=Random article");
-       $this->waitForPageToLoad("30000");
+       $this->waitForPageToLoad($_SESSION["WIKI_TEST_WAIT_TIME"]);
+    }
+
+    //Access a random page
+    function doEditPage() {
        $this->click("//li[@id='ca-edit']/a/span");
-       $this->waitForPageToLoad("30000");
+       $this->waitForPageToLoad($_SESSION["WIKI_TEST_WAIT_TIME"]);
     }
 }
 ?>

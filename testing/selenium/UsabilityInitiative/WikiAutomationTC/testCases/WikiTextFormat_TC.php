@@ -1,5 +1,7 @@
 <?php
+session_start();
 require_once 'WikiCommonFunction_TC.php';
+require_once 'Config.php';
 /**
  * This test case will be handling the text formatting related functions via tool bar
  * Date : Apr - 2010
@@ -13,7 +15,7 @@ class WikiTextFormat_TC extends WikiCommonFunction_TC {
         $this->click("link=Bold");
         $this->type("wpTextbox1", "'''Bold''' text");
         $this->click("wpPreview");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad($_SESSION["WIKI_TEST_WAIT_TIME"]);
         try {
             $this->assertEquals("Bold", $this->getText("//div[@id='wikiPreview']/p/b"));
         } catch (PHPUnit_Framework_AssertionFailedError $e) {
@@ -27,7 +29,7 @@ class WikiTextFormat_TC extends WikiCommonFunction_TC {
         $this->click("link=Italic");
         $this->type("wpTextbox1", "''Italian'' text");
         $this->click("wpPreview");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad($_SESSION["WIKI_TEST_WAIT_TIME"]);
         $this->assertEquals("Italian", $this->getText("//div[@id='wikiPreview']/p/i"));
     }
 
@@ -38,7 +40,7 @@ class WikiTextFormat_TC extends WikiCommonFunction_TC {
 	$this->click("link=Bold");
         $this->type("wpTextbox1", "Text '''''Italic & Bold'''''");
         $this->click("wpPreview");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad($_SESSION["WIKI_TEST_WAIT_TIME"]);
         $this->assertEquals("Italic & Bold", $this->getText("//div[@id='wikiPreview']/p/i/b"));
     }
 
@@ -52,7 +54,7 @@ class WikiTextFormat_TC extends WikiCommonFunction_TC {
         $this->click("link=Bulleted list");
         $this->type("wpTextbox1", "* Bulleted list item\n* Bulleted list item\n* Bulleted list item");
         $this->click("wpPreview");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad($_SESSION["WIKI_TEST_WAIT_TIME"]);
         try {
             $this->assertEquals("Bulleted list item", $this->getText("//div[@id='wikiPreview']/ul/li[1]"));
         } catch (PHPUnit_Framework_AssertionFailedError $e) {
@@ -79,7 +81,7 @@ class WikiTextFormat_TC extends WikiCommonFunction_TC {
         $this->click("link=Numbered list");
         $this->type("wpTextbox1", "# Numbered list item\n# Numbered list item\n# Numbered list item");
         $this->click("wpPreview");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad($_SESSION["WIKI_TEST_WAIT_TIME"]);
         try {
             $this->assertEquals("Numbered list item", $this->getText("//div[@id='wikiPreview']/ol/li[1]"));
         } catch (PHPUnit_Framework_AssertionFailedError $e) {
@@ -103,7 +105,7 @@ class WikiTextFormat_TC extends WikiCommonFunction_TC {
         $this->type("wpTextbox1", "");
         $this->type("wpTextbox1", "<nowiki>==Heading text==</nowiki>");
         $this->click("wpPreview");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad($_SESSION["WIKI_TEST_WAIT_TIME"]);
         try {
             $this->assertEquals("==Heading text==", $this->getText("//div[@id='wikiPreview']/p"));
         } catch (PHPUnit_Framework_AssertionFailedError $e) {
@@ -117,7 +119,7 @@ class WikiTextFormat_TC extends WikiCommonFunction_TC {
         $this->type("wpTextbox1", "");
         $this->type("wpTextbox1", "this is a test text to check the line\n break.");
         $this->click("wpPreview");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad($_SESSION["WIKI_TEST_WAIT_TIME"]);
         try {
             $this->assertEquals("this is a test text to check the line\n break.", $this->getText("//div[@id='wikiPreview']/p"));
         } catch (PHPUnit_Framework_AssertionFailedError $e) {
@@ -132,7 +134,7 @@ class WikiTextFormat_TC extends WikiCommonFunction_TC {
         $this->click("link=Big");
         $this->type("wpTextbox1", "<big>This</big> text");
         $this->click("wpPreview");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad($_SESSION["WIKI_TEST_WAIT_TIME"]);
         try {
             $this->assertEquals("This", $this->getText("//div[@id='wikiPreview']/p/big"));
         } catch (PHPUnit_Framework_AssertionFailedError $e) {
@@ -147,7 +149,7 @@ class WikiTextFormat_TC extends WikiCommonFunction_TC {
         $this->click("link=Small");
         $this->type("wpTextbox1", "<small>This</small> text\n");
         $this->click("wpPreview");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad($_SESSION["WIKI_TEST_WAIT_TIME"]);
         try {
             $this->assertEquals("This", $this->getText("//div[@id='wikiPreview']/p/small"));
         } catch (PHPUnit_Framework_AssertionFailedError $e) {
@@ -162,7 +164,7 @@ class WikiTextFormat_TC extends WikiCommonFunction_TC {
         $this->click("link=Superscript");
         $this->type("wpTextbox1", "<sup>This</sup> text\n");
         $this->click("wpPreview");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad($_SESSION["WIKI_TEST_WAIT_TIME"]);
         try {
             $this->assertEquals("This", $this->getText("//div[@id='wikiPreview']/p/sup"));
         } catch (PHPUnit_Framework_AssertionFailedError $e) {
@@ -177,7 +179,7 @@ class WikiTextFormat_TC extends WikiCommonFunction_TC {
         $this->click("link=Subscript");
         $this->type("wpTextbox1", "<sub>This</sub> text\n");
         $this->click("wpPreview");
-        $this->waitForPageToLoad("30000");
+        $this->waitForPageToLoad($_SESSION["WIKI_TEST_WAIT_TIME"]);
         try {
             $this->assertEquals("This", $this->getText("//div[@id='wikiPreview']/p/sub"));
         } catch (PHPUnit_Framework_AssertionFailedError $e) {
