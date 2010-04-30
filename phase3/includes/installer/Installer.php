@@ -863,15 +863,19 @@ abstract class Installer {
 	}
 
 	public function installSysop() {
-		$user = User::newFromName( $this->getVar( '_AdminName' ) );
+		$name = $this->getVar( '_AdminName' );
+		$user = User::newFromName( $name );
 		if ( !$user ) {
-			return false; // we should've validated this earlier anyway!
+			// we should've validated this earlier anyway!
+			$this->output->addWarningMsg( 'config-admin-error-user', $name );
+			return false;
 		}
 		if ( $user->idForName() == 0 ) {
 			$user->addToDatabase();
 			try {
 				$user->setPassword( $this->getVar( '_AdminPassword' ) );
 			} catch( PasswordError $pwe ) {
+				$this->output->addWarningMsg( 'config-admin-error-password', $name, $pwe->getMessage() );
 				return false;
 			}
 			$user->saveSettings();
