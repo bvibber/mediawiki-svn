@@ -123,6 +123,7 @@ $wgHooks['BeforePageDisplay'][] = 'Wikilog::BeforePageDisplay';
 $wgHooks['LinkBegin'][] = 'Wikilog::LinkBegin';
 $wgHooks['SkinTemplateTabAction'][] = 'Wikilog::SkinTemplateTabAction';
 $wgHooks['SkinTemplateTabs'][] = 'Wikilog::SkinTemplateTabs';
+$wgHooks['SkinTemplateNavigation'][] = 'Wikilog::SkinTemplateNavigation';
 
 // General Wikilog hooks
 $wgHooks['ArticleEditUpdates'][] = 'WikilogHooks::ArticleEditUpdates';
@@ -348,25 +349,47 @@ class Wikilog
 	 * Suppresses the "add section" tab in comments pages.
 	 */
 	static function SkinTemplateTabs( $skin, &$contentActions ) {
-		global $wgRequest, $wgWikilogEnableComments;
-
 		$wi = self::getWikilogInfo( $skin->mTitle );
 		if ( $wi ) {
-			$action = $wgRequest->getText( 'action' );
-			if ( $wi->isMain() && $skin->mTitle->quickUserCan( 'edit' ) ) {
-				$contentActions['wikilog'] = array(
-					'class' => ( $action == 'wikilog' ) ? 'selected' : false,
-					'text' => wfMsg( 'wikilog-tab' ),
-					'href' => $skin->mTitle->getLocalUrl( 'action=wikilog' )
-				);
-			}
-			if ( $wgWikilogEnableComments && $wi->isTalk() ) {
-				if ( isset( $contentActions['addsection'] ) ) {
-					unset( $contentActions['addsection'] );
-				}
-			}
+			self::skinConfigViewsLinks( $wi, $skin, $contentActions );
 		}
 		return true;
+	}
+
+	/**
+	 * SkinTemplateNavigation hook handler function.
+	 * Adds a wikilog action to articles in Wikilog namespaces.
+	 * This is used with newer skins, like Vector.
+	 */
+	static function SkinTemplateNavigation( $skin, &$links ) {
+		$wi = self::getWikilogInfo( $skin->mTitle );
+		if ( $wi ) {
+			self::skinConfigViewsLinks( $wi, $skin, $links['views'] );
+		}
+		return true;
+	}
+
+	/**
+	 * Configure wikilog views links.
+	 * Helper function for SkinTemplateTabs and SkinTemplateNavigation hooks
+	 * to configure views links in wikilog pages.
+	 */
+	private static function skinConfigViewsLinks( WikilogInfo &$wi, $skin, &$views ) {
+		global $wgRequest, $wgWikilogEnableComments;
+
+		$action = $wgRequest->getText( 'action' );
+		if ( $wi->isMain() && $skin->mTitle->quickUserCan( 'edit' ) ) {
+			$views['wikilog'] = array(
+				'class' => ( $action == 'wikilog' ) ? 'selected' : false,
+				'text' => wfMsg( 'wikilog-tab' ),
+				'href' => $skin->mTitle->getLocalUrl( 'action=wikilog' )
+			);
+		}
+		if ( $wgWikilogEnableComments && $wi->isTalk() ) {
+			if ( isset( $views['addsection'] ) ) {
+				unset( $views['addsection'] );
+			}
+		}
 	}
 
 	# ##
