@@ -329,81 +329,22 @@ function printConcept($concept, $langs, $terse = true) {
     else return true;
 }
 
+if( @$_GET( 'ctype' ) == 'application/xml' ) {
+	// Makes testing tweaks about a billion times easier
+	$ctype = 'application/xml';
+} else {
+	$ctype = 'application/atom+xml';
+}
+
 if (!isset($scriptPath)) $scriptPath = "./";
 if (!isset($skinPath)) $skinPath = "$scriptPath/../skin/";
 
-header("Content-Type: text/html; charset=UTF-8");
-?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr"> 
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>WikiPics: Multilingual Search for Wikimedia Commons</title>
-    <link rel="stylesheet" href="<?php print "$skinPath/styles.css"; ?>" type="text/css" media="all" />
-    <link rel="search"
-           type="application/opensearchdescription+xml" 
-           href="<?php print "$scriptPath/opensearch_description.xml"; ?>"
-           				title="Image Search" />
-</head>
-<body>
-    <div class="header">
-      <div style="float:left">Wikipics 0.1&alpha; (experimental)</div>
-      <div style="float:right"><a href="http://wikimedia.de">Wikimedia Deutschland e.V.</a></div>
-    <!--   <h1>WikiWord Navigator</h1>
-      <p>Experimental semantic navigator and thesaurus interface for Wikipedia.</p>
-      <p>The WikiWord Navigator was created as part of the WikiWord project run by <a href="http://wikimedia.de">Wikimedia Deutschland e.V.</a>.
-      It is based on a <a href="http://brightbyte.de/page/WikiWord">diploma thesis</a> by Daniel Kinzler, and runs on the <a href="http://toolserver.org/">Wikimedia Toolserver</a>. WikiWord is an ongoing research project. Please contact <a href="http://brightbyte.de/page/Special:Contact">Daniel Kinzler</a> for more information.</p>  --> &nbsp;
-    </div>
-
-    <?php include("form.html.php"); ?>
-<?php
-if ($error) {
-  print "<p class=\"error\">".htmlspecialchars($error)."</p>";
-}
-
-if (!$result && $mode) {
-  if ($mode=="concept") print "<p class=\"error\">".htmlspecialchars($error)."</p>";
-  else if ($mode=="term") print "<p class=\"notice\">No meanings found for term <em>".htmlspecialchars($term)."</em>.</p>";
-}
-?>    
-
-<?php
-if ($result && $mode) {
-    if ( $mode == 'concept' ) $terse = false;
-    else if ( $mode == 'term' ) $terse = true;
-?>
-    <table  border="0" class="results" cellspacing="0" summary="search results">
-<?php
-    $count = 0;
-    foreach ( $result as $row ) {
-	$count = $count + 1;
-	$row['pos'] = $count;
-
-?>    
-    <?php 
-	  mangleConcept($row);
-	  $continue= printConcept($row, $languages, $terse);
-
-	  if (!$continue) break;
-    ?>
-
-<?php
-    } #concept loop
-
-?>
-    </table>
-<?php
-} #if results
-?>
-
-<div class="footer">
-<p>Wikipics is provided by <a href="http://wikimedia.de">Wikimedia Deutschland</a> as part of the <a href="http://brightbyte.de/page/WikiWord">WikiWord</a> project.</p>
-
-</div>
-</body>
-<?php
-foreach ( $profiling as $key => $value ) {
-  print "<!-- $key: $value sec -->\n";
-}
-?>
-</html>
-
+header("Content-Type: $ctype; charset=$ctype");
+?><?xml version="1.0" encoding="UTF-8"?>
+ <feed xmlns="http://www.w3.org/2005/Atom" 
+       xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/">
+		<link rel="search"
+		         href="http://example.com/opensearchdescription.xml" 
+		         type="application/opensearchdescription+xml" 
+		         title="Content Search" />
+</xml>

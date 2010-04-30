@@ -150,6 +150,7 @@ function mangleConcept(&$concept) {
 $conceptId = @$_REQUEST['id'];
 $term = @$_REQUEST['term'];
 $lang = @$_REQUEST['lang'];
+$format = @$_REQUEST['format'];
 
 if ( $term===null ) {
 	$term = @$_SERVER['PATH_INFO'];
@@ -233,4 +234,10 @@ if (!$error) {
   $profiling['thesaurus'] += (microtime(true) - $t);
 }
 
-include("response.html.php"); 
+if (!isset($scriptPath)) $scriptPath = "./";
+if (!isset($skinPath)) $skinPath = "$scriptPath/../skin/";
+
+if ( $format == "atom" || $format == "xml" || $format == "opensearch" ) include("response.atom.php"); 
+else include("response.html.php"); 
+
+$utils->close();
