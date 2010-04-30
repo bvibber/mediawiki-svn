@@ -227,9 +227,20 @@ Use only letters, numbers and underscores.',
 	'config-sqlite-name-help'         => 'Choose a name that identifies your wiki.
 Do not use spaces or hyphens.
 This will be used for the SQLite data file name.',
-	'config-sqlite-parent-unwritable' => 'Cannot create the data directory "$1" automatically, because the parent directory "$2" is not writable by the webserver.
+	'config-sqlite-parent-unwritable-group' => 'Cannot create the data directory <code><nowiki>$1</nowiki></code>, because the parent directory <code><nowiki>$2</nowiki></code> is not writable by the webserver.
 
-To make the directory on a Unix/Linux system:
+We\'ve determined the user your webserver is running as. Make the <code><nowiki>$3</nowiki></code>
+directory writable by it to continue. On a Unix/Linux system do:
+
+<pre>cd $2
+mkdir $3
+chgrp $4 $3
+chmod g+w $3</pre>',
+	'config-sqlite-parent-unwritable-nogroup' => 'Cannot create the data directory <code><nowiki>$1</nowiki></code>, because the parent directory <code><nowiki>$2</nowiki></code> is not writable by the webserver.
+
+We couldn\'t determine the user your webserver is running as. Make the <code><nowiki>$3</nowiki></code>
+directory globally writable by it (and others!) to continue. On a Unix/Linux system do:
+
 <pre>cd $2
 mkdir $3
 chmod a+w $3</pre>',
@@ -565,9 +576,6 @@ U gebruikt $2.',
 	'config-db-schema-help' => "De bovenstaande schema's kloppen meestal.
 Wijzig ze alleen als u weet dat u ze nodig hebt.",
 	'config-sqlite-dir' => 'Gegevensmap voor SQLite:',
-	'config-sqlite-dir-help' => "SQLite slaat gegevens op in een bestand op het bestandssysteem.
-Deze map moet beschrijfbaar zijn door de webserver.
-De map mag '''niet''' via het web toegankelijk zijn.",
 	'config-type-mysql' => 'MySQL',
 	'config-type-postgres' => 'PostgreSQL',
 	'config-type-sqlite' => 'SQLite',

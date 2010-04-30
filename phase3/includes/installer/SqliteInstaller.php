@@ -46,7 +46,12 @@ class SqliteInstaller extends InstallerDBType {
 		$this->setVar( 'wgSQLiteDataDir', $dir );
 		if ( !is_dir( $dir ) ) {
 			if ( !is_writable( dirname( $dir ) ) ) {
-				return Status::newFatal( 'config-sqlite-parent-unwritable', $dir, dirname( $dir ), basename( $dir ) );
+				$webserverGroup = Installer::maybeGetWebserverPrimaryGroup();
+				if ( $webserverGroup !== null ) {
+					return Status::newFatal( 'config-sqlite-parent-unwritable-group', $dir, dirname( $dir ), basename( $dir ), $webserverGroup );
+				} else {
+					return Status::newFatal( 'config-sqlite-parent-unwritable-nogroup', $dir, dirname( $dir ), basename( $dir ) );
+				}
 			}
 			wfSuppressWarnings();
 			$ok = wfMkdirParents( $dir, 0700 );
