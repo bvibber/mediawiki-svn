@@ -425,9 +425,11 @@ Create it yourself, using the following text:',
 	'config-install-done'             => "'''Congratulations!'''
 You have successfully installed MediaWiki.
 
+We've generated a <code>LocalSettings.php</code> file for you. It contains all your configuration.
+
 You will need to move it from <code>./config/LocalSettings.php</code> to <code>./LocalSettings.php</code> in order for MediaWiki to work.
 
-[$1 Enter your wiki]",
+When that's done, you can [$1 '''enter your wiki''']",
 	'config-install-done-moved'       => "'''Congratulations!'''
 You have successfully installed MediaWiki.
 
@@ -746,12 +748,6 @@ Overweeg deze handmatig te wijzigen.',
 	'config-install-localsettings' => '<code>LocalSettings.php</code> aanmaken',
 	'config-install-localsettings-unwritable' => "'''Waarschuwing:''' het was niet mogelijk <code>LocalSettings.php</code> weg te schrijven.
 Maak dit bestand zelf aan met de volgende inhoud:",
-	'config-install-done' => "'''Gefeliciteerd!'''
-U hebt MediaWiki geïnstalleerd.
-
-U moet <code>./config/LocalSettings.php</code>  naar <code>./LocalSettings.php</code> verplaatsen voordat MediaWiki werkt.
-
-[$1 Naar uw wiki]",
 	'config-install-done-moved' => "'''Gefeliciteerd!'''
 U hebt MediaWiki geïnstalleerd.
 
