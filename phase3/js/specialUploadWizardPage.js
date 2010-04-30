@@ -14,6 +14,7 @@ mw.ready( function() {
 		mw.setConfig( 'fileExtensions', wgFileExtensions );
 		mw.setConfig( 'token', wgEditToken );
 		mw.setConfig( 'thumbnailWidth', 120 ); 
+		mw.setConfig( 'smallThumbnailWidth', 60 ); 
 
 		// not for use with all wikis. 
 		// The ISO 639 code for the language tagalog is "tl".
