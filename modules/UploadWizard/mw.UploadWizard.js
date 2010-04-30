@@ -1,7 +1,8 @@
 mw.addMessages( {
 	"mwe-upwiz-tab-file": "1. Upload your files",
-	"mwe-upwiz-tab-details": "2. Add licenses and descriptions",
-	"mwe-upwiz-tab-thanks": "3. Use your files",
+	"mwe-upwiz-tab-deeds": "2. Add licenses",
+	"mwe-upwiz-tab-details": "3. Add descriptions",
+	"mwe-upwiz-tab-thanks": "4. Use your files",
 	"mwe-upwiz-intro": "Welcome to Wikimedia Commons, a repository of images, sounds, and movies that anyone can freely download and use. Add to humanity's knowledge by uploading files that could be used for an educational purpose.",
 	
 	"mwe-upwiz-add-file-n": "Add another file",
@@ -17,7 +18,8 @@ mw.addMessages( {
 	"mwe-upwiz-upload-count": "$1 of $2 files uploaded",
 	"mwe-upwiz-progressbar-uploading": "uploading",
 	"mwe-upwiz-remaining": "$1 remaining",
-	"mwe-upwiz-intro-details": "Thank you! Now we need some basic information about the files you just uploaded.",
+	"mwe-upwiz-deeds-intro": "Thank you! Now we need to set a license for these files, so everyone can legally view or modify them. First, we'll have to know where you got them.",
+	"mwe-upwiz-details-intro": "Now we need some basic information about the files.",
 	"mwe-upwiz-source-ownwork": "This file is my own work.",
 	"mwe-upwiz-source-ownwork-plural": "These files are my own work.",
 	"mwe-upwiz-source-ownwork-assert": "I, $1, the copyright holder of this work, hereby grant anyone the right to use this work for any purpose, as long as they credit me and share derivative work under the same terms.",
@@ -421,6 +423,7 @@ mw.UploadWizardUpload.prototype = {
 		if ( result.upload && result.upload.imageinfo && result.upload.imageinfo.descriptionurl ) {
 			// success
 			_this.extractUploadInfo( result );	
+			_this.deedPreview.setup();
 			_this.details.populate();
 		
 		} else if ( result.upload && result.upload.sessionkey ) {
@@ -557,7 +560,48 @@ mw.UploadWizardUpload.prototype = {
 			}
 		} );
 
+	},
+
+
+	/**
+	 *  look up thumbnail info and set it in HTML, with loading spinner
+	 * it might be interesting to make this more of a publish/subscribe thing, since we have to do this 3x
+	 * the callbacks may pile up, getting unnecessary info
+	 *
+	 * @param selector
+	 * @param width
+	 */
+	setThumbnail: function( selector, width, imgClass ) {
+		var _this = this;
+		if ( typeof width === 'undefined' || width === null || width <= 0 )  {	
+			width = mw.getConfig( 'thumbnailWidth' );
+		}
+		width = parseInt( width, 10 );
+
+		if ( typeof imgClass === 'undefined' || imgClass === null ) {
+			imgClass = 'mwe-upwiz-thumbnail';
+		}
+		
+		var callback = function( thumbnail ) {
+			// side effect: will replace thumbnail's loadingSpinner
+			$j( selector ).html(
+				$j('<a/>')
+					.attr( { 'href': _this.imageinfo.descriptionurl,
+						 'target' : '_new' } )
+					.append(
+						$j( '<img/>' )
+							.addClass( imgClass )
+							.attr( 'width',  thumbnail.width )
+							.attr( 'height', thumbnail.height )
+							.attr( 'src',    thumbnail.url ) ) );
+		};
+
+		$j( selector ).loadingSpinner();
+		_this.getThumbnail( width, callback );
 	}
+
+
+	
 };
 
 /**
@@ -1307,40 +1351,13 @@ mw.UploadWizardDetails.prototype = {
 	populate: function() {
 		var _this = this;
 		mw.log( "populating details from upload" );
-		_this.setThumbnail( mw.getConfig( 'thumbnailWidth' ) ); 
+		_this.upload.setThumbnail( _this.thumbnailDiv );
 		_this.prefillDate();
 		_this.prefillSource();
 		_this.prefillAuthor(); 
 		_this.prefillTitle();
 		_this.prefillFilename();
 		_this.prefillLocation(); 
-	},
-
-	/**
-	 *  look up thumbnail info and set it on the form, with loading spinner
-	 *
-	 * @param width
-	 */
-	setThumbnail: function( width ) {
-		var _this = this;
-
-		var callback = function( thumbnail ) { 
-			// side effect: will replace thumbnail's loadingSpinner
-			_this.thumbnailDiv.html(
-				$j('<a/>')
-					.attr( { 'href': _this.upload.imageinfo.descriptionurl,
-						 'target' : '_new' } )
-					.append(
-						$j( '<img/>' )
-							.addClass( "mwe-upwiz-thumbnail" )
-							.attr( 'width',  thumbnail.width )
-							.attr( 'height', thumbnail.height )
-							.attr( 'src',    thumbnail.url ) ) );
-		};
-
-		_this.thumbnailDiv.loadingSpinner();
-		_this.upload.getThumbnail( width, callback );
-
 	},
 
 	/**
@@ -1764,7 +1781,7 @@ mw.UploadWizard.userAgent = "UploadWizard (alpha) on " + $j.browser.name + " " +
 mw.UploadWizard.prototype = {
 	maxUploads: 10,  // XXX get this from config 
 	maxSimultaneousUploads: 2,   //  XXX get this from config
-	tabNames: [ 'file', 'details', 'thanks' ],
+	tabNames: [ 'file', 'deeds', 'details', 'thanks' ],
 	currentTabName: undefined,
 
 	/*
@@ -1811,6 +1828,7 @@ mw.UploadWizard.prototype = {
 		       '<div id="mwe-upwiz-tabs">'
 		       + '<ul>'
 		       +   '<li id="mwe-upwiz-tab-file"><span class="mwe-arrow-text">'     + gM('mwe-upwiz-tab-file')     + '<span class="mwe-arrow"/></span></span></li>'
+		       +   '<li id="mwe-upwiz-tab-deeds"><span class="mwe-arrow-text">'  + gM('mwe-upwiz-tab-deeds')  + '<span class="mwe-arrow"/></span></span></li>'
 		       +   '<li id="mwe-upwiz-tab-details"><span class="mwe-arrow-text">'  + gM('mwe-upwiz-tab-details')  + '<span class="mwe-arrow"/></span></span></li>'
 		       +   '<li id="mwe-upwiz-tab-thanks"><span class="mwe-arrow-text">'   + gM('mwe-upwiz-tab-thanks')   + '<span class="mwe-arrow"/></span></span></li>'
 		       + '</ul>'
@@ -1836,12 +1854,16 @@ mw.UploadWizard.prototype = {
 		       +     '</div>'	
 		       +     '<div style="clear: left;"></div>'
 		       +   '</div>'
+		       +   '<div class="mwe-upwiz-tabdiv" id="mwe-upwiz-tabdiv-deeds">'
+		       +     '<div id="mwe-upwiz-deeds-intro"></div>'
+		       +     '<div id="mwe-upwiz-deeds-thumbnails"></div>'
+		       +     '<div id="mwe-upwiz-deeds"></div>'	
+                       +   '</div>'
 		       +   '<div class="mwe-upwiz-tabdiv" id="mwe-upwiz-tabdiv-details">'
 		       +     '<div id="mwe-upwiz-macro">'
 		       +       '<div id="mwe-upwiz-macro-progress" class="ui-helper-clearfix"></div>'
 		       +       '<div id="mwe-upwiz-macro-choice">' 
-		       +  	 '<div>' + gM( 'mwe-upwiz-intro-details' ) + '</div>'
-		       +         '<div id="mwe-upwiz-macro-deeds"></div>'
+		       +  	 '<div>' + gM( 'mwe-upwiz-details-intro' ) + '</div>'
 		       +       '</div>'
 		       +       '<div id="mwe-upwiz-macro-files"></div>'
 		       +       '<div class="mwe-upwiz-macro-edit-submit"></div>' // button added below			
@@ -1855,7 +1877,20 @@ mw.UploadWizard.prototype = {
 		       + '<div class="mwe-upwiz-clearing"></div>';
 
 		// within FILE tab div
-		$j('#mwe-upwiz-upload-ctrl').click( function() { _this.startUploads(); } );
+		$j('#mwe-upwiz-upload-ctrl').click( function() { 
+			_this.removeEmptyUploads();
+		
+			// we set up deed chooser here, because it's only now that we know how many uploads there are
+			// possibly it should have some kind of morphing interface for singular/plural, but this doesn't
+			// seem too bad for now.
+			_this.deedChooser = new mw.UploadWizardDeedChooser( '#mwe-upwiz-deeds', ( _this.uploads.length > 1 ) );
+
+			_this.startUploads(); 
+		} );
+
+		// deeds div
+		$j( '#mwe-upwiz-deeds-intro' ).html( gM( 'mwe-upwiz-deeds-intro' ) );
+
 
 		// DETAILS div
 		$j( '.mwe-upwiz-deed-form' ).maskSafeHide();
@@ -1876,13 +1911,12 @@ mw.UploadWizard.prototype = {
 				} ) );
 		} );
 
-		_this.deedChooser = new mw.UploadWizardDeedChooser( '#mwe-upwiz-macro-deeds', true );
 	
 		// add one to start
 		var upload = _this.newUpload( '#mwe-upwiz-add-file' );
 
 		// "select" the first tab - highlight, make it visible, hide all others
-		_this.moveToTab('file', function() { 
+		_this.moveToTab( 'file', function() { 
 			// XXX moving the file input doesn't seem to work at this point
 			// we are catching up to the application of CSS or something
 			// XXX using a timeout is lame, are there other options?
@@ -1925,7 +1959,7 @@ mw.UploadWizard.prototype = {
 			} else {
 				// it's neither the formerly active nor the newly active one, so don't show it
 				// we don't use hide() because we want to manipulate elements within future tabs, and calculate their dimensions.
-				tabDiv.maskSafeHide();
+				// tabDiv.maskSafeHide();
 			}
 		} );
 
@@ -1974,24 +2008,12 @@ mw.UploadWizard.prototype = {
 		// XXX check if it has a file? 
 		_this.uploads.push( upload );
 		_this.updateFileCounts();
-		// maybe it would be better to defer details to later?
-		upload.details = new mw.UploadWizardDetails( upload, $j( '#mwe-upwiz-macro-files' ));
-
-		// by default, new uploads use the wizard's deed selector.
+		
+		upload.deedPreview = new mw.UploadWizardDeedPreview( upload );		
 		upload.deedChooser = _this.deedChooser;
-		$j( _this.deedChooser ).bind( 'chooseNullDeed', function(e) { 
-			mw.log("upload received chooseNullDeed");
-			upload.details.div.mask(); 
-			e.stopPropagation(); 
-		} );
-		$j( _this.deedChooser ).bind( 'chooseDeed', function(e) { 
-			mw.log("upload received choose");
-			upload.details.div.unmask(); 
-			e.stopPropagation(); 
-		} );
-
-
-		upload.details.div.mask();
+		
+		// set up details
+		upload.details = new mw.UploadWizardDetails( upload, $j( '#mwe-upwiz-macro-files' ));
 	},
 
 
@@ -2108,7 +2130,6 @@ mw.UploadWizard.prototype = {
 	 */
 	startUploads: function() {
 		var _this = this;
-		_this.removeEmptyUploads();
 		// remove the upload button, and the add file button
 		$j( '#mwe-upwiz-upload-ctrl' ).hide();
 		$j( '#mwe-upwiz-add-file' ).hide();
@@ -2132,13 +2153,14 @@ mw.UploadWizard.prototype = {
 			},
 		        function() { 
 				$j.each( _this.uploads, function(i, upload) {
-					upload.state = 'details';
+					upload.state = 'deeds';
 				} );
-				_this.moveToTab( 'details' );
+				_this.moveToTab( 'deeds' );
 		  	} 
 		);
 	},
 
+	
 	
 	/**
 	 * Occurs whenever we need to update the interface based on how many files there are 
@@ -2226,27 +2248,10 @@ mw.UploadWizard.prototype = {
 
 		$j.each( _this.uploads, function(i, upload) {
 			var thanksDiv = $j( '<div class="mwe-upwiz-thanks ui-helper-clearfix" />' );
+			
 			var thumbnailDiv = $j( '<div></div>' ).addClass( 'mwe-upwiz-thumbnail' );
 			thanksDiv.append( thumbnailDiv );
-
-			/* XXX this is copied code, evil */
-			var callback = function( thumbnail ) { 
-				// side effect: will replace thumbnail's loadingSpinner
-				thumbnailDiv.html(
-					$j('<a>')
-						.attr( { 'href': upload.imageinfo.descriptionurl,
-							 'target': '_new' } )
-						.append(
-							$j( '<img/>' )
-								.addClass( "mwe-upwiz-thumbnail" )
-								.attr( 'width',  thumbnail.width )
-								.attr( 'height', thumbnail.height )
-								.attr( 'src',    thumbnail.url ) ) );
-			};
-
-			thumbnailDiv.loadingSpinner();
-			upload.getThumbnail( width, callback );
-			/* end evil copied code */
+			upload.setThumbnail( thumbnailDiv );
 
 			var thumbTitle = upload.title.replace(/^File/, 'Image'); // XXX is this really necessary?
 			var thumbWikiText = "[[" + thumbTitle + "|thumb]]";
@@ -2297,6 +2302,21 @@ mw.UploadWizard.prototype = {
 	 */
 	stop: function() {
 
+	}
+};
+
+
+mw.UploadWizardDeedPreview = function(upload) {
+	this.upload = upload;
+};
+
+mw.UploadWizardDeedPreview.prototype = {
+	setup: function() {
+		var _this = this;
+		// add a preview on the deeds page
+		var thumbnailDiv = $j( '<div></div>' ).addClass( 'mwe-upwiz-thumbnail' );
+		$j( '#mwe-upwiz-deeds-thumbnails' ).append( thumbnailDiv );
+		_this.upload.setThumbnail( thumbnailDiv, mw.getConfig( 'smallThumbnailWidth' ), 'mwe-upwiz-smallthumbnail' );
 	}
 };
 
