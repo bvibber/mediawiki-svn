@@ -178,9 +178,9 @@ but it will not let you store characters above the [http://en.wikipedia.org/wiki
 	'config-db-schema-help'           => 'The above schemas are usually correct.
 Only change them if you know you need to.',
 	'config-sqlite-dir'               => 'SQLite data directory:',
-	'config-sqlite-dir-help'          => "SQLite stores data into a file in the filesystem.
+	'config-sqlite-dir-help'          => "SQLite stores data in a file in the filesystem.
 This directory must be writable by the webserver.
-It should '''not''' accessible via the web.",
+It should '''not''' be accessible via the web.",
 	'config-type-mysql'               => 'MySQL',
 	'config-type-postgres'            => 'PostgreSQL',
 	'config-type-sqlite'              => 'SQLite',
