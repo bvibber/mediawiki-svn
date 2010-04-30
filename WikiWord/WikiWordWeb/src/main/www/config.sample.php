@@ -1,6 +1,6 @@
 <?php
 
-#$wwAPI = "http://wikiword.wikimedia.de/api.php";
+#$wwAPI = "http://wikiword.wikimedia.de/wikiword/api.php";
 $wwAPI = false;
 $wwAllowTranslate = false;
 $wwImageSearch = null; //NOTE: trinary: true forces image searche, false disables it. null makes it optional.
