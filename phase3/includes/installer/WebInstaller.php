@@ -1270,12 +1270,18 @@ class WebInstaller_Name extends WebInstallerPage {
 		// Validate password
 		$msg = false;
 		$pwd = $this->getVar( '_AdminPassword' );
+		$user = User::newFromName( $cname );
+		$valid = $user->getPasswordValidity( $pwd );
 		if ( strval( $pwd ) === '' ) {
+			# $user->getPasswordValidity just checks for $wgMinimalPasswordLength.
+			# This message is more specific and helpful.
 			$msg = 'config-admin-password-blank';
-		} elseif ( $pwd === $cname ) {
-			$msg = 'config-admin-password-same';
 		} elseif ( $pwd !== $this->getVar( '_AdminPassword2' ) ) {
 			$msg = 'config-admin-password-mismatch';
+		} elseif ( $valid !== true ) {
+			# As of writing this will only catch the username being e.g. 'FOO' and
+			# the password 'foo'
+			$msg = $valid;
 		}
 		if ( $msg !== false ) {
 			$this->parent->showError( $msg );
