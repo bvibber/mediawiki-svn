@@ -155,6 +155,13 @@ $messages['id'] = array(
 	'wlfeed-desc' => 'Kelas penghasil umpan canggih',
 );
 
+/** Italian (Italiano)
+ * @author Civvì
+ */
+$messages['it'] = array(
+	'wlfeed-desc' => 'Classi ampliate per la generazione di feed',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */

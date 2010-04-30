@@ -89,6 +89,13 @@ $messages['ia'] = array(
 	'js2support-desc' => 'Supporto de JS2 in forma de un extension',
 );
 
+/** Japanese (日本語)
+ * @author Fryed-peach
+ */
+$messages['ja'] = array(
+	'js2support-desc' => '拡張機能としてのJS2サポート',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

@@ -318,6 +318,7 @@ $messages['eo'] = array(
 $messages['es'] = array(
 	'chemicalsources' => 'Fuentes químicas',
 	'chemicalsource-desc' => 'Agrega la etiqueta <nowiki><chemform></nowiki>, para fórmulas químicas',
+	'chemicalsources-desc' => '[[Special:ChemicalSources|Página especial]] para fuentes químicas',
 	'chemFunctions_ListPage' => 'Fuentes químicas',
 	'chemFunctions_DataList' => 'Debajo hay una lista de vínculos a sitios que pueden proveer información acerca de la sustancia química que estás buscando.<br /><br />
 * <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Componer $MIXCASNameFormula en NIST</a><br />
@@ -605,11 +606,13 @@ $messages['it'] = array(
 
 /** Japanese (日本語)
  * @author Aotake
+ * @author Fryed-peach
  * @author JtFuruhata
  */
 $messages['ja'] = array(
 	'chemicalsources' => '化学関連の検索',
 	'chemicalsource-desc' => '化学式のためのタグ <nowiki><chemform></nowiki> を追加する',
+	'chemicalsources-desc' => '化学分野の情報源用の[[Special:ChemicalSources|特別ページ]]',
 	'chemFunctions_ListPage' => '化学関連の検索',
 	'chemFunctions_DataList' => '以下の一覧は、あなたが検索した化学物質に関する情報を提供している可能性の高いサイトです。
 * <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">$MIXCASNameFormula 化合物 (アメリカ国立標準技術研究所)</a><br />
@@ -810,6 +813,7 @@ $messages['nds'] = array(
 $messages['nl'] = array(
 	'chemicalsources' => 'Scheikundige bronnen',
 	'chemicalsource-desc' => 'Voegt de tag <nowiki><chemform></nowiki> toe voor scheikundige formules',
+	'chemicalsources-desc' => '[[Special:ChemicalSources|Speciale pagina]] voor chemische bronnen',
 	'chemFunctions_ListPage' => 'Scheikundige bronnen',
 	'chemFunctions_DataList' => 'Hieronder staat een lijst van pagina\'s die meer informatie over de scheikundige verbinding kunnen verschaffen.
 * <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Verbinding $MIXCASNameFormula op de pagina van het NIST</a><br />
@@ -952,6 +956,7 @@ $messages['ps'] = array(
 $messages['pt'] = array(
 	'chemicalsources' => 'Fontes de química',
 	'chemicalsource-desc' => 'Adiciona a marca <nowiki><chemform></nowiki> para fórmulas químicas',
+	'chemicalsources-desc' => '[[Special:ChemicalSources|Página especial]] para fontes químicas',
 	'chemFunctions_ListPage' => 'Fontes de química',
 	'chemFunctions_DataList' => 'Abaixo está uma lista de links para sites que oferecem informação sobre a substância química que procura.<br /><br />
 * <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Composto $MIXCASNameFormula no NIST</a><br />

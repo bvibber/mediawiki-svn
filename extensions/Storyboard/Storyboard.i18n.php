@@ -86,11 +86,13 @@ You can [$1 read published stories].',
 
 /** Message documentation (Message documentation)
  * @author EugeneZelenko
+ * @author Hamilton Abreu
  */
 $messages['qqq'] = array(
 	'storyboard-hidden' => '{{Identical|Hidden}}',
 	'storyboard-publish' => '{{Identical|Publish}}',
 	'storyboard-hide' => '{{Identical|Hide}}',
+	'storyboard-alreadyexists' => '$1 is a story title',
 );
 
 /** Afrikaans (Afrikaans)
@@ -141,6 +143,7 @@ $messages['be-tarask'] = array(
 	'storyboard-submissionincomplete' => 'Памылка адпраўкі',
 	'storyboard-alreadyexists' => '«$1» ужо занятая.',
 	'storyboard-changetitle' => 'Зьмяніць назву.',
+	'storyboard-notsubmitted' => 'Памылка аўтэнтыфікацыі, ніякія гісторыі не былі захаваныя.',
 	'storyreview' => 'Рэцэнзаваньне гісторыі',
 	'storyboard-hideimage' => 'Схаваць выяву',
 	'storyboard-unhideimage' => 'Паказаць выяву',
@@ -332,12 +335,13 @@ Móžośo [$1 wózjawjone tšojenja cytaś].',
 
 /** Spanish (Español)
  * @author Crazymadlover
+ * @author Locos epraix
  * @author Tempestas
  */
 $messages['es'] = array(
 	'storyboard-name' => 'Panel histórico',
 	'storyboard-desc' => 'Proporciona una [[Special:Story|Página de destino para los donantes]], una página donde las historias pueden ser [[Special:StorySubmission|presentadas]] y un [[Special:StoryReview|historia de la moderación de la interfaz]]',
-	'right-storyreview' => 'Revisar, editar, publicar y ocultar historias.',
+	'right-storyreview' => 'Revisar, editar, publicar y ocultar historias',
 	'storyboard-unpublished' => 'Inédito',
 	'storyboard-published' => 'Publicado',
 	'storyboard-hidden' => 'Oculto',
@@ -363,8 +367,13 @@ Puede haber sido eliminada.',
 	'storyboard-authoremail' => 'Dirección de correo electrónico de autor',
 	'storyboard-thestory' => 'La historia',
 	'storyboard-storystate' => 'Estado:',
+	'storyboard-storymetadata' => 'Enviado por $1 de $2 en $3, $4.',
 	'storyboard-submissioncomplete' => 'Presentación completada.',
-	'storyreview' => 'Revisión de historia.',
+	'storyboard-submissionincomplete' => 'Envío fracasó',
+	'storyboard-alreadyexists' => '"$1" ya está tomada.',
+	'storyboard-changetitle' => 'Cambiar el título.',
+	'storyboard-notsubmitted' => 'Error de autenticación, ninguna historia ha sido grabada.',
+	'storyreview' => 'Revisión de historia',
 	'storyboard-hideimage' => 'Ocultar imagen',
 	'storyboard-unhideimage' => 'Mostrar imagen',
 	'storyboard-deleteimage' => 'Borrar imagen',
@@ -376,10 +385,10 @@ Puede haber sido eliminada.',
 ¿Por qué no compartirla?',
 	'storyboard-email' => 'Tu dirección de correo electrónico',
 	'storyboard-storytitle' => 'Un título corto y descriptivo',
-	'storyboard-agreement' => 'Estoy de acuerdo con la publicación y el uso de esta historia bajo los términos de [http://creativecommons.org/licenses/by-sa/3.0/ Creative Commons Attribution/Share-Alike License].',
-	'storyboard-charsleft' => '($1 {{PLURAL:$1 | caracter | caracteres}} izquierda)',
-	'storyboard-cannotbelonger' => 'Su historia es <b>$1</b> {{PLURAL: $1 | caracter |caracteres}} ¡demasiado largo!',
-	'storyboard-charsneeded' => '($ 1 más {{PLURAL: $1 | caracter | caracteres}} Necesario)',
+	'storyboard-agreement' => 'Estoy de acuerdo con la publicación y el uso de esta historia bajo los términos de la licencia [http://creativecommons.org/licenses/by-sa/3.0/deed.es Creative Commons Atribución/Compartir-Igual].',
+	'storyboard-charsleft' => '({{PLURAL:$1|queda un carácter|quedan $1 caracteres}})',
+	'storyboard-cannotbelonger' => 'Su historia es <b>$1</b> {{PLURAL:$1|carácter|caracteres}} ¡demasiado largo!',
+	'storyboard-charsneeded' => '({{PLURAL:$1|se necesita un carácter más|se necesitan $1 caracteres más}})',
 	'storyboard-needtoagree' => 'Necesita llegar a un acuerdo para la publicación de la presentación de su historia.',
 	'storyboard-createdsucessfully' => '¡Gracias por compartir su historia con nosotros!
 La revisaremos en breve.
@@ -433,6 +442,7 @@ $messages['fr'] = array(
 	'storyboard-submissionincomplete' => 'La soumission a échoué',
 	'storyboard-alreadyexists' => '« $1 » est déjà pris.',
 	'storyboard-changetitle' => 'Modifier le titre.',
+	'storyboard-notsubmitted' => 'L’identification a échoué. Aucune histoire n’a été enregistrée.',
 	'storyreview' => 'Critique de l’histoire',
 	'storyboard-hideimage' => 'Masquer l’image',
 	'storyboard-unhideimage' => 'Afficher l’image',
@@ -925,6 +935,7 @@ Pode ter sido ocultada.',
 	'storyboard-submissionincomplete' => 'Envio falhou',
 	'storyboard-alreadyexists' => '"$1" já foi usado.',
 	'storyboard-changetitle' => 'Alterar o título.',
+	'storyboard-notsubmitted' => 'A autenticação falhou; não foi gravada nenhuma história.',
 	'storyreview' => 'Revisão da história',
 	'storyboard-hideimage' => 'Ocultar imagem',
 	'storyboard-unhideimage' => 'Mostrar imagem',

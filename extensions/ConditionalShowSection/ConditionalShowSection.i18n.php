@@ -197,6 +197,13 @@ $messages['mk'] = array(
 	'conditionalshowsection-desc' => 'Додавање наознаката cshow за условен приказ/сокривање на дел од вики-текст',
 );
 
+/** Nedersaksisch (Nedersaksisch)
+ * @author Servien
+ */
+$messages['nds-nl'] = array(
+	'conditionalshowsection-desc' => 'Voeg de code <code><nowiki>cshow</nowiki></code> toe um veurweerdelijk een parregraaf wikitekse te laoten zien of te verbargen',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

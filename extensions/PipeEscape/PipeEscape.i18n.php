@@ -176,6 +176,13 @@ $messages['ja'] = array(
 	'pipeescape-desc' => 'パイプ記号をパイプ記号のまま扱いたい場合のために、パーサー関数 <code>#!</code> を追加する',
 );
 
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'pipeescape-desc' => '파이프 문자가 파이프 문자로서의 역할만 하도록 할 때 사용하는 <code>#!</code> 파서 기능',
+);
+
 /** Colognian (Ripoarisch)
  * @author Purodha
  */

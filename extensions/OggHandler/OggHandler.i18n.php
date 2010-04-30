@@ -865,6 +865,8 @@ Por favor <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_dow
 	'ogg-dismiss' => 'Cerrar',
 	'ogg-download' => 'Bajar archivo',
 	'ogg-desc-link' => 'Sobre este archivo',
+	'ogg-oggThumb-version' => 'OggHandler requiere una versión oggThumb $1 o posterior.',
+	'ogg-oggThumb-failed' => 'oggThumb no pudo crear la imagen miniatura.',
 );
 
 /** Estonian (Eesti)

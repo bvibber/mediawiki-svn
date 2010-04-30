@@ -45,6 +45,27 @@ $messages['de'] = array(
 	'checkpoint-notice' => '([[{{ns:project}}:Checkpoint|Zwischenspeicherung]])',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'checkpoint' => 'Wobźěłanje składowaś a z nim pókšacowaś',
+	'checkpoint-desc' => 'Zmóžnja změnu składowaś a z wobźěłowanim pókšacowaś',
+	'checkpoint-tooltip' => 'Składuj swój póstup a pókšacuj z wobźěłowanim boka',
+	'checkpoint-notice' => '([[{{ns:project}}:Checkpoint|składowanje kontrolnego dypka]])',
+);
+
+/** Spanish (Español)
+ * @author Crazymadlover
+ * @author Locos epraix
+ */
+$messages['es'] = array(
+	'checkpoint' => 'Guardar y continuar editando',
+	'checkpoint-desc' => 'Permite a uno para grabar una edición y seguir editando',
+	'checkpoint-tooltip' => 'Grabar tu progreso y seguir editando la página',
+	'checkpoint-notice' => '([[{{ns:project}}:Checkpoint|grabar checkpoint]])',
+);
+
 /** French (Français)
  * @author Peter17
  */
@@ -63,6 +84,16 @@ $messages['gl'] = array(
 	'checkpoint-desc' => 'Permite gardar unha edición e continuar modificando',
 	'checkpoint-tooltip' => 'Gardar o seu progreso e continuar a editar a páxina',
 	'checkpoint-notice' => '([[{{ns:project}}:Checkpoint|crear un punto de control]])',
+);
+
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'checkpoint' => 'Składować a z wobdźěłowanjom pokročować',
+	'checkpoint-desc' => 'Zmóžnja změnu składować a z wobdźěłowanjom pokročować',
+	'checkpoint-tooltip' => 'Składuj swój postup a pokročuj z wobdźěłowanjom strony',
+	'checkpoint-notice' => '([[{{ns:project}}:Checkpoint|składowanje kontrolneho dypka]])',
 );
 
 /** Hungarian (Magyar)
@@ -103,6 +134,16 @@ $messages['mk'] = array(
 	'checkpoint-notice' => '([[{{ns:project}}:Checkpoint|зачувај досегашно]])',
 );
 
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'checkpoint' => 'Opslaan en doorgaan met bewerken',
+	'checkpoint-desc' => 'Maakt het mogelijk om een bewerking op te slaan en door te gaan met bewerken',
+	'checkpoint-tooltip' => 'Uw voortgang opslaan en doorgaan met het bewerken van de pagina',
+	'checkpoint-notice' => '([[{{ns:project}}:Tussenstappen|tussenstap opslaan]])',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
@@ -121,6 +162,16 @@ $messages['pms'] = array(
 	'checkpoint-desc' => 'A përmëtt a un ëd salvé na modìfica e continué a modifiché',
 	'checkpoint-tooltip' => 'Salva ij to progress e continua a modifiché la pàgina',
 	'checkpoint-notice' => '([[{{ns:project}}:Checkpoint|salva checkpoint]])',
+);
+
+/** Portuguese (Português)
+ * @author Hamilton Abreu
+ */
+$messages['pt'] = array(
+	'checkpoint' => 'Gravar e continuar a editar',
+	'checkpoint-desc' => 'Permite gravar uma edição e continuar a editar',
+	'checkpoint-tooltip' => 'Grave o seu progresso e continue a editar a página',
+	'checkpoint-notice' => '([[{{ns:project}}:Checkpoint|gravação do estado presente]])',
 );
 
 /** Russian (Русский)

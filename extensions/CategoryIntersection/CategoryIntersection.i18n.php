@@ -750,12 +750,14 @@ $messages['tr'] = array(
 
 /** Ukrainian (Українська)
  * @author Ahonc
+ * @author Тест
  */
 $messages['uk'] = array(
 	'categoryintersection' => 'Перетин категорій',
 	'categoryintersection-desc' => 'Підтримує таблицю з хеш-значеннями для [[Special:CategoryIntersection|перетину категорій]] на сторінці',
 	'categoryintersection-doit' => 'Вивести сторінки в усіх цих категоріях',
 	'categoryintersection-maxcategories' => 'Максимально допустима кількість категорій, що перетинаються, — $1.',
+	'categoryintersection-mincategories' => 'Вам необхідно вказати не менше двох категорій.',
 	'categoryintersection-results' => 'Пошук дав {{PLURAL:$1|$1 результат|$1 результати|$1 результатів}}.',
 );
 

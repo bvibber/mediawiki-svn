@@ -147,6 +147,13 @@ $messages['mk'] = array(
 	'apisvgproxy-desc' => 'Посредува со SVG податотеки од (можеби далечинско) складиште на податотеки до локален домен',
 );
 
+/** Nedersaksisch (Nedersaksisch)
+ * @author Servien
+ */
+$messages['nds-nl'] = array(
+	'apisvgproxy-desc' => "Geef SVG-bestanen deur vanof een bestaansmap of meugelijke bestaansmap op ofstaand naor 't lokale domein",
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

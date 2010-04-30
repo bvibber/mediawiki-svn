@@ -26,7 +26,7 @@ $messages['be-tarask'] = array(
  * @author Kghbln
  */
 $messages['de'] = array(
-	'addmediawizard-desc' => 'Assistent zum Einfügen von Mediendateien in Seiten. Entwickelt in Zusammenarbeit von Kaltura und der Wikimedia Foundation.',
+	'addmediawizard-desc' => '„Medienassistent“ zum Einfügen von Mediendateien in Seiten. Entwickelt in Zusammenarbeit von Kaltura und der Wikimedia Foundation',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -69,6 +69,13 @@ $messages['hsb'] = array(
  */
 $messages['ia'] = array(
 	'addmediawizard-desc' => 'Assistente de addition de multimedia, disveloppate in collaboration per Kaltura e le Fundation Wikimedia',
+);
+
+/** Japanese (日本語)
+ * @author Fryed-peach
+ */
+$messages['ja'] = array(
+	'addmediawizard-desc' => 'ウィキメディア財団と Kaltura のパートナーシップにより開発された、メディア追加ウィザード',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

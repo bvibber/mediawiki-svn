@@ -25,6 +25,13 @@ $messages['be-tarask'] = array(
 	'rped-wikipedia-url' => 'http://be.wikipedia.org/',
 );
 
+/** Breton (Brezhoneg)
+ * @author Y-M D
+ */
+$messages['br'] = array(
+	'rped-wikipedia-url' => 'http://br.wikipedia.org/',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
