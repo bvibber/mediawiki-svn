@@ -206,8 +206,12 @@ Use only letters, numbers and underscores.',
 	'config-sqlite-name-help'         => 'Choose a name that identifies your wiki.
 Do not use spaces or hyphens.
 This will be used for the SQLite data file name.',
-	'config-sqlite-parent-unwritable' => 'Cannot create the data directory "$1", because the parent directory "$2" is not writable by the webserver.
-Create this directory yourself, make it writable, and try again.',
+	'config-sqlite-parent-unwritable' => 'Cannot create the data directory "$1" automatically, because the parent directory "$2" is not writable by the webserver.
+
+To make the directory on a Unix/Linux system:
+<pre>cd $2
+mkdir $3
+chmod a+w $3</pre>',
 	'config-sqlite-mkdir-error'       => 'Error creating the data directory "$1".
 Check the location and try again.',
 	'config-sqlite-dir-unwritable'    => 'Unable to write to the directory "$1".
@@ -573,8 +577,6 @@ U gebruikt $2.',
 	'config-sqlite-name-help' => 'Kies een naam die uw wiki identificeert.
 Gebruik geen spaties of koppeltekens.
 Deze naam wordt gebruikt voor het gegevensbestands van SQLite.',
-	'config-sqlite-parent-unwritable' => 'Het was niet mogelijk de gegevensmap "$1" aan te maken omdat in de bovenliggende map "$2" niet geschreven kan worden door de webserver.
-Maak deze map aan, zorg dat de webserver erin kan schrijven en probeer het opnieuw.',
 	'config-sqlite-mkdir-error' => 'Er is een fout opgetreden bij het aanmaken van de gegevensmap "$1".
 Controleer de locatie en probeer het opnieuw.',
 	'config-sqlite-dir-unwritable' => 'Het was niet mogelijk in de map "$1" te schrijven.

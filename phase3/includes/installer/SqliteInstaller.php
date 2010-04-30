@@ -46,7 +46,7 @@ class SqliteInstaller extends InstallerDBType {
 		$this->setVar( 'wgSQLiteDataDir', $dir );
 		if ( !is_dir( $dir ) ) {
 			if ( !is_writable( dirname( $dir ) ) ) {
-				return Status::newFatal( 'config-sqlite-parent-unwritable', $dir, dirname( $dir ) );
+				return Status::newFatal( 'config-sqlite-parent-unwritable', $dir, dirname( $dir ), basename( $dir ) );
 			}
 			wfSuppressWarnings();
 			$ok = wfMkdirParents( $dir, 0700 );
