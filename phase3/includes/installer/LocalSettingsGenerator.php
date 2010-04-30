@@ -1,6 +1,6 @@
 <?php
 
-class LocalSettings {
+class LocalSettingsGenerator {
 	private $extensions, $values = array();
 	private $configPath, $dbSettings = '';
 	private $safeMode = false;
@@ -36,7 +36,7 @@ class LocalSettings {
 		$this->dbSettings = $db->getLocalSettings();
 		$this->safeMode = $installer->getVar( '_SafeMode' );
 		$this->values['wgEmergencyContact'] = $this->values['wgPasswordSender'];
-		$this->values = wfArrayMap( array( 'LocalSettings', 'escapePhpString' ), $this->values );
+		$this->values = wfArrayMap( array( 'LocalSettingsGenerator', 'escapePhpString' ), $this->values );
 	}
 
 	public static function escapePhpString( $string ) {
