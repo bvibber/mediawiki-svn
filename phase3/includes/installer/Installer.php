@@ -608,9 +608,10 @@ abstract class Installer {
 
 	/** Environment check for writable config/ directory */
 	function envCheckWriteableDir() {
-		$configDir = $this->getVar( 'IP' ) . '/config';
+		$ipDir = $this->getVar( 'IP' );
+		$configDir = $ipDir . '/config';
 		if( !is_writeable( $configDir ) ) {
-			$this->showMessage( 'config-dir-not-writable', $configDir );
+			$this->showMessage( 'config-dir-not-writable', $ipDir );
 			return false;
 		}
 	}
