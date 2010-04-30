@@ -275,7 +275,7 @@ This is the name you will use to log in to the wiki.',
 	'config-admin-name-blank'         => 'Enter an administrator username.',
 	'config-admin-name-invalid'       => 'The specified username "<nowiki>$1</nowiki>" is invalid.
 Specify a different username.',
-	'config-admin-password-blank'     => 'Enter a password for administrator account.',
+	'config-admin-password-blank'     => 'Enter a password for the administrator account.',
 	'config-admin-password-same'      => 'The password must not be the same as the username.',
 	'config-admin-password-mismatch'  => 'The two passwords you entered do not match.',
 	'config-admin-email'              => 'E-mail address:',
