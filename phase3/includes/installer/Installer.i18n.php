@@ -427,7 +427,13 @@ You have successfully installed MediaWiki.
 
 We've generated a <code>LocalSettings.php</code> file for you. It contains all your configuration.
 
-You will need to move it from <code>./config/LocalSettings.php</code> to <code>./LocalSettings.php</code> in order for MediaWiki to work.
+You will need to move it from <code>./config/LocalSettings.php</code> to <code>./LocalSettings.php</code> in order for MediaWiki to work:
+
+On a Unix/Linux system:
+
+<pre>
+mv ./config/LocalSettings.php ./LocalSettings.php
+</pre>
 
 When that's done, you can [$1 '''enter your wiki''']",
 	'config-install-done-moved'       => "'''Congratulations!'''
