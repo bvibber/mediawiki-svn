@@ -185,7 +185,7 @@ class SpecialStory extends IncludableSpecialPage {
 	 * @param $story
 	 */
 	private function showStoryForm( $story ) {
-		global $wgOut, $wgLang, $wgRequest, $wgUser, $wgJsMimeType, $wgScriptPath;
+		global $wgOut, $wgLang, $wgRequest, $wgUser, $wgJsMimeType, $wgScriptPath, $wgContLanguageCode;
 		global $egStoryboardScriptPath, $egStorysubmissionWidth, $egStoryboardMaxStoryLen, $egStoryboardMinStoryLen;
 		
 		$wgOut->setPageTitle( $story->story_title );
@@ -225,9 +225,12 @@ class SpecialStory extends IncludableSpecialPage {
 		'</td></tr>';
 		
 		$languages = Language::getLanguageNames( false );
-		ksort( $languages );
-
+		
+		$currentLang = array_key_exists( $story->story_lang_code, $languages ) ? $story->story_lang_code : $wgContLanguageCode;
+		
 		$options = array();
+		ksort( $languages );
+		
 		foreach ( $languages as $code => $name ) {
 			$display = wfBCP47( $code ) . ' - ' . $name;
 			$options[$display] = $code;
@@ -241,7 +244,7 @@ class SpecialStory extends IncludableSpecialPage {
 		$formBody .= '<tr>' .
 			Html::element( 'td', array( 'width' => '100%' ), wfMsg( 'storyboard-language' ) ) .
 			'<td>' .
-			$languageSelector->getInputHTML( $story->story_lang_code ) .
+			$languageSelector->getInputHTML( $currentLang ) .
 			'</td></tr>';
 		
 		$formBody .= '<tr>' .
