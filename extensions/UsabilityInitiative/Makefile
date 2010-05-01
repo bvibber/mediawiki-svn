@@ -33,7 +33,7 @@ PLUGINS := \
 	js/plugins/jquery.wikiEditor.highlight.js\
 	js/plugins/jquery.wikiEditor.preview.js\
 	js/plugins/jquery.wikiEditor.publish.js\
-	js/plugins/jquery.wikiEditor.templateEditor.js\	
+	js/plugins/jquery.wikiEditor.templateEditor.js\
 	js/plugins/jquery.wikiEditor.toc.js\
 	js/plugins/jquery.wikiEditor.toolbar.js
 
@@ -43,7 +43,7 @@ WIKIEDITOR_MODULES := \
 	WikiEditor/Modules/Publish/Publish.js\
 	WikiEditor/Modules/Toc/Toc.js\
 	WikiEditor/Modules/Toolbar/Toolbar.js\
-	WikiEditor/Modules/TemplateEditor/TemplateEditor.js
+	WikiEditor/Modules/TemplateEditor/TemplateEditor.js\
 	WikiEditor/Modules/AddMediaWizard/AddMediaWizard.js
 
 VECTOR_MODULES := \
