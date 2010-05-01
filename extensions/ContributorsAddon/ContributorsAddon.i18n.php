@@ -275,6 +275,13 @@ $messages['mr'] = array(
 	'contributorsaddon-desc' => '"मुख्य योगदानकर्ता" दुव्यांवर माउस नेल्यानंतर येणार्‍या खिडकीसाठीची जावास्क्रीप्ट वाढविते',
 );
 
+/** Nedersaksisch (Nedersaksisch)
+ * @author Servien
+ */
+$messages['nds-nl'] = array(
+	'contributorsaddon-desc' => 'Maak JavaScript-floepviensters bie de verwiezingen van de "belangriekste schrievers"',
+);
+
 /** Dutch (Nederlands)
  * @author SPQRobin
  * @author Siebrand

@@ -373,6 +373,13 @@ $messages['nds'] = array(
 	'didyoumean-desc' => 'Föögt Lenken to Sieden mit ähnliche Titels to',
 );
 
+/** Nedersaksisch (Nedersaksisch)
+ * @author Servien
+ */
+$messages['nds-nl'] = array(
+	'didyoumean-desc' => 'Verwiezingen bie pagina\'s zetten mit "soortgelieke" namen',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

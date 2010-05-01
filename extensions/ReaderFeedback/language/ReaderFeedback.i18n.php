@@ -1313,6 +1313,7 @@ $messages['ja'] = array(
 
 /** Georgian (ქართული)
  * @author BRUTE
+ * @author გიორგიმელა
  */
 $messages['ka'] = array(
 	'readerfeedback' => 'რას ფიქრობთ ამ გვერდის შესახებ?',
@@ -1323,6 +1324,8 @@ $messages['ka'] = array(
 	'readerfeedback-level-4' => 'ჩინებულია',
 	'readerfeedback-submit' => 'გაგზავნა',
 	'readerfeedback-finished' => 'გმადლობთ!',
+	'readerfeedback-tier-high' => 'მაღალი',
+	'readerfeedback-tier-medium' => 'საშუალო',
 );
 
 /** Khmer (ភាសាខ្មែរ)

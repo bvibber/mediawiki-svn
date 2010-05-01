@@ -4905,6 +4905,7 @@ $4',
 /** Georgian (ქართული)
  * @author BRUTE
  * @author Malafaya
+ * @author გიორგიმელა
  */
 $messages['ka'] = array(
 	'code' => 'კოდის შემოწმება',
@@ -4928,24 +4929,62 @@ $messages['ka'] = array(
 	'code-rev-modified-a' => 'დაემატა',
 	'code-rev-modified-d' => 'წაშლილი',
 	'code-rev-status' => 'სტატუსი:',
+	'code-rev-tag-remove' => 'წაშალეთ მინიშნებები:',
 	'code-rev-comment-by' => '$1-ს კომენტარი',
 	'code-rev-comment-preview' => 'წინასწარ',
 	'code-rev-inline-preview' => 'წინასწარ:',
 	'code-rev-diff' => 'განსხ',
 	'code-rev-diff-link' => 'განსხ.',
+	'code-rev-diff-too-large' => 'ცვლილება ვერსიებს შორის ზედმეტად დიდია საჩვენებლად',
 	'code-rev-purge-link' => 'ქეშის გაწმენდა',
+	'code-rev-total' => 'რეზულტატების რაოდენობა:$1',
 	'code-status-new' => 'ახალი',
 	'code-status-fixme' => 'შემოწმება',
+	'code-status-reverted' => 'გაუქმებულია',
 	'code-status-resolved' => 'მოგვარებულია',
 	'code-status-ok' => 'ok',
+	'code-status-verified' => 'შემოწმებულია',
+	'code-status-deferred' => 'გადატანილია',
+	'code-pathsearch-legend' => 'კონკრეტული რედაქციების ძიება ამ საცავში მისამართის მიხედვით',
+	'code-pathsearch-path' => 'გზა:',
+	'code-pathsearch-filter' => 'გამოყენებული ფილტრები:',
 	'code-revfilter-cr_status' => 'სტატუსი = $1',
 	'code-revfilter-cr_author' => 'ავტორი = $1',
+	'code-revfilter-clear' => 'ფილტრის მოხსნა:',
 	'code-rev-submit' => 'ცვლილებების შენახვა',
+	'code-rev-submit-next' => 'შეინახეთ და გადასვლა შემდეგ გადაუწყვეტელზე',
 	'code-batch-status' => 'სტატუსის შეცვლა:',
+	'code-batch-tags' => 'შეცვალეთ მინიშნებები:',
+	'codereview-batch-title' => 'შეცვალეთ ყველა არჩეული რევიზია',
+	'codereview-batch-submit' => 'გაგზავნა',
+	'code-releasenotes' => 'ინფორმაცია გამოშვების შესახებ',
+	'code-release-legend' => 'გამოცემაზე ინფორმაციის შექმნა',
+	'code-release-startrev' => 'საწყისი რევიზია:',
+	'code-release-endrev' => 'ბოლო რევიზია:',
+	'code-release-badrange' => 'ზედმეტად დიდი დიაპაზონი!',
 	'codereview-subtitle' => '$1-სთვის',
 	'codereview-reply-link' => 'პასუხი',
+	'codereview-tests-succeeded2' => '$1 {{PLURAL:$2|წარმატებული შემოწმება|წარმატებული შემოწმების}}',
+	'codereview-tests-running' => 'კონკრეტული მაგალითების შესრულება...',
+	'codereview-tests-aborted' => 'შემოწმების შესრულება დასრულდა.',
+	'codereview-email-body3' => 'ავტომატურმა შემოწმებამ აღმოაჩინა რეგრესია $1 ცვლილებასთან.
+
+სრული URL: $2
+
+ცვლილებების აღწერა:
+
+$3',
 	'repoadmin-new-button' => 'შექმნა',
 	'repoadmin-edit-button' => 'კარგი',
+	'repoadmin-edit-sucess' => 'საცავი «[[Special:Code/$1|$1]]» წარმატებით შეიცვალა',
+	'right-repoadmin' => 'კოდების საცავის მართვა',
+	'right-codereview-use' => 'Special:Code-ის გამოყენება',
+	'right-codereview-add-tag' => 'რედაქიებისთვის მინიშნებების ჩამატება',
+	'right-codereview-remove-tag' => 'რედაქციების მინიშნებების მართვა',
+	'right-codereview-post-comment' => 'რედაქციისთვის კომენტარის ჩამატება',
+	'right-codereview-set-status' => 'რედაქციის სტატუსის ცვლილება',
+	'right-codereview-link-user' => 'ვიკიპროექტელებისა და რედაქციების კავშირი',
+	'specialpages-group-developer' => 'შემქმნელის ხელსაწყოები',
 );
 
 /** Khmer (ភាសាខ្មែរ)

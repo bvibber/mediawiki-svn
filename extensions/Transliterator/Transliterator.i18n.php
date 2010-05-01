@@ -277,6 +277,7 @@ $messages['ia'] = array(
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author Kenrick95
  */
 $messages['id'] = array(
 	'transliterator-desc' => 'Menyediakan fungsi parser yang dapat dikonfigurasi untuk transliterasi',
@@ -284,6 +285,7 @@ $messages['id'] = array(
 	'transliterator-error-syntax' => 'Sintaks tidak sah <code>$1</code> pada [[MediaWiki:$2]]',
 	'transliterator-error-rulecount' => 'Lebih dari $1 {{PLURAL:$1||}}aturan pada [[MediaWiki:$2]]',
 	'transliterator-error-rulesize' => 'Aturan <code>$1</code> memiliki lebih dari $3 {{PLURAL:$3||}}karakter di sebelah kiri di [[MediaWiki:$2]]',
+	'transliterator-error-prefix' => '[[MediaWiki:$2]] harus berisi paling sedikit $1 {{PLURAL:$1|karakter|karakter}}.',
 );
 
 /** Italian (Italiano)

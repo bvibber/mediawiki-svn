@@ -318,13 +318,14 @@ $messages['it'] = array(
 
 /** Japanese (日本語)
  * @author Aotake
+ * @author Fryed-peach
  * @author 青子守歌
  */
 $messages['ja'] = array(
 	'pf-desc' => '便利なテンプレートなどの[[Special:PackageForce|パッケージをダウンロード]]',
 	'pf-only-admins-allowed' => "このページを利用するには 'packageforce-admin' 権限が必要です。",
 	'pf-admin-menu-default' => '規定',
-	'pf-admin-menu-unsortedtemplates' => 'テンプレートが並べ替えられていません',
+	'pf-admin-menu-unsortedtemplates' => 'テンプレートが整列されていません',
 	'pf-admin-link-view-documentation' => 'ページに連結している説明書を読む。',
 	'pf-admin-link-editlink-page' => 'ページを編集',
 	'pf-admin-link-approve' => 'ページを承認',

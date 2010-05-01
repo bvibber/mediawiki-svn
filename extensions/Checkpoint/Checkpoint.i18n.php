@@ -124,6 +124,16 @@ $messages['ja'] = array(
 	'checkpoint-notice' => '([[{{ns:project}}:Checkpoint|チェックポイントの保存]])',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'checkpoint' => 'Späicheren a weiderfueren mat Änneren',
+	'checkpoint-desc' => 'Erlaabt et eng Ännerung ze späicheren a mam Ännere weiderzefueren',
+	'checkpoint-tooltip' => 'Späichert dat wat Dir gemaach hutt a fuert weider mat Ären Ännerungen',
+	'checkpoint-notice' => '([[{{ns:project}}:Checkpoint|Kontrollpunkt späicheren]])',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

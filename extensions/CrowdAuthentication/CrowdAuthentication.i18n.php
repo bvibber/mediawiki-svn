@@ -236,6 +236,13 @@ $messages['mr'] = array(
 	'crowdauthentication-desc' => 'ऍट्लेशिअन क्राउड साठीचे प्रमाणिकरण प्लग-इन',
 );
 
+/** Nedersaksisch (Nedersaksisch)
+ * @author Servien
+ */
+$messages['nds-nl'] = array(
+	'crowdauthentication-desc' => 'Uutbreidingsmedule van de echheidscontrole veur Atlassian Crowd',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

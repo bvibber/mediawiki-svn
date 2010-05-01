@@ -121,9 +121,12 @@ $messages['id'] = array(
 );
 
 /** Japanese (日本語)
+ * @author Fryed-peach
  * @author 青子守歌
  */
 $messages['ja'] = array(
+	'rped' => '遠隔ページ存在検出',
+	'rped-desc' => 'ページがローカルのウィキに存在しないがウィキペディアに存在する場合に、そのウィキリンクをウィキペディアにリンクする',
 	'rped-wikipedia-url' => 'http://ja.wikipedia.org/wiki/',
 );
 

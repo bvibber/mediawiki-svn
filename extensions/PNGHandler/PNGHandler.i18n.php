@@ -218,6 +218,13 @@ $messages['km'] = array(
 	'pnghandler-desc' => 'ប្តូរទំហំ PNGs ដោយប្រើ pngds',
 );
 
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'pnghandler-desc' => 'pngds를 통해 PNG 파일 크기를 조정',
+);
+
 /** Colognian (Ripoarisch)
  * @author Purodha
  */

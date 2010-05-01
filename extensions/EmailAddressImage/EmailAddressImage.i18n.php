@@ -302,6 +302,13 @@ $messages['nds'] = array(
 	'emailaddressimage-desc' => 'Föögt dat <tt>&lt;email&gt;</tt>-Tag to, E-Mail-Adressen as Bild dortostellen',
 );
 
+/** Nedersaksisch (Nedersaksisch)
+ * @author Servien
+ */
+$messages['nds-nl'] = array(
+	'emailaddressimage-desc' => 'Voeg <tt>&lt;email&gt;</tt> toe um een netposadres as ofbeelding te laoten zien',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

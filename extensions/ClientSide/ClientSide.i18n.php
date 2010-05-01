@@ -202,6 +202,13 @@ $messages['ja'] = array(
 	'clientside-desc' => 'HTMLやCSS、JavaScriptのようなクライアント側フォーマットのコードを生成する機能を提供します',
 );
 
+/** Georgian (ქართული)
+ * @author გიორგიმელა
+ */
+$messages['ka'] = array(
+	'clientside-desc' => 'ქმნის საკლიენტო ფორმატებში (HTML, CSS და JavaScript) კოდის შექმნას',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author វ័ណថារិទ្ធ
  */
@@ -235,6 +242,13 @@ $messages['mk'] = array(
  */
 $messages['ml'] = array(
 	'clientside-desc' => 'എച്ച്.റ്റി.എം.എൽ., സി.എസ്.എസ്., ജാവാസ്ക്രിപ്റ്റ് തുടങ്ങിയ ക്ലയന്റ്-സൈഡ് വിദ്യകൾ സ്വയം സൃഷ്ടിക്കുന്ന സൗകര്യങ്ങൾ നൽകുന്നു',
+);
+
+/** Nedersaksisch (Nedersaksisch)
+ * @author Servien
+ */
+$messages['nds-nl'] = array(
+	'clientside-desc' => "Biejt functies veur 't anmaken van code in cliëntziedfermaoten zoas HTML, CSS en JavaScript",
 );
 
 /** Dutch (Nederlands)

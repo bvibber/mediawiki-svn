@@ -2535,6 +2535,7 @@ Pesan kesalahan: "$1"',
 	'openidemail' => 'Alamat surel',
 	'openidlanguage' => 'Bahasa',
 	'openidtimezone' => 'Zona waktu',
+	'openidchooselegend' => 'Nama pengguna pilihan',
 	'openidchooseinstructions' => 'Semua pengguna memerlukan sebuah nama panggilan;
 Anda dapat memilih dari salah satu opsi berikut.',
 	'openidchoosefull' => 'Nama lengkap Anda ($1)',

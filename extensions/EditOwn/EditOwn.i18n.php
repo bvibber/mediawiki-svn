@@ -305,6 +305,13 @@ $messages['nds'] = array(
 	'editown-desc' => 'Brukers ahn dat editall-Recht dröfft blot sülvst opstell Sieden ännern',
 );
 
+/** Nedersaksisch (Nedersaksisch)
+ * @author Servien
+ */
+$messages['nds-nl'] = array(
+	'editown-desc' => "Gebrukers zonder 't rech ''editall'' kunnen allinnig pagina's bewarken dee ze zelf emaak hemmen",
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

@@ -212,6 +212,13 @@ $messages['mk'] = array(
 	'editsectionhilitelink-desc' => 'Посинете го соодветниот дел од страницата кога ќе го донесете глушецот до врската за уредување',
 );
 
+/** Nedersaksisch (Nedersaksisch)
+ * @author Servien
+ */
+$messages['nds-nl'] = array(
+	'editsectionhilitelink-desc' => "Markeer de parregraaf dee van toepassing is bie 't sillecteren van de verwiezing ''bewarken''",
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
