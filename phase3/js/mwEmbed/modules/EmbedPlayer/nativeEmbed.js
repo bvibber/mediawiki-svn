@@ -12,7 +12,7 @@ var nativeEmbed = {
 	grab_try_count:0,
 	
 	// Flag to only load the video ( not play it ) 
-	onlyLoadFlag:false,
+	onlyLoadFlag:false,	
 	
 	//Callback fired once video is "loaded" 
 	onLoadedCallback: null,
@@ -94,8 +94,8 @@ var nativeEmbed = {
 			vid.addEventListener( 'loadedmetadata', function() { _this.onloadedmetadata() }, true);
 			vid.addEventListener( 'progress', function( e ) {  _this.onprogress( e )  }, true);
 			vid.addEventListener( 'ended', function() {  _this.onended() }, true);		
-			vid.addEventListener( 'seeking', function() { _this.onseeking() }, true);
-			vid.addEventListener( 'seeked', function() { _this.onseeked() }, true);			
+			vid.addEventListener( 'seeking', function() { _this.onSeeking() }, true);
+			vid.addEventListener( 'seeked', function() { _this.onSeeked() }, true);			
 		
 			// Check for load flag
 			if ( this.onlyLoadFlag ) {
@@ -153,6 +153,8 @@ var nativeEmbed = {
 			// try to do a play then seek: 
 			this.doPlayThenSeek( percentage )
 		}
+		// Run the onSeeking interface update
+		this.onSeek(); 		
 	},
 	
 	/**
@@ -306,6 +308,7 @@ var nativeEmbed = {
 	*/
 	fullscreen: function(){
 		this.ctrlBuilder.toggleFullscreen();
+		this.parent_fullscreen();
 	},
 	
 	/**
@@ -377,10 +380,11 @@ var nativeEmbed = {
 	* Local method for seeking event
 	*  fired when "seeking" 
 	*/
-	onseeking: function() {
+	onSeeking: function() {
 		//mw.log( "onseeking" );
 		this.seeking = true;
 		this.setStatus( gM( 'mwe-seeking' ) );
+		// Trigger the html5 seeking event
 		$j( this ).trigger( 'seeking' ); 
 	},
 	
@@ -388,7 +392,7 @@ var nativeEmbed = {
 	* Local method for seeked event
 	*  fired when done seeking 
 	*/
-	onseeked: function() {
+	onSeeked: function() {
 		//mw.log("onseeked");
 		this.seeking = false;
 		// trigger the html5 action on the parent 
@@ -421,10 +425,12 @@ var nativeEmbed = {
 	*
 	*  Used to update the bufferedPercent
 	*/
-	onprogress: function( e ) {
-		this.bufferedPercent =   e.loaded / e.total;		
-		// fire the parent html5 action
+	onprogress: function( e ) {		
+		this.bufferedPercent =   e.loaded / e.total;	
+			
+		// Fire the parent html5 action
 		$j( this ).trigger( 'progress', e );
+						
 	},
 	
 	/**
@@ -437,9 +443,11 @@ var nativeEmbed = {
 		var _this = this
 		this.getPlayerElement();
 		mw.log( 'native:onended:' + this.playerElement.currentTime + ' real dur:' +  this.getDuration() );
-		// if we just started (under 1 second played) & duration is much longer.. don't run onClipDone just yet . (bug in firefox native sending onended event early) 
+		// if we just started (under 1 second played) & duration is much longer.. don't run onClipDone just yet . 
+		// (bug in firefox native sending onended event early) 
 		if ( this.playerElement.currentTime  < 1 && this.getDuration() > 1 && this.grab_try_count < 5 ) {
-			mw.log( 'native on ended called with time:' + this.playerElement.currentTime + ' of total real dur: ' +  this.getDuration() + ' attempting to reload src...' );
+			mw.log( 'native on ended called with time:' + this.playerElement.currentTime + 
+				' of total real dur: ' +  this.getDuration() + ' attempting to reload src...' );
 			var doRetry = function() {
 				_this.urlAppend = 'retry_src=' + _this.grab_try_count;
 				_this.doEmbedPlayer();

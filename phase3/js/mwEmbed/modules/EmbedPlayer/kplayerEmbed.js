@@ -35,6 +35,7 @@ var kplayerEmbed = {
 		flashvars.kml = "local";
 		flashvars.kmlPath = playerPath + '/config.xml';
 		flashvars.sourceType = "url";
+		
 		//flashvars.host = "www.kaltura.com";
 		flashvars.externalInterfaceDisabled = 'false';
 		flashvars.skinPath = playerPath + '/skin.swf';
@@ -55,7 +56,7 @@ var kplayerEmbed = {
 			.attr( 'id', this.pid + '_container' )
 		);
 		
-		// Do the flash embeding with embedSWF
+		// Do the flash embedding with embedSWF
 		swfobject.embedSWF( 
 			playerPath + "/kdp3.swf", 
 			this.pid + '_container', 
@@ -87,14 +88,19 @@ var kplayerEmbed = {
 			// Add KDP listeners						
 			_this.bindPlayerFunction( 'doPause', 'onPause' );
 			_this.bindPlayerFunction( 'doPlay', 'onPlay' );
+			_this.bindPlayerFunction( 'durationChange', 'onDurationChange');
 			_this.bindPlayerFunction( 'playerPlayEnd', 'onClipDone' );
 			_this.bindPlayerFunction( 'playerUpdatePlayhead', 'onUpdatePlayhead' );
+			
+			// Buffering
+			_this.bindPlayerFunction( 'bytesTotalChange', "onBytesTotalChange" );
+			_this.bindPlayerFunction( 'bytesDownloadedChange', "onBytesDownloadedChange" );
 											
 			// Start the monitor
 			this.monitor();
 		}else{
 			// Keep trying to get the player element
-			//mw.log('insert media: not defiend:' + typeof this.playerElement.insertMedia );
+			//mw.log('insert media: not defined:' + typeof this.playerElement.insertMedia );
 			setTimeout( function() {
 				_this.postEmbedJS();
 			}, 250);
@@ -131,6 +137,12 @@ var kplayerEmbed = {
 		this.parent_play();
 	},
 	
+	onDurationChange: function(data, id) {
+		mw.log(" onDurationChange: " + data.newValue);
+		// update the duration: 		
+		this.duration = data.newValue;
+	},
+	
 	/**
 	* play method
 	*  calls parent_play to update the interface 
@@ -160,13 +172,21 @@ var kplayerEmbed = {
 		var _this = this;
 		if( this.playerElement ) {
 			var seek_time = prec * this.getDuration(); 
+			
+			// Issue the seek to the flash player:
 			this.playerElement.sendNotification('doSeek',  seek_time);
 			// Kdp is missing seek done callback
 			setTimeout(function() {
 				_this.seeking= false;
 			},500);
+		} else {
+			// try to do a play then seek: 
+			this.doPlayThenSeek( percentage )
 		}
 		this.monitor();
+		
+		// Run the onSeek interface update
+		this.onSeek(); 		
 	},
 	
 	/**
@@ -186,18 +206,40 @@ var kplayerEmbed = {
 	},
 	
 	/**
-	* We just use the parent monitor since currentTime is updated by push binding. 
-	* monitor: function(){
-	* }
-	*/
+	* function called by flash when the total media size changes
+	*/ 
+	onBytesTotalChange: function(data, id) {
+		this.bytesTotal =  data.newValue ;
+	},
+	
+	/**
+	* function called by falsh when download bytes changes
+	*/ 
+	onBytesDownloadedChange: function( data, id){
+		this.bytesLoaded = data.newValue;
+		this.bufferedPercent  = this.bytesLoaded / this.bytesTotal;
+		
+		// Fire the parent html5 action
+		$j( this ).trigger( 'progress', {
+			'loaded' : this.bytesLoaded,  
+			'total' : this.bytesTotal
+		} );
+	},
+	
+	/**
+	* currentTime updated via playback hook no need for monitor function
+	* monitor: function(){}
+	*/	
 	
 	/**
 	* Get the embed fla object player Element
 	*/
 	getPlayerElement: function () {
 		this.playerElement = document.getElementById( this.pid );
+		return this.playerElement;
 	}
 }
+
 /**
 * function called once player is ready.
 * 
@@ -251,12 +293,15 @@ var swfobject = function() {
 		- Is executed directly for optimal performance
 	*/	
 	ua = function() {
-		var w3cdom = typeof doc.getElementById != UNDEF && typeof doc.getElementsByTagName != UNDEF && typeof doc.createElement != UNDEF,
+		var w3cdom = typeof doc.getElementById != UNDEF && 
+					 typeof doc.getElementsByTagName != UNDEF && 
+					 typeof doc.createElement != UNDEF,
 			u = nav.userAgent.toLowerCase(),
 			p = nav.platform.toLowerCase(),
 			windows = p ? /win/.test(p) : /win/.test(u),
 			mac = p ? /mac/.test(p) : /mac/.test(u),
-			webkit = /webkit/.test(u) ? parseFloat(u.replace(/^.*webkit\/(\d+(\.\d+)?).*$/, "$1")) : false, // returns either the webkit version or false if not webkit
+			
+			webkit = /webkit/.test(u) ? parseFloat(u.replace(/^.*webkit\/(\d+(\.\d+)?).*$/, "$1")) : false, 
 			ie = !+"\v1", // feature detection based on Andrea Giammarchi's solution: http://webreflection.blogspot.com/2009/01/32-bytes-to-know-if-your-browser-is-ie.html
 			playerVersion = [0,0,0],
 			d = null;

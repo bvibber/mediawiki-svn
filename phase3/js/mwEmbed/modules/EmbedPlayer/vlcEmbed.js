@@ -313,7 +313,7 @@ var vlcEmbed = {
 	
 	/**
 	* Gets the current volume
-	* @return percent Percet of total volume
+	* @return percent percent of total volume
 	* @type {Float} 
 	*/  
 	getVolumen:function() {		
@@ -329,6 +329,7 @@ var vlcEmbed = {
 			if ( this.playerElement.video )
 				this.playerElement.video.toggleFullscreen();
 		}
+		this.parent_fullscreen();
 	},
 		
 	/**

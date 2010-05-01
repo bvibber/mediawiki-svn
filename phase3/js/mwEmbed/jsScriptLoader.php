@@ -185,8 +185,8 @@ class jsScriptLoader {
 	 * @return String javascript to tell mwEmbed that the requested class set is loaded
 	 */
 	static private function getOnDoneCallback( ){
-		return 'if(mw && mw.loadDone){mw.loadDone(\'' .
-		htmlspecialchars( self::$rawClassList ) . '\');};';
+		return 'if(typeof mw !=\'undefined\' && mw.loadDone){mw.loadDone(\'' .
+			htmlspecialchars( self::$rawClassList ) . '\');};';
 	}
 
 	/**

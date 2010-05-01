@@ -97,8 +97,8 @@ var MW_EMBED_VERSION = '1.1f';
 			}
 			return ;
 		}	
-		// Name is a string update the config directly	
-		if( ! mwConfig[ name ] ) {
+		// Only update the controls if undefined
+		if( typeof mwConfig[ name ] == 'undefined') {
 			mwConfig[ name ] = value;
 		}
 	}
@@ -484,11 +484,11 @@ var MW_EMBED_VERSION = '1.1f';
 		* 	true interface should continue function execution
 		*	false interface should stop or return from method
 		*/
-		targetObj.runHook = function( hookName, options ) {		
+		targetObj.runHook = function( hookName, options ) {
 			if( this.hooks[ hookName ] ) {
 				for( var i =0; i < this.hooks[ hookName ].length; i ++ ) {
 					if( typeof( this.hooks[ hookName ][ i ] ) == 'function' ) {
-						return this.hooks[ hookName ][ i ]( options );
+						this.hooks[ hookName ][ i ]( options );
 					}
 				}
 			}
@@ -808,7 +808,8 @@ var MW_EMBED_VERSION = '1.1f';
 				// Send warning if className is not defined
 				if(! mw.isset( className )
 					&& mwLoadDoneCB[ className ] != 'done' ) {
-					mw.log( 'Possible Error: ' + className +' not set in time, or not defined in:' + "\n" +  _this.getClassPath( className ) );
+					mw.log( 'Possible Error: ' + className +' not set in time, or not defined in:' + "\n" 
+						+  _this.getClassPath( className ) );
 				}
 				
 				// If ( debug mode ) and the script include 
@@ -1036,6 +1037,7 @@ var MW_EMBED_VERSION = '1.1f';
 	
 	/**
 	* mediaWiki JSON a wrapper for jQuery getJSON:
+	* ( could also be named mw.apiRequest )
 	* 
 	* The mediaWiki version lets you skip the url part 
 	* mw.getJSON( [url], data, callback, [timeoutCallback] ); 
@@ -1150,11 +1152,10 @@ var MW_EMBED_VERSION = '1.1f';
 		// If cross domain setup a callback: 
 		if( ! mw.isLocalDomain( url ) ) {				 
 			if( url.indexOf( 'callback=' ) == -1 || data[ 'callback' ] == -1 ) {
-				// jQuery specific: ( second ? is replaced with the callback ) 
+				// jQuery specific jsonp format: ( second ? is replaced with the callback ) 
 				url += ( url.indexOf('?') == -1 ) ? '?callback=?' : '&callback=?';
 			}				 
-		}
-		
+		}		
 		// Pass off the jQuery getJSON request:
 		$j.getJSON( url, data, myCallback );			
 	}
@@ -1376,7 +1377,7 @@ var MW_EMBED_VERSION = '1.1f';
 	
 	/**
 	* Similar to php isset function checks if the variable exists.
-	* Does a safe check of a descendent method or variable
+	* Does a safe check of a descendant method or variable
 	*
 	* @param {String} objectPath
 	* @return {Boolean}
@@ -1469,11 +1470,10 @@ var MW_EMBED_VERSION = '1.1f';
 	* @param {String} string String to output to console
 	*/
 	mw.log = function( string ) {
-		// Add any prepend debug strings if necessary 
-		
+	
+		// Add any prepend debug strings if necessary 		
 		if ( mw.getConfig( 'pre-append-log' ) )
-			string = mw.getConfig( 'pre-append-log' ) + string;
-				
+			string = mw.getConfig( 'pre-append-log' ) + string;				
 		if ( window.console ) {
 			window.console.log( string );
 		} else {	
@@ -1481,7 +1481,6 @@ var MW_EMBED_VERSION = '1.1f';
 			 * Old IE and non-Firebug debug: ( commented out for now ) 
 			 */
 			/*
-
 			var log_elm = document.getElementById('mv_js_log');
 			if(!log_elm) {
 				document.getElementsByTagName("body")[0].innerHTML = document.getElementsByTagName("body")[0].innerHTML +
@@ -1529,8 +1528,7 @@ var MW_EMBED_VERSION = '1.1f';
 	* @param {Function} callback Function to run once DOM and jQuery are ready
 	*/
 	mw.ready = function( callback ) {						
-		if( mwReadyFlag === false ) {
-		
+		if( mwReadyFlag === false ) {		
 			// Add the callbcak to the onLoad function stack
 			mwOnLoadFunctions.push ( callback );
 						
@@ -1539,9 +1537,10 @@ var MW_EMBED_VERSION = '1.1f';
 			if( !mwDomReadyFlag ) { 
 				//mw.log( 'set config flag' );
 				mw.setConfig( 'runSetupMwEmbed', true );
-			}else{
-				mw.log( 'run setup directly' );
+			}else{				
 				//DOM is already ready run setup directly ( will run mwOnLoadFunctions on finish )
+				// This is needed beccause we support dynamic setup once we hit a mw.ready
+				// ( otherwise we would run setup on every include )
 				mw.setupMwEmbed(); 
 			}			
 			return ;
@@ -1660,20 +1659,19 @@ var MW_EMBED_VERSION = '1.1f';
 		}
 		// Set the style to true ( to not request it again )
 		mw.style[ cssClassName ] = true;
-		// Wait for the DOM to be ready before adding in the css:
-		mw.ready( function() {				
-			mw.log( 'Adding style:' + cssClassName + " to dom " );
-			var styleNode = document.createElement('style');
-			styleNode.type = "text/css";
-			// Use cssText or createTextNode depending on browser: 
-			if( ( window.attachEvent && !window.opera ) ) {
-				styleNode.styleSheet.cssText = cssString;
-			} else {
-				var styleText = document.createTextNode( cssString );
-				styleNode.appendChild( styleText );
-			}
-			$j( 'head' ).append( styleNode );		
-		} );
+		// Add the spinner directly ( without jQuery in case we have to dynamically load jQuery ) 
+		mw.log( 'Adding style:' + cssClassName + " to dom " );
+		var styleNode = document.createElement('style');
+		styleNode.type = "text/css";
+		// Use cssText or createTextNode depending on browser: 
+		if( ( window.attachEvent && !window.opera ) ) {
+			styleNode.styleSheet.cssText = cssString;
+		} else {
+			var styleText = document.createTextNode( cssString );
+			styleNode.appendChild( styleText );
+		}
+		var head = document.getElementsByTagName("head")[0];       
+		head.appendChild( styleNode );				
 	};
 	
 	/**
@@ -1696,8 +1694,7 @@ var MW_EMBED_VERSION = '1.1f';
 			var sheetParts = currentSheet.split('?');		
 			var urlParts = url.split('?');
 			//if the base url's match check the parameters:
-			if( sheetParts[0] == urlParts[0] && sheetParts[1]) {
-				//mw.log(" sheet compare: " + sheetParts[1].split( '&' ).sort().join('') + ' != ' + urlParts[1].split('&').sort().join(''));
+			if( sheetParts[0] == urlParts[0] && sheetParts[1]) {			
 				//Check if url params match ( sort to do string compare )						
 				if( sheetParts[1].split( '&' ).sort().join('') ==
 						urlParts[1].split('&').sort().join('') ) {	 
@@ -2016,7 +2013,8 @@ var MW_EMBED_VERSION = '1.1f';
 	*/
 	mw.parseUri.options = {
 		strictMode: false,
-		key: ["source", "protocol", "authority", "userInfo", "user", "password", "host", "port", "relative", "path", "directory", "file", "query", "anchor"],
+		key: ["source", "protocol", "authority", "userInfo", "user", "password", "host", 
+				"port", "relative", "path", "directory", "file", "query", "anchor"],
 		q:   {
 			name:   "queryKey",
 			parser: /(?:^|&)([^&=]*)=?([^&]*)/g
