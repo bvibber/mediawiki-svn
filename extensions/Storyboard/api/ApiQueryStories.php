@@ -85,7 +85,6 @@ class ApiQueryStories extends ApiQueryBase {
 				"(story_modified = $storyId AND story_id <= $storyModified)"
 			);
 			*/
-			
 		}
 		
 		$stories = $this->select( __METHOD__ );

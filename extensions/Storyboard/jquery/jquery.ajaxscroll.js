@@ -30,29 +30,33 @@
 			},
 			opt
 		);
-		return this.each(function(){
-			var ele=this;
-			var $me=jQuery(this);
+		return this.each( function() {
+			var ele = this;
+			var $me = jQuery( this );
 			var $sp;
 			var fnEnd,fnScroll;
-			var offset=0;
-			var lsp=-1;_css();
+			var offset= 0 ;
+			var lsp = -1;
 			
-			opt.boxTemplate=(opt.boxTemplate||"<span class='"+opt.boxClass+"'>&nbsp</span>");
+			_css();
 			
-			opt.batchTemplate=(opt.batchTemplate||"<span></span>");
-			$sp=jQuery("<div></div>").addClass(opt.scrollPaneClass);
-			$me.append($sp);
-			offset=batch($sp,offset,opt);
+			opt.boxTemplate = ( opt.boxTemplate || "<span class='" + opt.boxClass + "'>&nbsp</span>" );
+			opt.batchTemplate = ( opt.batchTemplate || "<span></span>" );
+			
+			$sp = jQuery( "<div></div>" ).addClass( opt.scrollPaneClass );
+			$me.append( $sp );
+			offset = batch( $sp, offset, opt );
 			$me.scrollTop(0).scrollLeft(0);
+			
 			_ab();
-			fnEnd=vEnd;
-			fnScroll=vScroll;
 			
-			setTimeout(monEnd,opt.endDelay);
+			fnEnd = vEnd;
+			fnScroll = vScroll;
 			
-			if(typeof opt.updateBatch=='function'){
-				setTimeout(monScroll,opt.scrollDelay);
+			setTimeout( monEnd, opt.endDelay );
+			
+			if( typeof opt.updateBatch == 'function' ){
+				setTimeout( monScroll, opt.scrollDelay );
 			}
 			
 			function _css(){
@@ -78,29 +82,39 @@
 				}
 			}
 			
-			function batch($s,o,opt){
-				var $b,i,rp=opt.batchNum;
+			function batch($s, offset ,opt){
+				var $b;
+				var i;
+				var rp = opt.batchNum;
 				
-				while(rp--){
-					$b=jQuery(opt.batchTemplate).attr({offset:o,len:opt.batchSize}).addClass(opt.batchClass+" "+opt.emptyBatchClass);
-					i=opt.batchSize;
-					while(i--&&opt.maxOffset>o++){
-						$b.append(opt.boxTemplate);
+				while( rp-- ) {
+					$b=jQuery(opt.batchTemplate)
+						.attr({
+							offset:offset,
+							len:opt.batchSiz
+						})
+						.addClass( opt.batchClass + " " + opt.emptyBatchClass );
+					
+					i = opt.batchSize;
+					
+					while( i-- && opt.maxOffset > offset++ ){
+						$b.append( opt.boxTemplate );
 					}
+					
 					$s.append($b);
 				}
 				
-				return o;
+				return offset;
 			};
 			
 			function vScroll(){
-				var so=$me.scrollTop();
+				var so = $me.scrollTop();
 				
-				if(lsp!=so){
-					lsp=so;
-					var co=$me.offset().top;
+				if( lsp != so){
+					lsp = so;
+					var co = $me.offset().top;
 					
-					$sp.find('> .'+opt.emptyBatchClass).each(function(i,obj){
+					$sp.find( '> .' + opt.emptyBatchClass ).each(function( i, obj ){
 						var $b=jQuery(obj);
 						var p=$b.position().top-co;
 						if(opt.lBound>p||p>opt.uBound){return;}

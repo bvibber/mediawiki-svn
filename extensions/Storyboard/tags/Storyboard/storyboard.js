@@ -11,7 +11,7 @@
 			updateBatch: updateStoryboard,
 			maxOffset: 500,
 			batchSize: 8,
-			batchNum: 1,
+			batchNum: 2,
 			batchClass: "batch",
 			boxClass: "storyboard-box",
 			emptyBatchClass: "storyboard-empty",
