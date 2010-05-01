@@ -3,7 +3,7 @@
 $messages = array();
 
 $messages['en'] = array(
-	'viewapc'      => 'APC information',
+	'apc'      => 'APC information',
 	'apc-desc' => '[[Special:ViewAPC|View and manage APC cache]] with MediaWiki',
 	'right-apc'    => 'Use all features in [[Special:ViewAPC|ViewAPC]]',
 
@@ -203,7 +203,7 @@ $messages['niu'] = array(
  * @author Naudefj
  */
 $messages['af'] = array(
-	'viewapc' => 'APC-inligting',
+	'apc' => 'APC-inligting',
 	'apc-desc' => 'Die [[Special:ViewAPC|APC-kas monitor en bestuur]] vanuit MediaWiki',
 	'right-apc' => 'Gebruik al die funksies van [[Special:ViewAPC|ViewAPC]]',
 	'viewapc-apc-not-available' => 'Daar is geen inligting aangaande die kas beskikbaar nie.
@@ -336,7 +336,7 @@ $messages['an'] = array(
  * @author ترجمان05
  */
 $messages['ar'] = array(
-	'viewapc' => 'معلومات إيه بي سي',
+	'apc' => 'معلومات إيه بي سي',
 	'apc-desc' => '[[Special:ViewAPC|عرض والتحكم بكاش الإيه بي سي]] مع ميدياويكي',
 	'right-apc' => 'استخدام كل الخواص في [[Special:ViewAPC|ViewAPC]]',
 	'viewapc-apc-not-available' => 'لا معلومات اختزان متوفرة.
@@ -446,7 +446,7 @@ $messages['ar'] = array(
  * @author Ramsis II
  */
 $messages['arz'] = array(
-	'viewapc' => 'معلومات إيه بى سي',
+	'apc' => 'معلومات إيه بى سي',
 	'apc-desc' => '[[Special:ViewAPC|عرض والتحكم بكاش الإيه بى سي]] مع ميدياويكي',
 	'right-apc' => 'استخدام كل الخواص فى [[Special:ViewAPC|ViewAPC]]',
 	'viewapc-apc-not-available' => 'لا معلومات اختزان متوفرة.
@@ -556,7 +556,7 @@ $messages['arz'] = array(
  * @author Jim-by
  */
 $messages['be-tarask'] = array(
-	'viewapc' => 'Інфармацыя пра APC',
+	'apc' => 'Інфармацыя пра APC',
 	'apc-desc' => '[[Special:ViewAPC|Прагляд і кіраваньне кэшам APC]] у MediaWiki',
 	'right-apc' => 'выкарыстаньне ўсіх магчымасьцяў [[Special:ViewAPC|ViewAPC]]',
 	'viewapc-apc-not-available' => 'Няма інфармацыі пра кэш.
@@ -665,7 +665,7 @@ $messages['be-tarask'] = array(
  * @author DCLXVI
  */
 $messages['bg'] = array(
-	'viewapc' => 'Информация за APC',
+	'apc' => 'Информация за APC',
 	'right-apc' => 'Използване на всички възможности на Special:ViewAPC',
 	'viewapc-clear-confirm' => 'Необходимо е потвърждение за изчистване на кеша.',
 	'viewapc-clear-user-cache' => 'Изчистване на потребителския кеш',
@@ -720,7 +720,7 @@ $messages['bg'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
-	'viewapc' => 'Titouroù APC',
+	'apc' => 'Titouroù APC',
 	'apc-desc' => '[[Special:ViewAPC|Gwelet ha merañ ar grubuilh APC]] gant MediaWiki',
 	'right-apc' => "Implijout holl arc'hweladurioù [[Special:ViewAPC|ViewAPC]]",
 	'viewapc-apc-not-available' => "Ne c'haller kaout titour ebet war ar grubuilh.
@@ -829,7 +829,7 @@ Ur stumm nevez $2 a c'haller kaout war http://pecl.php.net/package/APC/$2",
  * @author CERminator
  */
 $messages['bs'] = array(
-	'viewapc' => 'APC informacije',
+	'apc' => 'APC informacije',
 	'apc-desc' => '[[Special:ViewAPC|Pregledaj i uredi APC keš]] sa MediaWiki',
 	'right-apc' => 'Korištenje svih mogućnosti u [[Special:ViewAPC|ViewAPC]]',
 	'viewapc-apc-not-available' => 'Podaci o kešu nisu dostupni.
@@ -971,7 +971,7 @@ $messages['ca'] = array(
  * @author Mormegil
  */
 $messages['cs'] = array(
-	'viewapc' => 'Informace o APC',
+	'apc' => 'Informace o APC',
 	'apc-desc' => '[[Special:ViewAPC|Zobrazit a spravovat vyrovnávací paměť APC]] pomocí MediaWiki',
 	'right-apc' => 'Použít všechny funkce na [[Special:ViewAPC|ViewAPC]].',
 	'viewapc-apc-not-available' => 'Nejsou dostupné žádné informace o vyrovnávací paměti.
@@ -1086,7 +1086,7 @@ Novější verze $2 je dostupná na http://pecl.php.net/package/APC/$2.',
  * @author Umherirrender
  */
 $messages['de'] = array(
-	'viewapc' => 'APC-Informationen',
+	'apc' => 'APC-Informationen',
 	'apc-desc' => 'APC-Cache mit MediaWiki [[Special:ViewAPC|einsehen und bearbeiten]]',
 	'right-apc' => 'Alle Funktionen von [[Special:ViewAPC|ViewAPC]] verwenden',
 	'viewapc-apc-not-available' => 'Keine Cache-Informationen verfügbar.
@@ -1212,7 +1212,7 @@ $messages['diq'] = array(
  * @author Michawiki
  */
 $messages['dsb'] = array(
-	'viewapc' => 'Informacije wó APC',
+	'apc' => 'Informacije wó APC',
 	'apc-desc' => 'APC-cache z MediaWiki [[Special:ViewAPC|se woglědaś a wobźěłaś]]',
 	'right-apc' => 'Wše funkcije w [[Special:ViewAPC|ViewAPC]] wužywaś',
 	'viewapc-apc-not-available' => 'Žedne informacije wó cache k dispoziciji.
@@ -1324,7 +1324,7 @@ Nowša wersija $2 stoj na http://pecl.php.net/package/APC/$2 k dispoziciji.',
  * @author ZaDiak
  */
 $messages['el'] = array(
-	'viewapc' => 'Πληροφορίες APC',
+	'apc' => 'Πληροφορίες APC',
 	'viewapc-clear-confirm' => 'Θέλετε να εκκαθαρίσετε τη λανθάνουσα μνήμη;',
 	'viewapc-clear-user-cache' => 'Εκκαθάριση λανθάνουσας μνήμης χρήστη',
 	'viewapc-mode-stats' => 'Εμφάνιση στατιστικών φιλοξενίας',
@@ -1414,7 +1414,7 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'viewapc' => 'APC-informo',
+	'apc' => 'APC-informo',
 	'viewapc-apc-not-available' => 'Neniu informo pri kaŝmemoro estas havebla.
 APC verŝajne ne funkcias.',
 	'viewapc-clear-confirm' => 'Ĉu vi volas forviŝi la kaŝmemoron?',
@@ -1506,7 +1506,7 @@ APC verŝajne ne funkcias.',
  * @author Translationista
  */
 $messages['es'] = array(
-	'viewapc' => 'Información APC',
+	'apc' => 'Información APC',
 	'apc-desc' => '[[Special:ViewAPC|Ver y administrar APC cache]] con MediaWiki',
 	'right-apc' => 'Use todas las caractrísticas en [[Special:ViewAPC|ViewAPC]]',
 	'viewapc-apc-not-available' => 'Sin información de cache disponible.
@@ -1615,7 +1615,7 @@ Versión más nueva $2 está disponible en http://pecl.php.net/package/APC/$2',
  * @author Silvar
  */
 $messages['et'] = array(
-	'viewapc' => 'APC informatsioon',
+	'apc' => 'APC informatsioon',
 	'apc-desc' => 'MediaWiki abil [[Special:ViewAPC|APC puhvri vaatamine ja juhtimine]]',
 	'right-apc' => 'Kasutada kõiki [[Special:ViewAPC|ViewAPC]] võimalusi',
 	'viewapc-apc-not-available' => 'Puhhvri infot ei leidnud.
@@ -1760,7 +1760,7 @@ $messages['fa'] = array(
  * @author Str4nd
  */
 $messages['fi'] = array(
-	'viewapc' => 'APC-tiedot',
+	'apc' => 'APC-tiedot',
 	'apc-desc' => '[[Special:ViewAPC|Tarkastele ja hallitse APC-muistia]] MediaWikillä.',
 	'right-apc' => 'Käyttää kaikkia ominaisuuksia sivulla [[Special:ViewAPC|ViewAPC]]',
 	'viewapc-apc-not-available' => 'Tietoja ei saatavilla.
@@ -1873,7 +1873,7 @@ Uudempi versio ($2) on saatavilla osoitteesta http://pecl.php.net/package/APC/$2
  * @author Verdy p
  */
 $messages['fr'] = array(
-	'viewapc' => 'Informations APC',
+	'apc' => 'Informations APC',
 	'apc-desc' => '[[Special:ViewAPC|Voir et gérer le cache APC]] avec MediaWiki',
 	'right-apc' => 'Utiliser toutes les fonctionnalités de [[Special:ViewAPC|ViewAPC]]',
 	'viewapc-apc-not-available' => 'Aucune information sur le cache n’est disponible.
@@ -1990,7 +1990,7 @@ $messages['fy'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
-	'viewapc' => 'Información ACP',
+	'apc' => 'Información ACP',
 	'apc-desc' => '[[Special:ViewAPC|Ver e xestionar a caché APC]] con MediaWiki',
 	'right-apc' => 'Usar todas as características de [[Special:ViewAPC|ViewAPC]]',
 	'viewapc-apc-not-available' => 'A información da memoria caché non está dispoñible.
@@ -2127,7 +2127,7 @@ $messages['grc'] = array(
  * @author Als-Holder
  */
 $messages['gsw'] = array(
-	'viewapc' => 'APC-Informatione',
+	'apc' => 'APC-Informatione',
 	'apc-desc' => 'APC-Cache mit MediaWiki [[Special:ViewAPC|aaluege un bearbeite]]',
 	'right-apc' => 'Cha alli Funktione vu [[Special:ViewAPC|ViewAPC]] verwände',
 	'viewapc-apc-not-available' => 'Kei Cache-Informatione verfiegbar.
@@ -2248,7 +2248,7 @@ $messages['haw'] = array(
  * @author YaronSh
  */
 $messages['he'] = array(
-	'viewapc' => 'נתוני APC',
+	'apc' => 'נתוני APC',
 	'apc-desc' => '[[Special:ViewAPC|צפייה וניהול מטמון ה־ APC]] באמצעות מדיה־ויקי',
 	'right-apc' => 'שימוש בכל התכונות של [[Special:ViewAPC|ViewAPC]]',
 	'viewapc-apc-not-available' => 'אין נתוני מטמון זמינים.
@@ -2359,7 +2359,7 @@ $messages['he'] = array(
  * @author आलोक
  */
 $messages['hi'] = array(
-	'viewapc' => 'APC ज़ानकारी',
+	'apc' => 'APC ज़ानकारी',
 	'apc-desc' => 'मीडियाविकि के साथ [[Special:ViewAPC|APC कैशे देखें तथा व्यवस्थापन]] करें',
 	'right-apc' => '[[Special:ViewAPC|देखयेपिसी]] के सभी फीचर्स उपयोगित करो',
 	'viewapc-apc-not-available' => 'कैशे ज़ानकारी उपलब्ध नहीं हैं।
@@ -2475,7 +2475,7 @@ $messages['hil'] = array(
  * @author Dalibor Bosits
  */
 $messages['hr'] = array(
-	'viewapc' => 'APC priopćenje',
+	'apc' => 'APC priopćenje',
 	'apc-desc' => '[[Special:ViewAPC|Vidi i uredi APC priručnu memoriju]] s MediaWiki',
 	'right-apc' => 'Korištenje svih mogućnosti u [[Special:ViewAPC|ViewAPC]]',
 	'viewapc-apc-not-available' => 'Nema dostupnog priopćenja o priručnoj memoriji.
@@ -2490,7 +2490,7 @@ APC izgleda nije prisutan.',
  * @author Michawiki
  */
 $messages['hsb'] = array(
-	'viewapc' => 'APC informacije',
+	'apc' => 'APC informacije',
 	'apc-desc' => 'Z MediaWiki [[Special:ViewAPC|APC pufrowak zwobraznić a zrjadować]]',
 	'right-apc' => 'Wšě funkcije w [[Special:ViewAPC|ViewAPC]] wužiwać',
 	'viewapc-apc-not-available' => 'Žane informacije wo pufrowaku k dispoziciji.
@@ -2600,7 +2600,7 @@ Nowša wersija $2 steji na http://pecl.php.net/package/APC/$2 k dispoziciji.',
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
-	'viewapc' => 'APC-információ',
+	'apc' => 'APC-információ',
 	'apc-desc' => "[[Special:ViewAPC|APC gyorstótár megtekintése és beállítása]] ''MediaWiki''vel",
 	'right-apc' => 'a Special:ViewAPC összes funkciójának használata',
 	'viewapc-apc-not-available' => 'A gyorítótárinformációk nem elérhetőek.
@@ -2716,7 +2716,7 @@ $messages['hy'] = array(
  * @author McDutchie
  */
 $messages['ia'] = array(
-	'viewapc' => 'Informationes APC',
+	'apc' => 'Informationes APC',
 	'apc-desc' => '[[Special:ViewAPC|Vider e gerer le cache APC]] con MediaWiki',
 	'right-apc' => 'Usar tote le functionalitate de [[Special:ViewAPC|ViewAPC]]',
 	'viewapc-apc-not-available' => 'Nulle information de cache disponibile.
@@ -2828,7 +2828,7 @@ Un nove version $2 es disponibile a http://pecl.php.net/package/APC/$2',
  * @author Rex
  */
 $messages['id'] = array(
-	'viewapc' => 'Informasi APC',
+	'apc' => 'Informasi APC',
 	'apc-desc' => '[[Special:ViewAPC|Menampilkan dan mengelola tembolok APC]] dengan MediaWiki',
 	'right-apc' => 'Menggunakan semua fitur di [[Special:ViewAPC|ViewAPC]]',
 	'viewapc-apc-not-available' => 'Informasi tembolok tidak tersedia.
@@ -2962,7 +2962,7 @@ $messages['io'] = array(
  * @author Pietrodn
  */
 $messages['it'] = array(
-	'viewapc' => 'informazioni APC',
+	'apc' => 'informazioni APC',
 	'apc-desc' => '[[Special:ViewAPC|Visualizza e gestisce la cache APC]] con MediaWiki',
 	'right-apc' => 'Utilizza tutte le funzioni di [[Special:ViewAPC|ViewAPC]]',
 	'viewapc-apc-not-available' => "Non è disponibile nessun'informazione sulla cache.
@@ -3028,7 +3028,7 @@ APC non sembra essere in esecuzione.",
  * @author Hosiryuhosi
  */
 $messages['ja'] = array(
-	'viewapc' => 'APC情報',
+	'apc' => 'APC情報',
 	'apc-desc' => 'MediaWiki で[[Special:ViewAPC|APCキャッシュを表示および管理する]]',
 	'right-apc' => '[[Special:ViewAPC|APC情報]]の全機能の使用',
 	'viewapc-apc-not-available' => 'キャッシュ情報は利用できません。APCが動作していないようです。',
@@ -3136,7 +3136,7 @@ $messages['ja'] = array(
  * @author Pras
  */
 $messages['jv'] = array(
-	'viewapc' => 'Informasi APC',
+	'apc' => 'Informasi APC',
 	'apc-desc' => "[[Special:ViewAPC|Ndeleng lan ngurusi ''cache'' APC]] karo MediaWiki",
 	'right-apc' => 'Nganggo kabèh fitur ing [[Special:ViewAPC|ViewAPC]]',
 	'viewapc-apc-not-available' => "Ora ana info ''cache'' sing kacepakaké.
@@ -3236,7 +3236,7 @@ $messages['ka'] = array(
  * @author វ័ណថារិទ្ធ
  */
 $messages['km'] = array(
-	'viewapc' => 'ព័ត៌មាន APC',
+	'apc' => 'ព័ត៌មាន APC',
 	'apc-desc' => '[[Special:ViewAPC|មើល និង​គ្រប់គ្រង​ឃ្លាំងសម្ងាត់ APC]] ជាមួយ​មេឌាវិគី',
 	'right-apc' => 'ប្រើប្រាស់​លក្ខណៈពិសេស​ទាំងអស់​នៅក្នុង [[Special:ViewAPC|ViewAPC]]',
 	'viewapc-clear-confirm' => 'តើ​អ្នក​ពិតជា​ចង់​សំអាត​ឃ្លាំងសម្ងាត់​មែន​ឬ​?',
@@ -3310,7 +3310,7 @@ $messages['kn'] = array(
  * @author Kwj2772
  */
 $messages['ko'] = array(
-	'viewapc' => 'APC 정보',
+	'apc' => 'APC 정보',
 	'apc-desc' => '미디어위키의 [[Special:ViewAPC|APC 캐시를 보거나 관리]]',
 	'right-apc' => '[[Special:ViewAPC|APC 정보]]와 관련된 모든 기능 사용하기',
 	'viewapc-apc-not-available' => '캐시 정보가 없습니다.
@@ -3332,7 +3332,7 @@ $messages['kri'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
-	'viewapc' => 'Enfomazjohne vum APC',
+	'apc' => 'Enfomazjohne vum APC',
 	'apc-desc' => 'Der <i lang="en">APC cache</i> [[Special:ViewAPC|enstelle un beloore]] em MediaWiki.',
 	'right-apc' => 'All de Müjjeleschkeite fun de Söndersigg [[Special:ViewAPC|ViewAPC]] notze',
 	'viewapc-apc-not-available' => 'Kein <i lang="en">cache</i>-Daate ze fenge.
@@ -3441,7 +3441,7 @@ En neuer Version ($2) steiht ald parat op http://pecl.php.net/package/APC/$2',
  * @author Robby
  */
 $messages['lb'] = array(
-	'viewapc' => 'Informatiounen iwwer APC',
+	'apc' => 'Informatiounen iwwer APC',
 	'apc-desc' => '[[Special:ViewAPC|Den APC-Cache]] mat MediaWiki kucken a geréieren',
 	'right-apc' => 'Benotzt all Fonctionalitéite vu [[Special:ViewAPC|ViewAPC]]',
 	'viewapc-clear-confirm' => 'Wëllt Dir de Cache eidel maachen?',
@@ -3538,7 +3538,7 @@ $messages['lfn'] = array(
  * @author Pahles
  */
 $messages['li'] = array(
-	'viewapc' => 'APC-infermasie',
+	'apc' => 'APC-infermasie',
 	'apc-desc' => '[[Special:ViewAPC|De APC-cache betrachte en behere]] vanoet MediaWiki',
 	'right-apc' => 'Alle mäögelikhede van [[Special:ViewAPC|ViewAPC]] gebroeke',
 	'viewapc-apc-not-available' => 'Dao is gein infermasie euver de cache besjikbaar.
@@ -3628,7 +3628,7 @@ $messages['mhr'] = array(
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
-	'viewapc' => 'Информации за APC',
+	'apc' => 'Информации за APC',
 	'apc-desc' => '[[Special:ViewAPC|Преглед и раководење со APC кеш]] со МедијаВики',
 	'right-apc' => 'Користење на сите можности во [[Special:ViewAPC|ViewAPC]]',
 	'viewapc-apc-not-available' => 'Нема информации за кешот.
@@ -3737,7 +3737,7 @@ $messages['mk'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'viewapc' => 'APCയെക്കുറിച്ചുള്ള വിവരണം',
+	'apc' => 'APCയെക്കുറിച്ചുള്ള വിവരണം',
 	'right-apc' => 'Special:ViewAPCലുള്ള എല്ലാ സവിശേഷതകളും ഉപയോഗിക്കുക',
 	'viewapc-clear-confirm' => 'താങ്കൾക്ക് കാഷെ ക്ലിയർ ചെയ്യണമോ?',
 	'viewapc-clear-user-cache' => 'ഉപയോക്തൃകാഷെ ക്ലിയർ ചെയ്യുക',
@@ -3806,7 +3806,7 @@ $messages['ml'] = array(
  * @author Kaustubh
  */
 $messages['mr'] = array(
-	'viewapc' => 'APC माहिती',
+	'apc' => 'APC माहिती',
 	'apc-desc' => 'मीडियाविकि बरोबर [[Special:ViewAPC|एपीसी सय पहा व बदला]]',
 	'right-apc' => 'Special:ViewAPC ची सगळी वैशिष्ठ्ये वापरा',
 	'viewapc-apc-not-available' => 'सय माहिती उपलब्ध नाही.
@@ -3916,7 +3916,7 @@ $messages['mr'] = array(
  * @author Zamwan
  */
 $messages['ms'] = array(
-	'viewapc' => 'Maklumat APC',
+	'apc' => 'Maklumat APC',
 	'viewapc-apc-version' => 'Versi APC',
 	'viewapc-php-version' => 'Versi PHP',
 	'viewapc-display-info' => 'Nama',
@@ -4021,7 +4021,7 @@ $messages['nds'] = array(
  * @author Siebrand
  */
 $messages['nl'] = array(
-	'viewapc' => 'APC-informatie',
+	'apc' => 'APC-informatie',
 	'apc-desc' => '[[Special:ViewAPC|De APC-cache bekijken en beheren]] vanuit MediaWiki',
 	'right-apc' => 'Alle mogelijkheden van [[Special:ViewAPC|ViewAPC]] gebruiken',
 	'viewapc-apc-not-available' => 'Er is geen informatie over de cache beschikbaar.
@@ -4130,7 +4130,7 @@ De nieuwere versie $2 is beschikbaar op http://pecl.php.net/package/APC/$2',
  * @author Harald Khan
  */
 $messages['nn'] = array(
-	'viewapc' => 'APC-informasjon',
+	'apc' => 'APC-informasjon',
 	'apc-desc' => '[[Special:ViewAPC|Vis og handsam APC-mellomlageret]] med MediaWiki',
 	'right-apc' => 'Nytt alle funksjonar i [[Special:ViewAPC|ViewAPC]]',
 	'viewapc-apc-not-available' => 'Ingen infomasjon om mellomlageret er tilgjengeleg.
@@ -4241,7 +4241,7 @@ Den nyaste versjonen ($2) finst på http://pecl.php.net/package/APC/$2',
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
-	'viewapc' => 'APC-informasjon',
+	'apc' => 'APC-informasjon',
 	'apc-desc' => '[[Special:ViewAPC|Vis og behandle APC-mellomlageret]] med MediaWiki',
 	'right-apc' => 'Bruke alle funksjoner i [[Special:ViewAPC|ViewAPC]]',
 	'viewapc-apc-not-available' => 'Ingen infomasjon om mellomlageret er tilgjengelig.
@@ -4350,7 +4350,7 @@ Den nyeste versjonen ($2) finnes tilgjengelig på http://pecl.php.net/package/AP
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'viewapc' => 'Entresenhas APC',
+	'apc' => 'Entresenhas APC',
 	'apc-desc' => "[[Special:ViewAPC|Veire e gerir l'amagatal APC]] amb MediaWiki",
 	'right-apc' => 'Utilizar totas las foncionalitats de [[Special:ViewAPC|ViewAPC]]',
 	'viewapc-apc-not-available' => "Cap d'entresenha sus l'amagatal es pas disponibla.
@@ -4481,7 +4481,7 @@ $messages['pdc'] = array(
  * @author Sp5uhe
  */
 $messages['pl'] = array(
-	'viewapc' => 'Informacje o APC',
+	'apc' => 'Informacje o APC',
 	'apc-desc' => '[[Special:ViewAPC|Podgląd oraz zarządzanie pamięcią APC]] z użyciem MediaWiki',
 	'right-apc' => 'Używanie pełnej funkcjonalności [[Special:ViewAPC|ViewAPC]]',
 	'viewapc-apc-not-available' => 'Brak informacji o pamięci podręcznej.
@@ -4591,7 +4591,7 @@ Nowa wersja $2 dostępna jest na stronie http://pecl.php.net/package/APC/$2',
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'viewapc' => 'Anformassion APC',
+	'apc' => 'Anformassion APC',
 	'apc-desc' => '[[Special:ViewAPC|Vëdde e gestì la memòria local APC]] con MediaWiki',
 	'right-apc' => 'Dovré tute le possibilità ëd [[Special:ViewAPC|ViewAPC]]',
 	'viewapc-apc-not-available' => 'Pa gnun-e anformassion ëd la memòria local disponìbij.
@@ -4744,7 +4744,7 @@ $messages['ps'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'viewapc' => 'Informação da APC',
+	'apc' => 'Informação da APC',
 	'apc-desc' => "[[Special:ViewAPC|Visionamento e gestão da ''cache'' APC]] ''(Alternative PHP Cache)'' usando o MediaWiki",
 	'right-apc' => 'Usar todas as funcionalidades da extensão [[Special:ViewAPC|ViewAPC]]',
 	'viewapc-apc-not-available' => "Não há informação disponível sobre a ''cache''.
@@ -4854,7 +4854,7 @@ A versão mais recente $2 está disponível em http://pecl.php.net/package/APC/$
  * @author Heldergeovane
  */
 $messages['pt-br'] = array(
-	'viewapc' => 'Informação de cache PHP alternativo (APC)',
+	'apc' => 'Informação de cache PHP alternativo (APC)',
 	'apc-desc' => '[[Special:ViewAPC|Ver e gerenciar o cache PHP alternativo (APC)]] com o MediaWiki',
 	'right-apc' => 'Usar todos os recursos em [[Special:ViewAPC|ViewAPC]]',
 	'viewapc-apc-not-available' => 'Nenhuma informação disponível sobre o cache.
@@ -4973,7 +4973,7 @@ $messages['rif'] = array(
  * @author Silviubogan
  */
 $messages['ro'] = array(
-	'viewapc' => 'Informaţii APC',
+	'apc' => 'Informaţii APC',
 	'viewapc-clear-confirm' => 'Doriţi golirea cache-ului?',
 	'viewapc-clear-user-cache' => 'Goleşte cache-ul utilizatorului',
 	'viewapc-mode-version-check' => 'Verifică versiunea',
@@ -5067,7 +5067,7 @@ $messages['roa-tara'] = array(
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
-	'viewapc' => 'Сведения об APC',
+	'apc' => 'Сведения об APC',
 	'apc-desc' => '[[Special:ViewAPC|Просмотр и управление кэшем APC]] в MediaWiki',
 	'right-apc' => 'использование всех возможностей [[Special:ViewAPC|ViewAPC]]',
 	'viewapc-apc-not-available' => 'Нет сведений о кэше.
@@ -5176,7 +5176,7 @@ $messages['ru'] = array(
  * @author HalanTul
  */
 $messages['sah'] = array(
-	'viewapc' => 'APC туһунан',
+	'apc' => 'APC туһунан',
 	'apc-desc' => 'MediaWiki-га [[Special:ViewAPC|APC кээһин көрүү уонна кинини салайыы]]',
 	'right-apc' => '[[Special:ViewAPC|ViewAPC]] туох баар кыахтарын толору туһаныы',
 	'viewapc-apc-not-available' => 'Кээс туһунан туох да суруллубатах.
@@ -5203,7 +5203,7 @@ $messages['scn'] = array(
  * @author Helix84
  */
 $messages['sk'] = array(
-	'viewapc' => 'Informácie o APC',
+	'apc' => 'Informácie o APC',
 	'apc-desc' => '[[Special:ViewAPC|Zobraziť a spravovať vyrovnávaciu pamäť APC]] pomocou MediaWiki',
 	'right-apc' => 'Použiť všetky vlastnosti na [[Special:ViewAPC|ViewAPC]]',
 	'viewapc-apc-not-available' => 'Nie sú dostupné informácie o vyrovnávacej pamäti.
@@ -5496,7 +5496,7 @@ Novija verzija $2 je dostupna na <a href="http://pecl.php.net/package/APC/$2">ht
  * @author Pyt
  */
 $messages['stq'] = array(
-	'viewapc' => 'APC-Informatione',
+	'apc' => 'APC-Informatione',
 	'apc-desc' => 'APC-Cache mäd MediaWiki [[Special:ViewAPC|ienkiekje un beoarbaidje]]',
 	'right-apc' => 'Kon aal Funktione fon [[Special:ViewAPC|ViewAPC]] ferweende',
 	'viewapc-apc-not-available' => 'Neen Cache-Informatione ferföichboar.
@@ -5606,7 +5606,7 @@ Ju näiere Version $2 stoant ap http://pecl.php.net/package/APC/$2 toun Deelleed
  * @author Irwangatot
  */
 $messages['su'] = array(
-	'viewapc' => 'Katerangan APC',
+	'apc' => 'Katerangan APC',
 	'apc-desc' => '[[Special:ViewAPC|Pintonkeun sarta ngatur APC cache]] migunakeun MediaWiki',
 	'right-apc' => 'Paké kabeh kaistimiwaan di Special:ViewAPC',
 	'viewapc-apc-not-available' => 'Henteu sadia katerangan sindangan.
@@ -5642,7 +5642,7 @@ APC hanteu katingali jalan.',
  * @author M.M.S.
  */
 $messages['sv'] = array(
-	'viewapc' => 'APC-information',
+	'apc' => 'APC-information',
 	'apc-desc' => '[[Special:ViewAPC|Visa och hantera APC-cachen]] med MediaWiki',
 	'right-apc' => 'Använda alla funktioner i [[Special:ViewAPC|ViewAPC]]',
 	'viewapc-apc-not-available' => 'Ingen information för cachen är tillgänglig.
@@ -5752,7 +5752,7 @@ Den nyare versionen $2 finns tillgänglig på http://pecl.php.net/package/APC/$2
  * @author Veeven
  */
 $messages['te'] = array(
-	'viewapc' => 'APC సమాచారం',
+	'apc' => 'APC సమాచారం',
 	'viewapc-info-general' => 'సాధారణ సమాచారం',
 	'viewapc-cached-files-d' => '$1 {{PLURAL:$1|ఫైలు|ఫైళ్ళు}} ($2)',
 	'viewapc-hits' => 'సందర్శనలు',
@@ -5825,7 +5825,7 @@ $messages['tk'] = array(
  * @author AnakngAraw
  */
 $messages['tl'] = array(
-	'viewapc' => 'Kabatirang APC',
+	'apc' => 'Kabatirang APC',
 	'apc-desc' => '[[Special:ViewAPC|Tingnan at pamahalaan ang taguan ng APC]] na may MediaWiki',
 	'right-apc' => 'Gamitin ang lahat ng mga kasangkapang-katangiang nasa [[Special:ViewAPC|ViewAPC]]',
 	'viewapc-apc-not-available' => 'Walang makuhang kabatiran ng taguan.
@@ -5937,7 +5937,7 @@ Makakakuha ng mas bagong bersyong $2 mula sa http://pecl.php.net/package/APC/$2'
  * @author Vito Genovese
  */
 $messages['tr'] = array(
-	'viewapc' => 'APC bilgisi',
+	'apc' => 'APC bilgisi',
 	'apc-desc' => 'MedyaViki ile [[Special:ViewAPC|APC önbelleğini görüntüleyip yönetin]]',
 	'right-apc' => "[[Special:ViewAPC|ViewAPC]]'da tüm özellikleri kullan",
 	'viewapc-apc-not-available' => 'Önbellek bilgisi yok.
@@ -6061,7 +6061,7 @@ $messages['ug-latn'] = array(
  * @author Prima klasy4na
  */
 $messages['uk'] = array(
-	'viewapc' => 'Відомості про APC',
+	'apc' => 'Відомості про APC',
 	'apc-desc' => '[[Special:ViewAPC|Перегляд та керування кешем APC]] в MediaWiki',
 	'right-apc' => 'використання всіх можливостей [[Special:ViewAPC|ViewAPC]]',
 	'viewapc-apc-not-available' => 'Немає відомостей про кеш.
@@ -6132,7 +6132,7 @@ $messages['vep'] = array(
  * @author Vinhtantran
  */
 $messages['vi'] = array(
-	'viewapc' => 'Thông tin APC',
+	'apc' => 'Thông tin APC',
 	'apc-desc' => '[[Special:ViewAPC|Xem và quản lý bộ đệm APC]] bằng MediaWiki',
 	'right-apc' => 'Sử dụng tất cả các tính năng trong [[Special:ViewAPC|ViewAPC]]',
 	'viewapc-apc-not-available' => 'Không có thông tin về bộ nhớ đệm.
