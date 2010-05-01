@@ -117,12 +117,11 @@ class SpecialStory extends IncludableSpecialPage {
 				elseif ( !$isEdit ) {
 					$wgOut->addWikiMsg( 'storyboard-storyunpublished' );
 					
-					// FIXME: subpage in link broken
 					if ( $wgUser->isAllowed( 'storyreview' ) ) {
 						global $wgTitle;
 						$wgOut->addWikiMsg(
 							'storyboard-canedit',
-							$wgTitle->getFullURL( array( 'action' => 'edit' ) )
+							$this->getTitle( $story->story_title )->getFullURL( array( 'action' => 'edit' ) )
 						);
 					}
 				}
