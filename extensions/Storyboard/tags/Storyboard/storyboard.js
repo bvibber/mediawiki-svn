@@ -19,7 +19,7 @@
 		} );
 	} );
 	
-	function updateStoryboard( $storyboard ) {
+	function updateStoryboard( $storyboard, ajaxScrollObj ) {
 		$.getJSON( wgScriptPath + '/api.php',
 			{
 				'action': 'query',
@@ -31,7 +31,7 @@
 			},
 			function( data ) {
 				if ( data.query ) {
-					addStories( $storyboard, data.query );
+					addStories( $storyboard, data.query, ajaxScrollObj );
 				} else {
 					alert( 'An error occured:\n' + data.error.info ); // TODO: i18n
 				}		
@@ -39,7 +39,7 @@
 		);
 	}
 	
-	function addStories( $storyboard, query ) {
+	function addStories( $storyboard, query, ajaxScrollObj ) {
 		// Remove the empty boxes.
 		$storyboard.html('');
 		
@@ -115,6 +115,8 @@
 			
 			$storyboard.append( $storyBody );	
 		}
+		
+		ajaxScrollObj.busy = false;
 	}
 		
 })(jQuery);
