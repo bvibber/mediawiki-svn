@@ -47,7 +47,8 @@ It might have been removed.',
 	'storyboard-authoroccupation' => 'Author occupation',
 	'storyboard-authoremail' => 'Author e-mail address',
 	'storyboard-thestory' => 'The story',
-	'storyboard-storystate' => 'State:',
+	'storyboard-storystate' => 'State',
+	'storyboard-language' => 'Language',
 
 	// Storyboard tag
 	'storyboard-storymetadata' => 'Submitted by $1 from $2 on $3, $4.',
