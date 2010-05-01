@@ -1803,7 +1803,8 @@ mw.EmbedPlayer.prototype = {
 		this.setStatus( gM( 'mwe-seeking' ) );
 		// Run the seeking hook
 		this.runHook( 'onSeek' );
-	}
+	},
+	
 	/**
 	 * Seeks to the requested time and issues a callback when ready 
 	 * (should be overwritten by client that supports frame serving)
