@@ -554,9 +554,9 @@ Mard eo se a felle deoc'h ober e vo ret deoc'h kevreañ ha cheñch ho ker-tremen
 
 Mard eo bet graet ar goulenn gant unan bennak all, pe m'hoc'h eus soñj eus ho ker-tremen bremañ ha
 ma ne fell ket deoc'h cheñch anezhañ ken, e c'hallit leuskel ar postel-mañ a-gostez ha kenderc'hel d'ober gant ho ker-tremen kozh.",
-'noemail'                    => 'N\'eus bet enrollet chomlec\'h elektronek ebet evit an implijer "$1".',
+'noemail'                    => 'N\'eus bet enrollet chomlec\'h postel ebet evit an implijer "$1".',
 'noemailcreate'              => "Ret eo deoc'h merkañ ur chomlec'h postel reizh",
-'passwordsent'               => 'Kaset ez eus bet ur ger-tremen nevez da chomlec\'h elektronek an implijer "$1".
+'passwordsent'               => 'Kaset ez eus bet ur ger-tremen nevez da chomlec\'h postel an implijer "$1".
 Trugarez deoc\'h da gevreañ kerkent ha ma vo bet resevet ganeoc\'h.',
 'blocked-mailpassword'       => "N'haller ket degas kemmoù adal ar chomlec'h IP-mañ ken, gant se n'hallit ket implijout an arc'hwel adtapout gerioù-tremen, kuit m'en em ledfe kammvoazioù.",
 'eauthentsent'               => "Kaset ez eus bet ur postel kadarnaat war-du ar chomlec'h postel spisaet.
@@ -942,7 +942,7 @@ N\'oc\'h ket aotreet da vont outi.',
 'revdelete-modify-missing'    => "Fazi ;en ur zegas kemmoù en elfenn gant ID $1: n'emañ ket er bank roadennoù !",
 'revdelete-no-change'         => "'''Evezh :''' emañ an arventennoù gweluster goulennet gant an elfenn deiziataet eus an $1 da $2 dija",
 'revdelete-concurrent-change' => "Fazi pa'z eus bet bet degaset kemmoù en elfenn deiziataet eus an $1 da $2 : cheñchet eo bet e statud gant unan bennak all dres pa oac'h-chwi o kemmañ anezhi. Gwiriit ar marilhoù.",
-'revdelete-only-restricted'   => "Ur fazi 'zo bet pa oac'h o tennañ an danvez eus an $1 da $2 : n'hallit ket tennañ an elfennoù-mañ digant ar verourien ma ne zibabit ket ivez an dibarzhioù diverkañ all.",
+'revdelete-only-restricted'   => "Ur fazi zo bet en ur guzhat an elfenn deiziadet eus an $1 da $2 : n'hallit ket kuzhat an elfennoù-mañ ouzh ar verourien hep dibab ivez unan eus an dibarzhioù gweluster all.",
 'revdelete-reason-dropdown'   => '*Abegoù diverkañ boutin
 **Gaou ouzh ar gwirioù implijout
 ** Titouroù personel dizereat',
@@ -1026,6 +1026,7 @@ Gwiriit ne vo ket torret red istor ar bajenn gant ar c'hemm-mañ.",
 'searchprofile-everything-tooltip' => "Klask e pep lec'h (er pajennoù kaozeal ivez)",
 'searchprofile-advanced-tooltip'   => 'Klask en esaouennoù anv personelaet',
 'search-result-size'               => '$1 ({{PLURAL:$2|1 ger|$2 ger}})',
+'search-result-category-size'      => '{{PLURAL:$1|1|$1}} ezel ({{PLURAL:$2|1|$2}} is-rummad, {{PLURAL:$3|1|$3}} restr)',
 'search-result-score'              => 'Klotadusted : $1%',
 'search-redirect'                  => '(adkas $1)',
 'search-section'                   => '(rann $1)',
@@ -1420,8 +1421,14 @@ S.o [[Special:NewFiles|rann ar skeudennoù nevez]] evit kaout ur sell gwiroc'h",
 \$2 eo {{PLURAL:\$3|ar seurt restroù|ar seurt restroù}} degemeret.",
 'filetype-missing'            => 'N\'eus astenn ebet stag ouzh ar restr (evel ".jpg").',
 'empty-file'                  => 'Ar restr o peus roet a oa goullo.',
+'file-too-large'              => 'Ar restr o peus roet a oa re vras.',
 'filename-tooshort'           => 'Re verr eo anv ar restr.',
+'filetype-banned'             => 'Difennet eo ar seurt restroù',
+'hookaborted'                 => "Ar c'hemm o peus klasket ober a zo bet paouezet gant ur sonnell astenn.",
 'illegal-filename'            => "N'eo ket aotreet anv ar restr.",
+'unknown-error'               => 'Ur gudenn dizanv a zo bet.',
+'tmp-create-error'            => 'Dibosupl eo krouiñ ur restr padennek.',
+'tmp-write-error'             => 'Ur gudenn skrivañ a zo bet evit ar restr padennek.',
 'large-file'                  => "Erbediñ a reer ne vefe ket brasoc'h ar restroù eget $1; $2 eo ment ar restr-mañ.",
 'largefileserver'             => "Brasoc'h eo ar restr-mañ eget ar pezh a c'hall ar servijer aotren.",
 'emptyfile'                   => "Evit doare eo goullo ar restr bet karget ganeoc'h. Moarvat eo abalamour d'an tipo en anv ar restr. Gwiriit mat e fell deoc'h pellgargañ ar restr-mañ.",
@@ -1455,6 +1462,7 @@ Mar fell deoc'h enporzhiañ ar restr-mañ da vat, kit war ho kiz hag enporzhiit 
 'uploadedimage'               => '"[[$1]]" enporzhiet',
 'overwroteimage'              => 'enporzhiet ur stumm nevez eus "[[$1]]"',
 'uploaddisabled'              => 'Ho tigarez, diweredekaet eo bet kas ar restr-mañ.',
+'uploadfromurl-queued'        => 'Lakaet eo bet ho pellgargadenn er roll gortoz.',
 'uploaddisabledtext'          => 'Diweredekaet eo an enporzhiañ restroù.',
 'php-uploaddisabledtext'      => 'Diweredekaet eo bet ar pellgargañ e PHP. Gwiriit an dibarzh arventennoù file_uploads.',
 'uploadscripted'              => "Er restr-mañ ez eus kodoù HTML pe skriptoù a c'hallfe bezañ kammgomprenet gant ur merdeer Kenrouedad.",
@@ -1857,32 +1865,33 @@ Gallout a ra bezañ [[{{MediaWiki:Listgrouprights-helppage}}|titouroù ouzhpenn]
 'listgrouprights-removegroup-self-all' => 'Gallout a ra tennañ kuit an holl strolladoù eus kont an-unan.',
 
 # E-mail user
-'mailnologin'      => "Chomlec'h ebet",
-'mailnologintext'  => "Ret eo deoc'h bezañ [[Special:UserLogin|kevreet]]
+'mailnologin'          => "Chomlec'h ebet",
+'mailnologintext'      => "Ret eo deoc'h bezañ [[Special:UserLogin|kevreet]]
 ha bezañ merket ur chomlec'h postel reizh en ho [[Special:Preferences|penndibaboù]]
 evit gallout kas ur postel d'un implijer all.",
-'emailuser'        => "Kas ur postel d'an implijer-mañ",
-'emailpage'        => 'Postel implijer',
-'emailpagetext'    => "Gallout a rit ober gant ar furmskrid a-is a-benn kas ur postel d'an implijer-mañ.
+'emailuser'            => "Kas ur postel d'an implijer-mañ",
+'emailpage'            => 'Postel implijer',
+'emailpagetext'        => "Gallout a rit ober gant ar furmskrid a-is a-benn kas ur postel d'an implijer-mañ.
 E maezienn \"Kaser\" ho postel e vo merket ar chomlec'h postel resisaet ganeoc'h-c'hwi en ho [[Special:Preferences|Penndibaboù]], d'ar resever da c'hallout respont deoc'h war-eeun ma kar.",
-'usermailererror'  => 'Fazi postel :',
-'defemailsubject'  => 'postel kaset eus {{SITENAME}}',
-'usermaildisabled' => "Diweredekaet eo ar c'has posteloù etre an implijerien.",
-'noemailtitle'     => "Chomlec'h elektronek ebet",
-'noemailtext'      => "N'en deus ket an implijer-mañ resisaet chomlec'h postel reizh ebet.",
-'nowikiemailtitle' => 'Berzet kas posteloù',
-'nowikiemailtext'  => 'Dibabet ez eus bet gant an implijerien-mañ chom hep resev posteloù a-berzh implijerien all.',
-'email-legend'     => "Kas ur postel d'un implijer all eus {{SITENAME}}",
-'emailfrom'        => 'Kaser :',
-'emailto'          => 'Resever :',
-'emailsubject'     => 'Danvez :',
-'emailmessage'     => 'Postel :',
-'emailsend'        => 'Kas',
-'emailccme'        => "Kas din un eilskrid eus ma c'hemennadenn dre bostel.",
-'emailccsubject'   => 'Eilenn eus ho kemennadenn da $1: $2',
-'emailsent'        => 'Postel kaset',
-'emailsenttext'    => 'Kaset eo bet ho postel.',
-'emailuserfooter'  => 'Kaset eo bet ar postel-mañ gant $1 da $2 dre an arc\'hwel "Kas ur postel d\'an implijer" war {{SITENAME}}.',
+'usermailererror'      => 'Fazi postel :',
+'defemailsubject'      => 'postel kaset eus {{SITENAME}}',
+'usermaildisabled'     => "Diweredekaet eo ar c'has posteloù etre an implijerien.",
+'usermaildisabledtext' => "Ne c'helloc'h ket kas posteloù da implijerien all er wiki-mañ",
+'noemailtitle'         => "Chomlec'h postel ebet",
+'noemailtext'          => "N'en deus ket an implijer-mañ resisaet chomlec'h postel reizh ebet.",
+'nowikiemailtitle'     => 'Berzet kas posteloù',
+'nowikiemailtext'      => 'Dibabet ez eus bet gant an implijerien-mañ chom hep resev posteloù a-berzh implijerien all.',
+'email-legend'         => "Kas ur postel d'un implijer all eus {{SITENAME}}",
+'emailfrom'            => 'Kaser :',
+'emailto'              => 'Resever :',
+'emailsubject'         => 'Danvez :',
+'emailmessage'         => 'Postel :',
+'emailsend'            => 'Kas',
+'emailccme'            => "Kas din un eilskrid eus ma c'hemennadenn dre bostel.",
+'emailccsubject'       => 'Eilenn eus ho kemennadenn da $1: $2',
+'emailsent'            => 'Postel kaset',
+'emailsenttext'        => 'Kaset eo bet ho postel.',
+'emailuserfooter'      => 'Kaset eo bet ar postel-mañ gant $1 da $2 dre an arc\'hwel "Kas ur postel d\'an implijer" war {{SITENAME}}.',
 
 # Watchlist
 'watchlist'            => 'Roll evezhiañ',
@@ -2543,6 +2552,8 @@ Miret eo an holl enporzhiadennoù etrewiki e-barzh [[Special:Log/import|log an e
 'tooltip-rollback'                => "\"Disteuler\" a zistaol en ur c'hlik ar c'hemm(où) bet degaset d'ar bajenn-mañ gant an implijer diwezhañ.",
 'tooltip-undo'                    => '"Dizober" a zistaol ar c\'hemm-mañ hag a zigor ar prenestr skridaozañ er mod rakwelet.
 Talvezout a ra da ouzhpennañ un displegadenn er c\'hombod diverrañ.',
+'tooltip-preferences-save'        => 'Enrollañ ar penndibaboù',
+'tooltip-summary'                 => 'Skrivit un diveradenn verr',
 
 # Stylesheets
 'common.css'      => '/** Talvezout a raio ar CSS lakaet amañ evit an holl gwiskadurioù */',

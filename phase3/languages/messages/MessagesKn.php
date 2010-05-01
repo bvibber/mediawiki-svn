@@ -234,7 +234,7 @@ $messages = array(
 'printableversion'  => 'ಪ್ರಿಂಟ್ ಆವೃತ್ತಿ',
 'permalink'         => 'ಸ್ಥಿರ ಸಂಪರ್ಕ',
 'print'             => 'ಮುದ್ರಿಸು',
-'edit'              => 'ಸಂಪಾದಿಸಿ (edit this page)',
+'edit'              => 'ಸಂಪಾದಿಸಿ',
 'create'            => 'ಸೃಷ್ಟಿಸು',
 'editthispage'      => 'ಈ ಪುಟವನ್ನು ಬದಲಾಯಿಸಿ',
 'create-this-page'  => 'ಈ ಪುಟವನ್ನು ಸೃಷ್ಟಿಸು',
@@ -1168,6 +1168,7 @@ $2',
 # Statistics
 'statistics'              => 'ಅಂಕಿ ಅಂಶಗಳು',
 'statistics-header-users' => 'ಸದಸ್ಯರ ಅಂಕಿ ಅಂಶ',
+'statistics-pages'        => 'ಪುಟಗಳು',
 'statistics-mostpopular'  => 'ಅತ್ಯಂತ ಹೆಚ್ಚು ವೀಕ್ಷಿತ ಪುಟಗಳು',
 
 'disambiguations'     => 'ದ್ವಂದ್ವನಿವಾರಣಾ ಪುಟಗಳು',
@@ -1274,7 +1275,8 @@ $2',
 'sp-deletedcontributions-contribs' => 'ಕಾಣಿಕೆಗಳು',
 
 # Special:LinkSearch
-'linksearch' => 'ಹೊರಗಿನ ಸಂಪರ್ಕಗಳು',
+'linksearch'    => 'ಹೊರಗಿನ ಸಂಪರ್ಕಗಳು',
+'linksearch-ok' => 'ಹುಡುಕು',
 
 # Special:ListUsers
 'listusersfrom'      => 'ಇದರಿಂದ ಪ್ರಾರಂಭವಾಗುವ ಬಳಕೆದಾರರನ್ನು ತೋರಿಸು:',
@@ -1982,8 +1984,9 @@ $5
 'version-software-version' => 'ಆವೃತ್ತಿ',
 
 # Special:FilePath
-'filepath'      => 'ಫೈಲಿನ ಮಾರ್ಗ',
-'filepath-page' => 'ಫೈಲು:',
+'filepath'        => 'ಫೈಲಿನ ಮಾರ್ಗ',
+'filepath-page'   => 'ಫೈಲು:',
+'filepath-submit' => 'ಹೋಗು',
 
 # Special:FileDuplicateSearch
 'fileduplicatesearch'          => 'ದ್ವಿಪ್ರತಿ ಫೈಲುಗಳಿಗೆ ಹುಡುಕು',

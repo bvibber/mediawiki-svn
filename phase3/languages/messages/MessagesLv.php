@@ -368,6 +368,7 @@ Tas parasti notiek novecojušu saišu gadījumā: pieprasot izmaiņas vai hronol
 
 Ja lapai ir jābūt, tad, iespējams, ir kļūda programmā.
 Par to varat ziņot [[Special:ListUsers/sysop|kādam administratoram]], norādot arī URL.',
+'missingarticle-rev'   => '(Pārskatīšana #: $1)',
 'missingarticle-diff'  => '(Salīdz.: $1, $2)',
 'internalerror'        => 'Iekšēja kļūda',
 'internalerror_info'   => 'Iekšējā kļūda: $1',
@@ -386,6 +387,9 @@ Par to varat ziņot [[Special:ListUsers/sysop|kādam administratoram]], norādot
 'perfcached'           => 'Šie dati ir no servera kešatmiņas un var būt novecojuši:',
 'perfcachedts'         => "Šie dati ir no servera kešatmiņas (''cache''), kas pēdējo reizi bija atjaunota $1.",
 'querypage-no-updates' => 'Šīs lapas atjaunošana pagaidām ir atslēgta. Te esošie dati tuvākajā laikā netiks atjaunoti.',
+'wrong_wfQuery_params' => 'Nekorekti wfQuery() parametri<br />
+Funkcija: $1<br />
+Vaicājums: $2',
 'viewsource'           => 'Aplūkot kodu',
 'viewsourcefor'        => 'Lapa: $1',
 'protectedpagetext'    => 'Šī lapa ir aizsargāta lai novērstu tās izmainīšanu.',
@@ -400,6 +404,8 @@ Par to varat ziņot [[Special:ListUsers/sysop|kādam administratoram]], norādot
 Norādītais iemesls bija ''$2''.",
 
 # Virus scanner
+'virus-badscanner'     => "Nekorekta konfigurācija: nezināms vīrusu skeneris: ''$1''",
+'virus-scanfailed'     => 'skenēšana neizdevās (kods $1)',
 'virus-unknownscanner' => 'nezināms antivīruss:',
 
 # Login and logout pages
@@ -1475,7 +1481,7 @@ Pašreizējie lapas '''$1''' iestatījumi ir:",
 'protect-cascade'             => "Aizsargāt šajā lapā iekļautās lapas (veidnes) ''(cascading protection)''",
 'protect-cantedit'            => 'Tu nevari izmainīt šīs lapas aizsardzības līmeņus, tāpēc, ka tur nevari izmainīt šo lapu.',
 'protect-otherreason'         => 'Cits/papildu iemesls:',
-'protect-otherreason-op'      => 'cits/papildu iemesls',
+'protect-otherreason-op'      => 'Cits iemesls',
 'protect-dropdown'            => '*Izplatīti aizsargāšanas iemesli
 ** Pārmērīgs vandālisms
 ** Pārmērīgs spams
@@ -2023,7 +2029,7 @@ Lūdzu apstiprini, ka tiešām gribi izveidot šo lapu no jauna.",
 'autosumm-new'     => 'Jauna lapa: $1',
 
 # Live preview
-'livepreview-loading' => 'Ielādējas…',
+'livepreview-loading' => 'Cits pārlūks:',
 'livepreview-ready'   => 'Ielādējas… Gatavs!',
 'livepreview-failed'  => 'Tūlītējais pirmskats nobruka! Pamēģini parasto pirmskatu.',
 'livepreview-error'   => 'Neizdevās pievienoties: $1 "$2". Pamēģini parasto pirmskatu.',

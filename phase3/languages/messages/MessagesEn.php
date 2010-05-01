@@ -1625,6 +1625,7 @@ Note that using the navigation links will reset this column.',
 'searchprofile-everything-tooltip' => 'Search all of content (including talk pages)',
 'searchprofile-advanced-tooltip'   => 'Search in custom namespaces',
 'search-result-size'               => '$1 ({{PLURAL:$2|1 word|$2 words}})',
+'search-result-category-size'      => '{{PLURAL:$1|1 member|$1 members}} ({{PLURAL:$2|1 subcategory|$2 subcategories}}, {{PLURAL:$3|1 file|$3 files}})',
 'search-result-score'              => 'Relevance: $1%',
 'search-redirect'                  => '(redirect $1)',
 'search-section'                   => '(section $1)',
@@ -2019,6 +2020,9 @@ Pages on [[Special:Watchlist|your watchlist]] are '''bold'''.",
 'upload_directory_read_only'  => 'The upload directory ($1) is not writable by the webserver.',
 'uploaderror'                 => 'Upload error',
 'upload-summary'              => '', # do not translate or duplicate this message to other languages
+'upload-recreate-warning'     => "'''Warning: A file by that name has been deleted or moved.'''
+
+The deletion and move log for this page are provided here for convenience:",
 'uploadtext'                  => "Use the form below to upload files.
 To view or search previously uploaded files go to the [[Special:FileList|list of uploaded files]], (re)uploads are also logged in the [[Special:Log/upload|upload log]], deletions in the [[Special:Log/delete|deletion log]].
 
@@ -3290,6 +3294,8 @@ Please try again.',
 'accesskey-compareselectedversions' => 'v', # do not translate or duplicate this message to other languages
 'accesskey-watch'                   => 'w', # do not translate or duplicate this message to other languages
 'accesskey-upload'                  => 's', # do not translate or duplicate this message to other languages
+'accesskey-preferences-save'        => 's', # do not translate or duplicate this message to other languages
+'accesskey-summary'                 => 'b', # do not translate or duplicate this message to other languages
 
 # Tooltip help for the actions
 'tooltip-pt-userpage'             => 'Your user page',
@@ -3356,6 +3362,8 @@ You can view its source',
 'tooltip-upload'                  => 'Start upload',
 'tooltip-rollback'                => '"Rollback" reverts edit(s) to this page of the last contributor in one click',
 'tooltip-undo'                    => '"Undo" reverts this edit and opens the edit form in preview mode. It allows adding a reason in the summary.',
+'tooltip-preferences-save'        => 'Save preferences',
+'tooltip-summary'                 => 'Enter a short summary',
 
 # Stylesheets
 'common.css'      => '/* CSS placed here will be applied to all skins */', # only translate this message to other languages if you have to change it

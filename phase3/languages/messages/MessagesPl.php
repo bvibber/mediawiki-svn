@@ -1180,6 +1180,7 @@ Użycie linków nawigacyjnych kasuje wybór w kolumnie.',
 'searchprofile-everything-tooltip' => 'Szukanie w całej zawartości (także strony dyskusji)',
 'searchprofile-advanced-tooltip'   => 'Szukanie w wybranych przestrzeniach nazw',
 'search-result-size'               => '$1 ({{PLURAL:$2|1 słowo|$2 słowa|$2 słów}})',
+'search-result-category-size'      => '{{PLURAL:$1|1 element|$1 elementy|$1 elementów}} ({{PLURAL:$2|1 kategoria|$2 kategorie|$2 kategorii}}, {{PLURAL:$3|1 plik|$3 pliki|$3 plików}})',
 'search-result-score'              => 'Trafność: $1%',
 'search-redirect'                  => '(przekierowanie $1)',
 'search-section'                   => '(sekcja $1)',
@@ -1541,6 +1542,9 @@ Strony z [[Special:Watchlist|listy obserwowanych]] są '''wytłuszczone'''.",
 'upload_directory_missing'    => 'Katalog dla przesyłanych plików ($1) nie istnieje i nie może zostać utworzony przez serwer WWW.',
 'upload_directory_read_only'  => 'Serwer nie może zapisywać do katalogu ($1) przeznaczonego na przesyłane pliki.',
 'uploaderror'                 => 'Błąd wysyłania',
+'upload-recreate-warning'     => "'''Uwaga – plik o tej nazwie został wcześniej usunięty lub przrniesiony.'''
+
+Poniżej znajduje się rejestr usunięć i zmian nazwy tej strony:",
 'uploadtext'                  => "Użyj poniższego formularza do przesłania plików.
 Jeśli chcesz przejrzeć lub przeszukać dotychczas przesłane pliki, przejdź do [[Special:FileList|listy plików]]. Każde przesłanie zostaje odnotowane w [[Special:Log/upload|rejestrze przesyłanych plików]], a usunięcie w [[Special:Log/delete|rejestrze usuniętych]].
 
@@ -2318,7 +2322,7 @@ $1',
 'sp-contributions-deleted'             => 'usunięty wkład użytkownika',
 'sp-contributions-logs'                => 'rejestry',
 'sp-contributions-talk'                => 'dyskusja',
-'sp-contributions-userrights'          => 'zarządzanie uprawnieniami użytkowników',
+'sp-contributions-userrights'          => 'zarządzanie uprawnieniami użytkownika',
 'sp-contributions-blocked-notice'      => '{{GENDER:$1|Ten użytkownik|Ta użytkowniczka}} jest obecnie {{GENDER:$1|zablokowany|zablokowana}}. Ostatni wpis rejestru blokad jest pokazany poniżej.',
 'sp-contributions-blocked-notice-anon' => 'Ten adres IP jest obecnie zablokowany.
 Poniżej znajduje się ostatni wpis w rejestrze blokowania.',
@@ -2727,6 +2731,7 @@ Brak katalogu dla plików tymczasowych.',
 'tooltip-rollback'                => '„cofnij” jednym kliknięciem wycofuje wszystkie zmiany tej strony wykonane przez ostatniego edytującego.',
 'tooltip-undo'                    => '„anuluj edycję” wycofuje tę edycję i otwiera okno edycji w trybie podglądu.
 Pozwala na wpisanie powodu w opisie zmian.',
+'tooltip-preferences-save'        => 'Zapisz preferencje',
 
 # Stylesheets
 'common.css'      => '/* Umieszczony tutaj kod CSS zostanie zastosowany we wszystkich skórkach */',

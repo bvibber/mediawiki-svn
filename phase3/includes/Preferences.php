@@ -640,7 +640,7 @@ class Preferences {
 	}
 
 	static function editingPreferences( $user, &$defaultPreferences ) {
-		global $wgUseExternalEditor, $wgLivePreview, $wgAllowUserCssPrefs;
+		global $wgUseExternalEditor, $wgAllowUserCssPrefs;
 
 		## Editing #####################################
 		$defaultPreferences['cols'] = array(
@@ -729,13 +729,12 @@ class Preferences {
 			'label-message' => 'tog-forceeditsummary',
 		);
 
-		if ( $wgLivePreview ) {
-			$defaultPreferences['uselivepreview'] = array(
-				'type' => 'toggle',
-				'section' => 'editing/advancedediting',
-				'label-message' => 'tog-uselivepreview',
-			);
-		}
+				
+		$defaultPreferences['uselivepreview'] = array(
+			'type' => 'toggle',
+			'section' => 'editing/advancedediting',
+			'label-message' => 'tog-uselivepreview',
+		);
 	}
 
 	static function rcPreferences( $user, &$defaultPreferences ) {
@@ -845,6 +844,14 @@ class Preferences {
 			'label-message' => 'tog-watchlisthideliu',
 		);
 
+		if ( $wgUseRCPatrol ) {
+			$defaultPreferences['watchlisthidepatrolled'] = array(
+				'type' => 'toggle',
+				'section' => 'watchlist/advancedwatchlist',
+				'label-message' => 'tog-watchlisthidepatrolled',
+			);
+		}
+
 		if ( $wgEnableAPI ) {
 			# Some random gibberish as a proposed default
 			$hash = sha1( mt_rand() . microtime( true ) );
@@ -854,14 +861,6 @@ class Preferences {
 				'section' => 'watchlist/advancedwatchlist',
 				'label-message' => 'prefs-watchlist-token',
 				'help' => wfMsgHtml( 'prefs-help-watchlist-token', $hash )
-			);
-		}
-
-		if ( $wgUseRCPatrol ) {
-			$defaultPreferences['watchlisthidepatrolled'] = array(
-				'type' => 'toggle',
-				'section' => 'watchlist/advancedwatchlist',
-				'label-message' => 'tog-watchlisthidepatrolled',
 			);
 		}
 
@@ -1141,6 +1140,8 @@ class Preferences {
 		$htmlForm = new PreferencesForm( $formDescriptor, 'prefs' );
 
 		$htmlForm->setSubmitText( wfMsg( 'saveprefs' ) );
+		# Used message keys: 'accesskey-preferences-save', 'tooltip-preferences-save'
+		$htmlForm->setSubmitTooltip( 'preferences-save' );
 		$htmlForm->setTitle( SpecialPage::getTitleFor( 'Preferences' ) );
 		$htmlForm->setSubmitID( 'prefsubmit' );
 		$htmlForm->setSubmitCallback( array( 'Preferences', 'tryFormSubmit' ) );

@@ -818,6 +818,7 @@ $wgMessageStructure = array(
 		'searchprofile-everything-tooltip',
 		'searchprofile-advanced-tooltip',
 		'search-result-size',
+		'search-result-category-size',
 		'search-result-score',
 		'search-redirect',
 		'search-section',
@@ -1188,6 +1189,7 @@ $wgMessageStructure = array(
 		'upload_directory_read_only',
 		'uploaderror',
 		'upload-summary',
+		'upload-recreate-warning',
 		'uploadtext',
 		'upload-permitted',
 		'upload-preferred',
@@ -2260,6 +2262,8 @@ $wgMessageStructure = array(
 		'accesskey-compareselectedversions',
 		'accesskey-watch',
 		'accesskey-upload',
+		'accesskey-preferences-save',
+		'accesskey-summary',
 	),
 	'tooltips' => array(
 		'tooltip-pt-userpage',
@@ -2326,6 +2330,8 @@ $wgMessageStructure = array(
 		'tooltip-upload',
 		'tooltip-rollback',
 		'tooltip-undo',
+		'tooltip-preferences-save',
+		'tooltip-summary',
 	),
 	'stylesheets' => array(
 		'common.css',

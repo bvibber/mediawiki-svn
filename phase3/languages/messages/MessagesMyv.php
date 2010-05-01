@@ -284,6 +284,8 @@ $messages = array(
 'category-file-count'            => '{{PLURAL:$2|Те категориясонть вейкине файлась вана косо.|{{PLURAL:$1|Те файлась кандови|$1 Не файлатне кандовить}} те категориянтень, категориясонть файлатнеде весемезэ $2.}}',
 'category-file-count-limited'    => '{{PLURAL:$1|Те файлась|$1 Не файлатне}} вановиця категориянтень кандови.',
 'listingcontinuesabbrev'         => 'поладксозо моли',
+'index-category'                 => 'Индекс марто лопатне',
+'noindex-category'               => 'Индекстэме лопатне',
 
 'mainpagetext' => "'''МедияВикинь тевс аравтомазо парсте лиссь.'''",
 
@@ -514,6 +516,7 @@ $messages = array(
 'nav-login-createaccount'    => 'Совамо / тейть совамотарка',
 'loginprompt'                => '{{SITENAME}} сайтэнтень совамга эряви нолдамс тевс cookies.',
 'userlogin'                  => 'Совамо / тейть совамотарка',
+'userloginnocreate'          => 'Совамо',
 'logout'                     => 'Лисеме',
 'userlogout'                 => 'Лисеме',
 'notloggedin'                => 'Апак соваво',
@@ -527,6 +530,10 @@ $messages = array(
 'userexists'                 => 'Те лемесь уш саезь. Арсека эсеть лия, инеськеть.',
 'loginerror'                 => 'Совамсто ильведькс',
 'createaccounterror'         => 'Совамо тарка эзь теевть: $1',
+'nocookiesnew'               => 'Совамо таркась шкавсь, ансяк зярс эзить сова.
+ {{SITENAME}} сайтэв совават cookies функция вельде.
+Содымашинасот cookies функциятне тевс апак нолда.
+Васня нолдытя функциятнень тевс, мейле совак: сёрмадыть од теицянь леметь ды совамо валот.',
 'noname'                     => 'Зярс эзить максо кемекстазь теицянь лем.',
 'loginsuccesstitle'          => 'Совавить',
 'loginsuccess'               => "'''Тон совить {{SITENAME}}-с кода \"\$1\".'''",
@@ -887,6 +894,7 @@ IP-тешкстэть — $3, саймас совавтоманть ID-сь — 
 'prefs-help-email-required' => 'Е-сёрмань адресэть эряви.',
 'prefs-signature'           => 'Кедь путовкс',
 'prefs-dateformat'          => 'Ков чинь форматозо',
+'prefs-diffs'               => 'Мейсэ явовить верзиятне',
 
 # User rights
 'userrights-lookup-user'      => 'Сови куротнень ветямось',
@@ -1276,10 +1284,13 @@ IP-тешкстэть — $3, саймас совавтоманть ID-сь — 
 'listusers-blocked'  => '(саймас саезь)',
 
 # Special:ActiveUsers
-'activeusers-noresult' => 'Якинзэ-пакинзэ арасть',
+'activeusers-hidebots'   => 'Кекшемс ботатнень',
+'activeusers-hidesysops' => 'Кекшемс администратортнэнь',
+'activeusers-noresult'   => 'Якинзэ-пакинзэ арасть',
 
 # Special:Log/newusers
 'newuserlogpage'           => 'Теицянь шкамодо-теемадо конёв',
+'newuserlogpagetext'       => 'Те теицянь шкавксто журнал',
 'newuserlog-byemail'       => 'совамо вал кучозь е-сёрмасо',
 'newuserlog-create-entry'  => 'Од совиця',
 'newuserlog-create2-entry' => 'шкизе од совамо тарканть $1',
@@ -2006,7 +2017,7 @@ IP-тешкстэть — $3, саймас совавтоманть ID-сь — 
 # Special:FilePath
 'filepath'        => 'Файлас яннэ',
 'filepath-page'   => 'Файл:',
-'filepath-submit' => 'Яннэ',
+'filepath-submit' => 'Ютак',
 
 # Special:FileDuplicateSearch
 'fileduplicatesearch'          => 'Вешнэмс кавтаське файлат',

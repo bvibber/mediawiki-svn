@@ -1182,6 +1182,7 @@ $1",
 'searchprofile-everything-tooltip' => '토론 문서를 포함한 모든 문서 찾기',
 'searchprofile-advanced-tooltip'   => '다음 설정된 이름공간에서 찾기',
 'search-result-size'               => '$1 ($2 단어)',
+'search-result-category-size'      => '문서 {{PLURAL:$1|1|$1}}개, 하위 분류 {{PLURAL:$2|1|$2}}개, 파일 {{PLURAL:$3|1|$3}}',
 'search-result-score'              => '유사도: $1%',
 'search-redirect'                  => '($1에서 넘어옴)',
 'search-section'                   => '($1 문단)',
@@ -1539,6 +1540,9 @@ $1",
 'upload_directory_missing'    => '파일 올리기용 디렉토리($1)가 없고 웹 서버가 생성하지 못했습니다.',
 'upload_directory_read_only'  => '파일 저장 디렉토리($1)에 쓰기 권한이 없습니다.',
 'uploaderror'                 => '올리기 오류',
+'upload-recreate-warning'     => "'''경고: 이 파일로 된 이름이 삭제되었거나 옮겨졌습니다.'''
+
+이 문서의 최근 삭제 기록과 이동 기록을 참고하십시오:",
 'uploadtext'                  => "파일을 올리기 위해서는 아래의 양식을 채워주세요.
 [[Special:FileList|파일 목록]]에서 이전에 올라온 파일을 찾을 수 있습니다. [[Special:Log/upload|올리기 기록]]에는 파일이 올라온 기록이 남습니다. 삭제 기록은 [[Special:Log/delete|삭제 로그]]에서 볼 수 있습니다.
 
@@ -2703,10 +2707,14 @@ $1 사용자는 이미 차단되었습니다. 차단 설정을 바꾸시겠습�
 'tooltip-rollback'                => '"되돌리기" 기능을 사용하면 이 문서에 대한 마지막 기여자의 편집을 모두 되돌릴 수 있습니다.',
 'tooltip-undo'                    => '"편집 취소" 기능을 사용하면 이 편집이 되돌려지고, 차이보기 기능이 미리보기 형식으로 나타납니다. 
 편집 요약에 이 편집을 왜 되돌리는지에 대한 이유를 쓸 수 있습니다.',
+'tooltip-preferences-save'        => '환경 설정 저장하기',
+'tooltip-summary'                 => '짧은 편집 요약을 적어주세요',
 
 # Stylesheets
 'common.css'   => '/** 이 CSS 설정은 모든 스킨에 적용됩니다 */',
 'monobook.css' => '/* 이 CSS 설정은 모든 모노북 스킨에 적용됩니다 */',
+'modern.css'   => '/* 이 CSS 설정은 모든 모던 스킨에 적용됩니다 */',
+'vector.css'   => '/* 이 CSS 설정은 모든 벡터 스킨에 적용됩니다 */',
 
 # Scripts
 'common.js'   => '/* 이 자바스크립트 설정은 모든 문서, 모든 사용자에게 적용됩니다. */',

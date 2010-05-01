@@ -1058,6 +1058,7 @@ Zaruc, až historija wersijow nastawka jo njepśetergnjona.',
 'searchprofile-everything-tooltip' => 'Cełe wopsímjeśe pśepytaś (inkluziwnje diskusijne boki)',
 'searchprofile-advanced-tooltip'   => 'W swójskich mjenjowych rumach pytaś',
 'search-result-size'               => '$1 ({{PLURAL:$2|1 słowow|$2 słowje|$2 słowa|$2 słowow}})',
+'search-result-category-size'      => '{{PLURAL:$1|1 cłonk|$1 cłonka|$1 cłonki|$1 cłonkow}} ({{PLURAL:$2|1 pódkategorija|$2 pódkategoriji|$2 pódkategorije|$2 pódkategorijow}}, {{PLURAL:$3|1 dataja|$3 dataji|$3 dataje|$3 datajow}})',
 'search-result-score'              => 'Relewanca: $1 %',
 'search-redirect'                  => '(pśesměrowanje $1)',
 'search-section'                   => '(sekcija $1)',
@@ -1273,7 +1274,7 @@ Móžoš toś ten bok wužywaś, aby slědk stajił swóje nastajenja na standar
 'right-nominornewtalk'        => 'Snadne změny na diskusijnych bokach njedowjedu k pokazanjeju "Nowe powěsći"',
 'right-apihighlimits'         => 'Wuše limity w API-wótpšašanjach wužywaś',
 'right-writeapi'              => 'writeAPI wužywaś',
-'right-delete'                => 'lašowaś boki',
+'right-delete'                => 'Boki wulašowaś',
 'right-bigdelete'             => 'lašowaś boki, kótarež maju wjelike stawizny',
 'right-deleterevision'        => 'Specifiske boki lašowaś a wótnowiś',
 'right-deletedhistory'        => 'Wulašowane wersiji w stawiznach se bśez pśisłušnego teksta wobglědaś',
@@ -1415,6 +1416,9 @@ Boki na [[Special:Watchlist|wobglědowańce]] su '''tucne'''.",
 'upload_directory_missing'    => 'Nagrawański zapis ($1) felujo a njejo se pśez webserwer napóraś dał.',
 'upload_directory_read_only'  => 'Seśowy serwer njamóžo do uploadowego zapisa ($1) pisaś.',
 'uploaderror'                 => 'Zmólka pśi uploadowanju',
+'upload-recreate-warning'     => "'''Warnowanje: Dataja z tym mjenim jo se wulašowała abo pśeunuła.'''
+
+Protokola wulašowanjow a pśesunjenjow za toś ten bok stej how k twójej dispoziciji pódanej:",
 'uploadtext'                  => "Wužyj toś ten formular za nagraśe nowych datajow.
 
 Źi na [[Special:FileList|lisćinu nagratych datajow]], aby mógł južo nagrate dataje se wobglědaś abo pytaś, nagraśa protokolěruju se w [[Special:Log/upload|protokolu nagraśow]], wulašowanja w [[Special:Log/upload|protokolu wulašowanjow]].
@@ -2555,6 +2559,8 @@ Wšykne transwiki-importowe akcije protokolěruju se w [[Special:Log/import|log-
 'tooltip-rollback'                => '"Roolback" anulěrujo změny slědnego wužywarja na toś tom boku z jadnym kliknjenim.',
 'tooltip-undo'                    => 'Anulěrujo toś tu změnu a wócynijo wobźěłański formular w pśeglědowem modusu.
 W zespominanju dajo se pśicyna pódaś.',
+'tooltip-preferences-save'        => 'Nastajenja składowaś',
+'tooltip-summary'                 => 'Zapódaj krotke zespominanje',
 
 # Stylesheets
 'common.css'   => '/** Na toś tom městnje wustatkujo se CSS na wšykne šaty. */',

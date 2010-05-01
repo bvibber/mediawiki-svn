@@ -1086,6 +1086,7 @@ Denkt w.e.g drunn datt d'Navigatiounslinken d'Wiel vun de Versiounen nees zréck
 'searchprofile-everything-tooltip' => 'Op alle Säiten nom Inhalt sichen  (inclusiv Diskussiounssäiten)',
 'searchprofile-advanced-tooltip'   => 'Sich an den Nummraim déi an de perséinlichen Astellungen festgeluecht sinn',
 'search-result-size'               => '$1 ({{PLURAL:$2|1 Wuert|$2 Wierder}})',
+'search-result-category-size'      => '{{PLURAL:$1|1 Säit|$1 Säiten}} ({{PLURAL:$2|1 Ënnerkategorie|$2 Ënnerkategorien}}, {{PLURAL:$3|1 Fichier|$3 Fichieren}})',
 'search-result-score'              => 'Relevanz: $1 %',
 'search-redirect'                  => '(Viruleedung $1)',
 'search-section'                   => '(Abschnitt $1)',
@@ -1446,6 +1447,9 @@ Säite vun [[Special:Watchlist|Ärer Iwwerwaachungslëscht]] si '''fett''' gesch
 'upload_directory_missing'    => 'De Repertoire an deen Dir eropluede wollt ($1) feelt a konnt net vum Webserver ugeluecht ginn.',
 'upload_directory_read_only'  => 'De Webserver kann net an den Upload-Repertoire ($1) schreiwen.',
 'uploaderror'                 => 'Feeler bäim Eroplueden',
+'upload-recreate-warning'     => "'''Opgepasst: E Fichier mat deem Numm gouf scho geläscht oder geréckelt.'''
+
+Hei fannt Dir en Extrait aus dem Läsch- a Réckel-Logbuch fir dëse Fichier.",
 'uploadtext'                  => "Benotzt dëse Formulaire, fir nei Fichieren eropzelueden.
 Gitt op d'[[Special:FileList|Lëscht vun den eropgeluedene Fichieren]], fir no Fichieren ze sichen déi virdrun eropgeluede goufen, Eropluedunge fannt dir an der [[Special:Log/upload|Lëscht vun den eropgeluedene Fichieren]], geläschte Fichieren am [[Special:Log/delete|Läschlog]].
 
@@ -1472,6 +1476,7 @@ Kuckt [[Special:NewFiles|d'Gallerie vun de neie Fichieren]] wann Dir méi e visu
 'minlength1'                  => "D'Nimm vu Fichiere musse mindestens e Buschtaf am Numm hunn.",
 'illegalfilename'             => 'Am Fichiersnumm "$1" sti Schrëftzeechen, déi net am Numm vun enger Säit erlaabt sinn. W.e.g. nennt de Fichier anescht, a probéiert dann nach eng Kéier.',
 'badfilename'                 => 'Den Numm vum Fichier gouf an "$1" ëmgeännert.',
+'filetype-mime-mismatch'      => 'Dateierweiderung passt net op de MIME-Typ.',
 'filetype-badmime'            => 'Fichiere vum MIME-Typ "$1" kënnen net eropgeluede ginn.',
 'filetype-bad-ie-mime'        => 'Dëse Fichier kann net eropgeluede ginn, well den Internet Explorer en als „$1“ erkennt, deen net erlaabt ass well et e potentiell geféierleche Fichierstyp ass.',
 'filetype-unwanted-type'      => "'''\".\$1\"''' ass een onerwënschte Fichiersformat. 
@@ -2596,6 +2601,7 @@ Späichert en op Ärem Computer of a luet en hei nees erop.',
 'tooltip-rollback'                => '"Zrécksetzen" mécht all Ännerunge vum leschten "Auteur" an engem Klick nees réckgängeg.',
 'tooltip-undo'                    => '"Zréck" setzt dës Ännerung zréck a mécht den Ännerungsformulaire am Modus "kucken ouni ofzespäicheren" op.
 Erlaabt et e Grond an de Resumé derbäizesetzen.',
+'tooltip-preferences-save'        => 'Astellungen späicheren',
 
 # Stylesheets
 'common.css'      => "/* Dës CSS huet nëmmen Afloss op de Skin ''Chick''  */",

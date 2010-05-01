@@ -145,6 +145,7 @@ $wgRedirectScript   = false; ///< defaults to "{$wgScriptPath}/redirect{$wgScrip
  * asset paths as seen by users
  */
 $wgStylePath   = false; ///< defaults to "{$wgScriptPath}/skins"
+$wgLocalStylePath   = false; ///< defaults to the same value as $wgStylePath, and shouldn't point to an external domain
 $wgExtensionAssetsPath = false; ///< defaults to "{$wgScriptPath}/extensions"
 
 /**
@@ -1682,7 +1683,7 @@ $wgCacheEpoch = '20030516000000';
  * to ensure that client-side caches do not keep obsolete copies of global
  * styles.
  */
-$wgStyleVersion = '270';
+$wgStyleVersion = '274';
 
 
 # Server-side caching:
@@ -4200,6 +4201,13 @@ $wgVectorUseSimpleSearch = false;
  * false = use watch/unwatch text link
  */
 $wgVectorUseIconWatch = false;
+
+/**
+ * Show the name of the current variant as a label in the variants drop-down menu
+ * true = Show the label
+ * false = Do not show the label
+ */
+$wgVectorShowVariantName = false;
 
 /**
  * Add extra stylesheets for Vector - This is only being used so that we can play around with different options while

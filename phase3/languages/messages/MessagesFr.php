@@ -1262,6 +1262,7 @@ Assurez-vous que cette opération conservera la continuité de l’historique de
 'searchprofile-everything-tooltip' => 'Rechercher dans tout le site (y compris dans les pages de discussion)',
 'searchprofile-advanced-tooltip'   => 'Choisir les espaces de noms pour la recherche',
 'search-result-size'               => '$1 ($2 mot{{PLURAL:$2||s}})',
+'search-result-category-size'      => '$1 membre{{PLURAL:$1||s}} ($2 sous-catégorie{{PLURAL:$2||s}}, $3 fichier{{PLURAL:$3||s}})',
 'search-result-score'              => 'Pertinence : $1%',
 'search-redirect'                  => '(redirection depuis $1)',
 'search-section'                   => '(section $1)',
@@ -1621,6 +1622,9 @@ Vous pouvez également décider de laisser les autres vous contacter via votre p
 'upload_directory_missing'    => 'Le répertoire de téléversement ($1) est introuvable et n’a pas pu être créé par le serveur web.',
 'upload_directory_read_only'  => 'Le répertoire de téléversement ($1) n’est pas accessible en écriture depuis le serveur web.',
 'uploaderror'                 => 'Erreur de téléversement',
+'upload-recreate-warning'     => "'''Attention : Un fichier portant ce nom a été supprimé ou déplacé.'''
+
+Le journal des suppressions et celui des déplacements de cette page sont affichés ici pour informations :",
 'uploadtext'                  => "Utilisez ce formulaire pour téléverser des fichiers sur le serveur.
 Pour voir ou rechercher des images précédemment envoyées, consultez la [[Special:FileList|liste des images]]. Les téléversements sont aussi enregistrés dans le [[Special:Log/upload|journal des téléversements]], et les suppressions dans le [[Special:Log/delete|journal des suppressions]].
 
@@ -2802,6 +2806,7 @@ Vous pouvez toutefois en visualiser la source.',
 'tooltip-rollback'                => '« Révoquer » annule en un clic la ou les modification(s) de cette page par son dernier contributeur.',
 'tooltip-undo'                    => '« Défaire » révoque cette modification et ouvre la fenêtre de modification en mode prévisualisation.
 Permet de rétablir la version précédente et d’ajouter un motif dans la boîte de résumé.',
+'tooltip-preferences-save'        => 'Sauvegarder les préférences',
 
 # Stylesheets
 'common.css'      => '/* Le CSS placé ici sera appliqué à tous les habillages. */',

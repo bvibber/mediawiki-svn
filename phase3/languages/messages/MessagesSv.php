@@ -1238,6 +1238,7 @@ Se till att sidhistorikens kontinuitet behålls när du sammanfogar historik.',
 'searchprofile-everything-tooltip' => 'Sök allt innehåll (inklusive diskussionssidor)',
 'searchprofile-advanced-tooltip'   => 'Sök i vissa namnrymder',
 'search-result-size'               => '$1 ({{PLURAL:$2|1 ord|$2 ord}})',
+'search-result-category-size'      => '{{PLURAL:$1|1 medlem|$1 medlemmar}} ({{PLURAL:$2|1 underkategori|$2 underkategorier}}, {{PLURAL:$3|1 fil|$3 filer}})',
 'search-result-score'              => 'Relevans: $1%',
 'search-redirect'                  => '(omdirigering $1)',
 'search-section'                   => '(avsnitt $1)',
@@ -1599,6 +1600,9 @@ Sidor på [[Special:Watchlist|din bevakningslista]] är markerade med '''fetstil
 'upload_directory_missing'    => 'Uppladdningskatalogen ($1) saknas och kunde inte skapas av webbservern.',
 'upload_directory_read_only'  => 'Webbservern kan inte skriva till uppladdningskatalogen ($1).',
 'uploaderror'                 => 'Fel vid uppladdningen',
+'upload-recreate-warning'     => "'''Varning: En fil med det namnet har tagits bort eller flyttats.'''
+
+Raderings-och sidflyttningsloggen för denna sida återges här:",
 'uploadtext'                  => "Använd formuläret nedan för att ladda upp filer.
 För att titta på eller leta efter filer som redan har laddats upp, se [[Special:FileList|listan över uppladdade filer]]. Uppladdningar loggförs även i [[Special:Log/upload|uppladdningsloggen]], och raderingar i [[Special:Log/delete|raderingsloggen]].
 
@@ -1633,6 +1637,17 @@ Se [[Special:NewFiles|galleriet över nya filer]] för en mer visuell översikt.
 'filetype-banned-type'        => "'''\".\$1\"''' är inte en tillåten filtyp.
 {{PLURAL:\$3|Tillåtna filtyper|Tillåten filtyp}} är \$2.",
 'filetype-missing'            => 'Filnamnet saknar ändelse (t ex ".jpg").',
+'empty-file'                  => 'Filen du skickade var tom.',
+'file-too-large'              => 'Filen du skickade var för stor.',
+'filename-tooshort'           => 'Filnamnet är för kort.',
+'filetype-banned'             => 'Denna typ av fil är förbjuden.',
+'verification-error'          => 'Denna fil klarade inte verifieringen.',
+'hookaborted'                 => 'Ändringen du försökte göra avbröts av en extension hook.',
+'illegal-filename'            => 'Filnamnet är inte tillåtet.',
+'overwrite'                   => 'Det är inte tillåtet att skriva över en befintlig fil.',
+'unknown-error'               => 'Ett okänt fel uppstod.',
+'tmp-create-error'            => 'Kunde inte skapa temporär fil.',
+'tmp-write-error'             => 'Fel vid skrivning av temporär fil.',
 'large-file'                  => 'Det rekommenderas att filer inte är större än $1;
 denna fil är $2.',
 'largefileserver'             => 'Denna fil är större än vad servern ställts in att tillåta.',
@@ -1667,6 +1682,8 @@ Om du ändå vill ladda upp din fil, gå då tillbaka och använd ett annat namn
 'uploadedimage'               => 'laddade upp "[[$1]]"',
 'overwroteimage'              => 'laddade upp ny version av "[[$1]]"',
 'uploaddisabled'              => 'Uppladdningsfunktionen är avstängd',
+'copyuploaddisabled'          => 'Uppladdning med URL avstängt.',
+'uploadfromurl-queued'        => 'Din uppladdning har lagts i kö.',
 'uploaddisabledtext'          => 'Uppladdning av filer är avstängd.',
 'php-uploaddisabledtext'      => 'PHP filuppladdningar är avaktiverade. Kolla inställningarna för file_uploads.',
 'uploadscripted'              => 'Denna fil innehåller HTML eller script som felaktigt kan komma att tolkas av webbläsare.',
@@ -1909,7 +1926,7 @@ En sida anses vara en förgreningssida om den inkluderar en mall som länkas til
 'ncategories'             => '$1 {{PLURAL:$1|kategori|kategorier}}',
 'nlinks'                  => '$1 {{PLURAL:$1|länk|länkar}}',
 'nmembers'                => '$1 {{PLURAL:$1|medlem|medlemmar}}',
-'nrevisions'              => '$1 {{PLURAL:$1|ändring|ändringar}}',
+'nrevisions'              => '$1 {{PLURAL:$1|version|versioner}}',
 'nviews'                  => '$1 {{PLURAL:$1|visning|visningar}}',
 'specialpage-empty'       => 'Den här sidan är tom.',
 'lonelypages'             => 'Föräldralösa sidor',
@@ -2075,6 +2092,7 @@ Det kan finnas [[{{MediaWiki:Listgrouprights-helppage}}|ytterligare information]
 Den e-postadress du har angivit i [[Special:Preferences|dina användarinställningar]] kommer att visas som "Från"-adress i meddelandet, så att mottagaren har möjlighet att svara direkt till dig.',
 'usermailererror'      => 'Fel i hanteringen av mail:',
 'defemailsubject'      => '{{SITENAME}} e-post',
+'usermaildisabled'     => 'Användar-epost avaktiverat',
 'usermaildisabledtext' => 'Du kan inte skicka e-post till andra användare på den här wikin',
 'noemailtitle'         => 'Ingen e-postadress',
 'noemailtext'          => 'Den här användaren har inte angivit en giltig e-postadress.',
@@ -2754,6 +2772,8 @@ Vänligen använd förhandsgranskningsknappen innan du sparar.',
 'tooltip-rollback'                => '"Tillbakarullning" tar med en knapptryckning bort ändringar som gjorts av den som senast redigerade sidan',
 'tooltip-undo'                    => '"Gör ogjord" återställer denna redigering och öppnar redigeringsrutan med förhandsgranskning.
 Ger möjlighet att skriva en motivering i redigeringssammanfattningen',
+'tooltip-preferences-save'        => 'Spara inställningar',
+'tooltip-summary'                 => 'Skriv en kort sammanfattning',
 
 # Stylesheets
 'common.css'      => '/* CSS som skrivs här påverkar alla skal */',

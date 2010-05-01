@@ -2298,7 +2298,7 @@ $1',
 'sp-contributions-newbies'             => 'Показати лише внесок з нових облікових записів',
 'sp-contributions-newbies-sub'         => 'Внесок новачків',
 'sp-contributions-newbies-title'       => 'Внесок з нових облікових записів',
-'sp-contributions-blocklog'            => 'Протокол блокувань',
+'sp-contributions-blocklog'            => 'протокол блокувань',
 'sp-contributions-deleted'             => 'вилучені редагування користувача',
 'sp-contributions-logs'                => 'журнали',
 'sp-contributions-talk'                => 'обговорення',
@@ -2703,6 +2703,7 @@ IP-адреси, що блокуються автоматично тут не в
 'tooltip-upload'                  => 'Почати завантаження',
 'tooltip-rollback'                => 'Одним кліком прибрати зміни, зроблені останнім редактором',
 'tooltip-undo'                    => 'Прибрати внесені зміни і показати попередній перегляд. Дозволяє зазначити причину скасування.',
+'tooltip-preferences-save'        => 'Зберегти налаштування',
 
 # Stylesheets
 'common.css'   => '/** Розміщений тут CSS буде застосовуватися до всіх тем оформлення */',
