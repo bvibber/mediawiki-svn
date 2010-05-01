@@ -76,6 +76,8 @@ class ApiCodeComments extends ApiQueryBase {
 
 	private function formatRow( $row ) {
 		$item = array();
+		if ( isset( $this->props['revid'] ) )
+			$item['revid'] = $row->cc_rev_id;
 		if ( isset( $this->props['timestamp'] ) )
 			$item['timestamp'] = wfTimestamp( TS_ISO_8601, $row->cc_timestamp );
 		if ( isset( $this->props['user'] ) )
@@ -102,12 +104,13 @@ class ApiCodeComments extends ApiQueryBase {
 			),
 			'prop' => array (
 				ApiBase :: PARAM_ISMULTI => true,
-				ApiBase :: PARAM_DFLT => 'timestamp|user|revision',
+				ApiBase :: PARAM_DFLT => 'timestamp|user|revision|revid',
 				ApiBase :: PARAM_TYPE => array (
 					'timestamp',
 					'user',
 					'revision',
 					'text',
+					'revid',
 				),
 			),
 		);
