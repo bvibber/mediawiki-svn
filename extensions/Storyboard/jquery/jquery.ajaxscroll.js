@@ -34,8 +34,9 @@
 			var ele = this;
 			var $me = jQuery( this );
 			var $sp;
-			var fnEnd,fnScroll;
-			var offset= 0 ;
+			var fnEnd;
+			var fnScroll;
+			var offset = 0;
 			var lsp = -1;
 			
 			_css();
@@ -69,26 +70,26 @@
 				os=$me.find('.batch:first').next().offset().top;
 				b=($me.height()/os+1)*os;
 				
-				if("auto"==opt.uBound){
-					opt.uBound=b;
+				if ( "auto" == opt.uBound ) {
+					opt.uBound = b;
 				}
 				
-				if("auto"==opt.lBound){
-					opt.lBound=-b;
+				if ( "auto" == opt.lBound ) {
+					opt.lBound = -b;
 				}
 				
-				if("auto"==opt.eBound){
-					opt.eBound=b*2;
+				if ( "auto" == opt.eBound ) {
+					opt.eBound = b * 2;
 				}
 			}
 			
-			function batch($s, offset ,opt){
+			function batch( $s, offset, opt ) {
 				var $b;
 				var i;
 				var rp = opt.batchNum;
 				
 				while( rp-- ) {
-					$b=jQuery(opt.batchTemplate)
+					$b=jQuery( opt.batchTemplate )
 						.attr({
 							offset:offset,
 							len:opt.batchSiz
@@ -107,18 +108,18 @@
 				return offset;
 			};
 			
-			function vScroll(){
+			function vScroll() {
 				var so = $me.scrollTop();
 				
 				if( lsp != so){
 					lsp = so;
 					var co = $me.offset().top;
 					
-					$sp.find( '> .' + opt.emptyBatchClass ).each(function( i, obj ){
-						var $b=jQuery(obj);
-						var p=$b.position().top-co;
-						if(opt.lBound>p||p>opt.uBound){return;}
-						opt.updateBatch($b.removeClass(opt.emptyBatchClass));
+					$sp.find( '> .' + opt.emptyBatchClass ).each( function( i, obj ) {
+						var $b = jQuery( obj );
+						var p = $b.position().top - co;
+						if ( opt.lBound > p || p > opt.uBound ) { return; }
+						opt.updateBatch( $b.removeClass( opt.emptyBatchClass ) );
 					});
 				}
 			};
