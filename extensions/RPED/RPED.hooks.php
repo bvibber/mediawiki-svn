@@ -1,16 +1,9 @@
 <?php
-if ( !defined( 'MEDIAWIKI' ) ) {
-	echo <<<EOT
-	To install the RPED extension, put the following line in LocalSettings.php:
-	require_once( "\$IP/extensions/RPED/RPED.php" );
-EOT;
-	exit( 1 );
-}
 
 class RPEDHooks {
 	public static function RPEDCreateTable() {
 		global $wgExtNewTables;
-		
+
 		$wgExtNewTables[] = array(
 			'rped_page',
 			dirname( __FILE__ ) . '/rpedtable.sql'
