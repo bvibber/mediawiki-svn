@@ -113,6 +113,13 @@ $messages['nl'] = array(
 	'wikieditor-addMediaWizard-preference' => 'Uitbreiding "Wizard media toevoegen" inschakelen',
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'wikieditor-addMediaWizard-preference' => 'Włącz gadżet „czarodzieja dodawania mediów”',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  */

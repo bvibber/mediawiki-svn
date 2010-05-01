@@ -6691,6 +6691,7 @@ $messages['hy'] = array(
 	'wikieditor-toolbar-tool-nowiki' => 'Անտեսել վիքի ձևավորումը',
 	'wikieditor-toolbar-tool-nowiki-example' => 'Մուտքագրեք չձևավորված տեքստը այստեղ',
 	'wikieditor-toolbar-tool-redirect' => 'Վերահղում',
+	'wikieditor-toolbar-tool-redirect-example' => 'անվանումով էջին',
 	'wikieditor-toolbar-tool-big' => 'Խոշոր',
 	'wikieditor-toolbar-tool-big-example' => 'Խոշոր տեքստ',
 	'wikieditor-toolbar-tool-small' => 'Մանր',
