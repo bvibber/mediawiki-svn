@@ -9,7 +9,7 @@ class ApiCodeTestUpload extends ApiBase {
 			$this->dieUsage( 'You don\'t have permission to upload test results', 'permissiondenied' );
 		}
 		$params = $this->extractRequestParams();
-		
+
 		$this->validateParams( $params );
 		$this->validateHmac( $params );
 
@@ -17,16 +17,16 @@ class ApiCodeTestUpload extends ApiBase {
 		if ( !$repo ) {
 			$this->dieUsage( "Invalid repo ``{$params['repo']}''", 'invalidrepo' );
 		}
-		
+
 		$suite = $repo->getTestSuite( $params['suite'] );
 		if ( !$suite ) {
 			$this->dieUsage( "Invalid test suite ``{$params['suite']}''", 'invalidsuite' );
 		}
-		
+
 		// Note that we might be testing a revision that hasn't gotten slurped in yet,
 		// so we won't reject data for revisions we don't know about yet.
 		$revId = intval( $params['rev'] );
-		
+
 		$status = $params['status'];
 		if ( $status == 'running' || $status == 'aborted' ) {
 			// Set the 'tests running' flag so we can mark it...
@@ -35,12 +35,12 @@ class ApiCodeTestUpload extends ApiBase {
 			// Save data and mark running test as completed.
 			$results = json_decode( $params['results'], true );
 			if ( !is_array( $results ) ) {
-				$this->dieUsage( "Invalid test result data", 'invalidresults' );
+				$this->dieUsage( 'Invalid test result data', 'invalidresults' );
 			}
 			$suite->saveResults( $revId, $results );
 		}
 	}
-	
+
 	protected function validateParams( $params ) {
 		$required = array( 'repo', 'suite', 'rev', 'status', 'hmac' );
 		if ( isset( $params['status'] ) && $params['status'] == 'complete' ) {
@@ -52,10 +52,10 @@ class ApiCodeTestUpload extends ApiBase {
 			}
 		}
 	}
-	
+
 	protected function validateHmac( $params ) {
 		global $wgCodeReviewSharedSecret;
-		
+
 		// Generate a hash MAC to validate our credentials
 		$message = array(
 			$params['repo'],
@@ -63,10 +63,10 @@ class ApiCodeTestUpload extends ApiBase {
 			$params['rev'],
 			$params['status'],
 		);
-		if ( $params['status'] == "complete" ) {
+		if ( $params['status'] == 'complete' ) {
 			$message[] = $params['results'];
 		}
-		$hmac = hash_hmac( "sha1", implode( "|", $message ), $wgCodeReviewSharedSecret );
+		$hmac = hash_hmac( 'sha1', implode( '|', $message ), $wgCodeReviewSharedSecret );
 		if ( $hmac != $params['hmac'] ) {
 			$this->dieUsageMsg( array( 'invalidhmac', $params['hmac'] ) );
 		}
@@ -76,7 +76,7 @@ class ApiCodeTestUpload extends ApiBase {
 		// Discourage casual browsing :)
 		return true;
 	}
-	
+
 	public function isWriteMode() {
 		return true;
 	}
@@ -107,7 +107,7 @@ class ApiCodeTestUpload extends ApiBase {
 			'results' => 'JSON-encoded map of test names to success results, for status "complete"',
 		);
 	}
-	
+
 	public function getPossibleErrors() {
 		return array_merge( parent::getPossibleErrors(), array(
 			array( 'code' => 'permissiondenied', 'info' => 'You don\'t have permission to upload test results' ),

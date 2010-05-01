@@ -1,11 +1,11 @@
 <?php
 
-/*
+/**
  * Created on Oct 29, 2008
  *
  * API for MediaWiki 1.8+
  *
- * Copyright (C) 2008 Bryan Tong Minh <Bryan.TongMinh@Gmail.com>
+ * Copyright © 2008 Bryan Tong Minh <Bryan.TongMinh@Gmail.com>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -35,19 +35,23 @@ class ApiCodeComments extends ApiQueryBase {
 			$this->dieUsage( 'You don\'t have permission to view code comments', 'permissiondenied' );
 		}
 		$params = $this->extractRequestParams();
-		if ( is_null( $params['repo'] ) )
+		if ( is_null( $params['repo'] ) ) {
 			$this->dieUsageMsg( array( 'missingparam', 'repo' ) );
+		}
 		$this->props = array_flip( $params['prop'] );
-		if ( isset( $this->props['revision'] ) )
+		if ( isset( $this->props['revision'] ) ) {
 			$this->setWarning( 'ccprop=revision has been deprecated in favor of ccprop=status' );
+		}
 
 		$listview = new CodeCommentsListView( $params['repo'] );
-		if ( is_null( $listview->getRepo() ) )
+		if ( is_null( $listview->getRepo() ) ) {
 			$this->dieUsage( "Invalid repo ``{$params['repo']}''", 'invalidrepo' );
+		}
 		$pager = $listview->getPager();
 
-		if ( !is_null( $params['start'] ) )
+		if ( !is_null( $params['start'] ) ) {
 			$pager->setOffset( $this->getDB()->timestamp( $params['start'] ) );
+		}
 		$limit = $params['limit'];
 		$pager->setLimit( $limit );
 
@@ -78,36 +82,41 @@ class ApiCodeComments extends ApiQueryBase {
 
 	private function formatRow( $row ) {
 		$item = array();
-		if ( isset( $this->props['revid'] ) )
+		if ( isset( $this->props['revid'] ) ) {
 			$item['revid'] = $row->cc_rev_id;
-		if ( isset( $this->props['timestamp'] ) )
+		}
+		if ( isset( $this->props['timestamp'] ) ) {
 			$item['timestamp'] = wfTimestamp( TS_ISO_8601, $row->cc_timestamp );
-		if ( isset( $this->props['user'] ) )
+		}
+		if ( isset( $this->props['user'] ) ) {
 			$item['user'] = $row->cc_user_text;
-		if ( isset( $this->props['revision'] ) || isset( $this->props['status'] ) )
+		}
+		if ( isset( $this->props['revision'] ) || isset( $this->props['status'] ) ) {
 			$item['status'] = $row->cr_status;
-		if ( isset( $this->props['text'] ) )
+		}
+		if ( isset( $this->props['text'] ) ) {
 			ApiResult::setContent( $item, $row->cc_text );
+		}
 		return $item;
 	}
 
 	public function getAllowedParams() {
-		return array (
+		return array(
 			'repo' => null,
-			'limit' => array (
-				ApiBase :: PARAM_DFLT => 10,
-				ApiBase :: PARAM_TYPE => 'limit',
-				ApiBase :: PARAM_MIN => 1,
-				ApiBase :: PARAM_MAX => ApiBase :: LIMIT_BIG1,
-				ApiBase :: PARAM_MAX2 => ApiBase :: LIMIT_BIG2
+			'limit' => array(
+				ApiBase::PARAM_DFLT => 10,
+				ApiBase::PARAM_TYPE => 'limit',
+				ApiBase::PARAM_MIN => 1,
+				ApiBase::PARAM_MAX => ApiBase::LIMIT_BIG1,
+				ApiBase::PARAM_MAX2 => ApiBase::LIMIT_BIG2
 			),
 			'start' => array(
-				ApiBase :: PARAM_TYPE => 'timestamp'
+				ApiBase::PARAM_TYPE => 'timestamp'
 			),
-			'prop' => array (
-				ApiBase :: PARAM_ISMULTI => true,
-				ApiBase :: PARAM_DFLT => 'timestamp|user|status|revid',
-				ApiBase :: PARAM_TYPE => array (
+			'prop' => array(
+				ApiBase::PARAM_ISMULTI => true,
+				ApiBase::PARAM_DFLT => 'timestamp|user|status|revid',
+				ApiBase::PARAM_TYPE => array(
 					'timestamp',
 					'user',
 					'status',
@@ -131,7 +140,7 @@ class ApiCodeComments extends ApiQueryBase {
 	public function getDescription() {
 		return 'List comments on revisions in CodeReview';
 	}
-	
+
 	public function getPossibleErrors() {
 		return array_merge( parent::getPossibleErrors(), array(
 			array( 'missingparam', 'repo' ),
