@@ -10,7 +10,7 @@ $aliases = array();
 
 /** English */
 $aliases['en'] = array(
-	'APC' => array( 'APC', 'APC' ),
+	'APC' => array( 'APC', 'ViewAPC' ),
 );
 
 /** Arabic (العربية) */
