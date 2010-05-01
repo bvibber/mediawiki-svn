@@ -39,7 +39,7 @@ mw.setDefaultConfig( {
 	
 	// If mwEmbed should use the Native player controls
 	// this will prevent video tag rewriting and skinning
-	// usefull for devices such as iPad / iPod that
+	// useful for devices such as iPad / iPod that
 	// don't fully support DOM overlays or don't expose full-screen 
 	// functionality to javascript  
 	"nativePlayerControls" : false,
@@ -65,7 +65,6 @@ mw.setDefaultConfig( {
 	// Default player skin name
 	"playerSkinName" : "mvpcf"	
 } );
-
 
 // Add class file paths 
 mw.addClassFilePaths( {
@@ -127,8 +126,14 @@ mw.addDOMReadyHook( function() {
 					$j( element ).attr( "id",  'v' + ( rewriteElementCount++ ) );
 				}
 								
-				// Hide the video tag and add a loader:
-				var pos = $j( element ).offset();										
+				// Add an absolute positioned loader
+				var pos = $j( element ).offset();	
+				var left = (  $j( element ).width() ) ? 
+					parseInt( pos.left + ( .4 * $j( element ).width() ) ) : 
+					pos.left + 30;
+				var top = (  $j( element ).height() ) ? 
+					parseInt( pos.top + ( .4 * $j( element ).height() ) ) : 
+					pos.left + 30;								
 				$j('body').append(
 					$j('<div />')
 					.loadingSpinner()
@@ -137,14 +142,14 @@ mw.addDOMReadyHook( function() {
 						'width' : 32,
 						'height' : 32,
 						'position': 'absolute',
-						'top' : pos.top + 30,
-						'left' : pos.left + 30
+						'top' : top,
+						'left' : left
 					})						
-				)
+				)				
 				//$j( element ).hide();
-			});						
+			});									
 			// Load the embedPlayer module ( then run queued hooks )
-			mw.load( 'EmbedPlayer', function ( ) {
+			mw.load( 'EmbedPlayer', function ( ) {				
 				// Rewrite the rewritePlayerTags with the 
 				$j( mw.getConfig( 'rewritePlayerTags' ) ).embedPlayer();				
 				// Run the setup callback now that we have setup all the players
@@ -161,8 +166,7 @@ mw.addDOMReadyHook( function() {
 * Add the module loader function:
 */
 mw.addModuleLoader( 'EmbedPlayer', function( callback ) {
-	var _this = this;	
-	
+	var _this = this;		
 	// Set module specific class videonojs to loading:
 	$j( '.videonojs' ).html( gM( 'mwe-loading_txt' ) );
 	
@@ -231,7 +235,7 @@ mw.addModuleLoader( 'EmbedPlayer', function( callback ) {
 		
 	// Run the EmbedPlayer loader hook ( so that modules can add dependencies to the request ) 
 	mw.runHook( 'LoaderEmbedPlayerUpdateRequest', dependencyRequest[ 0 ] );
-	
+		
 	
 	// Load the video libs:
 	mw.load( dependencyRequest, function() {

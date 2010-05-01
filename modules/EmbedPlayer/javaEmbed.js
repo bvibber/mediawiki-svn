@@ -149,8 +149,11 @@ var javaEmbed = {
 		   mw.log( "Cortado seek is not very accurate :: doSeek(" + ( percentage * parseFloat( this.getDuration() ) ) );
 		   this.playerElement.currentTime = ( percentage * parseFloat( this.getDuration() )  );
 		} else {
-			this.doPlayThenSeek( percentage );
+			this.doPlayThenSeek( percentage );		
 		}
+		
+		// Run the onSeek interface update
+		this.onSeek(); 	
 	},
 	
 	/**
