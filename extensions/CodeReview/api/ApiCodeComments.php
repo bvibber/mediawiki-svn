@@ -38,6 +38,8 @@ class ApiCodeComments extends ApiQueryBase {
 		if ( is_null( $params['repo'] ) )
 			$this->dieUsageMsg( array( 'missingparam', 'repo' ) );
 		$this->props = array_flip( $params['prop'] );
+		if ( isset( $this->props['revision'] ) )
+			$this->setWarning( 'ccprop=revision has been deprecated in favor of ccprop=status' );
 
 		$listview = new CodeCommentsListView( $params['repo'] );
 		if ( is_null( $listview->getRepo() ) )
@@ -82,7 +84,7 @@ class ApiCodeComments extends ApiQueryBase {
 			$item['timestamp'] = wfTimestamp( TS_ISO_8601, $row->cc_timestamp );
 		if ( isset( $this->props['user'] ) )
 			$item['user'] = $row->cc_user_text;
-		if ( isset( $this->props['revision'] ) )
+		if ( isset( $this->props['revision'] ) || isset( $this->props['status'] ) )
 			$item['status'] = $row->cr_status;
 		if ( isset( $this->props['text'] ) )
 			ApiResult::setContent( $item, $row->cc_text );
@@ -104,13 +106,14 @@ class ApiCodeComments extends ApiQueryBase {
 			),
 			'prop' => array (
 				ApiBase :: PARAM_ISMULTI => true,
-				ApiBase :: PARAM_DFLT => 'timestamp|user|revision|revid',
+				ApiBase :: PARAM_DFLT => 'timestamp|user|status|revid',
 				ApiBase :: PARAM_TYPE => array (
 					'timestamp',
 					'user',
-					'revision',
+					'status',
 					'text',
 					'revid',
+					'revision',
 				),
 			),
 		);
@@ -121,7 +124,7 @@ class ApiCodeComments extends ApiQueryBase {
 			'repo' => 'Name of the repository',
 			'limit' => 'How many comments to return',
 			'start' => 'Timestamp to start listing at',
-			'prop' => 'Which properties to return',
+			'prop' => 'Which properties to return. revision is a deprecated alias for status',
 		);
 	}
 
