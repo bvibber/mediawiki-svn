@@ -32,8 +32,11 @@
 	float: right;
 }
 
-.story-metadata div {
+.story-metadata {
 	margin: 5px 15px 5px 15px;	
+}
+
+div.story-metadata {
 	overflow: hidden;
 	-moz-border-radius: 4px;
 	-webkit-border-radius: 4px;
