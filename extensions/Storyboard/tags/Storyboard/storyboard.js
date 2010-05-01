@@ -23,11 +23,11 @@
 		$.getJSON( wgScriptPath + '/api.php',
 			{
 				'action': 'query',
-				'list': 'stories', 
-				'stcontinue': $storyboard.attr( 'offset' ) + '-0', // TODO: get modification date and id of the last story
-				'stlimit': 4,
-				'stlanguage': window.storyboardLanguage,
-				'format': 'json'
+				'list': 'stories',
+				'format': 'json',
+				'stcontinue': $storyboard.attr( 'storymodified' ) + '-' + $storyboard.attr( 'storyid' ),
+				'stlimit': 8,
+				'stlanguage': window.storyboardLanguage
 			},
 			function( data ) {
 				if ( data.query ) {

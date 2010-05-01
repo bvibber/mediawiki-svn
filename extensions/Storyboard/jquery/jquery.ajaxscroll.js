@@ -61,14 +61,15 @@
 			}
 			
 			function _css(){
-				$me.css({"overflow-x":"hidden","overflow-y":"auto"});
+				$me.css( {
+					"overflow-x": "hidden",
+					"overflow-y": "auto"
+				} );
 			}
 			
 			function _ab(){
-				var os,b;
-				
-				os=$me.find('.batch:first').next().offset().top;
-				b=($me.height()/os+1)*os;
+				var os = $me.find( '.batch:first' ).next().offset().top;
+				var b = ( $me.height() / os + 1 ) * os;
 				
 				if ( "auto" == opt.uBound ) {
 					opt.uBound = b;
@@ -91,8 +92,10 @@
 				while( rp-- ) {
 					$b=jQuery( opt.batchTemplate )
 						.attr({
-							offset:offset,
-							len:opt.batchSiz
+							offset: offset,
+							len: opt.batchSiz,
+							storymodified: 0,
+							storyid: 0
 						})
 						.addClass( opt.batchClass + " " + opt.emptyBatchClass );
 					
@@ -124,9 +127,9 @@
 				}
 			};
 			
-			function vEnd(){
-				if(ele.scrollTop > 0 && ele.scrollHeight-ele.scrollTop < opt.eBound){
-					offset=batch($sp,offset,opt);
+			function vEnd() {
+				if( ele.scrollTop > 0 && ele.scrollHeight-ele.scrollTop < opt.eBound ) {
+					offset = batch( $sp, offset, opt );
 					return 1;
 				}
 				
