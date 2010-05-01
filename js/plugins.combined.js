@@ -7031,12 +7031,12 @@ if ( !context || typeof context == 'undefined' ) {
 				
 				// If the pasted content is plain text then wrap it in a <p> and adjust the <br> accordingly 
 				var pasteContent = context.fn.getOffset( cursorPos[0] ).node;
-				var removeNextBR = false
-				while ( pasteContent != null && ! $( pasteContent ).hasClass( 'wikiEditor' ) ) {
+				var removeNextBR = false;
+				while ( pasteContent != null && !$( pasteContent ).hasClass( 'wikiEditor' ) ) {
 					var currentNode = pasteContent;
 					pasteContent = pasteContent.nextSibling;
 					if ( currentNode.nodeName == '#text' && currentNode.nodeValue == currentNode.wholeText ) {
-						var pWrapper = $( '<p></p>' ).addClass( 'wikiEditor' );
+						var pWrapper = $( '<p />' ).addClass( 'wikiEditor' );
 						$( currentNode ).wrap( pWrapper );
 						$( currentNode ).addClass( 'wikiEditor' );
 						removeNextBR = true;
@@ -7057,25 +7057,25 @@ if ( !context || typeof context == 'undefined' ) {
 					var $newElement;
 					if ( $currentElement.is( 'p' ) || $currentElement.is( 'div' ) || $currentElement.is( 'pre' ) ) {
 						//Convert all <div>, <p> and <pre> that was pasted into a <p> element
-						$newElement = $( '<p></p>' );
+						$newElement = $( '<p />' );
 					} else {
 						// everything else becomes a <span>
-						$newElement = $( '<span></span>' ).addClass( 'wikiEditor' );
+						$newElement = $( '<span />' ).addClass( 'wikiEditor' );
 					}
 					
 					// If the pasted content was html, just convert it into text and <br>
-					var text = $.trim( $currentElement.text() );
-					var pieces = text.split('\n');					
+					var pieces = $.trim( $currentElement.text() ).split( '\n' );
+					var newElementHTML = '';
 					for ( var i = 0; i < pieces.length; i++ ) {
-            			if ( pieces[i] ) {
-							$newElement.html( $newElement.html() + $.trim( pieces[i] ) );
+						if ( pieces[i] ) {
+							newElementHTML += $.trim( pieces[i] );
 						} else {
-							var $brElement =  $( '<span></span>' ).html( '<br class = "wikiEditor" />' );
-							$newElement.html( $newElement.html() + $brElement.html() );
+							newElementHTML += '<span><br class="wikiEditor" /></span>';
 						}
-            		}
-					$newElement.insertAfter( $currentElement );
-					$newElement.addClass( 'wikiEditor' );
+					}
+					$newElement.html( newElementHTML )
+						.addClass( 'wikiEditor' )
+						.insertAfter( $currentElement );
 					$currentElement.remove();
 
 					$selection = context.$content.find( ':not(.wikiEditor)' );

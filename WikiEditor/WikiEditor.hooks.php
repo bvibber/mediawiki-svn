@@ -21,10 +21,10 @@ class WikiEditorHooks {
 			array( 'src' => 'Modules/AddMediaWizard/AddMediaWizard.js', 'version' => 6 ),
 		),
 		'combined' => array(
-			array( 'src' => 'WikiEditor.combined.js', 'version' => 87 ),
+			array( 'src' => 'WikiEditor.combined.js', 'version' => 88 ),
 		),
 		'minified' => array(
-			array( 'src' => 'WikiEditor.combined.min.js', 'version' => 87 ),
+			array( 'src' => 'WikiEditor.combined.min.js', 'version' => 88 ),
 		),
 	);
 	static $messages = array(
