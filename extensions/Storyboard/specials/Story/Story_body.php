@@ -90,7 +90,8 @@ class SpecialStory extends IncludableSpecialPage {
 					'story_text',
 					'story_created',
 					'story_modified',
-					'story_state'
+					'story_state',
+					'story_lang_code',
 				),
 				array( 'story_title' => $title )
 			);
@@ -116,6 +117,7 @@ class SpecialStory extends IncludableSpecialPage {
 				elseif ( !$isEdit ) {
 					$wgOut->addWikiMsg( 'storyboard-storyunpublished' );
 					
+					// FIXME: subpage in link broken
 					if ( $wgUser->isAllowed( 'storyreview' ) ) {
 						global $wgTitle;
 						$wgOut->addWikiMsg(
@@ -217,11 +219,31 @@ class SpecialStory extends IncludableSpecialPage {
 					'name' => 'storystate',
 					'id' => 'storystate'
 				),
-				'<option value="' . Storyboard_STORY_UNPUBLISHED . '">' . wfMsg( 'storyboard-option-unpublished' ) . '</option>' .
-				'<option value="' . Storyboard_STORY_PUBLISHED . '">' . wfMsg( 'storyboard-option-published' ) . '</option>' .
-				'<option value="' . Storyboard_STORY_HIDDEN . '">' . wfMsg( 'storyboard-option-hidden' ) . '</option>'
+				'<option value="' . Storyboard_STORY_UNPUBLISHED . '">' . htmlspecialchars( wfMsg( 'storyboard-option-unpublished' ) ) . '</option>' .
+				'<option value="' . Storyboard_STORY_PUBLISHED . '">' . htmlspecialchars( wfMsg( 'storyboard-option-published' ) ) . '</option>' .
+				'<option value="' . Storyboard_STORY_HIDDEN . '">' . htmlspecialchars( wfMsg( 'storyboard-option-hidden' ) ) . '</option>'
 			) .
 		'</td></tr>';
+		
+		$languages = Language::getLanguageNames( false );
+		ksort( $languages );
+
+		$options = array();
+		foreach ( $languages as $code => $name ) {
+			$display = wfBCP47( $code ) . ' - ' . $name;
+			$options[$display] = $code;
+		}	
+			
+		$languageSelector = new HTMLSelectField( array(
+			'name' => 'language',
+			'options' => $options
+		) );
+		
+		$formBody .= '<tr>' .
+			Html::element( 'td', array( 'width' => '100%' ), wfMsg( 'storyboard-language' ) ) .
+			'<td>' .
+			$languageSelector->getInputHTML( $story->story_lang_code ) .
+			'</td></tr>';
 		
 		$formBody .= '<tr>' .
 			Html::element( 'td', array( 'width' => '100%' ), wfMsg( 'storyboard-authorname' ) ) .
@@ -404,6 +426,7 @@ EOT
 				'story_text' => $wgRequest->getText( 'storytext' ),
 				'story_modified' => $dbw->timestamp( time() ),
 				'story_state' => $wgRequest->getIntOrNull( 'storystate' ),
+				'story_lang_code' => $wgRequest->getText( 'wplanguage' )
 			),
 			array(
 				'story_id' => $wgRequest->getText( 'storyId' ),
