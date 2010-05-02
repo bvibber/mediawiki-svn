@@ -1184,4 +1184,6 @@ $notEditableSettings = array(
 $settingsVersion = array(
 	'wgAllowUserCssPrefs' => array( array( '1.17alpha', '>=' ) ),
 	'wgGalleryOptions' => array( array( '1.17alpha', '>=' ) ),
+	'wgAllowImageTag' => array( array( '1.17alpha', '>=' ) ),
+	'wgLogAutocreatedAccounts' => array( array( '1.17alpha', '>=' ) ),
 );
