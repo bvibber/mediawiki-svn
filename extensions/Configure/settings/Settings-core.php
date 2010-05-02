@@ -139,6 +139,7 @@ $settings = array(
 			'wgServerName' => 'text',
 			'wgStyleDirectory' => 'text',
 			'wgStylePath' => 'text',
+			'wgLocalStylePath' => 'text',
 			'wgStyleSheetPath' => 'text',
 			'wgTmpDirectory' => 'text',
 			'wgUploadBaseUrl' => 'text',
@@ -331,6 +332,7 @@ $settings = array(
 		'vector' => array(
 			'wgVectorUseIconWatch' => 'bool',
 			'wgVectorUseSimpleSearch' => 'bool',
+			'wgVectorShowVariantName' => 'bool',
 		),
 	),
 	'category' => array(
@@ -1186,4 +1188,6 @@ $settingsVersion = array(
 	'wgGalleryOptions' => array( array( '1.17alpha', '>=' ) ),
 	'wgAllowImageTag' => array( array( '1.17alpha', '>=' ) ),
 	'wgLogAutocreatedAccounts' => array( array( '1.17alpha', '>=' ) ),
+	'wgLocalStylePath' => array( array( '1.17alpha', '>=' ) ),
+	'wgVectorShowVariantName' => array( array( '1.17alpha', '>=' ) ),
 );
