@@ -255,8 +255,12 @@ public class DebugLocalConceptStoreBuilder implements LocalConceptStoreBuilder {
 			log("* prepareImport *");
 		}
 		
-		public void buildStatistics() throws PersistenceException {
-			log("* buildStatistics *");
+		public void buildTermStatistics() throws PersistenceException {
+			log("* buildTermStatistics *");
+		}
+
+		public void buildConceptStatistics() throws PersistenceException {
+			log("* buildConceptStatistics *");
 		}
 
 		public void clear() throws PersistenceException {

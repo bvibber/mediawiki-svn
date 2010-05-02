@@ -55,10 +55,14 @@ abstract class DatabaseStatisticsStoreBuilder extends DatabaseWikiWordStoreBuild
 		}
 	}
 
+	public void buildTermStatistics() throws PersistenceException {
+		//noop
+	}
+	
 	/**
 	 * Builds the statistics tables. For a specification of their content, refer to StatisticsStoreSchema
 	 */
-	public void buildStatistics() throws PersistenceException {		
+	public void buildConceptStatistics() throws PersistenceException {		
 		if (beginTask("buildStatistics", "stats.prepareDegreeTable")) {
 			int n = prepareDegreeTable();
 			endTask("buildStatistics", "stats.prepareDegreeTable", n+" entries");

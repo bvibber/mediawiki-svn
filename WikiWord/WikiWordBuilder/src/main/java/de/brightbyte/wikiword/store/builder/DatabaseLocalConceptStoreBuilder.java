@@ -1342,7 +1342,7 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 		}
 
 		@Override
-		public void buildStatistics() throws PersistenceException {		
+		public void buildTermStatistics() throws PersistenceException {		
 			//TODO: characteristic path length and cluster coef
 			//TODO: stats about collocations
 
@@ -1355,8 +1355,11 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 					buildDistributionStats("term zipf", termTable, "rank", "freq");
 					endTask("buildStatistics", "stats.termZipf");
 				}
-				
-				super.buildStatistics();
+		}
+		
+		@Override
+		public void buildConceptStatistics() throws PersistenceException {		
+				super.buildConceptStatistics();
 		}
 		
 		

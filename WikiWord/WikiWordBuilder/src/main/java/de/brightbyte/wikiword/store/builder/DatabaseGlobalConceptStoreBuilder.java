@@ -915,13 +915,12 @@ public class DatabaseGlobalConceptStoreBuilder extends DatabaseWikiWordConceptSt
 
 		protected DatabaseGlobalStatisticsStoreBuilder(StatisticsStoreSchema database, TweakSet tweaks, Agenda agenda) throws SQLException {
 			super(DatabaseGlobalConceptStoreBuilder.this, database, tweaks, agenda);
-			// TODO Auto-generated constructor stub
 		}
 		
 		@Override
-		public void buildStatistics() throws PersistenceException {
-			//TODO: node-degree stats, etc!
-			super.buildStatistics();
+		public void buildConceptStatistics() throws PersistenceException {
+			//TODO: langlink-stats, etc
+			super.buildConceptStatistics();
 		}
 		
 	}

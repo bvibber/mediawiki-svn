@@ -23,6 +23,7 @@ public class BuildStatistics extends ImportApp<WikiWordConceptStoreBuilder<? ext
 	@Override
 	protected void declareOptions() {
 		super.declareOptions();
+		args.declare("no-term-stats", null, false, Boolean.class, "skip (slow) term frequency statistics.");
 	}
 	
 	//protected WikiWordConceptStoreBuilder<?> conceptStore;
@@ -37,8 +38,13 @@ public class BuildStatistics extends ImportApp<WikiWordConceptStoreBuilder<? ext
 
 	@Override
 	protected void run() throws Exception {
-		section("-- buildstats --------------------------------------------------");
-		this.statisticsStore.buildStatistics();
+		if (!args.isSet("no-term-stats")) {
+			section("-- term stats --------------------------------------------------");
+			this.statisticsStore.buildTermStatistics();
+		}
+		
+		section("-- concept stats --------------------------------------------------");
+		this.statisticsStore.buildConceptStatistics();
 
 		section("-- statistics --------------------------------------------------");
 		conceptStore.getConceptStore().getStatisticsStore().dumpStatistics(getLogOutput());
