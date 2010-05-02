@@ -110,6 +110,7 @@ class ApiQueryStories extends ApiQueryBase {
 			$this->getResult()->addValue( array( 'query', $this->getModuleName() ), null, $res );
 		}
 		
+		// FIXME: continue parameter is not getting passed with the result
 		$this->getResult()->setIndexedTagName_internal( array( 'query', $this->getModuleName() ), 'story' );
 	}
 	
