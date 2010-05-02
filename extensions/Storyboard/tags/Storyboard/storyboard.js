@@ -10,7 +10,7 @@
 		$( '.storyboard' ).ajaxScroll( {
 			updateBatch: updateStoryboard,
 			maxOffset: 500,
-			batchSize: 8,
+			batchSize: 2,
 			batchNum: 2, // TODO: change to 1. Some issue in the ajaxscroll plugin makesit break when this is the case though.
 			batchClass: "batch",
 			boxClass: "storyboard-box",
@@ -24,7 +24,7 @@
 			'action': 'query',
 			'list': 'stories',
 			'format': 'json',
-			'stlimit': 8,
+			'stlimit': 2,
 			'stlanguage': window.storyboardLanguage
 		};
 		

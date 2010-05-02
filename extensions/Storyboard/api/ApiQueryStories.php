@@ -79,12 +79,10 @@ class ApiQueryStories extends ApiQueryBase {
 			$storyModified = $continueParams[0];
 			$storyId = intval( $continueParams[1] );
 
-			/* FIXME
 			$this->addWhere(
-				"story_modified > $storyModified OR " .
+				"story_modified < $storyModified OR " .
 				"(story_modified = $storyId AND story_id <= $storyModified)"
 			);
-			*/
 		}
 		
 		$stories = $this->select( __METHOD__ );

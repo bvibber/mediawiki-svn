@@ -36,7 +36,7 @@
 			var $me = jQuery( this );
 			var $sp;
 			var offset = 0;
-			var lsp = -1;
+			var previousScrollPos = -1;
 			
 			$me.css( {
 				"overflow-x": "hidden",
@@ -106,22 +106,22 @@
 			 * function if this is the case.
 			 */
 			function handleScrolling() {
-				var so = $me.scrollTop();
+				var scrollPos = $me.scrollTop();
 				
-				if( !window.storyboardBusy && lsp != so ) {
-					lsp = so;
+				if( !window.storyboardBusy && previousScrollPos != scrollPos ) {
+					previousScrollPos = scrollPos;
 					var co = $me.offset().top;
 					
 					$sp.find( '> .' + opt.emptyBatchClass ).each( function( i, obj ) {
-						var $b = jQuery( obj );
-						var p = $b.position().top - co;
+						var $batchDiv = jQuery( obj );
+						var p = $batchDiv.position().top - co;
 						
 						if ( opt.lBound > p || p > opt.uBound ) { 
 							return;
 						} 
 						
 						window.storyboardBusy = true;
-						opt.updateBatch( $b.removeClass( opt.emptyBatchClass ) );
+						opt.updateBatch( $batchDiv.removeClass( opt.emptyBatchClass ) );
 					});
 				}
 				
