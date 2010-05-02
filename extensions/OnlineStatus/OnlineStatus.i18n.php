@@ -664,7 +664,7 @@ $messages['kn'] = array(
 	'onlinestatus-toggles-desc' => 'ನಿಮ್ಮ ಸ್ಥಾನಮಾನ:',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

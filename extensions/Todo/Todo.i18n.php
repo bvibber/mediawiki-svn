@@ -523,6 +523,13 @@ $messages['el'] = array(
 	'right-todo' => 'Λίστα πρακτέων',
 );
 
+/** British English (British English)
+ * @author Reedy
+ */
+$messages['en-gb'] = array(
+	'todo-unrecognize-type' => 'Unrecognised type',
+);
+
 /** Esperanto (Esperanto)
  * @author Melancholie
  * @author Yekrats
@@ -1095,7 +1102,7 @@ $messages['krj'] = array(
 	'todo-list-cancel' => 'Kanselar',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -1158,7 +1165,7 @@ $messages['lb'] = array(
 	'todo-form-submit' => 'Ufro starten',
 );
 
-/** Laz (Laz)
+/** Lazuri (Lazuri)
  * @author Bombola
  */
 $messages['lzz'] = array(

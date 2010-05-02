@@ -10,8 +10,8 @@
 		$( '.storyboard' ).ajaxScroll( {
 			updateBatch: updateStoryboard,
 			maxOffset: 500,
-			batchSize: 4,
-			batchNum: 2,
+			batchSize: 2,
+			batchNum: 2, // TODO: change to 1. Some issue in the ajaxscroll plugin makesit break when this is the case though.
 			batchClass: "batch",
 			boxClass: "storyboard-box",
 			emptyBatchClass: "storyboard-empty",
@@ -20,14 +20,23 @@
 	} );
 	
 	function updateStoryboard( $storyboard ) {
+		requestArgs = {
+			'action': 'query',
+			'list': 'stories',
+			'format': 'json',
+			'stlimit': 2,
+			'stlanguage': window.storyboardLanguage
+		};
+		
+		if ( $storyboard.attr( 'storymodified' ) ) {
+			requestArgs.stcontinue = $storyboard.attr( 'storymodified' );
+			
+			requestArgs.stcontinue += '-' + 
+				( $storyboard.attr( 'storyid' ) ? $storyboard.attr( 'storyid' ) : '0' );
+		}
+			
 		$.getJSON( wgScriptPath + '/api.php',
-			{
-				'action': 'query',
-				'list': 'stories', 
-				'stcontinue': $storyboard.attr( 'offset' ) + '-0', // TODO: get id of last story here to break ties correctly
-				'stlimit': 4,
-				'format': 'json'
-			},
+			requestArgs,
 			function( data ) {
 				if ( data.query ) {
 					addStories( $storyboard, data.query );
@@ -49,7 +58,8 @@
 			var $header = $( "<div />" ).addClass( "story-header" ).appendTo( $storyBody );
 			$( "<div />" ).addClass( "story-title" ).text( story.title ).appendTo( $header );
 			
-			// TODO: move social sharing to a jQuery UI pop-up that's triggered by a link above each storyboard-box
+			var deliciousUrl = "http://delicious.com/save?jump=yes&url=" + encodeURIComponent( story.permalink ) + "&title=" + encodeURIComponent( story.title );
+			var facebookUrl = "http://www.facebook.com/sharer.php?u=" + encodeURIComponent( story.permalink ) + '&t=' + encodeURIComponent( story.title );
 			
 			$( "<div />" )
 				.addClass( "story-sharing" )
@@ -57,35 +67,40 @@
 					$( "<div />" ).addClass( "story-sharing-item" ).append(
 						$( "<a />" ).attr( {
 							"target": "_blank",
-							"href": "http://delicious.com/save?jump=yes&url=" + ""
+							"rel": "nofollow",
+							"href": deliciousUrl,
+							"onclick": "window.open( '" + deliciousUrl + "', 'delicious-sharer', 'toolbar=0, status=0, width=850, height=650' ); return false;"
 						} )
 						.append( $( "<img />" ).attr( "src",
 							wgScriptPath + "/extensions/Storyboard/images/storyboard-delicious.png"
 						) )
 					)
-				) //TODO
+				)
 				.append(
 					$( "<div />" ).addClass( "story-sharing-item" ).append(
 						$( "<a />" ).attr( {
 							"target": "_blank",
-							"href": "http://www.facebook.com/sharer.php?u=" + "" + "&t=" + story.title
+							"rel": "nofollow",
+							"href": facebookUrl,
+							"onclick": "window.open( '" + facebookUrl + "', 'facebook-sharer', 'toolbar=0, status=0, width=626, height=436' ); return false;"
 						} )
 						.append( $( "<img />" ).attr( "src",
 							wgScriptPath + "/extensions/Storyboard/images/storyboard-facebook.png"
 						) )
 					)
-				) //TODO
+				)
 				.append(
 					$( "<div />" ).addClass( "story-sharing-item" ).append(
 						$( "<a />" ).attr( {
 							"target": "_blank",
-							"href": "http://twitter.com/home?status=" + ""
+							"rel": "nofollow",
+							"href": "http://twitter.com/home?status=" + encodeURIComponent( story.permalink )
 						 } )
 						.append( $( "<img />" ).attr( "src",
 							wgScriptPath + "/extensions/Storyboard/images/storyboard-twitter.png"
 						) )
 					)
-				) //TODO
+				)
 				.appendTo( $header );
 			
 			var textAndImg = $( "<div />" ).addClass( "story-text" ).text( story["*"] );
@@ -98,10 +113,22 @@
 			
 			$storyBody.append( textAndImg );
 			
-			// TODO: add hide button
+			$storyBody.append( // TODO: get the actual message here
+				$( "<div />" ).addClass( "story-metadata" ).append(
+					$("<span />").addClass( "story-metadata" ).text( " Submitted by $1 from $2 on $3, $4.")
+				)
+			);
+			
+			// TODO: add hide and delete buttons
 			
 			$storyboard.append( $storyBody );	
 		}
+		
+		var story = query.stories[query.stories.length - 1];
+		window.storyModified = story.modified;
+		window.storyId = story.id;
+		
+		window.storyboardBusy = false;
 	}
 		
 })(jQuery);

@@ -40,28 +40,45 @@ $wgExtensionCredits['media'][] = array(
 
 /******************* CONFIGURATION STARTS HERE **********************/
 
-//Location of oggThumb binary
-$wgOggThumbLocation = '/usr/bin/oggThumb';
-
-// Set the supported ogg codecs:
+/**
+ * The names of the supported video types, as they appear in the PEAR module.
+ */
 $wgOggVideoTypes = array( 'Theora' );
+
+/**
+ * The names of the supported audio types, as they appear in the PEAR module.
+ * These types will be described as audio, but only Vorbis is widely supported
+ * by the client-side plugins.
+ */
 $wgOggAudioTypes = array( 'Vorbis', 'Speex', 'FLAC' );
 
-// Location of the FFmpeg binary
+/**
+ * Location of the FFmpeg binary, or false to use oggThumb. See the notes
+ * about thumbnailer choices in the README file.
+ */
 $wgFFmpegLocation = '/usr/bin/ffmpeg';
 
-// Filename or URL path to the Cortado Java player applet.
-//
-// If no path is included, the path to this extension's
-// directory will be used by default -- this should work
-// on most local installations.
-//
-// You may need to include a full URL here if $wgUploadPath
-// specifies a host different from where the wiki pages are
-// served -- the applet .jar file must come from the same host
-// as the uploaded media files or Java security rules will
-// prevent the applet from loading them.
-//
+/**
+ * Location of the oggThumb binary, or false to use FFmpeg. Note that only
+ * version 0.9 (expected release in May 2010) or later is supported. See the
+ * README file for more details.
+ */
+$wgOggThumbLocation = false;
+
+
+/**
+ * Filename or URL path to the Cortado Java player applet.
+ *
+ * If no path is included, the path to this extension's
+ * directory will be used by default -- this should work
+ * on most local installations.
+ *
+ * You may need to include a full URL here if $wgUploadPath
+ * specifies a host different from where the wiki pages are
+ * served -- the applet .jar file must come from the same host
+ * as the uploaded media files or Java security rules will
+ * prevent the applet from loading them.
+ */
 $wgCortadoJarFile = "cortado-ovt-stripped-0.5.1.jar";
 
 /******************* CONFIGURATION ENDS HERE **********************/

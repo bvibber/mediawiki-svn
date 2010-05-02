@@ -625,7 +625,7 @@ $messages['hu'] = array(
 $messages['ia'] = array(
 	'userwelcome-desc' => 'Adde le etiquetta <tt>&lt;welcomeUser&gt;</tt> pro monstrar informationes social specific a cata usator al usatores que ha aperite un session',
 	'mp-userlevels-link' => 'Nivellos de usator',
-	'mp-welcome-upload' => 'Cargar',
+	'mp-welcome-upload' => 'Incargar',
 	'mp-welcome-edit' => 'Modificar',
 	'mp-welcome-points' => '$1 {{PLURAL:$1|puncto|punctos}}',
 	'mp-welcome-needed-points' => 'Pro avantiar verso <b><a href="$1">$2</a></b> gania <i>$3</i> plus {{PLURAL:$3|puncto|punctos}}!',
@@ -764,6 +764,13 @@ $messages['km'] = array(
 	'mp-request-new-friend' => '{{PLURAL:$1|មិត្តភ័ក្ដិ|មិត្តភ័ក្ដិ}}ថ្មី $1',
 );
 
+/** Kannada (ಕನ್ನಡ)
+ * @author Nayvik
+ */
+$messages['kn'] = array(
+	'mp-welcome-edit' => 'ಸಂಪಾದಿಸಿ',
+);
+
 /** Korean (한국어)
  * @author Klutzy
  * @author Yknok29
@@ -797,7 +804,7 @@ $messages['krc'] = array(
 	'mp-request-new-friend' => '$1 джангы {{PLURAL:$1|тенг|тенг}}',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

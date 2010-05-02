@@ -147,6 +147,13 @@ $messages['mk'] = array(
 	'apisvgproxy-desc' => 'Посредува со SVG податотеки од (можеби далечинско) складиште на податотеки до локален домен',
 );
 
+/** Nedersaksisch (Nedersaksisch)
+ * @author Servien
+ */
+$messages['nds-nl'] = array(
+	'apisvgproxy-desc' => "Geef SVG-bestanen deur vanof een bestaansmap of meugelijke bestaansmap op ofstaand naor 't lokale domein",
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -159,6 +166,13 @@ $messages['nl'] = array(
  */
 $messages['no'] = array(
 	'apisvgproxy-desc' => 'Sender SVG-filer via en mellomtjener fra et (muligens eksternt) fillager til det lokale domenet',
+);
+
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'apisvgproxy-desc' => 'Provesís de fichièrs SVG dempuèi un depaus de fichièrs (eventualament a distància) dins lo domeni local',
 );
 
 /** Polish (Polski)

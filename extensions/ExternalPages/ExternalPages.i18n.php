@@ -319,7 +319,17 @@ $messages['ka'] = array(
 	'externalpages-no-page' => 'გვერდი არ არის მითითებული',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'externalpages' => '외부 문서',
+	'externalpages-desc' => '원격 위키미디어 사이트에서 문서를 읽어들여 보여 줌',
+	'externalpages-bad-page' => '문서 이름이 잘못되었습니다.',
+	'externalpages-no-page' => '문서를 지정하지 않았습니다.',
+);
+
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -548,17 +558,5 @@ $messages['vi'] = array(
 	'externalpages-desc' => 'Lấy và hiển thị nội dung của các trang khác trực thuộc Quỹ Wikimedia',
 	'externalpages-bad-page' => 'Đã định rõ trang không hợp lệ',
 	'externalpages-no-page' => 'Chưa định rõ trang',
-);
-
-/** Simplified Chinese (‪中文(简体)‬)
- * @author Liangent
- */
-$messages['zh-hans'] = array(
-);
-
-/** Traditional Chinese (‪中文(繁體)‬)
- * @author Liangent
- */
-$messages['zh-hant'] = array(
 );
 

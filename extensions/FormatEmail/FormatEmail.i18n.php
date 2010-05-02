@@ -405,7 +405,7 @@ $messages['ko'] = array(
 $2',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

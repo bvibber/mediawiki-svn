@@ -444,13 +444,16 @@ if ( !context || typeof context == 'undefined' ) {
 					$(this).replaceWith( this.childNodes );
 				} );
 				
+				// If the pasted content is plain text then wrap it in a <p> and adjust the <br> accordingly 
 				var pasteContent = context.fn.getOffset( cursorPos[0] ).node;
-				var removeNextBR = false
-				while ( pasteContent != null && ! $( pasteContent ).hasClass( 'wikiEditor' ) ) {
+				var removeNextBR = false;
+				while ( pasteContent != null && !$( pasteContent ).hasClass( 'wikiEditor' ) ) {
 					var currentNode = pasteContent;
 					pasteContent = pasteContent.nextSibling;
-					if ( currentNode.nodeName == '#text' && currentNode.nodeValue == currentNode.wholeText ) {				
-						$( currentNode ).wrap( $( '<p></p>' ) );
+					if ( currentNode.nodeName == '#text' && currentNode.nodeValue == currentNode.wholeText ) {
+						var pWrapper = $( '<p />' ).addClass( 'wikiEditor' );
+						$( currentNode ).wrap( pWrapper );
+						$( currentNode ).addClass( 'wikiEditor' );
 						removeNextBR = true;
 					} else if ( currentNode.nodeName == 'BR' && removeNextBR ) {
 						$( currentNode ).remove();
@@ -458,37 +461,41 @@ if ( !context || typeof context == 'undefined' ) {
 					} else {
 						removeNextBR = false;
 					}
-				}
-				
+				}	
 				var $selection = context.$content.find( ':not(.wikiEditor)' );
 				while ( $selection.length && $selection.length > 0 ) {
 					var $currentElement = $selection.eq( 0 );
 					while ( !$currentElement.parent().is( 'body' ) && !$currentElement.parent().is( '.wikiEditor' ) ) {
 						$currentElement = $currentElement.parent();
 					}
-					var html = $( '<div></div>' ).text( $currentElement.text().replace( /\r|\n/g, ' ' ) ).html();
-					if ( $currentElement.is( 'br' ) ) {
-						$currentElement.addClass( 'wikiEditor' );
-					} else if ( $currentElement.is( 'span' ) && html.length == 0 ) {
-						// Markers!
-						$currentElement.remove();
-					} else if ( $currentElement.is( 'p' ) || $currentElement.is( 'div' ) ) {
-						$newElement = $( '<p></p>' )
-							.addClass( 'wikiEditor' )
-							.insertAfter( $currentElement );
-						if ( html.length ) {
-							$newElement.html( html );
-						} else {
-							$newElement.append( $( '<br>' ).addClass( 'wikiEditor' ) );
-						}
-						$currentElement.remove();
+					
+					var $newElement;
+					if ( $currentElement.is( 'p' ) || $currentElement.is( 'div' ) || $currentElement.is( 'pre' ) ) {
+						//Convert all <div>, <p> and <pre> that was pasted into a <p> element
+						$newElement = $( '<p />' );
 					} else {
-						$newElement = $( '<span></span>' ).html( html ).insertAfter( $currentElement );
-						$newElement.replaceWith( $newElement[0].childNodes );
-						$currentElement.remove();
+						// everything else becomes a <span>
+						$newElement = $( '<span />' ).addClass( 'wikiEditor' );
 					}
+					
+					// If the pasted content was html, just convert it into text and <br>
+					var pieces = $.trim( $currentElement.text() ).split( '\n' );
+					var newElementHTML = '';
+					for ( var i = 0; i < pieces.length; i++ ) {
+						if ( pieces[i] ) {
+							newElementHTML += $.trim( pieces[i] );
+						} else {
+							newElementHTML += '<span><br class="wikiEditor" /></span>';
+						}
+					}
+					$newElement.html( newElementHTML )
+						.addClass( 'wikiEditor' )
+						.insertAfter( $currentElement );
+					$currentElement.remove();
+
 					$selection = context.$content.find( ':not(.wikiEditor)' );
 				}
+
 				context.$content.find( '.wikiEditor' ).removeClass( 'wikiEditor' );
 				if ( $.layout.name !== 'webkit' ) {
 					context.$content.removeClass( 'pasting' );
@@ -496,7 +503,8 @@ if ( !context || typeof context == 'undefined' ) {
 				
 				// Restore cursor position
 				context.fn.purgeOffsets();
-				var restoreTo = cursorPos[0] + context.fn.getContents().length - oldLength;
+				var newLength = context.fn.getContents().length;
+				var restoreTo = cursorPos[0] + newLength - oldLength;
 				context.fn.setSelection( { start: restoreTo, end: restoreTo } );
 			}, 0 );
 			return true;

@@ -25,15 +25,15 @@ class MapsYahooMapsDispPoint extends MapsBasePointMap {
 	protected $markerStringFormat = 'getYMarkerData(lat, lon, \'title\', \'label\', "icon")';
 	
 	protected function getDefaultZoom() {
-		global $egMapsYahooMapsZoom; 
+		global $egMapsYahooMapsZoom;
 		return $egMapsYahooMapsZoom;
-	}		
+	}
 	
 	/**
 	 * @see MapsBaseMap::doMapServiceLoad()
 	 *
 	 */
-	protected function doMapServiceLoad() {
+	public function doMapServiceLoad() {
 		global $egYahooMapsOnThisPage;
 		
 		MapsYahooMaps::addYMapDependencies( $this->output );
@@ -57,7 +57,7 @@ class MapsYahooMapsDispPoint extends MapsBasePointMap {
 				'id' => $mapName,
 				'style' => "width: $this->width; height: $this->height; background-color: #cccccc;",
 			),
-			wfMsg('maps-loading-map')
+			wfMsg( 'maps-loading-map' )
 		);
 		
 		$parser->getOutput()->addHeadItem(

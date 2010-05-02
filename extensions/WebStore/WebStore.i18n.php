@@ -1529,7 +1529,7 @@ $1',
 	'webstore_php_error' => 'មានកំហុស PHP:',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -1596,6 +1596,7 @@ $messages['lb'] = array(
 	'inplace_access_denied' => 'Dëse Service ass limitéiert op Grond vun der IP-Adress vum Client.',
 	'inplace_scaler_not_enough_params' => 'Net genuch Parameteren.',
 	'inplace_scaler_invalid_image' => "Net valabelt Bild, d'Gréisst konnt net festgestallt ginn",
+	'inplace_scaler_failed' => 'Beim Redimensionéiere vum Bild ass e Feeler geschitt: $1',
 	'inplace_scaler_no_handler' => 'Et gëtt keng Funktioun ("handler") fir dësen Typ vu MIME ëmzewandelen',
 	'inplace_scaler_zero_size' => 'Bei der Ëmwandlung gouf en eidele Fichier generéiert.',
 	'webstore_access' => 'Dëse Service ass pro IP-Adress limitéiert.',

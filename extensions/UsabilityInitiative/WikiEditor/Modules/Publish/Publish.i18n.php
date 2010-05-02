@@ -585,6 +585,13 @@ $messages['ja'] = array(
 	'wikieditor-publish-dialog-goback' => '戻る',
 );
 
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
+$messages['jv'] = array(
+	'wikieditor-publish-button-cancel' => 'Batalna',
+);
+
 /** Georgian (ქართული)
  * @author BRUTE
  * @author გიორგიმელა
@@ -617,7 +624,7 @@ $messages['ko'] = array(
 	'wikieditor-publish-dialog-goback' => '돌아가기',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

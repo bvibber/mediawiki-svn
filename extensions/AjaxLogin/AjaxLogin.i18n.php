@@ -530,7 +530,7 @@ $messages['ko'] = array(
 철자를 다시 확인해보십시오.',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -717,7 +717,7 @@ $messages['pt'] = array(
 	'ajaxLogin1' => 'Para completar a sua autenticação, terá de introduzir uma nova palavra-chave.
 Isto leva-lo-á a abandonar esta página de edição e poderá perder a sua edição corrente.',
 	'ajaxLogin2' => 'Tem a certeza?
-Poderá perder as suas alterações a esta página se abandonar esta página agora.',
+Pode perder as suas alterações a esta página se abandonar a página agora.',
 	'ajaxlogin-create' => 'Criar uma conta',
 	'al-nosuchuser' => 'Não existe nenhum utilizador com o nome "$1".
 Nomes de utilizador são sensíveis à maiúsculas.

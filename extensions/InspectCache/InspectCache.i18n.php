@@ -28,7 +28,6 @@ $messages['en'] = array(
  */
 $messages['qqq'] = array(
 	'inspectcache-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
-	'inspectcache-ok' => '{{Identical|OK}}',
 	'inspectcache-delete' => '{{Identical|Delete}}',
 	'inspectcache-list' => 'Text on button to have the keys listing shown.
 {{Identical|List}}',
@@ -46,23 +45,14 @@ $messages['niu'] = array(
  * @author Naudefj
  */
 $messages['af'] = array(
-	'inspectcache-ok' => 'OK',
 	'inspectcache-delete' => 'Skrap',
 	'inspectcache-list' => 'Bekyk',
-);
-
-/** Amharic (አማርኛ)
- * @author Codex Sinaiticus
- */
-$messages['am'] = array(
-	'inspectcache-ok' => 'እሺ',
 );
 
 /** Aragonese (Aragonés)
  * @author Juanpabl
  */
 $messages['an'] = array(
-	'inspectcache-ok' => "D'alcuerdo",
 	'inspectcache-delete' => 'Borrar',
 );
 
@@ -72,7 +62,6 @@ $messages['an'] = array(
 $messages['ar'] = array(
 	'inspectcache' => 'افحص الكاش',
 	'inspectcache-desc' => 'أداة تصليح بسيطة لفحص محتويات الكاش المشترك',
-	'inspectcache-ok' => 'موافق',
 	'inspectcache-general' => 'الكاش العام',
 	'inspectcache-parser' => 'كاش المحلل',
 	'inspectcache-message' => 'كاش الرسائل',
@@ -86,7 +75,6 @@ $messages['ar'] = array(
  * @author Basharh
  */
 $messages['arc'] = array(
-	'inspectcache-ok' => 'ܛܒ',
 	'inspectcache-delete' => 'ܫܘܦ',
 );
 
@@ -96,7 +84,6 @@ $messages['arc'] = array(
 $messages['arz'] = array(
 	'inspectcache' => 'افحص الكاش',
 	'inspectcache-desc' => 'أداة تصليح بسيطة لفحص محتويات الكاش المشترك',
-	'inspectcache-ok' => 'موافق',
 	'inspectcache-general' => 'الكاش العام',
 	'inspectcache-parser' => 'كاش المحلل',
 	'inspectcache-message' => 'كاش الرسائل',
@@ -176,7 +163,6 @@ $messages['bs'] = array(
  */
 $messages['ca'] = array(
 	'inspectcache' => 'Inspecciona la memòria cau',
-	'inspectcache-ok' => 'OK',
 	'inspectcache-general' => 'Memòria cau general',
 	'inspectcache-get' => 'Obté',
 	'inspectcache-delete' => 'Elimina',
@@ -195,7 +181,6 @@ $messages['cu'] = array(
  * @author Jon Harald Søby
  */
 $messages['da'] = array(
-	'inspectcache-ok' => 'OK',
 	'inspectcache-delete' => 'Slet',
 );
 
@@ -245,7 +230,6 @@ $messages['ee'] = array(
 $messages['el'] = array(
 	'inspectcache' => 'Επιθεώρηση λανθάνουσας μνήμης',
 	'inspectcache-desc' => 'Ἐνα απλό εργαλείο αποσφαλμάτωσης για την επιθεώρηση περιεχομένων της κοινής λανθάνουσας μνήμης',
-	'inspectcache-ok' => 'Εντάξει',
 	'inspectcache-general' => 'Γενική λανθάνουσα μνήμη',
 	'inspectcache-parser' => 'Λανθάνουσα μνήμη λεξιαναλυτών',
 	'inspectcache-message' => 'Λανθάνουσα μνήμη μηνυμάτων',
@@ -260,7 +244,6 @@ $messages['el'] = array(
  */
 $messages['eo'] = array(
 	'inspectcache' => 'Rigardi Kaŝmemoro',
-	'inspectcache-ok' => 'Ek!',
 	'inspectcache-general' => 'Ĝenerala kaŝmemoro',
 	'inspectcache-parser' => 'Sintaksa kaŝmemoro',
 	'inspectcache-message' => 'Mesaĝa kaŝmemoro',
@@ -292,7 +275,6 @@ $messages['es'] = array(
  * @author An13sa
  */
 $messages['eu'] = array(
-	'inspectcache-ok' => 'Ados',
 	'inspectcache-delete' => 'Ezabatu',
 );
 
@@ -332,13 +314,6 @@ $messages['fr'] = array(
 	'right-inspectcache' => 'Afficher et supprimer les entrées du cache',
 );
 
-/** Franco-Provençal (Arpetan)
- * @author Cedric31
- */
-$messages['frp'] = array(
-	'inspectcache-ok' => 'Lanciér',
-);
-
 /** Western Frisian (Frysk)
  * @author Snakesteuben
  */
@@ -376,7 +351,6 @@ $messages['got'] = array(
  * @author Omnipaedista
  */
 $messages['grc'] = array(
-	'inspectcache-ok' => 'εἶεν',
 	'inspectcache-delete' => 'Σβεννύναι',
 	'inspectcache-list' => 'Καταλογή',
 );
@@ -401,7 +375,6 @@ $messages['gsw'] = array(
  * @author MacTire02
  */
 $messages['gv'] = array(
-	'inspectcache-ok' => 'OK',
 	'inspectcache-delete' => 'Scryss',
 	'inspectcache-list' => 'Rolley',
 );
@@ -413,13 +386,6 @@ $messages['hak'] = array(
 	'inspectcache-delete' => 'Chhù-thet',
 );
 
-/** Hawaiian (Hawai`i)
- * @author Kalani
- */
-$messages['haw'] = array(
-	'inspectcache-ok' => 'Hiki nō',
-);
-
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author YaronSh
@@ -427,7 +393,6 @@ $messages['haw'] = array(
 $messages['he'] = array(
 	'inspectcache' => 'בדיקת המטמון',
 	'inspectcache-desc' => 'כלי ניפוי שגיאות פשוט לבדיקת התכנים של זיכרון המטמון המשותף',
-	'inspectcache-ok' => 'אישור',
 	'inspectcache-general' => 'מטמון כללי',
 	'inspectcache-parser' => 'מטמון המפענח',
 	'inspectcache-message' => 'מטמון ההודעות',
@@ -443,7 +408,6 @@ $messages['he'] = array(
 $messages['hi'] = array(
 	'inspectcache' => 'कैशे जाँचे',
 	'inspectcache-desc' => 'शेअर्ड कैश जाँचने के लिये सरल उपकरण',
-	'inspectcache-ok' => 'ओके',
 	'inspectcache-general' => 'साधारण कैशे',
 	'inspectcache-parser' => 'पार्सर कैशे',
 	'inspectcache-message' => 'संदेश कैशे',
@@ -572,7 +536,6 @@ $messages['ja'] = array(
  * @author Meursault2004
  */
 $messages['jv'] = array(
-	'inspectcache-ok' => 'OK',
 	'inspectcache-general' => 'Cache umum',
 	'inspectcache-get' => 'Jupuk',
 	'inspectcache-delete' => 'Busak',
@@ -585,7 +548,6 @@ $messages['jv'] = array(
  * @author Lovekhmer
  */
 $messages['km'] = array(
-	'inspectcache-ok' => 'យល់ព្រម',
 	'inspectcache-general' => 'ឃ្លាំងសំងាត់ទូទៅ',
 	'inspectcache-message' => 'សារឃ្លាំងសំងាត់',
 	'inspectcache-delete' => 'លុបចេញ',
@@ -597,6 +559,7 @@ $messages['km'] = array(
  * @author Nayvik
  */
 $messages['kn'] = array(
+	'inspectcache-delete' => 'ಅಳಿಸು',
 	'inspectcache-list' => 'ಪಟ್ಟಿ',
 );
 
@@ -611,17 +574,15 @@ $messages['kri'] = array(
  * @author Jose77
  */
 $messages['krj'] = array(
-	'inspectcache-ok' => 'OK dun',
 	'inspectcache-delete' => 'Para',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
 	'inspectcache' => '<i lang="en">Cache</i> beloore',
 	'inspectcache-desc' => 'En eifach Werkzüch för däm jemeinsamme <i lang="en">cache</i> singe Enhallt enshpezeere.',
-	'inspectcache-ok' => 'OK',
 	'inspectcache-general' => 'Jemeinsame <i lang="en">cache</i>',
 	'inspectcache-parser' => 'Em <i lang="en">Parser</i> singe <i lang="en">cache</i>',
 	'inspectcache-message' => 'Der <i lang="en">cache</i> för Nohreeschte un esu',
@@ -645,13 +606,6 @@ $messages['lb'] = array(
 	'inspectcache-list' => 'Lëscht',
 );
 
-/** Lingua Franca Nova (Lingua Franca Nova)
- * @author Malafaya
- */
-$messages['lfn'] = array(
-	'inspectcache-ok' => 'Oce',
-);
-
 /** Lithuanian (Lietuvių)
  * @author Tomasdd
  */
@@ -663,7 +617,6 @@ $messages['lt'] = array(
  * @author Сай
  */
 $messages['mhr'] = array(
-	'inspectcache-ok' => 'Йӧра',
 	'inspectcache-delete' => 'Шӧраш',
 );
 
@@ -687,7 +640,6 @@ $messages['mk'] = array(
  * @author Shijualex
  */
 $messages['ml'] = array(
-	'inspectcache-ok' => 'ശരി',
 	'inspectcache-delete' => 'മായ്ക്കുക',
 	'inspectcache-list' => 'പട്ടിക',
 );
@@ -698,7 +650,6 @@ $messages['ml'] = array(
 $messages['mr'] = array(
 	'inspectcache' => 'सय तपासा',
 	'inspectcache-desc' => 'सय तपासणीचे एक सोपे उपकरण',
-	'inspectcache-ok' => 'सर्व ठीक',
 	'inspectcache-general' => 'साधारण सय',
 	'inspectcache-parser' => 'पार्सर सय',
 	'inspectcache-message' => 'संदेश सय',
@@ -706,13 +657,6 @@ $messages['mr'] = array(
 	'inspectcache-delete' => 'वगळा',
 	'inspectcache-deleted' => 'वगळलेली सय',
 	'inspectcache-list' => 'यादी',
-);
-
-/** Malay (Bahasa Melayu)
- * @author Aurora
- */
-$messages['ms'] = array(
-	'inspectcache-ok' => 'OK',
 );
 
 /** Erzya (Эрзянь)
@@ -726,7 +670,6 @@ $messages['myv'] = array(
  * @author Fluence
  */
 $messages['nah'] = array(
-	'inspectcache-ok' => 'Cualli',
 	'inspectcache-delete' => 'Ticpolōz',
 );
 
@@ -754,7 +697,6 @@ $messages['nl'] = array(
 $messages['nn'] = array(
 	'inspectcache' => 'Inspiser mellomlager',
 	'inspectcache-desc' => 'Eit enkelt feilsøkingsverktøy for å inspisera innhaldet i det delte mellomlageret',
-	'inspectcache-ok' => 'OK',
 	'inspectcache-general' => 'Generelt mellomlager',
 	'inspectcache-parser' => 'Parsermellomlager',
 	'inspectcache-message' => 'Meldingsmellomlager',
@@ -809,7 +751,6 @@ $messages['oc'] = array(
  * @author Amikeco
  */
 $messages['os'] = array(
-	'inspectcache-ok' => 'Афтæ уæд!',
 	'inspectcache-delete' => 'Аппар',
 );
 
@@ -817,7 +758,6 @@ $messages['os'] = array(
  * @author Xqt
  */
 $messages['pdc'] = array(
-	'inspectcache-ok' => 'OK',
 	'inspectcache-delete' => 'Lösche',
 	'inspectcache-list' => 'Lischt',
 );
@@ -883,7 +823,6 @@ $messages['pt'] = array(
 $messages['pt-br'] = array(
 	'inspectcache' => 'Inspecionar cache',
 	'inspectcache-desc' => 'Uma ferramenta simples de depuração para inspecionar o conteúdo da cache compartilhada',
-	'inspectcache-ok' => 'OK',
 	'inspectcache-general' => 'Cache geral',
 	'inspectcache-parser' => 'Cache do analisador (parser)',
 	'inspectcache-message' => 'Cache de mensagens',
@@ -905,7 +844,6 @@ $messages['rif'] = array(
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
-	'inspectcache-ok' => 'OK',
 	'inspectcache-delete' => 'Şterge',
 	'inspectcache-list' => 'Listă',
 );
@@ -914,7 +852,6 @@ $messages['ro'] = array(
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
-	'inspectcache-ok' => 'OK',
 	'inspectcache-get' => 'Pigghije',
 	'inspectcache-delete' => 'Scangille',
 	'inspectcache-deleted' => "Scangille 'a cache",
@@ -944,7 +881,6 @@ $messages['ru'] = array(
 $messages['sk'] = array(
 	'inspectcache' => 'Inšpekcia vyrovnávacej pamäte',
 	'inspectcache-desc' => 'Jednoduchý ladiaci nástroj na skúmanie obsahu zdieľanej vyrovnávacej pamäte',
-	'inspectcache-ok' => 'OK',
 	'inspectcache-general' => 'Všeobecná vyrovnávacia pamäť',
 	'inspectcache-parser' => 'Vyrovnávacia pamäť syntaktického analyzátora',
 	'inspectcache-message' => 'Vyrovnávacia pamäť správ',
@@ -960,7 +896,6 @@ $messages['sk'] = array(
 $messages['sr-ec'] = array(
 	'inspectcache' => 'Испитај кеш',
 	'inspectcache-desc' => 'Једноставан дебагер за проверу садржаја заједничког кеша',
-	'inspectcache-ok' => 'Потврди',
 	'inspectcache-general' => 'Општи кеш',
 	'inspectcache-parser' => 'Кеш парсера',
 	'inspectcache-message' => 'Кеш за поруке',
@@ -976,7 +911,6 @@ $messages['sr-ec'] = array(
 $messages['sr-el'] = array(
 	'inspectcache' => 'Ispitaj keš',
 	'inspectcache-desc' => 'Jednostavan debager za proveru sadržaja zajedničkog keša',
-	'inspectcache-ok' => 'Potvrdi',
 	'inspectcache-general' => 'Opšti keš',
 	'inspectcache-parser' => 'Keš parsera',
 	'inspectcache-message' => 'Keš za poruke',
@@ -991,7 +925,6 @@ $messages['sr-el'] = array(
  */
 $messages['stq'] = array(
 	'inspectcache' => 'Cache bekiekje',
-	'inspectcache-ok' => 'OK',
 	'inspectcache-general' => 'Algemeenen Cache',
 	'inspectcache-parser' => 'Parser-Cache',
 	'inspectcache-message' => 'Ättergjuchte-Cache',
@@ -1027,18 +960,10 @@ $messages['sv'] = array(
 	'right-inspectcache' => 'Granska och radera cacheposter',
 );
 
-/** Silesian (Ślůnski)
- * @author Herr Kriss
- */
-$messages['szl'] = array(
-	'inspectcache-ok' => 'OK',
-);
-
 /** Telugu (తెలుగు)
  * @author Veeven
  */
 $messages['te'] = array(
-	'inspectcache-ok' => 'సరే',
 	'inspectcache-general' => 'సాధారణ కోశం',
 	'inspectcache-message' => 'సందేశపు కోశం',
 	'inspectcache-get' => 'పొందండి',
@@ -1051,7 +976,6 @@ $messages['te'] = array(
  * @author MF-Warburg
  */
 $messages['tet'] = array(
-	'inspectcache-ok' => 'OK',
 	'inspectcache-delete' => 'Halakon',
 );
 
@@ -1075,7 +999,6 @@ $messages['tg-latn'] = array(
  * @author Octahedron80
  */
 $messages['th'] = array(
-	'inspectcache-ok' => 'ตกลง',
 	'inspectcache-delete' => 'ลบ',
 );
 
@@ -1092,7 +1015,6 @@ $messages['tk'] = array(
 $messages['tl'] = array(
 	'inspectcache' => 'Suriin ang taguan',
 	'inspectcache-desc' => 'Isang payak na kagamitang pangtanggal ng depekto upang masuri ang mga nilalaman ng pinagsasaluhang taguan',
-	'inspectcache-ok' => "Sige/Ayos 'yan",
 	'inspectcache-general' => 'Taguang panlahat',
 	'inspectcache-parser' => 'Taguan ng banghay',
 	'inspectcache-message' => 'Taguan ng mensahe',
@@ -1109,7 +1031,6 @@ $messages['tl'] = array(
  */
 $messages['tr'] = array(
 	'inspectcache' => 'Önbelleği denetle',
-	'inspectcache-ok' => 'Tamam',
 	'inspectcache-general' => 'Genel önbellek',
 	'inspectcache-parser' => 'Ayrıştırıcı önbelleği',
 	'inspectcache-message' => 'Mesaj önbelleği',
@@ -1117,20 +1038,6 @@ $messages['tr'] = array(
 	'inspectcache-delete' => 'Sil',
 	'inspectcache-deleted' => 'Silinmiş önbellek',
 	'inspectcache-list' => 'Listele',
-);
-
-/** ئۇيغۇرچە (ئۇيغۇرچە)
- * @author Alfredie
- */
-$messages['ug-arab'] = array(
-	'inspectcache-ok' => 'ماقۇل',
-);
-
-/** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))
- * @author Jose77
- */
-$messages['ug-latn'] = array(
-	'inspectcache-ok' => 'Maqul',
 );
 
 /** Ukrainian (Українська)
@@ -1142,7 +1049,6 @@ $messages['ug-latn'] = array(
 $messages['uk'] = array(
 	'inspectcache' => 'Перегляд кешу',
 	'inspectcache-desc' => 'Простий інструмент для налагодження і перегляду вмісту спільного кешу',
-	'inspectcache-ok' => 'Гаразд',
 	'inspectcache-general' => 'Загальний кеш',
 	'inspectcache-parser' => 'Кеш парсера',
 	'inspectcache-message' => 'Кеш повідомлень',
@@ -1158,7 +1064,6 @@ $messages['uk'] = array(
 $messages['vep'] = array(
 	'inspectcache' => 'Inspektiruida keš',
 	'inspectcache-desc' => 'Järgeline kohenduzazeg ühthižen kešan südäimišton nähtes',
-	'inspectcache-ok' => 'OK',
 	'inspectcache-general' => 'Ühthine keš',
 	'inspectcache-parser' => 'Parseran keš',
 	'inspectcache-message' => 'Tedotusiden keš',
@@ -1174,7 +1079,6 @@ $messages['vep'] = array(
 $messages['vi'] = array(
 	'inspectcache' => 'Kiểm tra bộ nhớ đệm',
 	'inspectcache-desc' => 'Một công cụ gỡ rối đơn giản để kiểm tra nội dung của bộ đệm dùng chung',
-	'inspectcache-ok' => 'OK',
 	'inspectcache-general' => 'Bộ đệm tổng quát',
 	'inspectcache-parser' => 'Bộ đệm cú pháp',
 	'inspectcache-message' => 'Bộ đệm thông báo',
@@ -1195,7 +1099,6 @@ $messages['yi'] = array(
  * @author Wrightbus
  */
 $messages['zh-hans'] = array(
-	'inspectcache-ok' => '确定',
 	'inspectcache-delete' => '删除',
 );
 
@@ -1203,7 +1106,6 @@ $messages['zh-hans'] = array(
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
-	'inspectcache-ok' => '確定',
 	'inspectcache-delete' => '删除',
 );
 

@@ -243,7 +243,7 @@ $messages['ko'] = array(
 	'uploadblacklist-desc' => '파일 올리기 블랙리스트 기능을 추가',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

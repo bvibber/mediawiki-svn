@@ -255,7 +255,7 @@ $messages['km'] = array(
 	'right-getfamily' => 'បង្កើត​ឯកសារ​មេ​/គ្រួសារ សម្រាប់ pywikipediabot',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

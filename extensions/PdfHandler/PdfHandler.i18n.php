@@ -330,7 +330,7 @@ $messages['ko'] = array(
 	'pdf_page_error' => '쪽수가 범위 안에 있지 않습니다.',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -442,10 +442,11 @@ $messages['pms'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'pdf-desc' => 'Manuseador de visualização de ficheiros PDF em modo de imagem',
+	'pdf-desc' => 'Manuseador de visionamento de ficheiros PDF em modo de imagem',
 	'pdf_no_metadata' => 'não foi possível obter os metadados do PDF',
 	'pdf_page_error' => 'Número de página fora do intervalo',
 );
@@ -594,7 +595,7 @@ $messages['vi'] = array(
 	'pdf_page_error' => 'Số trang không nằm trong giới hạn',
 );
 
-/** Yue (粵語) */
+/** Cantonese (粵語) */
 $messages['yue'] = array(
 	'pdf-desc' => '響圖像模式睇PDF檔嘅處理器',
 	'pdf_no_metadata' => '唔能夠響PDF度拎metadata',

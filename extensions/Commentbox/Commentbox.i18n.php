@@ -500,7 +500,14 @@ $messages['ja'] = array(
 	'commentbox-error-empty-comment' => '空の意見は受け付けていません！',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Kannada (ಕನ್ನಡ)
+ * @author Nayvik
+ */
+$messages['kn'] = array(
+	'commentbox-name' => 'ಹೆಸರು:',
+);
+
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

@@ -18,6 +18,13 @@ $messages['en'] = array(
 	'tooltip-pt-prefswitch-link' => 'Try out new features',
 );
 
+/** Message documentation (Message documentation)
+ * @author EugeneZelenko
+ */
+$messages['qqq'] = array(
+	'prefswitch-link' => '{{Identical|New}}',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK
@@ -106,6 +113,13 @@ $messages['es'] = array(
 	'tooltip-pt-prefswitch-link' => 'Probar las nuevas características',
 );
 
+/** Estonian (Eesti)
+ * @author Hendrik
+ */
+$messages['et'] = array(
+	'prefswitch-link' => 'Uus!',
+);
+
 /** Basque (Euskara)
  * @author Joxemai
  */
@@ -182,6 +196,14 @@ $messages['hu'] = array(
 $messages['ia'] = array(
 	'prefswitch-link' => 'Nove!',
 	'tooltip-pt-prefswitch-link' => 'Probar nove functiones',
+);
+
+/** Indonesian (Bahasa Indonesia)
+ * @author Kenrick95
+ */
+$messages['id'] = array(
+	'prefswitch-link' => 'Baru!',
+	'tooltip-pt-prefswitch-link' => 'Coba fitur baru',
 );
 
 /** Italian (Italiano)
@@ -263,6 +285,14 @@ $messages['nl'] = array(
 $messages['no'] = array(
 	'prefswitch-link' => 'Ny',
 	'tooltip-pt-prefswitch-link' => 'Prøv nye funksjoner',
+);
+
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'prefswitch-link' => 'Novèl !',
+	'tooltip-pt-prefswitch-link' => 'Ensajatz las foncionalitats novèlas',
 );
 
 /** Polish (Polski)

@@ -2042,7 +2042,7 @@ $messages['krj'] = array(
 	'categorytree-category' => 'Kategorya:',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -2084,7 +2084,7 @@ $messages['ku-latn'] = array(
 	'categorytree-not-found' => 'Kategoriya <i>$1</i> nehate dîtin',
 );
 
-/** Cornish (Kernowek)
+/** Cornish (Kernewek)
  * @author Kernoweger
  * @author Kw-Moon
  */
@@ -2548,7 +2548,7 @@ $messages['nds-nl'] = array(
 	'categorytree-legend' => 'Laot kattegerieboom zien',
 	'categorytree-desc' => 'Dynamische navigasie veur de [[Special:CategoryTree|kattegeriestructuur]]',
 	'categorytree-header' => 'Voer een kattegerienaam in um de inhoud in boomstructuur te bekieken.
-NB: Veur disse functie he-j de [[JavaScript]]functionaliteit, AJAX neudig. A-j een hele ouwe webkieker hemmen, of je JavaScript uut-eschakeld hemmen, dan zal disse functie neet warken.',
+NB: Veur disse functie he-j de JavaScript-functionaliteit, AJAX neudig. A-j een hele ouwe webkieker hemmen, of je JavaScript uut-eschakeld hemmen, dan zal disse functie neet warken.',
 	'categorytree-category' => 'Kattegerie:',
 	'categorytree-go' => 'Laojen',
 	'categorytree-parents' => 'Ouwerkattegerieën',
@@ -3958,7 +3958,17 @@ $messages['yi'] = array(
 	'categorytree-retry' => 'ביטע וואַרט אַ רגע און פרובירט נאכאַמאָל',
 );
 
-/** Yue (粵語)
+/** Yoruba (Yorùbá)
+ * @author Demmy
+ */
+$messages['yo'] = array(
+	'categorytree-portlet' => 'Àwọn ẹ̀ka',
+	'categorytree-category' => 'Ẹ̀ka:',
+	'categorytree-parents' => 'Àwọn òbí',
+	'categorytree-mode-all' => 'gbogbo àwọn ojúewé',
+);
+
+/** Cantonese (粵語)
  * @author Shinjiman
  */
 $messages['yue'] = array(

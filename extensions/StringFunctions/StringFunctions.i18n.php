@@ -241,7 +241,7 @@ $messages['ja'] = array(
 	'stringfunctions-desc' => 'パーサーに文字列処理関数を追加する',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

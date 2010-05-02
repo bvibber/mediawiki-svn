@@ -586,7 +586,7 @@ $messages['ko'] = array(
 	'crossnamespacelinkstext' => '$1: $3 이름공간을 가리키는 $2개의 링크',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -1115,7 +1115,7 @@ $messages['yi'] = array(
 	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|לינק|לינקען}} צו $3',
 );
 
-/** Yue (粵語) */
+/** Cantonese (粵語) */
 $messages['yue'] = array(
 	'crossnamespacelinks' => '跨空間名連結',
 	'crossnamespacelinks-desc' => '列示唔存在響{{SITENAME}}嘅[[Special:CrossNamespaceLinks|跨空間名連結]]',

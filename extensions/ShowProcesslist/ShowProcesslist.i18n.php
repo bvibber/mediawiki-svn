@@ -21,12 +21,14 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author EugeneZelenko
  * @author Jon Harald Søby
  */
 $messages['qqq'] = array(
 	'showprocesslist-desc' => 'The text “SHOW FULL PROCESSLIST“ is MySQL syntax, and should stay the way it is even in translations.',
 	'showprocesslist-id' => '{{Identical|ID}}',
 	'showprocesslist-user' => '{{Identical|User}}',
+	'showprocesslist-db' => '{{Identical|Database}}',
 	'showprocesslist-time' => '{{Identical|Time}}',
 );
 
@@ -570,7 +572,7 @@ $messages['km'] = array(
 	'showprocesslist-info' => 'ព័ត៌មាន',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

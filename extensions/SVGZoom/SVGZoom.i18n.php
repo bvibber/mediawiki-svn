@@ -150,7 +150,7 @@ $messages['ja'] = array(
 	'svgzoom-desc' => 'SVG ファイルの表示にパンとズームの機能を加える',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

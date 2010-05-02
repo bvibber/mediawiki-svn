@@ -419,21 +419,29 @@ Action results from button {{msg-mw|lqt_undelete}}',
 	'lqt-newer' => '{{Identical|Newer}}',
 	'lqt-read-message' => '"Read" is past tense.',
 	'lqt-email-undo' => '{{Identical|Undo}}',
-	'lqt_rc_new_discussion' => '* $1 - thread
-* $2 - talk page
-* $3 - the person who has created the thread',
-	'lqt_rc_new_reply' => '* $1 - thread
-* $2 - talk page
-* $3 - person who has written to the thread',
-	'lqt_rc_ellipsis' => '{{Optional}}',
 	'lqt-history-time' => '{{Identical|Time}}',
 	'lqt-history-user' => '{{identical|User}}',
 	'lqt-history-comment' => '{{Identical|Comment}}',
+	'lqt-thread-edited-author' => '* $1: date/time of the last edit
+* $2: Unused (Number of users who edited the thread but not useful in this context. Used by [[MediaWiki:Lqt-thread-edited-others]])
+* $3: time of the last edit (optional, instead of using $1)
+* $4: date of the last edit (optional, instead of using $1)',
+	'lqt-thread-edited-others' => '* $1: date/time of the last edit
+* $2: Number of users who edited the thread
+* $3: time of the last edit (optional, instead of using $1)
+* $4: date of the last edit (optional, instead of using $1)',
 	'lqt-header-actions' => '{{Identical|Action}}',
 	'lqt-delete-parent-deleted' => '$1 is the reason for deletion of the parent.',
 	'lqt-movethread' => '{{Identical|Move}}',
+	'lqt-menu-trigger' => '{{Identical|More}}',
 	'lqt-newmessages-from' => 'Used as page subtitle. Parameters:
 * $1 is a link to a talk page (for example "User talk:Foo")',
+	'lqt-hot-topics' => 'A page title, used for a special page with "hot" (most-commented-on)
+threads on a wiki',
+	'lqt_rc_new_discussion' => 'Parameters:
+* $1 is a link to a thread with the thread subject as link description',
+	'lqt_rc_new_reply' => 'Parameters:
+* $1 is a link to a thread with the thread subject as link description',
 	'right-lqt-split' => '{{doc-right}}',
 	'right-lqt-merge' => '{{doc-right}}',
 	'lqt-log-action-move' => 'Parameteres:
@@ -472,8 +480,12 @@ Parameters are:
 	'lqt-ajax-update-link' => '{{Identical|Update}}',
 	'lqt-thread-show-replies' => 'Parameters:
 * $1 is the number of replies. This can be used for PLURAL:$1',
+	'lqt-thread-link-url' => 'A form label, for the URL to a thread',
+	'lqt-thread-link-title' => 'A form label, for the wikitext link to a thread',
 	'lqt-save-subject' => '{{Identical|Save}}',
 	'lqt-cancel-subject-edit' => '{{Identical|Cancel}}',
+	'lqt-drag-reparent' => 'Description of the action of moving a thread underneath a new parent.
+Displayed in a list of actions to confirm in a confirmation dialog.',
 	'lqt-drag-save' => '{{Identical|Confirm}}',
 	'lqt-drag-reason' => '{{Identical|Reason}}',
 	'lqt-preview-signature' => '{{Identical|Preview}}',
@@ -489,7 +501,7 @@ Parameters are:
 	'lqt-feed-new-thread-intro' => 'Parameters:
 * $1 is a link to the talk page with the thread
 * $2 is a link to the user posting in the thread
-* $3 -not used-
+* $3 -not used- 
 * $4 is the name of the user posting to the thread, optional, can be used for GENDER',
 	'lqt-feed-reply-intro' => 'Parameters:
 * $1 is a link to the talk page with the thread
@@ -501,17 +513,11 @@ Parameters are:
 	'lqt_newmessages-title' => '{{Identical|New messages}}',
 	'lqt-talkpage-history-subtitle' => 'Parameters:
 * $1 is a link to a talk page, with the talk page title as link label',
+	'lqt-talkpage-history-tab' => 'The text for the tab pointing to a discussion page header',
 	'lqt-edit-bump' => 'See {{msg-mw|Lqt-edit-bump-tooltip}} for the explanation of this feature.',
 	'lqt-reply-subpage' => 'Part of the page title when a LiquidThread answer is given. Should probably be translated as a noun and not as a verb.
 
 {{Identical|Reply}}',
-	'lqt-hot-topics' => 'A page title, used for a special page with "hot" (most-commented-on)
-threads on a wiki',
-	'lqt-thread-link-url' => 'A form label, for the URL to a thread',
-	'lqt-thread-link-title' => 'A form label, for the wikitext link to a thread',
-	'lqt-drag-reparent' => 'Description of the action of moving a thread underneath a new parent.
-Displayed in a list of actions to confirm in a confirmation dialog.',
-	'lqt-talkpage-history-tab' => 'The text for the tab pointing to a discussion page header',
 );
 
 /** Faeag Rotuma (Faeag Rotuma)
@@ -1063,8 +1069,6 @@ $messages['arc'] = array(
 	'lqt_protectedfromreply_link' => 'ܢܛܝܪܐ',
 	'lqt-no-new-messages' => 'ܠܝܬ ܠܟ ܐܓܪ̈ܬܐ ܚܕ̈ܬܬܐ',
 	'lqt-new-messages' => '✒ ܐܝܬ ܠܟ ܐܓܪ̈ܬܐ ܚܕ̈ܬܬܐ.',
-	'lqt_rc_author_original' => '(ܣܝܘܡܐ ܫܪܫܝܐ)',
-	'lqt_rc_author_others' => '(ܠܐ ܗܘ ܣܝܘܡܐ)',
 	'lqt-newmessages-n' => 'ܐܓܪ̈ܬܐ ܚܕ̈ܬܬܐ ($1)',
 	'lqt_newmessages' => 'ܐܓܪ̈ܬܐ ܚܕ̈ܬܬܐ',
 );
@@ -3355,7 +3359,6 @@ Möglicherweise wollen Sie stattdessen eine $2.',
 	'lqt-summarize-intro' => 'Bitte fassen Sie den untenstehenden Diskussionsstrang im Bearbeitungsfenster zusammen.
 Sie können Wikitext in Ihrer Zusammenfassung verwenden. Wenn Sie fertig sind, klicken Sie auf „{{int:savearticle}}“.',
 	'lqt-split-success' => 'Sie haben den Diskussionsstrang $1 erfolgreich abgetrennt.',
-	'lqt_split_badsubject' => 'Der eingegebene Betreff ist ungültig.',
 	'lqt-delete-parent-warning' => 'Dies ist ein Thema auf höchster Ebene mit Antworten.
 Auch seine Antworten werden automatisch gelöscht.
 Um dies zu vermeiden, teilen Sie sie von diesem Thema ab, bevor Sie es löschen.',
@@ -4088,6 +4091,17 @@ $messages['el'] = array(
 	'restriction-newthread' => 'Δημοσίευση νέων θεμάτων',
 	'lqt-edit-bump' => 'Προσκρούστε αυτό το θέμα',
 	'lqt-reply-subpage' => 'απάντηση',
+);
+
+/** British English (British English)
+ * @author Reedy
+ */
+$messages['en-gb'] = array(
+	'lqt_summary_label' => 'Summarise',
+	'lqt_summarize_link' => 'Summarise',
+	'lqt-summarize-intro' => 'Please summarise the below thread in the editing box.
+You may use any wikitext in your summary.
+When you finish, click "{{int:savearticle}}".',
 );
 
 /** Esperanto (Esperanto)
@@ -4939,6 +4953,10 @@ Eztabaida hau $2-(e)ko zati da.',
 	'lqt-drag-reason' => 'Arrazoia:',
 	'lqt-edit-signature' => '(sinadura aldatu)',
 	'lqt-preview-signature' => '(aurrikuspena)',
+	'lqt-feed-title-all' => '{{SITENAME}} — Mezu berriak',
+	'lqt-feed-title-all-from' => '{{SITENAME}} — Mezu beriak $1- (r)engandik',
+	'lqt-feed-title-new-threads' => '{{SITENAME}} — Eztabaida berriak',
+	'lqt-feed-title-new-threads-from' => '{{SITENAME}} — Eztabaida berriak $1 - (r)engandik',
 	'lqt_newmessages' => 'Mezu berriak',
 	'lqt-talkpage-history-tab' => 'Goiburua',
 );
@@ -7524,8 +7542,8 @@ $messages['ia'] = array(
 	'lqt_protectedfromreply_link' => 'protegite',
 	'lqt_subject' => 'Subjecto:',
 	'lqt_noreason' => 'Nulle motivo specificate.',
-	'lqt_move_placeholder' => 'Iste filo es un substitution que indica le displaciamento de un filo, $1, ab iste pagina.
-Iste displaciamento esseva facite per $2 le $3 $4. Le filo se trova ora a $5.',
+	'lqt_move_placeholder' => 'Iste filo es un substituto indicante que un filo, $1, ha essite displaciate ab iste pagina.
+Iste displaciamento ha essite facite per $2 le $3 a $4. Le filo se trova ora a $5.',
 	'lqt_thread_deleted_for_sysops' => "Iste filo ha essite '''delite''' e es solmente visibile al administratores.",
 	'lqt_thread_deleted' => 'Iste filo ha essite delite.',
 	'lqt_summary_notice' => 'Nihil ha essite modificate in iste discussion depost al minus $2 {{PLURAL:$2|die|dies}}.
@@ -8449,7 +8467,7 @@ $messages['ja'] = array(
 	'lqt-delete-parent-deleted' => '親スレッド削除済み ($1)',
 	'lqt-delete-replies-done' => 'このスレッドへの返信もすべて削除されました。',
 	'lqt-movethread' => '移動',
-	'lqt-menu-trigger' => 'その他',
+	'lqt-menu-trigger' => '続き',
 	'lqt-newmessages-from' => '$1 より',
 	'lqt-hot-topics' => 'ホットな話題',
 	'lqt-add-reply' => '返信',
@@ -8593,6 +8611,15 @@ $messages['jv'] = array(
  * @author გიორგიმელა
  */
 $messages['ka'] = array(
+	'lqt-desc' => 'ამატებს გვერდზე განხილვის დინებას',
+	'lqt_movethread' => 'გადაიტანეთ ტოტი',
+	'lqt_deletethread' => 'წაშალეთ/აღადგინეთ ტოტი',
+	'lqt_contents_title' => 'შინაარსი',
+	'lqt_toc_thread_title' => 'ტოტის სათაური',
+	'lqt_toc_thread_author' => 'ინიციატორი',
+	'lqt_toc_thread_replycount' => 'პასუხები',
+	'lqt_toc_thread_modified' => 'ბოლოს შეიცვალა',
+	'lqt_add_header' => 'სათაურის ჩამატება',
 	'lqt_new_thread' => 'ახალი განხილვის დაწყება',
 	'lqt_reply' => 'პასუხი',
 	'lqt_delete' => 'წაშლა',
@@ -8823,8 +8850,10 @@ $messages['km'] = array(
  * @author Nayvik
  */
 $messages['kn'] = array(
+	'lqt_delete' => 'ಅಳಿಸು',
 	'lqt-title' => 'ಶೀರ್ಷಿಕೆ',
 	'lqt-summary' => 'ಸಾರಾಂಶ',
+	'lqt-search-button' => 'ಹುಡುಕು',
 	'lqt-drag-reason' => 'ಕಾರಣ:',
 	'lqt-preview-signature' => '(ಮುನ್ನೋಟ)',
 );
@@ -8841,6 +8870,7 @@ $messages['ko'] = array(
 	'lqt_deletethread' => '스레드 삭제/복구',
 	'lqt_contents_title' => '목차',
 	'lqt_toc_thread_title' => '스레드 제목',
+	'lqt_toc_thread_author' => '토론을 시작한 사용자',
 	'lqt_toc_thread_replycount' => '답글',
 	'lqt_toc_thread_modified' => '마지막으로 수정된 시각',
 	'lqt_add_header' => '머리말 추가',
@@ -8857,14 +8887,23 @@ $messages['ko'] = array(
 	'lqt_fragment' => '$2 문서에서의 $1의 일부',
 	'lqt_discussion_link' => '토론',
 	'lqt_from_talk' => '$1에서의 토론',
+	'lqt_newer' => '← 다음',
+	'lqt_older' => '이전 →',
 	'lqt-history-title' => '스레드 역사',
 	'lqt_hist_comment_edited' => '의견 글을 [$2 수정함]',
+	'lqt_hist_summary_changed' => '요약문을 변경함',
 	'lqt_hist_reply_created' => '[[$1|답글]]을 남김',
 	'lqt_hist_thread_created' => '새 스레드 생성',
 	'lqt_hist_deleted' => '삭제함',
+	'lqt_hist_undeleted' => '복구됨',
 	'lqt_hist_moved_talkpage' => '이동함',
 	'lqt_hist_listing_subtitle' => '스레드 역사 보기',
 	'lqt_hist_view_whole_thread' => '전체 스레드의 역사 보기',
+	'lqt_hist_no_revisions_error' => '이 스레드는 변경 내역이 없습니다.',
+	'lqt_hist_past_last_page_error' => '변경 내력이 있는 페이지 수를 넘어섰습니다.',
+	'lqt_hist_tooltip_newer_disabled' => '이 페이지가 첫 페이지이기 때문에 링크가 비활성화되었습니다.',
+	'lqt_hist_tooltip_older_disabled' => '이 페이지가 마지막 페이지이기 때문에 링크가 비활성화되었습니다.',
+	'lqt_hist_split' => '답글이 새 스레드로 분할됨',
 	'lqt_hist_edited_subject' => '제목을 "$2"에서 "$3"으로 바꿈',
 	'lqt_hist_edited_subject_corrupt' => '제목을 바꿈',
 	'lqt_hist_merged_from' => '[[$1|답글]]이 다른 스레드로 옮겨짐',
@@ -8873,8 +8912,21 @@ $messages['ko'] = array(
 	'lqt_hist_root_blanked' => '의견 글을 지움',
 	'lqt_hist_adjusted_sortkey' => '스레드 위치를 조정함',
 	'lqt_revision_as_of' => '$2 $3 판',
+	'lqt_change_new_thread' => '이 스레드의 첫 판입니다.',
+	'lqt_change_reply_created' => '이 판에서 [$1 강조 처리된 의견]이 추가되었습니다.',
+	'lqt_change_edited_root' => '이 판에서 [$1 강조 처리된 의견]이 편집되었습니다.',
+	'lqt_change_edited_summary' => '이 스레드의 요약문이 편집되었습니다.',
+	'lqt_change_deleted' => '[$1 이 스레드] 혹은 상위 스레드가 삭제되었습니다.',
+	'lqt_change_undeleted' => '[$1 강조 처리된 글]이 복구되었습니다.',
+	'lqt_change_moved' => '[$1 이 스레드]는 다른 토론 문서로 옮겨졌습니다.',
+	'lqt_change_split' => '[$1 이 스레드]는 다른 스레드에서 분할되었습니다.',
+	'lqt_change_edited_subject' => '이 스레드의 주제가 "$2"에서 "$3"으로 바뀌었습니다.',
+	'lqt_change_merged_from' => '이 스레드의 [$1 답글]이 다른 스레드로 옮겨졌습니다.',
+	'lqt_change_merged_to' => '[$1 강조 처리된 답글]이 다른 스레드에서 옮겨졌습니다.',
+	'lqt_change_split_from' => '이 스레드의 [$1 하위 스레드]가 독립적인 스레드로 분할되었습니다.',
 	'lqt_change_root_blanked' => '[$1 의견]을 지웠습니다.',
 	'lqt_youhavenewmessages' => '[$1 새 메시지]가 있습니다.',
+	'lqt_protectedfromreply' => '이 스레드는 답변을 달지 못하도록 $1되어 있습니다.',
 	'lqt_protectedfromreply_link' => '보호',
 	'lqt_subject' => '주제:',
 	'lqt_noreason' => '이유를 입력하지 않았습니다.',
@@ -8892,6 +8944,8 @@ $messages['ko'] = array(
 	'lqt_move_noreason' => '이유를 입력하지 않았습니다.',
 	'lqt_move_success' => '스레드가 $1(으)로 옮겨졌습니다.',
 	'lqt_delete_deleting' => "'''$1''' 스레드와 관련된 '''모든 답변'''을 삭제합니다.",
+	'lqt_delete_deleted' => '스레드가 삭제되었습니다.',
+	'lqt_delete_undeleted' => '스레드가 복구되었습니다.',
 	'lqt_delete_return' => '$1로 돌아갑니다.',
 	'lqt_delete_unallowed' => '당신은 스레드를 삭제할 수 없습니다.',
 	'lqt_delete_show_checkbox' => '삭제된 스레드를 보기',
@@ -8912,6 +8966,9 @@ $2를 누르면 새 토론을 시작할 수 있습니다.',
 	'lqt-read-message-tooltip' => '새 메시지 목록에서 이 스레드를 지웁니다.
 하지만 토론 문서에서는 계속 보여질 것입니다.',
 	'lqt-read-all' => '모두 읽은 것으로 표시',
+	'lqt-read-all-tooltip' => '새 메시지 목록에서 모든 스레드를 지웁니다.
+이 스레드는 토론 문서 자체에는 계속 보여질 것입니다.
+이 동작은 되돌릴 수 없습니다.',
 	'lqt-marked-read' => "'''$1''' 스레드를 읽은 것으로 표시했습니다.",
 	'lqt-count-marked-read' => '메시지 $1개를 읽은 것으로 표시했습니다.',
 	'lqt-email-undo' => '취소',
@@ -8939,25 +8996,35 @@ $2를 누르면 새 토론을 시작할 수 있습니다.',
 	'lqt-thread-split-thread' => '스레드:',
 	'lqt-split-submit' => '분할',
 	'lqt-no-threads' => '이 문서에는 스레드가 없습니다.',
+	'lqt-delete-parent-deleted' => '상위 스레드를 삭제하였습니다 ($1)',
 	'lqt-delete-replies-done' => '이 스레드에 달린 모든 답글도 함께 삭제되었습니다.',
 	'lqt-movethread' => '이동',
 	'lqt-menu-trigger' => '메뉴',
 	'lqt-newmessages-from' => '$1 문서에서의 토론',
+	'lqt-hot-topics' => '인기 주제',
 	'lqt-add-reply' => '답변하기',
 	'lqt_rc_new_discussion' => '새 스레드 "$1"을 게시함',
 	'lqt_rc_new_reply' => '"$1"에 대한 답글을 남겼습니다.',
 	'right-lqt-split' => '스레드 분할하기',
 	'right-lqt-merge' => '스레드 합치기',
 	'lqt-thread-merge' => '다른 스레드로 합치기',
+	'lqt-thread-merge-to' => '이 스레드에 합치기',
 	'lqt_merge_thread' => '스레드 합치기',
 	'lqt-merge-submit' => '합치기',
+	'lqt-merge-success' => '스레드 $1을 $2에 성공적으로 병합했습니다.',
 	'lqt-log-name' => '스레드식 토론 기록',
+	'lqt-log-header' => '이 기록은 스레드 토론에 관한 동작에 대한 기록입니다.',
 	'lqt-log-action-move' => '[[$1]]을 [[$2]]에서 [[$3]]으로 옮김',
+	'lqt-log-action-split' => '[[$3]]에서 [[$1]]을 분리하여 "$2"라는 새 제목을 붙임',
+	'lqt-log-action-merge-across' => '[[$1]]을 [[$2]]에서 [[$3]]으로 옮김',
+	'lqt-log-action-merge-down' => '[[$1]]을 [[$3]]에 합침',
 	'lqt-log-action-subjectedit' => '[[$1]]의 주제를 "$2"에서 "$3"으로 바꿈',
 	'lqt-log-action-resort' => '[[$1]]의 정렬 순서를 변경. 정렬 키를 $2에서 $3으로 바꿈',
 	'lqt-preference-notify-talk' => '내가 주시하고 있는 스레드에 답글이 올라오면 이메일 보내기',
 	'lqt-preference-watch-threads' => '내가 생성하거나 답변한 스레드를 주시하기',
 	'prefs-lqt' => '스레드식 토론',
+	'lqt-preference-display-depth' => '보여 줄 답글의 최대 깊이:',
+	'lqt-preference-display-count' => '보여 줄 답글의 최대 개수:',
 	'lqt-preference-custom-signatures' => '사용자 지정 서명을 보이기',
 	'lqt-enotif-subject-reply' => '{{SITENAME}} 토론 - 답변: $1',
 	'lqt-enotif-subject-newthread' => '{{SITENAME}} 토론 - 새 스레드: $1',
@@ -8965,19 +9032,32 @@ $2를 누르면 새 토론을 시작할 수 있습니다.',
 	'lqt-quote' => '인용',
 	'lqt-search-label' => '찾기:',
 	'lqt-search-button' => '찾기',
+	'searchprofile-threads' => '토론',
+	'searchprofile-threads-tooltip' => '스레드 토론과 토론 문서 찾기',
 	'lqt-ajax-updated' => '이 스레드에 새 게시물이 있습니다.',
 	'lqt-ajax-update-link' => '업데이트',
+	'lqt-thread-show-replies' => '답변 $1개 보기',
 	'lqt-thread-show-more' => '더 많은 답글 보기',
 	'lqt-thread-link-url' => '링크 URL:',
 	'lqt-thread-link-title' => '위키문법 링크:',
 	'lqt-thread-link-copy' => '클립보드에 복사하기',
+	'lqt-sign-not-necessary' => '물결표 4개로 서명할 필요 없습니다.
+서명은 자동적으로 표시됩니다.',
 	'lqt-marked-as-read-placeholder' => '$1 스레드를 읽은 것으로 표시했습니다.',
 	'lqt-change-subject' => '제목 바꾸기',
 	'lqt-save-subject' => '저장',
+	'lqt-save-subject-failed' => '이 스레드의 제목을 바꾸는 중 다음 오류가 발생했습니다: $1',
+	'lqt-ajax-invalid-subject' => '당신이 입력한 제목이 잘못되었습니다. 제목이 너무 길기 때문일 수 있습니다.',
 	'lqt-ajax-no-subject' => '제목을 반드시 입력해야 합니다.',
+	'lqt-save-subject-error-unknown' => '이 스레드의 제목을 정하는 중 알 수 없는 오류가 발생했습니다. 맨 윗글의 "편집" 버튼을 눌러 시도해 보십시오.',
 	'lqt-cancel-subject-edit' => '취소',
 	'lqt-drag-activate' => '다른 위치로 옮기기',
 	'lqt-drag-drop-zone' => '이곳으로 드래그하세요.',
+	'lqt-drag-confirm' => '다음 동작을 수행하려면 이유를 작성한 후 "확인"을 클릭하십시오.',
+	'lqt-drag-reparent' => '글을 다른 스레드 안으로 옮기기',
+	'lqt-drag-split' => '글 자체를 새 스레드로 만들기',
+	'lqt-drag-setsortkey' => '이 문서에서 글의 위치를 조정하기',
+	'lqt-drag-bump' => '토론 문서의 맨 위로 옮기기',
 	'lqt-drag-save' => '확인',
 	'lqt-drag-reason' => '이유:',
 	'lqt-drag-subject' => '새 스레드의 주제:',
@@ -8998,6 +9078,7 @@ $2를 누르면 새 토론을 시작할 수 있습니다.',
 	'lqt-protected-newthread' => '이 토론 문서가 새 스레드를 생성하지 못하게 잠겨 있기 때문에 이 토론 문서에 새 스레드를 올릴 수 없습니다.',
 	'lqt-edit-bump' => '이 스레드를 맨 위로 옮기기',
 	'lqt-edit-bump-tooltip' => '이 스레드를 토론 문서의 맨 위로 옮깁니다.',
+	'lqt-historicalrevision-error' => '당신이 선택한 판에 문제가 있어서 볼 수 없습니다.',
 	'lqt-reply-subpage' => '답글',
 );
 
@@ -9019,7 +9100,7 @@ $messages['krj'] = array(
 	'lqt_delete_return' => 'Balik sa $1.',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Als-Holder
  * @author Purodha
  */
@@ -12002,7 +12083,7 @@ Pode:
 	'lqt_hist_deleted' => 'Apagado',
 	'lqt_hist_undeleted' => 'Recuperado',
 	'lqt_hist_moved_talkpage' => 'Movido',
-	'lqt_hist_listing_subtitle' => 'A visualizar uma listagem do histórico',
+	'lqt_hist_listing_subtitle' => 'A ver uma listagem do histórico',
 	'lqt_hist_view_whole_thread' => 'Ver histórico do tópico completo',
 	'lqt_hist_no_revisions_error' => 'Este tópico não tem quaisquer revisões de histórico.',
 	'lqt_hist_past_last_page_error' => 'Encontra-se para além do número de páginas de histórico existentes.',
@@ -12100,7 +12181,7 @@ Esta operação é irreversível.',
 	'lqt-no-new-messages' => 'Não tem mensagens novas.',
 	'lqt-new-messages' => '✒ Tem mensagens novas.',
 	'lqt-email-info-undo' => 'Recuperar o tópico que acabou de descartar.',
-	'lqt-date-info' => 'Este link está desactivado porque você está a visualizar tópicos de todas as datas.',
+	'lqt-date-info' => 'Este link está desactivado porque está a ver tópicos de todas as datas.',
 	'lqt-newmessages-context' => 'Tópico completo',
 	'lqt-thread-created' => 'Criado',
 	'lqt-history-time' => 'Data',
@@ -13755,6 +13836,7 @@ Dät is muugelk, dät hie
 	'lqt_revision_as_of' => 'Versionsgeschichte fon dän $2 uum $3 Uure.',
 	'lqt_change_new_thread' => 'Dit is ju eerste Version fon dät Diskussionsthema.',
 	'lqt_change_reply_created' => 'Die [$1 fatdrukte Kommentoar] wuud in disse Version moaked.',
+	'lqt_change_edited_root' => 'Die [$1 fat drukte Kommentoar] wuud in disse Version beoarbaided.',
 	'lqt_change_edited_summary' => 'Ju Touhoopefoatenge fon dit Thema wuud beoarbaided',
 	'lqt_change_deleted' => '[$1 Dissen] of n uuroardenden Biedraach wuud läsked',
 	'lqt_change_split' => '[$1 Dit Thema] wuud uut n uur Thema outränd',
@@ -15875,7 +15957,7 @@ $messages['yi'] = array(
 	'lqt-search-button' => 'זוכן',
 );
 
-/** Yue (粵語)
+/** Cantonese (粵語)
  * @author Shinjiman
  */
 $messages['yue'] = array(

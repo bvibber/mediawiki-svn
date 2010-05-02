@@ -257,7 +257,7 @@ $messages['ko'] = array(
 	'tooltip-desc' => '<tt><nowiki><tooltip></nowiki></tt>과 <tt><nowiki>{{#tooltip:}}</nowiki></tt> 태그를 추가',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

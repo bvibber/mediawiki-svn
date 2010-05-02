@@ -1,16 +1,9 @@
 <?php
-if ( !defined( 'MEDIAWIKI' ) ) {
-	echo <<<EOT
-	To install the RPED extension, put the following line in LocalSettings.php:
-	require_once( "\$IP/extensions/RPED/RPED.php" );
-EOT;
-	exit( 1 );
-}
 
 class RPEDHooks {
 	public static function RPEDCreateTable() {
 		global $wgExtNewTables;
-		
+
 		$wgExtNewTables[] = array(
 			'rped_page',
 			dirname( __FILE__ ) . '/rpedtable.sql'
@@ -22,7 +15,7 @@ class RPEDHooks {
 		&$customAttribs, &$query, &$options, &$ret
 	) {
 		global $wgLocalStyle, $wgRemoteStyle, $wgPureWikiDeletionInEffect, $wgTitle, $wgRequest;
-
+		wfLoadExtensionMessages('RPED');
 		if ( $wgTitle->getNamespace () == -1 ) {
 			return true;
 		}
@@ -86,8 +79,7 @@ class RPEDHooks {
 				return true;
 			} else {
 				$title = htmlentities( $title );
-				// FIXME: make language configurable, or the same as content language.
-				$url = 'http://en.wikipedia.org/wiki/' . $title;
+				$url = wfMsgExt( 'rped-wikipedia-url','parsemag') . $title;
 
 				// The page that we'll link to
 				$text = '<a href="' . $url . '">' . $text . '</a>';

@@ -582,7 +582,7 @@ $messages['km'] = array(
 	'createpage-badtitle' => '"$1" មិន​អាច​ប្រើ​ជា​ចំណងជើង​ទំព័រ​បាន​ទេ',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -1151,7 +1151,7 @@ Danga bëgg a soppi xët wi fi nekk ?',
 	'createpage-badtitle' => '« $1 » manoo koo jëfandikoo niki kojuw xët',
 );
 
-/** Yue (粵語) */
+/** Cantonese (粵語) */
 $messages['yue'] = array(
 	'createpage' => '開新版',
 	'createpage-badtitle' => '『$1』唔可以用做頁標題',

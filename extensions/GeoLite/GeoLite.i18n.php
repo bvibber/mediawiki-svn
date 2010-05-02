@@ -188,7 +188,7 @@ $messages['ja'] = array(
 	'geolite-desc' => '軽量 GeoIp リダイレクト',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

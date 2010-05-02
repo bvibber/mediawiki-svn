@@ -328,7 +328,7 @@ $messages['km'] = array(
 	'autocreatecategorypages-editor' => 'អ្នកបង្កើត​ចំណាត់ថ្នាក់ក្រុម​ដោយស្វ័យប្រវត្តិ',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

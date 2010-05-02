@@ -236,7 +236,7 @@ $messages['krj'] = array(
 	'css-desc' => 'Sankga parser function nga nagatugot sa mga CSS stylesheets nga ma-idugang sa nga specific nga pahina',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -444,6 +444,13 @@ $messages['vec'] = array(
  */
 $messages['vi'] = array(
 	'css-desc' => 'Hàm trong bộ phân tích để nhúng tập tin định kiểu CSS trong một trang nói riêng',
+);
+
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'css-desc' => ' א פאַרזער פֿונקציאן וואס ערמעגלעכט אײַנשליסן CSS סטילבויגנס אין באַשטימטע בלעטער',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

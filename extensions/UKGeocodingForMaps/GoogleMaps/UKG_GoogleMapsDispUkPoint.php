@@ -85,8 +85,8 @@ final class UKGGoogleMapsDispUkPoint extends UKGBaseUkPointMap {
 				'id' => $this->mapName,
 				'style' => "width: $this->width; height: $this->height; background-color: #cccccc;",
 			),
-			wfMsg('maps-loading-map')
-		) . "<div id='{$this->mapName}_errors'></div>";		
+			wfMsg( 'maps-loading-map' )
+		) . "<div id='{$this->mapName}_errors'></div>";
 		
 		$parser->getOutput()->addHeadItem(
 			Html::inlineScript(

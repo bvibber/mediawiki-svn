@@ -26,8 +26,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	exit( 1 );
 }
 
-require_once( 'XmlFunctions.php' );
-
 class SpecialForm extends SpecialPage {
 
 	/**
@@ -93,7 +91,7 @@ class SpecialForm extends SpecialPage {
 	function showForm( $form, $errmsg = null ) {
 		global $wgOut, $wgRequest, $wgParser, $wgUser, $wgSpecialFormRecaptcha;
 
-		$self = SpecialPage::getTitleFor( wfMsgForContent( 'form' ) . '/' . $form->name );
+		$self = $this->getTitle( $form->name );
 
 		$wgOut->setPageTitle( $form->title );
 

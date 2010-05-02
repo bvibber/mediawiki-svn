@@ -436,6 +436,7 @@ $wgCustomToolbarMessages['bs'] = array(
 /** Catalan (Català)
  * @author Paucabot
  * @author Solde
+ * @author Toniher
  */
 $wgCustomToolbarMessages['ca'] = array(
 	'ct_bold_sample' => 'Text en negreta',
@@ -455,6 +456,7 @@ $wgCustomToolbarMessages['ca'] = array(
 	'ct_upload' => 'Carrega $1',
 	'ct_select' => 'Seleccioneu $1 per carregar:',
 	'ct_submit' => 'Vés-hi!',
+	'ct_close' => 'Tanca la finestra',
 	'ct_user_user' => 'Usuari',
 	'ct_user_caption' => "Enllaç d'usuari",
 	'ct_user_sample' => "Nom d'usuari",
@@ -1570,7 +1572,7 @@ $wgCustomToolbarMessages['kn'] = array(
 	'ct_submit' => 'ಹೋಗು!',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $wgCustomToolbarMessages['ksh'] = array(
@@ -1669,7 +1671,7 @@ Kuckt w.e.g. d'Astellunge vu ärem Popup-Blocker no.",
 	'ct_user_sample' => 'Benotzernumm',
 );
 
-/** Laz (Laz)
+/** Lazuri (Lazuri)
  * @author Bombola
  */
 $wgCustomToolbarMessages['lzz'] = array(

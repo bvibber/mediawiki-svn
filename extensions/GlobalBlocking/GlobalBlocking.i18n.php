@@ -133,6 +133,7 @@ The block log is provided below for reference:',
 
 /** Message documentation (Message documentation)
  * @author Darth Kule
+ * @author EugeneZelenko
  * @author Ficell
  * @author Fryed-peach
  * @author Jon Harald Søby
@@ -151,6 +152,10 @@ $messages['qqq'] = array(
 	'globalblocking-block' => 'Same special page with this page:
 
 * [[MediaWiki:Globalblock/{{SUBPAGENAME}}]]',
+	'globalblocking-block-reason' => '{{Identical/Reason}}',
+	'globalblocking-block-otherreason' => '{{Identical/Other/additional reason}}',
+	'globalblocking-block-reasonotherlist' => '{{Identical|Other reason}}',
+	'globalblocking-block-expiry' => '{{Identical/Expiry}}',
 	'globalblocking-block-expiry-otherfield' => '{{Identical|Other time}}',
 	'globalblocking-block-options' => '{{Identical|Options}}',
 	'globalblocking-block-errors' => "The first line of the error message shown on [[Special:GlobalBlock]] (see [[mw:Extension:GlobalBlocking]]) if the block has been unsuccessful. After this message, a list of specific errors is shown (see [[Special:Prefixindex/MediaWiki:Globalblocking-block-bigrange|globalblocking-block-bigrange]], [[Special:Prefixindex/MediaWiki:Globalblocking-block-expiryinvalid|globalblocking-block-expiryinvalid]] etc.).
@@ -880,35 +885,39 @@ $messages['br'] = array(
 	'globalblocking-desc' => "[[Special:GlobalBlock|Posubl]] eo stankañ ar chomlec'hioù IP [[Special:GlobalBlockList|dre wikioù disheñvel]]",
 	'globalblocking-block' => "Stankañ en un doare hollek ur chomlec'h IP",
 	'globalblocking-modify-intro' => "Gellout a reoc'h implijout ar furmskrid evit kefluniañ ur stankadenn hollek.",
-	'globalblocking-block-intro' => "Tu 'zo deoc'h implij ar bajenn-mañ evit stankañ ur chomlec'h IP war an holl wikioù.",
+	'globalblocking-block-intro' => "Tu zo deoc'h implijout ar bajenn-mañ evit stankañ ur chomlec'h IP war an holl wikioù.",
 	'globalblocking-block-reason' => 'Abeg :',
 	'globalblocking-block-otherreason' => 'Abegoù all/ouzhpenn :',
 	'globalblocking-block-reasonotherlist' => 'Abeg all',
+	'globalblocking-block-reason-dropdown' => '* Abegoù anavezet evit ar stankadenn
+** Strob war meur a wikioù
+** Kammarveroù war meur a wikioù
+** Vandalerezh',
 	'globalblocking-block-edit-dropdown' => 'Kemmañ an abegoù stankañ dre ziouer',
 	'globalblocking-block-expiry' => 'Termen :',
-	'globalblocking-block-expiry-other' => 'Padelezh termen all',
+	'globalblocking-block-expiry-other' => 'Pad echuiñ all',
 	'globalblocking-block-expiry-otherfield' => 'Amzervezh all :',
-	'globalblocking-block-legend' => "Stankañ en un doare hollek ur chomlec'h IP",
+	'globalblocking-block-legend' => "Stankañ ur chomlec'h IP en un doare hollek",
 	'globalblocking-block-options' => 'Dibarzhioù :',
-	'globalblocking-block-errors' => "N'eo ket bet mat ar stankadenn evit an {{PLURAL:$1|abeg|abegoù}} da heul :",
-	'globalblocking-block-ipinvalid' => "N'eo ket reizh ar chomlec'h IP o peus lakaet ($1).
-Mar plij bezit war evezh, ne c'helloc'h ket lakaat anv un implijer !",
-	'globalblocking-block-expiryinvalid' => "N'eo ket reizh an termen o peus lakaet ($1).",
-	'globalblocking-block-submit' => "Stankañ en un doare hollek ar chomlec'h IP-mañ",
+	'globalblocking-block-errors' => "C'hwitet eo ar stankadenn evit an {{PLURAL:$1|abeg|abegoù}} da-heul :",
+	'globalblocking-block-ipinvalid' => "Direizh eo ar chomlec'h IP lakaet ($1).
+Bezit war evezh, n'hallit ket lakaat anv un implijer !",
+	'globalblocking-block-expiryinvalid' => 'Direizh eo an termen lakaet ($1).',
+	'globalblocking-block-submit' => "Stankañ ar chomlec'h IP-mañ en un doare hollek",
 	'globalblocking-modify-submit' => 'Kemmañ ar stankadenn hollek-mañ',
 	'globalblocking-block-success' => "Stanket eo bet ar chomlec'h IP $1 war an holl raktresoù.",
 	'globalblocking-modify-success' => 'Kemmet eo bet stankadenn hollek $1',
 	'globalblocking-block-successsub' => 'Graet eo bet ar stankadenn hollek',
 	'globalblocking-modify-successsub' => 'Kemmet eo bet ar stankadenn hollek',
-	'globalblocking-list' => "Roll ar chomlec'hioù IP bet stanket en un doare hollek",
-	'globalblocking-search-legend' => "Klask war-lec'h ur stankadenn hollek",
+	'globalblocking-list' => "Roll ar chomlec'hioù IP stanket en un doare hollek",
+	'globalblocking-search-legend' => "Klask war-lerc'h ur stankadenn hollek",
 	'globalblocking-search-ip' => "Chomlec'h IP :",
 	'globalblocking-search-submit' => 'Klask stankadennoù',
-	'globalblocking-list-ipinvalid' => "Direizh eo ar chomlec'h IP a glaskoc'h evit ($1).
+	'globalblocking-list-ipinvalid' => "Direizh eo ar chomlec'h IP a glaskit evit ($1).
 Mar plij lakait ur chomlec'h IP reizh.",
 	'globalblocking-search-errors' => 'Mat eo bet ho klask evit an {{PLURAL:$1|abeg|abegoù}} da heul :',
 	'globalblocking-list-blockitem' => "\$1: <span class=\"plainlinks\">'''\$2'''</span> (''\$3'') en deus stanket en un doare hollek [[Special:Contributions/\$4|\$4]] ''(\$5)''",
-	'globalblocking-list-expiry' => 'Termenadenn $1',
+	'globalblocking-list-expiry' => "a ya d'e dermen d'an $1",
 	'globalblocking-list-anononly' => 'dizanv hepken',
 	'globalblocking-list-unblock' => 'lemel',
 	'globalblocking-list-whitelisted' => "diweredekaet en un doare lec'hel gant $1 : $2",
@@ -926,19 +935,21 @@ Mar plij bezit war evezh, ne c'halloc'h ket lakaat anv un implijer !",
 	'globalblocking-unblock-legend' => 'Lemel kuit ur stankadenn hollek',
 	'globalblocking-unblock-submit' => 'Lemel kuit ar stankadenn hollek',
 	'globalblocking-unblock-reason' => 'Abeg :',
-	'globalblocking-unblock-unblocked' => "Ar stankadenn hollek niverenn $2 hag a glot gant ar chomlec'h IP '''$1''' a zo bet tennet.",
-	'globalblocking-unblock-successsub' => 'Tennet eo bet ar stankadenn hollek',
-	'globalblocking-unblock-subtitle' => 'Dilamidigezh ar stankadenn hollek',
+	'globalblocking-unblock-unblocked' => "Lamet eo bet ervat ar stankadenn hollek niv. $2 a glot gant ar chomlec'h IP '''$1'''.",
+	'globalblocking-unblock-errors' => "An dilammadenn eus ar stankadenn hollek en deus c'hwitet evit an {{PLURAL:$1|abeg|abegoù}} da-heul :",
+	'globalblocking-unblock-successsub' => 'Lamet eo bet ar stankadenn hollek',
+	'globalblocking-unblock-subtitle' => 'O lemel ar stankadenn hollek',
 	'globalblocking-unblock-intro' => "Tu 'zo deoc'h implijout ar furmskrid-mañ evit dilemel ur stankadenn hollek.",
 	'globalblocking-whitelist' => "Statud lec'hel ar stankadennoù hollek",
 	'globalblocking-whitelist-legend' => "Kemmañ ar statud lec'hel",
 	'globalblocking-whitelist-reason' => 'Abeg :',
 	'globalblocking-whitelist-status' => "Statud lec'hel :",
-	'globalblocking-whitelist-statuslabel' => 'Diweredekaat ar stankadenn hollek war {{SITENAME}}',
+	'globalblocking-whitelist-statuslabel' => 'Diweredekaat ar stankadenn hollek-mañ war {{SITENAME}}',
 	'globalblocking-whitelist-submit' => "Kemmañ ar statud lec'hel",
 	'globalblocking-whitelist-whitelisted' => "Diweredekaet ho peus ar stankadenn hollek #$2 evit ar chomlec'h IP '''$1''' war {{SITENAME}}.",
-	'globalblocking-whitelist-successsub' => "Kemmet eo bet statud lec'hel",
-	'globalblocking-blocked' => "Stanket eo bet ho chomlec'h IP war an holl wikioù gat '''\$1''' (''\$2'').
+	'globalblocking-whitelist-successsub' => "Kemmet eo bet ar statud lec'hel",
+	'globalblocking-whitelist-errors' => "Ar c'hemm eus statud lec'hel ur stankadenn hollek en deus c'hwitet evit an {{PLURAL:$1|abeg|abegoù}} da-heul :",
+	'globalblocking-blocked' => "Stanket eo bet ho chomlec'h IP war an holl wikioù gant '''\$1''' (''\$2'').
 An abeg a oa ''\"\$3\"''.
 Stankadenn : ''\$4''.",
 	'globalblocking-logpage' => 'Marilh ar stankadennoù hollek',
@@ -950,15 +961,15 @@ Stankadenn : ''\$4''.",
 	'globalblocking-modify-logentry' => 'en deus kemmet stankadenn hollek [[$1]] ($2)',
 	'globalblocking-logentry-expiry' => "a ya d'e dermen d'an $1",
 	'globalblocking-logentry-noexpiry' => "n'eus bet resisaet deiziad termen ebet",
-	'globalblocking-loglink' => "Ar c'homlec'h IP $1 a zo stanket en un doare hollek ([[{{#Special:GlobalBlockList}}/$1|muioc'h a ditouroù]]).",
+	'globalblocking-loglink' => "Stanket eo ar c'homlec'h IP $1 en un doare hollek ([[{{#Special:GlobalBlockList}}/$1|muioc'h a ditouroù]]).",
 	'globalblocking-showlog' => "Stanket eo bet an implijer-mañ c'hoazh.
 A-is emañ marilh ar stankadennoù :",
 	'globalblocklist' => "Roll ar chomlec'hioù IP stanket en un doare hollek",
-	'globalblock' => "Stankañ en un doare hollek ur chomlec'h IP",
+	'globalblock' => "Stankañ ur chomlec'h IP en un doare hollek",
 	'globalblockstatus' => "Statud lec'hel ar stankadennoù hollek",
 	'removeglobalblock' => 'Lemel ur stankadur hollek',
 	'right-globalblock' => 'Stankañ implijerien en un doare hollek',
-	'right-globalunblock' => 'Tennañ stankadennoù implijerien hollek',
+	'right-globalunblock' => 'Lemel ar stankadennoù hollek',
 	'right-globalblock-whitelist' => "Diweredekaat en un doare lec'hel ar stankadennoù hollek",
 	'right-globalblock-exempt' => 'Mont a dreuz ar stankadennoù hollek',
 );
@@ -1463,7 +1474,7 @@ Bitte geben Sie eine gültige IP-Adresse ein.',
 	'globalblocking-unblock-ipinvalid' => 'Sie haben eine ungültige IP-Adresse ($1) eingegeben.
 Beachten Sie, dass Sie keinen Benutzernamen eingeben dürfen!',
 	'globalblocking-unblock-unblocked' => "Sie haben erfolgreich die IP-Adresse '''$1''' (Sperr-ID $2) entsperrt",
-	'globalblocking-unblock-intro' => 'Mit diesem Formular können Sie eine globale Sperre aufheben. [[Special:GlobalBlockList|Klicken Sie hier]], um zur Liste der globalen Sperren zurückzukehren.',
+	'globalblocking-unblock-intro' => 'Mit diesem Formular können Sie eine globale Sperre aufheben.',
 	'globalblocking-whitelist-whitelisted' => "Sie haben erfolgreich die globale Sperre der IP-Adresse '''$1''' (Sperr-ID $2) auf {{SITENAME}} aufgehoben.",
 	'globalblocking-whitelist-dewhitelisted' => "Sie haben erfolgreich die globale Sperre der IP-Adresse '''$1''' (Sperr-ID $2) auf {{SITENAME}} wieder eingeschaltet.",
 	'globalblocking-whitelist-nochange' => 'Sie haben den lokalen Status der Sperre nicht verändert.
@@ -2129,7 +2140,7 @@ Kui globaalne blokeering on selles vikis välja lülitatud, saavad kasutajad sel
 Põhjus: ''$3''
 Kehtivus: ''$4''",
 	'globalblocking-blocked-nopassreset' => 'Sa ei saa kasutaja salasõna lähtestada, sest oled globaalselt blokeeritud.',
-	'globalblocking-logpage' => 'Globaalne blokeerimise logi',
+	'globalblocking-logpage' => 'Globaalne blokeerimislogi',
 	'globalblocking-logpagetext' => 'Siin logis on selles vikis üles seatud ja eemaldatud globaalsed blokeeringud.
 Tuleks arvesse võtta, et globaalseid blokeeringuid saab teistes vikides üles seada ja eemaldada ning et need globaalsed blokeeringud võivad puudutada ka seda vikit.
 Kõigi jõus olevate blokeeringute nägemiseks võid vaadata [[Special:GlobalBlockList|globaalsete blokeeringute nimekirja]].',
@@ -4337,7 +4348,7 @@ $messages['ko'] = array(
 	'right-globalblock-exempt' => '전체 차단을 우회',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -6530,6 +6541,14 @@ $1',
 	'right-globalblock-exempt' => 'обход глобальных блокировок',
 );
 
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'globalblocking-block-reason' => 'Причіна:',
+	'globalblocking-search-ip' => 'IP-адреса:',
+);
+
 /** Yakut (Саха тыла)
  * @author HalanTul
  */
@@ -6647,6 +6666,7 @@ $messages['sc'] = array(
 );
 
 /** Sicilian (Sicilianu)
+ * @author Gmelfi
  * @author Melos
  * @author Santu
  */
@@ -6695,6 +6715,7 @@ $messages['scn'] = array(
 	'globalblocking-unblock-errors' => "La scancillazzioni dû bloccu glubbali c'addumannasti non fi fatta pi {{PLURAL:$1|stu mutivu|sti  mutivi}}:",
 	'globalblocking-unblock-successsub' => 'Bloccu glubbali scancillatu cu successu',
 	'globalblocking-unblock-subtitle' => 'Scancillazzioni bloccu glubbali',
+	'globalblockstatus' => 'Statu lucali di blocca glubbali',
 	'right-globalblock-exempt' => 'Bypassa li blocchi globali',
 );
 
@@ -8177,7 +8198,7 @@ $messages['yi'] = array(
 	'removeglobalblock' => 'אויפהייבן גלאבאלן בלאק',
 );
 
-/** Yue (粵語)
+/** Cantonese (粵語)
  * @author Shinjiman
  */
 $messages['yue'] = array(

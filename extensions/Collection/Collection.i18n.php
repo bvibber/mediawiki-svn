@@ -162,6 +162,7 @@ The list is updated whenever you click on the add or remove buttons.',
 	'coll-suggest_article_remove'     => "Page <strong>$1</strong> has been removed from your book ($2).",
 	'coll-suggest_undo_tooltip'       => 'Undo this action',
 	'coll-suggest_undo'               => 'undo',
+	'coll-load_local_book'            => 'Click OK to continue with your book %TITLE% which contains %NUMPAGES% wiki pages. Click Cancel to delete it and start with an empty book.',
 
 	'right-collectionsaveasuserpage'  => 'Save books as user page',
 	'right-collectionsaveascommunitypage' => 'Save books as community page',
@@ -188,7 +189,8 @@ $messages['qqq'] = array(
 	'coll-collection' => '{{Identical|Book}}',
 	'coll-collections' => '{{Identical|Book}}',
 	'coll-exclusion_category_title' => 'The message text is the name of a category.',
-	'coll-print_template_prefix' => 'Prefix added to the templates name if you want to get a special for-print version of the template. So in a page instead of Template:Foo Template:PrintFoo is used if it exists.',
+	'coll-print_template_prefix' => 'Prefix added to the templates name if you want to get a special for-print version of the template. So in a page instead of Template:Foo Template:PrintFoo is used if it exists.
+{{Identical|Print}}',
 	'coll-print_template_pattern' => 'Use print templates being subpages of regular templates.
 
 $1 is a placeholder and will be replaced by content during the rendering process.',
@@ -857,6 +859,7 @@ $messages['be-tarask'] = array(
 	'coll-suggest_article_remove' => 'Старонка <strong>$1</strong> была выдаленая з Вашай кнігі ($2).',
 	'coll-suggest_undo_tooltip' => 'Адмяніць гэтае дзеяньне',
 	'coll-suggest_undo' => 'адмяніць',
+	'coll-load_local_book' => 'Націсьніце «Добра» каб працягваць працу з Вашай кнігай %TITLE%, якая ўтрымлівае %NUMPAGES% вікі-старонак. Націсьніце «Адмена», каб выдаліць яе і пачаць з пустой кнігі.',
 	'right-collectionsaveasuserpage' => 'захаваньне кніг як старонак ўдзельніка',
 	'right-collectionsaveascommunitypage' => 'захаваньне кніг як старонак супольнасьці',
 );
@@ -1194,12 +1197,16 @@ Ma ne\'z a ket en-dro, pouezit war bouton freskaat ho merdeer.</p>',
 	'coll-rendering_status' => '<strong>Stad :</strong> $1',
 	'coll-rendering_article' => '(pajenn wiki : $1)',
 	'coll-rendering_page' => '(pajenn : $1)',
+	'coll-rendering_page_info_text_article' => '{{MediaWiki:Coll-helppage}}/Testenn titouroù war deouez ar pajennoù',
+	'coll-rendering_collection_info_text_article' => '{{MediaWiki:Coll-helppage}}/Testenn titouroù war deouez an dastumadegoù',
 	'coll-rendering_finished_title' => 'Argerzh echu',
 	'coll-rendering_finished_text' => "<strong>Ganet eo bet ar restr teul.</strong>
 <strong>[$1 Pellgargit ar restr]</strong> war hoc'h urzhiataer.
 
 Notennoù :
 * N'eo ket an disoc'h diouzhoc'h ? Gwelit [[{{MediaWiki:Coll-helppage}}|ar bajenn skoazell diwar-benn al levrioù]] evit kavout doareoù da wellaat an traoù.",
+	'coll-finished_page_info_text_article' => '{{MediaWiki:Coll-helppage}}/Deouez testenn titouroù ar bajenn',
+	'coll-finished_collection_info_text_article' => '{{MediaWiki:Coll-helppage}}/Deouez testenn titouroù an dastumadeg',
 	'coll-notfound_title' => "N'eo ket bet kavet al levr",
 	'coll-notfound_text' => "N'eus ket bet tu da gavout pajenn al levr.",
 	'coll-download_notfound_title' => "N'eo ket bet kavet ar restr",
@@ -1614,6 +1621,8 @@ Můžete si ho <strong>[$1 stáhnout do svého počítače]</strong>.
 
 Poznámky:
 * Nejste spokojeni s výsledkem? Podívejte se na [[{{MediaWiki:Coll-helppage}}|stránku s nápovědou ke kolekcím]], jak ho vylepšit.',
+	'coll-finished_page_info_text_article' => '{{MediaWiki:Coll-helppage}}/Informace při vykreslování stránky',
+	'coll-finished_collection_info_text_article' => '{{MediaWiki:Coll-helppage}}/Informace při vykreslování knihy',
 	'coll-notfound_title' => 'Kniha nenalezena',
 	'coll-notfound_text' => 'Nebylo možné najít stránku knihy.',
 	'coll-download_notfound_title' => 'Soubor nenalezen',
@@ -1652,6 +1661,7 @@ Seznam se aktualizuje při každém kliknutím na tlačítka přidat a odebrat.'
 	'coll-suggest_article_remove' => 'Stránka <strong>$1</strong> byla odstraněna z vaší knihy. ($2)',
 	'coll-suggest_undo_tooltip' => 'Vrátit tuto akci zpět',
 	'coll-suggest_undo' => 'zpět',
+	'coll-load_local_book' => 'Pokračovat v tvorbě knihy %TITLE%, která obsahuje %NUMPAGES% stran wiki, můžete kliknutím na OK. Kliknutím na Storno ji smažete a začnete s prázdnou knihou.',
 	'right-collectionsaveasuserpage' => 'Ukládání knih jako uživatelských stránek',
 	'right-collectionsaveascommunitypage' => 'Ukládání knih jako stránek komunity',
 );
@@ -2396,6 +2406,7 @@ Lisćina se aktualizěrujo, gažkuli kliknjoš na tłocašk "pśidaś" abo "wót
 	'coll-suggest_article_remove' => 'Bok <strong>$1</strong> jo se z twójich knigłow wótpórał ($2).',
 	'coll-suggest_undo_tooltip' => 'Akciju slědk wześ',
 	'coll-suggest_undo' => 'slědk wześ',
+	'coll-load_local_book' => 'Klikni na W pórědku, aby pókšacowak z knigłami %TITLE%, kótaraž wopśimujo %NUMPAGES% {{PLURAL:%NUMPAGES%|wikibok|wikiboka|wikiboki|wikibokow}}. Klikni na Pśetergnuś, aby ju wulašował a startuj z proznymi knigłami.',
 	'right-collectionsaveasuserpage' => 'Knigły ako wužywarski bok składowaś',
 	'right-collectionsaveascommunitypage' => 'Knigły ako bok zgromaźeństwa składowaś',
 );
@@ -2845,6 +2856,7 @@ La lista es actualizada cada vez que haces click en los botones de agregar o rem
 	'coll-suggest_article_remove' => 'Página <strong>$1</strong> ha sido removida de tu libro ($2).',
 	'coll-suggest_undo_tooltip' => 'Deshacer esta acción',
 	'coll-suggest_undo' => 'deshacer',
+	'coll-load_local_book' => 'Haz click en OK para continuar con tu libro %TITLE% que contiene %NUMPAGES% página wiki. Haz click en Cancelar para borrarlo y comenzar con un libro vacío.',
 	'right-collectionsaveasuserpage' => 'Grabar libros como página de usuario',
 	'right-collectionsaveascommunitypage' => 'Grabar libros como página de la comunidad',
 );
@@ -3486,6 +3498,7 @@ La liste est mise à jour à chaque fois que vous cliquez sur les boutons d'ajou
 	'coll-suggest_article_remove' => 'La page <strong>$1</strong> a été retirée de votre livre ($2).',
 	'coll-suggest_undo_tooltip' => 'Défaire cette action',
 	'coll-suggest_undo' => 'défaire',
+	'coll-load_local_book' => 'Cliquez sur OK pour continuer votre livre %TITLE% qui contient %NUMPAGES% pages wiki. Cliquez sur Annuler pour le supprimer et commencer avec un livre vide.',
 	'right-collectionsaveasuserpage' => 'Sauvegarder des livres sur des pages utilisateur',
 	'right-collectionsaveascommunitypage' => 'Sauvegarder des livres sur des pages communautaires',
 );
@@ -3759,6 +3772,7 @@ A lista actualízase sempre que preme no botón engadir ou eliminar.',
 	'coll-suggest_article_remove' => 'A páxina "<strong>$1</strong>" foi eliminada do seu libro ($2).',
 	'coll-suggest_undo_tooltip' => 'Desfacer esta acción',
 	'coll-suggest_undo' => 'desfacer',
+	'coll-load_local_book' => 'Prema en "Aceptar" para continuar co seu libro titulado "%TITLE%", formado por %NUMPAGES% páxinas wiki. Prema en "Cancelar" para borralo e comezar un libro novo.',
 	'right-collectionsaveasuserpage' => 'Gardar libros como unha páxina de usuario',
 	'right-collectionsaveascommunitypage' => 'Gardar libros como unha páxina da comunidade',
 );
@@ -4465,6 +4479,7 @@ Lisćina aktualizuje so, hdyžkuli kliknješ na tłóčatko "přidać" abo "wots
 	'coll-suggest_article_remove' => 'Strona <strong>$1</strong> bu z twojeje knihi wotstronjena ($2).',
 	'coll-suggest_undo_tooltip' => 'Tutu akciju cofnyć',
 	'coll-suggest_undo' => 'cofnyć',
+	'coll-load_local_book' => 'Klikń W porjadku, zo by ze swojej knihu %TITLE% pokročował , kotraž %NUMPAGES% {{PLURAL:%NUMPAGES%|wikistronu|wikistronje|wikistrony|wikistronow}} wobsahuje. Klikń na Přetorhnyć, zo by ju zhašał a startuj z prózdnej knihu.',
 	'right-collectionsaveasuserpage' => 'Knihi jako wužiwarsku stronu składować',
 	'right-collectionsaveascommunitypage' => 'Knihi jako stronu zhromadźenstwa składować',
 );
@@ -4848,6 +4863,7 @@ Le lista es actualisate cata vice que tu clicca super le buttones "adder" o "rem
 	'coll-suggest_article_remove' => 'Le pagina <strong>$1</strong> ha essite removite de tu libro ($2).',
 	'coll-suggest_undo_tooltip' => 'Disfacer iste action',
 	'coll-suggest_undo' => 'disfacer',
+	'coll-load_local_book' => 'Clicca super OK pro continuar con tu libro %TITLE% que contine %NUMPAGES% paginas wiki. Clicca super Cancellar pro deler lo e comenciar con un libro vacue.',
 	'right-collectionsaveasuserpage' => 'Salveguardar libros como pagina de usator',
 	'right-collectionsaveascommunitypage' => 'Salveguardar libros como pagina de communitate',
 );
@@ -5278,6 +5294,8 @@ $messages['ja'] = array(
 
 注:
 * 出力に満足できませんか？改善が可能か、[[{{MediaWiki:Coll-helppage}}|ブックについてのヘルプページ]]をご覧ください。',
+	'coll-finished_page_info_text_article' => '{{MediaWiki:Coll-helppage}}/ページ情報テキストを生成中',
+	'coll-finished_collection_info_text_article' => '{{MediaWiki:Coll-helppage}}/コレクション情報テキストを生成中',
 	'coll-notfound_title' => 'ブックが見つかりません',
 	'coll-notfound_text' => 'ブックの保存ページが見つかりませんでした。',
 	'coll-download_notfound_title' => 'ファイルが見つかりません',
@@ -5314,6 +5332,7 @@ $messages['ja'] = array(
 	'coll-suggest_article_remove' => 'ページ「<strong>$1</strong>」はあなたのブックから除去されました（$2）。',
 	'coll-suggest_undo_tooltip' => 'この操作を取り消し',
 	'coll-suggest_undo' => '取り消し',
+	'coll-load_local_book' => 'OKをクリックすると %NUMPAGES% 件のウィキページを含む本を %TITLE% という題で作成します。この本を削除して新しい本を作成する場合はキャンセルをクリックしてください。',
 	'right-collectionsaveasuserpage' => 'ブックを利用者ページとして保存',
 	'right-collectionsaveascommunitypage' => 'ブックを共有ページとして保存',
 );
@@ -5736,7 +5755,7 @@ $messages['krj'] = array(
 	'coll-about_pp' => 'Angut sa Iwan $1',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -5872,7 +5891,7 @@ Di Leß weed neu opjebout, wann De op dä „Dobei donn“ udder dä „{{int:co
 	'right-collectionsaveascommunitypage' => 'E Boch als en Jemeinschaffß_Sigg avspeichere',
 );
 
-/** Cornish (Kernowek)
+/** Cornish (Kernewek)
  * @author Kernoweger
  * @author Kw-Moon
  */
@@ -6311,6 +6330,7 @@ $messages['mk'] = array(
 	'coll-suggest_article_remove' => 'Страницата <strong>$1</strong> е отстранета од вашата книга ($2).',
 	'coll-suggest_undo_tooltip' => 'Врати го ова дејство',
 	'coll-suggest_undo' => 'врати',
+	'coll-load_local_book' => 'Кликнете на „ОК“ за да продолжите со книгата %TITLE% којашто содржи %NUMPAGES% вики-страници. Кликнете на „Откажи“ за да ја избришете и да започнете со празна книга.',
 	'right-collectionsaveasuserpage' => 'Зачувување на книги како корисничка страница',
 	'right-collectionsaveascommunitypage' => 'Зачувување на книги како страница на заедницата',
 );
@@ -6400,12 +6420,16 @@ $messages['ml'] = array(
 	'coll-rendering_status' => '<strong>സ്ഥിതി:</strong> $1',
 	'coll-rendering_article' => '(‌‌വിക്കി താൾ:$1)',
 	'coll-rendering_page' => '(താൾ: $1)',
+	'coll-rendering_page_info_text_article' => '{{MediaWiki:Coll-helppage}}/താളിന്റെ വിവരങ്ങളുള്ള എഴുത്ത് പ്രദർശനയോഗ്യമാക്കുന്നു',
+	'coll-rendering_collection_info_text_article' => '{{MediaWiki:Coll-helppage}}/ശേഖരത്തിന്റെ വിവരങ്ങളുള്ള എഴുത്ത് പ്രദർശനയോഗ്യമാക്കുന്നു',
 	'coll-rendering_finished_title' => 'റെൻഡർ ചെയ്യൽ പൂർണ്ണം',
 	'coll-rendering_finished_text' => '<strong>വിവര പ്രമാണം സൃഷ്ടിച്ചിരിക്കുന്നു.</strong>
 താങ്കളുടെ കമ്പ്യൂട്ടറിലേയ്ക്ക് <strong>[$1 പ്രമാണം ഡൗൺലോഡ് ചെയ്യുക]</strong>.
 
 കുറിപ്പുകൾ:
 * ലഭ്യമായതിൽ സംതൃപ്തനല്ലേ? അത് മെച്ചപ്പെടുത്താനുള്ള സാധ്യതകളെ കുറിച്ചറിയാൻ [[{{MediaWiki:Coll-helppage}}|പുസ്തകങ്ങൾ സംബന്ധിച്ച സഹായം താൾ കാണുക]]',
+	'coll-finished_page_info_text_article' => '{{MediaWiki:Coll-helppage}}/താളിന്റെ വിവരങ്ങളുള്ള എഴുത്ത് പ്രദർശനയോഗ്യമാക്കുന്നു',
+	'coll-finished_collection_info_text_article' => '{{MediaWiki:Coll-helppage}}/ശേഖരത്തിന്റെ വിവരങ്ങളുള്ള എഴുത്ത് പ്രദർശനയോഗ്യമാക്കുന്നു',
 	'coll-notfound_title' => 'പുസ്തകം കണ്ടെത്താനായില്ല',
 	'coll-notfound_text' => 'പുസ്തക താൾ കണ്ടെത്താൻ കഴിഞ്ഞില്ല.',
 	'coll-download_notfound_title' => 'പ്രമാണം കണ്ടെത്താൻ കഴിഞ്ഞില്ല',
@@ -6446,6 +6470,7 @@ $messages['ml'] = array(
 	'coll-suggest_article_remove' => 'താൾ <strong>$1</strong>, താങ്കളുടെ പുസ്തകത്തിൽ നിന്നും നീക്കം ചെയ്തു ($2).',
 	'coll-suggest_undo_tooltip' => 'ഈ പ്രവൃത്തി തിരസ്കരിക്കുക',
 	'coll-suggest_undo' => 'പ്രവൃത്തി തിരസ്കരിക്കുക',
+	'coll-load_local_book' => '%NUMPAGES% വിക്കി താളുകൾ ഉൾക്കൊള്ളുന്ന %TITLE% പുസ്തകത്തിന്റെ പ്രവൃത്തികൾ തുടരാൻ ശരി എന്നത് ഞെക്കുക. അത് മായ്ച്ച് ശൂന്യമായ പുസ്തകത്തിൽ തുടങ്ങാൻ റദ്ദാക്കുക ഞെക്കുക.',
 	'right-collectionsaveasuserpage' => 'പുസ്തകങ്ങൾ ഉപയോക്തൃതാളായി സേവ് ചെയ്യുക',
 	'right-collectionsaveascommunitypage' => 'പുസ്തകങ്ങൾ സമൂഹ താളായി സേവ് ചെയ്യുക',
 );
@@ -6652,6 +6677,7 @@ $messages['mt'] = array(
 $messages['myv'] = array(
 	'coll-collection' => 'Кинига',
 	'coll-collections' => 'Кинигат',
+	'coll-download_title' => 'Таргамо',
 	'coll-download' => 'Таргамс',
 	'coll-remove' => 'Нардык',
 	'coll-title' => 'Коняксозо:',
@@ -6945,6 +6971,7 @@ De lijst wordt bijgewerkt als u op de knop 'toevoegen' of 'verwijderen' klikt.",
 	'coll-suggest_article_remove' => 'De pagina <strong>$1</strong> is verwijderd uit uw boek ($2).',
 	'coll-suggest_undo_tooltip' => 'Deze handeling ongedaan maken',
 	'coll-suggest_undo' => 'ongedaan maken',
+	'coll-load_local_book' => 'Klik "OK" om door te gaan met uw boek %TITLE% dat %NUMPAGES% wikipagina\'s bevat. Klik op "Annuleren" om het te verwijderen en opnieuw te beginnen met een leeg boek.',
 	'right-collectionsaveasuserpage' => 'Boeken opslaan als gebruikerspagina',
 	'right-collectionsaveascommunitypage' => 'Boeken opslaan als gemeenschapspagina',
 );
@@ -7326,6 +7353,8 @@ S\'èra pas lo cas, clicatz sul boton d’actualizacion de vòstre navigador.</p
 
 Nòtas :
 * Pas satisfach(a) de la sortida ? Vejatz [[{{MediaWiki:Coll-helppage}}|la pagina d’ajuda que concernís las colleccions]] per las possibilitats de melhorament.',
+	'coll-finished_page_info_text_article' => "{{MediaWiki:Coll-helppage}}/Rendut del tèxte d'informacion de la pagina",
+	'coll-finished_collection_info_text_article' => "{{MediaWiki:Coll-helppage}}/Rendut del tèxte d'informacion de la colleccion",
 	'coll-notfound_title' => 'Libre pas trobat',
 	'coll-notfound_text' => 'Pòt pas trobar lo libre.',
 	'coll-download_notfound_title' => 'Fichièr introbable',
@@ -7552,6 +7581,7 @@ Lista jest aktualizowana, gdy klikniesz na przyciski dodaj lub usuń.',
 	'coll-suggest_article_remove' => 'Strona <strong>$1</strong> została usunięta z Twojej książki ($2).',
 	'coll-suggest_undo_tooltip' => 'Cofnij tę operację',
 	'coll-suggest_undo' => 'cofnij',
+	'coll-load_local_book' => 'Kliknij „OK” aby kontynuować tworzenie książki %TITLE% zawierającej %NUMPAGES% stron wiki. Kliknij „Anuluj” aby usunąć istniejącą i rozpocząć tworzenie nowej książki.',
 	'right-collectionsaveasuserpage' => 'Zapisywanie książek jako stronę użytkownika',
 	'right-collectionsaveascommunitypage' => 'Zapisywanie książek jako wspólną stronę',
 );
@@ -7894,6 +7924,7 @@ A lista é actualizada sempre que clica os botões de adicionar ou remover.',
 	'coll-suggest_article_remove' => 'A página <strong>$1</strong> foi removida do seu livro ($2).',
 	'coll-suggest_undo_tooltip' => 'Desfazer esta acção',
 	'coll-suggest_undo' => 'desfazer',
+	'coll-load_local_book' => 'Clique OK para continuar com o seu livro %TITLE% que contém %NUMPAGES% páginas wiki. Clique Cancelar para apagá-lo e começar com um livro vazio.',
 	'right-collectionsaveasuserpage' => 'Gravar livros como página de utilizador',
 	'right-collectionsaveascommunitypage' => 'Gravar livros como página comunitária',
 );
@@ -8359,6 +8390,7 @@ $messages['ru'] = array(
 	'coll-suggest_article_remove' => 'Из вашей книги ($2) была удалена страница <strong>$1</strong>.',
 	'coll-suggest_undo_tooltip' => 'Отменить это действие',
 	'coll-suggest_undo' => 'отменить',
+	'coll-load_local_book' => 'Нажмите «ОК», чтобы продолжить работу с вашей книгой %TITLE%, содержащей %NUMPAGES% вики-страниц. Нажмите «Отмена», чтобы удалить её и начать с пустой книги.',
 	'right-collectionsaveasuserpage' => 'сохранение книг, как страницу участника',
 	'right-collectionsaveascommunitypage' => 'сохранение книг, как страницу сообщества',
 );
@@ -10512,7 +10544,31 @@ $messages['yi'] = array(
 	'coll-rendering_page' => '(בלאַט: $1)',
 );
 
-/** Yue (粵語)
+/** Yoruba (Yorùbá)
+ * @author Demmy
+ */
+$messages['yo'] = array(
+	'coll-desc' => '[[Special:Book|Dá àwọn ìwé]]',
+	'coll-book_creator_text_article' => '{{MediaWiki:Coll-helppage}}/Lẹ́tà ọ̀rọ̀ olùdá ìwé',
+	'coll-collection' => 'Ìwé',
+	'coll-collections' => 'Àwọn ìwé',
+	'coll-print_template_prefix' => 'Ìtẹ́síìwé',
+	'coll-print_template_pattern' => '$1/Ìtẹ́síìwé',
+	'coll-your_book' => 'Ìwé yín',
+	'coll-title' => 'Àkọlé:',
+	'coll-subtitle' => 'Àkọléabẹ́:',
+	'coll-contents' => 'Àwọn àkóónú',
+	'coll-create_chapter' => 'Dá orí ìwé',
+	'coll-sort_alphabetically' => 'Títò bi ABD',
+	'coll-rename' => 'Àtúnṣọlọ́rúkọ',
+	'coll-yes' => 'Bẹ́ẹ̀ni',
+	'coll-no' => 'Bẹ́ẹ̀kọ́',
+	'coll-cancel' => 'Fagilé',
+	'coll-about_pp' => 'Nípa $1',
+	'coll-return_to' => 'Padà sí [[:$1]]',
+);
+
+/** Cantonese (粵語)
  * @author Shinjiman
  */
 $messages['yue'] = array(

@@ -247,7 +247,7 @@ $messages['ko'] = array(
 	'contributorsaddon-desc' => '자바스크립트를 이용해 ‘주 기여자’를 표시하는 기능',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -273,6 +273,13 @@ $messages['mk'] = array(
  */
 $messages['mr'] = array(
 	'contributorsaddon-desc' => '"मुख्य योगदानकर्ता" दुव्यांवर माउस नेल्यानंतर येणार्‍या खिडकीसाठीची जावास्क्रीप्ट वाढविते',
+);
+
+/** Nedersaksisch (Nedersaksisch)
+ * @author Servien
+ */
+$messages['nds-nl'] = array(
+	'contributorsaddon-desc' => 'Maak JavaScript-floepviensters bie de verwiezingen van de "belangriekste schrievers"',
 );
 
 /** Dutch (Nederlands)

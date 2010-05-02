@@ -1447,6 +1447,15 @@ $messages['el'] = array(
 	'farmer-log-name' => 'Αρχείο της βικι-φάρμας',
 );
 
+/** British English (British English)
+ * @author Reedy
+ */
+$messages['en-gb'] = array(
+	'farmernewwikimainpage' => '== Welcome to your wiki ==
+If you are reading this, your new wiki has been installed correctly.
+You can [[Special:Farmer|customise your wiki]].',
+);
+
 /** Esperanto (Esperanto)
  * @author Amikeco
  * @author Michawiki
@@ -3513,7 +3522,9 @@ $messages['kn'] = array(
 	'farmer-confirmsetting-name' => 'ಹೆಸರು',
 	'farmer-confirmsetting-title' => 'ಶೀರ್ಷಿಕೆ',
 	'farmer-confirmsetting-reason' => 'ಕಾರಣ',
+	'farmer-createwiki-form-help' => 'ಸಹಾಯ',
 	'farmer-createwiki-reason' => 'ಕಾರಣ',
+	'farmer-delete-form-submit' => 'ಅಳಿಸು',
 	'farmer-mainpage' => 'ಮುಖ್ಯ ಪುಟ',
 	'farmer-basic-title1' => 'ಶೀರ್ಷಿಕೆ',
 	'farmer-yes' => 'ಹೌದು',
@@ -3539,7 +3550,7 @@ $messages['krj'] = array(
 	'farmer-mainpage' => 'Pono nga Pahina',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -4125,10 +4136,11 @@ $messages['ms'] = array(
 );
 
 /** Maltese (Malti)
+ * @author Chrisportelli
  * @author Roderick Mallia
  */
 $messages['mt'] = array(
-	'farmer-createwiki-user' => 'Isem l-utent',
+	'farmer-createwiki-user' => 'Isem tal-utent',
 );
 
 /** Mirandese (Mirandés)
@@ -4144,6 +4156,9 @@ $messages['mwl'] = array(
  */
 $messages['myv'] = array(
 	'farmer' => 'Хермер',
+	'farmercreatenextstep' => 'Омбоце эскелькс',
+	'farmer-list-wiki' => 'Викитнеде списка',
+	'farmer-createwiki' => 'Шкамс вики',
 	'farmer-notavailable' => 'Кедь маласо арась',
 	'farmer-confirmsetting-name' => 'Лемезэ',
 	'farmer-confirmsetting-title' => 'Коняксозо',

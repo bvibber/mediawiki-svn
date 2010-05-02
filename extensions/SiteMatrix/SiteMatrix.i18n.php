@@ -74,7 +74,7 @@ $messages['an'] = array(
 	'sitematrix-fishbowl' => 'edizión restrinchita',
 );
 
-/** Old English (Anglo-Saxon) */
+/** Old English (Ænglisc) */
 $messages['ang'] = array(
 	'sitematrix-language' => 'Sprǣc',
 );
@@ -985,6 +985,7 @@ $messages['km'] = array(
  */
 $messages['kn'] = array(
 	'sitematrix-language' => 'ಭಾಷೆ',
+	'sitematrix-sitetotal' => 'ಒಟ್ಟು',
 );
 
 /** Korean (한국어)
@@ -1006,7 +1007,7 @@ $messages['ko'] = array(
 	'sitematrix-fishbowl' => '편집이 제한됨',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -1437,7 +1438,7 @@ $messages['qu'] = array(
 	'sitematrix-others' => 'Wikimediap huk ruraykamayninkuna',
 );
 
-/** Rhaeto-Romance (Rumantsch) */
+/** Romansh (Rumantsch) */
 $messages['rm'] = array(
 	'sitematrix-language' => 'Linguatg',
 );
@@ -1935,7 +1936,7 @@ $messages['yi'] = array(
 	'sitematrix-others' => 'אַנדערע פראיעקטן פֿון וויקימעדיע',
 );
 
-/** Yue (粵語)
+/** Cantonese (粵語)
  * @author Shinjiman
  */
 $messages['yue'] = array(

@@ -101,6 +101,7 @@ Add one below.',
  * @author Darth Kule
  * @author Fryed-peach
  * @author Jon Harald Søby
+ * @author Lloffiwr
  * @author Nike
  * @author Purodha
  */
@@ -114,7 +115,7 @@ $messages['qqq'] = array(
 	'centralnotice-modify' => '{{Identical|Submit}}',
 	'centralnotice-preview' => '{{Identical|Preview}}',
 	'centralnotice-remove' => '{{Identical|Remove}}',
-	'centralnotice-translate-heading' => '$1 is a name of a template.',
+	'centralnotice-translate-heading' => 'Fieldset label. $1 is a name of a template.',
 	'centralnotice-add' => '{{Identical|Add}}',
 	'centralnotice-translate' => '{{Identical|Translate}}',
 	'centralnotice-notice-exists' => 'Errore message displayed in Special:CentralNotice when trying to add a notice with the same name of another notice',
@@ -127,6 +128,11 @@ $messages['qqq'] = array(
 	'centralnotice-notice-is-locked' => 'Errore message displayed in Special:CentralNotice when trying to delete a locked notice',
 	'centralnotice-invalid-date-range' => '{{Identical|Date}}',
 	'centralnotice-no-notices-exist' => 'Used in Special:CentralNotice when there are no notices',
+	'centralnotice-number-uses' => 'Column header in table with sitenotice campaign information.
+
+Translate as a plural noun.
+
+Maximum length of the message is 5% of the total width of the table.',
 	'centralnotice-message' => '{{Identical|Message}}',
 	'right-centralnotice-admin' => '{{doc-right}}',
 	'right-centralnotice-translate' => '{{doc-right}}',
@@ -240,6 +246,7 @@ $messages['an'] = array(
 	'centralnotice-start-date' => 'Calendata de prenzipio',
 	'centralnotice-invalid-date-range' => "Rango de datos no conforme.
 No s'está adautando.",
+	'centralnotice-message' => 'Mensache',
 );
 
 /** Arabic (العربية)
@@ -727,8 +734,8 @@ $messages['br'] = array(
 	'centralnotice' => 'Melestradurezh an alioù kreiz',
 	'noticetemplate' => 'Patrom an alioù kreiz',
 	'centralnotice-desc' => "Ouzhpennañ a ra ur c'hemenn kreiz e laez ar pajennoù (sitenotice).",
-	'centralnotice-query' => 'Kemmañ an alioù a-vremañ',
-	'centralnotice-notice-name' => 'Anv an ali',
+	'centralnotice-query' => 'Kemmañ ar menegoù red',
+	'centralnotice-notice-name' => 'Anv ar meneg',
 	'centralnotice-end-date' => 'Deiziad termen',
 	'centralnotice-enabled' => 'Gweredekaet',
 	'centralnotice-modify' => 'Kas',
@@ -740,8 +747,8 @@ $messages['br'] = array(
 	'centralnotice-add' => 'Ouzhpennañ',
 	'centralnotice-add-notice' => "Ouhzpennañ ur c'hemenn",
 	'centralnotice-add-template' => 'Ouzhpennañ ur patrom',
-	'centralnotice-show-notices' => 'Diskouez an alioù',
-	'centralnotice-list-templates' => 'Listennañ ar patromoù',
+	'centralnotice-show-notices' => 'Diskouez ar menegoù',
+	'centralnotice-list-templates' => 'Rollañ ar patromoù',
 	'centralnotice-translations' => 'Troidigezhioù',
 	'centralnotice-translate-to' => 'Treiñ e',
 	'centralnotice-translate' => 'Treiñ',
@@ -793,7 +800,7 @@ Ouzhpennit unan da heul.",
 	'centralnotice-number-uses' => 'Implijoù',
 	'centralnotice-edit-template' => 'Kemmañ ar patrom',
 	'centralnotice-message' => 'Kemennadenn',
-	'centralnotice-message-not-set' => "N'eo ket bet kaset ar gemenadenn",
+	'centralnotice-message-not-set' => "N'eo ket bet savet ar gemennadenn",
 	'centralnotice-clone' => 'Eilañ',
 	'centralnotice-clone-notice' => 'Krouiñ un eiladenn eus ar patrom',
 	'centralnotice-preview-all-template-translations' => 'Rakwellit an holl droidigezhioù a zo evit ar patrom-mañ',
@@ -1104,7 +1111,7 @@ Gall hefyd gael ei ddefnyddio i ychwanegu hen hysbysiadau neu eu tynnu i ffwrdd.
 	'centralnotice-weight' => 'Pwys',
 	'centralnotice-locked' => 'Ar glo',
 	'centralnotice-notices' => 'Hysbysiadau',
-	'centralnotice-notice-exists' => "Mae'r hysbysiad eisoes ar gael. 
+	'centralnotice-notice-exists' => "Mae'r hysbysiad eisoes ar gael.
 Ni chaiff ei ychwanegu",
 	'centralnotice-notice-doesnt-exist' => "Nid yw'r hysbysiad ar gael.
 Dim i gael gwared ohono",
@@ -1119,7 +1126,7 @@ Dim i gael gwared ohono",
 	'centralnotice-start-time' => 'Amser cychwyn (UTC)',
 	'centralnotice-start-hour' => 'Amser dechrau',
 	'centralnotice-weights' => 'Pwysau',
-	'centralnotice-notice-is-locked' => "Mae'r hysbysiad wedi ei gloi. 
+	'centralnotice-notice-is-locked' => "Mae'r hysbysiad wedi ei gloi.
 Ni chaiff ei dynnu i ffwrdd",
 	'centralnotice-no-notices-exist' => 'Does dim hysbysiadau i gael.
 Gallwch ychwanegu un isod.',
@@ -1507,7 +1514,7 @@ $messages['el'] = array(
 	'centralnotice-no-templates-assigned' => 'Κανένα πρότυπο δεν έχει ανατεθεί σε σημείωση.
 Προσθέστε κάποια!',
 	'centralnotice-available-templates' => 'Διαθέσιμα πρότυπα',
-	'centralnotice-template-already-exists' => 'Το πρότυπο είναι ακόμη συνδεδεμένο με μία καμπάνια. 
+	'centralnotice-template-already-exists' => 'Το πρότυπο είναι ακόμη συνδεδεμένο με μία καμπάνια.
 Δεν έχει προστεθεί',
 	'centralnotice-preview-template' => 'Πρότυπο προεπισκόπησης',
 	'centralnotice-start-hour' => 'Χρόνος εκκίνησης',
@@ -1515,7 +1522,7 @@ $messages['el'] = array(
 	'centralnotice-weights' => 'Βάρη',
 	'centralnotice-notice-is-locked' => 'Η σημείωση είναι κλειδωμένη.
 Δεν θα αφαιρεθεί',
-	'centralnotice-overlap' => 'Το σημείωμα επικαλύπτεται με τον χρόνο ενός άλλου σημειώματος. 
+	'centralnotice-overlap' => 'Το σημείωμα επικαλύπτεται με τον χρόνο ενός άλλου σημειώματος.
 Δεν έχει προστεθεί',
 	'centralnotice-invalid-date-range' => 'Άκυρο εύρος ημερομηνιών.
 Δεν είναι ενημερωμένο',
@@ -1918,7 +1925,7 @@ $messages['fa'] = array(
 	'centralnotice-start-date' => 'تاریخ آغاز',
 	'centralnotice-start-time' => 'زمان آغاز',
 	'centralnotice-assigned-templates' => 'الگوهای متصل شده',
-	'centralnotice-no-templates' => 'در این سیستم هیچ الگویی نیست. 
+	'centralnotice-no-templates' => 'در این سیستم هیچ الگویی نیست.
 چندتا بسازید.',
 	'centralnotice-no-templates-assigned' => 'الگویی به این اعلان متصل نیست.
 اضافه کنید!',
@@ -3295,6 +3302,7 @@ $messages['ka'] = array(
 	'centralnotice-english' => 'ინგლისური',
 	'centralnotice-template-name' => 'თარგების სახელი',
 	'centralnotice-templates' => 'თარგები',
+	'centralnotice-weight' => 'სიგანე',
 	'centralnotice-locked' => 'დაბლოკილი',
 	'centralnotice-template-exists' => 'თარგი უკვე არსებობს. არ დაამატოთ',
 	'centralnotice-notice-doesnt-exist' => 'შეტყობინება არ არსებობს.
@@ -3361,6 +3369,7 @@ $messages['km'] = array(
  */
 $messages['kn'] = array(
 	'centralnotice-preview' => 'ಮುನ್ನೋಟ',
+	'centralnotice-english' => 'ಆಂಗ್ಲ',
 	'centralnotice-day' => 'ದಿನ',
 	'centralnotice-year' => 'ವರ್ಷ',
 	'centralnotice-month' => 'ತಿಂಗಳು',
@@ -3452,7 +3461,7 @@ $messages['ko'] = array(
 	'centralnotice-preferred' => '우선 사용',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -3542,7 +3551,7 @@ De kanns ävver welshe dobei don.',
 	'centralnotice-preferred' => 'Förjetrocke!',
 );
 
-/** Cornish (Kernowek)
+/** Cornish (Kernewek)
  * @author Kernoweger
  * @author Kw-Moon
  */
@@ -4126,6 +4135,7 @@ $messages['myv'] = array(
 	'centralnotice-min' => 'Минут',
 	'centralnotice-available-templates' => 'Кедь маласо лопа парцунт',
 	'centralnotice-edit-template' => 'Лопа парцунонть витнеме-петнеме',
+	'centralnotice-message' => 'Пачтамнэ',
 );
 
 /** Low German (Plattdüütsch)
@@ -4381,7 +4391,7 @@ Legg han ikkje til',
 	'centralnotice-overlap' => 'Merknaden overlappar tida til ein annan merknad. Legg han ikkje til',
 	'centralnotice-invalid-date-range' => 'Ugyldig tidsrom. Oppdaterer ikkje',
 	'centralnotice-null-string' => 'Kan ikkje leggja til ein nullstreng. Legg ikkje til',
-	'centralnotice-confirm-delete' => 'Er du sikker på at du vil sletta? 
+	'centralnotice-confirm-delete' => 'Er du sikker på at du vil sletta?
 Denne handlinga kan ikkje bli omgjort.',
 	'centralnotice-no-notices-exist' => 'Ingen merknader finst. Legg til ein under',
 	'centralnotice-no-templates-translate' => 'Det finst ingen malar å endra omsetjingar for',
@@ -5401,7 +5411,7 @@ Nun si junci',
 	'centralnotice-change-lang' => 'Cancia la lingua dâ traduzzioni',
 	'centralnotice-weights' => 'Pisa',
 	'centralnotice-notice-is-locked' => "L'avvisu è bliccatu. Avvisu nun livatu",
-	'centralnotice-overlap' => "L'avvisu si camìna ntê pèdi di n'àutru avvisu a causa dû tempu. 
+	'centralnotice-overlap' => "L'avvisu si camìna ntê pèdi di n'àutru avvisu a causa dû tempu.
 Nun junciutu",
 	'centralnotice-invalid-date-range' => 'Ntirvaddu di tempu nun vàlidu.
 Nun fu canciatu',
@@ -6198,7 +6208,7 @@ $messages['tk'] = array(
 	'centralnotice' => 'Merkezi uwedomleniýe admini',
 	'noticetemplate' => 'Merkezi uwedomleniýe şablony',
 	'centralnotice-desc' => 'Merkezi uwedomleniýe goşýar',
-	'centralnotice-summary' => 'Bu modul size bar bolan gurulgy merkezi uwedomleniýeleri üýtgetmäge rugsat berýär. 
+	'centralnotice-summary' => 'Bu modul size bar bolan gurulgy merkezi uwedomleniýeleri üýtgetmäge rugsat berýär.
 Ony köne uwedomleniýeleri goşmak ýa-da aýyrmak üçin hem ulanmak bolýar.',
 	'centralnotice-query' => 'Häzirki uwedomleniýeleri üýtget',
 	'centralnotice-notice-name' => 'Uwedomleniýe ady',
@@ -6287,7 +6297,7 @@ $messages['tl'] = array(
 	'centralnotice' => 'Tagapangasiwa ng pangunahing pabatid',
 	'noticetemplate' => 'Suleras ng pangunahing pabatid',
 	'centralnotice-desc' => 'Nagdaragdag ng pangunahing pahayag ng sayt/sityo',
-	'centralnotice-summary' => 'Nagbibigay ang bahaging-panggampaning ito ng pahintulot na mabago mo ang iyong pangkasulukyang naitakdang mga pangunahing pahayag.  
+	'centralnotice-summary' => 'Nagbibigay ang bahaging-panggampaning ito ng pahintulot na mabago mo ang iyong pangkasulukyang naitakdang mga pangunahing pahayag.
 Maaari rin itong gamitin upang makapagdagdag o magtanggal ng mga lumang pahayag.',
 	'centralnotice-query' => 'Baguhin ang pangkasalukuyang mga pabatid',
 	'centralnotice-notice-name' => 'Pangalan ng pabatid',
@@ -6476,7 +6486,7 @@ $messages['uk'] = array(
 	'centralnotice' => 'Управління централізованими сповіщеннями',
 	'noticetemplate' => 'Шаблон централізованого повідомлення',
 	'centralnotice-desc' => 'Додає загальне повідомлення сайту',
-	'centralnotice-summary' => 'Цей модуль дозволяє вам змінювати ваші поточні централізовані повідомлення. 
+	'centralnotice-summary' => 'Цей модуль дозволяє вам змінювати ваші поточні централізовані повідомлення.
 Він також може використовуватися для додавання нових і видалення старих повідомлень.',
 	'centralnotice-query' => 'Змінити поточне повідомлення',
 	'centralnotice-notice-name' => 'Назва повідомлення',
@@ -6502,13 +6512,13 @@ $messages['uk'] = array(
 	'centralnotice-weight' => 'Ширина',
 	'centralnotice-locked' => 'Заблокований',
 	'centralnotice-notices' => 'повідомлення',
-	'centralnotice-notice-exists' => 'Повідомлення вже існує. 
+	'centralnotice-notice-exists' => 'Повідомлення вже існує.
 Не додається',
-	'centralnotice-template-exists' => 'Шаблон вже існує. 
+	'centralnotice-template-exists' => 'Шаблон вже існує.
 Не додається',
-	'centralnotice-notice-doesnt-exist' => 'Повідомлення не існує. 
+	'centralnotice-notice-doesnt-exist' => 'Повідомлення не існує.
 Нема чого видаляти',
-	'centralnotice-template-still-bound' => "Шаблон, як і раніше, пов'язаний з повідомленням. 
+	'centralnotice-template-still-bound' => "Шаблон, як і раніше, пов'язаний з повідомленням.
 Не видаляється.",
 	'centralnotice-template-body' => 'Тіло шаблону:',
 	'centralnotice-day' => 'День',
@@ -6521,28 +6531,28 @@ $messages['uk'] = array(
 	'centralnotice-start-date' => 'Дата початку',
 	'centralnotice-start-time' => 'Час початку (UTC)',
 	'centralnotice-assigned-templates' => 'Встановлені шаблони',
-	'centralnotice-no-templates' => 'Не знайдено шаблонів. 
+	'centralnotice-no-templates' => 'Не знайдено шаблонів.
 Додайте що-небудь!',
-	'centralnotice-no-templates-assigned' => "Не має пов'язаних з повідомленням шаблонів. 
+	'centralnotice-no-templates-assigned' => "Не має пов'язаних з повідомленням шаблонів.
 Додайте який-небудь!",
 	'centralnotice-available-templates' => 'Доступні шаблони',
-	'centralnotice-template-already-exists' => "Шаблон вже прив'язаний. 
+	'centralnotice-template-already-exists' => "Шаблон вже прив'язаний.
 Не доданий",
 	'centralnotice-preview-template' => 'Попередній перегляд шаблону',
 	'centralnotice-start-hour' => 'Час початку',
 	'centralnotice-change-lang' => 'Змінити мову перекладу',
 	'centralnotice-weights' => 'Ваги',
-	'centralnotice-notice-is-locked' => 'Повідомлення заблоковано. 
+	'centralnotice-notice-is-locked' => 'Повідомлення заблоковано.
 Не вилучається',
-	'centralnotice-overlap' => 'Повідомлення перекривається за часом з іншим повідомленням. 
+	'centralnotice-overlap' => 'Повідомлення перекривається за часом з іншим повідомленням.
 Не додається',
-	'centralnotice-invalid-date-range' => 'Хибний діапазон дат. 
+	'centralnotice-invalid-date-range' => 'Хибний діапазон дат.
 Не оновлюється',
-	'centralnotice-null-string' => 'Не вдається додати порожній рядок. 
+	'centralnotice-null-string' => 'Не вдається додати порожній рядок.
 Не додається',
-	'centralnotice-confirm-delete' => 'Ви впевнені у вирішенні вилучити цей елемент? 
+	'centralnotice-confirm-delete' => 'Ви впевнені у вирішенні вилучити цей елемент?
 Цю дію не можна буде скасувати.',
-	'centralnotice-no-notices-exist' => 'Немає повідомлень. 
+	'centralnotice-no-notices-exist' => 'Немає повідомлень.
 Можна додати',
 	'centralnotice-no-templates-translate' => 'Не має ні одного шаблону для редагування перекладу',
 	'centralnotice-number-uses' => 'Використовуються',
@@ -6592,13 +6602,13 @@ In più se pol dopararlo anca par zontar o cavar avisi veci.',
 	'centralnotice-weight' => 'Peso',
 	'centralnotice-locked' => 'Blocà',
 	'centralnotice-notices' => 'Notifiche',
-	'centralnotice-notice-exists' => 'Notifica zà esistente. 
+	'centralnotice-notice-exists' => 'Notifica zà esistente.
 Inserimento mia fato',
-	'centralnotice-template-exists' => 'Modèl zà esistente. 
+	'centralnotice-template-exists' => 'Modèl zà esistente.
 Inserimento mia fato',
-	'centralnotice-notice-doesnt-exist' => 'Notifica mia esistente. 
+	'centralnotice-notice-doesnt-exist' => 'Notifica mia esistente.
 Rimozion mia fata',
-	'centralnotice-template-still-bound' => 'Modèl ancora ligà a na notifica. 
+	'centralnotice-template-still-bound' => 'Modèl ancora ligà a na notifica.
 Rimozion mia fata.',
 	'centralnotice-template-body' => 'Corpo del modèl:',
 	'centralnotice-day' => 'Zorno',
@@ -6616,7 +6626,7 @@ Zónteghene qualchedun!',
 	'centralnotice-no-templates-assigned' => 'Nissun modèl assegnà a la notifica
 Zónteghene qualchedun!',
 	'centralnotice-available-templates' => 'Modèi disponibili',
-	'centralnotice-template-already-exists' => 'Sto modèl el xe zà ligà a na campagna. 
+	'centralnotice-template-already-exists' => 'Sto modèl el xe zà ligà a na campagna.
 Inserimento mia fato',
 	'centralnotice-preview-template' => 'Anteprima modèl',
 	'centralnotice-start-hour' => 'Ora de scominsio',
@@ -6801,7 +6811,19 @@ $messages['yi'] = array(
 	'centralnotice-project-name' => 'פראיעקט נאמען',
 );
 
-/** Yue (粵語)
+/** Yoruba (Yorùbá)
+ * @author Demmy
+ */
+$messages['yo'] = array(
+	'centralnotice-english' => 'Gẹ̀ẹ́sì',
+	'centralnotice-day' => 'Ọjọ́',
+	'centralnotice-year' => 'Ọdún',
+	'centralnotice-month' => 'Osù',
+	'centralnotice-hours' => 'Wákàtí',
+	'centralnotice-min' => 'Ìṣẹ́jú',
+);
+
+/** Cantonese (粵語)
  * @author Shinjiman
  */
 $messages['yue'] = array(

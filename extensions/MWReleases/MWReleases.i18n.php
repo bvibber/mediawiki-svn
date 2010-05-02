@@ -213,7 +213,7 @@ $messages['ko'] = array(
 	'mwreleases-desc' => '지원하는 [[Mediawiki:Mwreleases-list|릴리즈 목록]]을 추가함, API로 접근 가능',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -374,7 +374,7 @@ $messages['vi'] = array(
 	'mwreleases-desc' => 'Thêm [[Mediawiki:Mwreleases-list|danh sách]] phiên bản được hỗ trợ, có thể truy cập qua API.',
 );
 
-/** Yue (粵語) */
+/** Cantonese (粵語) */
 $messages['yue'] = array(
 	'mwreleases-desc' => '加入一個支援發佈嘅[[Mediawiki:Mwreleases-list|一覽]]，可經API訪問',
 );

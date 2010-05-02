@@ -395,7 +395,7 @@ $messages['km'] = array(
 	'userimages-noimages' => '$1 មិនបានផ្ទុកឡើងនូវរូបភាពណាមួយទេ។',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -815,7 +815,7 @@ $messages['vo'] = array(
 	'userimages-noimages' => 'Geban: $1 elöpükon magodis nonik.',
 );
 
-/** Yue (粵語)
+/** Cantonese (粵語)
  * @author Shinjiman
  */
 $messages['yue'] = array(

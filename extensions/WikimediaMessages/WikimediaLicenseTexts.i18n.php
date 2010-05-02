@@ -239,6 +239,8 @@ $messages['en'] = array(
  */
 $messages['qqq'] = array(
 	'wikimedialicensetexts-desc' => '{{desc}}',
+	'wm-license-attribution-with-author-text' => 'You can peek at [[Commons:Template:Attribution]] for the current translations',
+	'wm-license-attribution-without-author-text' => 'You can peek at [[Commons:Template:Attribution]] for the current translations',
 	'wm-license-cc-wiki-link' => 'An interwiki link that will work within Wikimedia projects and lead to a wiki page (most probably in a Wikipedia) in your language providing more information about Creative Commons licenses.',
 	'wm-license-cc-by-1.0-text' => '{{CreativeCommonsLicense|by|1.0}}',
 	'wm-license-cc-by-1.0-fi-text' => '{{CreativeCommonsLicense|by|1.0|fi}}',
@@ -394,6 +396,9 @@ $messages['qqq'] = array(
 	'wm-license-cc-by-sa-3.0-tw-text' => '{{CreativeCommonsLicense|by-sa|3.0|tw}}',
 	'wm-license-cc-by-sa-3.0-us-text' => '{{CreativeCommonsLicense|by-sa|3.0|us}}',
 	'wm-license-cc-sa-1.0-text' => '{{CreativeCommonsLicense|by|1.0}}',
+	'wm-license-cc-sa-1.0-fi-text' => '{{CreativeCommonsLicense|sa|1.0|fi}}',
+	'wm-license-cc-sa-1.0-nl-text' => '{{CreativeCommonsLicense|sa|1.0|nl}}',
+	'wm-license-cc-sa-2.0-jp-text' => '{{CreativeCommonsLicense|sa|1.0|jp}}',
 	'wm-license-cc-free' => "This is not a 'lego' sentence. See http://creativecommons.org/licenses/by/3.0/ on how this is used.",
 	'wm-license-cc-free-to-share-header' => "This is not a 'lego' sentence. See http://creativecommons.org/licenses/by/3.0/ on how this is used.",
 	'wm-license-cc-free-to-share-text' => "This is not a 'lego' sentence. See http://creativecommons.org/licenses/by/3.0/ on how this is used.",
@@ -404,7 +409,17 @@ $messages['qqq'] = array(
 	'wm-license-cc-conditions-attribution-text' => 'See http://creativecommons.org/licenses/by/3.0/ on how this is used.',
 	'wm-license-cc-conditions-share_alike-header' => "This is not a 'lego' sentence. See http://creativecommons.org/licenses/by/3.0/ on how this is used.",
 	'wm-license-cc-conditions-share_alike-text' => "This is not a 'lego' sentence. See http://creativecommons.org/licenses/by/3.0/ on how this is used.",
+	'wm-license-cecill-text' => 'You can peek at [[Commons:Template:CeCILL]] for the current translations',
+	'wm-license-fal-text' => 'You can peek at [[Commons:Template:FAL]] for the current translations',
+	'wm-license-fsf-wiki-link' => 'Link to the Wikipedia article about the [[Wikipedia:Free Software Foundation|Free Software Foundation]].',
+	'wm-license-free-software-wiki-link' => 'Link to the article about Free software. This is an optional message so please only translate it if the article actually exists.',
+	'wm-license-gfdl-1.2-and-later' => 'You can peek at [[Commons:Template:GFDL]] for the current translations',
+	'wm-license-gfdl-1.2-only' => 'You can peek at [[Commons:Template:GFDL-1.2]] for the current translations.',
+	'wm-license-gfdl-wiki-link' => 'Link to the Wikipedia article about the [[Wikipedia:GNU Free Documentation License|GNU Free Documentation License]]',
+	'wm-license-gpl-text' => 'You can peek at [[Commons:Template:GPL]] for the current translations',
 	'wm-license-information-permission-reusing-link' => 'Please only set a link here when a translated version of [[:Commons:Commons:Reusing content outside Wikimedia|Commons:Reusing content outside Wikimedia]] is available.',
+	'wm-license-lgpl-text' => 'You can peek at [[Commons:Template:LGPL]] for the current translations',
+	'wm-license-own-work' => 'This message will be used in [[commons:Template:Own]]',
 	'wm-license-self-one-license' => 'You can peek at [[Commons:Template:Self/{{SUBPAGENAME}}]]',
 	'wm-license-self-one-license-with-author' => 'You can peek at [[Commons:Template:Self/{{SUBPAGENAME}}]]',
 	'wm-license-self-multiple-licenses' => 'You can peek at [[Commons:Template:Self/{{SUBPAGENAME}}]]',
@@ -451,12 +466,18 @@ $messages['af'] = array(
 	'wm-license-self-multiple-licenses-select' => 'U kan die lisensie van u keuse kies.',
 );
 
+/** Tosk (Tosk) */
+$messages['als'] = array(
+	'wm-license-gfdl-wiki-link' => 'w:als:GNU-Lizenz für freie Dokumentation',
+	'wm-license-own-work' => 'Eigeni Arbet vo dem wo d Datei uffeladet',
+);
+
 /** Aragonese (Aragonés) */
 $messages['an'] = array(
 	'wm-license-own-work' => 'Treballo de qui la cargó',
 );
 
-/** Old English (Anglo-Saxon)
+/** Old English (Ænglisc)
  * @author Wōdenhelm
  */
 $messages['ang'] = array(
@@ -844,6 +865,11 @@ $messages['be-tarask'] = array(
 	'wm-license-self-multiple-licenses' => 'Я, уладальнік аўтарскіх правоў на гэту працу, дабравольна публікую яе згодна ўмоваў наступных ліцэнзіяў:',
 	'wm-license-self-multiple-licenses-with-author' => '$1, уладальнік аўтарскіх правоў на гэтую працу, дабравольна публікуе яе згодна ўмоваў наступных ліцэнзіяў:',
 	'wm-license-self-multiple-licenses-select' => 'Вы можаце абраць любую ліцэнзію на ваш погляд.',
+);
+
+/** Беларуская (тарашкевіца) (Беларуская (тарашкевіца)) */
+$messages['be-x-old'] = array(
+	'wm-license-gfdl-wiki-link' => 'w:be-x-old:GNU Free Documentation License',
 );
 
 /** Bulgarian (Български)
@@ -1517,6 +1543,11 @@ $messages['ca'] = array(
 /** Min Dong Chinese (Mìng-dĕ̤ng-ngṳ̄) */
 $messages['cdo'] = array(
 	'wm-license-gfdl-wiki-link' => 'w:cdo:GNU Cê̤ṳ-iù Ùng-dáung Hṳ̄-kō̤-céng',
+);
+
+/** Sorani (Soranî / کوردی) */
+$messages['ckb'] = array(
+	'wm-license-free-software-wiki-link' => 'w:ckb:نەرمەکاڵا خۆڕاییەکان',
 );
 
 /** Czech (Česky)
@@ -2531,6 +2562,13 @@ $messages['el'] = array(
 	'wm-license-self-multiple-licenses-select' => 'Μπορείτε να επιλέξετε την άδεια της προτίμησής σας.',
 );
 
+/** British English (British English)
+ * @author Reedy
+ */
+$messages['en-gb'] = array(
+	'wm-license-information-table-summary' => 'A standardised table providing complete information about the file, including description of what it shows and how it was made, copyright status and source.',
+);
+
 /** Esperanto (Esperanto)
  * @author Castelobranco
  * @author Marcos
@@ -3294,7 +3332,10 @@ $messages['eu'] = array(
 	'wm-license-gpl-wiki-link' => 'w:eu:GNU General Public License',
 	'wm-license-information-table-summary' => 'Taula estandarra, fitxategiari buruzko informazioa biltzen duena, deskribapen orokorrarekin, jatorria eta copyright informazioaz.',
 	'wm-license-information-description' => 'Deskribapena',
+	'wm-license-information-description-missing' => "Fitxategiak ez du '''deskribapenik''', eta ziurrenik informazio gehiagoren falta ere izango du.",
+	'wm-license-information-description-missing-request' => 'Mesedez eskaini ezazu fitxategiaren deskribapen argigarri bat.',
 	'wm-license-information-source' => 'Jatorria',
+	'wm-license-information-source-missing' => "Fitxategiak ez du '''jatorriaren''' inguruko informaziorik.",
 	'wm-license-information-date' => 'Data',
 	'wm-license-information-author' => 'Egilea',
 	'wm-license-information-author-missing' => "Fitxategi honi '''egile'''ari buruzko informazioa falta zaio.",
@@ -5006,6 +5047,8 @@ $messages['id'] = array(
 	'wm-license-information-date' => 'Tanggal',
 	'wm-license-information-author' => 'Pembuat',
 	'wm-license-information-author-missing' => "Berkas ini kurang informasi '''pembuat'''.",
+	'wm-license-information-permission' => 'Lisensi',
+	'wm-license-information-permission-reusing-text' => 'Menggunakan kembali berkas ini',
 	'wm-license-information-permission-see-below' => 'Lihat di bawah',
 	'wm-license-information-other-versions' => 'Versi lainnya',
 	'wm-license-lgpl-wiki-link' => 'w:id:LGPL',
@@ -5152,7 +5195,7 @@ $messages['it'] = array(
 	'wm-license-cc-by-sa-2.0-au-text' => 'Questo file è licenziato in base ai termini della licenza [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.0/au/deed.it Attribuzione-Condividi allo stesso modo 2.0 Australia]',
 	'wm-license-cc-by-sa-2.0-be-text' => 'Questo file è licenziato in base ai termini della licenza [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.0/be/deed.it Attribuzione-Condividi allo stesso modo 2.0 Belgio].',
 	'wm-license-cc-by-sa-2.0-br-text' => 'Questo file è licenziato in base ai termini della licenza [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.0/br/deed.it Attribuzione-Condividi allo stesso modo 2.0 Brasile].',
-	'wm-license-cc-by-sa-2.0-ca-text' => 'Questo file è licenziato in base ai termini della licenza [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.0/ca/deed.en Attribuzione-Condividi allo stesso modo 2.0 Canada].',
+	'wm-license-cc-by-sa-2.0-ca-text' => 'Questo file è licenziato in base ai termini della licenza [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.0/ca/ Attribuzione-Condividi allo stesso modo 2.0 Canada].',
 	'wm-license-cc-by-sa-2.0-cl-text' => 'Questo file è licenziato in base ai termini della licenza [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.0/cl/deed.it Attribuzione-Condividi allo stesso modo 2.0 Cile].',
 	'wm-license-cc-by-sa-2.0-de-text' => 'Questo file è licenziato in base ai termini della licenza [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.0/de/deed.it Attribuzione-Condividi allo stesso modo 2.0 Germania].',
 	'wm-license-cc-by-sa-2.0-es-text' => 'Questo file è licenziato in base ai termini della licenza [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.0/es/deed.it Attribuzione-Condividi allo stesso modo 2.0 Spagna].',
@@ -5496,8 +5539,11 @@ $messages['ja'] = array(
 	'wm-license-self-multiple-licenses-select' => 'あなたは上記のライセンスから、どれか一つ以上を選択することができます。',
 );
 
-/** Javanese (Basa Jawa) */
+/** Javanese (Basa Jawa)
+ * @author Meursault2004
+ */
 $messages['jv'] = array(
+	'wikimedialicensetexts-desc' => 'Pesan lisènsi Wikimedia',
 	'wm-license-gfdl-wiki-link' => 'w:jv:GFDL',
 );
 
@@ -5756,6 +5802,13 @@ $messages['km'] = array(
 	'wm-license-own-work' => 'ការងារផ្ទាល់របស់អ្នកអាប់ឡូដ',
 );
 
+/** Kannada (ಕನ್ನಡ)
+ * @author Nayvik
+ */
+$messages['kn'] = array(
+	'wm-license-information-date' => 'ದಿನಾಂಕ',
+);
+
 /** Korean (한국어)
  * @author Kwj2772
  * @author Multichill
@@ -5901,7 +5954,7 @@ $messages['ko'] = array(
 	'wm-license-cc-by-sa-2.5-tw-text' => '이 파일은 [[{{int:wm-license-cc-wiki-link}}|크리에이티브 커먼즈]] [http://creativecommons.org/licenses/by-sa/2.5/tw/deed.ko 저작자표시-동일조건변경허락 2.5 중화민국] 라이선스로 배포됩니다.',
 	'wm-license-cc-by-sa-2.5-za-text' => '이 파일은 [[{{int:wm-license-cc-wiki-link}}|크리에이티브 커먼즈]] [http://creativecommons.org/licenses/by-sa/2.5/za/deed.ko 저작자표시-동일조건변경허락 2.5 남아프리카 공화국] 라이선스로 배포됩니다.',
 	'wm-license-cc-by-sa-3.0-text' => '이 파일은 [[{{int:wm-license-cc-wiki-link}}|크리에이티브 커먼즈]] [http://creativecommons.org/licenses/by-sa/3.0/deed.ko 저작자표시-동일조건변경허락 3.0 Unported] 라이선스로 배포됩니다.',
-	'wm-license-cc-by-sa-3.0-2.5-2.0-1.0-text' => '이 파일은 [[{{int:wm-license-cc-wiki-link}}|크리에이티브 커먼즈]] 저작자표시-동일조건변경허락 [http://creativecommons.org/licenses/by-sa/3.0/deed.en 3.0], [http://creativecommons.org/licenses/by/2.5/deed.ko 2.5], [http://creativecommons.org/licenses/by/2.0/deed.ko 2.0], [http://creativecommons.org/licenses/by/1.0/deed.ko 1.0] 라이선스로 배포됩니다.',
+	'wm-license-cc-by-sa-3.0-2.5-2.0-1.0-text' => '이 파일은 [[{{int:wm-license-cc-wiki-link}}|크리에이티브 커먼즈]] 저작자표시-동일조건변경허락 [http://creativecommons.org/licenses/by-sa/3.0/ 3.0], [http://creativecommons.org/licenses/by/2.5/deed.ko 2.5], [http://creativecommons.org/licenses/by/2.0/deed.ko 2.0], [http://creativecommons.org/licenses/by/1.0/deed.ko 1.0] 라이선스로 배포됩니다.',
 	'wm-license-cc-by-sa-3.0-at-text' => '이 파일은 [[{{int:wm-license-cc-wiki-link}}|크리에이티브 커먼즈]] [http://creativecommons.org/licenses/by-sa/3.0/at/deed.ko 저작자표시-동일조건변경허락 3.0 오스트리아] 라이선스로 배포됩니다.',
 	'wm-license-cc-by-sa-3.0-cz-text' => '이 파일은 [[{{int:wm-license-cc-wiki-link}}|크리에이티브 커먼즈]] [http://creativecommons.org/licenses/by-sa/3.0/cz/deed.ko 저작자표시-동일조건변경허락 3.0 체코] 라이선스로 배포됩니다.',
 	'wm-license-cc-by-sa-3.0-de-text' => '이 파일은 [[{{int:wm-license-cc-wiki-link}}|크리에이티브 커먼즈]] [http://creativecommons.org/licenses/by-sa/3.0/de/deed.ko 저작자표시-동일조건변경허락 3.0 독일] 라이선스로 배포됩니다.',
@@ -6008,7 +6061,7 @@ $messages['krc'] = array(
 	'wm-license-cc-conditions-attribution-header' => 'авторлукъну чертиу',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Multichill
  * @author Purodha
  */
@@ -6035,6 +6088,11 @@ $messages['ksh'] = array(
 	'wm-license-cc-conditions-share_alike-header' => 'Wiggerjävve onger derselleve Bedengunge',
 	'wm-license-cc-conditions-share_alike-text' => 'Wann De dat Werk aanpaß, ömwandels, Der  zeräsch mähß, udder drop opbouß, dann darrefs De dat, wat derbei eruß kütt, bloß onger derselleve Bedengunge, undder jannz ähnlesche Bedengunge wigger jävve, wi di Lizänz hee.',
 	'wm-license-gfdl-wiki-link' => 'w:ksh:GNU Lizännz för n fräĳe Dokementazjon',
+);
+
+/** Kurdish (Kurdî) */
+$messages['ku'] = array(
+	'wm-license-free-software-wiki-link' => 'w:ku:Nermalava azad',
 );
 
 /** Latin (Latina) */
@@ -6271,162 +6329,162 @@ $messages['lt'] = array(
 	'wm-license-attribution-without-author-text' => "Šio failo autorinių teisių savininkas leidžia naudoti šį failą '''bet kokiam tikslui, su sąlyga, kad''' autorinių teisių savininkas tinkamai nurodytas. Perskyrimas, išvestiniai darbai, naudojimas komerciniams tikslams ir kiti naudojimai yra uždrausti.",
 	'wm-license-cc-wiki-link' => 'w:lt:Creative Commons',
 	'wm-license-cc-attribution' => 'Atribucija',
-	'wm-license-cc-by-1.0-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/1.0/deed.en Attribution 1.0 Generic] licencija.',
-	'wm-license-cc-by-1.0-fi-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/1.0/fi/deed.en Attribution 1.0 Finland] licencija.',
-	'wm-license-cc-by-1.0-il-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/1.0/il/deed.en Attribution 1.0 Israel] licencija.',
-	'wm-license-cc-by-1.0-nl-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/1.0/nl/deed.en Attribution 1.0 Netherlands] licencija.',
-	'wm-license-cc-by-2.0-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/2.0/deed.en Attribution 2.0 Generic] licencija.',
-	'wm-license-cc-by-2.0-at-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/2.0/at/deed.en Attribution 2.0 Austria] licencija.',
-	'wm-license-cc-by-2.0-au-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/2.0/au/deed.en Attribution 2.0 Australia] licencija.',
-	'wm-license-cc-by-2.0-be-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/2.0/be/deed.en Attribution 2.0 Belgium] licencija.',
-	'wm-license-cc-by-2.0-br-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/2.0/br/deed.en Attribution 2.0 Brazil] licencija.',
-	'wm-license-cc-by-2.0-ca-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/2.0/ca/deed.en Attribution 2.0 Canada] licencija.',
-	'wm-license-cc-by-2.0-cl-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/2.0/cl/deed.en Attribution 2.0 Chile] licencija.',
-	'wm-license-cc-by-2.0-de-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/2.0/de/deed.en Attribution 2.0 Germany] licencija.',
-	'wm-license-cc-by-2.0-es-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/2.0/es/deed.en Attribution 2.0 Spain] licencija.',
-	'wm-license-cc-by-2.0-fr-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/2.0/fr/deed.en Attribution 2.0 France] licencija.',
-	'wm-license-cc-by-2.0-hr-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/2.0/hr/deed.en Attribution 2.0 Croatia] licencija.',
-	'wm-license-cc-by-2.0-it-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/2.0/it/deed.en Attribution 2.0 Italy] licencija.',
-	'wm-license-cc-by-2.0-jp-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/2.0/jp/deed.en Attribution 2.0 Japan] licencija.',
-	'wm-license-cc-by-2.0-kr-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/2.0/kr/deed.en Attribution 2.0 Korea] licencija.',
-	'wm-license-cc-by-2.0-nl-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/2.0/nl/deed.en Attribution 2.0 Netherlands] licencija.',
-	'wm-license-cc-by-2.0-pl-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/2.0/pl/deed.en Attribution 2.0 Poland] licencija.',
-	'wm-license-cc-by-2.0-tw-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/2.0/tw/deed.en Attribution 2.0 Taiwan] licencija.',
-	'wm-license-cc-by-2.0-uk-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/2.0/uk/deed.en Attribution 2.0 UK: England & Wales] licencija.',
-	'wm-license-cc-by-2.0-za-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/2.0/za/deed.en Attribution 2.0 South Africa] licencija.',
-	'wm-license-cc-by-2.1-au-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/2.1/au/deed.en Attribution 2.1 Australia] licencija.',
-	'wm-license-cc-by-2.1-es-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/2.1/es/deed.en Attribution 2.1 Spain] licencija.',
-	'wm-license-cc-by-2.1-jp-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/2.1/jp/deed.en Attribution 2.1 Japan] licencija.',
-	'wm-license-cc-by-2.5-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/2.5/deed.en Attribution 2.5 Generic] licencija.',
-	'wm-license-cc-by-2.5-au-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/2.5/au/deed.en Attribution 2.5 Australia] licencija.',
-	'wm-license-cc-by-2.5-bg-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/2.5/bg/deed.en Attribution 2.5 Bulgaria] licencija.',
-	'wm-license-cc-by-2.5-br-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/2.5/br/deed.en Attribution 2.5 Brazil] licencija.',
-	'wm-license-cc-by-2.5-ca-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/2.5/ca/deed.en Attribution 2.5 Canada] licencija.',
-	'wm-license-cc-by-2.5-ch-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/2.5/ch/deed.en Attribution 2.5 Switzerland] licencija.',
-	'wm-license-cc-by-2.5-cn-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/2.5/cn/deed.en Attribution 2.5 China Mainland] licencija.',
-	'wm-license-cc-by-2.5-co-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/2.5/co/deed.en Attribution 2.5 Colombia] licencija.',
-	'wm-license-cc-by-2.5-dk-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/2.5/dk/deed.en Attribution 2.5 Denmark] licencija.',
-	'wm-license-cc-by-2.5-es-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/2.5/es/deed.en Attribution 2.5 Spain] licencija.',
-	'wm-license-cc-by-2.5-hr-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/2.5/hr/deed.en Attribution 2.5 Croatia] licencija.',
-	'wm-license-cc-by-2.5-hu-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/2.5/hu/deed.en Attribution 2.5 Hungary] licencija.',
-	'wm-license-cc-by-2.5-il-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/2.5/il/deed.en Attribution 2.5 Israel] licencija.',
-	'wm-license-cc-by-2.5-in-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/2.5/in/deed.en Attribution 2.5 India] licencija.',
-	'wm-license-cc-by-2.5-it-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/2.5/it/deed.en Attribution 2.5 Italy] licencija.',
-	'wm-license-cc-by-2.5-mk-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/2.5/mk/deed.en Attribution 2.5 Macedonia] licencija.',
-	'wm-license-cc-by-2.5-mt-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/2.5/mt/deed.en Attribution 2.5 Malta] licencija.',
-	'wm-license-cc-by-2.5-mx-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/2.5/mx/deed.en Attribution 2.5 Mexico] licencija.',
-	'wm-license-cc-by-2.5-my-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/2.5/my/deed.en Attribution 2.5 Malaysia] licencija.',
-	'wm-license-cc-by-2.5-nl-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/2.5/nl/deed.en Attribution 2.5 Netherlands] licencija.',
-	'wm-license-cc-by-2.5-pe-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/2.5/pe/deed.en Attribution 2.5 Peru] licencija.',
-	'wm-license-cc-by-2.5-pl-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/2.5/pl/deed.en Attribution 2.5 Poland] licencija.',
-	'wm-license-cc-by-2.5-pt-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/2.5/pt/deed.en Attribution 2.5 Portugal] licencija.',
-	'wm-license-cc-by-2.5-scotland-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/2.5/scotland/deed.en Attribution 2.5 UK: Scotland] licencija.',
-	'wm-license-cc-by-2.5-se-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/2.5/se/deed.en Attribution 2.5 Sweden] licencija.',
-	'wm-license-cc-by-2.5-si-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/2.5/si/deed.en Attribution 2.5 Slovenia] licencija.',
-	'wm-license-cc-by-2.5-tw-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/2.5/tw/deed.en Attribution 2.5 Taiwan] licencija.',
-	'wm-license-cc-by-2.5-za-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/2.5/za/deed.en Attribution 2.5 South Africa] licencija.',
-	'wm-license-cc-by-3.0-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/3.0/deed.en Attribution 3.0 Unported] licencija.',
-	'wm-license-cc-by-3.0-2.5-2.0-1.0-text' => 'Šiam failui taikomos [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] Attribution [http://creativecommons.org/licenses/by/3.0/deed.en 3.0 Unported], [http://creativecommons.org/licenses/by/2.5/deed.en 2.5 Generic], [http://creativecommons.org/licenses/by/2.0/deed.en 2.0 Generic] bei [http://creativecommons.org/licenses/by/1.0/deed.en 1.0 Generic] licencijos.',
-	'wm-license-cc-by-3.0-at-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/3.0/at/deed.en Attribution 3.0 Austria] licencija.',
-	'wm-license-cc-by-3.0-cz-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/3.0/cz/deed.en Attribution 3.0 Czech Republic] licencija.',
-	'wm-license-cc-by-3.0-de-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/3.0/de/deed.en Attribution 3.0 Germany] licencija.',
-	'wm-license-cc-by-3.0-es-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/3.0/es/deed.en Attribution 3.0 Spain] licencija.',
-	'wm-license-cc-by-3.0-gr-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/3.0/gr/deed.en Attribution 3.0 Greece] licencija.',
-	'wm-license-cc-by-3.0-gt-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/3.0/gt/deed.en Attribution 3.0 Guatemala] licencija.',
-	'wm-license-cc-by-3.0-hr-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/3.0/hr/deed.en Attribution 3.0 Croatia] licencija.',
-	'wm-license-cc-by-3.0-hk-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/3.0/hk/deed.en Attribution 3.0 Hong Kong] licencija.',
-	'wm-license-cc-by-3.0-lu-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/3.0/lu/deed.en Attribution 3.0 Luxembourg] licencija.',
-	'wm-license-cc-by-3.0-nl-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/3.0/nl/deed.en Attribution 3.0 Netherlands] licencija.',
-	'wm-license-cc-by-3.0-no-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/3.0/no/deed.en Attribution 3.0 Norway] licencija.',
-	'wm-license-cc-by-3.0-nz-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/3.0/nz/deed.en Attribution 3.0 New Zealand] licencija.',
-	'wm-license-cc-by-3.0-ph-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/3.0/ph/deed.en Attribution 3.0 Philippines] licencija.',
-	'wm-license-cc-by-3.0-pl-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/3.0/pl/deed.en Attribution 3.0 Poland] licencija.',
-	'wm-license-cc-by-3.0-pr-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/3.0/pr/deed.en Attribution 3.0 Puerto Rico] licencija.',
-	'wm-license-cc-by-3.0-ro-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/3.0/ro/deed.en Attribution 3.0 Romania] licencija.',
-	'wm-license-cc-by-3.0-rs-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/3.0/rs/deed.en Attribution 3.0 Serbia] licencija.',
-	'wm-license-cc-by-3.0-sg-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/3.0/sg/deed.en Attribution 3.0 Singapore] licencija.',
-	'wm-license-cc-by-3.0-th-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/3.0/th/deed.en Attribution 3.0 Thailand] licencija.',
-	'wm-license-cc-by-3.0-tw-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/3.0/tw/deed.en Attribution 3.0 Taiwan] licencija.',
-	'wm-license-cc-by-3.0-us-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/3.0/us/deed.en Attribution 3.0 United States] licencija.',
-	'wm-license-cc-by-sa-1.0-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/1.0/deed.en Attribution-Share Alike 1.0 Generic] licencija.',
-	'wm-license-cc-by-sa-1.0-fi-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/1.0/fi/deed.en Attribution-Share Alike 1.0 Finland] licencija.',
-	'wm-license-cc-by-sa-1.0-il-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/1.0/il/deed.en Attribution-Share Alike 1.0 Israel] licencija.',
-	'wm-license-cc-by-sa-1.0-nl-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/1.0/nl/deed.en Attribution-Share Alike 1.0 Netherlands] licencija.',
-	'wm-license-cc-by-sa-2.0-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.0/deed.en Attribution-Share Alike 2.0 Generic] licencija.',
-	'wm-license-cc-by-sa-2.0-at-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.0/at/deed.en Attribution-Share Alike 2.0 Austria] licencija.',
-	'wm-license-cc-by-sa-2.0-au-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.0/au/deed.en Attribution-Share Alike 2.0 Australia] licencija.',
-	'wm-license-cc-by-sa-2.0-be-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.0/be/deed.en Attribution-Share Alike 2.0 Belgium] licencija.',
-	'wm-license-cc-by-sa-2.0-br-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.0/br/deed.en Attribution-Share Alike 2.0 Brazil] licencija.',
-	'wm-license-cc-by-sa-2.0-ca-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.0/ca/deed.en Attribution-Share Alike 2.0 Canada] licencija.',
-	'wm-license-cc-by-sa-2.0-cl-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.0/cl/deed.en Attribution-Share Alike 2.0 Chile] licencija.',
-	'wm-license-cc-by-sa-2.0-de-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.0/de/deed.en Attribution-Share Alike 2.0 Germany] licencija.',
-	'wm-license-cc-by-sa-2.0-es-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.0/es/deed.en Attribution-Share Alike 2.0 Spain] licencija.',
-	'wm-license-cc-by-sa-2.0-fr-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.0/fr/deed.en Attribution-Share Alike 2.0 France] licencija.',
-	'wm-license-cc-by-sa-2.0-hr-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.0/hr/deed.en Attribution-Share Alike 2.0 Croatia] licencija.',
-	'wm-license-cc-by-sa-2.0-it-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.0/it/deed.en Attribution-Share Alike 2.0 Italy] licencija.',
-	'wm-license-cc-by-sa-2.0-jp-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.0/jp/deed.en Attribution-Share Alike 2.0 Japan] licencija.',
-	'wm-license-cc-by-sa-2.0-kr-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.0/kr/deed.en Attribution-Share Alike 2.0 Korea] licencija.',
-	'wm-license-cc-by-sa-2.0-nl-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.0/nl/deed.en Attribution-Share Alike 2.0 Netherlands] licencija.',
-	'wm-license-cc-by-sa-2.0-pl-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.0/pl/deed.en Attribution-Share Alike 2.0 Poland] licencija.',
-	'wm-license-cc-by-sa-2.0-tw-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.0/tw/deed.en Attribution-Share Alike 2.0 Taiwan] licencija.',
-	'wm-license-cc-by-sa-2.0-uk-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.0/uk/deed.en Attribution-Share Alike 2.0 UK: England & Wales] licencija.',
-	'wm-license-cc-by-sa-2.0-za-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.0/za/deed.en Attribution-Share Alike 2.0 South Africa] licencija.',
-	'wm-license-cc-by-sa-2.1-au-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.1/au/deed.en Attribution-Share Alike 2.1 Australia] licencija.',
-	'wm-license-cc-by-sa-2.1-es-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.1/es/deed.en Attribution-Share Alike 2.1 Spain] licencija.',
-	'wm-license-cc-by-sa-2.1-jp-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.1/jp/deed.en Attribution-Share Alike 2.1 Japan] licencija.',
-	'wm-license-cc-by-sa-2.5-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.5/deed.en Attribution-Share Alike 2.5 Generic] licencija.',
-	'wm-license-cc-by-sa-2.5-2.0-1.0-text' => 'Šiam failui taikomos [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] Attribution-Share Alike [http://creativecommons.org/licenses/by-sa/2.5/deed.en 2.5 Generic], [http://creativecommons.org/licenses/by-sa/2.0/deed.en 2.0 Generic] bei [http://creativecommons.org/licenses/by-sa/1.0/deed.en 1.0 Generic] licencijos.',
-	'wm-license-cc-by-sa-2.5-ar-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.5/ar/deed.en Attribution-Share Alike 2.5 Argentina] licencija.',
-	'wm-license-cc-by-sa-2.5-au-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.5/au/deed.en Attribution-Share Alike 2.5 Australia] licencija.',
-	'wm-license-cc-by-sa-2.5-bg-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.5/bg/deed.en Attribution-Share Alike 2.5 Bulgaria] licencija.',
-	'wm-license-cc-by-sa-2.5-br-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.5/br/deed.en Attribution-Share Alike 2.5 Brazil] licencija.',
-	'wm-license-cc-by-sa-2.5-ca-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.5/ca/deed.en Attribution-Share Alike 2.5 Canada] licencija.',
-	'wm-license-cc-by-sa-2.5-ch-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.5/ch/deed.en Attribution-Share Alike 2.5 Switzerland] licencija.',
-	'wm-license-cc-by-sa-2.5-cn-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.5/cn/deed.en Attribution-Share Alike 2.5 China Mainland] licencija.',
-	'wm-license-cc-by-sa-2.5-co-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.5/co/deed.en Attribution-Share Alike 2.5 Colombia] licencija.',
-	'wm-license-cc-by-sa-2.5-dk-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.5/dk/deed.en Attribution-Share Alike 2.5 Denmark] licencija.',
-	'wm-license-cc-by-sa-2.5-es-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.5/es/deed.en Attribution-Share Alike 2.5 Spain] licencija.',
-	'wm-license-cc-by-sa-2.5-hr-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.5/hr/deed.en Attribution-Share Alike 2.5 Croatia] licencija.',
-	'wm-license-cc-by-sa-2.5-hu-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.5/hu/deed.en Attribution-Share Alike 2.5 Hungary] licencija.',
-	'wm-license-cc-by-sa-2.5-il-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.5/il/deed.en Attribution-Share Alike 2.5 Israel] licencija.',
-	'wm-license-cc-by-sa-2.5-in-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.5/in/deed.en Attribution-Share Alike 2.5 India] licencija.',
-	'wm-license-cc-by-sa-2.5-it-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.5/it/deed.en Attribution-Share Alike 2.5 Italy] licencija.',
-	'wm-license-cc-by-sa-2.5-mk-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.5/mk/deed.en Attribution-Share Alike 2.5 Macedonia] licencija.',
-	'wm-license-cc-by-sa-2.5-mt-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.5/mt/deed.en Attribution-Share Alike 2.5 Malta] licencija.',
-	'wm-license-cc-by-sa-2.5-mx-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.5/mx/deed.en Attribution-Share Alike 2.5 Mexico] licencija.',
-	'wm-license-cc-by-sa-2.5-my-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.5/my/deed.en Attribution-Share Alike 2.5 Malaysia] licencija.',
-	'wm-license-cc-by-sa-2.5-nl-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.5/nl/deed.en Attribution-Share Alike 2.5 Netherlands] licencija.',
-	'wm-license-cc-by-sa-2.5-pe-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.5/pe/deed.en Attribution-Share Alike 2.5 Peru] licencija.',
-	'wm-license-cc-by-sa-2.5-pl-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.5/pl/deed.en Attribution-Share Alike 2.5 Poland] licencija.',
-	'wm-license-cc-by-sa-2.5-pt-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.5/pt/deed.en Attribution-Share Alike 2.5 Portugal] licencija.',
-	'wm-license-cc-by-sa-2.5-scotland-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.5/scotland/deed.en Attribution-Share Alike 2.5 UK: Scotland] licencija.',
-	'wm-license-cc-by-sa-2.5-se-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.5/se/deed.en Attribution-Share Alike 2.5 Sweden] licencija.',
-	'wm-license-cc-by-sa-2.5-si-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.5/si/deed.en Attribution-Share Alike 2.5 Slovenia] licencija.',
-	'wm-license-cc-by-sa-2.5-tw-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.5/tw/deed.en Attribution-Share Alike 2.5 Taiwan] licencija.',
-	'wm-license-cc-by-sa-2.5-za-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.5/za/deed.en Attribution-Share Alike 2.5 South Africa] licencija.',
-	'wm-license-cc-by-sa-3.0-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/3.0/deed.en Attribution-Share Alike 3.0 Unported] licencija.',
-	'wm-license-cc-by-sa-3.0-2.5-2.0-1.0-text' => 'Šiam failui taikomos [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] Attribution-Share Alike [http://creativecommons.org/licenses/by-sa/3.0/deed.en 3.0 Unported], [http://creativecommons.org/licenses/by-sa/2.5/deed.en 2.5 Generic], [http://creativecommons.org/licenses/by-sa/2.0/deed.en 2.0 Generic] bei [http://creativecommons.org/licenses/by-sa/1.0/deed.en 1.0 Generic] licencijos.',
-	'wm-license-cc-by-sa-3.0-at-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/3.0/at/deed.en Attribution-Share Alike 3.0 Austria] licencija.',
-	'wm-license-cc-by-sa-3.0-cz-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/3.0/cz/deed.en Attribution-Share Alike 3.0 Czech Republic] licencija.',
-	'wm-license-cc-by-sa-3.0-de-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/3.0/de/deed.en Attribution-Share Alike 3.0 Germany] licencija.',
-	'wm-license-cc-by-sa-3.0-es-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/3.0/es/deed.en Attribution-Share Alike 3.0 Spain] licencija.',
-	'wm-license-cc-by-sa-3.0-gr-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/3.0/gr/deed.en Attribution-Share Alike 3.0 Greece] licencija.',
-	'wm-license-cc-by-sa-3.0-gt-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/3.0/gt/deed.en Attribution-Share Alike 3.0 Guatemala] licencija.',
-	'wm-license-cc-by-sa-3.0-hk-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/3.0/hk/deed.en Attribution-Share Alike 3.0 Hong Kong] licencija.',
-	'wm-license-cc-by-sa-3.0-hr-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/3.0/hr/deed.en Attribution-Share Alike 3.0 Croatia] licencija.',
-	'wm-license-cc-by-sa-3.0-lu-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/3.0/lu/deed.en Attribution-Share Alike 3.0 Luxembourg] licencija.',
-	'wm-license-cc-by-sa-3.0-nl-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/3.0/nl/deed.en Attribution-Share Alike 3.0 Netherlands] licencija.',
-	'wm-license-cc-by-sa-3.0-no-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/3.0/no/deed.en Attribution-Share Alike 3.0 Norway] licencija.',
-	'wm-license-cc-by-sa-3.0-nz-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/3.0/nz/deed.en Attribution-Share Alike 3.0 New Zealand] licencija.',
-	'wm-license-cc-by-sa-3.0-ph-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/3.0/ph/deed.en Attribution-Share Alike 3.0 Philippines] licencija.',
-	'wm-license-cc-by-sa-3.0-pl-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/3.0/pl/deed.en Attribution-Share Alike 3.0 Poland] licencija.',
-	'wm-license-cc-by-sa-3.0-pr-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/3.0/pr/deed.en Attribution-Share Alike 3.0 Puerto Rico] licencija.',
-	'wm-license-cc-by-sa-3.0-ro-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/3.0/ro/deed.en Attribution-Share Alike 3.0 Romania] licencija.',
-	'wm-license-cc-by-sa-3.0-rs-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/3.0/rs/deed.en Attribution-Share Alike 3.0 Serbia] licencija.',
-	'wm-license-cc-by-sa-3.0-sg-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/3.0/sg/deed.en Attribution-Share Alike 3.0 Singapore] licencija.',
-	'wm-license-cc-by-sa-3.0-th-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/3.0/th/deed.en Attribution-Share Alike 3.0 Thailand] licencija.',
-	'wm-license-cc-by-sa-3.0-tw-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/3.0/tw/deed.en Attribution-Share Alike 3.0 Taiwan] licencija.',
-	'wm-license-cc-by-sa-3.0-us-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/3.0/us/deed.en Attribution-Share Alike 3.0 United States] licencija.',
+	'wm-license-cc-by-1.0-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/1.0/ Attribution 1.0 Generic] licencija.',
+	'wm-license-cc-by-1.0-fi-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/1.0/fi/ Attribution 1.0 Finland] licencija.',
+	'wm-license-cc-by-1.0-il-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/1.0/il/ Attribution 1.0 Israel] licencija.',
+	'wm-license-cc-by-1.0-nl-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/1.0/nl/ Attribution 1.0 Netherlands] licencija.',
+	'wm-license-cc-by-2.0-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/2.0/ Attribution 2.0 Generic] licencija.',
+	'wm-license-cc-by-2.0-at-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/2.0/at/ Attribution 2.0 Austria] licencija.',
+	'wm-license-cc-by-2.0-au-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/2.0/au/ Attribution 2.0 Australia] licencija.',
+	'wm-license-cc-by-2.0-be-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/2.0/be/ Attribution 2.0 Belgium] licencija.',
+	'wm-license-cc-by-2.0-br-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/2.0/br/ Attribution 2.0 Brazil] licencija.',
+	'wm-license-cc-by-2.0-ca-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/2.0/ca/ Attribution 2.0 Canada] licencija.',
+	'wm-license-cc-by-2.0-cl-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/2.0/cl/ Attribution 2.0 Chile] licencija.',
+	'wm-license-cc-by-2.0-de-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/2.0/de/ Attribution 2.0 Germany] licencija.',
+	'wm-license-cc-by-2.0-es-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/2.0/es/ Attribution 2.0 Spain] licencija.',
+	'wm-license-cc-by-2.0-fr-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/2.0/fr/ Attribution 2.0 France] licencija.',
+	'wm-license-cc-by-2.0-hr-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/2.0/hr/ Attribution 2.0 Croatia] licencija.',
+	'wm-license-cc-by-2.0-it-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/2.0/it/ Attribution 2.0 Italy] licencija.',
+	'wm-license-cc-by-2.0-jp-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/2.0/jp/ Attribution 2.0 Japan] licencija.',
+	'wm-license-cc-by-2.0-kr-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/2.0/kr/ Attribution 2.0 Korea] licencija.',
+	'wm-license-cc-by-2.0-nl-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/2.0/nl/ Attribution 2.0 Netherlands] licencija.',
+	'wm-license-cc-by-2.0-pl-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/2.0/pl/ Attribution 2.0 Poland] licencija.',
+	'wm-license-cc-by-2.0-tw-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/2.0/tw/ Attribution 2.0 Taiwan] licencija.',
+	'wm-license-cc-by-2.0-uk-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/2.0/uk/ Attribution 2.0 UK: England & Wales] licencija.',
+	'wm-license-cc-by-2.0-za-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/2.0/za/ Attribution 2.0 South Africa] licencija.',
+	'wm-license-cc-by-2.1-au-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/2.1/au/ Attribution 2.1 Australia] licencija.',
+	'wm-license-cc-by-2.1-es-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/2.1/es/ Attribution 2.1 Spain] licencija.',
+	'wm-license-cc-by-2.1-jp-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/2.1/jp/ Attribution 2.1 Japan] licencija.',
+	'wm-license-cc-by-2.5-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/2.5/ Attribution 2.5 Generic] licencija.',
+	'wm-license-cc-by-2.5-au-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/2.5/au/ Attribution 2.5 Australia] licencija.',
+	'wm-license-cc-by-2.5-bg-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/2.5/bg/ Attribution 2.5 Bulgaria] licencija.',
+	'wm-license-cc-by-2.5-br-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/2.5/br/ Attribution 2.5 Brazil] licencija.',
+	'wm-license-cc-by-2.5-ca-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/2.5/ca/ Attribution 2.5 Canada] licencija.',
+	'wm-license-cc-by-2.5-ch-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/2.5/ch/ Attribution 2.5 Switzerland] licencija.',
+	'wm-license-cc-by-2.5-cn-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/2.5/cn/ Attribution 2.5 China Mainland] licencija.',
+	'wm-license-cc-by-2.5-co-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/2.5/co/ Attribution 2.5 Colombia] licencija.',
+	'wm-license-cc-by-2.5-dk-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/2.5/dk/ Attribution 2.5 Denmark] licencija.',
+	'wm-license-cc-by-2.5-es-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/2.5/es/ Attribution 2.5 Spain] licencija.',
+	'wm-license-cc-by-2.5-hr-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/2.5/hr/ Attribution 2.5 Croatia] licencija.',
+	'wm-license-cc-by-2.5-hu-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/2.5/hu/ Attribution 2.5 Hungary] licencija.',
+	'wm-license-cc-by-2.5-il-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/2.5/il/ Attribution 2.5 Israel] licencija.',
+	'wm-license-cc-by-2.5-in-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/2.5/in/ Attribution 2.5 India] licencija.',
+	'wm-license-cc-by-2.5-it-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/2.5/it/ Attribution 2.5 Italy] licencija.',
+	'wm-license-cc-by-2.5-mk-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/2.5/mk/ Attribution 2.5 Macedonia] licencija.',
+	'wm-license-cc-by-2.5-mt-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/2.5/mt/ Attribution 2.5 Malta] licencija.',
+	'wm-license-cc-by-2.5-mx-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/2.5/mx/ Attribution 2.5 Mexico] licencija.',
+	'wm-license-cc-by-2.5-my-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/2.5/my/ Attribution 2.5 Malaysia] licencija.',
+	'wm-license-cc-by-2.5-nl-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/2.5/nl/ Attribution 2.5 Netherlands] licencija.',
+	'wm-license-cc-by-2.5-pe-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/2.5/pe/ Attribution 2.5 Peru] licencija.',
+	'wm-license-cc-by-2.5-pl-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/2.5/pl/ Attribution 2.5 Poland] licencija.',
+	'wm-license-cc-by-2.5-pt-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/2.5/pt/ Attribution 2.5 Portugal] licencija.',
+	'wm-license-cc-by-2.5-scotland-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/2.5/scotland/ Attribution 2.5 UK: Scotland] licencija.',
+	'wm-license-cc-by-2.5-se-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/2.5/se/ Attribution 2.5 Sweden] licencija.',
+	'wm-license-cc-by-2.5-si-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/2.5/si/ Attribution 2.5 Slovenia] licencija.',
+	'wm-license-cc-by-2.5-tw-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/2.5/tw/ Attribution 2.5 Taiwan] licencija.',
+	'wm-license-cc-by-2.5-za-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/2.5/za/ Attribution 2.5 South Africa] licencija.',
+	'wm-license-cc-by-3.0-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/3.0/ Attribution 3.0 Unported] licencija.',
+	'wm-license-cc-by-3.0-2.5-2.0-1.0-text' => 'Šiam failui taikomos [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] Attribution [http://creativecommons.org/licenses/by/3.0/ 3.0 Unported], [http://creativecommons.org/licenses/by/2.5/ 2.5 Generic], [http://creativecommons.org/licenses/by/2.0/ 2.0 Generic] bei [http://creativecommons.org/licenses/by/1.0/ 1.0 Generic] licencijos.',
+	'wm-license-cc-by-3.0-at-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/3.0/at/ Attribution 3.0 Austria] licencija.',
+	'wm-license-cc-by-3.0-cz-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/3.0/cz/ Attribution 3.0 Czech Republic] licencija.',
+	'wm-license-cc-by-3.0-de-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/3.0/de/ Attribution 3.0 Germany] licencija.',
+	'wm-license-cc-by-3.0-es-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/3.0/es/ Attribution 3.0 Spain] licencija.',
+	'wm-license-cc-by-3.0-gr-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/3.0/gr/ Attribution 3.0 Greece] licencija.',
+	'wm-license-cc-by-3.0-gt-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/3.0/gt/ Attribution 3.0 Guatemala] licencija.',
+	'wm-license-cc-by-3.0-hr-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/3.0/hr/ Attribution 3.0 Croatia] licencija.',
+	'wm-license-cc-by-3.0-hk-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/3.0/hk/ Attribution 3.0 Hong Kong] licencija.',
+	'wm-license-cc-by-3.0-lu-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/3.0/lu/ Attribution 3.0 Luxembourg] licencija.',
+	'wm-license-cc-by-3.0-nl-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/3.0/nl/ Attribution 3.0 Netherlands] licencija.',
+	'wm-license-cc-by-3.0-no-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/3.0/no/ Attribution 3.0 Norway] licencija.',
+	'wm-license-cc-by-3.0-nz-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/3.0/nz/ Attribution 3.0 New Zealand] licencija.',
+	'wm-license-cc-by-3.0-ph-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/3.0/ph/ Attribution 3.0 Philippines] licencija.',
+	'wm-license-cc-by-3.0-pl-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/3.0/pl/ Attribution 3.0 Poland] licencija.',
+	'wm-license-cc-by-3.0-pr-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/3.0/pr/ Attribution 3.0 Puerto Rico] licencija.',
+	'wm-license-cc-by-3.0-ro-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/3.0/ro/ Attribution 3.0 Romania] licencija.',
+	'wm-license-cc-by-3.0-rs-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/3.0/rs/ Attribution 3.0 Serbia] licencija.',
+	'wm-license-cc-by-3.0-sg-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/3.0/sg/ Attribution 3.0 Singapore] licencija.',
+	'wm-license-cc-by-3.0-th-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/3.0/th/ Attribution 3.0 Thailand] licencija.',
+	'wm-license-cc-by-3.0-tw-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/3.0/tw/ Attribution 3.0 Taiwan] licencija.',
+	'wm-license-cc-by-3.0-us-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/3.0/us/ Attribution 3.0 United States] licencija.',
+	'wm-license-cc-by-sa-1.0-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/1.0/ Attribution-Share Alike 1.0 Generic] licencija.',
+	'wm-license-cc-by-sa-1.0-fi-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/1.0/fi/ Attribution-Share Alike 1.0 Finland] licencija.',
+	'wm-license-cc-by-sa-1.0-il-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/1.0/il/ Attribution-Share Alike 1.0 Israel] licencija.',
+	'wm-license-cc-by-sa-1.0-nl-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/1.0/nl/ Attribution-Share Alike 1.0 Netherlands] licencija.',
+	'wm-license-cc-by-sa-2.0-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.0/ Attribution-Share Alike 2.0 Generic] licencija.',
+	'wm-license-cc-by-sa-2.0-at-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.0/at/ Attribution-Share Alike 2.0 Austria] licencija.',
+	'wm-license-cc-by-sa-2.0-au-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.0/au/ Attribution-Share Alike 2.0 Australia] licencija.',
+	'wm-license-cc-by-sa-2.0-be-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.0/be/ Attribution-Share Alike 2.0 Belgium] licencija.',
+	'wm-license-cc-by-sa-2.0-br-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.0/br/ Attribution-Share Alike 2.0 Brazil] licencija.',
+	'wm-license-cc-by-sa-2.0-ca-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.0/ca/ Attribution-Share Alike 2.0 Canada] licencija.',
+	'wm-license-cc-by-sa-2.0-cl-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.0/cl/ Attribution-Share Alike 2.0 Chile] licencija.',
+	'wm-license-cc-by-sa-2.0-de-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.0/de/ Attribution-Share Alike 2.0 Germany] licencija.',
+	'wm-license-cc-by-sa-2.0-es-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.0/es/ Attribution-Share Alike 2.0 Spain] licencija.',
+	'wm-license-cc-by-sa-2.0-fr-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.0/fr/ Attribution-Share Alike 2.0 France] licencija.',
+	'wm-license-cc-by-sa-2.0-hr-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.0/hr/ Attribution-Share Alike 2.0 Croatia] licencija.',
+	'wm-license-cc-by-sa-2.0-it-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.0/it/ Attribution-Share Alike 2.0 Italy] licencija.',
+	'wm-license-cc-by-sa-2.0-jp-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.0/jp/ Attribution-Share Alike 2.0 Japan] licencija.',
+	'wm-license-cc-by-sa-2.0-kr-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.0/kr/ Attribution-Share Alike 2.0 Korea] licencija.',
+	'wm-license-cc-by-sa-2.0-nl-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.0/nl/ Attribution-Share Alike 2.0 Netherlands] licencija.',
+	'wm-license-cc-by-sa-2.0-pl-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.0/pl/ Attribution-Share Alike 2.0 Poland] licencija.',
+	'wm-license-cc-by-sa-2.0-tw-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.0/tw/ Attribution-Share Alike 2.0 Taiwan] licencija.',
+	'wm-license-cc-by-sa-2.0-uk-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.0/uk/ Attribution-Share Alike 2.0 UK: England & Wales] licencija.',
+	'wm-license-cc-by-sa-2.0-za-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.0/za/ Attribution-Share Alike 2.0 South Africa] licencija.',
+	'wm-license-cc-by-sa-2.1-au-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.1/au/ Attribution-Share Alike 2.1 Australia] licencija.',
+	'wm-license-cc-by-sa-2.1-es-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.1/es/ Attribution-Share Alike 2.1 Spain] licencija.',
+	'wm-license-cc-by-sa-2.1-jp-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.1/jp/ Attribution-Share Alike 2.1 Japan] licencija.',
+	'wm-license-cc-by-sa-2.5-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.5/ Attribution-Share Alike 2.5 Generic] licencija.',
+	'wm-license-cc-by-sa-2.5-2.0-1.0-text' => 'Šiam failui taikomos [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] Attribution-Share Alike [http://creativecommons.org/licenses/by-sa/2.5/ 2.5 Generic], [http://creativecommons.org/licenses/by-sa/2.0/ 2.0 Generic] bei [http://creativecommons.org/licenses/by-sa/1.0/ 1.0 Generic] licencijos.',
+	'wm-license-cc-by-sa-2.5-ar-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.5/ar/ Attribution-Share Alike 2.5 Argentina] licencija.',
+	'wm-license-cc-by-sa-2.5-au-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.5/au/ Attribution-Share Alike 2.5 Australia] licencija.',
+	'wm-license-cc-by-sa-2.5-bg-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.5/bg/ Attribution-Share Alike 2.5 Bulgaria] licencija.',
+	'wm-license-cc-by-sa-2.5-br-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.5/br/ Attribution-Share Alike 2.5 Brazil] licencija.',
+	'wm-license-cc-by-sa-2.5-ca-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.5/ca/ Attribution-Share Alike 2.5 Canada] licencija.',
+	'wm-license-cc-by-sa-2.5-ch-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.5/ch/ Attribution-Share Alike 2.5 Switzerland] licencija.',
+	'wm-license-cc-by-sa-2.5-cn-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.5/cn/ Attribution-Share Alike 2.5 China Mainland] licencija.',
+	'wm-license-cc-by-sa-2.5-co-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.5/co/ Attribution-Share Alike 2.5 Colombia] licencija.',
+	'wm-license-cc-by-sa-2.5-dk-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.5/dk/ Attribution-Share Alike 2.5 Denmark] licencija.',
+	'wm-license-cc-by-sa-2.5-es-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.5/es/ Attribution-Share Alike 2.5 Spain] licencija.',
+	'wm-license-cc-by-sa-2.5-hr-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.5/hr/ Attribution-Share Alike 2.5 Croatia] licencija.',
+	'wm-license-cc-by-sa-2.5-hu-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.5/hu/ Attribution-Share Alike 2.5 Hungary] licencija.',
+	'wm-license-cc-by-sa-2.5-il-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.5/il/ Attribution-Share Alike 2.5 Israel] licencija.',
+	'wm-license-cc-by-sa-2.5-in-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.5/in/ Attribution-Share Alike 2.5 India] licencija.',
+	'wm-license-cc-by-sa-2.5-it-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.5/it/ Attribution-Share Alike 2.5 Italy] licencija.',
+	'wm-license-cc-by-sa-2.5-mk-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.5/mk/ Attribution-Share Alike 2.5 Macedonia] licencija.',
+	'wm-license-cc-by-sa-2.5-mt-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.5/mt/ Attribution-Share Alike 2.5 Malta] licencija.',
+	'wm-license-cc-by-sa-2.5-mx-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.5/mx/ Attribution-Share Alike 2.5 Mexico] licencija.',
+	'wm-license-cc-by-sa-2.5-my-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.5/my/ Attribution-Share Alike 2.5 Malaysia] licencija.',
+	'wm-license-cc-by-sa-2.5-nl-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.5/nl/ Attribution-Share Alike 2.5 Netherlands] licencija.',
+	'wm-license-cc-by-sa-2.5-pe-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.5/pe/ Attribution-Share Alike 2.5 Peru] licencija.',
+	'wm-license-cc-by-sa-2.5-pl-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.5/pl/ Attribution-Share Alike 2.5 Poland] licencija.',
+	'wm-license-cc-by-sa-2.5-pt-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.5/pt/ Attribution-Share Alike 2.5 Portugal] licencija.',
+	'wm-license-cc-by-sa-2.5-scotland-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.5/scotland/ Attribution-Share Alike 2.5 UK: Scotland] licencija.',
+	'wm-license-cc-by-sa-2.5-se-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.5/se/ Attribution-Share Alike 2.5 Sweden] licencija.',
+	'wm-license-cc-by-sa-2.5-si-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.5/si/ Attribution-Share Alike 2.5 Slovenia] licencija.',
+	'wm-license-cc-by-sa-2.5-tw-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.5/tw/ Attribution-Share Alike 2.5 Taiwan] licencija.',
+	'wm-license-cc-by-sa-2.5-za-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/2.5/za/ Attribution-Share Alike 2.5 South Africa] licencija.',
+	'wm-license-cc-by-sa-3.0-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/3.0/ Attribution-Share Alike 3.0 Unported] licencija.',
+	'wm-license-cc-by-sa-3.0-2.5-2.0-1.0-text' => 'Šiam failui taikomos [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] Attribution-Share Alike [http://creativecommons.org/licenses/by-sa/3.0/ 3.0 Unported], [http://creativecommons.org/licenses/by-sa/2.5/ 2.5 Generic], [http://creativecommons.org/licenses/by-sa/2.0/ 2.0 Generic] bei [http://creativecommons.org/licenses/by-sa/1.0/ 1.0 Generic] licencijos.',
+	'wm-license-cc-by-sa-3.0-at-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/3.0/at/ Attribution-Share Alike 3.0 Austria] licencija.',
+	'wm-license-cc-by-sa-3.0-cz-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/3.0/cz/ Attribution-Share Alike 3.0 Czech Republic] licencija.',
+	'wm-license-cc-by-sa-3.0-de-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/3.0/de/ Attribution-Share Alike 3.0 Germany] licencija.',
+	'wm-license-cc-by-sa-3.0-es-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/3.0/es/ Attribution-Share Alike 3.0 Spain] licencija.',
+	'wm-license-cc-by-sa-3.0-gr-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/3.0/gr/ Attribution-Share Alike 3.0 Greece] licencija.',
+	'wm-license-cc-by-sa-3.0-gt-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/3.0/gt/ Attribution-Share Alike 3.0 Guatemala] licencija.',
+	'wm-license-cc-by-sa-3.0-hk-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/3.0/hk/ Attribution-Share Alike 3.0 Hong Kong] licencija.',
+	'wm-license-cc-by-sa-3.0-hr-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/3.0/hr/ Attribution-Share Alike 3.0 Croatia] licencija.',
+	'wm-license-cc-by-sa-3.0-lu-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/3.0/lu/ Attribution-Share Alike 3.0 Luxembourg] licencija.',
+	'wm-license-cc-by-sa-3.0-nl-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/3.0/nl/ Attribution-Share Alike 3.0 Netherlands] licencija.',
+	'wm-license-cc-by-sa-3.0-no-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/3.0/no/ Attribution-Share Alike 3.0 Norway] licencija.',
+	'wm-license-cc-by-sa-3.0-nz-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/3.0/nz/ Attribution-Share Alike 3.0 New Zealand] licencija.',
+	'wm-license-cc-by-sa-3.0-ph-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/3.0/ph/ Attribution-Share Alike 3.0 Philippines] licencija.',
+	'wm-license-cc-by-sa-3.0-pl-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/3.0/pl/ Attribution-Share Alike 3.0 Poland] licencija.',
+	'wm-license-cc-by-sa-3.0-pr-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/3.0/pr/ Attribution-Share Alike 3.0 Puerto Rico] licencija.',
+	'wm-license-cc-by-sa-3.0-ro-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/3.0/ro/ Attribution-Share Alike 3.0 Romania] licencija.',
+	'wm-license-cc-by-sa-3.0-rs-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/3.0/rs/ Attribution-Share Alike 3.0 Serbia] licencija.',
+	'wm-license-cc-by-sa-3.0-sg-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/3.0/sg/ Attribution-Share Alike 3.0 Singapore] licencija.',
+	'wm-license-cc-by-sa-3.0-th-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/3.0/th/ Attribution-Share Alike 3.0 Thailand] licencija.',
+	'wm-license-cc-by-sa-3.0-tw-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/3.0/tw/ Attribution-Share Alike 3.0 Taiwan] licencija.',
+	'wm-license-cc-by-sa-3.0-us-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by-sa/3.0/us/ Attribution-Share Alike 3.0 United States] licencija.',
 	'wm-license-cc-sa-1.0-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/sa/1.0/deed.en Share Alike 1.0 Generic] licencija.',
 	'wm-license-cc-sa-1.0-fi-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/sa/1.0/fi/deed.en Share Alike 1.0 Finland] licencija.',
 	'wm-license-cc-sa-1.0-nl-text' => 'Šiam failui taikoma [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/sa/1.0/nl/deed.en Share Alike 1.0 Netherlands] licencija.',
@@ -6897,7 +6955,7 @@ $messages['ml'] = array(
 	'wm-license-cc-sa-1.0-nl-text' => 'ഈ പ്രമാണത്തിന് അനുമതി നൽകപ്പെട്ടിരിക്കുന്നത് [[{{int:wm-license-cc-wiki-link}}|ക്രിയേറ്റീവ് കോമൺസ്]]  [http://creativecommons.org/licenses/sa/1.0/nl/deed.en ഷെയർ എലൈക്ക് 1.0 നെതർലൻഡ്സ്] അനുവാദപത്ര പ്രകാരമാണ്.',
 	'wm-license-cc-sa-2.0-jp-text' => 'ഈ പ്രമാണത്തിന് അനുമതി നൽകപ്പെട്ടിരിക്കുന്നത് [[{{int:wm-license-cc-wiki-link}}|ക്രിയേറ്റീവ് കോമൺസ്]]  [http://creativecommons.org/licenses/sa/2.0/jp/deed.en ഷെയർ എലൈക്ക് 2.0 ജപ്പാൻ] അനുവാദപത്ര പ്രകാരമാണ്.',
 	'wm-license-cc-zero-text' => 'ഈ പ്രമാണത്തിന് അനുമതി നൽകപ്പെട്ടിരിക്കുന്നത് [[{{int:wm-license-cc-wiki-link}}|ക്രിയേറ്റീവ് കോമൺസ്]]  [http://creativecommons.org/publicdomain/zero/1.0/deed.en സി.സി.0 പരിത്യജന] അനുവാദപത്ര പ്രകാരമാണ്.',
-	'wm-license-cc-zero-explanation' => 'ഈ പ്രമാണത്തിന്റെ സൃഷ്ടിയുമായി ബന്ധപ്പെട്ട വ്യക്തി, പകർപ്പവകാശ നിയമവുമായി ബന്ധപ്പെട്ട എല്ലാ നിയമപരമായ അവകാശങ്ങളും, നിയമം അനുവദിക്കുന്ന പരിധി വരെ, അദ്ദേഹത്തിന്റെ എല്ലാ അവകാശങ്ങളും ആഗോളവ്യാപകമായി പരിത്യജിച്ച്, തന്റെ പ്രവർത്തനം സർവ്വർക്കുമായി സമർപ്പിച്ചിരിക്കുന്നു. സി.സി.0യിൽ ഉള്ള കൃതികൾ കടപ്പാട് നൽകേണ്ടതില്ല. കൃതിയെ പരാമർശിക്കുമ്പോൾ താങ്കൾ സൃഷ്ടാവിന്റെ അംഗീകരണം നൽകേണ്ടതില്ല.',
+	'wm-license-cc-zero-explanation' => 'ഈ പ്രമാണത്തിന്റെ സൃഷ്ടിയുമായി ബന്ധപ്പെട്ട വ്യക്തി, പകർപ്പവകാശ നിയമവുമായി ബന്ധപ്പെട്ട എല്ലാ നിയമപരമായ അവകാശങ്ങളും, നിയമം അനുവദിക്കുന്ന പരിധി വരെ, അദ്ദേഹത്തിന്റെ എല്ലാ അവകാശങ്ങളും ആഗോളവ്യാപകമായി പരിത്യജിച്ച്, തന്റെ പ്രവർത്തനം സർവ്വർക്കുമായി സമർപ്പിച്ചിരിക്കുന്നു. സി.സി.0യിൽ ഉള്ള കൃതികൾ കടപ്പാട് നൽകേണ്ടതില്ല. കൃതിയെ പരാമർശിക്കുമ്പോൾ താങ്കൾ സ്രഷ്ടാവിന്റെ അംഗീകരണം നൽകേണ്ടതില്ല.',
 	'wm-license-cc-free' => 'താങ്കൾക്കുള്ള സ്വാതന്ത്ര്യങ്ങൾ:',
 	'wm-license-cc-free-to-share-header' => 'പങ്ക് വെയ്ക്കൽ',
 	'wm-license-cc-free-to-share-text' => 'കൃതി പകർത്താനും, വിതരണം ചെയ്യാനും, പ്രസരിപ്പിക്കാനും',
@@ -7071,11 +7129,42 @@ $messages['nds'] = array(
 
 /** Nedersaksisch (Nedersaksisch)
  * @author Krinkle
+ * @author Servien
  */
 $messages['nds-nl'] = array(
+	'wikimedialicensetexts-desc' => 'Wikimedia-licentieberichen',
 	'wm-license-cc-wiki-link' => 'w:nds-nl:Creative Commons',
+	'wm-license-cc-attribution' => 'Naamvermelding',
+	'wm-license-cc-by-1.0-text' => 'Dit bestaand steet onder de licentie [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/1.0/deed.nl Naamvermelding 1.0 laand onbekend]',
+	'wm-license-cc-by-1.0-fi-text' => 'Dit bestaand steet onder de licentie [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/1.0/fi/deed.nl Naamvermelding 1.0 Finlaand]',
+	'wm-license-cc-by-1.0-nl-text' => 'Dit bestaand steet onder de licentie [[{{int:wm-license-cc-wiki-link}}|Creative Commons]] [http://creativecommons.org/licenses/by/1.0/nl/deed.nl Naamvermelding 1.0 Nederlaand]',
 	'wm-license-gfdl-wiki-link' => "w:nds-nl:GNU-licentie veur vri'je dokementäsie",
+	'wm-license-information-description' => 'Beschrieving',
+	'wm-license-information-description-missing' => "Dit bestaand hef gien '''beschrieving''' en meschien steet der oek nog aandere infermasie neet bie.",
+	'wm-license-information-description-missing-request' => 'Geef een dudelijke beschrieving van dit bestaand.',
+	'wm-license-information-source' => 'Bron',
+	'wm-license-information-source-missing' => "Dit bestaand geef gien infermasie over de '''bron'''.",
+	'wm-license-information-source-missing-request' => 'Pas de bestaansbeschrieving an en zet de bron derbie.',
+	'wm-license-information-date' => 'Daotum',
+	'wm-license-information-author' => 'Auteur',
+	'wm-license-information-author-missing' => "Dit bestaand geef gien infermasie over de '''auteur'''",
+	'wm-license-information-permission' => 'Toestemming',
+	'wm-license-information-permission-reusing-text' => 'Hergebruuk van dit bestaand',
+	'wm-license-information-permission-see-below' => 'Kiek hieronder.',
+	'wm-license-information-other-versions' => 'Aandere versies',
+	'wm-license-lgpl-text' => "Disse biebeltheek is [[{{int:wm-license-free-software-wiki-link}}|vrieje pregremmetuur]];
+je maggen 't heruutgeven en/of anpassen in overeenkoms mit de veurweerden van de '''[[{{int:wm-license-lgpl-wiki-link}}|GNU Lesser General Public License]]''' zoas uut-egeven deur de [[{{int:wm-license-fsf-wiki-link}}|Free Software Foundation]].
+De geldende versie is 2.1 van de licentie, of (naor keuze) een aandere laotere versie.
+Disse biebeltheek wönnen verspreid in de hoop dat 't bruukbaor is, mar '''zonder enige gerantie''';
+zelfs zonder de onuut-espreuken gerantie dat e 't '''goed dut''' of da-j 't '''goed veur een bepaold doel kunnen gebruken'''.
+Zie [{{int:wm-license-lgpl-2.1-full-link}} versie 2.1] en [{{int:wm-license-lgpl-3-full-link}} versie 3 van de GNU Lesser General Public License] veur meer infermasie.",
+	'wm-license-original-upload-log' => 'Oorspronkelijk bestaanstoevoegingslogboek',
 	'wm-license-own-work' => 'Eigen waark',
+	'wm-license-self-one-license' => "Ik, de auteursrechhouwer van dit wark, maak 't hierbie onder de volgende licentie beschikbaor:",
+	'wm-license-self-one-license-with-author' => "$1, de auteursrechhouwer van dit wark, maak 't hierbie onder de volgende licentie beschikbaor:",
+	'wm-license-self-multiple-licenses' => "Ik, de auteursrechhouwer van dit wark, maak 't hierbie onder de volgende licentie beschikbaor:",
+	'wm-license-self-multiple-licenses-with-author' => "$1, de auteursrechhouwer van dit wark, maak 't hierbie onder de volgende licenties beschikbaor:",
+	'wm-license-self-multiple-licenses-select' => 'Je maggen zelf één van de licenties uutkiezen.',
 );
 
 /** Nepali (नेपाली) */
@@ -9039,6 +9128,14 @@ $messages['si'] = array(
 	'wm-license-self-multiple-licenses-select' => 'ඔබට අභිමත වරපත ඔබ විසින් තෝරාගත හැක.',
 );
 
+/** Simple English (Simple English) */
+$messages['simple'] = array(
+	'wm-license-fsf-wiki-link' => 'w:simple:Free Software Foundation',
+	'wm-license-free-software-wiki-link' => 'w:simple:Free software',
+	'wm-license-gfdl-wiki-link' => 'w:simple:GNU Free Documentation License',
+	'wm-license-gpl-wiki-link' => 'w:simple:General Public License',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  * @author Multichill
@@ -9391,6 +9488,10 @@ $messages['sq'] = array(
  */
 $messages['sr'] = array(
 	'wm-license-cc-wiki-link' => 'w:sr:Кријејтив комонс',
+	'wm-license-fsf-wiki-link' => 'w:sr:Задужбина за слободни софтвер',
+	'wm-license-free-software-wiki-link' => 'w:sr:Слободни софтвер',
+	'wm-license-gfdl-wiki-link' => 'w:sr:ГНУ-ова лиценца за слободну документацију',
+	'wm-license-gpl-wiki-link' => 'w:sr:ГНУ-ова општа јавна лиценца',
 	'wm-license-information-description' => 'Опис',
 	'wm-license-information-source' => 'Извор',
 	'wm-license-information-date' => 'Датум',
@@ -9398,6 +9499,7 @@ $messages['sr'] = array(
 	'wm-license-information-permission' => 'Дозвола',
 	'wm-license-information-permission-see-below' => 'Види доле.',
 	'wm-license-information-other-versions' => 'Остале верзије',
+	'wm-license-own-work' => 'Сопствено дело',
 	'wm-license-self-multiple-licenses-select' => 'Можете изабрати лиценцу по жељи.',
 );
 
@@ -9680,9 +9782,11 @@ $messages['te'] = array(
 	'wm-license-cc-by-1.0-text' => 'ఈ ఫైలుని [[{{int:wm-license-cc-wiki-link}}|క్రియేటివ్ కామన్స్]] [http://creativecommons.org/licenses/by/1.0/ అట్రిబ్యూషన్ 1.0 జెనరిక్] లైసెన్సుకి లోబడి అందిస్తున్నారు.',
 	'wm-license-cc-by-1.0-nl-text' => 'ఈ ఫైలుని [[{{int:wm-license-cc-wiki-link}}|క్రియేటివ్ కామన్స్]] [http://creativecommons.org/licenses/by/1.0/nl/ అట్రిబ్యూషన్ 1.0 నెదర్లాండ్స్] లైసెన్సుకి లోబడి అందిస్తున్నారు.',
 	'wm-license-cc-by-2.0-text' => 'ఈ దస్త్రం [[{{int:wm-license-cc-wiki-link}}|క్రియేటివ్ కామన్స్]] [http://creativecommons.org/licenses/by/2.0/ ఆపాదింపు 2.0 సాధారణ] లైసెన్సు క్రింద లభ్యం.',
+	'wm-license-cc-zero-text' => 'ఈ దస్త్రం [[{{int:wm-license-cc-wiki-link}}|క్రియేటివ్ కామన్స్]] [http://creativecommons.org/publicdomain/zero/1.0/deed.en CC0 వెయివర్] క్రింద లభ్యం.',
 	'wm-license-cc-free' => 'మీరు స్వేచ్ఛగా:',
 	'wm-license-cc-free-to-share-header' => 'పంచుకోవచ్చు',
 	'wm-license-cc-free-to-share-text' => 'ఈ కృతిని కాపీ చేసుకోవచ్చు, పంపిణీ మరియు ప్రసారం చేయవచ్చు',
+	'wm-license-cc-free-to-remix-header' => 'రీమిక్స్ చేయవచ్చు',
 	'wm-license-cc-free-to-remix-text' => 'కృతిని అనుకరించవచ్చు',
 	'wm-license-cc-conditions' => 'ఈ క్రింది షరతుల మీద:',
 	'wm-license-cc-conditions-attribution-header' => 'ఆపాదింపు',
@@ -9710,6 +9814,11 @@ $messages['te'] = array(
 	'wm-license-self-multiple-licenses' => 'నేను, ఈ కృతి యొక్క కాపీహక్కుదారుని, దీన్ని ఇందుమూలముగా ఈ లైసెన్సుల క్రింద ప్రచురిస్తున్నాను:',
 	'wm-license-self-multiple-licenses-with-author' => '$1, ఈ కృతి యొక్క కాపీహక్కుదారుని, దీన్ని ఇందుమూలముగా ఈ క్రింది లైసెన్సుల క్రింద ప్రచురిస్తున్నారు:',
 	'wm-license-self-multiple-licenses-select' => 'పైవాటిలో మీకు నచ్చిన లైసెన్సునుతో ఈ కృతిని వాడుకోవచ్చు.',
+);
+
+/** Tajik (Тоҷикӣ) */
+$messages['tg'] = array(
+	'wm-license-free-software-wiki-link' => 'w:tg:Барномаҳои озод',
 );
 
 /** Thai (ไทย)
@@ -10078,6 +10187,11 @@ $messages['tr'] = array(
 	'wm-license-self-multiple-licenses' => 'Ben, bu işin telif sahibi, burada işi aşağıdaki lisanslar altında yayımlıyorum:',
 	'wm-license-self-multiple-licenses-with-author' => '$1, bu işin telif sahibi, burada işi aşağıdaki lisanslar altında yayımlıyor:',
 	'wm-license-self-multiple-licenses-select' => 'İstediğiniz lisansı seçebilirsiniz.',
+);
+
+/** Tatar (Татарча/Tatarça) */
+$messages['tt'] = array(
+	'wm-license-gfdl-wiki-link' => 'w:tt:GNU/İrekle İstälek Röxsätnämäse',
 );
 
 /** Ukrainian (Українська)
@@ -10615,6 +10729,21 @@ $messages['yue'] = array(
 	'wm-license-self-one-license' => '我，呢份作品嘅作者，決定用以下許可發佈呢件作品：',
 );
 
+/** Chinese (中文) */
+$messages['zh'] = array(
+	'wm-license-fsf-wiki-link' => 'w:zh:自由软件基金会',
+	'wm-license-free-software-wiki-link' => 'w:zh:自由软件',
+	'wm-license-gfdl-wiki-link' => 'w:zh:GNU自由文档许可证',
+	'wm-license-gpl-wiki-link' => 'w:zh:GNU通用公共许可证',
+	'wm-license-lgpl-wiki-link' => 'w:zh:GNU宽通用公共许可证',
+	'wm-license-own-work' => '上传者自己的作品',
+);
+
+/** Classical Chinese (文言) */
+$messages['zh-classical'] = array(
+	'wm-license-gfdl-wiki-link' => 'w:zh-classical:革奴自由文檔許可協議',
+);
+
 /** Simplified Chinese (‪中文(简体)‬) */
 $messages['zh-hans'] = array(
 	'wm-license-information-table-summary' => '提供本文件完整信息的标准表格，包括本文件的展示内容和制作方法的描述，著作权状况和来源。',
@@ -10653,14 +10782,31 @@ $messages['zh-hant'] = array(
 	'wm-license-self-multiple-licenses-select' => '您可以選擇您需要的協議使用。',
 );
 
+/** Bân-lâm-gú (Bân-lâm-gú) */
+$messages['zh-min-nan'] = array(
+	'wm-license-free-software-wiki-link' => 'w:zh-min-nan:Chū-iû nńg-thé',
+	'wm-license-gfdl-wiki-link' => 'w:zh-min-nan:GNU Chū-iû Bûn-kiāⁿ Hí-khó-su',
+);
+
 /** Chinese (Taiwan) (‪中文(台灣)‬) */
 $messages['zh-tw'] = array(
 	'wm-license-information-description' => '描述',
+	'wm-license-information-description-missing' => "這個檔案沒有'''{{ #if: {{{1|}}} | {{{1}}} | 描述 }}'''，並可能缺少其它資訊。",
+	'wm-license-information-description-missing-request' => '體案應該包含內容、作者、來源等資訊以方便他人了解，並儘可能帶有日期。如果你知道或得到了這些資訊，請添加到本頁。',
 	'wm-license-information-source' => '來源',
 	'wm-license-information-date' => '日期',
 	'wm-license-information-author' => '作者',
+	'wm-license-information-author-missing' => "本檔案缺乏'''作者'''訊息。",
 	'wm-license-information-permission' => '許可協議',
 	'wm-license-information-permission-see-below' => '如下。',
 	'wm-license-information-other-versions' => '其他版本',
+	'wm-license-own-work' => '上傳者自己的作品',
+);
+
+/** Cantonese (粵語) */
+$messages['zh-yue'] = array(
+	'wm-license-fsf-wiki-link' => 'w:zh-yue:自由軟件基金會',
+	'wm-license-free-software-wiki-link' => 'w:zh-yue:自由軟件',
+	'wm-license-gfdl-wiki-link' => 'w:zh-yue:GFDL',
 );
 

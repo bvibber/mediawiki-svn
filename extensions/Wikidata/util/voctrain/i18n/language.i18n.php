@@ -319,6 +319,13 @@ $messages['af'] = array(
 	'voctrain_other' => 'ander',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'voctrain_other' => 'atro',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

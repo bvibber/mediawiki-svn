@@ -1068,6 +1068,7 @@ Ohne OpenID könntest du dich nicht mehr anmelden.',
 /** German (formal address) (Deutsch (Sie-Form))
  * @author ChrisiPK
  * @author Imre
+ * @author LWChris
  * @author Umherirrender
  */
 $messages['de-formal'] = array(
@@ -1077,6 +1078,7 @@ Bitte benachrichtigen Sie einen [[Special:ListUsers/sysop|Administrator]].',
 	'openidtrustinstructions' => 'Prüfen Sie, ob Sie Daten mit $1 teilen möchten.',
 	'openidchooseinstructions' => 'Alle Benutzer benötigen einen Benutzernamen;
 Sie können einen aus der untenstehenden Liste auswählen.',
+	'openidchoosenick' => 'Ihr Spitzname ($1)',
 	'openidchoosefull' => 'Ihr vollständiger Name ($1)',
 	'openidchooseurl' => 'Ein Name aus Ihrer OpenID ($1)',
 	'openidchoosemanual' => 'Ein Name Ihrer Wahl:',
@@ -1098,6 +1100,10 @@ Wenn Sie in Zukunft OpenID verwenden möchten, können Sie [[Special:OpenIDConve
 Es gibt viele [http://openid.net/get/ OpenID-Provider] und möglicherweise haben Sie bereits ein Benutzerkonto mit aktiviertem OpenID bei einem anderen Anbieter.',
 	'openiddelete-text' => 'Wenn Sie auf den Button „{{int:openiddelete-button}}“ klicken, löschen Sie die OpenID $1 von Ihrem Benutzerkonto.
 Sie werden sich nicht mehr mit dieser OpenID anmelden können.',
+	'openiddeleteerrornopassword' => 'Sie können nicht alle Ihre OpenIDs löschen, da Sie kein Passwort gesetzt haben.
+Ohne OpenID könnten Sie sich nicht mehr anmelden.',
+	'openiddeleteerroropenidonly' => 'Sie können nicht alle Ihre OpenIDs löschen, weil Sie sich nur mit OpenID einloggen dürfen.
+Ohne OpenID könnten Sie sich nicht mehr anmelden.',
 	'openiddelete-sucess' => 'Die OpenID wurde erfolgreich von Ihrem Benutzerkonto entfernt.',
 	'openiddelete-error' => 'Beim Entfernen der OpenID von Ihrem Benutzerkonto ist ein Fehler aufgetreten.',
 	'openid-pref-hide' => 'Verstecken Sie Ihre OpenID auf Ihrer Benutzerseite, wenn Sie sich mit OpenID anmelden.',
@@ -2493,6 +2499,7 @@ Il esserea impossibile aperir un session sin OpenID.',
  * @author -iNu-
  * @author Bennylin
  * @author IvanLanin
+ * @author Kenrick95
  * @author Rex
  */
 $messages['id'] = array(
@@ -2528,6 +2535,7 @@ Pesan kesalahan: "$1"',
 	'openidemail' => 'Alamat surel',
 	'openidlanguage' => 'Bahasa',
 	'openidtimezone' => 'Zona waktu',
+	'openidchooselegend' => 'Nama pengguna pilihan',
 	'openidchooseinstructions' => 'Semua pengguna memerlukan sebuah nama panggilan;
 Anda dapat memilih dari salah satu opsi berikut.',
 	'openidchoosefull' => 'Nama lengkap Anda ($1)',
@@ -2535,6 +2543,7 @@ Anda dapat memilih dari salah satu opsi berikut.',
 	'openidchooseauto' => 'Nama yang dibuat secara otomatis ($1)',
 	'openidchoosemanual' => 'Nama pilihan Anda:',
 	'openidchooseexisting' => 'Akun yang telah ada di wiki ini',
+	'openidchooseusername' => 'Nama pengguna:',
 	'openidchoosepassword' => 'kata sandi:',
 	'openidconvertinstructions' => 'Formulir ini mengijinkan Anda untuk mengganti akun pengguna Anda menjadi OpenID atau menambahkan pranala OpenID',
 	'openidconvertoraddmoreids' => 'Konversi ke OpenID atau tambahkan URL OpenID yang lain',
@@ -2870,6 +2879,7 @@ $messages['kn'] = array(
 	'openidoptional' => 'ಐಚ್ಛಿಕ',
 	'openidlanguage' => 'ಭಾಷೆ',
 	'openidtimezone' => 'ಸಮಯ ವಲಯ',
+	'openid-urls-delete' => 'ಅಳಿಸು',
 );
 
 /** Korean (한국어)
@@ -2971,7 +2981,7 @@ OpenID 없이 로그인 할 수 없습니다.',
 	'openid-provider-label-other-username' => '$1 사용자명을 입력하십시오',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -4136,12 +4146,12 @@ pode escolher uma das opções abaixo.',
 	'openidconvertinstructions' => 'Este formulário permite-lhe alterar a sua conta de utilizador para usar uma URL OpenID ou adicionar mais URLs OpenID.',
 	'openidconvertoraddmoreids' => 'Converter para OpenID ou adicionar outra URL OpenID',
 	'openidconvertsuccess' => 'Convertido para OpenID com sucesso',
-	'openidconvertsuccesstext' => 'Você converteu com sucesso o seu OpenID para $1.',
+	'openidconvertsuccesstext' => 'Converteu com sucesso o seu OpenID para $1.',
 	'openidconvertyourstext' => 'Esse já é o seu OpenID.',
 	'openidconvertothertext' => 'Esse é o OpenID de outra pessoa.',
-	'openidalreadyloggedin' => "'''Você já se encontra autenticado, $1!'''
+	'openidalreadyloggedin' => "'''Já se encontra autenticado, $1!'''
 
-Se de futuro pretender usar OpenID para se autenticar, pode [[Special:OpenIDConvert|converter a sua conta para usar OpenID]].",
+Se de futuro pretender usar o OpenID para se autenticar, pode [[Special:OpenIDConvert|converter a sua conta para usar OpenID]].",
 	'openidnousername' => 'Nenhum nome de utilizador especificado.',
 	'openidbadusername' => 'Nome de utilizador especificado inválido.',
 	'openidautosubmit' => 'Esta página inclui um formulário que deverá ser automaticamente submetido se tiver JavaScript activado.
@@ -4156,7 +4166,7 @@ Se já possui uma conta na {{SITENAME}}, pode [[Special:UserLogin|autenticar-se]
 Para utilizar o OpenID no futuro, pode [[Special:OpenIDConvert|converter a sua conta para OpenID]] depois de se ter autenticado normalmente.
 
 Existem vários [http://wiki.openid.net/Public_OpenID_providers fornecederes de OpenID] e poderá já ter uma conta activada para OpenID noutro serviço.',
-	'openidupdateuserinfo' => 'Atualizar a minha informação pessoal:',
+	'openidupdateuserinfo' => 'Actualizar a minha informação pessoal:',
 	'openiddelete' => 'Eliminar OpenID',
 	'openiddelete-text' => 'Ao clicar o botão "{{int:openiddelete-button}}", irá eliminar o OpenID $1 da sua conta.
 Não poderá voltar a autenticar-se com este OpenID.',
@@ -4169,7 +4179,7 @@ Sem um OpenID não se poderia autenticar.',
 	'openiddelete-error' => 'Ocorreu um erro ao remover o OpenID da sua conta.',
 	'openid-prefstext' => 'Preferências do [http://openid.net/ OpenID]',
 	'openid-pref-hide' => 'Esconder o seu OpenID na sua página de utilizador, se se autenticar com OpenID.',
-	'openid-pref-update-userinfo-on-login' => 'Atualizar a seguinte informação a partir da minha "persona" OpenID de cada vez que me autentico:',
+	'openid-pref-update-userinfo-on-login' => 'Actualizar a seguinte informação a partir do meu OpenID de cada vez que me autentico:',
 	'openid-urls-desc' => 'OpenIDs associados à sua conta:',
 	'openid-urls-action' => 'Acção',
 	'openid-urls-delete' => 'Apagar',
@@ -4705,7 +4715,6 @@ $messages['sr-ec'] = array(
 /** Serbian Latin ekavian (Srpski (latinica))
  * @author Ex13
  * @author Michaello
- * @author Suradnik13
  */
 $messages['sr-el'] = array(
 	'openidserver' => 'OpenID server',

@@ -25,15 +25,15 @@ final class MapsGoogleMaps3DispMap extends MapsBaseMap {
 	public $serviceName = MapsGoogleMaps3::SERVICE_NAME;
 	
 	protected function getDefaultZoom() {
-		global $egMapsGMaps3Zoom; 
+		global $egMapsGMaps3Zoom;
 		return $egMapsGMaps3Zoom;
-	}	
+	}
 	
 	/**
 	 * @see MapsBaseMap::doMapServiceLoad()
 	 *
 	 */
-	protected function doMapServiceLoad() {
+	public function doMapServiceLoad() {
 		global $egGMaps3OnThisPage;
 		
 		MapsGoogleMaps3::addGMap3Dependencies( $this->output );
@@ -55,8 +55,7 @@ final class MapsGoogleMaps3DispMap extends MapsBaseMap {
 			'div',
 			array(
 				'id' => $mapName,
-				'width' => $this->width,
-				'height' => $this->height
+				'style' => "width: $this->width; height: $this->height; background-color: #cccccc;"
 			),
 			null
 		);

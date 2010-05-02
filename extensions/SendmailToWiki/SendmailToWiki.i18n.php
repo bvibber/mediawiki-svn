@@ -168,6 +168,9 @@ $messages['el'] = array(
  */
 $messages['eo'] = array(
 	'sendmailtowiki-inemail' => 'Dediĉita retadreso:',
+	'sendmailtowiki-inpin' => 'Persona identignumero:',
+	'sendmailtowiki-err-pinlength' => 'Persona identignumero nepre havu precize 5 numerojn.',
+	'sendmailtowiki-err-invalidpin' => 'Malvalida persona identignumero. Atingo malpermesigita.',
 );
 
 /** Spanish (Español)
@@ -360,7 +363,7 @@ $messages['ja'] = array(
 	'sendmailtowiki-err-onlyplain' => '誤った解釈を防ぐために、純粋なテキストのメッセージのみを受け付けます。',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

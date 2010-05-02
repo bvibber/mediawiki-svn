@@ -427,7 +427,7 @@ $messages['km'] = array(
 	'lua_error_internal' => 'កំហុស​ខាងក្នុង',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

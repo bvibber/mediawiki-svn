@@ -322,7 +322,7 @@ $messages['ko'] = array(
 	'mwsearch-desc' => 'MWSearch 플러그인',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -596,7 +596,7 @@ $messages['vo'] = array(
 	'mwsearch-desc' => 'program: MWSearch',
 );
 
-/** Yue (粵語)
+/** Cantonese (粵語)
  * @author Shinjiman
  */
 $messages['yue'] = array(

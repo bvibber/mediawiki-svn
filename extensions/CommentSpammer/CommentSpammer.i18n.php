@@ -391,7 +391,7 @@ Kanggo menggak iki, [[Special:UserLogin|mangga log mlebu utawa nggawé rékening
 	'commentspammer-log-msg' => 'suntingan saka [[Special:Contributions/$1|$1]] menyang [[:$2]].',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

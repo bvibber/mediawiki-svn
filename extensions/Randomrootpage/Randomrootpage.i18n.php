@@ -211,7 +211,7 @@ $messages['ja'] = array(
 	'randomrootpage-desc' => 'ランダムにルートページを取得する[[Special:Randomrootpage|特別ページ]]',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

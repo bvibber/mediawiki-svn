@@ -492,7 +492,7 @@ $messages['kn'] = array(
 	'mostrevisors-submit' => 'ಹೋಗು',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

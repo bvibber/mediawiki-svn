@@ -65,7 +65,7 @@ $messages['am'] = array(
 	'newestpages-namespace' => 'ክፍለ-ዊኪ፦',
 );
 
-/** Old English (Anglo-Saxon)
+/** Old English (Ænglisc)
  * @author Wōdenhelm
  */
 $messages['ang'] = array(
@@ -364,11 +364,12 @@ $messages['es'] = array(
 
 /** Estonian (Eesti)
  * @author Avjoska
+ * @author Hendrik
  * @author Pikne
  */
 $messages['et'] = array(
 	'newestpages' => 'Uuemad leheküljed',
-	'newestpages-limitlinks' => 'Näita kuni §1 lehekülge',
+	'newestpages-limitlinks' => 'Näita kuni $1 lehekülge',
 	'newestpages-namespace' => 'Nimeruum:',
 	'newestpages-showredir' => 'Näita ümbersuunamislehekülgi',
 	'newestpages-hideredir' => 'Peida ümbersuunamisleheküljed',
@@ -741,7 +742,7 @@ $messages['krj'] = array(
 	'newestpages-submit' => 'Agto',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -882,7 +883,7 @@ $messages['mt'] = array(
 	'newestpages-desc' => 'Turi l-[[Special:Newestpages|aħħar X paġna]] miżjuda fuq il-wiki.',
 	'newestpages-header' => "'''Din il-paġna turi l-aktar {{PLURAL:$1|paġna riċenti|$1 paġna riċenti}} fuq il-wiki.'''",
 	'newestpages-limitlinks' => 'Uri sa $1 paġna',
-	'newestpages-namespace' => "Spazju ta' l-isem:",
+	'newestpages-namespace' => 'Spazju tal-isem:',
 	'newestpages-none' => 'Ma nstabet l-ebda paġna.',
 	'newestpages-ns-header' => "'''Din il-paġna telenka l-aktar {{PLURAL:$1|paġna riċenti|$1 paġna riċenti}} fl-ispazju tal-isem $2.'''",
 	'newestpages-showing' => 'Lista tal-{{PLURAL:$1|paġna|$1 paġna}} l-aktar riċenti:',
@@ -1487,7 +1488,7 @@ $messages['vo'] = array(
 	'newestpages-hideredir' => 'Klänedön lüodükömapadis',
 );
 
-/** Yue (粵語)
+/** Cantonese (粵語)
  * @author Hillgentleman
  * @author Shinjiman
  */

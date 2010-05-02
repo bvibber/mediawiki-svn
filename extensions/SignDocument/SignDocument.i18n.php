@@ -153,6 +153,7 @@ $messages['el'] = array(
 $messages['eo'] = array(
 	'signaturelogpage' => 'Protokolo pri subskriboj',
 	'signaturelogentry' => 'subskribas la dokumenton $1',
+	'right-sigadmin' => 'Administri subskribadon de dokumentoj',
 );
 
 /** Spanish (Español)
@@ -334,7 +335,7 @@ $messages['km'] = array(
 	'signaturelogentry' => 'បានចុះហត្ថលេខាលើឯកសារ $1',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -641,7 +642,7 @@ $messages['vo'] = array(
 	'signaturelogentry' => 'edispenon dokümi: $1',
 );
 
-/** Yue (粵語) */
+/** Cantonese (粵語) */
 $messages['yue'] = array(
 	'signaturelogpage' => '簽名日誌',
 	'signaturelogpagetext' => '呢個係全部經過[[Special:SignDocument]]簽過名嘅文件嘅日誌。',

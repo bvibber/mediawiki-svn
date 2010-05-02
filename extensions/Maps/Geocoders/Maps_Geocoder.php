@@ -99,7 +99,15 @@ final class MapsGeocoder {
 
 		// Call the geocode function in the spesific geocoder class.
 		$coordinates = call_user_func( array( $egMapsGeoServices[$service], 'geocode' ), $address );
-
+		
+		// If there address could not be geocoded, and contains comma's, try again without the comma's.
+		// This is cause several geocoding services such as geonames do not handle comma's well.
+		if ( !$coordinates && strpos( $address, ',' ) !== false ) {
+			$coordinates = call_user_func(
+				array( $egMapsGeoServices[$service], 'geocode' ), str_replace( ',', '', $address )
+			);
+		}
+		
 		// Add the obtained coordinates to the cache when there is a result and the cache is enabled.
 		if ( $egMapsEnableGeoCache && $coordinates ) {
 			MapsGeocoder::$mGeocoderCache[$address] = $coordinates;
@@ -121,7 +129,7 @@ final class MapsGeocoder {
 	 */
 	public static function geocodeToString( $address, $service = '', $mappingService = false, $targetFormat = Maps_COORDS_FLOAT, $directional = false  ) {
 		$coordinates = self::geocode( $address, $service, $mappingService );
-		return $coordinates ?  MapsCoordinateParser::formatCoordinates( $coordinates, $targetFormat, $directional ) : false;		
+		return $coordinates ?  MapsCoordinateParser::formatCoordinates( $coordinates, $targetFormat, $directional ) : false;
 	}
 	
 	/**
@@ -144,7 +152,7 @@ final class MapsGeocoder {
 						$service = $geoService; // Use the override.
 						break;
 					}
-				}				
+				}
 			}
 
 			// If no overrides where applied, use the default mapping service.

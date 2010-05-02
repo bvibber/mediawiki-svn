@@ -496,7 +496,7 @@ $messages['ko'] = array(
 	'watchsubpages' => '하위 문서를 주시',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

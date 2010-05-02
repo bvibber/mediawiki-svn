@@ -345,7 +345,7 @@ $messages['km'] = array(
 	'nstab-comments' => 'វចនាធិប្បាយ',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

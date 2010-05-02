@@ -83,6 +83,7 @@ Do not translate or change tag names, or link anchors.',
 	'recordadmin-buttonsave' => '{{Identical|Save}}',
 	'recordadmin-editlink' => '{{Identical|Edit}}',
 	'recordadmin-actions' => '{{Identical|Action}}',
+	'recordadmin-editwithform' => '{{Identical|Property}}',
 	'recordadmin-typeinfo' => '$1 is a record type. Could be read as "A record of type $1"',
 	'right-recordadmin' => '{{doc-right|recordadmin}}',
 	'recordadmin-export-csv' => '{{Optional}}',
@@ -1227,7 +1228,15 @@ $messages['km'] = array(
 	'right-recordadmin' => 'ស្វែងរក និង​កែប្រែ​ទំព័រ​កំណត់ត្រា',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Kannada (ಕನ್ನಡ)
+ * @author Nayvik
+ */
+$messages['kn'] = array(
+	'recordadmin-buttonsearch' => 'ಹುಡುಕು',
+	'recordadmin-editlink' => 'ಸಂಪಾದಿಸಿ',
+);
+
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -1574,7 +1583,7 @@ $messages['oc'] = array(
 	'recordadmin-modified' => 'Modificat',
 	'recordadmin-actions' => 'Accions',
 	'recordadmin-needscontent' => 'Apondre lo contengut...',
-	'recordadmin-editwithform' => 'Modificar amb un formulari',
+	'recordadmin-editwithform' => 'Proprietats',
 	'recordadmin-typeinfo' => 'enregistrament $1',
 	'right-recordadmin' => 'Trobar e modificar las paginas d’enregistrament',
 	'recordadmin-export-csv' => 'CSV',

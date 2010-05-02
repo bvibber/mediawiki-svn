@@ -80,7 +80,7 @@ $messages['an'] = array(
 	'edituser-username' => 'Nombre',
 );
 
-/** Old English (Anglo-Saxon)
+/** Old English (Ænglisc)
  * @author Wōdenhelm
  */
 $messages['ang'] = array(
@@ -677,6 +677,7 @@ $messages['km'] = array(
  */
 $messages['kn'] = array(
 	'edituser-username' => 'ಹೆಸರು',
+	'edituser-dosearch' => 'ಹುಡುಕು',
 );
 
 /** Korean (한국어)
@@ -700,7 +701,7 @@ $messages['krj'] = array(
 	'edituser-dosearch' => 'Sagap',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -722,7 +723,7 @@ $messages['ku-latn'] = array(
 	'edituser-dosearch' => 'Lêbigere',
 );
 
-/** Cornish (Kernowek)
+/** Cornish (Kernewek)
  * @author Kernoweger
  * @author Kw-Moon
  */

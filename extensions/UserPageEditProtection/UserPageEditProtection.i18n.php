@@ -130,6 +130,14 @@ $messages['ia'] = array(
 	'right-editalluserpages' => 'Modificar paginas de usator',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Kenrick95
+ */
+$messages['id'] = array(
+	'userpageeditprotection-desc' => 'Batasi penyuntingan pada halaman pengguna bagi pengguna dan penyunting yang diizinkan',
+	'right-editalluserpages' => 'Sunting halaman pengguna',
+);
+
 /** Italian (Italiano)
  * @author Civvì
  */

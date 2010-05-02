@@ -1962,6 +1962,7 @@ $messages['km'] = array(
 $messages['kn'] = array(
 	'interwiki_1' => 'ಹೌದು',
 	'interwiki_0' => 'ಇಲ್ಲ',
+	'interwiki_edit' => 'ಸಂಪಾದಿಸಿ',
 	'interwiki_reasonfield' => 'ಕಾರಣ:',
 );
 
@@ -2009,7 +2010,7 @@ $messages['ko'] = array(
 	'action-interwiki' => '이 인터위키 접두어를 수정',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -2848,7 +2849,7 @@ $messages['ps'] = array(
 $messages['pt'] = array(
 	'interwiki' => 'Ver e manipular dados de interwikis',
 	'interwiki-title-norights' => 'Ver dados de interwikis',
-	'interwiki-desc' => '[[Special:Interwiki|Página especial]] para visualizar e editar a tabela de interwikis',
+	'interwiki-desc' => '[[Special:Interwiki|Página especial]] para ver e editar a tabela de interwikis',
 	'interwiki_intro' => 'Isto é um resumo da tabela de interwikis. Significado dos dados nas colunas:',
 	'interwiki_prefix' => 'Prefixo',
 	'interwiki-prefix-label' => 'Prefixo:',
@@ -3710,7 +3711,7 @@ $messages['yi'] = array(
 	'interwiki_addbutton' => 'צולייגן',
 );
 
-/** Yue (粵語) */
+/** Cantonese (粵語) */
 $messages['yue'] = array(
 	'interwiki' => '去睇同編輯跨維基資料',
 	'interwiki-title-norights' => '去睇跨維基資料',

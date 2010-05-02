@@ -8,7 +8,7 @@
  *
  * @author Jeroen De Dauw
  * 
- * TODO: implement eternal load stuff for each list
+ * TODO: implement eternal load (or paging) stuff for each list
  * TODO: fix layout
  * TODO: ajax load tab contents?
  */
@@ -54,20 +54,20 @@ class SpecialStoryReview extends SpecialPage {
 		// Get a slave db object to do read operations against.
 		$dbr = wfGetDB( DB_SLAVE );
 		
-		$html = $this->getTabHtml( $dbr, Storyboard_STORY_UNPUBLISHED );
-		$html .= $this->getTabHtml( $dbr, Storyboard_STORY_PUBLISHED );
-		$html .= $this->getTabHtml( $dbr, Storyboard_STORY_HIDDEN );
-		
 		$unpublished = htmlspecialchars( wfMsg( 'storyboard-unpublished' ) );
 		$published = htmlspecialchars( wfMsg( 'storyboard-published' ) );
 		$hidden = htmlspecialchars( wfMsg( 'storyboard-hidden' ) );
 		
+		$html = $this->getTabHtml( $dbr, Storyboard_STORY_UNPUBLISHED, $unpublished );
+		$html .= $this->getTabHtml( $dbr, Storyboard_STORY_PUBLISHED, $published );
+		$html .= $this->getTabHtml( $dbr, Storyboard_STORY_HIDDEN, $hidden );
+		
 		$html = <<<EOT
 <div id="storyreview-tabs">
 	<ul>
-		<li><a href="#storyreview-tabs-0">$unpublished</a></li>
-		<li><a href="#storyreview-tabs-1">$published</a></li>
-		<li><a href="#storyreview-tabs-2">$hidden</a></li>
+		<li><a href="#$unpublished">$unpublished</a></li>
+		<li><a href="#$published">$published</a></li>
+		<li><a href="#$hidden">$hidden</a></li>
 	</ul>
 $html
 </div>
@@ -75,13 +75,30 @@ $html
 	jQuery(function() {
 		jQuery("#storyreview-tabs").tabs();
 	});
+	/*
+	$('#$unpublished').click( stbLoadStoriesForReview );
+	
+	function stbLoadStoriesForReview() {
+		$.getJSON(
+			wgScriptPath + '/api.php',
+			{
+				'action': 'query',
+				'list': 'stories', 
+				
+			},
+			function ( data ) {
+				
+			}
+		);
+	}
+	*/
 </script>	
 EOT;
 	
 	$wgOut->addHTML( $html );
 	}
 	
-	private function getTabHtml( DatabaseBase $dbr, $storyState ) {
+	private function getTabHtml( DatabaseBase $dbr, $storyState, $tabId ) {
 		// Create a query to retrieve information about all non hidden stories.
 		$stories = $dbr->select(
 			Storyboard_TABLE,
@@ -103,7 +120,7 @@ EOT;
 			$storyBlocks[] = $this->getStoryBlock( $story, $storyState );
 		}
 		
-		return "<div id='storyreview-tabs-$storyState'>" . implode( '<br />', $storyBlocks ) . '</div>';
+		return "<div id='$tabId'>" . implode( '<br />', $storyBlocks ) . '</div>';
 	}
 	
 	/**
@@ -139,11 +156,11 @@ EOT;
 
 		if ( $storyState != Storyboard_STORY_UNPUBLISHED ) {
 			$buttons[] = $this->getStateActionButton( $story->story_id, 'unpublish', 'storyboard-unpublish' );
-		}	
+		}
 
 		if ( $storyState != Storyboard_STORY_HIDDEN ) {
 			$buttons[] = $this->getStateActionButton( $story->story_id, 'hide', 'storyboard-hide' );
-		}			
+		}
 		
 		$buttons[] = <<<EOT
 		<button type="button" onclick="window.location='$editUrl'">$editMsg</button>
@@ -177,7 +194,6 @@ EOT;
 			$buttons[] = <<<EOT
 				<button type="button" onclick="stbDeleteStoryImage( this, $story->story_id )">$deleteImageMsg</button>
 EOT;
-			
 		}
 		
 		$buttonHtml = implode( '&nbsp;&nbsp;&nbsp;', $buttons );
@@ -189,7 +205,7 @@ EOT;
 					<div class="story">
 						$imageHtml
 						<div class="story-title">$title</div><br />
-						$text
+						<div class="story-text">$text</div>
 					</div>
 				</td>
 			</tr>
@@ -198,7 +214,7 @@ EOT;
 					$buttonHtml
 				</td>
 			</tr>
-		</table>
+		</table>		
 EOT;
 	}
 	

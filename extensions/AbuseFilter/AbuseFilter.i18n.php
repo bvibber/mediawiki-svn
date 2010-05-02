@@ -591,7 +591,7 @@ Penjelasan fungsi: rmdoubles membuang karakter berulang dalam argumen, dan kemba
 	'abusefilter-edit-builder-funcs-contains-any' => "{{doc-important|Jangan terjemahkan \"'''(contains_any)'''\"}}",
 	'abusefilter-edit-builder-funcs-substr' => "{{doc-important|Jangan terjemahkan \"'''(substr)'''\"}}",
 	'abusefilter-edit-builder-funcs-strpos' => "{{doc-important|Jangan terjemahkan \"'''(strpos)'''\"}}",
-	'abusefilter-edit-builder-funcs-str_replace' => "{{doc-important|Jangan terjemahkan \"'''(str_replace)'''\"}}",
+	'abusefilter-edit-builder-funcs-str_replace' => "{{doc-important|Do not translate \"'''(str_replace)'''\"}}",
 	'abusefilter-edit-builder-group-vars' => '{{Identical|Variabel}}',
 	'abusefilter-edit-builder-vars-accountname' => 'Variabel ini digunakan hanya pada pembuatan akun dan berisi nama pengguna baru dari pembuat akun baru',
 	'abusefilter-edit-builder-vars-action' => '{{Identical|Action}}',
@@ -2551,14 +2551,14 @@ $messages['br'] = array(
 :''(prevez)''",
 	'abusefilter-edit-lastmod' => "Kemm diwezhañ degaset d'ar sil :",
 	'abusefilter-edit-lastmod-text' => '$1 dre $2',
-	'abusefilter-edit-hitcount' => 'Niver a gavadenn ar sil :',
+	'abusefilter-edit-hitcount' => 'Niver a gavadennoù ar sil :',
 	'abusefilter-edit-consequences' => 'Oberezhioù kroget e-pad an dinoadenn',
 	'abusefilter-edit-action-flag' => "Merkañ ar c'hemm e marilh ar siloù enep ar gwall implij",
 	'abusefilter-edit-action-degroup' => 'Dilemel an implijer eus an holl strolladoù brientekaet',
 	'abusefilter-edit-action-block' => "Stankañ an implijer-mañ hag/pe ar chomlec'h IP evit ar c'hemmañ",
 	'abusefilter-edit-action-rangeblock' => 'Stankañ al lijorenn IP /16 orin evit an implijer.',
 	'abusefilter-edit-action-tag' => "Balizenniñ ar c'hemm evit un adlenn a-c'houdevezh.",
-	'abusefilter-edit-throttle-count' => 'Niver a oberezhioù aotreet :',
+	'abusefilter-edit-throttle-count' => 'Niver a oberiadennoù aotreet :',
 	'abusefilter-edit-throttle-period' => 'Prantad amzer :',
 	'abusefilter-edit-throttle-seconds' => '$1 {{PLURAL:$1|eilenn|eilenn}}',
 	'abusefilter-edit-throttle-groups' => "Stollañ ar merañ dre :
@@ -2567,7 +2567,7 @@ $messages['br'] = array(
 	'abusefilter-edit-warn-other-label' => "Anv pajenn ur gemenadenn all :
 ''(hep ar rakger MediaWiki)''",
 	'abusefilter-edit-warn-actions' => 'Oberoù :',
-	'abusefilter-edit-warn-preview' => 'Rakwelet ar gemenadenn dibabet',
+	'abusefilter-edit-warn-preview' => 'Rakwelet ar gemennadenn dibabet',
 	'abusefilter-edit-warn-edit' => 'Krouiñ/Kemmañ ar gemennadenn diuzet',
 	'abusefilter-edit-tag-tag' => 'Balizenn da arloañ (unan dre linenn) :',
 	'abusefilter-edit-main' => 'Arventennoù ar sil',
@@ -2576,7 +2576,7 @@ $messages['br'] = array(
 	'abusefilter-edit-viewhistory' => 'Gwelet istor ar sil-mañ',
 	'abusefilter-edit-history' => 'Istor :',
 	'abusefilter-edit-check' => 'Gwiriañ an ereadur',
-	'abusefilter-edit-badfilter' => "N'eus ket eus ar sil o peus meneget",
+	'abusefilter-edit-badfilter' => "N'eus ket eus ar sil spisaet ganeoc'h",
 	'abusefilter-edit-tools' => 'Ostilhoù :',
 	'abusefilter-edit-test-link' => "Amprouiñ ar sil-se war ar c'hemmoù diwezhañ",
 	'abusefilter-edit-global' => 'Arloañ ar sil-mañ en un doare hollek',
@@ -2674,7 +2674,7 @@ $messages['br'] = array(
 	'abusefilter-exception-unrecognisedvar' => 'Argemm dianavezet $2 en arouezenn $1',
 	'abusefilter-action-tag' => 'Balizenn',
 	'abusefilter-action-throttle' => "Bevenniñ ar c'hemmoù",
-	'abusefilter-action-warn' => 'Lakaat an implijer war evezh',
+	'abusefilter-action-warn' => "Kas ur c'hemenn diwall",
 	'abusefilter-action-blockautopromote' => 'Stankañ ar brudañ emgefre',
 	'abusefilter-action-block' => 'Stankañ',
 	'abusefilter-action-degroup' => 'Lemel diouzh ar strolladoù',
@@ -4450,10 +4450,11 @@ Kopiere den dort erscheinenden Code, füge ihn hier ein und klicke dann auf die 
  * @author ChrisiPK
  * @author Giftpflanze
  * @author MichaelFrey
+ * @author The Evil IP address
  * @author Umherirrender
  */
 $messages['de-formal'] = array(
-	'abusefilter-warning' => "<big>'''Achtung'''</big>: Diese Aktion wurde als potentiell unkonstruktiv erkannt.
+	'abusefilter-warning' => "'''Achtung''': Diese Aktion wurde als potentiell unkonstruktiv erkannt.
 Solche Beiträge werden meist sehr schnell entfernt. In wiederholten und besonders schlimmen Fällen wird Ihr Benutzerkonto bzw. Ihre IP-Adresse gesperrt.
 Wenn Sie denken, dass Ihre Änderung konstruktiv war, können Sie sie jedoch mit einem erneuten Klick auf „{{int:savearticle}}“ bestätigen.
 Kurzbeschreibung der verletzten Regel: $1",
@@ -12365,12 +12366,20 @@ $messages['ka'] = array(
 	'abusefilter-log-search-title' => 'სათაური:',
 	'abusefilter-log-search-submit' => 'ძიება',
 	'abusefilter-log-details-vars' => 'Action parameters',
+	'abusefilter-log-details-diff' => 'რედაქტირებისას განხორციელებული ცვლილებები',
 	'abusefilter-list-status' => 'სტატუსი',
+	'abusefilter-list-public' => 'საზოგადო აღწერა',
 	'abusefilter-list-visibility' => 'ხილვადობა',
 	'abusefilter-list-edit' => 'რედაქტირება',
 	'abusefilter-list-details' => 'დეტალები',
+	'abusefilter-list-limit' => 'რაოდენობა გვერდზე:',
+	'abusefilter-list-lastmodified' => 'ბოლოს განახლდა',
+	'abusefilter-hidden' => 'დამალული',
 	'abusefilter-unhidden' => 'საზოგადოებრივი',
+	'abusefilter-enabled' => 'ჩართულია:',
 	'abusefilter-deleted' => 'წაშლილია',
+	'abusefilter-disabled' => 'გათიშულია',
+	'abusefilter-new' => 'ახალი ფილტრის შექმნა',
 	'abusefilter-tools-modifiertest-submit' => 'ტესტი',
 	'abusefilter-loglink' => ' ბოროტად გამოყენების ფილტრის ჟურნალი',
 	'abusefilter-return' => ' ბოროტად გამოყენების ფილტრის მართვასთან დაბრუნება',
@@ -12538,12 +12547,16 @@ $messages['ka'] = array(
 	'abusefilter-action-warn' => 'გაფრთხილება',
 	'abusefilter-action-degroup' => 'ჯგუფიდან წაშლილები',
 	'abusefilter-action-rangeblock' => 'დიაპაზონის ბლოკირება',
+	'abusefilter-revert-filter' => 'ფილტრი:',
+	'abusefilter-test-submit' => 'შემოწმება',
+	'abusefilter-test-load' => 'ატვირთვა',
 	'abusefilter-test-user' => 'მომხმარებლის ცვლილებები:',
 	'abusefilter-changeslist-examine' => 'ნახვა',
 	'abusefilter-examine-user' => 'მომხმარებელი:',
 	'abusefilter-examine-title' => 'გვერდის სათაური:',
 	'abusefilter-examine-submit' => 'ძიება',
 	'abusefilter-examine-noresults' => 'ძიებაში თქვენს მიერ შეყვანილი პარამეტრებით ვერაფერი მოიძებნა.',
+	'abusefilter-topnav-home' => 'დასაწყისში',
 	'abusefilter-diff-title' => 'განსხვავება ვერსიებს შორის',
 	'abusefilter-diff-item' => 'ელემენტი',
 	'abusefilter-diff-info' => 'ძირითადი ინფორმაცია',
@@ -12755,8 +12768,12 @@ $messages['km'] = array(
  */
 $messages['kn'] = array(
 	'abusefilter-log-search-title' => 'ಶೀರ್ಷಿಕೆ:',
+	'abusefilter-log-search-submit' => 'ಹುಡುಕು',
 	'abusefilter-list-status' => 'ಸ್ಥಾನಮಾನ',
+	'abusefilter-list-edit' => 'ಸಂಪಾದಿಸಿ',
+	'abusefilter-tools-subtitle' => 'ಉಪಕರಣಗಳು',
 	'abusefilter-edit-history' => 'ಇತಿಹಾಸ:',
+	'abusefilter-examine-submit' => 'ಹುಡುಕು',
 );
 
 /** Korean (한국어)
@@ -12997,6 +13014,8 @@ $messages['ko'] = array(
 	'abusefilter-edit-builder-funcs-ip_in_range' => 'IP가 대역 안에 있는 지 여부 (ip_in_range)',
 	'abusefilter-edit-builder-funcs-contains-any' => '문자열에서 여러 하위 문자열 찾기 (contains_any)',
 	'abusefilter-edit-builder-funcs-substr' => '하위 문자열',
+	'abusefilter-edit-builder-funcs-strpos' => '문자열 내의 하위 문자열의 위치 (strpos)',
+	'abusefilter-edit-builder-funcs-str_replace' => '문자열을 찾아 바꾸기 (str_replace)',
 	'abusefilter-edit-builder-funcs-set_var' => '변수 설정 (set_var)',
 	'abusefilter-edit-builder-group-vars' => '변수',
 	'abusefilter-edit-builder-vars-accountname' => '계정 이름 (계정 생성 시)',
@@ -13004,6 +13023,7 @@ $messages['ko'] = array(
 	'abusefilter-edit-builder-vars-action' => '행위',
 	'abusefilter-edit-builder-vars-addedlines' => '편집 중 추가된 줄',
 	'abusefilter-edit-builder-vars-delta' => '편집에서의 문서 크기 변화',
+	'abusefilter-edit-builder-vars-diff' => '편집 전후의 차이',
 	'abusefilter-edit-builder-vars-newsize' => '새 문서 크기',
 	'abusefilter-edit-builder-vars-oldsize' => '이전 문서 크기',
 	'abusefilter-edit-builder-vars-removedlines' => '편집 중 제거된 줄',
@@ -13012,7 +13032,14 @@ $messages['ko'] = array(
 	'abusefilter-edit-builder-vars-article-ns' => '문서 이름공간',
 	'abusefilter-edit-builder-vars-article-text' => '(이름공간을 뺀) 문서 제목',
 	'abusefilter-edit-builder-vars-article-prefixedtext' => '전체 문서 제목',
+	'abusefilter-edit-builder-vars-movedfrom-id' => '이동 전 문서의 ID',
+	'abusefilter-edit-builder-vars-movedfrom-ns' => '이동 전 문서의 이름공간',
 	'abusefilter-edit-builder-vars-movedfrom-text' => '이동 전의 제목',
+	'abusefilter-edit-builder-vars-movedfrom-prefixedtext' => '이동 전 문서의 전체 이름',
+	'abusefilter-edit-builder-vars-movedto-id' => '이동 후 문서의 ID',
+	'abusefilter-edit-builder-vars-movedto-ns' => '이동 후 문서의 이름공간',
+	'abusefilter-edit-builder-vars-movedto-text' => '이동 후 문서의 제목',
+	'abusefilter-edit-builder-vars-movedto-prefixedtext' => '이동 후 문서의 전체 제목',
 	'abusefilter-edit-builder-vars-user-editcount' => '사용자의 편집 횟수',
 	'abusefilter-edit-builder-vars-user-age' => '계정 생성 후 지난 시간',
 	'abusefilter-edit-builder-vars-user-name' => '사용자 계정 이름',
@@ -13022,6 +13049,9 @@ $messages['ko'] = array(
 	'abusefilter-edit-builder-vars-all-links' => '바뀐 글에 포함된 모든 외부 링크',
 	'abusefilter-edit-builder-vars-added-links' => '편집 중 추가된 모든 바깥 고리',
 	'abusefilter-edit-builder-vars-removed-links' => '편집 중 제거된 모든 바깥 고리',
+	'abusefilter-edit-builder-vars-old-text' => '편집 전 문서의 내용 (위키문법)',
+	'abusefilter-edit-builder-vars-new-text' => '편집 후 문서의 내용 (위키문법)',
+	'abusefilter-edit-builder-vars-new-text-stripped' => '편집 후 문서의 마크업을 제거한 내용',
 	'abusefilter-edit-builder-vars-new-html' => '편집 후의 HTML 소스',
 	'abusefilter-edit-builder-vars-restrictions-edit' => '문서 보호 수준 (편집)',
 	'abusefilter-edit-builder-vars-restrictions-move' => '문서 보호 수준 (이동)',
@@ -13035,10 +13065,14 @@ $messages['ko'] = array(
 	'abusefilter-history-foruser' => '$1의 편집',
 	'abusefilter-history-hidden' => '숨겨짐',
 	'abusefilter-history-enabled' => '활성화됨',
+	'abusefilter-history-global' => '전체 위키에 공통 적용',
 	'abusefilter-history-timestamp' => '시간',
 	'abusefilter-history-user' => '사용자',
 	'abusefilter-history-public' => '필터 설명',
+	'abusefilter-history-flags' => '상태',
 	'abusefilter-history-filter' => '필터 규칙',
+	'abusefilter-history-comments' => '코멘트',
+	'abusefilter-history-actions' => '조치',
 	'abusefilter-history-backedit' => '필터 편집기로 돌아가기',
 	'abusefilter-history-deleted' => '삭제됨',
 	'abusefilter-history-filterid' => '필터',
@@ -13046,10 +13080,21 @@ $messages['ko'] = array(
 	'abusefilter-history-select-user' => '사용자:',
 	'abusefilter-history-select-submit' => '가기',
 	'abusefilter-history-diff' => '차이',
+	'abusefilter-history-error-hidden' => '당신이 요청한 필터는 비공개되어 있어 필터의 역사를 볼 수 없습니다.',
+	'abusefilter-exception-unexpectedatend' => '$1번째 문자에 예상치 못한 "$2"가 있습니다.',
 	'abusefilter-exception-expectednotfound' => '$1번째 문자에 있어야 할 $2가 발견되지 않았습니다. ($3 $4를 대신 찾아보세요.)',
+	'abusefilter-exception-unrecognisedkeyword' => '$1번째 문자에 알 수 없는 키워드 $2가 있습니다.',
+	'abusefilter-exception-unexpectedtoken' => '$1번째 문자에 예기치 못한 토큰 "$3" ($2형)이 있습니다.',
+	'abusefilter-exception-unclosedstring' => '$1에서 시작하는 닫히지 않은 문자열이 있습니다.',
 	'abusefilter-exception-invalidoperator' => '$1번째 문자에 잘못된 연산자 "$2"가 사용되었습니다.',
+	'abusefilter-exception-unrecognisedtoken' => '$1번째 문자에 알 수 없는 토큰 "$2"이 있습니다.',
+	'abusefilter-exception-noparams' => '$1번째 문자에 있는 "$2" 함수에 변수가 없습니다.',
 	'abusefilter-exception-dividebyzero' => '$1번째 문자에서 $2를 0으로 나누려 하고 있습니다.',
+	'abusefilter-exception-unrecognisedvar' => '$1번째 문자에 알 수 없는 변수 $2가 있습니다.',
+	'abusefilter-exception-notenoughargs' => '$1번째 문자에서 호출한 $2 함수에 변수가 부족합니다.
+$3개의 변수가 있어야 하지만 $4개의 변수가 있습니다.',
 	'abusefilter-exception-regexfailure' => '$1번째 글자의 "$3" 정규 표현식에서 오류 발생: "$2"',
+	'abusefilter-exception-overridebuiltin' => '$1번째 문자에서 소프트웨어에 내장된 변수를 덮는 "$2" 변수가 있습니다.',
 	'abusefilter-action-tag' => '태그',
 	'abusefilter-action-throttle' => '속도 제한',
 	'abusefilter-action-warn' => '경고',
@@ -13059,6 +13104,11 @@ $messages['ko'] = array(
 	'abusefilter-action-rangeblock' => '광역 차단하기',
 	'abusefilter-action-disallow' => '불허',
 	'abusefilter-revert-title' => '필터 $1로 모든 편집을 되돌리기',
+	'abusefilter-revert-intro' => '이 양식을 통해 부정 행위 필터 $1이 일으킨 모든 조치를 되돌릴 수 있습니다.
+이 도구를 주의하여 이용해 주십시오.',
+	'abusefilter-revert-preview-item' => '$1: $2가 $4에 $3함
+되돌릴 동작: $5 ($6)',
+	'abusefilter-revert-search-legend' => '부정 행위 방지 필터의 동작 중 되돌릴 동작 선택하기',
 	'abusefilter-revert-periodstart' => '시작 시간:',
 	'abusefilter-revert-periodend' => '마지막 시간:',
 	'abusefilter-revert-filter' => '필터:',
@@ -13072,6 +13122,9 @@ $messages['ko'] = array(
 	'abusefilter-test-submit' => '시험',
 	'abusefilter-test-load' => '불러오기',
 	'abusefilter-test-user' => '편집한 사용자:',
+	'abusefilter-test-period-start' => '특정 판 이후의 편집 찾기:',
+	'abusefilter-test-period-end' => '특정 판 이전의 편집 찾기:',
+	'abusefilter-test-page' => '특정 문서에 대해 찾기:',
 	'abusefilter-test-shownegative' => '필터와 일치하지 않는 편집을 보이기',
 	'abusefilter-test-syntaxerr' => '당신이 입력한 구문에 오류가 있습니다.
 "구문 확인" 버튼을 누르면 자세한 설명을 받을 수 있습니다.',
@@ -13115,7 +13168,7 @@ $messages['kri'] = array(
 	'abusefilter-edit-history' => 'Istri',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -15536,18 +15589,19 @@ $messages['myv'] = array(
 	'abusefilter-log-search-user' => 'Теицясь:',
 	'abusefilter-log-search-title' => 'Коняксозо:',
 	'abusefilter-log-search-submit' => 'Вешнэмс',
+	'abusefilter-log-detailedentry-local' => 'сувтеме $1',
 	'abusefilter-list' => 'Весе сувтеметь',
 	'abusefilter-list-id' => 'Сувтемень ID',
 	'abusefilter-list-hitcount' => 'Зяроксть вастневи',
 	'abusefilter-list-edit' => 'Витнемензэ-петнемензэ',
 	'abusefilter-unhidden' => 'Весень туртов',
-	'abusefilter-new' => 'Од сувтеме',
+	'abusefilter-new' => 'Шкамс од сувтеме',
 	'abusefilter-links' => 'Лезэв сюлмавома пенеть:',
 	'abusefilter-tools' => 'А тевде сувтемень кедьйонкст',
 	'abusefilter-loglink' => 'Ванномс а тевде сувтемень тешкстамотнень',
 	'abusefilter-tools-subtitle' => 'Кедьйонкст',
-	'abusefilter-tools-reautoconfirm-user' => 'Теиця',
-	'abusefilter-edit-status-label' => 'Статистика',
+	'abusefilter-tools-reautoconfirm-user' => 'Теицясь:',
+	'abusefilter-edit-status-label' => 'Статистикась:',
 	'abusefilter-edit-new' => 'Од сувтеме',
 	'abusefilter-edit-save' => 'Ванстомс сувтеме',
 	'abusefilter-edit-flags' => 'Флагтнэ:',
@@ -15575,12 +15629,12 @@ $messages['myv'] = array(
 	'abusefilter-edit-builder-vars-action' => 'Тев теема',
 	'abusefilter-edit-builder-vars-newsize' => 'Лопанть од покшолмазо',
 	'abusefilter-edit-builder-vars-oldsize' => 'Лопанть икелень покшолмазо',
-	'abusefilter-edit-builder-vars-article-id' => 'Сёрмадовкс ID',
-	'abusefilter-edit-builder-vars-article-ns' => 'Сёрмадовксонь лем потмо',
-	'abusefilter-edit-builder-vars-article-text' => 'Сёрмадовкс конякс (лем потмовтомо)',
+	'abusefilter-edit-builder-vars-article-id' => 'Лопа ID',
+	'abusefilter-edit-builder-vars-article-ns' => 'Лопань лем потмо',
+	'abusefilter-edit-builder-vars-article-text' => 'Лопа конякс (лем потмовтомо)',
 	'abusefilter-edit-builder-vars-user-age' => 'Совамо тарканть шказо',
 	'abusefilter-edit-builder-vars-user-name' => 'Совамо тарканть лемезэ',
-	'abusefilter-history' => '"$1" сувтементь путовксонзо-юронзо',
+	'abusefilter-history' => '"#$1" сувтементь а тевс нолдамонь путовксонзо-юронзо',
 	'abusefilter-history-hidden' => 'кекшезь',
 	'abusefilter-history-enabled' => 'тевс нолдавиця',
 	'abusefilter-history-timestamp' => 'Шказо',
@@ -17373,6 +17427,7 @@ Las balisas devon èsser cortas e conténer pas de caractèrs especials.",
 	'abusefilter-edit-builder-misc-in' => 'contengut dins la cadena de caractèrs (in)',
 	'abusefilter-edit-builder-misc-like' => 'Conten l’expression regulara (like)',
 	'abusefilter-edit-builder-misc-rlike' => "Correspond a l'expression racionala (rlike)",
+	'abusefilter-edit-builder-misc-irlike' => "Filtre amb d'expressions racionalas, sens tenir compte de la cassa (irlike)",
 	'abusefilter-edit-builder-misc-contains' => "La cadena d'esquèrra conten la cadena de drecha (contains)",
 	'abusefilter-edit-builder-misc-stringlit' => 'Cadena literala ("")',
 	'abusefilter-edit-builder-misc-tern' => 'Operador ternari (X ? Y : Z)',
@@ -18197,7 +18252,7 @@ Descrição do filtro: $7 ($8{{int:pipe-separator}}$9)',
 	'abusefilter-tools-reautoconfirm-user' => 'Utilizador:',
 	'abusefilter-tools-reautoconfirm-submit' => 'Re-autoconfirmar',
 	'abusefilter-reautoconfirm-none' => 'Não foi suspendido o estado autoconfirmado {{GENDER:$1|desse utilizador|dessa utilizadora|desse utilizador}}.',
-	'abusefilter-reautoconfirm-notallowed' => 'Você não está autorizado a repor o estado autoconfirmado.',
+	'abusefilter-reautoconfirm-notallowed' => 'Não está autorizado a repor o estado autoconfirmado.',
 	'abusefilter-reautoconfirm-done' => 'O estado autoconfirmado da conta foi restaurado',
 	'abusefilter-status' => '{{PLURAL:$1|Da última 1 acção|Das últimas $1 acções}}, $2 ($3%) {{PLURAL:$2|atingiu|atingiram}} a condição limite de $4, e $5 ($6%) {{PLURAL:$5|correspondeu|corresponderam}} a um dos filtros neste momento activos.',
 	'abusefilter-edit-subtitle' => 'A editar filtro $1',
@@ -18218,7 +18273,7 @@ O filtro atingiu o limite de correspondência com mais de $1% de ações.",
 	'abusefilter-edit-flags' => 'Sinalizações:',
 	'abusefilter-edit-enabled' => 'Activar este filtro',
 	'abusefilter-edit-deleted' => 'Marcar como eliminado',
-	'abusefilter-edit-hidden' => 'Ocultar detalhes deste filtro da visualização pública',
+	'abusefilter-edit-hidden' => 'Ocultar detalhes deste filtro do visionamento público',
 	'abusefilter-edit-rules' => 'Condições:',
 	'abusefilter-edit-notes' => "Notas:
 :''(privado)",
@@ -18653,6 +18708,7 @@ $messages['rif'] = array(
  * @author Firilacroco
  * @author KlaudiuMihaila
  * @author Mihai
+ * @author Misterr
  * @author Silviubogan
  * @author Stelistcristi
  */
@@ -21437,7 +21493,7 @@ Filtr düşündirişi: $7 ($8{{int:pipe-separator}}$9)',
 	'abusefilter-status' => 'Soňky $1 {{PLURAL:$1|hereketden|hereketden}} $2 (%$3) sanysy $4 şert çägine baryp ýetdi, $5 (%$6) sanysy bolsa häzirki açyk filtrleriň birine gabat geldi.',
 	'abusefilter-edit-subtitle' => '$1 filtri redaktirlenýär',
 	'abusefilter-edit-status-label' => 'Statistikalar:',
-	'abusefilter-edit-status' => 'Bu filtr soňky $1 {{PLURAL:$1|hereketden|hereketden}} $2 (%$3) sanysyna gabat geldi.
+	'abusefilter-edit-status' => 'Bu filtr soňky $1 {{PLURAL:$1|hereketden|hereketden}} $2 (%$3) sanysyna gabat geldi. 
 Ortaça alnanda, işlän wagty $4ms, we onuň şert çägi $5 sany şerti sarp edýär.',
 	'abusefilter-edit-throttled' => "'''Duýduryş''': Bu filtr howpsuzlyk çäresi hökmünde awtomatik ýapyldy.
 Ol hereketleriň %$1 sanysyndan artykmaç gabat gelme çägine baryp ýetdi.",
@@ -22536,9 +22592,9 @@ $messages['uk'] = array(
 	'abusefilter-edit-subtitle' => 'Редагування фільтру $1',
 	'abusefilter-edit-oldwarning' => '<strong>Ви редагуєте стару версію цього фільтра. Статистика наведена для найновішої версії фільтра. Якщо ви збережете свої зміни, ви перезапишете усі редагування починаючи з версії, яку ви редагуєте.</strong> &bull; [[Special:AbuseFilter/history/$2|Повернутися до історії цього фільтру]]',
 	'abusefilter-edit-status-label' => 'Статистика:',
-	'abusefilter-edit-status' => 'З $1 {{PLURAL:$1|останньої дії|останніх дій|останніх дій}} цей фільтр знайшов $2 ($3%) співпадінь.
+	'abusefilter-edit-status' => 'Серед $1 {{PLURAL:$1|останньої дії|останніх дій|останніх дій}} цей фільтр знайшов {{PLURAL:$2|$2 збіг|$2 збіги|$2 збігів}} ($3%).
 Середня тривалість його роботи — $4 мс, він використовує $5 {{PLURAL:$5|умову|умови|умов}} з ліміту умов.',
-	'abusefilter-edit-throttled' => "'''Попередження''': цей фільтр був автоматично вимкнений у заходах безпеки. Він досяг межі співпадінь у $1% дій.",
+	'abusefilter-edit-throttled' => "'''Попередження''': цей фільтр був автоматично вимкнений у заходах безпеки. Він досяг ліміту збігів у $1% дій.",
 	'abusefilter-edit-new' => 'Новий фільтр',
 	'abusefilter-edit-save' => 'Зберегти фільтр',
 	'abusefilter-edit-id' => 'ІД фільтра:',
@@ -23612,7 +23668,7 @@ $messages['xal'] = array(
  */
 $messages['yi'] = array(
 	'abuselog' => 'שלעכט־באניצן לאג',
-	'abusefilter-warning' => "'''ווארענונג''': די פעולה ווערט אידענטיציפירט אלס שעדלעך.
+	'abusefilter-warning' => "'''ווארענונג''': די פעולה איז געווארן אויטאמאַטיש אידענטיציפירט אלס שעדלעך.
 אומקאנסטרוקטיווע באַאַרבעטונגען וועלן גיך ווערן צוריקגעשטעלט,
 און גראבע אדער איבערגעחזרטע אומקאנסטרוקטיווע רעדאַקטירונג וועלן ברענגען צו בלאקירן אײַער קאנטע אדער קאמפיוטער.
 ווען איר האַלט אַז די רעדאַקטירונג איז יא קאנסטרוקטיוו, מעגט איר קליקן \"אויפהיטן\" נאכאַמאָל צו באַשטעטיגן זי.
@@ -23649,7 +23705,7 @@ $messages['yi'] = array(
 	'abusefilter-diff-item' => 'איינהייט',
 );
 
-/** Yue (粵語)
+/** Cantonese (粵語)
  * @author Shinjiman
  */
 $messages['yue'] = array(

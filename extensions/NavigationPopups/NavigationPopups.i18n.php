@@ -207,7 +207,7 @@ $messages['ko'] = array(
 	'navigationpopups-desc' => '미디어위키에 Lupin이 제작한 내비게이션 팝업을 불러옴',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -369,7 +369,7 @@ $messages['vi'] = array(
 	'navigationpopups-desc' => 'Mở công cụ popup chuyển hướng của Lupin trong MediaWiki',
 );
 
-/** Yue (粵語) */
+/** Cantonese (粵語) */
 $messages['yue'] = array(
 	'navigationpopups-desc' => '響MediaWiki載入Lupin嘅Popup導航popup script',
 );

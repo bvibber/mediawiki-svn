@@ -397,7 +397,7 @@ $messages['km'] = array(
 	'editsimilar-link-disable' => 'កំណត់ចំណង់ចំណូលចិត្ត',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

@@ -215,7 +215,7 @@ $messages['ko'] = array(
 	'tab0-desc' => '문서의 첫 부분만을 편집할 수 있도록 "0" 탭을 추가합니다.',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

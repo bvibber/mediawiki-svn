@@ -235,7 +235,7 @@ $messages['ja'] = array(
  # $1 は現在のページの名前に置換されます。',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

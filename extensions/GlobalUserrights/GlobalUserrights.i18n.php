@@ -341,11 +341,15 @@ $messages['km'] = array(
  * @author Kwj2772
  */
 $messages['ko'] = array(
+	'globaluserrights' => '공통 계정 권한 관리',
+	'gur-desc' => '쉬운 [[Special:GlobalUserRights|공통 계정 권한 관리]]',
 	'gur-rightslog-name' => '공통 권한 기록',
+	'gur-rightslog-header' => '공통 권한 변경 기록입니다.',
 	'gur-rightslog-entry' => '$1의 공통 권한을 $2에서 $3으로 변경',
+	'right-userrights-global' => '공통 권한 관리하기',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

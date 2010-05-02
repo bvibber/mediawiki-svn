@@ -1314,7 +1314,7 @@ $messages['kn'] = array(
 	'usagestatisticsintervalmonth' => 'ತಿಂಗಳು',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -1390,7 +1390,7 @@ $messages['lg'] = array(
 	'usagestatisticsnamespace' => 'Kuŋaanyizo:',
 );
 
-/** Laz (Laz)
+/** Lazuri (Lazuri)
  * @author Bombola
  */
 $messages['lzz'] = array(

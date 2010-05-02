@@ -284,7 +284,7 @@ $messages['km'] = array(
 	'fixedimage-desc' => 'ដាក់ប្លាក <tt><nowiki><fundraising></nowiki></tt> ជារូបភាព',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -523,7 +523,7 @@ $messages['yi'] = array(
 	'fixedimage-desc' => 'לייגט צו <tt><nowiki><fundraising></nowiki></tt>טאַג אלס בילד',
 );
 
-/** Yue (粵語)
+/** Cantonese (粵語)
  * @author Shinjiman
  */
 $messages['yue'] = array(

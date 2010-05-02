@@ -2214,6 +2214,7 @@ Klick <a href="$1">hier</a> um dich anzumelden oder klicke <a href="$2">hier</a>
 
 /** German (formal address) (Deutsch (Sie-Form))
  * @author Imre
+ * @author The Evil IP address
  */
 $messages['de-formal'] = array(
 	'profile-updated-personal' => 'Ihr Profil aktualisieren',
@@ -2223,7 +2224,7 @@ Klicken Sie <a href="$1">hier</a> um sich anzumelden oder klicken Sie <a href="$
 	'user-profile-update-saved' => 'Ihr Profil wurde gespeichert',
 	'user-profile-personal-email-needs-auth' => '(Ihre E-Mail-Adresse muss bestätigt sein, damit Sie Benachrichtigungen erhalten können)',
 	'user-profile-sports-title' => 'Bearbeiten Sie Ihre Lieblings-Sportarten und -Teams',
-	'user-profile-sports-notloggedintext' => 'Sie müssen angemeldet sein um Ihr Profil zu bearbeiten.',
+	'user-profile-sports-notloggedintext' => 'Sie müssen angemeldet sein, um Ihr Profil zu bearbeiten.',
 	'user-profile-sports-teamremoved' => 'Ihr Team wurde entfernt',
 	'user-profile-sports-teamsaved' => 'Ihre Teams wurden gespeichert',
 	'user-profile-picture-title' => 'Ihr Bild hochladen',
@@ -3359,13 +3360,13 @@ $messages['fi'] = array(
 	'user-stats-title' => 'Tilastot',
 	'user-stats-edits' => '{{PLURAL:$1|Muokkaus|Muokkauksia}}',
 	'user-stats-votes' => '{{PLURAL:$1|Ääni|Ääniä}}',
-	'user-stats-comments' => '{{PLURAL:$1|Kommentti|Kommenttia}}',
-	'user-stats-recruits' => '{{PLURAL:$1|Rekrytoitu|Rekrytoitua}}',
+	'user-stats-comments' => '{{PLURAL:$1|Kommentti|Kommentteja}}',
+	'user-stats-recruits' => '{{PLURAL:$1|Rekrytoitu|Rekrytoituja}}',
 	'other-info-title' => 'Muut tiedot',
 	'user-friends-title' => 'Ystävät',
 	'user-foes-title' => 'Viholliset',
 	'other-info-movies' => 'Elokuvat',
-	'other-info-tv' => 'tv',
+	'other-info-tv' => 'TV',
 	'other-info-music' => 'Musiikki',
 	'other-info-books' => 'Kirjat',
 	'other-info-video-games' => 'Videopelit',
@@ -4898,7 +4899,7 @@ Clicca <a href="$1">hic</a> pro aperir un session o clicca <a href="$2">hic</a> 
 	'user-profile-preferences-emails-gift' => 'Quando tu recipe un dono',
 	'user-profile-preferences-emails-level' => 'Quando tu avantia un nivello',
 	'user-profile-preferences-emails-weekly' => 'Reciper actualisationes septimanal in e-mail',
-	'user-profile-update-button' => 'Actualisation',
+	'user-profile-update-button' => 'Actualisar',
 	'user-profile-tidbits-title' => 'Miscellanea',
 	'user-profile-tidbits-favmoment' => 'Momento favorite de sport',
 	'user-profile-tidbits-worstmoment' => 'Momento pessime de sport',
@@ -5684,7 +5685,7 @@ $messages['krj'] = array(
 	'user-profile-personal-email' => 'E-mail',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -5956,6 +5957,7 @@ Klickt <a href="$1">hei</a> fir Iech anzeloggen oder klickt <a href="$2">hei</a>
 	'user-profile-points' => '$1 {{PLURAL:$1|Punkt|Punkten}}',
 	'user-profile-section-personal' => 'Perséinlech Informatiounen',
 	'user-profile-section-sportsteams' => 'Reseauen aktualiséieren',
+	'user-profile-section-custom' => 'personaliséiert Informatioun',
 	'user-profile-section-interests' => 'Aner Informatiounen',
 	'user-profile-section-picture' => 'Avatar',
 	'user-profile-section-preferences' => 'Astellungen',

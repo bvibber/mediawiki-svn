@@ -246,7 +246,7 @@ $messages['km'] = array(
 	'untidy' => 'គ្មានសណ្ដាប់ធ្នាប់',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -337,10 +337,11 @@ $messages['pms'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'tidy-desc' => 'Adiciona uma pestana arrumado ou desarrumado (dependendo de $wgUseTidy) em páginas normais, permitindo sobrepor a configuração de arrumação de HTML global para uma vista única',
+	'tidy-desc' => 'Adiciona um separador arrumado ou desarrumado (dependendo de $wgUseTidy) às páginas normais, permitindo sobrepor a configuração de arrumação de HTML global para uma vista única',
 	'tidy' => 'Arrumado',
 	'untidy' => 'Desarrumado',
 );

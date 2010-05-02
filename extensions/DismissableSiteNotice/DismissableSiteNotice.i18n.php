@@ -522,7 +522,7 @@ $messages['ko'] = array(
 	'sitenotice-desc' => '사용자가 알림말을 숨길 수 있습니다.',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -619,6 +619,7 @@ $messages['nds'] = array(
  */
 $messages['nds-nl'] = array(
 	'sitenotice_close' => 'verbargen',
+	'sitenotice-desc' => 'Geef gebrukers de meugelijkheid um websteetiejigen te verbargen',
 );
 
 /** Nepali (नेपाली) */
@@ -961,7 +962,7 @@ $messages['yi'] = array(
 	'sitenotice_close' => 'צומאַכן',
 );
 
-/** Yue (粵語) */
+/** Cantonese (粵語) */
 $messages['yue'] = array(
 	'sitenotice_close' => '閂咗佢',
 	'sitenotice-desc' => '容許用戶去閂個網站公告',

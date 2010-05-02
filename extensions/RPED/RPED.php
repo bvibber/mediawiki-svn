@@ -38,6 +38,9 @@ $wgExtensionCredits['other'][] = array(
 $dir = dirname( __FILE__ ) . '/';
 $wgAutoloadClasses['RPEDHooks'] = $dir . 'RPED.hooks.php';
 $wgExtensionMessagesFiles['RPED'] = $dir . 'RPED.i18n.php';
+$wgAutoloadClasses['ApiRPED'] = $dir.'ApiRPED.php';
+$wgAPIModules['rped'] = 'ApiRPED';
+$wgGroupPermissions['RPED']['rped']    = true;
 
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'RPEDHooks::RPEDCreateTable';
 $wgHooks['LinkBegin'][] = 'RPEDHooks::wikipediaLink';

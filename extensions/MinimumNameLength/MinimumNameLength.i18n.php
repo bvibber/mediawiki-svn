@@ -316,7 +316,7 @@ $messages['km'] = array(
 	'minnamelength-desc' => 'បង្ខំឱ្យមាន​ប្រវែងឈ្មោះអ្នកប្រើប្រាស់​ជាអប្បបរមា',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -565,7 +565,14 @@ $messages['vo'] = array(
 	'minnamelength-desc' => 'Zesüdükön gebananemalunoti puik',
 );
 
-/** Yue (粵語)
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'minnamelength-error' => 'אײַער באַניצער־נאָמען איז צו קורץ. די מינימאַלע לענג איז $1.',
+);
+
+/** Cantonese (粵語)
  * @author Shinjiman
  */
 $messages['yue'] = array(

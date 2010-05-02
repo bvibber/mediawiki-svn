@@ -122,7 +122,7 @@ $messages['an'] = array(
 	'youtubeauthsub_submit' => 'Nimbiar',
 );
 
-/** Old English (Anglo-Saxon)
+/** Old English (Ænglisc)
  * @author Wōdenhelm
  */
 $messages['ang'] = array(
@@ -662,10 +662,12 @@ Bitte habe Geduld.',
 /** German (formal address) (Deutsch (Sie-Form))
  * @author ChrisiPK
  * @author Imre
+ * @author LWChris
  * @author Umherirrender
  */
 $messages['de-formal'] = array(
 	'youtubeauthsub_info' => 'Um ein Video zu YouTube hochzuladen, um es anschließend auf einer Seite einzubetten, müssen Sie folgende Felder ausfüllen:',
+	'youtubeauthsub_tokenerror' => 'Fehler beim Erstellen eines Authorisierungstokens. Versuchen Sie die Seite neu zuladen.',
 	'youtubeauthsub_success' => "Gratulation!
 Ihr Video wurde hochgeladen.
 <a href='http://www.youtube.com/watch?v=$1'>Sehen Sie sich ihr Video an</a>.
@@ -768,6 +770,13 @@ $messages['el'] = array(
 	'youtubeauthsub_jserror_nodesc' => 'Παρακαλούμε εισάγετε μια περιγραφή για το βίντεο.',
 );
 
+/** British English (British English)
+ * @author Reedy
+ */
+$messages['en-gb'] = array(
+	'youtubeauthsub_tokenerror' => 'Error generating authorisation token, try refreshing.',
+);
+
 /** Esperanto (Esperanto)
  * @author Michawiki
  * @author Yekrats
@@ -847,6 +856,7 @@ Por favor, sé paciente.',
 
 /** Estonian (Eesti)
  * @author Avjoska
+ * @author Hendrik
  * @author KalmerE.
  */
 $messages['et'] = array(
@@ -862,6 +872,9 @@ $messages['et'] = array(
 	'youtubeauthsub_authsubinstructions' => "Enne video üleslaadimist on vajalik YouTube'i sisselogimine.",
 	'youtubeauthsub_uploadhere' => 'Lae oma video üles siit:',
 	'youtubeauthsub_uploadbutton' => 'Lae üles',
+	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
+
+[http://www.youtube.com/watch?v=$1 Vaata seda videot]',
 	'youtubeauthsub_summary' => "YouTube'i video üleslaadimine",
 	'youtubeauthsub_uploading' => 'Sinu videot laetakse üles.
 Ole kannatlik.',
@@ -1337,7 +1350,7 @@ Pro includer tu video in un pagina in le wiki, insere le sequente codice in un p
 <code>{{&#35;ev:youtube|$1}}</code>",
 	'youtubeauthsub_authsubinstructions' => 'Pro cargar un video, tu debera primo aperir un session in YouTube.',
 	'youtubeauthsub_uploadhere' => 'Carga tu video ab hic:',
-	'youtubeauthsub_uploadbutton' => 'Cargar',
+	'youtubeauthsub_uploadbutton' => 'Incargar',
 	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
 
 [http://www.youtube.com/watch?v=$1 Vider iste video]',
@@ -1731,7 +1744,7 @@ $messages['krj'] = array(
 	'youtubeauthsub_category' => 'Kategorya',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -1775,7 +1788,7 @@ Bes jet jedoldesch.',
 	'youtubeauthsub_jserror_nodesc' => 'Don dä Viddejo winneßtens med enem Satz udder zwei beschrieve, söns weet dat nix, hee.',
 );
 
-/** Cornish (Kernowek)
+/** Cornish (Kernewek)
  * @author Kernoweger
  * @author Kw-Moon
  */
@@ -1861,14 +1874,14 @@ $messages['lt'] = array(
 	'youtubeauthsub_summary' => 'Įkeliamas YouTube video',
 );
 
-/** Latgaļu (Latgaļu)
+/** Latgalian (Latgaļu)
  * @author Dark Eagle
  */
 $messages['ltg'] = array(
 	'youtubeauthsub_category' => 'Kategoreja',
 );
 
-/** Laz (Laz)
+/** Lazuri (Lazuri)
  * @author Bombola
  */
 $messages['lzz'] = array(
@@ -2465,8 +2478,8 @@ $messages['pt'] = array(
 	'youtubeauthsub_tokenerror' => 'Erro ao gerar o token de autorização. Tente refrescar a página.',
 	'youtubeauthsub_success' => "Parabéns!
 O seu vídeo foi carregado.
-<a href='http://www.youtube.com/watch?v=$1'>Veja o seu video</a>.
-O YouTube pode necessitar de algum tempo para processar o seu vídeo, de modo que poderá não estar já disponível.
+<a href='http://www.youtube.com/watch?v=$1'>Ver o seu vídeo</a>.
+O YouTube pode necessitar de algum tempo para processar o seu vídeo, e este pode ainda não estar disponível.
 
 Para incluir o seu vídeo numa página da wiki, insira o seguinte código numa página:
 <code>{{&#35;ev:youtube|$1}}</code>",
@@ -2475,7 +2488,7 @@ Para incluir o seu vídeo numa página da wiki, insira o seguinte código numa p
 	'youtubeauthsub_uploadbutton' => 'Carregar',
 	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
 
-[http://www.youtube.com/watch?v=$1 Veja este vídeo]',
+[http://www.youtube.com/watch?v=$1 Ver este vídeo]',
 	'youtubeauthsub_summary' => 'A carregar vídeo YouTube',
 	'youtubeauthsub_uploading' => 'O seu vídeo está a ser carregado.
 Por favor seja paciente.',
@@ -2640,6 +2653,19 @@ YouTube, возможно, будет некоторое время обраба
 	'youtubeauthsub_jserror_nokeywords' => 'Пожалуйста, введите одно или несколько ключевых слов.',
 	'youtubeauthsub_jserror_notitle' => 'Пожалуйста, введите название видео.',
 	'youtubeauthsub_jserror_nodesc' => 'Пожалуйста, введите описание видео.',
+);
+
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'youtubeauthsub_description' => 'Попис',
+	'youtubeauthsub_password' => 'Гесло на YouTube',
+	'youtubeauthsub_username' => 'Мено хоснователя на YouTube',
+	'youtubeauthsub_keywords' => 'Ключовы слова',
+	'youtubeauthsub_category' => 'Катеґорія',
+	'youtubeauthsub_submit' => 'Послати',
+	'youtubeauthsub_clickhere' => 'Кликнутём ту ся приголосите до YouTube',
 );
 
 /** Yakut (Саха тыла)

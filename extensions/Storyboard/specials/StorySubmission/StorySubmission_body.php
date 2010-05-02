@@ -21,11 +21,22 @@ class SpecialStorySubmission extends UnlistedSpecialPage {
 
 	public function execute( $title ) {
 		global $wgOut, $wgRequest, $wgUser;
-		
-		if ( $wgRequest->wasPosted() && $wgUser->matchEditToken( $wgRequest->getVal( 'wpStoryEditToken' ) ) ) {
-			$this->saveStory();
-			$this->displayResult();
+
+		if ( $wgRequest->wasPosted() &&
+			( $wgUser->matchEditToken( $wgRequest->getVal( 'wpStoryEditToken' ) ) || !$wgUser->isLoggedIn() )
+			) {
+				$title = $wgRequest->getText( 'storytitle' );
+			
+				// This might happen when the user has javascript disabled, or something in the client side validation breaks down.
+				$exists = ApiStoryExists::StoryExists( array( 'storytitle' => $title ) );
+
+				if ( !$exists ) {
+					$this->saveStory( $title );
+				}
+	
+				$this->displayResult( !$exists, $title );
 		} else {
+			$wgOut->setPageTitle( wfMsg( 'storyboard-notsubmitted' ) );
 			$wgOut->returnToMain();
 		}
 	}
@@ -33,13 +44,11 @@ class SpecialStorySubmission extends UnlistedSpecialPage {
 	/**
 	 * Store the submitted story in the database, and return a page telling the user his story has been submitted.
 	 */
-	private function saveStory() {
+	private function saveStory( $title ) {
 		global $wgRequest, $wgUser;
 		
 		$dbw = wfGetDB( DB_MASTER );
-
-		$title = $wgRequest->getText( 'storytitle' );
-
+		
 		$story = array(
 			'story_lang_code' => $wgRequest->getText( 'lang' ),
 			'story_author_name' => $wgRequest->getText( 'name' ),
@@ -62,14 +71,24 @@ class SpecialStorySubmission extends UnlistedSpecialPage {
 		$dbw->insert( 'storyboard', $story );
 	}
 	
-	private function displayResult() {
-		global $wgOut;
+	private function displayResult( $wasSaved, $title ) {
+		global $wgOut, $wgTitle;
 		
-		$wgOut->setPageTitle( wfMsg( 'storyboard-submissioncomplete' ) );
-		
-		$storyboardLink = ''; // TODO: create html link to the page containing stories. 
-
-		$wgOut->addWikiText( wfMsgExt( 'storyboard-createdsucessfully', 'parsemag', $storyboardLink ) );
+		if ( $wasSaved ) {
+			$wgOut->setPageTitle( wfMsg( 'storyboard-submissioncomplete' ) );
+			
+			// TODO: magically get location of the page containing stories
+			$wgOut->addWikiMsg( 'storyboard-createdsucessfully', $wgTitle->getFullURL() );
+		} else {
+			$wgOut->setPageTitle( wfMsg( 'storyboard-submissionincomplete' ) );
+			
+			$wgOut->addWikiMsg( 'storyboard-alreadyexists', $title, $wgTitle->getFullURL() );
+			
+			// Let's not give a null link to people with no JS.
+			// TODO: change this to the last page somehow
+			$fallBackUrl = Title::newMainPage()->getFullURL();
+			$wgOut->addHtml( "<a href='$fallBackUrl' onclick='history.go(-1); return false;'>" . wfMsg( 'storyboard-changetitle' ) . '</a>' );
+		}
 	}
 	
 }

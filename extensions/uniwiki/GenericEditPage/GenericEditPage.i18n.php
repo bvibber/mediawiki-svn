@@ -846,7 +846,7 @@ $messages['kn'] = array(
 	'gep-categories' => 'ವರ್ಗಗಳು',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -905,7 +905,7 @@ $messages['lmo'] = array(
 	'gep-addsection' => 'Gionta una sezión',
 );
 
-/** Laz (Laz)
+/** Lazuri (Lazuri)
  * @author Bombola
  */
 $messages['lzz'] = array(
@@ -1156,7 +1156,7 @@ $messages['pt'] = array(
 	'gep-suggestcategory' => 'Sugerir uma categoria',
 	'gep-suggestcategorybutton' => 'Submeter',
 	'gep-sections' => 'Secções',
-	'gep-sectionnotdisabled' => 'Esta secção não pode ser desativada',
+	'gep-sectionnotdisabled' => 'Esta secção não pode ser desactivada',
 	'gep-addsection' => 'Adicionar uma secção',
 	'gep-addsectionbutton' => 'Adicionar',
 	'gep-classicmode' => 'Modo clássico',

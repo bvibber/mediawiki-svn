@@ -33,7 +33,7 @@ $egMapsServices[MapsYahooMaps::SERVICE_NAME] = array(
 		'display_point' => 'MapsYahooMapsDispPoint',
 		'display_map' => 'MapsYahooMapsDispMap',
 	)
-);	
+);
 
 /**
  * Class for Yahoo! Maps initialization.
@@ -77,7 +77,8 @@ class MapsYahooMaps {
 					'in_array' => $allowedTypes
 				),
 				'default' => $egMapsYahooMapsType, // FIXME: default value should not be used when not present in types parameter.
-				'output-type' => 'ymaptype'
+				'output-type' => 'ymaptype',
+				'dependencies' => array( 'types' )
 			),
 			'types' => array (
 				'type' => array( 'string', 'list' ),
@@ -96,7 +97,7 @@ class MapsYahooMaps {
 			),
 		);
 				
-		$egMapsServices[self::SERVICE_NAME]['parameters']['zoom']['criteria']['in_range'] = array( 1, 13 );				
+		$egMapsServices[self::SERVICE_NAME]['parameters']['zoom']['criteria']['in_range'] = array( 1, 13 );
 	}
 	
 	// http://developer.yahoo.com/maps/ajax
@@ -162,8 +163,6 @@ class MapsYahooMaps {
 		if ( empty( $egYahooMapsOnThisPage ) ) {
 			$egYahooMapsOnThisPage = 0;
 
-			$dir = dirname( __FILE__ );
-			
 			$output .= "<script type='$wgJsMimeType' src='http://api.maps.yahoo.com/ajaxymap?v=3.8&amp;appid=$egYahooMapsKey'></script>
 			<script type='$wgJsMimeType' src='$egMapsScriptPath/Services/YahooMaps/YahooMapFunctions{$egMapsJsExt}?$egMapsStyleVersion'></script>";
 		}

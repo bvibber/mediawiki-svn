@@ -312,7 +312,7 @@ $messages['ko'] = array(
 	'poem-desc' => '시 형식을 위해 <tt>&lt;poem&gt;</tt> 태그를 추가',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -623,7 +623,7 @@ $messages['vo'] = array(
 	'poem-desc' => 'Läükon mali: <tt>&lt;poem&gt;</tt> pro fomät: poedot',
 );
 
-/** Yue (粵語)
+/** Cantonese (粵語)
  * @author Shinjiman
  */
 $messages['yue'] = array(

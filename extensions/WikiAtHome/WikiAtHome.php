@@ -39,7 +39,7 @@ $wgSpecialPages['SpecialWikiAtHome']		= 'SpecialWikiAtHome';
 $wgAPIModules['wikiathome'] = 'ApiWikiAtHome';
 
 function wahAddGlobalPageVars(&$vars){
-	global $wgClientSearchInterval, $wgTitle;
+	global $wgClientSearchInterval;
 	//only add to the special page:
 	if($vars['wgCanonicalSpecialPageName'] == 'SpecialWikiAtHome'){
 		$vars['wgClientSearchInterval'] = $wgClientSearchInterval;

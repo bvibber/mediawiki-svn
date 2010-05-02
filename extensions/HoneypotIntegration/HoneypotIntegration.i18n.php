@@ -245,7 +245,7 @@ $messages['ka'] = array(
 	'abusefilter-edit-builder-vars-honeypot-list-count' => 'ბოლო მოვლენების სია, რომელმაც გამოიწვია IP-მისამართუს მოხვედრა Honey Pot პროექტთან შესაბამისობაში',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

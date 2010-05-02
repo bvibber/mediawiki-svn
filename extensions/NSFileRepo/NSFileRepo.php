@@ -10,6 +10,8 @@
  * @url http://www.mediawiki.org/wiki/Manual:Extension:NSFileRepo
  * @licence GNU General Public Licence 2.0 or later
  *
+ * Version 1.4 - Several thumbnail fixes and updates for FileRepo enhancements
+ *
  * Version 1.3 - Allows namespace protected files to be whitelisted
  *
  * Version 1.2 - Fixes reupload error and adds lockdown security to archives, deleted, thumbs
@@ -29,17 +31,15 @@ $wgIllegalFileChars = str_replace(":","",$wgIllegalFileChars);			      // Remove
 $wgExtensionMessagesFiles['NSFileRepo'] =  dirname(__FILE__) .'/NSFileRepo.i18n.php';
 $wgExtensionMessagesFiles['img_auth'] =  dirname(__FILE__) .'/img_auth.i18n.php';
 
-
 $wgExtensionFunctions[] = 'NSFileRepoSetup';
 $wgExtensionCredits['media'][] = array(
 	'path' => __FILE__,
 	'name' => 'NSFileRepo',
 	'author' => 'Jack D. Pond',
-	'version' => '1.4alpha',
+	'version' => '1.4',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:NSFileRepo',
 	'descriptionmsg' => 'nsfilerepo-desc'
 );
-
 
 /**
  * Set up hooks for NSFileRepo
@@ -51,7 +51,6 @@ Note, this must be AFTER lockdown has been included - thus assuming that the use
 */
 $wgHooks['userCan'][] = 'NSFileRepolockdownUserCan';
 $wgHooks['ImgAuthBeforeStream'][] = 'NSFileRepoImgAuthCheck';
-
 
 class NSLocalRepo extends LocalRepo {
 	var $fileFactory = array( 'NSLocalFile', 'newFromTitle' );
@@ -84,13 +83,15 @@ class NSLocalRepo extends LocalRepo {
 	function storeTemp( $originalName, $srcPath ) {
 		$date = gmdate( "YmdHis" );
 		$hashPath = $this->getHashPath( $originalName );
-		$bits=explode(':',$originalName);
-		$filename = $bits[count($bits)-1];
+		$filename = $this->getFileNameStripped($originalName);
 		$dstRel = "$hashPath$date!$filename";
 		$dstUrlRel = $hashPath . $date . '!' . rawurlencode( $filename );
 		$result = $this->store( $srcPath, 'temp', $dstRel );
 		$result->value = $this->getVirtualUrl( 'temp' ) . '/' . $dstUrlRel;
 		return $result;
+	}
+	function getFileNameStripped($suffix) {
+		return(NSLocalFile::getFileNameStripped($suffix));
 	}
 }
 
@@ -100,18 +101,14 @@ class NSLocalFile extends LocalFile
 	 * Get the path of the file relative to the public zone root
 	 */
 	function getRel() {
-		$bits=explode(':',$this->getName());
-		$filename = $bits[count($bits)-1];
-		return $this->getHashPath() . $filename;
+		return $this->getHashPath() . $this->getFileNameStripped($this->getName());
 	}
 
 	/**
 	 * Get urlencoded relative path of the file
 	 */
 	function getUrlRel() {
-		$bits=explode(':',$this->getName());
-		$filename = $bits[count($bits)-1];
-		return $this->getHashPath() . rawurlencode( $filename );
+		return $this->getHashPath() . rawurlencode( $this->getFileNameStripped($this->getName()));
 	}
 
 	/** Get the URL of the thumbnail directory, or a particular file if $suffix is specified */
@@ -122,6 +119,26 @@ class NSLocalFile extends LocalFile
 		}
 		return $path;
 	}
+
+
+	/** Return the file name of a thumbnail with the specified parameters */
+	function thumbName( $params ) {
+		if ( !$this->getHandler() ) {
+			return null;
+		}
+		$extension = $this->getExtension();
+		list( $thumbExt, $thumbMime ) = $this->handler->getThumbType( $extension, $this->getMimeType() );
+/* This is the part that changed from LocalFile */
+		$thumbName = $this->handler->makeParamString( $params ) . '-' . $this->getFileNameStripped($this->getName());
+/* End of changes */
+		if ( $thumbExt != $extension ) {
+			$thumbName .= ".$thumbExt";
+		}
+		$bits=explode(':',$this->getName());
+		if (count($bits) > 1) $thumbName = $bits[0].":".$thumbName;
+		return $thumbName;
+	}
+
 
 	/** Get the path of the thumbnail directory, or a particular file if $suffix is specified */
 	function getThumbPath( $suffix = false ) {
@@ -186,12 +203,8 @@ class NSLocalFile extends LocalFile
 	/** Strip namespace (if any) from file name */
 	function getFileNameStripped($suffix) {
 		$bits=explode(':',$suffix);
-		$filename = $bits[count($bits)-1];
-		$pxpos = strpos($suffix,"px-");
-		if (count($bits) > 1 && $pxpos) $filename= substr($suffix,0,$pxpos+3).$filename;
-		return $filename;
+		return $bits[count($bits)-1];
 	}
-
 
 	/**
 	 * This function overrides the LocalFile because the archive name should not contain the namespace in the
@@ -263,11 +276,90 @@ class NSLocalFile extends LocalFile
 			}
 			$this->olds[] = array(
 				"{$archiveBase}/{$this->oldHash}{$oldName}",
+/* This is the part that changed from LocalFile */
 				"{$archiveBase}/{$this->newHash}{$timestamp}!".$this->getFileNameStripped($this->newName)
+/* End of changes */
 			);
 		}
 		$this->db->freeResult( $result );
 	}
+
+	/**
+	 * The only thing changed here is to strip NS from the file name
+	 * Delete cached transformed files
+	*/
+
+	function purgeThumbnails() {
+		global $wgUseSquid;
+		// Delete thumbnails
+		$files = $this->getThumbnails();
+		$dir = $this->getThumbPath();
+		$urls = array();
+		foreach ( $files as $file ) {
+			# Check that the base file name is part of the thumb name
+			# This is a basic sanity check to avoid erasing unrelated directories
+
+/* This is the part that changed from LocalFile */
+			if ( strpos( $file, $this->getFileNameStripped($this->getName()) ) !== false ) {
+/* End of changes */
+				$url = $this->getThumbUrl( $file );
+				$urls[] = $url;
+				@unlink( "$dir/$file" );
+			}
+		}
+
+		// Purge the squid
+		if ( $wgUseSquid ) {
+			SquidUpdate::purge( $urls );
+		}
+	}
+
+	/**
+	 * Replaces hard coded OldLocalFile::newFromRow to use $this->repo->oldFileFromRowFactory configuration
+	 * This may not be necessary in the future if LocalFile is patched to allow configuration
+	*/
+
+	function getHistory( $limit = null, $start = null, $end = null, $inc = true ) {
+		$dbr = $this->repo->getSlaveDB();
+		$tables = array( 'oldimage' );
+		$fields = OldLocalFile::selectFields();
+		$conds = $opts = $join_conds = array();
+		$eq = $inc ? '=' : '';
+		$conds[] = "oi_name = " . $dbr->addQuotes( $this->title->getDBkey() );
+		if( $start ) {
+			$conds[] = "oi_timestamp <$eq " . $dbr->addQuotes( $dbr->timestamp( $start ) );
+		}
+		if( $end ) {
+			$conds[] = "oi_timestamp >$eq " . $dbr->addQuotes( $dbr->timestamp( $end ) );
+		}
+		if( $limit ) {
+			$opts['LIMIT'] = $limit;
+		}
+		// Search backwards for time > x queries
+		$order = ( !$start && $end !== null ) ? 'ASC' : 'DESC';
+		$opts['ORDER BY'] = "oi_timestamp $order";
+		$opts['USE INDEX'] = array( 'oldimage' => 'oi_name_timestamp' );
+
+		wfRunHooks( 'LocalFile::getHistory', array( &$this, &$tables, &$fields, 
+			&$conds, &$opts, &$join_conds ) );
+
+		$res = $dbr->select( $tables, $fields, $conds, __METHOD__, $opts, $join_conds );
+		$r = array();
+		while( $row = $dbr->fetchObject( $res ) ) {
+/* This is the part that changed from LocalFile */
+			if ( $this->repo->oldFileFromRowFactory ) {
+				$r[] = call_user_func( $this->repo->oldFileFromRowFactory, $row, $this->repo );
+			} else {
+				$r[] = OldLocalFile::newFromRow( $row, $this->repo );
+			}
+/* End of changes */
+		}
+		if( $order == 'ASC' ) {
+			$r = array_reverse( $r ); // make sure it ends up descending
+		}
+		return $r;
+	}
+
 
 
 	/** Instantiating this class using "self"
@@ -303,17 +395,21 @@ class NSLocalFile extends LocalFile
 }
 class NSOldLocalFile extends OldLocalFile
 {
-	function getRel( $name, $levels) {
-		return(NSLocalFile::getRel( $name, $levels ));
+
+	function getRel() {
+		return 'archive/' . $this->getHashPath() . $this->getFileNameStripped($this->getArchiveName());
 	}
-	function getUrlRel( $name, $levels ) {
-		return(NSLocalFile::getUrlRel( $name, $levels ));
+	function getUrlRel() {
+		return 'archive/' . $this->getHashPath() . urlencode( $this->getFileNameStripped($this->getArchiveName()) );
 	}
 	function publish( $srcPath, $flags = 0 ) {
 		return NSLocalFile::publish( $srcPath, $flags );
 	}
 	function getThumbUrl( $suffix = false ) {
 		return(NSLocalFile::getThumbUrl( $suffix ) );
+	}
+	function thumbName( $params ) {
+		return(NSLocalFile::thumbName( $params ));
 	}
 	function getThumbPath( $suffix = false ) {
 		return(NSLocalFile::getThumbPath( $suffix ));
@@ -333,14 +429,24 @@ class NSOldLocalFile extends OldLocalFile
 	function getVirtualUrl( $suffix = false ) {
 		return(NSLocalFile::getVirtualUrl( $suffix ));
 	}
-	function getThumbStripped($suffix) {
-		return(NSLocalFile::getThumbStripped($suffix));
+	function getFileNameStripped($suffix) {
+		return(NSLocalFile::getFileNameStripped($suffix));
 	}
 	function addOlds() {
 		return(NSLocalFile::addOlds());
 	}
+	function purgeThumbnails() {
+		return(NSLocalFile::purgeThumbnails());
+	}
+	/**
+	 * Replaces hard coded OldLocalFile::newFromRow to use $this->repo->oldFileFromRowFactory configuration
+	 * This may not be necessary in the future if LocalFile is patched to allow configuration
+	*/
+	function getHistory( $limit = null, $start = null, $end = null, $inc = true ) {
+		return(NSLocalFile::getHistory( $limit, $start , $end, $inc) );
+	}
 
-	/** See comment about Instantiating this class using "self", above */
+	/** See comment above about Instantiating this class using "self" */
 
 	static function newFromTitle( $title, $repo, $time = null ) {
 		# The null default value is only here to avoid an E_STRICT
@@ -360,7 +466,6 @@ class NSOldLocalFile extends OldLocalFile
 		return $file;
 	}
 }
-
 
 /**
  * Initial setup, add .i18n. messages from $IP/extensions/DiscussionThreading/DiscussionThreading.i18n.php
@@ -387,7 +492,6 @@ function NSFileRepoNSCheck($UploadForm) {
 	}
 	return (true);
 }
-
 
 // If Extension:Lockdown has been activated (recommend), check individual namespace protection
 

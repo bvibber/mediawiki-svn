@@ -173,7 +173,7 @@ $messages['ja'] = array(
 	'minify-desc' => 'action=rawで作られるCSSとJavascriptの出力を圧縮する',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

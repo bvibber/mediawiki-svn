@@ -1268,6 +1268,7 @@ $messages['eu'] = array(
 	'proofreadpage_nextpage' => 'Hurrengo orria',
 	'proofreadpage_prevpage' => 'Aurreko orria',
 	'proofreadpage_quality0_category' => 'Testurik gabe',
+	'proofreadpage_quality2_category' => 'Arazoak dakartza',
 	'proofreadpage_quality4_category' => 'Balioztatua.',
 	'proofreadpage_index_listofpages' => 'Orri zerrenda',
 	'proofreadpage_image_message' => 'Aurkibide orrira lotu',
@@ -2415,6 +2416,13 @@ $messages['km'] = array(
 កំណត់សម្គាល់||១០',
 );
 
+/** Kannada (ಕನ್ನಡ)
+ * @author Nayvik
+ */
+$messages['kn'] = array(
+	'proofreadpage_image' => 'ಚಿತ್ರ',
+);
+
 /** Korean (한국어)
  * @author Ilovesabbath
  * @author Klutzy
@@ -2469,7 +2477,7 @@ $messages['krj'] = array(
 	'proofreadpage_namespace' => 'Pahina',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -2525,7 +2533,7 @@ Aanmerkunge||10',
 	'proofreadpage_specialpage_legend' => 'Op dä Verzeischneßsigg söhke',
 );
 
-/** Cornish (Kernowek)
+/** Cornish (Kernewek)
  * @author Kw-Moon
  */
 $messages['kw'] = array(
@@ -2976,6 +2984,20 @@ Born
 Bild|Titelbild
 Sieden||20
 Anmarkungen||10',
+);
+
+/** Nedersaksisch (Nedersaksisch)
+ * @author Servien
+ */
+$messages['nds-nl'] = array(
+	'proofreadpage_index_attributes' => "Auteur
+Titel
+Jaor|Jaar van publicatie
+Uutgever
+Bron
+Ofbeelding|Umslag
+Pagina's||20
+Opmarkingen||10",
 );
 
 /** Dutch (Nederlands)
@@ -4600,7 +4622,7 @@ $messages['yi'] = array(
 	'proofreadpage_prevpage' => 'פֿריערדיגער בלאַט',
 );
 
-/** Yue (粵語) */
+/** Cantonese (粵語) */
 $messages['yue'] = array(
 	'proofreadpage_desc' => '容許簡易噉去比較原掃瞄同埋文字',
 	'proofreadpage_namespace' => '頁',

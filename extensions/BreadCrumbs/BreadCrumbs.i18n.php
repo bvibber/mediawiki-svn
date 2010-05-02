@@ -641,7 +641,7 @@ $messages['vo'] = array(
 	'breadcrumbs-desc' => 'Jonön gebanaluvegi da vük',
 );
 
-/** Yue (粵語)
+/** Cantonese (粵語)
  * @author Shinjiman
  */
 $messages['yue'] = array(

@@ -226,7 +226,7 @@ $messages['ka'] = array(
 	'tspoll-id-error' => 'იდენტიფიკაცია არ იყო მოცემული!',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

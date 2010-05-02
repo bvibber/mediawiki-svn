@@ -180,6 +180,14 @@ $messages['no'] = array(
 	'nll-lastseparator' => '&#32;og&#32;',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'nll-desc' => 'Mesa en forma aisida de listas en lengatges naturals',
+	'nll-lastseparator' => '&#32;e&#32;',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  */
@@ -217,5 +225,12 @@ $messages['ru'] = array(
  */
 $messages['sv'] = array(
 	'nll-lastseparator' => ' och',
+);
+
+/** Yoruba (Yorùbá)
+ * @author Demmy
+ */
+$messages['yo'] = array(
+	'nll-lastseparator' => '&#32;àti&#32;',
 );
 

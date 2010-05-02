@@ -1532,9 +1532,13 @@ $messages['km'] = array(
  */
 $messages['ko'] = array(
 	'extensiondistributor' => '미디어위키 확장 기능 내려받기',
+	'extensiondistributor-desc' => '확장 기능 스냅샷 배포를 위한 확장 기능',
 	'extdist-not-configured' => '$wgExtDistTarDir 과 $wgExtDistWorkingCopy를 설정하십시오.',
+	'extdist-wc-missing' => '설정된 복제 디렉토리가 존재하지 않습니다!',
+	'extdist-no-such-extension' => '"$1" 확장 기능이 없습니다.',
 	'extdist-no-such-version' => '확장 기능 "$1"은 "$2" 버전용이 존재하지 않습니다.',
 	'extdist-choose-extension' => '당신이 다운로드하기를 원하는 확장 기능을 선택하십시오:',
+	'extdist-wc-empty' => '설정된 복제 디렉토리에 배포 가능한 확장 기능이 없습니다!',
 	'extdist-submit-extension' => '계속',
 	'extdist-current-version' => '개발 중인 버전 (trunk)',
 	'extdist-choose-version' => '
@@ -1543,10 +1547,14 @@ $messages['ko'] = array(
 당신의 미디어위키 버전을 선택하십시오.
 
 대부분의 확장 기능은 미디어위키의 여러 버전에서도 동작합니다, 당신의 미디어위키 확장 기능이 여기 없거나 최신 버전이 필요하다면, 현재 버전 다운로드를 선택하십시오.',
+	'extdist-no-versions' => '선택한 확장 기능($1)이 어떤 버전으로도 존재하지 않습니다.',
 	'extdist-submit-version' => '계속',
 	'extdist-no-remote' => '외부 서브버전 클라이언트와 연결할 수 없습니다.',
 	'extdist-remote-error' => '외부 서브버전 클라이언트에서 오류 발생: <pre>$1</pre>',
+	'extdist-remote-invalid-response' => '원격 서브버전 클라이언트에서 잘못된 응답이 도착했습니다.',
 	'extdist-svn-error' => 'SVN에서 오류가 발생하렸습니다: <pre>$1</pre>',
+	'extdist-svn-parse-error' => '"svn info"의 XML을 처리할 수 없습니다: <pre>$1</pre>',
+	'extdist-tar-error' => 'Tar에서 종료 코드 $1을(를) 반환하였습니다:',
 	'extdist-created' => "미디어위키 확장 기능 <b>$1</b>의 <b>$2</b> 버전의 묶음 <b>$3</b> 이 생성되었습니다. 5초 후에 다운로드가 자동적으로 실행될 것입니다.
 
 묶음의 URL은 다음에 있습니다:
@@ -1704,7 +1712,7 @@ Als u vragen hebt over dit distributiesysteem voor uitbreidingen, ga dan naar [[
  * @author Brest
  */
 $messages['mk'] = array(
-	'extensiondistributor' => 'Преземи го проширувањето за MediaWiki',
+	'extensiondistributor' => 'Преземање на додаток за МедијаВики',
 	'extensiondistributor-desc' => 'Проширување за дистрибуција на приказни архиви на проширувања',
 	'extdist-not-configured' => 'Задајте $wgExtDistTarDir и $wgExtDistWorkingCopy',
 	'extdist-wc-missing' => 'Зададениот директориум со работниот примерок не постои!',
@@ -1739,7 +1747,7 @@ tar -xzf $5 -C /var/www/mediawiki/extensions
 
 Во Windows за таа намена можете да го употребите [http://www.7-zip.org/ 7-zip].
 
-Ако вашето вики е на даличински сервер, отпакувајте ги податотеките во привремен именик на вашиот локален компјутер, а потоа подигнете ги '''сите''' отпакувани податотеки во именикот за проширувања на опслужувачот.
+Ако вашето вики е на далечински сервер, отпакувајте ги податотеките во привремен именик на вашиот локален компјутер, а потоа подигнете ги '''сите''' отпакувани податотеки во именикот за проширувања на опслужувачот.
 
 Имајте на ум дека некои проширувања бараат податотека наречена ExtensionFunctions.php, која ќе ја најдете на <tt>extensions/ExtensionFunctions.php</tt>, т.е., во ''родителскиот'' именик на именикот на ова конкретно проширување. Снимката за овие проширувања ја содржи оваа податотека како tar-бомба, која се распакува во ./ExtensionFunctions.php. Немојте да испуштите да ја подигнете оваа податотека на вашиот далечински сервер.
 
@@ -2259,11 +2267,12 @@ $messages['pt'] = array(
 	'extdist-wc-empty' => 'A directoria de cópia de trabalho não possui extensões distribuíveis!',
 	'extdist-submit-extension' => 'Continuar',
 	'extdist-current-version' => 'Versão de desenvolvimento (tronco)',
-	'extdist-choose-version' => '<big>Você está a descarregar a extensão <b>$1</b>.</big>
+	'extdist-choose-version' => '
+<big>Está a descarregar a extensão <b>$1</b>.</big>
 
-Selecione a versão do seu MediaWiki.
+Seleccione a sua versão do MediaWiki.
 
-A maioria das extensões funciona através de múltiplas versões do MediaWiki, portanto, se a versão do seu MediaWiki não estiver aqui, ou se tiver necessidade das últimas funcionalidades da extensão, experimente usar a versão atual.',
+A maioria das extensões funciona em várias versões do MediaWiki, portanto se a sua versão do MediaWiki não aparecer aqui, ou se precisa das últimas funcionalidades da extensão, experimente usar a versão mais recente.',
 	'extdist-no-versions' => 'A extensão selecionada ($1) não está disponível em nenhuma versão!',
 	'extdist-submit-version' => 'Continuar',
 	'extdist-no-remote' => 'Não foi possível contactar o cliente Subversion remoto.',

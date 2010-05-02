@@ -88,6 +88,13 @@ $messages['af'] = array(
 	'tooltip-drafts-save' => 'As werkweergawe stoor',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'drafts-view-article' => 'Pachina',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK
@@ -1040,7 +1047,7 @@ $messages['ko'] = array(
 	'tooltip-drafts-save' => '초안으로 저장하기',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -1067,7 +1074,7 @@ Wellß De wigger maaache?',
 	'tooltip-drafts-save' => 'Als ene Entworf avspeichere',
 );
 
-/** Cornish (Kernowek)
+/** Cornish (Kernewek)
  * @author Kw-Moon
  */
 $messages['kw'] = array(
@@ -1413,6 +1420,7 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Malafaya
  */
 $messages['pt'] = array(
@@ -1426,7 +1434,7 @@ Rascunhos não usados serão descartados automaticamente após {{PLURAL:$1|$1 di
 	'drafts-view-saved' => 'Gravado',
 	'drafts-view-discard' => 'Descartar',
 	'drafts-view-nonesaved' => 'Não tem neste momento quaisquer rascunhos gravados.',
-	'drafts-view-notice' => 'Você tem $1 para esta página.',
+	'drafts-view-notice' => 'Tem $1 para esta página.',
 	'drafts-view-notice-link' => '$1 {{PLURAL:$1|rascunho|rascunhos}}',
 	'drafts-view-warn' => 'Se navegar para fora desta página, perderá todas as alterações por gravar desta página.
 Pretende continuar?',

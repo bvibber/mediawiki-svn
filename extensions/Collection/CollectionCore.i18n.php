@@ -1619,6 +1619,13 @@ $messages['km'] = array(
 	'coll-show_collection_tooltip' => 'ចុច​ដើម្បី​កែប្រែ​/ទាញ​យក​/បញ្ជា​ទិញ​សៀវភៅ​របស់​អ្នក​',
 );
 
+/** Kannada (ಕನ್ನಡ)
+ * @author Nayvik
+ */
+$messages['kn'] = array(
+	'coll-help' => 'ಸಹಾಯ',
+);
+
 /** Korean (한국어)
  * @author Ilovesabbath
  * @author Klutzy
@@ -1655,7 +1662,7 @@ $messages['kri'] = array(
 	'coll-create_a_book' => 'Mek buk',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -1903,7 +1910,9 @@ $messages['ms'] = array(
  * @author Botuzhaleny-sodamo
  */
 $messages['myv'] = array(
-	'coll-add_category' => 'Поладомс категория',
+	'coll-create_a_book' => 'Шкамс кинига',
+	'coll-book_creator' => 'Кинигань шкиця',
+	'coll-add_category' => 'Поладомс кинигазот те категориянть',
 	'coll-bookscategory' => 'Кинигат',
 	'coll-helppage' => 'Help:Кинигат',
 );
@@ -2084,6 +2093,8 @@ $messages['oc'] = array(
 	'coll-disable' => 'desactivar',
 	'coll-book_creator_disable' => 'Desactivar lo creator de libre',
 	'coll-book_creator_disable_tooltip' => "Quitar d'utilizar lo creator de libre",
+	'coll-add_linked_article' => 'Apondre la pagina wiki ligada a vòstre libre',
+	'coll-remove_linked_article' => 'Levar la pagina ligada de vòstre libre',
 	'coll-add_category' => 'Apondre una categoria a vòstre libre',
 	'coll-add_category_tooltip' => "Apondre totes los articles d'aquesta categoria a vòstre libre",
 	'coll-add_this_page' => 'Apondre aquesta pagina a vòstre libre',
@@ -2988,7 +2999,39 @@ $messages['yi'] = array(
 	'coll-help' => 'הילף',
 );
 
-/** Yue (粵語) */
+/** Yoruba (Yorùbá)
+ * @author Demmy
+ */
+$messages['yo'] = array(
+	'coll-print_export' => 'Ìtẹ́síìwé/ìkójáde',
+	'coll-create_a_book' => 'Dá ìwé',
+	'coll-create_a_book_tooltip' => 'Dá ìwé tàbí ìkójọ ojúewé',
+	'coll-book_creator' => 'Olùdá ìwé',
+	'coll-download_as' => 'Rùsílẹ̀ gẹ́gẹ́ bíi $1',
+	'coll-download_as_tooltip' => 'Rùsílẹ̀ àtẹ́jáde $1 ojúewé wiki yìí',
+	'coll-disable' => 'ìdálẹ́kun',
+	'coll-book_creator_disable' => 'Ìdálẹ́kun olùdá ìwé',
+	'coll-book_creator_disable_tooltip' => 'Jáwọ́ lílo olùdá ìwé',
+	'coll-add_linked_article' => 'Ṣàfikún ojúewé wiki jíjápọ̀ mọ́ ìwé yín',
+	'coll-add_category' => 'Ṣàfikún ẹ̀ka yìí mọ́ ìwé yín',
+	'coll-add_this_page' => 'Ṣàfikún ojúewé yìí mọ́ ìwé yín',
+	'coll-bookscategory' => 'Àwọn ìwé',
+	'coll-help' => 'Ìrànwọ́',
+	'coll-help_tooltip' => 'Àfihàn ìránwọ́ nípa dídá àwọn ìwé',
+	'coll-helppage' => 'Help:Àwọn ìwé',
+	'coll-load_collection' => 'Gbé ìwé síta',
+	'coll-load_collection_tooltip' => 'Gbé ìwé yìí síta bíi ìwé yín lọ́wọ́lọ́wọ́',
+	'coll-n_pages' => '{{PLURAL:$1|ojúewé|àwọn ojúewé}} $1',
+	'coll-printable_version_pdf' => 'Àtẹ̀jáde PDF',
+	'coll-remove_this_page' => 'Ẹ yọ ojúewé yìí kúrò nínú ìwé yín',
+	'coll-remove_page_tooltip' => 'Ẹ yọ ojúewé wiki lọ́wọ́lọ́wó yìí kúrò nínú ìwé yín',
+	'coll-show_collection' => 'Àfihàn ìwé',
+	'coll-not_addable' => 'Ojúewé yìí kò ṣe é ṣàfikún',
+	'coll-make_suggestions' => 'Ìdámọ́ràn ojúewé',
+	'coll-make_suggestions_tooltip' => 'Àfihàn àwọn ìdámọ̀ràn nípa àwọn ojúewé inú ìwé yín',
+);
+
+/** Cantonese (粵語) */
 $messages['yue'] = array(
 	'coll-create_a_book' => '整一本書',
 	'coll-download_as' => '下載做$1',

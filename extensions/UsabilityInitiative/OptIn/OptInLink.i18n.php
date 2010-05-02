@@ -586,7 +586,7 @@ $messages['ko'] = array(
 	'tooltip-pt-optin-feedback' => '새로운 기능에 대한 당신의 의견을 남겨주세요',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Melancholie
  * @author Purodha
  */
@@ -1138,7 +1138,7 @@ $messages['yi'] = array(
 	'tooltip-pt-optin-feedback' => 'געבן פֿידבעק וועגן אײַער דערפֿאַרונג מיט די נײַע אייגנקייטן',
 );
 
-/** Yue (粵語)
+/** Cantonese (粵語)
  * @author Shinjiman
  */
 $messages['yue'] = array(

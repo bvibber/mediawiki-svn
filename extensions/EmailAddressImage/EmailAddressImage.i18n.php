@@ -253,7 +253,7 @@ $messages['ko'] = array(
 	'emailaddressimage-desc' => '이메일 주소를 그림으로 표시할 수 있도록 <tt>&lt;email&gt;</tt> 태그를 추가',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -300,6 +300,13 @@ $messages['mr'] = array(
  */
 $messages['nds'] = array(
 	'emailaddressimage-desc' => 'Föögt dat <tt>&lt;email&gt;</tt>-Tag to, E-Mail-Adressen as Bild dortostellen',
+);
+
+/** Nedersaksisch (Nedersaksisch)
+ * @author Servien
+ */
+$messages['nds-nl'] = array(
+	'emailaddressimage-desc' => 'Voeg <tt>&lt;email&gt;</tt> toe um een netposadres as ofbeelding te laoten zien',
 );
 
 /** Dutch (Nederlands)
@@ -366,7 +373,7 @@ $messages['pt-br'] = array(
 	'emailaddressimage-desc' => 'Adiciona <tt>&lt;email&gt;</tt> para apresentar um endereço de e-mail como imagem',
 );
 
-/** Rhaeto-Romance (Rumantsch)
+/** Romansh (Rumantsch)
  * @author Gion-andri
  */
 $messages['rm'] = array(

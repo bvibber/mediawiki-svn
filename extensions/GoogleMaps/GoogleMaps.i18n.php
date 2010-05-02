@@ -1189,7 +1189,9 @@ $wgGoogleMapsMessages['de'] = array(
 );
 
 /** German (formal address) (Deutsch (Sie-Form))
+ * @author LWChris
  * @author Raimond Spekking
+ * @author The Evil IP address
  * @author Umherirrender
  * @author [[mw:User:Helge.at]]
  */
@@ -1197,12 +1199,12 @@ $wgGoogleMapsMessages['de-formal'] = array(
 	'gm-incompatible-browser' => 'Um die Karte sehen zu können, die hier angezeigt werden soll, brauchen Sie einen kompatiblen Browser.',
 	'gm-incompatible-browser-link' => 'Klicken Sie hier für eine Liste kompatibler Browser.',
 	'gm-no-editor' => 'Leider unterstützt Ihr Browser den interaktiven Karten-Editor nicht. Versuchen Sie es mit der neuesten Version von <a href="http://www.mozilla.org/products/firefox">Firefox</a> (Windows, Mac und Linux) oder <a href="http://www.microsoft.com/ie">Internet Explorer</a> (Windows).',
-	'gm-note' => 'Achtung: Kopieren Sie die Wiki-Syntax in die Seite (unten), bevor Sie „Karte laden“, „Speichern“ oder „Vorschau“ klicken!',
+	'gm-note' => 'Achtung: Kopieren Sie alles, was Sie speichern möchten, in die Seite (unten), bevor Sie „Karte laden“, „Speichern“ oder „Vorschau“ klicken!',
 	'gm-are-you-sure' => 'Sind Sie sicher?',
-	'gm-search-preface' => 'Klicken Sie auf die Karte, um einen Punkt hinzuzufügen. Oder springen Sie zu einer Stadt, Land, Adresse oder einem Geschäft:',
-	'gm-geocode-preface' => 'Klicken Sie auf die Karte, um einen Punkt hinzuzufügen. Oder springen Sie zu einer Stadt, Land oder Adresse:',
+	'gm-search-preface' => 'Klicken Sie auf die Karte, um einen Punkt hinzuzufügen, oder springen Sie zu einer Stadt, Land, Adresse oder einem Geschäft:',
+	'gm-geocode-preface' => 'Klicken Sie auf die Karte, um einen Punkt hinzuzufügen, oder springen Sie zu einer Stadt, Land oder Adresse:',
 	'gm-no-search-preface' => 'Klicken Sie auf die Karte, um einen Punkt hinzuzufügen.',
-	'gm-editing-path' => 'Klicken Sie auf die Karte, um diesen Pfad zu verlängern.',
+	'gm-editing-path' => 'Klicken Sie auf die Karte, um mehr Punkte zum Pfad hinzuzufügen.',
 );
 
 /** Zazaki (Zazaki)
@@ -1361,6 +1363,16 @@ $wgGoogleMapsMessages['el'] = array(
 	'gm-earth' => 'Γη',
 	'gm-moon' => 'Σελήνη',
 	'gm-mars' => 'Άρης',
+);
+
+/** British English (British English)
+ * @author Lcawte
+ */
+$wgGoogleMapsMessages['en-gb'] = array(
+	'gm-color-path' => 'change colour',
+	'gm-color-fill' => 'change colour fill',
+	'gm-fill-color' => 'Fill colour',
+	'gm-line-color' => 'Line colour',
 );
 
 /** Esperanto (Esperanto)
@@ -3000,6 +3012,7 @@ $wgGoogleMapsMessages['kn'] = array(
 	'gm-balloon-title' => 'ಶೀರ್ಷಿಕೆ:',
 	'gm-yes' => 'ಹೌದು',
 	'gm-no' => 'ಇಲ್ಲ',
+	'gm-search' => 'ಹುಡುಕು',
 );
 
 /** Korean (한국어)
@@ -3037,7 +3050,7 @@ $wgGoogleMapsMessages['krj'] = array(
 	'gm-search' => 'Sagap',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $wgGoogleMapsMessages['ksh'] = array(
@@ -3669,7 +3682,7 @@ $wgGoogleMapsMessages['nl'] = array(
 	'gm-balloon-link-article' => 'Verwijzing naar deze pagina (optioneel):',
 	'gm-make-marker' => 'Beschrijving (wikiopmaak toegestaan):',
 	'gm-remove' => 'verwijderen',
-	'gm-caption' => 'Omschrijving',
+	'gm-caption' => 'Bijschrift',
 	'gm-tab-title' => 'Tabbladtitel',
 	'gm-tab' => 'Tab',
 	'gm-start-path' => 'pad toevoegen',
@@ -4270,8 +4283,8 @@ Experimente a última versão do <a href="http://www.microsoft.com/ie">Internet 
 	'gm-make-marker' => 'Legenda (notação wiki OK):',
 	'gm-remove' => 'remover',
 	'gm-caption' => 'Legenda',
-	'gm-tab-title' => 'Título da pestana',
-	'gm-tab' => 'Pestana',
+	'gm-tab-title' => 'Título do separador',
+	'gm-tab' => 'Separador',
 	'gm-start-path' => 'iniciar um caminho',
 	'gm-trace-area' => 'traçar uma área',
 	'gm-save-point' => 'gravar &amp; fechar',
@@ -4616,6 +4629,19 @@ $wgGoogleMapsMessages['ru'] = array(
 	'gm-kml-export' => 'Экспортировать эту карту в KML',
 	'gm-earth' => 'Земля',
 	'gm-moon' => 'Луна',
+	'gm-mars' => 'Марс',
+);
+
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$wgGoogleMapsMessages['rue'] = array(
+	'gm-zoom-control' => 'Навіґація',
+	'gm-large' => 'Великый',
+	'gm-medium' => 'Середнїй',
+	'gm-small' => 'Маленькый',
+	'gm-earth' => 'Земля',
+	'gm-moon' => 'Місяць',
 	'gm-mars' => 'Марс',
 );
 
@@ -6033,7 +6059,7 @@ $wgGoogleMapsMessages['yi'] = array(
 	'gm-mars' => 'מאַרס',
 );
 
-/** Yue (粵語)
+/** Cantonese (粵語)
  * @author Shinjiman
  */
 $wgGoogleMapsMessages['yue'] = array(

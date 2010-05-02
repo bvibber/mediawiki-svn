@@ -521,7 +521,7 @@ $messages['km'] = array(
 	'smoothgallery-javascript-disabled' => 'តម្រូវឱ្យមាន Javascript ដើម្បី​មើលបានល្អ​វិចិត្រសាលនេះ​។',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -744,6 +744,7 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Malafaya
  */
 $messages['pt'] = array(
@@ -762,7 +763,7 @@ Cerifique-se que {{PLURAL:$3|a imagem pedida existe|todas as imagens pedidas exi
 	'smoothgallery-invalid-images' => '{{PLURAL:$2|A seguinte imagem pedida era|As seguintes imagens pedidas eram}} de um tipo inválido: $1',
 	'smoothgallery-unexpected-error' => 'Houve um erro inesperado.
 Por favor, reporte o problema.',
-	'smoothgallery-javascript-disabled' => 'Javascript é requerido para visualizar esta galeria adequadamente.',
+	'smoothgallery-javascript-disabled' => 'Javascript é requerido para ver esta galeria adequadamente.',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

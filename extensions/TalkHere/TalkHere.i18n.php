@@ -649,7 +649,7 @@ $messages['km'] = array(
 	'talkhere-collapse' => 'លាក់ឧបករណ៍កែប្រែ',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

@@ -44,6 +44,7 @@ $messages['en'] = array(
 $messages['qqq'] = array(
 	'errorhandler-desc' => 'Extension description displayed on [[Special:Version]].',
 	'errorhandler-errors' => '{{Identical|Error}}',
+	'errorhandler-error-warning' => '{{Identical|Warning}}',
 	'errorhandler-msg-text' => '*$1 - error name
 *$2 - error message
 *$3 - filename
@@ -179,10 +180,10 @@ $messages['br'] = array(
 	'errorhandler-error-fatal' => 'Fazi diremed',
 	'errorhandler-error-warning' => 'Diwallit',
 	'errorhandler-error-parse' => 'Fazi parser',
-	'errorhandler-error-notice' => 'Notennig',
+	'errorhandler-error-notice' => 'Kemenn',
 	'errorhandler-error-deprecated' => "Dic'hizet",
-	'errorhandler-error-core-error' => 'Fazi gant ar galonenn',
-	'errorhandler-error-core-warning' => 'Kemenn eus ar galonenn',
+	'errorhandler-error-core-error' => 'Fazi er graoñenn',
+	'errorhandler-error-core-warning' => 'Kemenn diwall a-berzh ar graoñenn',
 	'errorhandler-error-compile-error' => 'Fazi kempunadur',
 	'errorhandler-error-compile-warning' => 'Kemenadenn diwall ar kempunadur',
 	'errorhandler-error-user-error' => 'Fazi implijer',
@@ -737,7 +738,14 @@ $messages['km'] = array(
 	'errorhandler-trace-line' => '$1 (បន្ទាត់ទី$2): $3',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Kannada (ಕನ್ನಡ)
+ * @author Nayvik
+ */
+$messages['kn'] = array(
+	'errorhandler-error-warning' => 'ಎಚ್ಚರಿಕೆ',
+);
+
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

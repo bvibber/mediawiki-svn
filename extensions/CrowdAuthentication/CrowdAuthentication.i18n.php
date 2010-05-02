@@ -201,7 +201,7 @@ $messages['ja'] = array(
 	'crowdauthentication-desc' => 'Atlassian社のCrowdシングルサインオンツールを利用する認証プラグイン',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -234,6 +234,13 @@ $messages['mk'] = array(
  */
 $messages['mr'] = array(
 	'crowdauthentication-desc' => 'ऍट्लेशिअन क्राउड साठीचे प्रमाणिकरण प्लग-इन',
+);
+
+/** Nedersaksisch (Nedersaksisch)
+ * @author Servien
+ */
+$messages['nds-nl'] = array(
+	'crowdauthentication-desc' => 'Uutbreidingsmedule van de echheidscontrole veur Atlassian Crowd',
 );
 
 /** Dutch (Nederlands)
@@ -390,7 +397,7 @@ $messages['vi'] = array(
 	'crowdauthentication-desc' => 'Phần bổ sung xác minh cho Atlassian Crowd',
 );
 
-/** Yue (粵語)
+/** Cantonese (粵語)
  * @author Shinjiman
  */
 $messages['yue'] = array(

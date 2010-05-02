@@ -225,7 +225,7 @@ $messages['br'] = array(
 	'contactpage-title' => 'Darempred',
 	'contactpage-pagetext' => 'Mar plij implijit ar furmskrid da-heul evit mont e darempred ganeomp.',
 	'contactpage-legend' => 'Kas ur postel',
-	'contactpage-defsubject' => 'Kemenadenn',
+	'contactpage-defsubject' => 'Kemennadenn daremprediñ',
 	'contactpage-subject-and-sender' => '$1 (eus $2)',
 	'contactpage-subject-and-sender-withip' => '$1 (eus $2 da $3)',
 	'contactpage-fromname' => "Hoc'h anv : *",
@@ -312,6 +312,7 @@ $messages['cs'] = array(
 	'contactpage-formfootnotes-required' => 'Všechna pole musí být vyplněna.',
 	'contactpage-captcha' => 'Abyste mohli odeslat zprávu, musíte vyřešit CAPTCHA ([[Special:Captcha/help|vysvětlení]])',
 	'contactpage-captcha-failed' => '{{GENDER:Neuspěl|Neuspěla|Neuspěli}} jste v testu CAPTCHA! ([[Special:Captcha/help|vysvětlení]])',
+	'contactpage-includeip' => 'Přiložit ke zprávě mou IP adresu.',
 );
 
 /** Welsh (Cymraeg)
@@ -1071,6 +1072,7 @@ $messages['ko'] = array(
 	'contactpage-legend' => '이메일 보내기',
 	'contactpage-defsubject' => '연락 메시지',
 	'contactpage-subject-and-sender' => '$1 ($2이(가) 보냄)',
+	'contactpage-subject-and-sender-withip' => '$1 ($2가 $3에서 보냄)',
 	'contactpage-fromname' => '당신의 이름: *',
 	'contactpage-fromaddress' => '당신의 이메일 주소 : **',
 	'contactpage-formfootnotes' => '* 선택 사항<br />
@@ -1083,7 +1085,7 @@ $messages['ko'] = array(
 	'contactpage-includeip' => '이 메시지에 내 IP 주소를 포함하기',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -1111,7 +1113,7 @@ Don et einfach norr_ens versöke.
 ([[Special:Captcha/help|Mieh Enfommazjuhne]])',
 );
 
-/** Cornish (Kernowek)
+/** Cornish (Kernewek)
  * @author Kernoweger
  * @author Kw-Moon
  */
@@ -1194,7 +1196,7 @@ $messages['lt'] = array(
 	'contactpage-captcha-failed' => 'Captcha testas nepavyko! ([[Special:Captcha/help|daugiau informacijos]])',
 );
 
-/** Laz (Laz)
+/** Lazuri (Lazuri)
  * @author Bombola
  */
 $messages['lzz'] = array(
@@ -1462,6 +1464,7 @@ $messages['oc'] = array(
 	'contactpage-formfootnotes-required' => 'Totes los camps son requesits.',
 	'contactpage-captcha' => 'Per mandar lo messatge, mercés de resoudre lo captcha ([[Special:Captcha/help|ajuda]])',
 	'contactpage-captcha-failed' => 'Avètz pas desencodat lo captcha ! ([[Special:Captcha/help|ajuda]])',
+	'contactpage-includeip' => 'Inclure mon adreça IP dins aquel messatge.',
 );
 
 /** Deitsch (Deitsch)
@@ -2002,6 +2005,7 @@ $messages['udm'] = array(
 /** Ukrainian (Українська)
  * @author NickK
  * @author Prima klasy4na
+ * @author Тест
  */
 $messages['uk'] = array(
 	'contact' => "Сторінка зв'язку",
@@ -2022,6 +2026,7 @@ $messages['uk'] = array(
 	'contactpage-formfootnotes-required' => "Усі поля є обов'язковими.",
 	'contactpage-captcha' => "Щоб відправити повідомлення, будь ласка, розв'яжіть captcha ([[Special:Captcha/help|докладніше]])",
 	'contactpage-captcha-failed' => "Captcha розв'язана неправильно! ([[Special:Captcha/help|докладніше]])",
+	'contactpage-includeip' => 'Додати мою IP-адресу до цього повідомлення.',
 );
 
 /** Urdu (اردو)
@@ -2137,7 +2142,7 @@ $messages['yi'] = array(
 	'contactpage-fromaddress-required' => 'אייער ע-פאסט:',
 );
 
-/** Yue (粵語)
+/** Cantonese (粵語)
  * @author Shinjiman
  */
 $messages['yue'] = array(

@@ -33,7 +33,7 @@ $egMapsServices[MapsGoogleMaps::SERVICE_NAME] = array(
 		'display_point' => 'MapsGoogleMapsDispPoint',
 		'display_map' => 'MapsGoogleMapsDispMap',
 	)
-);	
+);
 
 /**
  * Class for Google Maps initialization.
@@ -79,7 +79,8 @@ class MapsGoogleMaps {
 					'in_array' => $allowedTypes
 				),
 				'default' => $egMapsGoogleMapsType, // FIXME: default value should not be used when not present in types parameter.
-				'output-type' => 'gmaptype'
+				'output-type' => 'gmaptype',
+				'dependencies' => array( 'types' )
 			),
 			'types' => array(
 				'type' => array( 'string', 'list' ),
@@ -98,7 +99,7 @@ class MapsGoogleMaps {
 			),
 		);
 		
-		$egMapsServices[self::SERVICE_NAME]['parameters']['zoom']['criteria']['in_range'] = array( 0, 20 );		
+		$egMapsServices[self::SERVICE_NAME]['parameters']['zoom']['criteria']['in_range'] = array( 0, 20 );
 	}
 
 	// http://code.google.com/apis/maps/documentation/reference.html#GMapType.G_NORMAL_MAP
@@ -163,8 +164,10 @@ class MapsGoogleMaps {
 	 * 
 	 * @return boolean
 	 */
-	public static function isGOverlay( $value ) {
+	public static function isGOverlay( $value, array $metaData ) {
 		$value = explode( '-', $value );
+		if ( count( $value ) > 2 ) return false;
+		if ( count( $value ) > 1 && !in_array( $value[1], array( '0', '1' ) ) ) return false;
 		return in_array( $value[0], self::getOverlayNames() );
 	}
 
@@ -225,9 +228,11 @@ class MapsGoogleMaps {
 	         'fj' => 'fil',  // google does not support Fijian - use Filipino as close(?) supported relative
 	         'or' => 'en'    // v2 does not support Oriya.
 		);
+		
 		if ( array_key_exists( $code, $mappings ) ) {
 			$code = $mappings[$code];
 		}
+		
 		return $code;
 	}
 	
@@ -296,7 +301,7 @@ class MapsGoogleMaps {
 					$urlNr = self::$overlayData[$overlay];
 					$overlayHtml .= "<input id='$mapName-overlay-box-$overlay' name='$mapName-overlay-box' type='checkbox' onclick='switchGLayer(GMaps[\"$mapName\"], this.checked, GOverlays[$urlNr])' /> $label <br />";
 					if ( $isOn ) {
-						$onloadFunctions .= "addOnloadHook( function() { initiateGOverlay('$mapName-overlay-box-$overlay', '$mapName', $urlNr) } );";
+						$onloadFunctions[] = "addOnloadHook( function() { initiateGOverlay('$mapName-overlay-box-$overlay', '$mapName', $urlNr) } );";
 					}
 				}
 			}
@@ -309,7 +314,7 @@ $overlayHtml
 </div></form></div>		
 EOT;
 
-		if ( count($onloadFunctions) > 0 ) {
+		if ( count( $onloadFunctions ) > 0 ) {
 			$output .= "<script type='$wgJsMimeType'>" . implode( "\n", $onloadFunctions ) . '</script>';
 		}
 	}

@@ -370,7 +370,7 @@ $messages['km'] = array(
 	'protectsection_forbidden' => 'ត្រូវបានហាមឃាត់',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

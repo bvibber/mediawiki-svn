@@ -47,15 +47,15 @@ function efMapsRenderCoordinates() {
 	$args = func_get_args();
 	
 	// We already know the $parser.
-	array_shift( $args ); 
+	array_shift( $args );
 	
 	$manager = new ValidatorManager();
 	
-	$parameters = $manager->manageParameters( 
+	$parameters = $manager->manageParameters(
 		$args,
 		array(
 			'location' => array(
-				'required' => true 
+				'required' => true
 			),
 			'format' => array(
 				'criteria' => array(
@@ -69,7 +69,7 @@ function efMapsRenderCoordinates() {
 			'directional' => array(
 				'type' => 'boolean',
 				'default' => $egMapsCoordinateDirectional
-			),								
+			),
 		),
 		array( 'location', 'format', 'directional' )
 	);
@@ -80,7 +80,7 @@ function efMapsRenderCoordinates() {
 		$parsedCoords = MapsCoordinateParser::parseCoordinates( $parameters['location'] );
 		
 		if ( $parsedCoords ) {
-			$output = MapsCoordinateParser::formatCoordinates( $parsedCoords, $parameters['notation'], $parameters['directional'] ) .
+			$output = MapsCoordinateParser::formatCoordinates( $parsedCoords, $parameters['format'], $parameters['directional'] ) .
 				'<br />' . $manager->getErrorList();
 		} else {
 			$output = htmlspecialchars( wfMsgExt( 'maps-invalid-coordinates', 'parsemag', $parameters['location'] ) ) .

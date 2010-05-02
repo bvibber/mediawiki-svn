@@ -67,6 +67,13 @@ $messages['af'] = array(
 	'useractivity-user_message' => "$1 het {{PLURAL:$4|'n boodskap|boodskappe}} aan $3 gestuur",
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'useractivity-group-user_message' => '{{PLURAL:$1|un mensache|$1 mensaches}}',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -361,7 +368,14 @@ $messages['ja'] = array(
 	'useractivity-user_message' => '$1 {{PLURAL:$2|は次の人にメッセージを送りました|は次の人々にメッセージを送りました}} $3',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Kannada (ಕನ್ನಡ)
+ * @author Nayvik
+ */
+$messages['kn'] = array(
+	'useractivity-group-user_message' => '{{PLURAL:$1|ಒಂದು ಸಂದೇಶ|$1 ಸಂದೇಶಗಳು}}',
+);
+
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

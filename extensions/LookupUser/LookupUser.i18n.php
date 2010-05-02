@@ -146,10 +146,11 @@ $messages['bg'] = array(
 
 /** Breton (Brezhoneg)
  * @author Fulup
+ * @author Y-M D
  */
 $messages['br'] = array(
 	'lookupuser' => 'Sellet ouzh titouroù an implijer',
-	'lookupuser-desc' => "[[Special:LookupUser|Adpakañ a ra an titouroù]] a denn d'un implijer bennak evel ar chomlec'h elektronek hag an niverenn ID",
+	'lookupuser-desc' => "[[Special:LookupUser|Adpakañ a ra an titouroù]] a denn d'un implijer bennak evel ar chomlec'h postel hag an niverenn ID",
 	'lookupuser-intro' => 'Merkaén un anv implijer da sellet ouzh e benndibaboù.',
 	'lookupuser-nonexistent' => "Fazi : n'eus ket eus an implijer-mañ",
 	'lookupuser-authenticated' => 'Aotreet e $1',
@@ -255,10 +256,11 @@ $messages['de'] = array(
 );
 
 /** German (formal address) (Deutsch (Sie-Form))
+ * @author LWChris
  * @author Raimond Spekking
  */
 $messages['de-formal'] = array(
-	'lookupuser-intro' => 'Geben Sie einen Benutzernamen ein, um die persönlichen Einstellungen eines Benutzers anzusehen.',
+	'lookupuser-intro' => 'Geben Sie einen Benutzernamen ein, um die persönlichen Einstellungen des Benutzers anzusehen.',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -754,7 +756,7 @@ $messages['ko'] = array(
 	'lookupuser-realname' => '실명: $1',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -1088,7 +1090,7 @@ $messages['ps'] = array(
 $messages['pt'] = array(
 	'lookupuser' => 'Procurar informação de utilizador',
 	'lookupuser-desc' => '[[Special:LookupUser|Obter informação]] sobre um utilizador tal como o correio electrónico e a identificação (ID)',
-	'lookupuser-intro' => 'Introduza um nome de utilizador para visualizar as preferências desse utilizador.',
+	'lookupuser-intro' => 'Introduza um nome de utilizador para ver as preferências desse utilizador.',
 	'lookupuser-nonexistent' => 'Erro: Utilizador não existe',
 	'lookupuser-authenticated' => 'autenticado em $1',
 	'lookupuser-not-authenticated' => 'não autenticado',

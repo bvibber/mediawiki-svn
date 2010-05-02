@@ -423,7 +423,7 @@ $messages['km'] = array(
 	'getdata' => 'យក​ទិន្នន័យ',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -472,6 +472,13 @@ $messages['mk'] = array(
 	'externaldata-db-could-not-connect' => 'Грешка: Не можев да се поврзам со базата на податоци.',
 	'externaldata-db-no-return-values' => 'Грешка: Нема назначено повратни вредности.',
 	'externaldata-db-invalid-query' => 'Грешно барање.',
+);
+
+/** Erzya (Эрзянь)
+ * @author Botuzhaleny-sodamo
+ */
+$messages['myv'] = array(
+	'getdata' => 'Дата мельга',
 );
 
 /** Dutch (Nederlands)

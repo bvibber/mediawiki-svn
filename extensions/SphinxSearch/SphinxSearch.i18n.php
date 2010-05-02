@@ -29,6 +29,17 @@ $messages['en'] = array(
 	'sphinxPspellError'        => 'Could not invoke pspell extension.'
 );
 
+/** Message documentation (Message documentation)
+ * @author EugeneZelenko
+ */
+$messages['qqq'] = array(
+	'sphinxPreviousPage' => '{{Identical|Previous}}',
+	'sphinxNextPage' => '{{Identical|Next}}',
+	'sphinxSearchButton' => '{{Identical|Search}}',
+	'sphinxLoading' => '{{Identical|Loading}}',
+	'sphinxSearchWarning' => '{{Identical|Warning}}',
+);
+
 /** Arabic (العربية)
  * @author OsamaK
  */
@@ -107,15 +118,33 @@ $messages['br'] = array(
 	'sphinxSearchWarning' => 'Diwallit : $1',
 );
 
-/** German (Deutsch) */
+/** German (Deutsch)
+ * @author Kghbln
+ */
 $messages['de'] = array(
+	'sphinxsearch' => 'Ermöglicht die Volltextsuche innerhalb des Wikis mit Hilfe von Sphinx',
+	'sphinxsearch-desc' => 'Ersetzt die MediaWiki-eigene Volltextsuchmaschine durch [http://www.sphinxsearch.com/ Sphinx]',
 	'sphinxSearchInNamespaces' => 'Suche in Namensräumen:',
 	'sphinxSearchInCategories' => 'Suche in Kategorien:',
+	'sphinxExcludeCategories' => 'Auszuschließende Kategorien',
+	'sphinxResultPage' => 'Ergebnisseite:',
 	'sphinxPreviousPage' => 'Vorherige',
 	'sphinxNextPage' => 'Nächste',
+	'sphinxSearchPreamble' => 'Zeige $1—$2 von $3 {{PLURAL:$3|Übereinstimmung|Übereinstimmungen}} für die Abfrage „<nowiki>$4</nowiki>“ an. Innerhalb $5 Sekunden ermittelt. Statistik:',
+	'sphinxSearchStats' => '* „$1“ wurde $2{{PLURAL:$2|-mal|-mal}} auf $3 {{PLURAL:$3|Seite|Seiten}} gefunden',
+	'sphinxSearchStatsInfo' => "''Obige Zahlen können auch Seiten enthalten, die aufgrund der Sucheinstellungen nicht angezeigt werden.''",
 	'sphinxSearchButton' => 'Suchen',
+	'sphinxSearchEpilogue' => 'Die zusätzliche Datenbank-Zeit betrug $1 Sekunden.',
 	'sphinxSearchDidYouMean' => 'Meintest du',
+	'sphinxMatchAny' => 'finde eines der Wörter',
+	'sphinxMatchAll' => 'finde alle Wörter',
+	'sphinxMatchTitles' => 'Nur in Seitennamen suchen',
 	'sphinxLoading' => 'Laden …',
+	'sphinxPowered' => 'Nutzt $1',
+	'sphinxClientFailed' => 'Sphinx-Client konnte nicht initialisiert werden.',
+	'sphinxSearchFailed' => 'Abfrage fehlgeschlagen: $1',
+	'sphinxSearchWarning' => 'Warnung: $1',
+	'sphinxPspellError' => 'Die pspell-Softwareerweiterung konnte nicht aufgerufen werden.',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -186,6 +215,13 @@ $messages['es'] = array(
 	'sphinxSearchFailed' => 'Falló la búsqueda $1',
 	'sphinxSearchWarning' => 'Advertencia $1',
 	'sphinxPspellError' => 'No se pudo invocar la extensión pspell.',
+);
+
+/** Estonian (Eesti)
+ * @author Hendrik
+ */
+$messages['et'] = array(
+	'sphinxSearchDidYouMean' => 'Kas mõtlesid:',
 );
 
 /** Finnish (Suomi)
@@ -362,8 +398,17 @@ $messages['ia'] = array(
 	'sphinxPspellError' => 'Non poteva invocar le extension pspell.',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Kenrick95
+ */
+$messages['id'] = array(
+	'sphinxPreviousPage' => 'Sebelumnya',
+	'sphinxNextPage' => 'Selanjutnya',
+);
+
 /** Japanese (日本語)
  * @author Aotake
+ * @author Fryed-peach
  * @author 青子守歌
  */
 $messages['ja'] = array(
@@ -375,9 +420,9 @@ $messages['ja'] = array(
 	'sphinxResultPage' => '結果ページ：',
 	'sphinxPreviousPage' => '前',
 	'sphinxNextPage' => '次',
-	'sphinxSearchPreamble' => '検索語 "<nowiki>$4</nowiki>" に対する$3件のヒットから $1—$2 件目の結果を表示中。検索にかかった時間 $5 :',
-	'sphinxSearchStats' => '* 「$1」が、$2の文書で、$3コ見つかりました',
-	'sphinxSearchStatsInfo' => '検索結果の件数には、検索の設定に基づき表示されていない文書も含まれている可能性があります。',
+	'sphinxSearchPreamble' => '検索語「<nowiki>$4</nowiki>」に対する$3件の{{PLURAL:$3|一致}}中 $1—$2 件目の結果を表示しています。検索にかかった時間は $5秒で、その他の統計は:',
+	'sphinxSearchStats' => '* 「$1」が、$3件の{{PLURAL:$3|文書}}中に、$2{{PLURAL:$2|回}}見つかりました',
+	'sphinxSearchStatsInfo' => "''検索結果の件数には、検索の設定により表示されていない文書も含まれている可能性があります。''",
 	'sphinxSearchButton' => '検索',
 	'sphinxSearchEpilogue' => '追加データベースにかかった時間は $1 秒です。',
 	'sphinxSearchDidYouMean' => 'もしかして：',
@@ -389,6 +434,15 @@ $messages['ja'] = array(
 	'sphinxClientFailed' => 'Sphinx クライアントを呼び出せませんでした。',
 	'sphinxSearchFailed' => '検索失敗: $1',
 	'sphinxSearchWarning' => '警告： $1',
+	'sphinxPspellError' => 'pspell 拡張機能を起動できませんでした。',
+);
+
+/** Kannada (ಕನ್ನಡ)
+ * @author Nayvik
+ */
+$messages['kn'] = array(
+	'sphinxSearchButton' => 'ಹುಡುಕು',
+	'sphinxSearchWarning' => 'ಎಚ್ಚರಿಕೆ: $1',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

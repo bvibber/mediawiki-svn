@@ -798,7 +798,7 @@ $messages['krj'] = array(
 	'countedits-ok' => 'OK dun',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -828,7 +828,7 @@ $messages['ku-latn'] = array(
 	'countedits-nocontribs' => 'Di vê wîkîyê da guherandin tune ne.',
 );
 
-/** Cornish (Kernowek)
+/** Cornish (Kernewek)
  * @author Kw-Moon
  */
 $messages['kw'] = array(
@@ -957,10 +957,11 @@ $messages['ms'] = array(
 );
 
 /** Maltese (Malti)
+ * @author Chrisportelli
  * @author Roderick Mallia
  */
 $messages['mt'] = array(
-	'countedits-username' => 'Isem l-utent:',
+	'countedits-username' => 'Isem tal-utent:',
 );
 
 /** Nahuatl (Nāhuatl)
@@ -1558,7 +1559,7 @@ $messages['yi'] = array(
 	'countedits-username' => 'באַניצער נאָמען:',
 );
 
-/** Yue (粵語)
+/** Cantonese (粵語)
  * @author Shinjiman
  */
 $messages['yue'] = array(

@@ -201,11 +201,12 @@ $messages['de'] = array(
 );
 
 /** German (formal address) (Deutsch (Sie-Form))
+ * @author Kghbln
  * @author Umherirrender
  */
 $messages['de-formal'] = array(
 	'badaccess-read' => 'Warnung: „$1“ verweist hierher, aber Sie haben keine ausreichende Berechtigung um die Seite zu sehen.',
-	'security-infosysops' => 'Für Sie sind keine Begrenzungen aktiv, weil Sie der Gruppe „Administratoren“ angehören',
+	'security-infosysops' => 'Für Sie sind keine Einschränkungen aktiv, weil Sie der Gruppe „Administratoren“ angehören.',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -573,7 +574,7 @@ $messages['kn'] = array(
 	'security-type-category' => 'ವರ್ಗ',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -825,7 +826,7 @@ $messages['ps'] = array(
  */
 $messages['pt'] = array(
 	'security' => 'Registo de segurança',
-	'security-desc' => 'Incrementa a protecção de páginas do MediaWiki para permitir restrições à visualização do conteúdo de páginas',
+	'security-desc' => 'Expande a protecção de páginas do MediaWiki para permitir restrições ao visionamento do conteúdo de páginas',
 	'security-logpage' => 'Registo de segurança',
 	'security-logpagetext' => 'Este é um registo de acções bloqueadas pela [http://www.mediawiki.org/wiki/Extension:SimpleSecurity extensão SimpleSecurity].',
 	'badaccess-read' => "'''Aviso:''' \"\$1\" é referido aqui, mas não tem permissões suficientes para aceder ao registo.",
@@ -834,7 +835,7 @@ $messages['pt'] = array(
 	'security-inforestrict' => '$1 está limitado a $2',
 	'security-desc-LS' => '(aplica-se porque esta página está no "$2 $1")',
 	'security-desc-PR' => '(definido a partir da "aba proteger")',
-	'security-infosysops' => 'Nenhuma restrição está em vigor, porque você é um membro do grupo "sysop"',
+	'security-infosysops' => 'Não está em vigor nenhuma restrição porque é membro do grupo "sysop"',
 	'security-manygroups' => 'grupos $1 e $2',
 	'security-unchain' => 'Modificar ações individualmente',
 	'security-type-category' => 'categoria',

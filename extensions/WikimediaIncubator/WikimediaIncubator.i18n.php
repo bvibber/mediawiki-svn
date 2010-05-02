@@ -885,7 +885,7 @@ $messages['ko'] = array(
 	'wminc-prefinfo-code' => 'ISO 639 언어 코드',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -907,7 +907,7 @@ $messages['ksh'] = array(
 	'randombytest-nopages' => 'Et Appachtemang $1 änthält kein Sigge en Dingem Versöhkß-Wiki.',
 );
 
-/** Cornish (Kernowek)
+/** Cornish (Kernewek)
  * @author Kernoweger
  * @author Kw-Moon
  */
@@ -940,7 +940,7 @@ $messages['lb'] = array(
 	'randombytest-nopages' => 'Et si keng Säiten op Ärer Test-Wiki, am Nummraum: $1.',
 );
 
-/** Laz (Laz)
+/** Lazuri (Lazuri)
  * @author Bombola
  */
 $messages['lzz'] = array(
@@ -1026,6 +1026,23 @@ $messages['ms'] = array(
 $messages['myv'] = array(
 	'wminc-viewuserlang-user' => 'Сёрмадыцянь леметь:',
 	'wminc-testwiki-none' => 'Мезеяк/Весе',
+);
+
+/** Nedersaksisch (Nedersaksisch)
+ * @author Servien
+ */
+$messages['nds-nl'] = array(
+	'wminc-desc' => 'Testwikisysteem veur de Wikimedia Incubator',
+	'wminc-viewuserlang' => 'Gebrukerstaal en testwiki opzeuken',
+	'wminc-viewuserlang-user' => 'Gebrukersnaam:',
+	'wminc-viewuserlang-go' => 'Zeuken',
+	'wminc-testwiki' => 'Testwiki:',
+	'wminc-testwiki-none' => 'Gien/alles',
+	'wminc-prefinfo-language' => 'De gebrukerstaal - onofhankelijk van joew testwiki',
+	'wminc-prefinfo-code' => 'De ISO639-taalcode',
+	'wminc-prefinfo-project' => "Kies 't Wikimedia-prejek (Incubator-optie is veur gebrukers dee algemeen wark doon)",
+	'wminc-prefinfo-error' => 'Je hemmen ekeuzen veur een prejek waor da-j een taalcode veur neudig hemmen.',
+	'wminc-warning-unprefixed' => "'''Waorschuwing:''' de pagina dee-j an 't bewarken bin, hef gien veurvoegsel!",
 );
 
 /** Dutch (Nederlands)
@@ -1630,7 +1647,7 @@ $messages['yi'] = array(
 	'wminc-warning-suggest' => 'איר קענט שאַפֿן א בלאַט [[$1]].',
 );
 
-/** Yue (粵語)
+/** Cantonese (粵語)
  * @author Shinjiman
  */
 $messages['yue'] = array(

@@ -169,7 +169,7 @@ $messages['ja'] = array(
 	'semanticinternalobjects-desc' => 'Semantic MediaWiki の内部オブジェクトの設定',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -226,10 +226,11 @@ $messages['pms'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Indech
  */
 $messages['pt'] = array(
-	'semanticinternalobjects-desc' => 'Configuração de objetos internos na MediaWiki Semântica',
+	'semanticinternalobjects-desc' => 'Configuração de objetos internos no MediaWiki Semântico',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

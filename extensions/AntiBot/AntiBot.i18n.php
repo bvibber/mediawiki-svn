@@ -277,7 +277,7 @@ $messages['ko'] = array(
 	'antibot-desc' => '스팸봇 확인을 위한 프레임워크',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -567,7 +567,7 @@ $messages['vro'] = array(
 	'antibot-desc' => 'Lihtsä keskkund prahirobotidõ ja segäjide programmõ kontrollis',
 );
 
-/** Yue (粵語)
+/** Cantonese (粵語)
  * @author Shinjiman
  */
 $messages['yue'] = array(

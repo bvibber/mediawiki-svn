@@ -22,6 +22,38 @@ Some settings might change which version is displayed to readers or further rest
 	'configuredpages-def-stable'    => 'published version',
 );
 
+/** Message documentation (Message documentation)
+ * @author EugeneZelenko
+ * @author Raymond
+ */
+$messages['qqq'] = array(
+	'configuredpages-config' => '{{Identical|Configuration}}',
+	'configuredpages-prec-none' => '{{Flagged Revs}}',
+	'configuredpages-prec-quality' => '{{Flagged Revs}}',
+	'configuredpages-prec-pristine' => '{{Flagged Revs}}',
+);
+
+/** Afrikaans (Afrikaans) */
+$messages['af'] = array(
+	'configuredpages-prec-none' => 'laaste gekontroleerde',
+	'configuredpages-prec-quality' => 'laaste kwaliteitsweergawe',
+	'configuredpages-prec-pristine' => 'laaste ongerepte weergawe',
+);
+
+/** Arabic (العربية) */
+$messages['ar'] = array(
+	'configuredpages-prec-none' => 'لا سابقة',
+	'configuredpages-prec-quality' => 'سابقة جودة',
+	'configuredpages-prec-pristine' => 'سابقة فائقة',
+);
+
+/** Egyptian Spoken Arabic (مصرى) */
+$messages['arz'] = array(
+	'configuredpages-prec-none' => 'لا سابقة',
+	'configuredpages-prec-quality' => 'سابقه جودة',
+	'configuredpages-prec-pristine' => 'سابقه فائقة',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Wizardist
@@ -60,6 +92,13 @@ Arventennoù zo a c'hall lakaat da cheñch ar stumm diskwelet d'al lennerien pe 
 	'configuredpages-def-stable' => 'stumm embannet',
 );
 
+/** Bosnian (Bosanski) */
+$messages['bs'] = array(
+	'configuredpages-prec-none' => 'bez prednosti',
+	'configuredpages-prec-quality' => 'poredak po kvalitetu',
+	'configuredpages-prec-pristine' => 'prvobitni poredak',
+);
+
 /** Catalan (Català)
  * @author Paucabot
  */
@@ -70,12 +109,26 @@ $messages['ca'] = array(
 	'configuredpages-def-stable' => 'versió publicada',
 );
 
+/** Czech (Česky) */
+$messages['cs'] = array(
+	'configuredpages-prec-none' => 'bez přednosti',
+	'configuredpages-prec-quality' => 'přednost podle kvality',
+	'configuredpages-prec-pristine' => 'čistá přednost',
+);
+
 /** German (Deutsch) */
 $messages['de'] = array(
 	'configuredpages-config' => 'Konfiguration',
 	'configuredpages-prec-none' => 'zuletzt überprüft',
 	'configuredpages-prec-quality' => 'Qualitätsrangordnung',
 	'configuredpages-prec-pristine' => 'ursprüngliche Rangordnung',
+);
+
+/** Zazaki (Zazaki) */
+$messages['diq'] = array(
+	'configuredpages-prec-none' => 'pêşani çina',
+	'configuredpages-prec-quality' => 'pêşaneyê qaliteyi',
+	'configuredpages-prec-pristine' => 'pêşaneyê ewwil',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -94,6 +147,13 @@ Někotare nastajenja by mógli se změniś, kótara wersija zwobraznja se cytarj
 	'configuredpages-prec-pristine' => 'nejnowše spócetne',
 	'configuredpages-def-draft' => 'nejnowša wersija',
 	'configuredpages-def-stable' => 'wózjawjona wersija',
+);
+
+/** Greek (Ελληνικά) */
+$messages['el'] = array(
+	'configuredpages-prec-none' => 'χωρίς προτεραιότητα',
+	'configuredpages-prec-quality' => 'προτεραιότητα ποιότητας',
+	'configuredpages-prec-pristine' => 'προτεραιότητα μη αλλοίωσης',
 );
 
 /** Esperanto (Esperanto)
@@ -133,6 +193,26 @@ Algunos ajustes puede que cambien qué versión es mostrada a los lectores o pue
 	'configuredpages-def-stable' => 'versión publicada',
 );
 
+/** Basque (Euskara)
+ * @author Joxemai
+ */
+$messages['eu'] = array(
+	'configuredpages' => 'Berrikuspenerako zehaztapenak dituzten orriak',
+	'configuredpages-none' => 'Ez dago orririk zerranda honetan.',
+	'configuredpages-config' => 'Konfigurazioa',
+	'configuredpages-precedence' => 'Jatorria:',
+	'configuredpages-prec-none' => 'egiaztaturiko azkena',
+	'configuredpages-prec-quality' => 'azken kualitatea',
+	'configuredpages-def-draft' => 'azken bertsioa',
+	'configuredpages-def-stable' => 'argitaraturiko bertsioa',
+);
+
+/** Finnish (Suomi) */
+$messages['fi'] = array(
+	'configuredpages-prec-none' => 'viimeisin tarkastettu',
+	'configuredpages-prec-quality' => 'viimeisin laadukas',
+);
+
 /** French (Français)
  * @author Peter17
  */
@@ -149,6 +229,13 @@ Certains paramètres peuvent faire apparaître une version différente pour les 
 	'configuredpages-prec-pristine' => 'dernière priorité vierge',
 	'configuredpages-def-draft' => 'dernière version',
 	'configuredpages-def-stable' => 'version publiée',
+);
+
+/** Franco-Provençal (Arpetan) */
+$messages['frp'] = array(
+	'configuredpages-prec-none' => 'gins de prèference',
+	'configuredpages-prec-quality' => 'prèference por la qualitât',
+	'configuredpages-prec-pristine' => 'prèference sen tache',
 );
 
 /** Galician (Galego)
@@ -185,6 +272,13 @@ E Deil Yystellige chenne sich villicht unterscheide, je nochdäm weli Version em
 	'configuredpages-prec-pristine' => 'letschti suferi Version',
 	'configuredpages-def-draft' => 'letschti Version',
 	'configuredpages-def-stable' => 'vereffentligti Version',
+);
+
+/** Hebrew (עברית) */
+$messages['he'] = array(
+	'configuredpages-prec-none' => 'ללא עדיפות',
+	'configuredpages-prec-quality' => 'עדיפות לגרסאות איכותיות',
+	'configuredpages-prec-pristine' => 'עדיפות לגרסאות מושלמות',
 );
 
 /** Croatian (Hrvatski)
@@ -251,6 +345,17 @@ Alcun configurationes pote cambiar le version que es monstrate al lectores o lim
 	'configuredpages-def-stable' => 'version publicate',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Kenrick95
+ */
+$messages['id'] = array(
+	'configuredpages-config' => 'Pengaturan',
+	'configuredpages-prec-none' => 'tidak ada preseden',
+	'configuredpages-prec-quality' => 'preseden berkualitas',
+	'configuredpages-prec-pristine' => 'preseden murni',
+	'configuredpages-def-draft' => 'versi terbaru',
+);
+
 /** Italian (Italiano) */
 $messages['it'] = array(
 	'configuredpages-config' => 'Configurazione',
@@ -279,9 +384,34 @@ $messages['ja'] = array(
 
 /** Georgian (ქართული)
  * @author BRUTE
+ * @author გიორგიმელა
  */
 $messages['ka'] = array(
 	'configuredpages-def-draft' => 'უკანასკნელი ვერსია',
+	'configuredpages-def-stable' => 'გამოქვეყნებული ვერსია',
+);
+
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'configuredpages' => '검토 설정이 되어 있는 문서',
+	'configuredpages-text' => '다음은 기본값과 다른 검토 설정이 되어 있는 문서의 목록입니다.
+
+어떤 설정은 독자에게 보여지는 판을 바꾸거나 검토 없이 편집할 수 있는 사용자를 제한할 수 있습니다.',
+	'configuredpages-none' => '이 목옥에 문서가 없습니다.',
+	'configuredpages-config' => '설정',
+	'configuredpages-precedence' => '우선 순위:',
+	'configuredpages-prec-none' => '최근 검토된 판',
+	'configuredpages-def-draft' => '최신 버전',
+	'configuredpages-def-stable' => '공개된 버전',
+);
+
+/** Colognian (Ripoarisch) */
+$messages['ksh'] = array(
+	'configuredpages-prec-none' => 'keine Vürrang',
+	'configuredpages-prec-quality' => 'de {{int:revreview-lev-quality}} hät der Vürrang',
+	'configuredpages-prec-pristine' => 'de {{int:revreview-lev-pristine}} hät der Vörrang',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -337,6 +467,13 @@ $messages['ml'] = array(
 	'configuredpages-def-stable' => 'പ്രസിദ്ധീകരിച്ച പതിപ്പ്',
 );
 
+/** Maltese (Malti) */
+$messages['mt'] = array(
+	'configuredpages-prec-none' => 'ebda preċedenza',
+	'configuredpages-prec-quality' => "preċedenza ta' kwalità",
+	'configuredpages-prec-pristine' => 'preċedenza pura',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -355,6 +492,13 @@ Instellingen wijzigen welke versie wordt weergegeven aan lezers of beperken wie 
 	'configuredpages-def-stable' => 'gepubliceerde versie',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬) */
+$messages['nn'] = array(
+	'configuredpages-prec-none' => 'inga prioritering',
+	'configuredpages-prec-quality' => 'kvalitetsprioritering',
+	'configuredpages-prec-pristine' => 'prioritering av urørde',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
@@ -371,6 +515,13 @@ Enkelte innstillinger kan endre hvilken versjon som vises til lesere eller ytter
 	'configuredpages-prec-pristine' => 'siste urørt',
 	'configuredpages-def-draft' => 'siste versjon',
 	'configuredpages-def-stable' => 'publisert versjon',
+);
+
+/** Occitan (Occitan) */
+$messages['oc'] = array(
+	'configuredpages-prec-none' => 'pas cap de prioritat',
+	'configuredpages-prec-quality' => 'preferéncia per la qualitat',
+	'configuredpages-prec-pristine' => 'prioritat vèrja',
 );
 
 /** Polish (Polski)
@@ -428,6 +579,26 @@ Alguns parâmetros podem alterar a versão que é apresentada aos utilizadores, 
 	'configuredpages-def-stable' => 'versão publicada',
 );
 
+/** Brazilian Portuguese (Português do Brasil) */
+$messages['pt-br'] = array(
+	'configuredpages-prec-none' => 'sem precedência',
+	'configuredpages-prec-quality' => 'precedência de qualidade',
+	'configuredpages-prec-pristine' => 'precedência intocada',
+);
+
+/** Romanian (Română) */
+$messages['ro'] = array(
+	'configuredpages-prec-none' => 'nicio prioritate',
+	'configuredpages-prec-quality' => 'preferinţă pentru calitate',
+);
+
+/** Tarandíne (Tarandíne) */
+$messages['roa-tara'] = array(
+	'configuredpages-prec-none' => 'urtema verificate',
+	'configuredpages-prec-quality' => 'urteme de qualità',
+	'configuredpages-prec-pristine' => 'urteme repristinate',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */
@@ -446,6 +617,20 @@ $messages['ru'] = array(
 	'configuredpages-def-stable' => 'опубликованная версия',
 );
 
+/** Yakut (Саха тыла) */
+$messages['sah'] = array(
+	'configuredpages-prec-none' => 'баһыйара (приоритета) суох',
+	'configuredpages-prec-quality' => 'хаачыстыбата баһыйыылаах',
+	'configuredpages-prec-pristine' => 'эрдэтээҥҥитэ баһыйыылаах',
+);
+
+/** Slovak (Slovenčina) */
+$messages['sk'] = array(
+	'configuredpages-prec-none' => 'bez precedencie',
+	'configuredpages-prec-quality' => 'precedencia podľa kvality',
+	'configuredpages-prec-pristine' => 'čistá precedencia',
+);
+
 /** Swedish (Svenska)
  * @author Ainali
  */
@@ -456,6 +641,20 @@ $messages['sv'] = array(
 	'configuredpages-prec-quality' => 'kvalitetsordning',
 	'configuredpages-prec-pristine' => 'företräde för orörda',
 	'configuredpages-def-draft' => 'senaste versionen',
+);
+
+/** Turkmen (Türkmençe) */
+$messages['tk'] = array(
+	'configuredpages-prec-none' => 'öňürtilik ýok',
+	'configuredpages-prec-quality' => 'hil öňürtiligi',
+	'configuredpages-prec-pristine' => 'başky öňürtilik',
+);
+
+/** Tagalog (Tagalog) */
+$messages['tl'] = array(
+	'configuredpages-prec-none' => 'walang pagkakauna',
+	'configuredpages-prec-quality' => 'pagkauna ng kataasan ng uri',
+	'configuredpages-prec-pristine' => 'Pagkakaunang nasa orihinal na kalagayan',
 );
 
 /** Turkish (Türkçe)
@@ -493,5 +692,40 @@ $messages['uk'] = array(
 	'configuredpages-prec-pristine' => 'остання чиста версія',
 	'configuredpages-def-draft' => 'остання версія',
 	'configuredpages-def-stable' => 'опублікована версія',
+);
+
+/** Vèneto (Vèneto) */
+$messages['vec'] = array(
+	'configuredpages-prec-none' => 'nissuna precedensa',
+	'configuredpages-prec-quality' => 'precedensa par qualità',
+	'configuredpages-prec-pristine' => 'precedensa originaria',
+);
+
+/** Veps (Vepsan kel') */
+$messages['vep'] = array(
+	'configuredpages-prec-none' => 'ei ole tobmust',
+	'configuredpages-prec-quality' => 'Ladun tobmuz',
+	'configuredpages-prec-pristine' => 'koskmatomuden tobmuz',
+);
+
+/** Vietnamese (Tiếng Việt) */
+$messages['vi'] = array(
+	'configuredpages-prec-none' => 'không có bản trước',
+	'configuredpages-prec-quality' => 'bản chất lượng trước',
+	'configuredpages-prec-pristine' => 'bản trong sạch trước',
+);
+
+/** Simplified Chinese (‪中文(简体)‬) */
+$messages['zh-hans'] = array(
+	'configuredpages-prec-none' => '没有优先级',
+	'configuredpages-prec-quality' => '质量优先级',
+	'configuredpages-prec-pristine' => '原始优先级',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬) */
+$messages['zh-hant'] = array(
+	'configuredpages-prec-none' => '沒有優先級',
+	'configuredpages-prec-quality' => '質量優先級',
+	'configuredpages-prec-pristine' => '原始優先級',
 );
 

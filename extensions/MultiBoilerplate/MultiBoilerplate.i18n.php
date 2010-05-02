@@ -381,7 +381,7 @@ $messages['km'] = array(
 	'multiboilerplate-submit' => 'ផ្ទុក',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

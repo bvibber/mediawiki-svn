@@ -202,6 +202,13 @@ $messages['no'] = array(
 	'vector-collapsiblenav-preference' => 'Aktiver sammenleggbar venstre navigeringsmeny',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'vector-collapsiblenav-preference' => "Activar lo menut de navigacion d'esquèrra replegable",
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  */

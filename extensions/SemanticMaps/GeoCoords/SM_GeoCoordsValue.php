@@ -62,8 +62,8 @@ class SMGeoCoordsValue extends SMWDataValue {
 				$this->mCoordinateSet = $coordinates;
 				
 				if ( $this->m_caption === false ) {
-					// TODO: parse coodinates to some notation, depending on a new setting
-					$this->m_caption = $value;
+					global $smgQPCoodFormat, $smgQPCoodDirectional;
+					$this->m_caption = MapsCoordinateParser::formatCoordinates( $coordinates, $smgQPCoodFormat, $smgQPCoodDirectional );
         		}
 			} else {
 				$this->addError( wfMsgExt( 'maps_unrecognized_coords', array( 'parsemag' ), $value, 1 ) );
@@ -79,25 +79,39 @@ class SMGeoCoordsValue extends SMWDataValue {
 	 */
 	public function getQueryDescription( $value ) {
 		// TODO
-	}	
+		return parent::getQueryDescription( $value );
+	}
 	
 	/**
 	 * @see SMWDataValue::parseDBkeys
 	 */
 	protected function parseDBkeys( $args ) {
+		global $smgQPCoodFormat, $smgQPCoodDirectional;
+		
 		$this->mCoordinateSet['lat'] = $args[0];
 		$this->mCoordinateSet['lon'] = $args[1];
 		
-		$this->m_caption = MapsCoordinateParser::formatCoordinates( $this->mCoordinateSet );
+		$this->m_caption = MapsCoordinateParser::formatCoordinates( $this->mCoordinateSet, $smgQPCoodFormat, $smgQPCoodDirectional );
 		$this->mWikivalue = $this->m_caption;
 	}
 	
 	/**
 	 * @see SMWDataValue::getDBkeys
-	 */	
+	 */
 	public function getDBkeys() {
 		$this->unstub();
-		return array( $this->mCoordinateSet['lat'], $this->mCoordinateSet['lon'] );
+		
+		return array(
+			$this->mCoordinateSet['lat'],
+			$this->mCoordinateSet['lon']
+		);
+	}
+	
+	/**
+	 * @see SMWDataValue::getSignature
+	 */	
+	public function getSignature() {
+		return 'ff';
 	}	
 
 	/**
@@ -127,18 +141,19 @@ class SMGeoCoordsValue extends SMWDataValue {
 	
 	/**
 	 * @see SMWDataValue::getLongWikiText
-	 */		
+	 */
 	public function getLongWikiText( $linked = null ) {
 		if ( !$this->isValid() ) {
 			return $this->getErrorText();
 		} else {
-			return MapsCoordinateParser::formatCoordinates( $this->mCoordinateSet );
+			global $smgQPCoodFormat, $smgQPCoodDirectional;
+			return MapsCoordinateParser::formatCoordinates( $this->mCoordinateSet, $smgQPCoodFormat, $smgQPCoodDirectional );
 		}
 	}
 
 	/**
 	 * @see SMWDataValue::getLongHTMLText
-	 */		
+	 */
 	public function getLongHTMLText( $linker = null ) {
 		// TODO: parse to HTML?
 		return $this->getLongWikiText( $linker );
@@ -146,7 +161,7 @@ class SMGeoCoordsValue extends SMWDataValue {
 
 	/**
 	 * @see SMWDataValue::getWikiValue
-	 */	
+	 */
 	public function getWikiValue() {
 		$this->unstub();
 		return $this->mWikivalue;
@@ -157,8 +172,9 @@ class SMGeoCoordsValue extends SMWDataValue {
 	 */
 	public function getExportData() {
 		if ( $this->isValid() ) {
-			$lit = new SMWExpLiteral( 
-				MapsCoordinateParser::formatCoordinates( $this->mCoordinateSet ),
+			global $smgQPCoodFormat, $smgQPCoodDirectional;
+			$lit = new SMWExpLiteral(
+				MapsCoordinateParser::formatCoordinates( $this->mCoordinateSet, $smgQPCoodFormat, $smgQPCoodDirectional ),
 				$this,
 				'http://www.w3.org/2001/XMLSchema#string'
 			);

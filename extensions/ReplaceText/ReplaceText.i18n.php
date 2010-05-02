@@ -409,9 +409,8 @@ $messages['de-formal'] = array(
 	'replacetext_docu' => 'Um einen Text durch einen anderen Text auf allen Inhaltsseiten zu ersetzen, geben Sie die beiden Textteile hier ein und klicken Sie auf die Ersetzen-Schaltfläche. Ihr Benutzername wird in der Versionsgeschichte aufgenommen.',
 	'replacetext_givetarget' => 'Sie müssen eine Zeichenkette angeben, die ersetzt werden soll.',
 	'replacetext_editormove' => 'Sie müssen mindestens eine Ersetzungsoption wählen.',
-	'replacetext_warning' => '$1 {{PLURAL:$1|Seite enthält|Seiten enthalten}} bereits den zu ersetzenden Textteil „$2“.
-Eine Trennung der Ersetzungen mit den bereits vorhandenen Textteilen ist nicht möglich.
-Möchten Sie weitermachen?',
+	'replacetext_warning' => "'''Warnung:''' $1 {{PLURAL:$1|Seite enthält|Seiten enthalten}} bereits den zu ersetzenden Textteil „$2“.
+Wenn Sie die Ersetzung durchführen, ist eine spätere Trennung der Ersetzungen mit den bereits vorhandenen Textteilen nicht mehr möglich.",
 	'replacetext_cancel' => '(Klicken Sie auf die „Zurück“-Schaltfläche, um die Operation abzubrechen.)',
 );
 
@@ -982,6 +981,7 @@ Apakah ingin dilanjutkan?',
 );
 
 /** Italian (Italiano)
+ * @author Civvì
  * @author Darth Kule
  * @author Marco 27
  */
@@ -1000,7 +1000,7 @@ $messages['it'] = array(
 	'replacetext_nonamespace' => 'È necessario selezionare almeno un namespace',
 	'replacetext_editormove' => 'È necessario selezionare almeno una delle opzioni di sostituzione.',
 	'replacetext_choosepagesforedit' => "Selezionare {{PLURAL:$3|la pagina per la quale|le pagine per le quali}} si desidera sostituire '$1' con '$2':",
-	'replacetext_choosepagesformove' => "Sostituire '$1' con '$2' {{PLURAL:$3|nel nome della pagina seguente|nei nomi delle pagine seguenti}}:",
+	'replacetext_choosepagesformove' => 'Sostituire "$1" con "$2" {{PLURAL:$3|nel titolo della pagina seguente|nei titoli delle pagine seguenti}}:',
 	'replacetext_cannotmove' => '{{PLURAL:$1|La pagina seguente non può essere spostata|Le pagine seguenti non possono essere spostate}}:',
 	'replacetext_formovedpages' => 'Per le pagine spostate:',
 	'replacetext_savemovedpages' => 'Conservare i vecchi titoli come redirect al nuovo titolo:',
@@ -1010,8 +1010,9 @@ $messages['it'] = array(
 	'replacetext_success' => "'$1' sarà sostituito con '$2' in $3 {{PLURAL:$3|pagina|pagine}}.",
 	'replacetext_noreplacement' => "Non sono state trovate pagine contenenti il testo '$1'.",
 	'replacetext_nomove' => "Non sono state trovate pagine il cui titolo contiene '$1'.",
+	'replacetext_nosuchcategory' => 'Non esiste categoria con il nome "$1".',
 	'replacetext_return' => 'Torna al modulo.',
-	'replacetext_warning' => "{{PLURAL:$1|C'è già $1 pagina che contiene|Ci sono già $1 pagine che contengono}} il testo di sostituzione, '$2'. Se si effettua questa sostituzione non si sarà in grado di separare le sostituzioni da questi testi. Continuare con la sostituzione?",
+	'replacetext_warning' => '{{PLURAL:$1|C\'è già $1 pagina che contiene|Ci sono già $1 pagine che contengono}} il testo di sostituzione, "$2". Se si effettua questa sostituzione non si sarà in grado di separare le sostituzioni da questi testi. Continuare con la sostituzione?',
 	'replacetext_blankwarning' => "Poiché il testo di sostituzione è vuoto, l'operazione non sarà reversibile. Si desidera continuare?",
 	'replacetext_continue' => 'Continua',
 	'replacetext_cancel' => '(Fare clic sul pulsante "Indietro" nel proprio browser per annullare l\'operazione.)',
@@ -1469,9 +1470,8 @@ $messages['oc'] = array(
 	'replacetext_nomove' => 'Cap de pagina es pas estada trobada amb lo títol que conten « $1 ».',
 	'replacetext_nosuchcategory' => 'Existís pas de categoria nomenada « $1 ».',
 	'replacetext_return' => 'Tornar al formulari.',
-	'replacetext_warning' => "I a $1 fichièr{{PLURAL:$1| que conten|s que contenon}} la cadena de remplaçament « $2 ».
-Se efectuatz aquesta substitucion, poiretz pas separar vòstres cambiaments a partir d'aquestas cadenas.
-Volètz contunhar aquestas substitucions ?",
+	'replacetext_warning' => "I a $1 fichièr{{PLURAL:$1| que conten|s que contenon}} ja la cadena de remplaçament « $2 ».
+S'efectuatz aquesta substitucion, poiretz pas separar vòstres cambiaments a partir d'aquestas cadenas.",
 	'replacetext_blankwarning' => 'Perque la cadena de remplaçament es voida, aquesta operacion serà irreversibla ; volètz contunhar ?',
 	'replacetext_continue' => 'Contunhar',
 	'replacetext_cancel' => "(Clicatz sul boton  « Retorn » de vòstre navigador per anullar l'operacion.)",
@@ -1599,7 +1599,7 @@ $messages['ps'] = array(
 $messages['pt'] = array(
 	'replacetext' => 'Substituir texto',
 	'replacetext-desc' => "[[Special:ReplaceText|Página especial]] que permite a administradores fazer substituições globais de texto ''(string find-and-replace)'' em todas as páginas de conteúdo de uma wiki.",
-	'replacetext_docu' => 'Para substituir um texto por outro texto em todas as páginas desta wiki, introduza os dois textos e clique o botão "Substituir". Serão listadas as páginas que contêm o texto a substituir e poderá selecionar em quais deseja proceder à substituição.
+	'replacetext_docu' => 'Para substituir um texto por outro texto em todas as páginas desta wiki, introduza os dois textos e clique o botão "Substituir". Serão listadas as páginas que contêm o texto a substituir e poderá seleccionar em quais deseja proceder à substituição.
 O seu nome aparecerá no histórico dessas páginas como o utilizador responsável pelas alterações.',
 	'replacetext_originaltext' => 'Texto original:',
 	'replacetext_replacementtext' => 'Novo texto:',

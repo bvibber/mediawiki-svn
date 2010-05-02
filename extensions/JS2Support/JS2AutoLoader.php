@@ -3,19 +3,18 @@
 /**************************** 
 * JS2 AutoLoader.php
 *****************************/
-$wgAutoloadClasses = array_merge( $wgAutoloadClasses,  
-	 array(
-		'JSMin' => $dir . 'js/mwEmbed/includes/library/JSMin.php',
-		'Minify_CSS' => $dir . 'js/mwEmbed/includes/library/CSS.php',
-		'Minify_CommentPreserver' => $dir . 'js/mwEmbed/includes/library/CommentPreserver.php',
-		'Minify_CSS_Compressor' => $dir . 'js/mwEmbed/includes/library/CSS/Compressor.php',
-		'Minify_CSS_UriRewriter' => $dir . 'js/mwEmbed/includes/library/CSS/UriRewriter.php',
-		'JSMinException' => $dir . 'js/mwEmbed/includes/minify/JSMin.php',
-		'jsScriptLoader' => $dir . 'js/mwEmbed/jsScriptLoader.php',
-		'jsClassLoader' => $dir . 'js/mwEmbed/includes/jsClassLoader.php',
-		'simpleFileCache' => $dir . 'js/mwEmbed/jsScriptLoader.php',
-	)
+$mwEmbedAutoLoadClasses = array(
+	'JSMin' => $dir . 'mwEmbed/includes/library/JSMin.php',
+	'Minify_CSS' => $dir . 'mwEmbed/includes/library/CSS.php',
+	'Minify_CommentPreserver' => $dir . 'mwEmbed/includes/library/CommentPreserver.php',
+	'Minify_CSS_Compressor' => $dir . 'mwEmbed/includes/library/CSS/Compressor.php',
+	'Minify_CSS_UriRewriter' => $dir . 'mwEmbed/includes/library/CSS/UriRewriter.php',
+	'JSMinException' => $dir . 'mwEmbed/includes/minify/JSMin.php',
+	'jsScriptLoader' => $dir . 'mwEmbed/jsScriptLoader.php',
+	'jsClassLoader' => $dir . 'mwEmbed/includes/jsClassLoader.php',
+	'simpleFileCache' => $dir . 'mwEmbed/jsScriptLoader.php',
 );
+$wgAutoloadClasses = array_merge( $wgAutoloadClasses,  $mwEmbedAutoLoadClasses);
 
 // Autoloader for core mediaWiki JavaScript files (path is from the MediaWiki folder)
 $wgJSAutoloadLocalClasses = array(
@@ -40,23 +39,10 @@ $wgJSAutoloadLocalClasses = array(
 	'upload' => 'skins/common/upload.js',
 	'wikibits' => 'skins/common/wikibits.js',
 
-	// JS2 entry points
+	// js2 entry points
 	'uploadPage' => $dir . 'uploadPage.js',
 	'editPage' =>  $dir . 'editPage.js',
 	'ajaxCategories' =>  $dir . 'ajaxcategories.js',
-	'apiProxyPage'	=>  $dir . 'apiProxyPage.js',
-	
-	// Css bindings
-	'mw.style.shared' => 'skins/common/shared.css',
-	'mw.style.commonPrint' => 'skins/common/commonPrint.css',
-	'mw.style.vectorMainLTR' => 'skins/vector/main-ltr.css',
-
-	//monobook css
-	'mw.sytle.mbMain' => 'skins/monobook/main.css',
-	'mw.style.mbIE5' => 'skins/monobook/IE50Fixes.css',
-	'mw.style.mbIE55' => 'skins/monobook/IE55Fixes.css',
-	'mw.style.mbIE60' => 'skins/skins/monobook/IE60Fixes.css',
-	'mw.style.mbIE7' => 'skins/monobook/IE70Fixes.css',
-	
+	'apiProxyPage'	=>  $dir . 'apiProxyPage.js'
 );
 ?>

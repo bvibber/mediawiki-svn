@@ -174,7 +174,7 @@ $messages['bn'] = array(
  */
 $messages['br'] = array(
 	'reviewedpages' => 'Pajennoù adwelet',
-	'reviewedpages-leg' => 'Rollañ ar pajennoù hag a zo bet adlennet',
+	'reviewedpages-leg' => 'Rollañ ar pajennoù bet adlennet',
 	'reviewedpages-list' => "Rollet eo war ar bajenn-mañ ar pajennoù bet adwelet (d'ar muiañ) d'al live spisaet.
 
 Er roll-mañ ez eus pajennoù [[{{MediaWiki:Validationpage}}|adlennet]] enno unan anezho hag en deus tizhet al live ''uhelañ'' a adlenn resisaet.
@@ -224,12 +224,13 @@ $messages['cs'] = array(
 );
 
 /** German (Deutsch)
+ * @author Giftpflanze
  * @author Imre
  * @author Umherirrender
  */
 $messages['de'] = array(
 	'reviewedpages' => 'Liste der gesichteten Seiten',
-	'reviewedpages-leg' => 'Seiten nach Prüfungsstufe auflisten',
+	'reviewedpages-leg' => 'Markierte Seiten auflisten',
 	'reviewedpages-list' => 'Diese Spezialseite zeigt Seiten, die bisher mit dem angegebenem Level als höchstes markiert wurden.',
 	'reviewedpages-none' => 'Die Liste ist leer.',
 	'reviewedpages-lev-0' => 'Gesichtet',
@@ -681,7 +682,7 @@ $messages['ko'] = array(
 	'reviewedpages-all' => '검토된 버전',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -733,15 +734,15 @@ $messages['li'] = array(
  * @author Brest
  */
 $messages['mk'] = array(
-	'reviewedpages' => 'Проверени страници',
+	'reviewedpages' => 'Оценети страници',
 	'reviewedpages-leg' => 'Листа на оценети страници',
-	'reviewedpages-list' => "Овие листи содржат [[{{MediaWiki:Validationpage}}|проверени]] страници чие назначено ниво е ''највисоко'' оценето ниво (на ревизија).
+	'reviewedpages-list' => "Овие листи содржат [[{{MediaWiki:Validationpage}}|оценети]] страници чие назначено ниво е ''највисоко'' оценето ниво (на ревизија).
 Наведена е врска кон најновата ревизија на тоа ниво.",
 	'reviewedpages-none' => 'Нема страници во оваа листа',
-	'reviewedpages-lev-0' => 'Прегледани',
+	'reviewedpages-lev-0' => '{{int:revreview-lev-basic}}',
 	'reviewedpages-lev-1' => 'Квалитетни',
 	'reviewedpages-lev-2' => 'Одлични',
-	'reviewedpages-all' => 'проверени верзии',
+	'reviewedpages-all' => 'оценети верзии',
 	'reviewedpages-best' => 'најдобра ревизија',
 );
 
@@ -1276,7 +1277,7 @@ $messages['vo'] = array(
 	'reviewedpages-all' => 'fomams pekrütöl',
 );
 
-/** Yue (粵語)
+/** Cantonese (粵語)
  * @author Shinjiman
  */
 $messages['yue'] = array(

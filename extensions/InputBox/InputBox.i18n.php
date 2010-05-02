@@ -898,7 +898,7 @@ $messages['ko'] = array(
 	'createarticle' => '문서 만들기',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -1267,11 +1267,12 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Malafaya
  */
 $messages['pt'] = array(
 	'inputbox-desc' => 'Permite a inclusão de formulários HTML pré-definidos.',
-	'inputbox-error-no-type' => 'Você não especificou o tipo de box de inserção a ser criado.',
+	'inputbox-error-no-type' => 'Não especificou o tipo de caixa de edição a ser criado.',
 	'inputbox-error-bad-type' => 'O tipo de caixa de introdução de dados "$1" não foi reconhecido.
 Por favor, especifique "create", "comment", "search", "search2" ou "fulltext".',
 	'tryexact' => 'Tentar a exata expressão',
@@ -1744,7 +1745,7 @@ $messages['yi'] = array(
 	'createarticle' => 'באשאפט ארטיקל',
 );
 
-/** Yue (粵語) */
+/** Cantonese (粵語) */
 $messages['yue'] = array(
 	'inputbox-desc' => '容許包含預先設定嘅HTML表格',
 	'inputbox-error-no-type' => '你重未指定開輸入盒嘅指定類型。',

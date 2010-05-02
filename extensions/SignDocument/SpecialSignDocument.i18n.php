@@ -121,6 +121,7 @@ $messages['qqq'] = array(
 	'sign-viewfield-email' => '{{Identical|E-mail}}',
 	'sign-viewfield-options' => '{{Identical|Options}}',
 	'sign-signatures' => '{{Identical|Signature}}',
+	'sign-closed' => '{{Identical|Closed}}',
 	'sig-private' => '{{Identical|Private}}',
 	'sign-emailto' => '{{optional}}',
 	'sign-viewfield-reviewedby' => '{{Identical|Reviewer}}',
@@ -200,7 +201,7 @@ $messages['an'] = array(
 	'sign-submitreview' => 'Nimbiar rebisión',
 );
 
-/** Old English (Anglo-Saxon) */
+/** Old English (Ænglisc) */
 $messages['ang'] = array(
 	'sign-realname' => 'Nama:',
 );
@@ -870,8 +871,8 @@ $1',
  */
 $messages['de-formal'] = array(
 	'sign-nodocselected' => 'Bitte wählen Sie das zu signierende Dokument aus.',
-	'sign-docheader' => '<div class="noarticletext">Bitte benutzen Sie dieses Formular, um das hierunter angezeigte Dokument „[[$1]]“ zu signieren.
-Bitte lesen Sie das gesammte Dokument und wenn Sie ihm Ihre Zustimmung geben, füllen Sie bitte die nötigen Felder aus, um es zu signieren.</div>',
+	'sign-docheader' => 'Bitte benutzen Sie dieses Formular, um das hierunter angezeigte Dokument „[[$1]]“ zu signieren.
+Bitte lesen Sie das gesammte Dokument und wenn Sie ihm Ihre Zustimmung geben, füllen Sie bitte die nötigen Felder aus, um es zu signieren.',
 	'sign-information' => '<div class="noarticletext">Danke, dass Sie sich die Zeit genommen haben, dieses Dokument durchzulesen.
 Wenn Sie ihm zustimmen, zeigen Sie dies bitte indem Sie die benötigten Felder unten ausfüllen und anschließend auf „Dokument unterschreiben“ klicken.
 Bitte stellen Sie sicher, dass Ihre persönlichen Informationen korrekt sind und dass wir die Möglichkeit haben, Sie zur Feststellung Ihrer Identität zu kontaktieren.
@@ -1047,6 +1048,20 @@ $messages['el'] = array(
 	'sign-uniquequery-similaremail' => 'Παρόμοιο email',
 );
 
+/** British English (British English)
+ * @author Reedy
+ */
+$messages['en-gb'] = array(
+	'sign-information' => '<div class="noarticletext">Thank you for taking the time to read through this document.
+If you agree with it, please indicate your support by filling in the required fields below and clicking "Sign document".
+Please ensure that your personal information is correct and that we have some way to contact you to verify your identity.
+Note that your IP address and other identifying information will be recorded by this form and used by moderators to eliminate duplicate signatures and confirm the correctness of your personal information.
+As the use of open and anonymising proxies inhibits our ability to perform this task, signatures from such proxies will likely not be counted.
+If you are currently connected through a proxy server, please disconnect from it and use a standard connection while signing.</div>
+
+$1',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
@@ -1086,13 +1101,16 @@ $messages['eo'] = array(
 	'sign-viewfield-email' => 'Retadreso',
 	'sign-viewfield-age' => 'Aĝo',
 	'sign-viewfield-options' => 'Preferoj',
+	'sign-sigadmin-currentlyopen' => 'Subskribado estas nune ŝalta por ĉi tiu dokumento.',
 	'sign-sigadmin-close' => 'Malŝalti subskribadon',
+	'sign-sigadmin-currentlyclosed' => 'Subskribado estas nune malŝalta por ĉi tiu dokumento.',
 	'sign-sigadmin-open' => 'Ŝalti subskribadon',
 	'sign-signatures' => 'Subskriboj',
 	'sign-sigadmin-closesuccess' => 'Subskribado estis sukcese malŝaltita.',
 	'sign-sigadmin-opensuccess' => 'Subskribado estis sukcese ŝaltita.',
 	'sign-viewsignatures' => 'vidi subskribojn',
 	'sign-closed' => 'fermita',
+	'sign-error-closed' => 'Subskribado de ĉi tiu dokumento estas nune malŝalta.',
 	'sig-anonymous' => "''Anonima''",
 	'sig-private' => "''Privata''",
 	'sign-sigdetails' => 'Subskribaj detaloj',
@@ -2472,6 +2490,7 @@ $messages['kn'] = array(
 	'sign-viewfield-country' => 'ದೇಶ',
 	'sign-viewfield-email' => 'ಇ-ಅಂಚೆ',
 	'sign-viewfield-age' => 'ವಯಸ್ಸು',
+	'sign-signatures' => 'ಸಹಿಗಳು',
 );
 
 /** Kinaray-a (Kinaray-a)
@@ -3650,7 +3669,7 @@ $1',
 	'sign-sigadmin-currentlyopen' => 'Assinatura está presentemente activada para este documento.',
 	'sign-sigadmin-close' => 'Desactivar assinaturas',
 	'sign-sigadmin-currentlyclosed' => 'Assinatura está presentemente desactivada para este documento.',
-	'sign-sigadmin-open' => 'Ativar assinaturas',
+	'sign-sigadmin-open' => 'Activar assinaturas',
 	'sign-signatures' => 'Assinaturas',
 	'sign-sigadmin-closesuccess' => 'Assinaturas desactivadas com sucesso.',
 	'sign-sigadmin-opensuccess' => 'Assinaturas activadas com sucesso.',
@@ -3678,7 +3697,7 @@ $1',
 	'sign-detail-strike' => 'Cortar assinatura',
 	'sign-reviewsig' => 'Rever assinatura',
 	'sign-review-comment' => 'Comentar',
-	'sign-submitreview' => 'Submeter revisão',
+	'sign-submitreview' => 'Enviar revisão',
 	'sign-uniquequery-similarname' => 'Nome semelhante',
 	'sign-uniquequery-similaraddress' => 'Endereço semelhante',
 	'sign-uniquequery-similarphone' => 'Telefone semelhante',
@@ -3785,7 +3804,7 @@ $messages['qu'] = array(
 	'sign-uniquequery-1signed2' => "[{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1] sutiyuqqa [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs}} $2] nisqa qillqarimata silq'un.",
 );
 
-/** Rhaeto-Romance (Rumantsch) */
+/** Romansh (Rumantsch) */
 $messages['rm'] = array(
 	'sign-viewfield-realname' => 'Num',
 );

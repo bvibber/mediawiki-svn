@@ -255,7 +255,7 @@ $messages['ko'] = array(
 	'googleadsense-desc' => '[http://www.google.com/adsense 구글 애드센스]를 더함',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

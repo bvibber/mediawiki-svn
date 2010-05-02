@@ -37,6 +37,7 @@ $messages['en'] = array(
 $messages['qqq'] = array(
 	'am-username' => '{{Identical|Username}}',
 	'am-email' => '{{Identical|E-mail}}',
+	'am-active' => '{{Identical|Active}}',
 	'nss-desc' => 'Short desciption of this extension.
 Shown in [[Special:Version]].
 Do not translate or change tag names, or link anchors.',
@@ -615,7 +616,7 @@ $messages['krj'] = array(
 	'am-updated' => 'Ang imo mga gin-ilis nabaton run',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

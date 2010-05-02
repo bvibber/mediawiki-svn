@@ -305,7 +305,7 @@ $messages['ko'] = array(
 	'charinsert-desc' => '[[MediaWiki:Edittools|특수 문자]] 삽입을 위한 자바스크립트 상자를 생성',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -616,7 +616,7 @@ $messages['vo'] = array(
 	'charinsert-desc' => 'Dälon jafi bügila me el JavaScript ad [[MediaWiki:Edittools|nüpladön malatis nekösömik]]',
 );
 
-/** Yue (粵語)
+/** Cantonese (粵語)
  * @author Shinjiman
  */
 $messages['yue'] = array(

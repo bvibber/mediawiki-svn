@@ -250,7 +250,7 @@ $messages['ko'] = array(
 	'trustedxff-desc' => '믿을 수 있는 프록시 주소 목록을 관리 ([http://meta.wikimedia.org/wiki/XFF_project XFF 프로젝트])',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -469,7 +469,7 @@ $messages['vi'] = array(
 	'trustedxff-desc' => 'Xử lý danh sách các địa chỉ proxy được tin cậy ([http://meta.wikimedia.org/wiki/XFF_project dự án XFF])',
 );
 
-/** Yue (粵語)
+/** Cantonese (粵語)
  * @author Shinjiman
  */
 $messages['yue'] = array(

@@ -206,7 +206,7 @@ $messages['br'] = array(
 	'contributionscores-top' => '(An $1 uhelañ)',
 	'contributionscores-days' => 'E-kerzh an {{PLURAL:$1|devezh|$1 devezh}} diwezhañ',
 	'contributionscores-allrevisions' => 'An holl adweladennoù',
-	'contributionscores-score' => 'Merkañ',
+	'contributionscores-score' => 'Skor',
 	'contributionscores-pages' => 'Pajennoù',
 	'contributionscores-changes' => 'Kemmoù',
 	'contributionscores-username' => 'Anv implijer',
@@ -981,7 +981,7 @@ $messages['kn'] = array(
 	'contributionscores-pages' => 'ಪುಟಗಳು',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -1004,7 +1004,7 @@ dat öff jet Schrieve am Eng besser Sigge jitt, als wie sellde jet Schrieve.',
 	'contributionscores-invalidmetric' => 'Onjöltesch Mohß',
 );
 
-/** Cornish (Kernowek)
+/** Cornish (Kernewek)
  * @author Kw-Moon
  */
 $messages['kw'] = array(
@@ -1139,12 +1139,13 @@ $messages['ms'] = array(
 );
 
 /** Maltese (Malti)
+ * @author Chrisportelli
  * @author Giangian15
  * @author Roderick Mallia
  */
 $messages['mt'] = array(
 	'contributionscores-pages' => 'Paġni',
-	'contributionscores-username' => 'Isem l-utent',
+	'contributionscores-username' => 'Isem tal-utent',
 );
 
 /** Erzya (Эрзянь)
@@ -1798,7 +1799,7 @@ $messages['yi'] = array(
 	'contributionscores-username' => 'באַניצער נאָמען',
 );
 
-/** Yue (粵語)
+/** Cantonese (粵語)
  * @author PhiLiP
  * @author Shinjiman
  */

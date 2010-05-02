@@ -107,6 +107,7 @@ optional = centralauth-editset-grouplink, centralauth-admin-notblocked
 ignored = centralauth-editset-item-ro
 
 Central Notice
+aliasfile = CentralNotice/CentralNotice.alias.php
 
 Change Author
 aliasfile = ChangeAuthor/ChangeAuthor.alias.php
@@ -114,6 +115,9 @@ optional = changeauthor-rev
 ignored = changeauthor-logpagetext, changeauthor-short
 
 Char Insert
+#magicfile = CharInsert/CharInsert.i18n.magic.php
+
+Checkpoint
 
 Check User
 aliasfile = CheckUser/CheckUser.alias.php
@@ -143,7 +147,7 @@ id = ext-citespecial
 file = Cite/SpecialCite.i18n.php
 aliasfile = Cite/SpecialCite.alias.php
 descmsg = cite_article_desc
-ignored = cite_text
+ignored = cite_text, accesskey-cite-article
 
 CLDR
 file = cldr/cldr.i18n.php
@@ -558,6 +562,15 @@ IP Auth
 JS Kit
 
 JS2 Support
+
+JS2 Support - Add Media Wizard
+file = JS2Support/AddMediaWizard/AddMediaWizard.i18n.php
+descmsg = addmediawizard-desc
+
+JS2 Support - Upload Wizard
+file = JS2Support/UploadWizard/UploadWizard.i18n.php
+aliasfile = JS2Support/UploadWizard/UploadWizard.alias.php
+descmsg = uploadwizard-desc
 
 Labeled Section Transclusion
 file = LabeledSectionTransclusion/lst.i18n.php
@@ -1064,9 +1077,8 @@ Stalker Log
 
 Stock Charts
 
-# Commented out by JeroenDeDauw. Work in progress. Will let you know when to enable.
-# Storyboard
-# aliasfile = Storyboard/Storyboard.alias.php
+Storyboard
+aliasfile = Storyboard/Storyboard.alias.php
 
 Strategy Wiki - Active Task Forces
 descmsg = activetaskforces
@@ -1131,7 +1143,8 @@ id = ext-translate-core
 descmsg = translate-desc
 file = Translate/Translate.i18n.php
 aliasfile = Translate/Translate.alias.php
-optional = translate-page-paging-links, translate-languagestats-groups
+optional = translate-page-paging-links, translate-languagestats-groups, supportedlanguages-portallink
+
 
 Translate - Page Translation
 id = ext-translate-pagetranslation
@@ -1302,6 +1315,10 @@ id = ext-ui-wikieditor
 file = UsabilityInitiative/WikiEditor/WikiEditor.i18n.php
 descmsg = wikieditor-desc
 
+Usability Initiative - Wikieditor Add Media Wizard
+id = ext-ui-wikieditor-addmediawizard
+file = UsabilityInitiative/WikiEditor/Modules/AddMediaWizard/AddMediaWizard.i18n.php
+
 Usability Initiative - Wikieditor Highlight
 id = ext-ui-wikieditor-highlight
 file = UsabilityInitiative/WikiEditor/Modules/Highlight/Highlight.i18n.php
@@ -1376,7 +1393,7 @@ Whos Online
 aliasfile = WhosOnline/WhosOnline.alias.php
 
 Who Is Watching
-aliasfile = WhoIsWatching/SpecialWhoIsWatching.alias.php
+aliasfile = WhoIsWatching/WhoIsWatching.alias.php
 
 Widgets
 magicfile = Widgets/Widgets.i18n.magic.php

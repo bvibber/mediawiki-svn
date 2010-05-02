@@ -1041,7 +1041,7 @@ $messages['ko'] = array(
 	'closewikis-list' => '닫힌 위키의 목록',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -1185,6 +1185,8 @@ $messages['myv'] = array(
 	'closewikis-page-close-submit' => 'Пекстамс',
 	'closewikis-page-reopen-wiki' => 'Вики:',
 	'closewikis-page-reopen-reason' => 'Тувталось:',
+	'closewikis-list-header-wiki' => 'Вики',
+	'closewikis-list-header-by' => 'Пекстыцязо',
 );
 
 /** Dutch (Nederlands)

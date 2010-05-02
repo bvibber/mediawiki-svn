@@ -563,7 +563,7 @@ $3',
 	'latexdoc-desc' => 'Buruligay nga pagbahin sa mga dokumento nga LaTeX',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

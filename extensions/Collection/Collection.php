@@ -40,7 +40,7 @@ $wgCollectionVersion = "1.4";
 # Configuration:
 
 /** Bump the version number every time you change any of the JavaScript files */
-$wgCollectionStyleVersion = 6;
+$wgCollectionStyleVersion = 8;
 
 /** URL of mw-serve render server */
 $wgCollectionMWServeURL = 'http://tools.pediapress.com/mw-serve/';
@@ -194,21 +194,21 @@ $wgAjaxExportList[] = 'wfAjaxGetMWServeStatus';
 
 function wfAjaxCollectionAddArticle( $namespace = 0, $title = '', $oldid = '' ) {
 	SpecialCollection::addArticleFromName( $namespace, $title, $oldid );
-	return '';
+	return wfAjaxCollectionGetItemList();
 }
 
 $wgAjaxExportList[] = 'wfAjaxCollectionAddArticle';
 
 function wfAjaxCollectionRemoveArticle( $namespace = 0, $title = '', $oldid = '' ) {
 	SpecialCollection::removeArticleFromName( $namespace, $title, $oldid );
-	return '';
+	return wfAjaxCollectionGetItemList();
 }
 
 $wgAjaxExportList[] = 'wfAjaxCollectionRemoveArticle';
 
 function wfAjaxCollectionAddCategory( $title = '' ) {
 	SpecialCollection::addCategoryFromName( $title );
-	return '';
+	return wfAjaxCollectionGetItemList();
 }
 
 $wgAjaxExportList[] = 'wfAjaxCollectionAddCategory';
@@ -217,7 +217,14 @@ function wfAjaxCollectionGetBookCreatorBoxContent( $ajaxHint = '', $oldid = null
 	if ( !is_null( $oldid ) ) {
 		$oldid = intval( $oldid );
 	}
-	return CollectionHooks::getBookCreatorBoxContent( $ajaxHint, $oldid );
+	$html = CollectionHooks::getBookCreatorBoxContent( $ajaxHint, $oldid );
+
+	$json = new Services_JSON();
+	$result = array();
+	$result['html'] = $html;
+	$r = new AjaxResponse( $json->encode( $result ) );
+	$r->setContentType( 'application/json' );
+	return $r;
 }
 
 $wgAjaxExportList[] = 'wfAjaxCollectionGetBookCreatorBoxContent';
@@ -225,14 +232,24 @@ $wgAjaxExportList[] = 'wfAjaxCollectionGetBookCreatorBoxContent';
 function wfAjaxCollectionGetItemList() {
 	wfLoadExtensionMessages( 'CollectionCore' );
 	wfLoadExtensionMessages( 'Collection' );
+
+	$collection = $_SESSION['wsCollection'];
+
 	$template = new CollectionListTemplate();
-	$template->set( 'collection', $_SESSION['wsCollection'] );
+	$template->set( 'collection', $collection );
 	$template->set( 'is_ajax', true );
 	ob_start();
 	$template->execute();
 	$html = ob_get_contents();
 	ob_end_clean();
-	return $html;
+
+	$json = new Services_JSON();
+	$result = array();
+	$result['html'] = $html;
+	$result['collection'] = $collection;
+	$r = new AjaxResponse( $json->encode( $result ) );
+	$r->setContentType( 'application/json' );
+	return $r;
 }
 
 $wgAjaxExportList[] = 'wfAjaxCollectionGetItemList';
@@ -260,7 +277,7 @@ $wgAjaxExportList[] = 'wfAjaxCollectionRenameChapter';
 
 function wfAjaxCollectionSetTitles( $title, $subtitle ) {
 	SpecialCollection::setTitles( $title, $subtitle );
-	return '';
+	return wfAjaxCollectionGetItemList();
 }
 
 $wgAjaxExportList[] = 'wfAjaxCollectionSetTitles';
@@ -340,6 +357,7 @@ function wfCollectionSuggestAction( $action, $article ) {
 		htmlspecialchars( $article ),
 		$undoLink
 	);
+	$result['collection'] = CollectionSession::getCollection();
 	$r = new AjaxResponse( $json->encode( $result ) );
 	$r->setContentType( 'application/json' );
 	return $r;

@@ -273,6 +273,7 @@ In addition, you may want to append "<code>&uselang=</code>" with your language 
 * $3 time',
 	'configure-section-pages' => '{{Identical|Pages}}',
 	'configure-section-paths' => '{{Identical|Path}}',
+	'configure-section-db' => '{{Identical|Database}}',
 	'configure-section-email' => '{{Identical|E-mail}}',
 	'configure-section-timezone' => '{{Identical|Time zone}}',
 	'configure-section-html' => '{{optional}}',
@@ -414,6 +415,7 @@ $messages['am'] = array(
 $messages['an'] = array(
 	'configure-desc-ns' => 'Espazios de nombres',
 	'configure-section-namespaces' => 'Espazios de nombres',
+	'configure-section-images' => 'Ficheros',
 );
 
 /** Arabic (العربية)
@@ -1056,7 +1058,7 @@ $messages['bg'] = array(
 	'configure-ext-doc' => 'Вижте онлайн документацията',
 	'configure-ext-settings' => 'Настройки',
 	'configure-ext-use-extension' => 'Използване на разширението',
-	'configure-form-reason' => 'Причина за промяната:',
+	'configure-form-reason' => 'Причина:',
 	'configure-arrayinput-oneperline' => "''(по едно на ред)''",
 	'configure-summary' => 'Тази специална страница позволява на потребителите да конфигурират уикито; за повече информация, вижте [http://www.mediawiki.org/wiki/Manual:Configuration_settings настройките за конфигуриране].',
 	'configure-btn-save' => 'Съхраняване на настройките',
@@ -1184,6 +1186,7 @@ $messages['br'] = array(
 	'configure-ext-doc' => 'Gwelet an teuliadoù enlinenn',
 	'configure-ext-schemachange' => "'''Diwallit :''' an astenn-mañ en deus ezhomm un hizivadenn eus ar bank roadennoù evit mon en-dro en un doare reizh !",
 	'configure-ext-settings' => 'Arventennoù',
+	'configure-ext-settings-dep-errors' => "Ne c'hell ket bezañ diellaouet an astenn-mañ dre {{PLURAL:$1|m'en deus an arventenn|m'o deus an arventennoù}} un dalvoudenn direizh :",
 	'configure-ext-settings-dep-error' => '$1: talvoud rekis : $2, talvoud red : $3',
 	'configure-ext-use-extension' => 'Ober gant an astenn-mañ',
 	'configure-ext-use' => 'Implijout',
@@ -1231,7 +1234,7 @@ $messages['br'] = array(
 	'configure-section-localization' => "Lec'hiadur",
 	'configure-section-timezone' => 'Takad eur',
 	'configure-section-zh-conversion' => 'Amdroadur ar sinaeg',
-	'configure-section-debug' => 'Divugañ',
+	'configure-section-debug' => 'Dizreinañ',
 	'configure-section-profiling' => 'Profilañ',
 	'configure-section-site' => "Personeladur al lec'hienn",
 	'configure-section-css-js' => 'CSS ha JavaScript',
@@ -1315,19 +1318,19 @@ $messages['br'] = array(
 	'configure-condition-operator' => 'Oberataer :',
 	'configure-condition-operator-or' => 'Pe',
 	'configure-condition-operator-and' => 'Ha(g)',
-	'configure-condition-operator-xor' => 'Xor',
+	'configure-condition-operator-xor' => 'Pe ezlakaüs',
 	'configure-condition-operator-not' => 'Ket',
 	'configure-condition-name' => 'Diviz',
-	'configure-condition-requirement' => 'Redi',
-	'configure-condition-name-1' => "Niver a gemmoù d'an nebeutañ",
+	'configure-condition-requirement' => 'Rekiz',
+	'configure-condition-name-1' => 'Niver a gemmoù bihanañ',
 	'configure-condition-name-2' => 'Oad izelañ',
 	'configure-condition-name-3' => 'Postel kadarnaet',
 	'configure-condition-name-4' => 'E strolladoù',
 	'configure-condition-name-5' => "Chomlec'h IP an implijer",
-	'configure-condition-name-6' => "Chomlec'h IP an implijer a zo el lijorenn CIDR",
+	'configure-condition-name-6' => "Chomlec'h IP an implijer er renkennad CIDR",
 	'configure-condition-name-7' => "Oad izelañ abaoe ar c'hemm gentañ",
 	'configure-autopromote-noconds' => 'Rakrekis ebet',
-	'configure-condition-description-1' => "Niver a gemmoù d'an nebeutañ : $1",
+	'configure-condition-description-1' => 'Niver a gemmoù bihanañ a $1',
 	'configure-condition-description-2' => 'Oad izelañ a $1 segondenn{{PLURAL:$1||}}',
 	'configure-condition-description-3' => 'Postel kadarnaet',
 	'configure-condition-description-4' => 'En holl strolladoù $1',
@@ -1335,8 +1338,8 @@ $messages['br'] = array(
 	'configure-condition-description-6' => "Chomlec'h IP an implijer a zo el lijorenn CDIR $1",
 	'configure-condition-description-7' => "Oad izelañ ar gont a $1 segondenn{{PLURAL:$1||}} abaoe ar c'hemm gentañ",
 	'configure-boolop-description-and' => 'An holl zivizoù a rank bezañ gwir',
-	'configure-boolop-description-or' => "Un diviz a rank bezañ gwir d'an nebeutañ",
-	'configure-boolop-description-xor' => 'Un diviz a rank bezañ gwir',
+	'configure-boolop-description-or' => "Un amplegad a rank bezañ gwir d'an nebeutañ",
+	'configure-boolop-description-xor' => 'Un amplegad rik a rank bezañ gwir',
 	'configure-boolop-description-not' => "Ne c'hell bezañ gwir diviz ebet",
 	'configure-farmer-settings' => '[[Special:Configure|Kefluniañ ar wiki-mañ]].',
 	'configure-farmer-extensions' => '[[Special:Extensions|Kefluniañ an astennoù evit ar wiki-mañ]].',
@@ -4544,7 +4547,7 @@ Per favor crea lo o cambia lo pro poter usar iste extension.',
 	'configure-section-proxy' => 'Proxies',
 	'configure-section-cookie' => 'Cookies',
 	'configure-section-performance' => 'Rendimento',
-	'configure-section-upload' => 'Cargamento',
+	'configure-section-upload' => 'Incargamento',
 	'configure-section-sharedupload' => 'Cargamento usate in commun',
 	'configure-section-mime' => 'Typos MIME',
 	'configure-section-images' => 'Imagines',
@@ -5435,10 +5438,13 @@ $messages['km'] = array(
  */
 $messages['kn'] = array(
 	'configure-form-reason' => 'ಕಾರಣ:',
+	'configure-js-remove' => 'ಅಳಿಸು',
 	'configure-section-pages' => 'ಪುಟಗಳು',
 	'configure-section-email' => 'ಇ-ಅಂಚೆ',
 	'configure-section-timezone' => 'ಸಮಯ ವಲಯ',
 	'configure-section-category' => 'ವರ್ಗಗಳು',
+	'configure-section-search' => 'ಹುಡುಕು',
+	'configure-throttle-action-edit' => 'ಸಂಪಾದಿಸಿ',
 	'configure-condition-operator-and' => 'ಮತ್ತು',
 );
 
@@ -5486,7 +5492,7 @@ $messages['krj'] = array(
 	'configure-section-specialpages' => 'Manga espesyal nga pahina',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -5678,7 +5684,7 @@ et Appachtemang. Do kresß en Vör-Aansich jezeich, wann De uß dämm Feld jeih�
 	'configure-farmer-extensions-list' => 'De [[Special:Extensions|Projramm-Zohsäz för dat Wiki hee opleßte]]',
 );
 
-/** Cornish (Kernowek)
+/** Cornish (Kernewek)
  * @author Kernoweger
  * @author Kw-Moon
  */
@@ -5757,6 +5763,7 @@ Leet e w.e.g un oder ännert en esou datt dës Erweiderung funktionéiert.",
 	'configure-section-features' => 'Fonctiounen',
 	'configure-section-general' => 'Allgemeng Astellungen',
 	'configure-section-pages' => 'Säiten',
+	'configure-section-paths' => 'Weeër',
 	'configure-section-db' => 'Datebank',
 	'configure-section-load-balancing' => 'Laaschteverdeelung (Load balancing)',
 	'configure-section-mysql' => 'Spezifesch fir MySQL',
@@ -5887,6 +5894,7 @@ $messages['lfn'] = array(
  * @author Kizito
  */
 $messages['lg'] = array(
+	'configure-view' => 'Lukebere',
 	'configure-throttle-action-rollback' => 'Jjulula nkyukakyuka',
 );
 
@@ -6483,12 +6491,26 @@ $messages['myv'] = array(
 	'configure-desc-group' => 'Курот',
 	'configure-desc-ns' => 'Лем потмот',
 	'configure-ext-use' => 'Тевс нолдамо',
+	'configure-btn-save' => 'Ванстомс аравтомкатнень',
 	'configure-js-remove' => 'Нардамс',
+	'configure-js-biglist-show' => '[невтемс пизере тевнетнень]',
+	'configure-js-biglist-hide' => '[кекшемс пизере тевнетнень]',
+	'configure-section-general' => 'Вейтьсэнь аравтомкатне',
+	'configure-section-pages' => 'Лопатне',
+	'configure-section-paths' => 'Яннэтне',
 	'configure-section-email' => 'Е-сёрма',
+	'configure-section-localization' => 'Кудонькстомтомась',
 	'configure-section-timezone' => 'Шкань зона',
 	'configure-section-namespaces' => 'Лем потмот',
 	'configure-section-category' => 'Категорият',
+	'configure-section-cache' => 'Кекшема тарка',
+	'configure-section-groups' => 'Куротне',
+	'configure-section-upload' => 'Ёвкстамо',
 	'configure-section-search' => 'Вешнэмс',
+	'configure-throttle-action-move' => 'Печтевтемс',
+	'configure-condition-operator-or' => 'Эли',
+	'configure-condition-operator-and' => 'Ды',
+	'configure-condition-operator-not' => 'Аволь',
 );
 
 /** Nahuatl (Nāhuatl)
@@ -7775,13 +7797,13 @@ $messages['pt'] = array(
 	'configure-edit-core' => 'MediaWiki',
 	'configure-edit-ext' => 'Extensões',
 	'configure-viewconfig-default-diff' => 'Alterações em relação às configurações padrão',
-	'configure-ext-ext-dependencies' => "'''Aviso:''' esta extensão exige que {{PLURAL:$2|a seguinte extensão esteja ativada|as seguintes extensões estejam ativadas}}: $1.",
+	'configure-ext-ext-dependencies' => "'''Aviso:''' esta extensão exige que {{PLURAL:$2|a seguinte extensão esteja activada|as seguintes extensões estejam activadas}}: $1.",
 	'configure-ext-ext-dependency-err' => "'''Erro:''' a extensão $1 requer a extensão $2 para ser activada.",
 	'configure-ext-doc' => 'Veja a documentação online',
-	'configure-ext-schemachange' => "'''Atenção''': esta extensão requer atualizações na base de dados para funcionar corretamente!",
+	'configure-ext-schemachange' => "'''Atenção''': esta extensão requer actualizações na base de dados para funcionar correctamente!",
 	'configure-ext-settings' => 'Configurações',
-	'configure-ext-settings-dep-errors' => 'Esta extensão não pode ser ativada porque {{PLURAL:$1|a seguinte definição possui|as seguintes definições possuem}} um valor inaceitável:',
-	'configure-ext-settings-dep-error' => '$1: valor requerido: $2, valor atual: $3',
+	'configure-ext-settings-dep-errors' => 'Esta extensão não pode ser activada porque {{PLURAL:$1|a seguinte definição possui|as seguintes definições possuem}} um valor inaceitável:',
+	'configure-ext-settings-dep-error' => '$1: valor requerido: $2, valor actual: $3',
 	'configure-ext-use-extension' => 'Usar esta extensão',
 	'configure-ext-use' => 'Usar',
 	'configure-form-reason' => 'Motivo:',
@@ -7789,12 +7811,12 @@ $messages['pt'] = array(
 	'configure-arrayinput-oneperline' => "''(um por linha)''",
 	'configure-summary' => 'Esta página especial permite-lhe configurar esta wiki; veja [http://www.mediawiki.org/wiki/Manual:Configuration_settings Parâmetros de configuração] para mais informações.',
 	'configure-btn-save' => 'Gravar configuração',
-	'configure-db-error' => 'A base de dados que você especificou para armazenar a configuração ($1) não existe.
-Por favor, crie-a e aplique configure.sql, ou corrija o seu nome.',
+	'configure-db-error' => 'A base de dados que especificou para armazenar a configuração ($1) não existe.
+Por favor, crie-a e aplique configure.sql, ou corrija o nome.',
 	'configure-db-table-error' => 'A base de dados seleccionada não possui as tabelas requeridas. Aplique o configure.sql em tal base de dados',
 	'configure-directory-not-writable' => 'A directoria usada para armazenar a configuração, <tt>$1</tt>, não permite escrita.
 Por favor, torne possível a sua escrita por PHP para usar esta extensão.',
-	'configure-edit-old' => "'''Atenção''': você está a editar uma versão <strong>antiga</strong> da configuração (tal como se encontrava em $1).",
+	'configure-edit-old' => "'''Atenção''': está a editar uma versão <strong>antiga</strong> da configuração (tal como se encontrava em $1).",
 	'configure-error' => 'A configuração não pôde ser gravada',
 	'configure-js-add' => 'Adicionar uma nova entrada',
 	'configure-js-group-exists' => 'Erro: o grupo já existe.',
@@ -7814,7 +7836,7 @@ Por favor, torne possível a sua escrita por PHP para usar esta extensão.',
 	'configure-no-directory' => 'A directoria usada para guardar a parametrização, <tt>$1</tt>, não existe.
 Por favor, crie-a ou altere-a para usar esta extensão.',
 	'configure-no-old' => 'Nenhuma versão antiga da configuração disponível.',
-	'configure-no-setup' => 'Você tem de chamar <code>efConfigureSetup()</code> explicitamente no seu ficheiro LocalSettings.php para usar esta extensão.',
+	'configure-no-setup' => 'Tem de chamar <code>efConfigureSetup()</code> explicitamente no seu ficheiro LocalSettings.php para usar esta extensão.',
 	'configure-no-transwiki' => 'Não está autorizado a alterar parâmetros noutras wikis',
 	'configure-old' => 'Versões antigas',
 	'configure-old-versions' => 'Lista de versões antigas da configuração:',
@@ -7892,7 +7914,7 @@ Por favor, crie-a ou altere-a para usar esta extensão.',
 	'configure-view' => 'Ver',
 	'configure-view-all-versions' => 'Lista completa de versões',
 	'configure-view-default' => 'Configurações padrão',
-	'configure-view-not-allowed' => 'Você não está autorizado a ver esta configuração',
+	'configure-view-not-allowed' => 'Não está autorizado a ver esta configuração',
 	'configure-viewconfig-line' => '$1 $2 por $3 $5: $4',
 	'extensions' => 'Configurar as extensões',
 	'right-configure' => 'Configurar a wiki',
@@ -10114,6 +10136,9 @@ Jafolös oni u votükolös oni ad gebön veitükumami at.',
  */
 $messages['yi'] = array(
 	'configure-js-remove' => 'אויסמעקן',
+	'configure-section-css-js' => 'CSS און JavaScript',
+	'configure-section-namespaces' => 'נאָמענטיילן',
+	'configure-section-category' => 'קאַטעגאָריעס',
 	'configure-section-users' => 'באַניצער',
 	'configure-section-search' => 'זוכן',
 	'configure-section-copyright' => 'קאפירעכט',

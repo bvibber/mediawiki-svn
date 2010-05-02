@@ -140,6 +140,13 @@ $messages['el'] = array(
 	'pf-header-approve' => 'Έγκριση',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'pf-header-edit' => 'Redakti ligilon',
+);
+
 /** Spanish (Español)
  * @author Pertile
  */
@@ -286,6 +293,20 @@ $messages['ia'] = array(
 	'pf-header-approve' => 'Approbar',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Kenrick95
+ */
+$messages['id'] = array(
+	'pf-admin-menu-default' => 'Setelan baku',
+	'pf-admin-link-editlink-page' => 'Sunting halaman',
+	'pf-admin-link-approve' => 'Setujui halaman',
+	'pf-header-documentation' => 'Dokumentasi',
+	'pf-header-edit' => 'Sunting pranala',
+	'pf-header-type' => 'Jenis halaman',
+	'pf-header-page_title' => 'Judul',
+	'pf-header-approve' => 'Setujui',
+);
+
 /** Italian (Italiano) */
 $messages['it'] = array(
 	'pf-admin-menu-default' => 'Default',
@@ -297,13 +318,14 @@ $messages['it'] = array(
 
 /** Japanese (日本語)
  * @author Aotake
+ * @author Fryed-peach
  * @author 青子守歌
  */
 $messages['ja'] = array(
 	'pf-desc' => '便利なテンプレートなどの[[Special:PackageForce|パッケージをダウンロード]]',
 	'pf-only-admins-allowed' => "このページを利用するには 'packageforce-admin' 権限が必要です。",
 	'pf-admin-menu-default' => '規定',
-	'pf-admin-menu-unsortedtemplates' => 'テンプレートが並べ替えられていません',
+	'pf-admin-menu-unsortedtemplates' => 'テンプレートが整列されていません',
 	'pf-admin-link-view-documentation' => 'ページに連結している説明書を読む。',
 	'pf-admin-link-editlink-page' => 'ページを編集',
 	'pf-admin-link-approve' => 'ページを承認',

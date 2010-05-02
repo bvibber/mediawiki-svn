@@ -119,7 +119,14 @@ $messages['br'] = array(
 	'plotters-missing-arguments' => "N'eus bet spisaet arguzenn ebet.",
 	'plotters-excessively-long-scriptname' => "Re hir eo anv ar skript.
 Termenit ur skript gant un anv 255 arouezenn hir d'ar muiañ.",
+	'plotters-excessively-long-preprocessorname' => "Re hir eo anv ar rakprosesor.
+Termenit un anv hag a vefe gant un hirder a 255 arouezenn pe nebeutoc'h.",
+	'plotters-excessively-long-name' => "Re hir eo anv ar graf.
+Termenit un anv hag a vefe gant un hirder a 255 arouezenn pe nebeutoc'h.",
+	'plotters-excessively-long-tableclass' => "Re hir eo renk an daolenn. 
+Termenit un anv hag a vefe gant un hirder a 255 arouezenn pe nebeutoc'h.",
 	'plotters-no-data' => "N'eus bet pourchaset roadenn ebet.",
+	'plotters-invalid-renderer' => "Diuzet eo bet ur c'heflusker deouez direizh.",
 	'plotters-errors' => '{{PLURAL:$1|fazi|fazioù}} treselloù :',
 );
 
@@ -150,6 +157,7 @@ Molimo definirajte klasu tabele tako da ima najviše 255 znakova.',
 /** German (Deutsch)
  * @author Avatar
  * @author Imre
+ * @author Kghbln
  * @author MF-Warburg
  * @author Sebastian Wallroth
  * @author Umherirrender
@@ -158,6 +166,8 @@ $messages['de'] = array(
 	'plotters-desc' => 'Erlaubt Benutzern die Verwendung von spezifischem JavaScript in jsplot-Tags',
 	'plotters' => 'Plotter',
 	'plotters-title' => 'Plotter',
+	'plotters-pagetext' => 'Die folgende Liste gibt spezielle Plotter an, die ein Benutzer innerhalb der jsplot-Tags verwenden kann. Diese sind auf der Spezialseite [[MediaWiki:Plotters-definition|Plotterdefinitionen]] beschrieben.
+Die Übersicht ermöglicht ein einfaches Auffinden der Seiten mit den Systemnachrichten, die die einzelnen Plotter, mitsamt dem zugehörigen Code, definieren.',
 	'plotters-uses' => 'Nutzungen',
 	'plotters-missing-script' => 'Es wurde kein Skript definiert.',
 	'plotters-missing-arguments' => 'Keine Argumente festgelegt.',
@@ -167,6 +177,8 @@ Bitte lege ein Skript fest, dessen Titel 255 Zeichen nicht übersteigt.',
 Bitte lege einen Präprozessor fest, dessen Name 255 Zeichen nicht übersteigt.',
 	'plotters-excessively-long-name' => 'Der Entwurfsname ist zu lang. 
 Bitte definiere einen Entwurfsnamen, der aus höchstens 255 Zeichen besteht.',
+	'plotters-excessively-long-tableclass' => 'Die Tabellenklasse ist zu lang.
+Bitte definiere eine Tabellenklasse, die maximal 255 Zeichen aufweist.',
 	'plotters-no-data' => 'Es wurden keine Daten angegeben.',
 	'plotters-invalid-renderer' => 'Es wurde ein ungültiger Renderer ausgewählt.',
 	'plotters-errors' => 'Plotter{{PLURAL:$1|fehler|fehler}}:',
@@ -457,7 +469,7 @@ $messages['ja'] = array(
 	'plotters-errors' => 'プロッターの{{PLURAL:$1|エラー}}:',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -646,7 +658,7 @@ $messages['pt'] = array(
 	'plotters' => 'Plotters',
 	'plotters-title' => 'Plotters',
 	'plotters-pagetext' => "Abaixo encontra uma lista de ''plotters'' especiais que podem ser usadas pelos utilizadores nas ''tags'' jsplot, como definido em [[MediaWiki:Plotters-definition]].
-Este resumo permite um fácil acesso às páginas das mensagens de sistema que definem o código e a descrição de cada ''plotter''.",
+Este resumo permite acesso fácil às páginas das mensagens de sistema que definem o código e a descrição de cada ''plotter''.",
 	'plotters-uses' => 'Usos',
 	'plotters-missing-script' => "Não foi definido nenhum''script''.",
 	'plotters-missing-arguments' => 'Não foram fornecidos argumentos.',

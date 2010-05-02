@@ -360,7 +360,7 @@ $messages['ko'] = array(
 	'wikieditor-toc-hide' => '내용 숨김',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

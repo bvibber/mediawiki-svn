@@ -16,9 +16,14 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author EugeneZelenko
+ * @author IAlex
  */
 $messages['qqq'] = array(
-	'problemchanges-category' => '{{Identical|Category}}',
+	'problemchanges' => '{{Flagged Revs}}',
+	'problemchanges-legend' => '{{Flagged Revs}}',
+	'problemchanges-none' => '{{Flagged Revs}}',
+	'problemchanges-category' => '{{Flagged Revs}}
+{{Identical|Category}}',
 );
 
 /** Afrikaans (Afrikaans)
@@ -364,10 +369,11 @@ $messages['kn'] = array(
  * @author Kwj2772
  */
 $messages['ko'] = array(
+	'problemchanges-none' => '이 조건에 맞는 문서가 없습니다.',
 	'problemchanges-category' => '분류:',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -389,10 +395,11 @@ $messages['lb'] = array(
 
 /** Macedonian (Македонски)
  * @author Bjankuloski06
+ * @author Brest
  */
 $messages['mk'] = array(
 	'problemchanges' => 'Означени промени во исчекување',
-	'problemchanges-legend' => 'Листа на прегледани промени со означени уредувања во исчекување на проверка',
+	'problemchanges-legend' => 'Листа на страници со означени уредувања во исчекување на оценка',
 	'problemchanges-none' => 'Моментално нема страници кои ги задоволуваат овие критериуми',
 	'problemchanges-category' => 'Категорија:',
 );
@@ -441,7 +448,7 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'problemchanges' => 'Tornar legir las modificacions balisadas',
+	'problemchanges' => 'Modificacions balisadas en espèra',
 	'problemchanges-legend' => 'Listar las paginas amb de modificacions balisadas en espèra de relectura',
 	'problemchanges-none' => 'Pel moment, i a pas cap de pagina que satisfasca aqueles critèris',
 	'problemchanges-category' => 'Categoria :',
@@ -535,7 +542,7 @@ $messages['ru'] = array(
 	'problemchanges-category' => 'Категория:',
 );
 
-/** русиньскый язык (русиньскый язык)
+/** Rusyn (русиньскый язык)
  * @author Gazeb
  */
 $messages['rue'] = array(

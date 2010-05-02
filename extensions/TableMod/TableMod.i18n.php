@@ -302,7 +302,7 @@ $messages['ja'] = array(
 	'tablemod-error-missingid' => 'タグに ident 属性がありません。',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

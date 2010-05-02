@@ -54,7 +54,7 @@ $messages['af'] = array(
 	'watchers_less_than_x' => 'Minder as $1 gebruikers hou die bladsy dop.',
 );
 
-/** Old English (Anglo-Saxon)
+/** Old English (Ænglisc)
  * @author Wōdenhelm
  */
 $messages['ang'] = array(
@@ -601,7 +601,7 @@ $messages['km'] = array(
 	'watchers_less_than_x' => '{{PLURAL:$1|អ្នកប្រើប្រាស់|អ្នកប្រើប្រាស់}} ​តិចជាង $1 ​កំពុងតាមដានទំព័រនេះ​។',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -823,7 +823,7 @@ $messages['ps'] = array(
  */
 $messages['pt'] = array(
 	'watchers' => 'Vigiadores',
-	'watchers-desc' => 'Mostra [[Special:Watchers|quais utilizadores têm uma dada página na sua lista de vigiados]]',
+	'watchers-desc' => 'Mostra [[Special:Watchers|quais os utilizadores que têm uma dada página na sua lista de páginas vigiadas]]',
 	'watchers_link_title' => 'Quem está vigiando esta página?',
 	'watchers_error_article' => '<b>Erro:</b> Página inexistente.',
 	'watchers-error-invalid-page' => "'''Erro:''' \"\$1\" é um título de página inválido.",

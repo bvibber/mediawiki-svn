@@ -26,12 +26,13 @@ final class ValidatorFunctions {
 	 * Returns whether the provided value, which must be a number, is within a certain range. Upper bound included.
 	 *
 	 * @param $value
-	 * @param $lower
-	 * @param $upper
+	 * @param array $metaData
+	 * @param mixed $lower
+	 * @param mixed $upper
 	 *
 	 * @return boolean
 	 */
-	public static function in_range( $value, $lower = false, $upper = false ) {
+	public static function in_range( $value, array $metaData, $lower = false, $upper = false ) {
 		if ( ! is_numeric( $value ) ) return false;
 		$value = (int)$value;
 		if ( $lower !== false && $value < $lower ) return false;
@@ -43,10 +44,11 @@ final class ValidatorFunctions {
 	 * Returns whether the string value is not empty. Not empty is defined as having at least one character after trimming.
 	 *
 	 * @param $value
+	 * @param array $metaData
 	 *
 	 * @return boolean
 	 */
-	public static function not_empty( $value ) {
+	public static function not_empty( $value, array $metaData ) {
 		return strlen( trim( $value ) ) > 0;
 	}
 	
@@ -54,10 +56,11 @@ final class ValidatorFunctions {
 	 * Returns whether the string value is not empty. Not empty is defined as having at least one character after trimming.
 	 *
 	 * @param $value
+	 * @param array $metaData
 	 *
 	 * @return boolean
 	 */
-	public static function in_array( $value ) {
+	public static function in_array( $value, array $metaData ) {
 		// TODO: It's possible the way the allowed values are passed here is quite inneficient...
 		$params = func_get_args();
 		array_shift( $params ); // Ommit the value
@@ -68,10 +71,11 @@ final class ValidatorFunctions {
 	 * Returns whether a variable is an integer or an integer string. Uses the native PHP function.
 	 *
 	 * @param $value
+	 * @param array $metaData
 	 *
 	 * @return boolean
 	 */
-	public static function is_integer( $value ) {
+	public static function is_integer( $value, array $metaData ) {
 		return ctype_digit( (string)$value );
 	}
 	
@@ -79,12 +83,13 @@ final class ValidatorFunctions {
 	 * Returns whether the length of the value is within a certain range. Upper bound included.
 	 * 
 	 * @param string $value
-	 * @param $lower
-	 * @param $upper
+	 * @param array $metaData
+	 * @param mixed $lower
+	 * @param mixed $upper
 	 * 
 	 * @return boolean
 	 */
-	public static function has_length( $value, $lower = false, $upper = false ) {
+	public static function has_length( $value, array $metaData, $lower = false, $upper = false ) {
 		return self::in_range( strlen( $value ), $lower, $upper );
 	}
 	
@@ -92,12 +97,13 @@ final class ValidatorFunctions {
 	 * Returns whether the amount of items in the list is within a certain range. Upper bound included.
 	 * 
 	 * @param array $values
-	 * @param $lower
-	 * @param $upper
+	 * @param array $metaData
+	 * @param mixed $lower
+	 * @param mixed $upper
 	 * 
 	 * @return boolean
 	 */
-	public static function has_item_count( array $values, $lower = false, $upper = false ) {
+	public static function has_item_count( array $values, array $metaData, $lower = false, $upper = false ) {
 		return self::in_range( count( $values ), $lower, $upper );
 	}
 	
@@ -105,10 +111,11 @@ final class ValidatorFunctions {
 	 * Returns whether the list of values does not have any duplicates.
 	 * 
 	 * @param array $values
+	 * @param array $metaData
 	 * 
 	 * @return boolean
 	 */
-	public static function has_unique_items( array $values ) {
+	public static function has_unique_items( array $values, array $metaData ) {
 		return count( $values ) == count( array_unique( $values ) );
 	}
 	
@@ -116,11 +123,37 @@ final class ValidatorFunctions {
 	 * Returns the result of preg_match.
 	 * 
 	 * @param string $value
+	 * @param array $metaData
 	 * @param string $pattern
 	 * 
 	 * @return boolean
 	 */
-	public static function regex( $value, $pattern ) {
+	public static function regex( $value, array $metaData, $pattern ) {
 		return (bool)preg_match( $pattern, $value );
+	}
+	
+	/**
+	 * Wrapper for the native is_numeric function.
+	 * 
+	 * @param $value
+	 * @param array $metaData
+	 * 
+	 * @return boolean
+	 */
+	public static function is_numeric( $value, array $metaData ) {
+		return is_numeric( $value );
+	}
+	
+	/**
+	 * Returns if the value is a floating point number.
+	 * Does NOT check the type of the variable like the native is_float function. 
+	 * 
+	 * @param $value
+	 * @param array $metaData
+	 * 
+	 * @return boolean
+	 */
+	public static function is_float( $value, array $metaData ) {
+		return preg_match( '/^\d+(\.\d+)?$/', $value );
 	}
 }

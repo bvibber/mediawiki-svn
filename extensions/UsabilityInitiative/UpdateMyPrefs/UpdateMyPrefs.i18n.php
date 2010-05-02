@@ -68,9 +68,12 @@ $messages['ca'] = array(
 
 /** Czech (Česky)
  * @author Kuvaly
+ * @author Mormegil
  */
 $messages['cs'] = array(
 	'prefs-updates' => 'Aktualizace',
+	'updatemyprefs-desc' => 'Uživatelské nastavení umožňující uvést, že uživatel chce pravidelné aktualizace uživatelského rozhraní, kdykoli se stanou dostupné',
+	'updatemyprefs-label-message' => 'Automaticky aktualizovat moje nastavení na nové implicitní hodnoty a použití nových nástrojů, jakmile se stanou dostupné',
 );
 
 /** German (Deutsch) */
@@ -218,9 +221,12 @@ $messages['ka'] = array(
 
 /** Korean (한국어)
  * @author Devunt
+ * @author Kwj2772
  */
 $messages['ko'] = array(
 	'prefs-updates' => '업데이트',
+	'updatemyprefs-desc' => '새로운 기능이 나올 때마다 주기적으로 인터페이스를 업데이트를 원하는지 표시하는 사용자 환경 설정',
+	'updatemyprefs-label-message' => '새로운 기능이 나올 때마다 기본 환경 설정을 자동적으로 업데이트하기',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -266,6 +272,13 @@ $messages['no'] = array(
 	'prefs-updates' => 'Oppdateringer',
 	'updatemyprefs-desc' => 'Preferanse for brukere om hvorvidt de ønsker periodiske brukergrensesnittoppdateringer etterhvert som de blir gjort tilgjengelige',
 	'updatemyprefs-label-message' => 'Automatisk oppdater mine preferanser med nye standardinnstillinger og verktøy etterhvert som de blir tilgjengelige',
+);
+
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'prefs-updates' => 'Mesas a jorn',
 );
 
 /** Polish (Polski)

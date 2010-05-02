@@ -495,6 +495,7 @@ Setu an arventennoù red eus [[:$1|$1]] :",
 	'stabilization-page' => 'Anv ar bajenn :',
 	'stabilization-leg' => 'Kadarnaat arventennoù ar stumm embannet',
 	'stabilization-select' => 'kentwir diuzadur ar stumm embannet',
+	'stabilization-select1' => 'An adweladenn ziwezhañ a galite, mod all ar stumm bet gwelet da ziwezhañ',
 	'stabilization-select2' => 'An adweladenn ziwezhañ bet gwiriet',
 	'stabilization-def1' => 'Ar stumm embannet ma vez; a-hend-all lakaat ar stumm red pe ar brouilhed',
 	'stabilization-def2' => 'Ar stumm red pe ar brouilhed',
@@ -650,6 +651,7 @@ $messages['da'] = array(
 
 /** German (Deutsch)
  * @author Als-Holder
+ * @author Giftpflanze
  * @author Metalhead64
  * @author Purodha
  * @author Umherirrender
@@ -664,9 +666,9 @@ Bei einer Änderung der Konfiguration der standardmäßig angezeigten Version au
 Die aktuellen Einstellungen für „[[:$1|$1]]“ sind:',
 	'stabilization-page' => 'Seitenname:',
 	'stabilization-leg' => 'Einstellungen der markierten Version für eine Seite',
-	'stabilization-select' => 'Vorzugsweise stabile Versionen auswählen',
+	'stabilization-select' => 'Vorzugsweise letzte stabile Version auswählen',
 	'stabilization-select1' => 'Die letzte geprüfte Version; wenn keine vorhanden ist, dann die letzte gesichtete Version',
-	'stabilization-select2' => 'Die letzte markierte Version, unabhängig vom Markierungslevel',
+	'stabilization-select2' => 'letzte markierte Version',
 	'stabilization-select3' => 'Die letzte ursprüngliche Version; wenn keine vorhanden ist, dann die letzte gesichtete oder geprüfte Version',
 	'stabilization-def' => 'Angezeigte Version in der normalen Seitenansicht',
 	'stabilization-def1' => 'Die markierte Version; wenn keine vorhanden ist, dann die aktuelle Version/der Entwurf',
@@ -686,11 +688,11 @@ Die aktuellen Einstellungen für „[[:$1|$1]]“ sind:',
 	'stabilization-sel-short-2' => 'ursprünglich',
 	'stabilization-def-short' => 'Standard',
 	'stabilization-def-short-0' => 'Aktuell',
-	'stabilization-def-short-1' => 'Markiert',
+	'stabilization-def-short-1' => 'stabile Version',
 	'stabilize_expiry_invalid' => 'Ungültiges Ablaufdatum.',
 	'stabilize_expiry_old' => 'Das Ablaufdatum wurde überschritten.',
 	'stabilize-expiring' => 'erlischt am $2, $3 Uhr (UTC)',
-	'stabilization-review' => 'Überprüfe die aktuelle Version',
+	'stabilization-review' => 'Markiere die aktuelle Version',
 );
 
 /** German (formal address) (Deutsch (Sie-Form))
@@ -837,6 +839,13 @@ $messages['el'] = array(
 	'stabilize_expiry_old' => 'Η ημερομηνία λήξης έχει ήδη περάσει.',
 	'stabilize-expiring' => 'λήγει στις $1 (UTC)',
 	'stabilization-review' => 'Επιθεωρήστε τη τρέχουσα έκδοση',
+);
+
+/** British English (British English)
+ * @author Reedy
+ */
+$messages['en-gb'] = array(
+	'stabilization' => 'Page stabilisation',
 );
 
 /** Esperanto (Esperanto)
@@ -1912,13 +1921,17 @@ $messages['ko'] = array(
 	'stabilization-submit' => '확인',
 	'stabilization-notexists' => '"[[:$1|$1]]" 문서가 존재하지 않습니다.
 설정이 불가능합니다.',
+	'stabilization-notcontent' => '"[[:$1|$1]]" 문서는 검토할 수 없습니다.
+설정이 불가능합니다.',
 	'stabilization-comment' => '이유:',
 	'stabilization-otherreason' => '다른 이유:',
 	'stabilization-expiry' => '기한:',
+	'stabilization-othertime' => '다른 시간:',
 	'stabilization-def-short' => '기본 설정',
 	'stabilize_expiry_invalid' => '기한을 잘못 입력하였습니다.',
 	'stabilize_expiry_old' => '기한을 과거로 입력하였습니다.',
 	'stabilize-expiring' => '$1 (UTC)에 만료',
+	'stabilization-review' => '현재 판을 확인한 것으로 표시',
 );
 
 /** Colognian (Ripoarisch)

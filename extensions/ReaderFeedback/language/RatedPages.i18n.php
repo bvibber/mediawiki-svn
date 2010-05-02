@@ -418,7 +418,7 @@ $messages['ko'] = array(
 	'ratedpages-graphs' => '평가 데이터',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -568,7 +568,7 @@ $messages['pt'] = array(
 	'ratedpages-list' => 'Segue-se uma lista de páginas ordenada de acordo com a avaliação dos leitores.',
 	'ratedpages-none' => 'Não há páginas nesta listagem',
 	'ratedpages-graphs' => 'dados das avaliações',
-	'ratedpages-count' => '$1 {{PLURAL:$1|avaliação|avaliações}}',
+	'ratedpages-count' => '$1 {{PLURAL:$1|revisão|revisões}}',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

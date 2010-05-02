@@ -70,6 +70,13 @@ $messages['el'] = array(
 	'newsextension-desc' => 'Προβάλλει προσαρμοσμένες πρόσφατες αλλαγές σε μία σελίδα βίκι ή ως ροή RSS ή ως ροή Atom',
 );
 
+/** British English (British English)
+ * @author Reedy
+ */
+$messages['en-gb'] = array(
+	'newsextension-desc' => 'Shows customised recent changes on a wiki page, or as RSS or Atom feed',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
@@ -192,7 +199,7 @@ $messages['km'] = array(
 	'newsextension-desc' => 'បង្ហាញបំលាស់ប្តូរបានសំដៅថ្មីៗលើទំព័រវិគីឬបម្រែបម្រួល RSS ឬ Atom ។',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -267,7 +274,7 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'newsextension-desc' => 'Fa veire los darrièrs cambiaments especifics sus una pagina wiki o coma un flus RSS o Atom.',
+	'newsextension-desc' => 'Fa veire los darrièrs cambiaments especifics sus una pagina wiki o coma un flux RSS o Atom.',
 );
 
 /** Polish (Polski)

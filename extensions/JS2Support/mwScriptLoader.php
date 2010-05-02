@@ -24,8 +24,8 @@
  * http://www.gnu.org/copyleft/gpl.html
  */
 
-// First do a quick check for the cached file
-define('MW_CACHE_SCRIPT_CHECK', true);
+// Set a constant so the script-loader knows its not being used in "stand alone mode"
+define( 'SCRIPTLOADER_MEDIAWIKI', true);
 
 require_once( dirname(__FILE__) . '/js/mwEmbed/jsScriptLoader.php');
 // Do quick cache check via jsScriptLoader
@@ -36,7 +36,7 @@ if( $myScriptLoader->outputFromCache() ){
 
 // Else no-cache hit load up mediaWiki stuff and continue scriptloader processing:
 
-// Change to root mediaWiki directory 
+// Change to root mediaWiki directory
 chdir( '../../' );
 
 // include WebStart.php
@@ -64,3 +64,4 @@ if ( !$wgEnableScriptLoader ) {
 $myScriptLoader->doScriptLoader();
 
 wfProfileOut( 'mwScriptLoader.php' );
+

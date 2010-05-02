@@ -277,6 +277,7 @@ $messages['ia'] = array(
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author Kenrick95
  */
 $messages['id'] = array(
 	'transliterator-desc' => 'Menyediakan fungsi parser yang dapat dikonfigurasi untuk transliterasi',
@@ -284,9 +285,11 @@ $messages['id'] = array(
 	'transliterator-error-syntax' => 'Sintaks tidak sah <code>$1</code> pada [[MediaWiki:$2]]',
 	'transliterator-error-rulecount' => 'Lebih dari $1 {{PLURAL:$1||}}aturan pada [[MediaWiki:$2]]',
 	'transliterator-error-rulesize' => 'Aturan <code>$1</code> memiliki lebih dari $3 {{PLURAL:$3||}}karakter di sebelah kiri di [[MediaWiki:$2]]',
+	'transliterator-error-prefix' => '[[MediaWiki:$2]] harus berisi paling sedikit $1 {{PLURAL:$1|karakter|karakter}}.',
 );
 
 /** Italian (Italiano)
+ * @author Civvì
  * @author Darth Kule
  */
 $messages['it'] = array(
@@ -295,6 +298,7 @@ $messages['it'] = array(
 	'transliterator-error-syntax' => 'Sintassi <code>$1</code> non valida in [[MediaWiki:$2]]',
 	'transliterator-error-rulecount' => 'Più di $1 {{PLURAL:$1|regola|regole}} in [[MediaWiki:$2]]',
 	'transliterator-error-rulesize' => 'Regola <code>$1</code> ha più di $3 {{PLURAL:$3|carattere|caratteri}} a sinistra in [[MediaWiki:$2]]',
+	'transliterator-error-prefix' => '[[MediaWiki:$2]] deve essere lungo almeno $1 {{PLURAL:$1|carattere|caratteri}}.',
 );
 
 /** Japanese (日本語)
@@ -309,7 +313,7 @@ $messages['ja'] = array(
 	'transliterator-error-prefix' => '[[MediaWiki:$2]] は最低でも$1文字の長さが必要です。',
 );
 
-/** Ripoarisch (Ripoarisch) */
+/** Colognian (Ripoarisch) */
 $messages['ksh'] = array(
 	'transliterator-desc' => 'Deiht en ennstellbaa Paaserfunxjuhn en et Wiki, di Boochshtabe tuusche kann.',
 	'transliterator-error-ambiguous' => 'En unkloh Rejel <code>$1</code> es en [[MediaWiki:$2]]',

@@ -38,7 +38,7 @@ $messages['aln'] = array(
 Mundet me u përdorë si [[{{#special:advancedrandom}}/{{ns:template}}:Featured/{{ns:talk}}]] për me gjetë nji artikull të rastit të diskutimit, apo si [[{{#special:advancedrandom}}/{{ns:template}}:GFDL/{{ns:file}}]] për me gjetë nji skedë GFDL',
 );
 
-/** Old English (Anglo-Saxon)
+/** Old English (Ænglisc)
  * @author Wōdenhelm
  */
 $messages['ang'] = array(
@@ -361,7 +361,7 @@ $messages['ko'] = array(
 임의의 GFDL 파일로 이동하려면 [[{{#special:advancedrandom}}/{{ns:template}}:GFDL/{{ns:file}}]]의 형식으로 사용할 수 있습니다.',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -695,7 +695,7 @@ $messages['vi'] = array(
 Có thể được dùng như [[{{#special:advancedrandom}}/{{ns:template}}:Featured/{{ns:talk}}]] để lấy một thảo luận của bài viết chọn lọc ngẫu nhiên, hoặc như [[{{#special:advancedrandom}}/{{ns:template}}:GFDL/{{ns:file}}]] để lấy một tập tin GFDL ngẫu nhiên',
 );
 
-/** Yue (粵語)
+/** Cantonese (粵語)
  * @author Shinjiman
  */
 $messages['yue'] = array(

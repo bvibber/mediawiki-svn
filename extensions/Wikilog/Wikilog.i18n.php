@@ -307,12 +307,6 @@ Parameters:
 	'wikilog-feed-title' => 'Parameters:
 * $1 is a title
 * $2 is the content language of the wiki',
-	'wikilog-title-item-full' => '{{optional}}
-Parameters:
-* $1 a page title
-* $2 is the wikilog title',
-	'wikilog-title-comments' => 'Parameters:
-* $1 is a page title',
 	'wikilog-comment-feed-title1' => 'Parameters:
 * $1 is a comment number (to make unique titles for different comments)
 * $2 is the commenter name',
@@ -320,6 +314,12 @@ Parameters:
 * $1 is a comment number (to make unique titles for different comments)
 * $2 is the commenter name
 * $3 is the title of the article the comment was posted to',
+	'wikilog-title-item-full' => '{{optional}}
+Parameters:
+* $1 a page title
+* $2 is the wikilog title',
+	'wikilog-title-comments' => 'Parameters:
+* $1 is a page title',
 	'wikilog-error-msg' => 'Parameters:
 * $1 is an error message',
 	'wikilog-invalid-param' => 'Parameters:
@@ -330,8 +330,8 @@ Parameters:
 * $1 is the invalid date',
 	'wikilog-invalid-tag' => 'Parameters:
 * $1 is the invalid tag',
-	'wikilog-invalid-file' => 'Parametre:
-* $1 er den ugyldige filen',
+	'wikilog-invalid-file' => 'Parameters:
+* $1 is the invalid file name.',
 	'wikilog-file-not-found' => 'Parameters:
 * $1 is the non-existing file',
 	'wikilog-not-an-image' => 'Parameters:
@@ -457,6 +457,13 @@ $messages['af'] = array(
 	'wikilog-reject-lc' => 'verwerp',
 	'wikilog-page-lc' => 'bladsy',
 	'wikilog-history-lc' => 'geskiedenis',
+);
+
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'wikilog-page-lc' => 'pachina',
 );
 
 /** Arabic (العربية)
@@ -1518,6 +1525,7 @@ Der Kommentar wird erst erscheinen, nachdem er von einem Moderator geprüft wurd
  * @author Imre
  */
 $messages['de-formal'] = array(
+	'wikilog-comment-feed-description' => 'Lesen Sie die neuesten Kommentare dieses Feeds.',
 	'wikilog-posting-anonymously' => 'Sie sind zur Zeit nicht angemeldet; Ihr Kommentar wird anonym versendet, identifiziert durch Ihre Internetverbindungsadresse. Sie sollten oben entweder ein Pseudonym angeben, um den Kommentar zu identifizieren oder sich $1, damit er passend zugeordnet wird.',
 	'wikilog-anonymous-moderated' => 'Nachdem Sie Ihren Kommentar absenden, wird er nicht sofort auf dieser Seite angezeigt.
 Der Kommentar wird nur erscheinen, nachdem er von einem Moderator freigegeben wurde.',
@@ -1759,6 +1767,13 @@ $messages['el'] = array(
 	'wikilog-reject-lc' => 'απόρριψη',
 	'wikilog-page-lc' => 'σελίδα',
 	'wikilog-history-lc' => 'ιστορικό',
+);
+
+/** British English (British English)
+ * @author Reedy
+ */
+$messages['en-gb'] = array(
+	'wikilog-summary-uncategorized' => 'Uncategorised',
 );
 
 /** Esperanto (Esperanto)
@@ -3277,6 +3292,139 @@ $messages['ig'] = array(
 	'wikilog-history-lc' => 'akíkó mbu',
 );
 
+/** Italian (Italiano)
+ * @author Civvì
+ */
+$messages['it'] = array(
+	'wikilog-desc' => 'Aggiunge funzionalità di blogging, creando un ibrido wiki-blog',
+	'wikilog-auto' => 'Wikilog Auto',
+	'wikilog-help' => '{{ns:Help}}:Wikilog',
+	'right-wl-postcomment' => 'Scrivi un commento ad articoli wikilog',
+	'right-wl-moderation' => 'Moderazione di commenti ad articoli wikilog',
+	'wikilog-specialwikilog-title' => 'Wikilogs',
+	'wikilog-specialwikilog' => 'Wikilog',
+	'wikilog-log-pagename' => 'Registro delle azioni Wikilog',
+	'wikilog-log-pagetext' => 'Di seguito è riportato un elenco di azioni wikilog.',
+	'wikilog-log-cmt-approve' => 'commento autorizzato "[[$1]]"',
+	'wikilog-log-cmt-reject' => 'respinto commento "[[$1]]"',
+	'wikilog-log-cmt-rejdel' => 'Respinto commento wikilog di [[Special:Contributions/$1|$1]]',
+	'wikilog-tab' => 'Wikilog',
+	'wikilog-tab-title' => 'Azioni Wikilog',
+	'wikilog-missing-wikilog' => 'Questa è la pagina [[{{int:wikilog-help}}|wikilog]] per [[{{FULLPAGENAME}}]]. 
+
+Questo wikilog non esiste ancora. 
+Allo scopo di pubblicare articoli e abilitare le altre caratteristiche wikilog deve essere prima creato il wikilog. 
+
+* <span class="plainlinks">[{{fullurl:{{FULLPAGENAME}}|action=edit}} Crea questo wikilog].</span>',
+	'wikilog-information' => 'Informazioni Wikilog',
+	'wikilog-post-count-published' => "In questo wikilog {{PLURAL:$1|c'è un articolo pubblicato|ci sono $1 articoli pubblicati}}",
+	'wikilog-post-count-drafts' => "{{PLURAL:$1|C'è un articolo (bozza) non pubblicato|Ci sono $1 articoli (bozze) non pubblicati}}",
+	'wikilog-post-count-all' => "In totale {{PLURAL:$1|c'è un articolo|ci sono $1 articoli}}.",
+	'wikilog-new-item' => 'Crea nuovo articolo wikilog',
+	'wikilog-new-item-go' => 'Crea',
+	'wikilog-item-name' => 'Nome articolo:',
+	'wikilog-published' => 'Pubblicato',
+	'wikilog-updated' => 'Aggiornato',
+	'wikilog-draft' => 'Bozza',
+	'wikilog-authors' => 'Autori',
+	'wikilog-wikilog' => 'Wikilog',
+	'wikilog-title' => 'Titolo',
+	'wikilog-actions' => 'Azioni',
+	'wikilog-comments' => 'Commenti',
+	'wikilog-replies' => 'Risposte',
+	'wikilog-view-archives' => 'Archivi',
+	'wikilog-view-summary' => 'Sommario',
+	'wikilog-draft-title-mark' => '(Bozza)',
+	'wikilog-anonymous-mark' => '(Anonimo)',
+	'wikilog-pager-newest' => 'più recente',
+	'wikilog-pager-oldest' => 'più datato',
+	'wikilog-pager-prev' => 'precedente',
+	'wikilog-pager-next' => 'successivo',
+	'wikilog-pager-first' => 'primo',
+	'wikilog-pager-last' => 'ultimo',
+	'wikilog-pager-empty' => '(senza articoli)',
+	'wikilog-no-comments' => 'nessun commento',
+	'wikilog-has-comments' => '{{PLURAL:$1|un commento|$1 commenti}}',
+	'wikilog-summary-footer' => 'Inviato da $7 a [[$1|$2]] il $8 alle $9, $10.',
+	'wikilog-summary-footer-single' => 'Inviato da $7 il $8 alle $9, $10.',
+	'wikilog-summary-uncategorized' => 'Non categorizzato',
+	'wikilog-summary-categories' => 'Archiviato in $2',
+	'wikilog-summary-more' => '[[$3|→ continua a leggere...]]',
+	'wikilog-author-signature' => '[[{{ns:User}}:$1|$1]] ([[{{ns:User_talk}}:$1|discussioni]])',
+	'wikilog-edit-fieldset-legend' => 'Wikilog opzioni:',
+	'wikilog-edit-signpub' => 'Firma e pubblica questo articolo',
+	'wikilog-edit-signpub-tooltip' => "Firma e pubblica questo articolo nel wikilog quando viene salvato.
+Deseleziona questa casella per salvare l'articolo come bozza.",
+	'wikilog-comment-permalink' => '$1 alle ore $2',
+	'wikilog-comment-note-item' => 'ha commentato $1',
+	'wikilog-comment-note-edited' => 'Ultima modifica il $1 alle $2',
+	'wikilog-comment-anonsig' => '$3 (anonimo)',
+	'wikilog-comment-pending' => 'Questo commento è in attesa di approvazione.',
+	'wikilog-comment-deleted' => 'Il commento è stato cancellato.',
+	'wikilog-comment-omitted-x' => 'Commento omesso (#$1).',
+	'wikilog-comment-autosumm' => 'Nuovo commento di $1: $2',
+	'wikilog-reply-to-comment' => 'Inviare una risposta a questo commento',
+	'wikilog-comment-page' => 'Vai alla pagina di questo commento',
+	'wikilog-comment-edit' => 'Modifica questo commento',
+	'wikilog-comment-delete' => 'Elimina questo commento',
+	'wikilog-comment-history' => 'Vedi cronologia del commento',
+	'wikilog-comment-approve' => 'Approvare questo commento (azione immediata)',
+	'wikilog-comment-reject' => 'Rifiuta questo commento (azione immediata)',
+	'wikilog-newtalk-text' => '<!-- pagina vuota creata da Wikilog -->',
+	'wikilog-newtalk-summary' => 'creato automaticamente da Wikilog',
+	'wikilog-feed-description' => 'Leggi i commenti più recenti in questo feed.',
+	'wikilog-comment-feed-title1' => 'Commento di $2 (#$1)',
+	'wikilog-comment-feed-title2' => 'Commento di $2 a $3 (#$1)',
+	'wikilog-comment-feed-description' => 'Leggi i commenti più recenti in questo feed.',
+	'wikilog-title-comments' => 'Commenti - $1',
+	'wikilog-error-msg' => 'Wikilog: $1',
+	'wikilog-error-title' => 'Errore di Wikilog',
+	'wikilog-invalid-param' => 'Parametro non valido: $1.',
+	'wikilog-invalid-author' => 'Autore non valido: $1.',
+	'wikilog-invalid-date' => 'Data non valida: $1.',
+	'wikilog-invalid-tag' => 'Tag non valido: $1.',
+	'wikilog-invalid-file' => 'File non valido: $1.',
+	'wikilog-file-not-found' => 'File inesistente: $1.',
+	'wikilog-not-an-image' => "Il file non è un'immagine: $1.",
+	'wikilog-out-of-context' => 'Attenzione: i tag Wikilog vengono usati fuori dal contesto. 
+Essi dovrebbero essere usati solo in articoli nel namespace Wikilog.',
+	'wikilog-too-many-authors' => 'Attenzione: in questo post wikilog sono elencati troppi autori.',
+	'wikilog-too-many-tags' => 'Attenzione: In questo wikilog sono elencati troppi tag.',
+	'wikilog-comment-is-empty' => 'Il commento inviato è vuoto.',
+	'wikilog-comment-too-long' => 'Il commento inviato è troppo lungo.',
+	'wikilog-comment-invalid-name' => 'Il nome indicato non è valido.',
+	'wikilog-no-such-article' => "L'articolo wikilog richiesto non esiste.",
+	'wikilog-reading-draft' => 'Questo articolo wikilog è una bozza, non è ancora stato pubblicato.',
+	'wikilog-posting-anonymously' => 'Al momento non sei connesso, il tuo commento verrà pubblicato in forma anonima ed identificato tramite il tuo indirizzo IP. 
+Dovresti fornire uno pseudonimo per identificare il tuo commento o $1 per per attribuirlo correttamente.',
+	'wikilog-anonymous-moderated' => "Dopo l'invio del tuo commento questo non sarà immediatamente visibile. Il commento verrà pubblicato solo dopo l'approvazione da parte di un moderatore.",
+	'wikilog-post-comment' => 'Inserisci un nuovo commento',
+	'wikilog-post-reply' => 'Invia una nuova risposta',
+	'wikilog-form-legend' => 'Cerca post wikilog',
+	'wikilog-form-wikilog' => 'Wikilog:',
+	'wikilog-form-category' => 'Categoria:',
+	'wikilog-form-name' => 'Nome:',
+	'wikilog-form-author' => 'Autore:',
+	'wikilog-form-tag' => 'Tag:',
+	'wikilog-form-date' => 'Data:',
+	'wikilog-form-status' => 'Status:',
+	'wikilog-form-preview' => 'Anteprima:',
+	'wikilog-form-comment' => 'Commento:',
+	'wikilog-show-all' => 'Tutti i post',
+	'wikilog-show-published' => 'Pubblicato',
+	'wikilog-show-drafts' => 'Bozze',
+	'wikilog-submit' => 'Invia',
+	'wikilog-preview' => 'Anteprima',
+	'wikilog-edit-lc' => 'modifica',
+	'wikilog-reply-lc' => 'rispondi',
+	'wikilog-delete-lc' => 'cancella',
+	'wikilog-approve-lc' => 'approva',
+	'wikilog-reject-lc' => 'respingi',
+	'wikilog-page-lc' => 'pagina',
+	'wikilog-history-lc' => 'cronologia',
+	'wikilog-doc-import-comment' => 'Documentazione Wikilog importata',
+);
+
 /** Japanese (日本語)
  * @author Aotake
  * @author Fryed-peach
@@ -3425,6 +3573,7 @@ $messages['kn'] = array(
 	'wikilog-authors' => 'ಕರ್ತೃಗಳು',
 	'wikilog-title' => 'ಶೀರ್ಷಿಕೆ',
 	'wikilog-view-summary' => 'ಸಾರಾಂಶ',
+	'wikilog-pager-last' => 'ಕೊನೆಯ',
 	'wikilog-form-category' => 'ವರ್ಗ:',
 	'wikilog-form-name' => 'ಹೆಸರು:',
 	'wikilog-form-author' => 'ಕರ್ತೃ:',
@@ -3433,10 +3582,12 @@ $messages['kn'] = array(
 	'wikilog-form-preview' => 'ಮುನ್ನೋಟ:',
 	'wikilog-show-published' => 'ಪ್ರಕಟಿತ',
 	'wikilog-preview' => 'ಮುನ್ನೋಟ',
+	'wikilog-edit-lc' => 'ಸಂಪಾದಿಸಿ',
+	'wikilog-delete-lc' => 'ಅಳಿಸು',
 	'wikilog-history-lc' => 'ಇತಿಹಾಸ',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -3649,6 +3800,7 @@ $messages['lb'] = array(
 	'wikilog-form-status' => 'Status:',
 	'wikilog-form-preview' => 'Kucken ouni ze späicheren:',
 	'wikilog-form-comment' => 'Bemierkung:',
+	'wikilog-show-all' => 'All Beiträg',
 	'wikilog-show-published' => 'Verëffentlecht',
 	'wikilog-show-drafts' => 'Virbereedungen',
 	'wikilog-submit' => 'Schécken',
@@ -3671,7 +3823,7 @@ $messages['lg'] = array(
 	'wikilog-preview' => 'Lingiza',
 );
 
-/** Laz (Laz)
+/** Lazuri (Lazuri)
  * @author Bombola
  */
 $messages['lzz'] = array(
@@ -3878,6 +4030,13 @@ $messages['ms'] = array(
 	'wikilog-log-cmt-rejdel' => 'Ulasan wikilog oleh [[Special:Contributions/$1|$1]] ditolak',
 	'wikilog-tab' => 'Wikilog',
 	'wikilog-tab-title' => 'Tindakan Wikilog',
+);
+
+/** Nedersaksisch (Nedersaksisch)
+ * @author Servien
+ */
+$messages['nds-nl'] = array(
+	'wikilog-form-date' => 'Daotum:',
 );
 
 /** Dutch (Nederlands)
@@ -4279,8 +4438,13 @@ D\'en primièr, deu èsser creat per poder publicar d\'articles e utilizar las a
 	'wikilog-edit-signpub' => 'Signar e publicar aqueste article',
 	'wikilog-edit-signpub-tooltip' => "Fa que l'article es signat e publicat dins son wikilog al moment del salvament.
 Desmarcatz aquesta casa per que l'article demòre a l'estat de borrolhon.",
+	'wikilog-comment-permalink' => '$1 a $2',
+	'wikilog-comment-note-item' => 'Postat a $1',
+	'wikilog-comment-note-edited' => 'darrièra modificacion lo $1 a $2',
+	'wikilog-comment-anonsig' => '$3 (anonim)',
 	'wikilog-comment-pending' => "Aqueste comentari es en espèra d'una aprovacion.",
 	'wikilog-comment-deleted' => 'Aqueste comentari es estat suprimit.',
+	'wikilog-comment-omitted-x' => 'Comentari omés (#$1).',
 	'wikilog-comment-autosumm' => 'Comentari novèl de $1 : $2',
 	'wikilog-reply-to-comment' => 'Postar una responsa a aqueste comentari',
 	'wikilog-comment-page' => "Anar a la pagina d'aqueste comentari",
@@ -4292,6 +4456,9 @@ Desmarcatz aquesta casa per que l'article demòre a l'estat de borrolhon.",
 	'wikilog-newtalk-text' => '<!-- pagina vèrja creada per Wikilog -->',
 	'wikilog-newtalk-summary' => 'creat automaticament per Wikilog',
 	'wikilog-feed-description' => 'Legir los posts mai recents dins aqueste feed.',
+	'wikilog-comment-feed-title1' => 'Comentari de $2 (#$1)',
+	'wikilog-comment-feed-title2' => 'Comentari de $2 a $3 (# $1)',
+	'wikilog-comment-feed-description' => 'Legir los comentaris los mai recents dins aqueste fial de nòvas.',
 	'wikilog-title-comments' => 'Comentaris - $1',
 	'wikilog-error-msg' => 'Wikilog : $1',
 	'wikilog-error-title' => 'Error de wikilog',
@@ -5253,6 +5420,45 @@ $messages['ru'] = array(
 	'wikilog-page-lc' => 'страница',
 	'wikilog-history-lc' => 'история',
 	'wikilog-doc-import-comment' => 'Импортированная документация Викилога',
+);
+
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'wikilog-new-item' => 'Створити нову вікі статю',
+	'wikilog-new-item-go' => 'Створити',
+	'wikilog-item-name' => 'Назва статї:',
+	'wikilog-published' => 'Публікована',
+	'wikilog-updated' => 'Актуалізоване',
+	'wikilog-authors' => 'Авторы',
+	'wikilog-wikilog' => 'Вікілоґ',
+	'wikilog-title' => 'Назва',
+	'wikilog-actions' => 'Дїї',
+	'wikilog-comments' => 'Коментарї',
+	'wikilog-replies' => 'Одповідї',
+	'wikilog-view-archives' => 'Архівы',
+	'wikilog-anonymous-mark' => '(анонім)',
+	'wikilog-pager-newest' => 'найновшы',
+	'wikilog-pager-oldest' => 'найстаршы',
+	'wikilog-pager-prev' => 'попередня',
+	'wikilog-pager-next' => 'далша',
+	'wikilog-pager-first' => 'перша',
+	'wikilog-pager-last' => 'послїдня',
+	'wikilog-pager-empty' => '(жадны елементы)',
+	'wikilog-no-comments' => 'жадны коментарї',
+	'wikilog-has-comments' => '$1 {{PLURAL:$1|коментарь|коментарї|коментарів}}',
+	'wikilog-summary-uncategorized' => 'Некатеґорізованы',
+	'wikilog-form-wikilog' => 'Вікілоґ:',
+	'wikilog-form-category' => 'Катеґорія:',
+	'wikilog-form-name' => 'Назва:',
+	'wikilog-form-author' => 'Автор:',
+	'wikilog-form-date' => 'Датум:',
+	'wikilog-form-status' => 'Став:',
+	'wikilog-form-preview' => 'Нагляд:',
+	'wikilog-form-comment' => 'Коментарь:',
+	'wikilog-show-all' => 'Вшыткы приспевкы',
+	'wikilog-show-published' => 'Публіковане',
 );
 
 /** Sinhala (සිංහල)

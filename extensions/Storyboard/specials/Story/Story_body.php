@@ -29,19 +29,17 @@ class SpecialStory extends IncludableSpecialPage {
 			if ( $wgUser->isAllowed( 'storyreview' ) ) {
 				// If the user is allowed to actually modify the story, save it.
 				$this->saveStory();
-				
-				// Redirect the user when the redirect parameter is set.
-				if ( $wgRequest->getVal( 'returnto' ) ) {
-		 			$titleObj = Title::newFromText( $wgRequest->getVal( 'returnto' ) );
-					$wgOut->redirect( $titleObj->getFullURL() );
-				}
 			} else {
 				// If the user is not allowed to modify stories, show an error.
 				$wgOut->addWikiMsg( 'storyboard-cantedit' );
 			}
 		}
 		
-		if ( trim( $title ) != '' || $wgRequest->getIntOrNull( 'id' ) ) {
+		// Redirect the user when the redirect parameter is set.
+		if ( $wgRequest->getVal( 'returnto' ) && !$wgRequest->getCheck( 'action' ) ) {
+ 			$titleObj = Title::newFromText( $wgRequest->getVal( 'returnto' ) );
+			$wgOut->redirect( $titleObj->getFullURL() );
+		} else if ( trim( $title ) != '' || $wgRequest->getIntOrNull( 'id' ) ) {
 			$this->queryAndShowStory( $title );
 		} else {
 			$wgOut->setPageTitle( wfMsg( 'storyboard-viewstories' ) );
@@ -92,7 +90,8 @@ class SpecialStory extends IncludableSpecialPage {
 					'story_text',
 					'story_created',
 					'story_modified',
-					'story_state'
+					'story_state',
+					'story_lang_code',
 				),
 				array( 'story_title' => $title )
 			);
@@ -120,14 +119,9 @@ class SpecialStory extends IncludableSpecialPage {
 					
 					if ( $wgUser->isAllowed( 'storyreview' ) ) {
 						global $wgTitle;
-						$wgOut->addHTML( // TODO: this still isn't working properly
-							wfMsgHtml(
-								'storyboard-canedit',
-								$wgUser->getSkin()->link(
-									$wgTitle,
-									strtolower( wfMsg( 'edit' ) )
-								)
-							)
+						$wgOut->addWikiMsg(
+							'storyboard-canedit',
+							$this->getTitle( $story->story_title )->getFullURL( array( 'action' => 'edit' ) )
 						);
 					}
 				}
@@ -191,7 +185,7 @@ class SpecialStory extends IncludableSpecialPage {
 	 * @param $story
 	 */
 	private function showStoryForm( $story ) {
-		global $wgOut, $wgLang, $wgRequest, $wgUser, $wgJsMimeType, $wgScriptPath;
+		global $wgOut, $wgLang, $wgRequest, $wgUser, $wgJsMimeType, $wgScriptPath, $wgContLanguageCode;
 		global $egStoryboardScriptPath, $egStorysubmissionWidth, $egStoryboardMaxStoryLen, $egStoryboardMinStoryLen;
 		
 		$wgOut->setPageTitle( $story->story_title );
@@ -224,11 +218,34 @@ class SpecialStory extends IncludableSpecialPage {
 					'name' => 'storystate',
 					'id' => 'storystate'
 				),
-				'<option value="' . Storyboard_STORY_UNPUBLISHED . '">' . wfMsg( 'storyboard-unpublished' ) . '</option>' .
-				'<option value="' . Storyboard_STORY_PUBLISHED . '">' . wfMsg( 'storyboard-published' ) . '</option>' .
-				'<option value="' . Storyboard_STORY_HIDDEN . '">' . wfMsg( 'storyboard-hidden' ) . '</option>'
+				'<option value="' . Storyboard_STORY_UNPUBLISHED . '">' . htmlspecialchars( wfMsg( 'storyboard-option-unpublished' ) ) . '</option>' .
+				'<option value="' . Storyboard_STORY_PUBLISHED . '">' . htmlspecialchars( wfMsg( 'storyboard-option-published' ) ) . '</option>' .
+				'<option value="' . Storyboard_STORY_HIDDEN . '">' . htmlspecialchars( wfMsg( 'storyboard-option-hidden' ) ) . '</option>'
 			) .
 		'</td></tr>';
+		
+		$languages = Language::getLanguageNames( false );
+		
+		$currentLang = array_key_exists( $story->story_lang_code, $languages ) ? $story->story_lang_code : $wgContLanguageCode;
+		
+		$options = array();
+		ksort( $languages );
+		
+		foreach ( $languages as $code => $name ) {
+			$display = wfBCP47( $code ) . ' - ' . $name;
+			$options[$display] = $code;
+		}	
+			
+		$languageSelector = new HTMLSelectField( array(
+			'name' => 'language',
+			'options' => $options
+		) );
+		
+		$formBody .= '<tr>' .
+			Html::element( 'td', array( 'width' => '100%' ), wfMsg( 'storyboard-language' ) ) .
+			'<td>' .
+			$languageSelector->getInputHTML( $currentLang ) .
+			'</td></tr>';
 		
 		$formBody .= '<tr>' .
 			Html::element( 'td', array( 'width' => '100%' ), wfMsg( 'storyboard-authorname' ) ) .
@@ -411,6 +428,7 @@ EOT
 				'story_text' => $wgRequest->getText( 'storytext' ),
 				'story_modified' => $dbw->timestamp( time() ),
 				'story_state' => $wgRequest->getIntOrNull( 'storystate' ),
+				'story_lang_code' => $wgRequest->getText( 'wplanguage' )
 			),
 			array(
 				'story_id' => $wgRequest->getText( 'storyId' ),

@@ -48,8 +48,8 @@ final class SMGeoCoords {
 		
 		// Only execute the query when the description's type is geographical coordinates,
 		// the description is valid, and the near comparator is used.
-		if ( ( $dataValue->getTypeID() != '_geo' ) 
-			|| ( !$dataValue->isValid() ) 
+		if ( ( $dataValue->getTypeID() != '_geo' )
+			|| ( !$dataValue->isValid() )
 			|| ( $description->getComparator() != SM_CMP_NEAR )
 			) return true;
 		
@@ -60,6 +60,9 @@ final class SMGeoCoords {
 		$south = $dbs->addQuotes( $boundingBox['south'] );
 		$west = $dbs->addQuotes( $boundingBox['west'] );
 		
+		// TODO: The field names are hardcoded in, since SMW offers no support for selection based on multiple fields.
+		// Ideally SMW's setup should be changed to allow for this. Now the query can break when other extensions
+		// add their own semantic tables with similar signatures.
 		$whereSQL .= "{$tablename}.lat < $north && {$tablename}.lat > $south && {$tablename}.lon < $east && {$tablename}.lon > $west";
 		
 		return true;

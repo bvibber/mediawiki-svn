@@ -878,7 +878,7 @@ $messages['km'] = array(
 	'spamdifftool_submit_buttom' => 'ដាក់ស្នើ',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -919,6 +919,7 @@ $messages['lb'] = array(
 	'spamdifftool' => 'Gestioun vun der schwaarzer Lëscht vum Spam',
 	'spamdifftool-desc' => "Gëtt d'Méiglechkeet fir aus de Versiounsënnerscheeder nei Elementer op déi schwaarz Lëscht vum Spam derbäizesetzen",
 	'spamdifftool_cantedit' => "Pardon - Dir hutt net déi néideg Rechter fir d'Schwaarz Lëscht vum Spam z'änneren.",
+	'spamdifftool-no-title' => "'''Feeler:''' et gouf kee Säitentitel uginn.",
 	'spamdifftool_notext' => "Et gëtt keen Text fir op d'Schwaarz Lëscht vum Spam derbäizesetzen.
 Klickt <a href='$1'>hei</a> fir weiderzefueren.",
 	'spamdifftool_confirm' => "Konfirméiert daat Dir dës Elementer op déi Schwaarz Lëscht vum Spam derbäisetze wëllt.
@@ -1137,6 +1138,7 @@ $messages['oc'] = array(
 	'spamdifftool' => 'Gestion de la Lista Negra dels Spams',
 	'spamdifftool-desc' => "Provesís un metòde simple per apondre d'entradas dins la lista negra dels spams a partir de las dif",
 	'spamdifftool_cantedit' => 'O planhèm - Avètz pas la permission d’editar la Lista Negra dels Spams.',
+	'spamdifftool-no-title' => "'''Error :''' pas de títol de pagina especificat.",
 	'spamdifftool_notext' => "I a pas de tèxte d'apondre a la Lista Negra dels Spams. Clicatz <a href='$1'>aicí</a> per contunhar.",
 	'spamdifftool_confirm' => "Confirmatz que volètz apondre aquestas entradas dins la Lista Negra dels Spams. (Clicatz <a href='$1' target='new'>aicí</a> per senhalar tot problèma.)",
 	'spamdifftool_summary' => 'Apondut a la Tièra Negra dels Spams',
@@ -1256,7 +1258,7 @@ Clique <a href='$1'>aqui</a> para continuar.",
 (Clique <a href='$1' target='new'>aqui</a> para reportar um problema.)",
 	'spamdifftool_summary' => 'A adicionar à lista negra de spam',
 	'spamdifftool_urls_detected' => 'Foram detectadas as seguintes URLs na edição ou edições. Quais pretende que sejam adicionadas à lista negra de spam?
-Estas opções estão ordenadas desde a mais restritiva até à menos restritiva. O bloqueio de um domínio inteiro irá bloquear todas a ligações provenientes daquele domínio.
+Estas opções estão ordenadas desde a mais restritiva até à menos restritiva. O bloqueio de um domínio inteiro irá bloquear todas as ligações provenientes daquele domínio.
 
 Certifique-se de que não bloqueia domínios inteiros que sejam anfitriões de contas de utilizadores, tais como blogspot.com, geocities.com, etc.',
 	'spamdifftool_no_urls_detected' => "Nenhuns URL foram detectados.
@@ -1594,11 +1596,13 @@ Geri dönmek için <a href='$1'>buraya</a> tıklayın.",
 
 /** Ukrainian (Українська)
  * @author Aleksandrit
+ * @author Тест
  */
 $messages['uk'] = array(
 	'spamdifftool' => 'Управління чорним списком спаму',
 	'spamdifftool-desc' => 'Дозволяє легко додавати нові записи в чорний список спаму зі сторінок порівняння версій',
 	'spamdifftool_cantedit' => 'Вибачте, у вас немає дозволу змінювати чорний список спаму.',
+	'spamdifftool-no-title' => "'''Помилка:''' назву сторінки не зазначено.",
 	'spamdifftool_notext' => "Немає тексту для додавання в чорний список спаму.
 Натисніть <a href='$1'>тут</a>, щоб продовжити.",
 	'spamdifftool_confirm' => "Підтвердите, що ви хочете додати ці записи в чорний список спаму. 

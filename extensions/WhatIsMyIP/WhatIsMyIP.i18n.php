@@ -433,7 +433,7 @@ $messages['ko'] = array(
 	'whatismyip-desc' => '사용자의 [[Special:WhatIsMyIP|IP 주소]]를 표시합니다.',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

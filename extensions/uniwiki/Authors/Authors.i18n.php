@@ -333,7 +333,7 @@ $messages['kn'] = array(
 	'authors_authors' => 'ಕರ್ತೃಗಳು',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

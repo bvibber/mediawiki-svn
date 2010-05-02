@@ -1,6 +1,5 @@
 <?php
-
-/** 
+/**
  * A class that holds static helper functions for common functionality that is not map-spesific.
  *
  * @file Maps_Mapper.php
@@ -14,59 +13,58 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 }
 
 final class MapsMapper {
-	
 	public static function initialize() {
 		global $egMapsSizeRestrictions, $egMapsMapWidth, $egMapsMapHeight;
 
 		Validator::addValidationFunction( 'is_map_dimension', array( __CLASS__, 'isMapDimension' ) );
 		Validator::addValidationFunction( 'is_location', array( __CLASS__, 'isLocation' ) );
-		Validator::addValidationFunction( 'are_locations', array( __CLASS__, 'areLocations' ) );	
+		Validator::addValidationFunction( 'are_locations', array( __CLASS__, 'areLocations' ) );
 
 		Validator::addOutputFormat( 'mapdimension', array( __CLASS__, 'setMapDimension' ) );
 		Validator::addOutputFormat( 'coordinateSet', array( __CLASS__, 'formatLocation' ) );
-		Validator::addOutputFormat( 'coordinateSets', array( __CLASS__, 'formatLocations' ) );		
+		Validator::addOutputFormat( 'coordinateSets', array( __CLASS__, 'formatLocations' ) );
 	}
-	
-	public static function isLocation( $location ) {
+
+	public static function isLocation( $location, array $metaData ) {
 		if ( self::geocoderIsAvailable() ) {
 			return MapsGeocoder::isLocation( $location );
 		} else {
 			return MapsCoordinateParser::areCoordinates( $location );
 		}
 	}
-	
-	public static function areLocations( $locations ) {
+
+	public static function areLocations( $locations, array $metaData ) {
 		$locations = (array)$locations;
-		foreach( $locations as $location ) {
-			if ( !self::isLocation( $location ) ) {
+		foreach ( $locations as $location ) {
+			if ( !self::isLocation( $location, $metaData ) ) {
 				return false;
 			}
 		}
 		return true;
 	}
-	
+
 	public static function formatLocation( &$location ) {
 		if ( self::geocoderIsAvailable() ) {
 			$location = MapsGeocoder::attemptToGeocodeToString( $location );
 		} else {
 			$location = MapsCoordinateParser::parseAndFormat( $location );
-		}		
+		}
 	}
-	
+
 	public static function formatLocations( &$locations ) {
 		$locations = (array)$locations;
-		foreach( $locations as &$location ) {
+		foreach ( $locations as &$location ) {
 			self::formatLocation( $location );
 		}
 	}
-	
+
 	/**
 	 * Returns a valid service. When an invalid service is provided, the default one will be returned.
 	 * Aliases are also chancged into the main service names @see MapsMapper::getMainServiceName().
 	 *
 	 * @param string $service
 	 * @param string $feature
-	 * 
+	 *
 	 * @return string
 	 */
 	public static function getValidService( $service, $feature ) {
@@ -93,10 +91,10 @@ final class MapsMapper {
 				$service = $egMapsDefaultService;
 			}
 		}
-		
+
 		return $service;
 	}
-	
+
 	/**
 	 * Checks if the service name is an alias for an actual service,
 	 * and changes it into the main service name if this is the case.
@@ -106,7 +104,7 @@ final class MapsMapper {
 	 */
 	private static function getMainServiceName( $service ) {
 		global $egMapsServices;
-		
+
 		if ( ! array_key_exists( $service, $egMapsServices ) ) {
 			foreach ( $egMapsServices as $serviceName => $serviceInfo ) {
 				if ( in_array( $service, $serviceInfo['aliases'] ) ) {
@@ -115,23 +113,23 @@ final class MapsMapper {
 				}
 			}
 		}
-		
+
 		return $service;
 	}
-	
+
 	/**
 	 * Determines if a value is a valid map dimension, and optionally corrects it.
-	 * 
+	 *
 	 * @param string or number $value The value as it was entered by the user.
-	 * @param string $dimension Must be width or hieght.
+	 * @param string $dimension Must be width or height.
 	 * @param boolean $correct If true, the value will be corrected when invalid. Defaults to false.
 	 * @param number $default The default value for this dimension. Must be set when $correct = true.
-	 * 
+	 *
 	 * @return boolean
 	 */
-	public static function isMapDimension( &$value, $dimension, $correct = false, $default = 0 ) {
+	public static function isMapDimension( &$value, array $metaData, $dimension, $correct = false, $default = 0 ) {
 		global $egMapsSizeRestrictions;
-		
+
 		// See if the notation is valid.
 		if ( !preg_match( '/^\d+(\.\d+)?(px|ex|em|%)?$/', $value ) ) {
 			if ( $correct ) {
@@ -140,7 +138,7 @@ final class MapsMapper {
 				return false;
 			}
 		}
-		
+
 		// Determine the minimum and maximum values.
 		if ( preg_match( '/^.*%$/', $value ) ) {
 			if ( count( $egMapsSizeRestrictions[$dimension] >= 4 ) ) {
@@ -149,13 +147,13 @@ final class MapsMapper {
 			} else {
 				// This is for backward compatibility with people who have set a custom min and max before 0.6.
 				$min = 1;
-				$max = 100;				
+				$max = 100;
 			}
 		} else {
 			$min = $egMapsSizeRestrictions[$dimension][0];
-			$max = $egMapsSizeRestrictions[$dimension][1];			
+			$max = $egMapsSizeRestrictions[$dimension][1];
 		}
-		
+
 		// See if the actual value is withing the limits.
 		$number = preg_replace( '/[^0-9]/', '', $value );
 		if ( $number < $egMapsSizeRestrictions[$dimension][0] ) {
@@ -171,57 +169,76 @@ final class MapsMapper {
 				return false;
 			}
 		}
-		
+
 		// If this is a 'correct the value call', add 'px' if no unit has been provided.
 		if ( $correct ) {
 			if ( !preg_match( '/(px|ex|em|%)$/', $value ) ) {
 				$value .= 'px';
-			}			
+			}
 		}
-		
-		return true;		
-	}
-	
-	/**
-	 * Corrects the provided map demension value when not valid.
-	 * 
-	 * @param string or number $value The value as it was entered by the user.
-	 * @param string $dimension Must be width or hieght.
-	 * @param number $default The default value for this dimension.
-	 */
-	public static function setMapDimension( &$value, $dimension, $default ) {
-		self::isMapDimension( $value, $dimension, true, $default );	
+
+		return true;
 	}
 
 	/**
-	 * Returns a boolean indicating if MapsGeocoder is available. 
-	 * 
+	 * Corrects the provided map demension value when not valid.
+	 *
+	 * @param string or number $value The value as it was entered by the user.
+	 * @param string $dimension Must be width or height.
+	 * @param number $default The default value for this dimension.
+	 */
+	public static function setMapDimension( &$value, $dimension, $default ) {
+		self::isMapDimension( $value, array(), $dimension, true, $default );
+	}
+
+	/**
+	 * Returns a boolean indicating if MapsGeocoder is available.
+	 *
 	 * @return Boolean
 	 */
 	public static function geocoderIsAvailable() {
 		global $wgAutoloadClasses;
 		return array_key_exists( 'MapsGeocoder', $wgAutoloadClasses );
 	}
-	
+
 	/**
-	 * This function returns the definitions for the parameters used by every map feature. 
-	 * 
+	 * Returns an array containing all the possible values for the service parameter, including aliases.
+	 *
 	 * @return array
-	 */	
+	 */
+	public static function getAllServiceValues() {
+		global $egMapsAvailableServices, $egMapsServices;
+
+		$allServiceValues = array();
+
+		foreach ( $egMapsAvailableServices as $availableService ) {
+			$allServiceValues[] = $availableService;
+			$allServiceValues = array_merge( $allServiceValues, $egMapsServices[$availableService]['aliases'] );
+		}
+
+		return $allServiceValues;
+	}
+
+	/**
+	 * This function returns the definitions for the parameters used by every map feature.
+	 *
+	 * @return array
+	 */
 	public static function getCommonParameters() {
 		global $egMapsAvailableServices, $egMapsAvailableGeoServices, $egMapsDefaultGeoService, $egMapsMapWidth, $egMapsMapHeight;
-		
-		return array(	
+
+		return array(
 			'service' => array(
 				'criteria' => array(
-					'in_array' => $egMapsAvailableServices
-				),		
+					'in_array' => self::getAllServiceValues()
+				),
 			),
 			'geoservice' => array(
 				'criteria' => array(
 					'in_array' => $egMapsAvailableGeoServices
 				),
-				'default' => $egMapsDefaultGeoService
+				'default' => $egMapsDefaultGeoService,
+				'dependencies' => array( 'service' )
 			),
 			'zoom' => array(
 				'type' => 'integer',
@@ -243,8 +260,7 @@ final class MapsMapper {
 				),
 				'default' => $egMapsMapHeight,
 				'output-type' => array( 'mapdimension', 'height', $egMapsMapHeight )
-			),			
+			),
 		);
-	}	
-	
+	}
 }

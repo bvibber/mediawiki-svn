@@ -1,23 +1,11 @@
 <?php
-if ( !defined( 'MEDIAWIKI' ) ) die();
-
 /**
  * @author Niklas Laxström
  * @copyright Copyright © 2010 Niklas Laxström
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
  */
 
-$wgExtensionCredits['specialpage'][] = array(
-	'path'           => __FILE__,
-	'name'           => 'Translate: The First STeps',
-	'version'        => '2010-02-06',
-	'author'         => 'Niklas Laxström',
-);
-
-$wgSpecialPages['FirstSteps'] = 'SpecialFirstSteps';
-$wgExtensionMessagesFiles['FirstSteps'] = dirname( __FILE__ ) . '/FirstSteps.i18n.php';
-
-class SpecialFirstSteps extends SpecialPage {
+class SpecialFirstSteps extends UnlistedSpecialPage {
 	protected $skin, $user, $out;
 
 	public function __construct() {
@@ -236,6 +224,4 @@ class SpecialFirstSteps extends SpecialPage {
 
 		return $step_message;
 	}
-
 }
-

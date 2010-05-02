@@ -305,7 +305,7 @@ $messages['km'] = array(
 	'mediafunctions-not-exist' => '"$1" មិនមាន',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -589,7 +589,7 @@ $messages['vo'] = array(
 	'mediafunctions-not-exist' => '"$1" no dabinon',
 );
 
-/** Yue (粵語) */
+/** Cantonese (粵語) */
 $messages['yue'] = array(
 	'mediafunctions-invalid-title' => '"$1" 唔係一個有效嘅標題',
 	'mediafunctions-not-exist' => '"$1" 唔存在',

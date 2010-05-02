@@ -220,7 +220,7 @@ $messages['ja'] = array(
 	'replaceset-error-regexbadmodifier' => "'$1' は正規表現の修飾子として無効です。",
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

@@ -313,7 +313,7 @@ $messages['ko'] = array(
 	'linkopenid-prefstext-openid' => '당신의 OpenID:',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

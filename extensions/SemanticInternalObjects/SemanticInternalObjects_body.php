@@ -81,12 +81,17 @@ class SIOSQLStore extends SMWSQLStore2 {
 				);
 			} elseif ( $is_attribute ) {
 				$keys = $value->getDBkeys();
+				if ( method_exists( $value, 'getValueKey' ) ) {
+					$value_num = $value->getValueKey();
+				} else {
+					$value_num = $value->getNumericValue();
+				}
 				$up_atts2[] = array(
 					's_id' => $io_id,
 					'p_id' => $this->makeSMWPropertyID( $property ),
 					'value_unit' => $value->getUnit(),
 					'value_xsd' => $keys[0],
-					'value_num' => $value->getNumericValue()
+					'value_num' => $value_num
 				);
 			} elseif ( $is_text ) {
 				$keys = $value->getDBkeys();
@@ -134,7 +139,11 @@ class SIOHandler {
 		array_shift( $params ); // we already know the $parser...
 		$internal_object = new SIOInternalObject( $parser->getTitle(), $cur_object_num );
 		$obj_to_page_prop_name = array_shift( $params );
-		$internal_object->addPropertyAndValue( $obj_to_page_prop_name, $parser->getTitle()->getText() );
+		$main_page_name = $parser->getTitle()->getText();
+		if ( ( $ns_text = $parser->getTitle()->getNsText() ) != '' ) {
+			$main_page_name = $ns_text . ':' . $main_page_name;
+		}
+		$internal_object->addPropertyAndValue( $obj_to_page_prop_name, $main_page_name );
 		foreach ( $params as $param ) {
 			$parts = explode( "=", trim( $param ), 2 );
 			if ( count( $parts ) == 2 ) {

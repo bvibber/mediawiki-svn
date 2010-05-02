@@ -1593,6 +1593,9 @@ Dibabit un dastumad da enporzhiañ. E prenestr testenn ar yezhoù, merkit ur rol
 	'ow_exporttsv_not_allowed' => "N'oc'h ket aotreet da seveniñ un ezporzhiadenn roadennoù TSV.",
 	'ow_exporttsv_export_failed' => "C'hwitet eo an ezporzhiadenn",
 	'addcollection' => 'Wikidata : ouzhpennañ un dastumad',
+	'ow_searchnoresult' => "<p>Gallout a rit :<br />
+* '''Krouiñ an droienn \"[[Expression:\$1]]\"''' (hag ouzhpennañ un termenadur)<br />
+* '''Krouiñ ar bajenn \"[[:\$1]]\"''' (ur bajenn wiki voutin)</p>",
 	'ow_save' => 'Enrollañ',
 	'ow_history' => 'Istor',
 	'ow_datasets' => 'Dibab an diaz',
@@ -2647,6 +2650,7 @@ Bitte kontaktiere den Serveradminstrator.',
 /** German (formal address) (Deutsch (Sie-Form))
  * @author ChrisiPK
  * @author Imre
+ * @author Kghbln
  * @author Umherirrender
  */
 $messages['de-formal'] = array(
@@ -2662,6 +2666,9 @@ Stellen Sie sicher, dass die Anwendung die Datei richtig gespeichert oder export
 	'ow_exporttsv_header' => '<p>Eine Sammlung in eine Textdatei exportieren, die Tabulatoren als Trenner verwendet. Diese kann in OpenOffice.org, Excel oder andere Tabellenkalkulationsprogramme importiert werden.<br />
 Wählen Sie eine Sammlung aus, die Sie exportieren wollen. Geben Sie im Sprachen-Textfeld eine durch Kommata getrennte Liste von ISO 639-3-Sprachcodes an. Geben Sie zuerst die Sprachen an, aus denen Sie übersetzen werden (geben Sie so viele an, wie Sie wollen) und dann diejenigen, in die Sie übersetzen werden. Klicken Sie danach auf „Erstellen“, um die Datei zu erstellen.</p>',
 	'ow_exporttsv_not_allowed' => 'Sie haben nicht die Berechtigung, einen TSV-Export durchzuführen.',
+	'ow_searchnoresult' => "<p>Sie können...:<br />
+* '''...einen Ausdruck erstellen „[[Expression:$1]]“''' (und eine Definition hinzufügen) oder<br />
+* '''...eine Seite erstellen „[[:$1]]“''' (eine reguläre Seite)</p>",
 	'ow_noedit' => 'Sie haben nicht die Erlaubnis, Seiten im Dataset „$1“ zu bearbeiten.
 Siehe [[{{MediaWiki:Ow editing policy url}}|unsere Richtlinien]].',
 	'ow_dm_badtitle' => 'Diese Seite weist nicht zu einer DefinedMeaning (Konzept).
@@ -3521,6 +3528,7 @@ Contacta por favor el operador o el administrador del servicio.',
 /** Estonian (Eesti)
  * @author AivoK
  * @author Avjoska
+ * @author Hendrik
  * @author Pikne
  * @author Silvar
  */
@@ -3619,6 +3627,7 @@ $messages['et'] = array(
 	'ow_meaningsoftitle' => '"$1" tähendus',
 	'ow_Permission_denied' => '<h2>Õigused puuduvad</h2>',
 	'ow_history_show_life_span' => 'Näita kirje eluiga:',
+	'ow_class_attr_type_xlate' => 'Tõlgitav tekst',
 	'needstranslation' => 'Wikidata: Tõlget vajavad väljendid',
 	'ow_needs_xlation_title' => 'Tõlget vajavad väljendid',
 	'ow_needs_xlation_source_lang' => 'Lähtekeel:',
@@ -5965,7 +5974,7 @@ Per favor contacta le operator o administrator del servitor.',
 	'ow_needs_xlation_dest_lang' => 'Lingua de destination:',
 	'ow_needs_xlation_no_dest_lang' => 'Per favor specifica un lingua de destination.',
 	'ow_show' => 'Monstrar',
-	'ow_upload' => 'Cargar',
+	'ow_upload' => 'Incargar',
 	'ow_create' => 'Crear',
 	'ow_collection_added' => '<strong>Collection $1 addite.</strong>',
 	'ow_suggest_previous' => 'Precedente',
@@ -6442,6 +6451,9 @@ $messages['ja'] = array(
 	'ow_exporttsv_not_allowed' => 'あなたはTSVの書き出しをするための権限をもっていません。',
 	'ow_exporttsv_export_failed' => '書き出し失敗',
 	'addcollection' => 'ウィキデータ: コレクション追加',
+	'ow_searchnoresult' => "<p>以下の操作が可能です:<br />
+* '''式 \"[[Expression:\$1]]\" の作成''' (および定義の追加)<br />
+* '''ページ \"[[:\$1]]\" の作成''' (通常のウィキページ)</p>",
 	'ow_save' => '保存',
 	'ow_history' => '履歴',
 	'ow_datasets' => 'データ集合の選択',
@@ -7130,7 +7142,7 @@ $messages['krj'] = array(
 	'ow_dm_OK' => 'OK dun',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -7384,7 +7396,7 @@ $messages['ku-latn'] = array(
 	'ow_Source' => 'Çavkanî',
 );
 
-/** Cornish (Kernowek)
+/** Cornish (Kernewek)
  * @author Kernoweger
  * @author Kw-Moon
  */
@@ -7729,7 +7741,7 @@ $messages['lt'] = array(
 	'datasearch' => 'Wikidata: Duomenų paieška',
 );
 
-/** Laz (Laz)
+/** Lazuri (Lazuri)
  * @author Bombola
  */
 $messages['lzz'] = array(
@@ -9127,6 +9139,9 @@ Seleccionatz una colleccion d'exportar. Dins la bóstia de tèxte de lengas, pic
 	'ow_exporttsv_not_allowed' => 'Avètz pas la permission d’efectuar una exportacion al format TSV.',
 	'ow_exporttsv_export_failed' => "L'expòrt a fracassat",
 	'addcollection' => 'Wikidata : Apondre una colleccion',
+	'ow_searchnoresult' => "<p>Podètz :<br />
+* '''Crear l’expression « [[Expression:$1]] »''' (e apondre una definicion)<br />
+* '''Crear la pagina « [[:$1]] »''' (una page wiki estandarda)</p>",
 	'ow_save' => 'Salvar',
 	'ow_history' => 'Istoric',
 	'ow_datasets' => 'Seleccion de las donadas definidas',
@@ -10079,7 +10094,8 @@ Por favor, contacte um administrador do servidor.',
 Por favor, contacte um administrador do servidor.',
 	'ow_copy_successful' => '<h2>Cópia com Sucesso</h2>
 Os seus dados aparentam ter sido copiados com sucesso. Não se esqueça de verificar para ter a certeza!',
-	'ow_copy_unsuccessful' => '<h3>Cópia sem sucesso</h3> Não houve lugar a nenhuma operação de cópia.',
+	'ow_copy_unsuccessful' => '<h3>Cópia sem sucesso</h3>
+Não foi feita nenhuma operação de cópia.',
 	'ow_no_action_specified' => '<h3>Nenhuma acção foi especificada</h3> Talvez tenha vindo a esta página directamente? Em condições normais, não precisaria de estar aqui.',
 	'ow_db_consistency_not_found' => '<h2>Erro</h2>Há um problema com a consistência da base de dados, wikidata não consegue encontrar dados válidos relacionados com o ID deste significado definido, poderá ter-se perdido. Por favor, contacte o operador ou administrador do servidor.',
 	'ow_history_transaction' => 'Transacção:',
@@ -13662,7 +13678,7 @@ $messages['yi'] = array(
 	'ow_suggest_previous' => 'פֿריערדיקער',
 );
 
-/** Yue (粵語) */
+/** Cantonese (粵語) */
 $messages['yue'] = array(
 	'languages' => 'Wikidata: 語言管理員',
 	'langman_title' => '語言管理員',
@@ -14057,7 +14073,7 @@ $messages['zh-tw'] = array(
 	'datasearch' => 'Wikidata: 資料搜尋',
 );
 
-/** Yue (粵語) */
+/** Cantonese (粵語) */
 $messages['zh-yue'] = array(
 	'languages' => 'Wikidata: 語言管理員',
 	'langman_title' => '語言管理員',

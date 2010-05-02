@@ -101,7 +101,7 @@ $messages['an'] = array(
 	'badimages-reason' => 'Razón:',
 );
 
-/** Old English (Anglo-Saxon)
+/** Old English (Ænglisc)
  * @author Wōdenhelm
  */
 $messages['ang'] = array(
@@ -1893,6 +1893,7 @@ $messages['ps'] = array(
 
 /** Portuguese (Português)
  * @author Brunoy Anastasiya Seryozhenko
+ * @author Hamilton Abreu
  * @author Malafaya
  */
 $messages['pt'] = array(
@@ -1910,13 +1911,13 @@ $messages['pt'] = array(
 	'badimages-remove-confirm' => 'Confirme a remoção $1 da listagem:',
 	'badimages-removed' => '$1 foi removido da lista.',
 	'badimages-subheading' => 'Itens actuais',
-	'badimages-unprivileged' => '(Você não possui permissões suficientes para alterar a listagem)',
+	'badimages-unprivileged' => '(Não possui permissões suficientes para alterar a listagem)',
 	'badimages-log-name' => 'Registo de imagens problemáticas',
 	'badimages-log-header' => 'Este é um registo das alterações feitas na [[{{MediaWiki:Badimages-page}}|lista de imagens problemáticas]].',
 	'badimages-log-add' => 'adicionada [[$1]] na lista de imagens problemáticas',
 	'badimages-log-remove' => 'removida [[$1]] da lista de imagens problemáticas',
 	'badimages-page' => '{{ns:help}}:Lista de imagens problemáticas',
-	'right-badimages' => 'Atualizar a lista de imagens problemáticas',
+	'right-badimages' => 'Actualizar a lista de imagens problemáticas',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
@@ -1947,7 +1948,7 @@ $messages['pt-br'] = array(
 	'right-badimages' => 'Atualizar a lista de imagens problemáticas',
 );
 
-/** Rhaeto-Romance (Rumantsch) */
+/** Romansh (Rumantsch) */
 $messages['rm'] = array(
 	'badimages-name' => 'Num:',
 	'badimages-reason' => 'Motiv:',

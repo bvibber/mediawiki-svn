@@ -140,9 +140,11 @@ if a page with that name already exists, you will be sent to a form to edit that
 );
 
 /** Message documentation (Message documentation)
+ * @author EugeneZelenko
  * @author Fryed-peach
  * @author Jon Harald Søby
  * @author Purodha
+ * @author Raymond
  * @author Siebrand
  * @author Umherirrender
  */
@@ -159,7 +161,8 @@ $messages['qqq'] = array(
 	'sf_createform_add' => '{{Identical|Add}}',
 	'formstart' => 'Name of a special page.',
 	'sf_formedit_createtitle' => '* $1 is the main part of the title of a semantic form
-* $2 is the prefixed title, with spaces for the target page',
+* $2 is the prefixed title, with spaces for the target page
+{{Identical|Create}}',
 	'sf_formedit_edittitle' => '* $1 is the main part of the title of a semantic form
 * $2 is the prefixed title, with spaces for the target page',
 	'sf_formedit_remove' => '{{Identical|Remove}}',
@@ -967,6 +970,7 @@ $messages['ca'] = array(
 	'sf_forms_docu' => 'Els formularis següents ja existeixen al wiki.',
 	'createform' => 'Crea un formulari',
 	'sf_createform_nameinput' => 'Nom del formulari',
+	'sf_createform_nameinputdesc' => '(la convenció és anomenar el formulari com la plantilla principal que omple):',
 	'sf_createform_template' => 'Plantilla:',
 	'sf_createform_templatelabelinput' => 'Etiqueta de la plantilla (opcional):',
 	'sf_createform_allowmultiple' => "Permet múltiples (o cap) instàncies d'aquesta plantilla en la pàgina a crear",
@@ -979,7 +983,7 @@ $messages['ca'] = array(
 	'sf_createform_formlabel' => 'Etiqueta de formulari:',
 	'sf_createform_hidden' => 'Amagat',
 	'sf_createform_restricted' => 'Restringit (només els usuaris sysop, administradors, poden modificar-lo)',
-	'sf_createform_mandatory' => 'Obligat omplir',
+	'sf_createform_mandatory' => 'Obligatori',
 	'sf_createform_removetemplate' => 'Esborrar plantilla',
 	'sf_createform_addtemplate' => 'Afegeix una plantilla:',
 	'sf_createform_beforetemplate' => 'Plantilla anterior:',
@@ -1004,14 +1008,14 @@ Si no, se t'obrirà el formulari per afegir una pàgina nova.",
 Si aquesta pàgina ja existeix, se t'obrirà el formulari per editar-la.
 Si no, se t'obrirà el formulari per afegir una pàgina nova.",
 	'sf_formstart_createoredit' => 'Crea o edita',
-	'formedit' => 'Edita via formulari',
+	'formedit' => 'Edita amb formulari',
 	'sf_formedit_createtitle' => 'Crea $1: $2',
 	'sf_formedit_badurl' => "Aquesta és la pàgina per afegir dades. Has d'especificar tant el nom del formulari com la pàgina de destí a la URL; ha de ser quelcom similar a 'Special:FormEdit?form=&lt;nom formulari&gt;&target=&lt;pàgina destí&gt;', o bé 'Special:FormEdit/&lt;nom formulari&gt;/&lt;pàgina destí&gt;'.",
 	'sf_formedit_altforms' => 'Alternativament pots afegir aquesta pàgina amb un dels formularis següents:',
 	'sf_formedit_altformsonly' => 'Seleccioneu un formulari entre els següents per afegir aquesta pàgina:',
 	'sf_formcreate' => 'Crea amb formulari',
 	'sf_viewform' => 'Veure el formulari',
-	'sf_editsource' => 'Editar font',
+	'sf_editsource' => 'Edita el codi font',
 	'sf_formedit_edittitle' => 'Editar $1: $2',
 	'sf_formedit_morethanoneform' => "'''Avís:''' s'ha definit més d'un formulari per defecte en aquesta pàgina.",
 	'sf_formedit_formwarning' => 'Atenció: Aquesta pàgina <a href="$1">ja existeix</a>, però no fa servir aquest formulari.',
@@ -1032,7 +1036,7 @@ Si no, se t'obrirà el formulari per afegir una pàgina nova.",
 	'sf_deletionlog' => "Registre d'eliminació",
 	'sf_property_isproperty' => 'Aquesta és una propietat del tipus $1.',
 	'sf_property_linkstoform' => 'Enllaça a pàgines que usen el formulari $1.',
-	'sf_property_allowedvals' => '{{PLURAL:$1|El valor permès per aquesta propietat és|Els valors permesos per aquestes propietats són}}:',
+	'sf_property_allowedvals' => '{{PLURAL:$1|El valor permès per a aquesta propietat és|Els valors permesos per a aquestes propietats són}}:',
 	'sf_template_docu' => "Aquesta és la plantilla '$1'.
 Que ha de ser cridada en el format següent:",
 	'sf_template_docufooter' => 'Edita la pàgina per veure el text de la plantilla.',
@@ -1211,26 +1215,30 @@ wenn eine Seite mit diesem Namen bereits existiert, wirst du zu einem Formular z
 /** German (formal address) (Deutsch (Sie-Form))
  * @author Dst
  * @author Imre
+ * @author Kghbln
+ * @author The Evil IP address
  * @author Umherirrender
  */
 $messages['de-formal'] = array(
 	'sf_createproperty_allowedvalsinput' => 'Wenn Sie für dieses Attribut nur bestimmte Werte ermöglichen wollen, geben Sie diese bitte als kommagetrennte Liste ein (wenn ein Wert ein Komma enthält, ersetzen Sie das Komma mit „\\,“):',
 	'sf_createtemplate_fieldsdesc' => 'Wenn ein Feld einer Vorlage keinen Feldnamen benötigen soll, geben Sie einfach anstatt eines tatsächlichen Namens die Indexnummer des Feldes als Name ein (z.B. 1, 2, 3 usw.).',
 	'sf_createtemplate_aggregationdesc' => 'Um auf allen Seiten, die diese Vorlage benutzen, alle Seiten aufzulisten, die ein bestimmtes Attribut besitzen und auf diese Seiten verlinkt sind, geben Sie das gewünschte Attribut hier an:',
-	'sf_createtemplate_addtemplatebeforesave' => 'Sie müssen mindestens eine Vorlage zu diesem Formular hinzufügen, bevor Sie es speichern können.',
-	'sf_createform_allowmultiple' => 'Erlauben Sie mehrere (oder Null) Instanzen dieser Vorlage in der erstellten Seite',
+	'sf_createtemplate_addtemplatebeforesave' => 'Hinweis: Sie müssen mindestens eine Vorlage zu diesem Formular hinzufügen, bevor Sie es speichern können.',
+	'sf_createform_allowmultiple' => 'Erlauben Sie mehrere (oder keine) Instanzen dieser Vorlage auf der erstellten Seite',
 	'sf_createform_choosefield' => 'Wählen Sie ein Feld aus, das Sie hinzufügen wollen.',
 	'sf_createcategory_makesubcategory' => 'Machen Sie diese Kategorie zu einer Unterkategorie einer anderen Kategorie (optional):',
 	'sf_createclass_docu' => 'Geben Sie hier alle Daten ein, um die Attribute, die Vorlage, das Formular und die Kategorie für eine einzelne Klasse zu erstellen.
 Für mehrere Optionen nutzen Sie bitte die Seite $1.',
 	'sf_formstart_docu' => 'Geben Sie in dieses Textfeld den Namen der Seite ein, die mit Formular „$1“ bearbeitet werden soll. Wenn bereits eine Seite mit diesem Namen existiert, werden Sie zu einem Formular weitergeleitet, mit dem Sie diese Seite bearbeiten können. Andernfalls werden Sie zu einem Formular weitergeleitet, mit dem Sie diese Seite erstellen können.',
 	'sf_formstart_noform_docu' => 'Geben Sie in dieses Textfeld den Namen der Seite ein und wählen Sie das Formular, mit dem die Seite bearbeitet werden soll. Wenn bereits eine Seite mit diesem Namen existiert, werden Sie zu einem Formular weitergeleitet, mit dem Sie diese Seite bearbeiten können. Andernfalls werden Sie zu einem Formular weitergeleitet, mit dem Sie diese Seite erstellen können.',
-	'sf_formedit_badurl' => 'Dies ist die Seite zum Hinzufügen von Daten. Sie müssen den Namen eines Formulars UND die zu bearbeitende Zielseite in der URL angeben. Es sollte aussehen wie „Special:FormEdit?form=&lt;Formularname&gt;&target=&lt;Zielseite&gt;“ oder „Special:FormEdit/&lt;Formularname&gt;/&lt;Zielseite&gt;“.',
+	'sf_formedit_badurl' => 'Dies ist die Seite zum Bearbeiten mit einem Formular. Sie müssen den Namen eines Formulars und die zu bearbeitende Zielseite in der URL angeben. Es sollte aussehen wie „Special:FormEdit?form=&lt;Formularname&gt;&target=&lt;Zielseite&gt;“ oder „Special:FormEdit/&lt;Formularname&gt;/&lt;Zielseite&gt;“.',
 	'sf_formedit_altforms' => 'Alternativ können Sie diese Seite mit einem der folgenden Formulare erstellen:',
 	'sf_formedit_altformsonly' => 'Bitte wählen Sie eines der folgenden Formulare aus, um diese Seite zu erstellen:',
 	'sf_formerrors_header' => 'Ihre Eingabe ist fehlerhaft; weiteres siehe unten',
 	'sf_template_docufooter' => 'Bearbeiten Sie diese Seite, um den Vorlagentext zu sehen.',
-	'sf_form_docu' => 'Geben Sie in dieses Textfeld den Namen der Seite ein, die mit Formular „$1“ erstellt werden soll. Wenn bereits eine Seite mit diesem Namen existiert, werden Sie zu einem Formular weitergeleitet, mit dem Sie diese Seite bearbeiten können.',
+	'sf_form_docu' => 'Dies ist das „$1“-Formular.
+Um eine Seite mit diesem Formular zu erstellen, geben Sie den Seitennamen unten ein;
+wenn eine Seite mit diesem Namen bereits existiert, werden Sie zu einem Formular zum Bearbeiten der Seite weitergeleitet.',
 );
 
 /** Zazaki (Zazaki)
@@ -3123,7 +3131,7 @@ $messages['it'] = array(
 	'sf_createtemplate_namelabel' => 'Nome template:',
 	'sf_createtemplate_categorylabel' => 'Categorie definite attraverso template (opzionale):',
 	'sf_createtemplate_templatefields' => 'Campi template',
-	'sf_createtemplate_fieldsdesc' => "Per richiamare i campi di questo template non è necessario usare il loro nome, semplicemente inserisci il numero d'' indice del campo (per esempio 1, 2, 3, etc) al posto del nome.",
+	'sf_createtemplate_fieldsdesc' => "Per richiamare i campi di questo template non è necessario usare il loro nome, semplicemente inserisci il numero d'indice del campo (per esempio 1, 2, 3, etc) al posto del nome.",
 	'sf_createtemplate_fieldname' => 'Nome campo:',
 	'sf_createtemplate_displaylabel' => 'Parola da mostrare:',
 	'sf_createtemplate_semanticproperty' => 'Proprietà semantiche:',
@@ -3134,9 +3142,9 @@ $messages['it'] = array(
 	'sf_createtemplate_outputformat' => 'Formato di output:',
 	'sf_createtemplate_standardformat' => 'Predefinito',
 	'sf_createtemplate_infoboxformat' => 'Infobox nella parte destra',
-	'sf_createtemplate_addfield' => 'Aggiungi Campo',
+	'sf_createtemplate_addfield' => 'Aggiungi campo',
 	'sf_createtemplate_deletefield' => 'Cancella',
-	'sf_createtemplate_addtemplatebeforesave' => 'Devi aggiungere minimo un template a questo modulo prima di poterlo salvare.',
+	'sf_createtemplate_addtemplatebeforesave' => 'Devi aggiungere almeno un template a questo modulo prima di poterlo salvare.',
 	'forms' => 'Moduli',
 	'sf_forms_docu' => 'I seguenti moduli già esistono nel wiki.',
 	'createform' => 'Crea un nuovo modulo',
@@ -3151,7 +3159,7 @@ $messages['it'] = array(
 	'sf_createform_fieldpropunknowntype' => 'Questo campo definisce la proprietà $1, di tipo non specificato.',
 	'sf_createform_inputtype' => 'Tipo input:',
 	'sf_createform_inputtypedefault' => '(predefinito)',
-	'sf_createform_formlabel' => 'Nome da visualizzare form:',
+	'sf_createform_formlabel' => 'Etcihetta del modulo:',
 	'sf_createform_hidden' => 'Nascosto',
 	'sf_createform_restricted' => 'Riservato (solo utenti di tipo sysop possono modificarlo)',
 	'sf_createform_mandatory' => 'Obbligatorio',
@@ -3166,33 +3174,33 @@ $messages['it'] = array(
 	'sf_createcategory_defaultform' => 'Modulo predefinito:',
 	'sf_createcategory_makesubcategory' => 'Falla diventare una sottocategoria di una categoria già presente (opzionale):',
 	'createclass' => 'Crea una classe',
-	'sf_createclass_docu' => 'Aggiungi tutte le informazioni qui per creare le proprietà, template, form e le categoria per una singola classe. Per ulteriori opzioni invece vai alla pagina $1.',
+	'sf_createclass_docu' => 'Aggiungi qui tutte le informazioni per creare le proprietà, i template, i moduli e le categoria per una singola classe. Per ulteriori opzioni invece vai alla pagina $1.',
 	'sf_createclass_allowedvalues' => 'Valori permessi',
 	'sf_createclass_listofvalues' => 'Lista di valori',
-	'sf_createclass_leavefieldblank' => 'Se il nome del campo è lo stesso del nome della proprietà. non puoi lasciarli vuoti.',
+	'sf_createclass_leavefieldblank' => 'Se il nome del campo è lo stesso del nome della proprietà, non puoi lasciarli vuoti.',
 	'sf_createclass_missingvalues' => 'Campi richiesti non completamente riempiti.',
-	'sf_createclass_success' => 'Proprietà, template, form e categorie verranno create.',
-	'formstart' => 'Aggiungi pagina usando un form',
-	'sf_formstart_badform' => 'Errore: nessun form è stato trovato alla pagina $1',
+	'sf_createclass_success' => 'Proprietà, template, moduli e categorie verranno create.',
+	'formstart' => 'Aggiungi pagina usando un modulo',
+	'sf_formstart_badform' => 'Errore: nessun modulo è stato trovato alla pagina $1',
 	'sf_formstart_badtitle' => 'Errore: "$1" non è un titolo valido per la pagina',
-	'sf_formstart_docu' => "Inserisci il nome della pagina qui, per esser modificata con il form '$1'.
-Se questa pagina esiste già, verrai indirizzato ad un form che ti permette di modificarla.
-Altrimenti, verrai indirizzato ad un nuovo form che ti permetterà di aggiungere la nuova pagina.",
-	'sf_formstart_noform_docu' => 'Inserisci il nome della pagina qui, e selezione il form con cui la vuoi modificare.
-	Se questa pagina esiste già, verrai indirizzato ad un form che ti permette di modificarla.
-	Altrimenti, verrai indirizzato ad un nuovo form che ti permetterà di aggiungere la nuova pagina.',
+	'sf_formstart_docu' => "Inserisci il nome della pagina qui, per esser modificata con il modulo '$1'.
+Se questa pagina esiste già, verrai indirizzato ad un modulo che ti permette di modificarla.
+Altrimenti, verrai indirizzato ad un nuovo modulo che ti permetterà di aggiungere la nuova pagina.",
+	'sf_formstart_noform_docu' => 'Inserisci il nome della pagina qui, e selezione il modulo con cui la vuoi modificare.
+	Se questa pagina esiste già, verrai indirizzato ad un modulo che ti permette di modificarla.
+	Altrimenti, verrai indirizzato ad un nuovo modulo che ti permetterà di aggiungere la nuova pagina.',
 	'sf_formstart_createoredit' => 'Crea o modifica',
-	'formedit' => 'Modifica con un form',
+	'formedit' => 'Modifica tramite un modulo',
 	'sf_formedit_createtitle' => 'Crea $1: $2',
 	'sf_formedit_badurl' => "Questa è la pagina per modificare i dati inseriti tramite un modulo. Nell'URL devi specificare sia il nome del modulo e sia la pagina da modificare;
 dovrebbe risultare una cosa di questo tipo 'Special:FormEdit?form=<form name>&target=<target page>', oppure 'Special:FormEdit/<form name>/<target page>'.",
-	'sf_formedit_altforms' => 'Invece puoi aggiungere una pagina con uno dei seguenti form già creati:',
-	'sf_formedit_altformsonly' => 'Per favore seleziona una dei seguenti form per aggiungere questa pagina:',
-	'sf_formcreate' => 'Crea con un form',
-	'sf_viewform' => 'Visualizza form',
+	'sf_formedit_altforms' => 'Invece puoi aggiungere una pagina con uno dei seguenti moduli già creati:',
+	'sf_formedit_altformsonly' => 'Per favore seleziona una dei seguenti moduli per aggiungere questa pagina:',
+	'sf_formcreate' => 'Crea con un modulo',
+	'sf_viewform' => 'Visualizza modulo',
 	'sf_editsource' => 'Modifica sorgente',
 	'sf_formedit_edittitle' => 'Modifica $1: $2',
-	'sf_formedit_morethanoneform' => "'''Attenzione:''' Più di un form predefinito è stato definito per questa pagina.",
+	'sf_formedit_morethanoneform' => "'''Attenzione:''' Più di un modulo predefinito è stato definito per questa pagina.",
 	'sf_formedit_formwarning' => 'Attenzione: Questa pagina <a href="$1">esiste già</a>, ma non usa questo form.',
 	'sf_formedit_remove' => 'Rimuovi',
 	'sf_formedit_addanother' => "Aggiungi un'\\altro",
@@ -3212,7 +3220,7 @@ l'\\ URL dovrebbe risultare una cosa di questo tipo 'Special:RunQuery/<form name
 	'uploadwindow' => 'Finestra di upload',
 	'sf_deletionlog' => 'Log cancellazioni',
 	'sf_property_isproperty' => 'Questa è una proprietà di tipo $1.',
-	'sf_property_linkstoform' => 'Ti collegherà alle pagine che usano il form $1.',
+	'sf_property_linkstoform' => 'Ti collegherà alle pagine che usano il modulo $1.',
 	'sf_property_allowedvals' => '{{PLURAL:$1|Il valore permesso per questa proprità è|I valori permessi per questa proprietà sono}}:',
 	'sf_template_docu' => "Questo è il template '$1'.
 Dovrebbe esser chiamato con il seguente formato:",
@@ -3220,11 +3228,11 @@ Dovrebbe esser chiamato con il seguente formato:",
 	'sf_form_docu' => 'Questo è il modulo "$1".
 Per creare una pagina con questo modulo, inserire il nome della pagina qui sotto; se la pagina con il nome indicato esiste già, verrai inviato al modulo di modifica della pagina.',
 	'sf_form_freetextlabel' => 'Testo libero',
-	'sf_category_hasdefaultform' => 'Questa categoria usa il form $1.',
+	'sf_category_hasdefaultform' => 'Questa categoria usa il modulo $1.',
 	'sf_category_desc' => 'Questa è la categoria $1.',
 	'sf_blank_namespace' => 'Principale',
-	'right-viewedittab' => 'Visualizza la scheda "Modifica" per le pagine modificabili da form',
-	'right-editrestrictedfields' => 'Modifica campi di form riservati',
+	'right-viewedittab' => 'Visualizza la scheda "Modifica" per le pagine modificabili tramite modulo',
+	'right-editrestrictedfields' => 'Modifica campi riservati di moduli',
 );
 
 /** Japanese (日本語)
@@ -3472,6 +3480,13 @@ $messages['km'] = array(
 	'sf_blank_namespace' => 'ចម្បង​',
 );
 
+/** Kannada (ಕನ್ನಡ)
+ * @author Nayvik
+ */
+$messages['kn'] = array(
+	'sf_createtemplate_deletefield' => 'ಅಳಿಸು',
+);
+
 /** Krio (Krio)
  * @author Jose77
  */
@@ -3603,7 +3618,7 @@ Dat süüht dann esu us, wi <code>{{#special:RunQuery}}/''&lt;Fomullaa_Name &gt;
 	'right-editrestrictedfields' => 'Beschrängk zohjänglijje Felder en Fommulaare ändere',
 );
 
-/** Cornish (Kernowek)
+/** Cornish (Kernewek)
  * @author Kernoweger
  * @author Kw-Moon
  */
@@ -5020,7 +5035,7 @@ Caso contrário, será enviado para o formulário de adição da página.',
 	'formedit' => 'Editar com formulário',
 	'sf_formedit_createtitle' => 'Criar $1: $2',
 	'sf_formedit_badurl' => "Esta é a página para editar com um formulário. Na URL deve especificar um nome de formulário e uma página alvo; deverá parecer-se com 'Special:FormEdit?form=&lt;form name&gt;&target=&lt;target page&gt;', ou 'Special:FormEdit/&lt;form name&gt;/&lt;target page&gt;'.",
-	'sf_formedit_altforms' => 'Poderá, em alternativa, adicionar esta página aos seguintes formulários:',
+	'sf_formedit_altforms' => 'Pode, em alternativa, adicionar esta página com um dos seguintes formulários:',
 	'sf_formedit_altformsonly' => 'Por favor, seleccione um dos seguintes formulários para adicionar esta página:',
 	'sf_formcreate' => 'Criar com formulário',
 	'sf_viewform' => 'Ver formulário',
@@ -5050,7 +5065,7 @@ deverá parecer-se com 'Special:RunQuery/&lt;form name&gt;'.",
 	'sf_property_allowedvals' => '{{PLURAL:$1|O valor permitido para esta propriedade é|Os valores permitidos para esta propriedade são}}:',
 	'sf_template_docu' => "Esta é a predefinição '$1'.
 Ela deverá ser chamada no seguinte formato:",
-	'sf_template_docufooter' => 'Edite a página para visualizar o texto da predefinição',
+	'sf_template_docufooter' => 'Edite a página para ver o texto da predefinição',
 	'sf_form_docu' => 'Este é o formulário "$1".
 Para criar uma página com este formulário, introduza o nome da página abaixo;
 se já existir uma página com o mesmo nome, será reencaminhado para um formulário para editar essa página.',
@@ -6471,11 +6486,11 @@ $messages['zh-cn'] = array(
 	'sf_formstart_docu' => "输入页面名称以便以'$1'表单编辑。如果此页已存在的话，您便能以表单编辑该页，否则，您便能以表单新增此页面。",
 	'sf_formstart_noform_docu' => '请于此处输入页面名称，再选取表单对其进行编辑，如果此页已存在的话，您便能以表单编辑该页，否则，您便能以表单新增此页面。',
 	'sf_formstart_createoredit' => '新增或编辑',
+	'formedit' => '以表单进行编辑',
 	'sf_formedit_createtitle' => '增加 $1： $2',
 	'sf_formedit_badurl' => "本页为新增资料之用，您必须在URL里同时指定表单及目标页面，它看起来应该像是'Special:FormEdit?form=&lt;表单名称&gt;&target=&lt;目标页面&gt;' 或是 'Special:FormEdit/&lt;表单名称&gt;/&lt;目标页面&gt;'。",
 	'sf_formedit_altforms' => '您可选用下列其中一个的表单来新增此页',
 	'sf_formedit_altformsonly' => '请从下列的表单中选出其中一个，并以该表单编辑此页：',
-	'formedit' => '以表单进行编辑',
 	'sf_editsource' => '编辑来源',
 	'sf_formedit_edittitle' => '编辑 $1: $2',
 	'sf_formedit_formwarning' => '警告：<a href="$1">此页</a>已经存在，只是尚未引用本表单。',
@@ -6611,11 +6626,11 @@ Enter all the data here to create the properties, template, form and category fo
 	'sf_formstart_docu' => "輸入頁面名稱以便以'$1'表單編輯。如果此頁已存在的話，您便能以表單編輯該頁，否則，您便能以表單新增此頁面。",
 	'sf_formstart_noform_docu' => '請於此處輸入頁面名稱，再選取表單對其進行編輯，如果此頁已存在的話，您便能以表單編輯該頁，否則，您便能以表單新增此頁面。',
 	'sf_formstart_createoredit' => '新增或編輯',
+	'formedit' => '以表單進行編輯',
 	'sf_formedit_createtitle' => '增加 $1： $2',
 	'sf_formedit_badurl' => "本頁為新增資料之用，您必須在URL裡同時指定表單及目標頁面，它看起來應該像是'Special:FormEdit?form=&lt;表單名稱&gt;&target=&lt;目標頁面&gt;' 或是 'Special:FormEdit/&lt;表單名稱&gt;/&lt;目標頁面&gt;'。",
 	'sf_formedit_altforms' => '您可選用下列其中一個的表單來新增此頁',
 	'sf_formedit_altformsonly' => '請從下列的表單中選出其中一個，並以該表單編輯此頁：',
-	'formedit' => '以表單進行編輯',
 	'sf_formcreate' => '以表單建立',
 	'sf_viewform' => '查看表單',
 	'sf_editsource' => '編輯來源',

@@ -355,7 +355,7 @@ $messages['km'] = array(
 	'icon-badwidth' => 'ទទឹង​មិន​ល្អ',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

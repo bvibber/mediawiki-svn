@@ -545,6 +545,7 @@ class OptionAttributeOptionsController extends DefaultUpdateController {
 		$attributeId = $idPath->getKeyStack()->peek( 0 )->classAttributeId;
 		$optionMeaningId = $record->optionAttributeOption;
 		$languageId = $record->language;
+		if ( $languageId == NULL ) $languageId = 0 ;
 
 		if ( $optionMeaningId )
 			addOptionAttributeOption( $attributeId, $optionMeaningId, $languageId );

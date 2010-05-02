@@ -105,6 +105,7 @@ $messages['be-tarask'] = array(
  * @author Turin
  */
 $messages['bg'] = array(
+	'communityvoice-ratings' => 'Рейтинги',
 	'communityvoice-ratings-scale-status-sending' => 'Изпращане...',
 	'communityvoice-ratings-scale-status-error' => 'Грешка при изпращането!',
 	'communityvoice-ratings-scale-status-thanks' => 'Благодарим за гласуването!',
@@ -526,9 +527,12 @@ $messages['ko'] = array(
 	'communityvoice-ratings-scale-status-sending' => '전송 중...',
 	'communityvoice-ratings-scale-status-error' => '오류를 전송합니다!',
 	'communityvoice-ratings-scale-status-thanks' => '투표해 주셔서 감사합니다!',
+	'communityvoice-ratings-scale-stats' => '$1 / 5 ($2표 투표)',
+	'communityvoice-ratings-error-no-category' => 'rating 태그에 category 속성이 없습니다.',
+	'communityvoice-ratings-error-no-title' => 'rating 태그에 title 속성이 없습니다.',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

@@ -220,7 +220,7 @@ $messages['km'] = array(
 	'random-users-avatars-desc' => 'ដាក់បន្ថែមប្លាក<tt>&lt;randomuserswithavatars&gt;</tt>ដើម្បីបង្ហាញអាវ៉ាតារស៍ដោយចៃដន្យដែលអ្នកប្រើប្រាស់បានជ្រើសរើសយក',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -228,7 +228,7 @@ $messages['ksh'] = array(
 	'random-users-avatars-desc' => 'Määt et müjjelesch, met <tt>&lt;randomuserswithavatars&gt;</tt> de Avataare fun zofälesch ußsohte Metmaacher aanzezeije.',
 );
 
-/** Cornish (Kernowek)
+/** Cornish (Kernewek)
  * @author Kernoweger
  * @author Kw-Moon
  */

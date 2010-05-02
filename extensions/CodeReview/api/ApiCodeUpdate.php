@@ -37,7 +37,7 @@ class ApiCodeUpdate extends ApiBase {
 		if ( !$log ) {
 			// FIXME: When and how often does this happen?
 			// Should we use dieUsage() here instead?
-			ApiBase::dieDebug( __METHOD__, "Something awry..." );
+			ApiBase::dieDebug( __METHOD__, 'Something awry...' );
 		}
 
 		$result = array();
@@ -68,7 +68,7 @@ class ApiCodeUpdate extends ApiBase {
 		// Discourage casual browsing :)
 		return true;
 	}
-	
+
 	public function isWriteMode() {
 		return true;
 	}
@@ -93,7 +93,7 @@ class ApiCodeUpdate extends ApiBase {
 		return array(
 			'Update CodeReview repository data from master revision control system.' );
 	}
-	
+
 	public function getPossibleErrors() {
 		return array_merge( parent::getPossibleErrors(), array(
 			array( 'code' => 'permissiondenied', 'info' => 'You don\'t have permission update code' ),

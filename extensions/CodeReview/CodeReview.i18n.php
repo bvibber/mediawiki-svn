@@ -901,6 +901,8 @@ $messages['bg'] = array(
 	'code-status-deferred' => 'отложено',
 	'code-pathsearch-legend' => 'Търсене на версии в това хранилище по път',
 	'code-pathsearch-path' => 'Път:',
+	'code-revfilter-cr_status' => 'Статут = $1',
+	'code-revfilter-cr_author' => 'Автор = $1',
 	'code-rev-submit' => 'Съхраняване на промените',
 	'code-batch-status' => 'Промяна на статуса:',
 	'code-batch-tags' => 'Промяна на етикетите:',
@@ -1060,13 +1062,13 @@ $messages['br'] = array(
 	'code-release-badrange' => 'Re vras eo al levezon !',
 	'codereview-subtitle' => 'Evit $1',
 	'codereview-reply-link' => 'respont',
-	'codereview-tests-succeeded2' => '$1 {{PLURAL:$2|arnod a zo deuet a-benn|arnod a zo deuet a-benn}}',
-	'codereview-tests-failed2' => "$1 {{PLURAL:$2|arnod a zo deuet a-benn|arnod a zo deuet a-benn}},  $3 {{PLURAL:$4|arnod o deus c'hwitet|arnod o deus c'hwitet}}:",
+	'codereview-tests-succeeded2' => '$1 {{PLURAL:$2|amprouadenn|amprouadenn}} aet da benn vat',
+	'codereview-tests-failed2' => "$1 {{PLURAL:$2|amprouadenn|amprouadenn}} aet da benn vat,  $3 {{PLURAL:$4|amprouadenn|amprouadenn}} c'hwitet:",
 	'codereview-tests-running' => 'Ho amprouiñ...',
 	'codereview-tests-aborted' => 'Ehanet eo bet an amprouadenn.',
 	'codereview-tests-failed' => "C'hwitet",
 	'codereview-email-subj' => '[$1] [$2] : evezhiadenn nevez bet ouzhpennet',
-	'codereview-email-body' => 'An implijer "$1" en deus embannet un evezhiadenn war $3.
+	'codereview-email-body' => 'Lakaet en deus an implijer "$1" un evezhiadenn war $3.
 
 URL klok : $2
 
@@ -1074,33 +1076,33 @@ Evezhiadenn :
 
 $4',
 	'codereview-email-subj2' => "[$1] [$2] : Heuliadenn ar c'hemm",
-	'codereview-email-body2' => 'An implijer "$1" en deus degaset kemmoù liammet gant $2.
+	'codereview-email-body2' => 'Degaset ez eus bet kemmoù liammet ouzh $2 gant an implijer "$1".
 
 URL klok : $3
 
-Diverañ eus ar c\'hemmoù :
+Diverrañ eus ar c\'hemmoù :
 
 $4',
-	'codereview-email-subj3' => '[$1] [$2] : an arnod emgefre en deus merzhet ur regresadur',
-	'codereview-email-body3' => "An arnod emgefre en deus merzhet ur regresadur en abeg d'ar c'hemmoù bet graet er stumm $1.
+	'codereview-email-subj3' => '[$1] [$2] : merzet ez eus bet ur giladenn gant an amprouadenn emgefre',
+	'codereview-email-body3' => "Merzet ez eus bet ur giladenn gant an amprouadenn emgefre en abeg d'ar c'hemmoù degaset er stumm $1.
 
 URL klok : $2
 
-Diverañ e-pad an arnod :
+Diverrañ evit ar c'has :
 
 $3",
 	'repoadmin' => "Melestradurezh an dastumlec'hioù",
-	'repoadmin-new-legend' => "Krouiñ un dastumlec'h nevez",
-	'repoadmin-new-label' => "Anv an dastumlec'h :",
+	'repoadmin-new-legend' => 'Krouiñ ur sanailh nevez',
+	'repoadmin-new-label' => 'Anv ar sanailh :',
 	'repoadmin-new-button' => 'Krouiñ',
 	'repoadmin-edit-legend' => 'Kemmañ an dastumlec\'h "$1"',
-	'repoadmin-edit-path' => "Hent an dastumlec'h :",
+	'repoadmin-edit-path' => 'Hent ar sanailh :',
 	'repoadmin-edit-bug' => 'Hent moned Bugzilla :',
 	'repoadmin-edit-view' => 'Hent moned ViewVC :',
 	'repoadmin-edit-button' => 'Mat eo',
 	'repoadmin-edit-sucess' => 'Kemmet eo bet an dastumlec\'h "[[Special:Code/$1|$1]]".',
 	'right-repoadmin' => 'Melestriñ ar fiziadoù kod',
-	'right-codereview-use' => 'Implijout Special:Code',
+	'right-codereview-use' => 'Implijout Dibar:Kod',
 	'right-codereview-add-tag' => "Ouzhpennañ balizennoù nevez d'an adweladennoù",
 	'right-codereview-remove-tag' => "Tennañ balizennoù d'an adweladennoù",
 	'right-codereview-post-comment' => "Ouzhpennañ evezhiadennoù d'an adweladennoù",
@@ -4903,6 +4905,7 @@ $4',
 /** Georgian (ქართული)
  * @author BRUTE
  * @author Malafaya
+ * @author გიორგიმელა
  */
 $messages['ka'] = array(
 	'code' => 'კოდის შემოწმება',
@@ -4926,24 +4929,62 @@ $messages['ka'] = array(
 	'code-rev-modified-a' => 'დაემატა',
 	'code-rev-modified-d' => 'წაშლილი',
 	'code-rev-status' => 'სტატუსი:',
+	'code-rev-tag-remove' => 'წაშალეთ მინიშნებები:',
 	'code-rev-comment-by' => '$1-ს კომენტარი',
 	'code-rev-comment-preview' => 'წინასწარ',
 	'code-rev-inline-preview' => 'წინასწარ:',
 	'code-rev-diff' => 'განსხ',
 	'code-rev-diff-link' => 'განსხ.',
+	'code-rev-diff-too-large' => 'ცვლილება ვერსიებს შორის ზედმეტად დიდია საჩვენებლად',
 	'code-rev-purge-link' => 'ქეშის გაწმენდა',
+	'code-rev-total' => 'რეზულტატების რაოდენობა:$1',
 	'code-status-new' => 'ახალი',
 	'code-status-fixme' => 'შემოწმება',
+	'code-status-reverted' => 'გაუქმებულია',
 	'code-status-resolved' => 'მოგვარებულია',
 	'code-status-ok' => 'ok',
+	'code-status-verified' => 'შემოწმებულია',
+	'code-status-deferred' => 'გადატანილია',
+	'code-pathsearch-legend' => 'კონკრეტული რედაქციების ძიება ამ საცავში მისამართის მიხედვით',
+	'code-pathsearch-path' => 'გზა:',
+	'code-pathsearch-filter' => 'გამოყენებული ფილტრები:',
 	'code-revfilter-cr_status' => 'სტატუსი = $1',
 	'code-revfilter-cr_author' => 'ავტორი = $1',
+	'code-revfilter-clear' => 'ფილტრის მოხსნა:',
 	'code-rev-submit' => 'ცვლილებების შენახვა',
+	'code-rev-submit-next' => 'შეინახეთ და გადასვლა შემდეგ გადაუწყვეტელზე',
 	'code-batch-status' => 'სტატუსის შეცვლა:',
+	'code-batch-tags' => 'შეცვალეთ მინიშნებები:',
+	'codereview-batch-title' => 'შეცვალეთ ყველა არჩეული რევიზია',
+	'codereview-batch-submit' => 'გაგზავნა',
+	'code-releasenotes' => 'ინფორმაცია გამოშვების შესახებ',
+	'code-release-legend' => 'გამოცემაზე ინფორმაციის შექმნა',
+	'code-release-startrev' => 'საწყისი რევიზია:',
+	'code-release-endrev' => 'ბოლო რევიზია:',
+	'code-release-badrange' => 'ზედმეტად დიდი დიაპაზონი!',
 	'codereview-subtitle' => '$1-სთვის',
 	'codereview-reply-link' => 'პასუხი',
+	'codereview-tests-succeeded2' => '$1 {{PLURAL:$2|წარმატებული შემოწმება|წარმატებული შემოწმების}}',
+	'codereview-tests-running' => 'კონკრეტული მაგალითების შესრულება...',
+	'codereview-tests-aborted' => 'შემოწმების შესრულება დასრულდა.',
+	'codereview-email-body3' => 'ავტომატურმა შემოწმებამ აღმოაჩინა რეგრესია $1 ცვლილებასთან.
+
+სრული URL: $2
+
+ცვლილებების აღწერა:
+
+$3',
 	'repoadmin-new-button' => 'შექმნა',
 	'repoadmin-edit-button' => 'კარგი',
+	'repoadmin-edit-sucess' => 'საცავი «[[Special:Code/$1|$1]]» წარმატებით შეიცვალა',
+	'right-repoadmin' => 'კოდების საცავის მართვა',
+	'right-codereview-use' => 'Special:Code-ის გამოყენება',
+	'right-codereview-add-tag' => 'რედაქიებისთვის მინიშნებების ჩამატება',
+	'right-codereview-remove-tag' => 'რედაქციების მინიშნებების მართვა',
+	'right-codereview-post-comment' => 'რედაქციისთვის კომენტარის ჩამატება',
+	'right-codereview-set-status' => 'რედაქციის სტატუსის ცვლილება',
+	'right-codereview-link-user' => 'ვიკიპროექტელებისა და რედაქციების კავშირი',
+	'specialpages-group-developer' => 'შემქმნელის ხელსაწყოები',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -5156,6 +5197,13 @@ $4',
 
 $4',
 	'codereview-email-subj3' => '[$1] [$2]: 자동 회귀 테스트를 감지',
+	'codereview-email-body3' => '자동 테스트 과정에서 $1의 변경 사항으로 인한 회귀 버그를 발견했습니다.
+
+전체 URL: $2
+
+커밋 요약:
+
+$3',
 	'repoadmin' => '저장소 관리',
 	'repoadmin-new-legend' => '새 저장소 만들기',
 	'repoadmin-new-label' => '저장소 이름:',
@@ -6034,6 +6082,7 @@ $messages['myv'] = array(
 	'code-rev-purge-link' => 'панемс',
 	'code-status-new' => 'од',
 	'code-status-fixme' => 'витемак',
+	'code-pathsearch-path' => 'Яннэсь:',
 	'repoadmin-new-button' => 'Шкик-теик',
 );
 
@@ -6163,6 +6212,18 @@ $4',
 	'right-codereview-set-status' => 'Versionsstatus ännern',
 	'right-codereview-link-user' => 'Autoren mit Wiki-Brukers verbinnen',
 	'specialpages-group-developer' => 'Developer-Warktüüch',
+);
+
+/** Nedersaksisch (Nedersaksisch)
+ * @author Servien
+ */
+$messages['nds-nl'] = array(
+	'code-rev-author' => 'Auteur:',
+	'code-rev-date' => 'Daotum:',
+	'code-rev-message' => 'Opmarking:',
+	'code-rev-repo' => 'Repositorium:',
+	'code-rev-rev' => 'Versie:',
+	'code-rev-rev-viewvc' => 'in ViewVC',
 );
 
 /** Dutch (Nederlands)

@@ -875,7 +875,7 @@ $messages['ko'] = array(
 	'right-authorprotect' => '작성한 문서를 보호하기',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -1203,12 +1203,13 @@ $messages['ps'] = array(
 /** Portuguese (Português)
  * @author 555
  * @author Giro720
+ * @author Hamilton Abreu
  * @author Malafaya
  */
 $messages['pt'] = array(
 	'authorprotect' => 'Proteger página contra não-autores',
 	'authorprotect-desc' => 'Permite ao autor de uma página protegê-la de outros utilizadores',
-	'authorprotect-notauthor' => 'Você não é o autor desta página',
+	'authorprotect-notauthor' => 'Não é o autor desta página',
 	'authorprotect-confirm' => 'Alterar níveis de protecção',
 	'authorprotect-edit' => 'Restringir edição a autores',
 	'authorprotect-move' => 'Restringir mover da página a autores',

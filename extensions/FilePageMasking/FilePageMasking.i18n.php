@@ -167,7 +167,7 @@ $messages['ja'] = array(
 	'filepagemasking-desc' => 'ファイル解説ページへのリンク中の「.xxx」を「_xxx」に書き換える',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

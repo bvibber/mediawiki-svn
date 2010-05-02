@@ -207,7 +207,7 @@ $messages['jv'] = array(
 	'wikitextloggedinout-desc' => 'Loro kait parser, <tt>&lt;loggedin&gt;</tt> lan <tt>&lt;loggedout&gt;</tt> sing nampilaké tèks sing béda gumantung status log mlebu panganggo',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

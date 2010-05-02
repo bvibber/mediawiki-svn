@@ -331,7 +331,7 @@ $messages['km'] = array(
 	'stalkerlog-log-text' => 'នេះ​ជា​កំណត់ហេតុ​នៃ​ការ​ឡុកអ៊ីន​និង​ការ​ចាកចេញ​របស់​អ្នកប្រើប្រាស់។',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

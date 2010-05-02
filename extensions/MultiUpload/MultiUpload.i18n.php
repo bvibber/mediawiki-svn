@@ -367,14 +367,16 @@ Ungeeignete Dateien werden sofort gelöscht, siehe die [[{{MediaWiki:Multipleupl
 /** German (formal address) (Deutsch (Sie-Form))
  * @author Imre
  * @author Raimond Spekking
+ * @author The Evil IP address
  * @author Umherirrender
  */
 $messages['de-formal'] = array(
 	'multipleupload-text' => "Gleichzeitiges Hochladen mehrerer Dateien.
 
-Klicken Sie auf „Browse“ und wählen Sie jede Datei aus, die Sie hochladen möchten. Sie können gleichzeitig zwischen 1 und $1 Dateien hochladen.
+Klicken Sie auf „Durchsuchen” und wählen Sie alle Dateien aus, die Sie hochladen möchten.
+Sie können zwischen 1 und $1 Dateien gleichzeitig hochladen.
 
-Sie können wahlweise auch einen '''Ziel-Dateinamen''' vorgeben und eine '''Beschreibung''' für Ihre Dateien.
+Sie können wahlweise auch einen '''Ziel-Dateinamen''' vorgeben und eine '''Beschreibung''' für Ihre Dateien eingeben.
 
 Ungeeignete Dateien werden sofort gelöscht, siehe die [[{{MediaWiki:Multipleupload-page}}|Löschrichtlinien]].",
 	'multiupload-no-files' => 'Bitte wählen Sie mindestens eine Datei zum Hochladen aus',

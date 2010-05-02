@@ -450,7 +450,7 @@ $messages['ko'] = array(
 	'securepasswords-word' => '단어가 아니어야 합니다.',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

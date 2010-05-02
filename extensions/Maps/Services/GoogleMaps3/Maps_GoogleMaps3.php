@@ -31,7 +31,7 @@ $egMapsServices[MapsGoogleMaps3::SERVICE_NAME] = array(
 	'features' => array(
 		'display_map' => 'MapsGoogleMaps3DispMap',
 	)
-);	
+);
 
 /**
  * Class for Google Maps v3 initialization.
@@ -155,11 +155,13 @@ class MapsGoogleMaps3 {
 	         'he' => 'iw',      // iw is googlish for hebrew
 	         'fj' => 'fil',     // google does not support Fijian - use Filipino as close(?) supported relative
 		);
+		
 		if ( array_key_exists( $code, $mappings ) ) {
 			$code = $mappings[$code];
 		}
+		
 		return $code;
-	}	
+	}
 	
 }
 									

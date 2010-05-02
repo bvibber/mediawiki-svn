@@ -405,10 +405,10 @@ class WikilogUtils
 class WikilogNavbar
 {
 	static $pagingLabels = array(
-		'prev'  => "‹ $1",
-		'next'  => "$1 ›",
-		'first' => "« $1",
-		'last'  => "$1 »"
+		'prev'  => '‹ $1',
+		'next'  => '$1 ›',
+		'first' => '« $1',
+		'last'  => '$1 »'
 	);
 	static $linkTextMsgs = array(
 		# pages style:  « first  ‹ previous 20  ...  next 20 ›  last »

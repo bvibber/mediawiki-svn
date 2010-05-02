@@ -47,6 +47,24 @@ $messages['qqq'] = array(
 	'tiff-file-info-size' => 'Information about the image dimensions etc. on image page. Extended by page information',
 );
 
+/** Message documentation (Message documentation) */
+$messages['qqq'] = array(
+	'tiff-desc' => 'Short description of the extension, shown in [[Special:Version]]. Do not translate or change links.',
+	'tiff_no_metadata' => 'Error message shown when no metadata extraction is not possible',
+	'tiff_page_error' => 'Error message shown when page number is out of range',
+	'tiff_too_many_embed_files' => 'Error message shown when the uploaded image contains too many embedded files.',
+	'tiff_sourcefile_too_large' => 'Error message shown when the resolution of the source file is too large.',
+	'tiff_targetfile_too_large' => 'Error message shown when the resolution of the target file is too large.',
+	'tiff_file_too_large' => 'Error message shown when the uploaded file is too large.',
+	'tiff_out_of_service' => 'Error message shown when the uploaded file could not be processed by external renderer (ImageMagick).',
+	'tiff_too_much_meta' => 'Error message shown when the metadata uses too much space.',
+	'tiff_error_cached' => 'Error message shown when a error occurres and it is cached.',
+	'tiff_size_error' => 'Error message shown when the reported file size does not match the actual file size.',
+	'tiff_script_detected' => 'Error message shown when the uploaded file contains scripts.',
+	'tiff_bad_file' => 'Error message shown when the uploaded file contains errors.',
+	'tiff-file-info-size' => 'Information about the image dimensions etc. on image page. Extended by page information',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */
@@ -98,7 +116,9 @@ $messages['br'] = array(
 	'tiff_page_error' => "N'emañ ket niverenn ar bajenn er skeuliad",
 	'tiff_too_many_embed_files' => 'Re a restroù enklozet zo er skeudenn.',
 	'tiff_sourcefile_too_large' => 'Re vras eo spister ar rest mammenn. Ne vo ket krouet a skeudennig.',
+	'tiff_targetfile_too_large' => 'Re vras eo spister ar rest sibl. Ne vo ket krouet a skeudennig.',
 	'tiff_file_too_large' => 'Re vras eo ar restr karget ha distaolet eo bet.',
+	'tiff_out_of_service' => "N'eus ket bet gellet tretiñ ar restr pellgarget. Dizimplijadus eo ImageMagick.",
 	'tiff_too_much_meta' => "Ar metaroadennoù a implij re a lec'h.",
 	'tiff_size_error' => 'Ne glot ket ment ar restr meneget gant ment gwir ar restr.',
 	'tiff_script_detected' => 'Skriptoù zo er restr karget.',

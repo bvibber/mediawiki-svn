@@ -95,6 +95,7 @@ $messages['br'] = array(
 	'categoryintersection-desc' => "Derc'hel a ra un daolenn gant talvoudennoù diouzh an drask evit ar [[Special:CategoryIntersection|c'hengej rummadoù]] e diabarzh ur bajenn",
 	'categoryintersection-doit' => 'Rollañ a ra ar pajennoù en holl rummadoù-se',
 	'categoryintersection-maxcategories' => "$1 eo an niver brasañ a rummadoù a c'hall kengejañ.",
+	'categoryintersection-mincategories' => "Ret eo deoc'h lakaat daou rummad da nebeutañ.",
 	'categoryintersection-results' => 'Kavez ez eus bet $1 {{PLURAL:$1|titl|titl}} gant an taol klask.',
 );
 
@@ -144,6 +145,13 @@ $messages['de'] = array(
 	'categoryintersection-maxcategories' => 'Die maximale Anzahl von Kategorien für Schnittmengen ist $1.',
 	'categoryintersection-mincategories' => 'Du musst mindestens zwei Kategorien angeben.',
 	'categoryintersection-results' => 'Die Suche ergab $1 {{PLURAL:$1|Treffer|Treffer}}.',
+);
+
+/** German (formal address) (Deutsch (Sie-Form))
+ * @author Kghbln
+ */
+$messages['de-formal'] = array(
+	'categoryintersection-mincategories' => 'Sie müssen mindestens zwei Kategorien angeben.',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -367,6 +375,7 @@ $messages['ja'] = array(
 	'categoryintersection-desc' => '[[Special:CategoryIntersection|カテゴリの交差検索]]に利用するハッシュ値を含むテーブルを保持する',
 	'categoryintersection-doit' => 'これらのカテゴリすべてに属しているページを列挙する',
 	'categoryintersection-maxcategories' => '交差できるカテゴリの最大数は$1です。',
+	'categoryintersection-mincategories' => '最低でも2つカテゴリを指定する必要があります。',
 	'categoryintersection-results' => '検索結果は$1{{PLURAL:$1|件}}です。',
 );
 
@@ -391,7 +400,7 @@ $messages['km'] = array(
 	'categoryintersection-results' => 'ការស្វែងរកផ្ដល់ $1 {{PLURAL:$1|លទ្ឋផល|លទ្ឋផល}}។',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -410,6 +419,7 @@ $messages['lb'] = array(
 	'categoryintersection-desc' => "Säit mat enger Tabell mat den ''Hashwerter'' vun de [[Special:CategoryIntersection|Kategorieniwwerschneidungen]]",
 	'categoryintersection-doit' => 'Lëscht vun de Säiten aus all dëse Kategorien',
 	'categoryintersection-maxcategories' => 'Déi maximal Zuel vu Kategorien déi sech iwwerschneiden däerfen ass $1.',
+	'categoryintersection-mincategories' => 'Dir musst mindestens zwou Kategorien drasetzen.',
 	'categoryintersection-results' => "D'Resultat vun der der Sich  {{PLURAL:$1|ass $1 Titel|si(nn) $1 Titelen}}.",
 );
 
@@ -507,6 +517,7 @@ $messages['oc'] = array(
 	'categoryintersection-desc' => "Manten una taula amb de valors a la volada pels [[Special:CategoryIntersection|recopatges de categorias]] al mejan d'una pagina",
 	'categoryintersection-doit' => 'Lista las paginas dins totas aquestas categorias',
 	'categoryintersection-maxcategories' => 'Lo nombre maximum de las categorias que s’entrecopan es de $1.',
+	'categoryintersection-mincategories' => 'Vos cal inclure al mens doas categorias.',
 	'categoryintersection-results' => 'La recèrca a tornat $1 {{PLURAL:$1|títol|títols}}.',
 );
 
@@ -739,12 +750,14 @@ $messages['tr'] = array(
 
 /** Ukrainian (Українська)
  * @author Ahonc
+ * @author Тест
  */
 $messages['uk'] = array(
 	'categoryintersection' => 'Перетин категорій',
 	'categoryintersection-desc' => 'Підтримує таблицю з хеш-значеннями для [[Special:CategoryIntersection|перетину категорій]] на сторінці',
 	'categoryintersection-doit' => 'Вивести сторінки в усіх цих категоріях',
 	'categoryintersection-maxcategories' => 'Максимально допустима кількість категорій, що перетинаються, — $1.',
+	'categoryintersection-mincategories' => 'Вам необхідно вказати не менше двох категорій.',
 	'categoryintersection-results' => 'Пошук дав {{PLURAL:$1|$1 результат|$1 результати|$1 результатів}}.',
 );
 

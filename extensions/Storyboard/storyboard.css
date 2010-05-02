@@ -11,8 +11,13 @@
  * Css for stories
  */
 .story {
-	margin: 5px 10px 0px 0px;
+	margin: 5px 10px 10px 0px;
 	float: left;
+	overflow: hidden;	
+}
+.story-text {
+	margin-left: 15px;
+	margin-top: 5px;	
 	overflow: hidden;	
 }
 .story-title {
@@ -25,6 +30,23 @@
 .story-image {
 	margin: 5px 15px 0px 15px;
 	float: right;
+}
+
+.story-metadata {
+	margin: 5px 15px 5px 15px;	
+}
+
+div.story-metadata {
+	overflow: hidden;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border: 1px solid #aaaaaa;
+	background: #eeeeee ;
+	color: #222222;
+}
+
+.story-metadata span {
+	margin-left: 5px;
 }
 
 .story-sharing {
@@ -45,11 +67,15 @@
 	float: right;
 }
 
+.validationerror {
+	color: red;
+}
+
 /**
  * Css for <storyboard> tags
  */
 .storyboard {
-border: 1px solid #ddd;
+	border: 1px solid #ddd;
 }
 .storyboard .storyboard-batch {
 	margin: 0;

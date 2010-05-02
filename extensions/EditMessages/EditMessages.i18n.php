@@ -63,7 +63,7 @@ $messages['am'] = array(
 	'editmsg-search' => 'ፍለጋ',
 );
 
-/** Old English (Anglo-Saxon)
+/** Old English (Ænglisc)
  * @author Wōdenhelm
  */
 $messages['ang'] = array(
@@ -777,6 +777,13 @@ $messages['km'] = array(
 	'editmsg-patch-success' => 'បាន​ប៉ះ​ដោយជោគជ័យ​។',
 );
 
+/** Kannada (ಕನ್ನಡ)
+ * @author Nayvik
+ */
+$messages['kn'] = array(
+	'editmsg-search' => 'ಹುಡುಕು',
+);
+
 /** Korean (한국어)
  * @author Klutzy
  * @author ToePeu
@@ -802,7 +809,7 @@ $messages['krj'] = array(
 	'editmsg-search' => 'Sagap',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -831,7 +838,7 @@ $messages['ku-latn'] = array(
 	'editmsg-search' => 'Lêbigere',
 );
 
-/** Cornish (Kernowek)
+/** Cornish (Kernewek)
  * @author Kernoweger
  * @author Kw-Moon
  */

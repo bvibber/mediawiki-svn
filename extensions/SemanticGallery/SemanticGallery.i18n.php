@@ -172,7 +172,7 @@ $messages['ja'] = array(
 	'semanticgallery-desc' => 'SMWインラインクエリーにギャラリー出力フォーマットを追加する',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

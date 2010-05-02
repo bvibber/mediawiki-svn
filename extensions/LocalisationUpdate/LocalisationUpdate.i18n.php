@@ -240,7 +240,7 @@ $messages['ko'] = array(
 	'localisationupdate-desc' => '번역된 시스템 메시지를 가능한 한 최신으로 유지',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -416,7 +416,7 @@ $messages['vi'] = array(
 	'localisationupdate-desc' => 'Giữ các thông điệp bản địa hóa được cập nhật nhất có thể',
 );
 
-/** Yue (粵語)
+/** Cantonese (粵語)
  * @author Tom Maaswinkel
  */
 $messages['yue'] = array(

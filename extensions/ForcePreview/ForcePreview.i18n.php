@@ -351,7 +351,7 @@ $messages['ko'] = array(
 	'right-forcepreviewexempt' => '미리 보기 없이 편집 가능',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

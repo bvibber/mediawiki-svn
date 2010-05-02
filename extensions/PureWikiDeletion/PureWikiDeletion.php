@@ -133,12 +133,12 @@ function PureWikiDeletionGetPreferences( $user, &$preferences ) {
 }
 
 function PureWikiDeletionAlternateEditHook ($editPage){
-	global $wgUser,$wgTitle,$wgOut;
+	global $wgUser,$wgOut;
 	if ($wgUser->isLoggedIn()){
 		return true;
 	}
 	$dbr = wfGetDB( DB_SLAVE );
-	$blank_page_id=$wgTitle->getArticleID();
+	$blank_page_id=$editPage->getArticle()->getID();
 	$result=$dbr->selectRow('blanked_page','blank_page_id',array
 	       ("blank_page_id" => $blank_page_id));
 	if (!$result){

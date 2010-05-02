@@ -95,6 +95,22 @@ $messages['ia'] = array(
 	'active-task-forces-intro' => 'Numero de modificationes in paginas de gruppos de labor in le ultime {{PLURAL:$1|die|$1 dies}}.',
 );
 
+/** Japanese (日本語)
+ * @author Aotake
+ */
+$messages['ja'] = array(
+	'activetaskforces' => '活動中の特別チーム',
+	'active-task-forces-intro' => '最近$1日間に特別チームのページに加えられた編集回数',
+);
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'activetaskforces' => 'Aktiv Aarbechtsgruppen',
+	'active-task-forces-intro' => 'Zuel vun den Ännerungen op Säite vum Aarbechtsgrupp {{PLURAL:$1|de leschten Dag|an de leschten $1 Deeg}}.',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
@@ -109,6 +125,14 @@ $messages['mk'] = array(
 $messages['nl'] = array(
 	'activetaskforces' => 'Actieve taskforces',
 	'active-task-forces-intro' => "Aantal bewerkingen aan taskforcepagina's in de afgelopen {{PLURAL:$1|dag|$1 dagen}}.",
+);
+
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'activetaskforces' => 'Gropes de trabalh actius',
+	'active-task-forces-intro' => 'Nombre de modificacions de las paginas del grop de trabalh al cors {{PLURAL:$1|del darrièr jorn|dels $1 darrièrs jorns}}.',
 );
 
 /** Piedmontese (Piemontèis)

@@ -62,6 +62,10 @@ class ApiQueryStories extends ApiQueryBase {
 		) );
 		$this->addOption( 'LIMIT', $params['limit'] + 1 );
 		$this->addOption( 'ORDER BY', 'story_modified, story_id DESC' );
+
+		if ( !is_null( $params['language'] ) ) {
+			$this->addWhere( "story_lang_code = '$params[language]'" );
+		}
 		
 		if ( !is_null( $params['continue'] ) ) {
 			$continueParams = explode( '-', $params['continue'] );
@@ -74,13 +78,11 @@ class ApiQueryStories extends ApiQueryBase {
 			
 			$storyModified = $continueParams[0];
 			$storyId = intval( $continueParams[1] );
-			/* FIXME
+
 			$this->addWhere(
-				"story_modified > $storyModified OR " .
+				"story_modified < $storyModified OR " .
 				"(story_modified = $storyId AND story_id <= $storyModified)"
 			);
-			*/
-			
 		}
 		
 		$stories = $this->select( __METHOD__ );
@@ -97,13 +99,18 @@ class ApiQueryStories extends ApiQueryBase {
 				'id' => $story->story_id,
 				'author' => $story->story_author_name,
 				'title' => $story->story_title,
-				'created' => wfTimestamp(  TS_ISO_8601, $story->story_created ),
-				'imageurl' => $story->story_author_image
+				//'created' => wfTimestamp(  TS_ISO_8601, $story->story_created ),
+				//'modified' => wfTimestamp(  TS_ISO_8601, $story->story_modified ),
+				'created' => $story->story_created,
+				'modified' => $story->story_modified,				
+				'imageurl' => $story->story_author_image,
+				'permalink' => SpecialPage::getTitleFor( 'story', $story->story_title )->getFullURL()
 			);
 			ApiResult::setContent( $res, ( is_null( $story->story_text ) ? '' : $story->story_text ) );
 			$this->getResult()->addValue( array( 'query', $this->getModuleName() ), null, $res );
 		}
 		
+		// FIXME: continue parameter is not getting passed with the result
 		$this->getResult()->setIndexedTagName_internal( array( 'query', $this->getModuleName() ), 'story' );
 	}
 	
@@ -121,6 +128,9 @@ class ApiQueryStories extends ApiQueryBase {
 				ApiBase :: PARAM_MAX2 => ApiBase :: LIMIT_BIG2
 			),
 			'continue' => null,
+			'language' => array(
+				ApiBase :: PARAM_TYPE => 'string',
+			)
 		);
 	}
 
@@ -132,6 +142,7 @@ class ApiQueryStories extends ApiQueryBase {
 		return array (
 			'continue' => 'Number of the first story to return',
 			'limit'   => 'Amount of stories to return',
+			'language' => 'The language of the stories to return',
 		);
 	}
 
@@ -150,7 +161,7 @@ class ApiQueryStories extends ApiQueryBase {
 	protected function getExamples() {
 		return array (
 			'api.php?action=query&list=stories',
-			'api.php?action=query&list=stories&stlimit=42',
+			'api.php?action=query&list=stories&stlimit=42&stlanguage=en',
 			'api.php?action=query&list=stories&stcontinue=20100319202223|4&stlimit=2',
 		);
 	}

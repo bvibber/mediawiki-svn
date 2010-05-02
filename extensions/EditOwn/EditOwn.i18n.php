@@ -28,7 +28,7 @@ $messages['af'] = array(
 	'editown-desc' => "Gebruikers sonder die ''editall''-reg kan slegs blaaie wat hulle self geskep het wysig",
 );
 
-/** Old English (Anglo-Saxon)
+/** Old English (Ænglisc)
  * @author Wōdenhelm
  */
 $messages['ang'] = array(
@@ -263,7 +263,7 @@ $messages['ko'] = array(
 	'editown-desc' => '완전한 편집 권한(editall)이 없는 사용자에게 자신이 만든 문서의 편집 권한을 주는 기능',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -303,6 +303,13 @@ $messages['mr'] = array(
  */
 $messages['nds'] = array(
 	'editown-desc' => 'Brukers ahn dat editall-Recht dröfft blot sülvst opstell Sieden ännern',
+);
+
+/** Nedersaksisch (Nedersaksisch)
+ * @author Servien
+ */
+$messages['nds-nl'] = array(
+	'editown-desc' => "Gebrukers zonder 't rech ''editall'' kunnen allinnig pagina's bewarken dee ze zelf emaak hemmen",
 );
 
 /** Dutch (Nederlands)
@@ -504,7 +511,7 @@ $messages['yi'] = array(
 	'editown-desc' => 'באניצער וואס האבן נישט דעם אלץ-רעדאקטירן רעכט (editall) קענען רעדאקטירן נאר בלעטער וואס זיי האבן אליין געשאפן.',
 );
 
-/** Yue (粵語)
+/** Cantonese (粵語)
  * @author Shinjiman
  */
 $messages['yue'] = array(

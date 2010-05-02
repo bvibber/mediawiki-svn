@@ -1658,6 +1658,14 @@ $messages['km'] = array(
 	'tpt-languages-legend' => 'ជាភាសាដទៃទៀត៖',
 );
 
+/** Kannada (ಕನ್ನಡ)
+ * @author Nayvik
+ */
+$messages['kn'] = array(
+	'tpt-translate-this' => 'ಈ ಪುಟವನ್ನು ಅನುವಾದಿಸಿ',
+	'translate-tag-translate-link-desc' => 'ಈ ಪುಟವನ್ನು ಅನುವಾದಿಸಿ',
+);
+
 /** Korean (한국어)
  * @author Kwj2772
  */
@@ -1666,7 +1674,7 @@ $messages['ko'] = array(
 	'tpt-languages-legend' => '다른 언어:',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -1774,6 +1782,7 @@ D'Säit, déi Dir versicht z'änneren schéngt net mat enger Säit déi fir d'iw
 $messages['lg'] = array(
 	'tpt-translate-this' => 'vvuunula olupapula luno',
 	'translate-tag-translate-link-desc' => 'Vvuunula olupapula luno',
+	'tpt-languages-legend' => 'Nnimi ndala:',
 );
 
 /** Malagasy (Malagasy)
@@ -2329,7 +2338,7 @@ Esta página que você está tentando editar não aparenta corresponder a nenhum
 	'tpt-download-page' => 'Exportar página com traduções',
 );
 
-/** Rhaeto-Romance (Rumantsch)
+/** Romansh (Rumantsch)
  * @author Gion-andri
  */
 $messages['rm'] = array(

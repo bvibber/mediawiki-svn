@@ -396,7 +396,7 @@ $messages['km'] = array(
 	'pageby-anon' => '<i>អនាមិក</i>',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -727,7 +727,7 @@ $messages['yi'] = array(
 	'pageby-contributors' => 'בײַשטײַערער:',
 );
 
-/** Yue (粵語)
+/** Cantonese (粵語)
  * @author Shinjiman
  */
 $messages['yue'] = array(

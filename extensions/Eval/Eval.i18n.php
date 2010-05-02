@@ -375,7 +375,7 @@ $messages['km'] = array(
 	'eval_code' => 'កូដ',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

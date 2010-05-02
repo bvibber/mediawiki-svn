@@ -1,30 +1,20 @@
 <?php
-if ( !defined( 'MEDIAWIKI' ) ) die();
-
 /**
  * @author Niklas Laxström
  * @copyright Copyright © 2010 Niklas Laxström
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
  */
 
-$wgExtensionCredits['specialpage'][] = array(
-	'path'           => __FILE__,
-	'name'           => 'Translate: Supported Languages',
-	'version'        => '2010-01-27',
-	'author'         => 'Niklas Laxström',
-	'description'    => '[[Special:Supported Languages|Special page]] for listing supported languages efficiently',
-);
-
-$wgSpecialPages['SupportedLanguages'] = 'SpecialSupportedLanguages';
-
-class SpecialSupportedLanguages extends SpecialPage {
-
+class SpecialSupportedLanguages extends UnlistedSpecialPage {
 	public function __construct() {
 		parent::__construct( 'SupportedLanguages' );
 	}
 
 	public function execute( $par ) {
 		global $wgLang, $wgOut;
+
+		$this->outputHeader();
+		$this->setHeaders();
 
 		$locals = LanguageNames::getNames( $wgLang->getCode(),
 			LanguageNames::FALLBACK_NORMAL,
@@ -69,8 +59,22 @@ class SpecialSupportedLanguages extends SpecialPage {
 		$lb->execute();
 		global $wgUser;
 		$skin = $wgUser->getSkin();
+		$portalText = wfMsg( 'portal' );
+
 		foreach ( array_keys( $users ) as $code ) {
-			$wgOut->addWikiText( "== [$code] {$locals[$code]} - {$natives[$code]} ==" );
+			$portalTitle = Title::makeTitleSafe( NS_PORTAL, $code );
+			$portalLink = $skin->link(
+				$portalTitle,
+				wfMsg( 'supportedlanguages-portallink', $code, $locals[$code], $natives[$code] ),
+				array(
+					'id' => $code,
+					'title' => $portalText . ' ' . $locals[$code]
+				),
+				array(),
+				array( 'known', 'noclasses' )
+			);
+				
+			$wgOut->addHTML( "<h2>" . $portalLink . "</h2>" );
 
 			foreach ( $users[$code] as $index => $username ) {
 				$title = Title::makeTitleSafe( NS_USER, $username );
@@ -79,9 +83,5 @@ class SpecialSupportedLanguages extends SpecialPage {
 
 			$wgOut->addHTML( $wgLang->listToText( $users[$code] ) );
 		}
-
 	}
-
-
-
 }

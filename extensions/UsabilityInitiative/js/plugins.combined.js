@@ -7003,7 +7003,7 @@ if ( !context || typeof context == 'undefined' ) {
 		'paste': function( event ) {
 			// Save the cursor position to restore it after all this voodoo
 			var cursorPos = context.fn.getCaretPosition();
-			var oldLength = context.fn.getContents().length;
+			var oldLength = context.fn.getContents().length - ( cursorPos[1] - cursorPos[0] );
 			context.$content.find( ':not(.wikiEditor)' ).addClass( 'wikiEditor' );
 			if ( $.layout.name !== 'webkit' ) {
 				context.$content.addClass( 'pasting' );
@@ -7018,26 +7018,6 @@ if ( !context || typeof context == 'undefined' ) {
 						$(this).text( $(this).text() );
 					}
 				} );
-				// Remove newlines from all text nodes
-				var t = context.fn.traverser( context.$content );
-				while ( t ) {
-					if ( t.node.nodeName == '#text' ) {
-						// Text nodes that are nothing but blank lines need to be converted to full line breaks
-						if ( t.node.nodeValue === '\n' ) {
-							$( '<p><br></p>' ).insertAfter( $( t.node ) );
-							var oldNode = t.node;
-							t = t.next();
-							$( oldNode ).remove();
-							// We already advanced, so let's finish now
-							continue;
-						}
-						// Text nodes containing new lines just need conversion to spaces
-						else if ( ( t.node.nodeValue.indexOf( '\n' ) != 1 || t.node.nodeValue.indexOf( '\r' ) != -1 ) ) {
-							t.node.nodeValue = t.node.nodeValue.replace( /\r|\n/g, ' ' );
-						}
-					}
-					t = t.next();
-				}
 				// MS Word + webkit
 				context.$content.find( 'p:not(.wikiEditor) p:not(.wikiEditor)' )
 					.each( function(){
@@ -7048,35 +7028,59 @@ if ( !context || typeof context == 'undefined' ) {
 				context.$content.find( 'span.Apple-style-span' ).each( function() {
 					$(this).replaceWith( this.childNodes );
 				} );
+				
+				// If the pasted content is plain text then wrap it in a <p> and adjust the <br> accordingly 
+				var pasteContent = context.fn.getOffset( cursorPos[0] ).node;
+				var removeNextBR = false;
+				while ( pasteContent != null && !$( pasteContent ).hasClass( 'wikiEditor' ) ) {
+					var currentNode = pasteContent;
+					pasteContent = pasteContent.nextSibling;
+					if ( currentNode.nodeName == '#text' && currentNode.nodeValue == currentNode.wholeText ) {
+						var pWrapper = $( '<p />' ).addClass( 'wikiEditor' );
+						$( currentNode ).wrap( pWrapper );
+						$( currentNode ).addClass( 'wikiEditor' );
+						removeNextBR = true;
+					} else if ( currentNode.nodeName == 'BR' && removeNextBR ) {
+						$( currentNode ).remove();
+						removeNextBR = false;
+					} else {
+						removeNextBR = false;
+					}
+				}	
 				var $selection = context.$content.find( ':not(.wikiEditor)' );
 				while ( $selection.length && $selection.length > 0 ) {
 					var $currentElement = $selection.eq( 0 );
 					while ( !$currentElement.parent().is( 'body' ) && !$currentElement.parent().is( '.wikiEditor' ) ) {
 						$currentElement = $currentElement.parent();
 					}
-					var html = $( '<div></div>' ).text( $currentElement.text().replace( /\r|\n/g, ' ' ) ).html();
-					if ( $currentElement.is( 'br' ) ) {
-						$currentElement.addClass( 'wikiEditor' );
-					} else if ( $currentElement.is( 'span' ) && html.length == 0 ) {
-						// Markers!
-						$currentElement.remove();
-					} else if ( $currentElement.is( 'p' ) || $currentElement.is( 'div' ) ) {
-						$newElement = $( '<p></p>' )
-							.addClass( 'wikiEditor' )
-							.insertAfter( $currentElement );
-						if ( html.length ) {
-							$newElement.html( html );
-						} else {
-							$newElement.append( $( '<br>' ).addClass( 'wikiEditor' ) );
-						}
-						$currentElement.remove();
+					
+					var $newElement;
+					if ( $currentElement.is( 'p' ) || $currentElement.is( 'div' ) || $currentElement.is( 'pre' ) ) {
+						//Convert all <div>, <p> and <pre> that was pasted into a <p> element
+						$newElement = $( '<p />' );
 					} else {
-						$newElement = $( '<span></span>' ).html( html ).insertAfter( $currentElement );
-						$newElement.replaceWith( $newElement[0].childNodes );
-						$currentElement.remove();
+						// everything else becomes a <span>
+						$newElement = $( '<span />' ).addClass( 'wikiEditor' );
 					}
+					
+					// If the pasted content was html, just convert it into text and <br>
+					var pieces = $.trim( $currentElement.text() ).split( '\n' );
+					var newElementHTML = '';
+					for ( var i = 0; i < pieces.length; i++ ) {
+						if ( pieces[i] ) {
+							newElementHTML += $.trim( pieces[i] );
+						} else {
+							newElementHTML += '<span><br class="wikiEditor" /></span>';
+						}
+					}
+					$newElement.html( newElementHTML )
+						.addClass( 'wikiEditor' )
+						.insertAfter( $currentElement );
+					$currentElement.remove();
+
 					$selection = context.$content.find( ':not(.wikiEditor)' );
 				}
+
 				context.$content.find( '.wikiEditor' ).removeClass( 'wikiEditor' );
 				if ( $.layout.name !== 'webkit' ) {
 					context.$content.removeClass( 'pasting' );
@@ -7084,7 +7088,8 @@ if ( !context || typeof context == 'undefined' ) {
 				
 				// Restore cursor position
 				context.fn.purgeOffsets();
-				var restoreTo = cursorPos[1] + context.fn.getContents().length - oldLength;
+				var newLength = context.fn.getContents().length;
+				var restoreTo = cursorPos[0] + newLength - oldLength;
 				context.fn.setSelection( { start: restoreTo, end: restoreTo } );
 			}, 0 );
 			return true;
@@ -8438,7 +8443,13 @@ api: {
 	},
 	openDialog: function( context, module ) {
 		if ( module in $.wikiEditor.modules.dialogs.modules ) {
-			$( '#' + $.wikiEditor.modules.dialogs.modules[module].id ).dialog( 'open' );
+			var mod = $.wikiEditor.modules.dialogs.modules[module];
+			var $dialog = $( '#' + mod.id );
+			if ( $dialog.length == 0 ) {
+				$.wikiEditor.modules.dialogs.fn.reallyCreate( context, mod );
+				$dialog = $( '#' + mod.id );
+			}
+			$dialog.dialog( 'open' );
 		}
 	},
 	closeDialog: function( context, module ) {
@@ -8458,72 +8469,75 @@ fn: {
 	 * @param {Object} config Configuration object to create module from
 	 */
 	create: function( context, config ) {
-		// Add modules
-		for ( module in config ) {
-			$.wikiEditor.modules.dialogs.modules[module] = config[module];
-		}
-		// Build out modules immediately
-		// TODO: Move mw.usability.load() call down to where we're sure we're really gonna build a dialog
-		mw.usability.load( [ '$j.ui', '$j.ui.dialog', '$j.ui.draggable', '$j.ui.resizable' ], function() {
-			for ( mod in $.wikiEditor.modules.dialogs.modules ) {
-				var module = $.wikiEditor.modules.dialogs.modules[mod];
-				// Only create the dialog if it's supported, not filtered and doesn't exist yet
-				var filtered = false;
-				if ( typeof module.filters != 'undefined' ) {
-					for ( var i = 0; i < module.filters.length; i++ ) {
-						if ( $( module.filters[i] ).length == 0 ) {
-							filtered = true;
-							break;
-						}
+		// Defer building of modules, but do check whether they need the iframe rightaway
+		for ( mod in config ) {
+			var module = config[mod];
+			// Only create the dialog if it's supported, isn't filtered and doesn't exist yet
+			var filtered = false;
+			if ( typeof module.filters != 'undefined' ) {
+				for ( var i = 0; i < module.filters.length; i++ ) {
+					if ( $( module.filters[i] ).length == 0 ) {
+						filtered = true;
+						break;
 					}
-				}
-				if ( !filtered && $.wikiEditor.isSupported( module ) && $( '#' + module.id ).size() == 0 ) {
-					// If this dialog requires the iframe, set it up
-					if ( typeof context.$iframe == 'undefined' && $.wikiEditor.isRequired( module, 'iframe' ) ) {
-						context.fn.setupIframe();
-					}
-					
-					var configuration = module.dialog;
-					// Add some stuff to configuration
-					configuration.bgiframe = true;
-					configuration.autoOpen = false;
-					configuration.modal = true;
-					configuration.title = $.wikiEditor.autoMsg( module, 'title' );
-					// Transform messages in keys
-					// Stupid JS won't let us do stuff like
-					// foo = { mw.usability.getMsg( 'bar' ): baz }
-					configuration.newButtons = {};
-					for ( msg in configuration.buttons )
-						configuration.newButtons[mw.usability.getMsg( msg )] = configuration.buttons[msg];
-					configuration.buttons = configuration.newButtons;
-					// Create the dialog <div>
-					var dialogDiv = $( '<div />' )
-						.attr( 'id', module.id )
-						.html( module.html )
-						.data( 'context', context )
-						.appendTo( $( 'body' ) )
-						.each( module.init )
-						.dialog( configuration );
-					// Set tabindexes on buttons added by .dialog()
-					$.wikiEditor.modules.dialogs.fn.setTabindexes( dialogDiv.closest( '.ui-dialog' )
-						.find( 'button' ).not( '[tabindex]' ) );
-					if ( !( 'resizeme' in module ) || module.resizeme ) {
-						dialogDiv
-							.bind( 'dialogopen', $.wikiEditor.modules.dialogs.fn.resize )
-							.find( '.ui-tabs' ).bind( 'tabsshow', function() {
-								$(this).closest( '.ui-dialog-content' ).each(
-									$.wikiEditor.modules.dialogs.fn.resize );
-							});
-					}
-					dialogDiv.bind( 'dialogclose', function() {
-						context.fn.restoreSelection();
-					} );
-					
-					// Let the outside world know we set up this dialog
-					context.$textarea.trigger( 'wikiEditor-dialogs-loaded-' + mod );
 				}
 			}
-		});
+			if ( !filtered && $.wikiEditor.isSupported( module ) && $( '#' + module.id ).size() == 0 ) {
+				$.wikiEditor.modules.dialogs.modules[mod] = module;
+				// If this dialog requires the iframe, set it up
+				if ( typeof context.$iframe == 'undefined' && $.wikiEditor.isRequired( module, 'iframe' ) ) {
+					context.fn.setupIframe();
+				}
+				context.$textarea.trigger( 'wikiEditor-dialogs-setup-' + mod );
+			}
+		}
+	},
+	/**
+	 * Build the actual dialog. This done on-demand rather than in create()
+	 * @param {Object} context Context object of editor dialog belongs to
+	 * @param {Object} module Dialog module object
+	 */
+	reallyCreate: function( context, module ) {
+		mw.usability.load( [ '$j.ui', '$j.ui.dialog', '$j.ui.draggable', '$j.ui.resizable' ], function() {
+			var configuration = module.dialog;
+			// Add some stuff to configuration
+			configuration.bgiframe = true;
+			configuration.autoOpen = false;
+			configuration.modal = true;
+			configuration.title = $.wikiEditor.autoMsg( module, 'title' );
+			// Transform messages in keys
+			// Stupid JS won't let us do stuff like
+			// foo = { mw.usability.getMsg( 'bar' ): baz }
+			configuration.newButtons = {};
+			for ( msg in configuration.buttons )
+				configuration.newButtons[mw.usability.getMsg( msg )] = configuration.buttons[msg];
+			configuration.buttons = configuration.newButtons;
+			// Create the dialog <div>
+			var dialogDiv = $( '<div />' )
+				.attr( 'id', module.id )
+				.html( module.html )
+				.data( 'context', context )
+				.appendTo( $( 'body' ) )
+				.each( module.init )
+				.dialog( configuration );
+			// Set tabindexes on buttons added by .dialog()
+			$.wikiEditor.modules.dialogs.fn.setTabindexes( dialogDiv.closest( '.ui-dialog' )
+				.find( 'button' ).not( '[tabindex]' ) );
+			if ( !( 'resizeme' in module ) || module.resizeme ) {
+				dialogDiv
+					.bind( 'dialogopen', $.wikiEditor.modules.dialogs.fn.resize )
+					.find( '.ui-tabs' ).bind( 'tabsshow', function() {
+						$(this).closest( '.ui-dialog-content' ).each(
+							$.wikiEditor.modules.dialogs.fn.resize );
+					});
+			}
+			dialogDiv.bind( 'dialogclose', function() {
+				context.fn.restoreSelection();
+			} );
+			
+			// Let the outside world know we set up this dialog
+			context.$textarea.trigger( 'wikiEditor-dialogs-loaded-' + mod );
+		} );
 	},
 	/**
 	 * Resize a dialog so its contents fit
@@ -9351,7 +9365,7 @@ fn: {
 /* TemplateEditor module for wikiEditor */
 ( function( $ ) { $.wikiEditor.modules.templateEditor = {
 /**
- * Name mappings, dirty hack which will be reomved once "TemplateInfo" extension is more fully supported
+ * Name mappings, dirty hack which will be removed once "TemplateInfo" extension is more fully supported
  */
 'nameMappings': { //keep these all lowercase to navigate web of redirects
    "infobox skyscraper": "building_name",
@@ -9599,7 +9613,9 @@ fn: {
 	bindTemplateEvents: function( $wrapper ) {
 		var $template = $wrapper.parent( '.wikiEditor-template' );
 
-		$template.parent().attr('contentEditable', 'false');
+		if ( typeof ( opera ) == "undefined" ) {
+			$template.parent().attr('contentEditable', 'false');
+		}
 		
 		$template.click( function(event) {event.preventDefault(); return false;} )
 		
@@ -11179,7 +11195,7 @@ fn: {
 				var $button;
 				if ( 'offset' in tool ) {
 					var offset = $.wikiEditor.autoLang( tool.offset );
-					$button = $( '<a href="#" />' )
+					$button = $( '<span />' )
 						.attr( {
 							'alt' : label,
 							'title' : label,
@@ -11216,13 +11232,13 @@ fn: {
 							e.preventDefault();
 							return false;
 						} );
-					// If the action is a dialog that hasn't been loaded yet, hide the button
+					// If the action is a dialog that hasn't been set up yet, hide the button
 					// until the dialog is loaded
 					if ( tool.action.type == 'dialog' &&
 							!( tool.action.module in $.wikiEditor.modules.dialogs.modules ) ) {
 						$button.hide();
 						// JavaScript won't propagate the $button variable itself, it needs help
-						context.$textarea.bind( 'wikiEditor-dialogs-loaded-' + tool.action.module,
+						context.$textarea.bind( 'wikiEditor-dialogs-setup-' + tool.action.module,
 							{ button: $button }, function( event ) {
 								event.data.button.show().parent().show();
 						} );
@@ -11415,7 +11431,7 @@ fn: {
 		}
 		if ( 'action' in character && 'label' in character ) {
 			actions[character.label] = character.action;
-			return '<a rel="' + character.label + '" href="#">' + character.label + '</a>';
+			return '<span rel="' + character.label + '">' + character.label + '</span>';
 		}
 	},
 	buildTab : function( context, id, section ) {
@@ -11457,6 +11473,10 @@ fn: {
 									context.fn.trigger( 'resize' );
 								} );
 							$(this).addClass( 'current' );
+							if ( $section.hasClass( 'loading' ) ) {
+								// Loading of this section was deferred, load it now
+								setTimeout( function() { $section.trigger( 'loadSection' ); }, 0 );
+							}
 						} else {
 							$sections
 								.css( 'height', $section.outerHeight() )
@@ -11466,8 +11486,8 @@ fn: {
 								} );
 						}
 						// Click tracking
-						if($.trackAction != undefined){
-							$.trackAction($section.attr('rel') + '.' + ( show ? 'show': 'hide' )  );
+						if ( $.trackAction != undefined ) {
+							$.trackAction( $section.attr('rel') + '.' + ( show ? 'show': 'hide' )  );
 						}
 						// Save the currently visible section
 						$.cookie(
@@ -11479,13 +11499,34 @@ fn: {
 					} )
 			);
 	},
-	buildSection : function( context, id, section ) {
-		context.$textarea.trigger( 'wikiEditor-toolbar-buildSection-' + id, [section] );
+	buildSection: function( context, id, section ) {
+		var $section = $( '<div />' ).attr( { 'class': section.type + ' section section-' + id, 'rel': id } );
 		var selected = $.cookie( 'wikiEditor-' + context.instance + '-toolbar-section' );
-		var $section;
+		var show = selected == id;
+		
+		if ( typeof section.deferLoad != 'undefined' && section.deferLoad && id !== 'main' && !show ) {
+			// This class shows the spinner and serves as a marker for the click handler in buildTab()
+			$section.addClass( 'loading' ).append( $( '<div />' ).addClass( 'spinner' ) );
+			$section.bind( 'loadSection', function() {
+				$.wikiEditor.modules.toolbar.fn.reallyBuildSection( context, section, $section );
+				$section.removeClass( 'loading' );
+			} );
+		} else {
+			$.wikiEditor.modules.toolbar.fn.reallyBuildSection( context, section, $section );
+		}
+		
+		// Show or hide section
+		if ( id !== 'main' ) {
+			$section.css( 'display', show ? 'block' : 'none' );
+			if ( show )
+				$section.addClass( 'section-visible' );
+		}
+		return $section;
+	},
+	reallyBuildSection : function( context, section, $section ) {
+		context.$textarea.trigger( 'wikiEditor-toolbar-buildSection-' + $section.attr( 'rel' ), [section] );
 		switch ( section.type ) {
 			case 'toolbar':
-				var $section = $( '<div />' ).attr( { 'class' : 'toolbar section section-' + id, 'rel' : id } );
 				if ( 'groups' in section ) {
 					for ( group in section.groups ) {
 						$section.append(
@@ -11507,18 +11548,10 @@ fn: {
 						);
 					}
 				}
-				$section = $( '<div />' ).attr( { 'class' : 'booklet section section-' + id, 'rel' : id } )
-					.append( $index )
-					.append( $pages );
+				$section.append( $index ).append( $pages );
 				$.wikiEditor.modules.toolbar.fn.updateBookletSelection( context, page, $pages, $index );
 				break;
 		}
-		if ( $section !== null && id !== 'main' ) {
-			var show = selected == id;
-			$section.css( 'display', show ? 'block' : 'none' );
-			if ( show ) $section.addClass( 'section-visible' );
-		}
-		return $section;
 	},
 	updateBookletSelection : function( context, id, $pages, $index ) {
 		var cookie = 'wikiEditor-' + context.instance + '-booklet-' + id + '-page';

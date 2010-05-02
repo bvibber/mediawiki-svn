@@ -765,6 +765,21 @@ $messages['el'] = array(
 	'right-recentchanges' => 'Προβολή προσφάτων αλλαγών',
 );
 
+/** British English (British English)
+ * @author Reedy
+ */
+$messages['en-gb'] = array(
+	'grouppermissions-desc3' => "''The following data was last updated on $5 at $6.''
+
+Edits that have been checked by established users are considered to be reviewed.
+
+The average wait for edits by ''users that have not logged in'' to be reviewed is '''$1'''; the median is '''$3'''.  
+$4
+The average lag for [[Special:OldReviewedPages|pages with unreviewed edits pending]] is '''$2'''.
+These pages are considered ''outdated''. Likewise, pages are considered ''synchronised'' if there are no edits pending review.
+The published version of a page is the newest revision that has been approved to show by default to all readers.",
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
@@ -1859,7 +1874,7 @@ $messages['kri'] = array(
 	'grouppermissions-dosearch' => 'Go to am',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -2584,7 +2599,7 @@ $messages['pt'] = array(
 	'grouppermissions-true' => 'Verdadeiro',
 	'grouppermissions-false' => 'Falso',
 	'grouppermissions-never' => 'Nunca',
-	'grouppermissions-nooldrev' => 'Erro encontrado ao tentar arquivar o ficheiro de configuração atual. Nenhum arquivo será gerado',
+	'grouppermissions-nooldrev' => 'Ocorreu um erro ao tentar arquivar o actual ficheiro de configuração. Não será criado nenhum arquivo',
 	'grouppermissions-sort-read' => 'Leitura',
 	'grouppermissions-sort-edit' => 'Edição',
 	'grouppermissions-sort-manage' => 'Gestão',
@@ -2597,7 +2612,7 @@ $messages['pt'] = array(
 	'grouppermissions-log-name' => 'Registo de permissões de grupo',
 	'grouppermissions-log-header' => 'Esta página rastreia modificações às permissões subjacentes de grupos de utilizadores.',
 	'grouppermissions-needjs' => 'Aviso: o JavaScript está desactivado no seu browser. Algumas funcionalidades poderão não funcionar!',
-	'grouppermissions-sp-header' => 'Você pode usar esta página para gerir como as permissões são ordenadas e adicionar novas permissões. Flutue o cursor sobre uma permissão para ler a sua descrição',
+	'grouppermissions-sp-header' => 'Pode usar esta página para gerir como as permissões são ordenadas e adicionar novas permissões. Coloque o cursor sobre uma permissão para ler a sua descrição',
 	'grouppermissions-sp-sort' => 'Ordenar permissões',
 	'grouppermissions-sp-save' => 'Gravar',
 	'grouppermissions-sp-success' => 'As permissões foram ordenadas com sucesso',
@@ -2605,7 +2620,7 @@ $messages['pt'] = array(
 	'grouppermissions-sp-addperm' => 'Adicionar permissão',
 	'grouppermissions-sp-remove' => 'remover',
 	'grouppermissions-sp-deltype' => 'Eliminar tipo de ordenação',
-	'grouppermissions-rug-header' => 'Você pode usar esta página para remover utilizadores de grupos não usados (eliminados).',
+	'grouppermissions-rug-header' => 'Pode usar esta página para remover utilizadores de grupos não usados (eliminados).',
 	'grouppermissions-rug-success' => 'Utilizadores removidos de grupos não usados com sucesso!',
 	'grouppermissions-rug-confirm' => 'Remover utilizadores de grupos não usados',
 	'right-grouppermissions' => 'Gerir permissões de grupo',

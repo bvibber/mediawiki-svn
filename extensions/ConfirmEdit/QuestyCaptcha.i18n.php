@@ -173,6 +173,7 @@ Pro návrat na předchozí stránku stiskněte ve svém prohlížeči tlačítko
 /** German (Deutsch)
  * @author Kghbln
  * @author Pill
+ * @author Umherirrender
  */
 $messages['de'] = array(
 	'questycaptcha-addurl' => 'Deine Bearbeitung enthält neue externe Links.
@@ -181,7 +182,7 @@ Zum Schutz vor automatisiertem Spam beantworte bitte die untenstehende Frage ([[
 	'questycaptcha-createaccount' => 'Zum Schutz vor einer automatisierten Anlage von Benutzerkonten ist es erforderlich, die folgende Frage zu beantworten ([[Special:Captcha/help|weitere Informationen]]):',
 	'questycaptcha-create' => 'Bitte beantworte die folgende Frage, um diese Seite erstellen zu können ([[Special:Captcha/help|weitere Informationen]]):',
 	'questycaptcha-edit' => 'Bitte beantworte die folgende Frage, um diese Seite bearbeiten zu können ([[Special:Captcha/help|weitere Informationen]]):',
-	'questycaptcha-sendemail' => 'Zum Schutz vor automatisiertem Spam bitten wir dich, die unten angezeigte Frage zu beantworten ([[Spezial:Captcha/help|weitere Informationen]]):',
+	'questycaptcha-sendemail' => 'Zum Schutz vor automatisiertem Spam bitten wir dich, die unten angezeigte Frage zu beantworten ([[Special:Captcha/help|weitere Informationen]]):',
 	'questycaptchahelp-text' => 'Internetangebote, die — wie dieses Wiki — für Beiträge von praktisch jedem offen sind, werden häufig von Spammern missbraucht, welche versuchen, mithilfe entsprechender Werkzeuge ihre Links automatisch auf vielen Webseiten zu platzieren.
 Zwar können derartige Spam-Links wieder entfernt werden, doch stellen sie trotzdem ein erhebliches Ärgernis dar.
 
@@ -195,6 +196,7 @@ Der „Zurück“-Knopf des Browsers führt zurück zum Bearbeitungsfenster.',
 
 /** German (formal address) (Deutsch (Sie-Form))
  * @author Imre
+ * @author Umherirrender
  */
 $messages['de-formal'] = array(
 	'questycaptcha-addurl' => 'Ihre Bearbeitung enthält neue externe Links.
@@ -202,6 +204,7 @@ Zum Schutz vor automatisiertem Spam beantworten Sie bitte die untenstehende Frag
 	'questycaptcha-badlogin' => 'Zum Schutz vor einer Kompromittierung Ihres Benutzerkontos beantworten Sie bitte die folgende Frage ([[Special:Captcha/help|weitere Informationen]]):',
 	'questycaptcha-create' => 'Bitte beantworten Sie die folgende Frage, um diese Seite erstellen zu können ([[Special:Captcha/help|weitere Informationen]]):',
 	'questycaptcha-edit' => 'Bitte beantworten Sie die folgende Frage, um diese Seite bearbeiten zu können ([[Special:Captcha/help|weitere Informationen]]):',
+	'questycaptcha-sendemail' => 'Zum Schutz vor automatisiertem Spam bitten wir Sie, die folgende Frage zu beantworten ([[Special:Captcha/help|weitere Informationen]]):',
 	'questycaptchahelp-text' => 'Internetangebote, die — wie dieses Wiki — für Beiträge von praktisch jedem offen sind, werden häufig von Spammern missbraucht, welche versuchen, mithilfe entsprechender Werkzeuge ihre Links automatisch auf vielen Webseiten zu platzieren.
 Zwar können derartige Spam-Links wieder entfernt werden, doch stellen sie trotzdem ein erhebliches Ärgernis dar.
 
@@ -542,7 +545,7 @@ $messages['ko'] = array(
 	'questycaptcha-badlogin' => '자동화된 비밀번호 깨기를 방지하기 위해 아래애 보이는 질문에 대답해주세요 ([[Special:Captcha/help|자세한 정보]]):',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -691,6 +694,7 @@ Per nos ajudar dins la proteccion contra lo spam automatizat, respondètz a la q
 	'questycaptcha-createaccount' => "Per nos ajudar a luchar contra las creacions automaticas de comptes, respondètz a la question qu'apareis çaijós ([[Special:Captcha/help|mai d’entresenhas]]) :",
 	'questycaptcha-create' => 'Per crear la pagina, respondètz a la question çaijós ([[Special:Captcha/help|mai d’entresenhas]]) :',
 	'questycaptcha-edit' => 'Per modificar aquesta pagina, respondètz a la question çaijós ([[Special:Captcha/help|mai d’entresenhas]]) :',
+	'questycaptcha-sendemail' => "Per tal de nos ajudar a prevenir lo spam automatic, entratz los mots qu'apareisson dins la bóstia çaijós ([[Special:Captcha/help|mai d’informacions]]) :",
 	'questycaptchahelp-text' => "Los sites web qu'acceptan de contribucions del public, coma aqueste wiki, son sovent victimas de polluposteires qu'utilizan d'espleches automatizats per plaçar de ligams nombroses cap a lors sites.
 Quitament s'aquesta pollucion pòt èsser escafada, es irritanta.
 

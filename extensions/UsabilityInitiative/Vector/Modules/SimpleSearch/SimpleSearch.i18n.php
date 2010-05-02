@@ -117,7 +117,7 @@ $messages['ckb-arab'] = array(
  */
 $messages['cs'] = array(
 	'vector-simplesearch-search' => 'Hledat',
-	'vector-simplesearch-containing' => 'přidává se do obsahu…',
+	'vector-simplesearch-containing' => 'obsahující…',
 );
 
 /** Kashubian (Kaszëbsczi)
@@ -292,7 +292,6 @@ $messages['he'] = array(
 
 /** Croatian (Hrvatski)
  * @author Mvrban
- * @author Suradnik13
  */
 $messages['hr'] = array(
 	'vector-simplesearch-search' => 'Traži',
@@ -386,9 +385,10 @@ $messages['km'] = array(
  */
 $messages['ko'] = array(
 	'vector-simplesearch-search' => '검색',
+	'vector-simplesearch-containing' => '전문에 포함된 어구 찾기',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -757,7 +757,7 @@ $messages['yi'] = array(
 	'vector-simplesearch-containing' => 'כולל…',
 );
 
-/** Yue (粵語)
+/** Cantonese (粵語)
  * @author Shinjiman
  */
 $messages['yue'] = array(

@@ -488,7 +488,7 @@ $messages['ko'] = array(
 	'filelist-image-desc' => '설명',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

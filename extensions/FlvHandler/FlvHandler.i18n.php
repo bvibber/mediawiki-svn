@@ -190,7 +190,7 @@ $messages['ko'] = array(
 	'flv-long-desc' => '(플래시 비디오, $1 × $2 픽셀, 파일 크기: $3)',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

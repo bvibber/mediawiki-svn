@@ -303,7 +303,7 @@ $messages['ko'] = array(
 	'didyoumean-desc' => '"비슷한" 이름을 가진 문서로 향하는 링크를 추가합니다.',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -371,6 +371,13 @@ $messages['nah'] = array(
  */
 $messages['nds'] = array(
 	'didyoumean-desc' => 'Föögt Lenken to Sieden mit ähnliche Titels to',
+);
+
+/** Nedersaksisch (Nedersaksisch)
+ * @author Servien
+ */
+$messages['nds-nl'] = array(
+	'didyoumean-desc' => 'Verwiezingen bie pagina\'s zetten mit "soortgelieke" namen',
 );
 
 /** Dutch (Nederlands)

@@ -471,7 +471,7 @@ $messages['km'] = array(
 	'cooperationstatistics-tablearticle' => 'ចំនួន​ទំព័រ',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

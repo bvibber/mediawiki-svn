@@ -184,7 +184,7 @@ $messages['ja'] = array(
 	'redirect-desc' => '[[MediaWiki:Redirect-addnewaccount|アカウント作成]]および[[MediaWiki:Redirect-userlogoutcomplete|ログアウト]]時のリダイレクトを簡単に設定できるようにする',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

@@ -1313,6 +1313,7 @@ $messages['ja'] = array(
 
 /** Georgian (ქართული)
  * @author BRUTE
+ * @author გიორგიმელა
  */
 $messages['ka'] = array(
 	'readerfeedback' => 'რას ფიქრობთ ამ გვერდის შესახებ?',
@@ -1323,6 +1324,8 @@ $messages['ka'] = array(
 	'readerfeedback-level-4' => 'ჩინებულია',
 	'readerfeedback-submit' => 'გაგზავნა',
 	'readerfeedback-finished' => 'გმადლობთ!',
+	'readerfeedback-tier-high' => 'მაღალი',
+	'readerfeedback-tier-medium' => 'საშუალო',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -1376,7 +1379,7 @@ $messages['ko'] = array(
 	'specialpages-group-feedback' => '독자 의견',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -1845,8 +1848,8 @@ $messages['pt'] = array(
 	'readerfeedback-tier-medium' => 'Moderado',
 	'readerfeedback-tier-poor' => 'Pobre',
 	'tooltip-ca-ratinghist' => 'Opinião dos leitores sobre esta página',
-	'specialpages-group-feedback' => 'Opinião de leitores',
-	'readerfeedback-tt-review' => 'Submeter revisão',
+	'specialpages-group-feedback' => 'Opinião dos leitores',
+	'readerfeedback-tt-review' => 'Enviar revisão',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
@@ -2163,6 +2166,7 @@ $messages['te'] = array(
 	'readerfeedback-tierfilter' => 'మూల్యాంకనం:',
 	'readerfeedback-tier-high' => 'ఉన్నతం',
 	'readerfeedback-tier-medium' => 'సామాన్యం',
+	'tooltip-ca-ratinghist' => 'ఈ పుట యొక్క చదువరుల మూల్యాంకనం',
 	'specialpages-group-feedback' => 'వీక్షకుల అభిప్రాయం',
 );
 

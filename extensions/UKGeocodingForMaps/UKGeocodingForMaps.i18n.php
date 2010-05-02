@@ -43,6 +43,15 @@ $messages['br'] = array(
 	'ukgeocoding_couldNotGeocode' => "N'eus ket bet gallet geokodiñ ur c'hod-post pe meur a hini; tennet int bet diwar ar gartenn.",
 );
 
+/** German (Deutsch)
+ * @author Kghbln
+ */
+$messages['de'] = array(
+	'ukgeocoding_name' => 'Geokodierung für Maps (UK)',
+	'ukgeocoding_desc' => 'Erweitert die Softwareerweiterung Maps um die Parserfunktion „display_uk_point“ und ermöglicht so die Geokodierung von Postleitzahlen des Vereinigten Königreichs (UK)',
+	'ukgeocoding_couldNotGeocode' => 'Eine oder mehrere Postleitzahlen konnte nicht geokodiert werden und wurden nicht in die Karte aufgenommen.',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
@@ -126,6 +135,13 @@ $messages['ja'] = array(
 	'ukgeocoding_couldNotGeocode' => '郵便番号のジオコードを認識できなかったため、地図から省略されています。',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'ukgeocoding_name' => 'UK Geocoding fir Kaarten',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
@@ -151,6 +167,13 @@ $messages['no'] = array(
 	'ukgeocoding_name' => 'Geokoding av UK for Maps',
 	'ukgeocoding_desc' => 'Utvider Maps med en display_uk_point-tolkefunksjon med Google Maps-implementasjon',
 	'ukgeocoding_couldNotGeocode' => 'En eller fler postkoder kunne ikke geokodes og har blitt utelatt fra kartet.',
+);
+
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'ukgeocoding_name' => 'Geoencodatge del Reialme Unit per las mapas',
 );
 
 /** Piedmontese (Piemontèis)

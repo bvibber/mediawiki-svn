@@ -370,7 +370,7 @@ $messages['ko'] = array(
 	'seealso-desc' => "<code><nowiki><seealso></nowiki></code> 태그를 이용해 번역된 '더 보기' 제목을 보여 줌",
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -378,7 +378,7 @@ $messages['ksh'] = array(
 	'seealso-desc' => 'Övverschreffte en de jeweilije Shprooch met däm zosäzlijje <code><nowiki><seealso></nowiki></code> Befäähl em Wiki.',
 );
 
-/** Cornish (Kernowek)
+/** Cornish (Kernewek)
  * @author Kernoweger
  * @author Kw-Moon
  */

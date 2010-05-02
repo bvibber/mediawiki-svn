@@ -91,6 +91,17 @@ Please fill out the optional survey below.",
 To help us improve them, please fill out the optional survey below.',
 );
 
+/** Message documentation (Message documentation)
+ * @author EugeneZelenko
+ * @author McDutchie
+ */
+$messages['qqq'] = array(
+	'prefswitch-survey-true' => '{{Identical|Yes}}',
+	'prefswitch-survey-false' => '{{Identical|No}}',
+	'prefswitch-survey-cancel-feedback' => '$1 is a link to the main page of the wiki in question.',
+	'prefswitch-survey-answer-whyoff-other' => '{{Identical|Other reason}}',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK
@@ -350,11 +361,15 @@ $messages['ca'] = array(
 
 /** Czech (Česky)
  * @author Kuvaly
+ * @author Mormegil
  */
 $messages['cs'] = array(
+	'prefswitch' => 'Přepínač nastavení Iniciativy použitelnosti',
+	'prefswitch-desc' => 'Umožňuje uživatelům přepínat sady nastavení',
 	'prefswitch-survey-true' => 'Ano',
 	'prefswitch-survey-false' => 'Ne',
 	'prefswitch-survey-submit-off' => 'Vypnout nové funkce',
+	'prefswitch-survey-cancel-off' => 'Pokud chcete i nadále používat nové vlastnosti, můžete se vrátit na stránku $1.',
 	'prefswitch-survey-submit-feedback' => 'Odeslat zpětnou vazbu',
 	'prefswitch-survey-cancel-feedback' => 'Pokud nechcete poskytnout zpětnou vazbu, můžete se vrátit na $1.',
 	'prefswitch-survey-question-likedislike' => 'Co se vám na Betě líbilo? Co se vám na Betě nelíbilo?',
@@ -502,6 +517,23 @@ Wenn du die neuen Features einschalten möchtest, <span class="plainlinks">[$1 k
 Bitte fülle die freiwillige Umfrage aus.',
 	'prefswitch-survey-intro-off' => 'Danke für das Ausprobieren unserer neuen Features
 Damit wir besser werden können, fülle bitte die freiwillige Umfrage aus.',
+);
+
+/** German (formal address) (Deutsch (Sie-Form))
+ * @author The Evil IP address
+ */
+$messages['de-formal'] = array(
+	'prefswitch-main' => 'Wir haben hart gearbeitet, um die Arbeit für unsere Benutzer einfacher zu machen. Wir freuen uns sehr, dass wir nun einige Neuheiten präsentieren können, darunter ein neues Aussehen und vereinfachte Bearbeitungs-Möglichkeiten. Die Verbesserung der Bedienbarkeit unserer Projekte hat Priorität für die Wikimedia Foundation und wir werden auch in Zukunft weitere Neuheiten vorstellen.
+
+[[File:UsabilityNavigation.png|right|link=|Screenshot der neuen Navigation]]
+[[File:UsabilityToolbar.png|right|link=|Screenshot der erweiterten Werkzeugleiste]]
+[[File:UsabilityDialogs.png|right|link=|Screenshot der neuen Dialoge]]
+===Was sich geändert hat===
+* Navigation: Wir haben die Navigation zum Lesen und zur Bearbeitung der Seiten verbessert. Die Reiter am Kopf jeder Seite zeigen klarer, ob Sie eine Seite oder eine Diskussionsseite lesen und ob Sie eine Seite lesen oder bearbeiten.
+* Werkzeugleiste: Wir haben die Werkzeugleiste einfacher bedienbar gemacht. Die Formatierung von Seiten ist nun einfacher und intuitiver.
+* Link-Assistent: Ein einfach zu bedienender Dialog ermöglicht das Hinzufügen von Links sowohl zu anderen Wiki-Seiten als auch zu externen Seiten.
+* Suche: Wir haben die Suchvorschläge verbessert, damit Sie schneller zu der von Ihnen gesuchten Seite kommen.
+* Weiteres: Ein Tabellen-Assistent ermöglicht das einfache Erstellen von Tabellen und ein Suchen-und-Ersetzen-Dialog vereinfacht die Seitenbearbeitung.',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -751,12 +783,23 @@ Para ayudarnos a mejorarlas, por favor llena la encuesta opcional de abajo.',
 
 /** Estonian (Eesti)
  * @author AivoK
+ * @author Hendrik
  * @author Pikne
  */
 $messages['et'] = array(
+	'prefswitch-survey-true' => 'Jah',
+	'prefswitch-survey-false' => 'Ei',
 	'prefswitch-survey-submit-feedback' => 'Saada tagasiside',
+	'prefswitch-survey-answer-whyoff-hard' => 'Seda oli liiga keeruline kasutada.',
+	'prefswitch-survey-answer-whyoff-didntwork' => 'See ei toiminud korralikult.',
+	'prefswitch-survey-answer-whyoff-notpredictable' => 'See ei toiminud oodatult.',
+	'prefswitch-survey-answer-whyoff-didntlike-look' => 'Mulle ei meeldinud selle välimus.',
+	'prefswitch-survey-answer-whyoff-didntlike-toolbar' => 'Mulle ei meeldinud uus tööriistariba.',
+	'prefswitch-survey-answer-whyoff-other' => 'Muu põhus:',
 	'prefswitch-survey-question-browser' => 'Millist internetilehitsejat sa kasutad?',
+	'prefswitch-survey-answer-browser-other' => 'Muu brauser:',
 	'prefswitch-survey-question-os' => 'Millist operatsioonisüsteemi sa kasutad?',
+	'prefswitch-survey-answer-os-other' => 'Muu operatsioonisüsteem:',
 	'prefswitch-survey-question-res' => 'Milline on su kuvari eraldusvõime?',
 	'prefswitch-title-feedback' => 'Tagasiside',
 	'prefswitch-survey-intro-feedback' => 'Meile meeldiks teada saada sinu arvamust.
@@ -1250,6 +1293,33 @@ Per favor completa le questionario facultative hic infra.',
 Pro adjutar nos a meliorar los, per favor completa le questionario facultative hic infra.',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Kenrick95
+ */
+$messages['id'] = array(
+	'prefswitch-survey-true' => 'Ya',
+	'prefswitch-survey-false' => 'Tidak',
+	'prefswitch-survey-submit-off' => 'Matikan fitur baru',
+	'prefswitch-survey-submit-feedback' => 'Kirim umpan balik',
+	'prefswitch-survey-question-likedislike' => 'Apa yang Anda sukai tentang fitur baru ini?
+Apa yang Anda tidak sukai tentang fitur baru ini?',
+	'prefswitch-survey-answer-whyoff-hard' => 'Terlalu sulit untuk digunakan.',
+	'prefswitch-survey-answer-whyoff-didntwork' => 'Tidak berfungsi dengan baik.',
+	'prefswitch-survey-answer-whyoff-other' => 'Alasan lainnya:',
+	'prefswitch-survey-question-browser' => 'Penjelajah web apa yang Anda gunakan?',
+	'prefswitch-survey-answer-browser-other' => 'Penjelajah web lainnya:',
+	'prefswitch-survey-question-os' => 'Sistem operasi apa yang Anda gunakan?',
+	'prefswitch-survey-answer-os-other' => 'Sistem operasi lainnya:',
+	'prefswitch-survey-question-res' => 'Berapa besar resolusi layar Anda?',
+	'prefswitch-title-switched-on' => 'Selamat menikmati!',
+	'prefswitch-title-off' => 'Matikan fitur baru',
+	'prefswitch-title-switched-off' => 'Terima kasih',
+	'prefswitch-title-feedback' => 'Umpan balik',
+	'prefswitch-success-on' => 'Fitur baru sekarang telah dihidupkan.',
+	'prefswitch-success-off' => 'Fitur baru sekarang telah dimatikan.',
+	'prefswitch-success-feedback' => 'Umpan balik Anda telah terkirim.',
+);
+
 /** Italian (Italiano)
  * @author Una giornata uggiosa '94
  */
@@ -1418,6 +1488,7 @@ $messages['ka'] = array(
  * @author Kwj2772
  */
 $messages['ko'] = array(
+	'prefswitch' => 'Usability Initiative 환경 설정 바꾸기',
 	'prefswitch-desc' => '사용자가 여러 설정을 한번에 바꿀 수 있도록 함',
 	'prefswitch-survey-true' => '예',
 	'prefswitch-survey-false' => '아니오',
@@ -1445,8 +1516,32 @@ $messages['ko'] = array(
 	'prefswitch-title-off' => '새 기능 끄기',
 	'prefswitch-title-switched-off' => '감사합니다.',
 	'prefswitch-title-feedback' => '피드백',
+	'prefswitch-success-on' => '새 기능이 켜졌습니다.',
+	'prefswitch-success-off' => '새 기능이 꺼졌습니다.',
+	'prefswitch-success-feedback' => '당신의 피드백을 보냈습니다.',
 	'prefswitch-return' => '<hr style="clear:both">
 <span class="plainlinks">[$1 $2]</span>로 돌아갑니다.',
+	'prefswitch-main' => '우리는 사용자를 더욱 편리하게 하기 위해 노력하고 있습니다. 새로운 스킨과 간단해진 편집 기능을 포함한 개선 사항을 보여 주게 되어 영광입니다. 프로젝트 이용을 편리하게 하는 것은 위키미디어 재단의 주 목표이며 나중에 더 많은 업데이트를 제공할 것입니다.
+
+[[File:UsabilityNavigation.png|right|link=|새로운 둘러보기 탭의 스크린샷]]
+[[File:UsabilityToolbar.png|right|link=|향상된 편집 툴바의 스크린샷]]
+[[File:UsabilityDialogs.png|right|link=|새로운 편집 대화상자의 스크린샷]]
+===새롭게 바뀐 점===
+* 둘러보기: 문서 읽기와 편집에 대한 둘러보기 메뉴가 향상되었습니다. 각 문서의 상단의 탭이 당신이 일반 문서를 보고 있는지 토론 문서를 보고 있는지, 문서를 읽고 있는지 편집하고 있는지 명확하게 나타내게 됩니다.
+* 편집 툴바 향상:  편집 툴바를 더욱 사용하기 쉽게 재구성했습니다. 이제 문서를 꾸미는 것이 더욱 간단하고 쉬워질 것입니다.
+* 링크 마법사:  사용하기 쉬운 도구가 다른 문서나 외부로 링크를 쉽게 걸 수 있도록 도와 줄 것입니다.
+* 검색 기능 향상: 찾는 문서를 더욱 쉽게 찾을 수 있도록 검색어 제안 기능을 향상시켰습니다.
+* 다른 새로운 기능:  표를 쉽게 만들 수 있도록 표 마법사와 문서 편집을 간단하게 하기 위해 찾아 바꾸기 기능을 도입했습니다.',
+	'prefswitch-main-on' => '===피드백?===
+우리는 당신에게 피드백을 받기를 원합니다. <span class="plainlinks">[$1 피드백]</span>을 남겨주세요.
+===돌아갈래요!===
+새 기능을 끄기를 원하신다면 <span class="plainlinks">[$2 여기]</span>를 클릭해주세요.',
+	'prefswitch-main-off' => '===새 기능을 써 보세요!===
+새 기능을 켜려면 <span class="plainlinks">[$1 여기]</span>를 클릭해주세요.',
+	'prefswitch-survey-intro-feedback' => '당신에게 피드백을 받고자 합니다.
+아래의 설문 조사에 답해주세요.',
+	'prefswitch-survey-intro-off' => '새 기능을 사용해 주셔서 감사합니다.
+기능을 향상시키는 것을 돕기 위해 아래 설문 조사에 답해 주세요.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

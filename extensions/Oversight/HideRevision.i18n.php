@@ -539,12 +539,13 @@ $messages['br'] = array(
 	'hiderevision-status' => 'Adweladenn $1 : $2',
 	'hiderevision-success' => 'Diellaouet ha dilammet eo bet.',
 	'hiderevision-error-missing' => "N'eo ket bet kavet er bank roadennoù.",
+	'hiderevision-error-delete' => "Ne c'hell ket bezañ diellaouet ; ha diverket e vefe bet ar bajenn ?",
 	'hiderevision-archive-status' => 'Adweladennoù dilammet eus $1 : $2',
 	'oversight-log-hiderev' => "en deus dilemet ur c'hemm eus $1",
 	'oversight' => 'Oversight',
 	'oversight-view' => 'munudoù',
 	'oversight-difference' => "(Diforc'hioù da geñver d'an adweladenn a-raok)",
-	'oversight-prev' => 'Adweladenn ziwezhañ en a-raok',
+	'oversight-prev' => 'Adweladenn ziwezhañ kent',
 	'oversight-hidden' => 'Adweladennoù kuzhet',
 	'oversight-legend' => 'Marilh klaskoù ar stummoù kuzhet',
 	'oversight-offender' => 'Aozer an adweladenn :',
@@ -2289,7 +2290,7 @@ un wat domet zosamme hängk, flöck quitt.',
 	'oversight-offender' => 'Dä Väsjohn ier Schriever:',
 );
 
-/** Cornish (Kernowek)
+/** Cornish (Kernewek)
  * @author Kw-Moon
  */
 $messages['kw'] = array(
@@ -2892,8 +2893,8 @@ $messages['oc'] = array(
 	'group-oversight' => 'Supervisors',
 	'group-oversight-member' => 'Supervisor',
 	'grouppage-oversight' => '{{ns:project}}:Supervisor',
-	'right-oversight' => 'Veire las revisions precedentament amagadas',
-	'right-hiderevision' => 'Amagar de revisions als administrators',
+	'right-oversight' => "Veire las revisions precedentament amagadas amb l'extension « Oversight »",
+	'right-hiderevision' => "Amagar de revisions als administrators amb l'extension « Oversight »",
 	'hiderevision-prompt' => 'Numèro d’edicion de suprimir :',
 	'hiderevision-continue' => 'Contunhar',
 	'hiderevision-text' => "Aquesta foncionalitat deu èsser utilizada '''unicament''' pels cases seguents : * Entresenha personala inapropriada, *: ''Adreça personala e numèro de telefòn, numèro de seguretat sociala, etc...'' ''' L'abús d'aquesta foncionalitat implicarà la pèrda d'aquestes privilègis.''' Los articles escafats son pas mai visibles dins aqueste sistèma, mas aquestas supressions son jornalizadas e pòdon èsser restauradas manualament per un administrator qu'a un accès dirècte sus la banca de donadas se avètz facha una error.",
@@ -3090,7 +3091,7 @@ por um administrador da base de dados caso tenha cometido um engano.",
 	'hiderevision-success' => 'Arquivado e apagado com sucesso.',
 	'hiderevision-error-missing' => 'Não foi localizada na base de dados.',
 	'hiderevision-error-current' => 'Não é possível ocultar a edição mais recente de uma página. Reverta a alteração primeiro.',
-	'hiderevision-error-delete' => 'Não é possível arquivar; não teria sido eliminada antes da tentativa?',
+	'hiderevision-error-delete' => 'Não foi possível arquivar; não terá sido eliminada antes da tentativa?',
 	'hiderevision-archive-status' => 'Revisão ocultada de $1: $2',
 	'oversight-nodiff' => 'Não foi possível verificar as alterações, uma vez que não há edições anteriores para esta página. Motivos possíveis:
 *A página foi eliminada
@@ -3101,8 +3102,8 @@ por um administrador da base de dados caso tenha cometido um engano.",
 	'oversight-difference' => '(Diferenças entre as edições anteriores restantes)',
 	'oversight-prev' => 'Última edição anterior',
 	'oversight-hidden' => 'Edição oculta',
-	'oversight-header' => 'Listagem de edições permanentemente ocultas de serem vistas publicamente.
-Liberar tais dados poderá resultar na perda em definitivo dos privilégios de oversight.',
+	'oversight-header' => 'Listagem de edições permanentemente ocultas do visionamento público.
+Disponibilizar esta informação pode resultar na perda definitiva dos privilégios de Oversight.',
 	'oversight-legend' => 'Pesquisar registo de ocultação de revisões',
 	'oversight-oversighter' => 'Supervisor:',
 	'oversight-offender' => 'Autor da revisão:',
@@ -4050,6 +4051,7 @@ Bu bilgiyi yaymak, Gözetmen ayrıcalıklarının kalıcı olarak kaybıyla sonu
  * @author Aleksandrit
  * @author Prima klasy4na
  * @author Test
+ * @author Тест
  */
 $messages['uk'] = array(
 	'hiderevision' => 'Приховати версії',

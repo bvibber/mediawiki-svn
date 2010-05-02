@@ -13,6 +13,7 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Purodha
+ * @author Siebrand
  */
 $messages['qqq'] = array(
 	'ajaxquerypages-desc' => 'Short description of this extension, shown in [[Special:Version]]. Do not translate or change links.',
@@ -310,7 +311,7 @@ $messages['ko'] = array(
 	'ajaxquerypages-desc' => '[[Special:Shortpages|{{int:shortpages}}]]과 같은 특수 문서의 쿼리를 불러올 때 AJAX를 사용',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -612,7 +613,7 @@ $messages['vi'] = array(
 	'ajaxquerypages-desc' => 'Thêm một số AJAX vào QueryPages như [[Special:Shortpages|{{int:shortpages}}]]',
 );
 
-/** Yue (粵語)
+/** Cantonese (粵語)
  * @author Shinjiman
  */
 $messages['yue'] = array(

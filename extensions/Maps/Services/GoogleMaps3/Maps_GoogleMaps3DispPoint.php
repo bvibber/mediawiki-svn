@@ -27,15 +27,15 @@ final class MapsGoogleMaps3DispPoint extends MapsBasePointMap {
 	protected $markerStringFormat = 'getGMaps3MarkerData(lat, lon, \'title\', \'label\', "icon")';
 	
 	protected function getDefaultZoom() {
-		global $egMapsGMaps3Zoom; 
+		global $egMapsGMaps3Zoom;
 		return $egMapsGMaps3Zoom;
-	}		
+	}
 	
 	/**
 	 * @see MapsBaseMap::doMapServiceLoad()
 	 *
 	 */
-	protected function doMapServiceLoad() {
+	public function doMapServiceLoad() {
 		global $egGMaps3OnThisPage;
 		
 		MapsGoogleMaps3::addGMap3Dependencies( $this->output );

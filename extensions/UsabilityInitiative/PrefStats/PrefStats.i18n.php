@@ -1282,7 +1282,7 @@ $messages['ko'] = array(
 	'prefstats-legend-in' => '활성화한 사용자 수',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -1401,7 +1401,7 @@ Pasirinkite vieną iš jų, norėdami pamatyti statistiką.',
 	'prefstats-xaxis' => 'Trukmė (valandomis)',
 );
 
-/** Laz (Laz)
+/** Lazuri (Lazuri)
  * @author Bombola
  */
 $messages['lzz'] = array(
@@ -1747,7 +1747,7 @@ Para monitorizá-las configure $wgPrefStatsTrackPrefs.',
 ** $3 {{PLURAL:$3|utilizador desactivou-a|utilizadores desactivaram-na}} desde então
 * No total, $4 {{PLURAL:$4|utilizador tem|utilizadores têm}} esta preferência activada',
 	'prefstats-xaxis' => 'Duração (horas)',
-	'prefstats-factors' => 'Visualizar por: $1',
+	'prefstats-factors' => 'Visionar por: $1',
 	'prefstats-factor-hour' => 'hora',
 	'prefstats-factor-sixhours' => 'seis horas',
 	'prefstats-factor-day' => 'dia',
@@ -2352,7 +2352,7 @@ $messages['yi'] = array(
 	'prefstats-legend-in' => 'פרעפֿערענץ אקטיוויזירט',
 );
 
-/** Yue (粵語)
+/** Cantonese (粵語)
  * @author Shinjiman
  */
 $messages['yue'] = array(

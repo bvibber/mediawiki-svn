@@ -446,6 +446,21 @@ $4
 	'validationstatistics-reviews' => 'Επιθεωρήσεις',
 );
 
+/** British English (British English)
+ * @author Reedy
+ */
+$messages['en-gb'] = array(
+	'validationstatistics-time' => "''The following data was last updated on $5 at $6.''
+
+Edits that have been checked by established users are considered to be reviewed.
+
+The average wait for edits by ''users that have not logged in'' to be reviewed is '''$1'''; the median is '''$3'''.  
+$4
+The average lag for [[Special:OldReviewedPages|pages with unreviewed edits pending]] is '''$2'''.
+These pages are considered ''outdated''. Likewise, pages are considered ''synchronised'' if there are no edits pending review.
+The published version of a page is the newest revision that has been approved to show by default to all readers.",
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
@@ -1090,13 +1105,13 @@ $4
  * @author Къарачайлы
  */
 $messages['krc'] = array(
-	'validationstatistics' => 'Сынауну статистикасы',
+	'validationstatistics' => 'Бетлени сынауну статистикасы',
 	'validationstatistics-users' => "{{SITENAME}}''' проектде бусагъатда [[{{MediaWiki:Validationpage}}|Редактор]] хакълагъа ие '''[[Special:ListUsers/editor|$1]]''' {{PLURAL:$1|къошулуучу|къошулуучу}} барды.
 
 «Редакторла» —  бетлени белгили версияларын сайлама сынау бардырыргъа эркин къошулуучуладыла.",
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -1124,7 +1139,7 @@ Dommet zopaß, donn Sigge als ''{{lcfirst:{{int:validationstatistics-latest}}}}'
 	'validationstatistics-reviews' => 'Mohlde en Sigg beshtätesh',
 );
 
-/** Cornish (Kernowek)
+/** Cornish (Kernewek)
  * @author Kernoweger
  * @author Kw-Moon
  */
@@ -1178,23 +1193,23 @@ $messages['mk'] = array(
 Уредниците се докажани корисници кои можат да прават моментални проверки на ревизии на страници.",
 	'validationstatistics-time' => "''Следниве податоци се ажурирани на $5 во $6.''
 
-Уредувањата кои се проверени од утврдени корисници се сметаат за проверени.
+Уредувањата кои се проверени од утврдени корисници се сметаат за оценети.
 
-Просечното чекање за уредувања направени од ''ненајавени корисници'' коишто треба да се прегледаат изнесува '''$1'''; средната вредност е '''$3'''.  
+Просечното чекање за уредувања направени од ''ненајавени корисници'' коишто треба да се оценат изнесува '''$1'''; средната вредност е '''$3'''.  
 $4
-Просечното задоцнување за [[Special:OldReviewedPages|страници со непроверени уредувања во исчекување]] изнесува '''$2'''.
-Овие страници се сметаат за ''застарени''. Наспроти тоа, страниците се сметаат за ''синхронизирани'' ако нема уредувања кои чекаат да бидат проверени.
-Објавената верзија на една страница е најновата верзија која е одобрена за прикажување на сите читатели по основно.",
-	'validationstatistics-table' => "Подолу се прикажани статистики за секој именски простор, ''освен'' страници за пренасочување.",
+Просечното задоцнување за [[Special:OldReviewedPages|страници со неоценети уредувања во исчекување]] изнесува '''$2'''.
+Овие страници се сметаат за ''застарени''. Наспроти тоа, страниците се сметаат за ''синхронизирани'' ако нема уредувања кои чекаат да бидат оценети.
+Објавената верзија на една страница е најновата ревизија која е одобрена за прикажување на сите читатели по основно.",
+	'validationstatistics-table' => "Подолу се прикажани статистики за секој именски простор, ''без'' страници за пренасочување.",
 	'validationstatistics-ns' => 'Именски простор',
 	'validationstatistics-total' => 'Страници',
-	'validationstatistics-stable' => 'Прегледани',
+	'validationstatistics-stable' => 'Оценето',
 	'validationstatistics-latest' => 'Синхронизирано',
-	'validationstatistics-synced' => 'Синхронизирани/Прегледани',
+	'validationstatistics-synced' => 'Синхронизирани/Оценети',
 	'validationstatistics-old' => 'Застарени',
-	'validationstatistics-utable' => 'Еве листа на 5 најактивни прегледувачи во последниов час.',
+	'validationstatistics-utable' => 'Еве листа на 5 најактивни оценувачи во последниов час.',
 	'validationstatistics-user' => 'Корисник',
-	'validationstatistics-reviews' => 'Прегледи',
+	'validationstatistics-reviews' => 'Оцени',
 );
 
 /** Malayalam (മലയാളം)
@@ -1352,7 +1367,7 @@ Den publiserte versjonen av en side er den nyeste revisjonen som har blitt godkj
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'validationstatistics' => 'Estatisticas de validacion',
+	'validationstatistics' => 'Estatisticas de relectura de las paginas',
 	'validationstatistics-users' => "'''{{SITENAME}}''' dispausa actualament de '''[[Special:ListUsers/editor|$1]]''' utilizaire{{PLURAL:$1||s}} amb los dreches de [[{{MediaWiki:Validationpage}}|contributor]].
 
 Los contributors e relectors son d'utilizaires establits que pòdon verificar las revisions de las paginas.",

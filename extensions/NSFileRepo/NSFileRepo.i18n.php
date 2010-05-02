@@ -155,7 +155,7 @@ $messages['ja'] = array(
 	'nsfilerepo-desc' => 'アップロードされたファイルに対する名前空間ベースの機能を提供する',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(

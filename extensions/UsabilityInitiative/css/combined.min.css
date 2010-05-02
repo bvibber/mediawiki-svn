@@ -784,6 +784,7 @@ background-position:left center;
 background-repeat:no-repeat;
 padding-left:32px;
 margin-left:1em;
+height:22px;
 float:left;
 color:#666666;
 }
@@ -845,6 +846,7 @@ height:22px;
 text-indent:-9999px;
 width:22px;
 padding:2px;
+cursor:pointer;
 }
 .wikiEditor-ui-toolbar .tabs{
 list-style:none;
@@ -1071,7 +1073,7 @@ width:40%;
 .wikiEditor-ui-toolbar .section-help .page-table td.description{
 width:20%;
 }
-.wikiEditor-ui-toolbar .page-characters div a{
+.wikiEditor-ui-toolbar .page-characters div span{
 border:solid 1px #DDDDDD;
 padding:5px;
 padding-left:8px;
@@ -1083,15 +1085,16 @@ float:left;
 display:block;
 color:black;
 text-decoration:none;
+cursor:pointer;
 }
-body.rtl .wikiEditor-ui-toolbar .page-characters > div > a,
-.wikiEditor-ui-toolbar .page-characters div[dir=rtl] a{
+body.rtl .wikiEditor-ui-toolbar .page-characters > div > span,
+.wikiEditor-ui-toolbar .page-characters div[dir=rtl] span{
 direction:rtl;
 float:right;
 margin-left:0;
 margin-right:5px;
 }
-.wikiEditor-ui-toolbar .page-characters div a:hover{
+.wikiEditor-ui-toolbar .page-characters div span:hover{
 background-color:white;
 text-decoration:none;
 border-color:#a8d7f9;
