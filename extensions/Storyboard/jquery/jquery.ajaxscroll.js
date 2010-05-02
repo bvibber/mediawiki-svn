@@ -36,11 +36,13 @@
 			var ele = this;
 			var $me = jQuery( this );
 			var $sp;
-			var fnEnd;
 			var offset = 0;
 			var lsp = -1;
 			
-			_css();
+			$me.css( {
+				"overflow-x": "hidden",
+				"overflow-y": "auto"
+			} );
 			
 			opt.boxTemplate = ( opt.boxTemplate || "<span class='" + opt.boxClass + "'>&nbsp</span>" );
 			opt.batchTemplate = ( opt.batchTemplate || "<span></span>" );
@@ -50,38 +52,25 @@
 			offset = batch( $sp, offset, opt );
 			$me.scrollTop(0).scrollLeft(0);
 			
-			_ab();
+			var os = $me.find( '.batch:first' ).next().offset().top;
+			var b = ( $me.height() / os + 1 ) * os;
 			
-			fnEnd = vEnd;
+			if ( "auto" == opt.uBound ) {
+				opt.uBound = b;
+			}
+			
+			if ( "auto" == opt.lBound ) {
+				opt.lBound = -b;
+			}
+			
+			if ( "auto" == opt.eBound ) {
+				opt.eBound = b * 2;
+			}
 			
 			setTimeout( monEnd, opt.endDelay );
 			
 			if( typeof opt.updateBatch == 'function' ){
 				setTimeout( handleScrolling, opt.scrollDelay );
-			}
-			
-			function _css(){
-				$me.css( {
-					"overflow-x": "hidden",
-					"overflow-y": "auto"
-				} );
-			}
-			
-			function _ab(){
-				var os = $me.find( '.batch:first' ).next().offset().top;
-				var b = ( $me.height() / os + 1 ) * os;
-				
-				if ( "auto" == opt.uBound ) {
-					opt.uBound = b;
-				}
-				
-				if ( "auto" == opt.lBound ) {
-					opt.lBound = -b;
-				}
-				
-				if ( "auto" == opt.eBound ) {
-					opt.eBound = b * 2;
-				}
 			}
 			
 			function batch( $s, offset, opt ) {
@@ -111,12 +100,12 @@
 				return offset;
 			};
 			
-			function vScroll() {
-				// If a batcnh is currently being loaded, we can't start another one yet.
-				if ( opt.busy ) {
-					return;
-				}
-				
+			/**
+			 * This function emulates a scroll event handler by firing itself every so many ms.
+			 * It checks if the user has scrolled down far enough, and calls the update batch
+			 * function if this is the case.
+			 */
+			function handleScrolling() {
 				var so = $me.scrollTop();
 				
 				if( lsp != so) {
@@ -129,13 +118,20 @@
 						
 						if ( opt.lBound > p || p > opt.uBound ) { 
 							return;
-						}
+						} 
 						
-						opt.busy = true;
 						opt.updateBatch( $b.removeClass( opt.emptyBatchClass ), opt );
 					});
 				}
+				
+				setTimeout( handleScrolling, opt.scrollDelay );
 			};
+
+			function monEnd() {
+				if ( offset < opt.maxOffset ) {
+					setTimeout( monEnd, vEnd() );
+				}
+			}
 			
 			function vEnd() {
 				if ( ele.scrollTop > 0 && ele.scrollHeight - ele.scrollTop < opt.eBound ) {
@@ -145,21 +141,6 @@
 				
 				return opt.endDelay;
 			};
-			
-			/**
-			 * This function emulates a scroll event handler by firing itself every so many ms, and
-			 * then calling a function checking if the user has scrolled, and if any batches should be loaded. 
-			 */
-			function handleScrolling() {
-				vScroll();
-				setTimeout( handleScrolling, opt.scrollDelay );
-			};
-			
-			function monEnd() {
-				if ( offset < opt.maxOffset ) {
-					setTimeout( monEnd, fnEnd() );
-				}
-			}
 			
 		});
 	}; 
