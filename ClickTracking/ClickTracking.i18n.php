@@ -1000,6 +1000,7 @@ $messages['kn'] = array(
 $messages['ko'] = array(
 	'clicktracking' => 'Usability Initiative 사용자 클릭 추적기',
 	'clicktracking-desc' => '마우스 클릭 이벤트 중에서 웹 페이지 새로고침과 관계없는 것들을 추적합니다.',
+	'ct-title' => '사용자 클릭 수 집계',
 	'ct-event-name' => '이벤트 이름',
 	'ct-expert-header' => '"전문가" 클릭 수',
 	'ct-intermediate-header' => '"중급 사용자" 클릭 수',
@@ -1007,11 +1008,16 @@ $messages['ko'] = array(
 	'ct-total-header' => '총 클릭 수',
 	'ct-start-date' => '시작 날짜 (YYYYMMDD)',
 	'ct-end-date' => '마지막 날짜 (YYYYMMDD)',
+	'ct-increment-by' => '각 데이터가 나타내는 일수',
+	'ct-change-graph' => '그래프 바꾸기',
 	'ct-beginner' => '초보자',
 	'ct-intermediate' => '중급 사용자',
 	'ct-expert' => '전문가',
 	'ct-date-range' => '날짜 범위',
+	'ct-editing' => '현재 편집 중:',
 	'ct-anon-users' => '익명 사용자',
+	'ct-user-contribs' => '총 사용자 기여',
+	'ct-user-span' => '특정 기간 동안의 사용자 기여',
 	'ct-and' => '그리고',
 	'ct-update-table' => '표 업데이트',
 );
@@ -1380,6 +1386,7 @@ $messages['pt'] = array(
  * @author Everton137
  * @author Hamilton Abreu
  * @author Luckas Blade
+ * @author 555
  */
 $messages['pt-br'] = array(
 	'clicktracking' => 'Monitoramento de cliques da Iniciativa de Usabilidade',
@@ -1387,7 +1394,7 @@ $messages['pt-br'] = array(
 	'ct-title' => 'Cliques de usuário agregados',
 	'ct-event-name' => 'Nome do evento',
 	'ct-expert-header' => 'Cliques de "experiente"',
-	'ct-intermediate-header' => 'Cliques de usuário "intermedio"',
+	'ct-intermediate-header' => 'Cliques de usuário "intermediário"',
 	'ct-beginner-header' => 'Cliques de "Iniciante"',
 	'ct-total-header' => 'Cliques totais',
 	'ct-start-date' => 'Data de início (AAAAMMDD)',
@@ -1398,7 +1405,7 @@ $messages['pt-br'] = array(
 	'ct-intermediate' => 'Intermediário',
 	'ct-expert' => 'Experiente',
 	'ct-date-range' => 'Intervalo de datas',
-	'ct-editing' => 'Editando atualmente:',
+	'ct-editing' => 'Atualmente editando:',
 	'ct-anon-users' => 'Usuários anônimos',
 	'ct-user-contribs' => 'Total de contribuições dos usuários',
 	'ct-user-span' => 'Contribuições dos usuários no período de tempo',

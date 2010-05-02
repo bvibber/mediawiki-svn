@@ -479,10 +479,11 @@ $messages['pt'] = array(
 /** Brazilian Portuguese (Português do Brasil)
  * @author Daemorris
  * @author Everton137
+ * @author 555
  */
 $messages['pt-br'] = array(
 	'wikieditor-template-editor-preference' => 'Possibilitar edição de predefinições com base em formulários',
-	'wikieditor-template-editor-dialog-title' => 'Editar template',
+	'wikieditor-template-editor-dialog-title' => 'Editar predefinição',
 	'wikieditor-template-editor-dialog-submit' => 'Atualizar',
 	'wikieditor-template-editor-dialog-cancel' => 'Cancelar',
 );

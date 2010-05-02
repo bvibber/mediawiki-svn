@@ -22,6 +22,13 @@ $messages['be-tarask'] = array(
 	'wikieditor-addMediaWizard-preference' => 'Уключыць дапаўненьне «Майстар даданьня мэдыя»',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'wikieditor-addMediaWizard-preference' => 'Gweredekaat ar bitrak "Ouzhpennañ ameiler mediaoù"',
+);
+
 /** Czech (Česky)
  * @author Mormegil
  */

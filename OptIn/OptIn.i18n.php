@@ -649,14 +649,14 @@ $messages['br'] = array(
 	'optin-title-feedback' => 'Roit ho soñj war ar Beta',
 	'optin-needlogin' => "Ret eo deoc'h bezañ [$1 luget] evit ober gant Beta.",
 	'optin-intro' => "Intrudu implijadurezh Wikipedia en deus labouret start evit gwellaat implijadurezh raktresoù Wikimedia.
-Ha c'hoant o peus klask Beta amañ ?",
+Ha c'hoant hoc'h eus klask Beta amañ ?",
 	'optin-feedback-intro' => "Trugarez deoc'h da amprouiñ Beta.
 Ni a garfe gouzout petra a soñjit diwar-benn an etrefas nevez, setu e vefemp laouen ma restpontfec'h d'ar goulennoù dindan.",
 	'optin-feedback-back' => "Ma ne fell ket deoc'h leuniañ ar roll goulennoù, e c'hallit distreiñ da $1.",
 	'optin-success-in' => "Emaoc'h oc'h amprouiñ Beta.
 Gallout a rit distreiñ d'ar stumm boas pa garit en ur glikañ war al liamm \"{{int:optin-leave}}\" e laez ar skramm.",
 	'optin-leave-cancel' => "M'hoc'h eus c'hoant da genderc'hel da implijout Beta, e c'hallit distreiñ da $1.",
-	'optin-success-out' => "Kuitet ho peus Beta.
+	'optin-success-out' => "Kuitaet hoc'h eus Beta.
 Tu 'zo deoc'h amprouiñ anezhañ adarre en ur klikañ war al liamm \"{{int:optin-try}}\" en nec'h a zehou eus ar skramm.",
 	'optin-success-feedback' => 'Trugarez evit bezañ roet ho soñj !',
 	'optin-accept-short' => "Bec'h de'i",
@@ -680,9 +680,9 @@ Ni a garfe gouzout petra a soñjit diwar-benn an etrefas nevez, setu e vefemp la
 	'optin-survey-answer-whyoptout-didntlike-toolbar' => 'Ne blije ket din ar varrenn ostilhoù nevez.',
 	'optin-survey-answer-whyoptout-other' => 'Abeg all :',
 	'optin-survey-question-explain' => 'Mar plij displegit pe diorroit ho respont a-us :',
-	'optin-survey-question-techfail' => 'Ha kudennoù teknikel o peus bet en ur implijout ar Beta ?',
+	'optin-survey-question-techfail' => "Ha kudennoù teknikel hoc'h eus bet en ur implijout ar Beta ?",
 	'optin-survey-question-techfail-ifyes' => 'Ma ya, displegit pe diorroit mar plij :',
-	'optin-survey-question-usedtoolbar' => 'Hag implijet ho peus ar barenn ostilhoù nevez evit kemmañ ur bajenn ?',
+	'optin-survey-question-usedtoolbar' => "Hag implijet hoc'h eus ar barenn ostilhoù nevez evit kemmañ ur bajenn ?",
 	'optin-survey-question-usedtoolbar-ifyes' => "Mard eo ya ar respont, petra en deus plijet deoc'h ? Ha petra n'en deus ket plijet deoc'h ?",
 	'optin-survey-question-usedtoolbar-ifno' => "Ma n'oc'h ket bet plijet, perak ? Hag implijout a reot anezhañ en dazont ? Displegit un tamm mar plij.",
 	'optin-survey-question-different' => "Petra en defe ranket bezañ disheñvel evit ma vefec'h chomet gant Beta.",
@@ -4530,6 +4530,7 @@ Para saber mais sobre a Iniciativa de Usabilidade, visite a nossa [http://usabil
 /** Brazilian Portuguese (Português do Brasil)
  * @author Giro720
  * @author Heldergeovane
+ * @author 555
  */
 $messages['pt-br'] = array(
 	'optin' => 'Participar na Iniciativa de Usabilidade',
@@ -4578,7 +4579,7 @@ Gostaríamos de saber o que você acha da nossa nova interface, por isso agradec
 	'optin-survey-question-usedtoolbar-ifyes' => 'Se sim, de que você gostou nela? De que você não gostou nela?',
 	'optin-survey-question-usedtoolbar-ifno' => 'Se não, porque não? Irá no futuro? Por favor, explique.',
 	'optin-survey-question-different' => 'O que poderíamos ter feito de forma diferente para que você continuasse a usar o Beta?',
-	'optin-survey-question-feedback' => 'Por favor, indique-nos quaisquer outros comentários, críticas ou sugestões que você tenha para nós - todas as opiniões são úteis!:',
+	'optin-survey-question-feedback' => 'Por favor, indique-nos quaisquer outros comentários, críticas ou sugestões que você tenha para nós - todas as opiniões são úteis!',
 	'optin-survey-question-browser' => 'Que navegador você usa?',
 	'optin-survey-answer-browser-other' => 'Outro navegador:',
 	'optin-survey-question-os' => 'Que sistema operacional você usa?',
@@ -4587,7 +4588,7 @@ Gostaríamos de saber o que você acha da nossa nova interface, por isso agradec
 	'optin-survey-question-changes' => 'Que mudanças você gostaria de ver futuramente no Beta? (por favor selecione todas as opções pertinentes)',
 	'optin-survey-answer-changes-nav' => 'Tornar a navegação geral do site mais fácil de usar.',
 	'optin-survey-answer-changes-edittools' => 'Criar mais e melhores ferramentas de edição.',
-	'optin-survey-answer-changes-upload' => 'Melhorar o carregamento de conteúdo e multimédia.',
+	'optin-survey-answer-changes-upload' => 'Melhorar o envio de conteúdos e multimídias.',
 	'optin-survey-answer-changes-richtext' => 'Desenvolver ferramentas de edição semelhantes a editores avançados de texto.',
 	'optin-survey-answer-changes-lookfeel' => 'Renovar o aspecto geral do site.',
 	'optin-survey-answer-changes-predictability' => 'Melhorar a previsibilidade dos resultados.',
