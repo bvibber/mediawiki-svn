@@ -127,6 +127,8 @@ abstract class DatabaseStatisticsStoreBuilder extends DatabaseWikiWordStoreBuild
 		//	bias = 1 - ( log(d) / log(D) ) 
 
 		int numberOfConcepts = getNumberOfConcepts();
+		if (numberOfConcepts<=0) throw new PersistenceException("bad number of concepts: "+numberOfConcepts);
+		
 		String bias = " 1 - ( log("+degreeField+") / "+Math.log(numberOfConcepts)+" )";
 
 		int n = buildDistributionCoefficient(biasField, degreeTable, biasField, bias, degreeField + " > 0");
