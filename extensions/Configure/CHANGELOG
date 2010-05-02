@@ -2,7 +2,9 @@ This file lists changes on this extension. Localisation updates are done
 through translatewiki.net and are not listed here.
 
 0.15.23 - 2 May 2010
-  Added $wgLocalStylePath and $wgVectorShowVariantName.
+  * (bug 23379) Settings based on radio button now longer throw errors if
+    nothing is selected
+  * Added $wgLocalStylePath and $wgVectorShowVariantName.
 
 0.15.22 - 25 April 2010
   Added $wgAllowImageTag and $wgLogAutocreatedAccounts.

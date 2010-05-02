@@ -715,7 +715,7 @@ abstract class ConfigurationPage extends SpecialPage {
 			default:
 				if ( is_array( $type ) ) {
 					$val = $wgRequest->getVal( 'wp' . $name );
-					if ( !array_key_exists( $val, $type ) ) {
+					if ( !array_key_exists( $val, $type ) && $val !== null ) {
 						$perm = implode( ', ', $type );
 						throw new MWException( "Value for \$$name setting is not in permitted (given: $val, permitted: $perm)" );
 					}
