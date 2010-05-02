@@ -19,10 +19,13 @@ public class BuildProximity extends ImportApp<WikiWordConceptStoreBuilder<? exte
 	public BuildProximity() {
 		super("BuildProximity", true, true);
 	}
-
+	
 	@Override
 	protected void declareOptions() {
 		super.declareOptions();
+
+		args.declareHelp("<wiki>", null); //FIXME: remove!
+		args.declare("features-only", null, false, Boolean.class, "build feature vectors, but do not calculate proximity values.");
 	}
 	
 	//protected WikiWordConceptStoreBuilder<?> conceptStore;
@@ -40,12 +43,14 @@ public class BuildProximity extends ImportApp<WikiWordConceptStoreBuilder<? exte
 		section("-- build features --------------------------------------------------");
 		this.proximityStore.buildFeatures();
 
-		section("-- build base proximity --------------------------------------------------");
-		this.proximityStore.buildBaseProximity();
-
-		section("-- build extended proximity --------------------------------------------------");
-		this.proximityStore.buildExtendedProximity();
-
+		if (!args.isSet("features-only")) {
+				section("-- build base proximity --------------------------------------------------");
+				this.proximityStore.buildBaseProximity();
+		
+				section("-- build extended proximity --------------------------------------------------");
+				this.proximityStore.buildExtendedProximity();
+		}
+				
 		section("-- statistics --------------------------------------------------");
 		conceptStore.getProximityStoreBuilder().dumpTableStats(out);
 	}	
