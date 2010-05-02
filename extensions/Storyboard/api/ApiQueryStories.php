@@ -101,7 +101,10 @@ class ApiQueryStories extends ApiQueryBase {
 				'id' => $story->story_id,
 				'author' => $story->story_author_name,
 				'title' => $story->story_title,
-				'created' => wfTimestamp(  TS_ISO_8601, $story->story_created ),
+				//'created' => wfTimestamp(  TS_ISO_8601, $story->story_created ),
+				//'modified' => wfTimestamp(  TS_ISO_8601, $story->story_modified ),
+				'created' => $story->story_created,
+				'modified' => $story->story_modified,				
 				'imageurl' => $story->story_author_image,
 				'permalink' => SpecialPage::getTitleFor( 'story', $story->story_title )->getFullURL()
 			);

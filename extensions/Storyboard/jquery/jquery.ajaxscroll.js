@@ -26,8 +26,7 @@
 				scrollDelay: 600, // The interval for checking if the user scrolled, in ms.
 				endDelay: 100,
 				updateBatch: null,
-				updateEnd: null,
-				busy: false
+				updateEnd: null
 			},
 			opt
 		);
@@ -69,6 +68,7 @@
 			
 			setTimeout( monEnd, opt.endDelay );
 			
+			// Initiate the scroll handling.
 			if( typeof opt.updateBatch == 'function' ){
 				setTimeout( handleScrolling, opt.scrollDelay );
 			}
@@ -79,12 +79,12 @@
 				var rp = opt.batchNum;
 				
 				while( rp-- ) {
-					$b=jQuery( opt.batchTemplate )
+					$b = jQuery( opt.batchTemplate )
 						.attr({
 							offset: offset,
-							len: opt.batchSiz,
-							storymodified: 0,
-							storyid: 0
+							storymodified: window.storyModified,
+							storyid: window.storyId,							
+							len: opt.batchSize
 						})
 						.addClass( opt.batchClass + " " + opt.emptyBatchClass );
 					
@@ -108,7 +108,7 @@
 			function handleScrolling() {
 				var so = $me.scrollTop();
 				
-				if( lsp != so) {
+				if( !window.storyboardBusy && lsp != so ) {
 					lsp = so;
 					var co = $me.offset().top;
 					
@@ -120,7 +120,8 @@
 							return;
 						} 
 						
-						opt.updateBatch( $b.removeClass( opt.emptyBatchClass ), opt );
+						window.storyboardBusy = true;
+						opt.updateBatch( $b.removeClass( opt.emptyBatchClass ) );
 					});
 				}
 				

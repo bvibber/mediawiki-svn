@@ -11,7 +11,7 @@
 			updateBatch: updateStoryboard,
 			maxOffset: 500,
 			batchSize: 8,
-			batchNum: 2,
+			batchNum: 2, // TODO: change to 1. Some issue in the ajaxscroll plugin makesit break when this is the case though.
 			batchClass: "batch",
 			boxClass: "storyboard-box",
 			emptyBatchClass: "storyboard-empty",
@@ -19,19 +19,27 @@
 		} );
 	} );
 	
-	function updateStoryboard( $storyboard, ajaxScrollObj ) {
+	function updateStoryboard( $storyboard ) {
+		requestArgs = {
+			'action': 'query',
+			'list': 'stories',
+			'format': 'json',
+			'stlimit': 8,
+			'stlanguage': window.storyboardLanguage
+		};
+		
+		if ( $storyboard.attr( 'storymodified' ) ) {
+			requestArgs.stcontinue = $storyboard.attr( 'storymodified' );
+			
+			requestArgs.stcontinue += '-' + 
+				( $storyboard.attr( 'storyid' ) ? $storyboard.attr( 'storyid' ) : '0' );
+		}
+			
 		$.getJSON( wgScriptPath + '/api.php',
-			{
-				'action': 'query',
-				'list': 'stories',
-				'format': 'json',
-				'stcontinue': $storyboard.attr( 'storymodified' ) + '-' + $storyboard.attr( 'storyid' ),
-				'stlimit': 8,
-				'stlanguage': window.storyboardLanguage
-			},
+			requestArgs,
 			function( data ) {
 				if ( data.query ) {
-					addStories( $storyboard, data.query, ajaxScrollObj );
+					addStories( $storyboard, data.query );
 				} else {
 					alert( 'An error occured:\n' + data.error.info ); // TODO: i18n
 				}		
@@ -39,7 +47,7 @@
 		);
 	}
 	
-	function addStories( $storyboard, query, ajaxScrollObj ) {
+	function addStories( $storyboard, query ) {
 		// Remove the empty boxes.
 		$storyboard.html('');
 		
@@ -116,7 +124,11 @@
 			$storyboard.append( $storyBody );	
 		}
 		
-		ajaxScrollObj.busy = false;
+		var story = query.stories[query.stories.length - 1];
+		window.storyModified = story.modified;
+		window.storyId = story.id;
+		
+		window.storyboardBusy = false;
 	}
 		
 })(jQuery);
