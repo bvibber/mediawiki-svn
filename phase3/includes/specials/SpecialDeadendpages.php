@@ -27,7 +27,9 @@ class DeadendPagesPage extends PageQueryPage {
 		return true;
 	}
 
-	function isSyndicated() { return false; }
+	function isSyndicated() {
+		return false; 
+	}
 
 	/**
 	 * @return false

@@ -51,7 +51,7 @@ class CategoryPager extends AlphabeticPager {
 	}
 
 	function getIndexField() {
-#		return array( 'abc' => 'cat_title', 'count' => 'cat_pages' );
+		#return array( 'abc' => 'cat_title', 'count' => 'cat_pages' );
 		return 'cat_title';
 	}
 

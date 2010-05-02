@@ -145,7 +145,7 @@ $wgRedirectScript   = false; ///< defaults to "{$wgScriptPath}/redirect{$wgScrip
  * asset paths as seen by users
  */
 $wgStylePath   = false; ///< defaults to "{$wgScriptPath}/skins"
-$wgLocalStylePath   = false; ///< defaults to the same value as $wgStylePath, and shouldn't point to an external domain
+$wgLocalStylePath   = false; ///< defaults to "{$wgScriptPath}/skins", shouldn't point to an external domain
 $wgExtensionAssetsPath = false; ///< defaults to "{$wgScriptPath}/extensions"
 
 /**
@@ -1683,7 +1683,7 @@ $wgCacheEpoch = '20030516000000';
  * to ensure that client-side caches do not keep obsolete copies of global
  * styles.
  */
-$wgStyleVersion = '274';
+$wgStyleVersion = '275';
 
 
 # Server-side caching:
@@ -4204,8 +4204,6 @@ $wgVectorUseIconWatch = false;
 
 /**
  * Show the name of the current variant as a label in the variants drop-down menu
- * true = Show the label
- * false = Do not show the label
  */
 $wgVectorShowVariantName = false;
 
