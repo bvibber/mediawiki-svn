@@ -155,4 +155,20 @@ public class SlidingCoherenceDisambiguator extends CoherenceDisambiguator {
 		return getSequenceInterpretations(frame, mset);
 	}
 
+	public int getInitialWindow() {
+		return initialWindow;
+	}
+
+	public void setInitialWindow(int initialWindow) {
+		this.initialWindow = initialWindow;
+	}
+
+	public int getWindow() {
+		return window;
+	}
+
+	public void setWindow(int window) {
+		this.window = window;
+	}
+
 }
