@@ -1207,6 +1207,8 @@ $messages['km'] = array(
  * @author Kwj2772
  */
 $messages['ko'] = array(
+	'ratinghistory' => '문서 평가 내력',
+	'ratinghistory-leg' => '[[:$1|$1]] 문서에 대한 평가 내역',
 	'ratinghistory-thanks' => "'''<font color=\"darkred\">이 문서를 검토해 주셔서 감사합니다!</font>'''",
 	'ratinghistory-period' => '기간:',
 	'ratinghistory-month' => '지난 1개월',

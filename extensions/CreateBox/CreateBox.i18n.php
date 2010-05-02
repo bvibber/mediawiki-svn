@@ -44,6 +44,13 @@ U kan nie hierdie bladsy skep nie, maar u kan dit wel [{{fullurl:{{FULLPAGENAME}
 <createbox>break=no</createbox>",
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'createbox-create' => 'Creyar',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK

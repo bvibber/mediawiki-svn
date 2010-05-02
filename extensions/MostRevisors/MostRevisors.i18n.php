@@ -52,6 +52,13 @@ $messages['af'] = array(
 	'mostrevisors-submit' => 'OK',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'mostrevisors-namespace' => 'Espacio de nombres:',
+);
+
 /** Arabic (العربية)
  * @author OsamaK
  */

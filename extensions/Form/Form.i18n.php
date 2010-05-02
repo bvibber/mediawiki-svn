@@ -230,7 +230,7 @@ $messages['br'] = array(
 	'formarticleexiststext' => 'Ar bajenn [[$1]] zo anezhi dija.',
 	'formbadpagename' => 'Anv fall evit ar bajenn',
 	'formbadrecaptcha' => 'Talvoudoù fall evit reCaptcha. Klaskit adarre.',
-	'formbadpagenametext' => 'Ar roadennoù o peus lakaet a grou un anv fall evit ar bajenn,  "$1".',
+	'formbadpagenametext' => 'Ar roadennoù hoc\'h eus lakaet a grou un anv fall evit ar bajenn,  "$1".',
 	'formrequiredfielderror' => "Ezhomm 'zo eus ar maezienn{{PLURAL:$2||où}} $1 er furmskrid.
 Mar plij leunit {{PLURAL:$2|anezhañ|anezho}}.",
 	'formsavesummary' => "Pajenn nevez oc'h implijout [[Special:Form/$1|ar furmskrid $1]]",

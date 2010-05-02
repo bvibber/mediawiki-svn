@@ -1020,6 +1020,7 @@ $messages['zh-cn'] = array(
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
+ * @author Bbqyee
  * @author Liangent
  * @author PhiLiP
  * @author Wmr89502270
@@ -1031,6 +1032,7 @@ $messages['zh-hans'] = array(
 这会把您带离本编辑页面，您有可能会丢失现有的编辑。',
 	'ajaxLogin2' => '确定这样做吗？如果您现在离开本页面，您可能会丢失您对本页面作出的修改。',
 	'ajaxlogin-create' => '创建账户',
+	'al-nosuchuser' => '用户名"$1"不存在. 用户名区分大小写,请重新检查你的拼写.',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

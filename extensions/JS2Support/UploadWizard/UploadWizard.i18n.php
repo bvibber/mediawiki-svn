@@ -24,6 +24,14 @@ $messages['be-tarask'] = array(
 	'uploadwizard-desc' => 'Майстар загрузкі, распрацавацы па гранту Multimedia Usability',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'uploadwizard' => 'Ameiler enporzhiañ',
+	'uploadwizard-desc' => "Ameiler enporzhiañ, diorroet evit ar yalc'had Implijadusted Liesmedia",
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */

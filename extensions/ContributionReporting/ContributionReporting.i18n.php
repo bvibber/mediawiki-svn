@@ -231,6 +231,7 @@ $messages['an'] = array(
 	'contribstats-max' => 'Masima (USD)',
 	'contribstats-percentage-ytd' => 'Porzentache (YTD)',
 	'contribstats-total-ytd' => 'Total (YTD)',
+	'contribstats-template' => 'Plantilla',
 	'fundraiserstatistics' => "Estatisticas d'a replega de fundos",
 	'fundraiserstats-date' => 'Calendata',
 	'fundraiserstats-day' => 'Día $1 de $2',

@@ -184,6 +184,13 @@ $messages['pt'] = array(
 	'checkpoint-notice' => '([[{{ns:project}}:Checkpoint|gravação do estado presente]])',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Luckas Blade
+ */
+$messages['pt-br'] = array(
+	'checkpoint' => 'Salvar e continuar editando',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

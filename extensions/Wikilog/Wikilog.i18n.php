@@ -463,6 +463,9 @@ $messages['af'] = array(
  * @author Juanpabl
  */
 $messages['an'] = array(
+	'wikilog-new-item-go' => 'Creyar',
+	'wikilog-actions' => 'Accions',
+	'wikilog-edit-lc' => 'editar',
 	'wikilog-page-lc' => 'pachina',
 );
 

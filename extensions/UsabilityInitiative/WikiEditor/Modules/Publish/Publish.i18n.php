@@ -822,9 +822,10 @@ $messages['pt'] = array(
  * @author Hamilton Abreu
  * @author Lijealso
  * @author Luckas Blade
+ * @author 555
  */
 $messages['pt-br'] = array(
-	'wikieditor-publish-preference' => 'Possibilitar publicação passo a passo',
+	'wikieditor-publish-preference' => 'Ativar publicação passo-a-passo',
 	'wikieditor-publish-button-publish' => 'Publicar',
 	'wikieditor-publish-button-cancel' => 'Cancelar',
 	'wikieditor-publish-dialog-title' => 'Publicar em {{SITENAME}}',

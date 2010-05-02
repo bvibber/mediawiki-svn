@@ -116,6 +116,7 @@ $messages['am'] = array(
  * @author Juanpabl
  */
 $messages['an'] = array(
+	'usagestatisticsnamespace' => 'Espacio de nombres:',
 	'usagestatisticsstart' => 'Calendata de prenzipio',
 	'usagestatisticsend' => 'Calendata final',
 	'usagestatisticsnoend' => 'Por fabor, escriba una calendata final',

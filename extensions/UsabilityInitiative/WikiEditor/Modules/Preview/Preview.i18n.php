@@ -577,9 +577,10 @@ $messages['pt'] = array(
  * @author Hamilton Abreu
  * @author Heldergeovane
  * @author Luckas Blade
+ * @author 555
  */
 $messages['pt-br'] = array(
-	'wikieditor-preview-preference' => 'Habilitar a previsão lado a lado',
+	'wikieditor-preview-preference' => 'Habilitar a previsão lado-a-lado',
 	'wikieditor-preview-tab' => 'Previsão',
 	'wikieditor-preview-changes-tab' => 'Alterações',
 	'wikieditor-preview-loading' => 'Carregando...',

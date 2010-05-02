@@ -49,6 +49,13 @@ $messages['am'] = array(
 	'searchbox-namespaces' => 'ክፍለ-ዊኪዎች:',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'searchbox-namespaces' => 'Espacios de nombres:',
+);
+
 /** Old English (Ænglisc)
  * @author Wōdenhelm
  */

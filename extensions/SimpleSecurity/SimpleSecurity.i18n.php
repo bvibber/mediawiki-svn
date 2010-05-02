@@ -59,6 +59,13 @@ $messages['af'] = array(
 	'security-type-namespace' => 'naamruimte',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'security-type-namespace' => 'espacio de nombres',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK

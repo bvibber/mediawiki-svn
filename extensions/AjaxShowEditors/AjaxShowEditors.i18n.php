@@ -1078,6 +1078,7 @@ $messages['sv'] = array(
  * @author Lloffiwr
  */
 $messages['sw'] = array(
+	'ajaxshoweditors-desc' => 'Inataja majina ya watumiaji wengine wanaohariri ukurasa ulule wakati moja',
 	'ajax-se-title' => 'Wanaohariri sasa hivi:',
 	'ajax-se-idling' => '($1s zilizopita)',
 	'ajax-se-pagedoesnotexist' => 'ukurasa haupatikani',

@@ -285,7 +285,7 @@ $messages['br'] = array(
 
 Dibabit ho stumm MediaWiki.
 
-Al lod vrasañ eus an astennoù a  ya en-dro war stumm disheñvel MediaWiki. Neuze ma n'emañ ket ho stumm amañ, pe m'ho peus ezhomm arc'hweladurioù ziwezhañ an astenn, klaskit implijout ar stumm a-vremañ.",
+Al lod vrasañ eus an astennoù a  ya en-dro war stumm disheñvel MediaWiki. Neuze ma n'emañ ket ho stumm amañ, pe m'hoc'h eus ezhomm arc'hweladurioù ziwezhañ an astenn, klaskit implijout ar stumm a-vremañ.",
 	'extdist-no-versions' => 'Dizimplijadus eo an astenn bet dibabet ($1) e stumm ebet !',
 	'extdist-submit-version' => "Kenderc'hel",
 	'extdist-svn-error' => "Ur fazi 'zo bet gant ''Subversion'' : <pre>$1</pre>",

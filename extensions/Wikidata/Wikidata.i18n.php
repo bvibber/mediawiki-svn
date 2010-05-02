@@ -507,6 +507,7 @@ $messages['an'] = array(
 	'datasearch' => 'Wikidata: Mirar datos',
 	'ow_save' => 'Alzar',
 	'ow_dm_OK' => "D'alcuerdo",
+	'ow_create' => 'Creyar',
 );
 
 /** Arabic (العربية)

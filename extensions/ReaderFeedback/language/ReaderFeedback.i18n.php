@@ -1355,10 +1355,14 @@ $messages['km'] = array(
  * @author Yknok29
  */
 $messages['ko'] = array(
+	'readerfeedback-desc' => '독자에게 부문별로 평가를 할 수 있는 피드백 양식을 제공',
 	'readerfeedback' => '이 문서에 대해 어떻게 생각하십니까?',
+	'readerfeedback-text' => '아래에 이 문서를 평가하는 데 잠시만 시간을 내 주십시오. 당신의 피드백은 소중하며 우리 웹 사이트를 개선하는 데 도움이 될 것입니다.',
 	'readerfeedback-reliability' => '가독성',
 	'readerfeedback-completeness' => '완성도',
 	'readerfeedback-npov' => '중립성',
+	'readerfeedback-presentation' => '문서의 외형',
+	'readerfeedback-overall' => '종합 의견',
 	'readerfeedback-level-none' => '(모름)',
 	'readerfeedback-level-0' => '최하',
 	'readerfeedback-level-1' => '낮음',
@@ -1368,6 +1372,8 @@ $messages['ko'] = array(
 	'readerfeedback-submit' => '제출',
 	'readerfeedback-main' => '일반 문서만 평가할 수 있습니다.',
 	'readerfeedback-success' => "'''이 문서를 평가해 주셔서 감사합니다!''' ([$2 결과 보기]) ([$3 질문이나 의견이 있으신가요?])",
+	'readerfeedback-voted' => "'''당신은 이미 이 문서에 대해 평가한 것으로 보입니다.''' ([$2 결과 보기]) ([$3 의견 및 질문])",
+	'readerfeedback-error' => "'''이 문서를 평가하는 도중 오류가 발생했습니다.''' ([$2 결과 보기]) ([$3 의견 및 질문])",
 	'readerfeedback-submitting' => '제출하는 중...',
 	'readerfeedback-finished' => '감사합니다!',
 	'readerfeedback-tagfilter' => '태그:',

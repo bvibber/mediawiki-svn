@@ -23,7 +23,7 @@ $aliases['arz'] = array(
 	'SpecialWikiAtHome' => array( 'الويكي_في_المنزل' ),
 );
 
-/** Azerbaijani (Azərbaycan) */
+/** Azerbaijani (Azərbaycanca) */
 $aliases['az'] = array(
 	'SpecialWikiAtHome' => array( 'VikiEvdə' ),
 );

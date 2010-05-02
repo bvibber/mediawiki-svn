@@ -264,7 +264,7 @@ $messages['br'] = array(
 	'todo-tab' => "d'ober",
 	'todo-new-queue' => 'nevez',
 	'todo-mail-subject' => "Graet eo bet an elfenn e roll an traoù d'ober eus $1",
-	'todo-mail-body' => "Goulennet ho peus resevout ur postel kemenn pa 'vo echuet gant un elfenn ho peus lakaet e roll an traoù d'ober a zo da $1.
+	'todo-mail-body' => "Goulennet hoc'h eus resevout ur postel kemenn pa 'vo echuet gant un elfenn hoc'h eus lakaet e roll an traoù d'ober a zo da $1.
 
 Elfenn : $2
 Kaset : $3
@@ -274,7 +274,7 @@ $4",
 	'todo-invalid-item' => 'Elfenn diank pe direizh',
 	'todo-update-else-item' => 'Ho klask hizivaat elfennoù unan all',
 	'todo-unrecognize-type' => "Seurt n'eo ket bet anavezet",
-	'todo-user-invalide' => "N'eo ket mat an dra d'ober o peus lakaet pe ez eus un diouer outi pe n'en deus ket an implijer e roll eus an traoù d'ober.",
+	'todo-user-invalide' => "N'eo ket mat an dra d'ober hoc'h eus lakaet pe ez eus un diouer outi pe n'en deus ket an implijer e roll eus an traoù d'ober.",
 	'todo-item-list' => "Hoc'h elfennoù",
 	'todo-no-item' => "N'eus netra da ober.",
 	'todo-invalid-owner' => "Perc'henn fall eus an elfenn-mañ",

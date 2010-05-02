@@ -413,9 +413,10 @@ $messages['am'] = array(
  * @author Juanpabl
  */
 $messages['an'] = array(
-	'configure-desc-ns' => 'Espazios de nombres',
-	'configure-section-namespaces' => 'Espazios de nombres',
+	'configure-desc-ns' => 'Espacio de nombres',
+	'configure-section-namespaces' => 'Espacios de nombres',
 	'configure-section-images' => 'Ficheros',
+	'configure-throttle-action-edit' => 'Editar',
 );
 
 /** Arabic (العربية)
@@ -1276,7 +1277,7 @@ $messages['br'] = array(
 	'configure-section-thumbnail' => 'Bihanaat skeudennoù',
 	'configure-section-output' => 'Ezvont',
 	'configure-select-wiki' => 'Dibab ar wiki',
-	'configure-select-wiki-desc' => "Dibabit ar wiki o peus c'hoant kefluniañ.",
+	'configure-select-wiki-desc' => "Dibabit ar wiki hoc'h eus c'hoant kefluniañ.",
 	'configure-select-wiki-view-desc' => "Diuzañ ar wiki evit peseurt hini ho peus c'hoant gwelet ar stummoù kefluniadur.",
 	'configure-select-wiki-view-all' => 'An holl wikioù',
 	'configure-select-wiki-view-specific' => 'Ur wiki resis :',
@@ -7835,7 +7836,7 @@ Por favor, torne possível a sua escrita por PHP para usar esta extensão.',
 	'configure-no-diff' => 'Não há alterações entre as versões selecionadas.',
 	'configure-no-directory' => 'A directoria usada para guardar a parametrização, <tt>$1</tt>, não existe.
 Por favor, crie-a ou altere-a para usar esta extensão.',
-	'configure-no-old' => 'Nenhuma versão antiga da configuração disponível.',
+	'configure-no-old' => 'Não há versões de configurações anteriores disponíveis.',
 	'configure-no-setup' => 'Tem de chamar <code>efConfigureSetup()</code> explicitamente no seu ficheiro LocalSettings.php para usar esta extensão.',
 	'configure-no-transwiki' => 'Não está autorizado a alterar parâmetros noutras wikis',
 	'configure-old' => 'Versões antigas',
@@ -7978,18 +7979,23 @@ Por favor, crie-a ou altere-a para usar esta extensão.',
  * @author Crazymadlover
  * @author Hamilton Abreu
  * @author Luckas Blade
+ * @author 555
  */
 $messages['pt-br'] = array(
 	'configure' => 'Configurar o wiki',
-	'configure-desc' => 'Permite a utilizadores autorizados configurar o wiki através de uma interface baseada em web',
+	'configure-desc' => 'Permite que usuários autorizados [[Special:Configure|configurem]] a wiki a partir de uma interface web',
 	'configure-desc-group' => 'Grupo',
 	'configure-desc-ns' => 'Espaço nominal',
 	'configure-desc-val' => 'Valor',
 	'configure-edit-core' => 'MediaWiki',
 	'configure-edit-ext' => 'Extensões',
 	'configure-viewconfig-default-diff' => 'Alterações em relação às configurações padrão',
+	'configure-ext-ext-dependencies' => "'''Atenção''': esta extensão requer que {{PLURAL:$2|a seguinte extensão seja ativada|as seguintes extensões sejam ativadas}}: $1.",
+	'configure-ext-ext-dependency-err' => "'''Erro''': a extensão $1 requer que a extensão $2 seja ativada.",
 	'configure-ext-doc' => 'Ver documentação online',
+	'configure-ext-schemachange' => "'''Atenção''': esta extensão requer uma atualização no banco de dados para funcionar corretamente!",
 	'configure-ext-settings' => 'Configurações',
+	'configure-ext-settings-dep-errors' => 'Esta extensão não poderá ser ativada, já que {{PLURAL:$1|a configuração|as configurações}} a seguir {{PLURAL:$1|possui|possuem}} um valor incorreto:',
 	'configure-ext-settings-dep-error' => '$1: valor requerido: $2, valor atual: $3',
 	'configure-ext-use-extension' => 'Usar esta extensão',
 	'configure-ext-use' => 'Usar',
@@ -8008,7 +8014,7 @@ $messages['pt-br'] = array(
 	'configure-js-summary-none' => 'Sem configurações',
 	'configure-js-search-legend' => 'Configuração da pesquisa',
 	'configure-no-diff' => 'Não há alterações entre as versões selecionadas.',
-	'configure-no-old' => 'Nenhuma versão antiga da configuração disponível.',
+	'configure-no-old' => 'Não há versões de configurações anteriores disponíveis.',
 	'configure-no-transwiki' => 'Você não está autorizado a alterar os parâmetros noutros wikis',
 	'configure-old' => 'Versões antigas',
 	'configure-old-versions' => 'Lista de versões antigas da configuração:',

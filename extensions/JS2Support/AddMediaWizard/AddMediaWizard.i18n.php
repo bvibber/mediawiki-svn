@@ -22,6 +22,13 @@ $messages['be-tarask'] = array(
 	'addmediawizard-desc' => 'Майстар даданьня мэдыя, распрацаваны ў супрацоўніцтве Kaltura і фундацыі «Вікімэдыя»',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'addmediawizard-desc' => 'Ouzhpennañ un ameiler evit ar mediaoù, diorroet e kenlabour gant Kaltura ha Diazezadur Wikimedia',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */

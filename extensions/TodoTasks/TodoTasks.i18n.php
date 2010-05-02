@@ -202,7 +202,7 @@ Evit kaout ur roll eus ar raktresoù a za en-dro gwellet [[MediaWiki:TodoTasksVa
 	'tasklistchooseproj' => 'Diuzañ ur raktres :',
 	'tasklistprojdisp' => 'Diskwel',
 	'tasklistbyname' => '== Roll an traoù da ober gant $s ==',
-	'tasklistnowguseprojects' => 'Termenet ho peus $wgUseProjects da "false", dre-se ne c\'helloc\'h ket implij ar bajenn-se.',
+	'tasklistnowguseprojects' => 'Termenet hoc\'h eus $wgUseProjects da "false", dre-se ne c\'helloc\'h ket implij ar bajenn-se.',
 	'tasklistnoprojects' => "Fazi : Seblantout a ra ho pefe gweredekaet '''\$wgUseProjects''', met n'eo ket bet krouet [[MediaWiki:TodoTasksValidProjects]]. Kit da welet  [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 c'hemennadennoù staliñ] evit muic'h a ditouroù.",
 	'tasklistemailbody' => ",
 
