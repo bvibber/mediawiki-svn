@@ -157,7 +157,7 @@ class SqliteInstaller extends InstallerDBType {
 	}
 
 	function getLocalSettings() {
-		$dir = LocalSettings::escapePhpString( $this->getVar( 'wgSQLiteDataDir' ) );
+		$dir = LocalSettingsGenerator::escapePhpString( $this->getVar( 'wgSQLiteDataDir' ) );
 		return
 "# SQLite-specific settings
 \$wgSQLiteDataDir    = \"{$dir}\";";
