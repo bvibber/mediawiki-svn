@@ -123,7 +123,7 @@ public class DatabaseProximityStoreBuilder
 			 * Builds feature vectors. For a specification, refer to ProximityStoreSchema
 			 */
 			protected int buildFeatures(DatabaseTable t, String conceptField, String featureField, ConceptSetRestriction restriction, double w, String baseBiasField, double baseBiasCoef, String targetBiasField, double targetBiasCoef) throws PersistenceException {
-				if (!conceptStore.areStatsComplete()) throw new IllegalStateException("statistics need to be built before concept infos!");
+				if (!conceptStore.areStatsComplete()) throw new IllegalStateException("statistics need to be built before feature sets!");
 
 				String v = ""+w;
 				if (baseBiasField!=null && baseBiasCoef>0) v = getBiasFormula("B."+baseBiasField, baseBiasCoef) + " * "  + v;
@@ -141,7 +141,7 @@ public class DatabaseProximityStoreBuilder
 				String update = " ON DUPLICATE KEY UPDATE total_weight = total_weight + VALUES(total_weight)";
 				
 				int n = restriction==null || restriction.doChunk ()
-							? executeChunkedUpdate("buildFeatures", "feature#"+t.getName()+"."+featureField, sql, update, t, conceptField)
+							? executeChunkedUpdate("buildFeatures", "feature#"+t.getName()+"."+featureField, sql, update, t, conceptField, 20)
 							: executeUpdate("buildFeatures::feature#"+t.getName()+"."+featureField, sql+" "+update);
 							
 				return n;

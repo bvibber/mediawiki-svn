@@ -74,20 +74,20 @@ public interface ProximityStoreBuilder extends WikiWordStoreBuilder {
 		}
 
 		public ProximityParameters(Map<?, ?> params, ProximityParameters defaults) {
-			selfWeight = params.containsKey("selfWeight") ? ((Number)params.get("proximity.selfWeight")).doubleValue() : defaults.selfWeight;
-			proximityThreshold = params.containsKey("threshold") ? ((Number)params.get("proximity.threshold")).doubleValue() : defaults.proximityThreshold;
+			selfWeight = params.containsKey("selfWeight") ? ((Number)params.get("selfWeight")).doubleValue() : defaults.selfWeight;
+			proximityThreshold = params.containsKey("threshold") ? ((Number)params.get("threshold")).doubleValue() : defaults.proximityThreshold;
 			
-			downWeight = params.containsKey("downWeight") ? ((Number)params.get("proximity.downWeight")).doubleValue() : defaults.downWeight; 
-			downBiasCoef = params.containsKey("downBiasCoef") ? ((Number)params.get("proximity.downBiasCoef")).doubleValue() : defaults.downWeight; 
+			downWeight = params.containsKey("downWeight") ? ((Number)params.get("downWeight")).doubleValue() : defaults.downWeight; 
+			downBiasCoef = params.containsKey("downBiasCoef") ? ((Number)params.get("downBiasCoef")).doubleValue() : defaults.downWeight; 
 			
-			upWeight = params.containsKey("upWeight") ? ((Number)params.get("proximity.upWeight")).doubleValue() : defaults.upWeight; 
-			upBiasCoef = params.containsKey("upBiasCoef") ? ((Number)params.get("proximity.upBiasCoef")).doubleValue() : defaults.upBiasCoef;
+			upWeight = params.containsKey("upWeight") ? ((Number)params.get("upWeight")).doubleValue() : defaults.upWeight; 
+			upBiasCoef = params.containsKey("upBiasCoef") ? ((Number)params.get("upBiasCoef")).doubleValue() : defaults.upBiasCoef;
 			
-			inWeight = params.containsKey("inWeight") ? ((Number)params.get("proximity.inWeight")).doubleValue() : defaults.inWeight; 
-			inBiasCoef = params.containsKey("inBiasCoef") ? ((Number)params.get("proximity.inBiasCoef")).doubleValue() : defaults.inBiasCoef; 
+			inWeight = params.containsKey("inWeight") ? ((Number)params.get("inWeight")).doubleValue() : defaults.inWeight; 
+			inBiasCoef = params.containsKey("inBiasCoef") ? ((Number)params.get("inBiasCoef")).doubleValue() : defaults.inBiasCoef; 
 			
-			outWeight = params.containsKey("outWeight")  ? ((Number)params.get("proximity.outWeight")).doubleValue() : defaults.outWeight; 
-			outBiasCoef = params.containsKey("outBiasCoef")  ? ((Number)params.get("proximity.outBiasCoef")).doubleValue() : defaults.outBiasCoef; 
+			outWeight = params.containsKey("outWeight")  ? ((Number)params.get("outWeight")).doubleValue() : defaults.outWeight; 
+			outBiasCoef = params.containsKey("outBiasCoef")  ? ((Number)params.get("outBiasCoef")).doubleValue() : defaults.outBiasCoef; 
 		}
 	}
 	
