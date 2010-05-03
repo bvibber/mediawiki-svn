@@ -44,6 +44,10 @@ class SqliteInstaller extends InstallerDBType {
 			$dir = $this->getVar( 'wgSQLiteDataDir' );
 		}
 		$this->setVar( 'wgSQLiteDataDir', $dir );
+		return self::dataDirOKmaybeCreate( $dir, true /* create? */ );
+	}
+
+	private static function dataDirOKmaybeCreate( $dir, $create = false ) {
 		if ( !is_dir( $dir ) ) {
 			if ( !is_writable( dirname( $dir ) ) ) {
 				$webserverGroup = Installer::maybeGetWebserverPrimaryGroup();
@@ -53,18 +57,25 @@ class SqliteInstaller extends InstallerDBType {
 					return Status::newFatal( 'config-sqlite-parent-unwritable-nogroup', $dir, dirname( $dir ), basename( $dir ) );
 				}
 			}
-			wfSuppressWarnings();
-			$ok = wfMkdirParents( $dir, 0700 );
-			wfRestoreWarnings();
-			if ( !$ok ) {
-				return Status::newFatal( 'config-sqlite-mkdir-error', $dir );
+
+			# Called early on in the installer, later we just want to sanity check
+			# if it's still writable
+			if ( $create ) {
+				wfSuppressWarnings();
+				$ok = wfMkdirParents( $dir, 0700 );
+				wfRestoreWarnings();
+				if ( !$ok ) {
+					return Status::newFatal( 'config-sqlite-mkdir-error', $dir );
+				}
+				# Put a .htaccess file in in case the user didn't take our advice
+				file_put_contents( "$dir/.htaccess", "Deny from all\n" );
 			}
-			# Put a .htaccess file in in case the user didn't take our advice
-			file_put_contents( "$dir/.htaccess", "Deny from all\n" );
 		}
 		if ( !is_writable( $dir ) ) {
 			return Status::newFatal( 'config-sqlite-dir-unwritable', $dir );
 		}
+
+		# We haven't blown up yet, fall through
 		return Status::newGood();
 	}
 
@@ -108,7 +119,17 @@ class SqliteInstaller extends InstallerDBType {
 	}
 
 	function setupDatabase() {
-		$file = DatabaseSqlite::generateFileName( $this->getVar( 'wgSQLiteDataDir' ), $this->getVar( 'wgDBname' ) );
+		$dir = $this->getVar( 'wgSQLiteDataDir' );
+
+		# Sanity check. We checked this before but maybe someone deleted the
+		# data dir between then and now
+		$dir_status = self::dataDirOKmaybeCreate( $dir, false /* create? */ );
+		if ( !$dir_status->isOK() ) {
+			return $dir_status;
+		}
+
+		$db = $this->getVar( 'wgDBname' );
+		$file = DatabaseSqlite::generateFileName( $dir, $db );
 		if ( file_exists( $file ) ) {
 			if ( !is_writable( $file ) ) {
 				return Status::newFatal( 'config-sqlite-readonly', $file );

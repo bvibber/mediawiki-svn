@@ -365,7 +365,7 @@ class MysqlInstaller extends InstallerDBType {
 	function setupDatabase() {
 		$status = $this->getConnection();
 		if ( !$status->isOK() ) {
-			return false;
+			return $status;
 		}
 		$conn = $status->value;
 		$dbName = $this->getVar( 'wgDBname' );
@@ -373,7 +373,7 @@ class MysqlInstaller extends InstallerDBType {
 			$conn->query( "CREATE DATABASE `$dbName`" );
 			$conn->selectDB( $dbName );
 		}
-		return $conn;
+		return $status;
 	}
 
 	function createTables() {

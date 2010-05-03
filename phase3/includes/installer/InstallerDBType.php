@@ -78,7 +78,10 @@ abstract class InstallerDBType {
 	abstract function getConnection();
 
 	/**
-	 * Create the database and return a database object to use it
+	 * Create the database and return a Status object indicating success or
+	 * failure.
+	 *
+	 * @return Status
 	 */
 	abstract function setupDatabase();
 
