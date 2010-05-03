@@ -55,12 +55,18 @@ $wgSeleniumTestsBrowsers['iexplorer'] = '*iexploreproxy';
 // Actually, use this browser
 $wgSeleniumTestsUseBrowser = 'firefox';
 
+// Here, you can override standard setting
+if (file_exists('LocalSeleniumSettings.php'))
+{
+	include_once 'LocalSeleniumSettings.php';
+}
+
 // requires PHPUnit 3.4
 require_once 'Testing/Selenium.php';
 require_once 'PHPUnit/Framework.php';
 require_once 'PHPUnit/Extensions/SeleniumTestCase.php';
 
-// include uiTestsuite
+// include seleniumTestsuite
 require_once 'selenium/SeleniumTestHTMLLogger.php';
 require_once 'selenium/SeleniumTestConsoleLogger.php';
 require_once 'selenium/SeleniumTestListener.php';
@@ -80,12 +86,6 @@ $wgSeleniumTestSuites = array();
 
 // Todo: include automatically
 include_once '../extensions/PagedTiffHandler/selenium/PagedTiffHandler_tests.php';
-
-// Here, you can override standard setting
-if (file_exists('LocalSeleniumSettings.php'))
-{
-	include_once 'LocalSeleniumSettings.php';
-}
 
 // run tests
 foreach ($wgSeleniumTestSuites as $suite)
