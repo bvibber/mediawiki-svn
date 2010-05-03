@@ -12,9 +12,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 import de.brightbyte.application.Agenda;
+import de.brightbyte.db.DatabaseAccess;
 import de.brightbyte.db.DatabaseTable;
 import de.brightbyte.db.EntityTable;
 import de.brightbyte.db.Inserter;
+import de.brightbyte.db.DatabaseAccess.AbstractChunkedQuery;
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.ConceptType;
 import de.brightbyte.wikiword.TweakSet;
@@ -312,17 +314,42 @@ abstract class DatabaseStatisticsStoreBuilder extends DatabaseWikiWordStoreBuild
 		return executeChunkedUpdate("prepareDegreeTable", "prepareDegreeTable", sql, null, t, "id");
 	}
 	
-	protected int buildDegreeInfo(DatabaseTable t, String linkField, String groupField, String statsField, String degreeField, String rankField, String biasField) throws PersistenceException {
-		String sql = "UPDATE "+degreeTable.getSQLName()+" AS D "
-			+" JOIN ( SELECT "+groupField+" as concept, count("+linkField+") as degree " 
-					+" FROM "+t.getSQLName()+" " 
-					+" WHERE "+linkField+" IS NOT NULL AND "+groupField+" IS NOT NULL " 
-					+" GROUP BY "+groupField+") AS X "
-			+" ON X.concept = D.concept"
-			+" SET "+degreeField+" = X.degree";
+	protected class DegreeInfoUpdate extends AbstractChunkedQuery {
 
-		//System.out.println("*** "+sql+" ***");
-		int n =  executeChunkedUpdate("buildDegreeInfo", linkField+","+groupField+","+statsField, sql, null, degreeTable, "D.concept"); 
+		private String linkField;
+		private String groupField;
+		private String degreeField;
+		private DatabaseTable table;
+
+		public DegreeInfoUpdate(DatabaseAccess database, String context, String name, DatabaseTable table, String linkField, String groupField, String degreeField) {
+			super(database, context, name, table, groupField);
+			
+			this.linkField = linkField;
+			this.groupField = groupField;
+			this.degreeField = degreeField;
+			this.table = table;
+		}
+
+		@Override
+		protected String getSQL(long first, long end) {
+			String sql = "UPDATE "+degreeTable.getSQLName()+" AS D "
+			+" JOIN ( SELECT "+groupField+" as concept, count("+linkField+") as degree " 
+					+" FROM "+table.getSQLName()+" " 
+					+" WHERE "+linkField+" IS NOT NULL AND "+groupField+" IS NOT NULL "
+					+" AND ( "+groupField+" >= "+first+" AND "+groupField+" < "+end+" ) "
+					+" GROUP BY "+groupField+") AS X "
+			+" ON X.concept = D.concept "
+			+" SET "+degreeField+" = X.degree "
+			+" WHERE ( D.concept >= "+first+" AND D.concept < "+end+" ) ";
+			
+			return sql;
+		}
+		
+	}
+	
+	protected int buildDegreeInfo(DatabaseTable t, String linkField, String groupField, String statsField, String degreeField, String rankField, String biasField) throws PersistenceException {
+		DegreeInfoUpdate update = new DegreeInfoUpdate(getDatabaseAccess(), "buildDegreeInfo", linkField+","+groupField+","+statsField, t, linkField, groupField, degreeField); 
+		int n =  executeChunkedUpdate(update, 1); 
 		
 		if (rankField!=null && beginTask("buildDegreeInfo", "stats."+rankField)) {
 			buildRank(degreeTable, degreeField, rankField);
