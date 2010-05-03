@@ -117,6 +117,7 @@ require_once( "{$IP}/extensions/Wikidata/OmegaWiki/SpecialConceptMapping.php" );
 require_once( "{$IP}/extensions/Wikidata/OmegaWiki/SpecialCopy.php" );
 require_once( "{$IP}/extensions/Wikidata/OmegaWiki/SpecialExportTSV.php" );
 require_once( "{$IP}/extensions/Wikidata/OmegaWiki/SpecialImportTSV.php" );
+require_once( "{$IP}/extensions/Wikidata/OmegaWiki/SpecialOWStatistics.php" );
 
 require_once( "{$IP}/extensions/Wikidata/LocalApp.php" );
 

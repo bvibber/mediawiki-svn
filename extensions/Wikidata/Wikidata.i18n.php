@@ -251,6 +251,8 @@ Please contact the server operator or administrator.",
 	'ow_needs_xlation_dest_lang' => 'Destination language:',
 	'ow_needs_xlation_no_dest_lang' => 'Please specify a destination language.',
 
+	'ow_statistics' => 'Wikidata: Statistics',
+
 	'ow_show' => 'Show',
 	'ow_upload' => 'Upload',
 	'ow_create' => 'Create',
