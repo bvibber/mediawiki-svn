@@ -413,6 +413,10 @@ public class ConceptImporter extends AbstractImporter {
 		}
 		else if (rcType == ResourceType.DISAMBIG) {
 			//storeConcept(rcId, name, ConceptType.NONE); 
+			
+			if (analyzerPage.getText().length() > tweaks.getTweak("conceptImporter.disambigWarningSize", 8*1024)) {
+				storeWarning(rcId, "long disambiguation page", "disambig on page "+name+" is suspiciously long: "+analyzerPage.getText().length()+" chars");
+			}
 
 			Set<CharSequence> terms = analyzerPage.getTitleTerms();
 
@@ -448,6 +452,10 @@ public class ConceptImporter extends AbstractImporter {
 			//FIXME: category-like interpretation!
 		}
 		else if (rcType == ResourceType.REDIRECT) {
+			if (analyzerPage.getText().length() > tweaks.getTweak("conceptImporter.redirectWarningSize", 512)) {
+				storeWarning(rcId, "long redirect page", "redirect on page "+name+" is suspiciously long: "+analyzerPage.getText().length()+" chars");
+			}
+			
 			storeAlias(analyzerPage, rcId);
 		}
 		else if (rcType == ResourceType.BAD) {
