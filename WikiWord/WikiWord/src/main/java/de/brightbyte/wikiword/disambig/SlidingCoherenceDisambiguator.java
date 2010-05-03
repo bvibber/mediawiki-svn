@@ -39,7 +39,7 @@ public class SlidingCoherenceDisambiguator extends CoherenceDisambiguator {
 	}
 
 	public <X extends TermReference>Result<X, LocalConcept> evalStep(List<X> baseSequence, Map<X, LocalConcept> interpretation, PhraseNode<X> node, 
-			Map<X, List<? extends LocalConcept>> meanings, Collection<LocalConcept> context, 
+			Map<X, List<? extends LocalConcept>> meanings, Collection<? extends LocalConcept> context, 
 			LabeledMatrix<LocalConcept, LocalConcept> similarities, FeatureFetcher<LocalConcept, Integer> features) throws PersistenceException {
 		X term = node.getTermReference();
 		
@@ -67,7 +67,7 @@ public class SlidingCoherenceDisambiguator extends CoherenceDisambiguator {
 	/* (non-Javadoc)
 	 * @see de.brightbyte.wikiword.disambig.Disambiguator#disambiguate(java.util.List)
 	 */
-	public <X extends TermReference>Result<X, LocalConcept> disambiguate(PhraseNode<X> root, Map<X, List<? extends LocalConcept>> meanings, Collection<LocalConcept> context) throws PersistenceException {
+	public <X extends TermReference>Result<X, LocalConcept> disambiguate(PhraseNode<X> root, Map<X, List<? extends LocalConcept>> meanings, Collection<? extends LocalConcept> context) throws PersistenceException {
 		if (meanings.isEmpty()) return new Disambiguator.Result<X, LocalConcept>(Collections.<X, LocalConcept>emptyMap(), Collections.<X>emptyList(), 0.0, "no terms or meanings");
 
 		int sz = meanings.size();

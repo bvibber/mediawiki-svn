@@ -77,7 +77,7 @@ public interface Disambiguator<T extends TermReference, C extends WikiWordConcep
 
 	public void setTrace(Output trace);
 
-	public <X extends T>Result<X, C> disambiguate(List<X> terms, Collection<C> context) throws PersistenceException;
-	public <X extends T>Result<X, C> disambiguate(PhraseNode<X> root, Collection<C> context) throws PersistenceException;
+	public <X extends T>Result<X, C> disambiguate(List<X> terms, Collection<? extends C> context) throws PersistenceException;
+	public <X extends T>Result<X, C> disambiguate(PhraseNode<X> root, Collection<? extends C> context) throws PersistenceException;
 
 }

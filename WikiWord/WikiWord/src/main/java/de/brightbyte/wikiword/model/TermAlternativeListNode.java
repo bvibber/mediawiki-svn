@@ -23,6 +23,10 @@ public class TermAlternativeListNode<T extends TermReference>  implements Phrase
 		this.terms = terms;
 		this.index = index;
 	}
+	
+	public String toString() {
+		return getTermReference().toString();
+	}
 
 	public T getTermReference() {
 		return term;

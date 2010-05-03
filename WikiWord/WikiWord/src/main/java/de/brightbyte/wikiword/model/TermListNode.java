@@ -18,6 +18,10 @@ public class TermListNode<T extends TermReference>  implements PhraseNode<T> {
 		this.terms = terms;
 		this.index = index;
 	}
+	
+	public String toString() {
+		return getTermReference().toString();
+	}
 
 	public T getTermReference() {
 		return terms.get(index);
@@ -26,7 +30,7 @@ public class TermListNode<T extends TermReference>  implements PhraseNode<T> {
 	public List<TermListNode<T>> getSuccessors() {
 		if (successors == null) {
 			if (index+1>=terms.size()) successors = Collections.emptyList();
-			else  Collections.singletonList(new TermListNode<T>(terms, index+1));
+			else  successors = Collections.singletonList(new TermListNode<T>(terms, index+1));
 		}
 		
 		return successors;

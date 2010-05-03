@@ -159,7 +159,7 @@ public class CoherenceDisambiguator extends AbstractDisambiguator<TermReference,
 		this.maxMeanings = maxMeanings;
 	}
 
-	protected FeatureFetcher<LocalConcept, Integer> getFeatureCache(Map<? extends TermReference, List<? extends LocalConcept>> meanings, Collection<LocalConcept> context) throws PersistenceException {
+	protected FeatureFetcher<LocalConcept, Integer> getFeatureCache(Map<? extends TermReference, List<? extends LocalConcept>> meanings, Collection<? extends LocalConcept> context) throws PersistenceException {
 		FeatureFetcher<LocalConcept, Integer> features = featureCacheManager.newCache();
 		
 		//NOTE: pre-fetch all features in one go
@@ -177,7 +177,7 @@ public class CoherenceDisambiguator extends AbstractDisambiguator<TermReference,
 	/* (non-Javadoc)
 	 * @see de.brightbyte.wikiword.disambig.Disambiguator#disambiguate(java.util.List)
 	 */
-	public <X extends TermReference>Disambiguator.Result<X, LocalConcept> disambiguate(PhraseNode<X> root, Map<X, List<? extends LocalConcept>> meanings, Collection<LocalConcept> context) throws PersistenceException {
+	public <X extends TermReference>Disambiguator.Result<X, LocalConcept> disambiguate(PhraseNode<X> root, Map<X, List<? extends LocalConcept>> meanings, Collection<? extends LocalConcept> context) throws PersistenceException {
 		if (meanings.isEmpty()) return new Disambiguator.Result<X, LocalConcept>(Collections.<X, LocalConcept>emptyMap(), Collections.<X>emptyList(), 0.0, "no terms or meanings");
 		
 		int sz = meanings.size();
@@ -199,7 +199,7 @@ public class CoherenceDisambiguator extends AbstractDisambiguator<TermReference,
 		return disambiguate(sequences, root, meanings, context);
 	}
 	
-	public <X extends TermReference>Disambiguator.Result<X, LocalConcept> disambiguate(Collection<List<X>> sequences, PhraseNode<X> root, Map<X, List<? extends LocalConcept>> meanings, Collection<LocalConcept> context) throws PersistenceException {
+	public <X extends TermReference>Disambiguator.Result<X, LocalConcept> disambiguate(Collection<List<X>> sequences, PhraseNode<X> root, Map<X, List<? extends LocalConcept>> meanings, Collection<? extends LocalConcept> context) throws PersistenceException {
 		
 		//CAVEAT: because the map disambig can contain only one meaning per term, the same term can not occur with two meanings within the same term sequence.
 
@@ -239,7 +239,7 @@ public class CoherenceDisambiguator extends AbstractDisambiguator<TermReference,
 	}
 
 	protected <X extends TermReference>Result<X, LocalConcept> getBestInterpretation(PhraseNode<X> root, Map<X, List<? extends LocalConcept>> meanings, 
-			Collection<LocalConcept> context, List<Disambiguator.Interpretation<X, LocalConcept>> interpretations, 
+			Collection<? extends LocalConcept> context, List<Disambiguator.Interpretation<X, LocalConcept>> interpretations, 
 			LabeledMatrix<LocalConcept, LocalConcept> similarities, FeatureFetcher<LocalConcept, Integer> features) throws PersistenceException {
 		
 		List<Result<X, LocalConcept>> rankings = new ArrayList<Result<X, LocalConcept>>();
@@ -306,7 +306,7 @@ public class CoherenceDisambiguator extends AbstractDisambiguator<TermReference,
 		return interpretations;
 	}
 
-	protected <X extends TermReference>Result<X, LocalConcept> getScore(Disambiguator.Interpretation<X, LocalConcept> interp, Collection<LocalConcept> context, LabeledMatrix<LocalConcept, LocalConcept> similarities, FeatureFetcher<LocalConcept, Integer> features) throws PersistenceException {
+	protected <X extends TermReference>Result<X, LocalConcept> getScore(Disambiguator.Interpretation<X, LocalConcept> interp, Collection<? extends LocalConcept> context, LabeledMatrix<LocalConcept, LocalConcept> similarities, FeatureFetcher<LocalConcept, Integer> features) throws PersistenceException {
 		Map<? extends TermReference, LocalConcept> concepts;
 		if (context!=null) {
 			concepts = new HashMap<TermReference, LocalConcept>();

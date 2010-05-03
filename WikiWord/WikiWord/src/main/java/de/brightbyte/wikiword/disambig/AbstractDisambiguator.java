@@ -92,13 +92,19 @@ public abstract class AbstractDisambiguator<T extends TermReference, C extends W
 	}
 	
 	private <X extends T>PhraseNode<X> findLastNode(PhraseNode<X> root, List<X> sequence) {
+		if (root.getTermReference().getTerm().length()>0) {
+			X t = sequence.get(0);
+			if (!t.getTerm().equals(root.getTermReference().getTerm())) return null;
+			sequence = sequence.subList(1, sequence.size());
+		}
+		
 		terms: for (X t: sequence) {
 			Collection<? extends PhraseNode<X>> successors = root.getSuccessors();
 			if (successors==null || successors.isEmpty()) 
 				return null;
 			
 			for (PhraseNode<X> n: successors) {
-				if (n.getTermReference().equals(t)) {
+				if (n.getTermReference().getTerm().equals(t.getTerm())) {
 					root = n;
 					continue terms;
 				}
@@ -164,17 +170,17 @@ public abstract class AbstractDisambiguator<T extends TermReference, C extends W
 		return meanings;
 	}
 	
-	public <X extends T>Result<X, C> disambiguate(List<X> terms, Collection<C> context) throws PersistenceException {
+	public <X extends T>Result<X, C> disambiguate(List<X> terms, Collection<? extends C> context) throws PersistenceException {
 		return this.<X>disambiguate(new TermListNode<X>(terms, 0), context);
 	}
 	
-	public <X extends T>Result<X, C> disambiguate(PhraseNode<X> root, Collection<C> context) throws PersistenceException {
+	public <X extends T>Result<X, C> disambiguate(PhraseNode<X> root, Collection<? extends C> context) throws PersistenceException {
 		Collection<X> terms = getTerms(root, Integer.MAX_VALUE);
 		Map<X, List<? extends C>> meanings = getMeanings(terms);
 		return disambiguate(root, meanings, context);
 	}
 	
-	public abstract <X extends T>Result<X, C> disambiguate(PhraseNode<X> root, Map<X, List<? extends C>> meanings, Collection<C> context) throws PersistenceException;
+	public abstract <X extends T>Result<X, C> disambiguate(PhraseNode<X> root, Map<X, List<? extends C>> meanings, Collection<? extends C> context) throws PersistenceException;
 
 	public Output getTrace() {
 		return trace;
