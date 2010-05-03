@@ -1095,11 +1095,18 @@ $messages['mt'] = array(
  * @author Botuzhaleny-sodamo
  */
 $messages['myv'] = array(
+	'passwordreset' => 'Совамо валонь лиялгавтома',
 	'passwordreset-invalidusername' => 'Амаштовикс теицянь лемесь',
-	'passwordreset-username' => 'Теицянь лем',
-	'passwordreset-newpass' => 'Од совамо вал',
-	'passwordreset-confirmpass' => 'Кемекстык совамо валонть',
+	'passwordreset-emptyusername' => 'Чаво теицянь лемесь',
+	'passwordreset-nopassmatch' => 'Совамо валтнэ аволь вейкетть',
+	'passwordreset-badtoken' => 'Витнемань-петнемань амаштовикс тешкст',
+	'passwordreset-username' => 'Теиця леметь:',
+	'passwordreset-newpass' => 'Од совамо валот:',
+	'passwordreset-confirmpass' => 'Кемекстык совамо валот:',
 	'passwordreset-submit' => 'Полавтык совамо валонть',
+	'passwordreset-accountdisabled' => 'Совамо таркась лоткавтозь',
+	'disabledusers' => 'Лоткавтозь теицят',
+	'right-passwordreset' => 'Лиялгавтомс теицянь совамо вал ([[Special:PasswordReset|башка лопа]])',
 );
 
 /** Nahuatl (Nāhuatl)

@@ -113,6 +113,13 @@ $messages['oc'] = array(
 	'addmediawizard-desc' => 'Apondre un assistent pels mèdias, desvolopat dins un partenariat entre Kaltura e la Wikimedia Foundation',
 );
 
+/** Polish (Polski)
+ * @author Marcin Łukasz Kiejzik
+ */
+$messages['pl'] = array(
+	'addmediawizard-desc' => 'Kreator dodawania mediów, opracowany wspólnie przez Kalturę i Fundację Wikimedia',
+);
+
 /** Piedmontese (Piemontèis)
  * @author Borichèt
  * @author Dragonòt

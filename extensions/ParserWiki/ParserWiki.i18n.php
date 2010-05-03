@@ -89,6 +89,13 @@ $messages['it'] = array(
 	'parserwiki-desc' => 'Consente di definire una grammatica in un wiki e quindi si utilizzare quella grammatica per inserire informazioni nel wiki stesso',
 );
 
+/** Japanese (日本語)
+ * @author Fryed-peach
+ */
+$messages['ja'] = array(
+	'parserwiki-desc' => 'ウィキ内で文法を定義し、定義した文法をそのウィキへ情報を入力するのに使えるようにする',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -122,6 +129,13 @@ $messages['no'] = array(
  */
 $messages['oc'] = array(
 	'parserwiki-desc' => "Permet de definir una gramatica dins un wiki e d'utilizar aquela gramatica per importar d'informacion sus aqueste wiki",
+);
+
+/** Polish (Polski)
+ * @author Marcin Łukasz Kiejzik
+ */
+$messages['pl'] = array(
+	'parserwiki-desc' => 'Pozwala na zdefiniowanie gramatyki w wiki, następnie użyj tej formy gramatycznej do wprowadzania gramatyki na tą samą wiki',
 );
 
 /** Piedmontese (Piemontèis)

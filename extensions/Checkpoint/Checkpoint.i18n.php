@@ -164,14 +164,25 @@ $messages['no'] = array(
 	'checkpoint-notice' => '([[{{ns:project}}:Checkpoint|lagre sjekkpunkt]])',
 );
 
+/** Polish (Polski)
+ * @author Marcin Łukasz Kiejzik
+ */
+$messages['pl'] = array(
+	'checkpoint' => 'Zapisz i kontynuuj edytowanie',
+	'checkpoint-desc' => 'Pozwala zapisać edycję i kontynuować edytowanie',
+	'checkpoint-tooltip' => 'Zapisz swoje postępy i kontynuuj edycję strony',
+	'checkpoint-notice' => '([[{{ns:project}}:Checkpoint|zapisane checkpointy]])',
+);
+
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
 	'checkpoint' => 'Salva e continua a modifiché',
-	'checkpoint-desc' => 'A përmëtt a un ëd salvé na modìfica e continué a modifiché',
-	'checkpoint-tooltip' => 'Salva ij to progress e continua a modifiché la pàgina',
-	'checkpoint-notice' => '([[{{ns:project}}:Checkpoint|salva checkpoint]])',
+	'checkpoint-desc' => 'A përmët a un ëd salvé na modìfica e ëd continué a modifiché',
+	'checkpoint-tooltip' => 'Salvé ij sò progress e continué a modifiché la pàgina',
+	'checkpoint-notice' => '([[{{ns:project}}:Checkpoint|salvé un pont ëd contròl]])',
 );
 
 /** Portuguese (Português)

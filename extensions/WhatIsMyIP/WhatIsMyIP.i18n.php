@@ -688,6 +688,15 @@ $messages['sli'] = array(
 	'whatismyip-out' => 'Denne IP-Atresse:',
 );
 
+/** Albanian (Shqip)
+ * @author MicroBoy
+ */
+$messages['sq'] = array(
+	'whatismyip' => 'Si është IP ime',
+	'whatismyip-out' => 'IP adresa juaj:',
+	'right-whatismyip' => 'Shiko [[Special:WhatIsMyIP|own IP address]]',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

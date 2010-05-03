@@ -1760,9 +1760,9 @@ Para monitorizá-las configure $wgPrefStatsTrackPrefs.',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
+ * @author 555
  * @author Eduardo.mps
  * @author Heldergeovane
- * @author 555
  */
 $messages['pt-br'] = array(
 	'prefstats' => 'Estatísticas de preferências',

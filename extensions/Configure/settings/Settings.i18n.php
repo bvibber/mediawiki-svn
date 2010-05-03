@@ -6290,6 +6290,7 @@ $messages['fr'] = array(
 );
 
 /** Galician (Galego)
+ * @author Gallaecio
  * @author Kobazulo
  * @author Toliño
  */
@@ -6614,6 +6615,7 @@ $messages['gl'] = array(
 	'configure-setting-wgValidSkinNames-value' => 'Nome mostrado',
 	'configure-setting-wgVectorUseIconWatch' => 'Vixiar e deixar de vixiar cunha icona no canto de cunha ligazón',
 	'configure-setting-wgVectorUseSimpleSearch' => 'Usar unha icona como botón de procuras no canto dos botóns "Artigo" e "Procurar"',
+	'configure-setting-wgVectorShowVariantName' => 'Amosar o nome da variante lingüística actual como etiqueta no menú despregable de variantes',
 	'configure-setting-wgContentNamespaces' => 'Espazos de nomes que se considera que conteñen contido real, ou páxinas',
 	'configure-setting-wgExtraNamespaces' => 'Espazo de nomes personalizado',
 	'configure-setting-wgExtraNamespaces-key' => 'ID do espazo de nomes',
@@ -6848,6 +6850,7 @@ $messages['gl'] = array(
 	'configure-setting-wgSQLiteDataDirMode' => 'Modo por defecto do directorio de datos SQLite',
 	'configure-setting-wgStyleDirectory' => 'Ruta do ficheiro do sistema ao directorio das apariencias',
 	'configure-setting-wgStylePath' => 'URL do directorio das apariencias',
+	'configure-setting-wgLocalStylePath' => 'Igual que $wgStylePath, pero non debería apuntar a un dominio externo',
 	'configure-setting-wgStyleSheetPath' => 'URL do directorio que contén as follas de estilo',
 	'configure-setting-wgTmpDirectory' => 'URL do directorio temporal',
 	'configure-setting-wgUploadBaseUrl' => 'URL base para os ficheiros compartidos se o directorio de cargas compartidas non é usado',
@@ -7886,8 +7889,11 @@ $messages['hsb'] = array(
 	'configure-setting-wgUseGzip' => 'Kodowanje GZIP wužiwać',
 	'configure-setting-wgAllowDisplayTitle' => 'Wužiwanje <nowiki>{{DISPLAYTITLE}}</nowiki> dowolić',
 	'configure-setting-wgAllowExternalImagesFrom' => 'Wuwzaća za $wgAllowExternalImages = false',
+	'configure-setting-wgEnableImageWhitelist' => 'Wužiwanje "MediaWiki:External file whitelist" zmóžnić',
+	'configure-setting-wgAllowImageTag' => 'Wužiwanje taflički <nowiki><img></nowiki> we wikiteksće dowolić.',
 	'configure-setting-wgExternalLinkTarget' => 'Standardny atribut target za eksterne wotkazy',
 	'configure-setting-wgCleanSignatures' => 'Předłohi w signaturach narunać',
+	'configure-setting-wgGalleryOptions' => 'Standardne parametry za tafličku <nowiki><gallery></nowiki>',
 	'configure-setting-wgGrammarForms' => 'Gramatiske formy za parserowu funkciju GRAMMAR',
 	'configure-setting-wgMaxPPNodeCount' => 'Maksimalna ličbba sukow, kotrež preprocesor budźe parsować',
 	'configure-setting-wgMaxTemplateDepth' => 'Limit za hłubokosć předłohow za preprocesor',
@@ -9034,6 +9040,7 @@ $messages['ia'] = array(
 	'configure-setting-wgValidSkinNames-value' => 'Nomine monstrate',
 	'configure-setting-wgVectorUseIconWatch' => 'Observar e disobservar como icone in loco de un ligamine',
 	'configure-setting-wgVectorUseSimpleSearch' => 'Usar un icone como button de recerca in loco del buttones Ir e Cercar',
+	'configure-setting-wgVectorShowVariantName' => 'Monstrar le nomine del variante de lingua actual como etiquetta in le menu disrolante de variantes',
 	'configure-setting-wgContentNamespaces' => 'Spatios de nomines que es considerate de continer ver contento o paginas',
 	'configure-setting-wgExtraNamespaces' => 'Spatios de nomines personalisate',
 	'configure-setting-wgExtraNamespaces-key' => 'ID del spatio de nomines',
@@ -9268,6 +9275,7 @@ $messages['ia'] = array(
 	'configure-setting-wgSQLiteDataDirMode' => 'Accessos de permission predefinite pro le directorio pro datos de SQLite a su creation',
 	'configure-setting-wgStyleDirectory' => 'Cammino del systema de files verso le directorio de apparentias',
 	'configure-setting-wgStylePath' => 'URL del directorio de apparentias',
+	'configure-setting-wgLocalStylePath' => 'Le mesme que $wgStylePath, ma non deberea punctar a un dominio externe',
 	'configure-setting-wgStyleSheetPath' => 'URL del directorio continente le folios de stilo',
 	'configure-setting-wgTmpDirectory' => 'URL del directorio temporari',
 	'configure-setting-wgUploadBaseUrl' => 'URL de base pro le files incargate si un directorio pro files commun non es usate',
@@ -14873,6 +14881,7 @@ $messages['pt'] = array(
 	'configure-setting-wgValidSkinNames-value' => 'Nome apresentado',
 	'configure-setting-wgVectorUseIconWatch' => 'Vigiar e não vigiar na forma de ícone em vez de link',
 	'configure-setting-wgVectorUseSimpleSearch' => 'Usar um ícone como botão de pesquisa em vez dos botões "Ir" e "Pesquisar"',
+	'configure-setting-wgVectorShowVariantName' => 'Mostrar o nome da actual variante de língua como uma etiqueta no menu descendente das variantes',
 	'configure-setting-wgContentNamespaces' => 'Domínios que se considera conterem conteúdo ou páginas reais',
 	'configure-setting-wgExtraNamespaces' => 'Domínios personalizados',
 	'configure-setting-wgExtraNamespaces-key' => 'ID do espaço nominal',
@@ -15107,6 +15116,7 @@ $messages['pt'] = array(
 	'configure-setting-wgSQLiteDataDirMode' => 'Modo de diretoria padrão para a diretoria de dados SQLite na criação',
 	'configure-setting-wgStyleDirectory' => 'Caminho no sistema de ficheiros para a diretoria de temas',
 	'configure-setting-wgStylePath' => 'URL da diretoria de temas',
+	'configure-setting-wgLocalStylePath' => 'Semelhante a $wgStylePath, mas não deve apontar para um domínio externo',
 	'configure-setting-wgStyleSheetPath' => 'URL da directoria que contém as folhas de estilos',
 	'configure-setting-wgTmpDirectory' => 'URL da diretoria temporária',
 	'configure-setting-wgUploadBaseUrl' => 'URL base para ficheiros carregados se o diretório partilhado de carregamento não é para ser usado',

@@ -128,6 +128,14 @@ $messages['oc'] = array(
 	'uploadwizard-desc' => "Assistent d'impòrt, desvolopat per la subvencion Multimedia Usability",
 );
 
+/** Polish (Polski)
+ * @author Marcin Łukasz Kiejzik
+ */
+$messages['pl'] = array(
+	'uploadwizard' => 'Kreator przesyłania',
+	'uploadwizard-desc' => 'Kreator dodawania, opracowany dla nagrody użyteczności multimediów',
+);
+
 /** Piedmontese (Piemontèis)
  * @author Borichèt
  * @author Dragonòt

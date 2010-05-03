@@ -1382,11 +1382,11 @@ $messages['pt'] = array(
 );
 
 /** Brazilian Portuguese (Português do Brasil)
+ * @author 555
  * @author Eduardo.mps
  * @author Everton137
  * @author Hamilton Abreu
  * @author Luckas Blade
- * @author 555
  */
 $messages['pt-br'] = array(
 	'clicktracking' => 'Monitoramento de cliques da Iniciativa de Usabilidade',
