@@ -155,13 +155,19 @@ class WWUtils {
     }
 
     function pickLocal($items, $languages) {
-	if ( is_string($languages) ) $languages = array( $languages, "en", "commons" );
-      
-	foreach ($languages as $lang) {
-	    if (isset($items[$lang])) return $items[$lang];
-	}
+         $lang = $this->pickLanguage($items, $languages);
+         if (!$lang) return false;
+		 return $items[$lang];
+    }
 
-	return false;
+    function pickLanguage($items, $languages) {
+		if ( is_string($languages) ) $languages = array( $languages, "en", "commons" );
+	      
+		foreach ($languages as $lang) {
+		    if (isset($items[$lang])) return $lang;
+		}
+	
+		return false;
     }
 
     static function authFailed($realm) {

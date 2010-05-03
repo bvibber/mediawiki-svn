@@ -346,7 +346,7 @@ header("Content-Type: text/html; charset=UTF-8");
 </head>
 <body>
     <div class="header">
-      <div style="float:left">Wikipics 0.1&alpha; (experimental)</div>
+      <div style="float:left">WikiPics 0.1&alpha; (experimental)</div>
       <div style="float:right"><a href="http://wikimedia.de">Wikimedia Deutschland e.V.</a></div>
     <!--   <h1>WikiWord Navigator</h1>
       <p>Experimental semantic navigator and thesaurus interface for Wikipedia.</p>
@@ -361,8 +361,8 @@ if ($error) {
 }
 
 if (!$result && $mode) {
-  if ($mode=="concept") print "<p class=\"error\">".htmlspecialchars($error)."</p>";
-  else if ($mode=="term") print "<p class=\"notice\">No meanings found for term <em>".htmlspecialchars($term)."</em>.</p>";
+  if ($mode=="concept") print "<p class=\"notice\">Concept not found: <em>".htmlspecialchars($lang).":$".htmlspecialchars($concept)."</em></p>";
+  else if ($mode=="term") print "<p class=\"notice\">No meanings found for term <em>".htmlspecialchars($lang).":".htmlspecialchars($term)."</em>.</p>";
 }
 ?>    
 
