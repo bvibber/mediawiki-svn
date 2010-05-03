@@ -121,7 +121,7 @@ class SpecialStory extends IncludableSpecialPage {
 						global $wgTitle;
 						$wgOut->addWikiMsg(
 							'storyboard-canedit',
-							$this->getTitle( $story->story_title )->getFullURL( array( 'action' => 'edit' ) )
+							htmlspecialchars( $this->getTitle( $story->story_title )->getFullURL( array( 'action' => 'edit' ) ) )
 						);
 					}
 				}
@@ -146,10 +146,10 @@ class SpecialStory extends IncludableSpecialPage {
 
 		if ( $story->story_author_image != '' && $story->story_image_hidden != 1 ) {
 			$story->story_author_image = htmlspecialchars( $story->story_author_image );
-			$wgOut->addHTML( "<img src='$story->story_author_image' class='story-image'>" );
+			$wgOut->addHTML( "<img src=\"$story->story_author_image\" class='story-image'>" );
 		}
 		
-		$wgOut->addWikiText( $story->story_text  );
+		$wgOut->addWikiText( $story->story_text );
 		
 		// If the user that submitted the story was logged in, create a link to his/her user page.
 		if ( $story->story_author_id ) {
@@ -171,9 +171,9 @@ class SpecialStory extends IncludableSpecialPage {
 		// FIXME: this button is a temporary solution untill the SkinTemplateNavigation on special pages issue is fixed.
 		if ( $wgUser->isAllowed( 'storyreview' ) ) {
 			$editMsg = htmlspecialchars( wfMsg( 'edit' ) );
-			$editUrl = $this->getTitle( $story->story_title )->getLocalURL( 'action=edit' );
+			$editUrl = htmlspecialchars( $this->getTitle( $story->story_title )->getLocalURL( 'action=edit' ) );
 			$wgOut->addHtml(
-				"<button type='button' onclick=\"window.location='$editUrl'\">$editMsg</button>"
+				"<button type='button' onclick='window.location=\"$editUrl\"'>$editMsg</button>"
 			);
 		}
 		
@@ -205,7 +205,7 @@ class SpecialStory extends IncludableSpecialPage {
 		$minLen = $wgRequest->getVal( 'minlength' );
 		if ( !is_int( $minLen ) ) $minLen = $egStoryboardMinStoryLen;
 		
-		$formBody = "<table width='$width'>";
+		$formBody = "<table width=\"$width\">";
 			
 		// The current value will be selected on page load with jQuery.
 		$formBody .= '<tr>' .
@@ -384,9 +384,10 @@ class SpecialStory extends IncludableSpecialPage {
 		
 		$wgOut->addHTML( $formBody );
 		
+		$state = htmlspecialchars( $story->story_state );
 		$wgOut->addInlineScript( <<<EOT
 jQuery(document).ready(function() {
-	jQuery("#storystate option[value='$story->story_state']").attr('selected', 'selected');
+	jQuery('#storystate option[value="$state"]').attr('selected', 'selected');
 	
 	jQuery("#storyform").validate({
 		messages: {
