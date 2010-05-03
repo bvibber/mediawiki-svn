@@ -38,6 +38,7 @@ import de.brightbyte.util.StringUtils;
 import de.brightbyte.wikiword.ConceptType;
 import de.brightbyte.wikiword.ConceptTypeSet;
 import de.brightbyte.wikiword.Corpus;
+import de.brightbyte.wikiword.Interwiki;
 import de.brightbyte.wikiword.Languages;
 import de.brightbyte.wikiword.Namespace;
 import de.brightbyte.wikiword.NamespaceSet;
@@ -971,11 +972,13 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 	
 	private WikiTextSniffer sniffer = new WikiTextSniffer();
 	private Map<String, String> languageNames;
+	private Map<String, Interwiki> interwikiMap;
 	
 	public WikiTextAnalyzer(PlainTextAnalyzer language) throws IOException {
 		this.language = language;
 		this.corpus = language.getCorpus();
 		this.namespaces = corpus.getNamespaces();
+		this.interwikiMap = corpus.getInterwikiMap();
 		this.conceptTypes = corpus.getConceptTypes();
 		
 		config = new WikiConfiguration( language.getCorpus().getWikiName() );
@@ -1545,8 +1548,13 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 	}
 
 	public boolean isInterwikiPrefix(CharSequence pre) {
-		interwikiMatcher.reset(pre);
-		return interwikiMatcher.matches();
+		if (interwikiMap!=null && !interwikiMap.isEmpty()) {
+			pre =  AnalyzerUtils.trimAndLower(pre);
+			return interwikiMap.containsKey(pre);
+		} else {
+			interwikiMatcher.reset(pre);
+			return interwikiMatcher.matches();
+		}
 	}
 
 	public int getNamespaceId(CharSequence name) {

@@ -7,7 +7,7 @@ from SpyTools import *
 lang = sys.argv[1]
 
 opener = urllib2.build_opener()
-opener.addheaders = [('User-agent', 'BrightByte/WikiWord/WikipediaNamespaceSpy <wikiword@brightbyte.de>')]
+opener.addheaders = [('User-agent', 'BrightByte/WikiWord/WikipediaDisambiguationSpy <wikiword@brightbyte.de>')]
 
 u = "http://%s.wikipedia.org/w/api.php?action=query&prop=links&plnamespace=10&pllimit=50&titles=MediaWiki:Disambiguationspage&format=json" % lang
 js = opener.open(u).read();

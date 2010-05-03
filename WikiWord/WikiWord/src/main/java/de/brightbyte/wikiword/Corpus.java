@@ -7,6 +7,7 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -25,6 +26,8 @@ public class Corpus extends DatasetIdentifier {
 	protected String language;
 	
 	protected NamespaceSet namespaces;
+	protected Map<String, Interwiki> interwikiMap;
+	
 	protected ConceptTypeSet conceptTypes;
 	
 	protected String[] configPackages;
@@ -44,6 +47,7 @@ public class Corpus extends DatasetIdentifier {
 		
 		this.conceptTypes = ConceptType.getConceptTypes(this, configPackages);
 		this.namespaces = Namespace.getNamespaces(this);
+		this.interwikiMap = Interwiki.getInterwikiMap(this);
 	}
 	
 	/** Suffix to use when loading specialized classes for this corpus. 
@@ -211,6 +215,10 @@ public class Corpus extends DatasetIdentifier {
 	
 	public NamespaceSet getNamespaces() {
 		return namespaces;
+	}
+	
+	public Map<String, Interwiki> getInterwikiMap() {
+		return interwikiMap;
 	}
 	
 	public ConceptTypeSet getConceptTypes() {
