@@ -348,8 +348,12 @@ abstract class DatabaseStatisticsStoreBuilder extends DatabaseWikiWordStoreBuild
 	}
 	
 	protected int buildDegreeInfo(DatabaseTable t, String linkField, String groupField, String statsField, String degreeField, String rankField, String biasField) throws PersistenceException {
-		DegreeInfoUpdate update = new DegreeInfoUpdate(getDatabaseAccess(), "buildDegreeInfo", linkField+","+groupField+","+statsField, t, linkField, groupField, degreeField); 
-		int n =  executeChunkedUpdate(update, 1); 
+		int n =  -1; //HACK!
+		if (rankField!=null && beginTask("buildDegreeInfo", "DegreeInfoUpdate:"+linkField+","+groupField+","+degreeField)) {
+			DegreeInfoUpdate update = new DegreeInfoUpdate(getDatabaseAccess(), "buildDegreeInfo", linkField+","+groupField+","+degreeField, t, linkField, groupField, degreeField); 
+			n =  executeChunkedUpdate(update, 20);
+			endTask("buildDegreeInfo", "DegreeInfoUpdate:"+linkField+","+groupField+","+degreeField);
+		}
 		
 		if (rankField!=null && beginTask("buildDegreeInfo", "stats."+rankField)) {
 			buildRank(degreeTable, degreeField, rankField);
