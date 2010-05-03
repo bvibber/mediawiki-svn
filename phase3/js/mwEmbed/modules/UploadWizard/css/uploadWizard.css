@@ -15,7 +15,7 @@ form.mwe-upwiz-form {
 }
 */
 
-#mwe-upwiz-tabs {
+#mwe-upwiz-steparrows {
 }
 
 #mwe-upwiz-content {
@@ -26,7 +26,7 @@ form.mwe-upwiz-form {
 	width: 100%;
 }
 
-#mwe-upwiz-tabs ul {
+#mwe-upwiz-steparrows ul {
 	list-style-type: none;
 	list-style-image: none;
 	padding: 0px;
@@ -34,19 +34,19 @@ form.mwe-upwiz-form {
 	position: relative;
 }
 
-#mwe-upwiz-tabs ul li {
+#mwe-upwiz-steparrows ul li {
 	color: #999999;
 	float: left;
 	padding: 0px;
 	margin: 0px;
 }
 
-#mwe-upwiz-tabs ul li span {
+#mwe-upwiz-steparrows ul li span {
 	padding-top: 2px;
 	padding-bottom: 4px;
 }
 
-#mwe-upwiz-tabs ul li span.mwe-arrow-text {
+#mwe-upwiz-steparrows ul li span.mwe-arrow-text {
 	border-color: #e0e0e0;
 	border-style: solid;
 	border-width: 1px 0px 1px 0px;
@@ -55,7 +55,7 @@ form.mwe-upwiz-form {
 	z-index: 1;
 }
 
-#mwe-upwiz-tabs ul li span.mwe-arrow {
+#mwe-upwiz-steparrows ul li span.mwe-arrow {
 	position: relative;
 	left: 21px;
 	padding-right: 12px;
@@ -63,15 +63,15 @@ form.mwe-upwiz-form {
 	background: url('../images/grey-angle.gif') no-repeat right center;
 }
 
-#mwe-upwiz-tabs ul li.mwe-upwiz-tab-highlight span.mwe-arrow {
+#mwe-upwiz-steparrows ul li.mwe-upwiz-step-highlight span.mwe-arrow {
 	background: url('../images/black-angle.gif') no-repeat right center;
 }
 
-#mwe-upwiz-tabs ul li.mwe-upwiz-tab-highlight span.mwe-arrow-text {
+#mwe-upwiz-steparrows ul li.mwe-upwiz-step-highlight span.mwe-arrow-text {
 	border-color: #000000;
 }
 
-#mwe-upwiz-tabs ul li.mwe-upwiz-tab-highlight span.mwe-arrow-text {
+#mwe-upwiz-steparrows ul li.mwe-upwiz-step-highlight span.mwe-arrow-text {
 	padding-left: 12px;
 	font-weight: bold;
 	color: black;
@@ -288,12 +288,12 @@ a[disabled=true]:hover {
 	background: yellow;
 }
 
-.mwe-upwiz-tabdiv {
+.mwe-upwiz-stepdiv {
 	height: 0px;
 	overflow: hidden;
 }
 
-#mwe-upwiz-tabdiv-file {
+#mwe-upwiz-stepdiv-file {
 	width: 550px;
 }
 
@@ -483,5 +483,12 @@ legend.mwe-legend {
 
 .mwe-upwiz-custom-deed {
 	margin-top: 5px;
+}
+
+.mwe-upwiz-buttons {
+	margin-top: 10px;
+	padding-top: 10px;
+	border-top: 1px solid #e0e0e0;
+	text-align: right;  /* works for now, only one 'next' button */
 }
 
