@@ -34,7 +34,7 @@
 					$wgOut->addHTML( $this->getDefinitionPerLanguage () );
 				else if ( $showstat == 'syntrans' )
 					$wgOut->addHTML( $this->getSyntransPerLanguage () );
-				else // exp by default
+				else if ( $showstat == 'exp' )
 					$wgOut->addHTML ( $this->getExpressionPerLanguage () ) ;
 			}
 
@@ -42,7 +42,8 @@
 				global $wgArticlePath;
 				if ( $showstat != $val ) {
 					$url = str_replace( "$1", 'Special:Ow_statistics' , $wgArticlePath );
-					return "<a href=\"$url&showstat=$val\">$text</a>" ;
+					$url .= strpos($url , "?") ? "&showstat=$val":"?showstat=$val";
+					return "<a href=\"$url\">$text</a>" ;
 				} else {
 					return "<b>$text</b>" ;
 				}
