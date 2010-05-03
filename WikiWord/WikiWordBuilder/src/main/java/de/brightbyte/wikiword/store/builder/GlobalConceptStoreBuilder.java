@@ -22,5 +22,7 @@ public interface GlobalConceptStoreBuilder extends WikiWordConceptStoreBuilder<G
 	public int getMaxConceptId() throws PersistenceException;
 
 	public void setLanguages(String[] languages) throws PersistenceException;
+
+	public void buildMeaningIndex() throws PersistenceException;
 	
 }

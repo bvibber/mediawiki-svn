@@ -24,6 +24,7 @@ public class GlobalConceptStoreSchema extends WikiWordConceptStoreSchema {
 	protected RelationTable originTable;
 	protected RelationTable mergeTable;
 	protected RelationTable langprepTable;
+	protected RelationTable meaningTable;
 
 	private ConceptTypeSet conceptTypes;
 	protected TweakSet tweaks;
@@ -95,6 +96,19 @@ public class GlobalConceptStoreSchema extends WikiWordConceptStoreSchema {
 		mergeTable.addField( new ReferenceField(this, "old", "INT", null, true, KeyType.PRIMARY, "concept", "id", null ) );
 		mergeTable.addField( new DatabaseField(this, "new", "INT", null, true, KeyType.INDEX ) );
 		addTable(mergeTable);
+		
+		
+		meaningTable = new RelationTable(this, "meaning", getDefaultTableAttributes());
+		meaningTable.addField( new ReferenceField(this, "concept", "INT", null, true, null, "concept", "id", null ) );
+		meaningTable.addField( new DatabaseField(this, "lang", getTextType(10), null, true, null ) );
+		meaningTable.addField( new DatabaseField(this, "score", "INT", null, true, null ) );
+		meaningTable.addField( new DatabaseField(this, "freq", "INT", null, true, null ) );
+		meaningTable.addField( new DatabaseField(this, "term_text", getTextType(255), null, true, null) );
+		meaningTable.addKey( new DatabaseKey(this, KeyType.PRIMARY, "lang_term_concept", new String[] {"lang", "term_text", "concept"}) );
+		meaningTable.addKey( new DatabaseKey(this, KeyType.INDEX, "term_concept", new String[] {"term_text", "concept"}) );
+		meaningTable.addKey( new DatabaseKey(this, KeyType.INDEX, "concept_lang", new String[] {"concept", "lang"}) );
+		addTable(meaningTable);
+		
 		
 		//TODO: reference table (aka link)
 		

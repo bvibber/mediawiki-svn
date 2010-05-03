@@ -92,6 +92,12 @@ public class BuildThesaurus extends ImportApp<GlobalConceptStoreBuilder> {
 			agenda.endTask("BuildThesaurus.run", "buildGlobalConcepts");
 		}
 
+		section("-- buildMeaningIndex --------------------------------------------------");
+		if (agenda.beginTask("BuildThesaurus.run", "buildMeaningIndex")) {
+			this.conceptStore.buildMeaningIndex();
+			agenda.endTask("BuildThesaurus.run", "buildMeaningIndex");
+		}
+
 		/*
 		section("-- buildConceptInfo --------------------------------------------------");
 		if (agenda.beginTask("BuildThesaurus.run", "buildConceptInfo")) {
