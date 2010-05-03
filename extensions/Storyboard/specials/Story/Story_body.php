@@ -121,7 +121,7 @@ class SpecialStory extends IncludableSpecialPage {
 						global $wgTitle;
 						$wgOut->addWikiMsg(
 							'storyboard-canedit',
-							htmlspecialchars( $this->getTitle( $story->story_title )->getFullURL( array( 'action' => 'edit' ) ) )
+							$this->getTitle( $story->story_title )->getFullURL( array( 'action' => 'edit' ) )
 						);
 					}
 				}
