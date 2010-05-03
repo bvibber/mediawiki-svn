@@ -80,6 +80,10 @@ line to your 'LocalSettings.php' file:
 
 == Contact ==
 
-Comments, questions, suggestions and bug reports are welcome, and can
-be placed on the Talk page for the extension, or sent to Yaron at
-yaron57@gmail.com.
+Most comments, questions, suggestions and bug reports should be sent to
+the Semantic MediaWiki mailing list:
+
+ https://lists.sourceforge.net/lists/listinfo/semediawiki-user
+
+If possible, please add "[SIO]" at the beginning of the subject line, to
+clarify the subject matter.
