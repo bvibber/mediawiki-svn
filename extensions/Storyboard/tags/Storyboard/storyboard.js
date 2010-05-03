@@ -49,7 +49,7 @@
 	
 	function addStories( $storyboard, query ) {
 		// Remove the empty boxes.
-		$storyboard.html('');
+		$storyboard.html( '' );
 		
 		for ( var i in query.stories ) {
 			var story = query.stories[i];

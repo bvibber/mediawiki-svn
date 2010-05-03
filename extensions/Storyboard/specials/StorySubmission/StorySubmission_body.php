@@ -40,7 +40,7 @@ class SpecialStorySubmission extends UnlistedSpecialPage {
 			$wgOut->returnToMain();
 		}
 	}
-	
+
 	/**
 	 * Store the submitted story in the database, and return a page telling the user his story has been submitted.
 	 */

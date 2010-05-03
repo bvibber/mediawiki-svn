@@ -50,7 +50,7 @@ EOT
 		} else {
 			$language = $wgContLanguageCode;
 		}
-		
+
 		$parser->getOutput()->addHeadItem(
 			Html::inlineScript( "var storyboardLanguage = '$language';" )
 		);

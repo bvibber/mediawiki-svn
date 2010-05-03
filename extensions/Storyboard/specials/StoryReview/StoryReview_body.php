@@ -42,85 +42,49 @@ class SpecialStoryReview extends SpecialPage {
 	}
 	
 	private function addOutput() {
-		global $wgOut, $egStoryboardScriptPath;
+		global $wgOut, $wgRequest, $wgJsMimeType, $wgContLanguageCode, $egStoryboardScriptPath;
 		
 		$wgOut->addStyle( $egStoryboardScriptPath . '/storyboard.css' );
 		$wgOut->includeJQuery();
+		$wgOut->addScriptFile( $egStoryboardScriptPath . "/jquery/jquery.ajaxscroll.js" );
 		$wgOut->addScriptFile( $egStoryboardScriptPath . '/storyboard.js' );
 		// jQuery UI core and Tabs.
 		$wgOut->addScriptFile( $egStoryboardScriptPath . '/jquery/jquery-ui-1.7.2.custom.min.js' );
 		$wgOut->addStyle( $egStoryboardScriptPath . '/jquery/css/jquery-ui-1.7.2.custom.css' );
 		
-		// Get a slave db object to do read operations against.
-		$dbr = wfGetDB( DB_SLAVE );
-		
 		$unpublished = htmlspecialchars( wfMsg( 'storyboard-unpublished' ) );
 		$published = htmlspecialchars( wfMsg( 'storyboard-published' ) );
 		$hidden = htmlspecialchars( wfMsg( 'storyboard-hidden' ) );
 		
-		$html = $this->getTabHtml( $dbr, Storyboard_STORY_UNPUBLISHED, $unpublished );
-		$html .= $this->getTabHtml( $dbr, Storyboard_STORY_PUBLISHED, $published );
-		$html .= $this->getTabHtml( $dbr, Storyboard_STORY_HIDDEN, $hidden );
+		$language = $wgRequest->getText( 'language', false );
+		if ( !$language ) $language = $wgContLanguageCode;
 		
 		$html = <<<EOT
 <div id="storyreview-tabs">
 	<ul>
-		<li><a href="#$unpublished">$unpublished</a></li>
-		<li><a href="#$published">$published</a></li>
-		<li><a href="#$hidden">$hidden</a></li>
+		<li><a href="#$unpublished" id="$unpublished-tab">$unpublished</a></li>
+		<li><a href="#$published" id="$published-tab">$published</a></li>
+		<li><a href="#$hidden" id="$hidden-tab">$hidden</a></li>
 	</ul>
-$html
+	<div id="$unpublished"></div>
+	<div id="$published"></div>
+	<div id="$hidden"></div>
 </div>
-<script type="text/javascript">
-	jQuery(function() {
-		jQuery("#storyreview-tabs").tabs();
+
+<script type="$wgJsMimeType">
+	var storyboardLanguage = "$language";
+
+	jQuery( function() {
+		jQuery( "#storyreview-tabs" ).tabs();
 	});
-	/*
-	$('#$unpublished').click( stbLoadStoriesForReview );
 	
-	function stbLoadStoriesForReview() {
-		$.getJSON(
-			wgScriptPath + '/api.php',
-			{
-				'action': 'query',
-				'list': 'stories', 
-				
-			},
-			function ( data ) {
-				
-			}
-		);
-	}
-	*/
+	jQuery('#storyreview-tabs').bind( 'tabsshow', function( event, ui ) {
+		stbShowReviewBoard( jQuery( ui.panel ) );
+	});
 </script>	
 EOT;
 	
 	$wgOut->addHTML( $html );
-	}
-	
-	private function getTabHtml( DatabaseBase $dbr, $storyState, $tabId ) {
-		// Create a query to retrieve information about all non hidden stories.
-		$stories = $dbr->select(
-			Storyboard_TABLE,
-			array(
-				'story_id',
-				'story_author_name',
-				'story_title',
-				'story_text',
-				'story_author_image',
-				'story_image_hidden'
-			),
-			array( 'story_state' => $storyState )
-		);
-		
-		$storyBlocks = array();
-		
-		// Loop through all stories, get their html, and add it to the appropriate string.
-		while ( $story = $dbr->fetchObject( $stories ) ) {
-			$storyBlocks[] = $this->getStoryBlock( $story, $storyState );
-		}
-		
-		return "<div id='$tabId'>" . implode( '<br />', $storyBlocks ) . '</div>';
 	}
 	
 	/**

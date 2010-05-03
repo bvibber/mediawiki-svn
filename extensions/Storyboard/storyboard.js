@@ -74,6 +74,57 @@ function stbValidateSubmission( termsCheckbox ) {
  * Story review functions
  */
 
+function stbShowReviewBoard( tab ) {
+	tab.html( jQuery( "<div />" )
+		.addClass( "storyreviewboard" )
+		.attr( { "style": "height: 420px; width: 100%;" } ) );
+	
+	jQuery( '.storyreviewboard' ).ajaxScroll( {
+		updateBatch: stbUpdateReviewBoard,
+		maxOffset: 500,
+		batchSize: 2,
+		batchNum: 2, // TODO: change to 1. Some issue in the ajaxscroll plugin makesit break when this is the case though.
+		batchClass: "batch",
+		boxClass: "storyboard-box",
+		emptyBatchClass: "storyboard-empty",
+		scrollPaneClass: "scrollpane"
+	} );	
+}
+
+function stbUpdateReviewBoard( $storyboard ) {
+	requestArgs = {
+		'action': 'query',
+		'list': 'stories',
+		'format': 'json',
+		'stlimit': 8,
+		'stlanguage': window.storyboardLanguage
+	};
+	
+	jQuery.getJSON( wgScriptPath + '/api.php',
+		requestArgs,
+		function( data ) {
+			if ( data.query ) {
+				stbAddStories( $storyboard, data.query );
+			} else {
+				alert( 'An error occured:\n' + data.error.info ); // TODO: i18n
+			}		
+		}
+	);	
+}
+
+function stbAddStories( $storyboard, query ) {
+	// Remove the empty boxes.
+	$storyboard.html( '' );
+	
+	// TODO: create the review blocks html with jQuery
+	for ( var i in query.stories ) {
+		var story = query.stories[i];
+		var $storyBody = jQuery( "<div />" ).addClass( "storyboard-box" );
+		
+		$storyboard.append( $storyBody );
+	}
+}
+
 /**
  * Calls the StoryReview API module to do actions on a story and handles updating of the page in the callback.
  * 
