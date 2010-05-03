@@ -1,8 +1,8 @@
 mw.addMessages( {
-	"mwe-upwiz-tab-file": "1. Upload your files",
-	"mwe-upwiz-tab-deeds": "2. Add licenses",
-	"mwe-upwiz-tab-details": "3. Add descriptions",
-	"mwe-upwiz-tab-thanks": "4. Use your files",
+	"mwe-upwiz-step-file": "1. Upload your files",
+	"mwe-upwiz-step-deeds": "2. Add licenses",
+	"mwe-upwiz-step-details": "3. Add descriptions",
+	"mwe-upwiz-step-thanks": "4. Use your files",
 	"mwe-upwiz-intro": "Welcome to Wikimedia Commons, a repository of images, sounds, and movies that anyone can freely download and use. Add to humanity's knowledge by uploading files that could be used for an educational purpose.",
 	
 	"mwe-upwiz-add-file-n": "Add another file",
@@ -78,7 +78,15 @@ mw.addMessages( {
 	"mwe-upwiz-overwrite" : "Replace the file",
 
 	"mwe-copyright-macro": "As above",
-	"mwe-copyright-custom": "Custom"
+	"mwe-copyright-custom": "Custom",
+
+	"mwe-upwiz-next": "Next",
+	"mwe-upwiz-home": "Wikimedia Commons",
+	"mwe-upwiz-upload-another": "Upload more files",
+
+	"mwe-prevent-close": "Your files are still uploading. Are you sure you want to navigate away from this page?",
+
+	"mwe-upwiz-files-complete": "Your files finished uploading!"
 } );
 
 
@@ -1781,8 +1789,8 @@ mw.UploadWizard.userAgent = "UploadWizard (alpha) on " + $j.browser.name + " " +
 mw.UploadWizard.prototype = {
 	maxUploads: 10,  // XXX get this from config 
 	maxSimultaneousUploads: 2,   //  XXX get this from config
-	tabNames: [ 'file', 'deeds', 'details', 'thanks' ],
-	currentTabName: undefined,
+	stepNames: [ 'file', 'deeds', 'details', 'thanks' ],
+	currentStepName: undefined,
 
 	/*
 	// list possible upload handlers in order of preference
@@ -1825,19 +1833,18 @@ mw.UploadWizard.prototype = {
 		var div = $j( selector ).get(0);
 		div.innerHTML = 
 	
-		       '<div id="mwe-upwiz-tabs">'
-		       + '<ul>'
-		       +   '<li id="mwe-upwiz-tab-file"><span class="mwe-arrow-text">'     + gM('mwe-upwiz-tab-file')     + '<span class="mwe-arrow"/></span></span></li>'
-		       +   '<li id="mwe-upwiz-tab-deeds"><span class="mwe-arrow-text">'  + gM('mwe-upwiz-tab-deeds')  + '<span class="mwe-arrow"/></span></span></li>'
-		       +   '<li id="mwe-upwiz-tab-details"><span class="mwe-arrow-text">'  + gM('mwe-upwiz-tab-details')  + '<span class="mwe-arrow"/></span></span></li>'
-		       +   '<li id="mwe-upwiz-tab-thanks"><span class="mwe-arrow-text">'   + gM('mwe-upwiz-tab-thanks')   + '<span class="mwe-arrow"/></span></span></li>'
-		       + '</ul>'
+		         '<div id="mwe-upwiz-steparrows" class="ui-helper-clearfix">'
+		       +   '<ul>'
+		       +     '<li id="mwe-upwiz-step-file"><span class="mwe-arrow-text">'     + gM('mwe-upwiz-step-file')     + '<span class="mwe-arrow"/></span></span></li>'
+		       +     '<li id="mwe-upwiz-step-deeds"><span class="mwe-arrow-text">'  + gM('mwe-upwiz-step-deeds')  + '<span class="mwe-arrow"/></span></span></li>'
+		       +     '<li id="mwe-upwiz-step-details"><span class="mwe-arrow-text">'  + gM('mwe-upwiz-step-details')  + '<span class="mwe-arrow"/></span></span></li>'
+		       +     '<li id="mwe-upwiz-step-thanks"><span class="mwe-arrow-text">'   + gM('mwe-upwiz-step-thanks')   + '<span class="mwe-arrow"/></span></span></li>'
+		       +   '</ul>'	
 		       + '</div>'
-		       + '<div class="mwe-upwiz-clearing"></div>'
-
 
 		       + '<div id="mwe-upwiz-content">'
-		       +   '<div class="mwe-upwiz-tabdiv" id="mwe-upwiz-tabdiv-file">'
+
+		       +   '<div class="mwe-upwiz-stepdiv ui-helper-clearfix" id="mwe-upwiz-stepdiv-file">'
 		       +     '<div id="mwe-upwiz-intro">' + gM('mwe-upwiz-intro') + '</div>'
 		       +     '<div id="mwe-upwiz-files">'
 		       +       '<div class="shim" style="height: 120px"></div>'
@@ -1849,77 +1856,94 @@ mw.UploadWizard.prototype = {
 		       +            '<button id="mwe-upwiz-upload-ctrl" disabled="disabled">' + gM("mwe-upwiz-upload") + '</button>'
 		       +          '</div>'
 		       +       '</div>'
-		       +       '<div id="mwe-upwiz-progress"></div>'
-		       +       '<div class="clearShim"></div>'
-		       +     '</div>'	
-		       +     '<div style="clear: left;"></div>'
+		       +       '<div id="mwe-upwiz-progress" class="ui-helper-clearfix"></div>'
+		       +     '</div>'
+		       +     '<div class="mwe-upwiz-buttons"/>'
+		       +        '<button class="mwe-upwiz-button-next" disabled="true" />'
+		       +     '</div>'
 		       +   '</div>'
-		       +   '<div class="mwe-upwiz-tabdiv" id="mwe-upwiz-tabdiv-deeds">'
+
+		       +   '<div class="mwe-upwiz-stepdiv" id="mwe-upwiz-stepdiv-deeds">'
 		       +     '<div id="mwe-upwiz-deeds-intro"></div>'
 		       +     '<div id="mwe-upwiz-deeds-thumbnails"></div>'
 		       +     '<div id="mwe-upwiz-deeds"></div>'	
+		       +     '<div class="mwe-upwiz-buttons"/>'
+		       +        '<button class="mwe-upwiz-button-next" disabled="true" />'
+		       +     '</div>'
                        +   '</div>'
-		       +   '<div class="mwe-upwiz-tabdiv" id="mwe-upwiz-tabdiv-details">'
+
+		       +   '<div class="mwe-upwiz-stepdiv" id="mwe-upwiz-stepdiv-details">'
 		       +     '<div id="mwe-upwiz-macro">'
 		       +       '<div id="mwe-upwiz-macro-progress" class="ui-helper-clearfix"></div>'
 		       +       '<div id="mwe-upwiz-macro-choice">' 
 		       +  	 '<div>' + gM( 'mwe-upwiz-details-intro' ) + '</div>'
 		       +       '</div>'
 		       +       '<div id="mwe-upwiz-macro-files"></div>'
-		       +       '<div class="mwe-upwiz-macro-edit-submit"></div>' // button added below			
+		       +     '</div>'
+		       +     '<div class="mwe-upwiz-buttons"/>'
+		       +        '<button class="mwe-upwiz-button-next" disabled="true" />'
 		       +     '</div>'
 		       +   '</div>'
-		       +   '<div class="mwe-upwiz-tabdiv" id="mwe-upwiz-tabdiv-thanks">'
+
+		       +   '<div class="mwe-upwiz-stepdiv" id="mwe-upwiz-stepdiv-thanks">'
 		       +     '<div id="mwe-upwiz-thanks"></div>'
+		       +     '<div class="mwe-upwiz-buttons"/>'
+		       +        '<button class="mwe-upwiz-button-begin" />'
+		       +        '<br/><button class="mwe-upwiz-button-home" />'
+		       +     '</div>'		
                        +   '</div>'
+
 		       + '</div>'
 
 		       + '<div class="mwe-upwiz-clearing"></div>';
+		
 
-		// within FILE tab div
+		$j( '.mwe-upwiz-button-home' ).append( gM( 'mwe-upwiz-home' ) );
+		$j( '.mwe-upwiz-button-begin' ).append( gM( 'mwe-upwiz-upload-another' ) );
+		
+		$j( '.mwe-upwiz-button-next' )
+			.append( gM( 'mwe-upwiz-next' ) )
+
+		// within FILE step div
 		$j('#mwe-upwiz-upload-ctrl').click( function() { 
 			_this.removeEmptyUploads();
 		
 			// we set up deed chooser here, because it's only now that we know how many uploads there are
-			// possibly it should have some kind of morphing interface for singular/plural, but this doesn't
+			// possibly it could have some kind of morphing interface for singular/plural, but this doesn't
 			// seem too bad for now.
 			_this.deedChooser = new mw.UploadWizardDeedChooser( '#mwe-upwiz-deeds', ( _this.uploads.length > 1 ) );
 
 			_this.startUploads(); 
 		} );
 
-		// deeds div
-		$j( '#mwe-upwiz-deeds-intro' ).html( gM( 'mwe-upwiz-deeds-intro' ) );
-
-
-		// DETAILS div
-		$j( '.mwe-upwiz-deed-form' ).maskSafeHide();
-
-
-		// buttons to submit all details and go on to the thanks page, at the top and bottom of the page.
-		$j( '.mwe-upwiz-macro-edit-submit' ).each( function() {
-			$j( this ).append( $j( '<input />' )
-				.addClass( 'mwe-upwiz-details-submit' )
-				.attr( { type: 'submit', value: gM( 'mwe-upwiz-macro-edit' ) } )
-				.click( function() { 
-					// move to the top of the page to see the progress bar
-					$j( 'html' ).scrollTop( 0 );
-					_this.detailsSubmit( function() { 
-						_this.prefillThanksPage();
-						_this.moveToTab('thanks');
-					} );
-				} ) );
+		$j( '#mwe-upwiz-stepdiv-file .mwe-upwiz-button-next').click( function() {
+			_this.moveToStep( 'deeds' );
 		} );
 
+		// DEEDS div
+		$j( '#mwe-upwiz-deeds-intro' ).html( gM( 'mwe-upwiz-deeds-intro' ) );
+
+		$j( '#mwe-upwiz-stepdiv-deeds .mwe-upwiz-button-next').click( function() {
+			_this.moveToStep('details');
+		} );
+
+		// DETAILS div
+		$j( '#mwe-upwiz-stepdiv-details' ).click( function() {
+			_this.detailsSubmit( function() { 
+				_this.prefillThanksPage();
+				_this.moveToStep('thanks');
+			} );
+		} );
 	
 		// add one to start
 		var upload = _this.newUpload( '#mwe-upwiz-add-file' );
 
-		// "select" the first tab - highlight, make it visible, hide all others
-		_this.moveToTab( 'file', function() { 
-			// XXX moving the file input doesn't seem to work at this point
-			// we are catching up to the application of CSS or something
+		// "select" the first step - highlight, make it visible, hide all others
+		_this.moveToStep( 'file', function() { 
+			// XXX moving the file input doesn't seem to work at this point; we get its old position before
+			// CSS is applied. Hence, using a timeout.
 			// XXX using a timeout is lame, are there other options?
+			// XXX Trevor suggests that using addClass() may queue stuff unnecessarily; use 'concrete' HTML
 			setTimeout( function() {	
 				upload.ui.moveFileInputToCover( '#mwe-upwiz-add-file' );
 			}, 300 );
@@ -1929,43 +1953,46 @@ mw.UploadWizard.prototype = {
 
 	/**
 	 * Advance one "step" in the wizard interface.
-	 * It is assumed that the previous tab to the current one was selected.
+	 * It is assumed that the previous step to the current one was selected.
 	 * We do not hide the tabs because this messes up certain calculations we'd like to make about dimensions, while elements are not 
 	 * on screen. So instead we make the tabs zero height and, in CSS, they are already overflow hidden
-	 * @param selectedTabName
+	 * @param selectedStepName
 	 * @param callback to do after layout is ready?
 	 */
-	moveToTab: function( selectedTabName, callback ) {
+	moveToStep: function( selectedStepName, callback ) {
 		var _this = this;
-		$j.each( _this.tabNames, function(i, tabName) {
+		$j.each( _this.stepNames, function(i, stepName) {
 			
-			// the tab indicator	
-			var tab = $j( '#mwe-upwiz-tab-' + tabName );
+			// the step indicator	
+			var step = $j( '#mwe-upwiz-step-' + stepName );
 			
-			// the tab's contents
-			var tabDiv = $j( '#mwe-upwiz-tabdiv-' + tabName );
+			// the step's contents
+			var stepDiv = $j( '#mwe-upwiz-stepdiv-' + stepName );
 
-			if ( _this.currentTabName == tabName ) {
-				// we hide the old tabDivs because we are afraid of some z-index elements that may interfere with later tabs
+			if ( _this.currentStepName == stepName ) {
+				// we hide the old stepDivs because we are afraid of some z-index elements that may interfere with later tabs
 				// this will break if we ever allow people to page back and forth.
-				tab.hide( 1000 );
-				tabDiv.hide();
-			} else if ( selectedTabName == tabName ) {
-				tabDiv.maskSafeShow();
-				tab.addClass( 'mwe-upwiz-tab-highlight' );
-				if ( callback ) {
-					callback();
-				}
+				step.hide( 1000 );
+				stepDiv.hide();
+			} else if ( selectedStepName == stepName ) {
+				stepDiv.maskSafeShow();
+				step.addClass( 'mwe-upwiz-step-highlight' );
 			} else {
 				// it's neither the formerly active nor the newly active one, so don't show it
 				// we don't use hide() because we want to manipulate elements within future tabs, and calculate their dimensions.
-				// tabDiv.maskSafeHide();
+				// stepDiv.maskSafeHide();
 			}
 		} );
 
-		_this.currentTabName = selectedTabName;
+		_this.currentStepName = selectedStepName;
 
-		// XXX possibly select appropriate form field to begin work
+		$j.each( _this.uploads, function(i, upload) {
+			upload.state = selectedStepName;
+		} );
+
+		if ( callback ) {
+			callback();
+		}
 	},
 
 	/**
@@ -2128,12 +2155,17 @@ mw.UploadWizard.prototype = {
 	 * Does some precalculations, changes the interface to be less mutable, moves the uploads to a queue, 
 	 * and kicks off a thread which will take from the queue.
 	 */
-	startUploads: function() {
+	startUploads: function( finishedCallback ) {
 		var _this = this;
 		// remove the upload button, and the add file button
 		$j( '#mwe-upwiz-upload-ctrl' ).hide();
 		$j( '#mwe-upwiz-add-file' ).hide();
-		
+
+		var allowCloseWindow = $j().preventCloseWindow( { 
+			message: gM( 'mwe-prevent-close')
+		} );
+
+			
 		// remove ability to change files
 		// ideally also hide the "button"... but then we require styleable file input CSS trickery
 		// although, we COULD do this just for files already in progress...
@@ -2152,10 +2184,9 @@ mw.UploadWizard.prototype = {
 				upload.start();
 			},
 		        function() { 
-				$j.each( _this.uploads, function(i, upload) {
-					upload.state = 'deeds';
-				} );
-				_this.moveToTab( 'deeds' );
+				allowCloseWindow();
+				$j().notify( gM( 'mwe-upwiz-files-complete' ) );
+				$j( '#mwe-upwiz-stepdiv-file' ).enableNextButton();
 		  	} 
 		);
 	},
@@ -2863,6 +2894,7 @@ jQuery.fn.unmask = function( options ) {
  * Safe hide and show
  * Rather than use display: none, this collapses the divs to zero height
  * This is good because then the elements in the divs still have layout and we can do things like mask and unmask (above)
+ * XXX may be obsolete as we are not really doing this any more
  */ 
 
 jQuery.fn.maskSafeHide = function( options ) {
@@ -2874,3 +2906,52 @@ jQuery.fn.maskSafeHide = function( options ) {
 jQuery.fn.maskSafeShow = function( options ) {
 	return this.css( { 'height' : 'auto', 'overflow' : 'visible' } );
 };
+
+
+( function( $j ) {
+
+	/**
+	 * Prevent the closing of a window with a confirm message (the onbeforeunload event seems to 
+	 * work in most browsers 
+	 * e.g.
+	 *       var allowCloseWindow = jQuery().preventCloseWindow( { message: "Don't go away!" } );
+	 *       // ... do stuff that can't be interrupted ...
+	 *       allowCloseWindow();
+	 *
+	 * @param options 	object which should have a message string, already internationalized
+	 * @return closure	execute this when you want to allow the user to close the window
+	 */
+	$j.fn.preventCloseWindow = function( options ) {
+		if ( typeof options === 'undefined' ) {
+			options = {};
+		}
+
+		if ( typeof options.message === 'undefined' ) {
+			options.message = 'Are you sure you want to close this window?';
+		}
+		
+		$j( window ).unload( function() { 
+			return options.message;
+		} );
+		
+		return function() { 
+			$j( window ).removeAttr( 'unload' );
+		};
+				
+	};
+
+
+	$j.fn.notify = function ( message ) {
+		// could do something here with Chrome's in-browser growl-like notifications.
+		// play a sound?
+		alert( message );
+	};
+
+	$j.fn.enableNextButton = function() {
+		this.find( '.mwe-upwiz-button-next' )
+			.removeAttr( 'disabled' )
+			.effect( 'pulsate', { times: 3 }, 1000 );
+	};
+	
+
+} )( jQuery );
