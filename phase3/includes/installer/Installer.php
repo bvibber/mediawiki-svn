@@ -828,16 +828,13 @@ abstract class Installer {
 		foreach( $exts as $e ) {
 			require( "$path/$e/$e.php" );
 		}
-		return true;
+		return Status::newGood();
 	}
 
 	public function installDatabase() {
 		$installer = $this->getDBInstaller( $this->getVar( 'wgDBtype' ) );
-		$db = $installer->setupDatabase();
-		if( !$db ) {
-			return false;
-		}
-		return true;
+		$status = $installer->setupDatabase();
+		return $status;
 	}
 
 	public function installTables() {
@@ -845,10 +842,8 @@ abstract class Installer {
 		$status = $installer->createTables();
 		if( $status->isGood() ) {
 			LBFactory::enableBackend();
-			return true;
-		} else {
-			return false;
 		}
+		return $status;
 	}
 
 	public function installSecretKey() {
@@ -864,7 +859,7 @@ abstract class Installer {
 			$this->output->addWarningMsg( 'config-insecure-secretkey' );
 		}
 		$this->setVar( 'wgSecretKey', $secretKey );
-		return true;
+		return Status::newGood();
 	}
 
 	public function installSysop() {
@@ -872,27 +867,33 @@ abstract class Installer {
 		$user = User::newFromName( $name );
 		if ( !$user ) {
 			// we should've validated this earlier anyway!
-			$this->output->addWarningMsg( 'config-admin-error-user', $name );
-			return false;
+			return Status::newFatal( 'config-admin-error-user', $name );
 		}
 		if ( $user->idForName() == 0 ) {
 			$user->addToDatabase();
 			try {
 				$user->setPassword( $this->getVar( '_AdminPassword' ) );
 			} catch( PasswordError $pwe ) {
-				$this->output->addWarningMsg( 'config-admin-error-password', $name, $pwe->getMessage() );
-				return false;
+				return Status::newFatal( 'config-admin-error-password', $name, $pwe->getMessage() );
 			}
 			$user->saveSettings();
 			$user->addGroup( 'sysop' );
 			$user->addGroup( 'bureaucrat' );
 		}
-		return true;
+		return Status::newGood();
 	}
 
 	public function installLocalsettings() {
 		$localSettings = new LocalSettingsGenerator( $this );
-		return $localSettings->writeLocalSettings();
+		$ok = $localSettings->writeLocalSettings();
+
+		# TODO: Make writeLocalSettings() itself not warn, but instead return
+		# a Status object to us to pass along.
+		if ( $ok ) {
+			return Status::newGood();
+		} else {
+			return Status::newFatal();
+		}
 	}
 
 	/*

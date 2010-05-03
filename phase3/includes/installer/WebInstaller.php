@@ -1570,8 +1570,12 @@ class WebInstaller_Install extends WebInstallerPage {
 		foreach( $this->parent->getInstallSteps() as $step ) {
 			$this->startStage( "config-install-$step" );
 			$func = 'install' . ucfirst( $step );
-			$success = $this->parent->{$func}();
-			$this->endStage( $success );
+			$status = $this->parent->{$func}();
+			$ok = $status->isGood();
+			if ( !$ok ) {
+				$this->parent->showStatusErrorBox( $status );
+			}
+			$this->endStage( $ok );
 		}
 		$this->addHTML("</ul>");
 		$this->endForm();
