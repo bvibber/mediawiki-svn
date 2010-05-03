@@ -354,8 +354,10 @@ abstract class Installer {
 	/** Check if we're installing the latest version */
 	function envLatestVersion() {
 		global $wgVersion;
-		$latestInfo = Http::get( 'http://www.mediawiki.org/w/api.php?action=mwreleases&format=php' );
+		$latestInfoUrl = 'http://www.mediawiki.org/w/api.php?action=mwreleases&format=php';
+		$latestInfo = Http::get( $latestInfoUrl );
 		if( !$latestInfo ) {
+			$this->showMessage( 'config-env-latest-can-not-check', $latestInfoUrl );
 			return;
 		}
 		$latestInfo = unserialize($latestInfo);
