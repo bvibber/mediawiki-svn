@@ -71,6 +71,7 @@ You cannot install MediaWiki.',
 	'config-env-latest-ok'            => 'You are installing the latest version of Mediawiki.',
 	'config-env-latest-new'           => "'''Note:''' You are installing a development version of Mediawiki.",
 	'config-env-latest-can-not-check' => "'''Note:''' We were unable to retrieve information about the latest MediaWiki release (from [$1]).",
+	'config-env-latest-data-invalid'  => "'''Warning:''' When trying to check if this version was outdated we got invalid data from [$1].",
 	'config-env-latest-old'           => "'''Warning:''' You are installing an outdated version of Mediawiki.",
 	'config-env-latest-help'          => 'You are installing version $1, but the latest version is $2.
 You are advised to use the latest release, which can be downloaded from [http://www.mediawiki.org/wiki/Download mediawiki.org]',
