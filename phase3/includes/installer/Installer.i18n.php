@@ -45,8 +45,9 @@ Check your php.ini and make sure <code>session.save_path</code> is set to an app
 	'config-page-upgradedoc'          => 'Upgrading',
 	'config-help-restart'             => 'Do you want to clear all saved data that you have entered and restart the installation process?',
 	'config-restart'                  => 'Yes, restart it',
-	'config-welcome'                  => '=== Technical data ===
-Below is some technical data that you can provide if you need help during installation.',
+	'config-welcome'                  => "=== Environmental checks ===
+We're doing basic checks to see if this environment is suitable for MediaWiki installation. You
+should provide this information if you need help during installation.",
 	'config-copyright'                => "=== Copyright and Terms ===
 
 $1
@@ -480,8 +481,6 @@ Controleer uw php.ini en zorg dat er een juiste map is ingesteld voor <code>sess
 	'config-page-upgradedoc' => 'Bijwerken',
 	'config-help-restart' => 'Wilt u alle opgeslagen gegevens die u hebt ingevoerd wissen en het installatieproces opnieuw starten?',
 	'config-restart' => 'Ja, opnieuw starten',
-	'config-welcome' => '===Technische gegevens===
-Hieronder staan een aantal technische gegevens die u kunt aanleveren als u ondersteuning nodig hebt bij de installatie.',
 	'config-authors' => 'MediaWiki is Copyright © 2001-2010 door Magnus Manske, Brion Vibber, Lee Daniel Crocker, Tim Starling, Erik Möller, Gabriel Wicke, Ævar Arnfjörð Bjarmason, Niklas Laxström, Domas Mituzas, Rob Church, Yuri Astrakhan, Aryeh Gregor, Aaron Schulz, Andrew Garrett, Raimond Spekking, Alexandre Emsenhuber, Siebrand Mazeland, Chad Horohoe en anderen.',
 	'config-env-good' => 'De omgeving is gecontroleerd.
 U kunt MediaWiki installeren.',
