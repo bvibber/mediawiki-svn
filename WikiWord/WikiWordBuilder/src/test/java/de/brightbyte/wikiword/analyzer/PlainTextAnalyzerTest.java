@@ -58,10 +58,13 @@ public class PlainTextAnalyzerTest extends PlainTextAnalyzerTestBase {
 			assertEquals(theList( "foo", "bar" ), words);
 
 			words = extractWords("foo-bar");
-			assertEquals(theList( "foo", "bar" ), words);
+			assertEquals(theList( "foo-bar" ), words);
+
+			words = extractWords("harald's 'schaaand");
+			assertEquals(theList( "harald's", "'schaaand" ), words);
 
 			words = extractWords("23-42");
-			assertEquals(theList( "23", "42" ), words);
+			assertEquals(theList( "23-42" ), words);
 
 			words = extractWords("23foo42");
 			assertEquals(theList( "23", "foo", "42" ), words);
