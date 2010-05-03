@@ -574,10 +574,10 @@ $messages['pt'] = array(
 );
 
 /** Brazilian Portuguese (Português do Brasil)
+ * @author 555
  * @author Hamilton Abreu
  * @author Heldergeovane
  * @author Luckas Blade
- * @author 555
  */
 $messages['pt-br'] = array(
 	'wikieditor-preview-preference' => 'Habilitar a previsão lado-a-lado',

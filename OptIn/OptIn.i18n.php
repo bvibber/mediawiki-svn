@@ -4528,9 +4528,9 @@ Para saber mais sobre a Iniciativa de Usabilidade, visite a nossa [http://usabil
 );
 
 /** Brazilian Portuguese (Português do Brasil)
+ * @author 555
  * @author Giro720
  * @author Heldergeovane
- * @author 555
  */
 $messages['pt-br'] = array(
 	'optin' => 'Participar na Iniciativa de Usabilidade',

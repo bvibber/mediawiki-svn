@@ -121,10 +121,18 @@ $messages['nl'] = array(
 );
 
 /** Polish (Polski)
+ * @author Marcin Łukasz Kiejzik
  * @author Sp5uhe
  */
 $messages['pl'] = array(
-	'wikieditor-addMediaWizard-preference' => 'Włącz gadżet „czarodzieja dodawania mediów”',
+	'wikieditor-addMediaWizard-preference' => 'Włącz gadżet „kreator dodawania mediów”',
+);
+
+/** Piedmontese (Piemontèis)
+ * @author Borichèt
+ */
+$messages['pms'] = array(
+	'wikieditor-addMediaWizard-preference' => "Përmëtte l'acessòri «Assistent ëd gionte ëd mojen»",
 );
 
 /** Portuguese (Português)

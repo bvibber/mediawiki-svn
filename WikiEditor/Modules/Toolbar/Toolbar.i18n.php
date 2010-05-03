@@ -11324,6 +11324,7 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author 555
  * @author Crazymadlover
  * @author Giro720
  * @author Hamilton Abreu
@@ -11332,7 +11333,6 @@ $messages['ps'] = array(
  * @author Malafaya
  * @author McDutchie
  * @author Waldir
- * @author 555
  */
 $messages['pt'] = array(
 	'wikieditor-toolbar' => 'Barra de ferramentas de edição',
@@ -11533,11 +11533,11 @@ $messages['pt'] = array(
 );
 
 /** Brazilian Portuguese (Português do Brasil)
+ * @author 555
  * @author Eduardo.mps
  * @author Everton137
  * @author Heldergeovane
  * @author Luckas Blade
- * @author 555
  */
 $messages['pt-br'] = array(
 	'wikieditor-toolbar' => 'Barra de ferramentas de edição',
