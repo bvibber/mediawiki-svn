@@ -111,23 +111,20 @@ public class StatisticsStoreSchema extends WikiWordStoreSchema {
 	@Override
 	public boolean isComplete() throws SQLException {
 		if (!super.isComplete()) return false;
+		
+		String sql;
+		int c;
+		
 		if (!this.tableExists("stats")) return false;
 		
-		/*
-		if (!this.tableExists("term")) return false;
-		if (!this.tableExists("degree")) return false;
-
-		String sql = "select count(*) from "+this.getSQLTableName("term");
-		int c = ((Number)this.executeSingleValueQuery("isComplete", sql)).intValue();
+		sql = "select count(*) from "+this.getSQLTableName("stats");
+		c = ((Number)this.executeSingleValueQuery("isComplete", sql)).intValue();
 		if (c==0) return false;
+
+		if (!this.tableExists("degree")) return false;
 		
 		sql = "select count(*) from "+this.getSQLTableName("degree");
 		c = ((Number)this.executeSingleValueQuery("isComplete", sql)).intValue();
-		if (c==0) return false;
-		*/
-		
-		String sql = "select count(*) from "+this.getSQLTableName("stats");
-		int c = ((Number)this.executeSingleValueQuery("isComplete", sql)).intValue();
 		if (c==0) return false;
 		
 		return true;

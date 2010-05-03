@@ -39,11 +39,15 @@ public class LocalStatisticsStoreSchema extends StatisticsStoreSchema {
 	public boolean isComplete() throws SQLException {
 		if (!super.isComplete()) return false;
 		
+		//NOTE: term stats may have been skipped.
+		//      they are not needed for most kinds of processing.
+		/*
 		if (!this.tableExists("term")) return false;
 
 		String sql = "select count(*) from "+this.getSQLTableName("term");
 		int c = ((Number)this.executeSingleValueQuery("isComplete", sql)).intValue();
 		if (c==0) return false;
+		*/
 		
 		return true;
 	}
