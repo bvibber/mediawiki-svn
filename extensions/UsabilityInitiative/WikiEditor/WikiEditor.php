@@ -27,6 +27,7 @@ $wgWikiEditorModules = array(
 	'publish' => array( 'global' => false, 'user' => true ),
 	'toc' => array( 'global' => false, 'user' => true ),
 	'templateEditor' => array( 'global' => false, 'user' => true ),
+	'templates' => array( 'global' => false, 'user' => true ),
 	'addMediaWizard' => array( 'global' => false, 'user' => false ),
 );
 
@@ -59,6 +60,7 @@ $wgExtensionMessagesFiles['WikiEditorPublish'] = dirname( __FILE__ ) . '/Modules
 $wgExtensionMessagesFiles['WikiEditorToc'] = dirname( __FILE__ ) . '/Modules/Toc/Toc.i18n.php';
 $wgExtensionMessagesFiles['WikiEditorToolbar'] = dirname( __FILE__ ) . '/Modules/Toolbar/Toolbar.i18n.php';
 $wgExtensionMessagesFiles['WikiEditorTemplateEditor'] = dirname( __FILE__ ) . '/Modules/TemplateEditor/TemplateEditor.i18n.php';
+$wgExtensionMessagesFiles['WikiEditorTemplates'] = dirname( __FILE__ ) . '/Modules/Templates/Templates.i18n.php';
 $wgExtensionMessagesFiles['WikiEditorAddMediaWizard'] = dirname( __FILE__ ) . '/Modules/AddMediaWizard/AddMediaWizard.i18n.php';
 
 // Register Hooks
