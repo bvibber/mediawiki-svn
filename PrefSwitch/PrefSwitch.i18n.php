@@ -2242,27 +2242,63 @@ Lütfen uygun olanları seçin.',
 
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
+ * @author Vinhtantran
  */
 $messages['vi'] = array(
+	'prefswitch' => 'Chuyển đổi tùy chọn Sáng kiến Khả dụng',
 	'prefswitch-desc' => 'Cho phép những người dùng đổi qua lại giữa các bộ tùy chọn.',
 	'prefswitch-survey-true' => 'Có',
 	'prefswitch-survey-false' => 'Không',
 	'prefswitch-survey-submit-off' => 'Tắt các tính năng mới',
 	'prefswitch-survey-cancel-off' => 'Để tiếp tục sử dụng các tính năng mới, hãy trở về $1.',
+	'prefswitch-survey-submit-feedback' => 'Gửi phản hồi',
+	'prefswitch-survey-cancel-feedback' => 'Nếu bạn không muốn phản hồi, bạn có thể trở lại $1.',
+	'prefswitch-survey-question-likedislike' => 'Bạn thích điều gì ở các tính năng mới?
+Bạn không thích điều gì ở các tính năng?',
+	'prefswitch-survey-question-whyoff' => 'Tại sao bạn lại tắt các tính năng mới?
+Xin hãy chọn tất cả các ý thích hợp.',
 	'prefswitch-survey-answer-whyoff-hard' => 'Nó khó sử dụng quá.',
 	'prefswitch-survey-answer-whyoff-didntwork' => 'Nó không hoạt động tốt.',
+	'prefswitch-survey-answer-whyoff-notpredictable' => 'Nó không vận hành như kỳ vọng.',
+	'prefswitch-survey-answer-whyoff-didntlike-look' => 'Tôi không thích bề ngoài của nó.',
+	'prefswitch-survey-answer-whyoff-didntlike-layout' => 'Tôi không thích những thẻ và cách trình bày mới.',
 	'prefswitch-survey-answer-whyoff-didntlike-toolbar' => 'Tôi không thích thanh công cụ mới.',
 	'prefswitch-survey-answer-whyoff-other' => 'Lý do khác:',
 	'prefswitch-survey-question-browser' => 'Bạn hay sử dụng trình duyệt nào?',
 	'prefswitch-survey-answer-browser-other' => 'Trình duyệt khác:',
 	'prefswitch-survey-question-os' => 'Bạn hay sử dụng hệ điều hành nào?',
 	'prefswitch-survey-answer-os-other' => 'Hệ điều hành khác:',
+	'prefswitch-survey-question-res' => 'Độ phân giải màn hình của bạn là bao nhiêu?',
 	'prefswitch-title-on' => 'Có gì mới?',
+	'prefswitch-title-switched-on' => 'Mời thưởng thức!',
 	'prefswitch-title-off' => 'Tắt các tính năng mới',
 	'prefswitch-title-switched-off' => 'Cám ơn',
+	'prefswitch-title-feedback' => 'Phản hồi',
 	'prefswitch-success-on' => 'Các tính năng mới đang bật.',
 	'prefswitch-success-off' => 'Các tính năng mới đang tắt.',
+	'prefswitch-success-feedback' => 'Phản hồi của bạn đã được gửi.',
 	'prefswitch-return' => '<hr style="clear:both">
 Trở về <span class="plainlinks">[$1 $2]</span>.',
+	'prefswitch-main' => 'Chúng ta đã nỗ lực để làm cho mọi người dùng cảm thấy mọi thứ dễ dàng hơn. Chúng tôi cảm thấy háo hức muốn chia sẻ một số cải tiến, bao gồm một giao diện hoàn toàn mới và các tính năng soạn thảo đã được đơn giản hóa. Cải tiến tính khả dụng của các dự án là ưu tiên của Wikimedia Foundation và chúng tôi sẽ chia sẻ thêm nhiều cập nhật nữa trong tương lai.
+
+[[File:UsabilityNavigation.png|right|link=|Screenshot of the new navigation]]
+[[File:UsabilityToolbar.png|right|link=|Screenshot of the enhanced edit toolbar]]
+[[File:UsabilityDialogs.png|right|link=|Screenshot of the new content generation dialogs]]
+===Dưới đây là những thay đổi===
+* Duyệt trang: Chúng tôi đã cải tiến việc duyệt các mục khi đọc và sửa trang. Giờ đây, các thẻ nằm ở đầu trang đã ghi một cách rõ ràng là bạn đang xem trang hay trang thảo luận, và bạn đang đọc hay đang sửa một trang.
+* Cải tiến thanh công cụ soạn thảo: Chúng tôi đã sắp xếp lại thanh công cụ soạn thảo để giúp nó dễ sử dụng hơn. Giờ đây, việc định dạng trang đã đơn giản hơn và trực giác hơn.
+* Hướng dẫn tạo liên kết: Một công cụ rất dễ sử dụng giúp bạn thêm liên kết đến các trang wiki khác cũng như liên kết ra các trang bên ngoài.
+* Cải tiến tìm kiếm: Chúng tôi đã cải tiến những gợi ý tìm kiếm để giúp bạn tìm được trang mình muốn nhanh chóng hơn.
+* Các tính năng mới khác: Chúng tôi cũng đã giới thiệu hướng dẫn tạo bảng để giúp tạo bảng dễ dàng hơn, rồi tính năng tìm kiếm và thay thế để đơn giản hóa việc sửa trang.',
+	'prefswitch-main-on' => '===Phản hồi?===
+Chúng tôi mong muốn được nghe bạn nói. Xin mời thăm <span class="plainlinks">[$1 trang phản hồi]</span> của chúng tôi.
+===Đưa tôi trở lại!===
+Nếu bạn muốn tắt các tính năng mới đi, xin <span class="plainlinks">[$2 nhấn vào đây]</span>.',
+	'prefswitch-main-off' => '===Dùng thử!===
+Nếu bạn muốn bật các tính năng mới, xin <span class="plainlinks">[$1 nhấn vào đây]</span>.',
+	'prefswitch-survey-intro-feedback' => 'Chúng tôi mong muốn được nghe bạn nói.
+Xin vui lòng điền vào bảng điều tra phía dưới.',
+	'prefswitch-survey-intro-off' => 'Cảm ơn bạn đã dùng thử những tính năng mới của chúng tôi.
+Để giúp chúng tôi cải tiến chúng hơn nữa, xin vui lòng điền vào bảng điều tra phía dưới.',
 );
 
