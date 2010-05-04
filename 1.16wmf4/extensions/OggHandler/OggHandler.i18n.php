@@ -47,6 +47,8 @@ Please <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_downlo
 	'ogg-dismiss'          => 'Close',
 	'ogg-download'         => 'Download file',
 	'ogg-desc-link'        => 'About this file',
+	'ogg-oggThumb-version' => 'OggHandler requires oggThumb version $1 or later.',
+	'ogg-oggThumb-failed'  => 'oggThumb failed to create the thumbnail.',
 );
 
 /** Message documentation (Message documentation)
