@@ -75,7 +75,6 @@
 				$sql .= " FROM {$dc}_expression, {$dc}_syntrans" ;
 				$sql .= " WHERE {$dc}_expression.expression_id = {$dc}_syntrans.expression_id " ;
 				$sql .= " AND {$dc}_syntrans.remove_transaction_id IS NULL " ;
-				$sql .= " AND {$dc}_expression.remove_transaction_id IS NULL " ;
 				$sql .= " group by language_id " ;
 
 				$queryResult = $dbr->query( $sql );
@@ -169,7 +168,6 @@
 				$sql .= " FROM {$dc}_expression, {$dc}_syntrans" ;
 				$sql .= " WHERE {$dc}_expression.expression_id = {$dc}_syntrans.expression_id " ;
 				$sql .= " AND {$dc}_syntrans.remove_transaction_id IS NULL " ;
-				$sql .= " AND {$dc}_expression.remove_transaction_id IS NULL " ;
 				$sql .= " group by language_id " ;
 
 				$queryResult = $dbr->query( $sql );
@@ -216,7 +214,6 @@
 				$sql .= " FROM {$dc}_expression, {$dc}_syntrans" ;
 				$sql .= " WHERE {$dc}_expression.expression_id = {$dc}_syntrans.expression_id " ;
 				$sql .= " AND {$dc}_syntrans.remove_transaction_id IS NULL " ;
-				$sql .= " AND {$dc}_expression.remove_transaction_id IS NULL " ;
 				$sql .= " group by language_id " ;
 
 				$queryResult = $dbr->query( $sql );
