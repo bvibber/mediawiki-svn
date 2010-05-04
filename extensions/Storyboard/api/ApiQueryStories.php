@@ -82,7 +82,7 @@ class ApiQueryStories extends ApiQueryBase {
 		}
 		
 		$this->addOption( 'LIMIT', $params['limit'] + 1 );
-		$this->addOption( 'ORDER BY', 'story_modified, story_id DESC' );
+		$this->addOption( 'ORDER BY', 'story_modified DESC, story_id DESC' );
 
 		if ( !is_null( $params['language'] ) ) {
 			$this->addWhere( "story_lang_code = '$params[language]'" );
@@ -102,7 +102,7 @@ class ApiQueryStories extends ApiQueryBase {
 
 			$this->addWhere(
 				"story_modified < $storyModified OR " .
-				"(story_modified = $storyId AND story_id <= $storyModified)"
+				"(story_modified = $storyModified AND story_id <= $storyId)"
 			);
 		}
 		
@@ -121,10 +121,8 @@ class ApiQueryStories extends ApiQueryBase {
 				'id' => $story->story_id,
 				'author' => $story->story_author_name,
 				'title' => $story->story_title,
-				//'created' => wfTimestamp(  TS_ISO_8601, $story->story_created ),
-				//'modified' => wfTimestamp(  TS_ISO_8601, $story->story_modified ),
-				'created' => $story->story_created,
-				'modified' => $story->story_modified,		
+				'created' => wfTimestamp(  TS_ISO_8601, $story->story_created ),
+				'modified' => wfTimestamp(  TS_ISO_8601, $story->story_modified ),
 				'imageurl' => $story->story_author_image,
 				'permalink' => SpecialPage::getTitleFor( 'story', $story->story_title )->getFullURL()
 			);

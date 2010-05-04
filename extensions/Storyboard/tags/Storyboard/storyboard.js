@@ -27,19 +27,16 @@
 			'stlimit': 2,
 			'stlanguage': window.storyboardLanguage
 		};
-		
-		if ( $storyboard.attr( 'storymodified' ) ) {
-			requestArgs.stcontinue = $storyboard.attr( 'storymodified' );
-			
-			requestArgs.stcontinue += '-' + 
-				( $storyboard.attr( 'storyid' ) ? $storyboard.attr( 'storyid' ) : '0' );
+
+		if ( window.storyContinueParam ) {
+			requestArgs.stcontinue = window.storyContinueParam.stories.stcontinue;
 		}
-			
+
 		$.getJSON( wgScriptPath + '/api.php',
 			requestArgs,
 			function( data ) {
 				if ( data.query ) {
-					addStories( $storyboard, data.query );
+					addStories( $storyboard, data );
 				} else {
 					alert( 'An error occured:\n' + data.error.info ); // TODO: i18n
 				}		
@@ -47,19 +44,19 @@
 		);
 	}
 	
-	function addStories( $storyboard, query ) {
+	function addStories( $storyboard, data ) {
 		// Remove the empty boxes.
 		$storyboard.html( '' );
 		
-		for ( var i in query.stories ) {
-			var story = query.stories[i];
+		for ( var i in data.query.stories ) {
+			var story = data.query.stories[i];
 			var $storyBody = $( "<div />" ).addClass( "storyboard-box" );
 			
 			var $header = $( "<div />" ).addClass( "story-header" ).appendTo( $storyBody );
 			$( "<div />" ).addClass( "story-title" ).text( story.title ).appendTo( $header );
 			
-			var deliciousUrl = "http://delicious.com/save?jump=yes&url=" + encodeURIComponent( story.permalink ) + "&title=" + encodeURIComponent( story.title );
-			var facebookUrl = "http://www.facebook.com/sharer.php?u=" + encodeURIComponent( story.permalink ) + '&t=' + encodeURIComponent( story.title );
+			var deliciousUrl = "http://delicious.com/save?jump=yes&amp;url=" + encodeURIComponent( story.permalink ) + "&amp;title=" + encodeURIComponent( story.title );
+			var facebookUrl = "http://www.facebook.com/sharer.php?u=" + encodeURIComponent( story.permalink ) + '&amp;t=' + encodeURIComponent( story.title );
 			
 			$( "<div />" )
 				.addClass( "story-sharing" )
@@ -124,9 +121,7 @@
 			$storyboard.append( $storyBody );	
 		}
 		
-		var story = query.stories[query.stories.length - 1];
-		window.storyModified = story.modified;
-		window.storyId = story.id;
+		window.storyContinueParam = data["query-continue"] ? data["query-continue"] : false; 
 		
 		window.storyboardBusy = false;
 	}

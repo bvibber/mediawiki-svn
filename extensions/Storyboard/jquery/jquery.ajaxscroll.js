@@ -82,8 +82,6 @@
 					$b = jQuery( opt.batchTemplate )
 						.attr({
 							offset: offset,
-							storymodified: window.storyModified,
-							storyid: window.storyId,							
 							len: opt.batchSize
 						})
 						.addClass( opt.batchClass + " " + opt.emptyBatchClass );
