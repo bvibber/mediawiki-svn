@@ -152,6 +152,7 @@ mw.addClassFilePaths( {
 	"$j.fn.suggestions"		: "jquery/plugins/jquery.suggestions.js",
 	"$j.fn.textSelection" 	: "jquery/plugins/jquery.textSelection.js",
 	"$j.browserTest"		: "jquery/plugins/jquery.browserTest.js",
+	"$j.fn.jWizard"			: "jquery/plugins/jquery.jWizard.js",
 
 	"$j.effects.blind"		: "jquery/jquery.ui/ui/effects.blind.js",
 	"$j.effects.drop"		: "jquery/jquery.ui/ui/effects.drop.js",
