@@ -72,6 +72,29 @@ div.story-metadata {
 }
 
 /**
+ * Css for storyreview
+ */
+
+.storyreviewboard {
+	border: 1px solid #ddd;
+}
+.storyreviewboard .storyboard-batch {
+	margin: 0;
+	padding: 0;
+}
+.storyreviewboard .storyboard-box {
+	display: inline-block;
+	border: 1px solid #eee;
+	width: 99%;
+	min-height: 100px;
+	margin: 5px;
+}
+.storyreviewboard .storyboard-empty .storyboard-box {
+	border: 1px solid #ddd;
+	background: #FCFCFC url(images/storyboard-loader.gif) no-repeat scroll center center;
+}
+
+/**
  * Css for <storyboard> tags
  */
 .storyboard {

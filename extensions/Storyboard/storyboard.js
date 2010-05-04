@@ -115,13 +115,34 @@ function stbUpdateReviewBoard( $storyboard ) {
 function stbAddStories( $storyboard, query ) {
 	// Remove the empty boxes.
 	$storyboard.html( '' );
-	
+
 	// TODO: create the review blocks html with jQuery
 	for ( var i in query.stories ) {
 		var story = query.stories[i];
 		var $storyBody = jQuery( "<div />" ).addClass( "storyboard-box" );
 		
-		$storyboard.append( $storyBody );
+		var $header = jQuery( "<div />" ).addClass( "story-header" ).appendTo( $storyBody );
+		jQuery( "<div />" ).addClass( "story-title" ).text( story.title ).appendTo( $header );
+		
+		var textAndImg = jQuery( "<div />" ).addClass( "story-text" ).text( story["*"] );
+		
+		if ( story.imageurl ) {
+			textAndImg.prepend(
+				jQuery( "<img />" ).attr( "src", story.imageurl ).addClass( "story-image" )
+			);
+		}
+		
+		$storyBody.append( textAndImg );
+		
+		$storyBody.append( // TODO: get the actual message here
+				jQuery( "<div />" ).addClass( "story-metadata" ).append(
+					jQuery("<span />").addClass( "story-metadata" ).text( " Submitted by $1 from $2 on $3, $4.")
+			)
+		);
+		
+		// TODO: add review controls
+		
+		$storyboard.append( $storyBody );	
 	}
 }
 
