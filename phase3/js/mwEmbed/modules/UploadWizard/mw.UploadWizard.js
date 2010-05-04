@@ -1058,6 +1058,15 @@ mw.UploadWizardDetails = function( upload, containerDiv ) {
 		.append( $j( '<div class="mwe-upwiz-details-input"></div>' ).append( _this.titleInput ) )
 		.append( _this.titleErrorDiv );
 
+	_this.deedDiv = $j( '<div class="mwe-upwiz-custom-deed" />' );
+
+	_this.copyrightInfoFieldset = $j('<fieldset class="mwe-fieldset mwe-upwiz-copyright-info"></fieldset>')
+		.hide()
+		.append( 
+			$j( '<legend class="mwe-legend">' ).append( gM( 'mwe-upwiz-copyright-info' ) ), 
+			_this.deedDiv
+		);
+	
 	_this.moreDetailsDiv = $j('<div class="mwe-more-details"></div>').maskSafeHide();
 
 	_this.moreDetailsCtrlDiv = $j( '<div class="mwe-upwiz-details-more-options"></div>' );
@@ -1088,26 +1097,7 @@ mw.UploadWizardDetails = function( upload, containerDiv ) {
 			)
 		);
 
-	var copyrightInfoFieldset = $j('<fieldset class="mwe-fieldset"></fieldset>')
-		.append( 
-			$j( '<legend class="mwe-legend">' ).append( gM( 'mwe-upwiz-copyright-info' ) ), 
-			$j( '<div class="mwe-upwiz-copyright-info" />' ).append(
-				$j( '<label />' ).append ( 
-					$j( '<input type="radio" name="custom-deed" value="macro" />' ),
-					gM( 'mwe-copyright-macro' ) ),
-				$j( '<label />' ).append (
-					$j( '<input type="radio" name="custom-deed" value="custom" />' ),
-					gM( 'mwe-copyright-custom' ) ) ),
-			$j( '<div class="mwe-upwiz-custom-deed" />' )
-		);
-				
-	$j( copyrightInfoFieldset ).find( 'input[name="custom-deed"]' ).change( function() {
-		var value = $j( copyrightInfoFieldset ).find( 'input[name="custom-deed"]:checked' ).val();
-		_this.toggleCustomDeed( value === 'custom' );
-	} );
 
-	$j( copyrightInfoFieldset ).find( 'input[value="macro"]' ).attr( 'checked', true );
-	
 
 	var aboutFileFieldset = $j('<fieldset class="mwe-fieldset"></fieldset>')
 		.append( $j( '<legend class="mwe-legend">' ).append( gM( 'mwe-upwiz-about-format' ) ) ) 
@@ -1129,16 +1119,16 @@ mw.UploadWizardDetails = function( upload, containerDiv ) {
 		.append( $j( _this.dataDiv )
 			.append( _this.descriptionsContainerDiv )
 			.append( _this.titleContainerDiv )
+			.append( _this.copyrightInfoFieldset )
 			.append( _this.moreDetailsCtrlDiv )
 			.append( $j( _this.moreDetailsDiv ) 
 				.append( aboutThisWorkFieldset )
-				.append( copyrightInfoFieldset )
-				.append( aboutFileFieldset )
+				//.append( aboutFileFieldset )
 				.append( otherInformationDiv )
 			)
 		);
 
-	mw.UploadWizardUtil.makeMoreToggler( _this.moreDetailsCtrlDiv, _this.moreDetailsDiv);	
+	mw.UploadWizardUtil.makeMoreToggler( _this.moreDetailsCtrlDiv, _this.moreDetailsDiv );	
 
 	_this.addDescription();
 	$j( containerDiv ).append( _this.div );
@@ -1151,16 +1141,17 @@ mw.UploadWizardDetails.prototype = {
 	/**
 	 * toggles whether we use the 'macro' deed or our own
 	 */
-	toggleCustomDeed: function( isUsingCustomDeed ) {
+	useCustomDeedChooser: function() {
 		var _this = this;
-		var deedDiv = $j( _this.div ).find( '.mwe-upwiz-custom-deed' );
-		if ( isUsingCustomDeed ) {
-			_this.upload.wizardDeedChooser = _this.upload.deedChooser;
-			_this.upload.deedChooser = new mw.UploadWizardDeedChooser( deedDiv );
-		} else {
-			_this.upload.deedChooser = _this.upload.wizardDeedChooser;
-			deedDiv.empty();
-		}
+		_this.copyrightInfoFieldset.show();
+		_this.upload.wizardDeedChooser = _this.upload.deedChooser;
+		_this.upload.deedChooser = new mw.UploadWizardDeedChooser( _this.deedDiv );
+	},
+
+	useDeedChooser: function( deedChooser ) {
+		var _this = this;
+		_this.upload.deedChooser = deedChooser;
+		_this.deedDiv.empty();
 	},
 
 
@@ -1860,7 +1851,7 @@ mw.UploadWizard.prototype = {
 		       +       '<div id="mwe-upwiz-progress" class="ui-helper-clearfix"></div>'
 		       +     '</div>'
 		       +     '<div class="mwe-upwiz-buttons"/>'
-		       +        '<button class="mwe-upwiz-button-next" disabled="true" />'
+		       +        '<button class="mwe-upwiz-button-next" />'
 		       +     '</div>'
 		       +   '</div>'
 
@@ -1870,7 +1861,7 @@ mw.UploadWizard.prototype = {
 		       +     '<div id="mwe-upwiz-deeds" class="ui-helper-clearfix"></div>'
 		       +     '<div id="mwe-upwiz-deeds-custom" class="ui-helper-clearfix"></div>'
 		       +     '<div class="mwe-upwiz-buttons"/>'
-		       +        '<button class="mwe-upwiz-button-next" disabled="true" />'
+		       +        '<button class="mwe-upwiz-button-next" />'
 		       +     '</div>'
                        +   '</div>'
 
@@ -1883,7 +1874,7 @@ mw.UploadWizard.prototype = {
 		       +       '<div id="mwe-upwiz-macro-files"></div>'
 		       +     '</div>'
 		       +     '<div class="mwe-upwiz-buttons"/>'
-		       +        '<button class="mwe-upwiz-button-next" disabled="true" />'
+		       +        '<button class="mwe-upwiz-button-next" />'
 		       +     '</div>'
 		       +   '</div>'
 
@@ -1925,7 +1916,8 @@ mw.UploadWizard.prototype = {
 		} );
 
 		$j( '#mwe-upwiz-deeds-custom' ).append( 
-			$j( '<div id="mwe-upwiz-deeds-later" style="hidden"/>' )
+			$j( '<div id="mwe-upwiz-deeds-later" />' )
+				.hide()
 				.append( $j( '<label>' )
 					.append( 
 						$j( '<input />')
@@ -1935,6 +1927,7 @@ mw.UploadWizard.prototype = {
 								if ( $j( this ).is( ':checked' ) ) {
 									_this.deedChooser.showDeedChoice();
 									_this.deedChooser.choose( customDeed );
+									_this.deedChooser.trigger( 'isReady' );
 								} else {
 									_this.deedChooser.choose( mw.UploadWizardNullDeed );
 								}
@@ -1944,8 +1937,9 @@ mw.UploadWizard.prototype = {
 				)
 		);
 		
-		$j( _this.deedChooser ).bind( 'setQuantity', function() {
-			if ( _this.count > 1 ) {
+		$j( _this.deedChooser ).bind( 'setQuantityEvent', function() {
+			mw.log( "checking this deedchooser count " + _this.deedChooser.count );
+			if ( _this.deedChooser.count > 1 ) {
 				$j( '#mwe-upwiz-deeds-later' ).show();
 			} else {
 				$j( '#mwe-upwiz-deeds-later' ).hide();
@@ -1958,24 +1952,40 @@ mw.UploadWizard.prototype = {
 			_this.moveToStep('details');
 		} );
 
+		// XXX perhaps we should defer this until we click next
 		$j( _this.deedChooser ).bind( 'chooseDeed', function() {
-			$j( '#mwe-upwiz-stepdiv-deeds' ).enableNextButton();	
 			var isCustom = ( _this.deedChooser.deed === customDeed );
 			$j.each( _this.uploads, function( i, upload ) {
-				upload.details.toggleCustomDeed( isCustom );
+				if (isCustom) {
+					upload.details.useCustomDeedChooser();
+				} else {
+					upload.details.useDeedChooser( _this.deedChooser );
+				}
 			} );
 		} ); 
 
+		// XXX perhaps we should defer this until we click next
 		$j( _this.deedChooser ).bind( 'chooseNullDeed', function() {
-			$j( '#mwe-upwiz-stepdiv-deeds' ).disableNextButton();
 			$j.each( _this.uploads, function( i, upload ) {
-				upload.details.toggleCustomDeed( false );
+				upload.details.deedChooser = _this.deedChooser;
 			} );
+			// $j( '#mwe-upwiz-stepdiv-deeds' ).disableNextButton();
 		} );
 
+	/*
+		// XXX figure out some way to make them ready / unready
+		// timeout after input, check for readiness, then trigger event?
+		$j( _this.deedChooser ).bind( 'isReady', function() {
+			$j( '#mwe-upwiz-stepdiv-deeds' ).enableNextButton();
+		} );
+
+		$j( _this.deedChooser ).bind( 'isNotReady', function() {
+			$j( '#mwe-upwiz-stepdiv-deeds' ).disableNextButton();
+		} );
+*/
 
 		// DETAILS div
-		$j( '#mwe-upwiz-stepdiv-details' ).click( function() {
+		$j( '#mwe-upwiz-stepdiv-details .mwe-upwiz-button-next' ).click( function() {
 			_this.detailsSubmit( function() { 
 				_this.prefillThanksPage();
 				_this.moveToStep('thanks');
@@ -2461,7 +2471,7 @@ mw.UploadWizardDeedChooser = function( selector ) {
 		'thirdparty' : _this.setupDeedThirdParty()
 	};
 
-	_this.setQuantity(1);
+	_this.setQuantity();
 };
 
 
@@ -2501,6 +2511,7 @@ mw.UploadWizardDeedChooser.prototype = {
 			}
 			
 		} );
+		$j( _this ).trigger( 'setQuantityEvent' );
 
 	},
 
@@ -2509,6 +2520,7 @@ mw.UploadWizardDeedChooser.prototype = {
 		_this.deed = deed;
 		if ( deed === mw.UploadWizardNullDeed ) {
 			$j( _this ).trigger( 'chooseNullDeed' );
+			//_this.trigger( 'isNotReady' );
 			$j( _this.selector )
 				.find( 'input.mwe-accept-deed' )
 				.attr( 'checked', false )
@@ -3086,7 +3098,8 @@ jQuery.fn.maskSafeShow = function( options ) {
 	$j.fn.notify = function ( message ) {
 		// could do something here with Chrome's in-browser growl-like notifications.
 		// play a sound?
-		alert( message );
+		// if the current tab does not have focus, use an alert?
+		// alert( message );
 	};
 
 	$j.fn.enableNextButton = function() {
