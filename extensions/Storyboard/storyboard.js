@@ -74,12 +74,14 @@ function stbValidateSubmission( termsCheckbox ) {
  * Story review functions
  */
 
-function stbShowReviewBoard( tab ) {
+function stbShowReviewBoard( tab, state ) {
 	tab.html( jQuery( "<div />" )
 		.addClass( "storyreviewboard" )
-		.attr( { "style": "height: 420px; width: 100%;" } ) );
+		.attr( { "style": "height: 420px; width: 100%;", "id": "storyreviewboard-" + state } ) );
 	
-	jQuery( '.storyreviewboard' ).ajaxScroll( {
+	window.reviewstate = state;
+	
+	jQuery( '#storyreviewboard-' + state ).ajaxScroll( {
 		updateBatch: stbUpdateReviewBoard,
 		maxOffset: 500,
 		batchSize: 2,
@@ -97,7 +99,9 @@ function stbUpdateReviewBoard( $storyboard ) {
 		'list': 'stories',
 		'format': 'json',
 		'stlimit': 8,
-		'stlanguage': window.storyboardLanguage
+		'stlanguage': window.storyboardLanguage,
+		'streview': 1,
+		'ststate': window.reviewstate
 	};
 	
 	jQuery.getJSON( wgScriptPath + '/api.php',
@@ -135,12 +139,15 @@ function stbAddStories( $storyboard, query ) {
 		$storyBody.append( textAndImg );
 		
 		$storyBody.append( // TODO: get the actual message here
-				jQuery( "<div />" ).addClass( "story-metadata" ).append(
-					jQuery("<span />").addClass( "story-metadata" ).text( " Submitted by $1 from $2 on $3, $4.")
+			jQuery( "<div />" ).addClass( "story-metadata" ).append(
+				jQuery("<span />").addClass( "story-metadata" ).text( " Submitted by $1 from $2 on $3, $4." )
 			)
 		);
 		
 		// TODO: add review controls
+		$storyBody.append(
+			jQuery( "<div />" ).append( jQuery( "<button />" ).text( "edit" ).attr( "onclick", "window.location='" + story.modifyurl + "'" ) )
+		);
 		
 		$storyboard.append( $storyBody );	
 	}
@@ -152,8 +159,6 @@ function stbAddStories( $storyboard, query ) {
  * @param sender The UI element invocing the action, typically a button.
  * @param storyid Id identifying the story.
  * @param action The action that needs to be performed on the story.
- * 
- * TODO: support multiple actions at once
  */
 function stbDoStoryAction( sender, storyid, action ) {
 	sender.innerHTML = 'Working...'; // TODO: i18n

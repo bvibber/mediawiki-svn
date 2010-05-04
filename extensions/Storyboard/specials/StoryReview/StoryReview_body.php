@@ -63,8 +63,8 @@ class SpecialStoryReview extends SpecialPage {
 <div id="storyreview-tabs">
 	<ul>
 		<li><a href="#$unpublished" id="$unpublished-tab">$unpublished</a></li>
-		<!--<li><a href="#$published" id="$published-tab">$published</a></li>
-		<li><a href="#$hidden" id="$hidden-tab">$hidden</a></li>-->
+		<li><a href="#$published" id="$published-tab">$published</a></li>
+		<li><a href="#$hidden" id="$hidden-tab">$hidden</a></li>
 	</ul>
 	<div id="$unpublished"></div>
 	<div id="$published"></div>
@@ -79,7 +79,7 @@ class SpecialStoryReview extends SpecialPage {
 	});
 	
 	jQuery('#storyreview-tabs').bind( 'tabsshow', function( event, ui ) {
-		stbShowReviewBoard( jQuery( ui.panel ) );
+		stbShowReviewBoard( jQuery( ui.panel ), ui.index );
 	});
 </script>	
 EOT;
