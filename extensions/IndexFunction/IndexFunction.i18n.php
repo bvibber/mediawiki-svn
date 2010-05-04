@@ -909,7 +909,7 @@ $messages['pdc'] = array(
  */
 $messages['pl'] = array(
 	'indexfunc-badtitle' => 'Niepoprawny tytuł „$1”',
-	'indexfunc-index-exists' => 'Strona „[[$1]]” już istnieje',
+	'indexfunc-index-exists' => 'Strona „$1” już istnieje',
 	'index-search' => 'Szukaj',
 	'index-submit' => 'Zapisz',
 );

@@ -303,6 +303,20 @@ $messages['bg'] = array(
 	'tooltip-ca-ratinghist' => 'Читателска оценка на страницата',
 );
 
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'readerfeedback-level-0' => 'খারাপ',
+	'readerfeedback-level-1' => 'ভাল নয়',
+	'readerfeedback-level-2' => 'মোটামোটি',
+	'readerfeedback-level-3' => 'ভাল',
+	'readerfeedback-level-4' => 'খুবই ভাল',
+	'readerfeedback-submit' => 'জমা',
+	'readerfeedback-finished' => 'ধন্যবাদ!',
+	'specialpages-group-feedback' => 'দর্শকের মতামত',
+);
+
 /** Breton (Brezhoneg)
  * @author Fohanno
  * @author Fulup

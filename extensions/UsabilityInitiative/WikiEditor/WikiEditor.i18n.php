@@ -79,6 +79,7 @@ $messages['be-tarask'] = array(
 $messages['bg'] = array(
 	'wikieditor' => 'Подобрен интерфейс за редактиране на уикитекст',
 	'wikieditor-wikitext-tab' => 'Уикитекст',
+	'wikieditor-loading' => 'Зареждане',
 );
 
 /** Bengali (বাংলা)

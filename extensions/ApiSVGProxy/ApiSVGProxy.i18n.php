@@ -194,7 +194,7 @@ $messages['pms'] = array(
  * @author Hamilton Abreu
  */
 $messages['pt'] = array(
-	'apisvgproxy-desc' => 'Faz o proxy de ficheiros SVG de um repositório (possivelmente remoto) para o domínio local',
+	'apisvgproxy-desc' => 'Representa os ficheiros SVG de um repositório (possivelmente remoto) no domínio local',
 );
 
 /** Russian (Русский)

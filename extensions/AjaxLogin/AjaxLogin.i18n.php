@@ -84,6 +84,8 @@ $messages['bg'] = array(
  * @author Bellayet
  */
 $messages['bn'] = array(
+	'ajaxLogin2' => 'আপনি কি নিশ্চিত?
+আপনি যদি এই পাতাটি ছেড়ে যান তাহলে এ পাতায় আপনার করা পরিবর্তনগুলো হারিয়ে যেতে পারে।',
 	'ajaxlogin-create' => 'অ্যাকাউন্ট তৈরি',
 );
 

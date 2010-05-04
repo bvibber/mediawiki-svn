@@ -258,8 +258,10 @@ $messages['bn'] = array(
 	'ratinghistory-period' => 'সময়:',
 	'ratinghistory-month' => 'গত মাস',
 	'ratinghistory-3months' => 'গত ৩ মাস',
+	'ratinghistory-year' => 'বিগত বছর',
 	'ratinghistory-3years' => 'গত ৩ বছর',
 	'ratinghistory-ave' => 'গড়: $1',
+	'ratinghistory-table-votes' => 'ভোট',
 );
 
 /** Breton (Brezhoneg)

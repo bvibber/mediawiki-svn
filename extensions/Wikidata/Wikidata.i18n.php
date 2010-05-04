@@ -1157,7 +1157,7 @@ $messages['bcl'] = array(
 $messages['be-tarask'] = array(
 	'wikidata-desc' => 'Дадае базы зьвестак падобныя на вікі для розных тыпаў зьместу',
 	'wikidata-handler-namespace-move-error' => 'Старонкі ў прасторы назваў, якую выкарыстоўвае пашырэньне Wikidata, ня могуць быць перанесеныя.',
-	'languages' => 'Вікізьвесткі: кіраваньне мовамі',
+	'languages' => 'ВікіЗьвесткі: кіраваньне мовамі',
 	'langman-desc' => 'Дазваляе дадаваць і зьмяняць устаноўкі моваў з дапамогай [[Special:Languages]]',
 	'langman_title' => 'Кіраваньне мовамі',
 	'langman_not_allowed' => 'Вы ня маеце правоў на зьмену настроек моваў.',
@@ -1175,7 +1175,7 @@ $messages['be-tarask'] = array(
 	'importlangnames_not_allowed' => 'Вы ня маеце правоў на імпарт назваў моваў.',
 	'importlangnames_added' => 'Дададзеная назва мовы для «$1».',
 	'importlangnames_not_found' => '<strong>Ня знойдзены элемэнт для мовы «$1»!</strong>',
-	'datasearch' => 'Вікізьвесткі: пошук зьвестак',
+	'datasearch' => 'ВікіЗьвесткі: пошук зьвестак',
 	'datasearch_language' => 'Мова:',
 	'datasearch_found_word' => 'Знайсьці слова',
 	'datasearch_meaning' => 'Значэньне',
@@ -1228,7 +1228,7 @@ $messages['be-tarask'] = array(
 	'ow_noedit' => 'Вам не дазволена рэдагаваць старонкі ў наборы зьвестак «$1».
 Калі ласка, паглядзіце [[{{MediaWiki:Ow editing policy url}}|нашы правілы рэдагаваньня]].',
 	'ow_uipref_datasets' => 'Выгляд па змоўчваньні:',
-	'ow_uiprefs' => 'Вікізьвесткі',
+	'ow_uiprefs' => 'ВікіЗьвесткі',
 	'ow_none_selected' => 'Нічога ня выбрана',
 	'transaction' => 'ВікіЗьвесткі: Журнал апэрацыяў',
 	'ow_transaction_from_transaction' => 'З апэрацыі:',
@@ -1343,7 +1343,7 @@ $messages['be-tarask'] = array(
 	'ow_meaningsoftitle' => 'Значэньне «$1»',
 	'ow_meaningsofsubtitle' => '<em>Вікі-спасылка:</em> [[$1]]',
 	'ow_Permission_denied' => '<h2>Доступ забаронены</h2>',
-	'copy' => 'Wikidata: Капіяваньне',
+	'copy' => 'ВікіЗьвесткі: Капіяваньне',
 	'ow_copy_no_action_specified' => 'Калі ласка, пазначце дзеяньне',
 	'ow_copy_help' => 'Дапамога яшчэ ня зьдзейсьнена.',
 	'ow_please_proved_dmid' => 'Падобна, што ва ўведзеных зьвестках адсутнічае «?dmid=<ID>» (dmid=Ідэнтыфікатар вызначанага значэньня)<br />
@@ -1360,8 +1360,8 @@ $messages['be-tarask'] = array(
 	'ow_no_action_specified' => '<h3>Не пазначана ніякіх дзеяньняў</h3>
 Верагодна Вы зайшлі непасрэдна на гэту старонку? Звычайна Вы не павінны былі сюды трапіць.',
 	'ow_db_consistency_not_found' => '<h2>Памылка</h2>
-У сувязі з парушэньнем цэльнасьці базы зьвестак, Вікізьвесткі ня могуць знайсьці слушных зьвестак злучаных з пазначаным ідэнтыфікатарам.
-Магчыма яны страчаны.
+У сувязі з парушэньнем цэльнасьці базы зьвестак, ВікіЗьвесткі ня могуць знайсьці слушных зьвестак злучаных з пазначаным ідэнтыфікатарам.
+Магчыма яны страчаныя.
 Калі ласка, зьвяжыцеся з адміністратарам сэрвэра.',
 	'ow_history_transaction' => 'Дзеяньне:',
 	'ow_history_show_life_span' => 'Паказаць час існаваньня запісу:',
@@ -1375,6 +1375,7 @@ $messages['be-tarask'] = array(
 	'ow_needs_xlation_source_lang' => 'Мова, зь якой ажыцьцяўляецца пераклад:',
 	'ow_needs_xlation_dest_lang' => 'Мова, на якую ажыцьцяўляецца пераклад:',
 	'ow_needs_xlation_no_dest_lang' => 'Калі ласка, пазначце на якую мову ажыцьцяўляецца пераклад.',
+	'ow_statistics' => 'ВікіЗьвесткі: Статыстыка',
 	'ow_show' => 'Паказаць',
 	'ow_upload' => 'Загрузіць',
 	'ow_create' => 'Стварыць',
@@ -2637,6 +2638,7 @@ Bitte kontaktiere den Serveradminstrator.',
 	'ow_needs_xlation_source_lang' => 'Quellsprache:',
 	'ow_needs_xlation_dest_lang' => 'Zielsprache:',
 	'ow_needs_xlation_no_dest_lang' => 'Bitte eine Zielsprache angeben.',
+	'ow_statistics' => 'Wikidata: Statistik',
 	'ow_show' => 'Anzeigen',
 	'ow_upload' => 'Hochladen',
 	'ow_create' => 'Erstellen',
@@ -2918,6 +2920,7 @@ Pšosym staj se z serwerowym operatorom abo administratorom do zwiska.',
 	'ow_needs_xlation_source_lang' => 'Žrědłowa rěc:',
 	'ow_needs_xlation_dest_lang' => 'Celowa rěc:',
 	'ow_needs_xlation_no_dest_lang' => 'Pšosym pódaj celowu rěc.',
+	'ow_statistics' => 'Wikidaty: Statistika',
 	'ow_show' => 'Pokazaś',
 	'ow_upload' => 'Nagraś',
 	'ow_create' => 'Napóraś',
@@ -3636,6 +3639,7 @@ $messages['et'] = array(
 	'ow_needs_xlation_source_lang' => 'Lähtekeel:',
 	'ow_needs_xlation_dest_lang' => 'Sihtkeel:',
 	'ow_needs_xlation_no_dest_lang' => 'Määratle sihtkeel.',
+	'ow_statistics' => 'Wikidata: Statistika',
 	'ow_show' => 'Näita',
 	'ow_upload' => 'Lae üles',
 	'ow_create' => 'Loo',
@@ -4609,6 +4613,7 @@ Por favor, póñase en contacto cun operador ou administrador do servidor.',
 	'ow_needs_xlation_source_lang' => 'Lingua de orixe:',
 	'ow_needs_xlation_dest_lang' => 'Lingua de destino:',
 	'ow_needs_xlation_no_dest_lang' => 'Por favor, especifique unha lingua de destino.',
+	'ow_statistics' => 'Wikidata: Estatísticas',
 	'ow_show' => 'Mostrar',
 	'ow_upload' => 'Cargar',
 	'ow_create' => 'Crear',
@@ -5501,6 +5506,7 @@ Wubjer zběrku za eksport. Zapodaj do tekstoweho kašćika za rěče lisćinu r�
 	'ow_needs_xlation_source_lang' => 'Žórłowa rěč:',
 	'ow_needs_xlation_dest_lang' => 'Cilowa rěč:',
 	'ow_needs_xlation_no_dest_lang' => 'Prošu podaj cilowu rěč.',
+	'ow_statistics' => 'Wikidaty: Statistika',
 	'ow_show' => 'Pokazać',
 	'ow_upload' => 'Nahrać',
 	'ow_create' => 'Wutworić',
@@ -5976,6 +5982,7 @@ Per favor contacta le operator o administrator del servitor.',
 	'ow_needs_xlation_source_lang' => 'Lingua de origine:',
 	'ow_needs_xlation_dest_lang' => 'Lingua de destination:',
 	'ow_needs_xlation_no_dest_lang' => 'Per favor specifica un lingua de destination.',
+	'ow_statistics' => 'Wikidatos: Statisticas',
 	'ow_show' => 'Monstrar',
 	'ow_upload' => 'Incargar',
 	'ow_create' => 'Crear',
@@ -9914,7 +9921,7 @@ $messages['pt'] = array(
 	'importlangnames_title' => 'Importar nomes de línguas',
 	'importlangnames_not_allowed' => 'Não tem permissão para importar nomes de línguas.',
 	'importlangnames_added' => 'Nomes de língua para "$1" adicionados.',
-	'importlangnames_not_found' => '<strong>Nenhuma entrada de língua para "$1" encontrada!</strong>',
+	'importlangnames_not_found' => '<strong>Não foi encontrada nenhuma entrada de língua para "$1"!</strong>',
 	'datasearch' => 'Wikidata: Pesquisa de dados',
 	'datasearch_language' => 'Língua:',
 	'datasearch_found_word' => 'Palavra encontrada',
@@ -9933,10 +9940,10 @@ $messages['pt'] = array(
 	'ow_importtsv_header' => "<p>Importar definições e traduções de um ficheiro de texto, delimitado por tabulações, que tenha sido exportado do OpenOffice.org, Excel ou outra folha de cálculo.</p>
 <p>O formato do ficheiro deverá ser o mesmo que o dos ficheiros exportados na página [[Special:ExportTSV|ExportTSV]].
 Se alterou os nomes das colunas, a importação falhará.
-Se alterou o id or a expressão definidora de qualquer significado definido, essa linha será ignorada.
-Se adicionou colunas, estas deverão estar na forma 'definitions_iso' ou 'translations_iso', onde iso é um código de língua ISO 639-3.</p>
-<p>Se a caixa 'Testar execução' estiver marcada, quaisquer acções que seriam executadas numa importação são reportadas, mas nenhuma modificação é efectivamente feita.
-É encorajado a fazer um teste de execução antes de uma importação efectiva.</p>",
+Se alterou o id ou a expressão definidora de um significado definido, essa linha será ignorada.
+Se adicionou colunas, estas deverão ter a forma 'definitions_iso' ou 'translations_iso', onde iso é um código de língua ISO 639-3.</p>
+<p>Se a opção 'Testar execução' estiver marcada, as operações que seriam realizadas numa importação real são reportadas, mas nenhuma é realizada.
+É encorajado a fazer um teste de execução antes de fazer uma importação real.</p>",
 	'ow_importtsv_not_allowed' => 'Não tem permissão para fazer uma importação de TSV.',
 	'ow_importtsv_importing' => 'A importar dados TSV',
 	'ow_importtsv_import_failed' => 'A importação falhou',
@@ -9956,8 +9963,8 @@ onde iso é o código da língua.</p>",
 As línguas deverão ser códigos de língua ISO 639-3.</p>',
 	'exporttsv' => 'Wikidata: Exportar TSV',
 	'ow_exporttsv_title' => 'Exportar uma colecção para TSV',
-	'ow_exporttsv_header' => "<p>Exporte uma colecção para um formato de texto separado por tabulações que poderá importar no OpenOffice.org, Excel ou outro software de folha de cálculo.<br />
-Seleccione uma colecção a exportar. Na caixa de texto das línguas, introduza uma lista separada por vírgulas com códigos de língua ISO 639-3. Comece pelas línguas a partir das quais irá traduzir (escolha tantas quantas queira) e termine com aquelas para as quais irá traduzir. Depois, clique em 'Criar' para criar o ficheiro.</p>",
+	'ow_exporttsv_header' => "<p>Exporte uma colecção para o formato de texto, delimitado por tabulações, que poderá importar no OpenOffice.org, Excel ou noutra folha de cálculo.<br />
+Seleccione uma colecção para exportar. Introduza uma lista de códigos de língua ISO 639-3, delimitada por vírgulas, na caixa de texto das línguas. Comece pelas línguas a partir das quais irá traduzir (escolha tantas quantas quiser) e termine com aquelas para as quais irá traduzir. Depois, clique 'Criar' para criar o ficheiro.</p>",
 	'ow_exporttsv_languages' => 'Línguas:',
 	'ow_exporttsv_not_allowed' => 'Não tem permissões para fazer uma exportação para TSV.',
 	'ow_exporttsv_export_failed' => 'A exportação falhou',
@@ -10007,7 +10014,7 @@ Seleccione uma colecção a exportar. Na caixa de texto das línguas, introduza 
 	'ow_dm_OK' => 'OK',
 	'ow_dm_not_present' => 'não introduzido',
 	'ow_dm_not_found' => 'não encontrado na base de dados ou mal formado',
-	'ow_mapping_successful' => 'Mapeados todos os campos marcados com [OK]<br />',
+	'ow_mapping_successful' => 'Foram mapeados todos os campos marcados com [OK]<br />',
 	'ow_mapping_unsuccessful' => 'É necessário ter pelo menos dois significados definidos antes de poder ligá-los.',
 	'ow_will_insert' => 'Será inserido o seguinte:',
 	'ow_contents_of_mapping' => 'Conteúdo de mapeamento',
@@ -10113,6 +10120,7 @@ Não foi feita nenhuma operação de cópia.',
 	'ow_needs_xlation_source_lang' => 'Língua origem:',
 	'ow_needs_xlation_dest_lang' => 'Língua destino:',
 	'ow_needs_xlation_no_dest_lang' => 'Por favor, especifique uma língua destino.',
+	'ow_statistics' => 'Wikidata: Estatísticas',
 	'ow_show' => 'Mostrar',
 	'ow_upload' => 'Carregar',
 	'ow_create' => 'Criar',

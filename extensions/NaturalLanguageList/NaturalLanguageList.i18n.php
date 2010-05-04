@@ -227,6 +227,14 @@ $messages['sv'] = array(
 	'nll-lastseparator' => ' och',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'nll-desc' => 'Dễ dàng định dạng các danh sách bằng ngôn ngữ tự nhiên',
+	'nll-lastseparator' => '&#32;và&#32;',
+);
+
 /** Yoruba (Yorùbá)
  * @author Demmy
  */

@@ -201,6 +201,7 @@ $messages['bg'] = array(
  */
 $messages['bn'] = array(
 	'clicktracking' => 'ইউজাবিলিটি ইনিসিয়াটিভ ক্লিক ট্র্যাকিং',
+	'ct-title' => 'সমষ্টিগত ব্যবহারকারীর ক্লিক',
 	'ct-event-name' => 'ইভেন্টের নাম',
 	'ct-expert-header' => '"দক্ষ" ক্লিক',
 	'ct-intermediate-header' => '"মাধ্যমিক" ক্লিক',

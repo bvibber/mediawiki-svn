@@ -635,6 +635,7 @@ QuickTime kan ikke afspille Ogg-file uden denne komponent.
 );
 
 /** German (Deutsch)
+ * @author Kghbln
  * @author Leithian
  * @author Metalhead64
  * @author MichaelFrey
@@ -668,6 +669,8 @@ $messages['de'] = array(
 	'ogg-dismiss' => 'Schließen',
 	'ogg-download' => 'Datei speichern',
 	'ogg-desc-link' => 'Über diese Datei',
+	'ogg-oggThumb-version' => 'OggHandler erfordert oggThumb in der Version $1 oder höher.',
+	'ogg-oggThumb-failed' => 'oggThumb konnte kein Miniaturbild erstellen.',
 );
 
 /** German (formal address) (Deutsch (Sie-Form))
@@ -1627,11 +1630,16 @@ Please <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_downlo
 /** Georgian (ქართული)
  * @author BRUTE
  * @author Malafaya
+ * @author გიორგიმელა
  */
 $messages['ka'] = array(
 	'ogg-short-video' => 'Ogg $1 ვიდეო ფაილი, $2',
 	'ogg-short-general' => 'Ogg $1 მედია ფაილი, $2',
+	'ogg-play' => 'თამაში',
+	'ogg-pause' => 'პაუზა',
+	'ogg-stop' => 'შეჩერება',
 	'ogg-play-video' => 'ვიდეოს ჩართვა',
+	'ogg-play-sound' => 'ხმის ტამაში',
 	'ogg-player-soundthumb' => 'No player',
 	'ogg-player-selected' => '(არჩეულია)',
 	'ogg-more' => 'მეტი...',
@@ -2060,6 +2068,8 @@ $messages['ml'] = array(
 	'ogg-dismiss' => 'അടയ്ക്കുക',
 	'ogg-download' => 'പ്രമാണം ഡൗൺലോഡ് ചെയ്യുക',
 	'ogg-desc-link' => 'ഈ പ്രമാണത്തെക്കുറിച്ച്',
+	'ogg-oggThumb-version' => 'ഓഗ്-തമ്പ് പതിപ്പ് $1 അല്ലെങ്കിൽ പുതിയത് ഓഗ്-ഹാൻഡ്ലറിനാവശ്യമാണ്.',
+	'ogg-oggThumb-failed' => 'ലഘുചിത്രം സൃഷ്ടിക്കുന്നതിൽ ഓഗ്-തമ്പ് പരാജയപ്പെട്ടു.',
 );
 
 /** Marathi (मराठी)

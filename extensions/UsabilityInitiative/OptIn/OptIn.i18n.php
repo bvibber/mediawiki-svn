@@ -5914,6 +5914,20 @@ Chúng tôi muốn biết cảm nghĩ của bạn về giao diện mới của c
 	'optin-survey-answer-changes-predictability' => 'Tăng cường khả năng dự đoán khi hoạt động.',
 	'optin-survey-answer-changes-custom' => 'Cho phép người dùng tùy chỉnh nhiều hơn.',
 	'optin-survey-answer-changes-other' => 'Khác:',
+	'optin-improvements2' => '== Những điều gì đã được cải tiến? ==
+[[File:UsabilityToolbar.png|left|link=|Hình chụp màn hình thanh công cụ soạn thảo cải tiến]]
+[[File:UsabilityDialogs.png|left|link=|Hình chụp màn hình hộp hội thoại để tạo nội dung mới]]
+;Thanh Công Cụ Cải Tiến
+Thanh công cụ cải tiến giúp bạn chỉnh sửa bài viết dễ dàng hơn.
+Các biểu tượng mới và đã cải tiến sẽ giúp bạn hiểu rõ tính năng của từng nút.
+Các phần mở rộng sẽ giúp giảm bớt sự lộn xộn nhưng vẫn giữ lại các công cụ ít dùng chỉ bằng một cú nhấn chuột.
+;Hộp Hội Thoại
+Giờ đây khi tạo liên kết hoặc bảng biểu, nhấn vào biểu tượng công cụ sẽ mở một hộp hội thoại giúp bạn tạo liên kết và bảng biểu bằng cách điền vào một mẫu đơn đơn giản.
+;Và Còn Hơn Thế Nữa
+Chúng tôi đã giới thiệu một số các cải tiến khác như cải tiến duyệt trang, xếp chồng các thẻ, cải tiến tìm kiếm, và nhiều thứ khác.
+== Làm sao để tham gia ==
+Để tìm hiểu thêm về Sáng kiến Khả dụng, xin mời ghé thăm [http://usability.wikimedia.org/wiki/Wikipedia_Usability_Initiative trang chủ] của chúng tôi.
+<div style="clear:both"></div>',
 );
 
 /** Volapük (Volapük)
