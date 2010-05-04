@@ -55,7 +55,6 @@
 			'$j.effects.slide',
 			'$j.effects.pulsate',
 			'$j.fn.autocomplete',
-			'$j.fn.jWizard',
 			'mw.style.autocomplete'
 		],
 		[
