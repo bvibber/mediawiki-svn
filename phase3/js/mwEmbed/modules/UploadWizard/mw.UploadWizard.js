@@ -86,7 +86,8 @@ mw.addMessages( {
 
 	"mwe-prevent-close": "Your files are still uploading. Are you sure you want to navigate away from this page?",
 
-	"mwe-upwiz-files-complete": "Your files finished uploading!"
+	"mwe-upwiz-files-complete": "Your files finished uploading!",
+	"mwe-upwiz-deeds-later": "Set deeds and licenses for each file individually on the next page"
 } );
 
 
@@ -1865,8 +1866,9 @@ mw.UploadWizard.prototype = {
 
 		       +   '<div class="mwe-upwiz-stepdiv" id="mwe-upwiz-stepdiv-deeds">'
 		       +     '<div id="mwe-upwiz-deeds-intro"></div>'
-		       +     '<div id="mwe-upwiz-deeds-thumbnails"></div>'
-		       +     '<div id="mwe-upwiz-deeds"></div>'	
+		       +     '<div id="mwe-upwiz-deeds-thumbnails" class="ui-helper-clearfix"></div>'
+		       +     '<div id="mwe-upwiz-deeds" class="ui-helper-clearfix"></div>'
+		       +     '<div id="mwe-upwiz-deeds-custom" class="ui-helper-clearfix"></div>'
 		       +     '<div class="mwe-upwiz-buttons"/>'
 		       +        '<button class="mwe-upwiz-button-next" disabled="true" />'
 		       +     '</div>'
@@ -1907,12 +1909,6 @@ mw.UploadWizard.prototype = {
 		// within FILE step div
 		$j('#mwe-upwiz-upload-ctrl').click( function() { 
 			_this.removeEmptyUploads();
-		
-			// we set up deed chooser here, because it's only now that we know how many uploads there are
-			// possibly it could have some kind of morphing interface for singular/plural, but this doesn't
-			// seem too bad for now.
-			_this.deedChooser = new mw.UploadWizardDeedChooser( '#mwe-upwiz-deeds', ( _this.uploads.length > 1 ) );
-
 			_this.startUploads(); 
 		} );
 
@@ -1921,11 +1917,62 @@ mw.UploadWizard.prototype = {
 		} );
 
 		// DEEDS div
+		_this.deedChooser = new mw.UploadWizardDeedChooser( '#mwe-upwiz-deeds' );
+
+		var customDeed = $j.extend( new mw.UploadWizardDeed(), {
+			isReady: function() { return true; },
+			setQuantity: function( n ) { return; }
+		} );
+
+		$j( '#mwe-upwiz-deeds-custom' ).append( 
+			$j( '<div id="mwe-upwiz-deeds-later" style="hidden"/>' )
+				.append( $j( '<label>' )
+					.append( 
+						$j( '<input />')
+							.attr( { type: 'checkbox', value: 'deeds-later' } )
+							.addClass( 'mwe-accept-deed' )
+							.click( function() {
+								if ( $j( this ).is( ':checked' ) ) {
+									_this.deedChooser.showDeedChoice();
+									_this.deedChooser.choose( customDeed );
+								} else {
+									_this.deedChooser.choose( mw.UploadWizardNullDeed );
+								}
+							} ),
+						$j( '<span />').append( gM( 'mwe-upwiz-deeds-later' ) )
+					)
+				)
+		);
+		
+		$j( _this.deedChooser ).bind( 'setQuantity', function() {
+			if ( _this.count > 1 ) {
+				$j( '#mwe-upwiz-deeds-later' ).show();
+			} else {
+				$j( '#mwe-upwiz-deeds-later' ).hide();
+			}
+		} );
+
 		$j( '#mwe-upwiz-deeds-intro' ).html( gM( 'mwe-upwiz-deeds-intro' ) );
 
 		$j( '#mwe-upwiz-stepdiv-deeds .mwe-upwiz-button-next').click( function() {
 			_this.moveToStep('details');
 		} );
+
+		$j( _this.deedChooser ).bind( 'chooseDeed', function() {
+			$j( '#mwe-upwiz-stepdiv-deeds' ).enableNextButton();	
+			var isCustom = ( _this.deedChooser.deed === customDeed );
+			$j.each( _this.uploads, function( i, upload ) {
+				upload.details.toggleCustomDeed( isCustom );
+			} );
+		} ); 
+
+		$j( _this.deedChooser ).bind( 'chooseNullDeed', function() {
+			$j( '#mwe-upwiz-stepdiv-deeds' ).disableNextButton();
+			$j.each( _this.uploads, function( i, upload ) {
+				upload.details.toggleCustomDeed( false );
+			} );
+		} );
+
 
 		// DETAILS div
 		$j( '#mwe-upwiz-stepdiv-details' ).click( function() {
@@ -2032,13 +2079,19 @@ mw.UploadWizard.prototype = {
 	 */
 	setUploadFilled: function( upload ) {
 		var _this = this;
+		
 		// XXX check if it has a file? 
+
 		_this.uploads.push( upload );
 		_this.updateFileCounts();
 		
-		upload.deedPreview = new mw.UploadWizardDeedPreview( upload );		
-		upload.deedChooser = _this.deedChooser;
-		
+		upload.deedPreview = new mw.UploadWizardDeedPreview( upload );	
+	
+		// this will modify upload, so it has a .deedChooser property.
+		// We use a method to so we notify deedChooser that it has a new upload -- interface
+		// will change based on quantity etc. Maybe we could be clever with bind here.
+		_this.deedChooser.attach( upload );
+	
 		// set up details
 		upload.details = new mw.UploadWizardDetails( upload, $j( '#mwe-upwiz-macro-files' ));
 	},
@@ -2054,7 +2107,10 @@ mw.UploadWizard.prototype = {
 	 */
 	removeUpload: function( upload ) {
 		var _this = this;
-		upload.unbind(); // everything
+		$j( upload ).unbind(); // everything
+		if ( upload.deedChooser ) {
+			upload.deedChooser.detach( upload );
+		}
 		mw.UploadWizardUtil.removeItem( _this.uploads, upload );
 		_this.updateFileCounts();
 	},
@@ -2352,10 +2408,13 @@ mw.UploadWizardDeedPreview.prototype = {
 };
 
 mw.UploadWizardNullDeed = $j.extend( new mw.UploadWizardDeed(), {
-	isReady: function() {
-		return false;
-	}
+	isReady: function() { return false; },
+
+	setQuantity: function( n ) { return; }
+	
 } );
+
+
 
 
 
@@ -2363,24 +2422,21 @@ mw.UploadWizardNullDeed = $j.extend( new mw.UploadWizardDeed(), {
  * @param selector where to put this deed chooser
  * @param isPlural whether this chooser applies to multiple files (changes messaging mostly)
  */ 
-mw.UploadWizardDeedChooser = function( selector, isPlural ) {
+mw.UploadWizardDeedChooser = function( selector ) {
 	var _this = this;
 	_this.selector = selector;
 	_this.deed = mw.UploadWizardNullDeed;
 
 	items = [];
 	$j.each( [ 'ownwork', 'thirdparty' ], function (i, key) {
-		gMkey = isPlural ? key + '-plural' : key;
 		var item = 
 			'<div class="mwe-upwiz-macro-deed-' + key + ' mwe-upwiz-deed">'
 		       +   '<div class="mwe-upwiz-deed-option-title">'
 		       +     '<span class="mwe-upwiz-deed-header mwe-closed">'
-		       +        '<a class="mwe-upwiz-deed-header-link mwe-upwiz-deed-name">' 
-		       +           gM( 'mwe-upwiz-source-' + gMkey )
-		       +        '</a>'
+		       +        '<a class="mwe-upwiz-deed-header-link mwe-upwiz-deed-name"></a>'
 		       +     '</span>'
 		       +     '<span class="mwe-upwiz-deed-header mwe-open" style="display: none;">' 
-		       +       '<span class="mwe-upwiz-deed-name">' + gM( 'mwe-upwiz-source-' + gMkey ) + '</span>'
+		       +       '<span class="mwe-upwiz-deed-name"></span>'
 		       +       ' <a class="mwe-upwiz-macro-deeds-return">' + gM( 'mwe-upwiz-change' ) + '</a>'
 		       +     '</span>'
 		       +   '</div>'
@@ -2391,17 +2447,63 @@ mw.UploadWizardDeedChooser = function( selector, isPlural ) {
 
 	$j( selector ).html( items.join('') );
 
-	$j( '.mwe-upwiz-macro-deeds-return' ).click( function() { _this.showDeedChoice(); } );
+	$j( '.mwe-upwiz-macro-deeds-return' ).click( function() { 
+		_this.choose( mw.UploadWizardNullDeed );
+		_this.showDeedChoice(); 
+	} );
 
-	// this sets up the hidden divs propertly, so we can set up deeds behind the scenes.
+	_this.choose( mw.UploadWizardNullDeed );
 	_this.showDeedChoice();		
 	
 	// set up the deed interfaces
-	_this.setupDeedOwnWork( isPlural );
-	_this.setupDeedThirdParty( isPlural );
+	_this.deeds = {
+		'ownwork' : _this.setupDeedOwnWork(),
+		'thirdparty' : _this.setupDeedThirdParty()
+	};
+
+	_this.setQuantity(1);
 };
 
+
 mw.UploadWizardDeedChooser.prototype = {
+
+	count: 0,
+
+	attach: function( upload ) {
+		var _this = this;
+		upload.deedChooser = _this;
+		_this.count++;
+		_this.setQuantity();	
+	},
+
+	detach: function( upload ) {
+		_this.count--;
+		_this.setQuantity();	
+	},
+
+	// modify various interface strings depending on singular, multiple deeds
+	setQuantity: function() {
+		var _this = this;
+		mw.log( "setting quantity of deed to " + _this.count );
+		var isPlural = _this.count > 1;
+		$j.each( [ 'ownwork', 'thirdparty' ], function (i, key) {
+			
+			// fix the deed title that opens and closes
+			gMkey = isPlural ? key + '-plural' : key;
+			$j( _this.selector )
+				.find( '.mwe-upwiz-macro-deed-' + key)
+				.find( '.mwe-upwiz-deed-name' )
+				.html( gM( 'mwe-upwiz-source-' + gMkey ) );
+
+			// any other internal strings in the deed
+			if ( _this.deeds[key] ) {
+				_this.deeds[key].setQuantity( _this.count );
+			}
+			
+		} );
+
+	},
+
 	choose: function( deed ) {
 		var _this = this;
 		_this.deed = deed;
@@ -2425,8 +2527,6 @@ mw.UploadWizardDeedChooser.prototype = {
 		$j( _this.selector ).find( '.mwe-upwiz-deed-header.mwe-closed' ).show();
 		$j( _this.selector ).find( '.mwe-upwiz-deed' ).maskSafeShow();
 		$j( _this.selector ).find( '.mwe-upwiz-deed-form' ).maskSafeHide();
-		// reset deed
-		_this.choose( mw.UploadWizardNullDeed );
 	}, 
 
 	/**
@@ -2442,7 +2542,7 @@ mw.UploadWizardDeedChooser.prototype = {
 	/**
 	 * Set up the form and deed object for the deed option that says these uploads are all the user's own work.
 	 */
-	setupDeedOwnWork: function( isPlural ) {
+	setupDeedOwnWork: function() {
 		mw.log("setupdeed own work");	
 		var _this = this;
 
@@ -2454,10 +2554,8 @@ mw.UploadWizardDeedChooser.prototype = {
 		var licenseInput = new mw.UploadWizardLicenseInput( licenseInputDiv );
 		licenseInput.setDefaultValues();
 
-		var plural = isPlural ? '-plural' : '';
-
 		var ownWorkDeed = $j.extend( new mw.UploadWizardDeed(), {
-			
+
 			licenseInput: licenseInput,
 
 			isReady: function() {
@@ -2484,111 +2582,136 @@ mw.UploadWizardDeedChooser.prototype = {
 				} );
 				wikiText += '}}';
 				return wikiText;
-			}
-		} ); 
+			},
 
-		var standardDiv = $j( '<div />' )
-			.append( 
-				$j( '<input />') 
-					.attr( { type: 'checkbox' } )
-					.click( function() {
-						if ( $j( this ).is( ':checked' ) ) {
-							$j( _this.selector )
-								.find( '.mwe-upwiz-deed-accept-ownwork-custom' )
-								.attr( 'checked', false );
-							ownWorkDeed.licenseInput.setDefaultValues();
-							_this.choose( ownWorkDeed );
-						} else {
-							_this.choose( mw.UploadWizardNullDeed );
-						}
-					} )
-					.addClass( 'mwe-upwiz-deed-accept-ownwork-default mwe-accept-deed mwe-checkbox-hang-indent' ),
-				$j( '<p />' )
-					.addClass( 'mwe-checkbox-hang-indent-text' )
+			createInterface: function( deedChooser ) {
+				var _this = this;
+				_this.deedChooser = deedChooser;
+
+				var standardDiv = $j( '<div />' )
+					.append( 
+						$j( '<input />') 
+							.attr( { type: 'checkbox' } )
+							.click( function() {
+								if ( $j( this ).is( ':checked' ) ) {
+									$j( deedChooser.selector )
+										.find( '.mwe-upwiz-deed-accept-ownwork-custom' )
+										.attr( 'checked', false );
+									_this.licenseInput.setDefaultValues();
+									deedChooser.choose( ownWorkDeed );
+								} else {
+									deedChooser.choose( mw.UploadWizardNullDeed );
+								}
+							} )
+							.addClass( 'mwe-upwiz-deed-accept-ownwork-default mwe-accept-deed mwe-checkbox-hang-indent' ),
+
+						// text added in setQuantit
+						$j( '<p class="mwe-upwiz-source-ownwork-assert mwe-checkbox-hang-indent-text"/>' ),
+
+						$j( '<p />' )
+							.addClass( 'mwe-checkbox-hang-indent-text' )
+							.addClass( 'mwe-small-print' )
+							.html( gM ( 'mwe-upwiz-source-ownwork-assert-note' ) )
+					);
+
+				var toggleDiv = $j('<div />');
+
+				var customDiv = $j('<div/>')
+					.maskSafeHide()
+					.append( 
+						$j( '<input />') 
+							.attr( { type: 'checkbox' } )
+							.click( function() { 
+								if ( $j( this ).is( ':checked' ) ) {
+									$j( deedChooser.selector )
+										.find( '.mwe-upwiz-deed-accept-ownwork-default' )
+										.attr( 'checked', false )
+									deedChooser.choose( ownWorkDeed ); 
+								} else {
+									deedChooser.choose( mw.UploadWizardNullDeed );
+								}
+							} )
+							.addClass( 'mwe-upwiz-deed-accept-ownwork-custom mwe-accept-deed mwe-checkbox-hang-indent' ),
+						$j( '<p class="mwe-upwiz-source-ownwork-assert-custom mwe-checkbox-hang-indent-text" />' ),
+						licenseInputDiv 
+					);
+
+				$j( deedChooser.selector ).find( '.mwe-upwiz-macro-deed-ownwork .mwe-upwiz-deed-form' )
+					.append( $j( '<div class="mwe-upwiz-deed-form-internal" />' )
+						.append( standardDiv,
+							 toggleDiv, 
+							 customDiv )
+					);
+
+				
+				
+				mw.UploadWizardUtil.makeFadingToggler( standardDiv, toggleDiv, customDiv );
+
+				// if they select 'fewer options', and they have selected the deed in there, we should unselect it
+				$j( toggleDiv ).bind( 'close', function(e) {
+					e.stopPropagation();
+					if ( $j( deedChooser.selector ).find( '.mwe-upwiz-deed-accept-ownwork-custom' ).is( ':checked' ) ) {
+						$j( deedChooser.selector )
+							.find( '.mwe-upwiz-deed-accept-ownwork-custom' )
+							.attr( 'checked', false );
+						deedChooser.choose( mw.UploadWizardNullDeed );
+					}
+				} );
+
+				_this.setQuantity( 1 );
+			},
+
+
+			setQuantity: function( n ) {
+				var _this = this;
+				var plural = n > 1 ? '-plural' : '';
+				$j( _this.deedChooser.selector )
+					.find( 'p.mwe-upwiz-source-ownwork-assert' )
 					.html( gM( 'mwe-upwiz-source-ownwork-assert' + plural, 
 						$j( '<input />' )
 							.attr( { name: 'author' } )
-							.addClass( 'mwe-upwiz-sign' ) ) ),
-				$j( '<p />' )
-					.addClass( 'mwe-checkbox-hang-indent-text' )
-					.addClass( 'mwe-small-print' )
-					.html( gM ( 'mwe-upwiz-source-ownwork-assert-note' ) )
-			);
+							.addClass( 'mwe-upwiz-sign' ) ) );
+				
+				$j( _this.deedChooser.selector )
+					.find( 'p.mwe-upwiz-source-ownwork-assert-custom' )
+					.html( gM( 'mwe-upwiz-source-ownwork-assert-custom' + plural, 
+						'<span class="mwe-custom-author-input"></span>' ) );
 
-		var toggleDiv = $j('<div />');
+				// have to add the author input this way -- gM() will flatten it to a string and we'll lose it as a dom object
+				$j( _this.deedChooser.selector ).find( '.mwe-custom-author-input' ).append( authorInput );
 
-		var customDiv = $j('<div/>')
-			.maskSafeHide()
-			.append( 
-				$j( '<input />') 
-					.attr( { type: 'checkbox' } )
-					.click( function() { 
-						if ( $j( this ).is( ':checked' ) ) {
-							$j( _this.selector )
-								.find( '.mwe-upwiz-deed-accept-ownwork-default' )
-								.attr( 'checked', false )
-							_this.choose( ownWorkDeed ); 
-						} else {
-							_this.choose( mw.UploadWizardNullDeed );
-						}
-					} )
-					.addClass( 'mwe-upwiz-deed-accept-ownwork-custom mwe-accept-deed mwe-checkbox-hang-indent' ),
-				$j( '<p />' )
-					.addClass( 'mwe-checkbox-hang-indent-text' )
-					.append( gM( 'mwe-upwiz-source-ownwork-assert-custom' + plural, 
-							'<span class="mwe-custom-author-input"></span>' ) ),
-				licenseInputDiv 
-			);
+				// synchronize both username signatures
+				// set initial value to configured username
+				// if one changes all the others change
+				$j( _this.deedChooser.selector ).find( '.mwe-upwiz-sign' )
+					.attr( { value: mw.getConfig( 'userName' ) } )
+					.keyup( function() { 
+						var thisInput = this;
+						var thisVal = $j( thisInput ).val();
+						$j.each( $j( '.mwe-upwiz-sign' ), function( i, input ) {
+							if (thisInput !== input) {
+								$j( input ).val( thisVal );
+							}
+						} );
+					} );
+				
 
-		$j( _this.selector ).find( '.mwe-upwiz-macro-deed-ownwork .mwe-upwiz-deed-form' )
-			.append( $j( '<div class="mwe-upwiz-deed-form-internal" />' )
-				.append( standardDiv,
-					 toggleDiv, 
-					 customDiv )
-			);
-
-		
-		
-		mw.UploadWizardUtil.makeFadingToggler( standardDiv, toggleDiv, customDiv );
-
-		// if they select 'fewer options', and they have selected the deed in there, we should unselect it
-		$j( toggleDiv ).bind( 'close', function(e) {
-			e.stopPropagation();
-			if ( $j( _this.selector ).find( '.mwe-upwiz-deed-accept-ownwork-custom' ).is( ':checked' ) ) {
-				$j( _this.selector )
-					.find( '.mwe-upwiz-deed-accept-ownwork-custom' )
-					.attr( 'checked', false );
-				_this.choose( mw.UploadWizardNullDeed );
 			}
-		} );
+		} ); 
 
-		// have to add the author input this way -- gM() will flatten it to a string and we'll lose it as a dom object
-		$j( _this.selector ).find( '.mwe-custom-author-input' ).append( authorInput );
-
-		// synchronize both username signatures
-		// set initial value to configured username
-		// if one changes all the others change
-		$j( _this.selector ).find( '.mwe-upwiz-sign' )
-			.attr( { value: mw.getConfig( 'userName' ) } )
-			.keyup( function() { 
-				var thisInput = this;
-				var thisVal = $j( thisInput ).val();
-				$j.each( $j( '.mwe-upwiz-sign' ), function( i, input ) {
-					if (thisInput !== input) {
-						$j( input ).val( thisVal );
-					}
-				} );
-			} );
-	
+		ownWorkDeed.createInterface( _this );
 
 		$j( _this.selector ).find( '.mwe-upwiz-macro-deed-ownwork .mwe-upwiz-deed-header-link').click( 
 			function() { 
 				_this.showDeed( $j( _this.selector ).find( '.mwe-upwiz-macro-deed-ownwork' ) );
 			}
-		);	
+		);
+
+		return ownWorkDeed;
+	
 	},
 
-	setupDeedThirdParty: function( isPlural ) {
+	setupDeedThirdParty: function() {
 		var _this = this;
 	 	var sourceInput = $j('<textarea class="mwe-source mwe-long-textarea" name="source" rows="1" cols="40"></textarea>' )
 					.growTextArea()
@@ -2607,33 +2730,51 @@ mw.UploadWizardDeedChooser.prototype = {
 				return     (! mw.isEmpty( $j( this.sourceInput  ).val() ) ) 
 					&& (! mw.isEmpty( $j( this.authorInput  ).val() ) )
 					&& this.licenseInput.isSet()
+			},
+
+			createInterface: function( deedChooser ) {
+				var _this = this;
+				_this.deedChooser = deedChooser;
+
+				$j( deedChooser.selector ).find( '.mwe-upwiz-macro-deed-thirdparty .mwe-upwiz-deed-form' ).append( 
+					$j( '<div class="mwe-upwiz-deed-form-internal"/>' )
+						.append( 
+							$j( '<div class="mwe-upwiz-source-thirdparty-custom-plural-intro" />' ), 
+							$j( '<div />' )
+								.addClass( "mwe-upwiz-thirdparty-fields" )
+								.append( $j( '<label />' )
+										.attr( { 'for' : 'source' } )
+										.text( gM( 'mwe-upwiz-source' ) ) )
+								.append( sourceInput ),
+							$j( '<div />' )
+								.addClass( "mwe-upwiz-thirdparty-fields" )
+								.append( $j( '<label />' )
+										.attr( { 'for' : 'author' } )
+										.text( gM( 'mwe-upwiz-author' ) ) )
+								.append( authorInput ),
+							$j( '<div />' ).addClass( 'mwe-upwiz-thirdparty-license' )
+								       .text( gM( 'mwe-upwiz-source-thirdparty-license' ) ),
+							licenseInputDiv
+						)
+				);
+		
+				thirdPartyDeed.setQuantity( 1 );	
+			},
+
+
+			setQuantity: function( n ) {
+				var _this = this;
+				$j( _this.deedChooser.selector )
+					.find( 'div.mwe-upwiz-source-thirdparty-custom-plural-intro' )
+ 					.html( n > 1 ? gM( 'mwe-upwiz-source-thirdparty-custom-plural-intro' ) : '' );
 			}
+
 				
 		} );
+	
+		thirdPartyDeed.createInterface( _this );
 		
-		$j( _this.selector ).find( '.mwe-upwiz-macro-deed-thirdparty .mwe-upwiz-deed-form' ).append( 
-			$j( '<div class="mwe-upwiz-deed-form-internal"/>' )
-				.append( 
-					( isPlural ?  $j( '<div />' ).append( gM( 'mwe-upwiz-source-thirdparty-custom-plural-intro' ) )
-						   :  '' ),
-					$j( '<div />' )
-						.addClass( "mwe-upwiz-thirdparty-fields" )
-						.append( $j( '<label />' )
-								.attr( { 'for' : 'source' } )
-								.text( gM( 'mwe-upwiz-source' ) ) )
-						.append( sourceInput ),
-					$j( '<div />' )
-						.addClass( "mwe-upwiz-thirdparty-fields" )
-						.append( $j( '<label />' )
-								.attr( { 'for' : 'author' } )
-								.text( gM( 'mwe-upwiz-author' ) ) )
-						.append( authorInput ),
-					$j( '<div />' ).addClass( 'mwe-upwiz-thirdparty-license' )
-						       .text( gM( 'mwe-upwiz-source-thirdparty-license' ) ),
-					licenseInputDiv
-				)
-		);
-
+		// set up the header	
 		$j( _this.selector ).find( '.mwe-upwiz-macro-deed-thirdparty .mwe-upwiz-deed-header-link').click( 
 			function() { 
 				_this.showDeed( $j( _this.selector ).find( '.mwe-upwiz-macro-deed-thirdparty' ) );
@@ -2641,6 +2782,7 @@ mw.UploadWizardDeedChooser.prototype = {
 			}
 		);	
 
+		return thirdPartyDeed;
 	}
 };
 
@@ -2949,9 +3091,14 @@ jQuery.fn.maskSafeShow = function( options ) {
 
 	$j.fn.enableNextButton = function() {
 		this.find( '.mwe-upwiz-button-next' )
-			.removeAttr( 'disabled' )
-			.effect( 'pulsate', { times: 3 }, 1000 );
+			.removeAttr( 'disabled' );
+		//	.effect( 'pulsate', { times: 3 }, 1000 );
 	};
+
+	$j.fn.disableNextButton = function() {
+		this.find( '.mwe-upwiz-button-next' )
+			.attr( 'disabled', true );
+	}
 	
 
 } )( jQuery );
