@@ -354,13 +354,13 @@ abstract class Installer {
 	/** Check if we're installing the latest version */
 	function envLatestVersion() {
 		global $wgVersion;
-		$latestInfoUrl = 'http://www.mediawiki.org/w/api.php?action=mwreleases&format=php';
+		$latestInfoUrl = 'http://www.mediawiki.org/w/api.php?action=mwreleases&format=json';
 		$latestInfo = Http::get( $latestInfoUrl );
 		if( !$latestInfo ) {
 			$this->showMessage( 'config-env-latest-can-not-check', $latestInfoUrl );
 			return;
 		}
-		$latestInfo = unserialize($latestInfo);
+		$latestInfo = FormatJson::decode($latestInfo);
 		if ($latestInfo === false || !isset( $latestInfo['mwreleases'] ) ) {
 			# For when the request is successful but there's e.g. some silly man in
 			# the middle firewall blocking us, e.g. one of those annoying airport ones
