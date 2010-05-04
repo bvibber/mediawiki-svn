@@ -44,5 +44,9 @@ public class StoredFeatureFetcher<C extends WikiWordConcept, K> implements Featu
 	protected void trace(String msg) {
 		if (trace!=null) trace.println(msg);
 	}
+
+	public boolean getFeaturesAreNormalized() {
+		return true;
+	}
 	
 }

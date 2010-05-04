@@ -1,0 +1,24 @@
+term_text	concept	concept_name	freq	rule
+UK	1001	United_Kingdom	1000	90
+UK	1002	Great_Britain	670	60
+UK	1004	England	16	10
+London	2001	City_of_London	1000	90
+London	2002	Greater_London	888	80
+London	2003	London_city_council	12	10
+Underground	3001	London_Underground	1000	90
+Underground	3002	Subway	888	60
+Bank	4001	Bank	1000	90
+Bank	4002	Bank_(sitting)	666	80
+Bank	4003	Bank_(geology)	230	60
+Bank	4004	Bank_of_England	220	60
+Bank and Monument	5001	Bank_and_Monument_Underground_stations	200	60
+Bank and Monument Underground station	5001	Bank_and_Monument_Underground_stations	50	90
+Bank and Monument stations	5001	Bank_and_Monument_Underground_stations	66	60
+Bank and Monument	5001	Bank_and_Monument_Underground_stations	200	90
+Monument	6001	Monument	1000	90
+Monument	6002	Some_silly_monument	100	60
+Monument	5001	Bank_and_Monument_Underground_stations	100	10
+station	7001	Bus_station	1000	90
+station	7002	Metro_station	888	80
+station	7003	Train_station	666	60
+station	7004	Social_status	300	10

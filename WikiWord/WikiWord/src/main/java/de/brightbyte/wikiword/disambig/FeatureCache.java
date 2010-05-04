@@ -98,4 +98,8 @@ public class FeatureCache<C extends WikiWordConcept, K> implements FeatureFetche
 		cache.clear();
 	}
 
+	public boolean getFeaturesAreNormalized() {
+		return parent.getFeaturesAreNormalized();
+	}
+
 }

@@ -1,0 +1,121 @@
+concept	concept_name	feature	weight
+1001	United_Kingdom	1001	2
+1001	United_Kingdom	1004	0.66
+1001	United_Kingdom	1001001	0.222
+1001	United_Kingdom	2001001	0.222
+
+1002	Great_Britain	1002	2
+1002	Great_Britain	1004	0.65
+1002	Great_Britain	1001002	0.222
+
+1004	England	1004	2
+1004	England	2001	0.43
+1004	England	2002	0.45
+1004	England	4003	0.2
+1004	England	4004	0.45
+1004	England	1002	0.65
+1004	England	1001	0.66
+
+2001	City_of_London	2001	2
+2001	City_of_London	2002	0.77
+2001	City_of_London	1004	0.43
+2001	City_of_London	2003	0.55
+2001	City_of_London	3001	0.25
+2001	City_of_London	4003	0.15
+2001	City_of_London	4004	0.22
+2001	City_of_London	5001	0.21
+2001	City_of_London	6001	0.023
+
+2002	Greater_London	2002	2
+2002	Greater_London	2001	0.77
+2002	Greater_London	1004	0.45
+2002	Greater_London	2003	0.56
+2002	Greater_London	3001	0.22
+2002	Greater_London	5001	0.12
+2002	Greater_London	6001	0.022
+
+2003	London_city_council	2003	2
+2003	London_city_council	2001	0.55
+2003	London_city_council	2002	0.56
+2003	London_city_council	1002003	0.22
+
+3001	London_Underground	3001	2
+3001	London_Underground	3002	0.47
+3001	London_Underground	5001	0.66
+3001	London_Underground	2001	0.25
+3001	London_Underground	2002	0.22
+
+3002	Subway	3002	2
+3002	Subway	5001	0.47
+3002	Subway	3001	0.55
+3002	Subway	7001	0.178
+3002	Subway	7002	0.33
+3002	Subway	7003	0.25
+
+4001	Bank	4001	2
+4001	Bank	4004	0.55
+4001	Bank	1004001	0.33
+
+4002	Bank_(sitting)	4002	2
+4002	Bank_(sitting)	1004002	0.22
+4002	Bank_(sitting)	2004002	0.33
+4002	Bank_(sitting)	7002	0.02
+
+4003	Bank_(geology)	4003	2
+4003	Bank_(geology)	1004	0.2
+4003	Bank_(geology)	2001	0.15
+
+4004	Bank_of_England	4004	2
+4004	Bank_of_England	4001	0.55
+4004	Bank_of_England	1004	0.45
+4004	Bank_of_England	2001	0.22
+4004	Bank_of_England	5001	0.34
+
+5001	Bank_and_Monument_Underground_stations	5001	2
+5001	Bank_and_Monument_Underground_stations	3001	0.66
+5001	Bank_and_Monument_Underground_stations	3002	0.47
+5001	Bank_and_Monument_Underground_stations	4004	0.34
+5001	Bank_and_Monument_Underground_stations	2001	0.21
+5001	Bank_and_Monument_Underground_stations	2002	0.12
+
+6001	Monument	6001	2
+6001	Monument	5001	0.017
+6001	Monument	2001	0.023
+6001	Monument	2002	0.022
+6001	Monument	1006001	0.18
+6001	Monument	2006001	0.33
+
+6002	Some_silly_monument	6002	2
+6002	Some_silly_monument	6001	0.32
+6002	Some_silly_monument	7003	0.008
+6002	Some_silly_monument	1006002	0.08
+6002	Some_silly_monument	2006002	0.01
+
+7001	Bus_station	7001	2
+7001	Bus_station	1007001	0.1
+7001	Bus_station	2007001	0.2
+7001	Bus_station	7003	0.21
+7001	Bus_station	7002	0.32
+7001	Bus_station	5001	0.10
+7001	Bus_station	3002	0.178
+
+7002	Metro_station	7002	2
+7002	Metro_station	1007002	0.1
+7002	Metro_station	2007002	0.2
+7002	Metro_station	7003	0.22
+7002	Metro_station	7001	0.32
+7002	Metro_station	5001	0.17
+7002	Metro_station	3002	0.33
+7002	Metro_station	4002	0.02
+
+7003	Train_station	7003	2
+7003	Train_station	1007003	0.1
+7003	Train_station	2007003	0.2
+7003	Train_station	7002	0.22
+7003	Train_station	7001	0.21
+7003	Train_station	5001	0.11
+7003	Train_station	3002	0.25
+
+7004	Social_status	7004	2
+7004	Social_status	1007004	0.1
+7004	Social_status	2007004	0.2

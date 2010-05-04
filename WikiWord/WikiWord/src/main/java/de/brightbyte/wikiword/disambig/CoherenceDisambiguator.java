@@ -165,7 +165,7 @@ public class CoherenceDisambiguator extends AbstractDisambiguator<TermReference,
 		//NOTE: pre-fetch all features in one go
 		List<LocalConcept> concepts = new ArrayList<LocalConcept>(meanings.size()*10);
 		for (List<? extends LocalConcept> m: meanings.values()) {
-			concepts.addAll(m);
+			if (m!=null) concepts.addAll(m);
 		}
 		
 		if (context!=null) concepts.addAll(context);
@@ -218,6 +218,7 @@ public class CoherenceDisambiguator extends AbstractDisambiguator<TermReference,
 		while (eit.hasNext()) {
 			Entry<TermReference, List<? extends LocalConcept>> e = (Entry<TermReference, List<? extends LocalConcept>>) eit.next(); //XXX: ugly cast. got confused about generics. ugh.
 			List<? extends LocalConcept> m = e.getValue();
+			if (m==null) continue;
 			
 			Iterator<? extends LocalConcept> cit = m.iterator();
 			while (cit.hasNext()) {
@@ -327,13 +328,16 @@ public class CoherenceDisambiguator extends AbstractDisambiguator<TermReference,
 		for (Map.Entry<? extends TermReference, LocalConcept> ea: concepts.entrySet()) {
 			LocalConcept a = ea.getValue();
 			TermReference term = ea.getKey();
-			
+
 			i++;
+			if (a==null) continue;
+			
 			j=0;
 			for (Map.Entry<? extends TermReference, LocalConcept> eb: concepts.entrySet()) {
 				LocalConcept b = eb.getValue();
 				j++;
 				if (i==j) break;
+				if (b==null) continue;
 				
 				double d;
 				
@@ -348,14 +352,18 @@ public class CoherenceDisambiguator extends AbstractDisambiguator<TermReference,
 						ConceptFeatures<LocalConcept, Integer> fa = features.getFeatures(a);
 						ConceptFeatures<LocalConcept, Integer> fb = features.getFeatures(b);
 						
-						//force relevance/cardinality to the figures from the meaning lookup
-						//not strictly necessary, but nice to keep it consistent.
-						fa.getConcept().setCardinality(a.getCardinality());
-						fa.getConcept().setRelevance(a.getRelevance());
-						fb.getConcept().setCardinality(b.getCardinality());
-						fb.getConcept().setRelevance(b.getRelevance());
+						if (fa==null || fb==null) d = 0;
+						else {
+								//force relevance/cardinality to the figures from the meaning lookup
+								//not strictly necessary, but nice to keep it consistent.
+								fa.getConcept().setCardinality(a.getCardinality());
+								fa.getConcept().setRelevance(a.getRelevance());
+								fb.getConcept().setCardinality(b.getCardinality());
+								fb.getConcept().setRelevance(b.getRelevance());
+								
+								d = similarityMeasure.similarity(fa.getFeatureVector(), fb.getFeatureVector());
+						}
 						
-						d = similarityMeasure.similarity(fa.getFeatureVector(), fb.getFeatureVector());
 						similarities.set(a, b, d);
 					}
 				}

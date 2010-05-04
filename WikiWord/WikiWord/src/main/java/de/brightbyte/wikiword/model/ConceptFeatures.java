@@ -7,6 +7,8 @@ public class ConceptFeatures<C extends WikiWordConcept, K> {
 	protected WikiWordConcept concept;
 	
 	public ConceptFeatures(WikiWordConcept concept, LabeledVector<K> features) {
+		if (features==null) throw new NullPointerException();
+		if (concept==null) throw new NullPointerException();
 		this.features = features;
 		this.concept = concept;
 	}
