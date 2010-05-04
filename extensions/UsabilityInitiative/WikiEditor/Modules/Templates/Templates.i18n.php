@@ -14,3 +14,4 @@ $messages = array();
 $messages['en'] = array(
 	'wikieditor-templates-preference' => 'Enable template collapsing',
 );
+
