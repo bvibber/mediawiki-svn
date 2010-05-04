@@ -81,7 +81,7 @@ mw.addMessages( {
 	"mwe-copyright-custom": "Custom",
 
 	"mwe-upwiz-next": "Next",
-	"mwe-upwiz-home": "Wikimedia Commons",
+	"mwe-upwiz-home": "Go to Wiki home page",
 	"mwe-upwiz-upload-another": "Upload more files",
 
 	"mwe-prevent-close": "Your files are still uploading. Are you sure you want to navigate away from this page?",
@@ -474,7 +474,7 @@ mw.UploadWizardUpload.prototype = {
 		var _this = this;
 
 		_this.filename = result.upload.filename;
-		_this.title = "File:" + _this.filename;
+		_this.title = mw.getConfig( 'fileNamespace' ) + ':' + _this.filename;
 
 		_this.extractImageInfo( result.upload.imageinfo );
 
@@ -1160,8 +1160,7 @@ mw.UploadWizardDetails.prototype = {
 	 */
 	setFilenameFromTitle: function() {
 		var _this = this;
-		// "File:" is the constant NS_FILE, defined in Namespaces.php. Usually unchangeable?
-		_this.filename = "File:" + _this.getFilenameFromTitle();
+		_this.filename = mw.getConfig( 'fileNamespace' ) + ':' + _this.getFilenameFromTitle();
 		$j( '#mwe-upwiz-details-filename' ).text( _this.filename );		
 			
 	},
@@ -1815,6 +1814,15 @@ mw.UploadWizard.prototype = {
 		return null;
 	},
 	*/
+
+	reset: function() {
+		var _this = this;
+		$j.each( _this.uploads, function( i, upload ) {
+			_this.removeUpload( upload );
+		} );
+		_this.uploads = [];
+	},
+
 	
 	/**
 	 * create the basic interface to make an upload in this div
@@ -1881,8 +1889,8 @@ mw.UploadWizard.prototype = {
 		       +   '<div class="mwe-upwiz-stepdiv" id="mwe-upwiz-stepdiv-thanks">'
 		       +     '<div id="mwe-upwiz-thanks"></div>'
 		       +     '<div class="mwe-upwiz-buttons"/>'
-		       +        '<button class="mwe-upwiz-button-begin" />'
-		       +        '<br/><button class="mwe-upwiz-button-home" />'
+		       +        '<button class="mwe-upwiz-button-begin"></button>'
+		       +        '<br/><button class="mwe-upwiz-button-home"></button>'
 		       +     '</div>'		
                        +   '</div>'
 
@@ -1891,8 +1899,13 @@ mw.UploadWizard.prototype = {
 		       + '<div class="mwe-upwiz-clearing"></div>';
 		
 
-		$j( '.mwe-upwiz-button-home' ).append( gM( 'mwe-upwiz-home' ) );
-		$j( '.mwe-upwiz-button-begin' ).append( gM( 'mwe-upwiz-upload-another' ) );
+		$j( '.mwe-upwiz-button-home' )
+			.append( gM( 'mwe-upwiz-home' ) )
+			.click( function() { window.location.href = '/' } );
+		
+		$j( '.mwe-upwiz-button-begin' )
+			.append( gM( 'mwe-upwiz-upload-another' ) )
+			.click( _this.reset() );
 		
 		$j( '.mwe-upwiz-button-next' )
 			.append( gM( 'mwe-upwiz-next' ) )
@@ -2121,6 +2134,9 @@ mw.UploadWizard.prototype = {
 		if ( upload.deedChooser ) {
 			upload.deedChooser.detach( upload );
 		}
+		upload.details.div.remove();
+		upload.thanksDiv.remove();
+
 		mw.UploadWizardUtil.removeItem( _this.uploads, upload );
 		_this.updateFileCounts();
 	},
@@ -2345,13 +2361,14 @@ mw.UploadWizard.prototype = {
 
 		$j.each( _this.uploads, function(i, upload) {
 			var thanksDiv = $j( '<div class="mwe-upwiz-thanks ui-helper-clearfix" />' );
+			_this.thanksDiv = thanksDiv;
 			
 			var thumbnailDiv = $j( '<div></div>' ).addClass( 'mwe-upwiz-thumbnail' );
 			thanksDiv.append( thumbnailDiv );
 			upload.setThumbnail( thumbnailDiv );
 
-			var thumbTitle = upload.title.replace(/^File/, 'Image'); // XXX is this really necessary?
-			var thumbWikiText = "[[" + thumbTitle + "|thumb]]";
+			//var thumbTitle = upload.title.replace(/^File/, 'Image'); // XXX is this really necessary?
+			var thumbWikiText = "[[" + upload.title + "|thumb]]";
 
 			thanksDiv.append(
 				$j( '<div class="mwe-upwiz-data"></div>' )
@@ -2370,7 +2387,7 @@ mw.UploadWizard.prototype = {
 						 	$j( '<textarea class="mwe-long-textarea" rows="1"/>' )
 								.growTextArea()
 								.append( thumbWikiText ) 
-								.trigger( 'change' )  // to make it grow to fit
+								.resizeIfNeeded()
 						),
 						$j('<p/>').append( 
 							gM( 'mwe-upwiz-thanks-url' ),
@@ -2378,7 +2395,7 @@ mw.UploadWizard.prototype = {
 						 	$j( '<textarea class="mwe-long-textarea" rows="1"/>' )
 								.growTextArea()
 								.append( upload.imageinfo.descriptionurl ) 
-								.trigger( 'change' )  // to make it grow to fit
+								.resizeIfNeeded()
 						)
 					)
 			);
@@ -2969,14 +2986,16 @@ jQuery.fn.growTextArea = function( options ) {
 		} );
 	}
 
-	var resizeIfNeeded = function() {
+	this.resizeIfNeeded = function() {
 		// this is the dom element
 		while (this.scrollHeight > this.offsetHeight) {
 			this.rows++;
 		}
+		return this;
 	};
 
-	this.change(resizeIfNeeded).keyup(resizeIfNeeded);
+	this.change(this.resizeIfNeeded);
+	this.keyup(this.resizeIfNeeded);
 
 	return this;
 };

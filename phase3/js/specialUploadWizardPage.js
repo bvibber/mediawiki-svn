@@ -4,6 +4,8 @@
  */
 
 mw.ready( function() {
+	var NS_FILE = 6; // Defines.php
+
 	mw.load( 'UploadWizard.UploadWizard', function () {
 		
 		mw.setConfig( 'debug', true ); 
@@ -23,6 +25,9 @@ mw.ready( function() {
 		// so, this workaround will cause tagalog descriptions to be saved with this template instead.
 		mw.setConfig( 'languageTemplateFixups', { tl: 'tgl' } );
 		mw.setConfig( 'defaultLicenses', [ 'cc_by_sa_30' ] );
+		
+		// usually, but not always, File: 
+		mw.setConfig( 'fileNamespace', wgCanonicalNamespaceNames[NS_FILE] );
 
 		var uploadWizard = new mw.UploadWizard();
 		uploadWizard.createInterface( '#upload-wizard' );
