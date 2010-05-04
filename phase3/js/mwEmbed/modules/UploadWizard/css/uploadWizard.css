@@ -470,7 +470,8 @@ legend.mwe-legend {
 	margin-right: 15px;
 }
 
-.mwe-upwiz-copyright-info input {
+/* the hanging indent checkboxes */
+.mwe-upwiz-copyright-info input.mwe-accept-deed {
 	width: 13px;
 	height: 13px;
 	padding: 0;

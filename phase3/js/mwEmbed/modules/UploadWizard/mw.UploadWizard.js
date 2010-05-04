@@ -1940,7 +1940,7 @@ mw.UploadWizard.prototype = {
 								if ( $j( this ).is( ':checked' ) ) {
 									_this.deedChooser.showDeedChoice();
 									_this.deedChooser.choose( customDeed );
-									_this.deedChooser.trigger( 'isReady' );
+									//_this.deedChooser.trigger( 'isReady' );
 								} else {
 									_this.deedChooser.choose( mw.UploadWizardNullDeed );
 								}
