@@ -40,7 +40,7 @@ $wgExtensionCredits['parserhook'][] = array(
 	'path'        => __FILE__,
 	'name'        => 'Natural Language List',
 	'author'      => array( 'Svip', 'Happy-melon', 'Conrad Irwin' ),
-	'url'         => 'http://www.mediawiki.org/wiki/Extension:Natural_Language_List',
+	'url'         => 'http://www.mediawiki.org/wiki/Extension:NaturalLanguageList',
 	'description' => 'Easy formatting of lists in natural languages.',
 	'descriptionmsg' => 'nll-desc',
 	'version'     => '2.5'
@@ -298,7 +298,7 @@ class NaturalLanguageList {
 			$this->mParams = array_slice( $this->mParams, 0, $this->mOptions['length'] );
 		
 		# Remove anything over the allowed limit
-		$this->mParams = array_slice( $this->mParams, 0, $wgNllMaxListLength );	
+		$this->mParams = array_slice( $this->mParams, 0, $wgNllMaxListLength );
 	}
 
 	/**
