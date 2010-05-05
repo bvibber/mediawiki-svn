@@ -1178,8 +1178,11 @@ $messages['jv'] = array(
 
 /** Georgian (ქართული)
  * @author BRUTE
+ * @author გიორგიმელა
  */
 $messages['ka'] = array(
+	'ratinghistory-tab' => 'შეფასება',
+	'ratinghistory-link' => 'გვერდის შეფასება',
 	'ratinghistory-thanks' => "''<font color=\"darkred\">გმადლობთ, რომ გამონახეთ დრო ამ გვერდის შესაფასებლად!</font>''",
 	'ratinghistory-period' => 'დროის მონაკვეთი:',
 	'ratinghistory-month' => 'ბოლო თვე',
@@ -1189,6 +1192,8 @@ $messages['ka'] = array(
 	'ratinghistory-ave' => 'საშ: $1',
 	'ratinghistory-chart' => 'ყველა დროის მკითხველთა შეფასებები',
 	'ratinghistory-purge' => 'ქეშის გაწმენდა',
+	'ratinghistory-table' => 'მკითხველთა აზრების შეფასება',
+	'ratinghistory-svg' => 'იხილეთ როგორც SVG',
 	'ratinghistory-table-votes' => 'ხმები',
 );
 
@@ -1211,6 +1216,8 @@ $messages['km'] = array(
 $messages['ko'] = array(
 	'ratinghistory' => '문서 평가 내력',
 	'ratinghistory-leg' => '[[:$1|$1]] 문서에 대한 평가 내역',
+	'ratinghistory-tab' => '평가',
+	'ratinghistory-link' => '문서 평가',
 	'ratinghistory-thanks' => "'''<font color=\"darkred\">이 문서를 검토해 주셔서 감사합니다!</font>'''",
 	'ratinghistory-period' => '기간:',
 	'ratinghistory-month' => '지난 1개월',
@@ -1218,9 +1225,21 @@ $messages['ko'] = array(
 	'ratinghistory-year' => '지난 1년',
 	'ratinghistory-3years' => '지난 3년',
 	'ratinghistory-ave' => '평균: $1',
+	'ratinghistory-chart' => '시간에 따른 독자의 평가',
 	'ratinghistory-purge' => '캐시 갱신하기',
+	'ratinghistory-table' => '독자의 평가에 대한 개요',
+	'ratinghistory-users' => '평가에 참여해 주신 사용자',
+	'ratinghistory-graph' => '"$3" 문서의 $2 ($1명의 평가)',
 	'ratinghistory-svg' => 'SVG로 보기',
+	'ratinghistory-table-rating' => '평점',
+	'ratinghistory-table-votes' => '투표',
+	'ratinghistory-none' => '지금은 그래프를 만들 충분한 독자 평가 데이터가 없습니다.',
 	'ratinghistory-ratings' => "'''범례:''' '''(1)''' - 최하, '''(2)''' - 낮음, '''(3)''' - 양호, '''(4)''' - 높음, '''(5)''' - 우수",
+	'ratinghistory-legend' => "'''일간 평가 횟수''' <font color=\"red\">''(빨강)''</font>, '''일간 평가 평균''' <font color=\"blue\">''(파랑)''</font>, '''전체 평가 평균''' <font color=\"green\">''(녹색)''</font>이 아래에 그래프로 표현되어 있습니다. '''전체 평가 평균'''은 그래프에 표현된 기간 안의 모든 일간 평가의 평균입니다.
+평점은 다음과 같습니다:
+
+'''(1)''' - 최하, '''(2)''' - 낮음, '''(3)''' - 양호, '''(4)''' - 높음, '''(5)''' - 우수",
+	'ratinghistory-graph-scale' => "'''일간 평가 횟수'''<font color=\"red\">''(빨강)''</font>는 ''1:\$1''의 비율로 보여지고 있습니다.",
 	'right-feedback' => '문서를 평가하는 피드백 양식을 이용',
 );
 

@@ -143,6 +143,13 @@ $messages['id'] = array(
 	'svgzoom-desc' => 'Menambahkan fitur untuk memutar dan memperbesar berkas SVG pada MediaWiki',
 );
 
+/** Italian (Italiano)
+ * @author Civvì
+ */
+$messages['it'] = array(
+	'svgzoom-desc' => 'Aggiunge funzionalità di zoom e panoramica a MediaWiki per la visualizzazione di file SVG',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */

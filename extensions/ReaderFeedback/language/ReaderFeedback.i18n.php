@@ -1331,15 +1331,24 @@ $messages['ja'] = array(
  */
 $messages['ka'] = array(
 	'readerfeedback' => 'რას ფიქრობთ ამ გვერდის შესახებ?',
+	'readerfeedback-reliability' => 'სისწორე',
+	'readerfeedback-completeness' => 'სისრულე',
 	'readerfeedback-npov' => 'ნეიტრალობა',
+	'readerfeedback-presentation' => 'პრეზენტაცია',
+	'readerfeedback-overall' => 'ზოგადი შეფასება',
 	'readerfeedback-level-none' => '(არაა არჩეული)',
 	'readerfeedback-level-1' => 'დაბალი',
 	'readerfeedback-level-3' => 'მაღალი',
 	'readerfeedback-level-4' => 'ჩინებულია',
 	'readerfeedback-submit' => 'გაგზავნა',
 	'readerfeedback-finished' => 'გმადლობთ!',
+	'readerfeedback-tagfilter' => 'მინიშნება:',
+	'readerfeedback-tierfilter' => 'შეფასება:',
 	'readerfeedback-tier-high' => 'მაღალი',
 	'readerfeedback-tier-medium' => 'საშუალო',
+	'readerfeedback-tier-poor' => 'დაბალი',
+	'specialpages-group-feedback' => 'მკიტხველის მოსაზრება!',
+	'readerfeedback-tt-review' => 'გაგზავნეთ შემოწმება',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -1372,7 +1381,7 @@ $messages['ko'] = array(
 	'readerfeedback-desc' => '독자에게 부문별로 평가를 할 수 있는 피드백 양식을 제공',
 	'readerfeedback' => '이 문서에 대해 어떻게 생각하십니까?',
 	'readerfeedback-text' => '아래에 이 문서를 평가하는 데 잠시만 시간을 내 주십시오. 당신의 피드백은 소중하며 우리 웹 사이트를 개선하는 데 도움이 될 것입니다.',
-	'readerfeedback-reliability' => '가독성',
+	'readerfeedback-reliability' => '신뢰성',
 	'readerfeedback-completeness' => '완성도',
 	'readerfeedback-npov' => '중립성',
 	'readerfeedback-presentation' => '문서의 외형',
@@ -1397,6 +1406,7 @@ $messages['ko'] = array(
 	'readerfeedback-tier-poor' => '낮음',
 	'tooltip-ca-ratinghist' => '이 문서에 대한 평가',
 	'specialpages-group-feedback' => '독자 의견',
+	'readerfeedback-tt-review' => '평가 제출',
 );
 
 /** Colognian (Ripoarisch)

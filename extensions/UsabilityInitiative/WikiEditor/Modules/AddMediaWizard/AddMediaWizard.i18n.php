@@ -113,6 +113,13 @@ $messages['mk'] = array(
 	'wikieditor-addMediaWizard-preference' => 'Овозможи алатка „Додај помошник за медии“',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Praveenp
+ */
+$messages['ml'] = array(
+	'wikieditor-addMediaWizard-preference' => '"മീഡിയ ഉൾപ്പെടുത്തൽ സഹായി" ഗാഡ്ജറ്റ് സജ്ജമാക്കുക',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

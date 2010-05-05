@@ -169,6 +169,13 @@ $messages['id'] = array(
 	'pipeescape-desc' => 'Fungsi parser <code>#!</code> jika Anda menginginkan karakter pipa sebagaimana adanya',
 );
 
+/** Italian (Italiano)
+ * @author Civvì
+ */
+$messages['it'] = array(
+	'pipeescape-desc' => "Funzione parser <code>#!</code> per quando si desidera che il carattere ''pipe'' sia solo un carattere pipe",
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */

@@ -322,6 +322,8 @@ $messages['it'] = array(
  * @author 青子守歌
  */
 $messages['ja'] = array(
+	'packageforce' => 'PackageForce',
+	'packageforceadmin' => 'PackageForceAdmin',
 	'pf-desc' => '便利なテンプレートなどの[[Special:PackageForce|パッケージをダウンロード]]',
 	'pf-only-admins-allowed' => "このページを利用するには 'packageforce-admin' 権限が必要です。",
 	'pf-admin-menu-default' => '規定',
