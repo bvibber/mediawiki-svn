@@ -275,7 +275,6 @@ var htmlEmbed = {
 	* Local implementation of swapPlayerElement
 	*/
 	swapPlayerElement:function() {
-		this.loading_external_data = false
 		this.ready_to_play = true;
 		return ;
 	}
