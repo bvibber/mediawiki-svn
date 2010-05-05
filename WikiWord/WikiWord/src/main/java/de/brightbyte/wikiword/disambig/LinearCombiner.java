@@ -22,7 +22,7 @@ final class LinearCombiner implements Functor2.Double {
 	}
 
 	public double apply(double a, double b) {
-		return  b * bias + b * ( 1 - bias ); 
+		return  a * bias + b * ( 1.0 - bias ); 
 		//return =  Math.sqrt( popf * simf ); //normalized produkt
 	}
 }

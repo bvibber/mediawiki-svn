@@ -106,12 +106,13 @@ public class PhraseOccuranceSet extends AbstractList<PhraseOccurance> implements
 	public Collection<? extends PhraseNode<PhraseOccurance>> getSuccessorsAt(int pos) {
 		Set<PhraseNode<PhraseOccurance>> successors = new HashSet<PhraseNode<PhraseOccurance>>();
 		
+		int horizon = text.length();
 		while (true) {
 			    Collection<? extends PhraseNode<PhraseOccurance>> nodes = PhraseOccuranceSet.this.getPhraseNodesAt(pos);
-				if (nodes == null || nodes.isEmpty()) break;
-				
-				successors.addAll(nodes);
-				int horizon = getHorizon(successors);
+				if (nodes != null && !nodes.isEmpty()) {
+					successors.addAll(nodes);
+					horizon = getHorizon(successors, horizon);
+				}
 				
 				pos ++;
 				if (pos>=horizon) break;
@@ -120,8 +121,7 @@ public class PhraseOccuranceSet extends AbstractList<PhraseOccurance> implements
 		return successors;
 	}
 	
-	private int getHorizon(Collection<? extends PhraseNode<PhraseOccurance>> successors) {
-		int horizon = Integer.MAX_VALUE;
+	private int getHorizon(Collection<? extends PhraseNode<PhraseOccurance>> successors, int horizon) {
 		for (PhraseNode<PhraseOccurance> n: successors) {
 			int end = n.getTermReference().getEndOffset();
 			if (end < horizon) horizon = end;
@@ -133,8 +133,16 @@ public class PhraseOccuranceSet extends AbstractList<PhraseOccurance> implements
 	
 	public Collection<? extends PhraseNode<PhraseOccurance>> getPhraseNodesAt(int offs) {
 		List<PhraseOccurance> phrases = getPhrasesAt(offs);
-		if (phrases == null) return null;
-		
+		return toNodeList(phrases);
+	}
+	
+	public Collection<? extends PhraseNode<PhraseOccurance>> getPhraseNodesFrom(int offs) {
+		List<PhraseOccurance> phrases = getPhrasesFrom(offs);
+		return toNodeList(phrases);
+	}
+	
+	protected List<Node> toNodeList(List<PhraseOccurance> phrases) {
+		if (phrases==null) return null;
 		List<Node> nodes = new ArrayList<Node>(phrases.size());
 		
 		for (PhraseOccurance p: phrases) {
@@ -144,7 +152,32 @@ public class PhraseOccuranceSet extends AbstractList<PhraseOccurance> implements
 		return nodes;
 	}
 	
-	public List<PhraseOccurance> getPhrasesAt(int offs) {
+	public List<PhraseOccurance> getPhrasesAt(int at) {
+		int i = 0;
+		PhraseOccurance p = null;
+		while (i<size()) {
+			p = get(i);
+			if (p.getOffset() >= at) {
+				break;
+			}
+			
+			i++;
+		}
+		
+		if (p!=null && p.getOffset() > at) return null;
+		if (i>=size()) return null;
+		
+		int j = i;
+		while (j<size()) {
+			p = get(j);
+			if (p.getOffset() > at) break;
+			j++;
+		}
+
+		return subList(i, j); //NOTE: Phraseoccurrance.compareTo assures that longest phrases come first.
+	}
+
+	public List<PhraseOccurance> getPhrasesFrom(int offs) {
 		int i = 0;
 		while (i<size()) {
 			PhraseOccurance p = get(i);

@@ -2,9 +2,8 @@ package de.brightbyte.wikiword.disambig;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
-import java.util.Collections;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 
@@ -34,26 +33,30 @@ public class PopularityDisambiguatorTest extends DisambiguatorTestBase {
 		terms.add(underground);
 
 		Collection<Term> res = disambiguator.getTerms(new TermListNode<Term>(terms, 0), 1);
-		assertEquals("depth 1", new HashSet<Term>( terms.subList(0, 1) ), res);
+		assertTrue("depth 1", sameElements( terms.subList(0, 1), res) );
 		
 		res = disambiguator.getTerms(new TermListNode<Term>(terms, 0), 2);
-		assertEquals("depth 2", new HashSet<Term>( terms.subList(0, 2) ), res);
+		assertTrue("depth 2", sameElements( terms.subList(0, 2), res) );
 		
 		res = disambiguator.getTerms(new TermListNode<Term>(terms, 0), 1000);
-		assertEquals("depth 1000", new HashSet<Term>( terms ), res);		
+		assertTrue("depth 1000", sameElements( terms, res) );		
 	}
 
 	public void testGetTermsForNode() throws PersistenceException {
 		PhraseOccuranceSet set = getBankAndMonumentPhrases();
 
-		PopularityDisambiguator disambiguator = new PopularityDisambiguator(meaningFetcher);
-		Collection<PhraseOccurance> terms = disambiguator.getTerms(set.getRootNode(), 0);
-		assertEquals("empty term set", Collections.emptySet(), terms);
-		
 		//FIXME: Test case for getHorizon
+
+		PopularityDisambiguator disambiguator = new PopularityDisambiguator(meaningFetcher);
+		
+		Collection<PhraseOccurance> terms = disambiguator.getTerms(set.getRootNode(), 0);
+		assertTrue("empty term set", sameElements( getBankAndMonumentTerms(0), terms) );
 		
 		terms = disambiguator.getTerms(set.getRootNode(), 1);
-		assertEquals("terms from depth 1", Collections.emptySet() /* fixme */, terms);
+		assertTrue("terms from depth 1", sameElements( getBankAndMonumentTerms(1), terms) );
+		
+		terms = disambiguator.getTerms(set.getRootNode(), 1000);
+		assertTrue("terms from depth 1000", sameElements( getBankAndMonumentTerms(1000), terms) );
 	}
 	
 	public void testGetMeaningsForList() throws PersistenceException {
@@ -68,45 +71,80 @@ public class PopularityDisambiguatorTest extends DisambiguatorTestBase {
 		terms.add(london);
 		terms.add(underground);
 		
-		Map<Term, List<? extends LocalConcept>> meanings = disambiguator.getMeanings(terms);
+		Map<Term, List<? extends LocalConcept>> res = disambiguator.getMeanings(terms);
 		
-		assertEquals(uk.getTerm(), meanings.get(uk.getTerm()), meanings.get(uk));
-		assertEquals(london.getTerm(), meanings.get(london.getTerm()), meanings.get(london));
-		assertEquals(underground.getTerm(), meanings.get(underground.getTerm()), meanings.get(underground));
+		assertEquals(uk.getTerm(), meanings.get(uk.getTerm()), res.get(uk));
+		assertEquals(london.getTerm(), meanings.get(london.getTerm()), res.get(london));
+		assertEquals(underground.getTerm(), meanings.get(underground.getTerm()), res.get(underground));
 	}
 	
 	public void testGetMeaningsForNode() throws PersistenceException {
-		throw new UnsupportedOperationException("not yet implemented");
-		//PopularityDisambiguator disambiguator = new PopularityDisambiguator(meaningFetcher);
-		//disambiguator.getMeanings(terms);
+		PopularityDisambiguator disambiguator = new PopularityDisambiguator(meaningFetcher);
+
+		PhraseOccuranceSet set = getBankAndMonumentPhrases();
+		Map<PhraseOccurance, List<? extends LocalConcept>> res = disambiguator.getMeanings(set.getRootNode());
+		List<PhraseOccurance> terms = getBankAndMonumentTerms(1000);
+		
+		for (PhraseOccurance t: terms) {
+			List<? extends LocalConcept> m = res.get(t);
+			List<? extends LocalConcept> n = meanings.get(t.getTerm());
+			
+			assertEquals("meanings for "+t, n, m);
+		}
 	}
 	
 	public void testGetSequences() throws PersistenceException {
-		throw new UnsupportedOperationException("not yet implemented");
-		//PopularityDisambiguator disambiguator = new PopularityDisambiguator(meaningFetcher);
-		//disambiguator.getSequences(root, depth);
+		PopularityDisambiguator disambiguator = new PopularityDisambiguator(meaningFetcher);
+		PhraseOccuranceSet set = getBankAndMonumentPhrases();
+		
+		Collection<List<PhraseOccurance>> res = disambiguator.getSequences(set.getRootNode(), 1);
+		assertTrue("depth 1", sameElements(getBankAndMonumentSequences(1), res));
+
+		res = disambiguator.getSequences(set.getRootNode(), 2);
+		assertTrue("depth 2", sameElements(getBankAndMonumentSequences(2), res));
+
+		res = disambiguator.getSequences(set.getRootNode(), 1000);
+		assertTrue("depth 1000", sameElements(getBankAndMonumentSequences(1000), res));
 	}
 	
 	public void testDisambiguateTerms() throws PersistenceException {
-		throw new UnsupportedOperationException("not yet implemented");
-		/*PopularityDisambiguator disambiguator = new PopularityDisambiguator(meaningFetcher);
+		PopularityDisambiguator disambiguator = new PopularityDisambiguator(meaningFetcher);
 		
-		String[] sequence = {"UK", "London", "Underground", "Bank"};
+		Term uk = new Term("UK");
+		Term london = new Term("London");
+		Term underground = new Term("Underground");
+		
+		List<Term> sequence = Arrays.asList(new Term[] {uk, london, underground});
+		Disambiguator.Result<Term, LocalConcept> result = disambiguator.disambiguate(sequence, null);
 
-		Result<Term, LocalConcept> result = disambiguator.disambiguate(terms(sequence), null);
-		 */
-		//// .............. ///
+		assertEquals("sequence", sequence, result.getSequence());
+		
+		assertEquals(uk.getTerm(), getConcept("United_Kingdom"), result.getMeanings().get(uk));
+		assertEquals(london.getTerm(), getConcept("City_of_London"), result.getMeanings().get(london));
+		assertEquals(underground.getTerm(), getConcept("London_Underground"), result.getMeanings().get(underground));
 	}
 	
 	public void testDisambiguateNode() throws PersistenceException {
-		throw new UnsupportedOperationException("not yet implemented");
-		/*PopularityDisambiguator disambiguator = new PopularityDisambiguator(meaningFetcher);
+		PhraseOccuranceSet set = getBankAndMonumentPhrases();
 		
-		String[] sequence = {"UK", "London", "Underground", "Bank"};
+		PopularityDisambiguator disambiguator = new PopularityDisambiguator(meaningFetcher);
 
-		Result<Term, LocalConcept> result = disambiguator.disambiguate(terms(sequence), null);
-		*/
-		//// .............. ///
+		Result<PhraseOccurance, LocalConcept> result = disambiguator.disambiguate(set.getRootNode(), null);
+		
+		List<? extends PhraseOccurance> sequence = result.getSequence();
+		Map<? extends PhraseOccurance, ? extends LocalConcept> meanings = result.getMeanings();
+		
+		assertEquals("Bank and Monument", sequence.get(0).getTerm());
+		assertEquals("Underground", sequence.get(1).getTerm());
+		assertEquals("station", sequence.get(2).getTerm());
+
+		assertNotNull( meanings.get( sequence.get(0).getTerm() ) );
+		assertNotNull( meanings.get( sequence.get(1).getTerm() ) );
+		assertNotNull( meanings.get( sequence.get(2).getTerm() ) );
+		
+		assertEquals("Bank_and_Monument_Underground_station", meanings.get( sequence.get(0).getTerm() ).getName() );
+		assertEquals("Subway", meanings.get( sequence.get(1).getTerm() ).getName() );
+		assertEquals("Metro_station", meanings.get( sequence.get(2).getTerm() ).getName() );
 	}
 
 }

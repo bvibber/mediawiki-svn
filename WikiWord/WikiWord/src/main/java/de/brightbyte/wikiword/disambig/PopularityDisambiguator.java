@@ -1,5 +1,6 @@
 package de.brightbyte.wikiword.disambig;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
@@ -69,9 +70,13 @@ public class PopularityDisambiguator extends AbstractDisambiguator<TermReference
 		double score = 0;
 		int totalPop = 0;
 		
+		List<X> resultSequence = new ArrayList<X>(sequence.size());
+		
 		for (X t: sequence) {
 			List<? extends LocalConcept> m = meanings.get(t);
 			if (m==null || m.size()==0) continue;
+			
+			resultSequence.add(t);
 			
 			if (m.size()>1) Collections.sort(m, popularityComparator);
 			
@@ -81,13 +86,13 @@ public class PopularityDisambiguator extends AbstractDisambiguator<TermReference
 			double pop = popularityMeasure.measure(c);
 			totalPop += pop;
 			
-			Number sc = weigthCombiner.apply(pop, t.getWeight());
-			score += sc.doubleValue();
+			double sc = weigthCombiner.apply(pop, t.getWeight()); //FIXME: pop and weight are not in the same scale.
+			score += sc;
 		}
 
 		if (disambig.size()>0) score = score / disambig.size();
 		
-		Result<X, LocalConcept> r = new Result<X, LocalConcept>(disambig, sequence, score, "score="+score+"; pop="+totalPop);
+		Result<X, LocalConcept> r = new Result<X, LocalConcept>(disambig, resultSequence, score, "score="+score+"; pop="+totalPop);
 		return r;
 	}
 

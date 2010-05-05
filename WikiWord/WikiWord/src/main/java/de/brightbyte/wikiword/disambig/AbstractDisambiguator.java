@@ -71,7 +71,7 @@ public abstract class AbstractDisambiguator<T extends TermReference, C extends W
 	public void setMeaningOverrides(Map<? extends T, C> overrideMap) {
 		this.meaningOverrides = overrideMap;
 	}	
-
+	
 	protected <X extends T>Collection<X> getTerms(PhraseNode<X> root, int depth) {
 		TermSetBuilder<X> builder = new TermSetBuilder<X>();
 		walk(root, null, builder, depth);
