@@ -1,17 +1,18 @@
 /**
  * AjaxScroll (jQuery Plugin)
- * Modified for MediaWiki storyboard extension.
+ * http://project.yctin.com/ajaxscroll
+ * Modified for MediaWiki Storyboard extension.
  *
- * @author Timmy Tin - http://project.yctin.com/ajaxscroll
- * @author Jeroen De Dauw
  * @license GPL
  * @version 0.2
+ * 
+ * @author Timmy Tin
+ * @author Jeroen De Dauw
  */
 (function($) {
 	$.fn.ajaxScroll = function( opt ) {
 		opt = jQuery.extend(
 			{
-				batchNum: 5,
 				batchSize: 30,
 				batchTemplate: null,
 				boxTemplate: null,
@@ -22,11 +23,11 @@
 				lBound: "auto",
 				uBound: "auto",
 				eBound: "auto",
-				maxOffset: 1000,
 				scrollDelay: 600, // The interval for checking if the user scrolled, in ms.
 				endDelay: 100,
 				updateBatch: null,
-				updateEnd: null
+				updateEnd: null,
+				loaded: false
 			},
 			opt
 		);
@@ -35,7 +36,6 @@
 			var ele = this;
 			var $me = jQuery( this );
 			var $sp;
-			var offset = 0;
 			var previousScrollPos = -1;
 			
 			$me.css( {
@@ -48,24 +48,31 @@
 			
 			$sp = jQuery( "<div></div>" ).addClass( opt.scrollPaneClass );
 			$me.append( $sp );
-			offset = batch( $sp, offset, opt );
+			batch( $sp, opt );
+			batch( $sp, opt );
 			$me.scrollTop(0).scrollLeft(0);
 			
-			var os = $me.find( '.batch:first' ).next().offset().top;
-			var b = ( $me.height() / os + 1 ) * os;
+			var topOffset = $me.find( '.batch:first' ).next().offset().top;
+			var b = ( $me.height() / topOffset + 1 ) * topOffset;
 			
-			if ( "auto" == opt.uBound ) {
+			if ( opt.uBound == "auto" ) {
 				opt.uBound = b;
 			}
 			
-			if ( "auto" == opt.lBound ) {
+			if ( opt.lBound == "auto" ) {
 				opt.lBound = -b;
 			}
 			
-			if ( "auto" == opt.eBound ) {
+			if ( opt.eBound == "auto" ) {
 				opt.eBound = b * 2;
 			}
-			
+			/*
+			$sp.find( '> .' + opt.emptyBatchClass ).each( function( i, obj ) {
+				if ( i > 0 ) {
+					var $batchDiv = jQuery( obj ).removeClass( opt.emptyBatchClass );
+				}
+			});
+			*/
 			setTimeout( monEnd, opt.endDelay );
 			
 			// Initiate the scroll handling.
@@ -73,29 +80,23 @@
 				setTimeout( handleScrolling, opt.scrollDelay );
 			}
 			
-			function batch( $s, offset, opt ) {
+			function batch( $s, opt ) {
 				var $b;
 				var i;
-				var rp = opt.batchNum;
 				
-				while( rp-- ) {
-					$b = jQuery( opt.batchTemplate )
-						.attr({
-							offset: offset,
-							len: opt.batchSize
-						})
-						.addClass( opt.batchClass + " " + opt.emptyBatchClass );
-					
-					i = opt.batchSize;
-					
-					while( i-- && opt.maxOffset > offset++ ){
-						$b.append( opt.boxTemplate );
-					}
-					
-					$s.append( $b );
+				$b = jQuery( opt.batchTemplate )
+					.attr({
+						len: opt.batchSize
+					})
+					.addClass( opt.batchClass + " " + opt.emptyBatchClass );
+				
+				i = opt.batchSize;
+				
+				while( i-- ){
+					$b.append( opt.boxTemplate );
 				}
 				
-				return offset;
+				$s.append( $b );
 			};
 			
 			/**
@@ -106,19 +107,22 @@
 			function handleScrolling() {
 				var scrollPos = $me.scrollTop();
 				
-				if( !window.storyboardBusy && previousScrollPos != scrollPos ) {
+				// TODO: add check to make sure the board is not currently busy
+				if( previousScrollPos != scrollPos ) {
 					previousScrollPos = scrollPos;
 					var co = $me.offset().top;
 					
 					$sp.find( '> .' + opt.emptyBatchClass ).each( function( i, obj ) {
+						// Only do one batch. This is needed to retain empty space at load, while not loading 2 identical batches.
+						if ( i > 0 ) return;
+						
 						var $batchDiv = jQuery( obj );
 						var p = $batchDiv.position().top - co;
 						
 						if ( opt.lBound > p || p > opt.uBound ) { 
 							return;
-						} 
+						}
 						
-						window.storyboardBusy = true;
 						opt.updateBatch( $batchDiv.removeClass( opt.emptyBatchClass ) );
 					});
 				}
@@ -127,14 +131,12 @@
 			};
 
 			function monEnd() {
-				if ( offset < opt.maxOffset ) {
-					setTimeout( monEnd, vEnd() );
-				}
+				setTimeout( monEnd, vEnd() );
 			}
 			
 			function vEnd() {
 				if ( ele.scrollTop > 0 && ele.scrollHeight - ele.scrollTop < opt.eBound ) {
-					offset = batch( $sp, offset, opt );
+					batch( $sp, opt );
 					return 1;
 				}
 				

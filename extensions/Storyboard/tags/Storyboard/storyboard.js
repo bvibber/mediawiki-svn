@@ -10,8 +10,7 @@
 		$( '.storyboard' ).ajaxScroll( {
 			updateBatch: updateStoryboard,
 			maxOffset: 500,
-			batchSize: 2,
-			batchNum: 2, // TODO: change to 1. Some issue in the ajaxscroll plugin makesit break when this is the case though.
+			batchSize: 4,
 			batchClass: "batch",
 			boxClass: "storyboard-box",
 			emptyBatchClass: "storyboard-empty",
@@ -24,7 +23,7 @@
 			'action': 'query',
 			'list': 'stories',
 			'format': 'json',
-			'stlimit': 2,
+			'stlimit': 4,
 			'stlanguage': window.storyboardLanguage
 		};
 
@@ -122,8 +121,6 @@
 		}
 		
 		window.storyContinueParam = data["query-continue"] ? data["query-continue"] : false; 
-		
-		window.storyboardBusy = false;
 	}
 		
 })(jQuery);
