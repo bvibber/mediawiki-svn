@@ -836,25 +836,6 @@ ctrlBuilder.prototype = {
 		// Related videos could be shown here 
 	},
 	
-	/**
-	 * The ctrl builder updates the interface on seeking 
-	 */
-	onSeek: function(){
-		// Update the interface: 
-		this.setStatus( gM( 'mwe-seeking' ) );
-		// Run the seeking hook
-		$j( this.embedPlayer ).trigger( 'onSeek' );
-	},
-	
-	/**
-	* Updates the player status that displays short text msgs and the play clock 
-	* @param {String} value Status string value to update
-	*/
-	setStatus: function( value ) {		
-		// update status:
-		this.embedPlayer.$interface.find( '.time-disp' ).html( value );
-	},
-	
 	/**	
 	* Option menu items
 	*
@@ -1604,9 +1585,9 @@ ctrlBuilder.prototype = {
 							embedPlayer.jump_time = mw.seconds2npt( parseFloat( parseFloat( embedPlayer.getDuration() ) * perc ) + embedPlayer.start_time_sec );
 							// mw.log('perc:' + perc + ' * ' + embedPlayer.getDuration() + ' jt:'+  this.jump_time);
 							if ( _this.longTimeDisp ) {
-								ctrlObj.setStatus( gM( 'mwe-seek_to', embedPlayer.jump_time ) );
+								embedPlayer.setStatus( gM( 'mwe-seek_to', embedPlayer.jump_time ) );
 							} else {
-								ctrlObj.setStatus( embedPlayer.jump_time );
+								embedPlayer.setStatus( embedPlayer.jump_time );
 							}
 							// Update the thumbnail / frame
 							if ( embedPlayer.isPlaying == false ) {
@@ -1624,7 +1605,7 @@ ctrlBuilder.prototype = {
 								// set seek time (in case we have to do a url seek)
 								embedPlayer.seek_time_sec = mw.npt2seconds( embedPlayer.jump_time, true );
 								mw.log( 'do jump to: ' + embedPlayer.jump_time + ' perc:' + perc + ' sts:' + embedPlayer.seek_time_sec );
-								ctrlObj.setStatus( gM( 'mwe-seeking' ) );
+								embedPlayer.setStatus( gM( 'mwe-seeking' ) );
 								embedPlayer.doSeek( perc );
 							}
 						}

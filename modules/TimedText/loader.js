@@ -3,7 +3,7 @@
 */
 // Scope everything in "mw"  ( keeps the global namespace clean ) 
 ( function( mw ) {
-	
+
 mw.addClassFilePaths( {
 	"mw.TimedText" : "mw.TimedText.js",
 	"mw.style.TimedText" : "css/mw.style.TimedText.css",
@@ -12,7 +12,7 @@ mw.addClassFilePaths( {
 	"mw.style.TimedTextEdit" : "css/mw.style.TimedTextEdit.css",
 	
 	"RemoteMwTimedText" : "remotes/RemoteMwTimedText.js"
-} );
+});
 
 var mwTimedTextRequestSet = [ 
 	'$j.fn.menu', 
@@ -29,21 +29,18 @@ mw.addModuleLoader( 'TimedText', function( callback ) {
 });
 
 var mwLoadTimedTextFlag = false;
-// Always Merge in the timed text libs 
+// Merge in the timed text libs 
 if( mw.getConfig( 'textInterface' ) == 'always' ) {
 	mwLoadTimedTextFlag = true;	
 }
-
 /**
-* Setup the load embedPlayer visit tag addSetupHook function 
+* Setup the load embedPlayer visit tag function hook.
 *
 * Check if the video tags in the page support timed text
 * this way we can add our timed text libraries to the initial 
 * request and avoid an extra round trip to the server
 */
-
-// Bind the loader embed player tag viewing
-$j( mw ).bind( 'LoaderEmbedPlayerVisitTag', function( event, playerElement ) {	
+mw.addHook( 'LoaderEmbedPlayerVisitTag', function( playerElement ) {	
 	// If add timed text flag not already set check for itext, and sources
 	if( ! mwLoadTimedTextFlag ) {
 		if( $j( playerElement ).find( 'itext' ).length != 0 ) {
@@ -58,15 +55,14 @@ $j( mw ).bind( 'LoaderEmbedPlayerVisitTag', function( event, playerElement ) {
 		}
 	}
 } );
+
 // Update the player loader request with timedText if the flag has been set 
-$j( mw ).bind( 'LoaderEmbedPlayerUpdateRequest', function( event, classRequest ) {
+mw.addHook( 'LoaderEmbedPlayerUpdateRequest', function( classRequest ) {	
 	// Add timed text items if flag set.  	
 	if( mwLoadTimedTextFlag ) {
 		$j.merge( classRequest, mwTimedTextRequestSet );
-	}	
-
+	}
 } );
-	
 
 // TimedText editor:
 mw.addModuleLoader( 'TimedText.Edit', function( callback ) {

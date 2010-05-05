@@ -104,7 +104,11 @@ var nativeEmbed = {
 			} else {
 				// Issue play request				
 				vid.play();
-			}			
+			}
+			
+			
+			// Run the "hook" for any extensions that need to bind things to the actual video elemnt
+			this.runHook( 'postEmbedJS' )
 			
 			setTimeout( function() {
 				_this.monitor();
@@ -149,9 +153,8 @@ var nativeEmbed = {
 			// try to do a play then seek: 
 			this.doPlayThenSeek( percentage )
 		}
-		
 		// Run the onSeeking interface update
-		this.ctrlBuilder.onSeek(); 
+		this.onSeek(); 		
 	},
 	
 	/**
@@ -377,10 +380,10 @@ var nativeEmbed = {
 	* Local method for seeking event
 	*  fired when "seeking" 
 	*/
-	onSeeking: function() {					
-		// Run the onSeeking interface update
-		this.ctrlBuilder.onSeek(); 
-		
+	onSeeking: function() {
+		//mw.log( "onseeking" );
+		this.seeking = true;
+		this.setStatus( gM( 'mwe-seeking' ) );
 		// Trigger the html5 seeking event
 		$j( this ).trigger( 'seeking' ); 
 	},

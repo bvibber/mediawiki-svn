@@ -1257,7 +1257,7 @@ mw.UploadWizardDetails.prototype = {
 						'border' : 0,
 						'width' : 15,
 						'height' : 11,
-						'src' : mw.getConfig( 'imagesPath' ) + 'magnify-clip.png'
+						'src' : mw.getConfig( 'images_path' ) + 'magnify-clip.png'
 					} ), 
 					
 					$j('<span />')
