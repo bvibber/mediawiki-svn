@@ -361,15 +361,15 @@ abstract class Installer {
 			return;
 		}
 		$latestInfo = FormatJson::decode($latestInfo);
-		if ($latestInfo === false || !isset( $latestInfo['mwreleases'] ) ) {
+		if ($latestInfo === false || !isset( $latestInfo->mwreleases ) ) {
 			# For when the request is successful but there's e.g. some silly man in
 			# the middle firewall blocking us, e.g. one of those annoying airport ones
 			$this->showMessage( 'config-env-latest-data-invalid', $latestInfoUrl );
 			return;
 		}
-		foreach( $latestInfo['mwreleases'] as $rel ) {
-			if( isset( $rel['current'] ) )
-				$currentVersion = $rel['version'];
+		foreach( $latestInfo->mwreleases as $rel ) {
+			if( isset( $rel->current ) )
+				$currentVersion = $rel->version;
 		}
 		if( version_compare( $wgVersion, $currentVersion, '<' ) ) {
 			$this->showMessage( 'config-env-latest-old' );
