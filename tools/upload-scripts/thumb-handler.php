@@ -26,7 +26,7 @@ if ( preg_match('!^(?:http://upload.wikimedia.org)?/+([\w-]*)/([\w-]*)/thumb(/ar
 		$params['archived'] = 1;
 	}
 } elseif ( preg_match('!^(?:http://upload.wikimedia.org)?/+([\w-]*)/([\w-]*)/thumb(/archive|)/\w/\w\w/([^/]*\.(?:(?i)ogg|ogv|oga))/' . 
-	'(mid|seek(?:=|%3D|%3d)\d+)-([^/]*)$!', $uri, $matches ) ) 
+	'(mid|seek(?:=|%3D|%3d)[0-9.]+)-([^/]*)$!', $uri, $matches ) ) 
 {
 	list( $all, $site, $lang, $arch, $filename, $timeFull, $fn2 ) = $matches;
 	$params = array( 'f' => $filename );
