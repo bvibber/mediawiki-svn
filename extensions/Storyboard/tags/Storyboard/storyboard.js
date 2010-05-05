@@ -9,7 +9,6 @@
 	$( document ).ready( function() {
 		$( '.storyboard' ).ajaxScroll( {
 			updateBatch: updateStoryboard,
-			maxOffset: 500,
 			batchSize: 4,
 			batchClass: "batch",
 			boxClass: "storyboard-box",

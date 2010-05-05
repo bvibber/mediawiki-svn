@@ -66,13 +66,7 @@
 			if ( opt.eBound == "auto" ) {
 				opt.eBound = b * 2;
 			}
-			/*
-			$sp.find( '> .' + opt.emptyBatchClass ).each( function( i, obj ) {
-				if ( i > 0 ) {
-					var $batchDiv = jQuery( obj ).removeClass( opt.emptyBatchClass );
-				}
-			});
-			*/
+
 			setTimeout( monEnd, opt.endDelay );
 			
 			// Initiate the scroll handling.
