@@ -1188,7 +1188,7 @@ mw.RemoteSearchDriver.prototype = {
 												
 						$j('<img />' )
 						.attr( {
-							'src': mw.getConfig('images_path' ) + 'cookies_blocked_MSIE_eye.png',
+							'src': mw.getConfig('imagesPath' ) + 'cookies_blocked_MSIE_eye.png',
 							'alt' : gM('mwe-ie-eye-permision' )
 						})
 					);
@@ -1771,7 +1771,7 @@ mw.RemoteSearchDriver.prototype = {
 		// Check for missing poster types for audio
 		if ( (resource.mime == 'audio/ogg' || resource.mime == 'application/ogg') 
 			&& !resource.poster ) {
-			resource.poster = mw.getConfig( 'images_path' ) + 'sound_music_icon-80.png';
+			resource.poster = mw.getConfig( 'imagesPath' ) + 'sound_music_icon-80.png';
 		}
 
 		var $resultThumb = $j( '<img />' )
@@ -2964,10 +2964,10 @@ mw.RemoteSearchDriver.prototype = {
 	createLayoutSelector: function() {
 
 		var _this = this;
-		var darkBoxUrl = mw.getConfig( 'images_path' ) + 'box_layout_icon_dark.png';
-		var lightBoxUrl = mw.getConfig( 'images_path' ) + 'box_layout_icon.png';
-		var darkListUrl = mw.getConfig( 'images_path' ) + 'list_layout_icon_dark.png';
-		var lightListUrl = mw.getConfig( 'images_path' ) + 'list_layout_icon.png';
+		var darkBoxUrl = mw.getConfig( 'imagesPath' ) + 'box_layout_icon_dark.png';
+		var lightBoxUrl = mw.getConfig( 'imagesPath' ) + 'box_layout_icon.png';
+		var darkListUrl = mw.getConfig( 'imagesPath' ) + 'list_layout_icon_dark.png';
+		var lightListUrl = mw.getConfig( 'imagesPath' ) + 'list_layout_icon.png';
 		
 		var defaultBoxUrl, defaultListUrl;
 		if ( _this.displayMode == 'box' ) {

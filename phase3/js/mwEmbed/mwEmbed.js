@@ -63,7 +63,9 @@ var MW_EMBED_VERSION = '1.1f';
 	* @param [Mixed] name Name of configuration value
 	*	{Object} Will iderate through each key and call setConfig
 	* 	{String} Will set configuration by string name to value
-	* @param {String} value Value of configuration name 
+	* @param 
+	* 	{String} value Value of configuration name
+	* 	{Object} value Set of values to be merged 
 	*/
 	mw.setConfig = function ( name, value ) {
 		if( typeof name == 'object' ) {
@@ -80,7 +82,7 @@ var MW_EMBED_VERSION = '1.1f';
 		} else {
 			mwConfig[ name ] = value;
 		}
-	}	
+	}
 	
 	/**
 	* Set a default config value 
@@ -122,8 +124,8 @@ var MW_EMBED_VERSION = '1.1f';
 	* Modules that want to use "User Config" should call
 	* this setup function in their moduleLoader code. 
 	*
-	* For performance interfaces should load '$j.cookie' & 'JSON' 
-	*  in their grouped load request
+	* For performance interfaces using "user config" 
+	*  should load '$j.cookie' & 'JSON' in their module loader
 	*
 	* By abstracting user preference we could eventually integrate 
 	*  a persistent per-account preference system on the server.
@@ -557,6 +559,7 @@ var MW_EMBED_VERSION = '1.1f';
 					instanceCallback = null;
 				}
 			}
+			
 			// Check for empty loadRequest ( directly return the callback ) 
 			if( mw.isEmpty( loadRequest ) ) {
 				mw.log( 'Empty load request: ' + loadRequest );
@@ -1039,7 +1042,7 @@ var MW_EMBED_VERSION = '1.1f';
 	* mediaWiki JSON a wrapper for jQuery getJSON:
 	* ( could also be named mw.apiRequest )
 	* 
-	* The mediaWiki version lets you skip the url part 
+	* The mwEmbed version lets you skip the url part 
 	* mw.getJSON( [url], data, callback, [timeoutCallback] ); 
 	* 
 	* Lets you assume:
@@ -1048,18 +1051,19 @@ var MW_EMBED_VERSION = '1.1f';
 	*   callback parameter is not needed for the request data
 	* 	url param 'action'=>'query' is assumed ( if not set to something else in the "data" param
 	* 	format is set to "json" automatically
-	* 	automatically issues request over "POST" if the request requires a post
-	*	automatically will setup apiProxy where needed.
+	* 	automatically issues request over "POST" if the request api post type
+	*	automatically will setup apiProxy where request is cross domain
 	*
 	* @param {Mixed} url or data request
 	* @param {Mixed} data or callback
 	* @param {Function} callbcak function called on success
 	* @param {Function} callbackTimeout - optional function called on timeout
-	* 	Setting timeout callback also avoids default dialog display for timed-out proxy calls.
+	* 	Setting timeout callback also avoids default timed-out dialog for proxy requests
 	*/	
-	mw.getJSON = function() {		
-		// Set up the url
-			
+	mw.getJSON = function() {
+		// Proccess the arguments: 
+		
+		// Set up the url			
 		var url = false;
 		url = ( typeof arguments[0] == 'string' ) ? arguments[0] : mw.getLocalApiUrl();		
 		
@@ -1203,7 +1207,8 @@ var MW_EMBED_VERSION = '1.1f';
 	 *
 	 * @param {String} [apiUrl] Optional target API URL (uses default local api if unset) 
 	 * @param {String} title The wiki page title you want to edit	 
-	 * @param {callback} callback Function to pass the token to returns false if token not retrived
+	 * @param {callback} callback Function to pass the token to. 
+	 * 						issues callback with "false" if token not retrived
 	 */
 	mw.getToken = function( apiUrl, title, callback ) {
 		// Make the apiUrl be optional: 
@@ -1235,7 +1240,8 @@ var MW_EMBED_VERSION = '1.1f';
 	/**
 	 * Api helper to grab the username
 	 * @param {String} [apiUrl] Optional target API url (uses default local api if unset) 
-	 * @param {Function} callback Function to callback with username or false if not found	 	
+	 * @param {Function} callback Function to callback with username or false if not found
+	 * @param {Boolean} fresh A fresh check is issued.	 	
 	 */
 	 // Stub feature apiUserNameCache to avoid multiple calls 
 	 // ( a more general api cache framework should be devloped ) 
@@ -1295,7 +1301,7 @@ var MW_EMBED_VERSION = '1.1f';
 	* addLoaderDialog
 	*  small helper for displaying a loading dialog
 	*
-	* @param msg text text of the loader msg
+	* @param {String} msg_txt text text of the loader msg
 	*/
 	mw.addLoaderDialog = function( msg_txt ) {
 		mw.addDialog( msg_txt, msg_txt + '<br>' + mw.loading_spinner() );
@@ -1362,16 +1368,11 @@ var MW_EMBED_VERSION = '1.1f';
 	 * Close the loader dialog created with addLoaderDialog
 	 */
 	mw.closeLoaderDialog = function() {
-		mw.load( [
-			[
-				'$j.ui'
-			],
-			[
-				'$j.ui.dialog'
-			]
-		], function() {
-			$j( '#mwe_tmp_loader' ).dialog( 'destroy' ).remove();
-		} );
+		// Make sure the dialog class is present
+		if( !mw.isset( '$j.ui.dialog' ) ) {
+			return false;
+		}
+		$j( '#mwe_tmp_loader' ).dialog( 'destroy' ).remove();
 	}
 	
 	
@@ -1517,7 +1518,7 @@ var MW_EMBED_VERSION = '1.1f';
 	var mwReadyFlag = false;
 	
 	/**
-	* Enables load hooks to run once DOM is "ready" 
+	* Enables load hooks to run once mwEmbeed is "ready" 
 	* Will ensure jQuery is available, is in the $j namespace 
 	* and mw interfaces and configuration has been loaded and applied
 	* 
@@ -1530,20 +1531,7 @@ var MW_EMBED_VERSION = '1.1f';
 	mw.ready = function( callback ) {						
 		if( mwReadyFlag === false ) {		
 			// Add the callbcak to the onLoad function stack
-			mwOnLoadFunctions.push ( callback );
-						
-			// Set the mwSetup flag. So that onLoad functions can 
-			// be called once mwEmbed interfaces are setup.
-			if( !mwDomReadyFlag ) { 
-				//mw.log( 'set config flag' );
-				mw.setConfig( 'runSetupMwEmbed', true );
-			}else{				
-				//DOM is already ready run setup directly ( will run mwOnLoadFunctions on finish )
-				// This is needed beccause we support dynamic setup once we hit a mw.ready
-				// ( otherwise we would run setup on every include )
-				mw.setupMwEmbed(); 
-			}			
-			return ;
+			mwOnLoadFunctions.push ( callback );						
 		}
 		// If mwReadyFlag is already "true" issue the callback directly:
 		callback();		
@@ -1551,6 +1539,7 @@ var MW_EMBED_VERSION = '1.1f';
 	
 	/**
 	* Runs all the queued functions
+	* called by mwEmbedSetup
 	*/ 
 	mw.runReadyFunctions = function ( ) {		
 		// Run all the queued functions: 
@@ -1643,7 +1632,7 @@ var MW_EMBED_VERSION = '1.1f';
 		};
 		//mw.log(" append script: " + script.src );
 		// Append the script to the DOM:
-		head.appendChild( script );			
+		head.appendChild( script );
 	};
 	
 	/**
@@ -2165,60 +2154,70 @@ var MW_EMBED_VERSION = '1.1f';
 		}
 	
 		// Make sure we have jQuery and the common skin
-		// NOTE mw.style.mwCommon should be factored out into 
-		// seperate module specifc classes 
-		mw.load( 'window.jQuery', function() {							
+		mw.load( 'window.jQuery', function() {	
+			
+			// Add jQuery to $j var. 
 			if ( ! window[ '$j' ] ) {
 				window[ '$j' ] = jQuery.noConflict();				
 			}
 			
-			mw.setConfig( 'images_path', mw.getMwEmbedPath() + 'skins/common/images/' );										
-			
-			// Set up AJAX to not send dynamic URLs for loading scripts
-			$j.ajaxSetup( {
-				cache: true
-			} );
-			
-			// Update the magic keywords 		
-			mw.Language.magicSetup();
-			
-			// Set up mvEmbed utility jQuery bindings
-			mw.dojQueryBindings();						
-			
-			// Make sure style sheets are loaded: 
-			mw.load( [
-				'mw.style.mwCommon',
-				'mw.style.' + mw.getConfig( 'jQueryUISkin' )				 
-			], function(){	
-				// Run all the setup function hooks
-				// Once complete we can run .ready queued functions  
-				function runSetupFunctions() {
-					if( mwSetupFunctions.length ) {
-						mwSetupFunctions.pop()( function() {
-							runSetupFunctions();
-						} );
-					}else{
-						mw.runReadyFunctions();
+			// Get loader, config and language files 
+			// ( if not already set via script-loader ) 
+			mw.checkScriptLoaderFiles( function() { 
+				
+				// Update the image path 
+				mw.setConfig( 'imagesPath', mw.getMwEmbedPath() + 'skins/common/images/' );										
+				
+				// Set up AJAX to not send dynamic URLs for loading scripts
+				$j.ajaxSetup( {
+					cache: true
+				} );
+				
+				// Update the magic keywords 		
+				mw.Language.magicSetup();
+				
+				// Set up mvEmbed utility jQuery bindings
+				mw.dojQueryBindings();						
+				
+				// Make sure style sheets are loaded: 
+				mw.load( [
+					'mw.style.mwCommon',
+					'mw.style.' + mw.getConfig( 'jQueryUISkin' )				 
+				], function(){	
+					
+					// Run all the setup function hooks 
+					// NOTE: setup functions are added via addSetupHook calls
+					// and must include a callback.
+					//
+					// Once complete we can run .ready() queued functions  
+					function runSetupFunctions() {
+						if( mwSetupFunctions.length ) {
+							mwSetupFunctions.shift()( function() {
+								runSetupFunctions();
+							} );
+						}else{
+							mw.runReadyFunctions();
+						}
 					}
-				}
-				runSetupFunctions();	
-			});
+					runSetupFunctions();	
+				});
+			} );									
 		});		
 	};
 	
 	/**
-	* Check for module loaders, and localization
+	* Check for script-loader module loaders, and localization files
 	* 
-	* Note if using a scriptLoader all the loaders and localization converters 
+	* NOTE: if using the ScriptLoader all the loaders and localization converters 
 	*  are included automatically. 
 	*/
-	mw.moduleLoaderCheck = function( callback ) {
+	mw.checkScriptLoaderFiles = function( callback ) {
 		mw.log( 'doLoaderCheck::' );
 		
 		// Check if we are using scriptloader ( handles loader include automatically ) 
 		if( mw.getScriptLoaderPath() ) {
 			// Do a async call to callback in cases where DOM is ready before we get to 
-			// loader config code in the same file. 
+			// loader config code
 			setTimeout(function() {
 				callback();				
 			}, 1);
@@ -2226,11 +2225,11 @@ var MW_EMBED_VERSION = '1.1f';
 		}
 		
 		// Add the Core loader to the request
-		// The follow code is only run in debug / raw file mode
+		// The follow code is ONLY RUN in debug / raw file mode
+		
 		mw.load( 'loader.js', function() {					
 			// Load all the "loaders" of the enabled modules:
 			var loaderRequest = [];			
-			
 			
 			//Load enabled components
 			var enabledComponents = mw.getConfig( 'coreComponents' );
@@ -2251,7 +2250,7 @@ var MW_EMBED_VERSION = '1.1f';
 			loadEnabledComponents( enabledComponents );						
 			
 						
-			//Set the loader context and get each loader individually ( only in debug mode )  				
+			// Set the loader context and get each loader individually  				
 			function loadEnabledModules( enabledModules ){
 				if( ! enabledModules.length ){
 					// If no more modules left load the LanguageFile
@@ -2339,29 +2338,7 @@ var MW_EMBED_VERSION = '1.1f';
 	var mwDomReadyFlag = false;
 	
 	// Flag to register if the domreadyHooks have been called
-	var mwModuleLoaderCheckFlag = false;
-	
-	// Functions to run on DOM ready
-	var mwOnDOMReadyFunctions = [];
-	
-	/**
-	* Dom ready hooks are for module loaders that want to conditionally
-	* set setup hooks. 
-	*
-	* This enables modules to build out interfaces asynchronously 
-	* to be "ready" at mw.ready call time.  
-	*
-	* @param {Function} callback Function to be called at dom ready
-	*/
-	mw.addDOMReadyHook = function( callback ) {	
-		if ( mwModuleLoaderCheckFlag ) {
-			mw.log( "Possible Error: calling mw.addDOMReadyHook after moduleLoader check ?" );		
-			callback ( );
-		} else {							
-			// Add the dom ready check to the function queue: 
-			mwOnDOMReadyFunctions.push( callback );
-		}
-	}
+	var mwModuleLoaderCheckFlag = false;	
 
 	/**
  	* This will get called when the DOM is ready 
@@ -2374,28 +2351,9 @@ var MW_EMBED_VERSION = '1.1f';
 		mw.log( 'run:domReady:: ' + document.getElementsByTagName('video').length );
 		// Set the onDomReady Flag
 		mwDomReadyFlag = true;	
-			
-		// Make sure we have all the module loader.js files included 
-		// ( where we are not using the script-loader )
-		mw.moduleLoaderCheck( function( ) {	
-				
-			// Run dom ready hooks: 
-			while( mwOnDOMReadyFunctions.length ) {
-				mwOnDOMReadyFunctions.pop()();
-			}
-												
-			// Check for the force setup flag:
-			if ( mw.getConfig( 'runSetupMwEmbed' ) ) {
-				mw.setupMwEmbed();
-				return ;
-			}				
-			
-			// Check for queued functions that use mw interfaces: 
-			if ( mwOnLoadFunctions.length ) {
-				mw.setupMwEmbed();
-				return ;
-			}	
-		});
+		
+		// Setup MwEmbed 
+		mw.setupMwEmbed();
 	}	
 	
 	/**
@@ -2560,6 +2518,7 @@ var MW_EMBED_VERSION = '1.1f';
 *  mwEmbed.js is included without jQuery
 *  and we need our own "ready" system so that
 *  mwEmbed interfaces can support async built out
+*  and the inclution of jQuery. 
 */
 var mwDomIsReady = false;
 function runMwDomReady(){
@@ -2638,8 +2597,13 @@ function doScrollCheck() {
 }
 
 
-// Hack to keep jQuery in $ when its
-// already there, but also use noConflict to get $j = jQuery 
+/*
+ * Hack to keep jQuery in $ when its
+ * already there, but also use noConflict to get $j = jQuery
+ * 
+ * This way sites that use $ for jQuery continue to work after
+ * including mwEmbed.js
+ */
 if( window.jQuery ){
 	var dollarFlag = false;	
 	if( $ && $.fn && $.fn.jquery ){
@@ -2647,8 +2611,13 @@ if( window.jQuery ){
 		// jQuery and do a removal call if too old
 		dollarFlag = true;		
 	}
-	window['$j'] = jQuery.noConflict();
+	window[ '$j' ] = jQuery.noConflict();
 	if( dollarFlag ) {
-		window['$'] = jQuery.noConflict();
+		window[ '$' ] = jQuery.noConflict();
 	}
+}
+
+// If using the script-loader and jQuery has not been set give a warning to the user: 
+if( mw.getScriptLoaderPath() && !window.jQuery ) {
+	alert( 'jQuery is required for mwEmbed, please update your script-loader request' );
 }

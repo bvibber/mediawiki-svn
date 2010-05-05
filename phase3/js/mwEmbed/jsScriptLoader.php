@@ -120,6 +120,7 @@ class jsScriptLoader {
 
 			// mwEmbed is a core component so it includes loaders and other styles
 			if( $classKey == 'mwEmbed' && $this->outputFormat != 'messages' ){
+				
 				// Output core components ( parts of mwEmbed that are in different files )
 				$this->output .= jsClassLoader::getCombinedComponentJs( $this );
 
