@@ -57,7 +57,7 @@ public class SlidingCoherenceDisambiguator extends CoherenceDisambiguator {
 		if (to-from < 2) {
 			r = popularityDisambiguator.disambiguate(frame, meanings, context);
 		} else {
-			List<Disambiguator.Interpretation<X, LocalConcept>> interpretations = getInterpretations(frame,  interpretation, meanings);
+			Collection<Disambiguator.Interpretation<X, LocalConcept>> interpretations = getInterpretations(frame,  interpretation, meanings);
 			r = getBestInterpretation(node, meanings, context, interpretations, similarities, features);
 		}
 		
@@ -97,7 +97,7 @@ public class SlidingCoherenceDisambiguator extends CoherenceDisambiguator {
 		
 		if (initialWindow > 0) { //apply full coherence disambig to initial window size. initialWindow == 1 will trigger a popularity disambig.
 			Collection<List<X>> sequences = getSequences(root, initialWindow);
-			Result<X, LocalConcept> r = disambiguate(sequences, root, meanings, context);
+			Result<X, LocalConcept> r = super.disambiguate(sequences, root, meanings, context);
 			
 			sequence.addAll(r.getSequence());
 			currentNode = getLastNode(root, sequence);
@@ -130,7 +130,7 @@ public class SlidingCoherenceDisambiguator extends CoherenceDisambiguator {
 		return getScore(new Disambiguator.Interpretation<X, LocalConcept>(disambig, sequence), context, similarities, features); //FIXME: this is unnecessarily expensive, we usually don't need the scores this calculates. 
 	}
 
-	protected <X extends TermReference>List<Disambiguator.Interpretation<X, LocalConcept>> getInterpretations(List<X> frame,  Map<X, ? extends LocalConcept> known, Map<? extends TermReference, List<? extends LocalConcept>> meanings) {
+	protected <X extends TermReference>Collection<Disambiguator.Interpretation<X, LocalConcept>> getInterpretations(List<X> frame,  Map<X, ? extends LocalConcept> known, Map<? extends TermReference, List<? extends LocalConcept>> meanings) {
 		//strip out all terms with no known meaning
 		if (meanings.keySet().size() != frame.size()) {
 			List<X> t = new ArrayList<X>(frame.size());

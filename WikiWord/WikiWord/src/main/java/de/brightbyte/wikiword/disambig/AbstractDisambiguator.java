@@ -18,7 +18,7 @@ import de.brightbyte.wikiword.model.WikiWordConcept;
 public abstract class AbstractDisambiguator<T extends TermReference, C extends WikiWordConcept> implements Disambiguator<T, C> {
 
 	public interface NodeListener<T extends TermReference> {
-		public void onNode(PhraseNode<? extends T> node, List<? extends T> seqence);
+		public void onNode(PhraseNode<? extends T> node, List<? extends T> seqence, boolean terminal);
 	}
 
 	public static class SequenceSetBuilder <T extends TermReference> implements NodeListener<T> {
@@ -28,9 +28,8 @@ public abstract class AbstractDisambiguator<T extends TermReference, C extends W
 			seqencees = new ArrayList<List<T>>();
 		}
 		
-		public void onNode(PhraseNode<? extends T> node, List<? extends T> seqence) {
-			Collection<?> successors = node.getSuccessors();
-			if (successors==null || successors.isEmpty()) { //is leaf
+		public void onNode(PhraseNode<? extends T> node, List<? extends T> seqence, boolean terminal) {
+			if (terminal) { 
 				List<T> p = new ArrayList<T>(seqence);  //clone
 				seqencees.add(p);
 			}
@@ -48,7 +47,7 @@ public abstract class AbstractDisambiguator<T extends TermReference, C extends W
 			terms = new HashSet<T>();
 		}
 		
-		public void onNode(PhraseNode<? extends T> node, List<? extends T> seqence) {
+		public void onNode(PhraseNode<? extends T> node, List<? extends T> seqence, boolean terminal) {
 			T t = node.getTermReference();
 			if (t.getTerm().length()>0) terms.add(t);
 		}
@@ -127,13 +126,17 @@ public abstract class AbstractDisambiguator<T extends TermReference, C extends W
 		
 		X t = root.getTermReference();
 		if (t.getTerm().length()>0) seqence.add(t); //push
+		else if (depth<Integer.MAX_VALUE) depth += 1; //XXX: ugly hack for blank root nodes.
+		
+		boolean terminal = (depth<=1);
+			
+		Collection<? extends PhraseNode<X>> successors = terminal ? null : root.getSuccessors();
+		if (successors==null || successors.isEmpty()) terminal = true;
 		
 		if (nodeListener!=null) 
-			nodeListener.onNode(root, seqence);
+			nodeListener.onNode(root, seqence, terminal);
 		
-		Collection<? extends PhraseNode<X>> successors = root.getSuccessors();
-		
-		if (depth>1 && successors!=null) {
+		if (!terminal) {
 			for (PhraseNode<X> n: successors) {
 				walk(n, seqence, nodeListener, depth-1);
 			}
