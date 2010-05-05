@@ -791,6 +791,7 @@ comment from another wiki.
   the page set in the &returnto parameter.
 * (bug 19194) Search box in Modern skin doesn't focus with Safari/Chrome
 * (bug 17790) Users instantly logged off on HughesNet
+* (bug 23375) Added ogv, oga, spx as extensions for ogg files 
 
 == API changes in 1.16 ==
 
