@@ -203,8 +203,9 @@ body {
 		direction: ltr;
 		float: left;
 		background-image: url(images/arrow-down-icon.png);
-		background-position: center center;
+		background-position: 100% 60%;
 		background-repeat: no-repeat;
+		cursor: pointer;
 	}
 	/* @noflip */
 	body.rtl div.vectorMenu {
@@ -224,6 +225,15 @@ body {
 	#head div.vectorMenu h5 {
 		background-position: bottom left;
 		margin-left: -1px;
+	}
+	#head div.vectorMenu h4 {
+		display: inline-block;
+		float: left;
+		font-size: 0.8em;
+		padding-left: 0.5em;
+		padding-top: 1.375em;
+		font-weight: normal;
+		border: none;
 	}
 	/* OVERRIDDEN BY COMPLIANT BROWSERS */
 	/* @noflip */
@@ -717,6 +727,9 @@ blockquote {
 	font-family: Times, "Times New Roman", serif;
 	font-style: italic;
 }*/
+pre, code, tt {
+	font-family: monospace, sans-serif;
+}
 code {
 	background-color: #f9f9f9;
 }

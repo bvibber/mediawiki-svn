@@ -26,7 +26,7 @@ class SkinVector extends SkinTemplate {
 	 * @param object $out Output page object to initialize
 	 */
 	public function initPage( OutputPage $out ) {
-		global $wgStylePath, $wgJsMimeType, $wgStyleVersion, $wgScriptPath, $wgVectorExtraStyles;
+		global $wgLocalStylePath, $wgVectorExtraStyles;
 		
 		parent::initPage( $out );
 
@@ -38,7 +38,7 @@ class SkinVector extends SkinTemplate {
 		// wait for the CSS file to load before fetching the HTC file.
 		$out->addScript(
 			'<!--[if lt IE 7]><style type="text/css">body{behavior:url("' .
-				$wgStylePath .
+				$wgLocalStylePath .
 				'/vector/csshover.htc")}</style><![endif]-->'
 		);
 		// Add extra stylesheets
@@ -661,7 +661,7 @@ class VectorTemplate extends QuickTemplate {
 	 * when UI is in RTL mode
 	 */
 	private function renderNavigation( $elements ) {
-		global $wgContLang, $wgVectorUseSimpleSearch, $wgStylePath;
+		global $wgContLang, $wgVectorUseSimpleSearch, $wgVectorShowVariantName, $wgStylePath;
 
 		// If only one element was given, wrap it in an array, allowing more
 		// flexible arguments
@@ -690,6 +690,15 @@ class VectorTemplate extends QuickTemplate {
 				case 'VARIANTS':
 ?>
 <div id="p-variants" class="vectorMenu<?php if ( count( $this->data['variant_urls'] ) == 0 ) echo ' emptyPortlet'; ?>">
+	<?php if ( $wgVectorShowVariantName ): ?>
+		<h4>
+		<?php foreach ($this->data['variant_urls'] as $key => $link ): ?>
+			<?php if ( stripos( $link['attributes'], 'selected' ) !== false ): ?>
+				<?php echo htmlspecialchars( $link['text'] ) ?>
+			<?php endif; ?>
+		<?php endforeach; ?>
+		</h4>
+	<?php endif; ?>
 	<h5><span><?php $this->msg('variants') ?></span><a href="#"></a></h5>
 	<div class="menu">
 		<ul<?php $this->html('userlangattributes') ?>>

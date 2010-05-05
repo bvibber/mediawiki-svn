@@ -828,6 +828,7 @@ body.rtl .wikiEditor-ui-toolbar .sections .section {
 	background-repeat: no-repeat;
 	padding-left: 32px;
 	margin-left: 1em;
+	height: 22px;
 	float: left;
 	color: #666666;
 }
@@ -886,12 +887,13 @@ body.rtl .wikiEditor-ui-toolbar .group-insert {
 /* Sprited Buttons */
 .wikiEditor-toolbar-spritedButton { 
 	background: url(../images/wikiEditor/toolbar/button-sprite.png) 0 0 no-repeat;
-	display:block;
-	float:left;
-	height:22px;
-	text-indent:-9999px;
-	width:22px;
+	display: block;
+	float: left;
+	height: 22px;
+	text-indent: -9999px;
+	width: 22px;
 	padding: 2px;
+	cursor: pointer;
 }
 /* Tabs */
 .wikiEditor-ui-toolbar .tabs {
@@ -1130,7 +1132,7 @@ body.rtl .wikiEditor-ui-toolbar .page-table td {
 	width: 20%;
 }
 /* Characters Pages */
-.wikiEditor-ui-toolbar .page-characters div a {
+.wikiEditor-ui-toolbar .page-characters div span {
 	border: solid 1px #DDDDDD;
 	padding: 5px;
 	padding-left: 8px;
@@ -1142,15 +1144,16 @@ body.rtl .wikiEditor-ui-toolbar .page-table td {
 	display: block;
 	color: black;
 	text-decoration: none;
+	cursor: pointer;
 }
-body.rtl .wikiEditor-ui-toolbar .page-characters > div > a,
-.wikiEditor-ui-toolbar .page-characters div[dir=rtl] a {
+body.rtl .wikiEditor-ui-toolbar .page-characters > div > span,
+.wikiEditor-ui-toolbar .page-characters div[dir=rtl] span {
 	direction: rtl;
 	float: right;
 	margin-left: 0;
 	margin-right: 5px;
 }
-.wikiEditor-ui-toolbar .page-characters div a:hover {
+.wikiEditor-ui-toolbar .page-characters div span:hover {
 	background-color: white;
 	text-decoration: none;
 	border-color: #a8d7f9;

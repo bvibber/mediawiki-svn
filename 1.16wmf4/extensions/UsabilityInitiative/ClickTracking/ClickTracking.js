@@ -1,26 +1,23 @@
-(function($) {
-	if( !wgClickTrackingIsThrottled ) {
-		// creates 'track action' function to call the clicktracking API and send the ID
-		$.trackAction = function ( id ) {
-			$j.post( wgScriptPath + '/api.php', { 'action': 'clicktracking', 'eventid': id, 'token': wgTrackingToken } );
+( function( $ ) {
+	if ( !wgClickTrackingIsThrottled ) {
+		// Create 'track action' function to call the clicktracking API and send the ID
+		$.trackAction = function( id ) {
+			$j.post(
+					wgScriptPath + '/api.php', { 'action': 'clicktracking', 'eventid': id, 'token': wgTrackingToken }
+			);
 		};
-		
-		// Clicktrack the left sidebar links
+		// Add click tracking hooks to the sidebar
 		$j(document).ready( function() {
-			$( '#p-logo a, #p-navigation a, #p-tb a' ).click( function() {
-				var id = 'leftnav-' + skin + '-' +
-					( $(this).attr( 'id' ) || $(this).parent().attr( 'id' ) );
+			$( '#p-logo a, #p-navigation a, #p-interaction a, #p-tb a' ).each( function() {
 				var href = $(this).attr( 'href' );
-				// Don't attach to javascript: URLs and the like,
-				// only to local URLs (start with a /), http:// ,
-				// https:// and same-protocol URLs (start with //)
-				if ( href[0] == '/' || href.match( /^https?:\/\// ) )
-					window.location =  wgScriptPath +
-						'/api.php?action=clicktracking&eventid=' +
-						id + '&token=' + wgTrackingToken +
-						'&redirectto=' + escape( href );
-			});
-		});
+				// Only modify local and same-schema URLs
+				if ( href[0] == '/' || href.match( /^https?:\/\// ) ) {
+					var id = 'leftnav-' + skin + '-' + ( $(this).attr( 'id' ) || $(this).parent().attr( 'id' ) );
+					href = wgScriptPath + '/api.php?action=clicktracking' +
+						'&eventid=' + id + '&token=' + wgTrackingToken + '&redirectto=' + escape( href );
+					$(this).attr( 'href', href );
+				}
+			} );
+		} );
 	}
-
-})(jQuery);
+} )( jQuery );

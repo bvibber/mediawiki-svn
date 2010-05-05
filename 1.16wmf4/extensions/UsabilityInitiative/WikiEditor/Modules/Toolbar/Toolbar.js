@@ -491,6 +491,7 @@ $j(document).ready( function() {
 	'characters': {
 		labelMsg: 'wikieditor-toolbar-section-characters',
 		type: 'booklet',
+		deferLoad: true,
 		pages: {
 			'latin': {
 				'labelMsg': 'wikieditor-toolbar-characters-page-latin',
@@ -753,6 +754,7 @@ $j(document).ready( function() {
 	'help': {
 		labelMsg: 'wikieditor-toolbar-section-help',
 		type: 'booklet',
+		deferLoad: true,
 		pages: {
 			'format': {
 				labelMsg: 'wikieditor-toolbar-help-page-format',
