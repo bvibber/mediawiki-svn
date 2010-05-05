@@ -59,7 +59,7 @@ $j(document).ready( function() {
 		$j( '#wpTextbox1' ).addClass( 'toolbar-dialogs' );
 	}
 	// Add the toolbar module
-	if ( $j.fn.wikiEditor && $j.wikiEditor.isSupported() ) {
+	if ( $j.fn.wikiEditor && $j.wikiEditor.isSupported( $j.wikiEditor.modules.toolbar ) ) {
 		// Remove the old toolbar
 		$j( '#toolbar' ).remove();
 		// Add toolbar module
