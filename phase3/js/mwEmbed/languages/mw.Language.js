@@ -29,7 +29,7 @@
 		}
 	}
 		
-	mw.currentClassMissingMessages = true;	
+	mw.currentClassMissingMessages = false;	
 	/**
 	* mw.addMessagesKey function
 	* Adds a msgKey to be pulled in remotely.

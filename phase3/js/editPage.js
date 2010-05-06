@@ -23,7 +23,7 @@ var defaultAddMediaConfig = {
 		'local_wiki_apiUrl': wgServer + wgScriptPath + '/api.php'
 };
 
-mw.ready( function() {
+mw.ready( function() {	
 	mw.log( "edit page mw.ready::" );
 	var amwConf = $j.extend( true, defaultAddMediaConfig, mwAddMediaConfig );
 	// Kind of tricky, it would be nice to use run on ready "loader" call here
@@ -61,7 +61,7 @@ mw.ready( function() {
 			mw.log( 'Do old toolbar bind:' );
 			didWikiEditorBind = true;				
 			$j( '#toolbar' ).append( '<img style="cursor:pointer" id="btn-add-media-wiz" src="' +
-				mw.getConfig( 'images_path' ) + 'Button_add_media.png">' );			
+				mw.getConfig( 'imagesPath' ) + 'Button_add_media.png">' );			
 			
 			$j( '#btn-add-media-wiz' ).attr( 'title', gM( 'mwe-loading-add-media-wiz' ) );			
 			mw.load( 'AddMedia.addMediaWizard', function() {				
