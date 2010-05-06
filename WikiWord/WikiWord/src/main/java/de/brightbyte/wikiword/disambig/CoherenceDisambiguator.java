@@ -284,24 +284,25 @@ public class CoherenceDisambiguator extends AbstractDisambiguator<TermReference,
 		
 		Collection<Disambiguator.Interpretation<X, LocalConcept>> base = getSequenceInterpretations(sequence.subList(1, sequence.size()), meanings);
 
-		if (m==null || m.size()==0) return base;
-		
 		List<Disambiguator.Interpretation<X, LocalConcept>> interpretations = new ArrayList<Disambiguator.Interpretation<X, LocalConcept>>();
 		
 		for (Disambiguator.Interpretation<X, LocalConcept> be: base) {
-			for (LocalConcept c: m) {
-				Map<X, LocalConcept> e = new HashMap<X, LocalConcept>();
-				e.putAll(be.getMeanings());
-				e.put(t, c);
-
-				if (!sequence.isEmpty()) {
+			if (m==null || m.isEmpty()) {
+				Disambiguator.Interpretation<X, LocalConcept>interp = new Disambiguator.Interpretation<X, LocalConcept>(be.getMeanings(), sequence);
+				interpretations.add(interp);
+			} else {
+				for (LocalConcept c: m) {
+					Map<X, LocalConcept> e = new HashMap<X, LocalConcept>();
+					e.putAll(be.getMeanings());
+					e.put(t, c);
+	
 					Disambiguator.Interpretation<X, LocalConcept>interp = new Disambiguator.Interpretation<X, LocalConcept>(e, sequence);
 					interpretations.add(interp);
 				}
 			}
 		}
 		
-		trace("    ~ "+t+": "+m.size()+" meanings; collected "+interpretations.size()+" combinations");
+		trace("    ~ "+t+": "+(m==null ? "no": m.size())+" meanings; collected "+interpretations.size()+" combinations");
 		return interpretations;
 	}
 
@@ -367,6 +368,10 @@ public class CoherenceDisambiguator extends AbstractDisambiguator<TermReference,
 				}
 				
 				if (d<0) throw new IllegalArgumentException("encountered negative similarity score ("+d+") for "+a+" / "+b);
+				
+				assert d>=0;
+				assert d<=1;
+				
 				sim += d;
 				n ++; //should add up to interp.size*(combo.size()-1)/2, according to Gauss
 			}
@@ -384,14 +389,25 @@ public class CoherenceDisambiguator extends AbstractDisambiguator<TermReference,
 		}
 		
 		//normalize
-		sim = sim / n; //scale
-		pop = pop / c; //scale
-		weight = weight / c; //scale
+		sim = n == 0 ? 0 : sim / n; //scale
+		pop = c == 0 ? 0 : pop / c; //scale
+		weight = c == 0 ? 0 : weight / c; //scale
+		
+		assert pop >= 0;
+		assert sim >= 0;
+		assert sim <= 1;
 		
 		double popf = popularityNormalizer.apply(pop);
 		double simf = similarityNormalizer.apply(sim);
+		
+		assert popf>=0;
+		assert popf<=1;
+		assert simf>=0;
+		assert simf<=1;
 
 		double score = scoreCombiner.apply(popf, simf);
+		assert score>=0;
+		assert score<=1;
 		
 		return new Result<X, LocalConcept>(interp.getMeanings(), interp.getSequence(), score, "simf="+simf+", popf="+popf+", sim="+sim+", pop="+pop+", weight="+weight);
 	}

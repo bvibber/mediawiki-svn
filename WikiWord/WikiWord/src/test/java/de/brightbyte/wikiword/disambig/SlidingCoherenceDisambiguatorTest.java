@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.Map;
 
 import de.brightbyte.data.Pair;
+import de.brightbyte.io.ConsoleIO;
+import de.brightbyte.io.Output;
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.disambig.Disambiguator.Interpretation;
 import de.brightbyte.wikiword.disambig.Disambiguator.Result;
@@ -15,6 +17,8 @@ import de.brightbyte.wikiword.model.PhraseOccurance;
 import de.brightbyte.wikiword.model.PhraseOccuranceSet;
 
 public class SlidingCoherenceDisambiguatorTest extends DisambiguatorTestBase {
+
+	private Output traceOutput = ConsoleIO.output;
 
 	public SlidingCoherenceDisambiguatorTest() throws IOException, PersistenceException {
 		super();
@@ -42,6 +46,24 @@ public class SlidingCoherenceDisambiguatorTest extends DisambiguatorTestBase {
 		assertTrue("UK as United_Kingdom", interpretations.contains( new Disambiguator.Interpretation<Term, LocalConcept>( uk_as_United_Kingdom )) );
 		assertTrue("UK as Great_Britain", interpretations.contains( new Disambiguator.Interpretation<Term, LocalConcept>( uk_as_Great_Britain )) );
 		assertTrue("UK as England", interpretations.contains( new Disambiguator.Interpretation<Term, LocalConcept>( uk_as_England )) );
+
+		///////////////////////////////////////////////////////////////////////////////////
+		Term freak = new Term("Freak");
+		Pair<Term, LocalConcept> freak_as_nothing = new Pair<Term, LocalConcept>(freak, null);
+		
+		sequence = new ArrayList<Term>();
+		sequence.add(freak);
+		sequence.add(london);
+
+		interpretations = disambiguator.getSequenceInterpretations(sequence, meaningFetcher.getMeanings(sequence));
+		
+		assertEquals("number of interpretations", 3, interpretations.size());
+		
+		Interpretation<Term, LocalConcept> first = interpretations.iterator().next();
+		
+		assertEquals( first.getSequence(), sequence );
+		Interpretation<Term, LocalConcept> interp = new Disambiguator.Interpretation<Term, LocalConcept>( freak_as_nothing, london_as_City_of_London );
+		assertTrue("London as City_of_London", interpretations.contains( interp) );
 		
 		///////////////////////////////////////////////////////////////////////////////////
 		
@@ -103,6 +125,7 @@ public class SlidingCoherenceDisambiguatorTest extends DisambiguatorTestBase {
 		PhraseOccuranceSet set = getBankAndMonumentPhrases();
 		
 		SlidingCoherenceDisambiguator disambiguator = new SlidingCoherenceDisambiguator(meaningFetcher, featureFetcher);
+		disambiguator.setTrace(traceOutput);
 		disambiguator.setInitialWindow(1);
 		disambiguator.setWindow(3);
 
@@ -115,13 +138,59 @@ public class SlidingCoherenceDisambiguatorTest extends DisambiguatorTestBase {
 		assertEquals("Underground", sequence.get(1).getTerm());
 		assertEquals("station", sequence.get(2).getTerm());
 
-		assertNotNull( meanings.get( sequence.get(0).getTerm() ) );
-		assertNotNull( meanings.get( sequence.get(1).getTerm() ) );
-		assertNotNull( meanings.get( sequence.get(2).getTerm() ) );
+		assertNotNull( meanings.get( sequence.get(0) ) );
+		assertNotNull( meanings.get( sequence.get(1) ) );
+		assertNotNull( meanings.get( sequence.get(2) ) );
 		
-		assertEquals("Bank_and_Monument_Underground_station", meanings.get( sequence.get(0).getTerm() ).getName() );
-		assertEquals("Subway", meanings.get( sequence.get(1).getTerm() ).getName() );
-		assertEquals("Metro_station", meanings.get( sequence.get(2).getTerm() ).getName() );
+		assertEquals("Bank_and_Monument_Underground_stations", meanings.get( sequence.get(0) ).getName() );
+		assertEquals("London_Underground", meanings.get( sequence.get(1) ).getName() );
+		assertEquals("Metro_station", meanings.get( sequence.get(2) ).getName() );
+
+		///////////////////////////////////////////////////////////////////////////
+		disambiguator.setTrace(traceOutput);
+		disambiguator.setInitialWindow(2);
+		disambiguator.setWindow(3);
+
+		result = disambiguator.disambiguate(set.getRootNode(), null);
+		
+		sequence = result.getSequence();
+		meanings = result.getMeanings();
+		
+		assertEquals("Bank and Monument", sequence.get(0).getTerm());
+		assertEquals("Underground", sequence.get(1).getTerm());
+		assertEquals("station", sequence.get(2).getTerm());
+
+		assertNotNull( meanings.get( sequence.get(0) ) );
+		assertNotNull( meanings.get( sequence.get(1) ) );
+		assertNotNull( meanings.get( sequence.get(2) ) );
+		
+		assertEquals("Bank_and_Monument_Underground_stations", meanings.get( sequence.get(0) ).getName() );
+		assertEquals("London_Underground", meanings.get( sequence.get(1) ).getName() );
+		assertEquals("Metro_station", meanings.get( sequence.get(2) ).getName() );
+
+		///////////////////////////////////////////////////////////////////////////
+		disambiguator.setTrace(traceOutput);
+		disambiguator.setInitialWindow(3);
+		disambiguator.setWindow(3);
+
+		result = disambiguator.disambiguate(set.getRootNode(), null);
+		
+		sequence = result.getSequence();
+		meanings = result.getMeanings();
+		
+		assertEquals("Bank and Monument", sequence.get(0).getTerm());
+		assertEquals("Underground", sequence.get(1).getTerm());
+		assertEquals("station", sequence.get(2).getTerm());
+
+		assertNotNull( meanings.get( sequence.get(0) ) );
+		assertNotNull( meanings.get( sequence.get(1) ) );
+		assertNotNull( meanings.get( sequence.get(2) ) );
+		
+		assertEquals("Bank_and_Monument_Underground_stations", meanings.get( sequence.get(0) ).getName() );
+		assertEquals("London_Underground", meanings.get( sequence.get(1) ).getName() );
+		assertEquals("Metro_station", meanings.get( sequence.get(2) ).getName() );
+		
+		throw new UnsupportedOperationException("todo: window 1, 2, ...");
 	}
 	
 	public void testDisambiguateTerms() throws PersistenceException {

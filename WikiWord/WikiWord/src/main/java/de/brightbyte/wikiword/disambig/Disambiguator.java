@@ -23,7 +23,7 @@ public interface Disambiguator<T extends TermReference, C extends WikiWordConcep
 		private static <T extends TermReference, C extends WikiWordConcept>Map<T, C> buildMeaningMap(List<Pair<T, C>> interpretation) {
 			Map<T, C> sequence = new HashMap<T, C>(interpretation.size());
 			for (Pair<T, C> p: interpretation) {
-				sequence.put(p.getA(), p.getB());
+				if (p.getB()!=null) sequence.put(p.getA(), p.getB());
 			}
 			return sequence;
 		}

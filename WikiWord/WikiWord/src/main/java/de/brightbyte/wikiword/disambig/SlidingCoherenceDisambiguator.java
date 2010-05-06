@@ -97,7 +97,10 @@ public class SlidingCoherenceDisambiguator extends CoherenceDisambiguator {
 		
 		if (initialWindow > 0) { //apply full coherence disambig to initial window size. initialWindow == 1 will trigger a popularity disambig.
 			Collection<List<X>> sequences = getSequences(root, initialWindow);
-			Result<X, LocalConcept> r = super.disambiguate(sequences, root, meanings, context);
+			Result<X, LocalConcept> r;
+			
+			if (initialWindow == 1) r = popularityDisambiguator.disambiguate(sequences, root, meanings, context);
+			else r = super.disambiguate(sequences, root, meanings, context);
 			
 			sequence.addAll(r.getSequence());
 			currentNode = getLastNode(root, sequence);
@@ -112,7 +115,8 @@ public class SlidingCoherenceDisambiguator extends CoherenceDisambiguator {
 			PhraseNode<X>  bestNode = null;
 			
 			for (PhraseNode<X> n: successors) {
-				Result<X, LocalConcept> r = evalStep(sequence, disambig, currentNode, meanings, context, similarities, features); //empty sequence will trigger popularity disambig
+				Result<X, LocalConcept> r = evalStep(sequence, disambig, n, meanings, context, similarities, features); //empty sequence will trigger popularity disambig
+				trace("evalStep("+n+"): " + r.toString());
 				if (best == null || best.getScore() < r.getScore()) {
 					best = r;
 					bestNode = n;
