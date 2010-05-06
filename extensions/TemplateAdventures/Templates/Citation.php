@@ -3,15 +3,18 @@
 class Citation extends TemplateAdventureBasic {
 
 	private $dSeparators = array(    # separators between names, items, etc.
+		'section'   => ',',
 		'regular'   => ',&#32;',
-		'author'    => ',&#32;',
+		'author'    => '&#059;&#32;',
+		'name'      => ',&#32;',
 		'ampersand' => '&#32;&amp;&#32;',
 	);
 	private $dAuthorTruncate = 8;    # the amount of authors it should display,
 	                                 # if truncated, 'et al' will be used instead.
 	private $dAuthors = array(null);     # array of authors
 	private $dAuthorLinks = array(null); # array of authorlinks (tied to authors).
-	private $dCoAuthors = array(null);   # array of coauthors
+	private $dCoAuthors = null;          # coauthors is as far as I understand it
+	                                     # just a string, but prove me wrong!
 	private $dEditors = array(null);     # array of editors
 	private $dEditorLinks = array(null); # array of editorlinks (tied to editors).
 	                                     # they all contain 'junk' to avoid the
@@ -73,16 +76,24 @@ class Citation extends TemplateAdventureBasic {
 	private $dBibcode = null;        # bibcode id
 	private $dOther = null;          # other stuff
 
+	/**
+	 * Our construct function.
+	 */
 	public function __construct( $parser, $frame, $args ) {
 		parent::__construct($parser, $frame, $args);
+		$this->readOptions( );
+		$this->parseData();
 	}
 
+	/**
+	 * Render the data after the data have been read.
+	 */
 	public function render() {
-		$this->readOptions( );
 		$this->mOutput = '';
 		# authors
 		if ( count( $this->dAuthors ) > 1 ) {
 			$authorArea = '';
+			$n = 1;
 			foreach ( $this->dAuthors as $i => $author ) {
 				if ( $i == 0 )
 					continue;
@@ -90,9 +101,9 @@ class Citation extends TemplateAdventureBasic {
 					$authorArea .= wfMsg( "ta-etal" );
 					break;
 				}
-				if ( $i == count($this->dAuthors)-1 && $i != 1 )
+				if ( $n == count($this->dAuthors)-1 && $i != 1 )
 					$authorArea .= $this->getSeparator( 'ampersand' );
-				elseif ( $i > 1 )
+				elseif ( $n > 1 )
 					$authorArea .= $this->getSeparator( 'author' );
 				$tmp = '';
 				if ( $author[0] ) {
@@ -100,7 +111,7 @@ class Citation extends TemplateAdventureBasic {
 						continue;
 					$tmp .= $author[1][1];
 					if ( $author[1][0] != null )
-						$tmp .= $this->getSeparator( 'author' ) . $author[1][0];
+						$tmp .= $this->getSeparator( 'name' ) . $author[1][0];
 				} else {
 					# maybe we shan't support no surname/given name structure
 					# in the future, but we'll leave it like this for now.
@@ -109,8 +120,58 @@ class Citation extends TemplateAdventureBasic {
 				if ( isset ( $this->dAuthorLinks[$i] ) )
 					$tmp = "[{$this->dAuthorLinks[$i]} $tmp]";
 				$authorArea .= $tmp;
+				$n++;
+			}
+			if ( $this->dCoAuthors != null )
+				$authorArea .= $this->getSeparator( 'author' ) . $this->dCoAuthors;
+			if ( $this->dDate != null ) {
+				$authorArea .= wfMsg ( 'ta-citeauthordate', $this->dDate);
+				if ( $this->dYearNote != null ) 
+					$authorArea .= wfMsg ( 'ta-citeauthoryearnote', $this->dYearNote );
 			}
 			$this->mOutput .= $authorArea;
+		} elseif ( count ( $this->dEditors ) > 1 ) {
+			$editorArea = '';
+			$n = 1;
+			foreach ( $this->dEditors as $i => $editor ) {
+				if ( $i == 0 )
+					continue;
+				if ( $i > 1 && $this->dEditorTruncate <= $i ) {
+					$editorArea .= wfMsg( "ta-etal" );
+					break;
+				}
+				if ( $n == count($this->dEditors)-1 && $i != 1 )
+					$editorArea .= $this->getSeparator( 'ampersand' );
+				elseif ( $n > 1 )
+					$editorArea .= $this->getSeparator( 'author' );
+				$tmp = '';
+				if ( $editor[0] ) {
+					if ( $editor[1][1] == null )
+						continue;
+					$tmp .= $editor[1][1];
+					if ( $editor[1][0] != null )
+						$tmp .= $this->getSeparator( 'name' ) . $editor[1][0];
+				} else {
+					# maybe we shan't support no surname/given name structure
+					# in the future, but we'll leave it like this for now.
+					$tmp .= $editor[1][1];
+				}
+				if ( isset ( $this->dEditorLinks[$i] ) )
+					$tmp = "[{$this->dEditorLinks[$i]} $tmp]";
+				$editorArea .= $tmp;
+				$n++;
+			}
+			if ( count ( $this->dEditors ) > 2 )
+				$editorArea .= wfMsg ( 'ta-editorsplural' );
+			else
+				$editorArea .= wfMsg ( 'ta-editorssingular' );
+			$editorArea .= $this->getSeparator ( 'section' );
+			if ( $this->dDate != null ) {
+				$editorArea .= wfMsg ( 'ta-citeauthordate', $this->dDate);
+				if ( $this->dYearNote != null ) 
+					$editorArea .= wfMsg ( 'ta-citeauthoryearnote', $this->dYearNote );
+			}
+			$this->mOutput .= $editorArea;
 		}
 	}
 
@@ -126,6 +187,24 @@ class Citation extends TemplateAdventureBasic {
 			return '';
 		$sep = $this->dSeparators[$name];
 		return $sep;
+	}
+
+	/**
+	 * This function parses the data the given to it during the readOptions()
+	 * run.  Basically to disregard data and such that has been found to be
+	 * outside the allowed logic of this 'template'.
+	 */
+	private function parseData() {
+		# check $dAuthors for only 'given' names.
+		$tmpAuthors = array(null);
+		foreach( $this->dAuthors as $i => $author ) {
+			if ( $i == 0 )
+				continue;
+			if ( $author[0] && $author[1][1] == null )
+				continue;
+			$tmpAuthors[$i] = $author;
+		}
+		$this->dAuthors = $tmpAuthors;
 	}
 
 	private function addEditorLink( $name, $value ) {
@@ -168,6 +247,10 @@ class Citation extends TemplateAdventureBasic {
 		$this->appendAuthorData ( $name[1], array ( $value, null ) );
 	}
 
+	private function addCoAuthors ( $name, $value ) {
+		$this->dCoAuthors = $value;
+	}
+
 	private function appendAuthorData( $num, $name ) {
 		$this->appendWriterData( $this->dAuthors, $num, $name );
 	}
@@ -186,14 +269,16 @@ class Citation extends TemplateAdventureBasic {
 					$name
 				);
 			}
-		} else {
-			$array[] = array (
-				$split,
-				$name
-			);
-		}
+		} # let's not permit them to add authors/editors/etc. without a number
 	}
 
+	/**
+	 * Checks whether the data provided is a known option.
+	 *
+	 * @param $var The variable
+	 * @param $value The value
+	 * @return True if option, false if not.
+	 */
 	protected function optionParse( $var, $value ) {
 		$name = self::parseOptionName( $var );
 		switch ( $name[0] ) {
@@ -209,6 +294,9 @@ class Citation extends TemplateAdventureBasic {
 			case 'authorlink':
 				$this->addAuthorLink( $name, $value );
 				break;
+			case 'coauthors':
+				$this->addCoAuthors( $name, $value );
+				break;
 			case 'editor':
 				$this->addEditor( $name, $value );
 				break;
@@ -223,13 +311,19 @@ class Citation extends TemplateAdventureBasic {
 				break;
 			default:
 				# Wasn't an option after all
-				return $arg instanceof PPNode_DOM
-					? trim( $this->mFrame->expand( $arg ) )
-					: $arg;
+				return false;
 		}
-		return false;
+		return true;
 	}
 
+	/**
+	 * This one parses the variable name given to optionParse to figure out
+	 * whether this is a known parameter to this template.
+	 *
+	 * @param $value The parameter.
+	 * @return The parameter's true name (for localisations purposes, etc.) as
+	 *         well as its numeral found with it or false if not.
+	 */
 	protected function parseOptionName( $value ) {
 
 		static $magicWords = null;
@@ -237,6 +331,9 @@ class Citation extends TemplateAdventureBasic {
 			$magicWords = new MagicWordArray( array(
 				'ta_cc_author', 'ta_cc_authorgiven',
 				'ta_cc_authorsurname', 'ta_cc_authorlink',
+				'ta_cc_coauthors',
+				'ta_cc_editor', 'ta_cc_editorgiven',
+				'ta_cc_editorsurname', 'ta_cc_editorlink',
 			) );
 		}
 
