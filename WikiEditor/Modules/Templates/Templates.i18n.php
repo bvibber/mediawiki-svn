@@ -1,6 +1,6 @@
 <?php
 /**
- * Internationalisation for the Highlight module of the Usability Initiative wikiEditor extension
+ * Internationalisation for the Templates module of the Usability Initiative wikiEditor extension
  *
  * @file
  * @ingroup Extensions

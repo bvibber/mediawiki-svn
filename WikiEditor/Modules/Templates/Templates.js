@@ -1,7 +1,7 @@
 /* JavaScript for WikiEditor Templates module */
 
 $j(document).ready( function() {
-	// Check preferences for templateEditor
+	// Check preferences for templates
 	if ( !wgWikiEditorEnabledModules.templates ) {
 		return true;
 	}
@@ -9,7 +9,7 @@ $j(document).ready( function() {
 	if ( wgNamespaceNumber == 10 ) {
 		return true;
 	}
-	// Add the templateEditor module
+	// Add the templates module
 	if ( $j.fn.wikiEditor ) {
 		$j( 'textarea#wpTextbox1' ).wikiEditor( 'addModule', 'templates' );
 	}
