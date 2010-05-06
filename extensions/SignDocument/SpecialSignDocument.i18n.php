@@ -3622,7 +3622,7 @@ $messages['pt'] = array(
 	'sign-selectdoc' => 'Documento:',
 	'sign-docheader' => 'Por favor, use este formulário para assinar o documento "[[$1]]", mostrado abaixo.
 Leia o documento completo, e se desejar indicar o seu suporte, preencha o campos necessários para o assinar.',
-	'sign-error-nosuchdoc' => 'O documento que requisitou ($1) não existe.',
+	'sign-error-nosuchdoc' => 'O documento que solicitou ($1) não existe.',
 	'sign-realname' => 'Nome:',
 	'sign-address' => 'Endereço da morada:',
 	'sign-city' => 'Cidade:',

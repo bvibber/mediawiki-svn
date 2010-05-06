@@ -278,10 +278,11 @@ $messages['pms'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'wikitextloggedinout-desc' => 'Dois "hooks" do analisador "parser", <tt>&lt;loggedin&gt;</tt> e <tt>&lt;loggedout&gt;</tt>, para mostrar diferentes textos dependendo do estado de autenticação do utilizador',
+	'wikitextloggedinout-desc' => 'Dois "hooks" do analisador sintáctico, <tt>&lt;loggedin&gt;</tt> e <tt>&lt;loggedout&gt;</tt>, para mostrar textos diferentes dependendo do estado de autenticação do utilizador',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

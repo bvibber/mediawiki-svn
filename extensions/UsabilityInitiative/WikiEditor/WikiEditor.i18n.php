@@ -112,10 +112,12 @@ $messages['bs'] = array(
 );
 
 /** Catalan (Català)
+ * @author Paucabot
  * @author Solde
  */
 $messages['ca'] = array(
 	'wikieditor-wikitext-tab' => 'Wikitext',
+	'wikieditor-loading' => 'Carregant',
 );
 
 /** Czech (Česky)

@@ -32,6 +32,13 @@ $messages['br'] = array(
 	'uploadwizard-desc' => "Ameiler enporzhiañ, diorroet evit ar yalc'had Implijadusted Liesmedia",
 );
 
+/** Catalan (Català)
+ * @author Paucabot
+ */
+$messages['ca'] = array(
+	'uploadwizard' => 'Assistent de càrrega',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */

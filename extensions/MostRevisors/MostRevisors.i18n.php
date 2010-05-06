@@ -682,7 +682,7 @@ $messages['pt'] = array(
 	'mostrevisors-showing' => 'Listando {{PLURAL:$1|uma página|$1 páginas}}:',
 	'mostrevisors-submit' => 'Submeter',
 	'mostrevisors-showredir' => 'Mostrar páginas de redireccionamento',
-	'mostrevisors-hideredir' => 'Esconder páginas de redirecionamento',
+	'mostrevisors-hideredir' => 'Esconder páginas de redireccionamento',
 	'mostrevisors-users' => '- $1 {{PLURAL:$1|editor|editores}}',
 	'mostrevisors-viewcontributors' => 'Ver os principais editores',
 );

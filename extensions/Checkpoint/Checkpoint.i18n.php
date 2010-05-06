@@ -35,6 +35,13 @@ $messages['br'] = array(
 	'checkpoint-notice' => '([[{{ns:project}}:Checkpoint|enrollañ ur poent evezhiañ]])',
 );
 
+/** Catalan (Català)
+ * @author Paucabot
+ */
+$messages['ca'] = array(
+	'checkpoint' => 'Desa i continua editant',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
@@ -210,5 +217,14 @@ $messages['ru'] = array(
 	'checkpoint-desc' => 'Позволяет сохранить изменения и продолжить редактирование',
 	'checkpoint-tooltip' => 'Сохраните вашу работу и продолжите редактирование страницы',
 	'checkpoint-notice' => '([[{{ns:project}}:Checkpoint|сохранение контрольной точки]])',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'checkpoint' => 'భద్రపరచి దిద్దుబాటుని కొనసాగించు',
+	'checkpoint-desc' => 'మార్పులని భద్రపరిచి దిద్దుబాటుని కొనసాగించడానికి వీలుకల్పిస్తుంది',
+	'checkpoint-tooltip' => 'మీ మార్పులని భద్రపరిచి పుటని దిద్దడం కొనసాగించండి',
 );
 

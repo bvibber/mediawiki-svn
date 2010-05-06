@@ -758,11 +758,12 @@ $3',
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Malafaya
  */
 $messages['pt'] = array(
 	'latexdoc_no_text' => 'A página não contém qualquer texto, não é possível gerar DVI',
-	'latexdoc_cant_create_dir' => 'Não foi possível criar directoria temporária $1',
+	'latexdoc_cant_create_dir' => 'Não foi possível criar o directório temporário $1',
 	'latexdoc_cant_write' => 'Não foi possível escrever para o ficheiro $1',
 	'latexdoc_error' => 'Erro LaTeX
 

@@ -313,10 +313,11 @@ $messages['pms'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Waldir
  */
 $messages['pt'] = array(
-	'stringfunctions-desc' => 'Acrescenta funções de strings ao analisador (parser)',
+	'stringfunctions-desc' => "Acrescenta funções de texto ''(strings)'' ao analisador sintáctico",
 );
 
 /** Brazilian Portuguese (Português do Brasil)

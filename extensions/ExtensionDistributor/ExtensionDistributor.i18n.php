@@ -1712,7 +1712,7 @@ Als u vragen hebt over dit distributiesysteem voor uitbreidingen, ga dan naar [[
  * @author Brest
  */
 $messages['mk'] = array(
-	'extensiondistributor' => 'Преземање на додаток за МедијаВики',
+	'extensiondistributor' => 'Преземање на MediaWiki проширување',
 	'extensiondistributor-desc' => 'Проширување за дистрибуција на приказни архиви на проширувања',
 	'extdist-not-configured' => 'Задајте $wgExtDistTarDir и $wgExtDistWorkingCopy',
 	'extdist-wc-missing' => 'Зададениот директориум со работниот примерок не постои!',
@@ -1735,9 +1735,9 @@ $messages['mk'] = array(
 	'extdist-svn-error' => 'Настана грешка во Subversion: <pre>$1</pre>',
 	'extdist-svn-parse-error' => 'Грешка при обработката на XML од „svn info“: <pre>$1</pre>',
 	'extdist-tar-error' => 'Tar го даде кодот на грешката $1:',
-	'extdist-created' => "Направена е снимка од верзијата <b>$2</b> на проширувањето <b>$1</b> за MediaWiki <b>$3</b>. Преземањето треба да започне автоматски за 5 секунди.  URL-адресата за оваа снимка е:
+	'extdist-created' => "Направена е снимка од верзијата <b>$2</b> на проширувањето <b>$1</b> за MediaWiki <b>$3</b>. Преземањето треба да започне автоматски за 5 секунди. URL-адресата за оваа снимка е:
 :$4
-Може да се користи за моментално симнување на опслужувач, но ве молиме да не правите прибелешка за него, бидејќи содржината нема да се обновува, а подоцна може да биде избришана.
+Може да ја искористите веднаш за симнување, но Ве молиме не правете прибелешка на адреста, бидејќи содржината нема да се обновува, а подоцна може да биде избришана.
 
 Tar податотеката треба да ја распакувате во именикот за проширувања. На пример, на ОС од типот на unix:
 
@@ -1747,11 +1747,11 @@ tar -xzf $5 -C /var/www/mediawiki/extensions
 
 Во Windows за таа намена можете да го употребите [http://www.7-zip.org/ 7-zip].
 
-Ако вашето вики е на далечински сервер, отпакувајте ги податотеките во привремен именик на вашиот локален компјутер, а потоа подигнете ги '''сите''' отпакувани податотеки во именикот за проширувања на опслужувачот.
+Ако вашето вики е на оддалечен опслужувач, отпакувајте ги податотеките во привремен именик на вашиот локален компјутер, а потоа подигнете ги '''сите''' отпакувани податотеки во именикот за проширувања на опслужувачот.
 
-Имајте на ум дека некои проширувања бараат податотека наречена ExtensionFunctions.php, која ќе ја најдете на <tt>extensions/ExtensionFunctions.php</tt>, т.е., во ''родителскиот'' именик на именикот на ова конкретно проширување. Снимката за овие проширувања ја содржи оваа податотека како tar-бомба, која се распакува во ./ExtensionFunctions.php. Немојте да испуштите да ја подигнете оваа податотека на вашиот далечински сервер.
+Имајте на ум дека некои проширувања бараат податотека наречена ExtensionFunctions.php, која ќе ја најдете на <tt>extensions/ExtensionFunctions.php</tt>, т.е., во ''родителскиот'' именик на именикот на ова конкретно проширување. Снимката за овие проширувања ја содржи оваа податотека како tar-бомба, која се распакува во ./ExtensionFunctions.php. Немојте да испуштите да ја подигнете оваа податотека на вашиот оддалечен опслужувач.
 
-Откако ќе ги распакувате податотеките, ќе треба да го регистрирате проширувањето во LocalSettings.php. Документацијата на проширувањето треба да има инструкции за оваа постапка.
+Откако ќе ги распакувате податотеките, ќе треба да го регистрирате проширувањето во LocalSettings.php. Документацијата на проширувањето има напатствија за оваа постапка.
 
 Доколку имате прашања за овој дистрибутивен систем на проширувања, обратете се на страницата [[Extension talk:ExtensionDistributor]].",
 	'extdist-want-more' => 'Преземи друго проширување',
@@ -2260,11 +2260,11 @@ $messages['pt'] = array(
 	'extensiondistributor' => 'Descarregar extensão MediaWiki',
 	'extensiondistributor-desc' => "Extensão para distribuir instantâneos arquivados ''(snapshot archives)'' de extensões",
 	'extdist-not-configured' => 'Por favor, configure $wgExtDistTarDir e $wgExtDistWorkingCopy',
-	'extdist-wc-missing' => 'A directoria de cópia de trabalho configurada não existe!',
+	'extdist-wc-missing' => 'O directório da cópia de trabalho configurado não existe!',
 	'extdist-no-such-extension' => 'A extensão "$1" não existe',
 	'extdist-no-such-version' => 'A extensão "$1" não existe na versão "$2".',
 	'extdist-choose-extension' => 'Selecione que extensão pretende descarregar:',
-	'extdist-wc-empty' => 'A directoria de cópia de trabalho não possui extensões distribuíveis!',
+	'extdist-wc-empty' => 'O directório da cópia de trabalho configurado não possui extensões distribuíveis!',
 	'extdist-submit-extension' => 'Continuar',
 	'extdist-current-version' => 'Versão de desenvolvimento (tronco)',
 	'extdist-choose-version' => '

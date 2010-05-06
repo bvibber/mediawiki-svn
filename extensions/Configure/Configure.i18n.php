@@ -7815,8 +7815,8 @@ $messages['pt'] = array(
 	'configure-db-error' => 'A base de dados que especificou para armazenar a configuração ($1) não existe.
 Por favor, crie-a e aplique configure.sql, ou corrija o nome.',
 	'configure-db-table-error' => 'A base de dados seleccionada não possui as tabelas requeridas. Aplique o configure.sql em tal base de dados',
-	'configure-directory-not-writable' => 'A directoria usada para armazenar a configuração, <tt>$1</tt>, não permite escrita.
-Por favor, torne possível a sua escrita por PHP para usar esta extensão.',
+	'configure-directory-not-writable' => 'O directório usado para armazenar a configuração, <tt>$1</tt>, não permite escrita.
+Para usar esta extensão torne possível a sua escrita pelo PHP, por favor.',
 	'configure-edit-old' => "'''Atenção''': está a editar uma versão <strong>antiga</strong> da configuração (tal como se encontrava em $1).",
 	'configure-error' => 'A configuração não pôde ser gravada',
 	'configure-js-add' => 'Adicionar uma nova entrada',
@@ -7834,8 +7834,8 @@ Por favor, torne possível a sua escrita por PHP para usar esta extensão.',
 	'configure-js-search-legend' => 'Configuração da pesquisa',
 	'configure-js-search-prompt' => 'Pesquisa:',
 	'configure-no-diff' => 'Não há alterações entre as versões selecionadas.',
-	'configure-no-directory' => 'A directoria usada para guardar a parametrização, <tt>$1</tt>, não existe.
-Por favor, crie-a ou altere-a para usar esta extensão.',
+	'configure-no-directory' => 'O directório usado para guardar a parametrização, <tt>$1</tt>, não existe.
+Para usar esta extensão crie-o ou altere-o, por favor.',
 	'configure-no-old' => 'Não há versões de configurações anteriores disponíveis.',
 	'configure-no-setup' => 'Tem de chamar <code>efConfigureSetup()</code> explicitamente no seu ficheiro LocalSettings.php para usar esta extensão.',
 	'configure-no-transwiki' => 'Não está autorizado a alterar parâmetros noutras wikis',
@@ -7886,7 +7886,7 @@ Por favor, crie-a ou altere-a para usar esta extensão.',
 	'configure-section-mime' => 'Tipos MIME',
 	'configure-section-images' => 'Imagens',
 	'configure-section-antivirus' => 'Anti-vírus',
-	'configure-section-parser' => "Analisador 'parser'",
+	'configure-section-parser' => 'Analisador sintáctico',
 	'configure-section-specialpages' => 'Páginas especiais',
 	'configure-section-recentchanges' => 'Mudanças recentes',
 	'configure-section-users' => 'Utilizadores',

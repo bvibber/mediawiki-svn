@@ -262,10 +262,11 @@ $messages['pms'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'pipeescape-desc' => 'Função do analisador parser <code>#!</code> para quando se pretende que um caráter barra vertical ("pipe") seja apenas um caráter barra vertical.',
+	'pipeescape-desc' => 'Função do analisador sintáctico <code>#!</code> para quando se pretende que uma barra vertical ("pipe") seja apenas uma barra vertical.',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

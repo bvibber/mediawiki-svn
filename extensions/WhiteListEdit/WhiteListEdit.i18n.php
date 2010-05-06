@@ -2776,11 +2776,11 @@ Tem de [[Special:UserRights|adicionar utilizadores ao grupo]] antes de poder adi
 	'whitelistoverviewsa' => "* A modificar o acesso de [[:$2|$2]] para '''$1'''",
 	'whitelistoverviewrm' => '* A remover acesso a [[:$1|$1]]',
 	'whitelistoverviewna' => "* A adicionar [[:$1|$1]] à lista branca com acesso '''$2''' e validade '''$3'''",
-	'whitelistrequest' => 'Requisitar acesso a mais páginas',
-	'whitelistrequestmsg' => '$1 requisitou acesso {{PLURAL:$3|à seguinte página|às seguintes páginas}}:
+	'whitelistrequest' => 'Solicitar acesso a mais páginas',
+	'whitelistrequestmsg' => '$1 solicitou acesso {{PLURAL:$3|à seguinte página|às seguintes páginas}}:
 
 $2',
-	'whitelistrequestconf' => 'A requisição para novas páginas foi enviada para $1',
+	'whitelistrequestconf' => 'A solicitação para páginas novas foi enviada para $1',
 	'whitelistnonrestricted' => "O utilizador '''$1''' não é um utilizador restrito.
 Esta página só se aplica a utilizadores restritos.",
 	'whitelistnever' => 'nunca',

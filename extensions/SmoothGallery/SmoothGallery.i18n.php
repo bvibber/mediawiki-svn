@@ -754,7 +754,7 @@ Permite a maioria das opções do SmoothGallery',
 	'smoothgallery-title' => 'SmoothGallery',
 	'smoothgallery-smoothgallerytitle' => 'SmoothGallery: $1',
 	'smoothgallery-error' => '<b>Erro no SmoothGallery:</b>',
-	'smoothgallery-gallery-not-found' => 'A galeria requisitada não existe.',
+	'smoothgallery-gallery-not-found' => 'A galeria solicitada não existe.',
 	'smoothgallery-not-found' => 'Nenhuma imagem foi adicionada à galeria.
 Por favor, adicione pelo menos uma imagem.',
 	'smoothgallery-no-images' => 'Nenhuma imagem foi encontrada nesta galeria.

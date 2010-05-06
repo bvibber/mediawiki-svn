@@ -563,10 +563,11 @@ $messages['pms'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'lua_desc' => 'Estende o analisador "parser" com suporte para blocos incorporados de código [http://www.lua.org/ Lua]',
+	'lua_desc' => 'Acrescenta ao analisador sintáctico suporte para blocos incorporados de código [http://www.lua.org/ Lua]',
 	'lua_error' => 'Erro na linha $1',
 	'lua_extension_notfound' => 'Extensão Lua não configurada',
 	'lua_interp_notfound' => 'Interpretador Lua não encontrado',

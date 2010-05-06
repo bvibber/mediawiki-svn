@@ -123,11 +123,13 @@ $messages['bs'] = array(
 );
 
 /** Catalan (Català)
+ * @author Paucabot
  * @author Solde
  */
 $messages['ca'] = array(
 	'wikieditor-preview-tab' => 'Previsualització',
 	'wikieditor-preview-changes-tab' => 'Canvis',
+	'wikieditor-preview-loading' => 'Carregant ...',
 );
 
 /** Czech (Česky)

@@ -227,6 +227,13 @@ $messages['sv'] = array(
 	'nll-lastseparator' => ' och',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'nll-lastseparator' => '&#32;మరియు&#32;',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */
