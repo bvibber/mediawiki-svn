@@ -17,6 +17,7 @@ Selected changes since MediaWiki 1.15 that may be of interest:
 
 * The maintenance script system was overhauled. Most maintenance scripts now 
   have a useful help page when you run them with --help.
+* (bug 22905) Correctly handle <abbr> followed by ISBN
 
 * AdminSettings.php is no longer required in order to run maintenance scripts. 
   You can just set $wgDBadminuser and $wgDBadminpassword in your 
