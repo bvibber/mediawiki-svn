@@ -171,7 +171,8 @@ function mwSetPageToLoading(){
 * ( front-loaded to avoid extra requests )
 */
 function mwLoadPlayer( callback ){
-	// the jsPlayerRequest includes both javascript and style sheets for the embedPlayer 
+	
+	// The jsPlayerRequest includes both javascript and style sheets for the embedPlayer 
 	var jsPlayerRequest = [
 		'mw.EmbedPlayer', 
 		'$j.ui', 
@@ -183,7 +184,8 @@ function mwLoadPlayer( callback ){
 		'$j.fn.menu',
 		'mw.style.jquerymenu',
 		'mw.TimedText' 
-	];		
+	];
+	
 	// Quick sniff use java if IE and native if firefox 
 	// ( other browsers will run detect and get on-demand )
 	if (navigator.userAgent.indexOf("MSIE") != -1){
@@ -208,8 +210,7 @@ function rewrite_for_OggHandler( vidIdList ) {
 		// Don't process empty vids
 		if ( !vidId ){
 			return ;
-		}
-		
+		}	
 			
 		tag_type = 'video';
 				
@@ -250,7 +251,7 @@ function rewrite_for_OggHandler( vidIdList ) {
 		offset = re.exec( rewriteHTML );
 		var offset_attr = ( offset && offset[2] )? 'startOffset="' + offset[2] + '" ' : '';
 		
-		// Check if file is from commons and therefore should explictly set apiProvider to commons: 
+		// Check if file is from commons and therefore should explicitly set apiProvider to commons: 
 		var apiProviderAttr = ( src.indexOf( 'wikipedia\/commons' ) != -1 )?'apiProvider="commons" ': '';		
 
 		if ( src ) {
@@ -412,8 +413,7 @@ function mwCheckForGadget(){
 		//Gadget button already in dom
 		return false;
 	}
-	
-	
+		
 	scripts = document.getElementsByTagName( 'script' );
 	
 	// Check for document paramater withJS and ignore found gadget
