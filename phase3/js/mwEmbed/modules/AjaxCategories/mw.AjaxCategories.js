@@ -107,7 +107,11 @@ mw.AjaxCategories.prototype = {
 
 		// Make sure the suggestion plugin is loaded. Load everything else while we're at it
 		mw.load(
-			['$j.ui', '$j.ui.dialog', '$j.fn.suggestions'],
+		[
+			'$j.ui',			
+			'$j.ui.dialog', 
+			'$j.fn.suggestions'
+		],
 			function() {
 				$j( '#mw-addcategory-prompt' ).toggle();
 

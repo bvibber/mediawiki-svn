@@ -374,7 +374,7 @@ EmbedPlayerManager.prototype = {
 						_this.swapEmbedPlayerElement( element, playerInterface );	
 						
 						// Pass the id to any hook that needs to interface prior to checkPlayerSources
-						$j( _this ).trigger ( 'swapedPlayerId',  playerInterface.id );
+						$j( _this ).trigger ( 'swapedPlayerIdEvent',  playerInterface.id );
 						
 											
 						// Issue the checkPlayerSources call to the new playlist interface: 				
@@ -397,7 +397,7 @@ EmbedPlayerManager.prototype = {
 						_this.swapEmbedPlayerElement( element, playerInterface );								
 						
 						// Pass the id to any hook that needs to interface prior to checkPlayerSources
-						$j( _this ).trigger ( 'swapedPlayerId',  playerInterface.id );
+						$j( _this ).trigger ( 'swapedPlayerIdEvent',  playerInterface.id );
 						
 						// Issue the checkPlayerSources call to the new player interface:
 						// make sure to use the element that is in the DOM:						
@@ -1479,7 +1479,7 @@ mw.EmbedPlayer.prototype = {
 		}
 		
 		// Run embedPlayer sources hook 
-		$j( this ).trigger ( 'checkPlayerSources', function(){
+		$j( this ).trigger ( 'checkPlayerSourcesEvent', function(){
 			// Continue application flow and check for Timed Text
 			_this.checkForTimedText();
 		});
@@ -2488,7 +2488,7 @@ mw.EmbedPlayer.prototype = {
 	   	 }
 	   	 
 	   	 //Run play hook: 
-	   	 $j( this ).trigger( 'onPlay' );   
+	   	 $j( this ).trigger( 'playEvent' );   
 	   	  // If we previusly finished playing this clip run the "replay hook"
 	   	 if( this.donePlayingCount > 0 ){ 
 	   	 	 $j( this ).trigger( 'onReplay' );
@@ -2728,7 +2728,7 @@ mw.EmbedPlayer.prototype = {
 			}, 250 )
 		}
 		
-		$j( this ).trigger( 'onMonitor' );
+		$j( this ).trigger( 'monitorEvent' );
 	},	
 	
 	/**

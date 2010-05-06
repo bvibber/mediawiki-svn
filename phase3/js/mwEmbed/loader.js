@@ -180,3 +180,9 @@ mw.addClassFilePaths( {
 	"$j.ui.selectable"		: "jquery/jquery.ui/ui/ui.selectable.js"	
 
 } );
+
+// For now just the special case of $j.ui 
+mw.addClassStyleDependency( {
+	'$j.ui' : ( 'mw.style.' + mw.getConfig( 'jQueryUISkin' ) )	
+} );
+
