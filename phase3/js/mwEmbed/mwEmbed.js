@@ -2184,12 +2184,22 @@ var MW_EMBED_VERSION = '1.1f';
 					
 					// Set up mvEmbed utility jQuery bindings
 					mw.dojQueryBindings();						
+					var skinRequest = ['mw.style.mwCommon'];
+					
+					var includeUiCss = true;
+					// Load the jQuery ui skin if usability skin not set
+					$j( 'link' ).each( function(  na, linkNode ){
+						if( $j( linkNode ).attr( 'href' ).indexOf('jquery-ui-1.7.2.css') != -1 ) {
+							includeUiCss = false;
+							return false;
+						}
+					} );
+					if( includeUiCss ){
+						skinRequest.push( 'mw.style.' + mw.getConfig( 'jQueryUISkin' ) );
+					}
 					
 					// Make sure style sheets are loaded: 
-					mw.load( [
-						'mw.style.mwCommon',
-						'mw.style.' + mw.getConfig( 'jQueryUISkin' )				 
-					], function(){	
+					mw.load( skinRequest , function(){	
 						
 						// Run all the setup function hooks 
 						// NOTE: setup functions are added via addSetupHook calls
