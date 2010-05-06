@@ -131,8 +131,8 @@ class jsScriptLoader {
 
 				// Check that mwEmbed required style sheets are part of the request,
 				// if not include them here
-				// This is so mwEmbed requests gets basic interface css
-				foreach( array('mw.style.mwCommon' ) as $styleKey ){
+				// This is so all mwEmbed requests get dependent interface css
+				foreach( array( 'mw.style.mwCommon' ) as $styleKey ){
 					if( !isset( $this->namedFileList[ $styleKey ] ) ) {
 						$this->output .= $this->getScriptText( $styleKey );
 					}

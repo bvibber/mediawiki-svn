@@ -168,7 +168,7 @@ mw.addModuleLoader( 'EmbedPlayer', function( callback ) {
 	// Set up the embed video player class request: (include the skin js as well)
 	var dependencyRequest = [
 		[
-			'$j.ui',
+			'$j.ui',			
 			'mw.EmbedPlayer',
 			'ctrlBuilder',
 			'$j.cookie',

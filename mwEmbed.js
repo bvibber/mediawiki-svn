@@ -520,7 +520,14 @@ var MW_EMBED_VERSION = '1.1f';
 		* @key Name of class
 		* @value Class file path 
 		*/
-		classPaths : { }, 						
+		classPaths : { }, 			
+		
+		/**
+		* javascript Class Paths
+		* @key Name of class
+		* @value Name of depenent style sheet
+		*/
+		classStyleDependency: { },		
 		
 		/**
 		* Core load function: 
@@ -566,6 +573,7 @@ var MW_EMBED_VERSION = '1.1f';
 				callback( loadRequest );
 				return ;
 			}									
+			
 			
 			// Check if its a multi-part request: 
 			if( typeof loadRequest == 'object' ) {
@@ -621,7 +629,8 @@ var MW_EMBED_VERSION = '1.1f';
 			var loadStates = { };
 					
 			// Check if we can load via the "script-loader" ( mwEmbed was included via scriptLoader ) 
-			if( mw.getScriptLoaderPath() ) {				
+			if( mw.getScriptLoaderPath() ) {							
+				// Get the grouped loadStates variable 
 				loadStates = this.getGroupLoadState( loadSet );
 				if( mw.isEmpty( loadStates ) ) {
 					mw.log( 'loadMany:all classes already loaded');
@@ -635,13 +644,18 @@ var MW_EMBED_VERSION = '1.1f';
 					//Load sets of classes ( to preserver order for some browsers )
 					_this.loadDependencyChain( loadSet, callback );
 					return ;
-				}
+				}					
 				
 				// Set the initial load state for every item in the loadSet
 				for( var i = 0; i < loadSet.length ; i++ ) {							
 					var loadName = loadSet[ i ];				
 					loadStates[ loadName ] = 0;					
-				}		
+					// Check for style sheet dependencies
+					if( this.classStyleDependency[ loadName ] ) {						
+						loadStates[ this.classStyleDependency[ loadName ] ] = 0;
+					}
+									
+				}						
 			}	
 			
 			// We are infact loading many:
@@ -649,7 +663,7 @@ var MW_EMBED_VERSION = '1.1f';
 						
 			// Issue the load request check check loadStates to see if we are "done"
 			for( var loadName in loadStates ) {				
-				//mw.log("loadMany: load: " + loadName ); 					
+				mw.log("loadMany: load: " + loadName ); 					
 				this.load( loadName, function ( loadName ) {										
 					loadStates[ loadName ] = 1;
 					//mw.log( loadName + ' finished of: ' + JSON.stringify( loadStates ) );
@@ -687,10 +701,10 @@ var MW_EMBED_VERSION = '1.1f';
 				for( var i = 0; i < loadSet.length ; i++ ) {
 					for( var j = 0; j < loadSet[i].length ; j++ ) {
 						// Make sure we have not already included it:						
-						groupedLoadSet.push( loadSet[i][j] );
+						groupedLoadSet.push( loadSet[i][j] );											
 					}
 				}
-			}else{
+			} else {
 				// Use the loadSet directly: 
 				groupedLoadSet = loadSet;
 			}
@@ -700,13 +714,20 @@ var MW_EMBED_VERSION = '1.1f';
 			var coma = '';			
 			for( var i=0; i < groupedLoadSet.length; i++ ) {										
 				var loadName = groupedLoadSet[ i ];	
+								
+				
 				if( this.getClassPath( loadName )  ) {
 					// Only add to group request if not already set: 
 					if ( !mw.isset( loadName ) ) {
 						groupClassKey += coma + loadName
 						coma = ',';
+						
+						// Check for style sheet dependencies
+						if( this.classStyleDependency[ loadName ] ){
+							groupClassKey += coma + this.classStyleDependency[ loadName ];
+						}						
 					}					
-				}else if( this.moduleLoaders[ loadName ] ) {
+				} else if ( this.moduleLoaders[ loadName ] ) {
 					// Module loaders break up grouped script requests ( add the current groupClassKey )
 					if( groupClassKey != '' ) {
 						loadStates[ groupClassKey ] = 0;
@@ -772,7 +793,8 @@ var MW_EMBED_VERSION = '1.1f';
 			}
 			
 			// Setup the Script Request var: 
-			var scriptRequest = null;
+			var scriptRequest = null;						
+			
 			
 			// If the scriptloader is enabled use the className as the scriptRequest: 
 			if( mw.getScriptLoaderPath() ) {
@@ -816,7 +838,7 @@ var MW_EMBED_VERSION = '1.1f';
 				}
 				
 				// If ( debug mode ) and the script include is missing class messages
-				// do a seperate request to retrive the msgs
+				// do a separate request to retrieve the msgs
 				if( mw.currentClassMissingMessages ){
 					mw.loadClassMessages( className, function(){
 						//reset the currentClassMissingMessages flag
@@ -876,6 +898,18 @@ var MW_EMBED_VERSION = '1.1f';
 	 		for( var i in classSet ) {
 				this.classPaths[ i ] = prefix + classSet[ i ];
 			}			
+	 	},
+	 	
+	 	/*
+	 	* Adds a named style sheet dependency to a named class
+	 	*  
+	 	* @parma {Object} classSet JSON formated list of class names
+	 	* 	and associated style sheet names
+	 	*/	 	
+	 	addClassStyleDependency: function( classSet ){
+	 		for( var i in classSet ){
+	 			this.classStyleDependency[ i ] = classSet[i];
+	 		}
 	 	},
 	 	
 	 	/**
@@ -960,8 +994,12 @@ var MW_EMBED_VERSION = '1.1f';
 	/**
 	* Add Class File Paths entry point:  
 	*/
-	mw.addClassFilePaths = function ( classSet )	{	
+	mw.addClassFilePaths = function ( classSet ) {	
 		return mw.loader.addClassFilePaths( classSet );
+	}
+	
+	mw.addClassStyleDependency = function ( classSet ) {
+		return mw.loader.addClassStyleDependency( classSet );
 	}
 	
 	/**
@@ -1534,9 +1572,10 @@ var MW_EMBED_VERSION = '1.1f';
 		if( mwReadyFlag === false ) {		
 			// Add the callbcak to the onLoad function stack
 			mwOnLoadFunctions.push ( callback );						
-		}
-		// If mwReadyFlag is already "true" issue the callback directly:
-		callback();		
+		} else { 
+			// If mwReadyFlag is already "true" issue the callback directly:
+			callback();
+		}		
 	}	
 	
 	/**
@@ -1615,7 +1654,7 @@ var MW_EMBED_VERSION = '1.1f';
 		* :: inject the script instead of doing an XHR eval
 		*/			
 		
-		// load sytle sheet directly if requested loading css
+		// load style sheet directly if requested loading css
 		if( isCssFile ){
 			mw.getStyleSheet( url, myCallback);
 			return ;
@@ -2168,11 +2207,10 @@ var MW_EMBED_VERSION = '1.1f';
 						if ( langKey && mw.isValidLang( langKey ) ) {	
 							mw.setConfig( 'userLanguage', langKey);
 						}
-					}
-					
+					}					
 					
 					// Update the image path 
-					mw.setConfig( 'imagesPath', mw.getMwEmbedPath() + 'skins/common/images/' );										
+					mw.setConfig( 'imagesPath', mw.getMwEmbedPath() + 'skins/common/images/' );	
 					
 					// Set up AJAX to not send dynamic URLs for loading scripts
 					$j.ajaxSetup( {
@@ -2183,23 +2221,17 @@ var MW_EMBED_VERSION = '1.1f';
 					mw.Language.magicSetup();
 					
 					// Set up mvEmbed utility jQuery bindings
-					mw.dojQueryBindings();						
-					var skinRequest = ['mw.style.mwCommon'];
+					mw.dojQueryBindings();					
 					
-					var includeUiCss = true;
-					// Load the jQuery ui skin if usability skin not set
-					$j( 'link' ).each( function(  na, linkNode ){
-						if( $j( linkNode ).attr( 'href' ).indexOf('jquery-ui-1.7.2.css') != -1 ) {
-							includeUiCss = false;
-							return false;
-						}
-					} );
-					if( includeUiCss ){
-						skinRequest.push( 'mw.style.' + mw.getConfig( 'jQueryUISkin' ) );
+					// Speical Hack for condtional jquery ui inclution ( once Usability extension
+					//  registers the jquery.ui skin in mw.sytle this won't be needed:  
+					if( mw.hasJQueryUiCss() ){
+						mw.style[ mw.getConfig( 'jQueryUISkin' ) ] = true;
 					}
 					
+					
 					// Make sure style sheets are loaded: 
-					mw.load( skinRequest , function(){	
+					mw.load( ['mw.style.mwCommon'] , function(){	
 						
 						// Run all the setup function hooks 
 						// NOTE: setup functions are added via addSetupHook calls
@@ -2216,11 +2248,31 @@ var MW_EMBED_VERSION = '1.1f';
 							}
 						}
 						runSetupFunctions();	
-					});
+					} );
+					
 				} );									
 			});
 		});
 	};
+	
+	/**
+	* Checks for jquery ui css by name jquery-ui-1.7.2.css
+	*	NOTE: this is kind of a hack for usability jquery-ui
+	* 	in the future usability should register the class in mw.skin
+	*
+	* @return true if found, return false if not found
+	*/
+	mw.hasJQueryUiCss = function(){
+		var hasUiCss = false;
+		// Load the jQuery ui skin if usability skin not set
+		$j( 'link' ).each( function(  na, linkNode ){
+			if( $j( linkNode ).attr( 'href' ).indexOf('jquery-ui-1.7.2.css') != -1 ) {
+				hasUiCss = true;
+				return false;
+			}
+		} );
+		return hasUiCss;		
+	}
 	
 	/** 
 	 * Loads the core mwEmbed "loader.js" file config
@@ -2646,7 +2698,8 @@ if( window.jQuery ){
 	}
 }
 
-// If using the script-loader and jQuery has not been set give a warning to the user: 
+// If using the script-loader and jQuery has not been set give a warning to the user:
+// (this is needed because packaged loader.js files could refrence jQuery )  
 if( mw.getScriptLoaderPath() && !window.jQuery ) {
-	alert( 'jQuery is required for mwEmbed, please update your script-loader request' );
+	mw.log( 'Error: jQuery is required for mwEmbed, please update your script-loader request' );
 }
