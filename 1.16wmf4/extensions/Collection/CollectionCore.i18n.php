@@ -349,6 +349,8 @@ $messages['br'] = array(
 	'coll-disable' => 'diweredekaat',
 	'coll-book_creator_disable' => 'Diweredekaat ar saver levrioù',
 	'coll-book_creator_disable_tooltip' => "Paouez d'ober gant ar saver levrioù",
+	'coll-add_linked_article' => 'Ouzhpennañ ar bajenn wiki liammet gant ho levr',
+	'coll-remove_linked_article' => "Tennañ ar bajenn wiki liammet d'ho levr",
 	'coll-add_category' => "Ouzhpennañ ar rummad-mañ d'ho levr",
 	'coll-add_category_tooltip' => "Ouzhpennañ an holl pajennoù wiki er rummad-mañ d'ho levr",
 	'coll-add_this_page' => "Ouzhpennañ ar bajenn-mañ d'ho levr",
@@ -1382,6 +1384,7 @@ $messages['ia'] = array(
  * @author Bennylin
  * @author Irwangatot
  * @author IvanLanin
+ * @author Iwan Novirion
  * @author Rex
  */
 $messages['id'] = array(
@@ -1394,6 +1397,8 @@ $messages['id'] = array(
 	'coll-disable' => 'matikan',
 	'coll-book_creator_disable' => 'Pembuatan buku dinonaktifkan',
 	'coll-book_creator_disable_tooltip' => 'Berhenti menggunakan pembuatan buku',
+	'coll-add_linked_article' => 'Tambahkan pranala halaman wiki ke buku Anda',
+	'coll-remove_linked_article' => 'Hapus pranala halaman wiki dari buku Anda',
 	'coll-add_category' => 'Tambahkan kategori ini ke buku Anda',
 	'coll-add_category_tooltip' => 'Tambahkan semua halaman wiki pada kategori ini ke buku Anda',
 	'coll-add_this_page' => 'Tambahkan halaman ini ke buku Anda',
@@ -1449,6 +1454,7 @@ $messages['is'] = array(
 );
 
 /** Italian (Italiano)
+ * @author Beta16
  * @author BrokenArrow
  * @author Darth Kule
  * @author Melos
@@ -1464,6 +1470,8 @@ $messages['it'] = array(
 	'coll-disable' => 'disattiva',
 	'coll-book_creator_disable' => 'Disattiva il creatore di libri',
 	'coll-book_creator_disable_tooltip' => 'Smetti di usare il creatore di libri',
+	'coll-add_linked_article' => 'Aggiungi le pagine collegate a questa al tuo libro.',
+	'coll-remove_linked_article' => 'Rimuovi le pagine collegate a questa dal tuo libro.',
 	'coll-add_category' => 'Aggiungi questa categoria al tuo libro',
 	'coll-add_category_tooltip' => 'Aggiungi tutte le pagine wiki di questa categoria al tuo libro',
 	'coll-add_this_page' => 'Aggiungi questa pagina al tuo libro',
@@ -1479,7 +1487,7 @@ $messages['it'] = array(
 	'coll-load_collection_tooltip' => 'Carica questo libro come libro corrente',
 	'coll-n_pages' => '$1 {{PLURAL:$1|pagina|pagine}}',
 	'coll-printable_version_pdf' => 'Versione PDF',
-	'coll-remove_this_page' => 'Rimuovi questa pagina del tuo libro',
+	'coll-remove_this_page' => 'Rimuovi questa pagina dal tuo libro',
 	'coll-remove_page_tooltip' => 'Rimuovi la pagina wiki corrente dal tuo libro',
 	'coll-show_collection' => 'Mostra libro',
 	'coll-show_collection_tooltip' => 'Fai clic per modificare, scaricare o ordinare il tuo libro',
@@ -1506,6 +1514,7 @@ $messages['ja'] = array(
 	'coll-disable' => '無効化',
 	'coll-book_creator_disable' => 'ブッククリエーターを無効化',
 	'coll-book_creator_disable_tooltip' => 'ブッククリエーターを使うのを止める',
+	'coll-add_linked_article' => 'リンクされているウィキページをブックに追加する',
 	'coll-remove_linked_article' => 'あなたの本からウィキページのリンクを削除',
 	'coll-add_category' => 'このカテゴリを自分のブックに追加する',
 	'coll-add_category_tooltip' => 'このカテゴリ中のすべてのページをあなたのブックに追加する',
@@ -1610,6 +1619,13 @@ $messages['km'] = array(
 	'coll-show_collection_tooltip' => 'ចុច​ដើម្បី​កែប្រែ​/ទាញ​យក​/បញ្ជា​ទិញ​សៀវភៅ​របស់​អ្នក​',
 );
 
+/** Kannada (ಕನ್ನಡ)
+ * @author Nayvik
+ */
+$messages['kn'] = array(
+	'coll-help' => 'ಸಹಾಯ',
+);
+
 /** Korean (한국어)
  * @author Ilovesabbath
  * @author Klutzy
@@ -1617,6 +1633,7 @@ $messages['km'] = array(
  * @author Yknok29
  */
 $messages['ko'] = array(
+	'coll-print_export' => '인쇄/내보내기',
 	'coll-create_a_book' => '책 만들기',
 	'coll-download_as' => '$1로 다운로드',
 	'coll-add_category' => '이 분류를 책에 추가하기',
@@ -1646,7 +1663,7 @@ $messages['kri'] = array(
 	'coll-create_a_book' => 'Mek buk',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -1813,7 +1830,7 @@ $messages['ml'] = array(
 	'coll-book_creator_disable_tooltip' => 'പുസ്തക സൃഷ്ടി ഉപകരണം ഉപയോഗിക്കുന്നതു നിർത്തുക',
 	'coll-add_linked_article' => 'താങ്കളുടെ പുസ്തകത്തിൽ കണ്ണിയുള്ള വിക്കിതാൾ കൂട്ടിച്ചേർക്കുക',
 	'coll-remove_linked_article' => 'താങ്കളുടെ പുസ്തകത്തിൽനിന്നും  കണ്ണിചേർക്കപ്പെട്ട വിക്കിതാൾ നീക്കംചെയ്യുക',
-	'coll-add_category' => 'താങ്കളുടെ പുസ്തകത്തിൽ ഈ വര്‍ഗ്ഗം ചേര്‍ക്കുക',
+	'coll-add_category' => 'താങ്കളുടെ പുസ്തകത്തിൽ ഈ വർഗ്ഗം ചേർക്കുക',
 	'coll-add_category_tooltip' => 'ഈ വർഗ്ഗത്തിലുള്ള എല്ലാ വിക്കി താളുകളും താങ്കളുടെ പുസ്തകത്തിലേയ്ക്ക് കൂട്ടിച്ചേർക്കുക',
 	'coll-add_this_page' => 'ഈ താൾ താങ്കളുടെ പുസ്തകത്തിലേയ്ക്ക് കൂട്ടിച്ചേർക്കുക',
 	'coll-add_page_tooltip' => 'ഇപ്പോഴത്തെ താൾ താങ്കളുടെ പുസ്തകത്തിലേയ്ക്ക് ചേർക്കുക',
@@ -1894,7 +1911,9 @@ $messages['ms'] = array(
  * @author Botuzhaleny-sodamo
  */
 $messages['myv'] = array(
-	'coll-add_category' => 'Поладомс категория',
+	'coll-create_a_book' => 'Шкамс кинига',
+	'coll-book_creator' => 'Кинигань шкиця',
+	'coll-add_category' => 'Поладомс кинигазот те категориянть',
 	'coll-bookscategory' => 'Кинигат',
 	'coll-helppage' => 'Help:Кинигат',
 );
@@ -2075,6 +2094,8 @@ $messages['oc'] = array(
 	'coll-disable' => 'desactivar',
 	'coll-book_creator_disable' => 'Desactivar lo creator de libre',
 	'coll-book_creator_disable_tooltip' => "Quitar d'utilizar lo creator de libre",
+	'coll-add_linked_article' => 'Apondre la pagina wiki ligada a vòstre libre',
+	'coll-remove_linked_article' => 'Levar la pagina ligada de vòstre libre',
 	'coll-add_category' => 'Apondre una categoria a vòstre libre',
 	'coll-add_category_tooltip' => "Apondre totes los articles d'aquesta categoria a vòstre libre",
 	'coll-add_this_page' => 'Apondre aquesta pagina a vòstre libre',
@@ -2929,6 +2950,8 @@ $messages['vi'] = array(
 	'coll-disable' => 'tắt',
 	'coll-book_creator_disable' => 'Tắt bộ tạo sách',
 	'coll-book_creator_disable_tooltip' => 'Ngừng sử dụng bộ tạo sách',
+	'coll-add_linked_article' => 'Thêm trang wiki được liên kết vào quyển sách',
+	'coll-remove_linked_article' => 'Bỏ trang wiki được liên kết khỏi quyển sách',
 	'coll-add_category' => 'Thêm thể loại này vào cuốn sách',
 	'coll-add_category_tooltip' => 'Thêm vào sách các trang wiki thuộc thể loại được liên kết',
 	'coll-add_this_page' => 'Thêm trang này vào cuốn sách',
@@ -2979,7 +3002,39 @@ $messages['yi'] = array(
 	'coll-help' => 'הילף',
 );
 
-/** Yue (粵語) */
+/** Yoruba (Yorùbá)
+ * @author Demmy
+ */
+$messages['yo'] = array(
+	'coll-print_export' => 'Ìtẹ́síìwé/ìkójáde',
+	'coll-create_a_book' => 'Dá ìwé',
+	'coll-create_a_book_tooltip' => 'Dá ìwé tàbí ìkójọ ojúewé',
+	'coll-book_creator' => 'Olùdá ìwé',
+	'coll-download_as' => 'Rùsílẹ̀ gẹ́gẹ́ bíi $1',
+	'coll-download_as_tooltip' => 'Rùsílẹ̀ àtẹ́jáde $1 ojúewé wiki yìí',
+	'coll-disable' => 'ìdálẹ́kun',
+	'coll-book_creator_disable' => 'Ìdálẹ́kun olùdá ìwé',
+	'coll-book_creator_disable_tooltip' => 'Jáwọ́ lílo olùdá ìwé',
+	'coll-add_linked_article' => 'Ṣàfikún ojúewé wiki jíjápọ̀ mọ́ ìwé yín',
+	'coll-add_category' => 'Ṣàfikún ẹ̀ka yìí mọ́ ìwé yín',
+	'coll-add_this_page' => 'Ṣàfikún ojúewé yìí mọ́ ìwé yín',
+	'coll-bookscategory' => 'Àwọn ìwé',
+	'coll-help' => 'Ìrànwọ́',
+	'coll-help_tooltip' => 'Àfihàn ìránwọ́ nípa dídá àwọn ìwé',
+	'coll-helppage' => 'Help:Àwọn ìwé',
+	'coll-load_collection' => 'Gbé ìwé síta',
+	'coll-load_collection_tooltip' => 'Gbé ìwé yìí síta bíi ìwé yín lọ́wọ́lọ́wọ́',
+	'coll-n_pages' => '{{PLURAL:$1|ojúewé|àwọn ojúewé}} $1',
+	'coll-printable_version_pdf' => 'Àtẹ̀jáde PDF',
+	'coll-remove_this_page' => 'Ẹ yọ ojúewé yìí kúrò nínú ìwé yín',
+	'coll-remove_page_tooltip' => 'Ẹ yọ ojúewé wiki lọ́wọ́lọ́wó yìí kúrò nínú ìwé yín',
+	'coll-show_collection' => 'Àfihàn ìwé',
+	'coll-not_addable' => 'Ojúewé yìí kò ṣe é ṣàfikún',
+	'coll-make_suggestions' => 'Ìdámọ́ràn ojúewé',
+	'coll-make_suggestions_tooltip' => 'Àfihàn àwọn ìdámọ̀ràn nípa àwọn ojúewé inú ìwé yín',
+);
+
+/** Cantonese (粵語) */
 $messages['yue'] = array(
 	'coll-create_a_book' => '整一本書',
 	'coll-download_as' => '下載做$1',
