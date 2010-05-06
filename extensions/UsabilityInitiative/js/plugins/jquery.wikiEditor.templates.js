@@ -35,8 +35,8 @@
 		var tokens = context.modules.highlight.tokenArray;
 		// Use depth-tracking to extract top-level templates from tokens
 		var depth = 0, bias, start;
-		for ( i in tokens ) {
-			depth += bias = tokens[i].label == 'TEMPLATE_BEGIN' ? 1 : tokens[i].label == 'TEMPLATE_END' ? -1 : 0;
+		for ( var i in tokens ) {
+			depth += ( bias = tokens[i].label == 'TEMPLATE_BEGIN' ? 1 : ( tokens[i].label == 'TEMPLATE_END' ? -1 : 0 ) );
 			if ( bias > 0 && depth == 1 ) {
 				// Top-level opening - use offset as start
 				start = tokens[i].offset;
@@ -48,7 +48,7 @@
 				);
 			}
 			if ( depth < 0 ) {
-				depth = 0;	
+				depth = 0;
 			}
 		}
 	}

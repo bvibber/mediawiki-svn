@@ -8665,15 +8665,17 @@ quickDialog: function( body, settings ) {
 		// Scan text for new tokens
 		var text = context.fn.getContents();
 		// Perform a scan for each module which provides any expressions to scan for
-		for ( module in context.modules ) {
+		// FIXME: This traverses the entire string once for every regex. Investigate
+		// whether |-concatenating regexes then traversing once is faster.
+		for ( var module in context.modules ) {
 			if ( module in $.wikiEditor.modules && 'exp' in $.wikiEditor.modules[module] ) {
-				for ( exp in $.wikiEditor.modules[module].exp ) {
+				for ( var exp in $.wikiEditor.modules[module].exp ) {
 					// Prepare configuration
 					var regex = $.wikiEditor.modules[module].exp[exp].regex;
 					var label = $.wikiEditor.modules[module].exp[exp].label;
-					var markAfter = ( typeof $.wikiEditor.modules[module].exp[exp].markAfter != 'undefined' );
+					var markAfter = $.wikiEditor.modules[module].exp[exp].markAfter || false;
 					// Search for tokens
-					var offset = 0, left, right;
+					var offset = 0, left, right, match;
 					while ( ( match = text.substr( offset ).match( regex ) ) != null ) {
 						right = ( left = offset + match.index ) + match[0].length;
 						tokenArray[tokenArray.length] = {
@@ -8690,7 +8692,7 @@ quickDialog: function( body, settings ) {
 		}
 		// Sort by start
 		tokenArray.sort( function( a, b ) { return a.tokenStart - b.tokenStart; } );
-		// Let the world know, a scan just happend!
+		// Let the world know, a scan just happened!
 		context.fn.trigger( 'scan' );
 	},
 	/**
