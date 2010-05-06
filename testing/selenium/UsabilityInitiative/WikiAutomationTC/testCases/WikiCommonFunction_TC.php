@@ -98,5 +98,11 @@ class WikiCommonFunction_TC extends PHPUnit_Extensions_SeleniumTestCase{
        $this->click("//li[@id='ca-edit']/a/span");
        $this->waitForPageToLoad($_SESSION["WIKI_TEST_WAIT_TIME"]);
     }
+
+    //Screenshot create on error
+    function doCreateScreenShot($file_name){
+         $this->captureEntirePageScreenshot($_SESSION["WIKI_CODE_PATH"] . "\/". $_SESSION["WIKI_SCREENSHOTS_PATH"] ."\/". $file_name . "_error" . date("Y_m_d") . "." . $_SESSION["WIKI_SCREENSHOTS_TYPE"] , "");
+    }
+
 }
 ?>

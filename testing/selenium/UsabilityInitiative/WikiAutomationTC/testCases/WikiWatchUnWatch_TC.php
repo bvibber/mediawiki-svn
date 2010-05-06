@@ -25,8 +25,13 @@ class WikiWatchUnWatch_TC  extends WikiCommonFunction_TC {
         $this->waitForPageToLoad("30000");
         $this->click("link=View and edit watchlist");
         $this->waitForPageToLoad("30000");
-        
-        $this->assertTrue($this->isTextPresent($randompage));
+        try {
+            $this->assertTrue($this->isTextPresent($randompage));
+        } catch (PHPUnit_Framework_AssertionFailedError $e) {
+            parent::doCreateScreenShot(__FUNCTION__);
+            array_push($this->verificationErrors, $e->toString());
+        }
+
         parent::doLogout();
     }
 
@@ -55,6 +60,7 @@ class WikiWatchUnWatch_TC  extends WikiCommonFunction_TC {
         try {
             $this->assertFalse($this->isTextPresent($randompage));
         } catch (PHPUnit_Framework_AssertionFailedError $e) {
+            parent::doCreateScreenShot(__FUNCTION__);
             array_push($this->verificationErrors, $e->toString());
         }
         parent::doLogout();

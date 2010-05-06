@@ -22,6 +22,7 @@ class WikiDialogs_TC extends WikiCommonFunction_TC {
         try {
             $this->assertEquals($_SESSION["WIKI_INTERNAL_LINK"], $this->getText("link=" . $_SESSION["WIKI_INTERNAL_LINK"]));
         } catch (PHPUnit_Framework_AssertionFailedError $e) {
+            parent::doCreateScreenShot(__FUNCTION__);
             array_push($this->verificationErrors, $e->toString());
         }
         $this->click("link=Daimler-Chrysler");
@@ -29,6 +30,7 @@ class WikiDialogs_TC extends WikiCommonFunction_TC {
         try {
             $this->assertTrue($this->isTextPresent($_SESSION["WIKI_INTERNAL_LINK"]), $this->getText("firstHeading"));
         } catch (PHPUnit_Framework_AssertionFailedError $e) {
+            parent::doCreateScreenShot(__FUNCTION__);
             array_push($this->verificationErrors, $e->toString());
         }
     }
@@ -48,6 +50,7 @@ class WikiDialogs_TC extends WikiCommonFunction_TC {
         try {
             $this->assertEquals($_SESSION["WIKI_INTERNAL_LINK"]." Test", $this->getText("link=" .$_SESSION["WIKI_INTERNAL_LINK"] ." Test"));
         } catch (PHPUnit_Framework_AssertionFailedError $e) {
+            parent::doCreateScreenShot(__FUNCTION__);
             array_push($this->verificationErrors, $e->toString());
         }
         $this->click("link=" .$_SESSION["WIKI_INTERNAL_LINK"]." Test");
@@ -55,6 +58,7 @@ class WikiDialogs_TC extends WikiCommonFunction_TC {
         try {
             $this->assertTrue($this->isTextPresent($_SESSION["WIKI_INTERNAL_LINK"]), $this->getText("firstHeading"));
         } catch (PHPUnit_Framework_AssertionFailedError $e) {
+            parent::doCreateScreenShot(__FUNCTION__);
             array_push($this->verificationErrors, $e->toString());
         }
     }
@@ -72,6 +76,7 @@ class WikiDialogs_TC extends WikiCommonFunction_TC {
         try {
             $this->assertEquals($_SESSION["WIKI_INTERNAL_LINK"], $this->getText("link=".$_SESSION["WIKI_INTERNAL_LINK"]));
         } catch (PHPUnit_Framework_AssertionFailedError $e) {
+            parent::doCreateScreenShot(__FUNCTION__);
             array_push($this->verificationErrors, $e->toString());
         }
         $this->click("link=".$_SESSION["WIKI_INTERNAL_LINK"]);
@@ -79,6 +84,7 @@ class WikiDialogs_TC extends WikiCommonFunction_TC {
         try {
             $this->assertEquals($_SESSION["WIKI_INTERNAL_LINK"], $this->getText("firstHeading"));
         } catch (PHPUnit_Framework_AssertionFailedError $e) {
+            parent::doCreateScreenShot(__FUNCTION__);
             array_push($this->verificationErrors, $e->toString());
         }
     }
@@ -91,6 +97,7 @@ class WikiDialogs_TC extends WikiCommonFunction_TC {
         try {
             $this->assertEquals("External link", $this->getText("wikieditor-toolbar-link-int-target-status-external"));
         } catch (PHPUnit_Framework_AssertionFailedError $e) {
+            parent::doCreateScreenShot(__FUNCTION__);
             array_push($this->verificationErrors, $e->toString());
         }
         $this->assertEquals("on", $this->getValue("wikieditor-toolbar-link-type-ext"));
@@ -100,6 +107,7 @@ class WikiDialogs_TC extends WikiCommonFunction_TC {
          try {
             $this->assertEquals($_SESSION["WIKI_EXTERNAL_LINK"], $this->getText("link=".$_SESSION["WIKI_EXTERNAL_LINK"]));
         } catch (PHPUnit_Framework_AssertionFailedError $e) {
+            parent::doCreateScreenShot(__FUNCTION__);
             array_push($this->verificationErrors, $e->toString());
         }
         $this->click("link=".$_SESSION["WIKI_EXTERNAL_LINK"]);
@@ -107,6 +115,7 @@ class WikiDialogs_TC extends WikiCommonFunction_TC {
         try {
             $this->assertEquals($_SESSION["WIKI_EXTERNAL_LINK_TITLE"], $this->getTitle());
         } catch (PHPUnit_Framework_AssertionFailedError $e) {
+            parent::doCreateScreenShot(__FUNCTION__);
             array_push($this->verificationErrors, $e->toString());
         }
     }
@@ -120,6 +129,7 @@ class WikiDialogs_TC extends WikiCommonFunction_TC {
         try {
             $this->assertEquals("External link", $this->getText("wikieditor-toolbar-link-int-target-status-external"));
         } catch (PHPUnit_Framework_AssertionFailedError $e) {
+            parent::doCreateScreenShot(__FUNCTION__);
             array_push($this->verificationErrors, $e->toString());
         }
         $this->assertEquals("on", $this->getValue("wikieditor-toolbar-link-type-ext"));
@@ -129,6 +139,7 @@ class WikiDialogs_TC extends WikiCommonFunction_TC {
         try {
             $this->assertEquals($_SESSION["WIKI_EXTERNAL_LINK_TITLE"], $this->getText("link=".$_SESSION["WIKI_EXTERNAL_LINK_TITLE"]));
         } catch (PHPUnit_Framework_AssertionFailedError $e) {
+            parent::doCreateScreenShot(__FUNCTION__);
             array_push($this->verificationErrors, $e->toString());
         }
         $this->click("link=".$_SESSION["WIKI_EXTERNAL_LINK_TITLE"]);
@@ -136,6 +147,7 @@ class WikiDialogs_TC extends WikiCommonFunction_TC {
         try {
             $this->assertEquals($_SESSION["WIKI_EXTERNAL_LINK_TITLE"], $this->getTitle());
         } catch (PHPUnit_Framework_AssertionFailedError $e) {
+            parent::doCreateScreenShot(__FUNCTION__);
             array_push($this->verificationErrors, $e->toString());
         }
 
@@ -150,6 +162,7 @@ class WikiDialogs_TC extends WikiCommonFunction_TC {
         try {
             $this->assertEquals("External link", $this->getText("wikieditor-toolbar-link-int-target-status-external"));
         } catch (PHPUnit_Framework_AssertionFailedError $e) {
+            parent::doCreateScreenShot(__FUNCTION__);
             array_push($this->verificationErrors, $e->toString());
         }
         $this->assertEquals("on", $this->getValue("wikieditor-toolbar-link-type-ext"));
@@ -159,6 +172,7 @@ class WikiDialogs_TC extends WikiCommonFunction_TC {
         try {
         $this->assertEquals("[1]", $this->getText("link=[1]"));
         } catch (PHPUnit_Framework_AssertionFailedError $e) {
+            parent::doCreateScreenShot(__FUNCTION__);
             array_push($this->verificationErrors, $e->toString());
         }
         $this->click("link=[1]");
@@ -166,6 +180,7 @@ class WikiDialogs_TC extends WikiCommonFunction_TC {
         try {
             $this->assertEquals($_SESSION["WIKI_EXTERNAL_LINK_TITLE"], $this->getTitle());
         } catch (PHPUnit_Framework_AssertionFailedError $e) {
+            parent::doCreateScreenShot(__FUNCTION__);
             array_push($this->verificationErrors, $e->toString());
         }
     }
@@ -184,6 +199,7 @@ class WikiDialogs_TC extends WikiCommonFunction_TC {
         try {
             $this->assertEquals("Header text", $this->getText("//table[@id='sortable_table_id_0']/tbody/tr[1]/th[3]"));
         } catch (PHPUnit_Framework_AssertionFailedError $e) {
+            parent::doCreateScreenShot(__FUNCTION__);
             array_push($this->verificationErrors, $e->toString());
         }
     }
@@ -203,6 +219,7 @@ class WikiDialogs_TC extends WikiCommonFunction_TC {
         try {
             $this->assertEquals("Header text", $this->getTable("//div[@id='wikiPreview']/table.0.0"));
         } catch (PHPUnit_Framework_AssertionFailedError $e) {
+            parent::doCreateScreenShot(__FUNCTION__);
             array_push($this->verificationErrors, $e->toString());
         }
     }
@@ -220,6 +237,7 @@ class WikiDialogs_TC extends WikiCommonFunction_TC {
         try {
             $this->assertEquals("Example", $this->getTable("//div[@id='wikiPreview']/table.1.3"));
         } catch (PHPUnit_Framework_AssertionFailedError $e) {
+            parent::doCreateScreenShot(__FUNCTION__);
             array_push($this->verificationErrors, $e->toString());
         }
     }
@@ -242,6 +260,7 @@ class WikiDialogs_TC extends WikiCommonFunction_TC {
         try {
             $this->assertEquals("Example", $this->getTable("sortable_table_id_0.0.0"));
         } catch (PHPUnit_Framework_AssertionFailedError $e) {
+            parent::doCreateScreenShot(__FUNCTION__);
             array_push($this->verificationErrors, $e->toString());
         }
     }
@@ -263,6 +282,7 @@ class WikiDialogs_TC extends WikiCommonFunction_TC {
         try {
             $this->assertEquals("Example", $this->getTable("//div[@id='wikiPreview']/table.0.0"));
         } catch (PHPUnit_Framework_AssertionFailedError $e) {
+            parent::doCreateScreenShot(__FUNCTION__);
             array_push($this->verificationErrors, $e->toString());
         }
     }
@@ -282,16 +302,19 @@ class WikiDialogs_TC extends WikiCommonFunction_TC {
         try {
             $this->assertEquals($_SESSION["WIKI_REPLACE_TEXT"], $this->getText("//div[@id='wikiPreview']/p[1]"));
         } catch (PHPUnit_Framework_AssertionFailedError $e) {
+            parent::doCreateScreenShot(__FUNCTION__);
             array_push($this->verificationErrors, $e->toString());
         }
         try {
             $this->assertEquals($_SESSION["WIKI_REPLACE_TEXT"], $this->getText("//div[@id='wikiPreview']/p[2]"));
         } catch (PHPUnit_Framework_AssertionFailedError $e) {
+            parent::doCreateScreenShot(__FUNCTION__);
             array_push($this->verificationErrors, $e->toString());
         }
         try {
             $this->assertEquals($_SESSION["WIKI_REPLACE_TEXT"], $this->getText("//div[@id='wikiPreview']/p[3]"));
         } catch (PHPUnit_Framework_AssertionFailedError $e) {
+            parent::doCreateScreenShot(__FUNCTION__);
             array_push($this->verificationErrors, $e->toString());
         }
     }
@@ -314,16 +337,19 @@ class WikiDialogs_TC extends WikiCommonFunction_TC {
         try {
             $this->assertEquals($_SESSION["WIKI_REPLACE_TEXT"], $this->getText("//div[@id='wikiPreview']/p[1]"));
         } catch (PHPUnit_Framework_AssertionFailedError $e) {
+            parent::doCreateScreenShot(__FUNCTION__);
             array_push($this->verificationErrors, $e->toString());
         }
         try {
             $this->assertEquals($_SESSION["WIKI_REPLACE_TEXT"], $this->getText("//div[@id='wikiPreview']/p[2]"));
         } catch (PHPUnit_Framework_AssertionFailedError $e) {
+            parent::doCreateScreenShot(__FUNCTION__);
             array_push($this->verificationErrors, $e->toString());
         }
         try {
             $this->assertEquals($_SESSION["WIKI_SEARCH_TEXT"], $this->getText("//div[@id='wikiPreview']/p[3]"));
         } catch (PHPUnit_Framework_AssertionFailedError $e) {
+            parent::doCreateScreenShot(__FUNCTION__);
             array_push($this->verificationErrors, $e->toString());
         }
     }

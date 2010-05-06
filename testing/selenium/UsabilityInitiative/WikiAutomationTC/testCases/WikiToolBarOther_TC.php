@@ -18,6 +18,7 @@ class WikiToolBarOther_TC extends WikiCommonFunction_TC {
         try {
             $this->assertEquals("", $this->getText("//img[@alt='Example.jpg']"));
         } catch (PHPUnit_Framework_AssertionFailedError $e) {
+            parent::doCreateScreenShot(__FUNCTION__);
             array_push($this->verificationErrors, $e->toString());
         }
     }
@@ -52,6 +53,7 @@ class WikiToolBarOther_TC extends WikiCommonFunction_TC {
         $this->click("wpPreview");
         $this->waitForPageToLoad($_SESSION["WIKI_TEST_WAIT_TIME"]);
         try {
+            parent::doCreateScreenShot(__FUNCTION__);
             $this->assertEquals("", $this->getText("//div[@id='wikiPreview']/table/tbody/tr/td[1]/div/div[1]/div"));
         } catch (PHPUnit_Framework_AssertionFailedError $e) {
             array_push($this->verificationErrors, $e->toString());

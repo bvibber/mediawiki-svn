@@ -19,6 +19,7 @@ class WikiTextFormat_TC extends WikiCommonFunction_TC {
         try {
             $this->assertEquals("Bold", $this->getText("//div[@id='wikiPreview']/p/b"));
         } catch (PHPUnit_Framework_AssertionFailedError $e) {
+            parent::doCreateScreenShot(__FUNCTION__);
             array_push($this->verificationErrors, $e->toString());
         }
     }
@@ -30,7 +31,12 @@ class WikiTextFormat_TC extends WikiCommonFunction_TC {
         $this->type("wpTextbox1", "''Italian'' text");
         $this->click("wpPreview");
         $this->waitForPageToLoad($_SESSION["WIKI_TEST_WAIT_TIME"]);
-        $this->assertEquals("Italian", $this->getText("//div[@id='wikiPreview']/p/i"));
+        try {
+            $this->assertEquals("Italian", $this->getText("//div[@id='wikiPreview']/p/i"));
+        } catch (PHPUnit_Framework_AssertionFailedError $e) {
+            parent::doCreateScreenShot(__FUNCTION__);
+            array_push($this->verificationErrors, $e->toString());
+        }
     }
 
     // Mark text Bold and Italic and verify output
@@ -41,7 +47,12 @@ class WikiTextFormat_TC extends WikiCommonFunction_TC {
         $this->type("wpTextbox1", "Text '''''Italic & Bold'''''");
         $this->click("wpPreview");
         $this->waitForPageToLoad($_SESSION["WIKI_TEST_WAIT_TIME"]);
-        $this->assertEquals("Italic & Bold", $this->getText("//div[@id='wikiPreview']/p/i/b"));
+        try {
+            $this->assertEquals("Italic & Bold", $this->getText("//div[@id='wikiPreview']/p/i/b"));
+        } catch (PHPUnit_Framework_AssertionFailedError $e) {
+            parent::doCreateScreenShot(__FUNCTION__);
+            array_push($this->verificationErrors, $e->toString());
+        }
     }
 
 
@@ -58,16 +69,19 @@ class WikiTextFormat_TC extends WikiCommonFunction_TC {
         try {
             $this->assertEquals("Bulleted list item", $this->getText("//div[@id='wikiPreview']/ul/li[1]"));
         } catch (PHPUnit_Framework_AssertionFailedError $e) {
+            parent::doCreateScreenShot(__FUNCTION__);
             array_push($this->verificationErrors, $e->toString());
         }
         try {
             $this->assertEquals("Bulleted list item", $this->getText("//div[@id='wikiPreview']/ul/li[2]"));
         } catch (PHPUnit_Framework_AssertionFailedError $e) {
+            parent::doCreateScreenShot(__FUNCTION__);
             array_push($this->verificationErrors, $e->toString());
         }
         try {
             $this->assertEquals("Bulleted list item", $this->getText("//div[@id='wikiPreview']/ul/li[3]"));
         } catch (PHPUnit_Framework_AssertionFailedError $e) {
+            parent::doCreateScreenShot(__FUNCTION__);
             array_push($this->verificationErrors, $e->toString());
         }
     }
@@ -85,16 +99,19 @@ class WikiTextFormat_TC extends WikiCommonFunction_TC {
         try {
             $this->assertEquals("Numbered list item", $this->getText("//div[@id='wikiPreview']/ol/li[1]"));
         } catch (PHPUnit_Framework_AssertionFailedError $e) {
+            parent::doCreateScreenShot(__FUNCTION__);
             array_push($this->verificationErrors, $e->toString());
         }
         try {
             $this->assertEquals("Numbered list item", $this->getText("//div[@id='wikiPreview']/ol/li[2]"));
         } catch (PHPUnit_Framework_AssertionFailedError $e) {
+            parent::doCreateScreenShot(__FUNCTION__);
             array_push($this->verificationErrors, $e->toString());
         }
         try {
             $this->assertEquals("Numbered list item", $this->getText("//div[@id='wikiPreview']/ol/li[3]"));
         } catch (PHPUnit_Framework_AssertionFailedError $e) {
+            parent::doCreateScreenShot(__FUNCTION__);
             array_push($this->verificationErrors, $e->toString());
         }
     }
@@ -109,6 +126,7 @@ class WikiTextFormat_TC extends WikiCommonFunction_TC {
         try {
             $this->assertEquals("==Heading text==", $this->getText("//div[@id='wikiPreview']/p"));
         } catch (PHPUnit_Framework_AssertionFailedError $e) {
+            parent::doCreateScreenShot(__FUNCTION__);
             array_push($this->verificationErrors, $e->toString());
         }
     }
@@ -123,6 +141,7 @@ class WikiTextFormat_TC extends WikiCommonFunction_TC {
         try {
             $this->assertEquals("this is a test text to check the line\n break.", $this->getText("//div[@id='wikiPreview']/p"));
         } catch (PHPUnit_Framework_AssertionFailedError $e) {
+            parent::doCreateScreenShot(__FUNCTION__);
             array_push($this->verificationErrors, $e->toString());
         }
     }
@@ -138,6 +157,7 @@ class WikiTextFormat_TC extends WikiCommonFunction_TC {
         try {
             $this->assertEquals("This", $this->getText("//div[@id='wikiPreview']/p/big"));
         } catch (PHPUnit_Framework_AssertionFailedError $e) {
+            parent::doCreateScreenShot(__FUNCTION__);
             array_push($this->verificationErrors, $e->toString());
         }
     }
@@ -153,6 +173,7 @@ class WikiTextFormat_TC extends WikiCommonFunction_TC {
         try {
             $this->assertEquals("This", $this->getText("//div[@id='wikiPreview']/p/small"));
         } catch (PHPUnit_Framework_AssertionFailedError $e) {
+            parent::doCreateScreenShot(__FUNCTION__);
             array_push($this->verificationErrors, $e->toString());
         }
     }
@@ -168,6 +189,7 @@ class WikiTextFormat_TC extends WikiCommonFunction_TC {
         try {
             $this->assertEquals("This", $this->getText("//div[@id='wikiPreview']/p/sup"));
         } catch (PHPUnit_Framework_AssertionFailedError $e) {
+            parent::doCreateScreenShot(__FUNCTION__);
             array_push($this->verificationErrors, $e->toString());
         }
     }
@@ -183,6 +205,7 @@ class WikiTextFormat_TC extends WikiCommonFunction_TC {
         try {
             $this->assertEquals("This", $this->getText("//div[@id='wikiPreview']/p/sub"));
         } catch (PHPUnit_Framework_AssertionFailedError $e) {
+            parent::doCreateScreenShot(__FUNCTION__);
             array_push($this->verificationErrors, $e->toString());
         }
     } 

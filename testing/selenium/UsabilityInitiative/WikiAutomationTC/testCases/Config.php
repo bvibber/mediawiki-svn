@@ -18,4 +18,8 @@ $_SESSION["WIKI_EXTERNAL_LINK_TITLE"] = "Google"; // Page title of the external 
 $_SESSION["WIKI_SAMPLE_TEXT"] = "calcey qa\n\ncalcey qa\n\ncalcey qa"; // String to type in the editor to use for search and replace
 $_SESSION["WIKI_SEARCH_TEXT"] = "calcey qa"; // Text use for search
 $_SESSION["WIKI_REPLACE_TEXT"] = "test team" ; // Text use for replace search text
+$_SESSION["WIKI_CODE_PATH"] = getcwd();
+$_SESSION["WIKI_SCREENSHOTS_PATH"] = "screenshots";
+$_SESSION["WIKI_SCREENSHOTS_TYPE"] = "png";
+
 ?>

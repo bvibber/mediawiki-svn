@@ -23,6 +23,7 @@ class WikiNTOC_TC extends WikiCommonFunction_TC {
         try {
             $this->assertEquals("Heading text", $this->getText("//*[@id='wikiPreview']/h2"));
         } catch (PHPUnit_Framework_AssertionFailedError $e) {
+            parent::doCreateScreenShot(__FUNCTION__);
             array_push($this->verificationErrors, $e->toString());
         }
     }
@@ -40,6 +41,7 @@ class WikiNTOC_TC extends WikiCommonFunction_TC {
         try {
             $this->assertEquals("Heading text", $this->getText("//*[@id='wikiPreview']/h3"));
         } catch (PHPUnit_Framework_AssertionFailedError $e) {
+            parent::doCreateScreenShot(__FUNCTION__);
             array_push($this->verificationErrors, $e->toString());
         }
     }
@@ -56,6 +58,7 @@ class WikiNTOC_TC extends WikiCommonFunction_TC {
         try {
             $this->assertEquals("Heading text", $this->getText("//*[@id='wikiPreview']/h4"));
         } catch (PHPUnit_Framework_AssertionFailedError $e) {
+            parent::doCreateScreenShot(__FUNCTION__);
             array_push($this->verificationErrors, $e->toString());
         }
     }
@@ -72,6 +75,7 @@ class WikiNTOC_TC extends WikiCommonFunction_TC {
         try {
             $this->assertEquals("Heading text", $this->getText("//*[@id='wikiPreview']/h5"));
         } catch (PHPUnit_Framework_AssertionFailedError $e) {
+            parent::doCreateScreenShot(__FUNCTION__);
             array_push($this->verificationErrors, $e->toString());
         }
     }
@@ -94,6 +98,7 @@ class WikiNTOC_TC extends WikiCommonFunction_TC {
          try {
             $this->assertEquals("Heading text", $this->getText("//*[@id='wikiPreview']/h3"));
         } catch (PHPUnit_Framework_AssertionFailedError $e) {
+            parent::doCreateScreenShot(__FUNCTION__);
             array_push($this->verificationErrors, $e->toString());
         }
     }
@@ -113,16 +118,19 @@ class WikiNTOC_TC extends WikiCommonFunction_TC {
         try {
             $this->assertEquals("Heading text", $this->getText("//*[@id='wikiPreview']/h2"));
         } catch (PHPUnit_Framework_AssertionFailedError $e) {
+            parent::doCreateScreenShot(__FUNCTION__);
             array_push($this->verificationErrors, $e->toString());
         }
          try {
             $this->assertEquals("Heading text", $this->getText("//*[@id='wikiPreview']/h3"));
         } catch (PHPUnit_Framework_AssertionFailedError $e) {
+            parent::doCreateScreenShot(__FUNCTION__);
             array_push($this->verificationErrors, $e->toString());
         }
         try {
             $this->assertEquals("Heading text", $this->getText("//*[@id='wikiPreview']/h4"));
         } catch (PHPUnit_Framework_AssertionFailedError $e) {
+            parent::doCreateScreenShot(__FUNCTION__);
             array_push($this->verificationErrors, $e->toString());
         }
     }
@@ -144,21 +152,25 @@ class WikiNTOC_TC extends WikiCommonFunction_TC {
         try {
             $this->assertEquals("Heading text", $this->getText("//*[@id='wikiPreview']/h2"));
         } catch (PHPUnit_Framework_AssertionFailedError $e) {
+            parent::doCreateScreenShot(__FUNCTION__);
             array_push($this->verificationErrors, $e->toString());
         }
          try {
             $this->assertEquals("Heading text", $this->getText("//*[@id='wikiPreview']/h3"));
         } catch (PHPUnit_Framework_AssertionFailedError $e) {
+            parent::doCreateScreenShot(__FUNCTION__);
             array_push($this->verificationErrors, $e->toString());
         }
         try {
             $this->assertEquals("Heading text", $this->getText("//*[@id='wikiPreview']/h4"));
         } catch (PHPUnit_Framework_AssertionFailedError $e) {
+            parent::doCreateScreenShot(__FUNCTION__);
             array_push($this->verificationErrors, $e->toString());
         }
         try {
             $this->assertEquals("Heading text", $this->getText("//*[@id='wikiPreview']/h5"));
         } catch (PHPUnit_Framework_AssertionFailedError $e) {
+            parent::doCreateScreenShot(__FUNCTION__);
             array_push($this->verificationErrors, $e->toString());
         }
     } 
