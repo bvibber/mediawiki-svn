@@ -48,12 +48,6 @@ public class CoherenceDisambiguator extends AbstractDisambiguator<TermReference,
 		}
 	};
 	
-	private Functor.Double weightNormalizer = new Functor.Double() { //NOTE: must map [0:inf] to [0:1] and grow monotonously
-		public double apply(double pop) {
-			return 1 - 1/(Math.sqrt(Math.log(pop))+1);  //XXX: black voodoo magic ad hoc formula with no deeper meaing.
-		}
-	};
-	
 	private Functor.Double similarityNormalizer = new Functor.Double() { //NOTE: must map [0:1] to [0:1] and grow monotonously
 		public double apply(double sim) {
 			return Math.sqrt(Math.sqrt(sim));  //XXX: black voodoo magic ad hoc formula with no deeper meaing.
@@ -61,7 +55,7 @@ public class CoherenceDisambiguator extends AbstractDisambiguator<TermReference,
 	};
 
 	protected Functor2.Double scoreCombiner = new LinearCombiner(0.8);
-	protected Functor2.Double weightCombiner = new LinearCombiner(0.5);
+	protected Functor2.Double weightCombiner = ProductCombiner.instance;
 	
 	public CoherenceDisambiguator(MeaningFetcher<LocalConcept> meaningFetcher, FeatureFetcher<LocalConcept, Integer> featureFetcher, boolean featuresAreNormalized) {
 		this(meaningFetcher, featureFetcher, WikiWordConcept.theCardinality, 
@@ -382,22 +376,22 @@ public class CoherenceDisambiguator extends AbstractDisambiguator<TermReference,
 			if (p<1) p= 1;
 			if (w<1) w= 1;
 			
-			pop += p; 
+			p = weightCombiner.apply(p, w);
+			
+			pop += p; //XXX: keep raw and processed pop 
 			weight += w; 
 			c ++;
 		}
 		
 		//normalize
-		sim = sim / n; //normalize
-		pop = pop / c; //normalize
-		weight = weight / c; //normalize
+		sim = sim / n; //scale
+		pop = pop / c; //scale
+		weight = weight / c; //scale
 		
 		double popf = popularityNormalizer.apply(pop);
 		double simf = similarityNormalizer.apply(sim);
-		double weightf = weightNormalizer.apply(weight);
-		
-		double score = weightCombiner.apply(weightf, popf);
-		score = scoreCombiner.apply(score, simf);
+
+		double score = scoreCombiner.apply(popf, simf);
 		
 		return new Result<X, LocalConcept>(interp.getMeanings(), interp.getSequence(), score, "simf="+simf+", popf="+popf+", sim="+sim+", pop="+pop+", weight="+weight);
 	}

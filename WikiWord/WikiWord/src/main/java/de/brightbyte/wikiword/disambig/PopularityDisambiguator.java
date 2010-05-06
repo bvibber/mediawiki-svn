@@ -1,12 +1,12 @@
 package de.brightbyte.wikiword.disambig;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import de.brightbyte.data.Functor;
 import de.brightbyte.data.Functor2;
 import de.brightbyte.data.measure.Measure;
 import de.brightbyte.data.measure.Measure.Comparator;
@@ -20,7 +20,8 @@ public class PopularityDisambiguator extends AbstractDisambiguator<TermReference
 	protected Measure<WikiWordConcept> popularityMeasure;
 	protected Comparator<LocalConcept> popularityComparator;
 	
-	protected Functor2.Double weigthCombiner = new LinearCombiner(0.5);
+	protected Functor.Double weightBooster = SquareBooster.instance; 
+	protected Functor2.Double weigthCombiner = new ProductCombiner(); //NOTE: pop and weight are not in the same scale.
 	
 	public PopularityDisambiguator(MeaningFetcher<LocalConcept> meaningFetcher) {
 		this(meaningFetcher, WikiWordConcept.theCardinality);
@@ -55,11 +56,13 @@ public class PopularityDisambiguator extends AbstractDisambiguator<TermReference
 		
 		for (List<X> sequence: sequences) {
 			Result<X, LocalConcept> r = disambiguate(sequence, meanings, context);
+			trace(r.toString());
 			if (best == null || best.getScore() < r.getScore()) {
 				best = r;
 			}
 		}
 		
+		trace("best:" + best.toString());
 		return best;
 	}
 	
@@ -70,13 +73,9 @@ public class PopularityDisambiguator extends AbstractDisambiguator<TermReference
 		double score = 0;
 		int totalPop = 0;
 		
-		List<X> resultSequence = new ArrayList<X>(sequence.size());
-		
 		for (X t: sequence) {
 			List<? extends LocalConcept> m = meanings.get(t);
 			if (m==null || m.size()==0) continue;
-			
-			resultSequence.add(t);
 			
 			if (m.size()>1) Collections.sort(m, popularityComparator);
 			
@@ -86,13 +85,14 @@ public class PopularityDisambiguator extends AbstractDisambiguator<TermReference
 			double pop = popularityMeasure.measure(c);
 			totalPop += pop;
 			
-			double sc = weigthCombiner.apply(pop, t.getWeight()); //FIXME: pop and weight are not in the same scale.
+			double w = weightBooster.apply(t.getWeight());
+			double sc = weigthCombiner.apply(pop, w); 
 			score += sc;
 		}
 
-		if (disambig.size()>0) score = score / disambig.size();
+		if (disambig.size()>0) score = score / sequence.size(); //NOTE: treat unknown terms as having pop = 0
 		
-		Result<X, LocalConcept> r = new Result<X, LocalConcept>(disambig, resultSequence, score, "score="+score+"; pop="+totalPop);
+		Result<X, LocalConcept> r = new Result<X, LocalConcept>(disambig, sequence, score, "score="+score+"; pop="+totalPop);
 		return r;
 	}
 

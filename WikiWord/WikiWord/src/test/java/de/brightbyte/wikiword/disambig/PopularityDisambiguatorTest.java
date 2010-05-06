@@ -7,6 +7,8 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
+import de.brightbyte.io.ConsoleIO;
+import de.brightbyte.io.Output;
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.disambig.Disambiguator.Result;
 import de.brightbyte.wikiword.model.LocalConcept;
@@ -15,6 +17,8 @@ import de.brightbyte.wikiword.model.PhraseOccuranceSet;
 import de.brightbyte.wikiword.model.TermListNode;
 
 public class PopularityDisambiguatorTest extends DisambiguatorTestBase {
+
+	private Output traceOut = ConsoleIO.output;
 
 	public PopularityDisambiguatorTest() throws IOException, PersistenceException {
 		super();
@@ -121,14 +125,15 @@ public class PopularityDisambiguatorTest extends DisambiguatorTestBase {
 		
 		assertEquals(uk.getTerm(), getConcept("United_Kingdom"), result.getMeanings().get(uk));
 		assertEquals(london.getTerm(), getConcept("City_of_London"), result.getMeanings().get(london));
-		assertEquals(underground.getTerm(), getConcept("London_Underground"), result.getMeanings().get(underground));
+		assertEquals(underground.getTerm(), getConcept("Subway"), result.getMeanings().get(underground));
 	}
 	
 	public void testDisambiguateNode() throws PersistenceException {
 		PhraseOccuranceSet set = getBankAndMonumentPhrases();
 		
 		PopularityDisambiguator disambiguator = new PopularityDisambiguator(meaningFetcher);
-
+		disambiguator.setTrace(traceOut);
+		
 		Result<PhraseOccurance, LocalConcept> result = disambiguator.disambiguate(set.getRootNode(), null);
 		
 		List<? extends PhraseOccurance> sequence = result.getSequence();
@@ -138,13 +143,13 @@ public class PopularityDisambiguatorTest extends DisambiguatorTestBase {
 		assertEquals("Underground", sequence.get(1).getTerm());
 		assertEquals("station", sequence.get(2).getTerm());
 
-		assertNotNull( meanings.get( sequence.get(0).getTerm() ) );
-		assertNotNull( meanings.get( sequence.get(1).getTerm() ) );
-		assertNotNull( meanings.get( sequence.get(2).getTerm() ) );
+		assertNotNull( meanings.get( sequence.get(0) ) );
+		assertNotNull( meanings.get( sequence.get(1) ) );
+		assertNotNull( meanings.get( sequence.get(2) ) );
 		
-		assertEquals("Bank_and_Monument_Underground_station", meanings.get( sequence.get(0).getTerm() ).getName() );
-		assertEquals("Subway", meanings.get( sequence.get(1).getTerm() ).getName() );
-		assertEquals("Metro_station", meanings.get( sequence.get(2).getTerm() ).getName() );
+		assertEquals("Bank_and_Monument_Underground_stations", meanings.get( sequence.get(0) ).getName() );
+		assertEquals("Subway", meanings.get( sequence.get(1) ).getName() );
+		assertEquals("Bus_station", meanings.get( sequence.get(2) ).getName() );
 	}
 
 }
