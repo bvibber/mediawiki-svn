@@ -1,6 +1,6 @@
 <?php
 
-class CitationCore extends TemplateAdventureBasic {
+class Citation extends TemplateAdventureBasic {
 
 	private $dSeparators = array(    # separators between names, items, etc.
 		'regular'   => ',&#32;',
@@ -9,11 +9,13 @@ class CitationCore extends TemplateAdventureBasic {
 	);
 	private $dAuthorTruncate = 8;    # the amount of authors it should display,
 	                                 # if truncated, 'et al' will be used instead.
-	private $dAuthors = array();     # array of authors
-	private $dAuthorLinks = array(); # array of authorlinks (tied to authors).
-	private $dCoAuthors = array();   # array of coauthors
-	private $dEditors = array();     # array of editors
-	private $dEditorLinks = array(); # array of editorlinks (tied to editors).
+	private $dAuthors = array(null);     # array of authors
+	private $dAuthorLinks = array(null); # array of authorlinks (tied to authors).
+	private $dCoAuthors = array(null);   # array of coauthors
+	private $dEditors = array(null);     # array of editors
+	private $dEditorLinks = array(null); # array of editorlinks (tied to editors).
+	                                     # they all contain 'junk' to avoid the
+	                                     # usage of [0].
 	private $dAuthorBlock = null;    # authorblock of em length
 	private $dDate = null;           # the date set
 	private $dAccessDate = null;     # date accessed
@@ -71,9 +73,59 @@ class CitationCore extends TemplateAdventureBasic {
 	private $dBibcode = null;        # bibcode id
 	private $dOther = null;          # other stuff
 
-	public function parse() {
+	public function __construct( $parser, $frame, $args ) {
+		parent::__construct($parser, $frame, $args);
+	}
+
+	public function render() {
 		$this->readOptions( );
-		$this->mOutput = "Not implemented!";
+		$this->mOutput = '';
+		# authors
+		if ( count( $this->dAuthors ) > 1 ) {
+			$authorArea = '';
+			foreach ( $this->dAuthors as $i => $author ) {
+				if ( $i == 0 )
+					continue;
+				if ( $i > 1 && $this->dAuthorTruncate <= $i ) {
+					$authorArea .= wfMsg( "ta-etal" );
+					break;
+				}
+				if ( $i == count($this->dAuthors)-1 && $i != 1 )
+					$authorArea .= $this->getSeparator( 'ampersand' );
+				elseif ( $i > 1 )
+					$authorArea .= $this->getSeparator( 'author' );
+				$tmp = '';
+				if ( $author[0] ) {
+					if ( $author[1][1] == null )
+						continue;
+					$tmp .= $author[1][1];
+					if ( $author[1][0] != null )
+						$tmp .= $this->getSeparator( 'author' ) . $author[1][0];
+				} else {
+					# maybe we shan't support no surname/given name structure
+					# in the future, but we'll leave it like this for now.
+					$tmp .= $author[1][1];
+				}
+				if ( isset ( $this->dAuthorLinks[$i] ) )
+					$tmp = "[{$this->dAuthorLinks[$i]} $tmp]";
+				$authorArea .= $tmp;
+			}
+			$this->mOutput .= $authorArea;
+		}
+	}
+
+	/**
+	 * This function should in the future do some wfMsg() magic to check if
+	 * they are using a set separator message or just using a default one.
+	 *
+	 * @param $name Name of separator; regular, author or ampersand
+	 * @return $separator Blank if none found.
+	 */
+	private function getSeparator ( $name ) {
+		if ( !isset($this->dSeparators[$name]) )
+			return '';
+		$sep = $this->dSeparators[$name];
+		return $sep;
 	}
 
 	private function addEditorLink( $name, $value ) {
@@ -183,7 +235,8 @@ class CitationCore extends TemplateAdventureBasic {
 		static $magicWords = null;
 		if ( $magicWords === null ) {
 			$magicWords = new MagicWordArray( array(
-				'ta_cc_author'
+				'ta_cc_author', 'ta_cc_authorgiven',
+				'ta_cc_authorsurname', 'ta_cc_authorlink',
 			) );
 		}
 
