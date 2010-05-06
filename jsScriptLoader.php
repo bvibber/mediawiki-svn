@@ -42,7 +42,7 @@ class jsScriptLoader {
 	// Error msg
 	var $errorMsg = '';
 
-	// Output format is either 'js' or 'css' or 'messages' for exclusivly msg text;
+	// Output format is either 'js' or 'css' or 'messages' for exclusively msg text;
 	var $outputFormat = 'js';
 
 	// Debug flag
@@ -438,7 +438,7 @@ class jsScriptLoader {
 		// Output MIME type:
 		if( $this->outputFormat == 'css' ){
 			header( 'Content-Type: text/css' );
-		} else if ( $this->outputFormat == 'js' ) {
+		} else if ( $this->outputFormat == 'js' || $this->outputFormat == 'messages' ) {
 			header( 'Content-Type: text/javascript' );
 		}
 		header( 'Pragma: public' );
