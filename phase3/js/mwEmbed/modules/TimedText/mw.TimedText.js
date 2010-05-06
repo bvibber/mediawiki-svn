@@ -158,11 +158,11 @@ mw.addMessages( {
 			}
 			
 			// Set up embedPlayer hooks:			
-			embedPlayer.addHook( 'monitor', function() {
-				_this.monitor();
-			} )
+			$j( embedPlayer ).bind( 'onMonitor', function() {
+				_this.monitor()
+			} );
 							
-			embedPlayer.addHook( 'play', function() {
+			$j( embedPlayer ).bind( 'onPlay', function() {
 				// Will load and setup timedText sources (if not loaded already loaded )
 				_this.setupTextSources();
 			} );

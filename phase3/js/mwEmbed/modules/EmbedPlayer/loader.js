@@ -111,54 +111,49 @@ mw.documentHasPlayerTags = function() {
 * We use mw.addDOMReadyHook instead of mw.ready so that
 * player interfaces are ready once mw.ready is called. 
 */
-mw.addDOMReadyHook( function() {
+mw.addSetupHook( function( callback ) {
 	if( mw.documentHasPlayerTags() ) {
 		var  rewriteElementCount = 0;
 		
-		// Add the setup hook since we have player tags
-		mw.addSetupHook( function( callback ) {		
-		
-			// Set each player to loading ( as early on as possible ) 
-			$j( mw.getConfig( 'rewritePlayerTags' ) ).each( function( index, element ){
-								
-				// Assign an the element an ID (if its missing one)			
-				if ( $j( element ).attr( "id" ) == '' ) {
-					$j( element ).attr( "id",  'v' + ( rewriteElementCount++ ) );
-				}
-								
-				// Add an absolute positioned loader
-				var pos = $j( element ).offset();	
-				var left = (  $j( element ).width() ) ? 
-					parseInt( pos.left + ( .4 * $j( element ).width() ) ) : 
-					pos.left + 30;
-				var top = (  $j( element ).height() ) ? 
-					parseInt( pos.top + ( .4 * $j( element ).height() ) ) : 
-					pos.left + 30;								
-				$j('body').append(
-					$j('<div />')
-					.loadingSpinner()
-					.attr('id', 'loadSpiner_' + $j( element ).attr('id') )
-					.css({
-						'width' : 32,
-						'height' : 32,
-						'position': 'absolute',
-						'top' : top,
-						'left' : left
-					})						
-				)				
-				//$j( element ).hide();
-			});									
-			// Load the embedPlayer module ( then run queued hooks )
-			mw.load( 'EmbedPlayer', function ( ) {				
-				// Rewrite the rewritePlayerTags with the 
-				$j( mw.getConfig( 'rewritePlayerTags' ) ).embedPlayer();				
-				// Run the setup callback now that we have setup all the players
-				callback();
-			})
-		});
-	
-		// Tell mwEmbed to run setup
-		mw.setConfig( 'runSetupMwEmbed', true );
+		// Set each player to loading ( as early on as possible ) 
+		$j( mw.getConfig( 'rewritePlayerTags' ) ).each( function( index, element ){
+							
+			// Assign an the element an ID (if its missing one)			
+			if ( $j( element ).attr( "id" ) == '' ) {
+				$j( element ).attr( "id",  'v' + ( rewriteElementCount++ ) );
+			}
+							
+			// Add an absolute positioned loader
+			var pos = $j( element ).offset();	
+			var left = (  $j( element ).width() ) ? 
+				parseInt( pos.left + ( .4 * $j( element ).width() ) ) : 
+				pos.left + 30;
+			var top = (  $j( element ).height() ) ? 
+				parseInt( pos.top + ( .4 * $j( element ).height() ) ) : 
+				pos.left + 30;								
+			$j('body').append(
+				$j('<div />')
+				.loadingSpinner()
+				.attr('id', 'loadSpiner_' + $j( element ).attr('id') )
+				.css({
+					'width' : 32,
+					'height' : 32,
+					'position': 'absolute',
+					'top' : top,
+					'left' : left
+				})						
+			)				
+			//$j( element ).hide();
+		});									
+		// Load the embedPlayer module ( then run queued hooks )
+		mw.load( 'EmbedPlayer', function ( ) {				
+			// Rewrite the rewritePlayerTags with the 
+			$j( mw.getConfig( 'rewritePlayerTags' ) ).embedPlayer();				
+			// Run the setup callback now that we have setup all the players
+			callback();
+		})
+	} else {
+		callback();
 	}
 });
 

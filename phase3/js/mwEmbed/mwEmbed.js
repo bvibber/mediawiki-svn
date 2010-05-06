@@ -1307,6 +1307,7 @@ var MW_EMBED_VERSION = '1.1f';
 	mw.addLoaderDialog = function( msg_txt ) {
 		mw.addDialog( msg_txt, msg_txt + '<br>' + mw.loading_spinner() );
 	}
+	
 	/**
 	 * NOTE: should be moved to browser detection script
 	 */
