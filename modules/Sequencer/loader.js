@@ -17,7 +17,7 @@ mw.addModuleLoader( 'FirefoggRender', function( callback) {
 	mw.load( [
 		'mw.Firefogg', 
 		'mw.FirefoggRender',
-		'mw.BaseUploadInterface'
+		'mw.UploadInterface'
 	], function() {
 		callback( 'FirefoggRender' );
 	});

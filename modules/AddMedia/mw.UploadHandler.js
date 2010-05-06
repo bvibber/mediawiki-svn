@@ -611,7 +611,7 @@ mw.UploadHandler.prototype = {
 	doHttpUpload: function( params ) {
 		var _this = this;
 		// Get a clean setup of the interface dispatch 
-		this.ui.setup( {'title': gM('mwe-upload-in-progress') } );					
+		this.ui.setup( { 'title' : gM('mwe-upload-in-progress') } );					
 
 		// Set the interface dispatch to loading ( in case we don't get an update for some time )
 		this.ui.setLoading();		
@@ -634,6 +634,7 @@ mw.UploadHandler.prototype = {
 		_this.action_done = false;
 		
 		// Do the api request:
+		mw.log(" about to run upload request: " + request );
 		mw.getJSON(_this.apiUrl, request, function( data ) {
 			_this.processApiResult( data );
 		});
@@ -1018,7 +1019,7 @@ mw.UploadHandler.prototype = {
 								'border' : 0,
 								'width' : 15,
 								'height' : 11,
-								'src' : mw.getConfig( 'images_path' ) + 'magnify-clip.png'
+								'src' : mw.getConfig( 'imagesPath' ) + 'magnify-clip.png'
 							} ), 
 							
 							$j('<span />')
