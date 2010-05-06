@@ -51,7 +51,7 @@ $dir = dirname(__FILE__);
 $wgExtensionMessagesFiles['TemplateAdventures'] = "$dir/TemplateAdventures.i18n.php";
 $wgExtensionMessagesFiles['TemplateAdventuresMagic'] = "$dir/TemplateAdventures.i18n.magic.php";
 
-$wgAutoloadClasses['CitationCore'] = $dir . '/Templates/CitationCore.php';
+$wgAutoloadClasses['Citation'] = $dir . '/Templates/Citation.php';
 
 $wgHooks['ParserFirstCallInit'][] = 'TemplateAdventures::onParserFirstCallInit';
 
@@ -61,26 +61,26 @@ class TemplateAdventures {
 	
 	public static function onParserFirstCallInit( $parser ) {
 		$parser->setFunctionHook( 
-			'citationcore', 
-			array( __CLASS__, 'citationCore' ), 
+			'citation', 
+			array( __CLASS__, 'citation' ), 
 			SFH_OBJECT_ARGS 
 		);
 		return true;
 	}
 
 	/**
-	 * Render {{#citation core:}}
+	 * Render {{#citation:}}
 	 *
 	 * @param $parser Parser
 	 * @param $frame PPFrame_DOM
 	 * @param $args Array
 	 * @return wikicode parsed
 	 */
-	public static function citationCore( $parser, $frame, $args ) {
+	public static function citation( $parser, $frame, $args ) {
 		if ( count( $args ) == 0 )
 			return '';
-		$obj = new CitationCore( $parser, $frame, $args );
-		$obj->parse();
+		$obj = new Citation( $parser, $frame, $args );
+		$obj->render();
 
 		return $obj->output();
 	}
@@ -115,7 +115,7 @@ class TemplateAdventureBasic {
 	/**
 	 * Do stuff.
 	 */
-	public function parse() {
+	public function render() {
 		return;
 	}
 
