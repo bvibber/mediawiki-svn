@@ -146,7 +146,7 @@ mw.addSetupHook( function( callback ) {
 			//$j( element ).hide();
 		});									
 		// Load the embedPlayer module ( then run queued hooks )
-		mw.load( 'EmbedPlayer', function ( ) {				
+		mw.load( 'EmbedPlayer', function ( ) {
 			// Rewrite the rewritePlayerTags with the 
 			$j( mw.getConfig( 'rewritePlayerTags' ) ).embedPlayer();				
 			// Run the setup callback now that we have setup all the players
@@ -201,7 +201,7 @@ mw.addModuleLoader( 'EmbedPlayer', function( callback ) {
 				playerSkins[ mw.valid_skins[ n ] ] = true;
 			}
 		}
-		mw.runHook( 'LoaderEmbedPlayerVisitTag', playerElement );
+		$j( mw ).trigger( 'LoaderEmbedPlayerVisitTag', playerElement );
 	} );
 	
 	// Add the player skins css and js to the load request:	
@@ -229,7 +229,7 @@ mw.addModuleLoader( 'EmbedPlayer', function( callback ) {
 	}
 		
 	// Run the EmbedPlayer loader hook ( so that modules can add dependencies to the request ) 
-	mw.runHook( 'LoaderEmbedPlayerUpdateRequest', dependencyRequest[ 0 ] );
+	$j( mw ).trigger( 'LoaderEmbedPlayerUpdateRequest', [ dependencyRequest[ 0 ] ] );
 		
 	
 	// Load the video libs:

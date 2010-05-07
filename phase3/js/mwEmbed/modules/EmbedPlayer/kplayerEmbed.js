@@ -81,9 +81,9 @@ var kplayerEmbed = {
 	postEmbedJS:function() {
 		var _this = this;
 		this.getPlayerElement();	
-						
-		//alert( 	this.playerElement );
+								
 		if( this.playerElement && this.playerElement.addJsListener ) {
+			mw.log( 'flash:postEmbedJS::');
 			
 			// Add KDP listeners						
 			_this.bindPlayerFunction( 'doPause', 'onPause' );
@@ -167,14 +167,16 @@ var kplayerEmbed = {
 	
 	/**
 	* Issues a seek to the playerElement	
+	* @param {Float} percentage Percentage of total stream length to seek to
 	*/ 
-	doSeek: function( prec ) {
+	doSeek: function( percentage ) {
 		var _this = this;
 		if( this.playerElement ) {
-			var seek_time = prec * this.getDuration(); 
+			var seekTime = percentage * this.getDuration(); 
 			
 			// Issue the seek to the flash player:
-			this.playerElement.sendNotification('doSeek',  seek_time);
+			this.playerElement.sendNotification('doSeek',  seekTime);
+			
 			// Kdp is missing seek done callback
 			setTimeout(function() {
 				_this.seeking= false;
@@ -185,12 +187,48 @@ var kplayerEmbed = {
 		}
 		this.monitor();
 		
-		// Run the onSeek interface update
-		this.onSeek(); 		
+		// Run the onSeeking interface update
+		this.ctrlBuilder.onSeek(); 
+	},
+	
+	/**
+	* Seek in a existing stream
+	*
+	* @param {Float} percentage Percentage of the stream to seek to between 0 and 1
+	*/
+	doPlayThenSeek: function( percentage ) {
+		mw.log( 'flash::doPlayThenSeek::' );
+		var _this = this;
+		// issue the play request
+		this.play();
+		
+		// let the player know we are seeking	
+		_this.seeking = true;
+		
+		var getPlayerCount = 0;
+		var readyForSeek = function() {
+			_this.getPlayerElement();				
+			// if we have duration then we are ready to do the seek ( flash can't seek untill there is some buffer ) 
+			if ( _this.playerElement && _this.playerElement.sendNotification && _this.getDuration() && _this.bufferedPercent ) {			
+				var seekTime = percentage * _this.getDuration(); 				
+				// Issue the seek to the flash player:
+				_this.playerElement.sendNotification('doSeek',  seekTime);
+			} else {
+				// Try to get player for 20 seconds: 
+				if ( getPlayerCount < 400 ) {
+					setTimeout( readyForSeek, 50 );
+					getPlayerCount++;
+				} else {
+					mw.log( 'Error:doPlayThenSeek failed' );
+				}
+			}
+		}
+		readyForSeek();
 	},
 	
 	/**
 	* Issues a volume update to the playerElement
+	* @param {Float} percentage Percentage to update volume to
 	*/
 	updateVolumen: function( percentage ) {				
 		if( this.playerElement && this.playerElement.sendNotification ){			
@@ -213,7 +251,7 @@ var kplayerEmbed = {
 	},
 	
 	/**
-	* function called by falsh when download bytes changes
+	* function called by flash applet when download bytes changes
 	*/ 
 	onBytesDownloadedChange: function( data, id){
 		this.bytesLoaded = data.newValue;

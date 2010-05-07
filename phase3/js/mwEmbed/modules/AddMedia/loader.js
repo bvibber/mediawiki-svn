@@ -1,7 +1,6 @@
 /*
 * Loader for libAddMedia module:
 */
-
 // Scope everything in "mw"  ( keeps the global namespace clean ) 
 ( function( mw ) {
 
@@ -37,7 +36,7 @@
 		var request = [
 			[
 				'mw.UploadForm',
-				'$j.ui'
+				'$j.ui'				
 			],
 			[
 				'$j.ui.datepicker'
@@ -129,7 +128,7 @@
 		mw.load( request, function() {
 			callback( 'AddMedia.FirefoggGUI' );
 		});
-	} );
+	} );	
 	
 	mw.addModuleLoader( 'AddMedia.firefoggRender', function( callback ) {
 		mw.load( [

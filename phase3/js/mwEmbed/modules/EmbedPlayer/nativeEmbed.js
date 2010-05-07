@@ -130,7 +130,7 @@ var nativeEmbed = {
 	*
 	* @param {Float} percentage
 	*/
-	doSeek:function( percentage ) {
+	doSeek: function( percentage ) {
 		mw.log( 'native:seek:p: ' + percentage + ' : '  + this.supportsURLTimeEncoding() + ' dur: ' + this.getDuration() + ' sts:' + this.seek_time_sec );
 		// @@todo check if the clip is loaded here (if so we can do a local seek)
 		if ( this.supportsURLTimeEncoding() ) {
