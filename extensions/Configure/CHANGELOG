@@ -1,6 +1,9 @@
 This file lists changes on this extension. Localisation updates are done
 through translatewiki.net and are not listed here.
 
+0.15.24 - 7 May 2010
+  Added $wgJQueryVersion, $wgJQueryMinified and $wgJQueryOnEveryPage.
+
 0.15.23 - 2 May 2010
   * (bug 23379) Settings based on radio button now longer throw errors if
     nothing is selected

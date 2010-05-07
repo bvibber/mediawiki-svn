@@ -55,6 +55,9 @@ $settings = array(
 			'wgUseSiteJs' => 'bool',
 			'wgHandheldStyle' => 'text',
 			'wgHandheldForIPhone' => 'bool',
+			'wgJQueryVersion' => 'text',
+			'wgJQueryMinified' => 'bool',
+			'wgJQueryOnEveryPage' => 'bool',
 		),
 		'performance' => array(
 			'wgAPICacheHelp' => 'bool',
@@ -1190,4 +1193,7 @@ $settingsVersion = array(
 	'wgLogAutocreatedAccounts' => array( array( '1.17alpha', '>=' ) ),
 	'wgLocalStylePath' => array( array( '1.17alpha', '>=' ) ),
 	'wgVectorShowVariantName' => array( array( '1.17alpha', '>=' ) ),
+	'wgJQueryMinified' => array( array( '1.17alpha', '>=' ) ),
+	'wgJQueryOnEveryPage' => array( array( '1.17alpha', '>=' ) ),
+	'wgJQueryVersion' => array( array( '1.17alpha', '>=' ) ),
 );
