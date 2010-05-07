@@ -15,6 +15,6 @@ $messages = array();
  */
 $messages['en'] = array(
 	'awesomeness' => 'Awesomeness',
-	'awesomeness-desc' => 'Makes your wiki more awesome',
-	'awesome' => 'Awesome'
+	'awesomeness-desc' => "Makes [http://www.mediawiki.org/wiki/Extension:Awesomeness#Awesome_wiki.27s your wiki] more '''awesome''' by highlighting '''awesomeness''' and adding '''awesome''' support for O_o requests",
+	'awesome' => 'Awesome',
 );
