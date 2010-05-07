@@ -43,7 +43,7 @@ function efAwesomenessInsertion( &$article, &$user, &$text, &$summary, $minor, $
 /**
  * Based on Svips patch at http://bug-attachment.wikimedia.org/attachment.cgi?id=7351
  */
-if ( strtolower( $_SERVER['QUERY_STRING'] ) == 'o_o' ) {
+if ( array_key_exists( $_SERVER, 'QUERY_STRING' ) && strtolower( $_SERVER['QUERY_STRING'] ) == 'o_o' ) {
 	header( 'Content-Type: text/plain' );
 	die( $_SERVER['QUERY_STRING'] == 'O_o' ? 'o_O' : 'O_o' );
 }
