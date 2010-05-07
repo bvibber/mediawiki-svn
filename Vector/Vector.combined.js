@@ -24,6 +24,16 @@ $j(document).ready( function() {
 				$j(this).addClass( 'collapsed' );
 			}
 		} );
+	// Use the same function for all navigation headings - don't repeat yourself
+	function toggle( $element ) {
+		$j.cookie( 'vector-nav-' + $element.parent().attr( 'id' ), $element.parent().is( '.collapsed' ) );
+		$element
+			.parent()
+			.toggleClass( 'expanded' )
+			.toggleClass( 'collapsed' )
+			.find( 'div.body' )
+			.slideToggle( 'fast' );
+	}
 	// Toggle the selected menu's class and expand or collapse the menu
 	$j( '#panel > div.portal > h5' )
 		// Make it keyboard accessible
@@ -31,17 +41,12 @@ $j(document).ready( function() {
 		// Make the space and enter keys act as a click
 		.keydown( function( event ) {
 			if ( event.which == 13 /* Enter */ || event.which == 32 /* Space */ ) {
-				$j(this).click();
+				toggle( $j(this) );
 			}
 		} )
-		.click( function() {
-			$j.cookie( 'vector-nav-' + $j(this).parent().attr( 'id' ), $j(this).parent().is( '.collapsed' ) );
-			$j(this)
-				.parent()
-				.toggleClass( 'expanded' )
-				.toggleClass( 'collapsed' )
-				.find( 'div.body' )
-				.slideToggle( 'fast' );
+		.mousedown( function() {
+			toggle( $j(this) );
+			$j(this).blur();
 			return false;
 		} );
 } );
