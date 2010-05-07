@@ -46,6 +46,8 @@ function efAwesomenessInsertion( &$article, &$user, &$text, &$summary, $minor, $
 if ( array_key_exists( 'QUERY_STRING', $_SERVER ) ) {
 	header( 'Content-Type: text/plain' );
 	
+	$O_o = false;
+	
 	switch ( strtolower( $_SERVER['QUERY_STRING'] ) ) { 
 		case 'o_o':
 			$O_o = ( $_SERVER['QUERY_STRING'] == 'O_o' ) ? 'o_O' : 'O_o'; 
@@ -60,5 +62,5 @@ if ( array_key_exists( 'QUERY_STRING', $_SERVER ) ) {
 			$O_o = 'Hell yeah!';
 	}
 	
-	die( $O_o );
+	if ( $O_o ) die( $O_o );
 }
