@@ -79,6 +79,8 @@ Return to <span class="plainlinks">[$1 $2]</span>.',
 * Link wizard:  An easy-to-use tool allows you to add links to other wiki pages as well as links to external sites.
 * Search improvements: We have improved search suggestions to get you to the page you are looking for more quickly.
 * Other new features:  We have also introduced a table wizard to make creating tables easier and find and a replace feature to simplify page editing.",
+	'prefswitch-main-anon' => "===Take Me Back===
+If you would like to turn off the new features, <span class=\"plainlinks\">[$1 click here]</span>. You will be asked to login or create an account first.",
 	'prefswitch-main-on' => "===Feedback?===
 We would love to hear from you.  Please visit our <span class=\"plainlinks\">[$1 feedback page]</span>.
 ===Take me back!===

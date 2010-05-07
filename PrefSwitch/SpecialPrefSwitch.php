@@ -46,6 +46,15 @@ class SpecialPrefSwitch extends SpecialPage {
 		}
 		return false;
 	}
+	/*
+	 * Returns a string representing the current state of a given user. There are 3 modes the system can be in, 'anon',
+	 * 'on' or 'off'. If the user is not logged in, the mode is always 'anon'. If the user is logged in, the mode will
+	 * be 'on' if SpecialPrefSwitch::isSwitchedOn() returns true, and 'off' otherwise.
+	 * @param $user User object to check switched state for
+	 */
+	public static function userState( $user ) {
+		return $user->isAnon() ? 'anon' : ( self::isSwitchedOn( $user ) ? 'on' : 'off' );
+	}
 	/**
 	 * Switches a user's prefernces on
 	 * @param $user User object to set preferences for
@@ -225,28 +234,32 @@ class SpecialPrefSwitch extends SpecialPage {
 			$wgOut->addWikiMsg(
 				'prefswitch-main', array( 'parse' )
 			);
-			if ( $wgUser->isLoggedIn() ) {
-				if ( self::isSwitchedOn( $wgUser ) ) {
-					$wgOut->addWikiMsgArray(
-						'prefswitch-main-on',
-						array(
-							$this->getTitle()->getFullURL( array_merge( $query, array( 'mode' => 'feedback' ) ) ),
-							$this->getTitle()->getFullURL( array_merge( $query, array( 'mode' => 'off' ) ) )
-						),
-						array( 'parse' )
-					);
-				} else {
-					$wgOut->addWikiMsgArray(
-						'prefswitch-main-off',
-						array(
-							$this->getTitle()->getFullURL(
-								array_merge( $query, array( 'mode' => 'on', 'token' => $wgUser->editToken() ) )
+			$state = self::userState( $wgUser );
+			switch ( $state ) {
+				case 'anon':
+					$parameters = array(
+						SpecialPage::getTitleFor( 'Userlogin' )->getFullURL(
+							array(	'returnto' => $this->getTitle()->getPrefixedText(),
+								'returntoquery' => wfArrayToCGI( array_merge( $query, array( 'mode' => 'off' ) ) )
 							)
-						),
-						array( 'parse' )
+						)
 					);
-				}
+					break;
+				case 'on':
+					$parameters = array(
+						$this->getTitle()->getFullURL( array_merge( $query, array( 'mode' => 'feedback' ) ) ),
+						$this->getTitle()->getFullURL( array_merge( $query, array( 'mode' => 'off' ) ) )
+					);
+					break;
+				case 'off':
+					$parameters = array(
+						$this->getTitle()->getFullURL(
+							array_merge( $query, array( 'mode' => 'on', 'token' => $wgUser->editToken() ) )
+						)
+					);
+					break;
 			}
+			$wgOut->addWikiMsgArray( 'prefswitch-main-' . $state, $parameters, array( 'parse' ) );
 		}
 	}
 }
