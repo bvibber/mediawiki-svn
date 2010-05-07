@@ -39,3 +39,11 @@ function efAwesomenessInsertion( &$article, &$user, &$text, &$summary, $minor, $
 
 	return true;
 }
+
+/**
+ * Based on Svips patch at http://bug-attachment.wikimedia.org/attachment.cgi?id=7351
+ */
+if ( strtolower( $_SERVER['QUERY_STRING'] ) == 'o_o' ) {
+	header( 'Content-Type: text/plain' );
+	die( $_SERVER['QUERY_STRING'] == 'O_o' ? 'o_O' : 'O_o' );
+}
