@@ -26,6 +26,9 @@ $messages['en'] = array(
  * @author EugeneZelenko
  */
 $messages['qqq'] = array(
+	'prefswitch-link-anon' => 'A link in the personal tools menu which takes users to a page where they can learn more about the new features.',
+	'prefswitch-link-on' => 'A link in the personal tools menu which takes users to a page where they can turn the new features off',
+	'prefswitch-link-off' => 'A link in the personal tools menu which takes users to a page where they can turn the new features on',
 );
 
 /** Arabic (العربية)
