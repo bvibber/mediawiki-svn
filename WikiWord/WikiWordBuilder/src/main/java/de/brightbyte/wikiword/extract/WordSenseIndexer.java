@@ -83,7 +83,7 @@ public class WordSenseIndexer extends StreamProcessorApp<String, String, WikiWor
 		
 			StoredMeaningFetcher meaningFetcher = new StoredMeaningFetcher(getLocalConceptStore(), spec);
 			StoredFeatureFetcher<LocalConcept, Integer> featureFetcher = new StoredFeatureFetcher<LocalConcept, Integer>(getFeatureStore());
-			disambiguator = new SlidingCoherenceDisambiguator( meaningFetcher, featureFetcher, true );
+			disambiguator = new SlidingCoherenceDisambiguator( meaningFetcher, featureFetcher );
 			
 			Measure<WikiWordConcept> popularityMeasure = new Measure<WikiWordConcept>(){ //boost locations //FIXME: configure! 
 				public double measure(WikiWordConcept concept) {

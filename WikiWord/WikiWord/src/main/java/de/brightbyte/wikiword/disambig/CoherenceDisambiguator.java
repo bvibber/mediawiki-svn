@@ -20,6 +20,7 @@ import de.brightbyte.data.measure.Measure;
 import de.brightbyte.data.measure.ScalarVectorSimilarity;
 import de.brightbyte.data.measure.Similarity;
 import de.brightbyte.util.PersistenceException;
+import de.brightbyte.util.SanityException;
 import de.brightbyte.wikiword.model.ConceptFeatures;
 import de.brightbyte.wikiword.model.LocalConcept;
 import de.brightbyte.wikiword.model.PhraseNode;
@@ -360,6 +361,13 @@ public class CoherenceDisambiguator extends AbstractDisambiguator<TermReference,
 								fb.getConcept().setCardinality(b.getCardinality());
 								fb.getConcept().setRelevance(b.getRelevance());
 								
+								double lena = fa.getFeatureVector().getLength();
+								double lenb = fb.getFeatureVector().getLength();
+
+								//if (lena<0 || lena>1.000000001) throw new SanityException("encountered bad length ("+lena+") for "+a+"; ooops!");
+								//if (lenb<0 || lenb>1.000000001) throw new SanityException("encountered bad length ("+lenb+") for "+b+"; ooops!");
+								
+								
 								d = similarityMeasure.similarity(fa.getFeatureVector(), fb.getFeatureVector());
 						}
 						
@@ -367,10 +375,7 @@ public class CoherenceDisambiguator extends AbstractDisambiguator<TermReference,
 					}
 				}
 				
-				if (d<0) throw new IllegalArgumentException("encountered negative similarity score ("+d+") for "+a+" / "+b);
-				
-				assert d>=0;
-				assert d<=1;
+				if (d<0 || d>1) throw new SanityException("encountered invalid similarity score ("+d+") for "+a+" / "+b+"; check similarityMeasure.");
 				
 				sim += d;
 				n ++; //should add up to interp.size*(combo.size()-1)/2, according to Gauss
@@ -393,23 +398,20 @@ public class CoherenceDisambiguator extends AbstractDisambiguator<TermReference,
 		pop = c == 0 ? 0 : pop / c; //scale
 		weight = c == 0 ? 0 : weight / c; //scale
 		
-		assert pop >= 0;
-		assert sim >= 0;
-		assert sim <= 1;
+		if (pop<0) throw new SanityException("encountered insane popularity ("+pop+"); check popularityMeasure.");
+		if (sim<0 || sim>1) throw new SanityException("encountered insane average simility ("+sim+"); ooops!");
 		
 		double popf = popularityNormalizer.apply(pop);
 		double simf = similarityNormalizer.apply(sim);
-		
-		assert popf>=0;
-		assert popf<=1;
-		assert simf>=0;
-		assert simf<=1;
+
+		if (popf<0 || popf>1) throw new SanityException("encountered insane normal popularity ("+popf+"); check popularityNormalizer!");
+		if (simf<0 || simf>1) throw new SanityException("encountered insane normal similarity ("+simf+"); check similarityNormalizer!");
 
 		double score = scoreCombiner.apply(popf, simf);
-		assert score>=0;
-		assert score<=1;
+		if (score<0 || score>1) throw new SanityException("encountered insane score ("+score+"); check scoreCombiner!");
 		
-		return new Result<X, LocalConcept>(interp.getMeanings(), interp.getSequence(), score, "simf="+simf+", popf="+popf+", sim="+sim+", pop="+pop+", weight="+weight);
+		Result<X, LocalConcept> r = new Result<X, LocalConcept>(interp.getMeanings(), interp.getSequence(), score, "simf="+simf+", popf="+popf+", sim="+sim+", pop="+pop+", weight="+weight);
+		return r;
 	}
 
 }

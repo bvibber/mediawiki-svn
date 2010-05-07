@@ -133,7 +133,7 @@ public class DisambiguatorTestBase extends TestCase {
 	protected FeatureFetcher<LocalConcept, Integer> featureFetcher = new FeatureFetcher<LocalConcept, Integer>() {
 	
 		public boolean getFeaturesAreNormalized() {
-			return true;
+			return false;
 		}
 	
 		public Map<Integer, ConceptFeatures<LocalConcept, Integer>> getFeatures(
