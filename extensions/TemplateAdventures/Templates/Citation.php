@@ -31,13 +31,14 @@ class Citation extends TemplateAdventureBasic {
 	    'transitalic'  => null,      # translated title in italic
 		'includedwork' => null,
 		'type'         => null,      # the title type
+		'note'         => null,
 	);
 	private $dWorkLink = array(      # data related to the link
 		'url'          => null,
 		'originalurl'  => null,
 		'includedwork' => null,
-		'at'           => null,      # wherein the source
 	);
+	private $dAt = null;             # wherein the source
 	private $dArchived = array(      # information about its archiving if archived
 		'url'          => null,
 		'date'         => null,
@@ -117,7 +118,7 @@ class Citation extends TemplateAdventureBasic {
 			$this->mOutput .= $editorArea;
 		}
 		# included work title
-		if ( $this->notNull( $this->dWorkTitle['includedwork'] ) && ( $this->notNull( $this->dPeriodical ) || $this->notNull( $this->dWorkTitle['transitalic'] ) || $this->notNull( $this->dWorkTitle['transtitle'] ) ) ) {
+		if ( $this->notNull( $this->dWorkTitle['includedwork'] ) && ( $this->notNull( $this->dPeriodical['name'] ) || $this->notNull( $this->dWorkTitle['transitalic'] ) || $this->notNull( $this->dWorkTitle['transtitle'] ) ) ) {
 			# I am no way certain this is a correct copy of the following logic:
 			# {{#if: {{{IncludedWorkTitle|}}}{{#if:{{{Periodical|}}}||{{#if:{{{TransItalic|}}}||{{{TransTitle|}}}}}}} | ... | ... }}
 			if ( $authorArea != '' || $editorArea != '' ) {
@@ -139,7 +140,7 @@ class Citation extends TemplateAdventureBasic {
 				}
 			}
 			# and now the title
-			if ( $this->dPeriodical != null ) {
+			if ( $this->notNull ( $this->dPeriodical['name'] ) ) {
 				$tmp = str_replace( "'", '&#39;', $this->dWorkTitle['includedwork']);
 				$title = "''$tmp''";
 			} else {
@@ -170,7 +171,313 @@ class Citation extends TemplateAdventureBasic {
 		# TODO: we'll do this later...
 
 		# periodicals
-		# TODO: I'll get on it!
+		if ( $this->notNull ( $this->dPeriodical['name'] ) ) {
+			$perArea = '';
+			if ( $this->notNull ( $this->dOther ) )
+				$perArea .= $this->getSeparator ( 'section' ) . ' ' . $this->dOther;
+			if ( $authorArea != '' || $editorArea != '' || $this->notNull ( $this->dWorkTitle['includedwork'] ) )
+				$perArea .= $this->getSeparator ( 'section' );
+			# make the link!
+			if ( $this->notNull ( $this->dWorkTitle['title'] ) || $this->notNull ( $this->dWorkTitle['transtitle'] ) ) {
+				# let's get the url
+				if ( $this->notNull ( $this->dWorkTitle['includedwork'] ) ) {
+					if ( $this->notNull ( $this->dWorkLink['includedwork'] ) ) {
+						if ( $this->notNull ( $this->dWorkLink['url'] ) ) {
+							$url = $this->dWorkLink['url'];
+						} else {
+						# some explain to me what exactly the following is supposed to mean:
+						# <!-- Only link URL if to a free full text - as at PubMedCentral (PMC)-->
+						# |{{#ifexpr:{{#time: U}} > {{#time: U | {{{Embargo|2001-10-10}}} }}
+							if ( $this->dPubMed['pmc'] != null ) {
+								$url = wfMsg ( 'ta-pubmed-url', $this->dPubMed['pmc'] );
+							}				
+						}
+					}
+				} else {
+					if ( $this->notNull ( $this->dWorkLink['url'] ) ) {
+						$url = $this->dWorkLink['url'];
+					} else {
+					# some explain to me what exactly the following is supposed to mean:
+					# <!-- Only link URL if to a free full text - as at PubMedCentral (PMC)-->
+					# |{{#ifexpr:{{#time: U}} > {{#time: U | {{{Embargo|2001-10-10}}} }}
+						if ( $this->dPubMed['pmc'] != null ) {
+							$url = wfMsg ( 'ta-pubmed-url', $this->dPubMed['pmc'] );
+						}				
+					}
+				}
+				# and now the title
+				$tmp = $this->notNull ( $this->dWorkTitle['title'] )
+					? $this->dWorkTitle['title']
+					: '';
+				if ( $this->notNull ( $this->dWorkTitle['transtitle'] ) ) {
+					if ( $tmp != '' )
+						$tmp .= ' ';
+					$tmp .= wfMsg ( 'ta-transtitle-render', $this->dWorkTitle['transtitle'] );
+				}
+				$title = "\"$tmp\"";
+				$perArea .= $this->makeLink ( $url, $title );
+				if ( $this->notNull ( $this->dWorkTitle['note'] ) ) {
+					$perArea .= $this->getSeparator ( 'section' ) . ' ' . $this->dWorkTitle['note'];
+				}
+			}
+			$this->mOutput .= $perArea;
+		}
+		# language
+		if ( $this->notNull ( $this->dLanguage ) ) {
+			$this->mOutput .= wfMsg ( 'ta-inlanguage', $this->dLanguage );
+		}
+		# format
+		if ( $this->notNull ( $this->dFormat ) ) {
+			$this->mOutput .= wfMsg ( 'ta-formatrender', $this->dFormat );
+		}
+		# more periodical!
+		if ( $this->notNull ( $this->dPeriodical['name'] ) ) {
+			$newPerArea = '';
+			if ( $this->notNull ( $this->dWorkTitle['includedwork'] )
+				|| $this->notNull ( $this->dWorkTitle['title'] )
+				|| $this->notNull ( $this->dWorkTitle['transtitle'] )
+				) {
+				$newPerArea .= $this->getSeparator ( 'section' ) . ' ';
+			}
+			$newPerArea .= "''" . $this->clean ( $this->dPeriodical['name'] ) . "''";
+			if ( $this->notNull ( $this->dSeries ) ) {
+				$newPerArea .= $this->getSeparator ( 'section' ) . ' ' . $this->dSeries;
+			}
+			if ( $this->notNull ( $this->dPublication['place'] ) ) {
+				if ( $this->notNull ( $this->dPublisher ) ) {
+					$newPerArea .= wfMsg ( 'ta-publicationplaceandpublisher', $this->dPublication['place'], $this->dPublisher );
+				} else {
+					$newPerArea .= wfMsg ( 'ta-publicationplace', $this->dPublication['place'] );
+				}
+			}
+			if ( $this->notNull ( $this->dVolume ) ) {
+				$newPerArea .= wfMsg ( 'ta-volumerender', $this->dVolume );
+				if ( $this->notNUll ( $this->dIssue ) ) {
+					$newPerArea .= wfMsg ( 'ta-issuerender', $this->dIssue );
+				}
+			} else {
+				if ( $this->notNUll ( $this->dIssue ) ) {
+					$newPerArea .= wfMsg ( 'ta-issuerender', $this->dIssue );
+				}
+			}
+			if ( $this->notNull ( $this->dAt ) ) {
+				$newPerArea .= wfMsg ( 'ta-atrender', $this->dAt );
+			}
+			# now we get to the title!  Exciting stuff!
+			if ( $this->notNull ( $this->dWorkTitle['title'] )
+				|| $this->notNull ( $this->dWorkTitle['transitalic'] ) ) {
+				if ( $authorArea != ''
+					|| $editorArea != ''
+					|| $this->notNull ( $this->dWorkTitle['includedwork'] )
+					|| $this->notNull ( $this->dPeriodical['name'] )
+				) {
+					$newPerArea .= $this->getSeparator ( 'section' );
+				}
+				# let's get the url
+				if ( $this->notNull ( $this->dWorkTitle['includedwork'] ) ) {
+					if ( $this->notNull ( $this->dWorkLink['includedwork'] ) ) {
+						if ( $this->notNull ( $this->dWorkLink['url'] ) ) {
+							$url = $this->dWorkLink['url'];
+						} else {
+						# some explain to me what exactly the following is supposed to mean:
+						# <!-- Only link URL if to a free full text - as at PubMedCentral (PMC)-->
+						# |{{#ifexpr:{{#time: U}} > {{#time: U | {{{Embargo|2001-10-10}}} }}
+							if ( $this->dPubMed['pmc'] != null ) {
+								$url = wfMsg ( 'ta-pubmed-url', $this->dPubMed['pmc'] );
+							}				
+						}
+					}
+				} else {
+					if ( $this->notNull ( $this->dWorkLink['url'] ) ) {
+						$url = $this->dWorkLink['url'];
+					} else {
+					# some explain to me what exactly the following is supposed to mean:
+					# <!-- Only link URL if to a free full text - as at PubMedCentral (PMC)-->
+					# |{{#ifexpr:{{#time: U}} > {{#time: U | {{{Embargo|2001-10-10}}} }}
+						if ( $this->dPubMed['pmc'] != null ) {
+							$url = wfMsg ( 'ta-pubmed-url', $this->dPubMed['pmc'] );
+						}				
+					}
+				}
+				# and now the title
+				$tmp = $this->notNull ( $this->dWorkTitle['title'] )
+					? $this->dWorkTitle['title']
+					: '';
+				if ( $this->notNull ( $this->dWorkTitle['transitalic'] ) ) {
+					if ( $tmp != '' )
+						$tmp .= ' ';
+					$tmp .= wfMsg ( 'ta-transtitle-render', $this->dWorkTitle['transitalic'] );
+				}
+				$tmp = $this->clean ( $tmp );
+				$title = "''$tmp''";
+				$newPerArea .= $this->makeLink ( $url, $title );
+			}
+			# may change this into some if () statements though,
+			# it is easier to write this, but it also means that all of the
+			# second input is actually evaluated, even if it contains nothing.
+			$newPerArea .= $this->addNotNull ( $this->dWorkTitle['type'], 
+				wfMsg ( 'ta-titletyperender', $this->dWorkTitle['type'] ) );
+			$newPerArea .= $this->addNotNull ( $this->dSeries, 
+				$this->getSeparator ( 'section' ) . ' ' . $this->dSeries );
+			$newPerArea .= $this->addNotNull ( $this->dVolume, 
+				$this->getSeparator ( 'section' ) . ' ' . wfMsg ( 'ta-volumerender', $this->dVolume ) );
+			$newPerArea .= $this->addNotNull ( $this->dOther, 
+				$this->getSeparator ( 'section' ) . ' ' . $this->dOther );
+			$newPerArea .= $this->addNotNull ( $this->dEdition, 
+				wfMsg ( 'ta-editionrender', $this->dEdition ) );
+			$newPerArea .= $this->addNotNull ( $this->dPublication['place'], 
+				$this->getSeparator ( 'section' ) . ' ' . $this->dPublication['place'] );
+			if ( $this->notNull ( $this->dPublisher ) ) {
+				if ( $this->dPublication['place'] ) {
+					$newPerArea .= ':';
+				} else {
+					$newPerArea .= $this->getSeparator ( 'section' );
+				}
+				$newPerArea .= wfMsg ( 'ta-publisherrender', $this->dPublisher );
+			}
+			$this->mOutput .= $newPerArea;
+		}
+		# date if no author/editor
+		if ( $authorArea == '' && $editorArea == '' ) {
+			if ( $this->notNull ( $this->dDate ) ) {
+				$this->mOutput .= $this->getSeparator ( 'section' ) . wfMsg ( 'ta-citeauthordate', $this->dDate );
+				if ( $this->notNull ( $this->dYearNote ) ) {
+					$this->mOutput .= wfMsg ( 'ta-citeauthoryearnote', $this->dYearNote );
+				}
+			}
+		}
+		# publication date
+		if ( $this->notNull ( $this->dPublication['date'] ) && $this->dPublication['date'] != $this->dDate ) {
+			if ( isset ( $this->dEditors[1] ) ) {
+				if ( isset ( $this->dAuthors[1] ) ) {
+					$this->mOutput .= $this->getSeparator ( 'section' ) . ' ' . $this->dPublication['date'];
+				} else {
+					$this->mOutput .= wfMsg ( 'ta-published', $this->dPublication['date'] );
+				}
+			} else {
+				if ( $this->notNull ( $this->dPeriodical['name'] ) ) {
+					$this->mOutput .= $this->getSeparator ( 'section' ) . ' ' . $this->dPublication['date'];
+				} else {
+					$this->mOutput .= wfMsg ( 'ta-published', $this->dPublication['date'] );
+				}
+			}
+		}
+		# page within included work
+		if ( !$this->notNull ( $this->dPeriodical['name'] ) && $this->notNull ( $this->dAt ) ) {
+			$this->mOutput .= $this->getSeparator ( 'section' ) . ' ' . $this->dAt;
+		}
+		# doi
+		# TODO:  I'll do this code later:
+		# {{{Sep|,}}}&#32;{{citation/identifier  |identifier=doi |input1={{{DOI|}}}  |input2={{{DoiBroken|}}} }}
+
+		# misc identifier
+		# TODO: Awh shit.
+		# #if: {{{ID|}}}
+        #  |{{
+        #     #if: {{{Surname1|}}}{{{EditorSurname1|}}}{{{IncludedWorkTitle|}}}{{{Periodical|}}}{{{Title|}}}{{{TransItalic|}}}
+        #     |{{{Sep|,}}}&#32;{{{ID}}}
+        #     |{{{ID}}}
+        #   }}
+
+		# more identifiers:
+		# TODO: Do all this crap.
+		/*
+		{{
+<!--============  ISBN ============-->
+  #if: {{{ISBN|}}}
+  |{{{Sep|,}}}&#32;{{citation/identifier  |identifier=isbn |input1={{{ISBN|}}} }}
+}}{{
+<!--============  ISSN ============-->
+  #if: {{{ISSN|}}}
+  |{{{Sep|,}}}&#32;{{citation/identifier  |identifier=issn |input1={{{ISSN|}}} }}
+}}{{
+<!--============  OCLC ============-->
+  #if: {{{OCLC|}}}
+  |{{{Sep|,}}}&#32;{{citation/identifier  |identifier=oclc |input1={{{OCLC|}}} }}
+}}{{
+<!--============  PMID ============-->
+  #if: {{{PMID|}}}
+  |{{{Sep|,}}}&#32;{{citation/identifier  |identifier=pmid |input1={{{PMID|}}} }}
+}}{{
+<!--============  PMC ============-->
+  #if: {{{PMC|}}}
+  |{{
+     #if: {{{URL|}}}
+     |{{{Sep|,}}}&#32;{{citation/identifier  |identifier=pmc |input1={{{PMC|}}} }}
+     |{{only in  print|{{{Sep|,}}}&#32;{{citation/identifier  |identifier=pmc |input1={{{PMC|}}} }} }}<!--Should  only display by default in print-->
+   }}
+}}{{
+<!--============ BIBCODE ============-->
+  #if: {{{Bibcode|}}}
+  |{{{Sep|,}}}&#32;{{citation/identifier  |identifier=bibcode |input1={{{Bibcode|}}} }}
+}}
+		*/
+
+		# archive data, etc.
+		# TODO: Yeah, O_O
+
+		# URL and accessdate
+		if ( $this->notNull ( $this->dWorkLink['url'] )
+			|| $this->notNull ( $this->dWorkLink['includedwork'] ) ) {
+			if ( $this->notNull ( $this->dWorkTitle['title'] )
+				|| $this->notNull ( $this->dWorkTitle['includedwork'] )
+				|| $this->notNull ( $this->dWorkTitle['transtitle'] ) ) {
+				$this->mOutput .= $this->printOnly ( 
+					$this->getSeparator ( 'section' ) . ' ' .
+						( $this->notNull ( $this->dWorkLink['includedwork'] )
+							? $this->dWorkLink['includedwork']
+							: $this->dWorkLink['url'] ) );
+			} else {
+				$this->mOutput .= $this->getSeparator ( 'section' ) . ' ' .
+					( $this->notNull ( $this->dWorkLink['includedwork'] )
+						? $this->dWorkLink['includedwork']
+						: $this->dWorkLink['url'] );
+			}
+			if ( $this->notNull ( $this->dAccessDate ) ) {
+				if ( $this->getSeparator ( 'section' ) == '.' )
+					$tmp = ". Retrieved {$this->dAccessDate}";
+				else
+					$tmp = ", retrieved {$this->dAccessDate}";
+				$this->mOutput .= wfMsg ( 'ta-accessdatespan', $tmp ); 
+			}
+		}
+
+		# layman stuff
+		# TODO
+
+		# quote
+		# TODO
+
+		# some other shit nobody cares about.
+		# COinS?  waaaaat
+		# TODO
+	}
+
+	/**
+	 * Surround the string in a span tag that tells the css not to render it
+	 * unless it for print.
+	 *
+	 * @param $string
+	 * @return $string
+	 */
+	private function printOnly ( $string ) {
+		return wfMsg ( 'ta-printonlyspan', $string );
+	}
+
+	private function addNotNull ( $check, $add ) {
+		if ( $this->notNull ( $check ) )
+			return $add;
+		return '';
+	}
+
+	/**
+	 * Clean a string for characters that might confuse the parser.
+	 *
+	 * @param $value The string to be cleaned.
+	 * @return The cleaned string.
+	 */
+	private function clean ( $value ) {
+		return str_replace ( "'", '&#39;', $value );
 	}
 
 	/**
@@ -334,7 +641,10 @@ class Citation extends TemplateAdventureBasic {
 				break;
 			case 'includedworktitle':
 				$this->dWorkTitle['includedwork'] = $value;
-				break;			
+				break;
+			case 'periodical':
+				$this->dPeriodical['name'] = $value;
+				break;
 		}
 	}
 
