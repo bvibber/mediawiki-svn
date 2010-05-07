@@ -25,16 +25,25 @@ $j(document).ready( function() {
 			}
 		} );
 	// Toggle the selected menu's class and expand or collapse the menu
-	$j( '#panel > div.portal > h5' ).click( function() {
-		$j.cookie( 'vector-nav-' + $j(this).parent().attr( 'id' ), $j(this).parent().is( '.collapsed' ) );
-		$j(this)
-			.parent()
-			.toggleClass( 'expanded' )
-			.toggleClass( 'collapsed' )
-			.find( 'div.body' )
-			.slideToggle( 'fast' );
-		return false;
-	} );
+	$j( '#panel > div.portal > h5' )
+		// Make it keyboard accessible
+		.attr( 'tabindex', 1 )
+		// Make the space and enter keys act as a click
+		.keydown( function( event ) {
+			if ( event.which == 13 /* Enter */ || event.which == 32 /* Space */ ) {
+				$j(this).click();
+			}
+		} )
+		.click( function() {
+			$j.cookie( 'vector-nav-' + $j(this).parent().attr( 'id' ), $j(this).parent().is( '.collapsed' ) );
+			$j(this)
+				.parent()
+				.toggleClass( 'expanded' )
+				.toggleClass( 'collapsed' )
+				.find( 'div.body' )
+				.slideToggle( 'fast' );
+			return false;
+		} );
 } );
 $j(document).ready( function() {
 	// Check if CollapsibleTabs is enabled
