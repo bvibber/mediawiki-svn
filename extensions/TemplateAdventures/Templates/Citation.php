@@ -199,7 +199,7 @@ class Citation extends TemplateAdventureBasic {
 				if ( $writer[1][1] == null )
 					continue;
 				$tmp .= $writer[1][1];
-				if ( $editor[1][0] != null )
+				if ( $writer[1][0] != null )
 					$tmp .= $this->getSeparator( 'name' ) . $writer[1][0];
 			} else {
 				# maybe we shan't support no surname/given name structure
