@@ -32,7 +32,7 @@ class PrefSwitchHooks {
 			$query = array(	'from' => $title->getPrefixedDBKey(), 'fromquery' => wfArrayToCGI( $fromquery ) );
 		}
 		$state = SpecialPrefSwitch::userState( $wgUser );
-		// Inserts a link into personal tools
+		// Inserts a link into personal tools - Uses prefswitch-link-anon, prefswitch-link-on and prefswitch-link-off
 		$personal_urls = array_merge(
 			array(
 				"prefswitch-link-{$state}" => array(
