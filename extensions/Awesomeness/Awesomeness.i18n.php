@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Internationalization file for the Awesomeness extension.
  *
@@ -16,6 +15,6 @@ $messages = array();
  */
 $messages['en'] = array(
 	'awesomeness' => 'Awesomeness',
-	'awesomeness-desc' => 'Makes your wiki more awesome.',
+	'awesomeness-desc' => 'Makes your wiki more awesome',
 	'awesome' => 'Awesome'
 );
