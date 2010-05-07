@@ -61,7 +61,11 @@ class ApiQueryStories extends ApiQueryBase {
 			'story_modified'
 		) );
 		
-		$isReview = !is_null( $params['review'] ) && $wgUser->isAllowed( 'storyreview' );
+		$isReview = !is_null( $params['review'] );
+		
+		if ( $isReview && !$wgUser->isAllowed( 'storyreview' ) ) {
+			$this->dieUsageMsg( array( 'badaccess-groups' ) );
+		}
 		
 		if ( $isReview ) {
 			if ( !isset( $params['state'] ) ) {
@@ -193,6 +197,7 @@ class ApiQueryStories extends ApiQueryBase {
 	 */
 	public function getPossibleErrors() {
 		return array_merge( parent::getPossibleErrors(), array(
+			array( 'badaccess-groups' ),
 			array( 'missingparam', 'state' ),
 		) );
 	}	
