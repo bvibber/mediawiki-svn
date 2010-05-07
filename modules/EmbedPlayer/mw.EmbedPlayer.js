@@ -240,7 +240,7 @@ mw.setConfig( 'embedPlayerSourceAttributes', [
 	* Rewrites all tags via a given selector
 	* 
 	* @param [ Optional ] {Object} attributes The embedPlayer options for the given video interface.
-	* 	Attributes Object can inclue any key value pair that would otherwise be
+	* 	Attributes Object can inclued any key value pair that would otherwise be
 	*   an attribute in the html element. 
 	*	
 	*	also see: mw.getConfig( 'embedPlayerAttributes' )
@@ -282,7 +282,7 @@ mw.setConfig( 'embedPlayerSourceAttributes', [
 /**
 * EmbedPlayerManager
 *
-* Mannages calls to embed video interfaces  
+* Manages calls to embed video interfaces  
 */
 var EmbedPlayerManager = function( ) {
 	// Create a Player Manage
@@ -361,7 +361,9 @@ EmbedPlayerManager.prototype = {
 		// Load any skins we need then swap in the interface
 		mw.load( skinClassRequest, function() {				
 			// Set the wait for meta flag
-			var waitForMeta = _this.waitForMetaCheck( element );				
+			var waitForMeta = _this.waitForMetaCheck( element );
+						
+			// We should move all playlist handling to add-in 		
 			switch( element.tagName.toLowerCase() ) {
 				case 'playlist':
 					// Make sure we have the necessary playlist libs loaded:
@@ -2628,7 +2630,7 @@ mw.EmbedPlayer.prototype = {
 	*/
 	isPlaying : function() {
 		if ( this.thumbnail_disp ) {
-			// in stoped state
+			// in stopped state
 			return false;
 		} else if ( this.paused ) {
 			// paused state
