@@ -79,7 +79,7 @@ public class GlobalConceptStoreSchema extends WikiWordConceptStoreSchema {
 		originTable.addField( new DatabaseField(this, "lang_bit", "INT", null, true, null ) );
 		originTable.addKey( new DatabaseKey(this, KeyType.PRIMARY, "lang_concept", new String[] {"lang", "local_concept"}) );		
 		originTable.addKey( new DatabaseKey(this, KeyType.UNIQUE, "lang_name", new String[] {"lang", "local_concept_name"}) );		
-		originTable.addKey( new DatabaseKey(this, KeyType.UNIQUE, "lang_name", new String[] {"global_concept", "lang"}) );		
+		originTable.addKey( new DatabaseKey(this, KeyType.UNIQUE, "concept_lang", new String[] {"global_concept", "lang"}) );		
 		addTable(originTable);
 
 		/*
