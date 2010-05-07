@@ -400,6 +400,7 @@ class Citation extends TemplateAdventureBasic {
 	 *         well as its numeral found with it or false if not.
 	 */
 	protected function parseOptionName( $value ) {
+		global $wgContLang;
 
 		static $magicWords = null;
 		if ( $magicWords === null ) {
@@ -422,6 +423,8 @@ class Citation extends TemplateAdventureBasic {
 			$name = $value;
 			$num = null;
 		}
+
+		$name = $wgContLang->lc( $name );
 
 		if ( $name = $magicWords->matchStartToEnd( trim($name) ) ) {
 			return array(
