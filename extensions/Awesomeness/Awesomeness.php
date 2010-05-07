@@ -15,7 +15,7 @@
  * @defgroup Awesomeness Awesomeness
  */
 
-define( 'Awesomeness_VERSION', 'An awesome one' );
+define( 'Awesomeness_VERSION', 'of awesomeness' );
 
 $wgExtensionFunctions[] = 'efAwesomenessSetup';
 
@@ -33,7 +33,7 @@ function efAwesomenessSetup() {
 		'name' => wfMsg( 'awesomeness' ),
 		'version' => Awesomeness_VERSION,
 		'author' => array( '[http://www.mediawiki.org/wiki/User:Jeroen_De_Dauw Jeroen De Dauw]' ),
-		'url' => 'http://www.mediawiki.org/wiki/Extension:Maps',
+		'url' => 'http://www.mediawiki.org/wiki/Extension:Awesomeness',
 		'description' => wfMsg( 'awesomeness-desc' ),
 	);	
 }
