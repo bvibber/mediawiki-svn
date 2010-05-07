@@ -183,6 +183,7 @@ class Citation extends TemplateAdventureBasic {
 	 */
 	private function createWriterSection ( $writers, $links, $truncate ) {
 		$area = '';
+		$n = 1;
 		foreach ( $writers as $i => $writer ) {
 			if ( $i == 0 )
 				continue;
