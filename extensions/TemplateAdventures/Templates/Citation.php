@@ -92,36 +92,7 @@ class Citation extends TemplateAdventureBasic {
 		$this->mOutput = '';
 		# authors
 		if ( count( $this->dAuthors ) > 1 ) {
-			$authorArea = '';
-			$n = 1;
-			foreach ( $this->dAuthors as $i => $author ) {
-				if ( $i == 0 )
-					continue;
-				if ( $i > 1 && $this->dAuthorTruncate <= $i ) {
-					$authorArea .= wfMsg( "ta-etal" );
-					break;
-				}
-				if ( $n == count($this->dAuthors)-1 && $i != 1 )
-					$authorArea .= $this->getSeparator( 'ampersand' );
-				elseif ( $n > 1 )
-					$authorArea .= $this->getSeparator( 'author' );
-				$tmp = '';
-				if ( $author[0] ) {
-					if ( $author[1][1] == null )
-						continue;
-					$tmp .= $author[1][1];
-					if ( $author[1][0] != null )
-						$tmp .= $this->getSeparator( 'name' ) . $author[1][0];
-				} else {
-					# maybe we shan't support no surname/given name structure
-					# in the future, but we'll leave it like this for now.
-					$tmp .= $author[1][1];
-				}
-				if ( isset ( $this->dAuthorLinks[$i] ) )
-					$tmp = "[{$this->dAuthorLinks[$i]} $tmp]";
-				$authorArea .= $tmp;
-				$n++;
-			}
+			$authorArea = $this->createWriterSection ( $this->dAuthors, $this->dAuthorLinks, $this->dAuthorTruncate );
 			if ( $this->dCoAuthors != null )
 				$authorArea .= $this->getSeparator( 'author' ) . $this->dCoAuthors;
 			if ( $this->dDate != null ) {
@@ -130,37 +101,9 @@ class Citation extends TemplateAdventureBasic {
 					$authorArea .= wfMsg ( 'ta-citeauthoryearnote', $this->dYearNote );
 			}
 			$this->mOutput .= $authorArea;
+		# editors
 		} elseif ( count ( $this->dEditors ) > 1 ) {
-			$editorArea = '';
-			$n = 1;
-			foreach ( $this->dEditors as $i => $editor ) {
-				if ( $i == 0 )
-					continue;
-				if ( $i > 1 && $this->dEditorTruncate <= $i ) {
-					$editorArea .= wfMsg( "ta-etal" );
-					break;
-				}
-				if ( $n == count($this->dEditors)-1 && $i != 1 )
-					$editorArea .= $this->getSeparator( 'ampersand' );
-				elseif ( $n > 1 )
-					$editorArea .= $this->getSeparator( 'author' );
-				$tmp = '';
-				if ( $editor[0] ) {
-					if ( $editor[1][1] == null )
-						continue;
-					$tmp .= $editor[1][1];
-					if ( $editor[1][0] != null )
-						$tmp .= $this->getSeparator( 'name' ) . $editor[1][0];
-				} else {
-					# maybe we shan't support no surname/given name structure
-					# in the future, but we'll leave it like this for now.
-					$tmp .= $editor[1][1];
-				}
-				if ( isset ( $this->dEditorLinks[$i] ) )
-					$tmp = "[{$this->dEditorLinks[$i]} $tmp]";
-				$editorArea .= $tmp;
-				$n++;
-			}
+			$editorArea = $this->createWriterSection ( $this->dEditors, $this->dEditorLinks, $this->dEditorTruncate );
 			if ( count ( $this->dEditors ) > 2 )
 				$editorArea .= wfMsg ( 'ta-editorsplural' );
 			else
@@ -173,6 +116,114 @@ class Citation extends TemplateAdventureBasic {
 			}
 			$this->mOutput .= $editorArea;
 		}
+		# included work title
+		if ( $this->notNull( $this->dWorkTitle['includedwork'] ) && ( $this->notNull( $this->dPeriodical ) || $this->notNull( $this->dWorkTitle['transitalic'] ) || $this->notNull( $this->dWorkTitle['transtitle'] ) ) ) {
+			# I am no way certain this is a correct copy of the following logic:
+			# {{#if: {{{IncludedWorkTitle|}}}{{#if:{{{Periodical|}}}||{{#if:{{{TransItalic|}}}||{{{TransTitle|}}}}}}} | ... | ... }}
+			if ( $authorArea != '' || $editorArea != '' ) {
+				$this->mOutput .= $this->getSeparator( 'section' );
+			}
+			# let's get the url
+			if ( $this->dWorkLink['includedwork'] != null ) {
+				$url = $this->dWorkLink['includedwork'];
+			} else {
+				if ( $this->dWorkLink['url'] != null ) {
+					$url = $this->dWorkLink['url'];
+				} else {
+					# some explain to me what exactly the following is supposed to mean:
+					# <!-- Only link URL if to a free full text - as at PubMedCentral (PMC)-->
+					# |{{#ifexpr:{{#time: U}} > {{#time: U | {{{Embargo|2001-10-10}}} }}
+					if ( $this->dPubMed['pmc'] != null ) {
+						$url = wfMsg ( 'ta-pubmed-url', $this->dPubMed['pmc'] );
+					}
+				}
+			}
+			# and now the title
+			if ( $this->dPeriodical != null ) {
+				$tmp = str_replace( "'", '&#39;', $this->dWorkTitle['includedwork']);
+				$title = "''$tmp''";
+			} else {
+				$tmp = ( $this->dWorkTitle['includedwork'] != null
+					? $this->dWorkTitle['includedwork']
+					: '' );
+				if ( $this->dWorkTitle['transtitle'] ) {
+					if ( $tmp != '' )
+						$tmp .= ' ';
+					$tmp .= wfMsg( 'ta-transtitle-render', $this->dWorkTitle['transtitle'] );
+				}
+				$title = $tmp;
+			}
+			$this->mOutput .= $this->makeLink ( $url, $title );
+		}
+		# place, but only if different from publication place.
+		if ( $this->notNull( $this->dPlace ) 
+			&& $this->dPlace != $this->dPublication['place'] 
+			&& ( 
+				$this->notNull ( $authorArea ) 
+				|| $this->notNull ( $editorArea ) 
+				|| $this->notNull ( $this->dWorkTitle['includedwork'] ) 
+			) 
+		) {
+			$this->mOutput .= $this->getSeparator ( 'section' ) . ' ' . wfMsg ( 'ta-writtenat', $this->dPlace );
+		}
+		# editor of complication... eerrr...
+		# TODO: we'll do this later...
+
+		# periodicals
+		# TODO: I'll get on it!
+	}
+
+	/**
+	 * Create the section for authors, editors, etc. in a neat similar function.
+	 *
+	 * @param $writers Authors, editors, etc. array
+	 * @param $links Their links if any
+	 * @param $truncate When to truncate the amount of data.
+	 * @return The created area.
+	 */
+	private function createWriterSection ( $writers, $links, $truncate ) {
+		$area = '';
+		foreach ( $writers as $i => $writer ) {
+			if ( $i == 0 )
+				continue;
+			if ( $i > 1 && $truncate <= $i ) {
+				$area .= wfMsg( "ta-etal" );
+				break;
+			}
+			if ( $n == count($writers)-1 && $i != 1 )
+				$area .= $this->getSeparator( 'ampersand' );
+			elseif ( $n > 1 )
+				$area .= $this->getSeparator( 'author' );
+			$tmp = '';
+			if ( $writer[0] ) {
+				if ( $writer[1][1] == null )
+					continue;
+				$tmp .= $writer[1][1];
+				if ( $editor[1][0] != null )
+					$tmp .= $this->getSeparator( 'name' ) . $writer[1][0];
+			} else {
+				# maybe we shan't support no surname/given name structure
+				# in the future, but we'll leave it like this for now.
+				$tmp .= $writer[1][1];
+			}
+			if ( isset ( $links[$i] ) )
+				$tmp = "[{$links[$i]} $tmp]";
+			$area .= $tmp;
+			$n++;
+		}
+		return $area;
+	}
+
+	private function makeLink ( $url, $title ) {
+		if ( !$url )
+			return $title;
+		return "[$url $title]";
+	}
+
+	private function notNull ( $check ) {
+		if ( $check == null && $check == '' )
+			return false;
+		return true;
 	}
 
 	/**
@@ -272,6 +323,20 @@ class Citation extends TemplateAdventureBasic {
 		} # let's not permit them to add authors/editors/etc. without a number
 	}
 
+	private function addOtherStringValue ( $name, $value ) {
+		switch ( $name[0] ) {
+			case 'url':
+				$this->dWorkLink['url'] = $value;
+				break;
+			case 'title':
+				$this->dWorkTitle['title'] = $value;
+				break;
+			case 'includedworktitle':
+				$this->dWorkTitle['includedwork'] = $value;
+				break;			
+		}
+	}
+
 	/**
 	 * Checks whether the data provided is a known option.
 	 *
@@ -309,6 +374,15 @@ class Citation extends TemplateAdventureBasic {
 			case 'editorlink':
 				$this->addEditorLink( $name, $value );
 				break;
+			case 'url':
+			case 'title':
+			case 'pmc':
+			case 'includedworktitle':
+			case 'periodical':
+			case 'transitalic':
+			case 'transtitle':
+				$this->addOtherStringValue( $name, $value );
+				break;
 			default:
 				# Wasn't an option after all
 				return false;
@@ -334,6 +408,9 @@ class Citation extends TemplateAdventureBasic {
 				'ta_cc_coauthors',
 				'ta_cc_editor', 'ta_cc_editorgiven',
 				'ta_cc_editorsurname', 'ta_cc_editorlink',
+				'ta_cc_url', 'ta_cc_title', 'ta_cc_pmc',
+				'ta_cc_includedworktitle', 'ta_cc_periodical',
+				'ta_cc_transitalic', 'ta_cc_transtitle',
 			) );
 		}
 
