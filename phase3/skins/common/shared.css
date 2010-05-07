@@ -46,6 +46,10 @@ div#mw-js-message {
 /**
  * File histories
  */
+h2#filehistory {
+	clear: both;
+}
+
 table.filehistory th,
 table.filehistory td {
 	vertical-align:top;
@@ -104,6 +108,10 @@ td.mw-label { vertical-align: top; }
 td.mw-submit { white-space: nowrap; }
 
 table.mw-htmlform-nolabel td.mw-label { width: 0 !important; }
+
+input#wpSummary {
+	width: 80%;
+}
 
 /**
  * Image captions

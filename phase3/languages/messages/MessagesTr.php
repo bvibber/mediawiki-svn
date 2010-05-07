@@ -301,7 +301,6 @@ $messages = array(
 'tog-editsectiononrightclick' => 'Bölümleri bölüm başlığına sağ tıklayarak değiştirebilme olanağı ver (JavaScript)',
 'tog-showtoc'                 => 'İçindekiler tablosunu göster (3 taneden fazla başlığı olan sayfalar için)',
 'tog-rememberpassword'        => 'Parolayı hatırla',
-'tog-editwidth'               => 'Yazma alanını tüm ekranı dolduracak şekilde genişlet',
 'tog-watchcreations'          => 'Yaratmış olduğum sayfaları izleme listeme ekle',
 'tog-watchdefault'            => 'Değişiklik yapılan sayfayı izleme listesine ekle',
 'tog-watchmoves'              => 'Taşıdığım sayfaları izleme listeme ekle',
@@ -415,7 +414,7 @@ $messages = array(
 'index-category'                 => 'Endeksli sayfalar',
 'noindex-category'               => 'Endeksli olmayan sayfalar',
 
-'mainpagetext'      => "<big>'''MediaWiki başarı ile kuruldu.'''</big>",
+'mainpagetext'      => "'''MediaWiki başarı ile kuruldu.'''",
 'mainpagedocfooter' => 'Viki yazılımının kullanımı hakkında bilgi almak için [http://meta.wikimedia.org/wiki/Help:Contents kullanıcı rehberine] bakınız.
 
 == Yeni Başlayanlar ==
@@ -636,6 +635,7 @@ Lütfen bunu bir [[Special:ListUsers/sysop|hizmetliye]], URL\'yi not ederek ilet
 'readonly_lag'         => 'Yedek sunucular ana sunucu ile güncellemeye çalışırken veritabanı otomatik olarak kilitlendi.',
 'internalerror'        => 'Yazılım hatası',
 'internalerror_info'   => 'İç hata: $1',
+'fileappenderrorread'  => 'Ekleme yapılırken "$1" okunamadı.',
 'fileappenderror'      => '"$1" dosyası "$2" dosyasına eklenemiyor.',
 'filecopyerror'        => '"$1"  "$2" dosyasına kopyalanamıyor.',
 'filerenameerror'      => '"$1" dosyasının ismi "$2" olarak değiştirilemedi.',
@@ -765,6 +765,7 @@ Eğer kullanıcı hesabını yanlışlıkla oluşturmuş iseniz, bu mesajı yoks
 'login-throttled'            => 'Yakın zamanda çok fazla oturum açma denemesinde bulundunuz.
 Lütfen tekrar denemeden önce bekleyin.',
 'loginlanguagelabel'         => 'Dil: $1',
+'suspicious-userlogout'      => 'Çıkış isteğiniz reddedildi çünkü bozuk bir tarayıcı ya da önbellekli vekil tarafından gönerilmiş gibi görünüyor.',
 
 # Password reset dialog
 'resetpass'                 => 'Parolayı değiştir',
@@ -818,6 +819,7 @@ Girişi bitirmek için, burada yeni bir parola yazın:',
 'showlivepreview'                  => 'Canlı ön izleme',
 'showdiff'                         => 'Değişiklikleri göster',
 'anoneditwarning'                  => 'Oturum açmadığınızdan maddenin değişiklik kayıtlarına rumuzunuz yerine IP adresiniz kaydedilecektir.',
+'anonpreviewwarning'               => "''Giriş yapmadınız. Kaydederseniz, sayfanın değişiklik geçmişine IP adresiniz yazılır.''",
 'missingsummary'                   => "'''Uyarı:''' Herhangi bir özet yazmadın. 
 Kaydet tuşuna tekrar basarsan sayfa özetsiz kaydedilecek.",
 'missingcommenttext'               => 'Lütfen aşağıda bir açıklama yazınız.',
@@ -825,7 +827,7 @@ Kaydet tuşuna tekrar basarsan sayfa özetsiz kaydedilecek.",
 'summary-preview'                  => 'Ön izleme özeti:',
 'subject-preview'                  => 'Konu/Başlık ön izlemesi:',
 'blockedtitle'                     => 'Kullanıcı erişimi engellendi.',
-'blockedtext'                      => '<big>\'\'\'Kullanıcı adı veya IP adresiniz engellenmiştir.\'\'\'</big>
+'blockedtext'                      => '\'\'\'Kullanıcı adı veya IP adresiniz engellenmiştir.\'\'\'
 
 Sizi engelleyen hizmetli: $1.<br />
 Engelleme sebebi: \'\'$2\'\'.
@@ -1207,6 +1209,7 @@ Gezinti bağlantılarının bu sütunu sıfırlayacağını unutmayın.',
 'searchprofile-everything-tooltip' => 'Tüm içeriği ara (tartışma sayfaları dahil)',
 'searchprofile-advanced-tooltip'   => 'Özel ad alanlarında ara',
 'search-result-size'               => '$1 ({{PLURAL:$2|1 kelime|$2 kelime}})',
+'search-result-category-size'      => '{{PLURAL:$1|1 üye|$1 üye}} ({{PLURAL:$2|1 altkategori|$2 altkategori}}, {{PLURAL:$3|1 dosya|$3 dosya}})',
 'search-result-score'              => 'Uygunluk: $1%',
 'search-redirect'                  => '(yönlendirme $1)',
 'search-section'                   => '(bölüm $1)',
@@ -1315,6 +1318,7 @@ Kullanabileceğiniz rasgele-üretilmiş bir değer: $1',
 'prefs-files'                   => 'Dosyalar',
 'prefs-custom-css'              => 'Özel CSS',
 'prefs-custom-js'               => 'Özel JS',
+'prefs-common-css-js'           => 'Tüm kaplamalar için paylaşılan CSS/JS:',
 'prefs-reset-intro'             => 'Bu sayfayı tercihlerinizi site varsayılanına döndürmek için kullanabilirsiniz. Bu geri alınamaz.',
 'prefs-emailconfirm-label'      => 'E-posta doğrulaması:',
 'prefs-textboxsize'             => 'Değiştirme penceresinin boyutu',
@@ -1355,25 +1359,26 @@ Aynı zamanda diğer kullanıcıların kullanıcı ve kullanıcı mesaj sayfalar
 'prefs-diffs'                   => 'Farklar',
 
 # User rights
-'userrights'                  => 'Kullanıcı hakları yönetimi',
-'userrights-lookup-user'      => 'Kullanıcı gruplarını düzenle',
-'userrights-user-editname'    => 'Kullanıcı adı giriniz:',
-'editusergroup'               => 'Kullanıcı grupları düzenle',
-'editinguser'                 => "'''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]]{{int:pipe-separator}}[[Special:Contributions/$1|{{int:contribslink}}]]) kullanıcısının yetkilerini değiştirmektesiniz",
-'userrights-editusergroup'    => 'Kullanıcı grupları düzenle',
-'saveusergroups'              => 'Kullanıcı grupları kaydet',
-'userrights-groupsmember'     => 'İçinde olduğu gruplar:',
-'userrights-groups-help'      => 'Bu kullanıcının içinde olduğu grupları değiştirebilirsiniz:
+'userrights'                   => 'Kullanıcı hakları yönetimi',
+'userrights-lookup-user'       => 'Kullanıcı gruplarını düzenle',
+'userrights-user-editname'     => 'Kullanıcı adı giriniz:',
+'editusergroup'                => 'Kullanıcı grupları düzenle',
+'editinguser'                  => "'''[[User:$1|$1]]''' ([[User talk:$1|{{int:talkpagelinktext}}]]{{int:pipe-separator}}[[Special:Contributions/$1|{{int:contribslink}}]]) kullanıcısının yetkilerini değiştirmektesiniz",
+'userrights-editusergroup'     => 'Kullanıcı grupları düzenle',
+'saveusergroups'               => 'Kullanıcı grupları kaydet',
+'userrights-groupsmember'      => 'İçinde olduğu gruplar:',
+'userrights-groupsmember-auto' => 'Saklı olarak içinde olduğu gruplar:',
+'userrights-groups-help'       => 'Bu kullanıcının içinde olduğu grupları değiştirebilirsiniz:
 * Seçili bir kutu, kullanıcının o gruba dahil olduğu anlamına gelir
 * Seçilmemiş bir kutu, kullanıcının o grupta olmadığı anlamına gelir.
 * *, grubu bir kez oluşturduktan sonra silemeceğinizi belirtir, ya da karşılıklı olarak.',
-'userrights-reason'           => 'Sebep:',
-'userrights-no-interwiki'     => 'Diğer vikilerdeki kullanıcıların izinlerini değiştirmeye yetkiniz yok.',
-'userrights-nodatabase'       => '$1 veritabanı mevcut veya bölgesel değil',
-'userrights-nologin'          => 'Kullanıcı haklarını atamak için hizmetli hesabı ile [[Special:UserLogin|giriş yapmanız gerekir]].',
-'userrights-notallowed'       => 'Kullanıcı hesabınızın kullanıcı haklarını atamak için izni yok.',
-'userrights-changeable-col'   => 'Değiştirebildiğiniz gruplar',
-'userrights-unchangeable-col' => 'Değiştirebilmediğiniz gruplar',
+'userrights-reason'            => 'Sebep:',
+'userrights-no-interwiki'      => 'Diğer vikilerdeki kullanıcıların izinlerini değiştirmeye yetkiniz yok.',
+'userrights-nodatabase'        => '$1 veritabanı mevcut veya bölgesel değil',
+'userrights-nologin'           => 'Kullanıcı haklarını atamak için hizmetli hesabı ile [[Special:UserLogin|giriş yapmanız gerekir]].',
+'userrights-notallowed'        => 'Kullanıcı hesabınızın kullanıcı haklarını atamak için izni yok.',
+'userrights-changeable-col'    => 'Değiştirebildiğiniz gruplar',
+'userrights-unchangeable-col'  => 'Değiştirebilmediğiniz gruplar',
 
 # Groups
 'group'               => 'Grup:',
@@ -1436,6 +1441,7 @@ Aynı zamanda diğer kullanıcıların kullanıcı ve kullanıcı mesaj sayfalar
 'right-hideuser'              => 'Bir kullanıcı adını engelle, genelden gizleyerek',
 'right-ipblock-exempt'        => 'IP engellemelerini atla, otomatik engelle ve aralık engellemeleri',
 'right-proxyunbannable'       => 'Proxylerin otomatik engellemelerini atla',
+'right-unblockself'           => 'Kendi engellemesini kaldır',
 'right-protect'               => 'Koruma seviyelerini değiştir ve korumalı sayfalarda değişiklik yap',
 'right-editprotected'         => 'Korumalı sayfalarda değişiklik yap (korumayı basamaklamadan)',
 'right-editinterface'         => 'Kullanıcı arayüzünü değiştirmek',
@@ -1563,6 +1569,9 @@ Aynı zamanda diğer kullanıcıların kullanıcı ve kullanıcı mesaj sayfalar
 'upload_directory_missing'    => 'Yükleme dizini ($1) kayıp ve websunucusu tarafından oluşturulamıyor.',
 'upload_directory_read_only'  => 'Dosya yükleme dizinine ($1) web sunucusunun yazma izni yok.',
 'uploaderror'                 => 'Yükleme hatası',
+'upload-recreate-warning'     => "'''Uyarı: Bu adı taşıyan bir dosya silindi veya taşındı.'''
+
+Bu sayfanın silme ve taşıma günlüğü kolaylık için burada sağlanmıştır:",
 'uploadtext'                  => "Dosya yüklemek için aşağıdaki formu kullanın.
 Önceden yüklenmiş dosyaları görmek ya da aramak için [[Special:FileList|yüklenmiş dosyalar listesine]] bakın, (tekrar) yüklenenler [[Special:Log/upload|yükleme günlüğü]]nde, silinenler [[Special:Log/delete|silinme günlüğü]]nde tutulumaktadır.
 
@@ -1588,11 +1597,23 @@ Bir sayfaya dosya koymak için bağlantınızda aşağıdaki formlardan birini k
 'minlength1'                  => 'Dosya adı en az bir harften oluşmalıdır.',
 'illegalfilename'             => '"$1" dosya adı bazı kullanılmayan karekterler içermektedir. Lütfen, yeni bir dosya adıyla tekrar deneyin.',
 'badfilename'                 => 'Görüntü dosyasının ismi "$1" olarak değiştirildi.',
+'filetype-mime-mismatch'      => 'Dosya uzantısı MIME türü ile eşleşmiyor.',
 'filetype-badmime'            => '"$1" MIME tipindeki dosyaların yüklenmesine izin verilmez.',
 'filetype-bad-ie-mime'        => 'Bu dosya yüklenemez; çünkü Internet Explorer bunu, izin verilmeyen ve potansiyel zararlı dosya türü olan "$1" olarak tespit etmektedir.',
 'filetype-unwanted-type'      => "'''\".\$1\"''' istenmeyen bir dosya türüdür.  Önerilen {{PLURAL:\$3|dosya türü|dosya türleri}} \$2.",
 'filetype-banned-type'        => "'''\".\$1\"''' izin verilen bir dosya türü değil. İzin verilen {{PLURAL:\$3|dosya türü|dosya türleri}} \$2.",
 'filetype-missing'            => 'Dosyanın hiçbir uzantısı yok (".jpg" gibi).',
+'empty-file'                  => 'Gönderdiğiniz dosya boştu.',
+'file-too-large'              => 'Gönderdiğiniz dosya çok büyük.',
+'filename-tooshort'           => 'Dosya adı çok kısa.',
+'filetype-banned'             => 'Bu tür dosyalar yasaklanmıştır.',
+'verification-error'          => 'Bu dosya, dosya doğrulamasını geçemedi.',
+'hookaborted'                 => 'Yapmaya çalıştığınız değişiklik bir uzantı çengeliyle iptal edildi.',
+'illegal-filename'            => 'Dosya adına izin verilmiyor.',
+'overwrite'                   => 'Varolan dosyanın üzerine yazmaya izin verilmiyor.',
+'unknown-error'               => 'Bilinmeyen bir hata oluştu.',
+'tmp-create-error'            => 'Geçici dosya oluşturulamadı.',
+'tmp-write-error'             => 'Geçici dosya yazılırken hata.',
 'large-file'                  => 'Dosyaların $1 boyutundan daha büyük olmaması önerilmektedir;
 bu dosyanın boyutu $2.',
 'largefileserver'             => 'Bu dosyanın uzunluğu sunucuda izin verilenden daha büyüktür.',
@@ -1627,6 +1648,8 @@ Dosyanızı yinede yüklemek istiyorsanız, lütfen geri gidip yeni bir isim kul
 'uploadedimage'               => 'Yüklenen: "[[$1]]"',
 'overwroteimage'              => '"[[$1]]" resminin yeni versiyonu yüklenmiştir',
 'uploaddisabled'              => 'Geçici olarak şu anda herhangi bir dosya yüklenmez. Biraz sonra bir daha deneyiniz.',
+'copyuploaddisabled'          => 'URL ile yükleme devre dışı.',
+'uploadfromurl-queued'        => 'Yüklemeniz sıraya alınmıştır.',
 'uploaddisabledtext'          => 'Dosya yüklemeleri devredışı bırakılmıştır.',
 'php-uploaddisabledtext'      => 'PHP dosyası yüklemeleri devre dışıdır. Lütfen file_uploads ayarını kontrol edin.',
 'uploadscripted'              => 'Bu dosya bir internet tarayıcısı tarafından hatalı çevrilebilecek bir HTML veya script kodu içermektedir.',
@@ -1836,7 +1859,6 @@ Sıradaki liste sadece bu dosyaya bağlantı veren {{PLURAL:$1|ilk dosyayı|ilk 
 'statistics-edits-average'     => 'Her sayfadaki ortalama değişiklik',
 'statistics-views-total'       => 'Toplam görüntüleme',
 'statistics-views-peredit'     => 'Değişiklik başına görüntüleme',
-'statistics-jobqueue'          => '[http://www.mediawiki.org/wiki/Manual:Job_queue İş sırası] uzunluğu',
 'statistics-users'             => 'Kayıtlı [[Special:ListUsers|kullanıcılar]]',
 'statistics-users-active'      => 'Aktif kullanıcılar',
 'statistics-users-active-desc' => 'Son {{PLURAL:$1|1 günde|$1 günde}} çalışma yapan kullanıcılar',
@@ -2028,29 +2050,31 @@ Bireysel haklarla ilgili [[{{MediaWiki:Listgrouprights-helppage}}|daha fazla bil
 'listgrouprights-removegroup-self-all' => 'Kendi hesabından tüm grupları çıkarabilir',
 
 # E-mail user
-'mailnologin'      => 'Gönderi adresi yok.',
-'mailnologintext'  => 'Diğer kullanıcılara e-posta gönderebilmeniz için [[Special:UserLogin|oturum aç]]malısınız ve [[Special:Preferences|tercihler]] sayfasında geçerli bir e-posta adresiniz olmalı.',
-'emailuser'        => 'Kullanıcıya e-posta gönder',
-'emailpage'        => 'Kullanıcıya e-posta gönder',
-'emailpagetext'    => 'Bu kullanıcıya e-posta mesajı göndermek için aşağıdaki formu kullanabilirsiniz.
+'mailnologin'          => 'Gönderi adresi yok.',
+'mailnologintext'      => 'Diğer kullanıcılara e-posta gönderebilmeniz için [[Special:UserLogin|oturum aç]]malısınız ve [[Special:Preferences|tercihler]] sayfasında geçerli bir e-posta adresiniz olmalı.',
+'emailuser'            => 'Kullanıcıya e-posta gönder',
+'emailpage'            => 'Kullanıcıya e-posta gönder',
+'emailpagetext'        => 'Bu kullanıcıya e-posta mesajı göndermek için aşağıdaki formu kullanabilirsiniz.
 [[Special:Preferences|Kullanıcı tercihlerinizde]] girdiğiniz e-posta adresiniz, e-postanın "From (Kimden)" adresinde görünecektir, bu yüzden alıcı size direk cevap verebilecektir.',
-'usermailererror'  => 'Eposta hizmeti hata verdi:',
-'defemailsubject'  => '{{SITENAME}} e-posta',
-'noemailtitle'     => 'e-posta adresi yok',
-'noemailtext'      => 'Bu kullanıcı geçerli bir e-posta adresi belirtmemiş.',
-'nowikiemailtitle' => 'E-postalara izin verilmiyor',
-'nowikiemailtext'  => 'Bu kullanıcı, diğer kullanıcılardan e-posta almamayı tercih etti.',
-'email-legend'     => 'Diğer {{SITENAME}} kullanıcısına e-posta gönder',
-'emailfrom'        => 'Kimden:',
-'emailto'          => 'Kime:',
-'emailsubject'     => 'Konu:',
-'emailmessage'     => 'E-posta:',
-'emailsend'        => 'Gönder',
-'emailccme'        => 'Mesajın bir kopyasını da bana gönder.',
-'emailccsubject'   => "$1'e gönderdiğiniz mesajın kopyası: $2",
-'emailsent'        => 'E-posta gönderildi',
-'emailsenttext'    => 'E-postanız gönderildi.',
-'emailuserfooter'  => 'Bu e-posta $1 tarafından $2 kullanıcısına, {{SITENAME}} sitesindeki "Kullanıcıya e-posta gönder" fonksiyonu ile gönderilmiştir.',
+'usermailererror'      => 'Eposta hizmeti hata verdi:',
+'defemailsubject'      => '{{SITENAME}} e-posta',
+'usermaildisabled'     => 'Kullanıcı e-postası devre dışı',
+'usermaildisabledtext' => 'Bu vikide diğer kullanıcılara e-posta gönderemezsiniz',
+'noemailtitle'         => 'e-posta adresi yok',
+'noemailtext'          => 'Bu kullanıcı geçerli bir e-posta adresi belirtmemiş.',
+'nowikiemailtitle'     => 'E-postalara izin verilmiyor',
+'nowikiemailtext'      => 'Bu kullanıcı, diğer kullanıcılardan e-posta almamayı tercih etti.',
+'email-legend'         => 'Diğer {{SITENAME}} kullanıcısına e-posta gönder',
+'emailfrom'            => 'Kimden:',
+'emailto'              => 'Kime:',
+'emailsubject'         => 'Konu:',
+'emailmessage'         => 'E-posta:',
+'emailsend'            => 'Gönder',
+'emailccme'            => 'Mesajın bir kopyasını da bana gönder.',
+'emailccsubject'       => "$1'e gönderdiğiniz mesajın kopyası: $2",
+'emailsent'            => 'E-posta gönderildi',
+'emailsenttext'        => 'E-postanız gönderildi.',
+'emailuserfooter'      => 'Bu e-posta $1 tarafından $2 kullanıcısına, {{SITENAME}} sitesindeki "Kullanıcıya e-posta gönder" fonksiyonu ile gönderilmiştir.',
 
 # Watchlist
 'watchlist'            => 'izleme listem',
@@ -2123,7 +2147,7 @@ Bahsi geçen sayfayı ziyaret edinceye kadar sayfayla ilgili başka değişiklik
 {{fullurl:{{#special:Watchlist}}/edit}}
 
 Sayfayı izleme listenizden silmek için:
-{{fullurl:{{FULLPAGENAMEE}}|action=unwatch}}
+$UNWATCHURL
 
 Geridönüt ve daha fazla yardım için:
 {{fullurl:{{MediaWiki:Helppage}}}}',
@@ -2221,7 +2245,7 @@ Bu sayfanın koruma seviyesini değiştirebilirsiniz; ancak bu kademeli korumaya
 'protect-othertime-op'        => 'farklı zaman',
 'protect-existing-expiry'     => 'Mevcut bitiş zamanı: $3, $2',
 'protect-otherreason'         => 'Diğer/ilave gerekçe:',
-'protect-otherreason-op'      => 'diğer/ilave gerekçe',
+'protect-otherreason-op'      => 'Diğer gerekçe',
 'protect-dropdown'            => '*Genel koruma gerekçeleri
 ** Aşırı vandalizm
 ** Aşırı spam
@@ -2276,7 +2300,7 @@ Revizyon onarılmış veya arşivden silinmiş olabilir ya da sahip olduğunuz b
 'undeletedrevisions-files'     => '{{PLURAL:$1|1 revizyon|$1 revizyon}} ve {{PLURAL:$2|1 dosya|$2 dosya}} eski konumuna getirildi',
 'undeletedfiles'               => '{{PLURAL:$1|1 dosya|$1 dosya}} geri getirildi.',
 'cannotundelete'               => 'Sayfayı ya da medyayı sizden önce bir başka kullanıcı geri getirdiğinden dolayı sizin geri getirme işleminiz geçersiz.',
-'undeletedpage'                => "<big>'''$1 sayfası geri getirildi'''</big>
+'undeletedpage'                => "'''$1 sayfası geri getirildi'''
 
 Önceki silme ve geri getirme işlemleri için [[Special:Log/delete|silme kayıtları]]na bakınız.",
 'undelete-header'              => 'Daha önce silinmiş sayfaları görmek için bakınız: [[Special:Log/delete|silme kayıtları]].',
@@ -2311,18 +2335,20 @@ $1',
 'month'               => 'Ay:',
 'year'                => 'Yıl:',
 
-'sp-contributions-newbies'        => 'Sadece yeni hesap açan kullanıcıların katkılarını göster',
-'sp-contributions-newbies-sub'    => 'Yeni kullanıcılar için',
-'sp-contributions-newbies-title'  => 'Yeni hesaplar için kullanıcı katkıları',
-'sp-contributions-blocklog'       => 'Engel kaydı',
-'sp-contributions-deleted'        => 'silinen kullanıcı katkıları',
-'sp-contributions-logs'           => 'günlükler',
-'sp-contributions-talk'           => 'tartışma',
-'sp-contributions-userrights'     => 'kullanıcı hakları yönetimi',
-'sp-contributions-blocked-notice' => 'Bu kullanıcı engellenmiştir. Referans için en son engellenme kaydı aşağıda belirtilmiştir:',
-'sp-contributions-search'         => 'Katkıları ara',
-'sp-contributions-username'       => 'IP veya kullanıcı:',
-'sp-contributions-submit'         => 'Ara',
+'sp-contributions-newbies'             => 'Sadece yeni hesap açan kullanıcıların katkılarını göster',
+'sp-contributions-newbies-sub'         => 'Yeni kullanıcılar için',
+'sp-contributions-newbies-title'       => 'Yeni hesaplar için kullanıcı katkıları',
+'sp-contributions-blocklog'            => 'Engel kaydı',
+'sp-contributions-deleted'             => 'silinen kullanıcı katkıları',
+'sp-contributions-logs'                => 'günlükler',
+'sp-contributions-talk'                => 'tartışma',
+'sp-contributions-userrights'          => 'kullanıcı hakları yönetimi',
+'sp-contributions-blocked-notice'      => 'Bu kullanıcı engellenmiştir. Referans için en son engellenme kaydı aşağıda belirtilmiştir:',
+'sp-contributions-blocked-notice-anon' => 'Bu IP adresi şuanda engellenmiş.
+Son engelleme günlüğü girdisi referans amacıyla aşağıda verilmiştir:',
+'sp-contributions-search'              => 'Katkıları ara',
+'sp-contributions-username'            => 'IP veya kullanıcı:',
+'sp-contributions-submit'              => 'Ara',
 
 # What links here
 'whatlinkshere'            => 'Sayfaya bağlantılar',
@@ -2454,6 +2480,8 @@ Lütfen İnternet sevis sağlayınız ile ya da teknik destek ile irtibat kurun 
 Hesap oluşturamazsınız",
 'cant-block-while-blocked'        => 'Siz engelliyken başka kullanıcıları engelleyemezsiniz.',
 'cant-see-hidden-user'            => 'Engellemek istediğiniz kullanıcı zaten engellenmiş ve gizlenmiş. Kullanıcıgizle yetkiniz olmadığı için, kullanıcının engellenmesini göremez ya da değiştiremezsiniz.',
+'ipbblocked'                      => 'Diğer kullanıcıları engelleyemez ya da engellemesini kaldıramazsınız, çünkü kendiniz engellenmişsiz',
+'ipbnounblockself'                => 'Kendi engellemenizi kaldırmanıza izniniz yok',
 
 # Developer tools
 'lockdb'              => 'Veritabanı kilitli',
@@ -2504,7 +2532,7 @@ Bu durumlarda sayfayı kendiniz aktarmalısınız.",
 'move-watch'                   => 'Bu sayfayı izle',
 'movepagebtn'                  => 'İsmi değiştir',
 'pagemovedsub'                 => 'İsim değişikliği tamamlandı.',
-'movepage-moved'               => '<big>\'\'\'"$1",  "$2" sayfasına taşındı\'\'\'</big>',
+'movepage-moved'               => '\'\'\'"$1",  "$2" sayfasına taşındı\'\'\'',
 'movepage-moved-redirect'      => 'Bir yönlendirme oluşturuldu.',
 'movepage-moved-noredirect'    => 'Bir yönlendirme oluşturulması bastırıldı.',
 'articleexists'                => 'Bu isimde bir sayfa bulunmakta veya seçmiş olduğunuz isim geçersizdir.
@@ -3178,28 +3206,28 @@ Ondan sonraki bağlantılar istisna olarak kabul edilmektedir. Örneğin: dosya,
 'limitall'         => 'tümü',
 
 # E-mail address confirmation
-'confirmemail'             => 'E-posta adresini onayla',
-'confirmemail_noemail'     => '[[Special:Preferences|Kullanıcı tercihlerinizde]] tanımlanmış uygun bir e-posta adresiniz yok.',
-'confirmemail_text'        => "Viki'nin e-posta işlevlerini kullanmabilmek için, önce e-posta adresinizin doğrulanması gerekiyor.
+'confirmemail'              => 'E-posta adresini onayla',
+'confirmemail_noemail'      => '[[Special:Preferences|Kullanıcı tercihlerinizde]] tanımlanmış uygun bir e-posta adresiniz yok.',
+'confirmemail_text'         => "Viki'nin e-posta işlevlerini kullanmabilmek için, önce e-posta adresinizin doğrulanması gerekiyor.
 Adresinize onay e-postası göndermek için aşağıdaki butonu tıklayın.
 Gönderilecek iletide adresinizi onaylamak için tarayıcınızla erişebileceğiniz, onay kodu içeren bir bağlantı olacak;
 linki tarayıcınıda açın ve e-posta adresinizin geçerliliğini doğrulayın.",
-'confirmemail_pending'     => 'Bir doğrulama kodu size zaten e-postalandı;
+'confirmemail_pending'      => 'Bir doğrulama kodu size zaten e-postalandı;
 Eğer hesabınızı yeni oluşturduysanız, yeni bir kod istemeye çalışmadan önce gelmesini biraz beklemeyi isteyebilirsiniz.',
-'confirmemail_send'        => 'Onay kodu gönder',
-'confirmemail_sent'        => 'Onay e-postası gönderildi.',
-'confirmemail_oncreate'    => 'Bir doğrulama kodu e-posta adresinize gönderildi.
+'confirmemail_send'         => 'Onay kodu gönder',
+'confirmemail_sent'         => 'Onay e-postası gönderildi.',
+'confirmemail_oncreate'     => 'Bir doğrulama kodu e-posta adresinize gönderildi.
 Giriş yapmak için bu kod gerekli değildir, ancak bu vikideki herhangi bir e-posta tabanlı özelliği devreye sokmak için bunu sağlamak zorundasınız.',
-'confirmemail_sendfailed'  => '{{SITENAME}} Onay maili gönderemedi. Geçersiz karakterler olabilir adresi kontrol edin
+'confirmemail_sendfailed'   => '{{SITENAME}} Onay maili gönderemedi. Geçersiz karakterler olabilir adresi kontrol edin
 
 Mail yazılımı iade etti:$1',
-'confirmemail_invalid'     => 'Geçersiz onay kodu. Onay kodunun son kullanma tarihi geçmiş olabilir.',
-'confirmemail_needlogin'   => 'E-posta adresinizi onaylamak için önce $1 yapmalısınız.',
-'confirmemail_success'     => "E-posta adresiniz onaylandı. Oturum açıp Viki'nin tadını çıkarabilirsiniz.",
-'confirmemail_loggedin'    => 'E-posta adresiniz onaylandı.',
-'confirmemail_error'       => 'Onayınız bilinmeyen bir hata nedeniyle kaydedilemedi.',
-'confirmemail_subject'     => '{{SITENAME}} e-posta adres onayı.',
-'confirmemail_body'        => 'Birisi, muhtemelen siz, $1 IP adresinden,
+'confirmemail_invalid'      => 'Geçersiz onay kodu. Onay kodunun son kullanma tarihi geçmiş olabilir.',
+'confirmemail_needlogin'    => 'E-posta adresinizi onaylamak için önce $1 yapmalısınız.',
+'confirmemail_success'      => "E-posta adresiniz onaylandı. Oturum açıp Viki'nin tadını çıkarabilirsiniz.",
+'confirmemail_loggedin'     => 'E-posta adresiniz onaylandı.',
+'confirmemail_error'        => 'Onayınız bilinmeyen bir hata nedeniyle kaydedilemedi.',
+'confirmemail_subject'      => '{{SITENAME}} e-posta adres onayı.',
+'confirmemail_body'         => 'Birisi, muhtemelen siz, $1 IP adresinden,
 {{SITENAME}} sitesinde bu e-posta adresi ile $2 hesabını açtı.  
 
 Bu hesabın gerçekten size ait olduğunu onaylamak ve {{SITENAME}} sitesindeki
@@ -3213,8 +3241,22 @@ iptal etmek için aşağıdaki bağlantıyı takip edin:
 $5
 
 Bu onay kodu $4 tarihine kadar geçerli olacak.',
-'confirmemail_invalidated' => 'E-posta adresi doğrulaması iptal edildi',
-'invalidateemail'          => 'E-posta doğrulamasını iptal et',
+'confirmemail_body_changed' => 'Birisi, muhtemelen siz, $1 IP adresinden,
+{{SITENAME}} sitesinde "$2" hesabı için e-posta adresini değiştirdi.
+
+Bu hesabın gerçekten size ait olduğunu onaylamak ve {{SITENAME}} sitesindeki
+e-posta işlevlerini tekrar aktif hale getirmek için aşağıdakı bağlantıyı tarayıcınızda açın.:
+
+$3
+
+Eğer hesap size ait *değilse*, e-posta adresi doğrulamasını
+iptal etmek için aşağıdaki bağlantıyı takip edin:
+
+$5
+
+Bu onay kodu $4 tarihine kadar geçerli olacak.',
+'confirmemail_invalidated'  => 'E-posta adresi doğrulaması iptal edildi',
+'invalidateemail'           => 'E-posta doğrulamasını iptal et',
 
 # Scary transclusion
 'scarytranscludedisabled' => '[Vikilerarası çapraz ekleme devre dışı]',
@@ -3331,7 +3373,7 @@ Bir başlığı çıkarmak için, yanındaki kutucuğu işaretleyin, ve Başlık
 # Special:FilePath
 'filepath'         => 'Dosyanın konumu',
 'filepath-page'    => 'Dosya adı:',
-'filepath-submit'  => 'Konum',
+'filepath-submit'  => 'Git',
 'filepath-summary' => 'Bu özel sayfa bir dosya için tam yolu getirir.
 Resimler tam çözünürlükte görüntülenir, diğer dosya tipleri ilgili programlarıyla doğrudan başlatılır.
 
@@ -3410,6 +3452,7 @@ Dosya adını "{{ns:file}}:" öneki olmadan gir.',
 'htmlform-float-invalid'       => 'Belirttiğiniz değer bir sayı değil.',
 'htmlform-int-toolow'          => "Belirttiğiniz değer asgari $1'in altında",
 'htmlform-int-toohigh'         => "Belirttiğiniz değer azami $1'in üstünde",
+'htmlform-required'            => 'Bu değer gereklidir',
 'htmlform-submit'              => 'Gönder',
 'htmlform-reset'               => 'Değişiklikleri geri al',
 'htmlform-selectorother-other' => 'Diğer',

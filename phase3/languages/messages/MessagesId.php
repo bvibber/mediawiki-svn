@@ -13,6 +13,7 @@
  * @author Farras
  * @author Irwangatot
  * @author IvanLanin
+ * @author Iwan Novirion
  * @author Kenrick95
  * @author McDutchie
  * @author Meursault2004
@@ -312,7 +313,6 @@ $messages = array(
 'tog-editsectiononrightclick' => 'Fungsikan penyuntingan subbagian dengan mengeklik kanan pada judul bagian (JavaScript)',
 'tog-showtoc'                 => 'Perlihatkan daftar isi (untuk halaman yang mempunyai lebih dari 3 subbagian)',
 'tog-rememberpassword'        => 'Ingat kata sandi saya di komputer ini',
-'tog-editwidth'               => 'Perlebar kotak suntingan hingga seluruh layar',
 'tog-watchcreations'          => 'Tambahkan halaman yang saya buat ke daftar pantauan',
 'tog-watchdefault'            => 'Tambahkan halaman yang saya sunting ke daftar pantauan',
 'tog-watchmoves'              => 'Tambahkan halaman yang saya pindahkan ke daftar pantauan',
@@ -426,7 +426,7 @@ $messages = array(
 'index-category'                 => 'Halaman yang diindeks',
 'noindex-category'               => 'Halaman yang tidak diindeks',
 
-'mainpagetext'      => "<big>'''MediaWiki telah terpasang dengan sukses'''</big>.",
+'mainpagetext'      => "'''MediaWiki telah terpasang dengan sukses'''.",
 'mainpagedocfooter' => 'Silakan baca [http://meta.wikimedia.org/wiki/Help:Contents Panduan Pengguna] untuk informasi penggunaan perangkat lunak wiki ini.
 
 == Memulai penggunaan ==
@@ -575,7 +575,7 @@ $1',
 'youhavenewmessages'      => 'Anda mempunyai $1 ($2).',
 'newmessageslink'         => 'pesan baru',
 'newmessagesdifflink'     => 'perubahan terakhir',
-'youhavenewmessagesmulti' => 'Anda mendapat pesan-pesan baru $1',
+'youhavenewmessagesmulti' => 'Anda mendapat beberapa pesan baru pada $1',
 'editsection'             => 'sunting',
 'editold'                 => 'sunting',
 'viewsourceold'           => 'lihat sumber',
@@ -646,6 +646,7 @@ Silakan laporkan hal ini kepada salah seorang [[Special:ListUsers/sysop|Pengurus
 'readonly_lag'         => 'Basis data telah dikunci otomatis selagi basis data sekunder melakukan sinkronisasi dengan basis data utama',
 'internalerror'        => 'Kesalahan internal',
 'internalerror_info'   => 'Kesalahan internal: $1',
+'fileappenderrorread'  => 'Tidak dapat membaca "$1" saat penambahan.',
 'fileappenderror'      => 'Tidak dapat memasukkan "$1" ke "$2".',
 'filecopyerror'        => 'Tidak dapat menyalin berkas "$1" ke "$2".',
 'filerenameerror'      => 'Tidak dapat mengubah nama berkas "$1" menjadi "$2".',
@@ -769,6 +770,7 @@ Anda dapat mengabaikan pesan ini jika akun ini dibuat karena suatu kesalahan.',
 'login-throttled'            => 'Anda telah berkali-kali mencoba masuk log. 
 Silakan menunggu sebelum mencoba lagi.',
 'loginlanguagelabel'         => 'Bahasa: $1',
+'suspicious-userlogout'      => 'Permintaan Anda untuk keluar log ditolak karena tampaknya dikirim oleh penjelajah yang rusak atau proksi penyinggah.',
 
 # Password reset dialog
 'resetpass'                 => 'Ganti kata sandi',
@@ -783,6 +785,7 @@ Silakan menunggu sebelum mencoba lagi.',
 'resetpass_forbidden'       => 'Kata sandi tidak dapat diubah',
 'resetpass-no-info'         => 'Anda harus masuk log untuk mengakses halaman ini secara langsung.',
 'resetpass-submit-loggedin' => 'Ganti kata sandi',
+'resetpass-submit-cancel'   => 'Batalkan',
 'resetpass-wrong-oldpass'   => 'Kata sandi tidak sah.
 Anda mungkin telah berhasil mengganti kata sandi Anda atau telah meminta kata sandi sementara yang baru.',
 'resetpass-temp-password'   => 'Kata sandi sementara:',
@@ -820,13 +823,14 @@ Anda mungkin telah berhasil mengganti kata sandi Anda atau telah meminta kata sa
 'showlivepreview'                  => 'Pratayang langsung',
 'showdiff'                         => 'Perlihatkan perubahan',
 'anoneditwarning'                  => 'Anda tidak terdaftar masuk. Alamat IP Anda akan tercatat dalam sejarah (versi terdahulu) halaman ini.',
+'anonpreviewwarning'               => "''Anda belum masuk log. Menyimpan halaman akan menyebabkan alamat IP Anda tercatat pada riwayat suntingan laman ini.''",
 'missingsummary'                   => "'''Peringatan:''' Anda tidak memasukkan ringkasan penyuntingan. Jika Anda kembali menekan tombol Simpan, suntingan Anda akan disimpan tanpa ringkasan penyuntingan.",
 'missingcommenttext'               => 'Harap masukkan komentar di bawah ini.',
 'missingcommentheader'             => "'''Peringatan:''' Anda belum memberikan subjek atau judul untuk komentar Anda. Jika Anda kembali menekan Simpan, suntingan Anda akan disimpan tanpa komentar tersebut.",
 'summary-preview'                  => 'Pratayang ringkasan:',
 'subject-preview'                  => 'Pratayang subyek/tajuk:',
 'blockedtitle'                     => 'Pengguna diblokir',
-'blockedtext'                      => "<big>'''Nama pengguna atau alamat IP Anda telah diblokir.'''</big>
+'blockedtext'                      => "'''Nama pengguna atau alamat IP Anda telah diblokir.'''
 
 Blokir dilakukan oleh $1.
 Alasan yang diberikan adalah ''$2''.
@@ -886,6 +890,8 @@ Anda dapat [[Special:Search/{{PAGENAME}}|melakukan pencarian untuk judul ini]] d
 Hanya pengguna terdaftar yang telah masuk log yang dapat membuat artikel. Jika Anda ingin membuat artikel dan belum mempunyai akun, silakan [http://id.wikipedia.org/w/index.php?title=Istimewa:Masuk_log&type=signup&returnto=Halaman_Utama membuat akun baru] sekarang.',
 'userpage-userdoesnotexist'        => 'Akun pengguna "$1" tidak terdaftar.',
 'userpage-userdoesnotexist-view'   => 'Pengguna "$1" tidak terdaftar.',
+'blocked-notice-logextract'        => 'Pengguna ini sedang diblokir.
+Entri log pemblokiran terakhir tersedia di bawah ini sebagai rujukan.',
 'clearyourcache'                   => "'''Catatan:''' Setelah menyimpan preferensi, Anda perlu membersihkan <em>cache</em> penjelajah web Anda untuk melihat perubahan. '''Mozilla / Firefox / Safari:''' tekan ''Ctrl-Shift-R'' (''Cmd-Shift-R'' pada Apple Mac); '''IE:''' tekan ''Ctrl-F5''; '''Konqueror:''': tekan ''F5''; '''Opera''' bersihkan <em>cache</em> melalui menu ''Tools→Preferences''.",
 'usercssyoucanpreview'             => "'''Tips:''' Gunakan tombol 'Lihat pratayang' untuk menguji CSS baru Anda sebelum menyimpannya.",
 'userjsyoucanpreview'              => "'''Tips:''' Gunakan tombol 'Lihat pratayang' untuk menguji JS baru Anda sebelum menyimpannya.",
@@ -980,6 +986,7 @@ Beberapa templat akan diabaikan.',
 'post-expand-template-argument-category'  => 'Halaman dengan argumen templat yang diabaikan',
 'parser-template-loop-warning'            => 'Hubungan berulang templat terdeteksi: [[$1]]',
 'parser-template-recursion-depth-warning' => 'Limit kedalaman hubungan berulang templat terlampaui ($1)',
+'language-converter-depth-warning'        => 'Batas kedalaman pengonversi bahasa terlampaui ($1)',
 
 # "Undo" feature
 'undo-success' => 'Suntingan ini dapat dibatalkan. Tolong cek perbandingan di bawah untuk meyakinkan bahwa benar itu yang Anda ingin lakukan, lalu simpan perubahan tersebut untuk menyelesaikan pembatalan suntingan.',
@@ -1311,6 +1318,7 @@ Berikut ini adalah nilai acak yang dapat Anda gunakan: $1',
 'prefs-files'                   => 'Berkas',
 'prefs-custom-css'              => 'CSS pribadi',
 'prefs-custom-js'               => 'JS pribadi',
+'prefs-common-css-js'           => 'CSS/JS berbagi untuk semua kulit:',
 'prefs-reset-intro'             => 'Anda dapat menggunakan halaman ini untuk mengembalikan preferensi Anda ke setelan baku situs.
 Pengembalian preferensi tidak dapat dibatalkan.',
 'prefs-emailconfirm-label'      => 'Konfirmasi surel:',
@@ -1435,6 +1443,7 @@ Anda juga dapat memilih untuk memungkinkan orang lain menghubungi Anda melalui h
 'right-hideuser'              => 'Memblokir nama pengguna dan menyembunyikannya dari publik',
 'right-ipblock-exempt'        => 'Mengabaikan pemblokiran IP, pemblokiran otomatis, dan rentang pemblokiran',
 'right-proxyunbannable'       => 'Mengabaikan pemblokiran otomatis atas proksi',
+'right-unblockself'           => 'Melepaskan blokir diri sendiri',
 'right-protect'               => 'Mengubah tingkat perlindungan dan menyunting halaman yang dilindungi',
 'right-editprotected'         => 'Menyunting halaman yang dilindungi (tanpa perlindungan runtun)',
 'right-editinterface'         => 'Menyunting antarmuka pengguna',
@@ -1587,6 +1596,7 @@ Untuk menampilkan atau menyertakan berkas/gambar pada suatu halaman, gunakan pra
 'minlength1'                  => 'Nama berkas paling tidak harus terdiri dari satu huruf.',
 'illegalfilename'             => 'Nama berkas "$1" mengandung aksara yang tidak diperbolehkan ada dalam judul halaman. Silakan ubah nama berkas tersebut dan cobalah memuatkannya kembali.',
 'badfilename'                 => 'Nama berkas telah diubah menjadi "$1".',
+'filetype-mime-mismatch'      => 'Ekstensi berkas tidak cocok dengan tipe MIME.',
 'filetype-badmime'            => 'Berkas dengan tipe MIME "$1" tidak diperkenankan untuk dimuat.',
 'filetype-bad-ie-mime'        => 'Tidak dapat memuat berkas ini karena Internet Explorer mendeteksinya sebagai "$1", yang tak diizinkan dan merupakan tipe berkas yang memiliki potensi bahaya.',
 'filetype-unwanted-type'      => "'''\".\$1\"''' termasuk jenis berkas yang tidak diijinkan.
@@ -1594,6 +1604,12 @@ Untuk menampilkan atau menyertakan berkas/gambar pada suatu halaman, gunakan pra
 'filetype-banned-type'        => "'''\".\$1\"''' termasuk dalam jenis berkas yang tidak diijinkan.
 {{PLURAL:\$3|Jenis berkas yang diijinkan adalah|Jenis berkas yang diijinkan adalah}} \$2.",
 'filetype-missing'            => 'Berkas tak memiliki ekstensi (misalnya ".jpg").',
+'empty-file'                  => 'Berkas yang Anda muat kosong.',
+'file-too-large'              => 'Ukuran berkas yang Anda muat terlalu besar.',
+'filename-tooshort'           => 'Nama berkas terlalu pendek.',
+'verification-error'          => 'Berkas ini tidak lulus verifikasi.',
+'illegal-filename'            => 'Nama berkas tidak diperbolehkan.',
+'unknown-error'               => 'Terjadi sebuah kesalahan yang tidak diketahui.',
 'large-file'                  => 'Ukuran berkas disarankan untuk tidak melebihi $1 bita; berkas ini berukuran $2 bita.',
 'largefileserver'             => 'Berkas ini lebih besar dari pada yang diizinkan server.',
 'emptyfile'                   => 'Berkas yang Anda muatkan kelihatannya kosong. Hal ini mungkin disebabkan karena adanya kesalahan ketik pada nama berkas. Silakan pastikan apakah Anda benar-benar ingin memuatkan berkas ini.',
@@ -1624,6 +1640,7 @@ Jika Anda tetap ingin memuatkan berkas Anda, harap kembali dan gunakan nama lain
 'uploadedimage'               => 'memuat "[[$1]]"',
 'overwroteimage'              => 'memuat versi baru dari "[[$1]]"',
 'uploaddisabled'              => 'Maaf, fasilitas pemuatan dimatikan.',
+'uploadfromurl-queued'        => 'Pengunggahan Anda telah terantri.',
 'uploaddisabledtext'          => 'Pemuatan berkas tidak diizinkan.',
 'php-uploaddisabledtext'      => 'Pemuatan berkas dimatikan di PHP. Silakan cek pengaturan file_uploads.',
 'uploadscripted'              => 'Berkas ini mengandung HTML atau kode yang dapat diinterpretasikan dengan keliru oleh penjelajah web.',
@@ -1677,8 +1694,10 @@ Untuk pilihan keamanan, img_auth.php dinonaktifkan.',
 'http-invalid-scheme'   => 'URL dengan skema "$1" tidak didukung.',
 'http-request-error'    => 'Permintaan HTTP gagal karena kesalahan yang tidak diketahui.',
 'http-read-error'       => 'Kesalahan pembacaan HTTP',
-'http-curl-error'       => 'Kesalahan saat mengambil URL: $ 1',
+'http-timed-out'        => 'Permintaan HTTP lewat tenggat.',
+'http-curl-error'       => 'Kesalahan saat mengambil URL: $1',
 'http-host-unreachable' => 'Tidak dapat mencapai URL.',
+'http-bad-status'       => 'Ada masalah saat permintaan halaman HTTP: $1 $2',
 
 # Some likely curl errors. More could be added from <http://curl.haxx.se/libcurl/c/libcurl-errors.html>
 'upload-curl-error6'       => 'URL tidak dapat dihubungi',
@@ -1814,7 +1833,6 @@ Cek dahulu pranala lain ke templat tersebut sebelum menghapusnya.',
 'statistics-edits-average'     => 'Rata-rata suntingan per halaman',
 'statistics-views-total'       => 'Jumlah penampilan halaman',
 'statistics-views-peredit'     => 'Jumlah penampilan per suntingan',
-'statistics-jobqueue'          => 'Jumlah [http://www.mediawiki.org/wiki/Manual:Job_queue antrean pekerjaan]',
 'statistics-users'             => 'Jumlah [[Special:ListUsers|pengguna terdaftar]]',
 'statistics-users-active'      => 'Jumlah pengguna aktif',
 'statistics-users-active-desc' => 'Pengguna yang telah melakukan suatu aktivitas dalam {{PLURAL:$1|sehari|$1 hari}} terakhir.',
@@ -2006,29 +2024,31 @@ Lihat pula [[Special:WantedCategories|kategori yang diinginkan]].',
 'listgrouprights-removegroup-self-all' => 'Menghapus semua kelompok dari akun sendiri',
 
 # E-mail user
-'mailnologin'      => 'Tidak ada alamat surel',
-'mailnologintext'  => 'Anda harus [[Special:UserLogin|masuk log]] dan mempunyai alamat surel yang sah di dalam [[Special:Preferences|preferensi]] untuk mengirimkan surel kepada pengguna lain.',
-'emailuser'        => 'Surel pengguna',
-'emailpage'        => 'Kirim surel ke pengguna ini',
-'emailpagetext'    => 'Anda dapat menggunakan formulir di bawah ini untuk mengirimkan surel ke pengguna ini.
+'mailnologin'          => 'Tidak ada alamat surel',
+'mailnologintext'      => 'Anda harus [[Special:UserLogin|masuk log]] dan mempunyai alamat surel yang sah di dalam [[Special:Preferences|preferensi]] untuk mengirimkan surel kepada pengguna lain.',
+'emailuser'            => 'Surel pengguna',
+'emailpage'            => 'Kirim surel ke pengguna ini',
+'emailpagetext'        => 'Anda dapat menggunakan formulir di bawah ini untuk mengirimkan surel ke pengguna ini.
 Alamat surel yang Anda masukkan di [[Special:Preferences|preferensi akun Anda]] akan muncul sebagai alamat "Dari" dalam surel tersebut, sehingga penerima dapat langsung membalas kepada Anda.',
-'usermailererror'  => 'Kesalahan objek surat:',
-'defemailsubject'  => 'Surel {{SITENAME}}',
-'noemailtitle'     => 'Tidak ada alamat surel',
-'noemailtext'      => 'Pengguna ini tidak memberikan suatu alamat surel yang valid.',
-'nowikiemailtitle' => 'Surel tak diizinkan',
-'nowikiemailtext'  => 'Pengguna ini telah memilih untuk tidak menerima surel dari pengguna lain.',
-'email-legend'     => 'Kirim surel ke pengguna {{SITENAME}} lainnya',
-'emailfrom'        => 'Dari:',
-'emailto'          => 'Untuk:',
-'emailsubject'     => 'Perihal:',
-'emailmessage'     => 'Pesan:',
-'emailsend'        => 'Kirim',
-'emailccme'        => 'Kirimkan saya salinan pesan saya.',
-'emailccsubject'   => 'Salinan pesan Anda untuk $1: $2',
-'emailsent'        => 'Surel terkirim',
-'emailsenttext'    => 'Surel Anda telah dikirimkan.',
-'emailuserfooter'  => 'Surel ini dikirimkan oleh $1 kepada $2 menggunakan fungsi "Suratepengguna" di {{SITENAME}}.',
+'usermailererror'      => 'Kesalahan objek surat:',
+'defemailsubject'      => 'Surel {{SITENAME}}',
+'usermaildisabled'     => 'Surel pengguna dinonaktifkan',
+'usermaildisabledtext' => 'Anda tidak dapat mengirim surel pada pengguna lain di wiki ini',
+'noemailtitle'         => 'Tidak ada alamat surel',
+'noemailtext'          => 'Pengguna ini tidak memberikan suatu alamat surel yang valid.',
+'nowikiemailtitle'     => 'Surel tak diizinkan',
+'nowikiemailtext'      => 'Pengguna ini telah memilih untuk tidak menerima surel dari pengguna lain.',
+'email-legend'         => 'Kirim surel ke pengguna {{SITENAME}} lainnya',
+'emailfrom'            => 'Dari:',
+'emailto'              => 'Untuk:',
+'emailsubject'         => 'Perihal:',
+'emailmessage'         => 'Pesan:',
+'emailsend'            => 'Kirim',
+'emailccme'            => 'Kirimkan saya salinan pesan saya.',
+'emailccsubject'       => 'Salinan pesan Anda untuk $1: $2',
+'emailsent'            => 'Surel terkirim',
+'emailsenttext'        => 'Surel Anda telah dikirimkan.',
+'emailuserfooter'      => 'Surel ini dikirimkan oleh $1 kepada $2 menggunakan fungsi "Suratepengguna" di {{SITENAME}}.',
 
 # Watchlist
 'watchlist'            => 'Daftar pantauan saya',
@@ -2088,14 +2108,17 @@ Hubungi penyunting:
 surel: $PAGEEDITOR_EMAIL
 wiki: $PAGEEDITOR_WIKI
 
-Kami tidak akan mengirimkan pemberitahuan perubahan lainnya sampai Anda mengunjungi halaman tersebut.
-Anda juga dapat menghapus tanda notifikasi untuk semua halaman pantauan Anda pada daftar pantauan Anda.
+Tidak akan ada pemberitahuan lainnya dalam rangka perubahan lebih lanjut kecuali anda mengunjungi halaman ini.
+Anda juga dapat menset ulang tanda pemberitahuan untuk semua halaman pantauan anda pada daftar pantauan anda.
 
-             Sistem notifikasi Anda di {{SITENAME}}
+             Sistem pemberitahuan anda di {{SITENAME}}
 
 --
-Untuk mengubah preferensi daftar pantauan Anda, kunjungi
+Untuk mengubah preferensi daftar pantauan anda, kunjungi
 {{fullurl:{{#special:Watchlist}}/edit}}
+
+Untuk menghapus halaman dari daftar pantauan anda, kunjungi
+{{fullurl:{{FULLPAGENAMEE}}|action=unwatch}}
 
 Umpan balik dan bantuan lebih lanjut:
 {{fullurl:{{MediaWiki:Helppage}}}}',
@@ -2170,7 +2193,7 @@ Lihat [[Special:ProtectedPages|daftar halaman yang dilindungi]] untuk daftar ter
 'protect-locked-dblock'       => "Tingkat perlindungan tak dapat diganti karena aktifnya penguncian basis data. Berikut adalah konfigurasi saat ini untuk halaman '''$1''':",
 'protect-locked-access'       => "Akun Anda tidak dapat memiliki hak untuk mengganti tingkat perlindungan halaman. Berikut adalah konfigurasi saat ini untuk halaman '''$1''':",
 'protect-cascadeon'           => 'Halaman ini sedang dilindungi karena disertakan dalam {{PLURAL:$1|halaman|halaman-halaman}} berikut yang telah dilindungi dengan pilihan perlindungan runtun diaktifkan. Anda dapat mengganti tingkat perlindungan untuk halaman ini, tapi hal tersebut tidak akan mempengaruhi perlindungan runtun.',
-'protect-default'             => 'Ijinkan semua pengguna',
+'protect-default'             => 'Izinkan semua pengguna',
 'protect-fallback'            => 'Memerlukan hak akses "$1"',
 'protect-level-autoconfirmed' => 'Blokir pengguna baru dan tak terdaftar',
 'protect-level-sysop'         => 'Hanya pengurus',
@@ -2183,7 +2206,7 @@ Lihat [[Special:ProtectedPages|daftar halaman yang dilindungi]] untuk daftar ter
 'protect-othertime-op'        => 'waktu lain',
 'protect-existing-expiry'     => 'Waktu kadaluwarsa saat ini: $3, $2',
 'protect-otherreason'         => 'Alasan lain/tambahan:',
-'protect-otherreason-op'      => 'alasan lain/tambahan',
+'protect-otherreason-op'      => 'Alasan lain',
 'protect-dropdown'            => '*Alasan umum perlindungan
 ** Vandalisme berulang
 ** Spam berulang
@@ -2237,7 +2260,7 @@ Jika sebuah halaman baru dengan nama yang sama telah dibuat sejak penghapusan, r
 'undeletedrevisions-files'     => '$1 {{PLURAL:$1|revisi|revisi}} and $2 berkas dikembalikan',
 'undeletedfiles'               => '$1 {{PLURAL:$1|berkas|berkas}} dikembalikan',
 'cannotundelete'               => 'Pembatalan penghapusan gagal; mungkin ada orang lain yang telah terlebih dahulu melakukan pembatalan.',
-'undeletedpage'                => "<big>'''$1 berhasil dikembalikan'''</big>
+'undeletedpage'                => "'''$1 berhasil dikembalikan'''
 
 Lihat [[Special:Log/delete|log penghapusan]] untuk data penghapusan dan pengembalian.",
 'undelete-header'              => 'Lihat [[Special:Log/delete|log penghapusan]] untuk daftar halaman yang baru dihapus.',
@@ -2271,18 +2294,20 @@ $1',
 'month'               => 'Sejak bulan (dan sebelumnya):',
 'year'                => 'Sejak tahun (dan sebelumnya):',
 
-'sp-contributions-newbies'        => 'Hanya pengguna-pengguna baru',
-'sp-contributions-newbies-sub'    => 'Untuk pengguna baru',
-'sp-contributions-newbies-title'  => 'Kontribusi pengguna baru',
-'sp-contributions-blocklog'       => 'Log pemblokiran',
-'sp-contributions-deleted'        => 'kontribusi pengguna yang dihapus',
-'sp-contributions-logs'           => 'log',
-'sp-contributions-talk'           => 'bicara',
-'sp-contributions-userrights'     => 'pengelolaan hak pengguna',
-'sp-contributions-blocked-notice' => 'Pengguna ini sedang di blok. log pemblokiran terakhir ditampilkan berikut untuk referensi:',
-'sp-contributions-search'         => 'Cari kontribusi',
-'sp-contributions-username'       => 'Alamat IP atau nama pengguna:',
-'sp-contributions-submit'         => 'Cari',
+'sp-contributions-newbies'             => 'Hanya pengguna-pengguna baru',
+'sp-contributions-newbies-sub'         => 'Untuk pengguna baru',
+'sp-contributions-newbies-title'       => 'Kontribusi pengguna baru',
+'sp-contributions-blocklog'            => 'Log pemblokiran',
+'sp-contributions-deleted'             => 'kontribusi pengguna yang dihapus',
+'sp-contributions-logs'                => 'log',
+'sp-contributions-talk'                => 'bicara',
+'sp-contributions-userrights'          => 'pengelolaan hak pengguna',
+'sp-contributions-blocked-notice'      => 'Pengguna ini sedang di blok. log pemblokiran terakhir ditampilkan berikut untuk referensi:',
+'sp-contributions-blocked-notice-anon' => 'Alamat IP ini diblokir pada saat ini.
+Catatan log pemblokiran terakhir tersedia di bawah ini sebagai rujukan:',
+'sp-contributions-search'              => 'Cari kontribusi',
+'sp-contributions-username'            => 'Alamat IP atau nama pengguna:',
+'sp-contributions-submit'              => 'Cari',
 
 # What links here
 'whatlinkshere'            => 'Pranala balik',
@@ -2404,6 +2429,7 @@ $1 sudah diblokir. Apakah Anda ingin mengubah set pemblokiran yang bersangkutan?
 'ipb_cant_unblock'                => 'Kesalahan: Blokir dengan ID $1 tidak ditemukan. Blokir tersebut kemungkinan telah dibuka.',
 'ipb_blocked_as_range'            => 'Kesalahan: IP $1 tidak diblok secara langsung dan tidak dapat dilepaskan. IP $1 diblok sebagai bagian dari pemblokiran kelompok IP $2, yang dapat dilepaskan.',
 'ip_range_invalid'                => 'Blok IP tidak sah.',
+'ip_range_toolarge'               => 'Rentang blok lebih besar dari /$1 tidak diperbolehkan.',
 'blockme'                         => 'Blokir saya',
 'proxyblocker'                    => 'Pemblokir proxy',
 'proxyblocker-disabled'           => 'Fitur ini sedang tidak diakfifkan.',
@@ -2413,6 +2439,8 @@ $1 sudah diblokir. Apakah Anda ingin mengubah set pemblokiran yang bersangkutan?
 'sorbs_create_account_reason'     => 'Alamat IP anda terdaftar sebagai proxy terbuka di DNSBL. Anda tidak dapat membuat akun.',
 'cant-block-while-blocked'        => 'Anda tidak dapat memblokir pengguna lain ketika Anda sendiri sedang diblokir.',
 'cant-see-hidden-user'            => 'Pengguna yang anda coba blokir telah di blokir dan di sembunyikan. Selama anda tidak memiliki hak sembunyikan pengguna, anda tidak dapat melihat atau menyunting pemblokiran pengguna ini.',
+'ipbblocked'                      => 'Anda tidak dapat memblokir atau membuka blokir pengguna lain, karena anda sendiri diblokir',
+'ipbnounblockself'                => 'Anda tidak diizinkan untuk membuka blokir sendiri',
 
 # Developer tools
 'lockdb'              => 'Kunci basis data',
@@ -2447,6 +2475,7 @@ Perhatikan bahwa halaman '''tidak''' akan dipindah apabila telah ada halaman yan
 
 Dalam kasus tersebut, apabila diinginkan, Anda dapat memindahkan atau menggabungkan halaman secara manual.",
 'movearticle'                  => 'Pindahkan halaman:',
+'moveuserpage-warning'         => "'''Peringatan:''' Anda tengah memindahkan halaman pengguna. Perlu diketahui bahwa hanya halaman yang akan dipindahkan namun pengguna ''tidak akan'' berganti nama.",
 'movenologin'                  => 'Belum masuk log',
 'movenologintext'              => 'Anda harus menjadi pengguna terdaftar dan telah [[Special:UserLogin|masuk log]] untuk dapat memindahkan suatu halaman.',
 'movenotallowed'               => 'Anda tak memiliki hak akses untuk memindahkan halaman.',
@@ -2457,7 +2486,7 @@ Dalam kasus tersebut, apabila diinginkan, Anda dapat memindahkan atau menggabung
 'move-watch'                   => 'Pantau halaman ini',
 'movepagebtn'                  => 'Pindahkan halaman',
 'pagemovedsub'                 => 'Pemindahan berhasil',
-'movepage-moved'               => '<big>\'\'\'"$1" telah dipindahkan ke "$2"\'\'\'</big>',
+'movepage-moved'               => '\'\'\'"$1" telah dipindahkan ke "$2"\'\'\'',
 'movepage-moved-redirect'      => 'Halaman pengalihan telah dibuat.',
 'movepage-moved-noredirect'    => 'Pengalihan tidak dibuat.',
 'articleexists'                => 'Halaman dengan nama tersebut telah ada atau nama yang dipilih tidak sah. Silakan pilih nama lain.',
@@ -2498,9 +2527,9 @@ Artikel yang dituju, "[[:$1]]", telah mempunyai isi. Apakah Anda hendak menghapu
 'imageinvalidfilename'         => 'Nama berkas tujuan tidak sah',
 'fix-double-redirects'         => 'Perbaiki semua pengalihan ganda yang mungkin terjadi',
 'move-leave-redirect'          => 'Buat pengalihan ke judul baru',
-'protectedpagemovewarning'     => "'''Peringatan''': Halaman ini telah dilindungi sehingga hanya pengurus yang bisa memindahkannya.
+'protectedpagemovewarning'     => "'''Peringatan''': Halaman ini telah dikunci sehingga hanya pengguna dengan hak akses pengurus yang bisa memindahkannya.
 Entri catatan terakhir disediakan dibawah untuk referensi:",
-'semiprotectedpagemovewarning' => "'''Catatan:''' Halaman ini telah dilindungi sehingga hanya pengguna terdaftar yang dapat memindahkannya.
+'semiprotectedpagemovewarning' => "'''Catatan:''' Halaman ini telah dikunci sehingga hanya pengguna terdaftar yang dapat memindahkannya.
 Entri catatan terakhir disediakan dibawah untuk referensi:",
 'move-over-sharedrepo'         => '== Berkas sudah ada ==
 
@@ -2667,6 +2696,8 @@ Simpan ke komputer Anda lalu muatkan di sini.',
 'tooltip-upload'                  => 'Mulai pemuatan',
 'tooltip-rollback'                => 'Mengembalikan suntingan-suntingan di halaman ini ke kontributor terakhir dalam satu kali klik.',
 'tooltip-undo'                    => 'Mengembalikan revisi ini dan membuka kotak penyuntingan dengan mode pratayang. Alasan dapat ditambahkan di kotak ringkasan.',
+'tooltip-preferences-save'        => 'Simpan preferensi',
+'tooltip-summary'                 => 'Masukkan sebuah ringkasan pendek',
 
 # Stylesheets
 'common.css'      => '/* CSS yang ada di sini akan diterapkan untuk semua kulit. */',
@@ -3113,27 +3144,27 @@ Pranala-pranala selanjutnya pada baris yang sama dianggap sebagai pengecualian, 
 'limitall'         => 'semua',
 
 # E-mail address confirmation
-'confirmemail'             => 'Konfirmasi alamat surel',
-'confirmemail_noemail'     => 'Anda tidak memberikan alamat surel yang sah di [[Special:Preferences|preferensi pengguna]] Anda.',
-'confirmemail_text'        => '{{SITENAME}} mengharuskan Anda untuk melakukan konfirmasi atas alamat surel Anda sebelum fitur-fitur surel dapat digunakan.
+'confirmemail'              => 'Konfirmasi alamat surel',
+'confirmemail_noemail'      => 'Anda tidak memberikan alamat surel yang sah di [[Special:Preferences|preferensi pengguna]] Anda.',
+'confirmemail_text'         => '{{SITENAME}} mengharuskan Anda untuk melakukan konfirmasi atas alamat surel Anda sebelum fitur-fitur surel dapat digunakan.
 Tekan tombol di bawah ini untuk mengirimi Anda sebuah surel yang berisi kode konfirmasi yang berupa sebuah alamat internet.
 Salin alamat tersebut ke penjelajah web Anda dan buka alamat tersebut untuk melakukan konfirmasi sehingga menginformasikan bahwa alamat surel Anda valid.',
-'confirmemail_pending'     => 'Suatu kode konfirmasi telah dikirimkan kepada Anda; jika Anda baru saja membuat akun Anda, silakan tunggu beberapa menit untuk surat tersebut tiba sebelum mencoba untuk meminta satu kode baru.',
-'confirmemail_send'        => 'Kirim kode konfirmasi',
-'confirmemail_sent'        => 'Surel berisi kode konfirmasi telah dikirim.',
-'confirmemail_oncreate'    => 'Suatu kode konfirmasi telah dikirimkan ke alamat surel Anda. Kode ini tidak dibutuhkan untuk masuk log, tapi dibutuhkan sebelum menggunakan semua fitur yang menggunakan surel di wiki ini.',
-'confirmemail_sendfailed'  => '{{SITENAME}} tidak berhasil mengirimkan surat konfirmasi Anda.
+'confirmemail_pending'      => 'Suatu kode konfirmasi telah dikirimkan kepada Anda; jika Anda baru saja membuat akun Anda, silakan tunggu beberapa menit untuk surat tersebut tiba sebelum mencoba untuk meminta satu kode baru.',
+'confirmemail_send'         => 'Kirim kode konfirmasi',
+'confirmemail_sent'         => 'Surel berisi kode konfirmasi telah dikirim.',
+'confirmemail_oncreate'     => 'Suatu kode konfirmasi telah dikirimkan ke alamat surel Anda. Kode ini tidak dibutuhkan untuk masuk log, tapi dibutuhkan sebelum menggunakan semua fitur yang menggunakan surel di wiki ini.',
+'confirmemail_sendfailed'   => '{{SITENAME}} tidak berhasil mengirimkan surat konfirmasi Anda.
 Harap cek kemungkinan karakter ilegal pada alamat surel.
 
 Aplikasi pengiriman surel menginformasikan: $1',
-'confirmemail_invalid'     => 'Kode konfirmasi salah. Kode tersebut mungkin sudah kadaluwarsa.',
-'confirmemail_needlogin'   => 'Anda harus melakukan $1 untuk mengkonfirmasikan alamat surel Anda.',
-'confirmemail_success'     => 'Alamat surel Anda telah dikonfirmasi.
+'confirmemail_invalid'      => 'Kode konfirmasi salah. Kode tersebut mungkin sudah kadaluwarsa.',
+'confirmemail_needlogin'    => 'Anda harus melakukan $1 untuk mengkonfirmasikan alamat surel Anda.',
+'confirmemail_success'      => 'Alamat surel Anda telah dikonfirmasi.
 Sekarang Anda dapat [[Special:UserLogin|masuk log]] dan mulai menggunakan wiki.',
-'confirmemail_loggedin'    => 'Alamat surel Anda telah dikonfirmasi.',
-'confirmemail_error'       => 'Terjadi kesalahan sewaktu menyimpan konfirmasi Anda.',
-'confirmemail_subject'     => 'Konfirmasi alamat surel {{SITENAME}}',
-'confirmemail_body'        => 'Seseorang, mungkin Anda, dari alamat IP $1, telah mendaftarkan akun "$2" dengan alamat surel ini di {{SITENAME}}.
+'confirmemail_loggedin'     => 'Alamat surel Anda telah dikonfirmasi.',
+'confirmemail_error'        => 'Terjadi kesalahan sewaktu menyimpan konfirmasi Anda.',
+'confirmemail_subject'      => 'Konfirmasi alamat surel {{SITENAME}}',
+'confirmemail_body'         => 'Seseorang, mungkin Anda, dari alamat IP $1, telah mendaftarkan akun "$2" dengan alamat surel ini di {{SITENAME}}.
 
 Untuk mengkonfirmasikan bahwa akun ini benar dimiliki oleh Anda sekaligus mengaktifkan fitur surel di {{SITENAME}}, ikuti pranala berikut pada penjelajah web Anda:
 
@@ -3145,8 +3176,22 @@ Klik pada pranala ini untuk membatalkan konfirmasi alamat surel:
 $5
 
 Kode konfirmasi ini akan kadaluwarsa pada $4.',
-'confirmemail_invalidated' => 'Konfirmasi alamat surel dibatalkan',
-'invalidateemail'          => 'Batalkan konfirmasi surel',
+'confirmemail_body_changed' => 'Seseorang, mungkin anda, dari alamat IP $1,
+telah merubah surel dari akun "$2" pada alamat ini di {{SITENAME}}. 
+
+Untuk mengkonfirmasi bahwa akun ini adalah benar milik anda sekaligus mengaktifkan
+kembali fitur surel pada {{SITENAME}}, ikuti pranala berikut pada browser Anda:
+
+$3
+
+Jika akun ini *bukan* milik anda, ikuti pranala berikut
+untuk membatalkan konfirmasi alamat surel:
+
+$5
+
+Kode konfirmasi ini akan kadaluwarsa pada $4.',
+'confirmemail_invalidated'  => 'Konfirmasi alamat surel dibatalkan',
+'invalidateemail'           => 'Batalkan konfirmasi surel',
 
 # Scary transclusion
 'scarytranscludedisabled' => '[Transklusi interwiki dimatikan]',
@@ -3299,7 +3344,7 @@ Anda juga dapat [[Special:Watchlist/raw|menyunting daftar mentahnya]].',
 # Special:FilePath
 'filepath'         => 'Lokasi berkas',
 'filepath-page'    => 'Berkas:',
-'filepath-submit'  => 'Lokasi',
+'filepath-submit'  => 'Cari',
 'filepath-summary' => 'Halaman istimewa ini menampilkan jalur lengkap untuk suatu berkas.
 Gambar ditampilkan dalam resolusi penuh dan tipe lain berkas akan dibuka langsung dengan program terkaitnya.
 
@@ -3378,6 +3423,7 @@ Keterangan tampilan:
 'htmlform-float-invalid'       => 'Yang Anda masukkan bukan merupakan angka.',
 'htmlform-int-toolow'          => 'Nilai yang Anda masukkan terlalu rendah di bawah nilai minimum $1',
 'htmlform-int-toohigh'         => 'Nilai yang Anda masukkan melebihi nilai maksimum $1',
+'htmlform-required'            => 'Nilai ini diperlukan',
 'htmlform-submit'              => 'Kirim',
 'htmlform-reset'               => 'Batalkan perubahan',
 'htmlform-selectorother-other' => 'Lain-lain',

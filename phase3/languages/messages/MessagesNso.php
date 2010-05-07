@@ -52,7 +52,6 @@ $messages = array(
 'tog-editsectiononrightclick' => 'Dumella go fetola sekgao ka thathapa ka lagoja thaetlele ya sekgao (JavaScript)',
 'tog-showtoc'                 => 'Bontšha Tatelano ya dikagare (go matlakala a goba le dihlogo tša go feta 3)',
 'tog-rememberpassword'        => 'Gopola sedi ya go tsena yaka go khomphutha ye',
-'tog-editwidth'               => 'Lepokisi la diphetogo lebe le bophara ba go tlala',
 'tog-watchcreations'          => 'Tsenya matlaka a mafsa ao ke a ngwalago go lenano laka la ditlhapetšo',
 'tog-watchdefault'            => 'Tsenya matlaka ao ke a fetolago go lenano laka la ditlhapetšo',
 'tog-watchmoves'              => 'Tsenya matlaka ao ke a hudušago go lenano laka la ditlhapetšo',
@@ -391,7 +390,7 @@ Ga wa dumelwa go tlhoma tše dingwe.',
 'anoneditwarning'            => "'''Temošo''' Gawa ''tsena'', IP ya gago e tla šumišwa go histori ya diphetogo tša letlakala",
 'summary-preview'            => 'Lebelela kakaretšo:',
 'blockedtitle'               => 'Mošomiši o thibilwe',
-'blockedtext'                => "<big>'''Leina la gago la mošomiši goba IP atrese e thibilwe.'''</big>
+'blockedtext'                => "'''Leina la gago la mošomiši goba IP atrese e thibilwe.'''
 
 O thibilwe ke $1. Makaba a go thiba ke ''$2''.
 
@@ -924,7 +923,7 @@ Ge go le bjalo,o tla swanela ke go huduša goba go kopanya matlakala ka bowena."
 'move-watch'              => 'Tlhapetša letlakala le',
 'movepagebtn'             => 'Huduša letlakala',
 'pagemovedsub'            => 'Hudugile ka katlego',
-'movepage-moved'          => '<big>\'\'\'"$1" e hudušitšwe go "$2"\'\'\'</big>',
+'movepage-moved'          => '\'\'\'"$1" e hudušitšwe go "$2"\'\'\'',
 'articleexists'           => 'Letlakala la goba le leina le legona, goba
 leina leo o le kgethilego ga la dumelega.
 Ka kgopelo, kgetha leina le lengwe.',

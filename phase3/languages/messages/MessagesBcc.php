@@ -153,7 +153,6 @@ $messages = array(
 'tog-editsectiononrightclick' => 'فعال کتن اصلاح کسمت گون کلیک راست اور کسمت عناوین(جاوا)',
 'tog-showtoc'                 => 'جدول محتوای‌ء پیش دار( په صفحیانی که گیش چه 3 عنوانش هست)',
 'tog-rememberpassword'        => 'منی وارد بیگ ته ای کامپیوتر هیال کن',
-'tog-editwidth'               => 'جعبه اصلاح مزنی کن تا کل صفحه بگریت',
 'tog-watchcreations'          => 'هور کن منی صفحاتی که من ته لیست چارگ شرکتت',
 'tog-watchdefault'            => 'هورکن صفحاتی که من اصلاح کتن ته منی لیست چارگ',
 'tog-watchmoves'              => 'هور کن صفحاتی که من جاه په جاه کت ته منی لیست چارگ',
@@ -257,7 +256,7 @@ $messages = array(
 'category-file-count-limited'    => 'جهلیگین {{PLURAL:$1|فایل|$1 فایلان}} ته هنوکین دسته اینت',
 'listingcontinuesabbrev'         => 'ادامه.',
 
-'mainpagetext'      => "<big>'''مدیا وی کی گون موفقیت نصب بوت.'''</big>",
+'mainpagetext'      => "'''مدیا وی کی گون موفقیت نصب بوت.'''",
 'mainpagedocfooter' => "مشورت کنیت گون  [http://meta.wikimedia.org/wiki/Help:Contents User's Guide] په گشیترین اطلاعات په استفاده چه برنامه ویکی.
 
 == شروع بیت ==
@@ -673,7 +672,7 @@ $2',
 'summary-preview'                  => 'خلاصه بازبینی:',
 'subject-preview'                  => 'بازبین موضوع/سرخط:',
 'blockedtitle'                     => 'کاربر محدود بوتت',
-'blockedtext'                      => "<big>'''شمی نام کاربری یا آی پی محدود بیتت.''''</big>
+'blockedtext'                      => "'''شمی نام کاربری یا آی پی محدود بیتت.''''
 
 محدودیت توسط $1 شر بوتت. دلیل داتت ''$2''.
 
@@ -1601,7 +1600,6 @@ PICT # misc.
 'statistics-edits-average'     => 'میانگین اصلاحات ته هر صفحه ای',
 'statistics-views-total'       => 'چارگان کل',
 'statistics-views-peredit'     => 'چارگ ته هر اصلاح',
-'statistics-jobqueue'          => '[http://www.mediawiki.org/wiki/Manual:Job_queue طول کار] ای',
 'statistics-users'             => 'ثبت نامی [[Special:ListUsers|users]]',
 'statistics-users-active'      => 'فعالین کاربر',
 'statistics-users-active-desc' => 'کاربرانی که ته پیشگین {{PLURAL:$1|روچ|$1 روچان}} کاری اش کتت',
@@ -2035,7 +2033,7 @@ $NEWPAGE
 'undeletedfiles'               => '{{PLURAL:$1|1 فایل|$1 فایلآن}} واترینگ بین',
 'cannotundelete'               => 'حذف نه کتن پروشت؛
 یک نفری دگه شاید ای صفحهء  پیشتر حذفی ترینتت.',
-'undeletedpage'                => "<big>'''$1 تررینگ بوتت'''</big>
+'undeletedpage'                => "'''$1 تررینگ بوتت'''
 
 شوهاز کن [[Special:Log/delete|آمار حذف]] په یک ثبتی چه نوکین حذفیات و بازتررینگان.",
 'undelete-header'              => 'See [[Special:Log/delete|آمار حذف]] په نوکین حذفی صفحات..',
@@ -2258,7 +2256,7 @@ $1',
 'move-watch'                   => 'این صفحه یا بچار',
 'movepagebtn'                  => 'جاه په جاه کن صفحه',
 'pagemovedsub'                 => 'جاه په جاهی موفقیت بود',
-'movepage-moved'               => '<big>\'\'\'"$1" جاه په اجه بوت په"$2"\'\'\'</big>',
+'movepage-moved'               => '\'\'\'"$1" جاه په اجه بوت په"$2"\'\'\'',
 'movepage-moved-redirect'      => 'یک غیر مستقیمی شر بوت',
 'movepage-moved-noredirect'    => 'شرکتن غیر مستقیم بند بوتگ.',
 'articleexists'                => 'صفحه گون آن نام پیش تر هستت، یا نامی که شما زورتت نامعتبرنت.

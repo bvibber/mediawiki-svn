@@ -65,7 +65,6 @@ $messages = array(
 'tog-editsectiononrightclick' => 'Activar la edición de seiciones calcando col botón<br /> drechu enriba los títulos de seición (JavaScript)',
 'tog-showtoc'                 => 'Amosar índiz (pa páxines con más de 3 encabezaos)',
 'tog-rememberpassword'        => 'Recordar la clave ente sesiones',
-'tog-editwidth'               => "Estenderexar la caxa d'edición pa que ocupe tola pantalla.",
 'tog-watchcreations'          => 'Añader les páxines que creo a la mio llista de vixilancia',
 'tog-watchdefault'            => "Añader les páxines qu'edito a la mio llista de vixilancia",
 'tog-watchmoves'              => 'Añader les páxines que muevo a la mio llista de vixilancia',
@@ -169,7 +168,7 @@ $messages = array(
 'category-file-count-limited'    => '{{PLURAL:$1|El siguiente archivu ta|Los siguientes $1 archivos tán}} na categoría actual.',
 'listingcontinuesabbrev'         => 'cont.',
 
-'mainpagetext'      => "<big>'''MediaWiki instalóse correchamente.'''</big>",
+'mainpagetext'      => "'''MediaWiki instalóse correchamente.'''",
 'mainpagedocfooter' => "Visita la [http://meta.wikimedia.org/wiki/Help:Contents Guía d'usuariu] pa saber cómo usar esti software wiki.
 
 == Empecipiando ==
@@ -540,7 +539,7 @@ Puede ser que yá la cambiaras o que solicitaste otra.",
 'summary-preview'                  => 'Previsualización del resume:',
 'subject-preview'                  => 'Previsualización del tema/títulu:',
 'blockedtitle'                     => "L'usuariu ta bloquiáu",
-'blockedtext'                      => "<big>'''El to nome d'usuariu o la to direición IP foi bloquiáu.'''</big>
+'blockedtext'                      => "'''El to nome d'usuariu o la to direición IP foi bloquiáu.'''
 
 El bloquéu féxolu $1.
 El motivu conseñáu ye ''$2''.
@@ -1369,7 +1368,6 @@ Alcuérdate de comprobar otros enllaces a les plantíes enantes d'esborrales.",
 'statistics-edits-average'     => "Media d'ediciones per páxina",
 'statistics-views-total'       => 'Visites totales',
 'statistics-views-peredit'     => 'Visites por edición',
-'statistics-jobqueue'          => 'Llonxitú de la [http://www.mediawiki.org/wiki/Manual:Job_queue cola de xeres]',
 'statistics-users'             => '[[Special:ListUsers|Usuarios]] rexistraos',
 'statistics-users-active'      => 'Usuarios activos',
 'statistics-users-active-desc' => 'Usuarios que realizaron una aición {{PLURAL:$1|nel caberu día|nos caberos $1 díes}}',
@@ -1777,7 +1775,7 @@ revisión fuera restaurada o eliminada del archivu.",
 'undeletedrevisions-files'     => '{{PLURAL:$1|1 revisión|$1 revisiones}} y {{PLURAL:$2|1 archivu|$2 archivos}} restauraos',
 'undeletedfiles'               => '{{PLURAL:$1|1 archivu restauráu|$1 archivos restauraos}}',
 'cannotundelete'               => 'Falló la restauración; seique daquién yá restaurara la páxina enantes.',
-'undeletedpage'                => "<big>'''Restauróse $1'''</big>
+'undeletedpage'                => "'''Restauróse $1'''
 
 Consulta'l [[Special:Log/delete|rexistru d'esborraos]] pa ver los esborraos y restauraciones de recién.",
 'undelete-header'              => "Mira nel [[Special:Log/delete|rexistru d'esborraos]] les páxines esborraes recién.",
@@ -1994,7 +1992,7 @@ Nestos casos vas tener que treslladar o fusionar la páxina manualmente.",
 'move-watch'                   => 'Vixilar esta páxina',
 'movepagebtn'                  => 'Treslladar la páxina',
 'pagemovedsub'                 => 'Treslláu correctu',
-'movepage-moved'               => '<big>\'\'\'"$1" treslladóse a "$2"\'\'\'</big>',
+'movepage-moved'               => '\'\'\'"$1" treslladóse a "$2"\'\'\'',
 'movepage-moved-redirect'      => 'Creóse una redireición.',
 'movepage-moved-noredirect'    => "Desaniciose la creación d'una redireición.",
 'articleexists'                => "Yá hai una páxina con esi nome, o'l nome qu'escoyisti nun ye válidu. Por favor, escueyi otru nome.",

@@ -7,10 +7,10 @@
 /**
  *
  */
-function wfSpecialListfiles() {
+function wfSpecialListfiles( $par = null ) {
 	global $wgOut;
 
-	$pager = new ImageListPager;
+	$pager = new ImageListPager( $par );
 
 	$limit = $pager->getForm();
 	$body = $pager->getBody();
@@ -24,21 +24,32 @@ function wfSpecialListfiles() {
 class ImageListPager extends TablePager {
 	var $mFieldNames = null;
 	var $mQueryConds = array();
-
-	function __construct() {
+	var $mUserName = null;
+	
+	function __construct( $par = null ) {
 		global $wgRequest, $wgMiserMode;
 		if ( $wgRequest->getText( 'sort', 'img_date' ) == 'img_date' ) {
 			$this->mDefaultDirection = true;
 		} else {
 			$this->mDefaultDirection = false;
 		}
+		
+		$userName = $wgRequest->getText( 'username', $par );
+		if ( $userName ) {
+			$nt = Title::newFromText( $userName, NS_USER );
+			if ( !is_null( $nt ) ) {
+				$this->mUserName = $nt->getText();
+				$this->mQueryConds['img_user_text'] = $this->mUserName;
+			}
+		} 
+		
 		$search = $wgRequest->getText( 'ilsearch' );
 		if ( $search != '' && !$wgMiserMode ) {
 			$nt = Title::newFromURL( $search );
-			if( $nt ) {
+			if ( $nt ) {
 				$dbr = wfGetDB( DB_SLAVE );
-				$this->mQueryConds = array( 'LOWER(img_name)' . $dbr->buildLike( $dbr->anyString(), 
-					strtolower( $nt->getDBkey() ), $dbr->anyString() ) );
+				$this->mQueryConds[] = 'LOWER(img_name)' . $dbr->buildLike( $dbr->anyString(), 
+					strtolower( $nt->getDBkey() ), $dbr->anyString() );
 			}
 		}
 
@@ -63,7 +74,11 @@ class ImageListPager extends TablePager {
 	}
 
 	function isFieldSortable( $field ) {
-		static $sortable = array( 'img_timestamp', 'img_name', 'img_size' );
+		static $sortable = array( 'img_timestamp', 'img_name' );
+		if ( $field == 'img_size' ) {
+			# No index for both img_size and img_user_text
+			return !isset( $this->mQueryConds['img_user_text'] );
+		}
 		return in_array( $field, $sortable );
 	}
 
@@ -131,7 +146,7 @@ class ImageListPager extends TablePager {
 				if ( $imgfile === null ) $imgfile = wfMsg( 'imgfile' );
 
 				$name = $this->mCurrentRow->img_name;
-				$link = $this->getSkin()->linkKnown( Title::makeTitle( NS_FILE, $name ), $value );
+				$link = $this->getSkin()->linkKnown( Title::makeTitle( NS_FILE, $name ), htmlspecialchars( $value ) );
 				$image = wfLocalFile( $value );
 				$url = $image->getURL();
 				$download = Xml::element('a', array( 'href' => $url ), $imgfile );
@@ -186,5 +201,16 @@ class ImageListPager extends TablePager {
 
 	function getSortHeaderClass() {
 		return 'listfiles_sort ' . parent::getSortHeaderClass();
+	}
+	
+	function getPagingQueries() {
+		$queries = parent::getPagingQueries();
+		if ( !is_null( $this->mUserName ) ) {
+			# Append the username to the query string
+			foreach ( $queries as $key => &$query ) {
+				$query['username'] = $this->mUserName;
+			}
+		}
+		return $queries;
 	}
 }

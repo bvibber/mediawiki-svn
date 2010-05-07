@@ -6,66 +6,43 @@ require_once( 'MediaWiki_Setup.php' );
  * @group Stub
  */
 class SearchEngineTest extends MediaWiki_Setup {
-	var $db, $search;
+	var $db, $search, $pageList;
+
+	function pageExists( $title ) {
+		return false;
+	}
 
 	function insertSearchData() {
-		$this->db->safeQuery( <<<SQL
-		INSERT INTO ! (page_id,page_namespace,page_title,page_latest)
-		VALUES (1, 0, 'Main_Page', 1),
-			   (2, 1, 'Main_Page', 2),
-			   (3, 0, 'Smithee', 3),
-			   (4, 1, 'Smithee', 4),
-			   (5, 0, 'Unrelated_page', 5),
-			   (6, 0, 'Another_page', 6),
-			   (7, 4, 'Help', 7),
-			   (8, 0, 'Thppt', 8),
-			   (9, 0, 'Alan_Smithee', 9),
-			   (10, 0, 'Pages', 10)
-SQL
-			, $this->db->tableName( 'page' ) );
-		$this->db->safeQuery( <<<SQL
-		INSERT INTO ! (rev_id,rev_page)
-		VALUES (1, 1),
-		       (2, 2),
-		       (3, 3),
-		       (4, 4),
-		       (5, 5),
-		       (6, 6),
-		       (7, 7),
-		       (8, 8),
-		       (9, 9),
-		       (10, 10)
-SQL
-			, $this->db->tableName( 'revision' ) );
-		$this->db->safeQuery( <<<SQL
-		INSERT INTO ! (old_id,old_text)
-		VALUES (1, 'This is a main page'),
-			   (2, 'This is a talk page to the main page, see [[smithee]]'),
-			   (3, 'A smithee is one who smiths. See also [[Alan Smithee]]'),
-			   (4, 'This article sucks.'),
-			   (5, 'Nothing in this page is about the S word.'),
-			   (6, 'This page also is unrelated.'),
-			   (7, 'Help me!'),
-			   (8, 'Blah blah'),
-			   (9, 'yum'),
-			   (10,'are food')
-SQL
-			, $this->db->tableName( 'text' ) );
-		$this->db->safeQuery( <<<SQL
-		INSERT INTO ! (si_page,si_title,si_text)
-		VALUES (1, 'main page', 'this is a main page'),
-			   (2, 'main page', 'this is a talk page to the main page, see smithee'),
-			   (3, 'smithee', 'a smithee is one who smiths see also alan smithee'),
-			   (4, 'smithee', 'this article sucks'),
-			   (5, 'unrelated page', 'nothing in this page is about the s word'),
-			   (6, 'another page', 'this page also is unrelated'),
-			   (7, 'help', 'help me'),
-			   (8, 'thppt', 'blah blah'),
-			   (9, 'alan smithee', 'yum'),
-			   (10, 'pages', 'are food')
-SQL
-			, $this->db->tableName( 'searchindex' ) );
+	    if( $this->pageExists( 'Not_Main_Page' ) ) {
+		return;
+	    }
+	    $this->insertPage("Not_Main_Page",	"This is not a main page", 0);
+	    $this->insertPage('Talk:Not_Main_Page',	'This is not a talk page to the main page, see [[smithee]]', 1);
+	    $this->insertPage('Smithee',	'A smithee is one who smiths. See also [[Alan Smithee]]', 0);
+	    $this->insertPage('Talk:Smithee',	'This article sucks.', 1);
+	    $this->insertPage('Unrelated_page',	'Nothing in this page is about the S word.', 0);
+	    $this->insertPage('Another_page',	'This page also is unrelated.', 0);
+	    $this->insertPage('Help:Help',		'Help me!', 4);
+	    $this->insertPage('Thppt',		'Blah blah', 0);
+	    $this->insertPage('Alan_Smithee',	'yum', 0);
+	    $this->insertPage('Pages',		'are\'food', 0);
+	    $this->insertPage('HalfOneUp',	'AZ', 0);
+	    $this->insertPage('FullOneUp',	'ＡＺ', 0);
+	    $this->insertPage('HalfTwoLow',	'az', 0);
+	    $this->insertPage('FullTwoLow',	'ａｚ', 0);
+	    $this->insertPage('HalfNumbers',	'1234567890', 0);
+	    $this->insertPage('FullNumbers',	'１２３４５６７８９０', 0);
+	    $this->insertPage('DomainName',	'example.com', 0);
 	}
+
+	function removeSearchData() {
+            return;
+            while( count($this->pageList) ) {
+                list( $title, $id ) = array_pop( $this->pageList );
+                $article = new Article( $title, $id );
+                $article->doDeleteArticle("Search Test");
+            }
+ 	}
 
 	function fetchIds( $results ) {
 		$matches = array();
@@ -80,34 +57,98 @@ SQL
 		return $matches;
 	}
 
-	function testTextSearch() {
-		if( is_null( $this->db ) ) {
-			$this->markTestIncomplete( "Can't find a database to test with." );
-		}
-		$this->assertEquals(
-			array( 'Smithee' ),
-			$this->fetchIds( $this->search->searchText( 'smithee' ) ),
-			"Plain search failed" );
+	// Modified version of WikiRevision::importOldRevision()
+	function insertPage( $pageName, $text, $ns ) {
+            $dbw = $this->db;
+            $title = Title::newFromText( $pageName );
+
+            $userId = 0;
+            $userText = 'WikiSysop';
+            $comment = 'Search Test';
+
+            // avoid memory leak...?
+            $linkCache = LinkCache::singleton();
+            $linkCache->clear();
+
+            $article = new Article( $title );
+            $pageId = $article->getId();
+            $created = false;
+            if( $pageId == 0 ) {
+                # must create the page...
+                $pageId = $article->insertOn( $dbw );
+                $created = true;
+            }
+
+            # FIXME: Use original rev_id optionally (better for backups)
+            # Insert the row
+            $revision = new Revision( array(
+                            'page'       => $pageId,
+                            'text'       => $text,
+                            'comment'    => $comment,
+                            'user'       => $userId,
+                            'user_text'  => $userText,
+                            'timestamp'  => 0,
+                            'minor_edit' => false,
+			) );
+            $revId = $revision->insertOn( $dbw );
+            $changed = $article->updateIfNewerOn( $dbw, $revision );
+
+            $GLOBALS['wgTitle'] = $title;
+            if( $created ) {
+                Article::onArticleCreate( $title );
+                $article->createUpdates( $revision );
+            } elseif( $changed ) {
+                Article::onArticleEdit( $title );
+                $article->editUpdates(
+                    $text, $comment, false, 0, $revId );
+            }
+
+            $su = new SearchUpdate($article->getId(), $pageName, $text);
+            $su->doUpdate();
+
+            $this->pageList[] = array( $title, $article->getId() );
+
+            return true;
+        }
+
+	function testFullWidth() {
+            $this->assertEquals(
+                array( 'FullOneUp', 'FullTwoLow', 'HalfOneUp', 'HalfTwoLow' ),
+                $this->fetchIds( $this->search->searchText( 'AZ' ) ),
+                "Search for normalized from Half-width Upper" );
+            $this->assertEquals(
+                array( 'FullOneUp', 'FullTwoLow', 'HalfOneUp', 'HalfTwoLow' ),
+                $this->fetchIds( $this->search->searchText( 'az' ) ),
+                "Search for normalized from Half-width Lower" );
+            $this->assertEquals(
+                array( 'FullOneUp', 'FullTwoLow', 'HalfOneUp', 'HalfTwoLow' ),
+                $this->fetchIds( $this->search->searchText( 'ＡＺ' ) ),
+                "Search for normalized from Full-width Upper" );
+            $this->assertEquals(
+                array( 'FullOneUp', 'FullTwoLow', 'HalfOneUp', 'HalfTwoLow' ),
+                $this->fetchIds( $this->search->searchText( 'ａｚ' ) ),
+                "Search for normalized from Full-width Lower" );
+	}
+
+        function testTextSearch() {
+            $this->assertEquals(
+                array( 'Smithee' ),
+                $this->fetchIds( $this->search->searchText( 'smithee' ) ),
+                "Plain search failed" );
 	}
 
 	function testTextPowerSearch() {
-		if( is_null( $this->db ) ) {
-			$this->markTestIncomplete( "Can't find a database to test with." );
-		}
 		$this->search->setNamespaces( array( 0, 1, 4 ) );
 		$this->assertEquals(
 			array(
 				'Smithee',
-				'Talk:Main Page',
+				'Talk:Not Main Page',
 			),
 			$this->fetchIds( $this->search->searchText( 'smithee' ) ),
 			"Power search failed" );
 	}
 
 	function testTitleSearch() {
-		if( is_null( $this->db ) ) {
-			$this->markTestIncomplete( "Can't find a database to test with." );
-		}
 		$this->assertEquals(
 			array(
 				'Alan Smithee',
@@ -118,9 +159,6 @@ SQL
 	}
 
 	function testTextTitlePowerSearch() {
-		if( is_null( $this->db ) ) {
-			$this->markTestIncomplete( "Can't find a database to test with." );
-		}
 		$this->search->setNamespaces( array( 0, 1, 4 ) );
 		$this->assertEquals(
 			array(
@@ -133,6 +171,3 @@ SQL
 	}
 
 }
-
-
-

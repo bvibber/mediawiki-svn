@@ -67,7 +67,6 @@ $messages = array(
 'tog-editsectiononrightclick' => 'ಪುಟದ ವಿಭಾಗಗಳನ್ನು ಅವುಗಳ ಶೀರ್ಷಿಕೆಯನ್ನು ಎರಡು ಬಾರಿ ಕ್ಲಿಕ್ ಮಾಡಿ ಸಂಪಾದನೆ ಮಾಡುವಂತೆ ಇರಲಿ (JavaScript)',
 'tog-showtoc'                 => 'ಪರಿವಿಡಿಯನ್ನು ತೋರಿಸು (ಮೂರಕ್ಕಿಂತ ಹೆಚ್ಚು ತಲೆಬರಹಗಳನ್ನು ಹೊಂದಿರುವ ಪುಟಗಳಿಗೆ)',
 'tog-rememberpassword'        => 'ಈ ಗಣಕಯಂತ್ರದಲ್ಲಿ ನನ್ನ ಲಾಗಿನ್ ನೆನಪಿನಲ್ಲಿಟ್ಟುಕೊ',
-'tog-editwidth'               => 'ಸಂಪಾದನೆ ಚೌಕವು ಪೂರ್ಣ ವಿಸ್ತಾರವನ್ನು ಹೊಂದಿರಲಿ',
 'tog-watchcreations'          => 'ನಾನು ಪ್ರಾರಂಭಿಸುವ ಲೇಖನಗಳನ್ನು ನನ್ನ ವೀಕ್ಷಣಾಪಟ್ಟಿಗೆ ಸೇರಿಸು',
 'tog-watchdefault'            => 'ನಾನು ಸಂಪಾದಿಸುವ ಪುಟಗಳನ್ನು ವೀಕ್ಷಣಾಪಟ್ಟಿಗೆ ಸೇರಿಸು',
 'tog-watchmoves'              => 'ನಾನು ಸ್ಥಳಾಂತರಿಸುವ ಪುಟಗಳನ್ನು ನನ್ನ ವೀಕ್ಷಣಾಪಟ್ಟಿಗೆ ಸೇರಿಸು',
@@ -168,7 +167,7 @@ $messages = array(
 'category-file-count-limited'    => 'ಪ್ರಸಕ್ತ ವರ್ಗದಲ್ಲಿ ಈ ಕೆಳಗಿನ {{PLURAL:$1|ಫೈಲು ಇದೆ|$1 ಫೈಲುಗಳು ಇವೆ}}.',
 'listingcontinuesabbrev'         => 'ಮುಂದು.',
 
-'mainpagetext'      => "<big>'''ವಿಕಿ ತಂತ್ರಾಂಶವನ್ನು ಯಶಸ್ವಿಯಾಗಿ ಅನುಸ್ಥಾಪಿಸಲಾಯಿತು.'''</big>",
+'mainpagetext'      => "'''ವಿಕಿ ತಂತ್ರಾಂಶವನ್ನು ಯಶಸ್ವಿಯಾಗಿ ಅನುಸ್ಥಾಪಿಸಲಾಯಿತು.'''",
 'mainpagedocfooter' => 'ವಿಕಿ ತಂತ್ರಾಂಶವನ್ನು ಬಳಸುವ ಬಗ್ಗೆ ಮಾಹಿತಿಗೆ [http://meta.wikimedia.org/wiki/Help:Contents ಬಳಕೆದಾರರಿಗೆ ನಿರ್ದೇಶನ ಪುಟ] ನೋಡಿ.
 
 == ಪ್ರಾರಂಭಿಸುವುದು ==
@@ -235,7 +234,7 @@ $messages = array(
 'printableversion'  => 'ಪ್ರಿಂಟ್ ಆವೃತ್ತಿ',
 'permalink'         => 'ಸ್ಥಿರ ಸಂಪರ್ಕ',
 'print'             => 'ಮುದ್ರಿಸು',
-'edit'              => 'ಸಂಪಾದಿಸಿ (edit this page)',
+'edit'              => 'ಸಂಪಾದಿಸಿ',
 'create'            => 'ಸೃಷ್ಟಿಸು',
 'editthispage'      => 'ಈ ಪುಟವನ್ನು ಬದಲಾಯಿಸಿ',
 'create-this-page'  => 'ಈ ಪುಟವನ್ನು ಸೃಷ್ಟಿಸು',
@@ -428,6 +427,7 @@ $2',
 'nav-login-createaccount'    => 'ಲಾಗ್ ಇನ್ - log in',
 'loginprompt'                => '{{SITENAME}} ತಾಣಕ್ಕೆ ಲಾಗ್ ಇನ್ ಆಗಲು ನಿಮ್ಮ ಗಣಕಯಂತ್ರದಲ್ಲಿ ಕುಕೀ (cookie) ಸೌಲಭ್ಯವಿರಬೇಕು.',
 'userlogin'                  => 'ಲಾಗ್ ಇನ್ - log in',
+'userloginnocreate'          => 'ಲಾಗ್ ಇನ್',
 'logout'                     => 'ಲಾಗ್ ಔಟ್',
 'userlogout'                 => 'ಲಾಗ್ ಔಟ್',
 'notloggedin'                => 'ಲಾಗಿನ್ ಆಗಿಲ್ಲ',
@@ -542,7 +542,7 @@ $2',
 'summary-preview'                  => 'ತಾತ್ಪರ್ಯ ಮುನ್ನೋಟ:',
 'subject-preview'                  => 'ವಿಷಯದ/ತಲೆಬರಹದ ಮುನ್ನೋಟ:',
 'blockedtitle'                     => 'ಈ ಸದಸ್ಯರನ್ನು ತಡೆ ಹಿಡಿಯಲಾಗಿದೆ.',
-'blockedtext'                      => "<big>'''ನಿಮ್ಮ ಸದಸ್ಯತ್ವವನ್ನು ಅಥವ IP ವಿಳಾಸವನ್ನು ನಿರ್ಬಂಧಿಸಲಾಗಿದೆ.'''</big>
+'blockedtext'                      => "'''ನಿಮ್ಮ ಸದಸ್ಯತ್ವವನ್ನು ಅಥವ IP ವಿಳಾಸವನ್ನು ನಿರ್ಬಂಧಿಸಲಾಗಿದೆ.'''
 
 \$1 ಅವರು ಈ ನಿರ್ಬಂಧನೆಯನ್ನು ಒಡ್ಡಿರುವರು. 
 ಇದಕ್ಕೆ ಅವರು ನೀಡಿರುವ ಕಾರಣ: ''\$2''.
@@ -715,6 +715,8 @@ $2',
 'revdelete-hide-comment'     => 'ಸಂಪಾದನೆ ವಿವರಣೆ ಅಡಗಿಸು',
 'revdelete-hide-user'        => 'ಸಂಪಾದಕರ ಬಳಕೆಯ ಹೆಸರು/IP ಅಡಗಿಸು',
 'revdelete-hide-restricted'  => 'ಈ ನಿಬಂಧನೆಗಳನ್ನು ನಿರ್ವಾಹಕರಿಗೂ ಅನ್ವಯಿಸು ಮತ್ತು ಈ interface ಗೆ ಬೀಗ ಹಾಕು',
+'revdelete-radio-set'        => 'ಹೌದು',
+'revdelete-radio-unset'      => 'ಇಲ್ಲ',
 'revdelete-suppress'         => 'ನಿರ್ವಾಹಕರಿಂದ ಮತ್ತಿತರರಿಂದ ಬಂದ ಮಾಹಿತಿಯನ್ನು ಅಡಗಿಸು',
 'revdelete-unsuppress'       => 'ಪುನಃ ಸ್ಥಾಪಿಸಿದ ಬದಲಾವಣೆಗಳ ಮೇಲಿನ ನಿಬಂಧನೆಗಳನ್ನು ತೆಗೆ',
 'revdelete-log'              => 'ದಾಖಲೆ ವಿವರಣೆ:',
@@ -836,7 +838,9 @@ $2',
 'prefs-rc'                    => 'ಇತ್ತೀಚಿನ ಬದಲಾವಣೆಗಳು',
 'prefs-watchlist'             => 'ವೀಕ್ಷಣಾಪಟ್ಟಿ',
 'prefs-watchlist-days'        => 'ವೀಕ್ಷಣಾಪಟ್ಟಿಯಲ್ಲಿ ತೋರಿಸಲಾಗುವ ದಿನಗಳು:',
+'prefs-watchlist-days-max'    => 'ಗರಿಷ್ಠ ೭ ದಿನಗಳು',
 'prefs-watchlist-edits'       => 'ವಿಸ್ತೃತ ವೀಕ್ಷಣಾಪಟ್ಟಿಯಲ್ಲಿ ತೋರಿಸಬೇಕಾದ ಗರಿಷ್ಠ ಬದಲಾವಣೆಗಳು:',
+'prefs-watchlist-edits-max'   => 'ಗರಿಷ್ಠ ಸಂಖ್ಯೆ: ೧೦೦೦',
 'prefs-misc'                  => 'ಇತರೆ',
 'prefs-resetpass'             => 'ಪ್ರವೇಶಪದ ಬದಲಾಯಿಸಿ',
 'prefs-email'                 => 'ಇ-ಅಂಚೆ ಇಚ್ಛೆಗಳು',
@@ -1164,6 +1168,7 @@ $2',
 # Statistics
 'statistics'              => 'ಅಂಕಿ ಅಂಶಗಳು',
 'statistics-header-users' => 'ಸದಸ್ಯರ ಅಂಕಿ ಅಂಶ',
+'statistics-pages'        => 'ಪುಟಗಳು',
 'statistics-mostpopular'  => 'ಅತ್ಯಂತ ಹೆಚ್ಚು ವೀಕ್ಷಿತ ಪುಟಗಳು',
 
 'disambiguations'     => 'ದ್ವಂದ್ವನಿವಾರಣಾ ಪುಟಗಳು',
@@ -1270,7 +1275,8 @@ $2',
 'sp-deletedcontributions-contribs' => 'ಕಾಣಿಕೆಗಳು',
 
 # Special:LinkSearch
-'linksearch' => 'ಹೊರಗಿನ ಸಂಪರ್ಕಗಳು',
+'linksearch'    => 'ಹೊರಗಿನ ಸಂಪರ್ಕಗಳು',
+'linksearch-ok' => 'ಹುಡುಕು',
 
 # Special:ListUsers
 'listusersfrom'      => 'ಇದರಿಂದ ಪ್ರಾರಂಭವಾಗುವ ಬಳಕೆದಾರರನ್ನು ತೋರಿಸು:',
@@ -1577,7 +1583,7 @@ $2',
 'move-watch'              => 'ಈ ಪುಟವನ್ನು ವೀಕ್ಷಿಸು',
 'movepagebtn'             => 'ಪುಟವನ್ನು ಸ್ಥಳಾಂತರಿಸಿ',
 'pagemovedsub'            => 'ಸ್ಥಳಾಂತರಿಸುವಿಕೆ ಯಶಸ್ವಿಯಾಯಿತು',
-'movepage-moved'          => '<big>\'\'\'"$1" ಪುಟವನ್ನು "$2" ಹೆಸರಿಗೆ ಸ್ಥಳಾಂತರಿಸಲಾಗಿದೆ\'\'\'</big>',
+'movepage-moved'          => '\'\'\'"$1" ಪುಟವನ್ನು "$2" ಹೆಸರಿಗೆ ಸ್ಥಳಾಂತರಿಸಲಾಗಿದೆ\'\'\'',
 'articleexists'           => 'ಆ ಹೆಸರಿನಲ್ಲಿ ಒಂದು ಪುಟ ಆಗಲೇ ಅಸ್ಥಿತ್ವದಲ್ಲಿದೆ ಅಥವ ನೀವು ಆಯ್ಕೆ ಮಾಡಿರುವ ಹೆಸರು ಇತರ ಕಾರಣಗಳಿಗೆ ಸ್ವೀಕಾರಾರ್ಹವಾಗಿಲ್ಲ.
 ದಯವಿಟ್ಟು ಬೇರೆ ಹೆಸರನ್ನು ಆಯ್ಕೆ ಮಾಡಿ.',
 'cantmove-titleprotected' => 'ಈ ಜಾಗಕ್ಕೆ ಪುಟವನ್ನು ಸ್ಥಳಾಂತರಿಸಲು ಆಗುವುದಿಲ್ಲ, ಯಾಕೆಂದರೆ ಆ ಶೀರ್ಷಿಕೆಯು ಸೃಷ್ಟಿಯಾಗದಂತೆ ಸಂರಕ್ಷಿತವಾಗಿದೆ',
@@ -1978,8 +1984,9 @@ $5
 'version-software-version' => 'ಆವೃತ್ತಿ',
 
 # Special:FilePath
-'filepath'      => 'ಫೈಲಿನ ಮಾರ್ಗ',
-'filepath-page' => 'ಫೈಲು:',
+'filepath'        => 'ಫೈಲಿನ ಮಾರ್ಗ',
+'filepath-page'   => 'ಫೈಲು:',
+'filepath-submit' => 'ಹೋಗು',
 
 # Special:FileDuplicateSearch
 'fileduplicatesearch'          => 'ದ್ವಿಪ್ರತಿ ಫೈಲುಗಳಿಗೆ ಹುಡುಕು',

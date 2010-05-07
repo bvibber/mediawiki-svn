@@ -283,7 +283,6 @@ $messages = array(
 'tog-editsectiononrightclick' => 'Uključite uređivanje odjeljka sa pritiskom na desno dugme miša u naslovu odjeljka (JavaScript)',
 'tog-showtoc'                 => 'Prikaži sadržaj (u svim stranicama sa više od tri podnaslova)',
 'tog-rememberpassword'        => 'Zapamti šifru za iduće posjete',
-'tog-editwidth'               => 'Proširi kutiju za uređivanje da ispuni cijeli ekran',
 'tog-watchcreations'          => 'Dodaj stranice koje ja napravim u moj spisak praćenih članaka',
 'tog-watchdefault'            => 'Dodaj stranice koje uređujem u moj spisak praćenih članaka',
 'tog-watchmoves'              => 'Stranice koje premjestim dodaj na spisak praćenja',
@@ -398,7 +397,7 @@ $messages = array(
 'index-category'                 => 'Indeksirane stranice',
 'noindex-category'               => 'Neindeksirane stranice',
 
-'mainpagetext'      => "<big>'''MediaViki softver is uspješno instaliran.'''</big>",
+'mainpagetext'      => "'''MediaViki softver is uspješno instaliran.'''",
 'mainpagedocfooter' => 'Kontaktirajte [http://meta.wikimedia.org/wiki/Help:Contents uputstva za korisnike] za informacije o upotrebi wiki programa.
 
 == Početak ==
@@ -622,6 +621,8 @@ Molimo Vas da ovo prijavite [[Special:ListUsers/sysop|administratoru]] sa navođ
 'readonly_lag'         => 'Baza podataka je zaključana dok se sekundarne baze podataka na serveru ne sastave sa glavnom.',
 'internalerror'        => 'Unutrašnja greška',
 'internalerror_info'   => 'Interna greška: $1',
+'fileappenderrorread'  => 'Nije se mogao pročitati "$1" tokom dodavanja.',
+'fileappenderror'      => 'Ne može se primijeniti "$1" na "$2".',
 'filecopyerror'        => 'Ne može se kopirati "$1" na "$2".',
 'filerenameerror'      => 'Ne može se promjeniti ime datoteke "$1" u "$2".',
 'filedeleteerror'      => 'Ne može se izbrisati datoteka "$1".',
@@ -753,6 +754,7 @@ Možete ignorisati ovu poruku, ako je korisnički račun napravljen greškom.',
 'login-throttled'            => 'Previše puta ste se pokušali prijaviti.
 Molimo Vas da sačekate prije nego što pokušate ponovo.',
 'loginlanguagelabel'         => 'Jezik: $1',
+'suspicious-userlogout'      => 'Vaš zahtjev za odjavu je odbijen jer je poslan preko pokvarenog preglednika ili keširanog proksija.',
 
 # Password reset dialog
 'resetpass'                 => 'Promijeni korisničku šifru',
@@ -768,6 +770,7 @@ Da biste završili prijavu, morate unijeti novu šifru ovdje:',
 'resetpass_forbidden'       => 'Šifre ne mogu biti promjenjene',
 'resetpass-no-info'         => 'Morate biti prijavljeni da bi ste pristupili ovoj stranici direktno.',
 'resetpass-submit-loggedin' => 'Promijeni šifru',
+'resetpass-submit-cancel'   => 'Odustani',
 'resetpass-wrong-oldpass'   => 'Privremena ili trenutna šifra nije validna. 
 Možda ste već uspješno promijenili Vašu šifru ili ste tražili novu privremenu šifru.',
 'resetpass-temp-password'   => 'Privremena šifra:',
@@ -813,7 +816,7 @@ Ako ponovo kliknete na '''Sačuvaj članak''', Vaše izmjene će biti spašene b
 'summary-preview'                  => 'Pregled sažetka:',
 'subject-preview'                  => 'Pregled tema/naslova:',
 'blockedtitle'                     => 'Korisnik je blokiran',
-'blockedtext'                      => "<big>'''Vaše korisničko ime ili IP adresa je blokirana.'''</big>
+'blockedtext'                      => "'''Vaše korisničko ime ili IP adresa je blokirana.'''
 
 Blokada izvršena od strane $1.
 Dati razlog je slijedeći: ''$2''.
@@ -876,6 +879,8 @@ Možete [[Special:Search/{{PAGENAME}}|tražiti ovaj naslov stranice]] na drugim 
 'userpage-userdoesnotexist'        => 'Korisnički račun "$1" nije registrovan.
 Molimo provjerite da li želite napraviti/izmijeniti ovu stranicu.',
 'userpage-userdoesnotexist-view'   => 'Korisnički račun "$1" nije registrovan.',
+'blocked-notice-logextract'        => 'Ovaj korisnik je trenutno blokiran. 
+Posljednje stavke zapisnika blokiranja možete pogledati ispod:',
 'clearyourcache'                   => "'''Pažnja: Nakon što sačuvate izmjene, morate \"osvježiti\" keš memoriju vašeg pretraživača da bi ste vidjeli nova podešenja.'''
 '''Mozilla / Firefox / Safari:''' držite ''Shift'' tipku i kliknite na ''Reload'' dugme ili ''Ctrl-R'' ili ''Ctrl-F5'' (''Command-R'' na Macintoshu);
 '''Konqueror:''' klikni na ''Reload'' ili pritisnite dugme ''F5'';
@@ -1324,6 +1329,7 @@ Ovdje su navedene neke nasumično odabrane vrijednosti koje možete koristiti: $
 'prefs-files'                   => 'Datoteke',
 'prefs-custom-css'              => 'Prilagođeni CSS',
 'prefs-custom-js'               => 'Prilagođeni JS',
+'prefs-common-css-js'           => 'Dijeljeni CSS/JS za sve kože:',
 'prefs-reset-intro'             => 'Možete koristiti ovu stranicu da poništite Vaše postavke na ovom sajtu na pretpostavljene vrijednosti.
 Ovo se ne može vratiti unazad.',
 'prefs-emailconfirm-label'      => 'E-mail potvrda:',
@@ -1602,6 +1608,7 @@ Da bi ste prikazali datoteku na stranici, koristite link na jedan od slijedećih
 'illegalfilename'             => 'Ime datoteke "$1" sadrži simbol koji nije dozvoljen u imenu datoteke.
 Molimo Vas da promijenite ime datoteke i pokušate da je ponovo postavite.',
 'badfilename'                 => 'Ime datoteke je promijenjeno u "$1".',
+'filetype-mime-mismatch'      => 'Proširenje datoteke ne odgovara MIME tipu.',
 'filetype-badmime'            => 'Datoteke MIME vrste "$1" nije dopušteno postavljati.',
 'filetype-bad-ie-mime'        => 'Ne može se postaviti ova datoteka jer je Internet Explorer prepoznaje kao "$1", što je nedozvoljena i potencijalno opasna vrsta datoteke.',
 'filetype-unwanted-type'      => "'''\".\$1\"''' je nepoželjna vrsta datoteke.
@@ -1716,6 +1723,7 @@ Za optimalnu sigurnost, img_auth.php je onemogućena.',
 'http-timed-out'        => 'Istekao HTTP zahtjev.',
 'http-curl-error'       => 'Greška pri otvaranju URLa: $1',
 'http-host-unreachable' => 'Ovaj URL nije bilo moguće otvoriti',
+'http-bad-status'       => 'Nastao je problem tokom HTTP zahtjeva: $1 $2',
 
 # Some likely curl errors. More could be added from <http://curl.haxx.se/libcurl/c/libcurl-errors.html>
 'upload-curl-error6'       => 'Ovaj URL nije bilo moguće otvoriti',
@@ -1855,7 +1863,6 @@ Prije brisanja provjerite da li druge stranice vode na te šablone.',
 'statistics-edits-average'     => 'Prosječno izmjena po stranici',
 'statistics-views-total'       => 'Ukupno pregleda',
 'statistics-views-peredit'     => 'Pogleda po izmjeni',
-'statistics-jobqueue'          => 'Dužina [http://www.mediawiki.org/wiki/Manual:Job_queue akcija na čekanju]',
 'statistics-users'             => 'Registrovani [[Special:ListUsers|korisnici]]',
 'statistics-users-active'      => 'Aktivni korisnici',
 'statistics-users-active-desc' => 'Korisnici koju su izvršili akciju u toku {{PLURAL:$1|zadnjeg dana|zadnja $1 dana|zadnjih $1 dana}}',
@@ -2146,7 +2153,7 @@ Da promjenite podešavanja vezana za spisak praćenih članaka posjetite
 {{fullurl:{{#special:Watchlist}}/edit}}
 
 Da obrišete stranicu iz Vašeg spiska praćenja posjetite 
-{{fullurl:{{FULLPAGENAMEE}}|action=unwatch}}
+$UNWATCHURL
 
 Fidbek i dalja pomoć:
 {{fullurl:{{MediaWiki:Helppage}}}}',
@@ -2240,7 +2247,7 @@ Možete promijeniti stepen zaštite ove stranice, ali to neće uticati na prenos
 'protect-othertime-op'        => 'ostali period',
 'protect-existing-expiry'     => 'Postojeće vrijeme isticanja: $3, $2',
 'protect-otherreason'         => 'Ostali/dodatni razlozi:',
-'protect-otherreason-op'      => 'ostali/dodatni razlozi',
+'protect-otherreason-op'      => 'Ostali razlozi',
 'protect-dropdown'            => '*Uobičajeni razlozi zaštite
 ** Prekomjerni vandalizam
 ** Prekomjerno spamovanje
@@ -2298,7 +2305,7 @@ Možda ste unijeli pogrešan link, ili je revizija vraćena ili uklonjena iz arh
 'undeletedfiles'               => '{{PLURAL:$1|1 datoteka vraćena|$1 datoteke vraćene|$1 datoteka vraćeno}}',
 'cannotundelete'               => 'Vraćanje nije uspjelo;
 neko drugi je već vratio ovu stranicu.',
-'undeletedpage'                => "<big>'''$1 je vraćena'''</big>
+'undeletedpage'                => "'''$1 je vraćena'''
 
 Provjerite [[Special:Log/delete|zapis brisanja]] za zapise najskorijih brisanja i vraćanja.",
 'undelete-header'              => 'Pogledajte [[Special:Log/delete|zapisnik brisanja]] za nedavno obrisane stranice.',
@@ -2531,6 +2538,7 @@ drastična i neočekivana promjena za korisnike.",
 
 U tim slučajevima, moraćete ručno da premjestite stranicu ukoliko to želite.",
 'movearticle'                  => 'Premjestite stranicu',
+'moveuserpage-warning'         => "'''Upozorenje:''' Premještate korisničku stranicu. Molimo da zapamtite da će se samo stranica premjestiti a korisnik se ''neće'' preimenovati.",
 'movenologin'                  => 'Niste prijavljeni',
 'movenologintext'              => 'Morate biti registrovani korisnik i [[Special:UserLogin|prijavljeni]] da biste premjestili stranicu.',
 'movenotallowed'               => 'Nemate dopuštenje za premještanje stranica.',
@@ -2541,7 +2549,7 @@ U tim slučajevima, moraćete ručno da premjestite stranicu ukoliko to želite.
 'move-watch'                   => 'Prati ovu stranicu',
 'movepagebtn'                  => 'premjestite stranicu',
 'pagemovedsub'                 => 'Premještanje uspjelo',
-'movepage-moved'               => '<big>\'\'\'"$1" je premještena na "$2"\'\'\'</big>',
+'movepage-moved'               => '\'\'\'"$1" je premještena na "$2"\'\'\'',
 'movepage-moved-redirect'      => 'Preusmjerenje je napravljeno.',
 'movepage-moved-noredirect'    => 'Pravljenje preusmjerenja je onemogućeno.',
 'articleexists'                => 'Stranica pod tim imenom već postoji, ili je ime koje ste izabrali neispravno.  Molimo Vas da izaberete drugo ime.',
@@ -3206,25 +3214,25 @@ Svi drugi linkovi u istoj liniji se smatraju izuzecima, npr. kod stranica gdje s
 'limitall'         => 'sve',
 
 # E-mail address confirmation
-'confirmemail'             => 'Potvrdite adresu e-pošte',
-'confirmemail_noemail'     => 'Niste unijeli tačnu e-mail adresu u Vaše [[Special:Preferences|korisničke postavke]].',
-'confirmemail_text'        => 'Ova viki zahtjeva da potvrdite adresu Vaše e-pošte prije nego što koristite mogućnosti e-pošte. Aktivirajte dugme ispod kako bi ste poslali poštu za potvrdu na Vašu adresu. Pošta uključuje link koji sadrži kod; učitajte link u Vaš preglednik da bi ste potvrdili da je adresa Vaše e-pošte validna.',
-'confirmemail_pending'     => 'Konfirmacioni kod Vam je već poslan putem e-maila;
+'confirmemail'              => 'Potvrdite adresu e-pošte',
+'confirmemail_noemail'      => 'Niste unijeli tačnu e-mail adresu u Vaše [[Special:Preferences|korisničke postavke]].',
+'confirmemail_text'         => 'Ova viki zahtjeva da potvrdite adresu Vaše e-pošte prije nego što koristite mogućnosti e-pošte. Aktivirajte dugme ispod kako bi ste poslali poštu za potvrdu na Vašu adresu. Pošta uključuje link koji sadrži kod; učitajte link u Vaš preglednik da bi ste potvrdili da je adresa Vaše e-pošte validna.',
+'confirmemail_pending'      => 'Konfirmacioni kod Vam je već poslan putem e-maila;
 ako ste nedavno otvorili Vaš račun, trebali bi pričekati par minuta da poslana pošta stigne, prije nego što ponovno zahtijevate novi kod.',
-'confirmemail_send'        => 'Pošaljite kod za potvrdu',
-'confirmemail_sent'        => 'E-pošta za potvrđivanje poslata.',
-'confirmemail_oncreate'    => 'Kod za potvrđivanje Vam je poslat na Vašu e-mail adresu.
+'confirmemail_send'         => 'Pošaljite kod za potvrdu',
+'confirmemail_sent'         => 'E-pošta za potvrđivanje poslata.',
+'confirmemail_oncreate'     => 'Kod za potvrđivanje Vam je poslat na Vašu e-mail adresu.
 Taj kod nije neophodan za prijavljivanje, ali Vam ne potreban kako bi ste omogućili funkcije wikija zasnovane na e-mailu.',
-'confirmemail_sendfailed'  => '{{SITENAME}} Vam ne može poslati poštu za potvrđivanje. Provjerite adresu zbog nepravilnih karaktera.
+'confirmemail_sendfailed'   => '{{SITENAME}} Vam ne može poslati poštu za potvrđivanje. Provjerite adresu zbog nepravilnih karaktera.
 
 Povratna pošta: $1',
-'confirmemail_invalid'     => 'Netačan kod za potvrdu. Moguće je da je kod istekao.',
-'confirmemail_needlogin'   => 'Morate $1 da bi ste potvrdili Vašu e-mail adresu.',
-'confirmemail_success'     => 'Adresa vaše e-pošte je potvrđena. Možete sad da se prijavite i uživate u viki.',
-'confirmemail_loggedin'    => 'Adresa Vaše e-pošte je potvrđena.',
-'confirmemail_error'       => 'Nešto je pošlo po zlu prilikom sačuvavanja vaše potvrde.',
-'confirmemail_subject'     => 'Vikiriječnik adresa e-pošte za potvrđivanje',
-'confirmemail_body'        => 'Neko, vjerovatno Vi, je sa IP adrese $1 registrovao nalog "$2" sa ovom adresom e-pošte na {{SITENAME}}.
+'confirmemail_invalid'      => 'Netačan kod za potvrdu. Moguće je da je kod istekao.',
+'confirmemail_needlogin'    => 'Morate $1 da bi ste potvrdili Vašu e-mail adresu.',
+'confirmemail_success'      => 'Adresa vaše e-pošte je potvrđena. Možete sad da se prijavite i uživate u viki.',
+'confirmemail_loggedin'     => 'Adresa Vaše e-pošte je potvrđena.',
+'confirmemail_error'        => 'Nešto je pošlo po zlu prilikom sačuvavanja vaše potvrde.',
+'confirmemail_subject'      => 'Vikiriječnik adresa e-pošte za potvrđivanje',
+'confirmemail_body'         => 'Neko, vjerovatno Vi, je sa IP adrese $1 registrovao nalog "$2" sa ovom adresom e-pošte na {{SITENAME}}.
 
 Da potvrdite da ovaj nalog stvarno pripada vama i da aktivirate mogućnost e-pošte na {{SITENAME}}, otvorite ovaj link u vašem pregledniku:
 
@@ -3234,8 +3242,20 @@ Ako ovo niste vi, pratite ovaj link da prekinete prijavu:
 $5
 
 Ovaj kod za potvrdu će isteći u $4.',
-'confirmemail_invalidated' => 'Potvrda e-mail adrese otkazana',
-'invalidateemail'          => 'Odustani od e-mail potvrde',
+'confirmemail_body_changed' => 'Neko, vjerovatno Vi, je sa IP adrese $1 
+je promijenio adresu e-pošte računa "$2" na ovu adresu za {{SITENAME}}.
+
+Da potvrdite da ovaj nalog stvarno pripada Vama i da reaktivirate mogućnosti e-pošte na {{SITENAME}}, otvorite ovaj link u Vašem pregledniku:
+
+$3
+
+Ako ovaj račun *ne* pripada Vama, pratite ovaj link da prekinete odobravanje adrese e-pošte:
+
+$5
+
+Ovaj kod za potvrdu će isteći u $4.',
+'confirmemail_invalidated'  => 'Potvrda e-mail adrese otkazana',
+'invalidateemail'           => 'Odustani od e-mail potvrde',
 
 # Scary transclusion
 'scarytranscludedisabled' => '[Međuwiki umetanje je isključeno]',

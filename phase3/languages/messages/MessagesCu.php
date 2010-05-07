@@ -407,7 +407,6 @@ $messages = array(
 'statistics-articles'     => 'истиньнꙑ члѣ́ни',
 'statistics-pages'        => 'страни́цѧ',
 'statistics-files'        => 'положєнꙑ дѣла́',
-'statistics-jobqueue'     => '[http://www.mediawiki.org/wiki/Manual:Job_queue Дѣ́иствъ чрѣ́дꙑ] дльгота',
 
 'disambiguations'     => 'мъногосъмꙑ́слиꙗ',
 'disambiguationspage' => 'Template:мъногосъмꙑ́слиѥ',
@@ -542,7 +541,7 @@ $messages = array(
 'move-watch'       => 'си страни́цѧ блюдє́ниѥ',
 'movepagebtn'      => 'прѣимєнова́ниѥ',
 'pagemovedsub'     => 'прѣимєнова́ниѥ сътворѥно́ ѥ́стъ',
-'movepage-moved'   => "<big>'''⁖ $1 ⁖ нарєчє́нъ ⁖ $2⁖ ѥ́стъ'''</big>",
+'movepage-moved'   => "'''⁖ $1 ⁖ нарєчє́нъ ⁖ $2⁖ ѥ́стъ'''",
 'movedto'          => 'прѣимєновано въ',
 'movetalk'         => 'си страни́цѧ бєсѣ́дꙑ прѣимєнова́ниѥ',
 '1movedto2'        => '⁖ [[$1]] ⁖ нарєчє́нъ ⁖ [[$2]] ⁖ ѥ́стъ',

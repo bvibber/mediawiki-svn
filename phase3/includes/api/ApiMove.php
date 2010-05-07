@@ -122,14 +122,19 @@ class ApiMove extends ApiBase {
 			}
 		}
 
-		// Watch pages
-		if ( $params['watch'] || $wgUser->getOption( 'watchmoves' ) ) {
-			$wgUser->addWatch( $fromTitle );
-			$wgUser->addWatch( $toTitle );
+		$watch = "preferences";
+		if ( isset( $params['watchlist'] ) ) {
+			$watch = $params['watchlist'];
+		} elseif ( $params['watch'] ) {
+			$watch = 'watch';
 		} elseif ( $params['unwatch'] ) {
-			$wgUser->removeWatch( $fromTitle );
-			$wgUser->removeWatch( $toTitle );
+			$watch = 'unwatch';
 		}
+
+		// Watch pages
+		$this->setWatch( $watch, $fromTitle, 'watchmoves' );
+		$this->setWatch( $watch, $toTitle, 'watchmoves' );
+
 		$this->getResult()->addValue( null, $this->getModuleName(), $r );
 	}
 
@@ -175,8 +180,23 @@ class ApiMove extends ApiBase {
 			'movetalk' => false,
 			'movesubpages' => false,
 			'noredirect' => false,
-			'watch' => false,
-			'unwatch' => false,
+			'watch' => array(
+				ApiBase::PARAM_DFLT => false,
+				ApiBase::PARAM_DEPRECATED => true,
+			),
+			'unwatch' => array(
+				ApiBase::PARAM_DFLT => false,
+				ApiBase::PARAM_DEPRECATED => true,
+			),
+			'watchlist' => array(
+				ApiBase::PARAM_DFLT => 'preferences',
+				ApiBase::PARAM_TYPE => array(
+					'watch',
+					'unwatch',
+					'preferences',
+					'nochange'
+				),
+			),
 			'ignorewarnings' => false
 		);
 	}
@@ -193,6 +213,7 @@ class ApiMove extends ApiBase {
 			'noredirect' => 'Don\'t create a redirect',
 			'watch' => 'Add the page and the redirect to your watchlist',
 			'unwatch' => 'Remove the page and the redirect from your watchlist',
+			'watchlist' => 'Unconditionally add or remove the page from your watchlist, use preferences or do not change watch',
 			'ignorewarnings' => 'Ignore any warnings'
 		);
 	}

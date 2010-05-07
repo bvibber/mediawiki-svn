@@ -307,12 +307,14 @@ class DatabaseOracle extends DatabaseBase {
 		if ( ( $this->mLastResult = $stmt = oci_parse( $this->mConn, $sql ) ) === false ) {
 			$e = oci_error( $this->mConn );
 			$this->reportQueryError( $e['message'], $e['code'], $sql, __FUNCTION__ );
+			return false;
 		}
 
 		if ( oci_execute( $stmt, $this->execFlags() ) == false ) {
 			$e = oci_error( $stmt );
 			if ( !$this->ignore_DUP_VAL_ON_INDEX || $e['code'] != '1' ) {
 				$this->reportQueryError( $e['message'], $e['code'], $sql, __FUNCTION__ );
+				return false;
 			}
 		}
 		
@@ -494,6 +496,7 @@ class DatabaseOracle extends DatabaseBase {
 				$val = ( $wgLang != null ) ? $wgLang->checkTitleEncoding( $val ) : $val;
 				if ( oci_bind_by_name( $stmt, ":$col", $val ) === false ) {
 					$this->reportQueryError( $this->lastErrno(), $this->lastError(), $sql, __METHOD__ );
+					return false;
 				}
 			} else {
 				if ( ( $lob[$col] = oci_new_descriptor( $this->mConn, OCI_D_LOB ) ) === false ) {
@@ -518,6 +521,7 @@ class DatabaseOracle extends DatabaseBase {
 
 			if ( !$this->ignore_DUP_VAL_ON_INDEX || $e['code'] != '1' ) {
 				$this->reportQueryError( $e['message'], $e['code'], $sql, __METHOD__ );
+				return false;
 			} else {
 				$this->mAffectedRows = oci_num_rows( $stmt );
 			}
@@ -851,7 +855,7 @@ class DatabaseOracle extends DatabaseBase {
 			$tableWhere = '= \''.$table.'\'';
 		}
 
-		$fieldInfoStmt = oci_parse( $this->mConn, 'SELECT * FROM wiki_field_info_full WHERE table_name '.$tableWhere.' and column_name = \''.$field.'\'' );
+		$fieldInfoStmt = oci_parse( $this->mConn, 'SELECT * FROM '.$this->tableName('wiki_field_info_full').' WHERE table_name '.$tableWhere.' and column_name = \''.$field.'\'' );
 		if ( oci_execute( $fieldInfoStmt, OCI_DEFAULT ) === false ) {
 			$e = oci_error( $fieldInfoStmt );
 			$this->reportQueryError( $e['message'], $e['code'], 'fieldInfo QUERY', __METHOD__ );
@@ -978,18 +982,23 @@ class DatabaseOracle extends DatabaseBase {
 	function setup_database() {
 		global $wgVersion, $wgDBmwschema, $wgDBts2schema, $wgDBport, $wgDBuser;
 
-		echo "<li>Creating DB objects</li>\n";
 		$res = $this->sourceFile( "../maintenance/ora/tables.sql" );
+		if ($res === true) {
+			print " done.</li>\n";
+		} else {
+			print " <b>FAILED</b></li>\n";
+			dieout( htmlspecialchars( $res ) );
+		}
 
 		// Avoid the non-standard "REPLACE INTO" syntax
-		echo "<li>Populating table interwiki</li>\n";
+		echo "<li>Populating interwiki table</li>\n";
 		$f = fopen( "../maintenance/interwiki.sql", 'r' );
 		if ( $f == false ) {
-			dieout( "<li>Could not find the interwiki.sql file</li>" );
+			dieout( "Could not find the interwiki.sql file" );
 		}
 
 		// do it like the postgres :D
-		$SQL = "INSERT INTO interwiki(iw_prefix,iw_url,iw_local) VALUES ";
+		$SQL = "INSERT INTO ".$this->tableName('interwiki')." (iw_prefix,iw_url,iw_local) VALUES ";
 		while ( !feof( $f ) ) {
 			$line = fgets( $f, 1024 );
 			$matches = array();

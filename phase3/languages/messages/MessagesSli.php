@@ -37,7 +37,6 @@ $messages = array(
 'tog-editsectiononrightclick' => 'Eenzelne Obschniete dorch Rechtsklick beoarbeeta (JavaScript)',
 'tog-showtoc'                 => 'Inhaltsverzeichnis aozäan bei meh wie drei Ieberschrifta',
 'tog-rememberpassword'        => 'Notzer sull uff de Lengde oagemeldt blein (login uff diesem Rechner speichern)',
-'tog-editwidth'               => 'Eingabefeld erweitern, im dann ganza Bildschirm auszufiella',
 'tog-watchcreations'          => 'Salber derstallte Seyta automatisch beobachta',
 'tog-watchdefault'            => 'Salber geänderte on neu erstellte Seyta automatisch beobachta (zu menner Beobachtungsliste hinzufügen)',
 'tog-watchmoves'              => 'Vo merr salber verschobene Seyta autoatisch beobachta',
@@ -151,7 +150,7 @@ $messages = array(
 'index-category'                 => 'Indizierte Seyta',
 'noindex-category'               => 'Neindizierte Seyta',
 
-'mainpagetext'      => "<big>'''MediaWiki wourde erfolgreich installiert.'''</big>",
+'mainpagetext'      => "'''MediaWiki wourde erfolgreich installiert.'''",
 'mainpagedocfooter' => 'Hilfe zur Benutzung und Konfiguration der Wiki-Software fendest du eim [http://meta.wikimedia.org/wiki/Help:Contents Benutzerhandbichl].
 
 == Stoarthilfa ==
@@ -373,6 +372,7 @@ Falls dies nicht der Fall ist, hast du eventuell einen Fehler in der Software ge
 'readonly_lag'         => 'Die Datenbank wurde automatisch für Schreibzugriffe gesperrt, damit sich die verteilten Datenbankserver (slaves) mit dem Hauptdatenbankserver (master) abgleichen können.',
 'internalerror'        => 'Interner Fehler',
 'internalerror_info'   => 'Interner Fehler: $1',
+'fileappenderror'      => 'Konnte „$1“ ne oa „$2“ oahänga.',
 'filecopyerror'        => 'Die Datei „$1“ konnte nicht nach „$2“ kopiert werden.',
 'filerenameerror'      => 'Die Datei „$1“ konnte nicht nach „$2“ umbenannt werden.',
 'filedeleteerror'      => 'Die Datei „$1“ konnte nicht gelöscht werden.',
@@ -555,7 +555,7 @@ Meeglicherweise host du dei Poaßwurt bereits erfolgreich geändert oder a neues
 'summary-preview'                  => 'Vurschau dar Zusommafassungszeile:',
 'subject-preview'                  => 'Vurschau des Betreffs:',
 'blockedtitle'                     => 'Benutzer ies gesperrt',
-'blockedtext'                      => "big>'''Dei Nutzernoame oder denne IP-Atresse wurde gesperrt.'''</big>
+'blockedtext'                      => "big>'''Dei Nutzernoame oder denne IP-Atresse wurde gesperrt.'''
 
 De Sperrung wurde vu $1 durchgefiehrt.
 Ols Grund wurde ''$2'' oagegahn.
@@ -1408,7 +1408,6 @@ Ieberpriefe andere Links zu dann Vurloaga, bevor du diese läscht.',
 'statistics-edits-average'     => 'Beoarbeetunga pro Seyte eim Durchschnitt',
 'statistics-views-total'       => 'Seytaaufrufe gesamt',
 'statistics-views-peredit'     => 'Seyta uffruffe pro Beoarbeetung',
-'statistics-jobqueue'          => 'Länge dar [http://www.mediawiki.org/wiki/Manual:Job_queue Ufftragswarteschlange]',
 'statistics-users'             => 'Registrierte [[Special:ListUsers|Nutzer]]',
 'statistics-users-active'      => 'Aktive Benutzer',
 'statistics-users-active-desc' => 'Nutzer miet Beoarbeetunga {{PLURAL:$1|enn letzta 24 Stunden|enn vergangenen $1 Tagen}}',
@@ -2036,7 +2035,7 @@ Bite dan '''neua''' Tittel under '''Ziel''' eintraga, darunder de Umbenennung bi
 'move-watch'                   => 'Diese Seyte beobachta',
 'movepagebtn'                  => 'Seite verschieba',
 'pagemovedsub'                 => 'Verschiebung erfolgreich',
-'movepage-moved'               => "<big>'''De Seyte „$1“ wurde noach „$2“ verschoba.'''</big>",
+'movepage-moved'               => "'''De Seyte „$1“ wurde noach „$2“ verschoba.'''",
 'articleexists'                => 'Under diesem Noama existiert bereits eene Seyte. Bite wähle eena andern Noama.',
 'cantmove-titleprotected'      => 'De Verschiebung koan ne durchgefiehrt waan, do dar Zieltittel zur Erstellung gesperrt ies.',
 'talkexists'                   => 'De Seyte selbst wurde erfolgreich verschoba, oaber de zugeheerige Dischkursseite nee, doo bereits eene miet dam neua Tittel existiert. Bite gleiche de Inhalte voo Hond ob.',

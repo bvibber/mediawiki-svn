@@ -139,7 +139,6 @@ $messages = array(
 'tog-editsectiononrightclick' => 'Pemèt edite yon seksyon pa klike a dwat tit seksyon an (JavaScrip)',
 'tog-showtoc'                 => 'Montre tab de matyè yo (pou tout paj ki gen plis ke twa tit)',
 'tog-rememberpassword'        => 'Sonje login mwen nan òdinatè sa',
-'tog-editwidth'               => 'Montre fenèt pou modifikasyon yo nan mitan paj lan',
 'tog-watchcreations'          => 'Ajoute paj yo ke mwen ap kreye nan lis swivi mwen.',
 'tog-watchdefault'            => 'Mete paj mwen edite yo nan lis veye m',
 'tog-watchmoves'              => 'Mete paj mwen deplase nan lis veye m',
@@ -250,7 +249,7 @@ $messages = array(
 'category-file-count-limited'    => 'Swivan {{PLURAL:$1|dokiman sa|$1 dokiman sa yo}} nan kategori kouran.',
 'listingcontinuesabbrev'         => '(kontinye)',
 
-'mainpagetext'      => "<big>'''MedyaWiki byen enstale l.'''</big>",
+'mainpagetext'      => "'''MedyaWiki byen enstale l.'''",
 'mainpagedocfooter' => 'Konsilte [http://meta.wikimedia.org/wiki/Help:Konteni Gid Itilizatè] pou enfòmasyon sou kijan pou w itilize logisye wiki-a.
 
 == Kijan kòmanse ==
@@ -614,7 +613,7 @@ Si ou klike sou \"Pibliye\", edisyon ou an pap genyen yon tit.",
 'summary-preview'                  => 'Kout zye nan rezime an anvan li anrejistre:',
 'subject-preview'                  => 'Yon kout zye sou sijè/tit atik kontni sa:',
 'blockedtitle'                     => 'itilizatè a bloke.',
-'blockedtext'                      => "<big>'''Kont itilizatè ou an (oubyen adrès IP ou an) bloke.'''</big>
+'blockedtext'                      => "'''Kont itilizatè ou an (oubyen adrès IP ou an) bloke.'''
 
 Blokaj an fèt pa $1.
 Rezon li bay se : ''$2''.
@@ -1154,7 +1153,7 @@ Nan pozisyon sa a, ou ke dwèt renonmen oubyen fizyone ou menm menm paj an si ou
 'move-watch'       => 'Swiv paj sa a',
 'movepagebtn'      => 'Deplase paj an',
 'pagemovedsub'     => 'Deplasman an fèt',
-'movepage-moved'   => '<big>\'\'\'"$1" deplase nan "$2" alè kile\'\'\'</big>',
+'movepage-moved'   => '\'\'\'"$1" deplase nan "$2" alè kile\'\'\'',
 'articleexists'    => 'Nou ja genyen yon atik ak non sa a oubyen non ke ou chwazi an pa valab ankò. Chwazi yon lòt.',
 'talkexists'       => 'Paj an men byen deplase. Mè paj diskisyon an pa deplase paske li te ja egziste yonn anlè nouvo paj an. Souple, fizyone de diskisyon sa yo, mete yo ansanmm anlè nouvo paj an.',
 'movedto'          => 'deplase nan',

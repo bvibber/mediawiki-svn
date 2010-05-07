@@ -39,11 +39,25 @@ class GIFHandler extends BitmapHandler {
 			return $width * $height;
 		}
 	}
+
+	function isAnimatedImage( $image ) {
+		$ser = $image->getMetadata();
+		if ($ser) {
+			$metadata = unserialize($ser);
+			if( $metadata['frameCount'] > 1 ) return true;
+		}
+		return false;
+	}
 	
 	function getMetadataType( $image ) {
 		return 'parsed-gif';
 	}
 	
+	function isMetadataValid( $image, $metadata ) {
+		$data = @unserialize( $metadata );
+		return (boolean) $data;
+	}
+
 	function getLongDesc( $image ) {
 		global $wgUser, $wgLang;
 		$sk = $wgUser->getSkin();

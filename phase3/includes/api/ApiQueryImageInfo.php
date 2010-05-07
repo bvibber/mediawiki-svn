@@ -184,8 +184,12 @@ class ApiQueryImageInfo extends ApiQueryBase {
 
 	/**
 	 * Get result information for an image revision
-	 * @param File f The image
-	 * @return array Result array
+	 *
+	 * @param $file File object
+	 * @param $prop Array of properties to get (in the keys)
+	 * @param $result ApiResult object
+	 * @param $scale Array containing 'width' and 'height' items, or null
+	 * @return Array: result array
 	 */
 	static function getInfo( $file, $prop, $result, $scale = null ) {
 		$vals = array();
@@ -284,11 +288,11 @@ class ApiQueryImageInfo extends ApiQueryBase {
 			),
 			'urlwidth' => array(
 				ApiBase::PARAM_TYPE => 'integer',
-				ApiBase::PARAM_DFLT => -1
+				ApiBase::PARAM_DFLT => - 1
 			),
 			'urlheight' => array(
 				ApiBase::PARAM_TYPE => 'integer',
-				ApiBase::PARAM_DFLT => -1
+				ApiBase::PARAM_DFLT => - 1
 			),
 			'continue' => null,
 		);

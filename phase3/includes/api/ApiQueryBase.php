@@ -309,7 +309,7 @@ abstract class ApiQueryBase extends ApiBase {
 	/**
 	 * Same as addPageSubItems(), but one element of $data at a time
 	 * @param $pageId int Page ID
-	 * @param $data array Data array à la ApiResult
+	 * @param $item array Data array à la ApiResult
 	 * @param $elemname string XML element name. If null, getModuleName()
 	 *  is used
 	 * @return bool Whether the element fit in the result
@@ -464,7 +464,7 @@ abstract class ApiQueryGeneratorBase extends ApiQueryBase {
 
 	/**
 	 * Overrides base class to prepend 'g' to every generator parameter
-	 * @param $paramNames string Parameter name
+	 * @param $paramName string Parameter name
 	 * @return string Prefixed parameter name
 	 */
 	public function encodeParamName( $paramName ) {

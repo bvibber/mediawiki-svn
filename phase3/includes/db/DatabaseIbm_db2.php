@@ -746,9 +746,12 @@ EOF;
 			$this->begin();
 			
 			$res = $this->sourceFile( "../maintenance/ibm_db2/tables.sql" );
+			if ($res !== true) {
+				print " <b>FAILED</b>: " . htmlspecialchars( $res ) . "</li>";
+			} else {
+				print " done</li>";
+			}
 			$res = null;
-	
-			// TODO: update mediawiki_version table
 			
 			// TODO: populate interwiki links
 			

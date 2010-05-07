@@ -26,21 +26,35 @@ class SkinVector extends SkinTemplate {
 	 * @param object $out Output page object to initialize
 	 */
 	public function initPage( OutputPage $out ) {
-		global $wgStylePath, $wgJsMimeType, $wgStyleVersion, $wgScriptPath, $wgVectorExtraStyles;
+		global $wgLocalStylePath;
 		
 		parent::initPage( $out );
 
-		// Append skin-specific styles
-		$out->addStyle( 'vector/main-rtl.css', 'screen', '', 'rtl' );
-		$out->addStyle( 'vector/main-ltr.css', 'screen', '', 'ltr' );
 		// Append CSS which includes IE only behavior fixes for hover support -
 		// this is better than including this in a CSS fille since it doesn't
 		// wait for the CSS file to load before fetching the HTC file.
 		$out->addScript(
 			'<!--[if lt IE 7]><style type="text/css">body{behavior:url("' .
-				$wgStylePath .
+				$wgLocalStylePath .
 				'/vector/csshover.htc")}</style><![endif]-->'
 		);
+	}
+
+	/**
+	 * Load skin and user css files in the correct order
+	 * fixes bug 22916
+	 * @param object $out OutputPage object
+	 */
+
+	function setupSkinUserCss( OutputPage $out ){
+		global $wgVectorExtraStyles;
+		
+		parent::setupSkinUserCss( $out );
+
+		// Append skin-specific styles
+		$out->addStyle( 'vector/main-rtl.css', 'screen', '', 'rtl' );
+		$out->addStyle( 'vector/main-ltr.css', 'screen', '', 'ltr' );
+
 		// Add extra stylesheets
 		// THIS IS ONLY USEFUL FOR EXPERIMENTING WITH DIFFERNT STYLE OPTIONS! THIS WILL BE REMOVED IN THE NEAR FUTURE.
 		if ( is_array( $wgVectorExtraStyles ) ) {
@@ -49,6 +63,7 @@ class SkinVector extends SkinTemplate {
 			}
 		}
 	}
+
 	/**
 	 * Builds a structured array of links used for tabs and menus
 	 * @return array
@@ -154,8 +169,8 @@ class SkinVector extends SkinTemplate {
 						);
 					}
 				}
-			// Checks if the page is known (some kind of viewable content)
-			} elseif ( $this->mTitle->isKnown() ) {
+			// Checks if the page has some kind of viewable content
+			} elseif ( $this->mTitle->hasSourceText() ) {
 				// Adds view source view link
 				$links['views']['viewsource'] = array(
 					'class' => ( $action == 'edit' ) ? 'selected' : false,
@@ -451,7 +466,7 @@ class VectorTemplate extends QuickTemplate {
 		<div id="page-base" class="noprint"></div>
 		<div id="head-base" class="noprint"></div>
 		<!-- content -->
-		<div id="content" <?php $this->html('specialpageattributes') ?>>
+		<div id="content"<?php $this->html('specialpageattributes') ?>>
 			<a id="top"></a>
 			<div id="mw-js-message" style="display:none;"<?php $this->html('userlangattributes') ?>></div>
 			<?php if ( $this->data['sitenotice'] ): ?>
@@ -611,7 +626,6 @@ class VectorTemplate extends QuickTemplate {
 		<?php elseif ( $this->data['nav_urls']['permalink']['href'] === '' ): ?>
 		<li id="t-ispermalink"<?php echo $this->skin->tooltip( 't-ispermalink' ) ?>><?php $this->msg( 'permalink' ) ?></li>
 		<?php endif; ?>
-		<?php wfRunHooks( 'VectorTemplateToolboxEnd', array( &$this ) ); ?>
 		<?php wfRunHooks( 'SkinTemplateToolboxEnd', array( &$this ) ); ?>
 		</ul>
 	</div>
@@ -662,7 +676,7 @@ class VectorTemplate extends QuickTemplate {
 	 * when UI is in RTL mode
 	 */
 	private function renderNavigation( $elements ) {
-		global $wgContLang, $wgVectorUseSimpleSearch, $wgStylePath;
+		global $wgContLang, $wgVectorUseSimpleSearch, $wgVectorShowVariantName, $wgStylePath;
 
 		// If only one element was given, wrap it in an array, allowing more
 		// flexible arguments
@@ -680,24 +694,37 @@ class VectorTemplate extends QuickTemplate {
 ?>
 <div id="p-namespaces" class="vectorTabs<?php if ( count( $this->data['namespace_urls'] ) == 0 ) echo ' emptyPortlet'; ?>">
 	<h5><?php $this->msg('namespaces') ?></h5>
+	<?php if ( count( $this->data['namespace_urls'] ) ): ?>
 	<ul<?php $this->html('userlangattributes') ?>>
 		<?php foreach ($this->data['namespace_urls'] as $key => $link ): ?>
 			<li <?php echo $link['attributes'] ?>><a href="<?php echo htmlspecialchars( $link['href'] ) ?>" <?php echo $link['key'] ?>><span><?php echo htmlspecialchars( $link['text'] ) ?></span></a></li>
 		<?php endforeach; ?>
 	</ul>
+	<?php endif; ?>
 </div>
 <?php
 				break;
 				case 'VARIANTS':
 ?>
 <div id="p-variants" class="vectorMenu<?php if ( count( $this->data['variant_urls'] ) == 0 ) echo ' emptyPortlet'; ?>">
+	<?php if ( $wgVectorShowVariantName ): ?>
+		<h4>
+		<?php foreach ($this->data['variant_urls'] as $key => $link ): ?>
+			<?php if ( stripos( $link['attributes'], 'selected' ) !== false ): ?>
+				<?php echo htmlspecialchars( $link['text'] ) ?>
+			<?php endif; ?>
+		<?php endforeach; ?>
+		</h4>
+	<?php endif; ?>
 	<h5><span><?php $this->msg('variants') ?></span><a href="#"></a></h5>
 	<div class="menu">
+		<?php if ( count( $this->data['variant_urls'] ) ): ?>
 		<ul<?php $this->html('userlangattributes') ?>>
 			<?php foreach ($this->data['variant_urls'] as $key => $link ): ?>
 				<li<?php echo $link['attributes'] ?>><a href="<?php echo htmlspecialchars( $link['href'] ) ?>" <?php echo $link['key'] ?>><?php echo htmlspecialchars( $link['text'] ) ?></a></li>
 			<?php endforeach; ?>
 		</ul>
+		<?php endif; ?>
 	</div>
 </div>
 <?php
@@ -706,11 +733,13 @@ class VectorTemplate extends QuickTemplate {
 ?>
 <div id="p-views" class="vectorTabs<?php if ( count( $this->data['view_urls'] ) == 0 ) echo ' emptyPortlet'; ?>">
 	<h5><?php $this->msg('views') ?></h5>
+	<?php if ( count( $this->data['view_urls'] ) ): ?>
 	<ul<?php $this->html('userlangattributes') ?>>
 		<?php foreach ($this->data['view_urls'] as $key => $link ): ?>
 			<li<?php echo $link['attributes'] ?>><a href="<?php echo htmlspecialchars( $link['href'] ) ?>" <?php echo $link['key'] ?>><?php echo (array_key_exists('img',$link) ?  '<img src="'.$link['img'].'" alt="'.$link['text'].'" />' : '<span>'.htmlspecialchars( $link['text'] ).'</span>') ?></a></li>
 		<?php endforeach; ?>
 	</ul>
+	<?php endif; ?>
 </div>
 <?php
 				break;
@@ -719,11 +748,13 @@ class VectorTemplate extends QuickTemplate {
 <div id="p-cactions" class="vectorMenu<?php if ( count( $this->data['action_urls'] ) == 0 ) echo ' emptyPortlet'; ?>">
 	<h5><span><?php $this->msg('actions') ?></span><a href="#"></a></h5>
 	<div class="menu">
+		<?php if ( count( $this->data['action_urls'] ) ): ?>
 		<ul<?php $this->html('userlangattributes') ?>>
 			<?php foreach ($this->data['action_urls'] as $key => $link ): ?>
 				<li<?php echo $link['attributes'] ?>><a href="<?php echo htmlspecialchars( $link['href'] ) ?>" <?php echo $link['key'] ?>><?php echo htmlspecialchars( $link['text'] ) ?></a></li>
 			<?php endforeach; ?>
 		</ul>
+		<?php endif; ?>
 	</div>
 </div>
 <?php
@@ -732,11 +763,13 @@ class VectorTemplate extends QuickTemplate {
 ?>
 <div id="p-personal" class="<?php if ( count( $this->data['personal_urls'] ) == 0 ) echo ' emptyPortlet'; ?>">
 	<h5><?php $this->msg('personaltools') ?></h5>
+	<?php if ( count( $this->data['personal_urls'] ) ): ?>
 	<ul<?php $this->html('userlangattributes') ?>>
 		<?php foreach($this->data['personal_urls'] as $key => $item): ?>
 			<li <?php echo $item['attributes'] ?>><a href="<?php echo htmlspecialchars($item['href']) ?>"<?php echo $item['key'] ?><?php if(!empty($item['class'])): ?> class="<?php echo htmlspecialchars($item['class']) ?>"<?php endif; ?>><?php echo htmlspecialchars($item['text']) ?></a></li>
 		<?php endforeach; ?>
 	</ul>
+	<?php endif; ?>
 </div>
 <?php
 				break;

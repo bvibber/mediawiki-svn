@@ -23,7 +23,6 @@ $messages = array(
 'tog-editondblclick'       => "Hloli ye ng'i petulo di 'klik' dubo (JavaScript)",
 'tog-editsection'          => "Nyembulisize [hloli ye ng'i] di akes di lyangutukezi ling'ki",
 'tog-rememberpassword'     => 'Askevusize zwa menuhile kwa bye kompyuta.',
-'tog-editwidth'            => "Boksi di hloli ye ng'i sa omipeti",
 'tog-watchcreations'       => 'Pusize petulo a hloli di zwa mukoloko di kentezi',
 'tog-watchdefault'         => "Pusize petulo a hloli ye ng'i di zwa mukoloko di kentezi",
 'tog-watchmoves'           => 'Pusize petulo a nyanganyisoze di zwa mukoloko di kentezi',
@@ -365,7 +364,7 @@ Sa ku bye fatukile zwa sebu dafi e a ni petuho, ni petuho e mulumiwasibukirisize
 Zwa adresi di IP sa bulukezi kwa kenki bundau di petulo.",
 'summary-preview'            => 'Lyangutukezi pendiBe:',
 'blockedtitle'               => 'Sebelu sa bolok',
-'blockedtext'                => "<big>'''Zwa sebelu/IP sa bolok.'''</big>
+'blockedtext'                => "'''Zwa sebelu/IP sa bolok.'''
 
 $1 bolok a. Lyangutukezireason sa ''$2''.
 

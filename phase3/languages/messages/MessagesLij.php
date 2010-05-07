@@ -128,7 +128,6 @@ $messages = array(
 'tog-justify'              => 'Alliniamento di paragrafi giustificòu',
 'tog-showtoolbar'          => 'Fâ vedde a barra de strumenti de modìffica (con JavaScript)',
 'tog-rememberpassword'     => "Arregorda a mæ paròlla d'ordine",
-'tog-editwidth'            => 'Spaçio pe cangiâ a larghessa pinn-a',
 'tog-previewontop'         => "Veddi l'anteprimma de d'äto a-o spaçio pe cangiâ",
 'tog-previewonfirst'       => "Veddi l'anteprimma a-o primmo cangiamento",
 'tog-enotifwatchlistpages' => "Fammelo savéi via e-mail quande 'na paggina inta mæ lista in osservassion a va cangiaa.",
@@ -429,7 +428,7 @@ Pe abilitâ l'invîo de messaggi e-mail pe quest'accesso, o se deive seguî l'is
 'anoneditwarning'            => "'''Attension:''' No ti t'hæ registròu. O têu indirisso IP o sajà misso inta stöja di cangiamenti da paggina.",
 'summary-preview'            => 'Anteprimma oggetto:',
 'blockedtitle'               => "L'utente o l'é bloccòu",
-'blockedtext'                => "<big>''''Sto nomme d'ûtente ou indirisso IP o l'è stæto bloccòu.'''</big>
+'blockedtext'                => "''''Sto nomme d'ûtente ou indirisso IP o l'è stæto bloccòu.'''
 
 O blòcco o l'è stæto fæto da \$1. A raxon dæta a l'è ''\$2''.
 

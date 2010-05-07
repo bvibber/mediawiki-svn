@@ -36,42 +36,24 @@ class ApiRollback extends ApiBase {
 		parent::__construct( $main, $action );
 	}
 
+	private $mTitleObj = null, $mUser = null;
+
 	public function execute() {
 		$params = $this->extractRequestParams();
 
-		$titleObj = null;
-		if ( !isset( $params['title'] ) ) {
-			$this->dieUsageMsg( array( 'missingparam', 'title' ) );
-		}
-		if ( !isset( $params['user'] ) ) {
-			$this->dieUsageMsg( array( 'missingparam', 'user' ) );
-		}
-
-		$titleObj = Title::newFromText( $params['title'] );
-		if ( !$titleObj ) {
-			$this->dieUsageMsg( array( 'invalidtitle', $params['title'] ) );
-		}
-		if ( !$titleObj->exists() ) {
-			$this->dieUsageMsg( array( 'notanarticle' ) );
-		}
-
-		// We need to be able to revert IPs, but getCanonicalName rejects them
-		$username = User::isIP( $params['user'] )
-			? $params['user']
-			: User::getCanonicalName( $params['user'] );
-		if ( !$username ) {
-			$this->dieUsageMsg( array( 'invaliduser', $params['user'] ) );
-		}
-
+		// User and title already validated in call to getTokenSalt from Main
+		$titleObj = $this->getTitle();
 		$articleObj = new Article( $titleObj );
 		$summary = ( isset( $params['summary'] ) ? $params['summary'] : '' );
 		$details = null;
-		$retval = $articleObj->doRollback( $username, $summary, $params['token'], $params['markbot'], $details );
+		$retval = $articleObj->doRollback( $this->getUser(), $summary, $params['token'], $params['markbot'], $details );
 
 		if ( $retval ) {
 			// We don't care about multiple errors, just report one of them
 			$this->dieUsageMsg( reset( $retval ) );
 		}
+
+		$this->setWatch( $params['watchlist'], $titleObj );
 
 		$info = array(
 			'title' => $titleObj->getPrefixedText(),
@@ -99,7 +81,16 @@ class ApiRollback extends ApiBase {
 			'user' => null,
 			'token' => null,
 			'summary' => null,
-			'markbot' => false
+			'markbot' => false,
+			'watchlist' => array(
+				ApiBase::PARAM_DFLT => 'preferences',
+				ApiBase::PARAM_TYPE => array(
+					'watch',
+					'unwatch',
+					'preferences',
+					'nochange'
+				),
+			),
 		);
 	}
 
@@ -109,7 +100,8 @@ class ApiRollback extends ApiBase {
 			'user' => 'Name of the user whose edits are to be rolled back. If set incorrectly, you\'ll get a badtoken error.',
 			'token' => 'A rollback token previously retrieved through prop=revisions',
 			'summary' => 'Custom edit summary. If not set, default summary will be used.',
-			'markbot' => 'Mark the reverted edits and the revert as bot edits'
+			'markbot' => 'Mark the reverted edits and the revert as bot edits',
+			'watchlist' => 'Unconditionally add or remove the page from your watchlist, use preferences or do not change watch',
 		);
 	}
 
@@ -131,7 +123,51 @@ class ApiRollback extends ApiBase {
 	}
 
 	public function getTokenSalt() {
-		return '';
+		return array( $this->getTitle()->getPrefixedText(), $this->getUser() );
+	}
+
+	private function getUser() {
+		if ( $this->mUser !== null ) {
+			return $this->mUser;
+		}
+
+		$params = $this->extractRequestParams();
+
+		if ( !isset( $params['user'] ) ) {
+			$this->dieUsageMsg( array( 'missingparam', 'user' ) );
+		}
+		
+		// We need to be able to revert IPs, but getCanonicalName rejects them
+		$this->mUser = User::isIP( $params['user'] )
+			? $params['user']
+			: User::getCanonicalName( $params['user'] );
+		if ( !$this->mUser ) {
+			$this->dieUsageMsg( array( 'invaliduser', $params['user'] ) );
+		}
+
+		return $this->mUser;
+	}
+
+	private function getTitle() {
+		if ( $this->mTitleObj !== null ) {
+			return $this->mTitleObj;
+		}
+
+		$params = $this->extractRequestParams();
+		if ( !isset( $params['title'] ) ) {
+			$this->dieUsageMsg( array( 'missingparam', 'title' ) );
+		}
+
+		$this->mTitleObj = Title::newFromText( $params['title'] );
+
+		if ( !$this->mTitleObj ) {
+			$this->dieUsageMsg( array( 'invalidtitle', $params['title'] ) );
+		}
+		if ( !$this->mTitleObj->exists() ) {
+			$this->dieUsageMsg( array( 'notanarticle' ) );
+		}
+		
+		return $this->mTitleObj;
 	}
 
 	protected function getExamples() {

@@ -65,7 +65,6 @@ $messages = array(
 'tog-showtoolbar'          => "Amosta s'amusta de is ainas pro is acontzos (esigit JavaScript)",
 'tog-editondblclick'       => 'Acontza pàginas cun dòpiu click (esigit JavaScript)',
 'tog-rememberpassword'     => 'Amenta sa password in custu carculadore',
-'tog-editwidth'            => 'Amànnia su box pro acontzare a sa largària màssima',
 'tog-watchcreations'       => 'Aciungi is pàginas chi apo creadu a sa watchlist mea',
 'tog-watchdefault'         => 'Aciungi is pàginas chi apo acontzadu a sa watchlist mea',
 'tog-watchmoves'           => 'Aciungi is pàginas chi apo mòvidu a sa watchlist mea',
@@ -443,7 +442,7 @@ S'indiritzu IP tuo at a èssere registradu in s'istòria de custa pàgina.",
 'summary-preview'                  => 'Antiprima ogetu:',
 'subject-preview'                  => 'Antiprima tema/tìtulu:',
 'blockedtitle'                     => "S'usuàriu est istadu bloccau",
-'blockedtext'                      => "<big>'''Custu nòmene usuàriu o indiritzu IP est istadu bloccau.'''</big>
+'blockedtext'                      => "'''Custu nòmene usuàriu o indiritzu IP est istadu bloccau.'''
 
 Su bloccu est istadu postu dae $1. Su motivu de su bloccu est: ''$2''
 
@@ -1123,7 +1122,7 @@ In custos casos, si cheres, depes mòvere a manu su cuntènnidu de sa pàgina.",
 'move-watch'         => 'Pone ogru a custa pàgina',
 'movepagebtn'        => 'Movi sa pàgina',
 'pagemovedsub'       => 'Movimentu andau beni',
-'movepage-moved'     => '<big>\'\'\'"$1" est istada mòvida a "$2"\'\'\'</big>',
+'movepage-moved'     => '\'\'\'"$1" est istada mòvida a "$2"\'\'\'',
 'articleexists'      => 'Una pàgina cun custu nòmene esistit giai, o su nòmene chi as sceberau no est bàlidu.
 Pro pregheri scebera un àteru nòmene.',
 'talkexists'         => "'''Su movimentu de sa pàgina est andau beni, ma no est istadu possibile moviri sa pàgina de cuntierras proite ndi esistit giai un àtera cun su stessu tìtulu. Pro preghere aciungi tue su cuntestu de sa pàgina becia.'''",

@@ -36,7 +36,6 @@ $messages = array(
 'tog-editsectiononrightclick' => 'Klikńyńće prawym kneflym myszy na titlu tajli<br />napoczyno jigo sprowjańy(JavaScript)',
 'tog-showtoc'                 => 'Pokoż spis treśći (na zajtach, kere majům wjyncyj jak trzi tajle)',
 'tog-rememberpassword'        => 'Pamjyntej můj ausdruk na tym komputrze',
-'tog-editwidth'               => 'Poszyrz plac sprowjyń na cołki ekran',
 'tog-watchcreations'          => 'Dowom pozůr na zajty, kere żech naszkryfloł',
 'tog-watchdefault'            => 'Dowom pozůr na zajty, kere żech sprowjoł',
 'tog-watchmoves'              => 'Dowom pozůr na zajty, kere żech przećepnył',
@@ -144,7 +143,7 @@ $messages = array(
 'category-file-count-limited'    => 'W katygoryji {{PLURAL:$1|je pokozany $1 plik|sům pokozane $1 pliki|je pokozanych $1 plikůw}}.',
 'listingcontinuesabbrev'         => 'ć.d.',
 
-'mainpagetext'      => "<big>'''Sztalowańy MediaWiki śe udoło.'''</big>",
+'mainpagetext'      => "'''Sztalowańy MediaWiki śe udoło.'''",
 'mainpagedocfooter' => 'Uobezdrzij [http://meta.wikimedia.org/wiki/Help:Contents przewodńik sprowjacza], kaj sům informacyje uo dźołańu uoprogramowańo MediaWiki.
 
 == Na sztart ==
@@ -497,7 +496,7 @@ Możliwe co właśńy zmjyńiłżeś swoje hasło abo poprosiłżeś uo nowe tym
 'summary-preview'                  => 'Podglůnd uopisu:',
 'subject-preview'                  => 'Podglůnd tematu/naguůwka:',
 'blockedtitle'                     => 'Užytkowńik je zawarty uod sprowjyń',
-'blockedtext'                      => '<big>\'\'\'Twoje kůnto abo adres IP sům zawarte.\'\'\'</big>
+'blockedtext'                      => '\'\'\'Twoje kůnto abo adres IP sům zawarte.\'\'\'
 
 Uo zawarću zdecydowou $1. Pado, aže skuli: \'\'$2\'\'.
 
@@ -1275,7 +1274,6 @@ Dostympno je tyž [[Special:WhatLinksHere/$2|pouno lista]].',
 'statistics-edits-average'     => 'Strzedńo liczba sprowjyń na zajta',
 'statistics-views-total'       => 'Cołkowito liczba bezuchůw',
 'statistics-views-peredit'     => 'Liczba bezuchůw na sprowjyńy',
-'statistics-jobqueue'          => 'Rozmjor [http://www.mediawiki.org/wiki/Manual:Job_queue raji zadań]',
 'statistics-users'             => 'Zarejerowanych [[Special:ListUsers|użytkowńikůw]]',
 'statistics-users-active'      => 'Aktywnych użytkowńikůw',
 'statistics-users-active-desc' => 'Użytkowńiki, kere bůły aktywne bez {{PLURAL:$1|uostatńi dźyń|uostatńich $1 dńi}}',
@@ -1678,7 +1676,7 @@ Možeš mjeć felerny link abo wersyjo můgua zostać wćepano nazod, abo wyćep
 'undeletedfiles'               => 'wćepou nazod $1 {{PLURAL:$1|plik|pliki|plikůw}}',
 'cannotundelete'               => 'Wćepańy nazod ńy powjodo śe.
 Kto inkšy můgu wćepać nazod zajta pjyrwšy.',
-'undeletedpage'                => "<big>'''Wćepano nazod zajta $1.'''</big>
+'undeletedpage'                => "'''Wćepano nazod zajta $1.'''
 
 Uobejřij [[Special:Log/delete|rejer wyćepań]], kejbyś chćou přeglůndnůnć uostatnie uoperacyje wyćepywańo i wćepywańo nazod zajtůw.",
 'undelete-header'              => 'Uobejřij [[Special:Log/delete|rejer wyćepań]] coby sprawdźić uostatńo wyćepane zajty.',
@@ -1898,7 +1896,7 @@ W takiych razach tekst godki třa přećepać, a jak třeba to i pouůnčyć z t
 'move-watch'                   => 'Dej pozůr',
 'movepagebtn'                  => 'Přećiś artikel',
 'pagemovedsub'                 => 'Přećiśńjyńće gotowe',
-'movepage-moved'               => '<big>\'\'\'"$1" přećiśńjynto ku "$2"\'\'\'</big>',
+'movepage-moved'               => '\'\'\'"$1" přećiśńjynto ku "$2"\'\'\'',
 'articleexists'                => 'Artikel s takym mjanym juž je, abo mjano je zue.
 Wybjer inkše mjano.',
 'cantmove-titleprotected'      => 'Ńy možeš přećepnůńć zajty, bez tůž co jei nowe mjano je ńydozwolůne s kuli zabezpječyńo před utwořyńym',

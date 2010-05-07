@@ -155,7 +155,6 @@ $messages = array(
 'tog-editsectiononrightclick' => 'Петнемс пялькстне: люпштамс сёрмадомбяльксть лемонц лангс видешире пуняса (JavaScript)',
 'tog-showtoc'                 => 'Няфтемс сёрматфть потмакс (лопатнень, конатнень эса 3 сёрмадома конякста лама)',
 'tog-rememberpassword'        => 'Ванфтомс монь сувама лемозе тя содама машинаса',
-'tog-editwidth'               => 'Келептть петнема паксять сембе вальмать келес',
 'tog-watchcreations'          => 'Сувафтомс монь тефть лопатне монь мельгеваномазон',
 'tog-watchdefault'            => 'Сувафтомс монь петнема лопане монь мельгеваномазон',
 'tog-watchmoves'              => 'Лопатнень шашфтомста сувафтомс синь монь мельгеваномазон',
@@ -257,7 +256,7 @@ $messages = array(
 'category-file-count-limited'    => 'Вага {{PLURAL:$1|файл|$1 файлхт}} тя категориеса.',
 'listingcontinuesabbrev'         => 'полатксоц',
 
-'mainpagetext'      => "<big>'''МедиаВикить арафтозь лац.'''</big>",
+'mainpagetext'      => "'''МедиаВикить арафтозь лац.'''",
 'mainpagedocfooter' => 'Ванк [http://meta.wikimedia.org/wiki/Help:Contents Ветямовал Тиинди] тяса ули кода содамс Вики програпнень эрявикснень колга.
 
 == Эрявикс сюлмафксне ==
@@ -645,7 +644,7 @@ $2',
 'summary-preview'                  => 'Нюрьхкяня лихтемать сядынголень  няфтема:',
 'subject-preview'                  => 'Тема/конякс сядынгольдень няфтема:',
 'blockedtitle'                     => 'Тиить сёлгозь',
-'blockedtext'                      => '\'\'\'Тонь тиить лемцень эли IP адресцень сёлгозь.\'\'\'</big>
+'blockedtext'                      => '\'\'\'Тонь тиить лемцень эли IP адресцень сёлгозь.\'\'\'
 
 Тонь сёлгозе $1. 
 Туфталсь \'\'$2\'\'.
@@ -1469,7 +1468,6 @@ $3 макссь туфталсь - ''$2''",
 'statistics-edits-average'     => 'Петнемат фкя лопас ётксталувксста',
 'statistics-views-total'       => 'Ванондомада сембоц',
 'statistics-views-peredit'     => 'Фкя петнемас ванондомада',
-'statistics-jobqueue'          => '[http://www.mediawiki.org/wiki/Manual:Job_queue Покаматнень пулонь] кувалмоц',
 'statistics-users'             => 'Сёрматфтф [[Special:ListUsers|тиихне]]',
 'statistics-users-active'      => 'Покай тиихне',
 'statistics-users-active-desc' => 'Тиихне конатне тисть мезеге ётай {{PLURAL:$1|шиня|$1 шиста}}',
@@ -1735,7 +1733,7 @@ $NEWPAGE
 {{fullurl:{{#special:Watchlist}}/edit}}
 
 Лопать тонь мельгеваномастот нардаманди сашентт
-{{fullurl:{{FULLPAGENAMEE}}|action=unwatch}}
+$UNWATCHURL
 
 Азома мекпяли ди иля лезкс:
 {{fullurl:{{MediaWiki:Helppage}}}}',
@@ -1873,7 +1871,7 @@ $NEWPAGE
 'undeletedrevisions-files'     => '{{PLURAL:$1|1 верзие|$1 верзиет}} эди {{PLURAL:$2|1 файл|$2 файлхт}} мърдафтфт',
 'undeletedfiles'               => '{{PLURAL:$1|1 файл|$1 файлхт}} мърдафтфт',
 'cannotundelete'               => 'Мърдафтома изь лисев; иля тиись, улема, ульсь васенцекс кие сонь мърдафтозе.',
-'undeletedpage'                => "<big>'''$1 мърдафтфоль'''</big>
+'undeletedpage'                => "'''$1 мърдафтфоль'''
 
 Ванк [[Special:Log/delete|нардамань лувомась]] мекольце нардаматнень эди мърдафтоматнень няфтеманкса.",
 'undelete-header'              => 'Ванк [[Special:Log/delete|нардамань лувомась]] улхкомба нардаф лопатнень няфтеманкса.',
@@ -2090,7 +2088,7 @@ $1 сёлкф ни. Мяльце полафтомс латцематнень?',
 'move-watch'                   => 'Ваномс тя лопать мельге',
 'movepagebtn'                  => 'Шашфтомс лопать иля вастс',
 'pagemovedsub'                 => 'Шашфтомась ётась лац',
-'movepage-moved'               => '<big>\'\'\'"$1"сь шашфтфоль "$2"с\'\'\'</big>',
+'movepage-moved'               => '\'\'\'"$1"сь шашфтфоль "$2"с\'\'\'',
 'movepage-moved-redirect'      => 'Умборондафтфкс тифоль.',
 'movepage-moved-noredirect'    => 'Умборондафтфксонь тиемась лоткафоль.',
 'articleexists'                => 'Тя лем мархта лопась ульсь ни эли лемсь, кона тон кочкать аф кондясти.

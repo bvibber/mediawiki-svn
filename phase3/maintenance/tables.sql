@@ -607,6 +607,24 @@ CREATE UNIQUE INDEX /*i*/ll_from ON /*_*/langlinks (ll_from, ll_lang);
 CREATE INDEX /*i*/ll_lang ON /*_*/langlinks (ll_lang, ll_title);
 
 
+-- 
+-- Track inline interwiki links
+--
+CREATE TABLE /*_*/iwlinks (
+  -- page_id of the referring page
+  iwl_from int unsigned NOT NULL default 0,
+  
+  -- Interwiki prefix code of the target
+  iwl_prefix varbinary(20) NOT NULL default '',
+
+  -- Title of the target, including namespace
+  iwl_title varchar(255) binary NOT NULL default ''
+) /*$wgDBTableOptions*/;
+
+CREATE UNIQUE INDEX /*i*/iwl_from ON /*_*/iwlinks (iwl_from, iwl_prefix, iwl_title);
+CREATE INDEX /*i*/iwl_prefix ON /*_*/iwlinks (iwl_prefix, iwl_title);
+
+
 --
 -- Contains a single row with some aggregate info
 -- on the state of the site.
@@ -782,9 +800,9 @@ CREATE TABLE /*_*/image (
 ) /*$wgDBTableOptions*/;
 
 CREATE INDEX /*i*/img_usertext_timestamp ON /*_*/image (img_user_text,img_timestamp);
--- Used by Special:Imagelist for sort-by-size
+-- Used by Special:ListFiles for sort-by-size
 CREATE INDEX /*i*/img_size ON /*_*/image (img_size);
--- Used by Special:Newimages and Special:Imagelist
+-- Used by Special:Newimages and Special:ListFiles
 CREATE INDEX /*i*/img_timestamp ON /*_*/image (img_timestamp);
 -- Used in API and duplicate search
 CREATE INDEX /*i*/img_sha1 ON /*_*/image (img_sha1);

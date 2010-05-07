@@ -41,7 +41,6 @@ $messages = array(
 'tog-editsectiononrightclick' => 'शीर्षकमा दाहिने क्लिकद्वारा खण्ड सम्पादन सक्षम पार्ने ( जाभा स्क्रिप्ट चाहिने )',
 'tog-showtoc'                 => 'विषय सुची देखाउने (तीन भन्दा बढी शीर्षक भएमा)',
 'tog-rememberpassword'        => 'मेरो यस कम्प्युटर प्रवेशलाई सम्झनुहोस्',
-'tog-editwidth'               => 'सम्पादन सन्दुकलाई पूरै पर्दा ढाक्नेगरी बढाउने',
 'tog-watchcreations'          => 'मेरो निगरानीसूचिमा मैले शृजना गरेको पृष्ठ थप्नुहोस्',
 'tog-watchdefault'            => 'मैले सम्पादन गरेको पृष्ठ निगरानीसूचीमा थप्ने',
 'tog-watchmoves'              => 'मैले सारेको पृष्ठहरुलाई निगरानीसूचीमा थप्ने',
@@ -154,7 +153,7 @@ $messages = array(
 'category-file-count-limited'    => 'निम्न  {{PLURAL:$1|फाइल|$1 फाइलहरु}} यस श्रेणीमा रहेको ।',
 'listingcontinuesabbrev'         => 'निरन्तरता...',
 
-'mainpagetext'      => "<big>'''MediaWiki सफलतापूर्वक स्थापना भयो ।'''</big>",
+'mainpagetext'      => "'''MediaWiki सफलतापूर्वक स्थापना भयो ।'''",
 'mainpagedocfooter' => " विकी अनुप्रयोग कसरी प्रयोग गर्ने भन्ने जानकारीको लागि  [http://meta.wikimedia.org/wiki/Help:Contents User's Guide] हेर्नुहोस् 
 
 == सुरू गर्नको लागि  ==
@@ -369,6 +368,7 @@ $1',
 'missingarticle-diff'  => '(डिफ diff: $1, $2)',
 'internalerror'        => 'आन्तरिक त्रुटि',
 'internalerror_info'   => 'आन्तरिक त्रुटि: $1',
+'fileappenderror'      => ' "$2".लाई"$1" मा जोडन सकिएन ।',
 'filecopyerror'        => 'फाइल  "$1" लाई "$2" मा प्रतिलिपी गर्न सकिएन ।',
 'filerenameerror'      => 'फाइल "$1" को नाम "$2" मा परिवर्तन गर्न सकिएन ।',
 'filedeleteerror'      => 'फाइल "$1"  मेट्न सकिएन ।',
@@ -533,7 +533,7 @@ $1',
 'summary-preview'                  => 'सारांश पूर्वालोकन:',
 'subject-preview'                  => 'विषय/शिर्षपंंक्ति पूर्वरुप:',
 'blockedtitle'                     => 'प्रयोककर्तालाई रोक लगाइएको छ',
-'blockedtext'                      => "<big>'''तपाईँको प्रयोगकर्ता नाम या IP ठेगानालाई रोक लगाइएको छ ।'''</big>
+'blockedtext'                      => "'''तपाईँको प्रयोगकर्ता नाम या IP ठेगानालाई रोक लगाइएको छ ।'''
 
 रोक लगाउने  $1.
 रोक लगाउनाको कारण ''$2''.
@@ -1235,7 +1235,6 @@ HTML ट्यागहरु जाँच्नुहोस् ।',
 'statistics-edits-average' => 'प्रतिपृष्ठ औसत सम्पादन',
 'statistics-views-total'   => 'जम्मा हेर्नुहोस्',
 'statistics-views-peredit' => 'प्रति पृष्ठ सम्पादन',
-'statistics-jobqueue'      => '[http://www.mediawiki.org/wiki/Manual:Job_queue Job queue] लम्बाइ',
 'statistics-users'         => 'दर्तागरिएको [[Special:ListUsers|प्रयोगकर्ताहरु]]',
 'statistics-users-active'  => 'सकृय प्रयोगकर्ताहरु',
 'statistics-mostpopular'   => 'सबैभन्दा धेरै हेरिएको पृष्ठहरु',
@@ -1657,7 +1656,7 @@ $1को बन्देजको कारण : "$2" हो',
 'move-watch'                => 'यो पृष्ठ निगरानीमा राख्नुहोस्',
 'movepagebtn'               => 'पृष्ठ सार्नुहोस्',
 'pagemovedsub'              => 'सार्ने काम सफल भयो',
-'movepage-moved'            => '<big>\'\'\'"$1" लाई "$2"मा सारिएको छ\'\'\'</big>',
+'movepage-moved'            => '\'\'\'"$1" लाई "$2"मा सारिएको छ\'\'\'',
 'movepage-moved-redirect'   => 'रिडाइरेक्ट पृष्ठ शृजना गरियो',
 'movepage-moved-noredirect' => 'रिडाइरेक्ट पृष',
 'articleexists'             => 'यस नामको पृष्ठ पहिले देखि नै रहेको ,या तपाईँले छान्नु भएको नाम अमान्य छ।

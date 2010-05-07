@@ -39,6 +39,7 @@ if( $wgArticlePath === false ) {
 }
 
 if( $wgStylePath === false ) $wgStylePath = "$wgScriptPath/skins";
+if( $wgLocalStylePath === false ) $wgLocalStylePath = "$wgScriptPath/skins";
 if( $wgStyleDirectory === false) $wgStyleDirectory   = "$IP/skins";
 if( $wgExtensionAssetsPath === false ) $wgExtensionAssetsPath = "$wgScriptPath/extensions";
 
@@ -182,7 +183,12 @@ if ( $wgCommandLineMode ) {
 	wfDebug( "\n\nStart command line script $self\n" );
 } else {
 	wfDebug( "Start request\n\n" );
-	wfDebug( $_SERVER['REQUEST_METHOD'] . ' ' . $_SERVER['REQUEST_URI'] . "\n" );
+	# Output the REQUEST_URI. This is not supported by IIS in rewrite mode,
+	# so use an alternative
+	$requestUri = isset( $_SERVER['REQUEST_URI'] ) ? $_SERVER['REQUEST_URI'] : 
+		( isset( $_SERVER['HTTP_X_ORIGINAL_URL'] ) ? $_SERVER['HTTP_X_ORIGINAL_URL'] :
+		$_SERVER['PHP_SELF'] );
+	wfDebug( "{$_SERVER['REQUEST_METHOD']} {$requestUri}\n" );
 
 	if ( $wgDebugPrintHttpHeaders ) {
 		$headerOut = "HTTP HEADERS:\n";
@@ -341,7 +347,6 @@ wfProfileIn( $fname.'-misc2' );
 $wgDeferredUpdateList = array();
 $wgPostCommitUpdateList = array();
 
-if ( $wgAjaxWatch ) $wgAjaxExportList[] = 'wfAjaxWatch';
 if ( $wgAjaxUploadDestCheck ) $wgAjaxExportList[] = 'SpecialUpload::ajaxGetExistsWarning';
 
 # Placeholders in case of DB error

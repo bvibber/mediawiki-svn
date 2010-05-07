@@ -352,6 +352,7 @@ Tí kì bá ṣe bẹ́ẹ̀, ó lè jẹ́ pé ẹ ti rí àsìṣe nínú soft
 'missingarticle-diff'  => '(Ìyàtọ̀: $1, $2)',
 'internalerror'        => 'Àsìṣe inú',
 'internalerror_info'   => 'Àsìṣe inú: $1',
+'fileappenderror'      => 'Kò le so "$1" pọ̀ mọ́ "$2".',
 'filecopyerror'        => 'Àwòkọ faili "$1" sí "$2" kò ṣe é ṣe.',
 'filerenameerror'      => 'Àtúnsọlórúkọ faili "$1" sí "$2" kò ṣe é ṣe.',
 'filedeleteerror'      => 'Ìparẹ́ faili "$1" kò ṣe é ṣe.',
@@ -481,6 +482,7 @@ Kí á tó fi e-mail mìíràn ránṣẹ́ sí àkópamọ́ yìí, ẹ gbọ́
 'resetpass_forbidden'       => 'Àwọn ọ̀rọ̀ìpamọ́ kò ṣe é yípadà',
 'resetpass-no-info'         => 'Ẹ gbọ́dọ̀ wọlẹ́ láti le lọ sí ojúewé yìí tààrà.',
 'resetpass-submit-loggedin' => 'Ìyípadà ọ̀rọ̀ìpamọ́',
+'resetpass-submit-cancel'   => 'Fagilé',
 'resetpass-temp-password'   => 'Ọ̀rọ̀ìpamọ́ fún ìgbà díẹ̀',
 
 # Edit page toolbar
@@ -523,7 +525,7 @@ Tí ẹ bá tẹ Ìmúpamọ́ lẹ́ẹ̀kansi, àtúnṣe yín yíò jẹ́ m�
 'summary-preview'                  => 'Àkọ́kọ́yẹ̀wò àkótán:',
 'subject-preview'                  => 'Àyẹ̀wò àkọlé',
 'blockedtitle'                     => 'Ìdínà oníṣe',
-'blockedtext'                      => "<big>'''A ti dínà orúkọ oníṣe tàbí ojúọ̀nà IP yín.'''</big>
+'blockedtext'                      => "'''A ti dínà orúkọ oníṣe tàbí ojúọ̀nà IP yín.'''
 
 $1 ni ó ṣe ìdínà.
 Ìdí tó fun ni ''$2''.
@@ -1450,7 +1452,7 @@ Tí ó bá jẹ́ báhun, ẹ gbúdọ̀ ṣe ìyípò rẹ̀ fúnra yín.",
 'move-watch'              => 'Mójútó ojúewé yìí',
 'movepagebtn'             => 'Yípò ojúewé',
 'pagemovedsub'            => 'Ìyípò ti já sí rere',
-'movepage-moved'          => '<big>\'\'\'"$1" ti yípò sí "$2"\'\'\'</big>.',
+'movepage-moved'          => '\'\'\'"$1" ti yípò sí "$2"\'\'\'.',
 'movepage-moved-redirect' => 'Àtúndarí ti jẹ́ dídá.',
 'articleexists'           => 'Ojúewé pẹ̀lú orúkọ un wà tẹ́lẹ̀, tàbí kójẹ́pé orúkọ tí ẹ yàn kò ní ìbámu.
 Ẹ jọ̀wọ́ ẹ yan orúkọ mìíràn.',

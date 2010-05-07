@@ -283,7 +283,6 @@ $messages = array(
 'tog-editsectiononrightclick' => 'Խմբագրել բաժինները վերնագրի աջ մատնահարմամբ (JavaScript)',
 'tog-showtoc'                 => 'Ցույց տալ բովանդակությունը (3  կամ ավել վերնագրեր ունեցող էջերի համար)',
 'tog-rememberpassword'        => 'Հիշել իմ մասնակցի հաշիվը այս համակարգչում',
-'tog-editwidth'               => 'Խմբագրման դաշտը պատուհանի ամբողջ լայնությամբ',
 'tog-watchcreations'          => 'Ավելացնել իմ ստեղծած էջերը հսկացանկին',
 'tog-watchdefault'            => 'Ավելացնել իմ խմբագրած էջերը հսկացանկին',
 'tog-watchmoves'              => 'Ավելացնել իմ տեղափոխած էջերը հսկացանկին',
@@ -397,7 +396,7 @@ $messages = array(
 'index-category'                 => 'Ինդեքսավորված էջեր',
 'noindex-category'               => 'Ինդեքսավորված էջեր չկան',
 
-'mainpagetext'      => "<big>'''«MediaWiki» ծրագիրը հաջողությամբ տեղադրվեց։'''</big>",
+'mainpagetext'      => "'''«MediaWiki» ծրագիրը հաջողությամբ տեղադրվեց։'''",
 'mainpagedocfooter' => "Այցելեք [http://meta.wikimedia.org/wiki/Help:Contents User's Guide]՝ վիքի ծրագրային ապահովման օգտագործման մասին տեղեկությունների համար։
 
 == Որոշ օգտակար ռեսուրսներ ==
@@ -624,6 +623,7 @@ $1',
 'readonly_lag'         => 'Տվյալների բազան ավտոմատիկ կողպվել է ժամանակավորապես՝ մինչև ՏԲ-ի երկրորդական սերվերը չհամաժամանակեցվի առաջնայինի հետ։',
 'internalerror'        => 'Ներքին սխալ',
 'internalerror_info'   => 'Ներքին սխալ. $1',
+'fileappenderror'      => 'Չհաջողվեց ավելացնել «$1» «$2»-ին։',
 'filecopyerror'        => 'Չհաջողվեց պատճենել «$1» ֆայլը «$2» ֆայլի մեջ։',
 'filerenameerror'      => 'Չհաջողվեց «$1» ֆայլը վերանվանել «$2»։',
 'filedeleteerror'      => 'Չհաջողվեց ջնջել «$1» ֆայլը։',
@@ -797,7 +797,7 @@ $2',
 'summary-preview'                  => 'Ամփոփման նախադիտում:',
 'subject-preview'                  => 'Վերնագրի նախադիտում:',
 'blockedtitle'                     => 'Մասնակիցը արգելափակված է',
-'blockedtext'                      => "<big>'''Ձեր մասնակցի անունը կամ IP-հասցեն արգելափակված է։'''</big>
+'blockedtext'                      => "'''Ձեր մասնակցի անունը կամ IP-հասցեն արգելափակված է։'''
 
 Արգելափակումը կատարվել է $1 ադմինիստրատորի կողմից։
 Տրված պատճառն է. ''«$2»''
@@ -1478,7 +1478,6 @@ $3 մասնակիցը տվել է հետևյալ պատճառը. ''$2''",
 'statistics-edits-average'     => 'Էջի խմբագրումների միջին թիվը',
 'statistics-views-total'       => 'Ընդհանուր դիտումներ',
 'statistics-views-peredit'     => 'Դիտումներ ամեն մի խմբագրման համար',
-'statistics-jobqueue'          => '[http://www.mediawiki.org/wiki/Manual:Job_queue Առաջադրանքների հերթի] երկարությունը',
 'statistics-users'             => 'Գրանցված [[Special:ListUsers|մասնակիցներ]]',
 'statistics-users-active'      => 'Ակտիվ մասնակիցներ',
 'statistics-users-active-desc' => 'Մասնակիցներ, որոնք որևէ գործողություն են կատարել վերջին {{PLURAL:$1|օրվա|$1 օրվա}} ընթացքում',
@@ -1690,7 +1689,7 @@ $3 մասնակիցը տվել է հետևյալ պատճառը. ''$2''",
 'enotif_anon_editor'           => 'անանուն մասնակից $1',
 'enotif_body'                  => 'Հարգելի $WATCHINGUSERNAME,
 
-$PAGEEDITDATE {{grammar:genitive|{{SITENAME}}}} «$PAGETITLE» էջը $CHANGEDORCREATED $PAGEEDITOR մասնակցի կողմից, տես $PAGETITLE_URL՝ ընթացիկ տարբերակի համար։
+$PAGEEDITDATE {{grammar:genitive|{{SITENAME}}}} «$PAGETITLE» էջը $CHANGEDORCREATED $PAGEEDITOR մասնակցի կողմից, տես $PAGETITLE_URL ՝ ընթացիկ տարբերակի համար։
 
 $NEWPAGE
 
@@ -1819,7 +1818,7 @@ $NEWPAGE
 'undeletedrevisions-files'     => 'վերականգնվեց $1 տարբերակ և $2 ֆայլ',
 'undeletedfiles'               => 'վերականգնվեց $1 ֆայլ',
 'cannotundelete'               => 'Վերականգնումը ձախողվեց։ Հնարավոր է մեկ ուրիշն արդեն վերականգնել է այս էջը։',
-'undeletedpage'                => "<big>'''«$1» էջը վերականգնված է։'''</big>
+'undeletedpage'                => "'''«$1» էջը վերականգնված է։'''
 
 Տես [[Special:Log/delete|ջնջման տեղեկամատյանը]]` վերջին ջնջումների և վերականգնումների համար։",
 'undelete-header'              => 'Տես [[Special:Log/delete|ջնջման տեղեկամատյանը]]՝ վերջին ջնջումների և վերականգնումների համար։',
@@ -2010,7 +2009,7 @@ $1',
 'move-watch'              => 'Հսկել էջը',
 'movepagebtn'             => 'Տեղափոխել էջը',
 'pagemovedsub'            => 'Էջը տեղափոխվեց',
-'movepage-moved'          => "<big>'''«$1» էջը վերանվանվել է «$2»'''</big>",
+'movepage-moved'          => "'''«$1» էջը վերանվանվել է «$2»'''",
 'movepage-moved-redirect' => 'Ստեղծվել է վերահղում։',
 'articleexists'           => 'Այդ անվանմամբ էջ արդեն գոյություն ունի կամ ձեր ընտրած անվանումը անթույլատրելի է։
 Խնդրում ենք ընտրել այլ անվանում։',

@@ -30,7 +30,6 @@ $messages = array(
 'tog-editsectiononrightclick' => 'Bhaag ke title pe right click kare pe bhaag ke badle ke laabu karo  (JavaScript)',
 'tog-showtoc'                 => 'Dhyan suchi dekhao (uu panna khatir jon me tiin se jaada heading hai)',
 'tog-rememberpassword'        => 'Ii computer me hamaar login yaad rakho',
-'tog-editwidth'               => 'Badlao ke dabba ke barrhae ke screen ke fill karo',
 'tog-watchcreations'          => 'Hamaar banawa waala panna ke hamaar dhyaan suchi me jorro',
 'tog-watchdefault'            => 'Ham se badla gae panna ke hamaar dhyaan suchi me jorro',
 'tog-watchmoves'              => 'Uu panna jiske naam ham badla hai ke hamaar dhyaan suchi me jorro',
@@ -144,7 +143,7 @@ $messages = array(
 'index-category'                 => 'Indexed panna',
 'noindex-category'               => 'Bina index karaa gais panna',
 
-'mainpagetext'      => "<big>'''MediaWiki ke safalta se install kar dewa gais hai.'''</big>",
+'mainpagetext'      => "'''MediaWiki ke safalta se install kar dewa gais hai.'''",
 'mainpagedocfooter' => "Wiki software ke use kare ke aur jaankari ke khatir [http://meta.wikimedia.org/wiki/Help:Contents User's Guide] ke dekho.
 
 == Getting started ==
@@ -368,6 +367,8 @@ Iske, URL ke likh ke, koi administrator ke report karo.',
 'readonly_lag'         => 'Database apne se band hoi gais hai jab tak ki duusra database, khaas database ke sanghe kaam nai kare lage.',
 'internalerror'        => 'Bhitri galti',
 'internalerror_info'   => 'Bhitri galti: $1',
+'fileappenderrorread'  => 'Jorre ke time $1 ke nai parrhe sakaa hae.',
+'fileappenderror'      => '"$1" ke "$2" se nai jorre sakaa hae.',
 'filecopyerror'        => 'File "$1" ke "$2" pe copy nai kare sakaa.',
 'filerenameerror'      => 'File "$1" ke naam badal ke "$2" nai kare sakaa.',
 'filedeleteerror'      => 'File "$1" ke nai mitae sakaa.',
@@ -560,7 +561,7 @@ Agar aap Save pe click karaa tab bina vishay ke iske save kar lewa jaai.",
 'summary-preview'                  => 'Sanchhep jhalak:',
 'subject-preview'                  => 'Suchi ke jhalak:',
 'blockedtitle'                     => 'Sadasya ke rok dewa gais hai',
-'blockedtext'                      => "<big>'''Aapke user name nai to IP address ke rok dewa gae hai.'''</big>
+'blockedtext'                      => "'''Aapke user name nai to IP address ke rok dewa gae hai.'''
 
 Roke waala hai $1. 
 Iske kaaran hai ''$2''.
@@ -1587,7 +1588,6 @@ Templates ke delete kare se pahile duusra links ke bhi check kare ke nai bhulna.
 'statistics-edits-average'     => 'Average badlao per panna',
 'statistics-views-total'       => 'Views kul jorr',
 'statistics-views-peredit'     => 'Views per badlao',
-'statistics-jobqueue'          => '[http://www.mediawiki.org/wiki/Manual:Job_queue Job queue] lambai',
 'statistics-users'             => 'Registered [[Special:ListUsers|sadasya]]',
 'statistics-users-active'      => 'Active sadasya',
 'statistics-users-active-desc' => 'Sadasya jon ki pichhle {{PLURAL:$1|din|$1 din}} me kuchh karin hai.',
@@ -1874,7 +1874,7 @@ Aapan dhyan ke settings ke badle ke khatir, jaao
 {{fullurl:{{#special:Watchlist}}/edit}}
 
 Aapan dhyan suchi se panna ke mitae ke khatir, jaao
-{{fullurl:{{FULLPAGENAMEE}}|action=unwatch}}
+$UNWATCHURL
 
 
 Aapan bichar de ke khatir aur aage ke sahaeta:
@@ -2035,7 +2035,7 @@ Sait aap ke kharaab link hoi, nai to badlao ke sait pahile jaise kar dewa gais h
 'undeletedfiles'               => '{{PLURAL:$1|1 file|$1 files}} ke pahile jaise kar dewa gais hai',
 'cannotundelete'               => 'Pahile jaise nai kare sakaa;
 saait aur koi panna ke pahile jaise kar diis hai.',
-'undeletedpage'                => "<big>'''$1 ke pahile jaise kar dewa gais hai'''</big>
+'undeletedpage'                => "'''$1 ke pahile jaise kar dewa gais hai'''
 
 Nawaa mitawa gais aur badlao ke ulta karaa gais panna ke dekhe ke khatir [[Special:Log/delete|deletion log]] ke dekho.",
 'undelete-header'              => 'Nawaa mitawa gais panna ke dekhe ke khatir [[Special:Log/delete|the deletion log]] ke dekho.',
@@ -2273,7 +2273,7 @@ Ii prastithi me, aap ke manually move yah merge kare ke parri.",
 'move-watch'                   => 'Ii panna pe dhyan rakho',
 'movepagebtn'                  => 'Panna ke naam badlo',
 'pagemovedsub'                 => 'Panna ke naam badle me safalta',
-'movepage-moved'               => '<big>\'\'\'"$1" ke naam badal ke "$2" kar dewa gais hai\'\'\'</big>',
+'movepage-moved'               => '\'\'\'"$1" ke naam badal ke "$2" kar dewa gais hai\'\'\'',
 'movepage-moved-redirect'      => 'Ek redirect ke banae dewa gais hai.',
 'movepage-moved-noredirect'    => 'Ek redirect ke banae pe rukawat lagae dewa gais hai.',
 'articleexists'                => 'Uu naam ke panna abhi hai, nai to jon naam aap choose karaa hai valid nai hai.

@@ -170,7 +170,6 @@ $messages = array(
 'tog-editsectiononrightclick' => "Secties bewirke mit 'ne rechtermoesklik op sectietitels (JavaScript nudig)",
 'tog-showtoc'                 => "Inhaudsopgaaf veur pazjena's mit mie es 3 köpkes",
 'tog-rememberpassword'        => "Wachwaord ónthauwe bie 't aafmèlde",
-'tog-editwidth'               => "Editveldj euver de vol breide van 't sjirm weergaeve",
 'tog-watchcreations'          => "Pazjena's die ich aanmaak automatisch volge",
 'tog-watchdefault'            => "Voog pazjena's die se bewirks toe aan dien volglies",
 'tog-watchmoves'              => "Pazjena's die ich verplaats automatisch volge",
@@ -274,7 +273,7 @@ $messages = array(
 'category-file-count-limited'    => "Dees categorie bevat {{PLURAL:$1|'t volgende bestandj|de volgende $1 bestenj}}.",
 'listingcontinuesabbrev'         => 'wiejer',
 
-'mainpagetext'      => "<big>'''MediaWiki software succesvol geïnsjtalleerd.'''</big>",
+'mainpagetext'      => "'''MediaWiki software succesvol geïnsjtalleerd.'''",
 'mainpagedocfooter' => "Raodpleeg de [http://meta.wikimedia.org/wiki/NL_Help:Inhoudsopgave handjleiding] veur informatie euver 't gebroek van de wikisoftware.
 
 == Mieë hölp ==
@@ -635,7 +634,7 @@ Meugelik höbs doe dien wachwaord al gewiezig of 'n nuuj tiedelik wachwaord aang
 'summary-preview'                  => 'Naokieke samevatting:',
 'subject-preview'                  => 'Naokieke ongerwerp/kop:',
 'blockedtitle'                     => 'Gebroeker is geblokkeerd',
-'blockedtext'                      => "<big>'''Dien gebroekersaccount of IP-adres is geblokkeerd.'''</big>
+'blockedtext'                      => "'''Dien gebroekersaccount of IP-adres is geblokkeerd.'''
 
 De blokkade is oetgeveurd door $1. De opgegaeve raej is ''$2''.
 
@@ -1490,7 +1489,6 @@ De [$2 pagina mit de bestandjsbesjrieving] wurt hie ónger weergegaeve.',
 'statistics-edits-average'     => 'Gemiddeld aantal bewerkinge per pagina',
 'statistics-views-total'       => "Totaal aantal weergegeve pagina's",
 'statistics-views-peredit'     => "Weergegeve pagina's per bewerking",
-'statistics-jobqueue'          => '[http://www.mediawiki.org/wiki/Manual:Job_queue Jobqueuelengte]',
 'statistics-users'             => 'Geregistreerde [[Special:ListUsers|gebroekers]]',
 'statistics-users-active'      => 'Actieve gebroekers',
 'statistics-users-active-desc' => "Gebroekers die in de aafgeloupe {{PLURAL:$1|daag|$1 daag}} 'ne hanjeling höbbe oetgevoerd",
@@ -1786,7 +1784,8 @@ Kónfermeer hiejónger dat dit inderdaod dien bedoeling is, dats doe de gevolge 
 'deletereason-dropdown'  => '*Väölveurkommende wisree
 ** Op aanvraog van auteur
 ** Sjending van auteursrech
-** Vandalisme',
+** Gebroek es zandjbak
+** Vandalisme/Sjeljerie',
 'delete-edit-reasonlist' => 'Reeje veur verwiedering bewèrke',
 'delete-toobig'          => "Dees pazjena haet 'ne lange bewerkingsgesjiedenis, mieë es $1 {{PLURAL:$1|versie|versies}}. 't Wisse van dit saort pazjena's is mit rech beperk óm 't próngelök versteure van de werking van {{SITENAME}} te veurkómme.",
 'delete-warning-toobig'  => "Dees pazjena haet 'ne lange bewerkingsgesjiedenis, mieë es $1 {{PLURAL:$1|versie|versies}}. 't Wisse van dees pazjena kan de werking van de database van {{SITENAME}} versteure. Bön veurzichtig.",
@@ -1895,7 +1894,7 @@ Es d'r 'ne nuuj pagina mit dezelfde naam is aangemaak sins de pagina is eweggesj
 'undeletedrevisions-files'     => '$1 {{PLURAL:$1|versie|versies}} en $2 {{PLURAL:$2|bestandj|bestenj}} trökgeplaats',
 'undeletedfiles'               => '$1 {{PLURAL:$1|bestandj|bestenj}} trökgeplaats',
 'cannotundelete'               => "Verwiedere mislùk. Mesjien haet 'ne angere gebroeker de pazjena al verwiederd.",
-'undeletedpage'                => "<big>'''$1 is trökgeplaats'''</big>
+'undeletedpage'                => "'''$1 is trökgeplaats'''
 
 In 't [[Special:Log/delete|logbook verwiederde pazjena's]] staon recènte verwiederinge en herstelhanjelinge.",
 'undelete-header'              => "Zuug [[Special:Log/delete|'t logbook verwiederde pazjena's]] veur recènt verwiederde pazjena's.",
@@ -2096,7 +2095,7 @@ Vergaet neet de database opnuuj te [[Special:UnlockDB|deblokkere]] wens te klaor
 'move-watch'                   => 'Volg deze pazjena',
 'movepagebtn'                  => 'Verplaats pazjena',
 'pagemovedsub'                 => 'De verplaatsing is gelök',
-'movepage-moved'               => '<big>\'\'\'"$1" is verplaats nao "$2"\'\'\'</big>',
+'movepage-moved'               => '\'\'\'"$1" is verplaats nao "$2"\'\'\'',
 'movepage-moved-redirect'      => "d'r Is 'n doorverwiezing aongemaak.",
 'movepage-moved-noredirect'    => "d'r Is gein doorverwiezing aongemaak.",
 'articleexists'                => "Dao is al 'n pazjena mit dees titel of de titel is óngeljig. <br />Kees estebleef 'n anger titel.",

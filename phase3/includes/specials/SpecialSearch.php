@@ -56,11 +56,10 @@ class SpecialSearch {
 	 * Set up basic search parameters from the request and user settings.
 	 * Typically you'll pass $wgRequest and $wgUser.
 	 *
-	 * @param WebRequest $request
-	 * @param User $user
-	 * @public
+	 * @param $request WebRequest
+	 * @param $user User
 	 */
-	function __construct( &$request, &$user ) {
+	public function __construct( &$request, &$user ) {
 		list( $this->limit, $this->offset ) = $request->getLimitOffset( 20, 'searchlimit' );
 		$this->mPrefix = $request->getVal('prefix', '');
 		# Extract requested namespaces
@@ -78,7 +77,8 @@ class SpecialSearch {
 
 	/**
 	 * If an exact title match can be found, jump straight ahead to it.
-	 * @param string $term
+	 *
+	 * @param $term String
 	 */
 	public function goResult( $term ) {
 		global $wgOut;
@@ -92,6 +92,7 @@ class SpecialSearch {
 		# If there's an exact or very near match, jump right there.
 		$t = SearchEngine::getNearMatch( $term );
 		if( !is_null( $t ) ) {
+			wfRunHooks( 'SpecialSearchGomatch', array( &$t ) );
 			$wgOut->redirect( $t->getFullURL() );
 			return;
 		}
@@ -110,7 +111,7 @@ class SpecialSearch {
 	}
 
 	/**
-	 * @param string $term
+	 * @param $term String
 	 */
 	public function showResults( $term ) {
 		global $wgOut, $wgUser, $wgDisableTextSearch, $wgContLang, $wgScript;
@@ -326,6 +327,8 @@ class SpecialSearch {
 				$messageName = 'searchmenu-exists';
 			} elseif( $t->userCan( 'create' ) ) {
 				$messageName = 'searchmenu-new';
+			} else {
+				$messageName = 'searchmenu-new-nocreate';
 			}
 		} 
 		if( $messageName ) {
@@ -370,8 +373,8 @@ class SpecialSearch {
 	 * Extract "power search" namespace settings from the request object,
 	 * returning a list of index numbers to search.
 	 *
-	 * @param WebRequest $request
-	 * @return array
+	 * @param $request WebRequest
+	 * @return Array
 	 */
 	protected function powerSearch( &$request ) {
 		$arr = array();
@@ -385,7 +388,8 @@ class SpecialSearch {
 
 	/**
 	 * Reconstruct the 'power search' options for links
-	 * @return array
+	 *
+	 * @return Array
 	 */
 	protected function powerSearchOptions() {
 		$opt = array();
@@ -402,7 +406,7 @@ class SpecialSearch {
 	/**
 	 * Show whole set of results
 	 *
-	 * @param SearchResultSet $matches
+	 * @param $matches SearchResultSet
 	 */
 	protected function showMatches( &$matches ) {
 		global $wgContLang;
@@ -430,8 +434,9 @@ class SpecialSearch {
 
 	/**
 	 * Format a single hit result
-	 * @param SearchResult $result
-	 * @param array $terms terms to highlight
+	 *
+	 * @param $result SearchResult
+	 * @param $terms Array: terms to highlight
 	 */
 	protected function showHit( $result, $terms ) {
 		global $wgContLang, $wgLang, $wgUser;
@@ -538,6 +543,18 @@ class SpecialSearch {
 			$this->sk->formatSize( $byteSize ),
 			$wgLang->formatNum( $wordCount )
 		);
+
+		if( $t->getNamespace() == NS_CATEGORY ) {
+			$cat = Category::newFromTitle( $t );
+			$size = wfMsgExt(
+				'search-result-category-size',
+				array( 'parsemag', 'escape' ),
+				$wgLang->formatNum( $cat->getPageCount() ),
+				$wgLang->formatNum( $cat->getSubcatCount() ),
+				$wgLang->formatNum( $cat->getFileCount() )
+			);
+		}
+
 		$date = $wgLang->timeanddate( $timestamp );
 
 		// link to related articles if supported
@@ -599,7 +616,8 @@ class SpecialSearch {
 	/**
 	 * Show results from other wikis
 	 *
-	 * @param SearchResultSet $matches
+	 * @param $matches SearchResultSet
+	 * @param $query String
 	 */
 	protected function showInterwiki( &$matches, $query ) {
 		global $wgContLang;
@@ -637,11 +655,11 @@ class SpecialSearch {
 	/**
 	 * Show single interwiki link
 	 *
-	 * @param SearchResult $result
-	 * @param string $lastInterwiki
-	 * @param array $terms
-	 * @param string $query
-	 * @param array $customCaptions iw prefix -> caption
+	 * @param $result SearchResult
+	 * @param $lastInterwiki String
+	 * @param $terms Array
+	 * @param $query String
+	 * @param $customCaptions Array: iw prefix -> caption
 	 */
 	protected function showInterwikiHit( $result, $lastInterwiki, $terms, $query, $customCaptions) {
 		wfProfileIn( __METHOD__ );
@@ -718,8 +736,9 @@ class SpecialSearch {
 
 	/**
 	 * Generates the power search box at bottom of [[Special:Search]]
-	 * @param $term string: search term
-	 * @return $out string: HTML form
+	 *
+	 * @param $term String: search term
+	 * @return String: HTML form
 	 */
 	protected function powerSearchBox( $term ) {
 		global $wgScript, $wgContLang;
@@ -881,7 +900,6 @@ class SpecialSearch {
 			$bareterm = substr( $term, strpos( $term, ':' ) + 1 );
 		}
 
-		
 		$profiles = $this->getSearchProfiles();
 		
 		// Outputs XML for Search Types
@@ -957,7 +975,16 @@ class SpecialSearch {
 		return $out . $this->didYouMeanHtml;		
 	}
 
-	/** Make a search link with some target namespaces */
+	/**
+	 * Make a search link with some target namespaces
+	 *
+	 * @param $term String
+	 * @param $namespaces Array
+	 * @param $label String: link's text
+	 * @param $tooltip String: link's tooltip
+	 * @param $params Array: query string parameters
+	 * @return String: HTML fragment
+	 */
 	protected function makeSearchLink( $term, $namespaces, $label, $tooltip, $params=array() ) {
 		$opt = $params;
 		foreach( $namespaces as $n ) {
@@ -985,7 +1012,12 @@ class SpecialSearch {
 		);
 	}
 
-	/** Check if query starts with image: prefix */
+	/**
+	 * Check if query starts with image: prefix
+	 *
+	 * @param $term String: the string to check
+	 * @return Boolean
+	 */
 	protected function startsWithImage( $term ) {
 		global $wgContLang;
 
@@ -996,7 +1028,12 @@ class SpecialSearch {
 		return false;
 	}
 	
-	/** Check if query starts with all: prefix */
+	/**
+	 * Check if query starts with all: prefix
+	 *
+	 * @param $term String: the string to check
+	 * @return Boolean
+	 */
 	protected function startsWithAll( $term ) {
 
 		$allkeyword = wfMsgForContent('searchall');

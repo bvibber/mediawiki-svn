@@ -27,7 +27,6 @@ $messages = array(
 'tog-editsectiononrightclick' => "Pérmet l'édichion del sekchion par un droé buke su ch'tite del sekchion (i feut JavaScript)",
 'tog-showtoc'                 => "Aficher l'tabe ed ches étnus (pou ches paches aveuc plu ed 3 intétes)",
 'tog-rememberpassword'        => "Warder min lodjine su chl'ordinateu-lo.",
-'tog-editwidth'               => "Alatcher l'boéte d'édichon pou rimplir tout ch'cassi",
 'tog-watchcreations'          => "Ajouter ches paches qu'éj crée su em lisse",
 'tog-watchdefault'            => "Ajouter ches paches qu'éj édite su em lisse.",
 'tog-watchmoves'              => "Ajouter ches paches qu'éj déplache su m'lisse.",
@@ -115,7 +114,7 @@ $messages = array(
 'category-article-count'   => "{{PLURAL:$2|Chol catégorie o seulemint chol pache-lo.|{{PLURAL:$1|El pache-lo est|$1 Chés paches-lo sont}} din l'catégorie-lo, pou un total éd $2 .}}",
 'listingcontinuesabbrev'   => 'cont.',
 
-'mainpagetext' => "<big>'''MediaWiki o té instalé aveuc victoère.'''</big>",
+'mainpagetext' => "'''MediaWiki o té instalé aveuc victoère.'''",
 
 'about'         => 'À pérpos',
 'article'       => 'Étnu del pache',
@@ -286,6 +285,7 @@ Si s'n'est poin ch'cas-lo, pététe éq ch'est un bogue din ch'businkillache. <b
 'filenotfound'         => 'Éj pux poin trouvoér ch\'fichié "$1".',
 'fileexistserror'      => 'Éj pux poin écrire su ch\'fichié "$1": ech fichié écsiste',
 'unexpected'           => 'Valeur poin prévue: "$1"="$2".',
+'badarticleerror'      => "Os n'povez poin foaire cha su l'pache-lo.",
 'badtitle'             => 'Méchant tite',
 'badtitletext'         => "Ch'tite del pache écmindée n'est poin valabe, est vide, ou bin ch'est un tite inter-langue ou inter-proujé aveuc des méchands loïens. Pététe qu'il y o un ou des caractére(s) éq i feut poin mette din chés tites.",
 'viewsource'           => "Vir l'source",
@@ -399,7 +399,7 @@ Os prométtez auchi éq vos avez écrit ch'teske vous-méme, ou éq vos l’avez
 'histlegend'             => "Diff séléccion: buke chés boétes d'chés canjemints à comparète pi détriquer intrer ou ch'bouton édsou.<br />
 Léginde : ({{MediaWiki:Cur}}) = différinches aveuc el vérchon à ch'momint-chi, ({{MediaWiki:Last}}) = différinches aveuc el vérchon édvant, <b>m</b> = tiot canjemint.",
 'history-fieldset-title' => "S'déplacher din l'historique",
-'histfirst'              => "L'pu neu",
+'histfirst'              => 'preumières paches',
 'histlast'               => 'Darin',
 
 # Revision deletion
@@ -718,7 +718,7 @@ Din chés cas-lo, I feut érlonmer ou ratatouiller l'pache aveuc l'main.",
 'move-watch'       => "Suire l'pache-lo",
 'movepagebtn'      => "Déplacer l'pache",
 'pagemovedsub'     => 'Déplachemint réussi',
-'movepage-moved'   => '<big>\'\'\'"$1" o té déplaché su "$2"\'\'\'</big>',
+'movepage-moved'   => '\'\'\'"$1" o té déplaché su "$2"\'\'\'',
 'articleexists'    => "Il y o eune pache aveuc ch'nom-lo dja, ou bin ch'tite couési n'est poin valabe. <br /> I feut in prinde un eute",
 'talkexists'       => "'''L'pache ale o té déplachée   mais l'pache d'pérlache n'put poin éte déplachée ker il y o pécho eune pache d'pérlache aveuc ch'nouvieu nom. <br /> I feut foaire un touillache al main.'''",
 'movedto'          => 'Déplaché dsus',

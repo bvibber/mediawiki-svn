@@ -62,6 +62,13 @@ class ApiUnblock extends ApiBase {
 		if ( !$wgUser->isAllowed( 'block' ) ) {
 			$this->dieUsageMsg( array( 'cantunblock' ) );
 		}
+		# bug 15810: blocked admins should have limited access here
+		if ( $wgUser->isBlocked() ) {
+			$status = IPBlockForm::checkUnblockSelf( $params['user'] );
+			if ( $status !== true ) {
+				$this->dieUsageMsg( array( $status ) );
+			}
+		}
 
 		$id = $params['id'];
 		$user = $params['user'];
@@ -116,6 +123,8 @@ class ApiUnblock extends ApiBase {
 			array( 'unblock-notarget' ),
 			array( 'unblock-idanduser' ),
 			array( 'cantunblock' ),
+			array( 'ipbblocked' ),
+			array( 'ipbnounblockself' ),
 		) );
 	}
 

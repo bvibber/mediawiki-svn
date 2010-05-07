@@ -10,6 +10,7 @@
  * @author Cecílio
  * @author MCruz
  * @author Malafaya
+ * @author Romaine
  * @author Urhixidur
  */
 
@@ -92,7 +93,6 @@ $messages = array(
 'tog-editsectiononrightclick' => "Posseblitar l'eidiçon de cachos por clique cul boton dreito ne l títalo de la seçon (JavaScrit)",
 'tog-showtoc'                 => 'Amostrar índice (para páiginas cun mais de trés cachos)',
 'tog-rememberpassword'        => 'Recordar la mie palabra-chabe antre sessones',
-'tog-editwidth'               => "Oumentar l'anchura de la caixa d'eidiçon para prencher toda la pantalha",
 'tog-watchcreations'          => 'Ajuntar las páiginas que you criar a las minhas páiginas begiadas',
 'tog-watchdefault'            => 'Ajuntar las páiginas que you eiditar a las minhas páiginas begiadas',
 'tog-watchmoves'              => ' Ajuntar las páiginas que you mober a las minhas páiginas begiadas',
@@ -102,7 +102,7 @@ $messages = array(
 'tog-previewonfirst'          => "Amostrar l'antebison na purmeira eidiçon",
 'tog-nocache'                 => 'Zatibar caching de páiginas',
 'tog-enotifwatchlistpages'    => 'Notificar-me por correio eiletrónico quando ua páigina begiada ye altarada',
-'tog-enotifusertalkpages'     => ' Abisar -me por correio eiletrónico quando la mie páigina de çcusson ye eiditada',
+'tog-enotifusertalkpages'     => 'Abisar -me por correio eiletrónico quando la mie páigina de çcusson ye eiditada',
 'tog-enotifminoredits'        => 'Abisar-me por correio eiletrónico tamien quando las eidiçones fúren pequeinhas',
 'tog-enotifrevealaddr'        => 'Rebelar l miu andereço de correio eiletrónico nas noteficaçones',
 'tog-shownumberswatching'     => "Amostrar l númaro d'outelizadores a begiar",
@@ -455,7 +455,7 @@ de modo a cunfirmar que la cuonta ye mesmo la tue.',
 'showdiff'                         => 'Amostrar altaraçones',
 'anoneditwarning'                  => "'''Abiso''': Tu nun stás outenticado. L tou IP será registrado ne l stórico de las eidiçones desta páigina.",
 'summary-preview'                  => 'Amostra de l sumário:',
-'blockedtext'                      => '<big>L tou nome d\'outelizador ó morada de IP foi bloquiada</big>
+'blockedtext'                      => 'L tou nome d\'outelizador ó morada de IP foi bloquiada
 
 L bloqueio fui feito por $1. La rezon fui \'\'$2\'\'.
 
@@ -1024,7 +1024,7 @@ Nestes causos, tu terás que arrastrar ou ajuntar la páigina a la mano, se assi
 'move-watch'       => 'Begiar esta páigina',
 'movepagebtn'      => 'Arrastrar páigina',
 'pagemovedsub'     => 'Páigina arrastrada cumo debe de ser',
-'movepage-moved'   => '<big>\'\'\'"$1" fui arrastrado pa "$2"\'\'\'</big>',
+'movepage-moved'   => '\'\'\'"$1" fui arrastrado pa "$2"\'\'\'',
 'articleexists'    => 'Yá eisiste ua páigina cun este títalo, ou l títalo que scolhiste ye ambálido.
 Por fabor, scuolhe outro nome.',
 'talkexists'       => "'''La páigina an si fui arrastrada cun éisito. Inda assi, la páigina de çcusson nun fui arrastrada, ua beç que yá eisistie ua cun este títalo. Por fabor, ajunta-las a la mano.'''",

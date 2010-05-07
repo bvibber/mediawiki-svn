@@ -20,7 +20,7 @@ $messages = array(
 'tog-hideminor'               => 'Isalikut la reng mangalating edit kareng bayung mengayalili',
 'tog-hidepatrolled'           => "Isalikut la reng edit a babanten (''controlled edits'') kareng bayung mengayalili",
 'tog-newpageshidepatrolled'   => "Isalikut la reng bulung a babanten (''patrolled pages'') king listaan king bayung bulung (''new page list'')",
-'tog-extendwatchlist'         => 'Dagdagan la reng babanten para ipakit la reng kailangan mayalili',
+'tog-extendwatchlist'         => 'Dagdagan la reng babanten ba lang palto deng anggang mialilan, aliwa mu deng pekabayu.',
 'tog-usenewrc'                => 'Mesanting la reng bayung mengayalili (JavaScript)',
 'tog-numberheadings'          => 'Tambing lang dinan nomiru deng pamagat',
 'tog-showtoolbar'             => 'Ipakit ya panaliling toolbar (JavaScript)',
@@ -30,7 +30,6 @@ Pabusten ing pamanaliling dake kapamilatan [alilan] ning suglung',
 'tog-editsectiononrightclick' => "Paganan ya ing pamag-edit seksiyon (section editing) kapamilata'ning pamag right click kareng pamagat da reng seksiyon (JavaScript)",
 'tog-showtoc'                 => 'Pakit ya ing kalamnan [table of contents] (kareng bulung a maki 3 o mas dakal a pamagat)',
 'tog-rememberpassword'        => 'Tandanan ya ing kanakung login keng computer a ini',
-'tog-editwidth'               => 'Cajun a alilan atin yang katmung lualas',
 'tog-watchcreations'          => 'Idagdag la deng bulung a lelengan ku kareng babanten',
 'tog-watchdefault'            => 'Idagdag la reng bulung a inalilan ku kareng babanten',
 'tog-watchmoves'              => 'Idagdag la reng bulung a inalis ku kareng babanten',
@@ -44,7 +43,8 @@ Pabusten ing pamanaliling dake kapamilatan [alilan] ning suglung',
 'tog-enotifminoredits'        => 'E-mail mu ku kareng mangalating alili da reng bulung',
 'tog-enotifrevealaddr'        => 'Ipakit me ing kanakung e-mail address kareng pamanabisang sulat',
 'tog-shownumberswatching'     => 'Ipakit la reng bilang da reng magbanteng talagamit',
-'tog-fancysig'                => 'Pirmang e me-prosesu [raw signatures] (alang tambing a suglung)',
+'tog-oldsig'                  => 'I-preview ya ing salukuyan a pirma',
+'tog-fancysig'                => 'Ituring yang wikitext ing pirma (alang automatic link o tambing a suglung)',
 'tog-externaleditor'          => 'Gumamit a pangkilual a editor kapamilatan ning kabud',
 'tog-externaldiff'            => 'Tambing kang gumamit aliwa (diff) ibat a panglual',
 'tog-showjumplinks'           => 'Salangian la reng suglung a pampabilis (accessibility links) a "luksu king" (jump to)',
@@ -54,6 +54,7 @@ Pabusten ing pamanaliling dake kapamilatan [alilan] ning suglung',
 'tog-watchlisthidebots'       => 'Isalikut la reng edit kareng babanten',
 'tog-watchlisthideminor'      => 'Isalikut la reng mangalating edits kareng babanten',
 'tog-watchlisthideliu'        => "Isalikut la reng elilan da reng talagamit a maka-log in (''edits by logged in users'') king listaan da reng babanten (''watchlist'')",
+'tog-watchlisthideanons'      => 'Isalikut la reng elilan da reng e migpakilala king babanten o watchlist',
 'tog-ccmeonemails'            => 'Paralan mu kung kauangis da reng e-mails a peparala ku kareng aliwang talagamit',
 'tog-diffonly'                => 'Eya papakit ing laman ning bulung lalam ning diffs',
 'tog-showhiddencats'          => 'Ipakit la reng makasalikut a categories',
@@ -130,7 +131,7 @@ Pabusten ing pamanaliling dake kapamilatan [alilan] ning suglung',
 'category-file-count-limited'    => '{{PLURAL:$1|Ing makatuking simpan kayabe ya|Deng makatuking $1 simpan kayabe la}} king salukuyang kategoriya.',
 'listingcontinuesabbrev'         => 'katuglung.',
 
-'mainpagetext'      => "<big>'''Melaus ing pamipalyari ning MediaWiki.'''</big>",
+'mainpagetext'      => "'''Melaus ing pamipalyari ning MediaWiki.'''",
 'mainpagedocfooter' => "Basan me ing [http://meta.wikimedia.org/wiki/Help:Contents User's Guide] para king impormasiun keng pamangamit ning wiki software.
 
 == Pamagumpisa ==
@@ -170,6 +171,7 @@ Pabusten ing pamanaliling dake kapamilatan [alilan] ning suglung',
 'vector-namespace-image'    => "Simpan (''file'')",
 'vector-namespace-main'     => 'Bulung',
 'vector-namespace-media'    => 'Bulung media',
+'vector-namespace-project'  => 'Bulung a pang-proyectu',
 
 'errorpagetitle'    => 'Mali',
 'returnto'          => 'Magbalik king $1.',
@@ -504,7 +506,7 @@ Nung i-click meng pasibayu ing Save, ma-save ya ing kekang i-edit a yalang anti 
 'summary-preview'                  => 'Preview ning sampulung (summary preview):',
 'subject-preview'                  => 'Preview ning paksa/pamagat:',
 'blockedtitle'                     => 'Ing talagamit mesabat ya',
-'blockedtext'                      => "<big>'''Mesabat ya ing kekang lagiung talagamit (user name) o IP address.'''</big>
+'blockedtext'                      => "'''Mesabat ya ing kekang lagiung talagamit (user name) o IP address.'''
 
 I $1 ing menyabat. Ini ing binie nang sangkan ''$2''.
 
@@ -628,6 +630,8 @@ Malyari kang magbalik at mag-edit king bulung a atyu na, o makapag[[Special:User
 
 Pakaisipan mu sana nung karapatdapat yang isundu ing pamag-edit kaniti.
 Atiyu keni ing tala ding mebura (deletion log) kaniting bulung ba meng malaguang asuri:",
+'moveddeleted-notice'              => "Mebura ya ing bulung a ini. 
+Ibie la para king kekang beluan deng kasulatan ning pamagbura ampong pamanalis (''deletion and move log'') para king impormasion.",
 
 # Parser/template warnings
 'expensive-parserfunction-warning'  => 'Babala: Masiadu yang dakal mangamal a parser function call ining bulung.
@@ -1574,7 +1578,7 @@ Mapaliaring putut ya ing kekang suglung, o misubli (restored) ya o milako king s
 'undeletedrevisions-files'     => '{{PLURAL:$1|1 pamagbayung|$1 pamagbayung}} ampong {{PLURAL:$2|1 simpan|$2 simpan}} a misubli',
 'undeletedfiles'               => '{{PLURAL:$1|1 simpan|$1 simpan}} a misubli',
 'cannotundelete'               => "E melaus ing pamamawi king pamamura.  Mapalyaring ati'nang minunang ginawa kaniti.",
-'undeletedpage'                => "ing <big>'''$1 misubli ya'''</big>
+'undeletedpage'                => "ing '''$1 misubli ya'''
 
 Lon me ing [[Special:Log/delete|tala da reng mebura (deletion log)]] para king tala/listaan da reng bayu-bayung mebura ampong misubli.",
 'undelete-header'              => 'Lon me [[Special:Log/delete|tala da reng mebura]] para kareng bulung a bayu-bayung mebura.',
@@ -1773,7 +1777,7 @@ Nung makanyan pin ing milyari, kailangan meng iyalis o isanib (merge) ing bulung
 'move-watch'              => 'Banten ya ing bulung a ini',
 'movepagebtn'             => 'Iyalis ya ing bulung',
 'pagemovedsub'            => 'Merapat ing pamanalis',
-'movepage-moved'          => '<big>\'\'\'Ing "$1" miyalis ya king "$2"\'\'\'</big>',
+'movepage-moved'          => '\'\'\'Ing "$1" miyalis ya king "$2"\'\'\'',
 'articleexists'           => 'Ing bulung a yan atinang miki lagyu, okaya
 ing lagyu ginamit mu e malyari.
 Gumamit na kang aliwang lagyu.',

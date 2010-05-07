@@ -28,7 +28,6 @@ $messages = array(
 'tog-editsectiononrightclick' => 'Ermazīnginais redigīsnan stēisan pāusas sekciōnin pra tikrōman pellis knuppas gnesnan na tenesses tītelin',
 'tog-showtoc'                 => 'Waidinnais ēnturas listin (en pāusamans sen tūls nikāi 3 sirzdatītelins)',
 'tog-rememberpassword'        => 'Paminnais enēisenes infōrmaciōnins en šismu kōmputerin',
-'tog-editwidth'               => 'Paplattinais redigīsnas laūkan en pastippan ekrānas plattu',
 'tog-watchcreations'          => 'Preidāis pāusans kawīdans as teīke prei majjan listin stēisan nadirītan',
 'tog-watchdefault'            => 'Preidāis pāusans kawīdans as redigijja prei majjan listin stēisan nadirītan',
 'tog-watchmoves'              => 'Preidāis pāusans, kawīdans as praskajjina prei majjan listin stēisan nadirītan',
@@ -137,7 +136,7 @@ Pāusai en kategōrijai "$1"',
 'index-category'                 => 'Indeksīntai pāusai',
 'noindex-category'               => 'Niindeksīntai pāusai',
 
-'mainpagetext'      => "<big>'''MediaWiki's instalaciōni izpalla.'''</big>",
+'mainpagetext'      => "'''MediaWiki's instalaciōni izpalla.'''",
 'mainpagedocfooter' => 'Wīdais [http://meta.wikimedia.org/wiki/Help:Contents przewodnik użytkownika] kāi gaūlai informaciōnei ezze wiki prōgramijas tērpausnan.
 
 == En pagaūseņu ==
@@ -543,7 +542,7 @@ Kaddan tū wīrst gnettuns(si) \"Enpeisāis\" etkūmps, twājs kumentārs wīrst
 'summary-preview'                  => 'Ebpeisāsenes pirmādira:',
 'subject-preview'                  => 'Tītelas pirmādira:',
 'blockedtitle'                     => 'Tērpautajs ast blōkitan',
-'blockedtext'                      => '<big>\'\'Twajā tērpautajas pabilisnā anga IP adressi pastāi blōkitan.\'\'\'</big>
+'blockedtext'                      => '\'\'Twajā tērpautajas pabilisnā anga IP adressi pastāi blōkitan.\'\'\'
 
 Blōkisenis pastāi segītan pra $1.
 Brewīnsli ast \'\'$2\'\'.
@@ -1429,7 +1428,6 @@ Tērpausna: ēnturas_tīps/pōtips, perw. <tt>image/jpeg</tt>.',
 'statistics-edits-average'     => 'Sirzds gīrbis stēisan redigīsenin per pāusan',
 'statistics-views-total'       => 'Gīrbis wisēisan kāimalukisenei:',
 'statistics-views-peredit'     => 'Gīrbis stēisan kāimalukisenin per redigīsenin',
-'statistics-jobqueue'          => '[http://www.mediawiki.org/wiki/Manual:Job_queue endāsnan rīkas] ilgan',
 'statistics-users'             => 'Registrītai [[Special:ListUsers|tērpautajai]]',
 'statistics-users-active'      => 'Aktīwai tērpautajai',
 'statistics-users-active-desc' => 'Tērpautajai sēntei aktīwai en {{PLURAL:$1|panzdauman dēinan|panzdaumans dēinans}}',
@@ -1823,7 +1821,7 @@ Tu mazzi turītun wārgan autengīnsnan anga wersiōni pastāi etwārtai wartīn
 'undeletedfiles'               => 'ast etteīkuns {{PLURAL:$1|1 zūrbrukin|$1 zūrbrukins}}',
 'cannotundelete'               => 'Etgaūsenis ni izpalla;
 Ainunts kits ast jāu etgaūwuns šin pāusan.',
-'undeletedpage'                => "<big>'''$1 pastāi etwārtai wartīntan'''</big>
+'undeletedpage'                => "'''$1 pastāi etwārtai wartīntan'''
 
 Jaīs en [[Special:Log/delete|āupausinsenin regīsterin]], kāi widālai panzdaumans āupausinsenins be etteīksenins.",
 'undelete-header'              => 'Jaīs en [[Special:Log/delete|āupausinsenin regīsterin]], kāi widālai panzdaumai āupausintans pāusans.',
@@ -2038,7 +2036,7 @@ En kitēimans prēipalins tū mazzi praskajjintun anga senlaītun pāusan ter r�
 'move-watch'                   => 'Nadirēis šin pāusan',
 'movepagebtn'                  => 'Praskajjinais pāusan',
 'pagemovedsub'                 => 'Praskajjinsenis izpalla',
-'movepage-moved'               => "<big>'''„$1” pastāi praskajjintan en „$2”'''</big>",
+'movepage-moved'               => "'''„$1” pastāi praskajjintan en „$2”'''",
 'movepage-moved-redirect'      => 'Prawessenis pastāi teīktan.',
 'movepage-moved-noredirect'    => 'Prawessenis ni pastāi teīktan.',
 'articleexists'                => 'Pāusan sēn šin tītelin jāu ast, anga etrīnkts tītels ni ast tikrōmiskan.

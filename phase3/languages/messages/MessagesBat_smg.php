@@ -70,7 +70,6 @@ $messages = array(
 'tog-editsectiononrightclick' => 'Ijongtė skėrsneliu redagavėma paspaudos skėrsnelė pavadėnėma<br />dešėniouju pelies klavėšu (JavaScript)',
 'tog-showtoc'                 => 'Ruodītė torėni, jē poslapī daugiau kāp 3 skėrsnelē',
 'tog-rememberpassword'        => 'Atmintė prėsėjongėma infuormacėjė šėtom kuompioterī',
-'tog-editwidth'               => 'Pėlna pluotė redagavėma lauks',
 'tog-watchcreations'          => 'Pridietė poslapius, katrūs sokorio, i keravuojamu sāraša',
 'tog-watchdefault'            => 'Pridietė poslapius, katrūs taisau, i keravuojamu sāraša',
 'tog-watchmoves'              => 'Pridietė poslapius, katrūs parkelio, i keravuojamu sāraša',
@@ -472,7 +471,7 @@ nebus siontamas ni vėinam žemiau ėšvardėntam puoslaugiō.',
 'summary-preview'                  => 'Kuomentara parvaiza:',
 'subject-preview'                  => 'Skėrsnelė/ontraštės parvaiza:',
 'blockedtitle'                     => 'Nauduotuos īr ožblokouts',
-'blockedtext'                      => "<big>'''Tamstas nauduotuojė vards a IP adresos īr ožblokouts.'''</big>
+'blockedtext'                      => "'''Tamstas nauduotuojė vards a IP adresos īr ožblokouts.'''
 
 Ožbluokava $1. 
 Nuruodīta prižastis īr ''$2''.
@@ -1045,7 +1044,6 @@ Paspaude ont štolpelė ontraštės pakeisėt ėšruokavėma.',
 'statistics-files'         => 'Ikeltė failā',
 'statistics-edits'         => 'Poslapiu redagavėmu skaitlius nū {{SITENAME}} sokūrėma',
 'statistics-edits-average' => 'Vėdotėnis keitėmu skaitlius poslapiō',
-'statistics-jobqueue'      => '[http://www.mediawiki.org/wiki/Manual:Job_queue Oždoutiū eilės] ėlgoms',
 'statistics-users'         => 'Ožsėregėstravosiu [[Special:ListUsers|nauduotuoju]]',
 'statistics-users-active'  => 'Aktīviu nauduotuoju',
 'statistics-mostpopular'   => 'Daugiausē ruodītė poslapē',
@@ -1371,7 +1369,7 @@ lėgė trīnima. Ėštrintū poslapiu tekstos īr galėmas tėk admėnėstratuor
 'undeletedrevisions'         => 'atkorta $1 {{PLURAL:$1|versėjė|versėjės|versėju}}',
 'undeletedrevisions-files'   => 'atkorta $1 {{PLURAL:$1|versėjė|versėjės|versėju}} ėr $2 {{PLURAL:$2|fails|failā|failu}}',
 'undeletedfiles'             => 'atkorta $1 {{PLURAL:$1|fails|failā|failu}}',
-'undeletedpage'              => "<big>'''$1 bova atkurts'''</big>
+'undeletedpage'              => "'''$1 bova atkurts'''
 Parveizėkiet [[Special:Log/delete|trīnimu sāraša]], nuoriedamė rastė paskotėniu trīnimu ėr atkorėmu sāraša.",
 'undelete-header'            => 'Veizėkit [[Special:Log/delete|trīnima istuorėjuo]] paskoteniausē ėštrintū poslapiu.',
 'undelete-search-box'        => 'Ėiškuotė ėštrintū poslapiu',
@@ -1535,7 +1533,7 @@ kū soprantat vėsas pasiekmes.",
 'move-watch'              => 'Keravuotė šėta poslapi',
 'movepagebtn'             => 'Parvadintė poslapė',
 'pagemovedsub'            => 'Parvadinta siekmingā',
-'movepage-moved'          => '<big>\'\'\'"$1" bova parvadints i "$2"\'\'\'</big>',
+'movepage-moved'          => '\'\'\'"$1" bova parvadints i "$2"\'\'\'',
 'movepage-moved-redirect' => 'Nukreipims bova sokorts.',
 'articleexists'           => 'Straipsnis so tuokiu vardo jau īr
 a parinktāsis vards īr bluogs.

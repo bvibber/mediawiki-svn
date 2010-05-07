@@ -292,7 +292,7 @@ abstract class Maintenance {
 	 *    Maintenance::DB_ADMIN -  For admin DB access
 	 * @return int
 	 */
-	protected function getDbType() {
+	public function getDbType() {
 		return Maintenance::DB_STD;
 	}
 
@@ -565,6 +565,10 @@ abstract class Maintenance {
 	 * @param $force boolean Whether to force the help to show, default false
 	 */
 	protected function maybeHelp( $force = false ) {
+		$screenWidth = 80;	// TODO: Caculate this!
+		$tab = "    ";
+		$descWidth = $screenWidth - ( 2 * strlen( $tab ) );
+		
 		ksort( $this->mParams );
 		if( $this->hasOption( 'help' ) || $force ) {
 			$this->mQuiet = false;
@@ -572,7 +576,7 @@ abstract class Maintenance {
 			if( $this->mDescription ) {
 				$this->output( "\n" . $this->mDescription . "\n" );
 			}
-			$output = "\nUsage: php " . $this->mSelf;
+			$output = "\nUsage: php " . basename( $this->mSelf );
 			if( $this->mParams ) {
 				$output .= " [--" . implode( array_keys( $this->mParams ), "|--" ) . "]";
 			}
@@ -586,10 +590,12 @@ abstract class Maintenance {
 			}
 			$this->output( "$output\n" );
 			foreach( $this->mParams as $par => $info ) {
-				$this->output( "\t$par : " . $info['desc'] . "\n" );
+				$this->output( wordwrap( "$tab$par : " . $info['desc'], $descWidth, 
+				               "\n$tab$tab" ) . "\n" );
 			}
 			foreach( $this->mArgList as $info ) {
-				$this->output( "\t<" . $info['name'] . "> : " . $info['desc'] . "\n" );
+				$this->output( wordwrap( "$tab<" . $info['name'] . "> : " .
+				               $info['desc'], $descWidth, "\n$tab$tab" ) . "\n" );
 			}
 			die( 1 );
 		}
@@ -600,7 +606,7 @@ abstract class Maintenance {
 	 */
 	public function finalSetup() {
 		global $wgCommandLineMode, $wgShowSQLErrors;
-		global $wgTitle, $wgProfiling, $IP, $wgDBadminuser, $wgDBadminpassword;
+		global $wgProfiling, $IP, $wgDBadminuser, $wgDBadminpassword;
 		global $wgDBuser, $wgDBpassword, $wgDBservers, $wgLBFactoryConf;
 
 		# Turn off output buffering again, it might have been turned on in the settings files
@@ -844,4 +850,91 @@ abstract class Maintenance {
 		}
 		return self::$mCoreScripts;
 	}
+
+	/**
+	 * Lock the search index
+	 * @param &$db Database object
+	 */
+	private function lockSearchindex( &$db ) {
+		$write = array( 'searchindex' );
+		$read = array( 'page', 'revision', 'text', 'interwiki', 'l10n_cache' );
+		$db->lockTables( $read, $write, __CLASS__ . '::' . __METHOD__ );
+	}
+
+	/**
+	 * Unlock the tables
+	 * @param &$db Database object
+	 */
+	private function unlockSearchindex( &$db ) {
+		$db->unlockTables(  __CLASS__ . '::' . __METHOD__ );
+	}
+
+	/**
+	 * Unlock and lock again
+	 * Since the lock is low-priority, queued reads will be able to complete
+	 * @param &$db Database object
+	 */
+	private function relockSearchindex( &$db ) {
+		$this->unlockSearchindex( $db );
+		$this->lockSearchindex( $db );
+	}
+
+	/**
+	 * Perform a search index update with locking
+	 * @param $maxLockTime integer the maximum time to keep the search index locked.
+	 * @param $updateFunction callback the function that will update the function.
+	 */
+	public function updateSearchIndex( $maxLockTime, $callback, $dbw, $results ) {
+		$lockTime = time();
+
+		# Lock searchindex
+		if ( $maxLockTime ) {
+			$this->output( "   --- Waiting for lock ---" );
+			$this->lockSearchindex( $dbw );
+			$lockTime = time();
+			$this->output( "\n" );
+		}
+
+		# Loop through the results and do a search update
+		foreach ( $results as $row ) {
+			# Allow reads to be processed
+			if ( $maxLockTime && time() > $lockTime + $maxLockTime ) {
+				$this->output( "    --- Relocking ---" );
+				$this->relockSearchindex( $dbw );
+				$lockTime = time();
+				$this->output( "\n" );
+			}
+			call_user_func( $callback, $dbw, $row );
+		}
+
+		# Unlock searchindex
+		if ( $maxLockTime ) {
+			$this->output( "    --- Unlocking --" );
+			$this->unlockSearchindex( $dbw );
+			$this->output( "\n" );
+		}
+
+	}
+
+	/**
+	 * Update the searchindex table for a given pageid
+	 * @param $dbw Database a database write handle
+	 * @param $pageId the page ID to update.
+	 */
+	public function updateSearchIndexForPage( $dbw, $pageId ) {
+		// Get current revision
+		$rev = Revision::loadFromPageId( $dbw, $pageId );
+		$title = null;
+		if( $rev ) {
+			$titleObj = $rev->getTitle();
+			$title = $titleObj->getPrefixedDBkey();
+			$this->output( "$title..." );
+			# Update searchindex
+			$u = new SearchUpdate( $pageId, $titleObj->getText(), $rev->getText() );
+			$u->doUpdate();
+			$this->output( "\n" );
+		}
+		return $title;
+	}
+
 }

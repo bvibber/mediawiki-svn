@@ -63,6 +63,7 @@ class ApiMain extends ApiBase {
 		'parse' => 'ApiParse',
 		'opensearch' => 'ApiOpenSearch',
 		'feedwatchlist' => 'ApiFeedWatchlist',
+		'go' => 'ApiGo',
 		'help' => 'ApiHelp',
 		'paraminfo' => 'ApiParamInfo',
 
@@ -167,7 +168,7 @@ class ApiMain extends ApiBase {
 
 		$this->mRequest = &$request;
 
-		$this->mSquidMaxage = -1; // flag for executeActionWithErrorHandling()
+		$this->mSquidMaxage = - 1; // flag for executeActionWithErrorHandling()
 		$this->mCommit = false;
 	}
 
@@ -397,9 +398,9 @@ class ApiMain extends ApiBase {
 	}
 
 	/**
-	 * Execute the actual module, without any error handling
+	 * Set up for the execution.
 	 */
-	protected function executeAction() {
+	protected function setupExecuteAction() {
 		// First add the id to the top element
 		$requestid = $this->getParameter( 'requestid' );
 		if ( !is_null( $requestid ) ) {
@@ -415,6 +416,14 @@ class ApiMain extends ApiBase {
 			$this->dieUsage( 'The API requires a valid action parameter', 'unknown_action' );
 		}
 
+		return $params;
+	}
+
+	/**
+	 * Set up the module for response
+	 * @return Object the module that will handle this action
+	 */
+	protected function setupModule() {
 		// Instantiate the module requested by the user
 		$module = new $this->mModules[$this->mAction] ( $this, $this->mAction );
 		$this->mModule = $module;
@@ -433,7 +442,16 @@ class ApiMain extends ApiBase {
 				}
 			}
 		}
+		return $module;
+	}
 
+	/**
+	 * Check the max lag if necessary
+	 * @param $module ApiBase object: Api module being used
+	 * @param $params Array an array containing the request parameters.
+	 * @return boolean True on success, false should exit immediately
+	 */
+	protected function checkMaxLag( $module, $params ) {
 		if ( $module->shouldCheckMaxlag() && isset( $params['maxlag'] ) ) {
 			// Check for maxlag
 			global $wgShowHostnames;
@@ -447,10 +465,18 @@ class ApiMain extends ApiBase {
 				} else {
 					$this->dieUsage( "Waiting for a database server: $lag seconds lagged", 'maxlag' );
 				}
-				return;
+				return false;
 			}
 		}
+		return true;
+	}
 
+
+	/**
+	 * Check for sufficient permissions to execute
+	 * @param $module object An Api module
+	 */
+	protected function checkExecutePermissions( $module ) {
 		global $wgUser, $wgGroupPermissions;
 		if ( $module->isReadMode() && !$wgGroupPermissions['*']['read'] && !$wgUser->isAllowed( 'read' ) )
 		{
@@ -467,23 +493,44 @@ class ApiMain extends ApiBase {
 				$this->dieReadOnly();
 			}
 		}
+	}
+
+	/**
+	 * Check POST for external response and setup result printer
+	 * @param $module object An Api module
+	 * @param $params Array an array with the request parameters
+	 */
+	protected function setupExternalResponse( $module, $params ) {
+		// Ignore mustBePosted() for internal calls
+		if ( $module->mustBePosted() && !$this->mRequest->wasPosted() ) {
+			$this->dieUsageMsg( array( 'mustbeposted', $this->mAction ) );
+		}
+
+		// See if custom printer is used
+		$this->mPrinter = $module->getCustomPrinter();
+		if ( is_null( $this->mPrinter ) ) {
+			// Create an appropriate printer
+			$this->mPrinter = $this->createPrinterByName( $params['format'] );
+		}
+
+		if ( $this->mPrinter->getNeedsRawData() ) {
+			$this->getResult()->setRawMode();
+		}
+	}
+
+	/**
+	 * Execute the actual module, without any error handling
+	 */
+	protected function executeAction() {
+		$params = $this->setupExecuteAction();
+		$module = $this->setupModule();
+
+		$this->checkExecutePermissions( $module );
+
+		if ( !$this->checkMaxLag( $module, $params ) ) return;
 
 		if ( !$this->mInternalMode ) {
-			// Ignore mustBePosted() for internal calls
-			if ( $module->mustBePosted() && !$this->mRequest->wasPosted() ) {
-				$this->dieUsageMsg( array( 'mustbeposted', $this->mAction ) );
-			}
-
-			// See if custom printer is used
-			$this->mPrinter = $module->getCustomPrinter();
-			if ( is_null( $this->mPrinter ) ) {
-				// Create an appropriate printer
-				$this->mPrinter = $this->createPrinterByName( $params['format'] );
-			}
-
-			if ( $this->mPrinter->getNeedsRawData() ) {
-				$this->getResult()->setRawMode();
-			}
+			$this->setupExternalResponse( $module, $params );
 		}
 
 		// Execute
@@ -591,6 +638,7 @@ class ApiMain extends ApiBase {
 			'',
 			'Documentation:   http://www.mediawiki.org/wiki/API',
 			'Mailing list:    http://lists.wikimedia.org/mailman/listinfo/mediawiki-api',
+			'Api Announcements:    http://lists.wikimedia.org/mailman/listinfo/mediawiki-api-announce',
 			'Bugs & Requests: http://bugzilla.wikimedia.org/buglist.cgi?component=API&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&order=bugs.delta_ts',
 			'',
 			'',

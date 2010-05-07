@@ -35,11 +35,13 @@ class LoginForm {
 	const CREATE_BLOCKED = 9;
 	const THROTTLED = 10;
 	const USER_BLOCKED = 11;
+	const NEED_TOKEN = 12;
+	const WRONG_TOKEN = 13;
 
 	var $mName, $mPassword, $mRetype, $mReturnTo, $mCookieCheck, $mPosted;
 	var $mAction, $mCreateaccount, $mCreateaccountMail, $mMailmypassword;
 	var $mLoginattempt, $mRemember, $mEmail, $mDomain, $mLanguage;
-	var $mSkipCookieCheck, $mReturnToQuery;
+	var $mSkipCookieCheck, $mReturnToQuery, $mToken;
 
 	private $mExtUser = null;
 
@@ -70,6 +72,7 @@ class LoginForm {
 		$this->mRemember = $request->getCheck( 'wpRemember' );
 		$this->mLanguage = $request->getText( 'uselang' );
 		$this->mSkipCookieCheck = $request->getCheck( 'wpSkipCookieCheck' );
+		$this->mToken = ($this->mType == 'signup' ) ? $request->getVal( 'wpCreateaccountToken' ) : $request->getVal( 'wpLoginToken' );
 
 		if ( $wgRedirectOnLogin ) {
 			$this->mReturnTo = $wgRedirectOnLogin;
@@ -248,6 +251,25 @@ class LoginForm {
 			return false;
 		}
 
+		# Request forgery checks.
+		if ( !self::getCreateaccountToken() ) {
+			self::setCreateaccountToken();
+			$this->mainLoginForm( wfMsg( 'sessionfailure' ) );
+			return false;
+		}
+		
+		# The user didn't pass a createaccount token
+		if ( !$this->mToken ) {
+			$this->mainLoginForm( wfMsg( 'sessionfailure' ) );
+			return false;
+		}
+		
+		# Validate the createaccount token
+		if ( $this->mToken !== self::getCreateaccountToken() ) {
+			$this->mainLoginForm( wfMsg( 'sessionfailure' ) );
+			return false;
+		}
+
 		# Check permissions
 		if ( !$wgUser->isAllowed( 'createaccount' ) ) {
 			$this->userNotPrivilegedMessage();
@@ -260,7 +282,7 @@ class LoginForm {
 		$ip = wfGetIP();
 		if ( $wgUser->isDnsBlacklisted( $ip, true /* check $wgProxyWhitelist */ ) ) {
 			$this->mainLoginForm( wfMsg( 'sorbs_create_account_reason' ) . ' (' . htmlspecialchars( $ip ) . ')' );
-			return;
+			return false;
 		}
 
 		# Now create a dummy user ($u) and check if it is valid
@@ -337,6 +359,7 @@ class LoginForm {
 			return false;
 		}
 
+		self::clearCreateaccountToken();		
 		return $this->initUser( $u, false );
 	}
 
@@ -395,6 +418,21 @@ class LoginForm {
 			return self::NO_NAME;
 		}
 		
+		// We require a login token to prevent login CSRF
+		// Handle part of this before incrementing the throttle so
+		// token-less login attempts don't count towards the throttle
+		// but wrong-token attempts do.
+		
+		// If the user doesn't have a login token yet, set one.
+		if ( !self::getLoginToken() ) {
+			self::setLoginToken();
+			return self::NEED_TOKEN;
+		}
+		// If the user didn't pass a login token, tell them we need one
+		if ( !$this->mToken ) {
+			return self::NEED_TOKEN;
+		}
+		
 		global $wgPasswordAttemptThrottle;
 
 		$throttleCount = 0;
@@ -413,6 +451,11 @@ class LoginForm {
 				return self::THROTTLED;
 			}
 		}
+		
+		// Validate the login token
+		if ( $this->mToken !== self::getLoginToken() ) {
+			return self::WRONG_TOKEN;
+		}
 
 		// Load $wgUser now, and check to see if we're logging in as the same
 		// name. This is necessary because loading $wgUser (say by calling
@@ -430,7 +473,7 @@ class LoginForm {
 		# TODO: Allow some magic here for invalid external names, e.g., let the
 		# user choose a different wiki name.
 		$u = User::newFromName( $this->mName );
-		if( is_null( $u ) || !User::isUsableName( $u->getName() ) ) {
+		if( !( $u instanceof User ) || !User::isUsableName( $u->getName() ) ) {
 			return self::ILLEGAL;
 		}
 
@@ -575,6 +618,7 @@ class LoginForm {
 					$wgUser->invalidateCache();
 				}
 				$wgUser->setCookies();
+				self::clearLoginToken();
 
 				// Reset the throttle
 				$key = wfMemcKey( 'password-throttle', wfGetIP(), md5( $this->mName ) );
@@ -593,7 +637,11 @@ class LoginForm {
 					return $this->cookieRedirectCheck( 'login' );
 				}
 				break;
-
+			
+			case self::NEED_TOKEN:
+			case self::WRONG_TOKEN:
+				$this->mainLoginForm( wfMsg( 'sessionfailure' ) );
+				break;
 			case self::NO_NAME:
 			case self::ILLEGAL:
 				$this->mainLoginForm( wfMsg( 'noname' ) );
@@ -655,20 +703,33 @@ class LoginForm {
 			return;
 		}
 
-		# Check against blocked IPs
-		# fixme -- should we not?
+		# Check against blocked IPs so blocked users can't flood admins 
+		# with password resets
 		if( $wgUser->isBlocked() ) {
 			$this->mainLoginForm( wfMsg( 'blocked-mailpassword' ) );
 			return;
 		}
 		
-		// Check for hooks
+		# Check for hooks
 		$error = null;
 		if ( ! wfRunHooks( 'UserLoginMailPassword', array( $this->mName, &$error ) ) ) {
 			$this->mainLoginForm( $error );
 			return;
 		}
 
+		# If the user doesn't have a login token yet, set one.
+		if ( !self::getLoginToken() ) {
+			self::setLoginToken();
+			$this->mainLoginForm( wfMsg( 'sessionfailure' ) );
+			return;
+		}
+
+		# If the user didn't pass a login token, tell them we need one
+		if ( !$this->mToken ) {
+			$this->mainLoginForm( wfMsg( 'sessionfailure' ) );
+			return;
+		}
+		
 		# Check against the rate limiter
 		if( $wgUser->pingLimiter( 'mailpassword' ) ) {
 			$wgOut->rateLimited();
@@ -680,12 +741,18 @@ class LoginForm {
 			return;
 		}
 		$u = User::newFromName( $this->mName );
-		if( is_null( $u ) ) {
+		if( !$u instanceof User ) {
 			$this->mainLoginForm( wfMsg( 'noname' ) );
 			return;
 		}
 		if ( 0 == $u->getID() ) {
 			$this->mainLoginForm( wfMsgWikiHtml( 'nosuchuser', htmlspecialchars( $u->getName() ) ) );
+			return;
+		}
+
+		# Validate the login token
+		if ( $this->mToken !== self::getLoginToken() ) {
+			$this->mainLoginForm( wfMsg( 'sessionfailure' ) );
 			return;
 		}
 
@@ -704,6 +771,7 @@ class LoginForm {
 			$this->mainLoginForm( wfMsg( 'mailerror', $result->getMessage() ) );
 		} else {
 			$this->mainLoginForm( wfMsg( 'passwordsent', $u->getName() ), 'success' );
+			self::clearLoginToken();
 		}
 	}
 
@@ -937,6 +1005,18 @@ class LoginForm {
 		$template->set( 'canremember', ( $wgCookieExpiration > 0 ) );
 		$template->set( 'remember', $wgUser->getOption( 'rememberpassword' ) or $this->mRemember  );
 
+		if ( $this->mType == 'signup' ) {
+			if ( !self::getCreateaccountToken() ) {
+				self::setCreateaccountToken();
+			}
+			$template->set( 'token', self::getCreateaccountToken() );
+		} else {
+			if ( !self::getLoginToken() ) {
+				self::setLoginToken();
+			}
+			$template->set( 'token', self::getLoginToken() );
+		}
+		
 		# Prepare language selection links as needed
 		if( $wgLoginLanguageSelector ) {
 			$template->set( 'languages', $this->makeLanguageSelector() );
@@ -990,6 +1070,56 @@ class LoginForm {
 	function hasSessionCookie() {
 		global $wgDisableCookieCheck, $wgRequest;
 		return $wgDisableCookieCheck ? true : $wgRequest->checkSessionCookie();
+	}
+	
+	/**
+	 * Get the login token from the current session
+	 */
+	public static function getLoginToken() {
+		global $wgRequest;
+		return $wgRequest->getSessionData( 'wsLoginToken' );
+	}
+	
+	/**
+	 * Randomly generate a new login token and attach it to the current session
+	 */
+	public static function setLoginToken() {
+		global $wgRequest;
+		// Use User::generateToken() instead of $user->editToken()
+		// because the latter reuses $_SESSION['wsEditToken']
+		$wgRequest->setSessionData( 'wsLoginToken', User::generateToken() );
+	}
+	
+	/**
+	 * Remove any login token attached to the current session
+	 */
+	public static function clearLoginToken() {
+		global $wgRequest;
+		$wgRequest->setSessionData( 'wsLoginToken', null );
+	}
+
+	/**
+	 * Get the createaccount token from the current session
+	 */
+	public static function getCreateaccountToken() {
+		global $wgRequest;
+		return $wgRequest->getSessionData( 'wsCreateaccountToken' );
+	}
+	
+	/**
+	 * Randomly generate a new createaccount token and attach it to the current session
+	 */
+	public static function setCreateaccountToken() {
+		global $wgRequest;
+		$wgRequest->setSessionData( 'wsCreateaccountToken', User::generateToken() );
+	}
+	
+	/**
+	 * Remove any createaccount token attached to the current session
+	 */
+	public static function clearCreateaccountToken() {
+		global $wgRequest;
+		$wgRequest->setSessionData( 'wsCreateaccountToken', null );
 	}
 
 	/**

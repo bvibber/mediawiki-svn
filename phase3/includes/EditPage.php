@@ -220,30 +220,39 @@ class EditPage {
 	}
 
 	/**
-	 * Get the contents of a page from its title and remove includeonly tags
+	 * Get the contents to be preloaded into the box, either set by
+	 * an earlier setPreloadText() or by loading the given page.
 	 *
-	 * @param $preload String: the title of the page.
-	 * @return string The contents of the page.
+	 * @param $preload String: representing the title to preload from.
+	 * @return String
 	 */
 	protected function getPreloadedText( $preload ) {
+		global $wgUser, $wgParser;
 		if ( !empty( $this->mPreloadText ) ) {
 			return $this->mPreloadText;
-		} elseif ( $preload === '' ) {
-			return '';
-		} else {
-			$preloadTitle = Title::newFromText( $preload );
-			if ( isset( $preloadTitle ) && $preloadTitle->userCanRead() ) {
-				$rev = Revision::newFromTitle( $preloadTitle );
-				if ( is_object( $rev ) ) {
-					$text = $rev->getText();
-					// TODO FIXME: AAAAAAAAAAA, this shouldn't be implementing
-					// its own mini-parser! -ævar
-					$text = preg_replace( '~</?includeonly>~', '', $text );
-					return $text;
-				} else
-					return '';
+		} elseif ( $preload !== '' ) {
+			$title = Title::newFromText( $preload );
+			# Check for existence to avoid getting MediaWiki:Noarticletext
+			if ( isset( $title ) && $title->exists() && $title->userCanRead() ) {
+				$article = new Article( $title );
+
+				if ( $article->isRedirect() ) {
+					$title = Title::newFromRedirectRecurse( $article->getContent() );
+					# Redirects to missing titles are displayed, to hidden pages are followed
+					# Copying observed behaviour from ?action=view
+					if ( $title->exists() ) {
+						if ($title->userCanRead() ) {
+							$article = new Article( $title );
+						} else {
+							return "";
+						}
+					}
+				}
+				$parserOptions = ParserOptions::newFromUser( $wgUser );
+				return $wgParser->getPreloadText( $article->getContent(), $title, $parserOptions );
 			}
 		}
+		return '';
 	}
 
 	/*
@@ -497,7 +506,7 @@ class EditPage {
 	 * variable in the constructor is not enough. This can be used when the
 	 * EditPage lives inside of a Special page rather than a custom page action.
 	 * 
-	 * @param Title $title The title for which is being edited (where we go to for &action= links)
+	 * @param $title Title object for which is being edited (where we go to for &action= links)
 	 * @return string
 	 */
 	protected function getActionURL( Title $title ) {
@@ -647,7 +656,7 @@ class EditPage {
 	 * this method should be overrided and return the page text that will be used
 	 * for saving, preview parsing and so on...
 	 * 
-	 * @praram WebRequest $request
+	 * @param $request WebRequest
 	 */
 	protected function importContentFormData( &$request ) {
 		return; // Don't do anything, EditPage already extracted wpTextbox1
@@ -1286,7 +1295,7 @@ HTML
 			// and fallback to the raw wpTextbox1 since editconflicts can't be
 			// resolved between page source edits and custom ui edits using the
 			// custom edit ui.
-			$this->showTextbox1();
+			$this->showTextbox1( null, $this->getContent() );
 		} else {
 			$this->showContentForm();
 		}
@@ -1392,8 +1401,12 @@ HTML
 
 		if ( wfReadOnly() ) {
 			$wgOut->wrapWikiMsg( "<div id=\"mw-read-only-warning\">\n$1\n</div>", array( 'readonlywarning', wfReadOnlyReason() ) );
-		} elseif ( $wgUser->isAnon() && $this->formtype != 'preview' ) {
-			$wgOut->wrapWikiMsg( "<div id=\"mw-anon-edit-warning\">\n$1</div>", 'anoneditwarning' );
+		} elseif ( $wgUser->isAnon() ) {
+			if ( $this->formtype != 'preview' ) {
+				$wgOut->wrapWikiMsg( "<div id=\"mw-anon-edit-warning\">\n$1</div>", 'anoneditwarning' );
+			} else {
+				$wgOut->wrapWikiMsg( "<div id=\"mw-anon-preview-warning\">\n$1</div>", 'anonpreviewwarning' );
+			}
 		} else {
 			if ( $this->isCssJsSubpage ) {
 				# Check the skin exists
@@ -1466,20 +1479,21 @@ HTML
 	 * 
 	 * @param $summary The value of the summary input
 	 * @param $labelText The html to place inside the label
-	 * @param $userInputAttrs An array of attrs to use on the input
-	 * @param $userSpanAttrs An array of attrs to use on the span inside the label
+	 * @param $inputAttrs An array of attrs to use on the input
+	 * @param $spanLabelAttrs An array of attrs to use on the span inside the label
 	 * 
 	 * @return array An array in the format array( $label, $input )
 	 */
 	function getSummaryInput($summary = "", $labelText = null, $inputAttrs = null, $spanLabelAttrs = null) {
+		global $wgUser;
 		$inputAttrs = ( is_array($inputAttrs) ? $inputAttrs : array() ) + array(
 			'id' => 'wpSummary',
 			'maxlength' => '200',
 			'tabindex' => '1',
 			'size' => 60,
 			'spellcheck' => 'true',
-		);
-		
+		) + $wgUser->getSkin()->tooltipAndAccessKeyAttribs( 'summary' );
+
 		$spanLabelAttrs = ( is_array($spanLabelAttrs) ? $spanLabelAttrs : array() ) + array(
 			'class' => $this->missingSummary ? 'mw-summarymissed' : 'mw-summary',
 			'id' => "wpSummaryLabel"
@@ -1497,11 +1511,11 @@ HTML
 	}
 
 	/**
-	 * @param bool $isSubjectPreview true if this is the section subject/title
-	 *                               up top, or false if this is the comment
-	 *                               summary down below the textarea
-	 * @param string $summary The text of the summary to display
-	 * @return string
+	 * @param $isSubjectPreview Boolean: true if this is the section subject/title
+	 *                          up top, or false if this is the comment summary
+	 *                          down below the textarea
+	 * @param $summary String: The text of the summary to display
+	 * @return String
 	 */
 	protected function showSummaryInput( $isSubjectPreview, $summary = "" ) {
 		global $wgOut, $wgContLang;
@@ -1521,11 +1535,11 @@ HTML
 	}
 
 	/**
-	 * @param bool $isSubjectPreview true if this is the section subject/title
-	 *                               up top, or false if this is the comment
-	 *                               summary down below the textarea
-	 * @param string $summary The text of the summary to display
-	 * @return string
+	 * @param $isSubjectPreview Boolean: true if this is the section subject/title
+	 *                          up top, or false if this is the comment summary
+	 *                          down below the textarea
+	 * @param $summary String: the text of the summary to display
+	 * @return String
 	 */
 	protected function getSummaryPreview( $isSubjectPreview, $summary = "" ) {
 		if ( !$summary || ( !$this->preview && !$this->diff ) )
@@ -1581,7 +1595,7 @@ INPUTS
 	 * reverse modified when extracted from the post data.
 	 * Note that this is basically the inverse for importContentFormData
 	 * 
-	 * @praram WebRequest $request
+	 * @param $request WebRequest
 	 */
 	protected function showContentForm() {
 		$this->showTextbox1();
@@ -1592,8 +1606,8 @@ INPUTS
 	 * The $textoverride method can be used by subclasses overriding showContentForm
 	 * to pass back to this method.
 	 * 
-	 * @param array $customAttribs An array of html attributes to use in the textarea
-	 * @param string $textoverride Optional text to override $this->textarea1 with
+	 * @param $customAttribs An array of html attributes to use in the textarea
+	 * @param $textoverride String: optional text to override $this->textarea1 with
 	 */
 	protected function showTextbox1($customAttribs = null, $textoverride = null) {
 		$classes = array(); // Textarea CSS
@@ -1642,11 +1656,8 @@ INPUTS
 			'id'   => $name,
 			'cols' => $wgUser->getIntOption( 'cols' ), 
 			'rows' => $wgUser->getIntOption( 'rows' ),
-			'style' => '' // avoid php notices when appending for editwidth preference (appending allows customAttribs['style'] to still work
+			'style' => '' // avoid php notices when appending preferences (appending allows customAttribs['style'] to still work
 		);
-
-		if ( $wgUser->getOption( 'editwidth' ) )
-			$attribs['style'] .= 'width: 100%';
 
 		$wgOut->addHTML( Html::textarea( $name, $wikitext, $attribs ) );
 	}
@@ -1679,7 +1690,7 @@ INPUTS
 	 * Append preview output to $wgOut.
 	 * Includes category rendering if this is a category page.
 	 *
-	 * @param string $text The HTML to be output for the preview.
+	 * @param $text String: the HTML to be output for the preview.
 	 */
 	protected function showPreview( $text ) {
 		global $wgOut;
@@ -1695,14 +1706,16 @@ INPUTS
 		}
 	}
 
+	/**
+	 * Give a chance for site and per-namespace customizations of
+	 * terms of service summary link that might exist separately
+	 * from the copyright notice.
+	 * 
+	 * This will display between the save button and the edit tools,
+	 * so should remain short!
+	 */
 	protected function showTosSummary() {
 		$msg = 'editpage-tos-summary';
-		// Give a chance for site and per-namespace customizations of
-		// terms of service summary link that might exist separately
-		// from the copyright notice.
-		//
-		// This will display between the save button and the edit tools,
-		// so should remain short!
 		wfRunHooks( 'EditPageTosSummary', array( $this->mTitle, &$msg ) );
 		$text = wfMsg( $msg );
 		if( !wfEmptyMsg( $msg, $text ) && $text !== '-' ) {
@@ -1760,7 +1773,11 @@ INPUTS
 		$wgOut->addHTML( "	<span class='editHelp'>{$cancel}{$separator}{$edithelp}</span>\n" );
 		$wgOut->addHTML( "</div><!-- editButtons -->\n</div><!-- editOptions -->\n" );
 	}
-	
+
+	/*
+	 * Show an edit conflict. textbox1 is already shown in showEditForm().
+	 * If you want to use another entry point to this function, be careful.
+	 */
 	protected function showConflict() {
 		global $wgOut;
 		$this->textbox2 = $this->textbox1;
@@ -2072,8 +2089,8 @@ INPUTS
 
 	/**
 	 * Format an anchor fragment as it would appear for a given section name
-	 * @param string $text
-	 * @return string
+	 * @param $text String
+	 * @return String
 	 * @private
 	 */
 	function sectionAnchor( $text ) {
@@ -2411,9 +2428,9 @@ INPUTS
 	 * Filter an input field through a Unicode de-armoring process if it
 	 * came from an old browser with known broken Unicode editing issues.
 	 *
-	 * @param WebRequest $request
-	 * @param string $field
-	 * @return string
+	 * @param $request WebRequest
+	 * @param $field String
+	 * @return String
 	 * @private
 	 */
 	function safeUnicodeInput( $request, $field ) {
@@ -2434,8 +2451,8 @@ INPUTS
 	 * Filter an output field through a Unicode armoring process if it is
 	 * going to an old browser with known broken Unicode editing issues.
 	 *
-	 * @param string $text
-	 * @return string
+	 * @param $text String
+	 * @return String
 	 * @private
 	 */
 	function safeUnicodeOutput( $text ) {
@@ -2455,8 +2472,8 @@ INPUTS
 	 * Preexisting such character references will have a 0 added to them
 	 * to ensure that round-trips do not alter the original data.
 	 *
-	 * @param string $invalue
-	 * @return string
+	 * @param $invalue String
+	 * @return String
 	 * @private
 	 */
 	function makesafe( $invalue ) {
@@ -2497,8 +2514,8 @@ INPUTS
 	 * back to UTF-8. Used to protect data from corruption by broken web browsers
 	 * as listed in $wgBrowserBlackList.
 	 *
-	 * @param string $invalue
-	 * @return string
+	 * @param $invalue String
+	 * @return String
 	 * @private
 	 */
 	function unmakesafe( $invalue ) {

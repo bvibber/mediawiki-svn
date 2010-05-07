@@ -166,7 +166,6 @@ $messages = array(
 'tog-editsectiononrightclick' => "Gi primisi fu kenki pisi-papira nanga wan naki n'a leti-anu sey na tapu wan pisi-ede (JavaScript)",
 'tog-showtoc'                 => 'Sori san de (gi papira nanga moro leki 3 pisi-ede)',
 'tog-rememberpassword'        => 'Memre mi psawortu',
-'tog-editwidth'               => 'A kenki boksu span na marki na ala tu sei',
 'tog-watchcreations'          => 'Tan luku den papira di mi meki',
 'tog-watchdefault'            => 'Tan luku den papira di mi kenki',
 'tog-watchmoves'              => 'Tan luku den papira di mi froysi',
@@ -264,7 +263,7 @@ $messages = array(
 'category-file-count-limited'    => '{{PLURAL:$1|A file disi|Den $1 file disi}} de ini a grupu disi.',
 'listingcontinuesabbrev'         => 'moro',
 
-'mainpagetext'      => "<big>'''MediaWiki seti kon bun.'''</big>",
+'mainpagetext'      => "'''MediaWiki seti kon bun.'''",
 'mainpagedocfooter' => 'Luku na ini a [http://meta.wikimedia.org/wiki/Help:Yepi yepibuku] fu si fa fu kebrouki a wikisoftware.
 
 == Moro yepi ==
@@ -559,7 +558,7 @@ Bifo tra e-mail kan seni go na a account, yu musu du san skrifi ini a e-mail fu 
 'summary-preview'            => "Luku In'syatu na fesi:",
 'subject-preview'            => 'Ondroinfru/edelen fusi:',
 'blockedtitle'               => 'Masyin ben spikri',
-'blockedtext'                => "<big>'''Pasi tapu gi yu kebroikiman-nen noso IP.'''</big>
+'blockedtext'                => "'''Pasi tapu gi yu kebroikiman-nen noso IP.'''
 
 $1 tapu pasi gi yu. Disi na fu sanede ''$2''.
 

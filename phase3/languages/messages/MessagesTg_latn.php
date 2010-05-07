@@ -27,7 +27,6 @@ $messages = array(
 'tog-editsectiononrightclick' => 'Ba kor andoxtani viroişi sarlavhahoi qismatho bo kliki rost (ÇavaSkript)',
 'tog-showtoc'                 => 'Namoişi fehristi mundariçon (baroi maqolahoi bo beş az 3 sarlavha)',
 'tog-rememberpassword'        => 'Maro dar xotiri kompjuter nigoh dor',
-'tog-editwidth'               => "Vase' kardani quttiji viroiş to hadde, ki tamomi sahifaro bargirad",
 'tog-watchcreations'          => 'Doxil namudani sahifahoe, ki man soxtaam ba fehristi nazaroti man',
 'tog-watchdefault'            => 'Sahifahoi eçodkardaamro ba fehristi pajgiriam ilova kuned',
 'tog-watchmoves'              => 'Sahifahoi kūconidaamro ba fehristi pajgirihojam ilova kuned',
@@ -140,7 +139,7 @@ $messages = array(
 'index-category'                 => 'Sahifahoi namojaşuda',
 'noindex-category'               => 'Sahifahoi namoijanaşuda',
 
-'mainpagetext'      => "<big>'''Narmafzori MediaViki bo muvaffaqijat nasb şud.'''</big>",
+'mainpagetext'      => "'''Narmafzori MediaViki bo muvaffaqijat nasb şud.'''",
 'mainpagedocfooter' => 'Az [http://meta.wikimedia.org/wiki/Help:Contents Rohnamoi Korbaron] baroi istifodai narmafzori viki kūmak bigired.
 
 == Oƣoz ba kor ==
@@ -509,7 +508,7 @@ Agar dubora tugmai \"Zaxira\"-ro paxş kuned, viroişaton biduni on zaxira xohad
 'summary-preview'                  => 'Peşnamoişi xulosa:',
 'subject-preview'                  => "Peşnamoişi mavzū'/unvon:",
 'blockedtitle'                     => 'Korbar basta şudaast',
-'blockedtext'                      => "<big>'''Nomi korbariji Şumo jo nişonai IP basta şudaast.'''</big>
+'blockedtext'                      => "'''Nomi korbariji Şumo jo nişonai IP basta şudaast.'''
 
 Bastan az tarafi $1 içro şud. 
 Sababi on ''$2'' ast.
@@ -1453,7 +1452,7 @@ Dar in holatho, şumo bojad cand nusxai oxirin sahifaro niz ehjo kuned.',
 'undeletedrevisions-files'     => '$1 nusxa va $2 parvanda barqaror {{PLURAL:$1|şud|şudand}}',
 'undeletedfiles'               => '$1 parvanda barqaror {{PLURAL:$1|şud|şudand}}',
 'cannotundelete'               => 'Barqarorkunī naşud; mumkin ast kase digare peştar in sahifaro barqaror karda boşad.',
-'undeletedpage'                => "<big>'''$1 barqaror şud'''</big>
+'undeletedpage'                => "'''$1 barqaror şud'''
 
 Baroi didani guzorişi hazfho va barqarorkunihoi oxirin ba [[Special:Log/delete|guzorişi hazf]] nigared.",
 'undelete-header'              => 'Baroi didani sahifahoi hazfşudai oxir [[Special:Log/delete|guzorişhoi hazfro]] nigared.',
@@ -1644,7 +1643,7 @@ Dar on holatho, sahifaro bojad ba tavri dastī kūconid va jo du sahifaro bo vir
 'move-watch'                => 'Nazar kardani in sahifa',
 'movepagebtn'               => 'Kūconidani sahifa',
 'pagemovedsub'              => 'Kūconiş bomuvaffaqijat ançom joft',
-'movepage-moved'            => '<big>\'\'\'"$1" ba "$2" kūconida şud\'\'\'</big>',
+'movepage-moved'            => '\'\'\'"$1" ba "$2" kūconida şud\'\'\'',
 'movepage-moved-redirect'   => 'Jak taƣjiri masir eçod şud.',
 'movepage-moved-noredirect' => "Az eçodi taƣjiri masir ma'moniat şud.",
 'articleexists'             => "Sahifae bo in nom vuçud nadorad, jo nome, ki intixob kardaed mū'tabar nest.

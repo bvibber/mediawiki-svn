@@ -25,8 +25,14 @@ if (clientPC.indexOf('opera') != -1) {
 	var opera7_bugs = is_opera_seven && !is_opera_95;
 	var opera95_bugs = /opera\/(9\.5)/.test( clientPC );
 }
-// Start at 4 to minimize the chance of breaking on IE10 :)
-var ie6_bugs = /msie [4-6]/.test( clientPC );
+// As recommended by <http://msdn.microsoft.com/en-us/library/ms537509.aspx>,
+// avoiding false positives from moronic extensions that append to the IE UA
+// string (bug 23171)
+var ie6_bugs = false;
+if ( /MSIE ([0-9]{1,}[\.0-9]{0,})/.exec( clientPC ) != null
+&& parseFloat( RegExp.$1 ) <= 6.0 ) {
+	ie6_bugs = true;
+}
 
 // Global external objects used by this script.
 /*extern ta, stylepath, skin */
@@ -497,16 +503,21 @@ function redirectToFragment( fragment ) {
 			return;
 		}
 	}
-	if ( is_gecko ) {
-		// Mozilla needs to wait until after load, otherwise the window doesn't scroll
-		addOnloadHook(function() {
-			if ( window.location.hash == '' ) {
-				window.location.hash = fragment;
-			}
-		});
-	} else {
-		if ( window.location.hash == '' ) {
-			window.location.hash = fragment;
+	if ( window.location.hash == '' ) {
+		window.location.hash = fragment;
+
+		// Mozilla needs to wait until after load, otherwise the window doesn't
+		// scroll.  See <https://bugzilla.mozilla.org/show_bug.cgi?id=516293>.
+		// There's no obvious way to detect this programmatically, so we use
+		// version-testing.  If Firefox fixes the bug, they'll jump twice, but
+		// better twice than not at all, so make the fix hit future versions as
+		// well.
+		if ( is_gecko ) {
+			addOnloadHook(function() {
+				if ( window.location.hash == fragment ) {
+					window.location.hash = fragment;
+				}
+			});
 		}
 	}
 }
@@ -607,7 +618,15 @@ function ts_resortTable( lnk ) {
 	// Work out a type for the column
 	// Skip the first row if that's where the headings are
 	var rowStart = ( table.tHead && table.tHead.rows.length > 0 ? 0 : 1 );
-
+	var bodyRows = 0;
+	if (rowStart == 0 && table.tBodies) {
+		for (var i=0; i < table.tBodies.length; i++ ) {
+			bodyRows += table.tBodies[i].rows.length;
+		}
+		if (bodyRows < table.rows.length)
+			rowStart = 1;
+	}
+	
 	var itm = '';
 	for ( var i = rowStart; i < table.rows.length; i++ ) {
 		if ( table.rows[i].cells.length > column ) {

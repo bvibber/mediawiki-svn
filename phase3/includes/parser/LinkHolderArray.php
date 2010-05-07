@@ -266,9 +266,11 @@ class LinkHolderArray {
 		wfProfileIn( __METHOD__ );
 		# Make interwiki link HTML
 		$sk = $this->parent->getOptions()->getSkin();
+		$output = $this->parent->getOutput();
 		$replacePairs = array();
 		foreach( $this->interwikis as $key => $link ) {
 			$replacePairs[$key] = $sk->link( $link['title'], $link['text'] );
+			$output->addInterwikiLink( $link['title'] );
 		}
 		$replacer = new HashtableReplacer( $replacePairs, 1 );
 

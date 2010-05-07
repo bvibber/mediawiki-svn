@@ -61,7 +61,6 @@ $messages = array(
 'tog-editsectiononrightclick' => 'Fungsèkna panyuntingan sub-bagian mawa klik-tengen ing judul bagian (JavaScript)',
 'tog-showtoc'                 => 'Tuduhna daftar isi (kanggo kaca sing nduwé luwih saka 3 sub-bagian)',
 'tog-rememberpassword'        => 'Éling tembung sandi ing saben sési',
-'tog-editwidth'               => 'Jembarna kothak suntingan nganti ukuran layar kebak',
 'tog-watchcreations'          => 'Tambahna kaca sing tak-gawé ing daftar pangawasan',
 'tog-watchdefault'            => 'Tambahna kaca sing tak-sunting ing daftar pangawasan',
 'tog-watchmoves'              => 'Tambahkan kaca sing tak-pindhah ing daftar pangawasan',
@@ -175,7 +174,7 @@ $messages = array(
 'index-category'                 => 'Kaca sing diindhèks',
 'noindex-category'               => 'Kaca sing ora diindhèks',
 
-'mainpagetext'      => "<big>'''Prangkat empuk wiki wis suksès dipasang.'''</big>",
+'mainpagetext'      => "'''Prangkat empuk wiki wis suksès dipasang.'''",
 'mainpagedocfooter' => "Mangga maca [http://meta.wikimedia.org/wiki/Help:Contents User's Guide] kanggo katrangan luwih langkung prakara panggunan prangkat empuk wiki
 == Miwiti panggunan  ==
 * [http://www.mediawiki.org/wiki/Manual:Configuration_settings Daftar pangaturan préférènsi]
@@ -390,6 +389,7 @@ Yèn dudu iki panyebabé, panjenengan manawa bisa nemokaké kasalahan (''bug'') 
 'readonly_lag'         => 'Database wis dikunci mawa otomatis sawetara database sékundhèr lagi nglakoni sinkronisasi mawa database utama',
 'internalerror'        => 'Kasalahan internal',
 'internalerror_info'   => 'Kaluputan internal: $1',
+'fileappenderror'      => 'Ora bisa nglebokaké "$1" menyang "$2".',
 'filecopyerror'        => 'Ora bisa nulad berkas "$1" menyang "$2".',
 'filerenameerror'      => 'Ora bisa ngowahi saka "$1" dadi "$2".',
 'filedeleteerror'      => 'Ora bisa mbusak berkas "$1".',
@@ -566,7 +566,7 @@ Panjengen manawa wis kasil ganti tembung sandi utawa nyuwun tembung sandi saunta
 'summary-preview'                  => 'Pratayang ringkesan:',
 'subject-preview'                  => 'Pratayang subyèk/judhul:',
 'blockedtitle'                     => 'Panganggo diblokir',
-'blockedtext'                      => "<big>'''Asma panganggo utawa alamat IP panjenengan diblokir.'''</big>
+'blockedtext'                      => "'''Asma panganggo utawa alamat IP panjenengan diblokir.'''
 
 Blokir iki sing nglakoni $1. 
 Alesané ''$2''.
@@ -1499,7 +1499,6 @@ Priksanen dhisik pranala-pranala menyang cithakan iki sadurungé mbusak.',
 'statistics-edits-average'     => 'Rata-rata suntingan saben kaca',
 'statistics-views-total'       => 'Gunggung panampilan kaca',
 'statistics-views-peredit'     => 'Gunggung/cacahing panampilan saben suntingan',
-'statistics-jobqueue'          => 'Dawaning [http://www.mediawiki.org/wiki/Manual:Job_queue antrian pegawéan]',
 'statistics-users'             => 'Gunggung [[Special:ListUsers|panganggo kadaftar]]',
 'statistics-users-active'      => 'Para panganggo aktif',
 'statistics-users-active-desc' => 'Panganggo sing ngayahi aktivitas jroning {{PLURAL:$1|dia|$1 dina}} pungkasan',
@@ -1924,7 +1923,7 @@ Panjenengan mbokmenawa ngetutaké pranala sing salah, utawa revisi iku wis dipul
 'undeletedfiles'               => '$1 {{PLURAL:$1|berkas|berkas}} dibalèkaké',
 'cannotundelete'               => 'Olèhé mbatalaké pambusakan gagal; 
 mbokmenawa wis ana wong liya sing luwih dhisik nglakoni pambatalan.',
-'undeletedpage'                => "<big>'''$1 bisa dibalèkaké'''</big>
+'undeletedpage'                => "'''$1 bisa dibalèkaké'''
 
 Delengen [[Special:Log/delete|log pambusakan]] kanggo data pambusakan lan pambalèkan.",
 'undelete-header'              => 'Mangga mirsani [[Special:Log/delete|log pambusakan]] kanggo daftar kaca sing lagi waé dibusak.',
@@ -2140,7 +2139,7 @@ Ing kasus-kasus iku, yèn panjenengan gayuh, panjenengan bisa mindhahaké utawa 
 'move-watch'                   => 'Awasna kaca iki',
 'movepagebtn'                  => 'Pindhahna kaca',
 'pagemovedsub'                 => 'Bisa kasil dipindhahaké',
-'movepage-moved'               => '<big>\'\'\'"$1" dipindhahaké menyang "$2".\'\'\'</big>',
+'movepage-moved'               => '\'\'\'"$1" dipindhahaké menyang "$2".\'\'\'',
 'movepage-moved-redirect'      => 'Kaca pengalihan wis kacipta.',
 'movepage-moved-noredirect'    => 'Kanggo gawé pengalihan wis ditahan.',
 'articleexists'                => 'Satunggalipun kaca kanthi asma punika sampun wonten, utawi asma ingkang panjenengan pendhet mboten leres. Sumangga nyobi asma sanèsipun.',

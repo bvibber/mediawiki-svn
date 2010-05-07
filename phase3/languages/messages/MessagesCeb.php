@@ -79,7 +79,6 @@ $messages = array(
 'tog-editsectiononrightclick' => 'Mahimo ang pag-usab sa seksyon pinaagi sa pag-right click sa titulo sa seksyon (JavaScript kinahanglan)',
 'tog-showtoc'                 => 'Ipakita ang talaan sa sulod (alang sa mga panid nga may daghan pa sa 3 ka heading)',
 'tog-rememberpassword'        => 'Hinumdomi ako sa kining kompyuter',
-'tog-editwidth'               => 'Palapdan ang kahon sa pag-usab aron mapuno sa tibuok screen',
 'tog-watchcreations'          => 'Bantayi ang akong gisugdang mga panid',
 'tog-watchdefault'            => 'Bantayi ang akong giusab nga mga panid',
 'tog-watchmoves'              => 'Bantayi ang akong gibalhin nga mga panid',
@@ -190,7 +189,7 @@ $messages = array(
 'category-file-count-limited'    => 'Ang mosunod nga {{PLURAL:$1|payl|$1 ka mga payl}} anaa niining kategoryaha.',
 'listingcontinuesabbrev'         => 'pad.',
 
-'mainpagetext'      => "<big>'''Malamposon ang pag-instalar sa MediaWiki.'''</big>",
+'mainpagetext'      => "'''Malamposon ang pag-instalar sa MediaWiki.'''",
 'mainpagedocfooter' => 'Konsultaha ang [http://meta.wikimedia.org/wiki/Help:Contents Giya sa mga gumagamit] alang sa impormasyon unsaon paggamit niining wiki nga software.
 
 == Pagsugod ==
@@ -412,6 +411,7 @@ Palihog ireport kini sa usa ka [[Special:ListUsers/sysop|administrador]], hinumd
 'readonly_lag'         => 'Ang database awtomatikong na-lock samtang ang mga slave database server mo-catch up sa master',
 'internalerror'        => 'Internal nga sayop',
 'internalerror_info'   => 'Internal nga sayop: $1',
+'fileappenderror'      => 'Dili ma-append ang "$1" ngadto sa "$2".',
 'filecopyerror'        => 'Dili makopya ang payl nga "$1" ngadto sa "$2".',
 'filerenameerror'      => 'Dili mailisag ngalan ang payl "$1" ngadto sa "$2".',
 'filedeleteerror'      => 'Dili mapapas ang payl "$1".',
@@ -1156,7 +1156,7 @@ Sa maong mga kaso, manwal nga imo ibalhin o i-merge ang panid kon gustohon.",
 'move-watch'       => 'Bantayi kining panid',
 'movepagebtn'      => 'Ibalhin ang panid',
 'pagemovedsub'     => 'Malamposon ang pagbalhin',
-'movepage-moved'   => '<big>Ang \'\'\'"$1" nabalhin na ngadto sa "$2"\'\'\'</big>',
+'movepage-moved'   => 'Ang \'\'\'"$1" nabalhin na ngadto sa "$2"\'\'\'',
 'articleexists'    => 'May panid na sa maong ngalan, o ang ngalan nga imong napili ginadili.
 Palihog pagpili og laing ngalan.',
 'talkexists'       => "'''Ang panid mismo malamposon nga nabalhin, pero ang panid sa hisgot dili mabalhin tungod kay duna nay sulod ang panid sa hisgot sa bag-ong titulo.

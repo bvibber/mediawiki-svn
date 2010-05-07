@@ -468,7 +468,7 @@ class Linker {
 		if ( $file && !isset( $hp['width'] ) ) {
 			$hp['width'] = $file->getWidth( $page );
 
-			if( isset( $fp['thumbnail'] ) || isset( $fp['framed'] ) || isset( $fp['frameless'] ) ) {
+			if( isset( $fp['thumbnail'] ) || isset( $fp['framed'] ) || isset( $fp['frameless'] ) || !$hp['width'] ) {
 				$wopt = $wgUser->getOption( 'thumbsize' );
 
 				if( !isset( $wgThumbLimits[$wopt] ) ) {
@@ -1114,7 +1114,9 @@ class Linker {
 
 			$target = Title::newFromText( $linkTarget );
 			if( $target ) {
-				if( $target->getText() == '' && !$this->commentLocal && $this->commentContextTitle ) {
+				if( $target->getText() == '' && $target->getInterwiki() === ''
+					&& !$this->commentLocal && $this->commentContextTitle )
+				{
 					$newTarget = clone( $this->commentContextTitle );
 					$newTarget->setFragment( '#' . $target->getFragment() );
 					$target = $newTarget;

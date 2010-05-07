@@ -1,5 +1,5 @@
 <?php
-/** Cantonese (粵語/廣東話)
+/** Cantonese (粵語)
  *
  * See MessagesQqq.php for message documentation incl. usage of parameters
  * To improve a translation please visit http://translatewiki.net
@@ -10,6 +10,7 @@
  * @author Horacewai2
  * @author KaiesTse
  * @author William915
+ * @author Wong128hk
  */
 
 $bookstoreList = array(
@@ -157,7 +158,6 @@ $messages = array(
 'tog-editsectiononrightclick' => '可以撳右掣更改個別段落（需要JavaScript）',
 'tog-showtoc'                 => '多過三段時顯示目錄',
 'tog-rememberpassword'        => '響呢部電腦度記住我嘅密碼',
-'tog-editwidth'               => '加闊修改欄到成個螢幕',
 'tog-watchcreations'          => '將我開嘅頁加入監視清單',
 'tog-watchdefault'            => '將我修改嘅頁加入監視清單',
 'tog-watchmoves'              => '將我移動嘅頁加入監視清單',
@@ -272,7 +272,7 @@ $messages = array(
 'index-category'                 => '做咗索引嘅版',
 'noindex-category'               => '未做索引嘅版',
 
-'mainpagetext'      => "<big>'''MediaWiki已經裝好。'''</big>",
+'mainpagetext'      => "'''MediaWiki已經裝好。'''",
 'mainpagedocfooter' => '參閱[http://meta.wikimedia.org/wiki/Help:Contents 用戶指引]（英），裏面有資料講點用wiki軟件。
 
 ==開始使用==
@@ -286,7 +286,7 @@ $messages = array(
 'cancel'        => '取消',
 'moredotdotdot' => '更多...',
 'mypage'        => '我嘅頁',
-'mytalk'        => '我嘅討論',
+'mytalk'        => '傾偈',
 'anontalk'      => '同呢個 IP 傾偈',
 'navigation'    => '導航',
 'and'           => '同埋',
@@ -670,13 +670,14 @@ $1',
 'showlivepreview'                  => '實時預覽',
 'showdiff'                         => '顯示差異',
 'anoneditwarning'                  => "'''警告：'''你重未登入。你嘅 IP 位址會喺呢個頁面嘅修訂歷史中記錄落嚟。",
+'anonpreviewwarning'               => "''你重未登入，你嘅 IP 位址會喺呢個頁面嘅修訂歷史中記錄落嚟。''",
 'missingsummary'                   => "'''提醒：''' 你未提供編輯摘要。如果你再撳多一下儲存嘅話，咁你儲存嘅編輯就會無摘要。",
 'missingcommenttext'               => '請輸入一個註解。',
 'missingcommentheader'             => "'''提醒：'''你響呢個註解度並無提供一個主題／標題。如果你再撳一次儲存，你嘅編輯就會無題。",
 'summary-preview'                  => '摘要預覽:',
 'subject-preview'                  => '標題／頭條預覽:',
 'blockedtitle'                     => '用戶已經封鎖',
-'blockedtext'                      => "<big>你嘅用戶名或者 IP 位址已經被 $1 封咗。</big>
+'blockedtext'                      => "你嘅用戶名或者 IP 位址已經被 $1 封咗。
 
 呢次封鎖係由$1所封嘅。當中嘅原因係''$2''。
 
@@ -1062,6 +1063,7 @@ $1",
 'searchprofile-everything-tooltip' => '搵全部嘢（包埋討論版）',
 'searchprofile-advanced-tooltip'   => '響自定空間名度搵',
 'search-result-size'               => '$1 ($2個字)',
+'search-result-category-size'      => '$1位成員 ($2個細類，$3個檔案)',
 'search-result-score'              => '相關度: $1%',
 'search-redirect'                  => '(跳轉 $1)',
 'search-section'                   => '(小節 $1)',
@@ -1102,7 +1104,7 @@ $1",
 
 # Preferences page
 'preferences'                   => '喜好設定',
-'mypreferences'                 => '我嘅喜好設定',
+'mypreferences'                 => '安排與架生',
 'prefs-edits'                   => '編輯數:',
 'prefsnologin'                  => '重未登入',
 'prefsnologintext'              => '你一定要去<span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} 登入]</span>設定好用戶喜好值先。',
@@ -1169,6 +1171,7 @@ $1",
 'prefs-files'                   => '檔案',
 'prefs-custom-css'              => '自定 CSS',
 'prefs-custom-js'               => '自定 JS',
+'prefs-common-css-js'           => '共有嘅CSS同埋JS畀所有畫面用：',
 'prefs-reset-intro'             => '你可以用呢版去重設你嘅喜好設定到網站預設值。呢個動作無得番轉頭。',
 'prefs-emailconfirm-label'      => '電郵確認:',
 'prefs-textboxsize'             => '編輯窗大細',
@@ -1291,6 +1294,7 @@ $1",
 'right-hideuser'              => '封鎖用戶名，對公眾隱藏',
 'right-ipblock-exempt'        => '繞過IP封鎖、自動封鎖同埋範圍封鎖',
 'right-proxyunbannable'       => '繞過Proxy嘅自動封鎖',
+'right-unblockself'           => '解封佢哋自己',
 'right-protect'               => '改保護等級同埋編輯保護版',
 'right-editprotected'         => '編輯保護版（無連串保護）',
 'right-editinterface'         => '編輯用戶界面',
@@ -1418,6 +1422,9 @@ $1",
 'upload_directory_missing'    => '嗰個上載嘅目錄 ($1) 唔見咗，唔可以由網頁伺服器建立。',
 'upload_directory_read_only'  => '嗰個上載嘅目錄 ($1) 而家唔能夠被網頁伺服器寫入。',
 'uploaderror'                 => '上載錯誤',
+'upload-recreate-warning'     => "'''警告：一個同名嘅檔案曾經被刪除過或者搬走咗。'''
+
+呢版嘅刪除同移動日誌響呢度提供以便參考：",
 'uploadtext'                  => "用下面嘅表格嚟上載檔案。
 要睇或者搵嘢之前上載嘅圖像請去[[Special:FileList|已上載檔案一覽]]，（再）上載嘅動作會喺[[Special:Log/upload|上載日誌]]裏面記錄落嚟，而刪除嘅動作會喺[[Special:Log/delete|刪除日誌]]裏面記錄落嚟。
 
@@ -1452,6 +1459,17 @@ $1",
 'filetype-banned-type'        => "'''\".\$1\"'''係一種唔准許嘅檔案類型。
 容許嘅{{PLURAL:\$3|一種|多種}}檔案類型有\$2。",
 'filetype-missing'            => '個檔名並冇副檔名（好以「.jpg」）。',
+'empty-file'                  => '你所遞交嘅檔案係空嘅。',
+'file-too-large'              => '你所遞交嘅檔案太大。',
+'filename-tooshort'           => '檔名太短。',
+'filetype-banned'             => '呢種類型嘅檔案係禁止咗1。',
+'verification-error'          => '檔案未通過驗證。',
+'hookaborted'                 => '你所嘗試嘅修改被擴展鈎捨棄咗。',
+'illegal-filename'            => '檔案名唔容許。',
+'overwrite'                   => '唔容許覆蓋現有嘅檔案。',
+'unknown-error'               => '發生未知嘅錯誤。',
+'tmp-create-error'            => '唔能夠建立臨時檔案。',
+'tmp-write-error'             => '臨時檔案寫入嗰陣出錯。',
 'large-file'                  => '建議檔案嘅大細唔好大過$1 bytes，呢個檔案有$2 bytes',
 'largefileserver'             => '呢個檔案超過咗伺服器設定允許嘅大細。',
 'emptyfile'                   => '你上載嘅檔案似乎係空嘅。噉樣可能係因為你打錯咗個檔名。請檢查吓你係唔係真係要上載呢個檔案。',
@@ -1478,7 +1496,9 @@ $1",
 'savefile'                    => '儲存檔案',
 'uploadedimage'               => '上載咗"[[$1]]"',
 'overwroteimage'              => '已經上載咗"[[$1]]"嘅新版本',
-'uploaddisabled'              => '上載已停用',
+'uploaddisabled'              => '上載已停用。',
+'copyuploaddisabled'          => '由URL嘅上載已經停用。',
+'uploadfromurl-queued'        => '你嘅上載已經開始排隊。',
 'uploaddisabledtext'          => '檔案上載已經停用。',
 'php-uploaddisabledtext'      => 'PHP 檔案上載已經停用。請檢查 file_uploads 設定。',
 'uploadscripted'              => '呢個檔案包含可能會誤被瀏覽器解釋執行嘅 HTML 或 script 代碼。',
@@ -1671,7 +1691,6 @@ $1",
 'statistics-edits-average'     => '每一版平均編輯數',
 'statistics-views-total'       => '查看總數',
 'statistics-views-peredit'     => '每次編輯查看數',
-'statistics-jobqueue'          => '[http://www.mediawiki.org/wiki/Manual:Job_queue 工作隊列]長度',
 'statistics-users'             => '註冊咗嘅[[Special:ListUsers|用戶]]',
 'statistics-users-active'      => '活躍用戶',
 'statistics-users-active-desc' => '響$1日前做過動作嘅用戶',
@@ -1862,33 +1881,35 @@ Template:搞清楚',
 'listgrouprights-removegroup-self-all' => '響自己嘅戶口度可以拎走全部組',
 
 # E-mail user
-'mailnologin'      => '冇傳送地址',
-'mailnologintext'  => '你一定要[[Special:UserLogin|登入咗]]同埋喺你嘅[[Special:Preferences|喜好設定]]度有個有效嘅電郵地址先可以傳送電郵畀其他用戶。',
-'emailuser'        => '發電郵畀呢位用戶',
-'emailpage'        => '發電郵畀用戶',
-'emailpagetext'    => '你可以用下面嘅表去寄一封電郵畀呢位用戶。
+'mailnologin'          => '冇傳送地址',
+'mailnologintext'      => '你一定要[[Special:UserLogin|登入咗]]同埋喺你嘅[[Special:Preferences|喜好設定]]度有個有效嘅電郵地址先可以傳送電郵畀其他用戶。',
+'emailuser'            => '發電郵畀呢位用戶',
+'emailpage'            => '發電郵畀用戶',
+'emailpagetext'        => '你可以用下面嘅表去寄一封電郵畀呢位用戶。
 你喺[[Special:Preferences|你嘅用戶喜好設定]]入面填寫嘅電郵地址會出現喺呢封電郵「由」嘅地址度，以便收件人可以回覆到。',
-'usermailererror'  => '目標郵件地址返回錯誤：',
-'defemailsubject'  => '{{SITENAME}} 電郵',
-'noemailtitle'     => '無電郵地址',
-'noemailtext'      => '呢個用戶重未指定一個有效嘅電郵地址。',
-'nowikiemailtitle' => '唔容許電郵',
-'nowikiemailtext'  => '呢位用戶揀咗唔收其他用戶畀佢嘅電郵。',
-'email-legend'     => '寄電郵畀另一位{{SITENAME}}用戶',
-'emailfrom'        => '由:',
-'emailto'          => '到:',
-'emailsubject'     => '主題:',
-'emailmessage'     => '信息:',
-'emailsend'        => '傳送',
-'emailccme'        => '傳送一個我嘅信息電郵畀我。',
-'emailccsubject'   => '你畀$1: $2封信嘅副本',
-'emailsent'        => '電郵已傳送',
-'emailsenttext'    => '你嘅電郵信息已傳送。',
-'emailuserfooter'  => '呢封電郵係由$1寄畀$2經{{SITENAME}}嘅「電郵用戶」功能發出嘅。',
+'usermailererror'      => '目標郵件地址返回錯誤：',
+'defemailsubject'      => '{{SITENAME}} 電郵',
+'usermaildisabled'     => '用戶電郵已停用',
+'usermaildisabledtext' => '你唔可以發送電郵到響呢個wiki度嘅其他用戶',
+'noemailtitle'         => '無電郵地址',
+'noemailtext'          => '呢個用戶重未指定一個有效嘅電郵地址。',
+'nowikiemailtitle'     => '唔容許電郵',
+'nowikiemailtext'      => '呢位用戶揀咗唔收其他用戶畀佢嘅電郵。',
+'email-legend'         => '寄電郵畀另一位{{SITENAME}}用戶',
+'emailfrom'            => '由:',
+'emailto'              => '到:',
+'emailsubject'         => '主題:',
+'emailmessage'         => '信息:',
+'emailsend'            => '傳送',
+'emailccme'            => '傳送一個我嘅信息電郵畀我。',
+'emailccsubject'       => '你畀$1: $2封信嘅副本',
+'emailsent'            => '電郵已傳送',
+'emailsenttext'        => '你嘅電郵信息已傳送。',
+'emailuserfooter'      => '呢封電郵係由$1寄畀$2經{{SITENAME}}嘅「電郵用戶」功能發出嘅。',
 
 # Watchlist
 'watchlist'            => '監視清單',
-'mywatchlist'          => '我張監視清單',
+'mywatchlist'          => '監視清單',
 'watchlistfor'         => "（用戶「'''$1'''」嘅監視清單）",
 'nowatchlist'          => '你嘅監視清單度並冇任何項目。',
 'watchlistanontext'    => '請先$1去睇或者改響你監視清單度嘅項目。',
@@ -1950,7 +1971,7 @@ wiki: $PAGEEDITOR_WIKI
 --
 要修改你嘅監視清單設定，請睇{{fullurl:{{#special:Watchlist}}/edit}}
 
-要刪除你嘅監視清單度嘅呢一版，請睇{{fullurl:{{FULLPAGENAMEE}}|action=unwatch}}
+要刪除你嘅監視清單度嘅呢一版，請睇$UNWATCHURL
 
 回饋及更多幫助：
 {{fullurl:{{MediaWiki:Helppage}}}}',
@@ -2038,7 +2059,7 @@ wiki: $PAGEEDITOR_WIKI
 'protect-othertime-op'        => '其它時間',
 'protect-existing-expiry'     => '現時到期嘅時間: $2 $3',
 'protect-otherreason'         => '其它／附加嘅原因:',
-'protect-otherreason-op'      => '其它／附加嘅原因',
+'protect-otherreason-op'      => '其它原因',
 'protect-dropdown'            => '*通用保護原因
 ** 過量嘅破壞
 ** 過量嘅灌水
@@ -2091,7 +2112,7 @@ wiki: $PAGEEDITOR_WIKI
 'undeletedrevisions-files'     => '$1個修訂同$2個檔案已經救返',
 'undeletedfiles'               => '$1個檔案已經救返',
 'cannotundelete'               => '救唔到；可能有其他人已經救返嗰頁。',
-'undeletedpage'                => "<big>'''$1已經成功救返'''</big>
+'undeletedpage'                => "'''$1已經成功救返'''
 
 最近嘅刪除同恢復記錄請睇[[Special:Log/delete]]。",
 'undelete-header'              => '睇吓[[Special:Log/delete|刪除日誌]]去睇之前刪除嘅頁頁。',
@@ -2118,25 +2139,28 @@ $1',
 # Contributions
 'contributions'       => '用戶貢獻',
 'contributions-title' => '$1嘅用戶貢獻',
-'mycontris'           => '我嘅貢獻',
+'mycontris'           => '個人貢獻',
 'contribsub2'         => '$1嘅貢獻 ($2)',
 'nocontribs'          => '搵唔到符合呢啲條件嘅修改。',
 'uctop'               => '(最頂)',
 'month'               => '由呢個月 (同更早):',
 'year'                => '由呢一年 (同更早):',
 
-'sp-contributions-newbies'        => '只顯示新戶口嘅貢獻',
-'sp-contributions-newbies-sub'    => '新戶口嘅貢獻',
-'sp-contributions-newbies-title'  => '新戶口嘅用戶貢獻',
-'sp-contributions-blocklog'       => '封鎖日誌',
-'sp-contributions-deleted'        => '已經刪除咗嘅用戶貢獻',
-'sp-contributions-logs'           => '日誌',
-'sp-contributions-talk'           => '傾偈',
-'sp-contributions-userrights'     => '用戶權限管理',
-'sp-contributions-blocked-notice' => '呢位用戶現時封鎖緊。最近嘅封鎖日誌項目響下面提供以便參考：',
-'sp-contributions-search'         => '搵貢獻',
-'sp-contributions-username'       => 'IP地址或用戶名：',
-'sp-contributions-submit'         => '搵',
+'sp-contributions-newbies'             => '只顯示新戶口嘅貢獻',
+'sp-contributions-newbies-sub'         => '新戶口嘅貢獻',
+'sp-contributions-newbies-title'       => '新戶口嘅用戶貢獻',
+'sp-contributions-blocklog'            => '封鎖日誌',
+'sp-contributions-deleted'             => '已經刪除咗嘅用戶貢獻',
+'sp-contributions-logs'                => '日誌',
+'sp-contributions-talk'                => '傾偈',
+'sp-contributions-userrights'          => '用戶權限管理',
+'sp-contributions-blocked-notice'      => '呢位用戶現時封鎖緊。
+最近嘅封鎖日誌項目響下面提供以便參考：',
+'sp-contributions-blocked-notice-anon' => '呢個IP地址現時封鎖緊。
+最近嘅封鎖日誌項目響下面提供以便參考：',
+'sp-contributions-search'              => '搵貢獻',
+'sp-contributions-username'            => 'IP地址或用戶名：',
+'sp-contributions-submit'              => '搵',
 
 # What links here
 'whatlinkshere'            => '有乜嘢連結來呢度',
@@ -2265,6 +2289,8 @@ $1已經被封鎖。你係咪想更改呢個設定？',
 'cant-block-while-blocked'        => '當你被封鎖嗰陣唔可以封鎖其他用戶。',
 'cant-see-hidden-user'            => '你試緊封鎖嘅用戶已經封鎖咗或者隱藏咗。
 你而家冇隱藏用戶嘅權限，你唔可以睇或者改呢位用戶嘅封鎖。',
+'ipbblocked'                      => '你唔可以封鎖或者解封其他用戶，因為你自己已經俾人封鎖咗。',
+'ipbnounblockself'                => '你唔容許封鎖你自己。',
 
 # Developer tools
 'lockdb'              => '鎖定資料庫',
@@ -2316,7 +2342,7 @@ $1已經被封鎖。你係咪想更改呢個設定？',
 'move-watch'                   => '睇實來源同埋目標版',
 'movepagebtn'                  => '搬頁',
 'pagemovedsub'                 => '搬頁成功',
-'movepage-moved'               => '<big>\'\'\'"$1"已經搬到去"$2"\'\'\'</big>',
+'movepage-moved'               => '\'\'\'"$1"已經搬到去"$2"\'\'\'',
 'movepage-moved-redirect'      => '一個跳轉已經開咗。',
 'movepage-moved-noredirect'    => '已經壓制開個跳轉。',
 'articleexists'                => '已經有頁面叫嗰個名，或者你揀嘅名唔合法。請揀過第二個名。',
@@ -2465,7 +2491,7 @@ $1已經被封鎖。你係咪想更改呢個設定？',
 'tooltip-pt-anonuserpage'         => '你編輯呢個IP嘅對應用戶頁',
 'tooltip-pt-mytalk'               => '你嘅對話頁',
 'tooltip-pt-anontalk'             => '對於嚟自呢一個IP地址編輯嘅討論',
-'tooltip-pt-preferences'          => '你嘅喜好設定',
+'tooltip-pt-preferences'          => '安排與架生',
 'tooltip-pt-watchlist'            => '你所監視嘅頁面更改一覽',
 'tooltip-pt-mycontris'            => '你嘅貢獻一覽',
 'tooltip-pt-login'                => '建議你去登入；但係唔係一定嘅',
@@ -2524,6 +2550,7 @@ $1已經被封鎖。你係咪想更改呢個設定？',
 'tooltip-upload'                  => '開始上載',
 'tooltip-rollback'                => '『反轉』可以一撳復原上一位貢獻者對呢版嘅編輯',
 'tooltip-undo'                    => '『復原』可以響編輯模式度開編輯表以便復原。佢容許響摘要度加入原因。',
+'tooltip-preferences-save'        => '保存設定',
 
 # Stylesheets
 'common.css'      => '/* 響呢度放 CSS 碼來改成個網站嘅畫面 */',
@@ -3160,7 +3187,7 @@ $1',
 # Special:FilePath
 'filepath'         => '檔案路徑',
 'filepath-page'    => '檔名:',
-'filepath-submit'  => '搵路徑',
+'filepath-submit'  => '去',
 'filepath-summary' => '呢個特別頁拎一個檔案嘅完整路徑。圖像會以完整嘅解像度顯示，其它嘅檔案類型會以同佢哋關聯咗嘅程式啟動。
 
 請輸入檔名，唔好連埋個"{{ns:file}}:"開頭。',
@@ -3239,6 +3266,7 @@ $1',
 'htmlform-float-invalid'       => '你所指定嘅值唔係一個數字。',
 'htmlform-int-toolow'          => '你所指定嘅值低過最細值$1',
 'htmlform-int-toohigh'         => '你所指定嘅值高過最大值$1',
+'htmlform-required'            => '呢個數值係必填嘅',
 'htmlform-submit'              => '遞交',
 'htmlform-reset'               => '復原更改',
 'htmlform-selectorother-other' => '其它',

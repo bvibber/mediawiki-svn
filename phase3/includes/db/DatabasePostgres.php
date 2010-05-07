@@ -6,24 +6,27 @@
  *
  */
 class PostgresField {
-	private $name, $tablename, $type, $nullable, $max_length;
+	private $name, $tablename, $type, $nullable, $max_length, $deferred, $deferrable, $conname;
 
 	static function fromText($db, $table, $field) {
 	global $wgDBmwschema;
 
 		$q = <<<SQL
-SELECT
-CASE WHEN typname = 'int2' THEN 'smallint'
-WHEN typname = 'int4' THEN 'integer'
-WHEN typname = 'int8' THEN 'bigint'
-WHEN typname = 'bpchar' THEN 'char'
-ELSE typname END AS typname,
-attnotnull, attlen
-FROM pg_class, pg_namespace, pg_attribute, pg_type
-WHERE relnamespace=pg_namespace.oid
-AND relkind='r'
-AND attrelid=pg_class.oid
-AND atttypid=pg_type.oid
+SELECT 
+ attnotnull, attlen, COALESCE(conname, '') AS conname,
+ COALESCE(condeferred, 'f') AS deferred,
+ COALESCE(condeferrable, 'f') AS deferrable,
+ CASE WHEN typname = 'int2' THEN 'smallint'
+  WHEN typname = 'int4' THEN 'integer'
+  WHEN typname = 'int8' THEN 'bigint'
+  WHEN typname = 'bpchar' THEN 'char'
+ ELSE typname END AS typname
+FROM pg_class c
+JOIN pg_namespace n ON (n.oid = c.relnamespace)
+JOIN pg_attribute a ON (a.attrelid = c.oid)
+JOIN pg_type t ON (t.oid = a.atttypid)
+LEFT JOIN pg_constraint o ON (o.conrelid = c.oid AND a.attnum = ANY(o.conkey) AND o.contype = 'f')
+WHERE relkind = 'r'
 AND nspname=%s
 AND relname=%s
 AND attname=%s;
@@ -41,6 +44,9 @@ SQL;
 		$n->name = $field;
 		$n->tablename = $table;
 		$n->max_length = $row->attlen;
+		$n->deferrable = ($row->deferrable == 't');
+		$n->deferred = ($row->deferred == 't');
+		$n->conname = $row->conname;
 		return $n;
 	}
 
@@ -63,6 +69,19 @@ SQL;
 	function maxLength() {
 		return $this->max_length;
 	}
+
+	function is_deferrable() {
+		return $this->deferrable;
+	}
+
+	function is_deferred() {
+		return $this->deferred;
+	}
+
+	function conname() {
+		return $this->conname;
+	}
+
 }
 
 /**
@@ -1311,11 +1330,17 @@ SQL;
 		if (!$res) {
 			print "<b>FAILED</b>. Make sure that the user \"" . htmlspecialchars( $wgDBuser ) . 
 				"\" can write to the schema \"" . htmlspecialchars( $wgDBmwschema ) . "\"</li>\n";
-			dieout("</ul>");
+			dieout(""); # Will close the main list <ul> and finish the page.
 		}
 		$this->doQuery("DROP TABLE $safeschema.$ctest");
 
 		$res = $this->sourceFile( "../maintenance/postgres/tables.sql" );
+		if ($res === true) {
+			print " done.</li>\n";
+		} else {
+			print " <b>FAILED</b></li>\n";
+			dieout( htmlspecialchars( $res ) );
+		}
 
 		## Update version information
 		$mwv = $this->addQuotes($wgVersion);
@@ -1327,16 +1352,12 @@ SQL;
 		$dbn = $this->addQuotes($this->mDBname);
 		$ctype = $this->addQuotes( pg_fetch_result($this->doQuery("SHOW lc_ctype"),0,0) );
 
-		$SQL = "UPDATE mediawiki_version SET mw_version=$mwv, pg_version=$pgv, pg_user=$pgu, ".
-				"mw_schema = $mws, ts2_schema = $tss, pg_port=$pgp, pg_dbname=$dbn, ".
-				"ctype = $ctype ".
-				"WHERE type = 'Creation'";
-		$this->query($SQL);
-
+		echo "<li>Populating interwiki table... ";
 		## Avoid the non-standard "REPLACE INTO" syntax
 		$f = fopen( "../maintenance/interwiki.sql", 'r' );
 		if ($f == false ) {
-			dieout( "<li>Could not find the interwiki.sql file");
+			print "<b>FAILED</b></li>";
+			dieout( "Could not find the interwiki.sql file" );
 		}
 		## We simply assume it is already empty as we have just created it
 		$SQL = "INSERT INTO interwiki(iw_prefix,iw_url,iw_local) VALUES ";
@@ -1348,7 +1369,7 @@ SQL;
 			}
 			$this->query("$SQL $matches[1],$matches[2])");
 		}
-		print " (table interwiki successfully populated)...\n";
+		print " successfully populated.</li>\n";
 
 		$this->doQuery("COMMIT");
 	}

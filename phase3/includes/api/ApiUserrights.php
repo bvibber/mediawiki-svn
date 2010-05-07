@@ -36,13 +36,14 @@ class ApiUserrights extends ApiBase {
 		parent::__construct( $main, $action );
 	}
 
+	private $mUser = null;
+
 	public function execute() {
 		$params = $this->extractRequestParams();
 
-		// User already validated in call to getTokenSalt from Main
-		$form = new UserrightsPage;
-		$user = $form->fetchUser( $params['user'] );
+		$user = $this->getUser();
 
+		$form = new UserrightsPage;
 		$r['user'] = $user->getName();
 		list( $r['added'], $r['removed'] ) =
 			$form->doSaveUserGroups(
@@ -103,19 +104,30 @@ class ApiUserrights extends ApiBase {
 	}
 
 	public function getTokenSalt() {
+		return $this->getUser()->getName();
+	}
+
+	private function getUser() {
+		if ( $this->mUser !== null ) {
+			return $this->mUser;
+		}
+
 		$params = $this->extractRequestParams();
 		if ( is_null( $params['user'] ) ) {
 			$this->dieUsageMsg( array( 'missingparam', 'user' ) );
 		}
 
 		$form = new UserrightsPage;
-		$user = $form->fetchUser( $params['user'] );
-		if ( $user instanceof WikiErrorMsg ) {
-			$this->dieUsageMsg( array_merge(
-				(array)$user->getMessageKey(), $user->getMessageArgs() ) );
+		$status = $form->fetchUser( $params['user'] );
+		if ( !$status->isOK() ) {
+			$errors = $status->getErrorsArray();
+			$this->dieUsageMsg( $errors[0] );
+		} else {
+			$user = $status->value;
 		}
 
-		return $user->getName();
+		$this->mUser = $user;
+		return $user;
 	}
 
 	protected function getExamples() {

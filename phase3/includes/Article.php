@@ -11,6 +11,7 @@
  * Note: edit user interface and cache support functions have been
  * moved to separate EditPage and HTMLFileCache classes.
  *
+ * @internal documentation reviewed 15 Mar 2010
  */
 class Article {
 	/**@{{
@@ -33,15 +34,15 @@ class Article {
 	var $mRedirectTarget = null;      // !< Title object if set
 	var $mRedirectUrl = false;        // !<
 	var $mRevIdFetched = 0;           // !<
-	var $mRevision;                   // !<
+	var $mRevision;                   // !< Revision object if set
 	var $mTimestamp = '';             // !<
-	var $mTitle;                      // !<
+	var $mTitle;                      // !< Title object
 	var $mTotalAdjustment = 0;        // !<
 	var $mTouched = '19700101000000'; // !<
 	var $mUser = -1;                  // !< Not loaded
-	var $mUserText = '';              // !<
-	var $mParserOptions;              // !<
-	var $mParserOutput;               // !<
+	var $mUserText = '';              // !< username from Revision if set
+	var $mParserOptions;              // !< ParserOptions object
+	var $mParserOutput;               // !< ParserCache object if set
 	/**@}}*/
 
 	/**
@@ -70,7 +71,7 @@ class Article {
 	 * from another page on the wiki.
 	 * @param $from Title object.
 	 */
-	public function setRedirectedFrom( $from ) {
+	public function setRedirectedFrom( Title $from ) {
 		$this->mRedirectedFrom = $from;
 	}
 
@@ -136,6 +137,7 @@ class Article {
 	/**
 	 * Get the Title object this text redirects to
 	 *
+	 * @param $text string article content containing redirect info
 	 * @return mixed false, Title of in-wiki target, or string with URL
 	 */
 	public function followRedirectText( $text ) {
@@ -173,6 +175,7 @@ class Article {
 
 	/**
 	 * get the title object of the article
+	 * @return Title object of current title
 	 */
 	public function getTitle() {
 		return $this->mTitle;
@@ -349,6 +352,7 @@ class Article {
 	 * Fetch a page record with the given conditions
 	 * @param $dbr Database object
 	 * @param $conditions Array
+	 * @return mixed Database result resource, or false on failure
 	 */
 	protected function pageData( $dbr, $conditions ) {
 		$fields = array(
@@ -376,8 +380,12 @@ class Article {
 	}
 
 	/**
+	 * Fetch a page record matching the Title object's namespace and title
+	 * using a sanitized title string
+	 * 
 	 * @param $dbr Database object
 	 * @param $title Title object
+	 * @return mixed Database result resource, or false on failure
 	 */
 	public function pageDataFromTitle( $dbr, $title ) {
 		return $this->pageData( $dbr, array(
@@ -386,6 +394,8 @@ class Article {
 	}
 
 	/**
+	 * Fetch a page record matching the requested ID
+	 *
 	 * @param $dbr Database
 	 * @param $id Integer
 	 */
@@ -431,8 +441,9 @@ class Article {
 	/**
 	 * Get text of an article from database
 	 * Does *NOT* follow redirects.
+	 * 
 	 * @param $oldid Int: 0 for whatever the latest revision is
-	 * @return string
+	 * @return mixed string containing article contents, or false if null
 	 */
 	function fetchContent( $oldid = 0 ) {
 		if ( $this->mContentLoaded ) {
@@ -498,6 +509,7 @@ class Article {
 	 * Read/write accessor to select FOR UPDATE
 	 *
 	 * @param $x Mixed: FIXME
+	 * @return mixed value of $x, or value stored in Article::mForUpdate
 	 */
 	public function forUpdate( $x = null ) {
 		return wfSetVar( $this->mForUpdate, $x );
@@ -600,7 +612,7 @@ class Article {
 	/**
 	 * Tests if the article text represents a redirect
 	 *
-	 * @param $text String: FIXME
+	 * @param $text mixed string containing article contents, or boolean
 	 * @return bool
 	 */
 	public function isRedirect( $text = false ) {
@@ -652,6 +664,10 @@ class Article {
 			$this->mRevIdFetched = $this->mLastRevision->getId();
 		}
 	}
+	
+	/**
+	 * @return string GMT timestamp of last article revision
+	 **/
 
 	public function getTimestamp() {
 		// Check if the field has been filled by ParserCache::get()
@@ -661,27 +677,45 @@ class Article {
 		return wfTimestamp( TS_MW, $this->mTimestamp );
 	}
 
+	/**
+	 * @return int user ID for the user that made the last article revision
+	 */
 	public function getUser() {
 		$this->loadLastEdit();
 		return $this->mUser;
 	}
 
+	/**
+	 * @return string username of the user that made the last article revision
+	 */
 	public function getUserText() {
 		$this->loadLastEdit();
 		return $this->mUserText;
 	}
 
+	/**
+	 * @return string Comment stored for the last article revision
+	 */
 	public function getComment() {
 		$this->loadLastEdit();
 		return $this->mComment;
 	}
 
+	/**
+	 * Returns true if last revision was marked as "minor edit"
+	 * 
+	 * @return boolean Minor edit indicator for the last article revision.
+	 */
 	public function getMinorEdit() {
 		$this->loadLastEdit();
 		return $this->mMinorEdit;
 	}
 
-	/* Use this to fetch the rev ID used on page views */
+	/**
+	 * Use this to fetch the rev ID used on page views
+	 *
+	 * @return int revision ID of last article revision
+	 */
 	public function getRevIdFetched() {
 		$this->loadLastEdit();
 		return $this->mRevIdFetched;
@@ -690,6 +724,7 @@ class Article {
 	/**
 	 * @param $limit Integer: default 0.
 	 * @param $offset Integer: default 0.
+	 * @return UserArrayFromResult object with User objects of article contributors for requested range
 	 */
 	public function getContributors( $limit = 0, $offset = 0 ) {
 		# XXX: this is expensive; cache this info somewhere.
@@ -770,8 +805,6 @@ class Article {
 			}
 		}
 
-		$sk = $wgUser->getSkin();
-
 		# getOldID may want us to redirect somewhere else
 		if ( $this->mRedirectUrl ) {
 			$wgOut->redirect( $this->mRedirectUrl );
@@ -799,15 +832,6 @@ class Article {
 			wfIncrStats( 'pcache_miss_stub' );
 		}
 
-		# For the main page, overwrite the <title> element with the con-
-		# tents of 'pagetitle-view-mainpage' instead of the default (if
-		# that's not empty).
-		if ( $this->mTitle->equals( Title::newMainPage() )
-			&& ( $m = wfMsgForContent( 'pagetitle-view-mainpage' ) ) !== '' )
-		{
-			$wgOut->setHTMLTitle( $m );
-		}
-
 		$wasRedirected = $this->showRedirectedFromHeader();
 		$this->showNamespaceHeader();
 
@@ -815,6 +839,7 @@ class Article {
 		# Keep going until $outputDone is set, or we run out of things to do.
 		$pass = 0;
 		$outputDone = false;
+		$this->mParserOutput = false;
 		while ( !$outputDone && ++$pass ) {
 			switch( $pass ) {
 				case 1:
@@ -923,6 +948,23 @@ class Article {
 			}
 		}
 
+		# Adjust the title if it was set by displaytitle, -{T|}- or language conversion
+		if ( $this->mParserOutput ) {
+			$titleText = $this->mParserOutput->getTitleText();
+			if ( strval( $titleText ) !== '' ) {
+				$wgOut->setPageTitle( $titleText );
+			}
+		}
+
+		# For the main page, overwrite the <title> element with the con-
+		# tents of 'pagetitle-view-mainpage' instead of the default (if
+		# that's not empty).
+		if ( $this->mTitle->equals( Title::newMainPage() )
+			&& ( $m = wfMsgForContent( 'pagetitle-view-mainpage' ) ) !== '' )
+		{
+			$wgOut->setHTMLTitle( $m );
+		}
+
 		# Now that we've filled $this->mParserOutput, we know whether
 		# there are any __NOINDEX__ tags on the page
 		$policy = $this->getRobotPolicy( 'view' );
@@ -989,7 +1031,7 @@ class Article {
 	 *    array
 	 */
 	public function getRobotPolicyForView() {
-		wfDeprecated( __FUNC__ );
+		wfDeprecated( __METHOD__ );
 		$policy = $this->getRobotPolicy( 'view' );
 		return $policy['index'] . ',' . $policy['follow'];
 	}
@@ -1088,6 +1130,8 @@ class Article {
 	 * If this request is a redirect view, send "redirected from" subtitle to
 	 * $wgOut. Returns true if the header was needed, false if this is not a
 	 * redirect view. Handles both local and remote redirects.
+	 *
+	 * @return boolean
 	 */
 	public function showRedirectedFromHeader() {
 		global $wgOut, $wgUser, $wgRequest, $wgRedirectSources;
@@ -1274,7 +1318,8 @@ class Article {
 	/**
 	 * If the revision requested for view is deleted, check permissions.
 	 * Send either an error message or a warning header to $wgOut.
-	 * Returns true if the view is allowed, false if not.
+	 * 
+	 * @return boolean true if the view is allowed, false if not.
 	 */
 	public function showDeletedRevisionHeader() {
 		global $wgOut, $wgRequest;
@@ -1306,9 +1351,11 @@ class Article {
 		}
 	}
 
-	/*
-	* Should the parser cache be used?
-	*/
+	/**
+	 * Should the parser cache be used?
+	 *
+	 * @return boolean
+	 */
 	public function useParserCache( $oldid ) {
 		global $wgUser, $wgEnableParserCache;
 
@@ -1341,6 +1388,8 @@ class Article {
 	 * output it and return true. If it is not present, output nothing and
 	 * return false. This is used as a callback function for
 	 * PoolCounter::executeProtected().
+	 *
+	 * @return boolean
 	 */
 	public function tryDirtyCache() {
 		global $wgOut;
@@ -1381,9 +1430,11 @@ class Article {
 
 	/**
 	 * View redirect
+	 * 
 	 * @param $target Title object or Array of destination(s) to redirect
 	 * @param $appendSubtitle Boolean [optional]
 	 * @param $forceKnown Boolean: should the image be shown as a bluelink regardless of existence?
+	 * @return string containing HMTL with redirect link
 	 */
 	public function viewRedirect( $target, $appendSubtitle = true, $forceKnown = false ) {
 		global $wgOut, $wgContLang, $wgStylePath, $wgUser;
@@ -1434,6 +1485,9 @@ class Article {
 
 	}
 
+	/**
+	 * Builds trackback links for article display if $wgUseTrackbacks is set to true
+	 */
 	public function addTrackbacks() {
 		global $wgOut, $wgUser;
 		$dbr = wfGetDB( DB_SLAVE );
@@ -1460,9 +1514,11 @@ class Article {
 					$rmvtxt );
 		}
 		$wgOut->wrapWikiMsg( "<div id='mw_trackbacks'>$1</div>\n", array( 'trackbackbox', $tbtext ) );
-		$this->mTitle->invalidateCache();
 	}
 
+	/**
+	 * Removes trackback record for current article from trackbacks table
+	 */
 	public function deletetrackback() {
 		global $wgUser, $wgRequest, $wgOut;
 		if ( !$wgUser->matchEditToken( $wgRequest->getVal( 'token' ) ) ) {
@@ -1482,6 +1538,10 @@ class Article {
 		$wgOut->addWikiMsg( 'trackbackdeleteok' );
 		$this->mTitle->invalidateCache();
 	}
+	
+	/**
+	 * Handle action=render
+	 */
 
 	public function render() {
 		global $wgOut;
@@ -1544,7 +1604,7 @@ class Article {
 	/**
 	 * Insert a new empty page record for this article.
 	 * This *must* be followed up by creating a revision
-	 * and running $this->updateToLatest( $rev_id );
+	 * and running $this->updateRevisionOn( ... );
 	 * or else the record will be left in a funky state.
 	 * Best if all done inside a transaction.
 	 *
@@ -1672,6 +1732,7 @@ class Article {
 	 *
 	 * @param $dbw Database object
 	 * @param $revision Revision object
+	 * @return mixed 
 	 */
 	public function updateIfNewerOn( &$dbw, $revision ) {
 		wfProfileIn( __METHOD__ );
@@ -1701,6 +1762,9 @@ class Article {
 
 	/**
 	 * @param $section empty/null/false or a section number (0, 1, 2, T1, T2...)
+	 * @param $text String: new text of the section
+	 * @param $summary String: new section's subject, only if $section is 'new'
+	 * @param $edittime String: revision timestamp or null to use the current revision
 	 * @return string Complete article text, or null if error
 	 */
 	public function replaceSection( $section, $text, $summary = '', $edittime = null ) {
@@ -2451,7 +2515,10 @@ class Article {
 
 	/**
 	 * Auto-generates a deletion reason
+	 * 
 	 * @param &$hasHistory Boolean: whether the page has a history
+	 * @return mixed String containing deletion reason or empty string, or boolean false
+	 *    if no revision occurred
 	 */
 	public function generateReason( &$hasHistory ) {
 		global $wgContLang;
@@ -2487,13 +2554,17 @@ class Article {
 
 		$hasHistory = ( $res->numRows() > 1 );
 		$row = $dbw->fetchObject( $res );
-		$onlyAuthor = $row->rev_user_text;
-		// Try to find a second contributor
-		foreach ( $res as $row ) {
-			if ( $row->rev_user_text != $onlyAuthor ) {
-				$onlyAuthor = false;
-				break;
+		if ( $row ) { // $row is false if the only contributor is hidden
+			$onlyAuthor = $row->rev_user_text;
+			// Try to find a second contributor
+			foreach ( $res as $row ) {
+				if ( $row->rev_user_text != $onlyAuthor ) { // Bug 22999
+					$onlyAuthor = false;
+					break;
+				}
 			}
+		} else {
+			$onlyAuthor = false;
 		}
 		$dbw->freeResult( $res );
 
@@ -2857,7 +2928,16 @@ class Article {
 	/**
 	 * Back-end article deletion
 	 * Deletes the article with database consistency, writes logs, purges caches
-	 * Returns success
+	 *
+	 * @param $reason string delete reason for deletion log
+	 * @param suppress bitfield
+	 * 	Revision::DELETED_TEXT
+	 * 	Revision::DELETED_COMMENT
+	 * 	Revision::DELETED_USER
+	 * 	Revision::DELETED_RESTRICTED
+	 * @param $id int article ID
+	 * @param $commit boolean defaults to true, triggers transaction end
+	 * @return boolean true if successful
 	 */
 	public function doDeleteArticle( $reason, $suppress = false, $id = 0, $commit = true ) {
 		global $wgUseSquid, $wgDeferredUpdateList;
@@ -3529,7 +3609,9 @@ class Article {
 	 * This function is called right before saving the wikitext,
 	 * so we can do things like signatures and links-in-context.
 	 *
-	 * @param $text String
+	 * @param $text String article contents
+	 * @return string article contents with altered wikitext markup (signatures
+	 * 	converted, {{subst:}}, templates, etc.)
 	 */
 	public function preSaveTransform( $text ) {
 		global $wgParser, $wgUser;
@@ -3542,6 +3624,8 @@ class Article {
 	 * checkLastModified returns true if it has taken care of all
 	 * output to the client that is necessary for this request.
 	 * (that is, it has sent a cached version of the page)
+	 *
+	 * @return boolean true if cached version send, false otherwise
 	 */
 	protected function tryFileCache() {
 		static $called = false;
@@ -3584,7 +3668,7 @@ class Article {
 
 	/**
 	 * Loads page_touched and returns a value indicating if it should be used
-	 *
+	 * @return boolean true if not a redirect
 	 */
 	public function checkTouched() {
 		if ( !$this->mDataLoaded ) {
@@ -3595,6 +3679,7 @@ class Article {
 
 	/**
 	 * Get the page_touched field
+	 * @return string containing GMT timestamp
 	 */
 	public function getTouched() {
 		# Ensure that page data has been loaded
@@ -3606,6 +3691,7 @@ class Article {
 
 	/**
 	 * Get the page_latest field
+	 * @return integer rev_id of current revision
 	 */
 	public function getLatest() {
 		if ( !$this->mDataLoaded ) {
@@ -3728,7 +3814,10 @@ class Article {
 		$title->purgeSquid();
 		$title->deleteTitleProtection();
 	}
-
+	
+	/**
+	 * Clears caches when article is deleted
+	 */
 	public static function onArticleDelete( $title ) {
 		global $wgMessageCache;
 		# Update existence markers on article/talk tabs...
@@ -3766,8 +3855,11 @@ class Article {
 
 	/**
 	 * Purge caches on page update etc
+	 *
+	 * @param $title Title object
+	 * @todo:  verify that $title is always a Title object (and never false or null), add Title hint to parameter $title
 	 */
-	public static function onArticleEdit( $title, $flags = '' ) {
+	public static function onArticleEdit( $title ) {
 		global $wgDeferredUpdateList;
 
 		// Invalidate caches of articles which include this page
@@ -3858,7 +3950,7 @@ class Article {
 	 * on a given page. If page does not exist, returns false.
 	 *
 	 * @param $title Title object
-	 * @return array
+	 * @return mixed array or boolean false
 	 */
 	public function pageCountInfo( $title ) {
 		$id = $title->getArticleId();
@@ -3988,6 +4080,7 @@ class Article {
 	 *
 	 * @param $text String
 	 * @param $cache Boolean
+	 * @param $parserOptions mixed ParserOptions object, or boolean false
 	 */
 	public function outputWikiText( $text, $cache = true, $parserOptions = false ) {
 		global $wgOut;
@@ -4000,6 +4093,11 @@ class Article {
 	 * This does all the heavy lifting for outputWikitext, except it returns the parser
 	 * output instead of sending it straight to $wgOut. Makes things nice and simple for,
 	 * say, embedding thread pages within a discussion system (LiquidThreads)
+	 *
+	 * @param $text string
+	 * @param $cache boolean
+	 * @param $parserOptions parsing options, defaults to false
+	 * @return string containing parsed output
 	 */
 	public function getOutputFromWikitext( $text, $cache = true, $parserOptions = false ) {
 		global $wgParser, $wgOut, $wgEnableParserCache, $wgUseFileCache;
@@ -4035,6 +4133,7 @@ class Article {
 
 	/**
 	 * Get parser options suitable for rendering the primary article wikitext
+	 * @return mixed ParserOptions object or boolean false
 	 */
 	public function getParserOptions() {
 		global $wgUser;
@@ -4045,6 +4144,12 @@ class Article {
 		}
 		return $this->mParserOptions;
 	}
+	
+	/**
+	 * Updates cascading protections
+	 *
+	 * @param $parserOutput mixed ParserOptions object, or boolean false
+	 **/
 
 	protected function doCascadeProtectionUpdates( $parserOutput ) {
 		if ( !$this->isCurrent() || wfReadOnly() || !$this->mTitle->areRestrictionsCascading() ) {
@@ -4099,7 +4204,6 @@ class Article {
 	 *
 	 * @param $added array   The names of categories that were added
 	 * @param $deleted array The names of categories that were deleted
-	 * @return null
 	 */
 	public function updateCategoryCounts( $added, $deleted ) {
 		$ns = $this->mTitle->getNamespace();
@@ -4153,11 +4257,14 @@ class Article {
 		}
 	}
 
-	/** Lightweight method to get the parser output for a page, checking the parser cache
+	/**
+	 * Lightweight method to get the parser output for a page, checking the parser cache
 	 * and so on. Doesn't consider most of the stuff that Article::view is forced to
 	 * consider, so it's not appropriate to use there.
+	 *
+	 * @param $oldid mixed integer Revision ID or null
 	 */
-	function getParserOutput( $oldid = null ) {
+	public function getParserOutput( $oldid = null ) {
 		global $wgEnableParserCache, $wgUser, $wgOut;
 
 		// Should the parser cache be used?

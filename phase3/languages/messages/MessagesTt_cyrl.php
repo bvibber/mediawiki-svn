@@ -100,8 +100,17 @@ $namespaceAliases = array(
 	'Törkem_bäxäse'    => NS_CATEGORY_TALK,
 );
 
+$specialPageAliases = array(
+	'CreateAccount'             => array( 'Теркәлү' ),
+	'Watchlist'                 => array( 'Күзәтү исемлеге' ),
+	'Recentchanges'             => array( 'Соңгы үзгәртүләр' ),
+	'Statistics'                => array( 'Статистика' ),
+	'Randompage'                => array( 'Очраклы_мәкалә' ),
+	'Listadmins'                => array( 'Идарәчеләр_исемлеге' ),
+);
+
 $magicWords = array(
-	'redirect'              => array( '0', '#yünältü', '#перенаправление', '#перенапр', '#REDIRECT' ),
+	'redirect'              => array( '0', '#yünältü', '#перенаправление', '#юнәлтү', '#перенапр', '#REDIRECT' ),
 	'notoc'                 => array( '0', '__ETYUQ__', '__БЕЗ_ОГЛ__', '__БЕЗ_ОГЛАВЛЕНИЯ__', '__NOTOC__' ),
 	'forcetoc'              => array( '0', '__ETTIQ__', '__ОБЯЗ_ОГЛ__', '__ОБЯЗАТЕЛЬНОЕ_ОГЛАВЛЕНИЕ__', '__FORCETOC__' ),
 	'toc'                   => array( '0', '__ET__', '__ОГЛ__', '__ОГЛАВЛЕНИЕ__', '__TOC__' ),
@@ -109,7 +118,7 @@ $magicWords = array(
 	'currentmonth'          => array( '1', 'AĞIMDAĞI_AY', 'ТЕКУЩИЙ_МЕСЯЦ', 'ТЕКУЩИЙ_МЕСЯЦ_2', 'CURRENTMONTH', 'CURRENTMONTH2' ),
 	'currentmonthname'      => array( '1', 'AĞIMDAĞI_AY_İSEME', 'НАЗВАНИЕ_ТЕКУЩЕГО_МЕСЯЦА', 'CURRENTMONTHNAME' ),
 	'currentmonthnamegen'   => array( '1', 'AĞIMDAĞI_AY_İSEME_GEN', 'НАЗВАНИЕ_ТЕКУЩЕГО_МЕСЯЦА_РОД', 'CURRENTMONTHNAMEGEN' ),
-	'currentday'            => array( '1', 'AĞIMDAĞI_KÖN', 'ТЕКУЩИЙ_ДЕНЬ', 'CURRENTDAY' ),
+	'currentday'            => array( '1', 'AĞIMDAĞI_KÖN', 'АГЫМДАГЫ_КӨН', 'ТЕКУЩИЙ_ДЕНЬ', 'CURRENTDAY' ),
 	'currentdayname'        => array( '1', 'AĞIMDAĞI_KÖN_İSEME', 'НАЗВАНИЕ_ТЕКУЩЕГО_ДНЯ', 'CURRENTDAYNAME' ),
 	'currentyear'           => array( '1', 'AĞIMDAĞI_YIL', 'ТЕКУЩИЙ_ГОД', 'CURRENTYEAR' ),
 	'currenttime'           => array( '1', 'AĞIMDAĞI_WAQIT', 'ТЕКУЩЕЕ_ВРЕМЯ', 'CURRENTTIME' ),
@@ -144,7 +153,6 @@ $messages = array(
 'tog-editsectiononrightclick' => 'Бүлек исеменә тычканның уң чирттермәсе белән төрткәч үзгәртү бите ачылсын (JavaScript кирәк)',
 'tog-showtoc'                 => 'Эчтәлек күрсәтелсен (3 тән күбрәк башламлы битләрдә)',
 'tog-rememberpassword'        => 'Хисап язмам бу компьютерда хәтерләнсен',
-'tog-editwidth'               => 'Үзгәртү урыны күзәтүче тәрәзәсенең тулы киңлегендә',
 'tog-watchcreations'          => 'Төзегән битләрем күзәтү исемлегемә өстәлсен',
 'tog-watchdefault'            => 'Үзгәрткән битләрем күзәтү исемлегемә өстәлсен',
 'tog-watchmoves'              => 'Күчергән битләрем күзәтү исемлегемә өстәлсен',
@@ -258,7 +266,7 @@ $messages = array(
 'index-category'                 => 'Индексланган битләр',
 'noindex-category'               => 'Индексланмаган битләр',
 
-'mainpagetext'      => '<big>«MediaWiki» уңышлы куелды.</big>',
+'mainpagetext'      => '«MediaWiki» уңышлы куелды.',
 'mainpagedocfooter' => "Бу вики турында мәгълүматны [http://meta.wikimedia.org/wiki/Ярдәм:Эчтәлек биредә] табып була.
 
 == Кайбер файдалы ресурслар ==
@@ -483,6 +491,7 @@ $1',
 'readonly_lag'         => 'Мәгълүматлар базасы, өстәмә сервер төп сервер белән синхронизацияләшкәнче, үзгәрүләрдән автомат рәвештә ябылды.',
 'internalerror'        => 'Эчке хата',
 'internalerror_info'   => 'Эчке хата: $1',
+'fileappenderrorread'  => 'Кушу вакытында «$1» укып булмады.',
 'fileappenderror'      => '"$1" һәм "$2" не кушып булмады.',
 'filecopyerror'        => '«$2» файлына «$1» файлының копиясен ясап булмый.',
 'filerenameerror'      => '«$1» файлының исемен «$2» исеменә алыштырып булмый.',
@@ -659,7 +668,7 @@ $2',
 'summary-preview'                  => 'Тасвирламаны алдан карау:',
 'subject-preview'                  => 'Башисемне алдан карау:',
 'blockedtitle'                     => 'Кулланучы бикләнгән',
-'blockedtext'                      => "<big>'''Сезнең хисап язмагыз яки IP-адресыгыз бикләнгән.'''</big>
+'blockedtext'                      => "'''Сезнең хисап язмагыз яки IP-адресыгыз бикләнгән.'''
 
 Бикләүче администратор: $1.
 Күрсәтелгән сәбәп: ''$2''.
@@ -692,8 +701,9 @@ $2',
 'whitelistedittext'                => 'Сез битләрне үзгәртү өчен $1 тиеш.',
 'confirmedittext'                  => 'Битләрне үзгәртү алдыннан сез электрон почта адресыгызны дәлилләргә тиеш.
 Сез моны [[Special:Preferences|көйләүләр битендә]] башкара аласыз.',
-'nosuchsectiontitle'               => 'Мондый бүлек юк',
-'nosuchsectiontext'                => '$1 исемле асбит юк. Сезнең үзгәртүләрне саклап булмый.',
+'nosuchsectiontitle'               => 'Мондый бүлекне табып булмый.',
+'nosuchsectiontext'                => 'Сез булмаган бүлекне төзәтергә телисез.
+Сез бу сәхифәне караганда ул бетерелә алды.',
 'loginreqtitle'                    => 'Керү кирәк',
 'loginreqlink'                     => 'керү',
 'loginreqpagetext'                 => 'Сез башка битләр карау өчен $1 тиеш.',
@@ -717,6 +727,8 @@ $2',
 <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} көндәлекләрдәге язмаларны] таба аласыз.',
 'userpage-userdoesnotexist'        => '«$1» исемле хисап язмасы юк. Сез чынлап та бу битне ясарга яисә үзгәртергә телисезме?',
 'userpage-userdoesnotexist-view'   => '"$1" исемле хисап язмасы юк.',
+'blocked-notice-logextract'        => 'Бу катнашучы хәзергә кысылды.
+Түбәндә кысу көндәлекнең соңгы язу бирелгән:',
 'clearyourcache'                   => "'''Искәрмә:''' Битне саклаганнан соң үзгәртүләр күренсен өчен браузерыгызның кэшын чистартыгыз.
 Моны '''Mozilla / Firefox''': ''Ctrl+Shift+R'', '''Safari''': ''Cmd+Shift+R'', '''IE:''' ''Ctrl+F5'', '''Konqueror''': ''F5'', '''Opera''': ''Tools→Preferences'' аша эшләп була.",
 'usercssyoucanpreview'             => "'''Ярдәм:''' \"Алдан карау\" төймәсенә басып, яңа CSS-файлны тикшереп була.",
@@ -767,7 +779,8 @@ $2',
 Текст югалмасын өчен аны компьютерыгызга саклап тора аласыз.'''
 
 Администратор күрсәткән сәбәп: $1",
-'protectedpagewarning'             => "'''Кисәтү: сез бу битне үзгәртә алмыйсыз, бу хокукка администраторлар гына ия.'''",
+'protectedpagewarning'             => "'''Кисәтү: сез бу битне үзгәртә алмыйсыз, бу хокукка администраторлар гына ия.'''
+Түбәндә көндәлекнең  соңгы язуы бирелгән:",
 'semiprotectedpagewarning'         => "'''Кисәтү:''' бу бит якланган. Аны теркәлгән кулланучылар гына үзгәртә ала.",
 'cascadeprotectedwarning'          => "'''Кисәтү:''' Бу битне администраторлар гына үзгәртә ала. Сәбәбе: ул {{PLURAL:$1|каскадлы яклау исемлегенә кертелгән}}:",
 'titleprotectedwarning'            => "'''Кисәтү: Мондый исемле бит якланган, аны үзгәртү өчен [[Special:ListGroupRights|тиешле хокукка]] ия булу зарур.'''",
@@ -901,6 +914,7 @@ $3 күрсәткән сәбәп: ''$2''",
 'revdelete-uname'             => 'кулланучы исеме',
 
 # History merging
+'mergehistory-from'   => 'Чыганак:',
 'mergehistory-reason' => 'Сәбәп:',
 
 # Merge log
@@ -948,54 +962,71 @@ $3 күрсәткән сәбәп: ''$2''",
 'powersearch-ns'               => 'исемнәрендә эзләү',
 'powersearch-redir'            => 'Юнәлтүләр күрсәтелсен',
 'powersearch-field'            => 'Эзләү',
+'powersearch-toggleall'        => 'Барысы',
 
 # Quickbar
 'qbsettings'      => 'Күчешләр аслыгы',
 'qbsettings-none' => 'Күрсәтмәскә',
 
 # Preferences page
-'preferences'               => 'Көйләнмәләр',
-'mypreferences'             => 'Көйләнмәләрем',
-'prefs-edits'               => 'Үзгәртүләр исәбе:',
-'prefsnologin'              => 'Кермәгәнсез',
-'prefsnologintext'          => 'Кулланучы көйләнмәләрене үзгәртү өчен, сез <span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} керергә]</span> тиешсез.',
-'changepassword'            => 'Серсүзне алыштырырга',
-'prefs-skin'                => 'Күренеш',
-'skin-preview'              => 'Алдан карау',
-'prefs-math'                => 'Формулалар',
-'prefs-datetime'            => 'Дата һәм вакыт',
-'prefs-personal'            => 'Шәхси мәгълүматлар',
-'prefs-rc'                  => 'Соңгы үзгәртүләр',
-'prefs-watchlist'           => 'Күзәтү исемлеге',
-'prefs-watchlist-days'      => 'Күзәтү исемлегендә ничә көн буена үзгәртүләрне күрсәтергә:',
-'prefs-watchlist-edits'     => 'Киңәйтелгән күзәтү исемлегендә үзгәртүләрнең иң югары исәбе:',
-'prefs-misc'                => 'Башка көйләнмәләр',
-'prefs-resetpass'           => 'Серсүзне үзгәртү',
-'saveprefs'                 => 'Саклау',
-'resetprefs'                => 'Сакланмаган үзгәртүләрне бетерү',
-'prefs-editing'             => 'Үзгәртү',
-'rows'                      => 'Юллар:',
-'columns'                   => 'Баганалар:',
-'savedprefs'                => 'Көйләнмәләрегез сакланды.',
-'servertime'                => 'Серверның вакыты:',
-'default'                   => 'килешү буенча',
-'prefs-files'               => 'Файллар',
-'youremail'                 => 'Электрон почта:',
-'username'                  => 'Кулланучы исеме:',
-'uid'                       => 'Кулланучының идентификаторы:',
-'yourrealname'              => 'Чын исем:',
-'yourlanguage'              => 'Тел:',
-'yournick'                  => 'Яңа имзагыз:',
-'badsig'                    => 'Имза дөрес түгел. HTML-теглар тикшерегез.',
-'badsiglength'              => 'Имзагыз бигрәк озын.
+'preferences'                 => 'Көйләнмәләр',
+'mypreferences'               => 'Көйләнмәләрем',
+'prefs-edits'                 => 'Үзгәртүләр исәбе:',
+'prefsnologin'                => 'Кермәгәнсез',
+'prefsnologintext'            => 'Кулланучы көйләнмәләрене үзгәртү өчен, сез <span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} керергә]</span> тиешсез.',
+'changepassword'              => 'Серсүзне алыштырырга',
+'prefs-skin'                  => 'Күренеш',
+'skin-preview'                => 'Алдан карау',
+'prefs-math'                  => 'Формулалар',
+'prefs-datetime'              => 'Дата һәм вакыт',
+'prefs-personal'              => 'Шәхси мәгълүматлар',
+'prefs-rc'                    => 'Соңгы үзгәртүләр',
+'prefs-watchlist'             => 'Күзәтү исемлеге',
+'prefs-watchlist-days'        => 'Күзәтү исемлегендә ничә көн буена үзгәртүләрне күрсәтергә:',
+'prefs-watchlist-edits'       => 'Киңәйтелгән күзәтү исемлегендә үзгәртүләрнең иң югары исәбе:',
+'prefs-misc'                  => 'Башка көйләнмәләр',
+'prefs-resetpass'             => 'Серсүзне үзгәртү',
+'saveprefs'                   => 'Саклау',
+'resetprefs'                  => 'Сакланмаган үзгәртүләрне бетерү',
+'prefs-editing'               => 'Үзгәртү',
+'rows'                        => 'Юллар:',
+'columns'                     => 'Баганалар:',
+'searchresultshead'           => 'Эзләү',
+'savedprefs'                  => 'Көйләнмәләрегез сакланды.',
+'servertime'                  => 'Серверның вакыты:',
+'timezoneregion-africa'       => 'Африка',
+'timezoneregion-america'      => 'Америка',
+'timezoneregion-antarctica'   => 'Антарктика',
+'timezoneregion-arctic'       => 'Арктика',
+'timezoneregion-asia'         => 'Азия',
+'timezoneregion-atlantic'     => 'Атлантик океан',
+'timezoneregion-australia'    => 'Австралия',
+'timezoneregion-europe'       => 'Аурупа',
+'timezoneregion-indian'       => 'Һиндстан океаны',
+'timezoneregion-pacific'      => 'Тын океан',
+'default'                     => 'килешү буенча',
+'prefs-files'                 => 'Файллар',
+'youremail'                   => 'Электрон почта:',
+'username'                    => 'Кулланучы исеме:',
+'uid'                         => 'Кулланучының идентификаторы:',
+'yourrealname'                => 'Чын исем:',
+'yourlanguage'                => 'Тел:',
+'yournick'                    => 'Яңа имзагыз:',
+'badsig'                      => 'Имза дөрес түгел. HTML-теглар тикшерегез.',
+'badsiglength'                => 'Имзагыз бигрәк озын.
 Ул $1 {{PLURAL:$1|хәрефтән}} күбрәк булырга тиеш түгел.',
-'yourgender'                => 'Җенес:',
-'gender-male'               => 'Ир',
-'gender-female'             => 'Хатын',
-'email'                     => 'Электрон почта',
-'prefs-help-realname'       => 'Чын исемегез (кирәкми): аны күрсәтсәгез, ул битне үзгәртүче күрсәтү өчен файдалаячак.',
-'prefs-help-email-required' => 'Электрон почта адресы кирәк.',
-'prefs-signature'           => 'Имза',
+'yourgender'                  => 'Җенес:',
+'gender-male'                 => 'Ир',
+'gender-female'               => 'Хатын',
+'email'                       => 'Электрон почта',
+'prefs-help-realname'         => 'Чын исемегез (кирәкми): аны күрсәтсәгез, ул битне үзгәртүче күрсәтү өчен файдалаячак.',
+'prefs-help-email-required'   => 'Электрон почта адресы кирәк.',
+'prefs-signature'             => 'Имза',
+'prefs-advancedediting'       => 'Киңәйтелгән көйләүләр',
+'prefs-advancedrc'            => 'Киңәйтелгән көйләүләр',
+'prefs-advancedrendering'     => 'Киңәйтелгән көйләүләр',
+'prefs-advancedsearchoptions' => 'Киңәйтелгән көйләүләр',
+'prefs-advancedwatchlist'     => 'Киңәйтелгән көйләүләр',
 
 # User rights
 'userrights-groupsmember' => 'Әгъза:',
@@ -1021,13 +1052,21 @@ $3 күрсәткән сәбәп: ''$2''",
 'grouppage-bureaucrat'    => '{{ns:project}}:Бюрократлар',
 'grouppage-suppress'      => '{{ns:project}}:Тикшерүчеләр',
 
+# Rights
+'right-read'          => 'сәхифәләрне карау',
+'right-edit'          => 'сәхифәләрне төзәтү',
+'right-move'          => 'сәхифәләрне күчерү',
+'right-editinterface' => 'кулланучының интерыейсын үзгәртү',
+
 # User rights log
 'rightslog'      => 'Кулланучының хокуклары көндәлеге',
 'rightslogentry' => '$1 кулланучысын $2 группасыннан $3 группасына күчерде',
 'rightsnone'     => '(юк)',
 
 # Associated actions - in the sentence "You do not have permission to X"
-'action-edit' => 'бу битне узгәртергә',
+'action-edit'       => 'бу битне узгәртергә',
+'action-createpage' => 'сәхифәләрне язырга',
+'action-move'       => 'бу битне күчерү',
 
 # Recent changes
 'nchanges'                          => '$1 {{PLURAL:$1|үзгәртү|үзгәртү}}',
@@ -1091,6 +1130,8 @@ $3 күрсәткән сәбәп: ''$2''",
 'file-anchor-link'          => 'Файл',
 'filehist'                  => 'Файлның тарихы',
 'filehist-help'             => 'Датага/сәгатькә басыгыз, шул вакытта бит нинди булды дип карау өчен.',
+'filehist-deleteone'        => 'бетерү',
+'filehist-revert'           => 'кайтарырга',
 'filehist-current'          => 'хәзерге',
 'filehist-datetime'         => 'Дата/вакыт',
 'filehist-thumb'            => 'Эскиз',
@@ -1399,6 +1440,9 @@ $1',
 'blockip'                  => 'Кулланучыны кысарга',
 'ipaddress'                => 'IP-адрес:',
 'ipadressorusername'       => 'IP-адрес яки кулланучы исеме:',
+'ipbexpiry'                => 'Бетә:',
+'ipbreason'                => 'Сәбәп:',
+'ipbreasonotherlist'       => 'Башка сәбәп',
 'ipbother'                 => 'Башка вакыт:',
 'ipboptions'               => '2 сәгать:2 hours,1 көн:1 day,3 көн:3 days,1 атна:1 week,2 атна:2 weeks,1 ай:1 month,3ай:3 months,6 ай:6 months,1 ел:1 year,чикләнмәгән:infinite',
 'ipblocklist'              => 'Кысылган IP-адреслар һәм кулланучы исемләр',
@@ -1438,11 +1482,12 @@ $1',
 
 Бу очракларда сезгә битләрне үз кулыгыз белән күчерергә яки кушарга туры килер.",
 'movearticle'               => 'Битне күчерү:',
+'movenotallowed'            => 'Сездә мәкаләләрне күчерү хокуклары юк.',
 'newtitle'                  => 'Яңа башлам:',
 'move-watch'                => 'Бу битне күзәтергә',
 'movepagebtn'               => 'Битне күчерү',
 'pagemovedsub'              => 'Бит күчерелде',
-'movepage-moved'            => "<big>'''«$1» бите «$2» битенә күчерелде'''</big>",
+'movepage-moved'            => "'''«$1» бите «$2» битенә күчерелде'''",
 'movepage-moved-redirect'   => 'Юнәлтү ясалды.',
 'movepage-moved-noredirect' => 'Юнәлтүне ясау тыелды',
 'articleexists'             => 'Мондый исемле бит бар инде, яисә мондый исем рөхсәт ителми.
@@ -1460,10 +1505,12 @@ $1',
 'move-leave-redirect'       => 'Юнәлтүне калдырырга',
 
 # Export
-'export' => 'Битләрне чыгаруы',
+'export'       => 'Битләрне чыгаруы',
+'export-addns' => 'Өстәргә',
 
 # Namespace 8 related
-'allmessages' => 'Система хәбәрләре',
+'allmessages'     => 'Система хәбәрләре',
+'allmessagesname' => 'Исем',
 
 # Thumbnails
 'thumbnail-more'  => 'Зурайтырга',
@@ -1528,6 +1575,9 @@ $1',
 'tooltip-rollback'                => "\"Кире кайтару\" соңгы кулланучының бу биттә ясаган '''барлык''' үзгәртүләрен бетерә.",
 'tooltip-undo'                    => 'Бу үзгәртүне алдан карап үткәрмәү. Шулай ук үткәрмәүнең сәбәбен язып була.',
 
+# Math errors
+'math_unknown_error' => 'беленмәгән хата',
+
 # Patrolling
 'markaspatrolledtext'   => 'Бу мәкаләне тикшерелгән дип тамгаларга',
 'markedaspatrolled'     => 'Тикшерелгән дип тамгаланды',
@@ -1577,9 +1627,10 @@ $1',
 'edit-externally-help' => '(тулырак мәгълүмат өчен [http://www.mediawiki.org/wiki/Manual:External_editors setup instructions] битен карагыз)',
 
 # 'all' in various places, this might be different for inflected languages
-'watchlistall2' => 'барлык',
-'namespacesall' => 'барлык',
-'monthsall'     => 'барлык',
+'recentchangesall' => 'Барлык',
+'watchlistall2'    => 'барлык',
+'namespacesall'    => 'барлык',
+'monthsall'        => 'барлык',
 
 # Multipage image navigation
 'imgmultipagenext' => 'алдагы бит →',

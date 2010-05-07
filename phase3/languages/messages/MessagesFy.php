@@ -157,7 +157,6 @@ $messages = array(
 'tog-editsectiononrightclick' => 'Rjochtsklik op sekjsetitels jout seksjebewurking (freget JavaScript)',
 'tog-showtoc'                 => 'Ynhâldsopjefte, foar siden mei mear as twa koppen',
 'tog-rememberpassword'        => 'Oare kear fansels oanmelde',
-'tog-editwidth'               => 'Bewurkingsfjild oer folsleine breedte fan it skerm sjen litte',
 'tog-watchcreations'          => "Set siden dy't jo begjinne yn jo folchlist",
 'tog-watchdefault'            => "Sides dy't jo feroare hawwe folgje",
 'tog-watchmoves'              => "Siden dy't jo werneamd hawwe folgje",
@@ -268,7 +267,7 @@ $messages = array(
 'category-file-count-limited'    => 'Dizze kategory befettet {{PLURAL:$1|de folgjende triem|de folgjende $1 triemmen}}.',
 'listingcontinuesabbrev'         => '(ferfolch)',
 
-'mainpagetext'      => "<big>'''MediaWiki-program goed ynstallearre.'''</big>",
+'mainpagetext'      => "'''MediaWiki-program goed ynstallearre.'''",
 'mainpagedocfooter' => "Rieplachtsje de [http://meta.wikimedia.org/wiki/Help:Ynhâldsopjefte hantlieding] foar ynformaasje oer it gebrûk fan 'e wikisoftware.
 
 == Mear help oer Mediawiki ==
@@ -487,6 +486,7 @@ Meitsje dêr melding fan by in [[Special:ListUsers/sysop|systeembehearder]] fan 
 'readonly_lag'         => 'De database is automatysk beskoattele wylst de ûndergeskikte databaseservers syngronisearje mei de haadserver.',
 'internalerror'        => 'Ynterne fout',
 'internalerror_info'   => 'Ynterne fout: $1',
+'fileappenderror'      => 'It tafoegjen fan "$1" oan "$2" is mislearre.',
 'filecopyerror'        => 'Koe triem "$1" net kopiearje as "$2".',
 'filerenameerror'      => 'Koe triem "$1" net werneame as "$2".',
 'filedeleteerror'      => 'Koe triem "$1" net wiskje.',
@@ -657,7 +657,7 @@ Mûglik hawwe Jo Jo wachtwurd al feroare of in nij tydlik wachtwurd oanfrege.',
 'summary-preview'                  => 'Gearfetting sa at dy brûkt wurdt:',
 'subject-preview'                  => 'Neisjen ûnderwerp/kop:',
 'blockedtitle'                     => 'Meidogger is útsletten troch',
-'blockedtext'                      => "<big>'''Jo meidoggernamme of Ynternet-adres is útsletten.'''</big>
+'blockedtext'                      => "'''Jo meidoggernamme of Ynternet-adres is útsletten.'''
 
 De útsluting is útfierd troch $1.
 De opjûne reden is ''$2''.
@@ -1546,7 +1546,6 @@ Ferjit net de "Wat is hjirmei keppele" nei te gean foar it fuortheljen fan dit s
 'statistics-edits-average'     => 'Trochstrings tal bewurkings per side',
 'statistics-views-total'       => 'Totaal oantal werjûne siden',
 'statistics-views-peredit'     => 'Werjûne siden per bewurking',
-'statistics-jobqueue'          => '[http://www.mediawiki.org/wiki/Manual:Job_queue Job-queue-langte]',
 'statistics-users'             => 'Registrearre [[Special:ListUsers|brûkers]]',
 'statistics-users-active'      => 'Aktive brûkers',
 'statistics-users-active-desc' => "Brûkers dy't yn 'e ôfrûne {{PLURAL:$1|dei|$1 dagen}} in hanneling útfierd hawwe",
@@ -2068,7 +2067,7 @@ In dizze gefallen is it oan jo hoe't jo de oerlisside werneame of ynfoegje wolle
 'move-watch'              => 'Folch dizze side',
 'movepagebtn'             => 'Werneam side',
 'pagemovedsub'            => 'Werneamen slagge',
-'movepage-moved'          => '<big>\'\'\'"$1" hjit no "$2"\'\'\'</big>',
+'movepage-moved'          => '\'\'\'"$1" hjit no "$2"\'\'\'',
 'articleexists'           => "Der is al in side mei dy namme, of oars is de namme dy't jo oanjûn hawwe net tastien. Besykje it op 'e nij.",
 'talkexists'              => "It werneamen fan de side is slagge, mar de eardere oerlisside is net mear keppele om't der foar de side mei de nije namme al in oerlisside wie. Kopiearje de oerlisside fan de 'âlde' side mei de nije.",
 'movedto'                 => 'werneamd as',

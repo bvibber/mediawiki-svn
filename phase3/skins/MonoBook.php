@@ -70,7 +70,7 @@ class MonoBookTemplate extends QuickTemplate {
 
 		$this->html( 'headelement' );
 ?><div id="globalWrapper">
-<div id="column-content"><div id="content" <?php $this->html("specialpageattributes") ?>>
+<div id="column-content"><div id="content"<?php $this->html("specialpageattributes") ?>>
 	<a id="top"></a>
 	<?php if($this->data['sitenotice']) { ?><div id="siteNotice"><?php $this->html('sitenotice') ?></div><?php } ?>
 
@@ -204,10 +204,11 @@ if($this->data['copyrightico']) { ?>
 <?php $this->text( 'debug' ); ?>
 
 -->
-<?php endif; ?>
-</body></html>
-<?php
-	wfRestoreWarnings();
+<?php endif;
+
+		echo Html::closeElement( 'body' );
+		echo Html::closeElement( 'html' );
+		wfRestoreWarnings();
 	} // end of execute() method
 
 	/*************************************************************************************************/

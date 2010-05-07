@@ -25,7 +25,7 @@ class Block {
 
 	function __construct( $address = '', $user = 0, $by = 0, $reason = '',
 		$timestamp = '' , $auto = 0, $expiry = '', $anonOnly = 0, $createAccount = 0, $enableAutoblock = 0,
-		$hideName = 0, $blockEmail = 0, $allowUsertalk = 0 )
+		$hideName = 0, $blockEmail = 0, $allowUsertalk = 0, $byName = false )
 	{
 		$this->mId = 0;
 		# Expand valid IPv6 addresses
@@ -45,7 +45,7 @@ class Block {
 		$this->mAllowUsertalk = $allowUsertalk;
 		$this->mForUpdate = false;
 		$this->mFromMaster = false;
-		$this->mByName = false;
+		$this->mByName = $byName;
 		$this->mAngryAutoblock = false;
 		$this->initialiseRange();
 	}
@@ -377,9 +377,10 @@ class Block {
 	 *
 	 * @return Boolean: whether or not the insertion was successful.
 	 */
-	public function insert() {
+	public function insert( $dbw = null ) {
 		wfDebug( "Block::insert; timestamp {$this->mTimestamp}\n" );
-		$dbw = wfGetDB( DB_MASTER );
+		if ( $dbw === null )
+			$dbw = wfGetDB( DB_MASTER );
 
 		$this->validateBlockParams();
 		$this->initialiseRange();
@@ -405,7 +406,7 @@ class Block {
 				'ipb_expiry' => self::encodeExpiry( $this->mExpiry, $dbw ),
 				'ipb_range_start' => $this->mRangeStart,
 				'ipb_range_end' => $this->mRangeEnd,
-				'ipb_deleted'	=> $this->mHideName,
+				'ipb_deleted'	=> intval( $this->mHideName ), // typecast required for SQLite
 				'ipb_block_email' => $this->mBlockEmail,
 				'ipb_allow_usertalk' => $this->mAllowUsertalk
 			),

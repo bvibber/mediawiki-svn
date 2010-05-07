@@ -19,6 +19,11 @@ class SpecialResetpass extends SpecialPage {
 	function execute( $par ) {
 		global $wgUser, $wgAuth, $wgOut, $wgRequest;
 
+		if ( wfReadOnly() ) {
+			$wgOut->readOnlyPage();
+			return;
+		}
+
 		$this->mUserName = $wgRequest->getVal( 'wpName' );
 		$this->mOldpass = $wgRequest->getVal( 'wpPassword' );
 		$this->mNewpass = $wgRequest->getVal( 'wpNewPassword' );
@@ -26,6 +31,7 @@ class SpecialResetpass extends SpecialPage {
 		
 		$this->setHeaders();
 		$this->outputHeader();
+		$wgOut->disallowUserJs();
 
 		if( !$wgAuth->allowPasswordChange() ) {
 			$this->error( wfMsg( 'resetpass_forbidden' ) );
@@ -84,9 +90,7 @@ class SpecialResetpass extends SpecialPage {
 	function showForm() {
 		global $wgOut, $wgUser, $wgRequest;
 
-		$wgOut->disallowUserJs();
-
-		$self = SpecialPage::getTitleFor( 'Resetpass' );
+		$self = $this->getTitle();
 		if ( !$this->mUserName ) {
 			$this->mUserName = $wgUser->getName();
 		}

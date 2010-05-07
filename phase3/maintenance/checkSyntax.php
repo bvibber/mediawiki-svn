@@ -39,7 +39,7 @@ class CheckSyntax extends Maintenance {
 		$this->addOption( 'syntax-only', 'Check for syntax validity only, skip code style warnings' );
 	}
 
-	protected function getDbType() {
+	public function getDbType() {
 		return Maintenance::DB_NONE;
 	}
 
@@ -76,7 +76,6 @@ class CheckSyntax extends Maintenance {
 		$this->mIgnorePaths = array(
 			// Compat stuff, explodes on PHP 5.3
 			"includes/NamespaceCompat.php$",
-			"DiscussionThreading/REV",
 			);
 	
 		$this->mNoStyleCheckPaths = array(
@@ -87,7 +86,7 @@ class CheckSyntax extends Maintenance {
 			'\bphplot-',
 			"/svggraph/",
 			"\bjsmin.php$",
-			"OggHandler/PEAR/",
+			"PEAR/File_Ogg/",
 			"QPoll/Excel/",
 			"/geshi/",
 			"/smarty/",
@@ -163,6 +162,7 @@ class CheckSyntax extends Maintenance {
 	 * Returns true if $file is of a type we can check
 	 */
 	private function isSuitableFile( $file ) {
+		$file = str_replace( '\\', '/', $file );
 		$ext = pathinfo( $file, PATHINFO_EXTENSION );
 		if ( $ext != 'php' && $ext != 'inc' && $ext != 'php5' )
 			return false;

@@ -118,7 +118,6 @@ $messages = array(
 süi titul dai sezziún (JavaScript)',
 'tog-showtoc'                 => "Fà vidè l'indes per i paginn cun püssee de 3 sezión",
 'tog-rememberpassword'        => "Regòrdass la mè paròla d'urdin",
-'tog-editwidth'               => "Slarga la finèstra di mudifegh fin che la impiniss tüt 'l scherm",
 'tog-watchcreations'          => "Giunta i paginn ch'hoo creaa mì a la lista di paginn che tegni sot ögg",
 'tog-watchdefault'            => "Gjüntá i pagin redataa in dala lista dii pagin tegnüü d'öcc",
 'tog-watchmoves'              => "Giunta i paginn ch'hoo muvüü a la lista di paginn che tegni sot ögg",
@@ -131,7 +130,7 @@ süi titul dai sezziún (JavaScript)',
 'tog-enotifminoredits'        => 'Màndem un messagg e-mail anca per i mudifegh piscinín',
 'tog-enotifrevealaddr'        => "Lassa vedè 'l mè indirizz e-mail int i messagg d'avis",
 'tog-oldsig'                  => 'Anteprima de la firma esistenta:',
-'tog-fancysig'                => 'Firma semplificava (senza al ligamm utumatich)',
+'tog-fancysig'                => 'Trata la firma cume test wiki (senza nissön ligam utumatich)',
 'tog-externaleditor'          => "Dröva semper un prugrama da redatazión estern (dumà per espert, 'l gh'ha de besogn d'impustazión speciaj ins 'l to computer)",
 'tog-externaldiff'            => 'Druvá sempar un "diff" estèrnu',
 'tog-watchlisthideown'        => "Sconda i me mudifich dai pagin che a ten d'ögg",
@@ -279,7 +278,7 @@ süi titul dai sezziún (JavaScript)',
 'history'           => 'Crunulugia de la pagina',
 'history_short'     => 'Crunulugìa',
 'info_short'        => 'Infurmazión',
-'printableversion'  => 'Versiun də stampà',
+'printableversion'  => 'Versión stampàbil',
 'permalink'         => 'Culegament permanent',
 'print'             => 'Stampa',
 'edit'              => 'Mudifega',
@@ -433,8 +432,8 @@ Per piasè, fa raport a 'n'[[Special:ListUsers/sysop|aministradur]], cun la nota
 # Login and logout pages
 'logouttext'              => "'''Adess a sii descuness.'''
 
-A pudé andà inanz a druvà la {{SITENAME}} in manera anònima, o a pudé cunètev anmò cun l'istess suranomm o cun un suranomm diferent.
-Tegné cünt che certi paginn pödass che i se veden anmò cume se a füdissi anmò cuness, fin quand che hii nò vudaa 'l ''cache'' del voster browser.",
+A pudé andà inanz a druvà la {{SITENAME}} in manera anònima, o a pudé [[Special:UserLogin|cunètev anmò]] cun l'istess suranomm o cun un suranomm diferent.
+Tegné cünt che certi paginn pödass che i seguiten a vedess tant 'me se a füdìssuv anmò cuness, fin quand che hii nò vudaa 'l ''cache'' del voster browser.",
 'welcomecreation'         => "== Benvegnüü, $1! ==
 'L to cünt l'è staa pruntaa. Desmenteghet mía de mudifegà i to [[Special:Preferences|preferenz de {{SITENAME}}]].",
 'yourname'                => 'El to suranóm:',
@@ -445,6 +444,7 @@ Tegné cünt che certi paginn pödass che i se veden anmò cume se a füdissi an
 'nav-login-createaccount' => 'Vena denter / Crea un cünt',
 'loginprompt'             => 'Par cunett a {{SITENAME}}, a duvii abilitá i galet.',
 'userlogin'               => 'Vegní denter - Creè un cünt',
+'userloginnocreate'       => 'Vegn denter',
 'logout'                  => 'Va fö',
 'userlogout'              => 'Và fö',
 'notloggedin'             => 'Te seet minga dent in del sistema',
@@ -458,6 +458,7 @@ Tegné cünt che certi paginn pödass che i se veden anmò cume se a füdissi an
 'userexists'              => "El nom de duvrat che t'hee miss dent a l'è giamò dupraa.
 Per piasè, scerniss un alter suranom.",
 'loginerror'              => "Erur in de l'andà dent in del sistema.",
+'createaccounterror'      => 'Se pö minga creà el cünt: $1',
 'nocookiesnew'            => "El cünt a l'è staa creaa, ma t'hee minga pudüü andà dent in del sistema.
 {{SITENAME}} al dupra i cookies per fà andà i duvrat in del sistema.
 Tì te gh'hee i cookies disabilitaa.
@@ -525,12 +526,29 @@ Per piasè, ve drent anmò dop che te l'ricevüü.",
 'showdiff'                         => 'Famm vedè i cambiament',
 'anoneditwarning'                  => 'Tì te set minga entraa. In de la crunulugia de la pagina se vedarà el tò IP.',
 'summary-preview'                  => "Pröva de l'uget:",
+'blockedtext'                      => "'''El to nom del druvadur o el to indirizz IP l'è stat blucaa.'''
+
+El bloch l'è stat fat da $1. 
+El mutiv per el bloch l'è: ''$2''
+
+* Principi del bloch: $8
+* Scadenza del bloch: $6
+* Blucaa: $7
+
+Se a vurii, a pudii cuntatà $1 o un olter [[{{MediaWiki:Grouppage-sysop}}|aministradur]] per discüt el bloch.
+
+Feegh a ment che la funzion 'Manda un email a quel druvadur chì' l'è mia ativa se avii mia registraa un indirizz e-mail valid ind i voster [[Special:Preferences|preferenz]] o se l'üsagg de 'sta funzion l' è stat blucaa.
+
+L'indirizz IP curent l'è $3, el nümer ID del bloch l'è #$5.
+Fee el piasè d'inclüd tüt i detaj chì de sura in qualsessìa dumanda che a decidii de fà.",
 'accmailtext'                      => 'La parola d\'urdin per "$1" l\'è stada mandada a $2.',
 'newarticle'                       => '(Növ)',
 'newarticletext'                   => 'Te seet andaa adree a un ligam a una pagina che la esista gnamò.
 Per creà la pagina, a l\'è assee che te tachet a scriv in del box desota (varda la [[{{MediaWiki:Helppage}}|pagina de vüt]] per savèn püssee).
 Se te seet chì per erur, schiscia "indree" in sül tò browser.',
-'anontalkpagetext'                 => "----''Chesta chí a l'é la pagina da ciciarada d'un usuari che l'ha ammò minga registraa un cunt, o ascí ch'al vœur minga dovràl; donca, el pò vess identificaa domà cont el sò IP, ch'el pœul vess compartii con fiss dovrat diferent. Se al é un dovrat anònim e a l'ha vist un quai messagg ch'al ga par ch'al gh'a nagòt à vidé con lu, ch'al prœuva a [[Special:UserLogin|creà el sò cunt]].''",
+'anontalkpagetext'                 => "''Questa chí a l'é la pagina da ciciarada d'un druvadur che l'ha nonanmò registraa un cünt, o che 'l le dröva mia. 
+Per 'sta reson chí, el pò vess identificaa dumà cunt el sò indirizz nümereg de IP. 
+'Stu indirizz IP el pö vess druvaa da püssee d'un druvadur. Se te seet un druvadur anònim e ve someja che un quaj messagg ch'al ga par ch'al gh'a nagòt à vidé con lu, ch'al prœuva a [[Special:UserLogin|creà el sò cunt]].''",
 'noarticletext'                    => "Per 'l mument quela pagina chì l'è vöja. Te pòdet [[Special:Search/{{PAGENAME}}|cercà quel articul chì]] int i alter paginn, <span class=\"plainlinks\">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} cercà int i register imparentaa], o sedenò [{{fullurl:{{FULLPAGENAME}}|action=edit}} mudifichè 'sta pagina chì adess-adess].",
 'clearyourcache'                   => "'''Nòta:''' dòpu che avii salvaa, pudaría véss neçessari de scancelá la memòria \"cache\" dal vòst prugráma də navigazziún in reet par vidé i mudifich faa. '''Mozilla / Firefox / Safari:''' tegní schiscjaa al butún ''Shift'' intaant che sə clica ''Reload'', upüür schiscjá ''Ctrl-Shift-R'' (''Cmd-Shift-R'' sül Apple Mac); '''IE:''' schiscjá ''Ctrl'' intaant che sə clica ''Refresh'', upüür schiscjá ''Ctrl-F5''; '''Konqueror:''': semplicemeent clicá al butún ''Reload'', upüür schiscjá ''F5''; '''Opera''' i üteent pudarían vech büsögn da scancelá cumpletameent la memòria \"cache\" in ''Tools&rarr;Preferences''.",
 'previewnote'                      => "''''''Atenziun'''! Questa pagina la serviss dumà de vardà. I cambiament hinn minga staa salvaa.'''",
@@ -553,6 +571,10 @@ L'ültima vus del register l'è mustrada chì de suta per riferiment:",
 'template-semiprotected'           => '(semi-prutegiüü)',
 'hiddencategories'                 => 'Quela pagina chì la fa part de {{PLURAL:$1|una categuria|$1 categurij}} scundüü:',
 'permissionserrorstext-withaction' => "Te gh'hee minga i permiss per $2, per {{PLURAL:$1|quela resón chì |quij resón chì}}:",
+'recreate-moveddeleted-warn'       => "'''Ocio: te see adree a creà turna una pagina che l'eva giamò stada scancelada.'''
+
+Cuntrulee se l'è propi el cas de cuntinuà a mudifegà 'sta pagina chì.
+Per cumudità, la lista di scancelament e di San Martìn l'è ripurtada chi de suta:",
 
 # "Undo" feature
 'undo-summary' => 'Scancelada la mudifega $1 de [[Special:Contributions/$2|$2]] ([[User talk:$2|Ciciarada]])',
@@ -578,6 +600,7 @@ Spiegazzion di símbul: (cur) = diferenza cun la version curenta, (ültima) = di
 Per infurmazion, varda ind el [{{fullurl:{{#Special:Log}}/delete|page={{FULLPAGENAMEE}}}} register di scancelament].",
 'rev-delundel'                => 'fa vidè/scund',
 'revdel-restore'              => 'Cambia la visibilità',
+'revdelete-edit-reasonlist'   => 'Mudifega i mutiv del scancelament',
 
 # Merge log
 'revertmerge' => 'Scancela i ünión',
@@ -816,10 +839,22 @@ I paginn dent in [[Special:Watchlist|la lista ch'it ten-e sot euj]] i resten mar
 La descrizión sura la sua [$2 pagina de descrizión del file] l'è mustrada chì suta.",
 'uploadnewversion-linktext' => 'Carga una versión növa de quel file chì',
 
+# File reversion
+'filerevert-intro'          => "Te seet adree a bütà turna el file '''[[Media:$1|$1]]''' a la [$4 version del $2, $3].",
+'filerevert-comment'        => 'Uget:',
+'filerevert-defaultcomment' => 'Bütada turna la versión di $2, $1',
+
 # File deletion
-'filedelete-reason-dropdown' => '*I sòlit resón per i scancelament
+'filedelete'                  => 'Scancela $1',
+'filedelete-legend'           => "Scancela 'l file",
+'filedelete-intro-old'        => "Te seet adree a scancelà la versión de '''[[Media:$1|$1]]''' del [$4 $2, $3].",
+'filedelete-comment'          => 'Mutiv del scancelament:',
+'filedelete-otherreason'      => 'Alter resón/spiegazión:',
+'filedelete-reason-otherlist' => 'Óltra resón',
+'filedelete-reason-dropdown'  => '*I sòlit resón per i scancelament
 ** Viulazión de copyright
 ** File dubi',
+'filedelete-edit-reasonlist'  => 'Mudifega i mutiv del scancelament',
 
 # MIME search
 'mimesearch' => 'cérca MIME',
@@ -853,7 +888,8 @@ La descrizión sura la sua [$2 pagina de descrizión del file] l'è mustrada ch�
 'statistics-files'             => 'File caregaa sü',
 'statistics-edits'             => "Paginn mudifegaa dal dì che l'è nassüü 'l sit de {{SITENAME}}",
 'statistics-edits-average'     => 'Mudifegh in média per pagina',
-'statistics-jobqueue'          => 'Lungheza de la [http://www.mediawiki.org/wiki/Manual:Job_queue Cua di prucediment]',
+'statistics-users'             => '[[Special:ListUsers|Druvadur]] registraa',
+'statistics-users-active'      => 'Druvadur ativ',
 'statistics-users-active-desc' => "Druvadur che i hann faa un'azión int {{PLURAL:$1|l'ültem dì|i ültem $1 dì}}",
 
 'disambiguations' => 'Pagin da disambiguazziún',
@@ -941,7 +977,7 @@ La descrizión sura la sua [$2 pagina de descrizión del file] l'è mustrada ch�
 'listgrouprights-members' => '(Lista di member)',
 
 # E-mail user
-'emailuser'     => 'Manda un email al duvrátt',
+'emailuser'     => 'Manda un email a quel druvadur chì',
 'emailsent'     => 'Messagg spedii',
 'emailsenttext' => "El messagg e-mail l'è staa spedii.",
 
@@ -958,7 +994,7 @@ i vegnarann segnalaa chichinscì e la pagina la se vedarà cun caràter '''grev'
 'removedwatch'      => 'Scancelaa dala lista di usservazziún.',
 'removedwatchtext'  => 'La pagina "[[:$1]]" l\'è stada scancelada de la tò lista di [[Special:Watchlist|paginn sot ögg]].',
 'watch'             => "Tegn d'öcc",
-'watchthispage'     => "Tegn d'öcc questa pagina",
+'watchthispage'     => "Tegn d'ögg quela pagina chì",
 'unwatch'           => "Tegn pü d'ögg",
 'watchnochange'     => "Nissün cambiament l'è stai faa ins i pàginn che te tegn d'ögg ind 'l períud de temp indicaa.",
 'watchlist-details' => '{{PLURAL:$1|$1 pagina|$1 paginn}} tegnüü sot ögg, fö che i paginn de discüssión.',
@@ -1010,6 +1046,7 @@ Per piasè, dà la cunferma che te gh'hee intenzión de andà inanz cun 'l scanc
 'deletedarticle'         => 'l\'ha scancelaa "[[$1]]"',
 'dellogpage'             => 'Register di scancelament',
 'deletionlog'            => 'log di scancelament',
+'reverted'               => 'Bütada sü turna la versión de prima.',
 'deletecomment'          => 'Mutiv del scancelament',
 'deleteotherreason'      => 'Alter mutiv:',
 'deletereasonotherlist'  => 'Altra resón',
@@ -1029,7 +1066,7 @@ L'ültima redatazziún l eva da [[User:$3|$3]] ([[User talk:$3|Discüssiún]])."
 
 # Protect
 'protectlogpage'              => 'Register di prutezión',
-'protectedarticle'            => 't\'hee prutegiüü "[[$1]]"',
+'protectedarticle'            => 'l\'ha prutegiüü "[[$1]]"',
 'modifiedarticleprotection'   => 'A l\'è müdaa el nivel de prutezión per "[[$1]]"',
 'unprotectedarticle'          => 'l\'ha sblucaa "[[$1]]"',
 'protect-title'               => 'Prutezziún da "$1"',
@@ -1051,8 +1088,21 @@ Quest chì a hinn i regulazión curent per la pagina '''$1''':",
 'protect-expiring'            => 'scadenza: $1 (UTC)',
 'protect-cascade'             => "Prutegg i paginn ch'i fan part de questa (prutezión recursiva)",
 'protect-cantedit'            => "Te pödet minga mudifegà i nivel de prutezión a quela pagina chì, per via che t'hee minga el permiss de mudifegala.",
+'protect-dropdown'            => '*Mutiv cumün per la prutezion
+** Tròp vandalism
+** Tròp spam
+** Edit war
+** Pagina cun parecc tràfich',
+'protect-edit-reasonlist'     => 'Mudifega i mutiv per la prutezion',
+'protect-expiry-options'      => '1 ura:1 hour,1 dì:1 day,1 semana:1 week,2 semann:2 weeks,1 mes:1 month,3 mes:3 months,6 mes:6 months,1 ann:1 year,per sémper:infinite',
 'restriction-type'            => 'Permiss',
 'restriction-level'           => 'Nivel de restrizión',
+'minimum-size'                => 'Misüra mìnima',
+'maximum-size'                => 'Misüra màssima:',
+'pagesize'                    => '(byte)',
+
+# Restrictions (nouns)
+'restriction-edit' => 'Mudifega',
 
 # Undelete
 'undelete'           => 'Varda i pagin scancelaa',
@@ -1076,14 +1126,15 @@ Quest chì a hinn i regulazión curent per la pagina '''$1''':",
 'month'               => 'A partì del mes (e quij inanz)',
 'year'                => "A partì de l'ann (e quij inanz)",
 
-'sp-contributions-newbies'    => 'Fà vidè dumà i cuntribüzión di dvurat növ',
-'sp-contributions-blocklog'   => 'Register di bloch',
-'sp-contributions-deleted'    => 'Cuntribüziun scancelaa',
-'sp-contributions-talk'       => 'ciciarada',
-'sp-contributions-userrights' => 'Gestión di dirit di druvadur',
-'sp-contributions-search'     => 'Cerca i cuntribüzión',
-'sp-contributions-username'   => 'Adress IP o nom druvat:',
-'sp-contributions-submit'     => 'Ricerca',
+'sp-contributions-newbies'        => 'Fà vidè dumà i cuntribüzión di dvurat növ',
+'sp-contributions-blocklog'       => 'Register di bloch',
+'sp-contributions-deleted'        => 'Cuntribüziun scancelaa',
+'sp-contributions-talk'           => 'ciciarada',
+'sp-contributions-userrights'     => 'Gestión di dirit di druvadur',
+'sp-contributions-blocked-notice' => "Per el mument quel druvadur chì l'è blucaa. L'ültima entrada int el register di bloch l'è repurtada chì de suta per riferiment:",
+'sp-contributions-search'         => 'Cerca i cuntribüzión',
+'sp-contributions-username'       => 'Adress IP o nom druvat:',
+'sp-contributions-submit'         => 'Ricerca',
 
 # What links here
 'whatlinkshere'            => 'Pagin che se culeghen chì',
@@ -1103,6 +1154,12 @@ Quest chì a hinn i regulazión curent per la pagina '''$1''':",
 
 # Block/unblock
 'blockip'                  => 'Bloca el dovrat',
+'blockip-title'            => "Bloca 'l druvadur",
+'blockip-legend'           => "Bloca 'l druvadur",
+'blockiptext'              => "Druvee 'l mòdul chì de suta per blucà l'acess cun dirit de scritüra a un indirizz IP specifegh o a un druvadur registraa. 
+El bloch gh'è de druvàl dumà per evità el vandalism e in acord cun i [[{{MediaWiki:Policy-url}}|regulament de {{SITENAME}}]].
+Scrivee chì de suta 'l mutiv specifegh per el bloch (presempi, a pudii scriv i titul di paginn che i henn stat suget a vandalism).",
+'ipaddress'                => 'Indirizz IP:',
 'ipadressorusername'       => 'Indirizz IP o nom del druvdur:',
 'ipbexpiry'                => 'Fina al:',
 'ipbreason'                => 'Reson:',
@@ -1118,6 +1175,7 @@ Quest chì a hinn i regulazión curent per la pagina '''$1''':",
 'ipbanononly'              => 'Blòca dumà i druvàt anonim',
 'ipbcreateaccount'         => 'Lassegh mia creà di alter cünt',
 'ipbemailban'              => "Fà in manera che quel druvàt chì 'l poda mia spedì di messagg e-mail",
+'ipbenableautoblock'       => "Bloca in manera utumatega l'ültim indirizz IP druvaa da 'stu druvadur chì, e qualsessìa olter indirizz IP cun al qual el cerca de fà di mudifegh.",
 'ipbsubmit'                => 'Blòca quel druvàt chì',
 'ipbother'                 => 'Altra dürada:',
 'ipboptions'               => '2 ur:2 hours,1 dì:1 day,3 dì:3 days,1 semana:1 week,2 semann:2 weeks,1 mes:1 month,3 mes:3 months,6 mes:6 months,1 ann:1 year,infinii:infinite',
@@ -1182,7 +1240,7 @@ In quij cas chì, se'l var la pena, ghe sarà de spustà a man i infurmazión de
 'move-watch'              => "Gionta chela pagina chí ai pàgin à tegní d'œucc.",
 'movepagebtn'             => 'Sposta quela pagina chì',
 'pagemovedsub'            => "San Martin l'è bele fat!",
-'movepage-moved'          => "<big>'''\"\$1\" l'è staa muvüü a \"\$2\"'''</big>",
+'movepage-moved'          => "'''\"\$1\" l'è staa muvüü a \"\$2\"'''",
 'movepage-moved-redirect' => "L'è staa creaa un redirect.",
 'articleexists'           => "Una pagina che la se ciama cumpagn la gh'è giamò, opüra el nom che hii scernüü al va minga ben. <br />
 Che 'l scerna, per piasè, un nom diferent per quel articul chì.",
@@ -1233,6 +1291,7 @@ Che 'l scerna, per piasè, un nom diferent per quel articul chì.",
 'tooltip-search'                  => 'Cerca in {{SITENAME}}',
 'tooltip-search-go'               => "Va a una pagina che la se ciama cumpagn, semper che la gh'è",
 'tooltip-search-fulltext'         => 'Cerca quel test chì intra i paginn del sit',
+'tooltip-p-logo'                  => 'Pagina principala',
 'tooltip-n-mainpage'              => 'Visité la pàgina principala',
 'tooltip-n-mainpage-description'  => 'Visita la pagina principala',
 'tooltip-n-portal'                => "Descrizión del pruget, 'sè ch'a pudé fà, indè che se pö truvà i rob.",
@@ -1276,6 +1335,9 @@ Che 'l scerna, per piasè, un nom diferent per quel articul chì.",
 'mw_math_source' => 'Lassá in furmaa TeX (pər i prugráma də navigazziún dumá in furmaa da testu)',
 'mw_math_modern' => 'Racumandaa pər i bigatt püssè reçeent',
 'mw_math_mathml' => 'MathML se l è pussíbil (sperimentaal)',
+
+# Image deletion
+'deletedrevision' => 'Scancelada la revision vegia de $1.',
 
 # Browsing diffs
 'previousdiff' => '← Diferenza püssee vegia',

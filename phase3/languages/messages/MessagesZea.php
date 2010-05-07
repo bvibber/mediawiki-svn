@@ -56,7 +56,6 @@ $messages = array(
 'tog-editsectiononrightclick' => "Bewerken van deêlpahina's meulijk maeken mie een rechtermuusklik op een tussenkopje (JavaScript vereist)",
 'tog-showtoc'                 => "Inoudsopgaeve weerheven (voe pahina's mie minstes 3 tussenkopjes)",
 'tog-rememberpassword'        => 'Wachtwoôrd ontouwe',
-'tog-editwidth'               => 'Bewerkiengsveld over de volle breêdte',
 'tog-watchcreations'          => "Pahina's die ak anmik automaotisch volhen",
 'tog-watchdefault'            => "Pahina's die ak bewerk automaotisch volhen",
 'tog-watchmoves'              => "Pahina's die ak verplekke automaotisch volhen",
@@ -155,7 +154,7 @@ $messages = array(
 'category-file-count-limited'    => "Deêze categorie bevat {{PLURAL:$1|'t volhende bestand|de volhende $1 bestan'n}}.",
 'listingcontinuesabbrev'         => 'vedder',
 
-'mainpagetext'      => "<big>'''De installaotie van MediaWiki is geslaegd.'''</big>",
+'mainpagetext'      => "'''De installaotie van MediaWiki is geslaegd.'''",
 'mainpagedocfooter' => "Raedpleeg de [http://meta.wikimedia.org/wiki/ZEA_Ulpe:Inhoudsopgaeve andleidieng] voe informatie over 't gebruuk van de wikisoftware.
 
 == Meer ulpe over MediaWiki ==
@@ -498,7 +497,7 @@ Neheer dit bericht as deêze gebruker zonder joe medeweten is anemikt.',
 'summary-preview'            => 'Saemenvattieng naekieken:',
 'subject-preview'            => 'Naekieken onderwerp/kop:',
 'blockedtitle'               => 'Gebruker is geblokkeerd',
-'blockedtext'                => "<big>'''Je gebruker of IP-adres is eblokkeerd.'''</big>
+'blockedtext'                => "'''Je gebruker of IP-adres is eblokkeerd.'''
 
 De blokkaode is uutevoerd deur $1.
 De opeheven reeën is ''$2''.

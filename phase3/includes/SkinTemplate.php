@@ -311,8 +311,8 @@ class SkinTemplate extends Skin {
 		// Users can have their language set differently than the
 		// content of the wiki. For these users, tell the web browser
 		// that interface elements are in a different language.
-		$tpl->set( 'userlangattributes', '');
-		$tpl->set( 'specialpageattributes', '');
+		$tpl->set( 'userlangattributes', '' );
+		$tpl->set( 'specialpageattributes', '' );
 
 		$lang = $wgLang->getCode();
 		$dir  = $wgLang->getDir();
@@ -323,60 +323,17 @@ class SkinTemplate extends Skin {
 
 			// The content of SpecialPages should be presented in the
 			// user's language. Content of regular pages should not be touched.
-			if($this->mTitle->isSpecialPage()) {
+			if( $this->mTitle->isSpecialPage() ) {
 				$tpl->set( 'specialpageattributes', $attrs );
 			}
 		}
 
-		$newtalks = $wgUser->getNewMessageLinks();
+		$newtalks = $this->getNewtalks();
 
-		if( count( $newtalks ) == 1 && $newtalks[0]['wiki'] === wfWikiID() ) {
-			$usertitle = $this->mUser->getUserPage();
-			$usertalktitle = $usertitle->getTalkPage();
-
-			if( !$usertalktitle->equals( $this->mTitle ) ) {
-				$newmessageslink = $this->link(
-					$usertalktitle,
-					wfMsgHtml( 'newmessageslink' ),
-					array(),
-					array( 'redirect' => 'no' ),
-					array( 'known', 'noclasses' )
-				);
-
-				$newmessagesdifflink = $this->link(
-					$usertalktitle,
-					wfMsgHtml( 'newmessagesdifflink' ),
-					array(),
-					array( 'diff' => 'cur' ),
-					array( 'known', 'noclasses' )
-				);
-
-				$ntl = wfMsg(
-					'youhavenewmessages',
-					$newmessageslink,
-					$newmessagesdifflink
-				);
-				# Disable Cache
-				$out->setSquidMaxage( 0 );
-			}
-		} else if( count( $newtalks ) ) {
-			// _>" " for BC <= 1.16
-			$sep = str_replace( '_', ' ', wfMsgHtml( 'newtalkseparator' ) );
-			$msgs = array();
-			foreach( $newtalks as $newtalk ) {
-				$msgs[] = Xml::element('a',
-					array( 'href' => $newtalk['link'] ), $newtalk['wiki'] );
-			}
-			$parts = implode( $sep, $msgs );
-			$ntl = wfMsgHtml( 'youhavenewmessagesmulti', $parts );
-			$out->setSquidMaxage( 0 );
-		} else {
-			$ntl = '';
-		}
 		wfProfileOut( __METHOD__ . '-stuff2' );
 
 		wfProfileIn( __METHOD__ . '-stuff3' );
-		$tpl->setRef( 'newtalk', $ntl );
+		$tpl->setRef( 'newtalk', $newtalks );
 		$tpl->setRef( 'skin', $this );
 		$tpl->set( 'logo', $this->logoText() );
 		if ( $out->isArticle() and ( !isset( $oldid ) or isset( $diff ) ) and
@@ -746,7 +703,7 @@ class SkinTemplate extends Skin {
 				$istalkclass = $istalk?' istalk':'';
 				$content_actions['edit'] = array(
 					'class' => ( ( ( $action == 'edit' or $action == 'submit' ) and $section != 'new' ) ? 'selected' : '' ) . $istalkclass,
-					'text' => $this->mTitle->exists()
+					'text' => ( $this->mTitle->exists() || ( $this->mTitle->getNamespace() == NS_MEDIAWIKI ) )
 						? wfMsg( 'edit' )
 						: wfMsg( 'create' ),
 					'href' => $this->mTitle->getLocalUrl( $this->editUrlOptions() )
@@ -762,7 +719,7 @@ class SkinTemplate extends Skin {
 						);
 					}
 				}
-			} elseif ( $this->mTitle->isKnown() ) {
+			} elseif ( $this->mTitle->hasSourceText() ) {
 				$content_actions['viewsource'] = array(
 					'class' => ($action == 'edit') ? 'selected' : false,
 					'text' => wfMsg( 'viewsource' ),
@@ -920,7 +877,7 @@ class SkinTemplate extends Skin {
 		$nav_urls['mainpage'] = array( 'href' => self::makeMainPageUrl() );
 		if( $wgUploadNavigationUrl ) {
 			$nav_urls['upload'] = array( 'href' => $wgUploadNavigationUrl );
-		} elseif( $wgEnableUploads && $wgUser->isAllowed( 'upload' ) ) {
+		} elseif( UploadBase::isEnabled() && UploadBase::isAllowed( $wgUser ) === true ) {
 			$nav_urls['upload'] = array( 'href' => self::makeSpecialUrl( 'Upload' ) );
 		} else {
 			$nav_urls['upload'] = false;
@@ -973,8 +930,10 @@ class SkinTemplate extends Skin {
 		}
 
 		if( $this->mTitle->getNamespace() == NS_USER || $this->mTitle->getNamespace() == NS_USER_TALK ) {
-			$id = User::idFromName( $this->mTitle->getText() );
-			$ip = User::isIP( $this->mTitle->getText() );
+			$parts = explode( '/', $this->mTitle->getText() );
+			$rootUser = $parts[0];
+			$id = User::idFromName( $rootUser );
+			$ip = User::isIP( $rootUser );
 		} else {
 			$id = 0;
 			$ip = false;
@@ -982,7 +941,7 @@ class SkinTemplate extends Skin {
 
 		if( $id || $ip ) { # both anons and non-anons have contribs list
 			$nav_urls['contributions'] = array(
-				'href' => self::makeSpecialUrlSubpage( 'Contributions', $this->mTitle->getText() )
+				'href' => self::makeSpecialUrlSubpage( 'Contributions', $rootUser )
 			);
 
 			if( $id ) {
@@ -990,7 +949,7 @@ class SkinTemplate extends Skin {
 				$nav_urls['log'] = array(
 					'href' => $logPage->getLocalUrl(
 						array(
-							'user' => $this->mTitle->getText()
+							'user' => $rootUser
 						)
 					)
 				);
@@ -1000,7 +959,7 @@ class SkinTemplate extends Skin {
 
 			if ( $wgUser->isAllowed( 'block' ) ) {
 				$nav_urls['blockip'] = array(
-					'href' => self::makeSpecialUrlSubpage( 'Blockip', $this->mTitle->getText() )
+					'href' => self::makeSpecialUrlSubpage( 'Blockip', $rootUser )
 				);
 			} else {
 				$nav_urls['blockip'] = false;
@@ -1013,7 +972,7 @@ class SkinTemplate extends Skin {
 		$nav_urls['emailuser'] = false;
 		if( $this->showEmailUser( $id ) ) {
 			$nav_urls['emailuser'] = array(
-				'href' => self::makeSpecialUrlSubpage( 'Emailuser', $this->mTitle->getText() )
+				'href' => self::makeSpecialUrlSubpage( 'Emailuser', $rootUser )
 			);
 		}
 		wfProfileOut( __METHOD__ );

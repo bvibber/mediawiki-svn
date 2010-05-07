@@ -11,7 +11,7 @@ class CoreParserFunctions {
 		# Syntax for arguments (see self::setFunctionHook):
 		#  "name for lookup in localized magic words array",
 		#  function callback,
-		#  optional SFH_NO_HASH to omit the hash from calls (e.g. {{int:...}
+		#  optional SFH_NO_HASH to omit the hash from calls (e.g. {{int:...}}
 		#    instead of {{#int:...}})
 
 		$parser->setFunctionHook( 'int',              array( __CLASS__, 'intFunction'      ), SFH_NO_HASH );
@@ -124,8 +124,37 @@ class CoreParserFunctions {
 		return wfUrlencode( str_replace( ' ', '_', self::ns( $parser, $part1 ) ) );
 	}
 
-	static function urlencode( $parser, $s = '' ) {
-		return urlencode( $s );
+	/**
+	 * urlencodes a string according to one of three patterns: (bug 22474)
+	 *
+	 * By default (for HTTP "query" strings), spaces are encoded as '+'.
+	 * Or to encode a value for the HTTP "path", spaces are encoded as '%20'.
+	 * For links to "wiki"s, or similar software, spaces are encoded as '_',
+	 *
+	 * @param $parser.
+	 * @param $s String: The text to encode.
+	 * @param $arg String (optional): The type of encoding.
+	 */
+	static function urlencode( $parser, $s = '', $arg = null ) {
+		static $magicWords = null;
+		if ( is_null( $magicWords ) ) {
+			$magicWords = new MagicWordArray( array( 'url_path', 'url_query', 'url_wiki' ) );
+		}
+		switch( $magicWords->matchStartToEnd( $arg ) ) {
+
+			// Encode as though it's a wiki page, '_' for ' '.
+			case 'url_wiki':
+				return wfUrlencode( str_replace( ' ', '_', $s ) );
+
+			// Encode for an HTTP Path, '%20' for ' '.
+			case 'url_path':
+				return rawurlencode( $s );
+
+			// Encode for HTTP query, '+' for ' '.
+			case 'url_query':
+			default:
+				return urlencode( $s );
+		}
 	}
 
 	static function lcfirst( $parser, $s = '' ) {
@@ -561,9 +590,10 @@ class CoreParserFunctions {
 	}
 
 	static function special( $parser, $text ) {
-		$title = SpecialPage::getTitleForAlias( $text );
-		if ( $title ) {
-			return $title->getPrefixedText();
+		list( $page, $subpage ) = SpecialPage::resolveAliasWithSubpage( $text );
+		if ( $page ) {
+			$title = SpecialPage::getTitleFor( $page, $subpage );
+			return $title;
 		} else {
 			return wfMsgForContent( 'nosuchspecialpage' );
 		}

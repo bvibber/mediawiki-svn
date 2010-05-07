@@ -364,6 +364,16 @@ class OutputPage {
 		return true;
 	}
 
+	/**
+	 * Override the last modified timestamp
+	 *
+	 * @param $timestamp String: new timestamp, in a format readable by
+	 *        wfTimestamp()
+	 */
+	public function setLastModified( $timestamp ) {
+		$this->mLastModified = wfTimestamp( TS_RFC2822, $timestamp );
+	}
+
 
 	/**
 	 * Set the robot policy for the page: <http://www.robotstxt.org/meta.html>
@@ -435,7 +445,8 @@ class OutputPage {
 	}
 
 	/**
-	 * "HTML title" means the contents of <title>. It is stored as plain, unescaped text and will be run through htmlspecialchars in the skin file.
+	 * "HTML title" means the contents of <title>.
+	 * It is stored as plain, unescaped text and will be run through htmlspecialchars in the skin file.
 	 */
 	public function setHTMLTitle( $name ) {
 		$this->mHTMLtitle = $name;
@@ -1085,11 +1096,6 @@ class OutputPage {
 				$this->mTemplateIds[$ns] = $dbks;
 			}
 		}
-		// Page title
-		$title = $parserOutput->getTitleText();
-		if ( $title != '' ) {
-			$this->setPageTitle( $title );
-		}
 
 		// Hooks registered in the object
 		global $wgParserOutputHooks;
@@ -1320,8 +1326,6 @@ class OutputPage {
 	 * For example:
 	 *   /w/index.php?title=Main_page should always be served; but
 	 *   /w/index.php?title=Main_page&variant=zh-cn should never be served.
-	 *
-	 * patched by Liangent and Philip
 	 */
 	function addAcceptLanguage() {
 		global $wgRequest, $wgContLang;
@@ -1471,7 +1475,7 @@ class OutputPage {
 		global $wgContLanguageCode, $wgDebugRedirects, $wgMimeType;
 		global $wgUseAjax, $wgAjaxWatch;
 		global $wgEnableMWSuggest, $wgUniversalEditButton;
-		global $wgArticle;
+		global $wgArticle, $wgJQueryOnEveryPage;
 
 		if( $this->mDoNothing ){
 			return;
@@ -1514,6 +1518,7 @@ class OutputPage {
 			wfRunHooks( 'AjaxAddScript', array( &$this ) );
 
 			if( $wgAjaxWatch && $wgUser->isLoggedIn() ) {
+				$this->includeJQuery();
 				$this->addScriptFile( 'ajaxwatch.js' );
 			}
 
@@ -1544,6 +1549,10 @@ class OutputPage {
 					'href' => $this->getTitle()->getLocalURL( 'action=edit' )
 				) );
 			}
+		}
+		
+		if ( $wgJQueryOnEveryPage ) {
+			$this->includeJQuery();
 		}
 
 		# Buffer output; final headers may depend on later processing
@@ -1903,7 +1912,7 @@ class OutputPage {
 			// Wiki is read only
 			$this->setPageTitle( wfMsg( 'readonly' ) );
 			$reason = wfReadOnlyReason();
-			$this->wrapWikiMsg( '<div class="mw-readonly-error">\n$1</div>', array( 'readonlytext', $reason ) );
+			$this->wrapWikiMsg( "<div class='mw-readonly-error'>\n$1</div>", array( 'readonlytext', $reason ) );
 		}
 
 		// Show source, if supplied
@@ -2017,12 +2026,15 @@ class OutputPage {
 	 *
 	 * @param $title Title to link
 	 * @param $query String: query string
+	 * @param $text String text of the link (input is not escaped)
 	 */
-	public function addReturnTo( $title, $query = array() ) {
+	public function addReturnTo( $title, $query=array(), $text=null ) {
 		global $wgUser;
 		$this->addLink( array( 'rel' => 'next', 'href' => $title->getFullUrl() ) );
-		$link = wfMsgHtml( 'returnto', $wgUser->getSkin()->link(
-			$title, null, array(), $query ) );
+		$link = wfMsgHtml( 
+			'returnto', 
+			$wgUser->getSkin()->link( $title, $text, array(), $query )
+		);
 		$this->addHTML( "<p id=\"mw-returnto\">{$link}</p>\n" );
 	}
 
@@ -2072,7 +2084,6 @@ class OutputPage {
 		global $wgContLang, $wgUseTrackbacks, $wgStyleVersion, $wgHtml5, $wgWellFormedXml;
 		global $wgUser, $wgRequest, $wgLang;
 
-		$this->addMeta( "http:Content-Type", "$wgMimeType; charset={$wgOutputEncoding}" );
 		if ( $sk->commonPrintStylesheet() ) {
 			$this->addStyle( 'common/wikiprintable.css', 'print' );
 		}
@@ -2085,11 +2096,12 @@ class OutputPage {
 		}
 
 		if ( $this->getHTMLTitle() == '' ) {
-			$this->setHTMLTitle(  wfMsg( 'pagetitle', $this->getPageTitle() ));
+			$this->setHTMLTitle( wfMsg( 'pagetitle', $this->getPageTitle() ) );
 		}
 
 		$dir = $wgContLang->getDir();
 
+		$htmlAttribs = array( 'lang' => $wgContLanguageCode, 'dir' => $dir );
 		if ( $wgHtml5 ) {
 			if ( $wgWellFormedXml ) {
 				# Unknown elements and attributes are okay in XML, but unknown
@@ -2104,34 +2116,50 @@ class OutputPage {
 				# Much saner.
 				$ret .= "<!doctype html>\n";
 			}
-			$ret .= "<html lang=\"$wgContLanguageCode\" dir=\"$dir\"";
-			if ( $wgHtml5Version ) $ret .= " version=\"$wgHtml5Version\"";
-			$ret .= ">\n";
+			if ( $wgHtml5Version ) {
+				$htmlAttribs['version'] = $wgHtml5Version;
+			}
 		} else {
 			$ret .= "<!DOCTYPE html PUBLIC \"$wgDocType\" \"$wgDTD\">\n";
-			$ret .= "<html xmlns=\"{$wgXhtmlDefaultNamespace}\" ";
-			foreach($wgXhtmlNamespaces as $tag => $ns) {
-				$ret .= "xmlns:{$tag}=\"{$ns}\" ";
+			$htmlAttribs['xmlns'] = $wgXhtmlDefaultNamespace;
+			foreach ( $wgXhtmlNamespaces as $tag => $ns ) {
+				$htmlAttribs["xmlns:$tag"] = $ns;
 			}
-			$ret .= "lang=\"$wgContLanguageCode\" dir=\"$dir\">\n";
+			$this->addMeta( 'http:Content-Type', "$wgMimeType; charset=$wgOutputEncoding" );
+		}
+		$ret .= Html::openElement( 'html', $htmlAttribs ) . "\n";
+
+		$openHead = Html::openElement( 'head' );
+		if ( $openHead ) {
+			# Don't bother with the newline if $head == ''
+			$ret .= "$openHead\n";
+		}
+		$ret .= "<title>" . htmlspecialchars( $this->getHTMLTitle() ) . "</title>\n";
+
+		if ( $wgHtml5 ) {
+			# More succinct than <meta http-equiv=Content-Type>, has the
+			# same effect
+			$ret .= Html::element( 'meta', array( 'charset' => $wgOutputEncoding ) ) . "\n";
 		}
 
-		$ret .= "<head>\n";
-		$ret .= "<title>" . htmlspecialchars( $this->getHTMLTitle() ) . "</title>\n";
 		$ret .= implode( "\n", array(
 			$this->getHeadLinks(),
 			$this->buildCssLinks(),
 			$this->getHeadScripts( $sk ),
 			$this->getHeadItems(),
-		));
-		if( $sk->usercss ){
+		) );
+		if ( $sk->usercss ) {
 			$ret .= Html::inlineStyle( $sk->usercss );
 		}
 
-		if ($wgUseTrackbacks && $this->isArticleRelated())
+		if ( $wgUseTrackbacks && $this->isArticleRelated() ) {
 			$ret .= $this->getTitle()->trackbackRDF();
+		}
 
-		$ret .= "</head>\n";
+		$closeHead = Html::closeElement( 'head' );
+		if ( $closeHead ) {
+			$ret .= "$closeHead\n";
+		}
 
 		$bodyAttrs = array();
 
@@ -2199,13 +2227,16 @@ class OutputPage {
 				$this->addInlineScript( $wgRequest->getText( 'wpTextbox1' ) );
 			} else {
 				$userpage = $wgUser->getUserPage();
-				$scriptpage = Title::makeTitleSafe(
-					NS_USER,
-					$userpage->getDBkey() . '/' . $sk->getSkinName() . '.js'
-				);
-				if ( $scriptpage && $scriptpage->exists() ) {
-					$userjs = Skin::makeUrl( $scriptpage->getPrefixedText(), 'action=raw&ctype=' . $wgJsMimeType );
-					$this->addScriptFile( $userjs );
+				$names = array( 'common', $sk->getSkinName() );
+				foreach( $names as $name ) {
+					$scriptpage = Title::makeTitleSafe(
+						NS_USER,
+						$userpage->getDBkey() . '/' . $name . '.js'
+					);
+					if ( $scriptpage && $scriptpage->exists() ) {
+						$userjs = $scriptpage->getLocalURL( 'action=raw&ctype=' . $wgJsMimeType );
+						$this->addScriptFile( $userjs );
+					}
 				}
 			}
 		}
@@ -2583,12 +2614,13 @@ class OutputPage {
 	 * @since 1.16
 	 */
 	public function includeJQuery( $modules = array() ) {
-		global $wgStylePath, $wgStyleVersion;
+		global $wgStylePath, $wgStyleVersion, $wgJQueryVersion, $wgJQueryMinified;
 
 		$supportedModules = array( /** TODO: add things here */ );
 		$unsupported = array_diff( $modules, $supportedModules );
 
-		$url = "$wgStylePath/common/jquery.min.js?$wgStyleVersion";
+		$min = $wgJQueryMinified ? '.min' : '';
+		$url = "$wgStylePath/common/jquery-$wgJQueryVersion$min.js?$wgStyleVersion";
 		if ( !$this->mJQueryDone ) {
 			$this->mJQueryDone = true;
 			$this->mScripts = Html::linkedScript( $url ) . "\n" . $this->mScripts;

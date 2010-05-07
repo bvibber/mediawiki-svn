@@ -30,7 +30,6 @@ href="" class="internal"}?{/a}) basne.',
 'tog-editsectiononrightclick' => 'Qısımu teqnaena serrêze be gozaga raste bıvurne (JavaScript lazımo)',
 'tog-showtoc'                 => 'Tabloê tedeesteu basne (de pelunê be hirê sernustu ra jêdêri de)',
 'tog-rememberpassword'        => 'Parola mı bia ho viri',
-'tog-editwidth'               => 'Warê nustey hira ke, ke verıniya pela cıdaena nustey tam baso',
 'tog-watchcreations'          => 'Pelê ke mı afernê, lista mına şêrkerdişi ke',
 'tog-watchdefault'            => 'Pelê ke mı vurnê, lista mına şêrkerdişi ke',
 'tog-watchmoves'              => 'Pelê ke mı kırısnê, lista mına şêrkerdişi ke',
@@ -144,7 +143,7 @@ href="" class="internal"}?{/a}) basne.',
 'noindex-category'               => 'Pelê bêendekşi',
 
 'linkprefix'        => '/^(.*?)([a-zA-Z\\x80-\\xff]+)$/sD',
-'mainpagetext'      => "<big>'''MediaWiki ebe mıwefeq instale bi.'''</big>",
+'mainpagetext'      => "'''MediaWiki ebe mıwefeq instale bi.'''",
 'mainpagedocfooter' => "Serba melumatê gurenaena ''wiki software''i [http://meta.wikimedia.org/wiki/Help:Contents İdarê karberi] de mıracaet ke.
 
 == Gamê verêni ==
@@ -373,6 +372,7 @@ Kerem kerê, nae be namê ''URL''i jü [[Special:ListUsers/sysop|karber]]i ra va
 'readonly_lag'         => "Panga daeyu otomatikman qapan biye ''slave-database-servers''i ra be hata ''master''i",
 'internalerror'        => 'Xeta zerrey',
 'internalerror_info'   => 'Xeta zerrey: $1',
+'fileappenderror'      => 'Dosya "$1"ine dosya "$2"ine ser nêbena.',
 'filecopyerror'        => 'Dosya "$1"i kopya nêbiye be dosya "$2".',
 'filerenameerror'      => 'Namê dosya "$1"i nêvuriya be dosya "$2".',
 'filedeleteerror'      => 'Dosya "$1"i nêesteriye.',
@@ -494,6 +494,7 @@ Kerem ke, oncia bıcerrebne.',
 'resetpass_success'         => 'Parola sıma ebe serkotene vurriye! Nıka hesabê sıma beno ra...',
 'resetpass_forbidden'       => 'Paroley nêşikinê bıvurniyê',
 'resetpass-submit-loggedin' => 'Parola bıvurne',
+'resetpass-submit-cancel'   => 'Bıtexelne',
 'resetpass-temp-password'   => 'Parola vêrdiye:',
 
 # Edit page toolbar
@@ -669,6 +670,8 @@ Eke şertê ilawekerdey ke niyê ro, idarekerê bini {{SITENAME}} de nêşikinê
 'revdelete-uname'             => 'namê karberi',
 'revdelete-hid'               => 'bınımne $1',
 'revdelete-unhid'             => 'bıasne $1',
+'revdelete-log-message'       => '$1 rê $2 {{PLURAL:$2|çımraviarnais|çımraviarnaişi}}',
+'logdelete-log-message'       => '$1 rê $2 {{PLURAL:$2|hadisa|hadisey}}',
 'revdelete-otherreason'       => 'Sebebo bin/ilaweki:',
 'revdelete-reasonotherlist'   => 'Sebebo bin',
 'revdelete-edit-reasonlist'   => 'Sebebunê esterıtene bıvurne',
@@ -702,6 +705,7 @@ Eke şertê ilawekerdey ke niyê ro, idarekerê bini {{SITENAME}} de nêşikinê
 'nextn'                     => '{{PLURAL:$1|$1}} peyên',
 'viewprevnext'              => 'Bıvêne ($1 {{int:pipe-separator}} $2) ($3)',
 'searchhelp-url'            => 'Help:Tedeestey',
+'searchprofile-articles'    => 'Pelê tedeesteu',
 'searchprofile-images'      => 'Multimedya',
 'search-result-size'        => '$1 ({{PLURAL:$2|1 çekuye|$2 çekuy}})',
 'search-redirect'           => '(hetêcıraberdene $1)',
@@ -826,14 +830,22 @@ Sıma ke ney bıgurenê, karê sıma de no namdarêni dano.',
 'userrights-reason'        => 'Sebeb:',
 
 # Groups
-'group'       => 'Kom:',
-'group-user'  => 'Karberi',
-'group-sysop' => 'İdarekeri',
+'group'            => 'Kom:',
+'group-user'       => 'Karberi',
+'group-bot'        => 'Boti',
+'group-sysop'      => 'İdarekeri',
+'group-bureaucrat' => 'Burokrati',
+'group-all'        => '(pêro)',
 
-'group-user-member'  => 'Karber',
-'group-sysop-member' => 'İdareker',
+'group-user-member'       => 'Karber',
+'group-bot-member'        => 'Bot',
+'group-sysop-member'      => 'İdareker',
+'group-bureaucrat-member' => 'Burokrat',
 
-'grouppage-sysop' => '{{ns:project}}:İdarekeri',
+'grouppage-user'       => '{{ns:project}}:Karberi',
+'grouppage-bot'        => '{{ns:project}}:Boti',
+'grouppage-sysop'      => '{{ns:project}}:İdarekeri',
+'grouppage-bureaucrat' => '{{ns:project}}:Burokrati',
 
 # Rights
 'right-read'     => 'Pelu bıwane',
@@ -907,16 +919,20 @@ Sıma ke ney bıgurenê, karê sıma de no namdarêni dano.',
 'upload_directory_missing'   => "İndeksê bar-kerdena ($1)i çino u terefê ''webserver''i ra nêşikino ke bıaferiyo.",
 'upload_directory_read_only' => "İndeksê bar-kerdena ($1)i terefê ''webserver''i nênuşino.",
 'uploaderror'                => 'Xeta bar-kerdene',
+'uploadlog'                  => 'qeydê barkerdene',
 'uploadlogpage'              => 'Qeydê dosya barkerdene',
 'filename'                   => 'Namê dosya',
 'filedesc'                   => 'Xulasa',
 'fileuploadsummary'          => 'Xulasa:',
 'filereuploadsummary'        => 'Vurnaisê dosya:',
+'filestatus'                 => 'Halê heqa telifi:',
 'filesource'                 => 'Çıme:',
+'uploadedfiles'              => 'Dosyê barkerdey',
 'savefile'                   => 'Dosya qeyd ke',
 'uploadedimage'              => '"[[$1]]" bar bi',
 'upload-source'              => 'Dosya çımey',
 'sourcefilename'             => 'Namê dosya çımey:',
+'watchthisupload'            => 'Na dosya de şêr ke',
 
 # Special:ListFiles
 'imgfile'        => 'dosya',
@@ -942,8 +958,15 @@ Sıma ke ney bıgurenê, karê sıma de no namdarêni dano.',
 'linkstoimage'              => 'Ano {{PLURAL:$1|girê pele|$1 girê pelu}} be na dosya:',
 'sharedupload'              => 'Na dosya depoê $1 rawa u beno ke procunê binu de gurenina.',
 'uploadnewversion-linktext' => 'Dosya de newiye bar ke',
+'shared-repo-from'          => '$1 ra',
+
+# File reversion
+'filerevert-comment' => 'Arezekerdene:',
+'filerevert-submit'  => 'Raçarne',
 
 # File deletion
+'filedelete'                  => 'Bıestere $1',
+'filedelete-legend'           => 'Dosya bıestere',
 'filedelete-submit'           => 'Bıestere',
 'filedelete-reason-otherlist' => 'Sebebo bin',
 
@@ -985,8 +1008,9 @@ Sıma ke ney bıgurenê, karê sıma de no namdarêni dano.',
 'booksources-go'            => 'So',
 
 # Special:Log
-'specialloguserlabel' => 'Karber:',
-'log'                 => 'Qeydi',
+'specialloguserlabel'  => 'Karber:',
+'speciallogtitlelabel' => 'Sernuste:',
+'log'                  => 'Qeydi',
 
 # Special:AllPages
 'allpages'       => 'Peli pêro',
@@ -997,18 +1021,29 @@ Sıma ke ney bıgurenê, karê sıma de no namdarêni dano.',
 'allarticles'    => 'Peli pêro',
 'allpagessubmit' => 'So',
 
+# Special:Categories
+'categories' => 'Kategoriy',
+
+# Special:DeletedContributions
+'sp-deletedcontributions-contribs' => 'iştıraki',
+
 # Special:LinkSearch
 'linksearch' => 'Girê teberi',
+
+# Special:ListUsers
+'listusers-submit' => 'Bıasne',
 
 # Special:Log/newusers
 'newuserlogpage'          => 'Qeydê karberiê newey',
 'newuserlog-create-entry' => 'Hesabê karberê newey',
 
 # Special:ListGroupRights
+'listgrouprights-group'   => 'Kome',
 'listgrouprights-members' => '(lista azau)',
 
 # E-mail user
 'emailuser' => 'Nê karberi rê e-poste bırusne',
+'emailsend' => 'Bırusne',
 
 # Watchlist
 'watchlist'         => 'Pela mına şêrkerdene',
@@ -1161,7 +1196,7 @@ Nê halu de, tı gunê pele ebe dest berê ya ki ser kerê eke wajiye.",
 'move-watch'       => 'Na pele de şêr ke',
 'movepagebtn'      => 'Pele bere',
 'pagemovedsub'     => 'Vurnaena namey biye temam',
-'movepage-moved'   => '<big>\'\'\'"$1" berd be pela "$2"\'\'\'</big>',
+'movepage-moved'   => '\'\'\'"$1" berd be pela "$2"\'\'\'',
 'articleexists'    => 'Pelê da ebe nê namey çina, ya ki nameo ke çiniyo we nêvêreno.
 Kerem ke, nameo de bin bıcerrebne.',
 'talkexists'       => "'''Pele be ho ebe mıweffeq kırışiye, hema pela hurênaişi nêşikiye ke bıkırışiyo, çıke bınê na namey de hora jüye esta.

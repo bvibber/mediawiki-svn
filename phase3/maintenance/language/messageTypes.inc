@@ -69,11 +69,14 @@ $wgIgnoredMessages = array(
 	'accesskey-compareselectedversions',
 	'accesskey-watch',
 	'accesskey-upload',
+	'accesskey-preferences-save',
+	'accesskey-summary',
 	'addsection',
 	'talkpageheader',
 	'anonnotice',
 	'autoblock_whitelist',
 	'searchmenu-help',
+	'searchmenu-new-nocreate',
 	'googlesearch',
 	'opensearch-desc',
 	'exif-make-value',
@@ -352,6 +355,7 @@ $wgOptionalMessages = array(
 	'trackbackexcerpt',
 	'prefs-registration-date-time',
 	'prefs-memberingroups-type',
+	'shared-repo-name-wikimediacommons',
 );
 
 /** EXIF messages, which may be set as optional in several checks, but are generally mandatory */

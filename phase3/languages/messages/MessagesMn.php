@@ -20,8 +20,8 @@ $namespaceNames = array(
 	NS_USER             => 'Хэрэглэгч',
 	NS_USER_TALK        => 'Хэрэглэгчийн_яриа',
 	NS_PROJECT_TALK     => '$1-н_хэлэлцүүлэг',
-	NS_FILE             => 'Зураг',
-	NS_FILE_TALK        => 'Зургийн_хэлэлцүүлэг',
+	NS_FILE             => 'Файл',
+	NS_FILE_TALK        => 'Файлын_хэлэлцүүлэг',
 	NS_MEDIAWIKI        => 'МедиаВики',
 	NS_MEDIAWIKI_TALK   => 'МедиаВикигийн_хэлэлцүүлэг',
 	NS_TEMPLATE         => 'Загвар',
@@ -30,6 +30,11 @@ $namespaceNames = array(
 	NS_HELP_TALK        => 'Тусламжийн_хэлэлцүүлэг',
 	NS_CATEGORY         => 'Ангилал',
 	NS_CATEGORY_TALK    => 'Ангиллын_хэлэлцүүлэг',
+);
+
+$namespaceAliases = array(
+	'Зураг' => NS_FILE,
+	'Зургийн_хэлэлцүүлэг' => NS_FILE_TALK,
 );
 
 $linkTrail = '/^([a-zабвгдеёжзийклмнопрстуфхцчшщъыьэюя“»]+)(.*)$/sDu';
@@ -51,7 +56,6 @@ $messages = array(
 'tog-editsectiononrightclick' => 'Хэсгийн гарчиг дээр баруун товчлуураар дарж засварладаг болгох （ЖаваСкрипт）',
 'tog-showtoc'                 => 'Агуулгын хүснэгтийг үзүүлэх （3-с илүү хэсэгтэй хуудсуудад）',
 'tog-rememberpassword'        => 'Энэ компьютер дахь нэвтрэлийг санах',
-'tog-editwidth'               => 'Дэлгэцийг дүүргэхээр засварлах талбарыг өргөтгөх',
 'tog-watchcreations'          => 'Миний үүсгэсэн хуудсуудыг хянах жагсаалтанд оруулах',
 'tog-watchdefault'            => 'Миний засварласан хуудсуудыг хянах жагсаалтанд оруулах',
 'tog-watchmoves'              => 'Миний зөөсөн хуудсуудыг хянах жагсаалтанд оруулах',
@@ -162,7 +166,7 @@ $messages = array(
 'category-file-count-limited'    => 'Энэ ангилалд дараах {{PLURAL:$1|файл|$1 файлнууд}} байна.',
 'listingcontinuesabbrev'         => '-н үргэлжлэл',
 
-'mainpagetext'      => "<big>'''МедиаВики амжилттай суулаа.'''</big>",
+'mainpagetext'      => "'''МедиаВики амжилттай суулаа.'''",
 'mainpagedocfooter' => 'Вики программыг хэрэглэх талаар заавар авахын тулд [http://meta.wikimedia.org/wiki/Help:Contents хэрэглэгчийн гарын авлага]-г үзнэ үү.
 
 == Эхлэх ==
@@ -265,8 +269,8 @@ $messages = array(
 'categorypage'      => 'Ангиллын хуудсыг үзэх',
 'viewtalkpage'      => 'Хэлэлцүүлгийг үзэх',
 'otherlanguages'    => 'Өөр хэлээр',
-'redirectedfrom'    => '（$1-с шууд холбогдсон）',
-'redirectpagesub'   => 'Хуудсыг шууд холбох',
+'redirectedfrom'    => '($1-с чиглүүлэгдэв)',
+'redirectpagesub'   => 'Хуудсыг чиглүүлэх',
 'lastmodifiedat'    => 'Энэ хуудсыг хамгийн сүүлд өөрчилсөн нь $2, $1.',
 'viewcount'         => 'Энэ хуудсанд {{PLURAL:$1|ганцхан удаа|$1 удаа}} хандсан байна.',
 'protectedpage'     => 'Хамгаалагдсан хуудас',
@@ -386,6 +390,7 @@ $1',
 'readonly_lag'         => 'Хоёрдогч серверүүд анхдагчдаа гүйцэж ирэх хүртэл мэдээллийн санг автоматаар түгжлээ.',
 'internalerror'        => 'Дотоод алдаа',
 'internalerror_info'   => 'Дотоод алдаа: $1',
+'fileappenderror'      => '"$1"-г "$2-нд нэмж чадсангүй.',
 'filecopyerror'        => 'Файлыг "$1"-с "$2" руу хуулж чадсангүй.',
 'filerenameerror'      => 'Файлын нэрийг "$1"-с "$2" болгон өөрчилж чадсангүй.',
 'filedeleteerror'      => '"$1" файлыг устгаж чадсангүй.',
@@ -576,7 +581,7 @@ $2',
 'summary-preview'                  => 'Товч агуулгын урьдчилж харсан байдал:',
 'subject-preview'                  => 'Сэдэв/гарчигийн урьдчилж харсан байдал:',
 'blockedtitle'                     => 'Хэрэглэгч түгжигдлээ.',
-'blockedtext'                      => "<big>'''Таны хэрэглэгчийн нэр эсвэл IP хаяг түгжигдсэн байна.'''</big>
+'blockedtext'                      => "'''Таны хэрэглэгчийн нэр эсвэл IP хаяг түгжигдсэн байна.'''
 
 Түгжээг $1 хийсэн. Шалтгаан нь ''$2'' байна.
 
@@ -609,7 +614,7 @@ $2',
 'whitelistedittext'                => 'Хуудсуудад засвар хийхийн тулд та урьдаар $1 хэрэгтэй.',
 'confirmedittext'                  => 'Та хуудсуудыг засварлахдаа мэйл хаягаа баталгаажуулах хэрэгтэй.
 [[Special:Preferences|Хэрэглэгчийн тохиргоо]] хэсэгт өөрийнхөө мэйл хаягийг оруулж, баталгаажуулна уу.',
-'nosuchsectiontitle'               => 'Тийм хэсэг байхгүй байна',
+'nosuchsectiontitle'               => 'Хэсэг олдсонгүй',
 'nosuchsectiontext'                => 'Та үл орших хэсгийг засварлах гэж оролдлоо.
 Та хуудсыг үзэж байх хооронд зөөгдсөн буюу устгагдсан байж магадгүй.',
 'loginreqtitle'                    => 'Нэвтэрсэн байх шаардлагатай',
@@ -910,7 +915,7 @@ $3-н тодорхойлсон шалтгаан нь ''$2''",
 'searchprofile-articles'           => 'Агуулгын хуудсууд',
 'searchprofile-project'            => 'Тусламжийн болон төслийн хуудсууд',
 'searchprofile-images'             => 'Мультмедиа',
-'searchprofile-everything'         => 'Бүгд',
+'searchprofile-everything'         => 'Бүгдийг',
 'searchprofile-advanced'           => 'Шилж хайх',
 'searchprofile-articles-tooltip'   => '$1 дотор хайх',
 'searchprofile-project-tooltip'    => '$1 дотор хайх',
@@ -919,7 +924,7 @@ $3-н тодорхойлсон шалтгаан нь ''$2''",
 'searchprofile-advanced-tooltip'   => 'Сонгосон нэрний зайнуудаас хайх',
 'search-result-size'               => '$1 （$2 үг）',
 'search-result-score'              => 'Холбоо хамаарал: $1%',
-'search-redirect'                  => '（$1-г шууд холбох）',
+'search-redirect'                  => '(чиглүүлэгч $1)',
 'search-section'                   => '（хэсэг $1）',
 'search-suggest'                   => 'Та $1 гэж хайя гэсэн үү?',
 'search-interwiki-caption'         => 'Ах дүү төслүүд',
@@ -1464,7 +1469,7 @@ URL нь зөв болон сайт ажиллагаатай байгаа эсэ
 'unusedtemplateswlh'  => 'бусад холбоосууд',
 
 # Random page
-'randompage'         => 'Хамаагүй хуудас',
+'randompage'         => 'Санамсаргүй хуудас',
 'randompage-nopages' => 'Энэ нэрний зайд хуудас байхгүй байна.',
 
 # Random redirect
@@ -1485,7 +1490,6 @@ URL нь зөв болон сайт ажиллагаатай байгаа эсэ
 'statistics-edits-average'     => 'Хуудас тутмын дундаж засварын тоо',
 'statistics-views-total'       => 'Нийт үзсэн тоо',
 'statistics-views-peredit'     => 'Засвар тутмыг үзсэн тоо',
-'statistics-jobqueue'          => '[http://www.mediawiki.org/wiki/Manual:Job_queue Ажлын цувааны] урт',
 'statistics-users'             => 'Бүртгэгдсэн [[Special:ListUsers|хэрэглэгч]]',
 'statistics-users-active'      => 'Байнгын оролцоотой хэрэглэгч',
 'statistics-users-active-desc' => 'Сүүлийн {{PLURAL:$1|өдөрт|$1 өдөрт}} үйлдэл хийсэн хэрэглэгчид',
@@ -1646,7 +1650,7 @@ URL нь зөв болон сайт ажиллагаатай байгаа эсэ
 'listgrouprights-group'           => 'Бүлэг',
 'listgrouprights-rights'          => 'Эрхүүд',
 'listgrouprights-helppage'        => 'Help:Бүлгийн эрхүүд',
-'listgrouprights-members'         => '（гишүүдийн жагсаалт）',
+'listgrouprights-members'         => '(гишүүдийн жагсаалт)',
 'listgrouprights-addgroup'        => '{{PLURAL:$2|Бүлгийг|Бүлгүүдийг}} нэмэх: $1',
 'listgrouprights-removegroup'     => '{{PLURAL:$2|Бүлгийг|Бүлгүүдийг}} хасах: $1',
 'listgrouprights-addgroup-all'    => 'Бүх бүлгийг нэмэх',
@@ -1886,7 +1890,7 @@ $NEWPAGE
 'undeletedrevisions-files'     => '{{PLURAL:$1|1 засвар|$1 засвар}} ба {{PLURAL:$2|1 файл|$2 файл}} сэргээгдлээ',
 'undeletedfiles'               => '{{PLURAL:$1|1 файл|$1 файл}} сэргээгдлээ',
 'cannotundelete'               => 'Устгасан хуудсыг буцааж сэргээх үйлдэл амжилтгүй боллоо. Хэн нэгэн уг хуудсыг өрсөж сэргээсэн байх боломжтой.',
-'undeletedpage'                => "<big>'''$1 сэргээгдэв'''</big>
+'undeletedpage'                => "'''$1 сэргээгдэв'''
 
 Сүүлийн үед устгагдсан ба сэргээгдсэн зүйлүүдийн жагсаалтыг [[Special:Log/delete|устгалын бүртгэл]] дээрээс харна уу.",
 'undelete-header'              => '[[Special:Log/delete|Устгалын бүртгэл]]ээс сүүлд устгагдсан хуудсуудыг харна уу.',
@@ -1938,7 +1942,7 @@ $1',
 'linkshere'                => "Дараах хуудсууд '''[[:$1]]'''-тай холбогдсон байна:",
 'nolinkshere'              => "'''[[:$1]]'''-тай холбогдсон хуудас байхгүй байна.",
 'nolinkshere-ns'           => "Сонгосон нэрний зайд '''[[:$1]]''' руу холбогдсон хуудас байхгүй байна.",
-'isredirect'               => 'шууд холбогдсон хуудас',
+'isredirect'               => 'чиглүүлэгч',
 'istemplate'               => 'оруулалт',
 'isimage'                  => 'зургийн холбоос',
 'whatlinkshere-prev'       => '{{PLURAL:$1|өмнөх|өмнөх $1}}',
@@ -2100,7 +2104,7 @@ $1 нь аль хэдийнээ түгжигдсэн байна.
 'move-watch'                   => 'Энэ хуудсыг хянах',
 'movepagebtn'                  => 'Хуудсыг зөөх',
 'pagemovedsub'                 => 'Амжилттай зөөгдлөө',
-'movepage-moved'               => '<big>\'\'\'"$1" нь "$2" руу зөөгдлөө\'\'\'</big>',
+'movepage-moved'               => '\'\'\'"$1" нь "$2" руу зөөгдлөө\'\'\'',
 'movepage-moved-redirect'      => 'Чиглүүлэгч хуудас үүсгэгдэв.',
 'movepage-moved-noredirect'    => 'Чиглүүлэгч хуудас үүсгэхийг хориглолоо.',
 'articleexists'                => 'Ийм нэртэй хуудсыг өмнө нь үүсгэсэн, эсвэл сонгосон нэр тань хүчингүй байна.
@@ -2252,7 +2256,7 @@ $1 нь аль хэдийнээ түгжигдсэн байна.
 'tooltip-n-portal'                => 'Энэ төслийн тухай, түүн дээр юу хийж болох, ба хаана зүйлсийг мэдэж авах тухай',
 'tooltip-n-currentevents'         => 'Сүүлийн үед болсон үйл явдлуудын тухай',
 'tooltip-n-recentchanges'         => '{{SITENAME}} дэх хамгийн сүүлийн өөрчлөлтүүдийн жагсаалт.',
-'tooltip-n-randompage'            => 'Хамаагүй хуудсыг дуудах',
+'tooltip-n-randompage'            => 'Санамсаргүй хуудас дуудах',
 'tooltip-n-help'                  => 'Туслалцааг олох газар.',
 'tooltip-t-whatlinkshere'         => 'Энд холбогдсон бүх вики хуудсуудын жагсаалт',
 'tooltip-t-recentchangeslinked'   => 'Энэ хуудаснаас линк хийгдсэн хуудсуудын шинэ өөрчлөлтүүд',

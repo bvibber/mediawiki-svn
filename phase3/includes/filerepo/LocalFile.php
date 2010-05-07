@@ -661,7 +661,11 @@ class LocalFile extends File {
 		$res = $dbr->select( $tables, $fields, $conds, __METHOD__, $opts, $join_conds );
 		$r = array();
 		while( $row = $dbr->fetchObject( $res ) ) {
-			$r[] = OldLocalFile::newFromRow( $row, $this->repo );
+			if ( $this->repo->oldFileFromRowFactory ) {
+				$r[] = call_user_func( $this->repo->oldFileFromRowFactory, $row, $this->repo );
+			} else {
+				$r[] = OldLocalFile::newFromRow( $row, $this->repo );
+			}
 		}
 		if( $order == 'ASC' ) {
 			$r = array_reverse( $r ); // make sure it ends up descending
@@ -739,14 +743,16 @@ class LocalFile extends File {
 
 	/**
 	 * Upload a file and record it in the DB
-	 * @param string $srcPath Source path or virtual URL
-	 * @param string $comment Upload description
-	 * @param string $pageText Text to use for the new description page, if a new description page is created
-	 * @param integer $flags Flags for publish()
-	 * @param array $props File properties, if known. This can be used to reduce the
-	 *                         upload time when uploading virtual URLs for which the file info
-	 *                         is already known
-	 * @param string $timestamp Timestamp for img_timestamp, or false to use the current time
+	 * @param $srcPath String: source path or virtual URL
+	 * @param $comment String: upload description
+	 * @param $pageText String: text to use for the new description page,
+	 *                  if a new description page is created
+	 * @param $flags Integer: flags for publish()
+	 * @param $props Array: File properties, if known. This can be used to reduce the
+	 *               upload time when uploading virtual URLs for which the file info
+	 *               is already known
+	 * @param $timestamp String: timestamp for img_timestamp, or false to use the current time
+	 * @param $user Mixed: User object or null to use $wgUser
 	 *
 	 * @return FileRepoStatus object. On success, the value member contains the
 	 *     archive name, or an empty string if it was a new file.
@@ -946,15 +952,14 @@ class LocalFile extends File {
 
 	/**
 	 * Move or copy a file to its public location. If a file exists at the
-	 * destination, move it to an archive. Returns the archive name on success
-	 * or an empty string if it was a new file, and a wikitext-formatted
-	 * WikiError object on failure.
+	 * destination, move it to an archive. Returns a FileRepoStatus object with
+	 * the archive name in the "value" member on success.
 	 *
 	 * The archive name should be passed through to recordUpload for database
 	 * registration.
 	 *
-	 * @param string $sourcePath Local filesystem path to the source image
-	 * @param integer $flags A bitwise combination of:
+	 * @param $srcPath String: local filesystem path to the source image
+	 * @param $flags Integer: a bitwise combination of:
 	 *     File::DELETE_SOURCE    Delete the source file, i.e. move
 	 *         rather than copy
 	 * @return FileRepoStatus object. On success, the value member contains the
@@ -1064,8 +1069,9 @@ class LocalFile extends File {
 	 *
 	 * Cache purging is done; logging is caller's responsibility.
 	 *
-	 * @param $reason
-	 * @param $suppress
+	 * @param $archiveName String
+	 * @param $reason String
+	 * @param $suppress Boolean
 	 * @throws MWException or FSException on database or file store failure
 	 * @return FileRepoStatus object.
 	 */
@@ -1090,7 +1096,7 @@ class LocalFile extends File {
 	 *
 	 * @param $versions set of record ids of deleted items to restore,
 	 *                    or empty to restore all revisions.
-	 * @param $unuppress
+	 * @param $unsuppress Boolean
 	 * @return FileRepoStatus
 	 */
 	function restore( $versions = array(), $unsuppress = false ) {
@@ -1869,8 +1875,10 @@ class LocalFileMoveBatch {
 	}
 
 	/**
-	 * Do the database updates and return a new WikiError indicating how many
-	 * rows where updated.
+	 * Do the database updates and return a new FileRepoStatus indicating how
+	 * many rows where updated.
+	 *
+	 * @return FileRepoStatus
 	 */
 	function doDBUpdates() {
 		$repo = $this->file->repo;

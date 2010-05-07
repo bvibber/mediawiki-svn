@@ -129,7 +129,6 @@ $messages = array(
 'tog-editsectiononrightclick' => 'Modifiche une sezion fracant cul tast diestri<br /> sui titui des sezions (JavaScript)',
 'tog-showtoc'                 => 'Mostre la tabele dai contignûts pes pagjinis cun plui di 3 sezions',
 'tog-rememberpassword'        => 'Visiti tes prossimis sessions',
-'tog-editwidth'               => 'Slargje il spazi de modifiche par jemplâ dut il visôr',
 'tog-watchdefault'            => 'Zonte in automatic lis pagjinis che o cambii inte liste di chês tignudis di voli',
 'tog-minordefault'            => 'Imposte come opzion predeterminade ducj i cambiaments come piçui',
 'tog-previewontop'            => 'Mostre anteprime parsore dal spazi pe modifiche',
@@ -222,7 +221,7 @@ $messages = array(
 'category-file-count-limited'    => 'Cheste categorie e conten {{PLURAL:$1|il file mostrât|i $1 files mostrâts}} ca sot.',
 'listingcontinuesabbrev'         => 'cont.',
 
-'mainpagetext' => "<big>'''MediaWiki e je stade instalade cun sucès.'''</big>",
+'mainpagetext' => "'''MediaWiki e je stade instalade cun sucès.'''",
 
 'about'         => 'Informazions',
 'article'       => 'Vôs',
@@ -517,7 +516,7 @@ Prime di ricevi cualsisei altri messaç di pueste, tu scugnis seguî lis istruzi
 'summary-preview'                  => 'Anteprime dal somari:',
 'subject-preview'                  => 'Anteprime ogjet/intestazion:',
 'blockedtitle'                     => 'Utent blocât',
-'blockedtext'                      => "<big>'''Chest non utent o direzion IP a son stâts blocâts.'''</big>
+'blockedtext'                      => "'''Chest non utent o direzion IP a son stâts blocâts.'''
 
 Il bloc al è stât metût di $1. La reson furnide e je: ''$2''
 
@@ -965,7 +964,6 @@ Par includi une figure intune pagjine, dopre un leam inte form
 'statistics-edits-average'     => 'Medie dai cambiaments par ogni pagjine',
 'statistics-views-total'       => 'Viodudis totâls',
 'statistics-views-peredit'     => 'Viodudis par cambiament',
-'statistics-jobqueue'          => '[http://www.mediawiki.org/wiki/Manual:Job_queue Code dai procès] di eseguî in background',
 'statistics-users'             => '[[Special:ListUsers|Utents]] regjistrâts',
 'statistics-users-active'      => 'Utents atîfs',
 'statistics-users-active-desc' => 'Utents che a àn fat une azion {{PLURAL:$1|intal ultin dì|intai ultins $1 dîs}}',
@@ -1335,7 +1333,7 @@ In chescj câs, tu varâs di movi o unî a man lis informazions contignudis te p
 'move-watch'              => 'Ten di voli cheste pagjine',
 'movepagebtn'             => 'Môf pagjine',
 'pagemovedsub'            => 'Movude cun sucès',
-'movepage-moved'          => '<big>\'\'\'"$1" e je stade movude al titul "$2"\'\'\'</big>',
+'movepage-moved'          => '\'\'\'"$1" e je stade movude al titul "$2"\'\'\'',
 'articleexists'           => 'Une pagjine cun chest non e esist za, o il non sielt nol è valit.
 Sielç par plasê un altri non.',
 'talkexists'              => "'''La pagjine e je stade movude cun sucès, ma no si à podût movi la pagjine di discussion parcè che e esist za tal gnûf titul. Trasferìs il contignût a man par plasê.'''",

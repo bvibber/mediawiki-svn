@@ -15,18 +15,21 @@ class Http {
 	 * @param $method string HTTP method. Usually GET/POST
 	 * @param $url string Full URL to act on
 	 * @param $options options to pass to HttpRequest object
-	 *				 Possible keys for the array:
-	 *					timeout			  Timeout length in seconds
-	 *					postData		  An array of key-value pairs or a url-encoded form data
-	 *					proxy			  The proxy to use.	 Will use $wgHTTPProxy (if set) otherwise.
-	 *					noProxy			  Override $wgHTTPProxy (if set) and don't use any proxy at all.
-	 *					sslVerifyHost	  (curl only) Verify the SSL certificate
-	 *					caInfo			  (curl only) Provide CA information
-	 *					maxRedirects	  Maximum number of redirects to follow (defaults to 5)
-	 *					followRedirects	  Whether to follow redirects (defaults to true)
+	 *	Possible keys for the array:
+	 *		timeout				Timeout length in seconds
+	 *		postData			An array of key-value pairs or a url-encoded form data
+	 *		proxy				The proxy to use.
+	 *						Will use $wgHTTPProxy (if set) otherwise.
+	 *		noProxy			  	Override $wgHTTPProxy (if set) and don't use any proxy at all.
+	 *		sslVerifyHost 	(curl only)	Verify hostname against certificate
+	 *		sslVerifyCert 	(curl only)	Verify SSL certificate
+	 *		caInfo		(curl only)	Provide CA information
+	 *		maxRedirects	  		Maximum number of redirects to follow (defaults to 5)
+	 *		followRedirects	  Whether to follow redirects (defaults to true)
 	 * @returns mixed (bool)false on failure or a string on success
 	 */
 	public static function request( $method, $url, $options = array() ) {
+		$url = wfExpandUrl( $url );
 		wfDebug( "HTTP: $method: $url" );
 		$options['method'] = strtoupper( $method );
 		if ( !isset( $options['timeout'] ) ) {
@@ -127,6 +130,7 @@ class HttpRequest {
 	protected $proxy = null;
 	protected $noProxy = false;
 	protected $sslVerifyHost = true;
+	protected $sslVerifyCert = true;
 	protected $caInfo = null;
 	protected $method = "GET";
 	protected $reqHeaders = array();
@@ -168,7 +172,7 @@ class HttpRequest {
 		}
 
 		$members = array( "postData", "proxy", "noProxy", "sslVerifyHost", "caInfo",
-						  "method", "followRedirects", "maxRedirects" );
+				  "method", "followRedirects", "maxRedirects", "sslVerifyCert" );
 		foreach ( $members as $o ) {
 			if ( isset($options[$o]) ) {
 				$this->$o = $options[$o];
@@ -208,6 +212,15 @@ class HttpRequest {
 	 */
 	public function getContent() {
 		return $this->content;
+	}
+
+	/**
+	 * Set the parameters of the request
+	 * @param $params array
+	 * @todo overload the args param
+	 */
+	public function setData($args) {
+		$this->postData = $args;
 	}
 
 	/**
@@ -294,6 +307,8 @@ class HttpRequest {
 	 */
 	public function execute() {
 		global $wgTitle;
+
+		$this->content = "";
 
 		if( strtoupper($this->method) == "HEAD" ) {
 			$this->headersOnly = true;
@@ -723,8 +738,12 @@ class CurlHttpRequest extends HttpRequest {
 		}
 		$this->curlOptions[CURLOPT_USERAGENT] = $this->reqHeaders['User-Agent'];
 
-		if ( $this->sslVerifyHost ) {
+		if ( isset( $this->sslVerifyHost ) ) {
 			$this->curlOptions[CURLOPT_SSL_VERIFYHOST] = $this->sslVerifyHost;
+		}
+		
+		if ( isset( $this->sslVerifyCert ) ) {
+			$this->curlOptions[CURLOPT_SSL_VERIFYPEER] = $this->sslVerifyCert;
 		}
 
 		if ( $this->caInfo ) {

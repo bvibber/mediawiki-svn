@@ -40,7 +40,7 @@ class Credits {
 		if( $article->mTitle->getArticleID() == 0 ) {
 			$s = wfMsg( 'nocredits' );
 		} else {
-			$s = self::getCredits($article, -1 );
+			$s = self::getCredits( $article, -1 );
 		}
 	
 		$wgOut->addHTML( $s );
@@ -108,7 +108,7 @@ class Credits {
 		if( $cnt > 0 && $contributors->count() > $cnt ){
 			$others_link = self::othersLink( $article );
 			if( !$showIfMax )
-				return wfMsg( 'othercontribs', $others_link );
+				return wfMsgExt( 'othercontribs', 'parsemag', $others_link, $contributors->count() );
 		}
 	
 		$real_names = array();
@@ -163,7 +163,9 @@ class Credits {
 		$creds = $wgLang->listToText( $fulllist );
 
 		# "Based on work by ..."
-		return strlen( $creds ) ? wfMsg( 'othercontribs', $creds ) : '';
+		return strlen( $creds ) 
+			? wfMsgExt( 'othercontribs', 'parsemag', $creds, count( $fulllist ) )
+			: '';
 	}
 
 	/**
@@ -188,8 +190,7 @@ class Credits {
 
 	/**
 	 * Get a link to $user's user page
-	 * @param $user_name String: user name
-	 * @param $linkText String: optional display
+	 * @param $user User object
 	 * @return String: html
 	 */
 	protected static function userLink( User $user ) {

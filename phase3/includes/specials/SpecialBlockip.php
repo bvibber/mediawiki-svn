@@ -24,6 +24,14 @@ function wfSpecialBlockip( $par ) {
 	}
 
 	$ipb = new IPBlockForm( $par );
+	
+	# bug 15810: blocked admins should have limited access here
+	if ( $wgUser->isBlocked() ) {
+		$status = IPBlockForm::checkUnblockSelf( $ipb->BlockAddress );
+		if ( $status !== true ) {
+			throw new ErrorPageError( 'badaccess', $status );
+		}
+	}
 
 	$action = $wgRequest->getVal( 'action' );
 	if( 'success' == $action ) {
@@ -360,6 +368,32 @@ class IPBlockForm {
 		global $wgEnableUserEmail, $wgSysopEmailBans;
 		return ( $wgEnableUserEmail && $wgSysopEmailBans && $user->isAllowed( 'blockemail' ) );
 	}
+	
+	/**
+	 * bug 15810: blocked admins should not be able to block/unblock
+	 * others, and probably shouldn't be able to unblock themselves
+	 * either.
+	 * @param $user User, Int or String
+	 */
+	public static function checkUnblockSelf( $user ) {
+		global $wgUser;
+		if ( is_int( $user ) ) {
+			$user = User::newFromId( $user );
+		} elseif ( is_string( $user ) ) {
+			$user = User::newFromName( $user );
+		}
+		if( $user instanceof User && $user->getId() == $wgUser->getId() ) {
+			# User is trying to unblock themselves
+			if ( $wgUser->isAllowed( 'unblockself' ) ) {
+				return true;
+			} else {
+				return 'ipbnounblockself';
+			}
+		} else {
+			# User is trying to block/unblock someone else
+			return 'ipbblocked';
+		}
+	}
 
 	/**
 	 * Backend block code.
@@ -642,7 +676,7 @@ class IPBlockForm {
 		);
 
 		// Add suppression block entries if allowed
-		if( $wgUser->isAllowed( 'hideuser' ) ) {
+		if( $wgUser->isAllowed( 'suppressionlog' ) ) {
 			LogEventsList::showLogExtract( $out, 'suppress', $title->getPrefixedText(), '',
 				array(
 					'lim' => 10,

@@ -12,6 +12,8 @@
  * @author Dori
  * @author Eagleal
  * @author Ergon
+ * @author Mdupont
+ * @author MicroBoy
  * @author Puntori
  * @author Urhixidur
  * @author לערי ריינהארט
@@ -191,7 +193,6 @@ $messages = array(
 'tog-editsectiononrightclick' => 'Lejo redaktimin e seksioneve me djathtas-shtypje<br /> mbi emrin e seksionit (JavaScript)',
 'tog-showtoc'                 => 'Trego tabelën e përmbajtjeve<br />(për faqet me më shume se 3 tituj)',
 'tog-rememberpassword'        => 'Mbaj mënd fjalëkalimin për vizitën e ardhshme',
-'tog-editwidth'               => 'Kutija e redaktimit ka gjerësi te plotë',
 'tog-watchcreations'          => 'Shto faqet që krijoj tek lista mbikqyrëse',
 'tog-watchdefault'            => 'Shto faqet që redaktoj tek lista mbikqyrëse',
 'tog-watchmoves'              => 'Shto faqet që zhvendos tek lista mbikqyrëse',
@@ -293,7 +294,7 @@ $messages = array(
 'category-file-count-limited'    => '{{PLURAL:$1|Kjo skedë është|$1 skeda janë}} në këtë kategori.',
 'listingcontinuesabbrev'         => 'vazh.',
 
-'mainpagetext'      => "<big>'''MediaWiki software u instalua me sukses.'''</big>",
+'mainpagetext'      => "'''MediaWiki software u instalua me sukses.'''",
 'mainpagedocfooter' => 'Për më shumë informata rreth përdorimit të softwerit wiki , ju lutem shikoni [http://meta.wikimedia.org/wiki/Help:Contents dokumentacionin përkatës].
 
 == Sa për fillim==
@@ -436,13 +437,13 @@ Edit section: $1',
 'site-atom-feed'          => '$1 Atom Feed',
 'page-rss-feed'           => '"$1" RSS Feed',
 'page-atom-feed'          => '"$1" Burim Atom',
-'red-link-title'          => '$1 (nuk është shkruar akoma)',
+'red-link-title'          => '$1 (faqja nuk ekziston)',
 
 # Short words for each namespace, by default used in the namespace tab in monobook
 'nstab-main'      => 'Artikulli',
 'nstab-user'      => 'Përdoruesi',
 'nstab-media'     => 'Media-faqe',
-'nstab-special'   => 'Speciale',
+'nstab-special'   => 'Faqe speciale',
 'nstab-project'   => 'Projekt-faqe',
 'nstab-image'     => 'Figura',
 'nstab-mediawiki' => 'Porosia',
@@ -545,7 +546,7 @@ Llogaria juaj është hapur. Mos harroni të ndryshoni parapëlqimet e {{SITENAM
 'login'                      => 'Hyni',
 'nav-login-createaccount'    => 'Hyni ose hapni një llogari',
 'loginprompt'                => 'Duhet të pranoni "biskota" për të hyrë brënda në {{SITENAME}}.',
-'userlogin'                  => 'Hyni ose hapni një llogari',
+'userlogin'                  => 'Hyni / hapni llogari',
 'logout'                     => 'Dalje',
 'userlogout'                 => 'Dalje',
 'notloggedin'                => 'Nuk keni hyrë brenda',
@@ -654,7 +655,7 @@ Nëse kryeni ndryshimet redaktimi juaj do të ruhet pa titull.",
 'summary-preview'                  => 'Parapamja e përmbledhjes:',
 'subject-preview'                  => 'Parapamja e titullit:',
 'blockedtitle'                     => 'Përdoruesi është bllokuar',
-'blockedtext'                      => "<big>'''Llogaria juaj ose adresa e IP-së është bllokuar'''</big>
+'blockedtext'                      => "'''Llogaria juaj ose adresa e IP-së është bllokuar'''
 
 Bllokimi u bë nga $1 dhe arsyeja e dhënë ishte '''$2'''.
 
@@ -753,7 +754,7 @@ Administruesi që ka bërë mbylljen ka dhënë këtë sqarim: $1.",
 'semiprotectedpagewarning'         => "'''Shënim:''' Redaktimi i kësaj faqeje mund të bëhet vetëm nga përdorues të regjistruar.",
 'cascadeprotectedwarning'          => "'''Vini re:''' Kjo faqe është e mbrojtur dhe vetëm përdoruesit me privilegje administrative mund ta redaktojnë pasi është përfshirë në mbrotjen \"ujëvarë\" të {{PLURAL:\$1|faqes së|faqeve të}} mëposhtme:",
 'titleprotectedwarning'            => "'''VINI RE:  Kjo faqe është e mbrojtur dhe vetëm disa përdorues mund ta krijojnë.'''",
-'templatesused'                    => 'Stampa të përdorura në këtë faqe:',
+'templatesused'                    => '{{PLURAL:$1|Stamp|Stampa}} të përdorura në këtë faqe:',
 'templatesusedpreview'             => 'Stampa të përdorur në ketë parapamje:',
 'templatesusedsection'             => 'Stampat e përdorura në këtë seksion:',
 'template-protected'               => '(mbrojtur)',
@@ -1432,7 +1433,6 @@ Mos harroni të shihni nyje tjera të stampave para grisjes së tyre.',
 'statistics-edits-average'     => 'Ndryshime mesatare për faqe',
 'statistics-views-total'       => 'Shikimet gjithsej',
 'statistics-views-peredit'     => 'Shikimet për redaktim',
-'statistics-jobqueue'          => '[http://www.mediawiki.org/wiki/Manual:Job_queue Gjatësia e radhës së punës]',
 'statistics-users'             => '[[Special:ListUsers|Përdoruesit]] e regjistruar',
 'statistics-users-active'      => 'Përdoruesit aktiv',
 'statistics-users-active-desc' => 'Përdoruesit që kanë së paku një veprim në {{PLURAL:$1|ditën|$1 ditët}} e fundit',
@@ -1758,9 +1758,9 @@ Shih listën e [[Special:ProtectedPages|faqeve të mbrojtura]] nga lista e mbroj
 'protect-locked-access'       => "Llogaria juaj nuk ka privilegjet e nevojitura për të ndryshuar nivelin e mbrojtjes. Kufizimet e kësaj faqeje janë '''$1''':",
 'protect-cascadeon'           => 'Kjo faqe është e mbrojtur pasi është përfshirë {{PLURAL:$1|këtë faqe që është|këto faqe që janë}} nën mbrojtje "ujëvarë".
 Mund të ndryshoni nivelin e mbrojtjes të kësaj faqeje por kjo nuk do të ndryshojë mbrojtjen "ujëvarë".',
-'protect-default'             => '(parazgjedhje)',
+'protect-default'             => 'Lejoni të gjithë përdoruesit',
 'protect-fallback'            => 'Kërko "$1" leje',
-'protect-level-autoconfirmed' => 'Blloko përdoruesit pa llogari',
+'protect-level-autoconfirmed' => 'Blloko përdoruesit e rinj dhe pa llogari',
 'protect-level-sysop'         => 'Lejo vetëm administruesit',
 'protect-summary-cascade'     => 'të varura',
 'protect-expiring'            => 'skadon me $1 (UTC)',
@@ -1805,7 +1805,7 @@ Arkivi, kohëpaskohe është e mundur të pastrohet.',
 'undelete-revision'          => 'Revizioni i grisur i $1 (nga $4, në $5) nga $3:',
 'undelete-nodiff'            => 'Nuk u gjetën revizione të mëparshme.',
 'undeletebtn'                => 'Restauro!',
-'undeletelink'               => 'rikthe',
+'undeletelink'               => 'shiko/rikthe',
 'undeletereset'              => 'Boshatis',
 'undeleteinvert'             => 'Selektim anasjelltas',
 'undeletecomment'            => 'Arsyeja:',
@@ -1814,7 +1814,7 @@ Arkivi, kohëpaskohe është e mundur të pastrohet.',
 'undeletedrevisions-files'   => '$1 {{PLURAL:$1|version|versione}} dhe $2 {{PLURAL:$2|skedë|skeda}} janë restauruar',
 'undeletedfiles'             => '$1 {{PLURAL:$1|skedë u restaurua|skeda u restauruan}}',
 'cannotundelete'             => 'Restaurimi dështoi; dikush tjetër mund ta ketë restauruar faqen përpara jush.',
-'undeletedpage'              => "<big>'''$1 është restauruar'''</big>
+'undeletedpage'              => "'''$1 është restauruar'''
 
 Shikoni [[Special:Log/delete|regjistrin e grisjeve]] për grisjet dhe restaurimet së fundmi.",
 'undelete-header'            => 'Shikoni [[Special:Log/delete|regjistrin e grisjeve]] për faqet e grisura së fundmi.',
@@ -2007,7 +2007,7 @@ Në ato raste, duhet ta zhvendosni ose përpuqni faqen vetë n.q.s. dëshironi."
 'move-watch'                => 'Mbikqyre këtë faqe',
 'movepagebtn'               => 'Zhvendose faqen',
 'pagemovedsub'              => 'Zhvendosja doli me sukses',
-'movepage-moved'            => '<big>\'\'\'"$1" u zhvendos tek "$2"\'\'\'</big>',
+'movepage-moved'            => '\'\'\'"$1" u zhvendos tek "$2"\'\'\'',
 'articleexists'             => 'Një faqe me atë titull ekziston, ose titulli që zgjodhët nuk është i saktë. Ju lutem zgjidhni një tjetër.',
 'cantmove-titleprotected'   => 'Nuk mund të zhvendosni një faqe në këtë titull pasi ky titull është mbrojtur kundrejt krijimit',
 'talkexists'                => 'Faqja për vete u zhvendos, ndërsa faqja e diskutimit nuk u zhvendos sepse një e tillë ekziston tek titulli i ri. Ju lutem, përpuqini vetë.',

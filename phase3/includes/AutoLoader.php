@@ -163,6 +163,7 @@ $wgAutoloadLocalClasses = array(
 	'MediaWiki_I18N' => 'includes/SkinTemplate.php',
 	'MediaWiki' => 'includes/Wiki.php',
 	'MemCachedClientforWiki' => 'includes/memcached-client.php',
+	'Message' => 'includes/Message.php',
 	'MessageCache' => 'includes/MessageCache.php',
 	'MimeMagic' => 'includes/MimeMagic.php',
 	'MWException' => 'includes/Exception.php',
@@ -236,7 +237,7 @@ $wgAutoloadLocalClasses = array(
 	'UploadFromStash' => 'includes/upload/UploadFromStash.php',
 	'UploadFromFile' => 'includes/upload/UploadFromFile.php',
 	'UploadFromUrl' => 'includes/upload/UploadFromUrl.php',
-	'UploadFromChunks' => 'includes/upload/UploadFromChunks.php',
+	'UploadFromUrlJob' => 'includes/UploadFromUrlJob.php',
 	'User' => 'includes/User.php',
 	'UserArray' => 'includes/UserArray.php',
 	'UserArrayFromResult' => 'includes/UserArray.php',
@@ -279,6 +280,7 @@ $wgAutoloadLocalClasses = array(
 	'ApiFormatWddx' => 'includes/api/ApiFormatWddx.php',
 	'ApiFormatXml' => 'includes/api/ApiFormatXml.php',
 	'ApiFormatYaml' => 'includes/api/ApiFormatYaml.php',
+	'ApiGo' => 'includes/api/ApiGo.php',
 	'ApiHelp' => 'includes/api/ApiHelp.php',
 	'ApiImport' => 'includes/api/ApiImport.php',
 	'ApiImportReporter' => 'includes/api/ApiImport.php',
@@ -351,7 +353,6 @@ $wgAutoloadLocalClasses = array(
 	'ChronologyProtector' => 'includes/db/LBFactory.php',
 	'Database' => 'includes/db/DatabaseMysql.php',
 	'DatabaseBase' => 'includes/db/Database.php',
-	'DatabaseMssql' => 'includes/db/DatabaseMssql.php',
 	'DatabaseMysql' => 'includes/db/DatabaseMysql.php',
 	'DatabaseOracle' => 'includes/db/DatabaseOracle.php',
 	'DatabasePostgres' => 'includes/db/DatabasePostgres.php',
@@ -370,7 +371,6 @@ $wgAutoloadLocalClasses = array(
 	'LoadBalancer' => 'includes/db/LoadBalancer.php',
 	'LoadMonitor' => 'includes/db/LoadMonitor.php',
 	'LoadMonitor_MySQL' => 'includes/db/LoadMonitor.php',
-	'MSSQLField' => 'includes/db/DatabaseMssql.php',
 	'MySQLField' => 'includes/db/Database.php',
 	'MySQLMasterPos' => 'includes/db/DatabaseMysql.php',
 	'ORABlob' => 'includes/db/DatabaseOracle.php',
@@ -523,7 +523,7 @@ $wgAutoloadLocalClasses = array(
 	'DoubleRedirectsPage' => 'includes/specials/SpecialDoubleRedirects.php',
 	'EmailConfirmation' => 'includes/specials/SpecialConfirmemail.php',
 	'EmailInvalidation' => 'includes/specials/SpecialConfirmemail.php',
-	'EmailUserForm' => 'includes/specials/SpecialEmailuser.php',
+	'SpecialEmailUser' => 'includes/specials/SpecialEmailuser.php',
 	'FakeResultWrapper' => 'includes/specials/SpecialAllmessages.php',
 	'FewestrevisionsPage' => 'includes/specials/SpecialFewestrevisions.php',
 	'FileDuplicateSearchPage' => 'includes/specials/SpecialFileDuplicateSearch.php',
@@ -573,6 +573,7 @@ $wgAutoloadLocalClasses = array(
 	'SpecialExport' => 'includes/specials/SpecialExport.php',
 	'SpecialImport' => 'includes/specials/SpecialImport.php',
 	'SpecialListGroupRights' => 'includes/specials/SpecialListgrouprights.php',
+	'SpecialMergeHistory' => 'includes/specials/SpecialMergeHistory.php',
 	'SpecialMostlinkedtemplates' => 'includes/specials/SpecialMostlinkedtemplates.php',
 	'SpecialPreferences' => 'includes/specials/SpecialPreferences.php',
 	'SpecialPrefixindex' => 'includes/specials/SpecialPrefixindex.php',
@@ -676,6 +677,17 @@ class AutoLoader {
 				require( $file );
 			}
 		}
+	}
+
+	/**
+	 * Force a class to be run through the autoloader, helpful for things like
+	 * Sanitizer that have define()s outside of their class definition. Of course
+	 * this wouldn't be necessary if everything in MediaWiki was class-based. Sigh.
+	 *
+	 * @return Boolean Return the results of class_exists() so we know if we were successful
+	 */
+	static function loadClass( $class ) {
+		return class_exists( $class );
 	}
 }
 

@@ -145,6 +145,7 @@ $wgRedirectScript   = false; ///< defaults to "{$wgScriptPath}/redirect{$wgScrip
  * asset paths as seen by users
  */
 $wgStylePath   = false; ///< defaults to "{$wgScriptPath}/skins"
+$wgLocalStylePath   = false; ///< defaults to "{$wgScriptPath}/skins", shouldn't point to an external domain
 $wgExtensionAssetsPath = false; ///< defaults to "{$wgScriptPath}/extensions"
 
 /**
@@ -309,6 +310,8 @@ $wgUrlProtocols = array(
 	'mailto:',
 	'news:',
 	'svn://',
+	'git://',
+	'mms://',
 );
 
 /** internal name of virus scanner. This servers as a key to the $wgAntivirusSetup array.
@@ -462,9 +465,7 @@ $wgCacheSharedUploads = true;
 $wgAllowCopyUploads = false;
 
 /**
- * Max size for uploads, in bytes.  Currently only works for uploads from URL
- * via CURL (see $wgAllowCopyUploads).  The only way to impose limits on
- * normal uploads is currently to edit php.ini.
+ * Max size for uploads, in bytes. Applies to all uploads.
  */
 $wgMaxUploadSize = 1024*1024*100; # 100MB
 
@@ -632,11 +633,6 @@ $wgSQLiteDataDir    = '';
 $wgAllDBsAreLocalhost = false;
 
 /**@}*/
-
-
-/** Live high performance sites should disable this - some checks acquire giant mysql locks */
-$wgCheckDBSchema = true;
-
 
 /**
  * Shared database for multiple wikis. Commonly used for storing a user table
@@ -1120,7 +1116,7 @@ $wgShowIPinHeader	= true; # For non-logged in users
 $wgMaxSigChars		= 255;  # Maximum number of Unicode characters in signature
 $wgMaxArticleSize	= 2048; # Maximum article size in kilobytes
 # Maximum number of bytes in username. You want to run the maintenance
-# script ./maintenancecheckUsernames.php once you have changed this value
+# script ./maintenance/checkUsernames.php once you have changed this value
 $wgMaxNameChars		= 255;
 
 $wgMaxPPNodeCount = 1000000;  # A complexity limit on template expansion
@@ -1459,6 +1455,7 @@ $wgGroupPermissions['sysop']['browsearchive']    = true;
 $wgGroupPermissions['sysop']['noratelimit']      = true;
 $wgGroupPermissions['sysop']['versiondetail']    = true;
 $wgGroupPermissions['sysop']['movefile']         = true;
+$wgGroupPermissions['sysop']['unblockself']      = true;
 #$wgGroupPermissions['sysop']['mergehistory']     = true;
 
 // Permission to change users' group assignments
@@ -1680,7 +1677,7 @@ $wgCacheEpoch = '20030516000000';
  * to ensure that client-side caches do not keep obsolete copies of global
  * styles.
  */
-$wgStyleVersion = '267';
+$wgStyleVersion = '276';
 
 
 # Server-side caching:
@@ -1907,6 +1904,16 @@ $wgAllowExternalImagesFrom = '';
  */
 $wgEnableImageWhitelist = true;
 
+/**
+ * A different approach to the above: simply allow the <img> tag to be used.
+ * This allows you to specify alt text and other attributes, copy-paste HTML to
+ * your wiki more easily, etc.  However, allowing external images in any manner
+ * will allow anyone with editing rights to snoop on your visitors' IP
+ * addresses and so forth, if they wanted to, by inserting links to images on
+ * sites they control.
+ */
+$wgAllowImageTag = false;
+
 /** Allows to move images and other media files */
 $wgAllowImageMoving = true;
 
@@ -1933,6 +1940,7 @@ $wgJobClasses = array(
 	'sendMail' => 'EmaillingJob',
 	'enotifNotify' => 'EnotifNotifyJob',
 	'fixDoubleRedirect' => 'DoubleRedirectJob',
+	'uploadFromUrl' => 'UploadFromUrlJob',
 );
 
 /**
@@ -2345,11 +2353,11 @@ $wgSVGMaxSize = 2048;
 $wgMaxImageArea = 1.25e7;
 /**
  * Force thumbnailing of animated GIFs above this size to a single
- * frame instead of an animated thumbnail. ImageMagick seems to
- * get real unhappy and doesn't play well with resource limits. :P
- * Defaulting to 1 megapixel (1000x1000)
+ * frame instead of an animated thumbnail.  As of MW 1.17 this limit
+ * is checked against the total size of all frames in the animation.
+ * It probably makes sense to keep this equal to $wgMaxImageArea.
  */
-$wgMaxAnimatedGifArea = 1.0e6;
+$wgMaxAnimatedGifArea = 1.25e7;
 /**
  * Browsers don't support TIFF inline generally...
  * For inline display, we need to convert to PNG or JPEG.
@@ -2710,72 +2718,71 @@ $wgHandheldForIPhone = false;
  *
  */
 $wgDefaultUserOptions = array(
-	'quickbar'                => 1,
-	'underline'               => 2,
+	'ccmeonemails'            => 0,
 	'cols'                    => 80,
-	'rows'                    => 25,
-	'searchlimit'             => 20,
-	'contextlines'            => 5,
 	'contextchars'            => 50,
+	'contextlines'            => 5,
+	'date'                    => 'default',
+	'diffonly'                => 0,
+	'disablemail'             => 0,
 	'disablesuggest'          => 0,
-	'skin'                    => false,
-	'math'                    => 1,
-	'usenewrc'                => 0,
-	'rcdays'                  => 7,
-	'rclimit'                 => 50,
-	'wllimit'                 => 250,
-	'hideminor'               => 0,
-	'hidepatrolled'           => 0,
-	'newpageshidepatrolled'   => 0,
-	'highlightbroken'         => 1,
-	'stubthreshold'           => 0,
-	'previewontop'            => 1,
-	'previewonfirst'          => 0,
+	'editfont'                => 'default',
+	'editondblclick'          => 0,
 	'editsection'             => 1,
 	'editsectiononrightclick' => 0,
-	'editondblclick'          => 0,
-	'editwidth'               => 0,
-	'showtoc'                 => 1,
-	'showtoolbar'             => 1,
-	'minordefault'            => 0,
-	'date'                    => 'default',
-	'imagesize'               => 2,
-	'thumbsize'               => 2,
-	'rememberpassword'        => 0,
-	'nocache'                 => 0,
-	'diffonly'                => 0,
-	'showhiddencats'          => 0,
-	'norollbackdiff'          => 0,
-	'enotifwatchlistpages'    => 0,
-	'enotifusertalkpages'     => 1,
 	'enotifminoredits'        => 0,
 	'enotifrevealaddr'        => 0,
-	'shownumberswatching'     => 1,
-	'fancysig'                => 0,
-	'externaleditor'          => 0,
-	'externaldiff'            => 0,
-	'forceeditsummary'        => 0,
-	'showjumplinks'           => 1,
-	'justify'                 => 0,
-	'numberheadings'          => 0,
-	'uselivepreview'          => 0,
-	'watchlistdays'           => 3.0,
+	'enotifusertalkpages'     => 1,
+	'enotifwatchlistpages'    => 0,
 	'extendwatchlist'         => 0,
-	'watchlisthideminor'      => 0,
-	'watchlisthidebots'       => 0,
-	'watchlisthideown'        => 0,
-	'watchlisthideanons'      => 0,
-	'watchlisthideliu'        => 0,
-	'watchlisthidepatrolled'  => 0,
+	'externaldiff'            => 0,
+	'externaleditor'          => 0,
+	'fancysig'                => 0,
+	'forceeditsummary'        => 0,
+	'gender'                  => 'unknown',
+	'hideminor'               => 0,
+	'hidepatrolled'           => 0,
+	'highlightbroken'         => 1,
+	'imagesize'               => 2,
+	'justify'                 => 0,
+	'math'                    => 1,
+	'minordefault'            => 0,
+	'newpageshidepatrolled'   => 0,
+	'nocache'                 => 0,
+	'noconvertlink'           => 0,
+	'norollbackdiff'          => 0,
+	'numberheadings'          => 0,
+	'previewonfirst'          => 0,
+	'previewontop'            => 1,
+	'quickbar'                => 1,
+	'rcdays'                  => 7,
+	'rclimit'                 => 50,
+	'rememberpassword'        => 0,
+	'rows'                    => 25,
+	'searchlimit'             => 20,
+	'showhiddencats'          => 0,
+	'showjumplinks'           => 1,
+	'shownumberswatching'     => 1,
+	'showtoc'                 => 1,
+	'showtoolbar'             => 1,
+	'skin'                    => false,
+	'stubthreshold'           => 0,
+	'thumbsize'               => 2,
+	'underline'               => 2,
+	'uselivepreview'          => 0,
+	'usenewrc'                => 0,
 	'watchcreations'          => 0,
 	'watchdefault'            => 0,
-	'watchmoves'              => 0,
 	'watchdeletion'           => 0,
-	'noconvertlink'           => 0,
-	'gender'                  => 'unknown',
-	'ccmeonemails'            => 0,
-	'disablemail'             => 0,
-	'editfont'                => 'default',
+	'watchlistdays'           => 3.0,
+	'watchlisthideanons'      => 0,
+	'watchlisthidebots'       => 0,
+	'watchlisthideliu'        => 0,
+	'watchlisthideminor'      => 0,
+	'watchlisthideown'        => 0,
+	'watchlisthidepatrolled'  => 0,
+	'watchmoves'              => 0,
+	'wllimit'                 => 250,
 );
 
 /**
@@ -2899,11 +2906,38 @@ $wgAllowUserJs = false;
  */
 $wgAllowUserCss = false;
 
+/**
+ * Allow user-preferences implemented in CSS?
+ * This allows users to customise the site appearance to a greater
+ * degree; disabling it will improve page load times.
+ */
+$wgAllowUserCssPrefs = true;
+
 /** Use the site's Javascript page? */
 $wgUseSiteJs = true;
 
 /** Use the site's Cascading Style Sheets (CSS)? */
 $wgUseSiteCss = true;
+
+/**
+ * Version of jQuery to use. Currently available versions are 1.3.2 and 1.4.2 .
+ * Other versions can be installed by hand at your own risk, see
+ * http://www.mediawiki.org/wiki/Manual:$wgJQueryVersion
+ */
+$wgJQueryVersion = '1.4.2';
+
+/**
+ * Use a minified version of jQuery. If enabled, jquery-versionnumber.min.js
+ * will be used instead of jquery-versionnumber.js . It is recommended you only
+ * disable this for debugging purposes.
+ */
+$wgJQueryMinified = true;
+
+/**
+ * Include jQuery on every page served by MediaWiki. You can disable this if
+ * your user/site-wide JS doesn't need it and you want to save bandwidth.
+ */
+$wgJQueryOnEveryPage = true;
 
 /**
  * Filter for Special:Randompage. Part of a WHERE clause
@@ -3032,6 +3066,18 @@ $wgThumbLimits = array(
  * by hardcoded px in wiki sourcecode.
  */
 $wgThumbUpright = 0.75;
+
+/**
+ * Default parameters for the <gallery> tag
+ */
+
+$wgGalleryOptions = array (
+	'imagesPerRow' => 4, // Default number of images per-row in the gallery
+	'imageWidth' => 120, // Width of the cells containing images in galleries (in "px")
+	'imageHeight' => 120, // Height of the cells containing images in galleries (in "px")
+	'captionLength' => 20, // Length of caption to truncate (in characters)
+	'showBytes' => true, // Show the filesize in bytes in categories
+);
 
 /**
  *  On  category pages, show thumbnail gallery for images belonging to that
@@ -3290,6 +3336,7 @@ $wgLogActions = array(
 	'suppress/delete'   => 'suppressedarticle',
 	'suppress/block'	=> 'blocklogentry',
 	'suppress/reblock'  => 'reblock-logentry',
+	'patrol/patrol' 	=> 'patrol-log-line',
 );
 
 /**
@@ -3302,6 +3349,11 @@ $wgLogActionsHandlers = array();
  * Maintain a log of newusers at Log/newusers?
  */
 $wgNewUserLog = true;
+
+/**
+ * Log the automatic creations of new users accounts?
+ */
+$wgLogAutocreatedAccounts = false;
 
 /**
  * List of special pages, followed by what subtitle they should go under
@@ -3957,6 +4009,7 @@ $wgAPICacheHelpTimeout = 60*60;
  */
 $wgParserTestFiles = array(
 	"$IP/maintenance/parserTests.txt",
+	"$IP/maintenance/ExtraParserTests.txt"
 );
 
 /**
@@ -4163,6 +4216,11 @@ $wgVectorUseSimpleSearch = false;
  * false = use watch/unwatch text link
  */
 $wgVectorUseIconWatch = false;
+
+/**
+ * Show the name of the current variant as a label in the variants drop-down menu
+ */
+$wgVectorShowVariantName = false;
 
 /**
  * Add extra stylesheets for Vector - This is only being used so that we can play around with different options while

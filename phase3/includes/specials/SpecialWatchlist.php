@@ -191,6 +191,9 @@ function wfSpecialWatchlist( $par ) {
 	if ( $wgUser->useRCPatrol() && $hidePatrolled ) {
 		$conds[] = 'rc_patrolled != 1';
 	}
+	if( $nameSpaceClause ) {
+		$conds[] = $nameSpaceClause;
+	}
 
 	# Toggle watchlist content (all recent edits or just the latest)
 	if( $wgUser->getOption( 'extendwatchlist' )) {
@@ -291,7 +294,7 @@ function wfSpecialWatchlist( $par ) {
 	$form .= $wlInfo;
 	$form .= $cutofflinks;
 	$form .= $wgLang->pipeList( $links );
-	$form .= Xml::openElement( 'form', array( 'method' => 'post', 'action' => $thisTitle->getLocalUrl() ) );
+	$form .= Xml::openElement( 'form', array( 'method' => 'post', 'action' => $thisTitle->getLocalUrl(), 'id' => 'mw-watchlist-form-namespaceselector' ) );
 	$form .= '<hr /><p>';
 	$form .= Xml::label( wfMsg( 'namespace' ), 'namespace' ) . '&nbsp;';
 	$form .= Xml::namespaceSelector( $nameSpace, '' ) . '&nbsp;';

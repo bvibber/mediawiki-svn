@@ -865,18 +865,6 @@ BUG 289: literal double quote in bracketed URL
 !!end
 
 !! test
-External links: invalid character
-Fixme: the missing char seems to have gone missing
-!! options
-disabled
-!! input
-[http://www.example.com  test]
-!! result
-<p>[<a href="http://www.example.com" class="external free" rel="nofollow">http://www.example.com</a>  test]
-</p>
-!! end
-
-!! test
 External links: multiple legal whitespace is fine, Magnus. Don't break it please. (bug 5081)
 !! input
 [http://www.example.com  test]
@@ -1526,7 +1514,7 @@ Piped link to URL
 !! input
 Piped link to URL: [[http://www.example.com|an example URL]]
 !! result
-<p>Piped link to URL: [<a href="http://www.example.com|an" class="external text" rel="nofollow">example URL</a>]
+<p>Piped link to URL: [<a href="http://www.example.com%7Can" class="external text" rel="nofollow">example URL</a>]
 </p>
 !! end
 
@@ -2177,6 +2165,21 @@ language=de
 !! end
 
 
+!! test
+Urlencode
+!! input
+{{urlencode:hi world?!}}
+{{urlencode:hi world?!|WIKI}}
+{{urlencode:hi world?!|PATH}}
+{{urlencode:hi world?!|QUERY}}
+!! result
+<p>hi+world%3F%21
+hi_world%3F!
+hi%20world%3F%21
+hi+world%3F%21
+</p>
+!! end
+
 ###
 ### Magic links
 ###
@@ -2588,7 +2591,7 @@ BUG 41: Template parameters shown as broken links
 Template:MSGNW test
 !! text
 ''None'' of '''this''' should be 
-* interepreted
+* interpreted
  but rather passed unmodified
 {{test}}
 !! endarticle
@@ -2602,7 +2605,7 @@ disabled
 {{msgnw:MSGNW test}}
 !! result
 <p>''None'' of '''this''' should be 
-* interepreted
+* interpreted
  but rather passed unmodified
 {{test}}
 </p>
@@ -3164,6 +3167,16 @@ msg
 {{#special:Recentchanges}}
 !! result
 Special:RecentChanges
+!! end
+
+!! test
+{{#special:}} page name with subpage, known
+!! options
+msg
+!! input
+{{#special:Recentchanges/param}}
+!! result
+Special:RecentChanges/param
 !! end
 
 !! test
@@ -4104,6 +4117,31 @@ Character reference normalization in link text (bug 1938)
 </p>
 !!end
 
+!! article
+אַ
+!! text
+Test for unicode normalization
+
+The page's name is U+05d0 U+05b7, with non-canonical form U+FB2E
+!! endarticle
+
+!! test
+(bug 19451) Links should refer to the normalized form.
+!! input
+[[&#xFB2E;]]
+[[&#x5d0;&#x5b7;]]
+[[&#x5d0;ַ]]
+[[א&#x5b7;]]
+[[אַ]]
+!! result
+<p><a href="/wiki/%D7%90%D6%B7" title="אַ">&#xfb2e;</a>
+<a href="/wiki/%D7%90%D6%B7" title="אַ">&#x5d0;&#x5b7;</a>
+<a href="/wiki/%D7%90%D6%B7" title="אַ">&#x5d0;ַ</a>
+<a href="/wiki/%D7%90%D6%B7" title="אַ">א&#x5b7;</a>
+<a href="/wiki/%D7%90%D6%B7" title="אַ">אַ</a>
+</p>
+!! end
+
 !! test
 Empty attribute crash test (bug 2067)
 !! input
@@ -4438,6 +4476,23 @@ Table attribute safety
 
 !! end
 
+!! test
+CSS line continuation 1
+!! input
+<div style="background-image: u\&#10;rl(test.jpg);"></div>
+!! result
+<div></div>
+
+!! end
+
+!! test
+CSS line continuation 2
+!! input
+<div style="background-image: u\&#13;rl(test.jpg); "></div>
+!! result
+<div></div>
+
+!! end
 
 !! article
 Template:Identity
@@ -4754,7 +4809,7 @@ disabled
 !! input
 <br id=9 />
 !! result
-Something, but defenetly not <br id="9" />...
+Something, but definitely not <br id="9" />...
 !! end
 
 !! test
@@ -6335,6 +6390,97 @@ image4    |300px| centre
 !! end
 
 !! test
+Gallery (with options)
+!! input
+<gallery widths='60px' heights='40px' perrow='2' caption='Foo [[Main Page]]' >
+File:Nonexistant.jpg|caption
+File:Nonexistant.jpg
+image:foobar.jpg|some '''caption''' [[Main Page]]
+image:foobar.jpg
+</gallery>
+!! result
+<table class="gallery" cellspacing="0" cellpadding="0">
+	<caption>Foo <a href="/wiki/Main_Page" title="Main Page">Main Page</a></caption>
+	<tr>
+		<td><div class="gallerybox" style="width: 95px;">
+			<div style="height: 52px;">Nonexistant.jpg</div>
+			<div class="gallerytext">
+<p>caption
+</p>
+			</div>
+		</div></td>
+		<td><div class="gallerybox" style="width: 95px;">
+			<div style="height: 52px;">Nonexistant.jpg</div>
+			<div class="gallerytext">
+			</div>
+		</div></td>
+	</tr>
+	<tr>
+		<td><div class="gallerybox" style="width: 95px;">
+			<div class="thumb" style="padding: 19px 0; width: 90px;"><div style="margin-left: auto; margin-right: auto; width: 60px;"><a href="/wiki/File:Foobar.jpg" class="image"><img alt="" src="http://example.com/images/3/3a/Foobar.jpg" width="60" height="7" /></a></div></div>
+			<div class="gallerytext">
+<p>some <b>caption</b> <a href="/wiki/Main_Page" title="Main Page">Main Page</a>
+</p>
+			</div>
+		</div></td>
+		<td><div class="gallerybox" style="width: 95px;">
+			<div class="thumb" style="padding: 19px 0; width: 90px;"><div style="margin-left: auto; margin-right: auto; width: 60px;"><a href="/wiki/File:Foobar.jpg" class="image"><img alt="Foobar.jpg" src="http://example.com/images/3/3a/Foobar.jpg" width="60" height="7" /></a></div></div>
+			<div class="gallerytext">
+			</div>
+		</div></td>
+	</tr>
+</table>
+
+!! end
+
+!! test
+gallery (with showfilename option)
+!! input
+<gallery showfilename>
+File:Nonexistant.jpg|caption
+File:Nonexistant.jpg
+image:foobar.jpg|some '''caption''' [[Main Page]]
+File:Foobar.jpg
+</gallery>
+!! result
+<table class="gallery" cellspacing="0" cellpadding="0">
+	<tr>
+		<td><div class="gallerybox" style="width: 155px;">
+			<div style="height: 152px;">Nonexistant.jpg</div>
+			<div class="gallerytext">
+<p><a href="/wiki/File:Nonexistant.jpg" title="File:Nonexistant.jpg">Nonexistant.jpg</a><br />
+caption
+</p>
+			</div>
+		</div></td>
+		<td><div class="gallerybox" style="width: 155px;">
+			<div style="height: 152px;">Nonexistant.jpg</div>
+			<div class="gallerytext">
+<p><a href="/wiki/File:Nonexistant.jpg" title="File:Nonexistant.jpg">Nonexistant.jpg</a><br />
+</p>
+			</div>
+		</div></td>
+		<td><div class="gallerybox" style="width: 155px;">
+			<div class="thumb" style="padding: 66px 0; width: 150px;"><div style="margin-left: auto; margin-right: auto; width: 120px;"><a href="/wiki/File:Foobar.jpg" class="image"><img alt="" src="http://example.com/images/3/3a/Foobar.jpg" width="120" height="14" /></a></div></div>
+			<div class="gallerytext">
+<p><a href="/wiki/File:Foobar.jpg" title="File:Foobar.jpg">Foobar.jpg</a><br />
+some <b>caption</b> <a href="/wiki/Main_Page" title="Main Page">Main Page</a>
+</p>
+			</div>
+		</div></td>
+		<td><div class="gallerybox" style="width: 155px;">
+			<div class="thumb" style="padding: 66px 0; width: 150px;"><div style="margin-left: auto; margin-right: auto; width: 120px;"><a href="/wiki/File:Foobar.jpg" class="image"><img alt="Foobar.jpg" src="http://example.com/images/3/3a/Foobar.jpg" width="120" height="14" /></a></div></div>
+			<div class="gallerytext">
+<p><a href="/wiki/File:Foobar.jpg" title="File:Foobar.jpg">Foobar.jpg</a><br />
+</p>
+			</div>
+		</div></td>
+	</tr>
+</table>
+
+!! end
+
+!! test
 HTML Hex character encoding (spells the word "JavaScript")
 !! input
 &#x4A;&#x061;&#x0076;&#x00061;&#x000053;&#x0000063;&#114;&#x0000069;&#00000112;&#x0000000074;
@@ -6377,6 +6523,15 @@ Double ISBN
 ISBN ISBN 1234567890
 !! result
 <p>ISBN <a href="/wiki/Special:BookSources/1234567890" class="internal mw-magiclink-isbn">ISBN 1234567890</a>
+</p>
+!! end
+
+!! test
+Bug 22905: <abbr> followed by ISBN followed by </a>
+!! input
+<abbr>(fr)</abbr> ISBN 2753300917 [http://www.example.com example.com]
+!! result
+<p><abbr>(fr)</abbr> <a href="/wiki/Special:BookSources/2753300917" class="internal mw-magiclink-isbn">ISBN 2753300917</a> <a href="http://www.example.com" class="external text" rel="nofollow">example.com</a>
 </p>
 !! end
 
@@ -6494,12 +6649,10 @@ disabled
 # Images with the "|" character in external URLs in comment tags; Eats half the comment, leaves unmatched "</a>" tag.
 !! test
 Images with the "|" character in the comment
-!! options
-disabled
 !! input
 [[image:Foobar.jpg|thumb|An [http://test/?param1=|left|&param2=|x external] URL]]
 !! result
-<div class="thumb tright"><div class="thumbinner" style="width:182px;"><a href="/wiki/File:Foobar.jpg" class="image"><img alt="An external URL" src="http://example.com/images/3/3a/Foobar.jpg" width="180" height="20" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="/wiki/File:Foobar.jpg" class="internal" title="Enlarge"><img src="/skins/common/images/magnify-clip.png" width="15" height="11" alt="" /></a></div>An <a href="http://test/?param1=|left|&amp;param2=|x" class="external text" rel="nofollow">external</a> URL</div></div></div>
+<div class="thumb tright"><div class="thumbinner" style="width:182px;"><a href="/wiki/File:Foobar.jpg" class="image"><img alt="" src="http://example.com/images/3/3a/Foobar.jpg" width="180" height="20" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="/wiki/File:Foobar.jpg" class="internal" title="Enlarge"><img src="/skins/common/images/magnify-clip.png" width="15" height="11" alt="" /></a></div>An <a href="http://test/?param1=%7Cleft%7C&amp;param2=%7Cx" class="external text" rel="nofollow">external</a> URL</div></div></div>
 
 !!end
 
@@ -6551,12 +6704,14 @@ subpage title=[[Subpage test/L1/L2/L3]]
 !! test
 Parents of subpages, two levels up
 !! options
-disabled
 subpage title=[[Subpage test/L1/L2/L3]]
 !! input
 [[../../|L1]]2
+
+[[../../|L1]]l
 !! result
-<p><a href="/index.php?title=Subpage_test/L1&amp;action=edit&amp;redlink=1" class="new" title="Subpage test/L1 (page does not exist)">L1</a>
+<p><a href="/index.php?title=Subpage_test/L1&amp;action=edit&amp;redlink=1" class="new" title="Subpage test/L1 (page does not exist)">L1</a>2
+</p><p><a href="/index.php?title=Subpage_test/L1&amp;action=edit&amp;redlink=1" class="new" title="Subpage test/L1 (page does not exist)">L1l</a>
 </p>
 !! end
 
@@ -7253,6 +7408,20 @@ Line two
 
 !! end
 
+!! test
+Nesting tags, paragraphs on lines which begin with <div>
+!! options
+disabled
+!! input
+<div></div><strong>A
+B</strong>
+!! result
+<div></div>
+<p><strong>A
+B</strong>
+</p>
+!! end
+
 # Bug 6200: <blockquote> should behave like <div> with respect to line breaks
 !! test
 Bug 6200: paragraphs inside blockquotes (no extra line breaks)
@@ -7731,7 +7900,46 @@ Screen
 <p>this is not the the title
 </p>
 !! end
+ 
+!! test
+preload: check <noinclude> and <includeonly>
+!! options
+preload
+!! input
+Hello <noinclude>cruel</noinclude><includeonly>kind</includeonly> world.
+!! result
+Hello kind world.
+!! end
+ 
+!! test
+preload: check <onlyinclude>
+!! options
+preload
+!! input
+Goodbye <onlyinclude>Hello world</onlyinclude>
+!! result
+Hello world
+!! end
 
+!! test
+preload: can pass tags through if we want to
+!! options
+preload
+!! input
+<includeonly><</includeonly>includeonly>Hello world<includeonly><</includeonly>/includeonly>
+!! result
+<includeonly>Hello world</includeonly>
+!! end
+
+!! test
+preload: check that it doesn't try to do tricks
+!! options
+preload
+!! input
+* <!-- Hello --> ''{{world}}'' {{<includeonly>subst:</includeonly>How are you}}{{ {{{|safesubst:}}} #if:1|2|3}}
+!! result
+* <!-- Hello --> ''{{world}}'' {{subst:How are you}}{{ {{{|safesubst:}}} #if:1|2|3}}
+!! end
 
 TODO:
 more images

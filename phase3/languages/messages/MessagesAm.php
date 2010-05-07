@@ -9,6 +9,7 @@
  *
  * @author Codex Sinaiticus
  * @author Elfalem
+ * @author Romaine
  * @author Solomon
  * @author Teferra
  */
@@ -58,7 +59,6 @@ $messages = array(
 'tog-editsectiononrightclick' => 'የክፍል አርዕስት ላይ በቀኝ በመጫን ክፍል ማረምን አስችል (JavaScript)',
 'tog-showtoc'                 => 'ከ3 አርዕስቶች በላይ ሲሆን የማውጫ ሰንጠረዥ ይታይ',
 'tog-rememberpassword'        => 'መግባቴን እዚህ አስሊ ላይ አስታውስ',
-'tog-editwidth'               => 'የማረሚያ ሳጥን ሙሉ ስፋት አለው',
 'tog-watchcreations'          => 'እኔ የፈጠርኳቸውን ገጾች ወደምከታተላቸው ገጾች ዝርዝር ውስጥ ጨምር',
 'tog-watchdefault'            => 'ያረምኳቸውን ገጾች ወደምከታተላቸው ገጾች ዝርዝር ውስጥ ጨምር',
 'tog-watchmoves'              => 'ያዛወርኳቸውን ገጾች ወደምከታተላቸው ገጾች ዝርዝር ውስጥ ጨምር',
@@ -160,7 +160,7 @@ $messages = array(
 'category-file-count-limited'    => 'በዚሁ መደብ ውስጥ {{PLURAL:$1|የሚከተለው ፋይል አለ|የሚከተሉት $1 ፋይሎች አሉ}}።',
 'listingcontinuesabbrev'         => '(ተቀጥሏል)',
 
-'mainpagetext'      => "<big>'''MediaWiki በትክክል ማስገባቱ ተከናወነ።'''</big>",
+'mainpagetext'      => "'''MediaWiki በትክክል ማስገባቱ ተከናወነ።'''",
 'mainpagedocfooter' => "ስለ ዊኪ ሶፍትዌር ጥቅም ለመረዳት፣ [http://meta.wikimedia.org/wiki/Help:Contents User's Guide] ያንብቡ።
 
 == ለመጀመር ==
@@ -502,7 +502,7 @@ $2",
 'summary-preview'                  => 'የማጠቃለያ ቅድመ እይታ:',
 'subject-preview'                  => 'የአርእስት ቅድመ-ዕይታ',
 'blockedtitle'                     => 'አባል ተከለክሏል',
-'blockedtext'                      => "<big>'''የርስዎ ብዕር ስም ወይም ቁጥር አድራሻ ከማዘጋጀት ተከለክሏል።'''</big>
+'blockedtext'                      => "'''የርስዎ ብዕር ስም ወይም ቁጥር አድራሻ ከማዘጋጀት ተከለክሏል።'''
 
 በእርስዎ ላይ ማገጃ የጣለው መጋቢ $1 ነበረ። ምክንያቱም፦ ''$2''
 
@@ -830,7 +830,7 @@ $1ን ወይም ማንም ሌላ [[{{MediaWiki:Grouppage-sysop}}|መጋቢ]] ስ
 'yournick'                  => 'ቁልምጫ ስም (ለፊርማ)',
 'badsig'                    => 'ትክክለኛ ያልሆነ ጥሬ ፊርማ፤ HTML ተመልከት።',
 'badsiglength'              => 'ያ ቁልምጫ ስም ከመጠን በላይ ይረዝማል፤ ከ$1 ፊደል በታች መሆን አለበት።',
-'yourgender'                => ' ሥርዓተ ጾታ',
+'yourgender'                => 'ሥርዓተ ጾታ',
 'gender-unknown'            => ' አታምር',
 'gender-male'               => 'ወንድ',
 'gender-female'             => ' ሴት',
@@ -1522,7 +1522,7 @@ $NEWPAGE
 'undeletedrevisions-files'   => '{{PLURAL:$1|1 ዕትም|$1 ዕትሞች}} እና {{PLURAL:$2|1 ፋይል|$2 ፋይሎች}} መለሰ',
 'undeletedfiles'             => '{{PLURAL:$1|1 ፋይል|$1 ፋይሎች}} መለሰ',
 'cannotundelete'             => 'መመለሱ አልተከናወነም፤ ምናልባት ሌላ ሰው ገጹን አስቀድሞ መልሶታል።',
-'undeletedpage'              => "<big>'''$1 ተመልሷል'''</big>
+'undeletedpage'              => "'''$1 ተመልሷል'''
 
 በቅርብ የጠፉና የተመለሱ ገጾች ለማመልከት [[Special:Log/delete|የማጥፋቱን መዝገብ]] ይዩ።",
 'undelete-header'            => 'በቅርብ ግዜ የተደለዙትን ገጾች ለማመልከት [[Special:Log/delete|የማጥፋቱን መዝገብ]] ይዩ።',
@@ -1699,7 +1699,7 @@ $1 አሁን ገና ታግዷል። ዝርዝሩን ማስተካከል ፈለጉ
 'move-watch'                => 'ይህ ገጽ በተከታተሉት ገጾች ይጨመር',
 'movepagebtn'               => 'ገጹ ይዛወር',
 'pagemovedsub'              => 'መዛወሩ ተከናወነ',
-'movepage-moved'            => "<big>'''«$1» ወደ «$2» ተዛውሯል'''</big>",
+'movepage-moved'            => "'''«$1» ወደ «$2» ተዛውሯል'''",
 'articleexists'             => 'በዚያ አርዕሥት ሌላ ገጽ አሁን አለ። አለበለዚያ የመረጡት ስም ልክ አይደለም - ሌላ አርእስት ይምረጡ።',
 'cantmove-titleprotected'   => 'አዲሱ አርዕስት ከመፈጠር ስለተጠበቀ፣ ገጽ ወደዚያው ሥፍራ ለማዛወር አይችሉም።',
 'talkexists'                => "'''ገጹ ወደ አዲሱ አርዕስት ተዛወረ፤ እንጂ በአዲሱ አርዕስት የቆየ ውይይት ገጽ አስቀድሞ ስለ ኖረ የዚህ ውይይት ገጽ ሊዛወር አልተቻለም። እባክዎ፣ በእጅ ያጋጥሙአቸው።'''",

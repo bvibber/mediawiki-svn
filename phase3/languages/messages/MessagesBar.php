@@ -30,7 +30,6 @@ $messages = array(
 'tog-showtoolbar'            => 'Bearbatn-Werkzeugleiste oozoang',
 'tog-editondblclick'         => 'Seitn mid am Doppiklick beåaweitn (JavaScript wiad braucht)',
 'tog-editsection'            => 'Links zum Beåaweitn vu de anzlnen Åbschnitte ãnzoang',
-'tog-editwidth'              => "Eingåbeföid erweitan, damid's in gãnzn Büidschiam ausfüid",
 'tog-watchcreations'         => 'Vu mia söiwa nei eigstöide Seitn automatisch beobåchtn',
 'tog-watchdefault'           => 'Vu mia söiwa beåabeitete und vu mia nei eigstöide Seitn automatisch beobåchtn',
 'tog-watchmoves'             => 'Vu mia söiwa vaschomne Seitn automatisch beobåchtn',
@@ -116,7 +115,7 @@ $messages = array(
 'index-category'                 => 'Indiziade Seitn',
 'noindex-category'               => 'Ned indiziade Seitn',
 
-'mainpagetext'      => "<big>'''MediaWiki is eafoigreich installiad woan.'''</big>",
+'mainpagetext'      => "'''MediaWiki is eafoigreich installiad woan.'''",
 'mainpagedocfooter' => 'A Huif zua Benutzung und Konfiguration vo da Wiki-Software findst im [http://meta.wikimedia.org/wiki/Help:Contents Benutzerhandbuch].
 * [https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce Mailingliste neuer MediaWiki-Versionen]',
 
@@ -898,7 +897,7 @@ Bittschee gib außadem druntn in '''neichn''' Nãm vu da Seitn ei und schreib ku
 'move-watch'             => 'De Seitn beobachten',
 'movepagebtn'            => 'Seitn vaschiam',
 'pagemovedsub'           => "s'Vaschiam håd highaud",
-'movepage-moved'         => "<big>'''D'Seitn „$1“ is nåch „$2“ vaschom woan.'''</big>",
+'movepage-moved'         => "'''D'Seitn „$1“ is nåch „$2“ vaschom woan.'''",
 'articleexists'          => 'Unter dem Nam existiert bereits a Seitn.
 Bitte nehmans an andern Nam.',
 'talkexists'             => "D'Seitn söiwa is eafoigreich vaschom woan, de dazuaghearade Diskussionsseitn åwa ned, weu's unta dea iahm neichn Nãm schãu a Seitn gibt. Bittschee kümmat di händisch um's Zsãmmfüahn.",

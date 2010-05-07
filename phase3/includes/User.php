@@ -62,7 +62,6 @@ class User {
 		'editsectiononrightclick',
 		'showtoc',
 		'rememberpassword',
-		'editwidth',
 		'watchcreations',
 		'watchdefault',
 		'watchmoves',
@@ -600,20 +599,31 @@ class User {
 	 * either by batch processes or by user accounts which have
 	 * already been created.
 	 *
-	 * Additional character blacklisting may be added here
-	 * rather than in isValidUserName() to avoid disrupting
-	 * existing accounts.
+	 * Additional blacklisting may be added here rather than in 
+	 * isValidUserName() to avoid disrupting existing accounts.
 	 *
 	 * @param $name \string String to match
 	 * @return \bool True or false
 	 */
 	static function isCreatableName( $name ) {
 		global $wgInvalidUsernameCharacters;
-		return
-			self::isUsableName( $name ) &&
 
-			// Registration-time character blacklisting...
-			!preg_match( '/[' . preg_quote( $wgInvalidUsernameCharacters, '/' ) . ']/', $name );
+		// Ensure that the username isn't longer than 235 bytes, so that
+		// (at least for the builtin skins) user javascript and css files
+		// will work. (bug 23080)
+		if( strlen( $name ) > 235 ) {
+			wfDebugLog( 'username', __METHOD__ .
+				": '$name' invalid due to length" );
+			return false;
+		}
+
+		if( preg_match( '/[' . preg_quote( $wgInvalidUsernameCharacters, '/' ) . ']/', $name ) ) {
+			wfDebugLog( 'username', __METHOD__ .
+				": '$name' invalid due to wgInvalidUsernameCharacters" );
+			return false;
+		}
+
+		return self::isUsableName( $name );
 	}
 
 	/**
@@ -2850,7 +2860,7 @@ class User {
 			return EDIT_TOKEN_SUFFIX;
 		} else {
 			if( !isset( $_SESSION['wsEditToken'] ) ) {
-				$token = $this->generateToken();
+				$token = self::generateToken();
 				$_SESSION['wsEditToken'] = $token;
 			} else {
 				$token = $_SESSION['wsEditToken'];
@@ -2868,7 +2878,7 @@ class User {
 	 * @param $salt \string Optional salt value
 	 * @return \string The new random token
 	 */
-	function generateToken( $salt = '' ) {
+	public static function generateToken( $salt = '' ) {
 		$token = dechex( mt_rand() ) . dechex( mt_rand() );
 		return md5( $token . $salt );
 	}
@@ -2967,7 +2977,7 @@ class User {
 		$now = time();
 		$expires = $now + 7 * 24 * 60 * 60;
 		$expiration = wfTimestamp( TS_MW, $expires );
-		$token = $this->generateToken( $this->mId . $this->mEmail . $expires );
+		$token = self::generateToken( $this->mId . $this->mEmail . $expires );
 		$hash = md5( $token );
 		$this->load();
 		$this->mEmailToken = $hash;
@@ -3602,8 +3612,8 @@ class User {
 	 * Used by things like CentralAuth and perhaps other authplugins.
 	 */
 	public function addNewUserLogEntryAutoCreate() {
-		global $wgNewUserLog;
-		if( empty( $wgNewUserLog ) ) {
+		global $wgNewUserLog, $wgLogAutocreatedAccounts;
+		if( !$wgNewUserLog || !$wgLogAutocreatedAccounts ) {
 			return true; // disabled
 		}
 		$log = new LogPage( 'newusers', false );

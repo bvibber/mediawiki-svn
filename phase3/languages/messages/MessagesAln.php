@@ -10,6 +10,7 @@
  * @author Bresta
  * @author Cradel
  * @author Dardan
+ * @author Mdupont
  */
 
 $fallback = 'sq';
@@ -77,7 +78,6 @@ $messages = array(
 'tog-editsectiononrightclick' => 'Lejo redaktimin e seksioneve tue klikue me të djathtë mbi titull (JavaScript)',
 'tog-showtoc'                 => 'Trego përmbajtjen<br />(për faqet me mâ shum se 3 tituj)',
 'tog-rememberpassword'        => 'Ruej fjalëkalimin në këtë kompjuter',
-'tog-editwidth'               => 'Zgjâno kutinë për redaktim sa krejt ekrani',
 'tog-watchcreations'          => 'Shtoji në listë mbikëqyrëse faqet që i krijoj vetë',
 'tog-watchdefault'            => 'Shtoji në listë mbikëqyrëse faqet që i redaktoj',
 'tog-watchmoves'              => 'Shtoji në listë mbikëqyrëse faqet që i zhvendosi',
@@ -182,7 +182,7 @@ $messages = array(
 'category-file-count-limited'    => '{{PLURAL:$1|Kjo skedë âsht|$1 skeda janë}} në këtë kategori.',
 'listingcontinuesabbrev'         => 'vazh.',
 
-'mainpagetext'      => "<big>'''MediaWiki software u instalue me sukses.'''</big>",
+'mainpagetext'      => "'''MediaWiki software u instalue me sukses.'''",
 'mainpagedocfooter' => 'Për mâ shumë informata rreth përdorimit të softwareit wiki, ju lutem shikoni [http://meta.wikimedia.org/wiki/Help:Contents dokumentacionin].
 
 
@@ -610,7 +610,7 @@ Nëse klikoni në regjistro prap, redaktimi juej do të ruhet pa tê.",
 'summary-preview'                  => 'Parapâmja e përmbledhjes:',
 'subject-preview'                  => 'Parapâmja e temës/kryetitullit:',
 'blockedtitle'                     => 'Përdoruesi âsht i bllokuem',
-'blockedtext'                      => "<big>'''Llogaria juej apo adresa IP âsht bllokue.'''</big>
+'blockedtext'                      => "'''Llogaria juej apo adresa IP âsht bllokue.'''
 
 Bllokim âsht bâ prej $1.
 Arsyeja e dhânë âsht ''$2''.
@@ -735,8 +735,8 @@ Administruesi që e ka mshelë e ka dhânë këtë shpjegim: $1",
 'semiprotectedpagewarning'         => "'''Shenim:''' Kjo faqe âsht e mshelun dhe mundet me u redaktue vetëm prej përdoruesve të regjistruem.",
 'cascadeprotectedwarning'          => "'''Veni re:''' Kjo faqe âsht e mshelun dhe vetëm përdoruesit me tagër administruesi munden me e redaktue, tue qenë se âsht e përfshime në mbrojtje mvarësie në {{PLURAL:$1|faqen e|faqet e}} mâposhtme:",
 'titleprotectedwarning'            => "'''Veni re:  Kjo faqe âsht e mshelun dhe vetëm përdorues me [[Special:ListGroupRights|tagër të veçantë]] munden me e krijue.'''",
-'templatesused'                    => 'Stampat e përdoruna në këtë faqe:',
-'templatesusedpreview'             => 'Stampat e përdoruna në këtë parapâmje:',
+'templatesused'                    => '{{PLURAL:$1|Stamp|Stampa}} janë përdorë në kët faqe:',
+'templatesusedpreview'             => '{{PLURAL:$1|Stamp|Stampa}} janë përdorë në këtë parapâmje:',
 'templatesusedsection'             => 'Stampat e përdoruna në këtë sekcion:',
 'template-protected'               => '(e mbrojtme)',
 'template-semiprotected'           => '(gjysë-mbrojtun)',
@@ -1116,7 +1116,7 @@ Shih $2 për regjistrin e fshimjeve të fundit.',
 'protectedarticle'            => '"[[$1]]" i mbrojtun',
 'modifiedarticleprotection'   => 'ndryshue nivelin e mbrojtjes të "[[$1]]"',
 'protect-legend'              => 'Konfirmoni',
-'protectcomment'              => 'Arsyja:',
+'protectcomment'              => 'Arsyeja:',
 'protectexpiry'               => 'Afáti',
 'protect_expiry_invalid'      => 'Data e skadimit asht e pasaktë.',
 'protect_expiry_old'          => 'Data e skadimit asht në kohën kalueme.',
@@ -1213,7 +1213,7 @@ Në këto raste, duheni me i bashkue manualisht këto faqe nëse dëshironi.",
 'move-watch'       => 'Mbikqyre kët faqe',
 'movepagebtn'      => 'Zhvendose faqen',
 'pagemovedsub'     => 'Zhvendosja u kry',
-'movepage-moved'   => '<big>\'\'\'"$1" âsht zhvendosë te "$2"\'\'\'</big>',
+'movepage-moved'   => '\'\'\'"$1" âsht zhvendosë te "$2"\'\'\'',
 'articleexists'    => 'Nji faqe me këtë titull tashmâ ekziston, apo keni zgjedhë nji titull të pavlefshëm.
 Ju lutemi zgjedhni nji titull tjetër.',
 'talkexists'       => "'''Vetë faqja u zhvendos me sukses, por faqja e diskutimit nuk mujti me u zhvendosë sepse tashmâ ekziston te titulli i ri.
@@ -1257,6 +1257,7 @@ Ju lutemi bashkoni manualisht.'''",
 'tooltip-search-fulltext'         => 'Kërko faqet me këtë tekst',
 'tooltip-p-logo'                  => 'Shko te faqja kryesore',
 'tooltip-n-mainpage'              => 'Shko te faqja kryesore',
+'tooltip-n-mainpage-description'  => 'Vizito faqen kryesore',
 'tooltip-n-portal'                => 'Rreth projektit, çka mundeni me bâ, ku gjinden gjânat.',
 'tooltip-n-currentevents'         => 'Informacion mâ i thukët rreth ndodhive aktuale',
 'tooltip-n-recentchanges'         => 'Lista e ndryshimeve të freskëta në wiki',

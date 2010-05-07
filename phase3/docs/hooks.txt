@@ -731,11 +731,20 @@ $from: address of sending user
 $subject: subject of the mail
 $text: text of the mail
 
+'EmailUserCC': before sending the copy of the email to the author
+$to: address of receiving user
+$from: address of sending user
+$subject: subject of the mail
+$text: text of the mail
+
 'EmailUserComplete': after sending email from one user to another
 $to: address of receiving user
 $from: address of sending user
 $subject: subject of the mail
 $text: text of the mail
+
+'EmailUserForm': after building the email user form object
+$form: HTMLForm object
 
 'EmailUserPermissionsErrors': to retrieve permissions errors for emailing a user.
 $user: The user who is trying to email another user.
@@ -964,14 +973,14 @@ $linkType: The external link type
 
 'LinksUpdate': At the beginning of LinksUpdate::doUpdate() just before the
 actual update
-&$linksUpdate: the LinkUpdate object
+&$linksUpdate: the LinksUpdate object
 
 'LinksUpdateComplete': At the end of LinksUpdate::doUpdate() when updating has
 completed
-&$linksUpdate: the LinkUpdate object
+&$linksUpdate: the LinksUpdate object
 
 'LinksUpdateConstructed': At the end of LinksUpdate() is contruction.
-&$linksUpdate: the LinkUpdate object
+&$linksUpdate: the LinksUpdate object
 
 'ListDefinedTags': When trying to find all defined tags.
 &$tags: The list of tags.
@@ -1463,6 +1472,11 @@ $movePage: MovePageForm object
 $oldTitle: old title (object)
 $newTitle: new title (object)
 
+'SpecialNewpagesConditions': called when building sql query for Special:NewPages
+&$special: NewPagesPager object (subclass of ReverseChronologicalPager)
+$opts: FormOptions object containing special page options
+&$conds: array of WHERE conditionals for query
+
 'SpecialPage_initList': called when setting up SpecialPage::$mList, use this
 hook to remove a core special page
 $list: list (array) of core special pages
@@ -1489,9 +1503,13 @@ SpecialRecentChanges
 $opts: FormOptions for this request
 &$query_options: array of options for the database request
 
+'SpecialSearchGomatch': called when user clicked the "Go" button and the target
+exists
+&$title: title object generated from the text entred by the user
+
 'SpecialSearchNogomatch': called when user clicked the "Go" button but the
 target doesn't exist
-$title: title object generated from the text entred by the user
+&$title: title object generated from the text entred by the user
 
 'SpecialSearchProfiles': allows modification of search profiles
 &$profiles: profiles, which can be modified.
@@ -1764,13 +1782,6 @@ authentification timestamp
 'UserToggles': called when initialising User::$mToggles, use this to add
 new toggles
 $toggles: array of toggles to add
-
-'VectorTemplateToolboxEnd': Called by Vector skin after toolbox links have
-been rendered (useful for adding more)
-Note: this is only run for the Vector skin.  To add items to the toolbox
-for all 'SkinTemplate'-type skins, use the SkinTemplateToolboxEnd hook
-instead.
-$tools: array of tools
 
 'WantedPages::getSQL': called in WantedPagesPage::getSQL(), can be used to
 alter the SQL query which gets the list of wanted pages

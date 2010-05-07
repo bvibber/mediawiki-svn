@@ -475,8 +475,10 @@ abstract class ApiBase {
 		$params = $this->getFinalParams();
 		$results = array();
 
-		foreach ( $params as $paramName => $paramSettings ) {
-			$results[$paramName] = $this->getParameterFromSettings( $paramName, $paramSettings, $parseLimit );
+		if ( $params ) { // getFinalParams() can return false
+			foreach ( $params as $paramName => $paramSettings ) {
+				$results[$paramName] = $this->getParameterFromSettings( $paramName, $paramSettings, $parseLimit );
+			}
 		}
 
 		return $results;
@@ -531,6 +533,64 @@ abstract class ApiBase {
 		}
 
 		return $mValidNamespaces;
+	}
+
+	/**
+	 * Return true if we're to watch the page, false if not, null if no change.
+	 * @param $watchlist String Valid values: 'watch', 'unwatch', 'preferences', 'nochange'
+	 * @param $titleObj Title the page under consideration
+	 * @param $userOption The user option to consider when $watchlist=preferences. 
+	 * 	If not set will magically default to either watchdefault or watchcreations
+	 * @returns mixed
+	 */
+	protected function getWatchlistValue ( $watchlist, $titleObj, $userOption = null ) {
+		switch ( $watchlist ) {
+			case 'watch':
+				return true;
+
+			case 'unwatch':
+				return false;
+
+			case 'preferences':
+				global $wgUser;
+				# If the user is already watching, don't bother checking
+				if ( $titleObj->userIsWatching() ) {
+					return null;
+				}
+				# If no user option was passed, use watchdefault or watchcreation
+				if ( is_null( $userOption ) ) {
+					$userOption = $titleObj->exists()
+						? 'watchdefault' : 'watchcreations';
+				}
+				# If the corresponding user option is true, watch, else no change
+				return $wgUser->getOption( $userOption ) ? true : null;
+
+			case 'nochange':
+				return null;
+
+			default:
+				return null;
+		}
+	}
+
+	/**
+	 * Set a watch (or unwatch) based the based on a watchlist parameter.
+	 * @param $watch String Valid values: 'watch', 'unwatch', 'preferences', 'nochange'
+	 * @param $titleObj Title the article's title to change
+	 * @param $userOption The user option to consider when $watch=preferences
+	 */
+	protected function setWatch ( $watch, $titleObj, $userOption = null ) {
+		$value = $this->getWatchlistValue( $watch, $titleObj, $userOption );
+		if ( $value === null ) {
+			return;
+		}
+
+		$articleObj = new Article( $titleObj );
+		if ( $value ) {
+			$articleObj->doWatch();
+		} else {
+			$articleObj->doUnwatch();
+		}
 	}
 
 	/**
@@ -645,9 +705,9 @@ abstract class ApiBase {
 						$value = wfTimestamp( TS_MW, $value );
 						break;
 					case 'user':
-						if( !is_array( $value ) ) $value = array( $value );
+						if ( !is_array( $value ) ) $value = array( $value );
 						
-						foreach( $value as $key => $val ) {
+						foreach ( $value as $key => $val ) {
 							$title = Title::makeTitleSafe( NS_USER, $val );
 							if ( is_null( $title ) ) {
 								$this->dieUsage( "Invalid value for user parameter $encParamName", "baduser_{$encParamName}" );
@@ -655,7 +715,7 @@ abstract class ApiBase {
 							$value[$key] = $title->getText();
 						}
 						
-						if( !$multi ) $value = $value[0];
+						if ( !$multi ) $value = $value[0];
 						
 						break;
 					default:
@@ -848,6 +908,8 @@ abstract class ApiBase {
 		'ipb_blocked_as_range' => array( 'code' => 'blockedasrange', 'info' => "IP address ``\$1'' was blocked as part of range ``\$2''. You can't unblock the IP invidually, but you can unblock the range as a whole." ),
 		'ipb_cant_unblock' => array( 'code' => 'cantunblock', 'info' => "The block you specified was not found. It may have been unblocked already" ),
 		'mailnologin' => array( 'code' => 'cantsend', 'info' => "You are not logged in, you do not have a confirmed e-mail address, or you are not allowed to send e-mail to other users, so you cannot send e-mail" ),
+		'ipbblocked' => array( 'code' => 'ipbblocked', 'info' => 'You cannot block or unblock users while you are yourself blocked' ),
+		'ipbnounblockself' => array( 'code' => 'ipbnounblockself', 'info' => 'You are not allowed to unblock yourself' ),
 		'usermaildisabled' => array( 'code' => 'usermaildisabled', 'info' => "User email has been disabled" ),
 		'blockedemailuser' => array( 'code' => 'blockedfrommail', 'info' => "You have been blocked from sending e-mail" ),
 		'notarget' => array( 'code' => 'notarget', 'info' => "You have not specified a valid target for this action" ),
@@ -927,8 +989,7 @@ abstract class ApiBase {
 		'invalid-session-key' => array( 'code' => 'invalid-session-key', 'info' => 'Not a valid session key' ),
 		'nouploadmodule' => array( 'code' => 'nouploadmodule', 'info' => 'No upload module set' ),
 		'uploaddisabled' => array( 'code' => 'uploaddisabled', 'info' => 'Uploads are not enabled.  Make sure $wgEnableUploads is set to true in LocalSettings.php and the PHP ini setting file_uploads is true' ),
-		'chunked-error' => array( 'code' => 'chunked-error', 'info' => 'There was a problem initializing the chunked upload.' ),
-		'chunk-init-error' => array( 'code' => 'chunk-init-error', 'info' => 'Insufficient information for initialization.' ),
+		'copyuploaddisabled' => array( 'code' => 'copyuploaddisabled', 'info' => 'Uploads by URL is not enabled.  Make sure $wgAllowCopyUploads is set to true in LocalSettings.php.' ),
 	);
 
 	/**

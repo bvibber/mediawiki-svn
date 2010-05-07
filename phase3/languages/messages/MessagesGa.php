@@ -106,7 +106,6 @@ $messages = array(
 'tog-editsectiononrightclick' => 'Cumasaigh mír-eagarthóireacht le deaschliceáil<br /> ar ceannteidil (JavaScript)',
 'tog-showtoc'                 => "Taispeáin an clár ábhair (d'ailt le níos mó ná 3 ceannteidil)",
 'tog-rememberpassword'        => "Cuimhnigh ar m'fhocal faire ar an ríomhaire seo",
-'tog-editwidth'               => 'Cuir uasmhéid ar an mbosca eagair',
 'tog-watchcreations'          => 'Cuir ar mo liosta faire leathanaigh a chruthaím',
 'tog-watchdefault'            => 'Déan faire ar leathanaigh a athraím',
 'tog-watchmoves'              => 'Cuir ar mo liosta faire leathanaigh a athainmnaím',
@@ -213,7 +212,7 @@ $messages = array(
 'category-file-count-limited'    => 'Tá {{PLURAL:$1|an comhad seo|$1 na comhaid seo}} a leanas sa chatagóir reatha.',
 'listingcontinuesabbrev'         => 'ar lean.',
 
-'mainpagetext'      => "<big>'''D'éirigh le suiteáil MediaWiki.'''</big>",
+'mainpagetext'      => "'''D'éirigh le suiteáil MediaWiki.'''",
 'mainpagedocfooter' => 'Féach ar [http://meta.wikimedia.org/wiki/MediaWiki_localisation doiciméid um conas an chomhéadán a athrú]
 agus an [http://meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide Lámhleabhar úsáideora] chun cabhair úsáide agus fíoraíochta a fháil.',
 
@@ -583,7 +582,7 @@ Chun d'iarratas logáil isteach a chríochnú, caithfidh tú focal faire nua a r
 'missingcommenttext'               => 'Cuir nóta tráchta isteach faoi seo, le do thoil.',
 'summary-preview'                  => 'Réamhamharc an achoimriú:',
 'blockedtitle'                     => 'Tá an úsáideoir seo faoi chosc',
-'blockedtext'                      => '<big>\'\'\'Chuir $1 cosc ar d’ainm úsáideora nó ar do sheoladh IP.\'\'\'</big>
+'blockedtext'                      => '\'\'\'Chuir $1 cosc ar d’ainm úsáideora nó ar do sheoladh IP.\'\'\'
 
 Is í seo an chúis a thugadh:<br />\'\'$2\'\'.<p>Is féidir leat teagmháil a dhéanamh le $1 nó le duine eile de na [[{{MediaWiki:Grouppage-sysop}}|riarthóirí]] chun an cosc a phlé.
 
@@ -1026,23 +1025,24 @@ Má theastáilann uait do chomhad a uaslódáil fós, téigh ar ais agus úsáid
 'listfiles_description' => 'Tuairisc',
 
 # File description page
-'file-anchor-link'          => 'Comhad',
-'filehist'                  => 'Stair comhad',
-'filehist-help'             => 'Clic ar dáta/am chun an comhad a radharc mar a bhí sé ar an am.',
-'filehist-deleteone'        => 'scrios',
-'filehist-current'          => 'reatha',
-'filehist-datetime'         => 'Dáta/Am',
-'filehist-thumbtext'        => 'Mionsamhail do leagan ó $1',
-'filehist-user'             => 'Úsáideoir',
-'filehist-dimensions'       => 'Toisí',
-'filehist-filesize'         => 'Méid an comhad',
-'filehist-comment'          => 'Nóta tráchta',
-'imagelinks'                => 'Naisc comhaid',
-'linkstoimage'              => 'Tá nasc chuig an gcomhad seo ar {{PLURAL:$1|na leathanaigh|$1 an leathanach}} seo a leanas:',
-'nolinkstoimage'            => 'Níl nasc ó aon leathanach eile don íomhá seo.',
-'sharedupload'              => 'Is uaslodáil roinnte atá ann sa comhad seo, as $1, agus is féidir le tionscadail eile é a úsáid.',
-'uploadnewversion-linktext' => 'Uaslódáil leagan nua den comhad seo',
-'shared-repo'               => 'comhstóráil',
+'file-anchor-link'                  => 'Comhad',
+'filehist'                          => 'Stair comhad',
+'filehist-help'                     => 'Clic ar dáta/am chun an comhad a radharc mar a bhí sé ar an am.',
+'filehist-deleteone'                => 'scrios',
+'filehist-current'                  => 'reatha',
+'filehist-datetime'                 => 'Dáta/Am',
+'filehist-thumbtext'                => 'Mionsamhail do leagan ó $1',
+'filehist-user'                     => 'Úsáideoir',
+'filehist-dimensions'               => 'Toisí',
+'filehist-filesize'                 => 'Méid an comhad',
+'filehist-comment'                  => 'Nóta tráchta',
+'imagelinks'                        => 'Naisc comhaid',
+'linkstoimage'                      => 'Tá nasc chuig an gcomhad seo ar {{PLURAL:$1|na leathanaigh|$1 an leathanach}} seo a leanas:',
+'nolinkstoimage'                    => 'Níl nasc ó aon leathanach eile don íomhá seo.',
+'sharedupload'                      => 'Is uaslodáil roinnte atá ann sa comhad seo, as $1, agus is féidir le tionscadail eile é a úsáid.',
+'uploadnewversion-linktext'         => 'Uaslódáil leagan nua den comhad seo',
+'shared-repo'                       => 'comhstóráil',
+'shared-repo-name-wikimediacommons' => 'an Cómhaoin Vicíméid',
 
 # File reversion
 'filerevert'                => 'Fill $1 ar ais',
@@ -1505,7 +1505,7 @@ IP nó ainm úsáideora a raibh faoi chosc roimhe seo.',
 'autoblocker'             => 'Coisceadh go huathoibríoch thú dá bharr gur úsáid an t-úsáideoir "[[User:$1|$1]]" do sheoladh IP le déanaí.
 Is é seo an chúis don chosc ar $1: "$2".',
 'blocklogpage'            => 'Cuntas_coisc',
-'blocklogentry'           => 'coisceadh [[$1]]; is é $2 an am éaga $3',
+'blocklogentry'           => 'coisceadh [[$1]]; am éaga $2. $3',
 'blocklogtext'            => 'Seo é cuntas de gníomhartha coisc úsáideoirí agus míchoisc úsáideoirí. Ní cuirtear
 seoltaí IP a raibh coiscthe go huathoibríoch ar an liosta seo. Féach ar an
 [[Special:IPBlockList|Liosta coisc IP]] chun
@@ -1575,7 +1575,7 @@ Sna cásanna sin, caithfidh tú an leathanach a aistrigh nó a chumasc tú féin
 'move-watch'              => 'Déan faire an leathanach seo',
 'movepagebtn'             => 'Athainmnigh an leathanach',
 'pagemovedsub'            => "D'éirigh leis an athainmniú",
-'movepage-moved'          => '<big>\'\'\'Athainmníodh "$1" mar "$2"\'\'\'</big>',
+'movepage-moved'          => '\'\'\'Athainmníodh "$1" mar "$2"\'\'\'',
 'articleexists'           => 'Tá leathanach leis an teideal seo ann cheana féin, nó níl an teideal a roghnaigh tú ina theideal bailí. Roghnaigh teideal eile le do thoil.',
 'talkexists'              => "'''D’athainmníodh an leathanach é féin go rathúil, ach ní raibh sé ar a chumas an leathanach phlé a hathainmniú dá bharr go bhfuil ceann ann cheana féin ag an teideal nua.'''<br />
 '''Báigh tusa féin iad.'''",

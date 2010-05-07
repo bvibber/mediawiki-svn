@@ -27,7 +27,6 @@ $messages = array(
 'tog-editsectiononrightclick' => 'Bölüm başlıına saa tuşla basarak bölümü düzmää izin ver.(JavaScript)',
 'tog-showtoc'                 => 'İçindäkiler tablițasını düz<br />(3-tän çok başlıı olan sayfalar için)',
 'tog-rememberpassword'        => 'Parolu hatırla',
-'tog-editwidth'               => 'Diiştirmää eri brauzer penceräsi büüklüktä olsun',
 'tog-watchcreations'          => 'Yarattıım sayfaları bakmaa listama ekle',
 'tog-watchdefault'            => 'Diişmäk yapılan sayfayı bakmaa listasına ekle',
 'tog-watchmoves'              => 'Bakmaa listama ekle o sayfaları angılarını taşıdım',
@@ -117,7 +116,7 @@ $messages = array(
 'category-empty'         => "''Bu kategoriyada henez bulunmêêr bir yazı yaki media.''",
 'listingcontinuesabbrev' => '(devam)',
 
-'mainpagetext'      => "<big>'''MediaWiki başarılan kuruldu.'''</big>",
+'mainpagetext'      => "'''MediaWiki başarılan kuruldu.'''",
 'mainpagedocfooter' => "Vikilän iş uurunda bilgi almaa için [http://meta.wikimedia.org/wiki/Help:Contents User's Guide] sayfasına bakınız
 
 == Eni başlayanlar için ==
@@ -380,7 +379,7 @@ O zamana kadar ani e-maildaki instrukțiyalar yapılmaycêk hem doorulanmaycêk 
 'summary-preview'            => 'Ön siir özeti:',
 'subject-preview'            => 'Konu/başlık ön siiri:',
 'blockedtitle'               => 'Kullanıcı kösteklendi.',
-'blockedtext'                => '<big>Kullanıcı adınız yaki parolunuz $1 tarafından kösteklendi.</big>
+'blockedtext'                => 'Kullanıcı adınız yaki parolunuz $1 tarafından kösteklendi.
 
 Sizi köstek edän önderci: $1. Köstek sebebi: \'\'$2\'\'.
 

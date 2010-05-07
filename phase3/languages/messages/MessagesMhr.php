@@ -50,6 +50,19 @@ $namespaceAliases = array(
 	'Обсуждение_категории' => NS_CATEGORY_TALK,
 );
 
+$specialPageAliases = array(
+	'Preferences'               => array( 'Келыштарымаш' ),
+	'Watchlist'                 => array( 'Эскерымаш лӱмер' ),
+	'Recentchanges'             => array( 'Пытартыш тӧрлатымаш-влак' ),
+	'Statistics'                => array( 'Иктешлымаш' ),
+	'Search'                    => array( 'Кычалмаш' ),
+);
+
+$magicWords = array(
+	'img_right'             => array( '1', 'пурла', 'справа', 'right' ),
+	'img_left'              => array( '1', 'шола', 'слева', 'left' ),
+);
+
 $messages = array(
 # User preference toggles
 'tog-underline'             => 'Кузе кылвер-влакым ӱлычын удыралаш?',
@@ -149,7 +162,7 @@ $messages = array(
 'category-article-count'   => '{{PLURAL:$2|Тиде категорийыш ик лаштык гына пура.|{{PLURAL:$1|Тыгай $1 лаштык|Тыгане $1 лаштык-влак}} тиде категорийыште, чыла $2.}}',
 'listingcontinuesabbrev'   => '(умбакыжым)',
 
-'mainpagetext' => "<big>'''MediaWiki сай шындыме.'''</big>",
+'mainpagetext' => "'''MediaWiki сай шындыме.'''",
 
 'about'         => 'Нерген',
 'article'       => 'Возымо лаштык',
@@ -685,7 +698,6 @@ $messages = array(
 'statistics-edits-average'     => 'Ик лаштыкым покшел тӧрлымӧ чот',
 'statistics-views-total'       => 'Чылажге ончымо',
 'statistics-views-peredit'     => 'Ик тӧрлатымашлан ончымо',
-'statistics-jobqueue'          => '[http://www.mediawiki.org/wiki/Manual:Job_queue Паша черетын] кужытшо',
 'statistics-users'             => 'Регистрацийым эртыше [[Special:ListUsers|пайдаланыше-влак]]',
 'statistics-users-active'      => 'Чӱчкыдын пайдаланыше-влак',
 'statistics-users-active-desc' => 'Пытартыш {{PLURAL:$1|кечыште|$1 кечыште}} иктаж-мом ыштыше пайаланыше-влак',
@@ -733,7 +745,7 @@ $messages = array(
 'allpagesfrom'   => 'Лукташ тыгай лӱман лаштык-влакым, кудыжо тӱҥалыт:',
 'allpagesto'     => 'кудыжо пытат:',
 'allarticles'    => 'Чыла лаштык-влак',
-'allpagessubmit' => 'Кай',
+'allpagessubmit' => 'Кычалаш',
 
 # Special:Categories
 'categories' => 'Категорий-влак',
@@ -917,7 +929,7 @@ $messages = array(
 'move-watch'                => 'Тиде лаштыкым эскераш',
 'movepagebtn'               => 'Лаштыкым кусараш',
 'pagemovedsub'              => 'Кусарымаш сайын эртен',
-'movepage-moved'            => '<big>\'\'\'"$1" лаштыкым "$2" лаштыкыш кусарыме\'\'\'</big>',
+'movepage-moved'            => '\'\'\'"$1" лаштыкым "$2" лаштыкыш кусарыме\'\'\'',
 'movepage-moved-redirect'   => 'Вес верек колтымаш ыштыме.',
 'movepage-moved-noredirect' => 'Вес верек колтымаш ыштыме огыл.',
 'articleexists'             => 'Тыгай лӱман лаштык уло але тиде лӱмым кучылташ огеш лий. Вес лӱмым ойыро.',
@@ -1065,7 +1077,7 @@ $messages = array(
 # Table pager
 'table_pager_next'         => 'Вес лаштык',
 'table_pager_prev'         => 'Ончычсо лаштык',
-'table_pager_limit_submit' => 'Кай',
+'table_pager_limit_submit' => 'Кычалаш',
 
 # Auto-summaries
 'autoredircomment' => '[[$1]] лаштыкыш колтымаш',

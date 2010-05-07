@@ -35,7 +35,6 @@ $messages = array(
 'tog-editsectiononrightclick' => 'Enable section editin bi richt-dabbin on section teitles (JavaScript)',
 'tog-showtoc'                 => 'Shaw table o contents (for pages wi mair nor 3 heidins)',
 'tog-rememberpassword'        => 'Mynd password ower sessions',
-'tog-editwidth'               => 'Edit box haes fou weenth',
 'tog-watchcreations'          => 'Add pages ye mak tar yer watchleet',
 'tog-watchdefault'            => 'Add pages ye edit tae yer watchleet',
 'tog-watchmoves'              => 'Eik pages A move tae ma watchleet',
@@ -141,7 +140,7 @@ $messages = array(
 'category-file-count-limited'    => 'The follaein {{PLURAL:$1|file is|$1 files is}} in this category.',
 'listingcontinuesabbrev'         => 'cont.',
 
-'mainpagetext'      => "<big>'''MediaWiki haes been installit wi speed.'''</big>",
+'mainpagetext'      => "'''MediaWiki haes been installit wi speed.'''",
 'mainpagedocfooter' => "Aks the [http://meta.wikimedia.org/wiki/Help:Contents Uiser's Manual] for speirins aboot using the wiki saftware.
 
 == Gettin startit ==
@@ -512,7 +511,7 @@ Ye dinna hae tae heed this message, if this accoont wis creatit by mistak.',
 'summary-preview'                  => 'Ootline leuk ower:',
 'subject-preview'                  => 'Subject/headline leuk ower:',
 'blockedtitle'                     => 'Uiser is blockit',
-'blockedtext'                      => '<big>\'\'\'Yer uisername or IP address haes been blockit.\'\'\'</big>
+'blockedtext'                      => '\'\'\'Yer uisername or IP address haes been blockit.\'\'\'
 
 The block was made bi $1. The raeson gien is \'\'$2\'\'.
 

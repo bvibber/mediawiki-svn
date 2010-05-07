@@ -28,7 +28,6 @@ $messages = array(
 'tog-editsectiononrightclick' => 'Ton ticpatlöx seccion pok clickám mii<br /> seccion titelám iti (JavaScript)',
 'tog-showtoc'                 => 'Cohuatlöx insacualte (páhinám bajlip 3 text corridór mii)',
 'tog-rememberpassword'        => 'Qualtiinii he quimx canj jan ordinator iti',
-'tog-editwidth'               => 'Cui ticpatlöx janvam',
 'tog-watchcreations'          => 'Plusöx páhinám he hun he listade cáminot',
 'tog-watchdefault'            => 'Plusöx páhinám he ticpatlöx he listade cáminot',
 'tog-watchmoves'              => 'Plusöx páhinám he yacom he listade cáminot',
@@ -119,7 +118,7 @@ $messages = array(
 'category-empty'         => "''Cayliib danjobam nihíl''",
 'listingcontinuesabbrev' => 'korb.',
 
-'mainpagetext' => "<big>'''MediaWiki coccebj installöx successua zo mii.'''</big>",
+'mainpagetext' => "'''MediaWiki coccebj installöx successua zo mii.'''",
 
 'about'         => 'Miixaz',
 'article'       => 'Artículo',
@@ -437,7 +436,7 @@ confirmom account zo coccebj de'me.",
 'summary-preview'           => 'Cuáxiitde abvuatl:',
 'subject-preview'           => 'Cuáxiitde subjectua/corridor:',
 'blockedtitle'              => 'Caitom blockámit',
-'blockedtext'               => "<big>'''Hexuatl jöx adressade IP cáablockom.'''</big>
+'blockedtext'               => "'''Hexuatl jöx adressade IP cáablockom.'''
 
 Block zo expondal $1. Rasonna zo coccebj: ''$2''.
 

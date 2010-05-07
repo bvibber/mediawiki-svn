@@ -42,8 +42,11 @@ class ApiQueryAllmessages extends ApiQueryBase {
 	public function execute() {
 		$params = $this->extractRequestParams();
 
-		if ( !is_null( $params['lang'] ) ) {
-			global $wgLang;
+		global $wgLang;
+		
+		$oldLang = null;
+		if ( !is_null( $params['lang'] ) && $params['lang'] != $wgLang->getCode() ) {
+			$oldLang = $wgLang; // Keep $wgLang for restore later
 			$wgLang = Language::factory( $params['lang'] );
 		}
 
@@ -120,6 +123,10 @@ class ApiQueryAllmessages extends ApiQueryBase {
 			}
 		}
 		$result->setIndexedTagName_internal( array( 'query', $this->getModuleName() ), 'message' );
+		
+		if ( !is_null( $oldLang ) ) {
+			$wgLang = $oldLang; // Restore $oldLang
+		}
 	}
 
 	public function getAllowedParams() {

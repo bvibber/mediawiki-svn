@@ -83,15 +83,6 @@ $ourdb['sqlite'] = array(
 	'serverless' =>  true
 );
 
-$ourdb['mssql'] = array(
-	'fullname'   => 'MSSQL',
-	'havedriver' => 0,
-	'compile'    => 'mssql_not_ready', # Change to 'mssql' after includes/DatabaseMssql.php added;
-	'bgcolor'    => '#ffc0cb',
-	'rootuser'   => 'administrator',
-	'serverless' => false
-);
-
 $ourdb['ibm_db2'] = array(
 	'fullname'   => 'DB2',
 	'havedriver' => 0,
@@ -613,9 +604,9 @@ print "<li style='font-weight:bold;color:green;font-size:110%'>Environment check
 		$conf->DBtype = $DefaultDBtype;
 	}
 
-	$conf->DBserver = importPost( "DBserver", "localhost" );
-	$conf->DBname = importPost( "DBname", "wikidb" );
-	$conf->DBuser = importPost( "DBuser", "wikiuser" );
+	$conf->DBserver = importPost( "DBserver", $wgDBserver );
+	$conf->DBname = importPost( "DBname", $wgDBname );
+	$conf->DBuser = importPost( "DBuser", $wgDBuser );
 	$conf->DBpassword = importPost( "DBpassword" );
 	$conf->DBpassword2 = importPost( "DBpassword2" );
 	$conf->SysopName = importPost( "SysopName", "WikiSysop" );
@@ -632,16 +623,12 @@ print "<li style='font-weight:bold;color:green;font-size:110%'>Environment check
 		importPost( "DBengine", "InnoDB" ) );
 
 	## Postgres specific:
-	$conf->DBport      = importPost( "DBport",      "5432" );
+	$conf->DBport      = importPost( "DBport",      $wgDBport );
 	$conf->DBts2schema = importPost( "DBts2schema", "public" );
 	$conf->DBpgschema  = importPost( "DBpgschema",  "mediawiki" );
 
 	## SQLite specific
 	$conf->SQLiteDataDir = importPost( "SQLiteDataDir", "$IP/../data" );
-
-	## MSSQL specific
-	// We need a second field so it doesn't overwrite the MySQL one
-	$conf->DBprefix2 = importPost( "DBprefix2" );
 
 	## DB2 specific:
 	// New variable in order to have a different default port number
@@ -831,10 +818,7 @@ if( $conf->posted && ( 0 == count( $errs ) ) ) {
 			$wgDBmwschema = $conf->DBdb2schema;
 		}
 
-		if( $conf->DBprefix2 != '' ) {
-			// For MSSQL
-			$wgDBprefix = $conf->DBprefix2;
-		} elseif( $conf->DBprefix_ora != '' ) {
+		if( $conf->DBprefix_ora != '' ) {
 			// For Oracle
 			$wgDBprefix = $conf->DBprefix_ora;
 		}
@@ -1020,7 +1004,8 @@ if( $conf->posted && ( 0 == count( $errs ) ) ) {
 						if ($wgDatabase->isOpen()) {
 							$wgDBOracleDefTS = $conf->DBdefTS_ora;
 							$wgDBOracleTempTS = $conf->DBtempTS_ora;
-							$wgDatabase->sourceFile( "../maintenance/ora/user.sql"  );
+							$res = $wgDatabase->sourceFile( "../maintenance/ora/user.sql"  );
+							if ($res !== true) dieout($res);
 						} else {
 							echo "<li>Invalid database superuser, please supply a valid superuser account.</li>";
 							echo "<li>ERR: ".print_r(oci_error(), true)."</li>";
@@ -1197,7 +1182,8 @@ if( $conf->posted && ( 0 == count( $errs ) ) ) {
 							print " <b class='error'>If the next step fails, see <a href='http://dev.mysql.com/doc/mysql/en/old-client.html'>http://dev.mysql.com/doc/mysql/en/old-client.html</a> for help.</b>";
 						}
 						print "</li>\n";
-						$wgDatabase->sourceFile( "../maintenance/users.sql" );
+						$res = $wgDatabase->sourceFile( "../maintenance/users.sql" );
+						if ($res !== true) dieout($res);
 					}
 				}
 			}
@@ -1229,11 +1215,19 @@ if( $conf->posted && ( 0 == count( $errs ) ) ) {
 				}
 			}
 
-			# FIXME: Check for errors
 			print "<li>Creating tables...";
 			if ($conf->DBtype == 'mysql') {
-				$wgDatabase->sourceFile( "../maintenance/tables.sql" );
-				$wgDatabase->sourceFile( "../maintenance/interwiki.sql" );
+				$res = $wgDatabase->sourceFile( "../maintenance/tables.sql" );
+				if ($res === true) {
+					print " done.</li>\n<li>Populating interwiki table... \n";
+					$res = $wgDatabase->sourceFile( "../maintenance/interwiki.sql" );
+				}
+				if ($res === true) {
+					print " done.</li>\n";
+				} else {
+					print " <b>FAILED</b></li>\n";
+					dieout( htmlspecialchars( $res ) );
+				}
 			} elseif (is_callable(array($wgDatabase, 'setup_database'))) {
 				$wgDatabase->setup_database();
 			}
@@ -1241,8 +1235,6 @@ if( $conf->posted && ( 0 == count( $errs ) ) ) {
 				$errs["DBtype"] = "Do not know how to handle database type '$conf->DBtype'";
 				continue;
 			}
-
-			print " done.</li>\n";
 
 
 			if ( $conf->DBtype == 'ibm_db2' ) {
@@ -1284,8 +1276,13 @@ if( $conf->posted && ( 0 == count( $errs ) ) ) {
 				} else {
 					# Yes, so run the grants
 					echo( "<li>" . htmlspecialchars( "Granting user permissions to $wgDBuser on $wgDBname..." ) );
-					$wgDatabase->sourceFile( "../maintenance/users.sql" );
-					echo( "success.</li>\n" );
+					$res = $wgDatabase->sourceFile( "../maintenance/users.sql" );
+					if ( $res === true ) {
+						echo( " success.</li>\n" );
+					} else {
+						echo( " <b>FAILED</b>.</li>\n" );
+						dieout( $res );
+					}
 				}
 			}
 
@@ -1659,19 +1656,6 @@ if( count( $errs ) ) {
 	</div>
 	</fieldset>
 
-	<?php database_switcher('mssql'); ?>
-	<div class="config-input"><?php
-		aField( $conf, "DBprefix2", "Database table prefix:" );
-	?></div>
-	<div class="config-desc">
-		<p>If you need to share one database between multiple wikis, or
-		between MediaWiki and another web application, you may choose to
-		add a prefix to all the table names to avoid conflicts.</p>
-
-		<p>Avoid exotic characters; something like <tt>mw_</tt> is good.</p>
-	</div>
-	</fieldset>
-
 	<?php database_switcher('ibm_db2'); ?>
 	<div class="config-input"><?php
 		aField( $conf, "DBport_db2", "Database port:" );
@@ -1776,7 +1760,11 @@ function writeLocalSettings( $conf ) {
 	$convert = ($conf->ImageMagick ? $conf->ImageMagick : "/usr/bin/convert" );
 	$rights = ($conf->RightsUrl) ? "" : "# ";
 	$hashedUploads = $conf->safeMode ? '' : '# ';
-	$sqliteDataDir = escapePhpString( realpath($conf->SQLiteDataDir) );
+	$dir = realpath( $conf->SQLiteDataDir );
+	if ( !$dir ) {
+		$dir = $conf->SQLiteDataDir; // dumb realpath sometimes fails
+	}
+	$sqliteDataDir = escapePhpString( $dir );
 
 	if ( $conf->ShellLocale ) {
 		$locale = '';
@@ -1869,10 +1857,6 @@ function writeLocalSettings( $conf ) {
 		$dbsettings =
 "# SQLite-specific settings
 \$wgSQLiteDataDir    = \"{$sqliteDataDir}\";";
-	} elseif( $conf->DBtype == 'mssql' ) {
-		$dbsettings =
-"# MSSQL specific settings
-\$wgDBprefix         = \"{$slconf['DBprefix2']}\";";
 	} elseif( $conf->DBtype == 'ibm_db2' ) {
 		$dbsettings =
 "# DB2 specific settings
@@ -1996,7 +1980,7 @@ if ( \$wgCommandLineMode ) {
 \$wgSecretKey = \"$secretKey\";
 
 ## Default skin: you can change the default skin. Use the internal symbolic
-## names, ie 'standard', 'nostalgia', 'cologneblue', 'monobook':
+## names, ie 'vector', 'monobook':
 \$wgDefaultSkin = 'monobook';
 
 ## For attaching licensing metadata to pages, and displaying an

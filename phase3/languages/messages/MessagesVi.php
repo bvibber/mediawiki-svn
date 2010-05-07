@@ -274,7 +274,6 @@ $messages = array(
 'tog-editsectiononrightclick' => 'Cho phép sửa đổi đề mục bằng cách bấm chuột phải trên tên đề mục (JavaScript)',
 'tog-showtoc'                 => 'Hiển thị mục lục (cho trang có trên 3 đề mục)',
 'tog-rememberpassword'        => 'Nhớ thông tin đăng nhập của tôi trên máy tính này',
-'tog-editwidth'               => 'Mở rộng ô sửa đổi ra toàn màn hình',
 'tog-watchcreations'          => 'Tự động theo dõi trang tôi viết mới',
 'tog-watchdefault'            => 'Tự động theo dõi trang tôi sửa',
 'tog-watchmoves'              => 'Tự động theo dõi trang tôi di chuyển',
@@ -389,7 +388,7 @@ $messages = array(
 'index-category'                 => 'Trang được ghi chỉ mục',
 'noindex-category'               => 'Trang không ghi chỉ mục',
 
-'mainpagetext'      => "<big>'''MediaWiki đã được cài đặt thành công.'''</big>",
+'mainpagetext'      => "'''MediaWiki đã được cài đặt thành công.'''",
 'mainpagedocfooter' => 'Xin đọc [http://meta.wikimedia.org/wiki/Help:Contents Hướng dẫn sử dụng] để biết thêm thông tin về cách sử dụng phần mềm wiki.
 
 == Để bắt đầu ==
@@ -787,13 +786,14 @@ Có thể bạn đã thay đổi thành công mật khẩu của mình hoặc đ
 'showlivepreview'                  => 'Xem thử nhanh',
 'showdiff'                         => 'Xem thay đổi',
 'anoneditwarning'                  => "'''Cảnh báo:''' Bạn chưa đăng nhập. Địa chỉ IP của bạn sẽ được ghi lại trong lịch sử sửa đổi của trang.",
+'anonpreviewwarning'               => "''Bạn chưa đăng nhập. Lúc khi lưu trang này, địa chỉ IP của bạn sẽ được ghi vào lịch sử trang.''",
 'missingsummary'                   => "'''Nhắc nhở:''' Bạn đã không ghi lại tóm lược sửa đổi. Nếu bạn nhấn Lưu trang một lần nữa, sửa đổi của bạn sẽ được lưu mà không có tóm lược.",
 'missingcommenttext'               => 'Xin hãy gõ vào lời bàn luận ở dưới.',
 'missingcommentheader'             => "'''Nhắc nhở:''' Bạn chưa cung cấp đề mục cho bàn luận này. Nếu bạn nhấn nút Lưu trang lần nữa, sửa đổi của bạn sẽ được lưu mà không có đề mục.",
 'summary-preview'                  => 'Xem trước dòng tóm lược:',
 'subject-preview'                  => 'Xem trước đề mục:',
 'blockedtitle'                     => 'Thành viên bị cấm',
-'blockedtext'                      => "<big>'''Tên người dùng hoặc địa chỉ IP của bạn đã bị cấm.'''</big>
+'blockedtext'                      => "'''Tên người dùng hoặc địa chỉ IP của bạn đã bị cấm.'''
 
 Người thực hiện cấm là $1.
 Lý do được cung cấp là ''$2''.
@@ -1179,6 +1179,7 @@ Xin hãy bảo đảm giữ vững tính liên tục của lịch sử trang.',
 'searchprofile-everything-tooltip' => 'Tìm tất cả nội dung (gồm cả các trang thảo luận)',
 'searchprofile-advanced-tooltip'   => 'Tìm trong không gian tên tùy chọn',
 'search-result-size'               => '$1 ({{PLURAL:$2|1 từ|$2 từ}})',
+'search-result-category-size'      => '{{PLURAL:$1|1 trang thành viên|$1 trang thành viên}} ({{PLURAL:$2|1 tiểu thể loại|$2 tiểu thể loại}}, {{PLURAL:$3|1 tập tin|$3 tập tin}})',
 'search-result-score'              => 'Độ phù hợp: $1%',
 'search-redirect'                  => '(đổi hướng $1)',
 'search-section'                   => '(đề mục $1)',
@@ -1286,6 +1287,7 @@ Bất cứ ai biết được khóa trong ô này cũng có thể đọc đượ
 'prefs-files'                   => 'Tập tin',
 'prefs-custom-css'              => 'sửa CSS',
 'prefs-custom-js'               => 'sửa JS',
+'prefs-common-css-js'           => 'CSS/JS chung cho mọi hình dạng:',
 'prefs-reset-intro'             => 'Có thể mặc định lại toàn bộ tùy chọn dùng trang này.
 Không có thể lùi lại tác động này.',
 'prefs-emailconfirm-label'      => 'Xác nhận thư điện tử:',
@@ -1411,6 +1413,7 @@ Bạn cũng có thể lựa chọn cho phép người khác liên lạc với b�
 'right-hideuser'              => 'Cấm thành viên, rồi ẩn nó đi',
 'right-ipblock-exempt'        => 'Bỏ qua cấm IP, tự động cấm và cấm dải IP',
 'right-proxyunbannable'       => 'Bỏ qua cấm proxy tự động',
+'right-unblockself'           => 'Tự bỏ cấm',
 'right-protect'               => 'Thay đổi mức khóa và sửa trang khóa',
 'right-editprotected'         => 'Sửa trang khóa (không bị khóa theo tầng)',
 'right-editinterface'         => 'Sửa giao diện người dùng',
@@ -1538,6 +1541,9 @@ Các trang trong [[Special:Watchlist|danh sách bạn theo dõi]] được '''t�
 'upload_directory_missing'    => 'Thư mục tải lên ($1) không có hoặc máy chủ web không thể tạo được.',
 'upload_directory_read_only'  => 'Máy chủ không thể sửa đổi thư mục tải lên ($1) được.',
 'uploaderror'                 => 'Lỗi khi tải lên',
+'upload-recreate-warning'     => "'''Cảnh báo: Một tập tin với tên này đã từng bị xóa hoặc di chuyển.'''
+
+Nhật trình xóa và di chuyển của trang này được ghi ở dưới để bạn tiện theo dõi:",
 'uploadtext'                  => "Hãy sử dụng mẫu sau để tải tập tin lên.
 Để xem hoặc tìm kiếm những hình ảnh đã được tải lên trước đây, xin mời xem [[Special:FileList|danh sách các tập tin đã tải lên]]. 
 việc tải lên và tải lên lại được ghi lại trong [[Special:Log/upload|nhật trình tải lên]],  việc xóa đi được ghi trong [[Special:Log/delete|nhật trình xóa]].
@@ -1573,6 +1579,17 @@ Xem [[Special:NewFiles|trang trưng bày các tập tin mới]] để xem trực
 'filetype-banned-type'        => "'''“.$1”''' là định dạng tập tin không được chấp nhận.
 {{PLURAL:$3|Loại tập tin|Những loại tập tin}} được chấp nhận là $2.",
 'filetype-missing'            => 'Tập tin không có phần mở rộng (ví dụ “.jpg”).',
+'empty-file'                  => 'Bạn đã gửi tập tin rỗng.',
+'file-too-large'              => 'Bạn đã gửi tập tin lớn quá hạn.',
+'filename-tooshort'           => 'Tên tập tin ngắn quá.',
+'filetype-banned'             => 'Kiểu tập tin này đã bị cấm.',
+'verification-error'          => 'Tập tin này không qua được bước thẩm tra.',
+'hookaborted'                 => 'Sửa đổi của bạn bị hook phần mở rộng hủy bỏ.',
+'illegal-filename'            => 'Không được đặt tên tập tin này.',
+'overwrite'                   => 'Không được ghi đè một tập tin đã tồn tại.',
+'unknown-error'               => 'Gặp lỗi không ngờ.',
+'tmp-create-error'            => 'Không thể tạo tập tin tạm thời.',
+'tmp-write-error'             => 'Gặp lỗi khi ghi vào tập tin tạm thời.',
 'large-file'                  => 'Các tập tin được khuyến cáo không được lớn hơn $1; tập tin này lớn đến $2.',
 'largefileserver'             => 'Tập tin này quá lớn so với khả năng phục vụ của máy chủ.',
 'emptyfile'                   => 'Tập tin bạn vừa mới tải lên có vẻ trống không. Điều này có thể xảy ra khi bạn đánh sai tên tập tin. Xin hãy chắc chắn rằng bạn thật sự muốn tải lên tập tin này.',
@@ -1605,6 +1622,8 @@ Nếu bạn vẫn muốn tải tập tin của bạn lên, xin hãy quay lại v
 'uploadedimage'               => 'đã tải “[[$1]]” lên',
 'overwroteimage'              => 'đã tải lên một phiên bản mới của “[[$1]]”',
 'uploaddisabled'              => 'Chức năng tải lên đã bị khóa.',
+'copyuploaddisabled'          => 'Chức năng tải lên từ địa chỉ URL đã bị tắt.',
+'uploadfromurl-queued'        => 'Tập tin của bạn đã được xếp vào hàng đợi tải lên.',
 'uploaddisabledtext'          => 'Chức năng tải tập tin đã bị tắt.',
 'php-uploaddisabledtext'      => 'Việc tải tập tin trong PHP đã bị tắt. Xin hãy kiểm tra lại thiết lập file_uploads.',
 'uploadscripted'              => 'Tập tin này có chứa mã HTML hoặc script có thể khiến trình duyệt web thông dịch sai.',
@@ -1813,7 +1832,6 @@ Hãy nhớ kiểm tra các liên kết khác đến bản mẫu trước khi xó
 'statistics-edits-average'     => 'Số sửa đổi trung bình trên một trang',
 'statistics-views-total'       => 'Số lần xem tổng cộng',
 'statistics-views-peredit'     => 'Số lần xem trên một sửa đổi',
-'statistics-jobqueue'          => 'Chiều dài [http://www.mediawiki.org/wiki/Manual:Job_queue hàng đợi việc]',
 'statistics-users'             => 'Số [[Special:ListUsers|thành viên]] đã đăng ký',
 'statistics-users-active'      => 'Số thành viên tích cực',
 'statistics-users-active-desc' => 'Những thành viên đã hoạt động trong {{PLURAL:$1|ngày|$1 ngày}} qua',
@@ -2004,29 +2022,31 @@ Có [[{{MediaWiki:Listgrouprights-helppage}}|thông tin thêm]] về từng nhó
 'listgrouprights-removegroup-self-all' => 'Có thể loại tài khoản của chính mình ra khỏi tất cả các nhóm',
 
 # E-mail user
-'mailnologin'      => 'Không có địa chỉ gửi thư',
-'mailnologintext'  => 'Bạn phải [[Special:UserLogin|đăng nhập]] và khai báo một địa chỉ thư điện tử hợp lệ trong phần [[Special:Preferences|tùy chọn cá nhân]] thì mới gửi được thư cho người khác.',
-'emailuser'        => 'Gửi thư cho người này',
-'emailpage'        => 'Gửi thư',
-'emailpagetext'    => 'Mẫu dưới đây sẽ gửi một bức thư điện tử tới người dùng này.
+'mailnologin'          => 'Không có địa chỉ gửi thư',
+'mailnologintext'      => 'Bạn phải [[Special:UserLogin|đăng nhập]] và khai báo một địa chỉ thư điện tử hợp lệ trong phần [[Special:Preferences|tùy chọn cá nhân]] thì mới gửi được thư cho người khác.',
+'emailuser'            => 'Gửi thư cho người này',
+'emailpage'            => 'Gửi thư',
+'emailpagetext'        => 'Mẫu dưới đây sẽ gửi một bức thư điện tử tới người dùng này.
 Địa chỉ thư điện tử mà bạn đã cung cấp trong [[Special:Preferences|tùy chọn cá nhân của mình]] sẽ xuất hiện trong phần địa chỉ “Người gửi” của bức thư, do đó người nhận sẽ có thể trả lời trực tiếp cho bạn.',
-'usermailererror'  => 'Lỗi gửi thư:',
-'defemailsubject'  => 'thư gửi từ {{SITENAME}}',
-'noemailtitle'     => 'Không có địa chỉ nhận thư',
-'noemailtext'      => 'Người này không cung cấp một địa chỉ thư hợp lệ.',
-'nowikiemailtitle' => 'Không cho phép thư điện tử',
-'nowikiemailtext'  => 'Thành viên này quyết định không nhận thư từ các thành viên khác.',
-'email-legend'     => 'Gửi thư điện tử đến thành viên {{SITENAME}} khác',
-'emailfrom'        => 'Người gửi:',
-'emailto'          => 'Người nhận:',
-'emailsubject'     => 'Chủ đề:',
-'emailmessage'     => 'Nội dung:',
-'emailsend'        => 'Gửi',
-'emailccme'        => 'Gửi cho tôi bản sao của thư này.',
-'emailccsubject'   => 'Bản sao của thư gửi cho $1: $2',
-'emailsent'        => 'Đã gửi',
-'emailsenttext'    => 'Thư của bạn đã được gửi.',
-'emailuserfooter'  => 'Thư điện tử này được $1 gửi đến $2 thông qua chức năng “Gửi thư cho người này” của {{SITENAME}}.',
+'usermailererror'      => 'Lỗi gửi thư:',
+'defemailsubject'      => 'thư gửi từ {{SITENAME}}',
+'usermaildisabled'     => 'Chức năng gửi thư cho người dùng đã bị tắt.',
+'usermaildisabledtext' => 'Bạn không thể gửi thư điện tử cho những người dùng khác trên wiki này.',
+'noemailtitle'         => 'Không có địa chỉ nhận thư',
+'noemailtext'          => 'Người này không cung cấp một địa chỉ thư hợp lệ.',
+'nowikiemailtitle'     => 'Không cho phép thư điện tử',
+'nowikiemailtext'      => 'Thành viên này quyết định không nhận thư từ các thành viên khác.',
+'email-legend'         => 'Gửi thư điện tử đến thành viên {{SITENAME}} khác',
+'emailfrom'            => 'Người gửi:',
+'emailto'              => 'Người nhận:',
+'emailsubject'         => 'Chủ đề:',
+'emailmessage'         => 'Nội dung:',
+'emailsend'            => 'Gửi',
+'emailccme'            => 'Gửi cho tôi bản sao của thư này.',
+'emailccsubject'       => 'Bản sao của thư gửi cho $1: $2',
+'emailsent'            => 'Đã gửi',
+'emailsenttext'        => 'Thư của bạn đã được gửi.',
+'emailuserfooter'      => 'Thư điện tử này được $1 gửi đến $2 thông qua chức năng “Gửi thư cho người này” của {{SITENAME}}.',
 
 # Watchlist
 'watchlist'            => 'Trang tôi theo dõi',
@@ -2097,7 +2117,7 @@ Bạn cũng có thể thiết lập lại việc nhắc nhở cho tất cả cá
 {{fullurl:{{#special:Watchlist}}/edit}}
 
 Để xóa trang ra khỏi danh sách theo dõi của bạn, mời xem
-{{fullurl:{{FULLPAGENAMEE}}|action=unwatch}}
+$UNWATCHURL
 
 Phản hồi và cần sự hỗ trợ:
 {{fullurl:{{MediaWiki:Helppage}}}}',
@@ -2190,7 +2210,7 @@ hiện tại của trang '''$1''':",
 'protect-othertime-op'        => 'thời hạn khác',
 'protect-existing-expiry'     => 'Thời hạn hiện thời: $3, $2',
 'protect-otherreason'         => 'Lý do khác/bổ sung:',
-'protect-otherreason-op'      => 'lý do khác/bổ sung',
+'protect-otherreason-op'      => 'Lý do khác',
 'protect-dropdown'            => '*Các lý do thường dùng khi khóa
 ** Bị phá hoại quá mức
 ** Bị spam quá mức
@@ -2248,7 +2268,7 @@ Chỉ có người quản lý mới xem được văn bản đầy đủ của n
 'undeletedfiles'               => '$1 {{PLURAL:$1|tập tin|tập tin}} đã được phục hồi',
 'cannotundelete'               => 'Phục hồi thất bại;
 một người nào khác đã phục hồi trang này rồi.',
-'undeletedpage'                => "<big>'''$1 đã được khôi phục'''</big>
+'undeletedpage'                => "'''$1 đã được khôi phục'''
 
 Xem nhật trình xóa và phục hồi các trang gần đây tại [[Special:Log/delete|nhật trình xóa]].",
 'undelete-header'              => 'Xem các trang bị xóa gần đây tại [[Special:Log/delete|nhật trình xóa]].',
@@ -2282,18 +2302,19 @@ $1',
 'month'               => 'Từ tháng (trở về trước):',
 'year'                => 'Từ năm (trở về trước):',
 
-'sp-contributions-newbies'        => 'Chỉ hiển thị đóng góp của tài khoản mới',
-'sp-contributions-newbies-sub'    => 'Các thành viên mới',
-'sp-contributions-newbies-title'  => 'Đóng góp của các thành viên mới',
-'sp-contributions-blocklog'       => 'Nhật trình cấm',
-'sp-contributions-deleted'        => 'đóng góp đã bị xóa của thành viên',
-'sp-contributions-logs'           => 'nhật trình',
-'sp-contributions-talk'           => 'thảo luận',
-'sp-contributions-userrights'     => 'quản lý quyền thành viên',
-'sp-contributions-blocked-notice' => 'Thành viên này hiện đang bị cấm sửa đổi. Nhật trình cấm gần nhất được ghi ở dưới để tiện theo dõi:',
-'sp-contributions-search'         => 'Tìm kiếm đóng góp',
-'sp-contributions-username'       => 'Địa chỉ IP hay tên thành viên:',
-'sp-contributions-submit'         => 'Tìm kiếm',
+'sp-contributions-newbies'             => 'Chỉ hiển thị đóng góp của tài khoản mới',
+'sp-contributions-newbies-sub'         => 'Các thành viên mới',
+'sp-contributions-newbies-title'       => 'Đóng góp của các thành viên mới',
+'sp-contributions-blocklog'            => 'Nhật trình cấm',
+'sp-contributions-deleted'             => 'đóng góp đã bị xóa của thành viên',
+'sp-contributions-logs'                => 'nhật trình',
+'sp-contributions-talk'                => 'thảo luận',
+'sp-contributions-userrights'          => 'quản lý quyền thành viên',
+'sp-contributions-blocked-notice'      => 'Thành viên này hiện đang bị cấm sửa đổi. Nhật trình cấm gần nhất được ghi ở dưới để tiện theo dõi:',
+'sp-contributions-blocked-notice-anon' => 'Địa chỉ IP này đang bị cấm. Hãy tham khảo mục mới nhất trong nhật trình cấm IP này:',
+'sp-contributions-search'              => 'Tìm kiếm đóng góp',
+'sp-contributions-username'            => 'Địa chỉ IP hay tên thành viên:',
+'sp-contributions-submit'              => 'Tìm kiếm',
 
 # What links here
 'whatlinkshere'            => 'Các liên kết đến đây',
@@ -2425,6 +2446,8 @@ $1 đã bị cấm. Bạn có muốn thay đổi các thiết lập?',
 'sorbs_create_account_reason'     => 'Địa chỉ chỉ IP của bạn bị liệt kê là một proxy mở trong DNSBL mà {{SITENAME}} đang sử dụng. Bạn không thể mở tài khoản.',
 'cant-block-while-blocked'        => 'Bạn không thể cấm thành viên khác trong khi bạn đang bị cấm.',
 'cant-see-hidden-user'            => 'Thành viên bạn muốn cấm đã bị cấm trước đây hoặc đã bị ẩn đi. Vì bạn không có quyền hideuser, bạn không thể xem hoặc thay đổi mức cấm của thành viên.',
+'ipbblocked'                      => 'Bạn không thể cấm hay bỏ cấm người dùng khác vì chính bạn đang bị cấm.',
+'ipbnounblockself'                => 'Bạn không được bỏ cấm chính mình.',
 
 # Developer tools
 'lockdb'              => 'Khóa cơ sở dữ liệu',
@@ -2479,7 +2502,7 @@ Trong những trường hợp đó, bạn phải di chuyển hoặc hợp nhất
 'move-watch'                   => 'Theo dõi trang này',
 'movepagebtn'                  => 'Di chuyển trang',
 'pagemovedsub'                 => 'Di chuyển thành công',
-'movepage-moved'               => "<big>'''“$1” đã được di chuyển đến “$2”'''</big>",
+'movepage-moved'               => "'''“$1” đã được di chuyển đến “$2”'''",
 'movepage-moved-redirect'      => 'Đã tạo trang chuyển hướng.',
 'movepage-moved-noredirect'    => 'Chức năng tạo trang chuyển hướng đã bị tắt.',
 'articleexists'                => 'Đã có một trang với tên đó, hoặc tên bạn chọn không hợp lệ.
@@ -2689,6 +2712,7 @@ Lưu nó vào máy tính của bạn rồi tải nó lên đây.',
 'tooltip-upload'                  => 'Bắt đầu tải lên',
 'tooltip-rollback'                => '"Lùi tất cả" sẽ lùi mọi sửa đổi của người sửa đổi cuối cùng chỉ bằng một cú nhấp chuột.',
 'tooltip-undo'                    => '"Lùi lại" sẽ lùi sửa đổi này và mở trang sửa đổi ở chế độ xem thử. Cho phép thêm lý do vào tóm lược.',
+'tooltip-preferences-save'        => 'Lưu tùy chọn',
 
 # Stylesheets
 'common.css'      => '/* Mã CSS đặt ở đây sẽ áp dụng cho mọi hình dạng */',
@@ -3436,6 +3460,7 @@ Hãy cho vào tên của tập tin, trừ tiền tố “{{ns:file}}:”.',
 'htmlform-float-invalid'       => 'Giá trị chỉ định không phải là con số.',
 'htmlform-int-toolow'          => 'Giá trị đưa vào phải ít nhất $1',
 'htmlform-int-toohigh'         => 'Giá trị không được vượt quá $1',
+'htmlform-required'            => 'Phần này đòi giá trị',
 'htmlform-submit'              => 'Đăng',
 'htmlform-reset'               => 'Hủy các thay đổi',
 'htmlform-selectorother-other' => 'Khác',

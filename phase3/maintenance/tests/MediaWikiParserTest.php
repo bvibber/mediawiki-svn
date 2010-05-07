@@ -26,6 +26,8 @@ class MediaWikiParserTestSuite extends PHPUnit_Framework_TestSuite {
 		$tables[] = 'user_properties';
 		$tables[] = 'filearchive';
 		$tables[] = 'logging';
+		$tables[] = 'updatelog';
+		$tables[] = 'iwlinks';
 		return true;
 	}
 
@@ -97,12 +99,12 @@ class MediaWikiParserTestSuite extends PHPUnit_Framework_TestSuite {
 		return $suite;
 	}
 
-	/* public function tearDown() { */
-	/* 	$this->teardownDatabase(); */
-	/* 	$this->recorder->report(); */
-	/* 	$this->recorder->end(); */
-	/* 	$this->teardownUploadDir($this->uploadDir); */
-	/* } */
+	public function tearDown() {
+		/* $this->teardownDatabase(); */
+		$this->recorder->report();
+		$this->recorder->end();
+		$this->teardownUploadDir($this->uploadDir);
+	}
 
 	public function count() {return self::$count;}
 

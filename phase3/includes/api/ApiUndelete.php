@@ -82,6 +82,8 @@ class ApiUndelete extends ApiBase {
 				array( $titleObj, array(), $wgUser, $params['reason'] ) );
 		}
 
+		$this->setWatch( $params['watchlist'], $titleObj );
+
 		$info['title'] = $titleObj->getPrefixedText();
 		$info['revisions'] = intval( $retval[0] );
 		$info['fileversions'] = intval( $retval[1] );
@@ -104,7 +106,16 @@ class ApiUndelete extends ApiBase {
 			'reason' => '',
 			'timestamps' => array(
 				ApiBase::PARAM_ISMULTI => true
-			)
+			),
+			'watchlist' => array(
+				ApiBase::PARAM_DFLT => 'preferences',
+				ApiBase::PARAM_TYPE => array(
+					'watch',
+					'unwatch',
+					'preferences',
+					'nochange'
+				),
+			),
 		);
 	}
 
@@ -113,7 +124,8 @@ class ApiUndelete extends ApiBase {
 			'title' => 'Title of the page you want to restore.',
 			'token' => 'An undelete token previously retrieved through list=deletedrevs',
 			'reason' => 'Reason for restoring (optional)',
-			'timestamps' => 'Timestamps of the revisions to restore. If not set, all revisions will be restored.'
+			'timestamps' => 'Timestamps of the revisions to restore. If not set, all revisions will be restored.',
+			'watchlist' => 'Unconditionally add or remove the page from your watchlist, use preferences or do not change watch',
 		);
 	}
 

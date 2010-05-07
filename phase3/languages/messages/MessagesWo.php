@@ -94,7 +94,6 @@ $messages = array(
 'tog-editsectiononrightclick' => 'Soppi ab xaaj cib cuqub ndeyjoor ci kojam  (JavaScript)',
 'tog-showtoc'                 => 'Wone tëralinu ne-ne yi (ngir xët yi ëpp 3 xaaj)',
 'tog-rememberpassword'        => 'Fattaliku sama baatujàll(cookie)',
-'tog-editwidth'               => 'Wone palanteeru coppite bi ci yaatuwaay bépp',
 'tog-watchcreations'          => 'Yokk ci sama limu toppte xët yi may sos',
 'tog-watchdefault'            => 'Yokk ci sama limu toppte xët yi may soppi',
 'tog-watchmoves'              => 'Yokk ci sama limu toppte xët yi may tuddaat',
@@ -205,7 +204,7 @@ $messages = array(
 'category-file-count-limited'    => 'Wii wàll moo ëmb {{PLURAL:$1|dencukaay biy toftal|$1 dencukaay yiy toftal}}.',
 'listingcontinuesabbrev'         => '(desit)',
 
-'mainpagetext'      => "<big>'''Campug MediaWiki gi sotti na . '''</big>",
+'mainpagetext'      => "'''Campug MediaWiki gi sotti na . '''",
 'mainpagedocfooter' => 'Saytul [http://meta.wikimedia.org/wiki/Ndimbal:Ndefu Gindikaayu jëfandikukat bi] ngir yeneeni xibaar ci jëfandiku gu tëriin gi.
 
 == Tambali ak MediaWiki ==
@@ -431,6 +430,7 @@ Di la sakku nga yegge ko ab [[Special:ListUsers/sysop|yorkat]] , jox ko màkkaan
 'readonly_lag'         => 'Dàttub njoxe bi daa caabi boppam ngir may ñaareelu joxekaay yi dap joxekaay bu njëkk bi.',
 'internalerror'        => 'Njuumte gu biir',
 'internalerror_info'   => 'Njuumte gu biir : $1',
+'fileappenderror'      => 'Maneesul a yokk "$1" ci "$2".',
 'filecopyerror'        => 'Duppig dencukaay bii di « $1 » jëm « $2 » antuwul.',
 'filerenameerror'      => 'Tuddewaatug « $1 » niki « $2 » antuwul.',
 'filedeleteerror'      => 'Farug dencukaay bii di « $1 » antuwul.',
@@ -602,7 +602,7 @@ Xèj-na baatujàll bi soppi nga ko ba noppi, walla xéj-na it dangaa laaj beneen
 'summary-preview'                  => 'Wonendig tënk bu:',
 'subject-preview'                  => 'Wonendi gu tëriit/koj:',
 'blockedtitle'                     => 'Bii jëfandikukat dañ kaa téye',
-'blockedtext'                      => '<big>\'\'\'Sa sàqum jëfandikukat walla sa màkkaanu IP dañ koo téye .\'\'\'</big>
+'blockedtext'                      => '\'\'\'Sa sàqum jëfandikukat walla sa màkkaanu IP dañ koo téye .\'\'\'
 
 Ki def téye gi mooy $ te lii mooy ngirte li : \'\'$2\'\'.
 
@@ -1452,7 +1452,6 @@ Bul fattee seet baxam amul yeneen lëkkalekaay yu lay jëmale ci royuwaay yi bal
 'statistics-edits'             => 'Coppitey xët yi dalee ca campug  {{SITENAME}}',
 'statistics-views-total'       => 'Mbooleem saytu yi',
 'statistics-views-peredit'     => 'Saytu ngir soppi',
-'statistics-jobqueue'          => 'Guddaayu [http://www.mediawiki.org/wiki/Manual:Job_queue liggéey] biy xaar',
 'statistics-users'             => '[[Special:ListUsers|Jëfandikukat]] yi bindu',
 'statistics-users-active'      => 'Jëfandikukat yu yëngu',
 'statistics-users-active-desc' => 'Jëfandikukat yi amal ag yëngu-yëngu ci {{PLURAL:$1|bés bu mujj bi|$1 bés yu mujj yi}}',
@@ -1818,7 +1817,7 @@ Nii-nii kocc-koccalu xët wii ñooy '''$1''':",
 'undeletedrevisions-files'     => '$1 {{PLURAL:$1|sumb|sumb}} ak $2 {{PLURAL:$2|ŋara|ŋara}} loppanti nañu leen',
 'undeletedfiles'               => '{{PLURAL:$1|1 dencukaay|$1 dencukaay}} lañu delloowaat',
 'cannotundelete'               => 'Delloowaat gi antuwul. Xéj-na keneen delloowaat na ko ba noppi.',
-'undeletedpage'                => "<big>'''Xët wii di $1 delloowaat nañu ko.'''</big>
+'undeletedpage'                => "'''Xët wii di $1 delloowaat nañu ko.'''
 
 Saytul [[Special:Log/delete|jaar-jaaru far bi]] ngir xool far yi ak delloowaat yu mujj yi.",
 'undelete-header'              => 'Saltul [[Special:Log/delete|jaar-jaaru far bi ]] ngir xool far yi mujj.',
@@ -2032,7 +2031,7 @@ Ci yii anam, faww nga tuddewaat walla yokk wii xëtu waxtaanuwaay ak sa loxo, su
 'move-watch'                   => 'Topp xët wii',
 'movepagebtn'                  => 'Tuddewaat xët wi',
 'pagemovedsub'                 => 'Tuddewaat gi antu na',
-'movepage-moved'               => "<big>'''« $1 »''' lañu tuddewaat '''« $2 »'''</big>",
+'movepage-moved'               => "'''« $1 »''' lañu tuddewaat '''« $2 »'''",
 'movepage-moved-redirect'      => 'Sosees na ab jubluwaat',
 'movepage-moved-noredirect'    => 'Sosug ab jubluwaat far nañu ko.',
 'articleexists'                => 'Am na ba noppi ab jukki bu am bii koj, walla koj bi nga tànn baaxul. tànnal bennen.',

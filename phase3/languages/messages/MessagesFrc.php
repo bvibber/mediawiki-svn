@@ -8,6 +8,7 @@
  * @file
  *
  * @author JeanVoisin
+ * @author Peter17
  * @author PieRRoMaN
  * @author RoyAlcatraz
  * @author Urhixidur
@@ -29,7 +30,6 @@ $messages = array(
 'tog-editsectiononrightclick' => 'Changer une section en faisant un clic droit sus son nom (JavaScript)',
 'tog-showtoc'                 => 'Montrer la table des matières (pour les pages avec plus que 3 têtes)',
 'tog-rememberpassword'        => 'Garder mon mot de passe',
-'tog-editwidth'               => 'Montrer la fenêtre des changements en pleine largeur',
 'tog-watchcreations'          => 'Additionner les pages que je crée à ma liste des pages guettées',
 'tog-watchdefault'            => 'Additionner les pages que je change à ma liste des pages guettées',
 'tog-watchmoves'              => 'Additionner les pages que je renomme à ma liste des pages guettées',
@@ -119,7 +119,7 @@ $messages = array(
 'category-media-header' => 'Média dans classe "$1"',
 'category-empty'        => "''À présent, cette classe a ni articles ni média.''",
 
-'mainpagetext'      => "<big>'''Vous avez bien installé MediaWiki.'''</big>",
+'mainpagetext'      => "'''Vous avez bien installé MediaWiki.'''",
 'mainpagedocfooter' => 'Lisez la [http://meta.wikimedia.org/wiki/Help:Contents Guide des Useurs] pour apprendre à user le wiki software.
 
 == Pour Commencer ==
@@ -424,7 +424,7 @@ Si quèqu\'une d\'autre a demandé ce mot de passe ou si vous vous rappelez de v
 'summary-preview'            => "Vue d'avance de la description:",
 'subject-preview'            => "Vue d'avance du sujet:",
 'blockedtitle'               => "L'useur est bloqué",
-'blockedtext'                => "<big>'''Votre compte d'useur (ou votre adresse IP) est bloqué.'''</big>
+'blockedtext'                => "'''Votre compte d'useur (ou votre adresse IP) est bloqué.'''
 
 Le blocage a été fait par $1.  La raison donnée est ''$2''.  
 
@@ -512,7 +512,7 @@ Il foudra que vous mettez vos changements dans le texte qu'est là asteur.
 'edittools'                  => "<!-- Le texte que vous mettez ici va être montré sous les boëttes de changements ou d'import de dossier. -->",
 'nocreatetitle'              => 'Création de page limitée',
 'nocreatetext'               => "La création des pages est limitée.  Vous pouvez changer une page qu'a été déjà créée ou [[Special:UserLogin|connecter ou créer un compte]].",
-'nocreate-loggedin'          => 'Vous avez pas la permission de créer des nouvelles pages sus ce wiki.',
+'nocreate-loggedin'          => 'Vous avez pas la permission de créer des nouvelles pages.',
 'permissionserrors'          => 'Erreur de permissions',
 'permissionserrorstext'      => 'Vous avez pas la permission de faire ça pour {{PLURAL:$1|cette raison|ces raisons}}:',
 'recreate-moveddeleted-warn' => "'''Attention: Vous êtes après recréer une page qu'a déjà été ôtée.'''  

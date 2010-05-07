@@ -27,7 +27,6 @@ $messages = array(
 'tog-editsectiononrightclick' => 'A lamunta gyara shashe da kilikin dama a kan kanun shashe (ana buƙatar JavaScript)',
 'tog-showtoc'                 => 'A nuna jadawalin kanu (cikin shafuna masu fiye da kanu 3)',
 'tog-rememberpassword'        => 'A adana bayanan loginkina a wannan kwamfyuta',
-'tog-editwidth'               => 'A faɗaɗa sararin gyarawa ya cika duka bangon',
 'tog-watchcreations'          => 'A daɗa shafunan da na ƙirƙira a cikin jerina na kan ido',
 'tog-watchdefault'            => 'A daɗa shafunan da na gyara a cikin jerina na kan ido',
 'tog-watchmoves'              => 'A daɗa shafunan da na gusar a cikin jerina na kan ido',
@@ -591,7 +590,7 @@ A waɗannan halaye, dole ku gusar ko ku game shafin da hannu, idan kuna so.",
 'move-watch'       => 'Bin sawun wannan shafi',
 'movepagebtn'      => 'Gusar da shafin',
 'pagemovedsub'     => 'Gusarwa ta cika',
-'movepage-moved'   => '<big>\'\'\'"$1" an gusar da shi zuwa "$2"\'\'\'</big>',
+'movepage-moved'   => '\'\'\'"$1" an gusar da shi zuwa "$2"\'\'\'',
 'articleexists'    => 'Akwai wani shafi mai wannan suna, koko sunan da kuka zaɓa ba shi da tasiri.
 Don Allah ku zaɓi wani suna.',
 'talkexists'       => "'''An gusar da shafin shi kansa, amma an kasa gusar da dangantaccen shafin muhawarar, don akwai wani sahfin mai amfani da sunansa.

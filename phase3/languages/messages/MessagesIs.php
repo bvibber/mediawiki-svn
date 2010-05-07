@@ -232,7 +232,6 @@ $messages = array(
 'tog-editsectiononrightclick' => 'Virkja hlutabreytingu með því að hægrismella á hlutafyrirsagnir (JavaScript)',
 'tog-showtoc'                 => 'Sýna efnisyfirlit (fyrir síður með meira en 3 fyrirsagnir)',
 'tog-rememberpassword'        => 'Munda innskráninguna mína á þessari tölvu',
-'tog-editwidth'               => 'Breytingarkassi hefur fulla breidd',
 'tog-watchcreations'          => 'Bæta síðum sem ég bý til á vaktlistann minn',
 'tog-watchdefault'            => 'Bæta síðum sem ég breyti á vaktlistann minn',
 'tog-watchmoves'              => 'Bæta síðum sem ég færi á vaktlistann minn',
@@ -336,7 +335,7 @@ $messages = array(
 'listingcontinuesabbrev'         => 'frh.',
 
 'linkprefix'        => '/^(.*?)([áÁðÐéÉíÍóÓúÚýÝþÞæÆöÖA-Za-z-–]+)$/sDu',
-'mainpagetext'      => "<big>'''Uppsetning á MediaWiki heppnaðist.'''</big>",
+'mainpagetext'      => "'''Uppsetning á MediaWiki heppnaðist.'''",
 'mainpagedocfooter' => 'Ráðfærðu þig við [http://meta.wikimedia.org/wiki/Help:Contents Notandahandbókina] fyrir frekari upplýsingar um notkun wiki-hugbúnaðarins.
 
 == Fyrir byrjendur ==
@@ -549,6 +548,7 @@ Gjörðu svo vel og tilkynntu atvikið til [[Special:ListUsers/sysop|stjórnanda
 'readonly_lag'         => 'Gagnagrunninum hefur verið læst sjálfkrafa á meðan undirvefþjónarnir reyna að hafa í við aðalvefþjóninn',
 'internalerror'        => 'Kerfisvilla',
 'internalerror_info'   => 'Innri villa: $1',
+'fileappenderror'      => 'Gat ekki bætt „$1“ við „$2“.',
 'filecopyerror'        => 'Gat ekki afritað skjal "$1" á "$2".',
 'filerenameerror'      => 'Gat ekki endurnefnt skrána „$1“ í „$2“.',
 'filedeleteerror'      => 'Gat ekki eytt skránni „$1“.',
@@ -733,7 +733,7 @@ Ef þú smellir á Vista aftur, verður breyting þín vistuð án þess.",
 'summary-preview'                  => 'Forskoða breytingarágrip:',
 'subject-preview'                  => 'Forskoðun umræðuefnis/fyrirsagnar:',
 'blockedtitle'                     => 'Notandi er bannaður',
-'blockedtext'                      => "<big>'''Notandanafn þitt eða vistfang hefur verið bannað.'''</big>
+'blockedtext'                      => "'''Notandanafn þitt eða vistfang hefur verið bannað.'''
 
 Bannið var sett af $1.
 Ástæðan er eftirfarandi: ''$2''.
@@ -1438,7 +1438,6 @@ Hér fyrir neðan er afrit af [$2 skráarsíðunni þar].',
 'statistics-edits-average'     => 'Meðal breytingafjöldi á síðu',
 'statistics-views-total'       => 'Uppflettingar alls',
 'statistics-views-peredit'     => 'Uppflettingar á hverja breytingu (meðaltal)',
-'statistics-jobqueue'          => 'Lengd [http://www.mediawiki.org/wiki/Manual:Job_queue vinnuraðar]',
 'statistics-users'             => 'Skráðir  [[Special:ListUsers|notendur]]',
 'statistics-users-active'      => 'Virkir notendur',
 'statistics-users-active-desc' => 'Notendur sem hafa framkvæmt aðgerð {{PLURAL:$1|síðastliðin dag|síðastliðna $1 daga}}',
@@ -1765,7 +1764,7 @@ Innihald greinarinnar er einungis aðgengilegt möppudýrum.',
 'undeletedrevisions-files'  => '$1 {{PLURAL:$1|breyting|breytingar}} og $2 {{PLURAL:$2|skrá|skrár}} endurvaktar',
 'undeletedfiles'            => '{{PLURAL:$1|Ein skrá endurvakin|$1 skrár endurvaktar}}',
 'cannotundelete'            => 'Ekki var hægt að afturkalla síðuna. (Líklega hefur einhver gert það á undan þér.)',
-'undeletedpage'             => "<big>'''$1 var endurvakin'''</big>
+'undeletedpage'             => "'''$1 var endurvakin'''
 
 Skoðaðu [[Special:Log/delete|eyðingaskrána]] til að skoða eyðingar og endurvakningar.",
 'undelete-search-box'       => 'Leita að eyddum síðum',
@@ -1948,7 +1947,7 @@ Athugaðu að þessi aðgerð getur kallað fram viðbrögð annarra notenda og 
 'move-watch'                => 'Vakta þessa síðu',
 'movepagebtn'               => 'Færa síðu',
 'pagemovedsub'              => 'Færsla tókst',
-'movepage-moved'            => "<big>'''„$1“ hefur verið færð á „$2“'''</big>",
+'movepage-moved'            => "'''„$1“ hefur verið færð á „$2“'''",
 'movepage-moved-redirect'   => 'Tilvísun hefur verið búin til.',
 'movepage-moved-noredirect' => 'Tilvísun var ekki búin til.',
 'articleexists'             => 'Annaðhvort er þegar til síða undir þessum titli, eða sá titill sem þú hefur valið er ekki gildur.

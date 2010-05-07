@@ -81,6 +81,35 @@ $datePreferenceMigrationMap = array(
 	'h:mm d mon y',
 );
 
+$specialPageAliases = array(
+	'CreateAccount'             => array( 'ОтвориНалог' ),
+	'Watchlist'                 => array( 'СписакНадгледања' ),
+	'Recentchanges'             => array( 'СкорашњеИзмене' ),
+	'Upload'                    => array( 'Пошаљи' ),
+	'Newimages'                 => array( 'НовиФајлови', 'НовеСлике' ),
+	'Listusers'                 => array( 'СписакКорисника', 'КорисничкиСписак' ),
+	'Statistics'                => array( 'Статистика' ),
+	'Specialpages'              => array( 'СпецијалнеСтране' ),
+	'Contributions'             => array( 'Доприноси' ),
+	'Confirmemail'              => array( 'ПотврдиЕ-пошту' ),
+	'Movepage'                  => array( 'Преусмери' ),
+	'Blockme'                   => array( 'БлокирајМе' ),
+	'Categories'                => array( 'Категорије' ),
+	'Version'                   => array( 'Верзија' ),
+	'Allmessages'               => array( 'СвеПоруке' ),
+	'Blockip'                   => array( 'Блокирај', 'БлокирајИП', 'БлокирајКорисника' ),
+	'Lockdb'                    => array( 'ЗакључајБазу' ),
+	'Unlockdb'                  => array( 'ОткључајБазу' ),
+	'Listredirects'             => array( 'СписакПреусмерења' ),
+	'Mypage'                    => array( 'МојаСтраница' ),
+	'Mytalk'                    => array( 'МојРазговор' ),
+	'Mycontributions'           => array( 'МојиДоприноси' ),
+	'Listadmins'                => array( 'ПописАдминистратора' ),
+	'Listbots'                  => array( 'ПописБотова' ),
+	'Search'                    => array( 'Претражи' ),
+	'Activeusers'               => array( 'АктивниКорисници' ),
+);
+
 $datePreferences = array(
 	'default',
 	'hh:mm d. month y.',
@@ -231,7 +260,6 @@ $messages = array(
 'tog-editsectiononrightclick' => 'Омогући измену делова десним кликом<br />на њихове наслове (захтева JavaScript)',
 'tog-showtoc'                 => 'Прикажи садржај (у страницама са више од 3 поднаслова)',
 'tog-rememberpassword'        => 'Памти лозинку кроз више сеанси',
-'tog-editwidth'               => 'Рашири поље за измене преко целог екрана',
 'tog-watchcreations'          => 'Додај странице које правим у мој списак надгледања',
 'tog-watchdefault'            => 'Додај странице које мењам у мој списак надгледања',
 'tog-watchmoves'              => 'Додај странице које премештам у мој списак надгледања',
@@ -345,7 +373,7 @@ $messages = array(
 'index-category'                 => 'Индексиране странице',
 'noindex-category'               => 'Неиндексиране странице',
 
-'mainpagetext'      => "<big>'''МедијаВики је успешно инсталиран.'''</big>",
+'mainpagetext'      => "'''МедијаВики је успешно инсталиран.'''",
 'mainpagedocfooter' => 'Молимо видите [http://meta.wikimedia.org/wiki/Help:Contents кориснички водич] за информације о употреби вики софтвера.
 
 == За почетак ==
@@ -759,7 +787,7 @@ $2',
 'summary-preview'                  => 'Претпреглед описа измене:',
 'subject-preview'                  => 'Претпреглед предмета/одељка:',
 'blockedtitle'                     => 'Корисник је блокиран',
-'blockedtext'                      => "<big>'''Ваше корисничко име или ИП адреса је блокирана.'''</big>
+'blockedtext'                      => "'''Ваше корисничко име или ИП адреса је блокирана.'''
 
 Блокирање је извршеио $1. 
 Дати разлог је следећи: ''$2''.
@@ -1679,7 +1707,6 @@ $2',
 'statistics-edits-average'     => 'Просечан број измена по страни',
 'statistics-views-total'       => 'Укупан број прегледа',
 'statistics-views-peredit'     => 'Прегледи по измени',
-'statistics-jobqueue'          => 'Дужина [http://www.mediawiki.org/wiki/Manual:Job_queue реда за послове]',
 'statistics-users'             => 'Регистровани [[Special:ListUsers|корисници]]',
 'statistics-users-active'      => 'Активни корисници',
 'statistics-users-active-desc' => 'Корисници који су извршили макар једну акцију током {{PLURAL:$1|задњег дана|$1 задњих дана}}',
@@ -2114,7 +2141,7 @@ Protect pages included in this page (cascading protection)',
 'undeletedrevisions-files'     => '$1 {{PLURAL:$1|ревизија|ревизије|ревизија}} и $2 {{PLURAL:$2|фајл|фајла|фајлова}} враћено',
 'undeletedfiles'               => '$1 {{PLURAL:$1|фајл|фајла|фајлова}} {{PLURAL:$1|враћен|враћена|враћено}}',
 'cannotundelete'               => 'Враћање обрисане верзије није успело; неко други је вратио страницу пре вас.',
-'undeletedpage'                => "<big>'''$1 је враћен'''</big>
+'undeletedpage'                => "'''$1 је враћен'''
 
 Прегледај [[Special:Log/delete|историју брисања]] за информацију о скорашњим брисањима и враћањима.",
 'undelete-header'              => 'Види [[Special:Log/delete|лог брисања]] за скоро обрисане стране.',
@@ -2349,7 +2376,7 @@ $1 је већ блокиран. Да ли желите да промените 
 'move-watch'                   => 'Надгледај ову страницу',
 'movepagebtn'                  => 'премести страницу',
 'pagemovedsub'                 => 'Премештање успело',
-'movepage-moved'               => '<big>\'\'\'Страна "$1" је преименована у "$2"!\'\'\'</big>',
+'movepage-moved'               => '\'\'\'Страна "$1" је преименована у "$2"!\'\'\'',
 'movepage-moved-redirect'      => 'Преусмерење је напревљено.',
 'movepage-moved-noredirect'    => 'Прављење преусмерења је задржано.',
 'articleexists'                => 'Страница под тим именом већ постоји, или је

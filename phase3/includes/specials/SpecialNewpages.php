@@ -85,8 +85,8 @@ class SpecialNewpages extends SpecialPage {
 	/**
 	 * Show a form for filtering namespace and username
 	 *
-	 * @param string $par
-	 * @return string
+	 * @param $par String
+	 * @return String
 	 */
 	public function execute( $par ) {
 		global $wgLang, $wgOut;
@@ -136,6 +136,7 @@ class SpecialNewpages extends SpecialPage {
 		);
 
 		// Disable some if needed
+		# FIXME: throws E_NOTICEs if not set; and doesn't obey hooks etc
 		if ( $wgGroupPermissions['*']['createpage'] !== true )
 			unset($filters['hideliu']);
 
@@ -239,9 +240,8 @@ class SpecialNewpages extends SpecialPage {
 	/**
 	 * Format a row, providing the timestamp, links to the page/history, size, user links, and a comment
 	 *
-	 * @param $skin Skin to use
 	 * @param $result Result row
-	 * @return string
+	 * @return String
 	 */
 	public function formatRow( $result ) {
 		global $wgLang, $wgContLang;
@@ -292,7 +292,7 @@ class SpecialNewpages extends SpecialPage {
 	 * Should a specific result row provide "patrollable" links?
 	 *
 	 * @param $result Result row
-	 * @return bool
+	 * @return Boolean
 	 */
 	protected function patrollable( $result ) {
 		global $wgUser;
@@ -301,7 +301,8 @@ class SpecialNewpages extends SpecialPage {
 
 	/**
 	 * Output a subscription feed listing recent edits to this page.
-	 * @param string $type
+	 *
+	 * @param $type String
 	 */
 	protected function feed( $type ) {
 		global $wgFeed, $wgFeedClasses, $wgFeedLimit;
@@ -434,6 +435,9 @@ class NewPagesPager extends ReverseChronologicalPager {
 		if ( $this->opts->getValue( 'hideredirs' ) ) {
 			$conds['page_is_redirect'] = 0;
 		}
+  
+		// Allow changes to the New Pages query
+		wfRunHooks('SpecialNewpagesConditions', array(&$this, $this->opts, &$conds));
 
 		$info = array(
 			'tables' => array( 'recentchanges', 'page' ),
