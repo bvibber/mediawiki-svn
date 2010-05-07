@@ -259,6 +259,7 @@ class SpecialPrefSwitch extends SpecialPage {
 					);
 					break;
 			}
+			// Uses prefswitch-main-anon, prefswitch-main-on and prefswitch-main-off
 			$wgOut->addWikiMsgArray( 'prefswitch-main-' . $state, $parameters, array( 'parse' ) );
 		}
 	}
