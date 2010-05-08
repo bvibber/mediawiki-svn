@@ -141,7 +141,8 @@ function efStoryboardAddJSLocalisation( $parser = false ) {
 		'storyboard-charactersleft',
 		'storyboard-needtoagree',
 		'storyboard-anerroroccured',
-		''
+		'storyboard-storymetadata',
+		'storyboard-storymetadatafrom'
 	);
 
 	$data = array();

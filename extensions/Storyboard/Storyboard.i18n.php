@@ -51,7 +51,8 @@ It might have been removed.',
 	'storyboard-language' => 'Language',
 
 	// Storyboard tag
-	'storyboard-storymetadata' => 'Submitted by $1 from $2 on $3, $4.',
+	'storyboard-storymetadata' => 'Submitted by $1 on $3, $4.',
+	'storyboard-storymetadatafrom' => 'Submitted by $1 from $2 on $3, $4.',
 
 	// Special:StorySubmission
 	'storyboard-submissioncomplete' => 'Submission complete',
@@ -59,7 +60,7 @@ It might have been removed.',
 	'storyboard-alreadyexists' => '"$1" is already taken.',
 	'storyboard-changetitle' => 'Change the title.',
 	'storyboard-notsubmitted' => 'Authentication failed, no story has been saved.',
-	'storyboard-charstomany' => '$1 characters to many!',
+	'storyboard-charstomany' => '$1 characters too many!',
 	'storyboard-morecharsneeded' => '$1 more characters needed',
 	'storyboard-charactersleft' => '$1 characters left',
 	'storyboard-needtoagree' => 'You need to agree to the publication of your story to submit it.',

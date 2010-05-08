@@ -43,7 +43,7 @@ class ApiQueryStories extends ApiQueryBase {
 	 * Retrieve the stories from the database.
 	 */
 	public function execute() {
-		global $wgUser;
+		global $wgUser, $wgLang;
 		
 		// Get the requests parameters.
 		$params = $this->extractRequestParams();
@@ -55,6 +55,7 @@ class ApiQueryStories extends ApiQueryBase {
 			'story_author_id',
 			'story_author_name',
 			'story_author_image',
+			'story_author_location',
 			'story_title',
 			'story_text',
 			'story_created',
@@ -125,8 +126,11 @@ class ApiQueryStories extends ApiQueryBase {
 				'id' => $story->story_id,
 				'author' => $story->story_author_name,
 				'title' => $story->story_title,
-				'created' => wfTimestamp(  TS_ISO_8601, $story->story_created ),
-				'modified' => wfTimestamp(  TS_ISO_8601, $story->story_modified ),
+				'creationtime' => $wgLang->time( $story->story_created ),
+				'creationdate' => $wgLang->date( $story->story_created ),
+				'modificationtime' => $wgLang->time( $story->story_modified ),
+				'modificationdate' => $wgLang->date( $story->story_modified ),			
+				'location' => $story->story_author_location,
 				'imageurl' => $story->story_author_image,
 				'permalink' => SpecialPage::getTitleFor( 'story', $story->story_title )->getFullURL()
 			);
