@@ -138,7 +138,10 @@ function efStoryboardAddJSLocalisation( $parser = false ) {
 	$messages = array(
 		'storyboard-charstomany',
 		'storyboard-morecharsneeded',
-		'storyboard-charactersleft'
+		'storyboard-charactersleft',
+		'storyboard-needtoagree',
+		'storyboard-anerroroccured',
+		''
 	);
 
 	$data = array();

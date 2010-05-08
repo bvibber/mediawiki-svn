@@ -77,8 +77,8 @@ function stbLimitChars( textarea, lowerLimit, upperLimit, infodiv ) {
  */
 function stbValidateSubmission( termsCheckbox ) {
 	var agreementValid = document.getElementById( termsCheckbox ).checked;
-	if (!agreementValid) {
-		alert( 'You need to agree to the publication of your story to submit it.' ); // TODO: i18n
+	if ( !agreementValid ) {
+		alert( stbMsg( 'storyboard-needtoagree' ) );
 	}
 	return agreementValid;
 }
@@ -99,8 +99,7 @@ function stbShowReviewBoard( tab, state ) {
 	jQuery( '#storyreviewboard-' + state ).ajaxScroll( {
 		updateBatch: stbUpdateReviewBoard,
 		maxOffset: 500,
-		batchSize: 2,
-		batchNum: 2, // TODO: change to 1. Some issue in the ajaxscroll plugin makesit break when this is the case though.
+		batchSize: 8,
 		batchClass: "batch",
 		boxClass: "storyboard-box",
 		emptyBatchClass: "storyboard-empty",
@@ -125,7 +124,7 @@ function stbUpdateReviewBoard( $storyboard ) {
 			if ( data.query ) {
 				stbAddStories( $storyboard, data.query );
 			} else {
-				alert( 'An error occured:\n' + data.error.info ); // TODO: i18n
+				alert( stbMsgExt( 'storyboard-anerroroccured', [data.error.info] ) );
 			}		
 		}
 	);	

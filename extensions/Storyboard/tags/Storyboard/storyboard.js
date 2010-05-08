@@ -36,7 +36,7 @@
 				if ( data.query ) {
 					addStories( $storyboard, data );
 				} else {
-					alert( 'An error occured:\n' + data.error.info ); // TODO: i18n
+					alert( stbMsgExt( 'storyboard-anerroroccured', [data.error.info] ) ); // TODO: i18n
 				}		
 			}
 		);

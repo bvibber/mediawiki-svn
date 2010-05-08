@@ -44,6 +44,8 @@ class SpecialStoryReview extends SpecialPage {
 	private function addOutput() {
 		global $wgOut, $wgRequest, $wgJsMimeType, $wgContLanguageCode, $egStoryboardScriptPath;
 		
+		efStoryboardAddJSLocalisation();
+		
 		$wgOut->addStyle( $egStoryboardScriptPath . '/storyboard.css' );
 		$wgOut->includeJQuery();
 		$wgOut->addScriptFile( $egStoryboardScriptPath . "/jquery/jquery.ajaxscroll.js" );

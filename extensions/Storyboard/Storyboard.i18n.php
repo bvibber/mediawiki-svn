@@ -62,12 +62,14 @@ It might have been removed.',
 	'storyboard-charstomany' => '$1 characters to many!',
 	'storyboard-morecharsneeded' => '$1 more characters needed',
 	'storyboard-charactersleft' => '$1 characters left',
+	'storyboard-needtoagree' => 'You need to agree to the publication of your story to submit it.',
 
 	// Story review
 	'storyreview' => 'Story review',
 	'storyboard-hideimage' => 'Hide image',
 	'storyboard-unhideimage' => 'Show image',
 	'storyboard-deleteimage' => 'Delete image',
+	'storyboard-anerroroccured' => 'An error occured: $1',
 
 	// Story submission
 	'storyboard-yourname' => 'Your name',

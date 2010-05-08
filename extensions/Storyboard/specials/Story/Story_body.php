@@ -190,6 +190,8 @@ class SpecialStory extends IncludableSpecialPage {
 		
 		$wgOut->setPageTitle( $story->story_title );
 		
+		efStoryboardAddJSLocalisation();
+		
 		$wgOut->addStyle( $egStoryboardScriptPath . '/storyboard.css' );
 		$wgOut->includeJQuery();
 		$wgOut->addScriptFile( $egStoryboardScriptPath . '/jquery/jquery.validate.js' );

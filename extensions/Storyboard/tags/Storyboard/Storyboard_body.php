@@ -30,6 +30,8 @@ class TagStoryboard {
 		global $wgJsMimeType, $wgScriptPath, $wgStylePath, $wgStyleVersion, $wgContLanguageCode;
 		global $egStoryboardScriptPath, $egStoryboardWidth, $egStoryboardHeight;
 		
+		efStoryboardAddJSLocalisation( $parser );
+		
 		// TODO: Combine+minfiy JS files, add switch to use combined+minified version
 		$parser->getOutput()->addHeadItem(
 			<<<EOT
