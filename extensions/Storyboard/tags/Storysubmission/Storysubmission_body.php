@@ -55,6 +55,8 @@ class TagStorysubmission {
 		$maxLen = array_key_exists( 'maxlength', $args ) && is_int( $args['maxlength'] ) ? $args['maxlength'] : $egStoryboardMaxStoryLen;
 		$minLen = array_key_exists( 'minlength', $args ) && is_int( $args['minlength'] ) ? $args['minlength'] : $egStoryboardMinStoryLen;
 		
+		efStoryboardAddJSLocalisation( $parser );
+		
 		// Loading a seperate JS file would be overkill for just these 3 lines, and be bad for performance.
 		$parser->getOutput()->addHeadItem(
 			<<<EOT

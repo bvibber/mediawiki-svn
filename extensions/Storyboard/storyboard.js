@@ -8,6 +8,21 @@
  */
 
 
+function stbMsg( key ) {
+	return wgStbMessages[key];
+}
+
+function stbMsgExt( key, values ) {
+	var message = stbMsg( key );
+
+	var n = values.length;
+	for ( var i = 0; i < n; i++ ) {
+		message = message.replace( '$' + ( i + 1 ), values[i] );
+	}
+	
+	return message;
+}
+
 /**
  * Story submission/editting functions
  */
@@ -41,14 +56,14 @@ function stbLimitChars( textarea, lowerLimit, upperLimit, infodiv ) {
 	var textlength = text.length;
 	var info = document.getElementById( infodiv );
 	
-	if(textlength > upperLimit) {
-		info.innerHTML = -( upperLimit - textlength ) + ' characters to many!'; // TODO: i18n
+	if( textlength > upperLimit ) {
+		info.innerHTML = stbMsgExt( 'storyboard-charstomany', [-( upperLimit - textlength )] );
 		return false;
-	} else if (textlength < lowerLimit) {
-		info.innerHTML = '('+ ( lowerLimit - textlength ) + ' more characters needed)'; // TODO: i18n
+	} else if ( textlength < lowerLimit ) {
+		info.innerHTML = stbMsgExt( 'storyboard-morecharsneeded', [lowerLimit - textlength] );
 		return false;
 	} else {
-		info.innerHTML = '(' + ( upperLimit - textlength ) + ' characters left)'; // TODO: i18n
+		info.innerHTML = stbMsgExt( 'storyboard-charactersleft', [upperLimit - textlength] );
 		return true;
 	}
 }

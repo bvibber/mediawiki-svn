@@ -132,3 +132,27 @@ function efStoryboardAddStoryEditAction( &$sktemplate, &$content_actions ) {
 	return true;
 }
 
+function efStoryboardAddJSLocalisation( $parser = false ) {
+	wfLoadExtensionMessages( 'Storyboard' );
+
+	$messages = array(
+		'storyboard-charstomany',
+		'storyboard-morecharsneeded',
+		'storyboard-charactersleft'
+	);
+
+	$data = array();
+
+	foreach ( $messages as $msg ) {
+		$data[$msg] = wfMsgNoTrans( $msg );
+	}
+
+	$js = 'var wgStbMessages = ' . json_encode( $data ) . ';';
+	
+	if ( $parser ) {
+		$parser->getOutput()->addHeadItem( Html::inlineScript( $js ) );
+	} else {
+		global $wgOut;
+		$wgOut->addInlineScript( $js );		
+	}
+}
