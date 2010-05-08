@@ -2,7 +2,7 @@
  * AjaxScroll (jQuery Plugin)
  * http://project.yctin.com/ajaxscroll
  * Modified for MediaWiki Storyboard extension.
- *
+ * 
  * @license GPL
  * @version 0.2
  * 

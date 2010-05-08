@@ -134,7 +134,6 @@ function stbAddStories( $storyboard, query ) {
 	// Remove the empty boxes.
 	$storyboard.html( '' );
 
-	// TODO: create the review blocks html with jQuery
 	for ( var i in query.stories ) {
 		var story = query.stories[i];
 		var $storyBody = jQuery( "<div />" ).addClass( "storyboard-box" );
@@ -160,7 +159,7 @@ function stbAddStories( $storyboard, query ) {
 			metaDataText = stbMsgExt( 'storyboard-storymetadata', [story.author, story.creationtime, story.creationdate] );
 		}
 		
-		$storyBody.append( // TODO: get the actual message here
+		$storyBody.append(
 			jQuery( "<div />" ).addClass( "story-metadata" ).append(
 				jQuery("<span />").addClass( "story-metadata" ).text( metaDataText )
 			)
@@ -201,7 +200,6 @@ function stbDoStoryAction( sender, storyid, action ) {
 						jQuery( '#story_' + data.storyreview.id ).slideUp( 'slow', function () {
 							jQuery( this ).remove();
 						} );
-						// TODO: would be neat to update the other list when doing an (un)publish here
 						break;
 					case 'hideimage' : case 'unhideimage' :
 						stbToggeShowImage( sender, data.storyreview.id, data.storyreview.action );

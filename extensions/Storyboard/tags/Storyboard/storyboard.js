@@ -36,7 +36,7 @@
 				if ( data.query ) {
 					addStories( $storyboard, data );
 				} else {
-					alert( stbMsgExt( 'storyboard-anerroroccured', [data.error.info] ) ); // TODO: i18n
+					alert( stbMsgExt( 'storyboard-anerroroccured', [data.error.info] ) );
 				}		
 			}
 		);
@@ -116,7 +116,7 @@
 				metaDataText = stbMsgExt( 'storyboard-storymetadata', [story.author, story.creationtime, story.creationdate] );
 			}			
 			
-			$storyBody.append( // TODO: get the actual message here
+			$storyBody.append(
 				$( "<div />" ).addClass( "story-metadata" ).append(
 					$("<span />").addClass( "story-metadata" ).text( metaDataText )
 				)
