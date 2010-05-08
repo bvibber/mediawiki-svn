@@ -59,12 +59,36 @@ class TagStorysubmission {
 		
 		// Loading a seperate JS file would be overkill for just these 3 lines, and be bad for performance.
 		$parser->getOutput()->addHeadItem(
-			<<<EOT
-			<link rel="stylesheet" href="$egStoryboardScriptPath/storyboard.css?$wgStyleVersion" />
-			<script type="$wgJsMimeType" src="$egStoryboardScriptPath/storyboard.js?$wgStyleVersion"></script>
-			<script type="$wgJsMimeType" src="$wgStylePath/common/jquery.min.js?$wgStyleVersion"></script>
-			<script type="$wgJsMimeType" src="$egStoryboardScriptPath/jquery/jquery.validate.js?$wgStyleVersion"></script>
-<script type="$wgJsMimeType"> /*<![CDATA[*/
+			Html::element(
+				'link', 
+				array(
+					'rel' => 'stylesheet',
+					'type' => 'text/css',
+					'href' => "$egStoryboardScriptPath/storyboard.css?$wgStyleVersion"
+				)
+			) .		
+			Html::element(
+				'script', 
+				array(
+					'type' => $wgJsMimeType,
+					'src' => "$egStoryboardScriptPath/storyboard.js?$wgStyleVersion"
+				)
+			) .						
+			Html::element(
+				'script', 
+				array(
+					'type' => $wgJsMimeType,
+					'src' => "$wgStylePath/common/jquery.min.js?$wgStyleVersion"
+				)
+			) .		
+			Html::element(
+				'script', 
+				array(
+					'type' => $wgJsMimeType,
+					'src' => "$egStoryboardScriptPath/jquery/jquery.validate.js?$wgStyleVersion"
+				)
+			) .
+			Html::inlineScript( <<<EOT
 addOnloadHook( function() { 
 	document.getElementById( 'storysubmission-button' ).disabled = true;
 	stbValidateStory( document.getElementById('storytext'), $minLen, $maxLen, 'storysubmission-charlimitinfo', 'storysubmission-button' )
@@ -77,9 +101,9 @@ jQuery(document).ready(function() {
 			}
 		}
 	});		
-});	
-/*]]>*/ </script>			
+});			
 EOT
+			)		
 		);
 		
 		$fieldSize = 50;

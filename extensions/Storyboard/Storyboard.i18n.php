@@ -67,6 +67,9 @@ It might have been removed.',
 	'storyboard-done' => 'Done',
 	'storyboard-working' => 'Working...',
 	'storyboard-imagedeleted' => 'Image deleted',
+	'storyboard-showimage' => 'Show image',
+	'storyboard-hideimage' => 'Hide image',
+	'storyboard-imagedeletionconfirm' => 'Are you sure you want to permanently delete this stories image?',
 
 	// Story review
 	'storyreview' => 'Story review',

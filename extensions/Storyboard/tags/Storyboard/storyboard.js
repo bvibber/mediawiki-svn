@@ -108,9 +108,17 @@
 			
 			$storyBody.append( textAndImg );
 			
+			var metaDataText; 
+			if ( story.location != '' ) {
+				metaDataText = stbMsgExt( 'storyboard-storymetadatafrom', [story.author, story.location, story.creationtime, story.creationdate] );
+			}
+			else {
+				metaDataText = stbMsgExt( 'storyboard-storymetadata', [story.author, story.creationtime, story.creationdate] );
+			}			
+			
 			$storyBody.append( // TODO: get the actual message here
 				$( "<div />" ).addClass( "story-metadata" ).append(
-					$("<span />").addClass( "story-metadata" ).text( " Submitted by $1 from $2 on $3, $4.")
+					$("<span />").addClass( "story-metadata" ).text( metaDataText )
 				)
 			);
 			

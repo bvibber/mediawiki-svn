@@ -192,7 +192,7 @@ function stbDoStoryAction( sender, storyid, action ) {
 			'format': 'json',
 			'storyid': storyid,
 			'storyaction': action
-		},	
+		},
 		function( data ) {
 			if ( data.storyreview ) {
 				switch( data.storyreview.action ) {
@@ -215,7 +215,7 @@ function stbDoStoryAction( sender, storyid, action ) {
 						break;
 				}
 			} else {
-				alert( 'An error occured:\n' + data.error.info ); // TODO: i18n
+				alert( stbMsgExt( 'storyboard-anerroroccured', [data.error.info] ) );
 			}
 		}
 	);
@@ -233,7 +233,7 @@ function stbDoStoryAction( sender, storyid, action ) {
 function stbToggeShowImage( sender, storyId, completedAction ) {
 	if ( completedAction == 'hideimage' ) {
 		jQuery( '#story_image_' + storyId ).slideUp( 'slow', function () {
-			sender.innerHTML = 'Show image'; // TODO: i18n
+			sender.innerHTML = stbMsg( 'storyboard-showimage' );
 			sender.onclick = function() {
 				stbDoStoryAction( sender, storyId, 'unhideimage' );
 			};
@@ -241,7 +241,7 @@ function stbToggeShowImage( sender, storyId, completedAction ) {
 		} );
 	} else {
 		jQuery( '#story_image_' + storyId ).slideDown( 'slow', function () {
-			sender.innerHTML = 'Hide image'; // TODO: i18n
+			sender.innerHTML = stbMsg( 'storyboard-hideimage' );
 			sender.onclick = function() {
 				stbDoStoryAction( sender, storyId, 'hideimage' );
 			};
@@ -259,7 +259,7 @@ function stbToggeShowImage( sender, storyId, completedAction ) {
  * @return Boolean indicating whether the deletion was confirmed.
  */
 function stbDeleteStoryImage( sender, storyid ) {
-	var confirmed = confirm( 'Are you sure you want to permanently delete this stories image?' ); // TODO: i18n
+	var confirmed = confirm( stbMsg( 'storyboard-imagedeletionconfirm' ) );
 	if ( confirmed ) { 
 		stbDoStoryAction( sender, storyid, 'deleteimage' );
 	}
