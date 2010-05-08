@@ -7,11 +7,29 @@
   * @author Jeroen De Dauw
  */
 
+/**
+ * i18n functions
+ */
 
+/**
+ * JS variant of wfMsg. Can only be used after efStoryboardAddJSLocalisation (php function) was called.
+ * 
+ * @param string key
+ * 
+ * @return string The i18n message for the povided language key.
+ */
 function stbMsg( key ) {
 	return wgStbMessages[key];
 }
 
+/**
+ * JS variant of wfMsgExt. Can only be used after efStoryboardAddJSLocalisation (php function) was called.
+ * 
+ * @param string key
+ * @param array values The values to replace in the string.
+ * 
+ * @return string The i18n message for the povided language key.
+ */
 function stbMsgExt( key, values ) {
 	var message = stbMsg( key );
 
@@ -22,6 +40,8 @@ function stbMsgExt( key, values ) {
 	
 	return message;
 }
+
+
 
 /**
  * Story submission/editting functions
@@ -89,6 +109,12 @@ function stbValidateSubmission( termsCheckbox ) {
  * Story review functions
  */
 
+/**
+ * Loads an ajaxscroll into a tab.
+ * 
+ * @param tab
+ * @param state
+ */
 function stbShowReviewBoard( tab, state ) {
 	tab.html( jQuery( "<div />" )
 		.addClass( "storyreviewboard" )
@@ -107,6 +133,11 @@ function stbShowReviewBoard( tab, state ) {
 	} );	
 }
 
+/**
+ * Loads new stories into the board by making a getJSON request to the QueryStories API module.
+ * 
+ * @param $storyboard
+ */
 function stbUpdateReviewBoard( $storyboard ) {
 	requestArgs = {
 		'action': 'query',
@@ -130,6 +161,12 @@ function stbUpdateReviewBoard( $storyboard ) {
 	);	
 }
 
+/**
+ * Adds a list of stories to the board.
+ * 
+ * @param $storyboard
+ * @param query
+ */
 function stbAddStories( $storyboard, query ) {
 	// Remove the empty boxes.
 	$storyboard.html( '' );

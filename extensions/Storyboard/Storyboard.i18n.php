@@ -58,6 +58,7 @@ It might have been removed.',
 	'storyboard-submissioncomplete' => 'Submission complete',
 	'storyboard-submissionincomplete' => 'Submission failed',
 	'storyboard-alreadyexists' => '"$1" is already taken.',
+	'storyboard-alreadyexistschange' => '"{0}" is already taken, please choose a different title.', // Use {0} not $1!
 	'storyboard-changetitle' => 'Change the title.',
 	'storyboard-notsubmitted' => 'Authentication failed, no story has been saved.',
 	'storyboard-charstomany' => '$1 characters too many!',

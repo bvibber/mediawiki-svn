@@ -394,7 +394,7 @@ jQuery(document).ready(function() {
 	jQuery("#storyform").validate({
 		messages: {
 			storytitle: {
-				remote: jQuery.validator.format("<b>{0}</b> is already taken, please choose a different title.") // TODO: i18n
+				remote: jQuery.validator.format( stbMsg( 'storyboard-alreadyexistschange' ) )
 			}
 		}
 	});		

@@ -149,6 +149,7 @@ function efStoryboardAddJSLocalisation( $parser = false ) {
 		'storyboard-showimage',
 		'storyboard-hideimage',
 		'storyboard-imagedeletionconfirm',
+		'storyboard-alreadyexistschange',
 	);
 
 	$data = array();
