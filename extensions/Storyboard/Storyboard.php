@@ -142,7 +142,10 @@ function efStoryboardAddJSLocalisation( $parser = false ) {
 		'storyboard-needtoagree',
 		'storyboard-anerroroccured',
 		'storyboard-storymetadata',
-		'storyboard-storymetadatafrom'
+		'storyboard-storymetadatafrom',
+		'storyboard-done',
+		'storyboard-working',
+		'storyboard-imagedeleted',
 	);
 
 	$data = array();

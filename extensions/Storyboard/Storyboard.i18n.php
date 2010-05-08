@@ -64,6 +64,9 @@ It might have been removed.',
 	'storyboard-morecharsneeded' => '$1 more characters needed',
 	'storyboard-charactersleft' => '$1 characters left',
 	'storyboard-needtoagree' => 'You need to agree to the publication of your story to submit it.',
+	'storyboard-done' => 'Done',
+	'storyboard-working' => 'Working...',
+	'storyboard-imagedeleted' => 'Image deleted',
 
 	// Story review
 	'storyreview' => 'Story review',

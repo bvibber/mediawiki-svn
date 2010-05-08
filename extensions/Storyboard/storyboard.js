@@ -183,7 +183,7 @@ function stbAddStories( $storyboard, query ) {
  * @param action The action that needs to be performed on the story.
  */
 function stbDoStoryAction( sender, storyid, action ) {
-	sender.innerHTML = 'Working...'; // TODO: i18n
+	sender.innerHTML = stbMsg( 'storyboard-working' );
 	sender.disabled = true;
 	
 	jQuery.getJSON( wgScriptPath + '/api.php',
@@ -197,7 +197,7 @@ function stbDoStoryAction( sender, storyid, action ) {
 			if ( data.storyreview ) {
 				switch( data.storyreview.action ) {
 					case 'publish' : case 'unpublish' : case 'hide' :
-						sender.innerHTML = 'Done'; // TODO: i18n
+						sender.innerHTML = stbMsg( 'storyboard-done' );
 						jQuery( '#story_' + data.storyreview.id ).slideUp( 'slow', function () {
 							jQuery( this ).remove();
 						} );
@@ -207,7 +207,7 @@ function stbDoStoryAction( sender, storyid, action ) {
 						stbToggeShowImage( sender, data.storyreview.id, data.storyreview.action );
 						break;
 					case 'deleteimage' :
-						sender.innerHTML = 'Image deleted'; // TODO: i18n
+						sender.innerHTML = stbMsg( 'storyboard-imagedeleted' );
 						jQuery( '#story_image_' + data.storyreview.id ).slideUp( 'slow', function () {
 							jQuery( this ).remove();
 						} );
