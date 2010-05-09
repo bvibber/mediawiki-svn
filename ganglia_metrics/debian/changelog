@@ -1,3 +1,9 @@
+ganglia-metrics (1.2-1) hardy; urgency=low
+
+  * Depend on ganglia-monitor | gmond
+
+ -- Mark Bergsma <mark@wikimedia.org>  Sun, 09 May 2010 16:34:13 +0000
+
 ganglia-metrics (1.1-1) edgy; urgency=low
 
   * Added MySQL metrics
