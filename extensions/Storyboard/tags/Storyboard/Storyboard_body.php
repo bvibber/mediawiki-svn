@@ -34,42 +34,11 @@ class TagStoryboard {
 		
 		// TODO: Combine+minfiy JS files, add switch to use combined+minified version
 		$parser->getOutput()->addHeadItem(
-			Html::element(
-				'link', 
-				array(
-					'rel' => 'stylesheet',
-					'type' => 'text/css',
-					'href' => "$egStoryboardScriptPath/storyboard.css?$wgStyleVersion"
-				)
-			) .				
-			Html::element(
-				'script', 
-				array(
-					'type' => $wgJsMimeType,
-					'src' => "$wgStylePath/common/jquery.min.js?$wgStyleVersion"
-				)
-			) .			
-			Html::element(
-				'script', 
-				array(
-					'type' => $wgJsMimeType,
-					'src' => "$egStoryboardScriptPath/jquery/jquery.ajaxscroll.js?$wgStyleVersion"
-				)
-			) .	
-			Html::element(
-				'script', 
-				array(
-					'type' => $wgJsMimeType,
-					'src' => "$egStoryboardScriptPath/tags/Storyboard/storyboard.js?$wgStyleVersion"
-				)
-			) .
-			Html::element(
-				'script', 
-				array(
-					'type' => $wgJsMimeType,
-					'src' => "$egStoryboardScriptPath/storyboard.js?$wgStyleVersion"
-				)
-			)			
+			Html::linkedStyle( "$egStoryboardScriptPath/storyboard.css?$wgStyleVersion" ) .				
+			Html::linkedScript( "$wgStylePath/common/jquery.min.js?$wgStyleVersion" ) .			
+			Html::linkedScript( "$egStoryboardScriptPath/jquery/jquery.ajaxscroll.js?$wgStyleVersion" ) .	
+			Html::linkedScript( "$egStoryboardScriptPath/tags/Storyboard/storyboard.js?$wgStyleVersion" ) .
+			Html::linkedScript( "$egStoryboardScriptPath/storyboard.js?$wgStyleVersion" )			
 		);
 		
 		$width = StoryboardUtils::getDimension( $args, 'width', $egStoryboardWidth );

@@ -59,35 +59,10 @@ class TagStorysubmission {
 		
 		// Loading a seperate JS file would be overkill for just these 3 lines, and be bad for performance.
 		$parser->getOutput()->addHeadItem(
-			Html::element(
-				'link', 
-				array(
-					'rel' => 'stylesheet',
-					'type' => 'text/css',
-					'href' => "$egStoryboardScriptPath/storyboard.css?$wgStyleVersion"
-				)
-			) .		
-			Html::element(
-				'script', 
-				array(
-					'type' => $wgJsMimeType,
-					'src' => "$egStoryboardScriptPath/storyboard.js?$wgStyleVersion"
-				)
-			) .						
-			Html::element(
-				'script', 
-				array(
-					'type' => $wgJsMimeType,
-					'src' => "$wgStylePath/common/jquery.min.js?$wgStyleVersion"
-				)
-			) .		
-			Html::element(
-				'script', 
-				array(
-					'type' => $wgJsMimeType,
-					'src' => "$egStoryboardScriptPath/jquery/jquery.validate.js?$wgStyleVersion"
-				)
-			) .
+			Html::linkedStyle( "$egStoryboardScriptPath/storyboard.css?$wgStyleVersion" ) .		
+			Html::linkedScript( "$egStoryboardScriptPath/storyboard.js?$wgStyleVersion" ) .						
+			Html::linkedScript( "$wgStylePath/common/jquery.min.js?$wgStyleVersion" ) .		
+			Html::linkedScript( "$egStoryboardScriptPath/jquery/jquery.validate.js?$wgStyleVersion" ) .
 			Html::inlineScript( <<<EOT
 addOnloadHook( function() { 
 	document.getElementById( 'storysubmission-button' ).disabled = true;
