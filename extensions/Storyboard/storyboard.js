@@ -213,9 +213,29 @@ function stbAddStories( $storyboard, query ) {
 		
 		// TODO: add review controls
 		
-		$storyBody.append(
-			jQuery( "<div />" ).append( jQuery( "<button />" ).text( "edit" ).attr( "onclick", "window.location='" + story.modifyurl + "'" ) )
-		);
+		var controlDiv = jQuery( "<div />" );
+		
+		if ( story.state != 0 ) {
+			controlDiv.append(
+				jQuery( "<button />" ).text( stbMsg( "storyboard-unpublish" ) )
+			);
+		}
+		
+		if ( story.state != 1 ) {
+			controlDiv.append(
+				jQuery( "<button />" ).text( stbMsg( "storyboard-publish" ) )
+			);
+		}		
+		
+		if ( story.state != 2 ) {
+			controlDiv.append(
+				jQuery( "<button />" ).text( stbMsg( "storyboard-hide" ) )
+			);
+		}
+		
+		controlDiv.append( jQuery( "<button />" ).text( stbMsg( "edit" ) ).attr( "onclick", "window.location='" + story.modifyurl + "'" ) );
+		
+		$storyBody.append( controlDiv );
 		
 		$storyboard.append( $storyBody );	
 	}

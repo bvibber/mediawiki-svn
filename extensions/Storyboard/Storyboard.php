@@ -150,6 +150,10 @@ function efStoryboardAddJSLocalisation( $parser = false ) {
 		'storyboard-hideimage',
 		'storyboard-imagedeletionconfirm',
 		'storyboard-alreadyexistschange',
+		'edit',
+		'storyboard-unpublish',
+		'storyboard-publish',
+		'storyboard-hide',
 	);
 
 	$data = array();

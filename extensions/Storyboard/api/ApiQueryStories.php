@@ -134,13 +134,15 @@ class ApiQueryStories extends ApiQueryBase {
 				'location' => $story->story_author_location,
 				'imageurl' => $story->story_author_image,
 				'imagehidden' => $story->story_image_hidden,
-				'permalink' => SpecialPage::getTitleFor( 'story', $story->story_title )->getFullURL()
+				'permalink' => SpecialPage::getTitleFor( 'story', $story->story_title )->getFullURL(),
 			);
 			
 			if ( $isReview ) {
 				$result['modifyurl'] = SpecialPage::getTitleFor( 'story', $story->story_title )->getFullURL(
 					'action=edit&returnto=' . SpecialPage::getTitleFor( 'storyreview' )->getPrefixedText()
 				);
+				
+				$result['state'] = (int)$params['state'];
 			}			
 			
 			ApiResult::setContent( $result, ( is_null( $story->story_text ) ? '' : $story->story_text ) );
