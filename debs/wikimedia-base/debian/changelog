@@ -1,3 +1,10 @@
+wikimedia-base (0.26) hardy; urgency=low
+
+  * Drastically reduce dependencies to the bare minimum needed, since this is
+    causing problems with new releases, and most should be done by puppet.
+
+ -- Mark Bergsma <mark@wikimedia.org>  Sun, 09 May 2010 18:49:08 +0000
+
 wikimedia-base (0.25) hardy; urgency=low
 
   * Only add sysctl settings to /etc/sysctl.conf pre-karmic; rely on puppet

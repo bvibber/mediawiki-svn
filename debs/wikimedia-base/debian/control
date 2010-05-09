@@ -8,14 +8,11 @@ Standards-Version: 3.6.2
 Package: wikimedia-base
 Architecture: all
 Origin: Wikimedia
-Pre-Depends: ntp
-Depends: ${shlibs:Depends}, ${misc:Depends}, openssh-server, sysstat, zsh, vim, joe, traceroute, screen, gdb, ntp, ssmtp | mail-transport-agent, acct
+Depends: ${shlibs:Depends}, ${misc:Depends}, openssh-server, sysstat, vim
 Description: Base requirements for any Wikimedia server
  wikimedia-base provides the Wikimedia specific base requirements
  for any Wikimedia server. Currently that involves:
  * Depends on several packages wanted on every server,
-   like vim, ssh, sysstat, zsh, joe, ssmtp, traceroute
+   like vim, ssh, sysstat
  * Finds out which Wikimedia cluster the host belongs to
  * Sets APT package pinning for Wikimedia packages
- * Sets up NTP
- * Set up process accounting
