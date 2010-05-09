@@ -70,7 +70,7 @@ It might have been removed.',
 	'storyboard-imagedeleted' => 'Image deleted',
 	'storyboard-showimage' => 'Show image',
 	'storyboard-hideimage' => 'Hide image',
-	'storyboard-imagedeletionconfirm' => 'Are you sure you want to permanently delete this stories image?',
+	'storyboard-imagedeletionconfirm' => "Are you sure you want to permanently delete this story's image?",
 
 	// Story review
 	'storyreview' => 'Story review',
