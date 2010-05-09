@@ -173,7 +173,7 @@ function stbAddStories( $storyboard, query ) {
 
 	for ( var i in query.stories ) {
 		var story = query.stories[i];
-		var $storyBody = jQuery( "<div />" ).addClass( "storyboard-box" );
+		var $storyBody = jQuery( "<div />" ).addClass( "storyboard-box" ).attr( "id", "story_" + story.id );
 		
 		var $header = jQuery( "<div />" ).addClass( "story-header" ).appendTo( $storyBody );
 		jQuery( "<div />" ).addClass( "story-title" ).text( story.title ).appendTo( $header );
@@ -217,22 +217,19 @@ function stbAddStories( $storyboard, query ) {
 		
 		if ( story.state != 0 ) {
 			controlDiv.append(
-				jQuery( "<button />" ).text( stbMsg( "storyboard-unpublish" ) )
-					//.attr( "onclick", "stbDoStoryAction( this, " + story.id + ", 'unpublish' )" ) )
+				jQuery( "<button />" ).text( stbMsg( "storyboard-unpublish" ) ).attr( "onclick", "stbDoStoryAction( this, " + story.id + ", 'unpublish' )" )
 			);
 		}
 		
 		if ( story.state != 1 ) {
 			controlDiv.append(
-				jQuery( "<button />" ).text( stbMsg( "storyboard-publish" ) )
-					//.attr( "onclick", "stbDoStoryAction( this, " + story.id + ", 'publish' )" ) )
+				jQuery( "<button />" ).text( stbMsg( "storyboard-publish" ) ).attr( "onclick", "stbDoStoryAction( this, " + story.id + ", 'publish' )" )
 			);
 		}		
 		
 		if ( story.state != 2 ) {
 			controlDiv.append(
-				jQuery( "<button />" ).text( stbMsg( "storyboard-hide" ) )
-					//.attr( "onclick", "stbDoStoryAction( this, " + story.id + ", 'hide' )" ) )
+				jQuery( "<button />" ).text( stbMsg( "storyboard-hide" ) ).attr( "onclick", "stbDoStoryAction( this, " + story.id + ", 'hide' )" )
 			);
 		}
 		

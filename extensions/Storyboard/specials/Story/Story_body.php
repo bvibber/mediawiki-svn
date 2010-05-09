@@ -356,7 +356,7 @@ class SpecialStory extends IncludableSpecialPage {
 			) .
 			'</span>' .
 			'</td></tr>';
-			
+
 		$formBody .= '</table>';
 		
 		$formBody .= Html::hidden( 'wpEditToken', $wgUser->editToken() );
