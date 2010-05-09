@@ -211,8 +211,6 @@ function stbAddStories( $storyboard, query ) {
 			)
 		);
 		
-		// TODO: add review controls
-		
 		var controlDiv = jQuery( "<div />" );
 		
 		if ( story.state != 0 ) {
@@ -254,7 +252,10 @@ function stbAddStories( $storyboard, query ) {
 			else {
 				controlDiv.append(
 					jQuery( "<button />" ).text( stbMsg( "storyboard-hideimage" ) )
-						.attr( "onclick", "stbDoStoryAction( this, " + story.id + ", 'hideimage' )" )
+						.attr( {
+							"onclick": "stbDoStoryAction( this, " + story.id + ", 'hideimage' )",
+							"id": "image_button_" + story.id
+						} )
 				);				
 			}
 		}
