@@ -106,6 +106,13 @@ $messages['ko'] = array(
 	'wikieditor-addMediaWizard-preference' => '"미디어 마법사" 가젯을 활성화하기',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'wikieditor-addMediaWizard-preference' => 'Den "Assistent fir Medien derbäizesetzen" aschalten',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
@@ -125,6 +132,13 @@ $messages['ml'] = array(
  */
 $messages['nl'] = array(
 	'wikieditor-addMediaWizard-preference' => 'Uitbreiding "Wizard media toevoegen" inschakelen',
+);
+
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'wikieditor-addMediaWizard-preference' => 'Activar lo gadget « Assistent d’apondon de mèdia »',
 );
 
 /** Polish (Polski)

@@ -562,6 +562,7 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
+	'wikieditor-template-editor-preference' => 'వికీ మూసలని ఫారం ద్వారా మార్చడాని చేతనంచేయి',
 	'wikieditor-template-editor-dialog-title' => 'మూసని మార్చు',
 	'wikieditor-template-editor-dialog-submit' => 'తాజాకరించు',
 	'wikieditor-template-editor-dialog-cancel' => 'రద్దుచేయి',

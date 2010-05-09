@@ -75,8 +75,15 @@ $messages['cs'] = array(
 	'tooltip-pt-prefswitch-link-off' => 'Vyzkoušejte nové funkce',
 );
 
-/** German (Deutsch) */
+/** German (Deutsch)
+ * @author Kghbln
+ */
 $messages['de'] = array(
+	'prefswitch-link-anon' => 'Neue Funktionen',
+	'tooltip-pt-prefswitch-link-anon' => 'Erfahre mehr über die neuen Funktionen',
+	'prefswitch-link-on' => 'Zurück',
+	'tooltip-pt-prefswitch-link-on' => 'Deaktivierung der neuen Funktionen',
+	'prefswitch-link-off' => 'Neue Funktionen',
 	'tooltip-pt-prefswitch-link-off' => 'Neue Features ausprobieren',
 );
 
@@ -126,6 +133,9 @@ $messages['fr'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
+	'prefswitch-link-anon' => 'Novas características',
+	'prefswitch-link-on' => 'Volver atrás',
+	'prefswitch-link-off' => 'Novas características',
 	'tooltip-pt-prefswitch-link-off' => 'Probar as novas características',
 );
 
@@ -196,8 +206,12 @@ $messages['ka'] = array(
 
 /** Korean (한국어)
  * @author Devunt
+ * @author Kwj2772
  */
 $messages['ko'] = array(
+	'prefswitch-link-anon' => '새 기능',
+	'prefswitch-link-on' => '돌아가기',
+	'prefswitch-link-off' => '새 기능',
 	'tooltip-pt-prefswitch-link-off' => '새 기능 체험하기',
 );
 
