@@ -55,6 +55,7 @@ class ApiQueryStories extends ApiQueryBase {
 			'story_author_id',
 			'story_author_name',
 			'story_author_image',
+			'story_image_hidden',
 			'story_author_location',
 			'story_title',
 			'story_text',
@@ -132,6 +133,7 @@ class ApiQueryStories extends ApiQueryBase {
 				'modificationdate' => $wgLang->date( $story->story_modified ),			
 				'location' => $story->story_author_location,
 				'imageurl' => $story->story_author_image,
+				'imagehidden' => $story->story_image_hidden,
 				'permalink' => SpecialPage::getTitleFor( 'story', $story->story_title )->getFullURL()
 			);
 			

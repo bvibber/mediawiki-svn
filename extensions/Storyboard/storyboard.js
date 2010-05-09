@@ -181,8 +181,17 @@ function stbAddStories( $storyboard, query ) {
 		var textAndImg = jQuery( "<div />" ).addClass( "story-text" ).text( story["*"] );
 		
 		if ( story.imageurl ) {
+			var imgAttr = {
+				"src": story.imageurl,
+				"id": "story_image_" + story.id,
+				"title": story.title,
+				"alt": story.title
+			};
+			if ( story.imagehidden == "1" ) {
+				imgAttr.style = "display:none;";
+			}
 			textAndImg.prepend(
-				jQuery( "<img />" ).attr( "src", story.imageurl ).addClass( "story-image" )
+				jQuery( "<img />" ).attr( imgAttr ).addClass( "story-image" )
 			);
 		}
 		
@@ -203,6 +212,7 @@ function stbAddStories( $storyboard, query ) {
 		);
 		
 		// TODO: add review controls
+		
 		$storyBody.append(
 			jQuery( "<div />" ).append( jQuery( "<button />" ).text( "edit" ).attr( "onclick", "window.location='" + story.modifyurl + "'" ) )
 		);

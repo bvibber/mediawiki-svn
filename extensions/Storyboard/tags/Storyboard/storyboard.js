@@ -100,9 +100,9 @@
 			
 			var textAndImg = $( "<div />" ).addClass( "story-text" ).text( story["*"] );
 			
-			if ( story.imageurl ) {
+			if ( story.imageurl && story.imagehidden == "0" ) {
 				textAndImg.prepend(
-					$( "<img />" ).attr( "src", story.imageurl ).addClass( "story-image" )
+					$( "<img />" ).attr( {"src": story.imageurl, "title": story.title, "alt": story.title } ).addClass( "story-image" )
 				);
 			}
 			

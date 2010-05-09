@@ -8,9 +8,7 @@
  *
  * @author Jeroen De Dauw
  * 
- * TODO: implement eternal load (or paging) stuff for each list
  * TODO: fix layout
- * TODO: ajax load tab contents?
  */
 
 if ( !defined( 'MEDIAWIKI' ) ) {
