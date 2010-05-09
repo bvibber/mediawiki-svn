@@ -218,18 +218,21 @@ function stbAddStories( $storyboard, query ) {
 		if ( story.state != 0 ) {
 			controlDiv.append(
 				jQuery( "<button />" ).text( stbMsg( "storyboard-unpublish" ) )
+					//.attr( "onclick", "stbDoStoryAction( this, " + story.id + ", 'unpublish' )" ) )
 			);
 		}
 		
 		if ( story.state != 1 ) {
 			controlDiv.append(
 				jQuery( "<button />" ).text( stbMsg( "storyboard-publish" ) )
+					//.attr( "onclick", "stbDoStoryAction( this, " + story.id + ", 'publish' )" ) )
 			);
 		}		
 		
 		if ( story.state != 2 ) {
 			controlDiv.append(
 				jQuery( "<button />" ).text( stbMsg( "storyboard-hide" ) )
+					//.attr( "onclick", "stbDoStoryAction( this, " + story.id + ", 'hide' )" ) )
 			);
 		}
 		

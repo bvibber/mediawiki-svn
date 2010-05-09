@@ -342,14 +342,19 @@ class SpecialStory extends IncludableSpecialPage {
 			) .
 			'</td></tr>';
 
-		$cancelLink = $wgUser->getSkin()->makeKnownLink(
-			$this->getTitle( $story->story_title )->getPrefixedText(),
-			wfMsgExt( 'cancel', array( 'parseinline' ) )
-		);
-			
+		$returnTo = $wgRequest->getVal( 'returnto' );
+		$query = "id=$story->story_id";
+		if ( $returnTo ) $query .= "&returnto=$returnTo";
+		
 		$formBody .= '<tr><td colspan="2">' .
 			Html::input( '', wfMsg( 'htmlform-submit' ), 'submit', array( 'id' => 'storysubmission-button' ) ) .
-			"&nbsp;&nbsp;<span class='editHelp'>$cancelLink</span>" .
+			"&nbsp;&nbsp;<span class='editHelp'>" . 
+			Html::element(
+				'a',
+				array( 'href' => $this->getTitle()->getLocalURL( $query ) ),
+				wfMsgExt( 'cancel', array( 'parseinline' ) )
+			) .
+			'</span>' .
 			'</td></tr>';
 			
 		$formBody .= '</table>';
@@ -369,9 +374,7 @@ class SpecialStory extends IncludableSpecialPage {
 		'</legend>' . $formBody . '</fieldset>';
 			
 		$query = "id=$story->story_id";
-			
-		$returnTo = $wgRequest->getVal( 'returnto' );
-		if ( $returnTo ) $query .= '&returnto=' . $returnTo;
+		if ( $returnTo ) $query .= "&returnto=$returnTo";
 		
 		$formBody = Html::rawElement(
 			'form',
