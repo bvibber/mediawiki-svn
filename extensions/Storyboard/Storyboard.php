@@ -154,6 +154,7 @@ function efStoryboardAddJSLocalisation( $parser = false ) {
 		'storyboard-unpublish',
 		'storyboard-publish',
 		'storyboard-hide',
+		'storyboard-deleteimage',
 	);
 
 	$data = array();
