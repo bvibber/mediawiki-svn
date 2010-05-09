@@ -69,6 +69,13 @@ $messages['ca'] = array(
 	'magicnonumberedheadings-desc' => 'Afegeix la paraula màgica "<nowiki>__NONUMBEREDHEADINGS__</nowiki>"',
 );
 
+/** Danish (Dansk)
+ * @author Hylle
+ */
+$messages['da'] = array(
+	'magicnonumberedheadings-desc' => 'Tilføjer magisk ord "<nowiki>__NONUMBEREDHEADINGS__</nowiki>"',
+);
+
 /** German (Deutsch)
  * @author Imre
  */

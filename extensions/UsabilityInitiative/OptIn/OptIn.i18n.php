@@ -3907,6 +3907,20 @@ Wie willen grege weten wa-jie van de nieje vormgeving vienen, \'t zol dus mooi w
 	'optin-survey-answer-changes-predictability' => 'Verbeter de veurspelbaorheid van de prestasies',
 	'optin-survey-answer-changes-custom' => 'Meer gebrukersanpassingen meugelijk maken.',
 	'optin-survey-answer-changes-other' => 'Overig:',
+	'optin-improvements2' => "== Wat is der verbeterd? ==
+[[File:UsabilityToolbar.png|left|link=|Scharmofdrok van de verbeterde warkbalke]]
+[[File:UsabilityDialogs.png|left|link=|Scharmofdrok van de nieje dialogen veur 't bewarken]]
+;Verbeterde warkbalke
+De verbeterde warkbalke maak 't makkelijker um pagina's te bewarken.
+Nieje en verbeterde icoontjes maken 't dudelijker wat of da-j der allemaole mee doon kunnen.
+Onderdelen dee-j uutklappen kunnen, maken 't overzichtelijker, terwiel je hulpmiddels dee-j haos nooit gebruken mit een klik op de muusknoppe verbargen kunnen.
+;Dialogen
+Bie 't maken van verwiezingen of tebellen, geet der noen a-j op 't icoontjen klikken een dialoogvienster los, dat joe zal helpen um verwiezingen en tebellen te maken via 't invullen van een eenvoudig formelier.
+;En meer
+Wie hemmen nog wat aandere verbeteringen derbie edaon zoas verbeterde navigasie, inklapbaore tabblaojen, een verbeterde zeukfunctie, en meer.
+== Hoe ku-j meedoon ==
+Um meer te weten te koemen over 't Bruukbaorheidsinitiatief ku-j [http://usability.wikimedia.org/wiki/Wikipedia_Usability_Initiative onze webstee] bezeuken.
+<div style=\"clear:both\"></div>",
 );
 
 /** Dutch (Nederlands)
@@ -5452,6 +5466,21 @@ $messages['te'] = array(
 	'optin-survey-answer-changes-richtext' => 'రిచ్ టెక్స్ట్ ఎడిటర్ లాంటి ఎడిటింగ్ ఉపకరణాలను రూపొందించండి.',
 	'optin-survey-answer-changes-lookfeel' => 'సైటు యొక్క లుక్ అండ్ ఫీల్ ను మార్చండి.',
 	'optin-survey-answer-changes-other' => 'ఇతర:',
+	'optin-improvements2' => '== ఏమేమి మెరుగయ్యాయి? ==
+[[File:UsabilityToolbar.png|left|link=|మెరుగైన దిద్దుబాటు పనిముట్లపట్టీ యొక్క తెరపట్టు]]
+[[File:UsabilityDialogs.png|left|link=|కొత్త విషయ తయారీ సంవాద పేటికలు]]
+;మెరుగైన పనిముట్ల పట్టీ
+మెరగుపరిచిన పనిముట్ల పట్టీ వ్యాసాలని దిద్దుబాటు చేయడాన్ని తేలికపరుస్తుంది.
+కొత్త మరియు మెరగుపరిచిన ప్రతీకాలు ప్రతీ పనిముట్టూ ఏం చేస్తుందో స్పష్టంగా తెలియజేస్తాయి.
+విస్తరిత విభాగాలు అరుదుగా ఉపయోగించే పనిముట్లని ఒక నొక్కు దూరంలో దాచి గత్తరని తగ్గిస్తాయి.
+;సంవాద పేటికలు
+లంకెలు లేదా పట్టికలని సృష్టించాలనుకున్నప్పుడు, ఆయా పనిముట్ల ప్రతీకాలపై నొక్కితే వచ్చే సంవాద పేటికలు సులభమైన ఫారాన్ని పూరించడం ద్వారా లంకెలను మరియు పట్టికలను సృష్టించగలిగేలా మీకు తోడ్పడతాయి.
+;ఇంకా
+మెరుగైన మార్గదర్శకం, కాస్కేడింగ్ ట్యాబులు, మెరుగైన అన్వేషణ లాంటి మరిన్ని ఇతర అంశాలను కూడా ప్రవేశపెట్టాం.
+
+== పాలుపంచుకోవడం ఎలా ==
+ఉపయోగశీలత గురించి మరింత తెలుసుకోడానికి, దయచేసి మా [http://usability.wikimedia.org/wiki/Wikipedia_Usability_Initiative ముఖపుట]ని సందర్శించండి.
+<div style="clear:both"></div>',
 );
 
 /** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))

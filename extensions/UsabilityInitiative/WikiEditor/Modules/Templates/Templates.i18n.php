@@ -22,6 +22,13 @@ $messages['be-tarask'] = array(
 	'wikieditor-templates-preference' => 'Уключыць хаваньне шаблёнаў',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'wikieditor-templates-preference' => "Gweredekaat ar c'huzhat patromoù",
+);
+
 /** Czech (Česky)
  * @author Mormegil
  */
@@ -57,6 +64,13 @@ $messages['fr'] = array(
 	'wikieditor-templates-preference' => 'Activer le repliement des modèles',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'wikieditor-templates-preference' => 'Activar o enrolamento de modelos',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -71,11 +85,32 @@ $messages['ia'] = array(
 	'wikieditor-templates-preference' => 'Activar patronos plicabile',
 );
 
+/** Italian (Italiano)
+ * @author Una giornata uggiosa '94
+ */
+$messages['it'] = array(
+	'wikieditor-templates-preference' => 'Abilita la funzione per nascondere i template',
+);
+
 /** Japanese (日本語)
  * @author Aotake
  */
 $messages['ja'] = array(
 	'wikieditor-templates-preference' => 'テンプレート折り畳みを有効にする',
+);
+
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'wikieditor-templates-preference' => '틀 접기 활성화하기',
+);
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'wikieditor-templates-preference' => 'Zesummeklappe vu Schablounen aschalten',
 );
 
 /** Macedonian (Македонски)
@@ -97,6 +132,13 @@ $messages['ml'] = array(
  */
 $messages['nl'] = array(
 	'wikieditor-templates-preference' => 'Inklapbare sjablonen inschakelen',
+);
+
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'wikieditor-templates-preference' => 'Activar lo replegament dels modèls',
 );
 
 /** Piedmontese (Piemontèis)

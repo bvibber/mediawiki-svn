@@ -171,6 +171,16 @@ $messages['no'] = array(
 	'checkpoint-notice' => '([[{{ns:project}}:Checkpoint|lagre sjekkpunkt]])',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'checkpoint' => 'Salvar e contunhar la modificacion',
+	'checkpoint-desc' => "Permet d'enregistrar una modificacion e de contunhar a modificar",
+	'checkpoint-tooltip' => 'Enregistrar vòstra progression e contunhar a modificar la pagina',
+	'checkpoint-notice' => '([[{{ns:project}}:Checkpoint|enregistrar un punt de contraròtle]])',
+);
+
 /** Polish (Polski)
  * @author Marcin Łukasz Kiejzik
  */

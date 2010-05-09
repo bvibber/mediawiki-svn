@@ -188,10 +188,12 @@ $messages['cs'] = array(
 );
 
 /** Danish (Dansk)
+ * @author Hylle
  * @author Sarrus
  */
 $messages['da'] = array(
 	'backforth-next' => 'Næste ($1)',
+	'backandforth-desc' => 'Tilføjer "Næste" og "Forrige" alfabetiske sidelinks til toppen af sider.',
 	'backforth-prev' => 'Forrige ($1)',
 );
 

@@ -1944,6 +1944,14 @@ $messages['ru'] = array(
 	'right-viewsystemstats' => 'просмотр [[Special:UserStats|статистики использования вики]]',
 );
 
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'specialuserstats' => 'Штатістіка хоснованя',
+	'usagestatistics' => 'Штатістіка хоснованя',
+);
+
 /** Sinhala (සිංහල)
  * @author Calcey
  */

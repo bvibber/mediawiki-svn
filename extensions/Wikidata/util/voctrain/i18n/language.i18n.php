@@ -2288,6 +2288,7 @@ $messages['lb'] = array(
 	'voctrain_Permission_Denied' => 'Erlaabness refuséiert',
 	'voctrain_try_again_' => 'nach eng Kéier probéieren?',
 	'voctrain_Action_unknown' => 'Onbekannten Aktioun',
+	'voctrain_I_don_t_know_what_to_do_with_action_' => "Ech weess net wat ech mat '%action' maache soll.",
 	'voctrain_User_added' => 'Benotzer derbäigesat',
 	'voctrain_Hello_username_welcome_to_the_omega_language_trainer' => 'Moien, %username, wëllkomm beim Omega-Sproochen-Trainer',
 	'voctrain_continue' => 'viru fueren',

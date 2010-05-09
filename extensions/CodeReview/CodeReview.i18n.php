@@ -7748,6 +7748,15 @@ $3',
 	'specialpages-group-developer' => 'Инструменты разработчика',
 );
 
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'code-status-ok' => 'ОК',
+	'code-status-verified' => 'овірено',
+	'code-status-deferred' => 'одложена',
+);
+
 /** Yakut (Саха тыла)
  * @author HalanTul
  */

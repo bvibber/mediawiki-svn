@@ -291,7 +291,7 @@ $messages['de'] = array(
 	'watchers_header' => '{{PLURAL:$2|Benutzer, der „[[:$1]]“ beobachtet|Benutzer, die „[[:$1]]“ beobachten}}',
 	'watchers_noone_watches' => 'Kein Benutzer beobachtet die Seite [[:$1]].',
 	'watchers_x_or_more' => '$1 oder mehr {{PLURAL:$1|Benutzer|Benutzer}} beobachten die Seite [[:$2]].',
-	'watchers_less_than_x' => 'Weniger als {{PLURAL:$1|$1 Benutzer|$1 Benutzer}} beobachten diese Seite.',
+	'watchers_less_than_x' => 'Weniger als {{PLURAL:$1|$1 Benutzer|$1 Benutzer}} haben die Seite [[:$2]] auf ihrer Beobachtungsliste.',
 	'watchers-num' => '$1 {{PLURAL:$1|Benutzer hat|Benutzer haben}} die Seite [[:$2]] auf {{PLURAL:$1|seiner|ihrer}} Beobachtungsliste.',
 	'right-watchers-list' => '[[Special:Watchers|Zeigt die Benutzer an, die eine bestimmte Seite beobachten]]',
 );

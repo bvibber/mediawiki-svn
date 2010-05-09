@@ -476,6 +476,19 @@ $messages['pt'] = array(
 	'pf-header-approve' => 'Aprovar',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Luckas Blade
+ */
+$messages['pt-br'] = array(
+	'pf-admin-link-editlink-page' => 'Editar página',
+	'pf-admin-link-approve' => 'Aprovar página',
+	'pf-header-documentation' => 'Documentação',
+	'pf-header-in_packages' => 'Pacotes',
+	'pf-header-type' => 'Tipo de página',
+	'pf-header-page_title' => 'Título',
+	'pf-header-approve' => 'Aprovar',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

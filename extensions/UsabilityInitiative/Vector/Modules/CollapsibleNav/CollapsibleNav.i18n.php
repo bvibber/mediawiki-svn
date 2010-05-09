@@ -90,6 +90,13 @@ $messages['es'] = array(
 	'vector-collapsiblenav-preference' => 'Activar el menú de navegación izquierda plegable',
 );
 
+/** Estonian (Eesti)
+ * @author Pikne
+ */
+$messages['et'] = array(
+	'vector-collapsiblenav-preference' => 'Tee navigeerimismenüü vasakul peidetavaks',
+);
+
 /** French (Français)
  * @author IAlex
  */

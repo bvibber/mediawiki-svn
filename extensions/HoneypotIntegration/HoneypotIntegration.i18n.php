@@ -245,6 +245,14 @@ $messages['ka'] = array(
 	'abusefilter-edit-builder-vars-honeypot-list-count' => 'ბოლო მოვლენების სია, რომელმაც გამოიწვია IP-მისამართუს მოხვედრა Honey Pot პროექტთან შესაბამისობაში',
 );
 
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'honeypot-desc' => '미디어위키 사이트에 [http://projecthoneypot.org/ Project Honey Pot]을 통합',
+	'abusefilter-edit-builder-vars-honeypot-list-count' => 'Project Honey Pot에서 적발한 특정 IP 주소에서 위반한 최근 사건의 수',
+);
+
 /** Colognian (Ripoarisch)
  * @author Purodha
  */

@@ -159,15 +159,20 @@ Zkontrolujte zda jste jméno napsali správně!',
 );
 
 /** Danish (Dansk)
+ * @author Hylle
  * @author Lhademmor
  * @author MGA73
  */
 $messages['da'] = array(
+	'ajaxlogin-desc' => 'Dynamisk boks der tillader brugere at logge ind og huske kodeord',
 	'ajaxLogin1' => 'For at fuldføre din indlogning, skal du indtaste et nyt password.
 Dette vil føre dig væk fra denne redigeringsside og du risikerer at miste din nuværende redigering.',
 	'ajaxLogin2' => 'Er du sikker?
 Du risikerer at miste dine redigeringer, hvis du forlader denne side nu.',
 	'ajaxlogin-create' => 'Opret ny brugerkonto',
+	'al-nosuchuser' => 'Der er ikke nogen bruger med navnet "$1".
+Brugernavne er versalfølsomme.
+Kontrollér stavemåden.',
 );
 
 /** German (Deutsch)

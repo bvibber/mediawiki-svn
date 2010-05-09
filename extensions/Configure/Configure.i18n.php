@@ -1713,6 +1713,7 @@ $messages['cu'] = array(
 /** Danish (Dansk)
  * @author BabelFrode
  * @author Byrial
+ * @author Hylle
  */
 $messages['da'] = array(
 	'configure' => 'Konfigurér wikien',
@@ -1733,7 +1734,7 @@ $messages['da'] = array(
 	'configure-ext-settings-dep-error' => '$1: nødvendig værdi: $2, nuværende værdi: $3',
 	'configure-ext-use-extension' => 'Brug denne udvidelse',
 	'configure-ext-use' => 'Anvend',
-	'configure-form-reason' => 'Årsag til ændring:',
+	'configure-form-reason' => 'Årsag:',
 	'configure-customised' => "''Denne indstilling er blevet defineret af bruger''",
 	'configure-arrayinput-oneperline' => "''(én pr. række)''",
 	'configure-summary' => 'Denne specialside lader dig konfigurere wikien, se [http://www.mediawiki.org/wiki/Manual:Configuration_settings manualsiden] for flere informationer.',
@@ -1813,6 +1814,7 @@ Du bedes oprette den og og køre configure.sql eller rette navnet.',
 	'configure-section-specialpages' => 'Specialsider',
 	'configure-section-recentchanges' => 'Nylige ændringer',
 	'configure-section-users' => 'Brugere',
+	'configure-section-externalauth' => 'Ekstern autentifikation',
 	'configure-section-feed' => 'Feed',
 	'configure-section-job' => 'Kørsler',
 	'configure-section-extension' => 'Udvidelser',
@@ -5790,6 +5792,7 @@ Leet e w.e.g un oder ännert en esou datt dës Erweiderung funktionéiert.",
 	'configure-section-access' => 'Zougang',
 	'configure-section-groups' => 'Gruppen',
 	'configure-section-block' => 'Spären',
+	'configure-section-rates' => 'Limiten',
 	'configure-section-proxy' => 'Proxiën',
 	'configure-section-cookie' => 'Cookiën',
 	'configure-section-performance' => 'Leeschtung',

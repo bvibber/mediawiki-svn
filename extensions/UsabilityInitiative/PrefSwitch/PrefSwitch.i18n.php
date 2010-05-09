@@ -326,6 +326,10 @@ Dibabit kement tra hag a zegouezh.',
 	'prefswitch-success-feedback' => "Kaset eo bet hoc'h evezhiadennoù.",
 	'prefswitch-return' => '<hr style="clear:both">
 Distreiñ da <span class="plainlinks">[$1 $2]</span>.',
+	'prefswitch-main-on' => '===Evezhiadennoù ?===
+Plijet e vefemp o klevet an doare diganeoc\'h.  Kit da welet hor <span class="plainlinks">[$1 pajenn evezhiadennoù]</span>.
+===Trawalc\'h gant ar jeu-se !===
+Mar fell deoc\'h diweredekaat an arc\'hwelioù nevez, e c\'hallit <span class="plainlinks">[$2 klikañ amañ]</span>.',
 	'prefswitch-main-off' => '===Un taol-esae !===
 MAr fell deoc\'h ober gant ar barregezhioù nevez, <span class="plainlinks">[$1 klikit amañ]</span>.',
 	'prefswitch-survey-intro-feedback' => "Plijet-bras e vefemp o kaout keloù diganeoc'h.
@@ -460,6 +464,7 @@ I'n helpu ni i'w gwella, cwblhewch yr arolwg dewisol isod.",
 
 /** German (Deutsch)
  * @author Als-Holder
+ * @author Kghbln
  * @author The Evil IP address
  */
 $messages['de'] = array(
@@ -508,6 +513,8 @@ Zurück zu <span class="plainlinks">[$1 $2]</span>.',
 * Link-Assistent: Ein einfach zu bedienender Dialog ermöglicht das Hinzufügen von Links sowohl zu anderen Wiki-Seiten als auch zu externen Seiten.
 * Suche: Wir haben die Suchvorschläge verbessert, damit du schneller zu der von dir gesuchten Seite kommst.
 * Weiteres: Ein Tabellen-Assistent ermöglicht das einfache Erstellen von Tabellen und ein Suchen-und-Ersetzen-Dialog vereinfacht die Seitenbearbeitung.',
+	'prefswitch-main-anon' => '===Zurück===
+Sofern du die neuen Funktionen deaktivieren möchtest, dann <span class="plainlinks">[$1 klicke hier]</span>. Du wirst dann gebeten dich anzumelden oder zunächst ein neues Benutzerkonto zu erstellen.',
 	'prefswitch-main-on' => '=== Feedback? ===
 Wir würden uns freuen, von dir zu hören.
 Bitte besuche unsere <span class="plainlinks">[$1 Feedback-Seite]</span>.
@@ -988,6 +995,8 @@ Voltar a <span class="plainlinks">[$1 $2]</span>.',
 * Asistente para as ligazóns: trátase dunha simple ferramenta que permite engadir ligazóns cara a outras páxinas da Wikipedia, así como ligazóns a sitios web externos.
 * Melloras nas procuras: melloramos as suxestións de busca para que dea coa páxina que está a procurar máis rapidamente.
 * Outras novas características: tamén introducimos un asistente para as táboas, que fai a creación de táboas máis fácil, e unha característica para atopar e substituír elementos, que simplifica a edición da páxina.',
+	'prefswitch-main-anon' => '===Volver atrás===
+Se quere desactivar as novas características, <span class="plainlinks">[$1 prema aquí]</span>. Pediráselle que primeiro acceda ao sistema ou que cree unha conta.',
 	'prefswitch-main-on' => '===Opinións?===
 Gustaríanos saber o que lle parece. Visite a nosa <span class="plainlinks">[$1 páxina de comentarios]</span>.
 ===Quero voltar!===
@@ -1534,6 +1543,8 @@ $messages['ko'] = array(
 * 링크 마법사:  사용하기 쉬운 도구가 다른 문서나 외부로 링크를 쉽게 걸 수 있도록 도와 줄 것입니다.
 * 검색 기능 향상: 찾는 문서를 더욱 쉽게 찾을 수 있도록 검색어 제안 기능을 향상시켰습니다.
 * 다른 새로운 기능:  표를 쉽게 만들 수 있도록 표 마법사와 문서 편집을 간단하게 하기 위해 찾아 바꾸기 기능을 도입했습니다.',
+	'prefswitch-main-anon' => '===돌아갈래요===
+새 기능을 끄기를 원하신다면 <span class="plainlinks">[$1 여기]</span>를 클릭해주세요. 로그인하거나 계정을 먼저 생성하여야 합니다.',
 	'prefswitch-main-on' => '===피드백?===
 우리는 당신에게 피드백을 받기를 원합니다. <span class="plainlinks">[$1 피드백]</span>을 남겨주세요.
 ===돌아갈래요!===
@@ -2172,6 +2183,7 @@ Da nam jih pomagate izboljšati, prosimo izpolnite neobvezno anketo spodaj.',
 $messages['te'] = array(
 	'prefswitch-survey-true' => 'అవును',
 	'prefswitch-survey-false' => 'కాదు',
+	'prefswitch-survey-submit-off' => 'కొత్త సౌలభ్యాలని నిలిపివేయి',
 	'prefswitch-survey-question-likedislike' => 'కొత్త సౌలభ్యాలలో మీకు ఏమేం నచ్చాయి?
 ఏవి నచ్చలేదు?',
 	'prefswitch-survey-answer-whyoff-hard' => 'వాడడానికి చాలా కష్టంగా ఉంది.',

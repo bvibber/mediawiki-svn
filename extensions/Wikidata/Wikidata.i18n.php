@@ -10972,6 +10972,22 @@ $messages['ru'] = array(
 	'ow_shown_datasets' => 'Показанные наборы данных',
 );
 
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'langman_langname' => 'Назва языка:',
+	'langman_iso639-3' => 'Код ISO 639-3:',
+	'langman_iso639-2' => 'Код ISO 639-2:',
+	'langman_wikimedia' => 'Код Вікімедіа:',
+	'langman_addlang' => 'Придати язык',
+	'importlangnames' => 'Вікідата: імпорт назв языків',
+	'ow_statistics' => 'Вікідата: Штатістікы',
+	'ow_show' => 'Вказати',
+	'ow_upload' => 'Награти',
+	'ow_create' => 'Створити',
+);
+
 /** Sicilian (Sicilianu)
  * @author Melos
  */

@@ -475,6 +475,7 @@ $messages['km'] = array(
  * @author Yknok29
  */
 $messages['ko'] = array(
+	'intersection-desc' => '특정 분류나 여러 분류의 집합에 속한 가장 최근에 쓰인 문서의 목록을 출력',
 	'intersection_toomanycats' => '오류: 분류가 너무 많습니다!',
 	'intersection_noresults' => '오류: 결과가 없습니다!',
 	'intersection_noincludecats' => '오류: 분류를 추가하거나 이름공간을 명시해야 합니다!',

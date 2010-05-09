@@ -214,6 +214,13 @@ $messages['ka'] = array(
 	'userdailycontribs-desc' => 'დაჭერის გაფართოების გამოყენების ყოველდღიური წვლილი.',
 );
 
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'userdailycontribs-desc' => '클릭 추적 확장 기능을 위한 사용자 일일 기여',
+);
+
 /** Colognian (Ripoarisch)
  * @author Purodha
  */

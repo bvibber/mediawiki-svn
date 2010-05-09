@@ -432,6 +432,17 @@ $messages['pt'] = array(
 	'right-lastlogin' => 'Ver a última vez que um utilizador se autenticou',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Luckas Blade
+ */
+$messages['pt-br'] = array(
+	'lastuserlogin_username' => 'Nome real',
+	'lastuserlogin_useremail' => 'Email do usuário',
+	'lastuserlogin_lastlogin' => 'Último login',
+	'lastuserlogin_daysago' => 'Dias atrás',
+	'right-lastlogin' => 'Ver a última vez que um usuário fez login.',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */
