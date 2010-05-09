@@ -1187,6 +1187,10 @@ $notEditableSettings = array(
  * Array of settings depending of the Core version
  */
 $settingsVersion = array(
+	# Removed in 1.17
+	'wgSQLiteDataDirMode' => array( array( '1.17alpha', '<' ) ),
+
+	# Added in 1.17
 	'wgAllowUserCssPrefs' => array( array( '1.17alpha', '>=' ) ),
 	'wgGalleryOptions' => array( array( '1.17alpha', '>=' ) ),
 	'wgAllowImageTag' => array( array( '1.17alpha', '>=' ) ),
