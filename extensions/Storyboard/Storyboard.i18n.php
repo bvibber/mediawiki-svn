@@ -51,7 +51,7 @@ It might have been removed.',
 	'storyboard-language' => 'Language',
 
 	// Storyboard tag
-	'storyboard-storymetadata' => 'Submitted by $1 on $3, $4.',
+	'storyboard-storymetadata' => 'Submitted by $1 on $2, $3.',
 	'storyboard-storymetadatafrom' => 'Submitted by $1 from $2 on $3, $4.',
 
 	// Special:StorySubmission
