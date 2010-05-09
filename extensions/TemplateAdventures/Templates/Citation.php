@@ -336,7 +336,7 @@ class Citation extends TemplateAdventureBasic {
 			$newPerArea .= $this->addNotNull ( $this->dVolume, 
 				wfMsg ( 'ta-citevolumerender', $this->getSeparator ( 'section' ), $this->dVolume ) );
 			$newPerArea .= $this->addNotNull ( $this->dOther, 
-				wfMsg ( 'ta-citeother', $this->getSeparator ( 'section' ), $this->dOther );
+				wfMsg ( 'ta-citeother', $this->getSeparator ( 'section' ), $this->dOther ) );
 			$newPerArea .= $this->addNotNull ( $this->dEdition, 
 				wfMsg ( 'ta-citeeditionrender', $this->dEdition ) );
 			$newPerArea .= $this->addNotNull ( $this->dPublication['place'], 

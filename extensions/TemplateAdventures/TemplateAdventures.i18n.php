@@ -14,7 +14,7 @@ $messages['en'] = array (
 	
 	# citation messages
 	'ta-citeetal'            => "$1 ''et al''.",   # $1 = list of authors
-	'ta-citecoauthors'       => '$1$2 $3'          # $1 = authors, $2 = separator
+	'ta-citecoauthors'       => '$1$2 $3',          # $1 = authors, $2 = separator
 	'ta-citeauthordate'      => '$1 ($2)',         # $1 = authors or separator
 	'ta-citeauthoryearnote'  => '$1 [$2]',         # $1 = date
 	'ta-citeeditorsplural'   => '$1, eds',         # $1 = editors
@@ -41,8 +41,8 @@ $messages['en'] = array (
 	'ta-citeeditionrender'   => '$1',
 	'ta-citepublication'     => '$1 $2',           # $1 = separator
 	'ta-citepublicationdate' => '$1 $2',           # $1 = separator
-	'ta-citeretrievedupper'  => '$1 Retrieved $2'  # $1 = separator
-	'ta-citeretrievedlower'  => '$1 retrieved $2'  # $1 = separator
+	'ta-citeretrievedupper'  => '$1 Retrieved $2', # $1 = separator
+	'ta-citeretrievedlower'  => '$1 retrieved $2', # $1 = separator
 	
 	# citation span messages
 	'ta-citeprintonlyspan'   => '<span class="printonly">$1</span>',
