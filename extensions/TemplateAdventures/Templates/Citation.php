@@ -3,11 +3,11 @@
 class Citation extends TemplateAdventureBasic {
 
 	private $dSeparators = array(    # separators between names, items, etc.
-		'section'   => ',',
-		'regular'   => ',&#32;',
-		'author'    => '&#059;&#32;',
-		'name'      => ',&#32;',
-		'ampersand' => '&#32;&amp;&#32;',
+		'section'    => ',',
+		'author'     => '&#059;&#32;',
+		'name'       => ',&#32;',
+		'authorlast' => '&#32;&amp;&#32;',
+		'beforepublication' => ':',
 	);
 	private $dAuthorTruncate = 8;    # the amount of authors it should display,
 	                                 # if truncated, 'et al' will be used instead.
@@ -82,6 +82,12 @@ class Citation extends TemplateAdventureBasic {
 	 */
 	public function __construct( $parser, $frame, $args ) {
 		parent::__construct($parser, $frame, $args);
+		# init data
+		$this->dSeparators['section']    = wfMsg ( 'ta-citesep-section' );
+		$this->dSeparators['author']     = wfMsg ( 'ta-citesep-author' );
+		$this->dSeparators['name']       = wfMsg ( 'ta-citesep-name' );
+		$this->dSeparators['authorlast'] = wfMsg ( 'ta-citesep-authorlast' );
+		$this->dSeparators['beforepublication'] = wfMsg ( 'ta-citesep-beforepublication' );
 		$this->readOptions( );
 		$this->parseData();
 	}
@@ -94,63 +100,65 @@ class Citation extends TemplateAdventureBasic {
 		# authors
 		if ( count( $this->dAuthors ) > 1 ) {
 			$authorArea = $this->createWriterSection ( $this->dAuthors, $this->dAuthorLinks, $this->dAuthorTruncate );
-			if ( $this->dCoAuthors != null )
-				$authorArea .= $this->getSeparator( 'author' ) . $this->dCoAuthors;
-			if ( $this->dDate != null ) {
-				$authorArea .= wfMsg ( 'ta-citeauthordate', $this->dDate);
-				if ( $this->dYearNote != null ) 
-					$authorArea .= wfMsg ( 'ta-citeauthoryearnote', $this->dYearNote );
+			if ( $this->notNull ( $this->dCoAuthors ) )
+				$authorArea = wfMsg ( 'ta-citecoauthors', $authorArea, $this->getSeparator( 'author' ), $this->dCoAuthors );
+			if ( $this->notNull ( $this->dDate ) ) {
+				$authorArea = wfMsg ( 'ta-citeauthordate', $authorArea, $this->dDate);
+				if ( $this->notNull ( $this->dYearNote ) ) 
+					$authorArea = wfMsg ( 'ta-citeauthoryearnote', $authorArea, $this->dYearNote );
 			}
 			$this->mOutput .= $authorArea;
 		# editors
 		} elseif ( count ( $this->dEditors ) > 1 ) {
 			$editorArea = $this->createWriterSection ( $this->dEditors, $this->dEditorLinks, $this->dEditorTruncate );
 			if ( count ( $this->dEditors ) > 2 )
-				$editorArea .= wfMsg ( 'ta-editorsplural' );
+				$editorArea = wfMsg ( 'ta-citeeditorsplural', $editorArea );
 			else
-				$editorArea .= wfMsg ( 'ta-editorssingular' );
+				$editorArea = wfMsg ( 'ta-citeeditorssingular', $editorArea );
 			$editorArea .= $this->getSeparator ( 'section' );
-			if ( $this->dDate != null ) {
-				$editorArea .= wfMsg ( 'ta-citeauthordate', $this->dDate);
-				if ( $this->dYearNote != null ) 
-					$editorArea .= wfMsg ( 'ta-citeauthoryearnote', $this->dYearNote );
+			if ( $this->notNull ( $this->dDate ) ) {
+				$editorArea = wfMsg ( 'ta-citeauthordate', $editorArea, $this->dDate);
+				if ( $this->notNull ( $this->dYearNote ) ) 
+					$editorArea .= wfMsg ( 'ta-citeauthoryearnote', $editorArea, $this->dYearNote );
 			}
 			$this->mOutput .= $editorArea;
 		}
 		# included work title
-		if ( $this->notNull( $this->dWorkTitle['includedwork'] ) && ( $this->notNull( $this->dPeriodical['name'] ) || $this->notNull( $this->dWorkTitle['transitalic'] ) || $this->notNull( $this->dWorkTitle['transtitle'] ) ) ) {
-			# I am no way certain this is a correct copy of the following logic:
-			# {{#if: {{{IncludedWorkTitle|}}}{{#if:{{{Periodical|}}}||{{#if:{{{TransItalic|}}}||{{{TransTitle|}}}}}}} | ... | ... }}
-			if ( $authorArea != '' || $editorArea != '' ) {
+		if ( $this->notNull( $this->dWorkTitle['includedwork'] ) 
+			&& ( $this->notNull( $this->dPeriodical['name'] ) 
+				|| $this->notNull( $this->dWorkTitle['transitalic'] ) 
+				|| $this->notNull( $this->dWorkTitle['transtitle'] ) ) ) {
+			if ( $authorArea != '' 
+				|| $editorArea != '' ) {
 				$this->mOutput .= $this->getSeparator( 'section' );
 			}
 			# let's get the url
-			if ( $this->dWorkLink['includedwork'] != null ) {
+			if ( $this->notNull ( $this->dWorkLink['includedwork'] ) ) {
 				$url = $this->dWorkLink['includedwork'];
 			} else {
-				if ( $this->dWorkLink['url'] != null ) {
+				if ( $this->notNull ( $this->dWorkLink['url'] ) ) {
 					$url = $this->dWorkLink['url'];
 				} else {
 					# some explain to me what exactly the following is supposed to mean:
 					# <!-- Only link URL if to a free full text - as at PubMedCentral (PMC)-->
 					# |{{#ifexpr:{{#time: U}} > {{#time: U | {{{Embargo|2001-10-10}}} }}
-					if ( $this->dPubMed['pmc'] != null ) {
-						$url = wfMsg ( 'ta-pubmed-url', $this->dPubMed['pmc'] );
+					if ( $this->notNull ( $this->dPubMed['pmc'] ) ) {
+						$url = wfMsg ( 'ta-citepubmed-url', $this->dPubMed['pmc'] );
 					}
 				}
 			}
 			# and now the title
 			if ( $this->notNull ( $this->dPeriodical['name'] ) ) {
-				$tmp = str_replace( "'", '&#39;', $this->dWorkTitle['includedwork']);
-				$title = "''$tmp''";
+				$tmp = $this->clean( $this->dWorkTitle['includedwork'] );
+				$title = wfMsg ( 'ta-citeincludedworktitle', $tmp );
 			} else {
-				$tmp = ( $this->dWorkTitle['includedwork'] != null
+				$tmp = ( $this->notNull ( $this->dWorkTitle['includedwork'] )
 					? $this->dWorkTitle['includedwork']
 					: '' );
 				if ( $this->dWorkTitle['transtitle'] ) {
 					if ( $tmp != '' )
 						$tmp .= ' ';
-					$tmp .= wfMsg( 'ta-transtitle-render', $this->dWorkTitle['transtitle'] );
+					$tmp .= wfMsg( 'ta-citetranstitle-render', $this->dWorkTitle['transtitle'] );
 				}
 				$title = $tmp;
 			}
@@ -165,7 +173,7 @@ class Citation extends TemplateAdventureBasic {
 				|| $this->notNull ( $this->dWorkTitle['includedwork'] ) 
 			) 
 		) {
-			$this->mOutput .= $this->getSeparator ( 'section' ) . ' ' . wfMsg ( 'ta-writtenat', $this->dPlace );
+			$this->mOutput .= wfMsg ( 'ta-citewrittenat', $this->getSeparator ( 'section' ), $this->dPlace );
 		}
 		# editor of complication... eerrr...
 		# TODO: we'll do this later...
@@ -174,8 +182,10 @@ class Citation extends TemplateAdventureBasic {
 		if ( $this->notNull ( $this->dPeriodical['name'] ) ) {
 			$perArea = '';
 			if ( $this->notNull ( $this->dOther ) )
-				$perArea .= $this->getSeparator ( 'section' ) . ' ' . $this->dOther;
-			if ( $authorArea != '' || $editorArea != '' || $this->notNull ( $this->dWorkTitle['includedwork'] ) )
+				$perArea .= wfMsg ( 'ta-citeother', $this->getSeparator ( 'section' ), $this->dOther );
+			if ( $authorArea != '' 
+				|| $editorArea != '' 
+				|| $this->notNull ( $this->dWorkTitle['includedwork'] ) )
 				$perArea .= $this->getSeparator ( 'section' );
 			# make the link!
 			if ( $this->notNull ( $this->dWorkTitle['title'] ) || $this->notNull ( $this->dWorkTitle['transtitle'] ) ) {
@@ -189,7 +199,7 @@ class Citation extends TemplateAdventureBasic {
 						# <!-- Only link URL if to a free full text - as at PubMedCentral (PMC)-->
 						# |{{#ifexpr:{{#time: U}} > {{#time: U | {{{Embargo|2001-10-10}}} }}
 							if ( $this->dPubMed['pmc'] != null ) {
-								$url = wfMsg ( 'ta-pubmed-url', $this->dPubMed['pmc'] );
+								$url = wfMsg ( 'ta-citepubmed-url', $this->dPubMed['pmc'] );
 							}				
 						}
 					}
@@ -201,7 +211,7 @@ class Citation extends TemplateAdventureBasic {
 					# <!-- Only link URL if to a free full text - as at PubMedCentral (PMC)-->
 					# |{{#ifexpr:{{#time: U}} > {{#time: U | {{{Embargo|2001-10-10}}} }}
 						if ( $this->dPubMed['pmc'] != null ) {
-							$url = wfMsg ( 'ta-pubmed-url', $this->dPubMed['pmc'] );
+							$url = wfMsg ( 'ta-citepubmed-url', $this->dPubMed['pmc'] );
 						}				
 					}
 				}
@@ -212,7 +222,7 @@ class Citation extends TemplateAdventureBasic {
 				if ( $this->notNull ( $this->dWorkTitle['transtitle'] ) ) {
 					if ( $tmp != '' )
 						$tmp .= ' ';
-					$tmp .= wfMsg ( 'ta-transtitle-render', $this->dWorkTitle['transtitle'] );
+					$tmp .= wfMsg ( 'ta-citetranstitle-render', $this->dWorkTitle['transtitle'] );
 				}
 				$title = "\"$tmp\"";
 				$perArea .= $this->makeLink ( $url, $title );
@@ -224,11 +234,13 @@ class Citation extends TemplateAdventureBasic {
 		}
 		# language
 		if ( $this->notNull ( $this->dLanguage ) ) {
-			$this->mOutput .= wfMsg ( 'ta-inlanguage', $this->dLanguage );
+			# yes, I am cheating right now
+			$this->mOutput .= wfMsg ( 'ta-citeinlanguage', '', $this->dLanguage );
 		}
 		# format
 		if ( $this->notNull ( $this->dFormat ) ) {
-			$this->mOutput .= wfMsg ( 'ta-formatrender', $this->dFormat );
+			# also here!
+			$this->mOutput .= wfMsg ( 'ta-citeformatrender', '', $this->dFormat );
 		}
 		# more periodical!
 		if ( $this->notNull ( $this->dPeriodical['name'] ) ) {
@@ -239,29 +251,31 @@ class Citation extends TemplateAdventureBasic {
 				) {
 				$newPerArea .= $this->getSeparator ( 'section' ) . ' ';
 			}
-			$newPerArea .= "''" . $this->clean ( $this->dPeriodical['name'] ) . "''";
+			$newPerArea .= wfMsg ( 'ta-citeperiodical', $this->clean ( $this->dPeriodical['name'] ) );
 			if ( $this->notNull ( $this->dSeries ) ) {
-				$newPerArea .= $this->getSeparator ( 'section' ) . ' ' . $this->dSeries;
+				$newPerArea .= wfMsg ( 'ta-citeseries', $this->getSeparator ( 'section' ), $this->dSeries );
 			}
 			if ( $this->notNull ( $this->dPublication['place'] ) ) {
 				if ( $this->notNull ( $this->dPublisher ) ) {
-					$newPerArea .= wfMsg ( 'ta-publicationplaceandpublisher', $this->dPublication['place'], $this->dPublisher );
+					# so cheating with these messages, I think, blanks?!
+					$newPerArea .= wfMsg ( 'ta-citepublicationplaceandpublisher', '', $this->dPublication['place'], $this->dPublisher );
 				} else {
-					$newPerArea .= wfMsg ( 'ta-publicationplace', $this->dPublication['place'] );
+					# Blank?  BLANK!?  You're not looking at the big picture!
+					$newPerArea .= wfMsg ( 'ta-citepublicationplace', '', $this->dPublication['place'] );
 				}
 			}
 			if ( $this->notNull ( $this->dVolume ) ) {
-				$newPerArea .= wfMsg ( 'ta-volumerender', $this->dVolume );
+				$newPerArea .= wfMsg ( 'ta-citevolumerender', '', $this->dVolume );
 				if ( $this->notNUll ( $this->dIssue ) ) {
-					$newPerArea .= wfMsg ( 'ta-issuerender', $this->dIssue );
+					$newPerArea .= wfMsg ( 'ta-citeissuerender', '', $this->dIssue );
 				}
 			} else {
 				if ( $this->notNUll ( $this->dIssue ) ) {
-					$newPerArea .= wfMsg ( 'ta-issuerender', $this->dIssue );
+					$newPerArea .= wfMsg ( 'ta-citeissuerender', '', $this->dIssue );
 				}
 			}
 			if ( $this->notNull ( $this->dAt ) ) {
-				$newPerArea .= wfMsg ( 'ta-atrender', $this->dAt );
+				$newPerArea .= wfMsg ( 'ta-citeatrender', '', $this->dAt );
 			}
 			# now we get to the title!  Exciting stuff!
 			if ( $this->notNull ( $this->dWorkTitle['title'] )
@@ -283,7 +297,7 @@ class Citation extends TemplateAdventureBasic {
 						# <!-- Only link URL if to a free full text - as at PubMedCentral (PMC)-->
 						# |{{#ifexpr:{{#time: U}} > {{#time: U | {{{Embargo|2001-10-10}}} }}
 							if ( $this->dPubMed['pmc'] != null ) {
-								$url = wfMsg ( 'ta-pubmed-url', $this->dPubMed['pmc'] );
+								$url = wfMsg ( 'ta-citepubmed-url', $this->dPubMed['pmc'] );
 							}				
 						}
 					}
@@ -295,7 +309,7 @@ class Citation extends TemplateAdventureBasic {
 					# <!-- Only link URL if to a free full text - as at PubMedCentral (PMC)-->
 					# |{{#ifexpr:{{#time: U}} > {{#time: U | {{{Embargo|2001-10-10}}} }}
 						if ( $this->dPubMed['pmc'] != null ) {
-							$url = wfMsg ( 'ta-pubmed-url', $this->dPubMed['pmc'] );
+							$url = wfMsg ( 'ta-citepubmed-url', $this->dPubMed['pmc'] );
 						}				
 					}
 				}
@@ -306,43 +320,43 @@ class Citation extends TemplateAdventureBasic {
 				if ( $this->notNull ( $this->dWorkTitle['transitalic'] ) ) {
 					if ( $tmp != '' )
 						$tmp .= ' ';
-					$tmp .= wfMsg ( 'ta-transtitle-render', $this->dWorkTitle['transitalic'] );
+					$tmp .= wfMsg ( 'ta-citetranstitle-render', $this->dWorkTitle['transitalic'] );
 				}
 				$tmp = $this->clean ( $tmp );
-				$title = "''$tmp''";
+				$title = wfMsg ( 'ta-citeperiodicaltitle', $tmp );
 				$newPerArea .= $this->makeLink ( $url, $title );
 			}
 			# may change this into some if () statements though,
 			# it is easier to write this, but it also means that all of the
 			# second input is actually evaluated, even if it contains nothing.
 			$newPerArea .= $this->addNotNull ( $this->dWorkTitle['type'], 
-				wfMsg ( 'ta-titletyperender', $this->dWorkTitle['type'] ) );
+				wfMsg ( 'ta-citetitletyperender', '', $this->dWorkTitle['type'] ) );
 			$newPerArea .= $this->addNotNull ( $this->dSeries, 
-				$this->getSeparator ( 'section' ) . ' ' . $this->dSeries );
+				wfMsg ( 'ta-citeseries', $this->getSeparator ( 'section' ), $this->dSeries ) );
 			$newPerArea .= $this->addNotNull ( $this->dVolume, 
-				$this->getSeparator ( 'section' ) . ' ' . wfMsg ( 'ta-volumerender', $this->dVolume ) );
+				wfMsg ( 'ta-citevolumerender', $this->getSeparator ( 'section' ), $this->dVolume ) );
 			$newPerArea .= $this->addNotNull ( $this->dOther, 
-				$this->getSeparator ( 'section' ) . ' ' . $this->dOther );
+				wfMsg ( 'ta-citeother', $this->getSeparator ( 'section' ), $this->dOther );
 			$newPerArea .= $this->addNotNull ( $this->dEdition, 
-				wfMsg ( 'ta-editionrender', $this->dEdition ) );
+				wfMsg ( 'ta-citeeditionrender', $this->dEdition ) );
 			$newPerArea .= $this->addNotNull ( $this->dPublication['place'], 
-				$this->getSeparator ( 'section' ) . ' ' . $this->dPublication['place'] );
+				wfMsg ( 'ta-citepublication', $this->getSeparator ( 'section' ), $this->dPublication['place'] ) );
 			if ( $this->notNull ( $this->dPublisher ) ) {
-				if ( $this->dPublication['place'] ) {
-					$newPerArea .= ':';
+				if ( $this->notNull ( $this->dPublication['place'] ) ) {
+					$sep = $this->getSeparator ( 'beforepublication' );
 				} else {
-					$newPerArea .= $this->getSeparator ( 'section' );
+					$sep = $this->getSeparator ( 'section' );
 				}
-				$newPerArea .= wfMsg ( 'ta-publisherrender', $this->dPublisher );
+				$newPerArea .= wfMsg ( 'ta-citepublisherrender', $sep, $this->dPublisher );
 			}
 			$this->mOutput .= $newPerArea;
 		}
 		# date if no author/editor
 		if ( $authorArea == '' && $editorArea == '' ) {
 			if ( $this->notNull ( $this->dDate ) ) {
-				$this->mOutput .= $this->getSeparator ( 'section' ) . wfMsg ( 'ta-citeauthordate', $this->dDate );
+				$this->mOutput .= wfMsg ( 'ta-citeauthordate', $this->getSeparator ( 'section' ), $this->dDate );
 				if ( $this->notNull ( $this->dYearNote ) ) {
-					$this->mOutput .= wfMsg ( 'ta-citeauthoryearnote', $this->dYearNote );
+					$this->mOutput .= wfMsg ( 'ta-citeauthoryearnote', '', $this->dYearNote );
 				}
 			}
 		}
@@ -350,21 +364,21 @@ class Citation extends TemplateAdventureBasic {
 		if ( $this->notNull ( $this->dPublication['date'] ) && $this->dPublication['date'] != $this->dDate ) {
 			if ( isset ( $this->dEditors[1] ) ) {
 				if ( isset ( $this->dAuthors[1] ) ) {
-					$this->mOutput .= $this->getSeparator ( 'section' ) . ' ' . $this->dPublication['date'];
+					$this->mOutput .= wfMsg ( 'ta-citepublicationdate', $this->getSeparator ( 'section' ), $this->dPublication['date'] );
 				} else {
-					$this->mOutput .= wfMsg ( 'ta-published', $this->dPublication['date'] );
+					$this->mOutput .= wfMsg ( 'ta-citepublished', '', $this->dPublication['date'] );
 				}
 			} else {
 				if ( $this->notNull ( $this->dPeriodical['name'] ) ) {
-					$this->mOutput .= $this->getSeparator ( 'section' ) . ' ' . $this->dPublication['date'];
+					$this->mOutput .= wfMsg ( 'ta-citepublicationdate', $this->getSeparator ( 'section' ), $this->dPublication['date'] );
 				} else {
-					$this->mOutput .= wfMsg ( 'ta-published', $this->dPublication['date'] );
+					$this->mOutput .= wfMsg ( 'ta-citepublished', '', $this->dPublication['date'] );
 				}
 			}
 		}
 		# page within included work
 		if ( !$this->notNull ( $this->dPeriodical['name'] ) && $this->notNull ( $this->dAt ) ) {
-			$this->mOutput .= $this->getSeparator ( 'section' ) . ' ' . $this->dAt;
+			$this->mOutput .= wfMsg ( 'ta-citeatseparated', $this->getSeparator ( 'section' ), $this->dAt );
 		}
 		# doi
 		# TODO:  I'll do this code later:
@@ -435,10 +449,10 @@ class Citation extends TemplateAdventureBasic {
 			}
 			if ( $this->notNull ( $this->dAccessDate ) ) {
 				if ( $this->getSeparator ( 'section' ) == '.' )
-					$tmp = ". Retrieved {$this->dAccessDate}";
+					$tmp = wfMsg ( 'ta-citeretrievedupper', $this->getSeparator ( 'section' ), $this->dAccessDate );
 				else
-					$tmp = ", retrieved {$this->dAccessDate}";
-				$this->mOutput .= wfMsg ( 'ta-accessdatespan', $tmp ); 
+					$tmp = wfMsg ( 'ta-citeretrievedlower', $this->getSeparator ( 'section' ), $this->dAccessDate );
+				$this->mOutput .= wfMsg ( 'ta-citeaccessdatespan', $tmp ); 
 			}
 		}
 
@@ -461,7 +475,7 @@ class Citation extends TemplateAdventureBasic {
 	 * @return $string
 	 */
 	private function printOnly ( $string ) {
-		return wfMsg ( 'ta-printonlyspan', $string );
+		return wfMsg ( 'ta-citeprintonlyspan', $string );
 	}
 
 	private function addNotNull ( $check, $add ) {
@@ -495,7 +509,7 @@ class Citation extends TemplateAdventureBasic {
 			if ( $i == 0 )
 				continue;
 			if ( $i > 1 && $truncate <= $i ) {
-				$area .= wfMsg( "ta-etal" );
+				$area = wfMsg( "ta-citeetal", $area );
 				break;
 			}
 			if ( $n == count($writers)-1 && $i != 1 )
@@ -538,7 +552,7 @@ class Citation extends TemplateAdventureBasic {
 	 * This function should in the future do some wfMsg() magic to check if
 	 * they are using a set separator message or just using a default one.
 	 *
-	 * @param $name Name of separator; regular, author or ampersand
+	 * @param $name Name of separator; section, author, name or authorlast
 	 * @return $separator Blank if none found.
 	 */
 	private function getSeparator ( $name ) {
