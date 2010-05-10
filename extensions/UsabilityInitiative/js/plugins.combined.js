@@ -5940,7 +5940,7 @@ $.suggestions = {
 					// No item selected, go to the first one
 					result = context.data.$container.find( '.suggestions-results div:first' );
 					if ( result.length == 0 && context.data.$container.find( '.suggestions-special' ).html() != "" ) {
-						// No suggestion exists, use the
+						// No suggestion exists, go to the special one directly
 						result = context.data.$container.find( '.suggestions-special' );
 					}
 				} else {
