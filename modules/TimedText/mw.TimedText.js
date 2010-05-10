@@ -158,8 +158,9 @@ mw.addMessages( {
 			}
 			
 			// Set up embedPlayer hooks:			
-			$j( embedPlayer ).bind( 'monitorEvent', function() {
-				_this.monitor()
+			$j( embedPlayer ).bind( 'monitorEvent', function() {				
+				_this.monitor();
+				return false;
 			} );
 							
 			$j( embedPlayer ).bind( 'playEvent', function() {

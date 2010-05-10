@@ -201,6 +201,7 @@ mw.addModuleLoader( 'EmbedPlayer', function( callback ) {
 				playerSkins[ mw.valid_skins[ n ] ] = true;
 			}
 		}
+		mw.log("LoaderEmbedPlayerVisitTag" );
 		$j( mw ).trigger( 'LoaderEmbedPlayerVisitTag', playerElement );
 	} );
 	
@@ -229,6 +230,7 @@ mw.addModuleLoader( 'EmbedPlayer', function( callback ) {
 	}
 		
 	// Run the EmbedPlayer loader hook ( so that modules can add dependencies to the request ) 
+	mw.log('LoaderEmbedPlayerUpdateRequest');
 	$j( mw ).trigger( 'LoaderEmbedPlayerUpdateRequest', [ dependencyRequest[ 0 ] ] );
 		
 	

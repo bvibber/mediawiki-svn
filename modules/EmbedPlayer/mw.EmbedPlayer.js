@@ -263,6 +263,7 @@ mw.setConfig( 'embedPlayerSourceAttributes', [
 			mw.playerManager = new EmbedPlayerManager();
 			
 			// Run the global hooks that mw.playerManager is ready
+			mw.log('EmbedPlayerManagerReady');
 			$j( mw ).trigger( 'EmbedPlayerManagerReady' );
 		}
 		
@@ -376,6 +377,7 @@ EmbedPlayerManager.prototype = {
 						_this.swapEmbedPlayerElement( element, playerInterface );	
 						
 						// Pass the id to any hook that needs to interface prior to checkPlayerSources
+						mw.log("swapedPlayerIdEvent");
 						$j( _this ).trigger ( 'swapedPlayerIdEvent',  playerInterface.id );
 						
 											
@@ -399,6 +401,7 @@ EmbedPlayerManager.prototype = {
 						_this.swapEmbedPlayerElement( element, playerInterface );								
 						
 						// Pass the id to any hook that needs to interface prior to checkPlayerSources
+						mw.log("swapedPlayerIdEvent");
 						$j( _this ).trigger ( 'swapedPlayerIdEvent',  playerInterface.id );
 						
 						// Issue the checkPlayerSources call to the new player interface:
@@ -563,6 +566,7 @@ EmbedPlayerManager.prototype = {
 		$j('#loadSpiner_' + player.id ).remove();
 		
 		// Run the player ready trigger
+		mw.log("playerReady");
 		$j( player ).trigger( 'playerReady' );
 		
 		var is_ready = true; 
@@ -1285,7 +1289,7 @@ mw.EmbedPlayer.prototype = {
 		// Set customAttributes if unset: 
 		if ( !customAttributes ) {
 			customAttributes = { };
-		}
+		}		
 		
 		var playerAttributes = mw.getConfig( 'embedPlayerAttributes' ); 
 		// Setup the player Interface from supported attributes:
@@ -1481,6 +1485,7 @@ mw.EmbedPlayer.prototype = {
 		}
 		
 		// Run embedPlayer sources hook 
+		mw.log("checkPlayerSourcesEvent");
 		$j( this ).trigger ( 'checkPlayerSourcesEvent', function(){
 			// Continue application flow and check for Timed Text
 			_this.checkForTimedText();
@@ -1605,8 +1610,7 @@ mw.EmbedPlayer.prototype = {
 		if ( !this.mediaElement.selectedSource ) {
 			// check for parent clip: 
 			if ( typeof this.pc != 'undefined' ) {
-				mw.log( 'no sources, type:' + this.type + ' check for html' );
-				// debugger;			
+				mw.log( 'no sources, type:' + this.type + ' check for html' );						
 				// do load player if just displaying innerHTML: 
 				if ( this.pc.type == 'text/html' ) {
 					this.selected_player = mw.EmbedTypes.players.defaultPlayer( 'text/html' );
@@ -1854,6 +1858,7 @@ mw.EmbedPlayer.prototype = {
 		this.ctrlBuilder.onClipDone();
 		
 		// Fire the html5 ended binding
+		mw.log("ended");
 		$j( this ).trigger( 'ended' );
 		
 		// Update the clip done playing count:
@@ -1880,6 +1885,7 @@ mw.EmbedPlayer.prototype = {
 		this.ctrlBuilder.addControlHooks();
 		
 		// Once the thumbnail is shown run the mediaReady trigger
+		mw.log("mediaLoaded");
 		$j( this ).trigger( 'mediaLoaded' );
 	},
 	
@@ -2454,6 +2460,7 @@ mw.EmbedPlayer.prototype = {
 	*/
 	play: function() {
 		var _this = this;
+		mw.log( "EmbedPlayer:: play" );
 		//Hide any overlay:
 		this.ctrlBuilder.closeMenuOverlay();
 		// check if thumbnail is being displayed and embed html
@@ -2490,10 +2497,12 @@ mw.EmbedPlayer.prototype = {
 	   	 }
 	   	 
 	   	 //Run play hook: 
+	   	 mw.log("playEvent");
 	   	 $j( this ).trigger( 'playEvent' );   
-	   	  // If we previusly finished playing this clip run the "replay hook"
-	   	 if( this.donePlayingCount > 0 ){ 
-	   	 	 $j( this ).trigger( 'onReplay' );
+	   	  // If we previously finished playing this clip run the "replay hook"
+	   	 if( this.donePlayingCount > 0 ) {
+	   	 	mw.log("onReplay");
+	   	 	$j( this ).trigger( 'onReplay' );
 	   	 }
 	},
 	
@@ -2686,7 +2695,7 @@ mw.EmbedPlayer.prototype = {
 		var _this = this;				
 		//mw.log(' ct: ' + this.currentTime + ' dur: ' + ( parseInt( this.duration ) + 1 )  + ' is seek: ' + this.seeking );		
 		if ( this.currentTime && this.currentTime > 0  && this.duration ) {
-			if ( !this.userSlide && !this.seeking ) {				
+			if ( !this.userSlide && !this.seeking ) {
 				if ( parseInt( this.startOffset ) != 0 ) {				
 					// If start offset include that calculation 
 					this.updatePlayHead( ( this.currentTime - this.startOffset ) / this.duration );
@@ -2722,24 +2731,30 @@ mw.EmbedPlayer.prototype = {
 		}
 		
 		// Update buffer information 
-		this.updateBufferStatus();		
+		this.updateBufferStatus();
+		
+		// run the "native" progress event on the virtual html5 object if set
+		if( this.progressEventData ) {
+			//mw.log("trigger:progress event on html5 proxy");
+			$j( this ).trigger( 'progress', this.progressEventData );
+		}
+				
 		// Call monitor at 250ms interval. 
 		if( ! this.isStoped() ) {
 			setTimeout( function(){
 				_this.monitor();
 			}, 250 )
 		}
-		
+		//mw.log('trigger:monitor:: ' + this.currentTime );		
 		$j( this ).trigger( 'monitorEvent' );
 	},	
 	
 	/**
-	* Update the buffer status based on the local bufferedPercent var
+	* Update the Buffer status based on the local bufferedPercent var
 	*/
 	updateBufferStatus: function() {		
 		// Get the buffer target based for playlist vs clip 
-		$buffer = this.$interface.find( '.mw_buffer' );
-			
+		$buffer = this.$interface.find( '.mw_buffer' );		
 		// Update the buffer progress bar (if available )
 		if ( this.bufferedPercent != 0 ) {
 			// mw.log('bufferedPercent: ' + this.bufferedPercent);			
@@ -2756,12 +2771,14 @@ mw.EmbedPlayer.prototype = {
 		// if we have not already run the buffer start hook
 		if(  this.bufferedPercent > 0 && !this.bufferStartFlag ) {
 			this.bufferStartFlag = true;
+			mw.log("onBufferStart");
 			$j( this ).trigger( 'onBufferStart' );
 		}		
 		
 		// if we have not already run the buffer end hook
 		if( this.bufferedPercent == 1 && !this.bufferEndFlag){
-			this.bufferEndFlag = true;	
+			this.bufferEndFlag = true;
+			mw.log("onBufferEnd");
 			$j( this ).trigger( 'onBufferEnd' );
 		}
 	},

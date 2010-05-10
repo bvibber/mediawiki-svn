@@ -25,6 +25,9 @@ var nativeEmbed = {
 	// NOTE the bug where onSeeked does not seem fire consistently may no longer be applicable	 
 	prevCurrentTime: -1,
 	
+	// Store the progress event ( updated durring monitor )
+	progressEventData: null,
+	
 	// Native player supported feature set
 	supports: {
 		'playHead' : true,
@@ -92,7 +95,7 @@ var nativeEmbed = {
 			// Bind events to local js methods:			
 			vid.addEventListener( 'canplaythrogh',  function() { _this.canplaythrough }, true);			 
 			vid.addEventListener( 'loadedmetadata', function() { _this.onloadedmetadata() }, true);
-			vid.addEventListener( 'progress', function( e ) {  _this.onprogress( e )  }, true);
+			vid.addEventListener( 'progress', function( e ) { _this.onprogress( e );  }, true);
 			vid.addEventListener( 'ended', function() {  _this.onended() }, true);		
 			vid.addEventListener( 'seeking', function() { _this.onSeeking() }, true);
 			vid.addEventListener( 'seeked', function() { _this.onSeeked() }, true);			
@@ -234,6 +237,7 @@ var nativeEmbed = {
 	* Monitor the video playback & update the currentTime
 	*/
 	monitor: function() {		
+		var _this = this;
 		this.getPlayerElement(); // make sure we have .vid obj
 		
 		if ( !this.playerElement ) {
@@ -242,12 +246,14 @@ var nativeEmbed = {
 		}					
 				
 		// update currentTime				
-		this.currentTime = this.playerElement.currentTime;		
+		this.currentTime = this.playerElement.currentTime;
+					
 		
 		//mw.log( 'ns: ' + this.playerElement.networkState + ' error:' + this.playerElement.error);		
 		//mw.log('currentTime:' + this.currentTime);		
 		// once currentTime is updated call parent_monitor
 		this.parent_monitor();
+							
 	},
 	
 	/**
@@ -380,6 +386,7 @@ var nativeEmbed = {
 		this.ctrlBuilder.onSeek(); 
 		
 		// Trigger the html5 seeking event
+		mw.log("native:seeking:trigger");
 		$j( this ).trigger( 'seeking' ); 
 	},
 	
@@ -390,6 +397,7 @@ var nativeEmbed = {
 	onSeeked: function() {
 		//mw.log("onseeked");
 		this.seeking = false;
+		mw.log("native:seeked:trigger");
 		// trigger the html5 action on the parent 
 		$j( this ).trigger( 'seeked' );
 	},
@@ -421,11 +429,10 @@ var nativeEmbed = {
 	*  Used to update the bufferedPercent
 	*/
 	onprogress: function( e ) {		
-		this.bufferedPercent =   e.loaded / e.total;	
-			
-		// Fire the parent html5 action
-		$j( this ).trigger( 'progress', e );
-						
+		if( e.loaded && e.total ) {
+			this.bufferedPercent =   e.loaded / e.total;				
+			this.progressEventData = e.loaded;
+		}	
 	},
 	
 	/**
