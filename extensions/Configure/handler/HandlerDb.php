@@ -333,6 +333,8 @@ class ConfigureHandlerDb implements ConfigureHandler {
 			'wgDBerrorLog',
 			'wgDBname',
 			'wgDBpassword',
+			'wgDBadminuser',
+			'wgDBadminpassword',
 			'wgDBport',
 			'wgDBserver',
 			'wgDBtype',
