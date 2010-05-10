@@ -35,11 +35,22 @@ $j(document).ready( function() {
 			.slideToggle( 'fast' );
 	}
 	var $headings = $j( '#panel > div.portal > h5' );
-	var tabindex = 32767 - $headings.length;
+	/** Copy-pasted from jquery.wikiEditor.dialogs - :( */
+	// Find the highest tabindex in use
+	var maxTI = 0;
+	$j( '[tabindex]' ).each( function() {
+		var ti = parseInt( $j(this).attr( 'tabindex' ) );
+		if ( ti > maxTI )
+			maxTI = ti;
+	});
+	var tabIndex = maxTI + 1;
+	// Make it keyboard accessible
+	$headings.each( function() {
+		$j(this).attr( 'tabindex', tabIndex++ );
+	} );
+	/** End of copy-pasted section */
 	// Toggle the selected menu's class and expand or collapse the menu
 	$headings
-		// Make it keyboard accessible
-		.each( function() { $j(this).attr( 'tabindex', tabindex++ ); } )
 		// Make the space and enter keys act as a click
 		.keydown( function( event ) {
 			if ( event.which == 13 /* Enter */ || event.which == 32 /* Space */ ) {
