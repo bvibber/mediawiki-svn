@@ -8,7 +8,7 @@
  * @subpackage Extensions
  * @author Matěj Grabovský (mgrabovsky.github.com)
  * @copyright © 2010, Matěj Grabovský
- * @licence GNU General Public Licence 2.0 or later
+ * @license GNU General Public Licence 2.0 or later
  */
 
 if( !defined('MEDIAWIKI') ) {
@@ -16,8 +16,9 @@ if( !defined('MEDIAWIKI') ) {
 	die();
 }
 
-$wgExtensionMessagesFiles['HideNamespace'] = dirname(__FILE__) . '/HideNamespace.i18n.php';
-$wgExtensionMessagesFiles['HideNamespaceMagic'] = dirname(__FILE__) . '/HideNamespace.i18n.magic.php';
+$dir = dirname( __FILE__ ) . '/';
+$wgExtensionMessagesFiles['HideNamespace'] = $dir . 'HideNamespace.i18n.php';
+$wgExtensionMessagesFiles['HideNamespaceMagic'] = $dir . 'HideNamespace.i18n.magic.php';
 
 $wgExtensionFunctions[] = 'wfHideNamespaceSetup';
 $wgExtensionCredits['other'][] = array(
@@ -26,7 +27,7 @@ $wgExtensionCredits['other'][] = array(
 	'description'    => "Hides namespace in the header and title when a page is in specified namespace or when the <code><nowiki>{{#hidens:}}</nowiki></code> parser function is called.",
 	'descriptionmsg' => "hidens-desc",
 	'version'        => "1.3",
-	'author'         => "Mat&#283;j Grabovsk&#253;",
+	'author'         => 'Matěj Grabovský',
 	'url'            => "http://www.mediawiki.org/wiki/Extension:HideNamespace",
 );
 
