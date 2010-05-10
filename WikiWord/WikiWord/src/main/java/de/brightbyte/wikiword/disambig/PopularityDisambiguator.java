@@ -46,6 +46,22 @@ public class PopularityDisambiguator extends AbstractDisambiguator<TermReference
 		this.weigthCombiner = weightCombiner;
 	}
 
+	public Functor.Double getWeightBooster() {
+		return weightBooster;
+	}
+
+	public void setWeightBooster(Functor.Double weightBooster) {
+		this.weightBooster = weightBooster;
+	}
+
+	public Functor2.Double getWeigthCombiner() {
+		return weigthCombiner;
+	}
+
+	public void setWeigthCombiner(Functor2.Double weigthCombiner) {
+		this.weigthCombiner = weigthCombiner;
+	}
+
 	public <X extends TermReference>Result<X, LocalConcept> disambiguate(PhraseNode<X> root, Map<X, List<? extends LocalConcept>> meanings, Collection<? extends LocalConcept> context) {
 		Collection<List<X>> sequences = getSequences(root, Integer.MAX_VALUE);
 		return disambiguate(sequences, root, meanings, context);

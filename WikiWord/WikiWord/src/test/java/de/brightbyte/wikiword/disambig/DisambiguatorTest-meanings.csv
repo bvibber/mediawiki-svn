@@ -1,12 +1,12 @@
 term_text	concept	concept_name	freq	rule
-UK	1001	United_Kingdom	1000	90
+UK	1001	United_Kingdom	2000	90
 UK	1002	Great_Britain	670	60
-UK	1004	England	16	10
+UK	1004	England	6	10
 London	2001	City_of_London	1000	90
 London	2002	Greater_London	888	80
 London	2003	London_city_council	12	10
 Underground	3001	London_Underground	888	90
-Underground	3002	Subway	999	60
+Underground	3002	Subway	123	60
 Bank	4001	Bank	777	90
 Bank	4002	Bank_(sitting)	666	80
 Bank	4003	Bank_(geology)	230	60

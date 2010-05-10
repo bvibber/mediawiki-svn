@@ -15,8 +15,10 @@ import de.brightbyte.data.LabeledVector;
 import de.brightbyte.data.MapLabeledVector;
 import de.brightbyte.data.cursor.DataCursor;
 import de.brightbyte.io.ChunkingCursor;
+import de.brightbyte.io.ConsoleIO;
 import de.brightbyte.io.GroupingCursor;
 import de.brightbyte.io.LineCursor;
+import de.brightbyte.io.Output;
 import de.brightbyte.text.CsvLineChunker;
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.ConceptType;
@@ -157,13 +159,14 @@ public class DisambiguatorTestBase extends TestCase {
 	
 	protected Corpus corpus;
 	protected TweakSet tweaks;
-	
+	protected Output traceOutput = ConsoleIO.output;
+
 	public DisambiguatorTestBase() throws IOException, PersistenceException {
 		tweaks = new TweakSet();
 		corpus = Corpus.forName("TEST", "en", tweaks);
 		
-		URL meaningFile = getClass().getResource("SlidingCoherenceDisambiguatorTest-meanings.csv");
-		URL featureFile = getClass().getResource("SlidingCoherenceDisambiguatorTest-features.csv");
+		URL meaningFile = getClass().getResource("DisambiguatorTest-meanings.csv");
+		URL featureFile = getClass().getResource("DisambiguatorTest-features.csv");
 		
 		readMeanings(corpus, meaningFile.openStream(), meanings);
 		readFeatures(corpus, featureFile.openStream(), features);

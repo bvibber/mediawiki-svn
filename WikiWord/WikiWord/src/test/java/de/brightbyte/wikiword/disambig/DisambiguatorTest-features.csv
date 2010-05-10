@@ -1,12 +1,20 @@
 concept	concept_name	feature	weight
 1001	United_Kingdom	1001	2
+1001	United_Kingdom	1002	0.88
 1001	United_Kingdom	1004	0.66
 1001	United_Kingdom	1001001	0.222
 1001	United_Kingdom	2001001	0.222
+1001	United_Kingdom	2001	0.38
+1001	United_Kingdom	4004	0.38
+1001	United_Kingdom	2002	0.42
 
 1002	Great_Britain	1002	2
+1002	Great_Britain	1001	0.88
 1002	Great_Britain	1004	0.65
 1002	Great_Britain	1001002	0.222
+1002	Great_Britain	2001	0.33
+1002	Great_Britain	4004	0.40
+1002	Great_Britain	2002	0.40
 
 1004	England	1004	2
 1004	England	2001	0.43
@@ -18,6 +26,8 @@ concept	concept_name	feature	weight
 
 2001	City_of_London	2001	2
 2001	City_of_London	2002	0.77
+2001	City_of_London	1001	0.38
+2001	City_of_London	1002	0.33
 2001	City_of_London	1004	0.43
 2001	City_of_London	2003	0.55
 2001	City_of_London	3001	0.25
@@ -28,6 +38,8 @@ concept	concept_name	feature	weight
 
 2002	Greater_London	2002	2
 2002	Greater_London	2001	0.77
+2002	Greater_London	1001	0.42
+2002	Greater_London	1002	0.40
 2002	Greater_London	1004	0.45
 2002	Greater_London	2003	0.56
 2002	Greater_London	3001	0.22
@@ -40,14 +52,17 @@ concept	concept_name	feature	weight
 2003	London_city_council	1002003	0.22
 
 3001	London_Underground	3001	2
-3001	London_Underground	3002	0.47
+3001	London_Underground	3002	0.35
 3001	London_Underground	5001	0.66
 3001	London_Underground	2001	0.25
 3001	London_Underground	2002	0.22
+3001	London_Underground	7001	0.122
+3001	London_Underground	7002	0.27
+3001	London_Underground	7003	0.20
 
 3002	Subway	3002	2
-3002	Subway	5001	0.47
-3002	Subway	3001	0.55
+3002	Subway	5001	0.37
+3002	Subway	3001	0.35
 3002	Subway	7001	0.178
 3002	Subway	7002	0.33
 3002	Subway	7003	0.25
@@ -67,13 +82,15 @@ concept	concept_name	feature	weight
 
 4004	Bank_of_England	4004	2
 4004	Bank_of_England	4001	0.55
+4004	Bank_of_England	1001	0.38
+4004	Bank_of_England	1002	0.40
 4004	Bank_of_England	1004	0.45
 4004	Bank_of_England	2001	0.22
 4004	Bank_of_England	5001	0.34
 
 5001	Bank_and_Monument_Underground_stations	5001	2
 5001	Bank_and_Monument_Underground_stations	3001	0.66
-5001	Bank_and_Monument_Underground_stations	3002	0.47
+5001	Bank_and_Monument_Underground_stations	3002	0.37
 5001	Bank_and_Monument_Underground_stations	4004	0.34
 5001	Bank_and_Monument_Underground_stations	2001	0.21
 5001	Bank_and_Monument_Underground_stations	2002	0.12
@@ -98,6 +115,7 @@ concept	concept_name	feature	weight
 7001	Bus_station	7002	0.32
 7001	Bus_station	5001	0.10
 7001	Bus_station	3002	0.178
+7001	Bus_station	3001	0.122
 
 7002	Metro_station	7002	2
 7002	Metro_station	1007002	0.1
@@ -106,6 +124,7 @@ concept	concept_name	feature	weight
 7002	Metro_station	7001	0.32
 7002	Metro_station	5001	0.17
 7002	Metro_station	3002	0.33
+7002	Metro_station	3001	0.27
 7002	Metro_station	4002	0.02
 
 7003	Train_station	7003	2
@@ -115,6 +134,7 @@ concept	concept_name	feature	weight
 7003	Train_station	7001	0.21
 7003	Train_station	5001	0.11
 7003	Train_station	3002	0.25
+7003	Train_station	3001	0.20
 
 7004	Social_status	7004	2
 7004	Social_status	1007004	0.1
