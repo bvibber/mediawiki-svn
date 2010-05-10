@@ -114,7 +114,7 @@
 			}
 			else {
 				metaDataText = stbMsgExt( 'storyboard-storymetadata', [story.author, story.creationtime, story.creationdate] );
-			}			
+			}
 			
 			$storyBody.append(
 				$( "<div />" ).addClass( "story-metadata" ).append(

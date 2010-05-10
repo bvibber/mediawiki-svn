@@ -211,7 +211,7 @@ function stbAddStories( $storyboard, query ) {
 			)
 		);
 		
-		var controlDiv = jQuery( "<div />" );
+		var controlDiv = jQuery( "<div />" ).addClass( "story-controls" );
 		
 		if ( story.state != 0 ) {
 			controlDiv.append(
@@ -221,6 +221,9 @@ function stbAddStories( $storyboard, query ) {
 		}
 		
 		if ( story.state != 1 ) {
+			if ( story.state != 0 ) {
+				controlDiv.append( '&nbsp;&nbsp;&nbsp;' );
+			}
 			controlDiv.append(
 				jQuery( "<button />" ).text( stbMsg( "storyboard-publish" ) )
 					.attr( "onclick", "stbDoStoryAction( this, " + story.id + ", 'publish' )" )
@@ -228,20 +231,26 @@ function stbAddStories( $storyboard, query ) {
 		}
 		
 		if ( story.state != 2 ) {
+			controlDiv.append( '&nbsp;&nbsp;&nbsp;' );
 			controlDiv.append(
 				jQuery( "<button />" ).text( stbMsg( "storyboard-hide" ) )
 					.attr( "onclick", "stbDoStoryAction( this, " + story.id + ", 'hide' )" )
 			);
 		}
 		
+		controlDiv.append( '&nbsp;&nbsp;&nbsp;' );
 		controlDiv.append( jQuery( "<button />" ).text( stbMsg( "edit" ) )
 			.attr( "onclick", "window.location='" + story.modifyurl + "'" ) );
 		
 		if ( story.imageurl ) {
+			controlDiv.append( '&nbsp;&nbsp;&nbsp;' );
+			
 			controlDiv.append(
 				jQuery( "<button />" ).text( stbMsg( "storyboard-deleteimage" ) )
 					.attr( "onclick", "stbDeleteStoryImage( this, " + story.id + " )" )
 			);
+			
+			controlDiv.append( '&nbsp;&nbsp;&nbsp;' );
 			
 			if ( story.imagehidden == "1" ) {
 				controlDiv.append(

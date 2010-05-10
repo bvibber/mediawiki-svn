@@ -57,8 +57,8 @@ class SpecialStoryReview extends SpecialPage {
 		
 		$language = $wgRequest->getText( 'language', false );
 		if ( !$language ) $language = $wgContLanguageCode;
-		
-		$html = <<<EOT
+	
+	$wgOut->addHTML( <<<EOT
 <div id="storyreview-tabs">
 	<ul>
 		<li><a href="#$unpublished" id="$unpublished-tab">$unpublished</a></li>
@@ -81,8 +81,7 @@ class SpecialStoryReview extends SpecialPage {
 		stbShowReviewBoard( jQuery( ui.panel ), ui.index );
 	});
 </script>	
-EOT;
-	
-	$wgOut->addHTML( $html );
+EOT
+		);
 	}
 }
