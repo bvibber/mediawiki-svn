@@ -34,10 +34,12 @@ $j(document).ready( function() {
 			.find( 'div.body' )
 			.slideToggle( 'fast' );
 	}
+	var $headings = $j( '#panel > div.portal > h5' );
+	var tabindex = 32767 - $headings.length;
 	// Toggle the selected menu's class and expand or collapse the menu
-	$j( '#panel > div.portal > h5' )
+	$headings
 		// Make it keyboard accessible
-		.attr( 'tabindex', 1 )
+		.each( function() { $j(this).attr( 'tabindex', tabindex++ ); } )
 		// Make the space and enter keys act as a click
 		.keydown( function( event ) {
 			if ( event.which == 13 /* Enter */ || event.which == 32 /* Space */ ) {
