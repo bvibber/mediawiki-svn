@@ -94,7 +94,7 @@ class SpecialStorySubmission extends UnlistedSpecialPage {
 			$wgOut->setPageTitle( wfMsg( 'storyboard-submissioncomplete' ) );
 			
 			// TODO: magically get location of the page containing stories
-			$wgOut->addWikiMsg( 'storyboard-createdsucessfully', $wgTitle->getFullURL() );
+			$wgOut->addWikiMsg( 'storyboard-createdsuccessfully', $wgTitle->getFullURL() );
 		} else {
 			$wgOut->setPageTitle( wfMsg( 'storyboard-submissionincomplete' ) );
 			

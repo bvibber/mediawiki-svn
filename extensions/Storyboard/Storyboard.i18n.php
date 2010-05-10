@@ -81,11 +81,13 @@ Why not share it?',
 	'storyboard-morecharsneeded' => '$1 more characters needed',
 	'storyboard-charactersleft' => '$1 characters left',
 	'storyboard-needtoagree' => 'You need to agree to the publication of your story to submit it.',
-	'storyboard-createdsucessfully' => 'Thank you for sharing your story with us!
+	'storyboard-createdsuccessfully' => 'Thank you for sharing your story with us!
 We will review it shortly.
 You can [$1 read published stories].',
-	'storyboatd-emailtitle' => 'Story submission sucessfull',
-	'storyboatd-emailbody' => 'Your story titled "$1" has been sucessfully submitted. We will review it shortly. You can [$2 read published stories].',
+	'storyboatd-emailtitle' => 'Story submission successful',
+	'storyboatd-emailbody' => 'Your story titled "$1" has been successfully submitted.
+We will review it shortly.
+You can [$2 read published stories].',
 
 	// Story review
 	'storyreview' => 'Story review',
@@ -177,7 +179,7 @@ $messages['be-tarask'] = array(
 	'storyboard-charsleft' => '({{PLURAL:$1|застаўся $1 сымбаль|засталося $1 сымбалі|засталося $1 сымбаляў}})',
 	'storyboard-cannotbelonger' => 'Ваша гісторыя даўжэй на <b>$1</b> {{PLURAL:$1|сымбаль|сымбалі|сымбаляў}}!',
 	'storyboard-charsneeded' => '({{PLURAL:$1|неабходны яшчэ $1 сымбаль|неабходныя яшчэ $1 сымбалі|неабходныя яшчэ $1 сымбаляў}})',
-	'storyboard-createdsucessfully' => 'Дзякуй Вам за тое, што падзяліліся з намі Вашай гісторыяй!
+	'storyboard-createdsuccessfully' => 'Дзякуй Вам за тое, што падзяліліся з намі Вашай гісторыяй!
 Мы разгледзім яе ў бліжэйшы час.
 Вы можаце [$1 пачытаць ужо апублікаваныя гісторыі].',
 );
@@ -302,7 +304,7 @@ $messages['de'] = array(
 	'storyboard-charsleft' => '($1 {{PLURAL:$1|Anschlag|Anschläge}} verfügbar)',
 	'storyboard-cannotbelonger' => "Deine Botschaft ist '''$1''' {{PLURAL:$1|Anschlag|Anschläge}} zu lang!",
 	'storyboard-charsneeded' => '($1 {{PLURAL:$1|weiterer|weitere}} {{PLURAL:$1|Anschlag|Anschläge}} notwendig)',
-	'storyboard-createdsucessfully' => 'Vielen Dank, dass du uns deine Botschaft mitgeteilt hast! Wir werden sie in Kürze überprüfen.
+	'storyboard-createdsuccessfully' => 'Vielen Dank, dass du uns deine Botschaft mitgeteilt hast! Wir werden sie in Kürze überprüfen.
 Du kannst bereits veröffentlichte Botschaften [$1 hier] lesen.',
 );
 
@@ -323,7 +325,7 @@ $messages['de-formal'] = array(
 	'storyboard-email' => 'Ihre E-Mail-Adresse:',
 	'storyboard-cannotbelonger' => "Ihre Botschaft ist '''$1''' {{PLURAL:$1|Anschlag|Anschläge}} zu lang!",
 	'storyboard-needtoagree' => 'Sie müssen der Veröffentlichung Ihrer Botschaft zustimmen, um sie einreichen zu können.',
-	'storyboard-createdsucessfully' => 'Vielen Dank, dass Sie uns Ihre Botschaft mitgeteilt haben! Wir werden sie in Kürze überprüfen.
+	'storyboard-createdsuccessfully' => 'Vielen Dank, dass Sie uns Ihre Botschaft mitgeteilt haben! Wir werden sie in Kürze überprüfen.
 Sie können bereits veröffentlichte Botschaften [$1 hier] lesen.',
 );
 
@@ -383,7 +385,7 @@ Cogodla  njestajaśo jo k našej dispoziciji?',
 	'storyboard-charsleft' => '($1 {{PLURAL:$1|znamuško|znamušce|znamuška|znamuškow}} wušej)',
 	'storyboard-cannotbelonger' => 'Wašo tšojenjo jo <b>$1</b> {{PLURAL:$1|znamuško|znamušce|znamuška|znamuškow}} pśedłujko!',
 	'storyboard-charsneeded' => '($1 {{PLURAL:$1|dalšne znamuško trěbne|dalšnej znamušce trěbnej|dalšne znamuška trěbne|dalšnych znamuškow trěbnych}})',
-	'storyboard-createdsucessfully' => 'Źěkujomy se wam, až sćo nam swójo tšojenje k dispoziciji stajił!
+	'storyboard-createdsuccessfully' => 'Źěkujomy se wam, až sćo nam swójo tšojenje k dispoziciji stajił!
 Buźomy se skóro pśeglědowaś.
 Móžośo [$1 wózjawjone tšojenja cytaś].',
 );
@@ -446,7 +448,7 @@ Puede haber sido eliminada.',
 	'storyboard-charsleft' => '({{PLURAL:$1|queda un carácter|quedan $1 caracteres}})',
 	'storyboard-cannotbelonger' => 'Su historia es <b>$1</b> {{PLURAL:$1|carácter|caracteres}} ¡demasiado largo!',
 	'storyboard-charsneeded' => '({{PLURAL:$1|se necesita un carácter más|se necesitan $1 caracteres más}})',
-	'storyboard-createdsucessfully' => '¡Gracias por compartir su historia con nosotros!
+	'storyboard-createdsuccessfully' => '¡Gracias por compartir su historia con nosotros!
 La revisaremos en breve.
 Puede [$1 Leer historias publicadas]',
 );
@@ -516,7 +518,7 @@ $messages['fr'] = array(
 	'storyboard-charsleft' => '($1 {{PLURAL:$1|signe|signes}} {{PLURAL:$1|restant|restants}})',
 	'storyboard-cannotbelonger' => 'Votre histoire est trop longue de <b>$1</b> {{PLURAL:$1|signe|signes}} !',
 	'storyboard-charsneeded' => '($1 {{PLURAL:$1|signe supplémentaire|signes supplémentaires}} requis)',
-	'storyboard-createdsucessfully' => 'Merci d’avoir partagé votre histoire avec nous !
+	'storyboard-createdsuccessfully' => 'Merci d’avoir partagé votre histoire avec nous !
 Nous allons l’examiner sous peu.
 Vous pouvez [$1 lire des histoires publiées].',
 );
@@ -589,7 +591,7 @@ Por que non compartila?',
 	'storyboard-charsleft' => '($1 {{PLURAL:$1|carácter restante|caracteres restantes}})',
 	'storyboard-cannotbelonger' => 'A súa historia ten {{PLURAL:$1|<b>un</b> carácter|<b>$1</b> caracteres}} de máis!',
 	'storyboard-charsneeded' => '({{PLURAL:$1|necesítase un carácter máis|necesítanse $1 caracteres máis}})',
-	'storyboard-createdsucessfully' => 'Grazas por compartir a súa historia connosco!
+	'storyboard-createdsuccessfully' => 'Grazas por compartir a súa historia connosco!
 Analizarémola en breve.
 Entrementres, pode [$1 ler outras historias publicadas].',
 );
@@ -661,7 +663,7 @@ Móžno, zo je so wotstroniło.',
 	'storyboard-charsleft' => '($1 {{PLURAL:$1|znamješko|znamješce|znamješka|znamješkow}} wyše)',
 	'storyboard-cannotbelonger' => 'Waše powědančko je <b>$1</b> {{PLURAL:$1|znamješko|znamješce|znamješka|znamješkow}} předołho!',
 	'storyboard-charsneeded' => '($1 {{PLURAL:$1|dalše znamješko trěbne|dalšej znamješce trěbnej|dalše znamješka trěbne|dalšich znamješkow trěbnych}})',
-	'storyboard-createdsucessfully' => 'Dźakujemy so wam, zo sće swoje powědančko nam k dispoziciji stajił!
+	'storyboard-createdsuccessfully' => 'Dźakujemy so wam, zo sće swoje powědančko nam k dispoziciji stajił!
 Budźemy jo bórze přepruwować.
 Móžeće [$1 wozjewjene powědančka čitać].',
 );
@@ -730,7 +732,7 @@ Proque non facer vider lo?',
 	'storyboard-charsleft' => '($1 {{PLURAL:$1|character|characteres}} restante)',
 	'storyboard-cannotbelonger' => 'Tu historia es troppo longe de <b>$1</b> {{PLURAL:$1|character|characteres}}!',
 	'storyboard-charsneeded' => '($1 plus {{PLURAL:$1|character|characteres}} necessari)',
-	'storyboard-createdsucessfully' => 'Gratias pro partir tu historia con nos!
+	'storyboard-createdsuccessfully' => 'Gratias pro partir tu historia con nos!
 Nos lo revidera tosto.
 Tu pote [$1 leger le historias ja publicate].',
 );
@@ -797,7 +799,7 @@ $messages['ja'] = array(
 	'storyboard-charsleft' => '(残り$1文字)',
 	'storyboard-cannotbelonger' => 'あなたのストーリーは文字数を<b>$1</b>文字分超過しています！',
 	'storyboard-charsneeded' => '($1文字不足)',
-	'storyboard-createdsucessfully' => 'ストーリーを私たちと共有してくださってありがとうございます！すぐに評価を行なう予定です。[$1 公開されているストーリーを読む]ことができます。',
+	'storyboard-createdsuccessfully' => 'ストーリーを私たちと共有してくださってありがとうございます！すぐに評価を行なう予定です。[$1 公開されているストーリーを読む]ことができます。',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -839,7 +841,7 @@ Firwat se net hei weisen?',
 	'storyboard-email' => 'Är E-Mailadress',
 	'storyboard-storytitle' => 'E kuerzen Titel de beschreift wourëms et geet',
 	'storyboard-needtoagree' => "Dir musst d'accord sinn datt Är Anekdot verëffentlecht gëtt fir se ze schécken.",
-	'storyboard-createdsucessfully' => 'Merci datt dir Är Anekdot mat eis deelt!
+	'storyboard-createdsuccessfully' => 'Merci datt dir Är Anekdot mat eis deelt!
 Mir kucken se demnächst no.
 Dir kënnt [$1 publizéiert Anekdote liesen].',
 );
@@ -902,7 +904,7 @@ $messages['mk'] = array(
 	'storyboard-charsleft' => '({{PLURAL:$1|Ви преостанува уште|Ви преостануваат уште}} $1 {{PLURAL:$1|знак|знаци}})',
 	'storyboard-cannotbelonger' => 'Вашата приказна е за <b>$1</b> {{PLURAL:$1|знак|знаци}} подолга од дозволеното!',
 	'storyboard-charsneeded' => '({{PLURAL:$1|потребен е|потребни се}} уште $1 {{PLURAL:$1|знак|знаци}})',
-	'storyboard-createdsucessfully' => 'Ви благодаримне што ја споделивте Вашата приказна со нас!
+	'storyboard-createdsuccessfully' => 'Ви благодаримне што ја споделивте Вашата приказна со нас!
 Набргу ќе ја прегледаме.
 Можете да ги [$1 прочитате објавените приказни].',
 );
@@ -972,7 +974,7 @@ Het verhaal is niet opgeslagen.',
 	'storyboard-charsleft' => '($1 {{PLURAL:$1|teken|tekens}} over)',
 	'storyboard-cannotbelonger' => 'Uw verhaal is <b>$1</b> {{PLURAL:$1|teken|tekens}} te lang!',
 	'storyboard-charsneeded' => '(er {{PLURAL:$1|is nog 1 teken|zijn nog $1 tekens}} meer nodig)',
-	'storyboard-createdsucessfully' => 'Bedankt voor het delen van uw verhaal!
+	'storyboard-createdsuccessfully' => 'Bedankt voor het delen van uw verhaal!
 We gaan het snel beoordelen.
 U kunt [$1 gepubliceerde verhalen lezen].',
 );
@@ -1105,7 +1107,7 @@ Que tal partilhá-la?',
 	'storyboard-charsleft' => '(restam $1 {{PLURAL:$1|carácter|caracteres}})',
 	'storyboard-cannotbelonger' => 'A sua história tem <b>$1</b> {{PLURAL:$1|carácter|caracteres}} a mais!',
 	'storyboard-charsneeded' => '(é preciso mais $1 {{PLURAL:$1|carácter|caracteres}})',
-	'storyboard-createdsucessfully' => 'Obrigado por partilhar connosco a sua história.
+	'storyboard-createdsuccessfully' => 'Obrigado por partilhar connosco a sua história.
 Iremos revê-la em breve.
 Pode [$1 ler histórias publicadas].',
 );
@@ -1166,7 +1168,7 @@ $messages['ru'] = array(
 	'storyboard-charsleft' => '({{PLURAL:$1|осталcя $1 символ|осталось $1 символа|осталось $1 символов}})',
 	'storyboard-cannotbelonger' => 'Ваша история длиннее на <b>$1</b> {{PLURAL:$1|символ|символа|символов}}!',
 	'storyboard-charsneeded' => '({{PLURAL:$1|необходим ещё $1 символ|необходимо ещё $1 символа|необходимо ещё $1 символов}})',
-	'storyboard-createdsucessfully' => 'Спасибо, что рассказали нам свою историю!
+	'storyboard-createdsuccessfully' => 'Спасибо, что рассказали нам свою историю!
 Мы рассмотрим её в ближайшее время.
 Вы можете [$1 прочитать уже опубликованные истории].',
 );
