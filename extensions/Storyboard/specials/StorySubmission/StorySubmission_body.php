@@ -69,7 +69,7 @@ class SpecialStorySubmission extends UnlistedSpecialPage {
 			$story[ 'story_author_id' ] = $wgUser->getId();
 		}	
 
-		//$dbw->insert( 'storyboard', $story );
+		$dbw->insert( 'storyboard', $story );
 		
 		$to = new MailAddress( $wgRequest->getText( 'email' ), $wgRequest->getText( 'name' ) );
 		$from = new MailAddress( $egStoryboardEmailSender, $egStoryboardEmailSenderName );
