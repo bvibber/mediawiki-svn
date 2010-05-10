@@ -176,7 +176,6 @@ class SpecialStory extends IncludableSpecialPage {
 				"<button type='button' onclick='window.location=\"$editUrl\"'>$editMsg</button>"
 			);
 		}
-		
 	}
 	
 	/**
