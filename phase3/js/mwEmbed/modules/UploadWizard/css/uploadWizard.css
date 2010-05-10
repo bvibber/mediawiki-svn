@@ -398,10 +398,13 @@ a[disabled=true]:hover {
 	margin-left: 100px;
 }
 
-.mwe-long-textarea {
+.mwe-grow-textarea, .mwe-long-textarea {
 	overflow: hidden;
 	font-family: sans-serif; /* XXX is this right? */
 	font-size: x-small;
+}
+
+.mwe-long-textarea {
 	width: 370px;
 }
 

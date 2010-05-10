@@ -153,6 +153,8 @@ mw.addClassFilePaths( {
 	"$j.fn.textSelection" 	: "jquery/plugins/jquery.textSelection.js",
 	"$j.browserTest"		: "jquery/plugins/jquery.browserTest.js",
 	"$j.fn.jWizard"			: "jquery/plugins/jquery.jWizard.js",
+	"$j.fn.tipsy"			: "jquery/plugins/jquery.tipsy.js",
+	"mw.style.tipsy"		: "jquery/plugins/jquery.tipsy.css",
 
 	"$j.effects.blind"		: "jquery/jquery.ui/ui/effects.blind.js",
 	"$j.effects.drop"		: "jquery/jquery.ui/ui/effects.drop.js",
