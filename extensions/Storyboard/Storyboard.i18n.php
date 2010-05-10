@@ -18,6 +18,7 @@ $messages['en'] = array(
 	'storyboard-name' => 'Storyboard',
 	'storyboard-desc' => 'Provides a [[Special:Story|landing page for donors]], a page where stories can be [[Special:StorySubmission|submitted]] and a [[Special:StoryReview|story moderation interface]]',
 	'right-storyreview' => 'Review, edit, publish, and hide stories',
+	'storyboard-anerroroccured' => 'An error occured: $1',
 
 	// Story states
 	'storyboard-unpublished' => 'Unpublished',
@@ -54,32 +55,7 @@ It might have been removed.',
 	'storyboard-storymetadata' => 'Submitted by $1 on $2, $3.',
 	'storyboard-storymetadatafrom' => 'Submitted by $1 from $2 on $3, $4.',
 
-	// Special:StorySubmission
-	'storyboard-submissioncomplete' => 'Submission complete',
-	'storyboard-submissionincomplete' => 'Submission failed',
-	'storyboard-alreadyexists' => '"$1" is already taken.',
-	'storyboard-alreadyexistschange' => '"{0}" is already taken, please choose a different title.', // Use {0} not $1!
-	'storyboard-changetitle' => 'Change the title.',
-	'storyboard-notsubmitted' => 'Authentication failed, no story has been saved.',
-	'storyboard-charstomany' => '$1 characters too many!',
-	'storyboard-morecharsneeded' => '$1 more characters needed',
-	'storyboard-charactersleft' => '$1 characters left',
-	'storyboard-needtoagree' => 'You need to agree to the publication of your story to submit it.',
-	'storyboard-done' => 'Done',
-	'storyboard-working' => 'Working...',
-	'storyboard-imagedeleted' => 'Image deleted',
-	'storyboard-showimage' => 'Show image',
-	'storyboard-hideimage' => 'Hide image',
-	'storyboard-imagedeletionconfirm' => "Are you sure you want to permanently delete this story's image?",
-
-	// Story review
-	'storyreview' => 'Story review',
-	'storyboard-hideimage' => 'Hide image',
-	'storyboard-unhideimage' => 'Show image',
-	'storyboard-deleteimage' => 'Delete image',
-	'storyboard-anerroroccured' => 'An error occured: $1',
-
-	// Story submission
+	// Story submission tag
 	'storyboard-yourname' => 'Your name',
 	'storyboard-location' => 'Your location',
 	'storyboard-occupation' => 'Your occupation',
@@ -93,9 +69,33 @@ Why not share it?',
 	'storyboard-cannotbelonger' => 'Your story is <b>$1</b> {{PLURAL:$1|character|characters}} too long!',
 	'storyboard-charsneeded' => '($1 more {{PLURAL:$1|character|characters}} needed)',
 	'storyboard-needtoagree' => 'You need to agree to the publication of your story to submit it.',
+
+	// Special:StorySubmission
+	'storyboard-submissioncomplete' => 'Submission complete',
+	'storyboard-submissionincomplete' => 'Submission failed',
+	'storyboard-alreadyexists' => '"$1" is already taken.',
+	'storyboard-alreadyexistschange' => '"{0}" is already taken, please choose a different title.', // Use {0} not $1!
+	'storyboard-changetitle' => 'Change the title.',
+	'storyboard-notsubmitted' => 'Authentication failed, no story has been saved.',
+	'storyboard-charstomany' => '$1 characters too many!',
+	'storyboard-morecharsneeded' => '$1 more characters needed',
+	'storyboard-charactersleft' => '$1 characters left',
+	'storyboard-needtoagree' => 'You need to agree to the publication of your story to submit it.',
 	'storyboard-createdsucessfully' => 'Thank you for sharing your story with us!
 We will review it shortly.
 You can [$1 read published stories].',
+	'storyboatd-emailtitle' => 'Story submission sucessfull',
+	'storyboatd-emailbody' => 'Your story titled "$1" has been sucessfully submitted. We will review it shortly. You can [$2 read published stories].',
+
+	// Story review
+	'storyreview' => 'Story review',
+	'storyboard-deleteimage' => 'Delete image',
+	'storyboard-done' => 'Done',
+	'storyboard-working' => 'Working...',
+	'storyboard-imagedeletionconfirm' => "Are you sure you want to permanently delete this story's image?",
+	'storyboard-imagedeleted' => 'Image deleted',
+	'storyboard-showimage' => 'Show image',
+	'storyboard-hideimage' => 'Hide image',
 );
 
 /** Message documentation (Message documentation)

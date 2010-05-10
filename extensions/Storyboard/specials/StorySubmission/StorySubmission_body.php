@@ -43,9 +43,12 @@ class SpecialStorySubmission extends UnlistedSpecialPage {
 
 	/**
 	 * Store the submitted story in the database, and return a page telling the user his story has been submitted.
+	 * 
+	 * @param string $title
 	 */
 	private function saveStory( $title ) {
 		global $wgRequest, $wgUser;
+		global $egStoryboardEmailSender, $egStoryboardEmailSenderName, $egStoryboardBoardUrl;
 		
 		$dbw = wfGetDB( DB_MASTER );
 		
@@ -64,15 +67,28 @@ class SpecialStorySubmission extends UnlistedSpecialPage {
 		// If the user is logged in, also store his user id.
 		if ( $wgUser->isLoggedIn() ) {
 			$story[ 'story_author_id' ] = $wgUser->getId();
-		}
+		}	
 
-		// TODO: email confirmation would be nice
+		//$dbw->insert( 'storyboard', $story );
+		
+		$to = new MailAddress( $wgRequest->getText( 'email' ), $wgRequest->getText( 'name' ) );
+		$from = new MailAddress( $egStoryboardEmailSender, $egStoryboardEmailSenderName );
+		$subject = wfMsg( 'storyboatd-emailtitle' ); 
+		$body = wfMsgExt( 'storyboatd-emailbody', 'parsemag', $title, $egStoryboardBoardUrl );
 
-		$dbw->insert( 'storyboard', $story );
+		$mailer = new UserMailer();
+		$mailer->send( $to, $from, $subject, $body );			
 	}
 	
+	/**
+	 * Displays the result of the submission to the user.
+	 * 
+	 * @param boolean $wasSaved
+	 * @param string $title
+	 */
 	private function displayResult( $wasSaved, $title ) {
 		global $wgOut, $wgTitle;
+		global $egStoryboardBoardUrl;
 		
 		if ( $wasSaved ) {
 			$wgOut->setPageTitle( wfMsg( 'storyboard-submissioncomplete' ) );
@@ -82,11 +98,11 @@ class SpecialStorySubmission extends UnlistedSpecialPage {
 		} else {
 			$wgOut->setPageTitle( wfMsg( 'storyboard-submissionincomplete' ) );
 			
-			$wgOut->addWikiMsg( 'storyboard-alreadyexists', $title,$wgTitle->getFullURL() );
+			$wgOut->addWikiMsg( 'storyboard-alreadyexists', $title, $wgTitle->getFullURL() );
 			
 			// Let's not give a null link to people with no JS.
 			// TODO: change this to the last page somehow
-			htmlspecialchars( $fallBackUrl = Title::newMainPage()->getFullURL() );
+			$fallBackUrl = htmlspecialchars( $egStoryboardBoardUrl );
 			$wgOut->addHtml(
 				"<a href=\"$fallBackUrl\" onclick='history.go(-1); return false;'>" .
 				htmlspecialchars( wfMsg( 'storyboard-changetitle' ) ) .
