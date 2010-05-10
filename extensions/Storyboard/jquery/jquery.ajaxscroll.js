@@ -27,7 +27,7 @@
 				endDelay: 100,
 				updateBatch: null,
 				updateEnd: null,
-				loaded: false,
+				loaded: true,
 				continueParam: ''
 			},
 			opt

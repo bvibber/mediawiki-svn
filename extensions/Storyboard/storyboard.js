@@ -138,7 +138,7 @@ function stbShowReviewBoard( tab, state ) {
  * 
  * @param $storyboard
  */
-function stbUpdateReviewBoard( $storyboard ) {
+function stbUpdateReviewBoard( ajaxscrollObj, $storyboard ) {
 	requestArgs = {
 		'action': 'query',
 		'list': 'stories',
@@ -149,11 +149,15 @@ function stbUpdateReviewBoard( $storyboard ) {
 		'ststate': window.reviewstate
 	};
 	
+	if ( ajaxscrollObj.continueParam ) {
+		requestArgs.stcontinue = ajaxscrollObj.continueParam;
+	}
+	
 	jQuery.getJSON( wgScriptPath + '/api.php',
 		requestArgs,
 		function( data ) {
 			if ( data.query ) {
-				stbAddStories( $storyboard, data.query );
+				stbAddStories( ajaxscrollObj, $storyboard, data.query );
 			} else {
 				alert( stbMsgExt( 'storyboard-anerroroccured', [data.error.info] ) );
 			}		
@@ -167,7 +171,7 @@ function stbUpdateReviewBoard( $storyboard ) {
  * @param $storyboard
  * @param query
  */
-function stbAddStories( $storyboard, query ) {
+function stbAddStories( ajaxscrollObj, $storyboard, query ) {
 	// Remove the empty boxes.
 	$storyboard.html( '' );
 
@@ -271,7 +275,10 @@ function stbAddStories( $storyboard, query ) {
 		
 		$storyBody.append( controlDiv );
 		
-		$storyboard.append( $storyBody );	
+		$storyboard.append( $storyBody );
+		
+		ajaxscrollObj.continueParam = data["query-continue"] ? data["query-continue"].stories.stcontinue : false; 
+		ajaxscrollObj.loaded = true;		
 	}
 }
 
