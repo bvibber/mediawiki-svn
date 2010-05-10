@@ -209,8 +209,7 @@ class ApiQueryRevisions extends ApiQueryBase {
 
 		if ( $enumRevMode ) {
 			// This is mostly to prevent parameter errors (and optimize SQL?)
-			if ( !is_null( $params['startid'] ) && !is_null( $params['start'] ) )
-			{
+			if ( !is_null( $params['startid'] ) && !is_null( $params['start'] ) ) {
 				$this->dieUsage( 'start and startid cannot be used together', 'badparams' );
 			}
 
@@ -218,8 +217,7 @@ class ApiQueryRevisions extends ApiQueryBase {
 				$this->dieUsage( 'end and endid cannot be used together', 'badparams' );
 			}
 
-			if ( !is_null( $params['user'] ) && !is_null( $params['excludeuser'] ) )
-			{
+			if ( !is_null( $params['user'] ) && !is_null( $params['excludeuser'] ) ) {
 				$this->dieUsage( 'user and excludeuser cannot be used together', 'badparams' );
 			}
 
@@ -334,7 +332,6 @@ class ApiQueryRevisions extends ApiQueryBase {
 				break;
 			}
 
-			//
 			$fit = $this->addPageSubItem( $row->rev_page, $this->extractRowInfo( $row ), 'rev' );
 			if ( !$fit ) {
 				if ( $enumRevMode ) {
@@ -428,12 +425,13 @@ class ApiQueryRevisions extends ApiQueryBase {
 
 		$text = null;
 		if ( $this->fld_content || !is_null( $this->difftotext ) ) {
-			global $wgParser;
 			$text = $revision->getText();
 			// Expand templates after getting section content because
 			// template-added sections don't count and Parser::preprocess()
 			// will have less input
 			if ( $this->section !== false ) {
+				global $wgParser;
+
 				$text = $wgParser->getSection( $text, $this->section, false );
 				if ( $text === false ) {
 					$this->dieUsage( "There is no section {$this->section} in r" . $revision->getId(), 'nosuchsection' );
@@ -560,7 +558,7 @@ class ApiQueryRevisions extends ApiQueryBase {
 			'excludeuser' => 'Exclude revisions made by user',
 			'expandtemplates' => 'Expand templates in revision content',
 			'generatexml' => 'Generate XML parse tree for revision content',
-			'section' => 'Only retrieve the content of this section',
+			'section' => 'Only retrieve the content of this section number',
 			'token' => 'Which tokens to obtain for each revision',
 			'continue' => 'When more results are available, use this to continue',
 			'diffto' => array( 'Revision ID to diff each revision to.',

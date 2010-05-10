@@ -1760,6 +1760,7 @@ Para monitorizá-las configure $wgPrefStatsTrackPrefs.',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
+ * @author 555
  * @author Eduardo.mps
  * @author Heldergeovane
  */
@@ -1767,7 +1768,7 @@ $messages['pt-br'] = array(
 	'prefstats' => 'Estatísticas de preferências',
 	'prefstats-desc' => 'Monitore estatísticas sobre quantos usuários têm certas preferências ativadas',
 	'prefstats-title' => 'Estatísticas de preferências',
-	'prefstats-list-intro' => 'Atualmente, as seguintes preferência estão sendo monitoradas.
+	'prefstats-list-intro' => 'Atualmente, as seguintes preferências estão sendo monitoradas.
 Clique em uma para ver as estatísticas sobre ela.',
 	'prefstats-noprefs' => 'Nenhuma preferência está sendo monitorada no momento.
 Configure $wgPrefStatsTrackPrefs para monitorar preferências.',
@@ -1780,7 +1781,7 @@ Configure $wgPrefStatsTrackPrefs para monitorar preferências.',
 * Ao todo, $4 {{PLURAL:$4|usuário|usuários}} definiram esta preferência',
 	'prefstats-xaxis' => 'Duração (horas)',
 	'prefstats-factors' => 'Visualizar por: $1',
-	'prefstats-factor-hour' => 'Hora',
+	'prefstats-factor-hour' => 'hora',
 	'prefstats-factor-sixhours' => 'seis horas',
 	'prefstats-factor-day' => 'dia',
 	'prefstats-factor-week' => 'semana',

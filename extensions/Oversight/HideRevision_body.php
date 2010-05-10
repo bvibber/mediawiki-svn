@@ -565,7 +565,7 @@ class SpecialOversight extends SpecialPage {
 			}
 			$ntext = strval( $rev->getText( Revision::FOR_THIS_USER ) );
 
-			$diffEngine = new DifferenceEngine();
+			$diffEngine = new DifferenceEngine( $rev->mTitle );
 			$diffEngine->showDiffStyle();
 			$wgOut->addHTML(
 				"<ul>" .

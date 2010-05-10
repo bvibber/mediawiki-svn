@@ -84,6 +84,8 @@ $messages['bg'] = array(
  * @author Bellayet
  */
 $messages['bn'] = array(
+	'ajaxLogin2' => 'আপনি কি নিশ্চিত?
+আপনি যদি এই পাতাটি ছেড়ে যান তাহলে এ পাতায় আপনার করা পরিবর্তনগুলো হারিয়ে যেতে পারে।',
 	'ajaxlogin-create' => 'অ্যাকাউন্ট তৈরি',
 );
 
@@ -157,15 +159,20 @@ Zkontrolujte zda jste jméno napsali správně!',
 );
 
 /** Danish (Dansk)
+ * @author Hylle
  * @author Lhademmor
  * @author MGA73
  */
 $messages['da'] = array(
+	'ajaxlogin-desc' => 'Dynamisk boks der tillader brugere at logge ind og huske kodeord',
 	'ajaxLogin1' => 'For at fuldføre din indlogning, skal du indtaste et nyt password.
 Dette vil føre dig væk fra denne redigeringsside og du risikerer at miste din nuværende redigering.',
 	'ajaxLogin2' => 'Er du sikker?
 Du risikerer at miste dine redigeringer, hvis du forlader denne side nu.',
 	'ajaxlogin-create' => 'Opret ny brugerkonto',
+	'al-nosuchuser' => 'Der er ikke nogen bruger med navnet "$1".
+Brugernavne er versalfølsomme.
+Kontrollér stavemåden.',
 );
 
 /** German (Deutsch)
@@ -1020,6 +1027,7 @@ $messages['zh-cn'] = array(
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
+ * @author Bbqyee
  * @author Liangent
  * @author PhiLiP
  * @author Wmr89502270
@@ -1031,6 +1039,7 @@ $messages['zh-hans'] = array(
 这会把您带离本编辑页面，您有可能会丢失现有的编辑。',
 	'ajaxLogin2' => '确定这样做吗？如果您现在离开本页面，您可能会丢失您对本页面作出的修改。',
 	'ajaxlogin-create' => '创建账户',
+	'al-nosuchuser' => '用户名"$1"不存在. 用户名区分大小写,请重新检查你的拼写.',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

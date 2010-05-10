@@ -274,8 +274,11 @@ E Deil Yystellige chenne sich villicht unterscheide, je nochdäm weli Version em
 	'configuredpages-def-stable' => 'vereffentligti Version',
 );
 
-/** Hebrew (עברית) */
+/** Hebrew (עברית)
+ * @author Amire80
+ */
 $messages['he'] = array(
+	'configuredpages-none' => 'אין דפים ברשימה זו.',
 	'configuredpages-prec-none' => 'ללא עדיפות',
 	'configuredpages-prec-quality' => 'עדיפות לגרסאות איכותיות',
 	'configuredpages-prec-pristine' => 'עדיפות לגרסאות מושלמות',
@@ -641,6 +644,15 @@ $messages['sv'] = array(
 	'configuredpages-prec-quality' => 'kvalitetsordning',
 	'configuredpages-prec-pristine' => 'företräde för orörda',
 	'configuredpages-def-draft' => 'senaste versionen',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'configuredpages-none' => 'ఈ జాబితాలో పుటలు లేవు.',
+	'configuredpages-config' => 'స్వరూపణం',
+	'configuredpages-def-stable' => 'ప్రచురిత కూర్పు',
 );
 
 /** Turkmen (Türkmençe) */

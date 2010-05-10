@@ -26,6 +26,13 @@ $messages['br'] = array(
 	'js2support-desc' => 'Embreg eus JS2 evel un astenn',
 );
 
+/** Catalan (Català)
+ * @author Paucabot
+ */
+$messages['ca'] = array(
+	'js2support-desc' => 'Suport JS2 com una extensió',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */

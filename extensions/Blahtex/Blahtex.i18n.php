@@ -2562,22 +2562,23 @@ Preuva a dovré ël comand "$3{...}".',
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Malafaya
  */
 $messages['pt'] = array(
 	'math_noblahtex' => 'Não é possível executar blahtex, que deveria estar em $1',
 	'blahtext-desc' => 'Resultado MathML para marcas &lt;math&gt;',
 	'math_AmbiguousInfix' => 'Posicionamento ambígua de "$1" (experimente usar chavetas adicionais "{ ... }" para desfazer a ambiguidade)',
-	'math_CannotChangeDirectory' => 'Não foi possível mudar directoria de trabalho',
+	'math_CannotChangeDirectory' => 'Não foi possível mudar o directório de trabalho',
 	'math_CannotCreateTexFile' => 'Não foi possível criar ficheiro tex',
 	'math_CannotRunDvipng' => 'Não foi possível executar dvipng',
 	'math_CannotRunLatex' => 'Não é possível executar latex',
-	'math_CannotWritePngDirectory' => 'Não foi possível escrever para a directoria de saída de PNGs',
+	'math_CannotWritePngDirectory' => 'Não foi possível escrever no directório de saída de PNGs',
 	'math_CannotWriteTexFile' => 'Não foi possível escrever para ficheiro tex',
 	'math_CasesRowTooBig' => 'Só pode haver duas entradas em cada linha de um bloco "cases"',
 	'math_DoubleSubscript' => 'Foram encontrados dois subscritos ligados à mesma base (apenas um é permitido)',
 	'math_DoubleSuperscript' => 'Foram encontrados dois superscritos ligados à mesma base (apenas um é permitido)',
-	'math_IllegalCharacter' => 'Caracter inválido nos dados introduzidos',
+	'math_IllegalCharacter' => 'Carácter inválido nos dados introduzidos',
 	'math_IllegalCommandInMathMode' => 'O comando "$1" é inválido em modo matemático',
 	'math_IllegalCommandInMathModeWithHint' => 'O comando "$1" é inválido em modo matemático (talvez pretendesse usar "$2"?)',
 	'math_IllegalCommandInTextMode' => 'O comando "$1" é inválido em modo de texto',
@@ -2601,7 +2602,7 @@ $messages['pt'] = array(
 	'math_MissingOrIllegalParameterIndex' => 'Índice de parâmetro em falta ou inválido na definição de "$1"',
 	'math_NonAsciiInMathMode' => 'Caracteres não ASCII só podem ser usados em modo de texto (experimente inscrever os caracteres problemáticos dentro de "\\text{...}")',
 	'math_NotEnoughArguments' => 'Não foram fornecidos argumentos suficientes para "$1"',
-	'math_PngIncompatibleCharacter' => 'Não foi possível gerar correctamente o PNG contendo o caracter $1',
+	'math_PngIncompatibleCharacter' => 'Não foi possível gerar correctamente o PNG contendo o carácter $1',
 	'math_ReservedCommand' => 'O comando "$1" está reservado para uso interno pelo blahtex',
 	'math_SubstackRowTooBig' => 'Só pode haver uma entrada em cada linha de um bloco "substack"',
 	'math_TooManyMathmlNodes' => 'Há demasiados nós na árvore MathML',

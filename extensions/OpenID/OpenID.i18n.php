@@ -277,6 +277,7 @@ $messages['am'] = array(
  * @author Juanpabl
  */
 $messages['an'] = array(
+	'openid-urls-action' => 'Acción',
 	'openid-urls-delete' => 'Borrar',
 );
 
@@ -689,7 +690,7 @@ tu 'zo deoc'h dibab unan eus ar c'hinnigoù a-is.",
 	'openidconvertinstructions' => "Gant ar furmskrid-se e c'hallit kemmañ ho kont implijer evit implijout ur chomlec'h OpenID pe evit ouzhpennañ chomlec'hioù OpenID.",
 	'openidconvertoraddmoreids' => "Amdreiñ da OpenID pe ouzhpennañ ur chomlec'h OpenID all",
 	'openidconvertsuccess' => 'Amdroet eo bet ervat davet OpenID',
-	'openidconvertsuccesstext' => 'Amdroet ho peus ho OpenID davet $1.',
+	'openidconvertsuccesstext' => "Amdroet hoc'h eus ho OpenID davet $1.",
 	'openidconvertyourstext' => "Hoc'h OpenID eo hemañ dija.",
 	'openidconvertothertext' => 'OpenID un implijer all eo hemañ.',
 	'openidalreadyloggedin' => "'''Kevreet oc'h dija, $1!'''

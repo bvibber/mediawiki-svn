@@ -22,6 +22,13 @@ $messages['be-tarask'] = array(
 	'addmediawizard-desc' => 'Майстар даданьня мэдыя, распрацаваны ў супрацоўніцтве Kaltura і фундацыі «Вікімэдыя»',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'addmediawizard-desc' => 'Ouzhpennañ un ameiler evit ar mediaoù, diorroet e kenlabour gant Kaltura ha Diazezadur Wikimedia',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
@@ -104,6 +111,13 @@ $messages['nl'] = array(
  */
 $messages['oc'] = array(
 	'addmediawizard-desc' => 'Apondre un assistent pels mèdias, desvolopat dins un partenariat entre Kaltura e la Wikimedia Foundation',
+);
+
+/** Polish (Polski)
+ * @author Marcin Łukasz Kiejzik
+ */
+$messages['pl'] = array(
+	'addmediawizard-desc' => 'Kreator dodawania mediów, opracowany wspólnie przez Kalturę i Fundację Wikimedia',
 );
 
 /** Piedmontese (Piemontèis)

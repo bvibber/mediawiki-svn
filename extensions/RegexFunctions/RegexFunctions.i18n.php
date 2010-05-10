@@ -272,10 +272,11 @@ $messages['pms'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Waldir
  */
 $messages['pt'] = array(
-	'regexfunctions-desc' => 'funções do analisador (parser) para expressões regulares',
+	'regexfunctions-desc' => 'Funções do analisador sintático para expressões regulares',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

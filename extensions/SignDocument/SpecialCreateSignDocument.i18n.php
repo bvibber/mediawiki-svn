@@ -74,10 +74,12 @@ $messages['am'] = array(
 );
 
 /** Aragonese (Aragonés)
+ * @author Juanpabl
  * @author Remember the dot
  */
 $messages['an'] = array(
 	'createsigndoc-pagename' => 'Pachina:',
+	'createsigndoc-create' => 'Creyar',
 );
 
 /** Old English (Ænglisc)

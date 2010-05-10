@@ -48,12 +48,19 @@ $egStoryboardHeight = 400;
 $egStorysubmissionWidth = '740px';
 
 /**
- * TODO: document
- * @var integer
+ * The address that should be displayed as sender in submission confirmation emails.
+ * @var string
  */
-$egStoryboardBatchSize = 5;
+$egStoryboardEmailSender = 'noreply@wikimediafoundation.org';
+
 /**
- * TODO: document
- * @var integer
+ * The name that should be displayed as sender in submission confirmation emails.
+ * @var string
  */
-$egStoryboardBatchAmount = 2;
+$egStoryboardEmailSenderName = 'Wikimedia Foundation';
+
+/**
+ * The url to the storyboard.
+ * @var string
+ */
+$egStoryboardBoardUrl = 'http://wikimediafoundation.org/wiki/Home';

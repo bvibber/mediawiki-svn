@@ -857,7 +857,7 @@ $messages['vo'] = array(
 $messages['xal'] = array(
 	'unicodeconverter' => 'Юникодин орчулдгч',
 	'unicodeconverter-desc' => 'Амр көдлхнә халхин хүв үлгүрнь. [[Special:UnicodeConverter|UTF-8 кодлт мөр]] HTML дүрт ISO 8859-1 веб халхин төлә орчулсмн.',
-	'unicodeconverter-ok' => 'Чик',
+	'unicodeconverter-ok' => 'Тиим',
 	'unicodeconverter-oldtext' => 'Булг бичг:',
 	'unicodeconverter-newtext' => 'Кесн бичг:',
 );

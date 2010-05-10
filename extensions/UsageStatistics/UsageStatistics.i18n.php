@@ -116,6 +116,7 @@ $messages['am'] = array(
  * @author Juanpabl
  */
 $messages['an'] = array(
+	'usagestatisticsnamespace' => 'Espacio de nombres:',
 	'usagestatisticsstart' => 'Calendata de prenzipio',
 	'usagestatisticsend' => 'Calendata final',
 	'usagestatisticsnoend' => 'Por fabor, escriba una calendata final',
@@ -574,8 +575,8 @@ $messages['el'] = array(
 	'usagestatisticsinterval' => 'Διάστημα:',
 	'usagestatisticsnamespace' => 'Περιοχή ονομάτων:',
 	'usagestatisticsexcluderedirects' => 'Εξαίρεση ανακατευθύνσεων',
-	'usagestatistics-namespace' => 'Στατιστικά για την περιοχή [[Ειδικό:Allpages/$1|$2]].',
-	'usagestatistics-noredirects' => 'Οι [[Ειδικό:ListRedirects|ανακατευθύνσεις]] δε λαμβάνονται υπόψη.',
+	'usagestatistics-namespace' => 'Στατιστικά για την περιοχή [[Special:Allpages/$1|$2]].',
+	'usagestatistics-noredirects' => 'Οι [[Spetial:ListRedirects|ανακατευθύνσεις]] δε λαμβάνονται υπόψη.',
 	'usagestatisticstype' => 'Τύπος',
 	'usagestatisticsstart' => 'Ημερομηνία έναρξης:',
 	'usagestatisticsend' => 'Ημερομηνία λήξης:',
@@ -1941,6 +1942,14 @@ $messages['ru'] = array(
 	'usagestatistics-editindividual' => 'Статистика $1 для индивидуальных правок',
 	'usagestatistics-editpages' => 'Статистика $1 для страниц участника',
 	'right-viewsystemstats' => 'просмотр [[Special:UserStats|статистики использования вики]]',
+);
+
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'specialuserstats' => 'Штатістіка хоснованя',
+	'usagestatistics' => 'Штатістіка хоснованя',
 );
 
 /** Sinhala (සිංහල)

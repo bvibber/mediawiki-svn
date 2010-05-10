@@ -818,13 +818,14 @@ $messages['pt'] = array(
 );
 
 /** Brazilian Portuguese (Português do Brasil)
+ * @author 555
  * @author Everton137
  * @author Hamilton Abreu
  * @author Lijealso
  * @author Luckas Blade
  */
 $messages['pt-br'] = array(
-	'wikieditor-publish-preference' => 'Possibilitar publicação passo a passo',
+	'wikieditor-publish-preference' => 'Ativar publicação passo-a-passo',
 	'wikieditor-publish-button-publish' => 'Publicar',
 	'wikieditor-publish-button-cancel' => 'Cancelar',
 	'wikieditor-publish-dialog-title' => 'Publicar em {{SITENAME}}',

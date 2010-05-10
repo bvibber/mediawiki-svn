@@ -36,7 +36,7 @@ class MapsYahooMapsDispPoint extends MapsBasePointMap {
 	public function doMapServiceLoad() {
 		global $egYahooMapsOnThisPage;
 		
-		MapsYahooMaps::addYMapDependencies( $this->output );
+		MapsYahooMaps::addYMapDependencies( $this->parser );
 		$egYahooMapsOnThisPage++;
 		
 		$this->elementNr = $egYahooMapsOnThisPage;
@@ -46,7 +46,7 @@ class MapsYahooMapsDispPoint extends MapsBasePointMap {
 	 * @see MapsBaseMap::addSpecificMapHTML()
 	 *
 	 */
-	public function addSpecificMapHTML( Parser $parser ) {
+	public function addSpecificMapHTML() {
 		global $egMapsYahooMapsPrefix, $egYahooMapsOnThisPage;
 		
 		$mapName = $egMapsYahooMapsPrefix . '_' . $egYahooMapsOnThisPage;
@@ -60,7 +60,7 @@ class MapsYahooMapsDispPoint extends MapsBasePointMap {
 			wfMsg( 'maps-loading-map' )
 		);
 		
-		$parser->getOutput()->addHeadItem(
+		$this->parser->getOutput()->addHeadItem(
 			Html::inlineScript( <<<EOT
 addOnloadHook(
 	function() {

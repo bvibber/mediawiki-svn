@@ -24,12 +24,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  * @author Robert Buzink
  * @author Yaron Koren
  * 
- * TODO:
- * This class is borrowing an awefull lot code from MapsMapFeature, which
- * ideally should be inherited. Since SMWResultPrinter already gets inherited,
- * this is not possible. Finding a better solution to this code redundancy 
- * would be nice, cause now changes to MapsMapFeature need to be copied here.
- * 
  * The adaptor pattern could be used to prevent this.
  */
 abstract class SMMapPrinter extends SMWResultPrinter {
@@ -126,11 +120,11 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 		
 		$manager = new ValidatorManager();
 		
-		$result = $manager->manageParameters( $mapProperties, $parameterInfo );
+		$showMap = $manager->manageParameters( $mapProperties, $parameterInfo );
 		
-		$showMap = $result !== false;
-		
-		if ( $showMap ) $this->setMapProperties( $result, __CLASS__ );
+		if ( $showMap ) {
+			$this->setMapProperties( $manager->getParameters( false ), __CLASS__ );
+		}
 		
 		$this->errorList  = $manager->getErrorList();
 		

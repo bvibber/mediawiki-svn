@@ -1044,7 +1044,7 @@ $messages['km'] = array(
 $messages['ko'] = array(
 	'usermerge' => '사용자 계정 병합 및 삭제',
 	'usermerge-olduser' => '이전 사용자',
-	'usermerge-deleteolduser' => '이전의 계정을 삭제하시겠습니까?',
+	'usermerge-deleteolduser' => '이전 계정을 삭제하기',
 	'usermerge-submit' => '계정 합치기',
 	'usermerge-userdeleted-log' => '$2 ($3) 사용자를 삭제함',
 	'usermerge-success-log' => '$2 ($3) 사용자를 $4 ($5) 로 병합함',
@@ -1441,7 +1441,7 @@ $messages['ps'] = array(
  */
 $messages['pt'] = array(
 	'usermerge' => 'Fusão e eliminação de utilizadores',
-	'usermerge-desc' => "[[Special:UserMerge|Funde referências a um utilizador com as de outro utilizador]] na base de dados da wiki - também apaga o antigo utilizador após a fusão. Requer os privilégios ''usermerge''",
+	'usermerge-desc' => "[[Special:UserMerge|Funde referências a um utilizador com as de outro utilizador]] na base de dados da wiki - também apaga o antigo utilizador após a fusão. Requer o privilégio ''usermerge''",
 	'usermerge-badolduser' => 'Nome antigo inválido',
 	'usermerge-badnewuser' => 'Nome novo inválido',
 	'usermerge-nonewuser' => 'Novo nome de utilizador vazio - assumida fusão com $1.<br />

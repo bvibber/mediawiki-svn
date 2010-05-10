@@ -25,16 +25,21 @@ abstract class SMFormInput {
 	 */
 	protected abstract function addFormDependencies();
 	
-	protected $marker_lat;
-	protected $marker_lon;
+	/**
+	 * @var string
+	 */	
+	protected $mapName;
+	
+	/**
+	 * @var array
+	 */
+	protected $markerCoords;
 
 	protected $earthZoom;
 	
 	protected $showAddresFunction;
 	
 	protected $enableGeocoding = false;
-	
-	private $startingCoords = '';
 	
 	private $coordinates;
 	
@@ -54,8 +59,6 @@ abstract class SMFormInput {
 		 * by the feature parameters (the ones spesific to a feature). The result is then
 		 * again overidden by the service parameters (the ones spesific to the service),
 		 * and finally by the spesific parameters (the ones spesific to a service-feature combination).
-		 * 
-		 * FIXME: this causes some wicket error?
 		 */
 		$parameterInfo = array_merge_recursive( MapsMapper::getCommonParameters(), SMFormInputs::$parameters );
 		$parameterInfo = array_merge_recursive( $parameterInfo, $egMapsServices[$this->serviceName]['parameters'] );
@@ -63,13 +66,23 @@ abstract class SMFormInput {
 		
 		$manager = new ValidatorManager();
 		
-		$result = $manager->manageParameters( $mapProperties, $parameterInfo );
+		$showMap = $manager->manageParameters( $mapProperties, $parameterInfo );
 		
-		$showMap = $result !== false;
+		if ( $showMap ) {
+			$parameters = $manager->getParameters( false );
+			
+			foreach ( $parameters as $paramName => $paramValue ) {
+				if ( !property_exists( __CLASS__, $paramName ) ) {
+					$this-> { $paramName } = $paramValue;
+				}
+				else {
+					// If this happens in any way, it could be a big vunerability, so throw an exception.
+					throw new Exception( 'Attempt to override a class field during map property assignment. Field name: ' . $paramName );
+				}
+			}
+		}
 		
-		if ( $showMap ) $this->setMapProperties( $result, __CLASS__ );
-		
-		$this->errorList  = $manager->getErrorList();
+		$this->errorList = $manager->getErrorList();
 		
 		return $showMap;
 	}
@@ -83,13 +96,17 @@ abstract class SMFormInput {
 	 * TODO: Use function args for sf stuffz
 	 */
 	public final function formInputHTML( $coordinates, $input_name, $is_mandatory, $is_disabled, $field_args ) {
-		global $wgParser, $sfgTabIndex;
+		global $sfgTabIndex;
 
 		$this->coordinates = $coordinates;
 		
 		$this->setMapSettings();
 		
-		$this->setMapProperties( $field_args );
+		$showInput = $this->setMapProperties( $field_args );
+		
+		if ( !$showInput ) {
+			return array( $this->errorList );
+		}
 		
 		$this->doMapServiceLoad();
 		
@@ -100,20 +117,42 @@ abstract class SMFormInput {
 		$this->setZoom();
 		
 		// Create html element names.
-		$this->setMapName();
-		$this->mapName .= '_' . $sfgTabIndex;
 		$this->geocodeFieldName = $this->elementNamePrefix . '_geocode_' . $this->elementNr . '_' . $sfgTabIndex;
 		$this->coordsFieldName = $this->elementNamePrefix . '_coords_' . $this->elementNr . '_' . $sfgTabIndex;
 		$this->infoFieldName = $this->elementNamePrefix . '_info_' . $this->elementNr . '_' . $sfgTabIndex;
 
 		// Create the non specific form HTML.
-		$this->output .= "
-		<input id='" . $this->coordsFieldName . "' name='$input_name' type='text' value='$this->startingCoords' size='40' tabindex='$sfgTabIndex'>
-		<span id='" . $this->infoFieldName . "' class='error_message'></span>";
+		$this->output .= Html::input( 
+			$input_name,
+			$this->markerCoords ? MapsCoordinateParser::formatCoordinates( $this->markerCoords ) : '',
+			'text',
+			array(
+				'size' => 42,
+				'tabindex' => $sfgTabIndex,
+				'id' => $this->coordsFieldName
+			)
+		);
+		
+		$this->output .= Html::element( 
+			'span',
+			array(
+				'class' => 'error_message',
+				'id' => $this->infoFieldName
+			)
+		);
 		
 		if ( $this->enableGeocoding ) $this->addGeocodingField();
 		
-		$this->addSpecificMapHTML( $wgParser );
+		if ( $this->markerCoords === false ) {
+			$this->markerCoords = array(
+				'lat' => 'null',
+				'lon' => 'null'
+			);
+			$this->centreLat = 'null';
+			$this->centreLon = 'null';
+		}
+		
+		$this->addSpecificMapHTML();
 		
 		return array( $this->output . $this->errorList, '' );
 	}
@@ -138,22 +177,32 @@ function convertLatToDMS (val) {
 }
 function convertLngToDMS (val) {
 	return Math.abs(val) + "$deg " + ( val < 0 ? "$w" : "$e" );
-}			
+}
 EOT
 			);
 		}
 		
-		// Retrieve language values.
-		$enter_address_here_text = Xml::escapeJsString( wfMsg( 'semanticmaps_enteraddresshere' ) );
-		$lookup_coordinates_text = Xml::escapeJsString( wfMsg( 'semanticmaps_lookupcoordinates' ) );
-		$not_found_text = Xml::escapeJsString( wfMsg( 'semanticmaps_notfound' ) );
+		$adress_field = SMFormInput::getDynamicInput(
+			$this->geocodeFieldName,
+			wfMsg( 'semanticmaps_enteraddresshere' ),
+			'size="30" name="geocode" style="color: #707070" tabindex="' . htmlspecialchars( $sfgTabIndex ) . '"'
+		);
 		
-		$adress_field = SMFormInput::getDynamicInput( $this->geocodeFieldName, $enter_address_here_text, 'size="30" name="geocode" style="color: #707070" tabindex="' . $sfgTabIndex . '"' );
-		$this->output .= "
-		<p>
-			$adress_field
-			<input type='submit' onClick=\"$this->showAddresFunction(document.forms['createbox'].$this->geocodeFieldName.value, '$this->mapName', '$this->coordsFieldName', '$not_found_text'); return false\" value='$lookup_coordinates_text' />
-		</p>";
+		$notFoundText = Xml::escapeJsString( wfMsg( 'semanticmaps_notfound' ) );
+		$mapName = Xml::escapeJsString( $this->mapName );
+		$geoFieldName = Xml::escapeJsString( $this->geocodeFieldName );
+		$coordFieldName = Xml::escapeJsString( $this->coordsFieldName );
+		
+		$this->output .= '<p>' . $adress_field .
+			Html::input(
+				'geosubmit',
+				wfMsg( 'semanticmaps_lookupcoordinates' ),
+				'submit',
+				array(
+					'onClick' => "$this->showAddresFunction( document.forms['createbox'].$geoFieldName.value, '$mapName', '$coordFieldName', '$notFoundText'); return false"
+				)
+			) . 
+			'</p>';
 	}
 	
 	/**
@@ -163,64 +212,33 @@ EOT
 	private function setZoom() {
         if ( empty( $this->coordinates ) ) {
             $this->zoom = $this->earthZoom;
-        } else if ( strlen( $this->zoom ) < 1 ) {
+        } else if ( $this->zoom == 'null' ) {
              $this->zoom = $this->defaultZoom;
         }
 	}
 	
 	/**
-	 * 
-	 * @param $decimal
-	 * @return unknown_type
-	 */
-	private static function latDecimal2Degree( $decimal ) {
-		$deg = Maps_GEO_DEG;
-		if ( $decimal < 0 ) {
-			return abs ( $decimal ) . "$deg S";
-		} else {
-			return $decimal . "$deg N";
-		}
-	}
-	
-	/**
-	 * 
-	 * @param $decimal
-	 * @return unknown_type
-	 */
-	private static function lonDecimal2Degree( $decimal ) {
-		if ( $decimal < 0 ) {
-			return abs ( $decimal ) . "° W";
-		} else {
-			return $decimal . "° E";
-		}
-	}
-	
-	/**
-	 * Sets the $marler_lon and $marler_lat fields and when set, the starting coordinates
+	 * Sets the $this->markerCoords value, which are the coordinates for the marker.
 	 */
 	private function setCoordinates() {
 		if ( empty( $this->coordinates ) ) {
-			// If no coordinates exist yet, no marker should be displayed
-			$this->marker_lat = 'null';
-			$this->marker_lon = 'null';
+			// If no coordinates exist yet, no marker should be displayed.
+			$this->markerCoords = false;
 		}
 		else {
-			$marker = MapsCoordinateParser::parseCoordinates( $this->coordinates );
-			$this->marker_lat = $marker['lat'];
-			$this->marker_lon = $marker['lon'];
-			$this->startingCoords =  self::latDecimal2Degree( $this->marker_lat ) . ', ' . self::lonDecimal2Degree( $this->marker_lon );
+			$this->markerCoords = MapsCoordinateParser::parseCoordinates( $this->coordinates );
 		}
 	}
 	
 	/**
-	 * Sets the $centre_lat and $centre_lon fields.
+	 * Sets the $centreLat and $centreLon fields.
 	 * Note: this needs to be done AFTRE the maker coordinates are set.
 	 */
 	private function setCentre() {
 		if ( empty( $this->centre ) ) {
 			if ( isset( $this->coordinates ) ) {
-				$this->centreLat = $this->marker_lat;
-				$this->centreLon = $this->marker_lon;
+				$this->centreLat = $this->markerCoords['lat'];
+				$this->centreLon = $this->markerCoords['lon'];
 			}
 			else {
 				$this->centreLat = '0';

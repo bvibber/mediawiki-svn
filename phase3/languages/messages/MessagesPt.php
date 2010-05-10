@@ -315,7 +315,7 @@ $messages = array(
 'tog-enotifrevealaddr'        => 'Revelar o meu endereço de correio electrónico nas notificações',
 'tog-shownumberswatching'     => 'Mostrar o número de utilizadores a vigiar',
 'tog-oldsig'                  => 'Antevisão da assinatura:',
-'tog-fancysig'                => 'Tratar assinatura como wikitexto (sem link automático)',
+'tog-fancysig'                => 'Tratar assinatura como texto wiki (sem link automático)',
 'tog-externaleditor'          => 'Por omissão, utilizar um editor externo (só para utilizadores avançados, exige configurações adicionais no seu computador)',
 'tog-externaldiff'            => 'Por omissão, utilizar diferenças externas (só para utilizadores avançados, exige configurações adicionais no seu computador)',
 'tog-showjumplinks'           => 'Possibilitar links de acessibilidade "{{int:jumpto}}"',
@@ -1028,9 +1028,9 @@ Por favor, verifique a seguinte comparação para se certificar de que é o que 
 
 # Account creation failure
 'cantcreateaccounttitle' => 'Não é possível criar uma conta',
-'cantcreateaccount-text' => "Este IP ('''$1''') foi bloqueado de criar novas contas por [[User:$3|$3]].
+'cantcreateaccount-text' => "A criação de contas a partir deste endereço IP ('''$1''') foi bloqueada por [[User:$3|$3]].
 
-A justificativa apresentada por $3 foi ''$2''",
+O motivo apresentado por $3 foi ''$2''",
 
 # History pages
 'viewpagelogs'           => 'Ver registos para esta página',
@@ -1378,8 +1378,8 @@ Esta operação não pode ser desfeita.',
 'yournick'                      => 'Assinatura:',
 'prefs-help-signature'          => 'Ao inserir comentários em páginas de discussão, assine-os colocando quatro tiles "<nowiki>~~~~</nowiki>" no fim dos comentários. Ao gravar, estes serão convertidos na sua assinatura mais a data e a hora da edição.',
 'badsig'                        => 'Assinatura inválida; verifique o código HTML utilizado.',
-'badsiglength'                  => 'A sua assinatura é muito longa.
-Não deverá ter mais de $1 {{PLURAL:$1|caráter|carateres}}.',
+'badsiglength'                  => 'A sua assinatura é demasiado longa.
+Não deverá conter mais de $1 {{PLURAL:$1|carácter|caracteres}}.',
 'yourgender'                    => 'Sexo:',
 'gender-unknown'                => 'Não especificado',
 'gender-male'                   => 'Masculino',
@@ -2350,7 +2350,7 @@ Pode ter usado um link incorrecto ou talvez a revisão tenha sido restaurada ou 
 'undeletereset'                => 'Limpar',
 'undeleteinvert'               => 'Inverter selecção',
 'undeletecomment'              => 'Comentário:',
-'undeletedarticle'             => 'restaurado "[[$1]]"',
+'undeletedarticle'             => 'restaurou "[[$1]]"',
 'undeletedrevisions'           => '$1 {{PLURAL:$1|edição restaurada|edições restauradas}}',
 'undeletedrevisions-files'     => '$1 {{PLURAL:$2|edição restaurada|edições restauradas}} e $2 {{PLURAL:$2|ficheiro restaurado|ficheiros restaurados}}',
 'undeletedfiles'               => '{{PLURAL:$1|ficheiro restaurado|$1 ficheiros restaurados}}',
@@ -2806,6 +2806,7 @@ Utilize o botão "Antever resultado" antes de gravar, por favor.',
 'tooltip-undo'                    => '"desfazer" reverte esta edição e apresenta a página de edição no modo de antevisão.
 Permite colocar uma justificação no resumo da edição.',
 'tooltip-preferences-save'        => 'Gravar preferências',
+'tooltip-summary'                 => 'Introduza um resumo breve',
 
 # Stylesheets
 'common.css'      => '/* Código CSS colocado aqui será aplicado a todos os temas */',
@@ -2917,7 +2918,7 @@ Este bloqueio foi provavelmente causado por um link para um site externo que con
 'log-show-hide-patrol' => '$1 registo de edições patrulhadas',
 
 # Image deletion
-'deletedrevision'                 => 'Apagada a versão antiga $1',
+'deletedrevision'                 => 'Apagou a versão antiga $1',
 'filedeleteerror-short'           => 'Erro ao eliminar ficheiro: $1',
 'filedeleteerror-long'            => 'Foram encontrados erros ao tentar eliminar o ficheiro:
 
@@ -2956,7 +2957,7 @@ Executá-lo poderá comprometer a segurança do seu sistema.<hr />",
 'noimages'              => 'Nada para ver.',
 'ilsubmit'              => 'Procurar',
 'bydate'                => 'por data',
-'sp-newimages-showfrom' => 'Mostrar novos ficheiros a partir de $2, $1',
+'sp-newimages-showfrom' => 'Mostrar novos ficheiros a partir das $2 de $1',
 
 # Bad image list
 'bad_image_list' => 'O formato é o seguinte:

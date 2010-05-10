@@ -2005,13 +2005,19 @@ Nyebaraké informasi iki bisa ngakibataké hak pangawas (''oversight'') panjenen
 
 /** Georgian (ქართული)
  * @author BRUTE
+ * @author გიორგიმელა
  */
 $messages['ka'] = array(
 	'hiderevision' => 'სამუდამოდ დამალე ცვლილებები',
 	'group-oversight' => 'რევიზორები',
 	'hiderevision-continue' => 'გაგრძელება',
+	'hiderevision-reason' => 'მიზეზი (ჩაიწერება დახურულ ჟურნალში)',
+	'hiderevision-submit' => 'დამალეთ მონაცემები',
+	'hiderevision-tab' => 'დამალეთ რედაქტირება',
 	'hiderevision-link' => 'მომხმარებლის დამალული წვლილი',
+	'hiderevision-norevisions' => 'არ არის მითითებული წაშლის მიზეზი',
 	'hiderevision-noreason' => 'თქვენ უნდა დაწეროთ წაშლის მიზეზი.',
+	'hiderevision-status' => 'ვერსია №$1: $2',
 	'hiderevision-success' => 'წარმატებით დაარქივდა და წაიშალა',
 	'hiderevision-error-missing' => 'არ არის ნაპოვნი მონაცემთა ბაზაში.',
 	'oversight-log-hiderev' => 'მოშორდა ცვლილება $1-დან',

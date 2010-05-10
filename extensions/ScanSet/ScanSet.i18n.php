@@ -758,10 +758,13 @@ $messages['ka'] = array(
 	'scanset-desc' => 'სკანირებული გამოსახულებების ხილვა ანდრეას გროსის (Andreas Grosz) CD/DVD კოლექციდან',
 	'scanset_no_name' => 'შეცდომა: თქვენ უნდა წარმოადგინოთ ფოტოსურათების კოლექციის ზუსტი სახელი, მაგ. &lt;scanset name="EB1911" /&gt;.',
 	'scanset_invalid_name' => 'შეცდომა:სურათების კომპლექსში შეცდომაა, ან ამგვარი კომპლექსი არ არსებობს',
+	'scanset_unrecognised_index_format' => 'შეცდომა:არასწორი ინდექსი',
 	'scanset_opendir_error' => 'შეცდომა:ვერ მოხერხდა დირექტორიის გახსნა $1',
 	'scanset_no_files' => 'შეცდომა:ვერ მოვახერხეთ მოცემულ დირექტორიაში ფაილების აღმოჩენა.',
 	'scanset_no_volumes' => 'შეცდომა: ტომთა დირექტორია არ არის ნაპოვნი',
 	'scanset_missing_index_file' => 'შეცდომა: $1 ფაილის ინდექსი არ არის ნაპოვნი',
+	'scanset_index_file_error' => 'შეცდომა: შეცდომა ინდექსის ფაილში, ხაზი $1',
+	'scanset_invalid_volume' => 'შეცდომა:არასწორი ტომი',
 	'scanset_next' => 'შემდეგი &gt;',
 	'scanset_prev' => '&lt; წინა',
 );
@@ -1111,19 +1114,20 @@ $messages['ps'] = array(
 
 /** Portuguese (Português)
  * @author 555
+ * @author Hamilton Abreu
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'scanset-desc' => 'Ver imagens de páginas digitalizadas do conjunto de CD/DVD de Andreas Grosz',
-	'scanset_no_name' => 'Error: É necessário especificar um nome de conjunto de scans (por exemplo, &lt;scanset name="EB1911" /&gt;).',
-	'scanset_invalid_name' => 'Error: conjunto de scans inválido ou não encontrado.',
-	'scanset_unrecognised_index_format' => 'Error: formato de índice desconhecido',
-	'scanset_opendir_error' => 'Error: não é possível abrir o diretório $1',
-	'scanset_no_files' => 'Error: não há ficheiros no diretório especificado.',
-	'scanset_no_volumes' => 'Error: não foram encontrados diretórios contendo livros',
-	'scanset_missing_index_file' => 'Error: o ficheiro de índice $1 não foi encontrado',
-	'scanset_index_file_error' => 'Error: erro no formato de ficheiro-índice na linha $1',
-	'scanset_invalid_volume' => 'Error: livro inválido',
+	'scanset-desc' => 'Ver imagens de páginas digitalizadas dos conjuntos de CDs/DVDs de Andreas Grosz',
+	'scanset_no_name' => 'Erro: É necessário especificar um nome de conjunto de scans (por exemplo, &lt;scanset name="EB1911" /&gt;).',
+	'scanset_invalid_name' => 'Erro: Conjunto de scans inválido ou não encontrado.',
+	'scanset_unrecognised_index_format' => 'Error: Formato de índice desconhecido',
+	'scanset_opendir_error' => 'Erro: Não é possível abrir o directório $1',
+	'scanset_no_files' => 'Erro: Não há ficheiros no directório especificado.',
+	'scanset_no_volumes' => 'Erro: Não foram encontrados directórios de livros',
+	'scanset_missing_index_file' => 'Erro: O ficheiro de índice $1 não foi encontrado',
+	'scanset_index_file_error' => 'Erro: Erro no formato do ficheiro de índice na linha $1',
+	'scanset_invalid_volume' => 'Erro: Livro inválido',
 	'scanset_next' => 'Próximo &gt;',
 	'scanset_prev' => '&lt; Anterior',
 );

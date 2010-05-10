@@ -169,6 +169,13 @@ $messages['id'] = array(
 	'pipeescape-desc' => 'Fungsi parser <code>#!</code> jika Anda menginginkan karakter pipa sebagaimana adanya',
 );
 
+/** Italian (Italiano)
+ * @author Civvì
+ */
+$messages['it'] = array(
+	'pipeescape-desc' => "Funzione parser <code>#!</code> per quando si desidera che il carattere ''pipe'' sia solo un carattere pipe",
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */
@@ -255,10 +262,11 @@ $messages['pms'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'pipeescape-desc' => 'Função do analisador parser <code>#!</code> para quando se pretende que um caráter barra vertical ("pipe") seja apenas um caráter barra vertical.',
+	'pipeescape-desc' => 'Função do analisador sintáctico <code>#!</code> para quando se pretende que uma barra vertical ("pipe") seja apenas uma barra vertical.',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

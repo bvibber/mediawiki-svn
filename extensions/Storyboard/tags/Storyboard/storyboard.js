@@ -9,9 +9,7 @@
 	$( document ).ready( function() {
 		$( '.storyboard' ).ajaxScroll( {
 			updateBatch: updateStoryboard,
-			maxOffset: 500,
-			batchSize: 2,
-			batchNum: 2, // TODO: change to 1. Some issue in the ajaxscroll plugin makesit break when this is the case though.
+			batchSize: 4,
 			batchClass: "batch",
 			boxClass: "storyboard-box",
 			emptyBatchClass: "storyboard-empty",
@@ -24,42 +22,39 @@
 			'action': 'query',
 			'list': 'stories',
 			'format': 'json',
-			'stlimit': 2,
+			'stlimit': 4,
 			'stlanguage': window.storyboardLanguage
 		};
-		
-		if ( $storyboard.attr( 'storymodified' ) ) {
-			requestArgs.stcontinue = $storyboard.attr( 'storymodified' );
-			
-			requestArgs.stcontinue += '-' + 
-				( $storyboard.attr( 'storyid' ) ? $storyboard.attr( 'storyid' ) : '0' );
+
+		if ( window.storyContinueParam ) {
+			requestArgs.stcontinue = window.storyContinueParam.stories.stcontinue;
 		}
-			
+
 		$.getJSON( wgScriptPath + '/api.php',
 			requestArgs,
 			function( data ) {
 				if ( data.query ) {
-					addStories( $storyboard, data.query );
+					addStories( $storyboard, data );
 				} else {
-					alert( 'An error occured:\n' + data.error.info ); // TODO: i18n
+					alert( stbMsgExt( 'storyboard-anerroroccured', [data.error.info] ) );
 				}		
 			}
 		);
 	}
 	
-	function addStories( $storyboard, query ) {
+	function addStories( $storyboard, data ) {
 		// Remove the empty boxes.
-		$storyboard.html('');
+		$storyboard.html( '' );
 		
-		for ( var i in query.stories ) {
-			var story = query.stories[i];
+		for ( var i in data.query.stories ) {
+			var story = data.query.stories[i];
 			var $storyBody = $( "<div />" ).addClass( "storyboard-box" );
 			
 			var $header = $( "<div />" ).addClass( "story-header" ).appendTo( $storyBody );
 			$( "<div />" ).addClass( "story-title" ).text( story.title ).appendTo( $header );
 			
-			var deliciousUrl = "http://delicious.com/save?jump=yes&url=" + encodeURIComponent( story.permalink ) + "&title=" + encodeURIComponent( story.title );
-			var facebookUrl = "http://www.facebook.com/sharer.php?u=" + encodeURIComponent( story.permalink ) + '&t=' + encodeURIComponent( story.title );
+			var deliciousUrl = "http://delicious.com/save?jump=yes&amp;url=" + encodeURIComponent( story.permalink ) + "&amp;title=" + encodeURIComponent( story.title );
+			var facebookUrl = "http://www.facebook.com/sharer.php?u=" + encodeURIComponent( story.permalink ) + '&amp;t=' + encodeURIComponent( story.title );
 			
 			$( "<div />" )
 				.addClass( "story-sharing" )
@@ -105,17 +100,25 @@
 			
 			var textAndImg = $( "<div />" ).addClass( "story-text" ).text( story["*"] );
 			
-			if ( story.imageurl ) {
+			if ( story.imageurl && story.imagehidden == "0" ) {
 				textAndImg.prepend(
-					$( "<img />" ).attr( "src", story.imageurl ).addClass( "story-image" )
+					$( "<img />" ).attr( {"src": story.imageurl, "title": story.title, "alt": story.title } ).addClass( "story-image" )
 				);
 			}
 			
 			$storyBody.append( textAndImg );
 			
-			$storyBody.append( // TODO: get the actual message here
+			var metaDataText; 
+			if ( story.location != '' ) {
+				metaDataText = stbMsgExt( 'storyboard-storymetadatafrom', [story.author, story.location, story.creationtime, story.creationdate] );
+			}
+			else {
+				metaDataText = stbMsgExt( 'storyboard-storymetadata', [story.author, story.creationtime, story.creationdate] );
+			}			
+			
+			$storyBody.append(
 				$( "<div />" ).addClass( "story-metadata" ).append(
-					$("<span />").addClass( "story-metadata" ).text( " Submitted by $1 from $2 on $3, $4.")
+					$("<span />").addClass( "story-metadata" ).text( metaDataText )
 				)
 			);
 			
@@ -124,11 +127,7 @@
 			$storyboard.append( $storyBody );	
 		}
 		
-		var story = query.stories[query.stories.length - 1];
-		window.storyModified = story.modified;
-		window.storyId = story.id;
-		
-		window.storyboardBusy = false;
+		window.storyContinueParam = data["query-continue"] ? data["query-continue"] : false; 
 	}
 		
 })(jQuery);

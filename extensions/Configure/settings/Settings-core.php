@@ -55,6 +55,9 @@ $settings = array(
 			'wgUseSiteJs' => 'bool',
 			'wgHandheldStyle' => 'text',
 			'wgHandheldForIPhone' => 'bool',
+			'wgJQueryVersion' => 'text',
+			'wgJQueryMinified' => 'bool',
+			'wgJQueryOnEveryPage' => 'bool',
 		),
 		'performance' => array(
 			'wgAPICacheHelp' => 'bool',
@@ -139,6 +142,7 @@ $settings = array(
 			'wgServerName' => 'text',
 			'wgStyleDirectory' => 'text',
 			'wgStylePath' => 'text',
+			'wgLocalStylePath' => 'text',
 			'wgStyleSheetPath' => 'text',
 			'wgTmpDirectory' => 'text',
 			'wgUploadBaseUrl' => 'text',
@@ -331,6 +335,7 @@ $settings = array(
 		'vector' => array(
 			'wgVectorUseIconWatch' => 'bool',
 			'wgVectorUseSimpleSearch' => 'bool',
+			'wgVectorShowVariantName' => 'bool',
 		),
 	),
 	'category' => array(
@@ -1182,6 +1187,17 @@ $notEditableSettings = array(
  * Array of settings depending of the Core version
  */
 $settingsVersion = array(
+	# Removed in 1.17
+	'wgSQLiteDataDirMode' => array( array( '1.17alpha', '<' ) ),
+
+	# Added in 1.17
 	'wgAllowUserCssPrefs' => array( array( '1.17alpha', '>=' ) ),
 	'wgGalleryOptions' => array( array( '1.17alpha', '>=' ) ),
+	'wgAllowImageTag' => array( array( '1.17alpha', '>=' ) ),
+	'wgLogAutocreatedAccounts' => array( array( '1.17alpha', '>=' ) ),
+	'wgLocalStylePath' => array( array( '1.17alpha', '>=' ) ),
+	'wgVectorShowVariantName' => array( array( '1.17alpha', '>=' ) ),
+	'wgJQueryMinified' => array( array( '1.17alpha', '>=' ) ),
+	'wgJQueryOnEveryPage' => array( array( '1.17alpha', '>=' ) ),
+	'wgJQueryVersion' => array( array( '1.17alpha', '>=' ) ),
 );

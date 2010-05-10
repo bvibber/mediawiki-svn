@@ -43,29 +43,37 @@ class ApiParse extends ApiBase {
 		$text = $params['text'];
 		$title = $params['title'];
 		$page = $params['page'];
+		$pageid = $params['pageid'];
 		$oldid = $params['oldid'];
+
 		if ( !is_null( $page ) && ( !is_null( $text ) || $title != 'API' ) ) {
 			$this->dieUsage( 'The page parameter cannot be used together with the text and title parameters', 'params' );
 		}
 		$prop = array_flip( $params['prop'] );
 		$revid = false;
+		
+		if ( isset( $params['section'] ) ) {
+			$this->section = $params['section'];
+		} else {
+			$this->section = false;
+		}
 
 		// The parser needs $wgTitle to be set, apparently the
 		// $title parameter in Parser::parse isn't enough *sigh*
 		global $wgParser, $wgUser, $wgTitle, $wgEnableParserCache, $wgLang;
-		
-		// Current unncessary, code to act as a safeguard against any change in current behaviour of uselang breaks
+
+		// Currently unncessary, code to act as a safeguard against any change in current behaviour of uselang breaks
 		$oldLang = null;
 		if ( isset( $params['uselang'] ) && $params['uselang'] != $wgLang->getCode() ) {
 			$oldLang = $wgLang; // Backup wgLang
 			$wgLang = Language::factory( $params['uselang'] );
 		}
-		
+
 		$popts = new ParserOptions();
 		$popts->setTidy( true );
 		$popts->enableLimitReport();
 		$redirValues = null;
-		if ( !is_null( $oldid ) || !is_null( $page ) ) {
+		if ( !is_null( $oldid ) || !is_null( $pageid ) || !is_null( $page ) ) {
 			if ( !is_null( $oldid ) ) {
 				// Don't use the parser cache
 				$rev = Revision::newFromID( $oldid );
@@ -79,45 +87,65 @@ class ApiParse extends ApiBase {
 				$text = $rev->getText( Revision::FOR_THIS_USER );
 				$titleObj = $rev->getTitle();
 				$wgTitle = $titleObj;
+
+				if ( $this->section !== false ) {
+					$text = $this->getSectionText( $text, 'r' . $rev );
+				}
+
 				$p_result = $wgParser->parse( $text, $titleObj, $popts );
 			} else {
-				if ( $params['redirects'] ) {
-					$req = new FauxRequest( array(
-						'action' => 'query',
-						'redirects' => '',
-						'titles' => $page
-					) );
-					$main = new ApiMain( $req );
-					$main->execute();
-					$data = $main->getResultData();
-					$redirValues = @$data['query']['redirects'];
-					$to = $page;
-					foreach ( (array)$redirValues as $r ) {
-						$to = $r['to'];
+				if ( !is_null ( $pageid ) ) {
+					$titleObj = Title::newFromID( $pageid );
+
+					if ( !$titleObj ) {
+						$this->dieUsageMsg( array( 'nosuchpageid', $pageid ) );
 					}
 				} else {
-					$to = $page;
+					if ( $params['redirects'] ) {
+						$req = new FauxRequest( array(
+							'action' => 'query',
+							'redirects' => '',
+							'titles' => $page
+						) );
+						$main = new ApiMain( $req );
+						$main->execute();
+						$data = $main->getResultData();
+						$redirValues = @$data['query']['redirects'];
+						$to = $page;
+						foreach ( (array)$redirValues as $r ) {
+							$to = $r['to'];
+						}
+					} else {
+						$to = $page;
+					}
+					$titleObj = Title::newFromText( $to );
+					if ( !$titleObj ) {
+						$this->dieUsage( "The page you specified doesn't exist", 'missingtitle' );
+					}
 				}
-				$titleObj = Title::newFromText( $to );
-				if ( !$titleObj ) {
-					$this->dieUsage( "The page you specified doesn't exist", 'missingtitle' );
-				}
+				$wgTitle = $titleObj;
 
 				$articleObj = new Article( $titleObj );
 				if ( isset( $prop['revid'] ) ) {
 					$oldid = $articleObj->getRevIdFetched();
 				}
-				// Try the parser cache first
-				$p_result = false;
-				$pcache = ParserCache::singleton();
-				if ( $wgEnableParserCache ) {
-					$p_result = $pcache->get( $articleObj, $wgUser );
-				}
-				if ( !$p_result ) {
-					$p_result = $wgParser->parse( $articleObj->getContent(), $titleObj, $popts );
 
+				if ( $this->section !== false ) {
+					$text = $this->getSectionText( $text, !is_null ( $pageid ) ? 'page id ' . $pageid : $titleObj->getText() );
+					$p_result = $wgParser->parse( $text, $titleObj, $popts );
+				} else {
+					// Try the parser cache first
+					$p_result = false;
+					$pcache = ParserCache::singleton();
 					if ( $wgEnableParserCache ) {
-						$pcache->save( $p_result, $articleObj, $popts );
+						$p_result = $pcache->get( $articleObj, $wgUser );
+					}
+					if ( !$p_result ) {
+						$p_result = $wgParser->parse( $articleObj->getContent(), $titleObj, $popts );
+
+						if ( $wgEnableParserCache ) {
+							$pcache->save( $p_result, $articleObj, $popts );
+						}
 					}
 				}
 			}
@@ -127,6 +155,11 @@ class ApiParse extends ApiBase {
 				$titleObj = Title::newFromText( 'API' );
 			}
 			$wgTitle = $titleObj;
+
+			if ( $this->section !== false ) {
+				$text = $this->getSectionText( $text, $titleObj->getText() );
+			}
+
 			if ( $params['pst'] || $params['onlypst'] ) {
 				$text = $wgParser->preSaveTransform( $text, $titleObj, $wgUser, $popts );
 			}
@@ -212,10 +245,19 @@ class ApiParse extends ApiBase {
 		);
 		$this->setIndexedTagNames( $result_array, $result_mapping );
 		$result->addValue( null, $this->getModuleName(), $result_array );
-		
+
 		if ( !is_null( $oldLang ) ) {
 			$wgLang = $oldLang; // Reset $wgLang to $oldLang
 		}
+	}
+
+	private function getSectionText( $text, $what ) {
+		global $wgParser;
+		$text = $wgParser->getSection( $text, $this->section, false );
+		if ( $text === false ) {
+			$this->dieUsage( "There is no section {$this->section} in " . $what, 'nosuchsection' );
+		}
+		return $text;
 	}
 
 	private function formatLangLinks( $links ) {
@@ -284,6 +326,7 @@ class ApiParse extends ApiBase {
 			'text' => null,
 			'summary' => null,
 			'page' => null,
+			'pageid' => null,
 			'redirects' => false,
 			'oldid' => null,
 			'prop' => array(
@@ -306,6 +349,8 @@ class ApiParse extends ApiBase {
 			),
 			'pst' => false,
 			'onlypst' => false,
+			'uselang' => null,
+			'section' => null,
 		);
 	}
 
@@ -316,17 +361,19 @@ class ApiParse extends ApiBase {
 			'redirects' => 'If the page parameter is set to a redirect, resolve it.',
 			'title' => 'Title of page the text belongs to.',
 			'page' => 'Parse the content of this page. Cannot be used together with text and title.',
-			'oldid' => 'Parse the content of this revision. Overrides page.',
+			'pageid' => 'Parse the content of this page. Overrides page.',
+			'oldid' => 'Parse the content of this revision. Overrides page and pageid.',
 			'prop' => array( 'Which pieces of information to get.',
 					'NOTE: Section tree is only generated if there are more than 4 sections, or if the __TOC__ keyword is present.'
 			),
 			'pst' => array(	'Do a pre-save transform on the input before parsing it.',
-					'Ignored if page or oldid is used.'
+					'Ignored if page, pageid or oldid is used.'
 			),
-			'onlypst' => array( 'Do a PST on the input, but don\'t parse it.',
-					'Returns PSTed wikitext. Ignored if page or oldid is used.'
+			'onlypst' => array( 'Do a pre-save transform (PST) on the input, but don\'t parse it.',
+					'Returns the same wikitext, after a PST has been applied. Ignored if page, pageid or oldid is used.'
 			),
-			'uselang' => 'Which language to parse the request in.'
+			'uselang' => 'Which language to parse the request in.',
+			'section' => 'Only retrieve the content of this section number',
 		);
 	}
 
@@ -340,6 +387,8 @@ class ApiParse extends ApiBase {
 			array( 'code' => 'missingrev', 'info' => 'There is no revision ID oldid' ),
 			array( 'code' => 'permissiondenied', 'info' => 'You don\'t have permission to view deleted revisions' ),
 			array( 'code' => 'missingtitle', 'info' => 'The page you specified doesn\'t exist' ),
+			array( 'code' => 'nosuchsection', 'info' => 'There is no section  in '),
+			array( 'nosuchpageid' ),
 		) );
 	}
 

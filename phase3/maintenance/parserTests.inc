@@ -289,7 +289,7 @@ class ParserTest {
 
 	function runTests($tests) {
 		$ok = true;
-  foreach($tests as $i => $t) {
+		foreach($tests as $i => $t) {
 			$result =
 				$this->runTest($t['test'], $t['input'], $t['result'], $t['options'], $t['config']);
 			$ok = $ok && $result;
@@ -298,16 +298,16 @@ class ParserTest {
 		if ( $this->showProgress ) {
 			print "\n";
 		}
-  return $ok;
+		return $ok;
 	}
 
 	/**
 	 * Get a Parser object
 	 */
-	function getParser() {
+	function getParser($preprocessor = null) {
 		global $wgParserConf;
 		$class = $wgParserConf['class'];
-		$parser = new $class( $wgParserConf );
+		$parser = new $class( array( 'preprocessorClass'=>$preprocessor ) + $wgParserConf );
 		foreach( $this->hooks as $tag => $callback ) {
 			$parser->setHook( $tag, $callback );
 		}
@@ -352,7 +352,8 @@ class ParserTest {
 
 		$noxml = isset( $opts['noxml'] );
 		$local = isset( $opts['local'] );
-		$parser = $this->getParser();
+		$preprocessor = isset( $opts['preprocessor'] ) ? $opts['preprocessor'] : null;
+		$parser = $this->getParser( $preprocessor );
 		$title = Title::newFromText( $titleText );
 
 		$matches = array();
@@ -1541,7 +1542,7 @@ class RemoteTestRecorder extends TestRecorder {
 			print "CodeReview info upload failed to reach server.\n";
 			exit( 1 );
 		}
-		$responseData = json_decode( $response, true );
+		$responseData = FormatJson::decode( $response, true );
 		if( !is_array( $responseData ) ) {
 			print "CodeReview API response not recognized...\n";
 			wfDebug( "Unrecognized CodeReview API response: $response\n" );
@@ -1592,10 +1593,10 @@ class TestFileIterator implements Iterator {
 		if(fseek($this->fh, 0)) {
 			wfDie( "Couldn't fseek to the start of '$filename'\n" );
 		}
-		$this->index = 0;
+		$this->index = -1;
 		$this->lineNum = 0;
 		$this->eof = false;
-		$this->readNextTest();
+		$this->next();
 
 		return true;
     }
@@ -1637,8 +1638,10 @@ class TestFileIterator implements Iterator {
 					if( !isset( $data['article'] ) ) {
 						wfDie( "'endarticle' without 'article' at line {$this->lineNum} of $filename\n" );
 					}
-					if( $this->parser ) $this->parser->addArticle($this->parser->chomp($data['article']), $this->parser->chomp($data['text']),
-											  $this->lineNum);
+					if( $this->parser ) {
+						$this->parser->addArticle($this->parser->chomp($data['article']), $this->parser->chomp($data['text']),
+							$this->lineNum);
+					}
 					$data = array();
 					$section = null;
 					continue;
@@ -1687,8 +1690,9 @@ class TestFileIterator implements Iterator {
 					if (!isset( $data['config'] ) )
 						$data['config'] = '';
 
-					if ( $this->parser && (preg_match('/\\bdisabled\\b/i', $data['options'])
-						|| !preg_match("/{$this->parser->regex}/i", $data['test'])) && !$this->parser->runDisabled ) {
+					if ( $this->parser
+						 && ((preg_match('/\\bdisabled\\b/i', $data['options']) && !$this->parser->runDisabled)
+							 || !preg_match("/".$this->parser->regex."/i", $data['test']))  ) {
 						# disabled test
 						$data = array();
 						$section = null;

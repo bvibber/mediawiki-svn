@@ -145,6 +145,7 @@ class ApiStoryReview extends ApiBase {
 	
 	public function getPossibleErrors() {
 		return array_merge( parent::getPossibleErrors(), array(
+			array( 'badaccess-groups' ),
 			array( 'missingparam', 'storyid' ),
 			array( 'missingparam', 'storyaction' ),
 		) );

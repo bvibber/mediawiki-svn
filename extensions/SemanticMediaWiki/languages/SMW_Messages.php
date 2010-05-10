@@ -461,6 +461,7 @@ $messages['am'] = array(
  * @author Juanpabl
  */
 $messages['an'] = array(
+	'smw_printername_template' => 'Plantilla',
 	'smw_nodatetime' => 'No s\'ha entendito a calendata "$1".',
 );
 
@@ -1932,7 +1933,7 @@ Falls sich das Problem nicht nach einiger Zeit von selbst erledigt, bitte Deinen
 	'smw_nodatetime' => 'Das Datum „$1“ wurde nicht verstanden.',
 	'smw_toomanyclosing' => 'In der Anfrage kommen zu viele „$1“ vor.',
 	'smw_noclosingbrackets' => 'Ein Vorkommen von „<nowiki>[[</nowiki>“ in der Anfrage wurde nicht durch ein entsprechendes „]]“ abgeschlossen.',
-	'smw_misplacedsymbol' => 'Das Symbol „$1“ wurde an einer Stelle verwendet, wo es keinen Sinn macht.',
+	'smw_misplacedsymbol' => 'Das Symbol „$1“ wurde an einer Stelle verwendet, an der es nicht sinnvoll ist.',
 	'smw_unexpectedpart' => 'Der Teil „$1“ der Anfrage wurde nicht verstanden. Die Ergebnisse sind eventuell nicht wie erwartet.',
 	'smw_emptysubquery' => 'Keine Bedingung in Teilanfrage.',
 	'smw_misplacedsubquery' => 'Eine Teilanfrage wurde an einer Stelle verwendet, an der keine Teilanfragen vorkommen dürfen.',
@@ -1942,10 +1943,10 @@ Falls sich das Problem nicht nach einiger Zeit von selbst erledigt, bitte Deinen
 	'smw_badtitle' => 'Leider ist „$1“ als Seitentitel nicht zulässig.',
 	'smw_badqueryatom' => 'Ein Teil „<nowiki>[[…]]</nowiki>“ der Anfrage wurde nicht verstanden.',
 	'smw_propvalueproblem' => 'Der Wert des Attributs „$1“ wurde nicht verstanden.',
-	'smw_noqueryfeature' => 'Einige Anfrage-Features sind derzeit mit diesem Wiki nicht möglich und der entsprechende Teil der Frage wurde gelöscht ($1).',
+	'smw_noqueryfeature' => 'Einige Abfrage-Funktionen werden derzeit nicht von diesem Wiki unterstützt. Der entsprechende Teil der Abfrage wurde entfernt ($1).',
 	'smw_noconjunctions' => 'UND-Verknüpfungen in den Anfragen werden von diesem Wiki nicht unterstützt und der entsprechende Teil der Anfrage wurde gelöscht ($1).',
 	'smw_nodisjunctions' => 'Disjunktionen (ODER) in Anfragen sind in diesem Wiki nicht zulässig und ein Teil der Anfrage muss daher ignoriert werden ($1).',
-	'smw_querytoolarge' => 'Die folgenden Anfragebedingungen konnten wegen den in diesem Wiki gültigen Beschränkungen für größe und Tiefe von Anfragen nicht berücksichtigt werden: $1.',
+	'smw_querytoolarge' => 'Die folgenden Abfragebedingungen konnten, wegen der auf diesem Wiki gültigen Beschränkungen, bezüglich Größe und Tiefe von Abfragen, nicht berücksichtigt werden: $1.',
 	'smw_devel_warning' => 'Diese Funktion befindet sich zurzeit in Entwicklung und ist vielleicht noch nicht voll einsatzfähig. Eventuell ist es ratsam, den Inhalt des Wikis vor der Benutzung dieser Funktion zu sichern.',
 	'smw_notemplategiven' => 'Der Parameter „template“ muss angegeben werden, damit diese Anfrage durchgeführt werden kann.',
 	'smw_type_header' => 'Attribute mit dem Datentyp „$1“',
@@ -2051,7 +2052,7 @@ Diese Setup-Funktion kann mehrere Male ausgeführt werden ohne Schaden zu verurs
 	'smw_smwadmin_permissionswarn' => 'Wenn die Aktion mit einem SQL-Fehler abbricht, könnte es sein, dass der Datenbankbenutzer, durch den das Wiki auf die Datenbank zugreift (siehe die Datei LocalSettings.php), keine ausreichenden Rechte hat.
 Um das Problem zu lösen, ist es möglich, dem Benutzer zusätzliche Rechte zur Erstellung und Löschung von Tabellen einzuräumen, den Datenbank-Administrator zeitweilig in die LocalSettings.php einzutragen, oder das Wartungsskript <tt>SMW_setup.php</tt> zu benutzen, das die Benutzerdaten aus AdminSettings.php benutzen kann.',
 	'smw_smwadmin_dbbutton' => 'Tabellen initialisieren oder aktualiseren',
-	'smw_smwadmin_announce' => 'Dein Wiki ankündigen',
+	'smw_smwadmin_announce' => 'Dein Wiki bekannt geben',
 	'smw_smwadmin_announcedocu' => 'Semantic MediaWiki hat einen Webservice für die Bekanntgabe neuer semantischer Wikiseiten.
 Dieser Service wird benötigt um eine Liste zu erhalten, welche öffentlichen Seiten Semantic MediaWiki nutzen, hauptsächlich aber um dem <a href="http://semantic-mediawiki.org/wiki/SMW_Project">Semantic-MediaWiki-Projekt</a> einen Überbick über typische Anwendungen von Semantic MediaWiki zu geben.
 Siehe die Semantic-MediaWiki-Homepage für <a href="http://semantic-mediawiki.org/wiki/Registry">weiterführende Informationen über diesen Service</a>.',
@@ -5965,6 +5966,7 @@ $messages['lb'] = array(
 	'smw_finallistconjunct' => ', an',
 	'smw_factbox_head' => 'Fakten iwwer $1',
 	'smw_isspecprop' => 'Dëse Eegeschaft ass eng Spezial-Eegschaft an dëser Wiki.',
+	'smw_isknowntype' => 'Dësen Typ ass ee vun de Standard-Datantype vun dëser Wiki.',
 	'smw_isaliastype' => 'Dësen Typ vun donnéeën ass keen Alias fir den Typ vun Donnéeën "$1".',
 	'smw_concept_description' => 'Beschreiwung vum Konzept "$1"',
 	'smw_multiple_concepts' => 'Op jiddwer Konzeptsäit ka just eng Definitioun vun engem Konzept stoen.',
@@ -8089,7 +8091,7 @@ As alterações feitas neste passo não afectam o resto da base de dados MediaWi
 Esta função de preparação pode ser executada várias vezes sem causar quaisquer danos, mas é necessária apenas uma vez na instalação ou actualização.',
 	'smw_smwadmin_permissionswarn' => "Se a operação falhar com erros de SQL, provavelmente o utilizador de base de dados usado pela sua wiki (consulte o seu LocalSettings.php) não possui permissões suficientes.
 Conceda a este utilizador permissões adicionais para criar e eliminar tabelas, introduza temporariamente as credenciais do seu super-utilizador (<i>root</i>) da base de dados em LocalSettings.php, ou use o ''script'' de manutenção <tt>SMW_setup.php</tt>, o qual pode usar as credenciais presentes em AdminSettings.php.",
-	'smw_smwadmin_dbbutton' => 'Inicializar ou evoluir tabelas',
+	'smw_smwadmin_dbbutton' => 'Inicializar ou actualizar tabelas',
 	'smw_smwadmin_announce' => 'Anuncie a sua wiki',
 	'smw_smwadmin_announcedocu' => 'O MediaWiki Semântico tem um serviço na internet para anunciar novas wikis semânticas.
 Este é usado para manter uma lista de sites públicos que usam o MediaWiki Semântico, principalmente para auxiliar o <a href="http://semantic-mediawiki.org/wiki/SMW_Project">projecto MediaWiki Semântico</a> a obter uma ideia geral das utilizações típicas do MediaWiki Semântico.
@@ -8127,6 +8129,7 @@ Progresso estimado da actualização em curso:",
  * @author Luckas Blade
  * @author Rafael Vargas
  * @author Waldir
+ * @author 555
  */
 $messages['pt-br'] = array(
 	'smw-desc' => "Fazendo sua wiki mais acessível - para máquinas ''e'' humanos ([http://semantic-mediawiki.org/wiki/Help:User_manual documentação ''online''])",
@@ -8271,6 +8274,7 @@ Não foi criado outro.',
 	'smw_smwadmin_docu' => 'Esta página especial ajuda-o durante a instalação ou atualização do <a href="http://semantic-mediawiki.org">Semantic MediaWiki</a>.
 Lembre-se de efetuar cópias de segurança dos dados importantes antes de executar funções administrativas.',
 	'smw_smwadmin_db' => 'Instalação e atualização da base de dados',
+	'smw_smwadmin_dbbutton' => 'Inicializar ou atualizar tabelas',
 	'smw_smwadmin_announce' => 'Anuncie a sua wiki',
 	'smw_smwadmin_datarefresh' => 'Reparação de dados e atualização',
 	'smw_smwadmin_datarefreshprogress' => '<strong>Uma atualização já se encontra a decorrer.</strong>

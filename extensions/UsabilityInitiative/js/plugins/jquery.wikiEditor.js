@@ -1057,6 +1057,10 @@ if ( !context || typeof context == 'undefined' ) {
 					}
 					// Get a reference to the content area of the iframe
 					context.$content = $( context.$iframe[0].contentWindow.document.body );
+					// Add classes to the body to influence the styles based on what's enabled
+					for ( module in context.modules ) {
+						context.$content.addClass( 'wikiEditor-' + module );
+					}
 					// If we just do "context.$content.text( context.$textarea.val() )", Internet Explorer will strip
 					// out the whitespace charcters, specifically "\n" - so we must manually encode text and append it
 					// TODO: Refactor this into a textToHtml() function

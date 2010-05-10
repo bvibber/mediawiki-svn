@@ -429,11 +429,12 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Malafaya
  * @author Waldir
  */
 $messages['pt'] = array(
-	'mediafunctions-desc' => 'Funções do analisador (parser) para obter informação sobre ficheiros multimédia.',
+	'mediafunctions-desc' => 'Funções do analisador sintáctico para obter informação sobre ficheiros multimédia',
 	'mediafunctions-invalid-title' => '"$1" não é um título válido',
 	'mediafunctions-not-exist' => '"$1" não existe',
 );

@@ -164,7 +164,7 @@ class MapsGoogleMaps {
 	 * 
 	 * @return boolean
 	 */
-	public static function isGOverlay( $value, array $metaData ) {
+	public static function isGOverlay( $value, $name, array $parameters ) {
 		$value = explode( '-', $value );
 		if ( count( $value ) > 2 ) return false;
 		if ( count( $value ) > 1 && !in_array( $value[1], array( '0', '1' ) ) ) return false;
@@ -178,7 +178,7 @@ class MapsGoogleMaps {
 	 * 
 	 * @return string
 	 */
-	public static function setGMapType( &$type ) {
+	public static function setGMapType( &$type, $name, array $parameters ) {
 		$type = self::$mapTypes[ $type ];
 	}
 	
@@ -189,28 +189,42 @@ class MapsGoogleMaps {
 	 * 
 	 * @return array
 	 */
-	public static function setGMapTypes( array &$types ) {
+	public static function setGMapTypes( array &$types, $name, array $parameters ) {
 		for ( $i = count( $types ) - 1; $i >= 0; $i-- ) {
 			$types[$i] = self::$mapTypes[ $types[$i] ];
 		}
 	}
 	
 	/**
-	 * Add references to the Google Maps API and required JS file to the provided output 
+	 * Loads the Google Maps API and required JS files.
 	 *
-	 * @param string $output
+	 * @param mixed $parserOrOut
 	 */
-	public static function addGMapDependencies( &$output ) {
+	public static function addGMapDependencies( &$parserOrOut ) {
 		global $wgJsMimeType, $wgLang;
 		global $egGoogleMapsKey, $egGoogleMapsOnThisPage, $egMapsStyleVersion, $egMapsJsExt, $egMapsScriptPath;
-
+		
 		if ( empty( $egGoogleMapsOnThisPage ) ) {
 			$egGoogleMapsOnThisPage = 0;
 
 			MapsGoogleMaps::validateGoogleMapsKey();
 
 			$langCode = self::getMappedLanguageCode( $wgLang->getCode() );
-			$output .= "<script src='http://maps.google.com/maps?file=api&amp;v=2&amp;key=$egGoogleMapsKey&amp;hl={$langCode}' type='$wgJsMimeType'></script><script type='$wgJsMimeType' src='$egMapsScriptPath/Services/GoogleMaps/GoogleMapFunctions{$egMapsJsExt}?$egMapsStyleVersion'></script><script type='$wgJsMimeType'>window.unload = GUnload;</script>";
+			
+			if ( $parserOrOut instanceof Parser ) {
+				$parser = $parserOrOut;
+				
+				$parser->getOutput()->addHeadItem( 
+					Html::linkedScript( "http://maps.google.com/maps?file=api&v=2&key=$egGoogleMapsKey&hl=$langCode" ) .	
+					Html::linkedScript( "$egMapsScriptPath/Services/GoogleMaps/GoogleMapFunctions{$egMapsJsExt}?$egMapsStyleVersion" ) .						
+					Html::inlineScript( 'window.unload = GUnload;' )
+				);				
+			}
+			else if ( $parserOrOut instanceof OutputPage ) {
+				$out = $parserOrOut;
+				MapsMapper::addScriptFile( $out, "http://maps.google.com/maps?file=api&v=2&key=$egGoogleMapsKey&hl=$langCode" );
+				$out->addScriptFile( "$egMapsScriptPath/Services/GoogleMaps/GoogleMapFunctions{$egMapsJsExt}?$egMapsStyleVersion" );
+			}
 		}
 	}
 	
@@ -239,8 +253,6 @@ class MapsGoogleMaps {
 	/**
 	 * This function ensures backward compatibility with Semantic Google Maps and other extensions
 	 * using $wgGoogleMapsKey instead of $egGoogleMapsKey.
-	 * 
-	 * FIXME: Possible vunerability when register globals is on.
 	 */
 	public static function validateGoogleMapsKey() {
 		global $egGoogleMapsKey, $wgGoogleMapsKey;
@@ -254,11 +266,14 @@ class MapsGoogleMaps {
 	 * Adds the needed output for the overlays control.
 	 * 
 	 * @param string $output
+	 * @param Parser $parser
 	 * @param string $mapName
 	 * @param string $overlays
 	 * @param string $controls
+	 * 
+	 * FIXME: layer onload function kills maps for some reason
 	 */
-	public static function addOverlayOutput( &$output, $mapName, $overlays, $controls ) {
+	public static function addOverlayOutput( &$output, Parser &$parser, $mapName, $overlays, $controls ) {
 		global $egMapsGMapOverlays, $egMapsGoogleOverlLoaded, $wgJsMimeType;
 		
 		// Check to see if there is an overlays control.
@@ -284,22 +299,33 @@ class MapsGoogleMaps {
 		// If the overlays JS and CSS has not yet loaded, do it.
 		if ( empty( $egMapsGoogleOverlLoaded ) ) {
 			$egMapsGoogleOverlLoaded = true;
-			MapsGoogleMaps::addOverlayCss( $output );
+			self::addOverlayCss( $parser );
 		}
 		
 		// Add the inputs for the overlays.
 		$addedOverlays = array();
 		$overlayHtml = '';
 		$onloadFunctions = array();
+		
 		foreach ( $overlays as $overlay => $isOn ) {
 			$overlay = strtolower( $overlay );
 			
 			if ( in_array( $overlay, $overlayNames ) ) {
-				if ( ! in_array( $overlay, $addedOverlays ) ) {
+				if ( !in_array( $overlay, $addedOverlays ) ) {
 					$addedOverlays[] = $overlay;
 					$label = wfMsg( 'maps_' . $overlay );
 					$urlNr = self::$overlayData[$overlay];
-					$overlayHtml .= "<input id='$mapName-overlay-box-$overlay' name='$mapName-overlay-box' type='checkbox' onclick='switchGLayer(GMaps[\"$mapName\"], this.checked, GOverlays[$urlNr])' /> $label <br />";
+					
+					$overlayHtml .= Html::input(
+						"$mapName-overlay-box",
+						null,
+						'checkbox',
+						array(
+							'id' => "$mapName-overlay-box-$overlay",
+							'onclick' => "switchGLayer(GMaps['$mapName'], this.checked, GOverlays[$urlNr])"
+						)
+					) . htmlspecialchars( $label ) . '<br />' ;
+					
 					if ( $isOn ) {
 						$onloadFunctions[] = "addOnloadHook( function() { initiateGOverlay('$mapName-overlay-box-$overlay', '$mapName', $urlNr) } );";
 					}
@@ -307,29 +333,37 @@ class MapsGoogleMaps {
 			}
 		}
 		
-		$output .= <<<EOT
-<script type='$wgJsMimeType'>var timer_$mapName;</script>		
-<div class='outer-more' id='$mapName-outer-more'><form action=''><div class='more-box' id='$mapName-more-box'>
-$overlayHtml
-</div></form></div>		
-EOT;
-
-		if ( count( $onloadFunctions ) > 0 ) {
-			$output .= "<script type='$wgJsMimeType'>" . implode( "\n", $onloadFunctions ) . '</script>';
-		}
+		$output .= Html::rawElement(
+			'div',
+			array(
+				'class' => 'outer-more',
+				'id' => htmlspecialchars( "$mapName-outer-more" )
+			),
+			'<form action="">' .
+			Html::rawElement(
+				'div',
+				array(
+					'class' => 'more-box',
+					'id' => htmlspecialchars( "$mapName-more-box" )
+				),
+				$overlayHtml
+			) .
+			'</form>'
+		);
+		
+		$parser->getOutput()->addHeadItem(
+			Html::inlineScript( 'var timer_' . htmlspecialchars( $mapName ) . ';' . implode( "\n", $onloadFunctions ) )
+		);
 	}
 	
 	/**
 	 * Add CSS for the overlays. 
 	 * 
-	 * @param $output
-	 * 
-	 * TODO
+	 * @param Parser $parser
 	 */
-	private static function addOverlayCss( &$output ) {
-		$css = <<<END
-
-<style type="text/css">
+	private static function addOverlayCss( Parser &$parser ) {
+		$parser->getOutput()->addHeadItem(
+			Html::inlineStyle( <<<EOT
 .inner-more {
 	text-align:center;
 	font-size:12px;
@@ -366,12 +400,10 @@ EOT;
 .more-box.highlight {
 	width:119px;
 	border-width:2px;
-}	
-</style>	
-
-END;
-
-	$output .= preg_replace( '/\s+/m', ' ', $css );
+}
+EOT
+			)
+		);
 	}
 	
 }

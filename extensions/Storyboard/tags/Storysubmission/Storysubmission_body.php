@@ -55,14 +55,15 @@ class TagStorysubmission {
 		$maxLen = array_key_exists( 'maxlength', $args ) && is_int( $args['maxlength'] ) ? $args['maxlength'] : $egStoryboardMaxStoryLen;
 		$minLen = array_key_exists( 'minlength', $args ) && is_int( $args['minlength'] ) ? $args['minlength'] : $egStoryboardMinStoryLen;
 		
+		efStoryboardAddJSLocalisation( $parser );
+		
 		// Loading a seperate JS file would be overkill for just these 3 lines, and be bad for performance.
 		$parser->getOutput()->addHeadItem(
-			<<<EOT
-			<link rel="stylesheet" href="$egStoryboardScriptPath/storyboard.css?$wgStyleVersion" />
-			<script type="$wgJsMimeType" src="$egStoryboardScriptPath/storyboard.js?$wgStyleVersion"></script>
-			<script type="$wgJsMimeType" src="$wgStylePath/common/jquery.min.js?$wgStyleVersion"></script>
-			<script type="$wgJsMimeType" src="$egStoryboardScriptPath/jquery/jquery.validate.js?$wgStyleVersion"></script>
-<script type="$wgJsMimeType"> /*<![CDATA[*/
+			Html::linkedStyle( "$egStoryboardScriptPath/storyboard.css?$wgStyleVersion" ) .		
+			Html::linkedScript( "$egStoryboardScriptPath/storyboard.js?$wgStyleVersion" ) .						
+			Html::linkedScript( "$wgStylePath/common/jquery.min.js?$wgStyleVersion" ) .		
+			Html::linkedScript( "$egStoryboardScriptPath/jquery/jquery.validate.js?$wgStyleVersion" ) .
+			Html::inlineScript( <<<EOT
 addOnloadHook( function() { 
 	document.getElementById( 'storysubmission-button' ).disabled = true;
 	stbValidateStory( document.getElementById('storytext'), $minLen, $maxLen, 'storysubmission-charlimitinfo', 'storysubmission-button' )
@@ -71,13 +72,13 @@ jQuery(document).ready(function() {
 	jQuery("#storyform").validate({
 		messages: {
 			storytitle: {
-				remote: jQuery.validator.format("<b>{0}</b> is already taken, please choose a different title.") // TODO: i18n
+				remote: jQuery.validator.format( stbMsg( 'storyboard-alreadyexistschange' ) )
 			}
 		}
 	});		
-});	
-/*]]>*/ </script>			
+});			
 EOT
+			)		
 		);
 		
 		$fieldSize = 50;

@@ -501,6 +501,9 @@ optional = grouppermissions-display
 
 Groups Sidebar
 
+Hide Namespace
+descmsg = hidens-desc
+
 Honeypot Integration
 descmsg = honeypot-desc
 
@@ -1081,7 +1084,7 @@ Storyboard
 aliasfile = Storyboard/Storyboard.alias.php
 
 Strategy Wiki - Active Task Forces
-descmsg = activetaskforces
+descmsg = active-task-forces-desc
 file = StrategyWiki/ActiveTaskForces/ActiveTaskForces.i18n.php
 
 String Functions
@@ -1335,6 +1338,10 @@ file = UsabilityInitiative/WikiEditor/Modules/Publish/Publish.i18n.php
 Usability Initiative - Wikieditor Template Editor
 id = ext-ui-wikieditor-templateeditor
 file = UsabilityInitiative/WikiEditor/Modules/TemplateEditor/TemplateEditor.i18n.php
+
+Usability Initiative - Wikieditor Templates
+id = ext-ui-wikieditor-templates
+file = UsabilityInitiative/WikiEditor/Modules/Templates/Templates.i18n.php
 
 Usability Initiative - Wikieditor TOC
 id = ext-ui-wikieditor-toc

@@ -625,12 +625,6 @@ $wgDBts2schema      = 'public';
 /** To override default SQLite data directory ($docroot/../data) */
 $wgSQLiteDataDir    = '';
 
-/** Default directory mode for SQLite data directory on creation.
- *  Note that this is different from the default directory mode used
- *  elsewhere.
- */
-$wgSQLiteDataDirMode = 0700;
-
 /**
  * Make all database connections secretly go to localhost. Fool the load balancer
  * thinking there is an arbitrarily large cluster of servers to connect to.
@@ -1683,7 +1677,7 @@ $wgCacheEpoch = '20030516000000';
  * to ensure that client-side caches do not keep obsolete copies of global
  * styles.
  */
-$wgStyleVersion = '275';
+$wgStyleVersion = '277';
 
 
 # Server-side caching:
@@ -2926,6 +2920,26 @@ $wgUseSiteJs = true;
 $wgUseSiteCss = true;
 
 /**
+ * Version of jQuery to use. Currently available versions are 1.3.2 and 1.4.2 .
+ * Other versions can be installed by hand at your own risk, see
+ * http://www.mediawiki.org/wiki/Manual:$wgJQueryVersion
+ */
+$wgJQueryVersion = '1.4.2';
+
+/**
+ * Use a minified version of jQuery. If enabled, jquery-versionnumber.min.js
+ * will be used instead of jquery-versionnumber.js . It is recommended you only
+ * disable this for debugging purposes.
+ */
+$wgJQueryMinified = true;
+
+/**
+ * Include jQuery on every page served by MediaWiki. You can disable this if
+ * your user/site-wide JS doesn't need it and you want to save bandwidth.
+ */
+$wgJQueryOnEveryPage = true;
+
+/**
  * Filter for Special:Randompage. Part of a WHERE clause
  * @deprecated as of 1.16, use the SpecialRandomGetRandomTitle hook
 */
@@ -3995,6 +4009,7 @@ $wgAPICacheHelpTimeout = 60*60;
  */
 $wgParserTestFiles = array(
 	"$IP/maintenance/parserTests.txt",
+	"$IP/maintenance/ExtraParserTests.txt"
 );
 
 /**

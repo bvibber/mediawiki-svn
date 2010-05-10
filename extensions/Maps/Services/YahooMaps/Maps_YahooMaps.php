@@ -134,7 +134,7 @@ class MapsYahooMaps {
 	 * 
 	 * @return string
 	 */
-	public static function setYMapType( &$type ) {
+	public static function setYMapType( &$type, $name, array $parameters ) {
 		$type = self::$mapTypes[ $type ];
 	}
 	
@@ -145,26 +145,37 @@ class MapsYahooMaps {
 	 * 
 	 * @return array
 	 */
-	public static function setYMapTypes( array &$types ) {
+	public static function setYMapTypes( array &$types, $name, array $parameters ) {
 		for ( $i = count( $types ) - 1; $i >= 0; $i-- ) {
 			$types[$i] = self::$mapTypes[ $types[$i] ];
 		}
 	}
 
 	/**
-	 * Add references to the Yahoo! Maps API and required JS file to the provided output 
+	 * Loads the Yahoo! Maps API and required JS files.
 	 *
-	 * @param string $output
+	 * @param mixed $parserOrOut
 	 */
-	public static function addYMapDependencies( &$output ) {
+	public static function addYMapDependencies( &$parserOrOut ) {
 		global $wgJsMimeType;
 		global $egYahooMapsKey, $egMapsScriptPath, $egYahooMapsOnThisPage, $egMapsStyleVersion, $egMapsJsExt;
 		
 		if ( empty( $egYahooMapsOnThisPage ) ) {
 			$egYahooMapsOnThisPage = 0;
 
-			$output .= "<script type='$wgJsMimeType' src='http://api.maps.yahoo.com/ajaxymap?v=3.8&amp;appid=$egYahooMapsKey'></script>
-			<script type='$wgJsMimeType' src='$egMapsScriptPath/Services/YahooMaps/YahooMapFunctions{$egMapsJsExt}?$egMapsStyleVersion'></script>";
+			if ( $parserOrOut instanceof Parser ) {
+				$parser = $parserOrOut;
+				
+				$parser->getOutput()->addHeadItem( 
+					Html::linkedScript( "http://api.maps.yahoo.com/ajaxymap?v=3.8&appid=$egYahooMapsKey" ) .		
+					Html::linkedScript( "$egMapsScriptPath/Services/YahooMaps/YahooMapFunctions{$egMapsJsExt}?$egMapsStyleVersion" )						
+				);				
+			}
+			else if ( $parserOrOut instanceof OutputPage ) {
+				$out = $parserOrOut;
+				MapsMapper::addScriptFile( $out, "http://api.maps.yahoo.com/ajaxymap?v=3.8&appid=$egYahooMapsKey" );
+				$out->addScriptFile( "$egMapsScriptPath/Services/YahooMaps/YahooMapFunctions{$egMapsJsExt}?$egMapsStyleVersion" );
+			}			
 		}
 	}
 	

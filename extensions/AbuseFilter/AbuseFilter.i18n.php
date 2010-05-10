@@ -831,6 +831,9 @@ $messages['am'] = array(
  */
 $messages['an'] = array(
 	'abusefilter-list-edit' => 'Editar',
+	'abusefilter-edit-warn-actions' => 'Accions:',
+	'abusefilter-edit-builder-vars-action' => 'Acción',
+	'abusefilter-history-actions' => 'Accions',
 	'abusefilter-revert-filter' => 'Filtro:',
 );
 
@@ -12544,22 +12547,51 @@ $messages['ka'] = array(
 	'abusefilter-exception-notenoughargs' => 'არ არის საკმარისი არგუმენრი $2, გამოძახებული პოზიციაში $1.
 ველოდებით $3 {{PLURAL:$3|არგუმენტი|არგუმენტს}}, მიღებულია $4',
 	'abusefilter-exception-regexfailure' => 'შეცდომა რეგულარულ გამოსახულებაში "$3" $1 პოზიციაში: "$2"',
+	'abusefilter-action-tag' => 'მინიშნება',
+	'abusefilter-action-throttle' => 'სემცირება',
 	'abusefilter-action-warn' => 'გაფრთხილება',
+	'abusefilter-action-blockautopromote' => 'დაბლოკეთ ავტოგაზრდა',
+	'abusefilter-action-block' => 'დაბლოკეთ',
 	'abusefilter-action-degroup' => 'ჯგუფიდან წაშლილები',
 	'abusefilter-action-rangeblock' => 'დიაპაზონის ბლოკირება',
+	'abusefilter-action-disallow' => 'გათიშვა',
+	'abusefilter-revert-title' => 'გააუქმეთ ფილტრის მიერ გაკეთებული ყველა ცვლილება $1',
 	'abusefilter-revert-filter' => 'ფილტრი:',
 	'abusefilter-test-submit' => 'შემოწმება',
 	'abusefilter-test-load' => 'ატვირთვა',
 	'abusefilter-test-user' => 'მომხმარებლის ცვლილებები:',
 	'abusefilter-changeslist-examine' => 'ნახვა',
+	'abusefilter-examine' => 'ცალკეული რედაქტირებების ხილვა',
+	'abusefilter-examine-legend' => 'არჩეული ცვლილებები',
+	'abusefilter-examine-diff' => 'ცვლილების URL:',
 	'abusefilter-examine-user' => 'მომხმარებელი:',
 	'abusefilter-examine-title' => 'გვერდის სათაური:',
 	'abusefilter-examine-submit' => 'ძიება',
+	'abusefilter-examine-vars' => 'ცვალებადები, შექმნილი ამ ცვლილებისთვის',
+	'abusefilter-examine-test' => 'შეამოწმეთ ეს ცვლილებები ფილტრში',
+	'abusefilter-examine-test-button' => 'შეამოწმეთ ფილრი',
+	'abusefilter-examine-match' => 'ეს ცვლილება ექვემდებარება ფილტრს.',
+	'abusefilter-examine-nomatch' => 'ეს ცვლილება ვარდება ფილტრის მოქმედების ქვეშ.',
+	'abusefilter-examine-syntaxerror' => 'ფილტრს აქვს არასწორი სინტაქსი',
+	'abusefilter-examine-notfound' => 'შეტანილი ცვლილება ვერ მოიპოვება.',
+	'abusefilter-examine-incompatible' => 'ბოროტად გამოყენების ფილტრი ვერ მიიღებს თქვენს შესწორებას',
 	'abusefilter-examine-noresults' => 'ძიებაში თქვენს მიერ შეყვანილი პარამეტრებით ვერაფერი მოიძებნა.',
 	'abusefilter-topnav-home' => 'დასაწყისში',
+	'abusefilter-topnav-test' => 'საპაკეტო ტესტირება',
+	'abusefilter-topnav-examine' => 'ბოლო ცვლილებების შესწავლა',
+	'abusefilter-topnav-log' => 'ბოროტად გამოყენების ჟურნალი',
+	'abusefilter-topnav-tools' => 'გაუმჯობესების ხელსაწყოები',
+	'abusefilter-topnav-import' => 'ფილტრის იმპორტი',
+	'abusefilter-log-name' => 'ბოროტად გამოყენების ფილტრის ჟურნალი',
+	'abusefilter-log-header' => 'ამ ჟურნალში იწერება ფილტრებში შემოსული ცვლილებები
+იხილეთ დამატებითი ინფორმაცია ფილტრის ბოლო ცვლილებების [[Special:AbuseFilter/history|სიაში]].',
+	'abusefilter-log-entry-modify' => 'შეცვალა $1 ($2)',
 	'abusefilter-diff-title' => 'განსხვავება ვერსიებს შორის',
 	'abusefilter-diff-item' => 'ელემენტი',
+	'abusefilter-diff-version' => 'ვერსია $1, $2',
 	'abusefilter-diff-info' => 'ძირითადი ინფორმაცია',
+	'abusefilter-diff-pattern' => 'ფილტრის პირობები',
+	'abusefilter-diff-invalid' => 'ვერ მიიღებთ მოთხოვნილ ვერსიას',
 	'abusefilter-import-intro' => 'თქვენ შეგიძლიათ გამოიყენოთეს ინტერფეისი სხვა ვიკებიდან ფილტრების იმპორტირებისათვის.
 ვიკის წყაროში, დააჭირეთ "{{int:abusefilter-edit-export}}" რედაქტირების ინტერფეისის "{{int:abusefilter-tools-subtitle}}" განყოფილებაში.
 დააკოპირეთ ტექსტური ველის შიგთავსი, გადმოიტანეთ ამ გვერდზე და დააჭირეთ "{{int:abusefilter-import-submit}}".',
@@ -12777,6 +12809,7 @@ $messages['kn'] = array(
 );
 
 /** Korean (한국어)
+ * @author Albamhandae
  * @author Klutzy
  * @author Kwj2772
  * @author Pakman
@@ -12796,7 +12829,7 @@ $messages['ko'] = array(
 문제가 된 필터 규칙은 다음과 같습니다: $1",
 	'abusefilter-disallowed' => '이러한 행위는 자동적으로 해로운 것으로 간주되었습니다.
 따라서 이 행위는 불허되었습니다.
-당신의 편집이 생산적이라고 여기신다면, 관리자에게 문의하여 무엇을 하려 하는 지 알려 주세요.
+당신의 편집이 생산적이라고 여기신다면, 관리자에게 문의하여 무엇을 하려 하는지 알려 주세요.
 당신의 행위와 일치하는 규칙을 가진 필터의 간단한 설명은 다음과 같습니다: $1',
 	'abusefilter-blocked-display' => '이러한 행위는 해로운 것으로 간주되어 더 이상 행하지 못하게 금지되었습니다.
 그리고 {{SITENAME}}을(를) 보호하기 위해, 당신의 계정과 연관된 IP 주소가 차단되었습니다.
@@ -12811,7 +12844,7 @@ $messages['ko'] = array(
 문제가 된 필터 규칙은 다음과 같습니다: $1',
 	'abusefilter-blocker' => '부정행위 방지 필터',
 	'abusefilter-blockreason' => '부정행위 방지 필터에 의해 자동적으로 차단되었습니다.
-일치하는 규착에 대한 설명: $1',
+일치하는 규칙에 대한 설명: $1',
 	'abusefilter-degroupreason' => '부정행위 방지 필터에 의해 자동적으로 권한이 해제되었습니다.
 규칙 설명: $1',
 	'abusefilter-accountreserved' => '이 계정은 부정행위 방지 필터 이용을 위해 사용되고 있습니다.',
@@ -13011,7 +13044,7 @@ $messages['ko'] = array(
 	'abusefilter-edit-builder-funcs-rcount' => '문자열 Y 안의 정규 표현식으로 표현된 X의 반복 횟수 (rcount)',
 	'abusefilter-edit-builder-funcs-rmwhitespace' => '공백 제거 (rmwhitespace)',
 	'abusefilter-edit-builder-funcs-rmspecials' => '특수 문자를 제거 (rmspecials)',
-	'abusefilter-edit-builder-funcs-ip_in_range' => 'IP가 대역 안에 있는 지 여부 (ip_in_range)',
+	'abusefilter-edit-builder-funcs-ip_in_range' => 'IP가 대역 안에 있는지 여부 (ip_in_range)',
 	'abusefilter-edit-builder-funcs-contains-any' => '문자열에서 여러 하위 문자열 찾기 (contains_any)',
 	'abusefilter-edit-builder-funcs-substr' => '하위 문자열',
 	'abusefilter-edit-builder-funcs-strpos' => '문자열 내의 하위 문자열의 위치 (strpos)',
@@ -13095,6 +13128,8 @@ $messages['ko'] = array(
 $3개의 변수가 있어야 하지만 $4개의 변수가 있습니다.',
 	'abusefilter-exception-regexfailure' => '$1번째 글자의 "$3" 정규 표현식에서 오류 발생: "$2"',
 	'abusefilter-exception-overridebuiltin' => '$1번째 문자에서 소프트웨어에 내장된 변수를 덮는 "$2" 변수가 있습니다.',
+	'abusefilter-exception-outofbounds' => '$1번째 문자에서 존재하지 않는 목록 항목 $2(목록 길이 = $3)를 요구하고 있습니다.',
+	'abusefilter-exception-notlist' => '$1번째 문자에서 배열이 아닌 배열 항목을 요구하고 있습니다.',
 	'abusefilter-action-tag' => '태그',
 	'abusefilter-action-throttle' => '속도 제한',
 	'abusefilter-action-warn' => '경고',
@@ -13111,8 +13146,14 @@ $3개의 변수가 있어야 하지만 $4개의 변수가 있습니다.',
 	'abusefilter-revert-search-legend' => '부정 행위 방지 필터의 동작 중 되돌릴 동작 선택하기',
 	'abusefilter-revert-periodstart' => '시작 시간:',
 	'abusefilter-revert-periodend' => '마지막 시간:',
+	'abusefilter-revert-search' => '동작 선택하기',
 	'abusefilter-revert-filter' => '필터:',
+	'abusefilter-revert-preview-intro' => '다음은 이 동작을 통해 복구될 부정 행위 방지 필터의 동작의 목록입니다.
+주의를 기울여 검토한 후에 "확인" 버튼을 클릭하십시오.',
 	'abusefilter-revert-confirm' => '확인',
+	'abusefilter-revert-success' => '[[Special:AbuseFilter/$1|필터 $1]]에 의해 취해진 모든 조치를 되돌렸습니다.',
+	'abusefilter-revert-reason' => '필터 $1에 의해 취해진 모든 조치를 자동으로 되돌림.
+이유: $2',
 	'abusefilter-revert-reasonfield' => '되돌리는 이유:',
 	'abusefilter-test' => '과거의 편집에 대해 필터 시험하기',
 	'abusefilter-test-intro' => '이 페이지에서 과거의 편집 $1개에 대해 아래 상자에 입력한 필터를 시험할 수 있습니다.
@@ -13129,12 +13170,22 @@ $3개의 변수가 있어야 하지만 $4개의 변수가 있습니다.',
 	'abusefilter-test-syntaxerr' => '당신이 입력한 구문에 오류가 있습니다.
 "구문 확인" 버튼을 누르면 자세한 설명을 받을 수 있습니다.',
 	'abusefilter-changeslist-examine' => '검사',
+	'abusefilter-examine' => '특정 편집을 검토',
+	'abusefilter-examine-intro' => '이 문서에서 각각의 편집에 대해 부정 행위 방지 필터가 생성한 변수를 검사하고 필터에 대해 시험해볼 수 있습니다.',
+	'abusefilter-examine-legend' => '편집 선택하기',
 	'abusefilter-examine-diff' => '차이 URL:',
 	'abusefilter-examine-user' => '사용자:',
 	'abusefilter-examine-title' => '문서 제목:',
 	'abusefilter-examine-submit' => '찾기',
+	'abusefilter-examine-vars' => '이 편집에 대해 생성된 변수',
+	'abusefilter-examine-test' => '이 편집을 필터에 대해 시험하기',
 	'abusefilter-examine-test-button' => '필터 시험',
+	'abusefilter-examine-match' => '이 편집이 필터의 조건에 일치합니다.',
+	'abusefilter-examine-nomatch' => '이 편집이 필터의 조건과 일치하지 않습니다.',
 	'abusefilter-examine-syntaxerror' => '이 필터의 필터 규칙 문법이 잘못되었습니다.',
+	'abusefilter-examine-notfound' => '당신이 요청한 편집을 찾을 수 없습니다.',
+	'abusefilter-examine-incompatible' => '당신이 요청한 편집은 부정 행위 방지 필터에서 지원하지 않습니다.',
+	'abusefilter-examine-noresults' => '당신이 제시한 검색 변수에서 결과가 없습니다.',
 	'abusefilter-topnav' => "'''부정 행위 방지 필터 둘러보기'''",
 	'abusefilter-topnav-home' => '홈',
 	'abusefilter-topnav-test' => '필터 시험하기',
@@ -15378,6 +15429,7 @@ $messages['ml'] = array(
 	'abusefilter-edit-builder-vars-old-text-stripped' => 'പഴയ താളിലെ, എന്തെങ്കിലും മാർക്കപ്പുകൾ ഉണ്ടെങ്കിൽ അവ നീക്കിയ ശേഷമുള്ള, എഴുത്ത്',
 	'abusefilter-edit-builder-vars-old-links' => 'തിരുത്തുന്നതിനു മുമ്പ് താളിലുണ്ടായിരുന്ന കണ്ണികൾ',
 	'abusefilter-edit-builder-vars-minor-edit' => 'തിരുത്തൽ ചെറുതിരുത്തൽ ആയി അടയാളപ്പെടുത്തണോ?',
+	'abusefilter-edit-builder-vars-file-sha1' => 'പ്രമാണത്തിന്റെ ഉള്ളടക്കത്തിന്റെ SHA1 ഹാഷ്',
 	'abusefilter-filter-log' => 'അരിപ്പ നടത്തിയ സമീപകാല മാറ്റങ്ങൾ',
 	'abusefilter-history' => '"#$1" ദുരുപയോഗ അരിപ്പയുടെ മാറ്റങ്ങളുടെ ചരിത്രം',
 	'abusefilter-history-foruser' => '$1 വരുത്തിയ മാറ്റങ്ങൾ',
@@ -18433,7 +18485,7 @@ Etiquetas devem ser curtas e não devem conter caracteres especiais.',
 	'abusefilter-history-select-user' => 'Utilizador:',
 	'abusefilter-history-select-submit' => 'Melhorar',
 	'abusefilter-history-diff' => 'Alterações',
-	'abusefilter-history-error-hidden' => 'O filtro que requisitou está ocultado e não pode ver o seu histórico.',
+	'abusefilter-history-error-hidden' => 'O filtro que solicitou está ocultado e não pode ver o seu histórico.',
 	'abusefilter-exception-unexpectedatend' => '"$2" inesperado na posição $1.',
 	'abusefilter-exception-expectednotfound' => 'Código $2, esperado na posição $1, não foi encontrado (foi encontrado $3 $4).',
 	'abusefilter-exception-unrecognisedkeyword' => 'Palavra-chave $2 não reconhecida na posição $1.',
@@ -18503,8 +18555,8 @@ Para ver uma explicação completa clique o botão "Verificar sintaxe".',
 	'abusefilter-examine-match' => 'O filtro coincide com esta alteração.',
 	'abusefilter-examine-nomatch' => 'O filtro não coincide com esta alteração.',
 	'abusefilter-examine-syntaxerror' => 'O filtro tem sintaxe inválida',
-	'abusefilter-examine-notfound' => 'A alteração requisitada não foi encontrada.',
-	'abusefilter-examine-incompatible' => 'A alteração requisitada não é suportada pelo Filtro de Abusos',
+	'abusefilter-examine-notfound' => 'A alteração solicitada não foi encontrada.',
+	'abusefilter-examine-incompatible' => 'A alteração solicitada não é suportada pelo Filtro de Abusos',
 	'abusefilter-examine-noresults' => 'Não foram encontrados resultados para os parâmetros de pesquisa fornecidos.',
 	'abusefilter-topnav' => "'''Navegação no Filtro de Abusos'''",
 	'abusefilter-topnav-home' => 'Início',
@@ -24113,6 +24165,7 @@ $messages['zh-cn'] = array(
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
+ * @author Bbqyee
  * @author Bencmq
  * @author Chenzw
  * @author Fantasticfears
@@ -24314,6 +24367,7 @@ $messages['zh-hans'] = array(
 	'abusefilter-edit-builder-misc-in' => '包含字符串（in）',
 	'abusefilter-edit-builder-misc-like' => '匹配模式（like）',
 	'abusefilter-edit-builder-misc-rlike' => '匹配正则表达式（rlike）',
+	'abusefilter-edit-builder-misc-irlike' => '正则匹配, 区分大小写(irlike).',
 	'abusefilter-edit-builder-misc-contains' => '左字符串包含右字符串（contains）',
 	'abusefilter-edit-builder-misc-stringlit' => '字符串（""）',
 	'abusefilter-edit-builder-misc-tern' => '三元运算符（X ? Y : Z）',

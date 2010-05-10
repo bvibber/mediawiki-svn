@@ -350,7 +350,7 @@ Gwiriekait ez oc'h aotreet oberañ war ar wiki-se hag e touj ho oberoù gant an 
 	'crosswikiunblock' => 'Distankañ un implijer war ur wiki all',
 	'crosswikiunblock-header' => "Ar bajenn-mañ a aotre da zistankañ un implijer war wikioù all.
 Gwiriekait ez oc'h aotreet oberañ war ar wiki-se hag e touj ho oberoù ouzh an holl reolennoù.",
-	'crosswikiunblock-user' => "Anv an implijer, chomlec'h IP pe an ID da stankañ hag ar wiki ho peus c'hoant tizhout :",
+	'crosswikiunblock-user' => "Anv an implijer, chomlec'h IP pe an ID da stankañ hag ar wiki hoc'h eus c'hoant tizhout :",
 	'crosswikiunblock-reason' => 'Abeg :',
 	'crosswikiunblock-submit' => 'Distankañ an implijer-mañ',
 	'crosswikiunblock-success' => "Distanket eo bet an implijer '''$1'''.
@@ -732,7 +732,7 @@ $messages['et'] = array(
 	'crosswikiblock-submit' => 'Blokeeri see kasutaja',
 	'crosswikiblock-anononly' => 'Blokeeri ainult anonüümseid kasutajaid',
 	'crosswikiblock-nocreate' => 'Takista konto loomist',
-	'crosswikiblock-autoblock' => 'Blokeeri automaatselt viimane IP-aadress, mida see kasutaja kasutas, ja ka järgnevad, mille alt ta võib proovida kaastööd teha.',
+	'crosswikiblock-autoblock' => 'Blokeeri automaatselt viimane IP-aadress, mida see kasutaja kasutas, ja ka järgnevad, mille alt ta võib proovida kaastööd teha',
 	'crosswikiblock-noemail' => 'Takista kasutajal e-kirjade saatmine',
 	'crosswikiunblock-reason' => 'Põhjus:',
 	'crosswikiunblock-submit' => 'Lõpeta kasutaja blokeering',

@@ -255,8 +255,8 @@ $messages['bg'] = array(
  */
 $messages['bn'] = array(
 	'quiz_desc' => 'কুইজ সৃষ্টির অনুমতি দেয়',
-	'quiz_addedPoints' => 'সঠিক উত্তরের জন্য পয়েন্ট(সমূহ) যোগ হয়েছে',
-	'quiz_cutoffPoints' => 'ভুল উত্তরের জন্য পয়েন্ট(সমূহ) বিয়োগ হয়েছে',
+	'quiz_addedPoints' => 'সঠিক উত্তরের জন্য {{PLURAL:$1|পয়েন্ট|পয়েন্টসমূহ}} যোগ হয়েছে',
+	'quiz_cutoffPoints' => 'ভুল উত্তরের জন্য {{PLURAL:$1|পয়েন্ট|পয়েন্টসমূহ}} বিয়োগ হয়েছে',
 	'quiz_ignoreCoef' => 'প্রশ্নগুলির সহগগুলি উপেক্ষা করা হোক',
 	'quiz_shuffle' => 'প্রশ্ন উলোটপালোট করো',
 	'quiz_colorRight' => 'সঠিক',
@@ -931,6 +931,7 @@ $messages['jv'] = array(
 /** Georgian (ქართული)
  * @author BRUTE
  * @author Malafaya
+ * @author გიორგიმელა
  */
 $messages['ka'] = array(
 	'quiz_colorRight' => 'სწორი',
@@ -938,7 +939,9 @@ $messages['ka'] = array(
 	'quiz_colorNA' => 'პასუხი არ არის',
 	'quiz_colorError' => 'სინტაქსური შეცდომა',
 	'quiz_correction' => 'გაგზავნა',
+	'quiz_score' => 'თქვენ შეაგროვეთ $1 {{PLURAL:$1|ქულა|ქულები}} $2-დან',
 	'quiz_points' => '$1 | $2 ქულა',
+	'quiz_reset' => 'გაუქმება',
 );
 
 /** Khmer (ភាសាខ្មែរ)

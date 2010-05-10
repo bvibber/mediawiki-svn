@@ -1598,7 +1598,7 @@ $messages['ps'] = array(
  */
 $messages['pt'] = array(
 	'replacetext' => 'Substituir texto',
-	'replacetext-desc' => "[[Special:ReplaceText|Página especial]] que permite a administradores fazer substituições globais de texto ''(string find-and-replace)'' em todas as páginas de conteúdo de uma wiki.",
+	'replacetext-desc' => "[[Special:ReplaceText|Página especial]] que permite que administradores façam substituições globais de texto ''(string find-and-replace)'' em todas as páginas de conteúdo de uma wiki",
 	'replacetext_docu' => 'Para substituir um texto por outro texto em todas as páginas desta wiki, introduza os dois textos e clique o botão "Substituir". Serão listadas as páginas que contêm o texto a substituir e poderá seleccionar em quais deseja proceder à substituição.
 O seu nome aparecerá no histórico dessas páginas como o utilizador responsável pelas alterações.',
 	'replacetext_originaltext' => 'Texto original:',
@@ -1615,7 +1615,7 @@ O seu nome aparecerá no histórico dessas páginas como o utilizador responsáv
 	'replacetext_choosepagesformove' => 'Substituir "$1" por "$2" {{PLURAL:$3|no nome da seguinte página|nos nomes das seguintes páginas}}:',
 	'replacetext_cannotmove' => '{{PLURAL:$1|A seguinte página não pode ser movida|As seguintes páginas não podem ser movidas}}:',
 	'replacetext_formovedpages' => 'Para páginas movidas:',
-	'replacetext_savemovedpages' => 'Gravar os títulos anteriores como redirecionamentos para os novos títulos',
+	'replacetext_savemovedpages' => 'Gravar os títulos anteriores como redireccionamentos para os novos títulos',
 	'replacetext_watchmovedpages' => 'Vigiar estas páginas',
 	'replacetext_invertselections' => 'Inverter selecções',
 	'replacetext_replace' => 'Substituir',
@@ -2040,9 +2040,7 @@ $messages['vi'] = array(
 	'replacetext_nomove' => 'Không tìm thấy trang nào với “$1” trong tên.',
 	'replacetext_nosuchcategory' => 'Không có thể loại với tên “$1”.',
 	'replacetext_return' => 'Trở lại biểu mẫu.',
-	'replacetext_warning' => 'Có $1 {{PLURAL:$1|trang|trang}} đã có chứa chuỗi thay thế, “$2”.
-Nếu bạn thực hiện thay thế này bạn sẽ không thể phân biệt sự thay thế của bạn với những chuỗi này.
-Tiếp tục thay thế chứ?',
+	'replacetext_warning' => "'''Cảnh báo:''' {{PLURAL:$1|Một trang|$1 trang}} trong lựa chọn đã có chứa chuỗi thay thế, “$2”. Nếu bạn thực hiện thay thế này bạn sẽ không thể phân biệt sự thay thế của bạn với những chuỗi này.",
 	'replacetext_blankwarning' => 'Vì chuỗi thay thế là khoảng trắng, tác vụ này sẽ không thể hồi lại được; tiếp tục?',
 	'replacetext_continue' => 'Tiếp tục',
 	'replacetext_cancel' => '(Bấm nút “Lùi” của trình duyệt để hủy tác vụ.)',

@@ -24,6 +24,21 @@ $messages['be-tarask'] = array(
 	'uploadwizard-desc' => 'Майстар загрузкі, распрацавацы па гранту Multimedia Usability',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'uploadwizard' => 'Ameiler enporzhiañ',
+	'uploadwizard-desc' => "Ameiler enporzhiañ, diorroet evit ar yalc'had Implijadusted Liesmedia",
+);
+
+/** Catalan (Català)
+ * @author Paucabot
+ */
+$messages['ca'] = array(
+	'uploadwizard' => 'Assistent de càrrega',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
@@ -118,6 +133,14 @@ $messages['nl'] = array(
 $messages['oc'] = array(
 	'uploadwizard' => "Assistent d'impòrt",
 	'uploadwizard-desc' => "Assistent d'impòrt, desvolopat per la subvencion Multimedia Usability",
+);
+
+/** Polish (Polski)
+ * @author Marcin Łukasz Kiejzik
+ */
+$messages['pl'] = array(
+	'uploadwizard' => 'Kreator przesyłania',
+	'uploadwizard-desc' => 'Kreator dodawania, opracowany dla nagrody użyteczności multimediów',
 );
 
 /** Piedmontese (Piemontèis)

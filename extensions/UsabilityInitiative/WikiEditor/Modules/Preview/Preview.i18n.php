@@ -123,11 +123,13 @@ $messages['bs'] = array(
 );
 
 /** Catalan (Català)
+ * @author Paucabot
  * @author Solde
  */
 $messages['ca'] = array(
 	'wikieditor-preview-tab' => 'Previsualització',
 	'wikieditor-preview-changes-tab' => 'Canvis',
+	'wikieditor-preview-loading' => 'Carregant ...',
 );
 
 /** Czech (Česky)
@@ -423,6 +425,7 @@ $messages['kn'] = array(
  * @author Kwj2772
  */
 $messages['ko'] = array(
+	'wikieditor-preview-preference' => '미리 보기 비교 활성화',
 	'wikieditor-preview-tab' => '미리 보기',
 	'wikieditor-preview-changes-tab' => '차이',
 	'wikieditor-preview-loading' => '불러오는 중...',
@@ -458,10 +461,14 @@ $messages['lb'] = array(
 );
 
 /** Latvian (Latviešu)
+ * @author Marozols
  * @author Papuass
  */
 $messages['lv'] = array(
-	'wikieditor-preview-loading' => 'Cits iemesls:',
+	'wikieditor-preview-preference' => "Ieslēgt ''side-by-side'' priekšskatu",
+	'wikieditor-preview-tab' => 'Pirmskats',
+	'wikieditor-preview-changes-tab' => 'Izmaiņas',
+	'wikieditor-preview-loading' => 'Ielādē…',
 );
 
 /** Macedonian (Македонски)
@@ -574,12 +581,13 @@ $messages['pt'] = array(
 );
 
 /** Brazilian Portuguese (Português do Brasil)
+ * @author 555
  * @author Hamilton Abreu
  * @author Heldergeovane
  * @author Luckas Blade
  */
 $messages['pt-br'] = array(
-	'wikieditor-preview-preference' => 'Habilitar a previsão lado a lado',
+	'wikieditor-preview-preference' => 'Habilitar a previsão lado-a-lado',
 	'wikieditor-preview-tab' => 'Previsão',
 	'wikieditor-preview-changes-tab' => 'Alterações',
 	'wikieditor-preview-loading' => 'Carregando...',

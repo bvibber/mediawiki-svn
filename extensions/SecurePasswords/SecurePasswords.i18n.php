@@ -176,6 +176,7 @@ $messages['dsb'] = array(
 );
 
 /** Greek (Ελληνικά)
+ * @author Crazymadlover
  * @author Dada
  * @author Omnipaedista
  * @author ZaDiak
@@ -183,7 +184,7 @@ $messages['dsb'] = array(
  */
 $messages['el'] = array(
 	'securepasswords-valid' => 'Ο κωδικός σας είναι ακατάλληλος ή πολύ μικρός. Πρέπει:',
-	'securepasswords-minlength' => 'να έχει τουλάχιστον $1 ((PLURAL:$1|χαρακτήρα|χαρακτήρες))',
+	'securepasswords-minlength' => 'να έχει τουλάχιστον $1 {{PLURAL:$1|χαρακτήρα|χαρακτήρες}}',
 	'securepasswords-lowercase' => 'να περιλαμβάνει τουλάχιστον 1 πεζό γράμμα',
 	'securepasswords-uppercase' => 'να περιλαμβάνει τουλάχιστον 1 κεφαλαίο γράμμα',
 	'securepasswords-digit' => 'περίληψη τουλάχιστον 1 ψηφίου',
@@ -610,11 +611,11 @@ $messages['pt'] = array(
 	'securepasswords-desc' => 'Cria resumos criptográficos das palavras-chave mais seguros e adiciona um verificador da solidez da palavra-chave',
 	'securepasswords-valid' => 'A sua palavra-chave é inválida ou demasiado curta.
 Tem de:',
-	'securepasswords-minlength' => 'ter pelo menos $1 {{PLURAL:$1|caracter|caracteres}} de comprimento',
+	'securepasswords-minlength' => 'ter pelo menos $1 {{PLURAL:$1|carácter|caracteres}} de comprimento',
 	'securepasswords-lowercase' => 'conter pelo menos 1 letra minúscula',
 	'securepasswords-uppercase' => 'conter pelo menos 1 letra maiúscula',
 	'securepasswords-digit' => 'conter pelo menos 1 dígito',
-	'securepasswords-special' => 'conter pelo menos 1 caracter especial (caracteres especiais são: $1)',
+	'securepasswords-special' => 'conter pelo menos 1 carácter especial (os caracteres especiais são: $1)',
 	'securepasswords-username' => 'ser diferente do seu nome de utilizador',
 	'securepasswords-word' => 'não ser uma palavra',
 );

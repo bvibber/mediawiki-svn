@@ -120,22 +120,34 @@ class MapsOpenLayers {
 	}
 	
 	/**
-	 * If this is the first open layers map on the page, load the API, styles and extra JS functions
+	 * If this is the first open layers map on the page, load the API, styles and extra JS functions.
 	 * 
-	 * @param string $output
+	 * @param mixed $parserOrOut
 	 */
-	public static function addOLDependencies( &$output ) {
+	public static function addOLDependencies( &$parserOrOut ) {
 		global $wgJsMimeType;
 		global $egOpenLayersOnThisPage, $egMapsStyleVersion, $egMapsJsExt, $egMapsScriptPath;
 		
 		if ( empty( $egOpenLayersOnThisPage ) ) {
 			$egOpenLayersOnThisPage = 0;
 			
-			$output .= "<link rel='stylesheet' href='$egMapsScriptPath/Services/OpenLayers/OpenLayers/theme/default/style.css' type='text/css' />
-			<script type='$wgJsMimeType' src='$egMapsScriptPath/Services/OpenLayers/OpenLayers/OpenLayers.js'></script>		
-			<script type='$wgJsMimeType' src='$egMapsScriptPath/Services/OpenLayers/OpenLayerFunctions{$egMapsJsExt}?$egMapsStyleVersion'></script>
-			<script type='$wgJsMimeType'>initOLSettings(200, 100);</script>\n";
-		}
+			if ( $parserOrOut instanceof Parser ) {
+				$parser = $parserOrOut;
+				
+				$parser->getOutput()->addHeadItem( 
+					Html::linkedStyle( "$egMapsScriptPath/Services/OpenLayers/OpenLayers/theme/default/style.css" ) .				
+					Html::linkedScript( "$egMapsScriptPath/Services/OpenLayers/OpenLayers/OpenLayers.js?$egMapsStyleVersion" ) .	
+					Html::linkedScript( "$egMapsScriptPath/Services/OpenLayers/OpenLayerFunctions{$egMapsJsExt}?$egMapsStyleVersion" ) .								
+					Html::inlineScript( 'initOLSettings(200, 100);' )
+				);				
+			}
+			else if ( $parserOrOut instanceof OutputPage ) {
+				$out = $parserOrOut;
+				$out->addStyle( "$egMapsScriptPath/Services/OpenLayers/OpenLayers/theme/default/style.css" );
+				$out->addScriptFile( "$egMapsScriptPath/Services/OpenLayers/OpenLayers/OpenLayers.js?$egMapsStyleVersion" );
+				$out->addScriptFile( "$egMapsScriptPath/Services/OpenLayers/OpenLayerFunctions{$egMapsJsExt}?$egMapsStyleVersion" );
+			}			
+		}			
 	}
 		
 	/**
@@ -184,7 +196,7 @@ class MapsOpenLayers {
 	 * 
 	 * @param array $layers
 	 */
-	public static function unpackLayerGroups( array &$layers ) {
+	public static function unpackLayerGroups( array &$layers, $name, array $parameters ) {
 		global $egMapsOLLayerGroups;
 		
 		$unpacked = array();

@@ -138,8 +138,10 @@ $messages['am'] = array(
  * @author Remember the dot
  */
 $messages['an'] = array(
-	'dt_viewxml_namespaces' => 'Espazios de nombres',
+	'dt_viewxml_namespaces' => 'Espacios de nombres',
+	'dt_xml_namespace' => 'Espacio de nombres',
 	'dt_xml_page' => 'Pachina',
+	'dt_xml_template' => 'Plantilla',
 	'dt_xml_name' => 'Nombre',
 );
 

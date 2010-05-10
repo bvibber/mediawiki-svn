@@ -388,6 +388,15 @@ $messages['lt'] = array(
 	'wikieditor-toc-hide' => 'Slėpti turinį',
 );
 
+/** Latvian (Latviešu)
+ * @author Marozols
+ */
+$messages['lv'] = array(
+	'wikieditor-toc-preference' => 'Ieslēgt satura rādītāju ar navigācijas iespējām',
+	'wikieditor-toc-show' => 'Parādīt satura rādītāju',
+	'wikieditor-toc-hide' => 'Paslēpt satura rādītāju',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

@@ -1034,6 +1034,7 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Malafaya
  */
 $messages['pt'] = array(
@@ -1041,7 +1042,7 @@ $messages['pt'] = array(
 	'errorhandler-errors' => 'Erros:',
 	'errorhandler-error-fatal' => 'Erro fatal',
 	'errorhandler-error-warning' => 'Aviso',
-	'errorhandler-error-parse' => 'Erro do analisador parser',
+	'errorhandler-error-parse' => 'Erro do analisador sintáctico',
 	'errorhandler-error-notice' => 'Nota',
 	'errorhandler-error-deprecated' => 'Obsoleto',
 	'errorhandler-error-core-error' => 'Erro do núcleo',

@@ -49,7 +49,7 @@ final class MapsGoogleMapsDispMap extends MapsBaseMap {
 	public function doMapServiceLoad() {
 		global $egGoogleMapsOnThisPage;
 		
-		MapsGoogleMaps::addGMapDependencies( $this->output );
+		MapsGoogleMaps::addGMapDependencies( $this->parser );
 		$egGoogleMapsOnThisPage++;
 		
 		$this->elementNr = $egGoogleMapsOnThisPage;
@@ -58,12 +58,12 @@ final class MapsGoogleMapsDispMap extends MapsBaseMap {
 	/**
 	 * @see MapsBaseMap::addSpecificMapHTML()
 	 */
-	public function addSpecificMapHTML( Parser $parser ) {
+	public function addSpecificMapHTML() {
 		global $egMapsGoogleMapsPrefix, $egGoogleMapsOnThisPage;
 		
 		$mapName = $egMapsGoogleMapsPrefix . '_' . $egGoogleMapsOnThisPage;
 		
-		MapsGoogleMaps::addOverlayOutput( $this->output, $mapName, $this->overlays, $this->controls );
+		MapsGoogleMaps::addOverlayOutput( $this->output, $this->parser, $mapName, $this->overlays, $this->controls );
 		
 		$this->output .= Html::element(
 			'div',
@@ -74,7 +74,7 @@ final class MapsGoogleMapsDispMap extends MapsBaseMap {
 			wfMsg( 'maps-loading-map' )
 		);
 		
-		$parser->getOutput()->addHeadItem(
+		$this->parser->getOutput()->addHeadItem(
 			Html::inlineScript( <<<EOT
 addOnloadHook(
 	function() {

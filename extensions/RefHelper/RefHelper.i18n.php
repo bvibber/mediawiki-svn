@@ -88,6 +88,13 @@ $messages['af'] = array(
 U kan die [[Special:RefHelper|verwysing handmatig byvoeg]] of [[Special:RefSearch|na 'n citaat soek om by te voeg]].",
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'refhelper-create' => 'Creyar',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by

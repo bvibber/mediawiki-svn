@@ -21,7 +21,6 @@ final class SMYahooMapsFormInput extends SMFormInput {
 	
 	/**
 	 * @see MapsMapFeature::setMapSettings()
-	 *
 	 */
 	protected function setMapSettings() {
 		global $egMapsYahooMapsZoom, $egMapsYahooMapsPrefix;
@@ -36,26 +35,25 @@ final class SMYahooMapsFormInput extends SMFormInput {
 	
 	/**
 	 * @see MapsMapFeature::addFormDependencies()
-	 *   
 	 */
 	protected function addFormDependencies() {
-		global $wgJsMimeType;
+		global $wgOut, $wgParser;
 		global $smgScriptPath, $smgYahooFormsOnThisPage, $smgStyleVersion, $egMapsJsExt;
 		
-		MapsYahooMaps::addYMapDependencies( $this->output );
+		MapsYahooMaps::addYMapDependencies( $wgParser );
 		
 		if ( empty( $smgYahooFormsOnThisPage ) ) {
 			$smgYahooFormsOnThisPage = 0;
-			$this->output .= "<script type='$wgJsMimeType' src='$smgScriptPath/YahooMaps/SM_YahooMapsFunctions{$egMapsJsExt}?$smgStyleVersion'></script>";
+			
+			$wgOut->addScriptFile( "$smgScriptPath/Services/YahooMaps/SM_YahooMapsFunctions{$egMapsJsExt}?$smgStyleVersion" );
 		}
 	}
 	
 	/**
 	 * @see MapsMapFeature::doMapServiceLoad()
-	 *
 	 */
 	protected function doMapServiceLoad() {
-		global $egYahooMapsOnThisPage, $smgYahooFormsOnThisPage;
+		global $egYahooMapsOnThisPage, $smgYahooFormsOnThisPage, $egMapsYahooMapsPrefix;
 		
 		self::addFormDependencies();
 		
@@ -63,13 +61,13 @@ final class SMYahooMapsFormInput extends SMFormInput {
 		$smgYahooFormsOnThisPage++;
 		
 		$this->elementNr = $egYahooMapsOnThisPage;
+		$this->mapName = $egMapsYahooMapsPrefix . '_' . $egYahooMapsOnThisPage;
 	}
 	
 	/**
 	 * @see MapsMapFeature::addSpecificMapHTML()
-	 *
 	 */
-	protected function addSpecificMapHTML( Parser $parser ) {
+	protected function addSpecificMapHTML() {
 		global $wgOut;
 		
 		$this->output .= Html::element(
@@ -94,8 +92,8 @@ addOnloadHook(
 			[$this->types],
 			[$this->controls],
 			$this->autozoom,
-			$this->marker_lat,
-			$this->marker_lon
+			{$this->markerCoords['lat']},
+			{$this->markerCoords['lon']}
 		);
 	}
 );

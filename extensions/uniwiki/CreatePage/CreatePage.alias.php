@@ -30,7 +30,7 @@ $aliases['arz'] = array(
 	'CreatePage' => array( 'إنشاء_صفحة' ),
 );
 
-/** Azerbaijani (Azərbaycan) */
+/** Azerbaijani (Azərbaycanca) */
 $aliases['az'] = array(
 	'CreatePage' => array( 'SəhifəYarat' ),
 );

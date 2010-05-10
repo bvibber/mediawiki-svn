@@ -24,17 +24,44 @@ $j(document).ready( function() {
 				$j(this).addClass( 'collapsed' );
 			}
 		} );
-	// Toggle the selected menu's class and expand or collapse the menu
-	$j( '#panel > div.portal > h5' ).click( function() {
-		$j.cookie( 'vector-nav-' + $j(this).parent().attr( 'id' ), $j(this).parent().is( '.collapsed' ) );
-		$j(this)
+	// Use the same function for all navigation headings - don't repeat yourself
+	function toggle( $element ) {
+		$j.cookie( 'vector-nav-' + $element.parent().attr( 'id' ), $element.parent().is( '.collapsed' ) );
+		$element
 			.parent()
 			.toggleClass( 'expanded' )
 			.toggleClass( 'collapsed' )
 			.find( 'div.body' )
 			.slideToggle( 'fast' );
-		return false;
+	}
+	var $headings = $j( '#panel > div.portal > h5' );
+	/** Copy-pasted from jquery.wikiEditor.dialogs - :( */
+	// Find the highest tabindex in use
+	var maxTI = 0;
+	$j( '[tabindex]' ).each( function() {
+		var ti = parseInt( $j(this).attr( 'tabindex' ) );
+		if ( ti > maxTI )
+			maxTI = ti;
+	});
+	var tabIndex = maxTI + 1;
+	// Make it keyboard accessible
+	$headings.each( function() {
+		$j(this).attr( 'tabindex', tabIndex++ );
 	} );
+	/** End of copy-pasted section */
+	// Toggle the selected menu's class and expand or collapse the menu
+	$headings
+		// Make the space and enter keys act as a click
+		.keydown( function( event ) {
+			if ( event.which == 13 /* Enter */ || event.which == 32 /* Space */ ) {
+				toggle( $j(this) );
+			}
+		} )
+		.mousedown( function() {
+			toggle( $j(this) );
+			$j(this).blur();
+			return false;
+		} );
 } );
 $j(document).ready( function() {
 	// Check if CollapsibleTabs is enabled
@@ -263,15 +290,15 @@ $j(document).ready( function() {
 				})
 				.appendTo( $j(this).parent() );
 			if ( $j(this).val() == '' ) {
-				$j(this).parent().find( 'label' ).show();
+				$j(this).parent().find( 'label' ).fadeIn( 100 );
 			}
 		})
 		.focus( function() {
-			$j(this).parent().find( 'label' ).hide();
+			$j(this).parent().find( 'label' ).fadeOut( 100 );
 		})
 		.blur( function() {
 			if ( $j(this).val() == '' ) {
-				$j(this).parent().find( 'label' ).show();
+				$j(this).parent().find( 'label' ).fadeIn( 100 );
 			}
 		});
 	$j( '#searchInput, #searchInput2, #powerSearchText, #searchText' ).suggestions( {

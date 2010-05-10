@@ -68,6 +68,7 @@ $messages['be-tarask'] = array(
  */
 $messages['bg'] = array(
 	'wikieditor-template-editor-preference' => 'Разрешено редактирането на уикишаблони чрез формуляр',
+	'wikieditor-template-editor-dialog-title' => 'Редактиране на шаблона',
 	'wikieditor-template-editor-dialog-submit' => 'Обновяване',
 	'wikieditor-template-editor-dialog-cancel' => 'Отказване',
 );
@@ -477,12 +478,13 @@ $messages['pt'] = array(
 );
 
 /** Brazilian Portuguese (Português do Brasil)
+ * @author 555
  * @author Daemorris
  * @author Everton137
  */
 $messages['pt-br'] = array(
 	'wikieditor-template-editor-preference' => 'Possibilitar edição de predefinições com base em formulários',
-	'wikieditor-template-editor-dialog-title' => 'Editar template',
+	'wikieditor-template-editor-dialog-title' => 'Editar predefinição',
 	'wikieditor-template-editor-dialog-submit' => 'Atualizar',
 	'wikieditor-template-editor-dialog-cancel' => 'Cancelar',
 );
@@ -560,6 +562,7 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
+	'wikieditor-template-editor-preference' => 'వికీ మూసలని ఫారం ద్వారా మార్చడాని చేతనంచేయి',
 	'wikieditor-template-editor-dialog-title' => 'మూసని మార్చు',
 	'wikieditor-template-editor-dialog-submit' => 'తాజాకరించు',
 	'wikieditor-template-editor-dialog-cancel' => 'రద్దుచేయి',

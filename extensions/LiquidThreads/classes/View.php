@@ -80,6 +80,10 @@ class LqtView {
 		if ( $operand ) {
 			$query['lqt_operand'] = $operand;
 		}
+		
+		if ( ! $thread ) {
+			throw new MWException( "Empty thread passed to ".__METHOD__ );
+		}
 
 		return array( $thread->root()->getTitle(), $query );
 	}
@@ -421,7 +425,9 @@ class LqtView {
 		
 		if ( $this->output->getRedirect() != '' ) {
 		       $redirectTitle = clone $talkpage->getTitle();
-		       $redirectTitle->setFragment( '#' . $this->anchorName( $thread ) );
+		       if ( $thread ) {
+			       $redirectTitle->setFragment( '#' . $this->anchorName( $thread ) );
+		       }
 		       $this->output->redirect( $this->title->getFullURL() );
 		}
 	
@@ -1797,7 +1803,8 @@ class LqtView {
 		global $wgLang;
 
 		// Safeguard
-		if ( $thread->type() & Threads::TYPE_DELETED ) {
+		if ( $thread->type() & Threads::TYPE_DELETED ||
+				!$thread->root() ) {
 			return;
 		}
 
@@ -2144,7 +2151,7 @@ class LqtView {
 	static function signaturePST( $sig, $user ) {
 		global $wgParser, $wgOut, $wgTitle;
 		
-		$title = $wgTitle ? $wgTitle : $user->getUserPage()->getTitle();
+		$title = $wgTitle ? $wgTitle : $user->getUserPage();
 
 		// Parser gets antsy about parser options here if it hasn't parsed anything before.
 		$wgParser->clearState();

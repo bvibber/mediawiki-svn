@@ -103,6 +103,13 @@ $messages['it'] = array(
 	'peoplecategories-desc' => 'Modifica la visualizzazione dei nomi da "Nome Cognome" a "Cognome, Nome" in alcune pagine di categoria.',
 );
 
+/** Japanese (日本語)
+ * @author Fryed-peach
+ */
+$messages['ja'] = array(
+	'peoplecategories-desc' => '指定されたカテゴリ内のページにおいて、ページ名の表示を "Firstname Lastname"（名、姓）から "Lastname, Firstname"（姓、名）の形式に変更する',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

@@ -20,6 +20,7 @@ $messages['en'] = array(
 	'semanticmaps_name' => 'Semantic Maps',
 	'semanticmaps_desc' => "Provides the ability to view and edit coordinate data stored through the Semantic MediaWiki extension ([http://wiki.bn2vs.com/wiki/Semantic_Maps demo]).
 Available map services: $1",
+	'semanticmaps-unrecognizeddistance' => 'The value $1 is not a valid distance.',
 
 	// Forms
 	'semanticmaps_lookupcoordinates' 	=> 'Look up coordinates',
@@ -153,6 +154,7 @@ $messages['br'] = array(
 	'semanticmaps_paramdesc_controls' => "Ar c'hontrolloù implijer lakaet war ar gartenn",
 	'semanticmaps_paramdesc_types' => "Ar seurtoù kartennoù a c'haller kaout war ar gartenn",
 	'semanticmaps_paramdesc_type' => 'Ar seurt kartenn dre ziouer evit ar gartenn',
+	'semanticmaps_paramdesc_autozoom' => 'Mard eo gweredekaet ar zoumañ hag an dizoumañ gant rodig al logodenn',
 	'semanticmaps_paramdesc_layers' => 'Ar gwiskadoù zo da gaout war ar gartenn',
 );
 
@@ -197,6 +199,7 @@ $messages['ca'] = array(
 $messages['de'] = array(
 	'semanticmaps_desc' => 'Ergänzt eine Möglichkeit zum Ansehen und Bearbeiten von Koordinaten, die im Rahmen der Erweiterung „Semantisches MediaWiki“ gespeichert wurden ([http://wiki.bn2vs.com/wiki/Semantic_Maps Demo]).
 Unterstützte Kartendienste: $1',
+	'semanticmaps-unrecognizeddistance' => 'Der Wert $1 ist keine gültige Distanz.',
 	'semanticmaps_lookupcoordinates' => 'Koordinaten nachschlagen',
 	'semanticmaps_enteraddresshere' => 'Adresse hier eingeben',
 	'semanticmaps_notfound' => 'nicht gefunden',
@@ -220,6 +223,7 @@ Unterstützte Kartendienste: $1',
 $messages['dsb'] = array(
 	'semanticmaps_desc' => 'Bitujo zmóžnosć se koordinatowe daty pśez rozšyrjenje Semantic MediaWiki woglědaś a wobźěłaś ([http://wiki.bn2vs.com/wiki/Semantic_Maps demo]).
 K dispoziciji stojece kórtowe słužby: $1.',
+	'semanticmaps-unrecognizeddistance' => 'Gódnota $1 njejo płaśiwa distanca.',
 	'semanticmaps_lookupcoordinates' => 'Za koordinatami póglědaś',
 	'semanticmaps_enteraddresshere' => 'Zapódaj how adresu',
 	'semanticmaps_notfound' => 'njenamakany',
@@ -311,6 +315,7 @@ $messages['fi'] = array(
  */
 $messages['fr'] = array(
 	'semanticmaps_desc' => 'Permet de voir et modifier les données de coordonnées stockées à travers l’extension Semantic MediaWiki ([http://www.mediawiki.org/wiki/Extension:Semantic_Maps Documentation]. [http://wiki.bn2vs.com/wiki/Semantic_Maps Démo]). Services de cartes disponibles : $1.',
+	'semanticmaps-unrecognizeddistance' => "La valeur $1 n'est pas une distance valide",
 	'semanticmaps_lookupcoordinates' => 'Estimer les coordonnées',
 	'semanticmaps_enteraddresshere' => 'Entrez ici l’adresse',
 	'semanticmaps_notfound' => 'pas trouvé',
@@ -334,6 +339,7 @@ $messages['fr'] = array(
 $messages['gl'] = array(
 	'semanticmaps_desc' => 'Proporciona a capacidade de visualizar e modificar os datos de coordenadas gardados a través da extensión Semantic MediaWiki ([http://wiki.bn2vs.com/wiki/Semantic_Maps demostración]).
 Servizos de mapa dispoñibles: $1',
+	'semanticmaps-unrecognizeddistance' => 'O valor $1 non é unha distancia válida.',
 	'semanticmaps_lookupcoordinates' => 'Ver as coordenadas',
 	'semanticmaps_enteraddresshere' => 'Introduza o enderezo aquí',
 	'semanticmaps_notfound' => 'non se atopou',
@@ -398,6 +404,7 @@ $messages['he'] = array(
  */
 $messages['hsb'] = array(
 	'semanticmaps_desc' => 'Skići móžnosć koordinatowe daty, kotrež buchu přez rozšěrjenje Semantic MediaWiki składowane, sej wobhladać a změnić. ([http://wiki.bn2vs.com/wiki/Semantic_Maps demo]). K dispoziciji stejace kartowe słužby: $1',
+	'semanticmaps-unrecognizeddistance' => 'Hódnota $1 płaćiwa distanca njeje.',
 	'semanticmaps_lookupcoordinates' => 'Za koordinatami hladać',
 	'semanticmaps_enteraddresshere' => 'Zapodaj tu adresu',
 	'semanticmaps_notfound' => 'njenamakany',
@@ -439,7 +446,8 @@ Elérhető térképszolgáltatók: $1',
 $messages['ia'] = array(
 	'semanticmaps_desc' => 'Permitte vider e modificar datos de coordinatas immagazinate per le extension Semantic MediaWiki
 ([http://wiki.bn2vs.com/wiki/Semantic_Maps demo]).
-Servicios de cartas disponibile: $1',
+Servicios cartographic disponibile: $1',
+	'semanticmaps-unrecognizeddistance' => 'Le valor $1 non es un distantia valide.',
 	'semanticmaps_lookupcoordinates' => 'Cercar coordinatas',
 	'semanticmaps_enteraddresshere' => 'Entra adresse hic',
 	'semanticmaps_notfound' => 'non trovate',
@@ -577,6 +585,7 @@ $messages['lb'] = array(
 $messages['mk'] = array(
 	'semanticmaps_desc' => 'Дава можност за гледање и уредување на податоци со координати складирани преку проширувањето Semantic MediaWiki ([http://wiki.bn2vs.com/wiki/Semantic_Maps демо]).
 Картографски служби на располагање: $1',
+	'semanticmaps-unrecognizeddistance' => 'Вредноста $1 не претставува важечко растојание.',
 	'semanticmaps_lookupcoordinates' => 'Побарај координати',
 	'semanticmaps_enteraddresshere' => 'Внесете адреса тука',
 	'semanticmaps_notfound' => 'не е најдено ништо',

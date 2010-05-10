@@ -108,6 +108,7 @@ $messages['be-tarask'] = array(
 
 /** Breton (Brezhoneg)
  * @author Fohanno
+ * @author Fulup
  * @author Y-M D
  */
 $messages['br'] = array(
@@ -120,6 +121,7 @@ $messages['br'] = array(
 	'tiff_file_too_large' => 'Re vras eo ar restr karget ha distaolet eo bet.',
 	'tiff_out_of_service' => "N'eus ket bet gellet tretiñ ar restr pellgarget. Dizimplijadus eo ImageMagick.",
 	'tiff_too_much_meta' => "Ar metaroadennoù a implij re a lec'h.",
+	'tiff_error_cached' => "N'hall ar restr-mañ bezañ adderaouekaet nemet goude termen ar grubuilh.",
 	'tiff_size_error' => 'Ne glot ket ment ar restr meneget gant ment gwir ar restr.',
 	'tiff_script_detected' => 'Skriptoù zo er restr karget.',
 	'tiff_bad_file' => 'Fazioù zo er restr karget.',

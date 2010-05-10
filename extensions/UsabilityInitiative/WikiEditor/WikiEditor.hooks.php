@@ -18,6 +18,7 @@ class WikiEditorHooks {
 			array( 'src' => 'Modules/Toc/Toc.js', 'version' => 7 ),
 			array( 'src' => 'Modules/Toolbar/Toolbar.js', 'version' => 83 ),
 			array( 'src' => 'Modules/TemplateEditor/TemplateEditor.js', 'version' => 6 ),
+			array( 'src' => 'Modules/Templates/Templates.js', 'version' => 1 ),
 			array( 'src' => 'Modules/AddMediaWizard/AddMediaWizard.js', 'version' => 6 ),
 		),
 		'combined' => array(
@@ -66,6 +67,19 @@ class WikiEditorHooks {
 				'wikieditor-template-editor-dialog-title',
 				'wikieditor-template-editor-dialog-submit',
 				'wikieditor-template-editor-dialog-cancel',
+			),
+		),
+		'templates' => array(
+			'i18n' => 'WikiEditorTemplates',
+			'preferences' => array(
+				'enable' => array(
+					'key' => 'wikieditor-templates',
+					'ui' => array(
+						'type' => 'toggle',
+						'label-message' => 'wikieditor-templates-preference',
+						'section' => 'editing/labs',
+					),
+				),
 			),
 		),
 		'addMediaWizard' => array(

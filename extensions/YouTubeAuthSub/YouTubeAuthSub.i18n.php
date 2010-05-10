@@ -3552,6 +3552,7 @@ $messages['yi'] = array(
 	'youtubeauthsub_category' => 'קאַטעגאריע',
 	'youtubeauthsub_submit' => 'אײַנגעבן',
 	'youtubeauthsub_clickhere' => 'דרוקט דאָ ארײַנלאגירן צו YouTube',
+	'youtubeauthsub_authsubinstructions' => 'כדי אַרויפֿלאָדן א ווידעא, דאַרפֿט איר פֿריער אַרײַנלאגירן צו יוטוב.',
 	'youtubeauthsub_uploadhere' => 'לאָדט אַרויף אייער ווידעא פֿון דאַנעט:',
 	'youtubeauthsub_uploadbutton' => 'ארויפֿלאָדן',
 	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.

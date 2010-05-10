@@ -288,10 +288,11 @@ $messages['pms'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'i18ntags-desc' => 'Acede às funções de i18n para formatação de números, gramática e plural em qualquer língua disponível',
+	'i18ntags-desc' => 'Acede às funções de internacionalização (i18n) para formatação de números, gramática e plural em qualquer língua disponível',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

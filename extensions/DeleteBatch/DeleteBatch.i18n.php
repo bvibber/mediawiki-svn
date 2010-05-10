@@ -1129,7 +1129,7 @@ O ficheiro carregado deverá conter o nome da página e um motivo opcional, sepa
 	'deletebatch-processing-from-form' => 'a apagar as páginas listadas no formulário',
 	'deletebatch-omitting-nonexistant' => 'A omitir página não existente $1.',
 	'deletebatch-omitting-invalid' => 'A omitir página inválida $1.',
-	'deletebatch-file-bad-format' => 'O ficheiro deve conter texto pleno',
+	'deletebatch-file-bad-format' => 'O ficheiro deve conter texto simples',
 	'deletebatch-file-missing' => 'Não foi possível ler o ficheiro fornecido',
 	'deletebatch-select-script' => 'Script de eliminação de páginas',
 	'deletebatch-select-yourself' => 'Você',

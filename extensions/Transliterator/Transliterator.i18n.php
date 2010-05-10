@@ -388,6 +388,11 @@ $messages['oc'] = array(
  */
 $messages['pl'] = array(
 	'transliterator-desc' => 'Dodaje funkcję analizatora składni do transliteracji',
+	'transliterator-error-ambiguous' => 'Niejasna reguła <code>$1</code> w [[MediaWiki:$2]]',
+	'transliterator-error-syntax' => 'Nieprawidłowa składnia <code>$1</code> w [[MediaWiki:$2]]',
+	'transliterator-error-rulecount' => 'Więcej niż $1 {{PLURAL:$1|reguła|reguły|reguł}} w [[MediaWiki:$2]]',
+	'transliterator-error-rulesize' => 'Reguła <code>$1</code> składa się z więcej niż $1 {{PLURAL:$3|znaku|znaków}} od lewej [[MediaWiki:$2]]',
+	'transliterator-error-prefix' => '[[MediaWiki:$2]] musi mieć co najmniej $1 {{PLURAL:$1|znak|znaki|znaków}} długości',
 );
 
 /** Piedmontese (Piemontèis)
@@ -412,7 +417,7 @@ $messages['pt'] = array(
 	'transliterator-error-syntax' => 'Sintaxe inválida <code>$1</code> em [[MediaWiki:$2]]',
 	'transliterator-error-rulecount' => 'Mais de {{PLURAL:$1|uma regra|$1 regras}} em [[MediaWiki:$2]]',
 	'transliterator-error-rulesize' => 'A regra <code>$1</code> tem mais de {{PLURAL:$3|um carácter|$3 caracteres}} à esquerda em [[MediaWiki:$2]]',
-	'transliterator-error-prefix' => '[[MediaWiki:$2]] tem de ter pelo menos {{PLURAL:$1|um caracter|$1 caracteres}}.',
+	'transliterator-error-prefix' => '[[MediaWiki:$2]] tem de ter pelo menos $1 {{PLURAL:$1|carácter|caracteres}}.',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

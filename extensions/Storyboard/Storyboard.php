@@ -29,7 +29,7 @@ define( 'Storyboard_STORY_UNPUBLISHED', 0 );
 define( 'Storyboard_STORY_PUBLISHED', 1 );
 define( 'Storyboard_STORY_HIDDEN', 2 );
 
-$egStoryboardScriptPath =  ( isset( $wgExtensionAssetsPath ) && $wgExtensionAssetsPath ? $wgExtensionAssetsPath : $wgScriptPath . '/extensions' ) . '/Storyboard';
+$egStoryboardScriptPath = ( isset( $wgExtensionAssetsPath ) && $wgExtensionAssetsPath ? $wgExtensionAssetsPath : $wgScriptPath . '/extensions' ) . '/Storyboard';
 $egStoryboardDir = dirname( __FILE__ ) . '/';
 $egStoryboardStyleVersion = $wgStyleVersion . '-' . Storyboard_VERSION;
 
@@ -132,3 +132,43 @@ function efStoryboardAddStoryEditAction( &$sktemplate, &$content_actions ) {
 	return true;
 }
 
+function efStoryboardAddJSLocalisation( $parser = false ) {
+	wfLoadExtensionMessages( 'Storyboard' );
+
+	$messages = array(
+		'storyboard-charstomany',
+		'storyboard-morecharsneeded',
+		'storyboard-charactersleft',
+		'storyboard-needtoagree',
+		'storyboard-anerroroccured',
+		'storyboard-storymetadata',
+		'storyboard-storymetadatafrom',
+		'storyboard-done',
+		'storyboard-working',
+		'storyboard-imagedeleted',
+		'storyboard-showimage',
+		'storyboard-hideimage',
+		'storyboard-imagedeletionconfirm',
+		'storyboard-alreadyexistschange',
+		'edit',
+		'storyboard-unpublish',
+		'storyboard-publish',
+		'storyboard-hide',
+		'storyboard-deleteimage',
+	);
+
+	$data = array();
+
+	foreach ( $messages as $msg ) {
+		$data[$msg] = wfMsgNoTrans( $msg );
+	}
+
+	$js = 'var wgStbMessages = ' . json_encode( $data ) . ';';
+	
+	if ( $parser ) {
+		$parser->getOutput()->addHeadItem( Html::inlineScript( $js ) );
+	} else {
+		global $wgOut;
+		$wgOut->addInlineScript( $js );		
+	}
+}

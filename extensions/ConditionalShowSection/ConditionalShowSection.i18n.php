@@ -240,10 +240,11 @@ $messages['pms'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Hamilton Abreu
  * @author Indech
  */
 $messages['pt'] = array(
-	'conditionalshowsection-desc' => 'Adicionando a marcação cshow para mostrar/ocultar condicionalmente uma seção de wikitexto',
+	'conditionalshowsection-desc' => 'A adicionar a marcação cshow para mostrar ou ocultar condicionalmente uma secção de texto wiki',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

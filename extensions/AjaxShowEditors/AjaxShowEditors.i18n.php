@@ -1076,8 +1076,10 @@ $messages['sv'] = array(
 
 /** Swahili (Kiswahili)
  * @author Lloffiwr
+ * @author Muddyb Blast Producer
  */
 $messages['sw'] = array(
+	'ajaxshoweditors-desc' => 'Inaonyesha majina ya watumiaji wengine wanaohariri ukurasa uleule kwa wakati mmoja',
 	'ajax-se-title' => 'Wanaohariri sasa hivi:',
 	'ajax-se-idling' => '($1s zilizopita)',
 	'ajax-se-pagedoesnotexist' => 'ukurasa haupatikani',

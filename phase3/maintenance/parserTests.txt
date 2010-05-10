@@ -865,18 +865,6 @@ BUG 289: literal double quote in bracketed URL
 !!end
 
 !! test
-External links: invalid character
-Fixme: the missing char seems to have gone missing
-!! options
-disabled
-!! input
-[http://www.example.com  test]
-!! result
-<p>[<a href="http://www.example.com" class="external free" rel="nofollow">http://www.example.com</a>  test]
-</p>
-!! end
-
-!! test
 External links: multiple legal whitespace is fine, Magnus. Don't break it please. (bug 5081)
 !! input
 [http://www.example.com  test]
@@ -1526,7 +1514,7 @@ Piped link to URL
 !! input
 Piped link to URL: [[http://www.example.com|an example URL]]
 !! result
-<p>Piped link to URL: [<a href="http://www.example.com|an" class="external text" rel="nofollow">example URL</a>]
+<p>Piped link to URL: [<a href="http://www.example.com%7Can" class="external text" rel="nofollow">example URL</a>]
 </p>
 !! end
 
@@ -2603,7 +2591,7 @@ BUG 41: Template parameters shown as broken links
 Template:MSGNW test
 !! text
 ''None'' of '''this''' should be 
-* interepreted
+* interpreted
  but rather passed unmodified
 {{test}}
 !! endarticle
@@ -2617,7 +2605,7 @@ disabled
 {{msgnw:MSGNW test}}
 !! result
 <p>''None'' of '''this''' should be 
-* interepreted
+* interpreted
  but rather passed unmodified
 {{test}}
 </p>
@@ -4821,7 +4809,7 @@ disabled
 !! input
 <br id=9 />
 !! result
-Something, but defenetly not <br id="9" />...
+Something, but definitely not <br id="9" />...
 !! end
 
 !! test
@@ -6661,12 +6649,10 @@ disabled
 # Images with the "|" character in external URLs in comment tags; Eats half the comment, leaves unmatched "</a>" tag.
 !! test
 Images with the "|" character in the comment
-!! options
-disabled
 !! input
 [[image:Foobar.jpg|thumb|An [http://test/?param1=|left|&param2=|x external] URL]]
 !! result
-<div class="thumb tright"><div class="thumbinner" style="width:182px;"><a href="/wiki/File:Foobar.jpg" class="image"><img alt="An external URL" src="http://example.com/images/3/3a/Foobar.jpg" width="180" height="20" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="/wiki/File:Foobar.jpg" class="internal" title="Enlarge"><img src="/skins/common/images/magnify-clip.png" width="15" height="11" alt="" /></a></div>An <a href="http://test/?param1=|left|&amp;param2=|x" class="external text" rel="nofollow">external</a> URL</div></div></div>
+<div class="thumb tright"><div class="thumbinner" style="width:182px;"><a href="/wiki/File:Foobar.jpg" class="image"><img alt="" src="http://example.com/images/3/3a/Foobar.jpg" width="180" height="20" class="thumbimage" /></a>  <div class="thumbcaption"><div class="magnify"><a href="/wiki/File:Foobar.jpg" class="internal" title="Enlarge"><img src="/skins/common/images/magnify-clip.png" width="15" height="11" alt="" /></a></div>An <a href="http://test/?param1=%7Cleft%7C&amp;param2=%7Cx" class="external text" rel="nofollow">external</a> URL</div></div></div>
 
 !!end
 
@@ -6718,12 +6704,14 @@ subpage title=[[Subpage test/L1/L2/L3]]
 !! test
 Parents of subpages, two levels up
 !! options
-disabled
 subpage title=[[Subpage test/L1/L2/L3]]
 !! input
 [[../../|L1]]2
+
+[[../../|L1]]l
 !! result
-<p><a href="/index.php?title=Subpage_test/L1&amp;action=edit&amp;redlink=1" class="new" title="Subpage test/L1 (page does not exist)">L1</a>
+<p><a href="/index.php?title=Subpage_test/L1&amp;action=edit&amp;redlink=1" class="new" title="Subpage test/L1 (page does not exist)">L1</a>2
+</p><p><a href="/index.php?title=Subpage_test/L1&amp;action=edit&amp;redlink=1" class="new" title="Subpage test/L1 (page does not exist)">L1l</a>
 </p>
 !! end
 
@@ -7418,6 +7406,20 @@ Line two
 </p>
 </div>
 
+!! end
+
+!! test
+Nesting tags, paragraphs on lines which begin with <div>
+!! options
+disabled
+!! input
+<div></div><strong>A
+B</strong>
+!! result
+<div></div>
+<p><strong>A
+B</strong>
+</p>
 !! end
 
 # Bug 6200: <blockquote> should behave like <div> with respect to line breaks

@@ -25,7 +25,7 @@ final class MapsMapper {
 		Validator::addOutputFormat( 'coordinateSets', array( __CLASS__, 'formatLocations' ) );
 	}
 
-	public static function isLocation( $location, array $metaData ) {
+	public static function isLocation( $location, $name, array $parameters ) {
 		if ( self::geocoderIsAvailable() ) {
 			return MapsGeocoder::isLocation( $location );
 		} else {
@@ -33,17 +33,17 @@ final class MapsMapper {
 		}
 	}
 
-	public static function areLocations( $locations, array $metaData ) {
+	public static function areLocations( $locations, $name, array $parameters ) {
 		$locations = (array)$locations;
 		foreach ( $locations as $location ) {
-			if ( !self::isLocation( $location, $metaData ) ) {
+			if ( !self::isLocation( $location, $name, $parameters ) ) {
 				return false;
 			}
 		}
 		return true;
 	}
 
-	public static function formatLocation( &$location ) {
+	public static function formatLocation( &$location, $name, array $parameters ) {
 		if ( self::geocoderIsAvailable() ) {
 			$location = MapsGeocoder::attemptToGeocodeToString( $location );
 		} else {
@@ -51,10 +51,10 @@ final class MapsMapper {
 		}
 	}
 
-	public static function formatLocations( &$locations ) {
+	public static function formatLocations( &$locations, $name, array $parameters ) {
 		$locations = (array)$locations;
 		foreach ( $locations as &$location ) {
-			self::formatLocation( $location );
+			self::formatLocation( $location, $name, $parameters );
 		}
 	}
 
@@ -127,7 +127,7 @@ final class MapsMapper {
 	 *
 	 * @return boolean
 	 */
-	public static function isMapDimension( &$value, array $metaData, $dimension, $correct = false, $default = 0 ) {
+	public static function isMapDimension( &$value, $name, array $parameters, $dimension, $correct = false, $default = 0 ) {
 		global $egMapsSizeRestrictions;
 
 		// See if the notation is valid.
@@ -187,8 +187,8 @@ final class MapsMapper {
 	 * @param string $dimension Must be width or height.
 	 * @param number $default The default value for this dimension.
 	 */
-	public static function setMapDimension( &$value, $dimension, $default ) {
-		self::isMapDimension( $value, array(), $dimension, true, $default );
+	public static function setMapDimension( &$value, $name, array $parameters, $dimension, $default ) {
+		self::isMapDimension( $value, $name, $parameters, $dimension, true, $default );
 	}
 
 	/**
@@ -218,7 +218,26 @@ final class MapsMapper {
 
 		return $allServiceValues;
 	}
-
+	
+	/**
+	 * Add a JavaScript file out of skins/common, or a given relative path.
+	 * 
+	 * This is a copy of the native function in OutputPage to work around a pre 1.16 bug.
+	 * Should be used for adding external files, like the Google Maps API.
+	 * 
+	 * @param OutputPage $out
+	 * @param string $file
+	 */
+	public static function addScriptFile( OutputPage $out, $file ) {
+		global $wgStylePath, $wgStyleVersion;
+		if( substr( $file, 0, 1 ) == '/' || preg_match( '#^[a-z]*://#i', $file ) ) {
+			$path = $file;
+		} else {
+			$path =  "{$wgStylePath}/common/{$file}";
+		}
+		$out->addScript( Html::linkedScript( wfAppendQuery( $path, $wgStyleVersion ) ) );		
+	}
+	
 	/**
 	 * This function returns the definitions for the parameters used by every map feature.
 	 *
@@ -251,14 +270,12 @@ final class MapsMapper {
 				'criteria' => array(
 					'is_map_dimension' => array( 'width' ),
 				),
-				'default' => $egMapsMapWidth,
 				'output-type' => array( 'mapdimension', 'width', $egMapsMapWidth )
 			),
 			'height' => array(
 				'criteria' => array(
 					'is_map_dimension' => array( 'height' ),
 				),
-				'default' => $egMapsMapHeight,
 				'output-type' => array( 'mapdimension', 'height', $egMapsMapHeight )
 			),
 		);

@@ -181,11 +181,25 @@ $messages['id'] = array(
 	'geolite-desc' => 'Pengalihan GeoIP Ringan',
 );
 
+/** Italian (Italiano)
+ * @author Civvì
+ */
+$messages['it'] = array(
+	'geolite-desc' => 'Reindirizzamento Lightweight GeoIp',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */
 $messages['ja'] = array(
 	'geolite-desc' => '軽量 GeoIp リダイレクト',
+);
+
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'geolite-desc' => '소형 GeoIP 송신 기능',
 );
 
 /** Colognian (Ripoarisch)

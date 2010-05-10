@@ -1633,6 +1633,7 @@ $messages['kn'] = array(
  * @author Yknok29
  */
 $messages['ko'] = array(
+	'coll-print_export' => '인쇄/내보내기',
 	'coll-create_a_book' => '책 만들기',
 	'coll-download_as' => '$1로 다운로드',
 	'coll-add_category' => '이 분류를 책에 추가하기',
@@ -2949,6 +2950,8 @@ $messages['vi'] = array(
 	'coll-disable' => 'tắt',
 	'coll-book_creator_disable' => 'Tắt bộ tạo sách',
 	'coll-book_creator_disable_tooltip' => 'Ngừng sử dụng bộ tạo sách',
+	'coll-add_linked_article' => 'Thêm trang wiki được liên kết vào quyển sách',
+	'coll-remove_linked_article' => 'Bỏ trang wiki được liên kết khỏi quyển sách',
 	'coll-add_category' => 'Thêm thể loại này vào cuốn sách',
 	'coll-add_category_tooltip' => 'Thêm vào sách các trang wiki thuộc thể loại được liên kết',
 	'coll-add_this_page' => 'Thêm trang này vào cuốn sách',

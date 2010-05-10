@@ -202,7 +202,7 @@ Evit kaout ur roll eus ar raktresoù a za en-dro gwellet [[MediaWiki:TodoTasksVa
 	'tasklistchooseproj' => 'Diuzañ ur raktres :',
 	'tasklistprojdisp' => 'Diskwel',
 	'tasklistbyname' => '== Roll an traoù da ober gant $s ==',
-	'tasklistnowguseprojects' => 'Termenet ho peus $wgUseProjects da "false", dre-se ne c\'helloc\'h ket implij ar bajenn-se.',
+	'tasklistnowguseprojects' => 'Termenet hoc\'h eus $wgUseProjects da "false", dre-se ne c\'helloc\'h ket implij ar bajenn-se.',
 	'tasklistnoprojects' => "Fazi : Seblantout a ra ho pefe gweredekaet '''\$wgUseProjects''', met n'eo ket bet krouet [[MediaWiki:TodoTasksValidProjects]]. Kit da welet  [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 c'hemennadennoù staliñ] evit muic'h a ditouroù.",
 	'tasklistemailbody' => ",
 
@@ -1209,7 +1209,7 @@ $messages['ps'] = array(
  */
 $messages['pt'] = array(
 	'tasklist' => 'Lista de Tarefas',
-	'tasklist-parser-desc' => 'Adiciona a função do analisador (parser) <nowiki>{{#todo:}}</nowiki> para a atribuição de tarefas',
+	'tasklist-parser-desc' => 'Adiciona a função <nowiki>{{#todo:}}</nowiki> ao analisador sintáctico, para atribuição de tarefas',
 	'tasklist-special-desc' => '[[Special:TaskList|Página especial]] para a revisão de tarefas atribuídas',
 	'tasklistbyproject' => 'Lista de Tarefas por Projecto',
 	'tasklistunknownproject' => 'projecto deconhecido',

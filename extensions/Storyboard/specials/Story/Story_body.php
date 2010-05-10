@@ -146,10 +146,10 @@ class SpecialStory extends IncludableSpecialPage {
 
 		if ( $story->story_author_image != '' && $story->story_image_hidden != 1 ) {
 			$story->story_author_image = htmlspecialchars( $story->story_author_image );
-			$wgOut->addHTML( "<img src='$story->story_author_image' class='story-image'>" );
+			$wgOut->addHTML( "<img src=\"$story->story_author_image\" class='story-image'>" );
 		}
 		
-		$wgOut->addWikiText( $story->story_text  );
+		$wgOut->addWikiText( $story->story_text );
 		
 		// If the user that submitted the story was logged in, create a link to his/her user page.
 		if ( $story->story_author_id ) {
@@ -171,12 +171,11 @@ class SpecialStory extends IncludableSpecialPage {
 		// FIXME: this button is a temporary solution untill the SkinTemplateNavigation on special pages issue is fixed.
 		if ( $wgUser->isAllowed( 'storyreview' ) ) {
 			$editMsg = htmlspecialchars( wfMsg( 'edit' ) );
-			$editUrl = $this->getTitle( $story->story_title )->getLocalURL( 'action=edit' );
+			$editUrl = htmlspecialchars( $this->getTitle( $story->story_title )->getLocalURL( 'action=edit' ) );
 			$wgOut->addHtml(
-				"<button type='button' onclick=\"window.location='$editUrl'\">$editMsg</button>"
+				"<button type='button' onclick='window.location=\"$editUrl\"'>$editMsg</button>"
 			);
 		}
-		
 	}
 	
 	/**
@@ -189,6 +188,8 @@ class SpecialStory extends IncludableSpecialPage {
 		global $egStoryboardScriptPath, $egStorysubmissionWidth, $egStoryboardMaxStoryLen, $egStoryboardMinStoryLen;
 		
 		$wgOut->setPageTitle( $story->story_title );
+		
+		efStoryboardAddJSLocalisation();
 		
 		$wgOut->addStyle( $egStoryboardScriptPath . '/storyboard.css' );
 		$wgOut->includeJQuery();
@@ -205,7 +206,7 @@ class SpecialStory extends IncludableSpecialPage {
 		$minLen = $wgRequest->getVal( 'minlength' );
 		if ( !is_int( $minLen ) ) $minLen = $egStoryboardMinStoryLen;
 		
-		$formBody = "<table width='$width'>";
+		$formBody = "<table width=\"$width\">";
 			
 		// The current value will be selected on page load with jQuery.
 		$formBody .= '<tr>' .
@@ -340,16 +341,21 @@ class SpecialStory extends IncludableSpecialPage {
 			) .
 			'</td></tr>';
 
-		$cancelLink = $wgUser->getSkin()->makeKnownLink(
-			$this->getTitle( $story->story_title )->getPrefixedText(),
-			wfMsgExt( 'cancel', array( 'parseinline' ) )
-		);
-			
+		$returnTo = $wgRequest->getVal( 'returnto' );
+		$query = "id=$story->story_id";
+		if ( $returnTo ) $query .= "&returnto=$returnTo";
+		
 		$formBody .= '<tr><td colspan="2">' .
 			Html::input( '', wfMsg( 'htmlform-submit' ), 'submit', array( 'id' => 'storysubmission-button' ) ) .
-			"&nbsp;&nbsp;<span class='editHelp'>$cancelLink</span>" .
+			"&nbsp;&nbsp;<span class='editHelp'>" . 
+			Html::element(
+				'a',
+				array( 'href' => $this->getTitle()->getLocalURL( $query ) ),
+				wfMsgExt( 'cancel', array( 'parseinline' ) )
+			) .
+			'</span>' .
 			'</td></tr>';
-			
+
 		$formBody .= '</table>';
 		
 		$formBody .= Html::hidden( 'wpEditToken', $wgUser->editToken() );
@@ -367,9 +373,7 @@ class SpecialStory extends IncludableSpecialPage {
 		'</legend>' . $formBody . '</fieldset>';
 			
 		$query = "id=$story->story_id";
-			
-		$returnTo = $wgRequest->getVal( 'returnto' );
-		if ( $returnTo ) $query .= '&returnto=' . $returnTo;
+		if ( $returnTo ) $query .= "&returnto=$returnTo";
 		
 		$formBody = Html::rawElement(
 			'form',
@@ -384,14 +388,15 @@ class SpecialStory extends IncludableSpecialPage {
 		
 		$wgOut->addHTML( $formBody );
 		
+		$state = htmlspecialchars( $story->story_state );
 		$wgOut->addInlineScript( <<<EOT
 jQuery(document).ready(function() {
-	jQuery("#storystate option[value='$story->story_state']").attr('selected', 'selected');
+	jQuery('#storystate option[value="$state"]').attr('selected', 'selected');
 	
 	jQuery("#storyform").validate({
 		messages: {
 			storytitle: {
-				remote: jQuery.validator.format("<b>{0}</b> is already taken, please choose a different title.") // TODO: i18n
+				remote: jQuery.validator.format( stbMsg( 'storyboard-alreadyexistschange' ) )
 			}
 		}
 	});		

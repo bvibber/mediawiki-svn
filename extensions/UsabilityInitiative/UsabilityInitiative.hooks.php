@@ -19,7 +19,7 @@ class UsabilityInitiativeHooks {
 		'base_sets' => array(
 			'raw' => array(
 				array( 'src' => 'css/suggestions.css', 'version' => 11 ),
-				array( 'src' => 'css/vector.collapsibleNav.css', 'version' => 7 ),
+				array( 'src' => 'css/vector.collapsibleNav.css', 'version' => 8 ),
 				array( 'src' => 'css/vector.footerCleanup.css', 'version' => 1 ),
 				array( 'src' => 'css/wikiEditor.css', 'version' => 12 ),
 				array( 'src' => 'css/wikiEditor.dialogs.css', 'version' => 28 ),
@@ -72,20 +72,21 @@ class UsabilityInitiativeHooks {
 				array( 'src' => 'js/plugins/jquery.delayedBind.js', 'version' => 1 ),
 				array( 'src' => 'js/plugins/jquery.suggestions.js', 'version' => 11 ),
 				array( 'src' => 'js/plugins/jquery.textSelection.js', 'version' => 30 ),
-				array( 'src' => 'js/plugins/jquery.wikiEditor.js', 'version' => 184 ),
-				array( 'src' => 'js/plugins/jquery.wikiEditor.highlight.js', 'version' => 52 ),
+				array( 'src' => 'js/plugins/jquery.wikiEditor.js', 'version' => 185 ),
+				array( 'src' => 'js/plugins/jquery.wikiEditor.highlight.js', 'version' => 53 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.toolbar.js', 'version' => 59 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.dialogs.js', 'version' => 24 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.toc.js', 'version' => 98 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.preview.js', 'version' => 11 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.templateEditor.js', 'version' => 77 ),
+				array( 'src' => 'js/plugins/jquery.wikiEditor.templates.js', 'version' => 1 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.publish.js', 'version' => 5 ),
 			),
 			'combined' => array(
-				array( 'src' => 'js/plugins.combined.js', 'version' => 388 ),
+				array( 'src' => 'js/plugins.combined.js', 'version' => 389 ),
 			),
 			'minified' => array(
-				array( 'src' => 'js/plugins.combined.min.js', 'version' => 388 ),
+				array( 'src' => 'js/plugins.combined.min.js', 'version' => 389 ),
 			),
 		),
 	);

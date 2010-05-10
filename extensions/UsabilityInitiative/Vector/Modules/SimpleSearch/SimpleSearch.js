@@ -31,15 +31,15 @@ $j(document).ready( function() {
 				})
 				.appendTo( $j(this).parent() );
 			if ( $j(this).val() == '' ) {
-				$j(this).parent().find( 'label' ).show();
+				$j(this).parent().find( 'label' ).fadeIn( 100 );
 			}
 		})
 		.focus( function() {
-			$j(this).parent().find( 'label' ).hide();
+			$j(this).parent().find( 'label' ).fadeOut( 100 );
 		})
 		.blur( function() {
 			if ( $j(this).val() == '' ) {
-				$j(this).parent().find( 'label' ).show();
+				$j(this).parent().find( 'label' ).fadeIn( 100 );
 			}
 		});
 	$j( '#searchInput, #searchInput2, #powerSearchText, #searchText' ).suggestions( {

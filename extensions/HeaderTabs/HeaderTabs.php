@@ -112,7 +112,7 @@ function htReplaceFirstLevelHeaders( &$parser, &$text ) {
 		$tabhtml .= '<div class="yui-content">';
 		$firsttab = true;
 		foreach ( $tabs as $tab ) {
-			$tabhtml .= '<div id="' . $tab['tabid'] . '"' . $style . '><p>' . $tab['tabcontent'] . '</p></div>';
+			$tabhtml .= '<div id="' . $tab['tabid'] . '"><p>' . $tab['tabcontent'] . '</p></div>';
 		}
 		$tabhtml .= '</div></div>';
 

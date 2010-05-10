@@ -130,13 +130,14 @@ class SpecialUpload extends SpecialPage {
 
 		# Check permissions
 		global $wgGroupPermissions;
-		if( !$wgUser->isAllowed( 'upload' ) ) {
+		$permissionRequired = UploadBase::isAllowed( $wgUser );
+		if( $permissionRequired !== true ) {
 			if( !$wgUser->isLoggedIn() && ( $wgGroupPermissions['user']['upload']
 				|| $wgGroupPermissions['autoconfirmed']['upload'] ) ) {
 				// Custom message if logged-in users without any special rights can upload
 				$wgOut->showErrorPage( 'uploadnologin', 'uploadnologintext' );
 			} else {
-				$wgOut->permissionRequired( 'upload' );
+				$wgOut->permissionRequired( $permissionRequired );
 			}
 			return;
 		}
@@ -924,17 +925,19 @@ class UploadForm extends HTMLForm {
 			'EditTools' => array(
 				'type' => 'edittools',
 				'section' => 'description',
-			),
-			'License' => array(
+			)
+		);
+
+		if ( $this->mForReUpload ) {
+			$descriptor['DestFile']['readonly'] = true;
+		} else {
+			$descriptor['License'] = array(
 				'type' => 'select',
 				'class' => 'Licenses',
 				'section' => 'description',
 				'id' => 'wpLicense',
 				'label-message' => 'license',
-			),
-		);
-		if ( $this->mForReUpload ) {
-			$descriptor['DestFile']['readonly'] = true;
+			);
 		}
 
 		global $wgUseCopyrightUpload;

@@ -582,6 +582,7 @@ $messages['et'] = array(
 /** Basque (Euskara)
  * @author An13sa
  * @author Kobazulo
+ * @author Unai Fdz. de Betoño
  */
 $messages['eu'] = array(
 	'wah-short-audio' => '$1 soinu fitxategia, $2',
@@ -594,6 +595,8 @@ $messages['eu'] = array(
 	'wah-transcode-working' => 'Bideo hau prozesatzen ari da, mesedez, saia zaitez beranduago',
 	'wah-menu-stats' => 'Estatistikak',
 	'wah-menu-pref' => 'Hobespenak',
+	'wah-uploadfail' => 'Igoerak huts egin du',
+	'wah-doneuploading' => 'Igoera amaitu da. Eskerrik asko zure ekarpenagatik.',
 );
 
 /** Finnish (Suomi)

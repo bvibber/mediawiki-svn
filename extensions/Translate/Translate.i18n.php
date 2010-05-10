@@ -1879,6 +1879,15 @@ $messages['be-tarask'] = array(
 	'translate-percentage-fuzzy' => 'Састарэлыя',
 	'translate-nothing-to-do' => 'Былі зроблены ўсе магчымыя пераклады.
 Вы можаце праверыць пераклады з дапамогай [[Special:Translate|{{int:translate}}]].',
+	'supportedlanguages' => 'Падтрымліваемыя мовы',
+	'supportedlanguages-summary' => 'На гэтай старонцы пададзены сьпіс усіх моваў, якія падтрымліваюцца ў {{GRAMMAR:месны|{{SITENAME}}}}, разам з імёнамі перакладчыкаў, якія перакладаюць на гэтыя мовы.
+Калі Вам неабходна дадатковая інфармацыя па пэўнай мове, Вы можаце перайсьці на партал гэтай мовы.
+Націснуўшы на імя перакладчыка, Вы перайдзеце на яго старонку ўдзельніка.
+
+Калі мовы няма ў сьпісе, Вы можаце знайсьці інфармацыю пра тое, як пачаць лякалізацыю на [[Translating:Process|новай мове]]".
+
+Калі Вы перакладаеце на нейкую мову, а Вашага імя няма ў сьпісе, калі ласка, дадайце Вашае імя ў сьпіс перакладчыкаў на [[:Category:Languages|партале]] гэтай мовы.
+Шукайце спасылку на партал на мове, пададзенай ў Вашых устаноўках, у мэню.',
 	'translate-save' => 'Захаваць ($1)',
 	'translate-jssti-add' => 'Дадаць у сьпіс',
 	'translate-group-desc-mediawikicore' => 'Гэта група паведамленьняў утрымлівае паведамленьні, якія выкарыстоўваюцца ў цяперашняй альфа-вэрсіі MediaWiki ({{CURRENTVERSION}})',
@@ -2302,6 +2311,15 @@ Bevennoù izel hag uhel zo d'an holl dalvoudoù.",
 	'translate-percentage-fuzzy' => 'Dispredet',
 	'translate-nothing-to-do' => "Evit doare eo bet kaset da benn kement troidigezh posupl.
 Broudet oc'h da adwelet ar c'hemennadennoù adal [[Special:Translate|{{int:translate}}]].",
+	'supportedlanguages' => 'Yezhoù skoret',
+	'supportedlanguages-summary' => "Diskouez a ra ar bajenn-mañ roll ar yezhoù skoret gant {{SITENAME}} a-gevret gant roll an droerien a labour warno.
+Mar fell deoc'h gouzout hiroc'h a-zivout ur yezh bennak e c'hallit klikañ war porched ar yezh-se.
+Mar klikit war anv un troer e viot kaset davet e bajenn bersonel.
+
+Ma vank ur yezh bennak er roll e c'hallit kavout penaos kregiñ gant ur raktres evit ur yezh nevez war \"[[Translating:Process|Yezh Nevez]]\".
+
+Ma troit en ur yezh bennak ha ma ne zeu ket hoc'h anv war wel e c'hallit ouzhpennañ anezhañ war [[:Category:Languages|porched]] ar yezh-se.
+Sellit ouzh al lañser evit al liamm a gas d'ar yezh spisaet ganeoc'h en ho penndibaboù.",
 	'translate-save' => 'Enrollañ ($1)',
 	'translate-jssti-add' => "Ouzhpennañ d'ar roll",
 	'translate-group-desc-mediawikicore' => "Er strollad kemennadennoù-mañ emañ ar c'hemennadennoù implijet e stumm red MediaWiki ({{CURRENTVERSION}})",
@@ -2770,7 +2788,7 @@ Heu de tenir permisos de traductor per a desar els canvis, que no es guardaran f
 	'translate-checks-escape' => "Les següents seqüències d'escapament poden ser accidentals: <strong>$1</strong>",
 	'translate-pref-nonewsletter' => "No m'enviïs per correu electrònic el recull de notícies",
 	'prefs-translate' => 'Opcions de traducció',
-	'right-translate' => 'Editar fent servir la interfície de traducció',
+	'right-translate' => 'Edició fent servir la interfície de traducció',
 	'translate-rc-translation-filter' => 'Filtra traduccions:',
 	'translate-rc-translation-filter-no' => 'No facis res',
 	'translate-rc-translation-filter-only' => 'Mostra només traduccions',
@@ -3476,6 +3494,8 @@ Die Standardliste ist abhängig von der Sprache der Benutzeroberfläche.',
 	'translate-translations-including-no-param' => 'Bitte gib einen gültigen Nachrichtennamen als Unterseitenparameter an',
 	'languagestats' => 'Sprachstatistiken',
 	'languagestats-summary' => 'Diese Seite zeigt Übersetzungsstatistiken für alle Nachrichtengruppen einer Sprache.',
+	'languagestats-stats-for' => 'Übersetzungsstatistiken für $1 ($2).',
+	'languagestats-recenttranslations' => 'Aktuelle Übersetzungen',
 	'translate-language-code' => 'Sprachcode',
 	'translate-language-code-field-name' => 'Sprachcode:',
 	'translate-suppress-complete' => 'Unterdrücke komplett übersetzte Nachrichtengruppen',
@@ -3489,6 +3509,15 @@ Es wird empfohlen, Systemnachrichten mit der Spezialseite [[Special:Translate|{{
 	'translate-languagestats-groups' => ' # Ergänze die ID einer Systemnachrichtengruppe (eine per Zeile) um die Gruppen von 
  # Special:LanguageStats auszuschließen. Nicht existerende IDs
  # werden ignoriert.',
+	'supportedlanguages' => 'Unterstützte Sprachen',
+	'supportedlanguages-summary' => 'Diese Seite zeigt eine Liste aller unterstützen Sprachen auf {{SITENAME}}, zusammen mit den Namen der Übersetzer, die an der jeweiligen Sprache mitgearbeitet haben.
+Weitere Informationen zu einer Sprache, gibt es beim Klick auf den Portallink.
+Ein Klick auf den Namen eines Übersetzers, führt zur Benutzerseite.
+
+Falls eine Sprache nicht aufgeführt wird, gibt es Informationen zum Starten einer neuen Sprache unter „[[Translating:Process|Neue Sprachen]]“.
+
+Falls der Name eines Übersetzers fehlt, muss dieser zur Liste der Übersetzer im jeweiligen [[:Category:Languages|Portal]] hinzugefügt werden.
+Im Menü befindet sich ein Link zum Portal der eingestellten Sprache.',
 	'translate-save' => 'Speichern ($1)',
 	'translate-jssti-add' => 'Zur Liste hinzufügen',
 	'translate-group-desc-mediawikicore' => 'Diese Gruppe beinhaltet alle Nachrichten der aktuellen alpha-Version von MediaWiki ({{CURRENTVERSION}})',
@@ -4323,6 +4352,7 @@ $1',
  * @author Locos epraix
  * @author Pertile
  * @author Sanbec
+ * @author Tempestas
  * @author Translationista
  */
 $messages['es'] = array(
@@ -4489,6 +4519,13 @@ Todos los valores tienen límites superiores e inferiores.',
 	'translate-percentage-fuzzy' => 'Desactualizados',
 	'translate-nothing-to-do' => 'Todas las posibles traducciones parecen haber sido hechas.
 Se te anima a revisar los mensajes a través de [[Special:Translate|{{int:translate}}]].',
+	'supportedlanguages' => 'Idiomas soportados',
+	'supportedlanguages-summary' => 'Esta página muestra una lista de todos los idiomas soportados por {{SITENAME}}, junto con los nombres de los traductores que trabajan en ese idioma. Si desea información adicional acerca de un idioma en concreto, puede hacer clic en el enlace al portal para dicho idioma. Al hacer clic en el nombre de un traductor le llevará a su página de usuario. 
+
+Si un idioma no está en la lista, puede descubrir como empezar un proyecto de localización para un idioma en "[[Translating:Process|Nuevo Idioma]]".
+
+Si ayudó traduciendo a un lenguaje y su nombre no está incluido, por favor añada su nombre a la lista de traductores en [[:Category:Languages|portal]] para dicho idioma.
+Vea la barra del menú para un enlace al portal para el idioma de su preferencia.',
 	'translate-save' => 'Grabar($1)',
 	'translate-jssti-add' => 'Añadir a la lista',
 	'translate-group-desc-mediawikicore' => 'Este grupo de mensajes contiene los mensajes usados en la actual versión alpha de MediaWiki ({{CURRENTVERSION}})',
@@ -5317,6 +5354,15 @@ Vous êtes encouragé à revoir les messages depuis [[Special:Translate|{{int:tr
 	'translate-languagestats-groups' => ' # Ajoutez des ID de groupes de messages, un par ligne pour limiter les groupes
  # qui sont affichés sur Special:LanguageStats. Les groupes inexistants seront
  # ignorés.',
+	'supportedlanguages' => 'Langues prises en charge',
+	'supportedlanguages-summary' => "Cette page affiche une liste de toutes les langues prises en charge par {{SITENAME}}, avec les noms des traducteurs qui travaillent dans cette langue.
+Si vous souhaitez plus d'informations sur une langue particulière, vous pouvez cliquer sur le lien vers le portail de la langue.
+En cliquant sur le nom d'un traducteur vous amène à leur page utilisateur.
+
+Si une langue n'est pas répertoriée, vous pouvez trouver la façon de démarrer un projet de localisation dans une langue sur « [[Translating:Process|nouvelle langue]] ».
+
+Si vous traduisez dans une langue et votre nom ne figure pas, veuillez ajouter votre nom à la liste des traducteurs dans le [[:Category:Languages|portail]] de cette langue.
+Voyez la barre de menu pour un lien vers le portail de la langue de vos préférences.",
 	'translate-save' => 'Publier ($1)',
 	'translate-jssti-add' => 'Ajouter à la liste',
 	'translate-group-desc-mediawikicore' => 'Ce groupe de messages contient les messages utilisés dans la version alpha actuelle de MediaWiki ({{CURRENTVERSION}}).',
@@ -5682,6 +5728,7 @@ $messages['ga'] = array(
 
 /** Galician (Galego)
  * @author Alma
+ * @author Gallaecio
  * @author Toliño
  * @author Xosé
  */
@@ -5851,6 +5898,15 @@ A lista de linguas por defecto depende da súa.',
 	'translate-percentage-fuzzy' => 'Anticuadas',
 	'translate-nothing-to-do' => 'Semella que todas as traducións posibles foron feitas.
 Animámolo a que revise as mensaxes existentes mediante a páxina especial [[Special:Translate|{{int:translate}}]].',
+	'supportedlanguages' => 'Linguas soportadas',
+	'supportedlanguages-summary' => 'Esta páxina amosa unha lista de todas as linguas soportadas por {{SITENAME}}, así como os nomes dos tradutores que traballan nelas.
+Se quere obter máis información sobre unha lingua en concreto, pode premer na ligazón cara ao portal desa lingua.
+Se preme no nome dun tradutor accederá á súa páxina de usuario.
+
+Se algunha lingua non aparece listada, infórmese de como iniciar un novo proxecto de localización [[Translating:Process|aquí]].
+
+Se colaborou na tradución a unha lingua e o seu nome non aparece listado, engádao á lista de tradutores no [[:Category:Languages|portal]] desa lingua.
+Na barra do menú terá unha ligazón ao portal da súa lingua.',
 	'translate-save' => 'Gardar ($1)',
 	'translate-jssti-add' => 'Engadir á lista',
 	'translate-group-desc-mediawikicore' => 'Este grupo de mensaxes contén as mensaxes empregadas na versión alfa actual de MediaWiki ({{CURRENTVERSION}})',
@@ -8510,6 +8566,13 @@ $messages['ja'] = array(
 	'translate-languagestats-groups' => ' # Special:LanguageStatsに表示するメッセージグループを制限するには
  # メッセージグループのIDを1行1つずつ記入します。
  # 無効なIDは無視されます。',
+	'supportedlanguages' => 'サポートしている言語',
+	'supportedlanguages-summary' => 'このページには、{{SITENAME}}でサポートしている全言語の一覧、および各言語で活動している翻訳者の名前を表示しています。各言語についての詳細情報を知りたい場合は、その言語のポータルへのリンクをクリックしてください。翻訳者の名前をクリックすると、その人物の利用者ページに飛びます。
+
+一覧に記載されていない言語については、[[Translating:Process|New Language]] にて新しい言語へのローカリゼイションプロジェクトの開始方法が記されていますので参照してください。
+
+いずれかの言語への翻訳経験があるにもかかわらず、あなたの名前が一覧に含まれていない場合には、その言語の[[:Category:Languages|ポータル]]にて翻訳者一覧にご自身の名前を書き加えてください。
+個人設定で選んだ言語のポータルへのリンクは、メニューバーに表示されます。',
 	'translate-save' => '保存 ($1)',
 	'translate-jssti-add' => '下で選択した言語をリストに追加',
 	'translate-group-desc-mediawikicore' => 'このメッセージグループには MediaWiki の現アルファ版 ({{CURRENTVERSION}}) で使われているメッセージが含まれています',
@@ -10430,6 +10493,15 @@ $messages['mk'] = array(
 	'translate-percentage-fuzzy' => 'Застарени',
 	'translate-nothing-to-do' => 'Извршени се сите можни преводи.
 Ви препорачуваме да ги прегледате пораките преку [[Special:Translate|{{int:translate}}]].',
+	'supportedlanguages' => 'Поддржани јазици',
+	'supportedlanguages-summary' => 'На оваа страница се наведени сите јазици што ги поддржува {{SITENAME}}, како и имињата на преведувачите кои работат на секој јазик.
+Ако сакате повеќе информации за некој јазик, можете да кликнете на врската до матичниот портал за тој јазик.
+Со кликнување на името на некој преведувач ќе бидете одведени до неговата корисничка страница.
+
+Доколку не можете да најдете некој јазик на листата, можете да дознаете како да започнете проект за локализација на тој јазик на страницата „[[Translating:Process|Нов јазик]]“.
+
+Ако преведувате на некој јазик, но вашето име не е наведено, тогаш додајте се на листата на преведувачи која се наоѓа на [[:Category:Languages|матичниот портал]] за тој јазик.
+Во менито лево ќе најдете врска до матичниот портал на јазикот што го сакате.',
 	'translate-save' => 'Зачувај ($1)',
 	'translate-jssti-add' => 'Додај на листата',
 	'translate-group-desc-mediawikicore' => 'Оваа група содржи пораки кои се користат на моменталната алфа верзија на МедијаВики ({{CURRENTVERSION}})',
@@ -11550,6 +11622,8 @@ Alle verdiene har øvre og nedre grenser.',
 	'translate-translations-including-no-param' => 'Spesifiser en gyldig meldingsnøkkel i undersideparameteren.',
 	'languagestats' => 'Språkstatistikk',
 	'languagestats-summary' => 'Denne siden viser oversettelsesstatistikk for alle meldingsgrupper for et språk.',
+	'languagestats-stats-for' => 'Oversettelsesstatistikk for $1 ($2).',
+	'languagestats-recenttranslations' => 'siste oversettelser',
 	'translate-language-code' => 'Språkkode',
 	'translate-language-code-field-name' => 'Språkkode:',
 	'translate-suppress-complete' => 'Fullstendig undertrykk oversatte meldingsgrupper',
@@ -11560,6 +11634,15 @@ Alle verdiene har øvre og nedre grenser.',
 	'translate-percentage-fuzzy' => 'Utdatert',
 	'translate-nothing-to-do' => 'Alle mulige oversettelser ser ut til å ha blitt gjort.
 Du oppfordres til å revidere meldinger gjennom [[Special:Translate|{{int:translate}}]].',
+	'supportedlanguages' => 'Støttede språk',
+	'supportedlanguages-summary' => 'Denne siden viser en liste over alle språkene som er støttet av {{SITENAME}}, sammen med navnene på oversetterne som jobber med det språket.
+Om du vil ha mer informasjon om et bestemt språk kan du klikke på lenken til språkportalen deres.
+Når du klikker på navnet til en oversetter kommer du til brukersiden deres.
+
+Hvis et språk ikke er listet opp kan du finne ut hvordan du starter et lokaliseringsprosjekt for dette språket på «[[Translating:Process|Nytt språk]]».
+
+Hvis du oversetter til et språk og navnet ditt ikke er inkludert kan du legge til navnet ditt i listen over oversettere på [[:Category:Languages|språkportalen]] deres.
+Se menylinjen for en lenke til språkportalen til ditt språk.',
 	'translate-save' => 'Lagre ($1)',
 	'translate-jssti-add' => 'Legg til i listen',
 	'translate-group-desc-mediawikicore' => 'Denne meldingsgruppen inneholder meldinger brukt i den gjeldende alfaversjonen av MediaWiki ({{CURRENTVERSION}})',
@@ -11830,6 +11913,8 @@ La lista per defaut de las lengas varia en foncion de vòstra lenga.',
 	'translate-translations-including-no-param' => 'Especificatz un nom de messatge valid dins lo paramètre de sospagina',
 	'languagestats' => 'Estatisticas de lenga',
 	'languagestats-summary' => 'Aquesta pagina aficha las estatisticas de traduccion per totes los gropes de messatges per una lenga.',
+	'languagestats-stats-for' => 'Estatisticas de traduccion per $1 ($2).',
+	'languagestats-recenttranslations' => 'traduccions recentas',
 	'translate-language-code' => 'Còde de lenga',
 	'translate-language-code-field-name' => 'Còde de lenga :',
 	'translate-suppress-complete' => 'Suprimir completament los gropes de messatges traduches',
@@ -11840,6 +11925,7 @@ La lista per defaut de las lengas varia en foncion de vòstra lenga.',
 	'translate-percentage-fuzzy' => 'Depassats',
 	'translate-nothing-to-do' => 'Totas las traduccions possiblas semblan que son estadas efectuadas.
 Sètz encoratjat(ada) a repassar los messatges dempuèi [[Special:Translate|{{int:translate}}]].',
+	'supportedlanguages' => 'Lengas presas en carga',
 	'translate-save' => 'Publicar ($1)',
 	'translate-jssti-add' => 'Apondre a la lista',
 	'translate-group-desc-mediawikicore' => 'Aqueste grop de messatges conten los messatges utilizats dins la version alfa actuala de MediaWiki ({{CURRENTVERSION}})',
@@ -11991,6 +12077,7 @@ $messages['pdc'] = array(
  * @author Jwitos
  * @author Leinad
  * @author Maikking
+ * @author Marcin Łukasz Kiejzik
  * @author McMonster
  * @author Qblik
  * @author Sp5uhe
@@ -12150,6 +12237,8 @@ Domyślna lista języków zależy od Twojego języka.',
 	'translate-translations-including-no-param' => 'Podaj prawidłową nazwę strony w parametrze podstrony',
 	'languagestats' => 'Statystyka językowa',
 	'languagestats-summary' => 'Strona pokazuje statystykę tłumaczenia dla wszystkich grup komunikatów we wskazanym języku.',
+	'languagestats-stats-for' => 'Statystyki tłumaczenia dla $1 ($2)',
+	'languagestats-recenttranslations' => 'ostatnie tłumaczenia',
 	'translate-language-code' => 'Kod języka',
 	'translate-language-code-field-name' => 'Kod języka',
 	'translate-suppress-complete' => 'Pomiń grupy komunikatów całkowicie przetłumaczone',
@@ -12160,6 +12249,14 @@ Domyślna lista języków zależy od Twojego języka.',
 	'translate-percentage-fuzzy' => 'Zdezaktualizowane',
 	'translate-nothing-to-do' => 'Wszystkie możliwe tłumaczenia zostały wykonane.
 Proponujemy przejrzeć komunikaty korzystając z [[Special:Translate|{{int:translate}}]].',
+	'supportedlanguages' => 'Wspierane języki',
+	'supportedlanguages-summary' => 'Ta strona wyświetla listę wszystkich języków, obsługiwanych przez {{SITENAME}}, razem z nazwami tłumaczy, pracującyj nad danym językiem.
+Jeżeli chcesz dowiedzieć się więcej na temat określonego języka, kliknij na link do portalu dla tego języka.
+Jeżeli chcesz przejść do strony danego tłumacza, kliknij na jego nazwę.
+If a language is not listed, you can find out how to start a localization project for a language at "[[Translating:Process|New Language]]".
+
+If you translate to a language and your name is not included, please add your name to the list of translators on the [[:Category:Languages|portal]] for that language.
+See the menu bar for a link to the portal for the language of your preference.',
 	'translate-save' => 'Zapisz ($1)',
 	'translate-jssti-add' => 'Dodaj do listy',
 	'translate-group-desc-mediawikicore' => 'Grupa zawiera komunikaty wykorzystywane w bieżącej wersji alfa MediaWiki ({{CURRENTVERSION}})',
@@ -12412,6 +12509,8 @@ Tùit ij valor a l'han dij lìmit superior e anferior.",
 	'translate-translations-including-no-param' => "Për piasì, ch'a spessìfica na ciav ëd mëssagi bon-a ant ël paràmetr ëd la sot-pàgina",
 	'languagestats' => 'Statìstiche dle lenghe',
 	'languagestats-summary' => 'Sta pàgina-sì a smon le statìstiche ëd tradussion për tute le partìe ëd mëssagi për na lenga.',
+	'languagestats-stats-for' => 'Statìstiche ëd tradussion për $1 ($2).',
+	'languagestats-recenttranslations' => 'tradussion recente',
 	'translate-language-code' => 'Còdes ëd lenga',
 	'translate-language-code-field-name' => 'Còdes ëd lenga:',
 	'translate-suppress-complete' => 'Stërma le partìe ëd mëssagi voltà completament',
@@ -12422,6 +12521,15 @@ Tùit ij valor a l'han dij lìmit superior e anferior.",
 	'translate-percentage-fuzzy' => 'Veje',
 	'translate-nothing-to-do' => "Tute le tradussion possìbij a smijo esse stàite fàite.
 A l'é ancoragià a revisioné ij mëssagi con [[Special:Translate|{{int:translate}}]].",
+	'supportedlanguages' => 'Lenghe mantnùe',
+	'supportedlanguages-summary' => "Costa pàgina a smon na lista ëd tute le lenghe mantnùe da {{SITENAME}}, ansema ai nòm dij tradutor ch'a travajo an cole lenghe.
+S'a veul pì d'anformassion an sna lenga particolar, a peul ësgnaché an sl'anliura al portal ëd cola lenga.
+An sgnacand an sël nòm d'un tradutor, a va a soa pàgina d'utent.
+
+Se na lenga a l'é nen ant la lista, a peul trové coma anandié un proget ëd localisassion për na lenga a «[[Translating:Process|Lenga neuva]] ».
+
+Se chiel a fa 'd tradussion an na lenga e sò nòm a l'é nen comprèis, për piasì ch'a gionta sò nòm a la lista dij tradutor an sël [[:Category:Languages|portal]] ëd cola lenga.
+Ch'a bèica la bara ëd menù për n'anliura al portal ëd la lenga soa preferensa.",
 	'translate-save' => 'Salva ($1)',
 	'translate-jssti-add' => 'Gionté a la lista',
 	'translate-group-desc-mediawikicore' => 'Sta partìa ëd mëssagi-sì a conten ij mëssagi dovrà ant la version alfa corenta ëd MediaWiki ({{CURRENTVERSION}})',
@@ -12615,6 +12723,7 @@ Changes are not saved until you click save button below.',
 
 /** Portuguese (Português)
  * @author 555
+ * @author Crazymadlover
  * @author Hamilton Abreu
  * @author Lijealso
  * @author Malafaya
@@ -12711,7 +12820,7 @@ As alterações não serão gravadas até clicar no botão de gravar abaixo.',
 	'translate-checks-parameters-unknown' => '{{PLURAL:$2|O seguinte parâmetro é desconhecido|Os seguintes parâmetros são desconhecidos}}:
 <strong><nowiki>$1</nowiki></strong>',
 	'translate-checks-balance' => 'Há {{PLURAL:$2|um parênteses irregular|$2 parênteses irregulares}}: <strong><nowiki>$1</nowiki></strong>',
-	'translate-checks-links' => '{{PLURAL:$2|O link seguinte tem|Os $2 links seguintes têm}} problemas: <strong><nowiki>$1</nowiki></strong>',
+	'translate-checks-links' => '{{PLURAL:$2|O seguinte link tem|Os seguintes $2 links têm}} problemas: <strong><nowiki>$1</nowiki></strong>',
 	'translate-checks-links-missing' => '{{PLURAL:$2|O link seguinte está|Os $2 links seguintes estão}} em falta:
 <strong><nowiki>$1</nowiki></strong>',
 	'translate-checks-xhtml' => "Por favor, corrija {{PLURAL:$2|a seguinte ''tag''|as seguintes ''tags''}}:
@@ -12783,6 +12892,15 @@ Todos os valores têm limites máximos e mínimos.',
 	'translate-percentage-fuzzy' => 'Obsoletas',
 	'translate-nothing-to-do' => 'Todas as traduções possíveis parecem já ter sido feitas.
 Encorajamo-lo a rever mensagens através de [[Special:Translate|{{int:translate}}]].',
+	'supportedlanguages' => 'Línguas suportadas',
+	'supportedlanguages-summary' => 'Esta página apresenta uma lista de todas as línguas suportadas pela {{SITENAME}}, com os nomes dos tradutores de cada lingua.
+Para obter mais informação sobre uma língua em particular, pode clicar o link para o portal dessa língua.
+Clicar o nome de um tradutor conduz à página de utilizador desse tradutor.
+
+Se uma língua não aparecer na lista, pode descobrir como iniciar um projecto de localização para uma língua em "[[Translating:Process|Língua nova]]".
+
+Se faz traduções para uma língua e não aparece na lista, adicione o seu nome à lista de tradutores no [[:Category:Languages|portal]] dessa língua, por favor.
+Na barra lateral à esquerda existe um link para o portal da língua da sua preferência.',
 	'translate-save' => 'Gravar ($1)',
 	'translate-jssti-add' => 'Adicionar à lista',
 	'translate-group-desc-mediawikicore' => 'Este grupo contém as mensagens utilizadas na actual versão alfa do MediaWiki ({{CURRENTVERSION}})',
@@ -13370,6 +13488,7 @@ $messages['roa-tara'] = array(
  * @author Ahonc
  * @author AlexSm
  * @author Ferrer
+ * @author Huuchin
  * @author Kaganer
  * @author Lockal
  * @author MaxSem
@@ -13541,6 +13660,15 @@ $messages['ru'] = array(
 	'translate-percentage-fuzzy' => 'Устарело',
 	'translate-nothing-to-do' => 'По всей видимости, все возможные переводы уже сделаны.
 Вы можете проверить сообщения с помощью [[Special:Translate|{{int:translate}}]].',
+	'supportedlanguages' => 'Поддерживаемые языки',
+	'supportedlanguages-summary' => 'На этой странице приведён список поддерживаемых проектом {{SITENAME}} языков и имена переводчиков, работающих над ними.
+Более подробную информацию о конкретном языке, вы можете найти нажав на ссылку языкового портала соответствующего языка.
+Нажмите на имя переводчика, чтобы попасть на его личную страницу.
+
+Если язык отсутствует в списке, вы можете узнать, как начать проект локализации на странице «[[Translating:Process|Новый язык]]».
+
+Если вы переводите на некоторый язык, но ваше имя не включено в список, пожалуйста, добавить своё имя в список переводчиков на [[:Category:Languages|портале]] данного языка.
+Ссылку на языковой портал языка из ваших настроек можно найти в меню.',
 	'translate-save' => 'Сохранить ($1)',
 	'translate-jssti-add' => 'Добавить в список',
 	'translate-group-desc-mediawikicore' => 'Эта группа сообщений содержит сообщения, используемые в текущей альфа-версии MediaWiki ({{CURRENTVERSION}})',
@@ -13661,6 +13789,7 @@ $messages['rue'] = array(
 	'translate-submit' => 'Вказати',
 	'translate-page-navigation-legend' => 'Навіґація',
 	'translate-page-description-legend' => 'Інформація о ґрупі',
+	'languagestats' => 'Штатістіка языків',
 	'translate-js-next' => 'Уложыти і отворити далше',
 	'translate-js-skip' => 'Перескоч на далше',
 	'translate-js-history' => 'Історія перекладу',
@@ -14185,7 +14314,7 @@ Razlog:
 	'translate-page-task' => 'Želim',
 	'translate-page-group' => 'Skupina',
 	'translate-page-language' => 'Jezik',
-	'translate-page-limit' => 'Limit',
+	'translate-page-limit' => 'Omejitev',
 	'translate-page-limit-option' => '$1 {{PLURAL:$1|sporočilo|sporočili|sporočila|sporočil}} na stran',
 	'translate-submit' => 'Dobi',
 	'translate-page-navigation-legend' => 'Navigacija',
@@ -16923,6 +17052,8 @@ $messages['xal'] = array(
 	'translate-edit-goto-next' => 'Дарук халхиг чиклх',
 	'translate-pref-editassistlang' => 'Туслмҗин келс',
 	'translate-language' => 'Келн',
+	'translate-js-next' => 'Хадһлад, дарук секх',
+	'translate-js-skip' => 'Дарук',
 );
 
 /** Mingrelian (მარგალური)

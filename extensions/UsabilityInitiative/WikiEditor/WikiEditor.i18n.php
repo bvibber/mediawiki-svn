@@ -79,6 +79,7 @@ $messages['be-tarask'] = array(
 $messages['bg'] = array(
 	'wikieditor' => 'Подобрен интерфейс за редактиране на уикитекст',
 	'wikieditor-wikitext-tab' => 'Уикитекст',
+	'wikieditor-loading' => 'Зареждане',
 );
 
 /** Bengali (বাংলা)
@@ -111,10 +112,12 @@ $messages['bs'] = array(
 );
 
 /** Catalan (Català)
+ * @author Paucabot
  * @author Solde
  */
 $messages['ca'] = array(
 	'wikieditor-wikitext-tab' => 'Wikitext',
+	'wikieditor-loading' => 'Carregant',
 );
 
 /** Czech (Česky)
@@ -487,13 +490,14 @@ $messages['pt'] = array(
 );
 
 /** Brazilian Portuguese (Português do Brasil)
+ * @author 555
  * @author Daemorris
  * @author Everton137
  */
 $messages['pt-br'] = array(
-	'wikieditor' => 'Interface avançada de edição de textowiki',
+	'wikieditor' => 'Interface avançada de edição de wikitexto',
 	'wikieditor-desc' => 'Fornece uma interface extensível de edição de textowiki e vários módulos funcionais',
-	'wikieditor-wikitext-tab' => 'textowiki',
+	'wikieditor-wikitext-tab' => 'Wikitexto',
 	'wikieditor-loading' => 'Carregando',
 );
 

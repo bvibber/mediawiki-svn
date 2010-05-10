@@ -112,21 +112,23 @@ $messages['be-tarask'] = array(
  */
 $messages['br'] = array(
 	'plotters-desc' => 'Lezel a ra an implijerien da implijout JavaScript personelaet er balizennoù jsplot',
-	'plotters' => 'Treserioù grafek',
-	'plotters-title' => 'Treserioù grafek',
+	'plotters' => 'Treselloù grafek',
+	'plotters-title' => 'Treselloù grafek',
+	'plotters-pagetext' => "Setu aze a-is roll an treselloù dibar a c'hall an implijerien ober ganto en o balizennoù jsplot, evel m'eo termenet e [[MediaWiki:Plotters-definition]].
+Dre ar brassell-mañ e c'haller gwelet aes ar c'hemennadennoù reizhiad eo termenet ar chod ganto ha termenadur pep tresell.",
 	'plotters-uses' => 'Implijoù',
-	'plotters-missing-script' => "N'eo bet termenet skript ebet.",
+	'plotters-missing-script' => "N'eus bet termenet skript ebet.",
 	'plotters-missing-arguments' => "N'eus bet spisaet arguzenn ebet.",
 	'plotters-excessively-long-scriptname' => "Re hir eo anv ar skript.
-Termenit ur skript gant un anv 255 arouezenn hir d'ar muiañ.",
+Termenit ur skript dezhañ un anv a 255 arouezenn d'ar muiañ.",
 	'plotters-excessively-long-preprocessorname' => "Re hir eo anv ar rakprosesor.
-Termenit un anv hag a vefe gant un hirder a 255 arouezenn pe nebeutoc'h.",
-	'plotters-excessively-long-name' => "Re hir eo anv ar graf.
-Termenit un anv hag a vefe gant un hirder a 255 arouezenn pe nebeutoc'h.",
-	'plotters-excessively-long-tableclass' => "Re hir eo renk an daolenn. 
-Termenit un anv hag a vefe gant un hirder a 255 arouezenn pe nebeutoc'h.",
+Termenit ur rakprosesor dezhañ un anv a 255 arouezenn d'ar muiañ.",
+	'plotters-excessively-long-name' => "Re hir eo anv ar graf. 
+Termenit ur graf dezhañ un anv a 255 arouezenn d'ar muiañ.",
+	'plotters-excessively-long-tableclass' => "Re hir eo rummad an daolenn. 
+Termenit ur rummad taolenn na'z aio ket en tu all da 255 arouezenn.",
 	'plotters-no-data' => "N'eus bet pourchaset roadenn ebet.",
-	'plotters-invalid-renderer' => "Diuzet eo bet ur c'heflusker deouez direizh.",
+	'plotters-invalid-renderer' => "Diuzet ez eus bet ur c'heflusker rentañ direizh.",
 	'plotters-errors' => '{{PLURAL:$1|fazi|fazioù}} treselloù :',
 );
 

@@ -110,7 +110,9 @@ $messages['af'] = array(
  * @author Juanpabl
  */
 $messages['an'] = array(
+	'recordadmin-buttoncreate' => 'Creyar',
 	'recordadmin-buttonsave' => 'Alzar',
+	'recordadmin-actions' => 'Accions',
 );
 
 /** Arabic (العربية)

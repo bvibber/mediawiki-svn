@@ -79,6 +79,8 @@ Return to <span class="plainlinks">[$1 $2]</span>.',
 * Link wizard:  An easy-to-use tool allows you to add links to other wiki pages as well as links to external sites.
 * Search improvements: We have improved search suggestions to get you to the page you are looking for more quickly.
 * Other new features:  We have also introduced a table wizard to make creating tables easier and find and a replace feature to simplify page editing.",
+	'prefswitch-main-anon' => "===Take Me Back===
+If you would like to turn off the new features, <span class=\"plainlinks\">[$1 click here]</span>. You will be asked to login or create an account first.",
 	'prefswitch-main-on' => "===Feedback?===
 We would love to hear from you.  Please visit our <span class=\"plainlinks\">[$1 feedback page]</span>.
 ===Take me back!===
@@ -324,6 +326,10 @@ Dibabit kement tra hag a zegouezh.',
 	'prefswitch-success-feedback' => "Kaset eo bet hoc'h evezhiadennoù.",
 	'prefswitch-return' => '<hr style="clear:both">
 Distreiñ da <span class="plainlinks">[$1 $2]</span>.',
+	'prefswitch-main-on' => '===Evezhiadennoù ?===
+Plijet e vefemp o klevet an doare diganeoc\'h.  Kit da welet hor <span class="plainlinks">[$1 pajenn evezhiadennoù]</span>.
+===Trawalc\'h gant ar jeu-se !===
+Mar fell deoc\'h diweredekaat an arc\'hwelioù nevez, e c\'hallit <span class="plainlinks">[$2 klikañ amañ]</span>.',
 	'prefswitch-main-off' => '===Un taol-esae !===
 MAr fell deoc\'h ober gant ar barregezhioù nevez, <span class="plainlinks">[$1 klikit amañ]</span>.',
 	'prefswitch-survey-intro-feedback' => "Plijet-bras e vefemp o kaout keloù diganeoc'h.
@@ -458,6 +464,7 @@ I'n helpu ni i'w gwella, cwblhewch yr arolwg dewisol isod.",
 
 /** German (Deutsch)
  * @author Als-Holder
+ * @author Kghbln
  * @author The Evil IP address
  */
 $messages['de'] = array(
@@ -506,6 +513,8 @@ Zurück zu <span class="plainlinks">[$1 $2]</span>.',
 * Link-Assistent: Ein einfach zu bedienender Dialog ermöglicht das Hinzufügen von Links sowohl zu anderen Wiki-Seiten als auch zu externen Seiten.
 * Suche: Wir haben die Suchvorschläge verbessert, damit du schneller zu der von dir gesuchten Seite kommst.
 * Weiteres: Ein Tabellen-Assistent ermöglicht das einfache Erstellen von Tabellen und ein Suchen-und-Ersetzen-Dialog vereinfacht die Seitenbearbeitung.',
+	'prefswitch-main-anon' => '===Zurück===
+Sofern du die neuen Funktionen deaktivieren möchtest, dann <span class="plainlinks">[$1 klicke hier]</span>. Du wirst dann gebeten dich anzumelden oder zunächst ein neues Benutzerkonto zu erstellen.',
 	'prefswitch-main-on' => '=== Feedback? ===
 Wir würden uns freuen, von dir zu hören.
 Bitte besuche unsere <span class="plainlinks">[$1 Feedback-Seite]</span>.
@@ -986,6 +995,8 @@ Voltar a <span class="plainlinks">[$1 $2]</span>.',
 * Asistente para as ligazóns: trátase dunha simple ferramenta que permite engadir ligazóns cara a outras páxinas da Wikipedia, así como ligazóns a sitios web externos.
 * Melloras nas procuras: melloramos as suxestións de busca para que dea coa páxina que está a procurar máis rapidamente.
 * Outras novas características: tamén introducimos un asistente para as táboas, que fai a creación de táboas máis fácil, e unha característica para atopar e substituír elementos, que simplifica a edición da páxina.',
+	'prefswitch-main-anon' => '===Volver atrás===
+Se quere desactivar as novas características, <span class="plainlinks">[$1 prema aquí]</span>. Pediráselle que primeiro acceda ao sistema ou que cree unha conta.',
 	'prefswitch-main-on' => '===Opinións?===
 Gustaríanos saber o que lle parece. Visite a nosa <span class="plainlinks">[$1 páxina de comentarios]</span>.
 ===Quero voltar!===
@@ -1532,6 +1543,8 @@ $messages['ko'] = array(
 * 링크 마법사:  사용하기 쉬운 도구가 다른 문서나 외부로 링크를 쉽게 걸 수 있도록 도와 줄 것입니다.
 * 검색 기능 향상: 찾는 문서를 더욱 쉽게 찾을 수 있도록 검색어 제안 기능을 향상시켰습니다.
 * 다른 새로운 기능:  표를 쉽게 만들 수 있도록 표 마법사와 문서 편집을 간단하게 하기 위해 찾아 바꾸기 기능을 도입했습니다.',
+	'prefswitch-main-anon' => '===돌아갈래요===
+새 기능을 끄기를 원하신다면 <span class="plainlinks">[$1 여기]</span>를 클릭해주세요. 로그인하거나 계정을 먼저 생성하여야 합니다.',
 	'prefswitch-main-on' => '===피드백?===
 우리는 당신에게 피드백을 받기를 원합니다. <span class="plainlinks">[$1 피드백]</span>을 남겨주세요.
 ===돌아갈래요!===
@@ -2170,6 +2183,7 @@ Da nam jih pomagate izboljšati, prosimo izpolnite neobvezno anketo spodaj.',
 $messages['te'] = array(
 	'prefswitch-survey-true' => 'అవును',
 	'prefswitch-survey-false' => 'కాదు',
+	'prefswitch-survey-submit-off' => 'కొత్త సౌలభ్యాలని నిలిపివేయి',
 	'prefswitch-survey-question-likedislike' => 'కొత్త సౌలభ్యాలలో మీకు ఏమేం నచ్చాయి?
 ఏవి నచ్చలేదు?',
 	'prefswitch-survey-answer-whyoff-hard' => 'వాడడానికి చాలా కష్టంగా ఉంది.',
@@ -2242,27 +2256,63 @@ Lütfen uygun olanları seçin.',
 
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
+ * @author Vinhtantran
  */
 $messages['vi'] = array(
+	'prefswitch' => 'Chuyển đổi tùy chọn Sáng kiến Khả dụng',
 	'prefswitch-desc' => 'Cho phép những người dùng đổi qua lại giữa các bộ tùy chọn.',
 	'prefswitch-survey-true' => 'Có',
 	'prefswitch-survey-false' => 'Không',
 	'prefswitch-survey-submit-off' => 'Tắt các tính năng mới',
 	'prefswitch-survey-cancel-off' => 'Để tiếp tục sử dụng các tính năng mới, hãy trở về $1.',
+	'prefswitch-survey-submit-feedback' => 'Gửi phản hồi',
+	'prefswitch-survey-cancel-feedback' => 'Nếu bạn không muốn phản hồi, bạn có thể trở lại $1.',
+	'prefswitch-survey-question-likedislike' => 'Bạn thích điều gì ở các tính năng mới?
+Bạn không thích điều gì ở các tính năng?',
+	'prefswitch-survey-question-whyoff' => 'Tại sao bạn lại tắt các tính năng mới?
+Xin hãy chọn tất cả các ý thích hợp.',
 	'prefswitch-survey-answer-whyoff-hard' => 'Nó khó sử dụng quá.',
 	'prefswitch-survey-answer-whyoff-didntwork' => 'Nó không hoạt động tốt.',
+	'prefswitch-survey-answer-whyoff-notpredictable' => 'Nó không vận hành như kỳ vọng.',
+	'prefswitch-survey-answer-whyoff-didntlike-look' => 'Tôi không thích bề ngoài của nó.',
+	'prefswitch-survey-answer-whyoff-didntlike-layout' => 'Tôi không thích những thẻ và cách trình bày mới.',
 	'prefswitch-survey-answer-whyoff-didntlike-toolbar' => 'Tôi không thích thanh công cụ mới.',
 	'prefswitch-survey-answer-whyoff-other' => 'Lý do khác:',
 	'prefswitch-survey-question-browser' => 'Bạn hay sử dụng trình duyệt nào?',
 	'prefswitch-survey-answer-browser-other' => 'Trình duyệt khác:',
 	'prefswitch-survey-question-os' => 'Bạn hay sử dụng hệ điều hành nào?',
 	'prefswitch-survey-answer-os-other' => 'Hệ điều hành khác:',
+	'prefswitch-survey-question-res' => 'Độ phân giải màn hình của bạn là bao nhiêu?',
 	'prefswitch-title-on' => 'Có gì mới?',
+	'prefswitch-title-switched-on' => 'Mời thưởng thức!',
 	'prefswitch-title-off' => 'Tắt các tính năng mới',
 	'prefswitch-title-switched-off' => 'Cám ơn',
+	'prefswitch-title-feedback' => 'Phản hồi',
 	'prefswitch-success-on' => 'Các tính năng mới đang bật.',
 	'prefswitch-success-off' => 'Các tính năng mới đang tắt.',
+	'prefswitch-success-feedback' => 'Phản hồi của bạn đã được gửi.',
 	'prefswitch-return' => '<hr style="clear:both">
 Trở về <span class="plainlinks">[$1 $2]</span>.',
+	'prefswitch-main' => 'Chúng ta đã nỗ lực để làm cho mọi người dùng cảm thấy mọi thứ dễ dàng hơn. Chúng tôi cảm thấy háo hức muốn chia sẻ một số cải tiến, bao gồm một giao diện hoàn toàn mới và các tính năng soạn thảo đã được đơn giản hóa. Cải tiến tính khả dụng của các dự án là ưu tiên của Wikimedia Foundation và chúng tôi sẽ chia sẻ thêm nhiều cập nhật nữa trong tương lai.
+
+[[File:UsabilityNavigation.png|right|link=|Screenshot of the new navigation]]
+[[File:UsabilityToolbar.png|right|link=|Screenshot of the enhanced edit toolbar]]
+[[File:UsabilityDialogs.png|right|link=|Screenshot of the new content generation dialogs]]
+===Dưới đây là những thay đổi===
+* Duyệt trang: Chúng tôi đã cải tiến việc duyệt các mục khi đọc và sửa trang. Giờ đây, các thẻ nằm ở đầu trang đã ghi một cách rõ ràng là bạn đang xem trang hay trang thảo luận, và bạn đang đọc hay đang sửa một trang.
+* Cải tiến thanh công cụ soạn thảo: Chúng tôi đã sắp xếp lại thanh công cụ soạn thảo để giúp nó dễ sử dụng hơn. Giờ đây, việc định dạng trang đã đơn giản hơn và trực giác hơn.
+* Hướng dẫn tạo liên kết: Một công cụ rất dễ sử dụng giúp bạn thêm liên kết đến các trang wiki khác cũng như liên kết ra các trang bên ngoài.
+* Cải tiến tìm kiếm: Chúng tôi đã cải tiến những gợi ý tìm kiếm để giúp bạn tìm được trang mình muốn nhanh chóng hơn.
+* Các tính năng mới khác: Chúng tôi cũng đã giới thiệu hướng dẫn tạo bảng để giúp tạo bảng dễ dàng hơn, rồi tính năng tìm kiếm và thay thế để đơn giản hóa việc sửa trang.',
+	'prefswitch-main-on' => '===Phản hồi?===
+Chúng tôi mong muốn được nghe bạn nói. Xin mời thăm <span class="plainlinks">[$1 trang phản hồi]</span> của chúng tôi.
+===Đưa tôi trở lại!===
+Nếu bạn muốn tắt các tính năng mới đi, xin <span class="plainlinks">[$2 nhấn vào đây]</span>.',
+	'prefswitch-main-off' => '===Dùng thử!===
+Nếu bạn muốn bật các tính năng mới, xin <span class="plainlinks">[$1 nhấn vào đây]</span>.',
+	'prefswitch-survey-intro-feedback' => 'Chúng tôi mong muốn được nghe bạn nói.
+Xin vui lòng điền vào bảng điều tra phía dưới.',
+	'prefswitch-survey-intro-off' => 'Cảm ơn bạn đã dùng thử những tính năng mới của chúng tôi.
+Để giúp chúng tôi cải tiến chúng hơn nữa, xin vui lòng điền vào bảng điều tra phía dưới.',
 );
 

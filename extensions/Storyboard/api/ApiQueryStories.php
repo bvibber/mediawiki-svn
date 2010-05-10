@@ -43,25 +43,52 @@ class ApiQueryStories extends ApiQueryBase {
 	 * Retrieve the stories from the database.
 	 */
 	public function execute() {
+		global $wgUser, $wgLang;
+		
 		// Get the requests parameters.
 		$params = $this->extractRequestParams();
 		
 		$this->addTables( 'storyboard' );
+		
 		$this->addFields( array(
 			'story_id',
 			'story_author_id',
 			'story_author_name',
 			'story_author_image',
+			'story_image_hidden',
+			'story_author_location',
 			'story_title',
 			'story_text',
 			'story_created',
 			'story_modified'
 		) );
-		$this->addWhere( array(
-			'story_state' => Storyboard_STORY_PUBLISHED
-		) );
+		
+		$isReview = !is_null( $params['review'] );
+		
+		if ( $isReview && !$wgUser->isAllowed( 'storyreview' ) ) {
+			$this->dieUsageMsg( array( 'badaccess-groups' ) );
+		}
+		
+		if ( $isReview ) {
+			if ( !isset( $params['state'] ) ) {
+				$this->dieUsageMsg( array( 'missingparam', 'state' ) );
+			}			
+			
+			$this->addFields( array(
+				
+			) );
+
+			$this->addWhere( array(
+				'story_state' => $params['state']
+			) );			
+		} else {
+			$this->addWhere( array(
+				'story_state' => Storyboard_STORY_PUBLISHED
+			) );			
+		}
+		
 		$this->addOption( 'LIMIT', $params['limit'] + 1 );
-		$this->addOption( 'ORDER BY', 'story_modified, story_id DESC' );
+		$this->addOption( 'ORDER BY', 'story_modified DESC, story_id DESC' );
 
 		if ( !is_null( $params['language'] ) ) {
 			$this->addWhere( "story_lang_code = '$params[language]'" );
@@ -81,7 +108,7 @@ class ApiQueryStories extends ApiQueryBase {
 
 			$this->addWhere(
 				"story_modified < $storyModified OR " .
-				"(story_modified = $storyId AND story_id <= $storyModified)"
+				"(story_modified = $storyModified AND story_id <= $storyId)"
 			);
 		}
 		
@@ -95,19 +122,31 @@ class ApiQueryStories extends ApiQueryBase {
 				$this->setContinueEnumParameter( 'continue', wfTimestamp( TS_MW, $story->story_modified ) . '-' . $story->story_id );
 				break;
 			}
-			$res = array(
+			
+			$result = array(
 				'id' => $story->story_id,
 				'author' => $story->story_author_name,
 				'title' => $story->story_title,
-				//'created' => wfTimestamp(  TS_ISO_8601, $story->story_created ),
-				//'modified' => wfTimestamp(  TS_ISO_8601, $story->story_modified ),
-				'created' => $story->story_created,
-				'modified' => $story->story_modified,				
+				'creationtime' => $wgLang->time( $story->story_created ),
+				'creationdate' => $wgLang->date( $story->story_created ),
+				'modificationtime' => $wgLang->time( $story->story_modified ),
+				'modificationdate' => $wgLang->date( $story->story_modified ),			
+				'location' => $story->story_author_location,
 				'imageurl' => $story->story_author_image,
-				'permalink' => SpecialPage::getTitleFor( 'story', $story->story_title )->getFullURL()
+				'imagehidden' => $story->story_image_hidden,
+				'permalink' => SpecialPage::getTitleFor( 'story', $story->story_title )->getFullURL(),
 			);
-			ApiResult::setContent( $res, ( is_null( $story->story_text ) ? '' : $story->story_text ) );
-			$this->getResult()->addValue( array( 'query', $this->getModuleName() ), null, $res );
+			
+			if ( $isReview ) {
+				$result['modifyurl'] = SpecialPage::getTitleFor( 'story', $story->story_title )->getFullURL(
+					'action=edit&returnto=' . SpecialPage::getTitleFor( 'storyreview' )->getPrefixedText()
+				);
+				
+				$result['state'] = (int)$params['state'];
+			}			
+			
+			ApiResult::setContent( $result, ( is_null( $story->story_text ) ? '' : $story->story_text ) );
+			$this->getResult()->addValue( array( 'query', $this->getModuleName() ), null, $result );
 		}
 		
 		// FIXME: continue parameter is not getting passed with the result
@@ -130,6 +169,10 @@ class ApiQueryStories extends ApiQueryBase {
 			'continue' => null,
 			'language' => array(
 				ApiBase :: PARAM_TYPE => 'string',
+			),
+			'review' => null,
+			'state' => array(
+				ApiBase :: PARAM_TYPE => array( Storyboard_STORY_UNPUBLISHED, Storyboard_STORY_PUBLISHED, Storyboard_STORY_HIDDEN ),
 			)
 		);
 	}
@@ -143,6 +186,8 @@ class ApiQueryStories extends ApiQueryBase {
 			'continue' => 'Number of the first story to return',
 			'limit'   => 'Amount of stories to return',
 			'language' => 'The language of the stories to return',
+			'review' => 'Indicates that storyreview parameters shoudl be passed when set',
+			'state' => 'The state of the stories which should be returned'
 		);
 	}
 
@@ -153,7 +198,18 @@ class ApiQueryStories extends ApiQueryBase {
 	public function getDescription() {
 		return 'This module returns stories for a storyboard';
 	}
-
+	
+	/**
+	 * (non-PHPdoc)
+	 * @see includes/api/ApiBase#getPossibleErrors()
+	 */
+	public function getPossibleErrors() {
+		return array_merge( parent::getPossibleErrors(), array(
+			array( 'badaccess-groups' ),
+			array( 'missingparam', 'state' ),
+		) );
+	}	
+	
 	/**
 	 * (non-PHPdoc)
 	 * @see includes/api/ApiBase#getExamples()

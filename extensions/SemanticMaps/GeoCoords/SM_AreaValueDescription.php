@@ -14,25 +14,22 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 }
 
 /**
- * Description of one data value of type Goegraphical Areas.
+ * Description of a geographical area defined by a coordinates set and a distance to the bounds.
+ * The bounds are a 'rectangle' (but bend due to the earhs curvature), as the resulting query
+ * would otherwise be to resource intensive.
  *
  * @author Jeroen De Dauw
  * 
  * @ingroup SemanticMaps
- * 
- * TODO: storing the distance here does not seem quite right
  */
 class SMAreaValueDescription extends SMWValueDescription {
 	protected $mBounds = false;
 
-	public function __construct( SMGeoCoordsValue $dataValue, $radius, $comparator = SMW_CMP_EQ ) {
-		parent::__construct( $dataValue, $comparator );
-		
-		// TODO: get user provided distance
-		// global $smgGeoCoordDistance;
-		// $distance = $smgGeoCoordDistance; 		
+	public function __construct( SMGeoCoordsValue $dataValue, $radius ) {
+		parent::__construct( $dataValue, SM_CMP_NEAR );	
 
-		// If the MapsGeoFunctions class is not loaded, we can not create the bounding box, so don't add any conditions.
+		// If the MapsGeoFunctions class is not loaded, we can not create the bounding box,
+		// so don't add any conditions.
 		if ( self::geoFunctionsAreAvailable() ) {
 			$dbKeys = $dataValue->getDBkeys();
 			
@@ -45,9 +42,10 @@ class SMAreaValueDescription extends SMWValueDescription {
 			);
 		}
 	}
-	
+
 	/**
 	 * @see SMWDescription:getQueryString
+	 * 
 	 * @param Boolean $asvalue
 	 */
 	public function getQueryString( $asValue = false ) {
@@ -75,9 +73,12 @@ class SMAreaValueDescription extends SMWValueDescription {
 		}
     }
     
+    /**
+     * Returns the bounds of the area.
+     */
     public function getBounds() {
     	return $this->mBounds;
-    }
+    }    
     
 	/**
 	 * Returns the lat and lon limits of a bounding box around a circle defined by the provided parameters.
@@ -88,11 +89,13 @@ class SMAreaValueDescription extends SMWValueDescription {
 	 * @return An associative array containing the limits with keys north, east, south and west.
 	 */
 	private static function getBoundingBox( array $centerCoordinates, $circleRadius ) {
+		$centerCoordinates = array('lat' => 0, 'lon' => 0);
+		var_dump($centerCoordinates);
 		$north = MapsGeoFunctions::findDestination( $centerCoordinates, 0, $circleRadius );
 		$east = MapsGeoFunctions::findDestination( $centerCoordinates, 90, $circleRadius );
 		$south = MapsGeoFunctions::findDestination( $centerCoordinates, 180, $circleRadius );
 		$west = MapsGeoFunctions::findDestination( $centerCoordinates, 270, $circleRadius );
-
+var_dump($north);var_dump($east);var_dump($south);var_dump($west);exit;
 		return array(
 			'north' => $north['lat'],
 			'east' => $east['lon'],
@@ -105,7 +108,43 @@ class SMAreaValueDescription extends SMWValueDescription {
 	 * Returns a boolean indicating if MapsGeoFunctions is available. 
 	 */
 	private static function geoFunctionsAreAvailable() {
-		global $wgAutoloadClasses;
-		return array_key_exists( 'MapsGeoFunctions', $wgAutoloadClasses );
+		return class_exists( 'MapsGeoFunctions' );
 	}
+	
+	/**
+	 * @see SMWDescription::getSQLCondition
+	 * 
+	 * @param string $tableName
+	 * @param array $fieldNames
+	 * @param DatabaseBase $dbs
+	 * 
+	 * @return true
+	 */
+	public function getSQLCondition( $tableName, array $fieldNames, DatabaseBase $dbs ) {
+		$dataValue = $this->getDatavalue();
+
+		// Only execute the query when the description's type is geographical coordinates,
+		// the description is valid, and the near comparator is used.
+		if ( $dataValue->getTypeID() != '_geo'
+			|| !$dataValue->isValid()
+			) return true;
+		
+		$boundingBox = $this->getBounds();
+			
+		$north = $dbs->addQuotes( $boundingBox['north'] );
+		$east = $dbs->addQuotes( $boundingBox['east'] );
+		$south = $dbs->addQuotes( $boundingBox['south'] );
+		$west = $dbs->addQuotes( $boundingBox['west'] );
+
+		// TODO: Would be safer to have a solid way of determining what's the lat and lon field, instead of assuming it's in this order.
+		$conditions = array();
+		$conditions[] = "{$tableName}.{$fieldNames[0]} < $north";
+		$conditions[] = "{$tableName}.{$fieldNames[0]} > $south";
+		$conditions[] = "{$tableName}.{$fieldNames[1]} < $east";
+		$conditions[] = "{$tableName}.{$fieldNames[1]} > $west";
+		
+		$whereSQL .= implode( ' && ', $conditions );
+
+		return true;
+	}	
 }

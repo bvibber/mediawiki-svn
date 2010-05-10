@@ -216,6 +216,13 @@ $messages['km'] = array(
 	'clientside-desc' => 'ផ្គត់ផ្គង​មុខងារ​ក្នុងការ​បង្កើត​កូដ​ក្នុងទម្រង់​ client-side ដូចជា HTML, CSS និង JavaScript',
 );
 
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'clientside-desc' => 'HTML, CSS, 자바스크립트와 같은 클라이언트측 코드 생성을 위한 기능을 제공',
+);
+
 /** Colognian (Ripoarisch)
  * @author Purodha
  */

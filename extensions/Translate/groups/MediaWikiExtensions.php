@@ -435,6 +435,7 @@ class AllWikimediaExtensionsGroup extends AllMediawikiExtensionsGroup {
 		'ext-sitematrix',
 		'ext-skinperpage', // Wikimediafoundation.org
 		'ext-spamblacklist',
+		'ext-strategywiki-activetaskforces', // 2010-05-08: strategywiki.wikimedia.org
 		'ext-syntaxhighlightgeshi',
 		'ext-timeline',
 		'ext-titleblacklist',
@@ -460,6 +461,7 @@ class AllWikimediaExtensionsGroup extends AllMediawikiExtensionsGroup {
 		'ext-ui-wikieditor-preview',
 		'ext-ui-wikieditor-publish',
 		'ext-ui-wikieditor-templateeditor',
+		'ext-ui-wikieditor-templates',
 		'ext-ui-wikieditor-toc',
 		'ext-ui-wikieditor-toolbar',
 		'ext-uploadblacklist',
@@ -715,6 +717,7 @@ class AllUsabilityInitiativeExtensionsGroup extends AllMediawikiExtensionsGroup 
 		'ext-ui-wikieditor-preview',
 		'ext-ui-wikieditor-publish',
 		'ext-ui-wikieditor-templateeditor',
+		'ext-ui-wikieditor-templates',
 		'ext-ui-wikieditor-toc',
 		'ext-ui-wikieditor-toolbar',
 	);

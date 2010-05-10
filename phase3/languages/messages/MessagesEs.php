@@ -545,7 +545,7 @@ $messages = array(
 'otherlanguages'    => 'Otros idiomas',
 'redirectedfrom'    => '(Redirigido desde $1)',
 'redirectpagesub'   => 'Página redirigida',
-'lastmodifiedat'    => 'Esta página fue modificada por última vez el $2, $1.',
+'lastmodifiedat'    => 'Esta página fue modificada por última vez el $1, a las $2.',
 'viewcount'         => 'Esta página ha sido visitada {{PLURAL:$1|una vez|$1 veces}}.',
 'protectedpage'     => 'Página protegida',
 'jumpto'            => 'Saltar a',
@@ -2770,6 +2770,7 @@ No hay un directorio temporal.',
 'tooltip-undo'                    => '«Deshacer» revierte la edición seleccionada y abre la página de edición en el modo de previsualización.
 Permite añadir una razón al resumen de edición.',
 'tooltip-preferences-save'        => 'Guardar preferencias',
+'tooltip-summary'                 => 'Ingresar un breve resumen',
 
 # Stylesheets
 'common.css'   => '/* Los estilos CSS definidos aquí aplicarán a todas las pieles (skins) */',

@@ -317,10 +317,13 @@ Dapat digunakan seperti [[{{#special:advancedrandom}}/{{ns:template}}:Featured/{
 );
 
 /** Italian (Italiano)
+ * @author Civvì
  * @author Pietrodn
  */
 $messages['it'] = array(
 	'advancedrandom' => 'Random avanzato',
+	'advancedrandom-desc' => 'Prendi una pagina a caso da qualsiasi namespace, la cui pagina di discussione o sottopagina punta ad una pagina specifica. 
+Può essere utilizzato come [[{{#special:advancedrandom}}/{{ns:template}}:Featured/{{ns:talk}}]] per ottenere un articolo a tra quelli eccellenti oppure come [[{{#special:advancedrandom}}/{{ns:template}}:GFDL/{{ns:file}}]] per ottenere un file casuale con licenza GFDL.',
 );
 
 /** Japanese (日本語)

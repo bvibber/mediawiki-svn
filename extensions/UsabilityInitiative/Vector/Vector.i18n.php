@@ -355,7 +355,7 @@ $messages['pms'] = array(
  */
 $messages['pt'] = array(
 	'vector' => 'Melhorias da IU do Vector',
-	'vector-desc' => 'Melhora a interface do utilizador do tema Vector',
+	'vector-desc' => 'Melhora os elementos da interface do utilizador para o tema Vector',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

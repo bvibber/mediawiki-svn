@@ -23,7 +23,6 @@ final class SMGoogleMapsFormInput extends SMFormInput {
 	
 	/**
 	 * @see MapsMapFeature::setMapSettings()
-	 *
 	 */
 	protected function setMapSettings() {
 		global $egMapsGoogleMapsZoom, $egMapsGoogleMapsPrefix;
@@ -41,23 +40,22 @@ final class SMGoogleMapsFormInput extends SMFormInput {
 	 * @see smw/extensions/SemanticMaps/FormInputs/SMFormInput#addFormDependencies()
 	 */
 	protected function addFormDependencies() {
-		global $wgJsMimeType;
+		global $wgOut;
 		global $smgScriptPath, $smgGoogleFormsOnThisPage, $smgStyleVersion, $egMapsJsExt;
-		
-		MapsGoogleMaps::addGMapDependencies( $this->output );
+
+		MapsGoogleMaps::addGMapDependencies( $wgOut );
 		
 		if ( empty( $smgGoogleFormsOnThisPage ) ) {
 			$smgGoogleFormsOnThisPage = 0;
-			$this->output .= "<script type='$wgJsMimeType' src='$smgScriptPath/GoogleMaps/SM_GoogleMapsFunctions{$egMapsJsExt}?$smgStyleVersion'></script>";
+			$wgOut->addScriptFile( "$smgScriptPath/Services/GoogleMaps/SM_GoogleMapsFunctions{$egMapsJsExt}?$smgStyleVersion" );
 		}
 	}
 	
 	/**
 	 * @see MapsMapFeature::doMapServiceLoad()
-	 *
 	 */
 	protected function doMapServiceLoad() {
-		global $egGoogleMapsOnThisPage, $smgGoogleFormsOnThisPage;
+		global $egGoogleMapsOnThisPage, $smgGoogleFormsOnThisPage, $egMapsGoogleMapsPrefix;
 		
 		self::addFormDependencies();
 		
@@ -65,19 +63,19 @@ final class SMGoogleMapsFormInput extends SMFormInput {
 		$smgGoogleFormsOnThisPage++;
 		
 		$this->elementNr = $egGoogleMapsOnThisPage;
+		$this->mapName = $egMapsGoogleMapsPrefix . '_' . $egGoogleMapsOnThisPage;
 	}
 	
 	/**
 	 * @see MapsMapFeature::addSpecificFormInputHTML()
-	 *
 	 */
-	protected function addSpecificMapHTML( Parser $parser ) {
+	protected function addSpecificMapHTML() {
 		global $wgOut;
 		
 		// Remove the overlays control in case it's present.
+		// TODO: make less insane
 		if ( in_string( 'overlays', $this->controls ) ) {
-			$this->controls = str_replace( ",'overlays'", '', $this->controls );
-			$this->controls = str_replace( "'overlays',", '', $this->controls );
+			$this->controls = str_replace( array( ",'overlays'", "'overlays'," ), '', $this->controls );
 		}
 		
 		$this->output .= Html::element(
@@ -104,8 +102,8 @@ addOnloadHook(
 				controls: [$this->controls],
 				scrollWheelZoom: $this->autozoom
 			},
-			$this->marker_lat,
-			$this->marker_lon	
+			{$this->markerCoords['lat']},
+			{$this->markerCoords['lon']}	
 		);
 	}	
 );
@@ -115,12 +113,11 @@ EOT
 	
 	/**
 	 * @see SMFormInput::manageGeocoding()
-	 *
 	 */
 	protected function manageGeocoding() {
-		global $egGoogleMapsKey;
-		$this->enableGeocoding = strlen( trim( $egGoogleMapsKey ) ) > 0;
-		if ( $this->enableGeocoding ) MapsGoogleMaps::addGMapDependencies( $this->output );
+		global $egGoogleMapsKey, $wgParser;
+		$this->enableGeocoding = $egGoogleMapsKey != '';
+		if ( $this->enableGeocoding ) MapsGoogleMaps::addGMapDependencies( $wgParser );
 	}
 	
 }

@@ -331,12 +331,14 @@ $messages['id'] = array(
 );
 
 /** Italian (Italiano)
+ * @author Civvì
  * @author Darth Kule
  */
 $messages['it'] = array(
 	'protectsection_desc' => 'Permette agli utenti autorizzati di proteggere parti di una pagina utilizzando il tag <tt>&lt;protect&gt;</tt>',
 	'protectsection_add_remove' => 'Hai provato ad aggiungere o rimuovere una sezione protetta',
 	'protectsection_modify' => 'Hai provato a modificare del testo protetto',
+	'protectsection_add_above' => 'Si è cercato di inserire il testo prima di una sezione protetta',
 	'protectsection_forbidden' => 'Vietato',
 	'right-protectsection' => 'Protegge le sezioni di una pagina',
 );

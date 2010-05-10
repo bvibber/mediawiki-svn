@@ -1611,6 +1611,7 @@ Note that using the navigation links will reset this column.',
 'searchmenu-legend'                => 'Search options',
 'searchmenu-exists'                => "'''There is a page named \"[[:\$1]]\" on this wiki'''",
 'searchmenu-new'                   => "'''Create the page \"[[:\$1]]\" on this wiki!'''",
+'searchmenu-new-nocreate'          => '', # do not translate or duplicate this message to other languages
 'searchhelp-url'                   => 'Help:Contents',
 'searchmenu-prefix'                => '[[Special:PrefixIndex/$1|Browse pages with this prefix]]',
 'searchmenu-help'                  => '[[{{MediaWiki:Searchhelp-url}}|{{int:help}}]]?', # do not translate or duplicate this message to other languages
@@ -3454,8 +3455,7 @@ This is probably caused by a link to a blacklisted external site.',
 check for correct installation of latex, dvips, gs, and convert',
 'math_bad_tmpdir'       => 'Cannot write to or create math temp directory',
 'math_bad_output'       => 'Cannot write to or create math output directory',
-'math_notexvc'          => 'Missing texvc executable;
-please see math/README to configure.',
+'math_notexvc'          => 'Missing texvc executable; please see math/README to configure.',
 
 # Patrolling
 'markaspatrolleddiff'                 => 'Mark as patrolled',

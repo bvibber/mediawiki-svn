@@ -212,13 +212,14 @@ $messages['br'] = array(
 	'spamdifftool' => 'Merañ roll du ar stroboù',
 	'spamdifftool-desc' => 'a bourchas un doare eeun da ouzhpennañ monedoù da roll du ar stroboù diwar ar pajennoù disheñvel',
 	'spamdifftool_cantedit' => "Ho tigarez - n'oc'h ket aotreet kemmañ marilh du ar stroboù",
+	'spamdifftool-no-title' => "'''Fazi :''' n'eus bet merket titl pajenn ebet.",
 	'spamdifftool_notext' => "N'eus testenn ebet da ouzhpennañ da roll du ar stroboù.
 Klikit <a href='$1'>amañ</a> evit kenderc'hel.",
 	'spamdifftool_confirm' => "Kadarnait ho peus c'hoant da ouzhpennañ ar c'hasadennoù-mañ e roll du ar stroboù.
 (Klikit <a href='$1' target='new'>amañ</a> evit menegiñ neb kudenn.)",
 	'spamdifftool_summary' => 'Ouzhpennañ da roll du ar stroboù',
 	'spamdifftool_urls_detected' => "Dionoet eo bet an URLoù-mañ er c'hemmoù-mañ.
-Pe re ho peus c'hoant da ouzhpennañ da roll du ar stroboù ?
+Pe re hoc'h eus c'hoant da ouzhpennañ da roll du ar stroboù ?
 Renket eo an deskrivoù-se eus ar re strishañ d'ar re laoskañ.
 Pa vez stanket un anv domani klok e vez stanket an holl liammoù o  tont adalek an domani-mañ.
 

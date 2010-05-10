@@ -413,9 +413,12 @@ $messages['km'] = array(
  * @author Kwj2772
  */
 $messages['ko'] = array(
+	'ratedpages' => '독자가 평가한 문서',
+	'ratedpages-leg' => '충분한 평가를 받은 문서 찾기',
 	'ratedpages-list' => '다음은 독자의 평가에 따라 정렬된 문서의 목록입니다.',
 	'ratedpages-none' => '이 목록에 문서가 없습니다.',
 	'ratedpages-graphs' => '평가 데이터',
+	'ratedpages-count' => '$1회의 평가',
 );
 
 /** Colognian (Ripoarisch)

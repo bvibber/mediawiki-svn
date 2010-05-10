@@ -53,6 +53,7 @@ class ApiRPED extends ApiBase {
 		if( isset( $myInput ) ) {
 			foreach( $myInput as $subValue ) {
 				if ( isset( $subValue ) && $subValue !== null ) {
+					$subValue=urldecode($subValue);
 					$existCheck = null;
 					$existCheck = $dbr->selectRow( 'rped_page', 'rped_page_title',
 						array( 'rped_page_title' => $subValue ) );

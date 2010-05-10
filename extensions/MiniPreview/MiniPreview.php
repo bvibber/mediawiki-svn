@@ -206,8 +206,8 @@ function wfMiniPreviewGetThumbnail ( $entry , &$image_data ) {
 	} else { # No such file
 		$ret .= wfMsg ( 'minipreview-no_more_files_here' ) ;
 	}
-	$ret .= wfCloseElement ( "div" ) ;
-	$ret .= wfCloseElement ( "td" ) ;
+	$ret .= Xml::closeElement ( "div" ) ;
+	$ret .= Xml::closeElement ( "td" ) ;
 	return $ret;
 }
 

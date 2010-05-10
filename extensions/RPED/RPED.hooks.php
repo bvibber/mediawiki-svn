@@ -62,6 +62,7 @@ class RPEDHooks {
 		// remote wiki (Wikipedia)
 		if ( in_array( 'broken', $options ) || $itIsBlank == true ) {
 			$title = $target->getPrefixedText ();
+			$fragment = htmlentities($target->getFragmentForURL());
 
 			for ( $thiscount = 0; $thiscount < strlen( $title ); $thiscount++ ) {
 				if ( substr( $title, $thiscount, 1 ) == ' ' ) {
@@ -82,7 +83,7 @@ class RPEDHooks {
 				$url = wfMsgExt( 'rped-wikipedia-url','parsemag') . $title;
 
 				// The page that we'll link to
-				$text = '<a href="' . $url . '">' . $text . '</a>';
+				$text = '<a href="' . $url . $fragment. '">' . $text. '</a>';
 
 				if ( $wgRemoteStyle != '' ) {
 					$customAttribs['style'] = $wgRemoteStyle;

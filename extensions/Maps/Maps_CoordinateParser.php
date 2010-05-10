@@ -180,9 +180,11 @@ class MapsCoordinateParser {
 	 */
 	private static function normalizeCoordinates( $coordinates ) {
 		$coordinates = trim( $coordinates );
+		
 		$coordinates = str_replace( array( '&#176;', '&deg;' ), Maps_GEO_DEG, $coordinates );
 		$coordinates = str_replace( array( '&acute;', '&#180;' ), Maps_GEO_SEC, $coordinates );
 		$coordinates = str_replace( array( '&#8243;', '&Prime;', Maps_GEO_SEC . Maps_GEO_SEC, '´´', '′′', '″' ), Maps_GEO_MIN, $coordinates );
+		
 		return str_replace( array( '&#8242;', '&prime;', '´', '′' ), Maps_GEO_SEC, $coordinates );
 	}
 	
@@ -377,19 +379,19 @@ class MapsCoordinateParser {
 	 * @param boolean $isLat Should be true for latitudes and false for longitudes.
 	 * 
 	 * @return string
-	 * 
-	 * FIXME: Notice: Undefined variable: mI18nDirections in ...\Maps\Maps_CoordinateParser.php  on line 388
 	 */
 	private static function setDirectionalAngle( $coordinate, $isLat ) {
+		self::initializeDirectionLabels();
+		
 		$isNegative = substr( $coordinate, 0, 1 ) == '-';
 		if ( $isNegative ) $coordinate = substr( $coordinate, 1 );
 		
 		if ( $isLat ) {
-			$directionChar = self::$mI18nDirections( $isNegative ? 'S' : 'N' );
+			$directionChar = self::$mI18nDirections[ $isNegative ? 'S' : 'N' ];
 		} else {
-			$directionChar = self::$mI18nDirections( $isNegative ? 'W' : 'E' );
+			$directionChar = self::$mI18nDirections[ $isNegative ? 'W' : 'E' ];
 		}
-		
+
 		return $coordinate . ' ' . $directionChar;
 	}
 	

@@ -322,6 +322,8 @@ $messages['it'] = array(
  * @author 青子守歌
  */
 $messages['ja'] = array(
+	'packageforce' => 'PackageForce',
+	'packageforceadmin' => 'PackageForceAdmin',
 	'pf-desc' => '便利なテンプレートなどの[[Special:PackageForce|パッケージをダウンロード]]',
 	'pf-only-admins-allowed' => "このページを利用するには 'packageforce-admin' 権限が必要です。",
 	'pf-admin-menu-default' => '規定',
@@ -469,6 +471,19 @@ $messages['pt'] = array(
 	'pf-header-documentation' => 'Documentação',
 	'pf-header-in_packages' => 'Pacotes',
 	'pf-header-edit' => 'Editar link',
+	'pf-header-type' => 'Tipo de página',
+	'pf-header-page_title' => 'Título',
+	'pf-header-approve' => 'Aprovar',
+);
+
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Luckas Blade
+ */
+$messages['pt-br'] = array(
+	'pf-admin-link-editlink-page' => 'Editar página',
+	'pf-admin-link-approve' => 'Aprovar página',
+	'pf-header-documentation' => 'Documentação',
+	'pf-header-in_packages' => 'Pacotes',
 	'pf-header-type' => 'Tipo de página',
 	'pf-header-page_title' => 'Título',
 	'pf-header-approve' => 'Aprovar',

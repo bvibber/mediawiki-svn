@@ -14,15 +14,21 @@ $messages = array();
  * @author Trevor Parscal
  */
 $messages['en'] = array(
-	'prefswitch-link' => 'New!',
-	'tooltip-pt-prefswitch-link' => 'Try out new features',
+	'prefswitch-link-anon' => 'New features',
+	'tooltip-pt-prefswitch-link-anon' => 'Learn about new features',
+	'prefswitch-link-on' => 'Take me back',
+	'tooltip-pt-prefswitch-link-on' => 'Disable new features',
+	'prefswitch-link-off' => 'New features',
+	'tooltip-pt-prefswitch-link-off' => 'Try out new features',
 );
 
 /** Message documentation (Message documentation)
  * @author EugeneZelenko
  */
 $messages['qqq'] = array(
-	'prefswitch-link' => '{{Identical|New}}',
+	'prefswitch-link-anon' => 'A link in the personal tools menu which takes users to a page where they can learn more about the new features.',
+	'prefswitch-link-on' => 'A link in the personal tools menu which takes users to a page where they can turn the new features off',
+	'prefswitch-link-off' => 'A link in the personal tools menu which takes users to a page where they can turn the new features on',
 );
 
 /** Arabic (العربية)
@@ -30,8 +36,7 @@ $messages['qqq'] = array(
  * @author OsamaK
  */
 $messages['ar'] = array(
-	'prefswitch-link' => 'جديد!',
-	'tooltip-pt-prefswitch-link' => 'جرّب المزايا الجديدة',
+	'tooltip-pt-prefswitch-link-off' => 'جرّب المزايا الجديدة',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
@@ -39,179 +44,148 @@ $messages['ar'] = array(
  * @author Jim-by
  */
 $messages['be-tarask'] = array(
-	'prefswitch-link' => 'Новае!',
-	'tooltip-pt-prefswitch-link' => 'Паспрабуйце нашыя новыя магчымасьці',
+	'tooltip-pt-prefswitch-link-off' => 'Паспрабуйце нашыя новыя магчымасьці',
 );
 
 /** Bengali (বাংলা)
  * @author Bellayet
  */
 $messages['bn'] = array(
-	'prefswitch-link' => 'নতুন!',
-	'tooltip-pt-prefswitch-link' => 'নতুন বৈশিষ্ট্যগুলো ব্যবহার করুন',
+	'tooltip-pt-prefswitch-link-off' => 'নতুন বৈশিষ্ট্যগুলো ব্যবহার করুন',
 );
 
 /** Breton (Brezhoneg)
  * @author Y-M D
  */
 $messages['br'] = array(
-	'prefswitch-link' => 'Nevez',
-	'tooltip-pt-prefswitch-link' => 'Esaeañ elfennoù nevez',
+	'tooltip-pt-prefswitch-link-off' => 'Esaeañ elfennoù nevez',
 );
 
 /** Catalan (Català)
  * @author Paucabot
  */
 $messages['ca'] = array(
-	'prefswitch-link' => 'Nou!',
-	'tooltip-pt-prefswitch-link' => 'Proveu les noves funcions',
+	'tooltip-pt-prefswitch-link-off' => 'Proveu les noves funcions',
 );
 
 /** Czech (Česky)
  * @author Kuvaly
  */
 $messages['cs'] = array(
-	'prefswitch-link' => 'Novinky!',
-	'tooltip-pt-prefswitch-link' => 'Vyzkoušejte nové funkce',
+	'tooltip-pt-prefswitch-link-off' => 'Vyzkoušejte nové funkce',
 );
 
-/** German (Deutsch) */
+/** German (Deutsch)
+ * @author Kghbln
+ */
 $messages['de'] = array(
-	'prefswitch-link' => 'Neu',
-	'tooltip-pt-prefswitch-link' => 'Neue Features ausprobieren',
+	'prefswitch-link-anon' => 'Neue Funktionen',
+	'tooltip-pt-prefswitch-link-anon' => 'Erfahre mehr über die neuen Funktionen',
+	'prefswitch-link-on' => 'Zurück',
+	'tooltip-pt-prefswitch-link-on' => 'Deaktivierung der neuen Funktionen',
+	'prefswitch-link-off' => 'Neue Funktionen',
+	'tooltip-pt-prefswitch-link-off' => 'Neue Features ausprobieren',
 );
 
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
 $messages['dsb'] = array(
-	'prefswitch-link' => 'Nowy!',
-	'tooltip-pt-prefswitch-link' => 'Nowe funkcije wopytaś',
+	'tooltip-pt-prefswitch-link-off' => 'Nowe funkcije wopytaś',
 );
 
 /** Greek (Ελληνικά)
  * @author Απεργός
  */
 $messages['el'] = array(
-	'prefswitch-link' => 'Νέο!',
-	'tooltip-pt-prefswitch-link' => 'Δοκιμάστε καινούριες λειτουργίες',
+	'tooltip-pt-prefswitch-link-off' => 'Δοκιμάστε καινούριες λειτουργίες',
 );
 
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'prefswitch-link' => 'Nova!',
-	'tooltip-pt-prefswitch-link' => 'Provi novajn funkciojn',
+	'tooltip-pt-prefswitch-link-off' => 'Provi novajn funkciojn',
 );
 
 /** Spanish (Español)
  * @author Pertile
  */
 $messages['es'] = array(
-	'prefswitch-link' => '¡Nuevo!',
-	'tooltip-pt-prefswitch-link' => 'Probar las nuevas características',
-);
-
-/** Estonian (Eesti)
- * @author Hendrik
- */
-$messages['et'] = array(
-	'prefswitch-link' => 'Uus!',
-);
-
-/** Basque (Euskara)
- * @author Joxemai
- */
-$messages['eu'] = array(
-	'prefswitch-link' => 'Berria!',
+	'tooltip-pt-prefswitch-link-off' => 'Probar las nuevas características',
 );
 
 /** Finnish (Suomi)
  * @author Crt
  */
 $messages['fi'] = array(
-	'prefswitch-link' => 'Uutta!',
-	'tooltip-pt-prefswitch-link' => 'Kokeile uusia ominaisuuksia',
+	'tooltip-pt-prefswitch-link-off' => 'Kokeile uusia ominaisuuksia',
 );
 
 /** French (Français)
  * @author IAlex
  */
 $messages['fr'] = array(
-	'prefswitch-link' => 'Nouveau !',
-	'tooltip-pt-prefswitch-link' => 'Essayer les nouvelles fonctionnalités',
+	'tooltip-pt-prefswitch-link-off' => 'Essayer les nouvelles fonctionnalités',
 );
 
 /** Galician (Galego)
  * @author Toliño
  */
 $messages['gl'] = array(
-	'prefswitch-link' => 'Novo!',
-	'tooltip-pt-prefswitch-link' => 'Probar as novas características',
+	'prefswitch-link-anon' => 'Novas características',
+	'prefswitch-link-on' => 'Volver atrás',
+	'prefswitch-link-off' => 'Novas características',
+	'tooltip-pt-prefswitch-link-off' => 'Probar as novas características',
 );
 
 /** Swiss German (Alemannisch)
  * @author Als-Holder
  */
 $messages['gsw'] = array(
-	'prefswitch-link' => 'Nej!',
-	'tooltip-pt-prefswitch-link' => 'Di neje Funktione uusprobiere',
+	'tooltip-pt-prefswitch-link-off' => 'Di neje Funktione uusprobiere',
 );
 
 /** Hebrew (עברית)
  * @author Amire80
  */
 $messages['he'] = array(
-	'prefswitch-link' => 'חדש!',
-	'tooltip-pt-prefswitch-link' => 'לנסות תכונות חדשות',
-);
-
-/** Croatian (Hrvatski)
- * @author Ex13
- */
-$messages['hr'] = array(
-	'prefswitch-link' => 'Novo!',
+	'tooltip-pt-prefswitch-link-off' => 'לנסות תכונות חדשות',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
 $messages['hsb'] = array(
-	'prefswitch-link' => 'Nowy!',
-	'tooltip-pt-prefswitch-link' => 'Nowe funkcije wupruwować',
+	'tooltip-pt-prefswitch-link-off' => 'Nowe funkcije wupruwować',
 );
 
 /** Hungarian (Magyar)
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
-	'prefswitch-link' => 'Újdonság!',
-	'tooltip-pt-prefswitch-link' => 'Próbáld ki az új funkciókat',
+	'tooltip-pt-prefswitch-link-off' => 'Próbáld ki az új funkciókat',
 );
 
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
 $messages['ia'] = array(
-	'prefswitch-link' => 'Nove!',
-	'tooltip-pt-prefswitch-link' => 'Probar nove functiones',
+	'tooltip-pt-prefswitch-link-off' => 'Probar nove functiones',
 );
 
 /** Indonesian (Bahasa Indonesia)
  * @author Kenrick95
  */
 $messages['id'] = array(
-	'prefswitch-link' => 'Baru!',
-	'tooltip-pt-prefswitch-link' => 'Coba fitur baru',
+	'tooltip-pt-prefswitch-link-off' => 'Coba fitur baru',
 );
 
 /** Italian (Italiano)
  * @author Una giornata uggiosa '94
  */
 $messages['it'] = array(
-	'prefswitch-link' => 'Nuovo!',
-	'tooltip-pt-prefswitch-link' => 'Prova le nuove funzioni',
+	'tooltip-pt-prefswitch-link-off' => 'Prova le nuove funzioni',
 );
 
 /** Japanese (日本語)
@@ -220,142 +194,128 @@ $messages['it'] = array(
  * @author 青子守歌
  */
 $messages['ja'] = array(
-	'prefswitch-link' => '新機能！',
-	'tooltip-pt-prefswitch-link' => '新機能を試す',
+	'tooltip-pt-prefswitch-link-off' => '新機能を試す',
 );
 
 /** Georgian (ქართული)
  * @author გიორგიმელა
  */
 $messages['ka'] = array(
-	'prefswitch-link' => 'ახალი',
-	'tooltip-pt-prefswitch-link' => 'სცადეთ ახალი ხელსაწყოები',
+	'tooltip-pt-prefswitch-link-off' => 'სცადეთ ახალი ხელსაწყოები',
 );
 
 /** Korean (한국어)
  * @author Devunt
+ * @author Kwj2772
  */
 $messages['ko'] = array(
-	'prefswitch-link' => '새 기능!',
-	'tooltip-pt-prefswitch-link' => '새 기능 체험하기',
+	'prefswitch-link-anon' => '새 기능',
+	'prefswitch-link-on' => '돌아가기',
+	'prefswitch-link-off' => '새 기능',
+	'tooltip-pt-prefswitch-link-off' => '새 기능 체험하기',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
 $messages['lb'] = array(
-	'prefswitch-link' => 'Nei!',
-	'tooltip-pt-prefswitch-link' => 'Probéiert déi nei Fonctionalitéiten aus',
+	'tooltip-pt-prefswitch-link-off' => 'Probéiert déi nei Fonctionalitéiten aus',
 );
 
 /** Latvian (Latviešu)
  * @author Papuass
  */
 $messages['lv'] = array(
-	'prefswitch-link' => 'Kas jauns?',
 );
 
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
-	'prefswitch-link' => 'Ново!',
-	'tooltip-pt-prefswitch-link' => 'Испробајте нови функции',
+	'tooltip-pt-prefswitch-link-off' => 'Испробајте нови функции',
 );
 
 /** Malayalam (മലയാളം)
  * @author Praveenp
  */
 $messages['ml'] = array(
-	'prefswitch-link' => 'നൂതനം!',
-	'tooltip-pt-prefswitch-link' => 'പുതിയ സവിശേഷതകൾ പരീക്ഷിക്കുക',
+	'tooltip-pt-prefswitch-link-off' => 'പുതിയ സവിശേഷതകൾ പരീക്ഷിക്കുക',
 );
 
 /** Dutch (Nederlands)
  * @author Siebrand
  */
 $messages['nl'] = array(
-	'prefswitch-link' => 'Nieuw!',
-	'tooltip-pt-prefswitch-link' => 'Nieuwe mogelijkheden uitproberen',
+	'tooltip-pt-prefswitch-link-off' => 'Nieuwe mogelijkheden uitproberen',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
 $messages['no'] = array(
-	'prefswitch-link' => 'Ny',
-	'tooltip-pt-prefswitch-link' => 'Prøv nye funksjoner',
+	'tooltip-pt-prefswitch-link-off' => 'Prøv nye funksjoner',
 );
 
 /** Occitan (Occitan)
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'prefswitch-link' => 'Novèl !',
-	'tooltip-pt-prefswitch-link' => 'Ensajatz las foncionalitats novèlas',
+	'tooltip-pt-prefswitch-link-off' => 'Ensajatz las foncionalitats novèlas',
 );
 
 /** Polish (Polski)
  * @author Sp5uhe
  */
 $messages['pl'] = array(
-	'prefswitch-link' => 'Nowy wygląd!',
-	'tooltip-pt-prefswitch-link' => 'Wypróbuj nowe funkcjonalności',
+	'tooltip-pt-prefswitch-link-off' => 'Wypróbuj nowe funkcjonalności',
 );
 
 /** Piedmontese (Piemontèis)
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'prefswitch-link' => 'Neuv!',
-	'tooltip-pt-prefswitch-link' => 'Preuva le neuve funsionalità',
+	'tooltip-pt-prefswitch-link-off' => 'Preuva le neuve funsionalità',
 );
 
 /** Portuguese (Português)
  * @author Hamilton Abreu
  */
 $messages['pt'] = array(
-	'prefswitch-link' => 'Novo!',
-	'tooltip-pt-prefswitch-link' => 'Experimente novas funcionalidades',
+	'tooltip-pt-prefswitch-link-off' => 'Experimente novas funcionalidades',
 );
 
 /** Russian (Русский)
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
-	'prefswitch-link' => 'Новинка!',
-	'tooltip-pt-prefswitch-link' => 'Опробуйте новые возможности',
+	'tooltip-pt-prefswitch-link-off' => 'Опробуйте новые возможности',
 );
 
 /** Slovenian (Slovenščina)
  * @author Dbc334
  */
 $messages['sl'] = array(
-	'prefswitch-link' => 'Novo!',
-	'tooltip-pt-prefswitch-link' => 'Preizkusite nove funkcije',
+	'tooltip-pt-prefswitch-link-off' => 'Preizkusite nove funkcije',
 );
 
 /** Telugu (తెలుగు)
  * @author Veeven
  */
 $messages['te'] = array(
-	'prefswitch-link' => 'కొత్తది!',
-	'tooltip-pt-prefswitch-link' => 'కొత్త సౌలభ్యాలను ప్రయత్నించండి',
+	'tooltip-pt-prefswitch-link-off' => 'కొత్త సౌలభ్యాలను ప్రయత్నించండి',
 );
 
 /** Turkish (Türkçe)
  * @author Joseph
  */
 $messages['tr'] = array(
-	'prefswitch-link' => 'Yeni!',
-	'tooltip-pt-prefswitch-link' => 'Yeni özellikleri dene',
+	'tooltip-pt-prefswitch-link-off' => 'Yeni özellikleri dene',
 );
 
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */
 $messages['vi'] = array(
-	'prefswitch-link' => 'Mới!',
-	'tooltip-pt-prefswitch-link' => 'Hãy thử các tính năng mới',
+	'tooltip-pt-prefswitch-link-off' => 'Hãy thử các tính năng mới',
 );
 

@@ -26,9 +26,12 @@ $messages['be-tarask'] = array(
 );
 
 /** Breton (Brezhoneg)
+ * @author Fulup
  * @author Y-M D
  */
 $messages['br'] = array(
+	'rped' => 'Detektadur a-bell ar pajennoù zo anezho',
+	'rped-desc' => "Liammañ a ra ar wikiliammoù ouzh Wikipedia ma n'eus ket eus ar bajenn war ar wiki lec'hel ha m'emañ war Wikipedia",
 	'rped-wikipedia-url' => 'http://br.wikipedia.org/',
 );
 

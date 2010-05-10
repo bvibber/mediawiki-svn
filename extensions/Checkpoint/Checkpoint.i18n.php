@@ -35,6 +35,13 @@ $messages['br'] = array(
 	'checkpoint-notice' => '([[{{ns:project}}:Checkpoint|enrollañ ur poent evezhiañ]])',
 );
 
+/** Catalan (Català)
+ * @author Paucabot
+ */
+$messages['ca'] = array(
+	'checkpoint' => 'Desa i continua editant',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
@@ -164,14 +171,35 @@ $messages['no'] = array(
 	'checkpoint-notice' => '([[{{ns:project}}:Checkpoint|lagre sjekkpunkt]])',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'checkpoint' => 'Salvar e contunhar la modificacion',
+	'checkpoint-desc' => "Permet d'enregistrar una modificacion e de contunhar a modificar",
+	'checkpoint-tooltip' => 'Enregistrar vòstra progression e contunhar a modificar la pagina',
+	'checkpoint-notice' => '([[{{ns:project}}:Checkpoint|enregistrar un punt de contraròtle]])',
+);
+
+/** Polish (Polski)
+ * @author Marcin Łukasz Kiejzik
+ */
+$messages['pl'] = array(
+	'checkpoint' => 'Zapisz i kontynuuj edytowanie',
+	'checkpoint-desc' => 'Pozwala zapisać edycję i kontynuować edytowanie',
+	'checkpoint-tooltip' => 'Zapisz swoje postępy i kontynuuj edycję strony',
+	'checkpoint-notice' => '([[{{ns:project}}:Checkpoint|zapisane checkpointy]])',
+);
+
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
 	'checkpoint' => 'Salva e continua a modifiché',
-	'checkpoint-desc' => 'A përmëtt a un ëd salvé na modìfica e continué a modifiché',
-	'checkpoint-tooltip' => 'Salva ij to progress e continua a modifiché la pàgina',
-	'checkpoint-notice' => '([[{{ns:project}}:Checkpoint|salva checkpoint]])',
+	'checkpoint-desc' => 'A përmët a un ëd salvé na modìfica e ëd continué a modifiché',
+	'checkpoint-tooltip' => 'Salvé ij sò progress e continué a modifiché la pàgina',
+	'checkpoint-notice' => '([[{{ns:project}}:Checkpoint|salvé un pont ëd contròl]])',
 );
 
 /** Portuguese (Português)
@@ -184,6 +212,13 @@ $messages['pt'] = array(
 	'checkpoint-notice' => '([[{{ns:project}}:Checkpoint|gravação do estado presente]])',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Luckas Blade
+ */
+$messages['pt-br'] = array(
+	'checkpoint' => 'Salvar e continuar editando',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */
@@ -192,5 +227,14 @@ $messages['ru'] = array(
 	'checkpoint-desc' => 'Позволяет сохранить изменения и продолжить редактирование',
 	'checkpoint-tooltip' => 'Сохраните вашу работу и продолжите редактирование страницы',
 	'checkpoint-notice' => '([[{{ns:project}}:Checkpoint|сохранение контрольной точки]])',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'checkpoint' => 'భద్రపరచి దిద్దుబాటుని కొనసాగించు',
+	'checkpoint-desc' => 'మార్పులని భద్రపరిచి దిద్దుబాటుని కొనసాగించడానికి వీలుకల్పిస్తుంది',
+	'checkpoint-tooltip' => 'మీ మార్పులని భద్రపరిచి పుటని దిద్దడం కొనసాగించండి',
 );
 

@@ -649,14 +649,14 @@ $messages['br'] = array(
 	'optin-title-feedback' => 'Roit ho soñj war ar Beta',
 	'optin-needlogin' => "Ret eo deoc'h bezañ [$1 luget] evit ober gant Beta.",
 	'optin-intro' => "Intrudu implijadurezh Wikipedia en deus labouret start evit gwellaat implijadurezh raktresoù Wikimedia.
-Ha c'hoant o peus klask Beta amañ ?",
+Ha c'hoant hoc'h eus klask Beta amañ ?",
 	'optin-feedback-intro' => "Trugarez deoc'h da amprouiñ Beta.
 Ni a garfe gouzout petra a soñjit diwar-benn an etrefas nevez, setu e vefemp laouen ma restpontfec'h d'ar goulennoù dindan.",
 	'optin-feedback-back' => "Ma ne fell ket deoc'h leuniañ ar roll goulennoù, e c'hallit distreiñ da $1.",
 	'optin-success-in' => "Emaoc'h oc'h amprouiñ Beta.
 Gallout a rit distreiñ d'ar stumm boas pa garit en ur glikañ war al liamm \"{{int:optin-leave}}\" e laez ar skramm.",
 	'optin-leave-cancel' => "M'hoc'h eus c'hoant da genderc'hel da implijout Beta, e c'hallit distreiñ da $1.",
-	'optin-success-out' => "Kuitet ho peus Beta.
+	'optin-success-out' => "Kuitaet hoc'h eus Beta.
 Tu 'zo deoc'h amprouiñ anezhañ adarre en ur klikañ war al liamm \"{{int:optin-try}}\" en nec'h a zehou eus ar skramm.",
 	'optin-success-feedback' => 'Trugarez evit bezañ roet ho soñj !',
 	'optin-accept-short' => "Bec'h de'i",
@@ -680,9 +680,9 @@ Ni a garfe gouzout petra a soñjit diwar-benn an etrefas nevez, setu e vefemp la
 	'optin-survey-answer-whyoptout-didntlike-toolbar' => 'Ne blije ket din ar varrenn ostilhoù nevez.',
 	'optin-survey-answer-whyoptout-other' => 'Abeg all :',
 	'optin-survey-question-explain' => 'Mar plij displegit pe diorroit ho respont a-us :',
-	'optin-survey-question-techfail' => 'Ha kudennoù teknikel o peus bet en ur implijout ar Beta ?',
+	'optin-survey-question-techfail' => "Ha kudennoù teknikel hoc'h eus bet en ur implijout ar Beta ?",
 	'optin-survey-question-techfail-ifyes' => 'Ma ya, displegit pe diorroit mar plij :',
-	'optin-survey-question-usedtoolbar' => 'Hag implijet ho peus ar barenn ostilhoù nevez evit kemmañ ur bajenn ?',
+	'optin-survey-question-usedtoolbar' => "Hag implijet hoc'h eus ar barenn ostilhoù nevez evit kemmañ ur bajenn ?",
 	'optin-survey-question-usedtoolbar-ifyes' => "Mard eo ya ar respont, petra en deus plijet deoc'h ? Ha petra n'en deus ket plijet deoc'h ?",
 	'optin-survey-question-usedtoolbar-ifno' => "Ma n'oc'h ket bet plijet, perak ? Hag implijout a reot anezhañ en dazont ? Displegit un tamm mar plij.",
 	'optin-survey-question-different' => "Petra en defe ranket bezañ disheñvel evit ma vefec'h chomet gant Beta.",
@@ -3907,6 +3907,20 @@ Wie willen grege weten wa-jie van de nieje vormgeving vienen, \'t zol dus mooi w
 	'optin-survey-answer-changes-predictability' => 'Verbeter de veurspelbaorheid van de prestasies',
 	'optin-survey-answer-changes-custom' => 'Meer gebrukersanpassingen meugelijk maken.',
 	'optin-survey-answer-changes-other' => 'Overig:',
+	'optin-improvements2' => "== Wat is der verbeterd? ==
+[[File:UsabilityToolbar.png|left|link=|Scharmofdrok van de verbeterde warkbalke]]
+[[File:UsabilityDialogs.png|left|link=|Scharmofdrok van de nieje dialogen veur 't bewarken]]
+;Verbeterde warkbalke
+De verbeterde warkbalke maak 't makkelijker um pagina's te bewarken.
+Nieje en verbeterde icoontjes maken 't dudelijker wat of da-j der allemaole mee doon kunnen.
+Onderdelen dee-j uutklappen kunnen, maken 't overzichtelijker, terwiel je hulpmiddels dee-j haos nooit gebruken mit een klik op de muusknoppe verbargen kunnen.
+;Dialogen
+Bie 't maken van verwiezingen of tebellen, geet der noen a-j op 't icoontjen klikken een dialoogvienster los, dat joe zal helpen um verwiezingen en tebellen te maken via 't invullen van een eenvoudig formelier.
+;En meer
+Wie hemmen nog wat aandere verbeteringen derbie edaon zoas verbeterde navigasie, inklapbaore tabblaojen, een verbeterde zeukfunctie, en meer.
+== Hoe ku-j meedoon ==
+Um meer te weten te koemen over 't Bruukbaorheidsinitiatief ku-j [http://usability.wikimedia.org/wiki/Wikipedia_Usability_Initiative onze webstee] bezeuken.
+<div style=\"clear:both\"></div>",
 );
 
 /** Dutch (Nederlands)
@@ -4528,6 +4542,7 @@ Para saber mais sobre a Iniciativa de Usabilidade, visite a nossa [http://usabil
 );
 
 /** Brazilian Portuguese (Português do Brasil)
+ * @author 555
  * @author Giro720
  * @author Heldergeovane
  */
@@ -4578,7 +4593,7 @@ Gostaríamos de saber o que você acha da nossa nova interface, por isso agradec
 	'optin-survey-question-usedtoolbar-ifyes' => 'Se sim, de que você gostou nela? De que você não gostou nela?',
 	'optin-survey-question-usedtoolbar-ifno' => 'Se não, porque não? Irá no futuro? Por favor, explique.',
 	'optin-survey-question-different' => 'O que poderíamos ter feito de forma diferente para que você continuasse a usar o Beta?',
-	'optin-survey-question-feedback' => 'Por favor, indique-nos quaisquer outros comentários, críticas ou sugestões que você tenha para nós - todas as opiniões são úteis!:',
+	'optin-survey-question-feedback' => 'Por favor, indique-nos quaisquer outros comentários, críticas ou sugestões que você tenha para nós - todas as opiniões são úteis!',
 	'optin-survey-question-browser' => 'Que navegador você usa?',
 	'optin-survey-answer-browser-other' => 'Outro navegador:',
 	'optin-survey-question-os' => 'Que sistema operacional você usa?',
@@ -4587,7 +4602,7 @@ Gostaríamos de saber o que você acha da nossa nova interface, por isso agradec
 	'optin-survey-question-changes' => 'Que mudanças você gostaria de ver futuramente no Beta? (por favor selecione todas as opções pertinentes)',
 	'optin-survey-answer-changes-nav' => 'Tornar a navegação geral do site mais fácil de usar.',
 	'optin-survey-answer-changes-edittools' => 'Criar mais e melhores ferramentas de edição.',
-	'optin-survey-answer-changes-upload' => 'Melhorar o carregamento de conteúdo e multimédia.',
+	'optin-survey-answer-changes-upload' => 'Melhorar o envio de conteúdos e multimídias.',
 	'optin-survey-answer-changes-richtext' => 'Desenvolver ferramentas de edição semelhantes a editores avançados de texto.',
 	'optin-survey-answer-changes-lookfeel' => 'Renovar o aspecto geral do site.',
 	'optin-survey-answer-changes-predictability' => 'Melhorar a previsibilidade dos resultados.',
@@ -5451,6 +5466,21 @@ $messages['te'] = array(
 	'optin-survey-answer-changes-richtext' => 'రిచ్ టెక్స్ట్ ఎడిటర్ లాంటి ఎడిటింగ్ ఉపకరణాలను రూపొందించండి.',
 	'optin-survey-answer-changes-lookfeel' => 'సైటు యొక్క లుక్ అండ్ ఫీల్ ను మార్చండి.',
 	'optin-survey-answer-changes-other' => 'ఇతర:',
+	'optin-improvements2' => '== ఏమేమి మెరుగయ్యాయి? ==
+[[File:UsabilityToolbar.png|left|link=|మెరుగైన దిద్దుబాటు పనిముట్లపట్టీ యొక్క తెరపట్టు]]
+[[File:UsabilityDialogs.png|left|link=|కొత్త విషయ తయారీ సంవాద పేటికలు]]
+;మెరుగైన పనిముట్ల పట్టీ
+మెరగుపరిచిన పనిముట్ల పట్టీ వ్యాసాలని దిద్దుబాటు చేయడాన్ని తేలికపరుస్తుంది.
+కొత్త మరియు మెరగుపరిచిన ప్రతీకాలు ప్రతీ పనిముట్టూ ఏం చేస్తుందో స్పష్టంగా తెలియజేస్తాయి.
+విస్తరిత విభాగాలు అరుదుగా ఉపయోగించే పనిముట్లని ఒక నొక్కు దూరంలో దాచి గత్తరని తగ్గిస్తాయి.
+;సంవాద పేటికలు
+లంకెలు లేదా పట్టికలని సృష్టించాలనుకున్నప్పుడు, ఆయా పనిముట్ల ప్రతీకాలపై నొక్కితే వచ్చే సంవాద పేటికలు సులభమైన ఫారాన్ని పూరించడం ద్వారా లంకెలను మరియు పట్టికలను సృష్టించగలిగేలా మీకు తోడ్పడతాయి.
+;ఇంకా
+మెరుగైన మార్గదర్శకం, కాస్కేడింగ్ ట్యాబులు, మెరుగైన అన్వేషణ లాంటి మరిన్ని ఇతర అంశాలను కూడా ప్రవేశపెట్టాం.
+
+== పాలుపంచుకోవడం ఎలా ==
+ఉపయోగశీలత గురించి మరింత తెలుసుకోడానికి, దయచేసి మా [http://usability.wikimedia.org/wiki/Wikipedia_Usability_Initiative ముఖపుట]ని సందర్శించండి.
+<div style="clear:both"></div>',
 );
 
 /** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
@@ -5913,6 +5943,20 @@ Chúng tôi muốn biết cảm nghĩ của bạn về giao diện mới của c
 	'optin-survey-answer-changes-predictability' => 'Tăng cường khả năng dự đoán khi hoạt động.',
 	'optin-survey-answer-changes-custom' => 'Cho phép người dùng tùy chỉnh nhiều hơn.',
 	'optin-survey-answer-changes-other' => 'Khác:',
+	'optin-improvements2' => '== Những điều gì đã được cải tiến? ==
+[[File:UsabilityToolbar.png|left|link=|Hình chụp màn hình thanh công cụ soạn thảo cải tiến]]
+[[File:UsabilityDialogs.png|left|link=|Hình chụp màn hình hộp hội thoại để tạo nội dung mới]]
+;Thanh Công Cụ Cải Tiến
+Thanh công cụ cải tiến giúp bạn chỉnh sửa bài viết dễ dàng hơn.
+Các biểu tượng mới và đã cải tiến sẽ giúp bạn hiểu rõ tính năng của từng nút.
+Các phần mở rộng sẽ giúp giảm bớt sự lộn xộn nhưng vẫn giữ lại các công cụ ít dùng chỉ bằng một cú nhấn chuột.
+;Hộp Hội Thoại
+Giờ đây khi tạo liên kết hoặc bảng biểu, nhấn vào biểu tượng công cụ sẽ mở một hộp hội thoại giúp bạn tạo liên kết và bảng biểu bằng cách điền vào một mẫu đơn đơn giản.
+;Và Còn Hơn Thế Nữa
+Chúng tôi đã giới thiệu một số các cải tiến khác như cải tiến duyệt trang, xếp chồng các thẻ, cải tiến tìm kiếm, và nhiều thứ khác.
+== Làm sao để tham gia ==
+Để tìm hiểu thêm về Sáng kiến Khả dụng, xin mời ghé thăm [http://usability.wikimedia.org/wiki/Wikipedia_Usability_Initiative trang chủ] của chúng tôi.
+<div style="clear:both"></div>',
 );
 
 /** Volapük (Volapük)

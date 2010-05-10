@@ -1374,6 +1374,7 @@ $wgCustomToolbarMessages['ig'] = array(
 );
 
 /** Italian (Italiano)
+ * @author Civvì
  * @author Darth Kule
  * @author Melos
  */
@@ -1405,6 +1406,7 @@ $wgCustomToolbarMessages['it'] = array(
 	'ct_nowiki_sample' => 'Inserisci qui il testo non formattato',
 	'ct_nowiki_tip_ins' => 'Ignora la formattazione wiki',
 	'ct_nowiki_tip_wrap' => 'Ignora la formattazione wiki per questo testo',
+	'ct_nowiki_caption' => 'Nessun wiki',
 	'ct_horizontal_tip' => 'Inserisci una linea orizzontale (usare con parsimonia)',
 	'ct_horizontal_caption' => 'Linea orizzontale',
 	'ct_upload' => 'Carica $1',

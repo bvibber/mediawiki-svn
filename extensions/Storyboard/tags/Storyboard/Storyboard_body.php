@@ -30,14 +30,15 @@ class TagStoryboard {
 		global $wgJsMimeType, $wgScriptPath, $wgStylePath, $wgStyleVersion, $wgContLanguageCode;
 		global $egStoryboardScriptPath, $egStoryboardWidth, $egStoryboardHeight;
 		
+		efStoryboardAddJSLocalisation( $parser );
+		
 		// TODO: Combine+minfiy JS files, add switch to use combined+minified version
 		$parser->getOutput()->addHeadItem(
-			<<<EOT
-			<link rel="stylesheet" href="$egStoryboardScriptPath/storyboard.css?$wgStyleVersion" />
-			<script type="$wgJsMimeType" src="$wgStylePath/common/jquery.min.js?$wgStyleVersion"></script>
-			<script type="$wgJsMimeType" src="$egStoryboardScriptPath/jquery/jquery.ajaxscroll.js?$wgStyleVersion"></script>
-			<script type="$wgJsMimeType" src="$egStoryboardScriptPath/tags/Storyboard/storyboard.js?$wgStyleVersion"></script>
-EOT
+			Html::linkedStyle( "$egStoryboardScriptPath/storyboard.css?$wgStyleVersion" ) .				
+			Html::linkedScript( "$wgStylePath/common/jquery.min.js?$wgStyleVersion" ) .			
+			Html::linkedScript( "$egStoryboardScriptPath/jquery/jquery.ajaxscroll.js?$wgStyleVersion" ) .	
+			Html::linkedScript( "$egStoryboardScriptPath/tags/Storyboard/storyboard.js?$wgStyleVersion" ) .
+			Html::linkedScript( "$egStoryboardScriptPath/storyboard.js?$wgStyleVersion" )			
 		);
 		
 		$width = StoryboardUtils::getDimension( $args, 'width', $egStoryboardWidth );
@@ -50,7 +51,7 @@ EOT
 		} else {
 			$language = $wgContLanguageCode;
 		}
-		
+
 		$parser->getOutput()->addHeadItem(
 			Html::inlineScript( "var storyboardLanguage = '$language';" )
 		);
@@ -65,6 +66,3 @@ EOT
 	}
 	
 }
-
-
-

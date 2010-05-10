@@ -235,10 +235,12 @@ $messages['da'] = array(
 /** German (Deutsch)
  * @author ChrisiPK
  * @author Revolus
+ * @author Umherirrender
  */
 $messages['de'] = array(
 	'chemicalsources' => 'Chemische Quellen',
 	'chemicalsource-desc' => 'Stellt das <nowiki><chemform></nowiki>-Tag für chemischen Formeln bereit',
+	'chemicalsources-desc' => '[[Special:ChemicalSources|Spezialseite]] für chemische Quellen',
 	'chemFunctions_ListPage' => 'Chemische Quellen',
 	'chemFunctions_DataList' => 'Nachfolgend findest du Links zu Seiten, die eventuell Informationen über chemische Substanzen anbieten, nach denen du suchst:<br /><br />
 * <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Verbindung $MIXCASNameFormula auf NIST</a><br />
