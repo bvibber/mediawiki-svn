@@ -18,7 +18,7 @@ $messages['en'] = array(
 	'watchsubpages-addtitlestowatchlist' => 'Add pages to watchlist',
 	'watchsubpages-desc' => 'Quickly [[Special:WatchSubpages|add all subpages]] of a page to the watchlist',
 	'watchsubpages-form' => 'Select the pages to add to your watchlist below.
-To add a page, check the box next to it, and click "Add pages".
+To add a page, check the box next to it, and click "{{int:watchsubpages-addtitles}}".
 
 When checking or unchecking multiple pages, holding the shift key allows you to select consecutive checkboxes by clicking each end of the range to be checked.',
 );
