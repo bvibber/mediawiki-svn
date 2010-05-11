@@ -19,7 +19,9 @@
 		"mw.Firefogg"			: "mw.Firefogg.js",
 		"mw.FirefoggGUI"		: "mw.FirefoggGUI.js",
 		"mw.FirefoggRender"		: "modules/libSequencer/mw.FirefoggRender.js",
-		"mw.RemoteSearchDriver"	: "mw.RemoteSearchDriver.js",			
+		"mw.RemoteSearchDriver"	: "mw.RemoteSearchDriver.js",		
+
+    	"mw.style.AddMedia" : "css/mw.style.AddMedia.css",
 		
 		"baseRemoteSearch"		: "searchLibs/baseRemoteSearch.js",
 		"mediaWikiSearch"		: "searchLibs/mediaWikiSearch.js",
@@ -53,6 +55,7 @@
 		
 		var request = [
 			[	'mw.RemoteSearchDriver',
+				'mw.style.AddMedia',
 				'$j.cookie',
 				'$j.fn.textSelection',
 				'$j.browserTest', // ( textSelection uses browserTest ) 
@@ -62,7 +65,7 @@
 				'$j.ui.draggable',
 				'$j.ui.dialog',
 				'$j.ui.tabs',
-				'$j.ui.sortable'
+				'$j.ui.sortable'        	
 			]
 		];
 		mw.load( request , function() {
