@@ -27,7 +27,7 @@
 // Set a constant so the script-loader knows its not being used in "stand alone mode"
 define( 'SCRIPTLOADER_MEDIAWIKI', true);
 
-require_once( dirname(__FILE__) . '/js/mwEmbed/jsScriptLoader.php');
+require_once( dirname(__FILE__) . '/mwEmbed/jsScriptLoader.php');
 // Do quick cache check via jsScriptLoader
 $myScriptLoader = new jsScriptLoader();
 if( $myScriptLoader->outputFromCache() ){

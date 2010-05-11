@@ -13,70 +13,24 @@ $wgExtensionCredits['other'][] = array(
 	'descriptionmsg' => 'js2support-desc',
 );
 
-$dir = dirname( __FILE__ ) . '/';
-$wgExtensionMessagesFiles[ 'JS2Support' ] = $dir . 'JS2Support.i18n.php';
-$wgAutoloadClasses[ 'ScriptLoaderOutputPage' ] = $dir . 'ScriptLoaderOutputPage.php';
-
-$wgAutoloadClasses = array_merge( $wgAutoloadClasses,
-	 array(
-		'JSMin' => $dir . 'js/mwEmbed/includes/library/JSMin.php',
-		'Minify_CSS' => $dir . 'js/mwEmbed/includes/library/CSS.php',
-		'Minify_CommentPreserver' => $dir . 'js/mwEmbed/includes/library/CommentPreserver.php',
-		'Minify_CSS_Compressor' => $dir . 'js/mwEmbed/includes/library/CSS/Compressor.php',
-		'Minify_CSS_UriRewriter' => $dir . 'js/mwEmbed/includes/library/CSS/UriRewriter.php',
-		'JSMinException' => $dir . 'js/mwEmbed/includes/minify/JSMin.php',
-		'jsScriptLoader' => $dir . 'js/mwEmbed/jsScriptLoader.php',
-		'jsClassLoader' => $dir . 'js/mwEmbed/includes/jsClassLoader.php',
-		'simpleFileCache' => $dir . 'js/mwEmbed/jsScriptLoader.php',
-	)
-);
-
-// Autoloader for core mediaWiki JavaScript files (path is from the MediaWiki root folder)
-// All other named paths should be merged with this global
-$wgScriptLoaderNamedPaths = array(
-	'ajax' => 'skins/common/ajax.js',
-	'ajaxwatch' => 'skins/common/ajaxwatch.js',
-	'allmessages' => 'skins/common/allmessages.js',
-	'block' => 'skins/common/block.js',
-	'changepassword' => 'skins/common/changepassword.js',
-	'diff' => 'skins/common/diff.js',
-	'edit' => 'skins/common/edit.js',
-	'enhancedchanges.js' => 'skins/common/enhancedchanges.js',
-	'history' => 'skins/common/history.js',
-	'htmlform' => 'skins/common/htmlform.js',
-	'IEFixes' => 'skins/common/IEFixes.js',
-	'metadata' => 'skins/common/metadata.js',
-	'mwsuggest' => 'skins/common/mwsuggest.js',
-	'prefs' => 'skins/common/prefs.js',
-	'preview' => 'skins/common/preview.js',
-	'protect' => 'skins/common/protect.js',
-	'rightclickedit' => 'skins/common/rightclickedit.js',
-	'sticky' => 'skins/common/sticky.js',
-	'upload' => 'skins/common/upload.js',
-	'wikibits' => 'skins/common/wikibits.js',
-
-	// Css bindings
-	'mw.style.shared' => 'skins/common/shared.css',
-	'mw.style.commonPrint' => 'skins/common/commonPrint.css',
-	'mw.style.vectorMainLTR' => 'skins/vector/main-ltr.css',
-	'mw.style.vectorMainRTR' => 'skins/vector/main-rtl.css',
-
-	// Monobook css
-	'mw.sytle.mbMain' => 'skins/monobook/main.css',
-	'mw.style.mbIE5' => 'skins/monobook/IE50Fixes.css',
-	'mw.style.mbIE55' => 'skins/monobook/IE55Fixes.css',
-	'mw.style.mbIE60' => 'skins/skins/monobook/IE60Fixes.css',
-	'mw.style.mbIE7' => 'skins/monobook/IE70Fixes.css',
-);
+$js2Dir = dirname( __FILE__ ) . '/';
+$wgExtensionMessagesFiles[ 'JS2Support' ] = $js2Dir . 'JS2Support.i18n.php';
 
 
 /**
- * Remap output page
+ * Setup the js2 extension:
  */
 $wgExtensionFunctions[] = 'wfReMapOutputPage';
 function wfReMapOutputPage(){
-	global $wgOut;
+	global $wgOut, $js2Dir, $wgAutoloadClasses, $wgScriptLoaderNamedPaths;
+
+	// Remap output page as part of the extension setup
 	$wgOut = new StubObject( 'wgOut', 'ScriptLoaderOutputPage' );
+
+	$wgAutoloadClasses[ 'ScriptLoaderOutputPage' ] = $js2Dir . 'ScriptLoaderOutputPage.php';
+
+	// Include all the mediaWiki autoload classes:
+	require( $js2Dir . 'JS2AutoLoader.php');
 }
 
 /**
@@ -93,13 +47,9 @@ function js2SupportAddJSVars( &$vars ) {
 	return true;
 }
 
-/***************************
-* LocalSettings.php enabled js extensions
-****************************/
-require_once( $dir . 'AddMediaWizard/AddMediaWizard.php' );
-
 /****************************
-* DefaultSettings.php
+* Configuration
+* Could eventually go into DefaultSettings.php
 *****************************/
 
 /*
@@ -113,6 +63,11 @@ $wgEnableJS2system = true;
  * for js-modules. ( ie modules hosted inside of extensions )
  */
 $wgExtensionJavascriptLoader = array();
+
+/**
+ * The set of script-loader Named Paths, populated via extensions and javascript module loaders
+ */
+$wgScriptLoaderNamedPaths = array();
 
 /*
  * $wgEnableScriptLoader; If the script loader should be used to group all javascript requests.
@@ -153,16 +108,12 @@ $wgJavaPath = false;
 $wgClosureCompilerLevel = 'SIMPLE_OPTIMIZATIONS';
 
 /*
- * $wgScriptModifiedMsgCheck Checks MediaWiki NS for latest
+ * $wgScriptModifiedMsgCheck Checks MediaWiki NS for latest messege
  * Revision for generating the request id.
  *
  */
 $wgScriptModifiedMsgCheck = false;
 
-/**
- * If the api iframe proxy should be enabled or not.
- */
-$wgEnableIframeApiProxy = false;
 
 /**
  * boolean; if we should enable javascript localization (it loads mw.addMessages json
@@ -173,7 +124,7 @@ $wgEnableScriptLocalization = true;
 /**
  * Path for mwEmbed normally js/mwEmbed/
  */
-$wgMwEmbedDirectory = "extensions/JS2Support/js/mwEmbed";
+$wgMwEmbedDirectory = "extensions/JS2Support/mwEmbed";
 
 /**
  * Enables javascript on debugging

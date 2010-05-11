@@ -37,7 +37,7 @@ require_once( "$IP/extensions/AddMediaWizard/AddMediaWizard.php" );
 # Upload Wizard
 require_once( "$IP/extensions/UploadWizard/UploadWizard.php" );
 
-# Ogg Handler with html5 player, transcoding + subtitle support. 
+# TimedMediaHandler, update to Ogg Handler with html5 player, multi-format transcoding & subtitle support. 
 require_once( "$IP/extensions/TimedMediaHandler/TimedMediaHandler.php" );
 
 
