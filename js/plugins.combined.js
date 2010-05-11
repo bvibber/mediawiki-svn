@@ -6263,6 +6263,7 @@ encapsulateSelection: function( options ) {
 			$(this).focus();
 			var startPos = this.selectionStart;
 			var endPos = this.selectionEnd;
+			var scrollTop = this.scrollTop;
 			checkSelectedText();
 			if ( options.ownline ) {
 				if ( startPos != 0 && this.value.charAt( startPos - 1 ) != "\n" ) {
@@ -6274,6 +6275,8 @@ encapsulateSelection: function( options ) {
 			}
 			this.value = this.value.substring( 0, startPos ) + options.pre + selText + options.post +
 				this.value.substring( endPos, this.value.length );
+			// Setting this.value scrolls the textarea to the top, restore the scroll position
+			this.scrollTop = scrollTop;
 			if ( window.opera ) {
 				options.pre = options.pre.replace( /\r?\n/g, "\r\n" );
 				selText = selText.replace( /\r?\n/g, "\r\n" );
@@ -6289,7 +6292,13 @@ encapsulateSelection: function( options ) {
 			}
 		} else if ( document.selection && document.selection.createRange ) {
 			// IE
+			// For some mysterious reason, clicking a toolbar button is enough to make
+			// the textarea scroll. Check if a toolbar button's mousedown handler saved
+			// the scroll position and use it if available.
+			var scrollTop = $(this).data( 'scrollTop' ) || this.scrollTop;
+			$(this).data( 'scrollTop', null );
 			$(this).focus();
+			this.scrollTop = scrollTop;
 			var range = document.selection.createRange();
 			if ( options.ownline && range.moveStart ) {
 				var range2 = document.selection.createRange();
@@ -6313,9 +6322,9 @@ encapsulateSelection: function( options ) {
 				range.moveEnd( 'character', - options.post.length );
 			}
 			range.select();
+			// Restore the scroll position
+			this.scrollTop = scrollTop;
 		}
-		// Scroll the textarea to the inserted text
-		$(this).textSelection( 'scrollToCaretPosition' );
 		$(this).trigger( 'encapsulateSelection', [ options.pre, options.peri, options.post, options.ownline,
 			options.replace ] );
 	});
@@ -6628,8 +6637,8 @@ $.wikiEditor = {
 	'browsers': {
 		// Left-to-right languages
 		'ltr': {
-			// The toolbar layout is broken in IE6, selection is out of control in IE8
-			'msie': [['==', 7]],
+			// The toolbar layout is broken in IE6
+			'msie': [['>=', 7]],
 			// Layout issues in FF < 2
 			'firefox': [['>=', 2]],
 			// Text selection bugs galore - this may be a different situation with the new iframe-based solution
@@ -6644,7 +6653,7 @@ $.wikiEditor = {
 		// Right-to-left languages
 		'rtl': {
 			// The toolbar layout is broken in IE 7 in RTL mode, and IE6 in any mode
-			'msie': false,
+			'msie': [['>=', 8]],
 			// Layout issues in FF < 2
 			'firefox': [['>=', 2]],
 			// Text selection bugs galore - this may be a different situation with the new iframe-based solution
@@ -10925,7 +10934,14 @@ api : {
 						$characters
 						.append(
 							$( $.wikiEditor.modules.toolbar.fn.buildCharacter( data[type][character], actions ) )
-								.click( function(e) {
+								.mousedown( function( e ) {
+									// Save scroll position for IE
+									context.$textarea.data( 'scrollTop', context.$textarea.scrollTop() );
+									// No dragging!
+									e.preventDefault();
+									return false;
+								} )
+								.click( function( e ) {
 									$.wikiEditor.modules.toolbar.fn.doAction( $(this).parent().data( 'context' ),
 										$(this).parent().data( 'actions' )[$(this).attr( 'rel' )] );
 									e.preventDefault();
@@ -11152,6 +11168,8 @@ fn: {
 						.data( 'action', tool.action )
 						.data( 'context', context )
 						.mousedown( function( e ) {
+							// Save scroll position for IE
+							context.$textarea.data( 'scrollTop', context.$textarea.scrollTop() );
 							// No dragging!
 							e.preventDefault();
 							return false;
@@ -11188,6 +11206,8 @@ fn: {
 								.data( 'action', tool.list[option].action )
 								.data( 'context', context )
 								.mousedown( function( e ) {
+									// Save scroll position for IE
+									context.$textarea.data( 'scrollTop', context.$textarea.scrollTop() );
 									// No dragging!
 									e.preventDefault();
 									return false;
@@ -11303,6 +11323,8 @@ fn: {
 						.html( html )
 						.children()
 						.mousedown( function( e ) {
+							// Save scroll position for IE
+							context.$textarea.data( 'scrollTop', context.$textarea.scrollTop() );
 							// No dragging!
 							e.preventDefault();
 							return false;

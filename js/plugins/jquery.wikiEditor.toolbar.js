@@ -110,7 +110,14 @@ api : {
 						$characters
 						.append(
 							$( $.wikiEditor.modules.toolbar.fn.buildCharacter( data[type][character], actions ) )
-								.click( function(e) {
+								.mousedown( function( e ) {
+									// Save scroll position for IE
+									context.$textarea.data( 'scrollTop', context.$textarea.scrollTop() );
+									// No dragging!
+									e.preventDefault();
+									return false;
+								} )
+								.click( function( e ) {
 									$.wikiEditor.modules.toolbar.fn.doAction( $(this).parent().data( 'context' ),
 										$(this).parent().data( 'actions' )[$(this).attr( 'rel' )] );
 									e.preventDefault();
@@ -337,6 +344,8 @@ fn: {
 						.data( 'action', tool.action )
 						.data( 'context', context )
 						.mousedown( function( e ) {
+							// Save scroll position for IE
+							context.$textarea.data( 'scrollTop', context.$textarea.scrollTop() );
 							// No dragging!
 							e.preventDefault();
 							return false;
@@ -373,6 +382,8 @@ fn: {
 								.data( 'action', tool.list[option].action )
 								.data( 'context', context )
 								.mousedown( function( e ) {
+									// Save scroll position for IE
+									context.$textarea.data( 'scrollTop', context.$textarea.scrollTop() );
 									// No dragging!
 									e.preventDefault();
 									return false;
@@ -488,6 +499,8 @@ fn: {
 						.html( html )
 						.children()
 						.mousedown( function( e ) {
+							// Save scroll position for IE
+							context.$textarea.data( 'scrollTop', context.$textarea.scrollTop() );
 							// No dragging!
 							e.preventDefault();
 							return false;
