@@ -22,6 +22,13 @@ $messages['be-tarask'] = array(
 	'wikieditor-addMediaWizard-preference' => 'Уключыць дапаўненьне «Майстар даданьня мэдыя»',
 );
 
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'wikieditor-addMediaWizard-preference' => '"Add media wizard" গ্যাজেট সক্রিয়',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */
@@ -69,6 +76,13 @@ $messages['fr'] = array(
  */
 $messages['gl'] = array(
 	'wikieditor-addMediaWizard-preference' => 'Activar o trebello "Asistente para engadir medios"',
+);
+
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'wikieditor-addMediaWizard-preference' => 'Dr „Medienassischtänt“ aktiviere, as Hilfsprogramm zum Yyfiege vu Mediedateie',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -168,6 +182,13 @@ $messages['pt'] = array(
  */
 $messages['ru'] = array(
 	'wikieditor-addMediaWizard-preference' => 'Включить гаджет «Мастер добавления медиа»',
+);
+
+/** Swedish (Svenska)
+ * @author Ainali
+ */
+$messages['sv'] = array(
+	'wikieditor-addMediaWizard-preference' => 'Aktivera "Lägg till media guiden" finessen',
 );
 
 /** Vietnamese (Tiếng Việt)

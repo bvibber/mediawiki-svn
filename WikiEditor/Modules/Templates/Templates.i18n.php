@@ -22,6 +22,13 @@ $messages['be-tarask'] = array(
 	'wikieditor-templates-preference' => 'Уключыць хаваньне шаблёнаў',
 );
 
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'wikieditor-templates-preference' => 'টেম্পলেট ভাঁজ হওয়া সক্রিয়',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */
@@ -50,6 +57,13 @@ $messages['dsb'] = array(
 	'wikieditor-templates-preference' => 'Fałdowanje pśedłogow zmóžniś',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'wikieditor-templates-preference' => 'Ŝalti ŝablonan kaŝadon',
+);
+
 /** Spanish (Español)
  * @author Crazymadlover
  */
@@ -69,6 +83,13 @@ $messages['fr'] = array(
  */
 $messages['gl'] = array(
 	'wikieditor-templates-preference' => 'Activar o enrolamento de modelos',
+);
+
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'wikieditor-templates-preference' => 'Aktivierig vum Yy- un Uusblände vu Vorlage',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -160,5 +181,12 @@ $messages['pt'] = array(
  */
 $messages['ru'] = array(
 	'wikieditor-templates-preference' => 'Включить сворачивание шаблонов',
+);
+
+/** Swedish (Svenska)
+ * @author Ainali
+ */
+$messages['sv'] = array(
+	'wikieditor-templates-preference' => 'Aktivera ihopfällbara mallar',
 );
 

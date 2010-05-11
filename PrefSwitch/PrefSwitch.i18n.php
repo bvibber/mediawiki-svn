@@ -216,6 +216,8 @@ $messages['be-tarask'] = array(
 * Майстар стварэньня спасылак:  Лёгкі ў выкарыстаньні інструмэнт дазваляе Вам дадаваць спасылкі на іншыя старонкі {{GRAMMAR:родны|{{SITENAME}}}} таксама як і на вонкавыя сайты.
 * Паляпшэньні пошуку: Мы палепшылі пошукавыя падказкі, каб хутчэй паказаць неабходную Вам старонку.
 * Іншыя магчымасьці:  Мы таксама ўвялі майстар стварэньня табліцаў для палягчэньня стварэньня табліцаў і магчымасьць пошуку і замены для палягчэньня рэдагаваньня старонак.',
+	'prefswitch-main-anon' => '===Вярнуцца===
+Калі Вы жадаеце выключыць новыя магчымасьці, <span class="plainlinks">[$1 націсьніце тут]</span>. Вас папросяць спачатку увайсьці ў сыстэму альбо стварыць новы рахунак.',
 	'prefswitch-main-on' => '===Зваротная сувязь?===
 Мы жадаем даведацца пра Вашыя меркаваньні. Калі ласка, наведайце нашу <span class="plainlinks">[$1 старонку зваротнай сувязі]</span>.
 ===Вярніце ўсё назад!===
@@ -277,6 +279,8 @@ $messages['bn'] = array(
 	'prefswitch-success-feedback' => 'আপনার প্রতিক্রিয়া পাঠানো হয়েছে।',
 	'prefswitch-return' => '<hr style="clear:both">
 ফিরে যান <span class="plainlinks">[$1 $2]</span>.',
+	'prefswitch-main-anon' => '===আমাকে ফিরিয়ে নাও===
+আপনি যদি নতুন বৈশিষ্ট্যাবলী বন্ধ করতে চান তাহলে, <span class="plainlinks">[$1 এখানে ক্লিক করুন]</span>। এ কাজের প্রথমেই আপনাকে লগ-ইন বা নতুন অ্যাকাউন্ট তৈরি করতে বলা হবে।',
 	'prefswitch-main-on' => '===প্রতিক্রিয়া?===
 আমরা আপনার কাছ থেকে শুনতে চাই। অনুগ্রহ করে আমাদের <span class="plainlinks">[$1 প্রতিক্রিয়া পাতা] দেখুন</span>।
 ===আমাকে ফেরত নাও!===
@@ -778,6 +782,8 @@ Volver a <span class="plainlinks">[$1 $2]</span>.',
 * Asistente de enlaces: una sencilla herramienta permite añadir enlaces ya sea a otras páginas de Wikipedia como a otros sitios externos.
 * Mejoras en la búsqueda: hemos mejorado las sugerencias para llegar más rápido a la página que se está buscando.
 * Otras nuevas características: también hemos introducido un asistente de tablas para hacer más sencilla la creación de tablas y una funcionalidad de buscar y reemplazar que simplifica la edición de páginas.',
+	'prefswitch-main-anon' => '===Regresarme===
+Si deseas deshabilitar las nuevas características, <span class="plainlinks">[$1 hazclick aquí]</span>. Se te solicitará iniciar sesión o crear una cuenta primero.',
 	'prefswitch-main-on' => '===Retroalimentar?===
 Nos encantaría escucharte. Por favor visita nuestra <span class="plainlinks">[$1 página de retroalimentación]</span>.
 ===Llévenme de vuelta===
@@ -873,6 +879,8 @@ Valitse kaikki sopivat.',
 	'prefswitch-success-feedback' => 'Palautteesi on lähetetty.',
 	'prefswitch-return' => '<hr style="clear:both">
 Palaa sivulle <span class="plainlinks">[$1 $2]</span>.',
+	'prefswitch-main-anon' => '=== Palaa takaisin ===
+Jos haluat poistaa käytöstä uudet ominaisuudet – <span class="plainlinks">[$1 napsauta tästä]</span>. Sinua pyydetään ensin kirjautumaan sisään tai luomaan tunnus.',
 	'prefswitch-main-on' => '=== Palautetta? ===
 Otamme mielellämme palautetta vastaan. Käy <span class="plainlinks">[$1 palautesivulla]</span>.
 === Palaa takaisin ===
@@ -888,6 +896,7 @@ Auttaaksesi parantamaan niitä – täytä alla oleva valinnainen kysely.',
 /** French (Français)
  * @author Coyau
  * @author IAlex
+ * @author Jean-Frédéric
  */
 $messages['fr'] = array(
 	'prefswitch' => "Commutateur de préférences de l'initiative d'utilisabilité",
@@ -935,6 +944,8 @@ Revenir à <span class="plainlinks">[$1 $2]</span>.',
 * Assistant de liens : Un outil simple pour vous permettre d'ajouter des liens vers d'autres pages de Wikipédia ainsi que des liens vers des sites externes.
 * Amélioration de la recherche : Nous avons amélioré les suggestions de recherche pour vous aider à trouvez la page que vous recherchez plus rapidement.
 * Autres nouvelles fonctionnalités : Nous avons également introduit un assistant de tableaux pour créer des tableaux plus facilement et une fonctionnalité de remplacement pour simplifier la modification de page.",
+	'prefswitch-main-anon' => '===Take Me Back===
+Si vous souhaitez désactiver les nouvelles fonctionnalités, <span class="plainlinks">[$1 cliquez ici]</span>.  Il vous sera demandé de vous connecter ou de vous créer un compte.',
 	'prefswitch-main-on' => '=== Commentaires ? ===
 Nous aimerions avoir vos impressions. Visitez notre <span class="plainlinks">[$1 page de commentaires]</span>.
 === Sortez-moi de là ! ===
@@ -1058,6 +1069,8 @@ Zruck zue <span class="plainlinks">[$1 $2]</span>.',
 * Gleichhilf:  E eifach Wärchzyyg, wu Dir s megli macht, Gleicher zue andere Wikipediasyte un zue extärne Syte.
 * Verbesserige vu dr Suechi: Mir hän d Suechvorschleg verbesseret, ass Du schnäller uf die Syte chunnsch, wu Du suechsch.
 * Anderi neji Funktione:  Mir hän au ne Tabällehilf yygfiert, wu s Aalege vu Tabälle eifacher macht, un e Hilf zum Sueche un Ersetze, wu s Bearbeite vu Syte eifacher macht.',
+	'prefswitch-main-anon' => '===Zruck===
+Wänn Du di neje Funktione witt abschalte, no <span class="plainlinks">[$1 druck do]</span>. Du wirsch derno bätte Di aazmälde oder zerscht e nej Benutzerkonto aazlege.',
 	'prefswitch-main-on' => '=== Ruckmäldig? ===
 Mir deeten is freie, vu Dir z here.
 Bitte bsuech unseri <span class="plainlinks">[$1 Ruckmäldigs-Syte]</span>.
@@ -1394,6 +1407,7 @@ Per aiutarci a migliorarle, per favore riempi il seguente questionario facoltati
 
 /** Japanese (日本語)
  * @author Aotake
+ * @author Fryed-peach
  */
 $messages['ja'] = array(
 	'prefswitch' => 'ユーザビリティイニシアティブ設定スイッチ',
@@ -1441,6 +1455,8 @@ $messages['ja'] = array(
 * リンクウィザード: ウィキペディア内の他のページや外部サイトへのリンクを追加できる、使いやすいツールを備えました。
 * 検索機能の改善: 検索結果の候補予想の提示を改善し、お探しのページにより素早くたどり着けるようにしました。
 * その他の新機能: その他にも、ページ編集を簡潔化するために、表の作成を簡単にする表ウィザード、検索・置換機能を追加しました。',
+	'prefswitch-main-anon' => '===以前の状態に戻す===
+新機能の数々を停止したい場合、<span class="plainlinks">[$1 こちらをクリック]</span>してください。まずログインするかアカウントを作るか尋ねられます。',
 	'prefswitch-main-on' => '===フィードバック===
 ご意見をぜひお寄せください。私たちの<span class="plainlinks">[$1 フィードバック専用ページ]</span>をぜひご覧ください。
 ===もとに戻す===
@@ -1723,7 +1739,7 @@ $messages['ml'] = array(
 	'prefswitch-success-off' => 'പുതിയ സവിശേഷതകൾ ഇപ്പോൾ പ്രവർത്തനരഹിതമാണ്.',
 	'prefswitch-success-feedback' => 'താങ്കളുടെ അഭിപ്രായങ്ങൾ അയച്ചുകഴിഞ്ഞു.',
 	'prefswitch-return' => '<hr style="clear:both">
-<span class="plainlinks">[$1 $2]</span> എന്നതിലേയ്ക്ക് മടങ്ങുക.',
+<span class="plainlinks">[$1 $2]</span> എന്ന താളിലേയ്ക്ക് മടങ്ങുക.',
 	'prefswitch-main' => 'ഞങ്ങൾ ഞങ്ങളുടെ ഉപയോക്താക്കൾക്ക് കാര്യങ്ങൾ എളുപ്പമാക്കി നൽകാൻ കഠിനാധ്വാനം ചെയ്യുന്നുണ്ട്. പുതുമയുള്ള ദൃശ്യാനുഭവും ലളിതമാക്കിയ തിരുത്തൽ സൗകര്യവുമടക്കമുള്ള ചില മെച്ചപ്പെടുത്തലുകൾ ഞങ്ങൾ ആഹ്ലാദത്തോടെ പങ്ക് വെയ്ക്കുന്നു. നമ്മുടെ സംരംഭങ്ങളുടെ മെച്ചപ്പെട്ട ഉപയോഗ്യത വിക്കിമീഡിയ ഫൗണ്ടേഷന്റെ ലക്ഷ്യമാണ്, കൂടുതൽ മെച്ചപ്പെടുത്തലുകൾ ഭാവിയിൽ വരാനിരിക്കുന്നു.
 
 [[File:UsabilityNavigation.png|right|link=|പുതിയ നാവിഗേഷന്റെ സ്ക്രീൻഷോട്ട്]]
@@ -1735,6 +1751,8 @@ $messages['ml'] = array(
 *കണ്ണി ചേർക്കൽ: ലളിതമായി ഉപയോഗിക്കാവുന്ന ഉപകരണം കൊണ്ട് മറ്റ് വിക്കിപീഡിയ താളുകളിലേയ്ക്കോ പുറത്തുള്ള സൈറ്റുകളിലേയ്ക്കോ കണ്ണികൾ ചേർക്കാൻ താങ്കളെ സഹായിക്കുന്നു.
 *തിരച്ചിൽ മെച്ചപ്പെടുത്തലുകൾ: താങ്കൾ തിരയുന്ന താളിലേയ്ക്ക് പെട്ടെന്ന് എത്തിച്ചേരാവുന്ന വിധത്തിൽ മെച്ചപ്പെടുത്തിയ തിരച്ചിൽ നിർദ്ദേശങ്ങൾ ഉൾപ്പെടുത്തിയിരിക്കുന്നു.
 *മറ്റ് പുതിയ സവിശേഷതകൾ: പട്ടികകൾ ചേർക്കാനായി ഒരു സഹായിയും താൾ തിരുത്തൽ ലളിതമാക്കാൻ വാക്കുകളും മറ്റും കണ്ടെത്തി മാറ്റിച്ചേർക്കാനുള്ള സൗകര്യവും ഉൾപ്പെടുത്തിയിരിക്കുന്നു.',
+	'prefswitch-main-anon' => '===എനിക്കിതു വേണ്ട===
+പുതിയ സവിശേഷതകൾ താങ്കൾ ഒഴിവാക്കാൻ ആഗ്രഹിക്കുന്നുവെങ്കിൽ, <span class="plainlinks">[$1 ഇവിടെ ഞെക്കുക]</span>. ഇതിനായി ആദ്യം ലോഗിൻ ചെയ്യുകയോ അംഗത്വമെടുക്കുകയോ ചെയ്യേണ്ടതാണ്.',
 	'prefswitch-main-on' => '===അഭിപ്രായങ്ങൾ?===
 താങ്കളുടെ അഭിപ്രായം ഏറെ വിലയേറിയതാണ്. ദയവായി ഞങ്ങളുടെ <span class="plainlinks">[$1 അഭിപ്രായങ്ങൾക്കുള്ള താൾ]</span> കാണുക.
 ===എനിക്കു പഴയതു മതി!===
@@ -2116,6 +2134,8 @@ $messages['ru'] = array(
 * Мастер ссылок. Простой в использовании инструмент позволяет добавлять ссылки, ведущие как на страницы Википедии, так и на внешние сайты.
 * Улучшение поиска. Мы улучшили поисковые подсказки, чтобы быстрее показать вам требуемую страницу.
 * Другие новые функции. Мы также сделали мастер таблиц, позволяющий легко создавать таблицы, а также функцию поиска и замены, упрощающую редактирование.',
+	'prefswitch-main-anon' => '=== Вернуть как было ===
+Если вы хотите отключить новые возможности, <span class="plainlinks">[$1 нажмите здесь]</span>. Вам будет предложено сначала представиться или зарегистрировать учётную запись.',
 	'prefswitch-main-on' => '=== Обратная связь? ===
 Мы хотели бы услышать ваши отзывы. Пожалуйста, посетите нашу <span class="plainlinks">[$1 страницу обратной связи].</span>
 === Верните всё обратно! ===
@@ -2175,6 +2195,44 @@ Vrnitev na <span class="plainlinks">[$1 $2]</span>.',
 Prosimo, izpolnite neobvezno anketo spodaj.',
 	'prefswitch-survey-intro-off' => 'Zahvaljujemo se vam za preizkušanje naših novih funkcij.
 Da nam jih pomagate izboljšati, prosimo izpolnite neobvezno anketo spodaj.',
+);
+
+/** Swedish (Svenska)
+ * @author Ainali
+ * @author Dafer45
+ */
+$messages['sv'] = array(
+	'prefswitch-survey-true' => 'Ja',
+	'prefswitch-survey-false' => 'Nej',
+	'prefswitch-survey-submit-off' => 'Stäng av de nya funktionerna',
+	'prefswitch-survey-cancel-off' => 'Om du vill fortsätta att använda de nya funktionerna kan du återgå till $1.',
+	'prefswitch-survey-submit-feedback' => 'Skicka feedback',
+	'prefswitch-survey-cancel-feedback' => 'Om du inte vill ge feedback kan du återgå till $1.',
+	'prefswitch-survey-question-likedislike' => 'Vad tyckte du om de nya funktionerna?
+Vad ogillade du med funktionerna?',
+	'prefswitch-survey-question-whyoff' => 'Varför stänger du av de nya funktionerna?
+Välj alla som stämmer.',
+	'prefswitch-survey-answer-whyoff-hard' => 'Det var för svårt att använda.',
+	'prefswitch-survey-answer-whyoff-didntwork' => 'Det fungerade inte korrekt.',
+	'prefswitch-survey-answer-whyoff-notpredictable' => 'Det betedde sig inte förutsägbart.',
+	'prefswitch-survey-answer-whyoff-didntlike-look' => 'Jag tyckte inte om hur det såg ut.',
+	'prefswitch-survey-answer-whyoff-didntlike-layout' => 'Jag tyckte inte om den nya flikarna och layouten.',
+	'prefswitch-survey-answer-whyoff-didntlike-toolbar' => 'Jag gillade inte det nya verktygsfältet.',
+	'prefswitch-survey-answer-whyoff-other' => 'Annan orsak:',
+	'prefswitch-survey-question-browser' => 'Vilken webbläsare använder du?',
+	'prefswitch-survey-answer-browser-other' => 'Andra webbläsare:',
+	'prefswitch-survey-question-os' => 'Vilket operativsystem använder du?',
+	'prefswitch-survey-answer-os-other' => 'Annat operativsystem:',
+	'prefswitch-survey-question-res' => 'Vad är din skärmupplösning?',
+	'prefswitch-title-on' => 'Vad är nytt?',
+	'prefswitch-title-switched-on' => 'Njut!',
+	'prefswitch-title-off' => 'Stäng av de nya funktionerna',
+	'prefswitch-title-switched-off' => 'Tack',
+	'prefswitch-title-feedback' => 'Feedback',
+	'prefswitch-success-on' => 'Nya funktioner är nu på.',
+	'prefswitch-success-off' => 'Nya funktioner är nu av.',
+	'prefswitch-success-feedback' => 'Dina kommentarer har skickats.',
+	'prefswitch-return' => '<hr style="clear:both"> Återgå till <span class="plainlinks">[$1 $2].</span>',
 );
 
 /** Telugu (తెలుగు)

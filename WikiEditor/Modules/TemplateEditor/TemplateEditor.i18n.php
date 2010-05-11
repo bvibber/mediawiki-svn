@@ -34,6 +34,13 @@ $messages['af'] = array(
 	'wikieditor-template-editor-preference' => 'Aktiveer vorm-gebaseerde wysiging van wikisjablone',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'wikieditor-template-editor-dialog-cancel' => 'Cancelar',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK

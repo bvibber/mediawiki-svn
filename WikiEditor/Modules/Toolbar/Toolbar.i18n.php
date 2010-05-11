@@ -560,6 +560,13 @@ $messages['af'] = array(
 	'wikieditor-toolbar-help-content-indent-result' => 'Normale teks<dl><dd>Geïndenteerde teks<dl><dd>Geïndenteerde teks</dd></dl></dd></dl>',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'wikieditor-toolbar-tool-reference-cancel' => 'Cancelar',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author Orango
@@ -1478,6 +1485,7 @@ $messages['bn'] = array(
 	'wikieditor-toolbar-tool-link-lookslikeinternal-int' => 'আন্তঃসংযোগ',
 	'wikieditor-toolbar-tool-link-lookslikeinternal-ext' => 'বহিঃসংযোগ',
 	'wikieditor-toolbar-tool-link-empty' => 'লিঙ্ক করা জন্য আপনি কোনো কিছু টাইপ করেননি।',
+	'wikieditor-toolbar-tool-file' => 'এম্বেডেড ফাইল',
 	'wikieditor-toolbar-tool-file-example' => 'Example.jpg',
 	'wikieditor-toolbar-tool-reference' => 'তথ্যসূত্র',
 	'wikieditor-toolbar-tool-reference-example' => 'পাদটীকার লেখা এখানে যোগ করো',
@@ -1620,6 +1628,7 @@ $messages['bn'] = array(
 	'wikieditor-toolbar-help-content-olist-description' => 'সংখ্যায়িত তালিকা',
 	'wikieditor-toolbar-help-content-olist-syntax' => '# তালিকা আইটেম <br /># তালিকা আইটেম',
 	'wikieditor-toolbar-help-content-olist-result' => '<ol><li>তালিকা আইটেম</li><li>তালিকা আইটেম</li></ol>',
+	'wikieditor-toolbar-help-content-file-description' => 'এম্বেডেড ফাইল',
 	'wikieditor-toolbar-help-content-file-syntax' => '[[{{ns:file}}:Example.png|thumb|ক্যাপশন লেখ]]',
 	'wikieditor-toolbar-help-content-reference-description' => 'তথ্যসূত্র',
 	'wikieditor-toolbar-help-content-reference-result' => "পাতার লেখা।<sup><a href='#'>[1]</a></sup>",
@@ -1673,10 +1682,10 @@ $messages['br'] = array(
 	'wikieditor-toolbar-tool-link-int-target-status-external' => 'Liamm diavaez',
 	'wikieditor-toolbar-tool-link-int-target-status-loading' => 'O wiriañ hag-eñ ez eus eus ar bajenn...',
 	'wikieditor-toolbar-tool-link-int-invalid' => "Kamm eo an titl hoc'h eus merket.",
-	'wikieditor-toolbar-tool-link-lookslikeinternal' => "An URL hoc'h eus lakaet a seblant bezañ evel ma 'vefe ul liamm davet ur bajenn all eus wiki. Ha c'hoant hoc'h eus e lakaat evel ul liamm diabarzh ?",
+	'wikieditor-toolbar-tool-link-lookslikeinternal' => "Seblantout kas ul liamm davet ur bajenn all eus ar wiki a ra an URL lakaet ganeoc'h. Hag ul liamm diabarzh eo a fell deoc'h lakaat?",
 	'wikieditor-toolbar-tool-link-lookslikeinternal-int' => 'Liamm diabarzh',
 	'wikieditor-toolbar-tool-link-lookslikeinternal-ext' => 'Liamm diavaez',
-	'wikieditor-toolbar-tool-link-empty' => "N'ho peus lakaet netra a c'helle bezañ liammet.",
+	'wikieditor-toolbar-tool-link-empty' => "N'hoc'h eus merket netra a c'haller sevel liammoù outañ.",
 	'wikieditor-toolbar-tool-file' => 'Restr enframmet',
 	'wikieditor-toolbar-tool-file-example' => 'Skouer.jpg',
 	'wikieditor-toolbar-tool-reference' => 'Daveenn',
@@ -1737,15 +1746,15 @@ $messages['br'] = array(
 	'wikieditor-toolbar-tool-table-dimensions-rows' => 'Linennoù',
 	'wikieditor-toolbar-tool-table-dimensions-columns' => 'Bannoù',
 	'wikieditor-toolbar-tool-table-dimensions-header' => 'Lakaat  al linenn dalbenn e-barzh',
-	'wikieditor-toolbar-tool-table-wikitable' => 'Giz gant riblennoù',
-	'wikieditor-toolbar-tool-table-sortable' => 'Lakaat an taolennoù da vezañ gouest bezañ rummet',
+	'wikieditor-toolbar-tool-table-wikitable' => 'Stil gant bevennoù',
+	'wikieditor-toolbar-tool-table-sortable' => 'Kinnig urzhiañ roadennoù an daolenn',
 	'wikieditor-toolbar-tool-table-example' => 'Tenstenn er gellig',
 	'wikieditor-toolbar-tool-table-preview' => 'Rakwelet',
 	'wikieditor-toolbar-tool-table-insert' => "Ensoc'hañ",
 	'wikieditor-toolbar-tool-table-cancel' => 'Nullañ',
-	'wikieditor-toolbar-tool-table-toomany' => "N'eo ket posubl ensoc'hañ un daolenn gant muioc'h eget $1 kellig gant an ostilh-mañ.",
+	'wikieditor-toolbar-tool-table-toomany' => "N'haller ket ensoc'hañ un daolenn enni muioc'h eget $1 kellig gant an ostilh-mañ.",
 	'wikieditor-toolbar-tool-table-invalidnumber' => "Merket hoc'h eus un niver a linennoù pe a vannoù direizh.",
-	'wikieditor-toolbar-tool-table-zero' => "Ne c'helloc'h ket ensoc'hañ un daolenn hep kolonenn, na linenn.",
+	'wikieditor-toolbar-tool-table-zero' => "N'hallit ket ensoc'hañ un daolenn hep bann na linenn.",
 	'wikieditor-toolbar-tool-replace' => "Klask hag erlec'hiañ",
 	'wikieditor-toolbar-tool-replace-title' => "Klask hag erlec'hiañ",
 	'wikieditor-toolbar-tool-replace-search' => 'Klask :',
@@ -1759,7 +1768,7 @@ $messages['br'] = array(
 	'wikieditor-toolbar-tool-replace-nomatch' => "N'eus bet kavet netra o klotañ gant ar pezh a glaskit.",
 	'wikieditor-toolbar-tool-replace-success' => "$1 erlec'hiadenn graet",
 	'wikieditor-toolbar-tool-replace-emptysearch' => "N'hoc'h eus ebarzhet netra da glask.",
-	'wikieditor-toolbar-tool-replace-invalidregex' => "N'eo ket mat ar jedad rasional hoc'h eus lakaet : $1",
+	'wikieditor-toolbar-tool-replace-invalidregex' => "Direizh eo ar jedad reoliek hoc'h eus lakaet : $1",
 	'wikieditor-toolbar-section-characters' => 'Arouezennoù dibar',
 	'wikieditor-toolbar-characters-page-latin' => 'Latin',
 	'wikieditor-toolbar-characters-page-latinextended' => 'Latin astennet',
@@ -9347,6 +9356,7 @@ $messages['mk'] = array(
 );
 
 /** Malayalam (മലയാളം)
+ * @author Jyothis
  * @author Praveenp
  * @author Sadik Khalid
  */
@@ -9460,6 +9470,7 @@ $messages['ml'] = array(
 	'wikieditor-toolbar-tool-replace-search' => 'ഇതു കണ്ടെത്തുക:',
 	'wikieditor-toolbar-tool-replace-replace' => 'ഇതുകൊണ്ടു മാറ്റുക:',
 	'wikieditor-toolbar-tool-replace-case' => 'അക്ഷരമാലാ തരവും (case) ഒത്തുനോക്കുക',
+	'wikieditor-toolbar-tool-replace-regex' => 'അന്വേഷിക്കുന്ന അക്ഷരശൃംഖലയെ റെഗുലർ എക്സ്പ്രഷനായി കണക്കാക്കുക',
 	'wikieditor-toolbar-tool-replace-button-findnext' => 'അടുത്തതു കണ്ടെത്തുക',
 	'wikieditor-toolbar-tool-replace-button-replacenext' => 'അടുത്തതു മാറ്റിച്ചേർക്കുക',
 	'wikieditor-toolbar-tool-replace-button-replaceall' => 'എല്ലാം മാറ്റിച്ചേർക്കുക',
@@ -9467,6 +9478,7 @@ $messages['ml'] = array(
 	'wikieditor-toolbar-tool-replace-nomatch' => 'താങ്കളുടെ തിരച്ചിലുമായി ഒന്നും ഒത്തുപോകുന്നില്ല.',
 	'wikieditor-toolbar-tool-replace-success' => '$1 മാറ്റിവെയ്ക്കൽ(കൾ) നടത്തി.',
 	'wikieditor-toolbar-tool-replace-emptysearch' => 'തിരയാനായി താങ്കൾ ഒന്നും നൽകിയിട്ടില്ല.',
+	'wikieditor-toolbar-tool-replace-invalidregex' => 'താങ്കൾ നൽകിയ റെഗുലർ എക്സ്പ്രഷൻ അസാധുവാണ്‌: $1',
 	'wikieditor-toolbar-section-characters' => 'പ്രത്യേക ലിപികൾ',
 	'wikieditor-toolbar-characters-page-latin' => 'ലാറ്റിൻ',
 	'wikieditor-toolbar-characters-page-latinextended' => 'ലാറ്റിൻ വിപുലം',
@@ -13446,7 +13458,9 @@ $messages['sv'] = array(
 	'wikieditor-toolbar-tool-reference' => 'Referens',
 	'wikieditor-toolbar-tool-reference-example' => 'Sätt in fotnotstexten här',
 	'wikieditor-toolbar-tool-reference-cancel' => 'Avbryt',
+	'wikieditor-toolbar-tool-reference-title' => 'Lägg till referens',
 	'wikieditor-toolbar-tool-reference-insert' => 'Infoga',
+	'wikieditor-toolbar-tool-reference-text' => 'Referenstext',
 	'wikieditor-toolbar-tool-signature' => 'Signatur och tidsstämpel',
 	'wikieditor-toolbar-section-advanced' => 'Avancerad',
 	'wikieditor-toolbar-tool-heading' => 'Rubrik',
@@ -13463,6 +13477,10 @@ $messages['sv'] = array(
 	'wikieditor-toolbar-tool-olist-example' => 'Numrerad listelement',
 	'wikieditor-toolbar-tool-indent' => 'Indentering',
 	'wikieditor-toolbar-tool-indent-example' => 'Indenterad rad',
+	'wikieditor-toolbar-tool-nowiki' => 'Ingen wikiformatering',
+	'wikieditor-toolbar-tool-nowiki-example' => 'Lägg till icke-formaterad text här',
+	'wikieditor-toolbar-tool-redirect' => 'Omdirigera',
+	'wikieditor-toolbar-tool-redirect-example' => 'Målsidans namn',
 	'wikieditor-toolbar-tool-big' => 'Stor',
 	'wikieditor-toolbar-tool-big-example' => 'Stor text',
 	'wikieditor-toolbar-tool-small' => 'Liten',
