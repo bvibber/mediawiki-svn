@@ -15,7 +15,8 @@ if ( !defined( 'MEDIAWIKI' ) )
 
 class NewUserMessage {
 	/*
-	 * Add the template message if the users talk page does not already exist
+	 * Add the message if the users talk page does not already exist
+	 * @param $user User object
 	 */
 	static function createNewUserMessage( $user ) {
 		$talk = $user->getTalkPage();
@@ -50,37 +51,54 @@ class NewUserMessage {
 			$substitute = wfMsgForContent( 'newusermessage-substitute' );
 
 			if ( wfRunHooks( 'CreateNewUserMessage', array( $user, $editor, $editSummary, $substitute, $signature ) ) ) {
-				$templateTitleText = wfMsg( 'newusermessage-template' );
-				$templateTitle = Title::newFromText( $templateTitleText );
-				if ( !$templateTitle ) {
-					wfDebug( __METHOD__ . ": invalid title in newusermessage-template\n" );
-					return true;
-				}
-
-				if ( $templateTitle->getNamespace() == NS_TEMPLATE ) {
-					$templateTitleText = $templateTitle->getText();
-				}
-
-				$realName = $user->getRealName();
-				$name = $user->getName();
-				$article = new Article( $talk );
-
-				if ( $substitute ) {
-					$text = "{{subst:{$templateTitleText}|$name|$realName}}";
-				} else {
-					$text = "{{{$templateTitleText}|$name|$realName}}";
-				}
-
-				if ( $signature ) {
-					$text .= "\n-- {$signature} ~~~~~";
-				}
-
-				self::writeWelcomeMessage( $user, $article,  $text, $editSummary, $editor );
+				self::setupAndLeaveMessage( $user, $editor, $editSummary, $substitute, $signature );
 			}
 		}
 		return true;
 	}
 
+	/**
+	 * Take care of some housekeeping before leaving the actual message
+	 * @param $user User the user object who's talk page is being created
+	 * @param $editor User the user that we'll use to leave the message
+	 * @param $editSummary String the edit summary
+	 * @param $substitute Bool Template text needs substitution
+	 * @param $signature String the signature
+	 */
+	static function setupAndLeaveMessage( $user, $editor, $editSummary, $substitute, $signature ) {
+		$templateTitleText = wfMsg( 'newusermessage-template' );
+		$templateTitle = Title::newFromText( $templateTitleText );
+		if ( !$templateTitle ) {
+			wfDebug( __METHOD__ . ": invalid title in newusermessage-template\n" );
+			return;
+		}
+
+		if ( $templateTitle->getNamespace() == NS_TEMPLATE ) {
+			$templateTitleText = $templateTitle->getText();
+		}
+
+		$realName = $user->getRealName();
+		$name = $user->getName();
+		$article = new Article( $talk );
+
+		if ( $substitute ) {
+			$text = "{{subst:{$templateTitleText}|$name|$realName}}";
+		} else {
+			$text = "{{{$templateTitleText}|$name|$realName}}";
+		}
+
+		if ( $signature ) {
+			$text .= "\n-- {$signature} ~~~~~";
+		}
+
+		self::writeWelcomeMessage( $user, $article,  $text, $editSummary, $editor );
+	}
+
+	/**
+	 * Hook function to create a message on an auto-created user
+	 * @param $user User object of the user
+	 * @return bool
+	 */
 	static function createNewUserMessageAutoCreated( $user ) {
 		global $wgNewUserMessageOnAutoCreate;
 
@@ -91,6 +109,10 @@ class NewUserMessage {
 		return true;
 	}
 
+	/**
+	 * Hook function to provide a reserved name
+	 * @param $names Array
+	 */
 	static function onUserGetReservedNames( &$names ) {
 		wfLoadExtensionMessages( 'NewUserMessage' );
 		$names[] = 'msg:newusermessage-editor';
