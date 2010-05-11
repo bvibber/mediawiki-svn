@@ -393,6 +393,13 @@ $messages['km'] = array(
 	'discussionthreading-threadnewsectionhint' => 'ចាប់ផ្ដើម​ខ្សែស្រឡាយ​ថ្មី​មួយ',
 );
 
+/** Kannada (ಕನ್ನಡ)
+ * @author Nayvik
+ */
+$messages['kn'] = array(
+	'discussionthreading-threadnewsection' => 'ಹೊಸ',
+);
+
 /** Colognian (Ripoarisch)
  * @author Purodha
  */

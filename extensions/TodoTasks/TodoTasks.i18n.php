@@ -187,8 +187,8 @@ $messages['bg'] = array(
  */
 $messages['br'] = array(
 	'tasklist' => 'Roll trevelloù',
-	'tasklist-parser-desc' => 'Ouzhpenn a ra <nowiki>{{#todo:}}</nowiki> ur fonksion parser evit deverkañ trevelloù',
-	'tasklist-special-desc' => 'Ouzhpenn a ra ur bajenn ispisial evit adwelet an [[Special:TaskList|trevelloù deverket]]',
+	'tasklist-parser-desc' => 'Ouzhpennañ a ra <nowiki>{{#todo:}}</nowiki> ur fonksion parser evit deverkañ trevelloù',
+	'tasklist-special-desc' => 'Ouzhpennañ a ra ur bajenn dibar evit adwelet an [[Special:TaskList|trevelloù deverket]]',
 	'tasklistbyproject' => 'Roll trevelloù dre raktres',
 	'tasklistunknownproject' => 'Raktres dianav',
 	'tasklistunspecuser' => "N'eo ket diferet an implijer",
@@ -196,21 +196,21 @@ $messages['br'] = array(
 	'tasklistemail' => '%s ker',
 	'tasklistemailsubject' => '[%s] Kemmoù e roll an trevelloù',
 	'tasklistmytasks' => 'Ma zrevelloù',
-	'tasklistbyprojectbad' => "N'eo ket mat ar raktres '''%s'''.
-Evit kaout ur roll eus ar raktresoù a za en-dro gwellet [[MediaWiki:TodoTasksValidProjects]].",
+	'tasklistbyprojectbad' => "N'eus ket eus ar raktres '''%s'''.
+Evit kaout ur roll eus ar raktresoù zo anezho, sellit ouzh [[MediaWiki:TodoTasksValidProjects]].",
 	'tasklistbyprojname' => "Trevelloù deverket evit '''%s'''.",
 	'tasklistchooseproj' => 'Diuzañ ur raktres :',
 	'tasklistprojdisp' => 'Diskwel',
 	'tasklistbyname' => '== Roll an traoù da ober gant $s ==',
-	'tasklistnowguseprojects' => 'Termenet hoc\'h eus $wgUseProjects da "false", dre-se ne c\'helloc\'h ket implij ar bajenn-se.',
+	'tasklistnowguseprojects' => 'Termenet hoc\'h eus $wgUseProjects da "false", dre-se n\'hallit ket implijout ar bajenn-mañ.',
 	'tasklistnoprojects' => "Fazi : Seblantout a ra ho pefe gweredekaet '''\$wgUseProjects''', met n'eo ket bet krouet [[MediaWiki:TodoTasksValidProjects]]. Kit da welet  [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 c'hemennadennoù staliñ] evit muic'h a ditouroù.",
 	'tasklistemailbody' => ",
 
 Unan bennak en deus deverket deoc'h un trevell nevez war %s.
 
-Evit gwellet roll klok ho trevelloù, kit war %s.
+Evit gwelet roll klok ho trevelloù, kit war %s.
 
-Ho sistem kemenn %s karet",
+Ho reizhiad kemennoù %s muiañ-karet",
 );
 
 /** Bosnian (Bosanski)

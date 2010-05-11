@@ -93,6 +93,16 @@ $messages['gl'] = array(
 	'checkpoint-notice' => '([[{{ns:project}}:Checkpoint|crear un punto de control]])',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'checkpoint' => 'Spychere un Wytermache mit dr Bearbeitig',
+	'checkpoint-desc' => 'Macht s Spychere vun ere Bearbeitig megli mit ere automatische Ruckchehr zum Bearbeitigsfänschter',
+	'checkpoint-tooltip' => 'Spychere dr aktuäll Bearbeitigsstand un mach wyter mit dr Bearbeitig vu dr Syte',
+	'checkpoint-notice' => '([[{{ns:project}}:Checkpoint|Zwischespycherig]])',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -227,6 +237,16 @@ $messages['ru'] = array(
 	'checkpoint-desc' => 'Позволяет сохранить изменения и продолжить редактирование',
 	'checkpoint-tooltip' => 'Сохраните вашу работу и продолжите редактирование страницы',
 	'checkpoint-notice' => '([[{{ns:project}}:Checkpoint|сохранение контрольной точки]])',
+);
+
+/** Swedish (Svenska)
+ * @author Per
+ */
+$messages['sv'] = array(
+	'checkpoint' => 'Spara och fortsätt redigeringen',
+	'checkpoint-desc' => 'Möjligör att spara och fortsätta redigera',
+	'checkpoint-tooltip' => 'Spara ditt arbete och fortsätt redigera sidan',
+	'checkpoint-notice' => '([[{{ns:project}}:Checkpoint|spara checkpoint]])',
 );
 
 /** Telugu (తెలుగు)

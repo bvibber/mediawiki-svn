@@ -42,6 +42,13 @@ $messages['ca'] = array(
 	'apisvgproxy-desc' => 'Fa de servidor intermediari de fitxers SVG per a dipòsits de fitxers (probablement remots) al domini local',
 );
 
+/** Danish (Dansk)
+ * @author Emilkris33
+ */
+$messages['da'] = array(
+	'apisvgproxy-desc' => 'Sender SVG filer fra et (muligvis ekstern) filarkiv til det lokale domæne',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
@@ -216,5 +223,12 @@ $messages['su'] = array(
  */
 $messages['sv'] = array(
 	'apisvgproxy-desc' => 'Skickar SVG-filer via en (möjligtvis extern) filserver till den lokala domänen',
+);
+
+/** Telugu (తెలుగు)
+ * @author Ravichandra
+ */
+$messages['te'] = array(
+	'apisvgproxy-desc' => 'ఎక్కడో ఉన్న SVG ఫైళ్ళు ప్రాంతీయ డొమైన్ ఉన్నట్లుగా చూపబడతాయి',
 );
 

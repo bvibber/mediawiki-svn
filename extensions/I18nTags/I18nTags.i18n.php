@@ -359,6 +359,13 @@ $messages['sv'] = array(
 	'i18ntags-desc' => 'Ger tillgång till internationaliseringsfunktioner för talformatering, grammatik och plural i alla tillgängliga språk',
 );
 
+/** Telugu (తెలుగు)
+ * @author Ravichandra
+ */
+$messages['te'] = array(
+	'i18ntags-desc' => 'అన్ని భాషల్లో నంబర్ ఫార్మాటింగ్, వ్యాకరణం, బహువచనం అంతర్జాతీయీకరణ ఫంక్షన్లను యాక్సెస్ చేయండి',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

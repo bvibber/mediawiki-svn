@@ -765,8 +765,8 @@ Du musst [[Special:UserRights|Benutzer zu der Gruppe hinzufügen]] bevor du Seit
 
 $2',
 	'whitelistrequestconf' => 'Beantragung an $1 geschickt',
-	'whitelistnonrestricted' => "'''$1''' ist kein beschränkter Benutzer.
-Diese Seite gilt nur für beschränkte Bentzer.",
+	'whitelistnonrestricted' => "'''$1''' ist kein berechtigter Benutzer.
+Diese Seite gilt nur für berechtigte Benutzer.",
 	'whitelistnever' => 'niemals',
 	'whitelistnummatches' => ' - $1 {{PLURAL:$1|Übereinstimmung|Übereinstimmungen}}',
 	'right-editwhitelist' => 'Weiße Liste für existierende Benutzer bearbeiten',

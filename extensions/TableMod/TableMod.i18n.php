@@ -479,10 +479,12 @@ $messages['sl'] = array(
 );
 
 /** Swedish (Svenska)
+ * @author Dafer45
  * @author Per
  */
 $messages['sv'] = array(
 	'tablemod-msg-remove' => 'Ta bort',
+	'tablemod-error-format' => 'Denna tagg stöder endast en enkel tabell per tagg, utan någon text före eller efter den.',
 	'tablemod-error-invalidsort' => 'Ogiltig sorteringsparameter.',
 	'tablemod-error-invalidaction' => 'Ogiltig handling.',
 );

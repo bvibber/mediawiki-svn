@@ -224,7 +224,7 @@ $messages['ca'] = array(
  */
 $messages['de'] = array(
 	'fckeditor-desc' => 'Ermöglicht die Nutzung des WYSIWYG-Editors „CKEditor“',
-	'textrichditor' => 'Texteditor',
+	'textrichditor' => 'Mit dem Texteditor öffnen',
 	'prefs-fckeditor' => 'Texteditor',
 	'tog-riched_disable' => 'Texteditor deaktivieren',
 	'tog-riched_disable_ns_main' => 'Texteditor im Haupt-Namensraum deaktivieren',
@@ -243,7 +243,7 @@ $messages['de'] = array(
 	'tog-riched_disable_ns_help_talk' => 'Texteditor im Namensraum „{{ns:help_talk}}“ deaktivieren',
 	'tog-riched_disable_ns_category' => 'Texteditor im Namensraum „{{ns:category}}“ deaktivieren',
 	'tog-riched_disable_ns_category_talk' => 'Texteditor im Namensraum „{{ns:category_talk}}“ deaktivieren',
-	'rich_editor_new_window' => 'Texteditor in einem neuen Fenster öffnen',
+	'rich_editor_new_window' => 'Mit dem Texteditor in einem neuen Fenster öffnen',
 	'tog-riched_start_disabled' => 'Texteditor nicht automatisch starten',
 	'tog-riched_use_popup' => 'Texteditor als Popup öffnen',
 	'tog-riched_use_toggle' => 'Schalter zum Wechseln zwischen Wikitext und Texteditor benutzen (ersetzt den Textbereich mit dem Texteditor)',

@@ -569,13 +569,13 @@ $messages['ps'] = array(
  * @author Malafaya
  */
 $messages['pt'] = array(
-	'useroptionstats' => 'Estatísticas de opções de utilizador',
+	'useroptionstats' => 'Estatísticas das opções do utilizador',
 	'useroptionstats-desc' => '[[Special:UserOptionStats|Página especial]] para reportar a utilização das opções do utilizador na MediaWiki',
 	'uos-warn' => 'PHPlot não está instalado!',
-	'uos-choose' => 'Escolha uma das seguintes opções de utilizador: $1',
+	'uos-choose' => 'Escolha uma das seguintes opções do utilizador: $1',
 	'uos-unknown' => '*Padrão',
 	'uos-other' => '*Outro',
-	'uos-title' => 'Distribuição de valores da opção de utilizador $1',
+	'uos-title' => 'Distribuição de valores da opção do utilizador $1',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

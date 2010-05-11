@@ -451,6 +451,7 @@ $messages['grc'] = array(
 $messages['gsw'] = array(
 	'chemicalsources' => 'Chemical Sources',
 	'chemicalsource-desc' => 'Stellt s <nowiki><chemform></nowiki>-Tag fir chemischi Formle z Verfiegig',
+	'chemicalsources-desc' => '[[Special:ChemicalSources|Spezialsyte]] fir chemischi Quälle',
 	'chemFunctions_ListPage' => 'Chemical Sources',
 	'chemFunctions_DataList' => 'Unte isch e Lischt vu Gleicher zue syte, wu s villicht Informatione het iber chemischi Substanze, wu du suechsch:<br /><br />
 * <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Verbindig $MIXCASNameFormula uf NIST</a><br />

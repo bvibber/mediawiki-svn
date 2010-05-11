@@ -1194,6 +1194,8 @@ $messages['gsw'] = array(
 	'ogg-dismiss' => 'Zuemache',
 	'ogg-download' => 'Datei spychere',
 	'ogg-desc-link' => 'Iber die Datei',
+	'ogg-oggThumb-version' => 'OggHandler brucht oggThumb in dr Version $1 oder hecher.',
+	'ogg-oggThumb-failed' => 'oggThumb het kei Miniaturbild chenne aalege.',
 );
 
 /** Manx (Gaelg)
@@ -2931,6 +2933,7 @@ $messages['su'] = array(
 );
 
 /** Swedish (Svenska)
+ * @author Ainali
  * @author Jon Harald Søby
  * @author Lejonel
  * @author Rotsee
@@ -2963,6 +2966,8 @@ $messages['sv'] = array(
 	'ogg-dismiss' => 'Stäng',
 	'ogg-download' => 'Ladda ner filen',
 	'ogg-desc-link' => 'Om filen',
+	'ogg-oggThumb-version' => 'OggHandler kräver oggThumb version $1 eller senare.',
+	'ogg-oggThumb-failed' => 'oggThumb misslyckades med att skapa miniatyrbilden.',
 );
 
 /** Telugu (తెలుగు)

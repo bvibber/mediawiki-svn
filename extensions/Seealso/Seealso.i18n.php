@@ -136,6 +136,14 @@ $messages['cy'] = array(
 	'seealso-desc' => "Pennawdau 'Gweler hefyd' wedi eu cyfieithu gyda'r tag <code><nowiki><seealso></nowiki></code>",
 );
 
+/** Danish (Dansk)
+ * @author Emilkris33
+ */
+$messages['da'] = array(
+	'seealso' => 'Se også',
+	'seealso-desc' => 'Oversatte «Se også»-overskrifter ved brug af <code><nowiki><seealso></nowiki></code>',
+);
+
 /** German (Deutsch)
  * @author Melancholie
  * @author Raimond Spekking

@@ -777,6 +777,13 @@ $messages['km'] = array(
 	'amazonplus-less' => 'តិចជាងនេះ',
 );
 
+/** Kannada (ಕನ್ನಡ)
+ * @author Nayvik
+ */
+$messages['kn'] = array(
+	'amazonplus-new' => 'ಹೊಸ',
+);
+
 /** Korean (한국어)
  * @author Klutzy
  * @author Wrightbus

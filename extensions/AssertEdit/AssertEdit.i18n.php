@@ -132,10 +132,13 @@ $messages['cs'] = array(
 );
 
 /** Danish (Dansk)
+ * @author Emilkris33
  * @author Jan Friberg
  */
 $messages['da'] = array(
 	'assert_edit_title' => 'Forsikring mislykkedes',
+	'assertedit-desc' => 'Tilføjer redigerings erklæringer til brug af bots',
+	'assert_edit_message' => 'Den angivne erklæring ($1) mislykkedes.',
 );
 
 /** German (Deutsch)

@@ -2035,6 +2035,7 @@ $messages['ee'] = array(
 );
 
 /** Greek (Ελληνικά)
+ * @author Crazymadlover
  * @author Dead3y3
  * @author Omnipaedista
  * @author ZaDiak
@@ -2056,6 +2057,7 @@ $messages['el'] = array(
 	'code-load-diff' => 'Φόρτωση διαφ...',
 	'code-notes' => 'πρόσφατα σχόλια',
 	'code-statuschanges' => 'αλλαγές κατάστασης',
+	'code-mycommits' => 'δεσμεύεται μου',
 	'code-authors' => 'συγγραφείς',
 	'code-status' => 'καταστάσεις',
 	'code-tags' => 'ετικέτες',
@@ -2114,6 +2116,8 @@ $messages['el'] = array(
 	'code-status-deferred' => 'αναβλήθηκε',
 	'code-pathsearch-legend' => 'Αναζήτηση αναθεωρήσεων σε αυτό το αποθηκευτήριο κατά διαδρομή',
 	'code-pathsearch-path' => 'Διαδρομή:',
+	'code-revfilter-cr_status' => 'Κατάσταση = $1',
+	'code-revfilter-cr_author' => 'Συγγραφέας = $1',
 	'code-rev-submit' => 'Αποθήκευση αλλαγών',
 	'code-rev-submit-next' => 'Τα Αποθήκευση αυτής της σελίδας & Επόμενη δεν έχουν επιλυθεί',
 	'code-batch-status' => 'Αλλαγή κατάστασης:',

@@ -459,6 +459,7 @@ $messages['cs'] = array(
 
 /** Danish (Dansk)
  * @author Byrial
+ * @author Emilkris33
  */
 $messages['da'] = array(
 	'readerfeedback-desc' => 'Sidebedømmelse giver mulighed for læserne til at gve tilbagemeldinger i form af bedømmelse inden for et antal kategprier',
@@ -477,7 +478,7 @@ $messages['da'] = array(
 	'readerfeedback-level-4' => 'Meget god',
 	'readerfeedback-submit' => 'Indsend',
 	'readerfeedback-main' => 'Kun indholdssider kan bedømmes.',
-	'readerfeedback-success' => "'''Tak for at du bedømte denne side!''' ([$3 Kommentarer eller spørgsmål?])",
+	'readerfeedback-success' => "'''Tak for at du bedømte denne side!''' ([$2 se resultater]) ([$3 kommentarer eller spørgsmål?])",
 	'readerfeedback-voted' => "'''Det ser ud til at du allerede har bedømt denne side.''' ([$3 Kommentarer eller spørgsmål?])",
 	'readerfeedback-submitting' => 'Indsender …',
 	'readerfeedback-finished' => 'Tak!',

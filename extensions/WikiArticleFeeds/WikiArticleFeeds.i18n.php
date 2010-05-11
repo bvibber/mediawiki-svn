@@ -344,6 +344,13 @@ $messages['sv'] = array(
 	'wikiarticlefeeds_combined_description' => 'Detta är en kombinerad feed som innehåller artiklar från flera källor.',
 );
 
+/** Telugu (తెలుగు)
+ * @author Ravichandra
+ */
+$messages['te'] = array(
+	'wikiarticlefeeds-desc' => 'మీడియావికీ పుటలనుంచి ఫీడును ఉత్పత్తి చేస్తుంది',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */
