@@ -6,7 +6,6 @@
  * @ingroup Extensions
  */
 
-
 $messages = array();
 
 $messages['en'] = array(
@@ -4464,4 +4463,3 @@ $messages['mk'] = array(
 $messages['pms'] = array(
 	'addmediawizard-desc' => "Gionté n'assistent për ij mojen, dësvlupà ansema da Kaltura e da la Fondassion Wikimedia",
 );
-
