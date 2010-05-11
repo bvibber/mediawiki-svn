@@ -15,7 +15,6 @@ import de.brightbyte.wikiword.analyzer.extractor.TemplateNamePatternParameterExt
 import de.brightbyte.wikiword.analyzer.extractor.TemplateParameterExtractor;
 import de.brightbyte.wikiword.analyzer.extractor.TitlePartExtractor;
 import de.brightbyte.wikiword.analyzer.mangler.RegularExpressionMangler;
-import de.brightbyte.wikiword.analyzer.mangler.TextArmor;
 import de.brightbyte.wikiword.analyzer.matcher.ExactNameMatcher;
 import de.brightbyte.wikiword.analyzer.matcher.PatternNameMatcher;
 import de.brightbyte.wikiword.analyzer.sensor.HasCategoryLikeSensor;
@@ -25,12 +24,9 @@ import de.brightbyte.wikiword.analyzer.sensor.HasTemplateLikeSensor;
 import de.brightbyte.wikiword.analyzer.sensor.HasTemplateSensor;
 import de.brightbyte.wikiword.analyzer.sensor.TitleSensor;
 import de.brightbyte.wikiword.analyzer.template.AbstractTemplateParameterPropertySpec;
-import de.brightbyte.wikiword.analyzer.template.DeepTemplateExtractor;
 import de.brightbyte.wikiword.analyzer.template.DefaultTemplateParameterPropertySpec;
 import de.brightbyte.wikiword.analyzer.template.TemplateData;
-import de.brightbyte.wikiword.analyzer.template.TemplateExtractor;
 import de.brightbyte.wikiword.analyzer.template.TemplateParameterPropertySpec;
-import de.brightbyte.wikiword.analyzer.template.TemplateExtractor.Context;
 import de.brightbyte.wikiword.lifescience.LifeScienceConceptType;
 
 public class WikiConfiguration_enwiki extends WikiConfiguration {
@@ -185,17 +181,8 @@ public class WikiConfiguration_enwiki extends WikiConfiguration {
 	}
 
 	public WikiConfiguration_enwiki() {
-		super();
-		
-		templateExtractorFactory= new TemplateExtractor.Factory() { 
-			public TemplateExtractor newTemplateExtractor(Context context, TextArmor armor) {
-				DeepTemplateExtractor extractor = new DeepTemplateExtractor(context, armor);
-				extractor.addContainerField("Protbox", "Codes");
-				extractor.addContainerField("Protbox", "Caption");
-				//FIXME: this needs to accumulate!!!! //FIXME //FIXME //FIXME //FIXME //FIXME //FIXME //FIXME //FIXME //FIXME //FIXME //FIXME //FIXME
-				return extractor;
-			}
-		};
+		nestedTemplateFields.put("Protbox", "Codes");
+		nestedTemplateFields.put("Protbox", "Caption");
 		
 		//NOTE: apply template replacement only when stripping markup, but then before everything else
 		stripMarkupManglers.add(0, new RegularExpressionMangler( templatePattern("ICD9", 1, true), " $2 ") );

@@ -24,7 +24,8 @@ public class AbstractAnalyzer {
 		if (manglers==null) return text;
 		
 		for (Mangler mangler : manglers) {
-			text = mangler.mangle(text);
+			CharSequence t = mangler.mangle(text);
+			text = t;
 		}
 		
 		return text;

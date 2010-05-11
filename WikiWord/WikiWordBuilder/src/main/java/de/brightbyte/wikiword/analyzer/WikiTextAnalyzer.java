@@ -48,7 +48,9 @@ import de.brightbyte.wikiword.analyzer.extractor.ValueExtractor;
 import de.brightbyte.wikiword.analyzer.mangler.RegularExpressionMangler;
 import de.brightbyte.wikiword.analyzer.mangler.TextArmor;
 import de.brightbyte.wikiword.analyzer.sensor.Sensor;
+import de.brightbyte.wikiword.analyzer.template.DeepTemplateExtractor;
 import de.brightbyte.wikiword.analyzer.template.DummyTemplateUser;
+import de.brightbyte.wikiword.analyzer.template.FlatTemplateExtractor;
 import de.brightbyte.wikiword.analyzer.template.TemplateData;
 import de.brightbyte.wikiword.analyzer.template.TemplateExtractor;
 import de.brightbyte.wikiword.analyzer.template.TemplateUser;
@@ -427,7 +429,7 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 			return targetConceptPage;
 		}
 	}
-		
+
 	protected class Page implements WikiPage {
 		protected int namespace;
 		protected String title;
@@ -529,8 +531,12 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 		 */
 		public TemplateExtractor getTemplateExtractor() {
 			if (templateExtractor==null) {
-				templateExtractor = 
-					WikiTextAnalyzer.this.config.templateExtractorFactory.newTemplateExtractor(WikiTextAnalyzer.this, armor);
+				if ( WikiTextAnalyzer.this.config.nestedTemplateFields==null || WikiTextAnalyzer.this.config.nestedTemplateFields.isEmpty() ) {
+					templateExtractor = new FlatTemplateExtractor(WikiTextAnalyzer.this, armor);
+				} else {
+					templateExtractor = new DeepTemplateExtractor(WikiTextAnalyzer.this, armor);
+					((DeepTemplateExtractor)templateExtractor).addContainerFields(WikiTextAnalyzer.this.config.nestedTemplateFields);
+				}
 			}
 			
 			return templateExtractor;
@@ -973,7 +979,7 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 	private WikiTextSniffer sniffer = new WikiTextSniffer();
 	private Map<String, String> languageNames;
 	private Map<String, Interwiki> interwikiMap;
-	
+
 	public WikiTextAnalyzer(PlainTextAnalyzer language) throws IOException {
 		this.language = language;
 		this.corpus = language.getCorpus();

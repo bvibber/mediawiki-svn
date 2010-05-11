@@ -105,17 +105,17 @@ public class DefaultTemplateParameterPropertySpec implements TemplateParameterPr
 		return this;
 	}
 
-	public Set<CharSequence> getPropertyValues(WikiPage page, TemplateData params, Set<CharSequence> values) {
+	public Set<CharSequence> getPropertyValues(WikiPage page, TemplateData params, Set<CharSequence> intoValues) {
 		CharSequence v = params.getParameter(parameter);
-		if (v==null) return values;
-		if (v.length()==0) return values;
+		if (v==null) return intoValues;
+		if (v.length()==0) return intoValues;
 		
 		if (clean!=null) {
 			for (Mangler m: clean) v = m.mangle(v);
 		}
 		
 		if (cond!=null) {
-			if (!cond.matches(v)) return values;
+			if (!cond.matches(v)) return intoValues;
 		}
 		
 		if (split!=null) {
@@ -139,7 +139,7 @@ public class DefaultTemplateParameterPropertySpec implements TemplateParameterPr
 				if (done) i = j;
 				else i = split.end();
 				
-				values = addValue(w, page, values);
+				intoValues = addValue(w, page, intoValues);
 			}
 		}
 		else if (find!=null) {
@@ -147,14 +147,14 @@ public class DefaultTemplateParameterPropertySpec implements TemplateParameterPr
 			while (find.find()) {
 				CharSequence w = find.groupCount() > 0 ? find.group(1) : find.group();
 				
-				values = addValue(w, page, values);
+				intoValues = addValue(w, page, intoValues);
 			}
 		}
 		else if (split==null) {
-			values = addValue(v, page, values);
+			intoValues = addValue(v, page, intoValues);
 		}
 		
-		return values;
+		return intoValues;
 	}
 	
 	protected Set<CharSequence> addValue(CharSequence w, WikiPage page, Set<CharSequence> values) {

@@ -10,6 +10,8 @@ import java.util.Properties;
 import java.util.Set;
 import java.util.regex.Pattern;
 
+import de.brightbyte.data.MultiMap;
+import de.brightbyte.data.ValueSetMultiMap;
 import de.brightbyte.data.measure.Measure;
 import de.brightbyte.util.StringUtils;
 import de.brightbyte.wikiword.ConceptType;
@@ -32,8 +34,6 @@ import de.brightbyte.wikiword.analyzer.mangler.SuccessiveMangler;
 import de.brightbyte.wikiword.analyzer.sensor.HasCategoryLikeSensor;
 import de.brightbyte.wikiword.analyzer.sensor.HasTemplateLikeSensor;
 import de.brightbyte.wikiword.analyzer.sensor.Sensor;
-import de.brightbyte.wikiword.analyzer.template.FlatTemplateExtractor;
-import de.brightbyte.wikiword.analyzer.template.TemplateExtractor;
 
 /**
  * A WikiConfiguration represents knowledge about language specific and project specific
@@ -284,13 +284,13 @@ public class WikiConfiguration {
 	/** Flag indication wether extraction of definitions is supported for this wiki **/
 	public boolean definitionsSupported = true; 
 	
-	public TemplateExtractor.Factory templateExtractorFactory;
-
 	protected WikiTextAnalyzer analyzer;
 	
 	protected String wikiName;
 
 	public Set<Integer> conceptNamespacecs  = new HashSet<Integer>();
+	
+	protected MultiMap<CharSequence, CharSequence, Set<CharSequence>> nestedTemplateFields = new ValueSetMultiMap<CharSequence, CharSequence>();
 
 	protected WikiConfiguration() {
 		this(null);
@@ -407,8 +407,6 @@ public class WikiConfiguration {
 		useCategoryAliases = true;
 		mainArtikeMarkerPattern = Pattern.compile("^[- !_*$@#+~/%]?"); //use "category main articles" to resolve plural names
 		
-		this.templateExtractorFactory = FlatTemplateExtractor.factory;
-		
 		this.useSuffixAsCategory = false;
 		this.definitionsSupported = true;
 		this.flatTextSupported = true;
@@ -497,10 +495,10 @@ public class WikiConfiguration {
 		supplementedConceptExtractors.addAll(with.supplementedConceptExtractors);
 		
 		extraTemplatePatterns.addAll(with.extraTemplatePatterns);
+		nestedTemplateFields.putAll(with.nestedTemplateFields);
 		
 		//if (with.language!=null) language = with.language;
 		
-		if (with.templateExtractorFactory!=null) templateExtractorFactory = with.templateExtractorFactory;
 		if (with.linkTrail!=null) linkTrail = with.linkTrail;
 		if (with.badLinkPattern!=null) badLinkPattern = with.badLinkPattern;
 

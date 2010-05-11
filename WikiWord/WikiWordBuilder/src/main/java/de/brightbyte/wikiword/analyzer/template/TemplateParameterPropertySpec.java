@@ -11,7 +11,7 @@ public interface TemplateParameterPropertySpec {
 	
 	/** determins a property value from a map of template parameters.
 	 **/
-	public Set<CharSequence> getPropertyValues(WikiPage page, TemplateData params, Set<CharSequence> values);
+	public Set<CharSequence> getPropertyValues(WikiPage page, TemplateData params, Set<CharSequence> intoValues);
 	
 	public String getPropertyName();
 }

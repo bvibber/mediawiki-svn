@@ -96,7 +96,7 @@ public class WikiConfiguration_enwiki extends WikiConfiguration {
 				"Portal|Stub[-\\w]*|commons|Cong(Bio2?|Links)|" +
 				"Tnavbar|Navbox([ _]generic)?|redirect|pp-.*?|" +
 				"ambox|wikify|pov|cleanup|globalize|split|current|issue|merge|" +
-				"Coor([ _]\\w+)?|Coord|reflist|precision[-\\w\\d]+|nowrap[ _]begin|" +
+				"reflist|precision[-\\w\\d]+|nowrap[ _]begin|" +
 				"Audio|\\w+[ _]icon|lang-\\w+|Flagicon|Flag|Flagcountry|" +
 				"Main|" +
 				"redirect" //maybe keep that? but we need this for the :'' stripping
@@ -143,6 +143,9 @@ public class WikiConfiguration_enwiki extends WikiConfiguration {
 		//cruft regarding english/welsh census templates
 		stripClutterManglers.add( new RegularExpressionMangler("rank\\s*=\\s*\\[\\[List[ _]of[ _][-\\w\\d\\s]+?\\|\\s*Ranked\\s+\\{\\{[-\\w\\d\\s]+?counties\\s*\\|\\s*\\w+=[-\\w\\d\\s]+\\}\\}\\]\\]", "", 0));
 
+		//strip coodinate boxes only after template processing
+		stripBoxesManglers.add( new RegularExpressionMangler(templatePattern("Coor([ _]\\w+)?", 0, true), ""));
+		
 		conceptTypeSensors.add( new HasCategoryLikeSensor<ConceptType>(ConceptType.PLACE, 
 				"^(NUTS|Geography_of|Places|Villages|Towns|Cities|Captials?|Constituencies|Counties|Countries|Municipalities|Settlements|States|Provinces|Territories|Federal_states|Islands|Regions|Domains|Communes|Districts|Locations)" +
 				       "(_|$)|_(places|villages|towns|cities|capitals|constituencies(_.*)?|counties|countries|municipalities|settlements|states|provinces|territories|federal_states|islands|regions|domains|communes|districts|locations)$", 0));

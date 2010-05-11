@@ -13,9 +13,5 @@ public interface TemplateExtractor {
 		public boolean isRelevantTemplate(CharSequence name);
 	}
 	
-	public interface Factory {
-		public TemplateExtractor newTemplateExtractor(Context context, TextArmor armor);
-	}
-	
 	public MultiMap<String, TemplateData, List<TemplateData>> extractTemplates(CharSequence text);
 }

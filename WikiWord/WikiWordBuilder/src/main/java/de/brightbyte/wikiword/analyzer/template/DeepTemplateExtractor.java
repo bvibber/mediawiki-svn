@@ -21,12 +21,6 @@ import de.brightbyte.xml.HtmlEntities;
 
 public class DeepTemplateExtractor extends AbstractTemplateExtractor {
 	
-	public static final Factory factory = new Factory() {
-		public TemplateExtractor newTemplateExtractor(Context context, TextArmor armor) {
-			return new DeepTemplateExtractor(context, armor);
-		}
-	};
-	
 	public DeepTemplateExtractor(Context context, TextArmor armor) {
 		super(context, armor);
 	}
@@ -251,11 +245,12 @@ public class DeepTemplateExtractor extends AbstractTemplateExtractor {
 				v = markerScanner.getText().subSequence(start, end);
 
 				v = AnalyzerUtils.trim(v);
-				v = stripMarkup(v, true);
 				
-				v = HtmlEntities.decodeEntities(v);
-				
-				data.setParameter(n, v); 
+				if (v.length()>0) {
+						v = stripMarkup(v, true);
+						v = HtmlEntities.decodeEntities(v);
+						data.setParameter(n, v);
+				}
 			}
 		}
 		
@@ -263,14 +258,27 @@ public class DeepTemplateExtractor extends AbstractTemplateExtractor {
 
 	private String getPrefix(CharSequence template, CharSequence parameter) {
 		if (containerFields==null) return null;
-		if (!containerFields.contains(template, parameter)) return null; 
+
+		if (!containerFields.contains(template, parameter)) {
+			if (containerFields.contains("", parameter)) {
+				return template + "." + parameter; 
+			} else {
+				return null;
+			}
+		}
 			
 		return template + "." + parameter;
 	}
 	
 	public void addContainerField(CharSequence template, CharSequence parameter) {
+		if (template==null) template = "";
 		if (containerFields==null) containerFields = new ValueSetMultiMap<CharSequence, CharSequence>();
 		containerFields.put(template, parameter);
+	}
+
+	public void addContainerFields(MultiMap<CharSequence, CharSequence, Set<CharSequence>> nestedTemplateFields) {
+		if (containerFields==null) containerFields = new ValueSetMultiMap<CharSequence, CharSequence>();
+		containerFields.putAll(nestedTemplateFields);
 	}
 
 	private void parseLink(String prefix) {

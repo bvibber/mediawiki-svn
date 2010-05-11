@@ -13,12 +13,6 @@ import de.brightbyte.xml.HtmlEntities;
 
 public class FlatTemplateExtractor extends AbstractTemplateExtractor {
 	
-	public static final Factory factory = new Factory() {
-		public TemplateExtractor newTemplateExtractor(Context context, TextArmor armor) {
-			return new FlatTemplateExtractor(context, armor);
-		}
-	};
-	
 	private Matcher templateMarkerMatcher = Pattern.compile("\\{\\{([^|]+?)(?=\\||\\}\\}|\\{\\{)|\\}\\}").matcher("");
 	private Matcher templateParamMatcher = Pattern.compile("\\||\\{\\{!\\}\\}").matcher("");
 
