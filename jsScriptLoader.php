@@ -167,7 +167,8 @@ class jsScriptLoader {
 		if ( $this->errorMsg != '' ) {
 			//just set the content type (don't send cache header)
 			header( 'Content-Type: text/javascript' );
-			echo 'alert(\'Error With ScriptLoader ::' . str_replace( "\n", '\'+"\n"+' . "\n'", $this->errorMsg ) . '\');';
+			echo 'alert(\'Error With ScriptLoader ::' .
+				 str_replace( "\n", '\'+"\n"+' . "\n'", htmlspecialchars( $this->errorMsg )  ). '\');'."\n";
 			echo trim( $this->output );
 		} else {
 			// All good, let's output "cache" headers
@@ -923,7 +924,7 @@ class jsScriptLoader {
 	function getInlineMsgFromClass( $class ){
 		$messageSet = $this->getMsgKeysFromClass( $class );
 		if( $messageSet ){
-			self::updateMessageValues ( $messageSet );
+			self::updateMessageValues ( $messageSet , $this->langCode );
 			return 'mw.addMessages(' . FormatJson::encode( $messageSet ) . ');';
 		}else{
 			//if could not parse return empty string:

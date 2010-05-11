@@ -72,7 +72,7 @@ require_once( realpath( dirname( __FILE__ ) ) . '/library/CommentPreserver.php' 
 
 
 function wfDebug() {
-    return false;
+	return false;
 }
 
 function wfTempDir(){
@@ -95,10 +95,10 @@ function wfMkdirParents( $dir, $mode = null, $caller = null ) {
 	}
 
 	if ( strval( $dir ) === '' || file_exists( $dir ) )
-		return true;
+	return true;
 
 	if ( is_null( $mode ) )
-		$mode = $wgDirectoryMode;
+	$mode = $wgDirectoryMode;
 
 	return @mkdir( $dir, $mode, true );  // PHP5 <3
 }
@@ -118,22 +118,22 @@ function wfMkdirParents( $dir, $mode = null, $caller = null ) {
  * @private
  */
 function wfMsgGetKey( $msgKey, $na, $langKey = false ) {
-    global $wgLoadedMsgKeysFlag, $wgMessageCache, $mwLanguageCode;
+	global $wgLoadedMsgKeysFlag, $wgMessageCache, $mwLanguageCode;
 
-   if( !$langKey ){
-    	$langKey = $mwLanguageCode;
-    }
+	if( !$langKey ){
+		$langKey = $mwLanguageCode;
+	}
 
-    // Make sure msg Keys are loaded
-    if( !$wgLoadedMsgKeysFlag ) {
-    	wfLoadMsgKeys( $langKey );
-    }
+	// Make sure msg Keys are loaded
+	if( !$wgLoadedMsgKeysFlag ) {
+		wfLoadMsgKeys( $langKey );
+	}
 
-    if ( isset( $wgMessageCache[$msgKey] ) ) {
-        return $wgMessageCache[$msgKey];
-    } else {
-        return '[' . $msgKey . ']';
-    }
+	if ( isset( $wgMessageCache[$msgKey] ) ) {
+		return $wgMessageCache[$msgKey];
+	} else {
+		return '[' . $msgKey . ']';
+	}
 }
 /**
  * Load all the msg keys into $wgMessageCache
@@ -147,7 +147,9 @@ function wfLoadMsgKeys( $langKey ){
 		}
 		require( $msgFile );
 		// Save some time by only including the current language in the cache:
-		$wgMessageCache = array_merge( $wgMessageCache, $messages[ $langKey ] );
+		if( isset( $messages[ $langKey ] ) ) {
+			$wgMessageCache = array_merge( $wgMessageCache, $messages[ $langKey ] );
+		}
 	}
 	$wgLoadedMsgKeysFlag = true;
 }
@@ -228,17 +230,17 @@ class Xml {
 			"\n" => "\\n",
 			"\r" => "\\r",
 
-			# To avoid closing the element or CDATA section
+		# To avoid closing the element or CDATA section
 			"<" => "\\x3c",
 			">" => "\\x3e",
 
-			# To avoid any complaints about bad entity refs
+		# To avoid any complaints about bad entity refs
 			"&" => "\\x26",
 
-			# Work around https://bugzilla.mozilla.org/show_bug.cgi?id=274152
-			# Encode certain Unicode formatting chars so affected
-			# versions of Gecko don't misinterpret our strings;
-			# this is a common problem with Farsi text.
+		# Work around https://bugzilla.mozilla.org/show_bug.cgi?id=274152
+		# Encode certain Unicode formatting chars so affected
+		# versions of Gecko don't misinterpret our strings;
+		# this is a common problem with Farsi text.
 			"\xe2\x80\x8c" => "\\u200c", // ZERO WIDTH NON-JOINER
 			"\xe2\x80\x8d" => "\\u200d", // ZERO WIDTH JOINER
 		);

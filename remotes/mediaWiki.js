@@ -4,7 +4,7 @@
  */
 var urlparts = getRemoteEmbedPath();
 var mwEmbedHostPath = urlparts[0];
-var mwRemoteVersion = 'r122';
+var mwRemoteVersion = 'r123';
 var mwUseScriptLoader = true;
 
 // Log the mwRemote version ( will determine what version of js we get )
@@ -46,7 +46,7 @@ function doPageSpecificRewrite() {
 			'$j.ui', 
 			'$j.ui.sortable' 
 		], function() {
-			mw.load( mwEmbedHostPath + '/editPage.js?' + mwGetReqArgs() );
+			mw.load( mwEmbedHostPath + '/remotes/editPage.js?' + mwGetReqArgs() );
 		} );
 	}
 	
@@ -99,23 +99,18 @@ function doPageSpecificRewrite() {
 	if ( wgPageName == "Special:Upload" ) {
 		var scriptUrl = null;
 		var scriptName = null;
-		var libraries = [];
-		if ( location.search.indexOf('uploadWizard=1') !== -1 ) {
-			scriptName = 'uploadWizardPage.js';
-	   		libraries = []; 
-		} else {
- 			scriptName = 'uploadPage.js';
-	   		libraries = [
-				'mw.UploadHandler',
-				'mw.UploadInterface',
-				'mw.Firefogg', 
-				'$j.ui',
-				'$j.ui.progressbar', 
-				'$j.ui.dialog', 
-				'$j.ui.draggable'
-			];
-		}
-		var scriptUrl = mwEmbedHostPath + '/' + scriptName + '?' + mwGetReqArgs()
+		var libraries = [];		
+		scriptName = 'uploadPage.js';
+   		libraries = [
+			'mw.UploadHandler',
+			'mw.UploadInterface',
+			'mw.Firefogg', 
+			'$j.ui',
+			'$j.ui.progressbar', 
+			'$j.ui.dialog', 
+			'$j.ui.draggable'
+		];
+		var scriptUrl = mwEmbedHostPath + '/remotes/' + scriptName + '?' + mwGetReqArgs();
 		loadMwEmbed(libraries, function() { mw.load( scriptUrl ) } );
 	}
 	
@@ -123,7 +118,7 @@ function doPageSpecificRewrite() {
 	if ( wgPageName == 'MediaWiki:ApiProxy' ) {
 		var wgEnableIframeApiProxy = true;		
 		loadMwEmbed( [ 'mw.ApiProxy' ], function() {
-			mw.load( mwEmbedHostPath + '/apiProxyPage.js?' + mwGetReqArgs() );
+			mw.load( mwEmbedHostPath + '/remotes/apiProxyPage.js?' + mwGetReqArgs() );
 		} );
 	}
 	
@@ -160,7 +155,7 @@ function doPageSpecificRewrite() {
 * Sets the mediaWiki content to "loading" 
 */
 function mwSetPageToLoading(){
-	importStylesheetURI( mwEmbedHostPath + '/mwEmbed/skins/mvpcf/EmbedPlayer.css?' + mwGetReqArgs() );
+	importStylesheetURI( mwEmbedHostPath + '/skins/mvpcf/EmbedPlayer.css?' + mwGetReqArgs() );
 	var body = document.getElementById('bodyContent');
 	var oldBodyHTML = body.innerHTML;
 	body.innerHTML = '<div class="loading_spinner"></div>';
@@ -312,7 +307,7 @@ function getRemoteEmbedPath() {
 				scriptPath = s.src.replace( '/mediaWiki.js', '' )
 			}
 			// Use the external_media_wizard path:
-			return [scriptPath + '/../..', reqStr];
+			return [scriptPath + '/..', reqStr];
 		}
 	}
 }
@@ -352,7 +347,7 @@ function loadMwEmbed( classSet, callback ) {
 	// Inject mwEmbed if needed
 	if ( typeof MW_EMBED_VERSION == 'undefined' ) {
 		if ( mwUseScriptLoader ) {
-			var rurl = mwEmbedHostPath + '/mwEmbed/jsScriptLoader.php?class=';
+			var rurl = mwEmbedHostPath + '/jsScriptLoader.php?class=';
 			
 			var coma = '';
 			// Add jQuery too if we need it: 
@@ -376,7 +371,7 @@ function loadMwEmbed( classSet, callback ) {
 			importScriptURI( rurl );
 		} else { 
 			// Ignore classSet (will be loaded onDemand )
-			importScriptURI( mwEmbedHostPath + '/mwEmbed/mwEmbed.js?' + mwGetReqArgs() );
+			importScriptURI( mwEmbedHostPath + '/mwEmbed.js?' + mwGetReqArgs() );
 		}
 	}
 	waitMwEmbedReady( callback );

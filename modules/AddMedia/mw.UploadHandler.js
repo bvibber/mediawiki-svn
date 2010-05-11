@@ -211,18 +211,17 @@ mw.UploadHandler.prototype = {
 	/**
 	 * onSubmit handler for the upload form
 	 */
-	onSubmit: function() {
+	onSubmit: function( evt ) {
 		var _this = this;
 		mw.log( 'Base::onSubmit:  isRawFormUpload:' + this.formDirectSubmit );
-		
-		// Run the original onsubmit (if not run yet set flag to avoid excessive chaining)
-		if ( typeof( this.orig_onsubmit ) == 'function' ) {
-			if ( ! this.orig_onsubmit() ) {
-				//error in orig submit return false;
+		var currentForm = this.getForm();
+				
+		if( currentForm.onsubmit ){
+			if( ! currentForm.onsubmit() ){
 				return false;
-			}
-		}		
-
+			}			
+		}
+		
 		// Reinstate the ['name'=comment'] filed since
 		// commons hacks removes wgUploadDesction from the form 
 		var $form = $j( this.form );
@@ -237,6 +236,7 @@ mw.UploadHandler.prototype = {
 		}
 		
 		var uploadDesc =  _this.getUploadDescription();
+		// update the form
 		if( uploadDesc ) {
 			$form.find("[name='comment']").val( uploadDesc );
 		}
@@ -512,7 +512,7 @@ mw.UploadHandler.prototype = {
 	/**
 	* Get the upload description, append the license if available
 	*
-	* NOTE: wpUploadDescription should be a configuration option. 
+	* NOTE: this hack ontop of the commons hack will be depreciated in favor of the uploadWizard
 	*
 	* @param {Boolean} useCache If the upload description cache can be used. 
 	* @return {String} 
@@ -527,8 +527,7 @@ mw.UploadHandler.prototype = {
 		}
 		if( !comment_value){
 			comment_value = $j( this.form ).find( "[name='comment']" ).val();
-		}
-		mw.log( 'getUploadDescription:: base:' + comment_value + ' ucr:' + this.rewriteDescriptionText );
+		}		
 		// Set license, copyStatus, source if available ( generally not available SpecialUpload needs some refactoring ) 
 		if ( this.rewriteDescriptionText ) {
 			var license = ( $j("[name='wpLicense']").length ) ? $j("[name='wpLicense']").val() : '';			
@@ -536,9 +535,9 @@ mw.UploadHandler.prototype = {
 			var source =  ( $j("[name='wpSource']").length ) ? $j("[name='wpSource']").val() : '';
 			
 			// Run the JS equivalent of SpecialUpload.php getInitialPageText	
-			comment_value = this.getCommentText( comment_value, license, copyStatus, source  );
+			comment_value = this.getCommentText( comment_value, license, copyStatus, source  );			
 		}
-		mw.log( 'getCommentText:: new val:' + comment_value  );		
+		mw.log( 'getUploadDescription:: rewrite:' + comment_value + ' ucr:' + this.rewriteDescriptionText );				
 		return comment_value;
 	},
 	
@@ -795,7 +794,9 @@ mw.UploadHandler.prototype = {
 				this.ignoreWarningsSubmit();
 			break;
 			case 'returnToForm':
-				this.rewriteDescriptionText = false;
+				this.rewriteDescriptionText = true;
+				//clear out the warning session id ( so we don't submit to the same session key )
+				this.warnings_sessionkey = false;
 			break;
 			case 'disableDirectSubmit':
 				this.formDirectSubmit = false;				
