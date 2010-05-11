@@ -292,14 +292,14 @@ class MwRdfTest_Framework extends MwRdfTestCase {
 		$res = MwRdf::PersonToResource(
 		$user->getID(), $user->getName(), $user->getRealName() );
 		$this->assertTrue( $res instanceof LibRDF_LiteralNode );
-		$this->assertEquals( wfMsg( 'siteuser', "MwRdfPagelessNamelessUser" ), "$res" );
+		$this->assertEquals( wfMsgExt( 'siteuser', 'parsemag', "MwRdfPagelessNamelessUser", "MwRdfPagelessNamelessUser" ), "$res" );
 	}
 
 	public function testPersonToResource_JustId_UserHasNeitherRealNameNorPage() {
 		$user = MwRdfTest::CreateUserWithoutRealNameOrPage();
 		$res = MwRdf::PersonToResource( $user->getID() );
 		$this->assertTrue( $res instanceof LibRDF_LiteralNode );
-		$this->assertEquals( wfMsg( 'siteuser', "MwRdfPagelessNamelessUser" ), "$res" );
+		$this->assertEquals( wfMsgExt( 'siteuser', 'parsemag', "MwRdfPagelessNamelessUser", "MwRdfPagelessNamelessUser" ), "$res" );
 	}
 
 	public function testPersonToResource_AnonymousUser() {
