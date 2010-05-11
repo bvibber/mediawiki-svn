@@ -56,14 +56,14 @@ It might have been removed.',
 	'storyboard-storymetadatafrom' => 'Submitted by $1 from $2 on $3, $4.',
 
 	// Story submission tag
-	'storyboard-yourname' => 'Your name',
+	'storyboard-yourname' => 'Your name (required)',
 	'storyboard-location' => 'Your location',
 	'storyboard-occupation' => 'Your occupation',
 	'storyboard-story' => 'Your story',
 	'storyboard-photo' => 'Have a photo of yourself?
 Why not share it?',
-	'storyboard-email' => 'Your e-mail address',
-	'storyboard-storytitle' => 'A short, descriptive title',
+	'storyboard-email' => 'Your e-mail address (required)',
+	'storyboard-storytitle' => 'A short, descriptive title (required)',
 	'storyboard-agreement' => 'I agree with the publication and use of this story under the terms of the [http://creativecommons.org/licenses/by-sa/3.0/ Creative Commons Attribution/Share-Alike License].',
 	'storyboard-charsleft' => '($1 {{PLURAL:$1|character|characters}} left)',
 	'storyboard-cannotbelonger' => 'Your story is <b>$1</b> {{PLURAL:$1|character|characters}} too long!',
