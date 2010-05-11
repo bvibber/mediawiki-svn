@@ -1767,7 +1767,10 @@ class BGPPeering(BGPFactory):
         # Kill off all other possibly running protocols
         for p in self.inConnections + self.outConnections:
             if p != protocol:
-                p.fsm.openCollisionDump()
+                try:
+                    p.fsm.openCollisionDump()
+                except NotificationSent, e:
+                    pass
         
         # BGP announcements / UPDATE messages can be sent now
         self.sendAdvertisements()
