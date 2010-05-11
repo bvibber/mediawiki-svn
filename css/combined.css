@@ -62,8 +62,8 @@
 }
 .suggestions-result-current .special-label,
 .suggestions-result-current .special-query {
-	color: white !important;
-	color: HighlightText !important;
+	color: white;
+	color: HighlightText;
 }/* Prototype code to show collapsing left nav options */
 #panel.collapsible-nav div.portal {
 	background-image:url(../images/vector/collapsibleNav/portal-break.png);

@@ -62,6 +62,6 @@
 }
 .suggestions-result-current .special-label,
 .suggestions-result-current .special-query {
-	color: white !important;
-	color: HighlightText !important;
+	color: white;
+	color: HighlightText;
 }
