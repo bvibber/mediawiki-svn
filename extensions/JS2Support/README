@@ -1,6 +1,10 @@
 = JS2 Support Extension =
 
-The JS2 Support extension hosts the mwEmbed library. js2-work branch has been depreciated.
+The JS2 Support svn:externals hosts the mwEmbed library. svn does not support 
+svn:externals on files so mwEmbed.js and jsScriptLoader.php are symbolically linked in the
+working directory and updates are manually committed to the JS2extension.  
+
+the js2-work branch has been depreciated.
 
 The stand-alone mwEmbed support contains all the the stand alone mwEmbed modules
 and these core mwEmbed libraries. You can learn more about mwEmbed stand alone in 
@@ -8,7 +12,7 @@ and these core mwEmbed libraries. You can learn more about mwEmbed stand alone i
 
 This extension solely supports other extensions, and hence would be a good candidate for 
 inclusion into core. Its built as an extension to enable development to move forward while
-the core integration is sorted out. 
+the core integration is sorted out.
 
 
 == Developing with JS2 ==
