@@ -136,6 +136,7 @@ function stbShowReviewBoard( tab, state ) {
 /**
  * Loads new stories into the board by making a getJSON request to the QueryStories API module.
  * 
+ * @param ajaxscrollObj
  * @param $storyboard
  */
 function stbUpdateReviewBoard( ajaxscrollObj, $storyboard ) {
@@ -157,7 +158,7 @@ function stbUpdateReviewBoard( ajaxscrollObj, $storyboard ) {
 		requestArgs,
 		function( data ) {
 			if ( data.query ) {
-				stbAddStories( ajaxscrollObj, $storyboard, data.query );
+				stbAddStories( ajaxscrollObj, $storyboard, data );
 			} else {
 				alert( stbMsgExt( 'storyboard-anerroroccured', [data.error.info] ) );
 			}		
@@ -168,15 +169,16 @@ function stbUpdateReviewBoard( ajaxscrollObj, $storyboard ) {
 /**
  * Adds a list of stories to the board.
  * 
+ * @param ajaxscrollObj
  * @param $storyboard
- * @param query
+ * @param data
  */
-function stbAddStories( ajaxscrollObj, $storyboard, query ) {
+function stbAddStories( ajaxscrollObj, $storyboard, data ) {
 	// Remove the empty boxes.
 	$storyboard.html( '' );
 
-	for ( var i in query.stories ) {
-		var story = query.stories[i];
+	for ( var i in data.query.stories ) {
+		var story = data.query.stories[i];
 		var $storyBody = jQuery( "<div />" ).addClass( "storyboard-box" ).attr( "id", "story_" + story.id );
 		
 		var $header = jQuery( "<div />" ).addClass( "story-header" ).appendTo( $storyBody );
@@ -243,8 +245,18 @@ function stbAddStories( ajaxscrollObj, $storyboard, query ) {
 		}
 		
 		controlDiv.append( '&nbsp;&nbsp;&nbsp;' );
-		controlDiv.append( jQuery( "<button />" ).text( stbMsg( "edit" ) )
-			.attr( "onclick", "window.location='" + story.modifyurl + "'" ) );
+		controlDiv.append( jQuery( "<button />" )
+			.text( stbMsg( "edit" ) )
+			.attr( "onclick", "window.location='" + story.modifyurl + "'" )
+		);
+		
+		if ( window.storyboardCanDelete ) {
+			controlDiv.append( '&nbsp;&nbsp;&nbsp;' );
+			controlDiv.append( jQuery( "<button />" )
+				.text( stbMsg( "storyboard-deletestory" ) )
+				.attr( "onclick", "stbDeleteStory( this, " + story.id + " )" )
+			);			
+		}
 		
 		if ( story.imageurl ) {
 			controlDiv.append( '&nbsp;&nbsp;&nbsp;' );
@@ -303,7 +315,7 @@ function stbDoStoryAction( sender, storyid, action ) {
 		function( data ) {
 			if ( data.storyreview ) {
 				switch( data.storyreview.action ) {
-					case 'publish' : case 'unpublish' : case 'hide' :
+					case 'publish' : case 'unpublish' : case 'hide' : case 'delete' :
 						sender.innerHTML = stbMsg( 'storyboard-done' );
 						jQuery( '#story_' + data.storyreview.id ).slideUp( 'slow', function () {
 							jQuery( this ).remove();
@@ -357,7 +369,7 @@ function stbToggeShowImage( sender, storyId, completedAction ) {
 }
 
 /**
- * Asks the user to confirm the deletion of an image, and if confirmed, calls stbDoStoryAction with action=delete.
+ * Asks the user to confirm the deletion of an image, and if confirmed, calls stbDoStoryAction with action=deleteimage.
  * 
  * @param sender The UI element invocing the action, typically a button.
  * @param storyid Id identifying the story.
@@ -368,6 +380,22 @@ function stbDeleteStoryImage( sender, storyid ) {
 	var confirmed = confirm( stbMsg( 'storyboard-imagedeletionconfirm' ) );
 	if ( confirmed ) { 
 		stbDoStoryAction( sender, storyid, 'deleteimage' );
+	}
+	return confirmed;
+}
+
+/**
+ * Asks the user to confirm the deletion of a story, and if confirmed, calls stbDoStoryAction with action=delete.
+ * 
+ * @param sender The UI element invocing the action, typically a button.
+ * @param storyid Id identifying the story.
+ * 
+ * @return Boolean indicating whether the deletion was confirmed.
+ */
+function stbDeleteStory( sender, storyid ) {
+	var confirmed = confirm( stbMsg( 'storyboard-storydeletionconfirm' ) );
+	if ( confirmed ) { 
+		stbDoStoryAction( sender, storyid, 'delete' );
 	}
 	return confirmed;
 }

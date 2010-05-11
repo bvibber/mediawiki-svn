@@ -133,7 +133,7 @@
 			}
 			
 			function vEnd() {
-				if ( ele.scrollTop > 0 && ele.scrollHeight - ele.scrollTop < opt.eBound ) {
+				if ( ele.scrollTop > 0 && ele.scrollHeight - ele.scrollTop < opt.eBound && opt.loaded ) {
 					batch( $sp, opt );
 					return 1;
 				}

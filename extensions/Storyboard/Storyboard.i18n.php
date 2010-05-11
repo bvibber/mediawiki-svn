@@ -98,6 +98,8 @@ You can [$2 read published stories].',
 	'storyboard-imagedeleted' => 'Image deleted',
 	'storyboard-showimage' => 'Show image',
 	'storyboard-hideimage' => 'Hide image',
+	'storyboard-deletestory' => 'Remove',
+	'storyboard-storydeletionconfirm' => 'Are you sure you want to permanently delete this story?'
 );
 
 /** Message documentation (Message documentation)
