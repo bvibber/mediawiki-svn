@@ -852,7 +852,7 @@ ctrlBuilder.prototype = {
 	*/
 	setStatus: function( value ) {
 		// update status:
-		this.embedPlayer.$interface.find( '.time-disp' ).html( value );
+		this.embedPlayer.$interface.find( '.time-disp' ).text( value );
 	},
 	
 	/**	

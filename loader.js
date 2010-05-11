@@ -25,6 +25,7 @@ var mwCoreComponentList = [
 
 /**
 * The default set of enabled modules
+* ( Modules can also be enabled via mediaWiki extensions ) 
 * 
 * Each enabledModules array value should be a name
 * of a folder in mwEmbed/modules 

@@ -211,6 +211,10 @@ class jsClassLoader {
 		$mwEmbedAbsolutePath = ( $wgMwEmbedDirectory == '' )? $IP:  $IP .'/' .$wgMwEmbedDirectory;
 
 		foreach( $moduleSet as $na => $moduleName ){
+			// Skip empty module names
+			if(trim( $moduleName ) == '' ){
+				continue;
+			}
 			$moduleName = str_replace( array( '../', '\'', '"'), '', trim( $moduleName ));
 			// Check if there is there are module loader files
 			if( is_file( $mwEmbedAbsolutePath . '/modules/' . $moduleName . '/loader.js' )){
