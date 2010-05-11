@@ -84,8 +84,8 @@ Why not share it?',
 	'storyboard-createdsuccessfully' => 'Thank you for sharing your story with us!
 We will review it shortly.
 You can [$1 read published stories].',
-	'storyboatd-emailtitle' => 'Story submission successful',
-	'storyboatd-emailbody' => 'Your story titled "$1" has been successfully submitted.
+	'storyboard-emailtitle' => 'Story submission successful',
+	'storyboard-emailbody' => 'Your story titled "$1" has been successfully submitted.
 We will review it shortly.
 You can [$2 read published stories].',
 
@@ -188,8 +188,8 @@ $messages['be-tarask'] = array(
 	'storyboard-createdsuccessfully' => 'Дзякуй Вам за тое, што падзяліліся з намі Вашай гісторыяй!
 Мы разгледзім яе ў бліжэйшы час.
 Вы можаце [$1 пачытаць ужо апублікаваныя гісторыі].',
-	'storyboatd-emailtitle' => 'Гісторыя дасланая пасьпяхова',
-	'storyboatd-emailbody' => 'Ваша гісторыя з назвай «$1» пасьпяхова дасланая.
+	'storyboard-emailtitle' => 'Гісторыя дасланая пасьпяхова',
+	'storyboard-emailbody' => 'Ваша гісторыя з назвай «$1» пасьпяхова дасланая.
 Хутка Вы зможаце яе праглядзець.
 Вы можаце [$2 пачытаць апублікаваныя гісторыі].',
 	'storyreview' => 'Рэцэнзаваньне гісторыі',
@@ -317,8 +317,8 @@ $messages['de'] = array(
 	'storyboard-charactersleft' => 'Noch $1 {{PLURAL:$1|Zeichen|Zeichen}} verfügbar',
 	'storyboard-createdsuccessfully' => 'Vielen Dank, dass du uns deine Botschaft mitgeteilt hast! Wir werden sie in Kürze überprüfen.
 Du kannst bereits veröffentlichte Botschaften [$1 hier] lesen.',
-	'storyboatd-emailtitle' => 'Die Einreichung Ihrer Botschaft war erfolgreich.',
-	'storyboatd-emailbody' => 'Deine Botschaft mit dem Titel „$1“ wurde erfolgreich übermittelt. Wir werden sie in Kürze überprüfen. Einstweilen kannst du [$2 hier] bereits veröffentlichte Botschaften lesen.',
+	'storyboard-emailtitle' => 'Die Einreichung Ihrer Botschaft war erfolgreich.',
+	'storyboard-emailbody' => 'Deine Botschaft mit dem Titel „$1“ wurde erfolgreich übermittelt. Wir werden sie in Kürze überprüfen. Einstweilen kannst du [$2 hier] bereits veröffentlichte Botschaften lesen.',
 	'storyreview' => 'Botschaft überprüfen',
 	'storyboard-deleteimage' => 'Bild löschen',
 	'storyboard-done' => 'Erledigt',
@@ -411,8 +411,8 @@ Cogodla  njestajaśo jo k našej dispoziciji?',
 	'storyboard-createdsuccessfully' => 'Źěkujomy se wam, až sćo nam swójo tšojenje k dispoziciji stajił!
 Buźomy se skóro pśeglědowaś.
 Móžośo [$1 wózjawjone tšojenja cytaś].',
-	'storyboatd-emailtitle' => 'Zawóstajenje tšojenja wuspěšne',
-	'storyboatd-emailbody' => 'Twójo tšojenje z titelom "$1" jo se wuspěšnje zawóstajiło. Buźomy jo skóro pśeglědowaś. Móžoš [$2 wózjawjone tšojenja cytaś].',
+	'storyboard-emailtitle' => 'Zawóstajenje tšojenja wuspěšne',
+	'storyboard-emailbody' => 'Twójo tšojenje z titelom "$1" jo se wuspěšnje zawóstajiło. Buźomy jo skóro pśeglědowaś. Móžoš [$2 wózjawjone tšojenja cytaś].',
 	'storyreview' => 'Pśeglědanje tšojenja',
 	'storyboard-deleteimage' => 'Wobraz wulašowaś',
 	'storyboard-done' => 'Cynjony',
@@ -488,8 +488,8 @@ Puede haber sido eliminada.',
 	'storyboard-createdsuccessfully' => '¡Gracias por compartir su historia con nosotros!
 La revisaremos en breve.
 Puede [$1 Leer historias publicadas]',
-	'storyboatd-emailtitle' => 'Envío de historia exitosa',
-	'storyboatd-emailbody' => 'Tu título de historia "$1" ha sido exitosamente enviado. Lo revisaremos prontamente. Puedes [$2 leer historias publicadas].',
+	'storyboard-emailtitle' => 'Envío de historia exitosa',
+	'storyboard-emailbody' => 'Tu título de historia "$1" ha sido exitosamente enviado. Lo revisaremos prontamente. Puedes [$2 leer historias publicadas].',
 	'storyreview' => 'Revisión de historia',
 	'storyboard-deleteimage' => 'Borrar imagen',
 	'storyboard-done' => 'Hecho',
@@ -570,8 +570,8 @@ $messages['fr'] = array(
 	'storyboard-createdsuccessfully' => 'Merci d’avoir partagé votre histoire avec nous !
 Nous allons l’examiner sous peu.
 Vous pouvez [$1 lire des histoires publiées].',
-	'storyboatd-emailtitle' => "Soumission de l'histoire réussie",
-	'storyboatd-emailbody' => 'Votre histoire intitulée « $1 » a été soumise avec succès. Nous allons la relire sous peu. Vous pouvez [$2 lire les histoires publiées].',
+	'storyboard-emailtitle' => "Soumission de l'histoire réussie",
+	'storyboard-emailbody' => 'Votre histoire intitulée « $1 » a été soumise avec succès. Nous allons la relire sous peu. Vous pouvez [$2 lire les histoires publiées].',
 	'storyreview' => 'Critique de l’histoire',
 	'storyboard-deleteimage' => 'Supprimer l’image',
 	'storyboard-done' => 'Effectué',
@@ -645,8 +645,8 @@ Por que non compartila?',
 	'storyboard-createdsuccessfully' => 'Grazas por compartir a súa historia connosco!
 Analizarémola en breve.
 Entrementres, pode [$1 ler outras historias publicadas].',
-	'storyboatd-emailtitle' => 'A historia enviouse correctamente',
-	'storyboatd-emailbody' => 'A súa historia, titulada "$1", enviouse correctamente.
+	'storyboard-emailtitle' => 'A historia enviouse correctamente',
+	'storyboard-emailbody' => 'A súa historia, titulada "$1", enviouse correctamente.
 Analizarémola en breve.
 Entrementres, pode [$2 ler outras historias publicadas].',
 	'storyreview' => 'Revisión da historia',
@@ -721,8 +721,8 @@ Witt s nit yyfiege?',
 	'storyboard-charactersleft' => 'No $1 Zeiche ibrig',
 	'storyboard-createdsuccessfully' => 'Dankschen, ass Du is Dyy Botschaft mitteilt hesch. Mir dien si bal iberpriefe.
 Du chasch [$1 vereffentligti Botschafte] läse.',
-	'storyboatd-emailtitle' => 'Yygab vu dr Botschaft erfolgryych',
-	'storyboatd-emailbody' => 'Dyy Botschaft mit em Titel „$1“ isch erfolgryych yygee wore. Mir dien si bal iberpriefe. Derwylscht chasch  [$2 vereffetligti Botschafte] läse.',
+	'storyboard-emailtitle' => 'Yygab vu dr Botschaft erfolgryych',
+	'storyboard-emailbody' => 'Dyy Botschaft mit em Titel „$1“ isch erfolgryych yygee wore. Mir dien si bal iberpriefe. Derwylscht chasch  [$2 vereffetligti Botschafte] läse.',
 	'storyreview' => 'Botschaft iberpriefe',
 	'storyboard-deleteimage' => 'Bild lesche',
 	'storyboard-done' => 'Gmacht',
@@ -794,8 +794,8 @@ Móžno, zo je so wotstroniło.',
 	'storyboard-createdsuccessfully' => 'Dźakujemy so wam, zo sće swoje powědančko nam k dispoziciji stajił!
 Budźemy jo bórze přepruwować.
 Móžeće [$1 wozjewjene powědančka čitać].',
-	'storyboatd-emailtitle' => 'Zawostajenje powědančka wuspěšne',
-	'storyboatd-emailbody' => 'Waše powědančko z titulom "$1" je so wuspěšnje zawostajiło. Budźemy jo bórze pruwować.  Móžeće [$2 wozjewjene powědančka čitać].',
+	'storyboard-emailtitle' => 'Zawostajenje powědančka wuspěšne',
+	'storyboard-emailbody' => 'Waše powědančko z titulom "$1" je so wuspěšnje zawostajiło. Budźemy jo bórze pruwować.  Móžeće [$2 wozjewjene powědančka čitać].',
 	'storyreview' => 'Přepruwowanje powědančka',
 	'storyboard-deleteimage' => 'Wobraz zhašeć',
 	'storyboard-done' => 'Sčinjeny',
@@ -877,8 +877,8 @@ Proque non facer vider lo?',
 	'storyboard-createdsuccessfully' => 'Gratias pro partir tu historia con nos!
 Nos lo revidera tosto.
 Tu pote [$1 leger le historias ja publicate].',
-	'storyboatd-emailtitle' => 'Historia submittite con successo',
-	'storyboatd-emailbody' => 'Vostre historia titulate "$1" ha essite submittite con successo.
+	'storyboard-emailtitle' => 'Historia submittite con successo',
+	'storyboard-emailbody' => 'Vostre historia titulate "$1" ha essite submittite con successo.
 Nos lo revidera tosto.
 Tu pote [$2 leger le historias ja publicate].',
 	'storyreview' => 'Revision del historia',
@@ -1065,8 +1065,8 @@ $messages['mk'] = array(
 	'storyboard-createdsuccessfully' => 'Ви благодаримне што ја споделивте Вашата приказна со нас!
 Набргу ќе ја прегледаме.
 Можете да ги [$1 прочитате објавените приказни].',
-	'storyboatd-emailtitle' => 'Поднесувањето на приказната е успешно',
-	'storyboatd-emailbody' => 'Вашата приказна насловена како „$1“ е успешно поднесена.
+	'storyboard-emailtitle' => 'Поднесувањето на приказната е успешно',
+	'storyboard-emailbody' => 'Вашата приказна насловена како „$1“ е успешно поднесена.
 Истата ќе биде набргу прегледана.
 Можете да [$2 прочитате објавени приказни].',
 	'storyreview' => 'Преглед на приказна',
@@ -1294,8 +1294,8 @@ Que tal partilhá-la?',
 	'storyboard-createdsuccessfully' => 'Obrigado por partilhar connosco a sua história.
 Iremos revê-la em breve.
 Pode [$1 ler histórias publicadas].',
-	'storyboatd-emailtitle' => 'História submetida com sucesso',
-	'storyboatd-emailbody' => 'A sua história intitulada "$1" foi submetida com sucesso. Será revista em breve. Pode [$2 ler as histórias publicadas].',
+	'storyboard-emailtitle' => 'História submetida com sucesso',
+	'storyboard-emailbody' => 'A sua história intitulada "$1" foi submetida com sucesso. Será revista em breve. Pode [$2 ler as histórias publicadas].',
 	'storyreview' => 'Revisão da história',
 	'storyboard-deleteimage' => 'Apagar imagem',
 	'storyboard-done' => 'Terminado',
