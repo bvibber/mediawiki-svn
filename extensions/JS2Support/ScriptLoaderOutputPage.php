@@ -287,6 +287,8 @@ class ScriptLoaderOutputPage extends OutputPage {
 		// Set core Classes
 		$coreClasses = array( 'wikibits', 'window.jQuery', 'mwEmbed' );
 
+
+
 		// Merge in any scripts that have been set as "allpage"
 		// Since the all page are on every page view they should just be part of the core
 		// script request.
@@ -309,10 +311,23 @@ class ScriptLoaderOutputPage extends OutputPage {
 			foreach( $coreClasses as $className ){
 				$this->addScriptClass( $className );
 			}
+
+			// Add the mwEmbed "core-components" ( language, parsing etc )
+			$coreComponets = jsClassLoader::getComponentsList();
+			foreach( $coreComponets as $className ) {
+				$this->addScriptClass( $className );
+			}
+
 			// Also add the "loader" classes ( script-loader won't run them )
 			foreach( $wgExtensionJavascriptLoader as $loaderPath){
+				// Set the loader context for each loader javascript file
+				// ( so that javascript modules can use relative paths )
+				$loaderDir =  dirname( "$wgScriptPath/$loaderPath" ) . "/";
+				$this->addScript(  Html::inlineScript(
+					"mw.setConfig( 'loaderContext',  '" . xml::escapeJsString( $loaderDir  ) . "');"
+				) );
 				$this->addScriptFile(
-					"$wgScriptPath/extensions/$loaderPath"
+					"$wgScriptPath/$loaderPath"
 				);
 			}
 		}
@@ -408,7 +423,7 @@ class ScriptLoaderOutputPage extends OutputPage {
 	 * @param $type 'js' or 'css' for type of head item being included
 	 * @return boolean False if the class wasn't found, True on success
 	 */
-function addScriptClass( $className, $scriptRequestBucket = 'page' , $type='js') {
+	function addScriptClass( $className, $scriptRequestBucket = 'page' , $type='js') {
 		global $wgDebugJavaScript, $wgScriptLoaderNamedPaths, $IP,
 		$wgEnableScriptLoader, $wgStyleVersion, $wgScriptPath, $wgStylePath,
 		$wgUser;
