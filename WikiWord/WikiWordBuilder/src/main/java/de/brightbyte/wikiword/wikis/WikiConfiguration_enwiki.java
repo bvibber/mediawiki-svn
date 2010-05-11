@@ -147,7 +147,7 @@ public class WikiConfiguration_enwiki extends WikiConfiguration {
 				"^(NUTS|Geography_of|Places|Villages|Towns|Cities|Captials?|Constituencies|Counties|Countries|Municipalities|Settlements|States|Provinces|Territories|Federal_states|Islands|Regions|Domains|Communes|Districts|Locations)" +
 				       "(_|$)|_(places|villages|towns|cities|capitals|constituencies(_.*)?|counties|countries|municipalities|settlements|states|provinces|territories|federal_states|islands|regions|domains|communes|districts|locations)$", 0));
 		
-		conceptTypeSensors.add( new HasTemplateLikeSensor<ConceptType>(ConceptType.PLACE, "^(Geobox|Infobox_(.*_)?([Ss]ettlement|[Cc]ountry|[Ss]tate|[Ll]ocation|[Cc]ounty)|.*_constituency_infobox)$", 0));
+		conceptTypeSensors.add( new HasTemplateLikeSensor<ConceptType>(ConceptType.PLACE, "^(Geobox|Infobox_(.*_)?([Ss]ettlement|[Cc]ountry|[Ss]tate|[Ll]ocation|[Cc]ounty|[Ll]ake)|.*_constituency_infobox)$", 0));
 		
 		conceptTypeSensors.add( new HasCategoryLikeSensor<ConceptType>(ConceptType.PERSON, "^(Male|Female|People)_|_(people|men|women|births|deaths)$", 0));
 		conceptTypeSensors.add( new HasTemplateLikeSensor<ConceptType>(ConceptType.PERSON, "^(Persondata|Lifetime|BD|BIRTH-DEATH-SORT|Infobox.*_(person|[aA]rtist|creator|writer|musician|biography|clergy|scientist))$", 0));

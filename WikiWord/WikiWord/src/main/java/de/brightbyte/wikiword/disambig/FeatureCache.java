@@ -66,6 +66,8 @@ public class FeatureCache<C extends WikiWordConcept, K> implements FeatureFetche
 		Map<Integer, ConceptFeatures<C, K>> features = new HashMap<Integer, ConceptFeatures<C, K>> ();
 		List<C> todo = new ArrayList<C>(concepts.size());
 		for (C c: concepts) {
+			   if (c==null) continue;
+			   
 				ConceptFeatures<C, K> f = cache.get(c.getId());
 				if (f!=null) {
 					features.put(c.getId(), f);

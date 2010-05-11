@@ -11,7 +11,7 @@
 	<modules>
 		<module>WikiWord</module>
 		<module>WikiWordBuilder</module>
-                <module>WikiWordIntegrator</module>
+            <!--    <module>WikiWordIntegrator</module>  -->
                 <module>WikiWordProperties</module>
 	</modules>
 	

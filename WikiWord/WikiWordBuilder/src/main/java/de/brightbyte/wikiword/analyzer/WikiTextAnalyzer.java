@@ -1985,8 +1985,9 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 	
 	@SuppressWarnings({ "null", "unchecked" })
 	public static WikiTextAnalyzer getWikiTextAnalyzer(PlainTextAnalyzer language) throws InstantiationException {
+		String[] pkgs = language.getCorpus().getConfigPackages();
 		Class[] acc = getSpecializedClasses(language.getCorpus(), WikiTextAnalyzer.class, "WikiTextAnalyzer");
-		Class[] ccc = getSpecializedClasses(language.getCorpus(), WikiConfiguration.class, "WikiConfiguration", language.getCorpus().getConfigPackages());
+		Class[] ccc = getSpecializedClasses(language.getCorpus(), WikiConfiguration.class, "WikiConfiguration", pkgs);
 		
 		logger.debug("getWikiTextAnalyzer uses implementation "+acc[acc.length-1]);
 		logger.debug("getWikiTextAnalyzer uses configurations "+Arrays.toString(ccc));
