@@ -66,6 +66,8 @@ class NewUserMessage {
 	 * @param $signature String the signature
 	 */
 	static function setupAndLeaveMessage( $user, $editor, $editSummary, $substitute, $signature ) {
+		$talk = $user->getTalkPage();
+
 		$templateTitleText = wfMsg( 'newusermessage-template' );
 		$templateTitle = Title::newFromText( $templateTitleText );
 		if ( !$templateTitle ) {
@@ -141,7 +143,6 @@ class NewUserMessage {
 		$good = true;
 
 		try {
-
 			$article->doEdit( $text, $summary, $flags, false, $editor );
 		} catch ( DBQueryError $e ) {
 			$good = false;
