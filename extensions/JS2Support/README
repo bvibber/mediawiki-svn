@@ -1,70 +1,194 @@
 = JS2 Support Extension =
 
+The JS2 Support extension hosts the mwEmbed library. js2-work branch has been depreciated.
+
+The stand-alone mwEmbed support contains all the the stand alone mwEmbed modules
+and these core mwEmbed libraries. You can learn more about mwEmbed stand alone in 
+/branches/mwEmbedStandAlone/README  
+
+This extension solely supports other extensions, and hence would be a good candidate for 
+inclusion into core. Its built as an extension to enable development to move forward while
+the core integration is sorted out. 
+
+
+== Developing with JS2 ==
+
 To add the base js2 library support simply add the following to your LocalSettings.php: 
 require_once( "$IP/extensions/JS2Support/JS2Support.php" );
 
-== LocalSettings.php to enable all js2 components == 
+By default js2 support groups script and css requests, disable script grouping for debugging set: 
+$wgEnableScriptLoader = false; 
 
-# Base JS2 Support 
+If you want a fresh copy of the scripts ( and to disable minification in when wgEnableScriptLoader= true you can set ) 
+$wgDebugJavaScript = true;
+
+== LocalSettings.php to enable all js2 extensions == 
+
+# Base JS2 Support ( includes mwEmbed )
 require_once( "$IP/extensions/JS2Support/JS2Support.php"  );
 
 # Add Media Wizard
-require_once( "$IP/extensions/JS2Support/AddMediaWizard/AddMediaWizard.php" ); 
+require_once( "$IP/extensions/AddMediaWizard/AddMediaWizard.php" ); 
 
 # Upload Wizard
-require_once( "$IP/extensions/JS2Support/UploadWizard/UploadWizard.php" );
+require_once( "$IP/extensions/UploadWizard/UploadWizard.php" );
 
-# Ogg Handler with new player, transcoding + subtitle support. 
-require_once( "$IP/extensions/JS2Support/OggHandler/OggHandler.php" );
-
-== Developing and Debug mode ==
-
-By default js2 support groups script and css requests, disable script grouping set: 
-$wgEnableScriptLoader = false;  
-
-If you want a fresh copy of the scripts and to disable minification in grouped requests set: 
-$wgDebugJavaScript = true;
+# Ogg Handler with html5 player, transcoding + subtitle support. 
+require_once( "$IP/extensions/TimedMediaHandler/TimedMediaHandler.php" );
 
 
-== Using JS2 with existing extensions ==
+== Using JS2 script-grouping with your extension ==
 
-Simply add the Named path to wgScriptLoaderNamedPaths variable
+Once you include the extension you can use the following: 
+
+To add a javascript or css to the named paths ( so that the script loader can load it by name )
 $wgScriptLoaderNamedPaths[ 'myExtension' ] = 'extensions/myExtension/myExtension.js';
 
-If you would like to keep compatibility with non-js2 extension support you can then
-just use the base outputPage addScriptFile method
-$wgOut->addScriptFile( 'extensions/myExtension/myExtension.js' )
+Then in your php you can inclue your with the following line:   
+$wgOut->addScriptClass( 'myExtension' /* scriptloader named path */ , 'page'/* group bucket id */ );
+This lets you use the named-path for includes and gives you control over script grouping with the 
+grouping argument. If for example your script is included on a set of special pages then you could
+create a bucket id string for that set to not mangle the cache of each special page .
 
-If you want to have JS2Support be a dependency of your extension you can then use something like:  
-$wgOut->addScriptClass( 'myExtension', 'page' );
-This lets you use the namedPath for includes and gives you control over script grouping. 
+If important that user-specific js like user-selected gadgets or user-custom pages are put into the 
+user bucket. This is so in the future cookie based request can be issued for javascript browsers enabling
+us to send the same "cached" page to all logging users that share a base configuration.
+ 
+If you would like to keep compatibility with non-js2 extension support you can use the base outputPage 
+addScriptFile method:
+$wgOut->addScriptFile( 'extensions/myExtension/myExtension.js' )
+This way regardless of if your running the js2support extension or not script-includes will continue to work.
+But you won't be able to control the script bucket, and the script-loader will have to guess 
+what group to put it in. ( This should be resolved with updates to the trunk output page) 
+
 For more info see  ScriptLoaderOutputPage.php $mScriptLoaderClassList
 
 
-== Using JS2 with js-modules ==
+== Using JS2 with JS-modules ==
 
-JS Modules are reusable pieces of javascript that can be dynamically configured, loaded 
-and executed in arbitrary javascript contexts. 
+JS Modules are reusable sets of javascript that can be dynamically configured, loaded and executed in 
+arbitrary javascript contexts. These libraries should have a clean separation of configuration,
+interface, and application flow. These modules define relative paths for assets and can be hosted 
+inside extensions or optionally used in stand-alone javascript applications. They provide a means to cleanly
+"embed" mediaWiki interfaces into application contexts. 
 
-JS modules include "module loaders" that build request sets of the dependent javascript 
-and css classes for a given interface component in the context of user or application
-configuration. 
+Examples include embedding a video player with timed text subtitles pulled from an external wiki, to
+embedding a wikiEditor toolbar on a view page. The use of "loaders" enables dynamic packaging of 
+modules with the intent of avoiding multiple requests, at the cost of slightly larger server side cache of
+combined resources. 
+
+It enables the server to deliver static configuration files that drive interface customizations in
+javascript rather than costly dynamically html output from php.
+ 
+== JS-module components == 
+
+The three components of a js-module are  "module loaders", "module activators" and "library code and assets". 
+
+* "module loaders"  build the request set of the javascript and css assets for a given interface "module" 
+in the context of user preferences or application configuration.  
+
+* "module activators" call the module loaders in a given application context. For example
+an edit page or a view page may call the wikiToolBar with different module configuration.
+
+* "library code and assets" These consist of library code and assets that is the user interface or application. 
+These libs are driven by a given configuration.    
+
+== Example Flow and File Contents == 
 
 When an application wants to use that interface component it calls the module loader.
 The module loader checks relevant configuration and javascript application state for existing
 satisfied dependencies or browser specific libraries, then issues a single script-loader
 request that retrieves all the needed javascript, css and localized message text for 
-that interface in minfied,  gziped
+that interface, the returned javascript will be minfied and gziped and cached on the server.  
 
-For now see example modules, more documentation to follow. 
+Example loader.js:
 
-== Using JS2 localization system ==
+/* 
+* First we define the named script class paths
+* Each class  "mw.myJsModuleUI" defines its class name in the javascript
+*/
+mw.addClassFilePaths( {
+	"mw.myJsModuleHandler" : "js/mw.myJSModuleHandler.js", 
+	"mw.myJsModuleUI" : "js/mw.myJSModuleUI.js"
+	"mw.style.myJsModule" : "css/mw.style.myJsModule.css"		
+});
+
+/* 
+* Then we setup the module loader that builds a loader request for the given module 
+*/
+mw.addModuleLoader( 'myJsModule', function( callback ){
+	// Set the intial request set: 
+	var requestSet = ["mw.myJsModuleHandler", "mw.myJsModuleUI", "mw.style.myJsModule", "$j.ui", "$j.ui.tabs" ];
+	
+	// Check configuration and add to request set 
+	if( mw.getConfig( 'myJsModuleFeatureOrSubModuleEnabled' ){
+		// add the given feature or submodule to the requestSet
+	}
+	
+	// If we want to enable other  "extensions" or "modules" to "addHooks" to our module loader we do that here
+	$j( mw ).trigger( 'LoaderMyJsModuleAddFeatures', requestSet ); 
+	
+	// Load the request set and run the ModuleLoader callback. 
+	mw.load( requestSet, callback) 
+	
+});
+
+Example "Activator" 
+/* 
+* Anytime we want to use the module we simply call the module loader
+*/ 
+var myModuleConfig = {
+	'configOption1' : mw.getConfig( 'myJsModule.configOption1' )
+}
+mw.load( 'myJsModule', function(){
+	var myModule = new mw.myJsModule( myModuleConfig );
+	myModule.drawUI();
+	
+	// if your interface operates on a DOM element like a jQuery plugin you may 
+	// invoke it differently ie: 
+	$j('#targetElement').myJsModule( myModuleConfig );	 
+}
+
+Example Library Code
+
+The key thing to remember about library code is that it defines a named class ie: 
+mw.load( 'mw.Foo' ... 
+// will load a file that includes 
+mw.Foo = function(){ ...
+
+Library code should operate off of global configuration mw.getConfig( 'configurationOption' ) 
+and or local configuration ( where appropriate ) ie the constructor gets passed an options object 
+that defines named value pairs of configuration or callbacks. 
+
+== Localization ==
 
 The JS2 Localization system works similar to its php counterpart. 
-( it even support for {{PLURAL}} transforms )
+( it includes support for {{PLURAL}} transforms )
 
-To enable JS2 localization of included scripts include the
-msg keys you want included with a given class in the head of the javascript file:
+To get a msg simply issue the call: 
+gM( 'msg-key', 'replacement1', 'replacement2', 'etc' );
+
+Note you can pass jQuery replacements in the case of links ie: 
+gM( 'msg-key', $j('<a />').text( gM( 'link-text' ) );
+
+For full documentation see: mwEmbed/languages/mw.Language.js function: mw.getMsg
+
+
+If you want ~all~ of the msgs for your module php localization file you can simply issue
+a call mw.includeAllMsgs() near the top of your primary library code. This will 
+include be replaced with all the msgs in your php localization file for your selected language.  
+
+If your code includes many sub-modules and you want fine grain control over what msgs 
+are packaged when you can define the set of msg keys it at the top of any javascript file.
+
+You can use a list of keys: 
 
 mw.addMessegeKeys( ['list', 'of', 'msg-keys' ] );
+
+or if you are doing a lot of stand alone testing it can be faster and simpler to use a json array: 
+mw.addMesseges( { "msg-key" : "english fallback" } );
+
+Either way the set of messages will be localized by the scriptLoader once the javascript class is requested.
+
+
 

@@ -14,6 +14,7 @@ class ScriptLoaderOutputPage extends OutputPage {
 
 	// The path to the script-loader
 	static $mScriptLoaderPath = 'extensions/JS2Support/mwScriptLoader';
+
 	/**
 	 * $Script Loader Class List
 	 *

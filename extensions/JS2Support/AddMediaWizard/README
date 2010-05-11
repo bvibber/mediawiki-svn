@@ -1,3 +1,0 @@
-
-To enable add the following to localsettings.php 
-require_once( "$IP/extensions/JS2Support/AddMediaWizard/AddMediaWizard.php" );
