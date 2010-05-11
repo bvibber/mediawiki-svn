@@ -1062,6 +1062,10 @@ $j(document).ready( function() {
 							'format': 'json'
 						},
 						success: function( data ) {
+							if ( !data ) {
+								// This happens in some weird cases
+								return;
+							}
 							var status;
 							if ( typeof data.query == 'undefined' ) {
 								status = 'invalid';
