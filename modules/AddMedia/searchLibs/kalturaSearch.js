@@ -28,16 +28,12 @@ kalturaFilters.prototype = {
 		* @param Object options Set of options for the search
 		*/
 		init: function( options ) {
-
-			this.resetFilters();
-			
+			this.resetFilters();			
 			return this;
 		},
 		
-		resetFilters: function() {
-			
-			this.filterList = {};
-			
+		resetFilters: function() {			
+			this.filterList = {};			
 			this.buildFilter('media', 
 					gM( 'rsd-media-filter-title' ), {
 				movie: gM ( 'rsd-media-filter-videos' ),

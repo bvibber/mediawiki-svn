@@ -2360,7 +2360,7 @@ mw.RemoteSearchDriver.prototype = {
 			} else {
 				_this.isFileAlreadyImported( resource, myCallback );
 			}
-		}
+		}		
 	},
 
 	/**

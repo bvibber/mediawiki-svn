@@ -217,10 +217,13 @@ baseRemoteSearch.prototype = {
 			options = { };			
 				
 		// Set up the output var with the default values: 
-		if(! options.width )
+		if(! options.width ) {
 			options.width = resource.width;
-		if(! options.height )
+		}
+		
+		if(! options.height ) {
 			options.height = resource.height;
+		}
 			
 		var outHtml  = '';
 		if ( ! options['max_width'] ) {
@@ -236,53 +239,50 @@ baseRemoteSearch.prototype = {
 		if( options.width ) {
 			options.style += 'width:' + parseInt( options.width ) + 'px;';							
 		}
-				
+		// Check for image	
 		if ( resource.mime.indexOf( 'image/' ) != -1 ) {						
-			outHtml = this.getImageEmbedHTML( resource, options );
+			return this.getImageEmbedHTML( resource, options );
 		}
 			
-		if ( resource.mime == 'application/ogg' 
-			|| resource.mime == 'video/ogg' 
-			|| resource.mime == 'audio/ogg' 
-		) {
-			// Setup the attribute html 
-			// NOTE: Can't use jQuery builder for video element, ( does not work consistently ) 
-			var ahtml = ( options['id'] ) ? ' id = "' + options['id'] + '" ': '';
-			ahtml+=	'src="' +  mw.escapeQuotesHTML( resource.src ) + '" ' +			
-					// Mannualy set kskin, NOTE: should be config option
-					'class="kskin" ' +					   				
-					'style="' + options.style + '" ' +
-					'poster="' +   mw.escapeQuotesHTML( resource.poster ) + '" '+
-					'type="' +  mw.escapeQuotesHTML( resource.mime ) + '" ';
+		// Assume audio or video	
+			
+		// Setup the attribute html 
+		// NOTE: Can't use jQuery builder for video element, ( does not work consistently )			
+		var attributes = ( options['id'] ) ? ' id = "' + options['id'] + '" ': '';
+		attributes+=	'src="' +  mw.escapeQuotesHTML( resource.src ) + '" ' +			
+				// Set kskin, NOTE: should be config option
+				'class="kskin" ' +					   				
+				'style="' + options.style + '" ' +
+				'poster="' +   mw.escapeQuotesHTML( resource.poster ) + '" '+
+				'type="' +  mw.escapeQuotesHTML( resource.mime ) + '" ';
 
-			
-			// Add the api title key if available:
-			if( resource.titleKey ) {
-				ahtml+= 'apiTitleKey="' +  
-					mw.escapeQuotesHTML( resource.titleKey.replace('File:', '') ) + '" ';
-			}
-						
-			// Add the commons apiProvider if the resource is from commons	
-			// ( so that subtitles can be displayed / edited )		
-			if( resource.pSobj.provider.id == 'wiki_commons'
-				|| resource.commonsShareRepoFlag
-			){
-				ahtml+= 'apiProvider="commons" ';
-			}
-			
-			if (  resource.mime == 'application/ogg' || resource.mime == 'video/ogg'  ) {
-				outHtml = '<video ' + ahtml + '></video>';
-			}
+		
+		// Add the api title key if available:
+		if( resource.titleKey ) {
+			attributes+= 'apiTitleKey="' +  
+				mw.escapeQuotesHTML( resource.titleKey.replace('File:', '') ) + '" ';
+		}
 					
-			if ( resource.mime == 'audio/ogg' ) {
-				outHtml = '<audio ' + ahtml + '></audio>';
-			}
-		}	
-		return outHtml;
-			
+		// Add the commons apiProvider if the resource is from commons	
+		// ( so that subtitles can be displayed / edited )		
+		if( resource.pSobj.provider.id == 'wiki_commons'
+			|| resource.commonsShareRepoFlag
+		){
+			attributes+= 'apiProvider="commons" ';
+		}
+		
+		mw.log( 'baseRemoteSearch::getEmbedHTML::audio or video:' + attributes );
+		if (  resource.mime == 'application/ogg' || resource.mime == 'video/ogg'  ) {
+			return '<video ' + attributes + '></video>';
+		}
+				
+		if ( resource.mime == 'audio/ogg' ) {
+			return '<audio ' + attributes + '></audio>';
+		}
+						 
 		// No output give error: 
 		mw.log( "ERROR:: no embed code for mime type: " + resource.mime );	
-		return 'Error missing embed code for: ' + escape( resource.mime );
+		return 'Error missing embed code for: ' + escape( resource.mime );		
 	},
 	
 	/*

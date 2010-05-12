@@ -163,7 +163,7 @@ archiveOrgSearch.prototype = {
 		}else if( resource.mime == 'audio/ogg' ) {
 			embedHtml = '<audio ' + attributes + ' type="audio/ogg" ></audio>';
 		}
-		
+		mw.log("archiveOrg::getEmbedHTML::" + embedHtml );
 		return embedHtml;		
 	}
 }
