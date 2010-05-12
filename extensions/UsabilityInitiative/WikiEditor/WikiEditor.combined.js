@@ -1424,6 +1424,8 @@ $j(document).ready( function() {
 					$j( '#wikieditor-toolbar-link-type-int, #wikieditor-toolbar-link-type-ext' ).attr( 'checked', '' );
 				},
 				'wikieditor-toolbar-tool-link-cancel': function() {
+					// Clear any saved selection state
+					context.fn.restoreStuffForIE();
 					$j(this).dialog( 'close' );
 				}
 			},
@@ -1434,8 +1436,11 @@ $j(document).ready( function() {
 						.replace( /\\\$1/g, '(.*)' ) + '$'
 				) );
 				// Pre-fill the text fields based on the current selection
-				var selection = $j(this).data( 'context' )
-					.$textarea.textSelection( 'getSelection' ); 
+				var context = $j(this).data( 'context' );
+				// Restore and immediately save selection state, needed for inserting stuff later
+				context.fn.restoreStuffForIE();
+				context.fn.saveStuffForIE();
+				var selection = context.$textarea.textSelection( 'getSelection' ); 
 				$j( '#wikieditor-toolbar-link-int-target' ).focus();
 				// Trigger the change event, so the link status indicator is up to date
 				$j( '#wikieditor-toolbar-link-int-target' ).change();
@@ -1554,13 +1559,18 @@ $j(document).ready( function() {
 					$j( '#wikieditor-toolbar-reference-text' ).val( "" );
 				},
 				'wikieditor-toolbar-tool-reference-cancel': function() {
+					// Clear any saved selection state
+					context.fn.restoreStuffForIE();
 					$j( this ).dialog( 'close' );
 				}
 			},
 			open: function() {
 				// Pre-fill the text fields based on the current selection
-				var selection = $j(this).data( 'context' )
-					.$textarea.textSelection( 'getSelection' ); 
+				var context = $j(this).data( 'context' );
+				// Restore and immediately save selection state, needed for inserting stuff later
+				context.fn.restoreStuffForIE();
+				context.fn.saveStuffForIE();
+				var selection = context.$textarea.textSelection( 'getSelection' ); 
 				// set focus
 				$j( '#wikieditor-toolbar-reference-text' ).focus();
 				$j( '#wikieditor-toolbar-reference-dialog' )
