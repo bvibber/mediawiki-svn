@@ -50,9 +50,6 @@ $wgExtensionJavascriptLoader[] = 'extensions/AddMediaWizard/AddMedia/loader.js';
 // Add the javascript loader for "ClipEdit module"
 $wgExtensionJavascriptLoader[] = 'extensions/AddMediaWizard/ClipEdit/loader.js';
 
-// Add the apiProxy ( client ) so that we can upload cross domain to commons
-$wgExtensionJavascriptLoader[] = 'extensions/AddMediaWizard/ApiProxy/loader.js';
-
 class AddMediaWizard {
 	public static function addJS( $toolbar) {
 		global $wgOut;
