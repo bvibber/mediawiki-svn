@@ -1376,6 +1376,7 @@ $j(document).ready( function() {
 				},
 				'wikieditor-toolbar-tool-link-cancel': function() {
 					// Clear any saved selection state
+					var context = $j(this).data( 'context' );
 					context.fn.restoreStuffForIE();
 					$j(this).dialog( 'close' );
 				}
