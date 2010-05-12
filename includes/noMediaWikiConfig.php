@@ -170,6 +170,21 @@ class FormatJson{
 class MWException extends Exception {
 }
 
+$mweSimpleProfileTester = array();
+function wfProfileIn( $name ){
+	global $mweSimpleProfileTester;
+	$mweSimpleProfileTester[ $name ] = microtime_float();
+};
+function wfProfileOut( $name ){
+	global $mweSimpleProfileTester;
+	//print "run time for $name :: " . ( microtime_float() - $mweSimpleProfileTester[ $name ] ) . "\n";
+}
+function microtime_float()
+{
+    list($usec, $sec) = explode(" ", microtime());
+    return ((float)$usec + (float)$sec);
+}
+
 /**
  * Reference-counted warning suppression
  */

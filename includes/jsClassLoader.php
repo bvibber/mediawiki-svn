@@ -37,10 +37,15 @@ class jsClassLoader {
 			return false;
 		}
 		self::$classesLoaded = true;
+		// Start the profiler if running
+		$fname = 'jsClassLoader::loadClassPaths';
+		wfProfileIn( $fname );
+
 
 		$mwEmbedAbsolutePath = ( $wgMwEmbedDirectory == '' ) ? $IP :  $IP .'/' .$wgMwEmbedDirectory;
 		// Add the mwEmbed localizations
 		$wgExtensionMessagesFiles[ 'mwEmbed' ] = $mwEmbedAbsolutePath . '/languages/mwEmbed.i18n.php';
+
 
 		// Load javascript classes from mwEmbed.js
 		if ( !is_file( $mwEmbedAbsolutePath . '/loader.js' ) ) {
@@ -79,9 +84,11 @@ class jsClassLoader {
 		// Get all the extension loader paths registered mwEmbed modules
 		foreach( $wgExtensionJavascriptLoader as $na => $loaderPath){
 			// Setup the directory context for extensions relative to loader.js file:
-			$modulePath = str_replace('loader.js', '' , $loaderPath);
+			$modulePath = str_replace('/loader.js', '' , $loaderPath);
 			self::proccessModulePath( $modulePath );
 		}
+
+		wfProfileOut( $fname );
 	}
 	/**
 	 * Process a loader path, passes off to proccessLoaderContent
@@ -90,6 +97,7 @@ class jsClassLoader {
 	 */
 	private static function proccessModulePath( $path ){
 		global $wgExtensionMessagesFiles;
+
 		// Get the module name
 		$moduleName = end( explode('/', $path ) );
 
@@ -97,8 +105,8 @@ class jsClassLoader {
 		self::$directoryContext = $path;
 
 		// Check for the loader.js
-		if( !is_file( $path . '/loader.js' ) ){
-			throw new MWException( "Module missing loader.js in root \n" );
+		if( !is_file(  $path . '/loader.js' ) ){
+			throw new MWException( "Javascript Module $moduleName missing loader.js file\n" );
 			return false;
 		}
 
@@ -153,7 +161,7 @@ class jsClassLoader {
 	 *
 	 * @return String combined component javascript
 	 */
-	public static function getCombinedComponentJs( $scriptLoader ){
+	public static function getCombinedComponentJs( $scriptLoader ) {
 		self::loadClassPaths();
 		$jsOut = '';
 		foreach(  self::$coreComponentsList as $componentClassName ) {
@@ -188,7 +196,6 @@ class jsClassLoader {
 		self::loadClassPaths();
 		return self::$coreComponentsList;
 	}
-
 
 	/**
 	 * Build a list of components to be included with mwEmbed

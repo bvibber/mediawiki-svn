@@ -1,1 +1,1 @@
-The contents of this folder will be moved into /css per module. All modules should defer to jquery.ui for themeing with customization happening out  
+Most skin css should be stored per module

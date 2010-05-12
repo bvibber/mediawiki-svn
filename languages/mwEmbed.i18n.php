@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Localization file for mwEmbed.js
  */

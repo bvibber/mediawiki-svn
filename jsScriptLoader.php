@@ -924,12 +924,12 @@ class jsScriptLoader {
 	 * @param {String} $class Name of class to get inin-lineline messages for.
 	 * @return in-line msg javascript text or empty string if no msgs need to be localized.
 	 */
-	function getInlineMsgFromClass( $class ){
+	function getInlineMsgFromClass( $class ) {
 		$messageSet = $this->getMsgKeysFromClass( $class );
-		if( $messageSet ){
+		if( $messageSet ) {
 			self::updateMessageValues ( $messageSet , $this->langCode );
 			return 'mw.addMessages(' . FormatJson::encode( $messageSet ) . ');';
-		}else{
+		} else {
 			//if could not parse return empty string:
 			return '';
 		}
@@ -980,7 +980,6 @@ class jsScriptLoader {
 		if(!$langCode && $wgLang) {
 			$langCode = $wgLang->getCode();
 		}
-
 		// Get the msg keys for the a json array
 		foreach ( $messegeArray as $msgKey => $na ) {
 			// Language codes use dash instead of underscore internally

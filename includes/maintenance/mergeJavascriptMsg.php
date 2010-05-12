@@ -19,8 +19,6 @@ require_once( '../../jsScriptLoader.php' );
 $mwSTART_MSG_KEY = '$messages[\'en\'] = array(';
 $mwEND_MSG_KEY = ',
 );';
-$mwLangFilePath = '../../languages/mwEmbed.i18n.php';
-include_once( $mwLangFilePath );
 
 function print_help(){
 ?>
@@ -29,9 +27,8 @@ Usage:
 	-j merges javascript msgs into php
 	-p merges php msgs back into javascript
 	-q will disable screen output and wait time
-
+	--modpath [/path/to/module/folder] path to a module folder to be updated
 <?php
-die();
 }
 
 // Get options ( like override JS or override PHP )
@@ -49,11 +46,12 @@ foreach($argv as $inx => $arg){
 		$mergeToJS = true;
 	}else if( $arg == '-q'){
 		$showInfo = false;
-	}else{
+	}else if( $arg == '--modpath' ){
 		print_help();
 	}
 }
 
+die();
 
 if($showInfo){
 	if ( $mergeToPhp )
@@ -75,8 +73,9 @@ $rawLangFile = file_get_contents( $mwLangFilePath );
 $startInx = strpos( $rawLangFile, $mwSTART_MSG_KEY ) + strlen( $mwSTART_MSG_KEY );
 $endInx = strpos( $rawLangFile, $mwEND_MSG_KEY ) + 1;
 if ( $startInx === false || $endInx === false ) {
-	if($showInfo)
+	if( $showInfo ) {
 		print "Could not find $mwSTART_MSG_KEY or $mwEND_MSG_KEY in mwEmbed.i18n.php\n";
+	}
 	exit();
 }
 
