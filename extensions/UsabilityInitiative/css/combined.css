@@ -1151,6 +1151,8 @@ body.rtl .wikiEditor-ui-toolbar .page-table td {
 	color: black;
 	text-decoration: none;
 	cursor: pointer;
+	font-family: monospace;
+	font-size: 1.25em;
 }
 body.rtl .wikiEditor-ui-toolbar .page-characters > div > span,
 .wikiEditor-ui-toolbar .page-characters div[dir=rtl] span {
