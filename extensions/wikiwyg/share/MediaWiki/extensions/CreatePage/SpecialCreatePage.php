@@ -191,7 +191,7 @@ class CreatePageForm {
 		<div id=\"category_wrapper\">
 		<table id=\"editpage_table\">
 			<tr style=\"padding: 6px 0px 6px 0px\">
-				<td class=\"editpage_header\">&nbsp;</td>
+				<td class=\"editpage_header\">&#160;</td>
 				<td>".wfMsg('createpage-categories-help')."</td>
 			</tr>
 			<tr>

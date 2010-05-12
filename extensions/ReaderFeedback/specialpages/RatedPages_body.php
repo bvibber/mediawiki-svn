@@ -48,9 +48,9 @@ class RatedPages extends SpecialPage
 			array( 'name' => 'reviewedpages', 'action' => $wgScript, 'method' => 'get' ) );
 		$form .= Xml::fieldset( wfMsg( 'ratedpages-leg' ) );
 		$form .= Xml::hidden( 'title', $this->getTitle()->getPrefixedDBKey() );
-		$form .= ReaderFeedbackXML::getRatingTierMenu($this->tier) . '&nbsp;';
+		$form .= ReaderFeedbackXML::getRatingTierMenu($this->tier) . '&#160;';
 		if( count($wgFeedbackNamespaces) > 1 ) {
-			$form .= ReaderFeedbackXML::getNamespaceMenu( $this->namespace ) . '&nbsp;';
+			$form .= ReaderFeedbackXML::getNamespaceMenu( $this->namespace ) . '&#160;';
 		}
 		if( count( ReaderFeedback::getFeedbackTags() ) > 0 ) {
 			$form .= ReaderFeedbackXML::getTagMenu( $this->tag );

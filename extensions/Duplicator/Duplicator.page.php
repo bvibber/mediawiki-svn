@@ -178,10 +178,10 @@ class SpecialDuplicator extends SpecialPage {
 		$form .= '<td><label for="dest">' . wfMsgHtml( 'duplicator-dest' ) . '</label></td>';
 		$form .= '<td>' . Xml::input( 'dest', 40, $dest, array( 'id' => 'dest' ) ) . '</td>';
 		$form .= '</tr><tr>';
-		$form .= '<td>&nbsp;</td>';
+		$form .= '<td>&#160;</td>';
 		$form .= '<td>' . Xml::checkLabel( wfMsg( 'duplicator-dotalk' ), 'talk', 'talk', $this->talk ) . '</td>';
 		$form .= '</tr><tr>';
-		$form .= '<td>&nbsp;</td>';
+		$form .= '<td>&#160;</td>';
 		$form .= '<td>' . Xml::submitButton( wfMsg( 'duplicator-submit' ) ) . '</td>';
 		$form .= '</tr>';
 		$form .= '</table>';

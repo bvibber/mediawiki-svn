@@ -56,7 +56,7 @@ class SpecialPlotters extends SpecialPage {
 					$wgOut->addHTML( '</ul>' );
 					$listOpen = false;
 				}
-				$wgOut->addHTML( "\n<h2>$ttext &nbsp; &nbsp; [$lnk]</h2>\n" );
+				$wgOut->addHTML( "\n<h2>$ttext &#160; &#160; [$lnk]</h2>\n" );
 			}
 
 			foreach ( $entries as $pname => $code ) {
@@ -71,7 +71,7 @@ class SpecialPlotters extends SpecialPage {
 					$wgOut->addHTML( '<ul>' );
 				}
 				$wgOut->addHTML( "<li>" );
-				$wgOut->addHTML( "$ttext &nbsp; &nbsp; [$lnk]<br />" );
+				$wgOut->addHTML( "$ttext &#160; &#160; [$lnk]<br />" );
 
 				$wgOut->addHTML( wfMsgHTML( "plotters-uses" ) . ": " );
 

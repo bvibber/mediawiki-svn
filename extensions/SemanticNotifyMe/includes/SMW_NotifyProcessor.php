@@ -1150,7 +1150,7 @@ class SMWNotifyUpdate {
 			if ( !$property->isShown() && $property->getWikiValue() != '' ) { // showing this is not desired, hide
 				continue;
 			} elseif ( $property->isUserDefined() ) { // user defined property
-				$property->setCaption( preg_replace( '/[ ]/u', '&nbsp;', $property->getWikiValue(), 2 ) );
+				$property->setCaption( preg_replace( '/[ ]/u', '&#160;', $property->getWikiValue(), 2 ) );
 			}
 
 			$propvalues = $semdata->getPropertyValues( $property );
@@ -1283,8 +1283,8 @@ class SMWNotifyUpdate {
 				if ( $idx > 0 ) {
 					$tmp .= "<tr>";
 				}
-				$tmp .= "<td>" . ( isset( $info[del_vals][$idx] ) ? $info[del_vals][$idx][html]:"&nbsp;" ) . "</td>
-				<td>" . ( isset( $info[new_vals][$idx] ) ? $info[new_vals][$idx][html]:"&nbsp;" ) . "</td>
+				$tmp .= "<td>" . ( isset( $info[del_vals][$idx] ) ? $info[del_vals][$idx][html]:"&#160;" ) . "</td>
+				<td>" . ( isset( $info[new_vals][$idx] ) ? $info[new_vals][$idx][html]:"&#160;" ) . "</td>
 				</tr>";
 			}
 			return $tmp;

@@ -117,7 +117,7 @@ class TalkHereArticle {
 			$wgOut->addHTML( $skin->makeKnownLinkObj( $this->_talkTitle, wfMsg('talkhere-addcomment' ), $q, '', '', $a ) );
 			$wgOut->addHTML('</div>');
 
-			$wgOut->addHTML('<div id="talkhere_talkform" style="display:none;">&nbsp;</div>');
+			$wgOut->addHTML('<div id="talkhere_talkform" style="display:none;">&#160;</div>');
 			//$this->showCommentForm('new');
 		}
 
@@ -174,7 +174,7 @@ class TalkHereArticle {
 		$wgOut->addHTML('<input type="hidden" value="'.htmlspecialchars($returnto).'" name="wpReturnTo" id="wpReturnTo" />');
 		$wgOut->addHTML('<input type="hidden" value="1" name="wpTalkHere" id="wpTalkHere" />');
 
-		$wgOut->addHTML("<span id='wpSummaryLabel'><label for='wpSummary'>".wfMsg('subject')."</label>:&nbsp;</span>");
+		$wgOut->addHTML("<span id='wpSummaryLabel'><label for='wpSummary'>".wfMsg('subject')."</label>:&#160;</span>");
 		$wgOut->addHTML("<div class='editOptions'>");
 		$wgOut->addHTML("<input tabindex='1' type='text' value='' name='wpSummary' id='wpSummary' maxlength='200' size='40' /><br />");
 
@@ -225,7 +225,7 @@ class TalkHereArticle {
 			);
 			$watchOption =
 				Xml::check( 'wpWatchthis', $watchthis, $attribs ) .
-				"&nbsp;<label for='wpWatchthis'".$skin->tooltipAndAccesskey('watch').">{$watchLabel}</label>";
+				"&#160;<label for='wpWatchthis'".$skin->tooltipAndAccesskey('watch').">{$watchLabel}</label>";
 		}
 
 		$wgOut->addHTML('<input name="wpMinoredit" type="hidden" value="0" />');

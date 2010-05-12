@@ -81,7 +81,7 @@ abstract class CodeCommentLinker {
 					}
 				} else {
 					if ( $ch == '&' ) {
-						$entityState = 1; // entity found, (e.g. "&nbsp;")
+						$entityState = 1; // entity found, (e.g. "&#160;")
 					} else {
 						$displayLen++; // this char is displayed
 						// Add on the other display text after this...

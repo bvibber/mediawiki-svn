@@ -306,7 +306,7 @@ class BoardVotePage extends UnlistedSpecialPage {
 
 		global $wgUser;
 		$token = htmlspecialchars( $wgUser->editToken() );
-		$text .= "<tr><td>&nbsp;</td>
+		$text .= "<tr><td>&#160;</td>
 		  <td><input name=\"submit\" type=\"submit\" value=\"$ok\">
 		  <input type='hidden' name='edit_token' value=\"{$token}\" /></td>
 		  </tr></table></form>";
@@ -453,7 +453,7 @@ class BoardVotePage extends UnlistedSpecialPage {
 			    $hIp
 			  </th><th>
 			    $hUa
-			  </th><th>&nbsp;</th>";
+			  </th><th>&#160;</th>";
 		}
 		$s .= "</tr>";
 

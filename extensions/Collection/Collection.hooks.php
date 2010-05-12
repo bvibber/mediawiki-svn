@@ -332,7 +332,7 @@ EOS
 							'style' => 'vertical-align: text-bottom;',
 						)
 					)
-					. '&nbsp;' . wfMsgHtml( 'coll-help' ),
+					. '&#160;' . wfMsgHtml( 'coll-help' ),
 					array( 
 						'rel' => 'nofollow',
 						'title' => wfMsg( 'coll-help_tooltip' ),
@@ -413,7 +413,7 @@ EOS
 						'style' => 'vertical-align: text-bottom',
 					)
 				)
-				. '&nbsp;' . wfMsgHtml( 'coll-not_addable' )
+				. '&#160;' . wfMsgHtml( 'coll-not_addable' )
 			);
 		}
 
@@ -456,7 +456,7 @@ EOS
 					'style' => 'vertical-align: text-bottom',
 				)
 			)
-			. '&nbsp;' . wfMsgHtml( $captionMsg ),
+			. '&#160;' . wfMsgHtml( $captionMsg ),
 			array(
 				'id' => $id,
 				'rel' => 'nofollow',
@@ -485,7 +485,7 @@ EOS
 						'style' => 'vertical-align: text-bottom',
 					)
 				)
-				. '&nbsp;' . wfMsgHtml( 'coll-show_collection' )
+				. '&#160;' . wfMsgHtml( 'coll-show_collection' )
 				. ' (' . wfMsgExt( 'coll-n_pages', array( 'parsemag', 'escape' ), $numArticles ) . ')'
 			);
 		} else {
@@ -500,7 +500,7 @@ EOS
 						'style' => 'vertical-align: text-bottom',
 					)
 				)
-				. '&nbsp;' . wfMsgHtml( 'coll-show_collection' )
+				. '&#160;' . wfMsgHtml( 'coll-show_collection' )
 					. ' (' . wfMsgExt( 'coll-n_pages', array( 'parsemag', 'escape' ), $numArticles ) . ')',
 				array(
 					'rel' => 'nofollow',
@@ -532,7 +532,7 @@ EOS
 						'style' => 'vertical-align: text-bottom',
 					)
 				)
-				. '&nbsp;' . wfMsgHtml( 'coll-make_suggestions' )
+				. '&#160;' . wfMsgHtml( 'coll-make_suggestions' )
 			);
 		} else {
 			return $sk->link(
@@ -546,7 +546,7 @@ EOS
 						'style' => 'vertical-align: text-bottom',
 					)
 				)
-				. '&nbsp;' . wfMsgHtml( 'coll-make_suggestions' ),
+				. '&#160;' . wfMsgHtml( 'coll-make_suggestions' ),
 				array(
 					'rel' => 'nofollow',
 					'title' => wfMsg( 'coll-make_suggestions_tooltip' ),

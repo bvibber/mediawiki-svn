@@ -151,7 +151,7 @@ class InputBox {
 							) + $checked
 						);
 						// Label
-						$htmlOut .= '&nbsp;' . Xml::label( $userNamespace, 'mw-inputbox-ns' . $i );
+						$htmlOut .= '&#160;' . Xml::label( $userNamespace, 'mw-inputbox-ns' . $i );
 					}
 				}
 			}
@@ -168,7 +168,7 @@ class InputBox {
 					'value' => $this->mButtonLabel
 				)
 			);
-			$htmlOut .= '&nbsp;';
+			$htmlOut .= '&#160;';
 		}
 
 		// Search button

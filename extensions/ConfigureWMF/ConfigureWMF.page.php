@@ -183,7 +183,7 @@ class SpecialConfigure extends SpecialPage {
 				$r .= '<div>' . Xml::radioLabel( wfMsgHtml( 'configurewmf-stdlogo' ),
 					$var, 'stdlogo', 'wgLogoStdlogo', $isstd ) . '</div>';
 				$r .= '<div>' . Xml::radioLabel( wfMsgHtml( 'configurewmf-otherlogo' ),
-					$var, 'other', 'wgLogoOther', !$isstd ) . '&nbsp;' .
+					$var, 'other', 'wgLogoOther', !$isstd ) . '&#160;' .
 					Xml::input( "{$var}Other", false, $isstd ? '' : $val ) . '</div>';
 				break;
 			case 'groupperms':
@@ -333,7 +333,7 @@ class SpecialConfigure extends SpecialPage {
 				else
 					$bits[$i] = $skin->makeLinkObj( $wgTitle, $bits[$i][1], $bits[$i][0] );
 			$wgOut->setSubtitle( '<div id="contentSub"><span class="subpages">&lt; ' .
-				implode( '&nbsp;|&nbsp;', $bits ) . '</span></div>' );
+				implode( '&#160;|&#160;', $bits ) . '</span></div>' );
 		}
 	}
 

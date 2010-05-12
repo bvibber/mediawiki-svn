@@ -242,7 +242,7 @@ class EditSimilar {
 		global $wgOut, $wgUser, $wgScript, $wgScriptPath;
 		$wgOut->addExtensionStyle( $wgScriptPath . '/extensions/EditSimilar/EditSimilar.css' );
 		if ( $wgUser->isLoggedIn() ) {
-			$link = '<div class="editsimilar_dismiss">[<span class="plainlinks"><a href="' . $wgScript .  '?title=Special:Preferences#prefsection-4" id="editsimilar_preferences">' . wfMsg( 'editsimilar-link-disable' ) . '</a></span>]</div><div style="display:block">&nbsp;</div>';
+			$link = '<div class="editsimilar_dismiss">[<span class="plainlinks"><a href="' . $wgScript .  '?title=Special:Preferences#prefsection-4" id="editsimilar_preferences">' . wfMsg( 'editsimilar-link-disable' ) . '</a></span>]</div><div style="display:block">&#160;</div>';
 		} else {
 			$link = '';
 		}

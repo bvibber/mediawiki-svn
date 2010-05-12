@@ -1925,7 +1925,7 @@ class FlaggedRevsHooks {
 				$attribs = array( 'tabindex' => ++$tabindex, 'id' => 'wpReviewEdit' );
 				$checkboxes['reviewed'] = Xml::check( 'wpReviewEdit',
 					$wgRequest->getCheck( 'wpReviewEdit' ), $attribs ) .
-					'&nbsp;' . Xml::label( $reviewLabel, 'wpReviewEdit' );
+					'&#160;' . Xml::label( $reviewLabel, 'wpReviewEdit' );
 			}
 		}
 		return true;

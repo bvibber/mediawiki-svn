@@ -218,7 +218,7 @@ class PageTranslationHooks {
 
 		wfLoadExtensionMessages( 'PageTranslation' );
 		$legend = wfMsg( 'tpt-languages-legend' );
-		$languages = implode( '&nbsp;• ', $languages );
+		$languages = implode( '&#160;• ', $languages );
 
 		return <<<FOO
 <div class="mw-pt-languages">

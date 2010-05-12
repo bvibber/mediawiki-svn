@@ -144,7 +144,7 @@ class MwRdf {
 			$wgOut->addHTML("<option value='${outputname}'>" . wfMsg('rdf-output-' . $outputname) . "</option>");
 		}
 		$wgOut->addHTML("</select></td></tr>" .
-			"<tr><td>&nbsp;</td>" .
+			"<tr><td>&#160;</td>" .
 			"<td><input type='submit' /></td></tr></table></form>");
 	}
 

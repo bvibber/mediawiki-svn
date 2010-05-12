@@ -136,7 +136,7 @@ class Patroller extends SpecialPage {
 		$form .= '<table>';
 		$form .= '<tr><td align="right">' . Xml::submitButton( wfMsg( 'patrol-endorse' ), array( 'name' => 'wpPatrolEndorse' ) ) . '</td><td></td></tr>';
 		$form .= '<tr><td align="right">' . Xml::submitButton( wfMsg( 'patrol-revert' ), array( 'name' => 'wpPatrolRevert' ) ) . '</td>';
-		$form .= '<td>' . Xml::label( wfMsg( 'patrol-revert-reason' ), 'reason' ) . '&nbsp;';
+		$form .= '<td>' . Xml::label( wfMsg( 'patrol-revert-reason' ), 'reason' ) . '&#160;';
 		$form .= $this->revertReasonsDropdown() . ' / ' . Xml::input( 'wpPatrolRevertReason' ) . '</td></tr>';
 		$form .= '<tr><td align="right">' . Xml::submitButton( wfMsg( 'patrol-skip' ), array( 'name' => 'wpPatrolSkip' ) ) . '</td></tr></table>';
 		$form .= '<tr><td>' . Xml::check( 'wpAnother', true ) . '</td><td>' . wfMsgHtml( 'patrol-another' ) . '</td></tr>';

@@ -99,7 +99,7 @@ class SMWNotifyMe extends SpecialPage {
 				}
 
 				$html .= '<div>
-					RSS Feed : <input id="nmrss" size="80" type="text" title="RSS feed url" value="' . $this->getTitle()->getFullURL( 'feed=rss&uid=' . $user_id ) . '" />&nbsp;&nbsp;
+					RSS Feed : <input id="nmrss" size="80" type="text" title="RSS feed url" value="' . $this->getTitle()->getFullURL( 'feed=rss&uid=' . $user_id ) . '" />&#160;&#160;
 					<button class="btn" onclick="notifyhelper.copyToClipboard(\'nmrss\')" onmouseover="this.className=\'btn btnhov\'; Tip(\'' . wfMsg( 'smw_nm_tt_clipboard' ) . '\')" onmouseout="this.className=\'btn\'">' . wfMsg( 'smw_qi_clipboard' ) . '</button>
 				</div>';
 
@@ -241,11 +241,11 @@ class SMWNotifyMe extends SpecialPage {
 			}
 		}
 		$html .= '<tr id="nmtoolbar">
-					<td><a href="#" onclick="notifyhelper.delall(true)">ALL</a>/<a href="#" onclick="notifyhelper.delall(false)">NONE</a>&nbsp; <button class="btn" onclick="notifyhelper.deleteNotify()" onmouseover="this.className=\'btn btnhov\'; Tip(\'Delete the checked notifications\')" onmouseout="this.className=\'btn\'">Update</button></td>
+					<td><a href="#" onclick="notifyhelper.delall(true)">ALL</a>/<a href="#" onclick="notifyhelper.delall(false)">NONE</a>&#160; <button class="btn" onclick="notifyhelper.deleteNotify()" onmouseover="this.className=\'btn btnhov\'; Tip(\'Delete the checked notifications\')" onmouseout="this.className=\'btn\'">Update</button></td>
 					<td></td><td></td>
-					<td><a href="#" onclick="notifyhelper.reportall(true)">ALL</a>/<a href="#" onclick="notifyhelper.reportall(false)">NONE</a>&nbsp; <button class="btn" onclick="notifyhelper.updateReportAll()" onmouseover="this.className=\'btn btnhov\'; Tip(\'Report all semantic attributes\\\' change on checked notifications\')" onmouseout="this.className=\'btn\'">Update</button></td>
-					<td><a href="#" onclick="notifyhelper.showall(true)">ALL</a>/<a href="#" onclick="notifyhelper.showall(false)">NONE</a>&nbsp; <button class="btn" onclick="notifyhelper.updateShowAll()" onmouseover="this.className=\'btn btnhov\'; Tip(\'Show all query results with notifications\')" onmouseout="this.className=\'btn\'">Update</button></td>
-					<td><a href="#" onclick="notifyhelper.enableall(true)">ALL</a>/<a href="#" onclick="notifyhelper.enableall(false)">NONE</a>&nbsp; <button class="btn" onclick="notifyhelper.updateStates()" onmouseover="this.className=\'btn btnhov\'; Tip(\'Update the states of your notifications, enable or disable them\')" onmouseout="this.className=\'btn\'">Update</button></td>';
+					<td><a href="#" onclick="notifyhelper.reportall(true)">ALL</a>/<a href="#" onclick="notifyhelper.reportall(false)">NONE</a>&#160; <button class="btn" onclick="notifyhelper.updateReportAll()" onmouseover="this.className=\'btn btnhov\'; Tip(\'Report all semantic attributes\\\' change on checked notifications\')" onmouseout="this.className=\'btn\'">Update</button></td>
+					<td><a href="#" onclick="notifyhelper.showall(true)">ALL</a>/<a href="#" onclick="notifyhelper.showall(false)">NONE</a>&#160; <button class="btn" onclick="notifyhelper.updateShowAll()" onmouseover="this.className=\'btn btnhov\'; Tip(\'Show all query results with notifications\')" onmouseout="this.className=\'btn\'">Update</button></td>
+					<td><a href="#" onclick="notifyhelper.enableall(true)">ALL</a>/<a href="#" onclick="notifyhelper.enableall(false)">NONE</a>&#160; <button class="btn" onclick="notifyhelper.updateStates()" onmouseover="this.className=\'btn btnhov\'; Tip(\'Update the states of your notifications, enable or disable them\')" onmouseout="this.className=\'btn\'">Update</button></td>';
 		if ( $isSysop )
 			$html .= '<td><button class="btn" onclick="notifyhelper.updateDelegate()" onmouseover="this.className=\'btn btnhov\'; Tip(\'Update delegate\')" onmouseout="this.className=\'btn\'">Update</button></td>';
 		$html .= '</tr></table>';

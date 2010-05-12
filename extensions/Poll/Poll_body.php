@@ -62,7 +62,7 @@ class Poll extends SpecialPage {
 
 		$wgOut->addWikiMsg( 'poll-list-current' );
 		$wgOut->addHtml( Xml::openElement( 'table' ) );
-		$wgOut->addHtml( '<tr><th>'.wfMsg( 'poll-question' ).'</th><th>'.wfMsg( 'poll-dis' ).'</th><th>&nbsp;</th></tr>' );
+		$wgOut->addHtml( '<tr><th>'.wfMsg( 'poll-question' ).'</th><th>'.wfMsg( 'poll-dis' ).'</th><th>&#160;</th></tr>' );
 
 		while( $row = $dbr->fetchObject( $query ) ) {
 			$wgOut->addHtml( '<tr><td><a href="'.$this->getTitle()->getFullURL( 'action=vote&id='.$row->id ).'">'.htmlentities( $row->question, ENT_QUOTES, "UTF-8" ).'</a></td>' );

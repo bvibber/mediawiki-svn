@@ -74,7 +74,7 @@ function fnSelectCategoryShowHook( $m_isUpload = false, &$m_pageObj ) {
       # Indent subcategories
       $indention = '';
       for ($i = 0; $i < $m_depth; $i++) {
-        $indention .= '&nbsp;&nbsp;';
+        $indention .= '&#160;&#160;';
       }
 
       $m_pageObj->$m_place .= "
