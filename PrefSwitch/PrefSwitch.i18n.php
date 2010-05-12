@@ -88,9 +88,9 @@ If you would like to turn off the new features, please <span class=\"plainlinks\
 	'prefswitch-main-off' => "===Try them out!===
 If you would like to turn on the new features, please <span class=\"plainlinks\">[$1 click here]</span>.",
 	'prefswitch-survey-intro-feedback' => 'We would love to hear from you.
-Please fill out the optional survey below before clicking "[[#prefswitch-survey-submit-feedback|{{int:prefswitch-survey-submit-feedback}}]]".',
+Please fill out the optional survey below before clicking "[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]".',
 	'prefswitch-survey-intro-off' => 'Thanks for trying out our new features.
-To help us improve them, please fill out the optional survey below before clicking "[[#prefswitch-survey-submit-off|{{int:prefswitch-survey-submit-off}}]]".',
+To help us improve them, please fill out the optional survey below before clicking "[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]".',
 );
 
 /** Message documentation (Message documentation)
