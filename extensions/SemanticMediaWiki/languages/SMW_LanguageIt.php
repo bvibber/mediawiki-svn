@@ -52,9 +52,9 @@ protected $m_SpecialProperties = array(
 	//always start upper-case
 	'_TYPE'  => 'Ha tipo', //'Has type',
 	'_URI'   => 'URI equivalente', //'Equivalent URI',
-	'_SUBP' => 'Sottoproprietà di', // 'Subproperty of',
+	'_SUBP' => 'Sottopropriet&agrave; di', // 'Subproperty of',
 	'_SUBC' => 'Subcategory of', // TODO: translate
-	'_UNIT' => 'Visualizza unità',
+	'_UNIT' => 'Visualizza unit&agrave;',
 	'_IMPO' => 'Importato da', // 'Imported from',
 	'_CONV' => 'Corrisponde a ', // 'Corresponds to',
 	'_SERV' => 'Fornisce servizio', // 'Provides service',

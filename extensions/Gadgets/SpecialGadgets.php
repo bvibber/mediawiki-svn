@@ -59,7 +59,7 @@ class SpecialGadgets extends SpecialPage {
 					$lnkTarget = $t
 						? $skin->link( $t, wfMsgHTML( 'edit' ), array(), array( 'action' => 'edit' ) ) 
 						: htmlspecialchars( $section );
-					$lnk =  "&#160; &#160; [$lnkTarget]";
+					$lnk =  "&nbsp; &nbsp; [$lnkTarget]";
 				} else {
 					$lnk = '';
 				}
@@ -78,7 +78,7 @@ class SpecialGadgets extends SpecialPage {
 
 				if ( $editInterfaceAllowed ) {
 					$lnkTarget = $skin->link( $t, wfMsgHTML( 'edit' ), array(), array( 'action' => 'edit' ) );
-					$lnk =  "&#160; &#160; [$lnkTarget]";
+					$lnk =  "&nbsp; &nbsp; [$lnkTarget]";
 				} else {
 					$lnk = '';
 				}

@@ -167,7 +167,7 @@ class SpecialGlobalGroupPermissions extends SpecialPage {
 		}
 
 		$editlink = wfMsgExt( "centralauth-editgroup-editsets", array( "parseinline" ) );
-		return $select->getHTML() . "&#160;{$editlink}";
+		return $select->getHTML() . "&nbsp;{$editlink}";
 	}
 
 	function buildCheckboxes( $group ) {
@@ -197,7 +197,7 @@ class SpecialGlobalGroupPermissions extends SpecialPage {
 			$label = Xml::tags( 'label', array( 'for' => "wpRightAssigned-$right" ),
 					$desc );
 
-			$checkboxes[] = "<li>$checkbox&#160;$label</li>";
+			$checkboxes[] = "<li>$checkbox&nbsp;$label</li>";
 		}
 
 		$count = count( $checkboxes );

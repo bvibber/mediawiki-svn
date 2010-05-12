@@ -1199,12 +1199,12 @@ class FlaggedArticleView {
 						$changeList = implode( ', ', $changeList );
 						$wgOut->addHTML( "<div id='mw-fr-difftostable' class='$css'>" .
 							wfMsgExt( 'revreview-update', array( 'parseinline' ) ) .
-								'&#160;' . $changeList . $notice . '</div>' );
+								'&nbsp;' . $changeList . $notice . '</div>' );
 					} elseif ( !empty( $changeList ) ) {
 						$changeList = implode( ', ', $changeList );
 						$wgOut->addHTML( "<div id='mw-fr-difftostable' class='$css'>" .
 							wfMsgExt( 'revreview-update-includes', array( 'parseinline' ) ) .
-								'&#160;' . $changeList . $notice . '</div>' );
+								'&nbsp;' . $changeList . $notice . '</div>' );
 					}
 				}
 
@@ -1617,7 +1617,7 @@ class FlaggedArticleView {
 				$form .= "<br />"; // Don't put too much on one line
 			$form .= "<span id='mw-fr-commentbox' style='clear:both'>" .
 				Xml::inputLabel( wfMsg( 'revreview-log' ), 'wpReason', 'wpReason', 40, '',
-					array( 'class' => 'fr-comment-box' ) ) . "&#160;&#160;&#160;</span>";
+					array( 'class' => 'fr-comment-box' ) ) . "&nbsp;&nbsp;&nbsp;</span>";
 		}
 		# Add the submit buttons
 		$form .= FlaggedRevsXML::ratingSubmitButtons( $frev, (bool)$toggle, $allowRereview );

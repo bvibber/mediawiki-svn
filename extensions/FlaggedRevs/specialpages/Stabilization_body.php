@@ -330,7 +330,7 @@ class Stabilization extends UnlistedSpecialPage
 						Xml::check( 'wpReviewthis', $this->reviewThis,
 							array( 'id' => 'wpReviewthis' ) ) .
 						"<label for='wpReviewthis'>{$reviewLabel}</label>" .
-						'&#160;&#160;&#160;&#160;&#160;' .
+						'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' .
 						Xml::check( 'wpWatchthis', $watchChecked, $watchAttribs ) .
 						"<label for='wpWatchthis'" . $this->skin->tooltipAndAccesskey( 'watch' ) .
 							">{$watchLabel}</label>" .

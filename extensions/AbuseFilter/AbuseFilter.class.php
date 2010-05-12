@@ -1376,7 +1376,7 @@ class AbuseFilter {
 		if ( $addResultDiv )
 			$rules .= Xml::element( 'div',
 				array( 'id' => 'mw-abusefilter-syntaxresult', 'style' => 'display: none;' ),
-				'&#160;' );
+				'&nbsp;' );
 
 		// Add script
 		$editScript = file_get_contents( dirname( __FILE__ ) . '/edit.js' );

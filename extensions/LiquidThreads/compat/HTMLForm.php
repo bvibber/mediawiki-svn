@@ -295,7 +295,7 @@ class HTMLForm {
 					: $value->getDefault();
 				$tableHtml .= $value->getTableRow( $v );
 
-				if ( $value->getLabel() != '&#160;' )
+				if ( $value->getLabel() != '&nbsp;' )
 					$hasLeftColumn = true;
 			} elseif ( is_array( $value ) ) {
 				$section = $this->displaySection( $value );
@@ -569,12 +569,12 @@ class HTMLCheckField extends HTMLFormField {
 			$attr['disabled'] = 'disabled';
 		}
 
-		return Xml::check( $this->mName, $value, $attr ) . '&#160;' .
+		return Xml::check( $this->mName, $value, $attr ) . '&nbsp;' .
 				Xml::tags( 'label', array( 'for' => $this->mID ), $this->mLabel );
 	}
 
 	function getLabel() {
-		return '&#160;'; // In the right-hand column.
+		return '&nbsp;'; // In the right-hand column.
 	}
 
 	function loadDataFromRequest( $request ) {
@@ -734,7 +734,7 @@ class HTMLMultiSelectField extends HTMLFormField {
 					$this->mName . '[]', in_array( $info, $value ),
 					$attribs + $thisAttribs
 				);
-				$checkbox .= '&#160;' . Xml::tags( 'label', array( 'for' => $this->mID . "-$info" ), $label );
+				$checkbox .= '&nbsp;' . Xml::tags( 'label', array( 'for' => $this->mID . "-$info" ), $label );
 
 				$html .= $checkbox . '<br />';
 			}
@@ -803,7 +803,7 @@ class HTMLRadioField extends HTMLFormField {
 			} else {
 				$html .= Xml::radio( $this->mName, $info, $info == $value,
 										$attribs + array( 'id' => $this->mID . "-$info" ) );
-				$html .= '&#160;' .
+				$html .= '&nbsp;' .
 						Xml::tags( 'label', array( 'for' => $this->mID . "-$info" ), $label );
 
 				$html .= "<br />\n";

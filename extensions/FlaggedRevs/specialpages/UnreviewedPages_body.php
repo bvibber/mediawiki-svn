@@ -47,17 +47,17 @@ class UnreviewedPages extends SpecialPage
 			Xml::hidden( 'title', $this->getTitle()->getPrefixedDBKey() ) . '<p>' );
 		# Add dropdowns as needed
 		if ( count( $namespaces ) > 1 ) {
-			$wgOut->addHTML( FlaggedRevsXML::getNamespaceMenu( $namespace ) . '&#160;' );
+			$wgOut->addHTML( FlaggedRevsXML::getNamespaceMenu( $namespace ) . '&nbsp;' );
 		}
 		if ( FlaggedRevs::qualityVersions() ) {
-			$wgOut->addHTML( FlaggedRevsXML::getLevelMenu( $level, false, 1 ) . '&#160;' );
+			$wgOut->addHTML( FlaggedRevsXML::getLevelMenu( $level, false, 1 ) . '&nbsp;' );
 		}
 		$wgOut->addHTML(
 			"<span style='white-space: nowrap;'>" .
-			Xml::label( wfMsg( "unreviewed-category" ), 'category' ) . '&#160;' .
+			Xml::label( wfMsg( "unreviewed-category" ), 'category' ) . '&nbsp;' .
 			Xml::input( 'category', 30, $category, array( 'id' => 'category' ) ) .
 			'</span><br />' .
-			$showhideredirs . '&#160;&#160;' .
+			$showhideredirs . '&nbsp;&nbsp;' .
 			Xml::submitButton( wfMsg( 'allpagessubmit' ) ) . "</p>\n" .
 			"</fieldset></form>"
 		);

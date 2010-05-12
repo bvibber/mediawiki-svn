@@ -152,7 +152,7 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 					10,
 					''
 				) .
-				'&#160;' .
+				'&nbsp;' .
 				Xml::element(
 					'input',
 					array(
@@ -175,7 +175,7 @@ class AbuseFilterViewExamine extends AbuseFilterView {
 					array(
 						'id' => 'mw-abusefilter-syntaxresult',
 						'style' => 'display: none;'
-					), '&#160;'
+					), '&nbsp;'
 				)
 			);
 		}

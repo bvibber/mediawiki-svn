@@ -123,7 +123,7 @@ function wfReviewExtensionGetTopicForm ( $topic , $fullpage = false ) {
 	if ( $fullpage )
 		$ret .= "/></td>" ;
 	else
-		$ret .= '/>&#160;' ;
+		$ret .= '/>&nbsp;' ;
 	if ( $topic['range'] == 2 ) { # Yes/No
 		if ( $fullpage )
 			$ret .= "<td/><td nowrap>" ;
@@ -388,7 +388,7 @@ function wfReviewExtensionAfterToolbox( &$tpl ) {
 				</a>
 <?php
 	if ( $topic['range'] > 2 )
-		print "<small> (" . $topic['left'] . "→" . $topic['right'] . ")</small><br />" ;
+		print "<small> (" . $topic['left'] . "&rarr;" . $topic['right'] . ")</small><br />" ;
 	echo "<div id='review_sidebar_range'>" . wfReviewExtensionGetTopicForm ( $topic ) . "</div>" ;
 ?>
 <?php
@@ -610,7 +610,7 @@ function wfReviewExtensionFunction () {
 						$ret .= wfMsgForContent ( 'review_version_statistic_cell' , $data[$type]->val_value , $topic['range'] ) ;
 						$ret .= "</div>" ;
 					} else {
-						$ret .= "―" ;
+						$ret .= "&mdash;" ;
 					}
 					$ret .= "</td>" ;
 				} else {
@@ -638,7 +638,7 @@ function wfReviewExtensionFunction () {
 						}
 						$ret .= "</div>" ;
 					} else {
-						$ret .= "―" ;
+						$ret .= "&mdash;" ;
 					}
 					$ret .= "</td>" ;
 				}

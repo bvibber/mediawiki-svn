@@ -103,9 +103,9 @@ class SpecialStoryReview extends IncludableSpecialPage {
 		$segments[] = '</td></tr><tr><td align="center" height="35">';
 		$segments[] = '<button type="button">'; // TODO: figure out how to best update db info (page submit with form or onclick with ajax call?)
 		$segments[] = wfMsg('storyboard-publish');
-		$segments[] = '</button> &#160;&#160;&#160; <button type="button">';
+		$segments[] = '</button> &nbsp;&nbsp;&nbsp; <button type="button">';
 		$segments[] = wfMsg('edit');
-		$segments[] = '</button> &#160;&#160;&#160; <button type="button">';
+		$segments[] = '</button> &nbsp;&nbsp;&nbsp; <button type="button">';
 		$segments[] = wfMsg('hide');
 		$segments[] = '</button></td></tr></table></td></tr>';	
 		return $segments;

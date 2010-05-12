@@ -311,7 +311,7 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 				Xml::radio( 'wpNameChoice', 'manual', !$def, array( 'id' => 'wpNameChoiceManual' ) )
 			) .
 			Xml::tags( 'td', array( 'class' => 'mw-input' ),
-				Xml::label( wfMsg( 'openidchoosemanual' ), 'wpNameChoiceManual' ) . '&#160;' .
+				Xml::label( wfMsg( 'openidchoosemanual' ), 'wpNameChoiceManual' ) . '&nbsp;' .
 				Xml::input( 'wpNameValue', 16, false, array( 'id' => 'wpNameValue' ) )
 			) .
 			Xml::closeElement( 'tr' ) . "\n" .

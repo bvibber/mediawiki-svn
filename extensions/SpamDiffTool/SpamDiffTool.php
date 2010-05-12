@@ -223,7 +223,7 @@ preg_match_all($preg, $text, $matches);
 					$name = htmlspecialchars(str_replace(".", "%2E", $url));
 					$wgOut->addHTML("<tr>
 						<td class='spam-url-row'><b>$url</b><br />
-						" . wfMsg('spamdifftool_block') . " &#160;&#160;
+						" . wfMsg('spamdifftool_block') . " &nbsp;&nbsp;
 						<INPUT type='radio' name=\"" . $name . "\"	value='domain' checked> " . wfMsg('spamdifftool_option_domain') . "
 						<INPUT type='radio' name=\"" . $name . "\"	value='subdomain'> " . wfMsg('spamdifftool_option_subdomain') . " 
 						<INPUT type='radio' name=\"" . $name . "\"	value='dir'>" . wfMsg('spamdifftool_option_directory') . " 

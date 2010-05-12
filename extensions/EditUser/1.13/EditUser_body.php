@@ -653,14 +653,14 @@ class EditUser extends SpecialPage {
 		global $wgParser, $wgMaxSigChars;
 		if( mb_strlen( $this->mNick ) > $wgMaxSigChars ) {
 			$invalidSig = $this->tableRow(
-				'&#160;',
+				'&nbsp;',
 				Xml::element( 'span', array( 'class' => 'error' ),
 					wfMsgExt( 'badsiglength', 'parsemag', $wgLang->formatNum( $wgMaxSigChars ) ) )
 			);
 		} elseif( !empty( $this->mToggles['fancysig'] ) &&
 			false === $wgParser->validateSig( $this->mNick ) ) {
 			$invalidSig = $this->tableRow(
-				'&#160;',
+				'&nbsp;',
 				Xml::element( 'span', array( 'class' => 'error' ), wfMsg( 'badsig' ) )
 			);
 		} else {
@@ -680,7 +680,7 @@ class EditUser extends SpecialPage {
 						'maxlength' => $wgMaxSigChars ) )
 			) .
 			$invalidSig .
-			$this->tableRow( '&#160;', $this->getToggle( 'fancysig' ) )
+			$this->tableRow( '&nbsp;', $this->getToggle( 'fancysig' ) )
 		);
 
 		list( $lsLabel, $lsSelect) = Xml::languageSelector( $this->mUserLanguage );
@@ -1059,7 +1059,7 @@ class EditUser extends SpecialPage {
 		# Misc
 		#
 		$wgOut->addHTML('<fieldset><legend>' . wfMsg('prefs-misc') . '</legend>');
-		$wgOut->addHtml( '<label for="wpStubs">' . wfMsg( 'stub-threshold' ) . '</label>&#160;' );
+		$wgOut->addHtml( '<label for="wpStubs">' . wfMsg( 'stub-threshold' ) . '</label>&nbsp;' );
 		$wgOut->addHtml( Xml::input( 'wpStubs', 6, $this->mStubs, array( 'id' => 'wpStubs' ) ) );
 		$msgUnderline = htmlspecialchars( wfMsg ( 'tog-underline' ) );
 		$msgUnderlinenever = htmlspecialchars( wfMsg ( 'underline-never' ) );

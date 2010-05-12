@@ -613,7 +613,7 @@ class ExtDynamicPageList {
 		/** 
 		 * Inline text is some wiki text used to separate list items with 'mode=inline'.
 		 */
-		'inlinetext'		   => array( 'default' => '&#160;-&#160;' ),
+		'inlinetext'		   => array( 'default' => '&nbsp;-&nbsp;' ),
 		/**
 		 * Max # characters of included page to display.
 		 * Empty value (default) means no limit.
@@ -1300,7 +1300,7 @@ class ExtDynamicPageList {
 	}
 
 	public static function dplNumParserFunction( &$parser, $text = '' ) {
-		$num = str_replace( '&#160;', ' ', $text );
+		$num = str_replace( '&nbsp;', ' ', $text );
 		$num = preg_replace( '/([0-9])([.])([0-9][0-9]?[^0-9,])/', '\1,\3', $num );
 		$num = preg_replace( '/([0-9.]+),([0-9][0-9][0-9])\s*Mrd/', '\1\2 000000 ', $num );
 		$num = preg_replace( '/([0-9.]+),([0-9][0-9])\s*Mrd/', '\1\2 0000000 ', $num );
@@ -1342,13 +1342,13 @@ class ExtDynamicPageList {
 			$flip = true;
 		}
 		if ( $name == '' ) {
-			$name='&#160;';
+			$name='&nbsp;';
 		}
 		if ( $yes == '' ) {
 			$yes = ' x ';
 		}
 		if ( $no == '' ) {
-			$no = '&#160;';
+			$no = '&nbsp;';
 		}
 		if ( $no[0] == '-' ) {
 			$no = " $no ";

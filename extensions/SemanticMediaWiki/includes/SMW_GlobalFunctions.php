@@ -270,11 +270,11 @@ function smwfSetupExtension() {
 	///// credits (see "Special:Version") /////
 	$wgExtensionCredits['parserhook'][]= array(
 		'path' => __FILE__,
-		'name' => 'Semantic&#160;MediaWiki',
+		'name' => 'Semantic&nbsp;MediaWiki',
 		'version' => SMW_VERSION,
-		'author'=> "Klaus&#160;Lassleben, [http://korrekt.org Markus&#160;Krötzsch], [http://simia.net Denny&#160;Vrandecic], S&#160;Page, and others. Maintained by [http://www.aifb.kit.edu/web/Wissensmanagement/en AIFB Karlsruhe].",
+		'author'=> "Klaus&nbsp;Lassleben, [http://korrekt.org Markus&nbsp;Kr&ouml;tzsch], [http://simia.net Denny&nbsp;Vrandecic], S&nbsp;Page, and others. Maintained by [http://www.aifb.kit.edu/web/Wissensmanagement/en AIFB Karlsruhe].",
 		'url' => 'http://semantic-mediawiki.org',
-		'description' => 'Making your wiki more accessible&#160;– for machines \'\'and\'\' humans. [http://semantic-mediawiki.org/wiki/Help:User_manual View online documentation]',
+		'description' => 'Making your wiki more accessible&nbsp;&ndash; for machines \'\'and\'\' humans. [http://semantic-mediawiki.org/wiki/Help:User_manual View online documentation]',
 		'descriptionmsg' => 'smw-desc'
 	);
 

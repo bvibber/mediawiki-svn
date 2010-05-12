@@ -55,7 +55,7 @@ class FlaggedRevsXML {
 	public static function getLevelMenu(
 		$selected = null, $all = 'revreview-filter-all', $max = 2
 	) {
-		$s = "<label for='wpLevel'>" . wfMsgHtml( 'revreview-levelfilter' ) . "</label>&#160;";
+		$s = "<label for='wpLevel'>" . wfMsgHtml( 'revreview-levelfilter' ) . "</label>&nbsp;";
 		$s .= Xml::openElement( 'select', array( 'name' => 'level', 'id' => 'wpLevel' ) );
 		if ( $all !== false )
 			$s .= Xml::option( wfMsg( $all ), - 1, $selected === - 1 );
@@ -95,7 +95,7 @@ class FlaggedRevsXML {
 	 * @returns string
 	 */
 	public static function getStatusFilterMenu( $selected = null ) {
-		$s = "<label for='wpStatus'>" . wfMsgHtml( 'revreview-statusfilter' ) . "</label>&#160;";
+		$s = "<label for='wpStatus'>" . wfMsgHtml( 'revreview-statusfilter' ) . "</label>&nbsp;";
 		$s .= Xml::openElement( 'select', array( 'name' => 'status', 'id' => 'wpStatus' ) );
 		$s .= Xml::option( wfMsg( "revreview-filter-all" ), - 1, $selected === - 1 );
 		$s .= Xml::option( wfMsg( "revreview-filter-approved" ), 1, $selected === 1 );
@@ -111,7 +111,7 @@ class FlaggedRevsXML {
 	 * @returns string
 	 */
 	public static function getAutoFilterMenu( $selected = null ) {
-		$s = "<label for='wpApproved'>" . wfMsgHtml( 'revreview-typefilter' ) . "</label>&#160;";
+		$s = "<label for='wpApproved'>" . wfMsgHtml( 'revreview-typefilter' ) . "</label>&nbsp;";
 		$s .= Xml::openElement( 'select', array( 'name' => 'automatic', 'id' => 'wpApproved' ) );
 		$s .= Xml::option( wfMsg( "revreview-filter-all" ), - 1, $selected === - 1 );
 		$s .= Xml::option( wfMsg( "revreview-filter-manual" ), 0, $selected === 0 );
@@ -172,9 +172,9 @@ class FlaggedRevsXML {
 					"</td><td class='fr-value$levelmarker' valign='middle'>" .
 					$encValueText . "</td></tr>\n";
             } else {
-				$tag .= "&#160;<span class='fr-marker-$levelmarker'><strong>" .
+				$tag .= "&nbsp;<span class='fr-marker-$levelmarker'><strong>" .
 					wfMsgHtml( "revreview-$quality" ) .
-					"</strong>: <span class='fr-text-value'>$encValueText&#160;</span>&#160;" .
+					"</strong>: <span class='fr-text-value'>$encValueText&nbsp;</span>&nbsp;" .
 					"</span>\n";
 			}
 		}
@@ -360,7 +360,7 @@ class FlaggedRevsXML {
 		}
 		# Wrap visible controls in a span
 		$form = Xml::openElement( 'span', array( 'class' => 'fr-rating-options' ) ) . "\n";
-		$form .= implode( '&#160;&#160;&#160;', $items );
+		$form .= implode( '&nbsp;&nbsp;&nbsp;', $items );
 		$form .= Xml::closeElement( 'span' ) . "\n";
 		return $form;
 	}

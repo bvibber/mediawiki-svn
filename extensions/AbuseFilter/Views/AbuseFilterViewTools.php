@@ -46,7 +46,7 @@ class AbuseFilterViewTools extends AbuseFilterView {
 				'reautoconfirm-user',
 				45
 			);
-			$rac .= '&#160;';
+			$rac .= '&nbsp;';
 			$rac .= Xml::element(
 				'input',
 				array(

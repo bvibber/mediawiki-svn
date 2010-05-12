@@ -30,7 +30,7 @@ class Unstablepages extends SpecialPage
 			$form = Xml::openElement( 'form', array( 'name' => 'unstablepages',
 				'action' => $wgScript, 'method' => 'get' ) );
 			$form .= "<fieldset><legend>" . wfMsg( 'unstablepages' ) . "</legend>\n";
-			$form .= FlaggedRevsXML::getNamespaceMenu( $this->namespace ) . '&#160;';
+			$form .= FlaggedRevsXML::getNamespaceMenu( $this->namespace ) . '&nbsp;';
 			$form .= " " . Xml::submitButton( wfMsg( 'go' ) );
 			$form .= Xml::hidden( 'title', $this->getTitle()->getPrefixedDBKey() );
 			$form .= "</fieldset></form>\n";

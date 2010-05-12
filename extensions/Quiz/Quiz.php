@@ -242,7 +242,7 @@ class Quiz {
 	    $settings = array_fill(0, 4, "");
 		if(!$this->mDisplaySimple) {
 		 	$settings[0] .=	"<td>".wfMsgHtml( 'quiz_addedPoints', $this->mAddedPoints ).":</td>" .
-							"<td><input class=\"numerical\" type=\"text\" name=\"addedPoints\" value=\"$this->mAddedPoints\"/>&#160;&#160;</td>";
+							"<td><input class=\"numerical\" type=\"text\" name=\"addedPoints\" value=\"$this->mAddedPoints\"/>&nbsp;&nbsp;</td>";
 			$settings[1] .=	"<td>".wfMsgHtml('quiz_cutoffPoints', $this->mCutoffPoints ).":</td>" .
 							"<td><input class=\"numerical\" type=\"text\" name=\"cutoffPoints\" value=\"$this->mCutoffPoints\"/></td>";
 			$bChecked = ($this->mIgnoringCoef)? "checked=\"checked\"" : "";

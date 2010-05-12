@@ -105,7 +105,7 @@ class SMWNumberValue extends SMWDataValue {
 			if ( $unit != $this->m_unitin ) {
 				$tooltip .= $sep . smwfNumberFormat($value);
 				if ($unit != '') {
-					$tooltip .= '&#160;' . $unit;
+					$tooltip .= '&nbsp;' . $unit;
 				}
 				$sep = ' <br />';
 				$i++;
@@ -142,7 +142,7 @@ class SMWNumberValue extends SMWDataValue {
 				}
 				$result .= ($this->m_outformat != '-'?smwfNumberFormat($value):$value);
 				if ($unit != '') {
-					$result .= '&#160;' . $unit;
+					$result .= '&nbsp;' . $unit;
 				}
 				$i++;
 				if ($this->m_outformat == '-') { // no further conversions for plain output format
@@ -275,7 +275,7 @@ class SMWNumberValue extends SMWDataValue {
 		$this->convertToMainUnit();
 		$this->m_caption = ($this->m_outformat != '-'?smwfNumberFormat($this->m_value):$this->m_value);
 		if ($this->m_unit != '') {
-			$this->m_caption .= '&#160;' . $this->m_unit;
+			$this->m_caption .= '&nbsp;' . $this->m_unit;
 		}
 		$this->m_wikivalue = $this->m_caption;
 		$this->m_unitin = $this->m_unit;

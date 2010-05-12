@@ -120,7 +120,7 @@ function charInsertJsString( $text ) {
 }
 
 function charInsertDisplay( $text ) {
-	static $invisibles = array(     '&#160;',     '&#160;' );
+	static $invisibles = array(     '&nbsp;',     '&#160;' );
 	static $visibles   = array( '&amp;nbsp;', '&amp;#160;' );
 	return Sanitizer::decodeCharReferences(
 			str_replace( $invisibles, $visibles, $text ) );

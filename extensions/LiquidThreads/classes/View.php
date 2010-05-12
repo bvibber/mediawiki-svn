@@ -1246,7 +1246,7 @@ class LqtView {
 		$html .= implode( ' ', $headerParts );
 
 		$html = Xml::tags( 'ul', array( 'class' => 'lqt-thread-toolbar-commands' ), $html );
-		$html .= Xml::tags( 'div', array( 'style' => 'clear: both; height: 0;' ), '&#160;' );
+		$html .= Xml::tags( 'div', array( 'style' => 'clear: both; height: 0;' ), '&nbsp;' );
 
 		$html = Xml::tags( 'div', array( 'class' => 'lqt-thread-toolbar' ), $html ) .
 				$menuHTML;
@@ -1279,10 +1279,10 @@ class LqtView {
 		if ( isset( $command['icon'] ) ) {
 			global $wgScriptPath;
 			$icon = Xml::tags( 'div', array( 'title' => $label,
-					'class' => 'lqt-command-icon' ), '&#160;' );
+					'class' => 'lqt-command-icon' ), '&nbsp;' );
 			if ( $icon_divs ) {
 				if ( !empty( $command['showlabel'] ) ) {
-					$label = $icon . '&#160;' . $label;
+					$label = $icon . '&nbsp;' . $label;
 				} else {
 					$label = $icon;
 				}
@@ -1649,7 +1649,7 @@ class LqtView {
 		$repliesClass = 'lqt-thread-replies lqt-thread-replies-' .
 					$this->threadNestingLevel;
 		$div = Xml::openElement( 'div', array( 'class' => $repliesClass ) );
-		$sep = Xml::tags( 'div', array( 'class' => 'lqt-post-sep' ), '&#160;' );
+		$sep = Xml::tags( 'div', array( 'class' => 'lqt-post-sep' ), '&nbsp;' );
 
 		$subthreadCount = count( $thread->subthreads() );
 		$i = 0;
@@ -1709,7 +1709,7 @@ class LqtView {
 			Xml::tags(
 				'div',
 				array( 'class' => 'lqt-replies-finish-corner' ),
-				'&#160;'
+				'&nbsp;'
 			)
 		);
 
@@ -1863,11 +1863,11 @@ class LqtView {
 
 			if ( $levelNum < $totalInLevel ) {
 				$this->output->addHTML(
-					Xml::tags( 'div', array( 'class' => 'lqt-post-sep' ), '&#160;' ) );
+					Xml::tags( 'div', array( 'class' => 'lqt-post-sep' ), '&nbsp;' ) );
 			}
 		} elseif ( $levelNum < $totalInLevel ) {
 			$this->output->addHTML(
-				Xml::tags( 'div', array( 'class' => 'lqt-post-sep' ), '&#160;' ) );
+				Xml::tags( 'div', array( 'class' => 'lqt-post-sep' ), '&nbsp;' ) );
 
 			if ( $replyTo ) {
 				$class = 'lqt-thread-replies lqt-thread-replies-' .
@@ -1884,7 +1884,7 @@ class LqtView {
 						Xml::tags( 'div',
 							array( 'class' =>
 								'lqt-replies-finish-corner'
-							), '&#160;' ) );
+							), '&nbsp;' ) );
 				// Layout plus close div.lqt-thread-replies
 
 				$finishHTML = Xml::closeElement( 'div' ); // lqt-reply-form
@@ -1899,7 +1899,7 @@ class LqtView {
 				$this->showReplyBox( $thread );
 				$finishDiv = '';
 				$finishDiv .= Xml::tags( 'div', array( 'class' => 'lqt-replies-finish' ),
-					Xml::tags( 'div', array( 'class' => 'lqt-replies-finish-corner' ), '&#160;' ) );
+					Xml::tags( 'div', array( 'class' => 'lqt-replies-finish-corner' ), '&nbsp;' ) );
 
 				$this->output->addHTML( $finishDiv );
 			}
@@ -1925,7 +1925,7 @@ class LqtView {
 
 		$sk = $this->user->getSkin();
 		$html = '';
-		$html .= Xml::tags( 'div', array( 'class' => 'lqt-post-sep' ), '&#160;' );
+		$html .= Xml::tags( 'div', array( 'class' => 'lqt-post-sep' ), '&nbsp;' );
 
 		$text = wfMsgExt( 'lqt-add-reply', 'parseinline' );
 		$link = $this->talkpageLink( $this->title, $text, 'reply', $thread,

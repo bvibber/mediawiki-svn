@@ -148,7 +148,7 @@ class neighbors {
 			$out .= "<td>$dx$d km</td>";
 		}
 		return "$out<td>{$pos['octant']}</td><td>bearing "
-		       . round($pos['heading']) . "° towards "
+		       . round($pos['heading']) . "&deg; towards "
 		       . $this->p->make_position($pos['lat'],$pos['lon'])
 		       . "</td></tr>\r\n";
 	}

@@ -30,7 +30,7 @@ class SecurePoll_ChooseBallot extends SecurePoll_Ballot {
 			$s .= 
 				'<div class="securepoll-option-choose">' .
 				Xml::radio( $name, $optionId, false, array( 'id' => $radioId ) ) .
-				'&#160;' .
+				'&nbsp;' .
 				Xml::tags( 'label', array( 'for' => $radioId ), $optionHTML ) .
 				"</div>\n";
 		}

@@ -33,13 +33,13 @@ class StablePages extends SpecialPage
 		}
 		if ( FlaggedRevs::qualityVersions() ) {
 			$fields[] = Xml::label( wfMsg( 'stablepages-precedence' ), 'wpPrecedence' ) .
-				'&#160;' . FlaggedRevsXML::getPrecedenceMenu( $this->precedence );
+				'&nbsp;' . FlaggedRevsXML::getPrecedenceMenu( $this->precedence );
 		}
 		if ( count( $fields ) ) {
 			$form = Xml::openElement( 'form', array( 'name' => 'stablepages',
 				'action' => $wgScript, 'method' => 'get' ) );
 			$form .= "<fieldset><legend>" . wfMsg( 'stablepages' ) . "</legend>\n";
-			$form .= implode( '&#160;', $fields ) . '&nbsp';
+			$form .= implode( '&nbsp;', $fields ) . '&nbsp';
 			$form .= " " . Xml::submitButton( wfMsg( 'go' ) );
 			$form .= Xml::hidden( 'title', $this->getTitle()->getPrefixedDBKey() );
 			$form .= "</fieldset>\n";

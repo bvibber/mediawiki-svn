@@ -93,7 +93,7 @@ class ViewGift extends UnlistedSpecialPage {
 						if ( $gift['user_name_to'] == $wgUser->getName() ) {
 							$output .= '&nbsp';
 							$output .= wfMsgExt( 'pipe-separator' , 'escapenoentities' );
-							$output .= '&#160;';
+							$output .= '&nbsp;';
 							$output .= '<a href="' . $remove_gift_link->escapeFullURL( 'gift_id=' . $gift['id'] ) . '">' . wfMsg( 'g-remove-gift' ) . '</a>';
 						}
 					$output .= '</div>

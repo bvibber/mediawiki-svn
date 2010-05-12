@@ -364,7 +364,7 @@ END;
 			$or_values[] = '_other';
 		$or_values[] = '_none';
 		foreach ($or_values as $i => $value) {
-			if ($i > 0) { $results_line .= " · "; }
+			if ($i > 0) { $results_line .= " &middot; "; }
 			$filter_text = $this->printFilterValue($af->filter, $value);
 			$applied_filters = $this->applied_filters;
 			foreach ($applied_filters as $af2) {
@@ -424,7 +424,7 @@ END;
 		// now print the values
 		$num_printed_values = 0;
 		foreach ($filter_values as $value_str => $num_results) {
-			if ($num_printed_values++ > 0) { $results_line .= " · "; }
+			if ($num_printed_values++ > 0) { $results_line .= " &middot; "; }
 			$filter_text = $this->printFilterValue($f, $value_str);
 			$filter_text .= " ($num_results)";
 			$filter_url = $cur_url . urlencode(str_replace(' ', '_', $f->name)) . '=' . urlencode(str_replace(' ', '_', $value_str));
@@ -750,7 +750,7 @@ END;
 
 			foreach ($subcat_values as $subcat => $num_results) {
 				if ($num_results > 0) {
-					if ($num_printed_values++ > 0) { $results_line .= " · "; }
+					if ($num_printed_values++ > 0) { $results_line .= " &middot; "; }
 					$filter_text = str_replace('_', ' ', $subcat) . " ($num_results)";
 					$filter_url = $cur_url . '_subcat=' . urlencode($subcat);
 					if ($sdgFiltersSmallestFontSize > 0 && $sdgFiltersLargestFontSize > 0) {

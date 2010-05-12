@@ -137,7 +137,7 @@ function wfGadgetsGetPreferences( $user, &$preferences ) {
 	$preferences['gadgets-intro'] =
 		array(
 			'type' => 'info',
-			'label' => '&#160;',
+			'label' => '&nbsp;',
 			'default' => Xml::tags( 'tr', array(),
 				Xml::tags( 'td', array( 'colspan' => 2 ),
 					wfMsgExt( 'gadgets-prefstext', 'parse' ) ) ),
@@ -151,7 +151,7 @@ function wfGadgetsGetPreferences( $user, &$preferences ) {
 			'type' => 'multiselect',
 			'options' => $options,
 			'section' => 'gadgets',
-			'label' => '&#160;',
+			'label' => '&nbsp;',
 			'prefix' => 'gadget-',
 		);
 		

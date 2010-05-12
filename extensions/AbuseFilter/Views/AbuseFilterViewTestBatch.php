@@ -31,7 +31,7 @@ class AbuseFilterViewTestBatch extends AbuseFilterView {
 				10,
 				''
 			) .
-			'&#160;' .
+			'&nbsp;' .
 			Xml::element(
 				'input',
 				array(

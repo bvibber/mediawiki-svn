@@ -154,7 +154,7 @@ function WikiwygEditTagCloud ($epage) {
 			<td id=\"editpage_summary_td\"></td>
 		</tr>
 		<tr style=\"padding: 6px 0px 6px 0px\">
-			<td class=\"editpage_header\">&#160;</td>
+			<td class=\"editpage_header\">&nbsp;</td>
 			<td>".wfMsg('createpage-categories-help')."</td>
 		</tr>
 		<tr>

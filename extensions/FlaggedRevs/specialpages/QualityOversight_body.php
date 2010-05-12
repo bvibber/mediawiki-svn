@@ -68,16 +68,16 @@ class QualityOversight extends SpecialPage
 				'action' => $wgScript, 'method' => 'get' ) ) .
 			'<fieldset><legend>' . wfMsgHtml( 'qualityoversight-legend' ) . '</legend><p>' .
 			Xml::hidden( 'title', $this->getTitle()->getPrefixedDBKey() ) .
-			FlaggedRevsXML::getNamespaceMenu( $this->namespace ) . '&#160;' .
+			FlaggedRevsXML::getNamespaceMenu( $this->namespace ) . '&nbsp;' .
 			( FlaggedRevs::qualityVersions()
 				? FlaggedRevsXML::getLevelMenu( $this->level, 'revreview-filter-all', 1 ) .
-					'&#160;'
+					'&nbsp;'
 				: ""
 			) .
 			Xml::inputLabel( wfMsg( 'specialloguserlabel' ), 'user', 'user', 20, $this->user ) .
 				'<br />' .
-			FlaggedRevsXML::getStatusFilterMenu( $this->status ) . '&#160;' .
-			FlaggedRevsXML::getAutoFilterMenu( $this->automatic ) . '&#160;' .
+			FlaggedRevsXML::getStatusFilterMenu( $this->status ) . '&nbsp;' .
+			FlaggedRevsXML::getAutoFilterMenu( $this->automatic ) . '&nbsp;' .
 			Xml::submitButton( wfMsg( 'go' ) ) .
 			'</p></fieldset>' . Xml::closeElement( 'form' )
 		);

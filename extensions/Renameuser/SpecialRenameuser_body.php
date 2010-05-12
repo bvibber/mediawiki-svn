@@ -98,7 +98,7 @@ class SpecialRenameuser extends SpecialPage {
 		if( $wgUser->isAllowed( 'move' ) ) {
 			$wgOut->addHTML( "
 				<tr>
-					<td>&#160;
+					<td>&nbsp;
 					</td>
 					<td class='mw-input'>" .
 						Xml::checkLabel( wfMsg( 'renameusermove' ), 'movepages', 'movepages', 
@@ -125,7 +125,7 @@ class SpecialRenameuser extends SpecialPage {
 			);
 			$wgOut->addHTML( "
 				<tr>
-					<td>&#160;
+					<td>&nbsp;
 					</td>
 					<td class='mw-input'>" .
 						Xml::checkLabel( wfMsg( 'renameuserconfirm' ), 'confirmaction', 'confirmaction', 
@@ -136,7 +136,7 @@ class SpecialRenameuser extends SpecialPage {
 		}
 		$wgOut->addHTML( "
 			<tr>
-				<td>&#160;
+				<td>&nbsp;
 				</td>
 				<td class='mw-submit'>" .
 					Xml::submitButton( wfMsg( 'renameusersubmit' ), array( 'name' => 'submit', 

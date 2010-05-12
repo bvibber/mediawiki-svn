@@ -181,7 +181,7 @@ class SpecialTranslations extends SpecialAllpages {
 
 			$tools['history'] = $sk->link(
 				$t,
-				"&#160;<sup>h</sup>&#160;",
+				"&nbsp;<sup>h</sup>&nbsp;",
 				array( 'action' ),
 				array( 'action' => 'history' )
 			);

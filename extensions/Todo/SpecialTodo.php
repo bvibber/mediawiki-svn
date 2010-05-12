@@ -315,7 +315,7 @@ class TodoItem {
 			'id' => "mwTodoTitle$id",
 			'ondblclick' => "todoEditTitle($id,true)" ) ) .
 			htmlspecialchars( $this->title ) .
-			"&#160;</div>\n" );
+			"&nbsp;</div>\n" );
 
 		$wgOut->addHTML( $this->buildHiddenForm( 'title', $this->title, 1 ) );
 
@@ -326,7 +326,7 @@ class TodoItem {
 			'id' => "mwTodoComment$id",
 			'ondblclick' => "todoEditComment($id,true)" ) ) );
 		$wgOut->addWikiText( $this->comment );
-		$wgOut->addHTML( "&#160;</div>" );
+		$wgOut->addHTML( "&nbsp;</div>" );
 
 		$wgOut->addHTML( $this->buildHiddenForm( 'comment', $this->comment, 6 ) );
 
