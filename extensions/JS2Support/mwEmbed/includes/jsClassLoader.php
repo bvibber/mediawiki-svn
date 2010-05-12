@@ -1,1 +1,0 @@
-/var/www/mwEmbedStandAlone/includes/jsClassLoader.php

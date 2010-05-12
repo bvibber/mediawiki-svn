@@ -1,1 +1,0 @@
-/var/www/mwEmbedStandAlone/languages/mwEmbed.i18n.php
