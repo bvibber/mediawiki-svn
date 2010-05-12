@@ -23,22 +23,18 @@ body.rtl .wikiEditor-ui-toolbar .sections {
 	background-color: #E0EEf7;
 }
 .wikiEditor-ui-toolbar {
-	background-image: url(../images/wikiEditor/toolbar/base.png);
+	background-image: url(../images/wikiEditor/toolbar/base.png?1);
 	background-position: left top;
 	background-repeat: repeat-x;
 }
 /*
 .wikiEditor-ui-toolbar .toolbar {
-	background-image: url(../images/wikiEditor/toolbar/base.png);
+	background-image: url(../images/wikiEditor/toolbar/base.png?1);
 	background-position: left top;
 }
 */
 body.rtl .wikiEditor-ui-toolbar .sections .section {
 	float: right;
-}
-.wikiEditor-ui-toolbar .sections .loading {
-	padding-top: 0.5em;
-	padding-bottom: 0.5em;
 }
 /* Gets overridden when the section div is in class loading - see below */
 .wikiEditor-ui-toolbar .sections div .spinner {
@@ -46,12 +42,12 @@ body.rtl .wikiEditor-ui-toolbar .sections .section {
 }
 .wikiEditor-ui-toolbar .sections .loading .spinner {
 	display: block;
-	background-image: url(../images/wikiEditor/toolbar/loading.gif);
+	background-image: url(../images/wikiEditor/toolbar/loading.gif?1);
 	background-position: left center;
 	background-repeat: no-repeat;
 	padding-left: 32px;
-	margin-left: 1em;
-	height: 22px;
+	margin-left: 0.5em;
+	height: 32px;
 	float: left;
 	color: #666666;
 }
@@ -60,7 +56,7 @@ body.rtl .wikiEditor-ui-toolbar .sections .loading .spinner {
 	padding-left: 0;
 	padding-right: 32px;
 	margin-left: 0;
-	margin-right: 1em;
+	margin-right: 0.5em;
 	float: right;
 }
 /* Top Level Containers */
@@ -145,7 +141,7 @@ body.rtl .wikiEditor-ui-toolbar .tabs > span.tab {
 	height: 26px;
 	cursor: pointer;
 	color: #0645ad;
-	background-image: url(../images/wikiEditor/toolbar/arrow-right.png);
+	background-image: url(../images/wikiEditor/toolbar/arrow-right.png?1);
 	background-position: left center;
 	background-repeat: no-repeat;
 }
@@ -153,7 +149,7 @@ body.rtl .wikiEditor-ui-toolbar .tabs span.tab a,
 body.rtl .wikiEditor-ui-toolbar .tabs span.tab a:visited {
 	padding-left: 12px;
 	padding-right: 18px;
-	background-image: url(../images/wikiEditor/toolbar/arrow-left.png);
+	background-image: url(../images/wikiEditor/toolbar/arrow-left.png?1);
 	background-position: right center;
 }
 /* IGNORED BY IE6 */
@@ -164,14 +160,17 @@ body.rtl .wikiEditor-ui-toolbar .tabs > pan.tab > a:visited {
 .wikiEditor-ui-toolbar .tabs span.tab a.current,
 .wikiEditor-ui-toolbar .tabs span.tab a.current:visited {
 	color: #333333;
-	background-image: url(../images/wikiEditor/toolbar/arrow-down.png);
+	background-image: url(../images/wikiEditor/toolbar/arrow-down.png?1);
 }
 body.rtl .wikiEditor-ui-toolbar .tabs span.tab a.current,
 body.rtl .wikiEditor-ui-toolbar .tabs span.tab a.current:visited {
-	background-image: url(../images/wikiEditor/toolbar/arrow-down.png);
+	background-image: url(../images/wikiEditor/toolbar/arrow-down.png?1);
 }
 .wikiEditor-ui-toolbar .tabs span.tab a.current:hover {
 	text-decoration: none;
+}
+.wikiEditor-ui-toolbar .tabs span.tab a.loading {
+	background-image: url(../images/wikiEditor/toolbar/loading-small.gif?1) !important;
 }
 /* Toolbar */
 .wikiEditor-ui-toolbar .group .label {
@@ -219,7 +218,7 @@ body.rtl .wikiEditor-ui-toolbar .group > .tool-select {
 	float: right;
 }
 .wikiEditor-ui-toolbar .group .tool-select .label {
-	background-image: url(../images/wikiEditor/toolbar/arrow-down.png);
+	background-image: url(../images/wikiEditor/toolbar/arrow-down.png?1);
 	background-position: center right;
 	background-repeat: no-repeat;
 	padding: 0;

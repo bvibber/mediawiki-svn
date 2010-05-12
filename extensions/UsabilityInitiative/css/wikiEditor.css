@@ -25,7 +25,7 @@ form#editform {
 	position: relative;
 	clear: both;
 	width: 100%;
-	background-color: #f3f3f3;
+	background-color: #E0EEf7;
 	border: solid silver 1px;
 }
 body.rtl .wikiEditor-ui {
