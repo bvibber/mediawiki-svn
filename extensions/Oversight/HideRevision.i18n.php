@@ -3169,7 +3169,8 @@ Liberar tais dados poderá resultar na perda em definitivo dos privilégios de S
  * @author AlimanRuna
  */
 $messages['qu'] = array(
-	'right-hiderevision' => 'Kamachiqkunamanta musuqchasqakunata pakay',
+	'right-oversight' => 'Ñawpaqta pakasqa musuqchasqata qhaway - Extension:Oversight',
+	'right-hiderevision' => 'Kamachiqkunamanta musuqchasqakunata pakay - Extension:Oversight',
 	'oversight-difference' => "(ñawpaqllan kakuqraq llamk'apusqamanta wakin kay)",
 	'oversight-prev' => "Kay p'anqap kunan kachkayninpa ñawpaqllan llamk'apusqa",
 	'oversight-hidden' => "Pakasqa llamk'apusqa",

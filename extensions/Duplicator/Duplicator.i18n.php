@@ -1287,6 +1287,7 @@ $messages['ps'] = array(
 
 /** Portuguese (Português)
  * @author 555
+ * @author Hamilton Abreu
  * @author Lijealso
  * @author Malafaya
  */
@@ -1304,8 +1305,9 @@ $messages['pt'] = array(
 	'duplicator-success' => "<big>'''[[$1]] foi copiada para [[$2]].'''</big>",
 	'duplicator-success-revisions' => '$1 {{PLURAL:$1|revisão foi copiada|revisões foram copiadas}}.',
 	'duplicator-success-talkcopied' => 'A página de discussão foi também copiada.',
-	'duplicator-success-talknotcopied' => 'A página de discussão não pôde ser copiada.',
-	'duplicator-failed' => 'A página não pôde ser duplicada. Ocorreu um erro desconhecido.',
+	'duplicator-success-talknotcopied' => 'Não foi possível copiar a página de discussão.',
+	'duplicator-failed' => 'Não foi possível duplicar a página.
+Ocorreu um erro desconhecido.',
 	'duplicator-source-invalid' => 'Por favor, forneça um título fonte válido.',
 	'duplicator-source-notexist' => '[[$1]] não existe. Por favor, forneça o título de uma página que exista.',
 	'duplicator-dest-invalid' => 'Por favor, forneça um título de destino válido.',

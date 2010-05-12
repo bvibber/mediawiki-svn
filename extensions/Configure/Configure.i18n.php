@@ -7821,7 +7821,7 @@ Por favor, crie-a e aplique configure.sql, ou corrija o nome.',
 	'configure-directory-not-writable' => 'O directório usado para armazenar a configuração, <tt>$1</tt>, não permite escrita.
 Para usar esta extensão torne possível a sua escrita pelo PHP, por favor.',
 	'configure-edit-old' => "'''Atenção''': está a editar uma versão <strong>antiga</strong> da configuração (tal como se encontrava em $1).",
-	'configure-error' => 'A configuração não pôde ser gravada',
+	'configure-error' => 'Não foi possível gravar a configuração',
 	'configure-js-add' => 'Adicionar uma nova entrada',
 	'configure-js-group-exists' => 'Erro: o grupo já existe.',
 	'configure-js-prompt-group' => 'Introduza o nome do novo grupo:',

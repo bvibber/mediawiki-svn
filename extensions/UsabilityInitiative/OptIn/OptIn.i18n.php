@@ -648,9 +648,9 @@ $messages['br'] = array(
 	'optin-title-justoptedin' => 'Degemer mat war Beta',
 	'optin-title-justoptedout' => "Trugarez deoc'h da amprouiñ ar Beta",
 	'optin-title-feedback' => 'Roit ho soñj war ar Beta',
-	'optin-needlogin' => "Ret eo deoc'h bezañ [$1 luget] evit ober gant Beta.",
+	'optin-needlogin' => "Ret eo deoc'h bezañ [$1 kevreet] evit ober gant Beta.",
 	'optin-intro' => "Labouret start ez eus bet gant Intrudu Implijadusted Wikipedia evit gwellaat implijadusted raktresoù Wikimedia.
-Hag esaeañ Beta a fell deoc'h ober ?",
+Hag amprouiñ Beta a fell deoc'h ober ?",
 	'optin-feedback-intro' => "Trugarez deoc'h da amprouiñ Beta.
 Ni a garfe gouzout petra a soñjit diwar-benn an etrefas nevez, setu e vefemp laouen ma restpontfec'h d'ar goulennoù dindan.",
 	'optin-feedback-back' => "Ma ne fell ket deoc'h leuniañ ar roll goulennoù, e c'hallit distreiñ da $1.",
@@ -662,7 +662,7 @@ Tu zo deoc'h e amprouiñ en-dro en ur glikañ war al liamm \"{{int:optin-try}}\"
 	'optin-success-feedback' => 'Trugarez evit bezañ roet ho soñj !',
 	'optin-accept-short' => "Bec'h de'i",
 	'optin-accept-long' => 'Amprouiñ Beta',
-	'optin-accept-long-anon' => 'Emlugit ha grit un taol-esae gant Beta',
+	'optin-accept-long-anon' => 'Kevreit ha grit un taol-esae gant Beta',
 	'optin-deny-short' => 'Ket, trugarez',
 	'optin-deny-long' => "Distreiñ d'ar bajenn gent",
 	'optin-submit-out' => 'Dilezel Beta',
@@ -671,7 +671,7 @@ Tu zo deoc'h e amprouiñ en-dro en ur glikañ war al liamm \"{{int:optin-try}}\"
 	'optin-survey-no' => 'Ket',
 	'optin-survey-intro' => 'Trugarez da amprouiñ ar Beta.
 Ni a garfe gouzout petra a soñjit diwar-benn an etrefas nevez, setu e vefemp laouen ma respontfec\'h d\'ar goulennoù dindan a-raok klikañ war "[[#leave|{{int:optin-submit-out}}]]".',
-	'optin-survey-question-likedislike' => "Petra en deus plijet deoc'h er Beta ? Petra n'eus displijet deoc'h ?",
+	'optin-survey-question-likedislike' => "Petra zo plijet deoc'h er Beta ? Petra en deus displijet deoc'h ?",
 	'optin-survey-question-whyoptout' => "Perak e fell deoc'h dilezel ar Beta ? (dibabit kement tra a glot gant ho soñj)",
 	'optin-survey-answer-whyoptout-hard' => 'Start e oa da embreger.',
 	'optin-survey-answer-whyoptout-didntwork' => "Ne'z ae ket plaen en-dro.",
@@ -684,7 +684,7 @@ Ni a garfe gouzout petra a soñjit diwar-benn an etrefas nevez, setu e vefemp la
 	'optin-survey-question-techfail' => "Ha kudennoù teknikel hoc'h eus bet en ur implijout ar Beta ?",
 	'optin-survey-question-techfail-ifyes' => "Mard eo ya, displegit pelloc'h, mar plij :",
 	'optin-survey-question-usedtoolbar' => "Hag implijet hoc'h eus ar varrenn ostilhoù pak-dispak nevez da zegas kemmoù war ur bajenn ?",
-	'optin-survey-question-usedtoolbar-ifyes' => "Mard eo ya ar respont, petra en deus plijet deoc'h ? Ha petra n'en deus ket plijet deoc'h ?",
+	'optin-survey-question-usedtoolbar-ifyes' => "Mard eo ya ar respont, petra zo plijet deoc'h ? Ha petra n'en deus ket plijet deoc'h ?",
 	'optin-survey-question-usedtoolbar-ifno' => "Ma n'oc'h ket bet plijet, perak ? Hag implijout a reot anezhañ en dazont ? Displegit un tamm mar plij.",
 	'optin-survey-question-different' => "Petra hor befe ranket ober mod all, deoc'h da chom gant ar Beta ?",
 	'optin-survey-question-feedback' => "Kasit deomp hoc'h alioù, pep evezhiadenn zo dedennus da gaout :",
@@ -692,19 +692,19 @@ Ni a garfe gouzout petra a soñjit diwar-benn an etrefas nevez, setu e vefemp la
 	'optin-survey-answer-browser-other' => 'Merdeer all :',
 	'optin-survey-question-os' => 'Peseurt reizhiad korvoiñ a rit gantañ ?',
 	'optin-survey-answer-os-other' => 'Reizhiad korvoiñ all :',
-	'optin-survey-question-res' => 'Petra eo spisder ho skramm ?',
+	'optin-survey-question-res' => 'Petra eo pizhder ho skramm ?',
 	'optin-survey-question-changes' => "Peseurt kemmoù a garfec'h gwelet er Beta en dazont (dibabit kement tra a zegouezh)?",
 	'optin-survey-answer-changes-nav' => "Ober ma vo aesoc'h merdeiñ dre al lec'hienn dre-vras.",
 	'optin-survey-answer-changes-edittools' => 'Gwellaat ha kreskiñ an ostilhoù aozañ.',
 	'optin-survey-answer-changes-upload' => 'Gwellaat an enporzhiañ danvez ha media.',
 	'optin-survey-answer-changes-richtext' => "Diorren binvioù aozañ par d'an aozerioù testenn-pinvidikaet",
-	'optin-survey-answer-changes-lookfeel' => "Hizivaat arvez al lec'hienn.",
-	'optin-survey-answer-changes-predictability' => "Gwellaat rakwelusted ar c'hemmoù.",
+	'optin-survey-answer-changes-lookfeel' => "Hizivaat tres al lec'hienn.",
+	'optin-survey-answer-changes-predictability' => "Gwellaat diawelerezh ar c'hemmoù.",
 	'optin-survey-answer-changes-custom' => "Aotren a ra personelaat an etrefas pelloc'h.",
 	'optin-survey-answer-changes-other' => 'Traoù all :',
 	'optin-improvements2' => "== Petra zo bet gwellaet ? ==
-[[File:UsabilityToolbar.png|left|link=|Tapadenn skramm eus ar varrenn ostilhoù araokaet]]
-[[File:UsabilityDialogs.png|left|link=|Tapadenn skramm eus ar prenestroù krouiñ danvez]]
+[[File:UsabilityToolbar.png|left|link=|Skeudenn skramm eus ar varrenn ostilhoù araokaet]]
+[[File:UsabilityDialogs.png|left|link=|Skeudenn skramm eus ar prenestroù krouiñ danvez]]
 ;Barrenn ostilhoù araokaet
 A-drugarez d'ar varrenn ostilhoù araokaet eo aesoc'h degas kemmoù er pennadoù.
 An arlunioù nevez ha gwellaet a aesa kompren da betra servij pep ostilh.
@@ -3771,25 +3771,25 @@ Kami ingin ketahui pandangan anda tentang antara muka baru kami, jadi kami mengh
  * @author Chrisportelli
  */
 $messages['mt'] = array(
-	'optin' => "Adeżjoni għal Proġett ta' Użu",
-	'optin-desc' => "Ħalli lill-utenti jipprova l-Beta, l-aħħar titjib tal-inizzjattiva ta' użu.",
+	'optin' => "Adeżjoni għal Proġett ta' Użabilità",
+	'optin-desc' => "Ħalli 'l-utenti jippruvaw l-Beta, l-aħħar titjib tal-Inizjattiva ta' Użabilità.",
 	'optin-title-optedout' => 'Ipprova l-Beta',
 	'optin-title-optedin' => 'Ħalli l-Beta',
 	'optin-title-justoptedin' => 'Merħba fil-Beta',
 	'optin-title-justoptedout' => 'Grazzi talli ippruvajt l-verżjoni Beta',
 	'optin-title-feedback' => 'Rispons fuq il-Beta',
 	'optin-needlogin' => 'Huwa neċessarju li l-ewwel [$1 tidħol fil-kont tiegħek] qabel ma tipprova l-Beta.',
-	'optin-intro' => "L-inizzjattiva ta' użu tal-Wikipedija qed taħdem biex ittejjeb l-użu tal-Wikipedija. Tixtieq tipprova l-Beta?",
+	'optin-intro' => "L-Inizzjattiva ta' Użabilità tal-Wikipedija qed taħdem biex ittejjeb l-użabilità tal-Wikipedija. Tixtieq tipprova l-Beta?",
 	'optin-feedback-intro' => "Grazzi talli għamilt użu mill-Beta.
 Nixtiequ nkunu nafu x'taħseb fuq din l-interfaċċa l-ġdida, għalhekk napprezzaw jekk issib ħin biex tikkompila dan is-sondaġġ t'hawn taħt.",
 	'optin-feedback-back' => "Jekk ma tridx timla dan is-sondaġġ, tista' tirritorna lura lejn $1.",
 	'optin-success-in' => 'Bħalissa qiegħed tipprova l-Beta.
 Tista\' toħroġ barra minn din il-verżjoni billi tagħfas il-ħolqa "{{int:optin-leave}}" fil-quċċata tal-iskrin.',
 	'optin-leave-cancel' => "Jekk tixtieq tkompli tuża' l-Beta, tista' tirritorna lejn $1.",
-	'optin-success-out' => "Tħalliet b'suċċess il-verżjoni Beta.
+	'optin-success-out' => "Ħallejt il-verżjoni Beta b'suċċess.
 Huwa possibbli li terġa' tipprova mill-ġdid f'kwalunkwe mument li tixtieq billi tagħfas il-ħolqa \"{{int:optin-try}}\" fin-naħa leminija tal-quċċata tal-iskrin.",
 	'optin-success-feedback' => 'Grazzi għall-fehmiet tiegħek!',
-	'optin-accept-short' => 'Nipprovaha!',
+	'optin-accept-short' => 'Ippruvaha!',
 	'optin-accept-long' => 'Ipprova l-Beta',
 	'optin-accept-long-anon' => 'Illogja u ipprova l-Beta',
 	'optin-deny-short' => 'Le grazzi',
@@ -3831,6 +3831,20 @@ Nixtiequ nkunu nafu x'taħseb fuq din l-interfaċċa l-ġdida, fejn napprezzaw j
 	'optin-survey-answer-changes-predictability' => 'Titjib fil-prevedibilità tal-prestazzjonijiet.',
 	'optin-survey-answer-changes-custom' => "Tingħata ċans ikbar ta' personalizzazzjoni min-naħa tal-utent.",
 	'optin-survey-answer-changes-other' => 'Oħrajn:',
+	'optin-improvements2' => "== X'ġie mtejjeb? ==
+[[File:UsabilityToolbar.png|left|link=|Screenshot tal-kaxxa tal-għodda mtejba]]
+[[File:UsabilityDialogs.png|left|link=|Screenshot tat-twieqi l-ġodda ta' djalogu għall-ġenerazzjoni tal-kontenut]]
+;Kaxxa tal-għodda tal-immodifikar imtejba
+Il-kaxxa tal-għodda mtejba tgħin aktar fl-immodifikar tal-artikli.
+Ikoni ġodda u mtejba jagħmlu aktar ċar liema azzjoni kull għodda twettaq.
+Sezzjonijiet estiżi jnaqqsu d-diżordni, waqt li jżommu għodod li mhumiex użati b'mod frekwenti klikk 'il bogħod.
+;Twieqi ta' djalogu
+Meta toħloq ħoloq jew tabelli, meta tagħfas fuq l-ikona tal-għodda rispettiva tiftaħ tieqa ta' djalogu li tgħinek sabiex toħloq ħolqa u tabella billi timla formola sempliċi.
+;U iktar
+Introduċejna numru ta' aġġornamenti oħra fosthom navigazzjoni mtejba, buttuni li jinżlu, tiftix aħjar, u aktar.
+== Kif tiġi involut ==
+Biex tkun taf aktar dwar l-Inizjattiva ta' Użabilità, żur is-[http://usability.wikimedia.org/wiki/Wikipedia_Usability_Initiative sit tagħna].
+<div style=\"clear:both\"></div>",
 );
 
 /** Erzya (Эрзянь)

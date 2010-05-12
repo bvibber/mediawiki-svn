@@ -30,6 +30,13 @@ $messages['be-tarask'] = array(
 	'hidens-desc' => 'Хавае прастору назваў у загалоўку і назьве старонкі, калі старонка не ў асноўнай прасторы альбо выкарыстоўваецца функцыя парсэра <code><nowiki>{{#hidens:}}</nowiki></code>',
 );
 
+/** Breton (Brezhoneg)
+ * @author Fulup
+ */
+$messages['br'] = array(
+	'hidens-desc' => "Kuzhat a ra an esaouennoù anv en talbenn hag en titl pa vez ur bajenn en un esaouenn anv spisaet pe pa vez <code><nowiki>{{#hidens:}}</nowiki></code>  galvet an arc'hwel parser.",
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */
@@ -95,11 +102,25 @@ $messages['ia'] = array(
 	'hidens-desc' => 'Absconde le spatio de nomines in le capite e titulo si un pagina es in un spatio de nomines specificate o si le function syntactic <code><nowiki>{{#hidens:}}</nowiki></code> es appellate',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'hidens-desc' => 'Sembunyikan ruang nama di kepala bagian dan judul untuk halaman di ruang nama tertentu atau ketika fungsi parser <nowiki><code>{{#hidens:}}</code></nowiki> digunakan',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */
 $messages['ja'] = array(
 	'hidens-desc' => '指定された名前空間にページがあるか、<code><nowiki>{{#hidens:}}</nowiki></code> パーサー関数が使われた場合に、ヘッダーとタイトルにおける名前空間を隠して表示する',
+);
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'hidens-desc' => "Verstoppt den Nummraum am Header an am Titel wann eng Säit an engem spezifeschen Nummraum ass oder wann d'{{#hidens:}} Parserfonctioun opgeruff gëtt",
 );
 
 /** Macedonian (Македонски)

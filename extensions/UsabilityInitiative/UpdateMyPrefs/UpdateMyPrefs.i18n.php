@@ -259,6 +259,15 @@ $messages['ml'] = array(
 	'updatemyprefs-label-message' => 'എന്റെ ക്രമീകരണങ്ങൾ സ്വതവേ തരുന്ന പുതിയ ഉപകരണങ്ങളും സജ്ജീകരണങ്ങളും ലഭ്യമാകുന്ന മുറയ്ക്ക് സ്വയം പുതുക്കുക',
 );
 
+/** Maltese (Malti)
+ * @author Chrisportelli
+ */
+$messages['mt'] = array(
+	'prefs-updates' => 'Aġġornamenti',
+	'updatemyprefs-desc' => 'Preferenza għal utenti sabiex tispeċifika jekk iridux aġġornament perjodiċi tal-interfaċċa tal-utent kull darba li jiġu disponibbli.',
+	'updatemyprefs-label-message' => "Aġġorna awtomatikament il-preferenzi tiegħi b'impostazzjonijiet u għodda predefiniti ġodda hekk kif isiru disponibbli",
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

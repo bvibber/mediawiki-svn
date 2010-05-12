@@ -65,10 +65,16 @@ $messages['bn'] = array(
 );
 
 /** Breton (Brezhoneg)
+ * @author Fulup
  * @author Y-M D
  */
 $messages['br'] = array(
-	'tooltip-pt-prefswitch-link-off' => 'Esaeañ elfennoù nevez',
+	'prefswitch-link-anon' => 'Perzhioù nevez',
+	'tooltip-pt-prefswitch-link-anon' => "Gouzout hiroc'h diwar-benn ar perzhioù nevez",
+	'prefswitch-link-on' => 'Distreiñ',
+	'tooltip-pt-prefswitch-link-on' => 'Diweredekaat ar perzhioù nevez',
+	'prefswitch-link-off' => 'Perzhioù nevez',
+	'tooltip-pt-prefswitch-link-off' => 'Esaeañ ar perzhioù nevez',
 );
 
 /** Catalan (Català)
@@ -80,8 +86,14 @@ $messages['ca'] = array(
 
 /** Czech (Česky)
  * @author Kuvaly
+ * @author Mormegil
  */
 $messages['cs'] = array(
+	'prefswitch-link-anon' => 'Nové funkce',
+	'tooltip-pt-prefswitch-link-anon' => 'Informace o nových funkcích',
+	'prefswitch-link-on' => 'Chci zpátky',
+	'tooltip-pt-prefswitch-link-on' => 'Vypnout nové funkce',
+	'prefswitch-link-off' => 'Nové funkce',
 	'tooltip-pt-prefswitch-link-off' => 'Vyzkoušejte nové funkce',
 );
 
@@ -289,6 +301,17 @@ $messages['ml'] = array(
 	'tooltip-pt-prefswitch-link-on' => 'പുതിയ സവിശേഷതകൾ പ്രവർത്തനരഹിതമാക്കുക',
 	'prefswitch-link-off' => 'പുതിയ സവിശേഷതകൾ',
 	'tooltip-pt-prefswitch-link-off' => 'പുതിയ സവിശേഷതകൾ പരീക്ഷിക്കുക',
+);
+
+/** Maltese (Malti)
+ * @author Chrisportelli
+ */
+$messages['mt'] = array(
+	'prefswitch-link-anon' => 'Karatteristiċi ġodda',
+	'tooltip-pt-prefswitch-link-anon' => 'Tgħallem aktar dwar elementi ġodda',
+	'prefswitch-link-on' => 'Ħudni lura',
+	'prefswitch-link-off' => 'Funzjonijiet ġodda',
+	'tooltip-pt-prefswitch-link-off' => 'Ipprova funzjonijiet ġodda',
 );
 
 /** Dutch (Nederlands)

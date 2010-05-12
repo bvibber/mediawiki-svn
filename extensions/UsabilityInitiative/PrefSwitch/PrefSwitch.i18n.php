@@ -117,8 +117,6 @@ $messages['ar'] = array(
 	'prefswitch-survey-cancel-off' => 'إذا أردت الاستمرار في استخدام المزايا الجديدة، فإمكانك الرجوع إلى $1.',
 	'prefswitch-survey-submit-feedback' => 'أرسل ملاحظات',
 	'prefswitch-survey-cancel-feedback' => 'إذا لم ترغب في تقديم الملاحظات، فبإمكانك الرجوع إلى $1.',
-	'prefswitch-survey-question-likedislike' => 'ماذا أعجبك في المزايا الجديدة؟
-ماذا لم يعجبك فيها؟',
 	'prefswitch-survey-question-whyoff' => 'لماذا ستعطل المزايا الجديدة؟
 من فضلك اختر كل ما يناسب.',
 	'prefswitch-survey-answer-whyoff-hard' => 'كان استخدامها صعبًا جدًا.',
@@ -179,8 +177,6 @@ $messages['be-tarask'] = array(
 	'prefswitch-survey-cancel-off' => 'Калі Вы жадаеце працягваць выкарыстаньне новых магчымасьцяў, Вы можаце вярнуцца да $1.',
 	'prefswitch-survey-submit-feedback' => 'Даслаць водгук',
 	'prefswitch-survey-cancel-feedback' => 'Калі Вы не жадаеце дасылаць водгук, Вы можаце вярнуцца да $1.',
-	'prefswitch-survey-question-likedislike' => 'Што Вам спадабалася ў новых магчымасьцях?
-Што Вам у іх не спадабалася?',
 	'prefswitch-survey-question-whyoff' => 'Чаму Вы выключаеце новыя магчымасьці?
 Калі ласка, выберыце ўсе пасуючыя варыянты.',
 	'prefswitch-survey-answer-whyoff-hard' => 'Занадта складаны ў выкарыстаньні.',
@@ -253,8 +249,6 @@ $messages['bn'] = array(
 	'prefswitch-survey-submit-off' => 'নতুন বৈশিষ্ট্য বন্ধ করো',
 	'prefswitch-survey-submit-feedback' => 'প্রতিক্রিয়া পাঠান',
 	'prefswitch-survey-cancel-feedback' => 'আপনি যদি প্রতিক্রিয়া দিতে না চান, তাহলে আপনি $1 -এ ফিরে যেতে পারেন।',
-	'prefswitch-survey-question-likedislike' => 'নতুন বৈশিষ্ট্যাবলীতে আপনার কি পছন্দ হয়েছে? 
-নতুন বৈশিষ্ট্যাবলীতে আপনার কি পছন্দ হয় নাই?',
 	'prefswitch-survey-question-whyoff' => 'আপনি কেন নতুন বৈশিষ্ট্যাবলী বন্ধ করছেন?
 অনুগ্রহ করে যা প্রযোজ্য তা নির্বাচন করুন।',
 	'prefswitch-survey-answer-whyoff-hard' => 'এতে কাজ করা কঠিন।',
@@ -300,13 +294,11 @@ $messages['br'] = array(
 	'prefswitch-desc' => "Talvezout a ra d'an implijerien da cheñch an holl benndibaboù",
 	'prefswitch-survey-true' => 'Ya',
 	'prefswitch-survey-false' => 'Nann',
-	'prefswitch-survey-submit-off' => 'Implijout ar barregezhioù nevez',
-	'prefswitch-survey-cancel-off' => "Mar fell deoc'h kenderc'hel d'ober gant ar barregezhioù nevez e c'hallit distreiñ da $1.",
+	'prefswitch-survey-submit-off' => 'Implijout ar perzhioù nevez',
+	'prefswitch-survey-cancel-off' => "Mar fell deoc'h kenderc'hel d'ober gant ar perzhioù nevez e c'hallit distreiñ da $1.",
 	'prefswitch-survey-submit-feedback' => 'Roit ho soñj',
 	'prefswitch-survey-cancel-feedback' => "Mar ne fell ket deoc'h reiñ ho soñj e c'hallit distreiñ da $1.",
-	'prefswitch-survey-question-likedislike' => "Petra zo plijet deoc'h er barregezhioù nevez ?
-Petra oc'h bet displijet gantañ er barregezhioù nevez ?",
-	'prefswitch-survey-question-whyoff' => 'Perak goulenn paouez gant ar barregezhioù nevez ?
+	'prefswitch-survey-question-whyoff' => 'Perak goulenn paouez gant ar perzhioù nevez ?
 Dibabit kement tra hag a zegouezh.',
 	'prefswitch-survey-answer-whyoff-hard' => 'Start e oa da embreger.',
 	'prefswitch-survey-answer-whyoff-didntwork' => "Ne'z ae ket plaen en-dro.",
@@ -320,24 +312,39 @@ Dibabit kement tra hag a zegouezh.',
 	'prefswitch-survey-question-os' => 'Peseurt reizhiad korvoiñ a rit gantañ ?',
 	'prefswitch-survey-answer-os-other' => 'Reizhiad korvoiñ all :',
 	'prefswitch-survey-question-res' => 'Petra eo spisder ho skramm ?',
-	'prefswitch-title-on' => "Petra 'zo da heul ?",
+	'prefswitch-title-on' => 'Petra nevez ?',
 	'prefswitch-title-switched-on' => "Plijadur deoc'h !",
-	'prefswitch-title-off' => 'Paouez gant ar barregezhioù nevez',
+	'prefswitch-title-off' => 'Paouez gant ar perzhioù nevez',
 	'prefswitch-title-switched-off' => 'Trugarez',
 	'prefswitch-title-feedback' => 'Sonjoù',
-	'prefswitch-success-on' => 'War enaou emañ ar barregezhioù nevez bremañ.',
-	'prefswitch-success-off' => "Paouezet ez eus bet d'ober gant ar barregezhioù nevez.",
+	'prefswitch-success-on' => 'War enaou emañ ar perzhioù nevez bremañ.',
+	'prefswitch-success-off' => "Paouezet ez eus bet d'ober gant ar perzhioù nevez.",
 	'prefswitch-success-feedback' => "Kaset eo bet hoc'h evezhiadennoù.",
 	'prefswitch-return' => '<hr style="clear:both">
 Distreiñ da <span class="plainlinks">[$1 $2]</span>.',
+	'prefswitch-main' => "Start hon eus labouret evit aesaat ar jeu d'an implijerien. Stad zo ennomp bremañ o kinnig deoc'h tammoù gwellaennoù, en o zouez un tres nevez ha doareoù kemmañ pajennoù eeunaet. Aesaat implijadusted hor raktresoù zo ur priorite evit Diazezadur Wikimedia ha kenderc'hel a raimp da ginnig traoù nevez en amzer da zont.
+
+[[File:UsabilityNavigation.png|right|link=|Skeudennoù skramm war an doare merdeiñ nevez]]
+[[File:UsabilityToolbar.png|right|link=|Skeudennoù skramm eus ar varrenn ostilhoù gwellaet]]
+[[File:UsabilityDialogs.png|right|link=|Skeudennoù skramm eus ar prenestroù krouiñ danvez nevez]]
+===Setu ar pezh zo bet cheñchet===
+* Merdeiñ : Gwellaet eo bet an doare merdeiñ evit lenn ha kemmañ pajennoù. Bremañ emañ kalz muioc'h war wel an ivinelloù e laez pep pajenn labour pe kaozeal, ha kemend-all pa vezit oc'h aozañ ur pennad pe o lenn anezhañ.
+* Gwellaennoù er varrenn ostilhoù : Adframmet eo bet ar varrenn ostilhoù, dezhi da vezañ aesoc'h da implijout. Bremañ eo aesoc'h maketenniñ pajennoù ha kavout an doare d'en ober.
+* Skoazeller liammoù : Un ostilh aes d'ober gantañ a dalvez deoc'h da ouzhpennañ liammoù ouzh pajennoù wiki all hag ouzh lec'hiennoù diavaez.
+* Gwellaennoù klask : Gwellaet  eo bet ar c'hinnigoù klask, da gavout fonnusoc'h ar bajenn emaoc'h o klask.
+* Perzhioù nevez all :  Degaset hon eus ivez un ostilh da sevel taolennoù aesoc'h hag ur vodulenn erlec'hiañ evit aesaat ar c'hemmañ pajennoù.",
+	'prefswitch-main-anon' => '===Distreiñ===
+Mar fell deoc\'h diweredekaat ar perzhioù nevez <span class="plainlinks">[$1 klikit amañ]</span>. Ret e vo deoc\'h kevreañ pe krouiñ ur gont da gentañ.',
 	'prefswitch-main-on' => '===Evezhiadennoù ?===
 Plijet e vefemp o klevet an doare diganeoc\'h.  Kit da welet hor <span class="plainlinks">[$1 pajenn evezhiadennoù]</span>.
 ===Trawalc\'h gant ar jeu-se !===
-Mar fell deoc\'h diweredekaat an arc\'hwelioù nevez, e c\'hallit <span class="plainlinks">[$2 klikañ amañ]</span>.',
+Mar fell deoc\'h diweredekaat an perzhioù nevez, e c\'hallit <span class="plainlinks">[$2 klikañ amañ]</span>.',
 	'prefswitch-main-off' => '===Un taol-esae !===
 MAr fell deoc\'h ober gant ar barregezhioù nevez, <span class="plainlinks">[$1 klikit amañ]</span>.',
 	'prefswitch-survey-intro-feedback' => "Plijet-bras e vefemp o kaout keloù diganeoc'h.
 Mar fell deoc'h e c'hallit respont d'an tamm sontadeg a-is.",
+	'prefswitch-survey-intro-off' => "Ho trugarekaat da vezañ amprouet ar perzhioù nevez.
+Mard eo mat deoc'h e c'hallit hor skoazellañ en ur respont d'an tamm sontadeg a-is.",
 );
 
 /** Catalan (Català)
@@ -382,7 +389,6 @@ $messages['cs'] = array(
 	'prefswitch-survey-cancel-off' => 'Pokud chcete i nadále používat nové vlastnosti, můžete se vrátit na stránku $1.',
 	'prefswitch-survey-submit-feedback' => 'Odeslat zpětnou vazbu',
 	'prefswitch-survey-cancel-feedback' => 'Pokud nechcete poskytnout zpětnou vazbu, můžete se vrátit na $1.',
-	'prefswitch-survey-question-likedislike' => 'Co se vám na Betě líbilo? Co se vám na Betě nelíbilo?',
 	'prefswitch-survey-question-whyoff' => 'Proč jste vypnuli nové funkce? 
 Vyberte všechny relevantní možnosti.',
 	'prefswitch-survey-answer-whyoff-hard' => 'Byla příliš složitá na používání.',
@@ -418,6 +424,8 @@ Zpět na <span class="plainlinks">[$1 $2].</span>',
 * Průvodce: Jednoduše použilelný nástroj vám pomůže přidávat odkazy na interní a na externí stránky. 
 * Vyhledávání: Zlepšili jsme návrhy vyhledávání, takže nyní se jako první ukazují ty, co nejčastěji hledáte. 
 * Další nové vlastnosti: Zavedli jsme také průvodce tabulkou, aby bylo vytváření tabulek snadnější a také vytváříme jednodušší editaci.',
+	'prefswitch-main-anon' => '===Chci zpátky===
+Pokud chcete, můžete si <span class="plainlinks">[$1 vypnout nové funkce]</span>. Nejdříve se budete muset přihlásit nebo zaregistrovat.',
 	'prefswitch-main-on' => '=== Zpětná vazba? === 
 Budeme rádi, když nám poskytnete zpětnou vazbu. Prosím navštivte naši <span class="plainlinks">[$1 stránku pro zpětnou vazbu].</span> 
 === Jít zpět! === 
@@ -480,8 +488,6 @@ $messages['de'] = array(
 	'prefswitch-survey-cancel-off' => 'Wenn du die neuen Features weiter verwenden willst, kannst du zu $1 zurückkehren.',
 	'prefswitch-survey-submit-feedback' => 'Feedback geben',
 	'prefswitch-survey-cancel-feedback' => 'Wenn du kein Feedback geben möchtest, kannst du zu $1 zurückkehren.',
-	'prefswitch-survey-question-likedislike' => 'Was magst du an den neuen Features?
-Was magst du nicht an den neuen Features?',
 	'prefswitch-survey-question-whyoff' => 'Warum schaltest du die neuen Features ab?
 Bitte wähle alle zutreffenden Punkte aus.',
 	'prefswitch-survey-answer-whyoff-hard' => 'Die Verwendung war zu kompliziert.',
@@ -561,8 +567,6 @@ $messages['dsb'] = array(
 	'prefswitch-survey-cancel-off' => 'Jolic coš nowe funkcije dalej wužywaś, móžoš se k $1 wrośiś.',
 	'prefswitch-survey-submit-feedback' => 'Měnjenje pósłaś',
 	'prefswitch-survey-cancel-feedback' => 'Jolic njocoš měnjenje pósłaś, móžoš se do $1 wrośiś.',
-	'prefswitch-survey-question-likedislike' => 'Co se śi spódoba na nowych funkcijach?
-Co se śi njespódoba na nowych funkcijach?',
 	'prefswitch-survey-question-whyoff' => 'Cogodla wótšaltujoš nowe funkcije?
 Pšosym wubjeŕ wšykne, kótarež maju se nałožyś.',
 	'prefswitch-survey-answer-whyoff-hard' => 'Wužywanje jo było pśekomplicěrowane.',
@@ -598,6 +602,8 @@ Slědk k <span class="plainlinks">[$1 $2]</span>.',
 * Wótkazowy asistent: Rěd, kótaryž dajo se wužywaś a śi dowólujo, wótkaze drugim wikibokam ako teke wótkaze eksternym sedłam pśidaś.
 * Pytańske pólěpšenja: Smy pytańske naraźenja pólěpšyli, aby my śi wjadli malsnjej k tomu bokoju, kótaryž pytaš.
 * Druge nowe funkcije: Smy teke zawjadli tabelowy asistent, aby my wólažcyli napóranje tabelow a funkciju za pytanje a wuměnjenje, aby my zjadnorili wobźěłowanje bokow.',
+	'prefswitch-main-anon' => '===Slědk===
+Jolic coš nowe funkcije znjemóžnis, <span class="plainlinks">[$1 klikni how]</span>.  Pšose śi se pśizjawiś abo nejpjerwjej konto załožyś.',
 	'prefswitch-main-on' => '===Rezonanca?===
 My by se wjaselili, wót tebje słyšaś. Pšosym woglědaj se naš <span class="plainlinks">[$1 rezonancowy bok]</span>.
 ===Spóraj mě slědk!===
@@ -623,7 +629,6 @@ $messages['el'] = array(
 	'prefswitch-survey-cancel-off' => 'Αν θέλετε να συνεχίσετε να χρησιμοποιείτε τις καινούριες λειτουργίες, μπορείτε να επιστρέψετε στο $1.',
 	'prefswitch-survey-submit-feedback' => 'Αποστολή σχολίων',
 	'prefswitch-survey-cancel-feedback' => 'Αν δεν θέλετε να δώσετε σχόλια, μπορείτε να επιστρέψετε στο $1.',
-	'prefswitch-survey-question-likedislike' => 'Τι σας άρεσε στις καινούριες λειτουργίες; Τι δεν σας άρεσε στις καινούριες λειτουργίες;',
 	'prefswitch-survey-question-whyoff' => 'Γιατί απενεργοποιείτε τις καινούριες λειτουργίες; Επιλέξτε όλα όσα ισχύουν.',
 	'prefswitch-survey-answer-whyoff-hard' => 'Ήταν πολύ δύσχρηστες.',
 	'prefswitch-survey-answer-whyoff-didntwork' => 'Δεν λειτουργούσαν σωστά.',
@@ -682,8 +687,6 @@ $messages['eo'] = array(
 	'prefswitch-survey-cancel-off' => 'Se vi volus daŭri uzante la novajn funkciojn, vi povus reiri al $1.',
 	'prefswitch-survey-submit-feedback' => 'Sendi komenton',
 	'prefswitch-survey-cancel-feedback' => 'Se vi ne volas doni komenton, vi povas reiri al $1.',
-	'prefswitch-survey-question-likedislike' => 'Kio plaĉas al vi pri la novaj funkcioj?
-Kio malplaĉas al vi pri la novaj funkcioj?',
 	'prefswitch-survey-question-whyoff' => 'Kial vi malŝaltas la novajn funkciojn?
 Bonvolu elekti ĉiujn taŭgaĵojn.',
 	'prefswitch-survey-answer-whyoff-hard' => 'Ĝi estis tro malfacila uzi.',
@@ -745,8 +748,6 @@ $messages['es'] = array(
 	'prefswitch-survey-cancel-off' => 'Si desea continuar utilizando las nuevas características puede volver a $1.',
 	'prefswitch-survey-submit-feedback' => 'Enviar comentario',
 	'prefswitch-survey-cancel-feedback' => 'Si no desea enviar sus comentarios puede volver a $1.',
-	'prefswitch-survey-question-likedislike' => '¿Qué le gustó de las nuevas características?
-¿Qué no le gustó de las características?',
 	'prefswitch-survey-question-whyoff' => '¿Por qué está desactivando las nuevas características?
 Por favor seleccione todas las opciones que correspondan.',
 	'prefswitch-survey-answer-whyoff-hard' => 'Era muy difícil de utilizar.',
@@ -853,8 +854,6 @@ $messages['fi'] = array(
 	'prefswitch-survey-cancel-off' => 'Jos haluat jatkaa uusien ominaisuuksien käyttämistä, voit palata sivulle $1.',
 	'prefswitch-survey-submit-feedback' => 'Lähetä palaute',
 	'prefswitch-survey-cancel-feedback' => 'Jos et halua antaa palautetta, voit palata sivulle $1.',
-	'prefswitch-survey-question-likedislike' => 'Mistä pidit uusissa ominaisuuksissa?
-Mistä et pitänyt uusissa ominaisuuksissa?',
 	'prefswitch-survey-question-whyoff' => 'Miksi olet poistamassa käytöstä uusia ominaisuuksia?
 Valitse kaikki sopivat.',
 	'prefswitch-survey-answer-whyoff-hard' => 'Se oli liian vaikeakäyttöinen.',
@@ -907,8 +906,6 @@ $messages['fr'] = array(
 	'prefswitch-survey-cancel-off' => 'Si vous voulez continuer à utiliser les nouvelles fonctionnalités, vous pouvez revenir à $1',
 	'prefswitch-survey-submit-feedback' => 'Envoyer des commentaires',
 	'prefswitch-survey-cancel-feedback' => 'Si vous ne voulez pas faire de commentaires, vous pouvez revenir à $1.',
-	'prefswitch-survey-question-likedislike' => 'Qu’avez-vous aimé dans les nouvelles fonctionnalités ?
-Qu’est-ce que vous n’avez pas aimé dans les nouvelles fonctionnalités ?',
 	'prefswitch-survey-question-whyoff' => 'Pourquoi voulez-vous désactiver les nouvelles fonctionnalités ?
 Veuillez choisir tout ce qui convient.',
 	'prefswitch-survey-answer-whyoff-hard' => 'Il était trop difficile de l’utiliser.',
@@ -970,7 +967,6 @@ $messages['gl'] = array(
 	'prefswitch-survey-cancel-off' => 'Se quere seguir usando as novas características, pode voltar a "$1".',
 	'prefswitch-survey-submit-feedback' => 'Dea a súa opinión',
 	'prefswitch-survey-cancel-feedback' => 'Se non quere dar a súa opinión, pode voltar a "$1".',
-	'prefswitch-survey-question-likedislike' => 'Que é o que lle gusta das novas características? E que non?',
 	'prefswitch-survey-question-whyoff' => 'Por que está a desactivar as novas características?
 Por favor, seleccione o que sexa conveniente.',
 	'prefswitch-survey-answer-whyoff-hard' => 'Foi moi difícil de usar.',
@@ -1032,8 +1028,6 @@ $messages['gsw'] = array(
 	'prefswitch-survey-cancel-off' => 'Wänn di neje Funktione wyter bruche witt, chasch zu $1 zruckgoh.',
 	'prefswitch-survey-submit-feedback' => 'Ruckmäldig gee',
 	'prefswitch-survey-cancel-feedback' => 'Wänn kei Ruckmäldig witt gee, chasch zue $1 zruckgoh.',
-	'prefswitch-survey-question-likedislike' => 'Was het dir an dr neje Funktione gfalle? 
-Was het dir an dr neje Funktione nit gfalle?',
 	'prefswitch-survey-question-whyoff' => 'Wurum schaltsch di neje Funktione ab?
 Bitte wehl alli Pinkt, wu zuedräffe uus.',
 	'prefswitch-survey-answer-whyoff-hard' => 'D Verwändig isch z schwirig gsi.',
@@ -1097,8 +1091,8 @@ $messages['he'] = array(
 	'prefswitch-survey-cancel-off' => 'אם תרצו להמשיך להשתמש בתכונות החדשות, באפשרותכם לחזור אל $1.',
 	'prefswitch-survey-submit-feedback' => 'שליחת משוב',
 	'prefswitch-survey-cancel-feedback' => 'אם אינכם רוצים לתת משוב, תוכלו לחזור אל $1.',
-	'prefswitch-survey-question-likedislike' => 'מה אהבתם בגרסה החדשה?
-מה לא אהבתם בגרסה החדשה?',
+	'prefswitch-survey-question-like' => 'מה אהבתם בתכונות החדשות?',
+	'prefswitch-survey-question-dislike' => 'מה לא אהבתם בתכונות החדשות?',
 	'prefswitch-survey-question-whyoff' => 'למה אתם עוזבים את הגרסה החדשה?
 אנא בחרו את כל האפשרויות המתאימות.',
 	'prefswitch-survey-answer-whyoff-hard' => 'היא הייתה קשה מדי לשימוש',
@@ -1113,13 +1107,13 @@ $messages['he'] = array(
 	'prefswitch-survey-question-os' => 'באיזו מערכת הפעלה אתם משתמשים?',
 	'prefswitch-survey-answer-os-other' => 'מערכת הפעלה אחרת:',
 	'prefswitch-survey-question-res' => 'מהי רזולוציית המסך שלכם?',
-	'prefswitch-title-on' => 'מה חדש?',
+	'prefswitch-title-on' => 'תכונות חדשות',
 	'prefswitch-title-switched-on' => 'תיהנו!',
 	'prefswitch-title-off' => 'ביטול המראה החדש',
 	'prefswitch-title-switched-off' => 'תודה',
 	'prefswitch-title-feedback' => 'משוב',
-	'prefswitch-success-on' => 'התכונות החדשות מופעלות עכשיו.',
-	'prefswitch-success-off' => 'התכונות החדשות מבוטלות עכשיו.',
+	'prefswitch-success-on' => 'התכונות החדשות מופעלות עכשיו. אנו מקווים שתיהנו מהשימוש בהן. תוכלו לכבות אותן בכל זמן על ידי לחיצה על הקישור [[Special:UsabilityInitiativePrefSwitch|תכונות חדשות]] בראש הדף.',
+	'prefswitch-success-off' => 'התכונות החדשות מבוטלות עכשיו. אנו מודים לכם על כך שניסיתם אותן. תוכלו להפעיל אותן מחדש בכל זמן על ידי לחיצה על הקישור "[[Special:UsabilityInitiativePrefSwitch|תכונות חדשות]]" בראש הדף.',
 	'prefswitch-success-feedback' => 'המשוב שלכם נשלח.',
 	'prefswitch-return' => '<hr style="clear:both">
 חזרה אל <span class="plainlinks">[$1 $2].</span>',
@@ -1135,6 +1129,8 @@ $messages['he'] = array(
 * אשף קישורים: כלי קל לשימוש שמאפשר לכם להוסיף קישורים לדפים אחרים בוויקיפדיה וגם קישורים לאתרים חיצוניים.
 * שיפורים בחיפוש: שיפרנו את ההשלמות בתיבת החיפוש כדי שתמצאו את הדף שאותו אתם מחפשים מהר יותר.
 * תכונות חדשות אחרות: הוספנו גם אשף טבלאות כדי שיהיה קל יותר ליצור טבלאות ויכולת חיפוש והחלפה כדי להקל על עריכת דפים.',
+	'prefswitch-main-anon' => '==תחזירו אותי==
+אם תרצו לבטל התכונות החדשות, <span class="plainlinks">[$1 לחצו כאן]</span>. תתבקשו להיכנס בחשבונכם או ליצור חשבון.',
 	'prefswitch-main-on' => '===יש לכם מה לספר לנו?===
 נשמח לשמוע מכם. אנא בקרו ב<span class="plainlinks">[$1 דף המשוב שלנו]</span>.
 ===תחזירו אותי!===
@@ -1144,7 +1140,7 @@ $messages['he'] = array(
 	'prefswitch-survey-intro-feedback' => 'נשמח לשמוע מכם.
 אנא מלאו את הסקר שלהלן (לא חובה).',
 	'prefswitch-survey-intro-off' => 'תודה שניסיתם את התכונות החדשות שלנו.
-כדי לעזור לנו לשפר אותן, אנא מלאו את הסקר שלהלן (לא חובה).',
+כדי לעזור לנו לשפר אותן, אנא מלאו את הסקר שלהלן (לא חובה) לפני שאתם לוחצים על "[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]".',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -1159,8 +1155,6 @@ $messages['hsb'] = array(
 	'prefswitch-survey-cancel-off' => 'Jeli by rady nowe funkcije dale wužiwał, móžeš so k $1 wróćić.',
 	'prefswitch-survey-submit-feedback' => 'Měnjenje pósłać',
 	'prefswitch-survey-cancel-feedback' => 'Jeli nochceš měnjenje dodać, móžeš so do $1 wróćić.',
-	'prefswitch-survey-question-likedislike' => 'Što so ći na nowych funkcijach lubi?
-Što so ći na nowych funkcijach njelubi?',
 	'prefswitch-survey-question-whyoff' => 'Čehodla wupinaš nowe funkcije?
 Prošu wubjer wšě, kotrež maja so nałožić.',
 	'prefswitch-survey-answer-whyoff-hard' => 'Njeda so lochko wužiwać.',
@@ -1196,6 +1190,8 @@ Wróćo do <span class="plainlinks">[$1 $2]</span>.',
 * Wotkazowy asistent: Nastroj, kotryž da so lochko wužiwać a ći dowola, wotkazy druhim wikistronam  kaž tež wotkazy eksternym sydłam přidać.
 * Pytanske polěpšenja: Smy pytanske namjety polěpšili, zo bychmy će spěšnišo k tej stronje wjedli, kotruž pytaš.
 * Druhe nowe funkcije: Smy tež tabelowy asistent zawjedli, zo bychmy wutworjenje tabelow wosnadnili a funkciju za pytanje a narunanje, zo bychmy wobdźěłowanje strony zjednorili.',
+	'prefswitch-main-anon' => '===Wróćo===
+Jeli chceće nowe funkcije znjemóžnić, <span class="plainlinks">[$1 klikńće tu]</span>.  Proša was, so přizjewić abo najprjedy konto załožić.',
 	'prefswitch-main-on' => '===Rezonanca?===
 Bychmy so wjeselili, wote tebje słyšeć. Prošu wopytaj našu <span class="plainlinks">[$1 rezonancnu stronu]</span>.
 ===Wjedź mje wróćo!===
@@ -1221,8 +1217,6 @@ $messages['hu'] = array(
 	'prefswitch-survey-cancel-off' => 'Ha továbbra is szeretnéd használni az új funkciókat, akkor visszatérhetsz a(z) $1 lapra.',
 	'prefswitch-survey-submit-feedback' => 'Visszajelzés küldése',
 	'prefswitch-survey-cancel-feedback' => 'Ha nem akarod megosztani a tapasztalataidat, visszatérhetsz a(z) $1 lapra.',
-	'prefswitch-survey-question-likedislike' => 'Mi tetszett az új funkciókban?
-Mi nem tetszett az új funkciókban?',
 	'prefswitch-survey-question-whyoff' => 'Miért kapcsolod ki az új funkciókat?
 Jelöld be az összes indokodat.',
 	'prefswitch-survey-answer-whyoff-hard' => 'Túl nehéz volt használni.',
@@ -1268,8 +1262,6 @@ $messages['ia'] = array(
 	'prefswitch-survey-cancel-off' => 'Si tu vole continuar a usar le nove functiones, tu pote retornar a $1.',
 	'prefswitch-survey-submit-feedback' => 'Dar nos tu opinion',
 	'prefswitch-survey-cancel-feedback' => 'Si tu non vole dar nos tu opinion, tu pote retornar a $1.',
-	'prefswitch-survey-question-likedislike' => 'Que te placeva del nove functiones?
-Que non te placeva de illos?',
 	'prefswitch-survey-question-whyoff' => 'Proque disactiva tu le nove functiones?
 Per favor selige tote le motivos applicabile.',
 	'prefswitch-survey-answer-whyoff-hard' => 'Esseva troppo difficile de usar.',
@@ -1305,6 +1297,8 @@ Retornar a <span class="plainlinks">[$1 $2]</span>.',
 * Assistente pro ligamines: Un instrumento simple permitte adder ligamines a altere paginas de Wikipedia e ligamines a sitos externe.
 * Meliorationes de recerca: Nos ha meliorate le suggestiones de recerca pro portar te plus rapidemente al pagina que tu cerca.
 * Altere nove functiones: Nos ha etiam introducite un assistente pro tabellas pro facilitar le creation de tabellas, e un function de cercar e reimplaciar pro simplificar le modification de paginas.',
+	'prefswitch-main-anon' => '===Porta me retro===
+Si tu vole disactivar le nove functiones, <span class="plainlinks">[$1 clicca hic]</span>. Il te essera demandate de primo aperir un session o crear un conto.',
 	'prefswitch-main-on' => '===Commentarios?===
 Nos vole audir te de. Per favor visita nostre <span class="plainlinks">[$1 pagina pro dar tu opinion]</span>.
 ===Porta me retro!===
@@ -1325,8 +1319,6 @@ $messages['id'] = array(
 	'prefswitch-survey-false' => 'Tidak',
 	'prefswitch-survey-submit-off' => 'Matikan fitur baru',
 	'prefswitch-survey-submit-feedback' => 'Kirim umpan balik',
-	'prefswitch-survey-question-likedislike' => 'Apa yang Anda sukai tentang fitur baru ini?
-Apa yang Anda tidak sukai tentang fitur baru ini?',
 	'prefswitch-survey-answer-whyoff-hard' => 'Terlalu sulit untuk digunakan.',
 	'prefswitch-survey-answer-whyoff-didntwork' => 'Tidak berfungsi dengan baik.',
 	'prefswitch-survey-answer-whyoff-other' => 'Alasan lainnya:',
@@ -1356,8 +1348,6 @@ $messages['it'] = array(
 	'prefswitch-survey-cancel-off' => 'Se vuoi continuare ad usare le nuove funzioni, puoi tornare a $1.',
 	'prefswitch-survey-submit-feedback' => 'Invia feedback',
 	'prefswitch-survey-cancel-feedback' => 'Se non vuoi fornire un feedback, puoi tornare a $1.',
-	'prefswitch-survey-question-likedislike' => 'Cosa ti è piaciuto delle nuove funzioni?
-Cosa non ti è piaciuto delle nuove funzioni?',
 	'prefswitch-survey-question-whyoff' => 'Perché stai disattivando le nuove funzioni?
 Si prega di selezionare tutte le motivazioni pertinenti.',
 	'prefswitch-survey-answer-whyoff-hard' => 'Era troppo difficile da usare.',
@@ -1418,8 +1408,6 @@ $messages['ja'] = array(
 	'prefswitch-survey-cancel-off' => '新機能の使用を継続したい場合は、$1に戻ってください。',
 	'prefswitch-survey-submit-feedback' => 'フィードバックを送る',
 	'prefswitch-survey-cancel-feedback' => 'フィードバックを提供したくない場合は、$1に戻ってください。',
-	'prefswitch-survey-question-likedislike' => '新機能のどのような点が気に入りましたか。
-どのような点が気に入りませんでしたか。',
 	'prefswitch-survey-question-whyoff' => '新機能を停止する理由をお聞かせください。
 あてはまるものを全てお選びください。',
 	'prefswitch-survey-answer-whyoff-hard' => '使用方法が難しすぎた。',
@@ -1482,8 +1470,6 @@ $messages['ka'] = array(
 	'prefswitch-survey-cancel-off' => 'თუ გსურთ გააგრძელოთ ბეტას გამოყენება, შეგიძლიათ დაბრუნდეთ  $1-ზე.',
 	'prefswitch-survey-submit-feedback' => 'გამოხმაურება',
 	'prefswitch-survey-cancel-feedback' => 'თუ არ გსურთ პროტოტიპზე გამოხმაურების დატოვება, უბრალოდ დაბრუნდით $1.',
-	'prefswitch-survey-question-likedislike' => 'რა მოგეწონათ ახალი შესაძლებლობებიდან? 
-რა არ მოგეწონათ ახალი შესაძლებლობებიდან?',
 	'prefswitch-survey-question-whyoff' => 'რატომ თიშავთ ახალ შესაძლებლობებს? 
 გთხოვთ აირჩიოთ პასუხი.',
 	'prefswitch-survey-answer-whyoff-hard' => 'ძალიან რთული იყო გამოსაყენებლად.',
@@ -1523,7 +1509,6 @@ $messages['ko'] = array(
 	'prefswitch-survey-cancel-off' => '새 기능을 계속 사용하시려면, $1로 돌아가실 수 있습니다.',
 	'prefswitch-survey-submit-feedback' => '피드백 남기기',
 	'prefswitch-survey-cancel-feedback' => '피드백을 제공하고 싶지 않다면 $1로 돌아가시면 됩니다.',
-	'prefswitch-survey-question-likedislike' => '어떤 부분이 마음에 들었나요? 그리고 어떤 부분이 마음에 들지 않았나요?',
 	'prefswitch-survey-question-whyoff' => '새로운 기능을 끄는 이유가 무엇인가요?
 해당하는 모든 항목을 선택해주세요.',
 	'prefswitch-survey-answer-whyoff-hard' => '사용하기에 너무 어렵다.',
@@ -1585,8 +1570,6 @@ $messages['lb'] = array(
 	'prefswitch-survey-cancel-off' => 'Wann Dir déi nei Fonctioune weiderbenotze wëllt, kënnt Dir op $1 zeréckgoen.',
 	'prefswitch-survey-submit-feedback' => 'Schéckt eis Är Meenung',
 	'prefswitch-survey-cancel-feedback' => 'Wann Dir Är Reaktioun net wëllt matdeelen da kënnt dir op $1 zeréckgoen.',
-	'prefswitch-survey-question-likedislike' => 'Wat huet Iech bäi den neie Fonctioune gefall?
-Wat huet Iech bäi den neie Fonctioune net gefall?',
 	'prefswitch-survey-question-whyoff' => 'Firwat schalt dir déi nei Fonctiounen aus?
 Wielt w.e.g.alles aus wat zoutrëfft.',
 	'prefswitch-survey-answer-whyoff-hard' => 'Et war ze komplizéiert fir ze benotzen.',
@@ -1620,6 +1603,9 @@ Zréck op <span class="plainlinks">[$1 $2]</span>.',
 * Linkwizard: En Tool den einfach ze benotzen ass fir Linken op aner Wikipedia-Säiten a Linken op aner Siten dobäizesetzen.
 * Verbesserunge bei der Sich: Mir hunn d'Virschléi bei der Sich verbessert fir datt Dir déi Säit no där Dir sicht méi séier fannt.
 * Aner nei Fonctiounen: Mir hunn och e Wizard fir Tabellen agefouert deen e méi einfach mécht fir Tabellen unzeleën an eng Sich- an Ersetzungs-Fonctioun fir d'Ännere vu Säiten ze vereinfachen.",
+	'prefswitch-main-anon' => '=== Zréck ===
+Wann Dir déi nei Fonctiounen ausschalte wëllt, <span class="plainlinks">
+[$1 klickt hei]</span>. Dir gitt gefrot fir Iech d\'éischt anzeloggen oder e Benotzerkont opzemaachen.',
 	'prefswitch-main-on' => '===Är Reaktioun?===
 Mir wiere frou vun Iech ze héieren. Gitt w.e.g. op eis <span  class="plainlinks">[$1 Är Reaktioun Säit]</span>.
 ===Bréngt mech zréck!===
@@ -1652,8 +1638,6 @@ $messages['mk'] = array(
 	'prefswitch-survey-cancel-off' => 'Ако сакате да продолжите со користење на новите функции, можете да се вратите на $1.',
 	'prefswitch-survey-submit-feedback' => 'Ваши примедби',
 	'prefswitch-survey-cancel-feedback' => 'Ако не сакате да искажете примедби, можете да се вратите на $1.',
-	'prefswitch-survey-question-likedislike' => 'Што ви се допадна кај новите фунции?
-А што не ви се допадна?',
 	'prefswitch-survey-question-whyoff' => 'Зошто ги исклучувате новите функции?
 Одберете било колку одговори.',
 	'prefswitch-survey-answer-whyoff-hard' => 'Беше премногу тешко за користење.',
@@ -1689,6 +1673,8 @@ $messages['mk'] = array(
 * Помошник за врски:  Оваа проста алатка ви овозможува да додавате врски до други страници на Википедија и до надворешни веб-страници.
 * Подобрено пребарување: Ги подобривме предлозите при пребарување за што побрзо да ви ја најдеме страницата што ја барате.
 * Други нови функции:  Воведовме и помошник за табели со чија помош табелите се прават полесно, а има и можност за пронаоѓање и заменување, со што се упростува уредувањето на страницата.',
+	'prefswitch-main-anon' => '===Врати ме===
+Ако сакате да ги исклучите новите функции, <span class="plainlinks">[$1 кликнете тука]</span>. Ќе ви биде побарано најпрвин да се најавите или да создадете сметка.',
 	'prefswitch-main-on' => '===Примедби?===
 Со задоволство го очекуваме вашето мислење.  Посетете ја нашата <span class="plainlinks">[$1 страница за примедби]</span>.
 ===Врати ме!===
@@ -1714,8 +1700,6 @@ $messages['ml'] = array(
 	'prefswitch-survey-cancel-off' => 'പുതിയ സവിശേഷതകൾ തുടർന്നും ഉപയോഗിക്കാൻ ആഗ്രഹിക്കുന്നെങ്കിൽ, $1 എന്ന താളിലേയ്ക്ക് മടങ്ങാം.',
 	'prefswitch-survey-submit-feedback' => 'അഭിപ്രായം അറിയിക്കുക',
 	'prefswitch-survey-cancel-feedback' => 'അഭിപ്രായങ്ങൾ പങ്ക് വെയ്ക്കാനാഗ്രഹമില്ലെങ്കിൽ, താങ്കൾക്ക് $1 എന്ന താളിലേയ്ക്ക് മടങ്ങാം.',
-	'prefswitch-survey-question-likedislike' => 'പുതിയ സവിശേഷതകളിൽ താങ്കൾക്ക് എന്തൊക്കെ ഇഷ്ടപ്പെട്ടു?
-പുതിയ സവിശേഷതകളിൽ എന്തൊക്കെ ഇഷ്ടപ്പെട്ടില്ല?',
 	'prefswitch-survey-question-whyoff' => 'പുതിയ സവിശേഷതകൾ എന്തുകൊണ്ടാണ് താങ്കൾ വേണ്ടന്നു വെയ്ക്കുന്നത്?
 ബാധകമാകുന്ന എല്ലാം തിരഞ്ഞെടുക്കുക.',
 	'prefswitch-survey-answer-whyoff-hard' => 'ഇത് ഉപയോഗിക്കാൻ ഏറെ ബുദ്ധിമുട്ടായിരുന്നു.',
@@ -1765,6 +1749,66 @@ $messages['ml'] = array(
 അവ മെച്ചപ്പെടുത്തുവാൻ ഞങ്ങളെ സഹായിക്കുന്നതിനായി, ദയവായി താഴെ നൽകിയിരിക്കുന്ന ഐച്ഛിക സർവേ പൂരിപ്പിക്കുക.',
 );
 
+/** Maltese (Malti)
+ * @author Chrisportelli
+ */
+$messages['mt'] = array(
+	'prefswitch' => "Tibdil tal-preferenzi tal-Inizjattiva ta' Użabilità",
+	'prefswitch-desc' => "Ippermetti lill-utenti li jbiddlu settijiet ta' preferenzi",
+	'prefswitch-survey-true' => 'Iva',
+	'prefswitch-survey-false' => 'Le',
+	'prefswitch-survey-submit-off' => 'Itfi l-funzjonijiet il-ġodda',
+	'prefswitch-survey-cancel-off' => "Jekk tixtieq tkompli tuża' l-funzjonijiet l-ġodda, tista' tirritorna lejn $1.",
+	'prefswitch-survey-submit-feedback' => 'Ibgħat ir-rispons tiegħek',
+	'prefswitch-survey-cancel-feedback' => "Jekk ma tixtieq tibgħat ir-rispons tiegħek, tista' tirritorna lejn $1.",
+	'prefswitch-survey-question-whyoff' => 'Għaliex qiegħed titfi l-funzjonijiet l-ġodda? Jekk jogħġbok agħżel dak li japplikaw għalik.',
+	'prefswitch-survey-answer-whyoff-hard' => 'Kienet wisq diffiċli biex tużaha.',
+	'prefswitch-survey-answer-whyoff-didntwork' => 'Ma kinitx qed taħdem tajjeb.',
+	'prefswitch-survey-answer-whyoff-notpredictable' => 'Ma kinitx qed taħdem kif mixtieq.',
+	'prefswitch-survey-answer-whyoff-didntlike-look' => "M'għoġobnix l-aspett tagħha.",
+	'prefswitch-survey-answer-whyoff-didntlike-layout' => "M'għoġbunix il-buttuni l-ġodda u t-tqassim tal-paġni.",
+	'prefswitch-survey-answer-whyoff-didntlike-toolbar' => "M'għoġbitnix il-kaxxa tal-għodda l-ġdida.",
+	'prefswitch-survey-answer-whyoff-other' => 'Raġuni oħra:',
+	'prefswitch-survey-question-browser' => "Liema browżer tuża'?",
+	'prefswitch-survey-answer-browser-other' => 'Browżers oħra:',
+	'prefswitch-survey-question-os' => "Liema sistema operattiva tuża'?",
+	'prefswitch-survey-answer-os-other' => 'Sistema operattiva oħra:',
+	'prefswitch-survey-question-res' => "X'inhi r-riżoluzzjoni tal-iskrin tiegħek?",
+	'prefswitch-title-on' => "X'hemm ġdid?",
+	'prefswitch-title-switched-on' => 'Ħu gost!',
+	'prefswitch-title-off' => 'Itfi l-funzjonijiet l-ġodda',
+	'prefswitch-title-switched-off' => 'Grazzi',
+	'prefswitch-title-feedback' => 'Rispons',
+	'prefswitch-success-on' => 'Il-funzjonijiet il-ġodda huma attivati.',
+	'prefswitch-success-off' => 'Il-funzjonijiet il-ġodda huma mitfija.',
+	'prefswitch-success-feedback' => 'Ir-rispons tiegħek intbagħat.',
+	'prefswitch-return' => '<hr style="clear:both">
+Irritorna lura lejn <span class="plainlinks">[$1 $2]</span>.',
+	'prefswitch-main' => "Ħdimna ħafna sabiex nagħmlu l-affarijiet iktar faċli għall-utenti tagħna. Ninsabu entużjasti li naqsmu magħkom xi titjib li sar, fosthom aspett grafiku ġdid u funzjonijiet tal-immodifikar simplifikati. It-titjib fl-użabilità tal-proġetti tagħna hija prijorità tal-Fondazzjoni Wikimedia u fil-ġejjieni sejrin naqsmu magħkom aktar aġġornamenti.
+
+[[File:UsabilityNavigation.png|right|link=|Screenshot tan-navigazzjoni l-ġdida]]
+[[File:UsabilityToolbar.png|right|link=|Screenshot tal-kaxxa tal-għodda mtejba]]
+[[File:UsabilityDialogs.png|right|link=|Screenshot tat-twieqi l-ġodda ta' djalogu għall-ġenerazzjoni tal-kontenut]]
+===Dan hu dak li biddilna===
+* Navigazzjoni: Tejjibna s-sistema ta' navigazzjoni għall-qari u l-immodifikar ta' paġni. Issa, il-kaxex fin-naħa ta' fuq ta' kull paġna juruk biċ-ċar jekk intix qed tara l-paġna jew il-paġna ta' diskussjoni, jew jekk intix qiegħed taqra jew timmodifika paġna.
+* Titjib fil-kaxxa tal-għodda tal-immodifikar: Irranġajna l-kaxxa tal-għoda tal-immodifikar biex issir aktar faċli biex tiġi wżata. Issa, li tifformattja l-paġni hu aktar sempliċi u aktar intuwittiv.
+* Proċedura gwidata għall-ħoloq: Strument faċli biex jiġi wżat li jgħinek iżżid ħolqa lejn paġni wiki oħra kif ukoll lejn siti esterni.
+* Titjib fit-tfittxija: Tejjbina s-suġġerimenti tat-tfittxija sabiex iwassluk lejn il-paġna li qiegħed tfittex aktar malajr.
+* Funzjonijiet oħra: Introduċejna wkoll proċedura gwidata għat-tabelli sabiex toħloq tabelli iktar faċli u funzjoni ta' \"Fittex u biddel\" biex tissimplifika l-modifika tal-paġna.",
+	'prefswitch-main-anon' => '===Ħudni lura===
+Jekk tixtieq titfi l-funzjonijiet l-ġodda, <span class="plainlinks">[$1 agħfas hawnhekk]</span>. Se tkun mistoqsi biex tagħmel il-login jew toħloq kont.',
+	'prefswitch-main-on' => '===Rispons?===
+Nieħdu gost nisimgħu mingħandek. Jekk jogħġbok żur il-<span class="plainlinks">[$1 paġna ta\' rispons]</span>.
+===Ħudni lura===
+Jekk tixtieq titfi l-funzjonijiet l-ġodda, <span class="plainlinks">[$1 agħfas hawnhekk]</span>.',
+	'prefswitch-main-off' => '===Ippruvawhom!===
+Jekk tixtieq tipprova l-funzjonijiet il-ġodda, <span class="plainlinks">[$1 agħfas hawnhekk]</span>.',
+	'prefswitch-survey-intro-feedback' => 'Nieħdu gost nisimgħu mingħandek.
+Jekk jogħġbok imla l-kwestjonarju opzjonali segwenti.',
+	'prefswitch-survey-intro-off' => 'Grazzi talli għamilt użu mill-funzjonijiet il-ġodda.
+Biex tgħinna ntejbuhom, jekk jogħġbok imla l-kwestjonarju opzjonali segwenti.',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -1777,8 +1821,6 @@ $messages['nl'] = array(
 	'prefswitch-survey-cancel-off' => 'Als u de nieuwe mogelijkheden wilt blijven gebruiken, kunt u terugkeren naar $1',
 	'prefswitch-survey-submit-feedback' => 'Terugkoppeling geven',
 	'prefswitch-survey-cancel-feedback' => 'Als u geen terugkoppeling wilt geven, kunt u teruggaan naar $1.',
-	'prefswitch-survey-question-likedislike' => 'Wat vond u goed aan de nieuwe mogelijkheden?
-Wat vond u niet goed aan de mogelijkheden?',
 	'prefswitch-survey-question-whyoff' => 'Waarom wilt u de nieuwe mogelijkheden uitschakelen?
 Vink alstublieft alle mogelijkheden die van toepassing zijn aan.',
 	'prefswitch-survey-answer-whyoff-hard' => 'Het gebruik was te moeilijk.',
@@ -1818,6 +1860,8 @@ De tabbladen bovenaan de pagina geven beter aan of u een pagina bekijkt of een o
 * Hulp bij verwijzingen: een eenvoudig hulpmiddel bij het toevoegen van verwijzingen naar andere pagina's in Wikipedia en externe websites.
 * Verbeteringen in het zoeken: we hebben zoeksuggesties verbeterd zodat u de pagina die u zoekt sneller vindt.
 * Andere nieuwe mogelijkheden: Wij hebben ook een tabelhulpmiddel toegevoegd om het maken van tabellen te vereenvoudigen en een hulpmiddel voor zoeken en vervangen om het bewerken van pagina's te vereenvoudigen.",
+	'prefswitch-main-anon' => '===Terug===
+<span class="plainlinks">[$1 U kunt de nieuwe functionaliteit uitschakelen]</span>. U wordt dan gevraagd om aan te melden of te registreren.',
 	'prefswitch-main-on' => '=== Terugkoppeling? ===
 Wij horen graag van u.
 Bezoek onze <span class="plainlinks">[$1 pagina voor terugkoppeling].</span>
@@ -1851,8 +1895,6 @@ $messages['no'] = array(
 	'prefswitch-survey-cancel-off' => 'Om du vil fortsette å bruke de nye funksjonene kan du gå tilbake til $1.',
 	'prefswitch-survey-submit-feedback' => 'Send tilbakemelding',
 	'prefswitch-survey-cancel-feedback' => 'Hvis du ikke ønsker å gi tilbakemelding kan du gå tilbake til $1.',
-	'prefswitch-survey-question-likedislike' => 'Hva likte du med de nye funksjonene?
-Hva mislikte du med funksjonene?',
 	'prefswitch-survey-question-whyoff' => 'Hvorfor slår du av de nye funksjonene?
 Velg alle som passer.',
 	'prefswitch-survey-answer-whyoff-hard' => 'De var vanskelige å bruke.',
@@ -1912,8 +1954,6 @@ $messages['pl'] = array(
 	'prefswitch-survey-cancel-off' => 'Jeśli chcesz nadal korzystać z nowych funkcjonalności, możesz powrócić do $1.',
 	'prefswitch-survey-submit-feedback' => 'Wyślij opinię',
 	'prefswitch-survey-cancel-feedback' => 'Jeśli nie chcesz przesłać swojej opinii, możesz powrócić do $1.',
-	'prefswitch-survey-question-likedislike' => 'Które nowe funkcjonalności Ci się podobają?
-Co Ci się w nich nie spodobało?',
 	'prefswitch-survey-question-whyoff' => 'Dlaczego rezygnujesz z korzystania z nowych funkcjonalności?
 Należy wybrać wszystkie pasujące odpowiedzi.',
 	'prefswitch-survey-answer-whyoff-hard' => 'Korzystanie było zbyt trudne.',
@@ -1974,8 +2014,6 @@ $messages['pms'] = array(
 	'prefswitch-survey-cancel-off' => "S'a veul continué a dovré le possibilità neuve, a peul torné a $1.",
 	'prefswitch-survey-submit-feedback' => 'Mandé dij sugeriment',
 	'prefswitch-survey-cancel-feedback' => "S'a veul pa dé ëd sugeriment, a peul torné a $1.",
-	'prefswitch-survey-question-likedislike' => "Lòn ch'a l'é piasuje ëd le possibilità neuve? 
-Lòn ch'a l'é pa piasuje ëd le possibilità?",
 	'prefswitch-survey-question-whyoff' => "Përchè a veul disativé le possibilità neuve?
 Për piasì, ch'a selession-a tute le motivassion.",
 	'prefswitch-survey-answer-whyoff-hard' => "A l'era tròp malfé dovrelo.",
@@ -2035,8 +2073,6 @@ $messages['pt'] = array(
 	'prefswitch-survey-cancel-off' => 'Se quiser continuar a usar as novas funcionalidades, pode voltar à $1.',
 	'prefswitch-survey-submit-feedback' => 'Enviar comentário',
 	'prefswitch-survey-cancel-feedback' => 'Se não quiser fazer um comentário, pode voltar à $1.',
-	'prefswitch-survey-question-likedislike' => 'Do que foi que gostou nas novas funcionalidades?
-Do que foi que não gostou nas funcionalidades? \\',
 	'prefswitch-survey-question-whyoff' => 'Pode é que quer desligar as novas funcionalidades?
 Seleccione todas as opções aplicáveis.',
 	'prefswitch-survey-answer-whyoff-hard' => 'Foi demasiado difícil de utilizar.',
@@ -2072,6 +2108,8 @@ Voltar para <span class="plainlinks">[$1 $2]</span>.',
 * Assistente para links: Uma ferramenta de fácil utilização permite-lhe criar tanto links para outras páginas da Wikipédia como links para outros sites externos.
 * Melhoramentos da pesquisa: Melhorámos as sugestões da pesquisa para levá-lo mais rapidamente à página que procura.
 * Outras funcionalidades novas: Também introduzimos um assistente para facilitar a criação de tabelas, e a funcionalidade de procura e substituição para simplificar a edição de páginas.',
+	'prefswitch-main-anon' => '===Voltar atrás===
+Se pretende desactivar as funcionalidades novas, <span class="plainlinks">[$1 clique aqui]</span>. Será pedido que se autentique ou crie uma conta.',
 	'prefswitch-main-on' => '===Opinião?===
 Gostariamos de saber a sua opinião. Por favor, visite a <span class="plainlinks">[$1 página de comentários]</span>.
 ===Voltar===
@@ -2097,8 +2135,6 @@ $messages['ru'] = array(
 	'prefswitch-survey-cancel-off' => 'Если вы хотите продолжить использовать новые возможности, вы можете вернуться к $1.',
 	'prefswitch-survey-submit-feedback' => 'Отправить отзыв',
 	'prefswitch-survey-cancel-feedback' => 'Если вы не хотите оставить отзыв о прототипе, вы можете вернуться к $1.',
-	'prefswitch-survey-question-likedislike' => 'Что вам нравится в новых возможностях?
-Что вам не нравится в них?',
 	'prefswitch-survey-question-whyoff' => 'Почему вы отключаете новые возможности?
 Пожалуйста, выберите все подходящие варианты.',
 	'prefswitch-survey-answer-whyoff-hard' => 'Слишком сложны в использовании.',
@@ -2159,8 +2195,6 @@ $messages['sl'] = array(
 	'prefswitch-survey-cancel-off' => 'Če bi radi še naprej uporabljali nove funkcije, se lahko vrnete na $1.',
 	'prefswitch-survey-submit-feedback' => 'Pošlji povratne informacije',
 	'prefswitch-survey-cancel-feedback' => 'Če ne želite podati povratnih informacij, se lahko vrnete na $1.',
-	'prefswitch-survey-question-likedislike' => 'Kaj vam je bilo všeč pri novih funkcijah?
-Kaj vam ni bilo všeč pri funkcijah?',
 	'prefswitch-survey-question-whyoff' => 'Zakaj izklapljate nove funkcije?
 Prosimo, izberite vse kar ustreza.',
 	'prefswitch-survey-answer-whyoff-hard' => 'Bilo je pretežko uporabljati.',
@@ -2208,8 +2242,6 @@ $messages['sv'] = array(
 	'prefswitch-survey-cancel-off' => 'Om du vill fortsätta att använda de nya funktionerna kan du återgå till $1.',
 	'prefswitch-survey-submit-feedback' => 'Skicka feedback',
 	'prefswitch-survey-cancel-feedback' => 'Om du inte vill ge feedback kan du återgå till $1.',
-	'prefswitch-survey-question-likedislike' => 'Vad tyckte du om de nya funktionerna?
-Vad ogillade du med funktionerna?',
 	'prefswitch-survey-question-whyoff' => 'Varför stänger du av de nya funktionerna?
 Välj alla som stämmer.',
 	'prefswitch-survey-answer-whyoff-hard' => 'Det var för svårt att använda.',
@@ -2233,6 +2265,18 @@ Välj alla som stämmer.',
 	'prefswitch-success-off' => 'Nya funktioner är nu av.',
 	'prefswitch-success-feedback' => 'Dina kommentarer har skickats.',
 	'prefswitch-return' => '<hr style="clear:both"> Återgå till <span class="plainlinks">[$1 $2].</span>',
+	'prefswitch-main-anon' => '=== Ta Mig Tillbaka ===
+Om du vill stänga av de nya funktionerna, <span class="plainlinks">[$1 klicka här]</span>. Du blir ombedd att logga in eller skapa ett konto först.',
+	'prefswitch-main-on' => '===Feedback?===
+Vi hör gärna din åsikt. Besök gärna vår sida för <span class="plainlinks">[$1 feedback]</span>.
+===Ta mig tillbaka!===
+Om du vill stänga av de nya funktionerna, <span class="plainlinks">[$2 klicka här]</span>.',
+	'prefswitch-main-off' => '===Testa dem!===
+Om du vill slå på de nya funktioner, vänligen <span class="plainlinks">[$1 klicka här].</span>',
+	'prefswitch-survey-intro-feedback' => 'Vi vill gärna höra din åsikt.
+Vänligen fyll i den valfria undersökningen nedan.',
+	'prefswitch-survey-intro-off' => 'Tack för att du testar de nya funktionerna.
+Var vänlig och fyll i den valfria undersökningen nedan för att hjälpa oss göra dem bättre.',
 );
 
 /** Telugu (తెలుగు)
@@ -2242,8 +2286,6 @@ $messages['te'] = array(
 	'prefswitch-survey-true' => 'అవును',
 	'prefswitch-survey-false' => 'కాదు',
 	'prefswitch-survey-submit-off' => 'కొత్త సౌలభ్యాలని నిలిపివేయి',
-	'prefswitch-survey-question-likedislike' => 'కొత్త సౌలభ్యాలలో మీకు ఏమేం నచ్చాయి?
-ఏవి నచ్చలేదు?',
 	'prefswitch-survey-answer-whyoff-hard' => 'వాడడానికి చాలా కష్టంగా ఉంది.',
 	'prefswitch-survey-answer-whyoff-didntwork' => 'ఇది సరిగ్గా పనిచేయడం లేదు.',
 	'prefswitch-survey-answer-whyoff-notpredictable' => 'ఇది అనుకున్నట్లుగా పనిచేయడం లేదు',
@@ -2284,8 +2326,6 @@ $messages['tr'] = array(
 	'prefswitch-survey-cancel-off' => 'Yeni özellikleri kullanmaya devam etmek isterseniz, $1 sayfasına geri dönebilirsiniz.',
 	'prefswitch-survey-submit-feedback' => 'Geribildirim verin',
 	'prefswitch-survey-cancel-feedback' => 'Eğer geribildirim vermek istemiyorsanız, $1 sayfasına geri dönebilirsiniz.',
-	'prefswitch-survey-question-likedislike' => 'Yeni özelliklerin beğendiğiniz yönleri nelerdir?
-Özelliklerin sevmediğiniz yönleri nelerdir?',
 	'prefswitch-survey-question-whyoff' => 'Neden yeni özellikleri kapatıyorsunuz?
 Lütfen uygun olanları seçin.',
 	'prefswitch-survey-answer-whyoff-hard' => 'Kullanımı çok zor.',
@@ -2325,8 +2365,6 @@ $messages['vi'] = array(
 	'prefswitch-survey-cancel-off' => 'Để tiếp tục sử dụng các tính năng mới, hãy trở về $1.',
 	'prefswitch-survey-submit-feedback' => 'Gửi phản hồi',
 	'prefswitch-survey-cancel-feedback' => 'Nếu bạn không muốn phản hồi, bạn có thể trở lại $1.',
-	'prefswitch-survey-question-likedislike' => 'Bạn thích điều gì ở các tính năng mới?
-Bạn không thích điều gì ở các tính năng?',
 	'prefswitch-survey-question-whyoff' => 'Tại sao bạn lại tắt các tính năng mới?
 Xin hãy chọn tất cả các ý thích hợp.',
 	'prefswitch-survey-answer-whyoff-hard' => 'Nó khó sử dụng quá.',

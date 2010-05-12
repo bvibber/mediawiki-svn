@@ -702,6 +702,21 @@ $messages['ml'] = array(
 	'wikieditor-publish-dialog-goback' => 'പഴയ താളിലേയ്ക്ക് മടങ്ങുക',
 );
 
+/** Maltese (Malti)
+ * @author Chrisportelli
+ */
+$messages['mt'] = array(
+	'wikieditor-publish-preference' => 'Ippermetti pubblikazzjoni pass pass',
+	'wikieditor-publish-button-publish' => 'Ippubblika',
+	'wikieditor-publish-button-cancel' => 'Annulla',
+	'wikieditor-publish-dialog-title' => 'Ippubblika fuq {{SITENAME}}',
+	'wikieditor-publish-dialog-summary' => 'Taqsira (iddeskrivi fil-qasir it-tibdil li għamilt):',
+	'wikieditor-publish-dialog-minor' => 'Modifika minuri',
+	'wikieditor-publish-dialog-watch' => 'Segwi din il-paġna',
+	'wikieditor-publish-dialog-publish' => 'Ippubblika',
+	'wikieditor-publish-dialog-goback' => 'Mur lura',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

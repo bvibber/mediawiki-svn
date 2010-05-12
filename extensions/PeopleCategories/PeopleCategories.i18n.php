@@ -96,6 +96,13 @@ $messages['ia'] = array(
 	'peoplecategories-desc' => 'Cambia le presentation del nomines de paginas de "Prenomine Nomine de familia" a "Nomine de familia, Prenomine" in paginas de categoria specificate',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'peoplecategories-desc' => 'Perubahan nama halaman dari "NamaDepan NamaBelakang" menjadi "NamaBelakang, Nama depan" pada halaman kategori tertentu',
+);
+
 /** Italian (Italiano)
  * @author Civvì
  */

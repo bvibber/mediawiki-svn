@@ -229,7 +229,7 @@ $messages['bn'] = array(
  */
 $messages['br'] = array(
 	'clicktracking' => 'Heuliañ klikoù an intrudu implijadusted',
-	'clicktracking-desc' => "Heuliañ klikoù, talvezout a ra da heuliañ an darvoudoù na vez ket adkarget ur bajenn d'ho heul",
+	'clicktracking-desc' => "Heuliañ klikoù a dalvez da heuliañ an darvoudoù n'int ket pennkaoz d'ur bajenn da vezañ adkarget",
 	'ct-title' => "Sammad ar c'hlikoù implijerien",
 	'ct-event-name' => 'Anv an darvoud',
 	'ct-expert-header' => 'Klikoù "arbennigourien"',
@@ -1181,6 +1181,33 @@ $messages['ms'] = array(
 	'ct-anon-users' => 'Pengguna tanpa nama',
 );
 
+/** Maltese (Malti)
+ * @author Chrisportelli
+ */
+$messages['mt'] = array(
+	'clicktracking' => "Moniteraġġ tal-klikks tal-Inizjattiva ta' Użabilità",
+	'ct-title' => 'Klikks tal-utenti aggregati',
+	'ct-event-name' => 'Isem tal-avveniment',
+	'ct-expert-header' => 'Klikks fuq "Espert"',
+	'ct-intermediate-header' => 'Klikks fuq "Intermedju"',
+	'ct-beginner-header' => 'Klikks fuq "Prinċipjant"',
+	'ct-total-header' => "Total ta' klikks",
+	'ct-start-date' => 'Data tal-bidu (SSSSXXJJ)',
+	'ct-end-date' => 'Data tat-tmiem (SSSSXXJJ)',
+	'ct-increment-by' => "Numru ta' ġranet li kull punt ta' data jirrappreżenta",
+	'ct-change-graph' => 'Biddel il-grafu',
+	'ct-beginner' => 'Prinċipjant',
+	'ct-intermediate' => 'Intermedju',
+	'ct-expert' => 'Espert',
+	'ct-date-range' => "Intervall ta' dati",
+	'ct-editing' => 'Attwalment timmodifika:',
+	'ct-anon-users' => 'Utenti anonimi',
+	'ct-user-contribs' => 'Total tal-kontribuzzjonijiet tal-utent',
+	'ct-user-span' => 'Kontribuzzjonijiet tal-utent fix-xefaq temporanju adottat',
+	'ct-and' => 'u',
+	'ct-update-table' => 'Aġġorna t-tabella',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -1341,6 +1368,14 @@ $messages['pms'] = array(
 	'ct-user-span' => "Contribussion ëd l'utent ant l'interval",
 	'ct-and' => 'e',
 	'ct-update-table' => 'Modìfica tàula',
+);
+
+/** Western Punjabi (پنجابی)
+ * @author Khalid Mahmood
+ */
+$messages['pnb'] = array(
+	'ct-beginner' => 'مڈلا',
+	'ct-and' => 'تے',
 );
 
 /** Pashto (پښتو)

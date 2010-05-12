@@ -96,6 +96,13 @@ $messages['ia'] = array(
 	'js2support-desc' => 'Supporto de JS2 in forma de un extension',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'js2support-desc' => 'JS2 mendukung sebagai ekstensi',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */

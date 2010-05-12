@@ -347,6 +347,7 @@ $messages['et'] = array(
 $messages['eu'] = array(
 	'chemicalsources' => 'Kimikako iturriak',
 	'chemicalsource-desc' => '<nowiki><chemform></nowiki> formula kimikoentzatko etiketa gehitzen du',
+	'chemicalsources-desc' => '[[Special:ChemicalSources|Orrialde berezia]] kimikako iturrietarako',
 	'chemFunctions_ListPage' => 'Kimikako iturriak',
 	'chemFunctions_DataList' => 'Hemen azpiko webguneetan bilatzen ari zaren substantzia kimikoari buruzko informazioa aurkitu dezakezu.<br /><br />
 * <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Compound $MIXCASNameFormula at NIST</a><br />

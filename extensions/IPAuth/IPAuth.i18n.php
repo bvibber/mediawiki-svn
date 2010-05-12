@@ -101,6 +101,13 @@ $messages['es'] = array(
 	'ipauth-desc' => 'Inicio de sesión automático para direcciones IP fijas',
 );
 
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'ipauth-desc' => 'IP helbideetako saio-hasiera automatikoa',
+);
+
 /** Finnish (Suomi)
  * @author Centerlink
  */

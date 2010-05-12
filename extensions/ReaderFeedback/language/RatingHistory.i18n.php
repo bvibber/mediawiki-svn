@@ -267,6 +267,7 @@ $messages['bn'] = array(
 /** Breton (Brezhoneg)
  * @author Fohanno
  * @author Fulup
+ * @author Gwenn-Ael
  * @author Y-M D
  */
 $messages['br'] = array(
@@ -281,13 +282,23 @@ $messages['br'] = array(
 	'ratinghistory-year' => 'bloaz tremenet',
 	'ratinghistory-3years' => 'tri bloaz diwezhañ',
 	'ratinghistory-ave' => 'Keidenn : $1',
+	'ratinghistory-chart' => 'Prizadurioù evit al lennerien a-hed an amzer',
 	'ratinghistory-purge' => 'riñsañ ar grubuilh',
+	'ratinghistory-table' => 'Gwel a-vras eus ar prizadurioù gant al lennerien',
 	'ratinghistory-users' => 'Implijerien o deus priziet traoù',
 	'ratinghistory-graph' => '$2 war "$3" ($1 {{PLURAL:$1|adweladenn|adweladenn}})',
 	'ratinghistory-svg' => 'Gwelet evel SVG',
 	'ratinghistory-table-rating' => 'Priziañ',
 	'ratinghistory-table-votes' => 'Mouezhioù',
+	'ratinghistory-none' => "Evit ar mare n'eus ket trawalc'h a lennerien o reiñ o reiñ o ali evit sevel grafikoù.",
 	'ratinghistory-ratings' => "'''Alc'hwez :''' '''(1)''' - Fall ; '''(2)''' - Dister ; '''(3)''' - Etre ; '''(4)''' - Mat ; '''(5)''' - Dreist.",
+	'ratinghistory-legend' => "
+'''niver a brizadurioù dre zeiz''' <font color=\"red\">''(ruz)''</font>, l’'''priziadur keitat dre zeiz''' <font color=\"blue\">''(glas)''</font> et l’'''priziadur keitat war ober''' <font color=\"green\">''(gwer)''</font> zo diskwelet war ar grafik amañ dindan, dre zeiz.
+Keidenn an holl briziadurioù dre zeiz dibabet eo ar’'''priziadur keitat war ober''.
+Alc'hwez :
+
+'''(1)''' - Fall; '''(2)''' - Dister; '''(3)''' - Etre; '''(4)''' - Mat; '''(5)''' - Dreist.",
+	'ratinghistory-graph-scale' => "'''Prizadurioù dre zeiz''' <font color=\"red\">''(ruz)''</font> diskwelet er skeuliad ''1:\$1''.",
 	'right-feedback' => 'Implijout ar furmskrid da reiñ keloù evit priziañ ur bajenn',
 );
 

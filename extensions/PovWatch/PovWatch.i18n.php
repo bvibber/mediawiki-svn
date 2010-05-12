@@ -250,6 +250,7 @@ $messages['bn'] = array(
 
 /** Breton (Brezhoneg)
  * @author Fohanno
+ * @author Fulup
  * @author Y-M D
  */
 $messages['br'] = array(
@@ -263,11 +264,16 @@ $messages['br'] = array(
 	'povwatch_unsubscribed' => 'Tennet eo bet ho enskrivadur da PovWatch.',
 	'povwatch_invalid_title' => 'Direizh eo an titl diferet',
 	'povwatch_pushed' => 'Ouzhpennet eo bet ar bajenn [[$1]] da roll evezhiañ {{PLURAL:$2|un|$2}} implijer.',
+	'povwatch_intro' => 'Ur servij a dalvez da ouzhpennañ pajennoù zo tabut warno da roll evezhiañ ar verourien dedennet, hep na vefe merzet, eo PovWatch.
+
+Marilh ar pajennoù ouzhpennet da ziwezhañ a gaver war [[Special:PovWatch/log]].',
 	'povwatch_subscriber_list' => 'Ur [[Special:PovWatch/subscribers|roll koumananterien]] zo da gaout.',
 	'povwatch_subscriber_list_intro' => '<strong>Roll an dud koumanantet</strong>',
 	'povwatch_not_allowed_subscribers' => "N'oc'h ket aotreet da welet roll ar goumananterien PovWatch.",
 	'povwatch_unknown_subpage' => 'Ispajenn dianav.',
 	'povwatch_push' => 'Bountañ',
+	'povwatch_push_intro' => "Grit gant ar furmskrid dindan evit ouzhpennañ pajennoù da roll evezhiañ an implijerien goumanantet.
+Merkit mat an titl difazi : Ma vez ouzhpennet anv ur bajenn n'eus ket anezhi ne vo ket posupl d'he lemel kuit war-lerc'h.",
 	'povwatch_title' => 'Titl :',
 	'povwatch_comment' => 'Addispleg evit an deizlevr :',
 	'povwatch_no_log' => "N'ez eus moned ebet er marilh.",
@@ -281,7 +287,7 @@ Evit en em enskrivañ klikit war ar bouton da-heul.",
 	'povwatch_added' => 'ouzhpennet',
 	'right-povwatch_admin' => 'Merañ gwirioù an implijerien evit ouzhpennañ pajennoù da roll evezhiañ implijerien all.',
 	'right-povwatch_user' => 'Ouzhpennañ pajennoù da roll evezhiañ implijerien all',
-	'action-povwatch_admin' => 'melestriñ ar gwirioù implijer evit PovWatch',
+	'action-povwatch_admin' => 'merañ ar gwirioù implijer evit PovWatch',
 	'action-povwatch_user' => 'ouzhpennañ ar bajenn-mañ da roll evezhiañ un implijer all',
 );
 

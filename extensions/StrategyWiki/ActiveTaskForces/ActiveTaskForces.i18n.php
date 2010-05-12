@@ -146,6 +146,7 @@ $messages['ml'] = array(
  */
 $messages['nl'] = array(
 	'activetaskforces' => 'Actieve taskforces',
+	'active-task-forces-desc' => "Geeft het aantal bewerkingen aan taskforcepagina's weer",
 	'active-task-forces-intro' => "Aantal bewerkingen aan taskforcepagina's in de afgelopen {{PLURAL:$1|dag|$1 dagen}}.",
 );
 
@@ -181,5 +182,14 @@ $messages['ru'] = array(
 	'activetaskforces' => 'Активные комиссии',
 	'active-task-forces-desc' => 'Показывает число правок на страницах целевых групп',
 	'active-task-forces-intro' => 'Количество правок страниц комиссий за {{PLURAL:$1|последний $1 день|последние $1 дня|последние $1 дней}}.',
+);
+
+/** Swedish (Svenska)
+ * @author Dafer45
+ */
+$messages['sv'] = array(
+	'activetaskforces' => 'Aktiva arbetsgrupper',
+	'active-task-forces-desc' => 'Visar antal redigeringar på arbetsgruppsidor',
+	'active-task-forces-intro' => 'Antal redigeringar av arbetsgruppsidor under senaste ((PLURALIS: $1 | $1 dagen | $1 dagarna)).',
 );
 

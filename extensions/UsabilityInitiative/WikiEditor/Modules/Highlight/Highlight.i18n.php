@@ -269,6 +269,13 @@ $messages['ml'] = array(
 	'wikieditor-highlight-preference' => 'തിരുത്തുമ്പോൾ വിന്യാസങ്ങൾ പ്രമുഖമാക്കിക്കാട്ടൽ സജ്ജമാക്കുക',
 );
 
+/** Maltese (Malti)
+ * @author Chrisportelli
+ */
+$messages['mt'] = array(
+	'wikieditor-highlight-preference' => 'Attiva l-kontroll ortografiku matul il-modifika',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
