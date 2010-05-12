@@ -1,0 +1,1 @@
+/var/www/mwEmbedStandAlone/languages/classes/LanguageBat_smg.js

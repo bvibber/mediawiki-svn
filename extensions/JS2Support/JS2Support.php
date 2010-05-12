@@ -20,17 +20,26 @@ $wgExtensionMessagesFiles[ 'JS2Support' ] = $js2Dir . 'JS2Support.i18n.php';
 /**
  * Setup the js2 extension:
  */
-$wgExtensionFunctions[] = 'wfReMapOutputPage';
-function wfReMapOutputPage(){
+$wgExtensionFunctions[] = 'wfSetupJS2';
+function wfSetupJS2(){
 	global $wgOut, $js2Dir, $wgAutoloadClasses, $wgScriptLoaderNamedPaths;
 
 	// Remap output page as part of the extension setup
 	$wgOut = new StubObject( 'wgOut', 'ScriptLoaderOutputPage' );
-
 	$wgAutoloadClasses[ 'ScriptLoaderOutputPage' ] = $js2Dir . 'ScriptLoaderOutputPage.php';
 
 	// Include all the mediaWiki autoload classes:
 	require( $js2Dir . 'JS2AutoLoader.php');
+
+	// Update all the javascript modules classNames and localization by reading respective loader.js files
+	// @dependent on all extensions defining $wgExtensionJavascriptLoader paths in config file ( not in setup )
+	// @NOTE parsing javascript could be delayed or avoided if we require more php extension configuration
+	// 		extension would have to configure the path to javascript module localizations and possibly class paths
+	//
+	// @NOTE runtime for loadClassPaths with 8 or so loaders with 100 or so named paths is
+	// is around .002 seconds on my laptop. Could probably be further optimized and of course it only runs
+	// on non-cached pages.
+	jsClassLoader::loadClassPaths();
 }
 
 /**

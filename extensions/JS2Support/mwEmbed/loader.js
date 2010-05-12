@@ -13,7 +13,7 @@
 * These components are pieces of the core mwEmbed lib
 * They are in separate files to keep the code easier to maintain. 
 *
-* All mwEmbed core classes are loaded on every mwEmbed request
+* All mwEmbed core classes are loaded on every mwEmbed class request
 * 
 * NOTE: All user / application module code should go into /modules
 * and enabled in mwEnabledModuleList below.
@@ -119,59 +119,62 @@ mw.setConfig( 'loaderContext', '' );
  */
 mw.addClassFilePaths( {
 	"mwEmbed"				: "mwEmbed.js",
-	"window.jQuery"			: "jquery/jquery-1.4.2.js",		
+	"window.jQuery"			: "libraries/jquery/jquery-1.4.2.js",		
 	
 	"mw.Language"			: "languages/mw.Language.js",
-	"$j.replaceText.js"		: "jquery/plugins/jquery.replaceText.js",
+
+	"JSON" : "libraries/json/json2.js",
+
+	"$j.replaceText.js"		: "libraries/jquery/plugins/jquery.replaceText.js",
 	
-	"$j.fn.menu" 			: "jquery/plugins/jquery.menu/jquery.menu.js",
-	"mw.style.jquerymenu" 	: "jquery/plugins/jquery.menu/jquery.menu.css",
+	"$j.fn.menu" 			: "libraries/jquery/plugins/jquery.menu/jquery.menu.js",
+	"mw.style.jquerymenu" 	: "libraries/jquery/plugins/jquery.menu/jquery.menu.css",
 	
-	"$j.fn.pngFix"			: "jquery/plugins/jquery.pngFix.js",
-	"$j.fn.autocomplete"	: "jquery/plugins/jquery.autocomplete.js",
-	"mw.style.autocomplete"	: "jquery/plugins/jquery.autocomplete.css",
+	"$j.fn.pngFix"			: "libraries/jquery/plugins/jquery.pngFix.js",
+	"$j.fn.autocomplete"	: "libraries/jquery/plugins/jquery.autocomplete.js",
+	"mw.style.autocomplete"	: "libraries/jquery/plugins/jquery.autocomplete.css",
 	
-	"$j.fn.hoverIntent"		: "jquery/plugins/jquery.hoverIntent.js",
-	"$j.fn.datePicker"		: "jquery/plugins/jquery.datePicker.js",
-	"$j.ui"					: "jquery/jquery.ui/ui/ui.core.js",	
+	"$j.fn.hoverIntent"		: "libraries/jquery/plugins/jquery.hoverIntent.js",
+	"$j.fn.datePicker"		: "libraries/jquery/plugins/jquery.datePicker.js",
+	"$j.ui"					: "libraries/jquery/jquery.ui/ui/ui.core.js",	
 	
-	"mw.style.jqueryUiRedmond" : "jquery/jquery.ui/themes/redmond/jquery-ui-1.7.1.custom.css",
-	"mw.style.jqueryUiSmoothness"	: "jquery/jquery.ui/themes/smoothness/jquery-ui-1.7.1.custom.css",
+	"mw.style.jqueryUiRedmond" : "libraries/jquery/jquery.ui/themes/redmond/jquery-ui-1.7.1.custom.css",
+	"mw.style.jqueryUiSmoothness"	: "libraries/jquery/jquery.ui/themes/smoothness/jquery-ui-1.7.1.custom.css",
 	"mw.style.mwCommon"		: "skins/common/common.css",
 	
 	"mw.testLang"			:  "tests/testLang.js",		
 
-	"$j.cookie"				: "jquery/plugins/jquery.cookie.js",
-	"$j.contextMenu"		: "jquery/plugins/jquery.contextMenu.js",
-	"$j.fn.suggestions"		: "jquery/plugins/jquery.suggestions.js",
-	"$j.fn.textSelection" 	: "jquery/plugins/jquery.textSelection.js",
-	"$j.browserTest"		: "jquery/plugins/jquery.browserTest.js",
-	"$j.fn.jWizard"			: "jquery/plugins/jquery.jWizard.js",
+	"$j.cookie"				: "libraries/jquery/plugins/jquery.cookie.js",
+	"$j.contextMenu"		: "libraries/jquery/plugins/jquery.contextMenu.js",
+	"$j.fn.suggestions"		: "libraries/jquery/plugins/jquery.suggestions.js",
+	"$j.fn.textSelection" 	: "libraries/jquery/plugins/jquery.textSelection.js",
+	"$j.browserTest"		: "libraries/jquery/plugins/jquery.browserTest.js",
+	"$j.fn.jWizard"			: "libraries/jquery/plugins/jquery.jWizard.js",
 
-	"$j.effects.blind"		: "jquery/jquery.ui/ui/effects.blind.js",
-	"$j.effects.drop"		: "jquery/jquery.ui/ui/effects.drop.js",
-	"$j.effects.pulsate"	: "jquery/jquery.ui/ui/effects.pulsate.js",
-	"$j.effects.transfer"	: "jquery/jquery.ui/ui/effects.transfer.js",
-	"$j.ui.droppable"		: "jquery/jquery.ui/ui/ui.droppable.js",
-	"$j.ui.slider"			: "jquery/jquery.ui/ui/ui.slider.js",
-	"$j.effects.bounce"		: "jquery/jquery.ui/ui/effects.bounce.js",
-	"$j.effects.explode"	: "jquery/jquery.ui/ui/effects.explode.js",
-	"$j.effects.scale"		: "jquery/jquery.ui/ui/effects.scale.js",
-	"$j.ui.datepicker"		: "jquery/jquery.ui/ui/ui.datepicker.js",
-	"$j.ui.progressbar"		: "jquery/jquery.ui/ui/ui.progressbar.js",
-	"$j.ui.sortable"		: "jquery/jquery.ui/ui/ui.sortable.js",
-	"$j.effects.clip"		: "jquery/jquery.ui/ui/effects.clip.js",
-	"$j.effects.fold"		: "jquery/jquery.ui/ui/effects.fold.js",
-	"$j.effects.shake"		: "jquery/jquery.ui/ui/effects.shake.js",
-	"$j.ui.dialog"			: "jquery/jquery.ui/ui/ui.dialog.js",
-	"$j.ui.resizable"		: "jquery/jquery.ui/ui/ui.resizable.js",
-	"$j.ui.tabs"			: "jquery/jquery.ui/ui/ui.tabs.js",
-	"$j.effects.core"		: "jquery/jquery.ui/ui/effects.core.js",
-	"$j.effects.highlight"	: "jquery/jquery.ui/ui/effects.highlight.js",
-	"$j.effects.slide"		: "jquery/jquery.ui/ui/effects.slide.js",
-	"$j.ui.accordion"		: "jquery/jquery.ui/ui/ui.accordion.js",
-	"$j.ui.draggable"		: "jquery/jquery.ui/ui/ui.draggable.js",
-	"$j.ui.selectable"		: "jquery/jquery.ui/ui/ui.selectable.js"	
+	"$j.effects.blind"		: "libraries/jquery/jquery.ui/ui/effects.blind.js",
+	"$j.effects.drop"		: "libraries/jquery/jquery.ui/ui/effects.drop.js",
+	"$j.effects.pulsate"	: "libraries/jquery/jquery.ui/ui/effects.pulsate.js",
+	"$j.effects.transfer"	: "libraries/jquery/jquery.ui/ui/effects.transfer.js",
+	"$j.ui.droppable"		: "libraries/jquery/jquery.ui/ui/ui.droppable.js",
+	"$j.ui.slider"			: "libraries/jquery/jquery.ui/ui/ui.slider.js",
+	"$j.effects.bounce"		: "libraries/jquery/jquery.ui/ui/effects.bounce.js",
+	"$j.effects.explode"	: "libraries/jquery/jquery.ui/ui/effects.explode.js",
+	"$j.effects.scale"		: "libraries/jquery/jquery.ui/ui/effects.scale.js",
+	"$j.ui.datepicker"		: "libraries/jquery/jquery.ui/ui/ui.datepicker.js",
+	"$j.ui.progressbar"		: "libraries/jquery/jquery.ui/ui/ui.progressbar.js",
+	"$j.ui.sortable"		: "libraries/jquery/jquery.ui/ui/ui.sortable.js",
+	"$j.effects.clip"		: "libraries/jquery/jquery.ui/ui/effects.clip.js",
+	"$j.effects.fold"		: "libraries/jquery/jquery.ui/ui/effects.fold.js",
+	"$j.effects.shake"		: "libraries/jquery/jquery.ui/ui/effects.shake.js",
+	"$j.ui.dialog"			: "libraries/jquery/jquery.ui/ui/ui.dialog.js",
+	"$j.ui.resizable"		: "libraries/jquery/jquery.ui/ui/ui.resizable.js",
+	"$j.ui.tabs"			: "libraries/jquery/jquery.ui/ui/ui.tabs.js",
+	"$j.effects.core"		: "libraries/jquery/jquery.ui/ui/effects.core.js",
+	"$j.effects.highlight"	: "libraries/jquery/jquery.ui/ui/effects.highlight.js",
+	"$j.effects.slide"		: "libraries/jquery/jquery.ui/ui/effects.slide.js",
+	"$j.ui.accordion"		: "libraries/jquery/jquery.ui/ui/ui.accordion.js",
+	"$j.ui.draggable"		: "libraries/jquery/jquery.ui/ui/ui.draggable.js",
+	"$j.ui.selectable"		: "libraries/jquery/jquery.ui/ui/ui.selectable.js"	
 
 } );
 

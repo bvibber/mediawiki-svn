@@ -1,0 +1,1 @@
+/var/www/mwEmbedStandAlone/languages/mw.Language.js

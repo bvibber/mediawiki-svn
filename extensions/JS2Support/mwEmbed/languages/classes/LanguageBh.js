@@ -1,0 +1,1 @@
+/var/www/mwEmbedStandAlone/languages/classes/LanguageBh.js

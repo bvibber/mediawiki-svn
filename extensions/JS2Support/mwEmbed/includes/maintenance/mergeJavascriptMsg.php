@@ -1,0 +1,1 @@
+/var/www/mwEmbedStandAlone/includes/maintenance/mergeJavascriptMsg.php

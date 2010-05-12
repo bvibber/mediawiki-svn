@@ -336,6 +336,14 @@ class ScriptLoaderOutputPage extends OutputPage {
 	}
 
 	/**
+	 * Remap the includeJQuery to do nothing
+	 * @param modules {Array} does nothing in the present output page emulate that nothing behavior here
+	 */
+	public function includeJQuery(  $modules = array() ) {
+		// jquery is included via script-loader includeAllPageJS function do nothing
+		return $modules;
+	}
+	/**
 	 * Get style sheets grouped by  "media", "condition" & "bucket" attributes
 	 * call getLinkedScriptLoaderCss for each group
 	 */
@@ -450,7 +458,7 @@ class ScriptLoaderOutputPage extends OutputPage {
 					$titlePage = $parts[0];
 					$titleArg = '&' . $parts[1];
 				}
-				// Check script-loader for msg text
+				// Add the script
 				$this->addScriptFile(
 					Skin::makeUrl( $titlePage,
 							"action=raw$jsCache&gen=js$titleArg"
@@ -487,8 +495,9 @@ class ScriptLoaderOutputPage extends OutputPage {
 				$this->addScript( Html::linkedScript( $path . "?" . $this->getURIDparam( $className ) ) );
 			}
 		}
+
 		// Included script without script-loader
-		// Generate the localized msgs inline since we can't rely on scriptloader to localize
+		// Generate the localized msgs inline since we can't rely on ScriptLoader to localize
 		$inlineMsg = $this->mScriptLoader->getInlineMsgFromClass( $className );
 		if( $inlineMsg != '' ) {
 			$this->addScript( Html::inlineScript( $inlineMsg ) );
@@ -504,8 +513,6 @@ class ScriptLoaderOutputPage extends OutputPage {
 	 */
 	function getClassFromPath( $path ) {
 		global $wgScriptLoaderNamedPaths, $wgScriptPath;
-		// Make sure we have the scriptClass paths loaded:
-		jsClassLoader::loadClassPaths();
 
 		// Check the autoload js class list
 		foreach( $wgScriptLoaderNamedPaths as $className => $classPath ) {
