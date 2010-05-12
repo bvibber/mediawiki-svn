@@ -53,8 +53,10 @@
 			'$j.ui.datepicker',
 			'$j.effects.core',
 			'$j.effects.slide',
-			'$j.effects.pulsate',
+			//'$j.effects.pulsate',
 			'$j.fn.autocomplete',
+			'$j.fn.tipsy',
+			'mw.style.tipsy',
 			'mw.style.autocomplete'
 		],
 		[

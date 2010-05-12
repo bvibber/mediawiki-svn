@@ -21,7 +21,7 @@
 		"mw.FirefoggRender"		: "modules/libSequencer/mw.FirefoggRender.js",
 		"mw.RemoteSearchDriver"	: "mw.RemoteSearchDriver.js",		
 
-    	"mw.style.AddMedia" : "css/mw.style.AddMedia.css",
+    "mw.style.AddMedia" : "css/mw.style.AddMedia.css",
 		
 		"baseRemoteSearch"		: "searchLibs/baseRemoteSearch.js",
 		"mediaWikiSearch"		: "searchLibs/mediaWikiSearch.js",
@@ -65,7 +65,9 @@
 				'$j.ui.draggable',
 				'$j.ui.dialog',
 				'$j.ui.tabs',
-				'$j.ui.sortable'        	
+				'$j.ui.sortable',
+
+        'mw.style.AddMedia'
 			]
 		];
 		mw.load( request , function() {

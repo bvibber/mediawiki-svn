@@ -87,7 +87,15 @@ mw.addMessages( {
 	"mwe-prevent-close": "Your files are still uploading. Are you sure you want to navigate away from this page?",
 
 	"mwe-upwiz-files-complete": "Your files finished uploading!",
-	"mwe-upwiz-deeds-later": "Set deeds and licenses for each file individually on the next page"
+	"mwe-upwiz-deeds-later": "Set deeds and licenses for each file individually on the next page",
+
+	"mwe-upwiz-tooltip-author": "The name of the person who took the photo, or painted the picture, drew the drawing, etc.",
+	"mwe-upwiz-tooltip-source": "Where this digital file came from -- could be a URL, or a book or publication",
+	"mwe-upwiz-tooltip-sign": "You can use your wiki User name or your real name. In both cases, this will be linked to your wiki User page",
+	"mwe-upwiz-tooltip-title": "A short title for the image. You may use plain language with spaces, but no line breaks. This title must be unlike all other titles in this wiki.",
+	"mwe-upwiz-tooltip-description": "Briefly describe everything notable about the work. For a photo, mention the main things that are depicted, the occasion or the place.",
+	"mwe-upwiz-tooltip-other": "Any other information you want to include about this work. You may use wikitext code."
+	
 } );
 
 
@@ -969,7 +977,9 @@ mw.UploadWizardDescription = function( languageCode ) {
 	_this.languageMenu = mw.LanguageUpWiz.getMenu("lang", languageCode);
 	$j(_this.languageMenu).addClass('mwe-upwiz-desc-lang-select');
 	_this.description = $j('<textarea name="desc" rows="2" cols="36" class="mwe-upwiz-desc-lang-text"></textarea>')
-				.growTextArea().get(0);
+				.attr( 'title', gM( 'mwe-upwiz-tooltip-description' ) )
+				.tipsy( { gravity: 'w', trigger: 'focus' } )
+				.growTextArea();
 	_this.div = $j('<div class="mwe-upwiz-desc-lang-container"></div>')
 		       .append( _this.languageMenu )
 	               .append( _this.description );
@@ -1026,7 +1036,7 @@ mw.UploadWizardDetails = function( upload, containerDiv ) {
 	_this.descriptionsDiv = $j( '<div class="mwe-upwiz-details-descriptions mwe-upwiz-details-input"></div>' );
 	
 
-	_this.descriptionAdder = $j( '<a id="mwe-upwiz-desc-add"/>' )
+	_this.descriptionAdder = $j( '<a class="mwe-upwiz-desc-add"/>' )
 					.attr( 'href', '#' )
 					.html( gM( 'mwe-upwiz-desc-add-0' ) )
 					.click( function( ) { _this.addDescription(); } );
@@ -1040,7 +1050,10 @@ mw.UploadWizardDetails = function( upload, containerDiv ) {
 	// Commons specific help for titles 
 	//    http://commons.wikimedia.org/wiki/Commons:File_naming
 	//    http://commons.wikimedia.org/wiki/MediaWiki:Filename-prefix-blacklist
+	//    XXX make sure they can't use ctrl characters or returns or any other bad stuff.
 	_this.titleInput = $j( '<textarea type="text" rows="1" class="mwe-title mwe-long-textarea"></textarea>' )
+		.attr( 'title', gM( 'mwe-upwiz-tooltip-title' ) )
+		.tipsy( { gravity: 'w', trigger: 'focus' } )
 		.keyup( function() { 
 			_this.setFilenameFromTitle();
 		} )
@@ -1049,7 +1062,8 @@ mw.UploadWizardDetails = function( upload, containerDiv ) {
 			spinner: function(bool) { _this.toggleDestinationBusy(bool); },
 			preprocess: function( name ) { return _this.getFilenameFromTitle(); }, // XXX this is no longer a pre-process
 			processResult: function( result ) { _this.processDestinationCheck( result ); } 
-		} );
+		} )
+		;
 
 	_this.titleErrorDiv = $j('<div></div>');
 
@@ -1106,7 +1120,11 @@ mw.UploadWizardDetails = function( upload, containerDiv ) {
 				.append( $j( '<div class="mwe-upwiz-details-more-label"></div>' ).append( gM( 'mwe-upwiz-filename-tag' ) ) )
 				.append( $j( '<div class="mwe-upwiz-details-filename mwe-upwiz-details-more-input"></div>' ) ) ) );
 	
-	_this.otherInformationInput = $j( '<textarea class="mwe-upwiz-other-textarea"></textarea>' );
+	_this.otherInformationInput = $j( '<textarea class="mwe-upwiz-other-textarea"></textarea>' )
+		.growTextArea()
+		.attr( 'title', gM( 'mwe-upwiz-tooltip-other' ) )
+		.tipsy( { gravity: 'w', trigger: 'focus' } );
+
 	var otherInformationDiv = $j('<div></div>')	
 		.append( $j( '<div class="mwe-upwiz-details-more-label">' ).append( gM( 'mwe-upwiz-other' ) ) ) 
 		.append( _this.otherInformationInput );
@@ -1997,6 +2015,7 @@ mw.UploadWizard.prototype = {
 		} );
 */
 
+
 		// DETAILS div
 		$j( '#mwe-upwiz-stepdiv-details .mwe-upwiz-button-next' ).click( function() {
 			_this.detailsSubmit( function() { 
@@ -2688,6 +2707,8 @@ mw.UploadWizardDeedChooser.prototype = {
 				} );
 
 				_this.setQuantity( 1 );
+
+
 			},
 
 
@@ -2711,9 +2732,15 @@ mw.UploadWizardDeedChooser.prototype = {
 
 				// synchronize both username signatures
 				// set initial value to configured username
-				// if one changes all the others change
+				// if one changes all the others change (keyup event)
+				//
+				// also set tooltips ( the title, tipsy() )
 				$j( _this.deedChooser.selector ).find( '.mwe-upwiz-sign' )
-					.attr( { value: mw.getConfig( 'userName' ) } )
+					.attr( {
+						title: gM( 'mwe-upwiz-tooltip-sign' ), 
+						value: mw.getConfig( 'userName' ) 
+					} )
+					.tipsy( { trigger: 'focus', gravity: 'w' } )
 					.keyup( function() { 
 						var thisInput = this;
 						var thisVal = $j( thisInput ).val();
@@ -2744,8 +2771,12 @@ mw.UploadWizardDeedChooser.prototype = {
 		var _this = this;
 	 	var sourceInput = $j('<textarea class="mwe-source mwe-long-textarea" name="source" rows="1" cols="40"></textarea>' )
 					.growTextArea()
+					.attr( 'title', gM( 'mwe-upwiz-tooltip-source' ) )
+					.tipsy( { trigger: 'focus', gravity: 'w' } );
 		var authorInput = $j('<textarea class="mwe-author mwe-long-textarea" name="author" rows="1" cols="40"></textarea>' )
 					.growTextArea()
+					.attr( 'title', gM( 'mwe-upwiz-tooltip-author' ) )
+					.tipsy( { trigger: 'focus', gravity: 'w' } );
 		licenseInputDiv = $j( '<div class="mwe-upwiz-deed-license"></div>' );
 		licenseInput = new mw.UploadWizardLicenseInput( licenseInputDiv );
 		licenseInput.setDefaultValues();
@@ -2994,8 +3025,11 @@ jQuery.fn.growTextArea = function( options ) {
 		return this;
 	};
 
+	this.addClass( 'mwe-grow-textarea' );
+	
 	this.change(this.resizeIfNeeded);
 	this.keyup(this.resizeIfNeeded);
+
 
 	return this;
 };
