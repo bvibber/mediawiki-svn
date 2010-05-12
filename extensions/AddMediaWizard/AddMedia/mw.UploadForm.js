@@ -1,0 +1,1 @@
+/var/www/mwEmbedStandAlone/modules/AddMedia/mw.UploadForm.js

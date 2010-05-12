@@ -1,0 +1,1 @@
+/var/www/mwEmbedStandAlone/modules/ClipEdit/pixastic-editor/uidata.js

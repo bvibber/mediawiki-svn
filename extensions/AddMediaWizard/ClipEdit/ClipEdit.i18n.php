@@ -1,0 +1,1 @@
+/var/www/mwEmbedStandAlone/modules/ClipEdit/ClipEdit.i18n.php

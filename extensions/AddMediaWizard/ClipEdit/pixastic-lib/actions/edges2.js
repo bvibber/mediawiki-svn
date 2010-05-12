@@ -1,0 +1,1 @@
+/var/www/mwEmbedStandAlone/modules/ClipEdit/pixastic-lib/actions/edges2.js

@@ -1,0 +1,1 @@
+/var/www/mwEmbedStandAlone/modules/ClipEdit/mw.ClipEdit.js
