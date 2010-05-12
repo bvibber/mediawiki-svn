@@ -159,8 +159,9 @@ class jsScriptLoader {
 		// Save to the file cache
 		if ( $wgUseFileCache && !$this->debug ) {
 			$status = $this->sFileCache->saveToFileCache( $this->output );
-			if ( $status !== true )
-			$this->errorMsg .= $status;
+			if ( $status !== true ) {
+				$this->errorMsg .= $status;
+			}
 		}
 
 		// Check for an error msg
@@ -168,7 +169,9 @@ class jsScriptLoader {
 			//just set the content type (don't send cache header)
 			header( 'Content-Type: text/javascript' );
 			echo 'alert(\'Error With ScriptLoader ::' .
-				 str_replace( "\n", '\'+"\n"+' . "\n'", htmlspecialchars( $this->errorMsg )  ). '\');'."\n";
+					 str_replace( "\n", '\'+"\n"+' . "\n'",
+					 	xml::escapeJsString( $this->errorMsg )
+					 ) . '\');'."\n";
 			echo trim( $this->output );
 		} else {
 			// All good, let's output "cache" headers

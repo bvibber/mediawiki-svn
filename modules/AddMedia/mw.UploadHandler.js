@@ -23,16 +23,15 @@ mw.addMessages( {
 	"mwe-file-thumbnail-no" : "The filename begins with <b><tt>$1<\/tt><\/b>",
 	"mwe-go-to-resource" : "Go to resource page",
 	"mwe-upload-misc-error" : "Unknown upload error",	
-	"mwe-wgfogg_warning_bad_extension" : "You have selected a file with an unsuported extension (<a href=\"http:\/\/commons.wikimedia.org\/wiki\/Commons:Firefogg#Supported_File_Types\">more information<\/a>).",
-	"thumbnail-more" : "Enlarge",
-	
-	"license-header" : "Licensing",
-	"filedesc" : "Summary",
-	"filesource" : "Source:",
-	"filestatus" : "Copyright status:"
+	"mwe-wgfogg_warning_bad_extension" : "You have selected a file with an unsuported extension (<a href=\"http:\/\/commons.wikimedia.org\/wiki\/Commons:Firefogg#Supported_File_Types\">more information<\/a>).",	
+	"mwe-thumbnail-more" : "Enlarge",	
+	"mwe-license-header" : "Licensing",
+	"mwe-filedesc" : "Summary",
+	"mwe-filesource" : "Source:",
+	"mwe-filestatus" : "Copyright status:"
 });
 
-var default_uh_options = {
+var defaultUploadHandlerOptions = {
 	// Target api to upload to
 	'apiUrl' : null,
 	
@@ -123,12 +122,12 @@ mw.UploadHandler.prototype = {
 	
 	/**
 	 * Object initialization
-	 * @param {Object} options BaseUpload options see default_uh_options
+	 * @param {Object} options BaseUpload options see defaultUploadHandlerOptions
 	 */
 	init: function( options ) {
 		if ( !options )
 			options = {};
-		$j.extend( this, default_uh_options, options );
+		$j.extend( this, defaultUploadHandlerOptions, options );
 		
 		// Set a apiUrl if unset
 		if( !this.apiUrl ) {
@@ -211,17 +210,18 @@ mw.UploadHandler.prototype = {
 	/**
 	 * onSubmit handler for the upload form
 	 */
-	onSubmit: function( evt ) {
+	onSubmit: function() {
 		var _this = this;
 		mw.log( 'Base::onSubmit:  isRawFormUpload:' + this.formDirectSubmit );
-		var currentForm = this.getForm();
-				
-		if( currentForm.onsubmit ){
-			if( ! currentForm.onsubmit() ){
-				return false;
-			}			
-		}
 		
+		// Run the original onsubmit (if not run yet set flag to avoid excessive chaining)
+		if ( typeof( this.orig_onsubmit ) == 'function' ) {
+			if ( ! this.orig_onsubmit() ) {
+				//error in orig submit return false;
+				return false;
+			}
+		}		
+
 		// Reinstate the ['name'=comment'] filed since
 		// commons hacks removes wgUploadDesction from the form 
 		var $form = $j( this.form );
@@ -236,7 +236,6 @@ mw.UploadHandler.prototype = {
 		}
 		
 		var uploadDesc =  _this.getUploadDescription();
-		// update the form
 		if( uploadDesc ) {
 			$form.find("[name='comment']").val( uploadDesc );
 		}
@@ -512,7 +511,7 @@ mw.UploadHandler.prototype = {
 	/**
 	* Get the upload description, append the license if available
 	*
-	* NOTE: this hack ontop of the commons hack will be depreciated in favor of the uploadWizard
+	* NOTE: wpUploadDescription should be a configuration option. 
 	*
 	* @param {Boolean} useCache If the upload description cache can be used. 
 	* @return {String} 
@@ -535,9 +534,12 @@ mw.UploadHandler.prototype = {
 			var source =  ( $j("[name='wpSource']").length ) ? $j("[name='wpSource']").val() : '';
 			
 			// Run the JS equivalent of SpecialUpload.php getInitialPageText	
-			comment_value = this.getCommentText( comment_value, license, copyStatus, source  );			
+			comment_value = this.getCommentText( comment_value, license, copyStatus, source  );
+			this.rewriteDescriptionText = false;
 		}
-		mw.log( 'getUploadDescription:: rewrite:' + comment_value + ' ucr:' + this.rewriteDescriptionText );				
+		var cat = $j( '#wpUploadDescription' );
+		debugger;
+		mw.log( 'getUploadDescription:: new val:' + comment_value  );		
 		return comment_value;
 	},
 	
@@ -794,9 +796,7 @@ mw.UploadHandler.prototype = {
 				this.ignoreWarningsSubmit();
 			break;
 			case 'returnToForm':
-				this.rewriteDescriptionText = true;
-				//clear out the warning session id ( so we don't submit to the same session key )
-				this.warnings_sessionkey = false;
+				this.rewriteDescriptionText = false;
 			break;
 			case 'disableDirectSubmit':
 				this.formDirectSubmit = false;				

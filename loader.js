@@ -49,9 +49,8 @@ var mwEnabledModuleList = [
 	'EmbedPlayer',
 	'ApiProxy',
 	'Sequencer',
-	'TimedText',
-	'UploadWizard'	
-];  
+	'TimedText'
+];
 
 /**
 * mwEmbed default config values.  
