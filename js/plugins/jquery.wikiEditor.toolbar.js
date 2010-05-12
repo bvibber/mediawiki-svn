@@ -111,8 +111,7 @@ api : {
 						.append(
 							$( $.wikiEditor.modules.toolbar.fn.buildCharacter( data[type][character], actions ) )
 								.mousedown( function( e ) {
-									// Save scroll position for IE
-									context.$textarea.data( 'scrollTop', context.$textarea.scrollTop() );
+									context.fn.saveStuffForIE();
 									// No dragging!
 									e.preventDefault();
 									return false;
@@ -344,8 +343,7 @@ fn: {
 						.data( 'action', tool.action )
 						.data( 'context', context )
 						.mousedown( function( e ) {
-							// Save scroll position for IE
-							context.$textarea.data( 'scrollTop', context.$textarea.scrollTop() );
+							context.fn.saveStuffForIE();
 							// No dragging!
 							e.preventDefault();
 							return false;
@@ -382,8 +380,7 @@ fn: {
 								.data( 'action', tool.list[option].action )
 								.data( 'context', context )
 								.mousedown( function( e ) {
-									// Save scroll position for IE
-									context.$textarea.data( 'scrollTop', context.$textarea.scrollTop() );
+									context.fn.saveStuffForIE();
 									// No dragging!
 									e.preventDefault();
 									return false;
@@ -499,8 +496,7 @@ fn: {
 						.html( html )
 						.children()
 						.mousedown( function( e ) {
-							// Save scroll position for IE
-							context.$textarea.data( 'scrollTop', context.$textarea.scrollTop() );
+							context.fn.saveStuffForIE();
 							// No dragging!
 							e.preventDefault();
 							return false;

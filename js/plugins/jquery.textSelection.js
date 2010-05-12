@@ -52,13 +52,13 @@ encapsulateSelection: function( options ) {
 				options.post += ' ';
 			}
 		}
-		var selText = $(this).textSelection( 'getSelection' );
 		var isSample = false;
 		if ( this.style.display == 'none' ) {
 			// Do nothing
 		} else if ( this.selectionStart || this.selectionStart == '0' ) {
 			// Mozilla/Opera
 			$(this).focus();
+			var selText = $(this).textSelection( 'getSelection' );
 			var startPos = this.selectionStart;
 			var endPos = this.selectionEnd;
 			var scrollTop = this.scrollTop;
@@ -90,13 +90,10 @@ encapsulateSelection: function( options ) {
 			}
 		} else if ( document.selection && document.selection.createRange ) {
 			// IE
-			// For some mysterious reason, clicking a toolbar button is enough to make
-			// the textarea scroll. Check if a toolbar button's mousedown handler saved
-			// the scroll position and use it if available.
-			var scrollTop = $(this).data( 'scrollTop' ) || this.scrollTop;
-			$(this).data( 'scrollTop', null );
 			$(this).focus();
-			this.scrollTop = scrollTop;
+			context.fn.restoreStuffForIE();
+			var selText = $(this).textSelection( 'getSelection' );
+			var scrollTop = this.scrollTop;
 			var range = document.selection.createRange();
 			if ( options.ownline && range.moveStart ) {
 				var range2 = document.selection.createRange();

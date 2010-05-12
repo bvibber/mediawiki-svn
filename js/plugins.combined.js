@@ -6254,13 +6254,13 @@ encapsulateSelection: function( options ) {
 				options.post += ' ';
 			}
 		}
-		var selText = $(this).textSelection( 'getSelection' );
 		var isSample = false;
 		if ( this.style.display == 'none' ) {
 			// Do nothing
 		} else if ( this.selectionStart || this.selectionStart == '0' ) {
 			// Mozilla/Opera
 			$(this).focus();
+			var selText = $(this).textSelection( 'getSelection' );
 			var startPos = this.selectionStart;
 			var endPos = this.selectionEnd;
 			var scrollTop = this.scrollTop;
@@ -6292,13 +6292,10 @@ encapsulateSelection: function( options ) {
 			}
 		} else if ( document.selection && document.selection.createRange ) {
 			// IE
-			// For some mysterious reason, clicking a toolbar button is enough to make
-			// the textarea scroll. Check if a toolbar button's mousedown handler saved
-			// the scroll position and use it if available.
-			var scrollTop = $(this).data( 'scrollTop' ) || this.scrollTop;
-			$(this).data( 'scrollTop', null );
 			$(this).focus();
-			this.scrollTop = scrollTop;
+			context.fn.restoreStuffForIE();
+			var selText = $(this).textSelection( 'getSelection' );
+			var scrollTop = this.scrollTop;
 			var range = document.selection.createRange();
 			if ( options.ownline && range.moveStart ) {
 				var range2 = document.selection.createRange();
@@ -8325,6 +8322,33 @@ if ( !context || typeof context == 'undefined' ) {
 					body.scrollTop( y );
 				}
 			$element.trigger( 'scrollToTop' );
+		},
+		/**
+		 * Save scrollTop and cursor position for IE.
+		 */
+		'saveStuffForIE': function() {
+			// Only need this for IE in textarea mode
+			if ( !$.browser.msie || context.$iframe )
+				return;
+			var IHateIE = {
+				'scrollTop' : context.$textarea.scrollTop(),
+				'pos': context.$textarea.textSelection( 'getCaretPosition', { startAndEnd: true } )
+			};
+			context.$textarea.data( 'IHateIE', IHateIE );
+		},
+		/**
+		 * Restore scrollTo and cursor position for IE.
+		 */
+		'restoreStuffForIE': function() {
+			// Only need this for IE in textarea mode
+			if ( !$.browser.msie || context.$iframe )
+				return;
+			var IHateIE = context.$textarea.data( 'IHateIE' );
+			if ( !IHateIE )
+				return;
+			context.$textarea.scrollTop( IHateIE.scrollTop );
+			context.$textarea.textSelection( 'setSelection', { start: IHateIE.pos[0], end: IHateIE.pos[1] } );
+			context.$textarea.data( 'IHateIE', null );
 		}
 	};
 	
@@ -10935,8 +10959,7 @@ api : {
 						.append(
 							$( $.wikiEditor.modules.toolbar.fn.buildCharacter( data[type][character], actions ) )
 								.mousedown( function( e ) {
-									// Save scroll position for IE
-									context.$textarea.data( 'scrollTop', context.$textarea.scrollTop() );
+									context.fn.saveStuffForIE();
 									// No dragging!
 									e.preventDefault();
 									return false;
@@ -11168,8 +11191,7 @@ fn: {
 						.data( 'action', tool.action )
 						.data( 'context', context )
 						.mousedown( function( e ) {
-							// Save scroll position for IE
-							context.$textarea.data( 'scrollTop', context.$textarea.scrollTop() );
+							context.fn.saveStuffForIE();
 							// No dragging!
 							e.preventDefault();
 							return false;
@@ -11206,8 +11228,7 @@ fn: {
 								.data( 'action', tool.list[option].action )
 								.data( 'context', context )
 								.mousedown( function( e ) {
-									// Save scroll position for IE
-									context.$textarea.data( 'scrollTop', context.$textarea.scrollTop() );
+									context.fn.saveStuffForIE();
 									// No dragging!
 									e.preventDefault();
 									return false;
@@ -11323,8 +11344,7 @@ fn: {
 						.html( html )
 						.children()
 						.mousedown( function( e ) {
-							// Save scroll position for IE
-							context.$textarea.data( 'scrollTop', context.$textarea.scrollTop() );
+							context.fn.saveStuffForIE();
 							// No dragging!
 							e.preventDefault();
 							return false;
