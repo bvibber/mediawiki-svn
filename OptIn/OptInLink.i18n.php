@@ -130,11 +130,11 @@ $messages['bn'] = array(
  */
 $messages['br'] = array(
 	'optin-try' => 'Amprouiñ Beta',
-	'tooltip-pt-optin-try' => 'Esaeañ elfennoù nevez',
+	'tooltip-pt-optin-try' => 'Amprouiñ ar perzhioù nevez',
 	'optin-leave' => 'Dilezel Beta',
-	'tooltip-pt-optin-leave' => 'Diweredekaat an elfennoù nevez',
+	'tooltip-pt-optin-leave' => 'Diweredekaat ar perzhioù nevez',
 	'optin-feedback' => 'Roit ho soñj',
-	'tooltip-pt-optin-feedback' => 'Rannit ho soñj ganeomp diwar-benn an elfennoù nevez',
+	'tooltip-pt-optin-feedback' => 'Rannit ho soñj ganeomp diwar-benn ar perzhioù nevez',
 );
 
 /** Bosnian (Bosanski)
@@ -696,8 +696,11 @@ $messages['ms'] = array(
  */
 $messages['mt'] = array(
 	'optin-try' => 'Ipprova l-Beta',
+	'tooltip-pt-optin-try' => 'Ipprova l-funzjonijiet l-ġodda',
 	'optin-leave' => 'Ħalli l-Beta',
+	'tooltip-pt-optin-leave' => 'Itfi l-funzjonijiet il-ġodda',
 	'optin-feedback' => 'Rispons tal-Beta',
+	'tooltip-pt-optin-feedback' => 'Ibgħat rispons fuq l-esperjenza tiegħek bil-funzjonijiet il-ġodda',
 );
 
 /** Nedersaksisch (Nedersaksisch)

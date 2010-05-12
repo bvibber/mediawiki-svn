@@ -99,6 +99,13 @@ $messages['ia'] = array(
 	'wikieditor-addMediaWizard-preference' => 'Activar le gadget "Assistente pro adder multimedia"',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'wikieditor-addMediaWizard-preference' => 'Aktifkan gadget "Tambah media wizard"',
+);
+
 /** Italian (Italiano)
  * @author Una giornata uggiosa '94
  */
@@ -139,6 +146,13 @@ $messages['mk'] = array(
  */
 $messages['ml'] = array(
 	'wikieditor-addMediaWizard-preference' => '"മീഡിയ ഉൾപ്പെടുത്തൽ സഹായി" ഗാഡ്ജറ്റ് സജ്ജമാക്കുക',
+);
+
+/** Maltese (Malti)
+ * @author Chrisportelli
+ */
+$messages['mt'] = array(
+	'wikieditor-addMediaWizard-preference' => 'Ippermetti l-aċċessorju "Żid proċedura gwidata għall-medja"',
 );
 
 /** Dutch (Nederlands)

@@ -417,6 +417,16 @@ $messages['ml'] = array(
 	'wikieditor-loading' => 'ശേഖരിക്കുന്നു',
 );
 
+/** Maltese (Malti)
+ * @author Chrisportelli
+ */
+$messages['mt'] = array(
+	'wikieditor' => "Interfaċċa avvanzata ta' modifika tat-test tal-wiki",
+	'wikieditor-desc' => "Tipprovdi interfaċċa ta' modifika tat-test tal-wiki estendibbli u ħafna moduli li jipprovdu aktar funzjonalitajiet",
+	'wikieditor-wikitext-tab' => 'Test tal-wiki',
+	'wikieditor-loading' => "Tiela'",
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

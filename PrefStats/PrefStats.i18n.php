@@ -255,7 +255,7 @@ Kefluniañ $wgPrefStatsTrackPrefs evit heuliañ an dibaboù.',
 	'prefstats-factor-twoweeks' => 'pemzektez',
 	'prefstats-factor-fourweeks' => 'peder sizhun',
 	'prefstats-factor-default' => "distreiñ d'ar skeul dre ziouer",
-	'prefstats-legend-out' => 'Na venn ket kemer perzh ken',
+	'prefstats-legend-out' => 'Ne venn ket kemer perzh ken',
 	'prefstats-legend-in' => 'A venn kemer perzh',
 );
 
@@ -1503,6 +1503,36 @@ Tatarajahkan $wgPrefStatsTrackPrefs untuk menjejaki keutamaan-keutamaan.',
 	'prefstats-factor-default' => 'kembali ke skala lalai',
 	'prefstats-legend-out' => 'Berhenti',
 	'prefstats-legend-in' => 'Menyertai',
+);
+
+/** Maltese (Malti)
+ * @author Chrisportelli
+ */
+$messages['mt'] = array(
+	'prefstats' => 'Statistika tal-preferenzi',
+	'prefstats-desc' => 'Tikseb statistika fuq kemm-il utent attivaw ċerti preferenzi',
+	'prefstats-title' => 'Statistika tal-preferenzi',
+	'prefstats-list-intro' => 'Attwalment, il-preferenzi segwenti huma segwiti.
+Agħfas fuq waħda biex tara l-istatistika fuqha.',
+	'prefstats-noprefs' => 'L-ebda preferenza mhi segwita fil-mument. Ikkonfigura $wgPrefStatsTrackPrefs sabiex issegwi l-preferenzi.',
+	'prefstats-counters' => '* $1 {{PLURAL:$1|utent attiva|utenti attivaw}} din il-preferenza wara li l-istatistika fuq il-preferenzi ġew attivati
+** $2 {{PLURAL:$2|utent għad għandu l-preferenza attivata|utenti għad għandhom il-preferenza attivata}}
+** $3 {{PLURAL:$3|utent għandu l-preferenza|utenti għandhom il-preferenza}} diżattivata',
+	'prefstats-counters-expensive' => "* $1 {{PLURAL:$1|utent attiva|utenti attivaw}} din il-preferenza minn mindu l-istatistika fuq il-preferenzi ġew attivati
+** $2 {{PLURAL:$2|utent għad għandu l-preferenza attivata|utenti għad għandhom il-preferenza attivata}}
+** $3 {{PLURAL:$3|utent għandu l-preferenza|utenti għandhom il-preferenza}} diżattivata
+* B'kollox, $4 {{PLURAL:$4|utent immodifika|utenti mmodifikaw}} din il-preferenza",
+	'prefstats-xaxis' => 'Tul (sigħat)',
+	'prefstats-factors' => 'Uri kull: $1',
+	'prefstats-factor-hour' => 'siegħa',
+	'prefstats-factor-sixhours' => 'sitt sigħat',
+	'prefstats-factor-day' => 'ġurnata',
+	'prefstats-factor-week' => 'ġimgħa',
+	'prefstats-factor-twoweeks' => 'ġimgħatejn',
+	'prefstats-factor-fourweeks' => "erba' ġimgħat",
+	'prefstats-factor-default' => 'lura lejn l-iskala predefinita',
+	'prefstats-legend-out' => 'Ma ħadtx sehem',
+	'prefstats-legend-in' => 'Ħadt sehem',
 );
 
 /** Erzya (Эрзянь)

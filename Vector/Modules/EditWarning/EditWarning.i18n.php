@@ -77,7 +77,7 @@ $messages['bn'] = array(
  */
 $messages['br'] = array(
 	'vector-editwarning-warning' => "Mar kuitait ar bajenn-mañ e c'hallit koll ar c'hemmoù degaset ganeoc'h.
-Ma'z oc'h luget e c'hallit diweredekaat ar c'hemenn-diwall-mañ e rann \"{{int:prefs-editing}}\" ho penndibaboù.",
+Ma'z oc'h kevreet e c'hallit diweredekaat ar c'hemenn-diwall-mañ e rann \"{{int:prefs-editing}}\" ho penndibaboù.",
 	'vector-editwarning-preference' => 'Kas keloù din pa guitaan ur bajenn degaset kemmoù enni hep enrollañ',
 );
 
@@ -443,6 +443,14 @@ $messages['ms'] = array(
 	'vector-editwarning-warning' => 'Meninggalkan laman ini mungkin akan menyebabkan anda kehilangan sebarang perubahan yang telah anda lakukan.
 Anda boleh melumpuhkan amaran in di bahagian "{{int:prefs-editing}}" dalam keutamaan anda.',
 	'vector-editwarning-preference' => 'Beri saya amaran apabila saya meninggalkan sesebuah laman penyuntingan tanpa menyimpan perubahan.',
+);
+
+/** Maltese (Malti)
+ * @author Chrisportelli
+ */
+$messages['mt'] = array(
+	'vector-editwarning-warning' => 'Jekk tħalli din il-paġna jista\' jwassal sabiex titlef kwalunkwe tibdil li tkun għamilt. Jekk int tinsab fil-kont tiegħek, tista\' tneħħi dan l-avviż fis-sezzjoni "{{int:prefs-editing}}" tal-preferenzi tiegħek.',
+	'vector-editwarning-preference' => "Avżani kull meta nħalli paġna ta' modifika b'modifiki li għadhom ma ġewx salvati",
 );
 
 /** Dutch (Nederlands)

@@ -106,6 +106,13 @@ $messages['ia'] = array(
 	'wikieditor-templates-preference' => 'Activar patronos plicabile',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'wikieditor-templates-preference' => 'Aktifkan fungsi menutup templat',
+);
+
 /** Italian (Italiano)
  * @author Una giornata uggiosa '94
  */
@@ -146,6 +153,13 @@ $messages['mk'] = array(
  */
 $messages['ml'] = array(
 	'wikieditor-templates-preference' => 'ഫലകം ചുരുക്കൽ സജ്ജമാക്കുക',
+);
+
+/** Maltese (Malti)
+ * @author Chrisportelli
+ */
+$messages['mt'] = array(
+	'wikieditor-templates-preference' => 'Ippermetti l-funzjoni li taħbi l-mudelli',
 );
 
 /** Dutch (Nederlands)

@@ -419,6 +419,16 @@ $messages['ml'] = array(
 	'wikieditor-template-editor-dialog-cancel' => 'റദ്ദാക്കുക',
 );
 
+/** Maltese (Malti)
+ * @author Chrisportelli
+ */
+$messages['mt'] = array(
+	'wikieditor-template-editor-preference' => "Ippermetti l-modifika tal-mudelli permezz ta' moduli",
+	'wikieditor-template-editor-dialog-title' => 'Immodifika l-mudell',
+	'wikieditor-template-editor-dialog-submit' => 'Aġġorna',
+	'wikieditor-template-editor-dialog-cancel' => 'Annulla',
+);
+
 /** Dutch (Nederlands)
  * @author McDutchie
  * @author Siebrand
