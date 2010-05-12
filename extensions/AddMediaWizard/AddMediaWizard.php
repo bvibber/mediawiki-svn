@@ -29,8 +29,8 @@ $wgExtensionCredits['jsModule'][] = array(
 	'url' => 'http://www.mediawiki.org/wiki/Extension:AddMediaWizard'
 );
 
-$dir = dirname(__FILE__) . '/';
-$wgExtensionMessagesFiles['AddMediaWizard'] = $dir . 'AddMediaWizard.i18n.php';
+$AMWdir = dirname(__FILE__) . '/';
+$wgExtensionMessagesFiles['AddMediaWizard'] = $AMWdir . 'AddMediaWizard.i18n.php';
 
 // Check for JS2 support
 if( ! isset( $wgEnableJS2system ) ){
@@ -44,10 +44,14 @@ $wgScriptLoaderNamedPaths[ 'AMWEditPage' ] = 'extensions/AddMediaWizard/AddMedia
 $wgHooks['EditPageBeforeEditToolbar'][] = 'AddMediaWizard::addJS';
 
 
-// Add the javascript loader for "AddMedia module" 
-$wgExtensionJavascriptLoader[] = 'extensions/AddMediaWizard/ModAddMedia/loader.js';
-// Add the javascript loader for "ClipEdit module" 
-$wgExtensionJavascriptLoader[] = 'extensions/AddMediaWizard/ModClipEdit/loader.js';
+// Add the javascript loader for "AddMedia module"
+$wgExtensionJavascriptLoader[] = 'extensions/AddMediaWizard/AddMedia/loader.js';
+
+// Add the javascript loader for "ClipEdit module"
+$wgExtensionJavascriptLoader[] = 'extensions/AddMediaWizard/ClipEdit/loader.js';
+
+// Add the apiProxy ( client ) so that we can upload cross domain to commons
+$wgExtensionJavascriptLoader[] = 'extensions/AddMediaWizard/ApiProxy/loader.js';
 
 class AddMediaWizard {
 	public static function addJS( $toolbar) {
