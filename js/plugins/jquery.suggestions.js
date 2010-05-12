@@ -257,7 +257,7 @@ $.suggestions = {
 			case 13:
 				context.data.$container.hide();
 				preventDefault = wasVisible;
-				selected = context.data.$container.find( '.suggestions-result-current' )
+				selected = context.data.$container.find( '.suggestions-result-current' );
 				if ( selected.is( '.suggestions-special' ) ) {
 					if ( typeof context.config.special.select == 'function' ) {
 						context.config.special.select.call( selected, context.data.$textbox );
@@ -266,6 +266,8 @@ $.suggestions = {
 					if ( typeof context.config.result.select == 'function' ) {
 						$.suggestions.highlight( context, selected, true );
 						context.config.result.select.call( selected, context.data.$textbox );
+					} else {
+						$.suggestions.highlight( context, selected, true );
 					}
 				}
 				break;
