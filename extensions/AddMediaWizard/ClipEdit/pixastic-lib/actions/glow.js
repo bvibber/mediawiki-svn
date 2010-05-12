@@ -1,1 +1,0 @@
-/var/www/mwEmbedStandAlone/modules/ClipEdit/pixastic-lib/actions/glow.js

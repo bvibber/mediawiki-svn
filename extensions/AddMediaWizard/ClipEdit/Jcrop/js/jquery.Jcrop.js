@@ -1,1 +1,0 @@
-/var/www/mwEmbedStandAlone/modules/ClipEdit/Jcrop/js/jquery.Jcrop.js

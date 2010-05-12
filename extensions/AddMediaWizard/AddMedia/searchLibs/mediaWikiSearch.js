@@ -1,1 +1,0 @@
-/var/www/mwEmbedStandAlone/modules/AddMedia/searchLibs/mediaWikiSearch.js

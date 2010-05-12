@@ -1,1 +1,0 @@
-/var/www/mwEmbedStandAlone/modules/ClipEdit/pixastic-editor/pixastic.all.js
