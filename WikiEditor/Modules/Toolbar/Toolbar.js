@@ -1801,7 +1801,7 @@ $j(document).ready( function() {
 		'browsers': {
 			// Left-to-right languages
 			'ltr': {
-				'msie': [['>=', 7]],
+				'msie': false,
 				'firefox': [['>=', 2]],
 				'opera': false,
 				'safari': [['>=', 3]],
@@ -1809,7 +1809,7 @@ $j(document).ready( function() {
 			},
 			// Right-to-left languages
 			'rtl': {
-				'msie': [['>=', 8]],
+				'msie': false,
 				'firefox': [['>=', 2]],
 				'opera': false,
 				'safari': [['>=', 3]],
