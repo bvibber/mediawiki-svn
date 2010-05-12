@@ -180,6 +180,16 @@ class jsClassLoader {
 		self::loadClassPaths();
 		return self::$moduleList;
 	}
+
+	/**
+	* Get the list of enabled components
+	*/
+	public static function getComponentsList(){
+		self::loadClassPaths();
+		return self::$coreComponentsList;
+	}
+
+
 	/**
 	 * Build a list of components to be included with mwEmbed
 	 */
