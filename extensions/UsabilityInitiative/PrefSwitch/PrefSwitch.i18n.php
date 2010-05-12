@@ -20,8 +20,8 @@ $messages['en'] = array(
 	'prefswitch-survey-cancel-off' => 'If you would like to continue using the new features, you can return to $1.',
 	'prefswitch-survey-submit-feedback' => 'Send feedback',
 	'prefswitch-survey-cancel-feedback' => 'If you do not want to provide feedback, you can return to $1.',
-	'prefswitch-survey-question-likedislike' => 'What did you like about the new features?
-What did you dislike about the features?',
+	'prefswitch-survey-question-like' => 'What did you like about the new features?',
+	'prefswitch-survey-question-dislike' => 'What did you dislike about the features?',
 	'prefswitch-survey-question-whyoff' => 'Why are you turning off the new features?
 Please select all that apply.',
 	'prefswitch-survey-answer-whyoff-hard' => 'It was too hard to use.',
@@ -58,13 +58,13 @@ Please select all that apply.',
 	'prefswitch-survey-answer-os-linux' => 'Linux',
 	'prefswitch-survey-answer-os-other' => 'Other operating system:',
 	'prefswitch-survey-question-res' => 'What is the resolution of your screen?',
-	'prefswitch-title-on' => 'What\'s new?',
+	'prefswitch-title-on' => 'New features',
 	'prefswitch-title-switched-on' => 'Enjoy!',
 	'prefswitch-title-off' => 'Turn new features off',
 	'prefswitch-title-switched-off' => 'Thanks',
 	'prefswitch-title-feedback' => 'Feedback',
-	'prefswitch-success-on' => 'New features are now turned on.',
-	'prefswitch-success-off' => 'New features are now turned off.',
+	'prefswitch-success-on' => 'New features are now turned on. We hope you enjoy using the new features. You may always turn them back off by clicking on the "[[Special:UsabilityInitiativePrefSwitch|Take me back]]" link at the top of the page.',
+	'prefswitch-success-off' => 'New features are now turned off. Thanks for trying the new features. You may always turn them back on by clicking on the "[[Special:UsabilityInitiativePrefSwitch|New features]]" link at the top of the page.',
 	'prefswitch-success-feedback' => 'Your feedback has been sent.',
 	'prefswitch-return' => '<hr style="clear:both">
 Return to <span class="plainlinks">[$1 $2]</span>.',
@@ -87,10 +87,10 @@ We would love to hear from you.  Please visit our <span class=\"plainlinks\">[$1
 If you would like to turn off the new features, please <span class=\"plainlinks\">[$2 click here]</span>.",
 	'prefswitch-main-off' => "===Try them out!===
 If you would like to turn on the new features, please <span class=\"plainlinks\">[$1 click here]</span>.",
-	'prefswitch-survey-intro-feedback' => "We would love to hear from you.
-Please fill out the optional survey below.",
+	'prefswitch-survey-intro-feedback' => 'We would love to hear from you.
+Please fill out the optional survey below before clicking "[[#prefswitch-survey-submit-feedback|{{int:prefswitch-survey-submit-feedback}}]]".',
 	'prefswitch-survey-intro-off' => 'Thanks for trying out our new features.
-To help us improve them, please fill out the optional survey below.',
+To help us improve them, please fill out the optional survey below before clicking "[[#prefswitch-survey-submit-off|{{int:prefswitch-survey-submit-off}}]]".',
 );
 
 /** Message documentation (Message documentation)
