@@ -1782,11 +1782,8 @@ class FlaggedRevsHooks {
 	}
 	
 	public static function addToRCQuery( &$conds, &$tables, &$join_conds, $opts ) {
-		global $wgUser;
-		if ( $wgUser->isAllowed( 'review' ) ) {
-			$tables[] = 'flaggedpages';
-			$join_conds['flaggedpages'] = array( 'LEFT JOIN', 'fp_page_id = rc_cur_id' );
-		}
+		$tables[] = 'flaggedpages';
+		$join_conds['flaggedpages'] = array( 'LEFT JOIN', 'fp_page_id = rc_cur_id' );
 		return true;
 	}
 	
@@ -2101,7 +2098,8 @@ class FlaggedRevsHooks {
 		# Includes restriction dropdown and expiry dropdown & field.
 		$output .= "<tr><td>";
 		$output .= Xml::openElement( 'fieldset' );
-		$output .= Xml::element( 'legend', null, wfMsg( 'flaggedrevs-protect-legend' ) );
+		$legendMsg = wfMsgExt( 'flaggedrevs-protect-legend', 'parseinline' );
+		$output .= "<legend>{$legendMsg}</legend>";
 		# Add a "no restrictions" level
 		$effectiveLevels = FlaggedRevs::getRestrictionLevels();
 		array_unshift( $effectiveLevels, "none" );

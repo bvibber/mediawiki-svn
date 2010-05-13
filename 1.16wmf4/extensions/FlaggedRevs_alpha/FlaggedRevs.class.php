@@ -749,15 +749,19 @@ class FlaggedRevs {
 		ParserOutput $currentOutput = null
 	) {
 		global $wgMemc, $wgEnableParserCache, $wgUser;
-		# Must be the same revision as the current
+		# Stable text revision must be the same as the current
 		if ( $srev->getRevId() < $article->getTitle()->getLatestRevID() ) {
 			return false;
 		}
-		# Must have same file
+		# Stable file revision must be the same as the current
 		if ( $article instanceof ImagePage && $article->getFile() ) {
 			if ( $srev->getFileTimestamp() < $article->getFile()->getTimestamp() ) {
 				return false;
 			}
+		}
+		# If using the current version of includes, there is nothing else to check.
+		if ( FlaggedRevs::inclusionSetting() == FR_INCLUDES_CURRENT ) {
+			return true;
 		}
 		# Try the cache...
 		$key = wfMemcKey( 'flaggedrevs', 'includesSynced', $article->getId() );
@@ -854,31 +858,41 @@ class FlaggedRevs {
 	}
 	
 	/**
-	 * @param Article $article
-	 * @param int $revId, the *stable* rev ID
-	 * @param bool $forUpdate, use master?
-	 * @return int
 	 * Get number of revs since the stable revision
+	 * @param Article $article
+	 * @param int $sRevId, the *stable* rev ID
+	 * @param int $flags FR_MASTER
+	 * @returns int
 	 */
-	public static function getRevCountSince( Article $article, $revId, $forUpdate = false ) {
+	public static function getRevCountSince( Article $article, $sRevId, $flags = 0 ) {
 		global $wgMemc, $wgParserCacheExpireTime;
-		# Try the cache
 		$count = null;
-		$key = wfMemcKey( 'flaggedrevs', 'unreviewedrevs', $article->getId() );
-		if ( !$forUpdate ) {
-			$val = $wgMemc->get( $key );
-			if ( is_integer( $val ) ) $count = $val;
-		}
-		# Otherwise, fetch from DB as needed
-		if ( is_null( $count ) ) {
-			$db = $forUpdate ? wfGetDB( DB_MASTER ) : wfGetDB( DB_SLAVE );
-			$count = (int)$db->selectField( 'revision', 'COUNT(*)',
-				array( 'rev_page' => $article->getId(), "rev_id > " . intval( $revId ) ),
-				__METHOD__ );
-			# Save to cache if there are such edits
-			if ( $count ) {
-				$wgMemc->set( $key, $count, $wgParserCacheExpireTime );
+		# Try the cache...
+		$key = wfMemcKey( 'flaggedrevs', 'countPending', $article->getId() );
+		if ( !( $flags & FR_MASTER ) ) {
+			$tuple = self::getMemcValue( $wgMemc->get( $key ), $article );
+			# Items is cached and newer that page_touched...
+			if ( $tuple !== false ) {
+				# Confirm that cache value was made against the same stable rev Id.
+				# This avoids lengthy cache pollution if $sRevId is outdated.
+				list( $cRevId, $cPending ) = explode( '-', $tuple, 2 );
+				if ( $cRevId == $sRevId ) {
+					$count = (int)$cPending;
+				}
 			}
+		}
+		# Otherwise, fetch result from DB as needed...
+		if ( is_null( $count ) ) {
+			$db = ( $flags & FR_MASTER )
+				? wfGetDB( DB_MASTER )
+				: wfGetDB( DB_SLAVE );
+			$count = $db->selectField( 'revision',
+				'COUNT(*)',
+				array( 'rev_page' => $article->getId(), 'rev_id > ' . (int)$sRevId ),
+				__METHOD__ );
+			# Save result to cache...
+			$data = self::makeMemcObj( "{$sRevId}-{$count}" );
+			$wgMemc->set( $key, $data, $wgParserCacheExpireTime );
 		}
 		return $count;
 	}
@@ -925,15 +939,17 @@ class FlaggedRevs {
 		# Alter table metadata
 		$dbw->replace( 'flaggedpages',
 			array( 'fp_page_id' ),
-			array( 'fp_stable'     => $revId,
+			array(
+				'fp_stable'        => $revId,
 				'fp_reviewed'      => ( $latest == $revId ) ? 1 : 0,
 				'fp_quality'       => ( $maxQuality === false ) ? null : $maxQuality,
 				'fp_page_id'       => $article->getId(),
-				'fp_pending_since' => $nextTimestamp ? $dbw->timestamp( $nextTimestamp ) : null ),
+				'fp_pending_since' => $nextTimestamp ? $dbw->timestamp( $nextTimestamp ) : null
+			),
 			__METHOD__
 		);
 		# Reset cache of # of unreviewed revs
-		self::getRevCountSince( $article, $revId, true );
+		self::getRevCountSince( $article, $revId, FR_MASTER );
 		# Alter pending edit tracking table
 		self::updatePendingList( $article, $latest );
 		return true;
