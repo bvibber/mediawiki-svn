@@ -1,5 +1,5 @@
 <?php
-/*
+/**
  * Internationalisation for AddMedia
  *
  * @file
@@ -7,6 +7,7 @@
  */
 
 $messages = array();
+
 $messages['en'] = array(
 	'mwe-upload-stats-fileprogress' => '$1 of $2',
 	'mwe-upload-unknown-size' => 'Unknown size',
@@ -216,6 +217,7 @@ $messages['en'] = array(
 	'mwe-upload-multi' => 'Upload {{PLURAL:$1|file|files}}',
 	'mwe-review-upload' => 'Review file {{PLURAL:$1|upload|uploads}}',
 );
+
 $messages['af'] = array(
 	'mwe-upload-stats-fileprogress' => '$1 van $2',
 	'mwe-upload-unknown-size' => 'Onbekend grootte',
@@ -271,6 +273,7 @@ $messages['af'] = array(
 	'fogg-hidepreview' => 'Versteek voorskou',
 	'mwe-upload-multi' => 'Laai {{PLURAL:$1|\'n lêer|lêers}}',
 );
+
 $messages['ar'] = array(
 	'mwe-cancel-confim' => 'أمتأكد من أنك تريد الإلغاء؟',
 	'mwe-successfulupload' => 'نجح الرفع',
@@ -335,6 +338,7 @@ $messages['ar'] = array(
 	'fogg-preview' => 'عاين الفيديو',
 	'fogg-hidepreview' => 'أخفِ المعاينة',
 );
+
 $messages['be-tarask'] = array(
 	'mwe-upload-stats-fileprogress' => '$1 з $2',
 	'mwe-upload-unknown-size' => 'Невядомы памер',
@@ -493,12 +497,14 @@ $messages['be-tarask'] = array(
 	'mwe-upload-multi' => 'Загрузіць {{PLURAL:$1|файл|файлы}}',
 	'mwe-review-upload' => 'Праглядзець загрузку {{PLURAL:$1|файла|файлаў}}',
 );
+
 $messages['bg'] = array(
 	'fogg-date-title' => 'Дата',
 	'fogg-license-title' => 'Лиценз',
 	'fogg-select_file' => 'Избиране на файл',
 	'fogg-select_new_file' => 'Избиране на нов файл',
 );
+
 $messages['br'] = array(
 	'mwe-upload-unknown-size' => 'Ment dianav',
 	'mwe-unknown-error' => 'Fazi dianav :',
@@ -544,6 +550,7 @@ $messages['br'] = array(
 	'fogg-installed' => 'Staliet eo Firefogg',
 	'fogg-badtoken' => 'N\'eo ket reizh ar jedouer',
 );
+
 $messages['bs'] = array(
 	'mwe-upload-stats-fileprogress' => '$1 od $2',
 	'mwe-upload-unknown-size' => 'Nepoznata veličina',
@@ -607,11 +614,13 @@ $messages['bs'] = array(
 	'fogg-passthrough_mode' => 'Vaša odabrana datoteka je već Ogg ili nije video datoteka',
 	'fogg-badtoken' => 'Token nije valjan',
 );
+
 $messages['ca'] = array(
 	'rsd_results_desc' => 'Resultats',
 	'rsd_results_next' => 'següent',
 	'rsd_results_prev' => 'anterior',
 );
+
 $messages['cs'] = array(
 	'mwe-upload-stats-fileprogress' => '$1 z $2',
 	'mwe-cancel-confim' => 'Určitě chcete stornovat?',
@@ -666,6 +675,7 @@ $messages['cs'] = array(
 	'fogg-for_improved_uploads' => 'Pro vylepšené načítání:',
 	'fogg-use_latest_firefox' => 'Nejprve si nainstalujte <a href="http://www.mozilla-europe.org/cs/firefox/?from=firefogg">Firefox 3.5</a> (nebo novější). <i>Poté se vraťte na tuto stránku, abyste si mohli nainstalovat rozšíření <b>Firefogg</b>.</i>',
 );
+
 $messages['de'] = array(
 	'mwe-upload-stats-fileprogress' => '$1 von $2',
 	'mwe-upload-unknown-size' => 'Unbekannte Größe',
@@ -813,6 +823,7 @@ $messages['de'] = array(
 	'mwe-upload-multi' => '{{PLURAL:$1|Datei|Dateien}} hochladen',
 	'mwe-review-upload' => 'Hochgeladene {{PLURAL:$1|Datei|Dateien}} überprüfen',
 );
+
 $messages['diq'] = array(
 	'mwe-upload-stats-fileprogress' => '$2 de $1',
 	'mwe-upload-unknown-size' => 'ebatê ke nêzaniyeni',
@@ -971,6 +982,7 @@ $messages['diq'] = array(
 	'mwe-upload-multi' => '{{PLURAL:$1|dosya|dosyayan}} bar bike',
 	'mwe-review-upload' => '{{PLURAL:$1|bar biyayen|bar biyayenan}} kontrol bike',
 );
+
 $messages['dsb'] = array(
 	'mwe-upload-stats-fileprogress' => '$1 z $2',
 	'mwe-upload-unknown-size' => 'Njeznata wjelikosć',
@@ -1129,6 +1141,7 @@ $messages['dsb'] = array(
 	'mwe-upload-multi' => '{{PLURAL:$1|Dataju|Dataji|Dataje|Dataje}} nagraś',
 	'mwe-review-upload' => '{{PLURAL:$1|Datajowe nagraśe|Datajowej nagraśi|Datajowe nagraśa|Datajowe nagraśa}} pśeglědaś',
 );
+
 $messages['el'] = array(
 	'mwe-upload-unknown-size' => 'Άγνωστο μέγεθος',
 	'mwe-successfulupload' => 'Επιτυχής φόρτωση',
@@ -1181,6 +1194,7 @@ $messages['el'] = array(
 	'fogg-encoding-done' => 'Κωδικοποίηση πλήρης',
 	'fogg-badtoken' => 'Το δείγμα δεν είναι έγκυρο',
 );
+
 $messages['eo'] = array(
 	'fogg-videoQuality-title' => 'Videa kvalito',
 	'fogg-starttime-title' => 'Komenca sekundo',
@@ -1208,6 +1222,7 @@ $messages['eo'] = array(
 	'fogg-use_latest_firefox' => 'Bonvolu antaŭe instali <a href="http://www.mozilla.com/en-US/firefox/upgrade.html?from=firefogg">Firefox (Fajrvulpo) 3.5</a> (or later). <i>Poste revenu al ĉi tiu paĝo por instali la  kromprogramon <b>Firefogg</b>.</i>',
 	'fogg-hidepreview' => 'Kaŝi antaŭvidon',
 );
+
 $messages['es'] = array(
 	'mwe-upload-unknown-size' => 'Tamaño desconocido',
 	'mwe-cancel-confim' => 'Estás seguro que deseas cancelar?',
@@ -1336,6 +1351,7 @@ $messages['es'] = array(
 	'fogg-preview' => 'Previsualizar video',
 	'fogg-hidepreview' => 'Esconder previsualización',
 );
+
 $messages['eu'] = array(
 	'mwe-upload-unknown-size' => 'Tamaina ezezaguna',
 	'fogg-videoQuality-title' => 'Bideoaren kalitatea',
@@ -1370,6 +1386,7 @@ $messages['eu'] = array(
 	'fogg-preview' => 'Bideoa aurreikusi',
 	'fogg-hidepreview' => 'Aurreikuspena ezkutatu',
 );
+
 $messages['fi'] = array(
 	'mwe-upload-stats-fileprogress' => '$1 / $2',
 	'mwe-upload-unknown-size' => 'Tuntematon koko',
@@ -1415,6 +1432,7 @@ $messages['fi'] = array(
 	'fogg-preview' => 'Videon esikatselu',
 	'fogg-hidepreview' => 'Piilota esikatselu',
 );
+
 $messages['fr'] = array(
 	'mwe-upload-stats-fileprogress' => '$1 de $2',
 	'mwe-upload-unknown-size' => 'Taille inconnue',
@@ -1573,6 +1591,7 @@ $messages['fr'] = array(
 	'mwe-upload-multi' => 'Téléverser {{PLURAL:$1|le fichier|les fichiers}}',
 	'mwe-review-upload' => 'Vérifier {{PLURAL:$1|le téléversement de fichier|les téléversements de fichiers}}',
 );
+
 $messages['gl'] = array(
 	'mwe-upload-stats-fileprogress' => '$1 de $2',
 	'mwe-upload-unknown-size' => 'Tamaño descoñecido',
@@ -1731,12 +1750,14 @@ $messages['gl'] = array(
 	'mwe-upload-multi' => 'Cargar {{PLURAL:$1|o ficheiro|os ficheiros}}',
 	'mwe-review-upload' => 'Revisar {{PLURAL:$1|a carga do ficheiro|as cargas dos ficheiros}}',
 );
+
 $messages['grc'] = array(
 	'mwe-upload' => 'Ἐπιφορτίζειν ἀρχεῖον',
 	'mwe-summary' => 'Σύνοψις',
 	'rsd_results_next' => 'ἑπομέναι',
 	'rsd_results_prev' => 'προηγούμεναι',
 );
+
 $messages['gsw'] = array(
 	'mwe-upload-stats-fileprogress' => '$1 vu $2',
 	'mwe-upload-unknown-size' => 'Dateigreßi nit bekannt',
@@ -1895,6 +1916,7 @@ $messages['gsw'] = array(
 	'mwe-upload-multi' => '{{PLURAL:$1|Datei|Dateie}} uffelade',
 	'mwe-review-upload' => '{{PLURAL:$1|Datei-Uffeladig|Datei-Uffeadige}} priefe',
 );
+
 $messages['he'] = array(
 	'mwe-upload-stats-fileprogress' => '$1 מתוך $2',
 	'mwe-upload-unknown-size' => 'גודל בלתי ידוע',
@@ -1953,6 +1975,7 @@ $messages['he'] = array(
 	'fogg-encoding-done' => 'הקידוד הושלם',
 	'fogg-badtoken' => 'האסימון אינו תקין',
 );
+
 $messages['hsb'] = array(
 	'mwe-upload-stats-fileprogress' => '$1 z $2',
 	'mwe-upload-unknown-size' => 'Njeznata wulkosć',
@@ -2112,6 +2135,7 @@ $messages['hsb'] = array(
 	'mwe-upload-multi' => '{{PLURAL:$1|Dataju|Dataji|Dataje|Dataje}} nahrać',
 	'mwe-review-upload' => '{{PLURAL:$1|Datajowe nahraće|Datajowej nahraći|Datajowe nahraća|Datajowe nahraća}} přepruwować',
 );
+
 $messages['hu'] = array(
 	'mwe-upload-stats-fileprogress' => '$1 (összesen: $2)',
 	'mwe-upload-unknown-size' => 'Ismeretlen méret',
@@ -2271,6 +2295,7 @@ További információkat <a href="http://en.wikipedia.org/wiki/I-frame">itt</a> 
 	'mwe-upload-multi' => '{{PLURAL:$1|Fájl|Fájlok}} feltöltése',
 	'mwe-review-upload' => '{{PLURAL:$1|Feltöltés|Feltöltések}} ellenőrzése',
 );
+
 $messages['ia'] = array(
 	'mwe-upload-stats-fileprogress' => '$1 de $2',
 	'mwe-upload-unknown-size' => 'Dimension incognite',
@@ -2429,6 +2454,7 @@ $messages['ia'] = array(
 	'mwe-upload-multi' => 'Cargar {{PLURAL:$1|file|files}}',
 	'mwe-review-upload' => 'Revider le {{PLURAL:$1|cargamento del file|cargamentos del files}}',
 );
+
 $messages['id'] = array(
 	'mwe-upload-stats-fileprogress' => '$1 dari $2',
 	'mwe-upload-unknown-size' => 'Ukuran tidak diketahui',
@@ -2587,12 +2613,14 @@ $messages['id'] = array(
 	'mwe-upload-multi' => 'Unggah {{PLURAL:$1|berkas|berkas}}',
 	'mwe-review-upload' => 'Tinjau {{PLURAL:$1|Unggahan|Unggahan}} Berkas',
 );
+
 $messages['io'] = array(
 	'fogg-title-title' => 'Titulo',
 	'fogg-date-title' => 'Dato',
 	'mwe-upload' => 'Adkargar arkivo',
 	'rsd-this_wiki-title' => 'Ca wiki',
 );
+
 $messages['it'] = array(
 	'mwe-upload-unknown-size' => 'Dimensione sconosciuta',
 	'mwe-file-exists-duplicate' => 'Questo file è un duplicato del seguente file:',
@@ -2614,6 +2642,7 @@ $messages['it'] = array(
 	'fogg-preview' => 'Anteprima video',
 	'fogg-hidepreview' => 'Nascondi anteprima',
 );
+
 $messages['ja'] = array(
 	'mwe-upload-stats-fileprogress' => '$2中 $1',
 	'mwe-upload-unknown-size' => '不明なサイズ',
@@ -2773,6 +2802,7 @@ $messages['ja'] = array(
 	'mwe-upload-multi' => '{{PLURAL:$1|ファイル}}をアップロード',
 	'mwe-review-upload' => 'ファイルの{{PLURAL:$1|アップロード}}を精査',
 );
+
 $messages['ka'] = array(
 	'mwe-file-exists-duplicate' => 'ეს ფაილი არის დუბლიკატი შემდეგი ფაილისა:',
 	'fogg-date-title' => 'თარიღი',
@@ -2783,6 +2813,7 @@ $messages['ka'] = array(
 	'rsd_results_prev' => 'წინა',
 	'fogg-select_file' => 'ფაილის არჩევა',
 );
+
 $messages['ko'] = array(
 	'mwe-successfulupload' => '파일 올리기 성공',
 	'mwe-upload' => '파일 올리기',
@@ -2805,6 +2836,7 @@ $messages['ko'] = array(
 	'fogg-encoding-done' => '인코딩 완료',
 	'fogg-badtoken' => '토큰이 유효하지 않습니다.',
 );
+
 $messages['ksh'] = array(
 	'mwe-upload-stats-fileprogress' => '$1 vun $2',
 	'mwe-upload-unknown-size' => 'Dä Datteiömfang es unbikannt',
@@ -2934,6 +2966,7 @@ $messages['ksh'] = array(
 	'mwe-upload-multi' => '{{PLURAL:$1|Ein Datei|$1 Dateie|Kein Datteije}} huhlaade',
 	'mwe-review-upload' => 'Donn de huhjelaade {{PLURAL:$1|Dattei|Datteije|nix}} nohloore',
 );
+
 $messages['lb'] = array(
 	'mwe-upload-stats-fileprogress' => '$1 vu(n) $2',
 	'mwe-upload-unknown-size' => 'Onbekannte Gréisst',
@@ -3024,6 +3057,7 @@ $messages['lb'] = array(
 	'mwe-upload-multi' => '{{PLURAL:$1|Fichier|Fichieren}} eroplueden',
 	'mwe-review-upload' => '{{PLURAL:$1|Eropgeluedene Fichier|Eropgeluede Fichieren}} nokucken',
 );
+
 $messages['ml'] = array(
 	'mwe-upload-stats-fileprogress' => '$2 എന്നതിൽ $1',
 	'mwe-upload-unknown-size' => 'വലിപ്പം അറിയില്ല',
@@ -3154,6 +3188,7 @@ $messages['ml'] = array(
 	'mwe-upload-multi' => '{{PLURAL:$1|പ്രമാണം|പ്രമാണങ്ങൾ}} അപ്‌‌ലോഡ് ചെയ്യുക',
 	'mwe-review-upload' => 'പ്രമാണ {{PLURAL:$1|അപ്‌‌ലോഡ്|അപ്‌‌ലോഡുകൾ}} സംശോധനം ചെയ്യുക',
 );
+
 $messages['nl'] = array(
 	'mwe-upload-stats-fileprogress' => '$1 van $2',
 	'mwe-upload-unknown-size' => 'Onbekende grootte',
@@ -3314,6 +3349,7 @@ $messages['nl'] = array(
 	'mwe-upload-multi' => '{{PLURAL:$1|Bestand|Bestanden}} uploaden',
 	'mwe-review-upload' => '{{PLURAL:$1|Bestandsupload|Bestandsuploads}} controleren',
 );
+
 $messages['oc'] = array(
 	'mwe-upload-unknown-size' => 'Talha desconeguda',
 	'mwe-cancel-confim' => 'Sètz segur que volètz anullar ?',
@@ -3462,10 +3498,12 @@ $messages['oc'] = array(
 	'fogg-hidepreview' => 'Amagar la previsualizacion',
 	'mwe-upload-multi' => 'Cargar {{PLURAL:$1|lo fichièr|los fichièrs}}',
 );
+
 $messages['pdc'] = array(
 	'rsd_results_next' => 'weiter',
 	'rsd_results_prev' => 'zerick',
 );
+
 $messages['pl'] = array(
 	'mwe-upload-unknown-size' => 'Nieznany rozmiar',
 	'mwe-successfulupload' => 'Przesłano',
@@ -3536,6 +3574,7 @@ $messages['pl'] = array(
 	'fogg-preview' => 'Podgląd wideo',
 	'fogg-hidepreview' => 'Ukryj podgląd',
 );
+
 $messages['pt'] = array(
 	'mwe-upload-stats-fileprogress' => '$1 de $2',
 	'mwe-upload-unknown-size' => 'Tamanho desconhecido',
@@ -3694,6 +3733,7 @@ $messages['pt'] = array(
 	'mwe-upload-multi' => 'Carregar {{PLURAL:$1|ficheiro|ficheiros}}',
 	'mwe-review-upload' => 'Rever o carregamento {{PLURAL:$1|do ficheiro|dos ficheiros}}',
 );
+
 $messages['pt-br'] = array(
 	'mwe-upload-unknown-size' => 'Tamanho desconhecido',
 	'mwe-unknown-error' => 'Erro desconhecido:',
@@ -3705,6 +3745,7 @@ $messages['pt-br'] = array(
 	'mwe-unknown_license' => 'Licença desconhecida',
 	'mwe-preview_insert_resource' => 'Prever inserção de recurso: $1',
 );
+
 $messages['ru'] = array(
 	'mwe-upload-stats-fileprogress' => '$1 из $2',
 	'mwe-upload-unknown-size' => 'Неизвестный размер',
@@ -3863,6 +3904,7 @@ $messages['ru'] = array(
 	'mwe-upload-multi' => 'Загрузить {{PLURAL:$1|файл|файлы}}',
 	'mwe-review-upload' => 'Просмотреть {{PLURAL:$1|загрузку файла|загрузки файлов}}',
 );
+
 $messages['sk'] = array(
 	'mwe-upload-unknown-size' => 'Neznáma veľkosť',
 	'mwe-cancel-confim' => 'Ste si istý, že chcete prerušiť?',
@@ -3948,6 +3990,7 @@ $messages['sk'] = array(
 	'fogg-preview' => 'Náhľad videa',
 	'fogg-hidepreview' => 'Skryť náhľad',
 );
+
 $messages['sv'] = array(
 	'mwe-upload-unknown-size' => 'Okänd storlek',
 	'mwe-cancel-confim' => 'Är det säkert att du vill avbryta?',
@@ -4000,6 +4043,7 @@ $messages['sv'] = array(
 	'fogg-preview' => 'Förhandsgranska video',
 	'fogg-hidepreview' => 'Göm förhandsgranskning',
 );
+
 $messages['te'] = array(
 	'mwe-cancel-confim' => 'మీరు నిజంగానే రద్దుచేయాలనుకుంటున్నారా?',
 	'mwe-successfulupload' => 'ఎక్కింపు విజయవంతం',
@@ -4033,6 +4077,7 @@ $messages['te'] = array(
 	'mwe-resource_page_desc' => 'వనరు పేజీ వివరణ:',
 	'rsd-this_wiki-title' => 'ఈ వికీ',
 );
+
 $messages['tr'] = array(
 	'mwe-upload-stats-fileprogress' => '$2 de $1',
 	'mwe-upload-unknown-size' => 'Bilinmeyen boyut',
@@ -4191,11 +4236,13 @@ $messages['tr'] = array(
 	'mwe-upload-multi' => '{{PLURAL:$1|Dosya|Dosya}} yükle',
 	'mwe-review-upload' => 'Dosya {{PLURAL:$1|yüklemesini|yüklemelerini}} incele',
 );
+
 $messages['uk'] = array(
 	'mwe-summary' => 'Опис змін',
 	'rsd_results_next' => 'наступний',
 	'mwe-ftype-svg' => 'Векторний файл SVG',
 );
+
 $messages['vec'] = array(
 	'mwe-upload-stats-fileprogress' => '$1 de $2',
 	'mwe-upload-unknown-size' => 'Dimension sconossùa',
@@ -4288,6 +4335,7 @@ $messages['vec'] = array(
 	'mwe-upload-multi' => 'Carga {{PLURAL:$1|file|file}}',
 	'mwe-review-upload' => 'Contròla el caricamento {{PLURAL:$1|del file|dei file}}',
 );
+
 $messages['vep'] = array(
 	'mwe-upload-unknown-size' => 'Tundmatoi suruz',
 	'mwe-uploaderror' => 'Jügutoitandan petuz',
@@ -4301,6 +4349,7 @@ $messages['vep'] = array(
 	'fogg-select_new_file' => 'Valiče uz\' fail',
 	'fogg-select_url' => 'Valiče URL',
 );
+
 $messages['vi'] = array(
 	'mwe-upload-stats-fileprogress' => '$1 của $2',
 	'mwe-upload-unknown-size' => 'Kích cỡ không biết',
@@ -4384,3 +4433,4 @@ $messages['vi'] = array(
 	'mwe-upload-multi' => 'Tải lên {{PLURAL:$1|tập tin|các tập tin}}',
 	'mwe-review-upload' => 'Duyệt {{PLURAL:$1|tập tin|các tập tin}} được tải lên',
 );
+
