@@ -23,7 +23,7 @@ mw.addMessages( {
 	"mwe-file-thumbnail-no" : "The filename begins with <b><tt>$1<\/tt><\/b>",
 	"mwe-go-to-resource" : "Go to resource page",
 	"mwe-upload-misc-error" : "Unknown upload error",	
-	"mwe-wgfogg_warning_bad_extension" : "You have selected a file with an unsuported extension (<a href=\"http:\/\/commons.wikimedia.org\/wiki\/Commons:Firefogg#Supported_File_Types\">more information<\/a>).",	
+	"mwe-wgfogg_warning_bad_extension" : "You have selected a file with an unsupported extension (<a href=\"http:\/\/commons.wikimedia.org\/wiki\/Commons:Firefogg#Supported_File_Types\">more information<\/a>).",	
 	"mwe-thumbnail-more" : "Enlarge",	
 	"mwe-license-header" : "Licensing",
 	"mwe-filedesc" : "Summary",
