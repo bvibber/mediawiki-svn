@@ -44,7 +44,7 @@ class jsClassLoader {
 
 		$mwEmbedAbsolutePath = ( $wgMwEmbedDirectory == '' ) ? $IP :  $IP .'/' .$wgMwEmbedDirectory;
 		// Add the mwEmbed localizations
-		$wgExtensionMessagesFiles[ 'mwEmbed' ] = $mwEmbedAbsolutePath . '/languages/mwEmbed.i18n.php';
+		$wgExtensionMessagesFiles[ 'mwEmbed' ] = $mwEmbedAbsolutePath . '/mwEmbed.i18n.php';
 
 
 		// Load javascript classes from mwEmbed.js
