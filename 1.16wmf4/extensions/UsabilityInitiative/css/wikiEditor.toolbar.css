@@ -42,7 +42,7 @@ body.rtl .wikiEditor-ui-toolbar .sections .section {
 }
 .wikiEditor-ui-toolbar .sections .loading .spinner {
 	display: block;
-	background-image: url(../images/wikiEditor/toolbar/loading.gif?1);
+	background-image: url(../images/wikiEditor/toolbar/loading.gif?2);
 	background-position: left center;
 	background-repeat: no-repeat;
 	padding-left: 32px;
@@ -105,7 +105,7 @@ body.rtl .wikiEditor-ui-toolbar .group-insert {
 }
 /* Sprited Buttons */
 .wikiEditor-toolbar-spritedButton { 
-	background: url(../images/wikiEditor/toolbar/button-sprite.png) 0 0 no-repeat;
+	background: url(../images/wikiEditor/toolbar/button-sprite.png?1) 0 0 no-repeat;
 	display: block;
 	float: left;
 	height: 22px;
