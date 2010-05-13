@@ -10,11 +10,12 @@ $wgExtensionCredits['other'][] = array(
 	'version' => 0.1,
 	'author' => 'Max Semenik',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Cassandra',
-	'description' => 'Allows to store revision text in [http://incubator.apache.org/cassandra/ Apache Cassandra] database.',
+	'description' => 'Allows to store revision text in [http://cassandra.apache.org/ Apache Cassandra] database.',
 	//'descriptionmsg' => 'cassandra-desc',
 );
 
-$wgAutoloadClasses['ExternalStoreCassandra'] = dirname( __FILE__ ) . '/Cassandra_body.php';
+$wgAutoloadClasses['ExternalStoreCassandra'] = $wgAutoloadClasses['MWCassandraException']
+	= dirname( __FILE__ ) . '/Cassandra_body.php';
 
 if ( is_array( $wgExternalStores ) ) {
 	$wgExternalStores[] = 'cassandra';
@@ -26,19 +27,26 @@ if ( is_array( $wgExternalStores ) ) {
  * Extension settings
  */
 
-// Directory where Thrift for PHP resides.
+// Directory where Thrift bindings for PHP reside
 $wgThriftRoot = '/usr/share/php/Thrift';
-$wgThriftPort = 9160;
-$wgCassandraKeyPrefix = '';
+
+// Port used for communicating with Cassandra. Must match <ThriftPort>
+// in Cassandra's storage-conf.xml
+$wgCassandraPort = 9160;
+
+// String prepended to saved key names, can be used to distinct between
+// different wikis, etc. Does not affect the already saved revisions.
+$wgCassandraKeyPrefix = $wgDBname;
 
 /**
  * Read and write consistencies, see http://wiki.apache.org/cassandra/API#ConsistencyLevel
  * for details.
  * Avoid using cassandra_ConsistencyLevel here to prevent large parts
  * of Cassandra and Thrift from being loaded on every request. Shouldn't
- * matter for real-world setups with byte code cache though.
+ * matter much for real-world setups with byte code cache though.
  */
 $wgCassandraReadConsistency = 1;  // cassandra_ConsistencyLevel::ONE
 $wgCassandraWriteConsistency = 1; // cassandra_ConsistencyLevel::ONE
 
+// Column family to be used for storing data
 $wgCassandraColumnFamily = 'Standard1';
