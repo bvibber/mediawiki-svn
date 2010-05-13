@@ -68,7 +68,7 @@ Please select all that apply.',
 	'prefswitch-success-feedback' => 'Your feedback has been sent.',
 	'prefswitch-return' => '<hr style="clear:both">
 Return to <span class="plainlinks">[$1 $2]</span>.',
-	'prefswitch-main' => "We have been working hard to make things easier for our users. We are excited to share some improvements, including a new look and feel and simplified editing features.  Improving the usability of our projects is a priority of the Wikimedia Foundation and we will be sharing more updates in the future. For more detail, visit the related [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/ Wikimedia blog] post.
+	'prefswitch-main' => "We have been working hard to make things easier for our users. We are excited to share some improvements, including a new look and feel and simplified editing features.  Improving the usability of our projects is a priority of the Wikimedia Foundation and we will be sharing more updates in the future. For more details, visit the related [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/ Wikimedia blog] post.
 
 [[File:UsabilityNavigation.png|right|link=|Screenshot of the new navigation]]
 [[File:UsabilityToolbar.png|right|link=|Screenshot of the enhanced edit toolbar]]
@@ -78,7 +78,8 @@ Return to <span class="plainlinks">[$1 $2]</span>.',
 * '''Editing toolbar improvements''':  We have reorganized the editing toolbar to make easier to use.  Now, formatting pages is simpler and more intuitive.
 * '''Link wizard''':  An easy-to-use tool allows you to add links to other wiki pages as well as links to external sites.
 * '''Search improvements''': We have improved search suggestions to get you to the page you are looking for more quickly.
-* '''Other new features''':  We have also introduced a table wizard to make creating tables easier and find and a replace feature to simplify page editing.",
+* '''Other new features''':  We have also introduced a table wizard to make creating tables easier and find and a replace feature to simplify page editing.
+* '''Wikipedia puzzle globe''': we've updated the puzzle globe, read more at the [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/  Wikimedia blog.]",
 	'prefswitch-main-anon' => "===Take Me Back===
 If you would like to turn off the new features, <span class=\"plainlinks\">[$1 click here]</span>. You will be asked to login or create an account first.",
 	'prefswitch-main-on' => "===Feedback?===
