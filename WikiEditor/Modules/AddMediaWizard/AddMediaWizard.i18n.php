@@ -36,6 +36,13 @@ $messages['br'] = array(
 	'wikieditor-addMediaWizard-preference' => 'Gweredekaat ar bitrak "Ouzhpennañ ameiler mediaoù"',
 );
 
+/** Catalan (Català)
+ * @author Vriullop
+ */
+$messages['ca'] = array(
+	'wikieditor-addMediaWizard-preference' => 'Habilita el giny «Assistent per afegir multimèdia»',
+);
+
 /** Czech (Česky)
  * @author Mormegil
  */

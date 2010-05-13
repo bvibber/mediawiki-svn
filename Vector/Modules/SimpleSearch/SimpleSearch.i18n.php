@@ -200,9 +200,11 @@ $messages['es'] = array(
 
 /** Estonian (Eesti)
  * @author Avjoska
+ * @author Pikne
  */
 $messages['et'] = array(
 	'vector-simplesearch-search' => 'Otsi',
+	'vector-simplesearch-containing' => 'sisalduv...',
 );
 
 /** Basque (Euskara)

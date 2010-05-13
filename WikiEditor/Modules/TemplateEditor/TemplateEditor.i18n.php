@@ -110,12 +110,13 @@ $messages['bs'] = array(
 
 /** Catalan (Català)
  * @author Paucabot
+ * @author Vriullop
  */
 $messages['ca'] = array(
 	'wikieditor-template-editor-preference' => "Permetre l'edició basada en formularis de plantilles",
-	'wikieditor-template-editor-dialog-title' => 'Edita la plantilla',
+	'wikieditor-template-editor-dialog-title' => 'Modifica la plantilla',
 	'wikieditor-template-editor-dialog-submit' => 'Actualitza',
-	'wikieditor-template-editor-dialog-cancel' => 'Cancel·la',
+	'wikieditor-template-editor-dialog-cancel' => 'Anuŀla',
 );
 
 /** Czech (Česky)

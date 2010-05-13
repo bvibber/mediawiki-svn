@@ -1186,6 +1186,7 @@ $messages['ms'] = array(
  */
 $messages['mt'] = array(
 	'clicktracking' => "Moniteraġġ tal-klikks tal-Inizjattiva ta' Użabilità",
+	'clicktracking-desc' => "Moniteraġġ tal-klikks għall-moniteraġġ ta' avvenimenti li ma jikkawżawx riffriskar tal-paġna",
 	'ct-title' => 'Klikks tal-utenti aggregati',
 	'ct-event-name' => 'Isem tal-avveniment',
 	'ct-expert-header' => 'Klikks fuq "Espert"',

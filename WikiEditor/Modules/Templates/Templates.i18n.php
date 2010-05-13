@@ -36,6 +36,13 @@ $messages['br'] = array(
 	'wikieditor-templates-preference' => "Gweredekaat ar c'huzhat patromoù",
 );
 
+/** Catalan (Català)
+ * @author Vriullop
+ */
+$messages['ca'] = array(
+	'wikieditor-templates-preference' => 'Habilita el replegament de plantilles',
+);
+
 /** Czech (Česky)
  * @author Mormegil
  */
@@ -167,6 +174,13 @@ $messages['mt'] = array(
  */
 $messages['nl'] = array(
 	'wikieditor-templates-preference' => 'Inklapbare sjablonen inschakelen',
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'wikieditor-templates-preference' => 'Aktiver sammenleggbare maler',
 );
 
 /** Occitan (Occitan)

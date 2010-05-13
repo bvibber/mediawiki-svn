@@ -79,8 +79,12 @@ $messages['br'] = array(
 
 /** Catalan (Català)
  * @author Paucabot
+ * @author Vriullop
  */
 $messages['ca'] = array(
+	'prefswitch-link-anon' => 'Noves característiques',
+	'tooltip-pt-prefswitch-link-anon' => 'Més informació sobre les noves característiques',
+	'prefswitch-link-off' => 'Noves característiques',
 	'tooltip-pt-prefswitch-link-off' => 'Proveu les noves funcions',
 );
 
@@ -310,6 +314,7 @@ $messages['mt'] = array(
 	'prefswitch-link-anon' => 'Karatteristiċi ġodda',
 	'tooltip-pt-prefswitch-link-anon' => 'Tgħallem aktar dwar elementi ġodda',
 	'prefswitch-link-on' => 'Ħudni lura',
+	'tooltip-pt-prefswitch-link-on' => 'Itfi l-funzjonijiet il-ġodda',
 	'prefswitch-link-off' => 'Funzjonijiet ġodda',
 	'tooltip-pt-prefswitch-link-off' => 'Ipprova funzjonijiet ġodda',
 );
@@ -325,6 +330,11 @@ $messages['nl'] = array(
  * @author Nghtwlkr
  */
 $messages['no'] = array(
+	'prefswitch-link-anon' => 'Nye funksjoner',
+	'tooltip-pt-prefswitch-link-anon' => 'Lær mer om de nye funksjonene',
+	'prefswitch-link-on' => 'Ta meg tilbake',
+	'tooltip-pt-prefswitch-link-on' => 'Deaktiver nye funksjoner',
+	'prefswitch-link-off' => 'Nye funksjoner',
 	'tooltip-pt-prefswitch-link-off' => 'Prøv nye funksjoner',
 );
 

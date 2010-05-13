@@ -125,8 +125,10 @@ $messages['bs'] = array(
 /** Catalan (Català)
  * @author Paucabot
  * @author Solde
+ * @author Vriullop
  */
 $messages['ca'] = array(
+	'wikieditor-preview-preference' => 'Habilita la previsualització costat per costat',
 	'wikieditor-preview-tab' => 'Previsualització',
 	'wikieditor-preview-changes-tab' => 'Canvis',
 	'wikieditor-preview-loading' => 'Carregant ...',
