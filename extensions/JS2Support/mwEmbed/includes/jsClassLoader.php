@@ -37,6 +37,7 @@ class jsClassLoader {
 			return false;
 		}
 		self::$classesLoaded = true;
+
 		// Start the profiler if running
 		$fname = 'jsClassLoader::loadClassPaths';
 		wfProfileIn( $fname );
@@ -44,7 +45,7 @@ class jsClassLoader {
 
 		$mwEmbedAbsolutePath = ( $wgMwEmbedDirectory == '' ) ? $IP :  $IP .'/' .$wgMwEmbedDirectory;
 		// Add the mwEmbed localizations
-		$wgExtensionMessagesFiles[ 'mwEmbed' ] = $mwEmbedAbsolutePath . '/languages/mwEmbed.i18n.php';
+		$wgExtensionMessagesFiles[ 'mwEmbed' ] = $mwEmbedAbsolutePath . '/mwEmbed.i18n.php';
 
 
 		// Load javascript classes from mwEmbed.js
@@ -75,6 +76,13 @@ class jsClassLoader {
 			$fileContent
 		);
 
+		// Change to the root mediawiki directory ( loader.js paths are relative to root mediawiki directory )
+		// ( helpful for when running maintenance scripts )
+		if( defined( 'DO_MAINTENANCE' ) ) {
+			$initialPath = getcwd();
+			chdir( $IP );
+		}
+
 		// Get all the classes from the enabled mwEmbed modules folder
 		foreach( self::$moduleList as  $na => $moduleName){
 			$relativeSlash = ( $wgMwEmbedDirectory == '' )? '' : '/';
@@ -86,6 +94,10 @@ class jsClassLoader {
 			// Setup the directory context for extensions relative to loader.js file:
 			$modulePath = str_replace('/loader.js', '' , $loaderPath);
 			self::proccessModulePath( $modulePath );
+		}
+
+		if( defined( 'DO_MAINTENANCE' ) ) {
+			chdir( $initialPath );
 		}
 
 		wfProfileOut( $fname );

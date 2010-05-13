@@ -1,10 +1,8 @@
 = JS2 Support Extension =
 
-The JS2 Support svn:externals hosts the mwEmbed library. svn does not support 
-svn:externals on files so mwEmbed.js and jsScriptLoader.php are symbolically linked in the
-working directory and updates are manually committed to the JS2extension.  
+The JS2 Support extension includes a ScriptLoader and associated javascript helper library. 
 
-the js2-work branch has been depreciated.
+The js2-work branch has been depreciated.
 
 The stand-alone mwEmbed support contains all the the stand alone mwEmbed modules
 and these core mwEmbed libraries. You can learn more about mwEmbed stand alone in 
@@ -20,10 +18,10 @@ the core integration is sorted out.
 To add the base js2 library support simply add the following to your LocalSettings.php: 
 require_once( "$IP/extensions/JS2Support/JS2Support.php" );
 
-By default js2 support groups script and css requests, disable script grouping for debugging set: 
+By default js2 support groups script and css requests. To disable script grouping in your localSettings.php set:  
 $wgEnableScriptLoader = false; 
 
-If you want a fresh copy of the scripts ( and to disable minification in when wgEnableScriptLoader= true you can set ) 
+If you want a fresh copy of all the scripts ( and to disable minification in when wgEnableScriptLoader= true you can set )  
 $wgDebugJavaScript = true;
 
 == LocalSettings.php to enable all js2 extensions == 
@@ -48,7 +46,7 @@ Once you include the extension you can use the following:
 To add a javascript or css to the named paths ( so that the script loader can load it by name )
 $wgScriptLoaderNamedPaths[ 'myExtension' ] = 'extensions/myExtension/myExtension.js';
 
-Then in your php you can inclue your with the following line:   
+Then in your php you can include your with the following line:   
 $wgOut->addScriptClass( 'myExtension' /* scriptloader named path */ , 'page'/* group bucket id */ );
 This lets you use the named-path for includes and gives you control over script grouping with the 
 grouping argument. If for example your script is included on a set of special pages then you could
@@ -71,45 +69,54 @@ For more info see  ScriptLoaderOutputPage.php $mScriptLoaderClassList
 == Using JS2 with JS-modules ==
 
 JS Modules are reusable sets of javascript that can be dynamically configured, loaded and executed in 
-arbitrary javascript contexts. These libraries should have a clean separation of configuration,
+arbitrary application contexts. Javascript modules promote a clean separation of configuration,
 interface, and application flow. These modules define relative paths for assets and can be hosted 
-inside extensions or optionally used in stand-alone javascript applications. They provide a means to cleanly
-"embed" mediaWiki interfaces into application contexts. 
+inside extensions or optionally used in stand-alone javascript interfaces. 
 
-Examples include embedding a video player with timed text subtitles pulled from an external wiki, to
-embedding a wikiEditor toolbar on a view page. The use of "loaders" enables dynamic packaging of 
-modules with the intent of avoiding multiple requests, at the cost of slightly larger server side cache of
-combined resources. 
+The use of "loaders" enables dynamic packaging of modules with the intent of avoiding multiple requests, 
+for dynamically loaded interfaces.    
 
-It enables the server to deliver static configuration files that drive interface customizations in
+JS2 enables the server to deliver static configuration files that drive interface customizations in
 javascript rather than costly dynamically html output from php.
  
-== JS-module components == 
+== JS Module Components == 
 
 The three components of a js-module are  "module loaders", "module activators" and "library code and assets". 
 
-* "module loaders"  build the request set of the javascript and css assets for a given interface "module" 
-in the context of user preferences or application configuration.  
+* "module loaders"  define named paths and build the request set of the javascript and css assets 
+for a given interface "module". The set of requested libraries can driven by site configuration, 
+and user preferences. The requested set of modules can include core libraries like jquery.ui helpers.   
 
-* "module activators" call the module loaders in a given application context. For example
-an edit page or a view page may call the wikiToolBar with different module configuration.
+* "module activators" Call the module loaders in a given application context and then 
+invoke the interface or application.  
 
 * "library code and assets" These consist of library code and assets that is the user interface or application. 
-These libs are driven by a given configuration.    
+These libraries are driven by a given configuration.    
 
 == Example Flow and File Contents == 
 
-When an application wants to use that interface component it calls the module loader.
-The module loader checks relevant configuration and javascript application state for existing
-satisfied dependencies or browser specific libraries, then issues a single script-loader
-request that retrieves all the needed javascript, css and localized message text for 
-that interface, the returned javascript will be minfied and gziped and cached on the server.  
+When an application wants to use a interface component it calls the module loader from its activator.
+The module loader checks relevant configuration, it then issues a single script-loader
+request that checks javascript application state for existing satisfied dependencies or native browser support
+it then retrieves all the needed javascript, css and localized message text for that interface. 
+The returned javascript will be minfied and gziped and cached on the server. 
+The activator gets a callback that the interface library is loaded, and can then use that interface.
 
-Example loader.js:
+=== Example Loader loader.js:  ===
+
+Loaders should define named class paths, named "module loader" functions and default configuration 
+if appropriate. Style sheet assets should be named mw.style[ {styleName} ] this is so we can 
+register the presence of style sheets in javascript and libraries can dynamically
+share style sheet components.
 
 /* 
 * First we define the named script class paths
 * Each class  "mw.myJsModuleUI" defines its class name in the javascript
+* Note these named paths should be in "JSON" not javascript 
+* The scriptLoader will parse these named paths.
+* 
+* By putting these in javascript instead of php we can develop the library 
+* in "raw" file mode ( by setting wgEnableScriptLoader = false )  
 */
 mw.addClassFilePaths( {
 	"mw.myJsModuleHandler" : "js/mw.myJSModuleHandler.js", 
@@ -133,13 +140,14 @@ mw.addModuleLoader( 'myJsModule', function( callback ){
 	$j( mw ).trigger( 'LoaderMyJsModuleAddFeatures', requestSet ); 
 	
 	// Load the request set and run the ModuleLoader callback. 
-	mw.load( requestSet, callback) 
+	mw.load( requestSet, callback ); 
 	
 });
 
-Example "Activator" 
+=== Example "Activator" MyModulePage.js === 
 /* 
-* Anytime we want to use the module we simply call the module loader
+* MyModulePage.js is included on pages that we want via normal php extension hooks.
+* Once we want to use the module we simply call the module loader
 */ 
 var myModuleConfig = {
 	'configOption1' : mw.getConfig( 'myJsModule.configOption1' )
@@ -153,23 +161,69 @@ mw.load( 'myJsModule', function(){
 	$j('#targetElement').myJsModule( myModuleConfig );	 
 }
 
-Example Library Code
+=== Example Library Code ===
 
 The key thing to remember about library code is that it defines a named class ie: 
-mw.load( 'mw.Foo' ... 
-// will load a file that includes 
-mw.Foo = function(){ ...
+a file by name 'mw.Foo.js'  would define a object named 'mw.Foo' ie something like:
+  
+mw.Foo = function( options ){
+	this.init( options ); 
+}
+
+mw.Foo.prototype = { 
+	'init' : function(){ /* constructor */ }
+	'drawUI' : function(){ ... }  
+} 
 
 Library code should operate off of global configuration mw.getConfig( 'configurationOption' ) 
 and or local configuration ( where appropriate ) ie the constructor gets passed an options object 
 that defines named value pairs of configuration or callbacks. 
 
+The other key thing to remember about library code is to handle localization in some way. 
+The localization options are presented bellow
+
 == Localization ==
 
-The JS2 Localization system works similar to its php counterpart. 
-( it includes support for {{PLURAL}} transforms )
+Each javascript module hosts a {moduleName}.i18n.php file that works with the 
+existing mediaWiki translate system. Note when the script-loader populates
+the msg replacements it uses mediaWiki's wfGetMsg function so any database
+MediaWiki namespace strings ''will be'' included in your javascript messages. 
 
-To get a msg simply issue the call: 
+You have three options for packaging messages in your javascript module
+
+1) If your javascript module is simple and your interface is mostly set in a single
+file you may want to load all your msgs at once.  You can get all the msgs in your javascript
+module's localization file by simply isssuing the call: 
+mw.includeAllModuleMsgs(); 
+
+Putting this function call at the top of your primary library code javascript file will be 
+replaced with all the msgs in your modules php localization file in the current language. 
+
+2 ) If your code includes many sub-modules and you may want fine grain control over what msgs 
+are packaged when. You can define the set of msg keys it at the top of any javascript file.
+
+For example: 
+mw.addMessegeKeys( ['list', 'of', 'msg-keys' ] );
+
+Will be replaced by the script-loader with the localized msgs for every listed key. 
+  
+3) If you are doing a lot of stand alone testing it can be faster to use a json array
+at the top of your javascript file.   
+mw.addMesseges( { "msg-key" : "English fallback" } );
+
+  Your javascript file then becomes your developer reference English messages. A maintenance scripts then
+copy your English fallbacks into the php localization file for the translate wiki scripts to work with.  
+Running the JS2Support maintenance script "mergeJavascriptMsgs.php" will sync javascript into phpt files. 
+
+This is the most complicated setup, if your unsure use the first option: 
+mw.includeAllModuleMsgs(); 
+  
+=== Accessing Msgs in Javascript ===
+
+The JS2 Localization system works similar to its php counterpart. It includes
+support for {{PLURAL}} transforms. 
+
+To get a message simply issue the call: 
 gM( 'msg-key', 'replacement1', 'replacement2', 'etc' );
 
 Note you can pass jQuery replacements in the case of links ie: 
@@ -177,22 +231,6 @@ gM( 'msg-key', $j('<a />').text( gM( 'link-text' ) );
 
 For full documentation see: mwEmbed/languages/mw.Language.js function: mw.getMsg
 
-
-If you want ~all~ of the msgs for your module php localization file you can simply issue
-a call mw.includeAllMsgs() near the top of your primary library code. This will 
-include be replaced with all the msgs in your php localization file for your selected language.  
-
-If your code includes many sub-modules and you want fine grain control over what msgs 
-are packaged when you can define the set of msg keys it at the top of any javascript file.
-
-You can use a list of keys: 
-
-mw.addMessegeKeys( ['list', 'of', 'msg-keys' ] );
-
-or if you are doing a lot of stand alone testing it can be faster and simpler to use a json array: 
-mw.addMesseges( { "msg-key" : "english fallback" } );
-
-Either way the set of messages will be localized by the scriptLoader once the javascript class is requested.
-
+  
 
 
