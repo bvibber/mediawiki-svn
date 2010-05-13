@@ -9904,6 +9904,7 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Giro720
  * @author Hamilton Abreu
  * @author Jorge Morais
  * @author Malafaya
@@ -10134,7 +10135,7 @@ Não foi feita nenhuma operação de cópia.',
 	'ow_create' => 'Criar',
 	'ow_collection_added' => '<strong>Colecção $1 adicionada.</strong>',
 	'ow_suggest_previous' => 'Anterior',
-	'ow_suggest_next' => 'Posterior',
+	'ow_suggest_next' => 'Próximo',
 	'ow_suggest_clear' => 'Limpar',
 	'ow_nstab_definedmeaning' => 'significado definido',
 	'ow_nstab_edit_copy' => 'editar cópia',

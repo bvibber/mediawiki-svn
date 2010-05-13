@@ -218,6 +218,9 @@ $messages['en'] = array(
 	'mwe-review-upload' => 'Review file {{PLURAL:$1|upload|uploads}}',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
 $messages['af'] = array(
 	'mwe-upload-stats-fileprogress' => '$1 van $2',
 	'mwe-upload-unknown-size' => 'Onbekend grootte',
@@ -226,8 +229,8 @@ $messages['af'] = array(
 	'mwe-uploadwarning' => 'Oplaai waarskuwing',
 	'mwe-unknown-error' => 'Onbekende fout:',
 	'mwe-return-to-form' => 'Terug na die vorm',
-	'mwe-file-exists-duplicate' => 'Hierdie lêer is \'n duplikaat van die volgende lêer:',
-	'mwe-fileexists-thumb' => '<center><b>Bestaande lêer</b></center>',
+	'mwe-file-exists-duplicate' => "Hierdie lêer is 'n duplikaat van die volgende lêer:",
+	'mwe-fileexists-thumb' => 'Bestaande lêer',
 	'fogg-save_local_file' => 'Stoor Ogg',
 	'fogg-videoQuality-title' => 'Videokwaliteit',
 	'fogg-starttime-title' => 'Beginsekonde',
@@ -259,8 +262,8 @@ $messages['af'] = array(
 	'mwe-cc_nd_title' => 'Geen afgeleide werke',
 	'mwe-cc_pd_title' => 'Publieke Domein',
 	'mwe-unknown_license' => 'Onbekend lisensie',
-	'mwe-results_from' => 'Resultate van <a href="$1" target="_new">$2</a>',
-	'mwe-missing_desc_see_source' => 'Hierdie bate het nie \'n beskrywing nie. Raadpleeg die [$1 oorspronklike bron] en help om dit te beskryf.',
+	'mwe-results_from' => 'Resultate van $1',
+	'mwe-missing_desc_see_source' => "Hierdie bate het nie 'n beskrywing nie. Raadpleeg die [$1 oorspronklike bron] en help om dit te beskryf.",
 	'mwe-watch_this_page' => 'Volg hierdie bladsy',
 	'mwe-upload-transcoded-status' => 'Getranskodeer',
 	'mwe-upload-transcode-in-progress' => 'Besig met transkodering en oplaai (moenie hierdie venster toemaak nie)',
@@ -268,12 +271,16 @@ $messages['af'] = array(
 	'fogg-select_file' => 'Kies lêer',
 	'fogg-select_new_file' => 'Kies nuwe lêer',
 	'fogg-select_url' => 'Kies URL',
-	'fogg-passthrough_mode' => 'U gekose lêer is reeds \'n Ogg-lêer of nie \'n videolêer nie',
+	'fogg-passthrough_mode' => "U gekose lêer is reeds 'n Ogg-lêer of nie 'n videolêer nie",
 	'fogg-encoding-done' => 'Enkodering is voltooi',
 	'fogg-hidepreview' => 'Versteek voorskou',
-	'mwe-upload-multi' => 'Laai {{PLURAL:$1|\'n lêer|lêers}}',
+	'mwe-upload-multi' => "Laai {{PLURAL:$1|'n lêer|lêers}}",
 );
 
+/** Arabic (العربية)
+ * @author Meno25
+ * @author OsamaK
+ */
 $messages['ar'] = array(
 	'mwe-cancel-confim' => 'أمتأكد من أنك تريد الإلغاء؟',
 	'mwe-successfulupload' => 'نجح الرفع',
@@ -281,7 +288,7 @@ $messages['ar'] = array(
 	'mwe-uploadwarning' => 'تحذير رفع',
 	'mwe-unknown-error' => 'خطأ غير معروف:',
 	'mwe-return-to-form' => 'ارجع إلى النموذج',
-	'mwe-fileexists-thumb' => '<center><b>ملف موجود</b></center>',
+	'mwe-fileexists-thumb' => 'ملف موجود',
 	'fogg-save_local_file' => 'احفظ Ogg',
 	'fogg-cg-meta' => 'بيانات المقطع العلوية',
 	'fogg-cg-range' => 'نطاق الترميز',
@@ -324,7 +331,7 @@ $messages['ar'] = array(
 	'mwe-cc_sa_title' => 'المشاركة على قدم المساواة',
 	'mwe-cc_pd_title' => 'ملكية عامة',
 	'mwe-unknown_license' => 'رخصة غير معروفة',
-	'mwe-results_from' => 'النتائج من <a href="$1" target="_new" >$2</a>',
+	'mwe-results_from' => 'النتائج من $1',
 	'mwe-watch_this_page' => 'راقب هذه الصفحة',
 	'mwe-update_preview' => 'حدّث المعاينة',
 	'mwe-ftype-ogg' => 'ملف فيديو Ogg',
@@ -339,6 +346,10 @@ $messages['ar'] = array(
 	'fogg-hidepreview' => 'أخفِ المعاينة',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ * @author Jim-by
+ */
 $messages['be-tarask'] = array(
 	'mwe-upload-stats-fileprogress' => '$1 з $2',
 	'mwe-upload-unknown-size' => 'Невядомы памер',
@@ -350,7 +361,7 @@ $messages['be-tarask'] = array(
 	'mwe-return-to-form' => 'Вярнуцца да формы',
 	'mwe-file-exists-duplicate' => 'Гэты файл дублюе наступныя файлы:',
 	'mwe-fileexists' => 'Файл з такой назвай ужо існуе. Калі ласка, праверце <b><tt>$1</tt></b>, калі Вы ня ўпэўненыя, што жадаеце яго замяніць.',
-	'mwe-fileexists-thumb' => '<center><b>Існуючы файл</b></center>',
+	'mwe-fileexists-thumb' => 'Існуючы файл',
 	'mwe-ignorewarning' => 'Праігнараваць папярэджаньне і захаваць файл',
 	'mwe-file-thumbnail-no' => 'Назва файла пачынаецца з <b><tt>$1</tt></b>',
 	'mwe-go-to-resource' => 'Перайсьці на старонку рэсурсу',
@@ -453,7 +464,7 @@ $messages['be-tarask'] = array(
 	'mwe-cc_sa_title' => 'З захаваньнем умоваў',
 	'mwe-cc_pd_title' => 'Грамадзкая ўласнасьць',
 	'mwe-unknown_license' => 'Невядомая ліцэнзія',
-	'mwe-results_from' => 'Вынікі з <a href="$1" target="_new" >$2</a>',
+	'mwe-results_from' => 'Вынікі з $1',
 	'mwe-missing_desc_see_source' => 'Гэты файл ня мае апісаньня. Калі ласка, глядзіце [$1 арыгінальную крыніцу] і дапамажыце дадаць яе апісаньне.',
 	'rsd_config_error' => 'Памылка канфігурацыі майстра даданьня мэдыя: $1',
 	'mwe-resource_page_desc' => 'Апісаньне старонкі рэсурсу:',
@@ -551,6 +562,9 @@ $messages['br'] = array(
 	'fogg-badtoken' => 'N\'eo ket reizh ar jedouer',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
 $messages['bs'] = array(
 	'mwe-upload-stats-fileprogress' => '$1 od $2',
 	'mwe-upload-unknown-size' => 'Nepoznata veličina',
@@ -561,7 +575,7 @@ $messages['bs'] = array(
 	'mwe-unknown-error' => 'Nepoznata greška:',
 	'mwe-return-to-form' => 'Natrag na obrazac',
 	'mwe-file-exists-duplicate' => 'Ova datoteka je dvojnik slijedećih datoteka:',
-	'mwe-fileexists-thumb' => '<center><b>Postojeća datoteka</b></center>',
+	'mwe-fileexists-thumb' => 'Postojeća datoteka',
 	'mwe-upload-misc-error' => 'Nepoznata greška pri postavljanju',
 	'fogg-save_local_file' => 'Sačuvaj Ogg',
 	'fogg-help-sticky' => 'Pomoć (klikni za lijepljenje)',
@@ -593,7 +607,7 @@ $messages['bs'] = array(
 	'mwe-cc_nc_title' => 'Nije komercijalno',
 	'mwe-cc_pd_title' => 'Javno vlasništvo',
 	'mwe-unknown_license' => 'Nepoznata licenca',
-	'mwe-results_from' => 'Rezultati od <a href="$1" target="_new" >$2</a>',
+	'mwe-results_from' => 'Rezultati od $1',
 	'mwe-resource_page_desc' => 'Opis izvorišne stranice:',
 	'mwe-local_resource_title' => 'Naslov lokalnog izvora:',
 	'mwe-watch_this_page' => 'Prati ovu stranicu',
@@ -621,6 +635,9 @@ $messages['ca'] = array(
 	'rsd_results_prev' => 'anterior',
 );
 
+/** Czech (Česky)
+ * @author Mormegil
+ */
 $messages['cs'] = array(
 	'mwe-upload-stats-fileprogress' => '$1 z $2',
 	'mwe-cancel-confim' => 'Určitě chcete stornovat?',
@@ -629,7 +646,7 @@ $messages['cs'] = array(
 	'mwe-unknown-error' => 'Neznámá chyba:',
 	'mwe-return-to-form' => 'Zpět na formulář',
 	'mwe-fileexists' => 'Soubor s tímto jménem již existuje, prosím podívejte se na <b><tt>$1</tt></b>, pokud nevíte jistě, zda chcete tento soubor nahradit.',
-	'mwe-fileexists-thumb' => '<center><b>Existující soubor</b></center>',
+	'mwe-fileexists-thumb' => 'Existující soubor',
 	'mwe-ignorewarning' => 'Ignorovat varování a přesto soubor načíst',
 	'mwe-go-to-resource' => 'Přejít k souboru',
 	'mwe-upload-misc-error' => 'Neznámá chyba',
@@ -655,7 +672,7 @@ $messages['cs'] = array(
 	'mwe-cc_sa_title' => 'Zachovejte licenci',
 	'mwe-cc_pd_title' => 'Volné dílo',
 	'mwe-unknown_license' => 'Neznámá licence',
-	'mwe-results_from' => 'Výsledky z <a href="$1" target="_new" >$2</a>',
+	'mwe-results_from' => 'Výsledky z $1',
 	'mwe-preview_insert_resource' => 'Náhled vložení zdroje: $1',
 	'mwe-ftype-svg' => 'Vektorový obrázek SVG',
 	'mwe-ftype-jpg' => 'Obrázek JPEG',
@@ -676,6 +693,15 @@ $messages['cs'] = array(
 	'fogg-use_latest_firefox' => 'Nejprve si nainstalujte <a href="http://www.mozilla-europe.org/cs/firefox/?from=firefogg">Firefox 3.5</a> (nebo novější). <i>Poté se vraťte na tuto stránku, abyste si mohli nainstalovat rozšíření <b>Firefogg</b>.</i>',
 );
 
+/** German (Deutsch)
+ * @author Jan Luca
+ * @author Lukas9950
+ * @author MF-Warburg
+ * @author Metalhead64
+ * @author Pill
+ * @author Tbleher
+ * @author The Evil IP address
+ */
 $messages['de'] = array(
 	'mwe-upload-stats-fileprogress' => '$1 von $2',
 	'mwe-upload-unknown-size' => 'Unbekannte Größe',
@@ -687,7 +713,7 @@ $messages['de'] = array(
 	'mwe-return-to-form' => 'Zurück zum Formular',
 	'mwe-file-exists-duplicate' => 'Diese Datei ist ein Duplikat der folgenden Datei:',
 	'mwe-fileexists' => 'Eine Datei mit diesem Namen existiert bereits. Bitte prüfe <b><tt>$1</tt></b>, wenn du dir bei der Änderung nicht sicher bist.',
-	'mwe-fileexists-thumb' => '<center><b>Existierende Datei</b></center>',
+	'mwe-fileexists-thumb' => 'Existierende Datei',
 	'mwe-ignorewarning' => 'Warnung ignorieren und Datei trotzdem speichern',
 	'mwe-file-thumbnail-no' => 'Der Dateiname beginnt mit <b><tt>$1</tt></b>',
 	'mwe-go-to-resource' => 'Gehe zur Quellseite',
@@ -786,7 +812,7 @@ $messages['de'] = array(
 	'mwe-cc_sa_title' => 'Weitergabe unter gleichen Bedingungen',
 	'mwe-cc_pd_title' => 'Public Domain',
 	'mwe-unknown_license' => 'Unbekannte Lizenz',
-	'mwe-results_from' => 'Ergebnisse von <a href="$1" target="_new" >$2</a>',
+	'mwe-results_from' => 'Ergebnisse von $1',
 	'mwe-missing_desc_see_source' => 'Diesem Posten fehlt eine Beschreibung. Bitte sieh dir die [$1 Originalquelle] an und hilf mit, ihn zu beschreiben.',
 	'mwe-resource_page_desc' => 'Quellseitenbeschreibung:',
 	'mwe-edit_resource_desc' => 'Wikitextquellbeschreibung bearbeiten:',
@@ -824,6 +850,10 @@ $messages['de'] = array(
 	'mwe-review-upload' => 'Hochgeladene {{PLURAL:$1|Datei|Dateien}} überprüfen',
 );
 
+/** Zazaki (Zazaki)
+ * @author Aspar
+ * @author Xoser
+ */
 $messages['diq'] = array(
 	'mwe-upload-stats-fileprogress' => '$2 de $1',
 	'mwe-upload-unknown-size' => 'ebatê ke nêzaniyeni',
@@ -835,7 +865,7 @@ $messages['diq'] = array(
 	'mwe-return-to-form' => 'agêr form',
 	'mwe-file-exists-duplicate' => 'na dosya zey dosyaya cêrına',
 	'mwe-fileexists' => 'no name de ca ra yew dosya esta. eke şıma emin niê bıvurni, kerem kerê <b><tt>$1</tt></b> kontrol bıkerê.',
-	'mwe-fileexists-thumb' => '<center><b>dosyaya mewcud</b></center>',
+	'mwe-fileexists-thumb' => 'dosyaya mewcud',
 	'mwe-ignorewarning' => 'goş hişyariya mekuwi u dosya newe ra bar bıker',
 	'mwe-file-thumbnail-no' => 'nameyê dosyayi pê <b><tt>$1</tt></b> destpêkeno',
 	'mwe-go-to-resource' => 'şo pelê çımeyi',
@@ -938,21 +968,21 @@ $messages['diq'] = array(
 	'mwe-cc_sa_title' => 'bare biyayişo zepê',
 	'mwe-cc_pd_title' => 'malê umumiyi',
 	'mwe-unknown_license' => 'lisanso ke nêzaniyeno',
-	'mwe-results_from' => 'qey <a href="$1" target="_new" >$2</a>yi neticeyi',
+	'mwe-results_from' => 'qey $1yi neticeyi',
 	'mwe-missing_desc_see_source' => 'This asset is missing a description. Please see the [$1 orginal source] and help describe it.',
 	'rsd_config_error' => 'xetaya vıraştışê sihırbazê medya ardışiı: $1',
 	'mwe-resource_page_desc' => 'beyanatê pelê çımeyi',
 	'mwe-edit_resource_desc' => 'beyanatê çımeyi yo metnê wikiyi bıvurn',
 	'mwe-local_resource_title' => 'sernameyê çımeyi yo mehelliyi',
 	'mwe-watch_this_page' => 'no pel temaşa bıker',
-	'mwe-do_import_resource' => 'çıme bıd\' zerre',
+	'mwe-do_import_resource' => "çıme bıd' zerre",
 	'mwe-update_preview' => 'pêştemaşa rocane bıker',
 	'mwe-importing_asset' => 'Importing asset',
 	'mwe-preview_insert_resource' => 'têarêkerdış3e çımeyi pêştemaşa bıker: $1',
 	'mwe-checking-resource' => 'çıme kontrol beno',
 	'mwe-resource-needs-import' => 'Çimeyê $1yi gani zerre $2 bıdiyo',
-	'mwe-ftype-svg' => 'dosyaya vektorê SVC\'yi',
-	'mwe-ftype-jpg' => 'dosyaya resımi ya JPEG\'yi',
+	'mwe-ftype-svg' => "dosyaya vektorê SVC'yi",
+	'mwe-ftype-jpg' => "dosyaya resımi ya JPEG'yi",
 	'mwe-ftype-png' => 'dosyaya resımi ya PNG',
 	'mwe-ftype-oga' => 'dosyaya vengi ya Ogg',
 	'mwe-ftype-ogg' => 'dosyaya videoyi ya Ogg',
@@ -983,6 +1013,9 @@ $messages['diq'] = array(
 	'mwe-review-upload' => '{{PLURAL:$1|bar biyayen|bar biyayenan}} kontrol bike',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
 $messages['dsb'] = array(
 	'mwe-upload-stats-fileprogress' => '$1 z $2',
 	'mwe-upload-unknown-size' => 'Njeznata wjelikosć',
@@ -994,7 +1027,7 @@ $messages['dsb'] = array(
 	'mwe-return-to-form' => 'K formularoju se wrośiś',
 	'mwe-file-exists-duplicate' => 'Toś ta dataja jo duplikat slědujuceje dataje:',
 	'mwe-fileexists' => 'Dataja z toś tym mjenim južo eksistěrujo. Pšosym skontrolěruj <b><tt>$1</tt></b>, jolic njejsy wěsty, lěc coš ju změniś.',
-	'mwe-fileexists-thumb' => '<center><b>Eksistěrujuca dataja</b></center>',
+	'mwe-fileexists-thumb' => 'Eksistěrujuca dataja',
 	'mwe-ignorewarning' => 'Warnowanje ignorěrowaś a dataju weto składowaś.',
 	'mwe-file-thumbnail-no' => 'Datajowe mě zachopina se z <b><tt>$1</tt></b>',
 	'mwe-go-to-resource' => 'K resursowemu bokoju',
@@ -1097,7 +1130,7 @@ $messages['dsb'] = array(
 	'mwe-cc_sa_title' => 'Pó rownych źělach',
 	'mwe-cc_pd_title' => 'Zjawnosći pśistupny',
 	'mwe-unknown_license' => 'Njeznata licenca',
-	'mwe-results_from' => 'Wuslědki z <a href="$1" target="_new" >$2</a>',
+	'mwe-results_from' => 'Wuslědki z $1',
 	'mwe-missing_desc_see_source' => 'Toś ta resursa njama wopisanje. Pšosym glědaj [$1 orginalne žrědło] a pomož ju wopisaś.',
 	'rsd_config_error' => 'Konfiguracisku zmólku medijowego asistenta pśidaś: $1',
 	'mwe-resource_page_desc' => 'Wopsianje resursowego boka:',
@@ -1433,6 +1466,13 @@ $messages['fi'] = array(
 	'fogg-hidepreview' => 'Piilota esikatselu',
 );
 
+/** French (Français)
+ * @author IAlex
+ * @author Jean-Frédéric
+ * @author McDutchie
+ * @author Peter17
+ * @author PieRRoMaN
+ */
 $messages['fr'] = array(
 	'mwe-upload-stats-fileprogress' => '$1 de $2',
 	'mwe-upload-unknown-size' => 'Taille inconnue',
@@ -1443,22 +1483,22 @@ $messages['fr'] = array(
 	'mwe-unknown-error' => 'Erreur inconnue :',
 	'mwe-return-to-form' => 'Retourner au formulaire',
 	'mwe-file-exists-duplicate' => 'Ce fichier est un doublon du fichier suivant :',
-	'mwe-fileexists' => 'Un fichier existe déjà sous ce nom. Veuillez vérifier <b><tt>$1</tt></b> si vous n\'êtes pas sûr de vouloir le changer.',
-	'mwe-fileexists-thumb' => '<center><b>Fichier existant</b></center>',
-	'mwe-ignorewarning' => 'Ignorer l\'avertissement et sauvegarder le fichier quand même',
+	'mwe-fileexists' => "Un fichier existe déjà sous ce nom. Veuillez vérifier <b><tt>$1</tt></b> si vous n'êtes pas sûr de vouloir le changer.",
+	'mwe-fileexists-thumb' => 'Fichier existant',
+	'mwe-ignorewarning' => "Ignorer l'avertissement et sauvegarder le fichier quand même",
 	'mwe-file-thumbnail-no' => 'Le nom de fichier commence par <b><tt>$1</tt></b>',
 	'mwe-go-to-resource' => 'Aller à la page de la ressource',
 	'mwe-upload-misc-error' => 'Erreur inconnue lors du téléversement',
 	'mwe-wgfogg_warning_bad_extension' => 'Vous avez sélectionné un fichier qui comporte une extension non supportée (<a href="http://commons.wikimedia.org/wiki/Commons:Firefogg#Supported_File_Types">plus d\'informations</a>).',
-	'mwe-loading-add-media-wiz' => 'Chargement de l\'assistant d\'ajout de média',
+	'mwe-loading-add-media-wiz' => "Chargement de l'assistant d'ajout de média",
 	'fogg-save_local_file' => 'Sauvegarder au format Ogg',
 	'fogg-help-sticky' => 'Aide (cliquer pour maintenir)',
 	'fogg-cg-preset' => 'Prédéfini : <strong>$1</strong>',
 	'fogg-cg-quality' => 'Qualité basique et contrôle de la résolution',
 	'fogg-cg-meta' => 'Métadonnées pour le clip',
-	'fogg-cg-range' => 'Portée de l\'encodage',
-	'fogg-cg-advVideo' => 'Contrôles avancée de l\'encodage vidéo',
-	'fogg-cg-advAudio' => 'Contrôles avancés de l\'encodage audio',
+	'fogg-cg-range' => "Portée de l'encodage",
+	'fogg-cg-advVideo' => "Contrôles avancée de l'encodage vidéo",
+	'fogg-cg-advAudio' => "Contrôles avancés de l'encodage audio",
 	'fogg-preset-custom' => 'Paramètres personnalisés',
 	'fogg-webvideo-desc' => 'Video web Theroa, Vorbis 400 kbit/s et 400px de largeur maximale',
 	'fogg-savebandwidth-desc' => 'Theora à bande passante faible, Vorbis 164 kbit/s et 200px de largeur maximale',
@@ -1466,11 +1506,11 @@ $messages['fr'] = array(
 	'fogg-videoQuality-title' => 'Qualité vidéo',
 	'fogg-videoQuality-help' => 'Utilisé pour définir la <i>qualité visuelle</i> de la vidéo encodée (non utilisé si vous définissez le débit binaire dans les contrôles avancés ci-dessous).',
 	'fogg-starttime-title' => 'Seconde de début',
-	'fogg-starttime-help' => 'Encoder seulement à partir d\'une durée en secondes',
+	'fogg-starttime-help' => "Encoder seulement à partir d'une durée en secondes",
 	'fogg-endtime-title' => 'Seconde de fin',
 	'fogg-endtime-help' => 'Encoder seulement vers une durée en secondes',
 	'fogg-audioQuality-title' => 'Qualité audio',
-	'fogg-audioQuality-help' => 'Utilisé pour définir la <i>qualité acoustique</i> de l\'audio encodé (non utilisé si vous définissez le débit binaire dans les contrôles avancés ci-dessous).',
+	'fogg-audioQuality-help' => "Utilisé pour définir la <i>qualité acoustique</i> de l'audio encodé (non utilisé si vous définissez le débit binaire dans les contrôles avancés ci-dessous).",
 	'fogg-videoCodec-title' => 'Codec vidéo',
 	'fogg-videoCodec-help' => 'Utilisé pour sélectionner le codec du clip vidéo. Actuellement, seul Theora est disponible. Plus d\'infos sur le <a target="_new" href="http://fr.wikipedia.org/wiki/Theora">codec Theora</a>.',
 	'fogg-audioCodec-title' => 'Codec audio',
@@ -1480,24 +1520,24 @@ $messages['fr'] = array(
 	'fogg-height-title' => 'Hauteur de la vidéo',
 	'fogg-height-help' => 'Redimensionner à la hauteur spécifiée.',
 	'fogg-videoBitrate-title' => 'Débit binaire de la vidéo',
-	'fogg-videoBitrate-help' => 'Le débit binaire de la vidéo définit le débit de l\'encodage pour la vidéo en kb/s',
+	'fogg-videoBitrate-help' => "Le débit binaire de la vidéo définit le débit de l'encodage pour la vidéo en kb/s",
 	'fogg-twopass-title' => 'Encodage à deux passes',
-	'fogg-twopass-help' => 'L\'encodage à deux passes permet une qualité plus constante en effectuant deux parcours du fichier vidéo',
-	'fogg-framerate-title' => 'Fréquence d\'images',
+	'fogg-twopass-help' => "L'encodage à deux passes permet une qualité plus constante en effectuant deux parcours du fichier vidéo",
+	'fogg-framerate-title' => "Fréquence d'images",
 	'fogg-framerate-help' => 'Le nombre d\'images par seconde de la vidéo. Plus d\'infos sur <a target="_new" href="http://fr.wikipedia.org/wiki/Images_par_seconde">la fréquence d\'images</a>.',
 	'fogg-aspect-title' => 'Rapport largeur/hauteur',
 	'fogg-aspect-help' => 'Le rapport largeur/hauteur de la vidéo peut être une fraction 4:3 ou 16:9. Plus d\'infos sur <a target="_new" href="http://fr.wikipedia.org/wiki/Rapport_largeur/hauteur">les rapports largeur/hauteur</a>.',
 	'fogg-keyframeInterval-title' => 'Intervalle des images-clés',
-	'fogg-keyframeInterval-help' => 'L\'intervalle des images-clés dans les images. Note : la plupart des codecs imposent les images-clés si la différence entre les images est plus grande que la taille d\'encodage de l\'image-clé. Plus d\'infos sur <a href="http://en.wikipedia.org/wiki/Video_compression_picture_types">les images-clés</a>.',
+	'fogg-keyframeInterval-help' => "L'intervalle des images-clés dans les images. Note : la plupart des codecs imposent les images-clés si la différence entre les images est plus grande que la taille d'encodage de l'image-clé. Plus d'infos sur <a href=\"http://en.wikipedia.org/wiki/Video_compression_picture_types\">les images-clés</a>.",
 	'fogg-denoise-title' => 'Filtre anti-bruit',
 	'fogg-denoise-help' => 'Débruitage de la vidéo en entrée. Plus d\'infos sur <a href="http://en.wikipedia.org/wiki/Video_denoising">débruitage</a>.',
 	'fogg-novideo-title' => 'Pas de vidéo',
 	'fogg-novideo-help' => 'désactiver la vidéo dans la sortie',
 	'fogg-audioBitrate-title' => 'Débit binaire audio',
-	'fogg-samplerate-title' => 'Taux d\'échantillonnage audio',
-	'fogg-samplerate-help' => 'définir le taux d\'échantillonnage de la sortie (en Hz).',
-	'fogg-noaudio-title' => 'Pas d\'audio',
-	'fogg-noaudio-help' => 'désactiver l\'audio dans la sortie',
+	'fogg-samplerate-title' => "Taux d'échantillonnage audio",
+	'fogg-samplerate-help' => "définir le taux d'échantillonnage de la sortie (en Hz).",
+	'fogg-noaudio-title' => "Pas d'audio",
+	'fogg-noaudio-help' => "désactiver l'audio dans la sortie",
 	'fogg-title-title' => 'Titre',
 	'fogg-title-help' => 'Un titre pour votre clip',
 	'fogg-artist-title' => 'Nom du créateur',
@@ -1515,18 +1555,18 @@ $messages['fr'] = array(
 	'fogg-contact-title' => 'Contact',
 	'fogg-contact-help' => 'Lien du contact',
 	'mwe-stream_title' => '$1 $2 vers $3',
-	'mwe-imported_from' => '$1 a importé depuis [$2 $3]. Voir la [$4 page de la ressource] originale pour plus d\'information.',
+	'mwe-imported_from' => "$1 a importé depuis [$2 $3]. Voir la [$4 page de la ressource] originale pour plus d'information.",
 	'mwe-select_file' => 'Sélectionnez un fichier',
 	'mwe-select_ownwork' => 'Je téléverse uniquement mes propres œuvres, et les place sous licence :',
 	'mwe-upload' => 'Téléverser un fichier',
 	'mwe-destfilename' => 'Nom du fichier de destination :',
 	'mwe-summary' => 'Résumé',
-	'mwe-error_not_loggedin' => 'Il semble que vous ne soyez pas connecté ou que vous n\'ayez pas le droit de téléverser.',
+	'mwe-error_not_loggedin' => "Il semble que vous ne soyez pas connecté ou que vous n'ayez pas le droit de téléverser.",
 	'mwe-watch-this-file' => 'Suivre ce fichier',
 	'mwe-ignore-any-warnings' => 'Ignorer les avertissements',
 	'mwe-upload-in-progress' => 'Téléversement en cours (ne pas fermer cette fenêtre)',
 	'mwe-uploaded-status' => 'Téléversé',
-	'mwe-add_media_wizard' => 'Assistant d\'ajout de média',
+	'mwe-add_media_wizard' => "Assistant d'ajout de média",
 	'mwe-media_search' => 'Recherche de média',
 	'rsd_box_layout' => 'Disposition de la boîte',
 	'rsd_list_layout' => 'Disposition de la liste',
@@ -1540,24 +1580,24 @@ $messages['fr'] = array(
 	'rsd_resource_edit' => 'Modifier la ressource : $1',
 	'mwe-resource_description_page' => 'Page de description de la ressource',
 	'mwe-link' => 'lien',
-	'rsd_do_insert' => 'Faire l\'insertion',
+	'rsd_do_insert' => "Faire l'insertion",
 	'mwe-cc_by_title' => 'Attribution',
 	'mwe-cc_nc_title' => 'Non commercial',
 	'mwe-cc_nd_title' => 'Pas de travaux dérivés',
-	'mwe-cc_sa_title' => 'Partage à l\'identique',
+	'mwe-cc_sa_title' => "Partage à l'identique",
 	'mwe-cc_pd_title' => 'Domaine public',
 	'mwe-unknown_license' => 'Licence inconnue',
-	'mwe-results_from' => 'Résultats depuis <a href="$1" target="_new" >$2</a>',
-	'mwe-missing_desc_see_source' => 'Il manque une description pour cet asset. Consultez la [$1 source d\'origine] et aidez à le décrire.',
-	'rsd_config_error' => 'Erreur de configuration de l\'assistant d\'ajout de média : $1',
+	'mwe-results_from' => 'Résultats depuis $1',
+	'mwe-missing_desc_see_source' => "Il manque une description pour cet asset. Consultez la [$1 source d'origine] et aidez à le décrire.",
+	'rsd_config_error' => "Erreur de configuration de l'assistant d'ajout de média : $1",
 	'mwe-resource_page_desc' => 'Page de  description de la ressource :',
 	'mwe-edit_resource_desc' => 'Modifier le wiki texte de la description de la ressource :',
 	'mwe-local_resource_title' => 'Titre de la ressource locale :',
 	'mwe-watch_this_page' => 'Suivre cette page',
 	'mwe-do_import_resource' => 'Importer la ressource',
 	'mwe-update_preview' => 'Mettre à jour la prévisualisation',
-	'mwe-importing_asset' => 'Import de l\'asset',
-	'mwe-preview_insert_resource' => 'Prévisualiser l\'insertion de la ressource : $1',
+	'mwe-importing_asset' => "Import de l'asset",
+	'mwe-preview_insert_resource' => "Prévisualiser l'insertion de la ressource : $1",
 	'mwe-checking-resource' => 'Vérification de la ressource',
 	'mwe-resource-needs-import' => 'La ressource $1 doit être importée sur $2',
 	'mwe-ftype-svg' => 'Fichier vectoriel SVG',
@@ -1575,7 +1615,7 @@ $messages['fr'] = array(
 	'rsd-metavid-desc' => 'Metavid.org, une archive communautaire des séances de la chambre des représentants et du sénat des États-Unis',
 	'mwe-upload-transcoded-status' => 'Transcodé',
 	'mwe-upload-transcode-in-progress' => 'Transcodage et téléversement en cours (ne pas fermer cette fenêtre)',
-	'fogg-transcoding' => 'Encodage d\'une vidéo au format Ogg',
+	'fogg-transcoding' => "Encodage d'une vidéo au format Ogg",
 	'fogg-select_file' => 'Sélectionnez un fichier',
 	'fogg-select_new_file' => 'Sélectionnez un nouveau fichier',
 	'fogg-select_url' => 'Sélectionnez une URL',
@@ -1583,15 +1623,18 @@ $messages['fr'] = array(
 	'fogg-installed' => 'Firefogg est installé',
 	'fogg-for_improved_uploads' => 'Pour des téléversements améliorés :',
 	'fogg-use_latest_firefox' => 'Veuillez d\'abord installer <a href="http://www.mozilla.com/en-US/firefox/upgrade.html?from=firefogg">Firefox 3.5</a> (ou plus récent). <i>Puis revenez sur cette page pour installer l\'extension <b>Firefogg</b>.</i>',
-	'fogg-passthrough_mode' => 'Le fichier que vous avez sélectionné est déjà au format Ogg ou n\'est pas un fichier vidéo',
+	'fogg-passthrough_mode' => "Le fichier que vous avez sélectionné est déjà au format Ogg ou n'est pas un fichier vidéo",
 	'fogg-encoding-done' => 'Encodage terminé',
-	'fogg-badtoken' => 'Le jeton n\'est pas valide',
+	'fogg-badtoken' => "Le jeton n'est pas valide",
 	'fogg-preview' => 'Prévisualiser la vidéo',
 	'fogg-hidepreview' => 'Masquer la prévisualisation',
 	'mwe-upload-multi' => 'Téléverser {{PLURAL:$1|le fichier|les fichiers}}',
 	'mwe-review-upload' => 'Vérifier {{PLURAL:$1|le téléversement de fichier|les téléversements de fichiers}}',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
 $messages['gl'] = array(
 	'mwe-upload-stats-fileprogress' => '$1 de $2',
 	'mwe-upload-unknown-size' => 'Tamaño descoñecido',
@@ -1603,7 +1646,7 @@ $messages['gl'] = array(
 	'mwe-return-to-form' => 'Voltar ao formulario',
 	'mwe-file-exists-duplicate' => 'Este ficheiro é un duplicado destoutro:',
 	'mwe-fileexists' => 'Xa existe un ficheiro con ese nome. Por favor, verifique <b><tt>$1</tt></b> se non está seguro de que quere cambialo.',
-	'mwe-fileexists-thumb' => '<center><b>Ficheiro existente</b></center>',
+	'mwe-fileexists-thumb' => 'Ficheiro existente',
 	'mwe-ignorewarning' => 'Ignorar a advertencia e gardar o ficheiro de calquera xeito',
 	'mwe-file-thumbnail-no' => 'O nome do ficheiro comeza por <b><tt>$1</tt></b>',
 	'mwe-go-to-resource' => 'Ir á páxina do recurso',
@@ -1617,7 +1660,7 @@ $messages['gl'] = array(
 	'fogg-cg-meta' => 'Metadatos do vídeo',
 	'fogg-cg-range' => 'Rango de codificación',
 	'fogg-cg-advVideo' => 'Controis avanzados de codificación de vídeo',
-	'fogg-cg-advAudio' => 'Controis avanzados de codificación de audio',
+	'fogg-cg-advAudio' => 'Controis avanzados de codificación de son',
 	'fogg-preset-custom' => 'Configuracións personalizadas',
 	'fogg-webvideo-desc' => 'Vídeo web Theora, Vorbis 400 kbit/s e un máximo de 400px de ancho',
 	'fogg-savebandwidth-desc' => 'Ancho de banda baixo Theora, Vorbis 164 kbit/s e un máximo de 200px de ancho',
@@ -1683,7 +1726,7 @@ $messages['gl'] = array(
 	'mwe-error_not_loggedin' => 'Parece non ter accedido ao sistema ou non ter privilexios de carga.',
 	'mwe-watch-this-file' => 'Vixiar este ficheiro',
 	'mwe-ignore-any-warnings' => 'Ignorar os avisos',
-	'mwe-upload-in-progress' => 'Carga en progreso (non peche esta ventá)',
+	'mwe-upload-in-progress' => 'Carga en curso (non peche esta ventá)',
 	'mwe-uploaded-status' => 'Cargado',
 	'mwe-add_media_wizard' => 'Asistente para engadir medios',
 	'mwe-media_search' => 'Procura de medios',
@@ -1706,8 +1749,8 @@ $messages['gl'] = array(
 	'mwe-cc_sa_title' => 'Compartir igual',
 	'mwe-cc_pd_title' => 'Dominio público',
 	'mwe-unknown_license' => 'Licenza descoñecida',
-	'mwe-results_from' => 'Resultados desde <a href="$1" target="_new" >$2</a>',
-	'mwe-missing_desc_see_source' => 'A este valor fáltalle unha descrición. Por favor, olle a [$1 fonte orixinal] e axude a describilo.',
+	'mwe-results_from' => 'Resultados desde $1',
+	'mwe-missing_desc_see_source' => 'A este valor fáltalle unha descrición. Olle a $1 e axude a describilo.',
 	'rsd_config_error' => 'Erro de configuración do asistente para engadir medios: $1',
 	'mwe-resource_page_desc' => 'Páxina de descrición do recurso:',
 	'mwe-edit_resource_desc' => 'Editar o texto wiki da descrición do recurso:',
@@ -1728,7 +1771,7 @@ $messages['gl'] = array(
 	'rsd-wiki_commons-title' => 'Wikimedia Commons',
 	'rsd-wiki_commons' => 'Wikimedia Commons, un depósito de contidos multimedia educativos e libres de licenza (imaxes, sons e vídeos)',
 	'rsd-this_wiki-title' => 'Este wiki',
-	'rsd-this_wiki-desc' => 'A instalación do wiki local',
+	'rsd-this_wiki-desc' => 'O wiki local',
 	'rsd-archive_org-desc' => 'O Internet Archive, unha biblioteca dixital de artefactos culturais',
 	'rsd-flickr-desc' => 'Flickr.com, unha páxina web onde compartir fotos en liña',
 	'rsd-metavid-desc' => 'Metavid.org, un depósito comunitario das reunións na Cámara e mais no Senado dos EUA',
@@ -1739,12 +1782,12 @@ $messages['gl'] = array(
 	'fogg-select_new_file' => 'Seleccione un ficheiro novo',
 	'fogg-select_url' => 'Seleccione un enderezo URL',
 	'fogg-check_for_firefogg' => 'Examinando en busca do Firefogg...',
-	'fogg-installed' => 'O Firefogg está instalado',
+	'fogg-installed' => 'O Firefogg está instalado.',
 	'fogg-for_improved_uploads' => 'Para cargas melloradas:',
 	'fogg-use_latest_firefox' => 'Por favor, instale primeiro o <a href="http://gl.www.mozilla.com/gl/">Firefox 3.5</a> (ou superior). <i>Logo diso, volte a esta páxina para instalar a extensión <b>Firefogg</b>.</i>',
 	'fogg-passthrough_mode' => 'O ficheiro que seleccionou xa está en formato Ogg ou non é un ficheiro de vídeo',
 	'fogg-encoding-done' => 'Codificación completa',
-	'fogg-badtoken' => 'O token non é válido',
+	'fogg-badtoken' => 'O pase non é válido',
 	'fogg-preview' => 'Vista previa do vídeo',
 	'fogg-hidepreview' => 'Agochar a vista previa',
 	'mwe-upload-multi' => 'Cargar {{PLURAL:$1|o ficheiro|os ficheiros}}',
@@ -1758,6 +1801,9 @@ $messages['grc'] = array(
 	'rsd_results_prev' => 'προηγούμεναι',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
 $messages['gsw'] = array(
 	'mwe-upload-stats-fileprogress' => '$1 vu $2',
 	'mwe-upload-unknown-size' => 'Dateigreßi nit bekannt',
@@ -1769,7 +1815,7 @@ $messages['gsw'] = array(
 	'mwe-return-to-form' => 'Zruck zum Formular',
 	'mwe-file-exists-duplicate' => 'Die Datei isch e Duplikat vu däre Datei:',
 	'mwe-fileexists' => 'S het scho ne Datei mit däm Name. Bitte prief <b><tt>$1</tt></b>, wänn du nit sicher bisch, eb Du dr Name witt ändere.',
-	'mwe-fileexists-thumb' => '<center><b>Datei, wu s git</b></center>',
+	'mwe-fileexists-thumb' => 'Datei, wu s git',
 	'mwe-ignorewarning' => 'Warnig ignoriere un d Datei einewäg spychere',
 	'mwe-file-thumbnail-no' => 'Dr Dateiname fangt aa mit <b><tt>$1</tt></b>',
 	'mwe-go-to-resource' => 'Zruck zue dr Ursprungssyte',
@@ -1872,7 +1918,7 @@ $messages['gsw'] = array(
 	'mwe-cc_sa_title' => 'Wytergab unter glyche Bedingige',
 	'mwe-cc_pd_title' => 'Public Domain',
 	'mwe-unknown_license' => 'Uubekannti Lizänz',
-	'mwe-results_from' => 'Ergebnis vu <a href="$1" target="_new" >$2</a>',
+	'mwe-results_from' => 'Ergebnis vu $1',
 	'mwe-missing_desc_see_source' => 'Zue däre Aalag fählt e Bschrybig. Bitte lueg d [$1 Orginalquälle] aa un hilf si z bschrybe.',
 	'rsd_config_error' => 'Fähler bi dr Konfiguration vu dr Yyfiegig vum Medie-Wizard: $1',
 	'mwe-resource_page_desc' => 'Bschryybig:',
@@ -1917,6 +1963,10 @@ $messages['gsw'] = array(
 	'mwe-review-upload' => '{{PLURAL:$1|Datei-Uffeladig|Datei-Uffeadige}} priefe',
 );
 
+/** Hebrew (עברית)
+ * @author Rotemliss
+ * @author YaronSh
+ */
 $messages['he'] = array(
 	'mwe-upload-stats-fileprogress' => '$1 מתוך $2',
 	'mwe-upload-unknown-size' => 'גודל בלתי ידוע',
@@ -1927,7 +1977,7 @@ $messages['he'] = array(
 	'mwe-unknown-error' => 'שגיאה בלתי מוכרת:',
 	'mwe-return-to-form' => 'חזרה לטופס',
 	'mwe-file-exists-duplicate' => 'קובץ זה הוא כפול לקובץ הבא:',
-	'mwe-fileexists-thumb' => '<center><b>קובץ קיים</b></center>',
+	'mwe-fileexists-thumb' => 'קובץ קיים',
 	'mwe-ignorewarning' => 'התעלמות מהאזהרות ושמירת הקובץ בכל מקרה',
 	'mwe-file-thumbnail-no' => 'שם הקובץ מתחיל ב־<b><tt>$1</tt></b>',
 	'mwe-go-to-resource' => 'מעבר לדף המשאב',
@@ -1958,7 +2008,7 @@ $messages['he'] = array(
 	'mwe-resource_description_page' => 'דף תאור המשאב',
 	'rsd_do_insert' => 'ביצוע ההוספה',
 	'mwe-unknown_license' => 'רשיון בלתי ידוע',
-	'mwe-results_from' => 'תוצאות מ־<a href="$1" target="_new" >$2</a>',
+	'mwe-results_from' => 'תוצאות מ־$1',
 	'rsd_config_error' => 'שגיאה בהגדרות אשף הוספת המדיה: $1',
 	'mwe-watch_this_page' => 'מעקב אחרי דף זה',
 	'mwe-do_import_resource' => 'ייבוא משאב',
@@ -1976,6 +2026,9 @@ $messages['he'] = array(
 	'fogg-badtoken' => 'האסימון אינו תקין',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
 $messages['hsb'] = array(
 	'mwe-upload-stats-fileprogress' => '$1 z $2',
 	'mwe-upload-unknown-size' => 'Njeznata wulkosć',
@@ -1987,7 +2040,7 @@ $messages['hsb'] = array(
 	'mwe-return-to-form' => 'Wróćo k formularej',
 	'mwe-file-exists-duplicate' => 'Tuta dataja je duplikat slědowaceje dataje:',
 	'mwe-fileexists' => 'Dataja z tutym mjenom hižo eksistuje. Prošu skontroluj <b><tt>$1</tt></b>, jeli njesy sej wěsty, hač chceš ju změnić.',
-	'mwe-fileexists-thumb' => '<center><b>Eksistowaca dataja</b></center>',
+	'mwe-fileexists-thumb' => 'Eksistowaca dataja',
 	'mwe-ignorewarning' => 'Warnowanje ignorować a dataju najebać toho składować',
 	'mwe-file-thumbnail-no' => 'Datajowe mjeno započina so z <b><tt>$1</tt></b>',
 	'mwe-go-to-resource' => 'K resursowej stronje',
@@ -2078,7 +2131,7 @@ $messages['hsb'] = array(
 	'rsd_results_next' => 'dalši',
 	'rsd_results_prev' => 'předchadny',
 	'rsd_no_results' => 'Žane pytanske wuslědki za <b>$1</b>',
-	'mwe-upload_tab' => 'Nahrać',
+	'mwe-upload_tab' => 'Dataju nahrać',
 	'rsd_layout' => 'Wuhotowanje:',
 	'rsd_resource_edit' => 'Resursu wobdźěłać: $1',
 	'mwe-resource_description_page' => 'Wopisanska strona resursy',
@@ -2091,8 +2144,8 @@ $messages['hsb'] = array(
 	'mwe-cc_sa_title' => 'Po jenakich dźělach',
 	'mwe-cc_pd_title' => 'Powšitkownosći wužitny',
 	'mwe-unknown_license' => 'Njeznata licenca',
-	'mwe-results_from' => 'Wuslědki z <a href="$1" target="_new" >$2</a>',
-	'mwe-missing_desc_see_source' => 'Tuta resursa wopisanje nima. Prošu hlej [$1 originalne žórło] a pomhaj ju wopisać.',
+	'mwe-results_from' => 'Wuslědki z $1',
+	'mwe-missing_desc_see_source' => 'Tuta resursa wopisanje nima. Prošu hlej $1 a pomhaj ju wopisać.',
 	'rsd_config_error' => 'Konfiguraciski zmylk asistenta přidawanja medijow: $1',
 	'mwe-resource_page_desc' => 'Wopisanje resursoweje strony:',
 	'mwe-edit_resource_desc' => 'Wopisanje wikitekstoweje resursy wobdźěłać:',
@@ -2113,7 +2166,7 @@ $messages['hsb'] = array(
 	'rsd-wiki_commons-title' => 'Wikimedija Commons',
 	'rsd-wiki_commons' => 'Wikimedija Commons, archiw swobodnje licencowaneho wobsah wučbnych medijow (wobrazy, awdiomaterial a wideoklipy)',
 	'rsd-this_wiki-title' => 'Tutón wiki',
-	'rsd-this_wiki-desc' => 'Instalacija lokalneho wikija',
+	'rsd-this_wiki-desc' => 'Lokalny wiki',
 	'rsd-archive_org-desc' => 'Internetny archiw, digitalna biblioteka kulturnych twórbow',
 	'rsd-flickr-desc' => 'Flickr.com, websydło za zhromadne wužiwanje fotow',
 	'rsd-metavid-desc' => 'Metavid.org, zhromadźenstwowy archiw protokolow posedźenja Dom zapósłancow a Senata USA',
@@ -2124,7 +2177,7 @@ $messages['hsb'] = array(
 	'fogg-select_new_file' => 'Nowu dataju wubrać',
 	'fogg-select_url' => 'URL wubrać',
 	'fogg-check_for_firefogg' => 'Pruwowanje za Firefogg ...',
-	'fogg-installed' => 'Firefogg so instaluje',
+	'fogg-installed' => 'Firefogg so instaluje,',
 	'fogg-for_improved_uploads' => 'Za polěpšene nahraća:',
 	'fogg-use_latest_firefox' => 'Prošu instalu najprjedy <a href="http://www.mozilla.com/en-US/firefox/upgrade.html?from=firefogg">Firefox 3.5</a> (abo wyše). <i>Potom wopytaj tutu strona znowa, zo by rozšěrjenje <b>Firefogg</b> instalował.</i>',
 	'fogg-passthrough_mode' => 'Twoja wubrana dataja je hižo Ogg abo njeje widejowa dataja',
@@ -2136,6 +2189,10 @@ $messages['hsb'] = array(
 	'mwe-review-upload' => '{{PLURAL:$1|Datajowe nahraće|Datajowej nahraći|Datajowe nahraća|Datajowe nahraća}} přepruwować',
 );
 
+/** Hungarian (Magyar)
+ * @author Dani
+ * @author Glanthor Reviol
+ */
 $messages['hu'] = array(
 	'mwe-upload-stats-fileprogress' => '$1 (összesen: $2)',
 	'mwe-upload-unknown-size' => 'Ismeretlen méret',
@@ -2147,7 +2204,7 @@ $messages['hu'] = array(
 	'mwe-return-to-form' => 'Visszatérés az űrlaphoz',
 	'mwe-file-exists-duplicate' => 'Ez a következő fájl duplikátuma:',
 	'mwe-fileexists' => 'Már létezik ilyen nevű fájl. Ellenőrizd a(z) <b><tt>$1</tt></b> fájlt, ha nem vagy biztos benne, hogy le szeretnéd cserélni.',
-	'mwe-fileexists-thumb' => '<center><b>Létező fájl</b></center>',
+	'mwe-fileexists-thumb' => 'Létező fájl',
 	'mwe-ignorewarning' => 'Figyelmeztetés figyelmen kívül hagyása és a fájl mentése',
 	'mwe-file-thumbnail-no' => 'A fájlnév ezzel kezdődik: <b><tt>$1</tt></b>',
 	'mwe-go-to-resource' => 'Vissza az erőforrás lapra',
@@ -2251,7 +2308,7 @@ További információkat <a href="http://en.wikipedia.org/wiki/I-frame">itt</a> 
 	'mwe-cc_sa_title' => 'Így add tovább!',
 	'mwe-cc_pd_title' => 'Közkincs',
 	'mwe-unknown_license' => 'Ismeretlen licenc',
-	'mwe-results_from' => 'Találatok a következő helyről: <a href="$1" target="_new" >$2</a>',
+	'mwe-results_from' => 'Találatok a következő helyről: $1',
 	'mwe-missing_desc_see_source' => 'Ez a médiatartalom nem rendelkezik leírással. Nézd meg az [$1 eredeti forrást] és segíts a leírás elkészítésében.',
 	'rsd_config_error' => 'Média hozzáadása varázsló konfigurációs hiba: $1',
 	'mwe-resource_page_desc' => 'Erőforrás lap leírása:',
@@ -2296,6 +2353,9 @@ További információkat <a href="http://en.wikipedia.org/wiki/I-frame">itt</a> 
 	'mwe-review-upload' => '{{PLURAL:$1|Feltöltés|Feltöltések}} ellenőrzése',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
 $messages['ia'] = array(
 	'mwe-upload-stats-fileprogress' => '$1 de $2',
 	'mwe-upload-unknown-size' => 'Dimension incognite',
@@ -2307,7 +2367,7 @@ $messages['ia'] = array(
 	'mwe-return-to-form' => 'Retornar al formulario',
 	'mwe-file-exists-duplicate' => 'Iste file es un duplicato del file sequente:',
 	'mwe-fileexists' => 'Un file con iste nomine ja existe. Per favor verifica <b><tt>$1</tt></b> si tu non es secur de voler cambiar lo.',
-	'mwe-fileexists-thumb' => '<center><b>File existente</b></center>',
+	'mwe-fileexists-thumb' => 'File existente',
 	'mwe-ignorewarning' => 'Ignorar le advertimento e immagazinar le file totevia',
 	'mwe-file-thumbnail-no' => 'Le nomine de file comencia con <b><tt>$1</tt></b>',
 	'mwe-go-to-resource' => 'Ir al pagina del ressource',
@@ -2410,7 +2470,7 @@ $messages['ia'] = array(
 	'mwe-cc_sa_title' => 'Condivider equalmente',
 	'mwe-cc_pd_title' => 'Dominio public',
 	'mwe-unknown_license' => 'Licentia incognite',
-	'mwe-results_from' => 'Resultatos ab <a href="$1" target="_new" >$2</a>',
+	'mwe-results_from' => 'Resultatos ab $1',
 	'mwe-missing_desc_see_source' => 'Il manca un description a iste ressource. Per favor consulta le [$1 origine] e adjuta a describer lo.',
 	'rsd_config_error' => 'Error de configuration in le assistente pro adder multimedia: $1',
 	'mwe-resource_page_desc' => 'Description del pagina de ressource:',
@@ -2433,7 +2493,7 @@ $messages['ia'] = array(
 	'rsd-wiki_commons' => 'Wikimedia Commons, un archivo de contento multimedial educative sub licentia libere (imagines, audio e video)',
 	'rsd-this_wiki-title' => 'Iste wiki',
 	'rsd-this_wiki-desc' => 'Le installation wiki local',
-	'rsd-archive_org-desc' => 'Le \'\'Internet Archive\'\', un bibliotheca digital de artefactos cultural',
+	'rsd-archive_org-desc' => "Le ''Internet Archive'', un bibliotheca digital de artefactos cultural",
 	'rsd-flickr-desc' => 'Flickr.com, un sito pro condivider photos in linea',
 	'rsd-metavid-desc' => 'Metavid.org, un archivo communitari de actiones del Camera de representantes e Senato del SUA',
 	'mwe-upload-transcoded-status' => 'Transcodificate',
@@ -2455,6 +2515,11 @@ $messages['ia'] = array(
 	'mwe-review-upload' => 'Revider le {{PLURAL:$1|cargamento del file|cargamentos del files}}',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ * @author Irwangatot
+ * @author IvanLanin
+ */
 $messages['id'] = array(
 	'mwe-upload-stats-fileprogress' => '$1 dari $2',
 	'mwe-upload-unknown-size' => 'Ukuran tidak diketahui',
@@ -2466,7 +2531,7 @@ $messages['id'] = array(
 	'mwe-return-to-form' => 'Kembali ke formulir',
 	'mwe-file-exists-duplicate' => 'Berkas ini adalah duplikat dari berkas berikut:',
 	'mwe-fileexists' => 'Suatu berkas dengan nama tersebut telah ada. Tolong cek <b><tt>$1</tt></b> jika Anda tidak yakin untuk mengubahnya.',
-	'mwe-fileexists-thumb' => '<center><b>Berkas yang sudah ada</b></center>',
+	'mwe-fileexists-thumb' => 'Berkas yang sudah ada',
 	'mwe-ignorewarning' => 'Abaikan peringatan dan simpan saja berkas',
 	'mwe-file-thumbnail-no' => 'Nama berkas diawali dengan <tt><b>$1</b></tt>',
 	'mwe-go-to-resource' => 'Lihat halaman sumber',
@@ -2569,7 +2634,7 @@ $messages['id'] = array(
 	'mwe-cc_sa_title' => 'Berbagi Serupa',
 	'mwe-cc_pd_title' => 'Domain Umum',
 	'mwe-unknown_license' => 'Lisensi tidak diketahui',
-	'mwe-results_from' => 'Hasil dari <a href="$1" target="_new" >$2</a>',
+	'mwe-results_from' => 'Hasil dari $1',
 	'mwe-missing_desc_see_source' => 'Aset ini tidak memiliki deskripsi. Silakan lihat [$1 sumber aslinya] dan bantulah untuk mendeskripsikannya.',
 	'rsd_config_error' => 'Kesalahan konfigurasi pemandu penambahan media: $1',
 	'mwe-resource_page_desc' => 'Keterangan sumber halaman',
@@ -2643,6 +2708,12 @@ $messages['it'] = array(
 	'fogg-hidepreview' => 'Nascondi anteprima',
 );
 
+/** Japanese (日本語)
+ * @author Aotake
+ * @author Fryed-peach
+ * @author Hosiryuhosi
+ * @author 青子守歌
+ */
 $messages['ja'] = array(
 	'mwe-upload-stats-fileprogress' => '$2中 $1',
 	'mwe-upload-unknown-size' => '不明なサイズ',
@@ -2654,7 +2725,7 @@ $messages['ja'] = array(
 	'mwe-return-to-form' => 'フォームに戻る',
 	'mwe-file-exists-duplicate' => 'このファイルは以下のファイルと重複しています:',
 	'mwe-fileexists' => '同名のファイルが既に存在しています。上書きしてよいかわからない場合は <b><tt>$1</tt></b> を確認してください。',
-	'mwe-fileexists-thumb' => '<center><b>既存のファイル</b></center>',
+	'mwe-fileexists-thumb' => '既存のファイル',
 	'mwe-ignorewarning' => '警告を無視してファイルを保存する',
 	'mwe-file-thumbnail-no' => 'ファイル名が<b><tt>$1</tt></b>から始まるもの',
 	'mwe-go-to-resource' => '出典情報ページへ行く',
@@ -2758,7 +2829,7 @@ $messages['ja'] = array(
 	'mwe-cc_sa_title' => '継承',
 	'mwe-cc_pd_title' => 'パブリック・ドメイン',
 	'mwe-unknown_license' => 'ライセンス不明',
-	'mwe-results_from' => '<a href="$1" target="_new" >$2</a>の結果',
+	'mwe-results_from' => '$1の結果',
 	'mwe-missing_desc_see_source' => 'この素材には説明がありません。[$1 もともとの出所]を確認して解説を追加してください。',
 	'rsd_config_error' => 'メディア追加ウィザードの設定エラー: $1',
 	'mwe-resource_page_desc' => '出典情報ページの解説:',
@@ -2837,6 +2908,9 @@ $messages['ko'] = array(
 	'fogg-badtoken' => '토큰이 유효하지 않습니다.',
 );
 
+/** Colognian (Ripoarisch)
+ * @author Purodha
+ */
 $messages['ksh'] = array(
 	'mwe-upload-stats-fileprogress' => '$1 vun $2',
 	'mwe-upload-unknown-size' => 'Dä Datteiömfang es unbikannt',
@@ -2848,7 +2922,7 @@ $messages['ksh'] = array(
 	'mwe-return-to-form' => 'Jangk retuur op dat Fommulaa',
 	'mwe-file-exists-duplicate' => 'Di Dattei es dubbel met dä hee:',
 	'mwe-fileexists' => 'En Dattei met dämm Name jidd_et ald. Beß esu joot un donn <b><tt>$1</tt></b> prööfe, wann De Der nit sescher beß, of De jät ändere wells.',
-	'mwe-fileexists-thumb' => '<center>Datei ald doh</center>',
+	'mwe-fileexists-thumb' => 'Datei ald doh',
 	'mwe-ignorewarning' => '{{int:ignorewarning}}',
 	'mwe-file-thumbnail-no' => 'Dä Dattei iere Name fängk met <b><tt>$1</tt></b> aan.',
 	'mwe-go-to-resource' => 'Jank op di Sigg doh drövver',
@@ -2887,7 +2961,10 @@ $messages['ksh'] = array(
 	'fogg-title-help' => 'Enne Tittel för Dinge Ußschnett',
 	'fogg-date-title' => 'Dattum',
 	'fogg-location-title' => 'Plaz',
+	'fogg-organization-title' => 'De Ojjanizazjohn',
+	'fogg-organization-help' => 'Dä Ojjanisazjohn udder dämm Schtuudijo singe Name',
 	'fogg-copyright-title' => 'Urhävverrääsch',
+	'fogg-copyright-help' => 'Et Urhäverääsch för dä Ußschnett',
 	'fogg-license-title' => 'Lizänz',
 	'fogg-license-help' => 'De Lizänz, onger dä dä Ußschnett schteiht — am leevste ham_mer en <i lang="en">URL</i> vun <i lang="en">Creative Commons</i>.',
 	'fogg-contact-title' => 'Kumtak',
@@ -2926,7 +3003,7 @@ $messages['ksh'] = array(
 	'mwe-cc_sa_title' => 'Afjeleidt Werke onger desellve Bedenunge wigger jävve',
 	'mwe-cc_pd_title' => 'Allmende (jemeinfrei, <i lang="en">public domain</i>)',
 	'mwe-unknown_license' => 'En onbikannte Lizänz',
-	'mwe-results_from' => 'Wat eruß kohm bei <a href="$1" target="_new" >$2</a>',
+	'mwe-results_from' => 'Wat eruß kohm bei $1',
 	'mwe-missing_desc_see_source' => 'Dat Denge hee es unbeschrevve. Loor op dä [$1 Ojinaal-Sigg] noh, un hellf met, dat mer dat noh heh krijje.',
 	'rsd_config_error' => 'Dä Hexemeister för Meedije hädd_enne Fähler en singe Enshtällunge: $1',
 	'mwe-resource_page_desc' => 'Beschrevve:',
@@ -2967,6 +3044,10 @@ $messages['ksh'] = array(
 	'mwe-review-upload' => 'Donn de huhjelaade {{PLURAL:$1|Dattei|Datteije|nix}} nohloore',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Les Meloures
+ * @author Robby
+ */
 $messages['lb'] = array(
 	'mwe-upload-stats-fileprogress' => '$1 vu(n) $2',
 	'mwe-upload-unknown-size' => 'Onbekannte Gréisst',
@@ -2978,11 +3059,11 @@ $messages['lb'] = array(
 	'mwe-return-to-form' => 'Zréck op de Formulaire',
 	'mwe-file-exists-duplicate' => 'Dëse Fichier ass en Doublon vun dësem Fichier:',
 	'mwe-fileexists' => 'E Fichier mat dësem Numm gëtt et schonn. Kuckt w.e.g. op <b><tt>$1</tt></b> no wann Dir net sécher sidd ob Dir en ännere wëllt.',
-	'mwe-fileexists-thumb' => '<center><b>Fichier deen et gëtt</b></center>',
+	'mwe-fileexists-thumb' => 'Fichier deen et gëtt',
 	'mwe-ignorewarning' => 'Warnung ignoréieren an de Fichier trotzdeem späicheren',
-	'mwe-file-thumbnail-no' => 'Den Numm vum fichier fänkt mat <b><tt>$1</tt></b> un',
+	'mwe-file-thumbnail-no' => 'Den Numm vum Fichier fänkt mat <b><tt>$1</tt></b> un',
 	'mwe-upload-misc-error' => 'Onbekannte Feeler beim Eroplueden',
-	'mwe-wgfogg_warning_bad_extension' => 'Dir hutt e Fichier mat enger Erweiderung déi net ënnerstetzt gëtt (<a href="http://commons.wikimedia.org/wiki/Commons:Firefogg#Supported_File_Types">méi Informatiounen</a>) erausgesicht.',
+	'mwe-wgfogg_warning_bad_extension' => 'Dir hutt e Fichier mat enger Erweiderung déi net ënnerstëtzt gëtt (<a href="http://commons.wikimedia.org/wiki/Commons:Firefogg#Supported_File_Types">méi Informatiounen</a>) erausgesicht.',
 	'fogg-save_local_file' => 'Ogg späicheren',
 	'fogg-help-sticky' => 'Hëllef (klickt fir festzestellen)',
 	'fogg-cg-meta' => 'Meta-Date fir de Clip',
@@ -3001,7 +3082,7 @@ $messages['lb'] = array(
 	'fogg-title-help' => 'En Titel fir Äre Clip',
 	'fogg-artist-title' => 'Numm vum Artist',
 	'fogg-date-title' => 'Datum',
-	'fogg-date-help' => 'Den Datum wou d\'Filmmaterial zesummegestallt oder verëffentlecht gouf',
+	'fogg-date-help' => "Den Datum wou d'Filmmaterial zesummegestallt oder verëffentlecht gouf",
 	'fogg-location-title' => 'Plaz',
 	'fogg-organization-title' => 'Organisatioun',
 	'fogg-organization-help' => 'Numm vun der Organisatioun (Studio)',
@@ -3011,7 +3092,7 @@ $messages['lb'] = array(
 	'fogg-contact-title' => 'Kontakt',
 	'fogg-contact-help' => 'Link vum Kontakt',
 	'mwe-stream_title' => '$1 $2 bis $3',
-	'mwe-imported_from' => '$1 huet vun [$2 $3] importéiert. Kuckt d\'[$4 Originalquellsäit] fir méi Informatiounen.',
+	'mwe-imported_from' => "$1 huet vun [$2 $3] importéiert. Kuckt d'[$4 Originalquellsäit] fir méi Informatiounen.",
 	'mwe-select_file' => 'Fichier eraussichen',
 	'mwe-upload' => 'Fichier eroplueden',
 	'mwe-destfilename' => 'Numm vum Zilfichier',
@@ -3019,7 +3100,7 @@ $messages['lb'] = array(
 	'mwe-error_not_loggedin' => 'Et gesäit aus wéi wann dir net ageloggt wiert oder Dir hutt keng Rechter fir eppes eropzelueden.',
 	'mwe-watch-this-file' => 'Dëse Fichier iwwerwwaachen',
 	'mwe-ignore-any-warnings' => 'All Warnungen ignoréieren',
-	'mwe-upload-in-progress' => 'Eroplueden amgaang (maacht d\'Fënster net zou)',
+	'mwe-upload-in-progress' => "Eroplueden amgaang (maacht d'Fënster net zou)",
 	'mwe-uploaded-status' => 'Eropgelueden',
 	'rsd_box_layout' => 'Layout vun der Këscht',
 	'rsd_list_layout' => 'Layout vun der Lëscht',
@@ -3035,7 +3116,7 @@ $messages['lb'] = array(
 	'mwe-cc_by_title' => 'Attributioun',
 	'mwe-cc_nc_title' => 'Net-kommerziell',
 	'mwe-unknown_license' => 'Onbekannte Lizenz',
-	'mwe-results_from' => 'Resultater vu(n) <a href="$1" target="_new" >$2</a>',
+	'mwe-results_from' => 'Resultater vu(n) $1',
 	'mwe-watch_this_page' => 'Dës Säit iwwerwaachen',
 	'mwe-ftype-svg' => 'SVG Vektor-Fichier',
 	'mwe-ftype-jpg' => 'JPEG Bild-Fichier',
@@ -3052,28 +3133,31 @@ $messages['lb'] = array(
 	'fogg-check_for_firefogg' => 'Sichen no Firefogg ...',
 	'fogg-installed' => 'Firefogg ass installéiert',
 	'fogg-for_improved_uploads' => 'Fir verbessert Eroplueden:',
-	'fogg-use_latest_firefox' => 'Installéiert w.e.g. fir d\'éischt <a href="http://www.mozilla.com/en-US/firefox/upgrade.html?from=firefogg">Firefox 3.5</a> (oder méi eng nei Versioun). <i>Kommt duerno zréck op dës Säit fir d\'<b>Firefogg</b>-Erweiderung z\'installéieren.</i>',
+	'fogg-use_latest_firefox' => "Installéiert w.e.g. fir d'éischt <a href=\"http://www.mozilla.com/en-US/firefox/upgrade.html?from=firefogg\">Firefox 3.5</a> (oder méi eng nei Versioun). <i>Kommt duerno zréck op dës Säit fir d'<b>Firefogg</b>-Erweiderung z'installéieren.</i>",
 	'fogg-preview' => 'Video kucken ouni ze späicheren',
 	'mwe-upload-multi' => '{{PLURAL:$1|Fichier|Fichieren}} eroplueden',
 	'mwe-review-upload' => '{{PLURAL:$1|Eropgeluedene Fichier|Eropgeluede Fichieren}} nokucken',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Praveenp
+ */
 $messages['ml'] = array(
 	'mwe-upload-stats-fileprogress' => '$2 എന്നതിൽ $1',
 	'mwe-upload-unknown-size' => 'വലിപ്പം അറിയില്ല',
 	'mwe-cancel-confim' => 'റദ്ദാക്കണമെന്നു താങ്കൾക്കു തീർച്ചയാണോ?',
 	'mwe-successfulupload' => 'അപ്‌‌ലോഡ് വിജയകരം',
-	'mwe-uploaderror' => 'അപ്‌‌ലോഡിൽ പിശക്',
+	'mwe-uploaderror' => 'അപ്‌‌ലോഡിൽ പിഴവ്',
 	'mwe-uploadwarning' => 'അപ്‌‌ലോഡ് മുന്നറിയിപ്പ്',
-	'mwe-unknown-error' => 'അപരിചിതമായ പിശക്:',
+	'mwe-unknown-error' => 'അപരിചിതമായ പിഴവ്:',
 	'mwe-return-to-form' => 'ഫോമിലേക്ക് തിരിച്ചു പോവുക',
 	'mwe-file-exists-duplicate' => 'താഴെ കൊടുത്തിരിക്കുന്ന പ്രമാണത്തിന്റെ അപരനാണ് ഈ പ്രമാണം:',
 	'mwe-fileexists' => 'ഇതേ പേരിൽ ഒരു പ്രമാണം നിലവിലുണ്ട്. അതിൽ മാറ്റം വരുത്തണോ എന്നു താങ്കൾക്ക് ഉറപ്പില്ലങ്കിൽ ദയവായി <b><tt>$1</tt></b> കാണുക.',
-	'mwe-fileexists-thumb' => '<center><b>നിലവിലുള്ള പ്രമാണം</b></center>',
+	'mwe-fileexists-thumb' => 'നിലവിലുള്ള പ്രമാണം',
 	'mwe-ignorewarning' => 'മുന്നറിയിപ്പ് അവഗണിക്കുക, എന്തായാലും പ്രമാണം സേവ് ചെയ്യുക',
 	'mwe-file-thumbnail-no' => '<b><tt>$1</tt></b> എന്നാണു പ്രമാണത്തിന്റെ പേര് ആരംഭിക്കുന്നത്',
 	'mwe-go-to-resource' => 'സ്രോതസ്സ് താളിലേയ്ക്ക് പോവുക',
-	'mwe-upload-misc-error' => 'അപ്‌‌ലോഡിൽ അപരിചിതമായ പിശക്',
+	'mwe-upload-misc-error' => 'അപ്‌‌ലോഡിൽ അപരിചിതമായ പിഴവ്',
 	'mwe-wgfogg_warning_bad_extension' => 'താങ്കൾ പിന്തുണയില്ലാത്ത തരത്തിലുള്ള പ്രമാണമാണ് തിരഞ്ഞെടുത്തിരിക്കുന്നത് (<a href="http://commons.wikimedia.org/wiki/Commons:Firefogg#Supported_File_Types">കൂടുതൽ വിവരങ്ങൾ</a>).',
 	'fogg-save_local_file' => 'ഓഗ് ആയി സേവ് ചെയ്യുക',
 	'fogg-help-sticky' => 'സഹായം (നിൽക്കാൻ ഞെക്കുക)',
@@ -3149,7 +3233,7 @@ $messages['ml'] = array(
 	'mwe-cc_nd_title' => 'വ്യുൽപ്പന്ന കൃതികളൊന്നുമില്ല',
 	'mwe-cc_pd_title' => 'പൊതു സഞ്ചയം',
 	'mwe-unknown_license' => 'അപരിചിതമായ അനുമതി',
-	'mwe-results_from' => '<a href="$1" target="_new" >$2</a> മുതലുള്ള ഫലങ്ങൾ',
+	'mwe-results_from' => '$1 മുതലുള്ള ഫലങ്ങൾ',
 	'mwe-resource_page_desc' => 'സ്രോതസ്സ് താളിന്റെ വിവരണം:',
 	'mwe-edit_resource_desc' => 'വിക്കി എഴുത്തിലുള്ള സ്രോതസ്സ് വിവരണം തിരുത്തുക:',
 	'mwe-local_resource_title' => 'പ്രാദേശിക സ്രോതസ്സ് തലക്കെട്ട്:',
@@ -3157,7 +3241,7 @@ $messages['ml'] = array(
 	'mwe-do_import_resource' => 'സ്രോതസ്സ് ഇറക്കുമതി ചെയ്യുക',
 	'mwe-update_preview' => 'പ്രിവ്യൂ പുതുക്കുക',
 	'mwe-importing_asset' => 'മുതൽ ഇറക്കുമതി ചെയ്യുന്നു',
-	'mwe-preview_insert_resource' => 'സ്രോതസ് ഉൾപ്പെടുത്തുമ്പോൾ പ്രിവ്യൂ കാട്ടുക: $1',
+	'mwe-preview_insert_resource' => 'സ്രോതസ്സ് ഉൾപ്പെടുത്തുമ്പോൾ പ്രിവ്യൂ കാട്ടുക: $1',
 	'mwe-checking-resource' => 'സ്രോതസ്സുകൾക്കായി പരിശോധിക്കുക',
 	'mwe-resource-needs-import' => '$1 എന്ന സ്രോതസ്സ് $2 പദ്ധതിയിലേയ്ക്ക് ഇറക്കുമതി ചെയ്യേണ്ടതാണ്',
 	'mwe-ftype-svg' => 'SVG വെക്റ്റർ പ്രമാണം',
@@ -3180,7 +3264,7 @@ $messages['ml'] = array(
 	'fogg-installed' => 'ഫയർഫോഗ് ഇൻസ്റ്റോൾ ചെയ്തിട്ടുണ്ട്',
 	'fogg-for_improved_uploads' => 'മെച്ചപ്പെടുത്തിയ അപ്‌‌ലോഡുകൾക്കു വേണ്ടി:',
 	'fogg-use_latest_firefox' => 'ദയവായി <a href="http://www.mozilla.com/en-US/firefox/upgrade.html?from=firefogg">ഫയർഫോക്സ് 3.5</a> (അല്ലങ്കിൽ ശേഷമുള്ളത്) ആദ്യം ഇൻസ്റ്റോൾ ചെയ്യുക. <i>പിന്നീട് <b>Firefogg</b> അനുബന്ധത്തിനായി ഈ താൾ ഒന്നുകൂടി സന്ദർശിക്കുക.</i>',
-	'fogg-passthrough_mode' => 'താങ്കൾ തിരഞ്ഞെടുത്ത പ്രമാണം ഓഗ് (Ogg) തന്നെയാണ് അല്ലങ്കിൽ വീഡിയോ പ്രമാണം അല്ല',
+	'fogg-passthrough_mode' => 'താങ്കൾ തിരഞ്ഞെടുത്ത പ്രമാണം ഓഗ് (Ogg) തന്നെയാണ് അല്ലെങ്കിൽ വീഡിയോ പ്രമാണം അല്ല',
 	'fogg-encoding-done' => 'എൻകോഡിങ് പൂർണ്ണം',
 	'fogg-badtoken' => 'ചീട്ട് അസാധുവാണ്',
 	'fogg-preview' => 'വീഡിയോയുടെ പ്രിവ്യൂ',
@@ -3189,23 +3273,34 @@ $messages['ml'] = array(
 	'mwe-review-upload' => 'പ്രമാണ {{PLURAL:$1|അപ്‌‌ലോഡ്|അപ്‌‌ലോഡുകൾ}} സംശോധനം ചെയ്യുക',
 );
 
+/** Dutch (Nederlands)
+ * @author McDutchie
+ * @author Naudefj
+ * @author SPQRobin
+ * @author Siebrand
+ */
 $messages['nl'] = array(
 	'mwe-upload-stats-fileprogress' => '$1 van $2',
 	'mwe-upload-unknown-size' => 'Onbekende grootte',
 	'mwe-cancel-confim' => 'Weet u zeker dat u wilt annuleren?',
 	'mwe-successfulupload' => 'Uploaden voltooid',
 	'mwe-uploaderror' => 'Er is een fout opgetreden bij het uploaden',
-	'mwe-uploadwarning' => 'Er is een waarschuwing gegeven bij het uploaden',
+	'mwe-uploadwarning' => 'Uploadwaarschuwing',
 	'mwe-unknown-error' => 'Er is een onbekende fout opgetreden:',
 	'mwe-return-to-form' => 'Terug naar het formulier',
 	'mwe-file-exists-duplicate' => 'Dit bestand is hetzelfde als het volgende bestand:',
 	'mwe-fileexists' => 'Er bestaat al een bestand met deze naam. Controleer <b><tt>$1</tt></b> als u niet zeker weet of u het huidige bestand wilt overschrijven.',
-	'mwe-fileexists-thumb' => '<center><b>Bestaande afbeelding</b></center>',
+	'mwe-fileexists-thumb' => 'Bestaande afbeelding',
 	'mwe-ignorewarning' => 'Deze waarschuwing negeren en het bestand toch opslaan',
 	'mwe-file-thumbnail-no' => 'De bestandsnaam begint met <b><tt>$1</tt></b>',
 	'mwe-go-to-resource' => 'Naar de bronpagina teruggaan',
-	'mwe-upload-misc-error' => 'Er is een onbekende uploadfout opgetreden',
+	'mwe-upload-misc-error' => 'Onbekende uploadfout',
 	'mwe-wgfogg_warning_bad_extension' => 'U hebt een bestand met een extensie die niet wordt ondersteund geselecteerd (<a href="http://commons.wikimedia.org/wiki/Commons:Firefogg#Supported_File_Types">meer informatie</a>).',
+	'mwe-thumbnail-more' => 'Vergroten',
+	'mwe-license-header' => 'Licentie',
+	'mwe-filedesc' => 'Beschrijving',
+	'mwe-filesource' => 'Bron:',
+	'mwe-filestatus' => 'Auteursrechtenstatus:',
 	'mwe-loading-add-media-wiz' => 'Bezig met het laden van de Wizard media toevoegen',
 	'fogg-save_local_file' => 'Ogg opslaan',
 	'fogg-help-sticky' => 'Help (klik om te laten staan)',
@@ -3271,17 +3366,35 @@ $messages['nl'] = array(
 	'fogg-contact-title' => 'Contact',
 	'fogg-contact-help' => 'Verwijzing om contact op te nemen',
 	'mwe-stream_title' => '$1 $2 tot $3',
+	'rsd-media-filter-title' => 'Media',
+	'rsd-media-filter-videos' => "Video's",
+	'rsd-media-filter-images' => 'Afbeeldingen',
+	'rsd-provider-filter-title' => 'Providers',
 	'mwe-imported_from' => '$1 is geïmporteerd van [$2 $3]. Meer informatie is te vinden op de [$4 originele beschrijvingspagina].',
+	'mwe-import-description' => '$1, geïmporteerd van $2',
 	'mwe-select_file' => 'Bestand selecteren',
 	'mwe-select_ownwork' => 'Ik upload mijn eigen werk onder de volgende licentie:',
+	'mwe-license_cc-by-sa' => 'Creative Commons Gelijk delen (3.0)',
 	'mwe-upload' => 'Bestand uploaden',
 	'mwe-destfilename' => 'Nieuwe naam:',
 	'mwe-summary' => 'Beschrijving',
+	'mwe-date-of-work' => 'Datum voor het werk',
 	'mwe-error_not_loggedin' => 'u bent niet aangemeld of hebt geen uploadrechten.',
+	'mwe-error-not-loggedin-file' => 'U bent niet aangemeld of er is een fout opgetreden in de software. U kunt $1 en het opnieuw proberen',
+	'mwe-link-login' => 'aanmelden',
 	'mwe-watch-this-file' => 'Dit bestand volgen',
 	'mwe-ignore-any-warnings' => 'Waarschuwingen negeren',
-	'mwe-upload-in-progress' => 'De upload wordt uitgevoerd - sluit dit venster niet',
+	'mwe-i-would-like-to' => 'Ik wil graag',
+	'mwe-upload-own-file' => 'Upload mijn eigen werk naar $1',
+	'mwe-upload-not-my-file' => 'Media die niet mijn eigen werk zijn uploaden naar $1',
+	'mwe-upload-once-done' => 'Alstublieft $1. Als uw upload is afgerond, $2',
+	'mwe-upload-in-new-win-link' => 'uploaden in het nieuwe venster of tabblad',
+	'mwe-upload-refresh' => 'ververs uw uploadlijst',
+	'mwe-ie-inline-upload' => 'Inline uploaden is uitgeschakeld voor Internet Explorer. U kunt $1 en daarna $2',
+	'mwe-upload-in-progress' => 'De upload wordt uitgevoerd. Sluit dit venster niet',
 	'mwe-uploaded-status' => 'De upload is afgerond',
+	'mwe-transcoded-status' => 'Geconverteerd',
+	'mwe-uploaded-time-remaining' => 'Resterende tijd: $1',
 	'mwe-add_media_wizard' => 'Wizard media toevoegen',
 	'mwe-media_search' => 'Media zoeken',
 	'rsd_box_layout' => 'Weergeven als kader',
@@ -3291,7 +3404,7 @@ $messages['nl'] = array(
 	'rsd_results_next' => 'volgende',
 	'rsd_results_prev' => 'vorige',
 	'rsd_no_results' => 'Geen zoekresultaten voor <b>$1</b>',
-	'mwe-upload_tab' => 'Uploaden',
+	'mwe-upload_tab' => 'Bestand uploaden',
 	'rsd_layout' => 'Vormgeving:',
 	'rsd_resource_edit' => 'Bron bewerken: $1',
 	'mwe-resource_description_page' => 'Pagina met bronbeschrijving',
@@ -3304,19 +3417,27 @@ $messages['nl'] = array(
 	'mwe-cc_sa_title' => 'Gelijk Delen',
 	'mwe-cc_pd_title' => 'Publiek Domein',
 	'mwe-unknown_license' => 'Onbekende licentie',
-	'mwe-results_from' => 'Resultaten van <a href="$1" target="_new" >$2</a>',
-	'mwe-missing_desc_see_source' => 'De beschrijving mist. Help met beschrijven met behulp van de [$1 bron].',
+	'mwe-results_from' => 'Resultaten van $1',
+	'mwe-missing_desc_see_source' => 'De beschrijving mist. Help met beschrijven met behulp van de $1.',
 	'rsd_config_error' => 'Er is een fout in de instellingen van de Wizard media toevoegen: $1',
+	'mwe-loggin-link' => 'Meld u aan',
+	'mwe-try-again-link' => 'probeer het opnieuw',
+	'mwe-upload-a-file' => 'Nieuw bestand uploaden',
+	'mwe-upload-a-file-to' => 'Nieuw bestand uploaden naar $1',
 	'mwe-resource_page_desc' => 'Beschrijving:',
 	'mwe-edit_resource_desc' => 'Bronbeschrijving van het wikibestand wijzigen:',
 	'mwe-local_resource_title' => 'Lokale naam:',
 	'mwe-watch_this_page' => 'Deze pagina volgen',
 	'mwe-do_import_resource' => 'Bestand importeren',
 	'mwe-update_preview' => 'Voorvertoning bijwerken',
+	'mwe-return-search-results' => 'Terug naar zoekresultaten',
 	'mwe-importing_asset' => 'Bezig met het importeren van het bestand',
 	'mwe-preview_insert_resource' => 'Invoegen van bronbestand weergeven: $1',
+	'mwe-do-more-modification' => 'Meer wijzigingen uitvoeren',
 	'mwe-checking-resource' => 'Bezig met controle van bronbestand',
 	'mwe-resource-needs-import' => 'Het bronbestand $1 moet geïmporteerd worden in $2',
+	'mwe-warning-upload-to-commons' => '$1 raadt u aan te uploaden naar Wikimedia Commons. Upload alleen lokaal als u $2 hebt gelezen',
+	'mwe-local-upload-policy-link' => 'lokaal uploadbeleid',
 	'mwe-ftype-svg' => 'SVF vectorbestand',
 	'mwe-ftype-jpg' => 'JPEG afbeeldingsbestand',
 	'mwe-ftype-png' => 'PNG afbeeldingsbestand',
@@ -3325,22 +3446,26 @@ $messages['nl'] = array(
 	'mwe-ftype-unk' => 'Onbekend bestandsformaat',
 	'rsd-wiki_commons-title' => 'Wikimedia Commons',
 	'rsd-wiki_commons' => 'Wikimedia Commons is een archief met vrij gelicenseerde educatieve media (afbeeldingen, geluid en video)',
+	'rsd-kaltura-title' => 'Alle bronnen',
 	'rsd-this_wiki-title' => 'Deze wiki',
-	'rsd-this_wiki-desc' => 'De lokale wiki-installatie',
+	'rsd-this_wiki-desc' => 'De lokale wiki',
 	'rsd-archive_org-desc' => 'Het Internet Archive, een digitale bibliotheek met culturele zaken',
-	'rsd-flickr-desc' => 'Flickr.com, een website waar u foto\'s kunt delen',
+	'rsd-flickr-desc' => "Flickr.com, een website waar u foto's kunt delen",
 	'rsd-metavid-desc' => 'Metavid.org, een gemeenschapsarchief met de handelingen van de Amerikaanse Senaat',
 	'mwe-upload-transcoded-status' => 'Geconverteerd',
-	'mwe-upload-transcode-in-progress' => 'Bezig met het converteren en uploaden (sluit dit venster niet)',
+	'mwe-upload-transcode-in-progress' => 'Bezig met het converteren en uploaden. Sluit dit venster niet',
 	'fogg-transcoding' => 'Bezig met het converteren van video naar Ogg',
 	'fogg-select_file' => 'Bestand selecteren',
 	'fogg-select_new_file' => 'Kies nuwe lêer',
 	'fogg-select_url' => 'URL selecteren',
 	'fogg-check_for_firefogg' => 'Firefogg aan het controleren ...',
-	'fogg-installed' => 'Firefogg is geïnstalleerd',
+	'fogg-installed' => 'Firefogg is geïnstalleerd,',
 	'fogg-for_improved_uploads' => 'Voor verbeterde uploads:',
+	'fogg-please-install' => '$1. Meer $2',
+	'fogg-please-install-about-linktext' => 'over Firefogg',
 	'fogg-use_latest_firefox' => 'Installeer alstublieft eerst <a href="http://www.mozilla.com/en-US/firefox/upgrade.html?from=firefogg">Firefox 3.5</a> (of een latere versie).
 <i>Kom daarna terug naar deze pagina om de uitbreiding <b>Firefogg</b> te installeren.</i>',
+	'fogg-latest-firefox' => 'nieuwste Firefox',
 	'fogg-passthrough_mode' => 'Het geselecteerde bestand is al een Ogg-bestand of geen videobestand',
 	'fogg-encoding-done' => 'Converteren is afgerond',
 	'fogg-badtoken' => 'Het token is niet geldig',
@@ -3350,7 +3475,11 @@ $messages['nl'] = array(
 	'mwe-review-upload' => '{{PLURAL:$1|Bestandsupload|Bestandsuploads}} controleren',
 );
 
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
 $messages['oc'] = array(
+	'mwe-upload-stats-fileprogress' => '$1 de $2',
 	'mwe-upload-unknown-size' => 'Talha desconeguda',
 	'mwe-cancel-confim' => 'Sètz segur que volètz anullar ?',
 	'mwe-successfulupload' => 'Telecargament capitat',
@@ -3360,32 +3489,33 @@ $messages['oc'] = array(
 	'mwe-return-to-form' => 'Tornar al formulari',
 	'mwe-file-exists-duplicate' => 'Aqueste fichièr es un doblon del fichièr seguent :',
 	'mwe-fileexists' => 'Un fichièr amb aqueste nom existís ja. Mercé de verificar <b><tt>$1</tt></b> se sètz pas segur que lo volètz cambiar.',
-	'mwe-fileexists-thumb' => '<center><b>Fichièr existent</b></center>',
+	'mwe-fileexists-thumb' => 'Fichièr existent',
 	'mwe-ignorewarning' => 'Ignorar l’avertiment e salvar quitament lo fichièr',
 	'mwe-file-thumbnail-no' => 'Lo nom de fichièr comença per <b><tt>$1</tt></b>',
 	'mwe-go-to-resource' => 'Anar a la pagina de la ressorsa',
 	'mwe-upload-misc-error' => 'Error desconeguda al moment del telecargament',
 	'mwe-wgfogg_warning_bad_extension' => 'Avètz seleccionat un fichièr que compòrta una extension pas suportada (<a href="http://commons.wikimedia.org/wiki/Commons:Firefogg#Supported_File_Types">mai d\'entresenhas</a>).',
-	'mwe-loading-add-media-wiz' => 'Cargament de l\'assistent d\'apondon de mèdia',
+	'mwe-loading-add-media-wiz' => "Cargament de l'assistent d'apondon de mèdia",
 	'fogg-save_local_file' => 'Salvar al format Ogg',
 	'fogg-help-sticky' => 'Ajuda (clicar per manténer)',
 	'fogg-cg-preset' => 'Predefinit : <strong>$1</strong>',
 	'fogg-cg-quality' => 'Qualitat basica e contraròtle de la resolucion',
 	'fogg-cg-meta' => 'Metadonadas pel clip',
-	'fogg-cg-range' => 'Portada de l\'encodatge',
-	'fogg-cg-advVideo' => 'Contraròtles avançats de l\'encodatge vidèo',
-	'fogg-cg-advAudio' => 'Contraròtles avançats de l\'encodatge àudio',
+	'fogg-cg-range' => "Portada de l'encodatge",
+	'fogg-cg-advVideo' => "Contraròtles avançats de l'encodatge vidèo",
+	'fogg-cg-advAudio' => "Contraròtles avançats de l'encodatge àudio",
 	'fogg-preset-custom' => 'Paramètres personalizats',
 	'fogg-webvideo-desc' => 'Video web Theroa, Vorbis 400 kbit/s e 400px de largor maximala',
+	'fogg-savebandwidth-desc' => 'Theora de benda passanta febla, Vorbis 164 kbit/s e 200px de largor maximala',
 	'fogg-highquality-desc' => 'Theora de nauta qualitat, Vorbis 1080px de largor maximala',
 	'fogg-videoQuality-title' => 'Qualitat vidèo',
 	'fogg-videoQuality-help' => 'Utilizat per definir la <i>qualitat visuala</i> de la vidèo encodada (pas utilizat se definissètz lo debit binari dins los contraròtles avançats çaijós).',
 	'fogg-starttime-title' => 'Segonda de començament',
-	'fogg-starttime-help' => 'Encodar solament a partir d\'una durada en segondas',
+	'fogg-starttime-help' => "Encodar solament a partir d'una durada en segondas",
 	'fogg-endtime-title' => 'Segonda de fin',
 	'fogg-endtime-help' => 'Encodar solament cap a una durada en segondas',
 	'fogg-audioQuality-title' => 'Qualitat àudio',
-	'fogg-audioQuality-help' => 'Utilizat per definir la <i>qualitat acostica</i> de l\'àudio encodat (pas utilizat se definissètz lo debit binari dins los contraròtles avançats çaijós).',
+	'fogg-audioQuality-help' => "Utilizat per definir la <i>qualitat acostica</i> de l'àudio encodat (pas utilizat se definissètz lo debit binari dins los contraròtles avançats çaijós).",
 	'fogg-videoCodec-title' => 'Codec vidèo',
 	'fogg-videoCodec-help' => 'Utilizat per seleccionar lo codec del clip vidèo. Actualament, sol Theora es disponible. Mai d\'entresenhas sul <a target="_new" href="http://oc.wikipedia.org/wiki/Theora">codec Theora</a>.',
 	'fogg-audioCodec-title' => 'Codec àudio',
@@ -3395,28 +3525,28 @@ $messages['oc'] = array(
 	'fogg-height-title' => 'Nautor de la vidèo',
 	'fogg-height-help' => 'Redimensionar a la nautor especificada.',
 	'fogg-videoBitrate-title' => 'Debit binari de la vidèo',
-	'fogg-videoBitrate-help' => 'Lo debit binari de la vidèo definís lo debit de l\'encodatge per la vidèo en kb/s',
+	'fogg-videoBitrate-help' => "Lo debit binari de la vidèo definís lo debit de l'encodatge per la vidèo en kb/s",
 	'fogg-twopass-title' => 'Encodatge de doas passas',
-	'fogg-twopass-help' => 'L\'encodatge de doas passas permet una qualitat mai constanta en efectuant dos percorses del fichièr vidèo',
-	'fogg-framerate-title' => 'Frequéncia d\'imatges',
+	'fogg-twopass-help' => "L'encodatge de doas passas permet una qualitat mai constanta en efectuant dos percorses del fichièr vidèo",
+	'fogg-framerate-title' => "Frequéncia d'imatges",
 	'fogg-framerate-help' => 'Lo nombre d\'imatges per segonda de la vidèo. Mai d\'entresenhas sus <a target="_new" href="http://oc.wikipedia.org/wiki/Imatges_per_segonda">la frequéncia d\'imatges</a>.',
 	'fogg-aspect-title' => 'Rapòrt largor/nautor',
 	'fogg-aspect-help' => 'Lo rapòrt largor/nautor de la vidèo pòt èsser una fraccion 4:3 o 16:9. Mai d\'entresenhas suls <a target="_new" href="http://oc.wikipedia.org/wiki/Rapòrt_largor/nautor">rapòrts largor/nautor</a>.',
 	'fogg-keyframeInterval-title' => 'Interval dels imatges-claus',
-	'fogg-keyframeInterval-help' => 'L\'interval dels imatges-claus dins los imatges. Nòta : la màger part dels codecs impausan los imatges-claus se la diferéncia entre los imatges es mai granda que la talha d\'encodatge de l\'imatge-clau. Mai d\'entresenhas suls <a href="http://en.wikipedia.org/wiki/Video_compression_picture_types">imatges-claus</a>.',
+	'fogg-keyframeInterval-help' => "L'interval dels imatges-claus dins los imatges. Nòta : la màger part dels codecs impausan los imatges-claus se la diferéncia entre los imatges es mai granda que la talha d'encodatge de l'imatge-clau. Mai d'entresenhas suls <a href=\"http://en.wikipedia.org/wiki/Video_compression_picture_types\">imatges-claus</a>.",
 	'fogg-denoise-title' => 'Filtre antibruch',
 	'fogg-denoise-help' => 'Desbruchatge de la vidèo en entrada. Mai d\'entresenhas sus <a href="http://en.wikipedia.org/wiki/Video_denoising">debruchatge</a>.',
 	'fogg-novideo-title' => 'Pas de vidèo',
 	'fogg-novideo-help' => 'desactivar la vidèo dins la sortida',
 	'fogg-audioBitrate-title' => 'Debit binari àudio',
-	'fogg-samplerate-title' => 'Taus d\'escandalhatge àudio',
-	'fogg-samplerate-help' => 'definir lo taus d\'escandalhatge de la sortida (en Hz).',
-	'fogg-noaudio-title' => 'Pas d\'àudio',
-	'fogg-noaudio-help' => 'desactivar l\'àudio dins la sortida',
+	'fogg-samplerate-title' => "Taus d'escandalhatge àudio",
+	'fogg-samplerate-help' => "definir lo taus d'escandalhatge de la sortida (en Hz).",
+	'fogg-noaudio-title' => "Pas d'àudio",
+	'fogg-noaudio-help' => "desactivar l'àudio dins la sortida",
 	'fogg-title-title' => 'Títol',
 	'fogg-title-help' => 'Un títol per vòstre clip',
 	'fogg-artist-title' => 'Nom del creator',
-	'fogg-artist-help' => 'Lo creator d\'aqueste clip',
+	'fogg-artist-help' => "Lo creator d'aqueste clip",
 	'fogg-date-title' => 'Data',
 	'fogg-date-help' => 'La data a la quala lo metratge es estat creat o publicat',
 	'fogg-location-title' => 'Localizacion',
@@ -3426,22 +3556,22 @@ $messages['oc'] = array(
 	'fogg-copyright-title' => 'Copyright',
 	'fogg-copyright-help' => 'Lo copyright del clip',
 	'fogg-license-title' => 'Licéncia',
-	'fogg-license-help' => 'La licéncia d\'aqueste clip (preferiblament una URL Creative Commons).',
+	'fogg-license-help' => "La licéncia d'aqueste clip (preferiblament una URL Creative Commons).",
 	'fogg-contact-title' => 'Contacte',
 	'fogg-contact-help' => 'Ligam del contacte',
 	'mwe-stream_title' => '$1 $2 cap a $3',
-	'mwe-imported_from' => '$1 a importat dempuèi [$2 $3]. Vejatz la [$4 pagina de la ressorsa] originala per mai d\'entresenhas.',
+	'mwe-imported_from' => "$1 a importat dempuèi [$2 $3]. Vejatz la [$4 pagina de la ressorsa] originala per mai d'entresenhas.",
 	'mwe-select_file' => 'Seleccionatz un fichièr',
 	'mwe-select_ownwork' => 'Telecargui unicament mas pròprias òbras, e las placi jos licéncia :',
 	'mwe-upload' => 'Telecargar un fichièr',
 	'mwe-destfilename' => 'Nom del fichièr de destinacion :',
 	'mwe-summary' => 'Resumir',
-	'mwe-error_not_loggedin' => 'Sembla que sètz pas connectat o qu\'avètz pas lo drech de telecargar.',
+	'mwe-error_not_loggedin' => "Sembla que sètz pas connectat o qu'avètz pas lo drech de telecargar.",
 	'mwe-watch-this-file' => 'Seguir aqueste fichièr',
 	'mwe-ignore-any-warnings' => 'Ignorar los avertiments',
 	'mwe-upload-in-progress' => 'Telecargament en cors (tampetz pas aquesta fenèstra)',
 	'mwe-uploaded-status' => 'Telecargat',
-	'mwe-add_media_wizard' => 'Assistent d\'apondon de mèdia',
+	'mwe-add_media_wizard' => "Assistent d'apondon de mèdia",
 	'mwe-media_search' => 'Recèrca de mèdias',
 	'rsd_box_layout' => 'Disposicion de la bóstia',
 	'rsd_list_layout' => 'Disposicion de la lista',
@@ -3455,24 +3585,24 @@ $messages['oc'] = array(
 	'rsd_resource_edit' => 'Modificar la ressorsa : $1',
 	'mwe-resource_description_page' => 'Pagina de descripcion de la ressorsa',
 	'mwe-link' => 'ligam',
-	'rsd_do_insert' => 'Far l\'insercion',
+	'rsd_do_insert' => "Far l'insercion",
 	'mwe-cc_by_title' => 'Atribucion',
 	'mwe-cc_nc_title' => 'Pas comercial',
 	'mwe-cc_nd_title' => 'Pas de trabalhs derivats',
-	'mwe-cc_sa_title' => 'Partatge a l\'identic',
+	'mwe-cc_sa_title' => "Partatge a l'identic",
 	'mwe-cc_pd_title' => 'Domeni public',
 	'mwe-unknown_license' => 'Licéncia desconeguda',
-	'mwe-results_from' => 'Resultats dempuèi <a href="$1" target="_new" >$2</a>',
-	'mwe-missing_desc_see_source' => 'Manca una descripcion per aqueste asset. Consultatz la [$1 font d\'origina] e ajudatz a lo descriure.',
-	'rsd_config_error' => 'Error de configuracion de l\'assistent d\'apondon de mèdia : $1',
+	'mwe-results_from' => 'Resultats dempuèi $1',
+	'mwe-missing_desc_see_source' => "Manca una descripcion per aqueste asset. Consultatz la [$1 font d'origina] e ajudatz a lo descriure.",
+	'rsd_config_error' => "Error de configuracion de l'assistent d'apondon de mèdia : $1",
 	'mwe-resource_page_desc' => 'Pagina de  descripcion de la ressorsa :',
 	'mwe-edit_resource_desc' => 'Modificar lo wiki tèxte de la descripcion de la ressorsa :',
 	'mwe-local_resource_title' => 'Títol de la ressorsa locala :',
 	'mwe-watch_this_page' => 'Seguir aquesta pagina',
 	'mwe-do_import_resource' => 'Importar la ressorsa',
 	'mwe-update_preview' => 'Metre a jorn la previsualizacion',
-	'mwe-importing_asset' => 'Impòrt de l\'asset',
-	'mwe-preview_insert_resource' => 'Previsualizar l\'insercion de la ressorsa : $1',
+	'mwe-importing_asset' => "Impòrt de l'asset",
+	'mwe-preview_insert_resource' => "Previsualizar l'insercion de la ressorsa : $1",
 	'mwe-checking-resource' => 'Verificacion de la ressorsa',
 	'mwe-resource-needs-import' => 'La ressorsa $1 deu èsser importada sus $2',
 	'mwe-ftype-svg' => 'Fichièr vectorial SVG',
@@ -3483,7 +3613,7 @@ $messages['oc'] = array(
 	'mwe-ftype-unk' => 'Format de fichièr desconegut',
 	'mwe-upload-transcoded-status' => 'Transcodat',
 	'mwe-upload-transcode-in-progress' => 'Transcodatge e telecargament en cors (tampetz pas aquesta fenèstra)',
-	'fogg-transcoding' => 'Encodatge d\'una vidèo al format Ogg',
+	'fogg-transcoding' => "Encodatge d'una vidèo al format Ogg",
 	'fogg-select_file' => 'Seleccionatz un fichièr',
 	'fogg-select_new_file' => 'Seleccionatz un fichièr novèl',
 	'fogg-select_url' => 'Seleccionatz una URL',
@@ -3491,7 +3621,7 @@ $messages['oc'] = array(
 	'fogg-installed' => 'Firefogg es installat',
 	'fogg-for_improved_uploads' => 'Per de telecargaments melhorats :',
 	'fogg-use_latest_firefox' => 'D\'en primièr, installatz <a href="http://www.mozilla.com/en-US/firefox/upgrade.html?from=firefogg">Firefox 3.5</a> (o mai recent). <i>Puèi tornatz sus aquesta pagina per installar l\'extension <b>Firefogg</b>.</i>',
-	'fogg-passthrough_mode' => 'Lo fichièr qu\'avètz seleccionat es ja al format Ogg o es pas un fichièr vidèo',
+	'fogg-passthrough_mode' => "Lo fichièr qu'avètz seleccionat es ja al format Ogg o es pas un fichièr vidèo",
 	'fogg-encoding-done' => 'Encodatge acabat',
 	'fogg-badtoken' => 'Lo geton es pas valid',
 	'fogg-preview' => 'Previsualizar la vidèo',
@@ -3575,6 +3705,13 @@ $messages['pl'] = array(
 	'fogg-hidepreview' => 'Ukryj podgląd',
 );
 
+/** Portuguese (Português)
+ * @author Giro720
+ * @author Hamilton Abreu
+ * @author Lijealso
+ * @author Luckas Blade
+ * @author Malafaya
+ */
 $messages['pt'] = array(
 	'mwe-upload-stats-fileprogress' => '$1 de $2',
 	'mwe-upload-unknown-size' => 'Tamanho desconhecido',
@@ -3586,13 +3723,15 @@ $messages['pt'] = array(
 	'mwe-return-to-form' => 'Regressar ao formulário',
 	'mwe-file-exists-duplicate' => 'O ficheiro é um duplicado do seguinte ficheiro:',
 	'mwe-fileexists' => 'Já existe um ficheiro com este nome. Por favor, verifique <b><tt>$1</tt></b> se não tem a certeza de que deseja alterá-lo.',
-	'mwe-fileexists-thumb' => '<center><b>Ficheiro existente</b></center>',
+	'mwe-fileexists-thumb' => 'Ficheiro existente',
 	'mwe-ignorewarning' => 'Ignorar aviso e carregar ficheiro',
 	'mwe-file-thumbnail-no' => 'O nome de ficheiro começa por <b><tt>$1</tt></b>',
 	'mwe-go-to-resource' => 'Ir para a página do recurso',
 	'mwe-upload-misc-error' => 'Erro de carregamento desconhecido',
 	'mwe-wgfogg_warning_bad_extension' => 'Seleccionou um ficheiro com uma extensão não suportada (<a href="http://commons.wikimedia.org/wiki/Commons:Firefogg#Supported_File_Types">mais informações</a>).',
-	'mwe-loading-add-media-wiz' => '\'\'Wizard\'\' de carregamento e multimédia',
+	'mwe-thumbnail-more' => 'Ampliar',
+	'mwe-license-header' => 'Licenciamento',
+	'mwe-loading-add-media-wiz' => "''Wizard'' de carregamento e multimédia",
 	'fogg-save_local_file' => 'Gravar Ogg',
 	'fogg-help-sticky' => 'Ajuda (clique para fixar)',
 	'fogg-cg-preset' => 'Predefinido: <strong>$1</strong>',
@@ -3606,33 +3745,33 @@ $messages['pt'] = array(
 	'fogg-savebandwidth-desc' => 'Theora larg. banda reduzida, Vorbis 164 kbit/s e 200px largura máx.',
 	'fogg-highquality-desc' => 'Theora alta qualidade, Vorbis 1080px largura máx.',
 	'fogg-videoQuality-title' => 'Qualidade de vídeo',
-	'fogg-videoQuality-help' => 'Usado para definir a <i>qualidade visual</i> do vídeo codificado (não será usado se definir a taxa de bits \'\'(bitrate)\'\' nos controles avançados em baixo).',
+	'fogg-videoQuality-help' => "Usado para definir a <i>qualidade visual</i> do vídeo codificado (não será usado se definir a taxa de bits ''(bitrate)'' nos controles avançados em baixo).",
 	'fogg-starttime-title' => 'Segundo de início',
 	'fogg-starttime-help' => 'Codificar só a partir do tempo em segundos',
 	'fogg-endtime-title' => 'Segundo de fim',
 	'fogg-endtime-help' => 'Codificar só até ao tempo em segundos',
 	'fogg-audioQuality-title' => 'Qualidade de áudio',
-	'fogg-audioQuality-help' => 'Usado para definir a <i>qualidade acústica</i> do áudio codificado (não será usado se definir a taxa de bits \'\'(bitrate)\'\' nos controles avançados em baixo).',
-	'fogg-videoCodec-title' => '\'\'Codec\'\' de vídeo',
-	'fogg-videoCodec-help' => 'Usado para seleccionar o \'\'codec\'\' de vídeo do clipe. Presentemente, só o Theora é suportado. Mais informações acerca do <a target="_new" href="http://pt.wikipedia.org/wiki/Theora">\'\'Codec Theora</a>.',
-	'fogg-audioCodec-title' => '\'\'Codec\'\' de áudio',
-	'fogg-audioCodec-help' => 'Usado para seleccionar o \'\'codec\'\' de áudio do clipe. Presentemente, só o Vorbis é suportado. Mais informações acerca do <a target="_new" href="http://pt.wikipedia.org/wiki/Vorbis">\'\'Codec Vorbis</a>.',
+	'fogg-audioQuality-help' => "Usado para definir a <i>qualidade acústica</i> do áudio codificado (não será usado se definir a taxa de bits ''(bitrate)'' nos controles avançados em baixo).",
+	'fogg-videoCodec-title' => "''Codec'' de vídeo",
+	'fogg-videoCodec-help' => "Usado para seleccionar o ''codec'' de vídeo do clipe. Presentemente, só o Theora é suportado. Mais informações acerca do <a target=\"_new\" href=\"http://pt.wikipedia.org/wiki/Theora\">''Codec Theora</a>.",
+	'fogg-audioCodec-title' => "''Codec'' de áudio",
+	'fogg-audioCodec-help' => "Usado para seleccionar o ''codec'' de áudio do clipe. Presentemente, só o Vorbis é suportado. Mais informações acerca do <a target=\"_new\" href=\"http://pt.wikipedia.org/wiki/Vorbis\">''Codec Vorbis</a>.",
 	'fogg-width-title' => 'Largura do vídeo',
 	'fogg-width-help' => 'Redimensionar para largura especificada.',
 	'fogg-height-title' => 'Altura do vídeo',
 	'fogg-height-help' => 'Redimensionar para altura especificada.',
-	'fogg-videoBitrate-title' => 'Taxa de bits \'\'(bitrate)\'\' do vídeo',
+	'fogg-videoBitrate-title' => "Taxa de bits ''(bitrate)'' do vídeo",
 	'fogg-videoBitrate-help' => 'A taxa de bits do vídeo determina a qualidade da codificação do vídeo em (kb/s)',
-	'fogg-twopass-title' => 'Codificação em passagem dupla \'\'(two pass)\'\'',
+	'fogg-twopass-title' => "Codificação em passagem dupla ''(two pass)''",
 	'fogg-twopass-help' => 'A codificação em passagem dupla mantém um nível de qualidade mais constante ao fazer duas passagens sobre o ficheiro vídeo',
-	'fogg-framerate-title' => 'Taxa de fotogramas \'\'(frame rate)\'\'',
+	'fogg-framerate-title' => "Taxa de fotogramas ''(frame rate)''",
 	'fogg-framerate-help' => 'A taxa de fotogramas do vídeo. Mais informações acerca da <a target="_new" href="http://en.wikipedia.org/wiki/Frame_rate">taxa de fotogramas</a>.',
-	'fogg-aspect-title' => 'Rácio de aspecto \'\'(aspect ratio)\'\'',
+	'fogg-aspect-title' => "Rácio de aspecto ''(aspect ratio)''",
 	'fogg-aspect-help' => 'O rácio de aspecto do vídeo pode ser $:3 ou 16:9. Mais informações acerca de <a target="_new" href="http://en.wikipedia.org/wiki/Aspect_ratio_%28image%29">rácios de aspecto</a>.',
 	'fogg-keyframeInterval-title' => 'Intervalo dos fotogramas chave',
-	'fogg-keyframeInterval-help' => 'O intervalo dos fotogramas chave, em fotogramas. Nota: A maioria dos \'\'codecs\'\' forçam fotogramas chave se a diferença entre fotogramas é maior do que o tamanho do fotograma chave codificado. Mais informações acerca dos <a href="http://en.wikipedia.org/wiki/I-frame">fotogramas chave</a>.',
-	'fogg-denoise-title' => 'Filtro de eliminação de ruído \'\'(denoise)\'\'',
-	'fogg-denoise-help' => 'Eliminar ruído \'\'(denoise)\'\' do vídeo de entrada. Mais informações acerca da <a href="http://en.wikipedia.org/wiki/Video_denoising">eliminação de ruído</a>.',
+	'fogg-keyframeInterval-help' => "O intervalo dos fotogramas chave, em fotogramas. Nota: A maioria dos ''codecs'' forçam fotogramas chave se a diferença entre fotogramas é maior do que o tamanho do fotograma chave codificado. Mais informações acerca dos <a href=\"http://en.wikipedia.org/wiki/I-frame\">fotogramas chave</a>.",
+	'fogg-denoise-title' => "Filtro de eliminação de ruído ''(denoise)''",
+	'fogg-denoise-help' => "Eliminar ruído ''(denoise)'' do vídeo de entrada. Mais informações acerca da <a href=\"http://en.wikipedia.org/wiki/Video_denoising\">eliminação de ruído</a>.",
 	'fogg-novideo-title' => 'Sem vídeo',
 	'fogg-novideo-help' => 'desactivar vídeo na saída',
 	'fogg-audioBitrate-title' => 'Taxa de bits do áudio',
@@ -3668,7 +3807,7 @@ $messages['pt'] = array(
 	'mwe-ignore-any-warnings' => 'Ignorar quaisquer avisos',
 	'mwe-upload-in-progress' => 'Carregamento em progresso (não feche esta janela)',
 	'mwe-uploaded-status' => 'Carregado',
-	'mwe-add_media_wizard' => '\'\'Wizard\'\' de carregamentos multimédia',
+	'mwe-add_media_wizard' => "''Wizard'' de carregamentos multimédia",
 	'mwe-media_search' => 'Pesquisa de multimédia',
 	'rsd_box_layout' => 'Disposição em caixa',
 	'rsd_list_layout' => 'Disposição em lista',
@@ -3689,9 +3828,9 @@ $messages['pt'] = array(
 	'mwe-cc_sa_title' => 'Partilha nos termos da mesma licença',
 	'mwe-cc_pd_title' => 'Domínio Público',
 	'mwe-unknown_license' => 'Licença desconhecida',
-	'mwe-results_from' => 'Resultados de <a href="$1" target="_new" >$2</a>',
+	'mwe-results_from' => 'Resultados de $1',
 	'mwe-missing_desc_see_source' => 'Este elemento não tem descrição. Por favor, consulte a [$1 fonte original] e ajude a descrevê-lo.',
-	'rsd_config_error' => 'Erro de configuração do \'\'wizard\'\' de carregamentos multimédia: $1',
+	'rsd_config_error' => "Erro de configuração do ''wizard'' de carregamentos multimédia: $1",
 	'mwe-resource_page_desc' => 'Descrição da página do recurso:',
 	'mwe-edit_resource_desc' => 'Editar descrição do recurso em texto wiki:',
 	'mwe-local_resource_title' => 'Título do recurso local:',
@@ -3713,7 +3852,7 @@ $messages['pt'] = array(
 	'rsd-this_wiki-title' => 'Esta wiki',
 	'rsd-this_wiki-desc' => 'A instalação local da wiki',
 	'rsd-archive_org-desc' => 'A Internet Archive, uma biblioteca digital de artefactos culturais',
-	'rsd-flickr-desc' => 'Flickr.com, um sítio de partilha de fotos \'\'online\'\'',
+	'rsd-flickr-desc' => "Flickr.com, um sítio de partilha de fotos ''online''",
 	'rsd-metavid-desc' => 'Metavid.org, um arquivo comunitário dos trabalhos da Câmara e Senado dos Estados Unidos',
 	'mwe-upload-transcoded-status' => 'Transcodificado',
 	'mwe-upload-transcode-in-progress' => 'Transcodificação e carregamento em progresso (não feche esta janela)',
@@ -3727,7 +3866,7 @@ $messages['pt'] = array(
 	'fogg-use_latest_firefox' => 'Por favor, instale primeiro o <a href="http://www.mozilla.com/en-US/firefox/upgrade.html?from=firefogg">Firefox 3.5</a> (ou versão mais recente). <i>Depois volte a esta página para instalar a extensão <b>Firefogg</b>.</i>',
 	'fogg-passthrough_mode' => 'O ficheiro seleccionado já é de formato Ogg ou não é um ficheiro de vídeo',
 	'fogg-encoding-done' => 'Codificação finalizada',
-	'fogg-badtoken' => '\'\'Token\'\' inválido',
+	'fogg-badtoken' => "''Token'' inválido",
 	'fogg-preview' => 'Antever vídeo',
 	'fogg-hidepreview' => 'Esconder a antevisão',
 	'mwe-upload-multi' => 'Carregar {{PLURAL:$1|ficheiro|ficheiros}}',
@@ -3746,6 +3885,11 @@ $messages['pt-br'] = array(
 	'mwe-preview_insert_resource' => 'Prever inserção de recurso: $1',
 );
 
+/** Russian (Русский)
+ * @author Ferrer
+ * @author Lockal
+ * @author Александр Сигачёв
+ */
 $messages['ru'] = array(
 	'mwe-upload-stats-fileprogress' => '$1 из $2',
 	'mwe-upload-unknown-size' => 'Неизвестный размер',
@@ -3757,7 +3901,7 @@ $messages['ru'] = array(
 	'mwe-return-to-form' => 'Вернуться к форме',
 	'mwe-file-exists-duplicate' => 'Этот файл является дубликатом следующих файлов:',
 	'mwe-fileexists' => 'Файл с этим именем уже существует. Пожалуйста, проверьте <b><tt>$1</tt></b>, если вы не уверены, что хотите заменить его.',
-	'mwe-fileexists-thumb' => '<center><b>Существующий файл</b></center>',
+	'mwe-fileexists-thumb' => 'Существующий файл',
 	'mwe-ignorewarning' => 'Игнорировать предупреждения и всё равно сохранить файл',
 	'mwe-file-thumbnail-no' => 'Название файла начинается с <b><tt>$1</tt></b>',
 	'mwe-go-to-resource' => 'Перейти на страницу ресурсов',
@@ -3860,7 +4004,7 @@ $messages['ru'] = array(
 	'mwe-cc_sa_title' => 'С сохранением условий',
 	'mwe-cc_pd_title' => 'Общественное достояние',
 	'mwe-unknown_license' => 'Неизвестная лицензия',
-	'mwe-results_from' => 'Результаты <a href="$1" target="_new" >$2</a>',
+	'mwe-results_from' => 'Результаты $1',
 	'mwe-missing_desc_see_source' => 'Для этого объекта отсутствует описание. Пожалуйста, обратитесь к [$1 исходному источнику] и помогите описать объект.',
 	'rsd_config_error' => 'Ошибка настройки мастера добавления. $1',
 	'mwe-resource_page_desc' => 'Описание страницы ресурса:',
@@ -3905,7 +4049,11 @@ $messages['ru'] = array(
 	'mwe-review-upload' => 'Просмотреть {{PLURAL:$1|загрузку файла|загрузки файлов}}',
 );
 
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
 $messages['sk'] = array(
+	'mwe-upload-stats-fileprogress' => '$1 z $2',
 	'mwe-upload-unknown-size' => 'Neznáma veľkosť',
 	'mwe-cancel-confim' => 'Ste si istý, že chcete prerušiť?',
 	'mwe-successfulupload' => 'Nahrávanie úspešné',
@@ -3915,7 +4063,7 @@ $messages['sk'] = array(
 	'mwe-return-to-form' => 'Späť na formulár',
 	'mwe-file-exists-duplicate' => 'Tento súbor je duplikátom nasledujúceho súboru:',
 	'mwe-fileexists' => 'Súbor s týmto názvom už existuje. Prosím, skontrolujte <b><tt>$1</tt></b> ak si nie ste istý, či ho chcete zmeniť.',
-	'mwe-fileexists-thumb' => '<center><b>Existujúci súbor</b></center>',
+	'mwe-fileexists-thumb' => 'Existujúci súbor',
 	'mwe-ignorewarning' => 'Ignorovať upozornenie a napriek nemu uložiť súbor',
 	'fogg-save_local_file' => 'Uložiť Ogg',
 	'fogg-help-sticky' => 'Pomoc (prilepiť kliknutím)',
@@ -3957,7 +4105,7 @@ $messages['sk'] = array(
 	'mwe-cc_sa_title' => 'zachovať licenciu',
 	'mwe-cc_pd_title' => 'voľné dielo',
 	'mwe-unknown_license' => 'neznáma licencia',
-	'mwe-results_from' => 'Výsledky z <a href="$1" target="_new" >$2</a>',
+	'mwe-results_from' => 'Výsledky z $1',
 	'mwe-missing_desc_see_source' => 'Prvku chýba popis. Pozrite si prosím [$1 pôvodný zdroj] a pomôžte ho popísať.',
 	'rsd_config_error' => 'Chyba Sprievodcu pridaním multimédia: $1',
 	'mwe-resource_page_desc' => 'Popisná stránka zdroja:',
@@ -4044,12 +4192,19 @@ $messages['sv'] = array(
 	'fogg-hidepreview' => 'Göm förhandsgranskning',
 );
 
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
 $messages['te'] = array(
+	'mwe-upload-unknown-size' => 'తెలియని పరిమాణం',
 	'mwe-cancel-confim' => 'మీరు నిజంగానే రద్దుచేయాలనుకుంటున్నారా?',
 	'mwe-successfulupload' => 'ఎక్కింపు విజయవంతం',
-	'mwe-uploaderror' => 'ఎక్కింపులో పొరపాటు',
+	'mwe-uploaderror' => 'ఎక్కింపు పొరపాటు',
 	'mwe-uploadwarning' => 'ఎక్కింపు హెచ్చరిక',
 	'mwe-file-exists-duplicate' => 'ఈ ఫైలు క్రింది ఫైలుకి నకిలీ:',
+	'mwe-filedesc' => 'సారాంశం',
+	'mwe-filesource' => 'మూలం:',
+	'mwe-filestatus' => 'కాపీహక్కుల స్థితి:',
 	'fogg-videoQuality-title' => 'దృశ్యకపు నాణ్యత',
 	'fogg-width-title' => 'దృశ్యకపు వెడల్పు',
 	'fogg-height-title' => 'దృశ్యకపు ఎత్తు',
@@ -4065,19 +4220,31 @@ $messages['te'] = array(
 	'mwe-select_file' => 'ఫైలుని ఎంచుకోండి',
 	'mwe-destfilename' => 'గమ్యస్థాన ఫైలుపేరు:',
 	'mwe-summary' => 'సారాశం',
+	'mwe-date-of-work' => 'కృతి యొక్క తేదీ',
 	'mwe-upload-in-progress' => 'ఎక్కింపు జరుగుతోంది (ఈ కిటికీని మూసేయకండి)',
+	'rsd_box_layout' => 'పెట్టె అమరిక',
+	'rsd_list_layout' => 'జాబితా అమరిక',
 	'rsd_results_desc' => '$1 నుండి $2 వరకు ఫలితాలు',
 	'rsd_results_next' => 'తదుపరి',
 	'rsd_results_prev' => 'గత',
 	'rsd_no_results' => '<b>$1</b>కి ఫలితాలు ఏమీ లేవు',
-	'mwe-upload_tab' => 'ఎక్కింపు',
+	'mwe-upload_tab' => 'దస్త్రపు ఎక్కింపు',
 	'rsd_layout' => 'అమరిక:',
 	'mwe-link' => 'లంకె',
-	'mwe-results_from' => '<a href="$1" target="_new" >$2</a> నుండి ఫలితాలు',
+	'mwe-cc_by_title' => 'ఆపాదింపు',
+	'mwe-results_from' => '$1 నుండి ఫలితాలు',
+	'mwe-your-recent-uploads' => '$1 లోనికి ఇటీవలి మీ ఎక్కింపులు',
+	'mwe-no_recent_uploads' => 'ఇటీవలి ఎక్కింపులు లేవు',
 	'mwe-resource_page_desc' => 'వనరు పేజీ వివరణ:',
+	'rsd-wiki_commons-title' => 'వికీమీడియా కామన్స్',
 	'rsd-this_wiki-title' => 'ఈ వికీ',
+	'rsd-this_wiki-desc' => 'స్థానిక వికీ',
 );
 
+/** Turkish (Türkçe)
+ * @author Joseph
+ * @author Vito Genovese
+ */
 $messages['tr'] = array(
 	'mwe-upload-stats-fileprogress' => '$2 de $1',
 	'mwe-upload-unknown-size' => 'Bilinmeyen boyut',
@@ -4089,14 +4256,14 @@ $messages['tr'] = array(
 	'mwe-return-to-form' => 'Forma geri dön',
 	'mwe-file-exists-duplicate' => 'Bu dosya aşağıdaki dosyanın aynısı:',
 	'mwe-fileexists' => 'Bu isimde bir dosya zaten mevcut. Değiştirmek istediğinize emin değilseniz lütfen <b><tt>$1</tt></b> kontrol edin.',
-	'mwe-fileexists-thumb' => '<center><b>Mevcut dosya</b></center>',
+	'mwe-fileexists-thumb' => 'Mevcut dosya',
 	'mwe-ignorewarning' => 'Uyarıyı önemseme ve dosyayı yinede yükle',
 	'mwe-file-thumbnail-no' => 'Dosya adı <b><tt>$1</tt></b> ile başlıyor',
 	'mwe-go-to-resource' => 'Kaynak sayfasına git',
 	'mwe-upload-misc-error' => 'Bilinmeyen yükleme hatası',
 	'mwe-wgfogg_warning_bad_extension' => 'Desteklenmeyen bir uzantıya sahip bir dosya seçtiniz (<a href="http://commons.wikimedia.org/wiki/Commons:Firefogg#Supported_File_Types">daha fazla bilgi</a>).',
 	'mwe-loading-add-media-wiz' => 'Ortam ekle sihirbazı yükleniyor',
-	'fogg-save_local_file' => 'Ogg\'u kaydet',
+	'fogg-save_local_file' => "Ogg'u kaydet",
 	'fogg-help-sticky' => 'Yardım (yapıştırmak için tıklayın)',
 	'fogg-cg-preset' => 'Önayar: <strong>$1</strong>',
 	'fogg-cg-quality' => 'Temel kalite ve çözünürlük denetimi',
@@ -4192,7 +4359,7 @@ $messages['tr'] = array(
 	'mwe-cc_sa_title' => 'Benzer Paylaşım',
 	'mwe-cc_pd_title' => 'Kamu Malı',
 	'mwe-unknown_license' => 'Bilinmeyen lisans',
-	'mwe-results_from' => '<a href="$1" target="_new" >$2</a> için sonuçlar',
+	'mwe-results_from' => '$1 için sonuçlar',
 	'mwe-missing_desc_see_source' => 'Bu varlığın tanımı eksik. Lütfen [$1 orijinal kaynağa] bakın ve açıklamaya yardımcı olun.',
 	'rsd_config_error' => 'Ortam ekle sihirbazı yapılandırma hatası: $1',
 	'mwe-resource_page_desc' => 'Kaynak sayfası açıklaması:',
@@ -4220,7 +4387,7 @@ $messages['tr'] = array(
 	'rsd-metavid-desc' => 'Metavid.org, ABD Meclis ve Senato görüşmelerinin topluluk arşivi',
 	'mwe-upload-transcoded-status' => 'Yeniden kodlandı',
 	'mwe-upload-transcode-in-progress' => 'Yeniden kodlama ve yükleme sürüyor (bu pencereyi kapatmayın)',
-	'fogg-transcoding' => 'Video Ogg\'a kodlanıyor',
+	'fogg-transcoding' => "Video Ogg'a kodlanıyor",
 	'fogg-select_file' => 'Dosyayı seç',
 	'fogg-select_new_file' => 'Yeni dosyayı seç',
 	'fogg-select_url' => 'URLyi seç',
@@ -4350,6 +4517,9 @@ $messages['vep'] = array(
 	'fogg-select_url' => 'Valiče URL',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
 $messages['vi'] = array(
 	'mwe-upload-stats-fileprogress' => '$1 của $2',
 	'mwe-upload-unknown-size' => 'Kích cỡ không biết',
@@ -4361,7 +4531,7 @@ $messages['vi'] = array(
 	'mwe-return-to-form' => 'Trở về biểu mẫu',
 	'mwe-file-exists-duplicate' => 'Tập tin này là bản sao của tập tin sau:',
 	'mwe-fileexists' => 'Một tập tin với tên này đã tồn tại, xin hãy kiểm tra lại <b><tt>$1</tt></b> nếu bạn không chắc bạn có muốn thay đổi nó hay không.',
-	'mwe-fileexists-thumb' => '<center><b>Tập tin đã tồn tại</b></center>',
+	'mwe-fileexists-thumb' => 'Tập tin đã tồn tại',
 	'mwe-ignorewarning' => 'Bỏ qua cảnh báo và lưu tập tin',
 	'mwe-file-thumbnail-no' => 'Tập tin bắt đầu với <b><tt>$1</tt></b>',
 	'mwe-go-to-resource' => 'Vào trang tài nguyên',
@@ -4404,7 +4574,7 @@ $messages['vi'] = array(
 	'mwe-cc_sa_title' => 'Chia sẻ tương tự',
 	'mwe-cc_pd_title' => 'Phạm vi công cộng',
 	'mwe-unknown_license' => 'Giấy phép không biết',
-	'mwe-results_from' => 'Kết quả từ <a href="$1" target="_new" >$2</a>',
+	'mwe-results_from' => 'Kết quả từ $1',
 	'mwe-resource_page_desc' => 'Miêu tả trang tài nguyên:',
 	'mwe-edit_resource_desc' => 'Sửa đổi văn bản wiki miêu tả tài nguyên:',
 	'mwe-watch_this_page' => 'Theo dõi trang này',

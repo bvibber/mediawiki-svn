@@ -67,6 +67,13 @@ $messages['es'] = array(
 	'hidens-desc' => 'Oculta espacio de nombre en el encabezado y el título cuando una página está en espacio de nombre especificado o cuando la función de analizador <code><nowiki>{{#hidens:}}</nowiki></code> es llamada',
 );
 
+/** Finnish (Suomi)
+ * @author Str4nd
+ */
+$messages['fi'] = array(
+	'hidens-desc' => 'Piilottaa nimiavaruuden otsikosta ja nimestä, kun sivu on tietyssä nimiavaruudessa tai <code><nowiki>{{#hidens:}}</nowiki></code>-jäsenninfunktiota on kutsuttu.',
+);
+
 /** French (Français)
  * @author IAlex
  */
@@ -142,6 +149,13 @@ $messages['nl'] = array(
  */
 $messages['no'] = array(
 	'hidens-desc' => 'Skjuler navnerom i overskriften og tittelen når en side er i et spesifisert navnerom eller når tolkefunksjonen <code><nowiki>{{#hidens:}}</nowiki></code> kalles',
+);
+
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'hidens-desc' => "Stërma lë spassi nominal ant la testà e ant ël tìtol quand che na pàgina a l'é ant lë spassi nominal specificà o quand che la funsion <code><nowiki>{{#hidens:}}</nowiki></code> a l'é ciamà",
 );
 
 /** Portuguese (Português)

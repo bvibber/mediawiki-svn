@@ -120,6 +120,7 @@ $messages['ja'] = array(
  */
 $messages['lb'] = array(
 	'activetaskforces' => 'Aktiv Aarbechtsgruppen',
+	'active-task-forces-desc' => "Weist d'Zuel vun den Ännerungen op Säite vun der Task Force",
 	'active-task-forces-intro' => 'Zuel vun den Ännerungen op Säite vum Aarbechtsgrupp {{PLURAL:$1|de leschten Dag|an de leschten $1 Deeg}}.',
 );
 

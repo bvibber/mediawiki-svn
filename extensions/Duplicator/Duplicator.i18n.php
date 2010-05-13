@@ -1541,7 +1541,7 @@ $messages['sv'] = array(
  */
 $messages['te'] = array(
 	'duplicator-options' => 'ఎంపికలు',
-	'duplicator-source' => 'స్కోరు:',
+	'duplicator-source' => 'మూలం:',
 	'duplicator-dest' => 'గమ్యస్థానం:',
 	'duplicator-summary' => '[[$1]] నుండి కాపీ చేసారు',
 	'duplicator-success' => "<big>'''[[$1]]ని [[$2]]కి కాపీ చేసాం.'''</big>",

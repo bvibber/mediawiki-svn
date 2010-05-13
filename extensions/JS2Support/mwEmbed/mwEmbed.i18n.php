@@ -123,6 +123,9 @@ $messages['fr'] = array(
 	'mwe-cancel' => 'Annuler',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
 $messages['gl'] = array(
 	'mwe-loading_txt' => 'cargando...',
 	'mwe-error_load_lib' => 'Erro: o JavaScript $1 non se puido atopar ou non definía $2',
@@ -130,6 +133,10 @@ $messages['gl'] = array(
 	'mwe-load-drag-item' => 'Cargando o elemento arrastrado',
 	'mwe-ok' => 'De acordo',
 	'mwe-cancel' => 'Cancelar',
+	'mwe-enable-gadget' => 'Activar a beta multimedia (mwEmbed) en todas as páxinas',
+	'mwe-enable-gadget-done' => 'Activouse o trebello beta multimedia',
+	'mwe-must-login-gadget' => 'Para activar o trebello ten que <a target="_new" href="$1">acceder ao sistema</a>',
+	'mwe-test-plural' => '{{PLURAL:$1|Fíxose unha proba|Fixéronse $1 probas}}',
 );
 
 $messages['gsw'] = array(
@@ -146,6 +153,9 @@ $messages['he'] = array(
 	'mwe-error_load_lib' => 'שגיאה: לא ניתן היה לטעון את ספריית ה־JavaScript בשם $1 או שהיא אינה מגדירה את $2',
 );
 
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
 $messages['hsb'] = array(
 	'mwe-loading_txt' => 'začituje so ...',
 	'mwe-size-gigabytes' => '$1 GB',
@@ -157,6 +167,10 @@ $messages['hsb'] = array(
 	'mwe-load-drag-item' => 'Wlečeny zapisk so začituje',
 	'mwe-ok' => 'W porjadku',
 	'mwe-cancel' => 'Přetorhnyć',
+	'mwe-enable-gadget' => 'Multimedia beta (mwEmbed) za wšě strony zmóžnić',
+	'mwe-enable-gadget-done' => 'Přisłušk za Multimedia beta je so zmóžnił',
+	'mwe-must-login-gadget' => 'Zo by přisłušk zmóžnił, dyrbiš so <a target="_new" href="$1">přizjewić</a>',
+	'mwe-test-plural' => 'Sym {{PLURAL:$1|$1 test|$1 testaj|testy|testow}} přewjedł',
 );
 
 $messages['hu'] = array(
@@ -221,6 +235,9 @@ $messages['lb'] = array(
 	'mwe-cancel' => 'Ofbriechen',
 );
 
+/** Malayalam (മലയാളം)
+ * @author Praveenp
+ */
 $messages['ml'] = array(
 	'mwe-loading_txt' => 'ശേഖരിക്കുന്നു ...',
 	'mwe-error_load_lib' => 'പിശക്: ജാവാസ്ക്രിപ്റ്റ് $1 ശേഖരിക്കാൻ കഴിഞ്ഞില്ല അല്ലെങ്കിൽ $2 നിർവ്വചിച്ചിട്ടില്ല',
@@ -230,6 +247,9 @@ $messages['ml'] = array(
 	'mwe-cancel' => 'റദ്ദാക്കുക',
 );
 
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
 $messages['nl'] = array(
 	'mwe-loading_txt' => 'bezig met laden ...',
 	'mwe-error_load_lib' => 'Fout: JavaScript $1 kon niet opgehaald worden of definieert $2 niet',
@@ -237,6 +257,10 @@ $messages['nl'] = array(
 	'mwe-load-drag-item' => 'Bezig met het laden van het gesleepte bestand',
 	'mwe-ok' => 'OK',
 	'mwe-cancel' => 'Annuleren',
+	'mwe-enable-gadget' => "Multimedia beta (mwEmbed) voor alle pagina's inschakelen",
+	'mwe-enable-gadget-done' => 'Multimedia beta is ingeschakeld',
+	'mwe-must-login-gadget' => 'Om de uitbreiding in te schakelen, moet u <a target="_new" href="$1">aanmelden</a>',
+	'mwe-test-plural' => '{{PLURAL:$1|$1 test|$1 tests}} uitgevoerd',
 );
 
 $messages['oc'] = array(
@@ -266,6 +290,9 @@ $messages['pt'] = array(
 	'mwe-cancel' => 'Cancelar',
 );
 
+/** Russian (Русский)
+ * @author Александр Сигачёв
+ */
 $messages['ru'] = array(
 	'mwe-loading_txt' => 'загрузка …',
 	'mwe-error_load_lib' => 'Ошибка. JavaScript $1 не доступен или не определяет $2',
@@ -273,6 +300,10 @@ $messages['ru'] = array(
 	'mwe-load-drag-item' => 'Загрузка перетащенного элемента',
 	'mwe-ok' => 'OK',
 	'mwe-cancel' => 'Отмена',
+	'mwe-enable-gadget' => 'Включить бета-мультимедиа (mwEmbed) для всех страниц',
+	'mwe-enable-gadget-done' => 'Включён гаджет бета-мультимедиа',
+	'mwe-must-login-gadget' => 'Для включения гаджета вам следует <a target="_new" href="$1">представиться</a>.',
+	'mwe-test-plural' => 'Я прошёл {{PLURAL:$1|$1 проверку|$1 проверки|$1 проверок}}',
 );
 
 $messages['sk'] = array(

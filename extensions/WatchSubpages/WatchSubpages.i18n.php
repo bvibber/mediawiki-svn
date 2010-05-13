@@ -189,6 +189,7 @@ Při označování nebo odznačování více stránek můžete držením kláves
 
 /** German (Deutsch)
  * @author Raimond Spekking
+ * @author The Evil IP address
  * @author Umherirrender
  */
 $messages['de'] = array(
@@ -198,9 +199,9 @@ $messages['de'] = array(
 	'watchsubpages-addtitlestowatchlist' => 'Seiten zur Beobachtungsliste hinzufügen',
 	'watchsubpages-desc' => 'Schnelles [[Special:WatchSubpages|Hinzufügen aller Unterseiten]] einer Seite zur Beobachtungsliste',
 	'watchsubpages-form' => 'Wähle die Seiten aus, die deiner Beobachtungsliste hinzugefügt werden sollen.
-Um eine Seite hinzuzufügen, markiere die Kästchen neben den Einträgen und klicke „{{int:watchsubpages-addtitles}}“.
+Um eine Seite hinzuzufügen, markiere die Kästchen neben den Einträgen und klicke auf „{{int:watchsubpages-addtitles}}“.
 
-Beim markieren von mehreren Seiten, erlaubt es die gedrücktgehaltene Shift-Taste aufeinanderfolgende Kästchen zu markieren oder die Markierung zu entfernen.',
+Beim Markieren von mehreren Seiten, erlaubt es die gedrücktgehaltene Shift-Taste aufeinanderfolgende Kästchen zu markieren oder die Markierung zu entfernen.',
 );
 
 /** German (formal address) (Deutsch (Sie-Form))
@@ -527,9 +528,9 @@ $messages['lb'] = array(
 	'watchsubpages-addtitlestowatchlist' => "Säiten op d'Iwwerwaachungslëscht derbäisetzen",
 	'watchsubpages-desc' => "Séier [[Special:WatchSubpages|all Ënner-Säiten]] vun enger Säit op d'Iwwerwwachungslëscht derbäisetzen",
 	'watchsubpages-form' => 'Wielt hei ënnedrënner déi Säiten eraus déi Dir op Är Iwwerwaachungslëscht derbäisetze wëllt.
-Fir eng Säit derbäizesetzen, klickt d\'Kescht nierwendrunn un, a klickt "Säiten derbäisetzen".
+Fir eng Säit derbäizesetzen, klickt d\'Këscht niewendrun un, a klickt"{{int:watchsubpages-addtitles}}".
 
-Fir méi Säite mateneen unzwielen oder ze desaktivéieren, kënnt Dir d\'Shift-Tast drécken fir méi Keschten hannereneen unzewielen an dann einfach déi éischt an déi lescht Kescht uklicken fir och all déi dertëschent matunzewielen.',
+Fir méi Säite mateneen unzwielen oder ze desaktivéieren, kënnt Dir d\'Shift-Tast drécken fir méi Këschten hannereneen unzewielen an dann einfach déi éischt an déi lescht Këscht uklicken fir och all déi dertëschent matunzewielen.',
 );
 
 /** Macedonian (Македонски)
@@ -542,9 +543,9 @@ $messages['mk'] = array(
 	'watchsubpages-addtitlestowatchlist' => 'Додај страници кон листата на набљудувања',
 	'watchsubpages-desc' => 'Брзо [[Special:WatchSubpages|додавање на сите потстраници]] на една страница кон листата на набљудувања',
 	'watchsubpages-form' => 'Изберете ги страниците за додавање кон вашата листата на набљудувања.
-За да додадете страница, штиклирајте ја кутијката до неа, и кликнете на „Додај страници“
+За да додадете страница, штиклирајте ја кутијката до неа, и кликнете на „{{int:watchsubpages-addtitles}}“.
 
-За да штиклирате или отштиклирате повеќе страници наеднаш последователно, држете Shift и кликнете на почетната и крајната кутијка на саканата низа страници.',
+За да штиклирате или отштиклирате повеќе страници наеднаш, држете Shift и кликнете на почетната и крајната кутијка на саканата низа страници.',
 );
 
 /** Malayalam (മലയാളം)
@@ -742,7 +743,7 @@ $messages['ru'] = array(
 	'watchsubpages-addtitlestowatchlist' => 'Добавить страницы в список наблюдения',
 	'watchsubpages-desc' => 'Позволяет быстро [[Special:WatchSubpages|добавить все подстраницы]] некоторой страницы в список наблюдения',
 	'watchsubpages-form' => 'Выберите страницы, которые вы желаете добавить в свой список наблюдения.
-Чтобы добавить страницу, поставьте отметку около неё и нажмите «Добавить страницы».
+Чтобы добавить страницу, поставьте отметку около неё и нажмите «{{int:watchsubpages-addtitles}}».
 
 Чтобы отметить сразу несколько страниц, удерживая клавишу Shift, отметьте начальную и конечную страницы требуемой последовательности.',
 );

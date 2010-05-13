@@ -77,6 +77,13 @@ $messages['es'] = array(
 	'apisvgproxy-desc' => 'Traslada archivos SVG desde un repositorio de archivos (posiblemente remoto) hacia el dominio local.',
 );
 
+/** Finnish (Suomi)
+ * @author Str4nd
+ */
+$messages['fi'] = array(
+	'apisvgproxy-desc' => 'Välittää SVG-tiedostot (mahdollisesti ulkoisesta) tiedostovarastosta paikalliselle verkkotunnukselle.',
+);
+
 /** French (Français)
  * @author IAlex
  */

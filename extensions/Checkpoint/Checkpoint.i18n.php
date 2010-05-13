@@ -73,6 +73,15 @@ $messages['es'] = array(
 	'checkpoint-notice' => '([[{{ns:project}}:Checkpoint|grabar checkpoint]])',
 );
 
+/** Finnish (Suomi)
+ * @author Str4nd
+ */
+$messages['fi'] = array(
+	'checkpoint' => 'Tallenna ja jatka muokkaamista',
+	'checkpoint-desc' => 'Mahdollistaa tallennuksen ja muokkauksen jatkamisen.',
+	'checkpoint-tooltip' => 'Tallenna työsi ja jatka sivun muokkaamista',
+);
+
 /** French (Français)
  * @author Peter17
  */
