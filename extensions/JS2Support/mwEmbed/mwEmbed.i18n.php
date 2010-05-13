@@ -197,7 +197,8 @@ $messages['ja'] = array(
 	'mwe-load-drag-item' => 'ドラッグされた項目を読み込み中',
 	'mwe-ok' => 'OK',
 	'mwe-cancel' => '中止',
-)
+);
+
 $messages['ko'] = array(
 	'mwe-loading_txt' => '불러오는 중...',
 	'mwe-cancel' => '취소',
