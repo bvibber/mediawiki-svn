@@ -40,7 +40,7 @@ mw.addMessages( {
 	"mwe-no_recent_uploads" : "No recent uploads",
 	
 	"mwe-not-logged-in-uploads" : "You may not be logged in so no recent uploads can be displayed. $1 login and $2",
-	"mwe-ie-eye-permision" : "If using Internet Exploer and logged in, you may need to adjust your privacy settings",
+	"mwe-ie-eye-permision" : "If using Internet Explorer and logged in, you may need to adjust your privacy settings",
 	
 	"mwe-loggin-link" : "Please login", 
 	"mwe-try-again-link" : "try again",
@@ -57,11 +57,11 @@ mw.addMessages( {
 	"mwe-return-search-results" : "Return to search results",
 	"mwe-importing_asset" : "Importing asset",
 	"mwe-preview_insert_resource" : "Preview insert of resource: $1",
-	"mwe-do-more-modification" : "Do More Modification",
+	"mwe-do-more-modification" : "Do more modification",
 	"mwe-checking-resource" : "Checking for resource",
 	"mwe-resource-needs-import" : "Resource $1 needs to be imported to $2",
 	
-	"mwe-warning-upload-to-commons" : "$1 recommends you upload to commons, only upload locally after you have read $2",
+	"mwe-warning-upload-to-commons" : "$1 recommends you upload to Wikimedia Commons, only upload locally after you have read $2",
 	"mwe-local-upload-policy-link" : "local upload policy" ,
 	
 	"mwe-ftype-svg" : "SVG vector file",
@@ -74,7 +74,7 @@ mw.addMessages( {
 	"rsd-wiki_commons-title": "Wikimedia Commons",
 	"rsd-wiki_commons": "Wikimedia Commons, an archive of freely-licensed educational media content (images, sound and video clips)",
 
-	"rsd-kaltura-title" : "All Sources",
+	"rsd-kaltura-title" : "All sources",
 	"rsd-kaltura" : "Kaltura aggregated search for free-licensed media across multiple search providers",
 
 	"rsd-this_wiki-title" : "This wiki",
@@ -84,7 +84,7 @@ mw.addMessages( {
 	"rsd-archive_org-desc" : "The Internet Archive, a digital library of cultural artefacts",
 
 	"rsd-flickr-title" : "Flickr.com",
-	"rsd-flickr-desc" : "Flickr.com, a online photo sharing site",
+	"rsd-flickr-desc" : "Flickr.com, an online photo sharing site",
 	"rsd-metavid-title" : "Metavid.org",
 	"rsd-metavid-desc" : "Metavid.org, a community archive of US House and Senate floor proceedings",
 	

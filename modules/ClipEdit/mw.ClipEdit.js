@@ -4,34 +4,34 @@
 
 // set gMsg object:
 mw.addMessages( {
-	"mwe-crop" : "Crop image",
-	"mwe-apply_crop" : "Apply crop to image",
-	"mwe-reset_crop" : "Reset crop",
-	"mwe-insert_image_page" : "Insert into page",
-	"mwe-insert_into_sequence" : "Insert into sequence",
-	"mwe-preview_insert" : "Preview insert",
-	"mwe-cancel_image_insert" : "Cancel insert",
-	"mwe-sc_attributes" : "Clip detail edit",
-	"mwe-sc_inoutpoints" : "Set in-out points",
-	"mwe-sc_overlays" : "Overlays",
-	"mwe-sc_audio" : "Audio control",
-	"mwe-sc_duration" : "Duration",
-	"mwe-template_properties" : "Template properties",
-	"mwe-custom_title" : "Custom title",
-	"mwe-edit_properties" : "Edit properties",
-	"mwe-other_properties" : "Other properties",
-	"mwe-resource_page" : "Resource page:",
-	"mwe-set_in_out_points" : "Set in-out points",
-	"mwe-start_time" : "Start time",
-	"mwe-end_time" : "End time",
-	"mwe-preview_inout" : "Preview in-out points",
-	"mwe-edit-tools" : "Edit tools",
-	"mwe-inline-description" : "Caption",
-	"mwe-edit-video-tools" : "Edit video tools:",
-	"mwe-duration" : "Duration:",
-	"mwe-layout" : "Layout",
-	"mwe-layout_right" : "Right side image layout",
-	"mwe-layout_left" : "Left side image layout"
+	"mwe-clipedit-crop" : "Crop image",
+	"mwe-clipedit-apply_crop" : "Apply crop to image",
+	"mwe-clipedit-reset_crop" : "Reset crop",
+	"mwe-clipedit-insert_image_page" : "Insert into page",
+	"mwe-clipedit-insert_into_sequence" : "Insert into sequence",
+	"mwe-clipedit-preview_insert" : "Preview insert",
+	"mwe-clipedit-cancel_image_insert" : "Cancel insert",
+	"mwe-clipedit-sc_attributes" : "Clip detail edit",
+	"mwe-clipedit-sc_inoutpoints" : "Set in-out points",
+	"mwe-clipedit-sc_overlays" : "Overlays",
+	"mwe-clipedit-sc_audio" : "Audio control",
+	"mwe-clipedit-sc_duration" : "Duration",
+	"mwe-clipedit-template_properties" : "Template properties",
+	"mwe-clipedit-custom_title" : "Custom title",
+	"mwe-clipedit-edit_properties" : "Edit properties",
+	"mwe-clipedit-other_properties" : "Other properties",
+	"mwe-clipedit-resource_page" : "Resource page:",
+	"mwe-clipedit-set_in_out_points" : "Set in-out points",
+	"mwe-clipedit-start_time" : "Start time",
+	"mwe-clipedit-end_time" : "End time",
+	"mwe-clipedit-preview_inout" : "Preview in-out points",
+	"mwe-clipedit-edit-tools" : "Edit tools",
+	"mwe-clipedit-inline-description" : "Caption",
+	"mwe-clipedit-edit-video-tools" : "Edit video tools:",
+	"mwe-clipedit-duration" : "Duration:",
+	"mwe-clipedit-layout" : "Layout",
+	"mwe-clipedit-layout_right" : "Right side image layout",
+	"mwe-clipedit-layout_left" : "Left side image layout"
 } );
 
 /**
@@ -188,7 +188,7 @@ mw.ClipEdit.prototype = {
 				
 					$j('<label />')
 					.attr('for','ce_dur')
-					.text( gM( 'mwe-duration' ) ),
+					.text( gM( 'mwe-clipedit-duration' ) ),
 					
 					$j('<input />')
 					.attr({
@@ -320,11 +320,11 @@ mw.ClipEdit.prototype = {
 		// Add html for resource resource:
 		var o =	'<table>' +
 				'<tr>' +
-				'<td colspan="2"><b>' + gM( 'mwe-edit_properties' ) + '</b></td>' +
+				'<td colspan="2"><b>' + gM( 'mwe-clipedit-edit_properties' ) + '</b></td>' +
 				'</tr>' +
 				'<tr>' +
 				'<td>' +
-				gM( 'mwe-custom_title' ) +
+				gM( 'mwe-clipedit-custom_title' ) +
 				'</td>' +
 				'<td><input type="text" size="15" maxwidth="255" value="';
 				
@@ -342,7 +342,7 @@ mw.ClipEdit.prototype = {
 			var testing_a = _this.resource.tVars;
 			// debugger;
 			o += '<tr>' +
-					'<td colspan="2"><b>' + gM( 'mwe-template_properties' ) + '</b></td>' +
+					'<td colspan="2"><b>' + gM( 'mwe-clipedit-template_properties' ) + '</b></td>' +
 				'</tr>';
 			for ( var i = 0; i < _this.resource.tVars.length ; i++ ) {
 				o += '<tr>' +
@@ -367,11 +367,11 @@ mw.ClipEdit.prototype = {
 			var res_title = mw.parseUri( _this.resource.src ).file;
 		}
 		o +='<tr>' +
-			'<td colspan="2"><b>' + gM( 'mwe-other_properties' ) + '</b></td>' +
+			'<td colspan="2"><b>' + gM( 'mwe-clipedit-other_properties' ) + '</b></td>' +
 			'</tr>' +
 			'<tr>' +
 			'<td>' +
-			gM( 'mwe-resource_page' ) +
+			gM( 'mwe-clipedit-resource_page' ) +
 			'</td>' +
 			'<td>' +
 			'<a href="' + res_src  + '" ' +
@@ -441,7 +441,7 @@ mw.ClipEdit.prototype = {
 			}
 			if ( include ) {
 				o +='<li>' +
-						'<a id="mv_smi_' + sInx + '" href="#sc_' + sInx + '">' + gM( 'mwe-sc_' + sInx ) + '</a>' +
+						'<a id="mv_smi_' + sInx + '" href="#sc_' + sInx + '">' + gM( 'mwe-clipedit-sc_' + sInx ) + '</a>' +
 					'</li>';
 				tabc += '<div id="sc_' + sInx + '" style="overflow:auto;" ></div>';
 			}
@@ -488,7 +488,7 @@ mw.ClipEdit.prototype = {
 		var eb = $j( '#embed_vid' ).get( 0 );
 		// turn on preview to avoid onDone actions
 		eb.preview_mode = true;
-		$j( '#' + this.target_control_display ).html( '<h3>' + gM( 'mwe-edit-video-tools' ) + '</h3>' );
+		$j( '#' + this.target_control_display ).html( '<h3>' + gM( 'mwe-clipedit-edit-video-tools' ) + '</h3>' );
 		if ( eb.supportsURLTimeEncoding() ) {
 			if ( eb.end_ntp ) {
 				$j( '#' + this.target_control_display ).append(
@@ -602,30 +602,30 @@ mw.ClipEdit.prototype = {
 	* @param {Object} defaultTime Provides start and end time default values 
 	*/
 	getStartEndHtml: function( defaultTime ) {
-		return '<strong>' + gM( 'mwe-set_in_out_points' ) + '</strong>' +
+		return '<strong>' + gM( 'mwe-clipedit-set_in_out_points' ) + '</strong>' +
 			'<table border="0" style="background: transparent; width:94%;height:50px;">' +
 			'<tr>' +
 			'<td style="width:90px">' +
-				gM( 'mwe-start_time' ) +
+				gM( 'mwe-clipedit-start_time' ) +
 			'<input class="ui-widget-content ui-corner-all startInOut" size="9" value="' + defaultTime.start_ntp + '">' +
 			'</td>' +
 			'<td>' +
 			'<div class="inOutSlider"></div>' +
 			'</td>' +
 			'<td style="width:90px;text-align:right;">' +
-						gM( 'mwe-end_time' ) +
+						gM( 'mwe-clipedit-end_time' ) +
 			'<input class="ui-widget-content ui-corner-all endInOut" size="9" value="' + defaultTime.end_ntp + '">' +
 			'</td>' +
 			'</tr>' +
 			'</table>' +
-			$j.btnHtml( gM( 'mwe-preview_inout' ), 'inOutPreviewClip', 'video' );
+			$j.btnHtml( gM( 'mwe-clipedit-preview_inout' ), 'inOutPreviewClip', 'video' );
 	},
 	
 	/**
 	* Get the Insert Html form text area
 	*/
 	getInsertHtml: function() {
-		var o = '<h3>' + gM( 'mwe-inline-description' ) + '</h3>' +
+		var o = '<h3>' + gM( 'mwe-clipedit-inline-description' ) + '</h3>' +
 					'<textarea style="width:95%" id="mv_inline_img_desc" rows="5" cols="30">';
 		if ( this.parentRemoteSearchDriver ) {
 			// If we have a parent remote search driver let it parse the inline description
@@ -649,7 +649,7 @@ mw.ClipEdit.prototype = {
 		for ( var callbackType in _this.controlActionsCallback ) {
 			switch( callbackType ) {
 				case 'insert_seq':
-					$j( b_target ).append( $j.btnHtml( gM( 'mwe-insert_into_sequence' ), 'mv_insert_sequence', 'check' ) + ' ' )
+					$j( b_target ).append( $j.btnHtml( gM( 'mwe-clipedit-insert_into_sequence' ), 'mv_insert_sequence', 'check' ) + ' ' )
 						.children( '.mv_insert_sequence' )
 						.buttonHover()
 						.click( function() {
@@ -658,7 +658,7 @@ mw.ClipEdit.prototype = {
 						} );
 				break;				
 				case 'insert':
-					$j( b_target ).append(  $j.btnHtml( gM( 'mwe-insert_image_page' ), 'mv_insert_image_page', 'check' ) + ' ' )
+					$j( b_target ).append(  $j.btnHtml( gM( 'mwe-clipedit-insert_image_page' ), 'mv_insert_image_page', 'check' ) + ' ' )
 						.children( '.mv_insert_image_page' )
 						.buttonHover()
 						.click( function() {
@@ -667,7 +667,7 @@ mw.ClipEdit.prototype = {
 						} ).show( 'slow' );
 				break;			
 				case 'preview':
-					$j( b_target ).append( $j.btnHtml( gM( 'mwe-preview_insert' ), 'mv_preview_insert', 'refresh' ) + ' ' )
+					$j( b_target ).append( $j.btnHtml( gM( 'mwe-clipedit-preview_insert' ), 'mv_preview_insert', 'refresh' ) + ' ' )
 						.children( '.mv_preview_insert' )
 						.buttonHover()
 						.click( function() {
@@ -676,7 +676,7 @@ mw.ClipEdit.prototype = {
 						} ).show( 'slow' );
 				break;					
 				case 'cancel':
-					$j( b_target ).append( $j.btnHtml( gM( 'mwe-cancel_image_insert' ), 'mv_cancel_img_edit', 'close' ) + ' ' )
+					$j( b_target ).append( $j.btnHtml( gM( 'mwe-clipedit-cancel_image_insert' ), 'mv_cancel_img_edit', 'close' ) + ' ' )
 						.children( '.mv_cancel_img_edit' )
 						.buttonHover()
 						.click( function() {
@@ -720,7 +720,7 @@ mw.ClipEdit.prototype = {
 					.css({
 						"float" : "left"
 					})
-					.text( gM( 'mwe-layout' ) ),
+					.text( gM( 'mwe-clipedit-layout' ) ),
 					
 					// Left layout
 					$j('<input />')
@@ -735,7 +735,7 @@ mw.ClipEdit.prototype = {
 					$j( '<div /> ')
 					.attr({
 						'id' : 'mw_layout_left_img',
-						'title':  gM( 'mwe-layout_left' )
+						'title':  gM( 'mwe-clipedit-layout_left' )
 					}),
 					
 					// Right Layout
@@ -751,7 +751,7 @@ mw.ClipEdit.prototype = {
 					$j( '<div /> ')
 					.attr({
 						'id' : 'mw_layout_right_img',
-						'title':  gM( 'mwe-layout_right' )
+						'title':  gM( 'mwe-clipedit-layout_right' )
 					}),
 
 					$j('<hr />')
@@ -790,7 +790,7 @@ mw.ClipEdit.prototype = {
 					.attr({
 						'id' : 'mw_crop_button',
 						'alt' : 'crop',
-						'title' : gM( 'mwe-crop' )
+						'title' : gM( 'mwe-clipedit-crop' )
 					}),
 					
 					$j( '<a />')
@@ -798,11 +798,11 @@ mw.ClipEdit.prototype = {
 						'href': '#'							
 					})
 					.addClass( 'mw_crop_msg' )
-					.text(  gM( 'mwe-crop' ) ),
+					.text(  gM( 'mwe-clipedit-crop' ) ),
 					
 					$j( '<span />' )					
 					.addClass( 'mw_crop_msg_load')
-					.text(  gM( 'mwe-loading_txt' )  )
+					.text(  gM( 'mwe-clipedit-loading_txt' )  )
 					.hide(),
 					
 					$j( '<a />' )
@@ -813,7 +813,7 @@ mw.ClipEdit.prototype = {
 						'display': 'inline'
 					})
 					.addClass( 'mw_apply_crop' )
-					.text( gM( 'mwe-apply_crop' ) )
+					.text( gM( 'mwe-clipedit-apply_crop' ) )
 					.hide(),
 					
 					// some space between apply and rest
@@ -827,7 +827,7 @@ mw.ClipEdit.prototype = {
 						'display': 'inline'
 					})
 					.addClass( 'mw_reset_crop' )
-					.text( gM( 'mwe-reset_crop' ) )
+					.text( gM( 'mwe-clipedit-reset_crop' ) )
 					.hide(),
 					
 					$j( '<hr />' )
@@ -849,7 +849,7 @@ mw.ClipEdit.prototype = {
 				$j( '.mw_reset_crop' ).click( function() {
 					$j( '.mw_apply_crop,.mw_reset_crop' ).hide();
 					$j( '.mw_crop_msg' ).show();
-					$j( '#mw_crop_button' ).removeClass( 'mw_crop_button_selected' ).addClass( 'mw_crop_button_base' ).attr( 'title', gM( 'mwe-crop' ) );
+					$j( '#mw_crop_button' ).removeClass( 'mw_crop_button_selected' ).addClass( 'mw_crop_button_base' ).attr( 'title', gM( 'mwe-clipedit-crop' ) );
 					_this.resource.crop = null;
 					$j( '#' + _this.target_clip_display ).empty().html(
 						$j('<img />')
@@ -879,7 +879,7 @@ mw.ClipEdit.prototype = {
 		if ( _this.enabled_tools == 'all' || _this.enabled_tools.length > 0 ) {
 			$tool_target.html( 
 				$j( '<h3 />' )
-				.text( gM( 'mwe-edit-tools' ) ) 
+				.text( gM( 'mwe-clipedit-edit-tools' ) ) 
 			);
 			for ( var i in _this.toolset ) {
 				var toolid = _this.toolset[i];
@@ -907,7 +907,7 @@ mw.ClipEdit.prototype = {
 		$j( '#mw_crop_button' )
 			.removeClass( 'mw_crop_button_selected' )
 			.addClass( 'mw_crop_button_base' )
-			.attr( 'title', gM( 'mwe-crop' ) );	
+			.attr( 'title', gM( 'mwe-clipedit-crop' ) );	
 				
 		if ( _this.resource.crop ) {
 			// Empty out and display cropped:
@@ -981,7 +981,7 @@ mw.ClipEdit.prototype = {
 		var _this = this;
 		$j( '.mw_crop_msg_load' ).hide();
 		$j( '.mw_reset_crop,.mw_apply_crop' ).show();
-		$j( '#mw_crop_button' ).removeClass( 'mw_crop_button_base' ).addClass( 'mw_crop_button_selected' ).attr( 'title', gM( 'mwe-crop_done' ) );
+		$j( '#mw_crop_button' ).removeClass( 'mw_crop_button_base' ).addClass( 'mw_crop_button_selected' ).attr( 'title', gM( 'mwe-clipedit-crop_done' ) );
 		$j( '#' + _this.target_clip_display + ' img' ).Jcrop( {
 			 onSelect: function( c ) {
 				 mw.log( 'on select:' + c.x + ',' + c.y + ',' + c.x2 + ',' + c.y2 + ',' + c.w + ',' + c.h );
