@@ -22,7 +22,8 @@ $wgExtensionMessagesFiles[ 'JS2Support' ] = $js2Dir . 'JS2Support.i18n.php';
  */
 $wgExtensionFunctions[] = 'wfSetupJS2';
 function wfSetupJS2(){
-	global $wgOut, $js2Dir, $wgAutoloadClasses, $wgScriptLoaderNamedPaths;
+	global $wgOut, $js2Dir, $wgAutoloadClasses, $wgScriptLoaderNamedPaths,
+	$wgExtensionJavascriptLoader, $wgEnableTestJavascriptModules;
 
 	// Remap output page as part of the extension setup
 	$wgOut = new StubObject( 'wgOut', 'ScriptLoaderOutputPage' );
@@ -30,6 +31,12 @@ function wfSetupJS2(){
 
 	// Include all the mediaWiki autoload classes:
 	require( $js2Dir . 'JS2AutoLoader.php');
+
+	// Add the core test module loaders (extensions can add their own test modules referencing this global )
+	if( $wgEnableTestJavascriptModules ) {
+		$wgExtensionJavascriptLoader[] = 'extensions/JS2Support/tests/loader.js';
+	}
+
 
 	// Update all the javascript modules classNames and localization by reading respective loader.js files
 	// @dependent on all extensions defining $wgExtensionJavascriptLoader paths in config file ( not in setup )
@@ -84,6 +91,15 @@ $wgScriptLoaderNamedPaths = array();
  *
  */
 $wgEnableScriptLoader = false;
+
+
+/**
+ * wgEnableTestJavascriptModules if the test modules should be loaded and enabled
+ * In production environments its recommend to disabled wgEnableTestJavascriptModules
+ * since some tests can be very resource intensive.
+ */
+
+$wgEnableTestJavascriptModules = false;
 
 /**
  * $wgScriptModifiedCheck should run a file modified check on javascript files when

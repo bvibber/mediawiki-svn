@@ -140,9 +140,7 @@ mw.addClassFilePaths( {
 	
 	"mw.style.jqueryUiRedmond" : "libraries/jquery/jquery.ui/themes/redmond/jquery-ui-1.7.1.custom.css",
 	"mw.style.jqueryUiSmoothness"	: "libraries/jquery/jquery.ui/themes/smoothness/jquery-ui-1.7.1.custom.css",
-	"mw.style.mwCommon"		: "skins/common/common.css",
-	
-	"mw.testLang"			:  "tests/testLang.js",		
+	"mw.style.mwCommon"		: "skins/common/common.css",		
 
 	"$j.cookie"				: "libraries/jquery/plugins/jquery.cookie.js",
 	"$j.contextMenu"		: "libraries/jquery/plugins/jquery.contextMenu.js",
