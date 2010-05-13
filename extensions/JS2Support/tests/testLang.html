@@ -74,7 +74,7 @@ mw.ready( function(){
 			if( transformLangKey != 'en' ){
 				mw.log( langKey + " load msg transform" );
 				var langName = 'Language' +	transformLangKey.substr(0,1).toUpperCase() + transformLangKey.substr( 1, transformLangKey.length ); 
-				$j.getScript( '../languages/classes/' + langName + '.js' , function(){
+				$j.getScript( '../mwEmbed/languages/classes/' + langName + '.js' , function(){
 					doLangTest();
 				});			
 			} else { 
