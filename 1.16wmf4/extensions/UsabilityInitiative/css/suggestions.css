@@ -23,15 +23,6 @@
 	padding: 0.25em 0.25em;
 	line-height: 1.25em;
 }
-.suggestions-special:hover {
-	background-color: #4C59A6;
-	background-color: Highlight;
-}
-.suggestions-special:hover .special-label,
-.suggestions-special:hover .special-query {
-	color: white;
-	color: HighlightText;
-}
 .suggestions-results {
 	background-color: white;
 	background-color: Window;
@@ -55,6 +46,22 @@
 .suggestions-result-current {
 	background-color: #4C59A6;
 	background-color: Highlight;
+	color: white;
+	color: HighlightText;
+}
+.suggestions-special .special-label {
+	font-size: 0.8em;
+	color: gray;
+}
+.suggestions-special .special-query {
+	color: black;
+	font-style: italic;
+}
+.suggestions-special .special-hover {
+	background-color: silver;
+}
+.suggestions-result-current .special-label,
+.suggestions-result-current .special-query {
 	color: white;
 	color: HighlightText;
 }

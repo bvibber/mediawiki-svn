@@ -55,8 +55,8 @@ $messages['af'] = array(
 $messages['ar'] = array(
 	'wikieditor-preview-preference' => 'مكّن المعاينة جنبًا لجنب',
 	'wikieditor-preview-tab' => 'عاين',
-	'wikieditor-preview-changes-tab' => 'تغييرات',
-	'wikieditor-preview-loading' => 'يحمّل...',
+	'wikieditor-preview-changes-tab' => 'التغييرات',
+	'wikieditor-preview-loading' => 'يُحمّل...',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
@@ -123,11 +123,13 @@ $messages['bs'] = array(
 );
 
 /** Catalan (Català)
+ * @author Paucabot
  * @author Solde
  */
 $messages['ca'] = array(
 	'wikieditor-preview-tab' => 'Previsualització',
 	'wikieditor-preview-changes-tab' => 'Canvis',
+	'wikieditor-preview-loading' => 'Carregant ...',
 );
 
 /** Czech (Česky)
@@ -138,6 +140,13 @@ $messages['cs'] = array(
 	'wikieditor-preview-tab' => 'Náhled',
 	'wikieditor-preview-changes-tab' => 'Změny',
 	'wikieditor-preview-loading' => 'Načítá se…',
+);
+
+/** Kashubian (Kaszëbsczi)
+ * @author Kuvaly
+ */
+$messages['csb'] = array(
+	'wikieditor-preview-loading' => 'Ladowanié...',
 );
 
 /** Welsh (Cymraeg)
@@ -204,6 +213,7 @@ $messages['el'] = array(
 
 /** Esperanto (Esperanto)
  * @author Lucas
+ * @author Marcos
  * @author Yekrats
  * @author Ziko
  */
@@ -211,7 +221,7 @@ $messages['eo'] = array(
 	'wikieditor-preview-preference' => 'Enŝaltu antaŭvidon apud la redaktofenestro',
 	'wikieditor-preview-tab' => 'Antaŭvido',
 	'wikieditor-preview-changes-tab' => 'Ŝanĝoj',
-	'wikieditor-preview-loading' => 'Ŝarĝante...',
+	'wikieditor-preview-loading' => 'Ŝargante...',
 );
 
 /** Spanish (Español)
@@ -255,7 +265,7 @@ $messages['fi'] = array(
 	'wikieditor-preview-preference' => 'Ota käyttöön vierekkäinen esikatselu',
 	'wikieditor-preview-tab' => 'Esikatselu',
 	'wikieditor-preview-changes-tab' => 'Muutokset',
-	'wikieditor-preview-loading' => 'Ladataan...',
+	'wikieditor-preview-loading' => 'Ladataan…',
 );
 
 /** French (Français)
@@ -394,8 +404,10 @@ $messages['ja'] = array(
 
 /** Georgian (ქართული)
  * @author BRUTE
+ * @author გიორგიმელა
  */
 $messages['ka'] = array(
+	'wikieditor-preview-preference' => 'ჩართეთ გვერდითი გადახედვა',
 	'wikieditor-preview-tab' => 'წინასწარ',
 	'wikieditor-preview-changes-tab' => 'ცვლილებები',
 	'wikieditor-preview-loading' => 'იტვირთება...',
@@ -409,13 +421,17 @@ $messages['kn'] = array(
 );
 
 /** Korean (한국어)
+ * @author Devunt
  * @author Kwj2772
  */
 $messages['ko'] = array(
+	'wikieditor-preview-preference' => '미리 보기 비교 활성화',
+	'wikieditor-preview-tab' => '미리 보기',
+	'wikieditor-preview-changes-tab' => '차이',
 	'wikieditor-preview-loading' => '불러오는 중...',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -444,6 +460,17 @@ $messages['lb'] = array(
 	'wikieditor-preview-loading' => 'Lueden...',
 );
 
+/** Latvian (Latviešu)
+ * @author Marozols
+ * @author Papuass
+ */
+$messages['lv'] = array(
+	'wikieditor-preview-preference' => "Ieslēgt ''side-by-side'' priekšskatu",
+	'wikieditor-preview-tab' => 'Pirmskats',
+	'wikieditor-preview-changes-tab' => 'Izmaiņas',
+	'wikieditor-preview-loading' => 'Ielādē…',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
@@ -462,6 +489,16 @@ $messages['ml'] = array(
 	'wikieditor-preview-tab' => 'എങ്ങനെയുണ്ടെന്നു കാണുക',
 	'wikieditor-preview-changes-tab' => 'മാറ്റങ്ങൾ',
 	'wikieditor-preview-loading' => 'ശേഖരിക്കുന്നു...',
+);
+
+/** Maltese (Malti)
+ * @author Chrisportelli
+ */
+$messages['mt'] = array(
+	'wikieditor-preview-preference' => 'Ippermetti dehra proviżorja fil-ġenb',
+	'wikieditor-preview-tab' => 'Dehra proviżorja',
+	'wikieditor-preview-changes-tab' => 'Tibdil',
+	'wikieditor-preview-loading' => "Tiela'...",
 );
 
 /** Dutch (Nederlands)
@@ -554,12 +591,13 @@ $messages['pt'] = array(
 );
 
 /** Brazilian Portuguese (Português do Brasil)
+ * @author 555
  * @author Hamilton Abreu
  * @author Heldergeovane
  * @author Luckas Blade
  */
 $messages['pt-br'] = array(
-	'wikieditor-preview-preference' => 'Habilitar a previsão lado a lado',
+	'wikieditor-preview-preference' => 'Habilitar a previsão lado-a-lado',
 	'wikieditor-preview-tab' => 'Previsão',
 	'wikieditor-preview-changes-tab' => 'Alterações',
 	'wikieditor-preview-loading' => 'Carregando...',

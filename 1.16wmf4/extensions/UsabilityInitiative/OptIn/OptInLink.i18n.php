@@ -121,7 +121,7 @@ $messages['bn'] = array(
 	'tooltip-pt-optin-try' => 'নতুন বৈশিষ্ট্যগুলো ব্যবহার করুন',
 	'optin-leave' => 'বেটা ছেড়ে যাও',
 	'tooltip-pt-optin-leave' => 'নতুন বৈশিষ্ট্যগুলো বন্ধ করো',
-	'optin-feedback' => 'বেটা ফিডব্যাক',
+	'optin-feedback' => 'বেটা প্রতিক্রিয়া',
 	'tooltip-pt-optin-feedback' => 'নতুন বৈশিষ্ট্যগুলোতে আপনার অভিজ্ঞতার কথা ফিডব্যাকে পাঠান',
 );
 
@@ -130,11 +130,11 @@ $messages['bn'] = array(
  */
 $messages['br'] = array(
 	'optin-try' => 'Amprouiñ Beta',
-	'tooltip-pt-optin-try' => 'Esaeañ elfennoù nevez',
+	'tooltip-pt-optin-try' => 'Amprouiñ ar perzhioù nevez',
 	'optin-leave' => 'Dilezel Beta',
-	'tooltip-pt-optin-leave' => 'Diweredekaat an elfennoù nevez',
+	'tooltip-pt-optin-leave' => 'Diweredekaat ar perzhioù nevez',
 	'optin-feedback' => 'Roit ho soñj',
-	'tooltip-pt-optin-feedback' => 'Rannit ho soñj ganeomp diwar-benn an elfennoù nevez',
+	'tooltip-pt-optin-feedback' => 'Rannit ho soñj ganeomp diwar-benn ar perzhioù nevez',
 );
 
 /** Bosnian (Bosanski)
@@ -586,7 +586,7 @@ $messages['ko'] = array(
 	'tooltip-pt-optin-feedback' => '새로운 기능에 대한 당신의 의견을 남겨주세요',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Melancholie
  * @author Purodha
  */
@@ -670,9 +670,9 @@ $messages['mk'] = array(
  */
 $messages['ml'] = array(
 	'optin-try' => 'ബീറ്റ പരീക്ഷിക്കുക',
-	'tooltip-pt-optin-try' => 'പുതിയ സവിശേഷതകള്‍ പരിശോധിക്കുക',
+	'tooltip-pt-optin-try' => 'പുതിയ സവിശേഷതകൾ പരിശോധിക്കുക',
 	'optin-leave' => 'ബീറ്റ വിടുക',
-	'tooltip-pt-optin-leave' => 'പുതിയ സവിശേഷതകള്‍ വേണ്ട',
+	'tooltip-pt-optin-leave' => 'പുതിയ സവിശേഷതകൾ വേണ്ട',
 	'optin-feedback' => 'ബീറ്റയുടെ ഉപയോഗാനുഭവമറിയിക്കുക',
 	'tooltip-pt-optin-feedback' => 'പുതിയ സവിശേഷതകളുമായുള്ള താങ്കളുടെ അനുഭവം പങ്കു വെയ്ക്കുക',
 );
@@ -696,8 +696,11 @@ $messages['ms'] = array(
  */
 $messages['mt'] = array(
 	'optin-try' => 'Ipprova l-Beta',
+	'tooltip-pt-optin-try' => 'Ipprova l-funzjonijiet l-ġodda',
 	'optin-leave' => 'Ħalli l-Beta',
+	'tooltip-pt-optin-leave' => 'Itfi l-funzjonijiet il-ġodda',
 	'optin-feedback' => 'Rispons tal-Beta',
+	'tooltip-pt-optin-feedback' => 'Ibgħat rispons fuq l-esperjenza tiegħek bil-funzjonijiet il-ġodda',
 );
 
 /** Nedersaksisch (Nedersaksisch)
@@ -1051,6 +1054,13 @@ $messages['tt-cyrl'] = array(
 	'optin-try' => 'Бета-версияне эшләтеп карау',
 );
 
+/** Udmurt (Удмурт)
+ * @author Kaganer
+ */
+$messages['udm'] = array(
+	'optin-try' => 'Бета-версиен ужаны',
+);
+
 /** Ukrainian (Українська)
  * @author A1
  * @author AS
@@ -1131,7 +1141,7 @@ $messages['yi'] = array(
 	'tooltip-pt-optin-feedback' => 'געבן פֿידבעק וועגן אײַער דערפֿאַרונג מיט די נײַע אייגנקייטן',
 );
 
-/** Yue (粵語)
+/** Cantonese (粵語)
  * @author Shinjiman
  */
 $messages['yue'] = array(

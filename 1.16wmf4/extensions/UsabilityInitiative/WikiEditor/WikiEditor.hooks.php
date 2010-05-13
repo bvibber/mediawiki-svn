@@ -16,14 +16,16 @@ class WikiEditorHooks {
 			array( 'src' => 'Modules/Preview/Preview.js', 'version' => 6 ),
 			array( 'src' => 'Modules/Publish/Publish.js', 'version' => 6 ),
 			array( 'src' => 'Modules/Toc/Toc.js', 'version' => 7 ),
-			array( 'src' => 'Modules/Toolbar/Toolbar.js', 'version' => 83 ),
+			array( 'src' => 'Modules/Toolbar/Toolbar.js', 'version' => 88 ),
 			array( 'src' => 'Modules/TemplateEditor/TemplateEditor.js', 'version' => 6 ),
+			array( 'src' => 'Modules/Templates/Templates.js', 'version' => 1 ),
+			array( 'src' => 'Modules/AddMediaWizard/AddMediaWizard.js', 'version' => 6 ),
 		),
 		'combined' => array(
-			array( 'src' => 'WikiEditor.combined.js', 'version' => 87 ),
+			array( 'src' => 'WikiEditor.combined.js', 'version' => 93 ),
 		),
 		'minified' => array(
-			array( 'src' => 'WikiEditor.combined.min.js', 'version' => 87 ),
+			array( 'src' => 'WikiEditor.combined.min.js', 'version' => 93 ),
 		),
 	);
 	static $messages = array(
@@ -66,6 +68,32 @@ class WikiEditorHooks {
 				'wikieditor-template-editor-dialog-submit',
 				'wikieditor-template-editor-dialog-cancel',
 			),
+		),
+		'templates' => array(
+			'i18n' => 'WikiEditorTemplates',
+			'preferences' => array(
+				'enable' => array(
+					'key' => 'wikieditor-templates',
+					'ui' => array(
+						'type' => 'toggle',
+						'label-message' => 'wikieditor-templates-preference',
+						'section' => 'editing/labs',
+					),
+				),
+			),
+		),
+		'addMediaWizard' => array(
+			'i18n' => 'addMediaWizard',
+			'preferences' => array(
+				'enable' => array(
+				 	'key' => 'addmediawizard-gadget',
+					'ui' => array(
+						'type' => 'toggle',
+						'label-message' => 'wikieditor-addMediaWizard-preference',
+						'section' => 'editing/labs',
+					),
+				),
+			)
 		),
 		'preview' => array(
 			'i18n' => 'WikiEditorPreview',
@@ -130,7 +158,7 @@ class WikiEditorHooks {
 				'wikieditor-toc-show',
 				'wikieditor-toc-hide',
 			),
-		),
+		),		
 		'toolbar' => array(
 			'i18n' => 'WikiEditorToolbar',
 			'preferences' => array(
@@ -443,7 +471,6 @@ class WikiEditorHooks {
 					if ( $key == 'enable' && !$enable['user'] ) {
 						continue;
 					}
-					
 					// The preference with the key 'enable' determines if the rest are even relevant, so in the future
 					// setting up some dependencies on that might make sense
 					$defaultPreferences[$preference['key']] = $preference['ui'];

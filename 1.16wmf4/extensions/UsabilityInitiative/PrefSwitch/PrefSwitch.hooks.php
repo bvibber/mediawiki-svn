@@ -12,7 +12,7 @@ class PrefSwitchHooks {
 	
 	public static function schema() {
 		global $wgExtNewTables;
-		$wgExtNewTables[] = array( 'prefswitch', dirname( __FILE__ ) . '/PrefSwitch.sql' );
+		$wgExtNewTables[] = array( 'prefswitch_survey', dirname( __FILE__ ) . '/PrefSwitch.sql' );
 		return true;
 	}
 	public static function personalUrls( &$personal_urls, &$title ) {
@@ -31,17 +31,33 @@ class PrefSwitchHooks {
 		} else {
 			$query = array(	'from' => $title->getPrefixedDBKey(), 'fromquery' => wfArrayToCGI( $fromquery ) );
 		}
-		// Inserts a link into personal tools
+		$state = SpecialPrefSwitch::userState( $wgUser );
+		if ( $state == 'on' ) {
+			// Inserts a link into personal tools - this just gets people to the generic new features page
+			$personal_urls = array_merge(
+				array(
+					"prefswitch-link-anon" => array(
+						'text' => wfMsg( 'prefswitch-link-anon' ),
+						'href' => SpecialPage::getTitleFor( 'PrefSwitch' )->getFullURL( $query ),
+						'class' => 'no-text-transform',
+					),
+				),
+				$personal_urls
+			);
+			// Make the next link go to the opt-out page
+			$query['mode'] = 'off';
+		}
+		// Inserts a link into personal tools - Uses prefswitch-link-anon, prefswitch-link-on and prefswitch-link-off
 		$personal_urls = array_merge(
 			array(
-				'prefswitch-link' => array(
-					'text' => wfMsg( 'prefswitch-link' ),
+				"prefswitch-link-{$state}" => array(
+					'text' => wfMsg( 'prefswitch-link-' . $state ),
 					'href' => SpecialPage::getTitleFor( 'PrefSwitch' )->getFullURL( $query ),
 					'class' => 'no-text-transform',
 				),
 			),
 			$personal_urls
-		); 
+		);
 		return true;
 	}
 }

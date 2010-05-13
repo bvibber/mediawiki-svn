@@ -43,7 +43,8 @@ WIKIEDITOR_MODULES := \
 	WikiEditor/Modules/Publish/Publish.js\
 	WikiEditor/Modules/Toc/Toc.js\
 	WikiEditor/Modules/Toolbar/Toolbar.js\
-	WikiEditor/Modules/TemplateEditor/TemplateEditor.js
+	WikiEditor/Modules/TemplateEditor/TemplateEditor.js\
+	WikiEditor/Modules/AddMediaWizard/AddMediaWizard.js
 
 VECTOR_MODULES := \
 	Vector/Modules/CollapsibleNav/CollapsibleNav.js\

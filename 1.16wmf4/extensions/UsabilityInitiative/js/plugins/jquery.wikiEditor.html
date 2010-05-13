@@ -37,19 +37,38 @@
 			margin: 0;
 			padding: 0;
 		}
-		/* Wikitext that's folded away and shouldn't be displayed */
+		/* General WikiEditor stuff */
 		.wikiEditor-nodisplay {
 			display: none !important;
 		}
 		.wikiEditor-tab {
 			padding-left: 4em;
 		}
-		/* A collapsed template */
-		.wikiEditor-template {
+		/* WikiEditor Templates */
+		.wikiEditor-templates .wikiEditor-template {
+			color: silver;
+		}
+		/* WikiEditor TemplateEditor */
+		.wikiEditor-templateEditor .wikiEditor-template-text-shrunken{
+			height: 1px !important;
+			width: 1px !important;
+			overflow: hidden;
+			float: right;
+		}
+		.wikiEditor-templateEditor .wikiEditor-template-text-visible{
+			padding: 0.5em 4px;
+			padding-top: 1.25em;
+			margin-top: -0.95em;
+			background: #F3F3F3 url(../../images/wikiEditor/templateEditor/text-base.png) repeat-x scroll center top;
+			display: block;
+			width: 100%;
+			border-bottom: solid 1px #cccccc;
+		}
+		.wikiEditor-templateEditor .wikiEditor-template {
 			display: inline-block;
 			font-size: 12px;
 		}
-		.wikiEditor-template-name {
+		.wikiEditor-templateEditor .wikiEditor-template-name {
 			cursor: pointer;
 			vertical-align: -2px;
 			display: inline-block;
@@ -58,15 +77,13 @@
 			margin-right: 2px;
 			overflow: hidden;
 			background: url( '../../images/wikiEditor/templateEditor/name-base.png' ) 0 0 repeat-x #e8e8e8;
-			/* color: #0645ad; */
-			/* font-family: sans-serif; */
 			color: #000000;
 			font-family: monospace;
 			text-decoration: none;
 			padding-left: 0.33em;
 			line-height: 16px;
 		}
-		.wikiEditor-template-expand {
+		.wikiEditor-templateEditor .wikiEditor-template-expand {
 			cursor: pointer;
 			vertical-align: -2px;
 			display: inline-block;
@@ -76,57 +93,41 @@
 			line-height: 16px;
 			overflow: hidden;
 			width: 13px;
-			background-position: 50%; /*FF3*/
+			background-position: 50%;
 		}
-		.wikiEditor-template-dialog {
+		.wikiEditor-templateEditor .wikiEditor-template-dialog {
 			cursor: pointer;
-			vertical-align: -18%; /* This arbitrary value because straight up px evaluate differently between win and mac FF apparently */
+			vertical-align: -18%;
 			display: inline-block;
 			height: 16px;
 			overflow: hidden;
 			width: 22px;
-			background-position: 50%; /*FF3*/
+			background-position: 50%;
 		}
-		.wikiEditor-template-name:hover {
+		.wikiEditor-templateEditor .wikiEditor-template-name:hover {
 			/* text-decoration: underline; */
 		}
-		.wikiEditor-template-expanded .wikiEditor-template-expand {
+		.wikiEditor-templateEditor .wikiEditor-template-expanded .wikiEditor-template-expand {
 			background-image: url(../../images/wikiEditor/templateEditor/collapse.png);
 		}
-		.wikiEditor-template-expanded .wikiEditor-template-dialog {
+		.wikiEditor-templateEditor .wikiEditor-template-expanded .wikiEditor-template-dialog {
 			background-image: url(../../images/wikiEditor/templateEditor/dialog-expanded.png);
 		}
-		.wikiEditor-template-collapsed .wikiEditor-template-expand {
+		.wikiEditor-templateEditor .wikiEditor-template-collapsed .wikiEditor-template-expand {
 			background-image: url(../../images/wikiEditor/templateEditor/expand.png);
 		}
-		.wikiEditor-template-collapsed .wikiEditor-template-dialog {
+		.wikiEditor-templateEditor .wikiEditor-template-collapsed .wikiEditor-template-dialog {
 			background-image: url(../../images/wikiEditor/templateEditor/dialog-collapsed.png);
 		}
-		/* An expanded template */
-		.wikiEditor-template-expanded {
+		.wikiEditor-templateEditor .wikiEditor-template-expanded {
 			display: block;
 		}
-		.wikiEditor-template .wikiEditor-template-text {
-			display: block;
-			width: 100%;
-			background: #f3f3f3;
-			border-bottom: solid 1px #cccccc;
-			padding: 0.5em 4px;
-			padding-top: 1.25em;
-			margin-top: -0.9em;
-			background-image: url(../../images/wikiEditor/templateEditor/text-base.png);
-			background-position: top;
-			background-repeat: repeat-x;
+		.wikiEditor-templateEditor .wikiEditor-template .wikiEditor-template-text {
+			
 		}
-		.wikiEditor-template-end, .wikiEditor-template-start {
+		.wikiEditor-templateEditor .wikiEditor-template-end, .wikiEditor-template-start {
 			color: blue;
 			cursor: pointer;
-		}
-		/* == Header == */
-		.wikiEditor-toc-header {
-			/* Fix for Webkit Browsers resistence to give these elements an offsetTop value */
-			/*display: -webkit-box; -- presumably not needed now that this is a <p> without display: inline; */
-			/*font-weight: bold; -- not sure about this styling just yet */
 		}
 	</style>
 </head>

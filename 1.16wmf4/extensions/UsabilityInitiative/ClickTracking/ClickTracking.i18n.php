@@ -201,6 +201,7 @@ $messages['bg'] = array(
  */
 $messages['bn'] = array(
 	'clicktracking' => 'ইউজাবিলিটি ইনিসিয়াটিভ ক্লিক ট্র্যাকিং',
+	'ct-title' => 'সমষ্টিগত ব্যবহারকারীর ক্লিক',
 	'ct-event-name' => 'ইভেন্টের নাম',
 	'ct-expert-header' => '"দক্ষ" ক্লিক',
 	'ct-intermediate-header' => '"মাধ্যমিক" ক্লিক',
@@ -228,25 +229,25 @@ $messages['bn'] = array(
  */
 $messages['br'] = array(
 	'clicktracking' => 'Heuliañ klikoù an intrudu implijadusted',
-	'clicktracking-desc' => "Heuliañ klikoù, talvezout a ra da heuliañ an darvoudoù na vez ket adkarget ur bajenn d'ho heul",
+	'clicktracking-desc' => "Heuliañ klikoù a dalvez da heuliañ an darvoudoù n'int ket pennkaoz d'ur bajenn da vezañ adkarget",
 	'ct-title' => "Sammad ar c'hlikoù implijerien",
 	'ct-event-name' => 'Anv an darvoud',
-	'ct-expert-header' => 'Klikoù "arbenigourien"',
+	'ct-expert-header' => 'Klikoù "arbennigourien"',
 	'ct-intermediate-header' => 'Klikoù "implijerien etre"',
 	'ct-beginner-header' => 'Klikoù "deraouad"',
 	'ct-total-header' => "Hollad ar c'hlikoù",
 	'ct-start-date' => 'Deiziad kregiñ (AAAAMMJJ)',
 	'ct-end-date' => 'Deiziad echuiñ (AAAAMMJJ)',
-	'ct-increment-by' => 'Niver a zevezioù a dalvez pep poent roadenn.',
+	'ct-increment-by' => 'Niver a zevezhioù aroueziet gant pep poent roadenn.',
 	'ct-change-graph' => 'Cheñch grafik',
 	'ct-beginner' => 'Deraouad',
 	'ct-intermediate' => 'Etre',
 	'ct-expert' => 'Mailh',
-	'ct-date-range' => 'Emled an deiziad',
+	'ct-date-range' => 'Prantad deiziadoù',
 	'ct-editing' => "Oc'h aozañ er mare-mañ :",
 	'ct-anon-users' => 'implijerien dizanv',
 	'ct-user-contribs' => 'Sammad hollek degasadennoù an implijer',
-	'ct-user-span' => 'Degasadennoù an implijer war ur badelezh amzer',
+	'ct-user-span' => 'Degasadennoù an implijer e-pad ar frapad amzer',
 	'ct-and' => 'ha(g)',
 	'ct-update-table' => 'Hizivaat an daolenn',
 );
@@ -551,9 +552,13 @@ $messages['et'] = array(
 
 /** Basque (Euskara)
  * @author An13sa
+ * @author Joxemai
  * @author Unai Fdz. de Betoño
  */
 $messages['eu'] = array(
+	'clicktracking' => 'Erabilgarritasun Ekimenerako klik laburpena',
+	'clicktracking-desc' => 'Orriaren berritzea ez dakarten gertakari laburpenen klik laburpena',
+	'ct-title' => 'Gehitutako erabiltzailearen klikak',
 	'ct-event-name' => 'Ekintzaren izena',
 	'ct-expert-header' => '"Aditu" klikak',
 	'ct-intermediate-header' => '"Maila ertaineko" klikak',
@@ -996,13 +1001,24 @@ $messages['kn'] = array(
 $messages['ko'] = array(
 	'clicktracking' => 'Usability Initiative 사용자 클릭 추적기',
 	'clicktracking-desc' => '마우스 클릭 이벤트 중에서 웹 페이지 새로고침과 관계없는 것들을 추적합니다.',
+	'ct-title' => '사용자 클릭 수 집계',
 	'ct-event-name' => '이벤트 이름',
+	'ct-expert-header' => '"전문가" 클릭 수',
+	'ct-intermediate-header' => '"중급 사용자" 클릭 수',
+	'ct-beginner-header' => '"초보자" 클릭 수',
+	'ct-total-header' => '총 클릭 수',
 	'ct-start-date' => '시작 날짜 (YYYYMMDD)',
 	'ct-end-date' => '마지막 날짜 (YYYYMMDD)',
+	'ct-increment-by' => '각 데이터가 나타내는 일수',
+	'ct-change-graph' => '그래프 바꾸기',
 	'ct-beginner' => '초보자',
 	'ct-intermediate' => '중급 사용자',
 	'ct-expert' => '전문가',
 	'ct-date-range' => '날짜 범위',
+	'ct-editing' => '현재 편집 중:',
+	'ct-anon-users' => '익명 사용자',
+	'ct-user-contribs' => '총 사용자 기여',
+	'ct-user-span' => '특정 기간 동안의 사용자 기여',
 	'ct-and' => '그리고',
 	'ct-update-table' => '표 업데이트',
 );
@@ -1015,7 +1031,7 @@ $messages['krc'] = array(
 	'ct-update-table' => 'Таблицаны джангырт',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -1071,7 +1087,14 @@ $messages['lb'] = array(
 	'ct-update-table' => 'Tabell aktualiséieren',
 );
 
-/** Laz (Laz)
+/** Latvian (Latviešu)
+ * @author Papuass
+ */
+$messages['lv'] = array(
+	'ct-and' => 'un',
+);
+
+/** Lazuri (Lazuri)
  * @author Bombola
  */
 $messages['lzz'] = array(
@@ -1156,6 +1179,33 @@ $messages['ms'] = array(
 	'ct-date-range' => 'Julat tarikh',
 	'ct-editing' => 'Sedang menyunting:',
 	'ct-anon-users' => 'Pengguna tanpa nama',
+);
+
+/** Maltese (Malti)
+ * @author Chrisportelli
+ */
+$messages['mt'] = array(
+	'clicktracking' => "Moniteraġġ tal-klikks tal-Inizjattiva ta' Użabilità",
+	'ct-title' => 'Klikks tal-utenti aggregati',
+	'ct-event-name' => 'Isem tal-avveniment',
+	'ct-expert-header' => 'Klikks fuq "Espert"',
+	'ct-intermediate-header' => 'Klikks fuq "Intermedju"',
+	'ct-beginner-header' => 'Klikks fuq "Prinċipjant"',
+	'ct-total-header' => "Total ta' klikks",
+	'ct-start-date' => 'Data tal-bidu (SSSSXXJJ)',
+	'ct-end-date' => 'Data tat-tmiem (SSSSXXJJ)',
+	'ct-increment-by' => "Numru ta' ġranet li kull punt ta' data jirrappreżenta",
+	'ct-change-graph' => 'Biddel il-grafu',
+	'ct-beginner' => 'Prinċipjant',
+	'ct-intermediate' => 'Intermedju',
+	'ct-expert' => 'Espert',
+	'ct-date-range' => "Intervall ta' dati",
+	'ct-editing' => 'Attwalment timmodifika:',
+	'ct-anon-users' => 'Utenti anonimi',
+	'ct-user-contribs' => 'Total tal-kontribuzzjonijiet tal-utent',
+	'ct-user-span' => 'Kontribuzzjonijiet tal-utent fix-xefaq temporanju adottat',
+	'ct-and' => 'u',
+	'ct-update-table' => 'Aġġorna t-tabella',
 );
 
 /** Dutch (Nederlands)
@@ -1320,6 +1370,14 @@ $messages['pms'] = array(
 	'ct-update-table' => 'Modìfica tàula',
 );
 
+/** Western Punjabi (پنجابی)
+ * @author Khalid Mahmood
+ */
+$messages['pnb'] = array(
+	'ct-beginner' => 'مڈلا',
+	'ct-and' => 'تے',
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
@@ -1360,6 +1418,7 @@ $messages['pt'] = array(
 );
 
 /** Brazilian Portuguese (Português do Brasil)
+ * @author 555
  * @author Eduardo.mps
  * @author Everton137
  * @author Hamilton Abreu
@@ -1371,7 +1430,7 @@ $messages['pt-br'] = array(
 	'ct-title' => 'Cliques de usuário agregados',
 	'ct-event-name' => 'Nome do evento',
 	'ct-expert-header' => 'Cliques de "experiente"',
-	'ct-intermediate-header' => 'Cliques de usuário "intermedio"',
+	'ct-intermediate-header' => 'Cliques de usuário "intermediário"',
 	'ct-beginner-header' => 'Cliques de "Iniciante"',
 	'ct-total-header' => 'Cliques totais',
 	'ct-start-date' => 'Data de início (AAAAMMDD)',
@@ -1382,7 +1441,7 @@ $messages['pt-br'] = array(
 	'ct-intermediate' => 'Intermediário',
 	'ct-expert' => 'Experiente',
 	'ct-date-range' => 'Intervalo de datas',
-	'ct-editing' => 'Editando atualmente:',
+	'ct-editing' => 'Atualmente editando:',
 	'ct-anon-users' => 'Usuários anônimos',
 	'ct-user-contribs' => 'Total de contribuições dos usuários',
 	'ct-user-span' => 'Contribuições dos usuários no período de tempo',
@@ -1600,6 +1659,7 @@ $messages['te'] = array(
 	'ct-total-header' => 'మొత్తం నొక్కులు',
 	'ct-start-date' => 'ప్రారంభ తేదీ (YYYYMMDD)',
 	'ct-end-date' => 'ముగింపు తేదీ (YYYYMMDD)',
+	'ct-increment-by' => 'ప్రతీ దత్తాంశ బిందువు ప్రతిబింబించే రోజుల సంఖ్య',
 	'ct-change-graph' => 'గ్రాఫుని మార్చు',
 	'ct-beginner' => 'ప్రారంభీకులు',
 	'ct-expert' => 'నిపుణులు',
@@ -1777,7 +1837,7 @@ $messages['yi'] = array(
 	'ct-and' => 'און',
 );
 
-/** Yue (粵語)
+/** Cantonese (粵語)
  * @author Shinjiman
  */
 $messages['yue'] = array(

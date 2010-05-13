@@ -64,6 +64,13 @@ $messages['bs'] = array(
 	'wikieditor-highlight-preference' => 'Omogući označavanje sintakse pri uređivanju',
 );
 
+/** Catalan (Català)
+ * @author Paucabot
+ */
+$messages['ca'] = array(
+	'wikieditor-highlight-preference' => "Activa el ressaltat de sintaxi durant l'edició",
+);
+
 /** Czech (Česky)
  * @author Mormegil
  */
@@ -115,10 +122,11 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author Platonides
  * @author Translationista
  */
 $messages['es'] = array(
-	'wikieditor-highlight-preference' => 'Habilitar resalte de sintaxis al editar',
+	'wikieditor-highlight-preference' => 'Habilitar resaltado de sintaxis al editar',
 );
 
 /** Estonian (Eesti)
@@ -212,7 +220,21 @@ $messages['ja'] = array(
 	'wikieditor-highlight-preference' => '編集時の構文ハイライトを有効化する',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Georgian (ქართული)
+ * @author გიორგიმელა
+ */
+$messages['ka'] = array(
+	'wikieditor-highlight-preference' => 'ჩართეთ სინტაქსის გაფერადება რედაქტირებისას',
+);
+
+/** Korean (한국어)
+ * @author Devunt
+ */
+$messages['ko'] = array(
+	'wikieditor-highlight-preference' => '편집할때, 구문 강조를 활성화함',
+);
+
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -245,6 +267,13 @@ $messages['mk'] = array(
  */
 $messages['ml'] = array(
 	'wikieditor-highlight-preference' => 'തിരുത്തുമ്പോൾ വിന്യാസങ്ങൾ പ്രമുഖമാക്കിക്കാട്ടൽ സജ്ജമാക്കുക',
+);
+
+/** Maltese (Malti)
+ * @author Chrisportelli
+ */
+$messages['mt'] = array(
+	'wikieditor-highlight-preference' => 'Attiva l-kontroll ortografiku matul il-modifika',
 );
 
 /** Dutch (Nederlands)

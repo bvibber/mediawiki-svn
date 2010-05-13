@@ -1,7 +1,7 @@
 /* TemplateEditor module for wikiEditor */
 ( function( $ ) { $.wikiEditor.modules.templateEditor = {
 /**
- * Name mappings, dirty hack which will be reomved once "TemplateInfo" extension is more fully supported
+ * Name mappings, dirty hack which will be removed once "TemplateInfo" extension is more fully supported
  */
 'nameMappings': { //keep these all lowercase to navigate web of redirects
    "infobox skyscraper": "building_name",
@@ -15,7 +15,7 @@
 'browsers': {
 	// Left-to-right languages
 	'ltr': {
-		'msie': false,
+		'msie': [['>=', 8]],
 		'firefox': [['>=', 3]],
 		'opera': [['>=', 10]],
 		'safari': [['>=', 4]]
@@ -146,9 +146,11 @@ evt: {
 			switch ( event.which ) {
 				case 13: // Enter
 					$evtElem.click();
+					event.preventDefault();
 					return false;
 				case 32: // Space
 					$evtElem.parent().siblings( '.wikiEditor-template-expand' ).click();
+					event.preventDefault();
 					return false;
 				case 37:// Left
 				case 38:// Up
@@ -159,6 +161,7 @@ evt: {
 					// Set the ignroreKeypress variable so we don't allow typing if the key is held
 					context.$iframe.data( 'ignoreKeypress', true );
 					// Can't type in a template name
+					event.preventDefault();
 					return false;
 			}
 		} else if ( $evtElem.hasClass( 'wikiEditor-template-text' ) ) {
@@ -168,6 +171,7 @@ evt: {
 					context.$iframe.data( 'ignoreKeypress', true );
 					// FIXME: May be a more elegant way to do this, but this works too
 					context.fn.encapsulateSelection( { 'pre': '\n', 'peri': '', 'post': '' } );
+					event.preventDefault();
 					return false;
 				default: return true;
 			}
@@ -219,7 +223,7 @@ fn: {
 		var context = $wrapper.data( 'marker' ).context;
 		var $template = $wrapper
 			.wrap( '<span class="wikiEditor-template"></span>' )
-			.addClass( 'wikiEditor-template-text wikiEditor-nodisplay' )
+			.addClass( 'wikiEditor-template-text wikiEditor-template-text-shrunken' )
 			.parent()
 			.addClass( 'wikiEditor-template-collapsed' )
 			.prepend(
@@ -244,12 +248,27 @@ fn: {
 	 */
 	bindTemplateEvents: function( $wrapper ) {
 		var $template = $wrapper.parent( '.wikiEditor-template' );
+
+		if ( typeof ( opera ) == "undefined" ) {
+			$template.parent().attr('contentEditable', 'false');
+		}
+		
+		$template.click( function(event) {event.preventDefault(); return false;} )
+		
 		$template.find( '.wikiEditor-template-name' )
-			.click( function() { $.wikiEditor.modules.templateEditor.fn.createDialog( $wrapper ); return false; } )
-			.mousedown( function() { return false; } );
+			.click( function( event ) { 
+				$.wikiEditor.modules.templateEditor.fn.createDialog( $wrapper ); 
+				event.stopPropagation(); 
+				return false; 
+				} )
+			.mousedown( function( event ) { event.stopPropagation(); return false; } );
 		$template.find( '.wikiEditor-template-expand' )
-			.click( function() { $.wikiEditor.modules.templateEditor.fn.toggleWikiTextEditor( $wrapper ); return false; } )
-			.mousedown( function() { return false; } );
+			.click( function( event ) { 
+				$.wikiEditor.modules.templateEditor.fn.toggleWikiTextEditor( $wrapper ); 
+				event.stopPropagation();
+				return false; 
+				} )
+			.mousedown( function( event ) { event.stopPropagation(); return false; } );
 	},
 	/**
 	 * Toggle the visisbilty of the wikitext for a given template
@@ -264,8 +283,9 @@ fn: {
 			.toggleClass( 'wikiEditor-template-collapsed' ) ;
 		
 		var $templateText = $template.find( '.wikiEditor-template-text' );		
-		$templateText.toggleClass( 'wikiEditor-nodisplay' );
-		if( $templateText.hasClass('wikiEditor-nodisplay') ){
+		$templateText.toggleClass( 'wikiEditor-template-text-shrunken' );
+		$templateText.toggleClass( 'wikiEditor-template-text-visible' );
+		if( $templateText.hasClass('wikiEditor-template-text-shrunken') ){
 			//we just closed the template
 		
 			// Update the model if we need to

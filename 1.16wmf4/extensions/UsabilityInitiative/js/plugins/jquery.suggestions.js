@@ -90,12 +90,6 @@ $.suggestions = {
 			setTimeout( function() {
 				// Render special
 				$special = context.data.$container.find( '.suggestions-special' );
-				// Only hook this up the first time
-				if ( $special.children().length == 0 ) {
-					$special.mousemove( function() {
-						$.suggestions.highlight( context, $( [] ), false );
-					} );
-				}
 				context.config.special.render.call( $special, context.data.$textbox.val() );
 			}, 1 );
 		}
@@ -177,23 +171,45 @@ $.suggestions = {
 		var selected = context.data.$container.find( '.suggestions-result-current' );
 		if ( !result.get || selected.get( 0 ) != result.get( 0 ) ) {
 			if ( result == 'prev' ) {
-				result = selected.prev();
+				if( selected.is( '.suggestions-special' ) ) {
+					result = context.data.$container.find( '.suggestions-results div:last' )
+				} else {
+					result = selected.prev();
+					if ( selected.length == 0 ) {
+						// we are at the begginning, so lets jump to the last item
+						if ( context.data.$container.find( '.suggestions-special' ).html() != "" ) {
+							result = context.data.$container.find( '.suggestions-special' );
+						} else {
+							result = context.data.$container.find( '.suggestions-results div:last' );
+						}
+					}
+				}
 			} else if ( result == 'next' ) {
-				if ( selected.size() == 0 )
+				if ( selected.length == 0 ) {
 					// No item selected, go to the first one
 					result = context.data.$container.find( '.suggestions-results div:first' );
-				else {
+					if ( result.length == 0 && context.data.$container.find( '.suggestions-special' ).html() != "" ) {
+						// No suggestion exists, go to the special one directly
+						result = context.data.$container.find( '.suggestions-special' );
+					}
+				} else {
 					result = selected.next();
-					if ( result.size() == 0 )
-						// We were at the last item, stay there
-						result = selected;
+					if ( selected.is( '.suggestions-special' ) ) {
+						result = $( [] );
+					} else if (
+						result.length == 0 &&
+						context.data.$container.find( '.suggestions-special' ).html() != ""
+					) {
+						// We were at the last item, jump to the specials!
+						result = context.data.$container.find( '.suggestions-special' );
+					}
 				}
 			}
 			selected.removeClass( 'suggestions-result-current' );
 			result.addClass( 'suggestions-result-current' );
 		}
 		if ( updateTextbox ) {
-			if ( result.size() == 0 ) {
+			if ( result.length == 0 ) {
 				$.suggestions.restore( context );
 			} else {
 				context.data.$textbox.val( result.data( 'text' ) );
@@ -201,6 +217,7 @@ $.suggestions = {
 				// let the world know what happened
 				context.data.$textbox.change();
 			}
+			context.data.$textbox.trigger( 'change' );
 		}
 		$.suggestions.special( context );
 	},
@@ -215,19 +232,17 @@ $.suggestions = {
 			// Arrow down
 			case 40:
 				if ( wasVisible ) {
-					$.suggestions.highlight( context, 'next', true );
+					$.suggestions.highlight( context, 'next', false );
 				} else {
 					$.suggestions.update( context, false );
 				}
-				context.data.$textbox.trigger( 'change' );
 				preventDefault = true;
 				break;
 			// Arrow up
 			case 38:
 				if ( wasVisible ) {
-					$.suggestions.highlight( context, 'prev', true );
+					$.suggestions.highlight( context, 'prev', false );
 				}
-				context.data.$textbox.trigger( 'change' );
 				preventDefault = wasVisible;
 				break;
 			// Escape
@@ -242,11 +257,18 @@ $.suggestions = {
 			case 13:
 				context.data.$container.hide();
 				preventDefault = wasVisible;
-				if ( typeof context.config.result.select == 'function' ) {
-					context.config.result.select.call(
-						context.data.$container.find( '.suggestions-result-current' ),
-						context.data.$textbox
-					);
+				selected = context.data.$container.find( '.suggestions-result-current' );
+				if ( selected.is( '.suggestions-special' ) ) {
+					if ( typeof context.config.special.select == 'function' ) {
+						context.config.special.select.call( selected, context.data.$textbox );
+					}
+				} else {
+					if ( typeof context.config.result.select == 'function' ) {
+						$.suggestions.highlight( context, selected, true );
+						context.config.result.select.call( selected, context.data.$textbox );
+					} else {
+						$.suggestions.highlight( context, selected, true );
+					}
 				}
 				break;
 			default:
@@ -320,9 +342,6 @@ $.fn.suggestions = function() {
 				'mouseDownOn': $( [] ),
 				'$textbox': $(this)
 			};
-			context.data.$textbox.mousemove( function() {
-				$.suggestions.highlight( context, $( [] ), false );
-			} );
 			context.data.$container = $( '<div />' )
 				.css( {
 					'top': Math.round( context.data.$textbox.offset().top + context.data.$textbox.outerHeight() ),
@@ -373,6 +392,11 @@ $.fn.suggestions = function() {
 							}
 							context.data.$textbox.focus();
 						} )
+						.mouseover( function( e ) {
+							$.suggestions.highlight(
+								context, $( e.target ).closest( '.suggestions-special' ), false
+							);
+						} )
 				)
 				.appendTo( $( 'body' ) );
 			$(this)
@@ -413,7 +437,7 @@ $.fn.suggestions = function() {
 				.blur( function() {
 					// When losing focus because of a mousedown
 					// on a suggestion, don't hide the suggestions
-					if ( context.data.mouseDownOn.size() > 0 ) {
+					if ( context.data.mouseDownOn.length > 0 ) {
 						return;
 					}
 					context.data.$container.hide();

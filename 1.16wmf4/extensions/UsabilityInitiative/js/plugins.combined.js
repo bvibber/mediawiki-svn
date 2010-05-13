@@ -5841,12 +5841,6 @@ $.suggestions = {
 			setTimeout( function() {
 				// Render special
 				$special = context.data.$container.find( '.suggestions-special' );
-				// Only hook this up the first time
-				if ( $special.children().length == 0 ) {
-					$special.mousemove( function() {
-						$.suggestions.highlight( context, $( [] ), false );
-					} );
-				}
 				context.config.special.render.call( $special, context.data.$textbox.val() );
 			}, 1 );
 		}
@@ -5928,23 +5922,45 @@ $.suggestions = {
 		var selected = context.data.$container.find( '.suggestions-result-current' );
 		if ( !result.get || selected.get( 0 ) != result.get( 0 ) ) {
 			if ( result == 'prev' ) {
-				result = selected.prev();
+				if( selected.is( '.suggestions-special' ) ) {
+					result = context.data.$container.find( '.suggestions-results div:last' )
+				} else {
+					result = selected.prev();
+					if ( selected.length == 0 ) {
+						// we are at the begginning, so lets jump to the last item
+						if ( context.data.$container.find( '.suggestions-special' ).html() != "" ) {
+							result = context.data.$container.find( '.suggestions-special' );
+						} else {
+							result = context.data.$container.find( '.suggestions-results div:last' );
+						}
+					}
+				}
 			} else if ( result == 'next' ) {
-				if ( selected.size() == 0 )
+				if ( selected.length == 0 ) {
 					// No item selected, go to the first one
 					result = context.data.$container.find( '.suggestions-results div:first' );
-				else {
+					if ( result.length == 0 && context.data.$container.find( '.suggestions-special' ).html() != "" ) {
+						// No suggestion exists, go to the special one directly
+						result = context.data.$container.find( '.suggestions-special' );
+					}
+				} else {
 					result = selected.next();
-					if ( result.size() == 0 )
-						// We were at the last item, stay there
-						result = selected;
+					if ( selected.is( '.suggestions-special' ) ) {
+						result = $( [] );
+					} else if (
+						result.length == 0 &&
+						context.data.$container.find( '.suggestions-special' ).html() != ""
+					) {
+						// We were at the last item, jump to the specials!
+						result = context.data.$container.find( '.suggestions-special' );
+					}
 				}
 			}
 			selected.removeClass( 'suggestions-result-current' );
 			result.addClass( 'suggestions-result-current' );
 		}
 		if ( updateTextbox ) {
-			if ( result.size() == 0 ) {
+			if ( result.length == 0 ) {
 				$.suggestions.restore( context );
 			} else {
 				context.data.$textbox.val( result.data( 'text' ) );
@@ -5952,6 +5968,7 @@ $.suggestions = {
 				// let the world know what happened
 				context.data.$textbox.change();
 			}
+			context.data.$textbox.trigger( 'change' );
 		}
 		$.suggestions.special( context );
 	},
@@ -5966,19 +5983,17 @@ $.suggestions = {
 			// Arrow down
 			case 40:
 				if ( wasVisible ) {
-					$.suggestions.highlight( context, 'next', true );
+					$.suggestions.highlight( context, 'next', false );
 				} else {
 					$.suggestions.update( context, false );
 				}
-				context.data.$textbox.trigger( 'change' );
 				preventDefault = true;
 				break;
 			// Arrow up
 			case 38:
 				if ( wasVisible ) {
-					$.suggestions.highlight( context, 'prev', true );
+					$.suggestions.highlight( context, 'prev', false );
 				}
-				context.data.$textbox.trigger( 'change' );
 				preventDefault = wasVisible;
 				break;
 			// Escape
@@ -5993,11 +6008,18 @@ $.suggestions = {
 			case 13:
 				context.data.$container.hide();
 				preventDefault = wasVisible;
-				if ( typeof context.config.result.select == 'function' ) {
-					context.config.result.select.call(
-						context.data.$container.find( '.suggestions-result-current' ),
-						context.data.$textbox
-					);
+				selected = context.data.$container.find( '.suggestions-result-current' );
+				if ( selected.is( '.suggestions-special' ) ) {
+					if ( typeof context.config.special.select == 'function' ) {
+						context.config.special.select.call( selected, context.data.$textbox );
+					}
+				} else {
+					if ( typeof context.config.result.select == 'function' ) {
+						$.suggestions.highlight( context, selected, true );
+						context.config.result.select.call( selected, context.data.$textbox );
+					} else {
+						$.suggestions.highlight( context, selected, true );
+					}
 				}
 				break;
 			default:
@@ -6071,9 +6093,6 @@ $.fn.suggestions = function() {
 				'mouseDownOn': $( [] ),
 				'$textbox': $(this)
 			};
-			context.data.$textbox.mousemove( function() {
-				$.suggestions.highlight( context, $( [] ), false );
-			} );
 			context.data.$container = $( '<div />' )
 				.css( {
 					'top': Math.round( context.data.$textbox.offset().top + context.data.$textbox.outerHeight() ),
@@ -6124,6 +6143,11 @@ $.fn.suggestions = function() {
 							}
 							context.data.$textbox.focus();
 						} )
+						.mouseover( function( e ) {
+							$.suggestions.highlight(
+								context, $( e.target ).closest( '.suggestions-special' ), false
+							);
+						} )
 				)
 				.appendTo( $( 'body' ) );
 			$(this)
@@ -6164,7 +6188,7 @@ $.fn.suggestions = function() {
 				.blur( function() {
 					// When losing focus because of a mousedown
 					// on a suggestion, don't hide the suggestions
-					if ( context.data.mouseDownOn.size() > 0 ) {
+					if ( context.data.mouseDownOn.length > 0 ) {
 						return;
 					}
 					context.data.$container.hide();
@@ -6232,15 +6256,16 @@ encapsulateSelection: function( options ) {
 				options.post += ' ';
 			}
 		}
-		var selText = $(this).textSelection( 'getSelection' );
 		var isSample = false;
 		if ( this.style.display == 'none' ) {
 			// Do nothing
 		} else if ( this.selectionStart || this.selectionStart == '0' ) {
 			// Mozilla/Opera
 			$(this).focus();
+			var selText = $(this).textSelection( 'getSelection' );
 			var startPos = this.selectionStart;
 			var endPos = this.selectionEnd;
+			var scrollTop = this.scrollTop;
 			checkSelectedText();
 			if ( options.ownline ) {
 				if ( startPos != 0 && this.value.charAt( startPos - 1 ) != "\n" ) {
@@ -6252,6 +6277,8 @@ encapsulateSelection: function( options ) {
 			}
 			this.value = this.value.substring( 0, startPos ) + options.pre + selText + options.post +
 				this.value.substring( endPos, this.value.length );
+			// Setting this.value scrolls the textarea to the top, restore the scroll position
+			this.scrollTop = scrollTop;
 			if ( window.opera ) {
 				options.pre = options.pre.replace( /\r?\n/g, "\r\n" );
 				selText = selText.replace( /\r?\n/g, "\r\n" );
@@ -6268,6 +6295,9 @@ encapsulateSelection: function( options ) {
 		} else if ( document.selection && document.selection.createRange ) {
 			// IE
 			$(this).focus();
+			context.fn.restoreStuffForIE();
+			var selText = $(this).textSelection( 'getSelection' );
+			var scrollTop = this.scrollTop;
 			var range = document.selection.createRange();
 			if ( options.ownline && range.moveStart ) {
 				var range2 = document.selection.createRange();
@@ -6291,9 +6321,9 @@ encapsulateSelection: function( options ) {
 				range.moveEnd( 'character', - options.post.length );
 			}
 			range.select();
+			// Restore the scroll position
+			this.scrollTop = scrollTop;
 		}
-		// Scroll the textarea to the inserted text
-		$(this).textSelection( 'scrollToCaretPosition' );
 		$(this).trigger( 'encapsulateSelection', [ options.pre, options.peri, options.post, options.ownline,
 			options.replace ] );
 	});
@@ -6606,8 +6636,8 @@ $.wikiEditor = {
 	'browsers': {
 		// Left-to-right languages
 		'ltr': {
-			// The toolbar layout is broken in IE6, selection is out of control in IE8
-			'msie': [['==', 7]],
+			// The toolbar layout is broken in IE6
+			'msie': [['>=', 7]],
 			// Layout issues in FF < 2
 			'firefox': [['>=', 2]],
 			// Text selection bugs galore - this may be a different situation with the new iframe-based solution
@@ -6622,7 +6652,7 @@ $.wikiEditor = {
 		// Right-to-left languages
 		'rtl': {
 			// The toolbar layout is broken in IE 7 in RTL mode, and IE6 in any mode
-			'msie': false,
+			'msie': [['>=', 8]],
 			// Layout issues in FF < 2
 			'firefox': [['>=', 2]],
 			// Text selection bugs galore - this may be a different situation with the new iframe-based solution
@@ -6786,7 +6816,7 @@ if ( !$j.wikiEditor.isSupported() ) {
 // where we left off
 var context = $(this).data( 'wikiEditor-context' );
 // On first call, we need to set things up, but on all following calls we can skip right to the API handling
-if ( typeof context == 'undefined' ) {
+if ( !context || typeof context == 'undefined' ) {
 	
 	// Star filling the context with useful data - any jQuery selections, as usual should be named with a preceding $
 	context = {
@@ -6995,7 +7025,7 @@ if ( typeof context == 'undefined' ) {
 		'paste': function( event ) {
 			// Save the cursor position to restore it after all this voodoo
 			var cursorPos = context.fn.getCaretPosition();
-			var oldLength = context.fn.getContents().length;
+			var oldLength = context.fn.getContents().length - ( cursorPos[1] - cursorPos[0] );
 			context.$content.find( ':not(.wikiEditor)' ).addClass( 'wikiEditor' );
 			if ( $.layout.name !== 'webkit' ) {
 				context.$content.addClass( 'pasting' );
@@ -7010,26 +7040,6 @@ if ( typeof context == 'undefined' ) {
 						$(this).text( $(this).text() );
 					}
 				} );
-				// Remove newlines from all text nodes
-				var t = context.fn.traverser( context.$content );
-				while ( t ) {
-					if ( t.node.nodeName == '#text' ) {
-						// Text nodes that are nothing but blank lines need to be converted to full line breaks
-						if ( t.node.nodeValue === '\n' ) {
-							$( '<p><br></p>' ).insertAfter( $( t.node ) );
-							var oldNode = t.node;
-							t = t.next();
-							$( oldNode ).remove();
-							// We already advanced, so let's finish now
-							continue;
-						}
-						// Text nodes containing new lines just need conversion to spaces
-						else if ( ( t.node.nodeValue.indexOf( '\n' ) != 1 || t.node.nodeValue.indexOf( '\r' ) != -1 ) ) {
-							t.node.nodeValue = t.node.nodeValue.replace( /\r|\n/g, ' ' );
-						}
-					}
-					t = t.next();
-				}
 				// MS Word + webkit
 				context.$content.find( 'p:not(.wikiEditor) p:not(.wikiEditor)' )
 					.each( function(){
@@ -7040,35 +7050,59 @@ if ( typeof context == 'undefined' ) {
 				context.$content.find( 'span.Apple-style-span' ).each( function() {
 					$(this).replaceWith( this.childNodes );
 				} );
+				
+				// If the pasted content is plain text then wrap it in a <p> and adjust the <br> accordingly 
+				var pasteContent = context.fn.getOffset( cursorPos[0] ).node;
+				var removeNextBR = false;
+				while ( pasteContent != null && !$( pasteContent ).hasClass( 'wikiEditor' ) ) {
+					var currentNode = pasteContent;
+					pasteContent = pasteContent.nextSibling;
+					if ( currentNode.nodeName == '#text' && currentNode.nodeValue == currentNode.wholeText ) {
+						var pWrapper = $( '<p />' ).addClass( 'wikiEditor' );
+						$( currentNode ).wrap( pWrapper );
+						$( currentNode ).addClass( 'wikiEditor' );
+						removeNextBR = true;
+					} else if ( currentNode.nodeName == 'BR' && removeNextBR ) {
+						$( currentNode ).remove();
+						removeNextBR = false;
+					} else {
+						removeNextBR = false;
+					}
+				}	
 				var $selection = context.$content.find( ':not(.wikiEditor)' );
 				while ( $selection.length && $selection.length > 0 ) {
 					var $currentElement = $selection.eq( 0 );
 					while ( !$currentElement.parent().is( 'body' ) && !$currentElement.parent().is( '.wikiEditor' ) ) {
 						$currentElement = $currentElement.parent();
 					}
-					var html = $( '<div></div>' ).text( $currentElement.text().replace( /\r|\n/g, ' ' ) ).html();
-					if ( $currentElement.is( 'br' ) ) {
-						$currentElement.addClass( 'wikiEditor' );
-					} else if ( $currentElement.is( 'span' ) && html.length == 0 ) {
-						// Markers!
-						$currentElement.remove();
-					} else if ( $currentElement.is( 'p' ) || $currentElement.is( 'div' ) ) {
-						$newElement = $( '<p></p>' )
-							.addClass( 'wikiEditor' )
-							.insertAfter( $currentElement );
-						if ( html.length ) {
-							$newElement.html( html );
-						} else {
-							$newElement.append( $( '<br>' ).addClass( 'wikiEditor' ) );
-						}
-						$currentElement.remove();
+					
+					var $newElement;
+					if ( $currentElement.is( 'p' ) || $currentElement.is( 'div' ) || $currentElement.is( 'pre' ) ) {
+						//Convert all <div>, <p> and <pre> that was pasted into a <p> element
+						$newElement = $( '<p />' );
 					} else {
-						$newElement = $( '<span></span>' ).html( html ).insertAfter( $currentElement );
-						$newElement.replaceWith( $newElement[0].childNodes );
-						$currentElement.remove();
+						// everything else becomes a <span>
+						$newElement = $( '<span />' ).addClass( 'wikiEditor' );
 					}
+					
+					// If the pasted content was html, just convert it into text and <br>
+					var pieces = $.trim( $currentElement.text() ).split( '\n' );
+					var newElementHTML = '';
+					for ( var i = 0; i < pieces.length; i++ ) {
+						if ( pieces[i] ) {
+							newElementHTML += $.trim( pieces[i] );
+						} else {
+							newElementHTML += '<span><br class="wikiEditor" /></span>';
+						}
+					}
+					$newElement.html( newElementHTML )
+						.addClass( 'wikiEditor' )
+						.insertAfter( $currentElement );
+					$currentElement.remove();
+
 					$selection = context.$content.find( ':not(.wikiEditor)' );
 				}
+
 				context.$content.find( '.wikiEditor' ).removeClass( 'wikiEditor' );
 				if ( $.layout.name !== 'webkit' ) {
 					context.$content.removeClass( 'pasting' );
@@ -7076,7 +7110,8 @@ if ( typeof context == 'undefined' ) {
 				
 				// Restore cursor position
 				context.fn.purgeOffsets();
-				var restoreTo = cursorPos[1] + context.fn.getContents().length - oldLength;
+				var newLength = context.fn.getContents().length;
+				var restoreTo = cursorPos[0] + newLength - oldLength;
 				context.fn.setSelection( { start: restoreTo, end: restoreTo } );
 			}, 0 );
 			return true;
@@ -7629,6 +7664,10 @@ if ( typeof context == 'undefined' ) {
 					}
 					// Get a reference to the content area of the iframe
 					context.$content = $( context.$iframe[0].contentWindow.document.body );
+					// Add classes to the body to influence the styles based on what's enabled
+					for ( module in context.modules ) {
+						context.$content.addClass( 'wikiEditor-' + module );
+					}
 					// If we just do "context.$content.text( context.$textarea.val() )", Internet Explorer will strip
 					// out the whitespace charcters, specifically "\n" - so we must manually encode text and append it
 					// TODO: Refactor this into a textToHtml() function
@@ -8292,6 +8331,33 @@ if ( typeof context == 'undefined' ) {
 					body.scrollTop( y );
 				}
 			$element.trigger( 'scrollToTop' );
+		},
+		/**
+		 * Save scrollTop and cursor position for IE.
+		 */
+		'saveStuffForIE': function() {
+			// Only need this for IE in textarea mode
+			if ( !$.browser.msie || context.$iframe )
+				return;
+			var IHateIE = {
+				'scrollTop' : context.$textarea.scrollTop(),
+				'pos': context.$textarea.textSelection( 'getCaretPosition', { startAndEnd: true } )
+			};
+			context.$textarea.data( 'IHateIE', IHateIE );
+		},
+		/**
+		 * Restore scrollTo and cursor position for IE.
+		 */
+		'restoreStuffForIE': function() {
+			// Only need this for IE in textarea mode
+			if ( !$.browser.msie || context.$iframe )
+				return;
+			var IHateIE = context.$textarea.data( 'IHateIE' );
+			if ( !IHateIE )
+				return;
+			context.$textarea.scrollTop( IHateIE.scrollTop );
+			context.$textarea.textSelection( 'setSelection', { start: IHateIE.pos[0], end: IHateIE.pos[1] } );
+			context.$textarea.data( 'IHateIE', null );
 		}
 	};
 	
@@ -8597,6 +8663,7 @@ quickDialog: function( body, settings ) {
 
 }; } ) ( jQuery );
 /* Highlight module for wikiEditor */
+
 ( function( $ ) { $.wikiEditor.modules.highlight = {
 
 /**
@@ -8607,139 +8674,75 @@ quickDialog: function( body, settings ) {
 /**
  * Configuration
  */
-cfg: {
+'cfg': {
 	'styleVersion': 3
 },
 /**
  * Internally used event handlers
  */
-evt: {
-	delayedChange: function( context, event ) {
-		/*
-		 * Triggered on any of the following events, with the intent on detecting if something was added, deleted or
-		 * replaced due to user action.
-		 *
-		 * The following conditions are indicative that one or more divisions need to be re-scanned/marked:
-		 * 		Keypress while something is highlighted
-		 * 		Cut
-		 * 		Paste
-		 * 		Drag+drop selected text
-		 * The following conditions are indicative that special handlers need to be consulted to properly parse content
-		 * 		Keypress with any of the following characters
-		 * 			}	Template or Table handler
-		 * 			>	Tag handler
-		 * 			]	Link handler
-		 * The following conditions are indicative that divisions might be being made which would need encapsulation
-		 * 		Keypress with any of the following characters
-		 * 			=	Heading
-		 * 			#	Ordered
-		 * 			*	Unordered
-		 * 			;	Definition
-		 * 			:	Definition
-		 */
-		$.wikiEditor.modules.highlight.currentScope = event.data.scope;
+'evt': {
+	'delayedChange': function( context, event ) {
 		if ( event.data.scope == 'realchange' ) {
-			$.wikiEditor.modules.highlight.fn.scan( context, '' );
-			$.wikiEditor.modules.highlight.fn.mark( context, 'realchange', '' );
+			$.wikiEditor.modules.highlight.fn.scan( context );
+			$.wikiEditor.modules.highlight.fn.mark( context, event.data.scope );
 		}
 	},
-	ready: function( context, event ) {
-		// Highlight stuff for the first time
-		$.wikiEditor.modules.highlight.currentScope = 'ready'; // FIXME: Ugly global, kill with fire
-		$.wikiEditor.modules.highlight.fn.scan( context, '' );
-		$.wikiEditor.modules.highlight.fn.mark( context, '', '' );
+	'ready': function( context, event ) {
+		$.wikiEditor.modules.highlight.fn.scan( context );
+		$.wikiEditor.modules.highlight.fn.mark( context, 'ready' );
 	}
 },
 /**
  * Internally used functions
  */
-fn: {
+'fn': {
 	/**
 	 * Creates a highlight module within a wikiEditor
 	 * 
 	 * @param config Configuration object to create module from
 	 */
-	create: function( context, config ) {
+	'create': function( context, config ) {
 		context.modules.highlight.markersStr = '';
-	},
-	/**
-	 * Divides text into divisions
-	 */
-	divide: function( context ) {
-		/*
-		 * We need to add some markup to the iframe content to encapsulate divisions
-		 */
-	},
-	/**
-	 * Isolates division which was affected by most recent change
-	 */
-	isolate: function( context ) {
-		/*
-		 * A change just occured, and we need to know which sections were affected
-		 */
-		return []; // array of sections?
-	},
-	/**
-	 * Strips division of HTML
-	 * FIXME: Isn't this done by context.fn.htmlToText() already?
-	 * 
-	 * @param division
-	 */
-	strip: function( context, division ) {
-		return $( '<div />' ).html( division.html().replace( /\<br[^\>]*\>/g, "\n" ) ).text();
 	},
 	/**
 	 * Scans text division for tokens
 	 * 
 	 * @param division
 	 */
-	scan: function( context, division ) {
-		/**
-		 * Builds a Token object
-		 * 
-		 * @param offset
-		 * @param label
-		 */
-		function Token( offset, label, tokenStart, match ) {
-			this.offset = offset;
-			this.label = label;
-			this.tokenStart = tokenStart;
-			this.match = match;
-		}
-		// Reset tokens
+	'scan': function( context, division ) {
+		// Remove all existing tokens
 		var tokenArray = context.modules.highlight.tokenArray = [];
-		// We need to look over some text and find interesting areas, then return the positions of those areas as tokens
+		// Scan text for new tokens
 		var text = context.fn.getContents();
-		for ( module in context.modules ) {
+		// Perform a scan for each module which provides any expressions to scan for
+		// FIXME: This traverses the entire string once for every regex. Investigate
+		// whether |-concatenating regexes then traversing once is faster.
+		for ( var module in context.modules ) {
 			if ( module in $.wikiEditor.modules && 'exp' in $.wikiEditor.modules[module] ) {
-			   for ( var i = 0; i < $.wikiEditor.modules[module].exp.length; i++ ) {
-					var regex = $.wikiEditor.modules[module].exp[i].regex;
-					var label = $.wikiEditor.modules[module].exp[i].label;
-					var markAfter = false;
-					if ( typeof $.wikiEditor.modules[module].exp[i].markAfter != 'undefined' ) {
-						markAfter = true;
-					}
-					match = text.match( regex );
-					var oldOffset = 0;
-					while ( match != null ) {
-						var markOffset = 0;
-						var tokenStart = match.index + oldOffset + markOffset;
-						if ( markAfter ) {
-							markOffset += match[0].length;
-						}
-						tokenArray.push( new Token( match.index + oldOffset + markOffset,
-							label, tokenStart, match ) );
-						oldOffset += match.index + match[0].length;
-						newSubstring = text.substring( oldOffset );
-						match = newSubstring.match( regex );
+				for ( var exp in $.wikiEditor.modules[module].exp ) {
+					// Prepare configuration
+					var regex = $.wikiEditor.modules[module].exp[exp].regex;
+					var label = $.wikiEditor.modules[module].exp[exp].label;
+					var markAfter = $.wikiEditor.modules[module].exp[exp].markAfter || false;
+					// Search for tokens
+					var offset = 0, left, right, match;
+					while ( ( match = text.substr( offset ).match( regex ) ) != null ) {
+						right = ( left = offset + match.index ) + match[0].length;
+						tokenArray[tokenArray.length] = {
+							'offset': markAfter ? right : left,
+							'label': label,
+							'tokenStart': left,
+							'match': match
+						};
+						// Move to the right of this match
+						offset = right;
 					}
 				}
 			}
 		}
-		//sort by offset, or if offset same, sort by start
-		tokenArray.sort( function( a, b ) {
-			return a.offset - b.offset || a.tokenStart - b.tokenStart;
-		} );
+		// Sort by start
+		tokenArray.sort( function( a, b ) { return a.tokenStart - b.tokenStart; } );
+		// Let the world know, a scan just happened!
 		context.fn.trigger( 'scan' );
 	},
 	/**
@@ -8750,7 +8753,7 @@ fn: {
 	 */
 	// FIXME: What do division and tokens do?
 	// TODO: Document the scan() and mark() APIs somewhere
-	mark: function( context, division, tokens ) {
+	'mark': function( context, division, tokens ) {
 		// Reset markers
 		var markers = [];
 		
@@ -8768,8 +8771,8 @@ fn: {
 		context.fn.trigger( 'mark' );
 		markers.sort( function( a, b ) { return a.start - b.start || a.end - b.end; } );
 		
-		// Serialize the markers array to a string and compare it with the one stored in the previous run
-		// If they're equal, there's no markers to change
+		// Serialize the markers array to a string and compare it with the one stored in the previous run - if they're
+		// equal, there's no markers to change
 		var markersStr = '';
 		for ( var i = 0; i < markers.length; i++ ) {
 			markersStr += markers[i].start + ',' + markers[i].end + ',' + markers[i].type + ',';
@@ -8780,16 +8783,15 @@ fn: {
 		}
 		context.modules.highlight.markersStr = markersStr;
 		
-		// Traverse the iframe DOM, inserting markers where they're needed.
-		// Store visited markers here so we know which markers should be removed
+		// Traverse the iframe DOM, inserting markers where they're needed - store visited markers here so we know which
+		// markers should be removed
 		var visited = [], v = 0;
 		for ( var i = 0; i < markers.length; i++ ) {
 			if ( typeof markers[i].skipDivision !== 'undefined' && ( division == markers[i].skipDivision ) ) { 
 				continue;
 			}
 			
-			// We want to isolate each marker, so we may need to split textNodes
-			// if a marker starts or ends halfway one.
+			// We want to isolate each marker, so we may need to split textNodes if a marker starts or ends halfway one.
 			var start = markers[i].start;
 			var s = context.fn.getOffset( start );
 			if ( !s ) {
@@ -8799,9 +8801,9 @@ fn: {
 			var startNode = s.node;
 			
 			// Don't wrap leading BRs, produces undesirable results
-			// FIXME: It's also possible that the offset is a bit high because getOffset() has incremented
-			// .length to fake the newline caused by startNode being in a P. In this case, prevent
-			// the textnode splitting below from making startNode an empty textnode, IE barfs on that
+			// FIXME: It's also possible that the offset is a bit high because getOffset() has incremented .length to
+			// fake the newline caused by startNode being in a P. In this case, prevent the textnode splitting below
+			// from making startNode an empty textnode, IE barfs on that
 			while ( startNode.nodeName == 'BR' || s.offset == startNode.nodeValue.length ) {
 				start++;
 				s = context.fn.getOffset( start );
@@ -8810,20 +8812,17 @@ fn: {
 			
 			// The next marker starts somewhere in this textNode or at this BR
 			if ( s.offset > 0 && s.node.nodeName == '#text' ) {
-				// Split off the prefix
-				// This leaves the prefix in the current node and puts
-				// the rest in a new node which is our start node
+				// Split off the prefix - this leaves the prefix in the current node and puts the rest in a new node
+				// which is our start node
 				var newStartNode = startNode.splitText( s.offset < s.node.nodeValue.length ?
 					s.offset : s.node.nodeValue.length - 1
 				);
 				var oldStartNode = startNode;
 				startNode = newStartNode;
-				
-				// Update offset objects. We don't need purgeOffsets(), simply
-				// manipulating the existing offset objects will suffice
-				// FIXME: This manipulates context.offsets directly, which is ugly,
-				// but the performance improvement vs. purgeOffsets() is worth it
-				// This code doesn't set lastTextNode to newStartNode for offset objects
+				// Update offset objects. We don't need purgeOffsets(), simply manipulating the existing offset objects
+				// will suffice
+				// FIXME: This manipulates context.offsets directly, which is ugly, but the performance improvement vs.
+				// purgeOffsets() is worth it - this code doesn't set lastTextNode to newStartNode for offset objects
 				// with lastTextNode == oldStartNode, but that doesn't really matter
 				var subtracted = s.offset;
 				var oldLength = s.length;
@@ -8848,10 +8847,9 @@ fn: {
 					}
 				}
 			}
-			
 			var end = markers[i].end;
-			// To avoid ending up at the first char of the next node, we grab the offset for end - 1
-			// and add one to the offset
+			// To avoid ending up at the first char of the next node, we grab the offset for end - 1 and add one to the
+			// offset
 			var e = context.fn.getOffset( end - 1 );
 			if ( !e ) {
 				// This shouldn't happen
@@ -8862,11 +8860,9 @@ fn: {
 				// Split off the suffix. This puts the suffix in a new node and leaves the rest in endNode
 				var oldEndNode = endNode;
 				var newEndNode = endNode.splitText( e.offset + 1 );
-				
 				// Update offset objects
 				var subtracted = e.offset + 1;
 				var oldLength = e.length;
-
 				var j, o;
 				// Update offset objects referring to oldEndNode
 				for ( j = end - subtracted; j < end; j++ ) {
@@ -8894,12 +8890,10 @@ fn: {
 					}
 				}
 			}
-			
 			// Don't wrap trailing BRs, doing that causes weird issues
 			if ( endNode.nodeName == 'BR' ) {
 				endNode = e.lastTextNode;
 			}
-			
 			// If startNode and endNode have different parents, we need to pull endNode and all textnodes in between
 			// into startNode's parent and replace </p><p> with <br>
 			if ( startNode.parentNode != endNode.parentNode ) {
@@ -8953,7 +8947,6 @@ fn: {
 				// TODO: Update offset objects ourselves for performance. Requires rewriting this code block to be
 				// offset-based rather than traverser-based
 			}
-			
 			// Now wrap everything between startNode and endNode (may be equal).
 			var ca1 = startNode, ca2 = endNode;
 			if ( ca1 && ca2 && ca1.parentNode ) {
@@ -8961,11 +8954,8 @@ fn: {
 				if ( !anchor ) {
 					var commonAncestor = ca1.parentNode;
 					if ( markers[i].anchor == 'wrap') {
-						// We have to store things like .parentNode and .nextSibling because
-						// appendChild() changes these properties
-						
+						// We have to store things like .parentNode and .nextSibling because appendChild() changes these
 						var newNode = ca1.ownerDocument.createElement( 'span' );
-						
 						var nextNode = ca2.nextSibling;
 						// Append all nodes between ca1 and ca2 (inclusive) to newNode
 						var n = ca1;
@@ -8975,34 +8965,31 @@ fn: {
 							n = ns;
 						}
 						// Insert newNode in the right place
-						
 						if ( nextNode ) {
 							commonAncestor.insertBefore( newNode, nextNode );
 						} else {
 							commonAncestor.appendChild( newNode );
 						}
-						
 						anchor = newNode;
 					} else if ( markers[i].anchor == 'tag' ) {
 						anchor = commonAncestor;
 					}
-					$( anchor ).data( 'marker', markers[i] )
-						.addClass( 'wikiEditor-highlight' );
+					$( anchor ).data( 'marker', markers[i] ).addClass( 'wikiEditor-highlight' );
 					// Allow the module adding this marker to manipulate it
 					markers[i].afterWrap( anchor, markers[i] );
 
 				} else {
 					// Update the marker object
 					$( anchor ).data( 'marker', markers[i] );
-					markers[i].onSkip( anchor );
+					if ( typeof markers[i].onSkip == 'function' ) {
+						markers[i].onSkip( anchor );
+					}
 				}
 				visited[v++] = anchor;
 			}
 		}
-		
-		// Remove markers that were previously inserted but weren't passed to this function
-		// This function works because visited[] contains the visited elements in order and find() and each()
-		// preserve order
+		// Remove markers that were previously inserted but weren't passed to this function - visited[] contains the
+		// visited elements in order and find() and each() preserve order
 		var j = 0;
 		context.$content.find( '.wikiEditor-highlight' ).each( function() {
 			if ( visited[j] == this ) {
@@ -9010,7 +8997,6 @@ fn: {
 				j++;
 				return true;
 			}
-			
 			// Remove this marker
 			var marker = $(this).data( 'marker' );
 			if ( marker && typeof marker.skipDivision != 'undefined' && ( division == marker.skipDivision ) ) {
@@ -9353,7 +9339,7 @@ fn: {
 /* TemplateEditor module for wikiEditor */
 ( function( $ ) { $.wikiEditor.modules.templateEditor = {
 /**
- * Name mappings, dirty hack which will be reomved once "TemplateInfo" extension is more fully supported
+ * Name mappings, dirty hack which will be removed once "TemplateInfo" extension is more fully supported
  */
 'nameMappings': { //keep these all lowercase to navigate web of redirects
    "infobox skyscraper": "building_name",
@@ -9367,7 +9353,7 @@ fn: {
 'browsers': {
 	// Left-to-right languages
 	'ltr': {
-		'msie': false,
+		'msie': [['>=', 8]],
 		'firefox': [['>=', 3]],
 		'opera': [['>=', 10]],
 		'safari': [['>=', 4]]
@@ -9498,9 +9484,11 @@ evt: {
 			switch ( event.which ) {
 				case 13: // Enter
 					$evtElem.click();
+					event.preventDefault();
 					return false;
 				case 32: // Space
 					$evtElem.parent().siblings( '.wikiEditor-template-expand' ).click();
+					event.preventDefault();
 					return false;
 				case 37:// Left
 				case 38:// Up
@@ -9511,6 +9499,7 @@ evt: {
 					// Set the ignroreKeypress variable so we don't allow typing if the key is held
 					context.$iframe.data( 'ignoreKeypress', true );
 					// Can't type in a template name
+					event.preventDefault();
 					return false;
 			}
 		} else if ( $evtElem.hasClass( 'wikiEditor-template-text' ) ) {
@@ -9520,6 +9509,7 @@ evt: {
 					context.$iframe.data( 'ignoreKeypress', true );
 					// FIXME: May be a more elegant way to do this, but this works too
 					context.fn.encapsulateSelection( { 'pre': '\n', 'peri': '', 'post': '' } );
+					event.preventDefault();
 					return false;
 				default: return true;
 			}
@@ -9571,7 +9561,7 @@ fn: {
 		var context = $wrapper.data( 'marker' ).context;
 		var $template = $wrapper
 			.wrap( '<span class="wikiEditor-template"></span>' )
-			.addClass( 'wikiEditor-template-text wikiEditor-nodisplay' )
+			.addClass( 'wikiEditor-template-text wikiEditor-template-text-shrunken' )
 			.parent()
 			.addClass( 'wikiEditor-template-collapsed' )
 			.prepend(
@@ -9596,12 +9586,27 @@ fn: {
 	 */
 	bindTemplateEvents: function( $wrapper ) {
 		var $template = $wrapper.parent( '.wikiEditor-template' );
+
+		if ( typeof ( opera ) == "undefined" ) {
+			$template.parent().attr('contentEditable', 'false');
+		}
+		
+		$template.click( function(event) {event.preventDefault(); return false;} )
+		
 		$template.find( '.wikiEditor-template-name' )
-			.click( function() { $.wikiEditor.modules.templateEditor.fn.createDialog( $wrapper ); return false; } )
-			.mousedown( function() { return false; } );
+			.click( function( event ) { 
+				$.wikiEditor.modules.templateEditor.fn.createDialog( $wrapper ); 
+				event.stopPropagation(); 
+				return false; 
+				} )
+			.mousedown( function( event ) { event.stopPropagation(); return false; } );
 		$template.find( '.wikiEditor-template-expand' )
-			.click( function() { $.wikiEditor.modules.templateEditor.fn.toggleWikiTextEditor( $wrapper ); return false; } )
-			.mousedown( function() { return false; } );
+			.click( function( event ) { 
+				$.wikiEditor.modules.templateEditor.fn.toggleWikiTextEditor( $wrapper ); 
+				event.stopPropagation();
+				return false; 
+				} )
+			.mousedown( function( event ) { event.stopPropagation(); return false; } );
 	},
 	/**
 	 * Toggle the visisbilty of the wikitext for a given template
@@ -9616,8 +9621,9 @@ fn: {
 			.toggleClass( 'wikiEditor-template-collapsed' ) ;
 		
 		var $templateText = $template.find( '.wikiEditor-template-text' );		
-		$templateText.toggleClass( 'wikiEditor-nodisplay' );
-		if( $templateText.hasClass('wikiEditor-nodisplay') ){
+		$templateText.toggleClass( 'wikiEditor-template-text-shrunken' );
+		$templateText.toggleClass( 'wikiEditor-template-text-visible' );
+		if( $templateText.hasClass('wikiEditor-template-text-shrunken') ){
 			//we just closed the template
 		
 			// Update the model if we need to
@@ -10963,7 +10969,13 @@ api : {
 						$characters
 						.append(
 							$( $.wikiEditor.modules.toolbar.fn.buildCharacter( data[type][character], actions ) )
-								.click( function(e) {
+								.mousedown( function( e ) {
+									context.fn.saveStuffForIE();
+									// No dragging!
+									e.preventDefault();
+									return false;
+								} )
+								.click( function( e ) {
 									$.wikiEditor.modules.toolbar.fn.doAction( $(this).parent().data( 'context' ),
 										$(this).parent().data( 'actions' )[$(this).attr( 'rel' )] );
 									e.preventDefault();
@@ -11190,6 +11202,7 @@ fn: {
 						.data( 'action', tool.action )
 						.data( 'context', context )
 						.mousedown( function( e ) {
+							context.fn.saveStuffForIE();
 							// No dragging!
 							e.preventDefault();
 							return false;
@@ -11226,6 +11239,7 @@ fn: {
 								.data( 'action', tool.list[option].action )
 								.data( 'context', context )
 								.mousedown( function( e ) {
+									context.fn.saveStuffForIE();
 									// No dragging!
 									e.preventDefault();
 									return false;
@@ -11341,6 +11355,7 @@ fn: {
 						.html( html )
 						.children()
 						.mousedown( function( e ) {
+							context.fn.saveStuffForIE();
 							// No dragging!
 							e.preventDefault();
 							return false;
@@ -11432,19 +11447,29 @@ fn: {
 						$previousSections.fadeOut( 'fast', function() { $(this).css( 'position', 'relative' ); } );
 						$(this).parent().parent().find( 'a' ).removeClass( 'current' );
 						$sections.css( 'overflow', 'hidden' );
+						function animate( $this ) {
+							$sections
+							.css( 'display', 'block' )
+							.animate( { 'height': $section.outerHeight() }, $section.outerHeight() * 2, function() {
+								$this.css( 'overflow', 'visible' ).css( 'height', 'auto' );
+								context.fn.trigger( 'resize' );
+							} );
+						}
 						if ( show ) {
 							$section.addClass( 'section-visible' );
 							$section.fadeIn( 'fast' );
-							$sections
-								.css( 'display', 'block' )
-								.animate( { 'height': $section.outerHeight() }, $section.outerHeight() * 2, function() {
-									$(this).css( 'overflow', 'visible' ).css( 'height', 'auto' );
-									context.fn.trigger( 'resize' );
-								} );
-							$(this).addClass( 'current' );
 							if ( $section.hasClass( 'loading' ) ) {
 								// Loading of this section was deferred, load it now
-								setTimeout( function() { $section.trigger( 'loadSection' ); }, 0 );
+								$this = $(this);
+								$this.addClass( 'current loading' );
+								setTimeout( function() {
+									$section.trigger( 'loadSection' );
+									animate( $(this) );
+									$this.removeClass( 'loading' );
+								}, 1000 );
+							} else {
+								animate( $(this) );
+								$(this).addClass( 'current' );
 							}
 						} else {
 							$sections

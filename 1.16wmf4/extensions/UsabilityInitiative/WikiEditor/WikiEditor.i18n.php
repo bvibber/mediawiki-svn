@@ -19,6 +19,7 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author EugeneZelenko
  * @author Fryed-peach
  * @author Lloffiwr
  */
@@ -27,7 +28,8 @@ $messages['qqq'] = array(
 
 I guess that 'feature-providing modules' means the same as 'modules providing features'.",
 	'wikieditor-wikitext-tab' => 'Caption of the tab containing the edit box',
-	'wikieditor-loading' => 'Explanatory text for the temporary cover placed over the wikiediort while it\'s being assembled',
+	'wikieditor-loading' => "Explanatory text for the temporary cover placed over the wikiediort while it's being assembled
+{{Identical|Loading}}",
 );
 
 /** Afrikaans (Afrikaans)
@@ -44,8 +46,8 @@ $messages['af'] = array(
  */
 $messages['ar'] = array(
 	'wikieditor' => 'واجعة تعديل نص ويكي متقدمة',
-	'wikieditor-desc' => 'يوفر واجهة تعديل نص ويكي قابلة للتمديد والعديد من العناصر الموفرة للخصائص',
-	'wikieditor-wikitext-tab' => 'نص ويكي',
+	'wikieditor-desc' => 'يوفر واجهة تعديل نص ويكي قابلة للتمديد والعديد من الوحدات التي توفر المزايا',
+	'wikieditor-wikitext-tab' => 'نص الويكي',
 	'wikieditor-loading' => 'يُحمّل',
 );
 
@@ -77,6 +79,7 @@ $messages['be-tarask'] = array(
 $messages['bg'] = array(
 	'wikieditor' => 'Подобрен интерфейс за редактиране на уикитекст',
 	'wikieditor-wikitext-tab' => 'Уикитекст',
+	'wikieditor-loading' => 'Зареждане',
 );
 
 /** Bengali (বাংলা)
@@ -109,10 +112,12 @@ $messages['bs'] = array(
 );
 
 /** Catalan (Català)
+ * @author Paucabot
  * @author Solde
  */
 $messages['ca'] = array(
 	'wikieditor-wikitext-tab' => 'Wikitext',
+	'wikieditor-loading' => 'Carregant',
 );
 
 /** Czech (Česky)
@@ -139,10 +144,11 @@ $messages['cy'] = array(
  * @author Als-Holder
  * @author Imre
  * @author Metalhead64
+ * @author Tbleher
  */
 $messages['de'] = array(
 	'wikieditor' => 'Fortgeschrittener Wikitext-Editor',
-	'wikieditor-desc' => 'Stellt eine erweiterbare Oberfläche zur Wikitext-Beabeitung sowie weitere funktionelle Module zur Verfügung',
+	'wikieditor-desc' => 'Stellt eine erweiterbare Oberfläche zur Wikitext-Bearbeitung sowie weitere funktionelle Module zur Verfügung',
 	'wikieditor-wikitext-tab' => 'Wikitext',
 	'wikieditor-loading' => 'Lade',
 );
@@ -170,21 +176,24 @@ $messages['dsb'] = array(
 /** Greek (Ελληνικά)
  * @author Dead3y3
  * @author ZaDiak
+ * @author Απεργός
  */
 $messages['el'] = array(
-	'wikieditor' => 'Προηγμένη διεπαφή επεξεργασίας κειμένου wiki',
+	'wikieditor' => 'Προχωρημένη διεπαφή επεξεργασίας κειμένου wiki',
 	'wikieditor-desc' => 'Παρέχει μία επεκτάσιμη διεπαφή επεξεργασίας κειμένου wiki και πολλές μονάδες παροχής χαρακτηριστικών',
-	'wikieditor-wikitext-tab' => 'Βικικείμενο',
+	'wikieditor-wikitext-tab' => 'Κείμενο wiki',
 	'wikieditor-loading' => 'Φόρτωση',
 );
 
 /** Esperanto (Esperanto)
+ * @author Marcos
  * @author Yekrats
  */
 $messages['eo'] = array(
 	'wikieditor' => 'Progresa redaktilo por vikiteksto',
 	'wikieditor-desc' => 'Ebligas redaktan interfacon por etendebla vikiteksto kaj multaj utilaj moduloj',
 	'wikieditor-wikitext-tab' => 'Vikiteksto',
+	'wikieditor-loading' => 'Ŝargante',
 );
 
 /** Spanish (Español)
@@ -338,13 +347,27 @@ $messages['ja'] = array(
 
 /** Georgian (ქართული)
  * @author BRUTE
+ * @author გიორგიმელა
  */
 $messages['ka'] = array(
+	'wikieditor' => 'ვიკიტექსტის რედაქტირების გაფართოებული ინტერფეისი',
+	'wikieditor-desc' => 'ვიკიტექსტის რედაქტირების გაფართოებული ინტერფეისისა და სხვა ფუნქციებს უზრუნველყოფს',
 	'wikieditor-wikitext-tab' => 'ვიკიტექსტი',
 	'wikieditor-loading' => 'იტვირთება',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Korean (한국어)
+ * @author Devunt
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'wikieditor' => '확장된 위키텍스트 편집 인터페이스',
+	'wikieditor-desc' => '확장된 위키 문법 편집 인터페이스와 다양한 기능을 제공하는 모듈을 제공',
+	'wikieditor-wikitext-tab' => '위키텍스트',
+	'wikieditor-loading' => '로딩중',
+);
+
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -389,6 +412,16 @@ $messages['ml'] = array(
 	'wikieditor' => 'വിക്കിഎഴുത്തുകൾ തിരുത്തുവാനുള്ള നൂതന സമ്പർക്കമുഖം',
 	'wikieditor-desc' => 'വികസിപ്പിക്കാവുന്ന വിധത്തിലുള്ള വിക്കിഎഴുത്ത് തിരുത്തൽ സമ്പർക്കമുഖവും മറ്റ് സവിശേഷ ഘടകങ്ങളും നൽകുന്നു',
 	'wikieditor-wikitext-tab' => 'വിക്കിഎഴുത്ത്',
+);
+
+/** Maltese (Malti)
+ * @author Chrisportelli
+ */
+$messages['mt'] = array(
+	'wikieditor' => "Interfaċċa avvanzata ta' modifika tat-test tal-wiki",
+	'wikieditor-desc' => "Tipprovdi interfaċċa ta' modifika tat-test tal-wiki estendibbli u ħafna moduli li jipprovdu aktar funzjonalitajiet",
+	'wikieditor-wikitext-tab' => 'Test tal-wiki',
+	'wikieditor-loading' => "Tiela'",
 );
 
 /** Dutch (Nederlands)
@@ -463,13 +496,14 @@ $messages['pt'] = array(
 );
 
 /** Brazilian Portuguese (Português do Brasil)
+ * @author 555
  * @author Daemorris
  * @author Everton137
  */
 $messages['pt-br'] = array(
-	'wikieditor' => 'Interface avançada de edição de textowiki',
+	'wikieditor' => 'Interface avançada de edição de wikitexto',
 	'wikieditor-desc' => 'Fornece uma interface extensível de edição de textowiki e vários módulos funcionais',
-	'wikieditor-wikitext-tab' => 'textowiki',
+	'wikieditor-wikitext-tab' => 'Wikitexto',
 	'wikieditor-loading' => 'Carregando',
 );
 
@@ -566,6 +600,7 @@ $messages['sw'] = array(
 $messages['te'] = array(
 	'wikieditor' => 'ఉన్నత వికీపాఠ్య దిద్దుబాటు ముఖాంతరం',
 	'wikieditor-wikitext-tab' => 'వికీపాఠ్యం',
+	'wikieditor-loading' => 'లోడవుతూంది',
 );
 
 /** Turkmen (Türkmençe)

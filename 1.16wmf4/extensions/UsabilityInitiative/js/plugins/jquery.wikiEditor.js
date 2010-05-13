@@ -36,8 +36,8 @@ $.wikiEditor = {
 	'browsers': {
 		// Left-to-right languages
 		'ltr': {
-			// The toolbar layout is broken in IE6, selection is out of control in IE8
-			'msie': [['==', 7]],
+			// The toolbar layout is broken in IE6
+			'msie': [['>=', 7]],
 			// Layout issues in FF < 2
 			'firefox': [['>=', 2]],
 			// Text selection bugs galore - this may be a different situation with the new iframe-based solution
@@ -52,7 +52,7 @@ $.wikiEditor = {
 		// Right-to-left languages
 		'rtl': {
 			// The toolbar layout is broken in IE 7 in RTL mode, and IE6 in any mode
-			'msie': false,
+			'msie': [['>=', 8]],
 			// Layout issues in FF < 2
 			'firefox': [['>=', 2]],
 			// Text selection bugs galore - this may be a different situation with the new iframe-based solution
@@ -216,7 +216,7 @@ if ( !$j.wikiEditor.isSupported() ) {
 // where we left off
 var context = $(this).data( 'wikiEditor-context' );
 // On first call, we need to set things up, but on all following calls we can skip right to the API handling
-if ( typeof context == 'undefined' ) {
+if ( !context || typeof context == 'undefined' ) {
 	
 	// Star filling the context with useful data - any jQuery selections, as usual should be named with a preceding $
 	context = {
@@ -425,7 +425,7 @@ if ( typeof context == 'undefined' ) {
 		'paste': function( event ) {
 			// Save the cursor position to restore it after all this voodoo
 			var cursorPos = context.fn.getCaretPosition();
-			var oldLength = context.fn.getContents().length;
+			var oldLength = context.fn.getContents().length - ( cursorPos[1] - cursorPos[0] );
 			context.$content.find( ':not(.wikiEditor)' ).addClass( 'wikiEditor' );
 			if ( $.layout.name !== 'webkit' ) {
 				context.$content.addClass( 'pasting' );
@@ -440,26 +440,6 @@ if ( typeof context == 'undefined' ) {
 						$(this).text( $(this).text() );
 					}
 				} );
-				// Remove newlines from all text nodes
-				var t = context.fn.traverser( context.$content );
-				while ( t ) {
-					if ( t.node.nodeName == '#text' ) {
-						// Text nodes that are nothing but blank lines need to be converted to full line breaks
-						if ( t.node.nodeValue === '\n' ) {
-							$( '<p><br></p>' ).insertAfter( $( t.node ) );
-							var oldNode = t.node;
-							t = t.next();
-							$( oldNode ).remove();
-							// We already advanced, so let's finish now
-							continue;
-						}
-						// Text nodes containing new lines just need conversion to spaces
-						else if ( ( t.node.nodeValue.indexOf( '\n' ) != 1 || t.node.nodeValue.indexOf( '\r' ) != -1 ) ) {
-							t.node.nodeValue = t.node.nodeValue.replace( /\r|\n/g, ' ' );
-						}
-					}
-					t = t.next();
-				}
 				// MS Word + webkit
 				context.$content.find( 'p:not(.wikiEditor) p:not(.wikiEditor)' )
 					.each( function(){
@@ -470,35 +450,59 @@ if ( typeof context == 'undefined' ) {
 				context.$content.find( 'span.Apple-style-span' ).each( function() {
 					$(this).replaceWith( this.childNodes );
 				} );
+				
+				// If the pasted content is plain text then wrap it in a <p> and adjust the <br> accordingly 
+				var pasteContent = context.fn.getOffset( cursorPos[0] ).node;
+				var removeNextBR = false;
+				while ( pasteContent != null && !$( pasteContent ).hasClass( 'wikiEditor' ) ) {
+					var currentNode = pasteContent;
+					pasteContent = pasteContent.nextSibling;
+					if ( currentNode.nodeName == '#text' && currentNode.nodeValue == currentNode.wholeText ) {
+						var pWrapper = $( '<p />' ).addClass( 'wikiEditor' );
+						$( currentNode ).wrap( pWrapper );
+						$( currentNode ).addClass( 'wikiEditor' );
+						removeNextBR = true;
+					} else if ( currentNode.nodeName == 'BR' && removeNextBR ) {
+						$( currentNode ).remove();
+						removeNextBR = false;
+					} else {
+						removeNextBR = false;
+					}
+				}	
 				var $selection = context.$content.find( ':not(.wikiEditor)' );
 				while ( $selection.length && $selection.length > 0 ) {
 					var $currentElement = $selection.eq( 0 );
 					while ( !$currentElement.parent().is( 'body' ) && !$currentElement.parent().is( '.wikiEditor' ) ) {
 						$currentElement = $currentElement.parent();
 					}
-					var html = $( '<div></div>' ).text( $currentElement.text().replace( /\r|\n/g, ' ' ) ).html();
-					if ( $currentElement.is( 'br' ) ) {
-						$currentElement.addClass( 'wikiEditor' );
-					} else if ( $currentElement.is( 'span' ) && html.length == 0 ) {
-						// Markers!
-						$currentElement.remove();
-					} else if ( $currentElement.is( 'p' ) || $currentElement.is( 'div' ) ) {
-						$newElement = $( '<p></p>' )
-							.addClass( 'wikiEditor' )
-							.insertAfter( $currentElement );
-						if ( html.length ) {
-							$newElement.html( html );
-						} else {
-							$newElement.append( $( '<br>' ).addClass( 'wikiEditor' ) );
-						}
-						$currentElement.remove();
+					
+					var $newElement;
+					if ( $currentElement.is( 'p' ) || $currentElement.is( 'div' ) || $currentElement.is( 'pre' ) ) {
+						//Convert all <div>, <p> and <pre> that was pasted into a <p> element
+						$newElement = $( '<p />' );
 					} else {
-						$newElement = $( '<span></span>' ).html( html ).insertAfter( $currentElement );
-						$newElement.replaceWith( $newElement[0].childNodes );
-						$currentElement.remove();
+						// everything else becomes a <span>
+						$newElement = $( '<span />' ).addClass( 'wikiEditor' );
 					}
+					
+					// If the pasted content was html, just convert it into text and <br>
+					var pieces = $.trim( $currentElement.text() ).split( '\n' );
+					var newElementHTML = '';
+					for ( var i = 0; i < pieces.length; i++ ) {
+						if ( pieces[i] ) {
+							newElementHTML += $.trim( pieces[i] );
+						} else {
+							newElementHTML += '<span><br class="wikiEditor" /></span>';
+						}
+					}
+					$newElement.html( newElementHTML )
+						.addClass( 'wikiEditor' )
+						.insertAfter( $currentElement );
+					$currentElement.remove();
+
 					$selection = context.$content.find( ':not(.wikiEditor)' );
 				}
+
 				context.$content.find( '.wikiEditor' ).removeClass( 'wikiEditor' );
 				if ( $.layout.name !== 'webkit' ) {
 					context.$content.removeClass( 'pasting' );
@@ -506,7 +510,8 @@ if ( typeof context == 'undefined' ) {
 				
 				// Restore cursor position
 				context.fn.purgeOffsets();
-				var restoreTo = cursorPos[1] + context.fn.getContents().length - oldLength;
+				var newLength = context.fn.getContents().length;
+				var restoreTo = cursorPos[0] + newLength - oldLength;
 				context.fn.setSelection( { start: restoreTo, end: restoreTo } );
 			}, 0 );
 			return true;
@@ -1059,6 +1064,10 @@ if ( typeof context == 'undefined' ) {
 					}
 					// Get a reference to the content area of the iframe
 					context.$content = $( context.$iframe[0].contentWindow.document.body );
+					// Add classes to the body to influence the styles based on what's enabled
+					for ( module in context.modules ) {
+						context.$content.addClass( 'wikiEditor-' + module );
+					}
 					// If we just do "context.$content.text( context.$textarea.val() )", Internet Explorer will strip
 					// out the whitespace charcters, specifically "\n" - so we must manually encode text and append it
 					// TODO: Refactor this into a textToHtml() function
@@ -1722,6 +1731,33 @@ if ( typeof context == 'undefined' ) {
 					body.scrollTop( y );
 				}
 			$element.trigger( 'scrollToTop' );
+		},
+		/**
+		 * Save scrollTop and cursor position for IE.
+		 */
+		'saveStuffForIE': function() {
+			// Only need this for IE in textarea mode
+			if ( !$.browser.msie || context.$iframe )
+				return;
+			var IHateIE = {
+				'scrollTop' : context.$textarea.scrollTop(),
+				'pos': context.$textarea.textSelection( 'getCaretPosition', { startAndEnd: true } )
+			};
+			context.$textarea.data( 'IHateIE', IHateIE );
+		},
+		/**
+		 * Restore scrollTo and cursor position for IE.
+		 */
+		'restoreStuffForIE': function() {
+			// Only need this for IE in textarea mode
+			if ( !$.browser.msie || context.$iframe )
+				return;
+			var IHateIE = context.$textarea.data( 'IHateIE' );
+			if ( !IHateIE )
+				return;
+			context.$textarea.scrollTop( IHateIE.scrollTop );
+			context.$textarea.textSelection( 'setSelection', { start: IHateIE.pos[0], end: IHateIE.pos[1] } );
+			context.$textarea.data( 'IHateIE', null );
 		}
 	};
 	

@@ -101,6 +101,7 @@ $messages['bs'] = array(
  */
 $messages['ca'] = array(
 	'vector-simplesearch-search' => 'Cerca',
+	'vector-simplesearch-containing' => 'que conté ...',
 );
 
 /** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
@@ -111,6 +112,7 @@ $messages['ckb-arab'] = array(
 );
 
 /** Czech (Česky)
+ * @author Kuvaly
  * @author Mormegil
  */
 $messages['cs'] = array(
@@ -290,7 +292,6 @@ $messages['he'] = array(
 
 /** Croatian (Hrvatski)
  * @author Mvrban
- * @author Suradnik13
  */
 $messages['hr'] = array(
 	'vector-simplesearch-search' => 'Traži',
@@ -384,9 +385,10 @@ $messages['km'] = array(
  */
 $messages['ko'] = array(
 	'vector-simplesearch-search' => '검색',
+	'vector-simplesearch-containing' => '전문에 포함된 어구 찾기',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -453,6 +455,14 @@ $messages['mn'] = array(
  */
 $messages['ms'] = array(
 	'vector-simplesearch-search' => 'Cari',
+);
+
+/** Maltese (Malti)
+ * @author Chrisportelli
+ */
+$messages['mt'] = array(
+	'vector-simplesearch-search' => 'Fittex',
+	'vector-simplesearch-containing' => 'li tinkludi...',
 );
 
 /** Nedersaksisch (Nedersaksisch)
@@ -755,7 +765,7 @@ $messages['yi'] = array(
 	'vector-simplesearch-containing' => 'כולל…',
 );
 
-/** Yue (粵語)
+/** Cantonese (粵語)
  * @author Shinjiman
  */
 $messages['yue'] = array(

@@ -58,13 +58,11 @@ $j(document).ready( function() {
 	if ( wgWikiEditorPreferences.toolbar.dialogs && $j.wikiEditor.isSupported( $j.wikiEditor.modules.dialogs ) ) {
 		$j( '#wpTextbox1' ).addClass( 'toolbar-dialogs' );
 	}
-	// Add the toolbar module
 	if ( $j.fn.wikiEditor && $j.wikiEditor.isSupported( $j.wikiEditor.modules.toolbar ) ) {
 		// Remove the old toolbar
 		$j( '#toolbar' ).remove();
 		// Add toolbar module
 		$j( '#wpTextbox1' ).wikiEditor( 'addModule', {
-
 'toolbar': {
 	// Main section
 	'main': {
@@ -1113,6 +1111,10 @@ $j(document).ready( function() {
 							'format': 'json'
 						},
 						success: function( data ) {
+							if ( !data ) {
+								// This happens in some weird cases
+								return;
+							}
 							var status;
 							if ( typeof data.query == 'undefined' ) {
 								status = 'invalid';
@@ -1422,6 +1424,9 @@ $j(document).ready( function() {
 					$j( '#wikieditor-toolbar-link-type-int, #wikieditor-toolbar-link-type-ext' ).attr( 'checked', '' );
 				},
 				'wikieditor-toolbar-tool-link-cancel': function() {
+					// Clear any saved selection state
+					var context = $j(this).data( 'context' );
+					context.fn.restoreStuffForIE();
 					$j(this).dialog( 'close' );
 				}
 			},
@@ -1432,8 +1437,11 @@ $j(document).ready( function() {
 						.replace( /\\\$1/g, '(.*)' ) + '$'
 				) );
 				// Pre-fill the text fields based on the current selection
-				var selection = $j(this).data( 'context' )
-					.$textarea.textSelection( 'getSelection' ); 
+				var context = $j(this).data( 'context' );
+				// Restore and immediately save selection state, needed for inserting stuff later
+				context.fn.restoreStuffForIE();
+				context.fn.saveStuffForIE();
+				var selection = context.$textarea.textSelection( 'getSelection' ); 
 				$j( '#wikieditor-toolbar-link-int-target' ).focus();
 				// Trigger the change event, so the link status indicator is up to date
 				$j( '#wikieditor-toolbar-link-int-target' ).change();
@@ -1552,13 +1560,19 @@ $j(document).ready( function() {
 					$j( '#wikieditor-toolbar-reference-text' ).val( "" );
 				},
 				'wikieditor-toolbar-tool-reference-cancel': function() {
+					// Clear any saved selection state
+					var context = $j( this ).data( 'context' );
+					context.fn.restoreStuffForIE();
 					$j( this ).dialog( 'close' );
 				}
 			},
 			open: function() {
 				// Pre-fill the text fields based on the current selection
-				var selection = $j(this).data( 'context' )
-					.$textarea.textSelection( 'getSelection' ); 
+				var context = $j(this).data( 'context' );
+				// Restore and immediately save selection state, needed for inserting stuff later
+				context.fn.restoreStuffForIE();
+				context.fn.saveStuffForIE();
+				var selection = context.$textarea.textSelection( 'getSelection' ); 
 				// set focus
 				$j( '#wikieditor-toolbar-reference-text' ).focus();
 				$j( '#wikieditor-toolbar-reference-dialog' )
@@ -1838,7 +1852,7 @@ $j(document).ready( function() {
 		'browsers': {
 			// Left-to-right languages
 			'ltr': {
-				'msie': [['>=', 7]],
+				'msie': false,
 				'firefox': [['>=', 2]],
 				'opera': false,
 				'safari': [['>=', 3]],
@@ -1846,7 +1860,7 @@ $j(document).ready( function() {
 			},
 			// Right-to-left languages
 			'rtl': {
-				'msie': [['>=', 8]],
+				'msie': false,
 				'firefox': [['>=', 2]],
 				'opera': false,
 				'safari': [['>=', 3]],
@@ -2080,3 +2094,13 @@ $j(document).ready( function() {
 		$j( 'textarea#wpTextbox1' ).wikiEditor( 'addModule', 'templateEditor' );
 	}
 });
+/* JavaScript for AddMediaWizard gadget */
+if ( wgWikiEditorEnabledModules.addMediaWizard ) {
+	if( typeof mwAddMediaConfig == 'undefined' ) {
+	    mwAddMediaConfig = {};
+	}
+	mwAddMediaConfig['enabled_providers'] = [ 'wiki_commons', 'upload' ];
+
+	// Transclude mwEmbed support
+	importScriptURI( 'http://prototype.wikimedia.org/s-2/js/mwEmbed/remotes/mediaWiki.js?&uselang=' +  wgUserLanguage );	
+}

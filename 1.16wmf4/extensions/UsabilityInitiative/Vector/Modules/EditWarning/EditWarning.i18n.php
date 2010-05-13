@@ -58,6 +58,8 @@ $messages['be-tarask'] = array(
  * @author Spiritia
  */
 $messages['bg'] = array(
+	'vector-editwarning-warning' => 'Ако излезете от тази страница, може да загубите всички незапазени промени, които сте направили. 
+Ако сте влезли в системата, можете да изключите това предупреждение през меню "{{int:prefs-editing}}" във вашите лични настройки.',
 	'vector-editwarning-preference' => 'Предупреди ме, ако понеча да изляза от страница в режим на редактиране без да запазя промените',
 );
 
@@ -75,7 +77,7 @@ $messages['bn'] = array(
  */
 $messages['br'] = array(
 	'vector-editwarning-warning' => "Mar kuitait ar bajenn-mañ e c'hallit koll ar c'hemmoù degaset ganeoc'h.
-Ma'z oc'h luget e c'hallit diweredekaat ar c'hemenn-diwall-mañ e rann \"{{int:prefs-editing}}\" ho penndibaboù.",
+Ma'z oc'h kevreet e c'hallit diweredekaat ar c'hemenn-diwall-mañ e rann \"{{int:prefs-editing}}\" ho penndibaboù.",
 	'vector-editwarning-preference' => 'Kas keloù din pa guitaan ur bajenn degaset kemmoù enni hep enrollañ',
 );
 
@@ -142,7 +144,7 @@ Denne advarsel kan slås fra under {{int:prefs-editing}} i dine indstillinger.',
 $messages['de'] = array(
 	'vector-editwarning-warning' => 'Das Verlassen dieser Seite kann dazu führen, dass deine Änderungen verloren gehen.
 Wenn du angemeldet bist, kannst du das Anzeigen dieser Warnung im „{{int:prefs-editing}}“-Bereich deiner Einstellungen abschalten.',
-	'vector-editwarning-preference' => 'Warne mich, wenn ich eine „Bearbeiten“-Seite mit nicht gesicherten Änderungen verlasse',
+	'vector-editwarning-preference' => 'Warnen, wenn eine zur Bearbeitung geöffnete Seite verlassen wird, die nicht gesicherte Änderungen enthält',
 );
 
 /** German (formal address) (Deutsch (Sie-Form))
@@ -175,11 +177,12 @@ $messages['dsb'] = array(
 /** Greek (Ελληνικά)
  * @author Omnipaedista
  * @author ZaDiak
+ * @author Απεργός
  */
 $messages['el'] = array(
 	'vector-editwarning-warning' => 'Αφήνοντας αυτή τη σελίδα μπορεί να σας κάνει να χάσετε κάποιες αλλαγές που έχετε κάνει.
 Αν έχετε συνδεθεί, μπορείτε να απενεργοποιήσετε αυτή την προειδοποίηση στο τμήμα "{{int:prefs-editing}}" των προτιμήσεών σας.',
-	'vector-editwarning-preference' => 'Να με προειδοποιείς όταν εγκαταλείπω μία σελίδα επεξεργασίας χωρίς να έχω πρώτα αποθηκεύσει τις αλλαγές',
+	'vector-editwarning-preference' => 'Προειδοποίηση όταν εγκαταλείπω μία σελίδα επεξεργασίας χωρίς να έχω πρώτα αποθηκεύσει τις αλλαγές',
 );
 
 /** Esperanto (Esperanto)
@@ -283,9 +286,7 @@ $messages['he'] = array(
 	'vector-editwarning-preference' => 'הצגת אזהרה אם אני עומד לעזוב דף עריכה עם שינויים שטרם נשמרו',
 );
 
-/** Croatian (Hrvatski)
- * @author Suradnik13
- */
+/** Croatian (Hrvatski) */
 $messages['hr'] = array(
 	'vector-editwarning-warning' => 'Napuštanje ove stranice može uzrokovati gubitak svake izmjene koju ste napravili.
 Možete onemogućiti ovo upozorenje u odjeljku "{{int:prefs-editing}}" Vaših postavki.',
@@ -389,7 +390,7 @@ $messages['ko'] = array(
 	'vector-editwarning-preference' => '수정한 내용을 저장하지 않고 편집 양식을 닫거나 다른 페이지로 이동할 때 알림',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Als-Holder
  * @author Purodha
  */
@@ -432,7 +433,7 @@ $messages['mk'] = array(
 $messages['ml'] = array(
 	'vector-editwarning-warning' => 'ഈ താളിൽ നിന്നു പോകുന്നത് താങ്കൾ വരുത്തിയ മാറ്റങ്ങൾ നഷ്ടപ്പെടാൻ ഇടയാക്കുന്നതാണ്.
 താങ്കൾ ലോഗിൻ ചെയ്തിട്ടുണ്ടെങ്കിൽ, താങ്കളുടെ ക്രമീകരണങ്ങളിൽ "{{int:prefs-editing}}" ഭാഗത്ത് ചെന്ന് ഈ അറിയിപ്പ് ഒഴിവാക്കാവുന്നതാണ്.',
-	'vector-editwarning-preference' => 'സേവ് ചെയ്യാത്ത മാറ്റങ്ങളോടു കൂടിയ തിരുത്തല്‍ താളിൽ നിന്നും പോകുമ്പോൾ എന്നെ അറിയിക്കുക',
+	'vector-editwarning-preference' => 'സേവ് ചെയ്യാത്ത മാറ്റങ്ങളോടു കൂടിയ തിരുത്തൽ താളിൽ നിന്നും പോകുമ്പോൾ എന്നെ അറിയിക്കുക',
 );
 
 /** Malay (Bahasa Melayu)
@@ -442,6 +443,14 @@ $messages['ms'] = array(
 	'vector-editwarning-warning' => 'Meninggalkan laman ini mungkin akan menyebabkan anda kehilangan sebarang perubahan yang telah anda lakukan.
 Anda boleh melumpuhkan amaran in di bahagian "{{int:prefs-editing}}" dalam keutamaan anda.',
 	'vector-editwarning-preference' => 'Beri saya amaran apabila saya meninggalkan sesebuah laman penyuntingan tanpa menyimpan perubahan.',
+);
+
+/** Maltese (Malti)
+ * @author Chrisportelli
+ */
+$messages['mt'] = array(
+	'vector-editwarning-warning' => 'Jekk tħalli din il-paġna jista\' jwassal sabiex titlef kwalunkwe tibdil li tkun għamilt. Jekk int tinsab fil-kont tiegħek, tista\' tneħħi dan l-avviż fis-sezzjoni "{{int:prefs-editing}}" tal-preferenzi tiegħek.',
+	'vector-editwarning-preference' => "Avżani kull meta nħalli paġna ta' modifika b'modifiki li għadhom ma ġewx salvati",
 );
 
 /** Dutch (Nederlands)
@@ -675,7 +684,7 @@ $messages['yi'] = array(
 	'vector-editwarning-preference' => 'שטעלן א ווארענונג ווען איך לאז איבער א רעדאקטירונג בלאט מיט נישט אויפגעהיטענע ענדערונגען',
 );
 
-/** Yue (粵語)
+/** Cantonese (粵語)
  * @author Shinjiman
  */
 $messages['yue'] = array(

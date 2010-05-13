@@ -52,15 +52,16 @@ encapsulateSelection: function( options ) {
 				options.post += ' ';
 			}
 		}
-		var selText = $(this).textSelection( 'getSelection' );
 		var isSample = false;
 		if ( this.style.display == 'none' ) {
 			// Do nothing
 		} else if ( this.selectionStart || this.selectionStart == '0' ) {
 			// Mozilla/Opera
 			$(this).focus();
+			var selText = $(this).textSelection( 'getSelection' );
 			var startPos = this.selectionStart;
 			var endPos = this.selectionEnd;
+			var scrollTop = this.scrollTop;
 			checkSelectedText();
 			if ( options.ownline ) {
 				if ( startPos != 0 && this.value.charAt( startPos - 1 ) != "\n" ) {
@@ -72,6 +73,8 @@ encapsulateSelection: function( options ) {
 			}
 			this.value = this.value.substring( 0, startPos ) + options.pre + selText + options.post +
 				this.value.substring( endPos, this.value.length );
+			// Setting this.value scrolls the textarea to the top, restore the scroll position
+			this.scrollTop = scrollTop;
 			if ( window.opera ) {
 				options.pre = options.pre.replace( /\r?\n/g, "\r\n" );
 				selText = selText.replace( /\r?\n/g, "\r\n" );
@@ -88,6 +91,9 @@ encapsulateSelection: function( options ) {
 		} else if ( document.selection && document.selection.createRange ) {
 			// IE
 			$(this).focus();
+			context.fn.restoreStuffForIE();
+			var selText = $(this).textSelection( 'getSelection' );
+			var scrollTop = this.scrollTop;
 			var range = document.selection.createRange();
 			if ( options.ownline && range.moveStart ) {
 				var range2 = document.selection.createRange();
@@ -111,9 +117,9 @@ encapsulateSelection: function( options ) {
 				range.moveEnd( 'character', - options.post.length );
 			}
 			range.select();
+			// Restore the scroll position
+			this.scrollTop = scrollTop;
 		}
-		// Scroll the textarea to the inserted text
-		$(this).textSelection( 'scrollToCaretPosition' );
 		$(this).trigger( 'encapsulateSelection', [ options.pre, options.peri, options.post, options.ownline,
 			options.replace ] );
 	});

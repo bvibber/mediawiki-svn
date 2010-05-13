@@ -29,11 +29,32 @@ $messages['be-tarask'] = array(
 	'vector-collapsiblenav-preference' => 'Дазволіць згортваць навігацыйнае мэню зьлева',
 );
 
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'vector-collapsiblenav-preference' => 'ভাঁজযোগ্য বাম নেভিগেশন মেনু সক্রিয় করো',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */
 $messages['br'] = array(
 	'vector-collapsiblenav-preference' => 'Aotren al lañser merdeiñ pak-dispak a-gleiz',
+);
+
+/** Catalan (Català)
+ * @author Paucabot
+ */
+$messages['ca'] = array(
+	'vector-collapsiblenav-preference' => "Activa l'opció de reduir el menú de navegació esquerre",
+);
+
+/** Czech (Česky)
+ * @author Kuvaly
+ */
+$messages['cs'] = array(
+	'vector-collapsiblenav-preference' => 'Povolit levé skládací menu',
 );
 
 /** German (Deutsch) */
@@ -67,6 +88,20 @@ $messages['eo'] = array(
  */
 $messages['es'] = array(
 	'vector-collapsiblenav-preference' => 'Activar el menú de navegación izquierda plegable',
+);
+
+/** Estonian (Eesti)
+ * @author Pikne
+ */
+$messages['et'] = array(
+	'vector-collapsiblenav-preference' => 'Tee navigeerimismenüü vasakul peidetavaks',
+);
+
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'vector-collapsiblenav-preference' => 'Ezkerreko nabigazio menua irekigarri bihurtzen du',
 );
 
 /** French (Français)
@@ -125,6 +160,13 @@ $messages['ia'] = array(
 	'vector-collapsiblenav-preference' => 'Activar le menu de navigation plicabile a sinistra',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'vector-collapsiblenav-preference' => 'Aktifkan fungsi menu navigasi kiri yang dapat ditutup',
+);
+
 /** Italian (Italiano)
  * @author Una giornata uggiosa '94
  */
@@ -137,6 +179,13 @@ $messages['it'] = array(
  */
 $messages['ja'] = array(
 	'vector-collapsiblenav-preference' => '左寄りの折り畳めるナビゲーションメニューを使用する',
+);
+
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'vector-collapsiblenav-preference' => '왼쪽 사이드바 메뉴 접기를 활성화하기',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -160,6 +209,13 @@ $messages['ml'] = array(
 	'vector-collapsiblenav-preference' => 'ഇടതുവശത്തെ വഴികാട്ടി മെനു ചുരുക്കാവുന്നതാക്കി സജ്ജീകരിക്കുക',
 );
 
+/** Maltese (Malti)
+ * @author Chrisportelli
+ */
+$messages['mt'] = array(
+	'vector-collapsiblenav-preference' => "Ippermetti menu tan-navigazzjoni fuq ix-xellug li jista' jinħeba",
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -172,6 +228,13 @@ $messages['nl'] = array(
  */
 $messages['no'] = array(
 	'vector-collapsiblenav-preference' => 'Aktiver sammenleggbar venstre navigeringsmeny',
+);
+
+/** Occitan (Occitan)
+ * @author Cedric31
+ */
+$messages['oc'] = array(
+	'vector-collapsiblenav-preference' => "Activar lo menut de navigacion d'esquèrra replegable",
 );
 
 /** Polish (Polski)
@@ -229,5 +292,12 @@ $messages['sv'] = array(
  */
 $messages['tr'] = array(
 	'vector-collapsiblenav-preference' => 'Daraltılabilir sol dolaşım menüsünü etkinleştir',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'vector-collapsiblenav-preference' => 'Bật trình đơn chuyển hướng gấp lại được ở bên phải',
 );
 

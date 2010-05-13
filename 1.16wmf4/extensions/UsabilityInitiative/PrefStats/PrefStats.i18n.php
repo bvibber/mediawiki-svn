@@ -229,12 +229,13 @@ $messages['bn'] = array(
 
 /** Breton (Brezhoneg)
  * @author Fulup
+ * @author Y-M D
  */
 $messages['br'] = array(
 	'prefstats' => 'Stadegoù war ar penndibaboù',
 	'prefstats-desc' => 'Stadegoù war an niver a implijerien o deus diuzet penndibaboù zo',
 	'prefstats-title' => 'Stadegoù war ar penndibaboù',
-	'prefstats-list-intro' => "Evit a rpoent ec'h heulier an dibaboù-mañ.
+	'prefstats-list-intro' => "Evit ar poent ec'h heulier an dibaboù-mañ.
 Klikit war unan anezho da welet ar stadegoù stag outañ",
 	'prefstats-noprefs' => 'Ne heulier dibab ebet evit ar mare. 
 Kefluniañ $wgPrefStatsTrackPrefs evit heuliañ an dibaboù.',
@@ -254,7 +255,7 @@ Kefluniañ $wgPrefStatsTrackPrefs evit heuliañ an dibaboù.',
 	'prefstats-factor-twoweeks' => 'pemzektez',
 	'prefstats-factor-fourweeks' => 'peder sizhun',
 	'prefstats-factor-default' => "distreiñ d'ar skeul dre ziouer",
-	'prefstats-legend-out' => 'Na venn ket kemer perzh ken',
+	'prefstats-legend-out' => 'Ne venn ket kemer perzh ken',
 	'prefstats-legend-in' => 'A venn kemer perzh',
 );
 
@@ -726,9 +727,9 @@ $messages['fa'] = array(
  * @author ZeiP
  */
 $messages['fi'] = array(
-	'prefstats' => 'Asetusten tilastot',
+	'prefstats' => 'Asetustilastot',
 	'prefstats-desc' => 'Kerää tilastoja siitä, kuinka moni käyttäjä on ottanut käyttöön erinäiset asetukset.',
-	'prefstats-title' => 'Asetusten tilastot',
+	'prefstats-title' => 'Asetustilastot',
 	'prefstats-list-intro' => 'Tällä hetkellä seuraavia asetuksia seurataan.
 Tilastot näkyvät painamalla asetusta.',
 	'prefstats-noprefs' => 'Yhtään asetusta ei seurata tällä hetkellä.
@@ -1281,7 +1282,7 @@ $messages['ko'] = array(
 	'prefstats-legend-in' => '활성화한 사용자 수',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -1400,7 +1401,7 @@ Pasirinkite vieną iš jų, norėdami pamatyti statistiką.',
 	'prefstats-xaxis' => 'Trukmė (valandomis)',
 );
 
-/** Laz (Laz)
+/** Lazuri (Lazuri)
  * @author Bombola
  */
 $messages['lzz'] = array(
@@ -1502,6 +1503,36 @@ Tatarajahkan $wgPrefStatsTrackPrefs untuk menjejaki keutamaan-keutamaan.',
 	'prefstats-factor-default' => 'kembali ke skala lalai',
 	'prefstats-legend-out' => 'Berhenti',
 	'prefstats-legend-in' => 'Menyertai',
+);
+
+/** Maltese (Malti)
+ * @author Chrisportelli
+ */
+$messages['mt'] = array(
+	'prefstats' => 'Statistika tal-preferenzi',
+	'prefstats-desc' => 'Tikseb statistika fuq kemm-il utent attivaw ċerti preferenzi',
+	'prefstats-title' => 'Statistika tal-preferenzi',
+	'prefstats-list-intro' => 'Attwalment, il-preferenzi segwenti huma segwiti.
+Agħfas fuq waħda biex tara l-istatistika fuqha.',
+	'prefstats-noprefs' => 'L-ebda preferenza mhi segwita fil-mument. Ikkonfigura $wgPrefStatsTrackPrefs sabiex issegwi l-preferenzi.',
+	'prefstats-counters' => '* $1 {{PLURAL:$1|utent attiva|utenti attivaw}} din il-preferenza wara li l-istatistika fuq il-preferenzi ġew attivati
+** $2 {{PLURAL:$2|utent għad għandu l-preferenza attivata|utenti għad għandhom il-preferenza attivata}}
+** $3 {{PLURAL:$3|utent għandu l-preferenza|utenti għandhom il-preferenza}} diżattivata',
+	'prefstats-counters-expensive' => "* $1 {{PLURAL:$1|utent attiva|utenti attivaw}} din il-preferenza minn mindu l-istatistika fuq il-preferenzi ġew attivati
+** $2 {{PLURAL:$2|utent għad għandu l-preferenza attivata|utenti għad għandhom il-preferenza attivata}}
+** $3 {{PLURAL:$3|utent għandu l-preferenza|utenti għandhom il-preferenza}} diżattivata
+* B'kollox, $4 {{PLURAL:$4|utent immodifika|utenti mmodifikaw}} din il-preferenza",
+	'prefstats-xaxis' => 'Tul (sigħat)',
+	'prefstats-factors' => 'Uri kull: $1',
+	'prefstats-factor-hour' => 'siegħa',
+	'prefstats-factor-sixhours' => 'sitt sigħat',
+	'prefstats-factor-day' => 'ġurnata',
+	'prefstats-factor-week' => 'ġimgħa',
+	'prefstats-factor-twoweeks' => 'ġimgħatejn',
+	'prefstats-factor-fourweeks' => "erba' ġimgħat",
+	'prefstats-factor-default' => 'lura lejn l-iskala predefinita',
+	'prefstats-legend-out' => 'Ma ħadtx sehem',
+	'prefstats-legend-in' => 'Ħadt sehem',
 );
 
 /** Erzya (Эрзянь)
@@ -1746,7 +1777,7 @@ Para monitorizá-las configure $wgPrefStatsTrackPrefs.',
 ** $3 {{PLURAL:$3|utilizador desactivou-a|utilizadores desactivaram-na}} desde então
 * No total, $4 {{PLURAL:$4|utilizador tem|utilizadores têm}} esta preferência activada',
 	'prefstats-xaxis' => 'Duração (horas)',
-	'prefstats-factors' => 'Visualizar por: $1',
+	'prefstats-factors' => 'Visionar por: $1',
 	'prefstats-factor-hour' => 'hora',
 	'prefstats-factor-sixhours' => 'seis horas',
 	'prefstats-factor-day' => 'dia',
@@ -1759,6 +1790,7 @@ Para monitorizá-las configure $wgPrefStatsTrackPrefs.',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
+ * @author 555
  * @author Eduardo.mps
  * @author Heldergeovane
  */
@@ -1766,7 +1798,7 @@ $messages['pt-br'] = array(
 	'prefstats' => 'Estatísticas de preferências',
 	'prefstats-desc' => 'Monitore estatísticas sobre quantos usuários têm certas preferências ativadas',
 	'prefstats-title' => 'Estatísticas de preferências',
-	'prefstats-list-intro' => 'Atualmente, as seguintes preferência estão sendo monitoradas.
+	'prefstats-list-intro' => 'Atualmente, as seguintes preferências estão sendo monitoradas.
 Clique em uma para ver as estatísticas sobre ela.',
 	'prefstats-noprefs' => 'Nenhuma preferência está sendo monitorada no momento.
 Configure $wgPrefStatsTrackPrefs para monitorar preferências.',
@@ -1779,7 +1811,7 @@ Configure $wgPrefStatsTrackPrefs para monitorar preferências.',
 * Ao todo, $4 {{PLURAL:$4|usuário|usuários}} definiram esta preferência',
 	'prefstats-xaxis' => 'Duração (horas)',
 	'prefstats-factors' => 'Visualizar por: $1',
-	'prefstats-factor-hour' => 'Hora',
+	'prefstats-factor-hour' => 'hora',
 	'prefstats-factor-sixhours' => 'seis horas',
 	'prefstats-factor-day' => 'dia',
 	'prefstats-factor-week' => 'semana',
@@ -2351,7 +2383,7 @@ $messages['yi'] = array(
 	'prefstats-legend-in' => 'פרעפֿערענץ אקטיוויזירט',
 );
 
-/** Yue (粵語)
+/** Cantonese (粵語)
  * @author Shinjiman
  */
 $messages['yue'] = array(

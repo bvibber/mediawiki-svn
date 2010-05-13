@@ -207,7 +207,21 @@ $messages['ja'] = array(
 	'userdailycontribs-desc' => 'クリック追跡拡張機能のための利用者の一日あたりの投稿',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Georgian (ქართული)
+ * @author გიორგიმელა
+ */
+$messages['ka'] = array(
+	'userdailycontribs-desc' => 'დაჭერის გაფართოების გამოყენების ყოველდღიური წვლილი.',
+);
+
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'userdailycontribs-desc' => '클릭 추적 확장 기능을 위한 사용자 일일 기여',
+);
+
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -218,7 +232,7 @@ $messages['ksh'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'userdailycontribs-desc' => "Ännerunge pro Dag a Bentzer fir d'Erweiderung vum Suivi vun de Clicken",
+	'userdailycontribs-desc' => "Ännerunge pro Dag a Benotzer fir d'Erweiderung vum Suivi vun de Klicken",
 );
 
 /** Limburgish (Limburgs)
