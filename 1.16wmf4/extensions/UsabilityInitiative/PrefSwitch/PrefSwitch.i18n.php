@@ -63,8 +63,8 @@ Please select all that apply.',
 	'prefswitch-title-off' => 'Turn new features off',
 	'prefswitch-title-switched-off' => 'Thanks',
 	'prefswitch-title-feedback' => 'Feedback',
-	'prefswitch-success-on' => 'New features are now turned on. We hope you enjoy using the new features. You may always turn them back off by clicking on the "[[Special:UsabilityInitiativePrefSwitch|Take me back]]" link at the top of the page.',
-	'prefswitch-success-off' => 'New features are now turned off. Thanks for trying the new features. You may always turn them back on by clicking on the "[[Special:UsabilityInitiativePrefSwitch|New features]]" link at the top of the page.',
+	'prefswitch-success-on' => 'New features are now turned on. We hope you enjoy using the new features. You may always turn them back off by clicking on the "[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-on}}]]" link at the top of the page.',
+	'prefswitch-success-off' => 'New features are now turned off. Thanks for trying the new features. You may always turn them back on by clicking on the "[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-off}}]]" link at the top of the page.',
 	'prefswitch-success-feedback' => 'Your feedback has been sent.',
 	'prefswitch-return' => '<hr style="clear:both">
 Return to <span class="plainlinks">[$1 $2]</span>.',
@@ -75,11 +75,11 @@ Return to <span class="plainlinks">[$1 $2]</span>.',
 [[File:UsabilityDialogs.png|right|link=|Screenshot of the new content generation dialogs]]
 ===Here's what we have changed===
 * '''Navigation''': We have improved the navigation for reading and editing pages. Now, the tabs at the top of each page more clearly define whether you are viewing the page or discussion page, and whether you are reading or editing a page.
-* '''Editing toolbar improvements''':  We have reorganized the editing toolbar to make easier to use.  Now, formatting pages is simpler and more intuitive.
+* '''Editing toolbar improvements''':  We have reorganized the editing toolbar to make easier to use. Now, formatting pages is simpler and more intuitive.
 * '''Link wizard''':  An easy-to-use tool allows you to add links to other wiki pages as well as links to external sites.
 * '''Search improvements''': We have improved search suggestions to get you to the page you are looking for more quickly.
 * '''Other new features''':  We have also introduced a table wizard to make creating tables easier and find and a replace feature to simplify page editing.
-* '''Wikipedia puzzle globe''': we've updated the puzzle globe, read more at the [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/  Wikimedia blog.]",
+* '''Wikipedia puzzle globe''': We have updated the puzzle globe. Read more at the [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/  Wikimedia blog].",
 	'prefswitch-main-anon' => "===Take Me Back===
 If you would like to turn off the new features, <span class=\"plainlinks\">[$1 click here]</span>. You will be asked to login or create an account first.",
 	'prefswitch-main-on' => "===Feedback?===

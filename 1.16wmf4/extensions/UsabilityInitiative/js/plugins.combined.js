@@ -6342,7 +6342,7 @@ encapsulateSelection: function( options ) {
 		var caretPos = 0, endPos = 0;
 		if ( $.browser.msie ) {
 			// IE Support
-			var postFinished = false;
+			var preFinished = false;
 			var periFinished = false;
 			var postFinished = false;
 			var preText, rawPreText, periText;
@@ -6371,15 +6371,15 @@ encapsulateSelection: function( options ) {
 			 * not changed then we know that IE has trimmed a \r\n from the end.
 			 */
 			do {
-				if ( !postFinished ) {
+				if ( !preFinished ) {
 					if ( preRange.compareEndPoints( "StartToEnd", preRange ) == 0 ) {
-						postFinished = true;
+						preFinished = true;
 					} else {
 						preRange.moveEnd( "character", -1 )
 						if ( preRange.text == preText ) {
 							rawPreText += "\r\n";
 						} else {
-							postFinished = true;
+							preFinished = true;
 						}
 					}
 				}
@@ -6407,7 +6407,7 @@ encapsulateSelection: function( options ) {
 						}
 					}
 				}
-			} while ( ( !postFinished || !periFinished || !postFinished ) );
+			} while ( ( !preFinished || !periFinished || !postFinished ) );
 			caretPos = rawPreText.replace( /\r\n/g, "\n" ).length;
 			endPos = caretPos + rawPeriText.replace( /\r\n/g, "\n" ).length;
 		} else if ( e.selectionStart || e.selectionStart == '0' ) {
