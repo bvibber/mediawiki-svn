@@ -1164,7 +1164,10 @@ class BGP(protocol.Protocol):
         
         # Don't do anything if we closed the connection explicitly ourselves
         if self.disconnected:
-            self.deferred.callback(True)
+            # Callback sessionEstablished shouldn't be called, especially not
+            # with an argument protocol = True. Calling errback doesn't seem
+            # appropriate either. Just do nothing?
+            #self.deferred.callback(True)
             self.factory.connectionClosed(self)
             return
         
