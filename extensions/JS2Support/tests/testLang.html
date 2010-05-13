@@ -13,6 +13,14 @@ mw.ready( function(){
 	//var langTestSet = [ 'tk', 'tt', 'sr-el', 'sr-ec', 'sr', 'shi', 'se', 'shi'];	
 	//doLangTable ( langTestSet );
 	
+	//Update the language count
+	var count=0;
+	for(var i in mw.Language.names){
+		count++;
+	}
+	$j('#languageCount').text( count );
+	
+	
 	// Setup bindings: 
 	$j('#runLang').click(function(){
 		$j('#table_out,#score_card').empty();
@@ -182,7 +190,7 @@ mw.ready( function(){
 </head>
 <body>
 <h3>Test Javascript plural msg transformations ( note this is a very resource intensive test )</h3>
-<a id="runAll" href="#">Run Test all<a> ( takes a while ) <br>
+<a id="runAll" href="#">Run all <span id="languageCount">...</span> tests<a> ( takes a while ) <br>
 <a id="runLang" href="#">Run Language Key</a>:<input size="5" id="testLangKey" name = "testLangKey" value="en"/>
 
 <div id="score_card" style="font-size:large"></div>
