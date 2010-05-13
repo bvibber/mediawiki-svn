@@ -2000,7 +2000,7 @@ $j(document).ready( function() {
 					$textarea.textSelection( 'setSelection', { 'start': start,
 						'end': mode == 'replace' ? newEnd : end } );
 					$j( this ).data( 'offset', mode == 'replace' ? newEnd : end );
-					var textbox = typeof context.$iframe != 'undefined' ? context.$iframe[0].contentWindow : $textarea;
+					var textbox = typeof context.$iframe != 'undefined' ? context.$iframe[0].contentWindow : $textarea[0];
 					textbox.focus();
 				}
 			});
