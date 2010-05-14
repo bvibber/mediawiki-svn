@@ -151,7 +151,7 @@ class jsScriptLoader {
 		}
 
 		// Check if we should minify the whole thing:
-		if ( !$this->debug ) {
+		if ( !$this->debug && $this->outputFormat == 'js' ) {
 			$this->output = self::getMinifiedJs( $this->output , $this->requestKey );
 			$this->output = $this->notMinifiedTopOutput . $this->output;
 		}
@@ -380,9 +380,10 @@ class jsScriptLoader {
 	private function transformCssOutput( $classKey, $cssString , $path ='') {
 		// Minify and update paths on cssString:
 		$cssOptions = array();
-		if( ! $this->debug ) {
-			$cssOptions[ 'preserveComments' ] = false;
-		}
+		// Set comments preservation based on debug state
+		$cssOptions[ 'preserveComments' ] = ( $this->debug );
+
+
 		$serverUri = $this->getScriptLoaderUri();
 
 		// Check for the two jsScriptLoader entry points:
@@ -398,7 +399,6 @@ class jsScriptLoader {
 			str_replace('jsScriptLoader.php', '', $serverUri)
 			. dirname( $path ) . '/';
 		}
-
 		// We always run minify to update css image urls
 		$cssString = Minify_CSS::minify( $cssString, $cssOptions);
 
@@ -407,7 +407,7 @@ class jsScriptLoader {
 			return $cssString;
 		}
 
-		// Format is "javascript" return the string in an addStyleString call
+		// outputFormat is "javascript" return the string in an addStyleString call
 		// CSS classes should be of form mw.style.{className}
 		$cssStyleName = str_replace('mw.style.', '', $classKey );
 		return 'mw.addStyleString("' . Xml::escapeJsString( $cssStyleName )
