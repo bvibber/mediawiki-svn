@@ -293,7 +293,7 @@ class jsClassLoader {
 			if( isset( $wgScriptLoaderNamedPaths[ $className ] ) ){
 
 				// Presently extensions don't register were the named path parent module
-				// so we just have a gnneral extension error.
+				// so we just have an extension error.
 				$setInModuleError = ( self::$classParentModuleName [ $className ] )
 					? " set in module: " . self::$classParentModuleName [ $className ]
 					: " set in an extension ";

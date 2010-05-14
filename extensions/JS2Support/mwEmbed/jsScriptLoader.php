@@ -962,7 +962,7 @@ class jsScriptLoader {
 			// Get the module $messages keys
 
 			$moduleName = jsClassLoader::getClassModuleName( $className );
-			if( $moduleName && $wgExtensionJavascriptModules[ $moduleName ] ) {
+			if( $moduleName && isset( $wgExtensionJavascriptModules[ $moduleName ] ) ) {
 
 				// Get the module localization file:
 				$modulePath = $wgExtensionJavascriptModules[ $moduleName ];
