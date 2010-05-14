@@ -47,7 +47,7 @@ $wgExtensionMessagesFiles['UsabilityInitiative'] =
 $wgHooks['BeforePageDisplay'][] = 'UsabilityInitiativeHooks::addResources';
 $wgHooks['MakeGlobalVariablesScript'][] = 'UsabilityInitiativeHooks::addJSVars';
 
-// Register the loader.js
-$wgExtensionJavascriptLoader[] = 'extensions/UsabilityInitiativeJS2/loader.js';
+// Register the UsabilityInitiative javascript module path:
+$wgExtensionJavascriptModules[ 'UsabilityInitiative' ] = 'extensions/UsabilityInitiativeJS2';
 
 

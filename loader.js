@@ -13,16 +13,15 @@ mw.addClassFilePaths( {
 	"mw.style.wikiEditorToolbar" :  "css/wikiEditor.toolbar.css",
 	"mw.style.vectorJquery-ui" : "css/vector/jquery-ui-1.7.2.css",
 	
-	
 	"$j.whileAsync" : "js/plugins/jquery.async.js",
+	
 	"$j.fn.autoEllipsis" : "js/plugins/jquery.autoEllipsis.js",
-	"$j.browserTest" : "js/plugins/jquery.browser.js",
+	
 	"$j.fn.collapsibleTabs" :	"js/plugins/jquery.collapsibleTabs.js",
 	"$j.fn.color" : "js/plugins/jquery.color.js",
 	
 	"$j.fn.delayedBind" :	"js/plugins/jquery.delayedBind.js",
-	
-	"$j.fn.suggestions" :	"js/plugins/jquery.suggestions.js",
+		
 		
 	"$j.wikiEditor" : "js/plugins/jquery.wikiEditor.js",
 	
