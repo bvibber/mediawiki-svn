@@ -6185,7 +6185,7 @@ $mvMVDTypeDefaultDisp треба да биде подмножество на $mv
 	'mv_view_wiki_page' => 'Погледај вики-страница',
 	'mv_error_mvd_not_found' => 'Грешка. Mvd не е пронајден',
 	'mv_edit_sequence' => 'Уредување на низата: $1',
-	'mv_sequence_player_title' => 'прегледувач на низи',
+	'mv_sequence_player_title' => 'изведувач на низи',
 	'mv_resource_not_found' => "Ресурсот '''$1''' не е пронајден",
 	'mv_resource_not_supported' => "Ресурсо од типот '''$1''' не е поддржан",
 	'mv_resource_locator' => 'Пронаоѓач на извори',

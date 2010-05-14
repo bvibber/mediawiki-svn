@@ -169,6 +169,13 @@ $messages['nl'] = array(
 	'wikieditor-addMediaWizard-preference' => 'Uitbreiding "Wizard media toevoegen" inschakelen',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Laaknor
+ */
+$messages['no'] = array(
+	'wikieditor-addMediaWizard-preference' => 'Aktiver "Legg til media veiviser"-funksjonen.',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */

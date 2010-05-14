@@ -8393,6 +8393,7 @@ $4',
 
 /** Swedish (Svenska)
  * @author Boivie
+ * @author Dafer45
  * @author Fluff
  * @author Gabbe.g
  * @author GameOn
@@ -8496,6 +8497,7 @@ $messages['sv'] = array(
 	'codereview-tests-failed2' => '$1 {{PLURAL:$2|lyckat test|lyckade tester}}, $3 {{PLURAL:$4|test|tester}} med fel:',
 	'codereview-tests-running' => 'Testfall körs...',
 	'codereview-tests-aborted' => 'Testkörning avbruten',
+	'codereview-tests-failed' => 'Misslyckades',
 	'codereview-email-subj' => '[$1] [$2]: Ny kommentar tillagd',
 	'codereview-email-body' => 'Användaren "$1" postade en kommenter på $3
 

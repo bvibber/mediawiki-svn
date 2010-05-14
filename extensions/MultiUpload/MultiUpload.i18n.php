@@ -1408,10 +1408,11 @@ $messages['sah'] = array(
 );
 
 /** Sardinian (Sardu)
+ * @author Andria
  * @author Marzedu
  */
 $messages['sc'] = array(
-	'multipleupload' => 'Càrriga files',
+	'multipleupload' => 'Càrriga files mùltiplos',
 	'multipleupload-saveallfiles' => 'Sarva totu is files',
 );
 

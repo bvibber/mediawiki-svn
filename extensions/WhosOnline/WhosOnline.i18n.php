@@ -30,6 +30,13 @@ $messages['af'] = array(
 	'whosonline-desc' => "Vertoon [[Special:WhosOnline|'n lys]] van aangetekende en anonieme gebruikers wat tans aanlyn is",
 );
 
+/** Gheg Albanian (Gegë)
+ * @author MicroBoy
+ */
+$messages['aln'] = array(
+	'whosonline' => 'Kush o në linjë',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

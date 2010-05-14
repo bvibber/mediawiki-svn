@@ -1993,7 +1993,7 @@ $messages['lv'] = array(
  * @author Brest
  */
 $messages['mk'] = array(
-	'ogg-desc' => 'Ракувач со Ogg Theora и Vorbis податотеки, со помош на JavaScript преслушувач/прегледувач',
+	'ogg-desc' => 'Ракувач со Ogg Theora и Vorbis податотеки, со JavaScript изведувач',
 	'ogg-short-audio' => 'Ogg $1 звучна податотека, $2',
 	'ogg-short-video' => 'Ogg $1 видео податотека, $2',
 	'ogg-short-general' => 'Ogg $1 медија податотека, $2',
@@ -2012,7 +2012,7 @@ $messages['mk'] = array(
 	'ogg-no-xiphqt' => 'Изгледа ја немате инсталирано XiphQT компонентата за QuickTime.
 QuickTime не може да преслушува/прегледува Ogg податотеки без оваа компонента.
 Можете да го <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">симнете XiphQT</a> или да изберете некој друг софтвер за преслушување/прегледување.',
-	'ogg-player-videoElement' => 'Подржано од прелистувачот',
+	'ogg-player-videoElement' => 'Поддржано од прелистувачот',
 	'ogg-player-oggPlugin' => 'Вградено во прелистувачот',
 	'ogg-player-cortado' => 'Cortado (Java)',
 	'ogg-player-vlc-mozilla' => 'VLC',
@@ -2024,7 +2024,7 @@ QuickTime не може да преслушува/прегледува Ogg по�
 	'ogg-player-kaffeine' => 'Kaffeine',
 	'ogg-player-mplayerplug-in' => 'mplayerplug-in',
 	'ogg-player-thumbnail' => 'Само неподвижни слики',
-	'ogg-player-soundthumb' => 'Нема инсталирано преслушувач',
+	'ogg-player-soundthumb' => 'Нема изведувач',
 	'ogg-player-selected' => '(избрано)',
 	'ogg-use-player' => 'Користи:',
 	'ogg-more' => 'Повеќе...',
@@ -2329,6 +2329,7 @@ $messages['no'] = array(
 	'ogg-dismiss' => 'Lukk',
 	'ogg-download' => 'Last ned fil',
 	'ogg-desc-link' => 'Om denne filen',
+	'ogg-oggThumb-version' => 'OggHandler krever oggThumb versjon $1 eller senere.',
 );
 
 /** Occitan (Occitan)

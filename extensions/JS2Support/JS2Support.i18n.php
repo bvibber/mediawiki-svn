@@ -37,7 +37,7 @@ $messages['ca'] = array(
  * @author Kghbln
  */
 $messages['de'] = array(
-	'js2support-desc' => 'JS2-Unterstützung durch eine Softwareerweiterung',
+	'js2support-desc' => 'JS2-Unterstützung',
 );
 
 /** Lower Sorbian (Dolnoserbski)

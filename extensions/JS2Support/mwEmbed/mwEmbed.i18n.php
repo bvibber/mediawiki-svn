@@ -63,12 +63,21 @@ $messages['cy'] = array(
 	'mwe-loading_txt' => 'wrthi\'n llwytho ...',
 );
 
+/** German (Deutsch)
+ * @author Kghbln
+ * @author Metalhead64
+ */
 $messages['de'] = array(
 	'mwe-loading_txt' => 'lade …',
 	'mwe-error_load_lib' => 'Fehler: JavaScript $1 war nicht abrufbar oder lässt $2 nicht zu',
 	'mwe-apiproxy-setup' => 'API-Proxy-Konfiguration',
+	'mwe-load-drag-item' => 'Lade eingebettetes Element',
 	'mwe-ok' => 'OK',
 	'mwe-cancel' => 'Abbrechen',
+	'mwe-enable-gadget' => 'Aktiviere die Beta-Version des Multimedia-Helferleins (mwEmbed) für alle Seiten',
+	'mwe-enable-gadget-done' => 'Beta-Version des Multimedia-Helferleins wurde aktiviert',
+	'mwe-must-login-gadget' => 'Um das Helferlein aktivieren zu können, musst du dich <a target="_new" href="$1">anmelden</a>',
+	'mwe-test-plural' => '{{PLURAL:$1|$1 Test|$1 Tests}} durchlaufen',
 );
 
 $messages['diq'] = array(
@@ -114,13 +123,22 @@ $messages['fi'] = array(
 	'mwe-cancel' => 'Peruuta',
 );
 
+/** French (Français)
+ * @author IAlex
+ * @author Jean-Frédéric
+ * @author PieRRoMaN
+ */
 $messages['fr'] = array(
 	'mwe-loading_txt' => 'chargement ...',
-	'mwe-error_load_lib' => 'Erreur : JavaScript $1 n\'a pas pu être trouvé ou ne définit pas $2',
+	'mwe-error_load_lib' => "Erreur : JavaScript $1 n'a pas pu être trouvé ou ne définit pas $2",
 	'mwe-apiproxy-setup' => 'Configuration du proxy API',
 	'mwe-load-drag-item' => 'Chargement de l’élément dépose',
 	'mwe-ok' => 'OK',
 	'mwe-cancel' => 'Annuler',
+	'mwe-enable-gadget' => 'Activer beta multimédia (mwEmbed) sur toutes les pages',
+	'mwe-enable-gadget-done' => 'Le gadget multimédia beta a été activé',
+	'mwe-must-login-gadget' => 'Afin d\'activer le gadget vous devez vous <a target="_new" href="$1">connecter</a>',
+	'mwe-test-plural' => "J'ai exécuté {{PLURAL:$1|$1 test|$1 tests}}",
 );
 
 /** Galician (Galego)
@@ -235,6 +253,22 @@ $messages['lb'] = array(
 	'mwe-cancel' => 'Ofbriechen',
 );
 
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'mwe-loading_txt' => 'Вчитувам...',
+	'mwe-error_load_lib' => 'Грешка: JavaScript $1 не е достапен или не определува $2',
+	'mwe-apiproxy-setup' => 'Поставувам API прокси',
+	'mwe-load-drag-item' => 'Го вчитувам повлечениот елемент',
+	'mwe-ok' => 'ОК',
+	'mwe-cancel' => 'Откажи',
+	'mwe-enable-gadget' => 'Овозможи бета-мултимедија (mwEmbed) за сите страници',
+	'mwe-enable-gadget-done' => 'Овозможена е алатката за бета-мултимедија',
+	'mwe-must-login-gadget' => 'За да ја овозможите алатката морате да се <a target="_new" href="$1">најавите</a>',
+	'mwe-test-plural' => 'Направив {{PLURAL:$1|$1 проверка|$1 проверки}}',
+);
+
 /** Malayalam (മലയാളം)
  * @author Praveenp
  */
@@ -281,13 +315,21 @@ $messages['pl'] = array(
 	'mwe-error_load_lib' => 'Błąd – W plik JavaScript $1 brak jest możliwości pobrania oraz definicji $2',
 );
 
+/** Portuguese (Português)
+ * @author Hamilton Abreu
+ * @author Malafaya
+ */
 $messages['pt'] = array(
 	'mwe-loading_txt' => 'A carregar ...',
 	'mwe-error_load_lib' => 'Erro: O JavaScript $1 não pode ser importado ou não define $2',
-	'mwe-apiproxy-setup' => 'A preparar o \'\'proxy\'\' da API',
-	'mwe-load-drag-item' => 'Carregando o objecto arrastado',
+	'mwe-apiproxy-setup' => "A preparar o ''proxy'' da API",
+	'mwe-load-drag-item' => 'A carregar o objecto arrastado',
 	'mwe-ok' => 'OK',
 	'mwe-cancel' => 'Cancelar',
+	'mwe-enable-gadget' => 'Activar multimédia beta (mwEmbed) para todas as páginas',
+	'mwe-enable-gadget-done' => 'Gadget de multimédia beta foi activado',
+	'mwe-must-login-gadget' => 'Para activar o gadget tem de estar <a target="_new" href="$1">autenticado</a>',
+	'mwe-test-plural' => 'Fiz $1 {{PLURAL:$1|teste|testes}}',
 );
 
 /** Russian (Русский)

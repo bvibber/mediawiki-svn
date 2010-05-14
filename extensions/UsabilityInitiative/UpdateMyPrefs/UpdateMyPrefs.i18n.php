@@ -64,9 +64,12 @@ $messages['br'] = array(
 
 /** Catalan (Català)
  * @author Paucabot
+ * @author Vriullop
  */
 $messages['ca'] = array(
 	'prefs-updates' => 'Actualitzacions',
+	'updatemyprefs-desc' => 'Preferència pels usuaris per especificar si desitgen actualitzacions periòdiques de la interfície quan estiguin disponibles',
+	'updatemyprefs-label-message' => 'Actualitzar automàticament les meves preferències amb els nous valors i eines per defecte quan estiguin disponibles',
 );
 
 /** Czech (Česky)

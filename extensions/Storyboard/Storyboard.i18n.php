@@ -1422,6 +1422,34 @@ $messages['ru'] = array(
 	'storyboard-storydeletionconfirm' => 'Вы уверены, что хотите удалить эту историю?',
 );
 
+/** Swedish (Svenska)
+ * @author Dafer45
+ */
+$messages['sv'] = array(
+	'storyboard-unpublished' => 'Ej publicerad',
+	'storyboard-published' => 'Publicerad',
+	'storyboard-hidden' => 'Dold',
+	'storyboard-unpublish' => 'Ej publicerad',
+	'storyboard-publish' => 'Publicera',
+	'storyboard-hide' => 'Dölj',
+	'storyboard-option-unpublished' => 'ej publicerad',
+	'storyboard-option-published' => 'publicerad',
+	'storyboard-option-hidden' => 'dold',
+	'storyboard-submittedbyon' => 'Insänt av $1 på $2, $3.',
+	'storyboard-authorname' => 'Författarnamn',
+	'storyboard-language' => 'Språk',
+	'storyboard-yourname' => 'Ditt namn (krävs)',
+	'storyboard-occupation' => 'Ditt yrke',
+	'storyboard-photo' => 'Har du ett foto på dig själv?
+Varför inte dela med dig av det?',
+	'storyboard-email' => 'Din e-postadress (krävs)',
+	'storyboard-storytitle' => 'En kort, beskrivande titel (krävs)',
+	'storyboard-charsneeded' => '($ 1 fler ((plural: $ 1 | tecken | tecken)) behövs)',
+	'storyboard-alreadyexists' => '"$1" är redan upptagen.',
+	'storyboard-alreadyexistschange' => '"{0}" är redan upptaget, välj en annan titel.',
+	'storyboard-changetitle' => 'Ändra titeln.',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */

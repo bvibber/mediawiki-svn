@@ -151,6 +151,15 @@ $messages['nl'] = array(
 	'active-task-forces-intro' => "Aantal bewerkingen aan taskforcepagina's in de afgelopen {{PLURAL:$1|dag|$1 dagen}}.",
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Laaknor
+ */
+$messages['no'] = array(
+	'activetaskforces' => 'Aktive arbeidsgrupper',
+	'active-task-forces-desc' => 'Viser antall redigeringer på arbeidsgruppesider',
+	'active-task-forces-intro' => 'Antall redigeringer på arbeidsgruppesider {{PLURAL:$1|den siste $1 dag|de siste $1 dager}}.',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */
