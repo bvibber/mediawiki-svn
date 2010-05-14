@@ -84,6 +84,8 @@ $messages['br'] = array(
 $messages['ca'] = array(
 	'prefswitch-link-anon' => 'Noves característiques',
 	'tooltip-pt-prefswitch-link-anon' => 'Més informació sobre les noves característiques',
+	'prefswitch-link-on' => 'Torna-ho enrere',
+	'tooltip-pt-prefswitch-link-on' => 'Desactiva les noves característiques',
 	'prefswitch-link-off' => 'Noves característiques',
 	'tooltip-pt-prefswitch-link-off' => 'Proveu les noves funcions',
 );

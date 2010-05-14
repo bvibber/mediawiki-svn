@@ -149,7 +149,7 @@ $messages['da'] = array(
  */
 $messages['de'] = array(
 	'vector-simplesearch-search' => 'Suche',
-	'vector-simplesearch-containing' => 'enthält …',
+	'vector-simplesearch-containing' => 'Volltextsuche nach …',
 );
 
 /** Zazaki (Zazaki)

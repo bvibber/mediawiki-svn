@@ -359,7 +359,13 @@ $messages['ca'] = array(
 	'prefswitch-survey-true' => 'Sí',
 	'prefswitch-survey-false' => 'No',
 	'prefswitch-survey-submit-off' => 'Deshabiliteu les noves característiques',
+	'prefswitch-survey-cancel-off' => 'Si voleu continuar utilitzant les noves característiques podeu tornar a $1.',
 	'prefswitch-survey-submit-feedback' => 'Donau la vostra opinió',
+	'prefswitch-survey-cancel-feedback' => 'Si no voleu fer cap comentari podeu tornar a $1.',
+	'prefswitch-survey-question-like' => 'Què us ha agradat de les noves funcionalitats?',
+	'prefswitch-survey-question-dislike' => 'Què és el que no us ha agradat de les funcionalitats?',
+	'prefswitch-survey-question-whyoff' => 'Per què desactiveu les noves funcionalitats?
+Si us plau, seleccioneu tot el que correspongui',
 	'prefswitch-survey-answer-whyoff-hard' => "Ha estat massa difícil d'usar.",
 	'prefswitch-survey-answer-whyoff-didntwork' => 'No funcionava correctament.',
 	'prefswitch-survey-answer-whyoff-notpredictable' => 'No funcionava de manera predictible.',
@@ -376,8 +382,12 @@ $messages['ca'] = array(
 	'prefswitch-title-switched-on' => 'Gaudiu!',
 	'prefswitch-title-off' => 'Deshabiliteu les noves característiques',
 	'prefswitch-title-switched-off' => 'Gràcies',
+	'prefswitch-title-feedback' => 'Avaluació',
 	'prefswitch-success-on' => "S'han habilitat noves característiques. Esperem que les aprecieu. Sempre podeu tornar enrere clicant a l'enllaç «[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-on}}]]» de dalt de tot de la pàgina.",
 	'prefswitch-success-off' => "S'han deshabilitat les noves característiques. Gràcies per provar-les. Podeu sempre tornar-les a habilitar clicant en l'enllaç «[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-off}}]]» de dalt de tot de la pàgina.",
+	'prefswitch-success-feedback' => 'Els vostres comentaris han estat enviats.',
+	'prefswitch-return' => '<hr style="clear:both">
+Torna a <span class="plainlinks">[$1 $2]</span>.',
 	'prefswitch-main' => "Hem estat treballant dur per fer les coses més fàcils als nostres usuaris. Estem entusiasmats per compartir algunes millores, incloent-hi un nou aspecte i la simplificació de les funcions d'edició. La millora de la usabilitat dels nostres projectes és una prioritat de la Fundació Wikimedia i compartirem més actualitzacions en el futur. Per a més informació vegeu el comentari al respecte publicat en el [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/ bloc de Wikimedia].
 
 [[File:UsabilityNavigation.png|right|link=|Nova navegació]]
@@ -396,6 +406,8 @@ Si desitgeu desactivar les noves característiques <span class="plainlinks">[$1 
 Ens agradaria saber les vostres impressions. Us preguem que visiteu la nostra <span class="plainlinks">[$1 pàgina de comentaris]</span>.
 ===Tornar enrere===
 Si desitgeu desactivar les noves característiques <span class="plainlinks">[$1 cliqueu aquí]</span>.',
+	'prefswitch-main-off' => '===Proveu-les!===
+Si desitgeu activar les noves funcionalitats <span class="plainlinks">[$1 cliqueu aquí]</span>.',
 );
 
 /** Czech (Česky)
@@ -1449,6 +1461,8 @@ $messages['ja'] = array(
 	'prefswitch-survey-cancel-off' => '新機能の使用を継続したい場合は、$1に戻ってください。',
 	'prefswitch-survey-submit-feedback' => 'フィードバックを送る',
 	'prefswitch-survey-cancel-feedback' => 'フィードバックを提供したくない場合は、$1に戻ってください。',
+	'prefswitch-survey-question-like' => '新機能のどの点が気に入りましたか？',
+	'prefswitch-survey-question-dislike' => '新機能のどの点が気に入りませんでしたか？',
 	'prefswitch-survey-question-whyoff' => '新機能を停止する理由をお聞かせください。
 あてはまるものを全てお選びください。',
 	'prefswitch-survey-answer-whyoff-hard' => '使用方法が難しすぎた。',
@@ -1463,7 +1477,7 @@ $messages['ja'] = array(
 	'prefswitch-survey-question-os' => 'ご利用のOSをお答えください。',
 	'prefswitch-survey-answer-os-other' => 'その他のオペレーティングシステム:',
 	'prefswitch-survey-question-res' => 'ご使用中の画面の解像度をお答えください。',
-	'prefswitch-title-on' => '新しくなった点',
+	'prefswitch-title-on' => '新機能',
 	'prefswitch-title-switched-on' => 'お楽しみください！',
 	'prefswitch-title-off' => '新機能を停止する',
 	'prefswitch-title-switched-off' => 'ありがとうございました',
@@ -1493,9 +1507,9 @@ $messages['ja'] = array(
 	'prefswitch-main-off' => '===お試しください！===
 新機能を有効にしたい場合は、<span class="plainlinks">[$1 ここをクリック]</span>してください。',
 	'prefswitch-survey-intro-feedback' => 'ご意見をぜひお聞かせください。
-下記の任意の調査にぜひご協力ください。',
+「[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]」をクリックする前に、下記の調査に任意でご協力ください。',
 	'prefswitch-survey-intro-off' => '新機能をお試しいただきありがとうございます。
-更なる改善のために、ぜひ下記の任意の調査にご協力ください。',
+更なる改善のために、「[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]」をクリックする前に下記の調査に任意でご協力ください。',
 );
 
 /** Georgian (ქართული)
@@ -1564,7 +1578,7 @@ $messages['ko'] = array(
 	'prefswitch-survey-question-os' => '어떤 운영 체제(OS)를 사용하고 있나요?',
 	'prefswitch-survey-answer-os-other' => '다른 운영 체제:',
 	'prefswitch-survey-question-res' => '어느 정도의 모니터 해상도를 사용하고 있나요?',
-	'prefswitch-title-on' => '무엇이 새로워졌나요?',
+	'prefswitch-title-on' => '새 기능',
 	'prefswitch-title-switched-on' => '즐겁게 이용하십시오!',
 	'prefswitch-title-off' => '새 기능 끄기',
 	'prefswitch-title-switched-off' => '감사합니다.',
@@ -1774,17 +1788,18 @@ $messages['ml'] = array(
 	'prefswitch-success-feedback' => 'താങ്കളുടെ അഭിപ്രായങ്ങൾ അയച്ചുകഴിഞ്ഞു.',
 	'prefswitch-return' => '<hr style="clear:both">
 <span class="plainlinks">[$1 $2]</span> എന്ന താളിലേയ്ക്ക് മടങ്ങുക.',
-	'prefswitch-main' => "ഞങ്ങൾ ഞങ്ങളുടെ ഉപയോക്താക്കൾക്ക് കാര്യങ്ങൾ എളുപ്പമാക്കി നൽകാൻ കഠിനാധ്വാനം ചെയ്യുന്നുണ്ട്. പുതുമയുള്ള ദൃശ്യാനുഭവും ലളിതമാക്കിയ തിരുത്തൽ സൗകര്യവുമടക്കമുള്ള ചില മെച്ചപ്പെടുത്തലുകൾ ഞങ്ങൾ ആഹ്ലാദത്തോടെ പങ്ക് വെയ്ക്കുന്നു. നമ്മുടെ സംരംഭങ്ങളുടെ മെച്ചപ്പെട്ട ഉപയോഗ്യത വിക്കിമീഡിയ ഫൗണ്ടേഷന്റെ ലക്ഷ്യമാണ്, കൂടുതൽ മെച്ചപ്പെടുത്തലുകൾ ഭാവിയിൽ വരാനിരിക്കുന്നു.
+	'prefswitch-main' => "ഞങ്ങൾ ഞങ്ങളുടെ ഉപയോക്താക്കൾക്ക് കാര്യങ്ങൾ എളുപ്പമാക്കി നൽകാൻ കഠിനാധ്വാനം ചെയ്യുന്നുണ്ട്. പുതുമയുള്ള ദൃശ്യാനുഭവും ലളിതമാക്കിയ തിരുത്തൽ സൗകര്യവുമടക്കമുള്ള ചില മെച്ചപ്പെടുത്തലുകൾ ഞങ്ങൾ ആഹ്ലാദത്തോടെ പങ്ക് വെയ്ക്കട്ടെ. നമ്മുടെ സംരംഭങ്ങളുടെ മെച്ചപ്പെട്ട ഉപയോഗ്യത വിക്കിമീഡിയ ഫൗണ്ടേഷന്റെ ലക്ഷ്യമാണ്, കൂടുതൽ മെച്ചപ്പെടുത്തലുകൾ ഭാവിയിൽ വരാനിരിക്കുന്നു. കൂടുതൽ വിവരങ്ങൾക്ക് [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/ വിക്കിമീഡിയ ബ്ലോഗ്] പോസ്റ്റ് സന്ദർശിക്കുക
 
 [[File:UsabilityNavigation.png|right|link=|പുതിയ നാവിഗേഷന്റെ സ്ക്രീൻഷോട്ട്]]
 [[File:UsabilityToolbar.png|right|link=|വിപുലമാക്കിയ റ്റൂൾബാറിന്റെ സ്ക്രീൻഷോട്ട്]]
 [[File:UsabilityDialogs.png|right|link=|ഉള്ളടക്കം ചേർക്കാനുള്ള സൗകര്യങ്ങളുടെ സ്ക്രീൻഷോട്ട്]]
 ===ഞങ്ങൾ മാറ്റം വരുത്തിയവ===
-*നാവിഗേഷൻ:''' താളുകൾ വായിക്കാനും തിരുത്തുവാനുമുള്ള സൗകര്യം മെച്ചപ്പെടുത്തി. ഇപ്പോൾ ഓരോ താളിന്റേയും മുകളിലുള്ള റ്റാബുകൾ താങ്കൾ താളാണോ സംവാദം താളാണോ കാണുന്നത് എന്നും, താങ്കൾ തിരുത്തുകയാണോ വായിക്കുകയാണോ എന്നും വ്യക്തമായി കാണിക്കുന്നു.
-*തിരുത്തൽ ടൂൾബാർ മെച്ചപ്പെടുത്തലുകൾ:''' ലളിതമായി ഉപയോഗിക്കാവുന്ന വിധത്തിൽ ഞങ്ങൾ തിരുത്തൽ ടൂൾബാർ പുനഃക്രമീകരിച്ചിരിക്കുന്നു. ഇപ്പോൾ താൾ ശരിയായ വിധത്തിൽ വിന്യസിക്കുന്നത് ലളിതവും സ്വാഭാവികവുമായിരിക്കും.
-*കണ്ണി ചേർക്കൽ:''' ലളിതമായി ഉപയോഗിക്കാവുന്ന ഉപകരണം കൊണ്ട് മറ്റ് വിക്കിപീഡിയ താളുകളിലേയ്ക്കോ പുറത്തുള്ള സൈറ്റുകളിലേയ്ക്കോ കണ്ണികൾ ചേർക്കാൻ താങ്കളെ സഹായിക്കുന്നു.
-*തിരച്ചിൽ മെച്ചപ്പെടുത്തലുകൾ:''' താങ്കൾ തിരയുന്ന താളിലേയ്ക്ക് പെട്ടെന്ന് എത്തിച്ചേരാവുന്ന വിധത്തിൽ മെച്ചപ്പെടുത്തിയ തിരച്ചിൽ നിർദ്ദേശങ്ങൾ ഉൾപ്പെടുത്തിയിരിക്കുന്നു.
-*മറ്റ് പുതിയ സവിശേഷതകൾ:''' പട്ടികകൾ ചേർക്കാനായി ഒരു സഹായിയും താൾ തിരുത്തൽ ലളിതമാക്കാൻ വാക്കുകളും മറ്റും കണ്ടെത്തി മാറ്റിച്ചേർക്കാനുള്ള സൗകര്യവും ഉൾപ്പെടുത്തിയിരിക്കുന്നു.",
+* '''നാവിഗേഷൻ:''' താളുകൾ വായിക്കാനും തിരുത്തുവാനുമുള്ള സൗകര്യം മെച്ചപ്പെടുത്തി. ഇപ്പോൾ ഓരോ താളിന്റേയും മുകളിലുള്ള റ്റാബുകൾ താങ്കൾ താളാണോ സംവാദം താളാണോ കാണുന്നത് എന്നും, താങ്കൾ തിരുത്തുകയാണോ വായിക്കുകയാണോ എന്നും വ്യക്തമായി കാണിക്കുന്നു.
+* '''തിരുത്തൽ ടൂൾബാർ മെച്ചപ്പെടുത്തലുകൾ:''' ലളിതമായി ഉപയോഗിക്കാവുന്ന വിധത്തിൽ ഞങ്ങൾ തിരുത്തൽ ടൂൾബാർ പുനഃക്രമീകരിച്ചിരിക്കുന്നു. ഇപ്പോൾ താൾ ശരിയായ വിധത്തിൽ വിന്യസിക്കുന്നത് ലളിതവും സ്വാഭാവികവുമായിരിക്കും.
+* '''കണ്ണി ചേർക്കൽ:''' ലളിതമായി ഉപയോഗിക്കാവുന്ന ഉപകരണം കൊണ്ട് മറ്റ് വിക്കിപീഡിയ താളുകളിലേയ്ക്കോ പുറത്തുള്ള സൈറ്റുകളിലേയ്ക്കോ കണ്ണികൾ ചേർക്കാൻ താങ്കളെ സഹായിക്കുന്നു.
+* '''തിരച്ചിൽ മെച്ചപ്പെടുത്തലുകൾ:''' താങ്കൾ തിരയുന്ന താളിലേയ്ക്ക് പെട്ടെന്ന് എത്തിച്ചേരാവുന്ന വിധത്തിൽ മെച്ചപ്പെടുത്തിയ തിരച്ചിൽ നിർദ്ദേശങ്ങൾ ഉൾപ്പെടുത്തിയിരിക്കുന്നു.
+* '''മറ്റ് പുതിയ സവിശേഷതകൾ:''' പട്ടികകൾ ചേർക്കാനായി ഒരു സഹായിയും താൾ തിരുത്തൽ ലളിതമാക്കാൻ വാക്കുകളും മറ്റും കണ്ടെത്തി മാറ്റിച്ചേർക്കാനുള്ള സൗകര്യവും ഉൾപ്പെടുത്തിയിരിക്കുന്നു.
+* '''വിക്കിപീഡിയ പസിൽ ഗ്ലോബ്:''' പസിൽ ഗ്ലോബ് പുതുക്കിയിരിക്കുന്നു. കൂടുതൽ [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ വിക്കിമീഡിയ ബ്ലോഗിൽ] വായിക്കുക.",
 	'prefswitch-main-anon' => '===എനിക്കിതു വേണ്ട===
 പുതിയ സവിശേഷതകൾ താങ്കൾ ഒഴിവാക്കാൻ ആഗ്രഹിക്കുന്നുവെങ്കിൽ, <span class="plainlinks">[$1 ഇവിടെ ഞെക്കുക]</span>. ഇതിനായി ആദ്യം ലോഗിൻ ചെയ്യുകയോ അംഗത്വമെടുക്കുകയോ ചെയ്യേണ്ടതാണ്.',
 	'prefswitch-main-on' => '===അഭിപ്രായങ്ങൾ?===
@@ -2267,6 +2282,14 @@ $messages['ru'] = array(
 Чтобы помочь нам улучшить их, пожалуйста, ответьте на несколько необязательных вопросов, прежде чем нажмёте «[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]».',
 );
 
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
+$messages['sk'] = array(
+	'prefswitch-survey-true' => 'Áno',
+	'prefswitch-survey-false' => 'Nie',
+);
+
 /** Slovenian (Slovenščina)
  * @author Dbc334
  */
@@ -2325,6 +2348,8 @@ $messages['sv'] = array(
 	'prefswitch-survey-cancel-off' => 'Om du vill fortsätta att använda de nya funktionerna kan du återgå till $1.',
 	'prefswitch-survey-submit-feedback' => 'Skicka feedback',
 	'prefswitch-survey-cancel-feedback' => 'Om du inte vill ge feedback kan du återgå till $1.',
+	'prefswitch-survey-question-like' => 'Vad gillade du med de nya funktionerna?',
+	'prefswitch-survey-question-dislike' => 'Vad tyckte du inte om med de nya funktionerna?',
 	'prefswitch-survey-question-whyoff' => 'Varför stänger du av de nya funktionerna?
 Välj alla som stämmer.',
 	'prefswitch-survey-answer-whyoff-hard' => 'Det var för svårt att använda.',
@@ -2339,13 +2364,13 @@ Välj alla som stämmer.',
 	'prefswitch-survey-question-os' => 'Vilket operativsystem använder du?',
 	'prefswitch-survey-answer-os-other' => 'Annat operativsystem:',
 	'prefswitch-survey-question-res' => 'Vad är din skärmupplösning?',
-	'prefswitch-title-on' => 'Vad är nytt?',
+	'prefswitch-title-on' => 'Nya funktioner',
 	'prefswitch-title-switched-on' => 'Njut!',
 	'prefswitch-title-off' => 'Stäng av de nya funktionerna',
 	'prefswitch-title-switched-off' => 'Tack',
 	'prefswitch-title-feedback' => 'Feedback',
-	'prefswitch-success-on' => 'Nya funktioner är nu på.',
-	'prefswitch-success-off' => 'Nya funktioner är nu av.',
+	'prefswitch-success-on' => 'Nya funktioner är nu på. Vi hoppas att du gillar att använda de nya funktionerna. Du kan alltid stänga av dem genom att klicka på "[[Special:UsabilityInitiativePrefSwitch|ta mig tillbaka]]" längst upp på sidan.',
+	'prefswitch-success-off' => 'De nya funktionerna är nu avstängda. Tack för att du provade dessa. Du kan alltid sätta på dem igen genom att klicka på "[[Special:UsabilityInitiativePrefSwitch|nya funktioner]]" längst upp på sidan.',
 	'prefswitch-success-feedback' => 'Dina kommentarer har skickats.',
 	'prefswitch-return' => '<hr style="clear:both"> Återgå till <span class="plainlinks">[$1 $2].</span>',
 	'prefswitch-main-anon' => '=== Ta Mig Tillbaka ===

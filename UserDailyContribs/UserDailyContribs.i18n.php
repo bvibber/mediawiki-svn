@@ -73,6 +73,13 @@ $messages['bs'] = array(
 	'userdailycontribs-desc' => 'Dnevni doprinosi korisnka za proširenje praćenja klikova',
 );
 
+/** Catalan (Català)
+ * @author Vriullop
+ */
+$messages['ca'] = array(
+	'userdailycontribs-desc' => "Contribucions diàries dels usuaris per a l'extensió de seguiment de clics",
+);
+
 /** Czech (Česky)
  * @author Mormegil
  */

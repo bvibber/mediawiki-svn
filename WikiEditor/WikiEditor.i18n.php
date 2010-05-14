@@ -114,8 +114,11 @@ $messages['bs'] = array(
 /** Catalan (Català)
  * @author Paucabot
  * @author Solde
+ * @author Vriullop
  */
 $messages['ca'] = array(
+	'wikieditor' => 'Interfície avançada de modificació de wikitext',
+	'wikieditor-desc' => 'Proporciona una interfície extensible de modificació de wikitext i diversos mòduls de funcionalitats',
 	'wikieditor-wikitext-tab' => 'Wikitext',
 	'wikieditor-loading' => 'Carregant',
 );
@@ -148,7 +151,7 @@ $messages['cy'] = array(
  */
 $messages['de'] = array(
 	'wikieditor' => 'Fortgeschrittener Wikitext-Editor',
-	'wikieditor-desc' => 'Stellt eine erweiterbare Oberfläche zur Wikitext-Bearbeitung sowie weitere funktionelle Module zur Verfügung',
+	'wikieditor-desc' => 'Erweiterbare Oberfläche zur Wikitext-Bearbeitung sowie viele weitere neue Funktionen',
 	'wikieditor-wikitext-tab' => 'Wikitext',
 	'wikieditor-loading' => 'Lade',
 );
@@ -566,6 +569,7 @@ $messages['sk'] = array(
 	'wikieditor' => 'Pokročilé rozhranie na úpravu wikitextu',
 	'wikieditor-desc' => 'Poskytuje rozšíriteľné rozhranie na úpravu wikitextu a mnohé moduly poskytujúce funkcionalitu',
 	'wikieditor-wikitext-tab' => 'Wikitext',
+	'wikieditor-loading' => 'Načítava sa',
 );
 
 /** Slovenian (Slovenščina)
