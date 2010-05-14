@@ -2,7 +2,7 @@
 /**
 * Merges in JavaScript json msgs into respective module i18n.php file
 *
-* If your script uses JSON msg string with the This script helps merge msgs between javascript and php
+* If your script uses JSON msg string with the This script helps merge msgs from javascript to php
 *
 *
 * @file
@@ -25,10 +25,9 @@ class MergeJavascriptMsg extends Maintenance {
 	}
 
 	public function execute() {
-		global $wgExtensionJavascriptLoader, $IP;
-		foreach ( $wgExtensionJavascriptLoader as $loaderPath ){
+		global $wgExtensionJavascriptModules, $IP;
+		foreach ( $wgExtensionJavascriptModule as $modulePath ){
 
-			$modulePath = dirname( $loaderPath );
 			$i18nFilePath = false;
 			$moduleAbsoultePath = $IP ."/". $modulePath;
 

@@ -25,11 +25,17 @@ class jsClassLoader {
 	// The current directory context. Used in loading javascript modules outside of the mwEmbed folder
 	private static $directoryContext = '';
 
+	// Stores class parent moduleName
+	private static $classParentModuleName = array();
+
+	// The current module name used for callback functions in regular expressions
+	private static $currentModuleName = '';
+
 	/**
 	 * Get the javascript class paths from javascript files
 	 */
 	public static function loadClassPaths(){
-		global $wgMwEmbedDirectory, $wgExtensionJavascriptLoader,
+		global $wgMwEmbedDirectory, $wgExtensionJavascriptModules,
 		$wgScriptLoaderNamedPaths, $wgExtensionMessagesFiles, $IP;
 
 		// Only run once
@@ -55,12 +61,10 @@ class jsClassLoader {
 			return false;
 		}
 
-		// Read the mwEmbed loader file:
+		// Proccess the mwEmbed loader file:
 		$fileContent = file_get_contents( $mwEmbedAbsolutePath . '/loader.js' );
-
-		// Get class paths from mwEmbed.js
 		self::$directoryContext = $wgMwEmbedDirectory;
-		self::proccessLoaderContent( $fileContent );
+		self::proccessLoaderContent( $fileContent , 'mwEmbed' );
 
 		// Get the list of core component into self::$coreComponentsList
 		preg_replace_callback(
@@ -86,14 +90,13 @@ class jsClassLoader {
 		// Get all the classes from the enabled mwEmbed modules folder
 		foreach( self::$moduleList as  $na => $moduleName){
 			$relativeSlash = ( $wgMwEmbedDirectory == '' )? '' : '/';
-			self::proccessModulePath( $wgMwEmbedDirectory . $relativeSlash . 'modules/' . $moduleName );
+			$modulePath = $wgMwEmbedDirectory . $relativeSlash . 'modules/' . $moduleName;
+			self::proccessModulePath( $moduleName, $modulePath );
 		}
 
 		// Get all the extension loader paths registered mwEmbed modules
-		foreach( $wgExtensionJavascriptLoader as $na => $loaderPath){
-			// Setup the directory context for extensions relative to loader.js file:
-			$modulePath = str_replace('/loader.js', '' , $loaderPath);
-			self::proccessModulePath( $modulePath );
+		foreach( $wgExtensionJavascriptModules as $moduleName => $modulePath ){
+			self::proccessModulePath( $moduleName, $modulePath );
 		}
 
 		if( defined( 'DO_MAINTENANCE' ) ) {
@@ -105,31 +108,34 @@ class jsClassLoader {
 	/**
 	 * Process a loader path, passes off to proccessLoaderContent
 	 *
-	 * @param String $path Path to module to be processed
+	 * @param String $moduleName Name of module to be processed
+	 * @param String $modulePath Path to module to be processed
 	 */
-	private static function proccessModulePath( $path ){
+	private static function proccessModulePath( $moduleName, $modulePath ){
 		global $wgExtensionMessagesFiles;
 
 		// Get the module name
-		$moduleName = end( explode('/', $path ) );
+		$moduleName = end( explode('/', $modulePath ) );
 
 		// Set the directory context for relative js/css paths
-		self::$directoryContext = $path;
+		self::$directoryContext = $modulePath;
 
 		// Check for the loader.js
-		if( !is_file(  $path . '/loader.js' ) ){
+		if( !is_file(  $modulePath . '/loader.js' ) ){
 			throw new MWException( "Javascript Module $moduleName missing loader.js file\n" );
 			return false;
 		}
 
-		$fileContent = file_get_contents( $path . '/loader.js');
-		self::proccessLoaderContent( $fileContent );
+		$fileContent = file_get_contents( $modulePath . '/loader.js');
+		self::proccessLoaderContent( $fileContent, $moduleName );
 
-		$i18nPath = realpath( $path . '/' . $moduleName . '.i18n.php' );
+		$i18nPath = realpath( $modulePath . '/' . $moduleName . '.i18n.php' );
 
 		// Add the module localization file if present:
 		if( is_file( $i18nPath ) ) {
 			$wgExtensionMessagesFiles[ $moduleName ] = $i18nPath;
+		} else {
+			// Module has no message file
 		}
 	}
 
@@ -140,10 +146,14 @@ class jsClassLoader {
 	 *
 	 * @param String $fileContent content of loader.js file
 	 */
-	private static function proccessLoaderContent( & $fileContent ){
+	private static function proccessLoaderContent( & $fileContent , $moduleName){
 		// Add the mwEmbed loader js to its global collector:
 		self::$combinedLoadersJs .=  $fileContent;
 
+		// Is there a way to pass arguments in preg_replace_callback ?
+		self::$currentModuleName = $moduleName;
+
+		// Run the replace callback:
 		preg_replace_callback(
 			self::$classReplaceExp,
 			'jsClassLoader::preg_classPathLoader',
@@ -276,7 +286,37 @@ class jsClassLoader {
 			// Strip $ from class (as they are stripped on URL request parameter input)
 			$className = str_replace( '$', '', $className );
 			$classPath =  ( self::$directoryContext == '' )? $classPath :  self::$directoryContext . '/' . $classPath;
+
+			// Throw an error if we already have defined this class:
+			// This prevents a module from registering a shared class
+			// or multiple modules using the same className
+			if( isset( $wgScriptLoaderNamedPaths[ $className ] ) ){
+
+				// Presently extensions don't register were the named path parent module
+				// so we just have a gnneral extension error.
+				$setInModuleError = ( self::$classParentModuleName [ $className ] )
+					? " set in module: " . self::$classParentModuleName [ $className ]
+					: " set in an extension ";
+
+				throw new MWException( "Error class $className already $setInModuleError \n" );
+			}
+
+			// Else update the global $wgScriptLoaderNamedPaths ( all scriptloader named paths )
 			$wgScriptLoaderNamedPaths[ $className ] = $classPath;
+
+			// Register the parent module ( javascript module specific )
+			self::$classParentModuleName [ $className ] = self::$currentModuleName ;
+		}
+	}
+	/**
+	* Return the module name for a given class or false if not found
+	* @param $className Class to get the module for
+	*/
+	public function getClassModuleName( $className ){
+		if( isset( self::$classParentModuleName [ $className ] ) ){
+			return self::$classParentModuleName [ $className ];
+		} else {
+			return false;
 		}
 	}
 }

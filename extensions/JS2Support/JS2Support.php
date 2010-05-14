@@ -23,7 +23,7 @@ $wgExtensionMessagesFiles[ 'JS2Support' ] = $js2Dir . 'JS2Support.i18n.php';
 $wgExtensionFunctions[] = 'wfSetupJS2';
 function wfSetupJS2(){
 	global $wgOut, $js2Dir, $wgAutoloadClasses, $wgScriptLoaderNamedPaths,
-	$wgExtensionJavascriptLoader, $wgEnableTestJavascriptModules;
+	$wgExtensionJavascriptModules, $wgEnableTestJavascriptModules;
 
 	// Remap output page as part of the extension setup
 	$wgOut = new StubObject( 'wgOut', 'ScriptLoaderOutputPage' );
@@ -34,14 +34,11 @@ function wfSetupJS2(){
 
 	// Add the core test module loaders (extensions can add their own test modules referencing this global )
 	if( $wgEnableTestJavascriptModules ) {
-		$wgExtensionJavascriptLoader[] = 'extensions/JS2Support/tests/loader.js';
+		$wgExtensionJavascriptModules['JS2Tests'] = 'extensions/JS2Support/tests';
 	}
 
-
 	// Update all the javascript modules classNames and localization by reading respective loader.js files
-	// @dependent on all extensions defining $wgExtensionJavascriptLoader paths in config file ( not in setup )
-	// @NOTE parsing javascript could be delayed or avoided if we require more php extension configuration
-	// 		extension would have to configure the path to javascript module localizations and possibly class paths
+	// @dependent on all extensions defining $wgExtensionJavascriptModules paths in config file ( not in setup )
 	//
 	// @NOTE runtime for loadClassPaths with 8 or so loaders with 100 or so named paths is
 	// is around .002 seconds on my laptop. Could probably be further optimized and of course it only runs
@@ -75,10 +72,10 @@ $wgEnableJS2system = true;
 
 
 /**
- * For defining the location of loader.js files of
+ * For naming javascript modules in extensions
  * for js-modules. ( ie modules hosted inside of extensions )
  */
-$wgExtensionJavascriptLoader = array();
+$wgExtensionJavascriptModules = array();
 
 /**
  * The set of script-loader Named Paths, populated via extensions and javascript module loaders

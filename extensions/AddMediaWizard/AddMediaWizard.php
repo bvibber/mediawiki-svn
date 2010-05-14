@@ -45,10 +45,10 @@ $wgHooks['EditPageBeforeEditToolbar'][] = 'AddMediaWizard::addJS';
 
 
 // Add the javascript loader for "AddMedia module"
-$wgExtensionJavascriptLoader[] = 'extensions/AddMediaWizard/AddMedia/loader.js';
+$wgExtensionJavascriptModules['AddMedia'] = 'extensions/AddMediaWizard/AddMedia';
 
 // Add the javascript loader for "ClipEdit module"
-$wgExtensionJavascriptLoader[] = 'extensions/AddMediaWizard/ClipEdit/loader.js';
+$wgExtensionJavascriptModules['ClipEdit'] = 'extensions/AddMediaWizard/ClipEdit';
 
 class AddMediaWizard {
 	public static function addJS( $toolbar) {

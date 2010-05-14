@@ -51,6 +51,8 @@ class jsScriptLoader {
 	// The raw requested class
 	private static $rawClassList = '';
 
+	private static $includeAllMsgsRegEx = "/mw\.includeAllModuleMsgs\s*\(\s*\)\;?/";
+
 	/**
 	 * Output the javascript from cache
 	 *
@@ -782,8 +784,17 @@ class jsScriptLoader {
 
 		// Do language swap by index:
 		if ( $wgEnableScriptLocalization ){
-			// Get the mw.addMessage javascript from class name
+			// Get the localized mw.addMessage javascript call from class name
 			$translatedJs = "\n" . $this->getInlineMsgFromClass( $className ) . "\n";
+
+			//@@NOTE getInlineMsgFromClass could identify which mode we are in and we would not need to
+			// try each of these search patterns in the same order as before.
+
+			// Check for mw.includeAllModuleMsgs() call to be replaced with all the msgs
+			$scriptText = preg_replace( self::$includeAllMsgsRegEx, $translatedJs, $scriptText, 1, $count );
+			if( $count != 0 ){
+				return $scriptText;
+			}
 
 			// Replace mw.addMessages with localized msgs in javascript string
 			$inx = self::getAddMessagesIndex( $scriptText );
@@ -799,7 +810,7 @@ class jsScriptLoader {
 				return substr($scriptText, 0, $inx['sfull']) . $translatedJs . substr($scriptText, $inx['efull']+1 );
 			}
 		}
-		// Return the js str unmodified if we did not transform with the localisation.
+		// Return the javascript str unmodified if we did not transform with the localisation
 		return $scriptText;
 	}
 
@@ -942,22 +953,34 @@ class jsScriptLoader {
 	 * @return {Array} decoded json array of message key value pairs
 	 */
 	function getMsgKeysFromClass( $className ){
+
 		$scriptString = $this->getScriptText( $className );
 
-		// Try for AddMessagesIndex
-		$inx = self::getAddMessagesIndex( $scriptString );
-		if( $inx ) {
-			//Get the javascript string
-			$javaScriptArrayString =  substr($scriptString, $inx['s'], ($inx['e']-$inx['s'])) ;
+		// Try for includeAllModuleMsgs function call
+		if ( preg_match ( self::$includeAllMsgsRegEx, $scriptString ) !== false ) {
+			global $wgExtensionJavascriptModules, $wgExtensionMessagesFiles;
+			// Get the module $messages keys
 
-			// Strip the javascript string of any comments
-			$javaScriptArrayString = JSMin::minify( $javaScriptArrayString );
+			$moduleName = jsClassLoader::getClassModuleName( $className );
+			if( $moduleName && $wgExtensionJavascriptModules[ $moduleName ] ) {
 
-			// Return the parsed json array of javascript msgs
-			return FormatJson::decode( '{' . $javaScriptArrayString . '}', true);
+				// Get the module localization file:
+				$modulePath = $wgExtensionJavascriptModules[ $moduleName ];
+
+				// Empty out messages in the current scope
+				$messages = array();
+
+				// Get the i18n file from $wgExtensionMessagesFiles path
+				require( $wgExtensionMessagesFiles[ $moduleName ] );
+
+				// Return the English key set ( since base message text is in english )
+				return $messages['en'];
+			} else {
+				// No $moduleName found.
+			}
 		}
 
-		// Try for 'AddMessageKey' Index array type
+		// Try for mw.addMessageKey() Index array type
 		$inx = self::getAddMessageKeyIndex( $scriptString );
 		if( $inx ) {
 			// Get the javascript array string:
@@ -983,6 +1006,19 @@ class jsScriptLoader {
 
 		}
 
+		// Try for addMessages() Index json type
+		$inx = self::getAddMessagesIndex( $scriptString );
+		if( $inx ) {
+			//Get the javascript string
+			$javaScriptArrayString =  substr($scriptString, $inx['s'], ($inx['e']-$inx['s'])) ;
+
+			// Strip the javascript string of any comments
+			$javaScriptArrayString = JSMin::minify( $javaScriptArrayString );
+
+			// Return the parsed json array of javascript msgs
+			return FormatJson::decode( '{' . $javaScriptArrayString . '}', true);
+		}
+
 		// Return an empty array if we are not able to grab any message keys
 		return array();
 	}
@@ -993,10 +1029,10 @@ class jsScriptLoader {
 	 * @param {Array} $jmsg Associative array of message key -> message value pairs
 	 * @param {String} $langCode Language code override
 	 */
-	static public function updateMessageValues(& $messegeArray, $langCode = false){
+	static public function updateMessageValues( & $messegeArray, $langCode = false ){
 		global $wgLang;
 		// Check the langCode
-		if(!$langCode && $wgLang) {
+		if( ! $langCode && $wgLang) {
 			$langCode = $wgLang->getCode();
 		}
 		// Get the msg keys for the a json array

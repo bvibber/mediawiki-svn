@@ -337,7 +337,7 @@ class ScriptLoaderOutputPage extends OutputPage {
 	 * @since 1.17
 	 */
 	public function includeAllPageJS ( ) {
-		global $wgExtensionJavascriptLoader, $wgEnableScriptLoader,
+		global $wgExtensionJavascriptModules, $wgEnableScriptLoader,
 		$wgScriptLoaderNamedPaths, $wgScriptPath;
 
 		// Set core Classes
@@ -362,28 +362,28 @@ class ScriptLoaderOutputPage extends OutputPage {
 			$this->mScripts = "\n<!-- Script bucket: allpage --> \n";
 			$this->mScripts = $this->getLinkedScriptLoaderJs( $coreClasses );
 		} else {
-			// No ScriptLoader manually add the classes:
+			// No ScriptLoader manually add classes that are normally part of mwEmbed core request.
 			$so = '';
 			foreach( $coreClasses as $className ){
 				$this->addScriptClass( $className );
 			}
 
-			// Add the mwEmbed "core-components" ( language, parsing etc )
+			// Add the mwEmbed "core-components" ( language, parsing etc. )
 			$coreComponets = jsClassLoader::getComponentsList();
 			foreach( $coreComponets as $className ) {
 				$this->addScriptClass( $className );
 			}
 
-			// Also add the "loader" classes ( script-loader won't run them )
-			foreach( $wgExtensionJavascriptLoader as $loaderPath){
+			// Also add the "loader" classes
+			foreach( $wgExtensionJavascriptModules as $modulePath ){
 				// Set the loader context for each loader javascript file
 				// ( so that javascript modules can use relative paths )
-				$loaderDir =  dirname( "$wgScriptPath/$loaderPath" ) . "/";
+				$loaderDir =  $modulePath . "/";
 				$this->addScript(  Html::inlineScript(
 					"mw.setConfig( 'loaderContext',  '" . xml::escapeJsString( $loaderDir  ) . "');"
 				) );
 				$this->addScriptFile(
-					"$wgScriptPath/$loaderPath"
+					"$wgScriptPath/$modulePath/loader.js"
 				);
 			}
 		}
@@ -525,7 +525,7 @@ class ScriptLoaderOutputPage extends OutputPage {
 			if( $path == false ){
 				// NOTE:: could throw an error here
 				//print "could not find: $className\n";
-				print( __METHOD__ . ' scriptLoader could not find class: ' . $className );
+				print( __METHOD__ . ' scriptLoader could not find class: ' . $className . "\n");
 				return false; // could not find the class
 			}
 			// Valid path add it to script-loader or "link" directly

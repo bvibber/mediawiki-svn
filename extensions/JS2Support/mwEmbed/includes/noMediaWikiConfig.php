@@ -28,8 +28,8 @@ $wgUseFileCache = true;
 // Named paths for the script loader
 $wgScriptLoaderNamedPaths = array();
 
-// Added Modules
-$wgExtensionJavascriptLoader = array();
+// Named Module Paths
+$wgExtensionJavascriptModules = array();
 
 // Extension Messages Files
 $wgExtensionMessagesFiles = array();

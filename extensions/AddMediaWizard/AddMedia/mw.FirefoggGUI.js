@@ -487,7 +487,7 @@ mw.FirefoggGUI.prototype = {
 					'maxlength="' + maxDigits + '" ' + 
 					'size="' + maxDigits + '" ' +
 					'class="_' + configKey + ' text ui-widget-content ui-corner-all" ' + 
-					'style="display:inline;border:0; color:#f6931f; font-weight:bold;" ' +
+					'style="display:inline; color:#f6931f; padding: 2px; font-weight:bold;" ' +
 					'value="' + defaultValue + '" >' +
 					'<div class="slider_' + configKey + '"></div>';
 				break;
@@ -574,7 +574,7 @@ mw.FirefoggGUI.prototype = {
 		$j( this.target_input_file_name ).width( 250 );
 
 		// Special preset action
-		$j( this.selector + ' ._preset_select' ).change( function() {
+		$j( this.selector + ' ._preset_select' ).change( function() {		
 			_this.updatePresetSelection( $j( this ).val() );
 		});
 
@@ -634,7 +634,7 @@ mw.FirefoggGUI.prototype = {
 					$j( this.selector + ' ._' + configKey)
 						.click( function() {
 							_this.updateLocalValue( _this.getClassId( this ), 
-								$j( this ).is( ":checked" ) );
+							$j( this ).is( ":checked" ) );
 							_this.updatePresetSelection( 'custom' );
 						});
 					break;
@@ -643,10 +643,11 @@ mw.FirefoggGUI.prototype = {
 				case 'int':
 				case 'float':
 					// Check if we have a validate function on the string
-					$j( this.selector + ' ._' + configKey ).change( function() {
+					$j( this.selector + ' ._' + configKey ).change( function() {						
 						$j( this ).val( _this.updateLocalValue(
 							_this.getClassId( this ),
-							$j( this ).val() ) );
+							$j( this ).val() ) 
+						);
 						_this.updatePresetSelection( 'custom' );
 					})
 					break;
@@ -660,8 +661,30 @@ mw.FirefoggGUI.prototype = {
 							}
 					});
 					break;
-				case 'slider':
-					//var sliderId = _this.getClassId( this, 'slider_' );
+				case 'slider':		
+					/** 
+					* Return true or false of out of range and update the related value
+					*/	
+					var keepAspectRatio = function( sliderId, value ){ 
+						// Maintain source video aspect ratio
+						if ( sliderId == 'width' ) {
+							var sourceHeight = _this.sourceFileInfo.video[0]['height'];
+							var sourceWidth = _this.sourceFileInfo.video[0]['width'];
+							var newHeight = parseInt( sourceHeight / sourceWidth * value );
+							// Reject the update if the new height is above the maximum
+							if ( newHeight > _this.updateInterfaceValue( 'height', newHeight ) )
+								return false;
+						}
+						if ( sliderId == 'height' ) {
+							var sourceHeight = _this.sourceFileInfo.video[0]['height'];
+							var sourceWidth = _this.sourceFileInfo.video[0]['width'];
+							var newWidth = parseInt( sourceWidth / sourceHeight * value );
+							// Reject the update if the new width is above the maximum
+							if ( newWidth > _this.updateInterfaceValue( 'width', newWidth ) )
+								return false;
+						}
+					};
+										
 					$j( this.selector + ' .slider_' + configKey ).slider({
 						range: "min",
 						animate: true,
@@ -670,27 +693,13 @@ mw.FirefoggGUI.prototype = {
 						min: this.default_encoder_config[ configKey ].range.min,
 						max: this.default_encoder_config[ configKey ].range.max,
 						slide: function( event, ui ) {
+							var sliderId = _this.getClassId( this, 'slider_' );
 							$j( _this.selector + ' ._' + sliderId ).val( ui.value );
 
-							// Maintain source video aspect ratio
-							if ( sliderId == 'width' ) {
-								var sourceHeight = _this.sourceFileInfo.video[0]['height'];
-								var sourceWidth = _this.sourceFileInfo.video[0]['width'];
-								var newHeight = parseInt( sourceHeight / sourceWidth * ui.value );
-								// Reject the update if the new height is above the maximum
-								if ( newHeight > _this.updateInterfaceValue( 'height', newHeight ) )
-									return false;
-							}
-							if ( sliderId == 'height' ) {
-								var sourceHeight = _this.sourceFileInfo.video[0]['height'];
-								var sourceWidth = _this.sourceFileInfo.video[0]['width'];
-								var newWidth = parseInt( sourceWidth / sourceHeight * ui.value );
-								// Reject the update if the new width is above the maximum
-								if ( newWidth > _this.updateInterfaceValue( 'width', wv ) )
-									return false;
-							}
+							keepAspectRatio( sliderId,  ui.value );
 						},
 						change: function( event, ui ) {
+							var sliderId = _this.getClassId( this, 'slider_' );
 							_this.updateLocalValue( sliderId, ui.value );
 							_this.updatePresetSelection( 'custom' );
 						}
@@ -698,15 +707,18 @@ mw.FirefoggGUI.prototype = {
 
 					$j( this.selector + ' ._' + configKey ).change( function() {
 						var classId = _this.getClassId( this );
-						var validValue = _this.updateLocalValue( classId.substr( 1 ), 
-							$j( this ).val() );
+						var validValue = _this.updateLocalValue( classId, 
+							$j( this ).val() 
+						);
 						_this.updatePresetSelection( 'custom' );
 						// Change it to the validated value
 						$j( this ).val( validValue );
 						// update the slider
-						mw.log( "update: " + _this.selector + ' .slider' + classId );
-						$j( _this.selector + ' .slider' + classId )
-							.slider( 'option', 'value', validValue );
+						//mw.log( "update: " + _this.selector + ' .slider' + classId );
+						$j( _this.selector + ' .slider_' + classId )
+							.slider('value', validValue );
+						// Keep aspect ratio: 
+						keepAspectRatio( classId, validValue );
 					});
 					break;
 			}
@@ -729,7 +741,7 @@ mw.FirefoggGUI.prototype = {
 	updatePresetSelection: function( presetKey ) {
 		// Update the local configuration
 		this.local_settings['default'] = presetKey;
-		// mw.log( 'update preset desc: ' + presetKey );
+		mw.log( 'update preset desc: ' + presetKey );
 		var presetDesc = '';
 		if ( this.local_settings.presets[presetKey].desc ) {
 			presetDesc = this.local_settings.presets[presetKey].desc;
@@ -778,8 +790,8 @@ mw.FirefoggGUI.prototype = {
 	 * range if required. Update the configuration with the validated value and 
 	 * return it.
 	 */
-	updateLocalValue: function( confKey, value ) {
-		if ( typeof this.default_encoder_config[confKey] == 'undefined' ) {
+	updateLocalValue: function( confKey, value ) {		
+		if ( typeof this.default_encoder_config[confKey] == 'undefined' ) {		
 			mw.log( "Error: could not update conf key: " + confKey )
 			return value;
 		}
@@ -824,14 +836,14 @@ mw.FirefoggGUI.prototype = {
 	 * If no prefix is given, "_" is assumed.
 	 */
 	getClassId: function( element, prefix ) {
-		var eltClass = $j( element ).attr( "class" ).split( ' ' ).slice( 0, 1 ).toString();
-
+		
+		var eltClass = $j( element ).attr( "class" ).split( ' ' ).slice( 0, 1 ).toString();		
 		if ( !prefix ) {
 			prefix = '_';
 		}
 		if ( eltClass.substr( 0, prefix.length ) == prefix ) {
 			eltClass = eltClass.substr( prefix.length );
-		}
+		}		
 		return eltClass;
 	},
 
@@ -985,7 +997,7 @@ mw.FirefoggGUI.prototype = {
 		var pKey = this.local_settings[ 'default' ];
 		this.updatePresetSelection( pKey );
 
-		// set the actual HTML & widgets based on any local settings values:
+		// Set the actual HTML & widgets based on any local settings values:
 		$j.each( _this.local_settings.presets['custom']['conf'], function( inx, val ) {
 			if ( $j( _this.selector + ' ._' + inx ).length != 0 ) {
 				$j( _this.selector + ' ._' + inx ).val( val );
