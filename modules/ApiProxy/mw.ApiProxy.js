@@ -17,16 +17,19 @@
 * having a separate class for "server" and "client" api usage  
 *
 */
-
+/*
 mw.addMessages( {
-	"mwe-setting-up-proxy" : "Setting up proxy...",
-	"mwe-re-try" : "Retry API request",
-	"mwe-re-trying" : "Retrying API request...",
-	"mwe-proxy-not-ready" : "Proxy is not configured",
-	"mwe-please-login" : "The request failed. Are you logged in on $1 ? Please $2 and try again",
-	"mwe-log-in-link" : "log in",
-	"mwe-remember-loging" : "General security reminder: Only login to web sites when your address bar displays that site's address."	
+	"mwe-apiproxy-setting-up-proxy" : "Setting up proxy...",
+	"mwe-apiproxy-re-try" : "Retry API request",
+	"mwe-apiproxy-re-trying" : "Retrying API request...",
+	"mwe-apiproxy-proxy-not-ready" : "Proxy is not configured",
+	"mwe-apiproxy-please-login" : "The request failed. Are you logged in on $1 ? Please $2 and try again",
+	"mwe-apiproxy-log-in-link" : "log in",
+	"mwe-apiproxy-remember-loging" : "General security reminder: Only login to web sites when your address bar displays that site's address."	
 } );
+*/
+
+mw.includeAllModuleMsgs();
 
 
 /**
@@ -556,12 +559,12 @@ mw.ApiProxy = { };
 		}	
 	
 		var buttons = { };
-		buttons[ gM( 'mwe-re-try' ) ] = function() {
-			mw.addLoaderDialog( gM( 'mwe-re-trying' ) );			
+		buttons[ gM( 'mwe-apiproxy-re-try' ) ] = function() {
+			mw.addLoaderDialog( gM( 'mwe-apiproxy-re-trying' ) );			
 			// Re try the same context request:
 			doFrameProxy( context );			
 		}
-		buttons[ gM( 'mwe-cancel' ) ] = function() {
+		buttons[ gM( 'mwe-apiproxy-cancel' ) ] = function() {
 			mw.closeLoaderDialog ( );
 		}
 		
@@ -572,7 +575,7 @@ mw.ApiProxy = { };
 		
 		var $dialogMsg = $j('<p />');
 		$dialogMsg.append(
-			gM( 'mwe-please-login',
+			gM( 'mwe-apiproxy-please-login',
 				pUri.host,
 				
 				// Add log-in link: 	
@@ -581,17 +584,17 @@ mw.ApiProxy = { };
 					'href' : login_url,
 					'target' : '_new'
 				} )
-				.text( gM('mwe-log-in-link') )
+				.text( gM('mwe-apiproxy-log-in-link') )
 			) 
 		)
 		// Add the security note as well: 	
 		$dialogMsg.append( 			
 			$j('<br />'),
-			gM( 'mwe-remember-loging' )  
+			gM( 'mwe-apiproxy-remember-loging' )  
 		)
 		
 		mw.addDialog( 
-			gM( 'mwe-proxy-not-ready' ), 
+			gM( 'mwe-apiproxy-proxy-not-ready' ), 
 			$dialogMsg,
 			buttons
 		)
