@@ -411,7 +411,7 @@ class jsScriptLoader {
 		// CSS classes should be of form mw.style.{className}
 		$cssStyleName = str_replace('mw.style.', '', $classKey );
 		return 'mw.addStyleString("' . Xml::escapeJsString( $cssStyleName )
-		. '", "' . Xml::escapeJsString( $cssString ) . '");' . "\n";
+			. '", "' . Xml::escapeJsString( $cssString ) . '");' . "\n";
 	}
 
 	/**
@@ -947,24 +947,43 @@ class jsScriptLoader {
 		// Try for AddMessagesIndex
 		$inx = self::getAddMessagesIndex( $scriptString );
 		if( $inx ) {
-			return FormatJson::decode( '{' . substr($scriptString, $inx['s'], ($inx['e']-$inx['s'])) . '}', true);
+			//Get the javascript string
+			$javaScriptArrayString =  substr($scriptString, $inx['s'], ($inx['e']-$inx['s'])) ;
+
+			// Strip the javascript string of any comments
+			$javaScriptArrayString = JSMin::minify( $javaScriptArrayString );
+
+			// Return the parsed json array of javascript msgs
+			return FormatJson::decode( '{' . $javaScriptArrayString . '}', true);
 		}
 
 		// Try for 'AddMessageKey' Index array type
 		$inx = self::getAddMessageKeyIndex( $scriptString );
 		if( $inx ) {
-			// get the javascript array string:
+			// Get the javascript array string:
 			$javaScriptArrayString =  substr($scriptString, $inx['s'], ($inx['e']-$inx['s'])) ;
-			// Match all the quoted msg keys
+
+			// Strip the javascript string of any comments
+			$javaScriptArrayString = JSMin::minify( $javaScriptArrayString );
+
+			// Match all the quoted msg keys ( msg keys should not have escaped " in them)
 			preg_match_all( "/\"([^\"]*)\"/", $javaScriptArrayString, $matches);
-			$messageSet = array();
+
 			if( $matches[1] ) {
 				// Flip the matches array
 				// The keys are msg keys the message values ( indexes ) are not used
 				return array_flip( $matches[1] );
 			}
+
+			// If no matches try with single quote ( again msgs keys should not include escaped ' in them )
+			preg_match_all( "/\'([^\']*)\'/", $javaScriptArrayString, $matches);
+			if( $matches[1] ) {
+				return array_flip( $matches[1] );
+			}
+
 		}
-		// return an empty array if we are not able to grab any message keys
+
+		// Return an empty array if we are not able to grab any message keys
 		return array();
 	}
 

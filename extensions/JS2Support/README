@@ -193,8 +193,8 @@ You have three options for packaging messages in your javascript module
 
 1) If your javascript module is simple and your interface is mostly set in a single
 file you may want to load all your msgs at once.  You can get all the msgs in your javascript
-module's localization file by simply isssuing the call: 
-mw.includeAllModuleMsgs(); 
+module's localization file by simply running: 
+mw.includeAllModuleMessages(); 
 
 Putting this function call at the top of your primary library code javascript file will be 
 replaced with all the msgs in your modules php localization file in the current language. 
@@ -203,7 +203,7 @@ replaced with all the msgs in your modules php localization file in the current 
 are packaged when. You can define the set of msg keys it at the top of any javascript file.
 
 For example: 
-mw.addMessegeKeys( ['list', 'of', 'msg-keys' ] );
+mw.addMessageKeys( ['list', 'of', 'msg-keys' ] );
 
 Will be replaced by the script-loader with the localized msgs for every listed key. 
   

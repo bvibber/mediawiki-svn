@@ -53,6 +53,13 @@
 		return true;
 	}
 	
+	/** 
+	* Special function to register that all of the module messages need to be loaded.  
+	*/
+	mw.includeAllModuleMessages = function (){
+		mw.currentClassMissingMessages = true;
+	}
+	
 	/**
 	* NOTE: this is somewhat of a hack. But its only used in debug mode since
 	* normal msg loading happens via script-loader

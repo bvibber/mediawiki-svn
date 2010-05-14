@@ -190,10 +190,8 @@ class ScriptLoaderOutputPage extends OutputPage {
 		}
 		return array();
 	}
-
 	/**
 	 * Add a local or specified stylesheet, with the given media options.
-	 * Meant primarily for internal use...
 	 *
 	 * @param $style String: URL to the file
 	 * @param $media String: to specify a media type, 'screen', 'printable', 'handheld' or any.
@@ -222,20 +220,9 @@ class ScriptLoaderOutputPage extends OutputPage {
 		if( $dir ) {
 			$options['dir'] = $dir;
 		}
-
-		// Check if the style will be included in output:
-		if( isset( $options['dir'] ) ) {
-			global $wgContLang;
-			$siteDir = $wgContLang->getDir();
-			if( $siteDir != $options['dir'] )
-			return '';
-		}
-		// If style set media is for different than request don't include
-		if( isset( $options['media'] ) ) {
-			$media = $this->transformCssMedia( $options['media'] );
-			if( is_null( $media ) ) {
-				return '';
-			}
+		// Check if we should include this css:
+		if( ! $this->checkCssIncludeCondition( $options ) ){
+			return false;
 		}
 
 		// If script-loader enabled check if we can add the script via script-loader
@@ -257,6 +244,75 @@ class ScriptLoaderOutputPage extends OutputPage {
 		$this->styles[ $style ] = $options;
 	}
 
+	/**
+	 * Add a Style sheet by class name
+	 *
+	 * @param $cssClass String: Css Class name to be included
+	 * @param options [Optional]
+	 * 		'media' String: to specify a media type, 'screen', 'printable', 'handheld' or any.
+	 *		'condition' String: for IE conditional comments, specifying an IE version
+	 * 		'dir' String: set to 'rtl' or 'ltr' for direction-specific sheets
+	 * 		'bucket' String: Script-loader grouping string
+	 */
+	public function addStyleClass( $cssClass , $options = array()) {
+		global $wgEnableScriptLoader, $wgExtensionAssetsPath;
+		// Build the bucket key with supplied options
+
+
+		// Check if we should include this css:
+		if( ! $this->checkCssIncludeCondition( $options ) ){
+			return false;
+		}
+
+		// No dir for bucket key since dir does not require a separate bucket.
+		unset( $options['dir'] );
+		$bucketKey = implode( '.', $options );
+
+		// Update the css bucket options:
+		$this->setClassBucketOptions( $bucketKey, $options );
+
+		if( $wgEnableScriptLoader ) {
+			$this->addScriptClass( $cssClass, $bucketKey, 'css');
+		} else {
+			$stylePath = jsScriptLoader::getPathFromClass( $cssClass );
+			// Else use normal styles output
+			//( unfortunately $this->styles appends /skins ) so use addLink
+			$this->addLink(
+				array(
+					'rel' => 'stylesheet',
+					'type' => 'text/css',
+					'href' => $stylePath . '?' . $this->getURIDparam( $cssClass ),
+				)
+			);
+		}
+
+	}
+	/*
+	 * Check if we should include a css class based on its options
+	 * @parma $options
+	 * 		'media' String: to specify a media type, 'screen', 'printable', 'handheld' or any.
+	 *		'condition' String: for IE conditional comments, specifying an IE version
+	 * 		'dir' String: set to 'rtl' or 'ltr' for direction-specific sheets
+	 * 		'bucket' String: Script-loader grouping string
+	 */
+	private function checkCssIncludeCondition( $options ){
+		// Check if the style will be included in output:
+		if( isset( $options['dir'] ) ) {
+			global $wgContLang;
+			$siteDir = $wgContLang->getDir();
+			if( $siteDir != $options['dir'] )
+			return false;
+		}
+
+		// If style set media is for different than request don't include
+		if( isset( $options['media'] ) ) {
+			$media = $this->transformCssMedia( $options['media'] );
+			if( is_null( $media ) ) {
+				return false;
+			}
+		}
+		return true;
+	}
 	/**
 	 * Build a set of <link>s for the stylesheets specified in the $this->styles array.
 	 * These will be applied to various media & IE conditionals.
@@ -420,12 +476,8 @@ class ScriptLoaderOutputPage extends OutputPage {
 	}
 
 	/**
-	 * @param $className String Name of the class
-	 * @param $scriptRequestBucket Name of bucket for the class
-	 * @param $type 'js' or 'css' for type of head item being included
-	 * @return boolean False if the class wasn't found, True on success
-	 */
-/**
+	 * Add a named script class to the output page
+	 *
 	 * @param $className String Name of the class
 	 * @param $scriptRequestBucket Name of bucket for the class
 	 * @param $type 'js' or 'css' for type of head item being included
@@ -473,7 +525,7 @@ class ScriptLoaderOutputPage extends OutputPage {
 			if( $path == false ){
 				// NOTE:: could throw an error here
 				//print "could not find: $className\n";
-				wfDebug( __METHOD__ . ' scriptLoader could not find class: ' . $className );
+				print( __METHOD__ . ' scriptLoader could not find class: ' . $className );
 				return false; // could not find the class
 			}
 			// Valid path add it to script-loader or "link" directly
