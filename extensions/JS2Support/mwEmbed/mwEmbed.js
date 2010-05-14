@@ -1854,6 +1854,33 @@ var MW_EMBED_VERSION = '1.1f';
 			// mw.log("warning: trying to get npt time on NaN:" + sec);
 			return '0:0:0';
 		}
+
+		var tm = mw.seconds2tm( sec, show_ms );
+		var seconds = tm[0];
+		var minutes = tm[1];
+		var hours = tm[2];
+
+		if ( seconds < 10 ) {
+			seconds = '0' +	seconds;
+		}
+
+		if ( minutes < 10 ) {
+			minutes = '0' + minutes;
+		}
+	
+		return hours + ":" + minutes + ":" + seconds;
+	}
+
+	/**
+	 * Given a float number of seconds, returns an array of [seconds, minutes, hours]
+	 * For the weak similarity to struct tm in C, it's called seconds2tm
+	 *
+	 * @param {Float} sec Seconds
+	 * @param {Boolean} show_ms If milliseconds should be displayed.
+	 * @return {Array} of [ Integer seconds, Integer minutes, Integer hours ] (seconds is float if show_ms is true).
+	 * @type {Array} 
+	 */
+	mw.seconds2tm = function( sec, show_ms ) {
 		var hours = Math.floor( sec / 3600 );
 		var minutes = Math.floor( ( sec / 60 ) % 60 );
 		var seconds = sec % 60;
@@ -1863,13 +1890,11 @@ var MW_EMBED_VERSION = '1.1f';
 		} else {
 			seconds = Math.round( seconds );
 		}
-		if ( seconds < 10 )
-			seconds = '0' +	seconds;
-		if ( minutes < 10 )
-			minutes = '0' + minutes;
-	
-		return hours + ":" + minutes + ":" + seconds;
+
+		return [ seconds, minutes, hours ];
 	}
+
+
 	
 	/**
 	* Take hh:mm:ss,ms or hh:mm:ss.ms input, return the number of seconds
