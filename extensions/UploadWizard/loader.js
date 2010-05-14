@@ -1,0 +1,106 @@
+/*
+* Loader for UploadWizard module:
+*/
+
+// Scope everything in "mw"  ( keeps the global namespace clean ) 
+( function( mw ) {
+
+	mw.addMessages( {
+		"mwe-loading-upwiz" : "Loading upload wizard"
+	});
+	
+	// Add class file paths ( From ROOT )
+	mw.addClassFilePaths( {
+		"mw.LanguageUpWiz"		: "js/mw.LanguageUpWiz.js",
+		"mw.UploadWizard"		: "js/mw.UploadWizard.js",
+		"mw.style.uploadWizard" 	: "styles/uploadWizard.css",
+		
+		"mw.UploadApiProcessor"		: "js/mw.UploadApiProcessor.js",
+		"mw.IframeTransport"		: "js/mw.IframeTransport.js",
+		"mw.ApiUploadHandler"		: "js/mw.ApiUploadHandler.js",
+		"mw.DestinationChecker"		: "js/mw.DestinationChecker.js",
+
+		"mw.MockUploadHandler"		: "js/mw.MockUploadHandler.js",		
+		"$j.fn.tipsy"			: "js/jquery/plugins/jquery.tipsy.js",
+		"mw.style.tipsy"		: "styles/jquery.tipsy.css"
+	});	
+	
+	//Set a variable for the base upload interface for easy inclution
+	// 
+	// var baseUploadlibraries = [
+	// 	[
+	// 		'mw.UploadHandler',
+	// 		'mw.UploadInterface',
+	// 		'$j.ui'
+	// 	],
+	// 	[
+	// 		'$j.ui.progressbar',
+	// 		'$j.ui.dialog',
+	// 		'$j.ui.draggable',
+	// 		'$j.fn.autocomplete'
+	// 	]
+	// ];
+	// 	
+	// var mwBaseFirefoggReq = baseUploadlibraries.slice( 0 )
+	// mwBaseFirefoggReq[0].push('mw.Firefogg');
+	// 
+
+	var libraries = [ 
+		[
+			'$j.ui',
+			'$j.ui.progressbar',
+			'$j.ui.dialog',
+			'$j.ui.draggable',			
+			'$j.ui.datepicker',
+			'$j.effects.core',
+			'$j.effects.slide',
+			//'$j.effects.pulsate',
+			'$j.fn.autocomplete',
+			'$j.fn.tipsy',
+			'mw.style.tipsy',
+			'mw.style.autocomplete'
+		],
+		[
+			'mw.LanguageUpWiz',
+			'mw.IframeTransport',
+			'mw.ApiUploadHandler',
+			'mw.DestinationChecker',
+			'mw.UploadWizard',
+			'mw.style.uploadWizard'
+		],
+	];
+
+	var testLibraries = libraries.slice( 0 )
+	testLibraries.push( [ 'mw.MockUploadHandler' ] );
+ 
+	/**
+	* Note: We should move relevant parts of these style sheets to the addMedia/css folder 
+	* phase 2: We should separate out sheet sets per sub-module:
+	*/ 
+	
+	mw.addModuleLoader( 'UploadWizard.UploadWizard', function( callback ) {
+		//Clone the array: 
+		//var request = mwBaseFirefoggReq.slice( 0 ) ;
+		
+		//Add uploadwizard classes to a new "request" var: 
+		//request.push( libraries );
+		mw.load( libraries, function() {
+			callback( 'UploadWizard.UploadWizard' );
+		} );
+
+	} );
+	
+	mw.addModuleLoader( 'UploadWizard.UploadWizardTest', function( callback ) {
+		//Clone the array: 
+		//var request = mwBaseFirefoggReq.slice( 0 ) ;
+	 	
+		//Add uploadwizard classes to a new "request" var: 
+		//request.push( testLibraries );
+		//debugger;
+		mw.load( testLibraries, function() {
+			callback( 'UploadWizard.UploadWizardTest' );
+		} );
+
+	} );
+
+} )( window.mw );
