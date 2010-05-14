@@ -17,20 +17,8 @@
 * having a separate class for "server" and "client" api usage  
 *
 */
-/*
-mw.addMessages( {
-	"mwe-apiproxy-setting-up-proxy" : "Setting up proxy...",
-	"mwe-apiproxy-re-try" : "Retry API request",
-	"mwe-apiproxy-re-trying" : "Retrying API request...",
-	"mwe-apiproxy-proxy-not-ready" : "Proxy is not configured",
-	"mwe-apiproxy-please-login" : "The request failed. Are you logged in on $1 ? Please $2 and try again",
-	"mwe-apiproxy-log-in-link" : "log in",
-	"mwe-apiproxy-remember-loging" : "General security reminder: Only login to web sites when your address bar displays that site's address."	
-} );
-*/
 
 mw.includeAllModuleMsgs();
-
 
 /**
  * apiProxy jQuery binding
@@ -559,12 +547,12 @@ mw.ApiProxy = { };
 		}	
 	
 		var buttons = { };
-		buttons[ gM( 'mwe-apiproxy-re-try' ) ] = function() {
-			mw.addLoaderDialog( gM( 'mwe-apiproxy-re-trying' ) );			
+		buttons[ gM( 'mwe-re-try' ) ] = function() {
+			mw.addLoaderDialog( gM( 'mwe-re-trying' ) );			
 			// Re try the same context request:
 			doFrameProxy( context );			
 		}
-		buttons[ gM( 'mwe-apiproxy-cancel' ) ] = function() {
+		buttons[ gM( 'mwe-cancel' ) ] = function() {
 			mw.closeLoaderDialog ( );
 		}
 		
@@ -575,7 +563,7 @@ mw.ApiProxy = { };
 		
 		var $dialogMsg = $j('<p />');
 		$dialogMsg.append(
-			gM( 'mwe-apiproxy-please-login',
+			gM( 'mwe-please-login',
 				pUri.host,
 				
 				// Add log-in link: 	
@@ -584,17 +572,17 @@ mw.ApiProxy = { };
 					'href' : login_url,
 					'target' : '_new'
 				} )
-				.text( gM('mwe-apiproxy-log-in-link') )
+				.text( gM('mwe-log-in-link') )
 			) 
 		)
 		// Add the security note as well: 	
 		$dialogMsg.append( 			
 			$j('<br />'),
-			gM( 'mwe-apiproxy-remember-loging' )  
+			gM( 'mwe-remember-loging' )  
 		)
 		
 		mw.addDialog( 
-			gM( 'mwe-apiproxy-proxy-not-ready' ), 
+			gM( 'mwe-proxy-not-ready' ), 
 			$dialogMsg,
 			buttons
 		)
