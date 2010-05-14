@@ -11,11 +11,13 @@ $wgExtensionCredits['other'][] = array(
 	'author' => 'Max Semenik',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Cassandra',
 	'description' => 'Allows to store revision text in [http://cassandra.apache.org/ Apache Cassandra] database.',
-	//'descriptionmsg' => 'cassandra-desc',
+	'descriptionmsg' => 'cassandra-desc',
 );
+$dir = dirname( __FILE__ ) . '/';
+$wgExtensionMessagesFiles['Cassandra'] =  $dir . 'Cassandra.i18n.php';
 
 $wgAutoloadClasses['ExternalStoreCassandra'] = $wgAutoloadClasses['MWCassandraException']
-	= dirname( __FILE__ ) . '/Cassandra_body.php';
+	= $dir . 'Cassandra_body.php';
 
 if ( is_array( $wgExternalStores ) ) {
 	$wgExternalStores[] = 'cassandra';
