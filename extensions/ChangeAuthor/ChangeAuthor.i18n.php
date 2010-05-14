@@ -1696,6 +1696,7 @@ $messages['ps'] = array(
 
 /** Portuguese (Português)
  * @author 555
+ * @author Hamilton Abreu
  * @author Malafaya
  */
 $messages['pt'] = array(
@@ -1711,7 +1712,7 @@ $messages['pt'] = array(
 	'changeauthor-changeauthors-single' => 'Alterar autor',
 	'changeauthor-explanation-single' => "Através deste formulário, pode alterar o autor de uma revisão. Simplesmente mude o nome de utilizador abaixo, adicione um comentário (opcional) e clique no botão 'Alterar autor'.",
 	'changeauthor-invalid-username' => 'Nome de utilizador "$1" inválido.',
-	'changeauthor-nosuchuser' => 'Utilizador "$1" não existe.',
+	'changeauthor-nosuchuser' => 'O utilizador "$1" não existe.',
 	'changeauthor-revview' => 'Revisão #$1 de $2',
 	'changeauthor-nosuchtitle' => 'Não existe nenhuma página chamada "$1".',
 	'changeauthor-weirderror' => 'Ocorreu um erro muito estranho. Por favor, tente o seu pedido de novo. Se este erro persistir, provavelmente a base de dados não está em boas condições.',
@@ -1762,7 +1763,7 @@ $messages['qu'] = array(
 	'changeauthor-pagename-or-revid' => "P'anqap sutin icha musuqchasqap kikin huchhan:",
 	'changeauthor-pagenameform-go' => 'Riy',
 	'changeauthor-comment' => "Llamk'apuqpa nisqan pisichayta hukchay",
-	'changeauthor-changeauthors-multi' => "Llamk'apuqpa sutinta hukchay",
+	'changeauthor-changeauthors-multi' => "{{PLURAL:$1|Llamk'apuqpa|Llamk'apuqkunap}} sutinta hukchay",
 	'changeauthor-explanation-multi' => "Kay hunt'ana p'anqawanqa llamk'apuqkunap sutinkunata hukchaytam atinki.
 Kay qatiq sutisuyupi ruraqkunap sutinkunata hukchaspa pisichay willaytachá yapaspa 'Llamk'apuqpa sutinta hukchay' nisqapi ñit'illay.",
 	'changeauthor-changeauthors-single' => "Llamk'apuqpa sutinta hukchay",
@@ -1775,10 +1776,11 @@ Kay qatiq ruraqpa sutinta hukchaspa pisichay willaytachá yapaspa 'Llamk'apuqpa 
 	'changeauthor-weirderror' => 'Ancha wamaq pantasqam tukurqan.
 Ama hina kaspa, musuqmanta mañaykachay.
 Kay pantasqa musuqmanta kanqaptinqa, willañiqintin waqllisqachá.',
-	'changeauthor-invalidform' => "Ama hina kaspa, Special:ChangeAuthor nisqap hunt'ana p'anqanta llamk'achiy, amataq sapsi p'anqatachu.",
+	'changeauthor-invalidform' => "Ama hina kaspa, [[Special:ChangeAuthor|sapaq p'anqa]] nisqap hunt'ana p'anqanta llamk'achiy, amataq sapsi p'anqatachu.",
 	'changeauthor-success' => 'Mañakusqaykiqa aypalla rurapusqañam.',
 	'changeauthor-logentry' => "$2-manta $1-pa llamk'apuqninpa sutinta $3-manta $4-man hukchasqa",
 	'changeauthor-logpagename' => "Llamk'apuq suti hukchay hallch'asqa",
+	'right-changeauthor' => "Llamk'apuqpa sutinta hukchay",
 );
 
 /** Tarifit (Tarifit)

@@ -200,9 +200,11 @@ $messages['es'] = array(
 
 /** Estonian (Eesti)
  * @author Avjoska
+ * @author Pikne
  */
 $messages['et'] = array(
 	'vector-simplesearch-search' => 'Otsi',
+	'vector-simplesearch-containing' => 'sisalduv...',
 );
 
 /** Basque (Euskara)
@@ -455,6 +457,14 @@ $messages['mn'] = array(
  */
 $messages['ms'] = array(
 	'vector-simplesearch-search' => 'Cari',
+);
+
+/** Maltese (Malti)
+ * @author Chrisportelli
+ */
+$messages['mt'] = array(
+	'vector-simplesearch-search' => 'Fittex',
+	'vector-simplesearch-containing' => 'li tinkludi...',
 );
 
 /** Nedersaksisch (Nedersaksisch)

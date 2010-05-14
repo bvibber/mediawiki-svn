@@ -7,6 +7,15 @@ Abuse Filter
 optional = abusefilter-edit-builder-op-bool-xor
 aliasfile = AbuseFilter/AbuseFilter.alias.php
 
+Add Media Wizard
+
+Add Media Wizard - Add Media
+file = AddMediaWizard/AddMedia/AddMedia.i18n.php
+optional = rsd-archive_org-title, rsd-flickr-title, rsd-metavid-title, mwe-no-import-by-url-linktext
+
+Add Media Wizard - Clip Edit
+file = AddMediaWizard/ClipEdit/ClipEdit.i18n.php
+
 Admin Links
 aliasfile = AdminLinks/AdminLinks.alias.php
 
@@ -566,14 +575,9 @@ JS Kit
 
 JS2 Support
 
-JS2 Support - Add Media Wizard
-file = JS2Support/AddMediaWizard/AddMediaWizard.i18n.php
-descmsg = addmediawizard-desc
-
-JS2 Support - Upload Wizard
-file = JS2Support/UploadWizard/UploadWizard.i18n.php
-aliasfile = JS2Support/UploadWizard/UploadWizard.alias.php
-descmsg = uploadwizard-desc
+JS2 Support - mwEmbed
+file = JS2Support/mwEmbed/mwEmbed.i18n.php
+optional = mwe-size-gigabytes, mwe-size-megabytes, mwe-size-kilobytes, mwe-size-bytes
 
 Labeled Section Transclusion
 file = LabeledSectionTransclusion/lst.i18n.php
@@ -676,13 +680,6 @@ descmsg = multiupload-desc
 MediaWiki Search
 id = ext-mwsearch
 file = MWSearch/MWSearch.i18n.php
-
-# Need to make a symlink into extensions/ to make this work.
-#mwEmbed
-#descmsg = translate-group-desc-mwembed
-#optional = mwe-size-gigabytes, mwe-size-megabytes, mwe-size-kilobytes, mwe-size-bytes
-#optional = mwe-cc_title, rsd-archive_org-title, rsd-flickr-title, rsd-metavid-title
-#ignored = mwe-welcome_to_sequencer
 
 MW Releases
 ignored = mwreleases-list
@@ -1122,6 +1119,18 @@ TidyTab
 file = TidyTab/Tidy.i18n.php
 descmsg = tidy-desc
 
+Timed Media Handler
+magicfile = TimedMediaHandler/TimedMediaHandler.i18n.magic.php
+descmsg = timedmedia-desc
+
+Timed Media Handler - Timed Text
+file = TimedMediaHandler/TimedText/TimedText.i18n.php
+optional = mwe-timedtext-key-language
+
+Timed Media Handler - Embed Player
+file = TimedMediaHandler/EmbedPlayer/EmbedPlayer.i18n.php
+optional = mwe-embedplayer-ogg-player-cortado
+
 Timeline
 file = timeline/Timeline.i18n.php
 
@@ -1165,6 +1174,12 @@ UK Geocoding For Maps
 descmsg = ukgeocoding_desc
 
 Upload Blacklist
+
+Upload Wizard
+#aliasfile = UploadWizard/UploadWizard.alias.php
+
+Upload Wizard
+file = UploadWizard/UploadWizard.i18n.php
 
 Unicode Converter
 

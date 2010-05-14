@@ -791,7 +791,7 @@ if (defined('MEDIAWIKI')) {
 				$user_name = User::whoIs($id);
 			}
 			return MwRdfPageOrString($wgContLang->getNsText(NS_USER) . ':' . $user_name,
-									 wfMsg('siteuser', $user_name));
+									 wfMsgExt( 'siteuser', 'parsemag', $user_name, $user_name ) );
 		}
 	}
 

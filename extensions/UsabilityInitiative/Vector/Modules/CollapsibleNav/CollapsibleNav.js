@@ -44,6 +44,8 @@ $j(document).ready( function() {
 			maxTI = ti;
 	});
 	var tabIndex = maxTI + 1;
+	// Fix the search not having a tabindex
+	$j( '#searchInput' ).attr( 'tabindex', tabIndex++ );
 	// Make it keyboard accessible
 	$headings.each( function() {
 		$j(this).attr( 'tabindex', tabIndex++ );

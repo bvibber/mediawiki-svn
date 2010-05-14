@@ -141,19 +141,6 @@ abstract class SMWDescription {
 			return $this;
 		}
 	}
-
-	/**
-	 * TODO
-	 * 
-	 * @param string $tableName
-	 * @param array $fieldNames
-	 * @param DatabaseBase $dbs
-	 * 
-	 * @return false
-	 */	
-	public function getSQLCondition( $tableName, array $fieldNames, DatabaseBase $dbs ) {
-		return false;
-	}
 }
 
 /**

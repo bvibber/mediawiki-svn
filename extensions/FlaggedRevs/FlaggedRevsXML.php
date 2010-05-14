@@ -295,7 +295,14 @@ class FlaggedRevsXML {
 		$box = '<div class="flaggedrevs_short_basic">' . $shtml .
 			'&nbsp;' . self::ratingArrow() . "</div>\n";
 		$box .= '<div style="position: relative;">'; // for rel-absolute child div
-		$box .= '<div id="mw-fr-revisionratings" class="flaggedrevs_short_details">';
+		$box .= Xml::openElement( 'div',
+			array(
+				'id' 			=> 'mw-fr-revisionratings',
+				'class'			=> 'flaggedrevs_short_details',
+				'onMouseOver' 	=> 'FlaggedRevs.showBoxDetails()',
+				'onMouseOut' 	=> 'FlaggedRevs.hideBoxDetails()'
+			)
+		);
 		$box .= $html; // details text
 		# Add any rating tags as needed...
 		if ( $flags && !FlaggedRevs::binaryFlagging() ) {
@@ -304,7 +311,8 @@ class FlaggedRevsXML {
 				$box .= '<p>' . self::addTagRatings( $flags, true, $color ) . '</p>';
 			}
 		}
-		$box .= "</div></div>\n";
+		$box .= Xml::closeElement( 'div' );
+		$box .= "</div>\n";
         return $box;
 	}
 
@@ -314,11 +322,13 @@ class FlaggedRevsXML {
 	 */
 	public static function ratingArrow() {
 		$encPath = htmlspecialchars( FlaggedRevs::styleUrlPath() . '/img' );
-		return "<img id=\"mw-fr-revisiontoggle\" class=\"fr-toggle-arrow\"" .
-			" src=\"{$encPath}/arrow-up.png\" style=\"display:none;\" " .
-			" onclick=\"FlaggedRevs.toggleRevRatings()\" title=\"" .
-			wfMsgHtml( 'revreview-toggle-title' ) . "\" alt=\"" .
-			wfMsgHtml( 'revreview-toggle-show' ) . "\" />";
+		$img = '<img id="mw-fr-revisiontoggle" class="fr-toggle-arrow"';
+		$img .= " src=\"{$encPath}/arrow-down.png\" style=\"display:none;\"";
+		$img .= ' onMouseOver="FlaggedRevs.showBoxDetails()"';
+		$img .= ' onMouseOut="FlaggedRevs.hideBoxDetails()"';
+		$img .= ' title="' . wfMsgHtml( 'revreview-toggle-title' ) . '"';
+		$img .= ' alt="' . wfMsgHtml( 'revreview-toggle-show' ) . '" />';
+		return $img;
 	}
 
 	/**
@@ -327,7 +337,7 @@ class FlaggedRevsXML {
 	 */
 	public static function ratingToggle() {
 		return '<a id="mw-fr-revisiontoggle" class="fr-toggle-symbol"' .
-			' style="display:none;" onclick="FlaggedRevs.toggleRevRatings()" title="' .
+			' style="display:none;" onclick="FlaggedRevs.toggleBoxDetails()" title="' .
 			wfMsgHtml( 'revreview-toggle-title' ) . '" >' .
 			wfMsgHtml( 'revreview-toggle-show' ) . '</a>';
 	}
@@ -460,7 +470,7 @@ class FlaggedRevsXML {
 		# Build up all levels available to user
 		foreach ( FlaggedRevs::getDimensions() as $tag => $levels ) {
 			if ( isset( $selected[$tag] ) &&
-				!RevisionReview::userCan( $tag, $selected[$tag], $config ) )
+				!FlaggedRevs::userCanSetTag( $tag, $selected[$tag], $config ) )
 			{
 				return array( false, false ); // form will have to be disabled
 			}
@@ -468,7 +478,7 @@ class FlaggedRevsXML {
 			$minLevels[$tag] = false; // first non-zero level number
 			foreach ( $levels as $i => $msg ) {
 				# Some levels may be restricted or not applicable...
-				if ( !RevisionReview::userCan( $tag, $i, $config ) ) {
+				if ( !FlaggedRevs::userCanSetTag( $tag, $i, $config ) ) {
 					continue; // skip this level
 				} else if ( $i > 0 && !$minLevels[$tag] ) {
 					$minLevels[$tag] = $i; // first non-zero level number
@@ -641,7 +651,7 @@ class FlaggedRevsXML {
 			$flags = $srev->getTags();
 			# Check if user is allowed to renew the stable version.
 			# If not, then get the flags for the new revision itself.
-			if ( !RevisionReview::userCanSetFlags( $oldFlags ) ) {
+			if ( !FlaggedRevs::userCanSetFlags( $oldFlags ) ) {
 				$flags = $oldFlags;
 			}
 			$reviewNotes = $srev->getComment();
@@ -676,7 +686,7 @@ class FlaggedRevsXML {
 
 		# Disable form for unprivileged users
 		$uneditable = !$article->getTitle()->quickUserCan( 'edit' );
-		$disabled = !RevisionReview::userCanSetFlags( $flags ) || $uneditable;
+		$disabled = !FlaggedRevs::userCanSetFlags( $flags ) || $uneditable;
 		if ( $disabled ) {
 			$form .= Xml::openElement( 'div', array( 'class' => 'fr-rating-controls-disabled',
 				'id' => 'fr-rating-controls-disabled' ) );

@@ -52,8 +52,13 @@ class ApiStoryReview extends ApiBase {
 		if ( !isset( $params['storyid'] ) ) {
 			$this->dieUsageMsg( array( 'missingparam', 'storyid' ) );
 		}
+		
 		if ( !isset( $params['storyaction'] ) ) {
 			$this->dieUsageMsg( array( 'missingparam', 'storyaction' ) );
+		}
+		
+		if ( $params['storyaction'] == 'delete' && !$wgUser->isAllowed( 'delete' ) ) {
+			$this->dieUsageMsg( array( 'badaccess-groups' ) );
 		}
 		
 		$dbw = wfGetDB( DB_MASTER );

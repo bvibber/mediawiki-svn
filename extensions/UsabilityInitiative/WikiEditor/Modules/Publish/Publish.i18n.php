@@ -182,14 +182,15 @@ $messages['bs'] = array(
 /** Catalan (Català)
  * @author Paucabot
  * @author Solde
+ * @author Vriullop
  */
 $messages['ca'] = array(
 	'wikieditor-publish-preference' => 'Habilita la publicació pas a pas',
 	'wikieditor-publish-button-publish' => 'Publica',
-	'wikieditor-publish-button-cancel' => 'Cancel·la',
+	'wikieditor-publish-button-cancel' => 'Anuŀla',
 	'wikieditor-publish-dialog-title' => 'Publicar a {{SITENAME}}',
 	'wikieditor-publish-dialog-summary' => "Resum d'edició (descriviu breument els canvis realitzats):",
-	'wikieditor-publish-dialog-minor' => 'Edició menor',
+	'wikieditor-publish-dialog-minor' => 'Modificació menor',
 	'wikieditor-publish-dialog-watch' => 'Vigila aquesta pàgina',
 	'wikieditor-publish-dialog-publish' => 'Publica',
 	'wikieditor-publish-dialog-goback' => 'Torna',
@@ -700,6 +701,21 @@ $messages['ml'] = array(
 	'wikieditor-publish-dialog-watch' => 'ഈ താൾ ശ്രദ്ധിക്കുക',
 	'wikieditor-publish-dialog-publish' => 'പ്രസിദ്ധീകരിക്കുക',
 	'wikieditor-publish-dialog-goback' => 'പഴയ താളിലേയ്ക്ക് മടങ്ങുക',
+);
+
+/** Maltese (Malti)
+ * @author Chrisportelli
+ */
+$messages['mt'] = array(
+	'wikieditor-publish-preference' => 'Ippermetti pubblikazzjoni pass pass',
+	'wikieditor-publish-button-publish' => 'Ippubblika',
+	'wikieditor-publish-button-cancel' => 'Annulla',
+	'wikieditor-publish-dialog-title' => 'Ippubblika fuq {{SITENAME}}',
+	'wikieditor-publish-dialog-summary' => 'Taqsira (iddeskrivi fil-qasir it-tibdil li għamilt):',
+	'wikieditor-publish-dialog-minor' => 'Modifika minuri',
+	'wikieditor-publish-dialog-watch' => 'Segwi din il-paġna',
+	'wikieditor-publish-dialog-publish' => 'Ippubblika',
+	'wikieditor-publish-dialog-goback' => 'Mur lura',
 );
 
 /** Dutch (Nederlands)

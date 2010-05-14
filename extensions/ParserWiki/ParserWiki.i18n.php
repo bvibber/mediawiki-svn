@@ -82,6 +82,13 @@ $messages['ia'] = array(
 	'parserwiki-desc' => 'Permitte definir un grammatica in un wiki, postea usar iste grammatica pro inserer information in le mesme wiki',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'parserwiki-desc' => 'Memungkinkan untuk mendefinisikan tata bahasa di wiki lalu menggunakan informasi tersebut untuk memasukkan informasi ke wiki yang sama',
+);
+
 /** Italian (Italiano)
  * @author Civvì
  */

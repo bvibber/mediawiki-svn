@@ -96,10 +96,12 @@ $messages['am'] = array(
 );
 
 /** Aragonese (Aragonés)
+ * @author Juanpabl
  * @author Remember the dot
  */
 $messages['an'] = array(
 	'imagetagging-article' => 'Pachina:',
+	'imagetagging-tagcancel-button' => 'Cancelar',
 );
 
 /** Arabic (العربية)

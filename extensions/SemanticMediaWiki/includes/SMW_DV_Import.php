@@ -40,7 +40,7 @@ class SMWImportValue extends SMWDataValue {
 		// browse list in smw_import_* for section
 		list( $onto_uri, $onto_name ) = explode( '|', array_shift( $msglines ), 2 );
 
-		if ( ' ' == $onto_uri[0] ) $onto_uri = mb_substr( $onto_uri, 1 ); // tolerate initial space
+		if ( $onto_uri[0] == ' ' ) $onto_uri = mb_substr( $onto_uri, 1 ); // tolerate initial space
 
 		$this->m_uri = $onto_uri;
 		$this->m_namespace = $onto_ns;
@@ -161,12 +161,12 @@ class SMWImportValue extends SMWDataValue {
 		return 't';
 	}
 
-	public function getValueIndexes() {
-		return array( 0 );
+	public function getValueIndex() {
+		return 0;
 	}
 
-	public function getLabelIndexes() {
-		return array( 0 );
+	public function getLabelIndex() {
+		return 0;
 	}
 
 	public function getWikiValue() {

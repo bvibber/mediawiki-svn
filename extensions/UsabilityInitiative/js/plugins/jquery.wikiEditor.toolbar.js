@@ -110,7 +110,13 @@ api : {
 						$characters
 						.append(
 							$( $.wikiEditor.modules.toolbar.fn.buildCharacter( data[type][character], actions ) )
-								.click( function(e) {
+								.mousedown( function( e ) {
+									context.fn.saveStuffForIE();
+									// No dragging!
+									e.preventDefault();
+									return false;
+								} )
+								.click( function( e ) {
 									$.wikiEditor.modules.toolbar.fn.doAction( $(this).parent().data( 'context' ),
 										$(this).parent().data( 'actions' )[$(this).attr( 'rel' )] );
 									e.preventDefault();
@@ -337,6 +343,7 @@ fn: {
 						.data( 'action', tool.action )
 						.data( 'context', context )
 						.mousedown( function( e ) {
+							context.fn.saveStuffForIE();
 							// No dragging!
 							e.preventDefault();
 							return false;
@@ -373,6 +380,7 @@ fn: {
 								.data( 'action', tool.list[option].action )
 								.data( 'context', context )
 								.mousedown( function( e ) {
+									context.fn.saveStuffForIE();
 									// No dragging!
 									e.preventDefault();
 									return false;
@@ -488,6 +496,7 @@ fn: {
 						.html( html )
 						.children()
 						.mousedown( function( e ) {
+							context.fn.saveStuffForIE();
 							// No dragging!
 							e.preventDefault();
 							return false;
@@ -579,19 +588,29 @@ fn: {
 						$previousSections.fadeOut( 'fast', function() { $(this).css( 'position', 'relative' ); } );
 						$(this).parent().parent().find( 'a' ).removeClass( 'current' );
 						$sections.css( 'overflow', 'hidden' );
+						function animate( $this ) {
+							$sections
+							.css( 'display', 'block' )
+							.animate( { 'height': $section.outerHeight() }, $section.outerHeight() * 2, function() {
+								$this.css( 'overflow', 'visible' ).css( 'height', 'auto' );
+								context.fn.trigger( 'resize' );
+							} );
+						}
 						if ( show ) {
 							$section.addClass( 'section-visible' );
 							$section.fadeIn( 'fast' );
-							$sections
-								.css( 'display', 'block' )
-								.animate( { 'height': $section.outerHeight() }, $section.outerHeight() * 2, function() {
-									$(this).css( 'overflow', 'visible' ).css( 'height', 'auto' );
-									context.fn.trigger( 'resize' );
-								} );
-							$(this).addClass( 'current' );
 							if ( $section.hasClass( 'loading' ) ) {
 								// Loading of this section was deferred, load it now
-								setTimeout( function() { $section.trigger( 'loadSection' ); }, 0 );
+								$this = $(this);
+								$this.addClass( 'current loading' );
+								setTimeout( function() {
+									$section.trigger( 'loadSection' );
+									animate( $(this) );
+									$this.removeClass( 'loading' );
+								}, 1000 );
+							} else {
+								animate( $(this) );
+								$(this).addClass( 'current' );
 							}
 						} else {
 							$sections

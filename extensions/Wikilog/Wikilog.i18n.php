@@ -2110,6 +2110,7 @@ $messages['eu'] = array(
 /** Finnish (Suomi)
  * @author Centerlink
  * @author Crt
+ * @author Nike
  * @author Silvonen
  * @author Str4nd
  * @author ZeiP
@@ -2174,6 +2175,7 @@ Julkaistaksesi artikkeleita ja ottaaksesi muut wikilogin ominaisuudet käyttöö
 	'wikilog-edit-signpub' => 'Allekirjoita ja julkaise tämä artikkeli',
 	'wikilog-edit-signpub-tooltip' => 'Aiheuttaa tämän artikkelin allekirjoituksen ja julkaisemisen wikilogiinsa tallennettaessa.
 Poista tämän laatikon valinta pitääksesi artikkelin luonnoksena.',
+	'wikilog-comment-note-edited' => 'viimeksi muokattu $1 kello $2',
 	'wikilog-comment-anonsig' => '$3 (anonyymi)',
 	'wikilog-comment-pending' => 'Tämä kommentti odottaa hyväksyntää.',
 	'wikilog-comment-deleted' => 'Tämä kommentti oli poistettu.',

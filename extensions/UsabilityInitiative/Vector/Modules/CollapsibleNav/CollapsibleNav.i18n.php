@@ -97,6 +97,13 @@ $messages['et'] = array(
 	'vector-collapsiblenav-preference' => 'Tee navigeerimismenüü vasakul peidetavaks',
 );
 
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'vector-collapsiblenav-preference' => 'Ezkerreko nabigazio menua irekigarri bihurtzen du',
+);
+
 /** French (Français)
  * @author IAlex
  */
@@ -153,6 +160,13 @@ $messages['ia'] = array(
 	'vector-collapsiblenav-preference' => 'Activar le menu de navigation plicabile a sinistra',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'vector-collapsiblenav-preference' => 'Aktifkan fungsi menu navigasi kiri yang dapat ditutup',
+);
+
 /** Italian (Italiano)
  * @author Una giornata uggiosa '94
  */
@@ -193,6 +207,13 @@ $messages['mk'] = array(
  */
 $messages['ml'] = array(
 	'vector-collapsiblenav-preference' => 'ഇടതുവശത്തെ വഴികാട്ടി മെനു ചുരുക്കാവുന്നതാക്കി സജ്ജീകരിക്കുക',
+);
+
+/** Maltese (Malti)
+ * @author Chrisportelli
+ */
+$messages['mt'] = array(
+	'vector-collapsiblenav-preference' => "Ippermetti menu tan-navigazzjoni fuq ix-xellug li jista' jinħeba",
 );
 
 /** Dutch (Nederlands)

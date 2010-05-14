@@ -125,8 +125,10 @@ $messages['bs'] = array(
 /** Catalan (Català)
  * @author Paucabot
  * @author Solde
+ * @author Vriullop
  */
 $messages['ca'] = array(
+	'wikieditor-preview-preference' => 'Habilita la previsualització costat per costat',
 	'wikieditor-preview-tab' => 'Previsualització',
 	'wikieditor-preview-changes-tab' => 'Canvis',
 	'wikieditor-preview-loading' => 'Carregant ...',
@@ -489,6 +491,16 @@ $messages['ml'] = array(
 	'wikieditor-preview-tab' => 'എങ്ങനെയുണ്ടെന്നു കാണുക',
 	'wikieditor-preview-changes-tab' => 'മാറ്റങ്ങൾ',
 	'wikieditor-preview-loading' => 'ശേഖരിക്കുന്നു...',
+);
+
+/** Maltese (Malti)
+ * @author Chrisportelli
+ */
+$messages['mt'] = array(
+	'wikieditor-preview-preference' => 'Ippermetti dehra proviżorja fil-ġenb',
+	'wikieditor-preview-tab' => 'Dehra proviżorja',
+	'wikieditor-preview-changes-tab' => 'Tibdil',
+	'wikieditor-preview-loading' => "Tiela'...",
 );
 
 /** Dutch (Nederlands)

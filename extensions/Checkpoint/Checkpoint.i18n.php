@@ -73,6 +73,15 @@ $messages['es'] = array(
 	'checkpoint-notice' => '([[{{ns:project}}:Checkpoint|grabar checkpoint]])',
 );
 
+/** Finnish (Suomi)
+ * @author Str4nd
+ */
+$messages['fi'] = array(
+	'checkpoint' => 'Tallenna ja jatka muokkaamista',
+	'checkpoint-desc' => 'Mahdollistaa tallennuksen ja muokkauksen jatkamisen.',
+	'checkpoint-tooltip' => 'Tallenna työsi ja jatka sivun muokkaamista',
+);
+
 /** French (Français)
  * @author Peter17
  */
@@ -91,6 +100,16 @@ $messages['gl'] = array(
 	'checkpoint-desc' => 'Permite gardar unha edición e continuar modificando',
 	'checkpoint-tooltip' => 'Gardar o seu progreso e continuar a editar a páxina',
 	'checkpoint-notice' => '([[{{ns:project}}:Checkpoint|crear un punto de control]])',
+);
+
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'checkpoint' => 'Spychere un Wytermache mit dr Bearbeitig',
+	'checkpoint-desc' => 'Macht s Spychere vun ere Bearbeitig megli mit ere automatische Ruckchehr zum Bearbeitigsfänschter',
+	'checkpoint-tooltip' => 'Spychere dr aktuäll Bearbeitigsstand un mach wyter mit dr Bearbeitig vu dr Syte',
+	'checkpoint-notice' => '([[{{ns:project}}:Checkpoint|Zwischespycherig]])',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -227,6 +246,16 @@ $messages['ru'] = array(
 	'checkpoint-desc' => 'Позволяет сохранить изменения и продолжить редактирование',
 	'checkpoint-tooltip' => 'Сохраните вашу работу и продолжите редактирование страницы',
 	'checkpoint-notice' => '([[{{ns:project}}:Checkpoint|сохранение контрольной точки]])',
+);
+
+/** Swedish (Svenska)
+ * @author Per
+ */
+$messages['sv'] = array(
+	'checkpoint' => 'Spara och fortsätt redigeringen',
+	'checkpoint-desc' => 'Möjligör att spara och fortsätta redigera',
+	'checkpoint-tooltip' => 'Spara ditt arbete och fortsätt redigera sidan',
+	'checkpoint-notice' => '([[{{ns:project}}:Checkpoint|spara checkpoint]])',
 );
 
 /** Telugu (తెలుగు)

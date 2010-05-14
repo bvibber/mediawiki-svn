@@ -314,9 +314,10 @@ Caiff ffeiliau anaddas eu dileu ar unwaith; gweler y [[{{MediaWiki:Multipleuploa
 /** Danish (Dansk)
  * @author BabelFrode
  * @author Byrial
+ * @author Emilkris33
  */
 $messages['da'] = array(
-	'multipleupload' => 'Læg filer op',
+	'multipleupload' => 'Læg flere filer op',
 	'multiupload-desc' => 'Tillader brugere at [[Special:MultipleUpload|lægge flere filer op samtidig]]',
 	'multipleupload-ignoreallwarnings' => "Overhør '''alle advarsler''' og gem filerne.",
 	'multipleupload-saveallfiles' => 'Gem alle filer',

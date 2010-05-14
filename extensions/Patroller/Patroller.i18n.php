@@ -1469,9 +1469,9 @@ $messages['pt'] = array(
 	'patrol-reverting' => 'Revertendo: $1',
 	'patrol-nonefound' => 'Nenhuma edição apropriada foi encontrada para ser patrulhada.',
 	'patrol-endorsed-ok' => 'A edição foi marcada como patrulhada.',
-	'patrol-endorsed-failed' => 'A edição não pôde ser marcada como patrulhada.',
+	'patrol-endorsed-failed' => 'Não foi possível marcar a edição como patrulhada.',
 	'patrol-reverted-ok' => 'A edição foi revertida.',
-	'patrol-reverted-failed' => 'A edição não pôde ser revertida.',
+	'patrol-reverted-failed' => 'Não foi possível reverter a edição.',
 	'patrol-skipped-ok' => 'Ignorando edição.',
 	'patrol-reasons' => '* Simples vandalismo
 * Teste de principiante

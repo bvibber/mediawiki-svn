@@ -27,7 +27,8 @@
 				endDelay: 100,
 				updateBatch: null,
 				updateEnd: null,
-				loaded: false
+				loaded: true,
+				continueParam: ''
 			},
 			opt
 		);
@@ -99,10 +100,12 @@
 			 * function if this is the case.
 			 */
 			function handleScrolling() {
+				if ( !opt.loaded ) return;
+				
 				var scrollPos = $me.scrollTop();
 				
 				// TODO: add check to make sure the board is not currently busy
-				if( previousScrollPos != scrollPos ) {
+				if ( previousScrollPos != scrollPos ) {
 					previousScrollPos = scrollPos;
 					var co = $me.offset().top;
 					
@@ -117,7 +120,8 @@
 							return;
 						}
 						
-						opt.updateBatch( $batchDiv.removeClass( opt.emptyBatchClass ) );
+						opt.loaded = false;
+						opt.updateBatch( opt, $batchDiv.removeClass( opt.emptyBatchClass ) );
 					});
 				}
 				
@@ -129,7 +133,7 @@
 			}
 			
 			function vEnd() {
-				if ( ele.scrollTop > 0 && ele.scrollHeight - ele.scrollTop < opt.eBound ) {
+				if ( ele.scrollTop > 0 && ele.scrollHeight - ele.scrollTop < opt.eBound && opt.loaded ) {
 					batch( $sp, opt );
 					return 1;
 				}

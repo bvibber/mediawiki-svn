@@ -92,9 +92,9 @@ $messages['bn'] = array(
  */
 $messages['br'] = array(
 	'usabilityinitiative' => 'Intrudu Implijadusted',
-	'usabilityinitiative-desc' => "Arc'hwelioù diorroet gant Intrudu Implijadusted Wikipedia evit gwellaat implijadusted MediaWiki",
-	'prefs-beta' => "Arc'hweladurioù beta",
-	'prefs-labs' => 'Arc\'hweladurioù "labs"',
+	'usabilityinitiative-desc' => 'Perzhioù diorroet gant Intrudu Implijadusted Wikipedia evit gwellaat implijadusted MediaWiki',
+	'prefs-beta' => 'Perzhioù beta',
+	'prefs-labs' => 'Perzhioù "labs"',
 );
 
 /** Bosnian (Bosanski)
@@ -448,6 +448,16 @@ $messages['ml'] = array(
 $messages['ms'] = array(
 	'usabilityinitiative' => 'Inisiatif Kebolehgunaan',
 	'usabilityinitiative-desc' => 'Tamplian-tampilan yang dibangunkan oleh Inisiatif Kebolehgunaan Wikipedia demi meningkatkan kebolehgunaan MediaWiki',
+);
+
+/** Maltese (Malti)
+ * @author Chrisportelli
+ */
+$messages['mt'] = array(
+	'usabilityinitiative' => "Inizjattiva ta' Użabilità",
+	'usabilityinitiative-desc' => "Karatteristiċi żviluppati mill-Inizjattiva ta' Użabilità tal-Wikipedija sabiex ittejjeb l-użabilità ta' MediaWiki.",
+	'prefs-beta' => 'Karatteristiċi tal-Beta',
+	'prefs-labs' => 'Karatteristiċi tal-laboratorji',
 );
 
 /** Nedersaksisch (Nedersaksisch)

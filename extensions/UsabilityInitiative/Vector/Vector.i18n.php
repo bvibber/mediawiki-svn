@@ -78,7 +78,7 @@ $messages['bn'] = array(
  */
 $messages['br'] = array(
 	'vector' => 'Gwellaennoù IU evit Vector',
-	'vector-desc' => 'Gwellaat a ra elfennoù eus ar gwiskadur Vector war an etrefas implijer .',
+	'vector-desc' => 'Gwellaat a ra elfennoù eus ar gwiskadur Vector war an etrefas implijer.',
 );
 
 /** Bosnian (Bosanski)
@@ -306,6 +306,14 @@ $messages['mk'] = array(
 $messages['ml'] = array(
 	'vector' => 'വെക്റ്റർ ദൃശ്യരൂപത്തിന്റെ സമ്പർക്കമുഖ മെച്ചപ്പെടുത്തലുകൾ',
 	'vector-desc' => 'വെക്റ്റർ ദൃശ്യരൂപത്തിൽ ഉപയോക്തൃ സമ്പർക്കമുഖ ഘടകങ്ങളിലെ മെച്ചപ്പെടുത്തലുകൾ.',
+);
+
+/** Maltese (Malti)
+ * @author Chrisportelli
+ */
+$messages['mt'] = array(
+	'vector' => 'Titjib tal-interfaċċa tal-utent għal Vector',
+	'vector-desc' => 'Ittejjeb l-elementi tal-interfaċċa tal-utent tal-aspett grafiku Vector.',
 );
 
 /** Dutch (Nederlands)

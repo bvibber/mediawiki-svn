@@ -3987,6 +3987,7 @@ Lisätietoja on [[{{MediaWiki:Ow editing policy url}}|muokkauskäytännöistä]]
 	'ow_ExpressionMeanings' => 'Lausekkeen merkitykset',
 	'ow_Expressions' => 'Ilmaisut',
 	'ow_IdenticalMeaning' => 'Identtinen merkitys',
+	'ow_IncomingRelations' => 'Tulevat relaatiot',
 	'ow_GotoSource' => 'Siirry lähdetekstiin',
 	'ow_Language' => 'Kieli',
 	'ow_LevelAnnotation' => 'Annotaatio',
@@ -4935,6 +4936,7 @@ Bitte kontaktier dr Serveradminschtrator.',
 	'ow_needs_xlation_source_lang' => 'Ursprungssproch:',
 	'ow_needs_xlation_dest_lang' => 'Ziilsproch:',
 	'ow_needs_xlation_no_dest_lang' => 'Bitte gib e Ziilsproch aa',
+	'ow_statistics' => 'Wikidata: Statischtike',
 	'ow_show' => 'Zeige',
 	'ow_upload' => 'Uffelade',
 	'ow_create' => 'Aalege',
@@ -9902,6 +9904,7 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Giro720
  * @author Hamilton Abreu
  * @author Jorge Morais
  * @author Malafaya
@@ -10132,7 +10135,7 @@ Não foi feita nenhuma operação de cópia.',
 	'ow_create' => 'Criar',
 	'ow_collection_added' => '<strong>Colecção $1 adicionada.</strong>',
 	'ow_suggest_previous' => 'Anterior',
-	'ow_suggest_next' => 'Posterior',
+	'ow_suggest_next' => 'Próximo',
 	'ow_suggest_clear' => 'Limpar',
 	'ow_nstab_definedmeaning' => 'significado definido',
 	'ow_nstab_edit_copy' => 'editar cópia',
@@ -12213,6 +12216,9 @@ Välj en samling att exportera. Skriv i språktextrutan in en kommaseparerad lis
 	'ow_exporttsv_not_allowed' => 'Du har inte behörighet att utföra en TSV-export.',
 	'ow_exporttsv_export_failed' => 'Export misslyckades',
 	'addcollection' => 'Wikidata: Lägg till samling',
+	'ow_searchnoresult' => "<p>Du kan:<br />
+* '''Skapa uttrycket \"[[Expression:\$1]]\"''' (och lägga till en definition)<br />
+* '''Skapa sidan \"[[:\$1]]\"''' (en standard wikisida)</p>",
 	'ow_save' => 'Spara',
 	'ow_history' => 'Historik',
 	'ow_datasets' => 'Val av datauppsättning',
@@ -12366,6 +12372,7 @@ Var god kontakta serveroperatören eller systemadministratören.',
 	'ow_needs_xlation_source_lang' => 'Källspråk:',
 	'ow_needs_xlation_dest_lang' => 'Målspråk:',
 	'ow_needs_xlation_no_dest_lang' => 'Ange ett målspråk.',
+	'ow_statistics' => 'Wikidata: Statistik',
 	'ow_show' => 'Visa',
 	'ow_upload' => 'Skicka in',
 	'ow_create' => 'Skapa',

@@ -33,7 +33,7 @@ if ( ! defined( 'Validator_VERSION' ) ) {
 	echo '<b>Warning:</b> You need to have <a href="http://www.mediawiki.org/wiki/Extension:Validator">Validator</a> installed in order to use <a href="http://www.mediawiki.org/wiki/Extension:Maps">Maps</a>.';
 }
 else {
-	define( 'Maps_VERSION', '0.6 a26' );
+	define( 'Maps_VERSION', '0.6 rc2' );
 
 	// The different coordinate notations.
 	define( 'Maps_COORDS_FLOAT', 'float' );
@@ -80,7 +80,7 @@ else {
 function efMapsSetup() {
 	global $wgExtensionCredits, $wgLang, $wgAutoloadClasses, $IP, $wgStyleVersion, $wgScriptPath,  $wgJsMimeType, $wgExtensionAssetsPath;
 	global $egMapsDefaultService, $egMapsAvailableServices, $egMapsServices, $egMapsDefaultGeoService, $egMapsScriptPath;
-	global $egMapsAvailableGeoServices, $egMapsDir, $egMapsAvailableFeatures, $egMapsUseMinJs, $egMapsJsExt, $egMapsStyleVersion;
+	global $egMapsDir, $egMapsAvailableFeatures, $egMapsUseMinJs, $egMapsJsExt, $egMapsStyleVersion;
 
 	// Autoload the general classes
 	$wgAutoloadClasses['MapsCoordinateParser'] 		= $egMapsDir . 'Maps_CoordinateParser.php';

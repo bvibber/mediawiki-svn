@@ -153,7 +153,9 @@ class ReaderFeedback {
 	* @param string $cache, optional param to not use cache
 	* @returns string HTML table
 	*/	
-	public static function getVoteAggregates( $page, $period, $add = array(), $cache = 'useCache' ) {
+	public static function getVoteAggregates(
+		$page, $period, $add = array(), $cache = 'useCache'
+	) {
 		global $wgLang, $wgMemc;
 		if( $period > 93 ) {
 			return ''; // too big
@@ -182,7 +184,7 @@ class ReaderFeedback {
 			$cutoff_unixtime = $now - ($period * 24 * 3600);
 			// Use integral number of days to be consistent with graphs
 			$cutoff_unixtime = $cutoff_unixtime - ($cutoff_unixtime % 86400);
-			$cutoff = $dbr->addQuotes( wfTimestamp( TS_MW, $cutoff_unixtime ) );
+			$cutoff = $dbr->addQuotes( $dbr->timestamp( $cutoff_unixtime ) );
 			// Get the first revision possibly voted on in the range
 			$firstRevTS = $dbr->selectField( 'revision',
 				'rev_timestamp',

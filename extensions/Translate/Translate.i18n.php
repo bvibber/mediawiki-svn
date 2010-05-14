@@ -1036,6 +1036,8 @@ $messages['ar'] = array(
 	'translate-translations-including-no-param' => 'من فضلك حدد مفتاح رسالة صحيح في معامل الصفحة الفرعية',
 	'languagestats' => 'إحصاءات اللغة',
 	'languagestats-summary' => 'هذه الصفحة تعرض إحصاءات الترجمة لكل مجموعات الرسائل للغة.',
+	'languagestats-stats-for' => 'إحصاءات الترجمة للغة $1 ($2).',
+	'languagestats-recenttranslations' => 'ترجمات حديثة',
 	'translate-language-code' => 'رمز اللغة',
 	'translate-language-code-field-name' => 'رمز اللغة:',
 	'translate-suppress-complete' => 'تخطَ مجموعات الرسائل المترجمة كليا',
@@ -1049,6 +1051,7 @@ $messages['ar'] = array(
 	'translate-languagestats-groups' => ' # أضف أرقام مجموعات الرسائل, واحدا لكل سطر لتحديد مجموعات الرسائل التي
  # تعرض في Special:LanguageStats.أرقام مجموعات الرسائل غير الموجودة سوف 
  # يتم تجاهلها.',
+	'supportedlanguages' => 'اللغات المدعومة',
 	'translate-save' => 'احفظ ($1)',
 	'translate-jssti-add' => 'أضف إلى القائمة',
 	'translate-group-desc-mediawikicore' => 'تحتوي مجموعة الرسائل هذه على الرسائل المستخدمة في النسخة ألفا الحالية من ميدياويكي ({{CURRENTVERSION}})',
@@ -3391,7 +3394,7 @@ $messages['de'] = array(
 	'translate-ignored' => '(ignoriert)',
 	'translate-edit-definition' => 'Systemnachricht im Original',
 	'translate-edit-contribute' => 'bearbeiten',
-	'translate-edit-no-information' => "''Diese Systemnachricht hat noch keine Dokumentation. Wenn du weißt, wo und welchem Zusammenhang sie benutzt wird, kannst du anderen Übersetzern helfen, indem du eine Dokumentation hinzufügst.''",
+	'translate-edit-no-information' => "''Diese Systemnachricht hat noch keine Dokumentation. Wenn du weißt, wo und in welchem Zusammenhang sie benutzt wird, kannst du anderen Übersetzern helfen, indem du eine Dokumentation hinzufügst.''",
 	'translate-edit-information' => 'Information über die Systemnachricht „$2“ ($1)',
 	'translate-edit-in-other-languages' => 'Systemnachricht „$1“ in anderer Sprache',
 	'translate-edit-committed' => 'Aktuelle Übersetzung',
@@ -6217,6 +6220,8 @@ D Standardlischt vu Sproche hangt vu Dyyre Sproch ab.',
 	'translate-translations-including-no-param' => 'Bitte gib e giltige Nochrichteschlissel as Untersyteparameter aa',
 	'languagestats' => 'Sprochstatischtike',
 	'languagestats-summary' => 'Die Syte zeigt Ibersetzigsstatischtike fir alli Nochrichtegruppe vun ere Sproch.',
+	'languagestats-stats-for' => 'Ibersetzigsstatischtike fir $1 ($2).',
+	'languagestats-recenttranslations' => 'Aktuälli Ibersetzige',
 	'translate-language-code' => 'Sprochcode',
 	'translate-language-code-field-name' => 'Sprochcode:',
 	'translate-suppress-complete' => 'Unterdruck komplett ibersetzti Nochrichtegruppe',
@@ -6227,6 +6232,15 @@ D Standardlischt vu Sproche hangt vu Dyyre Sproch ab.',
 	'translate-percentage-fuzzy' => 'Veraltet',
 	'translate-nothing-to-do' => 'Alli meglige Ibersetzige sin schyns scho gmacht.
 S wird empfohle, Syschtemnochrichte mit dr Spezialsyte [[Special:Translate|{{int:translate}}]] z iberpriefe.',
+	'supportedlanguages' => 'Unterstitzti Sproche',
+	'supportedlanguages-summary' => 'Die Syte zeigt e Lischte vu allne unterstitze Sproche uf {{SITENAME}}, zämme mit dr Näme vu dr Ibersetzer, wu an däne Sproche mitgschafft hän.
+Meh Informatione zuen ere Sproch git s bim Klick uf dr Portallink.
+E Klick uf dr Name vun eme Ibersetzers fiert zue dr Benutzersyte.
+
+Wänn imfall e Sproch nit ufgfiert wird, git s Informatione zum Starte vun ere neje Sproch unter „[[Translating:Process|Neji Sproche]]“.
+
+Wänn imfall dr Name vun eme Ibersetzer fählt, muess dää zue dr Lischte vu dr Ibersetzer im jewylige [[:Category:Languages|Portal]] zuegfiegt wäre.
+Im Menü git s e Link zum Portal vu dr yygstellte Sproch.',
 	'translate-save' => 'Spychere ($1)',
 	'translate-jssti-add' => 'Zue dr Lischt zuefiege',
 	'translate-group-desc-mediawikicore' => 'In däre Gruppe het s alli Nochrichte vu dr aktuälle alpha-Version vu MediaWiki ({{CURRENTVERSION}})',
@@ -10800,13 +10814,19 @@ $messages['mt'] = array(
 	'translate-task-view' => 'Uri l-messaġġi kollha minn',
 	'translate-task-untranslated' => 'Uri l-messaġġi kollha li għadhom ma ġewx tradotti minn',
 	'translate-task-optional' => 'Uri messaġġi opzjonali minn',
+	'translate-task-untranslatedoptional' => 'Uri l-messaġġi opzjonali li għadhom ma ġewx traddoti minn',
+	'translate-task-problematic' => 'Uri messaġġi li għadhom problemi',
 	'translate-page-language' => 'Lingwa',
+	'translate-page-description-legend' => 'Informazzjoni dwar il-grupp',
+	'translate-page-edit' => 'editja',
+	'translate-ext-url' => '<hr />Sit elettroniku: $1',
+	'translate-optional' => '(opzjonali)',
 	'translate-ignored' => '(injorat)',
 	'translate-edit-definition' => 'Definizzjoni tal-messaġġ',
 	'translate-edit-contribute' => 'ikkontribwixxi',
 	'translate-edit-no-information' => "''Dan il-messaġġ m'għandu l-ebda dokumentazzjoni.''
 ''Jekk taf fejn jew kif jiġi wżat dan il-messaġġ, tista' tgħin lit-tradutturi l-oħra billi żżid id-dokumentazzjoni ma' dan il-messaġġ.''",
-	'translate-edit-information' => 'Informazzjoni dwar dan il-messaġġ ($1)',
+	'translate-edit-information' => 'Informazzjoni dwar il-messaġġ "$2" ($1)',
 	'translate-edit-in-other-languages' => 'Messaġġ "$1" f\'lingwi oħra',
 	'translate-edit-committed' => 'Traduzzjoni attwali fis-software',
 	'translate-edit-warnings' => 'Twissijiet dwar traduzzjonijiet mhux kompluti',
@@ -10816,6 +10836,7 @@ $messages['mt'] = array(
 	'translate-edit-goto-prev' => 'Immodifika l-messaġġ preċedenti',
 	'translate-edit-goto-next' => 'Immodifika l-messaġġ suċċessiv',
 	'translate-edit-goto-list' => 'Lura għal-lista',
+	'translate-magic-pagename' => "Traduzzjoni estiża ta' MediaWiki",
 	'translate-magic-help' => "Tista' tittraduċi t-titli tal-paġni speċjali, frażijiet maġiċi u ismijiet tal-ispazju tal-isem.
 
 It-titli tal-paġni speċjali u l-frażijiet maġiċi jista' jkollhom aktar minn traduzzjoni waħda.
@@ -10827,12 +10848,70 @@ Jekk mhuwiex possibbli li fil-lingwa tiegħek tiġi formulata espressjonali vali
 
 Biex issalva t-tibdil, trid tkun parti mill-grupp tat-tradutturi.
 It-tibdil ma jiġix salvat sakemm ma tagħfasx il-buttuna t'isfel biex issalva.",
+	'translate-magic-module' => 'Modulu:',
+	'translate-magic-submit' => 'Ikseb',
 	'translate-magic-cm-export' => 'Esporta',
+	'translate-magic-nothing-to-export' => "M'hemm xejn x'tesporta.",
+	'translate-magic-cm-to-be' => 'Ġdid',
+	'translate-magic-cm-current' => 'Attwali',
 	'translate-magic-cm-original' => 'Oriġinali',
 	'translate-magic-cm-comment' => 'Kumment:',
+	'translate-magic-cm-save' => 'Salva',
+	'translate-magic-cm-updatedusing' => "Aġġornat bl-użu ta' [[Special:Magic]]",
+	'translate-magic-cm-savefailed' => 'L-issejvjar ma seħħx',
+	'translate-magic-special' => 'Psewdonimi tal-paġni speċjali',
+	'translate-magic-words' => 'Kliem maġiku',
+	'translate-magic-namespace' => 'Ismijiet tal-ispazji tal-isem',
+	'translate-magic-notsaved' => 'Il-modifika tiegħek ma ġietx salvata!',
+	'translate-magic-errors' => 'Jekk jogħġbok irranġa l-{{PLURAL:$1|iżball|iżbalji}} segwenti fit-traduzzjonijiet:',
+	'translate-magic-saved' => "Il-modifiki tiegħek ġew salvati b'suċċess.",
+	'translationchanges' => 'Tibdil fit-traduzzjonijiet',
 	'translationchanges-export' => 'esporta',
+	'translationchanges-change' => '$1: $2 minn $3',
+	'translate-checks-parameters' => 'Il-{{PLURAL:$2|parametru segwnti mhuwiex użat|parametri segwenti mhumiex użati}}:
+<strong><nowiki>$1</nowiki></strong>',
+	'translate-checks-parameters-unknown' => 'Il-{{PLURAL:$2|parameteru segwenti mhuwiex magħruf|parametri segwenti mhumiex magħrufa}}:
+<strong><nowiki>$1</nowiki></strong>',
+	'translate-checks-balance' => "Hemm numru mhux ekwu ta' {{PLURAL:$2|parentesi|parentesi}}:
+<strong><nowiki>$1</nowiki></strong>",
+	'translate-checks-links' => 'Il-{{PLURAL:$2|ħolqa segwenti għandha problema|$2 ħoloq segwenti għandhom problema}}:
+<strong><nowiki>$1</nowiki></strong>',
+	'translate-checks-links-missing' => 'Il-{{PLURAL:$2|ħolqa segwenti hi nieqsa|$2 ħoloq segwenti huma nieqsa}}:
+<strong><nowiki>$1</nowiki></strong>',
+	'translate-checks-plural' => "Id-definizzjoni tuża' <nowiki>{{PLURAL:}}</nowiki> imma t-traduzzjoni le.",
+	'translate-checks-pagename' => 'L-ispazju tal-isem inbidel mid-definizzjoni',
+	'translate-checks-format' => 'Din it-traduzzjoni ma ssegwix id-definizzjoni segwenti jew għandha sintassi invalidi: $1',
+	'translate-checks-escape' => "L-''escapes'' segwenti jistgħu jkunu aċċidentali: <strong>$1</strong>",
+	'translate-checks-fudforum-syntax' => "Uża <nowiki>$1</nowiki> minflok <nowiki>$2</nowiki> f'dan il-proġett.",
 	'translate-pref-nonewsletter' => "Tibgħatlix ''newsletter'' b'permezz ta' ittra-e",
+	'translate-pref-editassistlang' => 'Lingwi assistenti:',
+	'prefs-translate' => 'Opzjonijiet għat-traduzzjoni',
+	'translate-pref-editassistlang-help' => "Kodiċi tal-lingwi separati minn virgola.
+It-traduzzjonijiet ta' messaġġ f'dawn il-lingwi huma murija meta tkun qed tittraduċi.
+Il-lista predefinita tal-lingwi tiddependi fuq il-lingwa tiegħek.",
+	'translate-pref-editassistlang-bad' => 'Kodiċi tal-lingwa invalidu fil-lista:
+<nowiki>$1</nowiki>.',
+	'translate-pref-jsedit' => "Editur imtejjeb ta' traduzzjoni (JavaScript)",
+	'right-translate' => 'Immodifika bl-użu tal-interfaċċa tat-traduzzjoni',
+	'translate-statsf-submit' => 'Dehra proviżorja',
+	'translate-tag-category' => 'Paġni traduċibbli',
+	'translate-tag-page-desc' => 'Traduzzjoni tal-paġna wiki [[:$1]].',
+	'translate-tag-fuzzy-comment' => 'Tifsira mibdula minn [[User:$1|$1]] fir-reviżjoni $2.',
+	'translate-tag-fuzzy-reason' => 'Tifsira minbdula minn "$1" bil-kumment "$3" f\'$2',
+	'translate-sidebar-alltrans' => "F'lingwi oħrajn",
+	'translations' => 'It-traduzzjonijiet kollha',
+	'translations-summary' => "Daħħal hawn taħt isem ta' messaġġ biex turi t-traduzzjonijiet kollha disponibbli",
+	'translate-translations-no-message' => '"$1" mhuwiex messaġġ traduċibbli',
+	'translate-translations-none' => 'M\'hemm l-ebda traduzzjoni għal "$1"',
+	'translate-translations-fieldset-title' => 'Messaġġ',
+	'translate-translations-messagename' => 'Isem:',
+	'translate-translations-project' => 'Proġett:',
 	'languagestats' => 'Statistika tal-lingwi',
+	'languagestats-summary' => "Din il-paġna turi l-istatistika tat-traduzzjonijiet għall-gruppi kollha tal-messaġġi ta' lingwa.",
+	'translate-group-desc-nodesc' => "L-ebda deskrizzjoni mhi disponibbli għal dan il-grupp ta' messaġġi",
+	'translate-js-next' => 'Salvaha u għaddi għal li jmiss',
+	'translate-js-skip' => 'Li jmiss',
+	'translate-js-history' => 'Kronoloġija',
 );
 
 /** Erzya (Эрзянь)
@@ -12905,18 +12984,18 @@ Na barra lateral à esquerda existe um link para o portal da língua da sua pref
 	'translate-jssti-add' => 'Adicionar à lista',
 	'translate-group-desc-mediawikicore' => 'Este grupo contém as mensagens utilizadas na actual versão alfa do MediaWiki ({{CURRENTVERSION}})',
 	'translate-group-desc-mediawikimostused' => 'Este grupo contém as [http://translatewiki.net/wiki/Most_often_used_messages_in_MediaWiki 500 mensagens mais frequentemente utilizadas] no MediaWiki',
-	'translate-group-desc-mediawikiextensions' => 'Meta-grupo contendo todas as mensagens para as extensões do MediaWiki suportadas',
-	'translate-group-desc-collection' => 'Meta-grupo contendo todas as mensagens para a extensão do MediaWiki [http://www.mediawiki.org/wiki/Extension:Collection Colecção]',
-	'translate-group-desc-flaggedrevs' => 'Meta-grupo contendo todas as mensagens para a extensão do MediaWiki [http://www.mediawiki.org/wiki/Extension:FlaggedRevs Edições Analisadas]',
-	'translate-group-desc-readerfeedback' => 'Meta-grupo contendo todas as mensagens para a extensão do MediaWiki [http://www.mediawiki.org/wiki/Extension:FlaggedRevs ReaderFeedback]',
-	'translate-group-desc-socialprofile' => 'Meta-grupo contendo todas as mensagens para as extensões relacionadas com a extensão do MediaWiki [http://www.mediawiki.org/wiki/Extension:SocialProfile Perfil Social]',
-	'translate-group-desc-translate' => 'Meta-grupo contendo todas as mensagens para a extensão do MediaWiki [http://www.mediawiki.org/wiki/Extension:Translate Traduzir]',
-	'translate-group-desc-wikiaextensions' => 'Meta-grupo contendo todas as mensagens para as extensões MediaWiki suportadas, usadas pelo [http://www.wikia.com Wikia]',
-	'translate-group-desc-wikihowextensions' => 'Meta-grupo contendo todas as mensagens para as extensões MediaWiki suportadas, usadas pelo [http://www.wikihow.com wikiHow]',
-	'translate-group-desc-wikimediaextensions' => 'Meta-grupo contendo todas as mensagens para as extensões MediaWiki suportadas, usadas pela [http://wikimedia.org/ Wikimedia Foundation]',
-	'translate-group-desc-wikitravelextensions' => 'Meta-grupo contendo todas as mensagens para as extensões MediaWiki suportadas, usadas pelo [http://wikitravel.org Wikitravel]',
-	'translate-group-desc-uniwiki' => 'Meta-grupo contendo todas as mensagens para as extensões relacionadas com o [http://unicefinnovation.org/wiki.php Uniwiki]',
-	'translate-group-desc-ui' => 'Meta-grupo contendo todas as mensagens para as extensões relacionadas com a [http://meta.wikimedia.org/wiki/Wikipedia_Usability_Initiative Iniciativa de Usabilidade da Wikipédia]',
+	'translate-group-desc-mediawikiextensions' => 'Este meta-grupo contém todas as mensagens para as extensões do MediaWiki suportadas',
+	'translate-group-desc-collection' => 'Este meta-grupo contém todas as mensagens para a extensão do MediaWiki [http://www.mediawiki.org/wiki/Extension:Collection Colecção]',
+	'translate-group-desc-flaggedrevs' => 'Este meta-grupo contém todas as mensagens para a extensão do MediaWiki [http://www.mediawiki.org/wiki/Extension:FlaggedRevs Revisão de Edições]',
+	'translate-group-desc-readerfeedback' => 'Este meta-grupo contém todas as mensagens para a extensão do MediaWiki [http://www.mediawiki.org/wiki/Extension:FlaggedRevs ReaderFeedback]',
+	'translate-group-desc-socialprofile' => 'Este meta-grupo contém todas as mensagens para as extensões relacionadas com a extensão do MediaWiki [http://www.mediawiki.org/wiki/Extension:SocialProfile Perfil Social]',
+	'translate-group-desc-translate' => 'Este meta-grupo contém todas as mensagens para a extensão do MediaWiki [http://www.mediawiki.org/wiki/Extension:Translate Traduzir]',
+	'translate-group-desc-wikiaextensions' => 'Este meta-grupo contém todas as mensagens para as extensões suportadas do MediaWiki que são usadas pela [http://www.wikia.com Wikia]',
+	'translate-group-desc-wikihowextensions' => 'Este meta-grupo contém todas as mensagens para as extensões MediaWiki suportadas, usadas pelo [http://www.wikihow.com wikiHow]',
+	'translate-group-desc-wikimediaextensions' => 'Este meta-grupo contém todas as mensagens para as extensões MediaWiki suportadas, usadas pela [http://wikimedia.org/ Wikimedia Foundation]',
+	'translate-group-desc-wikitravelextensions' => 'Este meta-grupo contém todas as mensagens para as extensões MediaWiki suportadas, usadas pelo [http://wikitravel.org Wikitravel]',
+	'translate-group-desc-uniwiki' => 'Este meta-grupo contém todas as mensagens para as extensões relacionadas com o [http://unicefinnovation.org/wiki.php Uniwiki]',
+	'translate-group-desc-ui' => 'Este meta-grupo contém todas as mensagens para as extensões relacionadas com a [http://meta.wikimedia.org/wiki/Wikipedia_Usability_Initiative Iniciativa de Usabilidade da Wikipédia]',
 	'translate-group-desc-nodesc' => 'Não existe descrição para este grupo de mensagens',
 	'translate-manage-groups' => 'Gestão de grupos',
 	'translate-manage-listgroups' => 'Grupos configurados',
@@ -14953,6 +15032,7 @@ Anjeun perlu jadi anggota grup panarjamah pikeun nyimpen parobahan. Parobahan mo
 /** Swedish (Svenska)
  * @author Boivie
  * @author Byrial
+ * @author Dafer45
  * @author Fluff
  * @author Lejonel
  * @author M.M.S.
@@ -15185,6 +15265,10 @@ Metoden <tt>$1</tt> stöds inte.',
 $1',
 	'translate-import-err-ul-failed' => 'Filuppladdningen misslyckades',
 	'translate-import-err-invalid-title' => 'Det angivna filnamnet <nowiki>$1</nowiki> är inte giltigt.',
+	'translate-js-next' => 'Spara och öppna nästa',
+	'translate-js-nonext' => 'Detta var det sista meddelandet på denna sida.',
+	'translate-js-skip' => 'Hoppa över till nästa',
+	'translate-js-history' => 'Översättningshistoria',
 	'translate-gs-pos' => 'Pos.',
 	'translate-gs-code' => 'Kod',
 	'translate-gs-continent' => 'Kontinent',

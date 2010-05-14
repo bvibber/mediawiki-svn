@@ -20,14 +20,42 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  *
  * @author Jeroen De Dauw
  * 
+ * TODO: would be awesome to use Spatial Extensions to select coordinates
+ * 
  * @ingroup SemanticMaps
  */
 class SMAreaValueDescription extends SMWValueDescription {
 	protected $mBounds = false;
 
-	public function __construct( SMGeoCoordsValue $dataValue, $radius ) {
-		parent::__construct( $dataValue, SM_CMP_NEAR );	
+	public function __construct( SMGeoCoordsValue $dataValue, $comparator, $radius ) {
+		parent::__construct( $dataValue, $comparator );	
 
+		// Parse the radius to the actual value and the optional unit.
+		$radius = preg_replace('/\s\s+/', ' ', $radius);
+		$parts = explode( ' ', $radius );
+		$radius = (float)array_shift( $parts );
+		
+		// If there is a unit, find it's ratio and apply it to the radius value.
+		if ( count( $parts ) > 0 ) {
+			$unit = strtolower( implode( ' ', $parts ) );
+			
+			$ratio = array(
+				'km' => 1000,
+				'kilometers' => 1000,
+				'kilometres' => 1000,
+				'mi' => 1609.344,
+				'mile' => 1609.344,
+				'miles' => 1609.344,
+				'nm' => 1852,
+				'nautical mile' => 1852,
+				'nautical miles' => 1852,
+			);
+			
+			if ( array_key_exists( $unit, $ratio ) ) {
+				$radius = $radius * $ratio[$unit];
+			}
+		}
+		
 		// If the MapsGeoFunctions class is not loaded, we can not create the bounding box,
 		// so don't add any conditions.
 		if ( self::geoFunctionsAreAvailable() ) {
@@ -89,13 +117,11 @@ class SMAreaValueDescription extends SMWValueDescription {
 	 * @return An associative array containing the limits with keys north, east, south and west.
 	 */
 	private static function getBoundingBox( array $centerCoordinates, $circleRadius ) {
-		$centerCoordinates = array('lat' => 0, 'lon' => 0);
-		var_dump($centerCoordinates);
 		$north = MapsGeoFunctions::findDestination( $centerCoordinates, 0, $circleRadius );
 		$east = MapsGeoFunctions::findDestination( $centerCoordinates, 90, $circleRadius );
 		$south = MapsGeoFunctions::findDestination( $centerCoordinates, 180, $circleRadius );
 		$west = MapsGeoFunctions::findDestination( $centerCoordinates, 270, $circleRadius );
-var_dump($north);var_dump($east);var_dump($south);var_dump($west);exit;
+
 		return array(
 			'north' => $north['lat'],
 			'east' => $east['lon'],
@@ -115,36 +141,42 @@ var_dump($north);var_dump($east);var_dump($south);var_dump($west);exit;
 	 * @see SMWDescription::getSQLCondition
 	 * 
 	 * @param string $tableName
-	 * @param array $fieldNames
 	 * @param DatabaseBase $dbs
 	 * 
 	 * @return true
 	 */
-	public function getSQLCondition( $tableName, array $fieldNames, DatabaseBase $dbs ) {
+	public function getSQLCondition( $tableName, DatabaseBase $dbs ) {
 		$dataValue = $this->getDatavalue();
 
 		// Only execute the query when the description's type is geographical coordinates,
 		// the description is valid, and the near comparator is used.
-		if ( $dataValue->getTypeID() != '_geo'
+		if ( $dataValue->getTypeID() != '_geo' 
 			|| !$dataValue->isValid()
-			) return true;
+			|| ( $this->getComparator() != SMW_CMP_EQ && $this->getComparator() != SMW_CMP_NEQ )
+			) {
+			return false;
+		}
 		
 		$boundingBox = $this->getBounds();
-			
+		
 		$north = $dbs->addQuotes( $boundingBox['north'] );
 		$east = $dbs->addQuotes( $boundingBox['east'] );
 		$south = $dbs->addQuotes( $boundingBox['south'] );
 		$west = $dbs->addQuotes( $boundingBox['west'] );
 
+		$isEq = $this->getComparator() == SMW_CMP_EQ;
+		
+		$smallerThen = $isEq ? '<' : '>=';
+		$biggerThen = $isEq ? '>' : '<=';
+		$joinCond = $isEq ? '&&' : '||';
+		
 		// TODO: Would be safer to have a solid way of determining what's the lat and lon field, instead of assuming it's in this order.
 		$conditions = array();
-		$conditions[] = "{$tableName}.{$fieldNames[0]} < $north";
-		$conditions[] = "{$tableName}.{$fieldNames[0]} > $south";
-		$conditions[] = "{$tableName}.{$fieldNames[1]} < $east";
-		$conditions[] = "{$tableName}.{$fieldNames[1]} > $west";
+		$conditions[] = "{$tableName}.lat $smallerThen $north";
+		$conditions[] = "{$tableName}.lat $biggerThen $south";
+		$conditions[] = "{$tableName}.lon $smallerThen $east";
+		$conditions[] = "{$tableName}.lon $biggerThen $west";
 		
-		$whereSQL .= implode( ' && ', $conditions );
-
-		return true;
+		return implode( " $joinCond ", $conditions );
 	}	
 }

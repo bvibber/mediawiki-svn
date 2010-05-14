@@ -126,6 +126,13 @@ $messages['es'] = array(
 	'categorytests-desc' => 'Funciones para prueba de categoría',
 );
 
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'categorytests-desc' => 'Kategorien frogarako funtzioak',
+);
+
 /** Finnish (Suomi)
  * @author Cimon Avaro
  * @author Crt

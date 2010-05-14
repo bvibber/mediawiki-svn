@@ -17,7 +17,7 @@
 		} );
 	} );
 	
-	function updateStoryboard( $storyboard ) {
+	function updateStoryboard( ajaxscrollObj, $storyboard ) {
 		requestArgs = {
 			'action': 'query',
 			'list': 'stories',
@@ -26,15 +26,15 @@
 			'stlanguage': window.storyboardLanguage
 		};
 
-		if ( window.storyContinueParam ) {
-			requestArgs.stcontinue = window.storyContinueParam.stories.stcontinue;
+		if ( ajaxscrollObj.continueParam ) {
+			requestArgs.stcontinue = ajaxscrollObj.continueParam;
 		}
 
 		$.getJSON( wgScriptPath + '/api.php',
 			requestArgs,
 			function( data ) {
 				if ( data.query ) {
-					addStories( $storyboard, data );
+					addStories( ajaxscrollObj, $storyboard, data );
 				} else {
 					alert( stbMsgExt( 'storyboard-anerroroccured', [data.error.info] ) );
 				}		
@@ -42,7 +42,7 @@
 		);
 	}
 	
-	function addStories( $storyboard, data ) {
+	function addStories( ajaxscrollObj, $storyboard, data ) {
 		// Remove the empty boxes.
 		$storyboard.html( '' );
 		
@@ -114,7 +114,7 @@
 			}
 			else {
 				metaDataText = stbMsgExt( 'storyboard-storymetadata', [story.author, story.creationtime, story.creationdate] );
-			}			
+			}
 			
 			$storyBody.append(
 				$( "<div />" ).addClass( "story-metadata" ).append(
@@ -127,7 +127,8 @@
 			$storyboard.append( $storyBody );	
 		}
 		
-		window.storyContinueParam = data["query-continue"] ? data["query-continue"] : false; 
+		ajaxscrollObj.continueParam = data["query-continue"] ? data["query-continue"].stories.stcontinue : false; 
+		ajaxscrollObj.loaded = true;
 	}
 		
 })(jQuery);

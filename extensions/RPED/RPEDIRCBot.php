@@ -75,6 +75,14 @@ if (!$fp) {
                     $wpapi->rpedInsert($delLine);
                 }
             }
+            if ($subLine=="Special:Log/move"){
+                $delstartPos=strpos($line,$startSep,$endPos);
+                $delendPos=strpos($line,$endSep,$endPos+1);
+                $delstartPos=strpos($line,$startSep,$delstartPos+1);
+                $delendPos=strpos($line,$endSep,$delendPos+1);
+                $delLine=substr($line,$delstartPos+2,$delendPos-$delstartPos-2);
+                $wpapi->rpedInsert($delLine);
+            }
             if (substr($line,$endPos+5,1)=="N" || substr($line,$endPos+6,1)=="N"){
                 $wpapi->rpedInsert($subLine);
             }

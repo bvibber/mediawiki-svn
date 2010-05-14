@@ -73,8 +73,8 @@ class SpecialStorySubmission extends UnlistedSpecialPage {
 		
 		$to = new MailAddress( $wgRequest->getText( 'email' ), $wgRequest->getText( 'name' ) );
 		$from = new MailAddress( $egStoryboardEmailSender, $egStoryboardEmailSenderName );
-		$subject = wfMsg( 'storyboatd-emailtitle' ); 
-		$body = wfMsgExt( 'storyboatd-emailbody', 'parsemag', $title, $egStoryboardBoardUrl );
+		$subject = wfMsg( 'storyboard-emailtitle' ); 
+		$body = wfMsgExt( 'storyboard-emailbody', 'parsemag', $title, $egStoryboardBoardUrl );
 
 		$mailer = new UserMailer();
 		$mailer->send( $to, $from, $subject, $body );			

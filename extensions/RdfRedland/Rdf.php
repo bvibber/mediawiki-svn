@@ -331,7 +331,9 @@ class MwRdf {
 			$mf = self::ModelingAgent( $user->getUserPage() );
 			return $mf->titleResource();
 		}
-		return self::LiteralNode( wfMsg( 'siteuser', $user->getName() ) );
+		
+		$userName = $user->getName();
+		return self::LiteralNode( wfMsgExt( 'siteuser', 'parsemag', $userName, $userName ) );
 	}
 
 	public function RightsResource() {

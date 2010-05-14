@@ -89,7 +89,7 @@ $messages['bn'] = array(
  * @author Fulup
  */
 $messages['br'] = array(
-	'wikieditor-toc-preference' => 'Gweredekaat an daolenn verdeus an danvezioù',
+	'wikieditor-toc-preference' => 'Gweredekaat an daolenn verdeüs',
 	'wikieditor-toc-show' => 'Diskouez an danvez',
 	'wikieditor-toc-hide' => 'Kuzhat an danvez',
 );
@@ -413,6 +413,15 @@ $messages['ml'] = array(
 	'wikieditor-toc-preference' => 'താളിന്റെ ഉള്ളടക്ക പട്ടിക വഴികാട്ടിയായി ഉപയോഗിക്കുക',
 	'wikieditor-toc-show' => 'ഉള്ളടക്കം പ്രദർശിപ്പിക്കുക',
 	'wikieditor-toc-hide' => 'ഉള്ളടക്കം മറയ്ക്കുക',
+);
+
+/** Maltese (Malti)
+ * @author Chrisportelli
+ */
+$messages['mt'] = array(
+	'wikieditor-toc-preference' => 'Ippermetti werrej navigabbli',
+	'wikieditor-toc-show' => 'Uri l-kontenut',
+	'wikieditor-toc-hide' => 'Aħbi l-kontenut',
 );
 
 /** Dutch (Nederlands)

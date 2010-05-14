@@ -1782,7 +1782,7 @@ $messages['ta'] = array(
  */
 $messages['te'] = array(
 	'importusers' => 'వాడుకరులను దిగుమతి చేయి',
-	'importusers-uploadfile' => 'ఫైలుని ఎగుమతి చేయండి',
+	'importusers-uploadfile' => 'దస్త్రాన్ని ఎక్కించు',
 	'importusers-form-button' => 'దిగుమతించు',
 	'importusers-user-added' => "'''$1''' అనే వాడుకరిని చేర్చాం.",
 	'importusers-user-present-update' => "'''$1''' అనే వాడుకరి ఈసరికే ఉన్నారు. తాజాకరించాం.",

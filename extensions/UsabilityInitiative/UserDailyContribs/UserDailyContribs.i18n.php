@@ -232,7 +232,7 @@ $messages['ksh'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'userdailycontribs-desc' => "Ännerunge pro Dag a Bentzer fir d'Erweiderung vum Suivi vun de Clicken",
+	'userdailycontribs-desc' => "Ännerunge pro Dag a Benotzer fir d'Erweiderung vum Suivi vun de Klicken",
 );
 
 /** Limburgish (Limburgs)

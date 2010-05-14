@@ -94,6 +94,11 @@ div.story-metadata {
 	background: #FCFCFC url(images/storyboard-loader.gif) no-repeat scroll center center;
 }
 
+.story-controls {
+	text-align: center;
+	margin: 0px 5px 5px 5px;	
+}
+
 /**
  * Css for <storyboard> tags
  */

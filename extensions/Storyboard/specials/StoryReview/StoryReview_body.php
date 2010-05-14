@@ -40,7 +40,8 @@ class SpecialStoryReview extends SpecialPage {
 	}
 	
 	private function addOutput() {
-		global $wgOut, $wgRequest, $wgJsMimeType, $wgContLanguageCode, $egStoryboardScriptPath;
+		global $wgOut, $wgRequest, $wgJsMimeType, $wgContLanguageCode, $wgUser;
+		global $egStoryboardScriptPath;
 		
 		efStoryboardAddJSLocalisation();
 		$wgOut->addStyle( $egStoryboardScriptPath . '/storyboard.css' );
@@ -57,8 +58,10 @@ class SpecialStoryReview extends SpecialPage {
 		
 		$language = $wgRequest->getText( 'language', false );
 		if ( !$language ) $language = $wgContLanguageCode;
+	
+		$canDelete = $wgUser->isAllowed( 'delete' ) ? 'true' : 'false';
 		
-		$html = <<<EOT
+	$wgOut->addHTML( <<<EOT
 <div id="storyreview-tabs">
 	<ul>
 		<li><a href="#$unpublished" id="$unpublished-tab">$unpublished</a></li>
@@ -72,6 +75,7 @@ class SpecialStoryReview extends SpecialPage {
 
 <script type="$wgJsMimeType">
 	var storyboardLanguage = "$language";
+	var storyboardCanDelete = $canDelete;
 
 	jQuery( function() {
 		jQuery( "#storyreview-tabs" ).tabs();
@@ -81,8 +85,7 @@ class SpecialStoryReview extends SpecialPage {
 		stbShowReviewBoard( jQuery( ui.panel ), ui.index );
 	});
 </script>	
-EOT;
-	
-	$wgOut->addHTML( $html );
+EOT
+		);
 	}
 }

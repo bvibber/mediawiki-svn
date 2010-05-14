@@ -105,6 +105,13 @@ $messages['am'] = array(
 	'todo-new-queue' => 'አዲስ',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'todo-list-cancel' => 'Cancelar',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK

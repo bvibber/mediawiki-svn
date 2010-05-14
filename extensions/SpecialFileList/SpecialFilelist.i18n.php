@@ -483,6 +483,13 @@ $messages['km'] = array(
 	'filelist-image-desc' => 'លំដាប់ចុះ',
 );
 
+/** Kannada (ಕನ್ನಡ)
+ * @author Nayvik
+ */
+$messages['kn'] = array(
+	'filelist-image-desc' => 'ವಿವರ',
+);
+
 /** Korean (한국어) */
 $messages['ko'] = array(
 	'filelist-image-desc' => '설명',

@@ -5926,7 +5926,7 @@ $.suggestions = {
 					result = context.data.$container.find( '.suggestions-results div:last' )
 				} else {
 					result = selected.prev();
-					if ( selected.size() == 0 ) {
+					if ( selected.length == 0 ) {
 						// we are at the begginning, so lets jump to the last item
 						if ( context.data.$container.find( '.suggestions-special' ).html() != "" ) {
 							result = context.data.$container.find( '.suggestions-special' );
@@ -5936,14 +5936,21 @@ $.suggestions = {
 					}
 				}
 			} else if ( result == 'next' ) {
-				if ( selected.size() == 0 )
+				if ( selected.length == 0 ) {
 					// No item selected, go to the first one
 					result = context.data.$container.find( '.suggestions-results div:first' );
-				else {
+					if ( result.length == 0 && context.data.$container.find( '.suggestions-special' ).html() != "" ) {
+						// No suggestion exists, go to the special one directly
+						result = context.data.$container.find( '.suggestions-special' );
+					}
+				} else {
 					result = selected.next();
 					if ( selected.is( '.suggestions-special' ) ) {
 						result = $( [] );
-					} else if ( result.size() == 0  && context.data.$container.find( '.suggestions-special' ).html() != "" ) {
+					} else if (
+						result.length == 0 &&
+						context.data.$container.find( '.suggestions-special' ).html() != ""
+					) {
 						// We were at the last item, jump to the specials!
 						result = context.data.$container.find( '.suggestions-special' );
 					}
@@ -5953,7 +5960,7 @@ $.suggestions = {
 			result.addClass( 'suggestions-result-current' );
 		}
 		if ( updateTextbox ) {
-			if ( result.size() == 0 ) {
+			if ( result.length == 0 ) {
 				$.suggestions.restore( context );
 			} else {
 				context.data.$textbox.val( result.data( 'text' ) );
@@ -6001,7 +6008,7 @@ $.suggestions = {
 			case 13:
 				context.data.$container.hide();
 				preventDefault = wasVisible;
-				selected = context.data.$container.find( '.suggestions-result-current' )
+				selected = context.data.$container.find( '.suggestions-result-current' );
 				if ( selected.is( '.suggestions-special' ) ) {
 					if ( typeof context.config.special.select == 'function' ) {
 						context.config.special.select.call( selected, context.data.$textbox );
@@ -6010,6 +6017,8 @@ $.suggestions = {
 					if ( typeof context.config.result.select == 'function' ) {
 						$.suggestions.highlight( context, selected, true );
 						context.config.result.select.call( selected, context.data.$textbox );
+					} else {
+						$.suggestions.highlight( context, selected, true );
 					}
 				}
 				break;
@@ -6179,7 +6188,7 @@ $.fn.suggestions = function() {
 				.blur( function() {
 					// When losing focus because of a mousedown
 					// on a suggestion, don't hide the suggestions
-					if ( context.data.mouseDownOn.size() > 0 ) {
+					if ( context.data.mouseDownOn.length > 0 ) {
 						return;
 					}
 					context.data.$container.hide();
@@ -6247,15 +6256,16 @@ encapsulateSelection: function( options ) {
 				options.post += ' ';
 			}
 		}
-		var selText = $(this).textSelection( 'getSelection' );
 		var isSample = false;
 		if ( this.style.display == 'none' ) {
 			// Do nothing
 		} else if ( this.selectionStart || this.selectionStart == '0' ) {
 			// Mozilla/Opera
 			$(this).focus();
+			var selText = $(this).textSelection( 'getSelection' );
 			var startPos = this.selectionStart;
 			var endPos = this.selectionEnd;
+			var scrollTop = this.scrollTop;
 			checkSelectedText();
 			if ( options.ownline ) {
 				if ( startPos != 0 && this.value.charAt( startPos - 1 ) != "\n" ) {
@@ -6267,6 +6277,8 @@ encapsulateSelection: function( options ) {
 			}
 			this.value = this.value.substring( 0, startPos ) + options.pre + selText + options.post +
 				this.value.substring( endPos, this.value.length );
+			// Setting this.value scrolls the textarea to the top, restore the scroll position
+			this.scrollTop = scrollTop;
 			if ( window.opera ) {
 				options.pre = options.pre.replace( /\r?\n/g, "\r\n" );
 				selText = selText.replace( /\r?\n/g, "\r\n" );
@@ -6283,6 +6295,9 @@ encapsulateSelection: function( options ) {
 		} else if ( document.selection && document.selection.createRange ) {
 			// IE
 			$(this).focus();
+			context.fn.restoreStuffForIE();
+			var selText = $(this).textSelection( 'getSelection' );
+			var scrollTop = this.scrollTop;
 			var range = document.selection.createRange();
 			if ( options.ownline && range.moveStart ) {
 				var range2 = document.selection.createRange();
@@ -6306,9 +6321,9 @@ encapsulateSelection: function( options ) {
 				range.moveEnd( 'character', - options.post.length );
 			}
 			range.select();
+			// Restore the scroll position
+			this.scrollTop = scrollTop;
 		}
-		// Scroll the textarea to the inserted text
-		$(this).textSelection( 'scrollToCaretPosition' );
 		$(this).trigger( 'encapsulateSelection', [ options.pre, options.peri, options.post, options.ownline,
 			options.replace ] );
 	});
@@ -6327,7 +6342,7 @@ encapsulateSelection: function( options ) {
 		var caretPos = 0, endPos = 0;
 		if ( $.browser.msie ) {
 			// IE Support
-			var postFinished = false;
+			var preFinished = false;
 			var periFinished = false;
 			var postFinished = false;
 			var preText, rawPreText, periText;
@@ -6356,15 +6371,15 @@ encapsulateSelection: function( options ) {
 			 * not changed then we know that IE has trimmed a \r\n from the end.
 			 */
 			do {
-				if ( !postFinished ) {
+				if ( !preFinished ) {
 					if ( preRange.compareEndPoints( "StartToEnd", preRange ) == 0 ) {
-						postFinished = true;
+						preFinished = true;
 					} else {
 						preRange.moveEnd( "character", -1 )
 						if ( preRange.text == preText ) {
 							rawPreText += "\r\n";
 						} else {
-							postFinished = true;
+							preFinished = true;
 						}
 					}
 				}
@@ -6392,7 +6407,7 @@ encapsulateSelection: function( options ) {
 						}
 					}
 				}
-			} while ( ( !postFinished || !periFinished || !postFinished ) );
+			} while ( ( !preFinished || !periFinished || !postFinished ) );
 			caretPos = rawPreText.replace( /\r\n/g, "\n" ).length;
 			endPos = caretPos + rawPeriText.replace( /\r\n/g, "\n" ).length;
 		} else if ( e.selectionStart || e.selectionStart == '0' ) {
@@ -6621,8 +6636,8 @@ $.wikiEditor = {
 	'browsers': {
 		// Left-to-right languages
 		'ltr': {
-			// The toolbar layout is broken in IE6, selection is out of control in IE8
-			'msie': [['==', 7]],
+			// The toolbar layout is broken in IE6
+			'msie': [['>=', 7]],
 			// Layout issues in FF < 2
 			'firefox': [['>=', 2]],
 			// Text selection bugs galore - this may be a different situation with the new iframe-based solution
@@ -6637,7 +6652,7 @@ $.wikiEditor = {
 		// Right-to-left languages
 		'rtl': {
 			// The toolbar layout is broken in IE 7 in RTL mode, and IE6 in any mode
-			'msie': false,
+			'msie': [['>=', 8]],
 			// Layout issues in FF < 2
 			'firefox': [['>=', 2]],
 			// Text selection bugs galore - this may be a different situation with the new iframe-based solution
@@ -8309,6 +8324,33 @@ if ( !context || typeof context == 'undefined' ) {
 					body.scrollTop( y );
 				}
 			$element.trigger( 'scrollToTop' );
+		},
+		/**
+		 * Save scrollTop and cursor position for IE.
+		 */
+		'saveStuffForIE': function() {
+			// Only need this for IE in textarea mode
+			if ( !$.browser.msie || context.$iframe )
+				return;
+			var IHateIE = {
+				'scrollTop' : context.$textarea.scrollTop(),
+				'pos': context.$textarea.textSelection( 'getCaretPosition', { startAndEnd: true } )
+			};
+			context.$textarea.data( 'IHateIE', IHateIE );
+		},
+		/**
+		 * Restore scrollTo and cursor position for IE.
+		 */
+		'restoreStuffForIE': function() {
+			// Only need this for IE in textarea mode
+			if ( !$.browser.msie || context.$iframe )
+				return;
+			var IHateIE = context.$textarea.data( 'IHateIE' );
+			if ( !IHateIE )
+				return;
+			context.$textarea.scrollTop( IHateIE.scrollTop );
+			context.$textarea.textSelection( 'setSelection', { start: IHateIE.pos[0], end: IHateIE.pos[1] } );
+			context.$textarea.data( 'IHateIE', null );
 		}
 	};
 	
@@ -10918,7 +10960,13 @@ api : {
 						$characters
 						.append(
 							$( $.wikiEditor.modules.toolbar.fn.buildCharacter( data[type][character], actions ) )
-								.click( function(e) {
+								.mousedown( function( e ) {
+									context.fn.saveStuffForIE();
+									// No dragging!
+									e.preventDefault();
+									return false;
+								} )
+								.click( function( e ) {
 									$.wikiEditor.modules.toolbar.fn.doAction( $(this).parent().data( 'context' ),
 										$(this).parent().data( 'actions' )[$(this).attr( 'rel' )] );
 									e.preventDefault();
@@ -11145,6 +11193,7 @@ fn: {
 						.data( 'action', tool.action )
 						.data( 'context', context )
 						.mousedown( function( e ) {
+							context.fn.saveStuffForIE();
 							// No dragging!
 							e.preventDefault();
 							return false;
@@ -11181,6 +11230,7 @@ fn: {
 								.data( 'action', tool.list[option].action )
 								.data( 'context', context )
 								.mousedown( function( e ) {
+									context.fn.saveStuffForIE();
 									// No dragging!
 									e.preventDefault();
 									return false;
@@ -11296,6 +11346,7 @@ fn: {
 						.html( html )
 						.children()
 						.mousedown( function( e ) {
+							context.fn.saveStuffForIE();
 							// No dragging!
 							e.preventDefault();
 							return false;
@@ -11387,19 +11438,29 @@ fn: {
 						$previousSections.fadeOut( 'fast', function() { $(this).css( 'position', 'relative' ); } );
 						$(this).parent().parent().find( 'a' ).removeClass( 'current' );
 						$sections.css( 'overflow', 'hidden' );
+						function animate( $this ) {
+							$sections
+							.css( 'display', 'block' )
+							.animate( { 'height': $section.outerHeight() }, $section.outerHeight() * 2, function() {
+								$this.css( 'overflow', 'visible' ).css( 'height', 'auto' );
+								context.fn.trigger( 'resize' );
+							} );
+						}
 						if ( show ) {
 							$section.addClass( 'section-visible' );
 							$section.fadeIn( 'fast' );
-							$sections
-								.css( 'display', 'block' )
-								.animate( { 'height': $section.outerHeight() }, $section.outerHeight() * 2, function() {
-									$(this).css( 'overflow', 'visible' ).css( 'height', 'auto' );
-									context.fn.trigger( 'resize' );
-								} );
-							$(this).addClass( 'current' );
 							if ( $section.hasClass( 'loading' ) ) {
 								// Loading of this section was deferred, load it now
-								setTimeout( function() { $section.trigger( 'loadSection' ); }, 0 );
+								$this = $(this);
+								$this.addClass( 'current loading' );
+								setTimeout( function() {
+									$section.trigger( 'loadSection' );
+									animate( $(this) );
+									$this.removeClass( 'loading' );
+								}, 1000 );
+							} else {
+								animate( $(this) );
+								$(this).addClass( 'current' );
 							}
 						} else {
 							$sections

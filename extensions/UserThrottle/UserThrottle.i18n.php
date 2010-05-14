@@ -409,6 +409,13 @@ $messages['sv'] = array(
 Var god vänta en liten stund och tryck på "uppdatera" i webbläsaren för att pröva igen.',
 );
 
+/** Telugu (తెలుగు)
+ * @author Ravichandra
+ */
+$messages['te'] = array(
+	'userthrottle-desc' => 'త్రోటిల్ వాడుకరి సృష్టి',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

@@ -88,7 +88,7 @@ class SMGeoCoordsValue extends SMWDataValue {
 			$distance = count( $parts ) > 0 ? trim( array_shift( $parts ) ) : false;
 
 			if ( $distance !== false ) {
-				if ( preg_match( '/^\d+(\.\d+)?\)$/', $distance ) ) {
+				if ( preg_match( '/^!?\d+(\.\d+)?(\s.+)?\)$/', $distance ) ) {
 					$distance = substr( $distance, 0, -1 );
 				}
 				else {
@@ -118,7 +118,7 @@ class SMGeoCoordsValue extends SMWDataValue {
 					return new SMWThingDescription();
 					break;
 				case $distance !== false :
-					return new SMAreaValueDescription( $this, $distance );
+					return new SMAreaValueDescription( $this, $comparator, $distance );
 					break;
 				default :
 					return new SMGeoCoordsValueDescription( $this, $comparator );
@@ -248,21 +248,21 @@ class SMGeoCoordsValue extends SMWDataValue {
 	}
 	
 	/**
-	 * @see SMWDataValue::getValueIndexes
+	 * @see SMWDataValue::getValueIndex
 	 * 
-	 * @return array
+	 * @return integer
 	 */	
-	public function getValueIndexes() {
-		return array( 0, 1 );
+	public function getValueIndex() {
+		return 0;
 	}
 
 	/**
-	 * @see SMWDataValue::getLabelIndexes
+	 * @see SMWDataValue::getLabelIndex
 	 * 
-	 * @return array
+	 * @return integer
 	 */		
-	public function getLabelIndexes() {
-		return array( 0, 1 );
+	public function getLabelIndex() {
+		return 0;
 	}	
 
 }

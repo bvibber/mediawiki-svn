@@ -88,6 +88,13 @@ $messages['es'] = array(
 	'filepagemasking-desc' => 'Reescribe ".xxx" en "_xxx" en enlaces de página de descripción de archivo',
 );
 
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'filepagemasking-desc' => ' ".xxx" kendu eta "_xxx" jartzen du fitxategiaren deskribapen orrialde loturetan',
+);
+
 /** Finnish (Suomi)
  * @author Crt
  */

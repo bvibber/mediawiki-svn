@@ -1449,6 +1449,7 @@ $messages['lb'] = array(
 	'qp_users_answered_questions' => "$1 {{PLURAL:$1|Benotzer huet|Benotzer hun}} op d'Froe geäntwert",
 	'qp_func_no_such_poll' => 'Et gëtt keng esou eng Ëmfro ($1)',
 	'qp_func_missing_question_id' => "Gitt w.e.g. d'Id vun enger Fro un déi et gëtt (ugefaang mat 1) fir d'Ëmfro $1",
+	'qp_error_in_question_header' => 'Iwwerschrëft vun der Fro net valabel: $1',
 	'qp_error_no_stats' => 'Et gëtt keng statistesch Donnéeën, well bis elo (Adress=$1) kee fir dës Ëmfro gestëmmt huet.',
 	'qp_error_question_not_implemented' => 'Froe vun esou engem Typ sinn net implementéiert: $1',
 	'qp_error_invalid_question_type' => 'Net-valabelen Typ vu Fro: $1',
@@ -1470,6 +1471,7 @@ $messages['mg'] = array(
 
 /** Macedonian (Македонски)
  * @author Bjankuloski06
+ * @author Brest
  */
 $messages['mk'] = array(
 	'pollresults' => 'Резултати од анкетите на оваа веб-страница',
@@ -1525,8 +1527,8 @@ id-бројот може да содржи само букви, бројки и 
 Или отстранете го атрибутот за зависност, или создајде анкета со id=$3 на страницата $2 и зачувајте ја.
 За да зачувате анкета, притиснете на „Гласај“ но притоа без да одговорите на ниеден предлог (прашање).',
 	'qp_error_vote_dependance_poll' => 'Прво одговорете на анкетата $1.',
-	'qp_error_too_many_spans' => 'Премногу класи на категории за определените поткатегории',
-	'qp_error_unanswered_span' => 'Неодговорена поткатегорија',
+	'qp_error_too_many_spans' => 'Премногу категориски групи за вкупниот број на дефинирани подкатегории',
+	'qp_error_unanswered_span' => 'Неодговорена подкатегорија',
 	'qp_error_non_unique_choice' => 'Ова прашање бара одговор кој не е даден претходно',
 	'qp_error_category_name_empty' => 'Името на категоријата е празно',
 	'qp_error_proposal_text_empty' => 'Текстот за предлог е празен',

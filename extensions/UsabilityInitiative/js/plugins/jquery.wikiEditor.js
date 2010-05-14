@@ -36,8 +36,8 @@ $.wikiEditor = {
 	'browsers': {
 		// Left-to-right languages
 		'ltr': {
-			// The toolbar layout is broken in IE6, selection is out of control in IE8
-			'msie': [['==', 7]],
+			// The toolbar layout is broken in IE6
+			'msie': [['>=', 7]],
 			// Layout issues in FF < 2
 			'firefox': [['>=', 2]],
 			// Text selection bugs galore - this may be a different situation with the new iframe-based solution
@@ -52,7 +52,7 @@ $.wikiEditor = {
 		// Right-to-left languages
 		'rtl': {
 			// The toolbar layout is broken in IE 7 in RTL mode, and IE6 in any mode
-			'msie': false,
+			'msie': [['>=', 8]],
 			// Layout issues in FF < 2
 			'firefox': [['>=', 2]],
 			// Text selection bugs galore - this may be a different situation with the new iframe-based solution
@@ -1724,6 +1724,33 @@ if ( !context || typeof context == 'undefined' ) {
 					body.scrollTop( y );
 				}
 			$element.trigger( 'scrollToTop' );
+		},
+		/**
+		 * Save scrollTop and cursor position for IE.
+		 */
+		'saveStuffForIE': function() {
+			// Only need this for IE in textarea mode
+			if ( !$.browser.msie || context.$iframe )
+				return;
+			var IHateIE = {
+				'scrollTop' : context.$textarea.scrollTop(),
+				'pos': context.$textarea.textSelection( 'getCaretPosition', { startAndEnd: true } )
+			};
+			context.$textarea.data( 'IHateIE', IHateIE );
+		},
+		/**
+		 * Restore scrollTo and cursor position for IE.
+		 */
+		'restoreStuffForIE': function() {
+			// Only need this for IE in textarea mode
+			if ( !$.browser.msie || context.$iframe )
+				return;
+			var IHateIE = context.$textarea.data( 'IHateIE' );
+			if ( !IHateIE )
+				return;
+			context.$textarea.scrollTop( IHateIE.scrollTop );
+			context.$textarea.textSelection( 'setSelection', { start: IHateIE.pos[0], end: IHateIE.pos[1] } );
+			context.$textarea.data( 'IHateIE', null );
 		}
 	};
 	

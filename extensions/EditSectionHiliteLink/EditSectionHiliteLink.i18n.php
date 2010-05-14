@@ -106,6 +106,13 @@ $messages['es'] = array(
 	'editsectionhilitelink-desc' => 'Resaltar la sección apropiada de una página cuando pase el mouse por encima del vínculo de edición',
 );
 
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'editsectionhilitelink-desc' => 'Saguarekin aukeratutako orrialdearen atala azpimarratu',
+);
+
 /** Finnish (Suomi)
  * @author Cimon Avaro
  */

@@ -1123,11 +1123,11 @@ $messages['gl'] = array(
 	'ogg-short-audio' => 'Ficheiro de son Ogg $1, $2',
 	'ogg-short-video' => 'Ficheiro de vídeo Ogg $1, $2',
 	'ogg-short-general' => 'Ficheiro multimedia Ogg $1, $2',
-	'ogg-long-audio' => '(Ficheiro de son Ogg $1, duración $2, $3)',
-	'ogg-long-video' => '(Ficheiro de vídeo Ogg $1, duración $2, $4×$5 píxeles, $3)',
-	'ogg-long-multiplexed' => '(Ficheiro de son/vídeo Ogg multiplex, $1, duración $2, $4×$5 píxeles, $3 total)',
-	'ogg-long-general' => '(Ficheiro multimedia Ogg, duración $2, $3)',
-	'ogg-long-error' => '(Ficheiro Ogg non válido: $1)',
+	'ogg-long-audio' => '(ficheiro de son Ogg $1, duración $2, $3)',
+	'ogg-long-video' => '(ficheiro de vídeo Ogg $1, duración $2, $4×$5 píxeles, $3)',
+	'ogg-long-multiplexed' => '(ficheiro de son/vídeo Ogg multiplex, $1, duración $2, $4×$5 píxeles, $3 total)',
+	'ogg-long-general' => '(ficheiro multimedia Ogg, duración $2, $3)',
+	'ogg-long-error' => '(ficheiro Ogg non válido: $1)',
 	'ogg-play' => 'Reproducir',
 	'ogg-pause' => 'Pausar',
 	'ogg-stop' => 'Deter',
@@ -1194,6 +1194,8 @@ $messages['gsw'] = array(
 	'ogg-dismiss' => 'Zuemache',
 	'ogg-download' => 'Datei spychere',
 	'ogg-desc-link' => 'Iber die Datei',
+	'ogg-oggThumb-version' => 'OggHandler brucht oggThumb in dr Version $1 oder hecher.',
+	'ogg-oggThumb-failed' => 'oggThumb het kei Miniaturbild chenne aalege.',
 );
 
 /** Manx (Gaelg)
@@ -2931,6 +2933,7 @@ $messages['su'] = array(
 );
 
 /** Swedish (Svenska)
+ * @author Ainali
  * @author Jon Harald Søby
  * @author Lejonel
  * @author Rotsee
@@ -2963,6 +2966,8 @@ $messages['sv'] = array(
 	'ogg-dismiss' => 'Stäng',
 	'ogg-download' => 'Ladda ner filen',
 	'ogg-desc-link' => 'Om filen',
+	'ogg-oggThumb-version' => 'OggHandler kräver oggThumb version $1 eller senare.',
+	'ogg-oggThumb-failed' => 'oggThumb misslyckades med att skapa miniatyrbilden.',
 );
 
 /** Telugu (తెలుగు)

@@ -22,11 +22,25 @@ $messages['be-tarask'] = array(
 	'wikieditor-templates-preference' => 'Уключыць хаваньне шаблёнаў',
 );
 
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'wikieditor-templates-preference' => 'টেম্পলেট ভাঁজ হওয়া সক্রিয়',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */
 $messages['br'] = array(
 	'wikieditor-templates-preference' => "Gweredekaat ar c'huzhat patromoù",
+);
+
+/** Catalan (Català)
+ * @author Vriullop
+ */
+$messages['ca'] = array(
+	'wikieditor-templates-preference' => 'Habilita el replegament de plantilles',
 );
 
 /** Czech (Česky)
@@ -50,6 +64,13 @@ $messages['dsb'] = array(
 	'wikieditor-templates-preference' => 'Fałdowanje pśedłogow zmóžniś',
 );
 
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'wikieditor-templates-preference' => 'Ŝalti ŝablonan kaŝadon',
+);
+
 /** Spanish (Español)
  * @author Crazymadlover
  */
@@ -71,6 +92,13 @@ $messages['gl'] = array(
 	'wikieditor-templates-preference' => 'Activar o enrolamento de modelos',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'wikieditor-templates-preference' => 'Aktivierig vum Yy- un Uusblände vu Vorlage',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -83,6 +111,13 @@ $messages['hsb'] = array(
  */
 $messages['ia'] = array(
 	'wikieditor-templates-preference' => 'Activar patronos plicabile',
+);
+
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'wikieditor-templates-preference' => 'Aktifkan fungsi menutup templat',
 );
 
 /** Italian (Italiano)
@@ -127,11 +162,25 @@ $messages['ml'] = array(
 	'wikieditor-templates-preference' => 'ഫലകം ചുരുക്കൽ സജ്ജമാക്കുക',
 );
 
+/** Maltese (Malti)
+ * @author Chrisportelli
+ */
+$messages['mt'] = array(
+	'wikieditor-templates-preference' => 'Ippermetti l-funzjoni li taħbi l-mudelli',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
 $messages['nl'] = array(
 	'wikieditor-templates-preference' => 'Inklapbare sjablonen inschakelen',
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'wikieditor-templates-preference' => 'Aktiver sammenleggbare maler',
 );
 
 /** Occitan (Occitan)
@@ -160,5 +209,12 @@ $messages['pt'] = array(
  */
 $messages['ru'] = array(
 	'wikieditor-templates-preference' => 'Включить сворачивание шаблонов',
+);
+
+/** Swedish (Svenska)
+ * @author Ainali
+ */
+$messages['sv'] = array(
+	'wikieditor-templates-preference' => 'Aktivera ihopfällbara mallar',
 );
 

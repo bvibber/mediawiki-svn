@@ -187,6 +187,13 @@ $messages['ru'] = array(
 	'firefoggcu-desc' => 'Порционный протокол загрузки Firefogg',
 );
 
+/** Telugu (తెలుగు)
+ * @author Ravichandra
+ */
+$messages['te'] = array(
+	'firefoggcu-desc' => 'ఫైర్‌ఫాగ్  విడిభాగాలుగా ఎక్కించే నియమావళి',
+);
+
 /** Turkish (Türkçe)
  * @author Joseph
  */

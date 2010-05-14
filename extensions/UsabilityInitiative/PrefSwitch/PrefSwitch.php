@@ -63,47 +63,13 @@ $wgPrefSwitchSurveys['feedback'] = array(
 	'submit-msg' => 'prefswitch-survey-submit-feedback',
 	'updatable' => true,
 	'questions' => array(
-		'likedislike' => array(
-			'question' => 'prefswitch-survey-question-likedislike',
+		'like' => array(
+			'question' => 'prefswitch-survey-question-like',
 			'type' => 'text',
 		),
-		'browser' => array(
-			'question' => 'prefswitch-survey-question-browser',
-			'type' => 'select',
-			'answers' => array(
-				'ie5' => 'prefswitch-survey-answer-browser-ie5',
-				'ie6' => 'prefswitch-survey-answer-browser-ie6',
-				'ie7' => 'prefswitch-survey-answer-browser-ie7',
-				'ie8' => 'prefswitch-survey-answer-browser-ie8',
-				'ff1' => 'prefswitch-survey-answer-browser-ff1',
-				'ff2' => 'prefswitch-survey-answer-browser-ff2',
-				'ff3'=> 'prefswitch-survey-answer-browser-ff3',
-				'cb' => 'prefswitch-survey-answer-browser-cb',
-				'c1' => 'prefswitch-survey-answer-browser-c1',
-				'c2' => 'prefswitch-survey-answer-browser-c2',
-				's3' => 'prefswitch-survey-answer-browser-s3',
-				's4' => 'prefswitch-survey-answer-browser-s4',
-				'o9' => 'prefswitch-survey-answer-browser-o9',
-				'o9.5' => 'prefswitch-survey-answer-browser-o9.5',
-				'o10' => 'prefswitch-survey-answer-browser-o10',
-			),
-			'other' => 'prefswitch-survey-answer-browser-other',
-		),
-		'os' => array(
-			'question' => 'prefswitch-survey-question-os',
-			'type' => 'select',
-			'answers' => array(
-				'windows' => 'prefswitch-survey-answer-os-windows',
-				'windowsmobile' => 'prefswitch-survey-answer-os-windowsmobile',
-				'macos' => 'prefswitch-survey-answer-os-macos',
-				'iphoneos' => 'prefswitch-survey-answer-os-iphoneos',
-				'linux' => 'prefswitch-survey-answer-os-linux',
-			),
-			'other' => 'prefswitch-survey-answer-os-other',
-		),
-		'res' => array(
-			'question' => 'prefswitch-survey-question-res',
-			'type' => 'dimensions',
+		'dislike' => array(
+			'question' => 'prefswitch-survey-question-dislike',
+			'type' => 'text',
 		),
 	),
 );
@@ -129,6 +95,48 @@ $wgPrefSwitchSurveys['off'] = array(
 		)
 	),
 );
+// Always include the browser stuff...
+foreach ( $wgPrefSwitchSurveys as &$survey ) {
+	$survey['questions']['browser'] = array(
+		'question' => 'prefswitch-survey-question-browser',
+		'type' => 'select',
+		'answers' => array(
+			'ie5' => 'prefswitch-survey-answer-browser-ie5',
+			'ie6' => 'prefswitch-survey-answer-browser-ie6',
+			'ie7' => 'prefswitch-survey-answer-browser-ie7',
+			'ie8' => 'prefswitch-survey-answer-browser-ie8',
+			'ff1' => 'prefswitch-survey-answer-browser-ff1',
+			'ff2' => 'prefswitch-survey-answer-browser-ff2',
+			'ff3'=> 'prefswitch-survey-answer-browser-ff3',
+			'cb' => 'prefswitch-survey-answer-browser-cb',
+			'c1' => 'prefswitch-survey-answer-browser-c1',
+			'c2' => 'prefswitch-survey-answer-browser-c2',
+			's3' => 'prefswitch-survey-answer-browser-s3',
+			's4' => 'prefswitch-survey-answer-browser-s4',
+			'o9' => 'prefswitch-survey-answer-browser-o9',
+			'o9.5' => 'prefswitch-survey-answer-browser-o9.5',
+			'o10' => 'prefswitch-survey-answer-browser-o10',
+		),
+		'other' => 'prefswitch-survey-answer-browser-other',
+	);
+	$survey['questions']['os'] = array(
+		'question' => 'prefswitch-survey-question-os',
+		'type' => 'select',
+		'answers' => array(
+			'windows' => 'prefswitch-survey-answer-os-windows',
+			'windowsmobile' => 'prefswitch-survey-answer-os-windowsmobile',
+			'macos' => 'prefswitch-survey-answer-os-macos',
+			'iphoneos' => 'prefswitch-survey-answer-os-iphoneos',
+			'linux' => 'prefswitch-survey-answer-os-linux',
+		),
+		'other' => 'prefswitch-survey-answer-os-other',
+	);
+	$survey['questions']['res'] = array(
+		'question' => 'prefswitch-survey-question-res',
+		'type' => 'dimensions',
+	);
+}
+unset( $survey );
 
 /* Setup */
 

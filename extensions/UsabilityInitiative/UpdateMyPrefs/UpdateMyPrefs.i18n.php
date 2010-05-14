@@ -53,10 +53,13 @@ $messages['bn'] = array(
 );
 
 /** Breton (Brezhoneg)
+ * @author Fulup
  * @author Y-M D
  */
 $messages['br'] = array(
 	'prefs-updates' => 'Hizivadennoù',
+	'updatemyprefs-desc' => "Dibab evit an implijerien da resisaat hag-eñ e fell dezho resev hizivadennoù reoliek a-berzh an etrefas implijer kerkent ha ma c'haller kaout anezho",
+	'updatemyprefs-label-message' => "Hizivaat ma dibaboù ent emgefre gant an talvoudoù hag ostilhoù dre ziouer kerkent ha ma c'haller ober ganto",
 );
 
 /** Catalan (Català)
@@ -256,6 +259,15 @@ $messages['ml'] = array(
 	'updatemyprefs-label-message' => 'എന്റെ ക്രമീകരണങ്ങൾ സ്വതവേ തരുന്ന പുതിയ ഉപകരണങ്ങളും സജ്ജീകരണങ്ങളും ലഭ്യമാകുന്ന മുറയ്ക്ക് സ്വയം പുതുക്കുക',
 );
 
+/** Maltese (Malti)
+ * @author Chrisportelli
+ */
+$messages['mt'] = array(
+	'prefs-updates' => 'Aġġornamenti',
+	'updatemyprefs-desc' => 'Preferenza għal utenti sabiex tispeċifika jekk iridux aġġornament perjodiċi tal-interfaċċa tal-utent kull darba li jiġu disponibbli.',
+	'updatemyprefs-label-message' => "Aġġorna awtomatikament il-preferenzi tiegħi b'impostazzjonijiet u għodda predefiniti ġodda hekk kif isiru disponibbli",
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -316,6 +328,16 @@ $messages['ru'] = array(
 	'prefs-updates' => 'Обновления',
 	'updatemyprefs-desc' => 'Настройка для участников, позволяющая периодически обновлять пользовательский интерфейс по мере доступности новых функций',
 	'updatemyprefs-label-message' => 'Автоматически обновлять мои настройки новыми настройками по умолчанию и инструментами, по мере их появления',
+);
+
+/** Swedish (Svenska)
+ * @author Ainali
+ * @author Dafer45
+ */
+$messages['sv'] = array(
+	'prefs-updates' => 'Uppdateringar',
+	'updatemyprefs-desc' => 'Användarinställning för att ange om de vill ha regelbundna uppdateringar av användargränssnitt då de görs tillgängliga',
+	'updatemyprefs-label-message' => 'Uppdatera mina inställningar automatiskt med nya standardinställningarna och verktyg när de blir tillgängliga',
 );
 
 /** Turkish (Türkçe)

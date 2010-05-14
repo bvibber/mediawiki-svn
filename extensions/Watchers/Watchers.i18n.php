@@ -744,10 +744,13 @@ $messages['oc'] = array(
 	'watchers-desc' => "Afichar [[Special:Watchers|los utilizaires qu'an una pagina dins lor lista de seguiment]]",
 	'watchers_link_title' => 'Qui seguís aquesta pagina ?',
 	'watchers_error_article' => '<b>Error :</b> La pagina existís pas.',
+	'watchers-error-invalid-page' => "'''Error :''' « $1 » es un títol de pagina invalid.",
 	'watchers_header' => '{{PLURAL:$2|Utilizaire que seguís|Utilizaires que seguisson}} « [[:$1]] »',
 	'watchers_noone_watches' => 'Degun seguís pas aquesta pagina.',
 	'watchers_x_or_more' => '$1 utilizaires o quitament {{PLURAL:$1|un autre|maites autres}} an aquesta pagina dins lor lista de seguiment.',
 	'watchers_less_than_x' => 'Mens {{PLURAL:$1|d’un utilizaire seguís|de $1 utilizaires seguisson}} aquesta pagina.',
+	'watchers-num' => '$1 {{PLURAL:$1|utilizaire a|utilizaires an}} la pagina "[[:$2]]" dins {{PLURAL:$1|sa lista|lors listas}} de seguiment.',
+	'right-watchers-list' => '[[Special:Watchers|Far la lista dels utilizaires que seguisson una pagina especifica]]',
 );
 
 /** Ossetic (Иронау)

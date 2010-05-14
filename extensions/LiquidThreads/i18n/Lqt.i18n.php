@@ -791,6 +791,7 @@ $messages['an'] = array(
 	'lqt-email-undo' => 'Desfer',
 	'lqt-header-actions' => 'Accions',
 	'searchprofile-threads' => 'Discusions',
+	'lqt-cancel-subject-edit' => 'Cancelar',
 );
 
 /** Arabic (العربية)
@@ -10422,6 +10423,7 @@ $messages['mt'] = array(
 	'lqt-older' => 'eqdem',
 	'lqt-newer' => 'iġded',
 	'lqt-read-all' => 'Immarkahom kollha bħala moqrija',
+	'lqt-no-new-messages' => "M'hemm l-ebda messaġġ ġdid għalik.",
 	'lqt-new-messages' => "✒ M'hemm l-ebda messaġġ ġdid għalik.",
 	'lqt-history-time' => 'Ħin',
 	'lqt-history-user' => 'Utent',
@@ -13962,6 +13964,7 @@ $messages['su'] = array(
 
 /** Swedish (Svenska)
  * @author Boivie
+ * @author Dafer45
  * @author Fluff
  * @author GameOn
  * @author Jon Harald Søby
@@ -14114,7 +14117,8 @@ Denna handling kan inte göras om.',
 	'lqt-history-thread' => 'Tråd',
 	'lqt-thread-edited-author' => 'Redigerad av författaren.<br />
 Senast redigerad: $1',
-	'lqt-thread-edited-others' => 'Redigerad av andra användare',
+	'lqt-thread-edited-others' => 'Redigerad av {{PLURAL:$2|annan användare|$2 användare}}.<br />
+Senaste redigerad: $1',
 	'lqt-header-actions' => 'Åtgärder',
 	'lqt_summarize_link' => 'Sammanfatta',
 	'lqt-summarize-intro' => 'Sammanfatta tråden nedan i redigeringsfönstret.
@@ -14137,8 +14141,8 @@ För att undvika detta, splitta dem från denna tråd innan du raderar den.',
 	'lqt-newmessages-from' => 'Från $1',
 	'lqt-hot-topics' => 'Heta ämnen',
 	'lqt-add-reply' => 'Lägg till ett svar',
-	'lqt_rc_new_discussion' => 'Ny diskussion "$1" på $2 • $3 skriver:',
-	'lqt_rc_new_reply' => 'Svar till "$1" på $2 • $3 skriver:',
+	'lqt_rc_new_discussion' => 'skapade en ny tråd, "$1"',
+	'lqt_rc_new_reply' => 'postade ett svar till "$1"',
 	'right-lqt-split' => 'Delade trådar',
 	'right-lqt-merge' => 'Slå ihop trådar',
 	'lqt-thread-merge' => 'Slå ihop in i en annan tråd.',

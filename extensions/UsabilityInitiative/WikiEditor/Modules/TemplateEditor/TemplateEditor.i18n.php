@@ -34,6 +34,13 @@ $messages['af'] = array(
 	'wikieditor-template-editor-preference' => 'Aktiveer vorm-gebaseerde wysiging van wikisjablone',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'wikieditor-template-editor-dialog-cancel' => 'Cancelar',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK
@@ -103,12 +110,13 @@ $messages['bs'] = array(
 
 /** Catalan (Català)
  * @author Paucabot
+ * @author Vriullop
  */
 $messages['ca'] = array(
 	'wikieditor-template-editor-preference' => "Permetre l'edició basada en formularis de plantilles",
-	'wikieditor-template-editor-dialog-title' => 'Edita la plantilla',
+	'wikieditor-template-editor-dialog-title' => 'Modifica la plantilla',
 	'wikieditor-template-editor-dialog-submit' => 'Actualitza',
-	'wikieditor-template-editor-dialog-cancel' => 'Cancel·la',
+	'wikieditor-template-editor-dialog-cancel' => 'Anuŀla',
 );
 
 /** Czech (Česky)
@@ -410,6 +418,16 @@ $messages['ml'] = array(
 	'wikieditor-template-editor-dialog-title' => 'ഫലകം തിരുത്തുക',
 	'wikieditor-template-editor-dialog-submit' => 'പുതുക്കുക',
 	'wikieditor-template-editor-dialog-cancel' => 'റദ്ദാക്കുക',
+);
+
+/** Maltese (Malti)
+ * @author Chrisportelli
+ */
+$messages['mt'] = array(
+	'wikieditor-template-editor-preference' => "Ippermetti l-modifika tal-mudelli permezz ta' moduli",
+	'wikieditor-template-editor-dialog-title' => 'Immodifika l-mudell',
+	'wikieditor-template-editor-dialog-submit' => 'Aġġorna',
+	'wikieditor-template-editor-dialog-cancel' => 'Annulla',
 );
 
 /** Dutch (Nederlands)

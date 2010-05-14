@@ -22,11 +22,25 @@ $messages['be-tarask'] = array(
 	'wikieditor-addMediaWizard-preference' => 'Уключыць дапаўненьне «Майстар даданьня мэдыя»',
 );
 
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'wikieditor-addMediaWizard-preference' => '"Add media wizard" গ্যাজেট সক্রিয়',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */
 $messages['br'] = array(
 	'wikieditor-addMediaWizard-preference' => 'Gweredekaat ar bitrak "Ouzhpennañ ameiler mediaoù"',
+);
+
+/** Catalan (Català)
+ * @author Vriullop
+ */
+$messages['ca'] = array(
+	'wikieditor-addMediaWizard-preference' => 'Habilita el giny «Assistent per afegir multimèdia»',
 );
 
 /** Czech (Česky)
@@ -71,6 +85,13 @@ $messages['gl'] = array(
 	'wikieditor-addMediaWizard-preference' => 'Activar o trebello "Asistente para engadir medios"',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'wikieditor-addMediaWizard-preference' => 'Dr „Medienassischtänt“ aktiviere, as Hilfsprogramm zum Yyfiege vu Mediedateie',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -83,6 +104,13 @@ $messages['hsb'] = array(
  */
 $messages['ia'] = array(
 	'wikieditor-addMediaWizard-preference' => 'Activar le gadget "Assistente pro adder multimedia"',
+);
+
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'wikieditor-addMediaWizard-preference' => 'Aktifkan gadget "Tambah media wizard"',
 );
 
 /** Italian (Italiano)
@@ -127,6 +155,13 @@ $messages['ml'] = array(
 	'wikieditor-addMediaWizard-preference' => '"മീഡിയ ഉൾപ്പെടുത്തൽ സഹായി" ഗാഡ്ജറ്റ് സജ്ജമാക്കുക',
 );
 
+/** Maltese (Malti)
+ * @author Chrisportelli
+ */
+$messages['mt'] = array(
+	'wikieditor-addMediaWizard-preference' => 'Ippermetti l-aċċessorju "Żid proċedura gwidata għall-medja"',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -168,6 +203,13 @@ $messages['pt'] = array(
  */
 $messages['ru'] = array(
 	'wikieditor-addMediaWizard-preference' => 'Включить гаджет «Мастер добавления медиа»',
+);
+
+/** Swedish (Svenska)
+ * @author Ainali
+ */
+$messages['sv'] = array(
+	'wikieditor-addMediaWizard-preference' => 'Aktivera "Lägg till media guiden" finessen',
 );
 
 /** Vietnamese (Tiếng Việt)

@@ -1657,6 +1657,7 @@ $messages['km'] = array(
  */
 $messages['kn'] = array(
 	'youtubeauthsub_title' => 'ಶೀರ್ಷಿಕೆ',
+	'youtubeauthsub_description' => 'ವಿವರ',
 	'youtubeauthsub_category' => 'ವರ್ಗ',
 );
 

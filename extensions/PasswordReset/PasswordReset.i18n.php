@@ -226,6 +226,7 @@ $messages['bg'] = array(
  */
 $messages['br'] = array(
 	'passwordreset' => 'Adderaouekaat ar ger-tremen',
+	'passwordreset-desc' => "[[Special:PasswordReset|Adderaouekaat a ra ger-tremen un implijer wiki]] - rekis eo kaout ar gwirioù 'passwordreset'",
 	'passwordreset-invalidusername' => 'Anv implijer direizh',
 	'passwordreset-emptyusername' => 'Anv implijer goullo',
 	'passwordreset-nopassmatch' => 'Ne glot ket ar gerioù-tremen',
@@ -236,6 +237,7 @@ $messages['br'] = array(
 	'passwordreset-submit' => 'Adderaouekaat ar ger-tremen',
 	'passwordreset-success' => 'Adlakaet eo bet da zero ar ger-tremen evit ID an implijer : $1.',
 	'passwordreset-disableuser' => 'Diweredekaat ar gont implijer ?',
+	'passwordreset-disableuserexplain' => "(Spisaat a ra un hachadur ger-tremen direizh - n'hallo ket an implijer kevreañ)",
 	'passwordreset-disablesuccess' => 'Diweredekaet eo bet ar gont implijer evit ID an implijer : $1',
 	'passwordreset-accountdisabled' => 'Diweredekaet eo bet ar gont',
 	'disabledusers' => 'Implijerien diweredekaet',

@@ -252,7 +252,7 @@ $messages['ksh'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'stringfunctions-desc' => 'Verbessert de parser mat String-Funktiounen',
+	'stringfunctions-desc' => 'Verbessert de Parser mat String-Funktiounen',
 );
 
 /** Macedonian (Македонски)

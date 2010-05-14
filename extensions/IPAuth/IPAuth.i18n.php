@@ -30,10 +30,11 @@ $messages['af'] = array(
 );
 
 /** Arabic (العربية)
+ * @author Antime
  * @author OsamaK
  */
 $messages['ar'] = array(
-	'ipauth-desc' => 'ولوج تلقائي من عناوين آيبي معينة',
+	'ipauth-desc' => 'دخول تلقائي من عناوين آيبي معينة',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
@@ -98,6 +99,13 @@ $messages['eo'] = array(
  */
 $messages['es'] = array(
 	'ipauth-desc' => 'Inicio de sesión automático para direcciones IP fijas',
+);
+
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'ipauth-desc' => 'IP helbideetako saio-hasiera automatikoa',
 );
 
 /** Finnish (Suomi)
