@@ -1677,7 +1677,7 @@ $wgCacheEpoch = '20030516000000';
  * to ensure that client-side caches do not keep obsolete copies of global
  * styles.
  */
-$wgStyleVersion = '277';
+$wgStyleVersion = '279';
 
 
 # Server-side caching:
@@ -2676,7 +2676,7 @@ $wgDebugTidy = false;
 $wgValidateAllHtml = false;
 
 /** See list of skins and their symbolic names in languages/Language.php */
-$wgDefaultSkin = 'monobook';
+$wgDefaultSkin = 'vector';
 
 /**
 * Should we allow the user's to select their own skin that will override the default?

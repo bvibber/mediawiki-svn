@@ -2508,6 +2508,7 @@ Späichert en op Ärem Computer of a luet en hei nees erop.',
 'importstart'                => 'Importéier Säiten …',
 'import-revision-count'      => '$1 {{PLURAL:$1|Versioun|Versiounen}}',
 'importnopages'              => "Et gëtt keng Säiten fir z'importéieren.",
+'imported-log-entries'       => "$1 {{PLURAL:$1|Entrée|Entréeën}} an d'Logbuch importéiert.",
 'importfailed'               => 'Importatioun huet net fonctionnéiert: $1',
 'importunknownsource'        => 'Onbekannt Importquell',
 'importcantopen'             => 'De Fichier dee sollt importéiert gi konnt net opgemaach ginn',
@@ -2602,6 +2603,7 @@ Späichert en op Ärem Computer of a luet en hei nees erop.',
 'tooltip-undo'                    => '"Zréck" setzt dës Ännerung zréck a mécht den Ännerungsformulaire am Modus "kucken ouni ofzespäicheren" op.
 Erlaabt et e Grond an de Resumé derbäizesetzen.',
 'tooltip-preferences-save'        => 'Astellungen späicheren',
+'tooltip-summary'                 => 'Gitt e kuerze Resumé an',
 
 # Stylesheets
 'common.css'      => "/* Dës CSS huet nëmmen Afloss op de Skin ''Chick''  */",

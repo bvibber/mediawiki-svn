@@ -72,6 +72,7 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
   is no title match in search and the user has no rights to create pages.
 * (bug 23429) Added new hook WatchlistEditorBuildRemoveLine
 * (bug 18488) Added maintenance script refreshCategoryCounts.php
+* (bug 22844) Added support for WinCache object caching
 
 === Bug fixes in 1.17 ===
 * (bug 17560) Half-broken deletion moved image files to deletion archive
@@ -160,6 +161,9 @@ in a negative namespace (which is invalid).
 * (bug 23422) mp3 files can now be moved
 * (bug 23448) MediaWiki:Summary-preview is now displayed instead of
   MediaWiki:Subject-preview when previewing summary
+* (bug 23426) The {{REVISIONMONTH}} variable is now zero-padded and added new
+  variable {{REVISIONMONTH1}} when unpadded version is needed.
+* Special:Userrights didn't recognize user as changing his/her own rights if user did not capitalize first letter of username.
 
 === API changes in 1.17 ===
 * (bug 22738) Allow filtering by action type on query=logevent
@@ -172,6 +176,8 @@ in a negative namespace (which is invalid).
 * (bug 19721) API action=help should have a way to just list for a specific module
 * (bug 23458) Add support for pageid parameter to action=parse requests
 * (bug 23460) Parse action should have a section option
+* (bug 21346) Make deleted images searchable by hash
+* (bug 23461) Normalise usage of parameter names in parameter descriptions
 
 === Languages updated in 1.17 ===
 

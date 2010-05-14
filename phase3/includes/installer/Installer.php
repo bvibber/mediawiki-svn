@@ -142,7 +142,8 @@ abstract class Installer {
 	var $objectCaches = array( 
 		'xcache' => 'xcache_get',
 		'apc' => 'apc_fetch',
-		'eaccel' => 'eaccelerator_get'
+		'eaccel' => 'eaccelerator_get',
+		'wincache' => 'wincache_ucache_get'
 	);
 
 	/**
@@ -826,7 +827,7 @@ abstract class Installer {
 			$this->installSteps = array( 'localsettings' );
 		}
 		if( count( $this->getVar( '_Extensions' ) ) ) {
-			$this->installSteps = array_unshift( $this->installSteps, 'extensions' );
+			array_unshift( $this->installSteps, 'extensions' );
 		}
 		return $this->installSteps;
 	}

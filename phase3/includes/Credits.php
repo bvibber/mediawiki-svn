@@ -21,30 +21,29 @@
  */
 
 class Credits {
-
 	/**
 	 * This is largely cadged from PageHistory::history
 	 * @param $article Article object
 	 */
 	public static function showPage( Article $article ) {
 		global $wgOut;
-	
+
 		wfProfileIn( __METHOD__ );
-	
+
 		$wgOut->setPageTitle( $article->mTitle->getPrefixedText() );
 		$wgOut->setSubtitle( wfMsg( 'creditspage' ) );
 		$wgOut->setArticleFlag( false );
 		$wgOut->setArticleRelated( true );
 		$wgOut->setRobotPolicy( 'noindex,nofollow' );
-	
-		if( $article->mTitle->getArticleID() == 0 ) {
+
+		if ( $article->mTitle->getArticleID() == 0 ) {
 			$s = wfMsg( 'nocredits' );
 		} else {
 			$s = self::getCredits( $article, -1 );
 		}
-	
+
 		$wgOut->addHTML( $s );
-	
+
 		wfProfileOut( __METHOD__ );
 	}
 
@@ -59,7 +58,7 @@ class Credits {
 		wfProfileIn( __METHOD__ );
 		$s = '';
 
-		if( isset( $cnt ) && $cnt != 0 ){
+		if ( isset( $cnt ) && $cnt != 0 ) {
 			$s = self::getAuthor( $article );
 			if ( $cnt > 1 || $cnt < 0 ) {
 				$s .= ' ' . self::getContributors( $article, $cnt - 1, $showIfMax );
@@ -74,13 +73,13 @@ class Credits {
 	 * Get the last author with the last modification time
 	 * @param $article Article object
 	 */
-	protected static function getAuthor( Article $article ){
+	protected static function getAuthor( Article $article ) {
 		global $wgLang;
 
 		$user = User::newFromId( $article->getUser() );
 
 		$timestamp = $article->getTimestamp();
-		if( $timestamp ){
+		if ( $timestamp ) {
 			$d = $wgLang->date( $article->getTimestamp(), true );
 			$t = $wgLang->time( $article->getTimestamp(), true );
 		} else {
@@ -99,62 +98,72 @@ class Credits {
 	 */
 	protected static function getContributors( Article $article, $cnt, $showIfMax ) {
 		global $wgLang, $wgHiddenPrefs;
-	
+
 		$contributors = $article->getContributors();
-	
+
 		$others_link = false;
-	
+
 		# Hmm... too many to fit!
-		if( $cnt > 0 && $contributors->count() > $cnt ){
+		if ( $cnt > 0 && $contributors->count() > $cnt ) {
 			$others_link = self::othersLink( $article );
-			if( !$showIfMax )
+			if ( !$showIfMax )
 				return wfMsgExt( 'othercontribs', 'parsemag', $others_link, $contributors->count() );
 		}
-	
+
 		$real_names = array();
 		$user_names = array();
 		$anon_ips = array();
-	
+
 		# Sift for real versus user names
-		foreach( $contributors as $user ) {
+		foreach ( $contributors as $user ) {
 			$cnt--;
-			if( $user->isLoggedIn() ){
+			if ( $user->isLoggedIn() ) {
 				$link = self::link( $user );
-				if( !in_array( 'realname', $wgHiddenPrefs ) && $user->getRealName() )
+				if ( !in_array( 'realname', $wgHiddenPrefs ) && $user->getRealName() ) {
 					$real_names[] = $link;
-				else
+				} else {
 					$user_names[] = $link;
+				}
 			} else {
 				$anon_ips[] = self::link( $user );
 			}
-			if( $cnt == 0 ) break;
+
+			if ( $cnt == 0 ) {
+				break;
+			}
 		}
-	
+
 		if ( count( $real_names ) ) {
 			$real = $wgLang->listToText( $real_names );
 		} else {
 			$real = false;
 		}
-	
+
 		# "ThisSite user(s) A, B and C"
-		if( count( $user_names ) ){
-			$user = wfMsgExt( 'siteusers', array( 'parsemag' ),
-				$wgLang->listToText( $user_names ), count( $user_names ) );
+		if ( count( $user_names ) ) {
+			$user = wfMsgExt(
+				'siteusers',
+				'parsemag',
+				$wgLang->listToText( $user_names ), count( $user_names )
+			);
 		} else {
 			$user = false;
 		}
 
-		if( count( $anon_ips ) ){
-			$anon = wfMsgExt( 'anonusers', array( 'parsemag' ),
-				$wgLang->listToText( $anon_ips ), count( $anon_ips ) );
+		if ( count( $anon_ips ) ) {
+			$anon = wfMsgExt(
+				'anonusers',
+				'parsemag',
+				$wgLang->listToText( $anon_ips ), count( $anon_ips )
+			);
 		} else {
 			$anon = false;
 		}
-	
+
 		# This is the big list, all mooshed together. We sift for blank strings
 		$fulllist = array();
-		foreach( array( $real, $user, $anon, $others_link ) as $s ){
-			if( $s ){
+		foreach ( array( $real, $user, $anon, $others_link ) as $s ) {
+			if ( $s ) {
 				array_push( $fulllist, $s );
 			}
 		}
@@ -163,7 +172,7 @@ class Credits {
 		$creds = $wgLang->listToText( $fulllist );
 
 		# "Based on work by ..."
-		return strlen( $creds ) 
+		return strlen( $creds )
 			? wfMsgExt( 'othercontribs', 'parsemag', $creds, count( $fulllist ) )
 			: '';
 	}
@@ -175,10 +184,11 @@ class Credits {
 	 */
 	protected static function link( User $user ) {
 		global $wgUser, $wgHiddenPrefs;
-		if( !in_array( 'realname', $wgHiddenPrefs ) && !$user->isAnon() )
+		if ( !in_array( 'realname', $wgHiddenPrefs ) && !$user->isAnon() ) {
 			$real = $user->getRealName();
-		else
+		} else {
 			$real = false;
+		}
 
 		$skin = $wgUser->getSkin();
 		$page = $user->isAnon() ?
@@ -195,14 +205,15 @@ class Credits {
 	 */
 	protected static function userLink( User $user ) {
 		$link = self::link( $user );
-		if( $user->isAnon() ){
+		if ( $user->isAnon() ) {
 			return wfMsgExt( 'anonuser', array( 'parseinline', 'replaceafter' ), $link );
 		} else {
 			global $wgHiddenPrefs;
-			if( !in_array( 'realname', $wgHiddenPrefs ) && $user->getRealName() )
+			if ( !in_array( 'realname', $wgHiddenPrefs ) && $user->getRealName() ) {
 				return $link;
-			else 
-				return wfMsgExt( 'siteuser', array( 'parseinline', 'replaceafter' ), $link );
+			} else {
+				return wfMsgExt( 'siteuser', 'parsemag', $link, $user->getName() );
+			}
 		}
 	}
 
@@ -214,6 +225,12 @@ class Credits {
 	protected static function othersLink( Article $article ) {
 		global $wgUser;
 		$skin = $wgUser->getSkin();
-		return $skin->link( $article->getTitle(), wfMsgHtml( 'others' ), array(), array( 'action' => 'credits' ), array( 'known' ) );
+		return $skin->link(
+			$article->getTitle(),
+			wfMsgHtml( 'others' ),
+			array(),
+			array( 'action' => 'credits' ),
+			array( 'known' )
+		);
 	}
 }

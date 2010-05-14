@@ -47,6 +47,7 @@
  * @author Seb35
  * @author Sherbrooke
  * @author Skalman
+ * @author The Evil IP address
  * @author Urhixidur
  * @author Verdy p
  * @author Zetud
@@ -2607,7 +2608,7 @@ Veuillez en choisir un autre.',
 'movepage-page-moved'          => 'La page $1 a été renommée en $2.',
 'movepage-page-unmoved'        => 'La page $1 n’a pas pu être renommée en $2.',
 'movepage-max-pages'           => 'Le maximum de $1 {{PLURAL:$1|page renommée|pages renommées}} a été atteint et aucune autre page ne sera renommée automatiquement.',
-'1movedto2'                    => 'a renommé [[$1]] en [[$2]]',
+'1movedto2'                    => 'a déplacé [[$1]] vers [[$2]]',
 '1movedto2_redir'              => 'a déplacé [[$1]] vers [[$2]] en écrasant sa redirection',
 'move-redirect-suppressed'     => 'redirection supprimée',
 'movelogpage'                  => 'Journal des déplacements',
@@ -2709,6 +2710,7 @@ Sauvegardez-le sur votre disque dur puis téléversez-le ici.',
 'importstart'                => 'Importation des pages…',
 'import-revision-count'      => '$1 version{{PLURAL:$1||s}}',
 'importnopages'              => 'Aucune page à importer.',
+'imported-log-entries'       => '$1 {{PLURAL:$1|entrée|entrées}} du journal {{PLURAL:$1|importée|importées}}.',
 'importfailed'               => 'Échec de l’importation : <nowiki>$1</nowiki>',
 'importunknownsource'        => 'Type inconnu de la source à importer',
 'importcantopen'             => 'Impossible d’ouvrir le fichier à importer',
@@ -2841,7 +2843,7 @@ Permet de rétablir la version précédente et d’ajouter un motif dans la boî
 
 # Attribution
 'anonymous'        => '{{PLURAL:$1|Utilisateur non enregistré|Utilisateurs non enregistrés}} sur {{SITENAME}}',
-'siteuser'         => 'l’utilisateur $1 de {{SITENAME}}',
+'siteuser'         => '{{GENDER:$2|l’utilisateur|l’utilisatrice|l’utilisateur}} $1 de {{SITENAME}}',
 'anonuser'         => 'l’utilisateur anonyme $1 de {{SITENAME}}',
 'lastmodifiedatby' => 'Cette page a été modifiée pour la dernière fois le $1 à $2 par $3.',
 'othercontribs'    => 'Basé sur le travail de $1.',
