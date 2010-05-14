@@ -380,7 +380,7 @@ class ScriptLoaderOutputPage extends OutputPage {
 				// ( so that javascript modules can use relative paths )
 				$loaderDir =  $modulePath . "/";
 				$this->addScript(  Html::inlineScript(
-					"mw.setConfig( 'loaderContext',  '" . xml::escapeJsString( $loaderDir  ) . "');"
+					"mw.setConfig( 'loaderContext',  '" . xml::escapeJsString( $wgScriptPath .'/'. $loaderDir  ) . "');"
 				) );
 				$this->addScriptFile(
 					"$wgScriptPath/$modulePath/loader.js"
