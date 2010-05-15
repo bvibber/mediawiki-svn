@@ -77,7 +77,10 @@ $wgHooks['GetCacheVaryCookies'][] = 'wfLanguageSelectorGetCacheVaryCookies';
 
 $wgExtensionFunctions[] = 'wfLanguageSelectorExtension';
 
+$wgParserOutputHooks['languageselector'] = 'wfLanguageSelectorAddJavascript';
+
 $wgLanguageSelectorRequestedLanguage = null;
+$wgLanguageSelectorFormUsed = false;
 
 
 $dir = dirname(__FILE__) . '/';
@@ -180,15 +183,20 @@ function wfLanguageSelectorExtension() {
 }
 
 function wfLanguageSelectorBeforePageDisplay( &$out ) {
-	global $wgScriptPath, $wgLanguageSelectorLocation;
-
-	$out->addScriptFile( $wgScriptPath .
-		'/extensions/LanguageSelector/LanguageSelector.js' );
+	global $wgScriptPath, $wgLanguageSelectorLocation, $wgLanguageSelectorFormUsed;
 
 	if ( $wgLanguageSelectorLocation == LANGUAGE_SELECTOR_AT_TOP_OF_TEXT ) {
 		$html = wfLanguageSelectorHTML();
 		$out->mBodytext = $html . $out->mBodytext;
 	}
+
+	if ( $wgLanguageSelectorFormUsed ||
+		$wgLanguageSelectorLocation != LANGUAGE_SELECTOR_MANUAL )
+	{
+		$out->addScriptFile( $wgScriptPath .
+			'/extensions/LanguageSelector/LanguageSelector.js' );
+	}
+
 	return true;
 }
 
@@ -206,24 +214,41 @@ function wfLanguageSelectorSkinHook( &$out ) {
 	return true;
 }
 
-function wfLanguageSelectorTag($input, $args) {
+function wfLanguageSelectorTag( $input, $args, $parser ) {
 	$style = @$args['style'];
 	$class = @$args['class'];
 	$selectorstyle = @$args['selectorstyle'];
 	$buttonstyle = @$args['buttonstyle'];
 	$showcode = @$args['showcode'];
 
-	if ($style) $style = htmlspecialchars($style);
-	if ($class) $class = htmlspecialchars($class);
-	if ($selectorstyle) $selectorstyle = htmlspecialchars($selectorstyle);
-	if ($buttonstyle) $buttonstyle = htmlspecialchars($buttonstyle);
+	if ( $style ) {
+		$style = htmlspecialchars( $style );
+	}
+	if ( $class ) {
+		$class = htmlspecialchars( $class );
+	}
+	if ( $selectorstyle ) {
+		$selectorstyle = htmlspecialchars( $selectorstyle );
+	}
+	if ( $buttonstyle ) {
+		$buttonstyle = htmlspecialchars( $buttonstyle );
+	}
 
-	if ($showcode) {
-	    $showcode = strtolower($showcode);
-	    if ($showcode == "true" || $showcode == "yes" || $showcode == "on") $showcode = true;
-	    else if ($showcode == "false" || $showcode == "no" || $showcode == "off") $showcode = false;
-	    else $showcode = null;
-	} else $showcode = null;
+	if ( $showcode ) {
+		$showcode = strtolower( $showcode );
+		if ( $showcode == "true" || $showcode == "yes" || $showcode == "on" ) {
+			$showcode = true;
+		} else if ( $showcode == "false" || $showcode == "no" || $showcode == "off" ) {
+			$showcode = false;
+		} else {
+			$showcode = null;
+		}
+	} else {
+		$showcode = null;
+	}
+
+	# So that this also works with parser cache
+	$parser->getOutput()->addOutputHook( 'languageselector' );
 
 	return wfLanguageSelectorHTML( $style, $class, $selectorstyle, $buttonstyle, $showcode );
 }
@@ -350,10 +375,20 @@ function wfLanguageSelectorAddNewAccount( $u ) {
 	return true;
 }
 
-function wfLanguageSelectorHTML( $style = null, $class = null, $selectorstyle = null, $buttonstyle = null, $showCode = null ) {
-	global $wgLanguageSelectorLanguages, $wgTitle, $wgLang, $wgContLang, $wgScript, $wgLanguageSelectorShowCode;
+function wfLanguageSelectorAddJavascript( $outputPage, $parserOutput, $data ) {
+	global $wgLanguageSelectorFormUsed;
 
-	if ($showCode === null) $showCode = $wgLanguageSelectorShowCode;
+	$wgLanguageSelectorFormUsed = true;
+}
+
+function wfLanguageSelectorHTML( $style = null, $class = null, $selectorstyle = null, $buttonstyle = null, $showCode = null ) {
+	global $wgLanguageSelectorLanguages, $wgTitle, $wgLang, $wgContLang, $wgScript,
+		$wgLanguageSelectorShowCode, $wgLanguageSelectorFormUsed;
+
+	if ( $showCode === null ) {
+		$showCode = $wgLanguageSelectorShowCode;
+	}
+	$wgLanguageSelectorFormUsed = true;
 
 	static $id = 0;
 	$id += 1;
@@ -361,22 +396,37 @@ function wfLanguageSelectorHTML( $style = null, $class = null, $selectorstyle = 
 	$code = $wgLang->getCode();
 
 	$html = '';
-	$html .= Xml::openElement('span', array('id' => 'languageselector-box-'.$id, 'class' => 'languageselector ' . $class, 'style' => $style ));
-	$html .= Xml::openElement('form', array('name' => 'languageselector-form-'.$id, 'id' => 'languageselector-form-'.$id, 'method' => 'get', 'action' => $wgScript, 'style' => 'display:inline;'));
+	$html .= Xml::openElement( 'span', array(
+		'id' => 'languageselector-box-' . $id,
+		'class' => 'languageselector ' . $class,
+		'style' => $style
+	) );
+	$html .= Xml::openElement( 'form', array(
+		'name' => 'languageselector-form-'.$id,
+		'id' => 'languageselector-form-' . $id,
+		'method' => 'get',
+		'action' => $wgScript,
+		'style' => 'display:inline;'
+	) );
 	$html .= Xml::hidden( 'title', $wgTitle->getPrefixedDBKey() );
-	$html .= Xml::openElement('select', array('name' => 'setlang', 'id' => 'languageselector-select-'.$id, 'style' => $selectorstyle));
+	$html .= Xml::openElement('select', array(
+		'name' => 'setlang',
+		'id' => 'languageselector-select-' . $id,
+		'style' => $selectorstyle
+	) );
 
-	foreach ($wgLanguageSelectorLanguages as $ln) {
-		$name = $wgContLang->getLanguageName($ln);
-		if ($showCode) $name = wfBCP47($ln) . ' - ' . $name;
+	foreach ( $wgLanguageSelectorLanguages as $ln ) {
+		$name = $wgContLang->getLanguageName( $ln );
+		if ( $showCode ) $name = wfBCP47( $ln ) . ' - ' . $name;
 
-		$html .= Xml::option($name, $ln, $ln == $code);
+		$html .= Xml::option( $name, $ln, $ln == $code );
 	}
 
-	$html .= Xml::closeElement('select');
-	$html .= Xml::submitButton(wfMsg('languageselector-setlang'), array( 'id' => 'languageselector-commit-'.$id, 'style' => $buttonstyle ));
-	$html .= Xml::closeElement('form');
-	$html .= Xml::closeElement('span');
+	$html .= Xml::closeElement( 'select' );
+	$html .= Xml::submitButton( wfMsg( 'languageselector-setlang' ),
+		array( 'id' => 'languageselector-commit-' . $id, 'style' => $buttonstyle ) );
+	$html .= Xml::closeElement( 'form' );
+	$html .= Xml::closeElement( 'span' );
 
 	return $html;
 }
