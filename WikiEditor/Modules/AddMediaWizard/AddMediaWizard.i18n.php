@@ -219,10 +219,24 @@ $messages['sv'] = array(
 	'wikieditor-addMediaWizard-preference' => 'Aktivera "Lägg till media guiden" finessen',
 );
 
+/** Turkish (Türkçe)
+ * @author Joseph
+ */
+$messages['tr'] = array(
+	'wikieditor-addMediaWizard-preference' => '"Ortam ekleme sihirbazı" gadget\'ını etkinleştir',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */
 $messages['vi'] = array(
 	'wikieditor-addMediaWizard-preference' => 'Kích hoạt công cụ "Hướng dẫn từng bước để thêm tập tin phương tiện"',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Horacewai2
+ */
+$messages['zh-hant'] = array(
+	'wikieditor-addMediaWizard-preference' => '啟用「添加媒體嚮導」小工具',
 );
 

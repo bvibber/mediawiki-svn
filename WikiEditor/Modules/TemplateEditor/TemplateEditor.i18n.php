@@ -649,9 +649,13 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Gaoxuewei
+ * @author Horacewai2
  * @author Liangent
  */
 $messages['zh-hant'] = array(
 	'wikieditor-template-editor-preference' => '啟用wiki模板的表單式編輯',
+	'wikieditor-template-editor-dialog-title' => '編輯模板',
+	'wikieditor-template-editor-dialog-submit' => '更新',
+	'wikieditor-template-editor-dialog-cancel' => '取消',
 );
 

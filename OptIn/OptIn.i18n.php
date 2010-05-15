@@ -3309,6 +3309,7 @@ $messages['la'] = array(
 );
 
 /** Luxembourgish (Lëtzebuergesch)
+ * @author Les Meloures
  * @author Purodha
  * @author Robby
  */
@@ -3352,9 +3353,9 @@ Mir wiere frou fir ze wëssen wat Dir vun deem neien Interface denkt, dofir wier
 	'optin-survey-answer-whyoptout-didntlike-layout' => 'Ech hat déi nei Ongleten an den neie Layout net gär.',
 	'optin-survey-answer-whyoptout-didntlike-toolbar' => 'Ech hunn déi nei Toolbar net gär.',
 	'optin-survey-answer-whyoptout-other' => 'Anere Grond:',
-	'optin-survey-question-explain' => 'Erklärt oder preziséiert Är Äntwert w.e.g.:',
+	'optin-survey-question-explain' => 'Erkläert oder preziséiert Är Äntwert w.e.g.:',
 	'optin-survey-question-techfail' => 'Hat Dir technesch Schwieregkeete beim Benotze vu Beta?',
-	'optin-survey-question-techfail-ifyes' => 'Wa jo, da begrënnt oder erklärt et:',
+	'optin-survey-question-techfail-ifyes' => 'Wa jo, da begrënnt oder erkläert et:',
 	'optin-survey-question-usedtoolbar' => "Hutt Dir déi nei erweiderbar Toolbar benotzt fir eng Säit z'änneren?",
 	'optin-survey-question-usedtoolbar-ifyes' => 'Wa jo, wat hutt Dir doru gutt fonnt? Wat huet Iech net esougutt gefall?',
 	'optin-survey-question-usedtoolbar-ifno' => 'Wann neen, firwat? Wäert Dir se an der Zukunft benotzen? Gitt w.e.g. en Erklärung.',
