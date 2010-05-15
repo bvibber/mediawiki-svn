@@ -738,9 +738,11 @@ $messages['sah'] = array(
 );
 
 /** Sardinian (Sardu)
+ * @author Andria
  * @author Marzedu
  */
 $messages['sc'] = array(
+	'abc-desc' => "Aciungit s'eticheta <tt>&lt;abc&gt;</tt> pro sa mùsica in formadu ABC",
 	'abcdownload' => 'Scàrriga:',
 );
 

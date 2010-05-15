@@ -222,9 +222,9 @@ $messages['dsb'] = array(
 	'watchsubpages-addtitlestowatchlist' => 'Boki wobglědowańkam pśidaś',
 	'watchsubpages-desc' => 'Spěšne [[Special:WatchSubpages|pśidaśe wšych pódbokow]] boka wobglědowańkam',
 	'watchsubpages-form' => 'Wubjeŕ boki, kótarež coš swójim wobglědowańkam pśidaś.
-Aby bok pśidał, markěruj kašćik pódla njogo a klikni na "Boki pśidaś".
+Aby bok pśidał, markěruj kašćik pódla njogo a klikni na "{{int:watchsubpages-addtitles}}".
 
-Gaž coš někotare boki wubraś abo wótwóliś, móžoš wubraś jaden za drugi slědujuce kontrolwe kašćiki z dołoj ześišćaneju pśešaltowańskeju tastu a pśez rownocasne kliknjenje na kuždy kóńc wobcerka, kótaryž ma so wubraś.',
+Gaž coš někotare boki wubraś abo wótwóliś, móžoš wubraś jaden za drugi slědujuce kontrolowe kašćiki z dołoj ześišćaneju pśešaltowańskeju tastu a pśez rownocasne kliknjenje na kuždy kóńc wobcerka, kótaryž ma so wubraś.',
 );
 
 /** Greek (Ελληνικά)
@@ -252,6 +252,7 @@ $messages['eo'] = array(
 /** Spanish (Español)
  * @author Crazymadlover
  * @author Fluence
+ * @author Locos epraix
  * @author Translationista
  */
 $messages['es'] = array(
@@ -260,10 +261,10 @@ $messages['es'] = array(
 	'watchsubpages-addtitles' => 'Agregar páginas',
 	'watchsubpages-addtitlestowatchlist' => 'Agregar páginas a la lista de seguimiento',
 	'watchsubpages-desc' => 'Rápidamente [[Special:WatchSubpages|agregue todas las subpáginas]] de una página en la lista de vigilancia',
-	'watchsubpages-form' => 'Seleccionar las páginas de abajo a agregar en su lista de vigilancia.
-Para agregar una página, marque la cuadrícula próxima a ella, y haga click en "Agregar página".
+	'watchsubpages-form' => 'Seleccionar las páginas a añadir a su lista de seguimiento.
+Para agregar una página, marque la caja junto a esta, y haga clic en "{{int:watchsubpages-addtitles}}".
 
-Cuando marque o desmarque múltiples páginas, Mantener presionada la tecla Mayús le permite seleccionar cuadrículas de marcado consecutivas haciendo click al final de cada rango a ser marcado.',
+Cuando marque o desmarque múltiples páginas, mantener presionada la tecla Mayús le permite seleccionar cajas consecutivas haciendo clic al final de cada rango a ser marcado.',
 );
 
 /** Estonian (Eesti)

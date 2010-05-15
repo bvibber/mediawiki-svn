@@ -586,6 +586,13 @@ $messages['ko'] = array(
 	'crossnamespacelinkstext' => '$1: $3 이름공간을 가리키는 $2개의 링크',
 );
 
+/** Karachay-Balkar (Къарачай-Малкъар)
+ * @author Iltever
+ */
+$messages['krc'] = array(
+	'crossnamespacelinks' => 'Атла аламланы араларында джибериуле',
+);
+
 /** Colognian (Ripoarisch)
  * @author Purodha
  */

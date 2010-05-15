@@ -4842,6 +4842,7 @@ A peul [{{fullurl:{{FULLPAGENAME}}|action=delvote}} registré sò apogg, o obies
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'deletequeue-vote-submit' => 'سپارل',
 	'deletequeue-list-status' => 'دريځ:',
 	'deletequeue-list-header-expiry' => 'د پای نېټه',
 	'deletequeue-case-page' => 'مخ:',

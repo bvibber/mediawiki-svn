@@ -457,6 +457,15 @@ $messages['ru'] = array(
 	'right-lastlogin' => 'просмотр времени последнего входа участника',
 );
 
+/** Swedish (Svenska)
+ * @author Dafer45
+ */
+$messages['sv'] = array(
+	'lastuserlogin_userid' => 'Användarnamn',
+	'lastuserlogin_username' => 'Riktigt namn',
+	'lastuserlogin_daysago' => 'Dagar sedan',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */

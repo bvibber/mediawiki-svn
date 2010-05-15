@@ -668,6 +668,7 @@ $messages['km'] = array(
 $messages['ko'] = array(
 	'chemicalsources' => '화학 자료',
 	'chemicalsource-desc' => '화학식 표현을 위해 <nowiki><chemform></nowiki> 태그를 추가',
+	'chemicalsources-desc' => '화학 자료 인용을 위한 [[Special:ChemicalSources|특수 문서]]',
 	'chemFunctions_ListPage' => '화학 자료',
 	'chemFunctions_DataList' => '다음은 당신이 찾는 화학 물질에 대한 정보를 제공해 줄 수 있는 사이트입니다.<br /><br />
 * <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">NIST의 $MIXCASNameFormula 화합물</a><br />

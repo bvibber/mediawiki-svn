@@ -7668,7 +7668,7 @@ Kuckt w.e.g. [[{{MediaWiki:Ow editing policy url}}|eis Ännerungsrichtlinnen]].'
 	'ow_removed' => 'Ewechgeholl',
 	'ow_meaningsoftitle' => 'Bedeitung vun "$1"',
 	'ow_meaningsofsubtitle' => '<em>Wiki-Link:</em> [[$1]]',
-	'ow_Permission_denied' => '<h2>ERLAABNIS REFUSÉIERT</h2>',
+	'ow_Permission_denied' => '<h2>ERLAABNES REFUSÉIERT</h2>',
 	'copy' => 'Wikidata: Kopéieren',
 	'ow_copy_no_action_specified' => 'Gitt w.e.g. eng Aktioun un',
 	'ow_copy_help' => "D'Hellëf gouf nach net implementéiert.",

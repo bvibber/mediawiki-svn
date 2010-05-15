@@ -15574,6 +15574,9 @@ $messages['yue'] = array(
 	'wikieditor-toolbar-tool-ilink-example' => '拎題',
 	'wikieditor-toolbar-tool-xlink' => '外連（記住 http:// 字頭）',
 	'wikieditor-toolbar-tool-xlink-example' => 'http://www.example.com 連結標題',
+	'wikieditor-toolbar-tool-link' => '連結',
+	'wikieditor-toolbar-tool-link-title' => '插入連結',
+	'wikieditor-toolbar-tool-link-cancel' => '取消',
 	'wikieditor-toolbar-tool-file' => '結合標題',
 	'wikieditor-toolbar-tool-reference' => '參考',
 	'wikieditor-toolbar-tool-reference-example' => '響呢度插入底文字',
@@ -15629,6 +15632,9 @@ $messages['yue'] = array(
 | 行 2, 格 1
 | 行 2, 格 2
 | 行 2, 格 3',
+	'wikieditor-toolbar-tool-table-title' => '插入表格',
+	'wikieditor-toolbar-tool-table-dimensions-rows' => '列',
+	'wikieditor-toolbar-tool-table-dimensions-columns' => '行',
 	'wikieditor-toolbar-tool-table-example' => '-
 ! 表頭 1
 ! 表頭 2
@@ -15923,6 +15929,7 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Gaoxuewei
+ * @author Horacewai2
  * @author KaiesTse
  * @author Liangent
  * @author Wrightbus
@@ -15967,6 +15974,10 @@ $messages['zh-hant'] = array(
 	'wikieditor-toolbar-tool-file-example' => 'Example.jpg',
 	'wikieditor-toolbar-tool-reference' => '參考',
 	'wikieditor-toolbar-tool-reference-example' => '在這裏插入頁底文字',
+	'wikieditor-toolbar-tool-reference-cancel' => '取消',
+	'wikieditor-toolbar-tool-reference-title' => '插入參考來源',
+	'wikieditor-toolbar-tool-reference-insert' => '插入',
+	'wikieditor-toolbar-tool-reference-text' => '參考文本',
 	'wikieditor-toolbar-tool-signature' => '簽名加時間截記',
 	'wikieditor-toolbar-section-advanced' => '進階',
 	'wikieditor-toolbar-tool-heading' => '標題',
@@ -15983,6 +15994,10 @@ $messages['zh-hant'] = array(
 	'wikieditor-toolbar-tool-olist-example' => '數字列表項目',
 	'wikieditor-toolbar-tool-indent' => '縮進',
 	'wikieditor-toolbar-tool-indent-example' => '已縮進行',
+	'wikieditor-toolbar-tool-nowiki' => '插入非格式文字',
+	'wikieditor-toolbar-tool-nowiki-example' => '在此插入非格式文字',
+	'wikieditor-toolbar-tool-redirect' => '重定向',
+	'wikieditor-toolbar-tool-redirect-example' => '目標頁面的名稱',
 	'wikieditor-toolbar-tool-big' => '大',
 	'wikieditor-toolbar-tool-big-example' => '大文字',
 	'wikieditor-toolbar-tool-small' => '小',
@@ -16069,6 +16084,7 @@ $messages['zh-hant'] = array(
 	'wikieditor-toolbar-characters-page-cyrillic' => '西里爾字母',
 	'wikieditor-toolbar-characters-page-arabic' => '阿拉伯字母',
 	'wikieditor-toolbar-characters-page-hebrew' => '希伯來字母',
+	'wikieditor-toolbar-characters-page-bangla' => '孟加拉',
 	'wikieditor-toolbar-characters-page-telugu' => '泰盧固語',
 	'wikieditor-toolbar-characters-page-sinhala' => '僧伽羅文',
 	'wikieditor-toolbar-characters-page-gujarati' => '古吉拉特語',

@@ -916,6 +916,7 @@ De Akßjuhn en dä Aanzeisch weet jenumme.",
 );
 
 /** Luxembourgish (Lëtzebuergesch)
+ * @author Les Meloures
  * @author Robby
  */
 $messages['lb'] = array(
@@ -923,7 +924,7 @@ $messages['lb'] = array(
 	'imstatus_syntax' => 'Syntax',
 	'imstatus_default' => 'Standard',
 	'imstatus_example' => 'Beispill',
-	'imstatus_possible_val' => 'Méiglech Werter',
+	'imstatus_possible_val' => 'Méiglech Wäerter',
 	'imstatus_max' => 'max',
 	'imstatus_min' => 'min',
 	'imstatus_or' => 'oder',

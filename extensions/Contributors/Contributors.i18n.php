@@ -893,6 +893,7 @@ $messages['la'] = array(
 );
 
 /** Luxembourgish (Lëtzebuergesch)
+ * @author Les Meloures
  * @author Robby
  */
 $messages['lb'] = array(
@@ -903,7 +904,7 @@ $messages['lb'] = array(
 	'contributors-target' => 'Titel:',
 	'contributors-submit' => 'Weisen',
 	'contributors-subtitle' => 'Haaptauteure vun $1',
-	'contributors-others-long' => 'Doniewt gëtt et nach $1 {{PLURAL:$1|aneren Auteur den|aner Auteuren déi}} un dëser Säit matgeschafft {{PLURAL:$1|huet|hunn}}',
+	'contributors-others-long' => 'Donieft gëtt et nach $1 {{PLURAL:$1|aneren Auteur den|aner Auteuren déi}} un dëser Säit matgeschafft {{PLURAL:$1|huet|hunn}}',
 	'contributors-others' => 'a(n) $1 {{PLURAL:$1|aneren|anerer}}',
 	'contributors-badtitle' => 'Dës Säit gëtt et net.',
 	'contributors-nosuchpage' => "D'Säit $1 gëtt et net.",

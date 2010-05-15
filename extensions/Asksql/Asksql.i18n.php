@@ -744,14 +744,15 @@ Dat kann der ßööver ööndlesh beschäfftijje, also beß e besje fürseschtes
 );
 
 /** Luxembourgish (Lëtzebuergesch)
+ * @author Les Meloures
  * @author Robby
  */
 $messages['lb'] = array(
 	'asksql' => 'SQL Offro',
 	'asksql-desc' => 'SQL-Offroen iwwer eng [[Special:Asksql|Spezialsäit]] maachen.',
 	'asksqltext' => "Benotzt de Formular hei ënnedrënner fir eng Ufro un d'Datebank ze riichten.
-Benotzt dëst Zeechen' ('esou wéi hei') fir Werter an der Ufro ofzegrenzen.
-Esou Ufroen kënnen zu enger grousser Belaaschtung vun de Servere féieren, dofir gitt spuersam mat dëser Fonktioun ëm.",
+Benotzt dëst Zeechen' ('esou wéi hei') fir Wäerter an der Ufro ofzegrenzen.
+Esou Ufroe kënnen zu enger grousser Belaaschtung vun de Servere féieren, dofir gitt spuersam mat dëser Fonctioun ëm.",
 	'sqlislogged' => 'Zu ärer Informatioun: All Ufroen ginn an e Logbuch agedro',
 	'sqlquery' => 'Ufro aginn',
 	'querybtn' => 'Ufro schécken',

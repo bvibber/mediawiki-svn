@@ -368,11 +368,12 @@ $messages['ksh'] = array(
 );
 
 /** Luxembourgish (Lëtzebuergesch)
+ * @author Les Meloures
  * @author Robby
  */
 $messages['lb'] = array(
 	'absenteelandlord-reason' => "D'Datebank gouf automatesch gespaart well d'Administratueren net aktiv sinn.",
-	'absenteelandlord-desc' => "Spärt d'Datebank vun dëser Wiki automatesch wann d'Administrateuren alleguer eng zäitlaang net aktiv sinn.",
+	'absenteelandlord-desc' => "Späert d'Datebank vun dëser Wiki automatesch wann d'Administrateuren alleguer eng zäitlaang net aktiv sinn.",
 );
 
 /** Limburgish (Limburgs)

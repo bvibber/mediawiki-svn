@@ -153,6 +153,18 @@ $messages['es'] = array(
 	'tooltip-pt-prefswitch-link-off' => 'Probar las nuevas características',
 );
 
+/** Estonian (Eesti)
+ * @author Pikne
+ */
+$messages['et'] = array(
+	'prefswitch-link-anon' => 'Uued funktsioonid',
+	'tooltip-pt-prefswitch-link-anon' => 'Lisateave uute funktsioonide kohta',
+	'prefswitch-link-on' => 'Tagasi',
+	'tooltip-pt-prefswitch-link-on' => 'Keela uued funktsioonid',
+	'prefswitch-link-off' => 'Uued funktsioonid',
+	'tooltip-pt-prefswitch-link-off' => 'Proovi uusi funktsioone',
+);
+
 /** Finnish (Suomi)
  * @author Crt
  */
@@ -412,6 +424,11 @@ $messages['te'] = array(
  * @author Joseph
  */
 $messages['tr'] = array(
+	'prefswitch-link-anon' => 'Yeni özellikler',
+	'tooltip-pt-prefswitch-link-anon' => 'Yeni özellikleri öğren',
+	'prefswitch-link-on' => 'Beni geri götür',
+	'tooltip-pt-prefswitch-link-on' => 'Yeni özellikleri devre dışı bırak',
+	'prefswitch-link-off' => 'Yeni özellikler',
 	'tooltip-pt-prefswitch-link-off' => 'Yeni özellikleri dene',
 );
 

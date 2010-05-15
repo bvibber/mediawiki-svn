@@ -736,6 +736,7 @@ $messages['pms'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'emergencydesysop-submit' => 'سپارل',
 	'emergencydesysop-nogroups' => 'هېڅ',
 );
 

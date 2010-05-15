@@ -1559,6 +1559,14 @@ Për piasì speta che l'assion an cors a sia completa.",
 	'tag-logpagetext' => "Cost-sì a l'é un registr ëd tute le gionte e scancelassion dle tichëtte ëd le figure.",
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'imagetagging-imghistory' => 'پېښليک',
+	'imagetagging-images' => 'انځورونه',
+);
+
 /** Portuguese (Português)
  * @author 555
  * @author Hamilton Abreu

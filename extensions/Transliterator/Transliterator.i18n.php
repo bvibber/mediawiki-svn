@@ -408,6 +408,13 @@ $messages['pms'] = array(
 	'transliterator-error-prefix' => '[[MediaWiki:$2]] a dev esse longh almanch $1 {{PLURAL:$1|caràter|caràter}}.',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'transliterator-error-rulecount' => 'په [[MediaWiki:$2]] کې له $1 نه ډېر {{PLURAL:$1|قانون|قوانين}}',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  */

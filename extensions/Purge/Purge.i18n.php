@@ -497,9 +497,11 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Horacewai2
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
 	'purge' => '清除',
+	'purge-desc' => '新增一個清空快取的按鈕到所有頁面',
 );
 

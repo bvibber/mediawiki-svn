@@ -2241,6 +2241,14 @@ $messages['ko'] = array(
 	'oversight-offender' => '판 작성자:',
 );
 
+/** Karachay-Balkar (Къарачай-Малкъар)
+ * @author Iltever
+ */
+$messages['krc'] = array(
+	'group-oversight' => 'Ревизорла',
+	'grouppage-oversight' => '{{ns:project}}:Ревизорла',
+);
+
 /** Colognian (Ripoarisch)
  * @author Purodha
  */

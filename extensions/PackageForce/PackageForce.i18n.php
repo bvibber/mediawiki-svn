@@ -510,6 +510,13 @@ $messages['ru'] = array(
 	'pf-header-approve' => 'Утверждение',
 );
 
+/** Swedish (Svenska)
+ * @author Dafer45
+ */
+$messages['sv'] = array(
+	'pf-header-approve' => 'Godkänn',
+);
+
 /** Yiddish (ייִדיש)
  * @author פוילישער
  */

@@ -1232,6 +1232,7 @@ $messages['ru'] = array(
 );
 
 /** Swedish (Svenska)
+ * @author Dafer45
  * @author Per
  */
 $messages['sv'] = array(
@@ -1247,6 +1248,7 @@ $messages['sv'] = array(
 	'masseditregex-num-articles-changed' => '$1 {{PLURAL:$1|sida|sidor}} redigerade',
 	'masseditregex-view-full-summary' => 'Visa fullständingt redigeringssammandrag',
 	'masseditregex-hint-headreplace' => 'Ersätt',
+	'masseditregex-hint-headeffect' => 'Effekt',
 	'masseditregex-listtype-intro' => 'Detta är en lista över:',
 );
 

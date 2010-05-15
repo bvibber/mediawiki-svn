@@ -684,11 +684,13 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Gaoxuewei
+ * @author Horacewai2
  * @author Liangent
  */
 $messages['zh-hant'] = array(
 	'wikieditor' => '高級維基文本編輯界面',
 	'wikieditor-desc' => '提供可擴充的維基文本編輯界面及功能組件',
 	'wikieditor-wikitext-tab' => '維基文本',
+	'wikieditor-loading' => '載入中',
 );
 

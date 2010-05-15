@@ -1121,6 +1121,13 @@ $messages['ko'] = array(
 	'expand_templates_preview' => '미리보기',
 );
 
+/** Karachay-Balkar (Къарачай-Малкъар)
+ * @author Iltever
+ */
+$messages['krc'] = array(
+	'expandtemplates' => 'Шаблонланы ачыу',
+);
+
 /** Kinaray-a (Kinaray-a)
  * @author Jose77
  */
@@ -1555,7 +1562,7 @@ $messages['ps'] = array(
 	'expandtemplates' => 'کينډۍ غځول',
 	'expand_templates_input' => 'ځايونکی متن:',
 	'expand_templates_output' => 'پايله',
-	'expand_templates_ok' => 'ښه/هو',
+	'expand_templates_ok' => 'ښه',
 	'expand_templates_preview' => 'مخکتنه',
 );
 

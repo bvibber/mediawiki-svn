@@ -946,6 +946,14 @@ Scriv pòchi caràter inissiaj e sgnaca ël boton \"spediss\" për serché ij t�
 Sgnaca la frecia për mosté tute le pàgine indicisà sota col tìtol-lì.",
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'index-search' => 'پلټنه:',
+	'index-submit' => 'سپارل',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  */

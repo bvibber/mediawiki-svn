@@ -2069,6 +2069,7 @@ $messages['lb'] = array(
 	'whitelisttablemodifyall' => 'All',
 	'whitelisttablemodifynone' => 'Näischt',
 	'whitelisttablepage' => 'Wiki Säit',
+	'whitelisttabletype' => 'Zougrëffstyp',
 	'whitelisttableexpires' => 'bis den',
 	'whitelisttablemodby' => "Fir d'läscht geännert vum",
 	'whitelisttablemodon' => "Fir d'läscht geännert de(n)",

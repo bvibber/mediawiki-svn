@@ -1841,6 +1841,8 @@ $messages['pms'] = array(
  */
 $messages['ps'] = array(
 	'readerfeedback-overall' => 'ټولټال',
+	'readerfeedback-submit' => 'سپارل',
+	'readerfeedback-submitting' => 'د سپارلو په حال کې ...',
 	'readerfeedback-finished' => 'مننه!',
 );
 

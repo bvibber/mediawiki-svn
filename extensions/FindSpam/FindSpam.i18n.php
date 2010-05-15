@@ -767,7 +767,7 @@ $messages['pms'] = array(
  */
 $messages['ps'] = array(
 	'findspam-ip' => 'IP پته:',
-	'findspam-ok' => 'ښه/هو',
+	'findspam-ok' => 'ښه',
 	'findspam-notextfound' => 'هېڅ کومې ونډې ونه موندل شوې',
 );
 

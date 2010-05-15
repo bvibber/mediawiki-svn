@@ -559,7 +559,7 @@ $messages['lb'] = array(
 	'communityvoice-ratings-scale-status-error' => 'Feeler beim Schécken!',
 	'communityvoice-ratings-scale-status-thanks' => "Merci fir d'Ofstëmmen!",
 	'communityvoice-ratings-scale-stats' => '$1 / 5 ($2 {{PLURAL:$2|Stëmm|Stëmmen}} ofginn)',
-	'communityvoice-ratings-error-no-category' => 'Am Bewertungstag feelt den Attribut Kategorie.',
+	'communityvoice-ratings-error-no-category' => 'Am Bewäertungstag feelt den Attribut Kategorie.',
 	'communityvoice-ratings-error-no-title' => 'Den Titel-Attribut feelt an der Bewäertungs-Markéierung.',
 );
 

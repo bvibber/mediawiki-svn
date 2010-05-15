@@ -1593,7 +1593,7 @@ $1',
  */
 $messages['lb'] = array(
 	'inplace_access_disabled' => 'Den Zougang zu dësem Service gouf fir all Cliente gespaart.',
-	'inplace_access_denied' => 'Dëse Service ass limitéiert op Grond vun der IP-Adress vum Client.',
+	'inplace_access_denied' => 'Dëse Service ass limitéiert wéinst der IP-Adress vum Client.',
 	'inplace_scaler_not_enough_params' => 'Net genuch Parameteren.',
 	'inplace_scaler_invalid_image' => "Net valabelt Bild, d'Gréisst konnt net festgestallt ginn",
 	'inplace_scaler_failed' => 'Beim Redimensionéiere vum Bild ass e Feeler geschitt: $1',

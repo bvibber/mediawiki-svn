@@ -434,6 +434,7 @@ $messages['ksh'] = array(
 );
 
 /** Luxembourgish (Lëtzebuergesch)
+ * @author Les Meloures
  * @author Robby
  */
 $messages['lb'] = array(
@@ -443,7 +444,7 @@ $messages['lb'] = array(
 	'uos-choose' => 'Wielt eng vun dëse Benotzerastellungen: $1',
 	'uos-unknown' => '*Standardastellung',
 	'uos-other' => '*Anerer',
-	'uos-title' => 'Verdeelung vun de Werter vun der Benotzerastellung $1',
+	'uos-title' => 'Verdeelung vun de Wäerter vun der Benotzerastellung $1',
 );
 
 /** Macedonian (Македонски)
