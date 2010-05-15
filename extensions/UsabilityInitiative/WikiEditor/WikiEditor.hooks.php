@@ -443,15 +443,11 @@ class WikiEditorHooks {
 				basename( dirname( __FILE__ ) ) . '/' . $script['src'], $script['version']
 			);
 		}
-		// Preferences (maybe the UsabilityInitiative class could do most of this for us?)
-		$wgOut->addScript(
-			Xml::tags(
-				'script',
-				array( 'type' => $wgJsMimeType ),
-				'var wgWikiEditorPreferences = ' . FormatJson::encode( $preferences, true ) . ";\n" .
-				'var wgWikiEditorEnabledModules = ' . FormatJson::encode( $enabledModules, true ) . ';'
-			)
-		);
+		// Preferences
+		UsabilityInitiativeHooks::addVariables( array(
+			'wgWikiEditorPreferences' => $preferences,
+			'wgWikiEditorEnabledModules' => $enabledModules,
+		) );
 		return true;
 	}
 	
