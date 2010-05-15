@@ -69,13 +69,8 @@ function fnBreadCrumbsOutputHook( &$m_pageObj, $m_parserOutput ) {
 		return true;
 
 	# Register CSS file for our select box:
-	$m_pageObj->addLink(
-		array(
-			'rel'   => 'stylesheet',
-			'type'  => 'text/css',
-			'href'  => $wgScriptPath . '/extensions/BreadCrumbs/BreadCrumbs.css'
-		)
-	);
+	$m_pageObj->addExtensionStyle( $wgScriptPath .
+		'/extensions/BreadCrumbs/BreadCrumbs.css' );
 
 	# Be nice:
 	return true;
