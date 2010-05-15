@@ -183,7 +183,7 @@ function wfLanguageSelectorExtension() {
 }
 
 function wfLanguageSelectorBeforePageDisplay( &$out ) {
-	global $wgScriptPath, $wgLanguageSelectorLocation, $wgLanguageSelectorFormUsed;
+	global $wgExtensionAssetsPath, $wgLanguageSelectorLocation, $wgLanguageSelectorFormUsed;
 
 	if ( $wgLanguageSelectorLocation == LANGUAGE_SELECTOR_AT_TOP_OF_TEXT ) {
 		$html = wfLanguageSelectorHTML();
@@ -193,8 +193,8 @@ function wfLanguageSelectorBeforePageDisplay( &$out ) {
 	if ( $wgLanguageSelectorFormUsed ||
 		$wgLanguageSelectorLocation != LANGUAGE_SELECTOR_MANUAL )
 	{
-		$out->addScriptFile( $wgScriptPath .
-			'/extensions/LanguageSelector/LanguageSelector.js' );
+		$out->addScriptFile( $wgExtensionAssetsPath .
+			'/LanguageSelector/LanguageSelector.js' );
 	}
 
 	return true;
