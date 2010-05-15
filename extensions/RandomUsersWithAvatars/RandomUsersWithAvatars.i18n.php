@@ -13,7 +13,7 @@ $messages = array();
  */
 $messages['en'] = array(
 	'random-users-avatars-title' => 'Meet the community',
-	'random-users-avatars-desc'  => 'Adds <tt>&lt;randomuserswithavatars&gt;</tt> tag to display the avatars of randomly chosen users',
+	'random-users-avatars-desc'  => 'Adds <code>&lt;randomuserswithavatars&gt;</code> tag to display the avatars of randomly chosen users',
 );
 
 /** Message documentation (Message documentation)
@@ -28,7 +28,7 @@ $messages['qqq'] = array(
  */
 $messages['ar'] = array(
 	'random-users-avatars-title' => 'مقابلة المجتمع',
-	'random-users-avatars-desc' => 'يضيف وسم <tt>&lt;randomuserswithavatars&gt;</tt> لعرض أفاترات مستخدمين مختارين عشوائيا',
+	'random-users-avatars-desc' => 'يضيف وسم <code>&lt;randomuserswithavatars&gt;</code> لعرض أفاترات مستخدمين مختارين عشوائيا',
 );
 
 /** Egyptian Spoken Arabic (مصرى)
@@ -36,7 +36,7 @@ $messages['ar'] = array(
  */
 $messages['arz'] = array(
 	'random-users-avatars-title' => 'مقابلة المجتمع',
-	'random-users-avatars-desc' => 'يضيف وسم <tt>&lt;randomuserswithavatars&gt;</tt> لعرض أفاترات مستخدمين مختارين عشوائيا',
+	'random-users-avatars-desc' => 'يضيف وسم <code>&lt;randomuserswithavatars&gt;</code> لعرض أفاترات مستخدمين مختارين عشوائيا',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
@@ -44,7 +44,7 @@ $messages['arz'] = array(
  */
 $messages['be-tarask'] = array(
 	'random-users-avatars-title' => 'Знайсьці новую суполку',
-	'random-users-avatars-desc' => 'Дадае тэг <tt>&lt;randomuserswithavatars&gt;</tt> для паказу аватараў выпадкова выбраных ўдзельнікаў',
+	'random-users-avatars-desc' => 'Дадае тэг <code>&lt;randomuserswithavatars&gt;</code> для паказу аватараў выпадкова выбраных ўдзельнікаў',
 );
 
 /** Bulgarian (Български)
@@ -52,7 +52,7 @@ $messages['be-tarask'] = array(
  */
 $messages['bg'] = array(
 	'random-users-avatars-title' => 'Срещнете общността',
-	'random-users-avatars-desc' => 'Добавя етикета <tt>&lt;randomuserswithavatars&gt;</tt> за показване на аватарите на случани потребители',
+	'random-users-avatars-desc' => 'Добавя етикета <code>&lt;randomuserswithavatars&gt;</code> за показване на аватарите на случани потребители',
 );
 
 /** Bengali (বাংলা)
@@ -67,7 +67,7 @@ $messages['bn'] = array(
  */
 $messages['br'] = array(
 	'random-users-avatars-title' => 'Ober anaoudegezh gant ar gumuniezh',
-	'random-users-avatars-desc' => 'Ouzhpennañ a ra ar valizenn <tt>&lt;randomuserswithavatars&gt;</tt> evit diskwel avataroù implijerien dibabet dre zegouezh',
+	'random-users-avatars-desc' => 'Ouzhpennañ a ra ar valizenn <code>&lt;randomuserswithavatars&gt;</code> evit diskwel avataroù implijerien dibabet dre zegouezh',
 );
 
 /** Bosnian (Bosanski)
@@ -75,7 +75,7 @@ $messages['br'] = array(
  */
 $messages['bs'] = array(
 	'random-users-avatars-title' => 'Susret sa zajednicom',
-	'random-users-avatars-desc' => 'Dodaje oznaku <tt>&lt;randomuserswithavatars&gt;</tt> za prikaz slikica slučajno odabranih korisnika',
+	'random-users-avatars-desc' => 'Dodaje oznaku <code>&lt;randomuserswithavatars&gt;</code> za prikaz slikica slučajno odabranih korisnika',
 );
 
 /** German (Deutsch)
@@ -83,7 +83,7 @@ $messages['bs'] = array(
  */
 $messages['de'] = array(
 	'random-users-avatars-title' => 'Triff die Community',
-	'random-users-avatars-desc' => 'Ergänzt das <tt>&lt;randomuserswithavatars&gt;</tt>-Tag zur Anzeige des Avatars eines zufällig ausgewählten Benutzers',
+	'random-users-avatars-desc' => 'Ergänzt das <code>&lt;randomuserswithavatars&gt;</code>-Tag zur Anzeige des Avatars eines zufällig ausgewählten Benutzers',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -91,7 +91,7 @@ $messages['de'] = array(
  */
 $messages['dsb'] = array(
 	'random-users-avatars-title' => 'Zmakaś se ze zgromaźenstwom',
-	'random-users-avatars-desc' => 'Pśidawa toflicku <tt>&lt;randomuserswithavatars&gt;</tt> za zwobraznjenje pśipadnje wuzwólonych wužywarjow',
+	'random-users-avatars-desc' => 'Pśidawa toflicku <code>&lt;randomuserswithavatars&gt;</code> za zwobraznjenje pśipadnje wuzwólonych wužywarjow',
 );
 
 /** Greek (Ελληνικά)
@@ -100,7 +100,7 @@ $messages['dsb'] = array(
  */
 $messages['el'] = array(
 	'random-users-avatars-title' => 'Γνωρίστε την κοινότητα',
-	'random-users-avatars-desc' => 'Προσθέτει την ετικέτα <tt>&lt;randomuserswithavatars&gt;</tt> για την προβολή άβαταρ τυχαία επιλεγμένων χρηστών',
+	'random-users-avatars-desc' => 'Προσθέτει την ετικέτα <code>&lt;randomuserswithavatars&gt;</code> για την προβολή άβαταρ τυχαία επιλεγμένων χρηστών',
 );
 
 /** Esperanto (Esperanto)
@@ -109,7 +109,7 @@ $messages['el'] = array(
  */
 $messages['eo'] = array(
 	'random-users-avatars-title' => 'Renkonti la kolektivo',
-	'random-users-avatars-desc' => 'Aldonas etikedon <tt>&lt;randomuserswithavatars&gt;</tt> por montri la avatarojn de hazarde selektitaj uzantoj',
+	'random-users-avatars-desc' => 'Aldonas etikedon <code>&lt;randomuserswithavatars&gt;</code> por montri la avatarojn de hazarde selektitaj uzantoj',
 );
 
 /** Spanish (Español)
@@ -117,7 +117,7 @@ $messages['eo'] = array(
  */
 $messages['es'] = array(
 	'random-users-avatars-title' => 'Conocer la comunidad',
-	'random-users-avatars-desc' => 'Agrega <tt>&lt;randomuserswithavatars&gt;</tt> etiqueta para mostrar los avatares de usuarios escogidos al azar',
+	'random-users-avatars-desc' => 'Agrega <code>&lt;randomuserswithavatars&gt;</code> etiqueta para mostrar los avatares de usuarios escogidos al azar',
 );
 
 /** Finnish (Suomi)
@@ -127,7 +127,7 @@ $messages['es'] = array(
  */
 $messages['fi'] = array(
 	'random-users-avatars-title' => 'Tapaa yhteisö',
-	'random-users-avatars-desc' => 'Lisää <tt>&lt;randomuserswithavatars&gt;</tt>-elementin, joka esittää satunnaisesti valitun käyttäjän avatarin.',
+	'random-users-avatars-desc' => 'Lisää <code>&lt;randomuserswithavatars&gt;</code>-elementin, joka esittää satunnaisesti valitun käyttäjän avatarin.',
 );
 
 /** French (Français)
@@ -136,7 +136,7 @@ $messages['fi'] = array(
  */
 $messages['fr'] = array(
 	'random-users-avatars-title' => 'Faites connaissance avec la communauté',
-	'random-users-avatars-desc' => 'Ajoute la balise <tt>&lt;randomuserswithavatars&gt;</tt> pour afficher les avatars d’utilisateurs choisis aléatoirement',
+	'random-users-avatars-desc' => 'Ajoute la balise <code>&lt;randomuserswithavatars&gt;</code> pour afficher les avatars d’utilisateurs choisis aléatoirement',
 );
 
 /** Galician (Galego)
@@ -144,7 +144,7 @@ $messages['fr'] = array(
  */
 $messages['gl'] = array(
 	'random-users-avatars-title' => 'Coñeza a comunidade',
-	'random-users-avatars-desc' => 'Engade a etiqueta <tt>&lt;randomuserswithavatars&gt;</tt> para amosar os avatares dos usuarios elixidos ao chou',
+	'random-users-avatars-desc' => 'Engade a etiqueta <code>&lt;randomuserswithavatars&gt;</code> para amosar os avatares dos usuarios elixidos ao chou',
 );
 
 /** Swiss German (Alemannisch)
@@ -152,7 +152,7 @@ $messages['gl'] = array(
  */
 $messages['gsw'] = array(
 	'random-users-avatars-title' => 'Triff d Community',
-	'random-users-avatars-desc' => 'Ergänzt s <tt>&lt;randomuserswithavatars&gt;</tt>-Tag fir d Aazeig vum Avatar vun eme zuefellig uusgwehlte Benutzer',
+	'random-users-avatars-desc' => 'Ergänzt s <code>&lt;randomuserswithavatars&gt;</code>-Tag fir d Aazeig vum Avatar vun eme zuefellig uusgwehlte Benutzer',
 );
 
 /** Hebrew (עברית)
@@ -161,7 +161,7 @@ $messages['gsw'] = array(
  */
 $messages['he'] = array(
 	'random-users-avatars-title' => 'פגשו את הקהילה',
-	'random-users-avatars-desc' => 'הוספת התגית <tt>&lt;randomuserswithavatars&gt;</tt> להצגת תמונות משתמש של משתמשים שנבחרו באקראי',
+	'random-users-avatars-desc' => 'הוספת התגית <code>&lt;randomuserswithavatars&gt;</code> להצגת תמונות משתמש של משתמשים שנבחרו באקראי',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -169,7 +169,7 @@ $messages['he'] = array(
  */
 $messages['hsb'] = array(
 	'random-users-avatars-title' => 'Zhromadźenstwo zetkać',
-	'random-users-avatars-desc' => 'Přidawa tafličku <tt>&lt;randomuserswithavatars&gt;</tt> za zwobraznjenje awatarow připadnje wuzwolenych wužiwarjow',
+	'random-users-avatars-desc' => 'Přidawa tafličku <code>&lt;randomuserswithavatars&gt;</code> za zwobraznjenje awatarow připadnje wuzwolenych wužiwarjow',
 );
 
 /** Hungarian (Magyar)
@@ -177,7 +177,7 @@ $messages['hsb'] = array(
  */
 $messages['hu'] = array(
 	'random-users-avatars-title' => 'Találkozz a közösséggel',
-	'random-users-avatars-desc' => '<tt>&lt;randomuserswithavatars&gt;</tt> tag véletlenszerűen választott felhasználók avatarjainak megjelenítésére',
+	'random-users-avatars-desc' => '<code>&lt;randomuserswithavatars&gt;</code> tag véletlenszerűen választott felhasználók avatarjainak megjelenítésére',
 );
 
 /** Interlingua (Interlingua)
@@ -185,7 +185,7 @@ $messages['hu'] = array(
  */
 $messages['ia'] = array(
 	'random-users-avatars-title' => 'Cognosce le communitate',
-	'random-users-avatars-desc' => 'Adde le etiquetta <tt>&lt;randomuserswithavatars&gt;</tt> pro monstrar le avatares de usatores seligite aleatorimente',
+	'random-users-avatars-desc' => 'Adde le etiquetta <code>&lt;randomuserswithavatars&gt;</code> pro monstrar le avatares de usatores seligite aleatorimente',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -193,7 +193,7 @@ $messages['ia'] = array(
  */
 $messages['id'] = array(
 	'random-users-avatars-title' => 'Jumpailah komunitas',
-	'random-users-avatars-desc' => 'Tambahkan tag <tt>&lt;randomuserswithavatars&gt;</tt> untuk menampilkan avatar pengguna secara acak',
+	'random-users-avatars-desc' => 'Tambahkan tag <code>&lt;randomuserswithavatars&gt;</code> untuk menampilkan avatar pengguna secara acak',
 );
 
 /** Italian (Italiano)
@@ -201,7 +201,7 @@ $messages['id'] = array(
  */
 $messages['it'] = array(
 	'random-users-avatars-title' => 'Incontra la comunità',
-	'random-users-avatars-desc' => 'Aggiunge il tag <tt>&lt;randomuserswithavatars&gt;</tt> per visualizzare gli avatar di utenti scelti a caso',
+	'random-users-avatars-desc' => 'Aggiunge il tag <code>&lt;randomuserswithavatars&gt;</code> per visualizzare gli avatar di utenti scelti a caso',
 );
 
 /** Japanese (日本語)
@@ -209,7 +209,7 @@ $messages['it'] = array(
  */
 $messages['ja'] = array(
 	'random-users-avatars-title' => 'コミュニティに出会う',
-	'random-users-avatars-desc' => 'ランダムに選ばれた利用者のアバターを表示する<tt>&lt;randomuserswithavatars&gt;</tt>タグを加える',
+	'random-users-avatars-desc' => 'ランダムに選ばれた利用者のアバターを表示する<code>&lt;randomuserswithavatars&gt;</code>タグを加える',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -217,7 +217,7 @@ $messages['ja'] = array(
  */
 $messages['km'] = array(
 	'random-users-avatars-title' => 'ជួបជាមួយនឹងសហគមន៍',
-	'random-users-avatars-desc' => 'ដាក់បន្ថែមប្លាក<tt>&lt;randomuserswithavatars&gt;</tt>ដើម្បីបង្ហាញអាវ៉ាតារស៍ដោយចៃដន្យដែលអ្នកប្រើប្រាស់បានជ្រើសរើសយក',
+	'random-users-avatars-desc' => 'ដាក់បន្ថែមប្លាក<code>&lt;randomuserswithavatars&gt;</code>ដើម្បីបង្ហាញអាវ៉ាតារស៍ដោយចៃដន្យដែលអ្នកប្រើប្រាស់បានជ្រើសរើសយក',
 );
 
 /** Colognian (Ripoarisch)
@@ -225,7 +225,7 @@ $messages['km'] = array(
  */
 $messages['ksh'] = array(
 	'random-users-avatars-title' => 'Donn de Metmaacher treffe',
-	'random-users-avatars-desc' => 'Määt et müjjelesch, met <tt>&lt;randomuserswithavatars&gt;</tt> de Avataare fun zofälesch ußsohte Metmaacher aanzezeije.',
+	'random-users-avatars-desc' => 'Määt et müjjelesch, met <code>&lt;randomuserswithavatars&gt;</code> de Avataare fun zofälesch ußsohte Metmaacher aanzezeije.',
 );
 
 /** Cornish (Kernewek)
@@ -241,7 +241,7 @@ $messages['kw'] = array(
  */
 $messages['lb'] = array(
 	'random-users-avatars-title' => "D'Gemeinschaft treffen",
-	'random-users-avatars-desc' => "Setzt den <tt>&lt;randomuserswithavatars&gt;</tt> Tag derbäi fir d'Avataren vun zoufälleg ausgesichte Benotzer ze weisen",
+	'random-users-avatars-desc' => "Setzt den <code>&lt;randomuserswithavatars&gt;</code> Tag derbäi fir d'Avataren vun zoufälleg ausgesichte Benotzer ze weisen",
 );
 
 /** Macedonian (Македонски)
@@ -249,7 +249,7 @@ $messages['lb'] = array(
  */
 $messages['mk'] = array(
 	'random-users-avatars-title' => 'Запознајте ја заедницата',
-	'random-users-avatars-desc' => 'Додава ознака <tt>&lt;randomuserswithavatars&gt;</tt> за прикажување на аватари на случајно-избрани корисници',
+	'random-users-avatars-desc' => 'Додава ознака <code>&lt;randomuserswithavatars&gt;</code> за прикажување на аватари на случајно-избрани корисници',
 );
 
 /** Dutch (Nederlands)
@@ -258,7 +258,7 @@ $messages['mk'] = array(
  */
 $messages['nl'] = array(
 	'random-users-avatars-title' => 'Ontmoet de gemeenschap',
-	'random-users-avatars-desc' => 'Voegt de tag <tt>&lt;randomuserswithavatars&gt;</tt> toe om de avatars van willekeurige gebruikers weer te geven',
+	'random-users-avatars-desc' => 'Voegt de tag <code>&lt;randomuserswithavatars&gt;</code> toe om de avatars van willekeurige gebruikers weer te geven',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
@@ -266,7 +266,7 @@ $messages['nl'] = array(
  */
 $messages['nn'] = array(
 	'random-users-avatars-title' => 'Møt brukarane',
-	'random-users-avatars-desc' => 'Legger til merket <tt>&lt;randomuserswithavatar&gt;</tt> for å visa avatarane til tilfeldig valde brukarar',
+	'random-users-avatars-desc' => 'Legger til merket <code>&lt;randomuserswithavatars&gt;</code> for å visa avatarane til tilfeldig valde brukarar',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -274,7 +274,7 @@ $messages['nn'] = array(
  */
 $messages['no'] = array(
 	'random-users-avatars-title' => 'Møt brukerne',
-	'random-users-avatars-desc' => 'Legger til taggen <tt>&lt;randomuserswithavatar&gt;</tt> for å vise avatarene for tilfeldig valgte brukere',
+	'random-users-avatars-desc' => 'Legger til taggen <code>&lt;randomuserswithavatars&gt;</code> for å vise avatarene for tilfeldig valgte brukere',
 );
 
 /** Occitan (Occitan)
@@ -282,7 +282,7 @@ $messages['no'] = array(
  */
 $messages['oc'] = array(
 	'random-users-avatars-title' => 'Fasètz coneissença amb la comunautat',
-	'random-users-avatars-desc' => 'Apond la balisa <tt>&lt;randomuserswithavatars&gt;</tt> per afichar los avatars d’utilizaires causits aleatòriament',
+	'random-users-avatars-desc' => 'Apond la balisa <code>&lt;randomuserswithavatars&gt;</code> per afichar los avatars d’utilizaires causits aleatòriament',
 );
 
 /** Polish (Polski)
@@ -290,7 +290,7 @@ $messages['oc'] = array(
  */
 $messages['pl'] = array(
 	'random-users-avatars-title' => 'Poznaj społeczność',
-	'random-users-avatars-desc' => 'Dodaje znacznik <tt>&lt;randomuserswithavatars&gt;</tt> wyświetlający portret losowo wybranego użytkownika',
+	'random-users-avatars-desc' => 'Dodaje znacznik <code>&lt;randomuserswithavatars&gt;</code> wyświetlający portret losowo wybranego użytkownika',
 );
 
 /** Piedmontese (Piemontèis)
@@ -298,7 +298,7 @@ $messages['pl'] = array(
  */
 $messages['pms'] = array(
 	'random-users-avatars-title' => 'Ancontra la comunità',
-	'random-users-avatars-desc' => "A gionta ël tag <tt>&lt;randomuserswithavatars&gt;</tt> për visualisé j'avatar dj'utent sërnù a cas",
+	'random-users-avatars-desc' => "A gionta ël tag <code>&lt;randomuserswithavatars&gt;</code> për visualisé j'avatar dj'utent sërnù a cas",
 );
 
 /** Portuguese (Português)
@@ -307,7 +307,7 @@ $messages['pms'] = array(
  */
 $messages['pt'] = array(
 	'random-users-avatars-title' => 'Conheça a comunidade',
-	'random-users-avatars-desc' => 'Adiciona a marca <tt>&lt;randomuserswithavatars&gt;</tt> para apresentar os avatares de utilizadores escolhidos aleatoriamente',
+	'random-users-avatars-desc' => 'Adiciona a marca <code>&lt;randomuserswithavatars&gt;</code> para apresentar os avatares de utilizadores escolhidos aleatoriamente',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
@@ -315,7 +315,7 @@ $messages['pt'] = array(
  */
 $messages['pt-br'] = array(
 	'random-users-avatars-title' => 'Conheça a comunidade',
-	'random-users-avatars-desc' => 'Adiciona a marca <tt>&lt;randomuserswithavatars&gt;</tt> para apresentar os avatares de utilizadores escolhidos aleatoriamente',
+	'random-users-avatars-desc' => 'Adiciona a marca <code>&lt;randomuserswithavatars&gt;</code> para apresentar os avatares de utilizadores escolhidos aleatoriamente',
 );
 
 /** Tarandíne (Tarandíne)
@@ -323,7 +323,7 @@ $messages['pt-br'] = array(
  */
 $messages['roa-tara'] = array(
 	'random-users-avatars-title' => "Ingontre 'a comunitate",
-	'random-users-avatars-desc' => "Aggiunge 'u tag <tt>&lt;randomuserswithavatars&gt;</tt> pe fà vedè le avatar scacchiete a uecchije da l'utinde",
+	'random-users-avatars-desc' => "Aggiunge 'u tag <code>&lt;randomuserswithavatars&gt;</code> pe fà vedè le avatar scacchiete a uecchije da l'utinde",
 );
 
 /** Russian (Русский)
@@ -331,7 +331,7 @@ $messages['roa-tara'] = array(
  */
 $messages['ru'] = array(
 	'random-users-avatars-title' => 'Познакомьтесь с сообществом',
-	'random-users-avatars-desc' => 'Добавляет тег <tt>&lt;randomuserswithavatars&gt;</tt> для отображения аватар случайно выбранных участников',
+	'random-users-avatars-desc' => 'Добавляет тег <code>&lt;randomuserswithavatars&gt;</code> для отображения аватар случайно выбранных участников',
 );
 
 /** Slovak (Slovenčina)
@@ -339,7 +339,7 @@ $messages['ru'] = array(
  */
 $messages['sk'] = array(
 	'random-users-avatars-title' => 'Zoznámte sa s komunitou',
-	'random-users-avatars-desc' => 'Pridáva značku <tt>&lt;randomuserswithavatars&gt;</tt> na zobrazenie fotografií náhodne zvolených používateľov',
+	'random-users-avatars-desc' => 'Pridáva značku <code>&lt;randomuserswithavatars&gt;</code> na zobrazenie fotografií náhodne zvolených používateľov',
 );
 
 /** Seeltersk (Seeltersk)
@@ -347,7 +347,7 @@ $messages['sk'] = array(
  */
 $messages['stq'] = array(
 	'random-users-avatars-title' => 'Träf ju Community',
-	'random-users-avatars-desc' => 'Föiget dät <tt>&lt;randomuserswithavatars&gt;</tt>-Tag tou n Anwiesen fon dän Avatar fon n toufällich uutwäälden Benutser tou',
+	'random-users-avatars-desc' => 'Föiget dät <code>&lt;randomuserswithavatars&gt;</code>-Tag tou n Anwiesen fon dän Avatar fon n toufällich uutwäälden Benutser tou',
 );
 
 /** Swedish (Svenska)
@@ -355,7 +355,7 @@ $messages['stq'] = array(
  */
 $messages['sv'] = array(
 	'random-users-avatars-title' => 'Träffa gemenskapen',
-	'random-users-avatars-desc' => 'Lägger till taggen <tt>&lt;randomuserswithavatars&gt;</tt> för att visa avatarerna för slumpvis utvalda användare',
+	'random-users-avatars-desc' => 'Lägger till taggen <code>&lt;randomuserswithavatars&gt;</code> för att visa avatarerna för slumpvis utvalda användare',
 );
 
 /** Tagalog (Tagalog)
@@ -363,7 +363,7 @@ $messages['sv'] = array(
  */
 $messages['tl'] = array(
 	'random-users-avatars-title' => 'Makipagtagpo sa pamayanan',
-	'random-users-avatars-desc' => "Nagdaragdag ng tatak na <tt>&lt;randomuserswithavatars&gt;</tt> upang maipakita/mapalitaw ang mga abatar/huwaran ng mga tagagamit na napili ayon sa ibinigay ng pagkakataon/tsansa (''random'')",
+	'random-users-avatars-desc' => "Nagdaragdag ng tatak na <code>&lt;randomuserswithavatars&gt;</code> upang maipakita/mapalitaw ang mga abatar/huwaran ng mga tagagamit na napili ayon sa ibinigay ng pagkakataon/tsansa (''random'')",
 );
 
 /** Turkish (Türkçe)
@@ -371,7 +371,7 @@ $messages['tl'] = array(
  */
 $messages['tr'] = array(
 	'random-users-avatars-title' => 'Topluluk ile tanış',
-	'random-users-avatars-desc' => 'Rastgele seçilen kullanıcıların avatarlarını görüntülemek için <tt>&lt;randomuserswithavatars&gt;</tt> etiketini ekler',
+	'random-users-avatars-desc' => 'Rastgele seçilen kullanıcıların avatarlarını görüntülemek için <code>&lt;randomuserswithavatars&gt;</code> etiketini ekler',
 );
 
 /** Vèneto (Vèneto)
@@ -379,7 +379,7 @@ $messages['tr'] = array(
  */
 $messages['vec'] = array(
 	'random-users-avatars-title' => 'Incontra la comunità',
-	'random-users-avatars-desc' => 'Xonta un tag <tt>&lt;randomuserswithavatars&gt;</tt> par far védar i avatar de utenti sielti a caso',
+	'random-users-avatars-desc' => 'Xonta un tag <code>&lt;randomuserswithavatars&gt;</code> par far védar i avatar de utenti sielti a caso',
 );
 
 /** Vietnamese (Tiếng Việt)
@@ -387,6 +387,6 @@ $messages['vec'] = array(
  */
 $messages['vi'] = array(
 	'random-users-avatars-title' => 'Gặp gỡ cộng đồng',
-	'random-users-avatars-desc' => 'Thêm thẻ <tt>&lt;randomuserswithavatars&gt;</tt> để hiển thị hình đại diện của các thành viên được chọn ngẫu nhiên',
+	'random-users-avatars-desc' => 'Thêm thẻ <code>&lt;randomuserswithavatars&gt;</code> để hiển thị hình đại diện của các thành viên được chọn ngẫu nhiên',
 );
 

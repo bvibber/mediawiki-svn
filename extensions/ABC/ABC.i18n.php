@@ -11,7 +11,7 @@
 $messages = array();
 
 $messages['en'] = array(
-	'abc-desc' => 'Adds <tt>&lt;abc&gt;</tt> tag to format ABC music',
+	'abc-desc' => 'Adds <code>&lt;abc&gt;</code> tag to format ABC music',
 	'abcdownload' => 'Download:',
 	'abcabc' => 'ABC',
 	'abcpdf' => 'PDF',
@@ -41,7 +41,7 @@ $messages['qqq'] = array(
  * @author Naudefj
  */
 $messages['af'] = array(
-	'abc-desc' => "Maak 'n <tt>&lt;abc&gt;</tt> etiket beskikbaar vir die opmaak van ABC-musiek",
+	'abc-desc' => "Maak 'n <code>&lt;abc&gt;</code> etiket beskikbaar vir die opmaak van ABC-musiek",
 	'abcdownload' => 'Aflaai:',
 );
 
@@ -49,7 +49,7 @@ $messages['af'] = array(
  * @author Bresta
  */
 $messages['aln'] = array(
-	'abc-desc' => "Shton tag'un <tt>&lt;abc&gt;</tt> me formatu muzikën ABC",
+	'abc-desc' => "Shton tag'un <code>&lt;abc&gt;</code> me formatu muzikën ABC",
 	'abcdownload' => 'Shkarko:',
 );
 
@@ -64,7 +64,7 @@ $messages['ang'] = array(
  * @author Meno25
  */
 $messages['ar'] = array(
-	'abc-desc' => 'يضيف وسم <tt>&lt;abc&gt;</tt> لصياغة موسيقى ABC',
+	'abc-desc' => 'يضيف وسم <code>&lt;abc&gt;</code> لصياغة موسيقى ABC',
 	'abcdownload' => 'تنزيل:',
 	'abcabc' => 'إيه بي سي',
 	'abcpdf' => 'بي دي إف',
@@ -77,7 +77,7 @@ $messages['ar'] = array(
  * @author Kaniw
  */
 $messages['arn'] = array(
-	'abc-desc' => 'Yomvmfi tici cilkan <tt>&lt;abc&gt;</tt> ñi vlkantuwirin "ABC music"',
+	'abc-desc' => 'Yomvmfi tici cilkan <code>&lt;abc&gt;</code> ñi vlkantuwirin "ABC music"',
 	'abcdownload' => 'Nakvmpan:',
 );
 
@@ -86,7 +86,7 @@ $messages['arn'] = array(
  * @author Meno25
  */
 $messages['arz'] = array(
-	'abc-desc' => 'يضيف وسم <tt>&lt;abc&gt;</tt> لصياغة موسيقى ABC',
+	'abc-desc' => 'يضيف وسم <code>&lt;abc&gt;</code> لصياغة موسيقى ABC',
 	'abcdownload' => 'تنزيل:',
 );
 
@@ -94,7 +94,7 @@ $messages['arz'] = array(
  * @author Comp1089
  */
 $messages['ba'] = array(
-	'abc-desc' => 'ABC музыка форматлауы өсөн <tt>&lt;abc&gt;</tt> тэге ҡулланыла',
+	'abc-desc' => 'ABC музыка форматлауы өсөн <code>&lt;abc&gt;</code> тэге ҡулланыла',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
@@ -102,7 +102,7 @@ $messages['ba'] = array(
  * @author Red Winged Duck
  */
 $messages['be-tarask'] = array(
-	'abc-desc' => 'Дадаецца тэг <tt>&lt;abc&gt;</tt> для музычнага фармату ABC',
+	'abc-desc' => 'Дадаецца тэг <code>&lt;abc&gt;</code> для музычнага фармату ABC',
 	'abcdownload' => 'Загрузіць:',
 );
 
@@ -110,7 +110,7 @@ $messages['be-tarask'] = array(
  * @author DCLXVI
  */
 $messages['bg'] = array(
-	'abc-desc' => 'Добавя етикет <tt>&lt;abc&gt;</tt> за форматиране на АВС музика',
+	'abc-desc' => 'Добавя етикет <code>&lt;abc&gt;</code> за форматиране на АВС музика',
 	'abcdownload' => 'Изтегляне:',
 );
 
@@ -118,7 +118,7 @@ $messages['bg'] = array(
  * @author Bellayet
  */
 $messages['bn'] = array(
-	'abc-desc' => 'ABC music এর জন্য <tt>&lt;abc&gt;</tt> ফলক যোগ করুন',
+	'abc-desc' => 'ABC music এর জন্য <code>&lt;abc&gt;</code> ফলক যোগ করুন',
 	'abcdownload' => 'ডাউনলোড:',
 );
 
@@ -126,7 +126,7 @@ $messages['bn'] = array(
  * @author Usingha
  */
 $messages['bpy'] = array(
-	'abc-desc' => 'ABC music পাজালানির কা <tt>&lt;abc&gt;</tt> টেগহান তিলকর',
+	'abc-desc' => 'ABC music পাজালানির কা <code>&lt;abc&gt;</code> টেগহান তিলকর',
 	'abcdownload' => 'ডাউনলোড:',
 );
 
@@ -134,7 +134,7 @@ $messages['bpy'] = array(
  * @author Fulup
  */
 $messages['br'] = array(
-	'abc-desc' => 'Ouzhpennañ a ra ur valizenn <tt>&lt;abc&gt;</tt> a-benn furmadiñ sonerezh ABC',
+	'abc-desc' => 'Ouzhpennañ a ra ur valizenn <code>&lt;abc&gt;</code> a-benn furmadiñ sonerezh ABC',
 	'abcdownload' => 'Pellgargañ :',
 );
 
@@ -142,7 +142,7 @@ $messages['br'] = array(
  * @author CERminator
  */
 $messages['bs'] = array(
-	'abc-desc' => 'Dodaje <tt>&lt;abc&gt;</tt> oznaku za formatiranje ABC muzike',
+	'abc-desc' => 'Dodaje <code>&lt;abc&gt;</code> oznaku za formatiranje ABC muzike',
 	'abcdownload' => 'Skidanje:',
 );
 
@@ -150,7 +150,7 @@ $messages['bs'] = array(
  * @author Aleator
  */
 $messages['ca'] = array(
-	'abc-desc' => "Afegeix l'etiqueta <tt>&lt;abc&gt;</tt> per a utilitzar la notació musical ''ABC music''",
+	'abc-desc' => "Afegeix l'etiqueta <code>&lt;abc&gt;</code> per a utilitzar la notació musical ''ABC music''",
 	'abcdownload' => 'Descarrega:',
 );
 
@@ -159,7 +159,7 @@ $messages['ca'] = array(
  * @author Reaperman
  */
 $messages['cs'] = array(
-	'abc-desc' => 'Přidává značku <tt>&lt;abc&gt;</tt> pro hudbu ve formátu ABC',
+	'abc-desc' => 'Přidává značku <code>&lt;abc&gt;</code> pro hudbu ve formátu ABC',
 	'abcdownload' => 'Stáhnout:',
 );
 
@@ -167,13 +167,13 @@ $messages['cs'] = array(
  * @author Lhademmor
  */
 $messages['da'] = array(
-	'abc-desc' => 'Tilføjer mærket <tt>&lt;abc&gt;</tt> for at formatere ABC-musik',
+	'abc-desc' => 'Tilføjer mærket <code>&lt;abc&gt;</code> for at formatere ABC-musik',
 	'abcdownload' => 'Hent:',
 );
 
 /** German (Deutsch) */
 $messages['de'] = array(
-	'abc-desc' => 'Ergänzt das <tt>&lt;abc&gt;</tt>-Tag zur Notation von Musik in ABC',
+	'abc-desc' => 'Ergänzt das <code>&lt;abc&gt;</code>-Tag zur Notation von Musik in ABC',
 	'abcdownload' => 'Herunterladen:',
 );
 
@@ -181,7 +181,7 @@ $messages['de'] = array(
  * @author Mirzali
  */
 $messages['diq'] = array(
-	'abc-desc' => 'Semedê şekıldaena ABC-muziki etiketê <tt>&lt;abc&gt;</tt>y ilawe keno',
+	'abc-desc' => 'Semedê şekıldaena ABC-muziki etiketê <code>&lt;abc&gt;</code>y ilawe keno',
 	'abcdownload' => 'Bar ke:',
 );
 
@@ -189,7 +189,7 @@ $messages['diq'] = array(
  * @author Michawiki
  */
 $messages['dsb'] = array(
-	'abc-desc' => 'Pśidawa toflicku <tt>&lt;abc&gt;</tt>, aby se muzika w ABC formatěrowała',
+	'abc-desc' => 'Pśidawa toflicku <code>&lt;abc&gt;</code>, aby se muzika w ABC formatěrowała',
 	'abcdownload' => 'Ześěgnuś:',
 );
 
@@ -198,7 +198,7 @@ $messages['dsb'] = array(
  * @author Omnipaedista
  */
 $messages['el'] = array(
-	'abc-desc' => 'Προσθέτει το tag <tt>&lt;abc&gt;</tt> για να μορφοποιεί μουσική ABC',
+	'abc-desc' => 'Προσθέτει το tag <code>&lt;abc&gt;</code> για να μορφοποιεί μουσική ABC',
 	'abcdownload' => 'Λήψη:',
 );
 
@@ -207,7 +207,7 @@ $messages['el'] = array(
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'abc-desc' => 'Aldonas etikedon <tt>&lt;abc&gt;</tt> por fomati ABC-muzikon',
+	'abc-desc' => 'Aldonas etikedon <code>&lt;abc&gt;</code> por fomati ABC-muzikon',
 	'abcdownload' => 'Elŝuto:',
 );
 
@@ -215,7 +215,7 @@ $messages['eo'] = array(
  * @author Sanbec
  */
 $messages['es'] = array(
-	'abc-desc' => "Añade la etiqueta <tt>&lt;abc&gt;</tt> para usar la notación musical ''ABC music''",
+	'abc-desc' => "Añade la etiqueta <code>&lt;abc&gt;</code> para usar la notación musical ''ABC music''",
 	'abcdownload' => 'Descargar:',
 );
 
@@ -224,7 +224,7 @@ $messages['es'] = array(
  * @author KalmerE.
  */
 $messages['et'] = array(
-	'abc-desc' => 'Lisab <tt>&lt;abc&gt;</tt> laiendi ABC muusika vormindamiseks.',
+	'abc-desc' => 'Lisab <code>&lt;abc&gt;</code> laiendi ABC muusika vormindamiseks.',
 	'abcdownload' => 'Laadi alla:',
 );
 
@@ -232,7 +232,7 @@ $messages['et'] = array(
  * @author Theklan
  */
 $messages['eu'] = array(
-	'abc-desc' => '<tt>&lt;abc&gt;</tt> etiketa gehitzen du ABC musika formatura',
+	'abc-desc' => '<code>&lt;abc&gt;</code> etiketa gehitzen du ABC musika formatura',
 	'abcdownload' => 'Jaitsi:',
 );
 
@@ -241,7 +241,7 @@ $messages['eu'] = array(
  * @author Ilaiho
  */
 $messages['fi'] = array(
-	'abc-desc' => 'Lisää <tt>&lt;abc&gt;</tt>-elementin ABC-musiikin muotoilemiseen.',
+	'abc-desc' => 'Lisää <code>&lt;abc&gt;</code>-elementin ABC-musiikin muotoilemiseen.',
 	'abcdownload' => 'Lataa:',
 );
 
@@ -249,7 +249,7 @@ $messages['fi'] = array(
  * @author Grondin
  */
 $messages['fr'] = array(
-	'abc-desc' => 'Ajoute une balise <tt>&lt;abc&gt;</tt> pour formater la musique ABC',
+	'abc-desc' => 'Ajoute une balise <code>&lt;abc&gt;</code> pour formater la musique ABC',
 	'abcdownload' => 'Télécharger :',
 );
 
@@ -257,7 +257,7 @@ $messages['fr'] = array(
  * @author ChrisPtDe
  */
 $messages['frp'] = array(
-	'abc-desc' => 'Apond una balisa <tt>&lt;abc&gt;</tt> por formatar la musica ABC.',
+	'abc-desc' => 'Apond una balisa <code>&lt;abc&gt;</code> por formatar la musica ABC.',
 	'abcdownload' => 'Tèlèchargiér :',
 );
 
@@ -265,7 +265,7 @@ $messages['frp'] = array(
  * @author SK-luuut
  */
 $messages['fy'] = array(
-	'abc-desc' => 'Foegt mark <tt>&lt;abc&gt;</tt> ta foar de opmaak fan ABC-muzyk',
+	'abc-desc' => 'Foegt mark <code>&lt;abc&gt;</code> ta foar de opmaak fan ABC-muzyk',
 	'abcdownload' => 'Ynlade:',
 );
 
@@ -273,7 +273,7 @@ $messages['fy'] = array(
  * @author Alison
  */
 $messages['ga'] = array(
-	'abc-desc' => 'Cuir clib <tt>&lt;abc&gt;</tt> chun ceoil ABC a formáidigh',
+	'abc-desc' => 'Cuir clib <code>&lt;abc&gt;</code> chun ceoil ABC a formáidigh',
 	'abcdownload' => 'íoslódáil:',
 );
 
@@ -281,7 +281,7 @@ $messages['ga'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
-	'abc-desc' => 'Engade a etiqueta <tt>&lt;abc&gt;</tt> para dar formato á música ABC',
+	'abc-desc' => 'Engade a etiqueta <code>&lt;abc&gt;</code> para dar formato á música ABC',
 	'abcdownload' => 'Descargar:',
 );
 
@@ -289,7 +289,7 @@ $messages['gl'] = array(
  * @author Omnipaedista
  */
 $messages['grc'] = array(
-	'abc-desc' => 'Προσθέτει τὸ προσάρτημα <tt>&lt;abc&gt;</tt> ἵνα μορφώσῃ τὴν μουσικὴν ABC',
+	'abc-desc' => 'Προσθέτει τὸ προσάρτημα <code>&lt;abc&gt;</code> ἵνα μορφώσῃ τὴν μουσικὴν ABC',
 	'abcdownload' => 'Καταφόρτισις:',
 );
 
@@ -297,7 +297,7 @@ $messages['grc'] = array(
  * @author Als-Holder
  */
 $messages['gsw'] = array(
-	'abc-desc' => 'Tue s <tt>&lt;abc&gt;</tt>-Tag zuefiege zum Musik in ABC notiere',
+	'abc-desc' => 'Tue s <code>&lt;abc&gt;</code>-Tag zuefiege zum Musik in ABC notiere',
 	'abcdownload' => 'Abelade:',
 );
 
@@ -305,7 +305,7 @@ $messages['gsw'] = array(
  * @author MacTire02
  */
 $messages['gv'] = array(
-	'abc-desc' => 'Cur y lipaid <tt>&lt;abc&gt;</tt> rish dys kiaull ABC y chummey',
+	'abc-desc' => 'Cur y lipaid <code>&lt;abc&gt;</code> rish dys kiaull ABC y chummey',
 	'abcdownload' => 'Laadey neose:',
 );
 
@@ -314,7 +314,7 @@ $messages['gv'] = array(
  * @author YaronSh
  */
 $messages['he'] = array(
-	'abc-desc' => 'הוספת תגית <tt>&lt;abc&gt;</tt> למוסיקה בפורמט ABC',
+	'abc-desc' => 'הוספת תגית <code>&lt;abc&gt;</code> למוסיקה בפורמט ABC',
 	'abcdownload' => 'הורדה:',
 );
 
@@ -333,7 +333,7 @@ $messages['hi'] = array(
  * @author Tagimata
  */
 $messages['hil'] = array(
-	'abc-desc' => 'Dugangang <tt>&lt;abc&gt;</tt> tag para ma-formatan ABC musika',
+	'abc-desc' => 'Dugangang <code>&lt;abc&gt;</code> tag para ma-formatan ABC musika',
 	'abcdownload' => 'i-download:',
 );
 
@@ -341,7 +341,7 @@ $messages['hil'] = array(
  * @author Dalibor Bosits
  */
 $messages['hr'] = array(
-	'abc-desc' => 'Dodaje <tt>&lt;abc&gt;</tt> oznaku za formatiranje ABC glazbe',
+	'abc-desc' => 'Dodaje <code>&lt;abc&gt;</code> oznaku za formatiranje ABC glazbe',
 	'abcdownload' => 'Preuzimanje:',
 );
 
@@ -349,7 +349,7 @@ $messages['hr'] = array(
  * @author Michawiki
  */
 $messages['hsb'] = array(
-	'abc-desc' => 'Přidawa tafličku <tt>&lt;abc&gt;</tt>, zo by so hudźba w ABC formatowała',
+	'abc-desc' => 'Přidawa tafličku <code>&lt;abc&gt;</code>, zo by so hudźba w ABC formatowała',
 	'abcdownload' => 'Sćahnyć',
 );
 
@@ -357,7 +357,7 @@ $messages['hsb'] = array(
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
-	'abc-desc' => '<tt>&lt;abc&gt;</tt> tag ABC zeneleírás formázásához',
+	'abc-desc' => '<code>&lt;abc&gt;</code> tag ABC zeneleírás formázásához',
 	'abcdownload' => 'Letöltés:',
 );
 
@@ -365,7 +365,7 @@ $messages['hu'] = array(
  * @author McDutchie
  */
 $messages['ia'] = array(
-	'abc-desc' => 'Adde le etiquetta <tt>&lt;abc&gt;</tt> pro formatar musica in notation ABC',
+	'abc-desc' => 'Adde le etiquetta <code>&lt;abc&gt;</code> pro formatar musica in notation ABC',
 	'abcdownload' => 'Discargar:',
 );
 
@@ -373,7 +373,7 @@ $messages['ia'] = array(
  * @author Bennylin
  */
 $messages['id'] = array(
-	'abc-desc' => 'Tambahkan tag <tt>&lt;abc&gt;</tt> untuk format musik ABC',
+	'abc-desc' => 'Tambahkan tag <code>&lt;abc&gt;</code> untuk format musik ABC',
 	'abcdownload' => 'Unduh:',
 );
 
@@ -381,7 +381,7 @@ $messages['id'] = array(
  * @author Ukabia
  */
 $messages['ig'] = array(
-	'abc-desc' => 'Tinyékwa <tt>&lt;abc&gt;</tt> ede nyazoro I kwaria égwú ABC',
+	'abc-desc' => 'Tinyékwa <code>&lt;abc&gt;</code> ede nyazoro I kwaria égwú ABC',
 	'abcdownload' => 'Danwèré:',
 );
 
@@ -389,7 +389,7 @@ $messages['ig'] = array(
  * @author Melos
  */
 $messages['it'] = array(
-	'abc-desc' => 'Aggiunge il tag <tt>&lt;abc&gt;</tt> per la musica in formato ABC',
+	'abc-desc' => 'Aggiunge il tag <code>&lt;abc&gt;</code> per la musica in formato ABC',
 	'abcdownload' => 'Download:',
 );
 
@@ -398,7 +398,7 @@ $messages['it'] = array(
  * @author Fryed-peach
  */
 $messages['ja'] = array(
-	'abc-desc' => 'ABC譜の書式を整える <tt>&lt;abc&gt;</tt> タグを追加する',
+	'abc-desc' => 'ABC譜の書式を整える <code>&lt;abc&gt;</code> タグを追加する',
 	'abcdownload' => 'ダウンロード:',
 );
 
@@ -406,7 +406,7 @@ $messages['ja'] = array(
  * @author Pras
  */
 $messages['jv'] = array(
-	'abc-desc' => 'Tambahna tag <tt>&lt;abc&gt;</tt> kanggo format musik ABC',
+	'abc-desc' => 'Tambahna tag <code>&lt;abc&gt;</code> kanggo format musik ABC',
 	'abcdownload' => 'Undhuh:',
 );
 
@@ -421,7 +421,7 @@ $messages['ka'] = array(
  * @author Mirzali
  */
 $messages['kiu'] = array(
-	'abc-desc' => 'Seba sıkıldaena ABC-muziki etiketê <tt>&lt;abc&gt;</tt>y ilawe keno',
+	'abc-desc' => 'Seba sıkıldaena ABC-muziki etiketê <code>&lt;abc&gt;</code>y ilawe keno',
 	'abcdownload' => 'Bar ke:',
 );
 
@@ -436,7 +436,7 @@ $messages['km'] = array(
  * @author Kwj2772
  */
 $messages['ko'] = array(
-	'abc-desc' => 'ABC 음악을 포맷하기 위해 <tt>&lt;abc&gt;</tt> 태그를 추가',
+	'abc-desc' => 'ABC 음악을 포맷하기 위해 <code>&lt;abc&gt;</code> 태그를 추가',
 	'abcdownload' => '다운로드:',
 );
 
@@ -444,7 +444,7 @@ $messages['ko'] = array(
  * @author Iltever
  */
 $messages['krc'] = array(
-	'abc-desc' => 'ABC музыканы бичер ючюн <tt>&lt;abc&gt;</tt> тегни къошады',
+	'abc-desc' => 'ABC музыканы бичер ючюн <code>&lt;abc&gt;</code> тегни къошады',
 	'abcdownload' => 'Джюкле:',
 );
 
@@ -452,7 +452,7 @@ $messages['krc'] = array(
  * @author Purodha
  */
 $messages['ksh'] = array(
-	'abc-desc' => 'Deit dä <tt>&lt;abc&gt;</tt>-Befähl en et Wiki domet mer Mussik em ABC Fommaat opschrieve kann.',
+	'abc-desc' => 'Deit dä <code>&lt;abc&gt;</code>-Befähl en et Wiki domet mer Mussik em ABC Fommaat opschrieve kann.',
 	'abcdownload' => 'Eronger lahde:',
 );
 
@@ -475,7 +475,7 @@ $messages['kw'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
-	'abc-desc' => "Setzt den <tt>&lt;abc&gt;</tt> Tag fir ''ABC music'' ze formatéieren",
+	'abc-desc' => "Setzt den <code>&lt;abc&gt;</code> Tag fir ''ABC music'' ze formatéieren",
 	'abcdownload' => 'Eroflueden:',
 );
 
@@ -483,7 +483,7 @@ $messages['lb'] = array(
  * @author Pahles
  */
 $messages['li'] = array(
-	'abc-desc' => 'Voog de tag <tt>&lt;abc&gt;</tt> veur de opmaak van ABC-meziek in',
+	'abc-desc' => 'Voog de tag <code>&lt;abc&gt;</code> veur de opmaak van ABC-meziek in',
 	'abcdownload' => 'Downloade:',
 );
 
@@ -491,7 +491,7 @@ $messages['li'] = array(
  * @author Insübrich
  */
 $messages['lmo'] = array(
-	'abc-desc' => 'A giunta el tag <tt>&lt;abc&gt;</tt> a la müsega in furmaa ABC',
+	'abc-desc' => 'A giunta el tag <code>&lt;abc&gt;</code> a la müsega in furmaa ABC',
 	'abcdownload' => 'Descarga:',
 );
 
@@ -499,7 +499,7 @@ $messages['lmo'] = array(
  * @author Matasg
  */
 $messages['lt'] = array(
-	'abc-desc' => 'Prideda <tt>&lt;abc&gt;</tt> žymę prie formato ABC music',
+	'abc-desc' => 'Prideda <code>&lt;abc&gt;</code> žymę prie formato ABC music',
 	'abcdownload' => 'Atsisiųsti:',
 );
 
@@ -508,7 +508,7 @@ $messages['lt'] = array(
  * @author FnTmLV
  */
 $messages['lv'] = array(
-	'abc-desc' => 'Pievieno <tt>&lt;abc&gt;</tt> tagu lai formatētu ABC mūziku',
+	'abc-desc' => 'Pievieno <code>&lt;abc&gt;</code> tagu lai formatētu ABC mūziku',
 	'abcdownload' => 'Ielādēt:',
 );
 
@@ -516,7 +516,7 @@ $messages['lv'] = array(
  * @author Jagwar
  */
 $messages['mg'] = array(
-	'abc-desc' => 'Manampy balizy <tt>&lt;abc&gt;</tt> mba hifôrmaty ny mozika ABC',
+	'abc-desc' => 'Manampy balizy <code>&lt;abc&gt;</code> mba hifôrmaty ny mozika ABC',
 	'abcdownload' => 'Ampidino eto:',
 );
 
@@ -524,7 +524,7 @@ $messages['mg'] = array(
  * @author Azim
  */
 $messages['mhr'] = array(
-	'abc-desc' => 'ABC музыкым форматированийлан <tt>&lt;abc&gt;</tt> тегым ешара',
+	'abc-desc' => 'ABC музыкым форматированийлан <code>&lt;abc&gt;</code> тегым ешара',
 	'abcdownload' => 'Опташ:',
 );
 
@@ -532,7 +532,7 @@ $messages['mhr'] = array(
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
-	'abc-desc' => 'Ја додава ознаката <tt>&lt;abc&gt;</tt> за да форматира ABC музика',
+	'abc-desc' => 'Ја додава ознаката <code>&lt;abc&gt;</code> за да форматира ABC музика',
 	'abcdownload' => 'Преземи:',
 );
 
@@ -541,7 +541,7 @@ $messages['mk'] = array(
  * @author Sadik Khalid
  */
 $messages['ml'] = array(
-	'abc-desc' => '<tt>&lt;abc&gt;</tt> അനുബന്ധം എ.ബി.സി. സംഗീതത്തിനു ചേര്‍ക്കുന്നു',
+	'abc-desc' => '<code>&lt;abc&gt;</code> അനുബന്ധം എ.ബി.സി. സംഗീതത്തിനു ചേര്‍ക്കുന്നു',
 	'abcdownload' => 'ഡൌൺലോഡ്',
 );
 
@@ -549,7 +549,7 @@ $messages['ml'] = array(
  * @author E.shijir
  */
 $messages['mn'] = array(
-	'abc-desc' => 'ABC хөгжимиын горимд <tt>&lt;abc&gt;</tt> шошгыг нэмэх',
+	'abc-desc' => 'ABC хөгжимиын горимд <code>&lt;abc&gt;</code> шошгыг нэмэх',
 	'abcdownload' => 'Өөртөө хуулах:',
 );
 
@@ -557,7 +557,7 @@ $messages['mn'] = array(
  * @author Zamwan
  */
 $messages['ms'] = array(
-	'abc-desc' => 'Letak tag <tt>&lt;abc&gt;</tt> bagi memformat muzik ABC',
+	'abc-desc' => 'Letak tag <code>&lt;abc&gt;</code> bagi memformat muzik ABC',
 	'abcdownload' => 'Muat turun:',
 );
 
@@ -565,7 +565,7 @@ $messages['ms'] = array(
  * @author Botuzhaleny-sodamo
  */
 $messages['myv'] = array(
-	'abc-desc' => 'Полады <tt>&lt;abc&gt;</tt> тег ABC музыканть форматировамонь туртов',
+	'abc-desc' => 'Полады <code>&lt;abc&gt;</code> тег ABC музыканть форматировамонь туртов',
 	'abcdownload' => 'Таргамс:',
 );
 
@@ -573,7 +573,7 @@ $messages['myv'] = array(
  * @author Fluence
  */
 $messages['nah'] = array(
-	'abc-desc' => 'Ticcēntilīz <tt>&lt;abc&gt;</tt> ic tictequitiltīz ABC cuīcayōtlahtōl',
+	'abc-desc' => 'Ticcēntilīz <code>&lt;abc&gt;</code> ic tictequitiltīz ABC cuīcayōtlahtōl',
 	'abcdownload' => 'Tictemōz:',
 );
 
@@ -581,7 +581,7 @@ $messages['nah'] = array(
  * @author Slomox
  */
 $messages['nds'] = array(
-	'abc-desc' => 'Föögt dat Tag <tt>&lt;abc&gt;</tt> för dat Wiesen vun ABC-Musik to',
+	'abc-desc' => 'Föögt dat Tag <code>&lt;abc&gt;</code> för dat Wiesen vun ABC-Musik to',
 	'abcdownload' => 'Dalladen:',
 );
 
@@ -589,7 +589,7 @@ $messages['nds'] = array(
  * @author Servien
  */
 $messages['nds-nl'] = array(
-	'abc-desc' => 'Voeg de tag <tt>&lt;abc&gt;</tt> toe veur de opmaak van ABC-meziek',
+	'abc-desc' => 'Voeg de tag <code>&lt;abc&gt;</code> toe veur de opmaak van ABC-meziek',
 	'abcdownload' => 'Binnenhaolen:',
 );
 
@@ -597,7 +597,7 @@ $messages['nds-nl'] = array(
  * @author सरोज कुमार ढकाल
  */
 $messages['ne'] = array(
-	'abc-desc' => ' ABC संगित <tt>&lt;abc&gt;</tt> ढाँचावद्ध गर्नलाई ट्याग थप्छ।',
+	'abc-desc' => ' ABC संगित <code>&lt;abc&gt;</code> ढाँचावद्ध गर्नलाई ट्याग थप्छ।',
 	'abcdownload' => 'डाउनलोड गर्ने:',
 );
 
@@ -605,7 +605,7 @@ $messages['ne'] = array(
  * @author Siebrand
  */
 $messages['nl'] = array(
-	'abc-desc' => 'Voegt de tag <tt>&lt;abc&gt;</tt> voor de opmaak van ABC-muziek',
+	'abc-desc' => 'Voegt de tag <code>&lt;abc&gt;</code> voor de opmaak van ABC-muziek',
 	'abcdownload' => 'Downloaden:',
 );
 
@@ -613,7 +613,7 @@ $messages['nl'] = array(
  * @author Harald Khan
  */
 $messages['nn'] = array(
-	'abc-desc' => 'Legg til <tt>&lt;abc&gt;</tt>-merket for å formatera ABC-musikk',
+	'abc-desc' => 'Legg til <code>&lt;abc&gt;</code>-merket for å formatera ABC-musikk',
 	'abcdownload' => 'Last ned:',
 );
 
@@ -621,7 +621,7 @@ $messages['nn'] = array(
  * @author Jon Harald Søby
  */
 $messages['no'] = array(
-	'abc-desc' => 'Lager taggen <tt>&lt;abc&gt;</tt> for å formatere ABC-musikk',
+	'abc-desc' => 'Lager taggen <code>&lt;abc&gt;</code> for å formatere ABC-musikk',
 	'abcdownload' => 'Last ned:',
 );
 
@@ -629,7 +629,7 @@ $messages['no'] = array(
  * @author Cedric31
  */
 $messages['oc'] = array(
-	'abc-desc' => 'Apond una balisa <tt>&lt;abc&gt;</tt> per formatar la musica ABC',
+	'abc-desc' => 'Apond una balisa <code>&lt;abc&gt;</code> per formatar la musica ABC',
 	'abcdownload' => 'Telecargar :',
 );
 
@@ -652,7 +652,7 @@ $messages['pdc'] = array(
  * @author Sp5uhe
  */
 $messages['pl'] = array(
-	'abc-desc' => 'Dodaje znacznik <tt>&lt;abc&gt;</tt> dla muzyki w formacie ABC',
+	'abc-desc' => 'Dodaje znacznik <code>&lt;abc&gt;</code> dla muzyki w formacie ABC',
 	'abcdownload' => 'Pobierz:',
 );
 
@@ -660,7 +660,7 @@ $messages['pl'] = array(
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'abc-desc' => 'A gionta ël tag <tt>&lt;abc&gt;</tt> a la mùsica an formà ABC',
+	'abc-desc' => 'A gionta ël tag <code>&lt;abc&gt;</code> a la mùsica an formà ABC',
 	'abcdownload' => 'Dëscaria:',
 );
 
@@ -668,7 +668,7 @@ $messages['pms'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
-	'abc-desc' => 'ABC موسيقي بڼې ته د <tt>&lt;abc&gt;</tt> لنډنوم ورګډوي',
+	'abc-desc' => 'ABC موسيقي بڼې ته د <code>&lt;abc&gt;</code> لنډنوم ورګډوي',
 	'abcdownload' => 'ښکته کول:',
 );
 
@@ -677,7 +677,7 @@ $messages['ps'] = array(
  * @author Waldir
  */
 $messages['pt'] = array(
-	'abc-desc' => 'Adiciona a tag <tt>&lt;abc&gt;</tt> para formatar música em notação ABC',
+	'abc-desc' => 'Adiciona a tag <code>&lt;abc&gt;</code> para formatar música em notação ABC',
 	'abcdownload' => 'Descarregar:',
 );
 
@@ -685,7 +685,7 @@ $messages['pt'] = array(
  * @author Eduardo.mps
  */
 $messages['pt-br'] = array(
-	'abc-desc' => 'Adiciona a marca <tt>&lt;abc&gt;</tt> para formatar música em notação ABC',
+	'abc-desc' => 'Adiciona a marca <code>&lt;abc&gt;</code> para formatar música em notação ABC',
 	'abcdownload' => 'Descarregar:',
 );
 
@@ -693,7 +693,7 @@ $messages['pt-br'] = array(
  * @author Aryaz
  */
 $messages['rif'] = array(
-	'abc-desc' => 'Irnni tira <tt>&lt;abc&gt;</tt> afad ad isggm ABC music',
+	'abc-desc' => 'Irnni tira <code>&lt;abc&gt;</code> afad ad isggm ABC music',
 	'abcdownload' => 'Zdm/Download',
 );
 
@@ -701,7 +701,7 @@ $messages['rif'] = array(
  * @author Gion
  */
 $messages['rm'] = array(
-	'abc-desc' => 'Agiunta il tag <tt>&lt;abc&gt;</tt> per formatar musica ABC',
+	'abc-desc' => 'Agiunta il tag <code>&lt;abc&gt;</code> per formatar musica ABC',
 	'abcdownload' => 'Download:',
 );
 
@@ -709,7 +709,7 @@ $messages['rm'] = array(
  * @author Silviubogan
  */
 $messages['ro'] = array(
-	'abc-desc' => 'Adaugă elementul <tt>&lt;abc&gt;</tt> pentru a formata muzica ABC',
+	'abc-desc' => 'Adaugă elementul <code>&lt;abc&gt;</code> pentru a formata muzica ABC',
 	'abcdownload' => 'Descarcă:',
 );
 
@@ -717,7 +717,7 @@ $messages['ro'] = array(
  * @author Joetaras
  */
 $messages['roa-tara'] = array(
-	'abc-desc' => "Aggiunge <tt>&lt;abc&gt;</tt> tag pe formattà 'a musiche de ABC",
+	'abc-desc' => "Aggiunge <code>&lt;abc&gt;</code> tag pe formattà 'a musiche de ABC",
 	'abcdownload' => 'Scareche:',
 );
 
@@ -726,7 +726,7 @@ $messages['roa-tara'] = array(
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
-	'abc-desc' => 'Добавляет тег <tt>&lt;abc&gt;</tt> для форматирования музыки ABC',
+	'abc-desc' => 'Добавляет тег <code>&lt;abc&gt;</code> для форматирования музыки ABC',
 	'abcdownload' => 'Загрузить:',
 );
 
@@ -750,7 +750,7 @@ $messages['sc'] = array(
  * @author Dalinanir
  */
 $messages['shi'] = array(
-	'abc-desc' => 'Gen <tt>&lt;abc&gt;</tt> bac atskrt azawan ABC',
+	'abc-desc' => 'Gen <code>&lt;abc&gt;</code> bac atskrt azawan ABC',
 	'abcdownload' => 'Srbu',
 );
 
@@ -758,7 +758,7 @@ $messages['shi'] = array(
  * @author Helix84
  */
 $messages['sk'] = array(
-	'abc-desc' => 'Pridáva značku <tt>&lt;abc&gt;</tt> na formátovanie ABC hudby',
+	'abc-desc' => 'Pridáva značku <code>&lt;abc&gt;</code> na formátovanie ABC hudby',
 	'abcdownload' => 'Stiahnuť:',
 );
 
@@ -766,7 +766,7 @@ $messages['sk'] = array(
  * @author Puntori
  */
 $messages['sq'] = array(
-	'abc-desc' => 'Vendosë kodin <tt>&lt;abc&gt;</tt> të formatojë muzikë ABC',
+	'abc-desc' => 'Vendosë kodin <code>&lt;abc&gt;</code> të formatojë muzikë ABC',
 	'abcdownload' => 'Shkarko:',
 );
 
@@ -774,7 +774,7 @@ $messages['sq'] = array(
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
-	'abc-desc' => 'Додаје <tt>&lt;abc&gt;</tt> таг за форматирање ABC музике',
+	'abc-desc' => 'Додаје <code>&lt;abc&gt;</code> таг за форматирање ABC музике',
 	'abcdownload' => 'Сними:',
 );
 
@@ -782,7 +782,7 @@ $messages['sr-ec'] = array(
  * @author Michaello
  */
 $messages['sr-el'] = array(
-	'abc-desc' => 'Dodaje <tt>&lt;abc&gt;</tt> tag za formatiranje ABC muzike',
+	'abc-desc' => 'Dodaje <code>&lt;abc&gt;</code> tag za formatiranje ABC muzike',
 	'abcdownload' => 'Snimi:',
 );
 
@@ -790,7 +790,7 @@ $messages['sr-el'] = array(
  * @author Pyt
  */
 $messages['stq'] = array(
-	'abc-desc' => 'Föiget dät <tt>&lt;abc&gt;</tt>-Tag tou ju Notation fon Musik in ABC bietou',
+	'abc-desc' => 'Föiget dät <code>&lt;abc&gt;</code>-Tag tou ju Notation fon Musik in ABC bietou',
 	'abcdownload' => 'Deelleede:',
 );
 
@@ -798,7 +798,7 @@ $messages['stq'] = array(
  * @author Kandar
  */
 $messages['su'] = array(
-	'abc-desc' => 'Nambah tag <tt>&lt;abc&gt;</tt> pikeun ngaformat musik ABC',
+	'abc-desc' => 'Nambah tag <code>&lt;abc&gt;</code> pikeun ngaformat musik ABC',
 	'abcdownload' => 'Unduh:',
 );
 
@@ -807,7 +807,7 @@ $messages['su'] = array(
  * @author Najami
  */
 $messages['sv'] = array(
-	'abc-desc' => 'Lägger till <tt>&lt;abc&gt;</tt>-taggen för att formatera ABC-musik',
+	'abc-desc' => 'Lägger till <code>&lt;abc&gt;</code>-taggen för att formatera ABC-musik',
 	'abcdownload' => 'Ladda ner:',
 );
 
@@ -816,7 +816,7 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
-	'abc-desc' => 'ABC సంగీతాన్ని చూపించడానికై <tt>&lt;abc&gt;</tt> అనే ట్యాగుని చేరుస్తుంది',
+	'abc-desc' => 'ABC సంగీతాన్ని చూపించడానికై <code>&lt;abc&gt;</code> అనే ట్యాగుని చేరుస్తుంది',
 	'abcdownload' => 'డౌన్‌లోడ్',
 );
 
@@ -824,7 +824,7 @@ $messages['te'] = array(
  * @author Manop
  */
 $messages['th'] = array(
-	'abc-desc' => 'เพิ่มแท็ก <tt>&lt;abc&gt;</tt> สำหรับใส่รูปแบบดนตรี ABC',
+	'abc-desc' => 'เพิ่มแท็ก <code>&lt;abc&gt;</code> สำหรับใส่รูปแบบดนตรี ABC',
 	'abcdownload' => 'ดาวน์โหลด:',
 );
 
@@ -832,7 +832,7 @@ $messages['th'] = array(
  * @author AnakngAraw
  */
 $messages['tl'] = array(
-	'abc-desc' => 'Nagdaragdag ng tatak na <tt>&lt;abc&gt;</tt> para maipormat ang tugtuging ABC',
+	'abc-desc' => 'Nagdaragdag ng tatak na <code>&lt;abc&gt;</code> para maipormat ang tugtuging ABC',
 	'abcdownload' => 'Ikargang-pakuha:',
 );
 
@@ -840,7 +840,7 @@ $messages['tl'] = array(
  * @author Joseph
  */
 $messages['tr'] = array(
-	'abc-desc' => 'ABC müziğini biçimlendirmek için <tt>&lt;abc&gt;</tt> etiketini ekler',
+	'abc-desc' => 'ABC müziğini biçimlendirmek için <code>&lt;abc&gt;</code> etiketini ekler',
 	'abcdownload' => 'İndir:',
 );
 
@@ -848,7 +848,7 @@ $messages['tr'] = array(
  * @author Рашат Якупов
  */
 $messages['tt-cyrl'] = array(
-	'abc-desc' => 'ABC музыкасын төзәтүе өчен <tt>&lt;abc&gt;</tt> тэгын куша',
+	'abc-desc' => 'ABC музыкасын төзәтүе өчен <code>&lt;abc&gt;</code> тэгын куша',
 	'abcdownload' => 'Йөкләргә:',
 );
 
@@ -863,7 +863,7 @@ $messages['ug-arab'] = array(
  * @author AS
  */
 $messages['uk'] = array(
-	'abc-desc' => 'Додає тег <tt>&lt;abc&gt;</tt> для форматування музики ABC',
+	'abc-desc' => 'Додає тег <code>&lt;abc&gt;</code> для форматування музики ABC',
 	'abcdownload' => 'Завантажити:',
 );
 
@@ -871,7 +871,7 @@ $messages['uk'] = array(
  * @author Candalua
  */
 $messages['vec'] = array(
-	'abc-desc' => 'Zonta el tag <tt>&lt;abc&gt;</tt> par la musica in formato ABC',
+	'abc-desc' => 'Zonta el tag <code>&lt;abc&gt;</code> par la musica in formato ABC',
 	'abcdownload' => 'Descarga:',
 );
 
@@ -879,7 +879,7 @@ $messages['vec'] = array(
  * @author Игорь Бродский
  */
 $messages['vep'] = array(
-	'abc-desc' => 'Ližadab <tt>&lt;abc&gt;</tt>-teg ABC-muzikad formatiruides',
+	'abc-desc' => 'Ližadab <code>&lt;abc&gt;</code>-teg ABC-muzikad formatiruides',
 	'abcdownload' => 'Jügutoitta:',
 );
 
@@ -887,7 +887,7 @@ $messages['vep'] = array(
  * @author Vinhtantran
  */
 $messages['vi'] = array(
-	'abc-desc' => 'Thêm thẻ <tt>&lt;abc&gt;</tt> để định dạng nhạc ABC',
+	'abc-desc' => 'Thêm thẻ <code>&lt;abc&gt;</code> để định dạng nhạc ABC',
 	'abcdownload' => 'Tải xuống:',
 );
 
@@ -895,7 +895,7 @@ $messages['vi'] = array(
  * @author Smeira
  */
 $messages['vo'] = array(
-	'abc-desc' => 'Läükon mali: <tt>&lt;abc&gt;</tt> musige fomätü ABC',
+	'abc-desc' => 'Läükon mali: <code>&lt;abc&gt;</code> musige fomätü ABC',
 	'abcdownload' => 'Donükön:',
 );
 
@@ -903,7 +903,7 @@ $messages['vo'] = array(
  * @author Võrok
  */
 $messages['vro'] = array(
-	'abc-desc' => 'Pand mano <tt>&lt;abc&gt;</tt>-elemendi ABC-muusiga kujondamisõs',
+	'abc-desc' => 'Pand mano <code>&lt;abc&gt;</code>-elemendi ABC-muusiga kujondamisõs',
 	'abcdownload' => 'Laadiq alla',
 );
 
@@ -911,7 +911,7 @@ $messages['vro'] = array(
  * @author Hercule
  */
 $messages['wuu'] = array(
-	'abc-desc' => '增加了<tt>&lt;abc&gt;</tt>树脂标记美国广播公司的音乐格式',
+	'abc-desc' => '增加了<code>&lt;abc&gt;</code>树脂标记美国广播公司的音乐格式',
 	'abcdownload' => '下载:',
 );
 
@@ -919,7 +919,7 @@ $messages['wuu'] = array(
  * @author פוילישער
  */
 $messages['yi'] = array(
-	'abc-desc' => 'לייגט צו <tt>&lt;abc&gt;</tt> טאַג צו פארמאַטירן ABC מוזיק',
+	'abc-desc' => 'לייגט צו <code>&lt;abc&gt;</code> טאַג צו פארמאַטירן ABC מוזיק',
 	'abcdownload' => 'אַראָפלאָדן',
 );
 
@@ -934,7 +934,7 @@ $messages['yo'] = array(
  * @author Bencmq
  */
 $messages['zh-hans'] = array(
-	'abc-desc' => '加入<tt>&lt;abc&gt;</tt>标签以格式化ABC音乐',
+	'abc-desc' => '加入<code>&lt;abc&gt;</code>标签以格式化ABC音乐',
 	'abcdownload' => '下载：',
 );
 
@@ -943,7 +943,7 @@ $messages['zh-hans'] = array(
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
-	'abc-desc' => '加入<tt>&lt;abc&gt;</tt>標籤以格式化ABC音樂',
+	'abc-desc' => '加入<code>&lt;abc&gt;</code>標籤以格式化ABC音樂',
 	'abcdownload' => '下載:',
 );
 
