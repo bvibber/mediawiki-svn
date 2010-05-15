@@ -4,9 +4,10 @@ class Citation extends TemplateAdventureBasic {
 
 	private $dSeparators = array(    # separators between names, items, etc.
 		'section'    => ',',
-		'author'     => '&#059;&#32;',
-		'name'       => ',&#32;',
-		'authorlast' => '&#32;&amp;&#32;',
+		'end'        => '.',
+		'author'     => '&#059;',
+		'name'       => ',',
+		'authorlast' => '&#32;&amp;',
 		'beforepublication' => ':',
 	);
 	private $dAuthorTruncate = 8;    # the amount of authors it should display,
@@ -88,6 +89,7 @@ class Citation extends TemplateAdventureBasic {
 		$this->dSeparators['name']       = wfMsg ( 'ta-citesep-name' );
 		$this->dSeparators['authorlast'] = wfMsg ( 'ta-citesep-authorlast' );
 		$this->dSeparators['beforepublication'] = wfMsg ( 'ta-citesep-beforepublication' );
+		$this->dSeparators['end']        = wfMsg ( 'ta-citesep-end' );
 		$this->readOptions( );
 		$this->parseData();
 	}
@@ -107,7 +109,7 @@ class Citation extends TemplateAdventureBasic {
 				if ( $this->notNull ( $this->dYearNote ) ) 
 					$authorArea = wfMsg ( 'ta-citeauthoryearnote', $authorArea, $this->dYearNote );
 			}
-			$this->mOutput .= $authorArea;
+			$this->mOutput .= $authorArea . $this->getSeparator ( 'section' );
 		# editors
 		} elseif ( count ( $this->dEditors ) > 1 ) {
 			$editorArea = $this->createWriterSection ( $this->dEditors, $this->dEditorLinks, $this->dEditorTruncate );
@@ -121,17 +123,13 @@ class Citation extends TemplateAdventureBasic {
 				if ( $this->notNull ( $this->dYearNote ) ) 
 					$editorArea .= wfMsg ( 'ta-citeauthoryearnote', $editorArea, $this->dYearNote );
 			}
-			$this->mOutput .= $editorArea;
+			$this->mOutput .= $editorArea . $this->getSeparator ( 'section' );
 		}
 		# included work title
 		if ( $this->notNull( $this->dWorkTitle['includedwork'] ) 
 			&& ( $this->notNull( $this->dPeriodical['name'] ) 
 				|| $this->notNull( $this->dWorkTitle['transitalic'] ) 
 				|| $this->notNull( $this->dWorkTitle['transtitle'] ) ) ) {
-			if ( $authorArea != '' 
-				|| $editorArea != '' ) {
-				$this->mOutput .= $this->getSeparator( 'section' );
-			}
 			# let's get the url
 			if ( $this->notNull ( $this->dWorkLink['includedwork'] ) ) {
 				$url = $this->dWorkLink['includedwork'];
@@ -173,7 +171,7 @@ class Citation extends TemplateAdventureBasic {
 				|| $this->notNull ( $this->dWorkTitle['includedwork'] ) 
 			) 
 		) {
-			$this->mOutput .= wfMsg ( 'ta-citewrittenat', $this->getSeparator ( 'section' ), $this->dPlace );
+			$this->mOutput .= wfMsg ( 'ta-citewrittenat', $this->dPlace ) . $this->getSeparator ( 'section' );
 		}
 		# editor of complication... eerrr...
 		# TODO: we'll do this later...
@@ -182,11 +180,7 @@ class Citation extends TemplateAdventureBasic {
 		if ( $this->notNull ( $this->dPeriodical['name'] ) ) {
 			$perArea = '';
 			if ( $this->notNull ( $this->dOther ) )
-				$perArea .= wfMsg ( 'ta-citeother', $this->getSeparator ( 'section' ), $this->dOther );
-			if ( $authorArea != '' 
-				|| $editorArea != '' 
-				|| $this->notNull ( $this->dWorkTitle['includedwork'] ) )
-				$perArea .= $this->getSeparator ( 'section' );
+				$perArea .= wfMsg ( 'ta-citeother', $this->dOther );
 			# make the link!
 			if ( $this->notNull ( $this->dWorkTitle['title'] ) || $this->notNull ( $this->dWorkTitle['transtitle'] ) ) {
 				# let's get the url
@@ -225,68 +219,52 @@ class Citation extends TemplateAdventureBasic {
 					$tmp .= wfMsg ( 'ta-citetranstitle-render', $this->dWorkTitle['transtitle'] );
 				}
 				$title = "\"$tmp\"";
-				$perArea .= $this->makeLink ( $url, $title );
+				$perArea .= $this->makeLink ( $url, $title ) . $this->getSeparator ( 'section' );
 				if ( $this->notNull ( $this->dWorkTitle['note'] ) ) {
-					$perArea .= $this->getSeparator ( 'section' ) . ' ' . $this->dWorkTitle['note'];
+					$perArea .= $this->dWorkTitle['note'] . $this->getSeparator ( 'section' );
 				}
 			}
 			$this->mOutput .= $perArea;
 		}
 		# language
 		if ( $this->notNull ( $this->dLanguage ) ) {
-			# yes, I am cheating right now
-			$this->mOutput .= wfMsg ( 'ta-citeinlanguage', '', $this->dLanguage );
+			$this->mOutput .= wfMsg ( 'ta-citeinlanguage', $this->dLanguage );
 		}
 		# format
 		if ( $this->notNull ( $this->dFormat ) ) {
-			# also here!
-			$this->mOutput .= wfMsg ( 'ta-citeformatrender', '', $this->dFormat );
+			$this->mOutput .= wfMsg ( 'ta-citeformatrender', $this->dFormat );
 		}
 		# more periodical!
 		if ( $this->notNull ( $this->dPeriodical['name'] ) ) {
 			$newPerArea = '';
-			if ( $this->notNull ( $this->dWorkTitle['includedwork'] )
-				|| $this->notNull ( $this->dWorkTitle['title'] )
-				|| $this->notNull ( $this->dWorkTitle['transtitle'] )
-				) {
-				$newPerArea .= $this->getSeparator ( 'section' ) . ' ';
-			}
 			$newPerArea .= wfMsg ( 'ta-citeperiodical', $this->clean ( $this->dPeriodical['name'] ) );
 			if ( $this->notNull ( $this->dSeries ) ) {
-				$newPerArea .= wfMsg ( 'ta-citeseries', $this->getSeparator ( 'section' ), $this->dSeries );
+				$newPerArea .= wfMsg ( 'ta-citeseries', $this->dSeries );
 			}
 			if ( $this->notNull ( $this->dPublication['place'] ) ) {
 				if ( $this->notNull ( $this->dPublisher ) ) {
-					# so cheating with these messages, I think, blanks?!
-					$newPerArea .= wfMsg ( 'ta-citepublicationplaceandpublisher', '', $this->dPublication['place'], $this->dPublisher );
+					$newPerArea .= wfMsg ( 'ta-citepublicationplaceandpublisher', $this->dPublication['place'], $this->dPublisher );
 				} else {
-					# Blank?  BLANK!?  You're not looking at the big picture!
-					$newPerArea .= wfMsg ( 'ta-citepublicationplace', '', $this->dPublication['place'] );
+					$newPerArea .= wfMsg ( 'ta-citepublicationplace', $this->dPublication['place'] );
 				}
 			}
 			if ( $this->notNull ( $this->dVolume ) ) {
-				$newPerArea .= wfMsg ( 'ta-citevolumerender', '', $this->dVolume );
+				$newPerArea .= wfMsg ( 'ta-citevolumerender', $this->dVolume );
 				if ( $this->notNUll ( $this->dIssue ) ) {
-					$newPerArea .= wfMsg ( 'ta-citeissuerender', '', $this->dIssue );
+					$newPerArea .= wfMsg ( 'ta-citeissuerender', $this->dIssue );
 				}
 			} else {
 				if ( $this->notNUll ( $this->dIssue ) ) {
-					$newPerArea .= wfMsg ( 'ta-citeissuerender', '', $this->dIssue );
+					$newPerArea .= wfMsg ( 'ta-citeissuerender', $this->dIssue );
 				}
 			}
 			if ( $this->notNull ( $this->dAt ) ) {
-				$newPerArea .= wfMsg ( 'ta-citeatrender', '', $this->dAt );
+				$newPerArea .= wfMsg ( 'ta-citeatrender', $this->dAt );
 			}
+			$newPerArea .= $this->getSeparator ( 'section' );
 			# now we get to the title!  Exciting stuff!
 			if ( $this->notNull ( $this->dWorkTitle['title'] )
 				|| $this->notNull ( $this->dWorkTitle['transitalic'] ) ) {
-				if ( $authorArea != ''
-					|| $editorArea != ''
-					|| $this->notNull ( $this->dWorkTitle['includedwork'] )
-					|| $this->notNull ( $this->dPeriodical['name'] )
-				) {
-					$newPerArea .= $this->getSeparator ( 'section' );
-				}
 				# let's get the url
 				if ( $this->notNull ( $this->dWorkTitle['includedwork'] ) ) {
 					if ( $this->notNull ( $this->dWorkLink['includedwork'] ) ) {
@@ -330,55 +308,59 @@ class Citation extends TemplateAdventureBasic {
 			# it is easier to write this, but it also means that all of the
 			# second input is actually evaluated, even if it contains nothing.
 			$newPerArea .= $this->addNotNull ( $this->dWorkTitle['type'], 
-				wfMsg ( 'ta-citetitletyperender', '', $this->dWorkTitle['type'] ) );
+				wfMsg ( 'ta-citetitletyperender', $this->dWorkTitle['type'] ) . $this->getSeparator ( 'section' ) );
 			$newPerArea .= $this->addNotNull ( $this->dSeries, 
-				wfMsg ( 'ta-citeseries', $this->getSeparator ( 'section' ), $this->dSeries ) );
+				wfMsg ( 'ta-citeseries', $this->dSeries ) . $this->getSeparator ( 'section' ) );
 			$newPerArea .= $this->addNotNull ( $this->dVolume, 
-				wfMsg ( 'ta-citevolumerender', $this->getSeparator ( 'section' ), $this->dVolume ) );
+				wfMsg ( 'ta-citevolumerender', $this->dVolume ) . $this->getSeparator ( 'section' ) );
 			$newPerArea .= $this->addNotNull ( $this->dOther, 
-				wfMsg ( 'ta-citeother', $this->getSeparator ( 'section' ), $this->dOther ) );
+				wfMsg ( 'ta-citeother', $this->dOther ) );
 			$newPerArea .= $this->addNotNull ( $this->dEdition, 
-				wfMsg ( 'ta-citeeditionrender', $this->dEdition ) );
+				wfMsg ( 'ta-citeeditionrender', $this->dEdition ) . $this->getSeparator ( 'section' ) );
 			$newPerArea .= $this->addNotNull ( $this->dPublication['place'], 
-				wfMsg ( 'ta-citepublication', $this->getSeparator ( 'section' ), $this->dPublication['place'] ) );
+				wfMsg ( 'ta-citepublication', $this->dPublication['place'] ) );
 			if ( $this->notNull ( $this->dPublisher ) ) {
 				if ( $this->notNull ( $this->dPublication['place'] ) ) {
 					$sep = $this->getSeparator ( 'beforepublication' );
 				} else {
 					$sep = $this->getSeparator ( 'section' );
 				}
-				$newPerArea .= wfMsg ( 'ta-citepublisherrender', $sep, $this->dPublisher );
+				$newPerArea .= $sep . wfMsg ( 'ta-citepublisherrender', $this->dPublisher );
 			}
-			$this->mOutput .= $newPerArea;
+			$this->mOutput .= $newPerArea . $this->getSeparator ( 'section' );
 		}
 		# date if no author/editor
 		if ( $authorArea == '' && $editorArea == '' ) {
 			if ( $this->notNull ( $this->dDate ) ) {
-				$this->mOutput .= wfMsg ( 'ta-citeauthordate', $this->getSeparator ( 'section' ), $this->dDate );
+				$this->mOutput .= wfMsg ( 'ta-citeauthordate', $this->dDate );
 				if ( $this->notNull ( $this->dYearNote ) ) {
-					$this->mOutput .= wfMsg ( 'ta-citeauthoryearnote', '', $this->dYearNote );
+					$this->mOutput .= wfMsg ( 'ta-citeauthoryearnote', $this->dYearNote );
 				}
+				$this->mOutput .= $this->getSeparator ( 'section' );
 			}
 		}
 		# publication date
-		if ( $this->notNull ( $this->dPublication['date'] ) && $this->dPublication['date'] != $this->dDate ) {
+		if ( $this->notNull ( $this->dPublication['date'] ) 
+			&& $this->dPublication['date'] != $this->dDate ) {
 			if ( isset ( $this->dEditors[1] ) ) {
 				if ( isset ( $this->dAuthors[1] ) ) {
-					$this->mOutput .= wfMsg ( 'ta-citepublicationdate', $this->getSeparator ( 'section' ), $this->dPublication['date'] );
+					$this->mOutput .= wfMsg ( 'ta-citepublicationdate', $this->dPublication['date'] );
 				} else {
-					$this->mOutput .= wfMsg ( 'ta-citepublished', '', $this->dPublication['date'] );
+					$this->mOutput .= wfMsg ( 'ta-citepublished', $this->dPublication['date'] );
 				}
 			} else {
 				if ( $this->notNull ( $this->dPeriodical['name'] ) ) {
-					$this->mOutput .= wfMsg ( 'ta-citepublicationdate', $this->getSeparator ( 'section' ), $this->dPublication['date'] );
+					$this->mOutput .= wfMsg ( 'ta-citepublicationdate', $this->dPublication['date'] );
 				} else {
-					$this->mOutput .= wfMsg ( 'ta-citepublished', '', $this->dPublication['date'] );
+					$this->mOutput .= wfMsg ( 'ta-citepublished', $this->dPublication['date'] );
 				}
 			}
+			$this->mOutput .= $this->getSeparator ( 'section' );
 		}
 		# page within included work
-		if ( !$this->notNull ( $this->dPeriodical['name'] ) && $this->notNull ( $this->dAt ) ) {
-			$this->mOutput .= wfMsg ( 'ta-citeatseparated', $this->getSeparator ( 'section' ), $this->dAt );
+		if ( !$this->notNull ( $this->dPeriodical['name'] ) 
+			&& $this->notNull ( $this->dAt ) ) {
+			$this->mOutput .= wfMsg ( 'ta-citeatseparated', $this->dAt );
 		}
 		# doi
 		# TODO:  I'll do this code later:
@@ -437,12 +419,11 @@ class Citation extends TemplateAdventureBasic {
 				|| $this->notNull ( $this->dWorkTitle['includedwork'] )
 				|| $this->notNull ( $this->dWorkTitle['transtitle'] ) ) {
 				$this->mOutput .= $this->printOnly ( 
-					$this->getSeparator ( 'section' ) . ' ' .
 						( $this->notNull ( $this->dWorkLink['includedwork'] )
 							? $this->dWorkLink['includedwork']
 							: $this->dWorkLink['url'] ) );
 			} else {
-				$this->mOutput .= $this->getSeparator ( 'section' ) . ' ' .
+				$this->mOutput .=
 					( $this->notNull ( $this->dWorkLink['includedwork'] )
 						? $this->dWorkLink['includedwork']
 						: $this->dWorkLink['url'] );
@@ -465,6 +446,12 @@ class Citation extends TemplateAdventureBasic {
 		# some other shit nobody cares about.
 		# COinS?  waaaaat
 		# TODO
+		$this->mOutput = trim($this->mOutput);
+		if ( $this->mOutput[strlen($this->mOutput)-1] == $this->getSeparator ( 'section', false ) ) {
+			$this->mOutput[strlen($this->mOutput)-1] = $this->getSeparator ( 'end', false );
+		} elseif ( $this->mOutput[strlen($this->mOutput)-1] != $this->getSeparator ( 'end', false ) ) {
+			$this->mOutput .= $this->getSeparator ( 'end', false );
+		}
 	}
 
 	/**
@@ -513,7 +500,7 @@ class Citation extends TemplateAdventureBasic {
 				break;
 			}
 			if ( $n == count($writers)-1 && $i != 1 )
-				$area .= $this->getSeparator( 'ampersand' );
+				$area .= $this->getSeparator( 'authorlast' );
 			elseif ( $n > 1 )
 				$area .= $this->getSeparator( 'author' );
 			$tmp = '';
@@ -553,12 +540,15 @@ class Citation extends TemplateAdventureBasic {
 	 * they are using a set separator message or just using a default one.
 	 *
 	 * @param $name Name of separator; section, author, name or authorlast
+	 * @param $addSpace Whether to add a space at the end; default true
 	 * @return $separator Blank if none found.
 	 */
-	private function getSeparator ( $name ) {
+	private function getSeparator ( $name, $addSpace=true ) {
 		if ( !isset($this->dSeparators[$name]) )
 			return '';
 		$sep = $this->dSeparators[$name];
+		if ( $addSpace )
+			return $sep.' ';
 		return $sep;
 	}
 
