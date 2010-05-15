@@ -180,16 +180,10 @@ function wfLanguageSelectorExtension() {
 }
 
 function wfLanguageSelectorBeforePageDisplay( &$out ) {
-	global $wgJsMimeType, $wgLanguageSelectorLocation;
+	global $wgScriptPath, $wgLanguageSelectorLocation;
 
-	if ( method_exists( $out, 'addScriptClass' ) ) {
-		$out->addScriptClass( 'LanguageSelector' );
-	} else {
-		$out->addScript( "<script type=\"$wgJsMimeType\">" .
-			file_get_contents( dirname( __FILE__ ) . '/LanguageSelector.js' ) .
-			'</script>'
-		);
-	}
+	$out->addScriptFile( $wgScriptPath .
+		'/extensions/LanguageSelector/LanguageSelector.js' );
 
 	if ( $wgLanguageSelectorLocation == LANGUAGE_SELECTOR_AT_TOP_OF_TEXT ) {
 		$html = wfLanguageSelectorHTML();
