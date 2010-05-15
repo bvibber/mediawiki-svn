@@ -137,15 +137,11 @@ class VectorHooks {
 				basename( dirname( __FILE__ ) ) . '/' . $script['src'], $script['version']
 			);
 		}
-		// Preferences (maybe the UsabilityInitiative class could do most of this for us?)
-		$wgOut->addScript(
-			Xml::tags(
-				'script',
-				array( 'type' => $wgJsMimeType ),
-				'var wgVectorPreferences = ' . FormatJson::encode( $preferences, true ) . ";\n" .
-				'var wgVectorEnabledModules = ' . FormatJson::encode( $enabledModules, true ) . ';'
-			)
-		);
+		// Preferences
+		UsabilityInitiativeHooks::addVariables( array(
+			'wgVectorPreferences' => $preferences,
+			'wgVectorEnabledModules' => $enabledModules,
+		) );
 		return true;
 	}
 	
