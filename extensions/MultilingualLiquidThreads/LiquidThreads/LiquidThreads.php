@@ -222,6 +222,3 @@ $wgLiquidThreadsAllowUserControl = true;
 /** Whether or not to allow users to activate/deactivate LiquidThreads in specific namespaces.
 	NULL means either all or none, depending on the above. */
 $wgLiquidThreadsAllowUserControlNamespaces = null;
-
-// Multilingal LQT
-require_once( $dir . 'langrid/MultilangLqt.php' );
