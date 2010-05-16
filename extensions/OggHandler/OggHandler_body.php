@@ -604,7 +604,7 @@ class OggTransformOutput extends MediaTransformOutput {
 		$s = Xml::tags( 'div',
 			array(
 				'id' => $id,
-				'style' => "width: {$width}px;" ),
+				'style' => "min-width: {$width}px;" ),
 			( $thumb ? Xml::tags( 'div', array(), $thumb ) : '' ) .
 			Xml::tags( 'div', array(),
 				Xml::tags( 'button',
