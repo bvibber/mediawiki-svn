@@ -103,6 +103,18 @@ $messages['cs'] = array(
 	'tooltip-pt-prefswitch-link-off' => 'Vyzkoušejte nové funkce',
 );
 
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
+$messages['cy'] = array(
+	'prefswitch-link-anon' => 'Nodweddion newydd',
+	'tooltip-pt-prefswitch-link-anon' => 'Darllen am y nodweddion newydd',
+	'prefswitch-link-on' => 'Ewch â fi am nôl',
+	'tooltip-pt-prefswitch-link-on' => "Analluogi'r nodweddion newydd",
+	'prefswitch-link-off' => 'Nodweddion newydd',
+	'tooltip-pt-prefswitch-link-off' => 'Rhoi cynnig ar y nodweddion newydd',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
@@ -232,6 +244,11 @@ $messages['hsb'] = array(
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
+	'prefswitch-link-anon' => 'Új funkciók',
+	'tooltip-pt-prefswitch-link-anon' => 'Ismerd meg az új funkciókat',
+	'prefswitch-link-on' => 'Vissza a régire',
+	'tooltip-pt-prefswitch-link-on' => 'Az új funkciók letiltása',
+	'prefswitch-link-off' => 'Új funkciók',
 	'tooltip-pt-prefswitch-link-off' => 'Próbáld ki az új funkciókat',
 );
 
@@ -284,7 +301,9 @@ $messages['ka'] = array(
  */
 $messages['ko'] = array(
 	'prefswitch-link-anon' => '새 기능',
+	'tooltip-pt-prefswitch-link-anon' => '새 기능에 대해 알아보기',
 	'prefswitch-link-on' => '돌아가기',
+	'tooltip-pt-prefswitch-link-on' => '새 기능 끄기',
 	'prefswitch-link-off' => '새 기능',
 	'tooltip-pt-prefswitch-link-off' => '새 기능 체험하기',
 );
@@ -370,6 +389,11 @@ $messages['pl'] = array(
  * @author Dragonòt
  */
 $messages['pms'] = array(
+	'prefswitch-link-anon' => 'Neuve funsionalità',
+	'tooltip-pt-prefswitch-link-anon' => 'Ampara le neuve funsionalità',
+	'prefswitch-link-on' => 'Pòrtme andré',
+	'tooltip-pt-prefswitch-link-on' => 'Disabìlita neuve funsionalità',
+	'prefswitch-link-off' => 'Neuve funsionalità',
 	'tooltip-pt-prefswitch-link-off' => 'Preuva le neuve funsionalità',
 );
 

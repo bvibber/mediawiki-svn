@@ -106,6 +106,13 @@ $messages['hsb'] = array(
 	'wikieditor-templates-preference' => 'Fałdowanje předłohow zmóžnić',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'wikieditor-templates-preference' => 'Sablonok összecsukásának engedélyezése',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
