@@ -33,7 +33,7 @@ mw.addMessages( {
 	"mwe-no-import-by-url" : "This user or wiki <b>cannot<\/b> import assets from remote URLs.<p>Do you need to login?<\/p><p>Is upload_by_url permission set for you?<br \/>Does the wiki have $1 enabled?<\/p>",
 	"mwe-no-import-by-url-linktext" : "$wgAllowCopyUploads",
 	"mwe-results_from" : "Results from $1",
-	"mwe-missing_desc_see_source" : "This asset is missing a description. Please see the $1 and help describe it.",
+	"mwe-missing_desc_see_source" : "This asset is missing a description. Please check the [$1 source] and help describe it.",
 	
 	"rsd_config_error" : "Add media wizard configuration error: $1",
 	"mwe-your-recent-uploads" : "Your recent uploads to $1",
