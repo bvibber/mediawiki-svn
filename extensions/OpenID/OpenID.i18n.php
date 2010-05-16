@@ -5661,6 +5661,7 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Gzdavidwong
+ * @author Horacewai2
  * @author Liangent
  * @author Wrightbus
  */
@@ -5696,13 +5697,16 @@ $messages['zh-hant'] = array(
 	'openidemail' => '電郵地址',
 	'openidlanguage' => '語言',
 	'openidtimezone' => '時區',
+	'openidchooselegend' => '用戶名選擇',
 	'openidchooseinstructions' => '所有的用戶都需要提供昵稱；
 您可以從下面任選一個。',
+	'openidchoosenick' => '你的暱稱 ($1)',
 	'openidchoosefull' => '您的全名 （$1）',
 	'openidchooseurl' => '從您的OpenID獲取的名稱（$1）',
 	'openidchooseauto' => '自動生成的名稱（$1）',
 	'openidchoosemanual' => '您選擇的名稱：',
 	'openidchooseexisting' => '本維基已經存在的帳戶：',
+	'openidchooseusername' => '用戶名：',
 	'openidchoosepassword' => '密碼：',
 	'openidconvertinstructions' => '本表單可以將您的用戶賬號修改為OpenID地址。',
 	'openidconvertoraddmoreids' => '轉換到OpenID或添加另一個OpenID URL',
@@ -5721,6 +5725,7 @@ $messages['zh-hant'] = array(
 	'openidloginlabel' => 'OpenID網址',
 	'openidupdateuserinfo' => '更新我的個人信息',
 	'openiddelete' => '刪除OpenID',
+	'openiddelete-text' => '當你按下"{{int:openiddelete-button}}"按鈕，你會將OpenID $1從你的戶口中移除。你以後都不可以再使用這個OpenID登入。',
 	'openiddelete-button' => '確認',
 	'openid-prefstext' => '[http://openid.net/ OpenID]參數設置',
 	'openid-pref-hide' => '如果使用OpenID登陸，您可以在您的用戶頁隱藏您的OpenID。',

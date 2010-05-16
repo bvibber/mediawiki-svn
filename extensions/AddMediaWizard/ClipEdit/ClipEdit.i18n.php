@@ -499,7 +499,9 @@ $messages['hsb'] = array(
 	'mwe-clipedit-layout_left' => 'Wusměrjenje wobraza na lěwej stronje',
 );
 
-/** Hungarian (Magyar) */
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
 $messages['hu'] = array(
 	'mwe-clipedit-crop' => 'Kép vágása',
 	'mwe-clipedit-apply_crop' => 'Vágás alkalmazása a képre',
@@ -508,6 +510,7 @@ $messages['hu'] = array(
 	'mwe-clipedit-insert_into_sequence' => 'Beillesztés a jelenetbe',
 	'mwe-clipedit-preview_insert' => 'Beillesztés előnézete',
 	'mwe-clipedit-cancel_image_insert' => 'Beillesztés elvetése',
+	'mwe-clipedit-sc_attributes' => 'A videoklip részleteinek szerkesztése',
 	'mwe-clipedit-sc_inoutpoints' => 'Kezdő- és végpontok beállítása',
 	'mwe-clipedit-sc_overlays' => 'Rétegek',
 	'mwe-clipedit-sc_audio' => 'Hangvezérlés',
@@ -525,6 +528,9 @@ $messages['hu'] = array(
 	'mwe-clipedit-inline-description' => 'Cím',
 	'mwe-clipedit-edit-video-tools' => 'Videóeszközök szerkesztése:',
 	'mwe-clipedit-duration' => 'Hossz:',
+	'mwe-clipedit-layout' => 'Elrendezés',
+	'mwe-clipedit-layout_right' => 'Képek rendezése a jobb oldalra',
+	'mwe-clipedit-layout_left' => 'Képek rendezése a bal oldalra',
 );
 
 /** Interlingua (Interlingua)

@@ -2308,7 +2308,7 @@ $messages['lzz'] = array(
  */
 $messages['mk'] = array(
 	'tasks' => 'Задачи',
-	'tasks_desc' => 'Проширување за раководење со задачи',
+	'tasks_desc' => 'Додаток за раководење со задачи',
 	'tasks_tab' => 'Задачи',
 	'tasks_title' => 'Задачи за „$1“',
 	'tasks_form_new' => 'Создај нова задача',

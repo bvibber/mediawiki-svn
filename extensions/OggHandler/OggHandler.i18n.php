@@ -1357,6 +1357,7 @@ $messages['ht'] = array(
 
 /** Hungarian (Magyar)
  * @author Dani
+ * @author Glanthor Reviol
  * @author Tgr
  */
 $messages['hu'] = array(
@@ -1386,6 +1387,8 @@ $messages['hu'] = array(
 	'ogg-dismiss' => 'Bezárás',
 	'ogg-download' => 'Fájl letöltése',
 	'ogg-desc-link' => 'Fájlinformációk',
+	'ogg-oggThumb-version' => 'Az OggHandlerhez $1 vagy későbbi verziójú oggThumb szükséges.',
+	'ogg-oggThumb-failed' => 'Az oggThumb nem tudta elkészíteni a bélyegképet.',
 );
 
 /** Interlingua (Interlingua)
@@ -2454,6 +2457,8 @@ $messages['pms'] = array(
 	'ogg-dismiss' => 'sëré',
 	'ogg-download' => "Dëscarié l'archivi",
 	'ogg-desc-link' => "Rësgoard a st'archivi",
+	'ogg-oggThumb-version' => "OggHandler a ciama la vërsion $1 d'oggThumb o pi agiornà.",
+	'ogg-oggThumb-failed' => "oggThumb a l'ha falì a creé la figurin-a.",
 );
 
 /** Pashto (پښتو)

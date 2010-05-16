@@ -490,7 +490,7 @@ $messages['mhr'] = array(
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
-	'dplforum-desc' => 'Форумско проширување на основа на DPL',
+	'dplforum-desc' => 'Форумски додаток на основа на DPL',
 	'dplforum-by' => 'од $1',
 	'dplforum-edited' => '- Последно уредено',
 	'dplforum-never' => 'Никогаш',

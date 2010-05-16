@@ -1090,11 +1090,12 @@ $messages['mg'] = array(
 );
 
 /** Macedonian (Македонски)
+ * @author Bjankuloski06
  * @author Brest
  */
 $messages['mk'] = array(
 	'bookinfo-header' => 'Информации за книга',
-	'bookinformation-desc' => 'Проширување на [[Special:Booksources|специјалната страница за книги]] со информации од веб сервис',
+	'bookinformation-desc' => 'Додаток на [[Special:Booksources|специјалната страница за книги]] со информации од веб сервис',
 	'bookinfo-result-title' => 'Наслов:',
 	'bookinfo-result-author' => 'Автор:',
 	'bookinfo-result-publisher' => 'Издавач:',

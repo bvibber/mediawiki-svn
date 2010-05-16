@@ -239,3 +239,17 @@ $messages['te'] = array(
 	'apisvgproxy-desc' => 'ఎక్కడో ఉన్న SVG ఫైళ్ళు ప్రాంతీయ డొమైన్ ఉన్నట్లుగా చూపబడతాయి',
 );
 
+/** Turkish (Türkçe)
+ * @author Joseph
+ */
+$messages['tr'] = array(
+	'apisvgproxy-desc' => 'Bir dosya deposundan (muhtemelen uzaktaki) yerel alana SVG dosyaları vekil eder',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Horacewai2
+ */
+$messages['zh-hant'] = array(
+	'apisvgproxy-desc' => '代理從 SVG文件（可能是遠程）文件存放到本地域名',
+);
+

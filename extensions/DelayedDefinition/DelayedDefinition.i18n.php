@@ -389,3 +389,11 @@ $messages['tr'] = array(
 	'delaydef-error-redef' => 'Hata: $1 için yeniden tanımlama denemesi.',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Horacewai2
+ */
+$messages['zh-hant'] = array(
+	'delaydef-error-no-name' => '錯誤：沒有指定name參數。',
+	'delaydef-error-redef' => '錯誤：試圖重新定義為$1。',
+);
+

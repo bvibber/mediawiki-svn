@@ -9113,6 +9113,7 @@ $messages['tr'] = array(
 	'code-load-diff' => 'Farkları yüklüyor…',
 	'code-notes' => 'son yorumlar',
 	'code-statuschanges' => 'durum değişiklikleri',
+	'code-mycommits' => 'taahhütlerim',
 	'code-authors' => 'yazarlar',
 	'code-status' => 'durum',
 	'code-tags' => 'etiketler',

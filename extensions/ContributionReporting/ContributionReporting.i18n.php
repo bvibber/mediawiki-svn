@@ -2668,7 +2668,9 @@ $messages['ko'] = array(
 	'contribstats-monthly-totals' => '{{PLURAL:$1|이달의 기부 총합|과거 $1개월의 월별 기부 총합}}',
 	'contribstats-month-range-totals' => '{{PLURAL:$1|$1개월간의 총합|$1개월간의 월별 총합}}',
 	'contribstats-currency-range-totals' => '통화별 총합 ($1에서 $2까지)',
+	'contribstats-contribution-range-breakdown' => '액수별 기부 내역 ($1에서 $2까지)',
 	'contribstats-currency-totals' => '회계연도 $1년의 통화별 기부 총액',
+	'contribstats-contribution-breakdown' => '회계연도 $1년의 액수별 기부 내역',
 	'contribstats-day' => '날짜',
 	'contribstats-month' => '월',
 	'contribstats-currency' => '화폐',
@@ -2685,6 +2687,8 @@ $messages['ko'] = array(
 	'contribstats-value-over' => '$1 초과',
 	'contributiontrackingstatistics' => '기부 추적 통계',
 	'contribstats-day-totals' => '일간 소계',
+	'contribstats-week' => '주',
+	'contribstats-weekly-totals' => '{{PLURAL:$1|이번 주의 총합|과거 $1주일간의 총합}}',
 	'contribstats-payment-type' => '지불 방식',
 	'contribstats-banner' => '배너',
 	'contribstats-payment-type-hits' => '지불 유형 선택 수',
@@ -2699,6 +2703,8 @@ $messages['ko'] = array(
 	'contribstats-imperfect-data' => '세션 추적 없이 기부를 추적하는 것은 한계가 있기 때문에 이 데이터는 정확하지 않을 수 있습니다.',
 	'contribstats-paypal-donations' => 'PayPal 기부',
 	'contribstats-credit-card' => '신용 카드',
+	'contribstats-fraud-note' => '일부 사기성 기부도 있습니다.',
+	'contribstats-unaudited' => '이는 회계 감사받지 않은 총합입니다.',
 	'fundraiserstatistics' => '모금 활동 통계',
 	'fundraiserstats-date' => '날짜',
 	'fundraiserstats-day' => '$2의 $1일째',
@@ -2711,6 +2717,7 @@ $messages['ko'] = array(
 	'fundraiserstats-tab-contributions' => '기여 횟수',
 	'fundraiserstats-tab-averages' => '평균 (USD)',
 	'fundraiserstats-tab-maximums' => '최댓값 (USD)',
+	'fundraiserstats-tab-ytd' => '연간 누계 (USD)',
 );
 
 /** Colognian (Ripoarisch)

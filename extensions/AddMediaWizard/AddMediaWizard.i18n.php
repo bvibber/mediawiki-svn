@@ -15,6 +15,13 @@ $messages['en'] = array(
 	'addmediawizard-desc' => 'Add media wizard, developed in partnership by Kaltura and Wikimedia Foundation',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'addmediawizard-desc' => 'Média hozzáadása varázsló, a Kaltura és a Wikimédia Alapítvány közös fejlesztése',
+);
+
 /** Korean (한국어)
  * @author Kwj2772
  */
@@ -41,5 +48,19 @@ $messages['pt-br'] = array(
  */
 $messages['sv'] = array(
 	'addmediawizard-desc' => 'Guide för att lägga till media, utvecklad i samarbete mellan Kaltura och Wikimedia Foundation',
+);
+
+/** Turkish (Türkçe)
+ * @author Joseph
+ */
+$messages['tr'] = array(
+	'addmediawizard-desc' => 'Ortam ekleme sihirbazı, Kaltura ve Vikimedya Kuruluşu ortaklığıyla geliştirilmiştir',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Horacewai2
+ */
+$messages['zh-hant'] = array(
+	'addmediawizard-desc' => '添加媒體嚮導，由Kaltura和維基媒體基金會開發',
 );
 

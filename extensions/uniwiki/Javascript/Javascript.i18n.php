@@ -239,7 +239,7 @@ $messages['lb'] = array(
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
-	'javascript-desc' => 'Го додава uniwiki.js на секоја страница што содржи JavaScript код кој е заеднички за Uniwiki проширувањата',
+	'javascript-desc' => 'Го додава uniwiki.js на секоја страница што содржи JavaScript код кој е заеднички за Uniwiki додатоците',
 );
 
 /** Nedersaksisch (Nedersaksisch)

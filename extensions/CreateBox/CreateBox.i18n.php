@@ -870,9 +870,16 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Horacewai2
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
+	'createbox-desc' => '於Wiki中包含創建頁面的輸入框',
 	'createbox-create' => '建立',
+	'createbox-exists' => "抱歉，'''{{FULLPAGENAME}}'''已經存在於{{SITENAME}}。
+
+你不能創建本頁，但你可以[{{fullurl:{{FULLPAGENAME}}|action=edit}} 編輯本頁]、[{{fullurl:{{FULLPAGENAME}}}} 閱讀本頁]或在下方輸入另一個名字繼續創建頁面：
+
+<createbox>break=no</createbox>",
 );
 

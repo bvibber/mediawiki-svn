@@ -96,11 +96,20 @@ To help us improve them, please fill out the optional survey below before clicki
 
 /** Message documentation (Message documentation)
  * @author EugeneZelenko
+ * @author Lloffiwr
  * @author McDutchie
  */
 $messages['qqq'] = array(
-	'prefswitch-survey-true' => '{{Identical|Yes}}',
-	'prefswitch-survey-false' => '{{Identical|No}}',
+	'prefswitch-survey-true' => 'Used in a form where it is a radio button label from the PrefSwitch questionnaire module to answer Yes or No to a question ([http://commons.wikimedia.org/w/index.php?title=Special:UsabilityInitiativePrefSwitch&mode=feedback example]).
+
+It is not in used at the referred page, as of 16 May 2010.
+
+{{Identical|Yes}}',
+	'prefswitch-survey-false' => 'Used in a form where it is a radio button label from the PrefSwitch questionnaire module to answer Yes or No to a question ([http://commons.wikimedia.org/w/index.php?title=Special:UsabilityInitiativePrefSwitch&mode=feedback example]).
+
+It is not in used at the referred page, as of 16 May 2010.
+
+{{Identical|No}}',
 	'prefswitch-survey-cancel-feedback' => '$1 is a link to the main page of the wiki in question.',
 	'prefswitch-survey-answer-whyoff-other' => '{{Identical|Other reason}}',
 );
@@ -478,10 +487,14 @@ Chcete-li nám pomoci zlepšit je, prosím, vyplňte dotazník níže.',
  * @author Lloffiwr
  */
 $messages['cy'] = array(
+	'prefswitch' => 'Switsh y Dewisiadau ar y Cynllun Defnyddioldeb',
+	'prefswitch-desc' => 'Yn gadael i ddefnyddwyr newid rhwng gwahanol setiau o ddewisiadau',
 	'prefswitch-survey-submit-off' => 'Diffodd y nodweddion newydd',
 	'prefswitch-survey-cancel-off' => "Os ydych am barhau i ddefnyddio'r nodweddion newydd, gallwch ddychwelyd at y dudalen $1.",
 	'prefswitch-survey-submit-feedback' => 'Anfon adborth',
 	'prefswitch-survey-cancel-feedback' => 'Os nad ydych am anfon adborth atom, gallwch ddychwelyd i $1.',
+	'prefswitch-survey-question-whyoff' => "Pam ydych chi'n diffodd y nodweddion newydd?
+Dewiswch yr holl resymau dros gwneud.",
 	'prefswitch-survey-answer-whyoff-hard' => "Yr oedd yn rhy anodd i'w ddefnyddio.",
 	'prefswitch-survey-answer-whyoff-didntwork' => "Nid oedd yn gweithio'n iawn.",
 	'prefswitch-survey-answer-whyoff-notpredictable' => "Roedd yn gweithredu'n fympwyol.",
@@ -490,24 +503,43 @@ $messages['cy'] = array(
 	'prefswitch-survey-answer-whyoff-didntlike-toolbar' => "Doeddwn i ddim yn hoffi'r bar offer newydd.",
 	'prefswitch-survey-question-browser' => "Pa borwr gwe ydych chi'n ei ddefnyddio?",
 	'prefswitch-survey-answer-browser-other' => 'Porwr arall:',
-	'prefswitch-title-on' => "Beth sy'n newydd?",
+	'prefswitch-survey-question-os' => "Pa system weithredu ydych chi'n ei defnyddio?",
+	'prefswitch-survey-answer-os-other' => 'System weithredu arall:',
+	'prefswitch-survey-question-res' => "Pa gydraniad sydd i'ch sgrin?",
+	'prefswitch-title-on' => 'Nodweddion newydd',
 	'prefswitch-title-switched-on' => 'Mwynhewch!',
 	'prefswitch-title-off' => 'Diffodd y nodweddion newydd',
 	'prefswitch-title-switched-off' => 'Diolch',
 	'prefswitch-title-feedback' => 'Adborth',
-	'prefswitch-success-on' => "Mae'r nodweddion newydd ar waith.",
-	'prefswitch-success-off' => 'Diffoddwyd y nodweddion newydd.',
+	'prefswitch-success-on' => 'Mae\'r nodweddion newydd ar waith. Gobeithiwn y byddwch yn mwynhau eu defnyddio. Gallwch eu diffodd drwy glicio ar y cyswllt "[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-on}}]]" ar frig tudalen.',
+	'prefswitch-success-off' => 'Diffoddwyd y nodweddion newydd. Diolch am roi tro arnynt. Gallwch eu rhoi ar waith eto trwy glicio\'r cyswllt "[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-off}}]]" ar frig tudalen.',
 	'prefswitch-success-feedback' => 'Anfonwyd eich adborth.',
 	'prefswitch-return' => '<hr style="clear:both">
 Dychwelyd i <span class="plainlinks">[$1 $2]</span>.',
+	'prefswitch-main' => "Rydym wedi bod yn gweithio'n galed i wneud pethau'n haws i'n defnyddwyr. Rydym am rannu rhai gwelliannau gyda chi, gan gynnwys golwg newydd, naws gwahanol a nodweddion golygu symlach. Mae gwella defnyddioldeb ein prosiectau yn flaenoriaeth i Sefydliad Wikimedia, a byddwn yn rhannu rhagor o ddiweddariadau eto. Am fwy o fanylion, ewch i [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/ flog Wikimedia].
+
+[[File:UsabilityNavigation.png|right|link=|Ciplun o'r tabiau llywio]]
+[[File:UsabilityToolbar.png|right|link=|Ciplun o'r bar offer golygu estynedig]]
+[[File:UsabilityDialogs.png|right|link=|Ciplun o'r blychau deialog ar gyfer cynhyrchu cynnwys tudalennau]]
+=== Dyma'r hyn sydd wedi newid ===
+*'''Llywio''': Rydym wedi gwella'r llywio ar gyfer darllen tudalennau a'u golygu. Yn awr, mae'n haws gweld o'r tabiau ar frig tudalen p'un ai'r dudalen neu ei thudalen drafod sydd o'ch blaen, a ph'un ai ydych yn darllen neu yn golygu. 
+*'''Gwelliannau i'r bar offer golygu''': Rydym wedi ad-drefnu'r bar offer golygu i'w wneud yn haws i'w ddefnyddio. Nawr, mae fformatio tudalennau yn symlach ac yn haws ei ddeall.
+*'''Dewin cysylltu''': Teclyn hawdd i'w ddefnyddio yn eich galluogi i ychwanegu cysylltau i dudalennau eraill ar y wici yn ogystal â chysylltau i safleoedd allanol. 
+*'''Gwelliannau wrth chwilio''': Rydym wedi gwella'r awgrymiadau chwilio i gael hyd i'r nod yn gyflymach.
+*'''Nodweddion newydd eraill''': Rydym hefyd wedi gwneud dewin tablau i'w gwneud yn haws llunio tablau, ac wedi gwneud teclyn 'canfod a disodli' i'ch cynorthwyo wrth i chi olygu.
+*'''Glôb pos Wicipedia''': Rydym wedi diweddaru'r glôb ar lun pos. Darllenwch fwy ar [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ flog Wikimedia].",
+	'prefswitch-main-anon' => '===Ewch Nôl a Fi===
+Os ydych am ddiffodd y nodweddion newydd, <span class="plainlinks">[$1 cliciwch fan hyn]</span>. Fe gewch gynnig mewngofnodi neu greu cyfrif yn gyntaf.',
 	'prefswitch-main-on' => '===Adborth?===
 Hoffen glywed gennych yn fawr.  Ymwelwch â\'n <span class="plainlinks">[$1 tudalen adborth]</span>.
 ===Ewch â fi am nôl!===
 Os hoffech ddiffodd y nodweddion newydd, cliciwch <span class="plainlinks">[$2 fan hyn]</span>.',
-	'prefswitch-survey-intro-feedback' => 'Byddem wrth ein bodd cael clywed gennych. 
-Llenwch yr arolwg dewisol isod.',
-	'prefswitch-survey-intro-off' => "Diolch am roi cynnig ar ein nodweddion newydd. 
-I'n helpu ni i'w gwella, cwblhewch yr arolwg dewisol isod.",
+	'prefswitch-main-off' => '==Rhowch gynnig arni!==
+Os yr hoffech roi cynnig ar y nodweddion newydd, pwyswch <span class="plainlinks">[$1 fan hyn]</span>.',
+	'prefswitch-survey-intro-feedback' => 'Byddem yn falch o gael eich barn. 
+Os y dymunwch, llenwch yr arolwg dewisol isod ac yna pwyswch ar "[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]".',
+	'prefswitch-survey-intro-off' => 'Diolch am roi cynnig ar ein nodweddion newydd. 
+I\'n helpu ni i\'w gwella, cwblhewch yr arolwg dewisol isod, yna pwyswch ar "[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]".',
 );
 
 /** German (Deutsch)
@@ -1286,13 +1318,13 @@ Jelöld be az összes indokodat.',
 	'prefswitch-survey-question-os' => 'Melyik operációs rendszert használod?',
 	'prefswitch-survey-answer-os-other' => 'Más operációs rendszer:',
 	'prefswitch-survey-question-res' => 'Milyen felbontású a képernyőd?',
-	'prefswitch-title-on' => 'Mik az újdonságok?',
+	'prefswitch-title-on' => 'Új funkciók',
 	'prefswitch-title-switched-on' => 'Jó szórakozást!',
 	'prefswitch-title-off' => 'Új funkciók kikapcsolása',
 	'prefswitch-title-switched-off' => 'Köszönjük',
 	'prefswitch-title-feedback' => 'Visszajelzés',
-	'prefswitch-success-on' => 'Új funkciók bekapcsolva.',
-	'prefswitch-success-off' => 'Új funkciók kikapcsolva.',
+	'prefswitch-success-on' => 'Az új funkciók be vannak kapcsolva. Reméljük, hogy jó használni az újdonságokat. Bármikor kikapcsolhatod őket a lap tetején található „[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-on}}]]” gombra kattintva.',
+	'prefswitch-success-off' => 'Az új funkciók ki vannak kapcsolva. Köszönjük hogy kipróbáltad őket. Bármikor visszakapcsolhatod őket a lap tetején található „[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-off}}]]” gombra kattintva.',
 	'prefswitch-success-feedback' => 'A visszajelzésed el lett küldve.',
 	'prefswitch-return' => '<hr style="clear:both">
 Vissza a(z) <span class="plainlinks">[$1 $2]</span> lapra.',
@@ -1300,9 +1332,9 @@ Vissza a(z) <span class="plainlinks">[$1 $2]</span> lapra.',
 
 Ha szeretnéd bekapcsolni az új funkciókat, <span class="plainlinks">[$1 kattints ide]</span>.',
 	'prefswitch-survey-intro-feedback' => 'Örülnénk, ha elmondanád a véleményed.
-Légyszíves töltsd ki az alábbi önkéntes kérdőívet.',
+Légyszíves töltsd ki az alábbi önkéntes kérdőívet, mielőtt a „[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]”  gombra kattintanál.',
 	'prefswitch-survey-intro-off' => 'Köszönjük, hogy kipróbáltad az új funkciókat.
-Légyszíves segíts a továbbfejlesztésükben az alábbi önkéntes kérdőív kitöltésével.',
+Légyszíves segíts a továbbfejlesztésükben az alábbi önkéntes kérdőív kitöltésével, mielőtt az „[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]”-ra kattintanál.',
 );
 
 /** Interlingua (Interlingua)
@@ -1569,6 +1601,8 @@ $messages['ko'] = array(
 	'prefswitch-survey-cancel-off' => '새 기능을 계속 사용하시려면, $1로 돌아가실 수 있습니다.',
 	'prefswitch-survey-submit-feedback' => '피드백 남기기',
 	'prefswitch-survey-cancel-feedback' => '피드백을 제공하고 싶지 않다면 $1로 돌아가시면 됩니다.',
+	'prefswitch-survey-question-like' => '새 기능에 대해서 어떤 점이 좋았습니까?',
+	'prefswitch-survey-question-dislike' => '새 기능에 대해 어떤 점이 마음에 들지 않으셨습니까?',
 	'prefswitch-survey-question-whyoff' => '새로운 기능을 끄는 이유가 무엇인가요?
 해당하는 모든 항목을 선택해주세요.',
 	'prefswitch-survey-answer-whyoff-hard' => '사용하기에 너무 어렵다.',
@@ -1588,22 +1622,23 @@ $messages['ko'] = array(
 	'prefswitch-title-off' => '새 기능 끄기',
 	'prefswitch-title-switched-off' => '감사합니다.',
 	'prefswitch-title-feedback' => '피드백',
-	'prefswitch-success-on' => '새 기능이 켜졌습니다.',
-	'prefswitch-success-off' => '새 기능이 꺼졌습니다.',
+	'prefswitch-success-on' => '새 기능이 켜졌습니다. 새 기능을 즐겁게 사용할 수 있기를 바랍니다. 페이지의 맨 위에 "[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-on}}]]"를 눌러 새 기능을 끌 수 있습니다.',
+	'prefswitch-success-off' => '새 기능이 꺼졌습니다. 새 기능을 사용해 주셔서 감사합니다. 페이지의 맨 위에 있는 "[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-off}}]]"를 눌러 언제든지 새 기능을 켤 수 있습니다.',
 	'prefswitch-success-feedback' => '당신의 피드백을 보냈습니다.',
 	'prefswitch-return' => '<hr style="clear:both">
 <span class="plainlinks">[$1 $2]</span>로 돌아갑니다.',
-	'prefswitch-main' => "우리는 사용자를 더욱 편리하게 하기 위해 노력하고 있습니다. 새로운 스킨과 간단해진 편집 기능을 포함한 개선 사항을 보여 주게 되어 영광입니다. 프로젝트 이용을 편리하게 하는 것은 위키미디어 재단의 주 목표이며 나중에 더 많은 업데이트를 제공할 것입니다.
+	'prefswitch-main' => "우리는 사용자를 더욱 편리하게 하기 위해 노력하고 있습니다. 새로운 스킨과 간단해진 편집 기능을 포함한 개선 사항을 보여 주게 되어 영광입니다. 프로젝트 이용을 편리하게 하는 것은 위키미디어 재단의 주 목표이며 나중에 더 많은 업데이트를 제공할 것입니다. 자세한 내용은 [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/ 위키미디어 블로그의 게시글]을 참고하십시오.
 
 [[File:UsabilityNavigation.png|right|link=|새로운 둘러보기 탭의 스크린샷]]
 [[File:UsabilityToolbar.png|right|link=|향상된 편집 툴바의 스크린샷]]
 [[File:UsabilityDialogs.png|right|link=|새로운 편집 대화상자의 스크린샷]]
 ===새롭게 바뀐 점===
-* '''둘러보기:''' 문서 읽기와 편집에 대한 둘러보기 메뉴가 향상되었습니다. 각 문서의 상단의 탭이 당신이 일반 문서를 보고 있는지 토론 문서를 보고 있는지, 문서를 읽고 있는지 편집하고 있는지 명확하게 나타내게 됩니다.
-* '''편집 툴바 향상:'''  편집 툴바를 더욱 사용하기 쉽게 재구성했습니다. 이제 문서를 꾸미는 것이 더욱 간단하고 쉬워질 것입니다.
-* '''링크 마법사:'''  사용하기 쉬운 도구가 다른 문서나 외부로 링크를 쉽게 걸 수 있도록 도와 줄 것입니다.
-* '''검색 기능 향상:''' 찾는 문서를 더욱 쉽게 찾을 수 있도록 검색어 제안 기능을 향상시켰습니다.
-* '''다른 새로운 기능:'''  표를 쉽게 만들 수 있도록 표 마법사와 문서 편집을 간단하게 하기 위해 찾아 바꾸기 기능을 도입했습니다.",
+* '''둘러보기''': 문서 읽기와 편집에 대한 둘러보기 메뉴가 향상되었습니다. 각 문서의 상단의 탭이 당신이 일반 문서를 보고 있는지 토론 문서를 보고 있는지, 문서를 읽고 있는지 편집하고 있는지 명확하게 나타내게 됩니다.
+* '''편집 툴바 향상''':  편집 툴바를 더욱 사용하기 쉽게 재구성했습니다. 이제 문서를 꾸미는 것이 더욱 간단하고 쉬워질 것입니다.
+* '''링크 마법사''':  사용하기 쉬운 도구가 다른 문서나 외부로 링크를 쉽게 걸 수 있도록 도와 줄 것입니다.
+* '''검색 기능 향상''': 찾는 문서를 더욱 쉽게 찾을 수 있도록 검색어 제안 기능을 향상시켰습니다.
+* '''다른 새로운 기능''':  표를 쉽게 만들 수 있도록 표 마법사와 문서 편집을 간단하게 하기 위해 찾아 바꾸기 기능을 도입했습니다.
+* '''위키백과 로고의 퍼즐''': 위키백과 로고의 퍼즐을 업데이트했습니다. [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ 위키미디어 블로그]에서 자세히 알아보십시오.",
 	'prefswitch-main-anon' => '===돌아갈래요===
 새 기능을 끄기를 원하신다면 <span class="plainlinks">[$1 여기]</span>를 클릭해주세요. 로그인하거나 계정을 먼저 생성하여야 합니다.',
 	'prefswitch-main-on' => '===피드백?===
@@ -1613,9 +1648,9 @@ $messages['ko'] = array(
 	'prefswitch-main-off' => '===새 기능을 써 보세요!===
 새 기능을 켜려면 <span class="plainlinks">[$1 여기]</span>를 클릭해주세요.',
 	'prefswitch-survey-intro-feedback' => '당신에게 피드백을 받고자 합니다.
-아래의 설문 조사에 답해주세요.',
+"[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]"을 누르기 전에 아래의 설문 조사에 답해주세요.',
 	'prefswitch-survey-intro-off' => '새 기능을 사용해 주셔서 감사합니다.
-기능을 향상시키는 것을 돕기 위해 아래 설문 조사에 답해 주세요.',
+기능을 향상시키는 것을 돕기 위해 "[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]"를 누르기 전에 아래 설문 조사에 답해 주세요.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -1898,9 +1933,9 @@ $messages['nl'] = array(
 	'prefswitch-survey-question-dislike' => 'Wat beviel u niet aan de nieuwe functionaliteit?',
 	'prefswitch-survey-question-whyoff' => 'Waarom wilt u de nieuwe mogelijkheden uitschakelen?
 Vink alstublieft alle mogelijkheden die van toepassing zijn aan.',
-	'prefswitch-survey-answer-whyoff-hard' => 'Het gebruik was te moeilijk.',
-	'prefswitch-survey-answer-whyoff-didntwork' => 'De wijzigingen functioneerden niet correct.',
-	'prefswitch-survey-answer-whyoff-notpredictable' => 'Het reageerde niet voorspelbaar.',
+	'prefswitch-survey-answer-whyoff-hard' => 'Het gebruik van de nieuwe functionaliteit was te lastig.',
+	'prefswitch-survey-answer-whyoff-didntwork' => 'De nieuwe functionaliteit functioneerde niet correct.',
+	'prefswitch-survey-answer-whyoff-notpredictable' => 'De nieuwe functionaliteit reageerde niet voorspelbaar.',
 	'prefswitch-survey-answer-whyoff-didntlike-look' => 'Het zag er niet zo uit als ik wilde.',
 	'prefswitch-survey-answer-whyoff-didntlike-layout' => 'Ik vond de nieuwe tabbladen en het uiterlijk niet prettig.',
 	'prefswitch-survey-answer-whyoff-didntlike-toolbar' => 'Ik vond de nieuwe werkbalk niet prettig werken.',
@@ -2187,7 +2222,7 @@ Voltar para <span class="plainlinks">[$1 $2]</span>.',
 [[File:UsabilityToolbar.png|right|link=|Imagem da barra melhorada das ferramentas de edição]]
 [[File:UsabilityDialogs.png|right|link=|Imagem dos diálogos de geração de novos conteúdos]]
 ===O que foi melhorado===
-* '''Navegação:''' A navegação na leitura e edição de páginas foi melhorada. Agora, os separadores no topo da página definem mais claramente se está a visionar a página ou a página de discussão, e se está a lê-la ou a editá-la.
+* '''Navegação:''' A navegação na leitura e edição de páginas foi melhorada. Agora, os separadores no topo da página definem mais claramente se está a visionar a página em si ou a respectiva página de discussão, e se está a lê-la ou a editá-la.
 * '''Barra das ferramentas de edição:''' A barra foi reorganizada para ser mais fácil de usar. Agora, formatar páginas é simples e mais intuitivo.
 * '''Assistente para links:''' Uma ferramenta de fácil utilização permite-lhe criar tanto links para outras páginas da Wikipédia como links para outros sites externos.
 * '''Melhoramentos da pesquisa:''' Melhorámos as sugestões da pesquisa para levá-lo mais rapidamente à página que procura.

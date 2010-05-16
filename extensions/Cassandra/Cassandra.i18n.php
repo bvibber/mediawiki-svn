@@ -46,6 +46,13 @@ $messages['hsb'] = array(
 	'cassandra-desc' => 'Wersijowy tekst w datowej bance [http://cassandra.apache.org/ Apache Cassandra] składować',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'cassandra-desc' => 'A lapváltozatok szövegeinek tárolása [http://cassandra.apache.org/ Apache Cassandra] adatbázisban',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
@@ -74,6 +81,13 @@ $messages['nl'] = array(
 	'cassandra-desc' => 'Versietekst opslaan in een [http://cassandra.apache.org/ Apache Cassandra] database',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'cassandra-desc' => 'Memorisa ëd test ëd revision ant ël database [http://cassandra.apache.org/ Apache Cassandra]',
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
@@ -86,5 +100,19 @@ $messages['ps'] = array(
  */
 $messages['pt'] = array(
 	'cassandra-desc' => 'Armazenar os textos das revisões numa base de dados [http://cassandra.apache.org/ Apache Cassandra]',
+);
+
+/** Russian (Русский)
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'cassandra-desc' => 'Хранение текста версии страницы в базе данных [http://cassandra.apache.org/ Apache Cassandra]',
+);
+
+/** Turkish (Türkçe)
+ * @author Joseph
+ */
+$messages['tr'] = array(
+	'cassandra-desc' => 'Revizyon metnini [http://cassandra.apache.org/ Apache Cassandra] veritabanında sakla',
 );
 

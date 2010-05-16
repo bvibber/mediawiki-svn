@@ -238,6 +238,13 @@ $messages['te'] = array(
 	'dynamicsidebar-desc' => 'వాడుకరి పేజీలు, సమూహాలు, వర్గాలను బట్టి అప్పటికప్పుడు పక్క పట్టీని చూపిస్తుంది.',
 );
 
+/** Turkish (Türkçe)
+ * @author Joseph
+ */
+$messages['tr'] = array(
+	'dynamicsidebar-desc' => 'Kullanıcı sayfaları, gruplar ve kategorilere dayanarak dinamik kenar çubukları sağlar',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

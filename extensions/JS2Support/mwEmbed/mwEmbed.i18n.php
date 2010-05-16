@@ -216,6 +216,10 @@ $messages['hsb'] = array(
 	'mwe-test-plural' => 'Sym {{PLURAL:$1|$1 test|$1 testaj|testy|testow}} přewjedł',
 );
 
+/** Hungarian (Magyar)
+ * @author Dani
+ * @author Glanthor Reviol
+ */
 $messages['hu'] = array(
 	'mwe-loading_txt' => 'betöltés…',
 	'mwe-error_load_lib' => 'Hiba: a(z) $1 JavaScript-fájl nem elérhető, vagy nem definiálja a(z) $2 osztályt.',
@@ -223,6 +227,10 @@ $messages['hu'] = array(
 	'mwe-load-drag-item' => 'Vonszolt elem betöltése',
 	'mwe-ok' => 'OK',
 	'mwe-cancel' => 'Mégse',
+	'mwe-enable-gadget' => 'A multimédia béta (mwEmbed) engedélyezése az összes lapon',
+	'mwe-enable-gadget-done' => 'A multimédia béta segédeszköz engedélyezve',
+	'mwe-must-login-gadget' => 'Hogy engedélyezni tudd a segédeszközt, <a target="_new" href="$1">be kell jelentkezned</a>',
+	'mwe-test-plural' => '$1 tesztet futtattam',
 );
 
 /** Interlingua (Interlingua)

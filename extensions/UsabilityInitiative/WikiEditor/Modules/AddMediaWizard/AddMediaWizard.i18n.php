@@ -99,6 +99,13 @@ $messages['hsb'] = array(
 	'wikieditor-addMediaWizard-preference' => 'Funkciju "Medijowy asistent přidać" zmóžnić',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'wikieditor-addMediaWizard-preference' => '„Média hozzáadása varázsló” segédeszköz engedélyezése',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

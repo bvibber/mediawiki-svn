@@ -75,6 +75,13 @@ $messages['hsb'] = array(
 	'parserwiki-desc' => 'Zmóžnja gramatiku we wikiju definować, zo by so ta gramatika wužiwało, zo bychu so informacije do samsneho wikija a zapodali',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'parserwiki-desc' => 'Lehetővé teszi nyelvtan definiálását egy wikin, majd ezen nyelvtan használatával információk bevitelét ugyanazon a wikin',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

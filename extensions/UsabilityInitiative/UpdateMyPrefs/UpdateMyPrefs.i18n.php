@@ -82,6 +82,13 @@ $messages['cs'] = array(
 	'updatemyprefs-label-message' => 'Automaticky aktualizovat moje nastavení na nové implicitní hodnoty a použití nových nástrojů, jakmile se stanou dostupné',
 );
 
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
+$messages['cy'] = array(
+	'prefs-updates' => 'Diweddaru',
+);
+
 /** German (Deutsch) */
 $messages['de'] = array(
 	'prefs-updates' => 'Aktualisierungen',

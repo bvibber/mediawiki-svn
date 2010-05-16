@@ -530,10 +530,12 @@ $messages['hsb'] = array(
 /** Hungarian (Magyar)
  * @author Dani
  * @author Dorgan
+ * @author Glanthor Reviol
  */
 $messages['hu'] = array(
 	'chemicalsources' => 'Kémiával kapcsolatos források',
 	'chemicalsource-desc' => '<nowiki><chemform></nowiki> tag kémiai formulák elhelyezéséhez',
+	'chemicalsources-desc' => '[[Special:ChemicalSources|Speciális lap]] a kémiai forrásokhoz',
 	'chemFunctions_ListPage' => 'Kémiával kapcsolatos források',
 	'chemFunctions_DataList' => 'Lenn azon oldalak listája található, amelyek információval szolgálhatnak az általad keresett kémiai anyagról.<br /><br />
 * <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Compound $MIXCASNameFormula az NIST-nél</a><br />
@@ -927,6 +929,7 @@ $messages['pl'] = array(
 $messages['pms'] = array(
 	'chemicalsources' => 'Sorgiss Chìmiche',
 	'chemicalsource-desc' => 'A gionta ël tag <nowiki><chemform></nowiki>, për fórmule chìmiche',
+	'chemicalsources-desc' => '[[Special:ChemicalSources|Pàgina special]] për sorziss ëd chìmica',
 	'chemFunctions_ListPage' => 'Sorgiss Chìmiche',
 	'chemFunctions_DataList' => 'Di seguito viene presentato un elenco di collegamenti a siti presso i quali si possono referire informazioni sui composti chimici cercati.<br /><br />
 * <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&Units=SI">Scheda del composto $MIXCASNameFormula presso il NIST</a><br />
@@ -1245,6 +1248,7 @@ $messages['tl'] = array(
 $messages['tr'] = array(
 	'chemicalsources' => 'Kimyasal kaynaklar',
 	'chemicalsource-desc' => 'Kimyasal formüller için, <nowiki><chemform></nowiki> etiketini ekler',
+	'chemicalsources-desc' => 'Kimyasal kaynaklar için [[Special:ChemicalSources|özel sayfa]]',
 	'chemFunctions_ListPage' => 'Kimyasal kaynaklar',
 	'chemFunctions_DataList' => 'Aşağıdaki, aradığınız kimyasal madde hakkında bilgi sağlayabilecek sitelere bağlantıların bir listesidir.<br /><br />
 * <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">NIST\'de Bileşik $MIXCASNameFormula</a><br />

@@ -702,6 +702,7 @@ $messages['hu'] = array(
 	'spamdifftool' => 'Spam-feketelista kezelése',
 	'spamdifftool-desc' => 'Egyszerű lehetőség új bejegyzések hozzáadására a spam feketelistához lapváltoztatásokból',
 	'spamdifftool_cantedit' => 'Sajnáljuk, de nincs jogosultságod szerkeszteni a spam-feketelistát.',
+	'spamdifftool-no-title' => "'''Hiba:''' nem adtál meg lapcímet.",
 	'spamdifftool_notext' => "Nincs hozzáadandó szöveg a spam feketelistához.
 Kattints <a href='$1'>ide</a> a folytatáshoz.",
 	'spamdifftool_confirm' => "Erősítsd meg, hogy hozzá szeretnéd adni ezeket a bejegyzéseket a spam feketelistához.

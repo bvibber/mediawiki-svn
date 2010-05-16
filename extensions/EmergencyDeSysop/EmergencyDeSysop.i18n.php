@@ -1033,12 +1033,19 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Horacewai2
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
+	'emergencydesysop' => '緊急移除管理員權限',
 	'emergencydesysop-desc' => '容許管理員犧牲他們的特權，免除另一名管理員的權限。',
+	'emergencydesysop-otheradmin' => '其他管理員去移除權限',
 	'emergencydesysop-reason' => '移除理由',
+	'emergencydesysop-submit' => '遞交',
+	'emergencydesysop-incomplete' => '請填寫所有輸入框之後再試一次。',
 	'emergencydesysop-notasysop' => '目標使用者不在管理員群組中。',
+	'emergencydesysop-nogroups' => '無',
+	'emergencydesysop-done' => '動作已完成，你和[[$1]]已被移除管理員權限。',
 	'emergencydesysop-invalidtarget' => '目標使用者不存在',
 	'emergencydesysop-blocked' => '您在封禁期內不能存取本頁',
 	'emergencydesysop-noright' => '您沒有足夠權限存取本頁',

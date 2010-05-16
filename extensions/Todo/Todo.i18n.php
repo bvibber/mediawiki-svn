@@ -1191,7 +1191,7 @@ $messages['mhr'] = array(
  */
 $messages['mk'] = array(
 	'todo' => 'Листа на задачи',
-	'todo-desc' => 'Експериментално проширување за лична [[Special:Todo|листа на задачи]]',
+	'todo-desc' => 'Експериментален додаток за лична [[Special:Todo|листа на задачи]]',
 	'todo-tab' => 'задачи',
 	'todo-new-queue' => 'нова',
 	'todo-mail-subject' => 'Завршена задача на листата на задачи на $1',

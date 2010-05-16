@@ -37,7 +37,7 @@ $messages['arz'] = array(
 	'tooltip-desc' => 'يضيف وسم <code>&lt;tooltip&gt;</code> و <code>{{#tooltip:}}</code>',
 );
 
-/** Azerbaijani (Azərbaycan)
+/** Azerbaijani (Azərbaycanca)
  * @author Wertuose
  */
 $messages['az'] = array(

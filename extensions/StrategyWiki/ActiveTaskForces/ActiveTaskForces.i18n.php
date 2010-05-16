@@ -95,6 +95,7 @@ $messages['hsb'] = array(
  */
 $messages['hu'] = array(
 	'activetaskforces' => 'Aktív munkacsoportok',
+	'active-task-forces-desc' => 'Megjeleníti az egyes munkacsoport lapokon végzett szerkesztések számát',
 	'active-task-forces-intro' => 'Szerkesztések száma a munkacsoport lapokon az elmúlt $1 napban.',
 );
 
@@ -113,6 +114,15 @@ $messages['ia'] = array(
 $messages['ja'] = array(
 	'activetaskforces' => '活動中の特別チーム',
 	'active-task-forces-intro' => '最近$1日間に特別チームのページに加えられた編集回数',
+);
+
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'activetaskforces' => '활동 중인 태스크 포스',
+	'active-task-forces-desc' => '태스크 포스 문서에 대한 편집 수를 표시',
+	'active-task-forces-intro' => '최근 $1일동안의 태스크 포스 문서에 대한 편집 횟수입니다.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -170,9 +180,11 @@ $messages['oc'] = array(
 
 /** Piedmontese (Piemontèis)
  * @author Borichèt
+ * @author Dragonòt
  */
 $messages['pms'] = array(
 	'activetaskforces' => 'Echip ëd travaj ative',
+	'active-task-forces-desc' => 'Mosta nùmer ëd modìfiche a le pàgine dla task force',
 	'active-task-forces-intro' => "Nùmer ëd modìfiche a le pàgine dl'echip ëd travaj ant {{PLURAL:$1|l'ùltim di|j'ùltim $1 di}}.",
 );
 

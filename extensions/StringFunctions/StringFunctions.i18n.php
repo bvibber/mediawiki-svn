@@ -260,7 +260,7 @@ $messages['lb'] = array(
  * @author Brest
  */
 $messages['mk'] = array(
-	'stringfunctions-desc' => 'Проширување на парсерот со функции за работа со низи',
+	'stringfunctions-desc' => 'Ги проширува можностите на парсерот со функции за работа со низи',
 );
 
 /** Low German (Plattdüütsch)

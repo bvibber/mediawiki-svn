@@ -102,6 +102,13 @@ $messages['hsb'] = array(
 	'hidens-desc' => 'Chowa mjenowy rum we hłowje a titulu, hdyž strona je w podatym mjenowym rumje abo hdyž <code><nowiki>{{#hidens:}}</nowiki></code> parserowa funkcija so zawoła',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'hidens-desc' => 'Elrejti a névteret a fejlécben és a címben, ha a lap megadott névtérben van, vagy a <code><nowiki>{{#hidens:}}</nowiki></code> elemzőfüggvény hívásakor',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

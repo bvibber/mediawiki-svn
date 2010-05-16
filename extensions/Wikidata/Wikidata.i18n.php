@@ -5594,6 +5594,9 @@ Válaszd ki az exportálandó gyűjteményt. A nyelvek szövegdobozba add meg az
 	'ow_exporttsv_not_allowed' => 'Nincs jogosultságod a TSV-formátumba való exportáláshoz.',
 	'ow_exporttsv_export_failed' => 'Az exportálás nem sikerült',
 	'addcollection' => 'Wikiadat: gyűjtemény hozzáadása',
+	'ow_searchnoresult' => "<p>Választhatsz, hogy:<br />
+* '''létrehozod az „[[Expression:$1]]”''' lapot (és megadsz egy definíciót),<br />
+* '''vagy létrehozod a(z) „[[:$1]]”''' lapot (rendes wiki lap).</p>",
 	'ow_save' => 'Mentés',
 	'ow_history' => 'Történet',
 	'ow_datasets' => 'Adatkészlet kiválasztása',
@@ -5748,6 +5751,7 @@ Kérlek lépj kapcsolatba a szerver működtetőjével vagy adminisztrátorával
 	'ow_needs_xlation_source_lang' => 'Forrásnyelv:',
 	'ow_needs_xlation_dest_lang' => 'Célnyelv:',
 	'ow_needs_xlation_no_dest_lang' => 'Add meg a célnyelvet.',
+	'ow_statistics' => 'Wikiadat: statisztika',
 	'ow_show' => 'Megjelenítés',
 	'ow_upload' => 'Feltöltés',
 	'ow_create' => 'Létrehozás',

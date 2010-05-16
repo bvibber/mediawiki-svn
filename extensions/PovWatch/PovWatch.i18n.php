@@ -1445,7 +1445,7 @@ $messages['lt'] = array(
  */
 $messages['mk'] = array(
 	'povwatch' => 'PovWatch',
-	'povwatch_desc' => 'Проширување за [[Special:PovWatch|вметнување на страници во листите на набљудувања]] на други корисници',
+	'povwatch_desc' => 'Додаток за [[Special:PovWatch|вметнување на страници во листите на набљудувања]] на други корисници',
 	'povwatch_no_session' => 'Грешка: Не можев да го испратам образецот заради губење на сесиски податоци.',
 	'povwatch_not_allowed_push' => 'Не сте администратор на PovWatch, и затоа не можете да вметнувате страници во листи на набљудувања.',
 	'povwatch_already_subscribed' => 'Веќе сте запишани на PovWatch',

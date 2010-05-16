@@ -128,6 +128,8 @@ $messages['hsb'] = array(
 $messages['hu'] = array(
 	'checkpoint' => 'Mentés és szerkesztés folytatása',
 	'checkpoint-desc' => 'Engedélyezi a menet közbeni mentést, a szerkesztést lehet tovább folytatni',
+	'checkpoint-tooltip' => 'Az eddigi munkád mentése és a lap szerkesztésének folytatása',
+	'checkpoint-notice' => '([[{{ns:project}}:Checkpoint|köztes mentés]])',
 );
 
 /** Interlingua (Interlingua)

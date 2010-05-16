@@ -398,6 +398,7 @@ Hdyž wjacore strony wubjerješ abo wotwoleš, móžeš z stłóčenej přešalt
 
 /** Hungarian (Magyar)
  * @author Dani
+ * @author Glanthor Reviol
  */
 $messages['hu'] = array(
 	'watchsubpages' => 'Allapok figyelése',
@@ -406,7 +407,7 @@ $messages['hu'] = array(
 	'watchsubpages-addtitlestowatchlist' => 'Lapok hozzáadása a figyelőlistádhoz',
 	'watchsubpages-desc' => 'Egy lap [[Special:WatchSubpages|összes allapjának hozzáadása]] egyszerűen a figyelőlistádhoz',
 	'watchsubpages-form' => 'Válaszd ki a lapokat, amiket hozzá akarsz adni a figyelőlistádhoz.
-Lap hozzáadásához pipáld ki a mellette lévő dobozd, majd kattints a „Lapok hozzáadása” gombra.
+Lap hozzáadásához pipáld ki a mellette lévő dobozt, majd kattints a „{{int:watchsubpages-addtitles}}” gombra.
 
 Több lap kijelölésekor a shift gomb lenyomásával egyszerre kijelölheted az egymást követő dobozokat, csupán a kijelölés végére kell kattintanod.',
 );
@@ -677,7 +678,7 @@ $messages['pms'] = array(
 	'watchsubpages-addtitlestowatchlist' => "Gionta le pàgine a lòn ch'it ten-e sot euj",
 	'watchsubpages-desc' => "[[Special:WatchSubpages|Gionta an pressa tute le sotpàgine]] ëd na pàgina a lòn ch'it ten-e sot euj.",
 	'watchsubpages-form' => 'Selession-a le pàgine da gionté a lòn ch\'it ten-e sot euj.
-Për gionté na pàgina, signa la casela d\'apress ëd chila, e sgnaca "Gionta pàgine".
+Për gionté na pàgina, signa la casela d\'apress ëd chila, e sgnaca "{{int:watchsubpages-addtitles}}".
 
 Quand it selession-e o deselession-e vàire pàgine, sgnacand la ciav "shift" at përmëtt ëd selessioné ëd casele consecutive, an clicand inissi e fin dël range da signé.',
 );

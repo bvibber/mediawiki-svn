@@ -2372,6 +2372,7 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Alex S.H. Lin
+ * @author Horacewai2
  */
 $messages['zh-hant'] = array(
 	'changeauthor' => '更改修訂版本作者',
@@ -2381,7 +2382,7 @@ $messages['zh-hant'] = array(
 	'changeauthor-pagename-or-revid' => '頁面名稱或修定版本號碼：',
 	'changeauthor-pagenameform-go' => '尋找',
 	'changeauthor-comment' => '理由：',
-	'changeauthor-changeauthors-multi' => '{{int:changeauthor-changeauthors-single}}',
+	'changeauthor-changeauthors-multi' => '更改{{PLURAL:$1|作者|作者}}',
 	'changeauthor-explanation-multi' => '您可以在這個表單中更改任一修訂版本的作者。
 更改完成後請輸入更改理由並按下「{{int:changeauthor-changeauthors-single}}」以完成更改。',
 	'changeauthor-changeauthors-single' => '更改作者',
@@ -2396,5 +2397,6 @@ $messages['zh-hant'] = array(
 	'changeauthor-success' => '處理完成',
 	'changeauthor-logentry' => '更改[[$1]]修訂版本$2的作者從 $3 到 $4',
 	'changeauthor-logpagename' => '作者更改日誌',
+	'right-changeauthor' => '更換特定修訂版本作者',
 );
 
