@@ -84,8 +84,7 @@ class jsScriptLoader {
 	 *  outputs js
 	 */
 	function doScriptLoader() {
-		global 	$wgScriptLoaderNamedPaths, $IP,
-		$wgEnableScriptMinify, $wgUseFileCache;
+		global 	$wgScriptLoaderNamedPaths, $IP, $wgUseFileCache;
 
 		// Load the javascript class paths:
 		require_once( realpath( dirname( __FILE__ ) ) . "/includes/jsClassLoader.php");
@@ -504,7 +503,7 @@ class jsScriptLoader {
 	 * validate classes and generate request key
 	 */
 	function postProcRequestVars(){
-		global $wgContLanguageCode, $wgEnableScriptMinify, $wgScriptLoaderNamedPaths,
+		global $wgContLanguageCode, $wgScriptLoaderNamedPaths,
 		$wgStyleVersion;
 
 		// Set debug flag
@@ -585,11 +584,7 @@ class jsScriptLoader {
 
 		// Add the unique rid
 		$this->requestKey .= $this->urid;
-
-		// Add a minify flag
-		if ( $wgEnableScriptMinify ) {
-			$this->requestKey .= '_min';
-		}
+		
 	}
 	/**
 	 * Pre-process request variables ~without configuration~ or any utility functions.
