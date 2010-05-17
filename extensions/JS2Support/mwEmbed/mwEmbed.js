@@ -839,9 +839,9 @@ var MW_EMBED_VERSION = '1.1f';
 				
 				// If ( debug mode ) and the script include is missing class messages
 				// do a separate request to retrieve the msgs
-				if( mw.currentClassMissingMessages ){
-					mw.loadClassMessages( className, function(){
-						//reset the currentClassMissingMessages flag
+				if( mw.currentClassMissingMessages ){				
+					mw.loadClassMessages( className, function(){						
+						// Reset the currentClassMissingMessages flag
 						mw.currentClassMissingMessages = false;
 						// Run the onDone callback 
 						mw.loadDone( className );
@@ -851,8 +851,7 @@ var MW_EMBED_VERSION = '1.1f';
 					// is not able to append the loadDone call
 					mw.loadDone( className );
 				}
-			} );	
-			//mw.log( 'done with running getScript request ' );
+			} );
 			
 			/*
 			* ( If scriptLoader is not enabled )
@@ -860,14 +859,18 @@ var MW_EMBED_VERSION = '1.1f';
 			* Check if the class is ready: 
 			* ( not all browsers support onLoad script attribute )
 			* In the case of a "class" we can pull the javascript state until its ready
+			* 
+			* If we are waiting for msgs we can't support "class" defined check
 			*/
 			if( !mw.getScriptLoaderPath() ) {
 				setTimeout( function() {
-					mw.waitForObject( className, function( className ) {														
-						// Once object is ready run loadDone 
-						mw.loadDone( className );
+					mw.waitForObject( className, function( className ) {
+						// Once object is ready and we don't need message keys, run loadDone 
+						if( !mw.currentClassMissingMessages ){								
+							mw.loadDone( className );
+						}
 					} );
-				}, 25 ); 
+				}, 25 );
 			}
 		},				
 		
