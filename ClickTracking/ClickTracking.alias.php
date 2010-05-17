@@ -12,58 +12,54 @@ $aliases['en'] = array(
 	'ClickTracking' => array( 'ClickTracking' ),
 );
 
-/** Arabic (العربية) */
 $aliases['ar'] = array(
-	'ClickTracking' => array( 'تتبع_الضغط' ),
+	'ClickTracking'   => array( 'تتبع_الضغط' ),
 );
 
-/** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'ClickTracking' => array( 'تتبع_الضغطات' ),
+	'ClickTracking'   => array( 'متابعة_الدوسات' ),
 );
 
-/** Persian (فارسی) */
+$aliases['br'] = array(
+	'ClickTracking'   => array( 'HeuliañKlikoù' ),
+);
+
 $aliases['fa'] = array(
-	'ClickTracking' => array( 'تعقیب_کلیک' ),
+	'ClickTracking'   => array( 'تعقیب_کلیک' ),
 );
 
-/** Interlingua (Interlingua) */
 $aliases['ia'] = array(
-	'ClickTracking' => array( 'Traciamento de clic' ),
+	'ClickTracking'   => array( 'Traciamento de clic' ),
 );
 
-/** Indonesian (Bahasa Indonesia) */
 $aliases['id'] = array(
-	'ClickTracking' => array( 'Pelacakan klik', 'PelacakanKlik' ),
+	'ClickTracking'   => array( 'Pelacakan klik', 'PelacakanKlik' ),
 );
 
-/** Japanese (日本語) */
 $aliases['ja'] = array(
-	'ClickTracking' => array( 'クリック追跡' ),
+	'ClickTracking'   => array( 'クリック追跡' ),
 );
 
-/** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
-	'ClickTracking' => array( 'Opzeechne vun de Klicken' ),
+	'ClickTracking'   => array( 'Opzeechne vun de Klicken' ),
 );
 
-/** Marathi (मराठी) */
+$aliases['ml'] = array(
+	'ClickTracking'   => array( 'ഞെക്കൽപിന്തുടരൽ' ),
+);
+
 $aliases['mr'] = array(
-	'ClickTracking' => array( 'मागोवाटिचकवा' ),
+	'ClickTracking'   => array( 'मागोवाटिचकवा' ),
 );
 
-/** Dutch (Nederlands) */
 $aliases['nl'] = array(
-	'ClickTracking' => array( 'Klikvolgen' ),
+	'ClickTracking'   => array( 'Klikvolgen' ),
 );
 
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
 $aliases['no'] = array(
-	'ClickTracking' => array( 'Klikksporing' ),
+	'ClickTracking'   => array( 'Klikksporing' ),
 );
 
-/** Turkish (Türkçe) */
 $aliases['tr'] = array(
-	'ClickTracking' => array( 'TıklamaTakibi' ),
+	'ClickTracking'   => array( 'TıklamaTakibi' ),
 );
-
