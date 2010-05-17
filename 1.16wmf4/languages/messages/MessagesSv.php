@@ -151,7 +151,7 @@ $specialPageAliases = array(
 	'Blankpage'                 => array( 'Tom sida' ),
 	'LinkSearch'                => array( 'Länksökning' ),
 	'DeletedContributions'      => array( 'Raderade bidrag' ),
-	'Tags'                      => array( 'Taggar' ),
+	'Tags'                      => array( 'Märken', 'Taggar' ),
 );
 
 $magicWords = array(
