@@ -258,7 +258,11 @@ $.suggestions = {
 				context.data.$container.hide();
 				preventDefault = wasVisible;
 				selected = context.data.$container.find( '.suggestions-result-current' );
-				if ( selected.is( '.suggestions-special' ) ) {
+				if ( selected.size() == 0 ) {
+					// if nothing is selected, cancel any current requests and submit the form
+					$.suggestions.cancel( context );
+					context.config.$region.closest( 'form' ).submit();
+				} else if ( selected.is( '.suggestions-special' ) ) {
 					if ( typeof context.config.special.select == 'function' ) {
 						context.config.special.select.call( selected, context.data.$textbox );
 					}
@@ -292,7 +296,7 @@ $.fn.suggestions = function() {
 		/* Construction / Loading */
 		
 		var context = $(this).data( 'suggestions-context' );
-		if ( typeof context == 'undefined' ) {
+		if ( typeof context == 'undefined' || context == null ) {
 			context = {
 				config: {
 				    'fetch' : function() {},
