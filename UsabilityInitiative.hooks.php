@@ -172,14 +172,8 @@ class UsabilityInitiativeHooks {
 		// Loops over each style
 		foreach ( self::$styles as $style ) {
 			// Add css for various styles
-			$out->addLink(
-				array(
-					'rel' => 'stylesheet',
-					'type' => 'text/css',
-					'href' => $wgExtensionAssetsPath .
-							"/UsabilityInitiative/" .
-								"{$style['src']}?{$style['version']}",
-				)
+			$out->addExtensionStyle( $wgExtensionAssetsPath .
+				"/UsabilityInitiative/{$style['src']}?{$style['version']}"
 			);
 		}
 		return true;
