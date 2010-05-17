@@ -369,3 +369,12 @@ $messages['vi'] = array(
 	'updatemyprefs-label-message' => 'Tự động cập nhật các tùy chọn của tôi với những thiết lập và công cụ mặc định mới khi chúng ra mắt',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Horacewai2
+ */
+$messages['zh-hant'] = array(
+	'prefs-updates' => '更新',
+	'updatemyprefs-desc' => '供用戶選擇是否要定期更新的用戶界面',
+	'updatemyprefs-label-message' => '自動更新我的喜好與新的默認設置和工具如果它們可用',
+);
+

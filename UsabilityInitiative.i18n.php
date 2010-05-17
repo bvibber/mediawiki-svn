@@ -511,11 +511,12 @@ $messages['oc'] = array(
 
 /** Polish (Polski)
  * @author Leinad
+ * @author Nux
  * @author Sp5uhe
  */
 $messages['pl'] = array(
 	'usabilityinitiative' => 'Inicjatywa Użyteczności',
-	'usabilityinitiative-desc' => 'Funkcje rozwijane przez Inicjatywę Użyteczności Wikipedii w celu poszerzenia przydatności oprogramowania MediaWiki',
+	'usabilityinitiative-desc' => 'Funkcjonalności rozwijane przez Inicjatywę Użyteczności Wikipedii w celu poszerzenia przydatności oprogramowania MediaWiki',
 	'prefs-beta' => 'Funkcjonalności testowe',
 	'prefs-labs' => 'Funkcjonalności doświadczalne',
 );
@@ -727,10 +728,13 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Gaoxuewei
+ * @author Horacewai2
  * @author Shinjiman
  */
 $messages['zh-hant'] = array(
 	'usabilityinitiative' => 'Usability Initiative',
 	'usabilityinitiative-desc' => '由維基百科可用性小組開發的新功能，用以增強MediaWiki的可用性',
+	'prefs-beta' => 'Beta特性',
+	'prefs-labs' => '實驗中的功能',
 );
 

@@ -379,20 +379,27 @@ $messages['oc'] = array(
 );
 
 /** Polish (Polski)
+ * @author Nux
  * @author Sp5uhe
  */
 $messages['pl'] = array(
+	'prefswitch-link-anon' => 'Nowe funkcjonalności',
+	'tooltip-pt-prefswitch-link-anon' => 'Dowiedz się więcej o nowych funkcjach',
+	'prefswitch-link-on' => 'Chcę wrócić',
+	'tooltip-pt-prefswitch-link-on' => 'Wyłączenie nowych funkcjonalności',
+	'prefswitch-link-off' => 'Nowe funkcjonalności',
 	'tooltip-pt-prefswitch-link-off' => 'Wypróbuj nowe funkcjonalności',
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
 	'prefswitch-link-anon' => 'Neuve funsionalità',
 	'tooltip-pt-prefswitch-link-anon' => 'Ampara le neuve funsionalità',
 	'prefswitch-link-on' => 'Pòrtme andré',
-	'tooltip-pt-prefswitch-link-on' => 'Disabìlita neuve funsionalità',
+	'tooltip-pt-prefswitch-link-on' => 'Disabilité le neuve funsionalità',
 	'prefswitch-link-off' => 'Neuve funsionalità',
 	'tooltip-pt-prefswitch-link-off' => 'Preuva le neuve funsionalità',
 );

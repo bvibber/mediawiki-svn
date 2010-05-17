@@ -775,13 +775,14 @@ $messages['pdc'] = array(
 
 /** Polish (Polski)
  * @author Leinad
+ * @author Nux
  * @author Sp5uhe
  */
 $messages['pl'] = array(
 	'optin-try' => 'Wypróbuj wersję testową',
-	'tooltip-pt-optin-try' => 'Wypróbuj nowe funkcje',
+	'tooltip-pt-optin-try' => 'Wypróbuj nowe funkcjonalności',
 	'optin-leave' => 'Koniec testowania',
-	'tooltip-pt-optin-leave' => 'Wyłącz nowe funkcje',
+	'tooltip-pt-optin-leave' => 'Wyłącz nowe funkcjonalności',
 	'optin-feedback' => 'Opinia o wersji testowej',
 	'tooltip-pt-optin-feedback' => 'Prześlij opinię na temat nowych funkcji',
 );
