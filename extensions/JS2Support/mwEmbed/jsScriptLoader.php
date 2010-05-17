@@ -51,7 +51,7 @@ class jsScriptLoader {
 	// The raw requested class
 	private static $rawClassList = '';
 
-	private static $includeAllMsgsRegEx = "/mw\.includeAllModuleMsgs\s*\(\s*\)\;?/";
+	private static $includeAllMsgsRegEx = "/mw\.includeAllModuleMessages\s*\(\s*\)\;?/";
 
 	/**
 	 * Output the javascript from cache

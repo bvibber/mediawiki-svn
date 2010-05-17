@@ -229,7 +229,7 @@ copy your English fallbacks into the php localization file for the translate wik
 Running the JS2Support maintenance script "mergeJavascriptMsgs.php" will sync javascript into phpt files. 
 
 This is the most complicated setup, if your unsure use the first option and call: 
-mw.includeAllModuleMsgs(); 
+mw.includeAllModuleMessages(); 
 In your primary library code javascript. 
   
 === Accessing Msgs in Javascript ===
