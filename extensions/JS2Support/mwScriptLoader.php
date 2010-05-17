@@ -34,14 +34,17 @@ if( $myScriptLoader->outputFromCache() ){
 	exit();
 }
 
-// Else no-cache hit load up mediaWiki stuff and continue scriptloader processing:
+// No-cache hit load up mediaWiki stuff and continue scriptloader processing:
 
-// Guess at where the mediaWiki directory is located
-$path = __FILE__ . '/../../../includes/WebStart.php';
+// Check if we need to use directory traversal:  
+if( !getenv( 'MW_INSTALL_PATH' ) ){	
+	// Use '../../' because WebStart.php uses realpath( '.' ); to define $IP
+	chdir( '../../' );
+}
 
 // include WebStart.php
 ob_start();
-require_once( $path ); //60ms
+require_once( "includes/WebStart.php" ); //60ms
 $webstartwhitespace = ob_end_clean();
 
 wfProfileIn( 'mwScriptLoader.php' );
