@@ -122,8 +122,8 @@ $messages['br'] = array(
 	'watchsubpages-addtitles' => 'Ouzhpennañ pajennoù',
 	'watchsubpages-addtitlestowatchlist' => "Ouzhpennañ pajennoù d'ar roll evezhiañ",
 	'watchsubpages-desc' => "Ouzhpennañ a ra fonnus [[Special:WatchSubpages|holl ispajennoù]] ur bajenn d'ar roll evezhiañ",
-	'watchsubpages-form' => 'Diuzit a-is ar pajennoù da vezañ ouzhpennet d\'ho roll evezhiañ.
-A-benn ouzhpennañ ur bajenn, klikit ouzh ar voest zo e-kichenik, ha klikit war "Ouzhpennañ pajennoù".
+	'watchsubpages-form' => 'Dibabit a-is ar pajennoù da vezañ ouzhpennet d\'ho roll evezhiañ.
+Evit ouzhpennañ ur bajenn, klikit ouzh ar voest zo e-kichenik, ha klikit war "{{int:watchsubpages-addtitles}}".
 
 Evit askañ pe diaskañ meur a bajenn war un dro e c\'hallit derc\'hel da bouezañ war ar stokell "pennlizherenn" en ur glikañ en daou benn d\'ar strollad logoù zo da vezañ asket.',
 );
@@ -669,6 +669,7 @@ Jeśli chcesz wybrać więcej niż jedną stronę, możesz posłużyć się klaw
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
@@ -677,10 +678,10 @@ $messages['pms'] = array(
 	'watchsubpages-addtitles' => 'Gionta le pàgine',
 	'watchsubpages-addtitlestowatchlist' => "Gionta le pàgine a lòn ch'it ten-e sot euj",
 	'watchsubpages-desc' => "[[Special:WatchSubpages|Gionta an pressa tute le sotpàgine]] ëd na pàgina a lòn ch'it ten-e sot euj.",
-	'watchsubpages-form' => 'Selession-a le pàgine da gionté a lòn ch\'it ten-e sot euj.
-Për gionté na pàgina, signa la casela d\'apress ëd chila, e sgnaca "{{int:watchsubpages-addtitles}}".
+	'watchsubpages-form' => 'Ch\'a selession-a le pàgine da gionté a lòn ch\'a ten sot euj.
+Për gionté na pàgina, marché la casela da banda ëd chila, e sgnaché "{{int:watchsubpages-addtitles}}".
 
-Quand it selession-e o deselession-e vàire pàgine, sgnacand la ciav "shift" at përmëtt ëd selessioné ëd casele consecutive, an clicand inissi e fin dël range da signé.',
+Quand ch\'a selession-a o a desselession-a vàire pàgine, sgnaché la ciav "Majùscole" a-j përmët ëd selessioné ëd casele consecutive, sgnacand inissi e fin dl\'antërval da marché.',
 );
 
 /** Pashto (پښتو)

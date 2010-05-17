@@ -5474,6 +5474,14 @@ $messages['rue'] = array(
 	'wikilog-page-lc' => 'сторінка',
 );
 
+/** Sardinian (Sardu)
+ * @author Andria
+ */
+$messages['sc'] = array(
+	'wikilog-form-name' => 'Nùmene',
+	'wikilog-page-lc' => 'pàgina',
+);
+
 /** Sinhala (සිංහල)
  * @author Calcey
  * @author Jiro Ono

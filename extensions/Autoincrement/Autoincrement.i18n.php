@@ -337,3 +337,10 @@ $messages['vi'] = array(
 	'autoincrement-desc' => 'Một hook biến sẽ thêm một biến tự động tăng tiến <nowiki>{{AUTOINCREMENT}}</nowiki>',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Horacewai2
+ */
+$messages['zh-hant'] = array(
+	'autoincrement-desc' => '堵加<nowiki>{{AUTOINCREMENT}}</nowiki>變量。',
+);
+

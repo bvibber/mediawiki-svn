@@ -1735,6 +1735,7 @@ Dibabit un dastumad da enporzhiañ. E prenestr testenn ar yezhoù, merkit ur rol
 	'ow_needs_xlation_source_lang' => 'Yezh kein :',
 	'ow_needs_xlation_dest_lang' => 'Yezh tal :',
 	'ow_needs_xlation_no_dest_lang' => 'Merkit ur yezh tal.',
+	'ow_statistics' => 'Wikidata : Stadegoù',
 	'ow_show' => 'Diskouez',
 	'ow_upload' => 'Enporzhiañ',
 	'ow_create' => 'Krouiñ',

@@ -675,7 +675,7 @@ $messages['hi'] = array(
 $messages['hsb'] = array(
 	'spamdifftool' => 'Spamowu čornu lisćinu zrjadować',
 	'spamdifftool-desc' => 'Skići zakładne wašnje přidawanja nowych zapiskow spamowej čornej lisćinje ze stronow z rozdźělemi wersijow',
-	'spamdifftool_cantedit' => 'Bohužel nimaš dowolenje spamowu čornu lisćinu wobdźěłować.',
+	'spamdifftool_cantedit' => 'Bohužel nimaš dowolnosć spamowu čornu lisćinu wobdźěłować.',
 	'spamdifftool-no-title' => "'''Zmylk:''' žadyn titul podaty.",
 	'spamdifftool_notext' => "Njeje žadyn tekst, kotryž móhł so spamowej čornej lisćinje přidać. Klikń <href='$1'>sem</a>, zo by pokročował.",
 	'spamdifftool_confirm' => "Potwjerdź, zo chceš tute zapiski spamowej čornej lisćinje přidać. (Klikń <a href='$1' target='new'>sem</a>, zo by wo problemje rozprawjał.)",

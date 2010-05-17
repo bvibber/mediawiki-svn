@@ -1904,6 +1904,7 @@ Du bedes oprette den og og køre configure.sql eller rette navnet.',
  * @author ChrisiPK
  * @author Church of emacs
  * @author Imre
+ * @author Kghbln
  * @author Leithian
  * @author Metalhead64
  * @author Purodha
@@ -2039,7 +2040,7 @@ Bitte erstelle sie und führe configure.sql darin aus oder korrigiere ihren Name
 	'configure-view-default' => 'Standardeinstellungen',
 	'configure-view-not-allowed' => 'Es ist dir nicht gestattet diese Einstellung einzusehen',
 	'configure-viewconfig-line' => '$1 $6, $7 Uhr von $3 $5: $4',
-	'extensions' => 'Erweiterungen konfigurieren',
+	'extensions' => 'Erweiterungen zu MediaWiki',
 	'right-configure' => 'Wiki einrichten',
 	'right-configure-all' => 'Alle Einstellungen im Wiki vornehmen',
 	'right-configure-interwiki' => 'Einstellungen fremder Wikis bearbeiten',

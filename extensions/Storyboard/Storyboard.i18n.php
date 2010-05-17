@@ -967,7 +967,7 @@ $messages['ja'] = array(
 	'storyboard-thestory' => 'ストーリー',
 	'storyboard-storystate' => '状態',
 	'storyboard-language' => '言語',
-	'storyboard-storymetadata' => '$1により$2,$3へ投稿',
+	'storyboard-storymetadata' => '$1が $2$3に投稿',
 	'storyboard-yourname' => 'あなたの名前',
 	'storyboard-location' => 'あなたの位置',
 	'storyboard-occupation' => 'あなたの職業',
@@ -989,10 +989,10 @@ $messages['ja'] = array(
 	'storyreview' => 'ストーリーの評価',
 	'storyboard-deleteimage' => '画像を削除',
 	'storyboard-working' => '処理中...',
-	'storyboard-imagedeleted' => '画像は消去されました',
+	'storyboard-imagedeleted' => '画像は削除されました',
 	'storyboard-showimage' => '画像を表示する',
 	'storyboard-hideimage' => '画像を隠す',
-	'storyboard-deletestory' => '削除',
+	'storyboard-deletestory' => '除去',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

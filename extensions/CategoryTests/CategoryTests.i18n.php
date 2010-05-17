@@ -456,3 +456,10 @@ $messages['zh-hans'] = array(
 	'categorytests-desc' => '用于分类测试的功能',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Horacewai2
+ */
+$messages['zh-hant'] = array(
+	'categorytests-desc' => '用於分類的测試功能',
+);
+

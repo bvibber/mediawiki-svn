@@ -135,8 +135,10 @@ $messages['bg'] = array(
  */
 $messages['br'] = array(
 	'security' => 'Marilh surentez',
+	'security-desc' => 'Astenn a ra etrefas gwarez MediaWiki evit ma vo gallet strishaat ar gwel ouzh danvez pennadoù zo.',
 	'security-logpage' => 'Marilh surentez',
 	'security-logpagetext' => 'Ur marilh eus an oberezhioù stanket gant an [http://www.mediawiki.org/wiki/Extension:SimpleSecurity astenn SimpleSecurity] eo.',
+	'badaccess-read' => "'''Diwallit :''' \"menegeret eo \$1\" amañ met n'oc'h ket c'hwi aotreet da vont e-barzh.",
 	'security-info' => " Bez' ez eus $1 war ar bajenn-mañ",
 	'security-info-toggle' => 'strishadurioù surentez',
 	'security-inforestrict' => '$1 zo strishaet da $2',

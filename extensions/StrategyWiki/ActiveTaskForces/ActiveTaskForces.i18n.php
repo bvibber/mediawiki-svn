@@ -18,10 +18,12 @@ $messages['be-tarask'] = array(
 );
 
 /** Breton (Brezhoneg)
+ * @author Fulup
  * @author Y-M D
  */
 $messages['br'] = array(
 	'activetaskforces' => 'Strolladoù labour oberient',
+	'active-task-forces-desc' => 'Diskwel a ra an niver a wezhioù eo bet kemmet pajennoù ar strollad labour',
 	'active-task-forces-intro' => 'Niver a gemm pajennoù evit ar strollad labour e-kerzh an {{PLURAL:$1|devezh ziwezhañ|$1 zevezh ziwezhañ}}.',
 );
 
@@ -184,7 +186,7 @@ $messages['oc'] = array(
  */
 $messages['pms'] = array(
 	'activetaskforces' => 'Echip ëd travaj ative',
-	'active-task-forces-desc' => 'Mosta nùmer ëd modìfiche a le pàgine dla task force',
+	'active-task-forces-desc' => 'Mostra ël nùmer ëd modìfiche a le pàgine dla partìa ëd travaj',
 	'active-task-forces-intro' => "Nùmer ëd modìfiche a le pàgine dl'echip ëd travaj ant {{PLURAL:$1|l'ùltim di|j'ùltim $1 di}}.",
 );
 

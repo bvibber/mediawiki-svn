@@ -293,7 +293,9 @@ $messages['eo'] = array(
 	'mwe-clipedit-custom_title' => 'Memkreita titolo',
 );
 
-/** Spanish (Español) */
+/** Spanish (Español)
+ * @author Crazymadlover
+ */
 $messages['es'] = array(
 	'mwe-clipedit-crop' => 'Recortar imagen',
 	'mwe-clipedit-apply_crop' => 'Aplicar el recorte a la imagen',
@@ -302,6 +304,7 @@ $messages['es'] = array(
 	'mwe-clipedit-insert_into_sequence' => 'Insertar en secuencia',
 	'mwe-clipedit-preview_insert' => 'Previsualisar inserción',
 	'mwe-clipedit-cancel_image_insert' => 'Cancelar inserción',
+	'mwe-clipedit-sc_attributes' => 'Edición de detalle de clip',
 	'mwe-clipedit-sc_inoutpoints' => 'Establecer puntos de entrada y salida',
 	'mwe-clipedit-sc_overlays' => 'Superposiciones',
 	'mwe-clipedit-sc_audio' => 'Control de sonido',
@@ -315,6 +318,8 @@ $messages['es'] = array(
 	'mwe-clipedit-start_time' => 'Tiempo de inicio',
 	'mwe-clipedit-end_time' => 'Tiempo de fin',
 	'mwe-clipedit-preview_inout' => 'Previsualizar puntos de entrada y salida',
+	'mwe-clipedit-edit-tools' => 'Herramientas de edición',
+	'mwe-clipedit-inline-description' => 'Leyenda',
 	'mwe-clipedit-edit-video-tools' => 'Herramientas de edición de video:',
 	'mwe-clipedit-duration' => 'Duración:',
 );

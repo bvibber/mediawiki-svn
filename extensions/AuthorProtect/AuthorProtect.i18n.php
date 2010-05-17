@@ -1605,6 +1605,7 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Gzdavidwong
+ * @author Horacewai2
  * @author Liangent
  * @author Wrightbus
  */
@@ -1613,9 +1614,15 @@ $messages['zh-hant'] = array(
 	'authorprotect-desc' => '允許頁面的作者禁止其他用戶編輯',
 	'authorprotect-notauthor' => '您並非本頁面的原作者',
 	'authorprotect-confirm' => '更改保護等級',
+	'authorprotect-edit' => '禁止除作者以外人士編輯',
+	'authorprotect-move' => '禁止除作者以外人士移動',
 	'authorprotect-expiry' => '終止時間',
 	'authorprotect-reason' => '原因',
+	'authorprotect-intro' => '使用此表格禁止除作者以外人士編輯',
 	'authorprotect-success' => '保護成功！',
 	'authorprotect-failure' => '保護失敗',
+	'protect-level-author' => '保護非作家用戶編輯',
+	'restriction-level-author' => '作者保護',
+	'right-authorprotect' => '保護自己創作的頁面禁止他人編輯',
 );
 

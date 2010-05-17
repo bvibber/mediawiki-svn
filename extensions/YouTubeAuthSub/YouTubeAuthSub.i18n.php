@@ -2678,12 +2678,15 @@ $messages['sah'] = array(
 );
 
 /** Sardinian (Sardu)
+ * @author Andria
  * @author Marzedu
  */
 $messages['sc'] = array(
 	'youtubeauthsub_title' => 'Tìtulu',
+	'youtubeauthsub_description' => 'Descritzione',
 	'youtubeauthsub_password' => 'Password de YouTube',
 	'youtubeauthsub_username' => 'Nòmene usuàriu de YouTube',
+	'youtubeauthsub_category' => 'Categoria',
 );
 
 /** Sicilian (Sicilianu)

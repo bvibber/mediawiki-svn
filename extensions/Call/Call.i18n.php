@@ -1231,10 +1231,12 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Horacewai2
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
 	'call' => '呼叫',
+	'call-desc' => '創建一個超鏈接到模板（或一般頁面）的參數傳遞。可用於在瀏覽器的命令行或在維基文本中使用。',
 	'call-save' => '本呼叫的輸出將儲存至名為「$1」的頁面內。',
 	'call-save-success' => '以下文字經已儲存至頁面<big>[[$1]]</big>。',
 	'call-save-failed' => '由於頁面已存在，以下文字並未儲存至頁面<big>[[$1]]</big>。',

@@ -301,3 +301,10 @@ $messages['vi'] = array(
 	'vector-collapsiblenav-preference' => 'Bật trình đơn chuyển hướng gấp lại được ở bên phải',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Horacewai2
+ */
+$messages['zh-hant'] = array(
+	'vector-collapsiblenav-preference' => '啟用可折疊左側導航菜單',
+);
+

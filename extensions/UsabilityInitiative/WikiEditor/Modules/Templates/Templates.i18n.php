@@ -197,6 +197,13 @@ $messages['oc'] = array(
 	'wikieditor-templates-preference' => 'Activar lo replegament dels modèls',
 );
 
+/** Polish (Polski)
+ * @author Nux
+ */
+$messages['pl'] = array(
+	'wikieditor-templates-preference' => 'Włącz zwijanie szablonów',
+);
+
 /** Piedmontese (Piemontèis)
  * @author Borichèt
  */

@@ -164,6 +164,7 @@ $messages['bn'] = array(
 $messages['br'] = array(
 	'chemicalsources' => 'Mammennoù kimiek',
 	'chemicalsource-desc' => 'Ouzhpennañ a ra ar valizenn <nowiki><chemform></nowiki>, evit ar formulennoù kimiek',
+	'chemicalsources-desc' => '[[Special:ChemicalSources|Pajenn dibar]] mammennoù evit ar gimiezh',
 	'chemFunctions_ListPage' => 'Mammennoù kimiek',
 	'chemFunctions_DataList' => 'Dindan ez eus ur roll liammoù a gas da lec\'hiennoù a c\'hall reiñ titouroù diwar-benn an danvezennoù kimiek a glaskit.<br /><br />
 * <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Kediad $MIXCASNameFormula at NIST</a><br />
@@ -923,13 +924,14 @@ $messages['pl'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Bèrto 'd Sèra
  * @author Dragonòt
  */
 $messages['pms'] = array(
 	'chemicalsources' => 'Sorgiss Chìmiche',
 	'chemicalsource-desc' => 'A gionta ël tag <nowiki><chemform></nowiki>, për fórmule chìmiche',
-	'chemicalsources-desc' => '[[Special:ChemicalSources|Pàgina special]] për sorziss ëd chìmica',
+	'chemicalsources-desc' => '[[Special:ChemicalSources|Pàgina special]] për sorgiss ëd chìmica',
 	'chemFunctions_ListPage' => 'Sorgiss Chìmiche',
 	'chemFunctions_DataList' => 'Di seguito viene presentato un elenco di collegamenti a siti presso i quali si possono referire informazioni sui composti chimici cercati.<br /><br />
 * <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&Units=SI">Scheda del composto $MIXCASNameFormula presso il NIST</a><br />

@@ -2427,6 +2427,7 @@ $messages['pl'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Bèrto 'd Sèra
  * @author Dragonòt
  */
@@ -2457,7 +2458,7 @@ $messages['pms'] = array(
 	'ogg-dismiss' => 'sëré',
 	'ogg-download' => "Dëscarié l'archivi",
 	'ogg-desc-link' => "Rësgoard a st'archivi",
-	'ogg-oggThumb-version' => "OggHandler a ciama la vërsion $1 d'oggThumb o pi agiornà.",
+	'ogg-oggThumb-version' => "OggHandler a ciama la version $1 d'oggThumb o pi agiornà.",
 	'ogg-oggThumb-failed' => "oggThumb a l'ha falì a creé la figurin-a.",
 );
 

@@ -11,6 +11,13 @@ $messages['en'] = array(
 	'cassandra-desc' => 'Store revision text in [http://cassandra.apache.org/ Apache Cassandra] database',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'cassandra-desc' => 'Захаваньне тэксту вэрсіі ў базе зьвестак [http://cassandra.apache.org/ Apache Cassandra]',
+);
+
 /** Breton (Brezhoneg)
  * @author Y-M D
  */

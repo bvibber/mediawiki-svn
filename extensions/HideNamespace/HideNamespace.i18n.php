@@ -159,10 +159,11 @@ $messages['no'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'hidens-desc' => "Stërma lë spassi nominal ant la testà e ant ël tìtol quand che na pàgina a l'é ant lë spassi nominal specificà o quand che la funsion <code><nowiki>{{#hidens:}}</nowiki></code> a l'é ciamà",
+	'hidens-desc' => "A stërma lë spassi nominal ant l'antestassion e ant ël tìtol quand che na pàgina a l'é ant lë spassi nominal specificà o quand che la funsion <code><nowiki>{{#hidens:}}</nowiki></code> a l'é ciamà",
 );
 
 /** Portuguese (Português)
