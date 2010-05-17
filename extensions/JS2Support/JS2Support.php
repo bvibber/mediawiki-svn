@@ -54,7 +54,7 @@ function js2SupportAddJSVars( &$vars ) {
 	global $wgExtensionAssetsPath;
 	$vars = array_merge( $vars,
 		array(
-			'wgScriptLoaderLocation' => $wgExtensionAssetsPath . 'JS2Support/mwScriptLoader.php'
+			'wgScriptLoaderLocation' => $wgExtensionAssetsPath . '/JS2Support/mwScriptLoader.php'
 		)
 	);
 	return true;
