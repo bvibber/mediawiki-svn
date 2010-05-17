@@ -13,23 +13,30 @@ $aliases['en'] = array(
 	'LastUserLogin' => array( 'LastUserLogin' ),
 );
 
-/** Arabic (العربية) */
 $aliases['ar'] = array(
-	'LastUserLogin' => array( 'آخر_دخول_للمستخدم' ),
+	'LastUserLogin'   => array( 'آخر_دخول_للمستخدم' ),
 );
 
-/** Interlingua (Interlingua) */
+$aliases['es'] = array(
+	'LastUserLogin'   => array( 'Último usuario que ha entrado' ),
+);
+
 $aliases['ia'] = array(
-	'LastUserLogin' => array( 'Ultime session de usator' ),
+	'LastUserLogin'   => array( 'Ultime session de usator' ),
 );
 
-/** Malayalam (മലയാളം) */
+$aliases['ja'] = array(
+	'LastUserLogin'   => array( '利用者の最終ログイン', '最終利用者ログイン' ),
+);
+
 $aliases['ml'] = array(
-	'LastUserLogin' => array( 'അവസാന‌‌ഉപയോക്തൃപ്രവേശം' ),
+	'LastUserLogin'   => array( 'അവസാന‌‌ഉപയോക്തൃപ്രവേശം' ),
 );
 
-/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
+$aliases['nl'] = array(
+	'LastUserLogin'   => array( 'LaasteGebruikeraanmelding' ),
+);
+
 $aliases['no'] = array(
-	'LastUserLogin' => array( 'Siste brukerinnlogging' ),
+	'LastUserLogin'   => array( 'Siste brukerinnlogging' ),
 );
-

@@ -36,6 +36,7 @@ $magicWords['es'] = array(
 
 $magicWords['ml'] = array(
 	'transliterate'   => array( '0', 'ലിപിമാറ്റംചെയ്യുക', 'ലിപ്യന്തരണം', 'ലിപിമാറ്റം', 'transliterate' ),
+	'tr_prefix'       => array( '1', 'ലിപിമാറ്റയുപകരണം:', 'Transliterator:' ),
 );
 
 $magicWords['mr'] = array(

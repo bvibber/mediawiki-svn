@@ -14,23 +14,26 @@ $aliases['en'] = array(
 	'Plotters' => array( 'Plotters' ),
 );
 
-/** Arabic (العربية) */
 $aliases['ar'] = array(
-	'Plotters' => array( 'طابعات' ),
+	'Plotters'   => array( 'طابعات' ),
 );
 
-/** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
 	'Plotters' => array( 'طابعات' ),
 );
 
-/** Japanese (日本語) */
+$aliases['es'] = array(
+	'Plotters'   => array( 'Gráficos' ),
+);
+
 $aliases['ja'] = array(
-	'Plotters' => array( 'プロッター' ),
+	'Plotters'   => array( 'プロッター' ),
 );
 
-/** Macedonian (Македонски) */
 $aliases['mk'] = array(
-	'Plotters' => array( 'Цртачи' ),
+	'Plotters'   => array( 'Цртачи' ),
 );
 
+$aliases['no'] = array(
+	'Plotters'   => array( 'Plottere' ),
+);

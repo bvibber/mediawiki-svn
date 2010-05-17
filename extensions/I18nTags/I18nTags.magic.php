@@ -34,6 +34,10 @@ $magicWords['cs'] = array(
 	'languagename'   => array( '0', 'názevjazyka', 'languagename' ),
 );
 
+$magicWords['eo'] = array(
+	'languagename'   => array( '0', 'nomolingvo', 'lingvonomo', 'languagename' ),
+);
+
 $magicWords['es'] = array(
 	'languagename'   => array( '0', 'nombreidioma', 'nombredeidioma', 'languagename' ),
 );
@@ -72,6 +76,10 @@ $magicWords['mr'] = array(
 
 $magicWords['nl'] = array(
 	'languagename'   => array( '0', 'taalnaam', 'languagename' ),
+);
+
+$magicWords['nn'] = array(
+	'languagename'   => array( '0', 'språknamn', 'languagename' ),
 );
 
 $magicWords['no'] = array(

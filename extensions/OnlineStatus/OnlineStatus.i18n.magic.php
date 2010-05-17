@@ -20,6 +20,10 @@ $magicWords['arz'] = array(
 	'anyuseronlinestatus'     => array( '0', 'حالة_الاتصال_لأى_مستخدم', 'حالة_الاتصال_لأي_مستخدم', 'anyuseronlinestatus' ),
 );
 
+$magicWords['ml'] = array(
+	'anyuseronlinestatus'     => array( '0', 'ഏതൊരുപയോക്താവിന്റേയുമോൺലൈൻസ്ഥിതി', 'anyuseronlinestatus' ),
+);
+
 $magicWords['mr'] = array(
 	'onlinestatus_word'       => array( '1', 'ऑनलाईनस्थिती', 'ONLINESTATUS' ),
 	'onlinestatus_word_raw'   => array( '1', 'कच्चीऑनलाईनस्थिती', 'RAWONLINESTATUS' ),

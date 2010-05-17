@@ -18,6 +18,14 @@ $magicWords['es'] = array(
 	'autoincrement'   => array( '0', 'AUTOINCREMENTO', 'AUTOINCREMENTAR', 'AUTOINCREMENT' ),
 );
 
+$magicWords['ja'] = array(
+	'autoincrement'   => array( '0', 'オートインクリメント', 'AUTOINCREMENT' ),
+);
+
+$magicWords['ml'] = array(
+	'autoincrement'   => array( '0', 'സ്വയംകൂടുക', 'AUTOINCREMENT' ),
+);
+
 $magicWords['mr'] = array(
 	'autoincrement'   => array( '0', 'स्वयंवाढ', 'AUTOINCREMENT' ),
 );
