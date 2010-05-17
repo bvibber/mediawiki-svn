@@ -18,28 +18,25 @@ combined-history.js: utilities.js tabview-min.js event-min.js history-min.js hea
 	cat utilities.js tabview-min.js event-min.js history-min.js headertabs.js >combined-history.js
 
 # CSS
-combined.css: fonts-min.css tabview.css headertabs.css
-	cat fonts-min.css tabview.css headertabs.css >combined.css
+combined.css: tabview.css headertabs.css
+	cat tabview.css headertabs.css >combined.css
 
 # Fetch JS
 utilities.js:
-	wget http://yui.yahooapis.com/2.8.0r4/build/utilities/utilities.js
+	wget http://yui.yahooapis.com/2.8.1/build/utilities/utilities.js
 
 tabview-min.js:
-	wget http://yui.yahooapis.com/2.8.0r4/build/tabview/tabview-min.js
+	wget http://yui.yahooapis.com/2.8.1/build/tabview/tabview-min.js
 
 event-min.js:
-	wget http://yui.yahooapis.com/2.8.0r4/build/event/event-min.js
+	wget http://yui.yahooapis.com/2.8.1/build/event/event-min.js
 
 history-min.js:
-	wget http://yui.yahooapis.com/2.8.0r4/build/history/history-min.js
+	wget http://yui.yahooapis.com/2.8.1/build/history/history-min.js
 
 # Fetch CSS
-fonts-min.css:
-	wget http://yui.yahooapis.com/2.8.0r4/build/fonts/fonts-min.css
-
 tabview.css:
-	wget http://yui.yahooapis.com/2.8.0r4/build/tabview/assets/skins/sam/tabview.css
+	wget http://yui.yahooapis.com/2.8.1/build/tabview/assets/skins/sam/tabview.css
 
 clean:
-	rm -f combined.js combined-history.js combined.css utilities.js tabview-min.js event-min.js history-min.js fonts-min.css tabview.css 
+	rm -f combined.js combined-history.js combined.css utilities.js tabview-min.js event-min.js history-min.js tabview.css 
