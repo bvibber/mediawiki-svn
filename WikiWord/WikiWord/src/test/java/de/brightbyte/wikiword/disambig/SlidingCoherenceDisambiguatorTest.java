@@ -19,7 +19,7 @@ public class SlidingCoherenceDisambiguatorTest extends DisambiguatorTestBase {
 	}
 	
 	public void testDisambiguateTerms() throws PersistenceException {
-		SlidingCoherenceDisambiguator disambiguator = new SlidingCoherenceDisambiguator(meaningFetcher, featureFetcher);
+		SlidingCoherenceDisambiguator disambiguator = new SlidingCoherenceDisambiguator(meaningFetcher, featureFetcher, 10);
 		disambiguator.setInitialWindow(1);
 		disambiguator.setWindow(3);
 		
@@ -43,7 +43,7 @@ public class SlidingCoherenceDisambiguatorTest extends DisambiguatorTestBase {
 	public void testDisambiguatePhraseNode() throws PersistenceException {
 		PhraseOccuranceSet set = getBankAndMonumentPhrases();
 		
-		SlidingCoherenceDisambiguator disambiguator = new SlidingCoherenceDisambiguator(meaningFetcher, featureFetcher);
+		SlidingCoherenceDisambiguator disambiguator = new SlidingCoherenceDisambiguator(meaningFetcher, featureFetcher, 10);
 		disambiguator.setTrace(traceOutput);
 		disambiguator.setInitialWindow(1);
 		disambiguator.setWindow(3);

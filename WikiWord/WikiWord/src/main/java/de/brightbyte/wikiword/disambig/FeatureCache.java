@@ -19,6 +19,7 @@ public class FeatureCache<C extends WikiWordConcept, K> implements FeatureFetche
 		protected List<FeatureCache<C, K>> stack;
 		
 		public Manager(FeatureFetcher<C, K> root, int maxDepth) {
+			if (root==null) throw new NullPointerException();
 			this.stack = new ArrayList<FeatureCache<C, K>>(maxDepth+1);
 			this.maxDepth = maxDepth;
 			this.root = root;
@@ -37,6 +38,10 @@ public class FeatureCache<C extends WikiWordConcept, K> implements FeatureFetche
 			if (!stack.isEmpty()) stack.get(0).setParent(root);
 			
 			return cache;
+		}
+
+		public boolean getFeaturesAreNormalized() {
+			return root.getFeaturesAreNormalized();
 		}
 	}
 
@@ -77,9 +82,11 @@ public class FeatureCache<C extends WikiWordConcept, K> implements FeatureFetche
 				}
 		}
 		
-		Map<Integer, ConceptFeatures<C, K>> parentFeatures = parent.getFeatures(todo);
-		features.putAll(parentFeatures);
-		cache.putAll(parentFeatures);
+		if (!todo.isEmpty()) {
+			Map<Integer, ConceptFeatures<C, K>> parentFeatures = parent.getFeatures(todo);
+			features.putAll(parentFeatures);
+			cache.putAll(parentFeatures);
+		}
 		
 		return features;
 	}

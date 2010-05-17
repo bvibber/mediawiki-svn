@@ -60,24 +60,34 @@ public class CoherenceDisambiguator extends AbstractDisambiguator<TermReference,
 	protected Functor2.Double weightCombiner = ProductCombiner.instance;
 	protected Functor.Double weightBooster = SquareBooster.instance; 
 	
-	public CoherenceDisambiguator(MeaningFetcher<LocalConcept> meaningFetcher, FeatureFetcher<LocalConcept, Integer> featureFetcher) {
-		this(meaningFetcher, featureFetcher, WikiWordConcept.theCardinality, 
-				featureFetcher.getFeaturesAreNormalized() ? ScalarVectorSimilarity.<Integer>getInstance() : CosineVectorSimilarity.<Integer>getInstance());  //if pre-normalized, use scalar to calc cosin
+	public CoherenceDisambiguator(MeaningFetcher<LocalConcept> meaningFetcher, FeatureFetcher<LocalConcept, Integer> featureFetcher, int cacheDepth) {
+		this(meaningFetcher, featureFetcher, cacheDepth, null, null);  
 	}
 	
-	public CoherenceDisambiguator(MeaningFetcher<LocalConcept> meaningFetcher, FeatureFetcher<LocalConcept, Integer> featureFetcher, Measure<WikiWordConcept> popularityMeasure, Similarity<LabeledVector<Integer>> sim) {
-		super(meaningFetcher);
+	public CoherenceDisambiguator(MeaningFetcher<LocalConcept> meaningFetcher, FeatureFetcher<LocalConcept, Integer> featureFetcher, int cacheDepth, Measure<WikiWordConcept> popularityMeasure, Similarity<LabeledVector<Integer>> sim) {
+		this( new MeaningCache.Manager<LocalConcept>(meaningFetcher, cacheDepth),
+				new FeatureCache.Manager<LocalConcept, Integer>(featureFetcher, cacheDepth),
+				popularityMeasure, sim );
+	}
+	
+	public CoherenceDisambiguator(MeaningCache.Manager<LocalConcept> meaningCacheManager, FeatureCache.Manager<LocalConcept, Integer> featureCacheManager, Measure<WikiWordConcept> popularityMeasure, Similarity<LabeledVector<Integer>> sim) {
+		super(meaningCacheManager);
 		
-		if (popularityMeasure==null) throw new NullPointerException();
-		if (sim==null) throw new NullPointerException();
-		if (featureFetcher==null) throw new NullPointerException();
+		if (popularityMeasure==null) popularityMeasure = WikiWordConcept.theCardinality;
+		if (sim==null) sim = featureCacheManager.getFeaturesAreNormalized() ? ScalarVectorSimilarity.<Integer>getInstance() : CosineVectorSimilarity.<Integer>getInstance(); //if pre-normalized, use scalar to calc cosin
+		if (featureCacheManager==null) throw new NullPointerException();
 		
-		this.featureCacheManager = new FeatureCache.Manager<LocalConcept, Integer>(featureFetcher, 10); //TODO: depth
-		this.popularityDisambiguator = new PopularityDisambiguator(meaningFetcher, popularityMeasure);
+		this.featureCacheManager = featureCacheManager; 
+		this.popularityDisambiguator = new PopularityDisambiguator(meaningCacheManager, popularityMeasure);
 		
 		this.setPopularityMeasure(popularityMeasure);
 		this.setSimilarityMeasure(sim);
 	}
+	
+	public FeatureCache.Manager<LocalConcept, Integer> getFeatureCacheManager() {
+		return featureCacheManager;
+	}
+
 	
 	public Functor.Double getPopularityNormalizer() {
 		return popularityNormalizer;

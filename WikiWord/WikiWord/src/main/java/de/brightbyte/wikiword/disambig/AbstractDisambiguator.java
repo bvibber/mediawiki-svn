@@ -10,6 +10,7 @@ import java.util.Set;
 
 import de.brightbyte.io.Output;
 import de.brightbyte.util.PersistenceException;
+import de.brightbyte.wikiword.disambig.MeaningCache.Manager;
 import de.brightbyte.wikiword.model.PhraseNode;
 import de.brightbyte.wikiword.model.TermListNode;
 import de.brightbyte.wikiword.model.TermReference;
@@ -63,9 +64,17 @@ public abstract class AbstractDisambiguator<T extends TermReference, C extends W
 
 	private Map<? extends T, C> meaningOverrides;
 	
-	public AbstractDisambiguator(MeaningFetcher<? extends C> meaningFetcher) {
-		if (meaningFetcher==null) throw new NullPointerException();
-		this.meaningCacheManager = new MeaningCache.Manager<C>(meaningFetcher, 10);
+	public AbstractDisambiguator(MeaningFetcher<? extends C> meaningFetcher, int cacheDepth) {
+		this(new MeaningCache.Manager<C>(meaningFetcher, cacheDepth)); 
+	}
+	
+	public AbstractDisambiguator(MeaningCache.Manager<C> meaningCacheManager) {
+		if (meaningCacheManager==null) throw new NullPointerException();
+		this.meaningCacheManager = meaningCacheManager;
+	}
+	
+	public MeaningCache.Manager<C> getMeaningCacheManager() {
+		return meaningCacheManager;
 	}
 
 	public void setMeaningOverrides(Map<? extends T, C> overrideMap) {

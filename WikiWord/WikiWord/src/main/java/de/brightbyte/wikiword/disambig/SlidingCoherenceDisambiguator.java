@@ -25,14 +25,18 @@ public class SlidingCoherenceDisambiguator extends CoherenceDisambiguator {
 	protected int window;
 	protected int initialWindow; 
 	
-	public SlidingCoherenceDisambiguator(MeaningFetcher<LocalConcept> meaningFetcher, FeatureFetcher<LocalConcept, Integer> featureFetcher) {
-		this(meaningFetcher, featureFetcher, WikiWordConcept.theCardinality, 
-				featureFetcher.getFeaturesAreNormalized() ? ScalarVectorSimilarity.<Integer>getInstance() : CosineVectorSimilarity.<Integer>getInstance(),  //if pre-normalized, use scalar to calc cosin
-					5, 5);
+	public SlidingCoherenceDisambiguator(MeaningFetcher<LocalConcept> meaningFetcher, FeatureFetcher<LocalConcept, Integer> featureFetcher, int cacheDepth) {
+		this(meaningFetcher, featureFetcher, cacheDepth, null, null, 5, 5);
 	}
 	
-	public SlidingCoherenceDisambiguator(MeaningFetcher<LocalConcept> meaningFetcher, FeatureFetcher<LocalConcept, Integer> featureFetcher, Measure<WikiWordConcept> popularityMeasure, Similarity<LabeledVector<Integer>> sim, int window, int initialWindow) {
-		super(meaningFetcher, featureFetcher, popularityMeasure, sim);
+	public SlidingCoherenceDisambiguator(MeaningFetcher<LocalConcept> meaningFetcher, FeatureFetcher<LocalConcept, Integer> featureFetcher, int cacheDepth, Measure<WikiWordConcept> popularityMeasure, Similarity<LabeledVector<Integer>> sim, int window, int initialWindow) {
+		this(new MeaningCache.Manager<LocalConcept>(meaningFetcher, cacheDepth),
+				new FeatureCache.Manager<LocalConcept, Integer>(featureFetcher, cacheDepth),
+				popularityMeasure, sim, window, initialWindow);
+	}
+	
+	public SlidingCoherenceDisambiguator(MeaningCache.Manager<LocalConcept> meaningCacheManager, FeatureCache.Manager<LocalConcept, Integer> featureCacheManager, Measure<WikiWordConcept> popularityMeasure, Similarity<LabeledVector<Integer>> sim, int window, int initialWindow) {
+		super(meaningCacheManager, featureCacheManager, popularityMeasure, sim);
 		
  		this.window = window;
  		this.initialWindow = initialWindow;

@@ -25,7 +25,7 @@ public class CoherenceDisambiguatorTest extends DisambiguatorTestBase {
 	}
 
 	public void testGetSequenceInterpretations() throws PersistenceException {
-		CoherenceDisambiguator disambiguator = new CoherenceDisambiguator(meaningFetcher, featureFetcher);
+		CoherenceDisambiguator disambiguator = new CoherenceDisambiguator(meaningFetcher, featureFetcher, 10);
 		
 		Term uk = new Term("UK");
 		Pair<Term, LocalConcept> uk_as_United_Kingdom = new Pair<Term, LocalConcept>(uk, getConcept("United_Kingdom"));
@@ -89,7 +89,7 @@ public class CoherenceDisambiguatorTest extends DisambiguatorTestBase {
 	}
 
 	public void testGetInterpretations() throws PersistenceException {
-		CoherenceDisambiguator disambiguator = new CoherenceDisambiguator(meaningFetcher, featureFetcher);
+		CoherenceDisambiguator disambiguator = new CoherenceDisambiguator(meaningFetcher, featureFetcher, 10);
 		
 		Term uk = new Term("UK");
 		Pair<Term, LocalConcept> uk_as_United_Kingdom = new Pair<Term, LocalConcept>(uk, getConcept("United_Kingdom"));
@@ -120,7 +120,7 @@ public class CoherenceDisambiguatorTest extends DisambiguatorTestBase {
 	}
 	
 	public void testDisambiguateTerms() throws PersistenceException {
-		CoherenceDisambiguator disambiguator = new CoherenceDisambiguator(meaningFetcher, featureFetcher);
+		CoherenceDisambiguator disambiguator = new CoherenceDisambiguator(meaningFetcher, featureFetcher, 10);
 		disambiguator.setTrace(traceOutput);
 		
 		List<Term> sequence = terms("UK", "London", "Underground", "Bank");
@@ -143,7 +143,7 @@ public class CoherenceDisambiguatorTest extends DisambiguatorTestBase {
 	public void testDisambiguatePhraseNode() throws PersistenceException {
 		PhraseOccuranceSet set = getBankAndMonumentPhrases();
 		
-		CoherenceDisambiguator disambiguator = new CoherenceDisambiguator(meaningFetcher, featureFetcher);
+		CoherenceDisambiguator disambiguator = new CoherenceDisambiguator(meaningFetcher, featureFetcher, 10);
 		disambiguator.setTrace(traceOutput);
 
 		Result<PhraseOccurance, LocalConcept> result = disambiguator.disambiguate(set.getRootNode(), null);

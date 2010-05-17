@@ -23,12 +23,16 @@ public class PopularityDisambiguator extends AbstractDisambiguator<TermReference
 	protected Functor.Double weightBooster = SquareBooster.instance; 
 	protected Functor2.Double weigthCombiner = new ProductCombiner(); //NOTE: pop and weight are not in the same scale.
 	
-	public PopularityDisambiguator(MeaningFetcher<LocalConcept> meaningFetcher) {
-		this(meaningFetcher, WikiWordConcept.theCardinality);
+	public PopularityDisambiguator(MeaningFetcher<LocalConcept> meaningFetcher, int cacheDepth) {
+		this(meaningFetcher, cacheDepth, WikiWordConcept.theCardinality);
 	}
 	
-	public PopularityDisambiguator(MeaningFetcher<LocalConcept> meaningFetcher, Measure<WikiWordConcept> popularityMeasure) {
-		super(meaningFetcher);
+	public PopularityDisambiguator(MeaningFetcher<LocalConcept> meaningFetcher, int cacheDepth, Measure<WikiWordConcept> popularityMeasure) {
+		this(new MeaningCache.Manager<LocalConcept>(meaningFetcher, cacheDepth), popularityMeasure);
+	}
+
+	public PopularityDisambiguator(MeaningCache.Manager<LocalConcept> meaningCacheManager, Measure<WikiWordConcept> popularityMeasure) {
+		super(meaningCacheManager);
 		
 		this.setPopularityMeasure(popularityMeasure);
 	}

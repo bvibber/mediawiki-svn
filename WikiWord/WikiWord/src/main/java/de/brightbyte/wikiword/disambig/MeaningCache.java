@@ -2,6 +2,7 @@ package de.brightbyte.wikiword.disambig;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,6 +20,7 @@ public class MeaningCache<C extends WikiWordConcept> implements MeaningFetcher<C
 		protected List<MeaningCache<C>> stack;
 		
 		public Manager(MeaningFetcher<? extends C> root, int maxDepth) {
+			if (root==null) throw new NullPointerException();
 			this.stack = new ArrayList<MeaningCache<C>>(maxDepth+1);
 			this.maxDepth = maxDepth;
 			this.root = root;
@@ -94,12 +96,15 @@ public class MeaningCache<C extends WikiWordConcept> implements MeaningFetcher<C
 				}
 		}
 		
-		Map<X, List<? extends C>> parentMeanings = parent.getMeanings(todo); //XXX: ugly cast, generics are a pain
-		
-		meanings.putAll(parentMeanings);
-		
-		for (Map.Entry<X, List<? extends C>> e: parentMeanings.entrySet()) {
-				cache.put(e.getKey().getTerm(), e.getValue());
+		if (!todo.isEmpty()) {
+			Map<X, List<? extends C>> parentMeanings = parent.getMeanings(todo); //XXX: ugly cast, generics are a pain
+			meanings.putAll(parentMeanings);
+			
+			for (X t: todo) {
+					List<? extends C> m = parentMeanings.get(t);
+					if (m==null) m = Collections.emptyList();
+					cache.put(t.getTerm(), m);
+			}
 		}
 		
 		return meanings;

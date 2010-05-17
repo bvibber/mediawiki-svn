@@ -21,7 +21,7 @@ public class PopularityDisambiguatorTest extends DisambiguatorTestBase {
 	}
 	
 	public void testGetTermsForList() throws PersistenceException {
-		PopularityDisambiguator disambiguator = new PopularityDisambiguator(meaningFetcher);
+		PopularityDisambiguator disambiguator = new PopularityDisambiguator(meaningFetcher, 10);
 		
 		Term uk = new Term("UK");
 		Term london = new Term("London");
@@ -47,7 +47,7 @@ public class PopularityDisambiguatorTest extends DisambiguatorTestBase {
 
 		//FIXME: Test case for getHorizon
 
-		PopularityDisambiguator disambiguator = new PopularityDisambiguator(meaningFetcher);
+		PopularityDisambiguator disambiguator = new PopularityDisambiguator(meaningFetcher, 10);
 		
 		Collection<PhraseOccurance> terms = disambiguator.getTerms(set.getRootNode(), 0);
 		assertTrue("empty term set", sameElements( getBankAndMonumentTerms(0), terms) );
@@ -60,7 +60,7 @@ public class PopularityDisambiguatorTest extends DisambiguatorTestBase {
 	}
 	
 	public void testGetMeaningsForList() throws PersistenceException {
-		PopularityDisambiguator disambiguator = new PopularityDisambiguator(meaningFetcher);
+		PopularityDisambiguator disambiguator = new PopularityDisambiguator(meaningFetcher, 10);
 		
 		Term uk = new Term("UK");
 		Term london = new Term("London");
@@ -79,7 +79,7 @@ public class PopularityDisambiguatorTest extends DisambiguatorTestBase {
 	}
 	
 	public void testGetMeaningsForNode() throws PersistenceException {
-		PopularityDisambiguator disambiguator = new PopularityDisambiguator(meaningFetcher);
+		PopularityDisambiguator disambiguator = new PopularityDisambiguator(meaningFetcher, 10);
 
 		PhraseOccuranceSet set = getBankAndMonumentPhrases();
 		Map<PhraseOccurance, List<? extends LocalConcept>> res = disambiguator.getMeanings(set.getRootNode());
@@ -94,7 +94,7 @@ public class PopularityDisambiguatorTest extends DisambiguatorTestBase {
 	}
 	
 	public void testGetSequences() throws PersistenceException {
-		PopularityDisambiguator disambiguator = new PopularityDisambiguator(meaningFetcher);
+		PopularityDisambiguator disambiguator = new PopularityDisambiguator(meaningFetcher, 10);
 		PhraseOccuranceSet set = getBankAndMonumentPhrases();
 		
 		Collection<List<PhraseOccurance>> res = disambiguator.getSequences(set.getRootNode(), 1);
@@ -108,7 +108,7 @@ public class PopularityDisambiguatorTest extends DisambiguatorTestBase {
 	}
 	
 	public void testDisambiguateTerms() throws PersistenceException {
-		PopularityDisambiguator disambiguator = new PopularityDisambiguator(meaningFetcher);
+		PopularityDisambiguator disambiguator = new PopularityDisambiguator(meaningFetcher, 10);
 		
 		Term uk = new Term("UK");
 		Term london = new Term("London");
@@ -127,7 +127,7 @@ public class PopularityDisambiguatorTest extends DisambiguatorTestBase {
 	public void testDisambiguateNode() throws PersistenceException {
 		PhraseOccuranceSet set = getBankAndMonumentPhrases();
 		
-		PopularityDisambiguator disambiguator = new PopularityDisambiguator(meaningFetcher);
+		PopularityDisambiguator disambiguator = new PopularityDisambiguator(meaningFetcher, 10);
 		disambiguator.setTrace(traceOutput);
 		
 		Result<PhraseOccurance, LocalConcept> result = disambiguator.disambiguate(set.getRootNode(), null);
