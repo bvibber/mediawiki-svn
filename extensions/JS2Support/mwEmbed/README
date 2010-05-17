@@ -1,7 +1,8 @@
 This is the mediaWiki version of the mwEmbed library.
 
-The core components are svn:externals from the stand alone mwEmbed library. 
+This is a subset of the stand alone mwEmbed library. 
 
-The loader.js does not include any default modules since in mediaWiki javascript modules live in extensions.
+The loader.js does not include any default modules since in mediaWiki javascript modules loader paths are
+defined in extensions.
 
 If an extension module becomes widely reused we could potentially move it into the /modules folder in mwEmbed. 

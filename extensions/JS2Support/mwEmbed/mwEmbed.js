@@ -2422,7 +2422,7 @@ var MW_EMBED_VERSION = '1.1f';
 		// Set up the skin paths configuration		
 		for( var i=0 ; i < document.styleSheets.length ; i++ ) {
 			var rules = null;			
-			try{
+			try {
 				if ( document.styleSheets[i].cssRules )
 					rules = document.styleSheets[i].cssRules
 				else if (document.styleSheets[0].rules)
@@ -2433,7 +2433,7 @@ var MW_EMBED_VERSION = '1.1f';
 						return true;
 					}		
 				}
-			}catch ( e ) {
+			} catch ( e ) {
 				mw.log( 'Error: cant check rule on cross domain style sheet:' + document.styleSheets[i].href );
 			}
 		}
@@ -2510,19 +2510,7 @@ var MW_EMBED_VERSION = '1.1f';
 				}			
 				return this;
 			}
-			
-			/**
-			* dragDrop file loader 
-			*/
-			$.fn.dragFileUpload = function ( conf ) {
-				if ( this.selector ) {
-					var _this = this;
-					// load the dragger and "setup"
-					mw.load( ['$j.fn.dragDropFile'], function() {
-						$j( _this.selector ).dragDropFile();
-					} );
-				}
-			}							
+									
 	
 			/**
 			 *  Shortcut to a themed button
@@ -2540,7 +2528,7 @@ var MW_EMBED_VERSION = '1.1f';
 					'<span class="btnText">' + msg + '</span></a>';
 			}
 			
-			// Shortcut to jQuery button ( should replace all btnHtml with button )
+			// Shortcut to jQuery button ( should replace all btnHtml calls with button )
 			var mw_default_button_options = {
 				// The class name for the button link
 				'class' : '',
@@ -2724,7 +2712,7 @@ if( window.jQuery ){
 }
 
 // If using the script-loader and jQuery has not been set give a warning to the user:
-// (this is needed because packaged loader.js files could refrence jQuery )  
+// ( this is needed because packaged loader.js files could refrence jQuery )  
 if( mw.getScriptLoaderPath() && !window.jQuery ) {
 	mw.log( 'Error: jQuery is required for mwEmbed, please update your script-loader request' );
 }

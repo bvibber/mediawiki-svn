@@ -21,7 +21,7 @@ if ( !defined( 'MEDIAWIKI' ) && !defined( 'SCRIPTLOADER_MEDIAWIKI') ) {
 	$myScriptLoader->doScriptLoader();
 }
 
-class jsScriptLoader {
+class jsScriptLoader { 
 
 	// The list of named javascript & css files
 	var $namedFileList = array();
