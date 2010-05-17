@@ -53,6 +53,8 @@ public class DatabaseGlobalConceptStoreBuilder extends DatabaseWikiWordConceptSt
 	protected Inserter mergeInserter;
 	
 	protected RelationTable originTable;
+	protected RelationTable meaningTable;
+	
 	protected RelationTable mergeTable;
 	//protected RelationTable langprepTable;
 
@@ -105,6 +107,9 @@ public class DatabaseGlobalConceptStoreBuilder extends DatabaseWikiWordConceptSt
 
 		Inserter originInserter = configureTable("origin", 16, 4*1024);
 		originTable = (RelationTable)originInserter.getTable();
+		
+		Inserter meaningInserter = configureTable("meaning", 16, 4*1024);
+		meaningTable = (RelationTable)meaningInserter.getTable();
 		
 		mergeInserter = configureTable("merge", 16, 4*1024);
 		mergeTable = (RelationTable)mergeInserter.getTable();
@@ -687,13 +692,12 @@ public class DatabaseGlobalConceptStoreBuilder extends DatabaseWikiWordConceptSt
 	private int importMeanings(Corpus c) throws PersistenceException {
 		LocalConceptStoreSchema localdb = getLocalConceptDatabase(c);
 		DatabaseTable localMeanings = localdb.getTable("meaning");
-		DatabaseTable globalMeanings = database.getTable("meaning");
 		DatabaseTable origin = database.getTable("origin");
 		
-		String sql = "INSERT INTO "+globalMeanings.getSQLName()+" (concept, lang, rule, freq, term_text) "
-			+ " SELECT (O.global_concept, "+database.quoteString(c.getLanguage())+", M.rule, M.freq, M.term_text "
+		String sql = "INSERT INTO "+meaningTable.getSQLName()+" (concept, lang, rule, freq, term_text) "
+			+ " SELECT O.global_concept, "+database.quoteString(c.getLanguage())+", M.rule, M.freq, M.term_text "
 			+ " FROM "+origin.getSQLName()+" as O " 
-			+ " JOIN "+localMeanings.getSQLName()+" as M ON M.concept = O.localConcept "
+			+ " JOIN "+localMeanings.getSQLName()+" as M ON M.concept = O.local_concept "
 			+ " AND O.lang = "+database.quoteString(c.getLanguage());
 		
 		int n = executeChunkedUpdate("importMeanings", "import("+c.getLanguage()+")", sql, null, localMeanings, "M.concept");
