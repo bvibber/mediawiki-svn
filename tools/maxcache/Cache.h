@@ -4,6 +4,7 @@
 #include "boost-config.h"
 #include "CacheEntry.h"
 #include <boost/shared_array.hpp>
+#include <boost/pool/object_pool.hpp>
 
 namespace MaxCache {
 
@@ -26,6 +27,8 @@ typedef Intrusive::multiset<
 	ExpiryMemberOption,
 	compare< CacheEntry::CompareExpiries >
 	> ExpiryTree;
+
+typedef boost::object_pool<CacheEntry> CacheEntryPool;
 
 class App;
 
@@ -119,6 +122,27 @@ class Cache {
 		 */
 		void evictExpiredEntries();
 
+		/**
+		 * Create a new CacheEntry object
+		 */
+		CacheEntry * newEntry( const std::string & key, StringPtr value, 
+			boost::uint64_t cost, Time expiry ) 
+		{
+			CacheEntry * entry = mEntryPool.malloc();
+			mEntryPool.set_next_size( 1024 );
+			new ( entry ) CacheEntry( *this, key, value, cost, expiry );
+			return entry;
+			//return new CacheEntry( *this, key, value, cost, expiry );
+		}
+
+		/**
+		 * Free a CacheEntry object created by newEntry()
+		 */
+		void freeEntry( CacheEntry * entry ) {
+			mEntryPool.free( entry );
+			//delete entry;
+		}
+
 		float mMaxLoadFactor;
 		std::size_t mNumBuckets;
 		boost::shared_array<KeyTable::bucket_type> mBuckets;
@@ -127,6 +151,8 @@ class Cache {
 		CostTree mCostTree;
 		ExpiryTree mExpiryTree;
 		boost::uint64_t mClock;
+
+		CacheEntryPool mEntryPool;
 
 		std::size_t mNumBytes;
 		std::size_t mMaxBytes;

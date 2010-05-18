@@ -14,10 +14,8 @@ using namespace boost::intrusive;
 
 namespace MaxCache {
 
-namespace Intrusive = boost::intrusive;
-
 typedef Intrusive::unordered_set_member_hook< store_hash<true> > HashHook;
-typedef Intrusive::set_base_hook<> TreeHook;
+typedef Intrusive::set_member_hook<> TreeHook;
 
 class Cache;
 

@@ -9,6 +9,7 @@ Cache::Cache( App & app, std::size_t maxBytes )
 	mBuckets( new KeyTable::bucket_type[mNumBuckets] ),
 	mKeyTable( KeyTable::bucket_traits( mBuckets.get(), mNumBuckets ) ),
 	mClock( 0 ),
+	mEntryPool( 1024 ),
 	mNumBytes( mNumBuckets * sizeof( KeyTable::bucket_type ) ), 
 	mMaxBytes( maxBytes ),
 	mMaxEntrySizeLog2( 28 ),
@@ -31,7 +32,7 @@ void Cache::setEntry( const std::string & key, StringPtr value,
 {
 	boost::uint64_t cost = ( (boost::uint64_t)clientCost << mMaxEntrySizeLog2 )
 		/ value->size();
-	CacheEntry * entry = new CacheEntry( *this, key, value, cost, expiry );
+	CacheEntry * entry = newEntry( key, value, cost, expiry );
 	setEntryPointer( entry );
 }
 
@@ -45,7 +46,7 @@ void Cache::setEntryPointer( CacheEntry * entry ) {
 		// Too big, ignore this request.
 		// This is equivalent to immediate eviction, so it doesn't break
 		// the semantics of the insert operation.
-		delete entry;
+		freeEntry( entry );
 		return;
 	}
 
@@ -93,7 +94,7 @@ void Cache::erase( CacheEntry & entry ) {
 	mKeyTable.erase( mKeyTable.iterator_to( entry ) );
 	mCostTree.erase( mCostTree.iterator_to( entry ) );
 	mExpiryTree.erase( mExpiryTree.iterator_to( entry ) );
-	delete &entry;
+	freeEntry( &entry );
 }
 
 void Cache::evictUntilNormalSize() {
