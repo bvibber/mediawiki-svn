@@ -239,13 +239,13 @@ mw.setConfig( 'embedPlayerSourceAttributes', [
 	*
 	* Rewrites all tags via a given selector
 	* 
-	* @param [ Optional ] {Object} attributes The embedPlayer options for the given video interface.
+	* @param {Object} attributes [ Optional ] The embedPlayer options for the given video interface.
 	* 	Attributes Object can inclued any key value pair that would otherwise be
 	*   an attribute in the html element. 
 	*	
 	*	also see: mw.getConfig( 'embedPlayerAttributes' )
 	*
-	* @param [ Optional ] {Function} callback Function to be called once video interfaces are ready
+	* @param {Function} callback [ Optional ] Function to be called once video interfaces are ready
 	*
 	*/
 	$.fn.embedPlayer = function( attributes, callback ) {	
@@ -779,8 +779,7 @@ mediaSource.prototype = {
 	
 	/** 
 	* Title accessor function.
-	*	@return Title of the source.
-	*	@type String
+	*	@return {String} Title of the source.
 	*/
 	getTitle : function() {		
 		if( this.title ){
@@ -808,8 +807,7 @@ mediaSource.prototype = {
 	},
 	
 	/** Index accessor function.
-	*	@return the source's index within the enclosing mediaElement container.
-	*	@type Integer
+	*	@return {Integer} the source's index within the enclosing mediaElement container.
 	*/
 	getIndex : function() {
 		return this.index;
@@ -846,8 +844,7 @@ mediaSource.prototype = {
 	/** 
 	* Attempts to detect the type of a media file based on the URI.
 	*	@param {String} uri URI of the media file.
-	*	@return The guessed MIME type of the file.
-	*	@type String
+	*	@return {String} The guessed MIME type of the file.
 	*/
 	detectType: function( uri ) {
 		// NOTE: if media is on the same server as the javascript
@@ -957,8 +954,7 @@ mediaElement.prototype = {
 	
 	/**
 	* Check for Timed Text tracks
-	* @return True if text tracks exist, false if no text tracks are found
-	* @type Boolean
+	* @return {Boolean} True if text tracks exist, false if no text tracks are found
 	*/
 	textSourceExists: function() {
 		for ( var i = 0; i < this.sources.length; i++ ) {
@@ -976,8 +972,7 @@ mediaElement.prototype = {
 	* Returns the array of mediaSources of this element.
 	* 
 	* @param {String} [mime_filter] Filter criteria for set of mediaSources to return
-	* @return mediaSource elements.
-	* @type Array
+	* @return {Array} mediaSource elements.
 	*/
 	getSources: function( mimeFilter ) {
 		if ( !mimeFilter ) {
@@ -2891,7 +2886,7 @@ mw.EmbedPlayer.prototype = {
   * mediaPlayer represents a media player plugin.
   
   * @param {String} id id used for the plugin.
-  * @param {Array<String>} supported_types n array of supported MIME types.
+  * @param {Array} supported_types an array of supported MIME types.
   * @param {String} library external script containing the plugin interface code. 
   * @constructor
   */
