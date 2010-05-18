@@ -70,6 +70,7 @@ class UsabilityInitiativeHooks {
 				array( 'src' => 'js/plugins/jquery.color.js', 'version' => 1 ),
 				array( 'src' => 'js/plugins/jquery.cookie.js', 'version' => 4 ),
 				array( 'src' => 'js/plugins/jquery.delayedBind.js', 'version' => 1 ),
+				array( 'src' => 'js/plugins/jquery.expandableField.js', 'version' => 15 ),
 				array( 'src' => 'js/plugins/jquery.suggestions.js', 'version' => 15 ),
 				array( 'src' => 'js/plugins/jquery.textSelection.js', 'version' => 33 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.js', 'version' => 187 ),
