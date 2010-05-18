@@ -7495,6 +7495,7 @@ $messages['it'] = array(
  * @author Aotake
  * @author Fievarsty
  * @author Fryed-peach
+ * @author Hosiryuhosi
  * @author Whym
  * @author 青子守歌
  */
@@ -7688,9 +7689,9 @@ $messages['ja'] = array(
 	'wikieditor-toolbar-help-content-showreferences-description' => '脚注の表示',
 	'wikieditor-toolbar-help-content-showreferences-result' => "<ol class='references'><li id='cite_note-test-0'><b><a title='' href='#'>^</a></b> <a rel='nofollow' title='http://www.example.org' class='external text' href='#'>リンクタイトル</a>、追加テキスト</li></ol>",
 	'wikieditor-toolbar-help-content-signaturetimestamp-description' => '時刻付き署名',
-	'wikieditor-toolbar-help-content-signaturetimestamp-result' => "<a href='#' title='{{#special:mypage}}'>利用者名</a> (<a href='#' title='{{#special:mytalk}}'>会話</a>) 2009年6月10日 (水) 15:54 (UTC)",
+	'wikieditor-toolbar-help-content-signaturetimestamp-result' => "<a href='#' title='{{#special:mypage}}'>利用者名</a> (<a href='#' title='{{#special:mytalk}}'>トーク</a>) 2009年6月10日 (水) 15:54 (UTC)",
 	'wikieditor-toolbar-help-content-signature-description' => '署名',
-	'wikieditor-toolbar-help-content-signature-result' => "<a href='#' title='{{#special:mypage}}'>利用者名</a> (<a href='#' title='{{#special:mytalk}}'>会話</a>)",
+	'wikieditor-toolbar-help-content-signature-result' => "<a href='#' title='{{#special:mypage}}'>利用者名</a> (<a href='#' title='{{#special:mytalk}}'>トーク</a>)",
 	'wikieditor-toolbar-help-content-indent-description' => 'インデント',
 	'wikieditor-toolbar-help-content-indent-syntax' => '通常の文章<br />:インデントされた文章<br />::インデントされた文章',
 	'wikieditor-toolbar-help-content-indent-result' => '通常の文章<dl><dd>インデントされた文章<dl><dd>インデントされた文章</dd></dl></dd></dl>',

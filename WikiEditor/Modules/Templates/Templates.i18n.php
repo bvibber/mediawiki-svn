@@ -232,6 +232,13 @@ $messages['sv'] = array(
 	'wikieditor-templates-preference' => 'Aktivera ihopfällbara mallar',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'wikieditor-templates-preference' => 'Cho phép làm xẹp các bản mẫu',
+);
+
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Horacewai2
  */
