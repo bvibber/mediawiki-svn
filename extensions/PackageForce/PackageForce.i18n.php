@@ -514,6 +514,14 @@ $messages['ru'] = array(
  * @author Dafer45
  */
 $messages['sv'] = array(
+	'pf-admin-link-view-documentation' => 'Se dokumentation knuten till sidan.',
+	'pf-admin-link-editlink-page' => 'Redigera sida',
+	'pf-admin-link-approve' => 'Godkänn sida',
+	'pf-header-documentation' => 'Dokumentation',
+	'pf-header-in_packages' => 'Paket',
+	'pf-header-edit' => 'Redigera länk',
+	'pf-header-type' => 'Typ av sida',
+	'pf-header-page_title' => 'Titel',
 	'pf-header-approve' => 'Godkänn',
 );
 

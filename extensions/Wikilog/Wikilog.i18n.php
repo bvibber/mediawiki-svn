@@ -3490,7 +3490,7 @@ $messages['ja'] = array(
 	'wikilog-summary-uncategorized' => '未分類',
 	'wikilog-summary-categories' => '$2に分類',
 	'wikilog-summary-more' => '[[$3|→ 続きを読む…]]',
-	'wikilog-author-signature' => '[[{{ns:User}}:$1|$1]] ([[{{ns:User_talk}}:$1|会話]])',
+	'wikilog-author-signature' => '[[{{ns:User}}:$1|$1]] ([[{{ns:User_talk}}:$1|トーク]])',
 	'wikilog-edit-fieldset-legend' => 'ウィキログのオプション:',
 	'wikilog-edit-signpub' => 'この記事に署名し公開する',
 	'wikilog-edit-signpub-tooltip' => '保存時にこの記事が署名され、そのウィキログに公開されます。この記事を下書きのままにするのなら、このボックスをチェックしないでください。',
@@ -5608,6 +5608,7 @@ $messages['si'] = array(
 
 /** Swedish (Svenska)
  * @author Ainali
+ * @author Dafer45
  * @author Elias Bröms
  * @author Ozp
  * @author Per
@@ -5673,6 +5674,7 @@ För att publicera artiklar och aktivera andra wikilogegenskaper måste den för
 	'wikilog-edit-signpub' => 'Signera och publicera denna artikel',
 	'wikilog-edit-signpub-tooltip' => 'Gör att artiklar blir signerade och publicerade i sin wikilog när de sparas.
 Avmarkera denna box för att lämna artiklar som utkast.',
+	'wikilog-comment-note-edited' => 'senast redigerad den $1 vid $2',
 	'wikilog-comment-anonsig' => '$3 (anonym)',
 	'wikilog-comment-pending' => 'Denna kommentar väntar på godkännande.',
 	'wikilog-comment-deleted' => 'Denna kommentar har raderats.',

@@ -4874,6 +4874,7 @@ $messages['vi'] = array(
 	'fundraiserstats-contributions' => 'Quyên góp',
 	'fundraiserstats-total' => 'Tổng cộng (USD)',
 	'fundraiserstats-avg' => 'Trung bình (USD)',
+	'fundraiserstats-ytd' => 'Tổng số tích lũy (USD)',
 	'fundraiserstats-max' => 'Tối đa (USD)',
 	'fundraiserstats-tab-totals' => 'Tổng cộng (USD)',
 	'fundraiserstats-tab-contributions' => 'Số khoản quyên góp',

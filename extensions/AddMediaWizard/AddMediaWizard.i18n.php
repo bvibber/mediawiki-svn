@@ -29,6 +29,13 @@ $messages['ko'] = array(
 	'addmediawizard-desc' => 'Kaltura와 위키미디어 재단이 공동 개발한 미디어 추가 마법사',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'addmediawizard-desc' => 'Legg til mediaveiviser, utviklet i samarbeid mellom Kaltura og Wikimedia Foundation',
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */

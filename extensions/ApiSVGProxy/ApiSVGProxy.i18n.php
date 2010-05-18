@@ -211,6 +211,13 @@ $messages['pt'] = array(
 	'apisvgproxy-desc' => 'Representa os ficheiros SVG de um repositório (possivelmente remoto) no domínio local',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Giro720
+ */
+$messages['pt-br'] = array(
+	'apisvgproxy-desc' => 'Representa os ficheiros SVG de um repositório (possivelmente remoto) no domínio local',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

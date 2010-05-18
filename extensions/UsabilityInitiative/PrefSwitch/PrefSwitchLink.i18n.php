@@ -447,6 +447,8 @@ $messages['sv'] = array(
  * @author Veeven
  */
 $messages['te'] = array(
+	'prefswitch-link-anon' => 'కొత్త సౌలభ్యాలు',
+	'tooltip-pt-prefswitch-link-anon' => 'కొత్త విశేషాల గురించి తెలుసుకోండి',
 	'prefswitch-link-off' => 'కొత్త సౌలభ్యాలు',
 	'tooltip-pt-prefswitch-link-off' => 'కొత్త సౌలభ్యాలను ప్రయత్నించండి',
 );
@@ -467,6 +469,23 @@ $messages['tr'] = array(
  * @author Minh Nguyen
  */
 $messages['vi'] = array(
+	'prefswitch-link-anon' => 'Tính năng mới',
+	'tooltip-pt-prefswitch-link-anon' => 'Tìm hiểu về các tính năng mới',
+	'prefswitch-link-on' => 'Đưa tôi trở lại',
+	'tooltip-pt-prefswitch-link-on' => 'Tắt các tính năng mới',
+	'prefswitch-link-off' => 'Tính năng mới',
 	'tooltip-pt-prefswitch-link-off' => 'Hãy thử các tính năng mới',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Horacewai2
+ */
+$messages['zh-hant'] = array(
+	'prefswitch-link-anon' => '新功能',
+	'tooltip-pt-prefswitch-link-anon' => '了解更多關於新功能',
+	'prefswitch-link-on' => '回到舊版',
+	'tooltip-pt-prefswitch-link-on' => '禁用新功能',
+	'prefswitch-link-off' => '新功能',
+	'tooltip-pt-prefswitch-link-off' => '嘗試新功能',
 );
 

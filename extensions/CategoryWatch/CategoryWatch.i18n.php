@@ -792,10 +792,14 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Horacewai2
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
+	'categorywatch-catmovein' => '$1已經由$2搬到$3。',
+	'categorywatch-catmoveout' => '$1已經移離$2並改到$3',
 	'categorywatch-catadd' => '已把$1新增至分類$2',
 	'categorywatch-catsub' => '已把$1從分類$2移除',
+	'categorywatch-autocat' => '由$1自動監視',
 );
 

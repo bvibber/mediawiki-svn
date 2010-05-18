@@ -175,7 +175,7 @@ $messages['frp'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
-	'skinperpage-desc' => 'Engade a etiqueta <code>&lt;skin&gt;</code> para usar diferentes apariencias por páxina',
+	'skinperpage-desc' => 'Engade a etiqueta <code>&lt;skin&gt;</code> para usar diferentes aparencias por páxina',
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)

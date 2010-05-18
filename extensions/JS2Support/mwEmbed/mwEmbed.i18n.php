@@ -34,6 +34,10 @@ $messages['ar'] = array(
 	'mwe-cancel' => 'ألغِ',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ * @author Jim-by
+ */
 $messages['be-tarask'] = array(
 	'mwe-loading_txt' => 'загрузка …',
 	'mwe-error_load_lib' => 'Памылка: JavaScript $1 не даступны альбо не вызначае $2',
@@ -41,11 +45,10 @@ $messages['be-tarask'] = array(
 	'mwe-load-drag-item' => 'Загрузка перанесенага элемэнту',
 	'mwe-ok' => 'Добра',
 	'mwe-cancel' => 'Адмяніць',
-);
-$messages['br'] = array(
-	'mwe-loading_txt' => 'o kargañ...',
-	'mwe-ok' => 'Mat eo',
-	'mwe-cancel' => 'Nullañ',
+	'mwe-enable-gadget' => 'Уключыць бэта-мультымэдыя (mwEmbed) для ўсіх старонак',
+	'mwe-enable-gadget-done' => 'Дапаўненьне бэта-мультымэтыя ўключанае',
+	'mwe-must-login-gadget' => 'Для ўключэньня дапаўненьня Вам неабходна <a target="_new" href="$1">ўвайсьці ў сыстэму</a>',
+	'mwe-test-plural' => 'Я прайшоў $1 {{PLURAL:$1|тэст|тэсты|тэстаў}}',
 );
 
 /** Breton (Brezhoneg)
@@ -131,11 +134,20 @@ $messages['eo'] = array(
 	'mwe-cancel' => 'Nuligi',
 );
 
+/** Spanish (Español)
+ * @author Translationista
+ */
 $messages['es'] = array(
 	'mwe-loading_txt' => 'cargando ...',
+	'mwe-error_load_lib' => 'Error: JavaScript $1 no ha podido ser recuperado o no define $2',
+	'mwe-apiproxy-setup' => 'Configurando proxi de la API',
 	'mwe-load-drag-item' => 'Cargando el objeto arrastrado',
 	'mwe-ok' => 'OK',
 	'mwe-cancel' => 'Cancelar',
+	'mwe-enable-gadget' => 'Habilitar multimedia beta (mwEmbed) en todas las páginas',
+	'mwe-enable-gadget-done' => 'Se ha habilitado el gadget multimedia beta',
+	'mwe-must-login-gadget' => 'Para habilitar el gadget debes <a target="_new" href="$1">ingresar</a>',
+	'mwe-test-plural' => 'Realicé {{PLURAL:$1|$1 prueba|$1 pruebas}}',
 );
 
 $messages['eu'] = array(

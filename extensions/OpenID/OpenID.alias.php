@@ -18,94 +18,110 @@ $aliases['en'] = array(
 	'OpenIDXRDS' => array( 'OpenIDXRDS' ),
 );
 
+/** Arabic (العربية) */
 $aliases['ar'] = array(
-	'OpenIDLogin'     => array( 'دخول_الهوية_المفتوحة' ),
-	'OpenIDConvert'   => array( 'تحويل_الهوية_المفتوحة' ),
-	'OpenIDServer'    => array( 'خادم_الهوية_المفتوحة' ),
-	'OpenIDXRDS'      => array( 'إكسردس_الهوية_المفتوحة' ),
+	'OpenIDLogin' => array( 'دخول_الهوية_المفتوحة' ),
+	'OpenIDConvert' => array( 'تحويل_الهوية_المفتوحة' ),
+	'OpenIDServer' => array( 'خادم_الهوية_المفتوحة' ),
+	'OpenIDXRDS' => array( 'إكسردس_الهوية_المفتوحة' ),
 );
 
+/** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'OpenIDLogin'     => array( 'دخول_Open_ID' ),
-	'OpenIDConvert'   => array( 'تحويل_Open_ID' ),
-	'OpenIDServer'    => array( 'Open_ID_Server' ),
-	'OpenIDXRDS'      => array( 'Open_ID_XRDS' ),
+	'OpenIDLogin' => array( 'دخول_Open_ID' ),
+	'OpenIDConvert' => array( 'تحويل_Open_ID' ),
+	'OpenIDServer' => array( 'Open_ID_Server' ),
+	'OpenIDXRDS' => array( 'Open_ID_XRDS' ),
 );
 
+/** Finnish (Suomi) */
 $aliases['fi'] = array(
-	'OpenIDLogin'     => array( 'OpenID-kirjautuminen' ),
-	'OpenIDConvert'   => array( 'OpenID-muunnos' ),
-	'OpenIDServer'    => array( 'OpenID-palvelin' ),
+	'OpenIDLogin' => array( 'OpenID-kirjautuminen' ),
+	'OpenIDConvert' => array( 'OpenID-muunnos' ),
+	'OpenIDServer' => array( 'OpenID-palvelin' ),
 );
 
+/** Interlingua (Interlingua) */
 $aliases['ia'] = array(
-	'OpenIDLogin'     => array( 'Aperir session OpenID' ),
-	'OpenIDConvert'   => array( 'Converter a OpenID' ),
-	'OpenIDServer'    => array( 'Servitor OpenID' ),
-	'OpenIDXRDS'      => array( 'XRDS OpenID' ),
+	'OpenIDLogin' => array( 'Aperir session OpenID' ),
+	'OpenIDConvert' => array( 'Converter a OpenID' ),
+	'OpenIDServer' => array( 'Servitor OpenID' ),
+	'OpenIDXRDS' => array( 'XRDS OpenID' ),
 );
 
+/** Japanese (日本語) */
 $aliases['ja'] = array(
-	'OpenIDLogin'     => array( 'OpenIDログイン', 'ＯｐｅｎＩＤログイン' ),
-	'OpenIDConvert'   => array( 'OpenID変換', 'ＯｐｅｎＩＤ変換' ),
-	'OpenIDServer'    => array( 'OpenIDサーバー', 'ＯｐｅｎＩＤサーバー' ),
+	'OpenIDLogin' => array( 'OpenIDログイン', 'ＯｐｅｎＩＤログイン' ),
+	'OpenIDConvert' => array( 'OpenID変換', 'ＯｐｅｎＩＤ変換' ),
+	'OpenIDServer' => array( 'OpenIDサーバー', 'ＯｐｅｎＩＤサーバー' ),
 );
 
+/** Korean (한국어) */
 $aliases['ko'] = array(
-	'OpenIDLogin'     => array( 'OpenID로그인' ),
-	'OpenIDConvert'   => array( 'OpenID번역' ),
-	'OpenIDServer'    => array( 'OpenID서버' ),
+	'OpenIDLogin' => array( 'OpenID로그인' ),
+	'OpenIDConvert' => array( 'OpenID번역' ),
+	'OpenIDServer' => array( 'OpenID서버' ),
 );
 
+/** Colognian (Ripoarisch) */
 $aliases['ksh'] = array(
-	'OpenIDLogin'     => array( 'OpenIDAanmedung' ),
-	'OpenIDConvert'   => array( 'OpenIDÖmwandele' ),
+	'OpenIDLogin' => array( 'OpenIDAanmedung' ),
+	'OpenIDConvert' => array( 'OpenIDÖmwandele' ),
 );
 
+/** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
-	'OpenIDLogin'     => array( 'Login fir OpenID' ),
-	'OpenIDConvert'   => array( 'OpenID ëmwandelen' ),
+	'OpenIDLogin' => array( 'Login fir OpenID' ),
+	'OpenIDConvert' => array( 'OpenID ëmwandelen' ),
 );
 
+/** Malayalam (മലയാളം) */
 $aliases['ml'] = array(
-	'OpenIDLogin'     => array( 'ഓപ്പൺഐ.ഡി.പ്രവേശനം' ),
-	'OpenIDServer'    => array( 'ഓപ്പൺഐ.ഡി.സെർവർ' ),
+	'OpenIDLogin' => array( 'ഓപ്പൺഐ.ഡി.പ്രവേശനം' ),
+	'OpenIDServer' => array( 'ഓപ്പൺഐ.ഡി.സെർവർ' ),
 );
 
+/** Dutch (Nederlands) */
 $aliases['nl'] = array(
-	'OpenIDLogin'     => array( 'OpenIDAanmelden' ),
-	'OpenIDConvert'   => array( 'OpenIDConverteren' ),
+	'OpenIDLogin' => array( 'OpenIDAanmelden' ),
+	'OpenIDConvert' => array( 'OpenIDConverteren' ),
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
 $aliases['no'] = array(
-	'OpenIDLogin'     => array( 'OpenID-innlogging' ),
-	'OpenIDConvert'   => array( 'OpenID-konvertering' ),
-	'OpenIDServer'    => array( 'OpenID-tjener' ),
-	'OpenIDXRDS'      => array( 'OpenID-XRDS' ),
+	'OpenIDLogin' => array( 'OpenID-innlogging' ),
+	'OpenIDConvert' => array( 'OpenID-konvertering' ),
+	'OpenIDServer' => array( 'OpenID-tjener' ),
+	'OpenIDXRDS' => array( 'OpenID-XRDS' ),
 );
 
+/** Sanskrit (संस्कृत) */
 $aliases['sa'] = array(
-	'OpenIDLogin'     => array( 'उद्घटपरिचयपत्रप्रवेश' ),
-	'OpenIDConvert'   => array( 'उद्घटपरिचयपत्रांतर' ),
-	'OpenIDServer'    => array( 'उद्घटपरिचयपत्रविदादाता' ),
-	'OpenIDXRDS'      => array( 'उद्घटपरिचयपत्रXRDS' ),
+	'OpenIDLogin' => array( 'उद्घटपरिचयपत्रप्रवेश' ),
+	'OpenIDConvert' => array( 'उद्घटपरिचयपत्रांतर' ),
+	'OpenIDServer' => array( 'उद्घटपरिचयपत्रविदादाता' ),
+	'OpenIDXRDS' => array( 'उद्घटपरिचयपत्रXRDS' ),
 );
 
+/** Slovak (Slovenčina) */
 $aliases['sk'] = array(
-	'OpenIDLogin'     => array( 'OpenIDPrihlásenie' ),
-	'OpenIDConvert'   => array( 'OpenIDKonverzia' ),
+	'OpenIDLogin' => array( 'OpenIDPrihlásenie' ),
+	'OpenIDConvert' => array( 'OpenIDKonverzia' ),
 );
 
+/** Tagalog (Tagalog) */
 $aliases['tl'] = array(
-	'OpenIDLogin'     => array( 'Paglagda sa OpenID' ),
-	'OpenIDConvert'   => array( 'Pagpapalit ng OpenID' ),
-	'OpenIDServer'    => array( 'Serbidor ng OpenID' ),
-	'OpenIDXRDS'      => array( 'XRDS ng OpenID' ),
+	'OpenIDLogin' => array( 'Paglagda sa OpenID' ),
+	'OpenIDConvert' => array( 'Pagpapalit ng OpenID' ),
+	'OpenIDServer' => array( 'Serbidor ng OpenID' ),
+	'OpenIDXRDS' => array( 'XRDS ng OpenID' ),
 );
 
+/** Turkish (Türkçe) */
 $aliases['tr'] = array(
-	'OpenIDLogin'     => array( 'AçıkKimlikOturumAçma' ),
-	'OpenIDConvert'   => array( 'AçıkKimlikDönüştürme' ),
-	'OpenIDServer'    => array( 'AçıkKimlikSunucusu' ),
-	'OpenIDXRDS'      => array( 'AçıkKimlikXRDS' ),
+	'OpenIDLogin' => array( 'AçıkKimlikOturumAçma' ),
+	'OpenIDConvert' => array( 'AçıkKimlikDönüştürme' ),
+	'OpenIDServer' => array( 'AçıkKimlikSunucusu' ),
+	'OpenIDXRDS' => array( 'AçıkKimlikXRDS' ),
 );
+

@@ -87,6 +87,8 @@ $messages['cs'] = array(
  */
 $messages['cy'] = array(
 	'prefs-updates' => 'Diweddaru',
+	'updatemyprefs-desc' => "Dewis defnyddiwr i ddiweddaru'r rhyngwyneb cyn gynted ag y caiff newidiadau i'r rhyngwyneb eu rhyddhau",
+	'updatemyprefs-label-message' => "Newid fy newisiadau'n syth bin i gyfateb â gosodiadau ac offer rhagosodedig newydd",
 );
 
 /** German (Deutsch) */

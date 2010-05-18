@@ -1313,6 +1313,7 @@ Việc làm này thường kéo tải của máy chủ một cách đáng kể, 
 );
 
 /** Cantonese (粵語)
+ * @author Horacewai2
  * @author Shinjiman
  */
 $messages['yue'] = array(
@@ -1326,6 +1327,7 @@ $messages['yue'] = array(
 	'querybtn' => '遞交查詢',
 	'selectonly' => '只允許唯讀模式嘅查詢。',
 	'querysuccessful' => '查詢完成',
+	'right-asksql' => '進行SQL查詢',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

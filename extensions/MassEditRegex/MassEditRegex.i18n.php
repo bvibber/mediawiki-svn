@@ -1250,6 +1250,10 @@ $messages['sv'] = array(
 	'masseditregex-hint-headreplace' => 'Ersätt',
 	'masseditregex-hint-headeffect' => 'Effekt',
 	'masseditregex-listtype-intro' => 'Detta är en lista över:',
+	'masseditregex-listtype-pagenames' => 'Sidnamn (redigera dessa sidor)',
+	'masseditregex-exprnomatch' => 'Uttrycket "$1" matchade inga sidor.',
+	'masseditregex-editfailed' => 'Redigera misslyckades:',
+	'masseditregex-tooltip-execute' => 'Tillämpa dessa förändringar på varje sida',
 );
 
 /** Telugu (తెలుగు)

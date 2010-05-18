@@ -4371,6 +4371,7 @@ $messages['zh-hans'] = array(
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Alex S.H. Lin
  * @author Gaoxuewei
+ * @author Horacewai2
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
@@ -4379,8 +4380,8 @@ $messages['zh-hant'] = array(
 	'group-oversight' => '監督者',
 	'group-oversight-member' => '監督',
 	'grouppage-oversight' => '{{ns:project}}:監督',
-	'right-oversight' => '查看一個之前隱藏過之修訂',
-	'right-hiderevision' => '隱藏管理員做出的修改',
+	'right-oversight' => '查看一個之前使用[[mw:Extension:Oversight|擴展]]隱藏過之修訂',
+	'right-hiderevision' => '使用Oversight擴展隱藏管理員做出的修改',
 	'hiderevision-prompt' => '要隱藏的修訂版本號碼:',
 	'hiderevision-continue' => '繼續',
 	'hiderevision-text' => "'''注意！'''本工具'''只能'''在以下情況才能使用：

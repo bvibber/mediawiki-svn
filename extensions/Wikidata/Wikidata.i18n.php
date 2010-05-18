@@ -9062,6 +9062,7 @@ Velg en samlign for eksportering. Skriv inn en kommaseparert liste av ISO 639-3-
 	'ow_needs_xlation_source_lang' => 'Kildespråk:',
 	'ow_needs_xlation_dest_lang' => 'Målspråk:',
 	'ow_needs_xlation_no_dest_lang' => 'Vennligst oppgi et målspråk.',
+	'ow_statistics' => 'Wikidata: Statistikk',
 	'ow_show' => 'Vis',
 	'ow_upload' => 'Last opp',
 	'ow_create' => 'Opprett',

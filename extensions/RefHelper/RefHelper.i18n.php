@@ -894,9 +894,11 @@ $messages['ru'] = array(
 );
 
 /** Swedish (Svenska)
+ * @author Dafer45
  * @author Per
  */
 $messages['sv'] = array(
+	'refhelper-refcreate_failure' => 'Sidan [[$1]] finns redan!',
 	'refhelper-label_authorforename' => 'Författaren $1s förnamn:',
 	'refhelper-label_authorsurname' => 'Efternamn:',
 	'refhelper-title' => 'Titel:',
@@ -907,6 +909,8 @@ $messages['sv'] = array(
 	'refhelper-category' => 'Kategori $1:',
 	'refhelper-create' => 'Skapa',
 	'refhelper-search' => 'Sök',
+	'refhelper-toolbox_link_create' => 'Skapa referens',
+	'refhelper-toolbox_link_search' => 'Skapa referens från sökning',
 );
 
 /** Telugu (తెలుగు)

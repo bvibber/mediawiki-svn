@@ -39,6 +39,13 @@ $messages['en'] = array(
 	'mwe-clipedit-layout_left' => 'Left side image layout',
 );
 
+/** Message documentation (Message documentation)
+ * @author EugeneZelenko
+ */
+$messages['qqq'] = array(
+	'mwe-clipedit-layout' => '{{Identical|Layout}}',
+);
+
 /** Afrikaans (Afrikaans) */
 $messages['af'] = array(
 	'mwe-clipedit-preview_insert' => 'Voorskou',
@@ -65,7 +72,9 @@ $messages['ar'] = array(
 	'mwe-clipedit-end_time' => 'وقت النهاية',
 );
 
-/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца)) */
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author Jim-by
+ */
 $messages['be-tarask'] = array(
 	'mwe-clipedit-crop' => 'Выразаць частку выявы',
 	'mwe-clipedit-apply_crop' => 'Прыняць выразку часткі выявы',
@@ -74,6 +83,7 @@ $messages['be-tarask'] = array(
 	'mwe-clipedit-insert_into_sequence' => 'Уставіць у пасьлядоўнасьць',
 	'mwe-clipedit-preview_insert' => 'Папярэдні прагляд устаўкі',
 	'mwe-clipedit-cancel_image_insert' => 'Адмяніць устаўку',
+	'mwe-clipedit-sc_attributes' => 'Рэдагаваньне дэталяў кліпу',
 	'mwe-clipedit-sc_inoutpoints' => 'Устаноўка пунктаў увода-вываду',
 	'mwe-clipedit-sc_overlays' => 'Накладаньні',
 	'mwe-clipedit-sc_audio' => 'Аўдыё-кантроль',
@@ -91,6 +101,9 @@ $messages['be-tarask'] = array(
 	'mwe-clipedit-inline-description' => 'Загаловак',
 	'mwe-clipedit-edit-video-tools' => 'Прылады рэдагаваньня відэа:',
 	'mwe-clipedit-duration' => 'Працягласьць:',
+	'mwe-clipedit-layout' => 'Разьмяшчэньне',
+	'mwe-clipedit-layout_right' => 'Разьмяшчэньне выявы справа',
+	'mwe-clipedit-layout_left' => 'Разьмяшчэньне выявы зьлева',
 );
 
 /** Bulgarian (Български) */
@@ -295,6 +308,7 @@ $messages['eo'] = array(
 
 /** Spanish (Español)
  * @author Crazymadlover
+ * @author Translationista
  */
 $messages['es'] = array(
 	'mwe-clipedit-crop' => 'Recortar imagen',
@@ -322,6 +336,9 @@ $messages['es'] = array(
 	'mwe-clipedit-inline-description' => 'Leyenda',
 	'mwe-clipedit-edit-video-tools' => 'Herramientas de edición de video:',
 	'mwe-clipedit-duration' => 'Duración:',
+	'mwe-clipedit-layout' => 'Compsición',
+	'mwe-clipedit-layout_right' => 'Composición de la imagen del lado derecho',
+	'mwe-clipedit-layout_left' => 'Composición de la imagen del lado izquierdo',
 );
 
 /** Basque (Euskara) */
@@ -790,6 +807,24 @@ $messages['nl'] = array(
 	'mwe-clipedit-layout' => 'Vormgeving',
 	'mwe-clipedit-layout_right' => 'Afbeelding rechts',
 	'mwe-clipedit-layout_left' => 'Afbeelding links',
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'mwe-clipedit-crop' => 'Beskjær bilde',
+	'mwe-clipedit-apply_crop' => 'Legg beskjæring til bilde',
+	'mwe-clipedit-reset_crop' => 'Tilbakestill beskjæring',
+	'mwe-clipedit-insert_image_page' => 'Sett inn i side',
+	'mwe-clipedit-insert_into_sequence' => 'Sett inn i sekvens',
+	'mwe-clipedit-preview_insert' => 'Forhåndsvis innsetting',
+	'mwe-clipedit-cancel_image_insert' => 'Avbryt innsetting',
+	'mwe-clipedit-template_properties' => 'Malegenskaper',
+	'mwe-clipedit-custom_title' => 'Egendefinert tittel',
+	'mwe-clipedit-edit_properties' => 'Rediger egenskaper',
+	'mwe-clipedit-other_properties' => 'Andre egenskaper',
+	'mwe-clipedit-resource_page' => 'Ressursside:',
 );
 
 /** Occitan (Occitan) */

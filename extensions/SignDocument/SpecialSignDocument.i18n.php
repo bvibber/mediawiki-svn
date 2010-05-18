@@ -2260,6 +2260,7 @@ $messages['it'] = array(
  * @author Aotake
  * @author Fryed-peach
  * @author Hosiryuhosi
+ * @author 青子守歌
  */
 $messages['ja'] = array(
 	'signdocument' => '文書署名',
@@ -2319,7 +2320,7 @@ $1',
 	'sig-private' => "''非公開''",
 	'sign-sigdetails' => '署名詳細',
 	'sign-iptools' => '<span class="plainlinksneverexpand"><!--
--->[[User:$1|$1]] ([[User talk:$1|会話]] • <!--
+-->[[User:$1|$1]] ([[User talk:$1|トーク]] • <!--
 -->[[Special:Contributions/$1|投稿記録]] • <!--
 -->[http://www.dnsstuff.com/tools/whois.ch?domain={{urlencode:$1}}&cache=off&email=on WHOIS] • <!--
 -->[http://www.dnsstuff.com/tools/ptr.ch?ip={{urlencode:$1}}&cache=off&email=on RDNS] • <!--

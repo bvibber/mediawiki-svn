@@ -2304,6 +2304,7 @@ $messages['nn'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
  * @author Laaknor
+ * @author Nghtwlkr
  */
 $messages['no'] = array(
 	'ogg-desc' => 'Gjør at Ogg Theora- og Ogg Vorbis-filer kan kjøres med hjelp av JavaScript-avspiller.',
@@ -2333,6 +2334,7 @@ $messages['no'] = array(
 	'ogg-download' => 'Last ned fil',
 	'ogg-desc-link' => 'Om denne filen',
 	'ogg-oggThumb-version' => 'OggHandler krever oggThumb versjon $1 eller senere.',
+	'ogg-oggThumb-failed' => 'oggThumb klarte ikke å opprette miniatyrbildet.',
 );
 
 /** Occitan (Occitan)
@@ -3203,6 +3205,8 @@ Lütfen <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_downl
 	'ogg-dismiss' => 'Kapat',
 	'ogg-download' => 'Dosya indir',
 	'ogg-desc-link' => 'Bu dosya hakkında',
+	'ogg-oggThumb-version' => 'OggHandler, oggThumb sürüm $1 veya üstü gerektirir.',
+	'ogg-oggThumb-failed' => 'oggThumb küçük resim oluşturmayı başaramadı.',
 );
 
 /** Tsonga (Xitsonga)
@@ -3332,6 +3336,7 @@ $messages['vi'] = array(
 	'ogg-dismiss' => 'Đóng',
 	'ogg-download' => 'Tải tập tin xuống',
 	'ogg-desc-link' => 'Chi tiết của tập tin này',
+	'ogg-oggThumb-version' => 'OggHandler cần oggThumb, phiên bản $1 trở lên.',
 );
 
 /** Volapük (Volapük)
@@ -3415,6 +3420,7 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Gaoxuewei
+ * @author Horacewai2
  * @author Mark85296341
  */
 $messages['zh-hant'] = array(
@@ -3444,5 +3450,7 @@ $messages['zh-hant'] = array(
 	'ogg-dismiss' => '關閉',
 	'ogg-download' => '下載檔案',
 	'ogg-desc-link' => '關於這個檔案',
+	'ogg-oggThumb-version' => 'OggHandler需要oggThumb $1或者之後的版本',
+	'ogg-oggThumb-failed' => 'oggThumb未能創建縮略圖。',
 );
 

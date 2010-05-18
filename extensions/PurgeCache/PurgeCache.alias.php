@@ -10,122 +10,153 @@ $aliases['en'] = array(
 	'PurgeCache' => array( 'PurgeCache' ),
 );
 
+/** Arabic (العربية) */
 $aliases['ar'] = array(
-	'PurgeCache'   => array( 'إفراغ_الكاش' ),
+	'PurgeCache' => array( 'إفراغ_الكاش' ),
 );
 
+/** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'PurgeCache'   => array( 'Purge_Cach' ),
+	'PurgeCache' => array( 'Purge_Cach' ),
 );
 
+/** German (Deutsch) */
 $aliases['de'] = array(
-	'PurgeCache'   => array( 'Cache leeren' ),
+	'PurgeCache' => array( 'Cache leeren' ),
 );
 
+/** Lower Sorbian (Dolnoserbski) */
 $aliases['dsb'] = array(
-	'PurgeCache'   => array( 'Cache wuprozniś' ),
+	'PurgeCache' => array( 'Cache wuprozniś' ),
 );
 
+/** Spanish (Español) */
 $aliases['es'] = array(
-	'PurgeCache'   => array( 'Purgar_caché' ),
+	'PurgeCache' => array( 'Purgar_caché' ),
 );
 
+/** Finnish (Suomi) */
 $aliases['fi'] = array(
-	'PurgeCache'   => array( 'Pyyhi_välimuistiversio' ),
+	'PurgeCache' => array( 'Pyyhi_välimuistiversio' ),
 );
 
+/** French (Français) */
 $aliases['fr'] = array(
-	'PurgeCache'   => array( 'Purger le cache', 'Purger cache', 'PurgerLeCache', 'PurgerCache' ),
+	'PurgeCache' => array( 'Purger le cache', 'Purger cache', 'PurgerLeCache', 'PurgerCache' ),
 );
 
+/** Franco-Provençal (Arpetan) */
 $aliases['frp'] = array(
-	'PurgeCache'   => array( 'Purgiér lo cache', 'PurgiérLoCache' ),
+	'PurgeCache' => array( 'Purgiér lo cache', 'PurgiérLoCache' ),
 );
 
+/** Galician (Galego) */
 $aliases['gl'] = array(
-	'PurgeCache'   => array( 'Purgar a caché' ),
+	'PurgeCache' => array( 'Purgar a caché' ),
 );
 
+/** Swiss German (Alemannisch) */
 $aliases['gsw'] = array(
-	'PurgeCache'   => array( 'Cache lääre' ),
+	'PurgeCache' => array( 'Cache lääre' ),
 );
 
+/** Croatian (Hrvatski) */
 $aliases['hr'] = array(
-	'PurgeCache'   => array( 'Očisti_cache' ),
+	'PurgeCache' => array( 'Očisti_cache' ),
 );
 
+/** Upper Sorbian (Hornjoserbsce) */
 $aliases['hsb'] = array(
-	'PurgeCache'   => array( 'Pufrowak wuprózdnić' ),
+	'PurgeCache' => array( 'Pufrowak wuprózdnić' ),
 );
 
+/** Interlingua (Interlingua) */
 $aliases['ia'] = array(
-	'PurgeCache'   => array( 'Vacuar cache' ),
+	'PurgeCache' => array( 'Vacuar cache' ),
 );
 
+/** Indonesian (Bahasa Indonesia) */
 $aliases['id'] = array(
-	'PurgeCache'   => array( 'Pembersihan tembolok', 'PembersihanTembolok', 'Purgasi kas', 'PurgasiKas' ),
+	'PurgeCache' => array( 'Pembersihan tembolok', 'PembersihanTembolok', 'Purgasi kas', 'PurgasiKas' ),
 );
 
+/** Japanese (日本語) */
 $aliases['ja'] = array(
-	'PurgeCache'   => array( 'キャッシュ削除' ),
+	'PurgeCache' => array( 'キャッシュ削除' ),
 );
 
+/** Korean (한국어) */
 $aliases['ko'] = array(
-	'PurgeCache'   => array( '캐시갱신' ),
+	'PurgeCache' => array( '캐시갱신' ),
 );
 
+/** Colognian (Ripoarisch) */
 $aliases['ksh'] = array(
-	'PurgeCache'   => array( 'Zwescheschpeischer leddisch' ),
+	'PurgeCache' => array( 'Zwescheschpeischer leddisch' ),
 );
 
+/** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
-	'PurgeCache'   => array( 'Cache eidel maachen' ),
+	'PurgeCache' => array( 'Cache eidel maachen' ),
 );
 
+/** Macedonian (Македонски) */
 $aliases['mk'] = array(
-	'PurgeCache'   => array( 'ИсчистиКеш' ),
+	'PurgeCache' => array( 'ИсчистиКеш' ),
 );
 
+/** Malayalam (മലയാളം) */
 $aliases['ml'] = array(
-	'PurgeCache'   => array( 'കാഷെശുദ്ധീകരണം' ),
+	'PurgeCache' => array( 'കാഷെശുദ്ധീകരണം' ),
 );
 
+/** Maltese (Malti) */
 $aliases['mt'] = array(
-	'PurgeCache'   => array( 'ŻvojtaCache' ),
+	'PurgeCache' => array( 'ŻvojtaCache' ),
 );
 
+/** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
-	'PurgeCache'   => array( 'Kas_leegmaken' ),
+	'PurgeCache' => array( 'Kas_leegmaken' ),
 );
 
+/** Dutch (Nederlands) */
 $aliases['nl'] = array(
-	'PurgeCache'   => array( 'CacheLegen' ),
+	'PurgeCache' => array( 'CacheLegen' ),
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
 $aliases['no'] = array(
-	'PurgeCache'   => array( 'Oppdater mellomlager' ),
+	'PurgeCache' => array( 'Oppdater mellomlager' ),
 );
 
+/** Occitan (Occitan) */
 $aliases['oc'] = array(
-	'PurgeCache'   => array( 'Purgar l\'amagatal', 'Purgar amagatal', 'PurgarAmagatal' ),
+	'PurgeCache' => array( "Purgar l'amagatal", 'Purgar amagatal', 'PurgarAmagatal' ),
 );
 
+/** Sanskrit (संस्कृत) */
 $aliases['sa'] = array(
-	'PurgeCache'   => array( 'पुनातिसंगणकसंस्मृति' ),
+	'PurgeCache' => array( 'पुनातिसंगणकसंस्मृति' ),
 );
 
+/** Slovak (Slovenčina) */
 $aliases['sk'] = array(
-	'PurgeCache'   => array( 'VyčistiťCache' ),
+	'PurgeCache' => array( 'VyčistiťCache' ),
 );
 
+/** Thai (ไทย) */
 $aliases['th'] = array(
-	'PurgeCache'   => array( 'ล้างแคช' ),
+	'PurgeCache' => array( 'ล้างแคช' ),
 );
 
+/** Tagalog (Tagalog) */
 $aliases['tl'] = array(
-	'PurgeCache'   => array( 'Purgahin ang baunan' ),
+	'PurgeCache' => array( 'Purgahin ang baunan' ),
 );
 
+/** Turkish (Türkçe) */
 $aliases['tr'] = array(
-	'PurgeCache'   => array( 'ÖnbellekBoşalt', 'ÖnbellekTemizle' ),
+	'PurgeCache' => array( 'ÖnbellekBoşalt', 'ÖnbellekTemizle' ),
 );
+

@@ -13,90 +13,113 @@ $aliases['en'] = array(
 	'Index' => array( 'Index' ),
 );
 
+/** Afrikaans (Afrikaans) */
 $aliases['af'] = array(
-	'Index'   => array( 'Indeks' ),
+	'Index' => array( 'Indeks' ),
 );
 
+/** Arabic (العربية) */
 $aliases['ar'] = array(
-	'Index'   => array( 'فهرس' ),
+	'Index' => array( 'فهرس' ),
 );
 
+/** Aramaic (ܐܪܡܝܐ) */
 $aliases['arc'] = array(
-	'Index'   => array( 'ܡܚܘܝܢܐ' ),
+	'Index' => array( 'ܡܚܘܝܢܐ' ),
 );
 
+/** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'Index'   => array( 'فهرس' ),
+	'Index' => array( 'فهرس' ),
 );
 
+/** Breton (Brezhoneg) */
 $aliases['br'] = array(
-	'Index'   => array( 'Meneger' ),
+	'Index' => array( 'Meneger' ),
 );
 
+/** Bosnian (Bosanski) */
 $aliases['bs'] = array(
-	'Index'   => array( 'Indeks' ),
+	'Index' => array( 'Indeks' ),
 );
 
+/** Esperanto (Esperanto) */
 $aliases['eo'] = array(
-	'Index'   => array( 'Indekso' ),
+	'Index' => array( 'Indekso' ),
 );
 
+/** Spanish (Español) */
 $aliases['es'] = array(
-	'Index'   => array( 'Índice' ),
+	'Index' => array( 'Índice' ),
 );
 
+/** Franco-Provençal (Arpetan) */
 $aliases['frp'] = array(
-	'Index'   => array( 'Endèxe' ),
+	'Index' => array( 'Endèxe' ),
 );
 
+/** Interlingua (Interlingua) */
 $aliases['ia'] = array(
-	'Index'   => array( 'Indice' ),
+	'Index' => array( 'Indice' ),
 );
 
+/** Indonesian (Bahasa Indonesia) */
 $aliases['id'] = array(
-	'Index'   => array( 'Indeks' ),
+	'Index' => array( 'Indeks' ),
 );
 
+/** Japanese (日本語) */
 $aliases['ja'] = array(
-	'Index'   => array( '索引' ),
+	'Index' => array( '索引' ),
 );
 
+/** Cornish (Kernewek) */
 $aliases['kw'] = array(
-	'Index'   => array( 'Menegva' ),
+	'Index' => array( 'Menegva' ),
 );
 
+/** Macedonian (Македонски) */
 $aliases['mk'] = array(
-	'Index'   => array( 'Индекс' ),
+	'Index' => array( 'Индекс' ),
 );
 
+/** Malayalam (മലയാളം) */
 $aliases['ml'] = array(
-	'Index'   => array( 'സൂചിക' ),
+	'Index' => array( 'സൂചിക' ),
 );
 
+/** Marathi (मराठी) */
 $aliases['mr'] = array(
-	'Index'   => array( 'सूची' ),
+	'Index' => array( 'सूची' ),
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
 $aliases['no'] = array(
-	'Index'   => array( 'Indeks' ),
+	'Index' => array( 'Indeks' ),
 );
 
+/** Polish (Polski) */
 $aliases['pl'] = array(
-	'Index'   => array( 'Indeks' ),
+	'Index' => array( 'Indeks' ),
 );
 
+/** Pashto (پښتو) */
 $aliases['ps'] = array(
-	'Index'   => array( 'ليکلړ' ),
+	'Index' => array( 'ليکلړ' ),
 );
 
+/** Portuguese (Português) */
 $aliases['pt'] = array(
-	'Index'   => array( 'Índice' ),
+	'Index' => array( 'Índice' ),
 );
 
+/** Slovenian (Slovenščina) */
 $aliases['sl'] = array(
-	'Index'   => array( 'Kazalo' ),
+	'Index' => array( 'Kazalo' ),
 );
 
+/** Turkish (Türkçe) */
 $aliases['tr'] = array(
-	'Index'   => array( 'Dizin', 'Endeks' ),
+	'Index' => array( 'Dizin', 'Endeks' ),
 );
+

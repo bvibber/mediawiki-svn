@@ -854,20 +854,22 @@ $messages['nn'] = array(
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
+ * @author Nghtwlkr
  */
 $messages['no'] = array(
 	'chemicalsources' => 'Kjemiske kilder',
-	'chemicalsource-desc' => 'Legger til taggen <nowiki><chemform></nowiki> for kjemiske formler',
+	'chemicalsource-desc' => 'Legger til elementet <nowiki><chemform></nowiki> for kjemiske formler',
+	'chemicalsources-desc' => '[[Special:ChemicalSources|Spesialside]] for kjemiske kilder',
 	'chemFunctions_ListPage' => 'Kjemiske kilder',
-	'chemFunctions_DataList' => 'Nedenunder er en liste over lenker til sider som kan gi nyttig informasjon om den kjemiske substansen du leter etter.<br /><br />
+	'chemFunctions_DataList' => 'Nedenunder er en liste over lenker til nettsted som kan gi nyttig informasjon om den kjemikaliet du leter etter.<br /><br />
 * <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Compound $MIXCASNameFormula ved NIST</a><br />
 * <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS ved Oxford University (UK) (ikke søkbar)</a><br />',
 	'chemFunctions_CAS' => 'CAS-nummer',
-	'chemFunctions_ATCCode' => 'ATCCode',
-	'chemFunctions_ECNumber' => 'ECNumber',
+	'chemFunctions_ATCCode' => 'ATC-kode',
+	'chemFunctions_ECNumber' => 'EC-nummer',
 	'chemFunctions_Formula' => 'Formel',
 	'chemFunctions_Name' => 'IUPAC-navn',
-	'chemFunctions_ChemFormInputError' => 'Chemform: Input-feil!',
+	'chemFunctions_ChemFormInputError' => 'Chemform: Inndatafeil!',
 );
 
 /** Occitan (Occitan)
@@ -981,10 +983,12 @@ $messages['pt'] = array(
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
+ * @author Giro720
  */
 $messages['pt-br'] = array(
 	'chemicalsources' => 'Fontes de química',
 	'chemicalsource-desc' => 'Adiciona a marca <nowiki><chemform></nowiki> para fórmulas químicas',
+	'chemicalsources-desc' => '[[Special:ChemicalSources|Página especial]] para fontes químicas',
 	'chemFunctions_ListPage' => 'Fontes de química',
 	'chemFunctions_DataList' => 'Abaixo está uma lista de ligações para sítios que oferecem informação sobre a substância química que procura.<br /><br />
 * <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Composto $MIXCASNameFormula no NIST</a><br />

@@ -177,6 +177,7 @@ $messages['ar'] = array(
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
+ * @author Wizardist
  */
 $messages['be-tarask'] = array(
 	'prefswitch' => 'Пераключальнік установак Ініцыятывы па паляпшэньні зручнасьці і прастаты выкарыстаньня',
@@ -218,13 +219,13 @@ $messages['be-tarask'] = array(
 [[File:UsabilityNavigation.png|right|link=|Выява новай навігацыі]]
 [[File:UsabilityToolbar.png|right|link=|Выява палепшанай панэлі рэдагаваньня]]
 [[File:UsabilityDialogs.png|right|link=|Выява новых дыялёгаў стварэньня]]
-===Што мы зьнянілі===
+===Што мы зьмянілі===
 * '''Навігацыя:''' Мы палепшылі навігацыю для чытаньня і рэдагаваньня старонак. Цяпер закладкі ў верхняй частцы кожнай старонкі дазваляюць дакладней зразумець ці Вы праглядаеце артыкул ці старонку абмеркаваньня, а таксама ці Вы чытаеце ці рэдагуеце старонку.
-* '''Паляпшэньні панэлі рэдагаваньня:'''  Мы перапрацавалі панэль рэдагаваньня для таго, каб зрабіць яе болей простай у выкарыстаньні.  Цяпер фарматаваньне старонак болей лёгкае і болей інтуітыўнае.
-* '''Майстар стварэньня спасылак:'''  Лёгкі ў выкарыстаньні інструмэнт дазваляе Вам дадаваць спасылкі на іншыя старонкі {{GRAMMAR:'''родны|{{SITENAME}}}} таксама як і на вонкавыя сайты.
+* '''Паляпшэньні панэлі рэдагаваньня:''' Мы перапрацавалі панэль рэдагаваньня для таго, каб зрабіць яе болей простай у выкарыстаньні.  Цяпер фарматаваньне старонак болей лёгкае і болей інтуітыўнае.
+* '''Майстар стварэньня спасылак:''' Лёгкі ў выкарыстаньні інструмэнт дазваляе Вам дадаваць спасылкі на іншыя старонкі {{GRAMMAR:'''родны|{{SITENAME}}}} таксама як і на вонкавыя сайты.
 * '''Паляпшэньні пошуку:''' Мы палепшылі пошукавыя падказкі, каб хутчэй паказаць неабходную Вам старонку.
-* '''Іншыя магчымасьці:'''  Мы таксама ўвялі майстар стварэньня табліцаў для палягчэньня стварэньня табліцаў і магчымасьць пошуку і замены для палягчэньня рэдагаваньня старонак.
-* '''Лягатып Вікіпэдыі''': Мы зьмянілі лягатып. Падрабязнасьці глядзіце ў [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ фундацыі «Вікімэдыя»].",
+* '''Іншыя магчымасьці:''' Мы таксама ўвялі майстар стварэньня табліцаў для палягчэньня стварэньня табліцаў і магчымасьць пошуку і замены для палягчэньня рэдагаваньня старонак.
+* '''Лягатып Вікіпэдыі''': Мы зьмянілі лягатып. Падрабязнасьці глядзіце ў [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ блогу фундацыі «Вікімэдыя»].",
 	'prefswitch-main-anon' => '===Вярнуцца===
 Калі Вы жадаеце выключыць новыя магчымасьці, <span class="plainlinks">[$1 націсьніце тут]</span>. Вас папросяць спачатку увайсьці ў сыстэму альбо стварыць новы рахунак.',
 	'prefswitch-main-on' => '===Зваротная сувязь?===
@@ -247,7 +248,7 @@ $messages['bg'] = array(
 	'prefswitch-survey-true' => 'Да',
 	'prefswitch-survey-false' => 'Не',
 	'prefswitch-survey-question-browser' => 'Кой браузър използвате?',
-	'prefswitch-title-on' => 'Какво ново?',
+	'prefswitch-title-on' => 'Нови функции',
 	'prefswitch-title-switched-on' => 'Наслаждавайте се!',
 	'prefswitch-title-switched-off' => 'Благодаря',
 	'prefswitch-success-off' => 'Новите функции са изключени.',
@@ -332,8 +333,8 @@ Dibabit kement tra hag a zegouezh.',
 	'prefswitch-title-off' => 'Paouez gant ar perzhioù nevez',
 	'prefswitch-title-switched-off' => 'Trugarez',
 	'prefswitch-title-feedback' => 'Sonjoù',
-	'prefswitch-success-on' => 'War enaou emañ ar perzhioù nevez bremañ.',
-	'prefswitch-success-off' => "Paouezet ez eus bet d'ober gant ar perzhioù nevez.",
+	'prefswitch-success-on' => "War enaou emañ ar perzhioù nevez bremañ. Emichañs e plijint deoc'h. Mar fell deoc'h e c'hallit tennañ anezho en ur glikañ war al liamm \"[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-on}}]]\" e laez ar bajenn.",
+	'prefswitch-success-off' => 'Paouezet ez eus bet d\'ober gant ar perzhioù nevez. Ho trugarekaat evit bezañ amprouet anezho. Gallout a rit adenaouiñ anezho pa fell deoc\'h en ur glikañ war al liamm "[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-off}}]]" e laez ar bajenn.',
 	'prefswitch-success-feedback' => "Kaset eo bet hoc'h evezhiadennoù.",
 	'prefswitch-return' => '<hr style="clear:both">
 Distreiñ da <span class="plainlinks">[$1 $2]</span>.',
@@ -357,7 +358,7 @@ Mar fell deoc\'h diweredekaat an perzhioù nevez, e c\'hallit <span class="plain
 	'prefswitch-main-off' => '===Un taol-esae !===
 MAr fell deoc\'h ober gant ar barregezhioù nevez, <span class="plainlinks">[$1 klikit amañ]</span>.',
 	'prefswitch-survey-intro-feedback' => "Plijet-bras e vefemp o kaout keloù diganeoc'h.
-Mar fell deoc'h e c'hallit respont d'an tamm sontadeg a-is.",
+Mar fell deoc'h e c'hallit respont d'an tamm sontadeg a-is a-raok klikañ war [[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]",
 	'prefswitch-survey-intro-off' => "Ho trugarekaat da vezañ amprouet ar perzhioù nevez.
 Mard eo mat deoc'h e c'hallit hor skoazellañ en ur respont d'an tamm sontadeg a-is, a-raok klikañ war \"[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]\".",
 );
@@ -433,8 +434,10 @@ $messages['cs'] = array(
 	'prefswitch-survey-false' => 'Ne',
 	'prefswitch-survey-submit-off' => 'Vypnout nové funkce',
 	'prefswitch-survey-cancel-off' => 'Pokud chcete i nadále používat nové vlastnosti, můžete se vrátit na stránku $1.',
-	'prefswitch-survey-submit-feedback' => 'Odeslat zpětnou vazbu',
-	'prefswitch-survey-cancel-feedback' => 'Pokud nechcete poskytnout zpětnou vazbu, můžete se vrátit na $1.',
+	'prefswitch-survey-submit-feedback' => 'Odeslat názor',
+	'prefswitch-survey-cancel-feedback' => 'Pokud nám nechcete sdělit svůj názor, můžete se vrátit na $1.',
+	'prefswitch-survey-question-like' => 'Co se vám z nových funkcí líbilo?',
+	'prefswitch-survey-question-dislike' => 'Co se vám z nových funkcí nelíbilo?',
 	'prefswitch-survey-question-whyoff' => 'Proč jste vypnuli nové funkce? 
 Vyberte všechny relevantní možnosti.',
 	'prefswitch-survey-answer-whyoff-hard' => 'Byla příliš složitá na používání.',
@@ -449,39 +452,40 @@ Vyberte všechny relevantní možnosti.',
 	'prefswitch-survey-question-os' => 'Jaký operační systém používáte?',
 	'prefswitch-survey-answer-os-other' => 'Jiný operační systém:',
 	'prefswitch-survey-question-res' => 'Jaké je rozlišení vaší obrazovky?',
-	'prefswitch-title-on' => 'Co je nového?',
+	'prefswitch-title-on' => 'Nové funkce',
 	'prefswitch-title-switched-on' => 'Užijte si to!',
 	'prefswitch-title-off' => 'Vypnout nové funkce',
 	'prefswitch-title-switched-off' => 'Děkujeme',
 	'prefswitch-title-feedback' => 'Zpětná vazba',
-	'prefswitch-success-on' => 'Nové funkce jsou nyní zapnuté.',
-	'prefswitch-success-off' => 'Nové funkce jsou nyní vypnuty.',
-	'prefswitch-success-feedback' => 'Vaše zpětná vazba byla odeslána.',
+	'prefswitch-success-on' => 'Nové funkce jsou nyní zapnuty. Doufáme, že se vám budou líbit. Kdykoli je můžete opět vypnout kliknutím na odkaz „[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-on}}]]“ navrchu stránky.',
+	'prefswitch-success-off' => 'Nové funkce jsou nyní vypnuty. Děkujeme za vyzkoušení nových funkcí. Kdykoli je můžete opět zapnout kliknutím na odkaz „[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-off}}]]“ navrchu stránky.',
+	'prefswitch-success-feedback' => 'Váš názor byla odeslán.',
 	'prefswitch-return' => '<hr style="clear:both"> 
 Zpět na <span class="plainlinks">[$1 $2].</span>',
-	'prefswitch-main' => "Tvrdě jsme pracovali, aby měli uživatelé vše snadnější. Jsme rádi, že s vámi můžeme sdílet nový vzhled a úpravy rozhraní. Zlepšení použitelnosti našich projektů je prioritou Wikimedia Foundation a nadále budeme Betu vyvíjet. 
+	'prefswitch-main' => "Tvrdě jsme pracovali, aby měli uživatelé vše snadnější. Jsme rádi, že s vámi můžeme sdílet několik vylepšení včetně nového vzhledu a zjednodušené editace. Zlepšení použitelnosti našich projektů je prioritou Wikimedia Foundation a i v budoucnu budeme nabízet další inovace. Podrobnosti můžete najít ve [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/ zprávě na blogu Wikimedia].
 
-[[File:UsabilityNavigation.png|right|link=|Nová navigace]] 
-[[File:UsabilityToolbar.png|right|link=|Rozšířený panel nástrojů]]
-[[File:UsabilityDialogs.png|right|link=|Dialogy nové generace]] 
+[[File:UsabilityNavigation.png|right|link=|Nová navigace]]
+[[File:UsabilityToolbar.png|right|link=|Vylepšený panel nástrojů]]
+[[File:UsabilityDialogs.png|right|link=|Nové dialogy pro vkládání obsahu]]
 === Seznam změn a vylepšení === 
-* '''Navigace:''' Máme lepší navigaci pro čtení a editaci stránek. Nyní, záložky v horní části každé stránky jasněji definují, zda si prohlížíte stránky, diskutujete či editujete. 
-* '''Editace:''' Vytvořili jsme nové úpravy panelu nástrojů, aby se snadněji používal. Nyní je formátování stránek jednodušší a intuitivnější. 
-* '''Průvodce:''' Jednoduše použilelný nástroj vám pomůže přidávat odkazy na interní a na externí stránky. 
-* '''Vyhledávání:''' Zlepšili jsme návrhy vyhledávání, takže nyní se jako první ukazují ty, co nejčastěji hledáte. 
-* '''Další nové vlastnosti:''' Zavedli jsme také průvodce tabulkou, aby bylo vytváření tabulek snadnější a také vytváříme jednodušší editaci.",
+* '''Navigace:''' Máme lepší navigaci pro čtení a editaci stránek. Záložky v horní části každé stránky nyní zřetelněji zobrazují, zda si prohlížíte článek či diskusi a zda stránku čtete či editujete.
+* '''Vylepšení panelu nástrojů:''' Přeorganizovali jsme editační panel nástrojů, aby se snadněji používal. Formátování stránek je teď jednodušší a intuitivnější.
+* '''Průvodce odkazy:''' Jednoduše použitelný nástroj vám pomůže přidávat odkazy na jiné články wiki, jako i na externí stránky.
+* '''Vylepšení vyhledávání:''' Zlepšili jsme našeptávač u vyhledávání, abyste se rychleji dostali na stránku, kterou hledáte.
+* '''Další nové vlastnosti:''' Také jsme zavedli průvodce tabulkou, aby bylo vytváření tabulek snadnější, a také funkci vyhledávání a nahrazování pro jednodušší editaci stránek.
+* '''Logo Wikipedie:''' Modernizovali jsme náš puzzlový glóbus. Více se dozvíte na [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ blogu Wikimedia].",
 	'prefswitch-main-anon' => '===Chci zpátky===
 Pokud chcete, můžete si <span class="plainlinks">[$1 vypnout nové funkce]</span>. Nejdříve se budete muset přihlásit nebo zaregistrovat.',
-	'prefswitch-main-on' => '=== Zpětná vazba? === 
-Budeme rádi, když nám poskytnete zpětnou vazbu. Prosím navštivte naši <span class="plainlinks">[$1 stránku pro zpětnou vazbu].</span> 
-=== Jít zpět! === 
+	'prefswitch-main-on' => '=== Komentáře? === 
+Rádi se dozvíme váš názor. Prosím navštivte naši <span class="plainlinks">[$1 stránku pro zpětnou vazbu].</span> 
+=== Chci zpátky! === 
 Pokud chcete vypnout nové funkce, prosím <span class="plainlinks">[$2 klikněte sem].</span>',
 	'prefswitch-main-off' => '=== Vyzkoušejte ji! === 
 Pokud si chcete vyzkoušet nové funkce, prosím <span class="plainlinks">[$1 klikněte zde].</span>',
-	'prefswitch-survey-intro-feedback' => 'Budeme rádi, když uslyšíme váš názor. 
-Vyplňte prosím dotazník níže.',
-	'prefswitch-survey-intro-off' => 'Děkujeme za vyzkoušení našich nových funkcí. 
-Chcete-li nám pomoci zlepšit je, prosím, vyplňte dotazník níže.',
+	'prefswitch-survey-intro-feedback' => 'Budeme rádi, když se dozvíme váš názor.
+Vyplňte prosím dotazník níže a poté klikněte na „[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]“.',
+	'prefswitch-survey-intro-off' => 'Děkujeme za vyzkoušení našich nových funkcí.
+Chcete-li nám pomoci zlepšit je, vyplňte nepovinný dotazník níže a poté klikněte na „[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]“.',
 );
 
 /** Welsh (Cymraeg)
@@ -816,6 +820,7 @@ Helpi nin por plibonigi ilin, bonvolu plenumi la jenan malnepran enketon antaŭ 
  * @author Crazymadlover
  * @author Locos epraix
  * @author Pertile
+ * @author Translationista
  */
 $messages['es'] = array(
 	'prefswitch' => 'Conmutador de la preferencia de Iniciativa de Usabilidad',
@@ -852,7 +857,22 @@ Por favor seleccione todas las opciones que correspondan.',
 	'prefswitch-success-feedback' => 'Sus comentarios han sido enviados.',
 	'prefswitch-return' => '<hr style="clear:both">
 Volver a <span class="plainlinks">[$1 $2]</span>.',
-	'prefswitch-main' => "Hemos estado trabajando arduamente para facilitar la experiencia de nuestros usuarios. Estamos impacientes por compartir algunas de nuestras mejoras, incluyendo una nueva estética y funcionalidades de edición simplificadas. Mejorar la usabilidad de nuestros proyectos es una de las prioridades de la Fundación Wikimedia y en un futuro estaremos compartiendo más actualizaciones al respecto.
+	'prefswitch-main' => "We have been working hard to make things easier for our users. We are excited to share some improvements, including a new look and feel and simplified editing features.  Improving the usability of our projects is a priority of the Wikimedia Foundation and we will be sharing more updates in the future. For more details, visit the related [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/ Wikimedia blog] post.
+
+[[File:UsabilityNavigation.png|right|link=|Screenshot of the new navigation]]
+[[File:UsabilityToolbar.png|right|link=|Screenshot of the enhanced edit toolbar]]
+[[File:UsabilityDialogs.png|right|link=|Screenshot of the new content generation dialogs]]
+===Here's what we have changed===
+* '''Navigation''': We have improved the navigation for reading and editing pages. Now, the tabs at the top of each page more clearly define whether you are viewing the page or discussion page, and whether you are reading or editing a page.
+* '''Editing toolbar improvements''':  We have reorganized the editing toolbar to make easier to use. Now, formatting pages is simpler and more intuitive.
+* '''Link wizard''':  An easy-to-use tool allows you to add links to other wiki pages as well as links to external sites.
+* '''Search improvements''': We have improved search suggestions to get you to the page you are looking for more quickly.
+* '''Other new features''':  We have also introduced a table wizard to make creating tables easier and find and a replace feature to simplify page editing.
+* '''Wikipedia puzzle globe''': We have updated the puzzle globe. Read more at the [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/  Wikimedia blog].
+
+
+
+Hemos estado trabajando arduamente para facilitar la experiencia de nuestros usuarios. Nos emociona poder compartir algunas de nuestras mejoras, incluyendo una nueva estética y funcionalidades de edición simplificadas. Mejorar la usabilidad de nuestros proyectos es una de las prioridades de la Fundación Wikimedia y en un futuro estaremos compartiendo más actualizaciones al respecto. Para más información, visita [http://blog.wikimedia.org/2010/a-new-look-for-wikipedia/], publicación en inglés.
 
 [[File:UsabilityNavigation.png|right|link=|Captura de pantalla de la nueva navegación]]
 [[File:UsabilityToolbar.png|right|link=|Captura de pantalla de la barra de herramientas de edición mejorada]]
@@ -862,7 +882,8 @@ Volver a <span class="plainlinks">[$1 $2]</span>.',
 * '''Mejoras en la barra de herramientas de edición:''' hemos reorganizado la barra de herramientas de edición para que sea más sencilla de utilizar. Ahora dar formato a las páginas es más simple e intuitivo.
 * '''Asistente de enlaces:''' una sencilla herramienta permite añadir enlaces ya sea a otras páginas de Wikipedia como a otros sitios externos.
 * '''Mejoras en la búsqueda:''' hemos mejorado las sugerencias para llegar más rápido a la página que se está buscando.
-* '''Otras nuevas características:''' también hemos introducido un asistente de tablas para hacer más sencilla la creación de tablas y una funcionalidad de buscar y reemplazar que simplifica la edición de páginas.",
+* '''Otras nuevas características:''' también hemos introducido un asistente de tablas para hacer más sencilla la creación de tablas y una funcionalidad de buscar y reemplazar que simplifica la edición de páginas.
+* '''Globo rompecabezas de Wikipedia''': Hemos actualizado nuestro logo.Encontrarás más información al respecto en el [http://blog.wikimedia.org/2010/wikipedia-in-3d/  blog Wikimedia en inglés].",
 	'prefswitch-main-anon' => '===Regresarme===
 Si deseas deshabilitar las nuevas características, <span class="plainlinks">[$1 hazclick aquí]</span>. Se te solicitará iniciar sesión o crear una cuenta primero.',
 	'prefswitch-main-on' => '===Retroalimentar?===
@@ -2102,17 +2123,19 @@ Należy wybrać wszystkie pasujące odpowiedzi.',
 	'prefswitch-success-feedback' => 'Twoja opinia została przesłana.',
 	'prefswitch-return' => '<hr style="clear:both">
 Powrót do <span class="plainlinks">[$1 $2]</span>.',
-	'prefswitch-main' => "Bardzo staramy się ułatwić użytkownikom korzystanie z {{GRAMMAR:'''D.lp|{{SITENAME}}}}. Udostępniliśmy nowe funkcjonalności, w tym nowy wygląd i wygodniejsze narzędzia edycyjne. Poprawa użyteczności projektów jest jednym z priorytetów Fundacji Wikimedia; będziemy informować o udostępnieniu następnych aktualizacji.
+	'prefswitch-main' => "Ciężko pracowaliśmy, żeby ułatwić życie naszym użytkownikom. Cieszymy się, że możemy zaprezentować część udoskonaleń, wliczając w to nowy wygląd i nowe, uproszczone funkcjonalności edycyjne. Zwiększanie użyteczności naszych projektów jest priorytetem dla Fundacji Wikimedia i z pewności w przyszłości pojawi się więcej nowych funkcjonalności. Więcej (w języku angielskim) można przeczytać w poście poście na [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/ blogu Wikimedia].
 
-[[File:UsabilityNavigation.png|right|link=|Nowy sposób nawigacji]]
-[[File:UsabilityToolbar.png|right|link=|Roszerzony pasek narzędzi edycyjnych]]
-[[File:UsabilityDialogs.png|right|link=|Nowe dialogi generowania treści]]
-===Co zostało zmienione===
-* '''Nawigacja – rozbudowano nawigację służącą do czytania i edycji stron. Obecnie zakładki na górze strony czytelniej określają czy widoczna jest strona czy jest strona dyskusji oraz czy strona jest w trybie odczytu czy edycji.
-* '''Pasek narzędzi edycyjnych – przeorganizowano pasek narzędzi edycyjnych aby uczynić do prostszym w użyciu. Obecnie formatowanie jest prostsze i bardziej intuicyjne.
-* '''Kreator linków – proste w użyciu narzędzie pozwala na dodawanie linków do stron {{GRAMMAR:'''D.lp|{{SITENAME}}}} oraz innych stron w Internecie.
-* '''Wyszukiwanie – rozbudowano podpowiedzi aby przyspieszyć odnalezienie poszukiwanej strony
-* '''Inne nowe funkcjonalności – dodano kreatora tabel oraz narzędzie wyszukiwania i zastępowania aby ułatwić edytowanie stron.",
+[[File:UsabilityNavigation.png|right|link=|Nowy układ strony]]
+[[File:UsabilityToolbar.png|right|link=|Nowy pasek narzędziowy]]
+[[File:UsabilityDialogs.png|right|link=|Nowe okienka do edycji]]
+
+===Oto co zmieniliśmy===
+* '''Układ strony''': Poprawiliśmy układ strony zarówno przy edycji jak i przeglądaniu. Zakładki na górze strony w bardziej oczywisty sposób informują o tym czy oglądasz właściwą stronę czy stronę dyskusji oraz czy tylko przeglądasz czy edytujesz daną stronę.
+* '''Udoskonalenia paska narzędziowego''': Zreorganizowaliśmy pasek narzędziowy, aby łatwiej było się nim posługiwać. Formatowanie stron powinno być teraz prostsze i bardziej intuicyjne.
+* '''Kreator linków''':  Łatwe w użyciu narzędzie pozwala na tworzeni linków zarówno do stron wiki, jak i zewnętrznych serwisów.
+* '''Udoskonalenia wyszukiwania''': Dzięki nowym, udoskonalonym podpowiedziom szybko znajdziesz to czego szukasz.
+* '''Inne nowe funkcjonalności''': Nowy kreator tworzenia tabelek oraz okienko wyszukiwania i zamiany ułatwi edycję stron.
+* '''Wikipedyczny globus z puzzli''': Zaktualizowaliśmy globus z puzzli będący logo Wikipedii. Więcej informacji (w języku angielskim) znajdiesz w poście na [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ blogu Wikimedia].",
 	'prefswitch-main-anon' => '=== Chcę wrócić ===
 <span class="plainlinks">[$1 Kliknij tutaj]</span>, jeśli chcesz wyłączyć nowe funkcjonalności. Przed powrotem do starego wyglądu interfejsu będziesz musiał(-a) utworzyć konto lub zalogować się.',
 	'prefswitch-main-on' => '===Opinia?===
@@ -2238,7 +2261,7 @@ Voltar para <span class="plainlinks">[$1 $2]</span>.',
 * '''Assistente para links:''' Uma ferramenta de fácil utilização permite-lhe criar tanto links para outras páginas da Wikipédia como links para outros sites externos.
 * '''Melhoramentos da pesquisa:''' Melhorámos as sugestões da pesquisa para levá-lo mais rapidamente à página que procura.
 * '''Outras funcionalidades novas:''' Também introduzimos um assistente para facilitar a criação de tabelas, e a funcionalidade de procura e substituição para simplificar a edição de páginas.
-* '''Glogo puzzle da Wikipédia:''' Actualizámos o globo em forma de puzzle. Leia mais sobre a actualização no [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ blogue Wikimedia].",
+* '''Globo puzzle da Wikipédia:''' Actualizámos o globo em forma de puzzle. Leia mais sobre a actualização no [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ blogue Wikimedia].",
 	'prefswitch-main-anon' => '===Voltar atrás===
 Se pretende desactivar as funcionalidades novas, <span class="plainlinks">[$1 clique aqui]</span>. Será pedido que se autentique ou crie uma conta.',
 	'prefswitch-main-on' => '===Opinião?===
@@ -2253,19 +2276,22 @@ Preencha o questionário opcional abaixo, antes de clicar "[[#prefswitch-survey-
 Para ajudar-nos a melhorá-las preencha, por favor, o questionário opcional abaixo, antes de clicar "[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]".',
 );
 
-/** Brazilian Portuguese (Português do Brasil) */
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Giro720
+ */
 $messages['pt-br'] = array(
-	'prefswitch-main' => "Temos trabalhado arduamente para facilitar a utilização do nosso software. É com prazer que agora partilhamos alguns melhoramentos, incluindo uma nova aparência e a simplificação das funcionalidades de edição. Melhorar a usabilidade dos nossos projetos é uma prioridade para a Wikimedia Foundation e mais alterações serão comunicadas no futuro.
+	'prefswitch-main' => "Temos trabalhado arduamente para facilitar a utilização do nosso software. É com prazer que agora partilhamos alguns melhoramentos, incluindo uma nova aparência e a simplificação das funcionalidades de edição. Melhorar a usabilidade dos nossos projetos é uma prioridade para a Wikimedia Foundation e mais alterações serão comunicadas no futuro. Para mais detalhes, visite esta [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/ publicação no blogue Wikimedia].
 
 [[File:UsabilityNavigation.png|right|link=|Imagem da nova navegação]]
 [[File:UsabilityToolbar.png|right|link=|Imagem da barra melhorada das ferramentas de edição]]
 [[File:UsabilityDialogs.png|right|link=|Imagem dos diálogos de geração de novos conteúdos]]
 ===O que foi melhorado===
-* '''Navegação:''' A navegação na leitura e edição de páginas foi melhorada. Agora, os separadores no topo da página definem mais claramente quer esteja visualizando a página ou a página de discussão, e se você está lendo-a ou editando-a.
+* '''Navegação:''' A navegação para leitura e edição de páginas foi melhorada. Agora, os separadores no topo da página definem mais claramente caso se esteja visualizando uma página ou a página de discussão, e se você está lendo-a ou editando-a.
 * '''Barra das ferramentas de edição:''' A barra foi reorganizada para ser mais fácil de usar. Agora, formatar páginas é mais simples e mais intuitivo.
 * '''Assistente para links:''' Uma ferramenta de fácil utilização permite-lhe criar tanto links para outras páginas da Wikipédia como links para outros sites externos.
 * '''Melhoramentos da pesquisa:''' Melhoramos as sugestões da pesquisa para levá-lo mais rapidamente à página que procura.
-* '''Outras funcionalidades novas:''' Também introduzimos um assistente para facilitar a criação de tabelas, e a funcionalidade de procura e substituição para simplificar a edição de páginas.",
+* '''Outras funcionalidades novas:''' Também introduzimos um assistente para facilitar a criação de tabelas, e a funcionalidade de procura e substituição para simplificar a edição de páginas.
+* '''Globo quebra-cabeça da Wikipédia:''' Atualizamos o globo em forma de quebra-cabeça. Leia mais sobre a atualização no [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ blogue Wikimedia].",
 );
 
 /** Russian (Русский)
@@ -2532,6 +2558,8 @@ $messages['vi'] = array(
 	'prefswitch-survey-cancel-off' => 'Để tiếp tục sử dụng các tính năng mới, hãy trở về $1.',
 	'prefswitch-survey-submit-feedback' => 'Gửi phản hồi',
 	'prefswitch-survey-cancel-feedback' => 'Nếu bạn không muốn phản hồi, bạn có thể trở lại $1.',
+	'prefswitch-survey-question-like' => 'Các tính năng mới có điểm tốt nào?',
+	'prefswitch-survey-question-dislike' => 'Các tính năng mới có điều nào cần sửa không?',
 	'prefswitch-survey-question-whyoff' => 'Tại sao bạn lại tắt các tính năng mới?
 Xin hãy chọn tất cả các ý thích hợp.',
 	'prefswitch-survey-answer-whyoff-hard' => 'Nó khó sử dụng quá.',
@@ -2546,27 +2574,30 @@ Xin hãy chọn tất cả các ý thích hợp.',
 	'prefswitch-survey-question-os' => 'Bạn hay sử dụng hệ điều hành nào?',
 	'prefswitch-survey-answer-os-other' => 'Hệ điều hành khác:',
 	'prefswitch-survey-question-res' => 'Độ phân giải màn hình của bạn là bao nhiêu?',
-	'prefswitch-title-on' => 'Có gì mới?',
+	'prefswitch-title-on' => 'Các tính năng mới',
 	'prefswitch-title-switched-on' => 'Mời thưởng thức!',
 	'prefswitch-title-off' => 'Tắt các tính năng mới',
 	'prefswitch-title-switched-off' => 'Cám ơn',
 	'prefswitch-title-feedback' => 'Phản hồi',
-	'prefswitch-success-on' => 'Các tính năng mới đang bật.',
-	'prefswitch-success-off' => 'Các tính năng mới đang tắt.',
+	'prefswitch-success-on' => 'Mong là bạn sẽ thích sử dụng các tính năng mới vừa được bật lên. Lúc nào có thể tắt các tính năng mới dùng liên kết “[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-on}}]]” ở trên cùng trang.',
+	'prefswitch-success-off' => 'Cám ơn bạn đã thử các tính năng mới vừa được tắt. Lúc nào có thể bật lên các tính năng này dùng liên kết “[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-off}}]]” ở trên cùng trang.',
 	'prefswitch-success-feedback' => 'Phản hồi của bạn đã được gửi.',
 	'prefswitch-return' => '<hr style="clear:both">
 Trở về <span class="plainlinks">[$1 $2]</span>.',
-	'prefswitch-main' => "Chúng ta đã nỗ lực để làm cho mọi người dùng cảm thấy mọi thứ dễ dàng hơn. Chúng tôi cảm thấy háo hức muốn chia sẻ một số cải tiến, bao gồm một giao diện hoàn toàn mới và các tính năng soạn thảo đã được đơn giản hóa. Cải tiến tính khả dụng của các dự án là ưu tiên của Wikimedia Foundation và chúng tôi sẽ chia sẻ thêm nhiều cập nhật nữa trong tương lai.
+	'prefswitch-main' => "Chúng ta đã nỗ lực để làm cho mọi người dùng cảm thấy mọi thứ dễ dàng hơn. Chúng tôi cảm thấy háo hức muốn chia sẻ một số cải tiến, bao gồm một giao diện hoàn toàn mới và các tính năng sửa đổi đã được đơn giản hóa. Cải tiến tính khả dụng của các dự án là ưu tiên của Quỹ Wikimedia và chúng tôi sẽ chia sẻ thêm nhiều cập nhật nữa trong tương lai. Đọc thêm chi tiết tại [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/ blog của Quỹ Wikimedia].
 
-[[File:UsabilityNavigation.png|right|link=|Screenshot of the new navigation]]
-[[File:UsabilityToolbar.png|right|link=|Screenshot of the enhanced edit toolbar]]
-[[File:UsabilityDialogs.png|right|link=|Screenshot of the new content generation dialogs]]
+[[File:UsabilityNavigation.png|right|link=|Ảnh chụp màn hình có thanh duyệt mới]]
+[[File:UsabilityToolbar.png|right|link=|Ảnh chụp màn hình có thanh công cụ sửa đổi nâng cao]]
+[[File:UsabilityDialogs.png|right|link=|Ảnh chụp màn hình có các hộp thoại mới để chèn nội dung]]
 ===Dưới đây là những thay đổi===
 * '''Duyệt trang:''' Chúng tôi đã cải tiến việc duyệt các mục khi đọc và sửa trang. Giờ đây, các thẻ nằm ở đầu trang đã ghi một cách rõ ràng là bạn đang xem trang hay trang thảo luận, và bạn đang đọc hay đang sửa một trang.
-* '''Cải tiến thanh công cụ soạn thảo:''' Chúng tôi đã sắp xếp lại thanh công cụ soạn thảo để giúp nó dễ sử dụng hơn. Giờ đây, việc định dạng trang đã đơn giản hơn và trực giác hơn.
+* '''Cải tiến thanh công cụ sửa đổi:''' Chúng tôi đã sắp xếp lại thanh công cụ sửa đổi để giúp nó dễ sử dụng hơn. Giờ đây, việc định dạng trang đã đơn giản hơn và trực giác hơn.
 * '''Hướng dẫn tạo liên kết:''' Một công cụ rất dễ sử dụng giúp bạn thêm liên kết đến các trang wiki khác cũng như liên kết ra các trang bên ngoài.
 * '''Cải tiến tìm kiếm:''' Chúng tôi đã cải tiến những gợi ý tìm kiếm để giúp bạn tìm được trang mình muốn nhanh chóng hơn.
-* '''Các tính năng mới khác:''' Chúng tôi cũng đã giới thiệu hướng dẫn tạo bảng để giúp tạo bảng dễ dàng hơn, rồi tính năng tìm kiếm và thay thế để đơn giản hóa việc sửa trang.",
+* '''Các tính năng mới khác:''' Chúng tôi cũng đã giới thiệu hướng dẫn tạo bảng để giúp tạo bảng dễ dàng hơn, rồi tính năng tìm kiếm và thay thế để đơn giản hóa việc sửa trang.
+* '''Bong bóng lấp hình Wikipedia:''' Chúng tôi đã cập nhập bong bóng lấp hình. Đọc thêm chi tiết tại [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/  blog của Quỹ Wikimedia].",
+	'prefswitch-main-anon' => '===Đưa tôi trở lại===
+Bạn có thể <span class="plainlinks">[$1 tắt các tính năng mới]</span>. Bạn sẽ cần phải mở tài khoản hay đăng nhập trước tiên.',
 	'prefswitch-main-on' => '===Phản hồi?===
 Chúng tôi mong muốn được nghe bạn nói. Xin mời thăm <span class="plainlinks">[$1 trang phản hồi]</span> của chúng tôi.
 ===Đưa tôi trở lại!===
@@ -2574,15 +2605,31 @@ Nếu bạn muốn tắt các tính năng mới đi, xin <span class="plainlinks
 	'prefswitch-main-off' => '===Dùng thử!===
 Nếu bạn muốn bật các tính năng mới, xin <span class="plainlinks">[$1 nhấn vào đây]</span>.',
 	'prefswitch-survey-intro-feedback' => 'Chúng tôi mong muốn được nghe bạn nói.
-Xin vui lòng điền vào bảng điều tra phía dưới.',
+Xin vui lòng điền vào bảng điều tra phía dưới trước khi bấm “[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]”.',
 	'prefswitch-survey-intro-off' => 'Cảm ơn bạn đã dùng thử những tính năng mới của chúng tôi.
-Để giúp chúng tôi cải tiến chúng hơn nữa, xin vui lòng điền vào bảng điều tra phía dưới.',
+Để giúp chúng tôi cải tiến chúng hơn nữa, xin vui lòng điền vào bảng điều tra phía dưới trước khi bấm “[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]”.',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Horacewai2
  */
 $messages['zh-hant'] = array(
+	'prefswitch' => '可用性倡議偏好設定',
+	'prefswitch-desc' => '允許用戶設定參數設定',
+	'prefswitch-survey-true' => '是',
+	'prefswitch-survey-false' => '否',
+	'prefswitch-survey-submit-off' => '關閉新特色',
+	'prefswitch-survey-cancel-off' => '如果您想繼續使用新特色，您可以返回$1。',
+	'prefswitch-survey-submit-feedback' => '發送意見',
+	'prefswitch-survey-cancel-feedback' => '如果你不想提供意見，你可以回到$1繼續。',
+	'prefswitch-survey-question-like' => '你喜歡什麼新特點？',
+	'prefswitch-survey-question-dislike' => '你不喜歡什麼特點？',
+	'prefswitch-survey-question-whyoff' => '你為什麼關閉新的功能？請選擇所有適用的選擇。',
+	'prefswitch-survey-answer-whyoff-hard' => '新特點很難去使用。',
+	'prefswitch-survey-answer-whyoff-didntwork' => '新特色無法正常工作。',
+	'prefswitch-survey-answer-whyoff-notpredictable' => '新特點不及我預期的好。',
+	'prefswitch-survey-answer-whyoff-didntlike-look' => '我不喜歡這些新特點的外觀。',
+	'prefswitch-survey-answer-whyoff-didntlike-layout' => '我不喜歡它的新標籤以及排版。',
 	'prefswitch-survey-answer-browser-other' => '其它瀏覽器：',
 	'prefswitch-survey-question-os' => '您用哪套操作系統？',
 	'prefswitch-survey-answer-os-other' => '其它操作系統：',

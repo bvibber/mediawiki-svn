@@ -39,11 +39,25 @@ $messages['dsb'] = array(
 	'cassandra-desc' => 'Wersijowy tekst w datowej bance [http://cassandra.apache.org/ Apache Cassandra] składowaś',
 );
 
+/** Spanish (Español)
+ * @author Translationista
+ */
+$messages['es'] = array(
+	'cassandra-desc' => 'Almacenar el text ode revisión en la base de datos [http://cassandra.apache.org/ Apache Cassandra]',
+);
+
 /** French (Français)
  * @author IAlex
  */
 $messages['fr'] = array(
 	'cassandra-desc' => 'Stocke le texte de chaque révision dans la base de données [http://cassandra.apache.org/ Apache Cassandra]',
+);
+
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'cassandra-desc' => 'Almacena a revisión do texto na base de datos de [http://cassandra.apache.org/ Apache Cassandra]',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -88,6 +102,13 @@ $messages['nl'] = array(
 	'cassandra-desc' => 'Versietekst opslaan in een [http://cassandra.apache.org/ Apache Cassandra] database',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'cassandra-desc' => 'Lagre revisjonstekst i databasen [http://cassandra.apache.org/ Apache Cassandra]',
+);
+
 /** Piedmontese (Piemontèis)
  * @author Dragonòt
  */
@@ -107,6 +128,13 @@ $messages['ps'] = array(
  */
 $messages['pt'] = array(
 	'cassandra-desc' => 'Armazenar os textos das revisões numa base de dados [http://cassandra.apache.org/ Apache Cassandra]',
+);
+
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Giro720
+ */
+$messages['pt-br'] = array(
+	'cassandra-desc' => 'Armazenar os textos das revisões na base de dados [http://cassandra.apache.org/ Apache Cassandra]',
 );
 
 /** Russian (Русский)

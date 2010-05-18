@@ -461,8 +461,10 @@ $messages['ru'] = array(
  * @author Dafer45
  */
 $messages['sv'] = array(
+	'lastuserlogin' => 'Senaste användarinloggning',
 	'lastuserlogin_userid' => 'Användarnamn',
 	'lastuserlogin_username' => 'Riktigt namn',
+	'lastuserlogin_lastlogin' => 'Senaste inloggning',
 	'lastuserlogin_daysago' => 'Dagar sedan',
 );
 

@@ -10,66 +10,83 @@ $aliases['en'] = array(
 	'StalePages' => array( 'StalePages' ),
 );
 
+/** Arabic (العربية) */
 $aliases['ar'] = array(
-	'StalePages'   => array( 'صفحات_ميتة' ),
+	'StalePages' => array( 'صفحات_ميتة' ),
 );
 
+/** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'StalePages'   => array( 'صفح_معفنه' ),
+	'StalePages' => array( 'صفح_معفنه' ),
 );
 
+/** Persian (فارسی) */
 $aliases['fa'] = array(
-	'StalePages'   => array( 'صفحه‌های_کهنه' ),
+	'StalePages' => array( 'صفحه‌های_کهنه' ),
 );
 
+/** Franco-Provençal (Arpetan) */
 $aliases['frp'] = array(
-	'StalePages'   => array( 'Pâges dèpassâs', 'PâgesDèpassâs' ),
+	'StalePages' => array( 'Pâges dèpassâs', 'PâgesDèpassâs' ),
 );
 
+/** Swiss German (Alemannisch) */
 $aliases['gsw'] = array(
-	'StalePages'   => array( 'Abglofeni Syte' ),
+	'StalePages' => array( 'Abglofeni Syte' ),
 );
 
+/** Interlingua (Interlingua) */
 $aliases['ia'] = array(
-	'StalePages'   => array( 'Paginas stagnate' ),
+	'StalePages' => array( 'Paginas stagnate' ),
 );
 
+/** Indonesian (Bahasa Indonesia) */
 $aliases['id'] = array(
-	'StalePages'   => array( 'Halaman basi', 'HalamanBasi' ),
+	'StalePages' => array( 'Halaman basi', 'HalamanBasi' ),
 );
 
+/** Japanese (日本語) */
 $aliases['ja'] = array(
-	'StalePages'   => array( '古くなったページ' ),
+	'StalePages' => array( '古くなったページ' ),
 );
 
+/** Colognian (Ripoarisch) */
 $aliases['ksh'] = array(
-	'StalePages'   => array( 'Ahl Sigge' ),
+	'StalePages' => array( 'Ahl Sigge' ),
 );
 
+/** Macedonian (Македонски) */
 $aliases['mk'] = array(
-	'StalePages'   => array( 'БајатиСтраници' ),
+	'StalePages' => array( 'БајатиСтраници' ),
 );
 
+/** Malayalam (മലയാളം) */
 $aliases['ml'] = array(
-	'StalePages'   => array( 'സ്ഥിരതയുള്ളതാളുകൾ' ),
+	'StalePages' => array( 'സ്ഥിരതയുള്ളതാളുകൾ' ),
 );
 
+/** Marathi (मराठी) */
 $aliases['mr'] = array(
-	'StalePages'   => array( 'शीळेपान' ),
+	'StalePages' => array( 'शीळेपान' ),
 );
 
+/** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
-	'StalePages'   => array( 'Verouwerde_pagina\'s' ),
+	'StalePages' => array( "Verouwerde_pagina's" ),
 );
 
+/** Dutch (Nederlands) */
 $aliases['nl'] = array(
-	'StalePages'   => array( 'VerouderdePaginas', 'VerouderdePagina\'s' ),
+	'StalePages' => array( 'VerouderdePaginas', "VerouderdePagina's" ),
 );
 
+/** Slovak (Slovenčina) */
 $aliases['sk'] = array(
-	'StalePages'   => array( 'MŕtveStránky' ),
+	'StalePages' => array( 'MŕtveStránky' ),
 );
 
+/** Tagalog (Tagalog) */
 $aliases['tl'] = array(
-	'StalePages'   => array( 'Mga pahina hindi na sariwa' ),
+	'StalePages' => array( 'Mga pahina hindi na sariwa' ),
 );
+

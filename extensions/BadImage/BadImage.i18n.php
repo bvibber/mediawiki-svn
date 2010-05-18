@@ -2668,12 +2668,13 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Horacewai2
  * @author Liangent
  * @author Shinjiman
  */
 $messages['zh-hant'] = array(
 	'badimages' => '損壞圖像列表',
-	'badimage-desc' => '增加{{int:badimages}}的[[Special:Badimages|特殊頁面]]',
+	'badimage-desc' => '增加錯誤圖像的特殊頁面',
 	'badimages-add-btn' => '加入',
 	'badimages-added' => '已經加入 $1 到列表中。',
 	'badimages-count' => "在損壞圖像列表中共有 '''$1''' 幅圖像。",
@@ -2688,7 +2689,7 @@ $messages['zh-hant'] = array(
 	'badimages-subheading' => '目前的項目',
 	'badimages-unprivileged' => '（您沒有足夠的權限去修改這個列表）',
 	'badimages-log-name' => '損壞圖像列表',
-	'badimages-log-header' => '這是在[[{{int:Badimages-page}}|損壞圖像列表]]中的修訂記錄。',
+	'badimages-log-header' => '這是在[[{{MediaWiki:Badimages-page}}|損壞圖像列表]]中的修訂記錄。',
 	'badimages-log-add' => '已經加入 [[$1]] 到壞圖像列表',
 	'badimages-log-remove' => '已經由壞圖像列表中移除 [[$1]]',
 	'badimages-page' => '{{ns:help}}:壞圖像列表',

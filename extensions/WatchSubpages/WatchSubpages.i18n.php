@@ -617,6 +617,7 @@ Når du merkar eller fjernar merking av fleire sider, kan du halde nede «Shift�
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
+ * @author Nghtwlkr
  */
 $messages['no'] = array(
 	'watchsubpages' => 'Overvåk undersider',
@@ -624,10 +625,10 @@ $messages['no'] = array(
 	'watchsubpages-addtitles' => 'Legg til sider',
 	'watchsubpages-addtitlestowatchlist' => 'Legg til sider til overvåkningslisten',
 	'watchsubpages-desc' => '[[Special:WatchSubpages|Legg til alle undersider]] av en side til overvåkningslisten',
-	'watchsubpages-form' => 'Velg sidene du ønsker å legge til i overvåkningslisten din.
-For å legge til en side, merk av i boksen ved siden av den og klikk på «Legg til sider».
+	'watchsubpages-form' => 'Velg sidene du ønsker å legge til i overvåkningslisten din nedenfor.
+For å legge til en side, merk av i boksen ved siden av den og klikk «{{int:watchsubpages-addtitles}}».
 
-Når du merker eller fjerner merking av flere sider, kan du holde nede «Shift»-knappen for å velge bokser som kommer etter hverandre ved å trykke på den siste av sidene du vil merke.',
+Når du merker eller fjerner merking av flere sider kan du holde nede «shift»-tasten for å velge bokser som kommer etter hverandre ved å merke den første og siste av sidene i intervallet du vil merke.',
 );
 
 /** Occitan (Occitan)

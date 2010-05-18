@@ -8981,6 +8981,7 @@ $messages['su'] = array(
 );
 
 /** Swedish (Svenska)
+ * @author Dafer45
  * @author Lejonel
  * @author M.M.S.
  * @author Najami
@@ -9087,7 +9088,7 @@ $mvMVDTypeDefaultDisp borde vara ett undersätt av $mvMVDTypeAllAvailable',
 	'video_feed_cat' => 'Video matning för kategori:',
 	'mv_cat_search_note' => 'Notera: Kategorier listar endast underkategorier i högsta nivå;
 för alla metadata i ett kategoriområde, sök efter $1',
-	'mv-category-media-count' => '$1 mediesegment i kategorin',
+	'mv-category-media-count' => '$1 {{PLURAL:$1|mediasegment|mediasegment}} i kategorin',
 	'mv_mvd_linkback' => 'Del av dataflödet $1 <br />
 Hoppa till dataflödesvisning: $2',
 	'mvBadMVDtitle' => 'typ eller ström saknas, eller så är tidsformatet ogiltigt',
