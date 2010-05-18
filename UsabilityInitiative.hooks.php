@@ -18,7 +18,7 @@ class UsabilityInitiativeHooks {
 	private static $styleFiles = array(
 		'base_sets' => array(
 			'raw' => array(
-				array( 'src' => 'css/suggestions.css', 'version' => 12 ),
+				array( 'src' => 'css/suggestions.css', 'version' => 13 ),
 				array( 'src' => 'css/vector.collapsibleNav.css', 'version' => 9 ),
 				array( 'src' => 'css/vector.footerCleanup.css', 'version' => 2 ),
 				array( 'src' => 'css/wikiEditor.css', 'version' => 13 ),
@@ -29,11 +29,11 @@ class UsabilityInitiativeHooks {
 				array( 'src' => 'css/vector/jquery-ui-1.7.2.css', 'version' => '1.7.2y' ),
 			),
 			'combined' => array(
-				array( 'src' => 'css/combined.css', 'version' => 92 ),
+				array( 'src' => 'css/combined.css', 'version' => 93 ),
 				array( 'src' => 'css/vector/jquery-ui-1.7.2.css', 'version' => '1.7.2y' ),
 			),
 			'minified' => array(
-				array( 'src' => 'css/combined.min.css', 'version' => 92 ),
+				array( 'src' => 'css/combined.min.css', 'version' => 93 ),
 				array( 'src' => 'css/vector/jquery-ui-1.7.2.css', 'version' => '1.7.2y' ),
 			),
 		)
