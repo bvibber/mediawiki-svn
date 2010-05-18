@@ -5182,7 +5182,8 @@ $.fn.autoEllipsis = function( options ) {
 	options = $.extend( {
 		'position': 'center',
 		'tooltip': false,
-		'restoreText': false
+		'restoreText': false,
+		'hasSpan': false
 	}, options );
 	$(this).each( function() {
 		var $this = $(this);
@@ -5195,8 +5196,13 @@ $.fn.autoEllipsis = function( options ) {
 		}
 		var text = $this.text();
 		var w = $this.width();
-		var $text = $( '<span />' ).css( 'whiteSpace', 'nowrap' );
-		$this.empty().append( $text );
+		var $text;
+		if ( options.hasSpan ) {
+			$text = $this.children( 'span' );
+		} else {
+			$text = $( '<span />' ).css( 'whiteSpace', 'nowrap' );
+			$this.empty().append( $text );
+		}
 		
 		// Try cache
 		if ( !( text in cache ) ) {
@@ -5782,6 +5788,13 @@ $.fn.extend( {
  * 		Type: Number, Range: 1 - 100, Default: 7
  * delay: Number of ms to wait for the user to stop typing
  * 		Type: Number, Range: 0 - 1200, Default: 120
+ * submitOnClick: Whether to submit the form containing the textbox when a suggestion is clicked
+ *		Type: Boolean, Default: false
+ * maxExpandFactor: Maximum suggestions box width relative to the textbox width.  If set to e.g. 2, the suggestions box
+ *		will never be grown beyond 2 times the width of the textbox.
+ *		Type: Number, Range: 1 - infinity, Default: 2
+ * expandToLeft: Whether to expand the suggestion box to the left rather than to the right
+ *		Type: Boolean, Default: false
  */
 ( function( $ ) {
 
@@ -5881,8 +5894,10 @@ $.suggestions = {
 						} );
 						var $results = context.data.$container.children( '.suggestions-results' );
 						$results.empty();
+						var expWidth = -1;
+						var $autoEllipseMe = $( [] );
 						for ( var i = 0; i < context.config.suggestions.length; i++ ) {
-							$result = $( '<div />' )
+							var $result = $( '<div />' )
 								.addClass( 'suggestions-result' )
 								.attr( 'rel', i )
 								.data( 'text', context.config.suggestions[i] )
@@ -5892,13 +5907,40 @@ $.suggestions = {
 									);
 								} )
 								.appendTo( $results );
+							
 							// Allow custom rendering
 							if ( typeof context.config.result.render == 'function' ) {
 								context.config.result.render.call( $result, context.config.suggestions[i] );
 							} else {
-								$result.text( context.config.suggestions[i] ).autoEllipsis();
+								// Add <span> with text
+								$result.append( $( '<span />' )
+										.css( 'whiteSpace', 'nowrap' )
+										.text( context.config.suggestions[i] )
+								);
+								
+								// Widen results box if needed
+								// New width is only calculated here, applied later
+								var $span = $result.children( 'span' );
+								if ( $span.width() > $result.width() ) {
+									expWidth = Math.max( expWidth, Math.min( $span.width(),
+										context.data.$textbox.width()*context.config.maxExpandFactor
+									) );
+								}
+								$autoEllipseMe = $autoEllipseMe.add( $result );
 							}
 						}
+						// Apply new width for results box, if any
+						if ( expWidth != -1 ) {
+							if ( context.config.expandToLeft ) {
+								context.data.$container.css( 'left',
+									context.data.$container.offset().left -
+										( expWidth - context.data.$container.width() )
+								);
+							}
+							context.data.$container.width( expWidth );
+						}
+						// autoEllipse the results. Has to be done after changing the width
+						$autoEllipseMe.autoEllipsis( { hasSpan: true, tooltip: true } );
 					}
 				}
 				break;
@@ -5908,7 +5950,11 @@ $.suggestions = {
 			case 'delay':
 				context.config[property] = Math.max( 0, Math.min( 1200, value ) );
 				break;
+			case 'maxExpandFactor':
+				context.config[property] = Math.max( 1, value );
+				break;
 			case 'submitOnClick':
+			case 'expandToLeft':
 				context.config[property] = value ? true : false;
 				break;
 		}
@@ -6058,7 +6104,9 @@ $.fn.suggestions = function() {
 					'suggestions': [],
 					'maxRows': 7,
 					'delay': 120,
-					'submitOnClick': false
+					'submitOnClick': false,
+					'maxExpandFactor': 2,
+					'expandToLeft': false
 				}
 			};
 		}
