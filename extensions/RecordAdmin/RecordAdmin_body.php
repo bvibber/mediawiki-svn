@@ -420,7 +420,7 @@ class SpecialRecordAdmin extends SpecialPage {
 	 * - $b is the expression from the recordtable query
 	 */
 	function cmpCallback( $a, $b, $operator ) {
-		$b = preg_replace( "|([/']|", "\\$1", $b );
+		$b = preg_replace( "|([/'])|", "\\$1", $b );
 		switch ( $operator ) {
 			case '=':
 				$cond = preg_match( "/$b/i", $a );
