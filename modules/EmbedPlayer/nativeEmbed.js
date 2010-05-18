@@ -92,8 +92,12 @@ var nativeEmbed = {
 		var vid = this.getPlayerElement();
 		if ( typeof this.playerElement != 'undefined' ) {					
 			// Setup some bindings: 			
-			// Bind events to local js methods:			
-			vid.addEventListener( 'canplaythrogh',  function() { _this.canplaythrough }, true);			 
+			// Bind events to local js methods:
+
+      // mdale points out this may be the best way to write these:
+			// vid.addEventListener( 'canplaythrough',  function() { $j( _this ).trigger('canplaythrough'); }, true);			 
+			
+      vid.addEventListener( 'canplaythrough',  function() {  _this.canplaythrough() }, true);			 
 			vid.addEventListener( 'loadedmetadata', function() { _this.onloadedmetadata() }, true);
 			vid.addEventListener( 'progress', function( e ) { _this.onprogress( e );  }, true);
 			vid.addEventListener( 'ended', function() {  _this.onended() }, true);		
