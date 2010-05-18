@@ -529,7 +529,7 @@ mw.RemoteSearchDriver.prototype = {
 	 * Get license icon html
 	 * @param license_key  the license key (ie "by-sa" or "by-nc-sa" etc)
 	 * 
-	 * @return {jQuery element} A div containing the license icons.
+	 * @return {Element} A div containing the license icons.
 	 */
 	getLicenseIconHtml: function( licenseObj ) {
 		
@@ -1552,7 +1552,7 @@ mw.RemoteSearchDriver.prototype = {
 	 * 
 	 * @param {Object} Object to store in context.
 	 * 
-	 * @return {function} A callback to retrieve the context.
+	 * @return {Function} A callback to retrieve the context.
 	 */
 	storeContext: function( contextObject ) {
 		var context = contextObject;
@@ -2275,7 +2275,7 @@ mw.RemoteSearchDriver.prototype = {
 	/**
 	* Check if a given content provider is local.  
 	* @param {Object} provider Provider object to be checked
-	* @return 
+	* @return {Boolean}
 	*/
 	isProviderLocal: function( provider ) {
 		if ( provider.local ) {
@@ -2477,7 +2477,7 @@ mw.RemoteSearchDriver.prototype = {
 					_this.doApiImport( resource, function() {
 						$j( '#rsd_resource_import' ).remove();
 						_this.clipEdit.updateInsertControlActions();
-						callback 
+						callback // Closure reports that this line is irrelevant -papy
 					});
 				} else {
 					mw.log( "Error: import mode is not form or API (can not copy asset)" );
@@ -2961,7 +2961,7 @@ mw.RemoteSearchDriver.prototype = {
 	/**
 	 * Create controls for selecting result display layout (e.g. box, list)
 	 * 
-	 * @return {jQuery element} The layout element to embed in the page.
+	 * @return {Element} The layout element to embed in the page.
 	 */
 	createLayoutSelector: function() {
 
@@ -3030,7 +3030,7 @@ mw.RemoteSearchDriver.prototype = {
 	 * 
 	 * @param The current content provider.
 	 * 
-	 * @return {jQuery element} A description element for embedding.
+	 * @return {Element} A description element for embedding.
 	 */
 	createSearchDescription: function( provider ) {		
 		var resultsFromMsg = gM( 'mwe-results_from', 
@@ -3056,7 +3056,7 @@ mw.RemoteSearchDriver.prototype = {
 	* Results Header controls like box vs list view
 	* & search description
 	* 
-	* @return {jQuery element} The header for embedding in the result set.
+	* @return {Element} The header for embedding in the result set.
 	*/ 
 	createResultsHeader: function() {
 		var _this = this;
@@ -3083,7 +3083,7 @@ mw.RemoteSearchDriver.prototype = {
 	/**
 	 * Creates the footer of the search results (paging).
 	 * 
-	 * @return {jQuery element} The footer for embedding in the result set.
+	 * @return {Element} The footer for embedding in the result set.
 	 */
 	createResultsFooter: function() {
 		var _this = this;
@@ -3100,7 +3100,7 @@ mw.RemoteSearchDriver.prototype = {
 	/**
 	* Generates an HTML control for paging between search results.
 	*
-	* @return {jQuery element} paging control for current results  
+	* @return {Element} paging control for current results  
 	*/
 	createPagingControl: function( target ) {
 		var _this = this;
