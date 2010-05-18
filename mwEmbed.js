@@ -87,10 +87,9 @@ var MW_EMBED_VERSION = '1.1f';
 	/**
 	* Set a default config value 
 	* Will only update configuration if no value is present
-	* @param [Mixed] name 
-	*	{Object} Will iderate through each key and call setDefaultConfig
-	* 	{String} Will set configuration by string name to value
 	* @param [Mixed] value Set configuration name to value
+	*	  {Object} Will iderate through each key and call setDefaultConfig
+	* 	{String} Will set configuration by string name to value
 	*/
 	mw.setDefaultConfig = function( name, value ) {	
 		if( typeof name == 'object' ) {
@@ -1205,7 +1204,7 @@ var MW_EMBED_VERSION = '1.1f';
 	
 	/**
 	* Checks if a mw request data requires a post request or not
-	* @param {Object} 
+	* @param data {Object} 
 	* @return {Boolean}
 	*	true if the request requires a post request
 	* 	false if the request does not
@@ -1227,10 +1226,9 @@ var MW_EMBED_VERSION = '1.1f';
 	* Check if the url is a request for the local domain
 	*  relative paths are "local" domain
 	* @param {String} url Url for local domain
-	* @return 
+	* @return {Boolean}
 	*	true if url domain is local or relative
 	* 	false if the domain is
-	* @type {Boolean} 	
 	*/
 	mw.isLocalDomain = function( url ) {
 		if( mw.parseUri( document.URL ).host == mw.parseUri( url ).host 
@@ -1707,8 +1705,8 @@ var MW_EMBED_VERSION = '1.1f';
 	/**
 	* Get a style sheet and append the style sheet to the DOM
 	*
-	* @param {Mixed}
-	*	{String} url Url of the style sheet to be loaded
+	* @param [Mixed]
+	*	  {String} url Url of the style sheet to be loaded
 	* 	{Function} callback Function called once sheet is ready 
 	*/
 	mw.getStyleSheet = function( url , callback) {		
@@ -1846,8 +1844,7 @@ var MW_EMBED_VERSION = '1.1f';
 	 *
 	 * @param {Float} sec Seconds
 	 * @param {Boolean} show_ms If milliseconds should be displayed.
-	 * @return String npt format  
-	 * @type {Float} 
+	 * @return {Float} String npt format  
 	 */
 	mw.seconds2npt = function( sec, show_ms ) {
 		if ( isNaN( sec ) ) {
@@ -1875,8 +1872,7 @@ var MW_EMBED_VERSION = '1.1f';
 	* Take hh:mm:ss,ms or hh:mm:ss.ms input, return the number of seconds
 	*
 	* @param {String} npt_str NPT time string
-	* @return Number of seconds 
-	* @type {Float} 
+	* @return {Float} Number of seconds 
 	*/
 	mw.npt2seconds = function ( npt_str ) {
 		if ( !npt_str ) {
@@ -2388,10 +2384,9 @@ var MW_EMBED_VERSION = '1.1f';
 	* NOTE: this only works for style sheets on the same domain :(
 	* 
 	* @param {String} styleRule Style rule name to check
-	* @return 
-	*	true if the rule exists
-	*	false if the rule does not exist
-	* @type {Boolean}
+	* @return {Boolean}
+	*	  true if the rule exists
+	*	  false if the rule does not exist
 	*/
 	mw.styleRuleExists = function ( styleRule ) {
 		// Set up the skin paths configuration		
