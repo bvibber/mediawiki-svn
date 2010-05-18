@@ -867,11 +867,6 @@ public class DebugLocalConceptStoreBuilder implements LocalConceptStoreBuilder {
 		return dataset;
 	}
 	
-	public void preparePostProcessing() throws PersistenceException {
-		log("* preparePostProcessing *");
-	}
-		
-
 	public void prepareMassInsert() throws PersistenceException {
 		log("* prepareMassInsert *");
 	}

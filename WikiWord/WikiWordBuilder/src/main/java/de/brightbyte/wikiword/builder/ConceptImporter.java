@@ -47,10 +47,7 @@ public class ConceptImporter extends AbstractImporter {
 	
 	@Override
 	public void finish() throws PersistenceException {
-		if (beginTask("ConceptImporter.finish", "finishImport")) {
-			store.preparePostProcessing();
-			endTask("ConceptImporter.finish", "finishImport");
-		}
+		store.prepareMassProcessing(); //NOTE: always make sure the DB is ready for mass processing
 		
 		if (beginTask("ConceptImporter.finish", "finishBadLinks")) {
 			store.finishBadLinks();

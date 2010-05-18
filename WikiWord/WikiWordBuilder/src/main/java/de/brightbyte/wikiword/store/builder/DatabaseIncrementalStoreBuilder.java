@@ -55,16 +55,21 @@ public abstract class DatabaseIncrementalStoreBuilder extends DatabaseWikiWordSt
 		Runtime.getRuntime().gc(); //run garbage collection
 	}
 	
-	public void preparePostProcessing() throws PersistenceException {
+	public void prepareMassInsert() throws PersistenceException {
 		try {
-			flush();
-			if (beginTask("DatabaseLocalConceptStore.preparePostProcessing", "enableKeys")) {
-				database.enableKeys();
-				endTask("DatabaseLocalConceptStore.preparePostProcessing", "enableKeys");
-			}
+				database.disableKeys();
 		} catch (SQLException e) {
 			throw new PersistenceException(e);
-		} 
+		}
+	}
+	
+	public void prepareMassProcessing() throws PersistenceException {
+		try {
+				flush();
+				database.enableKeys();
+		} catch (SQLException e) {
+			throw new PersistenceException(e);
+		}
 	}
 	
 }

@@ -148,14 +148,10 @@ public class PropertyImporter extends ConceptImporter {
 	@Override
 	public void finish() throws PersistenceException {
 		ConceptBasedStoreBuilder store = buildConcepts ? this.store : this.propertyStore;
-		boolean resolveIdsFirst = buildConcepts ? true : false;
 		
-		if (beginTask("PropertyImporter.finish", "finishImport")) {
-			store.preparePostProcessing();
-			endTask("PropertyImporter.finish", "finishImport");
-		}
+		store.prepareMassProcessing(); //NOTE: always make sure the DB is ready for mass processing
 		
-		if (resolveIdsFirst && beginTask("PropertyImporter.finish", "finishIdReferences#1")) {
+		if (beginTask("PropertyImporter.finish", "finishIdReferences#1")) {
 			store.finishIdReferences();
 			endTask("PropertyImporter.finish", "finishIdReferences#1");
 		}
@@ -165,7 +161,7 @@ public class PropertyImporter extends ConceptImporter {
 			endTask("PropertyImporter.finish", "finishAliases");
 		}
 		
-		if (!resolveIdsFirst && beginTask("PropertyImporter.finish", "finishIdReferences#2")) {
+		if (beginTask("PropertyImporter.finish", "finishIdReferences#2")) { //NOTE: resolve IDs again, some may only be known know, after resolving aliases.
 			store.finishIdReferences();
 			endTask("PropertyImporter.finish", "finishIdReferences#2");
 		}

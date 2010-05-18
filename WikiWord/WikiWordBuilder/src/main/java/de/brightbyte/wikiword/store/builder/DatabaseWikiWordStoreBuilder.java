@@ -517,7 +517,7 @@ public class DatabaseWikiWordStoreBuilder
 		} 
 	}
 
-	protected int resolveRedirects(RelationTable aliasTable, DatabaseTable table, String relNameField, String relIdField, AliasScope scope, int chunkFactor, String forceRIndex, String forceEIndex) throws PersistenceException {
+	protected int resolveRedirects(RelationTable aliasTable, DatabaseTable table, String relNameField, String relIdField, AliasScope scope, int chunkFactor, String where, String forceRIndex, String forceEIndex) throws PersistenceException {
 		if (relIdField==null && relNameField==null) throw new IllegalArgumentException("relNameFields and relIdField can't both be null");
 		
 		if (forceRIndex==null) {
@@ -558,7 +558,12 @@ public class DatabaseWikiWordStoreBuilder
 		if (nmField!=null && idField!=null) sql += ", ";
 		if (idField!=null) sql += " R."+relIdField+" = E.target"; 
 		
-		String where = scope == null ? null : " scope = "+scope.ordinal();
+		String w = scope == null ? null : " scope = "+scope.ordinal();
+		
+		if (w!=null) {
+			if (where == null) where = w;
+			else where = "("+where+") AND ("+w+")";
+		}
 		
 		return executeChunkedUpdate("resolveRedirects", table.getName()+"."+relNameField+"+"+relIdField, sql, where, aliasTable, "source", chunkFactor);
 	}

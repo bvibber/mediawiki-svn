@@ -110,35 +110,66 @@ public class DatabasePropertyStoreBuilder extends DatabaseIncrementalStoreBuilde
 		return (Corpus)database.getDataset();
 	}
 	
+	protected boolean hasUnresolvedConceptReferences() throws PersistenceException{
+		try {
+			Number c = (Number)database.executeSingleValueQuery("DatabasePropertyStoreBuilder.finishAliases#hasNull?", "select exists(select * from wmde10apr_en_property where concept is null)");
+			return c.intValue() > 0;
+		} catch (SQLException e) {
+			throw new PersistenceException(e);
+		}
+	}
+	
+	protected boolean hasResolvedConceptReferences() throws PersistenceException {
+		try {
+			Number c = (Number)database.executeSingleValueQuery("DatabasePropertyStoreBuilder.finishAliases#hasNull?", "select exists(select * from wmde10apr_en_property where concept is not null)");
+			return c.intValue() > 0;
+		} catch (SQLException e) {
+			throw new PersistenceException(e);
+		}
+	}
+	
 	public void finishAliases() throws PersistenceException {
-		if (beginTask("DatabasePropertyStoreBuilder.finishAliases", "resolveRedirects:property")) {
-			RelationTable aliasTable = (RelationTable)conceptStoreSchema.getTable("alias");
-			int n = resolveRedirects(aliasTable, propertyTable, "concept_name", idManager!=null ? "concept" : null, AliasScope.REDIRECT, 3, null, null);
-			endTask("DatabasePropertyStoreBuilder.finishAliases", "resolveRedirects:property", n+" entries");
+		RelationTable aliasTable = (RelationTable)conceptStoreSchema.getTable("alias");
+		
+		if (beginTask("DatabasePropertyStoreBuilder.finishAliases", "resolveRedirects:property#id")) {
+			int n = 0;
+			if (hasResolvedConceptReferences()) {
+				n = resolveRedirects(aliasTable, propertyTable, "concept_name", "concept", AliasScope.REDIRECT, 3, null, null, null);
+			}
+			
+			endTask("DatabasePropertyStoreBuilder.finishAliases", "resolveRedirects:property#id", n+" entries");
+		}
+		
+		if (beginTask("DatabasePropertyStoreBuilder.finishAliases", "resolveRedirects:property#name")) {
+			int n = 0;
+			if (hasUnresolvedConceptReferences()) {
+				n = resolveRedirects(aliasTable, propertyTable, "concept_name", null, AliasScope.REDIRECT, 3, propertyTable.getSQLName()+".concept is null", null, null);
+			}
+			
+			endTask("DatabasePropertyStoreBuilder.finishAliases", "resolveRedirects:property#name", n+" entries");
 		}
 	}
 
 	public void finishIdReferences() throws PersistenceException {
-		if (idManager==null && beginTask("DatabasePropertyStoreBuilder.finishIdReferences", "buildIdLinks:property")) {
-			int n = buildIdLinks(propertyTable, "concept_name", "concept", 1);     
+		if (beginTask("DatabasePropertyStoreBuilder.finishIdReferences", "buildIdLinks:property")) {
+			int n = 0;
+			if (hasUnresolvedConceptReferences()) {
+				n = buildIdLinks(propertyTable, "concept_name", "concept", 1);
+			}
+			
 			endTask("DatabasePropertyStoreBuilder.finishIdReferences", "buildIdLinks:property", n+" references");
 		}
 	}
-	
-	public void prepareMassInsert() throws PersistenceException {
-		try {
-				database.disableKeys();
-		} catch (SQLException e) {
-			throw new PersistenceException(e);
-		}
-	}
-	
+
 	public void prepareMassProcessing() throws PersistenceException {
 		try {
-				database.enableKeys();
+			this.conceptStoreSchema.enableKeys();
 		} catch (SQLException e) {
 			throw new PersistenceException(e);
 		}
+		
+		super.prepareMassProcessing();
 	}
+	
 	
 }

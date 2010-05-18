@@ -632,6 +632,7 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 	}
 	
 	public void prepareMassProcessing() throws PersistenceException {
+		this.flush();
 		this.enableKeys();
 
 		if (propertyStore!=null) {
@@ -674,21 +675,6 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 		}
 	}
 		
-	public void preparePostProcessing() throws PersistenceException {
-			flush();
-			enableKeys();
-
-		if (propertyStore!=null && beginTask("preparePostProcessing", "propertyStore.preparePostProcessing")) {
-			propertyStore.preparePostProcessing();
-			endTask("preparePostProcessing", "propertyStore.preparePostProcessing");
-		}
-		
-		if (textStore!=null && beginTask("preparePostProcessing", "textStore.preparePostProcessing")) {
-			textStore.preparePostProcessing();
-			endTask("preparePostProcessing", "textStore.preparePostProcessing");
-		}
-	}
-	
 	public void finishSections() throws PersistenceException {
 		if (beginTask("finishSections", "buildSectionConcepts")) {
 				int n = buildSectionConcepts();      
@@ -841,7 +827,7 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 			//NOTE: need to resolve category-aliases here, so no concepts are generated for aliased categories!
 			//NOTE: bad category redirs have been droped in finishBadLinks
 			if (beginTask("finishMissingConcpets", "resolveRedirects:broader")) {
-				int n = resolveRedirects(aliasTable, broaderTable, "broad_name", idManager==null ? null : "broad", AliasScope.CATEGORY, 1, idManager==null ? "broad_name" : "broad_narrow", null);     
+				int n = resolveRedirects(aliasTable, broaderTable, "broad_name", idManager==null ? null : "broad", AliasScope.CATEGORY, 1, null, idManager==null ? "broad_name" : "broad_narrow", null);     
 				endTask("finishMissingConcpets", "resolveRedirects:broader", n+" entries");
 			}
 
@@ -939,24 +925,24 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 			if (beginTask("finishAliases", "resolveRedirects:link")) {
 				//XXX: SLOW!
 				//TODO: smaller chunks? chunk on target table, not alias table? force index? 
-				int n = resolveRedirects(aliasTable, linkTable, "target_name", "target", AliasScope.REDIRECT, 8, "target_anchor", null);     
+				int n = resolveRedirects(aliasTable, linkTable, "target_name", "target", AliasScope.REDIRECT, 8, null, "target_anchor", null);     
 				endTask("finishAliases", "resolveRedirects:link", n+" entries");
 			}
 
 			//NOTE: broader.broad_name already done in finishMissingConcepts for AliasScope.BROADER
 			
 			if (beginTask("finishAliases", "resolveRedirects:about")) {
-				int n = resolveRedirects(aliasTable, aboutTable, "concept_name", "concept", null, 1, null, null);     
+				int n = resolveRedirects(aliasTable, aboutTable, "concept_name", "concept", null, 1, null, null, null);     
 				endTask("finishAliases", "resolveRedirects:about", n+" entries");
 			}
 
 			if (beginTask("finishAliases", "resolveRedirects:narrow")) {
-				int n = resolveRedirects(aliasTable, broaderTable, "narrow_name", "narrow", null, 1, null, null);     
+				int n = resolveRedirects(aliasTable, broaderTable, "narrow_name", "narrow", null, 1, null, null, null);     
 				endTask("finishAliases", "resolveRedirects:narrow", n+" entries");
 			}
 
 			if (beginTask("finishAliases", "resolveRedirects:broad")) {
-				int n = resolveRedirects(aliasTable, broaderTable, "broad_name", "broad", null, 1, null, null);     
+				int n = resolveRedirects(aliasTable, broaderTable, "broad_name", "broad", null, 1, null, null, null);     
 				endTask("finishAliases", "resolveRedirects:broad", n+" entries");
 			}
 						
