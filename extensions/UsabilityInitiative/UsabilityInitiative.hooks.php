@@ -74,7 +74,7 @@ class UsabilityInitiativeHooks {
 				array( 'src' => 'js/plugins/jquery.expandableField.js', 'version' => 15 ),
 				array( 'src' => 'js/plugins/jquery.suggestions.js', 'version' => 19 ),
 				array( 'src' => 'js/plugins/jquery.textSelection.js', 'version' => 33 ),
-				array( 'src' => 'js/plugins/jquery.wikiEditor.js', 'version' => 187 ),
+				array( 'src' => 'js/plugins/jquery.wikiEditor.js', 'version' => 188 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.highlight.js', 'version' => 53 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.toolbar.js', 'version' => 62 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.dialogs.js', 'version' => 24 ),
@@ -85,10 +85,10 @@ class UsabilityInitiativeHooks {
 				array( 'src' => 'js/plugins/jquery.wikiEditor.publish.js', 'version' => 5 ),
 			),
 			'combined' => array(
-				array( 'src' => 'js/plugins.combined.js', 'version' => 403 ),
+				array( 'src' => 'js/plugins.combined.js', 'version' => 404 ),
 			),
 			'minified' => array(
-				array( 'src' => 'js/plugins.combined.min.js', 'version' => 403 ),
+				array( 'src' => 'js/plugins.combined.min.js', 'version' => 404 ),
 			),
 		),
 	);

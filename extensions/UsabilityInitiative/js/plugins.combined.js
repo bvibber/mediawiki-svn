@@ -7069,7 +7069,7 @@ if ( !context || typeof context == 'undefined' ) {
 				// Surround by <p> if it does not already have it
 				var cursorPos = context.fn.getCaretPosition();
 				var t = context.fn.getOffset( cursorPos[0] );
-				if ( t && t.node.nodeName == '#text' && t.node.parentNode.nodeName.toLowerCase() == 'body' ) {
+				if ( ! $.browser.msie && t && t.node.nodeName == '#text' && t.node.parentNode.nodeName.toLowerCase() == 'body' ) {
 					$( t.node ).wrap( "<p></p>" );
 					context.fn.purgeOffsets();
 					context.fn.setSelection( { start: cursorPos[0], end: cursorPos[1] } );
@@ -7125,10 +7125,11 @@ if ( !context || typeof context == 'undefined' ) {
 				}
 				
 				var $selection = context.$content.find( ':not(.wikiEditor)' );
-				var $previousElement;
+				var newElementHTML = '' ;
+				var $markElement = null;
 				while ( $selection.length && $selection.length > 0 ) {
 					var $currentElement = $selection.eq( 0 );
-					
+						
 					//go up till we find the first pasted element
 					while ( !$currentElement.parent().is( 'body' ) && !$currentElement.parent().is( '.wikiEditor' ) ) {
 						$currentElement = $currentElement.parent();
@@ -7140,62 +7141,49 @@ if ( !context || typeof context == 'undefined' ) {
 						$currentElement = $( $currentElement[0].previousSibling );
 					}
 					
-					//each pasted element is always wrapped in a <p>
-					var $newElement;
-					var textNode = false;
-					if ( $currentElement[0].nodeName == '#text' ) {
-						$newElement = $( '<p></p>' );
-						textNode = true;
-					} else if ( $currentElement.is( 'p' ) || $currentElement.is( 'pre' ) || $currentElement.is( 'br' ) ) {
-						$newElement = $( '<p></p>' );
-					} else {
-						$newElement = $( '<span></span>' );
-					}
-					var newElementHTML = '';
+					// we're going to collect and sanitize all the pasted content and then insert it at $markElement 
 					var currentHTML = '';
-					
-					
-					if ( $currentElement[0].nodeName == '#text' ) {
+					if ( $currentElement[0].nodeName == '#text' ) { 
 						//if it is a text node then just append it
 						currentHTML = $currentElement[0].nodeValue;
 					} else {
 						currentHTML = $currentElement.html();
+						// First remove all new lines
+						currentHTML = currentHTML.replace( /\r?\n/g, '');
 						//replace all forms of <p> tags with a \n. All other tags get removed.
 						currentHTML = currentHTML.replace(/(<[\s]*p[^>]*>)|(<[\s]*\/p[^>]*>)|(<[\s]*p[^\/>]*\/>)/gi, '\n');
+						// Replace all forms of html tags that should end up in their own <p>
+						currentHTML = currentHTML.replace(/(<[\s]*p[^>]*>)|(<[\s]*\/p[^>]*>)|(<[\s]*p[^\/>]*\/>)|(<[\s]*h[\d][^>]*>)|(<[\s]*h[\d][^\/>]*\/>)/gi, '\n');
 						currentHTML = currentHTML.replace(/(<[^>]*>)|(<[^\>]*\>)/gi, '');
-						
+						currentHTML += '\n';
 					}
+					newElementHTML += currentHTML;
 					
-					//wrap each piece in a <p> with a <br> in between.
-					var pieces = currentHTML.split( '\n' );
-					for ( var i = 0; i < pieces.length; i++ ) {
-						if ( pieces[i] ) {
-							if ( textNode || ! $newElement.is( 'p' ) ) {
-								newElementHTML += '<p class="wikiEditor">' + pieces[i] + '</p>';
-							} else {
-								newElementHTML += pieces[i];
-							}
-						} else if ( textNode || ! $newElement.is( 'p' ) ) {
-							newElementHTML += '<br class="wikiEditor" >';
-						}
-						
-						if ( !textNode ) {
-							newElementHTML += '<br class="wikiEditor" >';
-						}
-					}
-						
-					$newElement.html( newElementHTML ).addClass( 'wikiEditor' );
-					
-					//remove extra <br>s
-					if ( $newElement.is( 'p' ) && $currentElement[0].nextSibling != null && $( $currentElement[0].nextSibling ).is( 'br' ) ) {
-						$( $currentElement[0].nextSibling ).remove();
-					}
-					//swap out the original content with with newly sanitized one
-					$newElement.insertAfter( $currentElement );
+					if ( $markElement == null ) {
+						$markElement = $( '<div></div>' ).addClass( 'wikiEditor' ).insertAfter( $currentElement );
+                    }
 					$currentElement.remove();
-
 					$selection = context.$content.find( ':not(.wikiEditor)' );
 				}
+				
+				//now put a <p> around each line of pasted content
+				var pieces = newElementHTML.split( '\n' );
+				var $newElement;
+				for ( var i = 0; i < pieces.length; i++ ) {
+					$newElement = $( '<p></p>' );
+					if ( pieces[i] ) {
+						$newElement.text( pieces[i] );
+					} else {
+						$newElement.html( '<br>' );
+					}
+					
+					$newElement.insertAfter( $markElement );
+					if (i == 0 ) {
+						$markElement.remove();
+					}
+					$markElement = $newElement;
+				}
+
 
 				context.$content.find( '.wikiEditor' ).removeClass( 'wikiEditor' );
 				if ( $.layout.name !== 'webkit' ) {
