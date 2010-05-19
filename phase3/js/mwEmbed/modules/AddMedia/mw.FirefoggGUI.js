@@ -661,7 +661,6 @@ mw.FirefoggGUI.prototype = {
 					});
 					break;
 				case 'slider':
-					//var sliderId = _this.getClassId( this, 'slider_' );
 					$j( this.selector + ' .slider_' + configKey ).slider({
 						range: "min",
 						animate: true,
@@ -670,10 +669,13 @@ mw.FirefoggGUI.prototype = {
 						min: this.default_encoder_config[ configKey ].range.min,
 						max: this.default_encoder_config[ configKey ].range.max,
 						slide: function( event, ui ) {
-							$j( _this.selector + ' ._' + sliderId ).val( ui.value );
+					        //cut of slider_
+					        var configKey = _this.getClassId( this ).substr(7);
+
+							$j( _this.selector + ' ._' + configKey ).val( ui.value );
 
 							// Maintain source video aspect ratio
-							if ( sliderId == 'width' ) {
+							if ( configKey == 'width' ) {
 								var sourceHeight = _this.sourceFileInfo.video[0]['height'];
 								var sourceWidth = _this.sourceFileInfo.video[0]['width'];
 								var newHeight = parseInt( sourceHeight / sourceWidth * ui.value );
@@ -681,17 +683,19 @@ mw.FirefoggGUI.prototype = {
 								if ( newHeight > _this.updateInterfaceValue( 'height', newHeight ) )
 									return false;
 							}
-							if ( sliderId == 'height' ) {
+							if ( configKey == 'height' ) {
 								var sourceHeight = _this.sourceFileInfo.video[0]['height'];
 								var sourceWidth = _this.sourceFileInfo.video[0]['width'];
 								var newWidth = parseInt( sourceWidth / sourceHeight * ui.value );
 								// Reject the update if the new width is above the maximum
-								if ( newWidth > _this.updateInterfaceValue( 'width', wv ) )
+								if ( newWidth > _this.updateInterfaceValue( 'width', newWidth ) )
 									return false;
 							}
 						},
 						change: function( event, ui ) {
-							_this.updateLocalValue( sliderId, ui.value );
+					        //cut of slider_
+					        var configKey = _this.getClassId( this ).substr(7);
+							_this.updateLocalValue( configKey, ui.value );
 							_this.updatePresetSelection( 'custom' );
 						}
 					});
