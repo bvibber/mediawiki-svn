@@ -5795,6 +5795,8 @@ $.fn.extend( {
  *		Type: Number, Range: 1 - infinity, Default: 3
  * positionFromLeft: Whether to position the suggestion box with the left attribute or the right
  *		Type: Boolean, Default: true
+ *  highlightInput: Highlights the matched text in the suggestions
+ *		Type: Boolean, Default: true
  */
 ( function( $ ) {
 
@@ -5903,6 +5905,14 @@ $.suggestions = {
 						var expWidth = -1;
 						var $autoEllipseMe = $( [] );
 						for ( var i = 0; i < context.config.suggestions.length; i++ ) {
+							var text = context.config.suggestions[i];
+							if( context.config.highlightInput ) {
+								var text = '<strong>' 
+									+ text.substr( 0, context.data.prevText.length) 
+									+ '</strong>'
+									+  text.substr( context.data.prevText.length, text.length );
+							}
+							
 							var $result = $( '<div />' )
 								.addClass( 'suggestions-result' )
 								.attr( 'rel', i )
@@ -5916,12 +5926,12 @@ $.suggestions = {
 							
 							// Allow custom rendering
 							if ( typeof context.config.result.render == 'function' ) {
-								context.config.result.render.call( $result, context.config.suggestions[i] );
+								context.config.result.render.call( $result, text );
 							} else {
 								// Add <span> with text
-								$result.append( $( '<span />' )
+								$result.append( $( '<div />' )
 										.css( 'whiteSpace', 'nowrap' )
-										.text( context.config.suggestions[i] )
+										.html( text )
 								);
 								
 								// Widen results box if needed
@@ -5954,6 +5964,7 @@ $.suggestions = {
 				break;
 			case 'submitOnClick':
 			case 'positionFromLeft':
+			case 'highlightInput':
 				context.config[property] = value ? true : false;
 				break;
 		}
@@ -6105,7 +6116,8 @@ $.fn.suggestions = function() {
 					'delay': 120,
 					'submitOnClick': false,
 					'maxExpandFactor': 3,
-					'positionFromLeft': true
+					'positionFromLeft': true,
+					'highlightInput': true
 				}
 			};
 		}
