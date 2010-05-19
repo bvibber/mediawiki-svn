@@ -36,7 +36,7 @@
  * maxExpandFactor: Maximum suggestions box width relative to the textbox width.  If set to e.g. 2, the suggestions box
  *		will never be grown beyond 2 times the width of the textbox.
  *		Type: Number, Range: 1 - infinity, Default: 2
- * positionFromLeft: Wether to position the suggestion box with the left attribute or the right
+ * positionFromLeft: Whether to position the suggestion box with the left attribute or the right
  *		Type: Boolean, Default: true
  */
 ( function( $ ) {
@@ -134,11 +134,9 @@ $.suggestions = {
 							'height': 'auto'
 						}
 						if ( context.config.positionFromLeft ) {
-							console.log("LEFT");
 							newCSS['left'] = context.config.$region.offset().left;
 							newCSS['right'] = 'auto';
 						} else {
-							console.log("right");
 							newCSS['left'] = 'auto';
 							newCSS['right'] = $( 'body' ).width() - ( context.config.$region.offset().left + context.config.$region.outerWidth() );
 						}
