@@ -75,7 +75,7 @@ $j(document).ready( function() {
 			}
 		},
 		delay: 120,
-		expandToLeft: !$j( 'body' ).is( 'rtl' )
+		positionFromLeft: $j( 'body' ).is( '.rtl' )
 	} );
 	$j( '#searchInput' ).suggestions( {
 		result: {
