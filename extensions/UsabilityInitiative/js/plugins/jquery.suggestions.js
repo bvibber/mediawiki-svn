@@ -149,13 +149,6 @@ $.suggestions = {
 						var $autoEllipseMe = $( [] );
 						for ( var i = 0; i < context.config.suggestions.length; i++ ) {
 							var text = context.config.suggestions[i];
-							if( context.config.highlightInput ) {
-								var text = '<strong>' 
-									+ text.substr( 0, context.data.prevText.length) 
-									+ '</strong>'
-									+  text.substr( context.data.prevText.length, text.length );
-							}
-							
 							var $result = $( '<div />' )
 								.addClass( 'suggestions-result' )
 								.attr( 'rel', i )
@@ -172,14 +165,24 @@ $.suggestions = {
 								context.config.result.render.call( $result, text );
 							} else {
 								// Add <span> with text
-								$result.append( $( '<div />' )
-										.css( 'whiteSpace', 'nowrap' )
-										.html( text )
-								);
+								if( context.config.highlightInput ) {
+									var matchedText = text.substr( 0, context.data.prevText.length );
+									text = text.substr( context.data.prevText.length, text.length );
+									$result.append( $( '<div />' )
+											.css( 'whiteSpace', 'nowrap' )
+											.text( text )
+											.prepend( $( '<strong />' ).text( matchedText ) )
+										);
+								} else {
+									$result.append( $( '<div />' )
+											.css( 'whiteSpace', 'nowrap' )
+											.text( text )
+										);
+								}
 								
 								// Widen results box if needed
 								// New width is only calculated here, applied later
-								var $span = $result.children( 'span' );
+								var $span = $result.children( 'div' );
 								if ( $span.outerWidth() > $result.width() && $span.outerWidth() > expWidth ) {
 									expWidth = $span.outerWidth();
 								}
