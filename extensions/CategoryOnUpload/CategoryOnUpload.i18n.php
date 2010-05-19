@@ -489,7 +489,7 @@ $messages['pt-br'] = array(
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
-	'categoryonupload-desc' => 'Cere utilizatorului să aleagă o categorie atunci când încarcă un fişier',
+	'categoryonupload-desc' => 'Cere utilizatorului să aleagă o categorie atunci când încarcă un fișier',
 	'categoryonupload-label' => 'Categorie:',
 );
 

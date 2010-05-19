@@ -1113,15 +1113,15 @@ $messages['ro'] = array(
 	'player' => 'Jucător',
 	'player-title' => 'Jucător',
 	'player-playertitle' => 'Jucător: $1',
-	'player-file' => 'Nume fişier',
+	'player-file' => 'Nume fișier',
 	'player-play' => 'Redare',
 	'player-not-allowed' => 'format nepermis',
-	'player-not-found' => 'fişier negăsit',
+	'player-not-found' => 'fișier negăsit',
 	'player-invalid-title' => 'titlu incorect',
 	'player-clicktoplay' => 'Joacă $1',
 	'player-goto-player' => 'jucător',
 	'player-goto-page' => 'Pagină',
-	'player-goto-file' => 'fişier',
+	'player-goto-file' => 'fișier',
 );
 
 /** Tarandíne (Tarandíne)

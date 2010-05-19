@@ -1180,12 +1180,12 @@ $messages['pt-br'] = array(
  */
 $messages['ro'] = array(
 	'masseditregex-matchtxt' => 'Caută:',
-	'masseditregex-replacetxt' => 'Înlocuieşte cu:',
+	'masseditregex-replacetxt' => 'Înlocuiește cu:',
 	'masseditregex-executebtn' => 'Execută',
 	'masseditregex-before' => 'Înainte',
 	'masseditregex-after' => 'După',
 	'masseditregex-hint-headmatch' => 'Potrivire',
-	'masseditregex-hint-headreplace' => 'Înlocuieşte',
+	'masseditregex-hint-headreplace' => 'Înlocuiește',
 	'masseditregex-hint-headeffect' => 'Efect',
 );
 

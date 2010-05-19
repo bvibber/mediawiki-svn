@@ -593,7 +593,7 @@ $messages['pt-br'] = array(
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
-	'categorywatch-desc' => 'Extinde funcţionalitatea listei de urmărire pentru a include notifcări privind modificările categoriilor urmărite',
+	'categorywatch-desc' => 'Extinde funcționalitatea listei de urmărire pentru a include notifcări privind modificările categoriilor urmărite',
 	'categorywatch-emailsubject' => 'Activitatea privind categoria urmărită "$1"',
 	'categorywatch-catmovein' => 'a mutat $1 în categoria $2 din $3',
 	'categorywatch-catmoveout' => 'a mutat $1 din categoria $2 în $3',

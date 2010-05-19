@@ -773,7 +773,7 @@ $messages['ro'] = array(
 	'framedvideo_error_no_integer' => 'Valoarea dată pentru "$1" nu este număr pozitiv.',
 	'framedvideo_error_limit' => 'Valoarea maximă permisă este $1.',
 	'framedvideo_helppage' => 'Help:Video',
-	'framedvideo_error_height_and_width_required' => 'Tipul video "$1" necesită parametrii "height" şi "width2" sau "width".',
+	'framedvideo_error_height_and_width_required' => 'Tipul video "$1" necesită parametrii "height" și "width2" sau "width".',
 );
 
 /** Tarandíne (Tarandíne)

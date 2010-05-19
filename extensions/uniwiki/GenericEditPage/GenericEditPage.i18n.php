@@ -1198,21 +1198,21 @@ Adicione algumas utilizando as ferramentas na barra de menu.',
  */
 $messages['ro'] = array(
 	'gep-emailfailure' => 'Ne pare rău, sugestia dumneavoastră nu a putut fi procesată.',
-	'gep-emailsuccess' => 'Vă mulţumim pentru sugestia categoriei: $1.',
+	'gep-emailsuccess' => 'Vă mulțumim pentru sugestia categoriei: $1.',
 	'gep-categories' => 'Categorii',
 	'gep-addcategory' => 'Adaugă o categorie',
 	'gep-addcategorybutton' => 'Adaugă',
 	'gep-suggestcategory' => 'Sugerează o categorie',
 	'gep-suggestcategorybutton' => 'Trimite',
-	'gep-sections' => 'Secţiuni',
-	'gep-sectionnotdisabled' => 'Această secţiune nu poate fi dezactivată',
-	'gep-addsection' => 'Adaugă o secţiune',
+	'gep-sections' => 'Secțiuni',
+	'gep-sectionnotdisabled' => 'Această secțiune nu poate fi dezactivată',
+	'gep-addsection' => 'Adaugă o secțiune',
 	'gep-addsectionbutton' => 'Adaugă',
 	'gep-classicmode' => 'Mod clasic',
 	'gep-genericmode' => 'Mod generic',
-	'gep-nosectioninstructions' => 'Nu există secţiuni pe această pagină.
-Adăugaţi unele folosind uneltele din bara de meniu.',
-	'gep-nocategories' => 'Vă rugăm să selectaţi cel puţin o categorie înainte de salvare',
+	'gep-nosectioninstructions' => 'Nu există secțiuni pe această pagină.
+Adăugați unele folosind uneltele din bara de meniu.',
+	'gep-nocategories' => 'Vă rugăm să selectați cel puțin o categorie înainte de salvare',
 );
 
 /** Tarandíne (Tarandíne)

@@ -867,7 +867,7 @@ $messages['ro'] = array(
 	'postcomment_on' => 'La',
 	'postcomment_said' => 'a spus',
 	'postcomment_invalidrequest' => 'Cerere incorectă.',
-	'postcomment_replyto' => 'Răspundeţi lui $1',
+	'postcomment_replyto' => 'Răspundeți lui $1',
 );
 
 /** Tarandíne (Tarandíne)

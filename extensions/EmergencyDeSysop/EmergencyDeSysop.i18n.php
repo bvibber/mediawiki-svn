@@ -787,10 +787,10 @@ $messages['pt-br'] = array(
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
-	'emergencydesysop-reason' => 'Motiv pentru ştergere',
+	'emergencydesysop-reason' => 'Motiv pentru ștergere',
 	'emergencydesysop-submit' => 'Trimite',
 	'emergencydesysop-nogroups' => 'Niciunul',
-	'emergencydesysop-invalidtarget' => 'Utilizatorul ţintă nu există.',
+	'emergencydesysop-invalidtarget' => 'Utilizatorul țintă nu există.',
 );
 
 /** Russian (Русский)

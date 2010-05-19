@@ -209,6 +209,13 @@ $messages['ml'] = array(
 	'vector-collapsiblenav-preference' => 'ഇടതുവശത്തെ വഴികാട്ടി മെനു ചുരുക്കാവുന്നതാക്കി സജ്ജീകരിക്കുക',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Aurora
+ */
+$messages['ms'] = array(
+	'vector-collapsiblenav-preference' => 'Aktifkan menu navigasi kiri boleh kuncup',
+);
+
 /** Maltese (Malti)
  * @author Chrisportelli
  */

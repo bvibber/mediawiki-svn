@@ -937,9 +937,9 @@ $messages['pt-br'] = array(
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
-	'ajaxshoweditors-desc' => 'Arată utilizatorii care modifică aceeaşi pagină',
+	'ajaxshoweditors-desc' => 'Arată utilizatorii care modifică aceeași pagină',
 	'ajax-se-title' => 'Modificare curentă:',
-	'ajax-se-pending' => 'reîncărcare în aşteptare… (click în această cutie sau începeţi să modificaţi)',
+	'ajax-se-pending' => 'reîncărcare în așteptare… (click în această cutie sau începeți să modificați)',
 	'ajax-se-idling' => '(acum $1s)',
 	'ajax-se-pagedoesnotexist' => 'pagina nu există',
 	'ajax-se-userinvalid' => 'Eroare: utilizator incorect',

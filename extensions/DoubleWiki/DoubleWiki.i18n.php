@@ -446,7 +446,7 @@ $messages['pt-br'] = array(
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
-	'doublewiki-desc' => 'Arată o pagină şi traducerea sa dintr-un alt wiki pe două coloane pe aceeaşi pagină',
+	'doublewiki-desc' => 'Arată o pagină și traducerea sa dintr-un alt wiki pe două coloane pe aceeași pagină',
 );
 
 /** Tarandíne (Tarandíne)

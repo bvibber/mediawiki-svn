@@ -424,7 +424,7 @@ $messages['pt-br'] = array(
  * @author Stelistcristi
  */
 $messages['ro'] = array(
-	'antibot-desc' => 'Cadru simplu pentru verificări spambot şi sarcinile utile de declanşare',
+	'antibot-desc' => 'Cadru simplu pentru verificări spambot și sarcinile utile de declanșare',
 );
 
 /** Tarandíne (Tarandíne)

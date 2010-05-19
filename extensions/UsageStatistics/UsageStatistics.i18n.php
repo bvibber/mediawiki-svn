@@ -1857,10 +1857,10 @@ $messages['ro'] = array(
 	'specialuserstats' => 'Statistici de utilizare',
 	'usagestatistics' => 'Statistici de utilizare',
 	'usagestatisticsinterval' => 'Interval',
-	'usagestatisticsnamespace' => 'Spaţiu de nume:',
+	'usagestatisticsnamespace' => 'Spațiu de nume:',
 	'usagestatisticstype' => 'Tip',
 	'usagestatisticsstart' => 'Dată început',
-	'usagestatisticsend' => 'Dată sfârşit',
+	'usagestatisticsend' => 'Dată sfârșit',
 	'usagestatisticssubmit' => 'Generează statistici',
 	'usagestatisticsintervalday' => 'Zi',
 	'usagestatisticsintervalweek' => 'Săptămână',
@@ -1869,7 +1869,7 @@ $messages['ro'] = array(
 	'usagestatisticsincremental-text' => 'incremental',
 	'usagestatisticscumulative' => 'Cumulativ',
 	'usagestatisticscumulative-text' => 'cumulativ',
-	'usagestatisticscalselect' => 'Selectaţi',
+	'usagestatisticscalselect' => 'Selectați',
 );
 
 /** Tarandíne (Tarandíne)

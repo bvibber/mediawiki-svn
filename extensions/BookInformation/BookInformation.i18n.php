@@ -1403,17 +1403,17 @@ $messages['qu'] = array(
  * @author Mihai
  */
 $messages['ro'] = array(
-	'bookinfo-header' => 'Informaţii despre carte',
-	'bookinformation-desc' => 'Completează [[Special:Booksources|pagina specială a surselor de cărţi]] cu informaţii de la un serviciu web',
+	'bookinfo-header' => 'Informații despre carte',
+	'bookinformation-desc' => 'Completează [[Special:Booksources|pagina specială a surselor de cărți]] cu informații de la un serviciu web',
 	'bookinfo-result-title' => 'Titlu:',
 	'bookinfo-result-author' => 'Autor:',
 	'bookinfo-result-publisher' => 'Editură:',
 	'bookinfo-result-year' => 'An:',
 	'bookinfo-error-invalidisbn' => 'ISBN nevalid.',
 	'bookinfo-error-nosuchitem' => 'Elementul nu există sau nu a putut fi găsit.',
-	'bookinfo-error-nodriver' => 'Nu poate fi accesată nicio sursă cu informaţii despe carte.',
+	'bookinfo-error-nodriver' => 'Nu poate fi accesată nicio sursă cu informații despe carte.',
 	'bookinfo-error-noresponse' => 'Niciun răspuns sau cererea a expirat.',
-	'bookinfo-purchase' => 'Cumpăraţi această carte de la $1',
+	'bookinfo-purchase' => 'Cumpărați această carte de la $1',
 	'bookinfo-provider' => 'Furnizor date: $1',
 );
 

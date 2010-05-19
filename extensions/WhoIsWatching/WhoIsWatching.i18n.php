@@ -671,13 +671,13 @@ Por favor, utilize a página [[MediaWiki:Number_of_watching_users_pageview]] par
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
-	'whoiswatching' => 'Cine urmăreşte o pagină wiki',
+	'whoiswatching' => 'Cine urmărește o pagină wiki',
 	'whoiswatching-desc' => 'Oferă o listă de nume de utilizatori care urmăresc o pagină wiki',
-	'specialwhoiswatchingthepage' => 'Cine urmăreşte %s',
+	'specialwhoiswatchingthepage' => 'Cine urmărește %s',
 	'specialwhoiswatchingusage' => 'Această pagină specială nu poate fi folosită de sine stătătoare.
-Te rugăm să foloseşti pagina [[MediaWiki:Number_of_watching_users_pageview]] pentru a defini un punct de intrare în această pagină specială.',
+Te rugăm să folosești pagina [[MediaWiki:Number_of_watching_users_pageview]] pentru a defini un punct de intrare în această pagină specială.',
 	'specialwhoiswatchingaddusers' => 'Adaugă utilizatori care să urmărească pagina',
-	'specialwhoiswatchingaddbtn' => 'Adaugă utilizatorii selectaţi',
+	'specialwhoiswatchingaddbtn' => 'Adaugă utilizatorii selectați',
 );
 
 /** Tarandíne (Tarandíne)

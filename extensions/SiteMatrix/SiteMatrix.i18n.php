@@ -1450,14 +1450,14 @@ $messages['rm'] = array(
  */
 $messages['ro'] = array(
 	'sitematrix' => 'Lista proiectelor Wikimedia',
-	'sitematrix-summary' => 'Această pagină specială afişează toate proiectele wiki ale Wikimedia.',
-	'sitematrix-desc' => 'Afişaţi o [[Special:SiteMatrix|listă de wikiuri ale Wikimedia]]',
+	'sitematrix-summary' => 'Această pagină specială afișează toate proiectele wiki ale Wikimedia.',
+	'sitematrix-desc' => 'Afișați o [[Special:SiteMatrix|listă de wikiuri ale Wikimedia]]',
 	'sitematrix-language' => 'Limbă',
 	'sitematrix-others' => 'Alte proiecte Wikimedia',
 	'sitematrix-total' => "'''Număr total: $1'''",
 	'sitematrix-sitetotal' => 'Total',
 	'sitematrix-private' => 'privat',
-	'sitematrix-fishbowl' => 'modificare restricţionată',
+	'sitematrix-fishbowl' => 'modificare restricționată',
 );
 
 /** Tarandíne (Tarandíne)

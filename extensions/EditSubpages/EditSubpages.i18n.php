@@ -583,7 +583,7 @@ $messages['pt-br'] = array(
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
-	'editsubpages-desc' => 'Permite administratorilor să deblocheze o pagină şi toate subpaginile ei pentru modificare anonimă via [[MediaWiki:Unlockedpages]]',
+	'editsubpages-desc' => 'Permite administratorilor să deblocheze o pagină și toate subpaginile ei pentru modificare anonimă via [[MediaWiki:Unlockedpages]]',
 );
 
 /** Tarandíne (Tarandíne)

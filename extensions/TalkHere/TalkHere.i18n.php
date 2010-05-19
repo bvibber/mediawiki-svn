@@ -888,7 +888,7 @@ Os responsáveis por este site não podem ser responsabilizados pelo conteúdo d
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
-	'talkhere-talkpage' => 'padina de discuţii',
+	'talkhere-talkpage' => 'padina de discuții',
 	'talkhere-notalk' => "''(încă nici un comentariu)''",
 	'talkhere-addcomment' => 'adaugă comentariu',
 	'talkhere-loading' => 'încărcare editor...',

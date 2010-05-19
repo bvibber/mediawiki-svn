@@ -2581,14 +2581,14 @@ $messages['qu'] = array(
  * @author Stelistcristi
  */
 $messages['ro'] = array(
-	'ogg-short-audio' => 'Fişier de sunet ogg $1, $2',
-	'ogg-short-video' => 'Fişier video ogg $1, $2',
-	'ogg-short-general' => 'Fişier media ogg $1, $2',
-	'ogg-long-audio' => '(Fişier de sunet ogg $1, lungime $2, $3)',
-	'ogg-long-video' => '(Fişier video ogg $1, lungime $2, $4×$5 pixeli, $3)',
-	'ogg-long-multiplexed' => '(Fişier multiplexat audio/video ogg, $1, lungime $2, $4×$5 pixeli, $3)',
-	'ogg-long-general' => '(Fişier media ogg, lungime $2, $3)',
-	'ogg-long-error' => '(Fişier ogg incorect: $1)',
+	'ogg-short-audio' => 'Fișier de sunet ogg $1, $2',
+	'ogg-short-video' => 'Fișier video ogg $1, $2',
+	'ogg-short-general' => 'Fișier media ogg $1, $2',
+	'ogg-long-audio' => '(Fișier de sunet ogg $1, lungime $2, $3)',
+	'ogg-long-video' => '(Fișier video ogg $1, lungime $2, $4×$5 pixeli, $3)',
+	'ogg-long-multiplexed' => '(Fișier multiplexat audio/video ogg, $1, lungime $2, $4×$5 pixeli, $3)',
+	'ogg-long-general' => '(Fișier media ogg, lungime $2, $3)',
+	'ogg-long-error' => '(Fișier ogg incorect: $1)',
 	'ogg-play' => 'Redă',
 	'ogg-pause' => 'Pauză',
 	'ogg-stop' => 'Stop',
@@ -2601,11 +2601,11 @@ Te rog <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_downlo
 	'ogg-player-thumbnail' => 'Încă imaginea doar',
 	'ogg-player-soundthumb' => 'Niciun program de redare',
 	'ogg-player-selected' => '(selectat)',
-	'ogg-use-player' => 'Foloseşte programul de redare:',
+	'ogg-use-player' => 'Folosește programul de redare:',
 	'ogg-more' => 'Mai mult…',
 	'ogg-dismiss' => 'Închide',
-	'ogg-download' => 'Descarcă fişier',
-	'ogg-desc-link' => 'Despre acest fişier',
+	'ogg-download' => 'Descarcă fișier',
+	'ogg-desc-link' => 'Despre acest fișier',
 );
 
 /** Tarandíne (Tarandíne)
@@ -2782,12 +2782,18 @@ $messages['sk'] = array(
  * @author Dbc334
  */
 $messages['sl'] = array(
+	'ogg-short-audio' => 'Zvočna datoteka Ogg $1, $2',
+	'ogg-short-video' => 'Videodatoteka Ogg $1, $2',
+	'ogg-short-general' => 'Predstavnostna datoteka Ogg $1, $2',
+	'ogg-long-general' => '(Predstavnostna datoteka ogg, dolžina $2, $3)',
+	'ogg-long-error' => '(Neveljavna datoteka ogg: $1)',
 	'ogg-play' => 'Predvajaj',
 	'ogg-pause' => 'Pavza',
 	'ogg-stop' => 'Ustavi',
 	'ogg-play-video' => 'Predvajaj video',
 	'ogg-play-sound' => 'Predvajaj zvok',
 	'ogg-player-videoElement' => 'Vgrajena podpora brskalnika',
+	'ogg-player-oggPlugin' => 'Vtičnik brskalnika',
 	'ogg-player-thumbnail' => 'Samo stoječa slika',
 	'ogg-player-soundthumb' => 'Brez predvajalnika',
 	'ogg-player-selected' => '(izbrano)',

@@ -1458,12 +1458,12 @@ $messages['pt-br'] = array(
 $messages['ro'] = array(
 	'ct-title' => 'Clicuri utilizator cumulate',
 	'ct-event-name' => 'Numele evenimentului',
-	'ct-expert-header' => 'Clickuri de către "experţi"',
+	'ct-expert-header' => 'Clickuri de către "experți"',
 	'ct-intermediate-header' => 'Clicuri „intermediare”',
 	'ct-beginner-header' => 'Clicuri „începătoare”',
 	'ct-total-header' => 'Clickuri totale',
 	'ct-start-date' => 'Data de start (AAAALLZZ)',
-	'ct-end-date' => 'Data de sfârşit (AAAALLZZ)',
+	'ct-end-date' => 'Data de sfârșit (AAAALLZZ)',
 	'ct-change-graph' => 'Grafic de schimbări',
 	'ct-beginner' => 'Începători',
 	'ct-intermediate' => 'Intermediar',
@@ -1471,9 +1471,9 @@ $messages['ro'] = array(
 	'ct-date-range' => 'Interval în timp',
 	'ct-editing' => 'Editare curentă:',
 	'ct-anon-users' => 'Utilizatori anonimi',
-	'ct-user-contribs' => 'Contribuţiile totale ale utilizatorului',
-	'ct-user-span' => 'Contribuţiile utilizatorului în intervalul de timp',
-	'ct-and' => 'şi',
+	'ct-user-contribs' => 'Contribuțiile totale ale utilizatorului',
+	'ct-user-span' => 'Contribuțiile utilizatorului în intervalul de timp',
+	'ct-and' => 'și',
 	'ct-update-table' => 'Actualizează tabel',
 );
 

@@ -643,11 +643,11 @@ Tem de:',
 $messages['ro'] = array(
 	'securepasswords-valid' => 'Parola dumneavoastră este incorectă sau prea scurtă.
 Aceasta trebuie:',
-	'securepasswords-minlength' => 'să fie de cel puţin $1 {{PLURAL:$1|caracter|caractere}} lungime',
-	'securepasswords-lowercase' => 'să conţină cel puţin o literă mică',
-	'securepasswords-uppercase' => 'să conţină cel puţin o literă mare',
-	'securepasswords-digit' => 'să conţină cel puţin o cifră',
-	'securepasswords-special' => 'să conţină cel puţin un caracter special (caracterele speciale sunt: $1)',
+	'securepasswords-minlength' => 'să fie de cel puțin $1 {{PLURAL:$1|caracter|caractere}} lungime',
+	'securepasswords-lowercase' => 'să conțină cel puțin o literă mică',
+	'securepasswords-uppercase' => 'să conțină cel puțin o literă mare',
+	'securepasswords-digit' => 'să conțină cel puțin o cifră',
+	'securepasswords-special' => 'să conțină cel puțin un caracter special (caracterele speciale sunt: $1)',
 	'securepasswords-username' => 'să fie diferită de numele de utilizator',
 	'securepasswords-word' => 'să nu fie un cuvânt',
 );

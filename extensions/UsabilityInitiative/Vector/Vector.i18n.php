@@ -378,8 +378,8 @@ $messages['pt-br'] = array(
  * @author Stelistcristi
  */
 $messages['ro'] = array(
-	'vector' => 'Îmbunătăţiri la nivelul interfaţei pentru Vector',
-	'vector-desc' => 'Îmbunătăţiri la elementele interfaţei a temei Vector.',
+	'vector' => 'Îmbunătățiri la nivelul interfaței pentru Vector',
+	'vector-desc' => 'Îmbunătățiri la elementele interfaței a temei Vector.',
 );
 
 /** Tarandíne (Tarandíne)

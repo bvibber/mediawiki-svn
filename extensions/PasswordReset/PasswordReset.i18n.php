@@ -1373,7 +1373,7 @@ $messages['ro'] = array(
 	'passwordreset-success' => 'Parola a fost resetată pentru ID-ul de utilizator: $1',
 	'passwordreset-disableuser' => 'Dezactivare cont de utilizator?',
 	'passwordreset-accountdisabled' => 'Contul a fost dezactivat',
-	'disabledusers' => 'Utilizatori dezactivaţi',
+	'disabledusers' => 'Utilizatori dezactivați',
 );
 
 /** Russian (Русский)

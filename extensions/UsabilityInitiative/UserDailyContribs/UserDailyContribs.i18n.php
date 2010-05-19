@@ -317,7 +317,7 @@ $messages['pt-br'] = array(
  * @author Stelistcristi
  */
 $messages['ro'] = array(
-	'userdailycontribs-desc' => 'Contribuţiile zilnice ale contribuitorilor pentru monitorizarea gradului de click-uri',
+	'userdailycontribs-desc' => 'Contribuțiile zilnice ale contribuitorilor pentru monitorizarea gradului de click-uri',
 );
 
 /** Tarandíne (Tarandíne)

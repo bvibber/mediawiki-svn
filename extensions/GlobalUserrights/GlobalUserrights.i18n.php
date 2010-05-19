@@ -499,10 +499,10 @@ $messages['pt-br'] = array(
  */
 $messages['ro'] = array(
 	'globaluserrights' => 'Administrarea drepturilor utilizatorilor globali',
-	'gur-desc' => 'Uşor de administrat [[Special: GlobalUserRights |drepturile globale pentru utilizator]]',
+	'gur-desc' => 'Ușor de administrat [[Special: GlobalUserRights |drepturile globale pentru utilizator]]',
 	'gur-rightslog-name' => 'Jurnal drepturi globale',
 	'gur-rightslog-header' => 'Acest jurnal cuprinde modificările drepturilor globale.',
-	'gur-rightslog-entry' => 'Schimbă apartenenţa grupului global pentru $1 de la $2 la $3',
+	'gur-rightslog-entry' => 'Schimbă apartenența grupului global pentru $1 de la $2 la $3',
 	'right-userrights-global' => 'Administrează drepturile utilizatorilor globali',
 );
 

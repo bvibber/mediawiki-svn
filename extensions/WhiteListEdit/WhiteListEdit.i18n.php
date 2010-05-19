@@ -2881,7 +2881,7 @@ $messages['ro'] = array(
 	'whitelisttablemodby' => 'Ultima dată modificat de',
 	'whitelisttablemodon' => 'Ultima dată modificat la',
 	'whitelisttableedit' => 'Modifică',
-	'whitelisttableview' => 'Afişează',
+	'whitelisttableview' => 'Afișează',
 	'whitelisttablenewdate' => 'Dată nouă:',
 	'whitelisttablechangedate' => 'Schimbare dată de expirare',
 	'whitelisttablesetedit' => 'Activare modificare',
@@ -2897,11 +2897,11 @@ $messages['ro'] = array(
 
 $2',
 	'whitelistrequestconf' => 'Cererea pentru pagini noi a fost trimisă la $1',
-	'whitelistnonrestricted' => "Utilizatorul '''$1''' nu este un utilizator restricţionat.
-Această pagină este aplicabilă doar utilizatorilor restricţionaţi",
+	'whitelistnonrestricted' => "Utilizatorul '''$1''' nu este un utilizator restricționat.
+Această pagină este aplicabilă doar utilizatorilor restricționați",
 	'whitelistnever' => 'niciodată',
-	'group-restricted' => 'Utilizatori restricţionaţi',
-	'group-restricted-member' => 'Utilizator restricţionat',
+	'group-restricted' => 'Utilizatori restricționați',
+	'group-restricted-member' => 'Utilizator restricționat',
 	'group-manager' => 'Manageri',
 	'group-manager-member' => 'Manager',
 );

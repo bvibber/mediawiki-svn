@@ -562,12 +562,12 @@ Veja {{PLURAL:$2|esta página relacionada|estas páginas relacionadas}}: $1.',
  */
 $messages['ro'] = array(
 	'editsimilar-desc' => 'Încurajează utilizatorii să modifice o pagină similară după salvearea unei pagini',
-	'editsimilar-thanks' => 'Mulţumim pentru contribuţie.
-Vizitează şi {{PLURAL:$2|această pagină conexă|aceste pagini conexe}}: $1.',
-	'editsimilar-thanks-notsimilar' => 'Mulţumim pentru contribuţie.
+	'editsimilar-thanks' => 'Mulțumim pentru contribuție.
+Vizitează și {{PLURAL:$2|această pagină conexă|aceste pagini conexe}}: $1.',
+	'editsimilar-thanks-notsimilar' => 'Mulțumim pentru contribuție.
 Şi {{PLURAL:$2|această pagină|aceste pagini}} ar avea nevoie de ajutor: $1.',
-	'editsimilar-thankyou' => 'Mulţumim pentru contribuţia dumneaovastră, $1!',
-	'editsimilar-link-disable' => 'setare preferinţe',
+	'editsimilar-thankyou' => 'Mulțumim pentru contribuția dumneaovastră, $1!',
+	'editsimilar-link-disable' => 'setare preferințe',
 	'tog-edit-similar' => 'Activează sugestiile paginilor similare',
 );
 

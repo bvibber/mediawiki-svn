@@ -331,7 +331,7 @@ $messages['pt-br'] = array(
  * @author Firilacroco
  */
 $messages['ro'] = array(
-	'uploadblacklist-desc' => 'Adaugă funcţionalitatea unei liste negre de încărcare',
+	'uploadblacklist-desc' => 'Adaugă funcționalitatea unei liste negre de încărcare',
 );
 
 /** Tarandíne (Tarandíne)

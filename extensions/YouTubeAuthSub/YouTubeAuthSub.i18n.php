@@ -2545,7 +2545,7 @@ Por favor seja paciente.',
 $messages['ro'] = array(
 	'youtubeauthsub' => 'Încarcă video YouTube',
 	'youtubeauthsub-desc' => 'Permite utilizatorilor să [[Special:YouTubeAuthSub|încarce videoclipuri]] direct la YouTube',
-	'youtubeauthsub_info' => 'Pentru a încărca un video la YouTube, pentru a-l include într-o pagină, completaţi următoarele informaţii:',
+	'youtubeauthsub_info' => 'Pentru a încărca un video la YouTube, pentru a-l include într-o pagină, completați următoarele informații:',
 	'youtubeauthsub_title' => 'Titlu',
 	'youtubeauthsub_description' => 'Descriere',
 	'youtubeauthsub_password' => 'Parolă YouTube',
@@ -2554,27 +2554,27 @@ $messages['ro'] = array(
 	'youtubeauthsub_category' => 'Categorie',
 	'youtubeauthsub_submit' => 'Aplică',
 	'youtubeauthsub_clickhere' => 'Apasă aici pentru a te autentifica la YouTube',
-	'youtubeauthsub_tokenerror' => 'Eroare la generarea autentificării, apăsaţi butonul refresh.',
+	'youtubeauthsub_tokenerror' => 'Eroare la generarea autentificării, apăsați butonul refresh.',
 	'youtubeauthsub_success' => "Felicitări!
-Fişierul video este încărcat.
-<a href='http://www.youtube.com/watch?v=$1'>Vezi fişierul video</a>.
-Uneori YouTube are nevoie de timp pentru a procesa fişierul tău, astfel că acesta poate să nu fie disponibil imediat.
+Fișierul video este încărcat.
+<a href='http://www.youtube.com/watch?v=$1'>Vezi fișierul video</a>.
+Uneori YouTube are nevoie de timp pentru a procesa fișierul tău, astfel că acesta poate să nu fie disponibil imediat.
 
-Pentru a include fişierul tău într-o pagină wiki, introdu acest cod:
+Pentru a include fișierul tău într-o pagină wiki, introdu acest cod:
 <code>{{&#35;ev:youtube|$1}}</code>",
-	'youtubeauthsub_authsubinstructions' => 'Pentru a încărca un fişier video sunteţi rugaţi să vă logaţi la YouTube.',
-	'youtubeauthsub_uploadhere' => 'Încarcă fişierul video de aici:',
+	'youtubeauthsub_authsubinstructions' => 'Pentru a încărca un fișier video sunteți rugați să vă logați la YouTube.',
+	'youtubeauthsub_uploadhere' => 'Încarcă fișierul video de aici:',
 	'youtubeauthsub_uploadbutton' => 'Încarcă',
 	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
 
 [http://www.youtube.com/watch?v=$1 Vizualizează acest videoclip]',
 	'youtubeauthsub_summary' => 'Încărcare video YouTube',
 	'youtubeauthsub_uploading' => 'Videoclipul dumneavoastră este în curs de încărcare.
-Vă rugăm să aveţi răbdare.',
-	'youtubeauthsub_viewpage' => 'Alternativ, puteţi [[$1|vizualiza fişierul video]].',
-	'youtubeauthsub_jserror_nokeywords' => 'Vă rugăm să introduceţi cel puţin un cuvânt cheie.',
-	'youtubeauthsub_jserror_notitle' => 'Vă rugăm să introduceţi un titlu pentru videoclip.',
-	'youtubeauthsub_jserror_nodesc' => 'Vă rugăm să introduceţi o descriere pentru videoclip.',
+Vă rugăm să aveți răbdare.',
+	'youtubeauthsub_viewpage' => 'Alternativ, puteți [[$1|vizualiza fișierul video]].',
+	'youtubeauthsub_jserror_nokeywords' => 'Vă rugăm să introduceți cel puțin un cuvânt cheie.',
+	'youtubeauthsub_jserror_notitle' => 'Vă rugăm să introduceți un titlu pentru videoclip.',
+	'youtubeauthsub_jserror_nodesc' => 'Vă rugăm să introduceți o descriere pentru videoclip.',
 );
 
 /** Tarandíne (Tarandíne)

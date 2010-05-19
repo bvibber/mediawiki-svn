@@ -1867,9 +1867,9 @@ $messages['pt-br'] = array(
  * @author Firilacroco
  */
 $messages['ro'] = array(
-	'qp_vote_button' => 'Votaţi',
-	'qp_polls_list' => 'Arătaţi toate sondajele',
-	'qp_users_list' => 'Arătaţi toţi utilizatorii',
+	'qp_vote_button' => 'Votați',
+	'qp_polls_list' => 'Arătați toate sondajele',
+	'qp_users_list' => 'Arătați toți utilizatorii',
 	'qp_source_link' => 'Sursa',
 	'qp_stats_link' => 'Statistici',
 	'qp_users_link' => 'Utilizatori',

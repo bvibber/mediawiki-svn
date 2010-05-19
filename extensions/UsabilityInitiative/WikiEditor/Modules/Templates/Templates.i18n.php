@@ -99,6 +99,13 @@ $messages['gsw'] = array(
 	'wikieditor-templates-preference' => 'Aktivierig vum Yy- un Uusblände vu Vorlage',
 );
 
+/** Hebrew (עברית)
+ * @author Amire80
+ */
+$messages['he'] = array(
+	'wikieditor-templates-preference' => 'הפעלת קיפול תבניות',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

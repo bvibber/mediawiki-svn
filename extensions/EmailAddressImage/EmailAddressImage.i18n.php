@@ -384,7 +384,7 @@ $messages['rm'] = array(
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
-	'emailaddressimage-desc' => 'Adaugă <code>&lt;email&gt;</code> pentru a afişa o adresă de e-mail ca imagine',
+	'emailaddressimage-desc' => 'Adaugă <code>&lt;email&gt;</code> pentru a afișa o adresă de e-mail ca imagine',
 );
 
 /** Tarandíne (Tarandíne)

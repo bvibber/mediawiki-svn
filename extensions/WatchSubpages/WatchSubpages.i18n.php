@@ -458,6 +458,7 @@ Quando si selezionano o deselezionano più pagine, tenendo premuto il tasto shif
 );
 
 /** Japanese (日本語)
+ * @author Aotake
  * @author Fryed-peach
  * @author Hosiryuhosi
  */
@@ -467,7 +468,7 @@ $messages['ja'] = array(
 	'watchsubpages-addtitles' => 'ページの追加',
 	'watchsubpages-addtitlestowatchlist' => 'ページ群をウォッチリストに追加',
 	'watchsubpages-desc' => 'ウォッチリストに素早く、あるページの[[Special:WatchSubpages|すべてのサブページを追加する]]',
-	'watchsubpages-form' => 'あなたのウォッチリストに加えたいページを以下で選んでください。ページを追加するには、隣のボックスにチェックをいれて、「ページの追加」をクリックしてください。
+	'watchsubpages-form' => 'ウォッチリストに加えたいページを以下で選んでください。ページを追加するには、隣のボックスにチェックをいれて、「{{int:watchsubpages-addtitles}}」をクリックしてください。
 
 複数のページをチェックあるいはチェック解除する場合は、シフトキーを押しながら、選択する範囲の始点と終点のチェックボックスをクリックすることで、その範囲の連続するすべてのボックスを選択できます。',
 );
@@ -731,7 +732,7 @@ Ao marcar ou desmarcar múltiplas páginas, pressionando a tecla "Shift" você p
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
-	'watchsubpages' => 'Urmăreşte subpaginile',
+	'watchsubpages' => 'Urmărește subpaginile',
 	'watchsubpages-addtitles' => 'Adaugă pagini',
 	'watchsubpages-addtitlestowatchlist' => 'Adaugă paginile la lista de urmărire',
 );

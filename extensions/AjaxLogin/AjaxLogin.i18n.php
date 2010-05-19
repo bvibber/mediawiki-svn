@@ -753,11 +753,11 @@ Cheque se você soletrou corretamente.',
  * @author Pixi
  */
 $messages['ro'] = array(
-	'ajaxlogin-desc' => 'Casetă dinamică care permite utilizatorilor să se autentifice şi să-şi reamintească parola',
+	'ajaxlogin-desc' => 'Casetă dinamică care permite utilizatorilor să se autentifice și să-și reamintească parola',
 	'ajaxLogin1' => 'Pentru a te autentifica, trebuie să introduci o parolă nouă.
-Aceasta înseamnă că vei părăsi pagina de editare şi vei pierde editările efectuate până acum.',
-	'ajaxLogin2' => 'Eşti sigur?
-Vei pierde editările efectuate dacă părăseşti această pagină acum.',
+Aceasta înseamnă că vei părăsi pagina de editare și vei pierde editările efectuate până acum.',
+	'ajaxLogin2' => 'Ești sigur?
+Vei pierde editările efectuate dacă părăsești această pagină acum.',
 	'ajaxlogin-create' => 'Creează un cont',
 );
 

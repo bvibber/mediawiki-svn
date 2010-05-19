@@ -1155,14 +1155,14 @@ $messages['pt-br'] = array(
  * @author Stelistcristi
  */
 $messages['ro'] = array(
-	'scanset_no_name' => 'Eroare: Trebuie să specificaţi numele de serie, de exemplu &lt;scanset name="EB1911" /&gt;.',
-	'scanset_invalid_name' => 'Eroare: Nume de serie invalid sau lipseşte.',
+	'scanset_no_name' => 'Eroare: Trebuie să specificați numele de serie, de exemplu &lt;scanset name="EB1911" /&gt;.',
+	'scanset_invalid_name' => 'Eroare: Nume de serie invalid sau lipsește.',
 	'scanset_unrecognised_index_format' => 'Eroare: Format de index necunoscut',
 	'scanset_opendir_error' => 'Eroare: Nu se poate deschide directorul $1',
-	'scanset_no_files' => 'Eroare: Niciun fişier prezent în directorul specificat.',
+	'scanset_no_files' => 'Eroare: Niciun fișier prezent în directorul specificat.',
 	'scanset_no_volumes' => 'Eroare: Niciun director de volum găsit',
-	'scanset_missing_index_file' => 'Eroare: Fişierul de index $1 negăsit',
-	'scanset_index_file_error' => 'Eroare: Eroare în formatul fişierului de index la linia $1',
+	'scanset_missing_index_file' => 'Eroare: Fișierul de index $1 negăsit',
+	'scanset_index_file_error' => 'Eroare: Eroare în formatul fișierului de index la linia $1',
 	'scanset_invalid_volume' => 'Eroare: Volum invalid',
 	'scanset_next' => 'Următor &gt;',
 	'scanset_prev' => '&lt; Anterior',

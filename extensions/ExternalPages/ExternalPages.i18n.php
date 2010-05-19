@@ -455,7 +455,7 @@ $messages['pt-br'] = array(
  */
 $messages['ro'] = array(
 	'externalpages' => 'Pagini externe',
-	'externalpages-bad-page' => 'Pagină greşită specificată',
+	'externalpages-bad-page' => 'Pagină greșită specificată',
 	'externalpages-no-page' => 'Nicio pagină specificată',
 );
 

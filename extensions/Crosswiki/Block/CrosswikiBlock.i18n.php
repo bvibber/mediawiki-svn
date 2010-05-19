@@ -2235,7 +2235,7 @@ $messages['ro'] = array(
 	'crosswikiblock-noemail' => 'Nu permite utilizatorului să trimită e-mail',
 	'crosswikiunblock' => 'Deblochează utilizator pe alt wiki',
 	'crosswikiunblock-header' => 'Această pagină permite deblocarea utilizatorilor de pe alte wiki.
-Vă rugăm să verificaţi dacă vi se permite să acţionaţi pe acest wiki şi că respectaţi toate politicile.',
+Vă rugăm să verificați dacă vi se permite să acționați pe acest wiki și că respectați toate politicile.',
 	'crosswikiunblock-reason' => 'Motiv:',
 	'crosswikiunblock-submit' => 'Deblochează acest utilizator',
 	'crosswikiblock-nousername' => 'Nu a fost introdus nici un nume de utilizator',

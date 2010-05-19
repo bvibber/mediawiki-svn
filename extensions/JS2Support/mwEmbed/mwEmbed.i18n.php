@@ -274,6 +274,10 @@ $messages['it'] = array(
 	'mwe-cancel' => 'Annulla',
 );
 
+/** Japanese (日本語)
+ * @author Fryed-peach
+ * @author 青子守歌
+ */
 $messages['ja'] = array(
 	'mwe-loading_txt' => '読み込み中 …',
 	'mwe-error_load_lib' => 'エラー：JavaScript $1 は参照不能か、$2 を定義していません。',
@@ -281,6 +285,7 @@ $messages['ja'] = array(
 	'mwe-load-drag-item' => 'ドラッグされた項目を読み込み中',
 	'mwe-ok' => 'OK',
 	'mwe-cancel' => '中止',
+	'mwe-test-plural' => '{{PLURAL:$1|$1のテスト}}を実行する',
 );
 
 $messages['ko'] = array(

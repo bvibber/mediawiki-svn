@@ -1277,8 +1277,8 @@ $messages['ro'] = array(
 	'tasklistincorrectuser' => 'Nume de utilizator incorect',
 	'tasklistemail' => 'Dragă %s',
 	'tasklistmytasks' => 'Sarcinile mele',
-	'tasklistchooseproj' => 'Alegeţi proiectul:',
-	'tasklistprojdisp' => 'Afişare',
+	'tasklistchooseproj' => 'Alegeți proiectul:',
+	'tasklistprojdisp' => 'Afișare',
 );
 
 /** Tarandíne (Tarandíne)

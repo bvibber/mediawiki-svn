@@ -482,6 +482,13 @@ $messages['sk'] = array(
 	'catboxattop-categories' => 'Kategórie',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'catboxattop-categories' => 'Kategorije',
+);
+
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */

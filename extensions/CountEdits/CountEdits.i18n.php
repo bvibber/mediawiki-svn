@@ -1178,8 +1178,8 @@ $messages['pt-br'] = array(
  */
 $messages['ro'] = array(
 	'countedits' => 'Număr de modificări',
-	'countedits-desc' => '[[Special:CountEdits|Pagină specială]] care numără modificările utilizatorilor şi oferă o listă a primilor zece contribuitori.',
-	'countedits-warning' => "'''Atenţie:''' Nu judeca o carte după copertă. Nu judeca un contribuitor după numărul de modificări.",
+	'countedits-desc' => '[[Special:CountEdits|Pagină specială]] care numără modificările utilizatorilor și oferă o listă a primilor zece contribuitori.',
+	'countedits-warning' => "'''Atenție:''' Nu judeca o carte după copertă. Nu judeca un contribuitor după numărul de modificări.",
 	'countedits-username' => 'Nume de utilizator:',
 	'countedits-ok' => 'OK',
 	'countedits-nosuchuser' => 'Nu există nici un utilizator cu numele $1.',

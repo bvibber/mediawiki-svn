@@ -81,6 +81,13 @@ $messages['ia'] = array(
 	'cassandra-desc' => 'Immagazina le texto del versiones in un base de datos [http://cassandra.apache.org/ Apache Cassandra]',
 );
 
+/** Japanese (日本語)
+ * @author 青子守歌
+ */
+$messages['ja'] = array(
+	'cassandra-desc' => '[http://cassandra.apache.org/ Apache Cassandra]データベースの版テキストを格納する',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

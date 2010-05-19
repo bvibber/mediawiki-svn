@@ -728,7 +728,7 @@ $messages['pt-br'] = array(
 $messages['ro'] = array(
 	'layouts_title' => 'Creează o pagină',
 	'layouts_continue' => 'Continuă',
-	'layouts_choosecategory' => 'Alegeţi o categorie pentru $1:',
+	'layouts_choosecategory' => 'Alegeți o categorie pentru $1:',
 	'layouts_unknown' => 'Necunoscut',
 );
 

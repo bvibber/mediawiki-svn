@@ -1651,7 +1651,7 @@ $messages['ro'] = array(
 	'todo-list-cancel' => 'Anulează',
 	'todo-new-item' => 'Element nou',
 	'todo-form-details' => 'Detalii:',
-	'todo-form-submit' => 'Trimiteţi interogare',
+	'todo-form-submit' => 'Trimiteți interogare',
 );
 
 /** Tarandíne (Tarandíne)

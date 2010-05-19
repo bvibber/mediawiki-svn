@@ -1227,6 +1227,7 @@ $messages['fo'] = array(
  * @author IAlex
  * @author Meithal
  * @author PieRRoMaN
+ * @author Quentinv57
  * @author Sherbrooke
  * @author Urhixidur
  * @author Verdy p
@@ -1236,7 +1237,7 @@ $messages['fr'] = array(
 	'hiderevision-desc' => 'Masque les modifications individuelles de tous les utilisateurs pour des motifs légaux, etc.',
 	'group-oversight' => 'Masqueurs de modifications',
 	'group-oversight-member' => 'masqueur de modifications',
-	'grouppage-oversight' => '{{ns:project}}:Masqueur de modifications',
+	'grouppage-oversight' => '{{ns:project}}:Masqueurs de modifications',
 	'right-oversight' => "Voir les versions précédemment cachées avec l'extension « Oversight »",
 	'right-hiderevision' => "Masquer des révisions aux administrateurs avec l'extension « Oversight »",
 	'hiderevision-prompt' => 'Numéro d’édition à supprimer :',
@@ -3199,31 +3200,31 @@ $messages['rmy'] = array(
  */
 $messages['ro'] = array(
 	'hiderevision' => 'Ascuns permanent reviziile',
-	'hiderevision-desc' => 'Ascunde reviziile individuale pentru toţi utilizatorii pentru motive legale, etc.',
+	'hiderevision-desc' => 'Ascunde reviziile individuale pentru toți utilizatorii pentru motive legale, etc.',
 	'group-oversight' => 'Supraveghetori',
 	'group-oversight-member' => 'supraveghetori',
 	'grouppage-oversight' => '{{ns:project}}:Supraveghetori',
-	'right-oversight' => 'Vedeţi o revizie ascunsă mai înainte',
+	'right-oversight' => 'Vedeți o revizie ascunsă mai înainte',
 	'right-hiderevision' => 'Ascunde reviziile de la administratori',
 	'hiderevision-prompt' => 'Numărul reviziei pentru a elimina:',
 	'hiderevision-continue' => 'Cuntinuă',
 	'hiderevision-reason' => 'Motiv (va fi înregistrat separat):',
 	'hiderevision-submit' => 'Ascunde permanent această revizie',
 	'hiderevision-tab' => 'Ascunde revizia',
-	'hiderevision-link' => 'Contribuţii ascunse ale utilizatorului',
-	'hiderevision-norevisions' => 'Nicio revizie specificată pentru ştergere.',
-	'hiderevision-noreason' => 'Trebuie să descrii motivul ştergerii.',
+	'hiderevision-link' => 'Contribuții ascunse ale utilizatorului',
+	'hiderevision-norevisions' => 'Nicio revizie specificată pentru ștergere.',
+	'hiderevision-noreason' => 'Trebuie să descrii motivul ștergerii.',
 	'hiderevision-status' => 'Revizia $1: $2',
-	'hiderevision-success' => 'Arhivat şi şters cu succes.',
+	'hiderevision-success' => 'Arhivat și șters cu succes.',
 	'hiderevision-error-missing' => 'Nu a fost găsit în baza de date.',
-	'hiderevision-error-current' => 'Nu poate fi ştearsă ultima modificare adusă unei pagini.
-Anuleaz-o pe aceasta şi revino la cea precedentă mai întâi.',
-	'hiderevision-error-delete' => 'Nu a putut fi arhivat; a fost deja şters?',
+	'hiderevision-error-current' => 'Nu poate fi ștearsă ultima modificare adusă unei pagini.
+Anuleaz-o pe aceasta și revino la cea precedentă mai întâi.',
+	'hiderevision-error-delete' => 'Nu a putut fi arhivat; a fost deja șters?',
 	'hiderevision-archive-status' => 'Ştergerea reviziei din $1: $2',
 	'oversight-log-hiderev' => 'a eliminat o modificare de la $1',
 	'oversight' => 'Supraveghere',
 	'oversight-view' => 'detalii',
-	'oversight-difference' => '(Diferenţă de la revizia rămasă anterior)',
+	'oversight-difference' => '(Diferență de la revizia rămasă anterior)',
 	'oversight-prev' => 'Ultima modificare trecută',
 	'oversight-hidden' => 'Revizii ascunse',
 	'oversight-legend' => 'Caută jurnalul ascuns al reviziei',
@@ -4380,7 +4381,7 @@ $messages['zh-hant'] = array(
 	'group-oversight' => '監督者',
 	'group-oversight-member' => '監督',
 	'grouppage-oversight' => '{{ns:project}}:監督',
-	'right-oversight' => '查看一個之前使用[[mw:Extension:Oversight|擴展]]隱藏過之修訂',
+	'right-oversight' => '查看一個之前使用Oversight隱藏過之修訂',
 	'right-hiderevision' => '使用Oversight擴展隱藏管理員做出的修改',
 	'hiderevision-prompt' => '要隱藏的修訂版本號碼:',
 	'hiderevision-continue' => '繼續',

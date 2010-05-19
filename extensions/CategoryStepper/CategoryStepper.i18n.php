@@ -512,7 +512,7 @@ $messages['pt-br'] = array(
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
-	'categorystepper-end' => '(Sfârşitul categoriei)',
+	'categorystepper-end' => '(Sfârșitul categoriei)',
 	'categorystepper-start' => '(Începutul categoriei)',
 );
 

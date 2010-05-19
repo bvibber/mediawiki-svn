@@ -1030,7 +1030,10 @@ $messages['km'] = array(
  * @author Nayvik
  */
 $messages['kn'] = array(
+	'closewikis-page-close-wiki' => 'ವಿಕಿ:',
+	'closewikis-page-reopen-wiki' => 'ವಿಕಿ:',
 	'closewikis-page-reopen-reason' => 'ಕಾರಣ:',
+	'closewikis-list-header-wiki' => 'ವಿಕಿ',
 );
 
 /** Korean (한국어)
@@ -1500,7 +1503,7 @@ $messages['pt-br'] = array(
  */
 $messages['ro'] = array(
 	'closewikis-page-close-wiki' => 'Wiki:',
-	'closewikis-page-close-dreason' => 'Motiv (afişat):',
+	'closewikis-page-close-dreason' => 'Motiv (afișat):',
 	'closewikis-page-close-submit' => 'Închide',
 	'closewikis-page-close-success' => 'Wiki închis cu succes',
 	'closewikis-page-reopen' => 'Redeschide wiki',
@@ -1514,7 +1517,7 @@ $messages['ro'] = array(
 	'closewikis-list-header-wiki' => 'Wiki',
 	'closewikis-list-header-by' => 'Închis de',
 	'closewikis-list-header-timestamp' => 'Închis la',
-	'closewikis-list-header-dispreason' => 'Motiv afişat',
+	'closewikis-list-header-dispreason' => 'Motiv afișat',
 	'closewikis-log' => 'Jurnal închidere wiki',
 	'closewikis-log-close' => 'închis $2',
 	'closewikis-log-reopen' => 'redeschis $2',

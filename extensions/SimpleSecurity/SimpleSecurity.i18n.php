@@ -881,7 +881,7 @@ $messages['ro'] = array(
 	'security' => 'Jurnal securitate',
 	'security-logpage' => 'Jurnal securitate',
 	'security-type-category' => 'categorie',
-	'security-type-namespace' => 'spaţiu de nume',
+	'security-type-namespace' => 'spațiu de nume',
 );
 
 /** Russian (Русский)

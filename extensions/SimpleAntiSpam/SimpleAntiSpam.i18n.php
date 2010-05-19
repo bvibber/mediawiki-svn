@@ -608,9 +608,9 @@ $messages['pt-br'] = array(
  * @author Stelistcristi
  */
 $messages['ro'] = array(
-	'simpleantispam' => 'Editarea dvs a declanşat mecanismul antispam',
+	'simpleantispam' => 'Editarea dvs a declanșat mecanismul antispam',
 	'simpleantispam-label' => "Verificare antispam.
-'''NU''' completaţi !",
+'''NU''' completați !",
 );
 
 /** Tarandíne (Tarandíne)

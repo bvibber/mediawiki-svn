@@ -560,8 +560,8 @@ $messages['pt-br'] = array(
  * @author Stelistcristi
  */
 $messages['ro'] = array(
-	'usabilityinitiative' => 'Iniţiativa de utilizabilitate',
-	'usabilityinitiative-desc' => 'Funcţionalităţi dezvoltate de Wikipedia Usability Initiative pentru a spori gradul de folosire a MediaWiki',
+	'usabilityinitiative' => 'Inițiativa de utilizabilitate',
+	'usabilityinitiative-desc' => 'Funcționalități dezvoltate de Wikipedia Usability Initiative pentru a spori gradul de folosire a MediaWiki',
 );
 
 /** Tarandíne (Tarandíne)

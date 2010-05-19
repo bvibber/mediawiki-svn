@@ -264,7 +264,7 @@ $messages['pt-br'] = array(
  * @author Firilacroco
  */
 $messages['ro'] = array(
-	'filepagemasking-desc' => 'Rescrie ".xxx" în "_xxx" în legăturile către pagina de descriere a fişierului',
+	'filepagemasking-desc' => 'Rescrie ".xxx" în "_xxx" în legăturile către pagina de descriere a fișierului',
 );
 
 /** Tarandíne (Tarandíne)

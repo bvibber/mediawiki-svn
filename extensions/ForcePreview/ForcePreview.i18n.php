@@ -482,8 +482,8 @@ $messages['pt-br'] = array(
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
-	'forcepreview' => 'Salvează pagina (foloseşte previzualizare întâi)',
-	'forcepreview-desc' => 'Forţează previzualizare pentru utilizatori neprivilegiaţi',
+	'forcepreview' => 'Salvează pagina (folosește previzualizare întâi)',
+	'forcepreview-desc' => 'Forțează previzualizare pentru utilizatori neprivilegiați',
 );
 
 /** Tarandíne (Tarandíne)

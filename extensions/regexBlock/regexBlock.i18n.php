@@ -2567,8 +2567,8 @@ $messages['ro'] = array(
 	'regexblock-form-submit-regex' => 'Expresie regulată incorectă.',
 	'regexblock-unblock-success' => 'Deblocare cu succes',
 	'regexblock-unblock-log' => "Utilizatorul sau adresa IP '''$1''' a fost deblocat.",
-	'regexblock-view-all' => 'Toţi',
-	'regexblock-view-go' => 'Mergeţi',
+	'regexblock-view-all' => 'Toți',
+	'regexblock-view-go' => 'Mergeți',
 	'regexblock-view-account' => '(blocare creare conturi)',
 	'regexblock-view-reason' => 'motiv: $1',
 	'regexblock-view-reason-default' => 'motiv generic',
@@ -2576,7 +2576,7 @@ $messages['ro'] = array(
 	'regexblock-view-block-by' => 'blocat de către:',
 	'regexblock-view-block-unblock' => 'deblocare',
 	'regexblock-view-stats' => 'statistici',
-	'regexblock-view-empty' => 'Lista de nume şi adrese blocate este goală.',
+	'regexblock-view-empty' => 'Lista de nume și adrese blocate este goală.',
 );
 
 /** Tarandíne (Tarandíne)

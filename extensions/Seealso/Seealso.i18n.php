@@ -540,7 +540,7 @@ $messages['pt-br'] = array(
  * @author Firilacroco
  */
 $messages['ro'] = array(
-	'seealso' => 'Vedeţi, de asemenea,',
+	'seealso' => 'Vedeți, de asemenea,',
 );
 
 /** Tarandíne (Tarandíne)

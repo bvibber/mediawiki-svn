@@ -1404,19 +1404,19 @@ $messages['pt-br'] = array(
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
-	'wah-short-audio' => 'Fişier audio $1, $2',
-	'wah-short-video' => 'Fişier video $1, $2',
-	'wah-short-general' => 'Fişier media $1, $2',
-	'wah-long-audio' => '(fişier sunet $1, lungime $2, $3)',
-	'wah-long-video' => '(fişier video $1, lungime $2, $4×$5 pixeli, $3)',
-	'wah-long-general' => '(fişier media, lungime $2, $3)',
-	'wah-transcode-working' => 'Acest video este procesat, încercaţi mai târziu',
+	'wah-short-audio' => 'Fișier audio $1, $2',
+	'wah-short-video' => 'Fișier video $1, $2',
+	'wah-short-general' => 'Fișier media $1, $2',
+	'wah-long-audio' => '(fișier sunet $1, lungime $2, $3)',
+	'wah-long-video' => '(fișier video $1, lungime $2, $4×$5 pixeli, $3)',
+	'wah-long-general' => '(fișier media, lungime $2, $3)',
+	'wah-transcode-working' => 'Acest video este procesat, încercați mai târziu',
 	'wah-menu-jobs' => 'Job-uri',
 	'wah-menu-stats' => 'Statistici',
-	'wah-menu-pref' => 'Preferinţe',
-	'wah-notoken-login' => 'Sunteţi autentificat? Dacă nu, vă rugăm să vă autentificaţi înainte.',
-	'wah-downloading' => 'Descărcarea fişierului <i>$1%</i> terminată',
-	'wah-uploadfail' => 'Încărcarea eşuată',
+	'wah-menu-pref' => 'Preferințe',
+	'wah-notoken-login' => 'Sunteți autentificat? Dacă nu, vă rugăm să vă autentificați înainte.',
+	'wah-downloading' => 'Descărcarea fișierului <i>$1%</i> terminată',
+	'wah-uploadfail' => 'Încărcarea eșuată',
 );
 
 /** Russian (Русский)

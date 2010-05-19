@@ -323,7 +323,7 @@ $messages['pt-br'] = array(
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
-	'formatsearch-desc' => 'Curăţă pagina cu rezultatele căutării',
+	'formatsearch-desc' => 'Curăță pagina cu rezultatele căutării',
 );
 
 /** Tarandíne (Tarandíne)

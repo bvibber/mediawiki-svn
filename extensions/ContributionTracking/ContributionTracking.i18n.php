@@ -796,7 +796,7 @@ $messages['pt-br'] = array(
  */
 $messages['ro'] = array(
 	'contrib-tracking-error' => 'Eroare',
-	'contrib-tracking-button' => 'Continuaţi',
+	'contrib-tracking-button' => 'Continuați',
 );
 
 /** Tarandíne (Tarandíne)

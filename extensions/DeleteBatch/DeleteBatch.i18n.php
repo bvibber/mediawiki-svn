@@ -1174,8 +1174,8 @@ $messages['ro'] = array(
 	'deletebatch-caption' => 'Lista de pagini:',
 	'deletebatch-or' => '<b>sau</b>',
 	'deletebatch-delete' => 'Ştergere',
-	'deletebatch-page' => 'Pagini de şters:',
-	'deletebatch-file-missing' => 'Nu se poate citi fişierul dat',
+	'deletebatch-page' => 'Pagini de șters:',
+	'deletebatch-file-missing' => 'Nu se poate citi fișierul dat',
 );
 
 /** Tarandíne (Tarandíne)

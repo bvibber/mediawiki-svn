@@ -843,10 +843,13 @@ $messages['sk'] = array(
 );
 
 /** Slovenian (Slovenščina)
+ * @author Dbc334
  * @author Smihael
  */
 $messages['sl'] = array(
 	'languageselector' => 'Jezik',
+	'languageselector-desc' => 'Izbirnik jezika na vsaki strani, tudi za obiskovalce',
+	'languageselector-setlang' => 'določi',
 );
 
 /** Lower Silesian (Schläsch)

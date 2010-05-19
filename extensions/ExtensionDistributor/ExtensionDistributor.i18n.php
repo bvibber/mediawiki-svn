@@ -2366,13 +2366,13 @@ $messages['ro'] = array(
 	'extdist-no-such-version' => 'Extensia "$1" nu există în versiunea "$2".',
 	'extdist-submit-extension' => 'Continuă',
 	'extdist-current-version' => 'Versiune dezvoltare (trunchi)',
-	'extdist-choose-version' => '<big>Descărcaţi extensia <b>$1</b>.</big>
+	'extdist-choose-version' => '<big>Descărcați extensia <b>$1</b>.</big>
 
-Alegeţi versiunea dvs MediaWiki.
+Alegeți versiunea dvs MediaWiki.
 
-Cele mai multe extensii funcţionează în mai multe versiuni de MediaWiki, deci dacă versiunea dvs MediaWiki nu este aici sau dacă aveţi nevoie de cele mai recente funcţionalităţi pentru extensii, încercaţi să folosiţi versiunea curentă.',
+Cele mai multe extensii funcționează în mai multe versiuni de MediaWiki, deci dacă versiunea dvs MediaWiki nu este aici sau dacă aveți nevoie de cele mai recente funcționalități pentru extensii, încercați să folosiți versiunea curentă.',
 	'extdist-submit-version' => 'Continuă',
-	'extdist-want-more' => 'Obţine altă extensie',
+	'extdist-want-more' => 'Obține altă extensie',
 );
 
 /** Tarandíne (Tarandíne)

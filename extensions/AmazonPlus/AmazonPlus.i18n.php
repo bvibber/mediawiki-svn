@@ -1146,7 +1146,7 @@ $messages['ro'] = array(
 	'amazonplus-german' => 'germană',
 	'amazonplus-french' => 'franceză',
 	'amazonplus-japanese' => 'japoneză',
-	'amazonplus-amazon' => 'preţul amazon',
+	'amazonplus-amazon' => 'prețul amazon',
 	'amazonplus-new' => 'nou',
 	'amazonplus-cp-none' => 'Nimic',
 );

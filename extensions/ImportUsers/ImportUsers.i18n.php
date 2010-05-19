@@ -1544,8 +1544,8 @@ $messages['rif'] = array(
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
-	'importusers' => 'Importaţi utilizatori',
-	'importusers-uploadfile' => 'Încarcă fişier',
+	'importusers' => 'Importați utilizatori',
+	'importusers-uploadfile' => 'Încarcă fișier',
 	'importusers-form-button' => 'Importă',
 	'importusers-log-summary' => 'Rezumat',
 	'importusers-log-summary-all' => 'Total',

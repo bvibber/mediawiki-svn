@@ -50,6 +50,13 @@ $messages['pt-br'] = array(
 	'addmediawizard-desc' => 'Assistente para o carregamento de multimídias, desenvolvido em parceria pela Kagura e a Wikimedia Foundation',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'addmediawizard-desc' => 'Doda predstavnostni čarovnik, ki je nastal v sodelovanju Kalture in fundacije Wikimedia',
+);
+
 /** Swedish (Svenska)
  * @author Dafer45
  */

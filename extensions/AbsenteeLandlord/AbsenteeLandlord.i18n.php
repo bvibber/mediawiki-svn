@@ -552,7 +552,7 @@ $messages['rif'] = array(
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
-	'absenteelandlord-reason' => 'Baza de date a fost blocată automat din cauza inactivităţii administratorilor.',
+	'absenteelandlord-reason' => 'Baza de date a fost blocată automat din cauza inactivității administratorilor.',
 	'absenteelandlord-desc' => 'Blochează automat baza de date wiki dacă administratorii sunt inactivi o perioadă de timp',
 );
 

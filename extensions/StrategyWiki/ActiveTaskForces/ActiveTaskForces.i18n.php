@@ -112,9 +112,11 @@ $messages['ia'] = array(
 
 /** Japanese (日本語)
  * @author Aotake
+ * @author 青子守歌
  */
 $messages['ja'] = array(
 	'activetaskforces' => '活動中の特別チーム',
+	'active-task-forces-desc' => 'タスクフォースのページ数を表示',
 	'active-task-forces-intro' => '最近$1日間に特別チームのページに加えられた編集回数',
 );
 
@@ -215,5 +217,14 @@ $messages['sv'] = array(
 	'activetaskforces' => 'Aktiva arbetsgrupper',
 	'active-task-forces-desc' => 'Visar antal redigeringar på arbetsgruppsidor',
 	'active-task-forces-intro' => 'Antal redigeringar av arbetsgruppsidor under senaste ((PLURALIS: $1 | $1 dagen | $1 dagarna)).',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Horacewai2
+ */
+$messages['zh-hant'] = array(
+	'activetaskforces' => '積極工作隊',
+	'active-task-forces-desc' => '以數字顯示工作隊的編輯頁面',
+	'active-task-forces-intro' => '此頁面編輯數 (在過去{{PLURAL:$1|$1日|$1日}})',
 );
 

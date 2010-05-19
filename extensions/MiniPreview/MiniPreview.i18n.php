@@ -721,9 +721,9 @@ Por exemplo, "* PD-" não mostrará todas as categorias que começam com "PD-", 
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
-	'minipreview-files_in_category' => "Această categorie conţine '''$1''' {{PLURAL:$1|fişier|fişiere}}.",
-	'minipreview-files_in_gallery' => "Această galerie conţine '''$1''' {{PLURAL:$1|fişier|fişiere}}.",
-	'minipreview-no_more_files_here' => 'Nici un alt fişier în această direcţie.',
+	'minipreview-files_in_category' => "Această categorie conține '''$1''' {{PLURAL:$1|fișier|fișiere}}.",
+	'minipreview-files_in_gallery' => "Această galerie conține '''$1''' {{PLURAL:$1|fișier|fișiere}}.",
+	'minipreview-no_more_files_here' => 'Nici un alt fișier în această direcție.',
 	'minipreview-no_category_gallery' => 'Nici o categorie sau categorie!',
 );
 

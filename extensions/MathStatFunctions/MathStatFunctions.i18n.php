@@ -540,10 +540,10 @@ $messages['pt-br'] = array(
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
-	'msfunc_desc' => 'O colecţie de funcţii matematice şi statistice',
+	'msfunc_desc' => 'O colecție de funcții matematice și statistice',
 	'msfunc_nan' => 'Valoarea rezultată nu este număr',
 	'msfunc_inf' => 'Valoarea rezultată este infinit',
-	'msfunc_div_zero' => 'Împărţire la zero',
+	'msfunc_div_zero' => 'Împărțire la zero',
 );
 
 /** Tarandíne (Tarandíne)

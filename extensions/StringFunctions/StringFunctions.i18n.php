@@ -331,7 +331,7 @@ $messages['pt-br'] = array(
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
-	'stringfunctions-desc' => 'Îmbunătăţeşte parserul cu funcţii pe şiruri',
+	'stringfunctions-desc' => 'Îmbunătățește parserul cu funcții pe șiruri',
 );
 
 /** Tarandíne (Tarandíne)

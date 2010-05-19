@@ -78,6 +78,7 @@ $messages['be-tarask'] = array(
  */
 $messages['bg'] = array(
 	'wikieditor' => 'Подобрен интерфейс за редактиране на уикитекст',
+	'wikieditor-desc' => 'Предлага разширяем интерфейс за редактиране на уикитекст и множество модули с допълнителни функционалности',
 	'wikieditor-wikitext-tab' => 'Уикитекст',
 	'wikieditor-loading' => 'Зареждане',
 );
@@ -518,8 +519,8 @@ $messages['pt-br'] = array(
  * @author Firilacroco
  */
 $messages['ro'] = array(
-	'wikieditor' => 'Interfaţă de modificare wikitext avansată',
-	'wikieditor-desc' => 'Afişează o interfaţă de modificare wikitext ce se poate extinde cu multe funcţionalităţi',
+	'wikieditor' => 'Interfață de modificare wikitext avansată',
+	'wikieditor-desc' => 'Afișează o interfață de modificare wikitext ce se poate extinde cu multe funcționalități',
 	'wikieditor-wikitext-tab' => 'Wikitext',
 );
 

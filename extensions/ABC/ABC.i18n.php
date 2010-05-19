@@ -762,6 +762,14 @@ $messages['sk'] = array(
 	'abcdownload' => 'Stiahnuť:',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'abc-desc' => 'Doda etiketo <code>&lt;abc&gt;</code> za označevanje glasbe ABC',
+	'abcdownload' => 'Prenos:',
+);
+
 /** Albanian (Shqip)
  * @author Puntori
  */

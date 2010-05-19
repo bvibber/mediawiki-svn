@@ -882,7 +882,7 @@ $messages['pt-br'] = array(
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
-	'fundraiserportal-plain-button' => 'Sprijiniţi Wikipedia!',
+	'fundraiserportal-plain-button' => 'Sprijiniți Wikipedia!',
 	'fundraiserportal-ruby-button' => 'Donează acum',
 	'fundraiserportal-rubytext-button' => 'Donează acum',
 	'fundraiserportal-sapphire-button' => 'Donează acum',

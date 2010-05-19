@@ -230,6 +230,11 @@ $messages['gsw'] = array(
  * @author Amire80
  */
 $messages['he'] = array(
+	'prefswitch-link-anon' => 'תכונות חדשות',
+	'tooltip-pt-prefswitch-link-anon' => 'מידע נוסף על התכונות החדשות',
+	'prefswitch-link-on' => 'תחזירו אותי',
+	'tooltip-pt-prefswitch-link-on' => 'ביטול התכונות החדשות',
+	'prefswitch-link-off' => 'תכונות חדשות',
 	'tooltip-pt-prefswitch-link-off' => 'לנסות תכונות חדשות',
 );
 

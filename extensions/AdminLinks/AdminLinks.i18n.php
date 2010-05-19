@@ -1089,7 +1089,7 @@ $messages['pt-br'] = array(
 $messages['ro'] = array(
 	'adminlinks_users' => 'Utilizatori',
 	'adminlinks_createuser' => 'Creează un utilizator',
-	'adminlinks_importexport' => 'Importare şi exportare',
+	'adminlinks_importexport' => 'Importare și exportare',
 );
 
 /** Tarandíne (Tarandíne)

@@ -1837,23 +1837,23 @@ $messages['qu'] = array(
  * @author Strainu
  */
 $messages['ro'] = array(
-	'prefstats' => 'Statistici despre preferinţe',
-	'prefstats-desc' => 'Urmăiţi statistici despre câţi utilizatori au o anumită preferinţă activată',
-	'prefstats-title' => 'Statistici despre preferinţe',
-	'prefstats-list-intro' => 'În prezent, sunt urmărite următoarele preferinţe.
-Apăsaţi pe ele pentru a vizualiza statistici despre ele.',
-	'prefstats-noprefs' => 'Nicio preferinţă nu este în prezent urmărită.
-Configuraţi $wgPrefStatsTrackPrefs pentru a urmări preferinţe.',
+	'prefstats' => 'Statistici despre preferințe',
+	'prefstats-desc' => 'Urmăiți statistici despre câți utilizatori au o anumită preferință activată',
+	'prefstats-title' => 'Statistici despre preferințe',
+	'prefstats-list-intro' => 'În prezent, sunt urmărite următoarele preferințe.
+Apăsați pe ele pentru a vizualiza statistici despre ele.',
+	'prefstats-noprefs' => 'Nicio preferință nu este în prezent urmărită.
+Configurați $wgPrefStatsTrackPrefs pentru a urmări preferințe.',
 	'prefstats-xaxis' => 'Durată (ore)',
 	'prefstats-factors' => 'Vizualizări pe: $1',
 	'prefstats-factor-hour' => 'oră',
-	'prefstats-factor-sixhours' => 'şase ore',
+	'prefstats-factor-sixhours' => 'șase ore',
 	'prefstats-factor-day' => 'zi',
 	'prefstats-factor-week' => 'săptămână',
 	'prefstats-factor-twoweeks' => 'două săptămâni',
 	'prefstats-factor-fourweeks' => 'patru săptămâni',
-	'prefstats-factor-default' => 'înapoi la scala iniţială',
-	'prefstats-legend-out' => 'Renunţat',
+	'prefstats-factor-default' => 'înapoi la scala inițială',
+	'prefstats-legend-out' => 'Renunțat',
 	'prefstats-legend-in' => 'Optat',
 );
 

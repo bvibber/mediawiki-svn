@@ -359,8 +359,8 @@ $messages['pt-br'] = array(
  * @author Firilacroco
  */
 $messages['ro'] = array(
-	'tidy' => 'Curăţă',
-	'untidy' => 'Împrăştie',
+	'tidy' => 'Curăță',
+	'untidy' => 'Împrăștie',
 );
 
 /** Tarandíne (Tarandíne)

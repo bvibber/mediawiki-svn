@@ -341,7 +341,7 @@ $messages['pt-br'] = array(
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
-	'categorytests-desc' => 'Funcţii pentru testarea categoriilor',
+	'categorytests-desc' => 'Funcții pentru testarea categoriilor',
 );
 
 /** Tarandíne (Tarandíne)

@@ -430,9 +430,9 @@ $messages['gl'] = array(
 	'mwe-clipedit-inline-description' => 'Lenda',
 	'mwe-clipedit-edit-video-tools' => 'Ferramentas de edición de vídeo:',
 	'mwe-clipedit-duration' => 'Duración:',
-	'mwe-clipedit-layout' => 'Estrutura',
-	'mwe-clipedit-layout_right' => 'Estrutura da imaxe do lado dereito',
-	'mwe-clipedit-layout_left' => 'Estrutura da imaxe do lado esquerdo',
+	'mwe-clipedit-layout' => 'Disposición',
+	'mwe-clipedit-layout_right' => 'Disposición da imaxe do lado dereito',
+	'mwe-clipedit-layout_left' => 'Disposición da imaxe do lado esquerdo',
 );
 
 /** Swiss German (Alemannisch) */
@@ -617,7 +617,9 @@ $messages['id'] = array(
 	'mwe-clipedit-duration' => 'Durasi:',
 );
 
-/** Japanese (日本語) */
+/** Japanese (日本語)
+ * @author 青子守歌
+ */
 $messages['ja'] = array(
 	'mwe-clipedit-crop' => '画像をトリミング',
 	'mwe-clipedit-apply_crop' => '画像にトリミングを適用',
@@ -626,6 +628,7 @@ $messages['ja'] = array(
 	'mwe-clipedit-insert_into_sequence' => 'シーケンス中に挿入',
 	'mwe-clipedit-preview_insert' => '挿入をプレビュー',
 	'mwe-clipedit-cancel_image_insert' => '挿入を中止',
+	'mwe-clipedit-sc_attributes' => '詳細編集をクリップ',
 	'mwe-clipedit-sc_inoutpoints' => 'イン・アウトポイントを設定',
 	'mwe-clipedit-sc_overlays' => 'オーバーレイ',
 	'mwe-clipedit-sc_audio' => 'オーディオ・コントロール',

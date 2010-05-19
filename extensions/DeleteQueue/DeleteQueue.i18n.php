@@ -5170,18 +5170,18 @@ $messages['ro'] = array(
 	'deletequeue-generic-reasons' => '* Motive generice
 ** Vandalism
 ** Spam
-** Întreţinere
+** Întreținere
 ** În afara scopului proiectului',
-	'deletequeue-speedy-title' => 'Marchează "$1" pentru ştergere rapidă',
-	'deletequeue-prod-title' => 'Propune ştergerea lui "$1"',
+	'deletequeue-speedy-title' => 'Marchează "$1" pentru ștergere rapidă',
+	'deletequeue-prod-title' => 'Propune ștergerea lui "$1"',
 	'deletequeue-delnom-reason' => 'Motiv pentru nominalizare:',
 	'deletequeue-delnom-otherreason' => 'Alt motiv',
-	'right-prod-nominate' => 'Propune ştergerea paginii',
+	'right-prod-nominate' => 'Propune ștergerea paginii',
 	'deletequeue-queue-speedy' => 'Ştergere rapidă',
 	'deletequeue-queue-prod' => 'Ştergere propusă',
 	'deletequeue-review-reason' => 'Comentarii:',
 	'deletequeue-review-newreason' => 'Motiv nou:',
-	'deletequeue-review-submit' => 'Salvaţi recenzie',
+	'deletequeue-review-submit' => 'Salvați recenzie',
 	'deletequeue-review-original' => 'Motiv pentru nominalizare',
 	'deletequeue-vote-action' => 'Recomandare:',
 	'deletequeue-vote-reason' => 'Comentarii:',
@@ -5191,7 +5191,7 @@ $messages['ro'] = array(
 	'deletequeue-list-anyqueue' => '(orice)',
 	'deletequeue-list-header-page' => 'Pagină',
 	'deletequeue-list-header-expiry' => 'Expirare',
-	'deletequeue-list-header-discusspage' => 'Pagină de discuţii',
+	'deletequeue-list-header-discusspage' => 'Pagină de discuții',
 	'deletequeue-case-page' => 'Pagina:',
 	'deletequeue-case-reason' => 'Motiv:',
 	'deletequeue-case-expiry' => 'Expirare:',

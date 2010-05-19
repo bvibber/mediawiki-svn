@@ -492,7 +492,7 @@ $messages['qu'] = array(
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
-	'commentpages-desc' => 'Pagini de comentarii pentru spaţiul de nume principal',
+	'commentpages-desc' => 'Pagini de comentarii pentru spațiul de nume principal',
 	'nstab-comments' => 'Comentariu',
 );
 

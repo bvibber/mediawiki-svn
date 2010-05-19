@@ -657,8 +657,8 @@ $messages['pt-br'] = array(
  */
 $messages['ro'] = array(
 	'searchbox-search' => 'Căutare',
-	'searchbox-go' => 'Mergeţi',
-	'searchbox-namespaces' => 'Spaţii de nume:',
+	'searchbox-go' => 'Mergeți',
+	'searchbox-namespaces' => 'Spații de nume:',
 );
 
 /** Tarandíne (Tarandíne)

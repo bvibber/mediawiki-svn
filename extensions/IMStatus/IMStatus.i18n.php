@@ -1277,9 +1277,9 @@ $messages['ro'] = array(
 	'imstatus_max' => 'max',
 	'imstatus_min' => 'min',
 	'imstatus_or' => 'sau',
-	'imstatus_gtalk_height' => 'înălţimea cutiei, în pixeli.',
-	'imstatus_gtalk_width' => 'lăţimea cutiei, în pixeli.',
-	'imstatus_icq_style' => 'un număr între 0 şi 26 (da, există 27 de stiluri disponibile...).',
+	'imstatus_gtalk_height' => 'înălțimea cutiei, în pixeli.',
+	'imstatus_gtalk_width' => 'lățimea cutiei, în pixeli.',
+	'imstatus_icq_style' => 'un număr între 0 și 26 (da, există 27 de stiluri disponibile...).',
 	'imstatus_xfire_size' => 'mărimea butoanelor, de la $1 (cel mai mare) la $2 (cel mai mic).',
 );
 

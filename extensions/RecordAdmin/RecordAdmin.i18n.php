@@ -1833,19 +1833,19 @@ $messages['pt-br'] = array(
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
-	'recordadmin-select' => 'Selectaţi',
+	'recordadmin-select' => 'Selectați',
 	'recordadmin-submit' => 'Trimite',
-	'recordadmin-badtitle' => 'Titlu greşit!',
-	'recordadmin-invert' => 'Inversează selecţia',
+	'recordadmin-badtitle' => 'Titlu greșit!',
+	'recordadmin-invert' => 'Inversează selecția',
 	'recordadmin-buttonsearch' => 'Căutare',
 	'recordadmin-buttoncreate' => 'Creare',
 	'recordadmin-buttonreset' => 'Resetare',
 	'recordadmin-buttonsave' => 'Salvare',
-	'recordadmin-viewlink' => 'vedeţi',
+	'recordadmin-viewlink' => 'vedeți',
 	'recordadmin-created' => 'Creat',
 	'recordadmin-modified' => 'Modificat',
-	'recordadmin-actions' => 'Acţiuni',
-	'recordadmin-needscontent' => 'Adăugaţi conţinut...',
+	'recordadmin-actions' => 'Acțiuni',
+	'recordadmin-needscontent' => 'Adăugați conținut...',
 	'recordadmin-editwithform' => 'Modificare cu un formular',
 );
 

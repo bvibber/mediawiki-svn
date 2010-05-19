@@ -1206,10 +1206,10 @@ $messages['qu'] = array(
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
-	'invitations-invitedlist-item-count' => '({{PLURAL:$1|O invitaţie disponibilă|$1 invitaţii disponibile}})',
-	'invitations-inviteform-submit' => 'Invitaţi',
+	'invitations-invitedlist-item-count' => '({{PLURAL:$1|O invitație disponibilă|$1 invitații disponibile}})',
+	'invitations-inviteform-submit' => 'Invitați',
 	'invitations-error-baduser' => 'Utilizatorul specificat pare să nu existe.',
-	'invitations-error-alreadyinvited' => 'Utilizatorul specificat are deja acces la această funcţionalitate!',
+	'invitations-error-alreadyinvited' => 'Utilizatorul specificat are deja acces la această funcționalitate!',
 );
 
 /** Tarandíne (Tarandíne)

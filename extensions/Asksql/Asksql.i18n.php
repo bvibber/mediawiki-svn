@@ -982,12 +982,12 @@ Esta função frequentemente adiciona uma carga considerável ao servidor, por i
  */
 $messages['ro'] = array(
 	'asksql' => 'Interogare SQL',
-	'asksql-desc' => 'Iniţiază o cerere SQL prin intermediul [[Special:Asksql|paginii speciale]]',
-	'asksqltext' => "Folosiţi formularul de mai jos pentru a face o interogare în mod direct asupra bazei de date.
-Folosiţi apostrofuri ('în acest fel') pentru a delimita şiruri de caractere.
-Această opţiune încarcă de obicei serverul, deci vă rugăm să o folosiţi cât mai puţin.",
-	'sqlislogged' => 'Atenţie, toate interogările sunt memorate.',
-	'sqlquery' => 'Introduceţi interogare',
+	'asksql-desc' => 'Inițiază o cerere SQL prin intermediul [[Special:Asksql|paginii speciale]]',
+	'asksqltext' => "Folosiți formularul de mai jos pentru a face o interogare în mod direct asupra bazei de date.
+Folosiți apostrofuri ('în acest fel') pentru a delimita șiruri de caractere.
+Această opțiune încarcă de obicei serverul, deci vă rugăm să o folosiți cât mai puțin.",
+	'sqlislogged' => 'Atenție, toate interogările sunt memorate.',
+	'sqlquery' => 'Introduceți interogare',
 	'querybtn' => 'Trimite interogare',
 	'selectonly' => 'Sunt permise doar interogări care efectuează numai citiri.',
 	'querysuccessful' => 'Interogare terminată cu succes',

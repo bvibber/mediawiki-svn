@@ -2202,8 +2202,8 @@ $wgCustomToolbarMessages['ro'] = array(
 	'ct_external_caption' => 'Legătură externă',
 	'ct_image_tip' => 'Inserează o imagine',
 	'ct_image_caption' => 'Adaugă o imagine',
-	'ct_attachment_tip' => 'Inserează un ataşament',
-	'ct_attachment_caption' => 'Adaugă ataşament',
+	'ct_attachment_tip' => 'Inserează un atașament',
+	'ct_attachment_caption' => 'Adaugă atașament',
 	'ct_math_sample' => 'Inserează o formulă LaTeX aici',
 	'ct_math_tip_ins' => 'Inserează o formulă matematică (LaTeX)',
 	'ct_math_tip_wrap' => 'Fă acest text o formulă matematică (LaTeX)',
@@ -2212,13 +2212,13 @@ $wgCustomToolbarMessages['ro'] = array(
 	'ct_nowiki_tip_ins' => 'Ignoră formatarea wiki',
 	'ct_nowiki_tip_wrap' => 'Ignoră formatarea wiki pentru acest text',
 	'ct_nowiki_caption' => 'Niciun wiki',
-	'ct_horizontal_tip' => 'Inserează o linie orizontală (folosiţi-o cumpătat)',
+	'ct_horizontal_tip' => 'Inserează o linie orizontală (folosiți-o cumpătat)',
 	'ct_horizontal_caption' => 'Linie orizontală',
 	'ct_upload' => 'Încarcă $1',
 	'ct_select' => 'Selectează $1 pentru încărcare:',
 	'ct_submit' => 'Salt',
 	'ct_close' => 'Închide fereastra',
-	'ct_success' => 'Încărcare a fişierului cu succes!',
+	'ct_success' => 'Încărcare a fișierului cu succes!',
 	'ct_user_user' => 'Utilizator',
 	'ct_user_tip' => 'Inserează o legătură într-o pagină de utilizator.',
 	'ct_user_sample' => 'Nume de utilizator',
@@ -2451,6 +2451,24 @@ Prosím, skontrolujte blokovanie vyskakovacích okien vo vašom prehliadači.',
 	'ct_user_tip' => 'Vložiť odkaz na používateľskú stránku',
 	'ct_user_caption' => 'Odkaz na používateľa',
 	'ct_user_sample' => 'Používateľské meno',
+);
+
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$wgCustomToolbarMessages['sl'] = array(
+	'ct_external_tip_wrap' => 'Naredi to besedilo zunanjo povezavo',
+	'ct_external_caption' => 'Zunanja povezava',
+	'ct_image_tip' => 'Vstavi sliko',
+	'ct_image_caption' => 'Dodaj sliko',
+	'ct_attachment_tip' => 'Vstavi priponko',
+	'ct_attachment_caption' => 'Dodaj priponko',
+	'ct_math_caption' => 'Formula',
+	'ct_horizontal_caption' => 'Vodoravna črta',
+	'ct_submit' => 'Pojdi!',
+	'ct_close' => 'Zapri okno',
+	'ct_user_user' => 'Uporabnik',
+	'ct_user_sample' => 'Uporabniško ime',
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))

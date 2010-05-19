@@ -595,7 +595,7 @@ $messages['pt-br'] = array(
 $messages['ro'] = array(
 	'interwikilist' => 'Listă interwiki',
 	'interwikilist-linkname' => 'Legătură interwiki',
-	'interwikilist-target' => 'URL ţintă',
+	'interwikilist-target' => 'URL țintă',
 	'interwikilist-filter' => 'Listă filtre',
 	'interwikilist-prefix' => 'Prefix interwiki:',
 );
