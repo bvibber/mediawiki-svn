@@ -329,7 +329,7 @@ $messages['pt-br'] = array(
  * @author Firilacroco
  */
 $messages['ro'] = array(
-	'wikieditor-highlight-preference' => 'Activaţi evidenţierea sintaxei când modificaţi',
+	'wikieditor-highlight-preference' => 'Activați evidențierea sintaxei când modificați',
 );
 
 /** Tarandíne (Tarandíne)

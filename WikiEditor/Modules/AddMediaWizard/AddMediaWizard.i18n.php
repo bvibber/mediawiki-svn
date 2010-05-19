@@ -92,6 +92,13 @@ $messages['gsw'] = array(
 	'wikieditor-addMediaWizard-preference' => 'Dr „Medienassischtänt“ aktiviere, as Hilfsprogramm zum Yyfiege vu Mediedateie',
 );
 
+/** Hebrew (עברית)
+ * @author Amire80
+ */
+$messages['he'] = array(
+	'wikieditor-addMediaWizard-preference' => 'הפעלת גאדג\'ט "אשף הוספת מדיה"',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

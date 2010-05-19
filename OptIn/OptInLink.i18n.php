@@ -846,12 +846,12 @@ $messages['qu'] = array(
  * @author Stelistcristi
  */
 $messages['ro'] = array(
-	'optin-try' => 'Încercaţi Beta',
-	'tooltip-pt-optin-try' => 'Încercaţi funcţii noi',
-	'optin-leave' => 'Părăsiţi Beta',
-	'tooltip-pt-optin-leave' => 'Dezactivaţi funcţiile noi',
+	'optin-try' => 'Încercați Beta',
+	'tooltip-pt-optin-try' => 'Încercați funcții noi',
+	'optin-leave' => 'Părăsiți Beta',
+	'tooltip-pt-optin-leave' => 'Dezactivați funcțiile noi',
 	'optin-feedback' => 'Părere despre Beta',
-	'tooltip-pt-optin-feedback' => 'Furnizaţi un feedback cu privire la experienţa cu noile funcţionalităţi',
+	'tooltip-pt-optin-feedback' => 'Furnizați un feedback cu privire la experiența cu noile funcționalități',
 );
 
 /** Tarandíne (Tarandíne)

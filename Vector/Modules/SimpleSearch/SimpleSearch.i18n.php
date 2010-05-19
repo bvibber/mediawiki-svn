@@ -453,10 +453,12 @@ $messages['mn'] = array(
 );
 
 /** Malay (Bahasa Melayu)
+ * @author Aurora
  * @author Diagramma Della Verita
  */
 $messages['ms'] = array(
 	'vector-simplesearch-search' => 'Cari',
+	'vector-simplesearch-containing' => 'mengandungi...',
 );
 
 /** Maltese (Malti)
@@ -575,8 +577,8 @@ $messages['qu'] = array(
  * @author Firilacroco
  */
 $messages['ro'] = array(
-	'vector-simplesearch-search' => 'Căutaţi',
-	'vector-simplesearch-containing' => 'conţinând...',
+	'vector-simplesearch-search' => 'Căutați',
+	'vector-simplesearch-containing' => 'conținând...',
 );
 
 /** Tarandíne (Tarandíne)

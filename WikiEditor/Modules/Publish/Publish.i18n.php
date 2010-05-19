@@ -860,9 +860,9 @@ $messages['ro'] = array(
 	'wikieditor-publish-button-publish' => 'Salvează pagina',
 	'wikieditor-publish-button-cancel' => 'Anulează',
 	'wikieditor-publish-dialog-title' => 'Publică pe {{SITENAME}}',
-	'wikieditor-publish-dialog-summary' => 'Descrierea modificărilor (descrieţi pe scurt modificările făcute):',
+	'wikieditor-publish-dialog-summary' => 'Descrierea modificărilor (descrieți pe scurt modificările făcute):',
 	'wikieditor-publish-dialog-minor' => 'Modificare minoră',
-	'wikieditor-publish-dialog-watch' => 'Urmăreşte pagina',
+	'wikieditor-publish-dialog-watch' => 'Urmărește pagina',
 	'wikieditor-publish-dialog-publish' => 'Salvează pagina',
 	'wikieditor-publish-dialog-goback' => 'Înapoi',
 );
