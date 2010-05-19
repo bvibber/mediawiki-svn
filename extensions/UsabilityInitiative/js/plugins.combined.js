@@ -5790,9 +5790,6 @@ $.fn.extend( {
  * 		Type: Number, Range: 0 - 1200, Default: 120
  * submitOnClick: Whether to submit the form containing the textbox when a suggestion is clicked
  *		Type: Boolean, Default: false
- * maxExpandFactor: Maximum suggestions box width relative to the textbox width.  If set to e.g. 2, the suggestions box
- *		will never be grown beyond 2 times the width of the textbox.
- *		Type: Number, Range: 1 - infinity, Default: 2
  * positionFromLeft: Whether to position the suggestion box with the left attribute or the right
  *		Type: Boolean, Default: true
  */
@@ -5927,17 +5924,19 @@ $.suggestions = {
 								// Widen results box if needed
 								// New width is only calculated here, applied later
 								var $span = $result.children( 'span' );
-								if ( $span.width() > $result.width() ) {
-									expWidth = Math.max( expWidth, Math.min( $span.width(),
-										context.data.$textbox.width()*context.config.maxExpandFactor
-									) );
+								if ( $span.outerWidth() > $result.width() && $span.outerWidth() > expWidth ) {
+									expWidth = $span.outerWidth();
 								}
 								$autoEllipseMe = $autoEllipseMe.add( $result );
 							}
 						}
 						// Apply new width for results box, if any
-						if ( expWidth != -1 ) {
-							context.data.$container.width( expWidth );
+						if ( expWidth > context.data.$container.width() ) {
+							// Don't make the container too wide so it runs offscreen
+							var maxWidth = context.config.positionFromLeft ?
+								$('body').width() - context.data.$container.offset().left :
+								context.data.$container.offset().left + context.data.$container.width();
+							context.data.$container.width( Math.min( expWidth, maxWidth ) );
 						}
 						// autoEllipse the results. Has to be done after changing the width
 						$autoEllipseMe.autoEllipsis( { hasSpan: true, tooltip: true } );
@@ -5949,9 +5948,6 @@ $.suggestions = {
 				break;
 			case 'delay':
 				context.config[property] = Math.max( 0, Math.min( 1200, value ) );
-				break;
-			case 'maxExpandFactor':
-				context.config[property] = Math.max( 1, value );
 				break;
 			case 'submitOnClick':
 			case 'positionFromLeft':
@@ -6105,7 +6101,6 @@ $.fn.suggestions = function() {
 					'maxRows': 7,
 					'delay': 120,
 					'submitOnClick': false,
-					'maxExpandFactor': 2,
 					'positionFromLeft': true
 				}
 			};
