@@ -50,7 +50,7 @@ if ( array_key_exists( 'QUERY_STRING', $_SERVER ) ) {
 	
 	if ( strtolower( $_SERVER['QUERY_STRING'] ) == 'isthiswikiawesome' ) {
 		$O_o = 'Hell yeah!';
-	} else if ( preg_match( '/^[0Oo°][-_\.][0Oo°]$/', $_SERVER['QUERY_STRING'] ) ) {
+	} else if ( preg_match( '/^[0o°xt][-_\.][0o°xt]$/i', $_SERVER['QUERY_STRING'] ) ) {
 		$O_o = strrev( $_SERVER['QUERY_STRING'] );
 	}
 	
