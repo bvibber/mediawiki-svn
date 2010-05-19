@@ -5793,8 +5793,8 @@ $.fn.extend( {
  * maxExpandFactor: Maximum suggestions box width relative to the textbox width.  If set to e.g. 2, the suggestions box
  *		will never be grown beyond 2 times the width of the textbox.
  *		Type: Number, Range: 1 - infinity, Default: 2
- * expandToLeft: Whether to expand the suggestion box to the left rather than to the right
- *		Type: Boolean, Default: false
+ * positionFromLeft: Wether to position the suggestion box with the left attribute or the right
+ *		Type: Boolean, Default: true
  */
 ( function( $ ) {
 
@@ -5884,14 +5884,22 @@ $.suggestions = {
 						// Rebuild the suggestions list
 						context.data.$container.show();
 						// Update the size and position of the list
-						context.data.$container.css( {
+						var newCSS = {
 							'top': context.config.$region.offset().top + context.config.$region.outerHeight(),
 							'bottom': 'auto',
 							'width': context.config.$region.outerWidth(),
-							'height': 'auto',
-							'left': context.config.$region.offset().left,
-							'right': 'auto'
-						} );
+							'height': 'auto'
+						}
+						if ( context.config.positionFromLeft ) {
+							console.log("LEFT");
+							newCSS['left'] = context.config.$region.offset().left;
+							newCSS['right'] = 'auto';
+						} else {
+							console.log("right");
+							newCSS['left'] = 'auto';
+							newCSS['right'] = $( 'body' ).width() - ( context.config.$region.offset().left + context.config.$region.outerWidth() );
+						}
+						context.data.$container.css( newCSS );
 						var $results = context.data.$container.children( '.suggestions-results' );
 						$results.empty();
 						var expWidth = -1;
@@ -5931,12 +5939,6 @@ $.suggestions = {
 						}
 						// Apply new width for results box, if any
 						if ( expWidth != -1 ) {
-							if ( context.config.expandToLeft ) {
-								context.data.$container.css( 'left',
-									context.data.$container.offset().left -
-										( expWidth - context.data.$container.width() )
-								);
-							}
 							context.data.$container.width( expWidth );
 						}
 						// autoEllipse the results. Has to be done after changing the width
@@ -5954,7 +5956,7 @@ $.suggestions = {
 				context.config[property] = Math.max( 1, value );
 				break;
 			case 'submitOnClick':
-			case 'expandToLeft':
+			case 'positionFromLeft':
 				context.config[property] = value ? true : false;
 				break;
 		}
@@ -6096,7 +6098,7 @@ $.fn.suggestions = function() {
 		if ( typeof context == 'undefined' || context == null ) {
 			context = {
 				config: {
-				    'fetch' : function() {},
+					'fetch' : function() {},
 					'cancel': function() {},
 					'special': {},
 					'result': {},
@@ -6106,7 +6108,7 @@ $.fn.suggestions = function() {
 					'delay': 120,
 					'submitOnClick': false,
 					'maxExpandFactor': 2,
-					'expandToLeft': false
+					'positionFromLeft': true
 				}
 			};
 		}
@@ -6145,13 +6147,22 @@ $.fn.suggestions = function() {
 				'mouseDownOn': $( [] ),
 				'$textbox': $(this)
 			};
+			// Setup the css for positioning the results box
+			var newCSS = {
+				'top': Math.round( context.data.$textbox.offset().top + context.data.$textbox.outerHeight() ),
+				'width': context.data.$textbox.outerWidth(),
+				'display': 'none'
+			}
+			if ( context.config.positionFromLeft ) {
+				newCSS['left'] = context.config.$region.offset().left;
+				newCSS['right'] = 'auto';
+			} else {
+				newCSS['left'] = 'auto';
+				newCSS['right'] = $( 'body' ).width() - ( context.config.$region.offset().left + context.config.$region.outerWidth() );
+			}
+			
 			context.data.$container = $( '<div />' )
-				.css( {
-					'top': Math.round( context.data.$textbox.offset().top + context.data.$textbox.outerHeight() ),
-					'left': Math.round( context.data.$textbox.offset().left ),
-					'width': context.data.$textbox.outerWidth(),
-					'display': 'none'
-				} )
+				.css( newCSS )
 				.addClass( 'suggestions' )
 				.append(
 					$( '<div />' ).addClass( 'suggestions-results' )
