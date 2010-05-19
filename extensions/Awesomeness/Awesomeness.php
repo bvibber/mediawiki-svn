@@ -48,18 +48,10 @@ if ( array_key_exists( 'QUERY_STRING', $_SERVER ) ) {
 	
 	$O_o = false;
 	
-	switch ( strtolower( $_SERVER['QUERY_STRING'] ) ) { 
-		case 'o_o':
-			$O_o = ( $_SERVER['QUERY_STRING'] == 'O_o' ) ? 'o_O' : 'O_o'; 
-			break;
-		case 'o_0':
-			$O_o = '0_o'; 
-			break;
-		case '0_o':
-			$O_o = 'o_0';
-			break;
-		case 'isthiswikiawesome':
-			$O_o = 'Hell yeah!';
+	if ( strtolower( $_SERVER['QUERY_STRING'] ) == 'isthiswikiawesome' ) {
+		$O_o = 'Hell yeah!';
+	} else if ( preg_match( '/^[0Oo°][-_\.][0Oo°]$/', $_SERVER['QUERY_STRING'] ) ) {
+		$O_o = strrev( $_SERVER['QUERY_STRING'] );
 	}
 	
 	if ( $O_o ) die( $O_o );
