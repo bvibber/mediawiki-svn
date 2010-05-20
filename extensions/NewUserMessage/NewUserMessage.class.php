@@ -14,64 +14,60 @@ if ( !defined( 'MEDIAWIKI' ) )
 	die( 'Not an entry point.' );
 
 class NewUserMessage {
-	/*
-	 * Add the message if the users talk page does not already exist
-	 * @param $user User object
+
+	/**
+	 * Produce the editor for new user messages.
+	 * @returns User
 	 */
-	static function createNewUserMessage( $user ) {
-		$talk = $user->getTalkPage();
-
-		if ( !$talk->exists() ) {
-			global $wgUser;
-
-			wfLoadExtensionMessages( 'NewUserMessage' );
-
-			$editSummary = wfMsgForContent( 'newuseredit-summary' );
-
-			// Create a user object for the editing user and add it to the
-			// database if it is not there already
-			$editor = User::newFromName( wfMsgForContent( 'newusermessage-editor' ) );
-			if ( !$editor->isLoggedIn() ) {
-				$editor->addToDatabase();
-			}
-
-			$signatures = wfMsgForContent( 'newusermessage-signatures' );
-			$signature = null;
-
-			if ( !wfEmptyMsg( 'newusermessage-signatures', $signatures ) ) {
-				$pattern = '/^\* ?(.*?)$/m';
-				preg_match_all( $pattern, $signatures, $signatureList, PREG_SET_ORDER );
-				if ( count( $signatureList ) > 0 ) {
-					$rand = rand( 0, count( $signatureList ) - 1 );
-					$signature = $signatureList[$rand][1];
-				}
-			}
-
-			// Add (any) content to [[MediaWiki:Newusermessage-substitute]] to substitute the welcome template.
-			$substitute = wfMsgForContent( 'newusermessage-substitute' );
-
-			self::setupAndLeaveMessage( $user, $editor, $editSummary, $substitute, $signature );
+	static function fetchEditor() {
+		// Create a user object for the editing user and add it to the
+		// database if it is not there already
+		$editor = User::newFromName( wfMsgForContent( 'newusermessage-editor' ) );
+		if ( !$editor->isLoggedIn() ) {
+			$editor->addToDatabase();
 		}
-		return true;
+
+		return $editor;
 	}
 
 	/**
-	 * Take care of some housekeeping before leaving the actual message
-	 * @param $user User the user object who's talk page is being created
-	 * @param $editor User the user that we'll use to leave the message
-	 * @param $editSummary String the edit summary
-	 * @param $substitute Bool Template text needs substitution
-	 * @param $signature String the signature
+	 * Produce a (possibly random) signature.
+	 * @returns String
 	 */
-	static function setupAndLeaveMessage( $user, $editor, $editSummary, $substitute, $signature ) {
-		$talk = $user->getTalkPage();
-		$article = new Article( $talk );
+	static function fetchSignature() {
+		$signatures = wfMsgForContent( 'newusermessage-signatures' );
+		$signature = '';
 
+		if ( !wfEmptyMsg( 'newusermessage-signatures', $signatures ) ) {
+			$pattern = '/^\* ?(.*?)$/m';
+			preg_match_all( $pattern, $signatures, $signatureList, PREG_SET_ORDER );
+			if ( count( $signatureList ) > 0 ) {
+				$rand = rand( 0, count( $signatureList ) - 1 );
+				$signature = $signatureList[$rand][1];
+			}
+		}
+
+		return $signature;
+	}
+
+	/**
+	 * Produce a subject for the message.
+	 * @returns String
+	 */
+	static function fetchSubject() {
 		$subject = '';
 		if ( wfRunHooks( 'SetupNewUserMessageSubject', array( &$subject ) ) ) {
 			$subject = wfMsg( 'newusermessage-template-subject' );
 		}
 
+		return $subject;
+	}
+
+	/**
+	 * Produce the text of the message.
+	 * @returns String
+	 */
+	static function fetchText() {
 		$text = '';
 		if ( wfRunHooks( 'SetupNewUserMessageBody', array( &$text ) ) ) {
 			$text = wfMsg( 'newusermessage-template-body' );
@@ -86,21 +82,30 @@ class NewUserMessage {
 				$text = $template->getText();
 			}
 		}
+		return $text;
+	}
 
-		if ( $substitute ) {
-			$subject = self::substString( $subject, $user, "preparse" );
-			$text = self::substString( $text, $user );
-		}
-
+	/**
+	 * Produce the flags to set on Article::doEdit
+	 * @returns Int
+	 */
+	static function fetchFlags() {
 		global $wgNewUserMinorEdit, $wgNewUserSuppressRC;
 
 		$flags = EDIT_NEW;
 		if ( $wgNewUserMinorEdit ) $flags = $flags | EDIT_MINOR;
 		if ( $wgNewUserSuppressRC ) $flags = $flags | EDIT_SUPPRESS_RC;
 
-		return $user->leaveUserMessage( $subject, $text, $signature, $editSummary, $editor, $flags );
+		return $flags;
 	}
 
+	/**
+	 * Take care of substition on the string in a uniform manner
+	 * @param $str String
+	 * @param $user User
+	 * @param $preparse if provided, then preparse the string using a Parser
+	 * @returns String
+	 */
 	static private function substString( $str, $user, $preparse = null ) {
 		$realName = $user->getRealName();
 		$name = $user->getName();
@@ -122,6 +127,34 @@ class NewUserMessage {
 		return $str;
 	}
 
+	/**
+	 * Add the message if the users talk page does not already exist
+	 * @param $user User object
+	 */
+	static function createNewUserMessage( $user ) {
+		$talk = $user->getTalkPage();
+
+		if ( !$talk->exists() ) {
+			wfLoadExtensionMessages( 'NewUserMessage' );
+
+			$subject = self::fetchSubject();
+			$text = self::fetchText();
+			$signature = self::fetchSignature();
+			$editSummary = wfMsgForContent( 'newuseredit-summary' );
+			$editor = self::fetchEditor();
+			$flags = self::fetchFlags();
+
+			// Add (any) content to [[MediaWiki:Newusermessage-substitute]] to substitute the welcome template.
+			$substitute = wfMsgForContent( 'newusermessage-substitute' );
+
+			if ( $substitute ) {
+				$subject = self::substString( $subject, $user, "preparse" );
+				$text = self::substString( $text, $user );
+			}
+
+			return $user->leaveUserMessage( $subject, $text, $signature, $editSummary, $editor, $flags );
+		}
+	}
 
 	/**
 	 * Hook function to create a message on an auto-created user
