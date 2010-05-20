@@ -2128,10 +2128,10 @@ $messages['gl'] = array(
 Quere probar Beta?',
 	'optin-feedback-intro' => 'Grazas por probar Beta.
 Queremos saber que pensa da nosa nova interface, polo que lle agradeceriamos que enchese a enquisa opcional que aparece a continuación.',
-	'optin-feedback-back' => 'Se non quere encher a enquisa, pode voltar a "$1".',
+	'optin-feedback-back' => 'Se non quere encher a enquisa, pode volver a "$1".',
 	'optin-success-in' => 'Xa está probando Beta.
 Pode saír en calquera momento facendo clic na ligazón "{{int:optin-leave}}" que aparecerá na parte superior da pantalla.',
-	'optin-leave-cancel' => 'Se quere seguir usando Beta, pode voltar a "$1".',
+	'optin-leave-cancel' => 'Se quere seguir usando Beta, pode volver a "$1".',
 	'optin-success-out' => 'Deixou de probar Beta.
 Pode participar nas probas en calquera momento facendo clic na ligazón "{{int:optin-try}}" que aparecerá no canto superior dereito da pantalla.',
 	'optin-success-feedback' => 'Grazas polos seus comentarios!',
@@ -4511,7 +4511,7 @@ $messages['ps'] = array(
  */
 $messages['pt'] = array(
 	'optin' => 'Participar na Iniciativa de Usabilidade',
-	'optin-desc' => 'Permitir que os utilizadores experimentem o Beta, que tem as melhorias mais recentes da Iniciativa de Usabilidade.',
+	'optin-desc' => 'Permitir que os utilizadores experimentem o tema Beta, que tem as melhorias mais recentes da Iniciativa de Usabilidade.',
 	'optin-title-optedout' => 'Experimentar o Beta',
 	'optin-title-optedin' => 'Sair do Beta',
 	'optin-title-justoptedin' => 'Bem-vindo ao Beta',
@@ -4541,7 +4541,7 @@ Pode experimentá-lo novamente a qualquer momento, clicando o link "{{int:optin-
 	'optin-survey-intro' => 'Obrigado por experimentar o Beta.
 Gostaríamos de saber o que achou da nossa nova interface, por isso agradecíamos que preenchesse o inquérito opcional abaixo, antes de clicar "[[#leave|{{int:optin-submit-out}}]]".',
 	'optin-survey-question-likedislike' => 'Do que foi que gostou no Beta? Do que foi que não gostou no Beta?',
-	'optin-survey-question-whyoptout' => 'Por que está a sair do Beta? (Por favor, seleccione todas as opções que se aplicam.)',
+	'optin-survey-question-whyoptout' => 'Por que é que está a sair do Beta? (Seleccione todas as opções que se aplicam, por favor.)',
 	'optin-survey-answer-whyoptout-hard' => 'Foi muito difícil de usar.',
 	'optin-survey-answer-whyoptout-didntwork' => 'Não funcionou correctamente.',
 	'optin-survey-answer-whyoptout-notpredictable' => 'Não funcionou de forma consistente.',

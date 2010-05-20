@@ -846,7 +846,7 @@ Prema sobre unha para ver as estatísticas sobre ela.',
 	'prefstats-factor-week' => 'semana',
 	'prefstats-factor-twoweeks' => 'dúas semanas',
 	'prefstats-factor-fourweeks' => 'catro semanas',
-	'prefstats-factor-default' => 'voltar á escala por defecto',
+	'prefstats-factor-default' => 'volver á escala por defecto',
 	'prefstats-legend-out' => 'Deixou de participar',
 	'prefstats-legend-in' => 'Quixo participar',
 );
