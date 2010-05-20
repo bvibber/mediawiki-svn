@@ -42,7 +42,7 @@ class ActiveTaskForcesQP extends QueryPage {
 			SELECT 
 				'ActiveTaskForces' AS type,
 				page_namespace AS namespace,
-				page_title AS title, 
+				substring_index(page_title, '/', 2) AS title, 
 				COUNT(*) AS value
 			FROM $revisionTable
 			JOIN $pageTable ON page_id = rev_page
