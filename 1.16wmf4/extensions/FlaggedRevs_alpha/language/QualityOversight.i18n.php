@@ -114,11 +114,12 @@ $messages['cs'] = array(
 );
 
 /** German (Deutsch)
+ * @author Kghbln
  * @author Raimond Spekking
  * @author Umherirrender
  */
 $messages['de'] = array(
-	'qualityoversight' => 'Übersicht über markierte Versionen',
+	'qualityoversight' => 'Erweitertes Versionsmarkierungs-Logbuch',
 	'qualityoversight-list' => 'Diese Seite zeigt die aktuellen Freigaben sowie den Widerruf markierter Versionen.',
 	'qualityoversight-legend' => 'Suche in Versionsmarkierungen',
 );
@@ -468,8 +469,8 @@ $messages['pt-br'] = array(
  * @author Mihai
  */
 $messages['ro'] = array(
-	'qualityoversight-list' => 'Această pagină afişează cele mai recente aprobări şi deprecieri ale reviziilor.',
-	'qualityoversight-legend' => 'Căutaţi jurnalele recente ale revizuirilor',
+	'qualityoversight-list' => 'Această pagină afișează cele mai recente aprobări și deprecieri ale reviziilor.',
+	'qualityoversight-legend' => 'Căutați jurnalele recente ale revizuirilor',
 );
 
 /** Tarandíne (Tarandíne)
@@ -626,11 +627,12 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Horacewai2
  * @author Liangent
  * @author Shinjiman
  */
 $messages['zh-hant'] = array(
-	'qualityoversight' => '品質管理',
+	'qualityoversight' => '品質管理日誌',
 	'qualityoversight-list' => '這個頁面列示出最近核准修訂以及最近品質修訂之折舊。',
 	'qualityoversight-legend' => '搜索最近審核記錄',
 );

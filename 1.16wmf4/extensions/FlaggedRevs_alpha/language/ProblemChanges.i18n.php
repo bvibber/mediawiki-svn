@@ -114,11 +114,12 @@ $messages['cs'] = array(
 
 /** German (Deutsch)
  * @author Jens Liebenau
+ * @author Kghbln
  * @author Khaledelmansoury
  * @author Umherirrender
  */
 $messages['de'] = array(
-	'problemchanges' => 'Nachprüfung der markierten Veränderungen',
+	'problemchanges' => 'gekennzeichnete unmarkierte Änderungen',
 	'problemchanges-legend' => 'Liste der Seiten mit markierten Bearbeitungen, für die noch eine Nachprüfung notwendig ist',
 	'problemchanges-none' => 'Es gibt zurzeit keine Seiten, die diese Kriterien erfüllen.',
 	'problemchanges-category' => 'Kategorie:',
@@ -517,7 +518,7 @@ $messages['pt-br'] = array(
  * @author Stelistcristi
  */
 $messages['ro'] = array(
-	'problemchanges' => 'Revizualizaţi schimbările etichetate',
+	'problemchanges' => 'Revizualizați schimbările etichetate',
 	'problemchanges-category' => 'Categorie:',
 );
 
@@ -672,9 +673,12 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Horacewai2
  * @author Liangent
  */
 $messages['zh-hant'] = array(
+	'problemchanges' => '標記審核',
+	'problemchanges-legend' => '列出頁面正等待審核',
 	'problemchanges-none' => '目前沒有頁面符合這些條件',
 	'problemchanges-category' => '分類:',
 );

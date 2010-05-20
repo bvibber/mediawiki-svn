@@ -292,15 +292,14 @@ class FlaggedRevsXML {
 				$frev->getRevId(), $time, $revsSince );
 		}
 		# Make fancy box...
-		$box = '<div class="flaggedrevs_short_basic">' . $shtml .
-			'&nbsp;' . self::ratingArrow() . "</div>\n";
-		$box .= '<div style="position: relative;">'; // for rel-absolute child div
+		$box = '<div class="flaggedrevs_short_basic">';
+		$box .= $shtml . self::ratingArrow();
+		$box .= "</div>\n";
+		$box .= '<div style="position:relative;">'; // for rel-absolute child div
 		$box .= Xml::openElement( 'div',
 			array(
-				'id' 			=> 'mw-fr-revisionratings',
-				'class'			=> 'flaggedrevs_short_details',
-				'onMouseOver' 	=> 'FlaggedRevs.showBoxDetails()',
-				'onMouseOut' 	=> 'FlaggedRevs.hideBoxDetails()'
+				'id' 	=> 'mw-fr-revisiondetails',
+				'class' => 'flaggedrevs_short_details',
 			)
 		);
 		$box .= $html; // details text
@@ -311,7 +310,7 @@ class FlaggedRevsXML {
 				$box .= '<p>' . self::addTagRatings( $flags, true, $color ) . '</p>';
 			}
 		}
-		$box .= Xml::closeElement( 'div' );
+		$box .= Xml::closeElement( 'div' ) . "\n";
 		$box .= "</div>\n";
         return $box;
 	}
@@ -325,7 +324,6 @@ class FlaggedRevsXML {
 		$img = '<img id="mw-fr-revisiontoggle" class="fr-toggle-arrow"';
 		$img .= " src=\"{$encPath}/arrow-down.png\" style=\"display:none;\"";
 		$img .= ' onMouseOver="FlaggedRevs.showBoxDetails()"';
-		$img .= ' onMouseOut="FlaggedRevs.hideBoxDetails()"';
 		$img .= ' title="' . wfMsgHtml( 'revreview-toggle-title' ) . '"';
 		$img .= ' alt="' . wfMsgHtml( 'revreview-toggle-show' ) . '" />';
 		return $img;
@@ -361,7 +359,7 @@ class FlaggedRevsXML {
 	public static function logToggle() {
 		$toggle = '<a id="mw-fr-logtoggle" class="fr-toggle-text" style="display:none;"' .
 			' onclick="FlaggedRevs.toggleLog()" title="' .
-			wfMsgHtml( 'revreview-log-toggle-show' ) . '" >' .
+			wfMsgHtml( 'revreview-log-toggle-title' ) . '" >' .
 			wfMsgHtml( 'revreview-log-toggle-show' ) . '</a>';
 		return wfMsgHtml( 'parentheses', $toggle );
 	}
@@ -373,23 +371,22 @@ class FlaggedRevsXML {
 	public static function logDetailsToggle() {
 		$toggle = '<a id="mw-fr-logtoggle" class="fr-toggle-text" style="display:none;"' .
 			' onclick="FlaggedRevs.toggleLogDetails()" title="' .
-			wfMsgHtml( 'revreview-log-details-show' ) . '" >' .
+			wfMsgHtml( 'revreview-log-details-title' ) . '" >' .
 			wfMsgHtml( 'revreview-log-details-show' ) . '</a>';
 		return wfMsgHtml( 'parentheses', $toggle );
 	}
 
 	/**
 	 * @param array $flags, selected flags
-	 * @param array $config, page config
 	 * @param bool $disabled, form disabled
 	 * @param bool $reviewed, rev already reviewed
 	 * @returns string
 	 * Generates a main tag inputs (checkboxes/radios/selects) for review form
 	 */
-	public static function ratingInputs( $flags, $config, $disabled, $reviewed ) {
+	public static function ratingInputs( $flags, $disabled, $reviewed ) {
 		$form = '';
 		# Get all available tags for this page/user
-		list( $labels, $minLevels ) = self::ratingFormTags( $flags, $config );
+		list( $labels, $minLevels ) = self::ratingFormTags( $flags );
 		if ( $labels === false ) {
 			$disabled = true; // a tag is unsettable
 		}
@@ -464,13 +461,13 @@ class FlaggedRevsXML {
 		return $form;
 	}
 	
-	protected static function ratingFormTags( $selected, $config ) {
+	protected static function ratingFormTags( $selected ) {
 		$labels = array();
 		$minLevels = array();
 		# Build up all levels available to user
 		foreach ( FlaggedRevs::getDimensions() as $tag => $levels ) {
 			if ( isset( $selected[$tag] ) &&
-				!RevisionReview::userCan( $tag, $selected[$tag], $config ) )
+				!FlaggedRevs::userCanSetTag( $tag, $selected[$tag] ) )
 			{
 				return array( false, false ); // form will have to be disabled
 			}
@@ -478,7 +475,7 @@ class FlaggedRevsXML {
 			$minLevels[$tag] = false; // first non-zero level number
 			foreach ( $levels as $i => $msg ) {
 				# Some levels may be restricted or not applicable...
-				if ( !RevisionReview::userCan( $tag, $i, $config ) ) {
+				if ( !FlaggedRevs::userCanSetTag( $tag, $i ) ) {
 					continue; // skip this level
 				} else if ( $i > 0 && !$minLevels[$tag] ) {
 					$minLevels[$tag] = $i; // first non-zero level number
@@ -632,7 +629,6 @@ class FlaggedRevsXML {
 		# Do we need to get inclusion IDs from parser output?
 		$getPOut = ( $templateIDs && $imageSHA1Keys );
 
-		$config = $article->getVisibilitySettings();
 		# Variable for sites with no flags, otherwise discarded
 		$approve = $wgRequest->getBool( 'wpApprove' );
 		# See if the version being displayed is flagged...
@@ -647,7 +643,7 @@ class FlaggedRevsXML {
 			$flags = $srev->getTags();
 			# Check if user is allowed to renew the stable version.
 			# If not, then get the flags for the new revision itself.
-			if ( !RevisionReview::userCanSetFlags( $oldFlags ) ) {
+			if ( !FlaggedRevs::userCanSetFlags( $oldFlags ) ) {
 				$flags = $oldFlags;
 			}
 			$reviewNotes = $srev->getComment();
@@ -682,7 +678,7 @@ class FlaggedRevsXML {
 
 		# Disable form for unprivileged users
 		$uneditable = !$article->getTitle()->quickUserCan( 'edit' );
-		$disabled = !RevisionReview::userCanSetFlags( $flags ) || $uneditable;
+		$disabled = !FlaggedRevs::userCanSetFlags( $flags ) || $uneditable;
 		if ( $disabled ) {
 			$form .= Xml::openElement( 'div', array( 'class' => 'fr-rating-controls-disabled',
 				'id' => 'fr-rating-controls-disabled' ) );
@@ -695,7 +691,7 @@ class FlaggedRevsXML {
 
 		# Add main checkboxes/selects
 		$form .= Xml::openElement( 'span', array( 'id' => 'mw-fr-ratingselects' ) );
-		$form .= FlaggedRevsXML::ratingInputs( $flags, $config, $disabled, (bool)$frev );
+		$form .= FlaggedRevsXML::ratingInputs( $flags, $disabled, (bool)$frev );
 		$form .= Xml::closeElement( 'span' );
 		# Add review notes input
 		if ( FlaggedRevs::allowComments() && $wgUser->isAllowed( 'validate' ) ) {
@@ -771,7 +767,7 @@ class FlaggedRevsXML {
 		# Pass this in if given; useful for new page patrol
 		$form .= Xml::hidden( 'rcid', $wgRequest->getVal( 'rcid' ) ) . "\n";
 		# Special token to discourage fiddling...
-		$checkCode = RevisionReview::validationKey(
+		$checkCode = RevisionReviewForm::validationKey(
 			$templateParams, $imageParams, $fileVersion, $id
 		);
 		$form .= Xml::hidden( 'validatedParams', $checkCode ) . "\n";

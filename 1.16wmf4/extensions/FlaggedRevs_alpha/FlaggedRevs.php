@@ -301,7 +301,7 @@ $wgAvailableRights[] = 'movestable';
 $wgAvailableRights[] = 'stablesettings';
 
 # Bump this number every time you change flaggedrevs.css/flaggedrevs.js
-$wgFlaggedRevStyleVersion = 72;
+$wgFlaggedRevStyleVersion = 73;
 
 $wgExtensionFunctions[] = 'efLoadFlaggedRevs';
 
@@ -332,9 +332,15 @@ $wgAutoloadClasses['FlaggedArticle'] = $dir . 'FlaggedArticle.php';
 # Load FlaggedRevision object class
 $wgAutoloadClasses['FlaggedRevision'] = $dir . 'FlaggedRevision.php';
 
-# Load review UI
-$wgAutoloadClasses['RevisionReview'] = $dir . 'specialpages/RevisionReview_body.php';
+# Load review form
+$wgAutoloadClasses['RevisionReviewForm'] = $dir . 'forms/RevisionReviewForm.php';
+# Load protection/stability form
+$wgAutoloadClasses['PageStabilityForm'] = $dir . 'forms/PageStabilityForm.php';
+$wgAutoloadClasses['PageStabilityGeneralForm'] = $dir . 'forms/PageStabilityForm.php';
+$wgAutoloadClasses['PageStabilityProtectForm'] = $dir . 'forms/PageStabilityForm.php';
 
+# Load revision review UI
+$wgAutoloadClasses['RevisionReview'] = $dir . 'specialpages/RevisionReview_body.php';
 # Load reviewed versions UI
 $wgAutoloadClasses['ReviewedVersions'] = $dir . 'specialpages/ReviewedVersions_body.php';
 $wgExtensionMessagesFiles['ReviewedVersions'] = $langDir . 'ReviewedVersions.i18n.php';
@@ -373,6 +379,7 @@ $wgSpecialPageGroups['QualityOversight'] = 'quality';
 $wgAutoloadClasses['ValidationStatistics'] = $dir . 'specialpages/ValidationStatistics_body.php';
 $wgExtensionMessagesFiles['ValidationStatistics'] = $langDir . 'ValidationStatistics.i18n.php';
 $wgSpecialPageGroups['ValidationStatistics'] = 'quality';
+
 # API Modules
 $wgAutoloadClasses['FlaggedRevsApiHooks'] = $dir . 'api/FlaggedRevsApi.hooks.php';
 # OldReviewedPages for API
@@ -380,10 +387,8 @@ $wgAutoloadClasses['ApiQueryOldreviewedpages'] = $dir . 'api/ApiQueryOldreviewed
 $wgAPIListModules['oldreviewedpages'] = 'ApiQueryOldreviewedpages';
 # UnreviewedPages for API
 $wgAutoloadClasses['ApiQueryUnreviewedpages'] = $dir . 'api/ApiQueryUnreviewedpages.php';
-$wgAPIListModules['unreviewedpages'] = 'ApiQueryUnreviewedpages';
 # ReviewedPages for API
 $wgAutoloadClasses['ApiQueryReviewedpages'] = $dir . 'api/ApiQueryReviewedpages.php';
-$wgAPIListModules['reviewedpages'] = 'ApiQueryReviewedpages';
 # Flag metadata for pages for API
 $wgAutoloadClasses['ApiQueryFlagged'] = $dir . 'api/ApiQueryFlagged.php';
 $wgAPIPropModules['flagged'] = 'ApiQueryFlagged';
@@ -417,9 +422,6 @@ $wgHooks['EditPageNoSuchSection'][] = 'FlaggedRevsHooks::onNoSuchSection';
 $wgHooks['PageHistoryBeforeList'][] = 'FlaggedRevsHooks::addToHistView';
 # Add review form and visiblity settings link
 $wgHooks['SkinAfterContent'][] = 'FlaggedRevsHooks::onSkinAfterContent';
-# Add protection form field
-$wgHooks['ProtectionForm::buildForm'][] = 'FlaggedRevsHooks::onProtectionForm';
-$wgHooks['ProtectionForm::showLogExtract'][] = 'FlaggedRevsHooks::insertStabilityLog';
 # Mark items in page history
 $wgHooks['PageHistoryPager::getQueryInfo'][] = 'FlaggedRevsHooks::addToHistQuery';
 $wgHooks['PageHistoryLineEnding'][] = 'FlaggedRevsHooks::addToHistLine';
@@ -481,8 +483,6 @@ $wgHooks['UserRights'][] = 'FlaggedRevsHooks::recordDemote';
 # User edit tallies
 $wgHooks['ArticleRollbackComplete'][] = 'FlaggedRevsHooks::incrementRollbacks';
 $wgHooks['NewRevisionFromEditComplete'][] = 'FlaggedRevsHooks::incrementReverts';
-# Save stability settings
-$wgHooks['ProtectionForm::save'][] = 'FlaggedRevsHooks::onProtectionSave';
 # Extra cache updates for stable versions
 $wgHooks['HTMLCacheUpdate::doUpdate'][] = 'FlaggedRevsHooks::doCacheUpdate';
 # Updates stable version tracking data
@@ -529,6 +529,13 @@ function efSetFlaggedRevsConditionalHooks() {
 	if ( !empty( $wgFlaggedRevsVisible ) ) {
 		$wgHooks['getUserPermissionsErrors'][] = 'FlaggedRevsHooks::userCanView';
 	}
+	if ( FlaggedRevs::useProtectionLevels() ) {
+		# Add protection form field
+		$wgHooks['ProtectionForm::buildForm'][] = 'FlaggedRevsHooks::onProtectionForm';
+		$wgHooks['ProtectionForm::showLogExtract'][] = 'FlaggedRevsHooks::insertStabilityLog';
+		# Save stability settings
+		$wgHooks['ProtectionForm::save'][] = 'FlaggedRevsHooks::onProtectionSave';
+	}
 }
 
 # ####### END HOOK TRIGGERED FUNCTIONS  #########
@@ -553,6 +560,12 @@ function efLoadFlaggedRevs() {
 	# Don't show autoreview group everywhere
 	global $wgImplicitGroups;
 	$wgImplicitGroups[] = 'autoreview';
+	# Conditional API modules
+	global $wgAPIListModules;
+	if ( !FlaggedRevs::stableOnlyIfConfigured() ) {
+		$wgAPIListModules['reviewedpages'] = 'ApiQueryReviewedpages';
+		$wgAPIListModules['unreviewedpages'] = 'ApiQueryUnreviewedpages';
+	}
 }
 
 # Add review log
@@ -576,8 +589,9 @@ $wgLogActions['review/unapprove2'] = 'review-logentry-dis'; // was quality
 $wgLogTypes[] = 'stable';
 $wgLogNames['stable'] = 'stable-logpage';
 $wgLogHeaders['stable'] = 'stable-logpagetext';
-$wgLogActions['stable/config'] = 'stable-logentry-config';
-$wgLogActions['stable/reset'] = 'stable-logentry-reset';
+$wgLogActionsHandlers['stable/config'] = 'FlaggedRevsLogs::stabilityLogText'; // customize
+$wgLogActionsHandlers['stable/modify'] = 'FlaggedRevsLogs::stabilityLogText'; // re-customize
+$wgLogActionsHandlers['stable/reset'] = 'FlaggedRevsLogs::stabilityLogText'; // reset
 
 # AJAX functions
 $wgAjaxExportList[] = 'RevisionReview::AjaxReview';

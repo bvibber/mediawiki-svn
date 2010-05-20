@@ -225,13 +225,15 @@ $messages['cs'] = array(
 
 /** German (Deutsch)
  * @author Imre
+ * @author Kghbln
  * @author Umherirrender
  */
 $messages['de'] = array(
-	'reviewedpages' => 'Liste der gesichteten Seiten',
+	'reviewedpages' => 'Liste der markierten Seiten',
 	'reviewedpages-leg' => 'Seiten nach Prüfungsstufe auflisten',
-	'reviewedpages-list' => 'Diese Spezialseite zeigt Seiten, die bisher mit dem angegebenem Level als höchstes markiert wurden.',
-	'reviewedpages-none' => 'Die Liste ist leer.',
+	'reviewedpages-list' => 'Diese Listen enthalten [[{{MediaWiki:Validationpage}}|markierte]] Seiten, deren höchster Qualitätsstatus (einer Version) dem angegebenen Status entspricht.
+Der Link zu neuesten Version dieses Status ist angegeben.',
+	'reviewedpages-none' => 'Diese Liste enthält keine Seiten.',
 	'reviewedpages-lev-0' => 'Gesichtet',
 	'reviewedpages-lev-1' => 'Geprüft',
 	'reviewedpages-lev-2' => 'Exzellent',
@@ -952,7 +954,7 @@ $messages['pt-br'] = array(
  */
 $messages['ro'] = array(
 	'reviewedpages' => 'Pagini revizuite',
-	'reviewedpages-list' => 'Această pagină afişează paginile care au fost revizuite (la cel mai mare nivel) la nivelul specificat.',
+	'reviewedpages-list' => 'Această pagină afișează paginile care au fost revizuite (la cel mai mare nivel) la nivelul specificat.',
 	'reviewedpages-none' => 'Nu există pagini în această listă',
 	'reviewedpages-lev-1' => 'Calitate',
 	'reviewedpages-all' => 'versiuni revizuite',
@@ -1095,6 +1097,7 @@ $messages['su'] = array(
 
 /** Swedish (Svenska)
  * @author Boivie
+ * @author Dafer45
  * @author Lejonel
  * @author M.M.S.
  * @author McDutchie
@@ -1103,7 +1106,7 @@ $messages['su'] = array(
  */
 $messages['sv'] = array(
 	'reviewedpages' => 'Granskade sidor',
-	'reviewedpages-leg' => 'Lista sidor efter högsta granskningsnivå',
+	'reviewedpages-leg' => 'Lista sidor som har blivit granskade',
 	'reviewedpages-list' => 'Följande {{PLURAL:$1|sida|sidor}} har granskats till (högst) den angivna nivån.',
 	'reviewedpages-none' => 'Den här listan innehåller inga sidor',
 	'reviewedpages-lev-0' => '{{int:revreview-lev-basic}}',
@@ -1305,12 +1308,13 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Horacewai2
  * @author Shinjiman
  */
 $messages['zh-hant'] = array(
 	'reviewedpages' => '複審過的頁面',
 	'reviewedpages-leg' => '列示複審過到指定級數之頁面',
-	'reviewedpages-list' => '以下的頁面已經複審到一個指定的級數',
+	'reviewedpages-list' => '以下的頁面[[{{MediaWiki:Validationpage}}|已經複審]]到一個指定的級數',
 	'reviewedpages-none' => '沒有頁面在這個清單中',
 	'reviewedpages-lev-0' => '視察過',
 	'reviewedpages-lev-1' => '質素',

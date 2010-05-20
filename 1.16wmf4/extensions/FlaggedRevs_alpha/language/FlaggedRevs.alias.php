@@ -26,11 +26,11 @@ $aliases['en'] = array(
 
 /** Aragonese (Aragonés) */
 $aliases['an'] = array(
-	'OldReviewedPages' => array( 'PachinasSuperbisatasAntigas' ),
-	'QualityOversight' => array( 'SuperbisataDeCalidat' ),
-	'ReviewedPages' => array( 'PachinasSuberbisatas' ),
+	'OldReviewedPages' => array( 'PachinasSupervisatasAntigas' ),
+	'QualityOversight' => array( 'SupervisataDeCalidat' ),
+	'ReviewedPages' => array( 'PachinasSubervisatas' ),
 	'StablePages' => array( 'PachinasEstables' ),
-	'UnreviewedPages' => array( 'PachinasNoRebisatas' ),
+	'UnreviewedPages' => array( 'PachinasNoRevisatas' ),
 );
 
 /** Arabic (العربية) */
@@ -50,16 +50,16 @@ $aliases['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'OldReviewedPages' => array( 'صفحات_مراجعة_قديمة' ),
+	'OldReviewedPages' => array( 'صفح_مراجعه_قديمه' ),
 	'ProblemChanges' => array( 'تغييرات_المشاكل' ),
-	'QualityOversight' => array( 'نظر_الجودة' ),
-	'ReviewedPages' => array( 'صفحات_مراجعة' ),
-	'RevisionReview' => array( 'مراجعة_نسخة' ),
+	'QualityOversight' => array( 'مراقبة_الجوده' ),
+	'ReviewedPages' => array( 'صفح_مراجعه' ),
+	'RevisionReview' => array( 'مراجعة_نسخه' ),
 	'Stabilization' => array( 'استقرار' ),
-	'StablePages' => array( 'صفحات_مستقرة' ),
-	'ReviewedVersions' => array( 'نسخ_مراجعة', 'نسخ_مستقرة' ),
-	'UnreviewedPages' => array( 'صفحات_مش_مراجعة' ),
-	'ValidationStatistics' => array( 'إحصاءات_التحقق' ),
+	'StablePages' => array( 'صفح_مستقر' ),
+	'ReviewedVersions' => array( 'نسخ_مراجعه', 'نسخ_مستقره' ),
+	'UnreviewedPages' => array( 'صفح_مش_متراجعه' ),
+	'ValidationStatistics' => array( 'احصائيات_الصلاحيه' ),
 );
 
 /** Southern Balochi (بلوچی مکرانی) */
@@ -114,16 +114,21 @@ $aliases['dsb'] = array(
 
 /** Esperanto (Esperanto) */
 $aliases['eo'] = array(
-	'OldReviewedPages' => array( 'MalfreŝeKontrolitajPaĝoj' ),
-	'QualityOversight' => array( 'KvalitKontrolo' ),
-	'ReviewedPages' => array( 'KontrolitajPaĝoj' ),
-	'StablePages' => array( 'StabilajPaĝoj' ),
-	'UnreviewedPages' => array( 'NekontrolitajPaĝoj' ),
+	'OldReviewedPages' => array( 'Malfreŝe kontrolitaj paĝoj' ),
+	'QualityOversight' => array( 'Kvalita kontrolo' ),
+	'ReviewedPages' => array( 'Kontrolitaj paĝoj' ),
+	'StablePages' => array( 'Stabilaj paĝoj' ),
+	'UnreviewedPages' => array( 'Nekontrolitaj paĝoj' ),
 );
 
 /** Spanish (Español) */
 $aliases['es'] = array(
+	'OldReviewedPages' => array( 'Páginas revisadas antiguas' ),
+	'Stabilization' => array( 'Estabilización' ),
+	'StablePages' => array( 'Páginas publicadas' ),
+	'ReviewedVersions' => array( 'Versiones revisadas' ),
 	'UnreviewedPages' => array( 'Páginas_sin_revisar' ),
+	'ValidationStatistics' => array( 'Estadísticas de validación' ),
 );
 
 /** Persian (فارسی) */
@@ -278,6 +283,8 @@ $aliases['ja'] = array(
 	'RevisionReview' => array( '特定版の査読' ),
 	'Stabilization' => array( '固定', '採択', 'ページの採択' ),
 	'StablePages' => array( '固定ページ', '安定ページ', '採用ページ' ),
+	'ConfiguredPages' => array( '査読設定のあるページ' ),
+	'ReviewedVersions' => array( '固定版', '安定版', '採用版' ),
 	'UnreviewedPages' => array( '未査読ページ', '査読待ちページ' ),
 	'ValidationStatistics' => array( '判定統計' ),
 );
@@ -324,7 +331,8 @@ $aliases['ml'] = array(
 	'ReviewedPages' => array( 'സംശോധനംചെയ്തതാളുകൾ' ),
 	'RevisionReview' => array( 'നാൾപ്പതിപ്പ്സംശോധനം' ),
 	'Stabilization' => array( 'സ്ഥിരപ്പെടുത്തൽ' ),
-	'StablePages' => array( 'സ്ഥിരതാളുകള്‍' ),
+	'StablePages' => array( 'സ്ഥിരതാളുകൾ' ),
+	'ConfiguredPages' => array( 'ക്രമീകരിച്ചതാളുകൾ' ),
 	'ReviewedVersions' => array( 'സംശോധിതപതിപ്പുകൾ', 'സ്ഥിരതയുള്ള പതിപ്പുകൾ' ),
 	'UnreviewedPages' => array( 'സംശോധനംചെയ്യാത്തതാളുകൾ' ),
 	'ValidationStatistics' => array( 'മൂല്യനിർണ്ണയസ്ഥിതിവിവരം' ),
@@ -447,6 +455,7 @@ $aliases['pt-br'] = array(
 	'RevisionReview' => array( 'Revisão de edições' ),
 	'Stabilization' => array( 'Estabilização' ),
 	'StablePages' => array( 'Páginas_estáveis' ),
+	'ConfiguredPages' => array( 'Páginas configuradas' ),
 	'UnreviewedPages' => array( 'Páginas_a_analisar' ),
 	'ValidationStatistics' => array( 'Estatísticas de validação' ),
 );
@@ -519,7 +528,7 @@ $aliases['tl'] = array(
 	'QualityOversight' => array( 'Maingat na pamamahala ng kalidad' ),
 	'ReviewedPages' => array( 'Sinuring mga pahina' ),
 	'RevisionReview' => array( 'Pagsusuri ng pagbabago' ),
-	'Stabilization' => array( 'Pagpapatatag', 'pagpapatibay' ),
+	'Stabilization' => array( 'Pagpapatatag', 'Pagpapatibay' ),
 	'StablePages' => array( 'Matatag na mga pahina' ),
 	'UnreviewedPages' => array( 'Mga pahina hindi pa nasusuri' ),
 	'ValidationStatistics' => array( 'Mga estadistika ng pagtitiyak' ),

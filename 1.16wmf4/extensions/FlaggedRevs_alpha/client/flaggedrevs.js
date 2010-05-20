@@ -19,7 +19,7 @@ var FlaggedRevs = {
 		var toggle = document.getElementById('mw-fr-revisiontoggle');
 		if( toggle ) {
 			toggle.style.display = 'inline';
-			var ratings = document.getElementById('mw-fr-revisionratings');
+			var ratings = document.getElementById('mw-fr-revisiondetails');
 			if( ratings ) {
 				ratings.style.display = 'none';
 			}
@@ -44,9 +44,9 @@ var FlaggedRevs = {
 		}
 	},
 	
-	/* Expands ratings */
+	/* Expands flag info box details */
 	'showBoxDetails': function() {
-		var ratings = document.getElementById('mw-fr-revisionratings');
+		var ratings = document.getElementById('mw-fr-revisiondetails');
 		if( !ratings ) return;
 		var toggle = document.getElementById('mw-fr-revisiontoggle');
 		if( !toggle ) return;
@@ -54,9 +54,9 @@ var FlaggedRevs = {
 		toggle.innerHTML = this.messages.toggleHide;
 	},
 	
-	/* Collapses ratings */
-	'hideBoxDetails': function() {
-		var ratings = document.getElementById('mw-fr-revisionratings');
+	/* Collapses flag info box details */
+	'hideBoxDetails': function( event ) {
+		var ratings = document.getElementById('mw-fr-revisiondetails');
 		if( !ratings ) return;
 		var toggle = document.getElementById('mw-fr-revisiontoggle');
 		if( !toggle ) return;
@@ -64,9 +64,9 @@ var FlaggedRevs = {
 		toggle.innerHTML = this.messages.toggleShow;
 	},
 	
-	/* Toggles ratings */
+	/* Toggles flag info box details */
 	'toggleBoxDetails': function() {
-		var ratings = document.getElementById('mw-fr-revisionratings');
+		var ratings = document.getElementById('mw-fr-revisiondetails');
 		if( !ratings ) return;
 		// Collapsed -> expand
 		if( ratings.style.display == 'none' ) {
@@ -75,6 +75,33 @@ var FlaggedRevs = {
 		} else {
 			this.hideBoxDetails();
 		}
+	},
+	
+	/* Hides flag info box details on mouseOut *except* for event bubbling */
+	'onBoxMouseOut': function( event ) {
+		if( !this.isMouseOutBubble( event, 'mw-fr-revisiontag' ) ) {
+			this.hideBoxDetails();
+		}
+	},
+	
+	/* Checks is mouseOut event is for a child of parentId */
+	'isMouseOutBubble': function( event, parentId ) {
+		var toNode = null;
+		if( event.relatedTarget === undefined ) {
+            toNode = event.toElement; // IE
+        } else {
+            toNode = event.relatedTarget; // FF/Opera/Safari
+        }
+		if( toNode ) {
+			var nextParent = toNode.parentNode;
+			while( nextParent ) {
+				if( nextParent.id == parentId ) {
+					return true; // event bubbling
+				}
+				nextParent = nextParent.parentNode; // next up
+			}
+		}
+		return false;
 	},
 	
 	/* Toggles diffs */

@@ -213,8 +213,9 @@ class OldReviewedPages extends SpecialPage
 			'diff=cur&oldid='.intval($row->stable).'&diffonly=0' );
 		# Show quality level if there are several
 		if ( FlaggedRevs::qualityVersions() ) {
-			$quality = $row->quality ?
-				wfMsgHtml( 'revreview-lev-quality' ) : wfMsgHtml( 'revreview-lev-basic' );
+			$quality = $row->quality
+				? wfMsgHtml( 'revreview-lev-quality' )
+				: wfMsgHtml( 'revreview-lev-basic' );
 			$quality = " <b>[{$quality}]</b>";
 		}
 		# Is anybody watching?
@@ -253,31 +254,13 @@ class OldReviewedPages extends SpecialPage
 		}
 		$key = wfMemcKey( 'stableDiffs', 'underReview', $row->stable, $row->page_latest );
 		# Show if a user is looking at this page
-		if ( ( $val = $wgMemc->get( $key ) ) ) {
-			$underReview = " <b class='fr-under-review'>" .
-				wfMsgHtml( 'oldreviewedpages-viewing' ) . '</b>';
+		if ( $wgMemc->get( $key ) ) {
+			$underReview = ' <span class="fr-under-review">' .
+				wfMsgHtml( 'oldreviewedpages-viewing' ) . '</span>';
 		}
 
 		return( "<li{$css}>{$link} ({$hist}) {$stxt} ({$review}) <i>{$age}</i>" .
 			"{$quality}{$watching}{$underReview}</li>" );
-	}
-	
-	/**
-	 * Get the timestamp of the next revision
-	 *
-	 * @param integer $revision  Revision ID. Get the revision that was after this one.
-	 * @param integer $page, page ID
-	 */
-	protected function getNextRevisionTimestamp( $revision, $page ) {
-		$dbr = wfGetDB( DB_SLAVE );
-		return $dbr->selectField( 'revision', 'rev_timestamp',
-			array(
-				'rev_page' => $page,
-				'rev_id > ' . intval( $revision )
-			),
-			__METHOD__,
-			array( 'ORDER BY' => 'rev_id' )
-		);
 	}
 	
 	protected static function getLineClass( $hours, $uw ) {

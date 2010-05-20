@@ -159,10 +159,10 @@ class FlaggedArticleView {
 			$tag = wfMsgExt( $msg, array( 'parseinline' ), $frev->getRevId(), $time );
 			# Hide clutter
 			if ( !FlaggedRevs::useSimpleUI() && !empty( $flags ) ) {
-				$tag .= " " . FlaggedRevsXML::ratingToggle() .
-					"<span id='mw-fr-revisionratings' style='display:block;'><br />" .
+				$tag .= FlaggedRevsXML::ratingToggle() .
+					"<div id='mw-fr-revisiondetails' style='display:block;'>" .
 					wfMsgHtml( 'revreview-oldrating' ) .
-					FlaggedRevsXML::addTagRatings( $flags ) . '</span>';
+					FlaggedRevsXML::addTagRatings( $flags ) . '</div>';
 			}
 			$css = 'flaggedrevs_notice plainlinks noprint';
 			$tag = "<div id='mw-fr-revisiontag-old' class='$css'>$tag</div>";
@@ -269,17 +269,26 @@ class FlaggedArticleView {
 		} else {
 	   		$this->showDraftVersion( $srev, $tag, $prot );
 		}
+		$encJS = ''; // JS events to use
 		# Some checks for which tag CSS to use
-		if ( FlaggedRevs::useSimpleUI() ) $tagClass = 'flaggedrevs_short';
-		elseif ( $simpleTag ) $tagClass = 'flaggedrevs_notice';
-		elseif ( $pristine ) $tagClass = 'flaggedrevs_pristine';
-		elseif ( $quality ) $tagClass = 'flaggedrevs_quality';
-		else $tagClass = 'flaggedrevs_basic';
+		if ( FlaggedRevs::useSimpleUI() ) {
+			$tagClass = 'flaggedrevs_short';
+			# Collapse the box details on mouseOut
+			$encJS .= ' onMouseOut="FlaggedRevs.onBoxMouseOut(event)"';
+		} elseif ( $simpleTag ) {
+			$tagClass = 'flaggedrevs_notice';
+		} elseif ( $pristine ) {
+			$tagClass = 'flaggedrevs_pristine';
+		} elseif ( $quality ) {
+			$tagClass = 'flaggedrevs_quality';
+		} else {
+			$tagClass = 'flaggedrevs_basic';
+		}
 		# Wrap tag contents in a div
 		if ( $tag != '' ) {
 			$rtl = $wgContLang->isRTL() ? " rtl" : ""; // RTL langauges
 			$css = "{$tagClass}{$rtl} plainlinks noprint";
-			$notice = "<div id=\"mw-fr-revisiontag\" class=\"$css\">$tag</div>\n";
+			$notice = "<div id=\"mw-fr-revisiontag\" class=\"{$css}\"{$encJS}>{$tag}</div>\n";
 			$this->reviewNotice .= $notice;
 		}
 		return true;
@@ -478,14 +487,14 @@ class FlaggedArticleView {
 				$msg = $quality
 					? 'revreview-quality-old'
 					: 'revreview-basic-old';
-				$tag = $prot . $icon .
-					wfMsgExt( $msg, array( 'parseinline' ), $frev->getRevId(), $time );
+				$tag = $prot . $icon;
+				$tag .= wfMsgExt( $msg, 'parseinline', $frev->getRevId(), $time );
 				# Hide clutter
 				if ( !empty( $flags ) ) {
-					$tag .= " " . FlaggedRevsXML::ratingToggle();
-					$tag .= "<span id='mw-fr-revisionratings' style='display:block;'><br />" .
+					$tag .= FlaggedRevsXML::ratingToggle();
+					$tag .= "<div id='mw-fr-revisiondetails' style='display:block;'>" .
 						wfMsgHtml( 'revreview-oldrating' ) .
-						FlaggedRevsXML::addTagRatings( $flags ) . '</span>';
+						FlaggedRevsXML::addTagRatings( $flags ) . '</div>';
 				}
 			}
 		}
@@ -565,12 +574,12 @@ class FlaggedArticleView {
 					# uses messages 'revreview-quality-i', 'revreview-basic-i'
 					$msg .= '-i';
 				}
-				$tag = $prot . $icon .
-					wfMsgExt( $msg, array( 'parseinline' ), $srev->getRevId(), $time, $revsSince );
+				$tag = $prot . $icon;
+				$tag .= wfMsgExt( $msg, 'parseinline', $srev->getRevId(), $time, $revsSince );
 				if ( !empty( $flags ) ) {
-					$tag .= " " . FlaggedRevsXML::ratingToggle();
-					$tag .= "<span id='mw-fr-revisionratings' style='display:block;'><br />" .
-						FlaggedRevsXML::addTagRatings( $flags ) . '</span>';
+					$tag .= FlaggedRevsXML::ratingToggle();
+					$tag .= "<div id='mw-fr-revisiondetails' style='display:block;'>" .
+						FlaggedRevsXML::addTagRatings( $flags ) . '</div>';
 				}
 			}
 		}

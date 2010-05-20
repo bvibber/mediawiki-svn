@@ -1240,6 +1240,7 @@ $messages['pt'] = array(
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
+ * @author Giro720
  */
 $messages['pt-br'] = array(
 	'unreviewedpages' => 'Páginas não analisadas',
@@ -1248,7 +1249,7 @@ $messages['pt-br'] = array(
 	'unreviewed-diff' => 'analisar',
 	'unreviewed-unwatched' => '(não-vigiada)',
 	'unreviewed-watched' => '($1 {{PLURAL:$1|utilizador ativo|utilizadores ativos}} a vigiar)',
-	'unreviewed-list' => 'Esta página lista as páginas de conteúdo que ainda não foram analisadas.',
+	'unreviewed-list' => 'Esta página lista as páginas de conteúdo que não foram revistas até ao nível escolhido.',
 	'unreviewed-none' => 'No momento não há páginas que se enquadrem nestes critérios',
 	'unreviewed-viewing' => '(sob análise)',
 	'unreviewed-hours' => '($1 {{PLURAL:$1|hora|horas}})',
@@ -1262,14 +1263,14 @@ $messages['pt-br'] = array(
  */
 $messages['ro'] = array(
 	'unreviewedpages' => 'Pagini nerevizuite',
-	'unreviewed-legend' => 'Afişează pagini cu conţinut nerevizuit',
+	'unreviewed-legend' => 'Afișează pagini cu conținut nerevizuit',
 	'unreviewed-category' => 'Categorie:',
 	'unreviewed-diff' => 'recenzie',
 	'unreviewed-unwatched' => '(neurmărit)',
-	'unreviewed-watched' => '($1 {{PLURAL:$1|utilizator activ  care urmăreşte|utilizatori activi care urmăresc}})',
+	'unreviewed-watched' => '($1 {{PLURAL:$1|utilizator activ  care urmărește|utilizatori activi care urmăresc}})',
 	'unreviewed-hours' => '($1 {{PLURAL:$1|oră|ore}})',
 	'unreviewed-days' => '($1 {{PLURAL:$1|zi|zile}})',
-	'unreviewed-recent' => '(mai puţin de 1 oră)',
+	'unreviewed-recent' => '(mai puțin de 1 oră)',
 );
 
 /** Tarandíne (Tarandíne)
