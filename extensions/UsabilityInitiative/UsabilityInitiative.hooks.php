@@ -64,7 +64,7 @@ class UsabilityInitiativeHooks {
 
 				// Core functionality of extension scripts
 				array( 'src' => 'js/plugins/jquery.async.js', 'version' => 3 ),
-				array( 'src' => 'js/plugins/jquery.autoEllipsis.js', 'version' => 8 ),
+				array( 'src' => 'js/plugins/jquery.autoEllipsis.js', 'version' => 9 ),
 				array( 'src' => 'js/plugins/jquery.browser.js', 'version' => 6 ),
 				array( 'src' => 'js/plugins/jquery.collapsibleTabs.js', 'version' => 6 ),
 				array( 'src' => 'js/plugins/jquery.color.js', 'version' => 1 ),
@@ -72,7 +72,7 @@ class UsabilityInitiativeHooks {
 				array( 'src' => 'js/plugins/jquery.delayedBind.js', 'version' => 1 ),
 				array( 'src' => 'js/plugins/jquery.suggestions.js', 'version' => 18 ),
 				array( 'src' => 'js/plugins/jquery.expandableField.js', 'version' => 15 ),
-				array( 'src' => 'js/plugins/jquery.suggestions.js', 'version' => 20 ),
+				array( 'src' => 'js/plugins/jquery.suggestions.js', 'version' => 21 ),
 				array( 'src' => 'js/plugins/jquery.textSelection.js', 'version' => 33 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.js', 'version' => 188 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.highlight.js', 'version' => 53 ),
@@ -85,10 +85,10 @@ class UsabilityInitiativeHooks {
 				array( 'src' => 'js/plugins/jquery.wikiEditor.publish.js', 'version' => 5 ),
 			),
 			'combined' => array(
-				array( 'src' => 'js/plugins.combined.js', 'version' => 405 ),
+				array( 'src' => 'js/plugins.combined.js', 'version' => 406 ),
 			),
 			'minified' => array(
-				array( 'src' => 'js/plugins.combined.min.js', 'version' => 405 ),
+				array( 'src' => 'js/plugins.combined.min.js', 'version' => 406 ),
 			),
 		),
 	);
