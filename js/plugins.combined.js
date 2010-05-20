@@ -5182,6 +5182,7 @@ $.fn.autoEllipsis = function( options ) {
 	options = $.extend( {
 		'position': 'center',
 		'tooltip': false,
+		'selector': 'span',
 		'restoreText': false,
 		'hasSpan': false
 	}, options );
@@ -5198,7 +5199,7 @@ $.fn.autoEllipsis = function( options ) {
 		var w = $this.width();
 		var $text;
 		if ( options.hasSpan ) {
-			$text = $this.children( 'span' );
+			$text = $this.children( options.selector );
 		} else {
 			$text = $( '<span />' ).css( 'whiteSpace', 'nowrap' );
 			$this.empty().append( $text );
@@ -5952,7 +5953,7 @@ $.suggestions = {
 							context.data.$container.width( Math.min( expWidth, maxWidth ) );
 						}
 						// autoEllipse the results. Has to be done after changing the width
-						$autoEllipseMe.autoEllipsis( { hasSpan: true, tooltip: true } );
+						$autoEllipseMe.autoEllipsis( { hasSpan: true, tooltip: true, selector: 'div' } );
 					}
 				}
 				break;
