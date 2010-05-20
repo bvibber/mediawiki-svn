@@ -591,7 +591,7 @@ Estas opcións van das máis restritivas ás menos, bloqueando o dominio enteiro
 
 Asegúrese de non bloquear dominios enteiros que alberguen contas de usuario, como blogspot.com, geocities.com etc.',
 	'spamdifftool_no_urls_detected' => "Non se detectou ningún enderezo URL.
-Prema <a href='$1'>aquí</a> para voltar.",
+Prema <a href='$1'>aquí</a> para volver.",
 	'spamdifftool_spam_link_text' => 'engadir ao spam',
 	'spamdifftool_option_domain' => 'todo o deste dominio',
 	'spamdifftool_option_subdomain' => 'todo o deste subdominio',

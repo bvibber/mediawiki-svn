@@ -2878,6 +2878,7 @@ $messages['km'] = array(
  */
 $messages['kn'] = array(
 	'openidoptional' => 'ಐಚ್ಛಿಕ',
+	'openidnickname' => 'ಉಪನಾಮ',
 	'openidlanguage' => 'ಭಾಷೆ',
 	'openidtimezone' => 'ಸಮಯ ವಲಯ',
 	'openid-urls-delete' => 'ಅಳಿಸು',

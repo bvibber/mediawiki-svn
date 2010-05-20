@@ -336,7 +336,7 @@ $messages['es'] = array(
 	'mwe-clipedit-inline-description' => 'Leyenda',
 	'mwe-clipedit-edit-video-tools' => 'Herramientas de edición de video:',
 	'mwe-clipedit-duration' => 'Duración:',
-	'mwe-clipedit-layout' => 'Compsición',
+	'mwe-clipedit-layout' => 'Composición',
 	'mwe-clipedit-layout_right' => 'Composición de la imagen del lado derecho',
 	'mwe-clipedit-layout_left' => 'Composición de la imagen del lado izquierdo',
 );

@@ -724,6 +724,7 @@ $messages['zh-hans'] = array(
 	'usabilityinitiative' => 'Usability Initiative',
 	'usabilityinitiative-desc' => '由维基百科可用性小组开发的新功能，用以增强MediaWiki的可用性',
 	'prefs-beta' => 'Beta特性',
+	'prefs-labs' => '实验室功能',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

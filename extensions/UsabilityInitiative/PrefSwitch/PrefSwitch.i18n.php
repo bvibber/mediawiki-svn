@@ -115,6 +115,8 @@ It is not in used at the referred page, as of 16 May 2010.
 	'prefswitch-survey-answer-whyoff-hard' => 'Should be generic enough to be used as an option for questions:
 *{{msg-mw|Optin-survey-question-whyoptout}}
 *{{msg-mw|Prefswitch-survey-question-whyoff}}.',
+	'prefswitch-survey-answer-whyoff-didntwork' => '{{MediaWiki:Prefswitch-survey-answer-whyoff-hard/qqq}}',
+	'prefswitch-survey-answer-whyoff-notpredictable' => '{{MediaWiki:Prefswitch-survey-answer-whyoff-hard/qqq}}',
 	'prefswitch-survey-answer-whyoff-other' => '{{Identical|Other reason}}',
 );
 
@@ -1074,9 +1076,9 @@ $messages['gl'] = array(
 	'prefswitch-survey-true' => 'Si',
 	'prefswitch-survey-false' => 'Non',
 	'prefswitch-survey-submit-off' => 'Desactivar as novas características',
-	'prefswitch-survey-cancel-off' => 'Se quere seguir usando as novas características, pode voltar a "$1".',
+	'prefswitch-survey-cancel-off' => 'Se quere seguir usando as novas características, pode volver a "$1".',
 	'prefswitch-survey-submit-feedback' => 'Dea a súa opinión',
-	'prefswitch-survey-cancel-feedback' => 'Se non quere dar a súa opinión, pode voltar a "$1".',
+	'prefswitch-survey-cancel-feedback' => 'Se non quere dar a súa opinión, pode volver a "$1".',
 	'prefswitch-survey-question-like' => 'Que é o que lle gustou das novas características?',
 	'prefswitch-survey-question-dislike' => 'Que é o que non lle gustou das novas características?',
 	'prefswitch-survey-question-whyoff' => 'Por que está a desactivar as novas características?
@@ -1119,7 +1121,7 @@ Voltar a "<span class="plainlinks">[$1 $2]</span>".',
 Se quere desactivar as novas características, <span class="plainlinks">[$1 prema aquí]</span>. Pediráselle que primeiro acceda ao sistema ou que cree unha conta.',
 	'prefswitch-main-on' => '===Opinións?===
 Gustaríanos saber o que lle parece. Visite a nosa <span class="plainlinks">[$1 páxina de comentarios]</span>.
-===Quero voltar!===
+===Quero volver!===
 Se quere desactivar as novas características, <span class="plainlinks">[$2 prema aquí]</span>.',
 	'prefswitch-main-off' => '===Próbeas!===
 Se quere activar as novas características, <span class="plainlinks">[$1 prema aquí]</span>.',
@@ -2229,11 +2231,11 @@ $messages['pt'] = array(
 	'prefswitch-survey-cancel-feedback' => 'Se não quiser fazer um comentário, pode voltar à $1.',
 	'prefswitch-survey-question-like' => 'De que coisas gostou nas funcionalidades novas?',
 	'prefswitch-survey-question-dislike' => 'De que coisas não gostou nas funcionalidades novas?',
-	'prefswitch-survey-question-whyoff' => 'Pode é que quer desligar as novas funcionalidades?
-Seleccione todas as opções aplicáveis.',
-	'prefswitch-survey-answer-whyoff-hard' => 'Foi demasiado difícil de utilizar.',
-	'prefswitch-survey-answer-whyoff-didntwork' => 'Não funcionou correctamente.',
-	'prefswitch-survey-answer-whyoff-notpredictable' => 'Não funciona da forma espectável.',
+	'prefswitch-survey-question-whyoff' => 'Por que é que quer desligar as novas funcionalidades?
+Seleccione todas as opções que se aplicam, por favor.',
+	'prefswitch-survey-answer-whyoff-hard' => 'As funcionalidades foram demasiado difíceis de utilizar.',
+	'prefswitch-survey-answer-whyoff-didntwork' => 'As funcionalidades não funcionam correctamente.',
+	'prefswitch-survey-answer-whyoff-notpredictable' => 'As funcionalidades não tiveram o comportamento esperado.',
 	'prefswitch-survey-answer-whyoff-didntlike-look' => 'Não gostei da aparência.',
 	'prefswitch-survey-answer-whyoff-didntlike-layout' => 'Não gostei dos novos separadores e da disposição dos elementos na página. \\',
 	'prefswitch-survey-answer-whyoff-didntlike-toolbar' => 'Não gostei da nova barra de ferramentas.',
