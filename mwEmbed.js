@@ -195,10 +195,12 @@ var MW_EMBED_VERSION = '1.1f';
 		// the wikiText "DOM"... stores the parsed wikiText structure
 		// wtDOM : {}, (not yet supported )
 
-		pOut : '', // the parser output string container
-		init  :function( wikiText ) {
+		pOut: '', // the parser output string container
+		
+		init: function( wikiText ) {
 			this.wikiText = wikiText;
 		},
+		// Update the text value
 		updateText : function( wikiText ) {
 			this.wikiText = wikiText;
 			// invalidate the output (will force a re-parse )
@@ -210,30 +212,31 @@ var MW_EMBED_VERSION = '1.1f';
 		 * This parser is only tested against msg templates see tests/testLang.html
 		 */
 		parse : function() {
-			function rdpp ( txt , cn ) {
+			function recurseTokenizeNodes ( text , cn ) {
 				var node = { };
 				// Inspect each char
-				for ( var a = 0; a < txt.length; a++ ) {
-					if ( txt[a] == '{' && txt[a + 1] == '{' ) {
+				for ( var a = 0; a < text.length; a++ ) {
+					if ( text[a] == '{' && text[a + 1] == '{' ) {
 						a = a + 2;
-						node['p'] = node;
-						if ( !node['c'] )
-							node['c'] = new Array();
+						node['parent'] = node;
+						if ( !node['child'] ) {
+							node['child'] = new Array();
+						}
 
-						node['c'].push( rdpp( txt.substr( a ), true ) );
-					} else if ( txt[a] == '}' && txt[a + 1] == '}' ) {
+						node['child'].push( recurseTokenizeNodes( text.substr( a ), true ) );
+					} else if ( text[a] == '}' && text[a + 1] == '}' ) {
 						a++;
-						if ( !node['p'] ) {
+						if ( !node['parent'] ) {
 							return node;
 						}
-						node = node['p'];
+						node = node['parent'];
 					}
-					if ( !node['t'] ) {
-						node['t'] = '';
+					if ( !node['text'] ) {
+						node['text'] = '';
 					}
 					// Don't put }} closures into output:
-					if ( txt[a] &&  txt[a] != '}' ) {
-							node['t'] += txt[a];
+					if ( text[a] &&  text[a] != '}' ) {
+							node['text'] += text[a];
 					}
 				}
 				return node;
@@ -243,58 +246,58 @@ var MW_EMBED_VERSION = '1.1f';
 			 * @param {String} ts Template String to be parsed 
 			 */
 			function parseTmplTxt( ts ) {
-				var tObj = { };
+				var templateObject = { };
 								
 				// Get template name:
-				tname = ts.split( '\|' ).shift() ;
-				tname = tname.split( '\{' ).shift() ;
-				tname = tname.replace( /^\s+|\s+$/g, "" ); //trim
+				templateName = ts.split( '\|' ).shift() ;
+				templateName = templateName.split( '\{' ).shift() ;
+				templateName = templateName.replace( /^\s+|\s+$/g, "" ); //trim
 
 				// Check for arguments:
-				if ( tname.split( ':' ).length == 1 ) {
-					tObj["name"] = tname;
+				if ( templateName.split( ':' ).length == 1 ) {
+					templateObject["name"] = templateName;
 				} else {
-					tObj["name"] = tname.split( ':' ).shift();
-					tObj["arg"] = tname.split( ':' ).pop();
+					templateObject["name"] = templateName.split( ':' ).shift();
+					templateObject["arg"] = templateName.split( ':' ).pop();
 				}
 									
 				var pSet = ts.split( '\|' );
 				pSet.splice( 0, 1 );
 				if ( pSet.length ) {
-					tObj.param = new Array();
+					templateObject.param = new Array();
 					for ( var pInx in pSet ) {
 						var tStr = pSet[ pInx ];
 						// check for empty param
 						if ( tStr == '' ) {
-							tObj.param[ pInx ] = '';
+							templateObject.param[ pInx ] = '';
 							continue;
 						}
 						for ( var b = 0 ; b < tStr.length ; b++ ) {
 							if ( tStr[b] == '=' && b > 0 && b < tStr.length && tStr[b - 1] != '\\' ) {
 								// named param
-								tObj.param[ tStr.split( '=' ).shift() ] =	tStr.split( '=' ).pop();
+								templateObject.param[ tStr.split( '=' ).shift() ] =	tStr.split( '=' ).pop();
 							} else {
 								// indexed param
-								tObj.param[ pInx ] = tStr;
+								templateObject.param[ pInx ] = tStr;
 							}
 						}
 					}
 				}		
-				return tObj;
+				return templateObject;
 			}
 			
 			/**
 			 * Get the Magic text from a template node
 			 */
 			function getMagicTxtFromTempNode( node ) {
-				node.tObj = parseTmplTxt ( node.t );
+				node.templateObject = parseTmplTxt ( node.text );
 				// Do magic swap if template key found in pMagicSet
-				if ( node.tObj.name in pMagicSet ) {
-					var nt = pMagicSet[ node.tObj.name ]( node.tObj );
+				if ( node.templateObject.name in pMagicSet ) {
+					var nt = pMagicSet[ node.templateObject.name ]( node.templateObject );
 					return nt;
 				} else {
 					// don't swap just return text
-					return node.t;
+					return node.text;
 				}
 			}
 			
@@ -308,36 +311,36 @@ var MW_EMBED_VERSION = '1.1f';
 				if ( !pNode )
 					pNode = node;
 
-				if ( node['c'] ) {
+				if ( node['child'] ) {
 					// swap all the kids:
-					for ( var i in node['c'] ) {
-						var nt = recurse_magic_swap( node['c'][i] );
+					for ( var i in node['child'] ) {
+						var nodeText = recurse_magic_swap( node['child'][i] );
 						// swap it into current
-						if ( node.t ) {
-							node.t = node.t.replace( node['c'][i].t, nt );
+						if ( node.text ) {
+							node.text = node.text.replace( node['child'][i].text, nodeText );
 						}
 						// swap into parent
-						pNode.t  = pNode.t.replace( node['c'][i].t, nt );
+						pNode.text  = pNode.text.replace( node['child'][i].text, nodeText );
 					}
-					// Do the current node:
-					var nt = getMagicTxtFromTempNode( node );
-					pNode.t = pNode.t.replace( node.t , nt );
-					// run the swap for the outer most node
-					return node.t;
-				} else {
-					// node.t = getMagicFromTempObj( node.t )
+					// Get the updated node text
+					var nodeText = getMagicTxtFromTempNode( node );
+					pNode.text = pNode.text.replace( node.text , nodeText );
+					// return the node text
+					return node.text;
+				} else {					
 					return getMagicTxtFromTempNode( node );
 				}
 			}
 			
 			// Parse out the template node structure:
-			this.pNode = rdpp ( this.wikiText );
+			this.pNode = recurseTokenizeNodes ( this.wikiText );
 			
 			// Strip out the parent from the root	
-			this.pNode['p'] = null;
+			this.pnode['parent'] = null;
 			
 			// Do the recursive magic swap text:
 			this.pOut = recurse_magic_swap( this.pNode );
+						
 		},
 		
 		/**
@@ -346,20 +349,20 @@ var MW_EMBED_VERSION = '1.1f';
 		 * Get a requested template from the wikitext (if available)
 		 * @param templateName
 		 */
-		templates: function( tname ) {
+		templates: function( templateName ) {
 			this.parse();
 			var tmplSet = new Array();
 			function getMatchingTmpl( node ) {
-				if ( node['c'] ) {
-					for ( var i in node['c'] ) {
-						getMatchingTmpl( node['c'] );
+				if ( node['child'] ) {
+					for ( var i in node['child'] ) {
+						getMatchingTmpl( node['child'] );
 					}
 				}
-				if ( tname && node.tObj ) {
-					if ( node.tObj['name'] == tname )
-						tmplSet.push( node.tObj );
-				} else if ( node.tObj ) {
-					tmplSet.push( node.tObj );
+				if ( templateName && node.templateObject ) {
+					if ( node.templateObject['name'] == templateName )
+						tmplSet.push( node.templateObject );
+				} else if ( node.templateObject ) {
+					tmplSet.push( node.templateObject );
 				}
 			}
 			getMatchingTmpl( this.pNode );

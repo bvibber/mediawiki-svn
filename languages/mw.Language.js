@@ -91,21 +91,21 @@
 		if( typeof args != 'undefined' ) {
 			
 			// Make arg into an array if its not already an array
-			if ( typeof args == 'string' 
+			if ( typeof args == 'string'
 				|| typeof args == 'number'
-				|| args instanceof jQuery) 
+				|| args instanceof jQuery ) 
 			{
 				args = [ args ];
 			}
 			
 			// Put any extra arguments into the args array
 			var extraArgs = $j.makeArray( arguments );
-			for(var i=2; i < extraArgs.length; i ++ ){		
+			for(var i=2; i < extraArgs.length; i ++ ) {		
 				args.push(  extraArgs[ i ] );
 			}
-			var ms =  mw.Language.msgReplaceArgs( messageCache[ msgKey ], args );
+			var ms =  mw.Language.msgReplaceStringArgs( messageCache[ msgKey ], args );			
 		}else{
-			var ms = messageCache[ msgKey ];
+			var ms = messageCache[ msgKey ];			
 		}
 		
 		// A quick check to see if we need to send the msg to the 'parser'
@@ -116,18 +116,55 @@
 		// Send the msg key through the parser
 		var pObj = mw.parser( ms );
 		
-		// Return the transformed msg
-		return pObj.getHTML();
+		// Get template transformed text
+		var preLinkHtml = pObj.getHTML();
+		
+		//@@TODO Grab any links if present of form [$1 link text]
+		
+		// Setup a jQuery 
+		$jqueryMessage = mw.Language.msgReplaceJQueryArgs( message, args );
+		if( $jqueryMessage ){ 
+			return $jqueryMessage;
+		}
+		
+		// Else just return the normal text msg
+		return ms;
+		
 	}
 	
 	/**
 	* Swap in an array of values for $1, $2, $n for a given msg key 
 	*
-	* @param string msgKey The msg key to lookup
-	* @param [Array] args  An array of string or jquery objects to be swapped in
+	* @param {string} msgKey The msg key to lookup
+	* @param {Array} args  An array of string or jquery objects to be swapped in
 	* @return string
 	*/
-	mw.Language.msgReplaceArgs = function( message , args ) {		
+	mw.Language.msgReplaceJQueryArgs = function( message , args ) {
+		var $jQueryMessage = false;
+		for ( var v = 0; v < args.length; v++ ) {				
+			if( typeof args[v] == 'undefined' ) {
+				continue;
+			}				
+			var replaceValue =  args[ v ];
+			if( replaceValue instanceof jQuery) {
+				// Setup the jqueryMessage if not set
+				if( !$jQueryMessage ){
+					$jQueryMessage = $j( '<span />' );
+				}
+				$jQueryMessage.find( '#jQuerySwap' + v ).replaceWith( replaceValue );
+			}
+		}
+		return $jQueryMessage;
+	}		
+	
+	/**
+	* Swap in an array of values for $1, $2, $n for a given msg key 
+	*
+	* @param string msgKey The msg key to lookup
+	* @param {Array} args  An array of string or jquery objects to be swapped in
+	* @return string
+	*/
+	mw.Language.msgReplaceStringArgs = function( message , args ) {		
 		// Replace Values
 		for ( var v = 0; v < args.length; v++ ) {				
 			if( typeof args[v] == 'undefined' ) {
@@ -145,17 +182,13 @@
 						
 			// Check if we got passed in a jQuery object:			
 			if( replaceValue instanceof jQuery) {
-				// Convert message into jQuery object
-				if( ! message instanceof jQuery ){
-					message = $j('<span />').html( message );
-				}
-				message = message.replace( rep, $j('<div />').append( replaceValue ).html() );
+				// put in a jquery swap span (note no worry of id conflicts because its never put into the dom )				
+				message = message.replace( rep, '<span id="jQuerySwap' + v +'"></span>' );											
 			} else {
 				// Assume replaceValue is a string
 				message = message.replace( rep, replaceValue );
 			}				
-		}	
-		// If we did jQuery replacements return a jQuery object	
+		}
 		return message;
 	}
 
