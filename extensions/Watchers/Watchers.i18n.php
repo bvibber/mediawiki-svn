@@ -54,6 +54,23 @@ $messages['af'] = array(
 	'watchers_less_than_x' => 'Minder as $1 gebruikers hou die bladsy dop.',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'watchers' => 'Mbikqyrësve',
+	'watchers-desc' => 'Tregon [[Special:mbikqyrësve|që përdoruesit kanë një faqe në listën mbikqyrëse e tyre]]',
+	'watchers_link_title' => 'Kush e shikon këtë faqe?',
+	'watchers_error_article' => "Gabim''':''' Faqja nuk ekziston.",
+	'watchers-error-invalid-page' => "Gabim''':''' \"\$1\" është një titull i vlefshëm faqe.",
+	'watchers_header' => '{{PLURAL:$2|User cili është|Përdoruesit që janë}} shikuar "[[:$1]]"',
+	'watchers_noone_watches' => 'Askush nuk e shikon faqen e [[:$1]].',
+	'watchers_x_or_more' => '$1 ose me shume {{PLURAL:$1|përdorues|përdorues}}kanë faqen e [[:$2]] në listën mbikqyrëse të tyre.',
+	'watchers_less_than_x' => 'Më pak se $1 {{PLURAL:$1|përdorues|përdorues}} kanë faqen e [[:$2]] në listën mbikqyrëse të tyre.',
+	'watchers-num' => '$1 {{PLURAL:$1|përdorues ka|perdorues kanë}} faqen e [[:$2]] të {{PLURAL:$1|e tyre|e tyre}} listën mbikqyrëse.',
+	'right-watchers-list' => '[[Special:Watchers|Lista e përdoruesve shikuar një faqe të veçantë]]',
+);
+
 /** Old English (Ænglisc)
  * @author Wōdenhelm
  */

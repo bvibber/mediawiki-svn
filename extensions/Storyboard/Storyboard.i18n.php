@@ -125,6 +125,29 @@ $messages['af'] = array(
 	'storyboard-publish' => 'Publiseer',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'storyboard-notsubmitted' => 'Authentication dështuar, nuk ka histori është ruajtur.',
+	'storyboard-charstomany' => '$1 shkronja shumë!',
+	'storyboard-morecharsneeded' => 'karaktere $1 më të nevojshme',
+	'storyboard-charactersleft' => '$1 shkronja majtë',
+	'storyboard-createdsuccessfully' => 'Thank you for sharing historinë tënde me ne! Ne do të analizojmë atë së shpejti. Ju mund [$1 të lexuar të botuar tregimet].',
+	'storyboard-emailtitle' => 'paraqitjes Story suksesshëm',
+	'storyboard-emailbody' => 'Historia juaj me titull "$1" është paraqitur me sukses. Ne do të analizojmë atë së shpejti. Ju mund [$2 lexuar botuar tregimet].',
+	'storyreview' => 'shqyrtim Story',
+	'storyboard-deleteimage' => 'image Fshije',
+	'storyboard-done' => 'E bërë',
+	'storyboard-working' => 'Duke punuar ...',
+	'storyboard-imagedeletionconfirm' => 'A jeni i sigurt që dëshironi të fshijë imazhin kjo histori e?',
+	'storyboard-imagedeleted' => 'Image fshirë',
+	'storyboard-showimage' => 'image Show',
+	'storyboard-hideimage' => 'image Hide',
+	'storyboard-deletestory' => 'Heq',
+	'storyboard-storydeletionconfirm' => 'A jeni i sigurt se doni te fshini përgjithmonë këtë histori?',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by

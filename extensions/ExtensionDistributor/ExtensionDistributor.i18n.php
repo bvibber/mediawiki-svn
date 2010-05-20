@@ -83,6 +83,18 @@ $messages['af'] = array(
 	'extdist-want-more' => "Laai nog 'n uitbreiding af",
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'extensiondistributor' => 'Shkarko extension MediaWiki',
+	'extensiondistributor-desc' => 'Extension për shpërndarjen e arkivave fotografi e shtesave',
+	'extdist-not-configured' => 'Ju lutem, konfiguroni $wgExtDistTarDir dhe $wgExtDistWorkingCopy',
+	'extdist-wc-missing' => 'Konfiguruar directory kopje e punës nuk ekziston!',
+	'extdist-no-such-extension' => 'Jo zgjatje e tillë "$1"',
+	'extdist-no-such-version' => 'Zgjatja "$1" nuk ekziston në versionin e "" $2.',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK

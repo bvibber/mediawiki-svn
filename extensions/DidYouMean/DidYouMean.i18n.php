@@ -26,6 +26,13 @@ $messages['af'] = array(
 	'didyoumean-desc' => 'Voeg skakels na bladsye met "soortgelyke" titels',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'didyoumean-desc' => 'Adds lidhje me faqet me "" tituj të ngjashëm',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

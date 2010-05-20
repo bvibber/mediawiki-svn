@@ -103,6 +103,40 @@ $messages['af'] = array(
 	'usagestatisticscalselect' => 'Kies',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'specialuserstats' => 'Statistikat e shfrytëzuar',
+	'usagestatistics' => 'Statistikat e shfrytëzuar',
+	'usagestatistics-desc' => 'përdorues Trego individuale dhe statistikat e përgjithshme wiki përdorimit',
+	'usagestatisticsfor' => '<h2>Statistikat e shfrytëzuar për [[User:$1|$1]] </h2>',
+	'usagestatisticsforallusers' => '<h2>Statistikat e shfrytëzuar për të gjithë përdoruesit </h2>',
+	'usagestatisticsinterval' => 'Intervali:',
+	'usagestatisticsnamespace' => 'Hapësira:',
+	'usagestatisticsexcluderedirects' => 'Përjashto përcjellëse',
+	'usagestatistics-namespace' => 'Këto janë statistikat mbi [[Special:Allpages/$1|$2]] hapësira.',
+	'usagestatistics-noredirects' => '[[Special:ListRedirects|Redirects]] nuk janë marrë parasysh.',
+	'usagestatisticstype' => 'Tipi:',
+	'usagestatisticsstart' => 'Data e fillimit:',
+	'usagestatisticsend' => 'Data Fundi:',
+	'usagestatisticssubmit' => 'Statistikat e Generate',
+	'usagestatisticsnostart' => 'Ju lutem specifikoni një date fillimi',
+	'usagestatisticsnoend' => 'Ju lutem specifikoni një datë e fundit',
+	'usagestatisticsbadstartend' => '<b><i>fillimin</i> e keqe dhe / ose data <i>fund!</i></b>',
+	'usagestatisticsintervalday' => 'Ditë',
+	'usagestatisticsintervalweek' => 'Javë',
+	'usagestatisticsintervalmonth' => 'Muaj',
+	'usagestatisticsincremental' => 'Rritje',
+	'usagestatisticsincremental-text' => 'rritje',
+	'usagestatisticscumulative' => 'Kumulative',
+	'usagestatisticscumulative-text' => 'kumulative',
+	'usagestatisticscalselect' => 'Zgjedh',
+	'usagestatistics-editindividual' => 'përdorues individual $1 redaktimet e statistikave',
+	'usagestatistics-editpages' => 'përdorues individual $1 faqe statistikat',
+	'right-viewsystemstats' => 'Shikoni [[Special:UserStats Statistikat|wiki përdorimin]]',
+);
+
 /** Amharic (አማርኛ)
  * @author Codex Sinaiticus
  */

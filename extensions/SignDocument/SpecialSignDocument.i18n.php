@@ -169,6 +169,14 @@ $messages['af'] = array(
 	'sign-uniquequery-1signed2' => '[{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1] ondertekende [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs}} $2].',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'signdocument' => 'dokument Regjistrohu',
+	'sign-nodocselected' => 'Ju lutem zgjidhni dokumentin që dëshironi të nënshkruar.',
+);
+
 /** Amharic (አማርኛ)
  * @author Codex Sinaiticus
  */

@@ -74,6 +74,35 @@ $messages['af'] = array(
 	'prefstats-factor-default' => 'terug na die verstek-skaal',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'prefstats' => 'Statistikat e Preferencë',
+	'prefstats-desc' => 'Statistika Track se si shumë përdorues të ketë preferenca të caktuara aktivizuar',
+	'prefstats-title' => 'Statistikat e Preferencë',
+	'prefstats-list-intro' => 'Aktualisht, preferencat e mëposhtme janë duke u gjurmuar.
+ Klikoni mbi një për të parë statistikave në lidhje me të.',
+	'prefstats-noprefs' => 'Nuk ka preferencat janë duke u gjurmuar. Konfiguro $wgPrefStatsTrackPrefs për të gjetur preferencave.',
+	'prefstats-counters' => '* $1 {{PLURAL:$1|përdorues ka|perdorues kanë}} mundësuar këtë parapëlqim që nga statistika preferencë ishin aktivizuar
+** $2 {{PLURAL:$2 |përdorues ka akoma|përdoruesit kanë ende}} është aktivizuar
+** $3 {{PLURAL:$3|përdorues ka|perdorues kanë}} me aftësi të kufizuara që',
+	'prefstats-counters-expensive' => '* $1 {{PLURAL:$1|përdorues ka|perdorues kanë}} mundësuar këtë parapëlqim që nga statistika preferencë ishin aktivizuar
+** $2 {{PLURAL:$2|përdorues ka akoma|përdoruesit kanë ende}} është aktivizuar
+\\',
+	'prefstats-xaxis' => 'Kohëzgjatja (orë)',
+	'prefstats-factors' => 'Shiko për: $1',
+	'prefstats-factor-hour' => 'orë',
+	'prefstats-factor-sixhours' => 'gjashtë orë',
+	'prefstats-factor-day' => 'ditë',
+	'prefstats-factor-week' => 'javë',
+	'prefstats-factor-twoweeks' => 'dy javë',
+	'prefstats-factor-fourweeks' => 'katër javë',
+	'prefstats-factor-default' => 'back to default shkallë',
+	'prefstats-legend-out' => 'Zgjedhur nga',
+	'prefstats-legend-in' => 'Zgjedhur në',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author Orango

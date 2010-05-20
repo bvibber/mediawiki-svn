@@ -127,6 +127,16 @@ Gebruik die [[Special:IPBlockList|{{int:ipblocklist}}]].',
 	'right-crosswikiblock' => "Blokkeer en deblokkeer gebruikers op ander wiki's",
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'crosswikiblock-desc' => 'Lejon të bllokojnë përdorues në wikis tjerë duke përdorur një [[Special:Crosswikiblock|faqe veçantë]]',
+	'crosswikiblock' => 'Blloko përdorues në wiki të tjera',
+	'crosswikiblock-header' => 'Kjo faqe lejon të bllokojnë përdorues në wiki të tjera. Ju lutemi të kontrolloni nëse ju keni të drejtë të veprojë në këtë wiki dhe veprimet tuaja ndeshje të gjitha politikat.',
+	'crosswikiblock-target' => 'Adresa IP ose emër përdoruesi dhe wiki destinacion:',
+);
+
 /** Amharic (አማርኛ)
  * @author Codex Sinaiticus
  */
@@ -898,7 +908,7 @@ Por favor, comprobe se lle está permitido actuar neste wiki e se os seus actos 
 	'crosswikiunblock-submit' => 'Desbloquear este usuario',
 	'crosswikiunblock-success' => "O usuario '''$1''' foi desbloqueado con éxito.
 
-Voltar a:
+Volver a:
 * [[Special:CrosswikiBlock|Formulario de bloqueo]]
 * [[$2]]",
 	'crosswikiblock-nousername' => 'Non foi inserido ningún alcume',
@@ -913,7 +923,7 @@ Voltar a:
 	'crosswikiblock-noblock' => 'Este usuario non está bloqueado.',
 	'crosswikiblock-success' => "O usuario '''$3''' foi bloqueado con éxito.
 
-Voltar a:
+Volver a:
 * [[Special:CrosswikiBlock|Formulario de bloqueo]]
 * [[$4]]",
 	'crosswikiunblock-local' => 'Os desbloqueos locais non están soportados mediante esta interface. Use [[Special:IPBlockList|{{int:ipblocklist}}]]',

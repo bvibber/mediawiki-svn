@@ -19,6 +19,17 @@ $messages['qqq'] = array(
 	'stalkerlog-desc' => 'Short description of the extension, shown on [[Special:Version]]. Do not translate or change links.',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'stalkerlog-desc' => 'Shton [[Special:Log/stalkerlog|një regjistër]] e hyrje të përdoruesit dhe mbylljes',
+	'stalkerlog-log-login' => 'futur me emrin tuaj',
+	'stalkerlog-log-logout' => 'regjistruar jashtë.',
+	'stalkerlog-log-type' => 'log User authentication',
+	'stalkerlog-log-text' => 'Ky është një regjistër për hyrje të përdoruesit dhe mbylljes.',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

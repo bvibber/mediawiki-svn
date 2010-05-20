@@ -88,6 +88,21 @@ $messages['af'] = array(
 	'importusers-realname' => 'regte naam',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'importusers-log-summary' => 'Përmbledhje',
+	'importusers-log-summary-all' => 'Të gjithë',
+	'importusers-log-summary-added' => 'Added',
+	'importusers-log-summary-updated' => 'Përditësuar',
+	'importusers-login-name' => 'Emri Identifikohu',
+	'importusers-password' => 'fjalëkalim',
+	'importusers-email' => 'e-mail',
+	'importusers-realname' => 'Emri i vërtetë',
+	'right-import_users' => 'Importi përdoruesit në masë',
+);
+
 /** Amharic (አማርኛ)
  * @author Codex Sinaiticus
  */

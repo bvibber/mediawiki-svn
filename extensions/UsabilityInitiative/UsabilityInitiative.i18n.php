@@ -36,6 +36,16 @@ $messages['af'] = array(
 	'usabilityinitiative-desc' => 'Funksionaliteit wat deur Wikipedia se Bruikbaarheid-inisiatief ontwikkel is om MediaWiki meer bruikbaarheid te maak',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'usabilityinitiative' => 'Përdorshmërisë Nisma',
+	'usabilityinitiative-desc' => 'Karakteristika të zhvilluar nga Iniciativa përdorshmërisë Wikipedia për të rritur përdorshmërisë së MediaWiki',
+	'prefs-beta' => 'karakteristika Beta',
+	'prefs-labs' => 'Laboratorë karakteristika',
+);
+
 /** Arabic (العربية)
  * @author OsamaK
  */

@@ -22,6 +22,14 @@ $messages['qqq'] = array(
 	'userthrottle-desc' => 'Short description of the extension, shown in [[Special:Version]]. Do not translate or change links.',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'userthrottle-desc' => 'krijimin mbyt përdorues',
+	'acct_creation_global_hard_throttle_hit' => 'Krijimi i llogarisë është pezulluar automatikisht për disa sekonda për të reduktuar sulmeve nga përmbytjet e regjistrimit. Ju lutem prisni nje moment dhe e goditi "rifreskoni" në shfletuesin tuaj për të rikthejë.',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

@@ -308,6 +308,25 @@ Die nuutste weergawe $2 is beskikbaar by http://pecl.php.net/package/APC/$2",
 	'viewapc-usercache-cleared' => "'''''Applikasiekas is opgeruim.'''''",
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'viewapc-ls-sort-timeout' => 'Kohëzgjatja',
+	'viewapc-ls-limit-none' => 'Të gjithë',
+	'viewapc-ls-more' => "''Nuk më $1 {{PLURAL:$1|hyrje|entries}}''",
+	'viewapc-ls-nodata' => "Nuk ka të dhëna përputhen''''",
+	'viewapc-delete-ok' => 'hyrje Cache <nowiki> $1 </nowiki> fshihet.',
+	'viewapc-delete-failed' => 'Gabim hyrje të fshini cache <nowiki> $1 </nowiki> .',
+	'viewapc-version-info' => 'informacion Version',
+	'viewapc-version-changelog' => 'Changelog',
+	'viewapc-version-failed' => 'Në pamundësi për të shkoj të marr informacion versionin.',
+	'viewapc-version-ok' => 'Ju po xhironi versionin më të fundit të APC ($1)',
+	'viewapc-version-old' => 'Ju jeni drejtimin e një version më të vjetër të APC ($1). Version i ri $2 është në dispozicion në http://pecl.php.net/package/APC/ $2',
+	'viewapc-filecache-cleared' => "''''' Cache File pastruara .'''''",
+	'viewapc-usercache-cleared' => "''''' Cache Aplikimi pastruara .'''''",
+);
+
 /** Amharic (አማርኛ)
  * @author Codex Sinaiticus
  */

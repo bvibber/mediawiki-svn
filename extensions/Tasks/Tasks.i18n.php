@@ -145,6 +145,13 @@ $messages['af'] = array(
 	'tasks_logentry' => 'Vir "[[$1]]"',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'tasks_error1' => 'Task nuk u krijua: ka tashmë një detyrë të tillë!',
+);
+
 /** Amharic (አማርኛ)
  * @author Codex Sinaiticus
  */

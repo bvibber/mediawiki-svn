@@ -18,6 +18,13 @@ $messages['qqq'] = array(
 	'skinperpage-desc' => 'Short description of the Skinperpage extension, shown in [[Special:Version]]. Do not translate or change links.',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'skinperpage-desc' => 'Adds <code><skin></code> tag të përdorni lëkurat të ndryshme për faqe',
+);
+
 /** Aragonese (Aragonés)
  * @author Juanpabl
  */

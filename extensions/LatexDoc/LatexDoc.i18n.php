@@ -31,6 +31,19 @@ $messages['qqq'] = array(
 	'latexdoc-desc' => 'Short description of the Latexdoc extension, shown in [[Special:Version]]. Do not translate or change links.',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'latexdoc_no_text' => 'Page nuk përmban tekst, nuk mund të gjenerojë DVI',
+	'latexdoc_cant_create_dir' => 'Nuk mund të krijohet dosja e perkohshme $1',
+	'latexdoc_cant_write' => 'Nuk munda të shkruaj file $1',
+	'latexdoc_error' => 'LaTeX gabim Komanda: $1 Output: $2 $3',
+	'latexdoc_get_dvi' => 'Get DVI',
+	'latexdoc_get_pdf' => 'Get PDF',
+	'latexdoc-desc' => 'redaktimi bashkëpunuese të dokumenteve LaTeX',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

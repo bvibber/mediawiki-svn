@@ -35,6 +35,16 @@ $messages['af'] = array(
 	'msfunc_div_zero' => 'Deling deur nul',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'msfunc_desc' => 'Një koleksion të funksioneve matematikore dhe statistikore',
+	'msfunc_nan' => 'rezultojnë vlera nuk është një numër',
+	'msfunc_inf' => 'Vlera rezultojnë është pafundësi',
+	'msfunc_div_zero' => 'Ndarja nga zero',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

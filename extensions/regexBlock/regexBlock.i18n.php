@@ -142,6 +142,31 @@ $messages['af'] = array(
 	'regexblock-view-time' => 'op $1',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'regexblock-unblock-success' => 'Zhbllokuar sukses',
+	'regexblock-unblock-log' => "''$1''Emri i përdoruesit ose IP adresa ',' është çbllokoi.",
+	'regexblock-unblock-error' => 'Gabim zhbllokimin e $1. Ndoshta nuk ka përdorues të tillë.',
+	'regexblock-regex-filter' => 'ose vlera regex:',
+	'regexblock-view-blocked' => 'View bllokuar nga:',
+	'regexblock-view-all' => 'Të gjithë',
+	'regexblock-view-go' => 'Shkoj',
+	'regexblock-view-match' => '(Ndeshje e saktë)',
+	'regexblock-view-regex' => '(Ndeshje regex)',
+	'regexblock-view-account' => '(Krijimi llogari bllok)',
+	'regexblock-view-reason' => 'arsye: $1',
+	'regexblock-view-reason-default' => 'arsye gjenerike',
+	'regexblock-view-block-infinite' => 'bllok i përhershëm',
+	'regexblock-view-block-by' => 'bllokuar nga:',
+	'regexblock-view-block-unblock' => 'zhbllokuar',
+	'regexblock-view-stats' => 'Statistikat',
+	'regexblock-view-empty' => 'Lista e emrave të bllokuar dhe adresat është e zbrazët.',
+	'regexblock-view-time' => 'në $1',
+	'right-regexblock' => 'Blloko përdoruesit nga redaktimi në të gjitha wikis në fermë wiki',
+);
+
 /** Amharic (አማርኛ)
  * @author Codex Sinaiticus
  */

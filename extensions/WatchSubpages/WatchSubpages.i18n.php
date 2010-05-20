@@ -32,6 +32,18 @@ $messages['qqq'] = array(
 	'watchsubpages-desc' => '{{desc}}',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'watchsubpages' => 'subpages Watch',
+	'watchsubpages-addedtowatchlist' => 'Në vijim është shtuar listës mbikqyrëse tuaj.',
+	'watchsubpages-addtitles' => 'Shto faqe',
+	'watchsubpages-addtitlestowatchlist' => 'Shto faqe tek lista mbikqyrëse',
+	'watchsubpages-desc' => 'Shpejt [[Special:WatchSubpages|shtoni gjithë subpages]] për një faqe të lista mbikqyrëse',
+	'watchsubpages-form' => 'Zgjidhni faqe për të shtuar listës mbikqyrëse tuaj më poshtë. Për të shtuar një faqe, kontrolloni kutinë tjetër për atë, dhe kliko tek "{{int:watchsubpages-addtitles}}". Kur kontrolluar ose unchecking faqe te shumfisht, mbajtja e të kyç ndryshim ju lejon të zgjidhni kutitë e njëpasnjëshme duke klikuar çdo fund të gamë të kontrollohet.',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK

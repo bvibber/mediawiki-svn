@@ -20,6 +20,15 @@ $messages['qqq'] = array(
 	'stalepages-desc' => 'Short description of the extension, shown on [[Special:Version]]. Do not translate or change links.',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'stalepages' => 'Stale faqe',
+	'stalepages-desc' => 'Gjeneron një [[Special:Stalepages|Lista e faqeve]] që nuk janë redaktuar kohët e fundit',
+	'stalepages-summary' => 'Kjo është një listë e faqeve që nuk janë edituar në fundit $1 {{PLURAL:$1|ditë|ditëve}}.',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK

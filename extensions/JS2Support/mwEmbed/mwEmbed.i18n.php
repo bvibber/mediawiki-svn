@@ -29,6 +29,20 @@ $messages['af'] = array(
 	'mwe-cancel' => 'Kanselleer',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'mwe-loading_txt' => 'Loading ...',
+	'mwe-error_load_lib' => 'Gabim: $1 JavaScript nuk ishte shikohen ose nuk define $2',
+	'mwe-apiproxy-setup' => 'Ngritja proxy API',
+	'mwe-load-drag-item' => 'Loading zvarritur artikull',
+	'mwe-ok' => 'Në rregull',
+	'mwe-cancel' => 'Anuloj',
+	'mwe-enable-gadget' => 'Aktivizo multimedial beta (mwEmbed) për të gjitha faqet',
+	'mwe-enable-gadget-done' => 'Multimedia beta vegël ka qenë i aktivizuar',
+);
+
 $messages['ar'] = array(
 	'mwe-loading_txt' => 'يحمل...',
 	'mwe-cancel' => 'ألغِ',

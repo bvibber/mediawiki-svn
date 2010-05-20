@@ -94,6 +94,57 @@ $messages['af'] = array(
 	'math_UnrecognisedCommand' => 'Opdrag "$1" is ongeldig',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'math_noblahtex' => 'Nuk mund të ekzekutojë blahtex, i cili duhet të jetë në $1',
+	'blahtext-desc' => 'prodhimit MathML për tags <math>',
+	'math_AmbiguousInfix' => 'vendosje paqartë i "1" $. Provoni të përdorni formatimin e teksteve shtesë "(...)" të disambiguate.',
+	'math_CannotChangeDirectory' => 'Nuk mund të ndryshojë duke punuar directory',
+	'math_CannotCreateTexFile' => 'Nuk mund te krijohet skedari Tex',
+	'math_CannotRunDvipng' => 'Nuk mund të kandidojë dvipng',
+	'math_CannotRunLatex' => 'Nuk mund të kandidojë latex',
+	'math_CannotWritePngDirectory' => 'Nuk munda të shkruaj PNG output directory',
+	'math_CannotWriteTexFile' => 'Nuk munda të shkruaj tex file',
+	'math_CasesRowTooBig' => 'Nuk mund të jenë vetëm dy shënime në çdo rresht të një "raste" bllokut',
+	'math_DoubleSubscript' => 'Hasur në dy subscripts bashkangjitur në bazë të njëjtë. Vetëm një është e lejuar.',
+	'math_DoubleSuperscript' => 'Hasur në dy superscripts bashkangjitur në bazë të njëjtë. Vetëm një është e lejuar.',
+	'math_IllegalCharacter' => 'karakterin e paligjshme në të dhëna',
+	'math_IllegalCommandInMathMode' => 'Urdhri "$1" është i paligjshëm në matematikë mode',
+	'math_IllegalCommandInMathModeWithHint' => 'Urdhri "$1" është i paligjshëm në mënyrë matematikë. Ndoshta keni për qëllim të përdorni "$2" në vend?',
+	'math_IllegalCommandInTextMode' => 'Urdhri "$1" është i paligjshëm në mode tekst',
+	'math_IllegalCommandInTextModeWithHint' => 'Urdhri "$1" është i paligjshëm në mode tekst. Ndoshta keni për qëllim të përdorni "$2" në vend?',
+	'math_IllegalDelimiter' => 'Kufi të paligjshme në vijim "$1"',
+	'math_IllegalFinalBackslash' => 'backslash paligjshme "\\" në fund të dhëna',
+	'math_IllegalNestedFontEncodings' => 'komandat Font Encoding nuk mund të mbivendosur',
+	'math_IllegalRedefinition' => 'Urdhri "$1" është përcaktuar tashmë, ju nuk mund të ripërcaktuar atë',
+	'math_InvalidColour' => 'Ngjyra "$1" është i pavlefshëm',
+	'math_InvalidUtf8Input' => 'Vlera e kontributit nuk është e vlefshme UTF-8',
+	'math_LatexFontNotSpecified' => 'Nuk font LaTeX është specifikuar për "$1"',
+	'math_LatexPackageUnavailable' => 'Në pamundësi për të PNG, sepse paketa e LaTeX "$1" është e disponueshme',
+	'math_MismatchedBeginAndEnd' => 'Komandat "$1" dhe "$2" nuk përputhen',
+	'math_MisplacedLimits' => 'Urdhri "$1" mund të shfaqet pas një operatori të matematikës. Konsideroni përdorimin e "\\mathop".',
+	'math_MissingCommandAfterNewcommand' => 'E humbur ose të paligjshme të komandës emër të ri pas "newcommand ".
+Nuk duhet të jetë pikërisht një komandë të përcaktuara, ajo duhet të fillojë me një backslash "\\" dhe të përmbajë vetëm gërma alfabeti.',
+	'math_MissingDelimiter' => 'Humbur Kufi pas "$1"',
+	'math_MissingOpenBraceAfter' => 'Humbur hapur shtrëngoj "(" pas "$1"',
+	'math_MissingOpenBraceAtEnd' => 'Humbur hapur shtrëngoj "(" në fund të dhëna',
+	'math_MissingOpenBraceBefore' => 'Humbur hapur shtrëngoj "(" para "$1"',
+	'math_MissingOrIllegalParameterCount' => 'E humbur apo parametër numërimin e paligjshme në përkufizimin e "$1". Duhet të jetë një një shifror mes të 1 dhe 9 përfshirëse.',
+	'math_MissingOrIllegalParameterIndex' => 'E humbur ose të paligjshme Indeksi parametër në përkufizimin e "$1"',
+	'math_NonAsciiInMathMode' => 'Jo-ASCII karaktere mund të përdoren vetëm në mode tekst. Provo bashkangjitur personazhet problemit në "\\text{...}".',
+	'math_NotEnoughArguments' => 'Jo argumente të mjaftueshme janë dhënë për "$1"',
+	'math_PngIncompatibleCharacter' => 'Në pamundësi për të saktë, të gjeneruar PNG përmbajnë karakterin $1',
+	'math_ReservedCommand' => 'Urdhri "$1" është i rezervuar për përdorim të brendshëm nga blahtex',
+	'math_SubstackRowTooBig' => 'Nuk mund të jetë vetëm një hyrje në çdo rresht të një substack "" bllokut',
+	'math_TooManyMathmlNodes' => 'Ka shumë nyje në pemë MathML',
+	'math_TooManyTokens' => 'Input është shumë i gjatë',
+	'math_UnavailableSymbolFontCombination' => 'Simboli "$1" nuk është në dispozicion në gërmat "$2"',
+	'math_UnexpectedNextCell' => 'Urdhri "&" mund të shfaqet brenda një të  "\\begin ... \\end" block',
+	'math_UnexpectedNextRow' => 'Urdhri "\\" mund të shfaqet brenda një të "\\begin ... \\end" block',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

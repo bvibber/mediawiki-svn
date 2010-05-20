@@ -68,6 +68,21 @@ $messages['af'] = array(
 	'wikieditor-publish-dialog-goback' => 'Terug',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'wikieditor-publish-preference' => 'Aktivizo-hap pas hapi botuese',
+	'wikieditor-publish-button-publish' => 'Publikoj',
+	'wikieditor-publish-button-cancel' => 'Anuloj',
+	'wikieditor-publish-dialog-title' => 'Publikimi në {{SITENAME}}',
+	'wikieditor-publish-dialog-summary' => 'përmbledhje Edit (përshkruaj shkurtimisht ndryshimet që keni bërë):',
+	'wikieditor-publish-dialog-minor' => 'Minor redakto',
+	'wikieditor-publish-dialog-watch' => 'Watch këtë faqe',
+	'wikieditor-publish-dialog-publish' => 'Publikoj',
+	'wikieditor-publish-dialog-goback' => 'Kthehem',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK
@@ -428,7 +443,7 @@ $messages['gl'] = array(
 	'wikieditor-publish-dialog-minor' => 'Edición pequena',
 	'wikieditor-publish-dialog-watch' => 'Vixiar esta páxina',
 	'wikieditor-publish-dialog-publish' => 'Publicar',
-	'wikieditor-publish-dialog-goback' => 'Voltar',
+	'wikieditor-publish-dialog-goback' => 'Volver',
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)

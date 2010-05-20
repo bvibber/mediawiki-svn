@@ -120,6 +120,32 @@ $messages['af'] = array(
 	'changeauthor-nosuchtitle' => 'Daar is geen bladsy genaamd "$1" nie.',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ * @author MicroBoy
+ */
+$messages['aln'] = array(
+	'changeauthor-title' => 'Ndryshimi autor i një rishikim',
+	'changeauthor-search-box' => 'Kërko shqyrtime',
+	'changeauthor-pagename-or-revid' => 'Emri i faqes ose rishikim ID:',
+	'changeauthor-pagenameform-go' => 'Shkoj',
+	'changeauthor-comment' => 'Koment:',
+	'changeauthor-changeauthors-multi' => 'Ndryshimi {{PLURAL:$1|autor|autorëve}}',
+	'changeauthor-explanation-multi' => 'Me këtë formë mund të ndryshoni autorëve rishikim. Thjesht ndryshojnë një ose më shumë përdoruesve në listën e mëposhtme, të shtoni një koment (optional) dhe kliko "Ndryshimi autorit (s)" button.',
+	'changeauthor-changeauthors-single' => 'Autori Ndryshimi',
+	'changeauthor-explanation-single' => 'Me këtë formë ju mund të ndryshojë një autor rishikim. Thjesht ndryshuar emrin më poshtë, shtoni një koment (optional) dhe kliko "autori Ndrysho" button.',
+	'changeauthor-invalid-username' => 'Invalid username "$1".',
+	'changeauthor-nosuchuser' => 'Asnjë përdorues të tillë "$1".',
+	'changeauthor-revview' => 'Revision #$1 prej $2',
+	'changeauthor-nosuchtitle' => 'Nuk ka asnjë faqe të quajtur "$1".',
+	'changeauthor-weirderror' => 'Një gabim shumë e çuditshme ka ndodhur. Ju lutemi të rigjykuar kërkesën tuaj. Nëse ky gabim mban treguar deri, baza e të dhënave është prishur ndoshta.',
+	'changeauthor-invalidform' => 'Ju lutem përdorni formularin e dhënë nga [[Special:ChangeAuthor|faqe speciale]] në vend të një forme me porosi.',
+	'changeauthor-success' => 'Kërkesa juaj ka qenë i proceduar me sukses.',
+	'changeauthor-logentry' => 'Changed autor i $2 e $1 nga $3 deri 4$',
+	'changeauthor-logpagename' => 'ndryshim Author log',
+	'right-changeauthor' => 'Ndryshimi autor i një rishikim',
+);
+
 /** Amharic (አማርኛ)
  * @author Codex Sinaiticus
  */

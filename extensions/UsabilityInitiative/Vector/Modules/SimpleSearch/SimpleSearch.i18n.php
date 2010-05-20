@@ -36,6 +36,14 @@ $messages['af'] = array(
 	'vector-simplesearch-containing' => 'bevat...',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'vector-simplesearch-search' => 'Kërkim',
+	'vector-simplesearch-containing' => 'përmban ...',
+);
+
 /** Arabic (العربية)
  * @author OsamaK
  */

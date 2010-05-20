@@ -65,6 +65,28 @@ $messages['af'] = array(
 	'deletebatch-select-yourself' => 'u',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'deletebatch-link-back' => 'Kthehu mbrapa tek faqja speciale',
+	'deletebatch-as' => 'Ekzekuto script si:',
+	'deletebatch-both-modes' => 'Ju lutem zgjidhni një faqe ose një listë të caktuar ose të dhënë të faqeve.',
+	'deletebatch-or' => '<b>ose</b>',
+	'deletebatch-delete' => 'Fshij',
+	'deletebatch-page' => 'Faqet që të fshihen:',
+	'deletebatch-processing-from-file' => 'fshirje faqe nga lista file',
+	'deletebatch-processing-from-form' => 'fshirje nga faqet formë',
+	'deletebatch-omitting-nonexistant' => 'Mosdhënien faqe jo-ekzistuese $1.',
+	'deletebatch-omitting-invalid' => 'Mosdhënien faqe pavlefshme $1.',
+	'deletebatch-file-bad-format' => 'Skedari i duhet të jetë në formë teksti',
+	'deletebatch-file-missing' => 'Në pamundësi për të lexuar dhënë file',
+	'deletebatch-select-script' => 'script Fshij faqe',
+	'deletebatch-select-yourself' => 'Ju',
+	'deletebatch-no-page' => 'Ju lutem specifikoni të paktën një faqe të fshini ose zgjidhni një skedë që përmban listën e faqe.',
+	'right-deletebatch' => 'faqe fshini Batch',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK
@@ -481,7 +503,7 @@ Escolla o usuario que será amosado nos rexistros de borrado.
 O ficheiro cargado debería conter o nome da páxina e unha razón opcional separados por un carácter de barra vertical ("|") en cada liña.',
 	'deletebatch-caption' => 'Lista de páxinas:',
 	'deletebatch-title' => 'Borrar un conxunto',
-	'deletebatch-link-back' => 'Voltar á páxina especial',
+	'deletebatch-link-back' => 'Volver á páxina especial',
 	'deletebatch-as' => 'Executar a escritura como:',
 	'deletebatch-both-modes' => 'Por favor, escolla unha páxina específica ou unha lista de páxinas dadas.',
 	'deletebatch-or' => '<b>OU</b>',

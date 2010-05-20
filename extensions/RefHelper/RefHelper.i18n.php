@@ -88,6 +88,22 @@ $messages['af'] = array(
 U kan die [[Special:RefHelper|verwysing handmatig byvoeg]] of [[Special:RefSearch|na 'n citaat soek om by te voeg]].",
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'refhelper' => 'ndihmës Referenca',
+	'refsearch' => 'search Referenca',
+	'refhelper-desc' => 'Ndihmon për të krijuar faqe për referenca',
+	'refhelper-refsearch' => 'search Referenca',
+	'refhelper-refcreate_legend' => 'referencë Krijo të ri',
+	'refhelper-refsearch_legend' => 'Kërko PubMed për referenca',
+	'refhelper-refcreate_another' => 'Krijo një tjetër referencë',
+	'refhelper-refcreate_autocomment' => 'krijimin Automated faqe.',
+	'refhelper-refcreate_success' => '[Faqja [$1]] nuk kanë ekzistuar dhe është krijuar.',
+	'refhelper-refcreate_failure' => '[Faqja [$1]] ekziston!',
+);
+
 /** Aragonese (Aragonés)
  * @author Juanpabl
  */

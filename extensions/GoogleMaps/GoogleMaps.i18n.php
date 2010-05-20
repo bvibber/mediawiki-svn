@@ -278,6 +278,20 @@ $wgGoogleMapsMessages['af'] = array(
 	'gm-mars' => 'Mars',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$wgGoogleMapsMessages['aln'] = array(
+	'gm-back' => 'prapa',
+	'gm-kml-include' => 'KML jashtme / GeoRSS:',
+	'gm-kml-include-link' => 'shtoni në hartë',
+	'gm-kml-loading' => 'loading ...',
+	'gm-kml-export' => 'Eksporti këtë hartë të KML',
+	'gm-earth' => 'Tokë',
+	'gm-moon' => 'Hënë',
+	'gm-mars' => 'Mars',
+);
+
 /** Amharic (አማርኛ)
  * @author Codex Sinaiticus
  */

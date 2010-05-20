@@ -34,6 +34,16 @@ $messages['af'] = array(
 	'wikieditor-template-editor-preference' => 'Aktiveer vorm-gebaseerde wysiging van wikisjablone',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'wikieditor-template-editor-preference' => 'Lejo redaktimin e bazuar në formë të wiki templates',
+	'wikieditor-template-editor-dialog-title' => 'Edit template',
+	'wikieditor-template-editor-dialog-submit' => 'Update',
+	'wikieditor-template-editor-dialog-cancel' => 'Anuloj',
+);
+
 /** Aragonese (Aragonés)
  * @author Juanpabl
  */

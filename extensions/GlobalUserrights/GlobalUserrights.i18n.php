@@ -39,6 +39,18 @@ Similar to {{msg-mw|Rightslogentry}}.',
 See also {{msg-mw|Right-userrights-shared}}',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'globaluserrights' => 'Global drejtat Përdoruesi Menaxhim',
+	'gur-desc' => 'Easy [[Special:GlobalUserRights|të drejtat përgjithshme përdoruesi]] administratës',
+	'gur-rightslog-name' => 'të drejtat e Global log',
+	'gur-rightslog-header' => 'Ky është një regjistër për ndryshimet e të drejtave globale.',
+	'gur-rightslog-entry' => 'ndryshuar anëtarësimit globale e $1 nga $2 në $3',
+	'right-userrights-global' => 'të drejtat e përdoruesit Manage global',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author Ouda

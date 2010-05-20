@@ -59,6 +59,25 @@ $messages['af'] = array(
 	'importfreeimages_size_original' => 'Oorspronklik',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'importfreeimages' => 'imazhe Import falas',
+	'importfreeimages-desc' => 'Ofron një mënyrë të [[Special:ImportFreeImages|importues duhet të licencuar fotot]] nga [Flickr http://www.flickr.com]',
+	'importfreeimages_description' => 'Kjo faqe ju lejon të kërkoni fotot siç duhet licencuar nga Flickr dhe importit ato në wiki tuaj.',
+	'importfreeimages_nophotosfound' => "Nuk u gjet fotot për kriteret e kërkimit tuaj '$1', ju lutem provoni përsëri.",
+	'importfreeimages_owner' => 'Autor',
+	'importfreeimages_importthis' => 'importit këtë',
+	'importfreeimages_next' => '$1 më pas',
+	'importfreeimages_size_square' => 'Katror',
+	'importfreeimages_size_thumbnail' => 'Thumbnail',
+	'importfreeimages_size_small' => 'I vogël',
+	'importfreeimages_size_medium' => 'Medium',
+	'importfreeimages_size_large' => 'I madh',
+	'importfreeimages_size_original' => 'Origjinal',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK

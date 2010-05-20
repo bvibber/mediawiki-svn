@@ -122,6 +122,36 @@ $messages['af'] = array(
 	'right-datatransferimport' => 'Laai data',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'datatransfer-desc' => 'Lejon për import dhe eksport të dhënave të përmbajtura në modelin e quan',
+	'viewxml' => 'Shiko XML',
+	'dt_viewxml_docu' => 'Ju lutem zgjidhni midis kategorive të mëposhtme dhe hapësira për të parë në formatin XML.',
+	'dt_viewxml_categories' => 'Kategoritë',
+	'dt_viewxml_namespaces' => 'Hapësira',
+	'dt_viewxml_simplifiedformat' => 'Formati i thjeshtuar',
+	'dt_xml_namespace' => 'Hapësira',
+	'dt_xml_pages' => 'Faqet',
+	'dt_xml_page' => 'Faqe',
+	'dt_xml_template' => 'Shabllon',
+	'dt_xml_field' => 'Fushë',
+	'dt_xml_name' => 'Emër',
+	'dt_xml_title' => 'Titull',
+	'dt_xml_id' => 'ID',
+	'dt_xml_freetext' => 'Free Tekst',
+	'importxml' => 'Importi XML',
+	'dt_import_selectfile' => 'Ju lutem përzgjidhni kartelën $1 për të importuar:',
+	'dt_import_encodingtype' => 'Encoding lloj',
+	'dt_import_editsummary' => '$1 importit',
+	'dt_import_importing' => 'Importimi ...',
+	'dt_import_success' => '$1 {{PLURAL:$1|faqe|faqe}} do të krijohet nga file $2.',
+	'importcsv' => 'Importi CSV',
+	'dt_importcsv_badheader' => "Gabim: $1 column header, '$2', duhet të jenë ose '$3', '$4' ose të formës 'template_name [field_name]'",
+	'right-datatransferimport' => 'Të dhënat e importit',
+);
+
 /** Amharic (አማርኛ)
  * @author Codex Sinaiticus
  */

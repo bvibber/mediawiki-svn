@@ -28,6 +28,13 @@ $messages['af'] = array(
 	'antibot-desc' => 'Eenvoudige raamwerk vir die kontrole van spambots en trigger payloads',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'antibot-desc' => 'kuadrin e thjeshtë për kontrolle Spambot dhe payloads shkaktojnë',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

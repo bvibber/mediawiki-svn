@@ -37,6 +37,14 @@ $messages['af'] = array(
 	'usercontactlink-baduser' => 'foutiewe gebruikersnaam',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'usercontactlink-baduser' => 'Emri i gabuar',
+	'usercontactlinks-desc' => 'Ofron mundësinë për të thjesht dhe vazhdimisht shtoni emra të tjerë përdorues duke përdorur ^ ^ ^ Përdorues ^ ^ ^ sintakse',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

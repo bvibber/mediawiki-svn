@@ -43,6 +43,20 @@ $messages['af'] = array(
 	'layouts_unknown' => 'Onbekend',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'layouts-desc' => 'Rrituni me të sapo-krijuar faqet me "Layouts editable" për të inkurajuar një strukturë të përbashkët për faqe',
+	'layouts_title' => 'Krijo një faqe',
+	'layouts_chooselayout' => 'Zgjidhni një plan urbanistik për $1:',
+	'layouts_nolayout' => 'Nuk ka plan urbanistik',
+	'layouts_continue' => 'Vazhdoj',
+	'layouts_choosecategory' => 'Zgjidhni një kategori për $1:',
+	'layouts_unknown' => 'I panjohur',
+	'layouts_tagline' => "Kjo faqe është e gjeneruar nga '''$1''' layout.",
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author Ouda

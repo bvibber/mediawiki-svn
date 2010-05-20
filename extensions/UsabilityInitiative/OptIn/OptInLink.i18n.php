@@ -44,6 +44,18 @@ $messages['af'] = array(
 	'optin-feedback' => 'Beta terugvoer',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'optin-try' => 'Provo Beta',
+	'tooltip-pt-optin-try' => 'Provoni karakteristika të reja',
+	'optin-leave' => 'Lini Beta',
+	'tooltip-pt-optin-leave' => 'Turn off karakteristika të reja',
+	'optin-feedback' => 'reagime Beta',
+	'tooltip-pt-optin-feedback' => 'Sigurimi reagime për përvojën tuaj me karakteristika të reja',
+);
+
 /** Arabic (العربية)
  * @author ;Hiba;1
  * @author Meno25

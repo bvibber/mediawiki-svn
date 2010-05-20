@@ -95,6 +95,56 @@ $messages['af'] = array(
 	'webstore_php_error' => 'PHP-foute het voorgekom:',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'inplace_access_disabled' => 'Qasja në këtë shërbim ka qenë i paaftë për të gjithë klientët.',
+	'inplace_access_denied' => 'Ky shërbim është i kufizuar nga klienti IP.',
+	'inplace_scaler_no_temp' => 'Nuk ka të përkohshme Lista e vlefshme. Vendosur $wgLocalTmpDirectory në një directory writeable.',
+	'inplace_scaler_not_enough_params' => 'Nuk parametrave të mjaftueshme.',
+	'inplace_scaler_invalid_image' => 'imazhin e pavlefshme, nuk mund të përcaktojë madhësinë.',
+	'inplace_scaler_failed' => 'Një gabim është hasur gjatë shkallë imazh: $1',
+	'inplace_scaler_no_handler' => 'Nuk ka mbajtës për transformimin e këtij lloji MIME',
+	'inplace_scaler_no_output' => 'Nuk ka dalje të transformimit file u prodhua.',
+	'inplace_scaler_zero_size' => 'Transformimi prodhuar një fotografi zero-sized prodhimit.',
+	'webstore-desc' => 'Web-vetëm (jo-NFS) file middleware magazinimit',
+	'webstore_access' => 'Ky shërbim është i kufizuar nga klienti IP.',
+	'webstore_path_invalid' => 'Emri i file të ishte i pavlefshëm.',
+	'webstore_dest_open' => 'E pamundur hapja e file destinacion "$1".',
+	'webstore_dest_lock' => 'E pamundur për të marrë bllokohet në destinacionin e skedës "$1".',
+	'webstore_dest_mkdir' => 'Në pamundësi për të krijuar destinacion directory "$1".',
+	'webstore_archive_lock' => 'E pamundur për të marrë bllokohet në arkivin e skedës "$1".',
+	'webstore_archive_mkdir' => 'Në pamundësi për të krijuar arkivin directory "$1".',
+	'webstore_src_open' => 'Në pamundësi për të hapur burimin e skedës "$1".',
+	'webstore_src_close' => 'burim Gabim mbylljen e skedës "$1".',
+	'webstore_src_delete' => 'Gabim gjatë fshirjes burim skedës "$1".',
+	'webstore_rename' => 'Gabim riemërimin e skedës "$1" tek "$2.',
+	'webstore_lock_open' => 'bllokoj Gabim gjatë hapjes së file "$1".',
+	'webstore_lock_close' => 'bllokoj Gabim mbylljes skedës "$1".',
+	'webstore_dest_exists' => 'Gabim, destinacionin file "$1" ekziston.',
+	'webstore_temp_open' => 'Gabim gjatë hapjes së file të përkohshëm "$1".',
+	'webstore_temp_copy' => 'Gabim gjatë kopjimit të file të përkohshëm "$1" në destinacionin file "$2".',
+	'webstore_temp_close' => 'Gabim gjatë mbylljes së file të përkohshëm "$1".',
+	'webstore_temp_lock' => 'Gabim mbyllje file të përkohshëm "$1".',
+	'webstore_no_archive' => 'Skedari i destinacionit ekziston dhe nuk është dhënë arkivit.',
+	'webstore_no_file' => 'Asnjë dokument nuk u ngarkuar së fundi.',
+	'webstore_move_uploaded' => 'Gabim duke lëvizur kartelën e ngarkuar "$1" në një lokacion të përkohshëm "$2".',
+	'webstore_invalid_zone' => 'Zona e pavlefshme "$1".',
+	'webstore_no_deleted' => 'Nuk ka directory arkiv për fotografi fshihet është e definuar.',
+	'webstore_curl' => 'Gabim nga rrotacioni: $1',
+	'webstore_404' => 'File nuk u gjet.',
+	'webstore_php_warning' => 'Kujdes PHP: $1',
+	'webstore_metadata_not_found' => 'File nuk u gjet: $1',
+	'webstore_postfile_not_found' => 'File nuk u gjet për të postuar.',
+	'webstore_scaler_empty_response' => 'Scaler imazh i dha një përgjigje bosh me një përgjigje kodin 200. Kjo mund të jetë për shkak të një gabim fatal në PHP scaler.',
+	'webstore_invalid_response' => 'Përgjigja e pavlefshme nga server: $1',
+	'webstore_no_response' => 'Asnjë përgjigje nga serveri',
+	'webstore_backend_error' => 'Gabim nga storage server: $1',
+	'webstore_php_error' => 'gabime PHP ishin hasur:',
+	'webstore_no_handler' => 'Nuk ka mbajtës për transformimin e këtij lloji MIME',
+);
+
 /** Amharic (አማርኛ)
  * @author Codex Sinaiticus
  */

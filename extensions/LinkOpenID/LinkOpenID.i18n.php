@@ -37,6 +37,17 @@ Do not translate or change tag names, or link anchors.',
 	'linkopenid-prefs' => '{{Optional}}',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'linkopenid-desc' => 'Lejo përdoruesit të lidhur llogarinë e tyre për një OpenID jashtme',
+	'linkopenid-prefstext-pre' => 'Nëse keni një OpenID nga një ofrues të jashtëm ju mund të specifikoni këtu. Kjo ju lejon të përdorni userpage tuaj si një OpenID si.',
+	'linkopenid-prefstext-openid' => 'OpenID juaj:',
+	'linkopenid-prefstext-v1url' => 'Server-Versionesh të URL për 1,1 OpenID:',
+	'linkopenid-prefstext-v2url' => 'Server-URL për Versionesh OpenID 2:',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

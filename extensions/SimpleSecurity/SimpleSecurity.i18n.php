@@ -59,6 +59,28 @@ $messages['af'] = array(
 	'security-type-namespace' => 'naamruimte',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'security' => 'Regjistri i Sigurimit',
+	'security-desc' => 'Zgjat mbrojtja faqe MediaWiki të lejojë shikimin e kufizuar e faqes përmbajtjes',
+	'security-logpage' => 'Regjistri i Sigurimit',
+	'security-logpagetext' => 'Ky është një regjistër për veprimet e bllokuar nga ana e] SimpleSecurity [http://www.mediawiki.org/wiki/Extension:SimpleSecurity extension.',
+	'badaccess-read' => "'''Kujdes:''' \"\$1\" është përmendur këtu, por ju nuk keni leje të mjaftueshme për të hyrë në të.",
+	'security-info' => 'Ka $1  në këtë faqe',
+	'security-info-toggle' => 'kufizimet e sigurisë',
+	'security-inforestrict' => '$1 është i kufizuar në $2',
+	'security-desc-LS' => '(Vlen për shkak se kjo faqe është në "$2 $1")',
+	'security-desc-PR' => '(Përcaktuar nga "të mbrojtur" tab)',
+	'security-infosysops' => 'Nuk ka kufizime janë në fuqi, sepse ju jeni një anëtar i "grupit sysop"',
+	'security-manygroups' => 'grupeve $1 dhe $2',
+	'security-unchain' => 'veprimet Modifiko individualisht',
+	'security-type-category' => 'kategori',
+	'security-type-namespace' => 'namespace',
+	'security-restricttogroup' => 'Përmbajtja Hyrje kufizuar për anëtarët e "$1"',
+);
+
 /** Aragonese (Aragonés)
  * @author Juanpabl
  */

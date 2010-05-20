@@ -32,6 +32,14 @@ $messages['af'] = array(
 	'catboxattop-categories' => 'Kategorieë',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'catboxattop-desc' => 'Shton një kuti kategori të drejtë në krye të faqeve',
+	'catboxattop-categories' => 'Kategoritë',
+);
+
 /** Amharic (አማርኛ)
  * @author Codex Sinaiticus
  */

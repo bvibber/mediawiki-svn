@@ -33,6 +33,14 @@ $messages['af'] = array(
 	'vector-desc' => 'Verbeter die gebruikerskoppelvlak-elemente van die Vektor omslag (skin).',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'vector' => 'përmirësime UI për Vektor',
+	'vector-desc' => 'Në elementet përmirëson ndërfaqen e përdoruesit të lëkurës Vektor.',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

@@ -34,6 +34,16 @@ Parameters:
 * $1: The user name",
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'userimages-desc' => 'Generate galeritë e imazheve nga përdoruesit ngarkuar me <nowiki><userimage /></nowiki>',
+	'userimages-caption' => 'Fotografitë e ngarkuara nga $1',
+	'userimages-noname' => 'emrin e pavlefshme ose asnjë kusht.',
+	'userimages-noimages' => '$1 nuk ka asnjë Ngarkimet më të imazhit.',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author Mido

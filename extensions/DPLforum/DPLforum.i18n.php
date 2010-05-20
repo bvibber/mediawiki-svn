@@ -52,6 +52,15 @@ $messages['af'] = array(
 	'dplforum-toomany' => 'DPL Forum: te veel kategorieë!',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'dplforum-never' => 'Kurrë',
+	'dplforum-toofew' => 'DPL Forum: kategori Shumë pak!',
+	'dplforum-toomany' => 'DPL Forum: Shumë shumë kategori!',
+);
+
 /** Arabic (العربية)
  * @author Alnokta
  * @author Meno25

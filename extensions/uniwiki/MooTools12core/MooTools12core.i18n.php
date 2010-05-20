@@ -29,6 +29,13 @@ $messages['af'] = array(
 	'mootools12core-desc' => "Voeg [http://mootools.net Mootools-1,2-kern-yc.js], 'n kompakte JavaScript-raamwerk by elke bladsy by",
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'mootools12core-desc' => 'Shton http://mootools.net [] Mootools-core-1,2-yc.js, një kompakt kuadër të aktivizoni Java, për çdo faqe',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

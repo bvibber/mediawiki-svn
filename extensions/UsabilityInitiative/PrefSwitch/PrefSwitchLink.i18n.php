@@ -31,6 +31,18 @@ $messages['qqq'] = array(
 	'prefswitch-link-off' => 'A link in the personal tools menu which takes users to a page where they can turn the new features on',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'prefswitch-link-anon' => 'Tipare të reja',
+	'tooltip-pt-prefswitch-link-anon' => 'Mësoni rreth karakteristika të reja',
+	'prefswitch-link-on' => 'Merrni më mbrapa',
+	'tooltip-pt-prefswitch-link-on' => 'Disable karakteristika të reja',
+	'prefswitch-link-off' => 'Tipare të reja',
+	'tooltip-pt-prefswitch-link-off' => 'Provoni karakteristika të reja',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK

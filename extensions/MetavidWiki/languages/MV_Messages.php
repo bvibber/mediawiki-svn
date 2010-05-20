@@ -463,6 +463,62 @@ $messages['af'] = array(
 	'mv_seconds_singular' => '1 sekonde',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'add_stream_permission' => 'Ju mungon leje për të shtuar një nivel të ri',
+	'edit_stream_missing' => 'E humbur Emri lumë',
+	'mv_missing_req_time' => 'E humbur kohë kërkesa',
+	'mv_missing_cat' => 'E humbur Emri kategorie',
+	'mv_stream_already_exists' => 'Derdhet <a href="$2">$1</a> tashmë ekziston',
+	'mv_summary_add_stream' => 'derdhet shtuar nga formë',
+	'mv_error_stream_insert' => 'nuk arriti të derdhet futur',
+	'mv_redirect_and_delete_reason' => 'hequr faqe përcjellëse',
+	'mv_remove_reason' => 'Arsyeja për fshirje:',
+	'mv_stream_delete_warrning' => "'''Heqja e ky lumë do të heqë $1 {{PLURAL:$1|copë |pjesë}} e metadata asociativ''' <br />",
+	'mv_label_stream_type' => 'Lloji i Stream',
+	'mv_metavid_file' => 'Mbyllja e file në server',
+	'mv_metavid_live' => 'lumë Vendos jetojnë',
+	'mv_upload_file' => 'Ngarkoni skeda',
+	'mv_external_file' => 'Jashtme file',
+	'mv_tool_search' => 'Kërkim',
+	'mv_tool_search_title' => 'Kërko në këtë lumë',
+	'mv_search_transcripts_for' => 'Video Kërko për $1 (fshehin këtë kuti)',
+	'mv_tool_navigate' => 'Drejtoj',
+	'mv_tool_navigate_title' => 'Lundruar në lumë e plotë',
+	'mv_tool_export' => 'Eksport',
+	'mv_tool_export_title' => 'metadata Eksporti lumë',
+	'mv_tool_embed' => 'Mbjell',
+	'mv_tool_embed_title' => 'Embed opsionet për segmentin e tanishme e kërkuar',
+	'mv_tool_overlay' => 'Template overlays',
+	'mv_tool_overlay_title' => 'metadata Template bazuar overlays',
+	'mv_results_found' => 'Shqip <b>$1</b> tek <b>$2</b> prej <b>$3</b>',
+	'mv_tool_mang_layers' => 'shtresa Manage',
+	'mv_update_layers' => 'Update shtresa',
+	'mv_watch_clip' => 'clip Watch',
+	'mv_close_clip' => 'Mbylle clip',
+	'mv_improve_transcript' => 'transkript Permiresimi',
+	'mv_people_matches' => 'Njerëzit ndeshje',
+	'mv_category_matches' => 'Kategoria ndeshje',
+	'mv_bill_matches' => 'Bill ndeshje',
+	'mv_interest_group_matches' => 'ndeshjet e grupit të interesit',
+	'mv_click_to_edit' => 'klikoni për të redaktuar',
+	'ht_en' => 'Përkthim',
+	'ht_en_desc' => 'transkriptet anglisht. Ky lloj veshje është folur për tekst',
+	'anno_en' => 'Annotations dhe kategoritë',
+	'anno_en_desc' => 'categorizations anglisht dhe Annotations. Kjo mbulesë mund të përdoret për të kategorizojnë pjesët e video ose për të shtuar informacione annotative se nuk është folur tekst',
+	'thomas_en' => 'transkript zyrtar',
+	'thomas_en_desc' => "Zyrtare Thomas Transkript nga qeveritë që kanë shërbyer për Thomas. Kohë Burimi synced nga C-SPAN's-c spanarchives.org",
+	'mvd_default_mismatch' => 'Gabim në settings file',
+	'mvd_default_mismatch_text' => 'Nuk është një gabim në vendosjen dosjen tuaj. $MvMVDTypeDefaultDisp duhet të jetë një mesin e $mvMVDTypeAllAvailable',
+	'mv_data_page_title' => '$1 për $2 prej $3',
+	'mv_time_separator' => '$1 tek $2',
+	'mv_list_streams' => 'Lista e MetaVid streams',
+	'mv_list_streams_page' => 'Lista e MetaVid streams',
+	'mv_list_streams_docu' => 'Në vijim streams ekzistojnë:',
+);
+
 /** Amharic (አማርኛ)
  * @author Codex Sinaiticus
  */

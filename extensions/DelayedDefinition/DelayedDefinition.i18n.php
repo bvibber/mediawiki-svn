@@ -21,6 +21,16 @@ $messages['qqq'] = array(
 	'delayeddefinition-desc' => '{{desc}}',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'delayeddefinition-desc' => 'Shton <define> dhe <display> për të lejuar një kod të jetë repositioned',
+	'delaydef-error-missing-def' => 'Gabim: Përkufizimi i nevojshëm për <display name="$1"> nuk u gjet.',
+	'delaydef-error-no-name' => 'Gabim: Nuk parametër emrin e specifikuar.',
+	'delaydef-error-redef' => 'Gabim: Tentim ridefinimin e $1.',
+);
+
 /** Arabic (العربية)
  * @author OsamaK
  */

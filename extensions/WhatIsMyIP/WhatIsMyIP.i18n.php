@@ -39,6 +39,16 @@ $messages['af'] = array(
 	'right-whatismyip' => 'Sien [[Special:WhatIsMyIP|my eie IP-adres]]',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'whatismyip' => 'Cila është IP ime',
+	'whatismyip-desc' => "Tregon përdoruesit aktual's [Special:WhatIsMyIP|adresë IP]]",
+	'whatismyip-out' => 'IP adresa juaj:',
+	'right-whatismyip' => 'Shiko [[Special:WhatIsMyIP|adresën IP]]',
+);
+
 /** Arabic (العربية)
  * @author ;Hiba;1
  * @author Alnokta

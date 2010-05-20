@@ -29,6 +29,13 @@ $messages['af'] = array(
 	'wikitextloggedinout-desc' => "Twee ontlederhoeke <code>&lt;loggedin&gt;</code> en <code>&lt;loggedout&gt;</code> om te wys of 'n gebruiker aangeteken is al dan nie",
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'wikitextloggedinout-desc' => "Dy parser grepa, <code>&lt;loggedin&gt;</code> dhe <code>&lt;loggedout&gt;</code> për të treguar tekst të ndryshme në varësi të përdoruesit ' login shtetit",
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

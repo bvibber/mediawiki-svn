@@ -82,6 +82,32 @@ riddler|Riddler',
 	'right-voteadmin' => 'Resultate van stemmings bekyk',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'vote' => 'Votim',
+	'vote-desc' => 'Ofron aftësive të thjeshtë votimi',
+	'vote-header' => "Ju mund të votojnë për'''Lartë zot e Botërore''' këtu!",
+	'vote-current' => "Vota juaj e tanishme është për '''$1'''.",
+	'vote-legend' => 'Vendi apo ndryshuar votave',
+	'vote-caption' => 'Zgjedhja juaj:',
+	'vote-choices' => 'joker|The Joker
+penguin|The Penguin
+riddler|Riddler',
+	'vote-submit' => 'Votim',
+	'vote-registered' => 'Vota juaj është regjistruar.',
+	'vote-view-results' => 'Shiko rezultatet',
+	'vote-results' => 'Rezultatet Voto',
+	'vote-results-choice' => 'Zgjedhje',
+	'vote-results-count' => 'Akuzë',
+	'vote-results-none' => 'Nuk ka vota kanë qenë të vendosur në këtë kohë.',
+	'vote-login' => 'Ju duhet [$1 hyni brënda] për të votuar.',
+	'vote-invalid-choice' => 'Ju duhet të zgjidhni një nga opsionet në dispozicion.',
+	'right-vote' => 'Votim',
+	'right-voteadmin' => 'Shiko rezultatet votave',
+);
+
 /** Amharic (አማርኛ)
  * @author Codex Sinaiticus
  */

@@ -55,6 +55,15 @@ $messages['af'] = array(
 	'bookinfo-provider' => 'Gegewens verskaf deur: $1',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'bookinfo-error-noresponse' => 'Nuk ka përgjigje ose të kërkojë kohë jashtë.',
+	'bookinfo-purchase' => 'Blerje këtë libër nga $1',
+	'bookinfo-provider' => 'Marresi i te dhenave: $1',
+);
+
 /** Amharic (አማርኛ)
  * @author Codex Sinaiticus
  */

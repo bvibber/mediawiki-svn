@@ -21,6 +21,15 @@ $messages['qqq'] = array(
 	'tidy-desc' => 'Short description of the extension, shown on [[Special:Version]]. Do not translate or change links.',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'tidy-desc' => 'Shton një skedë të rregullt ose i çrregullt (në varësi të $wgUseTidy) në faqe normale lejuar për mbizotërues vendosjen globale HTML pastra, për një qëllim të vetëm',
+	'tidy' => 'I rregullt',
+	'untidy' => 'I çrregullt',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

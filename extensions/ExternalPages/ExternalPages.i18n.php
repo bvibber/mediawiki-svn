@@ -35,6 +35,16 @@ $messages['af'] = array(
 	'externalpages-no-page' => 'Geen bladsy gespesifiseer nie',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'externalpages' => 'Faqet e jashtme',
+	'externalpages-desc' => 'Rinxjerr dhe shfaq faqet nga zona të largëta WMF',
+	'externalpages-bad-page' => 'faqe Bad specifikuar',
+	'externalpages-no-page' => 'Asnjë faqe specifikuar',
+);
+
 /** Arabic (العربية)
  * @author OsamaK
  */

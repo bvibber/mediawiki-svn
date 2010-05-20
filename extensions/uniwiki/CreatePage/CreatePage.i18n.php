@@ -45,6 +45,21 @@ $messages['af'] = array(
 	'createpage_submitbutton' => 'OK',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'createpage' => 'Krijo një faqe',
+	'createpage-desc' => 'Adds a [[Special:CreatePage|faqe speciale]] për të krijuar faqe të reja',
+	'createpage_submitbutton' => 'Submit',
+	'createpage_instructions' => 'Shkruani titullin e faqes që ju dëshironi për të krijuar:',
+	'createpage_entertitle' => 'Ju lutemi shkruani një titull për faqen tuaj.',
+	'createpage_titleexists' => 'Një faqe me të [[$1 titullin]] ekziston. Doni të redaktuar faqe që ekziston?',
+	'createpage_tryagain' => 'Nr i duan të krijojnë një faqe të re me një titull të dallueshëm.',
+	'createpage_editexisting' => 'Po. Unë dua të kontribuojë në faqe që ekziston.',
+	'createpage-badtitle' => '"$1" nuk mund të përdoret si një titull në faqe',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK

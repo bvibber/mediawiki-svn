@@ -29,6 +29,13 @@ $messages['af'] = array(
 	'formatsearch-desc' => 'Maak die soekresultate-bladsy skoon.',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'formatsearch-desc' => 'Pastron faqe rezultatet e kërkimit',
+);
+
 /** Arabic (العربية)
  * @author OsamaK
  */

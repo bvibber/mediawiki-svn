@@ -45,6 +45,15 @@ $messages['af'] = array(
 	'languageselector-setlang' => 'stel',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'languageselector' => 'Gjuhë',
+	'languageselector-desc' => 'Gjuha seleksionues në çdo faqe, edhe për vizitorët',
+	'languageselector-setlang' => 'vendosur',
+);
+
 /** Amharic (አማርኛ)
  * @author Codex Sinaiticus
  */

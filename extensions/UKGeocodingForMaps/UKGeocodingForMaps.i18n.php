@@ -23,6 +23,15 @@ $messages['en'] = array(
 	'ukgeocoding_couldNotGeocode' => 'One or more postalcodes could not be geocoded and have been omitted from the map.',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'ukgeocoding_name' => 'MB Geocoding për Maps',
+	'ukgeocoding_desc' => 'Harta zgjat me një funksion parser display_uk_point me zbatimin Google Maps',
+	'ukgeocoding_couldNotGeocode' => 'Një ose më shumë postalcodes nuk mund të geocoded dhe janë lënë jashtë nga harta.',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by

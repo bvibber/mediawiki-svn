@@ -265,6 +265,27 @@ Sonder 'n OpenID sou u glad nie meer kon aanteken nie.",
 	'openid-provider-label-other-username' => 'U gebruikersnaam by $1',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'openiddelete-sucess' => 'OpenID u hoq me sukses nga llogaria juaj.',
+	'openiddelete-error' => 'Gabim gjatë heqjes OpenID nga llogaria juaj.',
+	'openid-prefstext' => '[Http://openid.net/ OpenID preferencat]',
+	'openid-pref-hide' => 'Fshih URL OpenID tuaj në faqen tuaj të përdoruesit, nëse ju hyni në me OpenID.',
+	'openid-pref-update-userinfo-on-login' => 'Update informacionin e mëposhtëm nga persona OpenID çdo herë që në hyrje:',
+	'openid-urls-desc' => 'OpenIDs lidhur me llogarinë tuaj:',
+	'openid-urls-action' => 'Veprim',
+	'openid-urls-delete' => 'Fshij',
+	'openid-add-url' => 'Shto një OpenID ri',
+	'openidsigninorcreateaccount' => 'Regjistrohu ose hapni një llogari të re',
+	'openid-provider-label-openid' => 'Shkruani URL OpenID tuaj',
+	'openid-provider-label-google' => 'Hyni në llogarinë tuaj duke përdorur Google',
+	'openid-provider-label-yahoo' => 'Hyni ose duke përdorur llogarinë tuaj Yahoo',
+	'openid-provider-label-aol' => 'Shkruani AOL screenname tuaj',
+	'openid-provider-label-other-username' => 'Fusni emrin e përdoruesit $1',
+);
+
 /** Amharic (አማርኛ)
  * @author Codex Sinaiticus
  */

@@ -121,6 +121,33 @@ $messages['af'] = array(
 	'ogg-desc-link' => 'Aangaande die lêer',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'ogg-desc' => 'Mbajtës për Ogg Vorbis Theora dhe fotografi, me JavaScript lojtar',
+	'ogg-short-audio' => 'Ogg tingull $1 fotografi, $2',
+	'ogg-short-video' => 'video file Ogg $1, $2',
+	'ogg-short-general' => 'Ogg $1 media file, $2',
+	'ogg-long-audio' => '(ZQM file $1 shëndoshë, gjatë $2, $3)',
+	'ogg-long-video' => '(Ogg $1 video file, gjatë $2, $4 × $5 pixels, $3)',
+	'ogg-long-multiplexed' => '(ZQM multiplexed audio / video file, 1 $, gjatë $2, $4 × $5 pixels, $3 e përgjithshme)',
+	'ogg-long-general' => '(Ogg media file, gjatë $2, $3)',
+	'ogg-long-error' => '(Invalid ogg file: $1)',
+	'ogg-play' => 'Luaj',
+	'ogg-pause' => 'Pushim',
+	'ogg-stop' => 'Ndalo',
+	'ogg-play-video' => 'video Play',
+	'ogg-play-sound' => 'Tingull',
+	'ogg-no-player' => 'Na vjen keq, sistemi juaj nuk duket të ketë ndonjë lojtar software mbështetur. Ju lutemi <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">të shkarkoni një lojtar</a> .',
+	'ogg-no-xiphqt' => 'Ju nuk duket të ketë komponent XiphQT për QuickTime. QuickTime nuk mund të luajnë Ogg files pa këtë element. Ju lutem <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">shkarkoni XiphQT</a> ose zgjidhni një tjetër lojtar.',
+	'ogg-player-videoElement' => 'mbështetje Gjuha shfletuesin',
+	'ogg-player-oggPlugin' => 'Browser plugin',
+	'ogg-player-thumbnail' => 'Ende image vetëm',
+	'ogg-player-soundthumb' => 'Nuk ka lojtar',
+	'ogg-player-selected' => '(Zgjedhur)',
+);
+
 /** Aragonese (Aragonés)
  * @author Juanpabl
  */

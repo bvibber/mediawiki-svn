@@ -32,6 +32,14 @@ $messages['af'] = array(
 	'sitenotice-desc' => 'Laat gebruikers toe om die stelselberig te sluit.',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'sitenotice_close' => 'shkarkojë',
+	'sitenotice-desc' => 'Lejon përdoruesit të ngushtë sitenotice',
+);
+
 /** Amharic (አማርኛ)
  * @author Codex Sinaiticus
  */

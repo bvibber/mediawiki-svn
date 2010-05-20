@@ -25,6 +25,16 @@ $messages['qqq'] = array(
 	'autocreatecategorypages-desc' => '{{desc}}',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'autocreatecategorypages-desc' => 'faqe Krijo humbur kategori automatikisht në shpëtuar',
+	'autocreatecategorypages-stub' => 'Kjo është një faqe kategori. Ai rreshton të gjitha faqet në kategorinë "$1", si dhe gjith nenkategorive e kategori "$1" në qoftë se ndonjë ekzistojnë.',
+	'autocreatecategorypages-createdby' => 'Krijuar automatikisht nga extension AutoCreateCategoryPages.',
+	'autocreatecategorypages-editor' => 'krijues Automatik kategori',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author Ouda

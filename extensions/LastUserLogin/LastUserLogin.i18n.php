@@ -46,6 +46,20 @@ $messages['af'] = array(
 	'right-lastlogin' => "Wys laaste keer wat 'n gebruiker aangeteken het",
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'lastuserlogin' => 'login përdoruesit të fundit',
+	'lastuserlogin-desc' => 'Shfaq hera e fundit e një përdorues të regjistruar',
+	'lastuserlogin_userid' => 'Emri i përdoruesit',
+	'lastuserlogin_username' => 'Emri i vërtetë',
+	'lastuserlogin_useremail' => 'e-mail User',
+	'lastuserlogin_lastlogin' => 'login fundit',
+	'lastuserlogin_daysago' => 'Ditë më parë',
+	'right-lastlogin' => 'Shiko hera e fundit e një përdorues të regjistruar',
+);
+
 /** Arabic (العربية)
  * @author OsamaK
  */

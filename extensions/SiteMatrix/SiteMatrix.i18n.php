@@ -51,6 +51,22 @@ $messages['af'] = array(
 	'sitematrix-fishbowl' => 'wysiging beperk',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'sitematrix' => 'Lista e wikis Wikipedia',
+	'sitematrix-summary' => 'Kjo faqe të veçanta listat e të gjithë Wikimedia wikis.',
+	'sitematrix-desc' => 'Displays a [[Special:SiteMatrix|Lista e Wikimedia wikis]]',
+	'sitematrix-language' => 'Gjuhë',
+	'sitematrix-project' => 'Emri i projektit, Lidhje interproject dhe interwiki link',
+	'sitematrix-others' => 'Projekte të tjera të Wikipedia',
+	'sitematrix-total' => "'''numërimin Gjithsej: $1'''",
+	'sitematrix-sitetotal' => 'Total',
+	'sitematrix-private' => 'privat',
+	'sitematrix-fishbowl' => 'redaktimi i kufizuar',
+);
+
 /** Amharic (አማርኛ)
  * @author Codex Sinaiticus
  */

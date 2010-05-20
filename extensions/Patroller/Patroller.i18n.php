@@ -75,6 +75,33 @@ $messages['af'] = array(
 	'group-patroller-member' => 'Kontroleur',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'patrol' => 'Patrol redaktimet',
+	'patrol-desc' => 'ndërfaqe Enhanced patrullojnë me ndarjen e punës',
+	'patrol-endorse' => 'Miratojë',
+	'patrol-revert' => 'Rikthehem',
+	'patrol-revert-reason' => 'Arsyeja:',
+	'patrol-skip' => 'Skip',
+	'patrol-reverting' => 'U kthye: $1',
+	'patrol-nonefound' => 'Nuk ka të përshtatshme redaktimet mund të gjendet për patrullimin.',
+	'patrol-endorsed-ok' => 'Redakto u shënua patrulluar.',
+	'patrol-endorsed-failed' => 'Redakto nuk mund të shënohen patrulluar.',
+	'patrol-reverted-ok' => 'I redaktimit ishte rikthyer.',
+	'patrol-reverted-failed' => 'Redakto nuk mund të rikthyer.',
+	'patrol-skipped-ok' => 'Injoruar redakto.',
+	'patrol-reasons' => '* Vandalizmin Simple * Newbie * provë më të flasim faqe',
+	'patrol-another' => 'Trego tjetër modifikoni, nëse është e mundur.',
+	'patrol-stopped' => 'Ju nuk kanë vendosur për të patrulluar një tjetër redaktuar. $1',
+	'patrol-resume' => 'Kliko këtu për të rifilluar.',
+	'group-patroller' => 'Patrollers',
+	'group-patroller-member' => 'patroller',
+	'grouppage-patroller' => '{{ns:project}}: Patroller',
+	'right-patroller' => 'faqe Patrol',
+);
+
 /** Amharic (አማርኛ)
  * @author Codex Sinaiticus
  */

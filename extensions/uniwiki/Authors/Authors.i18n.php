@@ -34,6 +34,15 @@ $messages['af'] = array(
 	'authors_anonymous' => 'Anoniem',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'authors-desc' => 'QUESTION një listë të faqeve që kontribuan në',
+	'authors_authors' => 'Autorët',
+	'authors_anonymous' => 'Anonim',
+);
+
 /** Arabic (العربية)
  * @author OsamaK
  */

@@ -40,6 +40,16 @@ $messages['af'] = array(
 	'wikieditor-wikitext-tab' => 'Wikiteks',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'wikieditor' => 'redaktimi i avancuar wikitext interface',
+	'wikieditor-desc' => 'Siguron një ndërfaqe të vazhdohet redaktimi wikitext dhe module shumë me metrazh të siguruar',
+	'wikieditor-wikitext-tab' => 'Wikitext',
+	'wikieditor-loading' => 'Ngarkim',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK

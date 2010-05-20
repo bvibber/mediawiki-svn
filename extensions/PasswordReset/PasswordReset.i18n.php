@@ -82,6 +82,30 @@ $messages['af'] = array(
 	'right-passwordreset' => "Herstel 'n gebruiker se wagwoord ([[Special:PasswordReset|spesiale bladsy]])",
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'passwordreset' => 'reset Fjalëkalimi',
+	'passwordreset-desc' => "[[Special:PasswordReset|Rivendos llogaritsin user's wiki]] - kërkon 'passwordreset' privilegje",
+	'passwordreset-invalidusername' => 'emrin e pavlefshme',
+	'passwordreset-emptyusername' => 'username Bosh',
+	'passwordreset-nopassmatch' => 'Fjalëkalimet nuk përputhen',
+	'passwordreset-badtoken' => 'Pavlefshme redakto shenjë',
+	'passwordreset-username' => 'Emri i përdoruesit:',
+	'passwordreset-newpass' => 'Fjalëkalimi i ri:',
+	'passwordreset-confirmpass' => 'Konfirmo fjalëkalimin:',
+	'passwordreset-submit' => 'Reset password',
+	'passwordreset-success' => 'Fjalëkalimi ka qenë për të rivendosur ID i perdoruesit: $1',
+	'passwordreset-disableuser' => 'Disable llogari përdoruesi?',
+	'passwordreset-disableuserexplain' => '(Vendos një fjalëkalim invalid hash - përdoruesi nuk mund të identifikohem)',
+	'passwordreset-disablesuccess' => 'Profili i përdoruesit nuk është e mundshme për përdoruesit ID: $1',
+	'passwordreset-accountdisabled' => 'Llogaria ka qenë i paaftë',
+	'disabledusers' => 'përdoruesve me aftësi të kufizuara',
+	'disabledusers-summary' => 'Kjo është një listë e përdoruesve që kanë qenë me aftësi të kufizuara nëpërmjet PasswordReset.',
+	'right-passwordreset' => 'Fjalëkalimi Reset e një përdoruesi ([[Special:PasswordReset|faqe veçantë]])',
+);
+
 /** Aragonese (Aragonés)
  * @author Juanpabl
  */

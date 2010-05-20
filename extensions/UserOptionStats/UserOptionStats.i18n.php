@@ -46,6 +46,19 @@ $messages['af'] = array(
 	'uos-title' => 'Verdeling van die waardes vir van gebruikersinstelling $1',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'useroptionstats' => 'opsion Statistikat e përdoruesve',
+	'useroptionstats-desc' => '[[Special:UserOptionStats|faqe Speciale]] për raportimin opsion përdorimin përdorues MediaWiki',
+	'uos-warn' => 'PHPlot nuk është instaluar!',
+	'uos-choose' => 'Zgjidhni një nga opsionet e përdoruesit e mëposhtme: $1',
+	'uos-unknown' => '* Default',
+	'uos-other' => '* Të tjera',
+	'uos-title' => 'Shpërndarja e vlerave të opsion user $1',
+);
+
 /** Aragonese (Aragonés)
  * @author Juanpabl
  */

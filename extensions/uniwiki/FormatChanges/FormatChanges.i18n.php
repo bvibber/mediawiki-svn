@@ -40,6 +40,16 @@ $messages['af'] = array(
 	'formatchanges-anonymous' => 'Anoniem',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'formatchanges-desc' => 'Reformats [[Special:RecentChanges|ndryshimet e fundit]]',
+	'formatchanges-anonymous' => 'Anonim',
+	'formatchanges-createdby' => '$1 - krijuar nga $2 ($3)',
+	'formatchanges-editedby' => '$1 - edituar nga $2 ($3)',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK

@@ -60,6 +60,30 @@ $messages['af'] = array(
 	'gep-genericmode' => 'Algemene modus',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'gep-desc' => 'Shtesa të redaktuar faqe që të jenë përdorues shumë miqësore',
+	'gep-emailsubject' => '[$1] sugjerim Kategoria: $2',
+	'gep-emailbody' => 'User "$1" sugjeroi kategorinë "$2" për faqen "$3".',
+	'gep-emailfailure' => 'Na vjen keq, sugjerim juaj nuk mund të përpunohet.',
+	'gep-emailsuccess' => 'Faleminderit për sugjerimin kategori: $1.',
+	'gep-categories' => 'Kategoritë',
+	'gep-addcategory' => 'Shto një kategori',
+	'gep-addcategorybutton' => 'Shtoj',
+	'gep-suggestcategory' => 'Sugjeroni një kategori',
+	'gep-suggestcategorybutton' => 'Submit',
+	'gep-sections' => 'Seksionet',
+	'gep-sectionnotdisabled' => 'Ky seksion nuk mund të jetë me aftësi të kufizuara',
+	'gep-addsection' => 'Shto një seksion',
+	'gep-addsectionbutton' => 'Shtoj',
+	'gep-classicmode' => 'Classic mode',
+	'gep-genericmode' => 'mode Generic',
+	'gep-nosectioninstructions' => 'Nuk ka seksione në këtë faqe. Add disa duke përdorur mjetet në menu bar.',
+	'gep-nocategories' => 'Ju lutem zgjidhni një kategori përpara se të kryeni',
+);
+
 /** Amharic (አማርኛ)
  * @author Codex Sinaiticus
  */

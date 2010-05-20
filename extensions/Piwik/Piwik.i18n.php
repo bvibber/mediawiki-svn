@@ -38,6 +38,13 @@ $messages['af'] = array(
 	'piwik-browsers' => 'Webblaaiers',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'right-viewpiwik' => 'Shiko [[Special:Piwik|Statistikat Piwik]]',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK

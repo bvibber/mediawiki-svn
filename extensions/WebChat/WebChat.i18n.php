@@ -44,6 +44,16 @@ Anonieme gebruikers kry \'n outomaties gegenereerde gebruikersnaam wat later gew
 	'right-webchat' => 'Maak dit moontlik om [[Special:WebChat|webchat]] te gebruik',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'webchat' => 'Web Chat',
+	'webchat-desc' => 'Adds a [[Special:WebChat|faqe posaçëm]] përdoret për të bisedojnë në kohë reale me përdorues të tjerë wiki',
+	'webchat-header' => 'Kjo faqe ju lejon të veçantë për të bashkëpunuar në kohë reale me përdorues të tjerë të wiki. T\'u lidhur thjesht shtypni "Connect" button. Nëse ju jeni të regjistruar në pseudonimin tuaj, do të ketë qenë prefilled. Përdoruesit anonim u jepet një e gjeneruar automatikisht, por ajo mund të ndryshohet.',
+	'right-webchat' => 'Lejohet të përdorë [[Special:WebChat|web chat]]',
+);
+
 /** Arabic (العربية)
  * @author Orango
  */

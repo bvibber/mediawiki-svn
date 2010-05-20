@@ -126,6 +126,45 @@ Probeer later weer.',
 	'wah-loading' => 'Die Wiki@Home-koppelvlak is besig om te laai ...',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'wah-desc' => 'Mundëson shpërndarjen transcoding Punë në video për klientët duke përdorur Firefogg',
+	'wah-user-desc' => 'Wiki @ Home mundëson anëtarëve të komunitetit për të dhuruar ciklet e CPU rezervë për të ndihmuar me operacionet intensiv të burimeve',
+	'wah-short-audio' => 'file $1 shëndoshë, $2',
+	'wah-short-video' => '$1 video file, $2',
+	'wah-short-general' => '$1 media file, $2',
+	'wah-long-audio' => '(Gjatësi file $1 shëndoshë, $2, $3)',
+	'wah-long-video' => '(Gjatësi video file $1, $2, $4 × $5 pixels, $3)',
+	'wah-long-multiplexed' => '(Multiplexed audio / video file, $1, gjatë $2, $4 × $5 pixels, $3 e përgjithshme)',
+	'wah-long-general' => '(Media file, gjatë $2, $3)',
+	'wah-long-error' => '(Ffmpeg mund të mos lexoni këtë file: $1)',
+	'wah-transcode-working' => 'Kjo video është duke u procesuar, ju lutem provoni përsëri më vonë',
+	'wah-transcode-helpout' => 'Ju mund të ndihmoni transcode këtë video duke vizituar [[Special:WikiAtHome|Wiki@Home]].',
+	'wah-transcode-fail' => 'Ky skedar nuk transcode.',
+	'wah-javascript-off' => 'Ju duhet të aktivizoni Java skriptet për të marrë pjesë në Wiki @ Home',
+	'wah-loading' => 'loading Wiki interface @ Ballina ...',
+	'wah-menu-jobs' => 'Jobs',
+	'wah-menu-stats' => 'Stats',
+	'wah-menu-pref' => 'Preferenca',
+	'wah-lookingforjob' => 'Duke kërkuar për një punë ...',
+	'wah-start-on-visit' => 'Fillimi Wiki @ Ballina çdo kohë që unë të vizitoni këtë faqe.',
+	'wah-jobs-while-away' => 'Vetëm drejtuar Punë kur unë kam qenë larg nga shfletuesin tim për 20 minuta.',
+	'wah-nojobfound' => 'Nuk ka gjetur punë. Do të rigjykuar në $1.',
+	'wah-notoken-login' => 'A jeni regjistruar? Nëse jo, ju lutem hyni në të parë.',
+	'wah-apioff' => '@ Wiki Home API duket të jetë jashtë. Ju lutem kontaktoni administratorin wiki.',
+	'wah-doing-job' => 'Punë: <i>$1</i> më: <i>$2</i>',
+	'wah-downloading' => 'Shkarkim file <i>$1%</i> të plotë',
+	'wah-encoding' => 'Encoding file <i>$1%</i> të plotë',
+	'wah-encoding-fail' => 'Encoding dështuar. Ju lutemi Rifresko këtë faqe ose provo përsëri më vonë.',
+	'wah-uploading' => 'Ngarkimi i file <i>$1</i> plotë',
+	'wah-uploadfail' => 'Ngarkimi dështuar',
+	'wah-doneuploading' => 'Ngarko plotë. Faleminderit për kontributin tuaj.',
+	'wah-needs-firefogg' => 'Për të marrë pjesë në Wiki @ Ballina ju duhet ta instaloni <a href="http://firefogg.org">Firefogg</a> .',
+	'wah-api-error' => 'Ka qenë një gabim me API. Ju lutemi provoni sërish më vonë.',
+);
+
 /** Aragonese (Aragonés)
  * @author Juanpabl
  */

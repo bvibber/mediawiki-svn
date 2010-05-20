@@ -21,6 +21,13 @@ $messages['qqq'] = array(
 	'peoplecategories-desc' => 'Description on [[Special:Version]] of the PeopleCategories extension.',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'peoplecategories-desc' => 'Ndryshimet shfaqet emrat faqe nga "Emri Lastname" për "Lastname, Emri" në faqet e specifikuara kategori',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  */

@@ -175,6 +175,63 @@ $messages['af'] = array(
 	'group-manager-member' => 'Bestuurder',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'whitelistedit-desc' => 'Ndrysho të drejtat e hyrjes e përdoruesve të kufizuar',
+	'whitelistedit' => 'qasje White Lista e redaktorit',
+	'whitelist' => 'Lista e Bardhë faqe',
+	'mywhitelistpages' => 'faqet e mia',
+	'whitelistfor' => '<center> informatat aktuale për <b>$1</b> </center>',
+	'whitelisttablemodify' => 'Modifikoj',
+	'whitelisttablemodifyall' => 'Të gjithë',
+	'whitelisttablemodifynone' => 'Asnjë',
+	'whitelisttablepage' => 'faqe Wiki',
+	'whitelisttabletype' => 'Lloji Hyrje',
+	'whitelisttableexpires' => 'Skadon në',
+	'whitelisttablemodby' => 'Fundit modifikuar nga',
+	'whitelisttablemodon' => 'Ndryshuar për herë te fundit më',
+	'whitelisttableedit' => 'Redaktoj',
+	'whitelisttableview' => 'Pamje',
+	'whitelisttablenewdate' => 'Data reja:',
+	'whitelisttablechangedate' => 'data e skadimit Ndryshimi',
+	'whitelisttablesetedit' => 'Vendos për të redaktuar',
+	'whitelisttablesetview' => 'Vendos për të parë',
+	'whitelisttableremove' => 'Heq',
+	'whitelistnewpagesfor' => 'Shto faqet e reja të <b>$1 për</b> listën e bardhë <br /> Përdorimi ose * ose%si karakteri',
+	'whitelistnewtabledate' => 'data e skadimit:',
+	'whitelistnewtableedit' => 'Vendos për të redaktuar',
+	'whitelistnewtableview' => 'Vendos për të parë',
+	'whitelistnowhitelistedusers' => 'Nuk ka përdorues në grupin e "{{MediaWiki:Group-restricted}}". Ju duhet të [[Special:Userrights|shtoni përdoruesit të grupit]] para se të mund të shtoni faqet e bardhë një listë përdoruesi.',
+	'whitelistnewtableprocess' => 'Proces',
+	'whitelistnewtablereview' => 'Rishikim',
+	'whitelistselectrestricted' => '== Emri i përdoruesit Zgjidhni kufizuar ==',
+	'whitelistpagelist' => '{{SITENAME}} për $1 faqe',
+	'whitelistnocalendar' => "<font color='red' size=3>Ajo duket si http://www.mediawiki.org/wiki/Extension:Usage_Statistics [Extension: UsageStatistics], një parakusht për këtë shtrirje, nuk është instaluar!</font>",
+	'whitelistoverview' => '== Pasqyra e ndryshimeve për $1 ==',
+	'whitelistoverviewcd' => "* Data Ndryshimi për të'''$1''' për [[:$2|$2]]",
+	'whitelistoverviewsa' => "* Qasje Vendosja për'''$1''' për [[:$2|$2]]",
+	'whitelistoverviewrm' => '* Heqja e qasjes në [[:$1|$1]]',
+	'whitelistoverviewna' => "* Shtimi i [[:$1|$1]] për të whitelist me qasje ''$2' dhe ''$3'' data e skadimit",
+	'whitelistrequest' => 'Kërkesë për qasje më shumë faqe',
+	'whitelistrequestmsg' => '$1 ka kërkuar qasje në vijim {{PLURAL:$3|page|pages}}:
+
+$2',
+	'whitelistrequestconf' => 'Kërkesa për faqet e reja u dërgua tek $1',
+	'whitelistnonrestricted' => "''Përdoruesi'$1''' nuk është përdorues i kufizuar. Kjo faqe është e aplikueshme vetëm për përdoruesit e kufizuar",
+	'whitelistnever' => 'kurrë',
+	'whitelistnummatches' => '- {{PLURAL:$1|një ndeshje|$1 ndeshje}}',
+	'right-editwhitelist' => 'Ndrysho listën e bardhë për shfrytëzuesit ekzistues',
+	'right-restricttowhitelist' => 'Edit dhe shikoni faqet në listën e bardhë e vetme',
+	'action-editwhitelist' => 'modifikojë listën e bardhë për shfrytëzuesit ekzistues',
+	'action-restricttowhitelist' => 'redakto dhe shikoni faqet në kët vetmi',
+	'group-restricted' => 'Përdoruesit e kufizuar',
+	'group-restricted-member' => 'përdorues kufizuar',
+	'group-manager' => 'Menaxherët',
+	'group-manager-member' => 'Menaxher',
+);
+
 /** Amharic (አማርኛ)
  * @author Codex Sinaiticus
  */

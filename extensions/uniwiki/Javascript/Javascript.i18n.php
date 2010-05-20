@@ -29,6 +29,13 @@ $messages['af'] = array(
 	'javascript-desc' => 'Voeg uniwiki.js by elke bladsy wat JavaScript-kode tussen die Uniwiki-uitbreidings deel',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'javascript-desc' => 'Adds uniwiki.js në çdo faqe që përmban kodin e Java e përbashkët midis extensions Uniwiki',
+);
+
 /** Arabic (العربية)
  * @author OsamaK
  */
