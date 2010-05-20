@@ -9,6 +9,7 @@
 	border: none;
 	z-index: 99;
 	padding: 0;
+	margin: -1px 0 0 0;
 }
 .suggestions-special {
 	position: relative;
@@ -29,7 +30,6 @@
 	font-size: 0.8em;
 	cursor: pointer;
 	border: solid 1px #aaaaaa;
-	border-top-width: 0;
 	padding: 0;
 	margin: 0;
 }

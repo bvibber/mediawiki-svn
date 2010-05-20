@@ -31,6 +31,13 @@
  * 		Type: Number, Range: 1 - 100, Default: 7
  * delay: Number of ms to wait for the user to stop typing
  * 		Type: Number, Range: 0 - 1200, Default: 120
+ * submitOnClick: Whether to submit the form containing the textbox when a suggestion is clicked
+ *		Type: Boolean, Default: false
+ * maxExpandFactor: Maximum suggestions box width relative to the textbox width.  If set to e.g. 2, the suggestions box
+ *		will never be grown beyond 2 times the width of the textbox.
+ *		Type: Number, Range: 1 - infinity, Default: 3
+ * positionFromLeft: Whether to position the suggestion box with the left attribute or the right
+ *		Type: Boolean, Default: true
  */
 ( function( $ ) {
 
@@ -120,18 +127,26 @@ $.suggestions = {
 						// Rebuild the suggestions list
 						context.data.$container.show();
 						// Update the size and position of the list
-						context.data.$container.css( {
+						var newCSS = {
 							'top': context.config.$region.offset().top + context.config.$region.outerHeight(),
 							'bottom': 'auto',
 							'width': context.config.$region.outerWidth(),
-							'height': 'auto',
-							'left': context.config.$region.offset().left,
-							'right': 'auto'
-						} );
+							'height': 'auto'
+						}
+						if ( context.config.positionFromLeft ) {
+							newCSS['left'] = context.config.$region.offset().left;
+							newCSS['right'] = 'auto';
+						} else {
+							newCSS['left'] = 'auto';
+							newCSS['right'] = $( 'body' ).width() - ( context.config.$region.offset().left + context.config.$region.outerWidth() );
+						}
+						context.data.$container.css( newCSS );
 						var $results = context.data.$container.children( '.suggestions-results' );
 						$results.empty();
+						var expWidth = -1;
+						var $autoEllipseMe = $( [] );
 						for ( var i = 0; i < context.config.suggestions.length; i++ ) {
-							$result = $( '<div />' )
+							var $result = $( '<div />' )
 								.addClass( 'suggestions-result' )
 								.attr( 'rel', i )
 								.data( 'text', context.config.suggestions[i] )
@@ -141,13 +156,33 @@ $.suggestions = {
 									);
 								} )
 								.appendTo( $results );
+							
 							// Allow custom rendering
 							if ( typeof context.config.result.render == 'function' ) {
 								context.config.result.render.call( $result, context.config.suggestions[i] );
 							} else {
-								$result.text( context.config.suggestions[i] ).autoEllipsis();
+								// Add <span> with text
+								$result.append( $( '<span />' )
+										.css( 'whiteSpace', 'nowrap' )
+										.text( context.config.suggestions[i] )
+								);
+								
+								// Widen results box if needed
+								// New width is only calculated here, applied later
+								var $span = $result.children( 'span' );
+								if ( $span.outerWidth() > $result.width() && $span.outerWidth() > expWidth ) {
+									expWidth = $span.outerWidth();
+								}
+								$autoEllipseMe = $autoEllipseMe.add( $result );
 							}
 						}
+						// Apply new width for results box, if any
+						if ( expWidth > context.data.$container.width() ) {
+							var maxWidth = context.config.maxExpandFactor*context.data.$textbox.width();
+							context.data.$container.width( Math.min( expWidth, maxWidth ) );
+						}
+						// autoEllipse the results. Has to be done after changing the width
+						$autoEllipseMe.autoEllipsis( { hasSpan: true, tooltip: true } );
 					}
 				}
 				break;
@@ -157,7 +192,11 @@ $.suggestions = {
 			case 'delay':
 				context.config[property] = Math.max( 0, Math.min( 1200, value ) );
 				break;
+			case 'maxExpandFactor':
+				context.config[property] = Math.max( 1, value );
+				break;
 			case 'submitOnClick':
+			case 'positionFromLeft':
 				context.config[property] = value ? true : false;
 				break;
 		}
@@ -258,7 +297,11 @@ $.suggestions = {
 				context.data.$container.hide();
 				preventDefault = wasVisible;
 				selected = context.data.$container.find( '.suggestions-result-current' );
-				if ( selected.is( '.suggestions-special' ) ) {
+				if ( selected.size() == 0 ) {
+					// if nothing is selected, cancel any current requests and submit the form
+					$.suggestions.cancel( context );
+					context.config.$region.closest( 'form' ).submit();
+				} else if ( selected.is( '.suggestions-special' ) ) {
 					if ( typeof context.config.special.select == 'function' ) {
 						context.config.special.select.call( selected, context.data.$textbox );
 					}
@@ -292,10 +335,10 @@ $.fn.suggestions = function() {
 		/* Construction / Loading */
 		
 		var context = $(this).data( 'suggestions-context' );
-		if ( typeof context == 'undefined' ) {
+		if ( typeof context == 'undefined' || context == null ) {
 			context = {
 				config: {
-				    'fetch' : function() {},
+					'fetch' : function() {},
 					'cancel': function() {},
 					'special': {},
 					'result': {},
@@ -303,7 +346,9 @@ $.fn.suggestions = function() {
 					'suggestions': [],
 					'maxRows': 7,
 					'delay': 120,
-					'submitOnClick': false
+					'submitOnClick': false,
+					'maxExpandFactor': 3,
+					'positionFromLeft': true
 				}
 			};
 		}
@@ -342,13 +387,22 @@ $.fn.suggestions = function() {
 				'mouseDownOn': $( [] ),
 				'$textbox': $(this)
 			};
+			// Setup the css for positioning the results box
+			var newCSS = {
+				'top': Math.round( context.data.$textbox.offset().top + context.data.$textbox.outerHeight() ),
+				'width': context.data.$textbox.outerWidth(),
+				'display': 'none'
+			}
+			if ( context.config.positionFromLeft ) {
+				newCSS['left'] = context.config.$region.offset().left;
+				newCSS['right'] = 'auto';
+			} else {
+				newCSS['left'] = 'auto';
+				newCSS['right'] = $( 'body' ).width() - ( context.config.$region.offset().left + context.config.$region.outerWidth() );
+			}
+			
 			context.data.$container = $( '<div />' )
-				.css( {
-					'top': Math.round( context.data.$textbox.offset().top + context.data.$textbox.outerHeight() ),
-					'left': Math.round( context.data.$textbox.offset().left ),
-					'width': context.data.$textbox.outerWidth(),
-					'display': 'none'
-				} )
+				.css( newCSS )
 				.addClass( 'suggestions' )
 				.append(
 					$( '<div />' ).addClass( 'suggestions-results' )
