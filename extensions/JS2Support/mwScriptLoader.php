@@ -36,8 +36,8 @@ if( $myScriptLoader->outputFromCache() ){
 
 // No-cache hit load up mediaWiki stuff and continue scriptloader processing:
 
-// Check if we need to use directory traversal:  
-if( !getenv( 'MW_INSTALL_PATH' ) ){	
+// Check if we need to use directory traversal:
+if( !getenv( 'MW_INSTALL_PATH' ) ){
 	// Use '../../' because WebStart.php uses realpath( '.' ); to define $IP
 	chdir( '../../' );
 }
@@ -56,7 +56,7 @@ if( $wgRequest->isPathInfoBad() ){
 	return;
 }
 // Verify the script loader is on:
-if ( !$wgEnableScriptLoader && $myScriptLoader->outputFormat != 'messages') {
+if ( !$wgEnableScriptLoader && $myScriptLoader->outputFormat != 'messages' ) {
 	echo '/*ScriptLoader is not enabled for this site. To enable add the following line to your LocalSettings.php';
 	echo '<pre><b>$wgEnableScriptLoader=true;</b></pre>*/';
 	echo 'alert(\'Script loader is disabled\');';

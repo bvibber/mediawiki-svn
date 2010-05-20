@@ -21,7 +21,7 @@ if ( !defined( 'MEDIAWIKI' ) && !defined( 'SCRIPTLOADER_MEDIAWIKI') ) {
 	$myScriptLoader->doScriptLoader();
 }
 
-class jsScriptLoader { 
+class jsScriptLoader {
 
 	// The list of named javascript & css files
 	var $namedFileList = array();
@@ -584,7 +584,7 @@ class jsScriptLoader {
 
 		// Add the unique rid
 		$this->requestKey .= $this->urid;
-		
+
 	}
 	/**
 	 * Pre-process request variables ~without configuration~ or any utility functions.
@@ -948,12 +948,12 @@ class jsScriptLoader {
 	 * @return {Array} decoded json array of message key value pairs
 	 */
 	function getMsgKeysFromClass( $className ){
+		global $wgExtensionJavascriptModules, $wgExtensionMessagesFiles;
 
 		$scriptString = $this->getScriptText( $className );
 
 		// Try for includeAllModuleMsgs function call
 		if ( preg_match ( self::$includeAllMsgsRegEx, $scriptString ) !== false ) {
-			global $wgExtensionJavascriptModules, $wgExtensionMessagesFiles;
 			// Get the module $messages keys
 
 			$moduleName = jsClassLoader::getClassModuleName( $className );
@@ -968,7 +968,7 @@ class jsScriptLoader {
 				// Get the i18n file from $wgExtensionMessagesFiles path
 				require( $wgExtensionMessagesFiles[ $moduleName ] );
 
-				// Return the English key set ( since base message text is in english )
+				// Return the English key set ( since base message text is in English )
 				return $messages['en'];
 			} else {
 				// No $moduleName found.

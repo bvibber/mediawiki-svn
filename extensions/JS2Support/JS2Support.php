@@ -14,51 +14,29 @@ $wgExtensionCredits['other'][] = array(
 );
 
 $js2Dir = dirname( __FILE__ ) . '/';
-$wgExtensionMessagesFiles[ 'JS2Support' ] = $js2Dir . 'JS2Support.i18n.php';
 
+// Localizations
+$wgExtensionMessagesFiles[ 'JS2Support' ] =
+ 	dirname( __FILE__ ) . '/JS2Support.i18n.php';
+
+// Hooks
+$wgAutoloadClasses['JS2SupportHooks'] =
+	dirname( __FILE__ ) . "/JS2Support.hooks.php";
 
 /**
- * Setup the js2 extension:
+ * Add Setup the js2 extension hook:
  */
-$wgExtensionFunctions[] = 'wfSetupJS2';
-function wfSetupJS2(){
-	global $wgOut, $js2Dir, $wgAutoloadClasses, $wgScriptLoaderNamedPaths,
-	$wgExtensionJavascriptModules, $wgEnableTestJavascriptModules;
-
-	// Remap output page as part of the extension setup
-	$wgOut = new StubObject( 'wgOut', 'ScriptLoaderOutputPage' );
-	$wgAutoloadClasses[ 'ScriptLoaderOutputPage' ] = $js2Dir . 'ScriptLoaderOutputPage.php';
-
-	// Include all the mediaWiki autoload classes:
-	require( $js2Dir . 'JS2AutoLoader.php');
-
-	// Add the core test module loaders (extensions can add their own test modules referencing this global )
-	if( $wgEnableTestJavascriptModules ) {
-		$wgExtensionJavascriptModules['JS2Tests'] = 'extensions/JS2Support/tests';
-	}
-
-	// Update all the javascript modules classNames and localization by reading respective loader.js files
-	// @dependent on all extensions defining $wgExtensionJavascriptModules paths in config file ( not in setup )
-	//
-	// @NOTE runtime for loadClassPaths with 8 or so loaders with 100 or so named paths is
-	// is around .002 seconds on my laptop. Could probably be further optimized and of course it only runs
-	// on non-cached pages.
-	jsClassLoader::loadClassPaths();
-}
+$wgExtensionFunctions[] = 'JS2SupportHooks::setup';
 
 /**
  * MakeGlobalVariablesScript hook ( add the wgScriptLoaderPath var )
  */
-$wgHooks['MakeGlobalVariablesScript'][] = 'js2SupportAddJSVars';
-function js2SupportAddJSVars( &$vars ) {
-	global $wgExtensionAssetsPath;
-	$vars = array_merge( $vars,
-		array(
-			'wgScriptLoaderLocation' => $wgExtensionAssetsPath . '/JS2Support/mwScriptLoader.php'
-		)
-	);
-	return true;
-}
+$wgHooks['MakeGlobalVariablesScript'][] = 'JS2SupportHooks::addJSVars';
+
+/**
+* Add a preference hook
+*/
+$wgHooks['GetPreferences'][] = 'JS2SupportHooks::addPreferences';
 
 /****************************
 * Configuration

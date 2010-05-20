@@ -34,8 +34,8 @@ class ScriptLoaderOutputPage extends OutputPage {
 	 *				this way you would not break the cache for other per page scripts
 	 */
 	var $mScriptLoaderClassList = array(
-		'js'=> array(),
-		'css'=>array()
+		'js' => array(),
+		'css' => array()
 	);
 
 	// Stores the options for a given bucket ( like css media type )
@@ -44,6 +44,9 @@ class ScriptLoaderOutputPage extends OutputPage {
 	// Local scriptLoader instance object
 	var $mScriptLoader = null;
 
+	// If script grouping is enabled or not. (lazy initialised use () )
+	var $mEnabledScriptGrouping  = null; // lazy initializsed
+
 	/**
 	 * Add a JavaScript file out of skins/common, or a given relative path.
 	 *
@@ -51,7 +54,7 @@ class ScriptLoaderOutputPage extends OutputPage {
 	 *              (/foo/bar.js)
 	 */
 	public function addScriptFile( $file , $scriptRequestBucket = 'page' ) {
-		global $wgStylePath, $wgStyleVersion, $wgEnableScriptLoader, $wgScript;
+		global $wgStylePath, $wgStyleVersion, $wgScript;
 		if( substr( $file, 0, 1 ) == '/' || preg_match( '#^[a-z]*://#i', $file ) ) {
 			$path = $file;
 		} else {
@@ -59,7 +62,7 @@ class ScriptLoaderOutputPage extends OutputPage {
 		}
 
 		// If script-loader enabled check if we can add the script via script-loader
-		if( $wgEnableScriptLoader ) {
+		if( $this->isScriptGroupingEnabled() ) {
 			$jsClass = $this->getClassFromPath( $path );
 			if( $jsClass ) {
 				$this->addScriptClass( $jsClass, $scriptRequestBucket );
@@ -68,6 +71,22 @@ class ScriptLoaderOutputPage extends OutputPage {
 		}
 		// Add script without grouping
 		$this->addScript( Html::linkedScript( wfAppendQuery( $path, $wgStyleVersion ) ) );
+	}
+
+	/**
+	 * Check the user preference for script grouping for
+	 * by default script grouping uses the wgEnableScriptLoader global
+	 */
+	function isScriptGroupingEnabled() {
+		global $wgEnableScriptLoader, $wgUser;
+		// Get the preferences for the current user
+		$preferences = Preferences::getPreferences( $wgUser );
+		// For some reaons prefrence "value" is stored in "default"
+		if( $preferences[ 'scriptdebug' ]['default'] == 1 ) {
+			return false;
+		} else {
+			return $wgEnableScriptLoader;
+		}
 	}
 
 	/**
@@ -118,7 +137,7 @@ class ScriptLoaderOutputPage extends OutputPage {
 	 */
 	function getHeadScripts( Skin $sk ) {
 		global $wgUser, $wgRequest, $wgJsMimeType, $wgUseSiteJs;
-		global $wgStylePath, $wgStyleVersion, $wgEnableScriptLoader, $wgDebugJavaScript;
+		global $wgStylePath, $wgStyleVersion, $wgDebugJavaScript;
 
 		$scripts = Skin::makeGlobalVariablesScript( $sk->getSkinName() );
 
@@ -155,7 +174,7 @@ class ScriptLoaderOutputPage extends OutputPage {
 
 
 		// If the script-loader is enabled get script-loader classes per buckets
-		if( $wgEnableScriptLoader ) {
+		if( $this->isScriptGroupingEnabled() ) {
 			$this->mScripts .= $this->getScriptLoaderJS();
 		}
 
@@ -200,7 +219,6 @@ class ScriptLoaderOutputPage extends OutputPage {
 	 * @param $bucket String: Script-loader grouping string
 	 */
 	public function addStyle( $style, $media='', $condition='', $dir='', $bucket='' ) {
-		global $wgEnableScriptLoader;
 		$options = array();
 
 		if( $media ) {
@@ -226,7 +244,7 @@ class ScriptLoaderOutputPage extends OutputPage {
 		}
 
 		// If script-loader enabled check if we can add the script via script-loader
-		if( $wgEnableScriptLoader ) {
+		if( $this->isScriptGroupingEnabled() ) {
 			global $wgStylePath, $wgScript;
 			// Append style path if we are not a wikititle self reference:
 			if( strpos( $style, $wgScript ) === false ) {
@@ -255,7 +273,7 @@ class ScriptLoaderOutputPage extends OutputPage {
 	 * 		'bucket' String: Script-loader grouping string
 	 */
 	public function addStyleClass( $cssClass , $options = array()) {
-		global $wgEnableScriptLoader, $wgExtensionAssetsPath;
+		global $wgExtensionAssetsPath;
 		// Build the bucket key with supplied options
 
 
@@ -271,18 +289,18 @@ class ScriptLoaderOutputPage extends OutputPage {
 		// Update the css bucket options:
 		$this->setClassBucketOptions( $bucketKey, $options );
 
-		if( $wgEnableScriptLoader ) {
+		if( $this->isScriptGroupingEnabled() ) {
 			$this->addScriptClass( $cssClass, $bucketKey, 'css');
 		} else {
 			$stylePath = jsScriptLoader::getPathFromClass( $cssClass );
 			// Else use normal styles output
 			//( unfortunately $this->styles appends /skins ) so use addLink
 			$this->addLink(
-				array(
+			array(
 					'rel' => 'stylesheet',
 					'type' => 'text/css',
 					'href' => $stylePath . '?' . $this->getURIDparam( $cssClass ),
-				)
+			)
 			);
 		}
 
@@ -318,9 +336,8 @@ class ScriptLoaderOutputPage extends OutputPage {
 	 * These will be applied to various media & IE conditionals.
 	 */
 	public function buildCssLinks() {
-		global $wgEnableScriptLoader;
 		$scriptLoaderCss = '';
-		if( $wgEnableScriptLoader ){
+		if( $this->isScriptGroupingEnabled() ){
 			$scriptLoaderCss = $this->getScriptLoaderCss();
 		}
 		return $scriptLoaderCss . "\n" . parent::buildCssLinks();
@@ -337,7 +354,7 @@ class ScriptLoaderOutputPage extends OutputPage {
 	 * @since 1.17
 	 */
 	public function includeAllPageJS ( ) {
-		global $wgExtensionJavascriptModules, $wgEnableScriptLoader,
+		global $wgExtensionJavascriptModules,
 		$wgScriptLoaderNamedPaths, $wgScriptPath;
 
 		// Set core Classes
@@ -358,7 +375,7 @@ class ScriptLoaderOutputPage extends OutputPage {
 		$postScripts = $this->mScripts;
 		$this->mScripts = '';
 
-		if( $wgEnableScriptLoader ) {
+		if( $this->isScriptGroupingEnabled() ) {
 			$this->mScripts = "\n<!-- Script bucket: allpage --> \n";
 			$this->mScripts = $this->getLinkedScriptLoaderJs( $coreClasses );
 		} else {
@@ -381,10 +398,10 @@ class ScriptLoaderOutputPage extends OutputPage {
 				$loaderDir =  $modulePath . "/";
 				$this->addScript(  Html::inlineScript(
 					"mw.setConfig( 'loaderContext',  '" . xml::escapeJsString( $wgScriptPath .'/'. $loaderDir  ) . "');"
-				) );
-				$this->addScriptFile(
+					) );
+					$this->addScriptFile(
 					"$wgScriptPath/$modulePath/loader.js"
-				);
+					);
 			}
 		}
 		//Now re-append any scripts that got added prior to the includeJQuery call
@@ -484,8 +501,7 @@ class ScriptLoaderOutputPage extends OutputPage {
 	 * @return boolean False if the class wasn't found, True on success
 	 */
 	function addScriptClass( $className, $scriptRequestBucket = 'page' , $type='js') {
-		global $wgDebugJavaScript, $wgScriptLoaderNamedPaths, $IP,
-		$wgEnableScriptLoader, $wgStyleVersion, $wgScriptPath, $wgStylePath,
+		global $wgDebugJavaScript, $wgScriptLoaderNamedPaths, $IP, $wgStyleVersion, $wgScriptPath, $wgStylePath,
 		$wgUser;
 
 		if( !$this->mScriptLoader ){
@@ -494,7 +510,7 @@ class ScriptLoaderOutputPage extends OutputPage {
 
 		// Check for wikiTitle:
 		if ( substr( $className, 0, 3 ) == 'WT:' ) {
-			if( $wgEnableScriptLoader ) {
+			if( $this->isScriptGroupingEnabled() ) {
 				// Add to the mScriptLoaderClassList list
 				$this->addClassToOutputBucket( $className, $scriptRequestBucket, $type);
 				return true;
@@ -512,9 +528,9 @@ class ScriptLoaderOutputPage extends OutputPage {
 				}
 				// Add the script
 				$this->addScriptFile(
-					Skin::makeUrl( $titlePage,
+				Skin::makeUrl( $titlePage,
 							"action=raw$jsCache&gen=js$titleArg"
-					)
+				)
 				);
 			}
 
@@ -529,7 +545,7 @@ class ScriptLoaderOutputPage extends OutputPage {
 				return false; // could not find the class
 			}
 			// Valid path add it to script-loader or "link" directly
-			if( $wgEnableScriptLoader ) {
+			if( $this->isScriptGroupingEnabled() ) {
 				// Register it with the script loader
 				$this->addClassToOutputBucket( $className, $scriptRequestBucket, $type );
 				return true;
