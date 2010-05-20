@@ -51,16 +51,35 @@ class NewUserMessage {
 	}
 
 	/**
+	 * Return the template name if it exists, or '' otherwise.
+	 * @returns string
+	 */
+	static function fetchTemplateIfExists( $template ) {
+		$text = Title::newFromText( $template );
+
+		if ( !$text ) {
+			wfDebug( __METHOD__ . ": '$template' is not a valid title.\n" );
+			return '';
+		} elseif ( $text->getNamespace() !== NS_TEMPLATE ) {
+			wfDebug( __METHOD__ . ": '$template' is not a valid Template.\n" );
+			return '';
+		} elseif ( !$text->exists() ) {
+			return '';
+
+			if ( $template->getNamespace() == NS_TEMPLATE ) {
+				$text = $template->getText();
+			}
+		}
+
+		return $text->getText();
+	}
+
+	/**
 	 * Produce a subject for the message.
 	 * @returns String
 	 */
 	static function fetchSubject() {
-		$subject = '';
-		if ( wfRunHooks( 'SetupNewUserMessageSubject', array( &$subject ) ) ) {
-			$subject = wfMsg( 'newusermessage-template-subject' );
-		}
-
-		return $subject;
+		return self::fetchTemplateIfExists( wfMsg( 'newusermessage-template-subject' ) );
 	}
 
 	/**
@@ -68,21 +87,7 @@ class NewUserMessage {
 	 * @returns String
 	 */
 	static function fetchText() {
-		$text = '';
-		if ( wfRunHooks( 'SetupNewUserMessageBody', array( &$text ) ) ) {
-			$text = wfMsg( 'newusermessage-template-body' );
-
-			$template = Title::newFromText( $text );
-			if ( !$template ) {
-				wfDebug( __METHOD__ . ": invalid title in newusermessage-template-body\n" );
-				return;
-			}
-
-			if ( $template->getNamespace() == NS_TEMPLATE ) {
-				$text = $template->getText();
-			}
-		}
-		return $text;
+		return self::fetchTemplateIfExists( wfMsg( 'newusermessage-template-body' ) );
 	}
 
 	/**
@@ -103,25 +108,29 @@ class NewUserMessage {
 	 * Take care of substition on the string in a uniform manner
 	 * @param $str String
 	 * @param $user User
+	 * @param $editor User
+	 * @param $talk Article
 	 * @param $preparse if provided, then preparse the string using a Parser
 	 * @returns String
 	 */
-	static private function substString( $str, $user, $preparse = null ) {
+	static private function substString( $str, $user, $editor, $talk, $preparse = null ) {
 		$realName = $user->getRealName();
 		$name = $user->getName();
 
-		$str = "{{subst:{{$str}}}|realName=$realName|name=$name}}";
+		// Add (any) content to [[MediaWiki:Newusermessage-substitute]] to substitute the
+		// welcome template.
+		$substitute = wfMsgForContent( 'newusermessage-substitute' );
+
+		if ( $substitute ) {
+			$str = "{{subst:{{$str}}}|realName=$realName|name=$name}}";
+		} else {
+			$str = "{{{$str}|realName=$realName|name=$name}}";
+		}
 
 		if ( $preparse ) {
-			/* Create the final subject text.
-			 * Always substituted and processed by parser to avoid awkward subjects
-			 */
-			$parser = new Parser;
-			$parser->setOutputType( 'wiki' );
-			$parserOptions = new ParserOptions;
+			global $wgParser;
 
-			$str = $parser->preSaveTransform($str, $talk /* as dummy */,
-				$editor, $parserOptions );
+			$str = $wgParser->preSaveTransform($str, $talk, $editor, new ParserOptions );
 		}
 
 		return $str;
@@ -144,15 +153,11 @@ class NewUserMessage {
 			$editor = self::fetchEditor();
 			$flags = self::fetchFlags();
 
-			// Add (any) content to [[MediaWiki:Newusermessage-substitute]] to substitute the welcome template.
-			$substitute = wfMsgForContent( 'newusermessage-substitute' );
+			$subject = self::substString( $subject, $user, $editor, $talk, "preparse" );
+			$text = self::substString( $text, $user, $editor, $talk );
 
-			if ( $substitute ) {
-				$subject = self::substString( $subject, $user, "preparse" );
-				$text = self::substString( $text, $user );
-			}
-
-			return $user->leaveUserMessage( $subject, $text, $signature, $editSummary, $editor, $flags );
+			return $user->leaveUserMessage( $subject, $text, $signature, $editSummary,
+				$editor, $flags );
 		}
 	}
 
