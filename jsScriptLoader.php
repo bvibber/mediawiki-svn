@@ -51,6 +51,9 @@ class jsScriptLoader {
 	// The raw requested class
 	private static $rawClassList = '';
 
+	// The includeAllModuleMessages string regular expresion
+	private static $includeAllMsgsRegEx = "/mw\.includeAllModuleMessages\s*\(\s*\)\;?/";
+
 	/**
 	 * Output the javascript from cache
 	 *
@@ -82,8 +85,7 @@ class jsScriptLoader {
 	 *  outputs js
 	 */
 	function doScriptLoader() {
-		global 	$wgScriptLoaderNamedPaths, $IP,
-		$wgEnableScriptMinify, $wgUseFileCache;
+		global 	$wgScriptLoaderNamedPaths, $IP, $wgUseFileCache;
 
 		// Load the javascript class paths:
 		require_once( realpath( dirname( __FILE__ ) ) . "/includes/jsClassLoader.php");
@@ -112,7 +114,7 @@ class jsScriptLoader {
 			// Check if we are exclusively getting messages
 			if( $this->outputFormat == 'messages' ) {
 				// Get only the message code
-				$this->output .= $this->getInlineMsgFromClass( $classKey );
+				$this->output .= $this->getAddMessagesFromClass( $classKey );
 			} else {
 				// Process the full class
 				$this->output .= $this->getLocalizedScriptText( $classKey );
@@ -120,11 +122,18 @@ class jsScriptLoader {
 
 			// mwEmbed is a core component so it includes loaders and other styles
 			if( $classKey == 'mwEmbed' && $this->outputFormat != 'messages' ){
-				// Output core components ( parts of mwEmbed that are in different files )
-				$this->output .= jsClassLoader::getCombinedComponentJs( $this );
+				// Output core components ( parts of core mwEmbed that are in different files )
+				$coreComponentsList  = jsClassLoader::getComponentsList();
+				foreach( $coreComponentsList as $componentClassName ) {
+					// Output the core component via the script loader:
+					$this->output .= $this->getLocalizedScriptText( $componentClassName );
+				}
 
-				// Output the loaders:
-				$this->output .= jsClassLoader::getCombinedLoaderJs();
+				// Output the loaders js
+				$loaderJS = jsClassLoader::getCombinedLoaderJs();
+				// Transform the loader text to remove debug statments and
+				// update language msgs if any are present
+				$this->output .= $this->transformScriptText( $loaderJS , 'mwEmbed');
 
 				// Output the current language class js
 				$this->output .= jsClassLoader::getLanguageJs( $this->langCode );
@@ -151,7 +160,7 @@ class jsScriptLoader {
 		}
 
 		// Check if we should minify the whole thing:
-		if ( !$this->debug ) {
+		if ( !$this->debug && $this->outputFormat == 'js' ) {
 			$this->output = self::getMinifiedJs( $this->output , $this->requestKey );
 			$this->output = $this->notMinifiedTopOutput . $this->output;
 		}
@@ -380,9 +389,10 @@ class jsScriptLoader {
 	private function transformCssOutput( $classKey, $cssString , $path ='') {
 		// Minify and update paths on cssString:
 		$cssOptions = array();
-		if( ! $this->debug ) {
-			$cssOptions[ 'preserveComments' ] = false;
-		}
+
+		// Set comments preservation based on debug state
+		$cssOptions[ 'preserveComments' ] = ( $this->debug );
+
 		$serverUri = $this->getScriptLoaderUri();
 
 		// Check for the two jsScriptLoader entry points:
@@ -407,7 +417,7 @@ class jsScriptLoader {
 			return $cssString;
 		}
 
-		// Format is "javascript" return the string in an addStyleString call
+		// Output Format is "javascript" return the string in an addStyleString call
 		// CSS classes should be of form mw.style.{className}
 		$cssStyleName = str_replace('mw.style.', '', $classKey );
 		return 'mw.addStyleString("' . Xml::escapeJsString( $cssStyleName )
@@ -502,7 +512,7 @@ class jsScriptLoader {
 	 * validate classes and generate request key
 	 */
 	function postProcRequestVars(){
-		global $wgContLanguageCode, $wgEnableScriptMinify, $wgScriptLoaderNamedPaths,
+		global $wgContLanguageCode, $wgScriptLoaderNamedPaths,
 		$wgStyleVersion;
 
 		// Set debug flag
@@ -584,10 +594,6 @@ class jsScriptLoader {
 		// Add the unique rid
 		$this->requestKey .= $this->urid;
 
-		// Add a minify flag
-		if ( $wgEnableScriptMinify ) {
-			$this->requestKey .= '_min';
-		}
 	}
 	/**
 	 * Pre-process request variables ~without configuration~ or any utility functions.
@@ -722,7 +728,7 @@ class jsScriptLoader {
 	}
 
 	/**
-	 * Retrieve the js or css file into a string, updates errorMsg if not retrivable.
+	 * Retrieve the js or css file into a string, updates errorMsg if not retrievable.
 	 *
 	 * @param {String} $filePath File to get
 	 * @return {String} of the file contents
@@ -771,10 +777,21 @@ class jsScriptLoader {
 		// Get the script text:
 		$scriptText = $this->getScriptText( $className );
 		if( !$scriptText ) {
-			// Specific error already reported in getScriptText
+			// Specific error already reported in getScriptText()
 			return '';
 		}
+		$moduleName = jsClassLoader::getClassModuleName( $className );
+		$scriptText = $this->transformScriptText( $scriptText, $moduleName );
 
+		// Return the js string unmodified if we did not transform with the localisation.
+		return $scriptText;
+	}
+	/*
+	 * Transform script text with language key substitution
+	 * and clear out debug lines if present.
+	 */
+	function transformScriptText( $scriptText , $moduleName){
+		global $wgEnableScriptLocalization;
 		// Strip out mw.log debug lines (if not in debug mode)
 		if( !$this->debug ){
 			$scriptText = preg_replace( '/\n\s*mw\.log\(([^\)]*\))*\s*[\;\n]/U', "\n", $scriptText );
@@ -782,26 +799,36 @@ class jsScriptLoader {
 
 		// Do language swap by index:
 		if ( $wgEnableScriptLocalization ){
-			// Get the mw.addMessage javascript from class name
-			$translatedJs = "\n" . $this->getInlineMsgFromClass( $className ) . "\n";
+			// Get the mw.addMessage javascript from scriptText and moduleName
+			$addMessageJs  = $this->getAddMessagesFromScriptText( & $scriptString , $moduleName);
+
+			//@@NOTE getAddMessagesFromClass could identify which mode we are in and we would not need to
+			// try each of these search patterns in the same order as before.
+
+			// Check for mw.includeAllModuleMsgs() call to be replaced with all the msgs
+			$scriptText = preg_replace( self::$includeAllMsgsRegEx, $addMessageJs, $scriptText, 1, $count );
+			if( $count != 0 ){
+				return $scriptText;
+			}
 
 			// Replace mw.addMessages with localized msgs in javascript string
 			$inx = self::getAddMessagesIndex( $scriptText );
 			if( $inx ){
 				// Return the final string (without double {})
-				return substr($scriptText, 0, $inx['sfull']-1) . $translatedJs . substr($scriptText, $inx['efull']+1);
+				return substr($scriptText, 0, $inx['sfull']) . $addMessageJs . substr($scriptText, $inx['efull']);
 			}
 
 			// Replace mw.addMessageKeys with localized msgs in javascript string
 			$inx = self::getAddMessageKeyIndex( $scriptText );
 			if( $inx ) {
 				// Return the final string (without double {})
-				return substr($scriptText, 0, $inx['sfull']) . $translatedJs . substr($scriptText, $inx['efull']+1 );
+				return substr( $scriptText, 0, $inx['sfull'] ). $addMessageJs . substr($scriptText, $inx['efull']);
 			}
 		}
-		// Return the js str unmodified if we did not transform with the localisation.
+		// Return the javascript str unmodified if we did not transform with the localisation
 		return $scriptText;
 	}
+
 
 	/**
 	 * Get the "addMesseges" function index ( for replacing msg text with localized json )
@@ -921,11 +948,24 @@ class jsScriptLoader {
 	 * Generates an in-line addMessege call for page output.
 	 * For use with OutputPage when the script-loader is disabled.
 	 *
-	 * @param {String} $class Name of class to get inin-lineline messages for.
+	 * @param {String} $class Name of class to get inline messages for.
 	 * @return in-line msg javascript text or empty string if no msgs need to be localized.
 	 */
-	function getInlineMsgFromClass( $class ) {
-		$messageSet = $this->getMsgKeysFromClass( $class );
+	function getAddMessagesFromClass( $class ) {
+		$scriptText = $this->getScriptText( $className );
+		$moduleName = jsClassLoader::getClassModuleName( $className );
+		return $this->getAddMessagesFromScriptText( $scriptText, $moduleName );
+	}
+	
+	/**
+	 * getAddMessagesFromScriptText generates a javascript addMesseges call for a given scriptText
+	 *
+	 * @param String $scriptText String of javascript text to search for message replacement text
+	 * @param String $moduleName Name of scriptText module ( that hosts messages )
+	 * @return string
+	 */
+	function getAddMessagesFromScriptText( & $scriptText, $moduleName ) {
+		$messageSet = $this->getMsgKeysFromScriptText( $scriptText , $moduleName);
 		if( $messageSet ) {
 			self::updateMessageValues ( $messageSet , $this->langCode );
 			return 'mw.addMessages(' . FormatJson::encode( $messageSet ) . ');';
@@ -936,18 +976,31 @@ class jsScriptLoader {
 	}
 
 	/**
-	 * Get the set of message associated with a given javascript class
+	 * Get the set of message associated from scriptText
 	 *
 	 * @param {String} $className Class to restive msgs from
 	 * @return {Array} decoded json array of message key value pairs
 	 */
-	function getMsgKeysFromClass( $className ){
-		$scriptString = $this->getScriptText( $className );
+	function getMsgKeysFromScriptText( & $scriptString , $moduleName){
+		global $wgExtensionJavascriptModules, $wgExtensionMessagesFiles;
 
-		// Try for AddMessagesIndex
-		$inx = self::getAddMessagesIndex( $scriptString );
-		if( $inx ) {
-			return FormatJson::decode( '{' . substr($scriptString, $inx['s'], ($inx['e']-$inx['s'])) . '}', true);
+		// Try for includeAllModuleMsgs function call
+		if ( preg_match ( self::$includeAllMsgsRegEx, $scriptString ) !== false ) {
+
+			// Get the module $messages keys
+			if( $moduleName && isset( $wgExtensionMessagesFiles[ $moduleName ] ) ) {
+
+				// Empty out messages in the current scope
+				$messages = array();
+
+				// Get the i18n file from $wgExtensionMessagesFiles path
+				require( $wgExtensionMessagesFiles[ $moduleName ] );
+
+				// Return the English key set ( since base message text is in english )
+				return $messages['en'];
+			} else {
+				// No $moduleName found.
+			}
 		}
 
 		// Try for 'AddMessageKey' Index array type
@@ -964,6 +1017,13 @@ class jsScriptLoader {
 				return array_flip( $matches[1] );
 			}
 		}
+
+		// Try for AddMessagesIndex
+		$inx = self::getAddMessagesIndex( $scriptString );
+		if( $inx ) {
+			return FormatJson::decode( '{' . substr($scriptString, $inx['s'], ($inx['e']-$inx['s'])) . '}', true);
+		}
+
 		// return an empty array if we are not able to grab any message keys
 		return array();
 	}

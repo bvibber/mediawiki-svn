@@ -175,25 +175,6 @@ class jsClassLoader {
 	}
 
 	/**
-	 * Get combined core component javascript
-	 *
-	 * NOTE: Component JS is javascript that is part of the
-	 * core mwEmbed javascript lib but in a separate file
-	 * for core library maintainability
-	 *
-	 * @return String combined component javascript
-	 */
-	public static function getCombinedComponentJs( $scriptLoader ) {
-		self::loadClassPaths();
-		$jsOut = '';
-		foreach(  self::$coreComponentsList as $componentClassName ) {
-			// Output the core component via the script loader:
-			$jsOut .= $scriptLoader->getLocalizedScriptText( $componentClassName );
-		}
-		return $jsOut;
-	}
-
-	/**
 	 * Get the combined loader javascript
 	 *
 	 * @return the combined loader jss
@@ -257,13 +238,14 @@ class jsClassLoader {
 			$moduleName = str_replace( array( '../', '\'', '"'), '', trim( $moduleName ));
 			// Check if there is there are module loader files
 			if( is_file( $mwEmbedAbsolutePath . '/modules/' . $moduleName . '/loader.js' )){
-				array_push( self::$moduleList, $moduleName );
-			} else {
+				array_push( self::$moduleList, $moduleName );			} else {
 				// Not valid module ( missing loader.js )
 				throw new MWException( "Missing module: $moduleName \n" );
 			}
 		}
+
 	}
+
 	/**
 	 * Adds javascript autoloader class names and paths
 	 * to $wgScriptLoaderNamedPaths global
@@ -293,7 +275,7 @@ class jsClassLoader {
 			if( isset( $wgScriptLoaderNamedPaths[ $className ] ) ){
 
 				// Presently extensions don't register were the named path parent module
-				// so we just have a gnneral extension error.
+				// so we just have a general extension error.
 				$setInModuleError = ( self::$classParentModuleName [ $className ] )
 					? " set in module: " . self::$classParentModuleName [ $className ]
 					: " set in an extension ";

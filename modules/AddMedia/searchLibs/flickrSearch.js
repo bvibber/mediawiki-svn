@@ -1,4 +1,4 @@
-/*
+/**
  * Basic flickr search uses flickr jsonp api  
  * http://www.flickr.com/services/api/
  * 

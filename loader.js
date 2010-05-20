@@ -106,6 +106,7 @@ mw.setDefaultConfig ( {
 	
 	// Set the default providers ( you can add more provider via {provider_id}_apiurl = apiUrl	  
 	'commons_apiurl' : 'http://commons.wikimedia.org/w/api.php'
+			
 } );
 
 /**
@@ -151,6 +152,7 @@ mw.addClassFilePaths( {
 	"mw.testLang"			:  "tests/testLang.js",		
 
 	"$j.cookie"				: "libraries/jquery/plugins/jquery.cookie.js",
+	
 	"$j.contextMenu"		: "libraries/jquery/plugins/jquery.contextMenu.js",
 	"$j.fn.suggestions"		: "libraries/jquery/plugins/jquery.suggestions.js",
 	"$j.fn.textSelection" 	: "libraries/jquery/plugins/jquery.textSelection.js",

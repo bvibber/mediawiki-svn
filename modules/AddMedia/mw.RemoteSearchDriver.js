@@ -830,7 +830,7 @@ mw.RemoteSearchDriver.prototype = {
 					'left' : '0px',
 					'bottom' : '3em',
 					'right' : '0px'
-				})
+				} )
 		);
 		// Get layout
 		mw.log( 'width: ' + $j( window ).width() +  ' height: ' + $j( window ).height() );
@@ -854,7 +854,8 @@ mw.RemoteSearchDriver.prototype = {
 				_this.onCancelResourceEdit();
 				$j( this ).parents( '.ui-dialog' ).fadeOut( 'slow' );
 			}
-		} );		
+		} );
+				
 		$j( _this.target_container ).dialogFitWindow();
 		
 		// Add the window resize hook to keep dialog layout
@@ -1915,7 +1916,7 @@ mw.RemoteSearchDriver.prototype = {
 				'position' : 'absolute',
 				'left' : '2px',
 				'top' : '5px',
-				'bottom' : '10px', 
+				'bottom' : '20px', 
 				'width' : ( editWidth + 5 ) + 'px',
 				'overflow' : 'auto',
 				'padding' : '5px'
@@ -1933,7 +1934,7 @@ mw.RemoteSearchDriver.prototype = {
 				'left' : ( editWidth + 25 ) + 'px',
 				'right' :'0px', 
 				'top' : '5px',
-				'bottom' : '10px',
+				'bottom' : '20px',
 				'padding' : '5px'			
 			})
 			.loadingSpinner();						
@@ -2065,13 +2066,6 @@ mw.RemoteSearchDriver.prototype = {
 				} )		
 			)
 		}
-		
-		// Also fade in the container:
-		$j( '#rsd_resource_edit' ).animate( {
-			'opacity': 1,
-			'background-color': '#FFF',
-			'z-index': 99
-		} );
 
 		// Show the editor itself
 		if ( mediaType == 'image' ) {
@@ -2429,13 +2423,14 @@ mw.RemoteSearchDriver.prototype = {
 		);
 			
 		var buttonPaneSelector = _this.target_container + '~ .ui-dialog-buttonpane';
-		$j( buttonPaneSelector ).html (
+		$j( buttonPaneSelector )		
+		.html (
 			// Add the buttons to the bottom:
 			$j.btnHtml( gM( 'mwe-do_import_resource' ), 'rsd_import_doimport', 'check' ) + 
 			' ' +
 			$j.btnHtml( gM( 'mwe-return-search-results' ), 'rsd_import_acancel', 'close' ) + ' '
 		);
-
+		
 		// Update video tag (if a video)
 		if ( resource.mime.indexOf( 'video/' ) !== -1 ) {
 			var target_rewrite_id = $j( _this.target_container ).attr( 'id' ) + '_rsd_pv_vid';
@@ -2477,7 +2472,7 @@ mw.RemoteSearchDriver.prototype = {
 					_this.doApiImport( resource, function() {
 						$j( '#rsd_resource_import' ).remove();
 						_this.clipEdit.updateInsertControlActions();
-						callback // Closure reports that this line is irrelevant -papy
+						callback();
 					});
 				} else {
 					mw.log( "Error: import mode is not form or API (can not copy asset)" );
@@ -2961,7 +2956,7 @@ mw.RemoteSearchDriver.prototype = {
 	/**
 	 * Create controls for selecting result display layout (e.g. box, list)
 	 * 
-	 * @return {Element} The layout element to embed in the page.
+	 * @return {jQuery element} The layout element to embed in the page.
 	 */
 	createLayoutSelector: function() {
 

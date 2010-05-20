@@ -97,16 +97,13 @@ var htmlEmbed = {
 	},
 	
 	/**
-	* Monitor tracks of virtual player time
-	*/ 
-	monitor:function() {
+	* Get the embed player time
+	*/
+	getPlayerElementTime: function() {
 		//mw.log('html:monitor: '+ this.currentTime);		
 		var ct = new Date();
-		this.currentTime = ( ( ct.getTime() - this.clockStartTime ) / 1000 ) + this.pauseTime;
-		var ct = new Date();
-		
-		// Once currentTime is updated call parent_monitor
-		this.parent_monitor();
+		var currentTime = ( ( ct.getTime() - this.clockStartTime ) / 1000 ) + this.pauseTime;		
+		return currentTime;
 	},
 	
 	/**

@@ -95,15 +95,15 @@ ctrlBuilder.prototype = {
 			.addClass( 'ui-state-default ui-widget-header ui-helper-clearfix control-bar' )
 			.css( 'height', this.height )			
 		
+		$controlBar.css( {
+			'position': 'absolute',
+			'bottom' : '0px',
+			'left' : '0px',
+			'right' : '0px'
+		} )
 		// Check for overlay controls: 
 		if( _this.checkOverlayControls() ) {
-			$controlBar.css( {
-				'position': 'absolute',
-				'bottom' : '0px',
-				'left' : '0px',
-				'right' : '0px'
-			} )
-			.hide()
+			$controlBar.hide()
 			// Make sure the interface is correct height: 
 			embedPlayer.$interface.css( {
 				'height' : parseInt( embedPlayer.height )
@@ -112,9 +112,7 @@ ctrlBuilder.prototype = {
 			// Add some space to interface for the control bar ( if not overlaying controls )
 			embedPlayer.$interface.css( {
 				'height' : parseInt( embedPlayer.height ) + parseInt( this.height ) +2
-			} );
-			// update the control bar display to "block" 
-			$controlBar.css( 'display', 'block' );			
+			} );	
 		}
 		
 		// Add the controls to the interface
@@ -255,9 +253,11 @@ ctrlBuilder.prototype = {
 	 */
 	toggleFullscreen: function() {
 		if( this.fullscreenMode ){
-			this.restoreWindowPlayer();			
+			this.restoreWindowPlayer();				
+			$j( this.embedPlayer ).trigger( 'closeFullScreenEvent' );		
 		}else{
 			this.doFullScreenPlayer();
+			$j( this.embedPlayer ).trigger( 'openFullScreenEvent' );			
 		}
 	},
 	
@@ -315,9 +315,7 @@ ctrlBuilder.prototype = {
 			'z-index' : mw.getConfig( 'fullScreenIndex' ) + 1,
 			'top' : this.windowOffset.top,
 			'left' : this.windowOffset.left
-		} );
-		
-		
+		} );		
 		
 		// Empty out the parent absolute index
 		_this.parentsAbsolute = [];		
@@ -439,15 +437,18 @@ ctrlBuilder.prototype = {
 		var interfaceHeight = ( _this.checkOverlayControls() ) 
 			? embedPlayer.getHeight() 
 			: embedPlayer.getHeight() + _this.getHeight();
-		
+			
+		mw.log( 'restoreWindowPlayer:: h:' + interfaceHeight + ' w:' + embedPlayer.getWidth());
 		$j('.mw-fullscreen-overlay').fadeOut( 'slow' );
+		
+		// Restore interface: 		
 		$interface.animate( {
 			'top' : this.windowOffset.top,
 			'left' : this.windowOffset.left,
 			// height is embedPlayer height + ctrlBuilder height: 
 			'height' : interfaceHeight,
 			'width' : embedPlayer.getWidth()					
-		},function(){
+		},function(){			
 			// Restore non-absolute layout: 
 			$interface.css( {
 				'position' : _this.windowPositionStyle,
@@ -457,7 +458,7 @@ ctrlBuilder.prototype = {
 				'left' : null 
 			} );					
 			
-			//Restore absolute layout of parents:			
+			// Restore absolute layout of parents:			
 			$j.each( _this.parentsAbsolute, function( na, element  ){
 				$j( element ).css( 'position', 'absolute' );
 			} );
@@ -467,6 +468,7 @@ ctrlBuilder.prototype = {
 			$j('body').css( 'overflow', 'auto' );
 			
 		} );
+		mw.log( 'restore embedPlayer:: ' + embedPlayer.getWidth() + ' h: ' + embedPlayer.getHeight());
 		// Restore the player: 
 		$j( embedPlayer ).animate( {
 			'top' : '0px',
@@ -637,8 +639,13 @@ ctrlBuilder.prototype = {
 	*
 	* dependent on mediaElement being setup 
 	*/ 
-	checkNativeWarning: function( ) {		
-		// Check cookie to see if user requested to hide it
+	checkNativeWarning: function( ) {				
+		// Check the global config 
+		if( mw.getConfig( 'showNativePlayerWarning' ) == false ) {
+			return false;
+		}	
+		
+		// Check the user cookie to see if user requested to hide it
 		if ( $j.cookie( 'showNativePlayerWarning' ) == 'false' ) {
 			return false;
 		}		
@@ -648,7 +655,7 @@ ctrlBuilder.prototype = {
 			return false;
 		}				
 		
-		// See if we have native support for ogg: 
+		// See if we have we have ogg support
 		var supportingPlayers = mw.EmbedTypes.players.getMIMETypePlayers( 'video/ogg' );
 		for ( var i = 0; i < supportingPlayers.length; i++ ) {
 			if ( supportingPlayers[i].id == 'oggNative' ) {
@@ -656,11 +663,15 @@ ctrlBuilder.prototype = {
 			}
 		}
 		
-		// Check for h264 source and playback support
-		var supportingPlayers = mw.EmbedTypes.players.getMIMETypePlayers( 'video/h264' );
-		var h264streams = this.embedPlayer.mediaElement.getSources( 'video/h264' );
-		if( supportingPlayers.length && h264streams.length ){
-			// No firefox link if a h.264 stream is present
+		// Check for h264 and or flash/flv source and playback support and dont' show wanring 
+		if( 
+			( mw.EmbedTypes.players.getMIMETypePlayers( 'video/h264' ).length 
+			&& this.embedPlayer.mediaElement.getSources( 'video/h264' ).length )
+			||
+			( mw.EmbedTypes.players.getMIMETypePlayers( 'video/x-flv' ).length 
+			&&  this.embedPlayer.mediaElement.getSources( 'video/x-flv' ).length )  
+		){
+			// No firefox link if a h.264 or flash/flv stream is present
 			return false;
 		}
 		
@@ -749,7 +760,7 @@ ctrlBuilder.prototype = {
 	doVolumeBinding: function( ) {
 		var embedPlayer = this.embedPlayer;
 		var _this = this;		
-		embedPlayer.$interface.find( '.volume_control' ).unbind().buttonHover().click( function() {
+		embedPlayer.$interface.find( '.volume_control span' ).unbind().buttonHover().click( function() {
 			mw.log( 'Volume control toggle' );
 			embedPlayer.toggleMute();
 		} );
@@ -787,19 +798,19 @@ ctrlBuilder.prototype = {
 			min: 0,
 			max: 100,
 			slide: function( event, ui ) {
-				var perc = ui.value / 100;
-				// mw.log('update volume:' + perc);
-				embedPlayer.updateVolumen( perc );
+				var percent = ui.value / 100;
+				mw.log('slide::update volume:' + percent);
+				embedPlayer.setVolume( percent );
 			},
-			change:function( event, ui ) {
-				var perc = ui.value / 100;
-				if ( perc == 0 ) {
+			change: function( event, ui ) {
+				var percent = ui.value / 100;
+				if ( percent == 0 ) {
 					embedPlayer.$interface.find( '.volume_control span' ).removeClass( 'ui-icon-volume-on' ).addClass( 'ui-icon-volume-off' );
 				} else {
 					embedPlayer.$interface.find( '.volume_control span' ).removeClass( 'ui-icon-volume-off' ).addClass( 'ui-icon-volume-on' );
 				}
-				var perc = ui.value / 100;
-				embedPlayer.updateVolumen( perc );
+				mw.log('change::update volume:' + percent);				
+				embedPlayer.setVolume( percent );
 			}
 		}
 		
@@ -885,7 +896,8 @@ ctrlBuilder.prototype = {
 					// Call show download with the target to be populated
 					ctrlObj.showDownload(  		
 						ctrlObj.embedPlayer.$interface.find( '.overlay-content' ) 
-					);										
+					);	
+					$j( ctrlObj.embedPlayer ).trigger( 'showDownloadEvent' );
 				}
 			)
 		},		
@@ -898,7 +910,8 @@ ctrlBuilder.prototype = {
 				function( ) {
 					ctrlObj.displayOverlay( 
 						ctrlObj.getShare()
-					);						
+					);	
+					$j( ctrlObj.embedPlayer ).trigger( 'showShareEvent' );
 				}
 			)
 		}
@@ -1094,7 +1107,7 @@ ctrlBuilder.prototype = {
 		$playerSelect = $j('<div />')
 		.append( 
 			$j( '<h2 />' )
-			.text( gM( 'mwe-embedplayer-chose_player' )  )
+			.text( gM( 'mwe-embedplayer-choose_player' )  )
 		);
 		 		
 		$j.each( embedPlayer.mediaElement.getPlayableSources(), function( source_id, source ) {
@@ -1448,7 +1461,7 @@ ctrlBuilder.prototype = {
 				
 				// Setup "dobuleclick" fullscreen binding to embedPlayer 
 				$j( ctrlObj.embedPlayer ).unbind("dblclick").bind("dblclick", function(){
-					ctrlObj.embedPlayer.fullscreen();
+					ctrlObj.embedPlayer.fullscreen();					
 				});			
 				
 				return $j( '<div />' )
@@ -1461,6 +1474,7 @@ ctrlBuilder.prototype = {
 						// Fullscreen binding:
 						.buttonHover().click( function() {
 							ctrlObj.embedPlayer.fullscreen();
+							$j( ctrlObj.embedPlayer ).trigger( 'openFullScreenEvent' );
 						} );
 			}
 		},
@@ -1522,7 +1536,7 @@ ctrlBuilder.prototype = {
 						.addClass( "ui-slider ui-slider-horizontal rButton volume-slider" )
 					);
 				}
-				mw.log(' add up volume control icon');
+				
 				// Add the volume control icon
 				$volumeOut.append( 	
 				 	$j('<div />')

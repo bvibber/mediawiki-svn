@@ -28,22 +28,24 @@ mw.addModuleLoader( 'TimedText', function( callback ) {
 	} );
 });
 
-var mwLoadTimedTextFlag = false;
-// Always Merge in the timed text libs 
-if( mw.getConfig( 'textInterface' ) == 'always' ) {
-	mwLoadTimedTextFlag = true;	
-}
-
 /**
 * Setup the load embedPlayer visit tag addSetupHook function 
 *
 * Check if the video tags in the page support timed text
-* this way we can add our timed text libraries to the initial 
-* request and avoid an extra round trip to the server
+* this way we can add our timed text libraries to the player 
+* library request.
 */
 
-// Bind the loader embed player tag viewing
-$j( mw ).bind( 'LoaderEmbedPlayerVisitTag', function( event, playerElement ) {	
+// Update the player loader request with timedText library if the embedPlayer
+// includes timedText tracks. 
+$j( mw ).bind( 'LoaderEmbedPlayerUpdateRequest', function( event, playerElement, classRequest ) {
+	
+	var mwLoadTimedTextFlag = false;
+	// Check for the textInterface config flag 
+	if( mw.getConfig( 'textInterface' ) == 'always' ) {
+		mwLoadTimedTextFlag = true;	
+	}
+		
 	// If add timed text flag not already set check for itext, and sources
 	if( ! mwLoadTimedTextFlag ) {
 		if( $j( playerElement ).find( 'itext' ).length != 0 ) {
@@ -56,11 +58,10 @@ $j( mw ).bind( 'LoaderEmbedPlayerVisitTag', function( event, playerElement ) {
 		{
 			mwLoadTimedTextFlag = true;
 		}
-	}
-} );
-// Update the player loader request with timedText if the flag has been set 
-$j( mw ).bind( 'LoaderEmbedPlayerUpdateRequest', function( event, classRequest ) {
-	// Add timed text items if flag set.  	
+	}		
+	
+	// Add timed text items if flag set. 
+	// its oky if we merge in multiple times the loader can handle it
 	if( mwLoadTimedTextFlag ) {
 		$j.merge( classRequest, mwTimedTextRequestSet );
 	}	

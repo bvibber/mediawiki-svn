@@ -142,7 +142,7 @@ var MW_EMBED_VERSION = '1.1f';
 			if( $j.cookie( 'mwUserConfig' ) ) {
 				mwUserConfig = JSON.parse( $j.cookie( 'mwUserConfig' ) );
 			}
-			mw.log( 'mw: ' +  $j.cookie( 'mwUserConfig' ) );
+			mw.log( 'mw UserConfig: ' +  $j.cookie( 'mwUserConfig' ) );
 			for(var i in mwUserConfig ) {
 				mw.log( 'i: ' + i + ' ' + mwUserConfig[ i ] ) ;
 			}
@@ -319,7 +319,7 @@ var MW_EMBED_VERSION = '1.1f';
 						// swap into parent
 						pNode.t  = pNode.t.replace( node['c'][i].t, nt );
 					}
-					// do the current node:
+					// Do the current node:
 					var nt = getMagicTxtFromTempNode( node );
 					pNode.t = pNode.t.replace( node.t , nt );
 					// run the swap for the outer most node
@@ -1204,7 +1204,7 @@ var MW_EMBED_VERSION = '1.1f';
 	
 	/**
 	* Checks if a mw request data requires a post request or not
-	* @param data {Object} 
+	* @param {Object} 
 	* @return {Boolean}
 	*	true if the request requires a post request
 	* 	false if the request does not
@@ -1511,8 +1511,10 @@ var MW_EMBED_VERSION = '1.1f';
 	mw.log = function( string ) {
 	
 		// Add any prepend debug strings if necessary 		
-		if ( mw.getConfig( 'pre-append-log' ) )
-			string = mw.getConfig( 'pre-append-log' ) + string;				
+		if ( mw.getConfig( 'pre-append-log' ) ){
+			string = mw.getConfig( 'pre-append-log' ) + string;		
+		}
+		
 		if ( window.console ) {
 			window.console.log( string );
 		} else {	
@@ -1705,8 +1707,8 @@ var MW_EMBED_VERSION = '1.1f';
 	/**
 	* Get a style sheet and append the style sheet to the DOM
 	*
-	* @param [Mixed]
-	*	  {String} url Url of the style sheet to be loaded
+	* @param {Mixed}
+	*	{String} url Url of the style sheet to be loaded
 	* 	{Function} callback Function called once sheet is ready 
 	*/
 	mw.getStyleSheet = function( url , callback) {		
@@ -2673,16 +2675,26 @@ function doScrollCheck() {
 }
 
 
+// If using the script-loader and jQuery has not been set give a warning to the user:
+// (this is needed because packaged loader.js files could refrence jQuery )  
+if( mw.getScriptLoaderPath() && !window.jQuery ) {
+	mw.log( 'Error: jQuery is required for mwEmbed, please update your script-loader request' );
+}
+
 /*
  * Hack to keep jQuery in $ when its
  * already there, but also use noConflict to get $j = jQuery
  * 
  * This way sites that use $ for jQuery continue to work after
- * including mwEmbed.js
+ * including mwEmbed javascript.
+ * 
+ * Also if jQuery is included prior to mwEmbed we ensure
+ * $j is set
  */
+
 if( window.jQuery ){
 	var dollarFlag = false;	
-	if( $ && $.fn && $.fn.jquery ){
+	if( $ && $.fn && $.fn.jquery ) {
 		// NOTE we could check the version of
 		// jQuery and do a removal call if too old
 		dollarFlag = true;		
@@ -2691,10 +2703,4 @@ if( window.jQuery ){
 	if( dollarFlag ) {
 		window[ '$' ] = jQuery.noConflict();
 	}
-}
-
-// If using the script-loader and jQuery has not been set give a warning to the user:
-// (this is needed because packaged loader.js files could refrence jQuery )  
-if( mw.getScriptLoaderPath() && !window.jQuery ) {
-	mw.log( 'Error: jQuery is required for mwEmbed, please update your script-loader request' );
 }

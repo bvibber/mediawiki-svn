@@ -4615,7 +4615,11 @@ jQuery.extend({
 		name = name.replace(rdashAlpha, fcamelCase);
 
 		if ( set ) {
-			style[ name ] = value;
+			try {
+				style[ name ] = value;
+			} catch ( e ){
+				// hmm e
+			}
 		}
 
 		return style[ name ];

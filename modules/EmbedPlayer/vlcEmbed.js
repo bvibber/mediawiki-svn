@@ -25,7 +25,10 @@ var vlcEmbed = {
 	prevState : 0,
 	
 	// Counter for waiting for vlc embed to be ready
-	waitForVlcCount:0, 
+	waitForVlcCount:0,
+	
+	// Store the current play time for vlc
+	vlcCurrentTime: 0,
 	
 	/**
 	* Get embed HTML
@@ -244,8 +247,16 @@ var vlcEmbed = {
 			// mw.log('setting duration to ' + this.playerElement.input.length /1000);			
 			this.duration = this.playerElement.input.length / 1000;
 		}
-		this.currentTime = this.playerElement.input.time / 1000;
+		this.vlcCurrentTime = this.playerElement.input.time / 1000;
 	},
+	
+	/**
+	* Get the embed player time
+	*/
+	getPlayerElementTime: function(){
+		return this.vlcCurrentTime;
+	},
+	
 	onPause: function() {
 		this.parent_pause(); // update the inteface if paused via native control
 	},
@@ -306,9 +317,10 @@ var vlcEmbed = {
 	* Update the player volume
 	* @pram {Float} percent Percent of total volume
 	*/ 
-	updateVolumen:function( percent ) {
-		if ( this.getPlayerElement() )
+	setPlayerElementVolume: ( percent ) {
+		if ( this.getPlayerElement() ) {
 			this.playerElement.audio.volume = percent * 100;
+		}
 	},
 	
 	/**

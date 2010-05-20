@@ -18,7 +18,7 @@
 *
 */
 
-mw.includeAllModuleMsgs();
+mw.includeAllModuleMessages();
 
 /**
  * apiProxy jQuery binding

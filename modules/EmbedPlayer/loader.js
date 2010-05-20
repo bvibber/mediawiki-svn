@@ -5,7 +5,8 @@
 /**
 * Default player module configuration 
 */
-
+( function( mw ) {
+	
 mw.setDefaultConfig( {
 	// If the Timed Text interface should be displayed: 
 	// 'always' Displays link and call to contribute always
@@ -126,13 +127,17 @@ mw.addSetupHook( function( callback ) {
 			}
 							
 			// Add an absolute positioned loader
-			var pos = $j( element ).offset();	
-			var left = (  $j( element ).width() ) ? 
+			var pos = $j( element ).offset();
+			mw.log( ' l: ' + pos.left + ' t: ' + pos.top ); 
+			
+			var posLeft = (  $j( element ).width() ) ? 
 				parseInt( pos.left + ( .4 * $j( element ).width() ) ) : 
 				pos.left + 30;
-			var top = (  $j( element ).height() ) ? 
+				
+			var posTop = (  $j( element ).height() ) ? 
 				parseInt( pos.top + ( .4 * $j( element ).height() ) ) : 
-				pos.left + 30;								
+				pos.top + 30;			
+						
 			$j('body').append(
 				$j('<div />')
 				.loadingSpinner()
@@ -141,10 +146,11 @@ mw.addSetupHook( function( callback ) {
 					'width' : 32,
 					'height' : 32,
 					'position': 'absolute',
-					'top' : top,
-					'left' : left
+					'top' : posTop + 'px',
+					'left' : posLeft + 'px'
 				})						
-			)				
+			)
+				
 			//$j( element ).hide();
 		});									
 		// Load the embedPlayer module ( then run queued hooks )
@@ -173,9 +179,9 @@ mw.addModuleLoader( 'EmbedPlayer', function( callback ) {
 			'$j.ui',			
 			'mw.EmbedPlayer',
 			'ctrlBuilder',
+			'mw.style.EmbedPlayer',
 			'$j.cookie',
-      'mw.style.EmbedPlayer',
-			// Add JSON lib if browsers does not define "JSON" natively 			
+			// Add JSON lib if browsers does not define "JSON" natively
 			'JSON'
 		],
 		[
@@ -185,36 +191,13 @@ mw.addModuleLoader( 'EmbedPlayer', function( callback ) {
 		]
 		
 	];
-	
-	var playerSkins = {};
+		
 	// Get the class of all embed video elements 
 	// to add the skin to the load request
 	$j( mw.getConfig( 'rewritePlayerTags' ) ).each( function() {	
 		var playerElement = this;		
-		var playerClassName = $j( playerElement ).attr( 'class' );	
-		// Set playerClassName to default	
-		if( ! playerClassName ){
-			playerClassName = mw.getConfig( 'playerSkinName' );
-		}		
-		for( var n=0; n < mw.valid_skins.length ; n++ ) {
-			// Get any other skins that we need to load 
-			// That way skin js can be part of the single script-loader request: 
-			if( playerClassName.indexOf( mw.valid_skins[ n ] ) !== -1) {
-				// Add skin name to playerSkins
-				playerSkins[ mw.valid_skins[ n ] ] = true;
-			}
-		}
-		mw.log("LoaderEmbedPlayerVisitTag" );
-		$j( mw ).trigger( 'LoaderEmbedPlayerVisitTag', playerElement );
+		mw.embedPlayerUpdateLibraryRequest( playerElement,  dependencyRequest[ 0 ] )			
 	} );
-	
-	// Add the player skins css and js to the load request:	
-	for( var pSkin in playerSkins ) {
-		// Add skin js
-		dependencyRequest[0].push(  pSkin  + 'Config' );	
-		// Add the skin css 
-		dependencyRequest[0].push( 'mw.style.' + pSkin );
-	}	
 	
 	// Add PNG fix code needed:
 	if ( $j.browser.msie && $j.browser.version < 7 ) {
@@ -230,11 +213,7 @@ mw.addModuleLoader( 'EmbedPlayer', function( callback ) {
 	// Safari gets slower load since we have to detect ogg support 
 	if( typeof HTMLVideoElement == 'object' &&  !$j.browser.safari  ) {
 		dependencyRequest[0].push( 'nativeEmbed' )
-	}
-		
-	// Run the EmbedPlayer loader hook ( so that modules can add dependencies to the request ) 
-	mw.log('LoaderEmbedPlayerUpdateRequest');
-	$j( mw ).trigger( 'LoaderEmbedPlayerUpdateRequest', [ dependencyRequest[ 0 ] ] );
+	}		
 		
 	
 	// Load the video libs:
@@ -256,5 +235,50 @@ mw.addModuleLoader( 'EmbedPlayer', function( callback ) {
 			
 		} ); // setupUserConfig
 	} );
+		
 	
 } );
+
+/**
+ * Takes a embed player element and updates a request object with any 
+ * dependent libraries per that tags attributes.
+ * 
+ * For example a player skin class name could result in adding some 
+ *  css and javascirpt to the player library request. 
+ *    
+ * @param {Object} playerElement The tag to check for library dependent request classes.
+ * @param {Array} dependencyRequest The library request array
+ */
+mw.embedPlayerUpdateLibraryRequest = function(playerElement, dependencyRequest ){
+	var playerClassName = $j( playerElement ).attr( 'class' );	
+	var playerSkins = {};
+	
+	// Set playerClassName to default	
+	if( ! playerClassName ){
+		playerClassName = mw.getConfig( 'playerSkinName' );
+	}		
+	for( var n=0; n < mw.valid_skins.length ; n++ ) {
+		// Get any other skins that we need to load 
+		// That way skin js can be part of the single script-loader request: 
+		if( playerClassName.indexOf( mw.valid_skins[ n ] ) !== -1) {
+			// Add skin name to playerSkins
+			playerSkins[ mw.valid_skins[ n ] ] = true;
+		}
+	}
+	
+	// Add the player skins css and js to the load request:	
+	for( var pSkin in playerSkins ) {
+		// Add skin js
+		dependencyRequest.push(  pSkin  + 'Config' );	
+		// Add the skin css 
+		dependencyRequest.push( 'mw.style.' + pSkin );
+	}	
+	
+	// Allow extension to extend the request. 
+	mw.log( 'LoaderEmbedPlayerUpdateRequest' );
+	
+	$j( mw ).trigger( 'LoaderEmbedPlayerUpdateRequest', 
+			[ playerElement, dependencyRequest ] );
+}
+
+} )( window.mw );

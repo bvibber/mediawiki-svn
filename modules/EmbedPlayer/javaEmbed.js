@@ -109,18 +109,20 @@ var javaEmbed = {
 	},
 	
 	/**
-	* Monitor applet playback, and update currentTime 
-	*/	
-	monitor: function() {
-		this.getPlayerElement();		
+	* Get the embed player time
+	*/
+	getPlayerElementTime: function() {
+		this.getPlayerElement();	
+		var currentTime = 0; 
 		if ( this.playerElement ) {
 				try {
 				   // java reads ogg media time.. so no need to add the start or seek offset:
-				   //mw.log(' ct: ' + this.playerElement.getPlayPosition() + ' ' +  this.supportsURLTimeEncoding());												   
-				   this.currentTime = this.playerElement.currentTime;
+				   //mw.log(' ct: ' + this.playerElement.getPlayPosition() + ' ' +  this.supportsURLTimeEncoding());
+					
+				   currentTime = this.playerElement.currentTime;
 				   if ( this.currentTime < 0 ) {
 				   		mw.log( 'pp:' +  this.currentTime );
-						// Probably reached clip end					
+						// Probably reached clip ( should fire ondone event instead )				
 						this.onClipDone();
 				   }
 				} catch ( e ) {
@@ -128,9 +130,8 @@ var javaEmbed = {
 				}
 		}else{
 			mw.log(" could not find playerElement " );
-		}			
-		// Once currentTime is updated call parent_monitor		
-		this.parent_monitor();
+		}
+		return currentTime;
 	},
 	
 	/**
@@ -138,7 +139,7 @@ var javaEmbed = {
 	* ( Cortado seek does not seem to work very well )  
 	* @param {Float} percentage Percentage to seek into the stream
 	*/
-	doSeek:function( percentage ) {	
+	doSeek: function( percentage ) {	
 		mw.log( 'java:seek:p: ' + percentage + ' : '  + this.supportsURLTimeEncoding() + ' dur: ' + this.getDuration() + ' sts:' + this.seek_time_sec );
 		this.getPlayerElement();
 		
@@ -146,14 +147,14 @@ var javaEmbed = {
 			this.parent_doSeek( percentage );			
 		} else if ( this.playerElement ) {
 		   // do a (generally broken) local seek:   
-		   mw.log( "Cortado seek is not very accurate :: doSeek(" + ( percentage * parseFloat( this.getDuration() ) ) );
+		   mw.log( "Cortado seek is not very accurate :: doSeek::" + ( percentage * parseFloat( this.getDuration() ) ) );
 		   this.playerElement.currentTime = ( percentage * parseFloat( this.getDuration() )  );
 		} else {
 			this.doPlayThenSeek( percentage );		
 		}
 		
-		// Run the onSeek interface update
-		this.onSeek(); 	
+		// Run the onSeeking interface update
+		this.ctrlBuilder.onSeek();
 	},
 	
 	/**
@@ -213,7 +214,7 @@ var javaEmbed = {
 	* Pause playback
 	* 	calls parent_pause to update interface
 	*/	
-	pause:function() {
+	pause: function() {
 		this.getPlayerElement();
 		// Update the interface
 		this.parent_pause();

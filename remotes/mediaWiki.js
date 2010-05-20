@@ -46,7 +46,7 @@ function doPageSpecificRewrite() {
 			'$j.ui', 
 			'$j.ui.sortable' 
 		], function() {
-			mw.load( mwEmbedHostPath + '/remotes/editPage.js?' + mwGetReqArgs() );
+			mw.load( mwEmbedHostPath + '/remotes/AddMediaWizardEditPage.js?' + mwGetReqArgs() );
 		} );
 	}
 	

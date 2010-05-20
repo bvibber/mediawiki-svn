@@ -1,6 +1,14 @@
 /*
 * The "kaltura player" embedPlayer interface for fallback h.264 and flv video format support
 */
+
+
+function jsInterfaceReadyFunc(){
+	return true;
+}
+
+
+					
 var kplayerEmbed = {
 	
 	// Instance name: 
@@ -9,13 +17,16 @@ var kplayerEmbed = {
 	// List of supported features: 
 	supports: {
 		'playHead' : true,
-		'pause' : true,
+		'pause' : true,		
 		'stop' : true,
 		'timeDisplay' : true,
 		'volumeControl' : true,
 		'overlays' : true,
-		'fullscreen' : false
+		'fullscreen' : true
 	},
+	
+	// Stores the current time as set from flash
+	flashCurrentTime : 0,
 	
 	/*
 	* Write the Embed html to the target 
@@ -24,6 +35,7 @@ var kplayerEmbed = {
 		var _this = this;
 		var playerPath = mw.getMwEmbedPath() + 'modules/EmbedPlayer/binPlayers/kaltura-player';				
 		
+		mw.log("kPlayer:: embed src::" + _this.getSrc() );
 		var flashvars = {};
 		flashvars.autoPlay = "true";
 		flashvars.entryId = mw.absoluteUrl( _this.getSrc() );
@@ -56,12 +68,12 @@ var kplayerEmbed = {
 			.attr( 'id', this.pid + '_container' )
 		);
 		
-		// Do the flash embedding with embedSWF
+		// Do the flash embedding with embedSWF		
 		swfobject.embedSWF( 
 			playerPath + "/kdp3.swf", 
 			this.pid + '_container', 
-			this.getWidth(), 
-			this.getHeight(), 
+			'100%', 
+			'100%', 
 			"10.0.0", 
 			playerPath + "/expressInstall.swf", 
 			flashvars, 
@@ -70,8 +82,16 @@ var kplayerEmbed = {
 		);
 		
 		setTimeout( function() {
-			_this.postEmbedJS();
+			_this.postEmbedJS();							
 		}, 100 );
+		
+		// Flash player loses its bindings once it changes sizes::
+		$j( _this ).bind ( 'closeFullScreenEvent', function(){
+			_this.postEmbedJS();
+		});
+		$j( _this ).bind ( 'openFullScreenEvent', function(){
+			_this.postEmbedJS();
+		})
 						
 	},	
 	
@@ -80,10 +100,9 @@ var kplayerEmbed = {
 	*/
 	postEmbedJS:function() {
 		var _this = this;
-		this.getPlayerElement();	
+		this.getPlayerElement();		
 								
-		if( this.playerElement && this.playerElement.addJsListener ) {
-			mw.log( 'flash:postEmbedJS::');
+		if( this.playerElement && this.playerElement.addJsListener ) {			
 			
 			// Add KDP listeners						
 			_this.bindPlayerFunction( 'doPause', 'onPause' );
@@ -184,9 +203,7 @@ var kplayerEmbed = {
 		} else {
 			// try to do a play then seek: 
 			this.doPlayThenSeek( percentage )
-		}
-		this.monitor();
-		
+		}				
 		// Run the onSeeking interface update
 		this.ctrlBuilder.onSeek(); 
 	},
@@ -230,7 +247,7 @@ var kplayerEmbed = {
 	* Issues a volume update to the playerElement
 	* @param {Float} percentage Percentage to update volume to
 	*/
-	updateVolumen: function( percentage ) {				
+	setPlayerElementVolume: function( percentage ) {				
 		if( this.playerElement && this.playerElement.sendNotification ){			
 			this.playerElement.sendNotification('changeVolume', percentage);
 		}
@@ -239,8 +256,8 @@ var kplayerEmbed = {
 	/**
 	 * function called by flash at set interval to update the playhead. 
 	 */
-	onUpdatePlayhead : function ( playheadValue ){		
-		this.currentTime = playheadValue;
+	onUpdatePlayhead : function ( playheadValue ){			
+		this.flashCurrentTime = playheadValue;
 	},
 	
 	/**
@@ -266,9 +283,12 @@ var kplayerEmbed = {
 	},
 	
 	/**
-	* currentTime updated via playback hook no need for monitor function
-	* monitor: function(){}
-	*/	
+	* Get the embed player time
+	*/
+	getPlayerElementTime: function(){
+		// update currentTime
+		return this.flashCurrentTime;
+	},
 	
 	/**
 	* Get the embed fla object player Element

@@ -63,13 +63,13 @@ var omtkEmbed = {
 	},
 	
 	/**
-	* Monitor the audio playback and update the position
+	* Get the embed player time
 	*/
-	monitor:function() {
-		if ( this.playerElement.getPosition )
-			this.currentTime = this.playerElement.getPosition() / 1000;
-		
-		this.parent_monitor();
+	getPlayerElementTime: function() {
+		this.getPlayerElement();
+		if ( this.playerElement.getPosition ){
+			return currentTime = this.playerElement.getPosition() / 1000;
+		}		
 	},
 	
 	/**
