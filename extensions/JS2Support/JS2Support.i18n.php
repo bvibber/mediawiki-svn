@@ -11,7 +11,7 @@ $messages = array();
 $messages['en'] = array(
 	'js2support-desc' => 'JS2 support as an extension',
 	'js2support-debug-preference' => 'Disable script grouping and minification',
-	'prefs-script-debug' => 'Script Debugging'
+	'prefs-script-debug' => 'Script debugging'
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
