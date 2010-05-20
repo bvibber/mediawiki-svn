@@ -50,7 +50,7 @@ class ActiveTaskForcesQP extends QueryPage {
 				page_namespace = 0 AND 
 				page_title LIKE 'Task_force/%' AND
 				rev_timestamp > $encPeriodStart
-			GROUP BY page_namespace, page_title
+			GROUP BY page_namespace, title
 SQL;
 		$sql = strtr( $sql, "\r\n\t", '   ' );
 		return $sql;
