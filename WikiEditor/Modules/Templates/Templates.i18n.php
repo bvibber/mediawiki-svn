@@ -15,6 +15,13 @@ $messages['en'] = array(
 	'wikieditor-templates-preference' => 'Enable template collapsing',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'wikieditor-templates-preference' => 'Aktivizo template kolaps',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  */

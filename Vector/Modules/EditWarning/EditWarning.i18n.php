@@ -24,6 +24,14 @@ $messages['af'] = array(
 	'vector-editwarning-preference' => "Waarsku my as ek 'n gewysigde bladsy verlaat alvorens dit gestoor is",
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'vector-editwarning-warning' => 'Duke e lënë këtë faqe mund të bëjë që ju të humbni ndonjë ndryshim që keni bërë. Nëse ju jeni regjistruar, ju mund ta çaktivizoni këtë paralajmërim në "{{int:prefs-editing}}" seksionin e preferencave tuaja.',
+	'vector-editwarning-preference' => 'Paralajmëron mua kur unë të lë një redakto faqe me ndryshimet e para shpëtimit',
+);
+
 /** Arabic (العربية)
  * @author OsamaK
  */

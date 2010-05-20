@@ -201,6 +201,33 @@ Kies asseblief alle toepaslike redes.',
 	'optin-survey-answer-changes-other' => 'Ander:',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'optin' => 'Nisma e të përdorshmërisë zgjedhë-në',
+	'optin-desc' => 'Lejo përdoruesit të provoni Beta, enhancements fundit Iniciativa e përdorshmërisë së përdorshmërisë.',
+	'optin-title-optedout' => 'Provo Beta',
+	'optin-title-optedin' => 'Lini Beta',
+	'optin-title-justoptedin' => 'Mirë se vini në Beta',
+	'optin-title-justoptedout' => 'Ju faleminderit për përpjekjen tonë Beta',
+	'optin-title-feedback' => 'reagime Beta',
+	'optin-needlogin' => "Ju duhet të [$1 hyni brënda] për t'u përpjekur Beta.",
+	'optin-intro' => 'Përdorshmërisë Wikipedia Iniciativa ka qenë duke punuar shumë për përmirësimin e përdorshmërisë së Wikipedia. Doni të provoni Beta tonë?',
+	'optin-feedback-intro' => 'Ju faleminderit për përpjekjen Beta. Ne do të doja të di çfarë ju mendoni të re për ndërfaqen e tonë, kështu që ne do të vlerësojmë nëse ju mbushet nga sondazhi opsional më poshtë.',
+	'optin-feedback-back' => 'Nëse ju nuk dëshironi ta plotësoni këtë anketë, ju mund të ktheheni tek $1.',
+	'optin-success-in' => 'Ju jeni tani duke u përpjekur Beta. Ju mund të zgjedhë përsëri në çdo kohë duke klikuar tek "{{int:optin-leave}}" Lidhje në krye të faqes.',
+	'optin-leave-cancel' => "Nëse dëshironi të vazhdoni t'i përdorni Beta, ju mund të ktheheni tek $1.",
+	'optin-success-out' => 'Ju keni mbetur me sukses Beta. Ju mund të provoni përsëri në çdo kohë duke klikuar tek "{{int:optin-try}}" Lidhje në krye të faqes.',
+	'optin-success-feedback' => 'Faleminderit për komentin tuaj!',
+	'optin-accept-short' => 'Le të bëjmë atë!',
+	'optin-accept-long' => 'Provoni Beta',
+	'optin-accept-long-anon' => 'Log in dhe të provoni Beta',
+	'optin-deny-short' => 'Jo faleminderit',
+	'optin-deny-long' => 'Kthehu tek faqja e mëparshme',
+	'optin-submit-out' => 'Lini Beta',
+);
+
 /** Aragonese (Aragonés)
  * @author Juanpabl
  */
@@ -2139,7 +2166,7 @@ Pode participar nas probas en calquera momento facendo clic na ligazón "{{int:o
 	'optin-accept-long' => 'Probar Beta',
 	'optin-accept-long-anon' => 'Acceda ao sistema e probe Beta',
 	'optin-deny-short' => 'Non, grazas',
-	'optin-deny-long' => 'Voltar á páxina anterior',
+	'optin-deny-long' => 'Volver á páxina anterior',
 	'optin-submit-out' => 'Deixar Beta',
 	'optin-submit-feedback' => 'Enviar a opinión',
 	'optin-survey-yes' => 'Si',

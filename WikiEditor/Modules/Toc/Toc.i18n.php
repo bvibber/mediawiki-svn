@@ -36,6 +36,15 @@ $messages['af'] = array(
 	'wikieditor-toc-hide' => 'Versteek inhoud',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'wikieditor-toc-preference' => 'Tabela e përmbajtjeve Aktivizo lundrueshëm',
+	'wikieditor-toc-show' => 'Përmbajtja Show',
+	'wikieditor-toc-hide' => 'Përmbajtja Hide',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK

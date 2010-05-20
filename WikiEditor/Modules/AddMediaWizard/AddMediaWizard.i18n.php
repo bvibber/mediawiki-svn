@@ -15,6 +15,13 @@ $messages['en'] = array(
     'wikieditor-addMediaWizard-preference' => 'Enable "Add media wizard" gadget',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'wikieditor-addMediaWizard-preference' => 'Aktivo "Shto mediat magjistar" vegël',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  */

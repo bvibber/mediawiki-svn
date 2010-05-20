@@ -120,6 +120,54 @@ It is not in used at the referred page, as of 16 May 2010.
 	'prefswitch-survey-answer-whyoff-other' => '{{Identical|Other reason}}',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'prefswitch' => 'Përdorshmërisë kaloni Nisma preferencë',
+	'prefswitch-desc' => 'Lejo përdoruesit të kaloni grupe të preferencave',
+	'prefswitch-survey-true' => 'Po',
+	'prefswitch-survey-false' => 'Jo',
+	'prefswitch-survey-submit-off' => 'Turn off karakteristika të reja',
+	'prefswitch-survey-cancel-off' => 'Nëse dëshironi të vazhdoni përdorimin e tipare të reja, ju mund të ktheheni tek $1.',
+	'prefswitch-survey-submit-feedback' => 'Send feedback',
+	'prefswitch-survey-cancel-feedback' => 'Nëse ju nuk dëshironi të japin mendimet, ju mund të ktheheni tek $1.',
+	'prefswitch-survey-question-like' => 'Çfarë ju pëlqen në lidhje me tipare të reja?',
+	'prefswitch-survey-question-dislike' => 'Çfarë keni antipati për tiparet?',
+	'prefswitch-survey-question-whyoff' => 'Pse jeni kthyer tek pjesa e tipare të reja? Ju lutemi zgjidhni të gjitha që aplikohet.',
+	'prefswitch-survey-answer-whyoff-hard' => "Karakteristika ishin tepër të vështirë për t'u përdorur.",
+	'prefswitch-survey-answer-whyoff-didntwork' => 'Karakteristika nuk funksionojnë siç duhet.',
+	'prefswitch-survey-answer-whyoff-notpredictable' => 'Karakteristika nuk ka kryer parashikueshme.',
+	'prefswitch-survey-answer-whyoff-didntlike-look' => 'Unë nuk e pëlqen mënyra tiparet e shikuar.',
+	'prefswitch-survey-answer-whyoff-didntlike-layout' => 'Unë nuk e kam si skedat e reja dhe layout.',
+	'prefswitch-survey-answer-whyoff-didntlike-toolbar' => 'Unë nuk e kam si toolbar re.',
+	'prefswitch-survey-answer-whyoff-other' => 'arsye të tjera:',
+	'prefswitch-survey-question-browser' => 'Cili browser do you use?',
+	'prefswitch-survey-answer-browser-other' => 'browser tjera:',
+	'prefswitch-survey-question-os' => 'Cili sistem operativ do you use?',
+	'prefswitch-survey-answer-os-other' => 'sistemit të tjera operative:',
+	'prefswitch-survey-question-res' => 'Cila është zgjidhja e ekranit tuaj?',
+	'prefswitch-title-on' => 'Tipare të reja',
+	'prefswitch-title-switched-on' => 'Enjoy!',
+	'prefswitch-title-off' => 'Turn off karakteristika të reja',
+	'prefswitch-title-switched-off' => 'Falënderim',
+	'prefswitch-title-feedback' => 'Reagim',
+	'prefswitch-success-on' => 'Tipare të reja janë kthyer tani në. Ne shpresojmë që të gëzojnë duke përdorur tipare të reja. Ju mund gjithmonë të kthehet prapa atyre jashtë duke klikuar mbi "[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-on}}]]" në krye të faqes.',
+	'prefswitch-success-off' => 'Tipare të reja janë kthyer tani off. Faleminderit për përpjekjen tipare të reja. Ju mund gjithmonë të kthehet përsëri në ato duke klikuar mbi "[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-off}}]]" në krye të faqes.',
+	'prefswitch-success-feedback' => 'Your feedback është dërguar.',
+	'prefswitch-return' => '<hr style="clear:both"> Kthehuni tek <span class="plainlinks">[$1 $2].</span>',
+	'prefswitch-main' => "Ne kemi punuar shumë për të bërë gjërat më të lehtë për përdoruesit tanë. Ne jemi të ngazëllyer për të ndarë disa përmirësime, duke përfshirë një vështrim të ri dhe të ndjehen dhe të thjeshtuar karakteristika redaktimi. Përmirësimi i përdorshmërisë e projekteve tona është një përparësi e Fondacionit Wikimedia dhe ne do të jetë ndarja rejat më shumë në të ardhmen. Për më shumë detaje, vizitoni lidhur [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/ Wikimedia blog] post.[[File:UsabilityNavigation.png|right|link=|Screenshot i navigacion ri]][[File:UsabilityToolbar.png|right|link=|pamjen e zgjeruar toolbar redakto]][[File:UsabilityDialogs.png|right|link=|pamjen e përmbajtjes dialogs brezi i ri]]=== Ja se çfarë ne kemi ndryshuar ==='''Navigation''': Ne kemi përmirësuar navigacion për lexim dhe të redaktoni. Tani, në skedat në krye të secilës faqe më të përcaktojë qartë nëse ju jeni duke shfletuar faqe apo faqe diskutimi, dhe nëse ju jeni duke lexuar ose redaktoni një faqe.*'''Redaktimi përmirësime toolbar''': Ne kemi riorganizuar toolbar editing për të bërë më të lehtë për t'u përdorur. Tani, formatimit faqe është e thjeshtë dhe më i kuptueshëm.",
+	'prefswitch-main-anon' => '=== Merrni Me Kthehu ===
+Nëse dëshironi të fikur tipare të reja, <span class="plainlinks">[$1 klikoni këtu]</span>. Ju do të pyeteni për të identifikoheni ose krijoni një llogari të parë.',
+	'prefswitch-main-on' => '=== Feedback? ===
+Ne do të duan të dëgjojmë nga ju. Ju lutem vizitoni tonë <span class="plainlinks">[$1 faqe reagime]</span>.=== Çoni përsëri! ===
+Nëse dëshironi të fikur tipare të reja, ju lutem <span class="plainlinks">[$2 klikoni këtu].</span>',
+	'prefswitch-main-off' => '=== Provo ato! ===
+Nëse ju dëshironi të kthehet në tipare të reja, ju lutem <span class="plainlinks">[$1 klikoni këtu]</span>.',
+	'prefswitch-survey-intro-feedback' => 'Ne do të duan të dëgjojmë nga ju. Ju lutem plotësoni këtë anketë opsional më poshtë para se të klikoni "[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]".',
+	'prefswitch-survey-intro-off' => 'Faleminderit për përpjekje të reja nga karakteristikat tona. Për të na ndihmuar në përmirësimin e tyre, ju lutemi plotësoni këtë anketë opsional më poshtë para se të klikoni "[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]".',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK
@@ -1104,7 +1152,7 @@ Por favor, seleccione o que sexa conveniente.',
 	'prefswitch-success-off' => 'As novas características están agora desactivadas. Grazas por probalas. Pode activalas de novo premendo sobre a ligazón "[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-off}}]]" que aparecerá no canto superior de calquera páxina.',
 	'prefswitch-success-feedback' => 'Enviouse a súa opinión.',
 	'prefswitch-return' => '<hr style="clear:both">
-Voltar a "<span class="plainlinks">[$1 $2]</span>".',
+Volver a "<span class="plainlinks">[$1 $2]</span>".',
 	'prefswitch-main' => "Traballamos arreo para facerlles as cousas máis doadas aos nosos usuarios. Estamos encantados de compartir algunhas melloras, incluíndo entre elas unha nova aparencia e características de edición simplificadas. A mellora da usabilidade dos nosos proxectos é unha prioridade para a Fundación Wikimedia e traeremos máis actualizacións no futuro. Para obter máis información, visite [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/ esta entrada] do blogue da Wikimedia.
 
 [[File:UsabilityNavigation.png|right|link=|Captura de pantalla da nova navegación.]]

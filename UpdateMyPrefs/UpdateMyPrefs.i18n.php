@@ -25,6 +25,15 @@ $messages['qqq'] = array(
 {{Identical|Update}}',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'prefs-updates' => 'Updates',
+	'updatemyprefs-desc' => 'Preferencë për përdoruesit për të përcaktuar nëse ato dëshirojnë periodikisht për ndërfaqen e përdoruesit si ata janë vënë në dispozicion',
+	'updatemyprefs-label-message' => 'Update automatikisht preferencat e mia me vlerat e prezgjedhura të reja dhe mjete si ato të bëhen të disponueshme',
+);
+
 /** Arabic (العربية)
  * @author OsamaK
  */

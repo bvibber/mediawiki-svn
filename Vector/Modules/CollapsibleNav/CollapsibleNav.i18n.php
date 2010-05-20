@@ -15,6 +15,13 @@ $messages['en'] = array(
 	'vector-collapsiblenav-preference' => 'Enable collapsible left navigation menu',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'vector-collapsiblenav-preference' => 'Aktivizo paloset la navigacion menu',
+);
+
 /** Arabic (العربية)
  * @author OsamaK
  */

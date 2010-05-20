@@ -31,6 +31,13 @@ $messages['af'] = array(
 	'userdailycontribs-desc' => 'Daaglikse gebruikersbydraes vir die uitbreiding om gebruikers se klieks mee te volg',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'userdailycontribs-desc' => 'Kontributet e përdoruesit çdo ditë për ndjekjen klikoni extension',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
