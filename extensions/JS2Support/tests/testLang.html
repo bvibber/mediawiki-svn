@@ -20,23 +20,63 @@ mw.ready( function(){
 	}
 	$j('#languageCount').text( count );
 	
+	var headerRowHtml = '<tr>'+
+			'<td>$1[,$2]</td>'+
+			'<td width="14%">Msg key</td>'+
+			'<td width="34%">Msg text</td>'+
+			'<td width="24%">Msg Transform JS</td>'+
+			'<td width="24%">Msg Transform Mw</td>'+
+		'</tr>';
 	
 	// Setup bindings: 
+	// Custom transform test
+	$j('#runCustomTransform').click( function(){
+		// Add the custom msg: 
+		mw.addMessages({ 'mwe-custom-msg': $j('#customMsgText').val() });
+		
+		// Empty the table
+		$j('#table_out,#score_card').empty();
+		// Add  table tempalte
+		$j('#table_out').html( headerRowHtml +
+			'<tr>'+
+				'<td>' + $j('#customMsgText').val() + '</td>' + 
+				'<td>mwe-custom-msg</td>' + 
+				'<td>' + $j('#customMsgText').val() + '</td>' +
+				'<td id="jsMessageText"></td>' + 
+				'<td id="mwMessageTransform"></td>' + 
+			'<tr>'
+		);
+		
+		// Set the mw msg to loading
+		$j('#mwMessageTransform').text( 
+			"note custom messages can not be parsed via the mediaWiki api at this point in time" 
+		).css('color', 'red');
+		
+		// Output the js msg: 
+		var msgArgs = $j('#customValue').val().split(',');				
+	
+		$j('#jsMessageText').append(
+			mw.getMsg( 'mwe-custom-msg', msgArgs )
+		);
+		
+	});	
+	
 	$j('#runLang').click(function(){
 		$j('#table_out,#score_card').empty();
 		if(  !mw.Language.names[ $j('#testLangKey').val() ] ){
 			alert( escape( $j('#testLangKey').val() ) + ' does not appear to be a valid language key' );
-		} else {
+		} else {			
 			doLangTable( new Array( $j('#testLangKey').val() ) )
 		} 
 	});
+	
 	$j('#runAll').click(function(){
 		$j('#table_out,#score_card').empty();
 		// Build the langTestSet from mw.Language.names
 		var langTestSet = []
 		for( var i in mw.Language.names ) {
 			langTestSet.push( i ) ;
-		}
+		}			
 		doLangTable( langTestSet );
 	});
 	
@@ -45,7 +85,7 @@ mw.ready( function(){
 	var baseGender = mw.Language.gender.prototype;
 	 	
 	// Do mauall script loaders calls to test multiple languages:
-	function doLangTable( langSet ){		
+	function doLangTable( langSet ){			
 		$j('#table_out').loadingSpinner();
 		//build table output: 
 		var msgTestSet = { 												
@@ -65,7 +105,7 @@ mw.ready( function(){
 		/**
 		* Proccess a language key test set
 		*/
-		function doProcLangKey( langKey ){
+		function doProcLangKey( langKey ){		
 			mw.log(" doProcLangKey: " + langKey );
 			// Clear out the old digitTransformTable
 			mw.Language.digitTransformTable = null;
@@ -84,21 +124,16 @@ mw.ready( function(){
 				doLangTest();
 			}
 			
-			function doLangTest(){
+			function doLangTest(){			
 				// Get the current language mw.testLang js
-				$j.getScript( '../mwScriptLoader.php?class=mw.testLang&debug=true&uselang='+langKey, function(){												
+				$j.getScript( '../mwScriptLoader.php?class=mw.testLang&debug=true&uselang='+langKey, function(){								
 					var o='';
 					o+='<tr><td colspan="6" height="20" style="font-size:large"><b>Lang:' + langKey + '</b></td></tr>';		
 					//now for each langage msg: 
+					var cat = msgTestSet;
 					$j.each(msgTestSet, function(mKey, mTestSet){
 						//output table names:
-						o+='<tr>'+
-								'<td>$1[,$2]</td>'+
-								'<td width="14%">Msg key</td>'+
-								'<td width="34%">Msg text</td>'+
-								'<td width="24%">Msg Transform JS</td>'+
-								'<td width="24%">Msg Transform Mw</td>'+
-							'</tr>';
+						o+= headerRowHtml;
 					
 						//for each number value
 						for(var i in mTestSet){
@@ -190,8 +225,20 @@ mw.ready( function(){
 </head>
 <body>
 <h3>Test Javascript plural msg transformations ( note this is a very resource intensive test )</h3>
-<a id="runAll" href="#">Run all <span id="languageCount">...</span> tests<a> ( takes a while ) <br>
-<a id="runLang" href="#">Run Language Key</a>:<input size="5" id="testLangKey" name = "testLangKey" value="en"/>
+
+<span style="float:left;width:400px;padding:3px;">
+	Run Test transform<br /> 
+	<a id="runAll" href="#">Run all <span id="languageCount">...</span> tests<a> ( takes a while ) <br>
+	<a id="runLang" href="#">Run Language Key</a>:<input size="5" id="testLangKey" name = "testLangKey" value="en"/>
+</span>
+<span style="float:left;width:300px;">
+	Run Custom transform: <br />
+	Value (seperate by comma ): <input size="30" id="customValue" name="customValue" value="4,3"/> <br> 
+	Msg Swap Text: <textarea cols="60" rows="2" id="customMsgText" name="customMsgText" >{{PLURAL:$2|This category has only the following subcategory.|This category has the following {{PLURAL:$1|subcategory|$1 subcategories}}, out of $2 total.}}</textarea>
+	<input id="runCustomTransform" type="button" value="Run Custom Transform">
+</span>
+<div style="clear:both"></div>
+<br />
 
 <div id="score_card" style="font-size:large"></div>
 <table id="table_out"></table>

@@ -19,6 +19,7 @@
 * and enabled in mwEnabledModuleList below.
 */
 var mwCoreComponentList = [	
+	'mw.Parser',
 	'mw.Language'
 ];
 
@@ -122,6 +123,7 @@ mw.addClassFilePaths( {
 	"window.jQuery"			: "libraries/jquery/jquery-1.4.2.js",		
 	
 	"mw.Language"			: "languages/mw.Language.js",
+	"mw.Parser"				: "languages/mw.Parser.js",
 
 	"JSON" : "libraries/json/json2.js",
 

@@ -81,7 +81,7 @@ class ScriptLoaderOutputPage extends OutputPage {
 		global $wgEnableScriptLoader, $wgUser;
 		// Get the preferences for the current user
 		$preferences = Preferences::getPreferences( $wgUser );
-		// For some reaons prefrence "value" is stored in "default"
+		// For some reasons preference "value" is stored in "default"
 		if( $preferences[ 'scriptdebug' ]['default'] == 1 ) {
 			return false;
 		} else {
