@@ -7463,6 +7463,11 @@ $messages['id'] = array(
 	'wikieditor-toolbar-help-content-indent-result' => 'Teks normal<dl><dd>Teks inden<dl><dd>Teks inden</dd></dl></dd></dl>',
 );
 
+/** Igbo (Igbo) */
+$messages['ig'] = array(
+	'wikieditor-toolbar-tool-reference-cancel' => 'Emekwàlà',
+);
+
 /** Ido (Ido)
  * @author Malafaya
  */
@@ -11145,6 +11150,8 @@ $messages['pdc'] = array(
 	'wikieditor-toolbar-tool-link' => 'Gleecher',
 	'wikieditor-toolbar-tool-link-ext-target' => 'Gleecher-Adress:',
 	'wikieditor-toolbar-tool-link-int-target-status-external' => 'Gewebbgleecher',
+	'wikieditor-toolbar-tool-link-lookslikeinternal-ext' => 'Gewebbgleecher',
+	'wikieditor-toolbar-tool-heading' => 'Iwwerschrift',
 	'wikieditor-toolbar-group-format' => 'Lischt',
 	'wikieditor-toolbar-tool-redirect' => 'Weiderleiding',
 	'wikieditor-toolbar-tool-big' => 'Gross',
