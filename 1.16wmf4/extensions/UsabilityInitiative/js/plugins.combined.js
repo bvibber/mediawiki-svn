@@ -5258,9 +5258,9 @@ $.fn.autoEllipsis = function( options ) {
 					}
 					break;
 			}
-			if ( options.tooltip )
-				$text.attr( 'title', text );
 		}
+		if ( options.tooltip )
+			$text.attr( 'title', text );
 		cache[text][w] = $text.text();
 	} );
 };
