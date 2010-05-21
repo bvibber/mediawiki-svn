@@ -1308,9 +1308,9 @@ mw.EmbedPlayer.prototype = {
 			} else {
 				this[attr] = playerAttributes[attr];
 			}
-			// string -> bollean
-			if( this[attr] == "false" ) this[attr] = false;
-			if( this[attr] == "true" ) this[attr] = true;
+			// string -> boolean
+			if( this[ attr ] == "false" ) this[attr] = false;
+			if( this[ attr ] == "true" ) this[attr] = true;
 		}
 				
 		// Hide "controls" if using native player controls: 
