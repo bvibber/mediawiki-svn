@@ -428,7 +428,8 @@ class OggHandler extends MediaHandler {
 	function setHeaders( $out ) {
 		global $wgOggScriptVersion, $wgCortadoJarFile, $wgServer, $wgUser, $wgScriptPath;
 
-		if ( $out->hasHeadItem( 'OggHandler' ) ) {
+		if ( $out->hasHeadItem( 'OggHandlerScript' ) && $out->hasHeadItem( 'OggHandlerInlineScript' ) &&
+			$out->hasHeadItem( 'OggHandlerInlineCSS' ) ) {
 			return;
 		}
 
