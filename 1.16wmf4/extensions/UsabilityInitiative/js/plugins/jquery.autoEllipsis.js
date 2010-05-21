@@ -38,6 +38,8 @@ $.fn.autoEllipsis = function( options ) {
 		}
 		if ( w in cache[text] ) {
 			$text.text( cache[text][w] );
+			if ( options.tooltip )
+				$text.attr( 'title', text );
 			return;
 		}
 		
