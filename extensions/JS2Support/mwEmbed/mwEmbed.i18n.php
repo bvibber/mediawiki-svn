@@ -284,6 +284,12 @@ $messages['id'] = array(
 	'mwe-cancel' => 'Batalkan',
 );
 
+/** Igbo (Igbo) */
+$messages['ig'] = array(
+	'mwe-ok' => 'Ngwanu',
+	'mwe-cancel' => 'Emekwàlà',
+);
+
 $messages['it'] = array(
 	'mwe-cancel' => 'Annulla',
 );

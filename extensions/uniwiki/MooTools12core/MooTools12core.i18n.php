@@ -33,7 +33,7 @@ $messages['af'] = array(
  * @author Mdupont
  */
 $messages['aln'] = array(
-	'mootools12core-desc' => 'Shton http://mootools.net [] Mootools-core-1,2-yc.js, një kompakt kuadër të aktivizoni Java, për çdo faqe',
+	'mootools12core-desc' => 'Shton [http://mootools.net Mootools-core-1,2-yc.js], një kompakt kuadër të aktivizoni Java, për çdo faqe',
 );
 
 /** Arabic (العربية)

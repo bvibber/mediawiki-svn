@@ -1012,6 +1012,12 @@ $4',
 	'right-todosubmit' => 'Membatasi hak daftar tugas pengguna',
 );
 
+/** Igbo (Igbo) */
+$messages['ig'] = array(
+	'todo-list-change' => 'Gbanwere',
+	'todo-list-cancel' => 'Emekwàlà',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  */

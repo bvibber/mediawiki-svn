@@ -570,3 +570,11 @@ $messages['vi'] = array(
 	'externalpages-no-page' => 'Chưa định rõ trang',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Horacewai2
+ */
+$messages['zh-hant'] = array(
+	'externalpages' => '外部網頁',
+	'externalpages-desc' => '檢索和顯示來自WMF的網站頁面',
+);
+

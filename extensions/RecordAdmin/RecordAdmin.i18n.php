@@ -1119,6 +1119,15 @@ $messages['id'] = array(
 	'right-recordadmin' => 'Temukan dan sunting catatan halaman',
 );
 
+/** Igbo (Igbo) */
+$messages['ig'] = array(
+	'recordadmin-buttonsearch' => 'Chöwá',
+	'recordadmin-buttoncreate' => 'Ké',
+	'recordadmin-buttonsave' => 'Donyéré',
+	'recordadmin-editlink' => 'rüwa',
+	'recordadmin-actions' => 'Mmèmé',
+);
+
 /** Ido (Ido)
  * @author Malafaya
  */
@@ -1609,6 +1618,7 @@ $messages['pdc'] = array(
 	'recordadmin-buttonsearch' => 'Guck uff',
 	'recordadmin-editlink' => 'ennere',
 	'recordadmin-modified' => 'Gennert',
+	'recordadmin-notset' => 'Keen „$1“',
 );
 
 /** Polish (Polski)

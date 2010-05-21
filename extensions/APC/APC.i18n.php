@@ -315,7 +315,7 @@ $messages['aln'] = array(
 	'viewapc-ls-sort-timeout' => 'Kohëzgjatja',
 	'viewapc-ls-limit-none' => 'Të gjithë',
 	'viewapc-ls-more' => "''Nuk më $1 {{PLURAL:$1|hyrje|entries}}''",
-	'viewapc-ls-nodata' => "Nuk ka të dhëna përputhen''''",
+	'viewapc-ls-nodata' => "''Nuk ka të dhëna përputhen''",
 	'viewapc-delete-ok' => 'hyrje Cache <nowiki> $1 </nowiki> fshihet.',
 	'viewapc-delete-failed' => 'Gabim hyrje të fshini cache <nowiki> $1 </nowiki> .',
 	'viewapc-version-info' => 'informacion Version',
@@ -4489,6 +4489,7 @@ $messages['os'] = array(
  */
 $messages['pdc'] = array(
 	'viewapc-display-mem_size' => 'Grees',
+	'viewapc-ls-submit' => 'Geh los!',
 	'viewapc-ls-header-name' => 'Naame',
 	'viewapc-ls-header-size' => 'Grees',
 	'viewapc-ls-sort-size' => 'Grees',

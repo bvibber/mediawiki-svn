@@ -394,6 +394,11 @@ $messages['id'] = array(
 	'searchbox-namespaces' => 'Ruang nama:',
 );
 
+/** Igbo (Igbo) */
+$messages['ig'] = array(
+	'searchbox-search' => 'Chöwá',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  */
@@ -592,6 +597,8 @@ $messages['os'] = array(
  */
 $messages['pdc'] = array(
 	'searchbox-search' => 'Guck uff',
+	'searchbox-go' => 'OK',
+	'searchbox-namespaces' => 'Blatznaame:',
 );
 
 /** Polish (Polski)

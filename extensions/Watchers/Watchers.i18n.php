@@ -59,7 +59,7 @@ $messages['af'] = array(
  */
 $messages['aln'] = array(
 	'watchers' => 'Mbikqyrësve',
-	'watchers-desc' => 'Tregon [[Special:mbikqyrësve|që përdoruesit kanë një faqe në listën mbikqyrëse e tyre]]',
+	'watchers-desc' => 'Tregon [[Special:Watchers|mbikqyrësve|që përdoruesit kanë një faqe në listën mbikqyrëse e tyre]]',
 	'watchers_link_title' => 'Kush e shikon këtë faqe?',
 	'watchers_error_article' => "Gabim''':''' Faqja nuk ekziston.",
 	'watchers-error-invalid-page' => "Gabim''':''' \"\$1\" është një titull i vlefshëm faqe.",

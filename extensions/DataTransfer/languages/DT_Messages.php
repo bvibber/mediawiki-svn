@@ -1453,9 +1453,12 @@ $messages['os'] = array(
  */
 $messages['pdc'] = array(
 	'dt_viewxml_categories' => 'Abdeelinge',
+	'dt_viewxml_namespaces' => 'Blatznaame',
 	'dt_xml_namespace' => 'Blatznaame',
+	'dt_xml_pages' => 'Bledder',
 	'dt_xml_page' => 'Blatt',
 	'dt_xml_name' => 'Naame',
+	'dt_xml_title' => 'Titel',
 );
 
 /** Polish (Polski)

@@ -14640,6 +14640,7 @@ $messages['oc'] = array(
  */
 $messages['pdc'] = array(
 	'configure-setting-wgExtraLanguageNames-value' => 'Naame',
+	'configure-setting-wgDebugLogGroups-value' => 'Feil',
 	'configure-setting-wgXhtmlNamespaces-key' => 'Blatznaame',
 );
 

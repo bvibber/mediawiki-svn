@@ -266,8 +266,9 @@ $messages['aln'] = array(
 	'qp_error_invalid_poll_id' => 'Sondazhi id pavlefshme (id = $1). id Anketa mund të përmbajë vetëm shkronja, numra dhe karakterin hapësirë',
 	'qp_error_already_used_poll_id' => 'Id sondazh është tashmë të përdorura në këtë faqe (id = $1).',
 	'qp_error_invalid_dependance_value' => 'Anketa (id = 1 $) zinxhirit të dependance ka vlerë të pavlefshme e vetive dependance (dependance = "$2")',
-	'qp_error_missed_dependance_title' => 'Anketa (id = 1 $) është i varur nga anketa e një tjetër (id = $3) nga [faqja [$2]], por titullin [[$2]] nuk u gjet. Ose hequr atribut dependance, ose rivendosjen e [[$2] ]',
-	'qp_error_missed_dependance_poll' => 'Anketa (id = 1 $) është i varur nga anketa e një tjetër (id = $3) në faqe $2, por se sondazhi nuk ekziston ose nuk është ruajtur akoma. Ose hequr atribut dependance, apo krijimi i anketës me id = $3 në faqe $2 dhe për të shpëtuar atë. Për të ruajtur një sondazh, i jepni kohë nuk iu përgjigjur ndonjë pyetje propozim.',
+	'qp_error_missed_dependance_title' => 'Anketa (id = $1) është i varur nga anketa e një tjetër (id = $3) nga faqja [[$2]], por titullin [[$2]] nuk u gjet.
+Ose hequr atribut dependance, ose rivendosjen e [[$2]]',
+	'qp_error_missed_dependance_poll' => 'Anketa (id = $1) është i varur nga anketa e një tjetër (id = $3) në faqe $2, por se sondazhi nuk ekziston ose nuk është ruajtur akoma. Ose hequr atribut dependance, apo krijimi i anketës me id = $3 në faqe $2 dhe për të shpëtuar atë. Për të ruajtur një sondazh, i jepni kohë nuk iu përgjigjur ndonjë pyetje propozim.',
 	'qp_error_vote_dependance_poll' => 'Ju lutemi të votojnë për sondazh $1 të parë.',
 	'qp_error_too_many_spans' => 'Shumë grupe të kategorisë së për numrin e përgjithshëm të nën-kategori të përcaktuara',
 	'qp_error_unanswered_span' => 'nënkategori pa përgjigje',

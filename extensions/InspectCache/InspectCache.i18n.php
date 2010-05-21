@@ -498,6 +498,11 @@ $messages['id'] = array(
 	'right-inspectcache' => 'Lihat dan hapus entri tembolok',
 );
 
+/** Igbo (Igbo) */
+$messages['ig'] = array(
+	'inspectcache-delete' => 'Gbakashia',
+);
+
 /** Italian (Italiano)
  * @author Civvì
  * @author Darth Kule

@@ -960,6 +960,13 @@ $messages['oc'] = array(
 	'errorhandler-trace-line-internal' => '[foncion intèrna] : $1',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'errorhandler-error-warning' => 'Warning',
+);
+
 /** Polish (Polski)
  * @author Maikking
  * @author Sp5uhe

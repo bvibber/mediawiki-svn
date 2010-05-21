@@ -463,6 +463,11 @@ $messages['id'] = array(
 	'right-findspam' => 'Cari spam yang baru ditambahkan',
 );
 
+/** Igbo (Igbo) */
+$messages['ig'] = array(
+	'findspam-ok' => 'Ngwanu',
+);
+
 /** Ido (Ido)
  * @author Malafaya
  */

@@ -408,6 +408,11 @@ $messages['id'] = array(
 	'dplforum-toomany' => 'Forum DPL: Terlalu banyak kategori!',
 );
 
+/** Igbo (Igbo) */
+$messages['ig'] = array(
+	'dplforum-never' => 'Anáobulạ',
+);
+
 /** Italian (Italiano)
  * @author Beta16
  * @author Darth Kule

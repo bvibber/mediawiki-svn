@@ -86,7 +86,7 @@ dhe një tekst të shkurtër hyrës përshkruar në dokument dhe siguruar udhëz
 	'createsigndoc-optional' => 'Fakultativ',
 	'createsigndoc-create' => 'Krijo',
 	'createsigndoc-error-generic' => 'Gabim: $1',
-	'createsigndoc-error-pagenoexist' => 'Gabim: [page [$1]] nuk ekziston.',
+	'createsigndoc-error-pagenoexist' => 'Gabim: page [[$1]] nuk ekziston.',
 	'createsigndoc-success' => 'nënshkrimin e dokumentit ka qenë i aktivizuar me sukses për [[$1]]. Ju mund [{{fullurl:{{#Special:SignDocument}}|doc=$2}} provë atë].',
 	'createsigndoc-error-alreadycreated' => 'Dokumenti i nënshkruar "$1" tashmë ekzistojnë. Kjo nuk mund të bëhet një herë të dytë.',
 );

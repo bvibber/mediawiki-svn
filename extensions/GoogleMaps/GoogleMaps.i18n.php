@@ -2703,7 +2703,9 @@ $wgGoogleMapsMessages['ig'] = array(
 	'gm-search' => 'Chöwá',
 	'gm-save-path' => 'Donyéré',
 	'gm-back' => 'azú',
+	'gm-earth' => 'Àlà',
 	'gm-moon' => 'Önwa',
+	'gm-mars' => 'Ùwà Ikenga',
 );
 
 /** Ido (Ido)
@@ -4079,6 +4081,7 @@ Subukan me ing pekabayung bersion ning <a href="http://www.microsoft.com/ie">Int
  * @author Xqt
  */
 $wgGoogleMapsMessages['pdc'] = array(
+	'gm-balloon-title' => 'Titel:',
 	'gm-height' => 'Heeh',
 	'gm-zoom-control' => 'Faahre-Gnepp',
 	'gm-large' => 'Gross',
@@ -4086,6 +4089,7 @@ $wgGoogleMapsMessages['pdc'] = array(
 	'gm-yes' => 'Ya',
 	'gm-no' => 'Nee',
 	'gm-search' => 'Uffgucke',
+	'gm-back' => 'zerrick',
 	'gm-kml-loading' => 'laade…',
 	'gm-earth' => 'Erd',
 	'gm-moon' => 'Moond',

@@ -92,7 +92,7 @@ $messages['aln'] = array(
 	'extdist-not-configured' => 'Ju lutem, konfiguroni $wgExtDistTarDir dhe $wgExtDistWorkingCopy',
 	'extdist-wc-missing' => 'Konfiguruar directory kopje e punës nuk ekziston!',
 	'extdist-no-such-extension' => 'Jo zgjatje e tillë "$1"',
-	'extdist-no-such-version' => 'Zgjatja "$1" nuk ekziston në versionin e "" $2.',
+	'extdist-no-such-version' => 'Zgjatja "$1" nuk ekziston në versionin e "$2".',
 );
 
 /** Arabic (العربية)

@@ -640,6 +640,11 @@ ketikan beberapa karakter pertama dan tekan tombol kirim untuk mencari judul hal
 Clik panah untuk melihat semua halaman indek dibawah judul itu.',
 );
 
+/** Igbo (Igbo) */
+$messages['ig'] = array(
+	'index-search' => 'Chöwá',
+);
+
 /** Italian (Italiano)
  * @author Civvì
  * @author Darth Kule

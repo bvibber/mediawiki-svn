@@ -1660,6 +1660,13 @@ $messages['id'] = array(
 	'right-readold' => 'Melihat isi revisi lama dan perbedaan revisi',
 );
 
+/** Igbo (Igbo) */
+$messages['ig'] = array(
+	'grouppermissions-dologin' => 'Banyé',
+	'grouppermissions-never' => 'Anáobulạ',
+	'grouppermissions-sp-save' => 'Donyéré',
+);
+
 /** Ido (Ido)
  * @author Malafaya
  */
@@ -2416,6 +2423,7 @@ $messages['os'] = array(
  */
 $messages['pdc'] = array(
 	'grouppermissions-dologin' => 'Kumm nei',
+	'grouppermissions-dosearch' => 'Guck uff',
 	'grouppermissions-comment' => 'Anmaerricking:',
 	'grouppermissions-true' => 'Ya',
 	'grouppermissions-false' => 'Nee',

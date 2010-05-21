@@ -1639,6 +1639,7 @@ $messages['oc'] = array(
  * @author Xqt
  */
 $messages['pdc'] = array(
+	'changeauthor-pagenameform-go' => 'Guck uff',
 	'changeauthor-comment' => 'Anmaerricking:',
 );
 

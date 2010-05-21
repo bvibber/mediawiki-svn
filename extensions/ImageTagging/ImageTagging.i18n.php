@@ -101,8 +101,8 @@ $messages['aln'] = array(
 	'imagetagging-imghistory' => 'Histori',
 	'imagetagging-images' => 'imazhe',
 	'imagetagging-inthisimage' => 'Në këtë imazh: $1',
-	'imagetagging-logentry' => 'tag hoq në [faqe [$1]] nga $2',
-	'imagetagging-log-tagged' => 'Image [[$1|$2]] ishte i pajisur me etiketë të [faqe [3 $]] nga 4 $',
+	'imagetagging-logentry' => 'tag hoq në faqe [[$1]] nga $2',
+	'imagetagging-log-tagged' => 'Image [[$1|$2]] ishte i pajisur me etiketë të faqe [[$3]] nga $4',
 	'imagetagging-new' => '<span style="color:red"><sup>New!</sup></span>',
 	'imagetagging-removetag' => 'hiqni tag',
 	'imagetagging-done-button' => 'Done tagging',
@@ -1037,6 +1037,11 @@ Silakan tunggu tindakan yang ada untuk selesai.',
 	'imagetagging-taggedimages-displaying' => 'Menampilkan $1 - $2 dari $3 gambar "$4"',
 	'tag-logpagename' => 'Log tag',
 	'tag-logpagetext' => 'Ini adalah log semua penambahan dan penghilangan tag gambar.',
+);
+
+/** Igbo (Igbo) */
+$messages['ig'] = array(
+	'imagetagging-tagcancel-button' => 'Emekwàlà',
 );
 
 /** Italian (Italiano)

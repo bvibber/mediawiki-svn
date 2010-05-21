@@ -956,6 +956,11 @@ $messages['id'] = array(
 	'storyboard-hide' => 'Sembunyikan',
 );
 
+/** Igbo (Igbo) */
+$messages['ig'] = array(
+	'storyboard-hide' => 'Zonari',
+);
+
 /** Japanese (日本語)
  * @author Aotake
  * @author Joe Elkins
@@ -1314,6 +1319,13 @@ $messages['oc'] = array(
 	'right-storyreview' => 'Relegir, modificar, publicar, e amagar las istòrias',
 	'storyboard-unpublish' => 'Despublicar',
 	'storyboard-publish' => 'Publicar',
+);
+
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'storyboard-language' => 'Schprooch',
 );
 
 /** Piedmontese (Piemontèis)

@@ -662,6 +662,11 @@ Jangan menilai seorang kontributor berdasarkan jumlah suntingannya.",
 	'countedits-nocontribs' => 'Belum ada kontribusi untuk wiki ini.',
 );
 
+/** Igbo (Igbo) */
+$messages['ig'] = array(
+	'countedits-ok' => 'Ngwanu',
+);
+
 /** Icelandic (Íslenska)
  * @author S.Örvarr.S
  */

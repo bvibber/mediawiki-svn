@@ -1359,6 +1359,7 @@ $messages['pag'] = array(
 $messages['pdc'] = array(
 	'sitematrix' => 'Lischt vun Wikimedia-Wikis',
 	'sitematrix-language' => 'Schprooch',
+	'sitematrix-private' => 'private',
 );
 
 /** Polish (Polski)

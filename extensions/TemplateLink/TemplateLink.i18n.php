@@ -294,6 +294,7 @@ $messages['id'] = array(
  */
 $messages['ig'] = array(
 	'templatelink' => 'Jikodo mkpurụ ihü',
+	'templatelink_newtitle' => '$1 (jètùrù)',
 );
 
 /** Italian (Italiano)

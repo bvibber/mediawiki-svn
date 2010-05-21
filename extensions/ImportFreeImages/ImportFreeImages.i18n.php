@@ -64,7 +64,7 @@ $messages['af'] = array(
  */
 $messages['aln'] = array(
 	'importfreeimages' => 'imazhe Import falas',
-	'importfreeimages-desc' => 'Ofron një mënyrë të [[Special:ImportFreeImages|importues duhet të licencuar fotot]] nga [Flickr http://www.flickr.com]',
+	'importfreeimages-desc' => 'Ofron një mënyrë të [[Special:ImportFreeImages|importues duhet të licencuar fotot]] nga [http://www.flickr.com Flickr]',
 	'importfreeimages_description' => 'Kjo faqe ju lejon të kërkoni fotot siç duhet licencuar nga Flickr dhe importit ato në wiki tuaj.',
 	'importfreeimages_nophotosfound' => "Nuk u gjet fotot për kriteret e kërkimit tuaj '$1', ju lutem provoni përsëri.",
 	'importfreeimages_owner' => 'Autor',

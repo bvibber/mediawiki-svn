@@ -2502,6 +2502,29 @@ $messages['kn'] = array(
 	'sign-signatures' => 'ಸಹಿಗಳು',
 );
 
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'signdocument' => '문서 서명',
+	'sign-nodocselected' => '서명할 문서를 선택해주세요.',
+	'sign-selectdoc' => '문서:',
+	'sign-docheader' => '"[[$1]]" 문서에 서명하려면 아래 양식을 이용해주세요.
+문서 전체를 읽고 당신이 이 문서의 내용을 지지한다면 서명하면서 필수 사항을 채워주세요.',
+	'sign-error-nosuchdoc' => '당신이 요청한 문서($1)가 존재하지 않습니다.',
+	'sign-realname' => '실명:',
+	'sign-iptools' => 'span class="plainlinksneverexpand"><!--
+-->[[User:$1|$1]] ([[User talk:$1|토론]] • <!--
+-->[[Special:Contributions/$1|기여]] • <!--
+-->[http://www.dnsstuff.com/tools/whois.ch?domain={{urlencode:$1}}&cache=off&email=on WHOIS] • <!--
+-->[http://www.dnsstuff.com/tools/ptr.ch?ip={{urlencode:$1}}&cache=off&email=on RDNS] • <!--
+-->[http://www.robtex.com/rbls/$1.html RBLs] • <!--
+-->[[Special:BlockIP/$1|차단]] • <!--
+-->[{{fullurl:Special:Log/block|page=User:{{urlencode:$1}}}} 차단 기록] • <!--
+-->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} IP 확인])<!--
+--></span>',
+);
+
 /** Kinaray-a (Kinaray-a)
  * @author Jose77
  */
@@ -3390,6 +3413,7 @@ $messages['pdc'] = array(
 	'sign-realname' => 'Naame:',
 	'sign-viewfield-realname' => 'Naame',
 	'sign-viewfield-address' => 'Adress',
+	'sig-private' => "''Private''",
 	'sign-viewfield-reviewcomment' => 'Anmaerricking',
 	'sign-review-comment' => 'Anmaerricking',
 );

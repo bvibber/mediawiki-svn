@@ -918,6 +918,11 @@ $messages['id'] = array(
 	'expand_templates_preview' => 'Pratayang',
 );
 
+/** Igbo (Igbo) */
+$messages['ig'] = array(
+	'expand_templates_ok' => 'Ngwanu',
+);
+
 /** Ido (Ido)
  * @author Malafaya
  */

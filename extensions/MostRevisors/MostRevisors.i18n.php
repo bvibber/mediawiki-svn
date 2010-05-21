@@ -627,6 +627,13 @@ $messages['oc'] = array(
 	'mostrevisors-viewcontributors' => 'Veire los contributors principals',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'mostrevisors-submit' => 'Geh los',
+);
+
 /** Polish (Polski)
  * @author Leinad
  * @author Odder

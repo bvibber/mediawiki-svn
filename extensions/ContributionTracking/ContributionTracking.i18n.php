@@ -465,6 +465,11 @@ $messages['id'] = array(
 	'contrib-tracking-button' => 'Lanjutkan',
 );
 
+/** Igbo (Igbo) */
+$messages['ig'] = array(
+	'contrib-tracking-error' => 'Nsogbú',
+);
+
 /** Ido (Ido)
  * @author Malafaya
  */

@@ -657,6 +657,11 @@ $messages['id'] = array(
 	'contributors-nosuchpage' => 'Halaman $1 tidak ditemukan.',
 );
 
+/** Igbo (Igbo) */
+$messages['ig'] = array(
+	'contributors-submit' => 'Zi',
+);
+
 /** Ido (Ido)
  * @author Malafaya
  */
@@ -1149,6 +1154,7 @@ $messages['os'] = array(
  * @author Xqt
  */
 $messages['pdc'] = array(
+	'contributors-target' => 'Titel:',
 	'contributors-submit' => 'Zeig',
 );
 

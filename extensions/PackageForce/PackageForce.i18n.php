@@ -427,6 +427,13 @@ $messages['no'] = array(
 	'pf-header-approve' => 'Godkjenn',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'pf-header-page_title' => 'Titel',
+);
+
 /** Polish (Polski) */
 $messages['pl'] = array(
 	'pf-header-page_title' => 'Tytuł',

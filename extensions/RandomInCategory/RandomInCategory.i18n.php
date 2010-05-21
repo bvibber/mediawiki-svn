@@ -736,6 +736,7 @@ $messages['os'] = array(
  */
 $messages['pdc'] = array(
 	'randomincategory-label' => 'Abdeeling:',
+	'randomincategory-submit' => 'OK',
 );
 
 /** Polish (Polski)

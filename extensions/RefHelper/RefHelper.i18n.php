@@ -100,8 +100,8 @@ $messages['aln'] = array(
 	'refhelper-refsearch_legend' => 'Kërko PubMed për referenca',
 	'refhelper-refcreate_another' => 'Krijo një tjetër referencë',
 	'refhelper-refcreate_autocomment' => 'krijimin Automated faqe.',
-	'refhelper-refcreate_success' => '[Faqja [$1]] nuk kanë ekzistuar dhe është krijuar.',
-	'refhelper-refcreate_failure' => '[Faqja [$1]] ekziston!',
+	'refhelper-refcreate_success' => 'Faqja [[$1]] nuk kanë ekzistuar dhe është krijuar.',
+	'refhelper-refcreate_failure' => 'Faqja [[$1]] ekziston!',
 );
 
 /** Aragonese (Aragonés)
@@ -565,6 +565,12 @@ $messages['id'] = array(
 	'refhelper-search' => 'Cari',
 );
 
+/** Igbo (Igbo) */
+$messages['ig'] = array(
+	'refhelper-create' => 'Ké',
+	'refhelper-search' => 'Chöwá',
+);
+
 /** Italian (Italiano) */
 $messages['it'] = array(
 	'refhelper-title' => 'Titolo:',
@@ -763,6 +769,16 @@ $messages['no'] = array(
 <h2>Forslag</h2>',
 	'refhelper-newarticle_nosuggestions' => 'Dessverre kunne jeg ikke foreslå noen referanser.
 Du kan [[Special:RefHelper|legge til referanser manuelt]] eller [[Special:RefSearch|søke etter siteringer å legge til]].',
+);
+
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'refhelper-title' => 'Titel:',
+	'refhelper-pages' => 'Bledder:',
+	'refhelper-year' => 'Yaahr:',
+	'refhelper-category' => 'Abdeeling $1:',
 );
 
 /** Polish (Polski)

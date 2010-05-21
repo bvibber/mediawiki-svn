@@ -7619,6 +7619,7 @@ $messages['pdc'] = array(
 	'mv_search_not' => 'net',
 	'mv_date_last_week' => 'Letscht Woch',
 	'mv_spoken_by' => 'verdeelt vun',
+	'mv_category' => 'Abdeeling',
 	'mv_days' => '$1 {{PLURAL:$1|Daag|Daage}}',
 	'mv_hours' => '$1 {{PLURAL:$1|Schtund|Schtund}}',
 	'mv_hours_singular' => '1 Schtund',

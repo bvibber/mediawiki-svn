@@ -3418,6 +3418,7 @@ $messages['ig'] = array(
 	'wikilog-summary-uncategorized' => 'E tibọ ya na ébé o gi nọr',
 	'wikilog-form-name' => 'Áhạ:',
 	'wikilog-edit-lc' => 'rüwa',
+	'wikilog-delete-lc' => 'gbakashia',
 	'wikilog-page-lc' => 'ihü',
 	'wikilog-history-lc' => 'akíkó mbu',
 );
@@ -4645,14 +4646,17 @@ Lo comentari apareisserà pas qu'aprèp verificacion per un moderator.",
  */
 $messages['pdc'] = array(
 	'wikilog-authors' => 'Schreiwer',
+	'wikilog-title' => 'Titel',
 	'wikilog-comments' => 'Anmaerrickinge',
-	'wikilog-has-comments' => '{{PLURAL:$1|een Anmaerricking|$1 Anmaerrickinge}}',
+	'wikilog-pager-next' => 'neegscht',
+	'wikilog-has-comments' => '{{PLURAL:$1|ee Anmaerricking|$1 Anmaerrickinge}}',
 	'wikilog-title-comments' => 'Anmaerrickinge - $1',
 	'wikilog-form-category' => 'Abdeeling:',
 	'wikilog-form-name' => 'Naame:',
 	'wikilog-form-author' => 'Schreiwer:',
 	'wikilog-form-tag' => 'Daag:',
 	'wikilog-form-comment' => 'Anmaerricking:',
+	'wikilog-edit-lc' => 'ennere',
 	'wikilog-page-lc' => 'Blatt',
 );
 
@@ -6202,10 +6206,38 @@ $messages['uk'] = array(
 
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
+ * @author Trần Nguyễn Minh Huy
  */
 $messages['vi'] = array(
+	'wikilog-information' => 'Thông tin đăng nhập',
+	'wikilog-new-item-go' => 'Tạo',
+	'wikilog-item-name' => 'Tên bài viết:',
+	'wikilog-updated' => 'Đã cập nhật',
+	'wikilog-draft' => 'Thư nháp',
+	'wikilog-authors' => 'Tác giả',
+	'wikilog-title' => 'Tựa',
+	'wikilog-view-archives' => 'Lưu trữ',
+	'wikilog-view-summary' => 'Tóm lược',
+	'wikilog-pager-prev' => 'trước',
+	'wikilog-pager-next' => 'tiếp',
+	'wikilog-pager-first' => 'đầu',
+	'wikilog-pager-last' => 'cuối',
+	'wikilog-comment-note-edited' => 'lần sửa cuối vào  $1 lúc $2',
 	'wikilog-feed-title' => '{{SITENAME}} – $1 [$2]',
 	'wikilog-title-item-full' => '$1 – $2',
+	'wikilog-form-category' => 'Thể loại:',
+	'wikilog-form-name' => 'Tên:',
+	'wikilog-form-author' => 'Tác giả:',
+	'wikilog-form-tag' => 'Thẻ:',
+	'wikilog-form-status' => 'Trạng thái:',
+	'wikilog-form-preview' => 'Xem trước:',
+	'wikilog-form-comment' => 'Lý do:',
+	'wikilog-preview' => 'Xem trước',
+	'wikilog-edit-lc' => 'sửa',
+	'wikilog-reply-lc' => 'trả lời',
+	'wikilog-delete-lc' => 'xóa',
+	'wikilog-page-lc' => 'trang',
+	'wikilog-history-lc' => 'lịch sử',
 );
 
 /** Yiddish (ייִדיש)

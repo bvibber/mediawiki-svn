@@ -1006,6 +1006,7 @@ $messages['os'] = array(
  */
 $messages['pdc'] = array(
 	'player-goto-page' => 'Blatt',
+	'player-goto-file' => 'Feil',
 );
 
 /** Polish (Polski)

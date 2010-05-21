@@ -394,6 +394,11 @@ Anda tidak dapat membuat halaman ini, namun Anda dapat [{{fullurl:{{FULLPAGENAME
 $messages['ig'] = array(
 	'createbox-desc' => 'Ntiyéntiyé di mkpà maka éké ihü',
 	'createbox-create' => 'Ké',
+	'createbox-exists' => "Ndó, \"'''{{FULLPAGENAME}}'''\" di kwà.
+
+Í nweríkí ké ihü á, mànà Í nwẹríkí [{{fullurl:{{FULLPAGENAME}}|action=edit}} rüo élú yá], [{{fullurl:{{FULLPAGENAME}}}} gwuó ya], ma Í jí ngwa nor nà àlà ngá Í kpátá ihü nke òzór.
+
+<createbox>gbàjié=mbạ</createbox>",
 );
 
 /** Italian (Italiano)

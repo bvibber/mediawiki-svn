@@ -600,6 +600,11 @@ $messages['id'] = array(
 	'right-edituser-exempt' => 'Orang lain tidak dapat menyunting preferensi pengguna ini',
 );
 
+/** Igbo (Igbo) */
+$messages['ig'] = array(
+	'edituser-dosearch' => 'Chöwá',
+);
+
 /** Ido (Ido)
  * @author Malafaya
  */

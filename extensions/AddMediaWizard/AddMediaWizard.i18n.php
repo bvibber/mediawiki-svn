@@ -29,6 +29,13 @@ $messages['hu'] = array(
 	'addmediawizard-desc' => 'Média hozzáadása varázsló, a Kaltura és a Wikimédia Alapítvány közös fejlesztése',
 );
 
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'addmediawizard-desc' => 'Tinyé ogboma nka, nke há rürü na ihe mkpara ndi Kaltura na Wikimedia Foundation',
+);
+
 /** Kannada (ಕನ್ನಡ)
  * @author Nayvik
  */

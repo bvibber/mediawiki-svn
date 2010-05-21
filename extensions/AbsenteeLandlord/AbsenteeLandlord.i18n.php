@@ -310,6 +310,14 @@ $messages['id'] = array(
 	'absenteelandlord-desc' => 'Mengunci basis data wiki secara otomatis jika seluruh opsis tidak aktif selama periode tertentu.',
 );
 
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'absenteelandlord-reason' => 'Njikota omari nka mèchìrì maka ndi íshí emeghi bọ ihé óbulà.',
+	'absenteelandlord-desc' => 'Na gbáchí njikota omȧrı o bu na sysops eméghị ihe obula ngwa ngwa',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  */

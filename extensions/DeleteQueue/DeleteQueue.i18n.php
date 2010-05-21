@@ -3157,6 +3157,12 @@ Anda dapat [{{fullurl:{{FULLPAGENAME}}|action=delvote}} mendaftarkan dukungan at
 	'deletequeue-case-needs-review' => 'Kasus ini membutuhkan [[$1|tinjauan]].',
 );
 
+/** Igbo (Igbo) */
+$messages['ig'] = array(
+	'deletequeue-list-search' => 'Chöwá',
+	'deletequeue-case-reason' => 'Mgbaghaputa:',
+);
+
 /** Ido (Ido)
  * @author Malafaya
  */

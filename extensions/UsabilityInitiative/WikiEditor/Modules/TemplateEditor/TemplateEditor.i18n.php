@@ -335,6 +335,11 @@ $messages['id'] = array(
 	'wikieditor-template-editor-dialog-cancel' => 'Batalkan',
 );
 
+/** Igbo (Igbo) */
+$messages['ig'] = array(
+	'wikieditor-template-editor-dialog-cancel' => 'Emekwàlà',
+);
+
 /** Italian (Italiano)
  * @author Una giornata uggiosa '94
  */

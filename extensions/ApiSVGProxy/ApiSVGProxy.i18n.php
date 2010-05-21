@@ -133,6 +133,13 @@ $messages['id'] = array(
 	'apisvgproxy-desc' => 'File Proxy SVG dari gudang file (mungkin remote) ke domain lokal',
 );
 
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'apisvgproxy-desc' => 'Ihe íshí nke akwukwo orunotu shı (o nweriki di ebe ntakiri) akwukwo orunotu nke ebe ihe di ga ébé di nsó',
+);
+
 /** Japanese (日本語)
  * @author Aotake
  */

@@ -299,6 +299,14 @@ $messages['id'] = array(
 	'nstab-comments' => 'Komentar',
 );
 
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'commentpages-desc' => 'Ihü okwú na okwú maka áhàámá íshí',
+	'nstab-comments' => 'Okwú na okwú',
+);
+
 /** Ido (Ido)
  * @author Malafaya
  */

@@ -362,6 +362,11 @@ $messages['id'] = array(
 	'unicodeconverter-newtext' => 'Teks ubahan:',
 );
 
+/** Igbo (Igbo) */
+$messages['ig'] = array(
+	'unicodeconverter-ok' => 'Ngwanu',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  */

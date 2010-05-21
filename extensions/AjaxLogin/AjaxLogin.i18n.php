@@ -480,6 +480,7 @@ Periksa ejaan anda.',
  * @author Ukabia
  */
 $messages['ig'] = array(
+	'ajaxlogin-desc' => 'Ngwa di ichiche nké né nyé uzor ndi na banife Í bàtá na Í chétá édémédé hé shì a batá',
 	'ajaxlogin-create' => 'Ké buwa',
 	'al-nosuchuser' => 'O díg.ʼonye né ji "$1".
 Orúnotu né lékwa I dé na ukwu na ntà.

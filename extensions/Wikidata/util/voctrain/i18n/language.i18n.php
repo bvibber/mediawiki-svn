@@ -1974,6 +1974,13 @@ $messages['id'] = array(
 	'voctrain_other' => 'lainnya',
 );
 
+/** Igbo (Igbo) */
+$messages['ig'] = array(
+	'voctrain_Password' => 'Mkpurụ okwu ejị a gafẹ',
+	'voctrain_Login' => 'Banyé',
+	'voctrain_Log_in' => 'Banyé',
+);
+
 /** Ido (Ido)
  * @author Malafaya
  */
@@ -2987,6 +2994,7 @@ $messages['os'] = array(
  */
 $messages['pdc'] = array(
 	'voctrain_continue' => 'weiter',
+	'voctrain_Languages' => 'Schprooche',
 	'voctrain_User_name' => 'Yuuser-Naame',
 	'voctrain_Login' => 'Kumm nei',
 	'voctrain_Language' => 'Schprooch',

@@ -1533,6 +1533,11 @@ Mungkin tidak ada pengguna seperti itu.',
 	'right-regexblock' => 'Memblokir pengguna untuk menyunting pada semua wiki di kebun wiki',
 );
 
+/** Igbo (Igbo) */
+$messages['ig'] = array(
+	'regexblock-form-reason' => 'Mgbaghaputa:',
+);
+
 /** Ido (Ido)
  * @author Malafaya
  */
@@ -2294,6 +2299,8 @@ $messages['pdc'] = array(
 	'regexblock-form-username' => 'IP-Adress odder Yuusernaame:',
 	'regexblock-form-reason' => 'Grund:',
 	'regexblock-view-all' => 'All',
+	'regexblock-view-go' => 'Geh los',
+	'regexblock-view-reason' => 'Grund: $1',
 );
 
 /** Polish (Polski)

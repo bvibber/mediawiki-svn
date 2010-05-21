@@ -88,8 +88,7 @@ $messages['aln'] = array(
 ** $2 {{PLURAL:$2 |përdorues ka akoma|përdoruesit kanë ende}} është aktivizuar
 ** $3 {{PLURAL:$3|përdorues ka|perdorues kanë}} me aftësi të kufizuara që',
 	'prefstats-counters-expensive' => '* $1 {{PLURAL:$1|përdorues ka|perdorues kanë}} mundësuar këtë parapëlqim që nga statistika preferencë ishin aktivizuar
-** $2 {{PLURAL:$2|përdorues ka akoma|përdoruesit kanë ende}} është aktivizuar
-\\',
+** $2 {{PLURAL:$2|përdorues ka akoma|përdoruesit kanë ende}} është aktivizuar',
 	'prefstats-xaxis' => 'Kohëzgjatja (orë)',
 	'prefstats-factors' => 'Shiko për: $1',
 	'prefstats-factor-hour' => 'orë',
@@ -1629,13 +1628,26 @@ $messages['nn'] = array(
 	'prefstats-title' => 'Statistikk over innstillingar',
 	'prefstats-list-intro' => 'For tida vert dei fylgjande innstillingane spora.
 Trykk på éi for å sjå statistikk for ho.',
+	'prefstats-noprefs' => 'For tida vert ingen innstillingar spora.
+Endra oppsettet til $wgPrefStatsTrackPrefs for å spora innstillingar.',
+	'prefstats-counters' => '* {{PLURAL:$1|Éin brukar|$1 brukarar}} har aktivert denne innstillinga sidan innstillingsstatistikken vart sett i gang
+** {{PLURAL:$2|Éin brukar|$2 brukarar}} har enno innstillinga aktivert
+** {{PLURAL:$3|Éin brukar|$3 brukarar}} har sidan deaktivert innstillinga',
+	'prefstats-counters-expensive' => '* {{PLURAL:$1|Éin brukar|$1 brukarar}} har aktivert denne innstillinga sidan innstillingsstatistikken vart sett i gang
+** {{PLURAL:$2|Éin brukar|$2 brukarar}} har enno innstillinga aktivert
+** {{PLURAL:$3|Éin brukar|$3 brukarar}} har sidan deaktivert innstillinga
+* I alt har {{PLURAL:$4|éin brukar|$4 brukarar}} innstillinga aktivert',
 	'prefstats-xaxis' => 'Tid i timar',
+	'prefstats-factors' => 'Vis per $1',
 	'prefstats-factor-hour' => 'time',
 	'prefstats-factor-sixhours' => 'seks timar',
 	'prefstats-factor-day' => 'dag',
 	'prefstats-factor-week' => 'veke',
 	'prefstats-factor-twoweeks' => 'to veker',
 	'prefstats-factor-fourweeks' => 'fire veker',
+	'prefstats-factor-default' => 'tilbake til standardskalering',
+	'prefstats-legend-out' => 'Valde vekk',
+	'prefstats-legend-in' => 'Valde',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

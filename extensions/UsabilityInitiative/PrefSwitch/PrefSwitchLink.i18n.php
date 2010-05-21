@@ -150,6 +150,11 @@ $messages['dsb'] = array(
  * @author Απεργός
  */
 $messages['el'] = array(
+	'prefswitch-link-anon' => 'Καινούριες λειτουργίες',
+	'tooltip-pt-prefswitch-link-anon' => 'Ενημέρωση για καινούριες λειτουργίες',
+	'prefswitch-link-on' => 'Επιστροφή στις παλιές ρυθμίσεις',
+	'tooltip-pt-prefswitch-link-on' => 'Απενεργοποίηση καινούριων λειτουργιών',
+	'prefswitch-link-off' => 'Καινούριες λειτουργίες',
 	'tooltip-pt-prefswitch-link-off' => 'Δοκιμάστε καινούριες λειτουργίες',
 );
 

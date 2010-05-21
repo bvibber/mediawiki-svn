@@ -750,7 +750,9 @@ $messages['szl'] = array(
  */
 $messages['te'] = array(
 	'whatismyip' => 'నా ఐపీ ఏమిటి',
+	'whatismyip-desc' => 'ప్రస్తుత వాడుకరి యొక్క [[Special:WhatIsMyIP|ఐపీ చిరునామా]]ని చూపిస్తుంది',
 	'whatismyip-out' => 'మీ ఐపీ చిరునామా:',
+	'right-whatismyip' => '[[Special:WhatIsMyIP|తన ఐపీ చిరునామా]]ని చూడగలగడం',
 );
 
 /** Thai (ไทย)

@@ -1299,6 +1299,7 @@ $messages['pam'] = array(
  * @author Xqt
  */
 $messages['pdc'] = array(
+	'bookinfo-result-title' => 'Titel:',
 	'bookinfo-result-author' => 'Schreiwer:',
 	'bookinfo-result-year' => 'Yaahr:',
 );

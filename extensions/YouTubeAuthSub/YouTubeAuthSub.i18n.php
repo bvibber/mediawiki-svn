@@ -2361,6 +2361,7 @@ $messages['os'] = array(
  * @author Xqt
  */
 $messages['pdc'] = array(
+	'youtubeauthsub_title' => 'Titel',
 	'youtubeauthsub_password' => 'YouTube-Paesswatt',
 	'youtubeauthsub_keywords' => 'Keywadde',
 	'youtubeauthsub_category' => 'Abdeeling',

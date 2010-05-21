@@ -2000,6 +2000,7 @@ $wgCustomToolbarMessages['os'] = array(
  */
 $wgCustomToolbarMessages['pdc'] = array(
 	'ct_external_caption' => 'Gewebbgleecher',
+	'ct_submit' => 'Go!',
 	'ct_close' => 'Fenschder zumache',
 	'ct_user_user' => 'Yuuser',
 	'ct_user_sample' => 'Yuuser-Naame',

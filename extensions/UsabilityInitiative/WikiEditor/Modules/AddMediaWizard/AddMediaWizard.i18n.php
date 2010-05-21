@@ -71,6 +71,13 @@ $messages['dsb'] = array(
 	'wikieditor-addMediaWizard-preference' => 'Funkciju "Medijowy asistent pśidaś" zmóžniś',
 );
 
+/** Greek (Ελληνικά)
+ * @author Απεργός
+ */
+$messages['el'] = array(
+	'wikieditor-addMediaWizard-preference' => 'Ενεργοποίηση του εργαλείου «Οδηγός προσθήκης πολυμέσων»',
+);
+
 /** Spanish (Español)
  * @author Crazymadlover
  */

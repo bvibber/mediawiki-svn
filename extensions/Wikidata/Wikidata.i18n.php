@@ -6409,10 +6409,14 @@ $messages['ig'] = array(
 	'langman_field_optional' => '(ichóró)',
 	'langman_addlang' => 'Tinyé asụsụ',
 	'importlangnames_title' => 'Tinyé shi ébéozor áhạ asụsụ',
+	'ow_save' => 'Donyéré',
+	'ow_dm_OK' => 'Ngwanu',
 	'ow_Time' => 'Ogẹ',
 	'ow_TranslatedTextAttributeValue' => 'Mkpurụ edemede',
 	'ow_Link' => 'Jikodo',
 	'ow_LinkAttributeValues' => 'Jikodo',
+	'ow_show' => 'Zi',
+	'ow_create' => 'Ké',
 );
 
 /** Ido (Ido)
@@ -9563,19 +9567,31 @@ $messages['os'] = array(
  */
 $messages['pdc'] = array(
 	'langman_langname' => 'Schproochnaame:',
+	'langman_iso639-3' => 'ISO 639-3 Code:',
+	'langman_iso639-2' => 'ISO 639-2 Code:',
+	'langman_wikimedia' => 'Wikimedia-Code:',
 	'langman_addlang' => 'Schprooch dezu duh',
 	'importlangnames_not_found' => '<strong>Ken Schprooch fer „$1“ gfunne!</strong>',
 	'datasearch_language' => 'Schprooch:',
 	'datasearch_found_word' => 'Watt gfunne',
+	'datasearch_meaning' => 'Meaning',
 	'datasearch_within_words' => 'In Wadde drin:',
 	'ow_importtsv_nothing_added' => 'Nix dezu geduh.',
 	'ow_exporttsv_languages' => 'Schprooche:',
 	'ow_history' => 'Gschicht',
 	'ow_transaction_user' => 'Yuuser-Naame:',
 	'ow_dm_OK' => 'OK',
+	'ow_Annotation' => 'Annotation',
+	'ow_DefinedMeaningAttributes' => 'Annotation',
 	'ow_Language' => 'Schprooch',
+	'ow_LevelAnnotation' => 'Annotation',
+	'ow_PopupAnnotation' => 'Annotation',
+	'ow_Link' => 'Gleecher',
 	'ow_LinkAttributeValues' => 'Gleecher',
 	'ow_User' => 'Yuuser',
+	'ow_added' => 'Dezu geduh',
+	'ow_meaningsofsubtitle' => '<em>Wiki Gleecher:</em> [[$1]]',
+	'ow_class_attr_type_link' => 'Gleecher',
 	'ow_show' => 'Zeige',
 	'ow_upload' => 'Ufflaade',
 	'ow_suggest_previous' => 'Letscht',
@@ -12733,6 +12749,7 @@ $messages['te'] = array(
 	'langman_field_optional' => '(ఐచ్ఛికం)',
 	'langman_addlang' => 'భాషని చేర్చు',
 	'importlangnames' => 'వికిడాటా: భాష పేర్లను దిగుమతి చేసుకోండి',
+	'importlangnames_title' => 'భాషల పేర్ల దిగుమతి',
 	'importlangnames_added' => '"$1" కొరకు భాషల పేర్లని చేర్చాం.',
 	'datasearch' => 'వికీడాటా: డాటా అన్వేషణ',
 	'datasearch_language' => 'భాష:',
@@ -13798,6 +13815,7 @@ $messages['vep'] = array(
 
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
+ * @author Trần Nguyễn Minh Huy
  * @author Vinhtantran
  */
 $messages['vi'] = array(
@@ -13825,6 +13843,8 @@ $messages['vi'] = array(
 	'ow_uiprefs' => 'Wikidata',
 	'ow_transaction_count' => 'Tổng số:',
 	'ow_transaction_user' => 'Tên người dùng:',
+	'ow_transaction_rollback_button' => 'Lùi sửa',
+	'ow_transaction_rollback_header' => 'Lùi sửa',
 	'ow_transaction_no_action' => 'Không làm gì',
 	'ow_transaction_previous_version' => 'Phiên bản trước',
 	'ow_transaction_restore' => 'Phục hồi',

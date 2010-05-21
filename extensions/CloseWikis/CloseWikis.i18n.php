@@ -909,6 +909,11 @@ $messages['id'] = array(
 	'right-closewikis' => 'Tutup wiki',
 );
 
+/** Igbo (Igbo) */
+$messages['ig'] = array(
+	'closewikis-page-reopen-reason' => 'Mgbaghaputa:',
+);
+
 /** Ido (Ido)
  * @author Malafaya
  */

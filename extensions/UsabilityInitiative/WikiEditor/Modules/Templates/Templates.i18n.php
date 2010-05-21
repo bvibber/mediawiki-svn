@@ -71,6 +71,13 @@ $messages['dsb'] = array(
 	'wikieditor-templates-preference' => 'Fałdowanje pśedłogow zmóžniś',
 );
 
+/** Greek (Ελληνικά)
+ * @author Απεργός
+ */
+$messages['el'] = array(
+	'wikieditor-templates-preference' => 'Ενεργοποίηση της απόκρυψης προτύπων',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */

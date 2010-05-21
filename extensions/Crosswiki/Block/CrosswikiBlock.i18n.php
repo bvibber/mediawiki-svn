@@ -1283,6 +1283,12 @@ Kembali ke:
 	'right-crosswikiblock' => 'Blokir dan buka blokir pengguna di wiki lain',
 );
 
+/** Igbo (Igbo) */
+$messages['ig'] = array(
+	'crosswikiblock-reason' => 'Mgbaghaputa:',
+	'crosswikiunblock-reason' => 'Mgbaghaputa:',
+);
+
 /** Ido (Ido)
  * @author Malafaya
  */

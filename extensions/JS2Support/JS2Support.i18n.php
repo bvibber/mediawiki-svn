@@ -40,6 +40,8 @@ $messages['ca'] = array(
  */
 $messages['de'] = array(
 	'js2support-desc' => 'JS2-Unterstützung',
+	'js2support-debug-preference' => 'Gruppierung und Reduktion von Skripten deaktivieren',
+	'prefs-script-debug' => 'Script-Debugging',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -68,6 +70,7 @@ $messages['fr'] = array(
  */
 $messages['gl'] = array(
 	'js2support-desc' => 'Apoio JS2 en forma de extensión',
+	'prefs-script-debug' => 'Escritura de depuración',
 );
 
 /** Swiss German (Alemannisch)
@@ -96,6 +99,8 @@ $messages['hu'] = array(
  */
 $messages['ia'] = array(
 	'js2support-desc' => 'Supporto de JS2 in forma de un extension',
+	'js2support-debug-preference' => 'Disactivar aggruppamento e minimisation de scripts',
+	'prefs-script-debug' => 'Debugging de scripts',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -131,6 +136,8 @@ $messages['mk'] = array(
  */
 $messages['nl'] = array(
 	'js2support-desc' => 'JS2-ondersteuning als uitbreiding',
+	'js2support-debug-preference' => 'Groeperen en minificatie van scripts uitschakelen',
+	'prefs-script-debug' => 'Scriptdebuggen',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -180,5 +187,7 @@ $messages['pt-br'] = array(
  */
 $messages['ru'] = array(
 	'js2support-desc' => 'Поддержка JS2 в виде расширения',
+	'js2support-debug-preference' => 'Отключить группировку скриптов и минификацию',
+	'prefs-script-debug' => 'Отладка скриптов',
 );
 

@@ -1825,6 +1825,7 @@ $messages['os'] = array(
  * @author Xqt
  */
 $messages['pdc'] = array(
+	'povwatch_title' => 'Blattnaame:',
 	'povwatch_added' => 'dezu geduh',
 );
 

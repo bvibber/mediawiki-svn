@@ -902,6 +902,7 @@ $messages['id'] = array(
  * @author Ukabia
  */
 $messages['ig'] = array(
+	'patrol-revert-reason' => 'Mgbaghaputa:',
 	'group-patroller-member' => 'onye na léfuru ihe anyà',
 );
 

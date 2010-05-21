@@ -3230,6 +3230,24 @@ $messages['id'] = array(
 	'mwe-review-upload' => 'Tinjau {{PLURAL:$1|Unggahan|Unggahan}} Berkas',
 );
 
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'mwe-upload-stats-fileprogress' => '$1 nke $2',
+	'mwe-upload-unknown-size' => 'Amághị ívù ya',
+	'mwe-thumbnail-more' => 'Me ko bu ibù',
+	'mwe-filesource' => 'Shí:',
+	'fogg-novideo-title' => 'Enyónyó-na-jé adíghì',
+	'fogg-title-title' => 'Ishi edemede',
+	'fogg-date-title' => 'Ubochi',
+	'rsd-media-filter-title' => 'Nka',
+	'rsd-media-filter-videos' => 'Enyónyó-na-jé',
+	'rsd-media-filter-images' => 'Onyonyo',
+	'mwe-select_file' => 'Kpá akwukwo orúnotu',
+	'mwe-link-login' => 'banyé',
+);
+
 $messages['io'] = array(
 	'fogg-title-title' => 'Titulo',
 	'fogg-date-title' => 'Dato',
@@ -4498,7 +4516,11 @@ $messages['oc'] = array(
 	'mwe-upload-multi' => 'Cargar {{PLURAL:$1|lo fichièr|los fichièrs}}',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
 $messages['pdc'] = array(
+	'fogg-title-title' => 'Titel',
 	'rsd_results_next' => 'weiter',
 	'rsd_results_prev' => 'zerick',
 );

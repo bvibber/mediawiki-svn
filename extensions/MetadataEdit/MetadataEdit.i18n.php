@@ -514,6 +514,7 @@ $messages['id'] = array(
  * @author Ukabia
  */
 $messages['ig'] = array(
+	'metadataedit-desc' => 'Tinye ihe ébé ihe nor, ihe na kpatá na asụsụ ozor na ihü nke ha si o di nma na ngwa edemede di ichẹ mgbe í na rü',
 	'metadata_help' => 'Ómárí nso:',
 );
 

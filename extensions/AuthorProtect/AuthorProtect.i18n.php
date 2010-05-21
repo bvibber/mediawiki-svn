@@ -730,6 +730,11 @@ $messages['id'] = array(
 	'right-authorprotect' => 'Lindungi halaman dengan penulis pertama',
 );
 
+/** Igbo (Igbo) */
+$messages['ig'] = array(
+	'authorprotect-reason' => 'Mgbaghaputa',
+);
+
 /** Ido (Ido)
  * @author Malafaya
  */

@@ -1107,6 +1107,13 @@ $messages['oc'] = array(
 	'masseditregex-tooltip-execute' => 'Aplicar aquestes cambiaments a cada pagina',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'masseditregex-matchtxt' => 'Uffgucke nooch:',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  */

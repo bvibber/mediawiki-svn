@@ -637,7 +637,18 @@ $messages['id'] = array(
  * @author Ukabia
  */
 $messages['ig'] = array(
+	'adminlinks' => 'Jikodo ndi íshí',
+	'adminlinks-desc' => 'Né tinyé [[Special:AdminLinks|ihü mkpa]] né jidé jikodo nke ne nyé nkwado maka ndi íshí',
+	'adminlinks_documentation' => 'akwukwo $1',
 	'adminlinks_general' => 'Nke níle',
+	'adminlinks_editsidebar' => 'Rüwá na ngwa di na ákùkù',
+	'adminlinks_editcss' => 'Rüwá na akwukwo orúnotu nke CSS',
+	'adminlinks_editmainpagename' => 'Rüwá na áhà ihü íshí',
+	'adminlinks_users' => 'Ndi na banife',
+	'adminlinks_createuser' => 'Ké onye na banife',
+	'adminlinks_browsesearch' => 'Nlearia na Í tú',
+	'adminlinks_importexport' => 'I tinyé na Í kpata',
+	'right-adminlinks' => 'Zi jikodo na ga [[Special:AdminLinks|Jikodo ndi íshí]]',
 );
 
 /** Italian (Italiano)
@@ -797,7 +808,7 @@ $messages['mg'] = array(
 	'adminlinks_documentation' => "fanoroan'ny $1",
 	'adminlinks_general' => 'ankabiazany/jeneraly',
 	'adminlinks_editsidebar' => 'ovay ny bara sisiny',
-	'adminlinks_editcss' => 'Ovao ny rakitra CSS',
+	'adminlinks_editcss' => 'Hanova ny rakitra CSS',
 	'adminlinks_editmainpagename' => "ovay ny anaran'ny pejy fandraisana",
 	'adminlinks_users' => 'mpikambana',
 	'adminlinks_createuser' => 'hamorona mpikambana',

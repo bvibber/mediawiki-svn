@@ -309,6 +309,14 @@ $messages['id'] = array(
 	'seealso-desc' => "Judul bagian 'Lihat pula' yang telah diterjemahkan secara lokal dengan menggunakan tag <code><nowiki><seealso></nowiki></code>",
 );
 
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'seealso' => 'Hùkwá',
+	'seealso-desc' => "Mélá ka íshí 'Lèkwá' di nso shí Í jí ndö <code><nowiki><seealso></nowiki></code>",
+);
+
 /** Ido (Ido)
  * @author Malafaya
  * @author Wyvernoid

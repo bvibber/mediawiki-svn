@@ -1782,6 +1782,12 @@ Halaman ini hanya dapat diterapkan pada pengguna yang dibatasi",
 	'group-manager-member' => 'Manajer',
 );
 
+/** Igbo (Igbo) */
+$messages['ig'] = array(
+	'whitelisttableedit' => 'Rüwa',
+	'whitelistnever' => 'Anáobulạ',
+);
+
 /** Icelandic (Íslenska)
  * @author S.Örvarr.S
  */

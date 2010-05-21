@@ -4575,6 +4575,13 @@ $3',
 	'specialpages-group-developer' => 'Alat Pengembang',
 );
 
+/** Igbo (Igbo) */
+$messages['ig'] = array(
+	'code-status-ok' => 'Ngwanu',
+	'repoadmin-new-button' => 'Ké',
+	'repoadmin-edit-button' => 'Ngwanu',
+);
+
 /** Ido (Ido)
  * @author Malafaya
  */
@@ -6366,7 +6373,7 @@ Lokale wikigebruikers worden binnen haakjes weergegeven.',
 	'code-status-fixme' => 'fixme',
 	'code-status-reverted' => 'teruggedraaid',
 	'code-status-resolved' => 'opgelost',
-	'code-status-ok' => 'ok',
+	'code-status-ok' => 'OK',
 	'code-status-verified' => 'geverifieerd',
 	'code-status-deferred' => 'aangehouden',
 	'code-pathsearch-legend' => 'Op pad versies in deze repository zoeken',

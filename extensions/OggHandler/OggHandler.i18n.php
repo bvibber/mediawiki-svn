@@ -1491,6 +1491,11 @@ Silakan <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_downl
 	'ogg-desc-link' => 'Mengenai berkas ini',
 );
 
+/** Igbo (Igbo) */
+$messages['ig'] = array(
+	'ogg-more' => 'Ozókwá...',
+);
+
 /** Ido (Ido)
  * @author Malafaya
  */

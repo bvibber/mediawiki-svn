@@ -920,6 +920,11 @@ Dilompati.',
 	'right-import_users' => 'Impor banyak pengguna',
 );
 
+/** Igbo (Igbo) */
+$messages['ig'] = array(
+	'importusers-password' => 'mkpurụ okwu ejị a gafẹ',
+);
+
 /** Icelandic (Íslenska)
  * @author S.Örvarr.S
  */

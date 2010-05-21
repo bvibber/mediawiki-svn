@@ -271,7 +271,7 @@ Sonder 'n OpenID sou u glad nie meer kon aanteken nie.",
 $messages['aln'] = array(
 	'openiddelete-sucess' => 'OpenID u hoq me sukses nga llogaria juaj.',
 	'openiddelete-error' => 'Gabim gjatë heqjes OpenID nga llogaria juaj.',
-	'openid-prefstext' => '[Http://openid.net/ OpenID preferencat]',
+	'openid-prefstext' => '[http://openid.net/ OpenID preferencat]',
 	'openid-pref-hide' => 'Fshih URL OpenID tuaj në faqen tuaj të përdoruesit, nëse ju hyni në me OpenID.',
 	'openid-pref-update-userinfo-on-login' => 'Update informacionin e mëposhtëm nga persona OpenID çdo herë që në hyrje:',
 	'openid-urls-desc' => 'OpenIDs lidhur me llogarinë tuaj:',
@@ -2612,6 +2612,12 @@ Anda tidak akan dapat masuk log lagi dengan OpenID ini.',
 	'openid-provider-label-other-username' => 'Masukkan nama pengguna $1 Anda',
 );
 
+/** Igbo (Igbo) */
+$messages['ig'] = array(
+	'openidchoosepassword' => 'Mkpurụ okwu ejị a gafẹ',
+	'openid-urls-delete' => 'Gbakashia',
+);
+
 /** Icelandic (Íslenska)
  * @author S.Örvarr.S
  */
@@ -3591,7 +3597,7 @@ Dan zou u niet langer kunnen aanmelden zonder een OpenID.",
 	'openid-pref-update-userinfo-on-login' => 'Iedere keer als ik aanmeld de volgende informatie vanuit de OpenID-gebruiker bijwerken:',
 	'openid-urls-desc' => "Aan uw gebruiker gekoppelde OpenID's:",
 	'openid-urls-action' => 'Handeling',
-	'openid-urls-delete' => 'Wissen',
+	'openid-urls-delete' => 'Verwijderen',
 	'openid-add-url' => 'Een nieuwe OpenID toevoegen',
 	'openidsigninorcreateaccount' => 'Aanmelden of nieuwe gebruiker aanmaken',
 	'openid-provider-label-openid' => 'Voer de URL van uw OpenID in',

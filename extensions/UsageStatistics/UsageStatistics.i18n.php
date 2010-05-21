@@ -1717,6 +1717,7 @@ $messages['os'] = array(
  * @author Xqt
  */
 $messages['pdc'] = array(
+	'usagestatisticsnamespace' => 'Blatznaame:',
 	'usagestatisticsintervalday' => 'Daag',
 	'usagestatisticsintervalweek' => 'Woch',
 	'usagestatisticsintervalmonth' => 'Munet',

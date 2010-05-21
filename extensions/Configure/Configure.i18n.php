@@ -4899,6 +4899,15 @@ Silakan membuat atau mengubahnya untuk menggunakan ekstensi ini.',
 	'configure-farmer-extensions-list' => '[[Special:Extensions|Daftar ekstensi yang tersedia untuk wiki ini]].',
 );
 
+/** Igbo (Igbo) */
+$messages['ig'] = array(
+	'configure-form-reason' => 'Mgbaghaputa:',
+	'configure-js-remove' => 'Gbakashia',
+	'configure-section-specialpages' => 'Ihü mkpà',
+	'configure-section-search' => 'Chöwá',
+	'configure-throttle-action-edit' => 'Rüwa',
+);
+
 /** Ido (Ido)
  * @author Wyvernoid
  */
@@ -5512,10 +5521,12 @@ $messages['kn'] = array(
  * @author Kwj2772
  */
 $messages['ko'] = array(
+	'configure' => '위키 설정하기',
+	'configure-desc' => '권한이 있는 사용자가 웹 기반 인터페이스를 통해 위키를 [[Special:Configure|설정]]할 수 있게 함',
 	'configure-desc-ns' => '이름공간',
 	'configure-edit-core' => '미디어위키',
 	'configure-ext-use-extension' => '이 확장 기능 사용하기',
-	'configure-form-reason' => '바꾸는 이유:',
+	'configure-form-reason' => '이유:',
 	'configure-btn-save' => '설정 저장',
 	'configure-js-search-prompt' => '쿼리:',
 	'configure-old-changes' => '차이',
@@ -5532,6 +5543,7 @@ $messages['ko'] = array(
 	'configure-section-copyright' => '저작권',
 	'configure-section-misc' => '기타',
 	'configure-view' => '보기',
+	'right-configure-interwiki' => '다른 위키의 설정을 변경하기',
 	'viewconfig' => '위키 설정 보기',
 );
 
@@ -7412,12 +7424,25 @@ $messages['os'] = array(
  * @author Xqt
  */
 $messages['pdc'] = array(
+	'configure-desc-group' => 'Druppe',
+	'configure-desc-ns' => 'Blatznaame',
+	'configure-edit-core' => 'MediaWiki',
+	'configure-ext-use' => 'Yuuse',
 	'configure-form-reason' => 'Grund:',
 	'configure-js-remove' => 'Lösche',
+	'configure-old-summary' => '$1 vun $2 $4 $3',
+	'configure-section-pages' => 'Bledder',
+	'configure-section-paths' => 'Paade',
+	'configure-section-namespaces' => 'Blatznaame',
 	'configure-section-category' => 'Abdeelinge',
+	'configure-section-groups' => 'Druppe',
 	'configure-section-upload' => 'Ufflaade',
+	'configure-section-images' => 'Feils',
 	'configure-section-specialpages' => 'Besunnere Bledder',
+	'configure-section-users' => 'Yuuser',
 	'configure-section-search' => 'Uffgucke',
+	'configure-viewconfig-line' => '$1 $6, $7 Uhr vun $3 $5: $4',
+	'configure-throttle-action-edit' => 'Ennere',
 	'configure-throttle-action-move' => 'Ziehe',
 	'configure-condition-operator-or' => 'Odder',
 	'configure-condition-operator-and' => 'Unn',

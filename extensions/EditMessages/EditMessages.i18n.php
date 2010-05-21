@@ -706,6 +706,11 @@ $messages['id'] = array(
 	'editmsg-patch-success' => 'Ditambal dengan sukses',
 );
 
+/** Igbo (Igbo) */
+$messages['ig'] = array(
+	'editmsg-search' => 'Chöwá',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  * @author Pietrodn

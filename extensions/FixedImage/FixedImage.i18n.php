@@ -284,6 +284,13 @@ $messages['km'] = array(
 	'fixedimage-desc' => 'ដាក់ប្លាក <code>&lt;fundraising&gt;</code> ជារូបភាព',
 );
 
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'fixedimage-desc' => '<code>&lt;fundraising&gt;</code> 이미지 태그를 추가',
+);
+
 /** Colognian (Ripoarisch)
  * @author Purodha
  */
