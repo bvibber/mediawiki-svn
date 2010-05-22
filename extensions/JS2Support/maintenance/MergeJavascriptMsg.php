@@ -14,7 +14,7 @@ if ( isset( $_SERVER ) && array_key_exists( 'REQUEST_METHOD', $_SERVER ) ) {
 	print "This script must be run from the command line\n";
 	exit();
 }
-// Change to the core maintenance script directory:
+// Change to the core maintenance script directory
 require_once( dirname( __FILE__ ) . '/../../../maintenance/Maintenance.php' );
 
 
@@ -26,7 +26,8 @@ class MergeJavascriptMsg extends Maintenance {
 
 	public function execute() {
 		global $wgExtensionJavascriptModules, $IP;
-		foreach ( $wgExtensionJavascriptModule as $modulePath ){
+
+		foreach ( $wgExtensionJavascriptModules as $moduleName => $modulePath ){
 
 			$i18nFilePath = false;
 			$moduleAbsoultePath = $IP ."/". $modulePath;
@@ -41,10 +42,12 @@ class MergeJavascriptMsg extends Maintenance {
 			    }
 			    if( ! $i18nFilePath ) {
 					$this->error( "Could not find i18n file in directory: $moduleAbsoultePath \n" );
+					continue;
 			    }
 
 			} else {
 				$this->error( "Could not read path: $moduleAbsoultePath \n" );
+				continue;
 			}
 
 			// Clear the local message var
