@@ -61,8 +61,7 @@ mw.addMessages( {
 	"mwe-checking-resource" : "Checking for resource",
 	"mwe-resource-needs-import" : "Resource $1 needs to be imported to $2",
 	
-	"mwe-warning-upload-to-commons" : "$1 recommends you upload to Wikimedia Commons, only upload locally after you have read $2",
-	"mwe-local-upload-policy-link" : "local upload policy" ,
+	"mwe-warning-upload-to-commons" : "$1 recommends you upload to Wikimedia Commons, only upload locally after you have read [$2 local upload policy]",	
 	
 	"mwe-ftype-svg" : "SVG vector file",
 	"mwe-ftype-jpg" : "JPEG image file",
@@ -1288,8 +1287,7 @@ mw.RemoteSearchDriver.prototype = {
 				.attr( { 
 					'href' : $uploadLink.attr('href'),
 					'target' : '_new'
-				} )
-				.text( gM('mwe-local-upload-policy-link') )
+				} )				
 			),
 			// Unfortunately mediaWiki pages don't expose the title of the wiki 
 			// Could get in an api request ( just use domain for now)  
@@ -1479,9 +1477,8 @@ mw.RemoteSearchDriver.prototype = {
 						$j('<a />')
 						.attr({
 							'href' : 'http:\/\/www.mediawiki.org\/wiki\/Manual:$wgAllowCopyUploads',
-							'title' : gM( 'mwe-no-import-by-url-linktext' )
-						})
-						.text( gM( 'mwe-no-import-by-url-linktext' ) )
+							'title' : 'wgAllowCopyUploads'
+						})						
 					)
 				);
 			}
