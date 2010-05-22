@@ -9,7 +9,6 @@
  * @author Devunt <devunt@devunt.kr>
  * @authorlink http://www.mediawiki.org/wiki/User:Devunt
  * @copyright Copyright © 2010 Devunt (Bae June Hyeon).
- * basically source code from http://www.mediawiki.org/wiki/Extension:WebChat
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
  */
 class WebIRC extends SpecialPage {
@@ -35,7 +34,7 @@ class WebIRC extends SpecialPage {
         $username = strtolower($wgUser->mName);
         $webirc_url = "";
         $serverport = explode(':', $wgIRCServer);
-        if (strstr($serverport[0], "freenode.org"))
+        if (strstr($serverport[0], "freenode.net"))
             $webirc_url =
                 "http://webchat.freenode.net/?".
                 "channels=$wgIRCChannel&".
