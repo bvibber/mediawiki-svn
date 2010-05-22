@@ -329,7 +329,7 @@ $messages['pt-br'] = array(
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
-	'localisationupdate-desc' => 'Menţine mesajele localizate cât mai actualizate',
+	'localisationupdate-desc' => 'Menține mesajele localizate cât mai actualizate',
 );
 
 /** Tarandíne (Tarandíne)

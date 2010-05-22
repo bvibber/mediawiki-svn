@@ -15,6 +15,13 @@ $messages['en'] = array(
 	'wikieditor-highlight-preference' => 'Enable syntax highlighting when editing',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'wikieditor-highlight-preference' => 'Sintaksa Aktivizo theksuar kur redaktimi',
+);
+
 /** Arabic (العربية)
  * @author OsamaK
  */
@@ -329,7 +336,7 @@ $messages['pt-br'] = array(
  * @author Firilacroco
  */
 $messages['ro'] = array(
-	'wikieditor-highlight-preference' => 'Activaţi evidenţierea sintaxei când modificaţi',
+	'wikieditor-highlight-preference' => 'Activați evidențierea sintaxei când modificați',
 );
 
 /** Tarandíne (Tarandíne)

@@ -88,6 +88,40 @@ $messages['af'] = array(
 	'imagetagging-tagcancel-button' => 'Kanselleer',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'taggedimages' => 'imazhe tagged',
+	'imagetagging-desc' => 'Lejon një përdorues rajone të zgjidhni një imazh i ngulitur dhe i shoqërojnë një faqe me atë rajon',
+	'imagetagging-addimagetag' => 'Tag këtë imazh',
+	'imagetagging-article' => 'Faqe:',
+	'imagetagging-articletotag' => 'Faqe të tag',
+	'imagetagging-canteditothermessage' => 'Ju nuk mund ta redaktoni këtë faqe, ose për shkak se ju nuk keni të drejtat për të bërë këtë ose për shkak se faqja eshte mbyllur per arsye të tjera.',
+	'imagetagging-imghistory' => 'Histori',
+	'imagetagging-images' => 'imazhe',
+	'imagetagging-inthisimage' => 'Në këtë imazh: $1',
+	'imagetagging-logentry' => 'tag hoq në faqe [[$1]] nga $2',
+	'imagetagging-log-tagged' => 'Image [[$1|$2]] ishte i pajisur me etiketë të faqe [[$3]] nga $4',
+	'imagetagging-new' => '<span style="color:red"><sup>New!</sup></span>',
+	'imagetagging-removetag' => 'hiqni tag',
+	'imagetagging-done-button' => 'Done tagging',
+	'imagetagging-tag-button' => 'Etiketë',
+	'imagetagging-tagcancel-button' => 'Anuloj',
+	'imagetagging-tagging-instructions' => 'Kliko mbi njerëzit ose gjërat në imazhe për tu tag tyre.',
+	'imagetagging-addingtag' => 'Shtimi tag ...',
+	'imagetagging-removingtag' => 'Heqja tag ...',
+	'imagetagging-addtagsuccess' => 'tag Added.',
+	'imagetagging-removetagsuccess' => 'tag Removed.',
+	'imagetagging-canteditneedloginmessage' => 'Ju nuk mund ta redaktoni këtë faqe. Kjo mund të jetë për shkak se ju duhet të identifikoheni për tag imazhet. A doni të identifikoheni tani?',
+	'imagetagging-oneactionatatimemessage' => 'Vetëm një veprim tagging në një kohë është i lejuar. Ju lutem prisni për të veprimit ekzistues për të kompletuar.',
+	'imagetagging-oneuniquetagmessage' => 'Ky imazh tashmë ka një etiketë me këtë emër.',
+	'imagetagging-imagetag-seemoreimages' => 'Shihni imazhet më e "$1" ($2)',
+	'imagetagging-taggedimages-title' => 'Fotografitë e "$1"',
+	'imagetagging-taggedimages-displaying' => 'Shfaqja e $1 - $2 prej $3 imazhet e "$4"',
+	'tag-logpagename' => 'Tagging log',
+);
+
 /** Amharic (አማርኛ)
  * @author Codex Sinaiticus
  */
@@ -1005,6 +1039,11 @@ Silakan tunggu tindakan yang ada untuk selesai.',
 	'tag-logpagetext' => 'Ini adalah log semua penambahan dan penghilangan tag gambar.',
 );
 
+/** Igbo (Igbo) */
+$messages['ig'] = array(
+	'imagetagging-tagcancel-button' => 'Emekwàlà',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  * @author Pietrodn
@@ -1557,6 +1596,14 @@ Për piasì speta che l'assion an cors a sia completa.",
 	'imagetagging-taggedimages-displaying' => 'Visualisé $1 - $2 dle $3 figure ëd "$4"',
 	'tag-logpagename' => 'Registr dël tichetagi',
 	'tag-logpagetext' => "Cost-sì a l'é un registr ëd tute le gionte e scancelassion dle tichëtte ëd le figure.",
+);
+
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'imagetagging-imghistory' => 'پېښليک',
+	'imagetagging-images' => 'انځورونه',
 );
 
 /** Portuguese (Português)

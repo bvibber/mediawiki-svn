@@ -744,14 +744,15 @@ Dat kann der ßööver ööndlesh beschäfftijje, also beß e besje fürseschtes
 );
 
 /** Luxembourgish (Lëtzebuergesch)
+ * @author Les Meloures
  * @author Robby
  */
 $messages['lb'] = array(
 	'asksql' => 'SQL Offro',
 	'asksql-desc' => 'SQL-Offroen iwwer eng [[Special:Asksql|Spezialsäit]] maachen.',
 	'asksqltext' => "Benotzt de Formular hei ënnedrënner fir eng Ufro un d'Datebank ze riichten.
-Benotzt dëst Zeechen' ('esou wéi hei') fir Werter an der Ufro ofzegrenzen.
-Esou Ufroen kënnen zu enger grousser Belaaschtung vun de Servere féieren, dofir gitt spuersam mat dëser Fonktioun ëm.",
+Benotzt dëst Zeechen' ('esou wéi hei') fir Wäerter an der Ufro ofzegrenzen.
+Esou Ufroe kënnen zu enger grousser Belaaschtung vun de Servere féieren, dofir gitt spuersam mat dëser Fonctioun ëm.",
 	'sqlislogged' => 'Zu ärer Informatioun: All Ufroen ginn an e Logbuch agedro',
 	'sqlquery' => 'Ufro aginn',
 	'querybtn' => 'Ufro schécken',
@@ -981,12 +982,12 @@ Esta função frequentemente adiciona uma carga considerável ao servidor, por i
  */
 $messages['ro'] = array(
 	'asksql' => 'Interogare SQL',
-	'asksql-desc' => 'Iniţiază o cerere SQL prin intermediul [[Special:Asksql|paginii speciale]]',
-	'asksqltext' => "Folosiţi formularul de mai jos pentru a face o interogare în mod direct asupra bazei de date.
-Folosiţi apostrofuri ('în acest fel') pentru a delimita şiruri de caractere.
-Această opţiune încarcă de obicei serverul, deci vă rugăm să o folosiţi cât mai puţin.",
-	'sqlislogged' => 'Atenţie, toate interogările sunt memorate.',
-	'sqlquery' => 'Introduceţi interogare',
+	'asksql-desc' => 'Inițiază o cerere SQL prin intermediul [[Special:Asksql|paginii speciale]]',
+	'asksqltext' => "Folosiți formularul de mai jos pentru a face o interogare în mod direct asupra bazei de date.
+Folosiți apostrofuri ('în acest fel') pentru a delimita șiruri de caractere.
+Această opțiune încarcă de obicei serverul, deci vă rugăm să o folosiți cât mai puțin.",
+	'sqlislogged' => 'Atenție, toate interogările sunt memorate.',
+	'sqlquery' => 'Introduceți interogare',
 	'querybtn' => 'Trimite interogare',
 	'selectonly' => 'Sunt permise doar interogări care efectuează numai citiri.',
 	'querysuccessful' => 'Interogare terminată cu succes',
@@ -1312,6 +1313,7 @@ Việc làm này thường kéo tải của máy chủ một cách đáng kể, 
 );
 
 /** Cantonese (粵語)
+ * @author Horacewai2
  * @author Shinjiman
  */
 $messages['yue'] = array(
@@ -1325,6 +1327,7 @@ $messages['yue'] = array(
 	'querybtn' => '遞交查詢',
 	'selectonly' => '只允許唯讀模式嘅查詢。',
 	'querysuccessful' => '查詢完成',
+	'right-asksql' => '進行SQL查詢',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

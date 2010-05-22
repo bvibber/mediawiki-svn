@@ -27,10 +27,10 @@ $aliases['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'GlobalBlock' => array( 'منع_عام' ),
-	'GlobalBlockList' => array( 'قائمة_منع_عامة' ),
-	'RemoveGlobalBlock' => array( 'رفع_منع_عام', 'إزالة_منع_عام' ),
-	'GlobalBlockStatus' => array( 'قايمة_المنع_العام_البيضاء', 'حالة_المنع_العام', 'تعطيل_المنع_العام' ),
+	'GlobalBlock' => array( 'بلوك_عام' ),
+	'GlobalBlockList' => array( 'ليستة_بلوك_عامه' ),
+	'RemoveGlobalBlock' => array( 'شيل_بلوك_عام' ),
+	'GlobalBlockStatus' => array( 'ليستة_البلوك_العام_البيضا', 'حالة_البلوك_العام', 'تعطيل_البلوك_العام' ),
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца)) */

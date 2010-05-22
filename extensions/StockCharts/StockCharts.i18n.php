@@ -21,6 +21,14 @@ $messages['qqq'] = array(
 	'stockcharts-missingticker' => '{{doc-important|Do not translate or change "<nowiki>&amp;lt;stockchart ticker="AAPL"/&amp;gt;</nowiki>"}}',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'stockcharts-desc' => 'Adds <nowiki><stockchart ticker="AAPL"/></nowiki> tag për një tabelë interaktive aksioneve financiare',
+	'stockcharts-missingticker' => 'Për të mbjell një tabelë të aksioneve, ju duhet që të paktën të përcaktojë një sahat. Përdorimi: ticker="AAPL"/> <stockchart',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

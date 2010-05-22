@@ -25,6 +25,13 @@ $messages['af'] = array(
 	'uploadblacklist-desc' => "Maak 'n swartlys vir oplaaie beskikbaar",
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'uploadblacklist-desc' => 'Shton një funksionalitetin upload listë e zezë',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -331,7 +338,7 @@ $messages['pt-br'] = array(
  * @author Firilacroco
  */
 $messages['ro'] = array(
-	'uploadblacklist-desc' => 'Adaugă funcţionalitatea unei liste negre de încărcare',
+	'uploadblacklist-desc' => 'Adaugă funcționalitatea unei liste negre de încărcare',
 );
 
 /** Tarandíne (Tarandíne)

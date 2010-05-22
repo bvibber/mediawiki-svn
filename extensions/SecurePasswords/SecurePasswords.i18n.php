@@ -468,17 +468,18 @@ Et mööt:',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
+ * @author Les Meloures
  * @author Robby
  */
 $messages['lb'] = array(
 	'securepasswords-desc' => "Mécht méi sécher Paswuert-''Hashes'' a setzt eng Iwwerpréifung vun der Sécherheet vun de Passwierder derbäi",
-	'securepasswords-valid' => 'Ärt Passwuert ass net valabel oder ze kuerz.
+	'securepasswords-valid' => 'Äert Passwuert ass net valabel oder ze kuerz.
 Et:',
-	'securepasswords-minlength' => 'muss mindestens $1 {{PLURAL:$1|Zeeche|Zeeche}} laang sinn',
-	'securepasswords-lowercase' => 'muss mindestens 1 klenge Buchstaw dra sinn',
-	'securepasswords-uppercase' => 'muss mindestens 1 grousse Buchstaw dra sinn',
-	'securepasswords-digit' => 'muss mindestens 1 Ziffer dra sinn',
-	'securepasswords-special' => 'muss mndestens 1 Spezialzeechen dra sinn (Spezialzeeche sinn: $1)',
+	'securepasswords-minlength' => "muss op d'mannst $1 {{PLURAL:$1|Zeeche|Zeeche}} laang sinn",
+	'securepasswords-lowercase' => "muss op d'mannst 1 klenge Buschstaf dra sinn",
+	'securepasswords-uppercase' => "muss op d'mannst 1 grousse Buschstaf dra sinn",
+	'securepasswords-digit' => "muss op d'mannst 1 Ziffer dra sinn",
+	'securepasswords-special' => "muss op d'mannst 1 Spezialzeechen dra sinn (Spezialzeeche sinn: $1)",
 	'securepasswords-username' => 'muss verschidde vun Ärem Benotzernumm sinn',
 	'securepasswords-word' => 'däerf kee Wuert sinn',
 );
@@ -642,11 +643,11 @@ Tem de:',
 $messages['ro'] = array(
 	'securepasswords-valid' => 'Parola dumneavoastră este incorectă sau prea scurtă.
 Aceasta trebuie:',
-	'securepasswords-minlength' => 'să fie de cel puţin $1 {{PLURAL:$1|caracter|caractere}} lungime',
-	'securepasswords-lowercase' => 'să conţină cel puţin o literă mică',
-	'securepasswords-uppercase' => 'să conţină cel puţin o literă mare',
-	'securepasswords-digit' => 'să conţină cel puţin o cifră',
-	'securepasswords-special' => 'să conţină cel puţin un caracter special (caracterele speciale sunt: $1)',
+	'securepasswords-minlength' => 'să fie de cel puțin $1 {{PLURAL:$1|caracter|caractere}} lungime',
+	'securepasswords-lowercase' => 'să conțină cel puțin o literă mică',
+	'securepasswords-uppercase' => 'să conțină cel puțin o literă mare',
+	'securepasswords-digit' => 'să conțină cel puțin o cifră',
+	'securepasswords-special' => 'să conțină cel puțin un caracter special (caracterele speciale sunt: $1)',
 	'securepasswords-username' => 'să fie diferită de numele de utilizator',
 	'securepasswords-word' => 'să nu fie un cuvânt',
 );

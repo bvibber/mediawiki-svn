@@ -72,6 +72,11 @@ $aliases['el'] = array(
 	'Cite' => array( 'Παραπομπή' ),
 );
 
+/** Esperanto (Esperanto) */
+$aliases['eo'] = array(
+	'Cite' => array( 'Citi' ),
+);
+
 /** Spanish (Español) */
 $aliases['es'] = array(
 	'Cite' => array( 'Citar', 'Cita' ),
@@ -310,6 +315,11 @@ $aliases['tr'] = array(
 /** Vèneto (Vèneto) */
 $aliases['vec'] = array(
 	'Cite' => array( 'Cita' ),
+);
+
+/** Yiddish (ייִדיש) */
+$aliases['yi'] = array(
+	'Cite' => array( 'ציטירן' ),
 );
 
 /** Simplified Chinese (‪中文(简体)‬) */

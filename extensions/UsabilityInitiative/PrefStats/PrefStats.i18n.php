@@ -74,6 +74,34 @@ $messages['af'] = array(
 	'prefstats-factor-default' => 'terug na die verstek-skaal',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'prefstats' => 'Statistikat e Preferencë',
+	'prefstats-desc' => 'Statistika Track se si shumë përdorues të ketë preferenca të caktuara aktivizuar',
+	'prefstats-title' => 'Statistikat e Preferencë',
+	'prefstats-list-intro' => 'Aktualisht, preferencat e mëposhtme janë duke u gjurmuar.
+ Klikoni mbi një për të parë statistikave në lidhje me të.',
+	'prefstats-noprefs' => 'Nuk ka preferencat janë duke u gjurmuar. Konfiguro $wgPrefStatsTrackPrefs për të gjetur preferencave.',
+	'prefstats-counters' => '* $1 {{PLURAL:$1|përdorues ka|perdorues kanë}} mundësuar këtë parapëlqim që nga statistika preferencë ishin aktivizuar
+** $2 {{PLURAL:$2 |përdorues ka akoma|përdoruesit kanë ende}} është aktivizuar
+** $3 {{PLURAL:$3|përdorues ka|perdorues kanë}} me aftësi të kufizuara që',
+	'prefstats-counters-expensive' => '* $1 {{PLURAL:$1|përdorues ka|perdorues kanë}} mundësuar këtë parapëlqim që nga statistika preferencë ishin aktivizuar
+** $2 {{PLURAL:$2|përdorues ka akoma|përdoruesit kanë ende}} është aktivizuar',
+	'prefstats-xaxis' => 'Kohëzgjatja (orë)',
+	'prefstats-factors' => 'Shiko për: $1',
+	'prefstats-factor-hour' => 'orë',
+	'prefstats-factor-sixhours' => 'gjashtë orë',
+	'prefstats-factor-day' => 'ditë',
+	'prefstats-factor-week' => 'javë',
+	'prefstats-factor-twoweeks' => 'dy javë',
+	'prefstats-factor-fourweeks' => 'katër javë',
+	'prefstats-factor-default' => 'back to default shkallë',
+	'prefstats-legend-out' => 'Zgjedhur nga',
+	'prefstats-legend-in' => 'Zgjedhur në',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author Orango
@@ -846,7 +874,7 @@ Prema sobre unha para ver as estatísticas sobre ela.',
 	'prefstats-factor-week' => 'semana',
 	'prefstats-factor-twoweeks' => 'dúas semanas',
 	'prefstats-factor-fourweeks' => 'catro semanas',
-	'prefstats-factor-default' => 'voltar á escala por defecto',
+	'prefstats-factor-default' => 'volver á escala por defecto',
 	'prefstats-legend-out' => 'Deixou de participar',
 	'prefstats-legend-in' => 'Quixo participar',
 );
@@ -1600,13 +1628,26 @@ $messages['nn'] = array(
 	'prefstats-title' => 'Statistikk over innstillingar',
 	'prefstats-list-intro' => 'For tida vert dei fylgjande innstillingane spora.
 Trykk på éi for å sjå statistikk for ho.',
+	'prefstats-noprefs' => 'For tida vert ingen innstillingar spora.
+Endra oppsettet til $wgPrefStatsTrackPrefs for å spora innstillingar.',
+	'prefstats-counters' => '* {{PLURAL:$1|Éin brukar|$1 brukarar}} har aktivert denne innstillinga sidan innstillingsstatistikken vart sett i gang
+** {{PLURAL:$2|Éin brukar|$2 brukarar}} har enno innstillinga aktivert
+** {{PLURAL:$3|Éin brukar|$3 brukarar}} har sidan deaktivert innstillinga',
+	'prefstats-counters-expensive' => '* {{PLURAL:$1|Éin brukar|$1 brukarar}} har aktivert denne innstillinga sidan innstillingsstatistikken vart sett i gang
+** {{PLURAL:$2|Éin brukar|$2 brukarar}} har enno innstillinga aktivert
+** {{PLURAL:$3|Éin brukar|$3 brukarar}} har sidan deaktivert innstillinga
+* I alt har {{PLURAL:$4|éin brukar|$4 brukarar}} innstillinga aktivert',
 	'prefstats-xaxis' => 'Tid i timar',
+	'prefstats-factors' => 'Vis per $1',
 	'prefstats-factor-hour' => 'time',
 	'prefstats-factor-sixhours' => 'seks timar',
 	'prefstats-factor-day' => 'dag',
 	'prefstats-factor-week' => 'veke',
 	'prefstats-factor-twoweeks' => 'to veker',
 	'prefstats-factor-fourweeks' => 'fire veker',
+	'prefstats-factor-default' => 'tilbake til standardskalering',
+	'prefstats-legend-out' => 'Valde vekk',
+	'prefstats-legend-in' => 'Valde',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -1837,23 +1878,23 @@ $messages['qu'] = array(
  * @author Strainu
  */
 $messages['ro'] = array(
-	'prefstats' => 'Statistici despre preferinţe',
-	'prefstats-desc' => 'Urmăiţi statistici despre câţi utilizatori au o anumită preferinţă activată',
-	'prefstats-title' => 'Statistici despre preferinţe',
-	'prefstats-list-intro' => 'În prezent, sunt urmărite următoarele preferinţe.
-Apăsaţi pe ele pentru a vizualiza statistici despre ele.',
-	'prefstats-noprefs' => 'Nicio preferinţă nu este în prezent urmărită.
-Configuraţi $wgPrefStatsTrackPrefs pentru a urmări preferinţe.',
+	'prefstats' => 'Statistici despre preferințe',
+	'prefstats-desc' => 'Urmăiți statistici despre câți utilizatori au o anumită preferință activată',
+	'prefstats-title' => 'Statistici despre preferințe',
+	'prefstats-list-intro' => 'În prezent, sunt urmărite următoarele preferințe.
+Apăsați pe ele pentru a vizualiza statistici despre ele.',
+	'prefstats-noprefs' => 'Nicio preferință nu este în prezent urmărită.
+Configurați $wgPrefStatsTrackPrefs pentru a urmări preferințe.',
 	'prefstats-xaxis' => 'Durată (ore)',
 	'prefstats-factors' => 'Vizualizări pe: $1',
 	'prefstats-factor-hour' => 'oră',
-	'prefstats-factor-sixhours' => 'şase ore',
+	'prefstats-factor-sixhours' => 'șase ore',
 	'prefstats-factor-day' => 'zi',
 	'prefstats-factor-week' => 'săptămână',
 	'prefstats-factor-twoweeks' => 'două săptămâni',
 	'prefstats-factor-fourweeks' => 'patru săptămâni',
-	'prefstats-factor-default' => 'înapoi la scala iniţială',
-	'prefstats-legend-out' => 'Renunţat',
+	'prefstats-factor-default' => 'înapoi la scala inițială',
+	'prefstats-legend-out' => 'Renunțat',
 	'prefstats-legend-in' => 'Optat',
 );
 

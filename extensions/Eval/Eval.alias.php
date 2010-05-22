@@ -104,6 +104,11 @@ $aliases['lb'] = array(
 	'Eval' => array( 'Bewäertung' ),
 );
 
+/** Malayalam (മലയാളം) */
+$aliases['ml'] = array(
+	'Eval' => array( 'മൂല്യനിർണ്ണയം' ),
+);
+
 /** Marathi (मराठी) */
 $aliases['mr'] = array(
 	'Eval' => array( 'ईव्हाल' ),

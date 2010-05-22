@@ -463,6 +463,11 @@ $messages['id'] = array(
 	'right-findspam' => 'Cari spam yang baru ditambahkan',
 );
 
+/** Igbo (Igbo) */
+$messages['ig'] = array(
+	'findspam-ok' => 'Ngwanu',
+);
+
 /** Ido (Ido)
  * @author Malafaya
  */
@@ -767,7 +772,7 @@ $messages['pms'] = array(
  */
 $messages['ps'] = array(
 	'findspam-ip' => 'IP پته:',
-	'findspam-ok' => 'ښه/هو',
+	'findspam-ok' => 'ښه',
 	'findspam-notextfound' => 'هېڅ کومې ونډې ونه موندل شوې',
 );
 
@@ -801,11 +806,11 @@ $messages['pt-br'] = array(
  * @author Misterr
  */
 $messages['ro'] = array(
-	'findspam' => 'Găsiţi spam',
-	'findspam-desc' => 'Adaugă o [[Special:FindSpam|pagină specială]]  care vă permite să găsiţi spam-ul recent adăugat.',
+	'findspam' => 'Găsiți spam',
+	'findspam-desc' => 'Adaugă o [[Special:FindSpam|pagină specială]]  care vă permite să găsiți spam-ul recent adăugat.',
 	'findspam-ip' => 'Adresă IP:',
 	'findspam-ok' => 'OK',
-	'findspam-notextfound' => 'Nici o contribuţie găsită',
+	'findspam-notextfound' => 'Nici o contribuție găsită',
 	'right-findspam' => 'Caută pentru spam-urile adăugate recent.',
 );
 

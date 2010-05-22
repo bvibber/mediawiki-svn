@@ -19,7 +19,7 @@ $aliases['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'SharedUserRights' => array( 'صلاحيات_المستخدم_المشتركة' ),
+	'SharedUserRights' => array( 'حقوق_اليوزر_المشتركه' ),
 );
 
 /** Bosnian (Bosanski) */

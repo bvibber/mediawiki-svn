@@ -331,6 +331,7 @@ $messages['bn'] = array(
 
 /** Breton (Brezhoneg)
  * @author Fohanno
+ * @author Fulup
  */
 $messages['br'] = array(
 	'user-stats-alltime-title' => 'Niver uhelañ a boentoù a-viskoazh',
@@ -343,6 +344,20 @@ $messages['br'] = array(
 	'top-fans-weekly-points-link' => 'Poentoù er sizhun-mañ',
 	'top-fans-monthly-points-link' => 'Poentoù er miz-mañ',
 	'top-fans-points' => 'poentoù',
+	'top-fans-by-category-title-edit-count' => 'Niver brasañ a gemmoù hollek',
+	'top-fans-by-category-title-friends-count' => 'Niver brasañ a vignoned hollek',
+	'top-fans-by-category-title-foe-count' => 'Niver brasañ a enebourien hollek',
+	'top-fans-by-category-title-gifts-rec-count' => 'Niver brasañ a brofoù resevet hollek',
+	'top-fans-by-category-title-gifts-sent-count' => 'Niver brasañ a brofoù kaset hollek',
+	'top-fans-by-category-title-vote-count' => 'Niver brasañ a votoù hollek',
+	'top-fans-by-category-title-comment-count' => 'Niver brasañ a evezhiadennoù hollek',
+	'top-fans-by-category-title-referrals-count' => 'Niver brasañ a erbederien hollek',
+	'top-fans-by-category-title-comment-score-positive-rec' => "Niver brasañ a c'hourc'hemennoù resevet hollek",
+	'top-fans-by-category-title-comment-score-negative-rec' => 'Niver brasañ a nulladennoù hollek',
+	'top-fans-by-category-title-comment-score-positive-given' => "Niver brasañ a c'hourc'hemennoù roet hollek",
+	'top-fans-by-category-title-comment-score-negative-given' => 'Niver brasañ a nulladennoù roet hollek',
+	'top-fans-by-category-title-monthly-winner-count' => "Niver brasañ a c'hounidoù hollek dre viz",
+	'top-fans-by-category-title-weekly-winner-count' => "Niver brasañ a c'hounidoù hollek dre sizhun",
 	'top-fans-bad-field-title' => 'Chaous !',
 	'top-fans-bad-field-message' => "N'eus ket eus ar stadegenn diferet.",
 	'top-fans-stats-vote-count' => '{{PLURAL:$1|Mouezh|Mouezh}}',
@@ -2172,8 +2187,8 @@ $messages['ro'] = array(
 	'top-fans-points' => 'puncte',
 	'top-fans-bad-field-title' => 'Ups!',
 	'top-fans-stats-vote-count' => '{{PLURAL:$1|Vot|Voturi}}',
-	'top-fans-stats-monthly-winner-count' => '{{PLURAL:$1|Câştig lunar|Câştiguri lunare}}',
-	'top-fans-stats-weekly-winner-count' => '{{PLURAL:$1|Câştig săptămânal|Câştiguri săptămânale}}',
+	'top-fans-stats-monthly-winner-count' => '{{PLURAL:$1|Câștig lunar|Câștiguri lunare}}',
+	'top-fans-stats-weekly-winner-count' => '{{PLURAL:$1|Câștig săptămânal|Câștiguri săptămânale}}',
 	'top-fans-stats-edit-count' => '{{PLURAL:$1|Modificare|Modificări}}',
 	'top-fans-stats-comment-count' => '{{PLURAL:$1|Comentariu|Comentarii}}',
 	'top-fans-stats-friends-count' => '{{PLURAL:$1|Prieten|Prieteni}}',

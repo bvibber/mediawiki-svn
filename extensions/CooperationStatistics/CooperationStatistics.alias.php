@@ -20,7 +20,12 @@ $aliases['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'CooperationStatistics' => array( 'إحصاءات_التعاون' ),
+	'CooperationStatistics' => array( 'إحصائيات_التعاون' ),
+);
+
+/** Spanish (Español) */
+$aliases['es'] = array(
+	'CooperationStatistics' => array( 'Estadísticas de cooperación' ),
 );
 
 /** Interlingua (Interlingua) */
@@ -81,6 +86,11 @@ $aliases['nl'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
 $aliases['no'] = array(
 	'CooperationStatistics' => array( 'Samarbeidsstatistikk' ),
+);
+
+/** Polish (Polski) */
+$aliases['pl'] = array(
+	'CooperationStatistics' => array( 'Statystyki współpracy' ),
 );
 
 /** Portuguese (Português) */

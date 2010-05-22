@@ -672,11 +672,17 @@ $messages['kn'] = array(
  * @author Kwj2772
  */
 $messages['ko'] = array(
+	'fundraiserportal' => '모금 운동 들머리',
+	'fundraiserportal-desc' => '사이드바 상단에 "기부해주십시오" 들머리를 추가',
 	'fundraiserportal-plain-button' => '위키백과를 지원해주세요!',
 	'fundraiserportal-ruby-button' => '지금 기부하기',
 	'fundraiserportal-rubytext-button' => '지금 기부하기',
+	'fundraiserportal-rubytext-message' => '모든 기부 활동은 위키백과를 모두가 자유롭게 사용할 수 있도록 도움이 될 것입니다.',
+	'fundraiserportal-rubytext-close' => '앞으로 이 메시지를 숨기기',
 	'fundraiserportal-sapphire-button' => '지금 기부하기',
 	'fundraiserportal-tourmaline-button' => '지금 기부하기',
+	'fundraiserportal-tourmaline-message' => '모든 기부 활동은 위키백과를 모두가 자유롭게 사용할 수 있도록 도움이 될 것입니다.',
+	'fundraiserportal-tourmaline-close' => '앞으로 이 메시지를 숨기기',
 );
 
 /** Colognian (Ripoarisch)
@@ -876,7 +882,7 @@ $messages['pt-br'] = array(
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
-	'fundraiserportal-plain-button' => 'Sprijiniţi Wikipedia!',
+	'fundraiserportal-plain-button' => 'Sprijiniți Wikipedia!',
 	'fundraiserportal-ruby-button' => 'Donează acum',
 	'fundraiserportal-rubytext-button' => 'Donează acum',
 	'fundraiserportal-sapphire-button' => 'Donează acum',

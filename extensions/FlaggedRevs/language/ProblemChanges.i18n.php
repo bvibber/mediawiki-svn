@@ -114,11 +114,12 @@ $messages['cs'] = array(
 
 /** German (Deutsch)
  * @author Jens Liebenau
+ * @author Kghbln
  * @author Khaledelmansoury
  * @author Umherirrender
  */
 $messages['de'] = array(
-	'problemchanges' => 'Nachprüfung der markierten Veränderungen',
+	'problemchanges' => 'gekennzeichnete unmarkierte Änderungen',
 	'problemchanges-legend' => 'Liste der Seiten mit markierten Bearbeitungen, für die noch eine Nachprüfung notwendig ist',
 	'problemchanges-none' => 'Es gibt zurzeit keine Seiten, die diese Kriterien erfüllen.',
 	'problemchanges-category' => 'Kategorie:',
@@ -366,9 +367,12 @@ $messages['kn'] = array(
 );
 
 /** Korean (한국어)
+ * @author Devunt
  * @author Kwj2772
  */
 $messages['ko'] = array(
+	'problemchanges' => '표시된 보류중인 변경 내용',
+	'problemchanges-legend' => '검토해야할 편집들이 표시된 리스트',
 	'problemchanges-none' => '이 조건에 맞는 문서가 없습니다.',
 	'problemchanges-category' => '분류:',
 );
@@ -517,7 +521,7 @@ $messages['pt-br'] = array(
  * @author Stelistcristi
  */
 $messages['ro'] = array(
-	'problemchanges' => 'Revizualizaţi schimbările etichetate',
+	'problemchanges' => 'Revizualizați schimbările etichetate',
 	'problemchanges-category' => 'Categorie:',
 );
 
@@ -554,6 +558,13 @@ $messages['rue'] = array(
  */
 $messages['sah'] = array(
 	'problemchanges-category' => 'Категория:',
+);
+
+/** Sardinian (Sardu)
+ * @author Andria
+ */
+$messages['sc'] = array(
+	'problemchanges-category' => 'Categoria:',
 );
 
 /** Slovak (Slovenčina)
@@ -672,9 +683,12 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Horacewai2
  * @author Liangent
  */
 $messages['zh-hant'] = array(
+	'problemchanges' => '標記審核',
+	'problemchanges-legend' => '列出頁面正等待審核',
 	'problemchanges-none' => '目前沒有頁面符合這些條件',
 	'problemchanges-category' => '分類:',
 );

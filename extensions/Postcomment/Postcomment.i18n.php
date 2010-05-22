@@ -526,14 +526,15 @@ $messages['it'] = array(
 );
 
 /** Japanese (日本語)
+ * @author Aotake
  * @author Fryed-peach
  */
 $messages['ja'] = array(
-	'postcomment-desc' => '利用者がコメントを直接ノートページに投稿できるようにする。',
-	'postcomment_discussionprotected' => 'このノートページはこれ以上の投稿ができないように保護されています。',
+	'postcomment-desc' => '利用者がコメントを直接議論用ページに投稿できるようにする。',
+	'postcomment_discussionprotected' => 'この議論用ページはこれ以上の投稿ができないように保護されています。',
 	'postcomment_notloggedin' => 'あなたはログインしていません。',
 	'postcomment_youareloggedinas' => 'あなたは $1 としてログインしています',
-	'postcomment_addcommentdiscussionpage' => 'このノートページにコメントを追加する',
+	'postcomment_addcommentdiscussionpage' => 'この議論用ページにコメントを追加する',
 	'postcomment_leavemessagefor' => '$1 に伝言を残す',
 	'postcomment_post' => '投稿',
 	'postcomment_on' => '時刻:',
@@ -867,7 +868,7 @@ $messages['ro'] = array(
 	'postcomment_on' => 'La',
 	'postcomment_said' => 'a spus',
 	'postcomment_invalidrequest' => 'Cerere incorectă.',
-	'postcomment_replyto' => 'Răspundeţi lui $1',
+	'postcomment_replyto' => 'Răspundeți lui $1',
 );
 
 /** Tarandíne (Tarandíne)

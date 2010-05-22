@@ -77,6 +77,20 @@ Beskikbare kaartdienste: $1',
 	'semanticmaps_paramdesc_layers' => 'Die lae beskikbaar op die kaart',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'semanticmaps_paramdesc_zoom' => 'Shkalla e zmadhimit Harta',
+	'semanticmaps_paramdesc_centre' => "Koordinatat e qendrës hartave '",
+	'semanticmaps_paramdesc_controls' => 'Perdoruesi kontrolleve të vendosura në hartë',
+	'semanticmaps_paramdesc_types' => 'Llojet Harta dispozicion në hartë',
+	'semanticmaps_paramdesc_type' => 'Harta default lloji për hartën',
+	'semanticmaps_paramdesc_overlays' => 'Overlays në dispozicion në hartë',
+	'semanticmaps_paramdesc_autozoom' => 'Nëse zoom brenda dhe jashtë duke përdorur rrotëzën miut është i aktivizuar',
+	'semanticmaps_paramdesc_layers' => 'Shtresat në dispozicion në hartë',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK
@@ -518,9 +532,11 @@ $messages['it'] = array(
 /** Japanese (日本語)
  * @author Fryed-peach
  * @author Mizusumashi
+ * @author 青子守歌
  */
 $messages['ja'] = array(
 	'semanticmaps_desc' => 'Semantic MediaWiki 拡張機能を通して格納された座標データを表示・編集する機能を提供する ([http://wiki.bn2vs.com/wiki/Semantic_Maps 実演])。次の地図サービスに対応します：$1',
+	'semanticmaps-unrecognizeddistance' => '値$1は有効な距離ではありません。',
 	'semanticmaps_lookupcoordinates' => '座標を調べる',
 	'semanticmaps_enteraddresshere' => '住所をここに入力します',
 	'semanticmaps_notfound' => '見つかりません',
@@ -695,6 +711,7 @@ Dostępne serwisy mapowe: $1',
 $messages['pms'] = array(
 	'semanticmaps_desc' => 'A dà la possibilità ëd visualisé e modìfiché le coordinà memorisà con le estension Semantic mediaWiki ([http://wiki.bn2vs.com/wiki/Semantic_Maps demo]).
 Sërvissi ëd mapa disponìbij: $1',
+	'semanticmaps-unrecognizeddistance' => "Ël valor $1 a l'é pa na distansa bon-a.",
 	'semanticmaps_lookupcoordinates' => 'Serca coordinà',
 	'semanticmaps_enteraddresshere' => 'Ansëriss adrëssa sì',
 	'semanticmaps_notfound' => 'pa trovà',
@@ -710,6 +727,13 @@ Sërvissi ëd mapa disponìbij: $1',
 	'semanticmaps_paramdesc_overlays' => 'Le dzor-posission disponìbij an sla carta',
 	'semanticmaps_paramdesc_autozoom' => "Se l'angrandiment anans e andré an dovrand la roëtta dël rat a l'é abilità",
 	'semanticmaps_paramdesc_layers' => 'Ij livej disponìbij an sla carta',
+);
+
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'semanticmaps_notfound' => 'و نه موندل شو',
 );
 
 /** Portuguese (Português)
@@ -753,7 +777,7 @@ Serviços de mapeamento disponíveis: $1',
  * @author Firilacroco
  */
 $messages['ro'] = array(
-	'semanticmaps_enteraddresshere' => 'Introduceţi adresa aici',
+	'semanticmaps_enteraddresshere' => 'Introduceți adresa aici',
 	'semanticmaps_notfound' => 'nu a fost găsit',
 );
 

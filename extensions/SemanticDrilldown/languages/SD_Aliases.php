@@ -24,13 +24,14 @@ $aliases['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'BrowseData' => array( 'تصفح_بيانات' ),
-	'CreateFilter' => array( 'إنشاء_فلتر' ),
+	'BrowseData' => array( 'براوز_للداتا' ),
+	'CreateFilter' => array( 'اعمل_فيلتر' ),
 	'Filters' => array( 'فلاتر' ),
 );
 
 /** Breton (Brezhoneg) */
 $aliases['br'] = array(
+	'CreateFilter' => array( 'KrouiñSil' ),
 	'Filters' => array( 'Siloù' ),
 );
 
@@ -51,6 +52,13 @@ $aliases['dsb'] = array(
 	'BrowseData' => array( 'Daty pśepytaś' ),
 	'CreateFilter' => array( 'Filter napóraś' ),
 	'Filters' => array( 'Filtry' ),
+);
+
+/** Spanish (Español) */
+$aliases['es'] = array(
+	'BrowseData' => array( 'Buscar datos' ),
+	'CreateFilter' => array( 'Crear filtro' ),
+	'Filters' => array( 'Filtros' ),
 );
 
 /** Persian (فارسی) */
@@ -166,6 +174,7 @@ $aliases['mk'] = array(
 
 /** Malayalam (മലയാളം) */
 $aliases['ml'] = array(
+	'BrowseData' => array( 'വിവരങ്ങൾബ്രൗസ്‌‌ചെയ്യുക' ),
 	'CreateFilter' => array( 'അരിപ്പസൃഷ്ടിക്കുക' ),
 	'Filters' => array( 'അരിപ്പകൾ' ),
 );

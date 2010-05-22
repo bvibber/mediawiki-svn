@@ -607,7 +607,7 @@ class ApiMain extends ApiBase {
 	public function getParamDescription() {
 		return array(
 			'format' => 'The format of the output',
-			'action' => 'What action you would like to perform',
+			'action' => 'What action you would like to perform. See below for module help',
 			'version' => 'When showing help, include version for each module',
 			'maxlag' => 'Maximum lag',
 			'smaxage' => 'Set the s-maxage header to this many seconds. Errors are never cached',
@@ -726,7 +726,7 @@ class ApiMain extends ApiBase {
 		foreach ( self::$mRights as $right => $rightMsg ) {
 			$groups = User::getGroupsWithPermission( $right );
 			$msg .= "* " . $right . " *\n  " . wfMsgReplaceArgs( $rightMsg[ 'msg' ], $rightMsg[ 'params' ] ) .
-						"\nGranted to:\n  " . str_replace( '*', 'all', implode( ', ', $groups ) ) . "\n";
+						"\nGranted to:\n  " . str_replace( '*', 'all', implode( ', ', $groups ) ) . "\n\n";
 
 		}
 

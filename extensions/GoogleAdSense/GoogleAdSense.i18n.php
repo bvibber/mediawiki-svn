@@ -30,6 +30,13 @@ $messages['af'] = array(
 	'googleadsense-desc' => 'Voeg [http://www.google.com/adsense Google AdSense] by die kantstrook by',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'googleadsense-desc' => 'Shton [http://www.google.com/adsense Google AdSense] të sidebar',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

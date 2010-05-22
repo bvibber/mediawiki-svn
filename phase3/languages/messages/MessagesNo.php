@@ -1531,7 +1531,7 @@ Se [[Special:NewFiles|galleriet over nye filer]] for en mer visuell visning',
 'filestatus'                  => 'Opphavsrettsstatus:',
 'filesource'                  => 'Kilde:',
 'uploadedfiles'               => 'Filer som er lastet opp',
-'ignorewarning'               => 'Lagre fila likevel',
+'ignorewarning'               => 'Ignorer advarselen og lagre filen likevel',
 'ignorewarnings'              => 'Ignorer eventuelle advarsler',
 'minlength1'                  => 'Filnavn må være på minst én bokstav.',
 'illegalfilename'             => 'Filnavnet «$1» inneholder ugyldige tegn; gi fila et nytt navn og prøv igjen.',
@@ -1619,6 +1619,11 @@ JD # Jenoptik
 MGP # Pentax
 PICT # div.
  #</pre> <!-- leave this line exactly as it is -->',
+'upload-successful-msg'       => 'Din opplasting er tilgjengelig her: $1',
+'upload-failure-subj'         => 'Opplastingsproblem',
+'upload-failure-msg'          => 'Det oppsto et problem med opplastingen din:
+
+$1',
 
 'upload-proto-error'        => 'Gal protokoll',
 'upload-proto-error-text'   => 'Fjernopplasting behøver adresser som begynner med <code>http://</code> eller <code>ftp://</code>.',
@@ -2008,6 +2013,10 @@ Den e-postadressen du har satt i [[Special:Preferences|innstillingene dine]] vil
 'emailsent'            => 'E-post sendt',
 'emailsenttext'        => 'E-postbeskjeden er sendt',
 'emailuserfooter'      => 'E-posten ble sendt av $1 til $2 via «Send e-post»-funksjonen på {{SITENAME}}.',
+
+# User Messenger
+'usermessage-summary' => 'Etterlater en systembeskjed.',
+'usermessage-editor'  => 'Systembudbringer',
 
 # Watchlist
 'watchlist'            => 'Overvåkningsliste',
@@ -2569,6 +2578,7 @@ Besøk [http://translatewiki.net translatewiki.net] om du ønsker å bidra med o
 'importstart'                => 'Importerer sider&nbsp;…',
 'import-revision-count'      => '({{PLURAL:$1|Én revisjon|$1 revisjoner}})',
 'importnopages'              => 'Ingen sider å importere.',
+'imported-log-entries'       => 'Importerte $1 {{PLURAL:$1|loggoppføring|loggoppføringer}}.',
 'importfailed'               => 'Importering mislyktes: $1',
 'importunknownsource'        => 'Ukjent importkildetype',
 'importcantopen'             => 'Kunne ikke åpne importfil',
@@ -3220,12 +3230,17 @@ Prøv vanlig forhåndsvisning.',
 'watchlistedit-noitems'        => 'Overvåkningslisten din inneholder ingen titler.',
 'watchlistedit-normal-title'   => 'Rediger overvåkningsliste',
 'watchlistedit-normal-legend'  => 'Fjern titler fra overvåkninglisten',
-'watchlistedit-normal-explain' => 'Titler på overvåkningslisten din vises nedenunder. For å fjerne en tittel, merk av boksen ved siden av den og klikk «fjern titler». Du kan også [[Special:Watchlist/raw|redigere den rå overvåkningslisten]].',
+'watchlistedit-normal-explain' => 'Titler på overvåkningslisten din vises nedenfor.
+For å fjerne en tittel, merk av boksen ved siden av den og klikk på «{{int:Watchlistedit-normal-submit}}».
+Du kan også [[Special:Watchlist/raw|redigere den rå overvåkningslisten]].',
 'watchlistedit-normal-submit'  => 'Fjern titler',
 'watchlistedit-normal-done'    => '{{PLURAL:$1|Én tittel|$1 titler}} ble fjernet fra overvåkningslisten din:',
 'watchlistedit-raw-title'      => 'Rediger rå overvåkningsliste',
 'watchlistedit-raw-legend'     => 'Rediger rå overvåkningsliste',
-'watchlistedit-raw-explain'    => 'Titler på overvåkningslisten din vises nedenunder, og kan redigeres ved å legge til eller fjerne fra listen; én tittel per linje. Når du er ferdig, trykk Oppdater overvåkningsliste. Du kan også [[Special:Watchlist/edit|bruke standardverktøyet]].',
+'watchlistedit-raw-explain'    => 'Titler på overvåkningslisten din vises nedenunder, og kan redigeres ved å legge til eller fjerne fra listen;
+én tittel per linje.
+Når du er ferdig, trykk «{{int:Watchlistedit-raw-submit}}».
+Du kan også [[Special:Watchlist/edit|bruke standardverktøyet]].',
 'watchlistedit-raw-titles'     => 'Titler:',
 'watchlistedit-raw-submit'     => 'Oppdater overvåkningsliste',
 'watchlistedit-raw-done'       => 'Overvåkningslisten din er oppdatert.',

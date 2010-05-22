@@ -348,6 +348,7 @@ $messages['cu'] = array(
 );
 
 /** German (Deutsch)
+ * @author Kghbln
  * @author Melancholie
  * @author Michawiki
  * @author Raimond Spekking
@@ -355,7 +356,7 @@ $messages['cu'] = array(
  * @author Umherirrender
  */
 $messages['de'] = array(
-	'oldreviewedpages' => 'Alte, gesichtete Seiten',
+	'oldreviewedpages' => 'Seiten mit unmarkierten Änderungen',
 	'oldreviewedpages-legend' => 'Liste gesichteter Seiten mit ungesichteten Versionen',
 	'oldreviewedpages-list' => 'Diese Spezialseite zeigt {{PLURAL:$1|eine gesichtete Seite|gesichtete Seiten}}, die noch ungesichtete Bearbeitungen {{PLURAL:$1|hat|haben}}.',
 	'oldreviewedpages-none' => 'Gegenwärtig gibt es keine Seiten, auf die diese Kriterien zutreffen.',
@@ -899,6 +900,7 @@ $messages['ja'] = array(
  */
 $messages['ka'] = array(
 	'oldreviewedpages-none' => 'ამ დროისათვის არ არსებობს სტატიები ასეთი კრიტერიუმებით',
+	'oldreviewed-category' => 'კატეგორია:',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -926,16 +928,19 @@ $messages['kn'] = array(
 );
 
 /** Korean (한국어)
+ * @author Devunt
  * @author Kwj2772
  */
 $messages['ko'] = array(
-	'oldreviewedpages' => '오래 전에 검토된 문서',
+	'oldreviewedpages' => '보류중인 편을 가지고 있는 문서',
 	'oldreviewedpages-none' => '조건에 맞는 문서가 없습니다.',
 	'oldreviewedpages-hours' => '($1시간 전)',
 	'oldreviewedpages-days' => '($1일 전)',
 	'oldreviewedpages-recent' => '(1시간 미만)',
 	'oldreviewed-category' => '분류:',
 	'oldreviewed-watched' => '내가 주시하고 있는 문서',
+	'oldreviewed-diff' => '검토',
+	'oldreviewed-size' => '최대 변화량 (바이트):',
 	'oldreviewedpages-unwatched' => '(주시되지 않음)',
 	'oldreviewedpages-watched' => '($1명의 활동적인 {{PLURAL:$1|사용자가|사용자들이}} 주시중)',
 	'oldreviewedpages-viewing' => '(확인 중)',
@@ -1300,19 +1305,19 @@ $messages['pt-br'] = array(
  */
 $messages['ro'] = array(
 	'oldreviewedpages' => 'Pagini revizuite expirate',
-	'oldreviewedpages-legend' => 'Lista de pagini revizuite, cu revizuiri în aşteptarea revizuirii',
-	'oldreviewedpages-list' => 'Această pagină afişează {{PLURAL:$1|o pagină revizuită care are|paginile revizuite care au}} modificări în aşteptare.',
+	'oldreviewedpages-legend' => 'Lista de pagini revizuite, cu revizuiri în așteptarea revizuirii',
+	'oldreviewedpages-list' => 'Această pagină afișează {{PLURAL:$1|o pagină revizuită care are|paginile revizuite care au}} modificări în așteptare.',
 	'oldreviewedpages-none' => 'Momentan nu există pagini care satisfac aceste criterii',
 	'oldreviewedpages-hours' => '($1 {{PLURAL:$1|oră|ore}})',
 	'oldreviewedpages-days' => '($1 {{PLURAL:$1|zi|zile}})',
-	'oldreviewedpages-recent' => '(mai puţin de 1 oră)',
+	'oldreviewedpages-recent' => '(mai puțin de 1 oră)',
 	'oldreviewed-category' => 'Categorie:',
 	'oldreviewed-watched' => 'În lista mea de urmărire',
 	'oldreviewed-stable' => 'Stabilit',
 	'oldreviewed-diff' => 'revizuire',
-	'oldreviewed-size' => 'Schimbare maximă (baiţi):',
+	'oldreviewed-size' => 'Schimbare maximă (baiți):',
 	'oldreviewedpages-unwatched' => '(neurmărite)',
-	'oldreviewedpages-watched' => '($1 {{PLURAL:$1|utilizator activ care urmăreşte|utilizatori activi care urmăresc}})',
+	'oldreviewedpages-watched' => '($1 {{PLURAL:$1|utilizator activ care urmărește|utilizatori activi care urmăresc}})',
 	'oldreviewedpages-viewing' => '(în curs de revizuire)',
 );
 
@@ -1375,6 +1380,16 @@ $messages['sah'] = array(
 	'oldreviewedpages-unwatched' => '(кэтээбэттэр)',
 	'oldreviewedpages-watched' => '($1 {{PLURAL:$1|соҕотох көхтөөх|көхтөөх}} кыттааччы кэтиир)',
 	'oldreviewedpages-viewing' => '(тургутулла тураллар)',
+);
+
+/** Sardinian (Sardu)
+ * @author Andria
+ */
+$messages['sc'] = array(
+	'oldreviewedpages-hours' => '($1 {{PLURAL:$1|ora|oras}})',
+	'oldreviewedpages-days' => '($1 {{PLURAL:$1|die|dies}})',
+	'oldreviewedpages-recent' => '(nemmancu 1 ora)',
+	'oldreviewed-category' => 'Categoria:',
 );
 
 /** Slovak (Slovenčina)
@@ -1473,7 +1488,8 @@ $messages['sv'] = array(
  * @author వైజాసత్య
  */
 $messages['te'] = array(
-	'oldreviewedpages' => 'కాలంచెల్లిన పనఃసమీక్షించిన పేజీలు',
+	'oldreviewedpages' => 'మార్పులతో వేచియున్న పుటలు',
+	'oldreviewedpages-legend' => 'వేచియున్న మార్పులతో కూడిన పుటలను చూపించు',
 	'oldreviewedpages-list' => 'వేచియున్న మార్పులు కలిగిన {{PLURAL:$1|ఒక సమీక్షిత పేజీని|సమీక్షిత పేజీలను}} ఈ పేజీ చూపిస్తుంది.',
 	'oldreviewedpages-none' => 'ఈ నియమాలకు సరిపోలుతున్న పేజీలు ఏమీ ప్రస్తుతం లేవు',
 	'oldreviewedpages-hours' => '($1 {{PLURAL:$1|గంట|గంటలు}})',
@@ -1702,6 +1718,7 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Gzdavidwong
+ * @author Horacewai2
  * @author Liangent
  * @author Shinjiman
  * @author Wrightbus
@@ -1709,13 +1726,13 @@ $messages['zh-hans'] = array(
 $messages['zh-hant'] = array(
 	'oldreviewedpages' => '已過時複審過的頁面',
 	'oldreviewedpages-legend' => '列示有未複審修訂之複審過的頁面',
-	'oldreviewedpages-list' => '這個頁面列示出有正等候編輯之評論頁面。',
+	'oldreviewedpages-list' => '這個頁面列示出{{PLURAL:$1|一個|一些}}正等候編輯之評論頁面。',
 	'oldreviewedpages-none' => '這裏現時沒有頁面係合乎這些條件',
 	'oldreviewedpages-hours' => '（$1小時）',
 	'oldreviewedpages-days' => '（$1日）',
 	'oldreviewedpages-recent' => '（少於1小時）',
 	'oldreviewed-category' => '分類:',
-	'oldreviewed-watched' => '在我的監視列表上',
+	'oldreviewed-watched' => '在我的監視列表上的頁面',
 	'oldreviewed-stable' => '穩定的',
 	'oldreviewed-diff' => '複審',
 	'oldreviewed-size' => '最大變動（位元組）：',

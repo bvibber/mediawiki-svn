@@ -169,6 +169,14 @@ $messages['af'] = array(
 	'sign-uniquequery-1signed2' => '[{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1] ondertekende [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs}} $2].',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'signdocument' => 'dokument Regjistrohu',
+	'sign-nodocselected' => 'Ju lutem zgjidhni dokumentin që dëshironi të nënshkruar.',
+);
+
 /** Amharic (አማርኛ)
  * @author Codex Sinaiticus
  */
@@ -2260,6 +2268,7 @@ $messages['it'] = array(
  * @author Aotake
  * @author Fryed-peach
  * @author Hosiryuhosi
+ * @author 青子守歌
  */
 $messages['ja'] = array(
 	'signdocument' => '文書署名',
@@ -2319,7 +2328,7 @@ $1',
 	'sig-private' => "''非公開''",
 	'sign-sigdetails' => '署名詳細',
 	'sign-iptools' => '<span class="plainlinksneverexpand"><!--
--->[[User:$1|$1]] ([[User talk:$1|会話]] • <!--
+-->[[User:$1|$1]] ([[User talk:$1|トーク]] • <!--
 -->[[Special:Contributions/$1|投稿記録]] • <!--
 -->[http://www.dnsstuff.com/tools/whois.ch?domain={{urlencode:$1}}&cache=off&email=on WHOIS] • <!--
 -->[http://www.dnsstuff.com/tools/ptr.ch?ip={{urlencode:$1}}&cache=off&email=on RDNS] • <!--
@@ -2491,6 +2500,29 @@ $messages['kn'] = array(
 	'sign-viewfield-email' => 'ಇ-ಅಂಚೆ',
 	'sign-viewfield-age' => 'ವಯಸ್ಸು',
 	'sign-signatures' => 'ಸಹಿಗಳು',
+);
+
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'signdocument' => '문서 서명',
+	'sign-nodocselected' => '서명할 문서를 선택해주세요.',
+	'sign-selectdoc' => '문서:',
+	'sign-docheader' => '"[[$1]]" 문서에 서명하려면 아래 양식을 이용해주세요.
+문서 전체를 읽고 당신이 이 문서의 내용을 지지한다면 서명하면서 필수 사항을 채워주세요.',
+	'sign-error-nosuchdoc' => '당신이 요청한 문서($1)가 존재하지 않습니다.',
+	'sign-realname' => '실명:',
+	'sign-iptools' => 'span class="plainlinksneverexpand"><!--
+-->[[User:$1|$1]] ([[User talk:$1|토론]] • <!--
+-->[[Special:Contributions/$1|기여]] • <!--
+-->[http://www.dnsstuff.com/tools/whois.ch?domain={{urlencode:$1}}&cache=off&email=on WHOIS] • <!--
+-->[http://www.dnsstuff.com/tools/ptr.ch?ip={{urlencode:$1}}&cache=off&email=on RDNS] • <!--
+-->[http://www.robtex.com/rbls/$1.html RBLs] • <!--
+-->[[Special:BlockIP/$1|차단]] • <!--
+-->[{{fullurl:Special:Log/block|page=User:{{urlencode:$1}}}} 차단 기록] • <!--
+-->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} IP 확인])<!--
+--></span>',
 );
 
 /** Kinaray-a (Kinaray-a)
@@ -3381,6 +3413,7 @@ $messages['pdc'] = array(
 	'sign-realname' => 'Naame:',
 	'sign-viewfield-realname' => 'Naame',
 	'sign-viewfield-address' => 'Adress',
+	'sig-private' => "''Private''",
 	'sign-viewfield-reviewcomment' => 'Anmaerricking',
 	'sign-review-comment' => 'Anmaerricking',
 );
@@ -3814,36 +3847,36 @@ $messages['rm'] = array(
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
-	'signdocument' => 'Semnaţi documentul',
+	'signdocument' => 'Semnați documentul',
 	'sign-selectdoc' => 'Document:',
 	'sign-realname' => 'Nume:',
 	'sign-address' => 'Adresă stradă:',
-	'sign-city' => 'Oraş:',
-	'sign-zip' => 'Cod poştal:',
+	'sign-city' => 'Oraș:',
+	'sign-zip' => 'Cod poștal:',
 	'sign-country' => 'Ţară:',
 	'sign-phone' => 'Număr de telefon:',
 	'sign-bday' => 'Vârstă:',
 	'sign-email' => 'Adresă e-mail:',
-	'sign-list-hideaddress' => 'Nu afişa adresa',
-	'sign-list-hideextaddress' => 'Nu afişa oraşul, statul, codul poştal sau ţara',
-	'sign-list-hidephone' => 'Nu afişa telefonul',
-	'sign-list-hidebday' => 'Nu afişa vârsta',
-	'sign-list-hideemail' => 'Nu afişa adresa de e-mail',
-	'sign-submit' => 'Semnaţi documentul',
+	'sign-list-hideaddress' => 'Nu afișa adresa',
+	'sign-list-hideextaddress' => 'Nu afișa orașul, statul, codul poștal sau țara',
+	'sign-list-hidephone' => 'Nu afișa telefonul',
+	'sign-list-hidebday' => 'Nu afișa vârsta',
+	'sign-list-hideemail' => 'Nu afișa adresa de e-mail',
+	'sign-submit' => 'Semnați documentul',
 	'sign-viewfield-entryid' => 'ID intrare',
-	'sign-viewfield-timestamp' => 'Data şi ora',
+	'sign-viewfield-timestamp' => 'Data și ora',
 	'sign-viewfield-realname' => 'Nume',
 	'sign-viewfield-address' => 'Adresă',
-	'sign-viewfield-city' => 'Oraş',
+	'sign-viewfield-city' => 'Oraș',
 	'sign-viewfield-state' => 'Stat',
 	'sign-viewfield-country' => 'Ţară',
-	'sign-viewfield-zip' => 'Cod poştal',
+	'sign-viewfield-zip' => 'Cod poștal',
 	'sign-viewfield-ip' => 'Adresă IP',
 	'sign-viewfield-agent' => 'Agent utilizator',
 	'sign-viewfield-phone' => 'Telefon',
 	'sign-viewfield-email' => 'E-mail',
 	'sign-viewfield-age' => 'Vârstă',
-	'sign-viewfield-options' => 'Opţiuni',
+	'sign-viewfield-options' => 'Opțiuni',
 	'sign-sigadmin-currentlyopen' => 'Semnarea este momentan activată pentru acest document.',
 	'sign-sigadmin-close' => 'Dezactivează semnarea',
 	'sign-sigadmin-currentlyclosed' => 'Semnarea este momentan dezactivată pentru acest document.',
@@ -3851,14 +3884,14 @@ $messages['ro'] = array(
 	'sign-signatures' => 'Semnături',
 	'sign-sigadmin-closesuccess' => 'Semnarea dezactivată cu succes.',
 	'sign-sigadmin-opensuccess' => 'Semnarea activată cu succes.',
-	'sign-viewsignatures' => 'vedeţi semnături',
+	'sign-viewsignatures' => 'vedeți semnături',
 	'sign-closed' => 'închis',
 	'sign-error-closed' => 'Semnarea acestui document este momentan dezactivată.',
 	'sig-anonymous' => "''Anonim''",
 	'sig-private' => "''Privat''",
 	'sign-sigdetails' => 'Detaliile semnăturii',
 	'sign-viewfield-reviewcomment' => 'Comentariu',
-	'sign-detail-uniquequery' => 'Entităţi similare',
+	'sign-detail-uniquequery' => 'Entități similare',
 	'sign-detail-uniquequery-run' => 'Rulează interogare',
 	'sign-review-comment' => 'Comentariu',
 	'sign-uniquequery-similarname' => 'Nume similar',

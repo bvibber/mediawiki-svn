@@ -21,6 +21,16 @@ $messages['qqq'] = array(
 	'delayeddefinition-desc' => '{{desc}}',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'delayeddefinition-desc' => 'Shton <define> dhe <display> për të lejuar një kod të jetë repositioned',
+	'delaydef-error-missing-def' => 'Gabim: Përkufizimi i nevojshëm për <display name="$1"> nuk u gjet.',
+	'delaydef-error-no-name' => 'Gabim: Nuk parametër emrin e specifikuar.',
+	'delaydef-error-redef' => 'Gabim: Tentim ridefinimin e $1.',
+);
+
 /** Arabic (العربية)
  * @author OsamaK
  */
@@ -387,5 +397,13 @@ $messages['tr'] = array(
 	'delaydef-error-missing-def' => 'Hata: &lt;display name="$1"&gt; için ihtiyaç duyulan tanım bulunamadı.',
 	'delaydef-error-no-name' => 'Hata: Ad parametresi belirtilmedi.',
 	'delaydef-error-redef' => 'Hata: $1 için yeniden tanımlama denemesi.',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Horacewai2
+ */
+$messages['zh-hant'] = array(
+	'delaydef-error-no-name' => '錯誤：沒有指定name參數。',
+	'delaydef-error-redef' => '錯誤：試圖重新定義為$1。',
 );
 

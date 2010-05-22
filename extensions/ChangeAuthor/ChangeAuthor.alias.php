@@ -43,6 +43,11 @@ $aliases['dsb'] = array(
 	'ChangeAuthor' => array( 'Awtora změniś' ),
 );
 
+/** Esperanto (Esperanto) */
+$aliases['eo'] = array(
+	'ChangeAuthor' => array( 'Ŝanĝi aŭtoron' ),
+);
+
 /** Finnish (Suomi) */
 $aliases['fi'] = array(
 	'ChangeAuthor' => array( 'Vaihda_tekijänimi' ),

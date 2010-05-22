@@ -43,6 +43,18 @@ $messages['qqq'] = array(
 *{{msg-mw|Questycaptcha-edit}}',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'fancycaptcha-addurl' => 'Your redakto përfshin të jashtme lidhje të reja. Për të ndihmuar në mbrojtjen kundër spam automatizuar, ju lutem shkruani fjalët që shfaqen poshtë në kuti ([[Special:Captcha/help|më shumë informacion]]):',
+	'fancycaptcha-badlogin' => 'Për të ndihmuar në mbrojtjen kundër fjalëkalimin automatizuar plasaritje, ju lutem shkruani fjalët që shfaqen poshtë në kuti ([[Special:Captcha/help|më shumë informacion]]):',
+	'fancycaptcha-createaccount' => 'Për të ndihmuar në mbrojtjen kundër krijimit llogari e automatizuar, ju lutem shkruani fjalët që shfaqen poshtë në kuti ([[Special:Captcha/help|më shumë informacion]]):',
+	'fancycaptcha-create' => 'Për të krijuar një faqe, ju lutem shkruani fjalët që shfaqen poshtë në kuti ([[Special:Captcha/help|më shumë informacion]]):',
+	'fancycaptcha-edit' => 'Për të redaktuar këtë faqe, ju lutem shkruani fjalët që shfaqen poshtë në kuti ([[Special:Captcha/help|më shumë informacion]]):',
+	'fancycaptcha-sendemail' => 'Për të ndihmuar në mbrojtjen kundër spamming automatizuar, ju lutem shkruani fjalët që shfaqen poshtë në kuti ([[Special:Captcha/help|më shumë informacion]]):',
+);
+
 /** Amharic (አማርኛ)
  * @author Codex Sinaiticus
  */
@@ -529,6 +541,7 @@ $messages['hsb'] = array(
 /** Hungarian (Magyar)
  * @author Adam78
  * @author Dorgan
+ * @author Glanthor Reviol
  */
 $messages['hu'] = array(
 	'fancycaptcha-addurl' => 'A szerkesztésed új külső hivatkozásokat tartalmaz. Az automatizált spamek megelőzése miatt kérjük, hogy add meg a lenti keretben olvasható szavakat ([[Special:Captcha/help|további segítség]]):',
@@ -536,6 +549,7 @@ $messages['hu'] = array(
 	'fancycaptcha-createaccount' => 'A felhasználói fiókok automatizált létrehozásának elkerülésére, kérlek, írd be az alább megjelenő szót a szövegdobozba ([[Special:Captcha/help|segítség]]):',
 	'fancycaptcha-create' => 'A lap létrehozásához kérjük, hogy add meg a lenti keretben olvasható szavakat ([[Special:Captcha/help|további segítség]]):',
 	'fancycaptcha-edit' => 'A szerkesztésed új külső linkeket tartalmaz. A spam-robotok elleni védekezés elősegítésére kérlek írd be az alább megjelenő szót a szövegdobozba ([[Special:Captcha/help|segítség]]):',
+	'fancycaptcha-sendemail' => 'Hogy segíts az automatikus spammelés elleni védekezésben, kérünk írd be az alábbi szavakat a szövegdobozba ([[Special:Captcha/help|segítség]]):',
 );
 
 /** Interlingua (Interlingua)
@@ -940,6 +954,7 @@ Para ajudar a prevenir o ''spam'' automatizado, por favor, introduza na caixa ab
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
+ * @author Giro720
  */
 $messages['pt-br'] = array(
 	'fancycaptcha-addurl' => "A sua edição inclui novas ligações externas. Como prevenção contra sistemas automatizados que inserem ''spam'', por favor, introduza as palavras exibidas na seguinte caixa ([[Special:Captcha/help|mais informações]]):",
@@ -947,13 +962,14 @@ $messages['pt-br'] = array(
 	'fancycaptcha-createaccount' => 'Como prevenção contra sistemas automatizados de criação de contas, por favor, introduza as palavras exibidas na seguinte caixa ([[Special:Captcha/help|mais informações]]):',
 	'fancycaptcha-create' => 'Para criar a página, por favor, introduza as palavras exibidas na seguinte caixa ([[Special:Captcha/help|mais informações]]):',
 	'fancycaptcha-edit' => 'Para editar esta página, por favor, introduza as palavras exibidas na seguinte caixa ([[Special:Captcha/help|mais informações]]):',
+	'fancycaptcha-sendemail' => "Para ajudar a prevenir o ''spam'' automatizado, por favor, introduza na caixa as palavras que aparecem abaixo ([[Special:Captcha/help|mais informações]]):",
 );
 
 /** Romanian (Română)
  * @author Mihai
  */
 $messages['ro'] = array(
-	'fancycaptcha-createaccount' => 'Pentru a ajuta protecţia împotriva creării automate de conturi, te rog să introduci în cutie cuvintele care apar mai jos ([[Special:Captcha/help|mai multe detalii]]):',
+	'fancycaptcha-createaccount' => 'Pentru a ajuta protecția împotriva creării automate de conturi, te rog să introduci în cutie cuvintele care apar mai jos ([[Special:Captcha/help|mai multe detalii]]):',
 	'fancycaptcha-create' => 'Pentru a crea pagina, te rog să introduci în cutie cuvintele care apar mai jos ([[Special:Captcha/help|mai multe detalii]]):',
 	'fancycaptcha-edit' => 'Pentru a modifica această pagină, te rog să introduci în cutie cuvintele care apar mai jos ([[Special:Captcha/help|mai multe detalii]]):',
 );
@@ -1154,6 +1170,7 @@ Otomatik spamdan korunmak için, lütfen aşağıdaki sözcükleri kutunun için
 	'fancycaptcha-createaccount' => 'Otomatik hesap oluşturmaya karşı korumaya yardım etmek için, lütfen aşağıdaki kutuda görünen kelimeleri girin ([[Special:Captcha/help|daha fazla bilgi]]):',
 	'fancycaptcha-create' => 'Sayfayı oluşturmak için, lütfen aşağıdaki kutuda görünen kelimeleri girin ([[Special:Captcha/help|daha fazla bilgi]]):',
 	'fancycaptcha-edit' => 'Bu sayfayı değiştirmek için, lütfen aşağıdaki kutuda görünen kelimeleri girin ([[Special:Captcha/help|daha fazla bilgi]]):',
+	'fancycaptcha-sendemail' => 'Otomatik spamlerden korunmaya yardımcı olmak için, lütfen aşağıda görünen sözcükleri kutuya yazın ([[Special:Captcha/help|daha fazla bilgi]]):',
 );
 
 /** Ukrainian (Українська)
@@ -1238,12 +1255,15 @@ $messages['zh-hans'] = array(
 	'fancycaptcha-edit' => '如你想要编辑這个页面，请输入以下的文字（[[Special:Captcha/help|相关信息]]）：',
 );
 
-/** Traditional Chinese (‪中文(繁體)‬) */
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Horacewai2
+ */
 $messages['zh-hant'] = array(
 	'fancycaptcha-addurl' => '您的編輯內容中含有本網站以外的連結。為防止不當程式大量破壞，請輸入以下的文字（[[Special:Captcha/help|相關資訊]]）：',
 	'fancycaptcha-badlogin' => '為防止不當程式破解密碼，請輸入以下的文字（[[Special:Captcha/help|相關資訊]]）：',
 	'fancycaptcha-createaccount' => '為防止不當程式大量建立帳戶，請輸入以下的文字（[[Special:Captcha/help|相關資訊]]）：',
 	'fancycaptcha-create' => '為防止不當程式大量建立頁面，請輸入以下的文字（[[Special:Captcha/help|相關資訊]]）：',
 	'fancycaptcha-edit' => '如您想要編輯此頁面，請輸入以下的文字（[[Special:Captcha/help|相關資訊]]）：',
+	'fancycaptcha-sendemail' => '為防止不當程式進行破壞，請輸入以下的文字（[[Special:Captcha/help|相關資訊]]）：',
 );
 

@@ -48,6 +48,16 @@ $messages['af'] = array(
 	'wikieditor-preview-loading' => 'Besig om te laai...',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'wikieditor-preview-preference' => 'Aktivizo-krah për krah preview',
+	'wikieditor-preview-tab' => 'Preview',
+	'wikieditor-preview-changes-tab' => 'Ndryshimet',
+	'wikieditor-preview-loading' => 'Loading ...',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK

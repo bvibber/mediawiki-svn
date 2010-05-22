@@ -188,6 +188,13 @@ $messages['oc'] = array(
 	'nll-lastseparator' => '&#32;e&#32;',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'nll-lastseparator' => '&#32;unn&#32;',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  */

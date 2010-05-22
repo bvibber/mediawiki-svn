@@ -1227,6 +1227,7 @@ $messages['fo'] = array(
  * @author IAlex
  * @author Meithal
  * @author PieRRoMaN
+ * @author Quentinv57
  * @author Sherbrooke
  * @author Urhixidur
  * @author Verdy p
@@ -1236,7 +1237,7 @@ $messages['fr'] = array(
 	'hiderevision-desc' => 'Masque les modifications individuelles de tous les utilisateurs pour des motifs légaux, etc.',
 	'group-oversight' => 'Masqueurs de modifications',
 	'group-oversight-member' => 'masqueur de modifications',
-	'grouppage-oversight' => '{{ns:project}}:Masqueur de modifications',
+	'grouppage-oversight' => '{{ns:project}}:Masqueurs de modifications',
 	'right-oversight' => "Voir les versions précédemment cachées avec l'extension « Oversight »",
 	'right-hiderevision' => "Masquer des révisions aux administrateurs avec l'extension « Oversight »",
 	'hiderevision-prompt' => 'Numéro d’édition à supprimer :',
@@ -2241,6 +2242,14 @@ $messages['ko'] = array(
 	'oversight-offender' => '판 작성자:',
 );
 
+/** Karachay-Balkar (Къарачай-Малкъар)
+ * @author Iltever
+ */
+$messages['krc'] = array(
+	'group-oversight' => 'Ревизорла',
+	'grouppage-oversight' => '{{ns:project}}:Ревизорла',
+);
+
 /** Colognian (Ripoarisch)
  * @author Purodha
  */
@@ -2446,8 +2455,8 @@ $messages['mk'] = array(
 	'group-oversight' => 'Надгледувачи',
 	'group-oversight-member' => 'надгледувач',
 	'grouppage-oversight' => '{{ns:project}}:Надгледувач',
-	'right-oversight' => 'Гледање на претходно сокриена ревизија со Проширување:Надзор',
-	'right-hiderevision' => 'Прикривање на ревизии од администратори со Проширување:Надзор',
+	'right-oversight' => 'Гледање на претходно сокриена ревизија со Extension:Oversight',
+	'right-hiderevision' => 'Прикривање на ревизии од администратори со Extension:Oversight',
 	'hiderevision-prompt' => 'Број на ревизија за бришење:',
 	'hiderevision-continue' => 'Продолжи',
 	'hiderevision-text' => "Ова треба да се користи '''само''' за следниве случаи:
@@ -3191,31 +3200,31 @@ $messages['rmy'] = array(
  */
 $messages['ro'] = array(
 	'hiderevision' => 'Ascuns permanent reviziile',
-	'hiderevision-desc' => 'Ascunde reviziile individuale pentru toţi utilizatorii pentru motive legale, etc.',
+	'hiderevision-desc' => 'Ascunde reviziile individuale pentru toți utilizatorii pentru motive legale, etc.',
 	'group-oversight' => 'Supraveghetori',
 	'group-oversight-member' => 'supraveghetori',
 	'grouppage-oversight' => '{{ns:project}}:Supraveghetori',
-	'right-oversight' => 'Vedeţi o revizie ascunsă mai înainte',
+	'right-oversight' => 'Vedeți o revizie ascunsă mai înainte',
 	'right-hiderevision' => 'Ascunde reviziile de la administratori',
 	'hiderevision-prompt' => 'Numărul reviziei pentru a elimina:',
 	'hiderevision-continue' => 'Cuntinuă',
 	'hiderevision-reason' => 'Motiv (va fi înregistrat separat):',
 	'hiderevision-submit' => 'Ascunde permanent această revizie',
 	'hiderevision-tab' => 'Ascunde revizia',
-	'hiderevision-link' => 'Contribuţii ascunse ale utilizatorului',
-	'hiderevision-norevisions' => 'Nicio revizie specificată pentru ştergere.',
-	'hiderevision-noreason' => 'Trebuie să descrii motivul ştergerii.',
+	'hiderevision-link' => 'Contribuții ascunse ale utilizatorului',
+	'hiderevision-norevisions' => 'Nicio revizie specificată pentru ștergere.',
+	'hiderevision-noreason' => 'Trebuie să descrii motivul ștergerii.',
 	'hiderevision-status' => 'Revizia $1: $2',
-	'hiderevision-success' => 'Arhivat şi şters cu succes.',
+	'hiderevision-success' => 'Arhivat și șters cu succes.',
 	'hiderevision-error-missing' => 'Nu a fost găsit în baza de date.',
-	'hiderevision-error-current' => 'Nu poate fi ştearsă ultima modificare adusă unei pagini.
-Anuleaz-o pe aceasta şi revino la cea precedentă mai întâi.',
-	'hiderevision-error-delete' => 'Nu a putut fi arhivat; a fost deja şters?',
+	'hiderevision-error-current' => 'Nu poate fi ștearsă ultima modificare adusă unei pagini.
+Anuleaz-o pe aceasta și revino la cea precedentă mai întâi.',
+	'hiderevision-error-delete' => 'Nu a putut fi arhivat; a fost deja șters?',
 	'hiderevision-archive-status' => 'Ştergerea reviziei din $1: $2',
 	'oversight-log-hiderev' => 'a eliminat o modificare de la $1',
 	'oversight' => 'Supraveghere',
 	'oversight-view' => 'detalii',
-	'oversight-difference' => '(Diferenţă de la revizia rămasă anterior)',
+	'oversight-difference' => '(Diferență de la revizia rămasă anterior)',
 	'oversight-prev' => 'Ultima modificare trecută',
 	'oversight-hidden' => 'Revizii ascunse',
 	'oversight-legend' => 'Caută jurnalul ascuns al reviziei',
@@ -4012,8 +4021,8 @@ $messages['tr'] = array(
 	'group-oversight' => 'Gözetmenler',
 	'group-oversight-member' => 'gözetmen',
 	'grouppage-oversight' => '{{ns:project}}:Gözetmen',
-	'right-oversight' => 'Önceden gizlenmiş bir revizyonu gör',
-	'right-hiderevision' => 'Revizyonları yöneticilerden gizle',
+	'right-oversight' => 'Extension:Oversight ile önceden gizlenmiş bir revizyonu gör',
+	'right-hiderevision' => 'Extension:Oversight ile revizyonları yöneticilerden gizle',
 	'hiderevision-prompt' => 'Kaldırılacak revizyon numarası:',
 	'hiderevision-continue' => 'Devam',
 	'hiderevision-text' => "Bu '''sadece''' aşağıdaki durumlar için kullanılmalıdır:
@@ -4363,6 +4372,7 @@ $messages['zh-hans'] = array(
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Alex S.H. Lin
  * @author Gaoxuewei
+ * @author Horacewai2
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
@@ -4371,8 +4381,8 @@ $messages['zh-hant'] = array(
 	'group-oversight' => '監督者',
 	'group-oversight-member' => '監督',
 	'grouppage-oversight' => '{{ns:project}}:監督',
-	'right-oversight' => '查看一個之前隱藏過之修訂',
-	'right-hiderevision' => '隱藏管理員做出的修改',
+	'right-oversight' => '查看一個之前使用Oversight隱藏過之修訂',
+	'right-hiderevision' => '使用Oversight擴展隱藏管理員做出的修改',
 	'hiderevision-prompt' => '要隱藏的修訂版本號碼:',
 	'hiderevision-continue' => '繼續',
 	'hiderevision-text' => "'''注意！'''本工具'''只能'''在以下情況才能使用：

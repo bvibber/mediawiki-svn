@@ -1182,8 +1182,8 @@ debe antes ter <a href="index.php?title=Special:UserLogin">accedido ao sistema</
 	'userboard_owner' => 'O taboleiro de $1',
 	'userboard_yourboardwith' => 'O seu taboleiro a taboleiro con $1',
 	'userboard_otherboardwith' => 'De taboleiro a taboleiro de $1 con $2',
-	'userboard_backprofile' => 'Voltar ao perfil de $1',
-	'userboard_backyourprofile' => 'Voltar ao seu perfil',
+	'userboard_backprofile' => 'Volver ao perfil de $1',
+	'userboard_backyourprofile' => 'Volver ao seu perfil',
 	'userboard_boardtoboard' => 'De taboleiro a taboleiro',
 	'userboard_confirmdelete' => 'Está seguro de que quere eliminar esta mensaxe?',
 	'userboard_sendmessage' => 'Enviar unha mensaxe a $1',
@@ -1670,6 +1670,11 @@ Hey, ingin berhenti menerima surel dari kami?
 
 Klik $4
 dan ubah setting anda untuk menonaktifkan notifikasi surel.',
+);
+
+/** Igbo (Igbo) */
+$messages['ig'] = array(
+	'userboard_delete' => 'Gbakashia',
 );
 
 /** Ido (Ido)
@@ -2431,7 +2436,10 @@ $messages['os'] = array(
  */
 $messages['pdc'] = array(
 	'userboard_delete' => 'Lösche',
+	'userboard_private' => 'private',
 	'userboard_nextpage' => 'neegscht',
+	'userboard-time-days' => '{{PLURAL:$1|een Daag|$1 Daag}}',
+	'userboard-time-hours' => '{{PLURAL:$1|ee Schtund|$1 Schtunde}}',
 );
 
 /** Polish (Polski)
@@ -2564,6 +2572,7 @@ $messages['ps'] = array(
 	'boardlinkunselectall' => 'ټول ناټاکل',
 	'boardlinkselectfriends' => 'ملګري ټاکل',
 	'boardlinkunselectfriends' => 'ملګري ناټاکل',
+	'boardlinkselectfoes' => 'سيالان ټاکل',
 	'boardnofriends' => 'تاسې تر اوسه پورې هېڅ کوم ملګری نلری چې پيغام ورولېږۍ!',
 	'messagesentsuccess' => 'ستاسې پيغام په برياليتوب سره ولېږل شو.',
 	'userboard_delete' => 'ړنګول',
@@ -2576,9 +2585,9 @@ $messages['ps'] = array(
 	'userboard_nomessages' => 'هېڅ کوم پيغام نشته.',
 	'userboard_sendbutton' => 'لېږل',
 	'userboard-time-days' => '{{PLURAL:$1|يوه ورځ|$1 ورځې}}',
-	'userboard-time-hours' => 'PLURAL:$1|يو ساعت|$1 ساعتونه}}',
-	'userboard-time-minutes' => 'PLURAL:$1|يوه دقيقه|$1 دقيقې}}',
-	'userboard-time-seconds' => 'PLURAL:$1|يوه ثانيه|$1 ثانيې}}',
+	'userboard-time-hours' => '{{PLURAL:$1|يو ساعت|$1 ساعتونه}}',
+	'userboard-time-minutes' => '{{PLURAL:$1|يوه دقيقه|$1 دقيقې}}',
+	'userboard-time-seconds' => '{{PLURAL:$1|يوه ثانيه|$1 ثانيې}}',
 );
 
 /** Portuguese (Português)
@@ -2735,12 +2744,12 @@ $messages['rif'] = array(
 $messages['ro'] = array(
 	'messagesenttitle' => 'Mesaje trimise',
 	'boardblastprivatenote' => 'Toate mesajele vor fi trimise ca mesaje private',
-	'boardlinkselectall' => 'Selectaţi tot',
-	'boardlinkunselectall' => 'Deselectaţi tot',
-	'boardlinkselectfriends' => 'Selectaţi prieteni',
-	'boardlinkunselectfriends' => 'Deselectaţi prieteni',
-	'boardlinkselectfoes' => 'Selectaţi inamici',
-	'boardlinkunselectfoes' => 'Deselectaţi inamici',
+	'boardlinkselectall' => 'Selectați tot',
+	'boardlinkunselectall' => 'Deselectați tot',
+	'boardlinkselectfriends' => 'Selectați prieteni',
+	'boardlinkunselectfriends' => 'Deselectați prieteni',
+	'boardlinkselectfoes' => 'Selectați inamici',
+	'boardlinkunselectfoes' => 'Deselectați inamici',
 	'userboard_delete' => 'Şterge',
 	'userboard_posted_ago' => 'postat acum $1',
 	'userboard_private' => 'privat',

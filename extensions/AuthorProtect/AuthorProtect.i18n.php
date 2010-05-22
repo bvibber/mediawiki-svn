@@ -730,6 +730,11 @@ $messages['id'] = array(
 	'right-authorprotect' => 'Lindungi halaman dengan penulis pertama',
 );
 
+/** Igbo (Igbo) */
+$messages['ig'] = array(
+	'authorprotect-reason' => 'Mgbaghaputa',
+);
+
 /** Ido (Ido)
  * @author Malafaya
  */
@@ -1249,14 +1254,14 @@ $messages['pt-br'] = array(
  */
 $messages['ro'] = array(
 	'authorprotect' => 'Protejează pagina pentru cei care nu sunt autori',
-	'authorprotect-desc' => 'Permite autorului unei pagini să o protejeze faţă de ceilalţi utilizatori',
-	'authorprotect-notauthor' => 'Nu eşti autorul acestei pagini',
-	'authorprotect-confirm' => 'Schimbă niveluri de protecţie',
-	'authorprotect-edit' => 'Restricţionează modificările autorilor',
-	'authorprotect-move' => 'Restricţionează mutarea la autori',
+	'authorprotect-desc' => 'Permite autorului unei pagini să o protejeze față de ceilalți utilizatori',
+	'authorprotect-notauthor' => 'Nu ești autorul acestei pagini',
+	'authorprotect-confirm' => 'Schimbă niveluri de protecție',
+	'authorprotect-edit' => 'Restricționează modificările autorilor',
+	'authorprotect-move' => 'Restricționează mutarea la autori',
 	'authorprotect-expiry' => 'Timpul expirării',
 	'authorprotect-reason' => 'Motiv',
-	'authorprotect-intro' => 'Utilizaţi acest formular pentru a proteja această pagină de non-autori',
+	'authorprotect-intro' => 'Utilizați acest formular pentru a proteja această pagină de non-autori',
 	'authorprotect-success' => 'Protejare cu succes!',
 	'authorprotect-failure' => 'Protejare fără succes',
 	'protect-level-author' => 'Protejare de non-autori',
@@ -1605,6 +1610,7 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Gzdavidwong
+ * @author Horacewai2
  * @author Liangent
  * @author Wrightbus
  */
@@ -1613,9 +1619,15 @@ $messages['zh-hant'] = array(
 	'authorprotect-desc' => '允許頁面的作者禁止其他用戶編輯',
 	'authorprotect-notauthor' => '您並非本頁面的原作者',
 	'authorprotect-confirm' => '更改保護等級',
+	'authorprotect-edit' => '禁止除作者以外人士編輯',
+	'authorprotect-move' => '禁止除作者以外人士移動',
 	'authorprotect-expiry' => '終止時間',
 	'authorprotect-reason' => '原因',
+	'authorprotect-intro' => '使用此表格禁止除作者以外人士編輯',
 	'authorprotect-success' => '保護成功！',
 	'authorprotect-failure' => '保護失敗',
+	'protect-level-author' => '保護非作家用戶編輯',
+	'restriction-level-author' => '作者保護',
+	'right-authorprotect' => '保護自己創作的頁面禁止他人編輯',
 );
 

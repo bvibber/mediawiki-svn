@@ -314,6 +314,62 @@ $messages['af'] = array(
 	'repoadmin-edit-button' => 'OK',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'code-rev-diff-link' => 'ndrysh',
+	'code-rev-diff-too-large' => 'Ndryshimi është tepër i madh për të shfaqur.',
+	'code-rev-purge-link' => 'spastrim',
+	'code-rev-total' => 'Numri i përgjithshëm i rezultateve: $1',
+	'code-status-new' => 'i ri',
+	'code-status-fixme' => 'Rregullat e ndërprerjes',
+	'code-status-reverted' => 'rikthyer',
+	'code-status-resolved' => 'zgjidhet',
+	'code-status-ok' => 'në rregull',
+	'code-status-verified' => 'verifikuar',
+	'code-status-deferred' => 'i shtyrë',
+	'code-pathsearch-legend' => 'shqyrtime Kërko në këtë repo nga rrugë',
+	'code-pathsearch-path' => 'Path:',
+	'code-pathsearch-filter' => 'Filter aplikuar:',
+	'code-revfilter-cr_status' => 'Statusi = $1',
+	'code-revfilter-cr_author' => 'Author = $1',
+	'code-revfilter-clear' => 'Clear filter',
+	'code-rev-submit' => 'Ruaj ndryshimet',
+	'code-rev-submit-next' => 'Save & tjetër e pazgjidhur',
+	'code-batch-status' => 'Gjendja Ndryshimi:',
+	'code-batch-tags' => 'Ndryshimi tags:',
+	'codereview-batch-title' => 'Ndryshimi gjitha versionet e zgjedhura',
+	'codereview-batch-submit' => 'Submit',
+	'code-releasenotes' => 'shënime lëshimi',
+	'code-release-legend' => 'Shënime Generate lirimin',
+	'code-release-startrev' => 'rev Fillimi:',
+	'code-release-endrev' => 'rev fundit:',
+	'code-release-badrange' => 'Varg është tepër i madh!',
+	'codereview-subtitle' => 'Për $1',
+	'codereview-reply-link' => 'përgjigje',
+	'codereview-tests-succeeded2' => '$1 {{PLURAL:$2|test|testet}}',
+	'codereview-tests-failed2' => '$1 {{PLURAL:$2|test|testeve}}, $3 dështuar {{PLURAL:$4|test|testeve}}:',
+	'codereview-tests-running' => 'Test raste janë të ...',
+	'codereview-tests-aborted' => 'Test drejtuar ndërprerë.',
+	'codereview-tests-failed' => 'Gabim',
+	'codereview-email-subj' => '[$1] [$2]: koment i ri shtuar',
+	'codereview-email-body' => 'User "$1" postuar nje koment mbi $3. Plotë URL: $2 Komenti: $4',
+	'codereview-email-subj2' => 'Ndryshime [$1] [$2]: Ndiqni-up',
+	'codereview-email-body2' => 'User "$1" bërë ndjekjen ndryshime tek $2. Plotë URL: $3 përmbledhje angazhohen: $4',
+	'codereview-email-subj3' => '[$1] [$2]: testimi automatik i zbuluar regresionit',
+	'codereview-email-body3' => 'Testimi automatik i ka zbuluar një regres për shkak të ndryshimeve në $1. plotë URL: $2 përmbledhje angazhohen: $3',
+	'repoadmin' => 'Depo Administrata',
+	'repoadmin-new-legend' => 'Krijo një depo të re',
+	'repoadmin-new-label' => 'Emri depo:',
+	'repoadmin-new-button' => 'Krijo',
+	'repoadmin-edit-legend' => 'Modifikimi i depo "$1"',
+	'repoadmin-edit-path' => 'rrugën depo:',
+	'repoadmin-edit-bug' => 'rrugën Bugzilla:',
+	'repoadmin-edit-view' => 'rrugën ViewVC:',
+	'repoadmin-edit-button' => 'Në rregull',
+);
+
 /** Amharic (አማርኛ)
  * @author Codex Sinaiticus
  */
@@ -4519,6 +4575,13 @@ $3',
 	'specialpages-group-developer' => 'Alat Pengembang',
 );
 
+/** Igbo (Igbo) */
+$messages['ig'] = array(
+	'code-status-ok' => 'Ngwanu',
+	'repoadmin-new-button' => 'Ké',
+	'repoadmin-edit-button' => 'Ngwanu',
+);
+
 /** Ido (Ido)
  * @author Malafaya
  */
@@ -6310,7 +6373,7 @@ Lokale wikigebruikers worden binnen haakjes weergegeven.',
 	'code-status-fixme' => 'fixme',
 	'code-status-reverted' => 'teruggedraaid',
 	'code-status-resolved' => 'opgelost',
-	'code-status-ok' => 'ok',
+	'code-status-ok' => 'OK',
 	'code-status-verified' => 'geverifieerd',
 	'code-status-deferred' => 'aangehouden',
 	'code-pathsearch-legend' => 'Op pad versies in deze repository zoeken',
@@ -7466,7 +7529,7 @@ $messages['ro'] = array(
 	'code-references' => 'Revizii în continuare',
 	'code-change-status' => "schimbat '''statutul''' a $1",
 	'code-change-tags' => "schimbat '''etichetele''' pentru $1",
-	'code-change-removed' => 'şters:',
+	'code-change-removed' => 'șters:',
 	'code-change-added' => 'adăugat:',
 	'code-old-status' => 'Statut vechi',
 	'code-new-status' => 'Statut nou',
@@ -7475,7 +7538,7 @@ $messages['ro'] = array(
 	'code-authors' => 'autori',
 	'code-tags' => 'etichete',
 	'code-tests' => 'Cazuri de test',
-	'code-author-name' => 'Introduceţi un nume de utilizator:',
+	'code-author-name' => 'Introduceți un nume de utilizator:',
 	'code-field-id' => 'Revizie',
 	'code-field-author' => 'Autor',
 	'code-field-user' => 'Comentator',
@@ -7495,7 +7558,7 @@ $messages['ro'] = array(
 	'code-rev-paths' => 'Căi modificate:',
 	'code-rev-modified-a' => 'adăugat',
 	'code-rev-modified-r' => 'înlocuit',
-	'code-rev-modified-d' => 'şters',
+	'code-rev-modified-d' => 'șters',
 	'code-rev-modified-m' => 'modificat',
 	'code-rev-status' => 'Statut:',
 	'code-rev-status-set' => 'Schimbă statut',
@@ -7505,9 +7568,9 @@ $messages['ro'] = array(
 	'code-rev-comment-by' => 'Comentariu de $1',
 	'code-rev-comment-preview' => 'Previzualizare',
 	'code-rev-inline-preview' => 'Previzualizare:',
-	'code-rev-diff' => 'Diferenţă',
+	'code-rev-diff' => 'Diferență',
 	'code-rev-diff-link' => 'dif',
-	'code-rev-purge-link' => 'curăţă',
+	'code-rev-purge-link' => 'curăță',
 	'code-status-new' => 'nou',
 	'code-status-fixme' => 'repară-mă',
 	'code-status-reverted' => 'revenit',
@@ -7519,13 +7582,13 @@ $messages['ro'] = array(
 	'code-rev-submit' => 'Salvează schimbări',
 	'code-batch-status' => 'Schimbă statut:',
 	'code-batch-tags' => 'Schimbă etichete:',
-	'codereview-batch-title' => 'Schimbaţi toate reviziile selectate',
+	'codereview-batch-title' => 'Schimbați toate reviziile selectate',
 	'codereview-batch-submit' => 'Trimite',
 	'code-releasenotes' => 'note de lansare',
-	'code-release-legend' => 'Generaţi note de lansare',
+	'code-release-legend' => 'Generați note de lansare',
 	'codereview-subtitle' => 'De la $1',
 	'codereview-reply-link' => 'răspunde',
-	'repoadmin' => 'Administraţie arhivă',
+	'repoadmin' => 'Administrație arhivă',
 	'repoadmin-new-label' => 'Nume arhivă:',
 	'repoadmin-new-button' => 'Creează',
 	'repoadmin-edit-path' => 'Cale arhivă:',
@@ -7533,10 +7596,10 @@ $messages['ro'] = array(
 	'repoadmin-edit-view' => 'Cale ViewVC:',
 	'repoadmin-edit-button' => 'OK',
 	'repoadmin-edit-sucess' => 'Arhiva „[Special:Cod/$1|$1]]” a fost modificată cu succes.',
-	'right-repoadmin' => 'Gestionaţi codurile arhivelor',
+	'right-repoadmin' => 'Gestionați codurile arhivelor',
 	'right-codereview-add-tag' => 'Adaugă noi etichete la revizii',
-	'right-codereview-remove-tag' => 'Eliminaţi etichete de la revizii',
-	'right-codereview-post-comment' => 'Adăugaţi comentarii la revizii',
+	'right-codereview-remove-tag' => 'Eliminați etichete de la revizii',
+	'right-codereview-post-comment' => 'Adăugați comentarii la revizii',
 	'right-codereview-set-status' => 'Schimbă statutul reviziilor',
 	'specialpages-group-developer' => 'Unelte pentru dezvolatori',
 );
@@ -8393,6 +8456,7 @@ $4',
 
 /** Swedish (Svenska)
  * @author Boivie
+ * @author Dafer45
  * @author Fluff
  * @author Gabbe.g
  * @author GameOn
@@ -8496,6 +8560,7 @@ $messages['sv'] = array(
 	'codereview-tests-failed2' => '$1 {{PLURAL:$2|lyckat test|lyckade tester}}, $3 {{PLURAL:$4|test|tester}} med fel:',
 	'codereview-tests-running' => 'Testfall körs...',
 	'codereview-tests-aborted' => 'Testkörning avbruten',
+	'codereview-tests-failed' => 'Misslyckades',
 	'codereview-email-subj' => '[$1] [$2]: Ny kommentar tillagd',
 	'codereview-email-body' => 'Användaren "$1" postade en kommenter på $3
 
@@ -9111,6 +9176,7 @@ $messages['tr'] = array(
 	'code-load-diff' => 'Farkları yüklüyor…',
 	'code-notes' => 'son yorumlar',
 	'code-statuschanges' => 'durum değişiklikleri',
+	'code-mycommits' => 'taahhütlerim',
 	'code-authors' => 'yazarlar',
 	'code-status' => 'durum',
 	'code-tags' => 'etiketler',
@@ -9657,6 +9723,7 @@ $messages['vi'] = array(
 	'code-rev-diff' => 'So sánh',
 	'code-rev-diff-link' => 'so sánh',
 	'code-rev-purge-link' => 'làm mới',
+	'code-rev-total' => 'Tổng số kết quả: $1',
 	'code-status-new' => 'mới',
 	'code-status-fixme' => 'cần sửa',
 	'code-status-reverted' => 'khôi phục',
@@ -9666,8 +9733,10 @@ $messages['vi'] = array(
 	'code-status-deferred' => 'hoãn',
 	'code-pathsearch-legend' => 'Tìm kiếm các thay đổi trong kho này theo đường dẫn',
 	'code-pathsearch-path' => 'Đường dẫn:',
+	'code-pathsearch-filter' => 'Áp dụng bộ lọc:',
 	'code-revfilter-cr_status' => 'Trạng thái = $1',
 	'code-revfilter-cr_author' => 'Tác giả = $1',
+	'code-revfilter-clear' => 'Tẩy trống bộ lọc',
 	'code-rev-submit' => 'Lưu các thay đổi',
 	'code-rev-submit-next' => 'Lưu và xem thay đổi chưa giải quyết sau',
 	'code-batch-status' => 'Thay đổi trạng thái:',

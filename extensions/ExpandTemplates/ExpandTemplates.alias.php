@@ -21,7 +21,7 @@ $aliases['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'ExpandTemplates' => array( 'فرد_القوالب' ),
+	'ExpandTemplates' => array( 'افرد_القوالب' ),
 );
 
 /** Bulgarian (Български) */

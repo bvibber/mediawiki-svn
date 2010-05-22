@@ -116,12 +116,22 @@ $messages['cs'] = array(
 	'configuredpages-prec-pristine' => 'čistá přednost',
 );
 
-/** German (Deutsch) */
+/** German (Deutsch)
+ * @author Kghbln
+ */
 $messages['de'] = array(
+	'configuredpages' => 'Seiten die hinsichtlich der Versionsmarkierung konfiguriert wurden',
+	'configuredpages-text' => 'Es folgt eine Liste der Seiten, deren Konfiguration zur Versionsmarkierung vom Standard der Website abweicht.
+
+Einige Einstellungen können eine Abweichung hinsichtlich der Version bewirken, die dem Leser angezeigt wird. Sie können auch den Kreis derjenigen weiter einschränken, deren Bearbeitungen keine weitere Durchsicht erfordert.',
+	'configuredpages-none' => 'Diese Liste enthält keine Seiten.',
 	'configuredpages-config' => 'Konfiguration',
+	'configuredpages-precedence' => 'Priorität:',
 	'configuredpages-prec-none' => 'zuletzt überprüft',
-	'configuredpages-prec-quality' => 'Qualitätsrangordnung',
-	'configuredpages-prec-pristine' => 'ursprüngliche Rangordnung',
+	'configuredpages-prec-quality' => 'aktueller Qualitätsstatus',
+	'configuredpages-prec-pristine' => 'neueste markierte Version',
+	'configuredpages-def-draft' => 'neueste Version',
+	'configuredpages-def-stable' => 'veröffentlichte Version',
 );
 
 /** Zazaki (Zazaki) */
@@ -395,6 +405,8 @@ $messages['ja'] = array(
  * @author გიორგიმელა
  */
 $messages['ka'] = array(
+	'configuredpages-config' => 'კონფიგურაცია',
+	'configuredpages-precedence' => 'პრიორიტეტი:',
 	'configuredpages-def-draft' => 'უკანასკნელი ვერსია',
 	'configuredpages-def-stable' => 'გამოქვეყნებული ვერსია',
 );
@@ -407,10 +419,12 @@ $messages['ko'] = array(
 	'configuredpages-text' => '다음은 기본값과 다른 검토 설정이 되어 있는 문서의 목록입니다.
 
 어떤 설정은 독자에게 보여지는 판을 바꾸거나 검토 없이 편집할 수 있는 사용자를 제한할 수 있습니다.',
-	'configuredpages-none' => '이 목옥에 문서가 없습니다.',
+	'configuredpages-none' => '이 목록에 문서가 없습니다.',
 	'configuredpages-config' => '설정',
 	'configuredpages-precedence' => '우선 순위:',
 	'configuredpages-prec-none' => '최근 검토된 판',
+	'configuredpages-prec-quality' => '최근의 양질 문서',
+	'configuredpages-prec-pristine' => '최근의 깨끗한 문서',
 	'configuredpages-def-draft' => '최신 버전',
 	'configuredpages-def-stable' => '공개된 버전',
 );
@@ -603,7 +617,7 @@ $messages['pt-br'] = array(
 /** Romanian (Română) */
 $messages['ro'] = array(
 	'configuredpages-prec-none' => 'nicio prioritate',
-	'configuredpages-prec-quality' => 'preferinţă pentru calitate',
+	'configuredpages-prec-quality' => 'preferință pentru calitate',
 );
 
 /** Tarandíne (Tarandíne) */
@@ -638,8 +652,18 @@ $messages['sah'] = array(
 	'configuredpages-prec-pristine' => 'эрдэтээҥҥитэ баһыйыылаах',
 );
 
-/** Slovak (Slovenčina) */
+/** Sardinian (Sardu)
+ * @author Andria
+ */
+$messages['sc'] = array(
+	'configuredpages-config' => 'Configuratzione',
+);
+
+/** Slovak (Slovenčina)
+ * @author Helix84
+ */
 $messages['sk'] = array(
+	'configuredpages' => 'Stránky s nastavením kontroly',
 	'configuredpages-prec-none' => 'bez precedencie',
 	'configuredpages-prec-quality' => 'precedencia podľa kvality',
 	'configuredpages-prec-pristine' => 'čistá precedencia',
@@ -733,11 +757,17 @@ $messages['vep'] = array(
 	'configuredpages-prec-pristine' => 'koskmatomuden tobmuz',
 );
 
-/** Vietnamese (Tiếng Việt) */
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
 $messages['vi'] = array(
+	'configuredpages-none' => 'Danh sách không có trang nào.',
+	'configuredpages-config' => 'Thiết lập',
 	'configuredpages-prec-none' => 'không có bản trước',
 	'configuredpages-prec-quality' => 'bản chất lượng trước',
 	'configuredpages-prec-pristine' => 'bản trong sạch trước',
+	'configuredpages-def-draft' => 'phiên bản mới nhất',
+	'configuredpages-def-stable' => 'phiên bản xuất bản',
 );
 
 /** Simplified Chinese (‪中文(简体)‬) */
@@ -747,10 +777,21 @@ $messages['zh-hans'] = array(
 	'configuredpages-prec-pristine' => '原始优先级',
 );
 
-/** Traditional Chinese (‪中文(繁體)‬) */
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Horacewai2
+ */
 $messages['zh-hant'] = array(
+	'configuredpages' => '頁面已有複審設定',
+	'configuredpages-text' => '下面是已有和站點預設設定不同的審核設定。
+
+部份設定的更改是向讀者展示的。',
+	'configuredpages-none' => '沒有頁面在這個清單中',
+	'configuredpages-config' => '設定',
+	'configuredpages-precedence' => '優先級：',
 	'configuredpages-prec-none' => '沒有優先級',
 	'configuredpages-prec-quality' => '質量優先級',
 	'configuredpages-prec-pristine' => '原始優先級',
+	'configuredpages-def-draft' => '最新版本',
+	'configuredpages-def-stable' => '已出版的內容',
 );
 

@@ -22,7 +22,7 @@ $aliases['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'CheckUser' => array( 'تدقيق_مستخدم' ),
+	'CheckUser' => array( 'تدقيق_يوزر' ),
 );
 
 /** Assamese (অসমীয়া) */
@@ -53,6 +53,11 @@ $aliases['dsb'] = array(
 /** Greek (Ελληνικά) */
 $aliases['el'] = array(
 	'CheckUser' => array( 'ΈλεγχοςΧρήστη' ),
+);
+
+/** Esperanto (Esperanto) */
+$aliases['eo'] = array(
+	'CheckUser' => array( 'Kontroli uzanton' ),
 );
 
 /** Spanish (Español) */

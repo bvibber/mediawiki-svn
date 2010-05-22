@@ -82,6 +82,32 @@ riddler|Riddler',
 	'right-voteadmin' => 'Resultate van stemmings bekyk',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'vote' => 'Votim',
+	'vote-desc' => 'Ofron aftësive të thjeshtë votimi',
+	'vote-header' => "Ju mund të votojnë për'''Lartë zot e Botërore''' këtu!",
+	'vote-current' => "Vota juaj e tanishme është për '''$1'''.",
+	'vote-legend' => 'Vendi apo ndryshuar votave',
+	'vote-caption' => 'Zgjedhja juaj:',
+	'vote-choices' => 'joker|The Joker
+penguin|The Penguin
+riddler|Riddler',
+	'vote-submit' => 'Votim',
+	'vote-registered' => 'Vota juaj është regjistruar.',
+	'vote-view-results' => 'Shiko rezultatet',
+	'vote-results' => 'Rezultatet Voto',
+	'vote-results-choice' => 'Zgjedhje',
+	'vote-results-count' => 'Akuzë',
+	'vote-results-none' => 'Nuk ka vota kanë qenë të vendosur në këtë kohë.',
+	'vote-login' => 'Ju duhet [$1 hyni brënda] për të votuar.',
+	'vote-invalid-choice' => 'Ju duhet të zgjidhni një nga opsionet në dispozicion.',
+	'right-vote' => 'Votim',
+	'right-voteadmin' => 'Shiko rezultatet votave',
+);
+
 /** Amharic (አማርኛ)
  * @author Codex Sinaiticus
  */
@@ -1512,22 +1538,22 @@ riddler|O Charada',
  * @author Minisarm
  */
 $messages['ro'] = array(
-	'vote' => 'Votaţi',
-	'vote-desc' => 'Furnizează capacităţi simple de votare',
+	'vote' => 'Votați',
+	'vote-desc' => 'Furnizează capacități simple de votare',
 	'vote-current' => "Votul dumneavoastră curent este pentru '''$1'''.",
-	'vote-legend' => 'Plasaţi sau modificaţi votul',
+	'vote-legend' => 'Plasați sau modificați votul',
 	'vote-caption' => 'Alegerea dumneavoastră:',
 	'vote-submit' => 'Votează',
 	'vote-registered' => 'Votul dumneavoastră a fost înregistrat.',
 	'vote-view-results' => 'Vizualizează rezultatele',
 	'vote-results' => 'Rezultatele votului',
-	'vote-results-choice' => 'Alegeţi',
+	'vote-results-choice' => 'Alegeți',
 	'vote-results-count' => 'Numărare',
 	'vote-results-none' => 'Niciun vot nu a fost plasat în acest timp.',
-	'vote-login' => 'Trebuie [$1 să vă autentificaţi] pentru a vota.',
-	'vote-invalid-choice' => 'Trebuie să selectaţi una din opţiunile disponibile.',
-	'right-vote' => 'Votaţi',
-	'right-voteadmin' => 'Vedeţi rezultatele votului',
+	'vote-login' => 'Trebuie [$1 să vă autentificați] pentru a vota.',
+	'vote-invalid-choice' => 'Trebuie să selectați una din opțiunile disponibile.',
+	'right-vote' => 'Votați',
+	'right-voteadmin' => 'Vedeți rezultatele votului',
 );
 
 /** Tarandíne (Tarandíne)

@@ -18,11 +18,6 @@ $aliases['ar'] = array(
 	'Captcha' => array( 'كابتشا' ),
 );
 
-/** Egyptian Spoken Arabic (مصرى) */
-$aliases['arz'] = array(
-	'Captcha' => array( 'كابتشا' ),
-);
-
 /** Estonian (Eesti) */
 $aliases['et'] = array(
 	'Captcha' => array( 'Robotilõks' ),
@@ -45,7 +40,7 @@ $aliases['mk'] = array(
 
 /** Malayalam (മലയാളം) */
 $aliases['ml'] = array(
-	'Captcha' => array( 'കാപ്ച' ),
+	'Captcha' => array( 'ക്യാപ്ച' ),
 );
 
 /** Simplified Chinese (‪中文(简体)‬) */

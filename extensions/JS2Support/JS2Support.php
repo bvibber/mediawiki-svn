@@ -14,54 +14,29 @@ $wgExtensionCredits['other'][] = array(
 );
 
 $js2Dir = dirname( __FILE__ ) . '/';
-$wgExtensionMessagesFiles[ 'JS2Support' ] = $js2Dir . 'JS2Support.i18n.php';
 
+// Localizations
+$wgExtensionMessagesFiles[ 'JS2Support' ] =
+ 	dirname( __FILE__ ) . '/JS2Support.i18n.php';
+
+// Hooks
+$wgAutoloadClasses['JS2SupportHooks'] =
+	dirname( __FILE__ ) . "/JS2Support.hooks.php";
 
 /**
- * Setup the js2 extension:
+ * Add Setup the js2 extension hook:
  */
-$wgExtensionFunctions[] = 'wfSetupJS2';
-function wfSetupJS2(){
-	global $wgOut, $js2Dir, $wgAutoloadClasses, $wgScriptLoaderNamedPaths,
-	$wgExtensionJavascriptLoader, $wgEnableTestJavascriptModules;
-
-	// Remap output page as part of the extension setup
-	$wgOut = new StubObject( 'wgOut', 'ScriptLoaderOutputPage' );
-	$wgAutoloadClasses[ 'ScriptLoaderOutputPage' ] = $js2Dir . 'ScriptLoaderOutputPage.php';
-
-	// Include all the mediaWiki autoload classes:
-	require( $js2Dir . 'JS2AutoLoader.php');
-
-	// Add the core test module loaders (extensions can add their own test modules referencing this global )
-	if( $wgEnableTestJavascriptModules ) {
-		$wgExtensionJavascriptLoader[] = 'extensions/JS2Support/tests/loader.js';
-	}
-
-
-	// Update all the javascript modules classNames and localization by reading respective loader.js files
-	// @dependent on all extensions defining $wgExtensionJavascriptLoader paths in config file ( not in setup )
-	// @NOTE parsing javascript could be delayed or avoided if we require more php extension configuration
-	// 		extension would have to configure the path to javascript module localizations and possibly class paths
-	//
-	// @NOTE runtime for loadClassPaths with 8 or so loaders with 100 or so named paths is
-	// is around .002 seconds on my laptop. Could probably be further optimized and of course it only runs
-	// on non-cached pages.
-	jsClassLoader::loadClassPaths();
-}
+$wgExtensionFunctions[] = 'JS2SupportHooks::setup';
 
 /**
  * MakeGlobalVariablesScript hook ( add the wgScriptLoaderPath var )
  */
-$wgHooks['MakeGlobalVariablesScript'][] = 'js2SupportAddJSVars';
-function js2SupportAddJSVars( &$vars ) {
-	global $wgExtensionAssetsPath;
-	$vars = array_merge( $vars,
-		array(
-			'wgScriptLoaderLocation' => $wgExtensionAssetsPath . 'JS2Support/mwScriptLoader.php'
-		)
-	);
-	return true;
-}
+$wgHooks['MakeGlobalVariablesScript'][] = 'JS2SupportHooks::addJSVars';
+
+/**
+* Add a preference hook
+*/
+$wgHooks['GetPreferences'][] = 'JS2SupportHooks::addPreferences';
 
 /****************************
 * Configuration
@@ -75,10 +50,10 @@ $wgEnableJS2system = true;
 
 
 /**
- * For defining the location of loader.js files of
+ * For naming javascript modules in extensions
  * for js-modules. ( ie modules hosted inside of extensions )
  */
-$wgExtensionJavascriptLoader = array();
+$wgExtensionJavascriptModules = array();
 
 /**
  * The set of script-loader Named Paths, populated via extensions and javascript module loaders

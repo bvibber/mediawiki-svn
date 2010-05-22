@@ -45,6 +45,21 @@ $messages['af'] = array(
 	'createpage_submitbutton' => 'OK',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'createpage' => 'Krijo një faqe',
+	'createpage-desc' => 'Adds a [[Special:CreatePage|faqe speciale]] për të krijuar faqe të reja',
+	'createpage_submitbutton' => 'Submit',
+	'createpage_instructions' => 'Shkruani titullin e faqes që ju dëshironi për të krijuar:',
+	'createpage_entertitle' => 'Ju lutemi shkruani një titull për faqen tuaj.',
+	'createpage_titleexists' => 'Një faqe me të [[$1]] titullin ekziston. Doni të redaktuar faqe që ekziston?',
+	'createpage_tryagain' => 'Nr i duan të krijojnë një faqe të re me një titull të dallueshëm.',
+	'createpage_editexisting' => 'Po. Unë dua të kontribuojë në faqe që ekziston.',
+	'createpage-badtitle' => '"$1" nuk mund të përdoret si një titull në faqe',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK
@@ -833,10 +848,10 @@ $messages['pt-br'] = array(
 $messages['ro'] = array(
 	'createpage' => 'Creează o pagină',
 	'createpage_submitbutton' => 'Trimite',
-	'createpage_instructions' => 'Introduceţi titlul paginii pe care doriţi să o creaţi:',
-	'createpage_entertitle' => 'Vă rugăm să introduceţi un titlu pentru pagina dumneavoastră.',
+	'createpage_instructions' => 'Introduceți titlul paginii pe care doriți să o creați:',
+	'createpage_entertitle' => 'Vă rugăm să introduceți un titlu pentru pagina dumneavoastră.',
 	'createpage_titleexists' => 'O pagină cu titlul [[$1]] deja există.
-Doriţi să modificaţi pagina existentă?',
+Doriți să modificați pagina existentă?',
 	'createpage_tryagain' => 'Nu. Doresc să creez o pagină nouă cu un titlu diferit.',
 	'createpage_editexisting' => 'Da. Doresc să contribui la pagina existentă.',
 	'createpage-badtitle' => '"$1" nu poate fi folosit drept titlu',
@@ -913,6 +928,13 @@ $messages['sk'] = array(
 	'createpage_tryagain' => 'Nie, chcem vytvoriť novú stránku s iným názovm.',
 	'createpage_editexisting' => 'Áno, chcem prispieť k existujúcej stránke.',
 	'createpage-badtitle' => '„$1“ nemožno použiť ako názov stránky',
+);
+
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'createpage_submitbutton' => 'Potrdi',
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))

@@ -309,12 +309,14 @@ $messages['hsb'] = array(
 
 /** Hungarian (Magyar)
  * @author Dani
+ * @author Glanthor Reviol
  */
 $messages['hu'] = array(
 	'categoryintersection' => 'Kategóriák metszete',
 	'categoryintersection-desc' => 'Fenntart egy hashértékeket tartalmazó táblát [[Special:CategoryIntersection|kategóriametszetek]] létrehozásához',
 	'categoryintersection-doit' => 'Lapok megjelenítése, melyek a következő összes kategóriában benne vannak',
 	'categoryintersection-maxcategories' => 'Egyszerre maximum $1 kategóriának lehet lekérni a metszetét.',
+	'categoryintersection-mincategories' => 'Legalább két kategóriát meg kell adnod.',
 	'categoryintersection-results' => 'A keresésnek {{PLURAL:$1|egy|$1}} eredménye van.',
 );
 
@@ -584,9 +586,9 @@ $messages['pt-br'] = array(
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
-	'categoryintersection' => 'Intersecţia categoriilor',
-	'categoryintersection-desc' => 'Menţine un tabel cu valori hash pentru [[Special:CategoryIntersection|intersecţiile categoriilor]] dintr-o pagină',
-	'categoryintersection-doit' => 'Afişează paginile în toate aceste categorii',
+	'categoryintersection' => 'Intersecția categoriilor',
+	'categoryintersection-desc' => 'Menține un tabel cu valori hash pentru [[Special:CategoryIntersection|intersecțiile categoriilor]] dintr-o pagină',
+	'categoryintersection-doit' => 'Afișează paginile în toate aceste categorii',
 	'categoryintersection-maxcategories' => 'Numărul maxim permis de categorii intersectante este $1.',
 	'categoryintersection-results' => 'Căutarea a returnat $1 {{PLURAL:$1|rezultat|rezultate}}.',
 );
@@ -741,6 +743,7 @@ $messages['tl'] = array(
 );
 
 /** Turkish (Türkçe)
+ * @author Joseph
  * @author Vito Genovese
  */
 $messages['tr'] = array(
@@ -748,6 +751,7 @@ $messages['tr'] = array(
 	'categoryintersection-desc' => 'Bir sayfadaki [[Special:CategoryIntersection|kategori kesişmeleri]] için sağlama değerlerinden oluşan bir tablo tutar',
 	'categoryintersection-doit' => 'Tüm bu kategorilerdeki sayfaları listele',
 	'categoryintersection-maxcategories' => 'İzin verilen azami kesişen kategori sayısı $1 şeklindedir.',
+	'categoryintersection-mincategories' => 'En az iki kategori eklemelisiniz.',
 	'categoryintersection-results' => 'Arama, $1 {{PLURAL:$1|sonuç|sonuç}} verdi.',
 );
 

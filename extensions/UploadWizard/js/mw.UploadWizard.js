@@ -1,108 +1,12 @@
-mw.addMessages( {
-	"mwe-upwiz-step-file": "1. Upload your files",
-	"mwe-upwiz-step-deeds": "2. Add licenses",
-	"mwe-upwiz-step-details": "3. Add descriptions",
-	"mwe-upwiz-step-thanks": "4. Use your files",
-	"mwe-upwiz-intro": "Welcome to Wikimedia Commons, a repository of images, sounds, and movies that anyone can freely download and use. Add to humanity's knowledge by uploading files that could be used for an educational purpose.",
-	
-	"mwe-upwiz-add-file-n": "Add another file",
-	"mwe-upwiz-add-file-0": "Click here to add a file for upload",
-	"mwe-upwiz-browse": "Browse...",
-	"mwe-upwiz-transported": "OK",
-	"mwe-upwiz-click-here": "Click here to select a file",
-	"mwe-upwiz-uploading": "uploading...",
-	"mwe-upwiz-editing": "editing...",
-	"mwe-upwiz-remove-upload": "Remove this file from the list of files to upload",
-	"mwe-upwiz-remove-description": "Remove this description",
-	"mwe-upwiz-upload": "Upload",
-	"mwe-upwiz-upload-count": "$1 of $2 files uploaded",
-	"mwe-upwiz-progressbar-uploading": "uploading",
-	"mwe-upwiz-remaining": "$1 remaining",
-	"mwe-upwiz-deeds-intro": "Thank you! Now we need to set a license for these files, so everyone can legally view or modify them. First, we'll have to know where you got them.",
-	"mwe-upwiz-details-intro": "Now we need some basic information about the files.",
-	"mwe-upwiz-source-ownwork": "This file is my own work.",
-	"mwe-upwiz-source-ownwork-plural": "These files are my own work.",
-	"mwe-upwiz-source-ownwork-assert": "I, $1, the copyright holder of this work, hereby grant anyone the right to use this work for any purpose, as long as they credit me and share derivative work under the same terms.",
-	"mwe-upwiz-source-ownwork-assert-plural": "I, $1, the copyright holder of these works, hereby grant anyone the right to use these works for any purpose, as long as they credit me and share derivative work under the same terms.",
-	"mwe-upwiz-source-ownwork-assert-custom": "I, $1, the copyright holder of this work, hereby publish this work under the following license(s):",
-	"mwe-upwiz-source-ownwork-assert-custom-plural": "I, $1, the copyright holder of these works, hereby publish these works under the following license(s):",
-	"mwe-upwiz-source-ownwork-assert-note": "This means you release your work under a double Creative Commons Attribution ShareAlike and GFDL license.",
-	"mwe-upwiz-source-permission": "Their author gave you explicit permission to upload them",
-	"mwe-upwiz-source-thirdparty": "This file is not my own work.",
-	"mwe-upwiz-source-thirdparty-plural": "These files are not my own work.",
-	"mwe-upwiz-source-thirdparty-intro" : "Please enter the address where you found each file.",
-	"mwe-upwiz-source-thirdparty-custom-plural-intro" : "If all files have the same source, author, and copyright status, you may enter them only once for all of them.",
-	"mwe-upwiz-source-thirdparty-license" : "The copyright holder of this work published them under the following license(s):",
-	"mwe-upwiz-source-thirdparty-license-plural" : "The copyright holder of these works published them under the following license(s):",
-	"mwe-upwiz-source-thirdparty-accept": "OK",
-	"mwe-upwiz-source-custom": "Did you know? You can <a href=\"$1\">customize</a> the default options you see here.",
-	"mwe-upwiz-more-options": "more options...",
-	"mwe-upwiz-fewer-options": "fewer options...",
-	"mwe-upwiz-desc": "Description in",
-	"mwe-upwiz-desc-add-n": "add a description in another language",
-	"mwe-upwiz-desc-add-0": "add a description",
-	"mwe-upwiz-title": "Title",
-	"mwe-upwiz-categories-intro": "Help people find your works by adding categories",
-	"mwe-upwiz-categories-another": "Add other categories",
-	"mwe-upwiz-previously-uploaded": "This file was previously uploaded to $1 and is already available <a href=\"$2\">here</a>.",
-	"mwe-upwiz-about-this-work": "About this work",
-	"mwe-upwiz-media-type": "Media type",
-	"mwe-upwiz-date-created": "Date created",
-	"mwe-upwiz-location": "Location",
-	"mwe-upwiz-copyright-info": "Copyright information",
-	"mwe-upwiz-author": "Author(s)",
-	"mwe-upwiz-license": "License",
-	"mwe-upwiz-about-format": "About the file",
-	"mwe-upwiz-autoconverted": "This file was automatically converted to the $1 format",
-	"mwe-upwiz-filename-tag": "File name:",
-	"mwe-upwiz-other": "Other information",
-	"mwe-upwiz-other-prefill": "Free wikitext field",
-	"mwe-upwiz-showall": "show all",
-	"mwe-upwiz-source": "Source",
-	"mwe-upwiz-macro-edit-intro": "Choose a license first above, then you can add some descriptions and other information to your uploads.",
-	"mwe-upwiz-macro-edit": "Update descriptions",
-	"mwe-upwiz-thanks-intro": "Thanks for uploading your works! You can now use your files on a Wikipedia article or link to them from elsewhere on the web.",
-	"mwe-upwiz-thanks-link": "This file is now available at <b><tt>$1</tt></b>.",
-	"mwe-upwiz-thanks-wikitext": "<b>To use it in a Wikipedia article</b>, copy this text into an article: ",
-	"mwe-upwiz-thanks-url": "<b>To link to it in HTML</b>, copy this HTML code: ",
+/**
+ * Include all the uploadWizard msgs
+ */
 
-	"mwe-upwiz-upload-error-bad-filename-extension": "This wiki does not accept filenames with the extension \"$1\".",
-	"mwe-upwiz-upload-error-duplicate": "This file was previously uploaded to this wiki.",
-	"mwe-upwiz-upload-error-stashed-anyway": "Post anyway?",
-	"mwe-upwiz-ok": "OK",
-	"mwe-upwiz-cancel": "Cancel",
-	"mwe-upwiz-change": "(change)",
-
-	"mwe-upwiz-fileexists" : "A file with this name exists already. Please check <b><tt>$1<\/tt><\/b> if you are not sure if you want to replace it.",
-	"mwe-upwiz-thumbnail-more" : "Enlarge",
-	"mwe-upwiz-overwrite" : "Replace the file",
-
-	"mwe-copyright-macro": "As above",
-	"mwe-copyright-custom": "Custom",
-
-	"mwe-upwiz-next": "Next",
-	"mwe-upwiz-home": "Go to Wiki home page",
-	"mwe-upwiz-upload-another": "Upload more files",
-
-	"mwe-prevent-close": "Your files are still uploading. Are you sure you want to navigate away from this page?",
-
-	"mwe-upwiz-files-complete": "Your files finished uploading!",
-	"mwe-upwiz-deeds-later": "Set deeds and licenses for each file individually on the next page",
-
-	"mwe-upwiz-tooltip-author": "The name of the person who took the photo, or painted the picture, drew the drawing, etc.",
-	"mwe-upwiz-tooltip-source": "Where this digital file came from -- could be a URL, or a book or publication",
-	"mwe-upwiz-tooltip-sign": "You can use your wiki User name or your real name. In both cases, this will be linked to your wiki User page",
-	"mwe-upwiz-tooltip-title": "A short title for the image. You may use plain language with spaces, but no line breaks. This title must be unlike all other titles in this wiki.",
-	"mwe-upwiz-tooltip-description": "Briefly describe everything notable about the work. For a photo, mention the main things that are depicted, the occasion or the place.",
-	"mwe-upwiz-tooltip-other": "Any other information you want to include about this work. You may use wikitext code.",
-
-	"mwe-upwiz-tooltip-more-info": "Learn more."
-	
-} );
+mw.includeAllModuleMessages();
 
 
 /**
- * 
+ * Sort of an abstract class for deeds
  */
 mw.UploadWizardDeed = function() {
 	var _this = this;
@@ -139,33 +43,44 @@ mw.UploadWizardDeed.prototype = {
 
 };
 
+
 mw.ProgressBar = function( selector, text ) {
 	var _this = this;
 	// XXX need to figure out a way to put text inside bar
-
-	_this.progressBarDiv = $j('<div></div>')
-				.addClass("mwe-upwiz-progress-bar")
-				.progressbar( { value: 0 } );
-
-	_this.timeRemainingDiv = $j('<div></div>').addClass("mwe-upwiz-etr");
-
-	_this.countDiv = $j('<div></div>').addClass("mwe-upwiz-count");
-
-	_this.beginTime = undefined;
-	
-	$j( selector ).html( 
-		$j('<div />').addClass( 'mwe-upwiz-progress' )
-			.append( $j( '<div></div>' )
-				.addClass( 'mwe-upwiz-progress-bar-etr' )
-				.append( _this.progressBarDiv )
-				.append( _this.timeRemainingDiv ) )
-			.append( $j( _this.countDiv ) )
+	_this.$selector = $j( selector );
+	_this.$selector.html( 
+		'<div class="mwe-upwiz-progress">'
+		+   '<div class="mwe-upwiz-progress-bar-etr" style="display: none">'
+		+     '<div class="mwe-upwiz-progress-bar"></div>'
+		+     '<div class="mwe-upwiz-etr"></div>'
+		+   '</div>'
+		+   '<div class="mwe-upwiz-count"></div>'
+		+ '</div>'
 	);
+
+	_this.$selector.find( '.mwe-upwiz-progress-bar' ).progressbar( { value : 0 } );
+	
+	_this.beginTime = undefined;
 			
 };
 
 mw.ProgressBar.prototype = {
 
+	/**
+	 * Show the progress bar with a slideout motion
+         */
+	showBar: function() {
+		this.$selector.find( '.mwe-upwiz-progress-bar-etr' ).slideDown( 500 );
+	},
+
+	
+	/**
+	 * Hide the progress bar with a slideup motion
+	 */
+	hideBar: function() {
+		this.$selector.find( '.mwe-upwiz-progress-bar-etr' ).slideUp( 500 );
+	},
+	
 	/**
 	 * sets the beginning time (useful for figuring out estimated time remaining)
 	 * if time parameter omitted, will set beginning time to now
@@ -173,8 +88,7 @@ mw.ProgressBar.prototype = {
 	 * @param time  optional; the time this bar is presumed to have started (epoch milliseconds)
 	 */ 
 	setBeginTime: function( time ) {
-		var _this = this;
-		_this.beginTime = time ? time : ( new Date() ).getTime();
+		this.beginTime = time ? time : ( new Date() ).getTime();
 	},
 
 	/**
@@ -182,8 +96,7 @@ mw.ProgressBar.prototype = {
 	 * @param total an integer, for display e.g. uploaded 1 of 5, this is the 5
 	 */ 
 	setTotal: function(total) {
-		var _this = this;
-		_this.total = total;
+		this.total = total;
 	},	
 
 	/**
@@ -196,7 +109,7 @@ mw.ProgressBar.prototype = {
 	showProgress: function( fraction ) {
 		var _this = this;
 
-		_this.progressBarDiv.progressbar( 'value', parseInt( fraction * 100, 10 ) );
+		_this.$selector.find( '.mwe-upwiz-progress-bar' ).progressbar( 'value', parseInt( fraction * 100, 10 ) );
 
 		var remainingTime;
 		if (_this.beginTime === null) {
@@ -206,8 +119,21 @@ mw.ProgressBar.prototype = {
 		}
 
 		if ( remainingTime !== null ) {
-			_this.timeRemainingDiv
-				.html( gM( 'mwe-upwiz-remaining', mw.seconds2npt(parseInt(remainingTime / 1000), 10) ) );
+			var tm = mw.seconds2tm( parseInt( remainingTime / 1000, 10 ) );
+			var seconds = tm[0];
+			var minutes = tm[1];
+			var hours = tm[2];
+			var timeString;
+			if (hours == 0) {
+				if (minutes == 0) {
+					timeString = gM( 'mwe-upwiz-secs-remaining', seconds )
+				} else {
+					timeString = gM( 'mwe-upwiz-mins-secs-remaining', minutes, seconds )
+				}
+			} else {
+				timeString = gM( 'mwe-upwiz-hrs-mins-secs-remaining', hours, minutes, seconds );
+			}
+			_this.$selector.find( '.mwe-upwiz-etr' ).html( timeString )
 		}
 	},
 
@@ -236,7 +162,9 @@ mw.ProgressBar.prototype = {
 	 */
 	showCount: function( count ) {
 		var _this = this;
-		_this.countDiv.html( gM( 'mwe-upwiz-upload-count', [ count, _this.total ] ) );
+		_this.$selector
+			.find( '.mwe-upwiz-count' )
+			.html( gM( 'mwe-upwiz-upload-count', [ count, _this.total ] ) );
 	}
 
 
@@ -256,7 +184,7 @@ mw.ProgressBar.prototype = {
  * @param values  (optional) array of license key names to activate by default
  * @param change  (optional) function to execute when any value changes
  */
-mw.UploadWizardLicenseInput = function( div, values ) {
+mw.UploadWizardLicenseInput = function( selector, values ) {
 	var _this = this;
 
 	_this.change = function() {};
@@ -274,14 +202,15 @@ mw.UploadWizardLicenseInput = function( div, values ) {
 
 	_this.inputs = [];
 
-	$div = $j( div );
+	_this.$selector = $j( selector );
+	_this.$selector.append( $j( '<div class="mwe-error"></div>' ) );
 	$j.each( _this.licenses, function( key, data ) {
 		var id = 'license_' + key + '_' + c;
 		var input = $j( '<input />' ) 
 			.attr( { id: id, type: 'checkbox', value: key } )
 			.click( function() { _this.change() } );
 		data.input = input.get(0);
-		$div.append( 
+		_this.$selector.append( 
 			data.input,
 			$j( '<label />' ).attr( { 'for': id } ).html( data.text ),
 			$j( '<br/>' )
@@ -348,6 +277,26 @@ mw.UploadWizardLicenseInput.prototype = {
 		} );
 		return templates;
 	},
+
+	/**
+	 * Check if a valid value is set, 
+	 * Side effect: add notes to the interface if no valid value
+	 * @return boolean; true if a value set, false otherwise
+	 */
+	validate: function() {
+		var isValid = this.isSet();
+		if (!isValid) {
+			var $errorEl = this.$selector.find( '.mwe-error' )
+			$errorEl.html( gM( 'mwe-upwiz-deeds-need-license' ) ).show();
+			var $inputs = _this.$selector.find( 'input[type=checkbox]' )
+			$inputs.bind( 'click.hideError', function() {
+				$errorEl.hide();
+				$inputs.unbind( 'click.hideError' );
+			} )	
+		}
+		return isValid;
+	},
+
 
 	/**
   	 * Returns true if any license is set
@@ -453,7 +402,8 @@ mw.UploadWizardUpload.prototype = {
 			}
 
 			// and other errors that result in a stash
-		} else if ( 0 /* actual failure */ ) {
+		} else {
+			alert("failure!");
 			// we may want to tag or otherwise queue it as an upload to retry
 		}
 		
@@ -1037,7 +987,6 @@ mw.UploadWizardDetails = function( upload, containerDiv ) {
 	// descriptions
 	_this.descriptionsDiv = $j( '<div class="mwe-upwiz-details-descriptions mwe-upwiz-details-input"></div>' );
 	
-
 	_this.descriptionAdder = $j( '<a class="mwe-upwiz-desc-add"/>' )
 					.attr( 'href', '#' )
 					.html( gM( 'mwe-upwiz-desc-add-0' ) )
@@ -1055,7 +1004,7 @@ mw.UploadWizardDetails = function( upload, containerDiv ) {
 	//    XXX make sure they can't use ctrl characters or returns or any other bad stuff.
 	_this.titleInput = $j( '<textarea type="text" rows="1" class="mwe-title mwe-long-textarea"></textarea>' )
 		.attr( 'title', gM( 'mwe-upwiz-tooltip-title' ) )
-		.tipsy( { gravity: 'w', trigger: 'focus' } )
+		.tipsyPlus()
 		.keyup( function() { 
 			_this.setFilenameFromTitle();
 		} )
@@ -1125,7 +1074,7 @@ mw.UploadWizardDetails = function( upload, containerDiv ) {
 	_this.otherInformationInput = $j( '<textarea class="mwe-upwiz-other-textarea"></textarea>' )
 		.growTextArea()
 		.attr( 'title', gM( 'mwe-upwiz-tooltip-other' ) )
-		.tipsy( { gravity: 'w', trigger: 'focus' } );
+		.tipsyPlus();
 
 	var otherInformationDiv = $j('<div></div>')	
 		.append( $j( '<div class="mwe-upwiz-details-more-label">' ).append( gM( 'mwe-upwiz-other' ) ) ) 
@@ -1165,15 +1114,12 @@ mw.UploadWizardDetails.prototype = {
 		var _this = this;
 		_this.copyrightInfoFieldset.show();
 		_this.upload.wizardDeedChooser = _this.upload.deedChooser;
-		_this.upload.deedChooser = new mw.UploadWizardDeedChooser( _this.deedDiv );
+		_this.upload.deedChooser = new mw.UploadWizardDeedChooser( 
+			_this.deedDiv,
+			[ new mw.UploadWizardDeedOwnWork(), 
+			  new mw.UploadWizardDeedThirdParty() ]
+		);
 	},
-
-	useDeedChooser: function( deedChooser ) {
-		var _this = this;
-		_this.upload.deedChooser = deedChooser;
-		_this.deedDiv.empty();
-	},
-
 
 	/**
 	 * Sets the filename from the title plus this upload's extension.
@@ -1313,6 +1259,7 @@ mw.UploadWizardDetails.prototype = {
 	recountDescriptions: function() {
 		var _this = this;
 		// if there is some maximum number of descriptions, deal with that here
+		// XXX use mediawiki PLURAL, not -0 -n
 		$j( _this.descriptionAdder ).html( gM( 'mwe-upwiz-desc-add-' + ( _this.descriptions.length == 0 ? '0' : 'n' )  )  );
 	},
 
@@ -1897,7 +1844,7 @@ mw.UploadWizard.prototype = {
 		       +     '<div id="mwe-upwiz-macro">'
 		       +       '<div id="mwe-upwiz-macro-progress" class="ui-helper-clearfix"></div>'
 		       +       '<div id="mwe-upwiz-macro-choice">' 
-		       +  	 '<div>' + gM( 'mwe-upwiz-details-intro' ) + '</div>'
+		       +  	 '<div>' + gM( 'mwe-upwiz-details-intro' ) + '</div>'  // XXX PLURAL
 		       +       '</div>'
 		       +       '<div id="mwe-upwiz-macro-files"></div>'
 		       +     '</div>'
@@ -1936,97 +1883,117 @@ mw.UploadWizard.prototype = {
 			_this.startUploads(); 
 		} );
 
+
+		// handler for next button
 		$j( '#mwe-upwiz-stepdiv-file .mwe-upwiz-button-next').click( function() {
-			_this.moveToStep( 'deeds' );
+			// check if there is an upload at all
+			if ( _this.uploads.length === 0 ) {
+				alert( gM( 'mwe-upwiz-file-need-file' ) );
+				return;
+			}
+
+	
+			// check if all uploads are finished. The upload with the most advanced state 
+			// will be copied to 'overallState'
+			var overallState = 'new';
+			$j.each( _this.uploads, function( i, upload ) {
+				if ( upload.state == 'transporting' ) {
+					overallState = 'transporting';
+				} else if ( upload.state == 'transported' && overallState != 'transporting' ) {
+					overallState = 'transported';
+				}
+			} );
+
+			// if uploads aren't initiated or finished uploading, throw up errors, otherwise, let's
+			// go to the next step.
+			if ( overallState == 'new' ) {
+				alert( gM( 'mwe-upwiz-file-need-start' ) );
+			} else if ( overallState == 'transporting' ) {
+				alert( gM( 'mwe-upwiz-file-need-complete' ) );
+			} else if ( overallState == 'transported' ) {
+
+
+				// okay all uploads are done, we're ready to go to the next step
+
+				// do some last minute prep before advancing to the DEEDS page
+
+				// these deeds are standard
+				var deeds = [
+					new mw.UploadWizardDeedOwnWork( _this.uploads.length ),
+					new mw.UploadWizardDeedThirdParty( _this.uploads.length ),
+				];
+				
+				// if we have multiple uploads, also give them the option to set 
+				// licenses individually
+				if ( _this.uploads.length > 1 ) {
+					var customDeed = $j.extend( new mw.UploadWizardDeed(), {
+						validate: function() { return true; },
+						$formFields: null,
+						name: 'custom',
+					} );
+					deeds.push( customDeed );
+				}
+
+				_this.deedChooser = new mw.UploadWizardDeedChooser( 
+					'#mwe-upwiz-deeds', 
+					deeds,
+					_this.uploads.length );
+			
+				$j( '<div>' ).html( gM( 'mwe-upwiz-deeds-macro-prompt' ) )
+					.insertBefore ( _this.deedChooser.$selector.find( '.mwe-upwiz-deed-ownwork' ) );
+
+				if ( _this.uploads.length > 1 ) {
+					$j( '<div style="margin-top: 1em">' ).html( gM( 'mwe-upwiz-deeds-custom-prompt' ) ) 
+						.insertBefore( _this.deedChooser.$selector.find( '.mwe-upwiz-deed-custom' ) );
+				}
+
+				_this.moveToStep( 'deeds' );
+
+			} else {
+				// should never happen, since all the state names are well known
+				// compare with the 'makeTransitioner' call for the upload page
+				alert( "error: could not recognize state of uploads: " + overallState );
+			}
+			
 		} );
+
 
 		// DEEDS div
-		_this.deedChooser = new mw.UploadWizardDeedChooser( '#mwe-upwiz-deeds' );
-
-		var customDeed = $j.extend( new mw.UploadWizardDeed(), {
-			isReady: function() { return true; },
-			setQuantity: function( n ) { return; }
-		} );
-
-		$j( '#mwe-upwiz-deeds-custom' ).append( 
-			$j( '<div id="mwe-upwiz-deeds-later" />' )
-				.hide()
-				.append( $j( '<label>' )
-					.append( 
-						$j( '<input />')
-							.attr( { type: 'checkbox', value: 'deeds-later' } )
-							.addClass( 'mwe-accept-deed' )
-							.click( function() {
-								if ( $j( this ).is( ':checked' ) ) {
-									_this.deedChooser.showDeedChoice();
-									_this.deedChooser.choose( customDeed );
-									//_this.deedChooser.trigger( 'isReady' );
-								} else {
-									_this.deedChooser.choose( mw.UploadWizardNullDeed );
-								}
-							} ),
-						$j( '<span />').append( gM( 'mwe-upwiz-deeds-later' ) )
-					)
-				)
-		);
-		
-		$j( _this.deedChooser ).bind( 'setQuantityEvent', function() {
-			mw.log( "checking this deedchooser count " + _this.deedChooser.count );
-			if ( _this.deedChooser.count > 1 ) {
-				$j( '#mwe-upwiz-deeds-later' ).show();
-			} else {
-				$j( '#mwe-upwiz-deeds-later' ).hide();
-			}
-		} );
 
 		$j( '#mwe-upwiz-deeds-intro' ).html( gM( 'mwe-upwiz-deeds-intro' ) );
 
 		$j( '#mwe-upwiz-stepdiv-deeds .mwe-upwiz-button-next').click( function() {
-			_this.moveToStep('details');
-		} );
+			if ( _this.deedChooser.validate() ) {
 
-		// XXX perhaps we should defer this until we click next
-		$j( _this.deedChooser ).bind( 'chooseDeed', function() {
-			var isCustom = ( _this.deedChooser.deed === customDeed );
-			$j.each( _this.uploads, function( i, upload ) {
-				if (isCustom) {
-					upload.details.useCustomDeedChooser();
-				} else {
-					upload.details.useDeedChooser( _this.deedChooser );
-				}
-			} );
-		} ); 
+				var isCustom = ( _this.deedChooser.deed.name == 'later' );
+				
+				$j.each( _this.uploads, function( i, upload ) {
+					if ( isCustom ) {
+						upload.details.useCustomDeedChooser();
+					} else {
+						upload.deedChooser = _this.deedChooser;
+					}
+				} );
 
-		// XXX perhaps we should defer this until we click next
-		$j( _this.deedChooser ).bind( 'chooseNullDeed', function() {
-			$j.each( _this.uploads, function( i, upload ) {
-				upload.details.deedChooser = _this.deedChooser;
-			} );
-			// $j( '#mwe-upwiz-stepdiv-deeds' ).disableNextButton();
+				_this.moveToStep('details');
+			}
 		} );
-
-	/*
-		// XXX figure out some way to make them ready / unready
-		// timeout after input, check for readiness, then trigger event?
-		$j( _this.deedChooser ).bind( 'isReady', function() {
-			$j( '#mwe-upwiz-stepdiv-deeds' ).enableNextButton();
-		} );
-
-		$j( _this.deedChooser ).bind( 'isNotReady', function() {
-			$j( '#mwe-upwiz-stepdiv-deeds' ).disableNextButton();
-		} );
-*/
 
 
 		// DETAILS div
+
 		$j( '#mwe-upwiz-stepdiv-details .mwe-upwiz-button-next' ).click( function() {
 			_this.detailsSubmit( function() { 
 				_this.prefillThanksPage();
 				_this.moveToStep('thanks');
 			} );
 		} );
+
+
 	
-		// add one to start
+		// WIZARD 
+	
+		// add one upload field to start (this is the big one that asks you to upload something)
 		var upload = _this.newUpload( '#mwe-upwiz-add-file' );
 
 		// "select" the first step - highlight, make it visible, hide all others
@@ -2130,12 +2097,7 @@ mw.UploadWizard.prototype = {
 		_this.updateFileCounts();
 		
 		upload.deedPreview = new mw.UploadWizardDeedPreview( upload );	
-	
-		// this will modify upload, so it has a .deedChooser property.
-		// We use a method to so we notify deedChooser that it has a new upload -- interface
-		// will change based on quantity etc. Maybe we could be clever with bind here.
-		_this.deedChooser.attach( upload );
-	
+
 		// set up details
 		upload.details = new mw.UploadWizardDetails( upload, $j( '#mwe-upwiz-macro-files' ));
 	},
@@ -2152,9 +2114,6 @@ mw.UploadWizard.prototype = {
 	removeUpload: function( upload ) {
 		var _this = this;
 		$j( upload ).unbind(); // everything
-		if ( upload.deedChooser ) {
-			upload.deedChooser.detach( upload );
-		}
 		upload.details.div.remove();
 		upload.thanksDiv.remove();
 
@@ -2216,7 +2175,13 @@ mw.UploadWizard.prototype = {
 		var totalCount = wizard.uploads.length;
 
 		var progressBar = new mw.ProgressBar( progressBarSelector, progressBarText );
+		progressBar.showBar();
 		progressBar.setTotal( totalCount );
+
+		var end = function() {
+			progressBar.hideBar();
+			endCallback();
+		};
 
 		transitioner = function() {
 			var fraction = 0.0;
@@ -2240,8 +2205,9 @@ mw.UploadWizard.prototype = {
 			progressBar.showProgress( fraction );
 			progressBar.showCount( endStateCount );
 	
-			// build in a little delay even for the end state, so user can see progress bar in a complete state.	
-			var nextAction = (endStateCount == totalCount) ? endCallback : transitioner;
+			// build in a little delay even for the end state, so user can see progress bar in a complete state.
+			var nextAction = (endStateCount == totalCount) ? end : transitioner;
+	
 			setTimeout( nextAction, wizard.transitionerDelay );
 		};
 
@@ -2308,12 +2274,14 @@ mw.UploadWizard.prototype = {
 		if ( _this.uploads.length ) {
 			$j( '#mwe-upwiz-upload-ctrl' ).removeAttr( 'disabled' ); 
 			$j( '#proceed' ).show();
+			// XXX should use PLURAL 
 			$j( '#mwe-upwiz-add-file' ).html( gM( 'mwe-upwiz-add-file-n' ) );
 			$j( '#mwe-upwiz-add-file-container' ).removeClass('mwe-upwiz-add-files-0');
 			$j( '#mwe-upwiz-add-file-container' ).addClass('mwe-upwiz-add-files-n');
 		} else {
 			$j( '#mwe-upwiz-upload-ctrl' ).attr( 'disabled', 'disabled' ); 
 			$j( '#proceed' ).hide();
+			// XXX should use PLURAL 
 			$j( '#mwe-upwiz-add-file' ).html( gM( 'mwe-upwiz-add-file-0' ) );
 			$j( '#mwe-upwiz-add-file-container' ).addClass('mwe-upwiz-add-files-0');
 			$j( '#mwe-upwiz-add-file-container' ).removeClass('mwe-upwiz-add-files-n');
@@ -2408,7 +2376,7 @@ mw.UploadWizard.prototype = {
 						 	$j( '<textarea class="mwe-long-textarea" rows="1"/>' )
 								.growTextArea()
 								.append( thumbWikiText ) 
-								.resizeIfNeeded()
+								.trigger('change')
 						),
 						$j('<p/>').append( 
 							gM( 'mwe-upwiz-thanks-url' ),
@@ -2416,7 +2384,7 @@ mw.UploadWizard.prototype = {
 						 	$j( '<textarea class="mwe-long-textarea" rows="1"/>' )
 								.growTextArea()
 								.append( upload.imageinfo.descriptionurl ) 
-								.resizeIfNeeded()
+								.trigger('change')
 						)
 					)
 			);
@@ -2456,12 +2424,194 @@ mw.UploadWizardDeedPreview.prototype = {
 };
 
 mw.UploadWizardNullDeed = $j.extend( new mw.UploadWizardDeed(), {
-	isReady: function() { return false; },
-
-	setQuantity: function( n ) { return; }
-	
+	validate: function() {
+		alert( gM( 'mwe-upwiz-deeds-need-deed', _this.uploads.length ) );
+		return false;
+	} 
 } );
 
+	
+/**
+ * Set up the form and deed object for the deed option that says these uploads are all the user's own work.
+ */
+mw.UploadWizardDeedOwnWork = function( uploadCount ) {
+	uploadCount = uploadCount ? uploadCount : 1;
+
+	var _this = new mw.UploadWizardDeed();
+
+	_this.authorInput = $j( '<input />')
+		.attr( { name: "author" } )
+		.addClass( 'mwe-upwiz-sign' );
+
+	var licenseInputDiv = $j( '<div class="mwe-upwiz-deed-license"></div>' );
+	_this.licenseInput = new mw.UploadWizardLicenseInput( licenseInputDiv );
+	_this.licenseInput.setDefaultValues();
+
+	var $standardCheckbox, $customCheckbox;
+		
+	$standardCheckbox = $j( '<input type="checkbox" class="mwe-accept-deed mwe-checkbox-hang-indent" />' ).click( function() {
+		if ( $j( this ).is( ':checked' ) ) {
+			$customCheckbox.attr( 'checked', false );
+			_this.licenseInput.setDefaultValues();
+		}
+	} );
+
+	$customCheckbox = $j( '<input type="checkbox" class="mwe-accept-deed mwe-checkbox-hang-indent" />' ).click( function() { 
+		if ( $j( this ).is( ':checked' ) ) {
+			$standardCheckbox.attr( 'checked', false );
+		}
+	} );
+
+	var $standardDiv = $j( '<div />' ).append(
+		$standardCheckbox,
+		
+		$j( '<p class="mwe-checkbox-hang-indent-text"/>' )
+			.html( gM( 'mwe-upwiz-source-ownwork-assert',
+				   uploadCount,
+				   '<input name="author" class="mwe-upwiz-sign" />' )
+			),
+
+		$j( '<p class="mwe-checkbox-hang-indent-text mwe-small-print" />' ).html( 
+			gM ( 'mwe-upwiz-source-ownwork-assert-note' ) 
+		)
+	);
+	
+	var $toggleDiv = $j('<div />');
+
+	var $customDiv = $j('<div/>').append( 
+		$customCheckbox,
+		
+		$j( '<p class="mwe-checkbox-hang-indent-text" />' )
+			.html( gM( 'mwe-upwiz-source-ownwork-assert-custom', 
+				uploadCount,
+				'<span class="mwe-custom-author-input"></span>' ) ),
+
+		licenseInputDiv 
+	);
+
+	_this.$formFields = $j( '<div class="mwe-upwiz-deed-form-internal" />' ).append( 
+		$standardDiv, $toggleDiv, $customDiv 
+	);
+	
+	mw.UploadWizardUtil.makeFadingToggler( $standardDiv, $toggleDiv, $customDiv );
+
+	// if they select 'fewer options', and they have selected the deed in there, we should unselect it
+	$toggleDiv.bind( 'close', function(e) {
+		e.stopPropagation();
+		if ( $customCheckbox.is( ':checked' ) ) {
+			$customCheckbox.attr( 'checked', false );
+		}
+	} );
+	
+	// have to add the author input this way -- gM() will flatten it to a string and we'll lose it as a dom object
+	_this.$formFields.find( '.mwe-custom-author-input' ).append( _this.authorInput );
+
+	// synchronize both username signatures
+	// set initial value to configured username
+	// if one changes all the others change (keyup event)
+	//
+	// also set tooltips ( the title, tipsy() )
+	_this.$formFields.find( '.mwe-upwiz-sign' )
+		.attr( {
+			title: gM( 'mwe-upwiz-tooltip-sign' ), 
+			value: mw.getConfig( 'userName' ) 
+		} )
+		.tipsyPlus()
+		.keyup( function() { 
+			var thisInput = this;
+			var thisVal = $j( thisInput ).val();
+			$j.each( $j( '.mwe-upwiz-sign' ), function( i, input ) {
+				if (thisInput !== input) {
+					$j( input ).val( thisVal );
+				}
+			} );
+		} );
+
+	return $j.extend( _this, { 
+
+		name: 'ownwork',
+
+		/**
+		 * Is this correctly set, with side effects of causing errors to show in interface. 
+		 * @return boolean true if valid, false if not
+		 */
+		validate: function() {
+			return ( 
+				( $j( _this.selector ).find( '.mwe-accept-deed' ).is( ':checked' ) !== 0 )
+					&&
+				licenseInput.isSet()
+			);
+		},
+
+		getSourceWikiText: function() {
+			return '{{own}}';
+		},
+
+		getAuthorWikiText: function() {
+			return "[[User:" + mw.getConfig('userName') + '|' + $j( authorInput ).val() + ']]';
+		},
+
+
+		getLicenseWikiText: function() {
+			var wikiText = '{{self';
+			$j.each( licenseInput.getTemplates(), function( i, template ) {
+				wikiText += '|' + template;
+			} );
+			wikiText += '}}';
+			return wikiText;
+		}
+
+	} );
+
+};
+
+
+mw.UploadWizardDeedThirdParty = function( uploadCount ) {
+	uploadCount = uploadCount ? uploadCount : 1;
+
+	var _this = new mw.UploadWizardDeed();
+
+	_this.sourceInput = $j('<textarea class="mwe-source mwe-long-textarea" name="source" rows="1" cols="40"></textarea>' )
+				.growTextArea()
+				.attr( 'title', gM( 'mwe-upwiz-tooltip-source' ) )
+				.tipsyPlus();
+	_this.authorInput = $j('<textarea class="mwe-author mwe-long-textarea" name="author" rows="1" cols="40"></textarea>' )
+				.growTextArea()
+				.attr( 'title', gM( 'mwe-upwiz-tooltip-author' ) )
+				.tipsyPlus();
+	licenseInputDiv = $j( '<div class="mwe-upwiz-deed-license"></div>' );
+	_this.licenseInput = new mw.UploadWizardLicenseInput( licenseInputDiv );
+	_this.licenseInput.setDefaultValues();
+
+	_this.$formFields = $j( '<div class="mwe-upwiz-deed-form-internal"/>' );
+
+	if ( uploadCount > 1 ) { 
+		_this.$formFields.append( $j( '<div />' ).append( gM( 'mwe-upwiz-source-thirdparty-custom-multiple-intro' ) ) );
+	}
+
+	_this.$formFields.append (
+		$j( '<div class="mwe-upwiz-source-thirdparty-custom-multiple-intro" />' ),
+		$j( '<div class="mwe-upwiz-thirdparty-fields" />' )
+			.append( $j( '<label for="source"/>' ).text( gM( 'mwe-upwiz-source' ) ), 
+				 _this.sourceInput ),
+		$j( '<div class="mwe-upwiz-thirdparty-fields" />' )
+			.append( $j( '<label for="author"/>' ).text( gM( 'mwe-upwiz-author' ) ),
+				 _this.authorInput ),
+		$j( '<div class="mwe-upwiz-thirdparty-license" />' )
+			.append( gM( 'mwe-upwiz-source-thirdparty-license', uploadCount ) ),
+		licenseInputDiv
+	);
+
+	return $j.extend( _this, mw.UploadWizardDeed.prototype, {
+		name: 'thirdparty',
+
+		validate: function() {
+			return     (! mw.isEmpty( $j( this.sourceInput  ).val() ) ) 
+				&& (! mw.isEmpty( $j( this.authorInput  ).val() ) )
+				&& this.licenseInput.isSet()
+		}
+	} );
+}
 
 
 
@@ -2470,96 +2620,98 @@ mw.UploadWizardNullDeed = $j.extend( new mw.UploadWizardDeed(), {
  * @param selector where to put this deed chooser
  * @param isPlural whether this chooser applies to multiple files (changes messaging mostly)
  */ 
-mw.UploadWizardDeedChooser = function( selector ) {
+mw.UploadWizardDeedChooser = function( selector, deeds, uploadCount ) {
 	var _this = this;
-	_this.selector = selector;
-	_this.deed = mw.UploadWizardNullDeed;
+	_this.$selector = $j( selector );
+	_this.uploadCount = uploadCount ? uploadCount : 1;
+	
 
-	items = [];
-	$j.each( [ 'ownwork', 'thirdparty' ], function (i, key) {
-		var item = 
-			'<div class="mwe-upwiz-macro-deed-' + key + ' mwe-upwiz-deed">'
+	_this.$selector.append( '<div class="mwe-error"></div>' );
+
+	// name for radio button set
+	_this.name = 'deedChooser' + (mw.UploadWizardDeedChooser.prototype.widgetCount++).toString();
+
+	$j.each( deeds, function (i, deed) {
+		var id = _this.name + '-' + deed.name;
+ 
+		var $deedInterface = $j( 
+			'<div class="mwe-upwiz-deed mwe-upwiz-deed-' + deed.name + '">'
 		       +   '<div class="mwe-upwiz-deed-option-title">'
-		       +     '<span class="mwe-upwiz-deed-header mwe-closed">'
-		       +        '<a class="mwe-upwiz-deed-header-link mwe-upwiz-deed-name"></a>'
+		       +     '<span class="mwe-upwiz-deed-header">'
+		       +        '<input id="' + id +'" name="' + _this.name + '" type="radio" value="' + deed.name + '">'
+		       +	  '<label for="' + id + '" class="mwe-upwiz-deed-name">'
+		       +            gM( 'mwe-upwiz-source-' + deed.name, _this.uploadCount )
+		       +          '</label>'
+		       +        '</input>'
 		       +     '</span>'
-		       +     '<span class="mwe-upwiz-deed-header mwe-open" style="display: none;">' 
-		       +       '<span class="mwe-upwiz-deed-name"></span>'
-		       +       ' <a class="mwe-upwiz-macro-deeds-return">' + gM( 'mwe-upwiz-change' ) + '</a>'
-		       +     '</span>'
+		       // +     ' <a class="mwe-upwiz-macro-deeds-return">' + gM( 'mwe-upwiz-change' ) + '</a>'
 		       +   '</div>'
-		       +   '<div class="mwe-upwiz-deed-form"></div>'		
+		       +   '<div class="mwe-upwiz-deed-form">'
 		       + '</div>'
-		items.push(item);
+		);
+
+		var $deedSelector = _this.$selector.append( $deedInterface );
+
+		$deedInterface.find( '.mwe-upwiz-deed-form' ).append( deed.$formFields );
+
+		$deedInterface.find( 'span.mwe-upwiz-deed-header input' ).click( function() {
+			if ( $j( this ).is(':checked' )  ) {
+				_this.choose( deed );
+				_this.showDeed( $deedInterface );
+			}
+		} );
+
 	} );
 
-	$j( selector ).html( items.join('') );
-
+	/*
 	$j( '.mwe-upwiz-macro-deeds-return' ).click( function() { 
 		_this.choose( mw.UploadWizardNullDeed );
 		_this.showDeedChoice(); 
 	} );
+	*/
 
 	_this.choose( mw.UploadWizardNullDeed );
 	_this.showDeedChoice();		
 	
-	// set up the deed interfaces
-	_this.deeds = {
-		'ownwork' : _this.setupDeedOwnWork(),
-		'thirdparty' : _this.setupDeedThirdParty()
-	};
 
-	_this.setQuantity();
 };
 
 
 mw.UploadWizardDeedChooser.prototype = {
 
-	count: 0,
+	/** 
+	 * How many deed choosers there are (important for creating unique ids, element names)
+	 */
+	widgetCount: 0,
 
-	attach: function( upload ) {
-		var _this = this;
-		upload.deedChooser = _this;
-		_this.count++;
-		_this.setQuantity();	
-	},
-
-	detach: function( upload ) {
-		_this.count--;
-		_this.setQuantity();	
-	},
-
-	// modify various interface strings depending on singular, multiple deeds
-	setQuantity: function() {
-		var _this = this;
-		mw.log( "setting quantity of deed to " + _this.count );
-		var isPlural = _this.count > 1;
-		$j.each( [ 'ownwork', 'thirdparty' ], function (i, key) {
-			
-			// fix the deed title that opens and closes
-			gMkey = isPlural ? key + '-plural' : key;
-			$j( _this.selector )
-				.find( '.mwe-upwiz-macro-deed-' + key)
-				.find( '.mwe-upwiz-deed-name' )
-				.html( gM( 'mwe-upwiz-source-' + gMkey ) );
-
-			// any other internal strings in the deed
-			if ( _this.deeds[key] ) {
-				_this.deeds[key].setQuantity( _this.count );
+	/** 
+	 * Check if this form is filled out correctly, with side effects of showing error messages if invalid
+	 * @return boolean; true if valid, false if not
+	 */
+	validate: function() {
+		var valid = (typeof this.deed === 'undefined') || this.deed.validate();
+		if (!valid) {
+			if ( ( typeof this.deed === 'undefined' ) || this.deed === mw.UploadWizardNullDeed ) {				/* highlight the main choices  */
+				/* this.selector.find( 'input[type=checkbox].    .mwe-/* add general select-a-deed message */
+				alert( "no deed selected" );
 			}
-			
-		} );
-		$j( _this ).trigger( 'setQuantityEvent' );
-
+		}
+		return valid;
 	},
 
+	/** 
+ 	 * How many uploads this deed controls
+	 */
+	uploadCount: 0,
+
+	
 	choose: function( deed ) {
 		var _this = this;
 		_this.deed = deed;
 		if ( deed === mw.UploadWizardNullDeed ) {
 			$j( _this ).trigger( 'chooseNullDeed' );
 			//_this.trigger( 'isNotReady' );
-			$j( _this.selector )
+			_this.$selector
 				.find( 'input.mwe-accept-deed' )
 				.attr( 'checked', false )
 		} else {
@@ -2569,282 +2721,37 @@ mw.UploadWizardDeedChooser.prototype = {
 
 	/**
 	 * Go back to original source choice. 
-	 * Assumed that we are in details mode.
 	 */
 	showDeedChoice: function() {
-		var _this = this;
-		$j( _this.selector ).find( '.mwe-upwiz-deed-header.mwe-open' ).hide();
-		$j( _this.selector ).find( '.mwe-upwiz-deed-header.mwe-closed' ).show();
-		$j( _this.selector ).find( '.mwe-upwiz-deed' ).maskSafeShow();
-		$j( _this.selector ).find( '.mwe-upwiz-deed-form' ).maskSafeHide();
-	}, 
+		var $allDeeds = this.$selector.find( '.mwe-upwiz-deed' );
+		this.deselectDeed( $allDeeds );
+		// $allDeeds.fadeTo( 'fast', 1.0 );   //maskSafeShow();
+	},
+
+	/** 
+	 * From the deed choices, make a choice fade to the background a bit, hide the extended form
+	 */
+	deselectDeed: function( $deedSelector ) {
+		$deedSelector.removeClass( 'selected' );
+		// $deedSelector.find( 'a.mwe-upwiz-macro-deeds-return' ).hide();
+		$deedSelector.find( '.mwe-upwiz-deed-form' ).slideUp( 500 );   //.maskSafeHide();
+	},
 
 	/**
 	 * From the deed choice page, show a particular deed
 	 */
-	showDeed: function( deedSelector ) {
-		$j( deedSelector ).find( '.mwe-upwiz-deed-header.mwe-open' ).show();
-		$j( deedSelector ).find( '.mwe-upwiz-deed-header.mwe-closed' ).hide();
-		$j( deedSelector ).siblings().maskSafeHide();
-		$j( deedSelector ).find( '.mwe-upwiz-deed-form' ).maskSafeShow();
-	},
-	
-	/**
-	 * Set up the form and deed object for the deed option that says these uploads are all the user's own work.
-	 */
-	setupDeedOwnWork: function() {
-		mw.log("setupdeed own work");	
-		var _this = this;
+	showDeed: function( $deedSelector ) {
+		var $otherDeeds = $deedSelector.siblings().filter( '.mwe-upwiz-deed' );
+		this.deselectDeed( $otherDeeds );
+		// $siblings.fadeTo( 'fast', 0.5 ) // maskSafeHide();
 
-		var authorInput = $j( '<input />')
-			.attr( { name: "author" } )
-			.addClass( 'mwe-upwiz-sign' );
-
-		var licenseInputDiv = $j( '<div class="mwe-upwiz-deed-license"></div>' );
-		var licenseInput = new mw.UploadWizardLicenseInput( licenseInputDiv );
-		licenseInput.setDefaultValues();
-
-		var ownWorkDeed = $j.extend( new mw.UploadWizardDeed(), {
-
-			licenseInput: licenseInput,
-
-			isReady: function() {
-				return ( 
-					( $j( _this.selector ).find( '.mwe-accept-deed' ).is( ':checked' ) !== 0 )
-						&&
-					licenseInput.isSet()
-				);
-			},
-
-			getSourceWikiText: function() {
-				return '{{own}}';
-			},
-
-			getAuthorWikiText: function() {
-				return "[[User:" + mw.getConfig('userName') + '|' + $j( authorInput ).val() + ']]';
-			},
-
-
-			getLicenseWikiText: function() {
-				var wikiText = '{{self';
-				$j.each ( licenseInput.getTemplates(), function( i, template ) {
-					wikiText += '|' + template;
-				} );
-				wikiText += '}}';
-				return wikiText;
-			},
-
-			createInterface: function( deedChooser ) {
-				var _this = this;
-				_this.deedChooser = deedChooser;
-
-				var standardDiv = $j( '<div />' )
-					.append( 
-						$j( '<input />') 
-							.attr( { type: 'checkbox' } )
-							.click( function() {
-								if ( $j( this ).is( ':checked' ) ) {
-									$j( deedChooser.selector )
-										.find( '.mwe-upwiz-deed-accept-ownwork-custom' )
-										.attr( 'checked', false );
-									_this.licenseInput.setDefaultValues();
-									deedChooser.choose( ownWorkDeed );
-								} else {
-									deedChooser.choose( mw.UploadWizardNullDeed );
-								}
-							} )
-							.addClass( 'mwe-upwiz-deed-accept-ownwork-default mwe-accept-deed mwe-checkbox-hang-indent' ),
-
-						// text added in setQuantit
-						$j( '<p class="mwe-upwiz-source-ownwork-assert mwe-checkbox-hang-indent-text"/>' ),
-
-						$j( '<p />' )
-							.addClass( 'mwe-checkbox-hang-indent-text' )
-							.addClass( 'mwe-small-print' )
-							.html( gM ( 'mwe-upwiz-source-ownwork-assert-note' ) )
-					);
-
-				var toggleDiv = $j('<div />');
-
-				var customDiv = $j('<div/>')
-					.append( 
-						$j( '<input />') 
-							.attr( { type: 'checkbox' } )
-							.click( function() { 
-								if ( $j( this ).is( ':checked' ) ) {
-									$j( deedChooser.selector )
-										.find( '.mwe-upwiz-deed-accept-ownwork-default' )
-										.attr( 'checked', false )
-									deedChooser.choose( ownWorkDeed ); 
-								} else {
-									deedChooser.choose( mw.UploadWizardNullDeed );
-								}
-							} )
-							.addClass( 'mwe-upwiz-deed-accept-ownwork-custom mwe-accept-deed mwe-checkbox-hang-indent' ),
-						$j( '<p class="mwe-upwiz-source-ownwork-assert-custom mwe-checkbox-hang-indent-text" />' ),
-						licenseInputDiv 
-					);
-
-				$j( deedChooser.selector ).find( '.mwe-upwiz-macro-deed-ownwork .mwe-upwiz-deed-form' )
-					.append( $j( '<div class="mwe-upwiz-deed-form-internal" />' )
-						.append( standardDiv,
-							 toggleDiv, 
-							 customDiv )
-					);
-
-				
-				
-				mw.UploadWizardUtil.makeFadingToggler( standardDiv, toggleDiv, customDiv );
-
-				// if they select 'fewer options', and they have selected the deed in there, we should unselect it
-				$j( toggleDiv ).bind( 'close', function(e) {
-					e.stopPropagation();
-					if ( $j( deedChooser.selector ).find( '.mwe-upwiz-deed-accept-ownwork-custom' ).is( ':checked' ) ) {
-						$j( deedChooser.selector )
-							.find( '.mwe-upwiz-deed-accept-ownwork-custom' )
-							.attr( 'checked', false );
-						deedChooser.choose( mw.UploadWizardNullDeed );
-					}
-				} );
-
-				_this.setQuantity( 1 );
-
-
-			},
-
-
-			setQuantity: function( n ) {
-				var _this = this;
-				var plural = n > 1 ? '-plural' : '';
-				$j( _this.deedChooser.selector )
-					.find( 'p.mwe-upwiz-source-ownwork-assert' )
-					.html( gM( 'mwe-upwiz-source-ownwork-assert' + plural, 
-						$j( '<input />' )
-							.attr( { name: 'author' } )
-							.addClass( 'mwe-upwiz-sign' ) ) );
-				
-				$j( _this.deedChooser.selector )
-					.find( 'p.mwe-upwiz-source-ownwork-assert-custom' )
-					.html( gM( 'mwe-upwiz-source-ownwork-assert-custom' + plural, 
-						'<span class="mwe-custom-author-input"></span>' ) );
-
-				// have to add the author input this way -- gM() will flatten it to a string and we'll lose it as a dom object
-				$j( _this.deedChooser.selector ).find( '.mwe-custom-author-input' ).append( authorInput );
-
-				// synchronize both username signatures
-				// set initial value to configured username
-				// if one changes all the others change (keyup event)
-				//
-				// also set tooltips ( the title, tipsy() )
-				$j( _this.deedChooser.selector ).find( '.mwe-upwiz-sign' )
-					.attr( {
-						title: gM( 'mwe-upwiz-tooltip-sign' ), 
-						value: mw.getConfig( 'userName' ) 
-					} )
-					.tipsy( { trigger: 'focus', gravity: 'w' } )
-					.keyup( function() { 
-						var thisInput = this;
-						var thisVal = $j( thisInput ).val();
-						$j.each( $j( '.mwe-upwiz-sign' ), function( i, input ) {
-							if (thisInput !== input) {
-								$j( input ).val( thisVal );
-							}
-						} );
-					} );
-				
-
-			}
-		} ); 
-
-		ownWorkDeed.createInterface( _this );
-
-		$j( _this.selector ).find( '.mwe-upwiz-macro-deed-ownwork .mwe-upwiz-deed-header-link').click( 
-			function() { 
-				_this.showDeed( $j( _this.selector ).find( '.mwe-upwiz-macro-deed-ownwork' ) );
-			}
-		);
-
-		return ownWorkDeed;
-	
+		$deedSelector
+			.addClass('selected')
+			.fadeTo( 'fast', 1.0 )
+			.find( '.mwe-upwiz-deed-form' ).slideDown( 500 ); // maskSafeShow(); 
+		// $deedSelector.find( 'a.mwe-upwiz-macro-deeds-return' ).show();
 	},
 
-	setupDeedThirdParty: function() {
-		var _this = this;
-	 	var sourceInput = $j('<textarea class="mwe-source mwe-long-textarea" name="source" rows="1" cols="40"></textarea>' )
-					.growTextArea()
-					.attr( 'title', gM( 'mwe-upwiz-tooltip-source' ) )
-					.tipsy( { trigger: 'focus', gravity: 'w' } );
-		var authorInput = $j('<textarea class="mwe-author mwe-long-textarea" name="author" rows="1" cols="40"></textarea>' )
-					.growTextArea()
-					.attr( 'title', gM( 'mwe-upwiz-tooltip-author' ) )
-					.tipsy( { trigger: 'focus', gravity: 'w' } );
-		licenseInputDiv = $j( '<div class="mwe-upwiz-deed-license"></div>' );
-		licenseInput = new mw.UploadWizardLicenseInput( licenseInputDiv );
-		licenseInput.setDefaultValues();
-
-		var thirdPartyDeed = $j.extend( new mw.UploadWizardDeed(), {
-			sourceInput: sourceInput,
-			authorInput: authorInput,
-			licenseInput: licenseInput,
-
-			isReady: function() {
-				return     (! mw.isEmpty( $j( this.sourceInput  ).val() ) ) 
-					&& (! mw.isEmpty( $j( this.authorInput  ).val() ) )
-					&& this.licenseInput.isSet()
-			},
-
-			createInterface: function( deedChooser ) {
-				var _this = this;
-				_this.deedChooser = deedChooser;
-
-				$j( deedChooser.selector ).find( '.mwe-upwiz-macro-deed-thirdparty .mwe-upwiz-deed-form' ).append( 
-					$j( '<div class="mwe-upwiz-deed-form-internal"/>' )
-						.append( 
-							$j( '<div class="mwe-upwiz-source-thirdparty-custom-plural-intro" />' ), 
-							$j( '<div />' )
-								.addClass( "mwe-upwiz-thirdparty-fields" )
-								.append( $j( '<label />' )
-										.attr( { 'for' : 'source' } )
-										.text( gM( 'mwe-upwiz-source' ) ) )
-								.append( sourceInput ),
-							$j( '<div />' )
-								.addClass( "mwe-upwiz-thirdparty-fields" )
-								.append( $j( '<label />' )
-										.attr( { 'for' : 'author' } )
-										.text( gM( 'mwe-upwiz-author' ) ) )
-								.append( authorInput ),
-							$j( '<div />' ).addClass( 'mwe-upwiz-thirdparty-license' )
-								       .text( gM( 'mwe-upwiz-source-thirdparty-license' ) ),
-							licenseInputDiv
-						)
-				);
-		
-				thirdPartyDeed.setQuantity( 1 );	
-			},
-
-
-			setQuantity: function( n ) {
-				var _this = this;
-				$j( _this.deedChooser.selector )
-					.find( 'div.mwe-upwiz-source-thirdparty-custom-plural-intro' )
- 					.html( n > 1 ? gM( 'mwe-upwiz-source-thirdparty-custom-plural-intro' ) : '' );
-			}
-
-				
-		} );
-	
-		thirdPartyDeed.createInterface( _this );
-		
-		// set up the header	
-		$j( _this.selector ).find( '.mwe-upwiz-macro-deed-thirdparty .mwe-upwiz-deed-header-link').click( 
-			function() { 
-				_this.showDeed( $j( _this.selector ).find( '.mwe-upwiz-macro-deed-thirdparty' ) );
-				_this.choose( thirdPartyDeed );
-			}
-		);	
-
-		return thirdPartyDeed;
-	}
 };
 
 
@@ -3002,6 +2909,7 @@ mw.ucfirst = function( s ) {
 };
 
 
+
 /**
  * jQuery extension. Makes a textarea automatically grow if you enter overflow
  * (This feature was in the old Commons interface with a confusing arrow icon; it's nicer to make it automatic.)
@@ -3020,7 +2928,7 @@ jQuery.fn.growTextArea = function( options ) {
 		} );
 	}
 
-	this.resizeIfNeeded = function() {
+	var resizeIfNeeded = function() {
 		// this is the dom element
 		while (this.scrollHeight > this.offsetHeight) {
 			this.rows++;
@@ -3030,8 +2938,8 @@ jQuery.fn.growTextArea = function( options ) {
 
 	this.addClass( 'mwe-grow-textarea' );
 	
-	this.change(this.resizeIfNeeded);
-	this.keyup(this.resizeIfNeeded);
+	this.keyup( resizeIfNeeded );
+	this.change( resizeIfNeeded );
 
 
 	return this;
@@ -3117,7 +3025,6 @@ jQuery.fn.maskSafeHide = function( options ) {
 	return this.css( { 'height' : '0px', 'overflow' : 'hidden' } );
 };
 
-// XXX check overflow properties, is auto/auto not the right thing?
 // may be causing scrollbar to appear when div changes size
 // re-enable form fields (disabled so we did not tab through them when hidden)
 jQuery.fn.maskSafeShow = function( options ) {
@@ -3134,8 +3041,15 @@ jQuery.fn.maskSafeShow = function( options ) {
 ( function( $j ) {
 
 	$j.fn.tipsyPlus = function( options ) {
+		// use extend!
 		var titleOption = 'title';
 		var htmlOption = false;
+
+		var options = $j.extend( 
+			{ type: 'help', shadow: true },
+			options
+		);
+
 		var el = this;
 
 		if (options.plus) {
@@ -3167,7 +3081,9 @@ jQuery.fn.maskSafeShow = function( options ) {
 			gravity: 'w', 
 			trigger: 'focus',
 			title: titleOption,
-			html: htmlOption
+			html: htmlOption,
+			type: options.type,
+			shadow: options.shadow
 		} );
 
 	}

@@ -64,6 +64,33 @@ $messages['af'] = array(
 	'createsigndoc-create' => 'Skep',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'createsigndocument' => 'Aktivizo nënshkrimin dokument',
+	'createsigndoc-head' => "Përdorni këtë formular për të krijuar një 'dokument argument' faqe për faqe me kusht, të tilla që shfrytëzuesit do të jenë në gjendje të [[Special:SignDocument|shenjë atë]].
+Ju lutem specifikoni emrin e faqe në të cilën ju dëshironi të bërë të mundur nënshkrimin dixhital, anëtarët e të cilit grup duhet të lejohet të nënshkruajnë atë, cilat fusha ju dëshironi që të jetë i dukshëm për përdoruesit e cila duhet të jetë dëshirë, një moshë minimale për të kërkojë përdoruesve të të nënshkruajnë dokumentin (minimale nëse nuk ka lënë jashtë)
+dhe një tekst të shkurtër hyrës përshkruar në dokument dhe siguruar udhëzimet për përdoruesit.
+'''Nuk ka aktualisht asnjë mënyrë për të fshij apo modifikojë dokumentet e nënshkrimit, pasi ata janë të krijuar''' pa qasje të bazës së të dhënave të drejtpërdrejtë. Përveç kësaj, tekstin e faqes shfaqet në faqen e nënshkrimit do të jetë '''' Tekst i tanishëm e faqe, pa marrë parasysh ndryshimet e bëra në atë pasi sot. Ju lutemi të jetë absolutisht pozitiv se dokumenti është në një pikë të stabilitetit për nënshkrimin. Ju lutemi gjithashtu, të jetë i sigurt që e keni dhënë të gjitha fushat pikërisht si ata duhet të jenë, ''para paraqitjes këtë formë''.",
+	'createsigndoc-pagename' => 'Faqe:',
+	'createsigndoc-allowedgroup' => 'Grupi i Lejuar:',
+	'createsigndoc-email' => 'E-mail adresa:',
+	'createsigndoc-address' => 'Adresa:',
+	'createsigndoc-extaddress' => 'City, shteti, vendi:',
+	'createsigndoc-phone' => 'Numri i telefonit:',
+	'createsigndoc-bday' => 'Ditëlindja:',
+	'createsigndoc-minage' => 'Mosha minimale:',
+	'createsigndoc-introtext' => 'Hyrje:',
+	'createsigndoc-hidden' => 'I fshehur',
+	'createsigndoc-optional' => 'Fakultativ',
+	'createsigndoc-create' => 'Krijo',
+	'createsigndoc-error-generic' => 'Gabim: $1',
+	'createsigndoc-error-pagenoexist' => 'Gabim: page [[$1]] nuk ekziston.',
+	'createsigndoc-success' => 'nënshkrimin e dokumentit ka qenë i aktivizuar me sukses për [[$1]]. Ju mund [{{fullurl:{{#Special:SignDocument}}|doc=$2}} provë atë].',
+	'createsigndoc-error-alreadycreated' => 'Dokumenti i nënshkruar "$1" tashmë ekzistojnë. Kjo nuk mund të bëhet një herë të dytë.',
+);
+
 /** Amharic (አማርኛ)
  * @author Codex Sinaiticus
  */
@@ -1540,13 +1567,13 @@ $messages['ro'] = array(
 	'createsigndoc-pagename' => 'Pagină:',
 	'createsigndoc-email' => 'Adresă e-mail:',
 	'createsigndoc-address' => 'Adresă domiciliu:',
-	'createsigndoc-extaddress' => 'Oraş, stat, ţară:',
+	'createsigndoc-extaddress' => 'Oraș, stat, țară:',
 	'createsigndoc-phone' => 'Număr de telefon:',
-	'createsigndoc-bday' => 'Zi de naştere:',
+	'createsigndoc-bday' => 'Zi de naștere:',
 	'createsigndoc-minage' => 'Vârstă minimă:',
 	'createsigndoc-introtext' => 'Introducere:',
 	'createsigndoc-hidden' => 'Ascunse',
-	'createsigndoc-optional' => 'Opţional',
+	'createsigndoc-optional' => 'Opțional',
 	'createsigndoc-create' => 'Creează',
 	'createsigndoc-error-generic' => 'Eroare: $1',
 	'createsigndoc-error-pagenoexist' => 'Eroare: Pagina [[$1]] nu există.',

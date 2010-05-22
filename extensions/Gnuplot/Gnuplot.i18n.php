@@ -25,6 +25,13 @@ $messages['af'] = array(
 	'gnuplot-desc' => 'Voeg die <nowiki><gnuplot></nowiki>-etiket by om van Gnuplot gebruik te maak',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'gnuplot-desc' => 'Adds tag <nowiki><gnuplot></nowiki> për të përdorur Gnuplot',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

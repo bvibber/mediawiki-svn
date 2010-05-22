@@ -679,10 +679,10 @@ $messages['pt-br'] = array(
  * @author Mihai
  */
 $messages['ro'] = array(
-	'intersection-desc' => 'Întoarce o lista celor mai recenţi itemi care fac parte dintr-o categorie, sau intersecţia a mai multor categorii',
+	'intersection-desc' => 'Întoarce o lista celor mai recenți itemi care fac parte dintr-o categorie, sau intersecția a mai multor categorii',
 	'intersection_toomanycats' => 'Eroare: Prea multe categorii!',
 	'intersection_noresults' => 'Eroare: Niciun rezultat!',
-	'intersection_noincludecats' => 'Eroare: Trebuie să incluzi cel puţin o categorie, sau să specifici un spaţiu de nume!',
+	'intersection_noincludecats' => 'Eroare: Trebuie să incluzi cel puțin o categorie, sau să specifici un spațiu de nume!',
 );
 
 /** Tarandíne (Tarandíne)

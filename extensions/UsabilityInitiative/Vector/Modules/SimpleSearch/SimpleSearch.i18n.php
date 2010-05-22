@@ -36,6 +36,14 @@ $messages['af'] = array(
 	'vector-simplesearch-containing' => 'bevat...',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'vector-simplesearch-search' => 'Kërkim',
+	'vector-simplesearch-containing' => 'përmban ...',
+);
+
 /** Arabic (العربية)
  * @author OsamaK
  */
@@ -149,7 +157,7 @@ $messages['da'] = array(
  */
 $messages['de'] = array(
 	'vector-simplesearch-search' => 'Suche',
-	'vector-simplesearch-containing' => 'enthält …',
+	'vector-simplesearch-containing' => 'Volltextsuche nach …',
 );
 
 /** Zazaki (Zazaki)
@@ -453,10 +461,12 @@ $messages['mn'] = array(
 );
 
 /** Malay (Bahasa Melayu)
+ * @author Aurora
  * @author Diagramma Della Verita
  */
 $messages['ms'] = array(
 	'vector-simplesearch-search' => 'Cari',
+	'vector-simplesearch-containing' => 'mengandungi...',
 );
 
 /** Maltese (Malti)
@@ -575,8 +585,8 @@ $messages['qu'] = array(
  * @author Firilacroco
  */
 $messages['ro'] = array(
-	'vector-simplesearch-search' => 'Căutaţi',
-	'vector-simplesearch-containing' => 'conţinând...',
+	'vector-simplesearch-search' => 'Căutați',
+	'vector-simplesearch-containing' => 'conținând...',
 );
 
 /** Tarandíne (Tarandíne)

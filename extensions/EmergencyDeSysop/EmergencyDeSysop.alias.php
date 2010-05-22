@@ -91,6 +91,11 @@ $aliases['mk'] = array(
 	'EmergencyDeSysop' => array( 'ИтноОдземањеНаСисопПрава' ),
 );
 
+/** Malayalam (മലയാളം) */
+$aliases['ml'] = array(
+	'EmergencyDeSysop' => array( 'അടിയന്തരസിസോപ്‌‌തരംതാഴ്‌‌ത്തൽ' ),
+);
+
 /** Marathi (मराठी) */
 $aliases['mr'] = array(
 	'EmergencyDeSysop' => array( 'तातडीनेप्रचालकरद्दीकरण' ),

@@ -20,7 +20,7 @@ $aliases['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'RefreshSpecial' => array( 'تحديث_خاص' ),
+	'RefreshSpecial' => array( 'ريفريش_مخصوص' ),
 );
 
 /** Bosnian (Bosanski) */

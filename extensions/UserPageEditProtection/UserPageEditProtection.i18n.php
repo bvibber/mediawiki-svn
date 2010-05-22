@@ -25,6 +25,14 @@ $messages['af'] = array(
 	'right-editalluserpages' => 'Wysig gebruikersbladsye',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'userpageeditprotection-desc' => 'redaktimi kufizon në faqet përdorues të përdoruesit dhe redaktorët e lejuara',
+	'right-editalluserpages' => 'Redakto faqet përdorues',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  */

@@ -20,7 +20,7 @@ $aliases['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'ChemicalSources' => array( 'مصادر_كيميائية' ),
+	'ChemicalSources' => array( 'مصادر_كيماويه' ),
 );
 
 /** Assamese (অসমীয়া) */
@@ -36,6 +36,11 @@ $aliases['bs'] = array(
 /** Lower Sorbian (Dolnoserbski) */
 $aliases['dsb'] = array(
 	'ChemicalSources' => array( 'Chemiske žrědła' ),
+);
+
+/** Spanish (Español) */
+$aliases['es'] = array(
+	'ChemicalSources' => array( 'Fuentes para Químicas' ),
 );
 
 /** Gujarati (ગુજરાતી) */
@@ -80,7 +85,7 @@ $aliases['ksh'] = array(
 
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
-	'ChemicalSources' => array( 'Chemisch Quellen' ),
+	'ChemicalSources' => array( 'Chemesch Quellen' ),
 );
 
 /** Macedonian (Македонски) */

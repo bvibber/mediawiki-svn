@@ -38,20 +38,23 @@ $aliases['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'AddData' => array( 'إضافة_بيانات' ),
-	'AddPage' => array( 'إضافة_صفحة' ),
-	'CreateCategory' => array( 'إنشاء_تصنيف' ),
-	'CreateForm' => array( 'إنشاء_استمارة' ),
-	'CreateProperty' => array( 'إنشاء_خاصية' ),
-	'CreateTemplate' => array( 'إنشاء_قالب' ),
-	'EditData' => array( 'تعديل_البيانات' ),
+	'AddData' => array( 'رود_داتا' ),
+	'AddPage' => array( 'زود_صفحه' ),
+	'CreateCategory' => array( 'اعمل_تصنيف' ),
+	'CreateForm' => array( 'اعمل_استماره' ),
+	'CreateProperty' => array( 'اعمل_ملكيه' ),
+	'CreateTemplate' => array( 'إاعمل_قالب' ),
+	'EditData' => array( 'تعديل_الداتا' ),
 	'Forms' => array( 'استمارات' ),
 	'Templates' => array( 'قوالب' ),
-	'UploadWindow' => array( 'نافذة_الرفع' ),
+	'UploadWindow' => array( 'ويندو_الأپلود' ),
 );
 
 /** Breton (Brezhoneg) */
 $aliases['br'] = array(
+	'AddData' => array( 'OuzhpennañDanvez' ),
+	'AddPage' => array( 'OuzhpennañPajenn' ),
+	'CreateCategory' => array( 'KrouiñRummad' ),
 	'Templates' => array( 'Patromoù' ),
 );
 
@@ -267,6 +270,11 @@ $aliases['kw'] = array(
 	'Templates' => array( 'Skantlyns' ),
 );
 
+/** Ladino (Ladino) */
+$aliases['lad'] = array(
+	'Templates' => array( 'Xabblones' ),
+);
+
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'AddData' => array( 'Daten derbäisetzen' ),
@@ -298,11 +306,12 @@ $aliases['mk'] = array(
 $aliases['ml'] = array(
 	'AddData' => array( 'വിവരങ്ങൾചേർക്കുക' ),
 	'AddPage' => array( 'താൾചേർക്കുക' ),
-	'CreateCategory' => array( 'വര്‍ഗ്ഗസൃഷ്ടി' ),
+	'CreateCategory' => array( 'വർഗ്ഗസൃഷ്ടി' ),
 	'CreateForm' => array( 'ഫോംസൃഷ്ടി' ),
 	'CreateTemplate' => array( 'ഫലകസൃഷ്ടി' ),
+	'EditData' => array( 'വിവരങ്ങൾതിരുത്തുക' ),
 	'Forms' => array( 'ഫോമുകൾ' ),
-	'Templates' => array( 'ഫലകങ്ങള്‍' ),
+	'Templates' => array( 'ഫലകങ്ങൾ' ),
 	'UploadWindow' => array( 'അപ്‌ലോഡ്ജാലകം' ),
 );
 
@@ -383,6 +392,7 @@ $aliases['oc'] = array(
 
 /** Pashto (پښتو) */
 $aliases['ps'] = array(
+	'AddPage' => array( 'مخ ګډول' ),
 	'CreateCategory' => array( 'وېشنيزه جوړول' ),
 	'CreateProperty' => array( 'د جوړولو ځانتيا' ),
 	'CreateTemplate' => array( 'کينډۍ جوړول' ),
@@ -432,6 +442,12 @@ $aliases['sk'] = array(
 $aliases['sq'] = array(
 	'Forms' => array( 'Format' ),
 	'Templates' => array( 'Stampat' ),
+);
+
+/** Serbian Cyrillic ekavian (Српски (ћирилица)) */
+$aliases['sr-ec'] = array(
+	'AddPage' => array( 'ДодајСтраницу' ),
+	'CreateCategory' => array( 'НаправиКатегорију' ),
 );
 
 /** Swahili (Kiswahili) */

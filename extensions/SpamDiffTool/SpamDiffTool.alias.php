@@ -20,3 +20,18 @@ $aliases['ar'] = array(
 	'SpamDiffTool' => array( 'أداة_فرق_السبام' ),
 );
 
+/** Japanese (日本語) */
+$aliases['ja'] = array(
+	'SpamDiffTool' => array( 'スパム差分ツール' ),
+);
+
+/** Luxembourgish (Lëtzebuergesch) */
+$aliases['lb'] = array(
+	'SpamDiffTool' => array( "Tool fir Spam z'ënnersichen" ),
+);
+
+/** Dutch (Nederlands) */
+$aliases['nl'] = array(
+	'SpamDiffTool' => array( 'Spamverschillenhulpmiddel' ),
+);
+

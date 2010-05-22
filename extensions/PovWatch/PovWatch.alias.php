@@ -17,7 +17,7 @@ $aliases['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'PovWatch' => array( 'مراقبة_وجهة_النظر' ),
+	'PovWatch' => array( 'مراقبه_وجهة_نظر' ),
 );
 
 /** Bosnian (Bosanski) */

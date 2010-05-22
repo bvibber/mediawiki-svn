@@ -119,9 +119,9 @@ div.flaggedrevs_short_basic {
 div.flaggedrevs_short_details {
 	border: 1px solid #aaa;
 	background-color: #f9f9f9;
-	padding: 4px;
+	padding: 5px;
 	position: absolute;
-	top: 0;
+	top: -1px;
 	right: 0;
 	width: 25em;
 }
@@ -192,6 +192,7 @@ a.fr-toggle-symbol {
 	font-family: monospace;
 	font-weight: bold;
 	cursor: pointer;
+	margin: 0 .3em 0 .3em;
 }
 
 a.fr-toggle-text {
@@ -260,8 +261,9 @@ img.flaggedrevs-icon {
 	background-color: #faebd7;
 }
 
-.fr-under-review {
+span.fr-under-review {
 	background-color: yellow;
+	font-weight: bold;
 }
 
 .mw-fr-reviewlink {

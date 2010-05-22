@@ -98,6 +98,11 @@ $aliases['nl'] = array(
 	'CommunityVoice' => array( 'Gemeenschapsstem' ),
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
+$aliases['no'] = array(
+	'CommunityVoice' => array( 'Brukermedvirkning' ),
+);
+
 /** Romanian (Română) */
 $aliases['ro'] = array(
 	'CommunityVoice' => array( 'Vocea comunităţii' ),

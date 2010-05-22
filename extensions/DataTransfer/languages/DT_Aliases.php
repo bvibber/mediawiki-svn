@@ -25,12 +25,17 @@ $aliases['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'ViewXML' => array( 'عرض_إكس_إم_إل' ),
+	'ViewXML' => array( 'عرض_XML' ),
 );
 
 /** Bosnian (Bosanski) */
 $aliases['bs'] = array(
 	'ViewXML' => array( 'VidiXML' ),
+);
+
+/** Spanish (Español) */
+$aliases['es'] = array(
+	'ViewXML' => array( 'Ver XML', 'VerXML' ),
 );
 
 /** Basque (Euskara) */
@@ -106,6 +111,11 @@ $aliases['lb'] = array(
 /** Macedonian (Македонски) */
 $aliases['mk'] = array(
 	'ViewXML' => array( 'ВидиXML' ),
+);
+
+/** Malayalam (മലയാളം) */
+$aliases['ml'] = array(
+	'ViewXML' => array( 'എക്സ്.എം.എൽ.കാണുക' ),
 );
 
 /** Marathi (मराठी) */

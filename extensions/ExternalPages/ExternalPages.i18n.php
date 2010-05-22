@@ -35,6 +35,16 @@ $messages['af'] = array(
 	'externalpages-no-page' => 'Geen bladsy gespesifiseer nie',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'externalpages' => 'Faqet e jashtme',
+	'externalpages-desc' => 'Rinxjerr dhe shfaq faqet nga zona të largëta WMF',
+	'externalpages-bad-page' => 'faqe Bad specifikuar',
+	'externalpages-no-page' => 'Asnjë faqe specifikuar',
+);
+
 /** Arabic (العربية)
  * @author OsamaK
  */
@@ -455,7 +465,7 @@ $messages['pt-br'] = array(
  */
 $messages['ro'] = array(
 	'externalpages' => 'Pagini externe',
-	'externalpages-bad-page' => 'Pagină greşită specificată',
+	'externalpages-bad-page' => 'Pagină greșită specificată',
 	'externalpages-no-page' => 'Nicio pagină specificată',
 );
 
@@ -558,5 +568,13 @@ $messages['vi'] = array(
 	'externalpages-desc' => 'Lấy và hiển thị nội dung của các trang khác trực thuộc Quỹ Wikimedia',
 	'externalpages-bad-page' => 'Đã định rõ trang không hợp lệ',
 	'externalpages-no-page' => 'Chưa định rõ trang',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Horacewai2
+ */
+$messages['zh-hant'] = array(
+	'externalpages' => '外部網頁',
+	'externalpages-desc' => '檢索和顯示來自WMF的網站頁面',
 );
 

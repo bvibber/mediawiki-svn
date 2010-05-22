@@ -25,6 +25,15 @@ $messages['qqq'] = array(
 {{Identical|Update}}',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'prefs-updates' => 'Updates',
+	'updatemyprefs-desc' => 'Preferencë për përdoruesit për të përcaktuar nëse ato dëshirojnë periodikisht për ndërfaqen e përdoruesit si ata janë vënë në dispozicion',
+	'updatemyprefs-label-message' => 'Update automatikisht preferencat e mia me vlerat e prezgjedhura të reja dhe mjete si ato të bëhen të disponueshme',
+);
+
 /** Arabic (العربية)
  * @author OsamaK
  */
@@ -64,9 +73,12 @@ $messages['br'] = array(
 
 /** Catalan (Català)
  * @author Paucabot
+ * @author Vriullop
  */
 $messages['ca'] = array(
 	'prefs-updates' => 'Actualitzacions',
+	'updatemyprefs-desc' => 'Preferència pels usuaris per especificar si desitgen actualitzacions periòdiques de la interfície quan estiguin disponibles',
+	'updatemyprefs-label-message' => 'Actualitzar automàticament les meves preferències amb els nous valors i eines per defecte quan estiguin disponibles',
 );
 
 /** Czech (Česky)
@@ -77,6 +89,15 @@ $messages['cs'] = array(
 	'prefs-updates' => 'Aktualizace',
 	'updatemyprefs-desc' => 'Uživatelské nastavení umožňující uvést, že uživatel chce pravidelné aktualizace uživatelského rozhraní, kdykoli se stanou dostupné',
 	'updatemyprefs-label-message' => 'Automaticky aktualizovat moje nastavení na nové implicitní hodnoty a použití nových nástrojů, jakmile se stanou dostupné',
+);
+
+/** Welsh (Cymraeg)
+ * @author Lloffiwr
+ */
+$messages['cy'] = array(
+	'prefs-updates' => 'Diweddaru',
+	'updatemyprefs-desc' => "Dewis defnyddiwr i ddiweddaru'r rhyngwyneb cyn gynted ag y caiff newidiadau i'r rhyngwyneb eu rhyddhau",
+	'updatemyprefs-label-message' => "Newid fy newisiadau'n syth bin i gyfateb â gosodiadau ac offer rhagosodedig newydd",
 );
 
 /** German (Deutsch) */
@@ -357,5 +378,14 @@ $messages['vi'] = array(
 	'prefs-updates' => 'Các cập nhật',
 	'updatemyprefs-desc' => 'Tùy chỉnh cho phép các thành viên lựa chọn họ có muốn nhận cập nhật giao diện định kỳ nếu có hay không',
 	'updatemyprefs-label-message' => 'Tự động cập nhật các tùy chọn của tôi với những thiết lập và công cụ mặc định mới khi chúng ra mắt',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Horacewai2
+ */
+$messages['zh-hant'] = array(
+	'prefs-updates' => '更新',
+	'updatemyprefs-desc' => '供用戶選擇是否要定期更新的用戶界面',
+	'updatemyprefs-label-message' => '自動更新我的喜好與新的默認設置和工具如果它們可用',
 );
 

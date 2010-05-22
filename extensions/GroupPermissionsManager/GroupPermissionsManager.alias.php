@@ -24,9 +24,9 @@ $aliases['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'GroupPermissions' => array( 'سماحات_المجموعة' ),
-	'RemoveUnusedGroups' => array( 'إزالة_المجموعات_مش_المستخدمة' ),
-	'SortPermissions' => array( 'ترتيب_السماحات' ),
+	'GroupPermissions' => array( 'اذن_الجروپ' ),
+	'RemoveUnusedGroups' => array( 'شيل_الجروپات_المش_المستعمله' ),
+	'SortPermissions' => array( 'ترتيب_الاذن' ),
 );
 
 /** Bosnian (Bosanski) */
@@ -48,6 +48,12 @@ $aliases['dsb'] = array(
 	'GroupPermissions' => array( 'Kupkowe pšawa' ),
 	'RemoveUnusedGroups' => array( 'Njewužywane kupki wótpóraś' ),
 	'SortPermissions' => array( 'Pšawa sortěrowaś' ),
+);
+
+/** Spanish (Español) */
+$aliases['es'] = array(
+	'GroupPermissions' => array( 'Permisos de grupos' ),
+	'SortPermissions' => array( 'Ordenar permisos' ),
 );
 
 /** Persian (فارسی) */

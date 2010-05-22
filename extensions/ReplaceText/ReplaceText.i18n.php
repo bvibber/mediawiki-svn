@@ -689,7 +689,7 @@ $messages['gl'] = array(
 	'replacetext_noreplacement' => "Non foi atopada ningunha páxina que contivese a cadea '$1'.",
 	'replacetext_nomove' => 'Non se atopou ningún artigo cuxo título conteña "$1".',
 	'replacetext_nosuchcategory' => 'Non existe ningunha categoría co nome "$1".',
-	'replacetext_return' => 'Voltar ao formulario.',
+	'replacetext_return' => 'Volver ao formulario.',
 	'replacetext_warning' => '\'\'\'Aviso:\'\'\' hai {{PLURAL:$1|unha páxina|$1 páxinas}} que xa {{PLURAL:$1|contén|conteñen}} a cadea de substitución "$2". Se fai esta substitución non poderá distinguir as súas modificacións destas cadeas.',
 	'replacetext_blankwarning' => 'Debido a que a cadea de substitución está baleira, esta operación non será reversible; quere continuar?',
 	'replacetext_continue' => 'Continuar',
@@ -824,7 +824,7 @@ Ako napravite ovu zamjenu nećete moći odvojiti svoju zamjenu od ovog teksta. N
  */
 $messages['hsb'] = array(
 	'replacetext' => 'Tekst narunać',
-	'replacetext-desc' => 'Steji [[Special:ReplaceText|specialnu stronu]] k dispoziciji, kotraž administratoram zmóžnja, globalne pytanje a narunanje teksta na wšěch wobsahowych stronach wikija přewjesć',
+	'replacetext-desc' => 'Staji [[Special:ReplaceText|specialnu stronu]] k dispoziciji, kotraž administratoram zmóžnja, globalne pytanje a narunanje teksta na wšěch wobsahowych stronach wikija přewjesć',
 	'replacetext_docu' => "Zo by tekst přez druhi tekst na wšěch regularnych stronach tutoho wikija narunał, zapodaj wobaj tekstowej dźělej a klikń potom na 'Dale'. Budźeš potom lisćinu stronow widźeć, kotrež pytany tekst wobsahuja a móžeš jednu z nich wubrać, w kotrejž chceš tekst narunać. Twoje mjeno zjewi so w stawiznach strony jako wužiwar, kotryž je zamołwity za změny.",
 	'replacetext_originaltext' => 'Originalny tekst:',
 	'replacetext_replacementtext' => 'Narunanski tekst:',
@@ -1680,12 +1680,12 @@ Deseja prosseguir com a substituição?",
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
-	'replacetext' => 'Înlocuieşte text',
+	'replacetext' => 'Înlocuiește text',
 	'replacetext_originaltext' => 'Text original:',
-	'replacetext_optionalfilters' => 'Filtre opţionale:',
-	'replacetext_watchmovedpages' => 'Urmăreşte aceste pagini',
+	'replacetext_optionalfilters' => 'Filtre opționale:',
+	'replacetext_watchmovedpages' => 'Urmărește aceste pagini',
 	'replacetext_replace' => 'Înlocuire',
-	'replacetext_nomove' => "Nu a fost găsită nici o pagină al cărei titlu să conţină '$1'.",
+	'replacetext_nomove' => "Nu a fost găsită nici o pagină al cărei titlu să conțină '$1'.",
 	'replacetext_return' => 'Revenire la formular.',
 	'replacetext_continue' => 'Continuare',
 	'replacetext_editsummary' => "Înlocuire de text - '$1' în '$2'",

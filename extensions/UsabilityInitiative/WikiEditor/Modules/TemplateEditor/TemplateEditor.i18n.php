@@ -34,6 +34,16 @@ $messages['af'] = array(
 	'wikieditor-template-editor-preference' => 'Aktiveer vorm-gebaseerde wysiging van wikisjablone',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'wikieditor-template-editor-preference' => 'Lejo redaktimin e bazuar në formë të wiki templates',
+	'wikieditor-template-editor-dialog-title' => 'Edit template',
+	'wikieditor-template-editor-dialog-submit' => 'Update',
+	'wikieditor-template-editor-dialog-cancel' => 'Anuloj',
+);
+
 /** Aragonese (Aragonés)
  * @author Juanpabl
  */
@@ -323,6 +333,11 @@ $messages['ia'] = array(
 $messages['id'] = array(
 	'wikieditor-template-editor-preference' => 'Aktifkan penyuntingan berbasis form dari templat wiki',
 	'wikieditor-template-editor-dialog-cancel' => 'Batalkan',
+);
+
+/** Igbo (Igbo) */
+$messages['ig'] = array(
+	'wikieditor-template-editor-dialog-cancel' => 'Emekwàlà',
 );
 
 /** Italian (Italiano)
@@ -649,9 +664,13 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Gaoxuewei
+ * @author Horacewai2
  * @author Liangent
  */
 $messages['zh-hant'] = array(
 	'wikieditor-template-editor-preference' => '啟用wiki模板的表單式編輯',
+	'wikieditor-template-editor-dialog-title' => '編輯模板',
+	'wikieditor-template-editor-dialog-submit' => '更新',
+	'wikieditor-template-editor-dialog-cancel' => '取消',
 );
 

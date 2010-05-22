@@ -24,6 +24,14 @@ $messages['af'] = array(
 	'vector-editwarning-preference' => "Waarsku my as ek 'n gewysigde bladsy verlaat alvorens dit gestoor is",
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'vector-editwarning-warning' => 'Duke e lënë këtë faqe mund të bëjë që ju të humbni ndonjë ndryshim që keni bërë. Nëse ju jeni regjistruar, ju mund ta çaktivizoni këtë paralajmërim në "{{int:prefs-editing}}" seksionin e preferencave tuaja.',
+	'vector-editwarning-preference' => 'Paralajmëron mua kur unë të lë një redakto faqe me ndryshimet e para shpëtimit',
+);
+
 /** Arabic (العربية)
  * @author OsamaK
  */
@@ -537,8 +545,8 @@ Se você estiver autenticado, você pode desabilitar este aviso na seção "{{in
  * @author Stelistcristi
  */
 $messages['ro'] = array(
-	'vector-editwarning-warning' => 'Părăsind această pagină se poate provoca ca să pierdeţi orice schimbare aţi făcut dvs.
-Dacă sunteţi logat, puteţi dezactiva această avertizare în secţiunea „{{int:prefs-editing}}” a preferinţelor dvs.',
+	'vector-editwarning-warning' => 'Părăsind această pagină se poate provoca ca să pierdeți orice schimbare ați făcut dvs.
+Dacă sunteți logat, puteți dezactiva această avertizare în secțiunea „{{int:prefs-editing}}” a preferințelor dvs.',
 	'vector-editwarning-preference' => 'Avertizează-mă când voi părăsi o pagină de editare cu schimbări nesalvate',
 );
 

@@ -102,6 +102,11 @@ $aliases['mk'] = array(
 	'AccountManager' => array( 'РаководителСоСметката' ),
 );
 
+/** Malayalam (മലയാളം) */
+$aliases['ml'] = array(
+	'AccountManager' => array( 'അംഗത്വകൈകാര്യോപകരണം' ),
+);
+
 /** Nedersaksisch (Nedersaksisch) */
 $aliases['nds-nl'] = array(
 	'AccountManager' => array( 'Gebrukersbeheer' ),

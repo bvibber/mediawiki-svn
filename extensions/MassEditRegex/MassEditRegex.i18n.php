@@ -86,6 +86,44 @@ $messages['af'] = array(
 	'masseditregex-hint-remove' => 'Verwyder teks uit al die bladsye in die lys',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'masseditregex' => 'Mass redakto duke përdorur shprehjet e rregullta',
+	'masseditregex-desc' => 'Përdorni shprehje të rregullta për të [[Special:MassEditRegex|redakto shumë faqe në një operacion]]',
+	'masseditregextext' => 'Shkruani një ose më shumë shprehjet e rregullta (një për çdo rresht) për matching, dhe një ose më shumë shprehje për të zëvendësuar çdo ndeshje me të. Parë ndeshjen shprehjes-, në qoftë se e suksesshme, do të zëvendësohet me-zëvendësuar shprehjen e parë, dhe kështu me radhë. Shihni [http://php.net/manual/en/function.preg-replace.php  funksion PHP preg_replace()] për hollësi të mëtejshme.',
+	'masseditregex-pagelisttxt' => 'Faqet e për të redaktuar (mos përdorni një hapësira: parashtesë):',
+	'masseditregex-matchtxt' => 'Kërko për:',
+	'masseditregex-replacetxt' => 'Replace me:',
+	'masseditregex-executebtn' => 'Kryej',
+	'masseditregex-err-nopages' => 'Ju duhet të caktoni të paktën një faqe të ndryshojë.',
+	'masseditregex-before' => 'Para',
+	'masseditregex-after' => 'Pas',
+	'masseditregex-max-preview-diffs' => 'Preview ka qenë e kufizuar në të parë $1 {{PLURAL:$1|ndeshje|ndeshje}}.',
+	'masseditregex-num-changes' => '$1: $2 {{PLURAL:$2 |ndryshim|ndryshime}}',
+	'masseditregex-page-not-exists' => '$1 nuk ekziston',
+	'masseditregex-num-articles-changed' => '$1 {{PLURAL:$1|faqe|faqe}} redaktuar',
+	'masseditregex-view-full-summary' => 'Shiko redakto përmbledhje të plotë',
+	'masseditregex-hint-intro' => 'Këtu janë disa këshilla dhe shembuj për kryerjen e detyrave të përbashkëta:',
+	'masseditregex-hint-headmatch' => 'Ndeshje',
+	'masseditregex-hint-headreplace' => 'Replace',
+	'masseditregex-hint-headeffect' => 'Efekt',
+	'masseditregex-hint-toappend' => 'Append tekst në fund të faqes - e madhe për shtimin e faqeve të kategorive',
+	'masseditregex-hint-remove' => 'Hiq një tekst nga të gjitha faqet në listë',
+	'masseditregex-hint-removecat' => 'Hiq të gjitha kategoritë nga një faqe (vini re ikin e kllapa katrore në wikicode.) Vlerat zëvendësimin nuk duhet të shpëtuar.',
+	'masseditregex-listtype-intro' => 'Kjo është një listë e:',
+	'masseditregex-listtype-pagenames' => 'emrat Page (edit këto faqe)',
+	'masseditregex-listtype-pagename-prefixes' => 'Emri prefikset e faqes (redaktuar faqe që emrat që fillojnë me këtë tekst)',
+	'masseditregex-listtype-categories' => 'emrat e Kategorise (redakto çdo faqe në kuadër të këtyre kategorive; përzgjedhjes hapësira është injoruar)',
+	'masseditregex-listtype-backlinks' => 'Backlinks (redaktuar faqe që lidhen me këto ato)',
+	'masseditregex-namespace-intro' => 'Të gjitha këto faqe janë në këtë hapësirën:',
+	'masseditregex-exprnomatch' => 'Shprehja "$1" përputhet me asnjë faqe.',
+	'masseditregex-badregex' => 'regex pavlefshme:',
+	'masseditregex-editfailed' => 'Edit dështoi:',
+	'masseditregex-tooltip-execute' => 'Aplikoni këto ndryshime në çdo faqe',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK
@@ -1069,6 +1107,13 @@ $messages['oc'] = array(
 	'masseditregex-tooltip-execute' => 'Aplicar aquestes cambiaments a cada pagina',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'masseditregex-matchtxt' => 'Uffgucke nooch:',
+);
+
 /** Polish (Polski)
  * @author Sp5uhe
  */
@@ -1180,12 +1225,12 @@ $messages['pt-br'] = array(
  */
 $messages['ro'] = array(
 	'masseditregex-matchtxt' => 'Caută:',
-	'masseditregex-replacetxt' => 'Înlocuieşte cu:',
+	'masseditregex-replacetxt' => 'Înlocuiește cu:',
 	'masseditregex-executebtn' => 'Execută',
 	'masseditregex-before' => 'Înainte',
 	'masseditregex-after' => 'După',
 	'masseditregex-hint-headmatch' => 'Potrivire',
-	'masseditregex-hint-headreplace' => 'Înlocuieşte',
+	'masseditregex-hint-headreplace' => 'Înlocuiește',
 	'masseditregex-hint-headeffect' => 'Efect',
 );
 
@@ -1232,6 +1277,7 @@ $messages['ru'] = array(
 );
 
 /** Swedish (Svenska)
+ * @author Dafer45
  * @author Per
  */
 $messages['sv'] = array(
@@ -1247,7 +1293,12 @@ $messages['sv'] = array(
 	'masseditregex-num-articles-changed' => '$1 {{PLURAL:$1|sida|sidor}} redigerade',
 	'masseditregex-view-full-summary' => 'Visa fullständingt redigeringssammandrag',
 	'masseditregex-hint-headreplace' => 'Ersätt',
+	'masseditregex-hint-headeffect' => 'Effekt',
 	'masseditregex-listtype-intro' => 'Detta är en lista över:',
+	'masseditregex-listtype-pagenames' => 'Sidnamn (redigera dessa sidor)',
+	'masseditregex-exprnomatch' => 'Uttrycket "$1" matchade inga sidor.',
+	'masseditregex-editfailed' => 'Redigera misslyckades:',
+	'masseditregex-tooltip-execute' => 'Tillämpa dessa förändringar på varje sida',
 );
 
 /** Telugu (తెలుగు)

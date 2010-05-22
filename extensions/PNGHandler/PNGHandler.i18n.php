@@ -320,7 +320,7 @@ $messages['pt-br'] = array(
  * @author Firilacroco
  */
 $messages['ro'] = array(
-	'pnghandler-desc' => 'Redimensionează fişierele PNG folosind pngds',
+	'pnghandler-desc' => 'Redimensionează fișierele PNG folosind pngds',
 );
 
 /** Tarandíne (Tarandíne)

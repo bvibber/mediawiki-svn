@@ -20,7 +20,7 @@ $aliases['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'ReplaceText' => array( 'استبدال_نص' ),
+	'ReplaceText' => array( 'تبديل_نص' ),
 );
 
 /** Bosnian (Bosanski) */
@@ -171,6 +171,11 @@ $aliases['sk'] = array(
 /** Albanian (Shqip) */
 $aliases['sq'] = array(
 	'ReplaceText' => array( 'ZëvendësoTekstin' ),
+);
+
+/** Serbian Cyrillic ekavian (Српски (ћирилица)) */
+$aliases['sr-ec'] = array(
+	'ReplaceText' => array( 'ЗамениТекст' ),
 );
 
 /** Swahili (Kiswahili) */

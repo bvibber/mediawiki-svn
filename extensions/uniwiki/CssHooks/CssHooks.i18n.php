@@ -22,6 +22,13 @@ $messages['qqq'] = array(
 	'csshooks-desc' => '{{desc}}',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'csshooks-desc' => 'Adds CSS e prodhimit HTML e faqeve për styling më të mirë',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK

@@ -133,6 +133,13 @@ $messages['ja'] = array(
 	'rped-wikipedia-url' => 'http://ja.wikipedia.org/wiki/',
 );
 
+/** Ladino (Ladino)
+ * @author Universal Life
+ */
+$messages['lad'] = array(
+	'rped-wikipedia-url' => 'http://lad.wikipedia.org/',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

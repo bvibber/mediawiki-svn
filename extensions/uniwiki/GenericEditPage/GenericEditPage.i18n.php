@@ -60,6 +60,30 @@ $messages['af'] = array(
 	'gep-genericmode' => 'Algemene modus',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'gep-desc' => 'Shtesa të redaktuar faqe që të jenë përdorues shumë miqësore',
+	'gep-emailsubject' => '[$1] sugjerim Kategoria: $2',
+	'gep-emailbody' => 'User "$1" sugjeroi kategorinë "$2" për faqen "$3".',
+	'gep-emailfailure' => 'Na vjen keq, sugjerim juaj nuk mund të përpunohet.',
+	'gep-emailsuccess' => 'Faleminderit për sugjerimin kategori: $1.',
+	'gep-categories' => 'Kategoritë',
+	'gep-addcategory' => 'Shto një kategori',
+	'gep-addcategorybutton' => 'Shtoj',
+	'gep-suggestcategory' => 'Sugjeroni një kategori',
+	'gep-suggestcategorybutton' => 'Submit',
+	'gep-sections' => 'Seksionet',
+	'gep-sectionnotdisabled' => 'Ky seksion nuk mund të jetë me aftësi të kufizuara',
+	'gep-addsection' => 'Shto një seksion',
+	'gep-addsectionbutton' => 'Shtoj',
+	'gep-classicmode' => 'Classic mode',
+	'gep-genericmode' => 'mode Generic',
+	'gep-nosectioninstructions' => 'Nuk ka seksione në këtë faqe. Add disa duke përdorur mjetet në menu bar.',
+	'gep-nocategories' => 'Ju lutem zgjidhni një kategori përpara se të kryeni',
+);
+
 /** Amharic (አማርኛ)
  * @author Codex Sinaiticus
  */
@@ -1198,21 +1222,21 @@ Adicione algumas utilizando as ferramentas na barra de menu.',
  */
 $messages['ro'] = array(
 	'gep-emailfailure' => 'Ne pare rău, sugestia dumneavoastră nu a putut fi procesată.',
-	'gep-emailsuccess' => 'Vă mulţumim pentru sugestia categoriei: $1.',
+	'gep-emailsuccess' => 'Vă mulțumim pentru sugestia categoriei: $1.',
 	'gep-categories' => 'Categorii',
 	'gep-addcategory' => 'Adaugă o categorie',
 	'gep-addcategorybutton' => 'Adaugă',
 	'gep-suggestcategory' => 'Sugerează o categorie',
 	'gep-suggestcategorybutton' => 'Trimite',
-	'gep-sections' => 'Secţiuni',
-	'gep-sectionnotdisabled' => 'Această secţiune nu poate fi dezactivată',
-	'gep-addsection' => 'Adaugă o secţiune',
+	'gep-sections' => 'Secțiuni',
+	'gep-sectionnotdisabled' => 'Această secțiune nu poate fi dezactivată',
+	'gep-addsection' => 'Adaugă o secțiune',
 	'gep-addsectionbutton' => 'Adaugă',
 	'gep-classicmode' => 'Mod clasic',
 	'gep-genericmode' => 'Mod generic',
-	'gep-nosectioninstructions' => 'Nu există secţiuni pe această pagină.
-Adăugaţi unele folosind uneltele din bara de meniu.',
-	'gep-nocategories' => 'Vă rugăm să selectaţi cel puţin o categorie înainte de salvare',
+	'gep-nosectioninstructions' => 'Nu există secțiuni pe această pagină.
+Adăugați unele folosind uneltele din bara de meniu.',
+	'gep-nocategories' => 'Vă rugăm să selectați cel puțin o categorie înainte de salvare',
 );
 
 /** Tarandíne (Tarandíne)

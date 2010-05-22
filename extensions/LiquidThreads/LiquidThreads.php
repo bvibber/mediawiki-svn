@@ -98,7 +98,16 @@ $wgHooks['UserIsBlockedFrom'][] = 'LqtHooks::userIsBlockedFrom';
 $wgHooks['TitleGetRestrictionTypes'][] = 'LqtHooks::getProtectionTypes';
 
 // New User Messages
-$wgHooks['CreateNewUserMessage'][] = 'LqtHooks::createNewUserMessage';
+$wgHooks['SetupNewUserMessageSubject'][] = 'LqtHooks::setupNewUserMessageSubject';
+$wgHooks['SetupNewUserMessageBody'][] = 'LqtHooks::setupNewUserMessageBody';
+$wgHooks['FormatUserMessage'][] = 'LqtHooks::formatUserMessage';
+
+// User Message
+$wgHooks['SetupUserMessageArticle'][] = 'LqtHooks::setupUserMessageArticle';
+$wgHooks['AfterUserMessage'][] = 'LqtHooks::afterUserMessage';
+
+// JS variables
+$wgHooks['MakeGlobalVariablesScript'][] = 'LqtHooks::onMakeGlobalVariablesScript';
 
 // Special pages
 $wgSpecialPages['MoveThread'] = 'SpecialMoveThread';

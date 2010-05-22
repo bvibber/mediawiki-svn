@@ -21,7 +21,7 @@ $aliases['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'EditUser' => array( 'تعديل_المستخدم' ),
+	'EditUser' => array( 'تعديل_اليوزر' ),
 );
 
 /** Bosnian (Bosanski) */
@@ -37,6 +37,11 @@ $aliases['de'] = array(
 /** Lower Sorbian (Dolnoserbski) */
 $aliases['dsb'] = array(
 	'EditUser' => array( 'Wužywarske nastajenja wobźěłaś' ),
+);
+
+/** Spanish (Español) */
+$aliases['es'] = array(
+	'EditUser' => array( 'Editar usuario' ),
 );
 
 /** Persian (فارسی) */
@@ -162,6 +167,11 @@ $aliases['no'] = array(
 /** Occitan (Occitan) */
 $aliases['oc'] = array(
 	'EditUser' => array( 'EditarUtilizaire', 'Editar l’utilizaire' ),
+);
+
+/** Polish (Polski) */
+$aliases['pl'] = array(
+	'EditUser' => array( 'Edycja użytkownika' ),
 );
 
 /** Portuguese (Português) */

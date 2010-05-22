@@ -1119,13 +1119,14 @@ $messages['ig'] = array(
 	'badimages-name' => 'Áhà:',
 	'badimages-not-added' => 'Enweghíkí tinyé nhunuuche',
 	'badimages-not-removed' => 'Enweghíkí puzie nhunuuche',
-	'badimages-reason' => 'Màkà gíní:',
+	'badimages-reason' => 'Mgbaghaputa:',
 	'badimages-remove' => '(wéfù)',
 	'badimages-remove-btn' => 'Wéfù',
 	'badimages-removed' => '$1 a püwola ndetu.',
 	'badimages-subheading' => 'Ihe di',
 	'badimages-log-name' => 'Ndetu nhunuuche di njọ',
 	'badimages-log-add' => 'tinyé [[$1]] na ndetu nhunuuche di njọ',
+	'badimages-log-remove' => 'kúfù [[$1]] na ndetu nhunuuche di njọ',
 	'badimages-page' => '{{ns:ínyeáká}}:Ndetu nhunuuche di njọ',
 	'right-badimages' => 'Kuwaria ndetu nhunuuche di njọ',
 );
@@ -1495,7 +1496,7 @@ $messages['mhr'] = array(
  */
 $messages['mk'] = array(
 	'badimages' => 'Листа на лоши слики',
-	'badimage-desc' => 'Проширување на можностите на МедијаВики во работата со листата на лоши слики',
+	'badimage-desc' => 'Проширување на можностите на МедијаВики при работењето со списокот на лоши слики',
 	'badimages-add-btn' => 'Додај',
 	'badimages-added' => '$1 беше додадена во листата',
 	'badimages-count' => "Има {{PLURAL:$1| | }} '''$1''' {{PLURAL:$1|слика|слики}} во листата на лоши слики.",
@@ -1966,14 +1967,14 @@ $messages['ro'] = array(
 	'badimages-count' => "Există '''$1''' {{PLURAL:$1|imagine|imagini}} în lista imaginilor indezirabile.",
 	'badimages-name' => 'Nume:',
 	'badimages-not-added' => 'Imaginea nu a putut fi adăugată.',
-	'badimages-not-removed' => 'Imaginea nu a putut fi ştearsă.',
+	'badimages-not-removed' => 'Imaginea nu a putut fi ștearsă.',
 	'badimages-reason' => 'Motiv:',
 	'badimages-remove' => '(elimină)',
 	'badimages-remove-btn' => 'Elimină',
-	'badimages-remove-confirm' => 'Confirmaţi ştergerea $1 din listă:',
-	'badimages-removed' => '$1 a fost şters din listă.',
+	'badimages-remove-confirm' => 'Confirmați ștergerea $1 din listă:',
+	'badimages-removed' => '$1 a fost șters din listă.',
 	'badimages-subheading' => 'Elemente curente',
-	'badimages-unprivileged' => '(Nu aveţi drepturi suficiente pentru modificarea listei)',
+	'badimages-unprivileged' => '(Nu aveți drepturi suficiente pentru modificarea listei)',
 	'badimages-log-name' => 'Lista imaginilor indezirabile',
 	'badimages-log-header' => 'Acesta este jurnalul schimbărilor efectuate asupra [[{{MediaWiki:Badimages-page}}|listei imaginilor indezirabile]].',
 	'badimages-log-add' => '[[$1]] a fost adăugat la lista de imagini indezirabile',
@@ -2668,12 +2669,13 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Horacewai2
  * @author Liangent
  * @author Shinjiman
  */
 $messages['zh-hant'] = array(
 	'badimages' => '損壞圖像列表',
-	'badimage-desc' => '增加{{int:badimages}}的[[Special:Badimages|特殊頁面]]',
+	'badimage-desc' => '增加錯誤圖像的特殊頁面',
 	'badimages-add-btn' => '加入',
 	'badimages-added' => '已經加入 $1 到列表中。',
 	'badimages-count' => "在損壞圖像列表中共有 '''$1''' 幅圖像。",
@@ -2688,7 +2690,7 @@ $messages['zh-hant'] = array(
 	'badimages-subheading' => '目前的項目',
 	'badimages-unprivileged' => '（您沒有足夠的權限去修改這個列表）',
 	'badimages-log-name' => '損壞圖像列表',
-	'badimages-log-header' => '這是在[[{{int:Badimages-page}}|損壞圖像列表]]中的修訂記錄。',
+	'badimages-log-header' => '這是在[[{{MediaWiki:Badimages-page}}|損壞圖像列表]]中的修訂記錄。',
 	'badimages-log-add' => '已經加入 [[$1]] 到壞圖像列表',
 	'badimages-log-remove' => '已經由壞圖像列表中移除 [[$1]]',
 	'badimages-page' => '{{ns:help}}:壞圖像列表',

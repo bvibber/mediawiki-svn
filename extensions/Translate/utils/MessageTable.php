@@ -81,10 +81,8 @@ class MessageTable {
 
 	public function header() {
 		$tableheader = Xml::openElement( 'table', array(
-			'class'   => 'mw-sp-translate-table',
-			'border'  => '1',
-			'cellspacing' => '0' )
-		);
+			'class'   => 'mw-sp-translate-table'
+		) );
 
 		if ( $this->reviewMode ) {
 			$tableheader .= Xml::openElement( 'tr' );
@@ -148,7 +146,7 @@ class MessageTable {
 			);
 
 			$anchor = 'msg_' . $key;
-			$anchor = Xml::element( 'a', array( 'name' => $anchor, 'href' => "#$anchor" ), "↓" );
+			$anchor = Xml::element( 'a', array( 'id' => $anchor, 'href' => "#$anchor" ), "↓" );
 
 			$extra = '';
 			if ( $m->hasTag( 'optional' ) ) $extra = '<br />' . $optional;

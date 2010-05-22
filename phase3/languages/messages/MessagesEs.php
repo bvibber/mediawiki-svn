@@ -284,7 +284,7 @@ $magicWords = array(
 	'numberofadmins'        => array( '1', 'NÚMEROADMINISITRADORES', 'NÚMEROADMINS', 'NUMEROADMINS', 'NUMEROADMINISTRADORES', 'NUMERODEADMINISTRADORES', 'NUMERODEADMINS', 'NÚMERODEADMINISTRADORES', 'NÚMERODEADMINS', 'NUMBEROFADMINS' ),
 	'formatnum'             => array( '0', 'FORMATONÚMERO', 'FORMATONUMERO', 'FORMATNUM' ),
 	'special'               => array( '0', 'especial', 'special' ),
-	'defaultsort'           => array( '1', 'ORDENPREDETERMINADO:', 'CLAVEDEORDENPREDETERMINADO:', 'ORDENDECATEGORIAPREDETERMINADO:', 'ORDENDECATEGORÍAPREDETERMINADO:', 'ORDENAR:', 'DEFAULTSORT:', 'DEFAULTSORTKEY:', 'DEFAULTCATEGORYSORT:' ),
+	'defaultsort'           => array( '1', 'ORDENAR:', 'ORDENPREDETERMINADO:', 'CLAVEDEORDENPREDETERMINADO:', 'ORDENDECATEGORIAPREDETERMINADO:', 'ORDENDECATEGORÍAPREDETERMINADO:', 'DEFAULTSORT:', 'DEFAULTSORTKEY:', 'DEFAULTCATEGORYSORT:' ),
 	'filepath'              => array( '0', 'RUTAARCHIVO:', 'RUTARCHIVO:', 'RUTADEARCHIVO:', 'FILEPATH:' ),
 	'tag'                   => array( '0', 'etiqueta', 'ETIQUETA', 'tag' ),
 	'hiddencat'             => array( '1', '__CATEGORÍAOCULTA__', '__HIDDENCAT__' ),
@@ -1711,6 +1711,11 @@ A continuación se muestra el registro de borrado de este archivo:",
 'filename-bad-prefix'         => "El nombre del archivo que estás subiendo comienza por '''«$1»''', un nombre nada descriptivo de su contenido. Es un típico nombre de los que asignan automáticamente las cámaras digitales.
 
 Por favor, elige un nombre más descriptivo.",
+'upload-successful-msg'       => 'Tu carga está disponible aquí: $1',
+'upload-failure-subj'         => 'Problema en la carga',
+'upload-failure-msg'          => 'Hubo un problema con tu carga:
+
+$1',
 
 'upload-proto-error'        => 'Protocolo incorrecto',
 'upload-proto-error-text'   => 'Para subir archivos desde otra página la URL debe comenzar por <code>http://</code> o <code>ftp://</code>.',
@@ -2104,6 +2109,10 @@ La dirección electrónica que indicaste en [[Special:Preferences|tus preferenci
 'emailsent'            => 'Correo electrónico enviado',
 'emailsenttext'        => 'Su correo electrónico ha sido enviado.',
 'emailuserfooter'      => 'Este correo electrónico fue enviado por $1 a $2 a través de la función «Enviar correo electrónico a este usuario» en {{SITENAME}}.',
+
+# User Messenger
+'usermessage-summary' => 'Dejando un mensaje de sistema.',
+'usermessage-editor'  => 'Mensajero del sistema',
 
 # Watchlist
 'watchlist'            => 'Lista de seguimiento',
@@ -3323,17 +3332,17 @@ Intenta la previsualización normal.',
 'watchlistedit-noitems'        => 'Tu lista de seguimiento está vacía.',
 'watchlistedit-normal-title'   => 'Editar lista de seguimiento',
 'watchlistedit-normal-legend'  => 'Borrar títulos de la lista de seguimiento',
-'watchlistedit-normal-explain' => "Las páginas de tu lista de seguimiento se muestran debajo.
-Para eliminar una página, marca la casilla junto a la página, y haz clic en ''Borrar páginas''.
+'watchlistedit-normal-explain' => "Los títulos de tu lista de seguimiento se muestran debajo.
+Para remover un título, marca la casilla junto a él, y haz clic en ''{{int:Watchlistedit-normal-submit}}''.
 También puedes [[Special:Watchlist/raw|editar la lista en crudo]].",
 'watchlistedit-normal-submit'  => 'Borrar páginas',
 'watchlistedit-normal-done'    => '{{PLURAL:$1|1 página ha sido borrada|$1 páginas han sido borradas}} de tu lista de seguimiento:',
 'watchlistedit-raw-title'      => 'Editar lista de seguimiento en crudo',
 'watchlistedit-raw-legend'     => 'Editar tu lista de seguimiento en modo texto',
-'watchlistedit-raw-explain'    => 'Las páginas de tu lista de seguimiento se muestran debajo. Esta lista puede ser editada añadiendo o eliminando líneas de la lista;
-una página por línea.
-Cuando acabes, haz clic en Actualizar lista de seguimiento.
-También puedes utilizar el [[Special:Watchlist/edit|editor estándar]].',
+'watchlistedit-raw-explain'    => 'Los títulos de tu lista de seguimiento se muestran debajo. Esta lista puede ser editada añadiendo o eliminando líneas de la lista;
+un título por línea.
+Cuando acabes, haz clic en "{{int:Watchlistedit-raw-submit}}".
+También puedes [[Special:Watchlist/edit|usar el editor estándar]].',
 'watchlistedit-raw-titles'     => 'Páginas:',
 'watchlistedit-raw-submit'     => 'Actualizar lista de seguimiento',
 'watchlistedit-raw-done'       => 'Tu lista de seguimiento se ha actualizado.',

@@ -10,7 +10,9 @@ $.fn.autoEllipsis = function( options ) {
 	options = $.extend( {
 		'position': 'center',
 		'tooltip': false,
-		'restoreText': false
+		'selector': 'span',
+		'restoreText': false,
+		'hasSpan': false
 	}, options );
 	$(this).each( function() {
 		var $this = $(this);
@@ -23,8 +25,13 @@ $.fn.autoEllipsis = function( options ) {
 		}
 		var text = $this.text();
 		var w = $this.width();
-		var $text = $( '<span />' ).css( 'whiteSpace', 'nowrap' );
-		$this.empty().append( $text );
+		var $text;
+		if ( options.hasSpan ) {
+			$text = $this.children( options.selector );
+		} else {
+			$text = $( '<span />' ).css( 'whiteSpace', 'nowrap' );
+			$this.empty().append( $text );
+		}
 		
 		// Try cache
 		if ( !( text in cache ) ) {
@@ -32,6 +39,8 @@ $.fn.autoEllipsis = function( options ) {
 		}
 		if ( w in cache[text] ) {
 			$text.text( cache[text][w] );
+			if ( options.tooltip )
+				$text.attr( 'title', text );
 			return;
 		}
 		
@@ -80,9 +89,9 @@ $.fn.autoEllipsis = function( options ) {
 					}
 					break;
 			}
-			if ( options.tooltip )
-				$text.attr( 'title', text );
 		}
+		if ( options.tooltip )
+			$text.attr( 'title', text );
 		cache[text][w] = $text.text();
 	} );
 };

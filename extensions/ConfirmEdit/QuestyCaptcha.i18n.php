@@ -52,6 +52,19 @@ $messages['qqq'] = array(
 	'questycaptchahelp-text' => 'See also {{msg-mw|Captchahelp-text}}.',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'questycaptcha-addurl' => 'Your redakto përfshin të jashtme lidhje të reja. Për të ndihmuar në mbrojtjen kundër spam automatizuar, ju lutem përgjigje pyetjes që duket më poshtë ([[Special:Captcha/help|më shumë informacion]]):',
+	'questycaptcha-badlogin' => 'Për të ndihmuar në mbrojtjen kundër fjalëkalimin automatizuar plasaritje, ju lutem përgjigje pyetjes që duket më poshtë ([[Special:Captcha/help|më shumë informacion]]):',
+	'questycaptcha-createaccount' => 'Për të ndihmuar në mbrojtjen kundër krijimit llogari e automatizuar, ju lutemi përgjigje pyetjes që duket më poshtë ([[Special:Captcha/help|më shumë informacion]]):',
+	'questycaptcha-create' => 'Për të krijuar një faqe, ju lutem përgjigje të pyetjes që duket më poshtë ([[Special:Captcha/help|më shumë informacion]]):',
+	'questycaptcha-edit' => 'Për të redaktuar këtë faqe, ju lutem përgjigje të pyetjes që duket më poshtë ([[Special:Captcha/help|më shumë informacion]]):',
+	'questycaptcha-sendemail' => 'Për të ndihmuar në mbrojtjen kundër spamming automatizuar, ju lutem përgjigje pyetjes që duket më poshtë ([[Special:Captcha/help|më shumë informacion]]):',
+	'questycaptchahelp-text' => "Web faqet që të pranojë kontribute nga publiku, si ky wiki, shpesh keqtrajtohen nga spammers që përdorin mjete të automatizuar për të shtuar lidhjet e tyre me shumë vende. Përderisa këto lidhje spam mund të hiqen, ata janë një ngatërresë të rëndësishme. Ndonjëherë, sidomos kur duke shtuar të reja web lidhje me një faqe, wiki mund të kërkojë që për t'iu përgjigjur një pyetje. Ngaqë kjo është një detyrë që është e vështirë për të automatizuar, ajo do të lejojë të vërtetë njerëzit më të japin kontribute të tyre, ndërsa ndaluar spammers më dhe robotik sulmuesit të tjera. Ju lutem kontaktoni [[{{MediaWiki:Grouppage-sysop}}|faqe administratorët]] për ndihmë, nëse kjo është e papritur në parandalimin e ju nga bërja e kontributeve të ligjshme. Kliko 'butonin mbrapa në shfletuesin tuaj për t'u kthyer në faqen e redaktorit.",
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK
@@ -358,7 +371,7 @@ Como esta tarefa é difícil de automatizar, permite distinguir entre persoas e 
 
 Por favor, contacte cun [[{{MediaWiki:Grouppage-sysop}}|administrador do sitio]] para solicitar axuda se o sistema lle impide rexistrarse para facer contribucións lexítimas.
 
-Prema no botón \"atrás\" do seu navegador para voltar á páxina de edición.",
+Prema no botón \"atrás\" do seu navegador para volver á páxina de edición.",
 );
 
 /** Swiss German (Alemannisch)
@@ -436,6 +449,7 @@ Segíts az automatikus spamek elleni védekezésben, kérlek válaszolj az aláb
 	'questycaptcha-createaccount' => 'Segíts az automatikus felhasználói fiók készítés kivédésében, kérlek válszolj az alábbi kérdésre ([[Special:Captcha/help|további információk]]):',
 	'questycaptcha-create' => 'Kérlek válaszolj az alábbi kérdésre a lap létrehozásához ([[Special:Captcha/help|további információk]]):',
 	'questycaptcha-edit' => 'A lap szerkesztéséhez kérlek válaszolj az alábbi kérdésre ([[Special:Captcha/help|további információk]]):',
+	'questycaptcha-sendemail' => 'Hogy segíts az automatikus spammelés elleni védekezésben, kérünk válaszolj az alábbi kérdésre ([[Special:Captcha/help|segítség]]):',
 	'questycaptchahelp-text' => 'Az olyan weboldalakat, amelyekre bárki írhat, gyakran támadják meg spammerek olyan eszközök felhasználásával, amelyek képesek automatikusan, emberi felügyelet nélkül elhelyezni hivatkozásokat sok különböző oldalon. 
 
 Néha, különösen ha egy új külső hivatkozást teszel egy szócikkbe, a wiki egy egy kérdés megválaszolására kérhet.
@@ -777,6 +791,7 @@ Clique o botão 'voltar' do seu browser para voltar à página de edição.",
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
+ * @author Giro720
  */
 $messages['pt-br'] = array(
 	'questycaptcha-addurl' => 'Sua edição inclui novas ligações externas.
@@ -785,6 +800,7 @@ Para proteção contra spam automático, por favor responda a questão que apare
 	'questycaptcha-createaccount' => 'Para proteger contra criação automática de contas, por favor responda as questões que aparecem abaixo ([[Special:Captcha/help|more info]]):',
 	'questycaptcha-create' => 'Para criar a página, por favor responda a questão que aparece abaixo ([[Special:Captcha/help|more info]]):',
 	'questycaptcha-edit' => 'Para editar esta página, por favor responda a questão que aparece abaixo ([[Special:Captcha/help|more info]]):',
+	'questycaptcha-sendemail' => "Para ajudar a prevenir o ''spam'' automatizado, por favor, responda à seguinte pergunta ([[Special:Captcha/help|mais informações]]):",
 	'questycaptchahelp-text' => "Sítios que aceitam contribuições públicas, como este wiki, são vulneráveis a spammers que utilizam ferramentas automatizadas para inserir as suas ligações em diversos locais. 
 Apesar de ser possível emover tais ligações, elas são um incômodo significativo.
 
@@ -910,6 +926,7 @@ $messages['th'] = array(
 );
 
 /** Turkish (Türkçe)
+ * @author Joseph
  * @author Vito Genovese
  */
 $messages['tr'] = array(
@@ -919,6 +936,7 @@ Otomatik reklama karşı korunmaya yardımcı olmak için, lütfen ([[Special:Ca
 	'questycaptcha-createaccount' => 'Otomatik hesap oluşturmaya karşı korunmaya yardımcı olmak için, lütfen ([[Special:Captcha/help|daha fazla bilgi]]) bölümünün altında yer alan soruya cevap verin:',
 	'questycaptcha-create' => 'Sayfayı oluşturmak için, lütfen ([[Special:Captcha/help|daha fazla bilgi]]) bölümünün altında yer alan soruya cevap verin:',
 	'questycaptcha-edit' => 'Sayfayı değiştirmek için, lütfen ([[Special:Captcha/help|daha fazla bilgi]]) bölümünün altında yer alan soruya cevap verin:',
+	'questycaptcha-sendemail' => 'Otomatik spamlerden korunmaya yardımcı olmak için, lütfen aşağıda görünen soruyu cevaplayın ([[Special:Captcha/help|daha fazla bilgi]]):',
 	'questycaptchahelp-text' => "Bu viki gibi herkesin katkı yapmasına izin veren web siteleri, genellikle bir çok siteye verilen bağlantıları ekleyen otomatik araçlar kullanan reklam amaçlı kullanıcılar tarafından istismar edilmektedir.
 Bu reklam bağlantıları kaldırılabiliyor olsa da, önemli bir sıkıntı yaratmaktadırlar.
 
@@ -935,5 +953,17 @@ Sayfa editörüne dönmek için tarayıcınızın 'geri' düğmesine tıklayın.
  */
 $messages['yi'] = array(
 	'questycaptcha-create' => 'צו שאַפֿן דעם בלאַט, ביטע ענטפֿערט די פֿראַגע אונטן  ([[Special:Captcha/help|מער אינפֿארמאַציע]]):',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Horacewai2
+ */
+$messages['zh-hant'] = array(
+	'questycaptcha-addurl' => '您的編輯內容中含有本網站以外的連結。為防止不當程式大量破壞，請回答以下的問題（[[Special:Captcha/help|相關資訊]]）：',
+	'questycaptcha-badlogin' => '為防止不當程式破解密碼，請回答以下的問題（[[Special:Captcha/help|相關資訊]]）：',
+	'questycaptcha-createaccount' => '為防止不當程式大量建立帳戶，請回答以下的問題（[[Special:Captcha/help|相關資訊]]）：',
+	'questycaptcha-create' => '為防止不當程式大量建立頁面，請回答以下問題（[[Special:Captcha/help|相關資訊]]）：',
+	'questycaptcha-edit' => '為防破壞，如您想要編輯此頁面，請回答以下的問題（[[Special:Captcha/help|相關資訊]]）：',
+	'questycaptcha-sendemail' => '為防止不當程式破解密碼，請回答下列問題（[[Special:Captcha/help|相關資訊]]）：',
 );
 

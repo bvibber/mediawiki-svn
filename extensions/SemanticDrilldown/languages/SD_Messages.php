@@ -1770,6 +1770,7 @@ en däm Wäät <code>\\,</code> enjävve, domet et keine Dorjeneijn jitt.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
+ * @author Les Meloures
  * @author Robby
  */
 $messages['lb'] = array(
@@ -1792,15 +1793,15 @@ $messages['lb'] = array(
 	'sd_browsedata_addanothervalue' => 'Klickt op de Feil fir een anere Wert derbäisetzen',
 	'sd_browsedata_daterangestart' => 'Ufank:',
 	'sd_browsedata_daterangeend' => 'Enn:',
-	'sd_browsedata_novalues' => 'Et gëtt keng Werter fir dëse Filter',
+	'sd_browsedata_novalues' => 'Et gëtt keng Wäerter fir dëse Filter',
 	'filters' => 'Filteren',
 	'sd_filters_docu' => 'Dës Filtere gëtt et op {{SITENAME}}:',
 	'createfilter' => 'E Filter uleeën',
 	'sd_createfilter_name' => 'Numm:',
-	'sd_createfilter_usepropertyvalues' => 'All Werter vun dëser Eegeschaft fir de Filter benotzen',
+	'sd_createfilter_usepropertyvalues' => 'All Wäerter vun dëser Eegeschaft fir de Filter benotzen',
 	'sd_createfilter_usecategoryvalues' => 'Werter fir dëse Filter vun dëser Kategorie kréien:',
 	'sd_createfilter_inputtype' => 'Gitt den Typ vun dësem Filter un.',
-	'sd_createfilter_listofvalues' => 'Lëscht vun de Werter (stanard)',
+	'sd_createfilter_listofvalues' => 'Lëscht vun de Wäerter (Standard)',
 	'sd_createfilter_requirefilter' => 'Verlaangen dat en anere Filter gewielt gëtt ier dësen ugewise gëtt:',
 	'sd_createfilter_label' => 'Etiquette fir dëse Filter (fakultativ):',
 	'sd_blank_error' => 'däerf net eidel sinn',
@@ -2487,9 +2488,9 @@ $messages['pt-br'] = array(
  * @author Mihai
  */
 $messages['ro'] = array(
-	'browsedata' => 'Răsfoiţi data',
-	'sd_browsedata_choosecategory' => 'Alegeţi o categorie',
-	'sd_browsedata_viewcategory' => 'vedeţi categoria',
+	'browsedata' => 'Răsfoiți data',
+	'sd_browsedata_choosecategory' => 'Alegeți o categorie',
+	'sd_browsedata_viewcategory' => 'vedeți categoria',
 	'sd_browsedata_subcategory' => 'Subcategorie',
 	'sd_browsedata_other' => 'Altul',
 	'sd_browsedata_none' => 'Nimic',
@@ -2498,14 +2499,14 @@ $messages['ro'] = array(
 	'sd_browsedata_or' => 'sau',
 	'sd_browsedata_removefilter' => 'Elimină acest filtru',
 	'sd_browsedata_removesubcategoryfilter' => 'Elimină acest filtru de subcategorie',
-	'sd_browsedata_resetfilters' => 'Resetaţi filtrele',
+	'sd_browsedata_resetfilters' => 'Resetați filtrele',
 	'sd_browsedata_addanothervalue' => 'Adaugă altă valoare',
 	'sd_browsedata_daterangestart' => 'Început:',
-	'sd_browsedata_daterangeend' => 'Sfârşit:',
+	'sd_browsedata_daterangeend' => 'Sfârșit:',
 	'sd_browsedata_novalues' => 'Nu există valori pentru acest filtru',
 	'filters' => 'Filtre',
 	'sd_filters_docu' => 'Următoarele filtre există la {{SITENAME}}:',
-	'createfilter' => 'Creaţi un filtru',
+	'createfilter' => 'Creați un filtru',
 	'sd_createfilter_name' => 'Nume:',
 	'sd_blank_error' => 'nu poate fi gol',
 	'sd_filter_year' => 'An',
@@ -2789,6 +2790,7 @@ $messages['te'] = array(
 	'sd_browsedata_addanothervalue' => 'మరో విలువని చేర్చండి',
 	'sd_browsedata_daterangestart' => 'మొదలు:',
 	'sd_browsedata_daterangeend' => 'ముగింపు:',
+	'sd_browsedata_novalues' => 'ఈ వడపోతకి విలువలు ఏమీ లేవు',
 	'filters' => 'వడపోతలు',
 	'sd_filters_docu' => '{{SITENAME}}లో ఈ క్రింది వడపోతలు ఉన్నాయి:',
 	'sd_createfilter_name' => 'పేరు:',

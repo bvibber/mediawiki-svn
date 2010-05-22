@@ -657,6 +657,11 @@ $messages['id'] = array(
 	'contributors-nosuchpage' => 'Halaman $1 tidak ditemukan.',
 );
 
+/** Igbo (Igbo) */
+$messages['ig'] = array(
+	'contributors-submit' => 'Zi',
+);
+
 /** Ido (Ido)
  * @author Malafaya
  */
@@ -893,6 +898,7 @@ $messages['la'] = array(
 );
 
 /** Luxembourgish (Lëtzebuergesch)
+ * @author Les Meloures
  * @author Robby
  */
 $messages['lb'] = array(
@@ -903,7 +909,7 @@ $messages['lb'] = array(
 	'contributors-target' => 'Titel:',
 	'contributors-submit' => 'Weisen',
 	'contributors-subtitle' => 'Haaptauteure vun $1',
-	'contributors-others-long' => 'Doniewt gëtt et nach $1 {{PLURAL:$1|aneren Auteur den|aner Auteuren déi}} un dëser Säit matgeschafft {{PLURAL:$1|huet|hunn}}',
+	'contributors-others-long' => 'Donieft gëtt et nach $1 {{PLURAL:$1|aneren Auteur den|aner Auteuren déi}} un dëser Säit matgeschafft {{PLURAL:$1|huet|hunn}}',
 	'contributors-others' => 'a(n) $1 {{PLURAL:$1|aneren|anerer}}',
 	'contributors-badtitle' => 'Dës Säit gëtt et net.',
 	'contributors-nosuchpage' => "D'Säit $1 gëtt et net.",
@@ -1148,6 +1154,7 @@ $messages['os'] = array(
  * @author Xqt
  */
 $messages['pdc'] = array(
+	'contributors-target' => 'Titel:',
 	'contributors-submit' => 'Zeig',
 );
 
@@ -1252,12 +1259,12 @@ $messages['ro'] = array(
 	'contributors' => 'Contribuitori',
 	'contributors-desc' => 'Rezumă principalii contribuitori la o pagină',
 	'contributors-toolbox' => 'Contribuitori principali',
-	'contributors-legend' => 'Afişează contribuitorii principali la o pagină',
+	'contributors-legend' => 'Afișează contribuitorii principali la o pagină',
 	'contributors-target' => 'Titlu:',
 	'contributors-submit' => 'Arată',
 	'contributors-subtitle' => 'Contribuitori principali la $1',
-	'contributors-others-long' => 'Mai {{PLURAL:$1|este încă un contributor|sunt $1 alţi contribuitori}} la această pagină.',
-	'contributors-others' => 'şi {{PLURAL:$1|încă o persoană|alţii $1}}',
+	'contributors-others-long' => 'Mai {{PLURAL:$1|este încă un contributor|sunt $1 alți contribuitori}} la această pagină.',
+	'contributors-others' => 'și {{PLURAL:$1|încă o persoană|alții $1}}',
 	'contributors-badtitle' => 'Titlu nevalid.',
 	'contributors-nosuchpage' => 'Pagina $1 nu există.',
 );

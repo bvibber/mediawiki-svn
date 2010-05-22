@@ -51,6 +51,22 @@ $messages['af'] = array(
 	'sitematrix-fishbowl' => 'wysiging beperk',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'sitematrix' => 'Lista e wikis Wikipedia',
+	'sitematrix-summary' => 'Kjo faqe të veçanta listat e të gjithë Wikimedia wikis.',
+	'sitematrix-desc' => 'Displays a [[Special:SiteMatrix|Lista e Wikimedia wikis]]',
+	'sitematrix-language' => 'Gjuhë',
+	'sitematrix-project' => 'Emri i projektit, Lidhje interproject dhe interwiki link',
+	'sitematrix-others' => 'Projekte të tjera të Wikipedia',
+	'sitematrix-total' => "'''numërimin Gjithsej: $1'''",
+	'sitematrix-sitetotal' => 'Total',
+	'sitematrix-private' => 'privat',
+	'sitematrix-fishbowl' => 'redaktimi i kufizuar',
+);
+
 /** Amharic (አማርኛ)
  * @author Codex Sinaiticus
  */
@@ -1343,6 +1359,7 @@ $messages['pag'] = array(
 $messages['pdc'] = array(
 	'sitematrix' => 'Lischt vun Wikimedia-Wikis',
 	'sitematrix-language' => 'Schprooch',
+	'sitematrix-private' => 'private',
 );
 
 /** Polish (Polski)
@@ -1450,14 +1467,14 @@ $messages['rm'] = array(
  */
 $messages['ro'] = array(
 	'sitematrix' => 'Lista proiectelor Wikimedia',
-	'sitematrix-summary' => 'Această pagină specială afişează toate proiectele wiki ale Wikimedia.',
-	'sitematrix-desc' => 'Afişaţi o [[Special:SiteMatrix|listă de wikiuri ale Wikimedia]]',
+	'sitematrix-summary' => 'Această pagină specială afișează toate proiectele wiki ale Wikimedia.',
+	'sitematrix-desc' => 'Afișați o [[Special:SiteMatrix|listă de wikiuri ale Wikimedia]]',
 	'sitematrix-language' => 'Limbă',
 	'sitematrix-others' => 'Alte proiecte Wikimedia',
 	'sitematrix-total' => "'''Număr total: $1'''",
 	'sitematrix-sitetotal' => 'Total',
 	'sitematrix-private' => 'privat',
-	'sitematrix-fishbowl' => 'modificare restricţionată',
+	'sitematrix-fishbowl' => 'modificare restricționată',
 );
 
 /** Tarandíne (Tarandíne)

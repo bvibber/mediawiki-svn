@@ -559,7 +559,7 @@ $messages['lb'] = array(
 	'communityvoice-ratings-scale-status-error' => 'Feeler beim Schécken!',
 	'communityvoice-ratings-scale-status-thanks' => "Merci fir d'Ofstëmmen!",
 	'communityvoice-ratings-scale-stats' => '$1 / 5 ($2 {{PLURAL:$2|Stëmm|Stëmmen}} ofginn)',
-	'communityvoice-ratings-error-no-category' => 'Am Bewertungstag feelt den Attribut Kategorie.',
+	'communityvoice-ratings-error-no-category' => 'Am Bewäertungstag feelt den Attribut Kategorie.',
 	'communityvoice-ratings-error-no-title' => 'Den Titel-Attribut feelt an der Bewäertungs-Markéierung.',
 );
 
@@ -732,7 +732,7 @@ $messages['pt-br'] = array(
 $messages['ro'] = array(
 	'communityvoice-ratings-scale-status-sending' => 'Se trimite...',
 	'communityvoice-ratings-scale-status-error' => 'Eroare la trimitere!',
-	'communityvoice-ratings-scale-status-thanks' => 'Mulţumim pentru vot!',
+	'communityvoice-ratings-scale-status-thanks' => 'Mulțumim pentru vot!',
 	'communityvoice-ratings-scale-stats' => '$1 / 5 ($2 {{PLURAL:$2|vot exprimat|voturi exprimate}})',
 );
 

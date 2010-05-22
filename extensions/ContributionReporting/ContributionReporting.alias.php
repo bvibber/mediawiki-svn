@@ -24,9 +24,9 @@ $aliases['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'ContributionHistory' => array( 'تاريخ_المساهمة' ),
-	'ContributionStatistics' => array( 'إحصاءات_المساهمة' ),
-	'ContributionTotal' => array( 'إجمالي_المساهمة' ),
+	'ContributionHistory' => array( 'تاريخ_المساهمه' ),
+	'ContributionStatistics' => array( 'احصائيات_المساهمه' ),
+	'ContributionTotal' => array( 'مجموع_المساهمه' ),
 );
 
 /** Bosnian (Bosanski) */

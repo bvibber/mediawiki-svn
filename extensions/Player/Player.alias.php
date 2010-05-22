@@ -20,7 +20,7 @@ $aliases['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'Player' => array( 'لاعب' ),
+	'Player' => array( 'لعيب' ),
 );
 
 /** Breton (Brezhoneg) */

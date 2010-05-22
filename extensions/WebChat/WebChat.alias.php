@@ -20,7 +20,17 @@ $aliases['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'WebChat' => array( 'دردشة_الويب' ),
+	'WebChat' => array( 'شات_الويب' ),
+);
+
+/** German (Deutsch) */
+$aliases['de'] = array(
+	'WebChat' => array( 'Web-Chat' ),
+);
+
+/** Spanish (Español) */
+$aliases['es'] = array(
+	'WebChat' => array( 'Chat web' ),
 );
 
 /** Estonian (Eesti) */

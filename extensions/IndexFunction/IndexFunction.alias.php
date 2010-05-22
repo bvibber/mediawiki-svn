@@ -43,6 +43,16 @@ $aliases['bs'] = array(
 	'Index' => array( 'Indeks' ),
 );
 
+/** Esperanto (Esperanto) */
+$aliases['eo'] = array(
+	'Index' => array( 'Indekso' ),
+);
+
+/** Spanish (Español) */
+$aliases['es'] = array(
+	'Index' => array( 'Índice' ),
+);
+
 /** Franco-Provençal (Arpetan) */
 $aliases['frp'] = array(
 	'Index' => array( 'Endèxe' ),
@@ -91,6 +101,11 @@ $aliases['no'] = array(
 /** Polish (Polski) */
 $aliases['pl'] = array(
 	'Index' => array( 'Indeks' ),
+);
+
+/** Pashto (پښتو) */
+$aliases['ps'] = array(
+	'Index' => array( 'ليکلړ' ),
 );
 
 /** Portuguese (Português) */

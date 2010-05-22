@@ -34,6 +34,13 @@ $messages['qqq'] = array(
 	'pipeescape-desc' => '{{desc|name=[[:mw:Extension:Pipe_Escape|Pipe_Escape]]}}',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'pipeescape-desc' => 'funksion parser <code>#!</code> për kur të doni një karakter tub të jetë vetëm një karakter tub',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

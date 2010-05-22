@@ -27,10 +27,10 @@ $aliases['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'LikedPages' => array( 'صفحات_محبوبة' ),
-	'ProblemPages' => array( 'صفحات_المشاكل' ),
+	'LikedPages' => array( 'صفح_معمول_ليها_لينك' ),
+	'ProblemPages' => array( 'صفح_المشاكل' ),
 	'RatingHistory' => array( 'تاريخ_التقييم' ),
-	'ReaderFeedback' => array( 'ملاحظات_القراء' ),
+	'ReaderFeedback' => array( 'ملاحظات_القرايين' ),
 );
 
 /** Southern Balochi (بلوچی مکرانی) */
@@ -204,6 +204,7 @@ $aliases['mk'] = array(
 $aliases['ml'] = array(
 	'LikedPages' => array( 'കണ്ണിവത്ക്കരിക്കപ്പെട്ടതാളുകൾ' ),
 	'ProblemPages' => array( 'പ്രശ്നമുള്ളതാളുകൾ' ),
+	'RatingHistory' => array( 'നിലവാരമിടലിന്റെചരിത്രം' ),
 	'ReaderFeedback' => array( 'വായനക്കാരുടെഅഭിപ്രായങ്ങൾ' ),
 );
 

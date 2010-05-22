@@ -25,6 +25,13 @@ $messages['af'] = array(
 	'doublewiki-desc' => "Vertoon 'n bladsy met sy vertaling vanaf 'n ander wiki in twee kolomme op dieselfde bladsy.",
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'doublewiki-desc' => 'Tregon një faqe dhe të përkthimit të saj nga një tjetër wiki në dy kolona të njëjtën faqe',
+);
+
 /** Aragonese (Aragonés)
  * @author Juanpabl
  */
@@ -446,7 +453,7 @@ $messages['pt-br'] = array(
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
-	'doublewiki-desc' => 'Arată o pagină şi traducerea sa dintr-un alt wiki pe două coloane pe aceeaşi pagină',
+	'doublewiki-desc' => 'Arată o pagină și traducerea sa dintr-un alt wiki pe două coloane pe aceeași pagină',
 );
 
 /** Tarandíne (Tarandíne)

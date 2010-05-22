@@ -29,11 +29,29 @@ $messages['af'] = array(
 	'mwe-cancel' => 'Kanselleer',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'mwe-loading_txt' => 'Loading ...',
+	'mwe-error_load_lib' => 'Gabim: $1 JavaScript nuk ishte shikohen ose nuk define $2',
+	'mwe-apiproxy-setup' => 'Ngritja proxy API',
+	'mwe-load-drag-item' => 'Loading zvarritur artikull',
+	'mwe-ok' => 'Në rregull',
+	'mwe-cancel' => 'Anuloj',
+	'mwe-enable-gadget' => 'Aktivizo multimedial beta (mwEmbed) për të gjitha faqet',
+	'mwe-enable-gadget-done' => 'Multimedia beta vegël ka qenë i aktivizuar',
+);
+
 $messages['ar'] = array(
 	'mwe-loading_txt' => 'يحمل...',
 	'mwe-cancel' => 'ألغِ',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ * @author Jim-by
+ */
 $messages['be-tarask'] = array(
 	'mwe-loading_txt' => 'загрузка …',
 	'mwe-error_load_lib' => 'Памылка: JavaScript $1 не даступны альбо не вызначае $2',
@@ -41,11 +59,28 @@ $messages['be-tarask'] = array(
 	'mwe-load-drag-item' => 'Загрузка перанесенага элемэнту',
 	'mwe-ok' => 'Добра',
 	'mwe-cancel' => 'Адмяніць',
+	'mwe-enable-gadget' => 'Уключыць бэта-мультымэдыя (mwEmbed) для ўсіх старонак',
+	'mwe-enable-gadget-done' => 'Дапаўненьне бэта-мультымэтыя ўключанае',
+	'mwe-must-login-gadget' => 'Для ўключэньня дапаўненьня Вам неабходна <a target="_new" href="$1">ўвайсьці ў сыстэму</a>',
+	'mwe-test-plural' => 'Я прайшоў $1 {{PLURAL:$1|тэст|тэсты|тэстаў}}',
 );
+
+/** Breton (Brezhoneg)
+ * @author Fohanno
+ * @author Fulup
+ * @author Y-M D
+ */
 $messages['br'] = array(
 	'mwe-loading_txt' => 'o kargañ...',
+	'mwe-error_load_lib' => "Fazi : n'eo ket bet kavet JavaScript $1 pe n'eo ket termenet gant $2",
+	'mwe-apiproxy-setup' => 'Kefluniadur ar proksi API',
+	'mwe-load-drag-item' => 'O kargañ an elfenn digargañ',
 	'mwe-ok' => 'Mat eo',
 	'mwe-cancel' => 'Nullañ',
+	'mwe-enable-gadget' => 'Gweredekaat liesvedia beta (mwEmbed) war an holl bajennoù',
+	'mwe-enable-gadget-done' => 'Gweredekaet eo bet ar gadjet liesvedia beta',
+	'mwe-must-login-gadget' => 'Evit gweredekaat ar gadjet e rankoc\'h <a target="_new" href="$1">kevreañ</a>',
+	'mwe-test-plural' => 'Sevenet em eus $1 amprouadenn{{PLURAL:$1||}}',
 );
 
 $messages['bs'] = array(
@@ -63,12 +98,21 @@ $messages['cy'] = array(
 	'mwe-loading_txt' => 'wrthi\'n llwytho ...',
 );
 
+/** German (Deutsch)
+ * @author Kghbln
+ * @author Metalhead64
+ */
 $messages['de'] = array(
 	'mwe-loading_txt' => 'lade …',
 	'mwe-error_load_lib' => 'Fehler: JavaScript $1 war nicht abrufbar oder lässt $2 nicht zu',
 	'mwe-apiproxy-setup' => 'API-Proxy-Konfiguration',
+	'mwe-load-drag-item' => 'Lade eingebettetes Element',
 	'mwe-ok' => 'OK',
 	'mwe-cancel' => 'Abbrechen',
+	'mwe-enable-gadget' => 'Aktiviere die Beta-Version des Multimedia-Helferleins (mwEmbed) für alle Seiten',
+	'mwe-enable-gadget-done' => 'Beta-Version des Multimedia-Helferleins wurde aktiviert',
+	'mwe-must-login-gadget' => 'Um das Helferlein aktivieren zu können, musst du dich <a target="_new" href="$1">anmelden</a>',
+	'mwe-test-plural' => '{{PLURAL:$1|$1 Test|$1 Tests}} durchlaufen',
 );
 
 $messages['diq'] = array(
@@ -80,6 +124,9 @@ $messages['diq'] = array(
 	'mwe-cancel' => 'iptal',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
 $messages['dsb'] = array(
 	'mwe-loading_txt' => 'zacytujo se ...',
 	'mwe-error_load_lib' => 'Zmólka: JavaScript $1 njejo wótwołujobny był abo njedefiněrujo $2',
@@ -87,6 +134,10 @@ $messages['dsb'] = array(
 	'mwe-load-drag-item' => 'Wlecony zapisk se zacytujo',
 	'mwe-ok' => 'W pórědku',
 	'mwe-cancel' => 'Pśetergnuś',
+	'mwe-enable-gadget' => 'Multimedia beta (mwEmbed) za wšykne boki zmóžniś',
+	'mwe-enable-gadget-done' => 'Pśisłušk Multimedia beta jo se zmóžnił',
+	'mwe-must-login-gadget' => 'Aby pśisłušk zmóžnił, musyš se <a target="_new" href="$1">pśizjawiś</a>',
+	'mwe-test-plural' => 'Som {{PLURAL:$1|$1 test|$1 testa|$1 testy|$1 testow}} pśewjadł',
 );
 
 $messages['el'] = array(
@@ -97,11 +148,20 @@ $messages['eo'] = array(
 	'mwe-cancel' => 'Nuligi',
 );
 
+/** Spanish (Español)
+ * @author Translationista
+ */
 $messages['es'] = array(
 	'mwe-loading_txt' => 'cargando ...',
+	'mwe-error_load_lib' => 'Error: JavaScript $1 no ha podido ser recuperado o no define $2',
+	'mwe-apiproxy-setup' => 'Configurando proxi de la API',
 	'mwe-load-drag-item' => 'Cargando el objeto arrastrado',
 	'mwe-ok' => 'OK',
 	'mwe-cancel' => 'Cancelar',
+	'mwe-enable-gadget' => 'Habilitar multimedia beta (mwEmbed) en todas las páginas',
+	'mwe-enable-gadget-done' => 'Se ha habilitado el gadget multimedia beta',
+	'mwe-must-login-gadget' => 'Para habilitar el gadget debes <a target="_new" href="$1">ingresar</a>',
+	'mwe-test-plural' => 'Realicé {{PLURAL:$1|$1 prueba|$1 pruebas}}',
 );
 
 $messages['eu'] = array(
@@ -114,13 +174,22 @@ $messages['fi'] = array(
 	'mwe-cancel' => 'Peruuta',
 );
 
+/** French (Français)
+ * @author IAlex
+ * @author Jean-Frédéric
+ * @author PieRRoMaN
+ */
 $messages['fr'] = array(
 	'mwe-loading_txt' => 'chargement ...',
-	'mwe-error_load_lib' => 'Erreur : JavaScript $1 n\'a pas pu être trouvé ou ne définit pas $2',
+	'mwe-error_load_lib' => "Erreur : JavaScript $1 n'a pas pu être trouvé ou ne définit pas $2",
 	'mwe-apiproxy-setup' => 'Configuration du proxy API',
 	'mwe-load-drag-item' => 'Chargement de l’élément dépose',
 	'mwe-ok' => 'OK',
 	'mwe-cancel' => 'Annuler',
+	'mwe-enable-gadget' => 'Activer beta multimédia (mwEmbed) sur toutes les pages',
+	'mwe-enable-gadget-done' => 'Le gadget multimédia beta a été activé',
+	'mwe-must-login-gadget' => 'Afin d\'activer le gadget vous devez vous <a target="_new" href="$1">connecter</a>',
+	'mwe-test-plural' => "J'ai exécuté {{PLURAL:$1|$1 test|$1 tests}}",
 );
 
 /** Galician (Galego)
@@ -173,6 +242,10 @@ $messages['hsb'] = array(
 	'mwe-test-plural' => 'Sym {{PLURAL:$1|$1 test|$1 testaj|testy|testow}} přewjedł',
 );
 
+/** Hungarian (Magyar)
+ * @author Dani
+ * @author Glanthor Reviol
+ */
 $messages['hu'] = array(
 	'mwe-loading_txt' => 'betöltés…',
 	'mwe-error_load_lib' => 'Hiba: a(z) $1 JavaScript-fájl nem elérhető, vagy nem definiálja a(z) $2 osztályt.',
@@ -180,8 +253,15 @@ $messages['hu'] = array(
 	'mwe-load-drag-item' => 'Vonszolt elem betöltése',
 	'mwe-ok' => 'OK',
 	'mwe-cancel' => 'Mégse',
+	'mwe-enable-gadget' => 'A multimédia béta (mwEmbed) engedélyezése az összes lapon',
+	'mwe-enable-gadget-done' => 'A multimédia béta segédeszköz engedélyezve',
+	'mwe-must-login-gadget' => 'Hogy engedélyezni tudd a segédeszközt, <a target="_new" href="$1">be kell jelentkezned</a>',
+	'mwe-test-plural' => '$1 tesztet futtattam',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
 $messages['ia'] = array(
 	'mwe-loading_txt' => 'cargamento ...',
 	'mwe-error_load_lib' => 'Error: JavaScript $1 non esseva recuperabile o non defini $2',
@@ -189,6 +269,10 @@ $messages['ia'] = array(
 	'mwe-load-drag-item' => 'Cargamento del file trahite',
 	'mwe-ok' => 'OK',
 	'mwe-cancel' => 'Cancella',
+	'mwe-enable-gadget' => 'Activar beta multimedia (mwEmbed) pro tote le paginas',
+	'mwe-enable-gadget-done' => 'Le gadget beta multimedia ha essite activate',
+	'mwe-must-login-gadget' => 'Pro activar le gadget tu debe <a target="_new" href="$1">aperir un session</a>',
+	'mwe-test-plural' => 'Io ha executate {{PLURAL:$1|$1 test|$1 tests}}',
 );
 
 $messages['id'] = array(
@@ -200,10 +284,20 @@ $messages['id'] = array(
 	'mwe-cancel' => 'Batalkan',
 );
 
+/** Igbo (Igbo) */
+$messages['ig'] = array(
+	'mwe-ok' => 'Ngwanu',
+	'mwe-cancel' => 'Emekwàlà',
+);
+
 $messages['it'] = array(
 	'mwe-cancel' => 'Annulla',
 );
 
+/** Japanese (日本語)
+ * @author Fryed-peach
+ * @author 青子守歌
+ */
 $messages['ja'] = array(
 	'mwe-loading_txt' => '読み込み中 …',
 	'mwe-error_load_lib' => 'エラー：JavaScript $1 は参照不能か、$2 を定義していません。',
@@ -211,6 +305,7 @@ $messages['ja'] = array(
 	'mwe-load-drag-item' => 'ドラッグされた項目を読み込み中',
 	'mwe-ok' => 'OK',
 	'mwe-cancel' => '中止',
+	'mwe-test-plural' => '{{PLURAL:$1|$1のテスト}}を実行する',
 );
 
 $messages['ko'] = array(
@@ -228,11 +323,33 @@ $messages['ksh'] = array(
 	'mwe-cancel' => 'Affbräsche',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
 $messages['lb'] = array(
 	'mwe-loading_txt' => 'lueden ...',
 	'mwe-apiproxy-setup' => 'API-Proxy astellen',
 	'mwe-ok' => 'OK',
 	'mwe-cancel' => 'Ofbriechen',
+	'mwe-enable-gadget' => 'Multimedia-Beta-Gadget (mwEmbed) fir all Säiten aktivéieren',
+	'mwe-enable-gadget-done' => 'De Multimedia-Beta-Gadget gouf aktivéiert',
+	'mwe-test-plural' => 'Ech hunn {{PLURAL:$1|$1 Test|$1 Tester}} gemaach',
+);
+
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'mwe-loading_txt' => 'Вчитувам...',
+	'mwe-error_load_lib' => 'Грешка: JavaScript $1 не е достапен или не определува $2',
+	'mwe-apiproxy-setup' => 'Поставувам API прокси',
+	'mwe-load-drag-item' => 'Го вчитувам повлечениот елемент',
+	'mwe-ok' => 'ОК',
+	'mwe-cancel' => 'Откажи',
+	'mwe-enable-gadget' => 'Овозможи бета-мултимедија (mwEmbed) за сите страници',
+	'mwe-enable-gadget-done' => 'Овозможена е алатката за бета-мултимедија',
+	'mwe-must-login-gadget' => 'За да ја овозможите алатката морате да се <a target="_new" href="$1">најавите</a>',
+	'mwe-test-plural' => 'Направив {{PLURAL:$1|$1 проверка|$1 проверки}}',
 );
 
 /** Malayalam (മലയാളം)
@@ -281,13 +398,21 @@ $messages['pl'] = array(
 	'mwe-error_load_lib' => 'Błąd – W plik JavaScript $1 brak jest możliwości pobrania oraz definicji $2',
 );
 
+/** Portuguese (Português)
+ * @author Hamilton Abreu
+ * @author Malafaya
+ */
 $messages['pt'] = array(
 	'mwe-loading_txt' => 'A carregar ...',
 	'mwe-error_load_lib' => 'Erro: O JavaScript $1 não pode ser importado ou não define $2',
-	'mwe-apiproxy-setup' => 'A preparar o \'\'proxy\'\' da API',
-	'mwe-load-drag-item' => 'Carregando o objecto arrastado',
+	'mwe-apiproxy-setup' => "A preparar o ''proxy'' da API",
+	'mwe-load-drag-item' => 'A carregar o objecto arrastado',
 	'mwe-ok' => 'OK',
 	'mwe-cancel' => 'Cancelar',
+	'mwe-enable-gadget' => 'Activar multimédia beta (mwEmbed) para todas as páginas',
+	'mwe-enable-gadget-done' => 'Gadget de multimédia beta foi activado',
+	'mwe-must-login-gadget' => 'Para activar o gadget tem de estar <a target="_new" href="$1">autenticado</a>',
+	'mwe-test-plural' => 'Fiz $1 {{PLURAL:$1|teste|testes}}',
 );
 
 /** Russian (Русский)
@@ -311,7 +436,12 @@ $messages['sk'] = array(
 	'mwe-error_load_lib' => 'Error: JavaScript $1 nebolo možné získať alebo neobsahuje definíciu $2',
 );
 
+/** Swedish (Svenska)
+ * @author Dafer45
+ * @author GameOn
+ */
 $messages['sv'] = array(
+	'mwe-loading_txt' => 'Laddar…',
 	'mwe-ok' => 'OK',
 	'mwe-cancel' => 'Avbryt',
 );

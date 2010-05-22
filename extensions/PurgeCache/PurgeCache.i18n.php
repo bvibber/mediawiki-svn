@@ -27,6 +27,16 @@ $messages['qqq'] = array(
 	'right-purgecache' => '{{doc-right|purgecache}}',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'purgecache' => 'cache Purge',
+	'purgecache-desc' => '[[Special:PurgeCache|faqe Special]] përdoret për të fshirë tryezë OBJECTCACHE',
+	'purgecache-warning' => 'Kjo do të spastrim tabelave cache.',
+	'purgecache-purged' => 'Depoja ka qenë purged.',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

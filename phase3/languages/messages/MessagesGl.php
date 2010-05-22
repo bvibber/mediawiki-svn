@@ -178,7 +178,7 @@ $magicWords = array(
 	'subpagename'           => array( '1', 'NOMEDASUBPÁXINA', 'NOMEDASUBPAGINA', 'NOMEDASUBPÁGINA', 'SUBPAGENAME' ),
 	'basepagename'          => array( '1', 'NOMEDAPÁXINABASE', 'NOMEDAPAGINABASE', 'NOMEDAPÁGINABASE', 'BASEPAGENAME' ),
 	'talkpagename'          => array( '1', 'NOMEDAPÁXINADECONVERSA', 'NOMEDAPAGINADEDISCUSSAO', 'NOMEDAPÁGINADEDISCUSSÃO', 'TALKPAGENAME' ),
-	'img_manualthumb'       => array( '1', 'miniatura=$1', 'mini=$1', 'thumbnail=$1', 'thumb=$1' ),
+	'img_manualthumb'       => array( '1', 'miniatura=$1', 'mini=$1', 'miniaturadaimagem=$1', 'thumbnail=$1', 'thumb=$1' ),
 	'img_right'             => array( '1', 'dereita', 'direita', 'right' ),
 	'img_left'              => array( '1', 'esquerda', 'left' ),
 	'img_none'              => array( '1', 'ningún', 'nenhum', 'none' ),
@@ -388,7 +388,7 @@ $messages = array(
 'variants'                   => 'Variantes',
 
 'errorpagetitle'    => 'Erro',
-'returnto'          => 'Voltar a "$1".',
+'returnto'          => 'Volver a "$1".',
 'tagline'           => 'De {{SITENAME}}',
 'help'              => 'Axuda',
 'search'            => 'Procura',
@@ -540,7 +540,7 @@ A base de datos devolveu o erro "$3: $4"',
 'laggedslavemode'      => "'''Aviso:''' a páxina pode non conter as actualizacións recentes.",
 'readonly'             => 'Base de datos fechada',
 'enterlockreason'      => 'Dea unha razón para o fechamento, incluíndo unha estimación de até cando se manterá.',
-'readonlytext'         => 'Nestes intres a base de datos está pechada a novas entradas e outras modificacións, probabelmente debido a rutinas de mantemento, tras as que voltará á normalidade.
+'readonlytext'         => 'Nestes intres a base de datos está pechada a novas entradas e outras modificacións, probabelmente debido a rutinas de mantemento, tras as que volverá á normalidade.
 
 O administrador que a pechou deu esta explicación: $1',
 'missing-article'      => 'A base de datos non atopa o texto da páxina chamada "$1" $2, que debera ter atopado.
@@ -896,7 +896,7 @@ Velaquí está a última entrada no rexistro, por se quere consultala:",
 'edittools'                        => '<!-- O texto que apareza aquí mostrarase por debaixo dos formularios de edición e envío. -->',
 'nocreatetitle'                    => 'Limitada a creación de páxinas',
 'nocreatetext'                     => '{{SITENAME}} ten restrinxida a posibilidade de crear páxinas novas.
-Pode voltar e editar unha páxina que xa existe ou, se non, [[Special:UserLogin|rexistrarse ou crear unha conta]].',
+Pode volver e editar unha páxina que xa existe ou, se non, [[Special:UserLogin|rexistrarse ou crear unha conta]].',
 'nocreate-loggedin'                => 'Non dispón dos permisos necesarios para crear páxinas novas.',
 'sectioneditnotsupported-title'    => 'A edición de seccións non está soportada',
 'sectioneditnotsupported-text'     => 'A edición de seccións non está soportada nesta páxina.',
@@ -1022,7 +1022,7 @@ función, a revisión especificada non existe ou está intentando agochar a revi
 'revdelete-no-file'           => 'O ficheiro especificado non existe.',
 'revdelete-show-file-confirm' => 'Está seguro de querer ver unha revisión borrada do ficheiro "<nowiki>$1</nowiki>" do día $2 ás $3?',
 'revdelete-show-file-submit'  => 'Si',
-'revdelete-selected'          => "'''{{PLURAL:$2|Revisión seleccionada|Revisións seleccionadas}} de [[:$1]]:'''",
+'revdelete-selected'          => "'''{{PLURAL:\$2|Revisión seleccionada|Revisións seleccionadas}} de \"[[:\$1]]\":'''",
 'logdelete-selected'          => "'''{{PLURAL:$1|Rexistro de evento seleccionado|Rexistro de eventos seleccionados}}:'''",
 'revdelete-text'              => "'''As revisións borradas seguirán aparecendo no historial da páxina e nos rexistros, pero partes do seu contido serán inaccesibles de cara ao público.'''
 Os demais administradores de {{SITENAME}} poderán acceder ao contido agochado e poderán restaurar a páxina de novo a través desta mesma interface, a non ser que se estableza algunha restrición adicional.",
@@ -1031,21 +1031,21 @@ Os demais administradores de {{SITENAME}} poderán acceder ao contido agochado e
 * Información persoal inapropiada
 *: ''domicilios e números de teléfono, números da seguridade social, etc.''",
 'revdelete-legend'            => 'Aplicar restricións de visibilidade',
-'revdelete-hide-text'         => 'Agochar texto da revisión',
+'revdelete-hide-text'         => 'Agochar o texto da revisión',
 'revdelete-hide-image'        => 'Agochar o contido do ficheiro',
-'revdelete-hide-name'         => 'Agochar acción e destino',
-'revdelete-hide-comment'      => 'Agochar comentario da edición',
-'revdelete-hide-user'         => 'Agochar nome de usuario/IP do editor',
+'revdelete-hide-name'         => 'Agochar a acción e o destino',
+'revdelete-hide-comment'      => 'Agochar o resumo de edición',
+'revdelete-hide-user'         => 'Agochar o nome de usuario ou o enderezo IP do editor',
 'revdelete-hide-restricted'   => 'Eliminar os datos da vista dos administradores así coma da doutros',
 'revdelete-radio-same'        => '(non cambiar)',
 'revdelete-radio-set'         => 'Si',
 'revdelete-radio-unset'       => 'Non',
-'revdelete-suppress'          => 'Eliminar os datos tanto dos administradores como dos demais',
+'revdelete-suppress'          => 'Eliminar os datos da vista dos administradores así coma da doutros',
 'revdelete-unsuppress'        => 'Retirar as restricións sobre as revisións restauradas',
 'revdelete-log'               => 'Motivo para o borrado:',
 'revdelete-submit'            => 'Aplicar {{PLURAL:$1|á revisión seleccionada|ás revisións seleccionadas}}',
 'revdelete-logentry'          => 'mudou a visibilidade dunha revisión de "[[$1]]"',
-'logdelete-logentry'          => 'mudouse a visibilidade do evento para [[$1]]',
+'logdelete-logentry'          => 'mudou a visibilidade do evento de [[$1]]',
 'revdelete-success'           => "'''Actualizouse sen problemas a visibilidade da revisión.'''",
 'revdelete-failure'           => "'''Non se puido actualizar a visibilidade da revisión:'''
 $1",
@@ -1515,7 +1515,7 @@ As páxinas da súa [[Special:Watchlist|lista de vixilancia]] aparecen en '''neg
 # Upload
 'upload'                      => 'Cargar un ficheiro',
 'uploadbtn'                   => 'Cargar o ficheiro',
-'reuploaddesc'                => 'Cancelar a carga e voltar ao formulario de carga',
+'reuploaddesc'                => 'Cancelar a carga e volver ao formulario de carga',
 'upload-tryagain'             => 'Enviar a descrición do ficheiro modificada',
 'uploadnologin'               => 'Non accedeu ao sistema',
 'uploadnologintext'           => 'Debe [[Special:UserLogin|acceder ao sistema]] para poder cargar ficheiros.',
@@ -1642,6 +1642,11 @@ JD # Jenoptik
 MGP # Pentax
 PICT # varias
  #</pre> <!-- deixe esta liña exactamente como está -->',
+'upload-successful-msg'       => 'O ficheiro cargado está dispoñible aquí: $1',
+'upload-failure-subj'         => 'Problema ao cargar',
+'upload-failure-msg'          => 'Houbo un problema durante a carga:
+
+$1',
 
 'upload-proto-error'        => 'Protocolo erróneo',
 'upload-proto-error-text'   => 'A carga remota require URLs que comecen por <code>http://</code> ou <code>ftp://</code>.',
@@ -2040,6 +2045,10 @@ O correo electrónico que inseriu [[Special:Preferences|nas súas preferencias]]
 'emailsenttext'        => 'A súa mensaxe de correo electrónico foi enviada.',
 'emailuserfooter'      => 'Este correo electrónico foi enviado por $1 a $2 mediante a función "Enviar un correo electrónico a este usuario" de {{SITENAME}}.',
 
+# User Messenger
+'usermessage-summary' => 'Mensaxe deixada polo sistema.',
+'usermessage-editor'  => 'Editor das mensaxes do sistema',
+
 # Watchlist
 'watchlist'            => 'A miña lista de vixilancia',
 'mywatchlist'          => 'A miña lista de vixilancia',
@@ -2134,7 +2143,7 @@ No $2 pode ver unha lista dos borrados máis recentes.',
 'dellogpage'             => 'Rexistro de borrados',
 'dellogpagetext'         => 'A continuación atópase a lista cos borrados máis recentes.',
 'deletionlog'            => 'rexistro de borrados',
-'reverted'               => 'Devolto a unha versión anterior',
+'reverted'               => 'Volveuse a unha versión anterior',
 'deletecomment'          => 'Razón para o borrado:',
 'deleteotherreason'      => 'Outro motivo:',
 'deletereasonotherlist'  => 'Outro motivo',
@@ -2154,7 +2163,7 @@ proceda con coidado.',
 'rollback_short'    => 'Reverter',
 'rollbacklink'      => 'reverter',
 'rollbackfailed'    => 'Houbo un fallo ao reverter as edicións',
-'cantrollback'      => 'Non se pode desfacer a edición; o último contribuínte é o único autor desta páxina.',
+'cantrollback'      => 'Non se pode desfacer a edición; o último colaborador é o único autor desta páxina.',
 'alreadyrolled'     => 'Non se pode desfacer a edición en "[[:$1]]" feita por [[User:$2|$2]] ([[User talk:$2|conversa]]{{int:pipe-separator}}[[Special:Contributions/$2|{{int:contribslink}}]]); alguén máis editou ou desfixo os cambios desta páxina.
 
 A última edición fíxoa [[User:$3|$3]] ([[User talk:$3|conversa]]{{int:pipe-separator}}[[Special:Contributions/$2|{{int:contribslink}}]]).',
@@ -2615,6 +2624,7 @@ Gárdeo no seu disco duro e cárgueo aquí.',
 'importstart'                => 'Importando páxinas...',
 'import-revision-count'      => '$1 {{PLURAL:$1|revisión|revisións}}',
 'importnopages'              => 'Non hai páxinas para importar.',
+'imported-log-entries'       => '{{PLURAL:$1|Importouse unha entrada|Importáronse $1 entradas}} do rexisto.',
 'importfailed'               => 'A importación fallou: $1',
 'importunknownsource'        => 'Fonte de importación descoñecida',
 'importcantopen'             => 'Non se pode abrir o ficheiro importado',
@@ -2705,7 +2715,7 @@ Gárdeo no seu disco duro e cárgueo aquí.',
 'tooltip-watch'                   => 'Engadir esta páxina á súa lista de vixilancia [alt-w]',
 'tooltip-recreate'                => 'Recrear a páxina a pesar de que foi borrada',
 'tooltip-upload'                  => 'Comezar a enviar',
-'tooltip-rollback'                => '"Reverter" desfai, cun só clic, a(s) edición(s) feita(s) nesta páxina polo último contribuínte.',
+'tooltip-rollback'                => '"Reverter" desfai, cun só clic, a(s) edición(s) feita(s) nesta páxina polo último colaborador.',
 'tooltip-undo'                    => '"Desfacer" reverte esta edición e abre o formulario de edición nun modo previo. Permite engadir un motivo no resumo de edición.',
 'tooltip-preferences-save'        => 'Gardar as preferencias',
 'tooltip-summary'                 => 'Escriba un breve resumo',
@@ -3247,8 +3257,8 @@ Por favor, confirme que realmente quere recrear esta páxina.",
 'livepreview-loading' => 'Cargando...',
 'livepreview-ready'   => 'Cargando… Listo!',
 'livepreview-failed'  => 'Fallou a vista previa en tempo real! Inténteo coa vista previa normal.',
-'livepreview-error'   => 'Fallou a conexión: $1 "$2"
-Tente a vista previa normal.',
+'livepreview-error'   => 'Fallou a conexión: $1 "$2".
+Probe coa vista previa normal.',
 
 # Friendlier slave lag warnings
 'lag-warn-normal' => 'Pode que os cambios feitos {{PLURAL:$1|no último segundo|nos últimos $1 segundos}} non aparezan nesta lista.',
@@ -3259,15 +3269,15 @@ Tente a vista previa normal.',
 'watchlistedit-noitems'        => 'A súa lista de vixilancia non contén ningún título.',
 'watchlistedit-normal-title'   => 'Editar a lista de vixilancia',
 'watchlistedit-normal-legend'  => 'Eliminar títulos da lista de vixilancia',
-'watchlistedit-normal-explain' => 'Os títulos da súa lista de vixilancia aparecen embaixo.
-Para eliminar un título, escóllao na súa caixa de selección e prema en "Eliminar os títulos".
+'watchlistedit-normal-explain' => 'Os títulos da súa lista de vixilancia aparecen a continuación.
+Para eliminar un título, escóllao na súa caixa de selección e prema en "{{int:Watchlistedit-normal-submit}}".
 Tamén pode [[Special:Watchlist/raw|editar a lista simple]].',
 'watchlistedit-normal-submit'  => 'Eliminar os títulos',
 'watchlistedit-normal-done'    => '{{PLURAL:$1|Eliminouse un título|Elimináronse $1 títulos}} da súa lista de vixilancia:',
 'watchlistedit-raw-title'      => 'Editar a lista de vixilancia simple',
 'watchlistedit-raw-legend'     => 'Editar a lista de vixilancia simple',
-'watchlistedit-raw-explain'    => 'Os títulos da súa lista de vixilancia aparecen embaixo e pódense editar engadíndoos ou retirándoos da lista; un título por liña.
-Ao rematar, prema en "Actualizar a lista de vixilancia".
+'watchlistedit-raw-explain'    => 'Os títulos da súa lista de vixilancia aparecen a continuación. Pódense editar engadíndoos ou retirándoos da lista; un título por liña.
+Ao rematar, prema en "{{int:Watchlistedit-raw-submit}}".
 Tamén pode [[Special:Watchlist/edit|empregar o editor normal]].',
 'watchlistedit-raw-titles'     => 'Títulos:',
 'watchlistedit-raw-submit'     => 'Actualizar a lista de vixilancia',

@@ -582,12 +582,12 @@ $messages['pt-br'] = array(
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
-	'newschannel' => 'Canal de ştiri',
+	'newschannel' => 'Canal de știri',
 	'newschannel_format' => 'Format:',
 	'newschannel_limit' => 'Limită:',
-	'newschannel_include_category' => 'Categorie adiţională:',
+	'newschannel_include_category' => 'Categorie adițională:',
 	'newschannel_exclude_category' => 'Exclude categoria:',
-	'newschannel_submit_button' => 'Creaţi flux',
+	'newschannel_submit_button' => 'Creați flux',
 );
 
 /** Tarandíne (Tarandíne)

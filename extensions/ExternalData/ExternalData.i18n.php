@@ -44,6 +44,23 @@ $messages['af'] = array(
 	'externaldata-db-invalid-query' => 'Ongeldige navraag.',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'getdata' => 'Merr të dhëna',
+	'externaldata-desc' => 'Lejon retrieving të dhënat e strukturuar nga URL jashtme, bazat e të dhënave dhe burimet tjera',
+	'externaldata-ldap-unable-to-connect' => "Në pamundësi për t'u lidhur tek $1",
+	'externaldata-json-decode-not-supported' => 'Gabim: json_decode() nuk është i mbështetur në këtë version të PHP',
+	'externaldata-xml-error' => 'XML error: $1 tek $2 linjë',
+	'externaldata-db-incomplete-information' => 'Gabim: informata jo të plota për këtë server të identitetit.',
+	'externaldata-db-could-not-get-url' => 'Nuk mund te merrni URL pasi $1 {{PLURAL:$1|provoni|përpiqet}}.',
+	'externaldata-db-unknown-type' => 'Gabim: Lloj i panjohur bazës së të dhënave.',
+	'externaldata-db-could-not-connect' => 'Gabim: Nuk mund të lidheni me bazën e të dhënave.',
+	'externaldata-db-no-return-values' => 'Gabim: Nuk ka kthim vlerat e caktuara.',
+	'externaldata-db-invalid-query' => 'pyetje e pavlefshme.',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK
@@ -608,10 +625,11 @@ $messages['pt'] = array(
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
+ * @author Giro720
  */
 $messages['pt-br'] = array(
 	'getdata' => 'Obter dados',
-	'externaldata-desc' => 'Permite a obtenção de dados em CSV, JSON e XML tanto a partir de URLs externos como de páginas wiki locais',
+	'externaldata-desc' => 'Permite a obtenção de dados em CSV, JSON e XML a partir de URLs externos, banco de dados e outras fontes',
 	'externaldata-ldap-unable-to-connect' => 'Não foi possível conectar-se a $1',
 	'externaldata-json-decode-not-supported' => 'Erro: json_decode() não é suportado nesta versão do PHP',
 	'externaldata-xml-error' => 'Erro no XML: $1 na linha $2',
@@ -628,8 +646,8 @@ $messages['pt-br'] = array(
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
-	'getdata' => 'Obţine date',
-	'externaldata-desc' => 'Permite obţinerea datelor în format CSV, JSON şi XML din atât adrese URL externe, cât şi pagini wiki locale',
+	'getdata' => 'Obține date',
+	'externaldata-desc' => 'Permite obținerea datelor în format CSV, JSON și XML din atât adrese URL externe, cât și pagini wiki locale',
 	'externaldata-xml-error' => 'Eroare XML: $1 la linia $2',
 	'externaldata-db-unknown-type' => 'Eroare: Tipul bazei de date necunoscut.',
 	'externaldata-db-invalid-query' => 'Interogare invalidă.',

@@ -301,6 +301,8 @@ $messages['bn'] = array(
  */
 $messages['br'] = array(
 	'recordadmin' => 'Mererezh an enrolladennoù',
+	'recordadmin-desc' => 'Ur [[Special:RecordAdmin|bajenn dibar]] da gavout ha da gemmañ pajennoù enrollet en ur ober gant ur furmskrid',
+	'recordadmin-categoryempty' => "Evit ar mare n'eus tamm seurt enrolladenn ebet.  Rummatit ar patromoù enrollañ e-barzh [[:$1|$1]].",
 	'recordadmin-select' => 'Diuzañ',
 	'recordadmin-createtype' => 'Ebarzhiñ anv ur seurt enrolladennoù nevez evit e grouiñ',
 	'recordadmin-recordtype' => 'seurt enrolladenn',
@@ -1117,6 +1119,15 @@ $messages['id'] = array(
 	'right-recordadmin' => 'Temukan dan sunting catatan halaman',
 );
 
+/** Igbo (Igbo) */
+$messages['ig'] = array(
+	'recordadmin-buttonsearch' => 'Chöwá',
+	'recordadmin-buttoncreate' => 'Ké',
+	'recordadmin-buttonsave' => 'Donyéré',
+	'recordadmin-editlink' => 'rüwa',
+	'recordadmin-actions' => 'Mmèmé',
+);
+
 /** Ido (Ido)
  * @author Malafaya
  */
@@ -1607,6 +1618,7 @@ $messages['pdc'] = array(
 	'recordadmin-buttonsearch' => 'Guck uff',
 	'recordadmin-editlink' => 'ennere',
 	'recordadmin-modified' => 'Gennert',
+	'recordadmin-notset' => 'Keen „$1“',
 );
 
 /** Polish (Polski)
@@ -1831,19 +1843,19 @@ $messages['pt-br'] = array(
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
-	'recordadmin-select' => 'Selectaţi',
+	'recordadmin-select' => 'Selectați',
 	'recordadmin-submit' => 'Trimite',
-	'recordadmin-badtitle' => 'Titlu greşit!',
-	'recordadmin-invert' => 'Inversează selecţia',
+	'recordadmin-badtitle' => 'Titlu greșit!',
+	'recordadmin-invert' => 'Inversează selecția',
 	'recordadmin-buttonsearch' => 'Căutare',
 	'recordadmin-buttoncreate' => 'Creare',
 	'recordadmin-buttonreset' => 'Resetare',
 	'recordadmin-buttonsave' => 'Salvare',
-	'recordadmin-viewlink' => 'vedeţi',
+	'recordadmin-viewlink' => 'vedeți',
 	'recordadmin-created' => 'Creat',
 	'recordadmin-modified' => 'Modificat',
-	'recordadmin-actions' => 'Acţiuni',
-	'recordadmin-needscontent' => 'Adăugaţi conţinut...',
+	'recordadmin-actions' => 'Acțiuni',
+	'recordadmin-needscontent' => 'Adăugați conținut...',
 	'recordadmin-editwithform' => 'Modificare cu un formular',
 );
 
@@ -2017,6 +2029,7 @@ $messages['stq'] = array(
 );
 
 /** Swedish (Svenska)
+ * @author Dafer45
  * @author Fluff
  * @author Gabbe.g
  * @author Per
@@ -2026,6 +2039,7 @@ $messages['sv'] = array(
 	'recordadmin-desc' => 'En [[Special:RecordAdmin|specialsida]] för att hitta och ändra titelinformation med hjälp av ett formulär.',
 	'recordadmin-select' => 'Välj',
 	'recordadmin-newsearch' => 'Ny sökning efter $1',
+	'recordadmin-alreadyexist' => 'Tyvärr, "$1" finns redan!',
 	'recordadmin-createsuccess' => '$1 skapad',
 	'recordadmin-badtitle' => 'Ogiltig titel!',
 	'recordadmin-invert' => 'Invertera markering',
@@ -2033,14 +2047,19 @@ $messages['sv'] = array(
 	'recordadmin-buttoncreate' => 'Skapa',
 	'recordadmin-buttonreset' => 'Återställ',
 	'recordadmin-searchresult' => 'Sökresultat',
+	'recordadmin-typeupdated' => '$1 egenskaper uppdaterade',
 	'recordadmin-updatesuccess' => '$1 blev uppdaterad',
+	'recordadmin-updateerror' => 'Ett fel uppstod vid uppdatering',
 	'recordadmin-buttonsave' => 'Spara',
 	'recordadmin-createlink' => 'skapa en',
 	'recordadmin-summary-typecreated' => 'Ny $1 skapad',
+	'recordadmin-viewlink' => 'visa',
+	'recordadmin-editlink' => 'redigera',
 	'recordadmin-created' => 'Skapad',
 	'recordadmin-modified' => 'Ändrad',
 	'recordadmin-actions' => 'Åtgärder',
 	'recordadmin-needscontent' => 'Lägg till innehåll...',
+	'recordadmin-editwithform' => 'Egenskaper',
 );
 
 /** Telugu (తెలుగు)

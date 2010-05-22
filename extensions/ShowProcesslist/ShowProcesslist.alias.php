@@ -22,7 +22,7 @@ $aliases['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'ShowProcesslist' => array( 'عرض_قائمة_العمل' ),
+	'ShowProcesslist' => array( 'عرض_ليستة_العمليه' ),
 );
 
 /** Bosnian (Bosanski) */
@@ -113,6 +113,11 @@ $aliases['nl'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
 $aliases['no'] = array(
 	'ShowProcesslist' => array( 'Vis prosessliste' ),
+);
+
+/** Polish (Polski) */
+$aliases['pl'] = array(
+	'ShowProcesslist' => array( 'Lista procesów' ),
 );
 
 /** Slovak (Slovenčina) */

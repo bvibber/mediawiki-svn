@@ -1025,9 +1025,9 @@ $messages['frp'] = array(
 $messages['gl'] = array(
 	'systemgiftmanager' => 'Xestor de agasallos do sistema',
 	'ga-addnew' => '+ Engadir un novo agasallo',
-	'ga-back-edit-gift' => 'Voltar ao editor de agasallos',
-	'ga-back-gift-list' => 'Voltar á lista de agasallos',
-	'ga-back-link' => '<a href="$1">< Voltar ao perfil de $2</a>',
+	'ga-back-edit-gift' => 'Volver ao editor de agasallos',
+	'ga-back-gift-list' => 'Volver á lista de agasallos',
+	'ga-back-link' => '<a href="$1">< Volver ao perfil de $2</a>',
 	'ga-choosefile' => 'Elixir o ficheiro:',
 	'ga-count' => '$1 ten $2 {{PLURAL:$2|premio|premios}}.',
 	'ga-create-gift' => 'Crear un agasallo',
@@ -1044,7 +1044,7 @@ $messages['gl'] = array(
 	'ga-giftimage' => 'imaxe do agasallo',
 	'ga-giftname' => 'nome do agasallo',
 	'ga-gifttype' => 'tipo de agasallo',
-	'ga-goback' => 'Voltar',
+	'ga-goback' => 'Volver',
 	'ga-imagesbelow' => 'Embaixo están as súas imaxes, que serán usadas no sitio',
 	'ga-img' => 'engadir/substituír a imaxe',
 	'ga-large' => 'Grande',
@@ -2074,6 +2074,8 @@ e modificatz vòstras preferéncias per desactivar las notificacions per corriè
  * @author Xqt
  */
 $messages['pdc'] = array(
+	'ga-back-link' => '<a href="$1">< Zerrick zur Uffstelling vun $2</a>',
+	'ga-goback' => 'geh zerrick',
 	'ga-large' => 'Gross',
 	'ga-new' => 'Nei',
 	'ga-next' => 'Neegscht',
@@ -2379,15 +2381,15 @@ e altere suas preferências para desabilitar e-mails de notificação.',
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
-	'ga-choosefile' => 'Alegeţi fişier:',
-	'ga-create-gift' => 'Creaţi un cadou',
+	'ga-choosefile' => 'Alegeți fișier:',
+	'ga-create-gift' => 'Creați un cadou',
 	'ga-currentimage' => 'Imaginii curente',
 	'ga-error-message-invalid-link' => 'Legătura introdusă este incorectă.',
 	'ga-gift' => 'cadou',
 	'ga-giftimage' => 'imaginea cadoului',
 	'ga-giftname' => 'numele cadoului',
 	'ga-gifttype' => 'tipul cadoului',
-	'ga-goback' => 'Reveniţi',
+	'ga-goback' => 'Reveniți',
 	'ga-large' => 'Mare',
 	'ga-medium' => 'Mediu',
 	'ga-mediumlarge' => 'Mediu-mare',

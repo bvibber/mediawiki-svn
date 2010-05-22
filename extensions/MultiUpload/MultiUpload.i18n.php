@@ -1332,11 +1332,11 @@ Arquivos impróprios serão eliminados imediatamente. Veja a [[{{MediaWiki:Multi
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
-	'multipleupload' => 'Încarcă fişiere multiple',
-	'multipleupload-saveallfiles' => 'Salvează toate fişierele',
-	'multiupload-fileuploaded' => 'Fişier încărcat.',
-	'multiupload-toolbox' => 'Încarcă fişiere multiple',
-	'multiupload-blank' => 'Nici un fişier selectat',
+	'multipleupload' => 'Încarcă fișiere multiple',
+	'multipleupload-saveallfiles' => 'Salvează toate fișierele',
+	'multiupload-fileuploaded' => 'Fișier încărcat.',
+	'multiupload-toolbox' => 'Încarcă fișiere multiple',
+	'multiupload-blank' => 'Nici un fișier selectat',
 );
 
 /** Tarandíne (Tarandíne)
@@ -1408,10 +1408,11 @@ $messages['sah'] = array(
 );
 
 /** Sardinian (Sardu)
+ * @author Andria
  * @author Marzedu
  */
 $messages['sc'] = array(
-	'multipleupload' => 'Càrriga files',
+	'multipleupload' => 'Càrriga files mùltiplos',
 	'multipleupload-saveallfiles' => 'Sarva totu is files',
 );
 

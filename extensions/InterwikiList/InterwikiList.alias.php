@@ -21,7 +21,7 @@ $aliases['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'InterwikiList' => array( 'قائمة_الإنترويكى' ),
+	'InterwikiList' => array( 'ليستة_الInterwiki' ),
 );
 
 /** Bulgarian (Български) */
@@ -42,6 +42,11 @@ $aliases['de'] = array(
 /** Lower Sorbian (Dolnoserbski) */
 $aliases['dsb'] = array(
 	'InterwikiList' => array( 'Lisćina interwikijow' ),
+);
+
+/** Esperanto (Esperanto) */
+$aliases['eo'] = array(
+	'InterwikiList' => array( 'Listo de intervikiaj ligiloj' ),
 );
 
 /** Spanish (Español) */
@@ -146,7 +151,7 @@ $aliases['mk'] = array(
 
 /** Malayalam (മലയാളം) */
 $aliases['ml'] = array(
-	'InterwikiList' => array( 'അന്തര്‍വിക്കിപട്ടിക' ),
+	'InterwikiList' => array( 'അന്തർവിക്കിപട്ടിക' ),
 );
 
 /** Marathi (मराठी) */

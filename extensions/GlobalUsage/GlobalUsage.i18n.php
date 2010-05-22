@@ -77,6 +77,22 @@ $messages['af'] = array(
 	'globalusage-on-wiki' => 'Gebruik in $2',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'globalusage' => 'përdorimin e Global file',
+	'globalusage-for' => 'përdorim global për "$1"',
+	'globalusage-desc' => '[[Special:GlobalUsage|faqe Speciale]] për të parë përdorimin globale file',
+	'globalusage-ok' => 'Kërkim',
+	'globalusage-text' => 'përdorimit file Kërko globale',
+	'globalusage-no-results' => '[[:$1]] nuk është përdorur në wikis tjera.',
+	'globalusage-on-wiki' => 'Shfrytëzuar në $2',
+	'globalusage-of-file' => 'Wikis e mëposhtme të tjerë e përdorin këtë skedë:',
+	'globalusage-more' => 'Shiko [[{{#Special:GlobalUsage}}/$1|më shumë përdorimin globale]] për këtë skedë.',
+	'globalusage-filterlocal' => 'A nuk tregojnë përdorimin e lokale',
+);
+
 /** Amharic (አማርኛ)
  * @author Codex Sinaiticus
  */
@@ -652,6 +668,11 @@ $messages['id'] = array(
 	'globalusage-filterlocal' => 'Jangan tunjukkan penggunaan lokal',
 );
 
+/** Igbo (Igbo) */
+$messages['ig'] = array(
+	'globalusage-ok' => 'Chöwá',
+);
+
 /** Icelandic (Íslenska)
  * @author S.Örvarr.S
  */
@@ -752,6 +773,13 @@ $messages['ko'] = array(
 	'globalusage-of-file' => '다음 위키에서 이 파일을 사용하고 있습니다:',
 	'globalusage-more' => '이 파일을 사용하고 있는 [[{{#Special:GlobalUsage}}/$1|다른 위키의 더 많은 문서]]를 보기',
 	'globalusage-filterlocal' => '이 위키에서 이 파일을 사용하고 있는 문서를 보이지 않기',
+);
+
+/** Karachay-Balkar (Къарачай-Малкъар)
+ * @author Iltever
+ */
+$messages['krc'] = array(
+	'globalusage' => 'Файлны глобал хайырланыуу',
 );
 
 /** Krio (Krio)
@@ -1074,16 +1102,16 @@ $messages['rif'] = array(
  * @author Minisarm
  */
 $messages['ro'] = array(
-	'globalusage' => 'Utilizarea globală a fişierului',
-	'globalusage-for' => 'Utilizarea globală a fişierului „$1”',
-	'globalusage-desc' => '[[Special:GlobalUsage|Pagină specială]] pentru vizualizarea utilizării globale a fişierului',
+	'globalusage' => 'Utilizarea globală a fișierului',
+	'globalusage-for' => 'Utilizarea globală a fișierului „$1”',
+	'globalusage-desc' => '[[Special:GlobalUsage|Pagină specială]] pentru vizualizarea utilizării globale a fișierului',
 	'globalusage-ok' => 'Caută',
-	'globalusage-text' => 'Caută utilizările globale ale fişierului',
-	'globalusage-no-results' => 'Fişierul „[[:$1]]” nu este folosit la alte proiecte de tip wiki.',
-	'globalusage-on-wiki' => 'Utilizarea fişierului „[[:File:$1|$1]]” la $2',
-	'globalusage-of-file' => 'Următoarele alte proiecte de tip wiki folosesc acest fişier:',
-	'globalusage-more' => 'Vizualizaţi [[{{#Special:GlobalUsage}}/$1|mai multe utilizări globale]] ale acestui fişier.',
-	'globalusage-filterlocal' => 'Nu afişa utilizările locale.',
+	'globalusage-text' => 'Caută utilizările globale ale fișierului',
+	'globalusage-no-results' => 'Fișierul „[[:$1]]” nu este folosit la alte proiecte de tip wiki.',
+	'globalusage-on-wiki' => 'Utilizarea fișierului „[[:File:$1|$1]]” la $2',
+	'globalusage-of-file' => 'Următoarele alte proiecte de tip wiki folosesc acest fișier:',
+	'globalusage-more' => 'Vizualizați [[{{#Special:GlobalUsage}}/$1|mai multe utilizări globale]] ale acestui fișier.',
+	'globalusage-filterlocal' => 'Nu afișa utilizările locale.',
 );
 
 /** Tarandíne (Tarandíne)

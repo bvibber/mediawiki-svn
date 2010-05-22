@@ -29,6 +29,13 @@ $messages['af'] = array(
 	'wlfeed-desc' => 'Klasse vir die skep van verbeterde voere (feeds)',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'wlfeed-desc' => 'brez Enhanced feed klasave',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

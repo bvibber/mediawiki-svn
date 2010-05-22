@@ -32,6 +32,18 @@ $messages['qqq'] = array(
 	'watchsubpages-desc' => '{{desc}}',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'watchsubpages' => 'subpages Watch',
+	'watchsubpages-addedtowatchlist' => 'Në vijim është shtuar listës mbikqyrëse tuaj.',
+	'watchsubpages-addtitles' => 'Shto faqe',
+	'watchsubpages-addtitlestowatchlist' => 'Shto faqe tek lista mbikqyrëse',
+	'watchsubpages-desc' => 'Shpejt [[Special:WatchSubpages|shtoni gjithë subpages]] për një faqe të lista mbikqyrëse',
+	'watchsubpages-form' => 'Zgjidhni faqe për të shtuar listës mbikqyrëse tuaj më poshtë. Për të shtuar një faqe, kontrolloni kutinë tjetër për atë, dhe kliko tek "{{int:watchsubpages-addtitles}}". Kur kontrolluar ose unchecking faqe te shumfisht, mbajtja e të kyç ndryshim ju lejon të zgjidhni kutitë e njëpasnjëshme duke klikuar çdo fund të gamë të kontrollohet.',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK
@@ -122,8 +134,8 @@ $messages['br'] = array(
 	'watchsubpages-addtitles' => 'Ouzhpennañ pajennoù',
 	'watchsubpages-addtitlestowatchlist' => "Ouzhpennañ pajennoù d'ar roll evezhiañ",
 	'watchsubpages-desc' => "Ouzhpennañ a ra fonnus [[Special:WatchSubpages|holl ispajennoù]] ur bajenn d'ar roll evezhiañ",
-	'watchsubpages-form' => 'Diuzit a-is ar pajennoù da vezañ ouzhpennet d\'ho roll evezhiañ.
-A-benn ouzhpennañ ur bajenn, klikit ouzh ar voest zo e-kichenik, ha klikit war "Ouzhpennañ pajennoù".
+	'watchsubpages-form' => 'Dibabit a-is ar pajennoù da vezañ ouzhpennet d\'ho roll evezhiañ.
+Evit ouzhpennañ ur bajenn, klikit ouzh ar voest zo e-kichenik, ha klikit war "{{int:watchsubpages-addtitles}}".
 
 Evit askañ pe diaskañ meur a bajenn war un dro e c\'hallit derc\'hel da bouezañ war ar stokell "pennlizherenn" en ur glikañ en daou benn d\'ar strollad logoù zo da vezañ asket.',
 );
@@ -222,9 +234,9 @@ $messages['dsb'] = array(
 	'watchsubpages-addtitlestowatchlist' => 'Boki wobglědowańkam pśidaś',
 	'watchsubpages-desc' => 'Spěšne [[Special:WatchSubpages|pśidaśe wšych pódbokow]] boka wobglědowańkam',
 	'watchsubpages-form' => 'Wubjeŕ boki, kótarež coš swójim wobglědowańkam pśidaś.
-Aby bok pśidał, markěruj kašćik pódla njogo a klikni na "Boki pśidaś".
+Aby bok pśidał, markěruj kašćik pódla njogo a klikni na "{{int:watchsubpages-addtitles}}".
 
-Gaž coš někotare boki wubraś abo wótwóliś, móžoš wubraś jaden za drugi slědujuce kontrolwe kašćiki z dołoj ześišćaneju pśešaltowańskeju tastu a pśez rownocasne kliknjenje na kuždy kóńc wobcerka, kótaryž ma so wubraś.',
+Gaž coš někotare boki wubraś abo wótwóliś, móžoš wubraś jaden za drugi slědujuce kontrolowe kašćiki z dołoj ześišćaneju pśešaltowańskeju tastu a pśez rownocasne kliknjenje na kuždy kóńc wobcerka, kótaryž ma so wubraś.',
 );
 
 /** Greek (Ελληνικά)
@@ -252,6 +264,7 @@ $messages['eo'] = array(
 /** Spanish (Español)
  * @author Crazymadlover
  * @author Fluence
+ * @author Locos epraix
  * @author Translationista
  */
 $messages['es'] = array(
@@ -260,10 +273,10 @@ $messages['es'] = array(
 	'watchsubpages-addtitles' => 'Agregar páginas',
 	'watchsubpages-addtitlestowatchlist' => 'Agregar páginas a la lista de seguimiento',
 	'watchsubpages-desc' => 'Rápidamente [[Special:WatchSubpages|agregue todas las subpáginas]] de una página en la lista de vigilancia',
-	'watchsubpages-form' => 'Seleccionar las páginas de abajo a agregar en su lista de vigilancia.
-Para agregar una página, marque la cuadrícula próxima a ella, y haga click en "Agregar página".
+	'watchsubpages-form' => 'Seleccionar las páginas a añadir a su lista de seguimiento.
+Para agregar una página, marque la caja junto a esta, y haga clic en "{{int:watchsubpages-addtitles}}".
 
-Cuando marque o desmarque múltiples páginas, Mantener presionada la tecla Mayús le permite seleccionar cuadrículas de marcado consecutivas haciendo click al final de cada rango a ser marcado.',
+Cuando marque o desmarque múltiples páginas, mantener presionada la tecla Mayús le permite seleccionar cajas consecutivas haciendo clic al final de cada rango a ser marcado.',
 );
 
 /** Estonian (Eesti)
@@ -397,6 +410,7 @@ Hdyž wjacore strony wubjerješ abo wotwoleš, móžeš z stłóčenej přešalt
 
 /** Hungarian (Magyar)
  * @author Dani
+ * @author Glanthor Reviol
  */
 $messages['hu'] = array(
 	'watchsubpages' => 'Allapok figyelése',
@@ -405,7 +419,7 @@ $messages['hu'] = array(
 	'watchsubpages-addtitlestowatchlist' => 'Lapok hozzáadása a figyelőlistádhoz',
 	'watchsubpages-desc' => 'Egy lap [[Special:WatchSubpages|összes allapjának hozzáadása]] egyszerűen a figyelőlistádhoz',
 	'watchsubpages-form' => 'Válaszd ki a lapokat, amiket hozzá akarsz adni a figyelőlistádhoz.
-Lap hozzáadásához pipáld ki a mellette lévő dobozd, majd kattints a „Lapok hozzáadása” gombra.
+Lap hozzáadásához pipáld ki a mellette lévő dobozt, majd kattints a „{{int:watchsubpages-addtitles}}” gombra.
 
 Több lap kijelölésekor a shift gomb lenyomásával egyszerre kijelölheted az egymást követő dobozokat, csupán a kijelölés végére kell kattintanod.',
 );
@@ -456,6 +470,7 @@ Quando si selezionano o deselezionano più pagine, tenendo premuto il tasto shif
 );
 
 /** Japanese (日本語)
+ * @author Aotake
  * @author Fryed-peach
  * @author Hosiryuhosi
  */
@@ -465,7 +480,7 @@ $messages['ja'] = array(
 	'watchsubpages-addtitles' => 'ページの追加',
 	'watchsubpages-addtitlestowatchlist' => 'ページ群をウォッチリストに追加',
 	'watchsubpages-desc' => 'ウォッチリストに素早く、あるページの[[Special:WatchSubpages|すべてのサブページを追加する]]',
-	'watchsubpages-form' => 'あなたのウォッチリストに加えたいページを以下で選んでください。ページを追加するには、隣のボックスにチェックをいれて、「ページの追加」をクリックしてください。
+	'watchsubpages-form' => 'ウォッチリストに加えたいページを以下で選んでください。ページを追加するには、隣のボックスにチェックをいれて、「{{int:watchsubpages-addtitles}}」をクリックしてください。
 
 複数のページをチェックあるいはチェック解除する場合は、シフトキーを押しながら、選択する範囲の始点と終点のチェックボックスをクリックすることで、その範囲の連続するすべてのボックスを選択できます。',
 );
@@ -615,6 +630,7 @@ Når du merkar eller fjernar merking av fleire sider, kan du halde nede «Shift�
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
+ * @author Nghtwlkr
  */
 $messages['no'] = array(
 	'watchsubpages' => 'Overvåk undersider',
@@ -622,10 +638,10 @@ $messages['no'] = array(
 	'watchsubpages-addtitles' => 'Legg til sider',
 	'watchsubpages-addtitlestowatchlist' => 'Legg til sider til overvåkningslisten',
 	'watchsubpages-desc' => '[[Special:WatchSubpages|Legg til alle undersider]] av en side til overvåkningslisten',
-	'watchsubpages-form' => 'Velg sidene du ønsker å legge til i overvåkningslisten din.
-For å legge til en side, merk av i boksen ved siden av den og klikk på «Legg til sider».
+	'watchsubpages-form' => 'Velg sidene du ønsker å legge til i overvåkningslisten din nedenfor.
+For å legge til en side, merk av i boksen ved siden av den og klikk «{{int:watchsubpages-addtitles}}».
 
-Når du merker eller fjerner merking av flere sider, kan du holde nede «Shift»-knappen for å velge bokser som kommer etter hverandre ved å trykke på den siste av sidene du vil merke.',
+Når du merker eller fjerner merking av flere sider kan du holde nede «shift»-tasten for å velge bokser som kommer etter hverandre ved å merke den første og siste av sidene i intervallet du vil merke.',
 );
 
 /** Occitan (Occitan)
@@ -667,6 +683,7 @@ Jeśli chcesz wybrać więcej niż jedną stronę, możesz posłużyć się klaw
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
@@ -675,10 +692,10 @@ $messages['pms'] = array(
 	'watchsubpages-addtitles' => 'Gionta le pàgine',
 	'watchsubpages-addtitlestowatchlist' => "Gionta le pàgine a lòn ch'it ten-e sot euj",
 	'watchsubpages-desc' => "[[Special:WatchSubpages|Gionta an pressa tute le sotpàgine]] ëd na pàgina a lòn ch'it ten-e sot euj.",
-	'watchsubpages-form' => 'Selession-a le pàgine da gionté a lòn ch\'it ten-e sot euj.
-Për gionté na pàgina, signa la casela d\'apress ëd chila, e sgnaca "Gionta pàgine".
+	'watchsubpages-form' => 'Ch\'a selession-a le pàgine da gionté a lòn ch\'a ten sot euj.
+Për gionté na pàgina, marché la casela da banda ëd chila, e sgnaché "{{int:watchsubpages-addtitles}}".
 
-Quand it selession-e o deselession-e vàire pàgine, sgnacand la ciav "shift" at përmëtt ëd selessioné ëd casele consecutive, an clicand inissi e fin dël range da signé.',
+Quand ch\'a selession-a o a desselession-a vàire pàgine, sgnaché la ciav "Majùscole" a-j përmët ëd selessioné ëd casele consecutive, sgnacand inissi e fin dl\'antërval da marché.',
 );
 
 /** Pashto (پښتو)
@@ -727,7 +744,7 @@ Ao marcar ou desmarcar múltiplas páginas, pressionando a tecla "Shift" você p
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
-	'watchsubpages' => 'Urmăreşte subpaginile',
+	'watchsubpages' => 'Urmărește subpaginile',
 	'watchsubpages-addtitles' => 'Adaugă pagini',
 	'watchsubpages-addtitlestowatchlist' => 'Adaugă paginile la lista de urmărire',
 );

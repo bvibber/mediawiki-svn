@@ -299,6 +299,14 @@ $messages['id'] = array(
 	'nstab-comments' => 'Komentar',
 );
 
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'commentpages-desc' => 'Ihü okwú na okwú maka áhàámá íshí',
+	'nstab-comments' => 'Okwú na okwú',
+);
+
 /** Ido (Ido)
  * @author Malafaya
  */
@@ -492,7 +500,7 @@ $messages['qu'] = array(
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
-	'commentpages-desc' => 'Pagini de comentarii pentru spaţiul de nume principal',
+	'commentpages-desc' => 'Pagini de comentarii pentru spațiul de nume principal',
 	'nstab-comments' => 'Comentariu',
 );
 

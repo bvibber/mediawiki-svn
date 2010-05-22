@@ -17,7 +17,7 @@ $aliases['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'WhoIsWatching' => array( 'من_يراقب' ),
+	'WhoIsWatching' => array( 'مين_بيراقب' ),
 );
 
 /** Bosnian (Bosanski) */
@@ -203,5 +203,10 @@ $aliases['tl'] = array(
 /** Turkish (Türkçe) */
 $aliases['tr'] = array(
 	'WhoIsWatching' => array( 'Kimİzliyor' ),
+);
+
+/** Yiddish (ייִדיש) */
+$aliases['yi'] = array(
+	'WhoIsWatching' => array( 'ווער פאסט אויף' ),
 );
 

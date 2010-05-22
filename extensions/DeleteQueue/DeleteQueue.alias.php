@@ -20,7 +20,7 @@ $aliases['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'DeleteQueue' => array( 'طابور_الحذف' ),
+	'DeleteQueue' => array( 'طابور_المسح' ),
 );
 
 /** Bosnian (Bosanski) */
@@ -111,6 +111,11 @@ $aliases['nl'] = array(
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
 $aliases['no'] = array(
 	'DeleteQueue' => array( 'Slettingskø' ),
+);
+
+/** Polish (Polski) */
+$aliases['pl'] = array(
+	'DeleteQueue' => array( 'Kolejka usuwania' ),
 );
 
 /** Portuguese (Português) */

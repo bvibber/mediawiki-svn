@@ -918,17 +918,17 @@ $2',
 או [{{fullurl:{{FULLPAGENAME}}|action=edit}} לערוך דף זה]</span>.',
 'noarticletext-nopermission'       => 'אין כרגע טקסט בדף זה.
 באפשרותכם [[Special:Search/{{PAGENAME}}|לחפש את כותרת הדף]] בדפים אחרים,
-או <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} לחפש ביומנים הרלוונטיים].',
+או <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} לחפש ביומנים הרלוונטיים].</span>',
 'userpage-userdoesnotexist'        => 'חשבון המשתמש "$1" אינו רשום.
 אנא בדקו אם ברצונכם ליצור/לערוך דף זה.',
 'userpage-userdoesnotexist-view'   => 'חשבון המשתמש "$1" אינו רשום.',
 'blocked-notice-logextract'        => 'משתמש זה חסום כרגע.
 פעולת יומן החסימות האחרונה מוצגת להלן:',
-'clearyourcache'                   => "'''הערה:''' לאחר השמירה, עליכם לנקות את זכרון המטמון (Cache) של הדפדפן על־מנת להבחין בשינויים.
-* ב'''מוזילה''', ב'''פיירפוקס''' או ב'''ספארי''', לחצו על מקש ה־Shift בעת לחיצתכם על '''העלה מחדש''' (Reload), או הקישו Ctrl+Shift+R (או Cmd+Shift+R במקינטוש של אפל).
-* ב'''אינטרנט אקספלורר''', לחצו על מקש ה־Ctrl בעת לחיצתכם על '''רענן''' (Refresh), או הקישו על Ctrl+F5.
-* ב־'''Konqueror''', לחצו על '''העלה מחדש''' (Reload), או הקישו על F5.
-* ב'''אופרה''', ייתכן שתצטרכו להשתמש ב'''כלים''' (Tools) > '''העדפות''' (Preferences) כדי לנקות לחלוטין את זכרון המטמון.",
+'clearyourcache'                   => "'''הערה:''' לאחר השמירה, עליכם לנקות את זיכרון המטמון (Cache) של הדפדפן כדי להבחין בשינויים.
+* '''מוזילה / פיירפוקס / ספארי:''' לחצו על מקש ה־Shift בעת לחיצתכם על '''העלה מחדש''' (Reload), או הקישו על ''Ctrl+F5'' או על ''Ctrl+R'' (או על ''Command+R'' במקינטוש).
+* '''Konqueror:''' לחצו על '''העלה מחדש''' (Reload), או הקישו על ''F5''.
+* '''אופרה''': נקו את המטמון ב'''כלים''' (Tools) > '''העדפות''' (Preferences).
+* '''אינטרנט אקספלורר:''' לחצו על מקש ה־Ctrl בעת לחיצתכם על '''רענן''' (Refresh), או הקישו על ''Ctrl+F5''.",
 'usercssyoucanpreview'             => "'''עצה:''' השתמשו בלחצן \"תצוגה מקדימה\" כדי לבחון את גליון ה־CSS החדש שלכם לפני השמירה.",
 'userjsyoucanpreview'              => "'''עצה:''' השתמשו בלחצן \"תצוגה מקדימה\" כדי לבחון את סקריפט ה־JavaScript החדש שלכם לפני השמירה.",
 'usercsspreview'                   => "'''זכרו שזו רק תצוגה מקדימה של גליון ה־CSS שלכם.'''
@@ -1726,6 +1726,11 @@ JD # Jenoptik
 MGP # Pentax
 PICT # שונות
  #</pre> <!-- נא להשאיר שורה זו בדיוק כפי שהיא -->',
+'upload-successful-msg'       => 'הקובץ שהעלית זמין כאן: $1',
+'upload-failure-subj'         => 'בעיה בהעלאה',
+'upload-failure-msg'          => 'הייתה בעיה עם הקובץ שהעלית:
+
+$1',
 
 'upload-proto-error'        => 'פרוטוקול שגוי',
 'upload-proto-error-text'   => 'בהעלאה מרוחקת, יש להשתמש בכתובות URL המתחילות עם <code>http://</code> או <code>ftp://</code>.',
@@ -2121,6 +2126,10 @@ PICT # שונות
 'emailsent'            => 'הדואר נשלח',
 'emailsenttext'        => 'הודעת הדואר האלקטרוני שלך נשלחה.',
 'emailuserfooter'      => 'דואר זה נשלח על ידי $1 למשתמש $2 באמצעות תכונת "שליחת דואר אלקטרוני למשתמש זה" ב{{grammar:תחילית|{{SITENAME}}}}.',
+
+# User Messenger
+'usermessage-summary' => 'השארת הודעת מערכת.',
+'usermessage-editor'  => 'שולח הודעות המערכת',
 
 # Watchlist
 'watchlist'            => 'רשימת המעקב שלי',
@@ -3346,12 +3355,17 @@ $1',
 'watchlistedit-noitems'        => 'רשימת המעקב ריקה.',
 'watchlistedit-normal-title'   => 'עריכת רשימת המעקב',
 'watchlistedit-normal-legend'  => 'הסרת דפים מרשימת המעקב',
-'watchlistedit-normal-explain' => 'כל הדפים ברשימת המעקב מוצגים להלן. כדי להסיר דף, יש לסמן את התיבה לידו, וללחוץ על "הסרת הדפים". באפשרותכם גם [[Special:Watchlist/raw|לערוך את הרשימה הגולמית]].',
+'watchlistedit-normal-explain' => 'כל הדפים ברשימת המעקב מוצגים להלן.
+כדי להסיר דף, יש לסמן את התיבה לידו, וללחוץ על "{{int:Watchlistedit-normal-submit}}".
+באפשרותכם גם [[Special:Watchlist/raw|לערוך את הרשימה הגולמית]].',
 'watchlistedit-normal-submit'  => 'הסרת הדפים',
 'watchlistedit-normal-done'    => '{{PLURAL:$1|כותרת אחת הוסרה|$1 כותרות הוסרו}} מרשימת המעקב:',
 'watchlistedit-raw-title'      => 'עריכת הרשימה הגולמית',
 'watchlistedit-raw-legend'     => 'עריכת הרשימה הגולמית',
-'watchlistedit-raw-explain'    => 'הדפים ברשימת המעקב מוצגים להלן, וניתן לערוך אותם באמצעות הוספה והסרה שלהם מהרשימה; כל כותרת מופיעה בשורה נפרדת. לאחר סיום העריכה, יש ללחוץ על "עדכון הרשימה". באפשרותכם גם [[Special:Watchlist/edit|להשתמש בעורך הרגיל]].',
+'watchlistedit-raw-explain'    => 'הדפים ברשימת המעקב מוצגים להלן, וניתן לערוך אותם באמצעות הוספה והסרה שלהם מהרשימה;
+כל כותרת מופיעה בשורה נפרדת.
+לאחר סיום העריכה, יש ללחוץ על "{{int:Watchlistedit-raw-submit}}".
+באפשרותכם גם [[Special:Watchlist/edit|להשתמש בעורך הרגיל]].',
 'watchlistedit-raw-titles'     => 'דפים:',
 'watchlistedit-raw-submit'     => 'עדכון הרשימה',
 'watchlistedit-raw-done'       => 'רשימת המעקב עודכנה.',

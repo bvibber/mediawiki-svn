@@ -124,6 +124,7 @@ $specialPageAliases = array(
 	'Allpages'                  => array( 'Todas as páginas', 'Todos os artigos', 'Todas páginas', 'Todos artigos' ),
 	'Prefixindex'               => array( 'Índice de prefixo', 'Índice por prefixo' ),
 	'Ipblocklist'               => array( 'Registro de bloqueios', 'IPs bloqueados', 'Utilizadores bloqueados', 'Usuários bloqueados', 'Registo de bloqueios' ),
+	'Unblock'                   => array( 'Desbloquear' ),
 	'Specialpages'              => array( 'Páginas especiais' ),
 	'Contributions'             => array( 'Contribuições' ),
 	'Emailuser'                 => array( 'Contatar usuário', 'Contactar usuário', 'Contactar utilizador' ),
@@ -166,6 +167,7 @@ $specialPageAliases = array(
 	'Blankpage'                 => array( 'Página em branco' ),
 	'LinkSearch'                => array( 'Pesquisar links' ),
 	'DeletedContributions'      => array( 'Contribuições eliminadas', 'Edições eliminadas' ),
+	'Tags'                      => array( 'Etiquetas' ),
 	'Activeusers'               => array( 'Usuários ativos' ),
 );
 
@@ -281,6 +283,7 @@ $magicWords = array(
 	'numberingroup'         => array( '1', 'NUMERONOGRUPO', 'NÚMERONOGRUPO', 'NUMBERINGROUP', 'NUMINGROUP' ),
 	'staticredirect'        => array( '1', '__REDIRECIONAMENTOESTATICO__', '__REDIRECIONAMENTOESTÁTICO__', '__STATICREDIRECT__' ),
 	'protectionlevel'       => array( '1', 'NIVELDEPROTECAO', 'NÍVELDEPROTEÇÃO', 'PROTECTIONLEVEL' ),
+	'url_path'              => array( '0', 'CAMINHO', 'PATH' ),
 );
 
 $messages = array(
@@ -1700,6 +1703,11 @@ JD # Jenoptik
 MGP # Pentax
 PICT # misc.
  #</pre> <!-- deixe esta linha exatamente como está -->',
+'upload-successful-msg'       => 'Seu arquivo carregado está disponível aqui: $1',
+'upload-failure-subj'         => 'Problema no upload',
+'upload-failure-msg'          => 'Ocorreu um problema com o seu upload:
+
+$1',
 
 'upload-proto-error'        => 'Protocolo incorreto',
 'upload-proto-error-text'   => 'O envio de arquivos remotos requer endereços (URLs) que iniciem com <code>http://</code> ou <code>ftp://</code>.',
@@ -2090,6 +2098,10 @@ O endereço eletrônico que você inseriu em [[Special:Preferences|suas preferê
 'emailsent'            => 'E-mail enviado',
 'emailsenttext'        => 'Sua mensagem foi enviada.',
 'emailuserfooter'      => 'Este e-mail foi enviado por $1 para $2 através da opção de "contactar usuário" da {{SITENAME}}.',
+
+# User Messenger
+'usermessage-summary' => 'Deixar mensagem de sistema.',
+'usermessage-editor'  => 'Mensagens de sistema',
 
 # Watchlist
 'watchlist'            => 'Páginas vigiadas',
@@ -2644,7 +2656,7 @@ Acesse [http://www.mediawiki.org/wiki/Localisation MediaWiki Localisation] e [ht
 As datas das edições e os seus editores serão mantidos.
 Todas as acções de importação transwiki são registradas no [[Special:Log/import|Registro de importações]].',
 'import-interwiki-source'    => 'Wiki/página fonte:',
-'import-interwiki-history'   => 'Copiar todas as edições desta página',
+'import-interwiki-history'   => 'Copiar todas as edições para esta página',
 'import-interwiki-templates' => 'Incluir todas as predefinições',
 'import-interwiki-submit'    => 'Importar',
 'import-interwiki-namespace' => 'Domínio de destino:',
@@ -3303,16 +3315,16 @@ Tente a previsão comum.',
 'watchlistedit-noitems'        => 'A sua lista de páginas vigiadas não possui títulos.',
 'watchlistedit-normal-title'   => 'Editar lista de páginas vigiadas',
 'watchlistedit-normal-legend'  => 'Remover títulos da lista de páginas vigiadas',
-'watchlistedit-normal-explain' => 'Os títulos de sua lista de páginas vigiadas são exibidos a seguir.
-Para remover um título, marque a caixa ao lado do mesmo e clique no botão Remover Títulos.
-Você também pode [[Special:Watchlist/raw|editar a lista crua]].',
+'watchlistedit-normal-explain' => 'Os títulos das páginas de sua lista de vigiados são exibidos abaixo.
+Para remover um título, marque a caixa ao lado do mesmo e clique "{{int:Watchlistedit-normal-submit}}".
+Você pode também [[Special:Watchlist/raw|editar a lista de páginas vigiadas em forma de texto]].',
 'watchlistedit-normal-submit'  => 'Remover Títulos',
 'watchlistedit-normal-done'    => '{{PLURAL:$1|um título foi removido|$1 títulos foram removidos}} de sua lista de páginas vigiadas:',
 'watchlistedit-raw-title'      => 'Edição crua da lista de páginas vigiadas',
 'watchlistedit-raw-legend'     => 'Edição crua da lista de páginas vigiadas',
-'watchlistedit-raw-explain'    => 'Os títulos de sua lista de páginas vigiadas são exibidos a seguir e podem ser adicionados ou removidos ao se editar a lista, mantendo-se um por linha.
-Ao terminar, clique no botão correspondente para atualizar.
-Você também pode [[Special:Watchlist/edit|editar a lista da forma convencional]].',
+'watchlistedit-raw-explain'    => 'A lista de páginas vigiadas é apresentada abaixo. Você pode adicionar novas linhas ou remover linhas para aumentar ou reduzir a lista, desde que mantenha uma única página por linha.
+Quando terminar, clique "{{int:Watchlistedit-raw-submit}}".
+Você também pode [[Special:Watchlist/edit|editar a lista da maneira convencional]].',
 'watchlistedit-raw-titles'     => 'Títulos:',
 'watchlistedit-raw-submit'     => 'Atualizar a lista de páginas vigiadas',
 'watchlistedit-raw-done'       => 'Sua lista de páginas vigiadas foi atualizada.',

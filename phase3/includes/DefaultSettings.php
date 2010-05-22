@@ -1677,7 +1677,7 @@ $wgCacheEpoch = '20030516000000';
  * to ensure that client-side caches do not keep obsolete copies of global
  * styles.
  */
-$wgStyleVersion = '279';
+$wgStyleVersion = '284';
 
 
 # Server-side caching:
@@ -3851,6 +3851,7 @@ $wgReservedUsernames = array(
 	'Maintenance script', // Maintenance scripts which perform editing, image import script
 	'Template namespace initialisation script', // Used in 1.2->1.3 upgrade
 	'msg:double-redirect-fixer', // Automatic double redirect fix
+	'msg:usermessage-editor', // Default user for leaving user messages
 );
 
 /**

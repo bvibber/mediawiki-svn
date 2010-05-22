@@ -122,6 +122,54 @@ $wgCustomToolbarMessages['af'] = array(
 	'ct_user_sample' => 'Gebruikersnaam',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$wgCustomToolbarMessages['aln'] = array(
+	'ct-desc' => 'Shton një toolbar zgjeruar',
+	'ct_bold_sample' => 'Tekst i trashë',
+	'ct_bold_tip_ins' => 'Vendos tekst bold',
+	'ct_bold_tip_wrap' => 'Bëni këtë tekst bold',
+	'ct_bold_caption' => 'Guximtar',
+	'ct_italic_sample' => 'Teksti i pjerrët',
+	'ct_italic_tip_ins' => 'Vendos tekst kursiv',
+	'ct_italic_tip_wrap' => 'Bëni këtë tekst kursiv',
+	'ct_italic_caption' => 'Kursiv',
+	'ct_internal_sample' => 'PageName',
+	'ct_internal_tip_ins' => 'Fut një lidhje të brendshme',
+	'ct_internal_tip_wrap' => 'Bëni këtë tekst një lidhje të brendshme',
+	'ct_internal_caption' => 'Lidhje të Brendshme',
+	'ct_external_tip_ins' => 'Fut një link i jashtëm',
+	'ct_external_tip_wrap' => 'Bëni këtë tekst një lidhje të jashtme',
+	'ct_external_caption' => 'Lidhje e jashtme',
+	'ct_image_tip' => 'Fut një imazh',
+	'ct_image_caption' => 'Shto imazh',
+	'ct_attachment_tip' => 'Fut një bashkëngjitje',
+	'ct_attachment_caption' => 'Shto bashkëngjitje',
+	'ct_math_sample' => 'Insert formula LaTeX këtu',
+	'ct_math_tip_ins' => 'Fut formula matematikore (LaTeX)',
+	'ct_math_tip_wrap' => 'Bëni këtë tekst një formulë matematike (LaTeX)',
+	'ct_math_caption' => 'Formulë',
+	'ct_nowiki_sample' => 'Vendos tekst këtu nuk duhet të formatohet',
+	'ct_nowiki_tip_ins' => 'Ignore wiki formatting',
+	'ct_nowiki_tip_wrap' => 'Ignore wiki formatting per kete tekst',
+	'ct_nowiki_caption' => 'Nuk wiki',
+	'ct_horizontal_tip' => 'Fut një vijë horizontale (të përdorur me masë)',
+	'ct_horizontal_caption' => 'vijë horizontale',
+	'ct_upload' => 'Ngarko $1',
+	'ct_select' => 'Zgjidhni $1 për ngarkim:',
+	'ct_caption' => 'Shto tekst i shkruar (me dëshirë):',
+	'ct_link' => 'Shto Emri Lidhje (opsional):',
+	'ct_submit' => 'Shko!',
+	'ct_close' => 'Mbylle dritaren',
+	'ct_success' => 'File upload suksesshëm!',
+	'ct_popupblocked' => 'Popup upload ishte ndaluar nga e hapjes. Ju lutem kontrolloni popup blocker tuaj.',
+	'ct_user_user' => 'Përdorues',
+	'ct_user_tip' => 'Fut një lidhje tek një faqe përdorues',
+	'ct_user_caption' => 'Lidhje Përdoruesi',
+	'ct_user_sample' => 'Emri i përdoruesit',
+);
+
 /** Amharic (አማርኛ)
  * @author Codex Sinaiticus
  */
@@ -1951,6 +1999,8 @@ $wgCustomToolbarMessages['os'] = array(
  * @author Xqt
  */
 $wgCustomToolbarMessages['pdc'] = array(
+	'ct_external_caption' => 'Gewebbgleecher',
+	'ct_submit' => 'Go!',
 	'ct_close' => 'Fenschder zumache',
 	'ct_user_user' => 'Yuuser',
 	'ct_user_sample' => 'Yuuser-Naame',
@@ -2202,8 +2252,8 @@ $wgCustomToolbarMessages['ro'] = array(
 	'ct_external_caption' => 'Legătură externă',
 	'ct_image_tip' => 'Inserează o imagine',
 	'ct_image_caption' => 'Adaugă o imagine',
-	'ct_attachment_tip' => 'Inserează un ataşament',
-	'ct_attachment_caption' => 'Adaugă ataşament',
+	'ct_attachment_tip' => 'Inserează un atașament',
+	'ct_attachment_caption' => 'Adaugă atașament',
 	'ct_math_sample' => 'Inserează o formulă LaTeX aici',
 	'ct_math_tip_ins' => 'Inserează o formulă matematică (LaTeX)',
 	'ct_math_tip_wrap' => 'Fă acest text o formulă matematică (LaTeX)',
@@ -2212,13 +2262,13 @@ $wgCustomToolbarMessages['ro'] = array(
 	'ct_nowiki_tip_ins' => 'Ignoră formatarea wiki',
 	'ct_nowiki_tip_wrap' => 'Ignoră formatarea wiki pentru acest text',
 	'ct_nowiki_caption' => 'Niciun wiki',
-	'ct_horizontal_tip' => 'Inserează o linie orizontală (folosiţi-o cumpătat)',
+	'ct_horizontal_tip' => 'Inserează o linie orizontală (folosiți-o cumpătat)',
 	'ct_horizontal_caption' => 'Linie orizontală',
 	'ct_upload' => 'Încarcă $1',
 	'ct_select' => 'Selectează $1 pentru încărcare:',
 	'ct_submit' => 'Salt',
 	'ct_close' => 'Închide fereastra',
-	'ct_success' => 'Încărcare a fişierului cu succes!',
+	'ct_success' => 'Încărcare a fișierului cu succes!',
 	'ct_user_user' => 'Utilizator',
 	'ct_user_tip' => 'Inserează o legătură într-o pagină de utilizator.',
 	'ct_user_sample' => 'Nume de utilizator',
@@ -2451,6 +2501,24 @@ Prosím, skontrolujte blokovanie vyskakovacích okien vo vašom prehliadači.',
 	'ct_user_tip' => 'Vložiť odkaz na používateľskú stránku',
 	'ct_user_caption' => 'Odkaz na používateľa',
 	'ct_user_sample' => 'Používateľské meno',
+);
+
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$wgCustomToolbarMessages['sl'] = array(
+	'ct_external_tip_wrap' => 'Naredi to besedilo zunanjo povezavo',
+	'ct_external_caption' => 'Zunanja povezava',
+	'ct_image_tip' => 'Vstavi sliko',
+	'ct_image_caption' => 'Dodaj sliko',
+	'ct_attachment_tip' => 'Vstavi priponko',
+	'ct_attachment_caption' => 'Dodaj priponko',
+	'ct_math_caption' => 'Formula',
+	'ct_horizontal_caption' => 'Vodoravna črta',
+	'ct_submit' => 'Pojdi!',
+	'ct_close' => 'Zapri okno',
+	'ct_user_user' => 'Uporabnik',
+	'ct_user_sample' => 'Uporabniško ime',
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))

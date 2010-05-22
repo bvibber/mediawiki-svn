@@ -55,6 +55,15 @@ $messages['af'] = array(
 	'bookinfo-provider' => 'Gegewens verskaf deur: $1',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'bookinfo-error-noresponse' => 'Nuk ka përgjigje ose të kërkojë kohë jashtë.',
+	'bookinfo-purchase' => 'Blerje këtë libër nga $1',
+	'bookinfo-provider' => 'Marresi i te dhenave: $1',
+);
+
 /** Amharic (አማርኛ)
  * @author Codex Sinaiticus
  */
@@ -1090,11 +1099,12 @@ $messages['mg'] = array(
 );
 
 /** Macedonian (Македонски)
+ * @author Bjankuloski06
  * @author Brest
  */
 $messages['mk'] = array(
 	'bookinfo-header' => 'Информации за книга',
-	'bookinformation-desc' => 'Проширување на [[Special:Booksources|специјалната страница за книги]] со информации од веб сервис',
+	'bookinformation-desc' => 'Додаток на [[Special:Booksources|специјалната страница за книги]] со информации од веб сервис',
 	'bookinfo-result-title' => 'Наслов:',
 	'bookinfo-result-author' => 'Автор:',
 	'bookinfo-result-publisher' => 'Издавач:',
@@ -1289,6 +1299,7 @@ $messages['pam'] = array(
  * @author Xqt
  */
 $messages['pdc'] = array(
+	'bookinfo-result-title' => 'Titel:',
 	'bookinfo-result-author' => 'Schreiwer:',
 	'bookinfo-result-year' => 'Yaahr:',
 );
@@ -1402,17 +1413,17 @@ $messages['qu'] = array(
  * @author Mihai
  */
 $messages['ro'] = array(
-	'bookinfo-header' => 'Informaţii despre carte',
-	'bookinformation-desc' => 'Completează [[Special:Booksources|pagina specială a surselor de cărţi]] cu informaţii de la un serviciu web',
+	'bookinfo-header' => 'Informații despre carte',
+	'bookinformation-desc' => 'Completează [[Special:Booksources|pagina specială a surselor de cărți]] cu informații de la un serviciu web',
 	'bookinfo-result-title' => 'Titlu:',
 	'bookinfo-result-author' => 'Autor:',
 	'bookinfo-result-publisher' => 'Editură:',
 	'bookinfo-result-year' => 'An:',
 	'bookinfo-error-invalidisbn' => 'ISBN nevalid.',
 	'bookinfo-error-nosuchitem' => 'Elementul nu există sau nu a putut fi găsit.',
-	'bookinfo-error-nodriver' => 'Nu poate fi accesată nicio sursă cu informaţii despe carte.',
+	'bookinfo-error-nodriver' => 'Nu poate fi accesată nicio sursă cu informații despe carte.',
 	'bookinfo-error-noresponse' => 'Niciun răspuns sau cererea a expirat.',
-	'bookinfo-purchase' => 'Cumpăraţi această carte de la $1',
+	'bookinfo-purchase' => 'Cumpărați această carte de la $1',
 	'bookinfo-provider' => 'Furnizor date: $1',
 );
 

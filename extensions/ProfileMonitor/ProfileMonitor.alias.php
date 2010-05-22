@@ -17,7 +17,7 @@ $aliases['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'ProfileMonitor' => array( 'مراقب_الملف' ),
+	'ProfileMonitor' => array( 'مراقب_الپروفايل' ),
 );
 
 /** Lower Sorbian (Dolnoserbski) */

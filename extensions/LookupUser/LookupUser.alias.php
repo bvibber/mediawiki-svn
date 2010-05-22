@@ -20,7 +20,7 @@ $aliases['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'LookupUser' => array( 'مطالعة_مستخدم' ),
+	'LookupUser' => array( 'شوف_يوزر' ),
 );
 
 /** Bosnian (Bosanski) */

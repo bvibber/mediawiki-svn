@@ -39,6 +39,17 @@ $messages['af'] = array(
 	'discussionthreading-threadnewsectionhint' => "Begin 'n nuwe onderwerp",
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'discussionthreading-desc' => 'Shto fillesë për të folur faqe',
+	'discussionthreading-replysection' => 'përgjigje',
+	'discussionthreading-replysectionhint' => 'Përgjigju me këtë postimin',
+	'discussionthreading-threadnewsection' => 'i ri',
+	'discussionthreading-threadnewsectionhint' => 'Fillo një fije të re',
+);
+
 /** Old English (Ænglisc)
  * @author Wōdenhelm
  */

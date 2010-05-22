@@ -27,12 +27,17 @@ $aliases['arc'] = array(
 
 /** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'CreatePage' => array( 'إنشاء_صفحة' ),
+	'CreatePage' => array( 'اعمل_صفحه' ),
 );
 
 /** Azerbaijani (Azərbaycanca) */
 $aliases['az'] = array(
 	'CreatePage' => array( 'SəhifəYarat' ),
+);
+
+/** Breton (Brezhoneg) */
+$aliases['br'] = array(
+	'CreatePage' => array( 'KrouiénPajenn' ),
 );
 
 /** Bosnian (Bosanski) */
@@ -48,6 +53,11 @@ $aliases['de'] = array(
 /** Lower Sorbian (Dolnoserbski) */
 $aliases['dsb'] = array(
 	'CreatePage' => array( 'Bok napóraś' ),
+);
+
+/** Esperanto (Esperanto) */
+$aliases['eo'] = array(
+	'CreatePage' => array( 'Krei paĝon' ),
 );
 
 /** Spanish (Español) */
@@ -73,6 +83,11 @@ $aliases['gl'] = array(
 /** Swiss German (Alemannisch) */
 $aliases['gsw'] = array(
 	'CreatePage' => array( 'Syte aalege' ),
+);
+
+/** Croatian (Hrvatski) */
+$aliases['hr'] = array(
+	'CreatePage' => array( 'Započni_stranicu' ),
 );
 
 /** Upper Sorbian (Hornjoserbsce) */
@@ -123,6 +138,11 @@ $aliases['ksh'] = array(
 /** Cornish (Kernewek) */
 $aliases['kw'] = array(
 	'CreatePage' => array( 'GwruthylFolen' ),
+);
+
+/** Ladino (Ladino) */
+$aliases['lad'] = array(
+	'CreatePage' => array( 'Criar la hoja' ),
 );
 
 /** Luxembourgish (Lëtzebuergesch) */

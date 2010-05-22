@@ -21,7 +21,7 @@ $aliases['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'MultipleUpload' => array( 'رفع_متعدد' ),
+	'MultipleUpload' => array( 'Upload_متعدد' ),
 );
 
 /** Bosnian (Bosanski) */
@@ -106,7 +106,7 @@ $aliases['mk'] = array(
 
 /** Malayalam (മലയാളം) */
 $aliases['ml'] = array(
-	'MultipleUpload' => array( 'വിവിധ അപ്‌ലോഡുകള്‍' ),
+	'MultipleUpload' => array( 'വിവിധ അപ്‌ലോഡുകൾ' ),
 );
 
 /** Nedersaksisch (Nedersaksisch) */

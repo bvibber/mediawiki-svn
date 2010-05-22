@@ -62,7 +62,7 @@ $aliases['eo'] = array(
 
 /** Spanish (Español) */
 $aliases['es'] = array(
-	'Contact' => array( 'Contactar' ),
+	'Contact' => array( 'Contactar', 'Contacto' ),
 );
 
 /** Finnish (Suomi) */
@@ -197,7 +197,7 @@ $aliases['nn'] = array(
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
 $aliases['no'] = array(
-	'Contact' => array( 'Kontakt', 'Kontaktside' ),
+	'Contact' => array( 'Kontakt' ),
 );
 
 /** Occitan (Occitan) */

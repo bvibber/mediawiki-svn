@@ -17,7 +17,7 @@ $aliases['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'InspectCache' => array( 'فحص_الكاش' ),
+	'InspectCache' => array( 'تفتيش_على_الCache' ),
 );
 
 /** Bosnian (Bosanski) */
@@ -98,6 +98,11 @@ $aliases['lb'] = array(
 /** Macedonian (Македонски) */
 $aliases['mk'] = array(
 	'InspectCache' => array( 'ПрегледајКеш' ),
+);
+
+/** Malayalam (മലയാളം) */
+$aliases['ml'] = array(
+	'InspectCache' => array( 'കാഷെപരിശോധിക്കുക' ),
 );
 
 /** Marathi (मराठी) */

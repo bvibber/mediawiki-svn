@@ -813,11 +813,17 @@ $messages['id'] = array(
  */
 $messages['ig'] = array(
 	'quiz_desc' => 'Në nyé uzor I ké nlele akwúkwuó',
+	'quiz_addedPoints' => '{{PLURAL:$1|Ogùgù Onyìnyé|Onú Ogùgù Onyìnyé}} a bálá màkà otu é shi a zá ajújú ofuma',
+	'quiz_cutoffPoints' => '{{PLURAL:$1|Ogùgù Onyìnyé|Onú Ogùgù Onyìnyé}} màkà otu é shi daá I zá ajújú ofuma',
+	'quiz_ignoreCoef' => 'Á zàkwàlà nkwado ónú ogùgù bu nke ájújú ndiá',
+	'quiz_shuffle' => 'gbàsá ájújú',
 	'quiz_colorRight' => 'Ézíbóté',
 	'quiz_colorWrong' => 'Í dạrạ ya',
 	'quiz_colorNA' => 'O saghị',
+	'quiz_colorError' => 'Édé nwèrè nsogbú',
 	'quiz_correction' => 'Nyefwuör',
 	'quiz_score' => 'Owu gi bu $1 / $2',
+	'quiz_points' => '$1 | {{PLURAL:$2|1 ogùgù onyìnyé|$2 onú ogùgù onyìnyé}}',
 	'quiz_reset' => 'Kuwaria',
 );
 
@@ -1421,17 +1427,17 @@ $messages['qu'] = array(
 $messages['ro'] = array(
 	'quiz_desc' => 'Permite crearea de chestionare',
 	'quiz_addedPoints' => '{{PLURAL:$1|Punct adăugat|Puncte adăugate}} pentru un răspuns corect',
-	'quiz_cutoffPoints' => '{{PLURAL:$1|Punct scăzut|Puncte scăzute}} pentru un răspuns greşit',
-	'quiz_ignoreCoef' => 'Ignoră coeficienţii întrebărilor',
+	'quiz_cutoffPoints' => '{{PLURAL:$1|Punct scăzut|Puncte scăzute}} pentru un răspuns greșit',
+	'quiz_ignoreCoef' => 'Ignoră coeficienții întrebărilor',
 	'quiz_shuffle' => 'Întrebări amestecate',
 	'quiz_colorRight' => 'Corect',
-	'quiz_colorWrong' => 'Greşit',
+	'quiz_colorWrong' => 'Greșit',
 	'quiz_colorNA' => 'Fără răspuns',
 	'quiz_colorError' => 'Eroare de sintaxă',
 	'quiz_correction' => 'Aplică',
 	'quiz_score' => 'Scorul tău este $1 / $2',
 	'quiz_points' => '$1 | {{PLURAL:$2|1 punct|$2 puncte}}',
-	'quiz_reset' => 'Reiniţializare',
+	'quiz_reset' => 'Reinițializare',
 );
 
 /** Tarandíne (Tarandíne)

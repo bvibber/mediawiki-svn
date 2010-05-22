@@ -83,6 +83,11 @@ $aliases['gu'] = array(
 	'Drafts' => array( 'મુસ્દ્દો' ),
 );
 
+/** Croatian (Hrvatski) */
+$aliases['hr'] = array(
+	'Drafts' => array( 'Nacrti' ),
+);
+
 /** Upper Sorbian (Hornjoserbsce) */
 $aliases['hsb'] = array(
 	'Drafts' => array( 'Naćiski' ),

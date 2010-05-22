@@ -41,6 +41,19 @@ $messages['af'] = array(
 	'ajax-se-usernotfound' => 'FOUT: gebruiker nie gevind',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'ajaxshoweditors-desc' => 'Tregon përdoruesve redaktimi i cili është redaktimi të njëjtën faqe',
+	'ajax-se-title' => 'Aktualisht redaktim:',
+	'ajax-se-pending' => 'në pritje të rifreskoni ... (klikoni këtë kuti ose fillimin e redaktimi)',
+	'ajax-se-idling' => '($1s ago)',
+	'ajax-se-pagedoesnotexist' => 'faqe nuk ekziston',
+	'ajax-se-userinvalid' => 'Gabim: Përdorues i pavlefshëm',
+	'ajax-se-usernotfound' => 'Gabim: nuk u gjet përdorues',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author Mido
@@ -937,9 +950,9 @@ $messages['pt-br'] = array(
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
-	'ajaxshoweditors-desc' => 'Arată utilizatorii care modifică aceeaşi pagină',
+	'ajaxshoweditors-desc' => 'Arată utilizatorii care modifică aceeași pagină',
 	'ajax-se-title' => 'Modificare curentă:',
-	'ajax-se-pending' => 'reîncărcare în aşteptare… (click în această cutie sau începeţi să modificaţi)',
+	'ajax-se-pending' => 'reîncărcare în așteptare… (click în această cutie sau începeți să modificați)',
 	'ajax-se-idling' => '(acum $1s)',
 	'ajax-se-pagedoesnotexist' => 'pagina nu există',
 	'ajax-se-userinvalid' => 'Eroare: utilizator incorect',

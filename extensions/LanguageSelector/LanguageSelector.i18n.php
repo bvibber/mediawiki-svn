@@ -45,6 +45,15 @@ $messages['af'] = array(
 	'languageselector-setlang' => 'stel',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'languageselector' => 'Gjuhë',
+	'languageselector-desc' => 'Gjuha seleksionues në çdo faqe, edhe për vizitorët',
+	'languageselector-setlang' => 'vendosur',
+);
+
 /** Amharic (አማርኛ)
  * @author Codex Sinaiticus
  */
@@ -843,10 +852,13 @@ $messages['sk'] = array(
 );
 
 /** Slovenian (Slovenščina)
+ * @author Dbc334
  * @author Smihael
  */
 $messages['sl'] = array(
 	'languageselector' => 'Jezik',
+	'languageselector-desc' => 'Izbirnik jezika na vsaki strani, tudi za obiskovalce',
+	'languageselector-setlang' => 'določi',
 );
 
 /** Lower Silesian (Schläsch)

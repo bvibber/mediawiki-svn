@@ -73,6 +73,8 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * (bug 23429) Added new hook WatchlistEditorBuildRemoveLine
 * (bug 18488) Added maintenance script refreshCategoryCounts.php
 * (bug 22844) Added support for WinCache object caching
+* (bug 23580) Add two new events to LivePreview so that scripts can be
+  notified about the beginning and finishing of LivePreview actions
 
 === Bug fixes in 1.17 ===
 * (bug 17560) Half-broken deletion moved image files to deletion archive
@@ -164,6 +166,12 @@ in a negative namespace (which is invalid).
 * (bug 23426) The {{REVISIONMONTH}} variable is now zero-padded and added new
   variable {{REVISIONMONTH1}} when unpadded version is needed.
 * Special:Userrights didn't recognize user as changing his/her own rights if user did not capitalize first letter of username.
+* (bug 23507) Add styles for printing wikitables
+* (bug 19586) Avoid JS errors in mwsuggest when using old browsers such as Opera 8.
+* (bug 23563) Old skins now support $wgUploadNavigationUrl and take into account upload rights.
+* (bug 1347) Render \phi in math using images, in order to create consistent and correct render results.
+* (bug 16573) Render \epsilon in math using images, in order to create consistent and correct render results.
+* (bug 22541) Support image redirects when using ForeignAPIRepo
 
 === API changes in 1.17 ===
 * (bug 22738) Allow filtering by action type on query=logevent
@@ -178,6 +186,7 @@ in a negative namespace (which is invalid).
 * (bug 23460) Parse action should have a section option
 * (bug 21346) Make deleted images searchable by hash
 * (bug 23461) Normalise usage of parameter names in parameter descriptions
+* (bug 23548) Allow access of another users watchlist through watchlistraw using token and username
 
 === Languages updated in 1.17 ===
 

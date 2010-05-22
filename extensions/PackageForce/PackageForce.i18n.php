@@ -427,6 +427,13 @@ $messages['no'] = array(
 	'pf-header-approve' => 'Godkjenn',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'pf-header-page_title' => 'Titel',
+);
+
 /** Polish (Polski) */
 $messages['pl'] = array(
 	'pf-header-page_title' => 'Tytuł',
@@ -508,6 +515,21 @@ $messages['ru'] = array(
 	'pf-header-type' => 'Тип страницы',
 	'pf-header-page_title' => 'Название',
 	'pf-header-approve' => 'Утверждение',
+);
+
+/** Swedish (Svenska)
+ * @author Dafer45
+ */
+$messages['sv'] = array(
+	'pf-admin-link-view-documentation' => 'Se dokumentation knuten till sidan.',
+	'pf-admin-link-editlink-page' => 'Redigera sida',
+	'pf-admin-link-approve' => 'Godkänn sida',
+	'pf-header-documentation' => 'Dokumentation',
+	'pf-header-in_packages' => 'Paket',
+	'pf-header-edit' => 'Redigera länk',
+	'pf-header-type' => 'Typ av sida',
+	'pf-header-page_title' => 'Titel',
+	'pf-header-approve' => 'Godkänn',
 );
 
 /** Yiddish (ייִדיש)

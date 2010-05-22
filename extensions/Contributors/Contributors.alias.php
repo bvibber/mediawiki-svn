@@ -30,7 +30,7 @@ $aliases['arc'] = array(
 
 /** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'Contributors' => array( 'مساهمون' ),
+	'Contributors' => array( 'مساهمين' ),
 );
 
 /** Breton (Brezhoneg) */

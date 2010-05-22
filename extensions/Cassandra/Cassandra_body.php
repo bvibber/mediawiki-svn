@@ -62,6 +62,9 @@ class ExternalStoreCassandra {
 			$predicate->slice_range = $sliceRange;
 			
 			$result = $this->client->get_slice($this->keyspace, $key, $columnParent, $predicate, $wgCassandraReadConsistency);
+			if ( empty ( $result ) ) {
+				return false;
+			}
 			
 			return $result[0]->column->value;
 		} catch ( TException $e ) {

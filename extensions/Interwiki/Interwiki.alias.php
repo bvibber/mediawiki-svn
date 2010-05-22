@@ -20,11 +20,6 @@ $aliases['ar'] = array(
 	'Interwiki' => array( 'إنترويكي' ),
 );
 
-/** Egyptian Spoken Arabic (مصرى) */
-$aliases['arz'] = array(
-	'Interwiki' => array( 'إنترويكى' ),
-);
-
 /** Bulgarian (Български) */
 $aliases['bg'] = array(
 	'Interwiki' => array( 'Междууикита' ),
@@ -38,6 +33,16 @@ $aliases['br'] = array(
 /** Bosnian (Bosanski) */
 $aliases['bs'] = array(
 	'Interwiki' => array( 'Medjuwiki' ),
+);
+
+/** Esperanto (Esperanto) */
+$aliases['eo'] = array(
+	'Interwiki' => array( 'Intervikia ligilo' ),
+);
+
+/** Spanish (Español) */
+$aliases['es'] = array(
+	'Interwiki' => array( 'Enlaces interligüísticos' ),
 );
 
 /** Persian (فارسی) */
@@ -92,7 +97,7 @@ $aliases['mk'] = array(
 
 /** Malayalam (മലയാളം) */
 $aliases['ml'] = array(
-	'Interwiki' => array( 'അന്തര്‍‌വിക്കി' ),
+	'Interwiki' => array( 'അന്തർ‌വിക്കി' ),
 );
 
 /** Marathi (मराठी) */

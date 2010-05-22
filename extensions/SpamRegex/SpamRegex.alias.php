@@ -21,7 +21,7 @@ $aliases['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'SpamRegex' => array( 'سبام_ريجيكس' ),
+	'SpamRegex' => array( 'Spam_Regex' ),
 );
 
 /** Hebrew (עברית) */
@@ -47,6 +47,11 @@ $aliases['id'] = array(
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'SpamRegex' => array( 'スパム正規表現フィルター', 'スパム正規表現フィルタ' ),
+);
+
+/** Luxembourgish (Lëtzebuergesch) */
+$aliases['lb'] = array(
+	'SpamRegex' => array( 'Regele fir Spam ze fannen' ),
 );
 
 /** Marathi (मराठी) */

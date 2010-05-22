@@ -22,7 +22,7 @@ $aliases['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'RegexBlock' => array( 'منع_ريجيكس' ),
+	'RegexBlock' => array( 'بلوك_Regex' ),
 );
 
 /** Bulgarian (Български) */

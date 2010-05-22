@@ -145,6 +145,13 @@ $messages['af'] = array(
 	'tasks_logentry' => 'Vir "[[$1]]"',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'tasks_error1' => 'Task nuk u krijua: ka tashmë një detyrë të tillë!',
+);
+
 /** Amharic (አማርኛ)
  * @author Codex Sinaiticus
  */
@@ -1872,6 +1879,13 @@ $messages['id'] = array(
 	'tasks-pref-showtaskcomments' => 'Transklusikan halaman komentar tugas.',
 );
 
+/** Igbo (Igbo) */
+$messages['ig'] = array(
+	'tasks_delete' => 'Gbakashia',
+	'tasks_more_like_it' => 'dikarírí',
+	'tasks_search_form_title' => 'Chöwá',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  * @author Pietrodn
@@ -2308,7 +2322,7 @@ $messages['lzz'] = array(
  */
 $messages['mk'] = array(
 	'tasks' => 'Задачи',
-	'tasks_desc' => 'Проширување за раководење со задачи',
+	'tasks_desc' => 'Додаток за раководење со задачи',
 	'tasks_tab' => 'Задачи',
 	'tasks_title' => 'Задачи за „$1“',
 	'tasks_form_new' => 'Создај нова задача',
@@ -3078,8 +3092,8 @@ $messages['ro'] = array(
 	'tasks_close' => 'Încheie sarcină',
 	'tasks_delete' => 'Ştergere',
 	'tasks_no_task_delete_title' => 'Nu este permis',
-	'tasks_action_delete' => 'O sarcină a fost ştearsă.',
-	'tasks_task_was_deleted' => 'Sarcina a fost ştearsă cu succes.',
+	'tasks_action_delete' => 'O sarcină a fost ștearsă.',
+	'tasks_task_was_deleted' => 'Sarcina a fost ștearsă cu succes.',
 	'tasks_reopen' => 'Redeschide sarcină',
 	'tasks_created_by' => 'Creat de $1',
 	'tasks_here' => 'aici',

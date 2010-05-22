@@ -164,6 +164,47 @@ $messages['af'] = array(
 	'g-small' => 'Klein',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'giftmanager' => 'menaxher Gifts',
+	'giftmanager-addgift' => '+ Shto dhuratë të reja',
+	'giftmanager-access' => 'qasje dhuratë',
+	'giftmanager-description' => 'Përshkrimi dhuratë',
+	'giftmanager-giftimage' => 'image dhuratë',
+	'giftmanager-image' => 'shtoni / zëvendësojë imazhin',
+	'giftmanager-giftcreated' => 'Dhuratë është krijuar',
+	'giftmanager-giftsaved' => 'Dhuratë u ruajt',
+	'giftmanager-public' => 'publik',
+	'giftmanager-private' => 'privat',
+	'giftmanager-view' => 'Lista Shiko dhuratë',
+	'g-add-message' => 'Shto një mesazh',
+	'g-back-edit-gift' => 'Prapa te redaktoni këtë dhuratë',
+	'g-back-gift-list' => 'Kthehu tek lista dhuratë',
+	'g-back-link' => '<Kthehu tek $1 për faqe',
+	'g-choose-file' => 'Zgjidhni skedar:',
+	'g-cancel' => 'Anuloj',
+	'g-count' => '$1 ka $2 {{PLURAL:$2|dhuratë|dhurata}}.',
+	'g-create-gift' => 'dhuratë Krijo',
+	'g-created-by' => 'krijuar nga',
+	'g-current-image' => 'imazhin e tanishme',
+	'g-delete-message' => 'A jeni i sigurt se doni te fshini dhuratë "$1"? Kjo gjithashtu do të fshijë atë nga përdoruesit të cilët mund të kenë marrë atë.',
+	'g-description-title' => '$1 është dhuratë "$2"',
+	'g-error-do-not-own' => 'Ju nuk zotërojnë këtë dhuratë.',
+	'g-error-message-blocked' => 'Ju jeni bllokuar për momentin dhe nuk mund të japin dhurata',
+	'g-error-message-invalid-link' => 'Lidhje e keni futur është i pavlefshëm.',
+	'g-error-message-login' => 'Ju duhet të hyni-në për të dhënë dhurata',
+	'g-error-message-no-user' => 'Perdoruesi jeni duke u përpjekur për të parë nuk ekziston.',
+	'g-error-message-to-yourself' => 'Ju nuk mund të japë një dhuratë për veten.',
+	'g-error-title' => 'Woops, ju mori një kthesë të gabuar!',
+	'g-file-instructions' => 'Imazhi yt duhet të jetë një jpeg, png ose gif (pa animuar gifs), dhe duhet të jetë më pak se 100kb në madhësi.',
+	'g-from' => 'nga <a href="$1">$2</a>',
+	'g-gift' => 'dhuratë',
+	'g-gift-name' => 'Emri dhuratë',
+	'g-give-gift' => 'Jepni dhuratë',
+);
+
 /** Aragonese (Aragonés)
  * @author Juanpabl
  */
@@ -1562,9 +1603,9 @@ $messages['gl'] = array(
 	'giftmanager-private' => 'privado',
 	'giftmanager-view' => 'Ver a lista de agasallos',
 	'g-add-message' => 'Engadir unha mensaxe',
-	'g-back-edit-gift' => 'Voltar á edición deste agasallo',
-	'g-back-gift-list' => 'Voltar á lista de agasallos',
-	'g-back-link' => '< Voltar á páxina de $1',
+	'g-back-edit-gift' => 'Volver á edición deste agasallo',
+	'g-back-gift-list' => 'Volver á lista de agasallos',
+	'g-back-link' => '< Volver á páxina de $1',
 	'g-choose-file' => 'Elixir o ficheiro:',
 	'g-cancel' => 'Cancelar',
 	'g-count' => '$1 ten {{PLURAL:$2|un agasallo|$2 agasallos}}.',
@@ -1597,7 +1638,7 @@ $messages['gl'] = array(
 	'g-give-no-user-title' => 'A quen quere agasallar?',
 	'g-give-to-user-title' => 'Enviar o agasallo "$1" a $2',
 	'g-give-to-user-message' => 'Quere darlle a $1 un <a href="$2">agasallo diferente</a>?',
-	'g-go-back' => 'Voltar',
+	'g-go-back' => 'Volver',
 	'g-imagesbelow' => 'Embaixo están as súas imaxes, que serán usadas no sitio',
 	'g-large' => 'Grande',
 	'g-list-title' => 'Lista de agasallos de $1',
@@ -2296,6 +2337,7 @@ dan ubah seting untuk nonaktifkan notifikasi surel.',
  * @author Ukabia
  */
 $messages['ig'] = array(
+	'g-cancel' => 'Emekwàlà',
 	'g-large' => 'Ukwu',
 );
 
@@ -2571,6 +2613,7 @@ un donn Ding Enshtellunge ändere, öm kei Meffeilunge meih övver e-mail ze kri
 );
 
 /** Luxembourgish (Lëtzebuergesch)
+ * @author Les Meloures
  * @author Robby
  */
 $messages['lb'] = array(
@@ -2605,7 +2648,7 @@ Et gëtt dann och bäi de Benotzer geläscht déi e kritt hunn.',
 	'g-error-message-no-user' => 'De Benotzer deen Dir versicht ze kucken gëtt et net.',
 	'g-error-message-to-yourself' => 'Dir kënnt Iech net selwer e Cadeau maachen.',
 	'g-error-title' => 'Oups, do ass eppes schief gaang!',
-	'g-file-instructions' => 'Ärt Bild muss e jpeg, png oder gif (keng animéiert Gifen) sinn, a muss manner wéi 100KB grouss sinn.',
+	'g-file-instructions' => 'Äert Bild muss e jpeg, png oder gif (keng animéiert Gifen) sinn, a muss manner wéi 100KB grouss sinn.',
 	'g-from' => 'vum <a href="$1">$2</a>',
 	'g-gift' => 'Cadeau',
 	'g-gift-name' => 'Numm vum Cadeau',
@@ -3217,7 +3260,12 @@ $messages['os'] = array(
  * @author Xqt
  */
 $messages['pdc'] = array(
+	'giftmanager-public' => 'public',
+	'giftmanager-private' => 'private',
+	'g-back-link' => 'Zerrick zur Uffstelling vun $1',
+	'g-from' => 'vun <a href="$1">$2</a>',
 	'g-give-separator' => 'odder',
+	'g-go-back' => 'Geh zerrick',
 	'g-large' => 'Gross',
 	'g-main-page' => 'Haaptblatt',
 	'g-new' => 'nei',
@@ -3673,26 +3721,26 @@ e altere suas preferências para desabilitar e-mails de notificação.',
 $messages['ro'] = array(
 	'giftmanager-public' => 'public',
 	'giftmanager-private' => 'privat',
-	'g-choose-file' => 'Alegeţi fişierul:',
+	'g-choose-file' => 'Alegeți fișierul:',
 	'g-cancel' => 'Revocare',
-	'g-create-gift' => 'Creaţi cadou',
+	'g-create-gift' => 'Creați cadou',
 	'g-created-by' => 'creat de',
 	'g-current-image' => 'Imagine actuală',
-	'g-error-do-not-own' => 'Nu deţineţi acest cadou.',
-	'g-error-message-blocked' => 'Sunteţi în prezent blocat şi nu puteţi da cadouri',
+	'g-error-do-not-own' => 'Nu dețineți acest cadou.',
+	'g-error-message-blocked' => 'Sunteți în prezent blocat și nu puteți da cadouri',
 	'g-error-message-invalid-link' => 'Legătura introdusă nu este corectă.',
-	'g-error-message-login' => 'Trebuie să vă autentificaţi pentru a da cadouri',
-	'g-error-message-no-user' => 'Utilizatorul pe care încercaţi să îl vizualizaţi nu există.',
-	'g-error-message-to-yourself' => 'Nu vă puteţi da un cadou dumneavoastră.',
+	'g-error-message-login' => 'Trebuie să vă autentificați pentru a da cadouri',
+	'g-error-message-no-user' => 'Utilizatorul pe care încercați să îl vizualizați nu există.',
+	'g-error-message-to-yourself' => 'Nu vă puteți da un cadou dumneavoastră.',
 	'g-from' => 'de la <a href="$1">$2</a>',
 	'g-gift' => 'cadou',
 	'g-gift-name' => 'numele cadoului',
-	'g-give-gift' => 'Daţi cadoul',
+	'g-give-gift' => 'Dați cadoul',
 	'g-give-all-message-title' => 'Adaugă un mesaj',
-	'g-give-all-title' => 'Daţi un cadou lui $1',
-	'g-give-list-select' => 'alegeţi un prieten',
+	'g-give-all-title' => 'Dați un cadou lui $1',
+	'g-give-list-select' => 'alegeți un prieten',
 	'g-give-separator' => 'sau',
-	'g-go-back' => 'Mergeţi înapoi',
+	'g-go-back' => 'Mergeți înapoi',
 	'g-large' => 'Mare',
 	'g-list-title' => 'lista de cadouri a lui $1',
 	'g-main-page' => 'Pagina principală',
@@ -3702,13 +3750,13 @@ $messages['ro'] = array(
 	'g-next' => 'Următorul',
 	'g-previous' => 'Prec',
 	'g-remove' => 'Eliminare',
-	'g-remove-gift' => 'Eliminaţi acest cadou',
-	'g-remove-title' => 'Eliminaţi "$1"?',
+	'g-remove-gift' => 'Eliminați acest cadou',
+	'g-remove-title' => 'Eliminați "$1"?',
 	'g-send-gift' => 'Trimitere cadou',
-	'g-select-a-friend' => 'selectaţi un prieten',
+	'g-select-a-friend' => 'selectați un prieten',
 	'g-small' => 'Mic',
-	'g-uploadsuccess' => 'Încărcare reuşită',
-	'g-viewgiftlist' => 'Vedeţi lista de cadouri',
+	'g-uploadsuccess' => 'Încărcare reușită',
+	'g-viewgiftlist' => 'Vedeți lista de cadouri',
 	'g-your-profile' => 'Profilul dvs.',
 );
 
@@ -4115,6 +4163,7 @@ I već će biti poslat.',
 );
 
 /** Swedish (Svenska)
+ * @author Dafer45
  * @author Per
  */
 $messages['sv'] = array(
@@ -4171,6 +4220,7 @@ Så enkelt är det.',
 	'g-large' => 'Stor',
 	'g-list-title' => '$1s presentlista',
 	'g-main-page' => 'Huvudsidan',
+	'g-medium' => 'Medium',
 	'g-new' => 'ny',
 	'g-next' => 'Nästa',
 	'g-previous' => 'Föregående',
@@ -4558,6 +4608,13 @@ $messages['vep'] = array(
  */
 $messages['vi'] = array(
 	'g-cancel' => 'Hủy bỏ',
+);
+
+/** Kalmyk (Хальмг)
+ * @author Huuchin
+ */
+$messages['xal'] = array(
+	'g-main-page' => 'Нүр халх',
 );
 
 /** Yiddish (ייִדיש)

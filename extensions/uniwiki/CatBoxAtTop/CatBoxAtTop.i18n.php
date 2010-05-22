@@ -32,6 +32,14 @@ $messages['af'] = array(
 	'catboxattop-categories' => 'Kategorieë',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'catboxattop-desc' => 'Shton një kuti kategori të drejtë në krye të faqeve',
+	'catboxattop-categories' => 'Kategoritë',
+);
+
 /** Amharic (አማርኛ)
  * @author Codex Sinaiticus
  */
@@ -480,6 +488,13 @@ $messages['si'] = array(
 $messages['sk'] = array(
 	'catboxattop-desc' => 'Pridáva pole s kategóriami do pravého horného rohu stránok',
 	'catboxattop-categories' => 'Kategórie',
+);
+
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'catboxattop-categories' => 'Kategorije',
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))

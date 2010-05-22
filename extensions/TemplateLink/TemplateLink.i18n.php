@@ -31,6 +31,14 @@ $messages['qqq'] = array(
 	'templatelink_newtitle' => 'A page is transcluded when it is inserted by reference in an other one (a part of the source page will be referenced in the present document and so be included)',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'templatelink' => 'Lidhje Template',
+	'templatelink_desc' => 'Kjo shtrirje mund të tregojnë një template si një faqe të re',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -286,6 +294,7 @@ $messages['id'] = array(
  */
 $messages['ig'] = array(
 	'templatelink' => 'Jikodo mkpurụ ihü',
+	'templatelink_newtitle' => '$1 (jètùrù)',
 );
 
 /** Italian (Italiano)

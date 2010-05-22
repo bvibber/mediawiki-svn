@@ -31,6 +31,14 @@ $messages['af'] = array(
 	'wikiarticlefeeds_combined_description' => "Hierdie is 'n gekombineerde voer, met items vanuit verskeie bronne.",
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'wikiarticlefeeds-desc' => 'Prodhon prurjet e gjeneruara nga faqet MediaWiki',
+	'wikiarticlefeeds_combined_description' => 'Ky është një ushqim i kombinuar, që përmban artikuj nga disa burime të ushqehen.',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

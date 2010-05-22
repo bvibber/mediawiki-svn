@@ -22,8 +22,8 @@ $aliases['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'PasswordReset' => array( 'إعادة_ضبط_كلمة_السر' ),
-	'Disabledusers' => array( 'مستخدمون_معطلون' ),
+	'PasswordReset' => array( 'اعمل_پاسوورد_جديده' ),
+	'Disabledusers' => array( 'يوزرات_متعطلين' ),
 );
 
 /** Bosnian (Bosanski) */
@@ -42,6 +42,11 @@ $aliases['de'] = array(
 $aliases['dsb'] = array(
 	'PasswordReset' => array( 'Gronidło slědk stajiś' ),
 	'Disabledusers' => array( 'Znjemóžnjone wužywarje' ),
+);
+
+/** Spanish (Español) */
+$aliases['es'] = array(
+	'Disabledusers' => array( 'Usuarios deshabilitados' ),
 );
 
 /** Finnish (Suomi) */
@@ -81,7 +86,7 @@ $aliases['hr'] = array(
 
 /** Upper Sorbian (Hornjoserbsce) */
 $aliases['hsb'] = array(
-	'PasswordReset' => array( 'Hesło wróćo stajić' ),
+	'PasswordReset' => array( 'Wróćostajenje hesłow' ),
 	'Disabledusers' => array( 'Znjemóžneni wužiwarjo' ),
 );
 
@@ -139,7 +144,7 @@ $aliases['mk'] = array(
 
 /** Malayalam (മലയാളം) */
 $aliases['ml'] = array(
-	'PasswordReset' => array( 'രഹസ്യവാക്ക്‌‌പുനർക്രമീകരണം' ),
+	'PasswordReset' => array( 'രഹസ്യവാക്ക്‌‌പുനക്രമീകരണം' ),
 	'Disabledusers' => array( 'നിർജീവരാക്കിയ‌‌ഉപയോക്താക്കൾ' ),
 );
 

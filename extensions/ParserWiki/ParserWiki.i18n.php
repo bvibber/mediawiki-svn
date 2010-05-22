@@ -11,6 +11,13 @@ $messages['en'] = array(
 	'parserwiki-desc' => ' Allows to define a grammar in a wiki then use that grammar to input information to the same wiki',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'parserwiki-desc' => 'Lejon për të përcaktuar një gramatikë në një wiki atëherë përdorim që e ciklit të lartë të informatave të dhëna në të njëjtën wiki',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author Jim-by
  */
@@ -73,6 +80,13 @@ $messages['gsw'] = array(
  */
 $messages['hsb'] = array(
 	'parserwiki-desc' => 'Zmóžnja gramatiku we wikiju definować, zo by so ta gramatika wužiwało, zo bychu so informacije do samsneho wikija a zapodali',
+);
+
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'parserwiki-desc' => 'Lehetővé teszi nyelvtan definiálását egy wikin, majd ezen nyelvtan használatával információk bevitelét ugyanazon a wikin',
 );
 
 /** Interlingua (Interlingua)

@@ -17,7 +17,7 @@ $aliases['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'StalePages' => array( 'صفحات_ميتة' ),
+	'StalePages' => array( 'صفح_معفنه' ),
 );
 
 /** Persian (فارسی) */

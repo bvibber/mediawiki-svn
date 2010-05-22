@@ -48,19 +48,19 @@ $aliases['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'AddRelationship' => array( 'إضافة_علاقة' ),
-	'PopulateUserProfiles' => array( 'ملء_ملفات_المستخدمين' ),
-	'RemoveAvatar' => array( 'إزالة_أفاتر' ),
-	'RemoveRelationship' => array( 'إزالة_علاقة' ),
-	'SendBoardBlast' => array( 'إرسال_بورد_بلاست' ),
-	'TopFansByStatistic' => array( 'أعلى_المعجبين_بواسطة_الإحصاءات' ),
-	'TopUsers' => array( 'أعلى_المستخدمين' ),
-	'TopUsersRecent' => array( 'أحدث_أعلى_المستخدمين' ),
-	'ToggleUserPage' => array( 'تغيير_صفحة_المستخدم' ),
-	'UpdateEditCounts' => array( 'تحديث_عدادات_التعديلات' ),
-	'UpdateProfile' => array( 'تحديث_الملف' ),
-	'UploadAvatar' => array( 'رفع_أفاتر' ),
-	'UserBoard' => array( 'مجلس_المستخدم' ),
+	'AddRelationship' => array( 'زود_علاقه' ),
+	'PopulateUserProfiles' => array( 'املى_فايلات_اليوزرات' ),
+	'RemoveAvatar' => array( 'شيل_Avatar' ),
+	'RemoveRelationship' => array( 'شيل_علاقه' ),
+	'SendBoardBlast' => array( 'ابعت_Board_Blast' ),
+	'TopFansByStatistic' => array( 'اعلا_المعجبين_بالاحصائيات' ),
+	'TopUsers' => array( 'اعلا_يوزرات' ),
+	'TopUsersRecent' => array( 'اجدد_اعلا_يوزرات' ),
+	'ToggleUserPage' => array( 'تغيير_صفحة_يوزر' ),
+	'UpdateEditCounts' => array( 'تحديث_عد_التعديلات' ),
+	'UpdateProfile' => array( 'تحديث_الپروفايل' ),
+	'UploadAvatar' => array( 'أپلود_Avatar' ),
+	'UserBoard' => array( 'لوحة_اليوزر' ),
 	'ViewRelationshipRequests' => array( 'عرض_طلبات_العلاقات' ),
 	'ViewRelationships' => array( 'عرض_العلاقات' ),
 );
@@ -236,6 +236,7 @@ $aliases['ml'] = array(
 	'RemoveAvatar' => array( 'അവതാരം ഒഴിവാക്കുക' ),
 	'RemoveRelationship' => array( 'ബന്ധം ഒഴിവാക്കുക' ),
 	'TopUsers' => array( 'ഉന്നത‌‌ഉപയോക്താക്കൾ' ),
+	'UpdateEditCounts' => array( 'തിരുത്തലുകളുടെയെണ്ണംപുതുക്കുക' ),
 	'UploadAvatar' => array( 'അപ്‌‌ലോഡ്അവതാരം' ),
 	'ViewRelationships' => array( 'ബന്ധങ്ങൾ കാണുക' ),
 );
@@ -306,6 +307,7 @@ $aliases['no'] = array(
 	'UpdateEditCounts' => array( 'Oppdater redigeringsantall' ),
 	'UpdateProfile' => array( 'Oppdater profil' ),
 	'UploadAvatar' => array( 'Oppdater profilbilde' ),
+	'UserBoard' => array( 'Brukerstyre' ),
 	'ViewRelationshipRequests' => array( 'Vis relasjonsforespørsel' ),
 	'ViewRelationships' => array( 'Vis relasjoner' ),
 );

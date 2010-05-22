@@ -1347,15 +1347,15 @@ $messages['pt-br'] = array(
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
-	'duplicator-options' => 'Opţiuni',
+	'duplicator-options' => 'Opțiuni',
 	'duplicator-source' => 'Sursă:',
-	'duplicator-dest' => 'Destinaţie:',
-	'duplicator-dotalk' => 'Duplică pagina de discuţii (dacă este cazul)',
+	'duplicator-dest' => 'Destinație:',
+	'duplicator-dotalk' => 'Duplică pagina de discuții (dacă este cazul)',
 	'duplicator-submit' => 'Duplică',
 	'duplicator-summary' => 'Copiat de la [[$1]]',
 	'duplicator-success-revisions' => '$1 {{PLURAL:$1|versiune a fost|versiuni au fost}} copiate.',
-	'duplicator-success-talkcopied' => 'A fost copiată şi pagina de discuţii.',
-	'duplicator-success-talknotcopied' => 'Pagina de discuţii nu a putut fi copiată.',
+	'duplicator-success-talkcopied' => 'A fost copiată și pagina de discuții.',
+	'duplicator-success-talknotcopied' => 'Pagina de discuții nu a putut fi copiată.',
 	'duplicator-failed' => 'Pagina nu a putut fi duplicată.
 A apărut o eroare necunoscută.',
 );

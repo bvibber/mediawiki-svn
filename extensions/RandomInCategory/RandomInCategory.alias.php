@@ -40,6 +40,11 @@ $aliases['dsb'] = array(
 	'RandomInCategory' => array( 'Pśipadny bok w kategoriji' ),
 );
 
+/** Spanish (Español) */
+$aliases['es'] = array(
+	'RandomInCategory' => array( 'Aleatorio en categoría' ),
+);
+
 /** Finnish (Suomi) */
 $aliases['fi'] = array(
 	'RandomInCategory' => array( 'Satunnainen sivu luokasta' ),

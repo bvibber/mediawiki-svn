@@ -21,7 +21,7 @@ $aliases['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'SecurePoll' => array( 'اقتراع_آمن' ),
+	'SecurePoll' => array( 'استطلاع_رأى_امان' ),
 );
 
 /** Czech (Česky) */
@@ -52,6 +52,11 @@ $aliases['frp'] = array(
 /** Hebrew (עברית) */
 $aliases['he'] = array(
 	'SecurePoll' => array( 'הצבעה_מאובטחת' ),
+);
+
+/** Croatian (Hrvatski) */
+$aliases['hr'] = array(
+	'SecurePoll' => array( 'Sigurno_glasovanje' ),
 );
 
 /** Upper Sorbian (Hornjoserbsce) */

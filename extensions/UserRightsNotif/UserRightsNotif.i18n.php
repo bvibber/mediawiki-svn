@@ -59,6 +59,17 @@ $2',
 	'userrightsnotif-desc' => 'E-pos kennisgewing aan gebruikers sodra gebruikersregte verander',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'userrightsnotifysubject' => 'Grupi ndryshojë anëtarësimi në $1',
+	'userrightsnotifybody' => 'Përshëndetje $1. Kjo është për të ju informuar se grupi i anëtarësisë suaj në $2 u ndryshuar nga $3 më $4. Added: $5 Removed: $6  Lidhur me,
+
+$2',
+	'userrightsnotif-desc' => 'dërgon lajmërim me e-mail përdoruesve të mbi të drejtat e ndryshimeve',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author ترجمان05

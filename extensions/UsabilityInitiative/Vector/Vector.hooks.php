@@ -16,13 +16,13 @@ class VectorHooks {
 			array( 'src' => 'Modules/CollapsibleTabs/CollapsibleTabs.js', 'version' => 8 ),
 			array( 'src' => 'Modules/EditWarning/EditWarning.js', 'version' => 8 ),
 			array( 'src' => 'Modules/FooterCleanup/FooterCleanup.js', 'version' => 5 ),
-			array( 'src' => 'Modules/SimpleSearch/SimpleSearch.js', 'version' => 9 ),
+			array( 'src' => 'Modules/SimpleSearch/SimpleSearch.js', 'version' => 11 ),
 		),
 		'combined' => array(
-			array( 'src' => 'Vector.combined.js', 'version' => 29 ),
+			array( 'src' => 'Vector.combined.js', 'version' => 31 ),
 		),
 		'minified' => array(
-			array( 'src' => 'Vector.combined.min.js', 'version' => 29 ),
+			array( 'src' => 'Vector.combined.min.js', 'version' => 31 ),
 		),
 	);
 	static $modules = array(
@@ -137,15 +137,11 @@ class VectorHooks {
 				basename( dirname( __FILE__ ) ) . '/' . $script['src'], $script['version']
 			);
 		}
-		// Preferences (maybe the UsabilityInitiative class could do most of this for us?)
-		$wgOut->addScript(
-			Xml::tags(
-				'script',
-				array( 'type' => $wgJsMimeType ),
-				'var wgVectorPreferences = ' . FormatJson::encode( $preferences, true ) . ";\n" .
-				'var wgVectorEnabledModules = ' . FormatJson::encode( $enabledModules, true ) . ';'
-			)
-		);
+		// Preferences
+		UsabilityInitiativeHooks::addVariables( array(
+			'wgVectorPreferences' => $preferences,
+			'wgVectorEnabledModules' => $enabledModules,
+		) );
 		return true;
 	}
 	

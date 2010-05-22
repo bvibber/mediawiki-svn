@@ -29,6 +29,13 @@ $messages['af'] = array(
 	'jskit-desc' => 'Integreer "js-kit" met wikiblaaie',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'jskit-desc' => 'Js-kit integron mjete mbi një faqe wiki',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

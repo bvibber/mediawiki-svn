@@ -21,7 +21,7 @@ $aliases['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'Watchers' => array( 'مراقبون' ),
+	'Watchers' => array( 'مراقبين' ),
 );
 
 /** Breton (Brezhoneg) */
@@ -202,5 +202,10 @@ $aliases['tr'] = array(
 /** Vèneto (Vèneto) */
 $aliases['vec'] = array(
 	'Watchers' => array( 'Osservadori' ),
+);
+
+/** Yiddish (ייִדיש) */
+$aliases['yi'] = array(
+	'Watchers' => array( 'אויפפאסער' ),
 );
 

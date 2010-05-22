@@ -751,7 +751,7 @@ Tu pote [[Special:Search/{{PAGENAME}}|cercar le titulo de iste pagina]] in alter
 o [{{fullurl:{{FULLPAGENAME}}|action=edit}} modificar iste pagina].',
 'noarticletext-nopermission'       => 'Al momento il non ha texto in iste pagina.
 Tu pote [[Special:Search/{{PAGENAME}}|cercar le titulo de iste pagina]] in altere paginas,
-o <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} cercar in le registros pertinente].',
+o <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}} cercar in le registros pertinente].</span>',
 'userpage-userdoesnotexist'        => 'Le conto de usator "$1" non es registrate. Per favor verifica que tu vole crear/modificar iste pagina.',
 'userpage-userdoesnotexist-view'   => 'Le conto de usator "$1" non es registrate.',
 'blocked-notice-logextract'        => 'Iste usator es actualmente blocate.
@@ -1582,6 +1582,11 @@ JD # Jenoptik
 MGP # Pentax
 PICT # misc.
  #</pre> <!-- non modificar de alcun modo iste linea -->',
+'upload-successful-msg'       => 'Tu file incargate es disponibile a: $1',
+'upload-failure-subj'         => 'Problema de incargamento',
+'upload-failure-msg'          => 'Il ha occurrite un problema con tu incargamento:
+
+$1',
 
 'upload-proto-error'        => 'Protocollo incorrecte',
 'upload-proto-error-text'   => 'Le incargamento remote require que le adresses URL comencia con <code>http://</code> o <code>ftp://</code>.',
@@ -1985,6 +1990,10 @@ como le adresse del expeditor del e-mail, de modo que le destinatario pote respo
 'emailsent'            => 'E-mail inviate',
 'emailsenttext'        => 'Tu message de e-mail ha essite inviate.',
 'emailuserfooter'      => 'Iste e-mail esseva inviate per $1 a $2 con le function "Inviar e-mail al usator" a {{SITENAME}}.',
+
+# User Messenger
+'usermessage-summary' => 'Lassante un message de systema.',
+'usermessage-editor'  => 'Messagero del systema',
 
 # Watchlist
 'watchlist'            => 'Mi observatorio',
@@ -2582,6 +2591,7 @@ Salveguarda lo in tu computator e incarga lo hic.',
 'importstart'                => 'Importation de paginas in curso…',
 'import-revision-count'      => '$1 {{PLURAL:$1|version|versiones}}',
 'importnopages'              => 'Nulle paginas a importar.',
+'imported-log-entries'       => '$1 {{PLURAL:$1|entrata|entratas}} del registro importate.',
 'importfailed'               => 'Importation fallite: <nowiki>$1</nowiki>',
 'importunknownsource'        => 'Typo del origine de importation non cognoscite',
 'importcantopen'             => 'Impossibile aperir le file de importation',
@@ -3248,16 +3258,16 @@ Per favor confirma que tu realmente vole recrear iste pagina.",
 'watchlistedit-noitems'        => 'Tu observatorio contine nulle titulos.',
 'watchlistedit-normal-title'   => 'Modificar observatorio',
 'watchlistedit-normal-legend'  => 'Eliminar titulos del observatorio',
-'watchlistedit-normal-explain' => 'Le titulos in tu observatorio se monstra infra.
-Pro eliminar un titulo, marca le quadrato correspondente, e clicca "Eliminar titulos".
+'watchlistedit-normal-explain' => 'Le titulos in tu observatorio es monstrate hic infra.
+Pro eliminar un titulo, marca le quadrato correspondente, e clicca "{{int:Watchlistedit-normal-submit}}".
 Tu pote etiam [[Special:Watchlist/raw|modificar le lista in forma crude]].',
 'watchlistedit-normal-submit'  => 'Eliminar titulos',
 'watchlistedit-normal-done'    => '{{PLURAL:$1|1 titulo|$1 titulos}} ha essite eliminate de tu observatorio:',
 'watchlistedit-raw-title'      => 'Modification del observatorio in forma crude',
 'watchlistedit-raw-legend'     => 'Modification del observatorio in forma de un lista simple de titulos',
-'watchlistedit-raw-explain'    => 'Le titulos in tu observatorio se monstra infra, e tu pote adder e eliminar entratas del lista;
+'watchlistedit-raw-explain'    => 'Le titulos in tu observatorio es monstrate hic infra, e pote esser modificate per adder e eliminar entratas del lista;
 un titulo per linea.
-Quando tu ha finite, clicca "Actualisar observatorio".
+Quando tu ha finite, clicca super "{{int:Watchlistedit-raw-submit}}".
 Tu pote etiam [[Special:Watchlist/edit|usar le editor standard]].',
 'watchlistedit-raw-titles'     => 'Titulos:',
 'watchlistedit-raw-submit'     => 'Actualisar observatorio',

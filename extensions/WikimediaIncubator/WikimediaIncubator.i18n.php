@@ -119,6 +119,28 @@ $messages['af'] = array(
 	'randombytest-nopages' => 'Daar is geen bladsye in jou toetswiki in die $1-naamruimte nie.',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'wminc-desc' => 'Sistemi Test wiki për Wikimedia Inkubatori',
+	'wminc-viewuserlang' => 'Kërkoni gjuhën e përdoruesit dhe wiki provë',
+	'wminc-viewuserlang-user' => 'Emri i përdoruesit:',
+	'wminc-viewuserlang-go' => 'Shkoj',
+	'wminc-testwiki' => 'wiki Test:',
+	'wminc-testwiki-none' => 'Asnjë / Të gjitha',
+	'wminc-prefinfo-language' => 'Gjuha juaj interface - të pavarur nga testin tuaj wiki',
+	'wminc-prefinfo-code' => 'Kodi i gjuhës ISO 639',
+	'wminc-prefinfo-project' => 'Zgjidhni projekti Wikimedia (opsion Inkubatori është për përdoruesit që bëjnë punë të përgjithshme)',
+	'wminc-prefinfo-error' => 'Ju zgjedhur një projekt që ka nevojë për një kod gjuhë.',
+	'wminc-warning-unprefixed' => "'''Kujdes:''' faqe që janë të redaktimi është unprefixed!",
+	'wminc-warning-suggest' => 'Ju mund të krijoni një faqe në [[$1]].',
+	'wminc-warning-suggest-move' => 'Ju mund ta [{{fullurl:Special:MovePage/$3|wpNewTitle=$2}} masë këtë faqe për $1].',
+	'right-viewuserlang' => 'Shikoni [[Special:ViewUserLang|gjuhën përdoruesit dhe provë wiki]]',
+	'randombytest' => 'faqe të rastësishme nga wiki provë',
+	'randombytest-nopages' => 'Nuk ka faqe në wiki në provim, në hapësirën: $1.',
+);
+
 /** Arabic (العربية)
  * @author Ciphers
  * @author Meno25
@@ -1265,14 +1287,14 @@ $messages['ro'] = array(
 	'wminc-viewuserlang-user' => 'Nume de utilizator:',
 	'wminc-viewuserlang-go' => 'Du-te',
 	'wminc-testwiki' => 'Wikia test:',
-	'wminc-testwiki-none' => 'Niciunul/Toţi',
-	'wminc-prefinfo-language' => 'Limba interfeţei dumneavoastră - independentă de wikia test',
+	'wminc-testwiki-none' => 'Niciunul/Toți',
+	'wminc-prefinfo-language' => 'Limba interfeței dumneavoastră - independentă de wikia test',
 	'wminc-prefinfo-code' => 'Limbajul cod ISO 639',
-	'wminc-prefinfo-error' => 'Aţi selectat un proiect care are nevoie de un cod al limbajului.',
-	'wminc-warning-unprefixed' => "'''Avertisment:''' Pagina pe care o editaţi nu este prefixată!",
-	'wminc-warning-suggest' => 'Puteţi crea o pagină la [[$1]].',
-	'wminc-warning-suggest-move' => 'Puteţi [{{fullurl:Special:MovePage/$3|wpNewTitle=$2}} muta această pagină la $1].',
-	'right-viewuserlang' => 'Vizualizează [[Special:ViewUserLang|limba utilizatorului şi wikia test]]',
+	'wminc-prefinfo-error' => 'Ați selectat un proiect care are nevoie de un cod al limbajului.',
+	'wminc-warning-unprefixed' => "'''Avertisment:''' Pagina pe care o editați nu este prefixată!",
+	'wminc-warning-suggest' => 'Puteți crea o pagină la [[$1]].',
+	'wminc-warning-suggest-move' => 'Puteți [{{fullurl:Special:MovePage/$3|wpNewTitle=$2}} muta această pagină la $1].',
+	'right-viewuserlang' => 'Vizualizează [[Special:ViewUserLang|limba utilizatorului și wikia test]]',
 );
 
 /** Tarandíne (Tarandíne)
@@ -1355,6 +1377,15 @@ $messages['sah'] = array(
 	'wminc-prefinfo-language' => 'Эн тылыҥ туруоруута тургутар биикигиттэн тутулуга суох',
 	'wminc-prefinfo-code' => 'Тыл ISO 639 тиһилигэр анаммыт куода',
 	'wminc-prefinfo-project' => 'Бикимиэдьийэ бырайыактарыттан талыы (уопсай боппуруостарынан дьарыктаныаххын баҕарар буоллаххына Инкубаатары тал)',
+);
+
+/** Sardinian (Sardu)
+ * @author Andria
+ */
+$messages['sc'] = array(
+	'wminc-viewuserlang-user' => 'Nùmene usuàriu:',
+	'wminc-viewuserlang-go' => 'Bae',
+	'wminc-testwiki-none' => 'Nudda/Totu',
 );
 
 /** Tachelhit (Tašlḥiyt)
@@ -1688,6 +1719,7 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Horacewai2
  * @author Liangent
  * @author Shinjiman
  * @author Wrightbus
@@ -1708,5 +1740,6 @@ $messages['zh-hant'] = array(
 	'wminc-warning-suggest-move' => '您可以[{{fullurl:Special:MovePage/$3|wpNewTitle=$2}} 移動這個頁面到$1]。',
 	'right-viewuserlang' => '查看[[Special:ViewUserLang|用戶語言和測試維基]]',
 	'randombytest' => '測試維基上的隨機頁面',
+	'randombytest-nopages' => '在你的測試網頁的$1名字空間中，沒有頁面。',
 );
 

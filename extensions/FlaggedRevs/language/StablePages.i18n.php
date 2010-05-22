@@ -39,6 +39,16 @@ $messages['af'] = array(
 	'stablepages-config' => 'Voorkeure',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'stablepages' => 'Faqet e përdorur redakto miratim',
+	'stablepages-text' => 'Më poshtë është një listë e faqeve të cilat janë të kufizuara në mënyrë që përdoruesit të caktuara mund të bëjë vetëm redaktimet e që nuk kërkojnë shqyrtim. Redaktimet e tillë nuk janë botuar deri në një përdorues të autorizuar kritikat e tyre.',
+	'stablepages-none' => 'Nuk ka faqe në këtë listë.',
+	'stablepages-config' => 'Konfiguracion',
+);
+
 /** Aragonese (Aragonés)
  * @author Juanpabl
  */
@@ -146,14 +156,15 @@ $messages['cs'] = array(
 );
 
 /** German (Deutsch)
+ * @author Kghbln
  * @author MF-Warburg
  * @author Purodha
  * @author Umherirrender
  */
 $messages['de'] = array(
-	'stablepages' => 'Konfigurierte Seiten',
-	'stablepages-text' => 'Es folgt eine Liste der Seiten, die individuell konfiguriert wurden, damit diese die markierte Version als Standardinhalt für Leser anzeigen.',
-	'stablepages-none' => 'Diese Liste ist leer.',
+	'stablepages' => 'Seiten die nur mit Bearbeitungsfreigabe bearbeitet werden können',
+	'stablepages-text' => 'Es folgt eine Liste der Seiten, die nur von Benutzern bearbeitet werden können, deren Bearbeitungen keine weitere Durchsicht erfordert. Derartige Bearbeitungen werden nicht veröffentlicht bis ein entsprechend berechtigter Benutzer sie markiert.',
+	'stablepages-none' => 'Diese Liste enthält keine Seiten.',
 	'stablepages-config' => 'Konfiguration',
 );
 
@@ -591,7 +602,7 @@ $messages['pt-br'] = array(
 $messages['ro'] = array(
 	'stablepages' => 'Pagini stabile',
 	'stablepages-none' => 'Nu există pagini în această listă',
-	'stablepages-config' => 'Configuraţie',
+	'stablepages-config' => 'Configurație',
 );
 
 /** Tarandíne (Tarandíne)
@@ -784,11 +795,12 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Gaoxuewei
+ * @author Horacewai2
  * @author Shinjiman
  */
 $messages['zh-hant'] = array(
-	'stablepages' => '穩定頁面',
-	'stablepages-text' => '以下的頁面列示出一些頁面是手動地設定去顯示穩定版作為觀看者做預設頁面版內容。',
+	'stablepages' => '頁面已經通過審核',
+	'stablepages-text' => '以下的頁面列示出一些頁面是手動地設定去顯示穩定版作為觀看者做預設頁面版內容，只有指定用戶的編輯才不需要通過審核。',
 	'stablepages-none' => '沒有頁面在這個清單中',
 	'stablepages-config' => '設定',
 );

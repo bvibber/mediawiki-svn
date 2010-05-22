@@ -29,6 +29,13 @@ $messages['af'] = array(
 	'yui-desc' => 'Versameling hulpmiddels en kontroles wat in JavaScript geskryf is',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'yui-desc' => 'Një grup të shërbimeve dhe të kontrolleve, shkruar në JavaScript',
+);
+
 /** Old English (Ænglisc)
  * @author Wōdenhelm
  */
@@ -438,7 +445,7 @@ $messages['pt-br'] = array(
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
-	'yui-desc' => 'O serie de utilitzare şi controale, în JavaScript',
+	'yui-desc' => 'O serie de utilitzare și controale, în JavaScript',
 );
 
 /** Tarandíne (Tarandíne)

@@ -30,9 +30,9 @@ $aliases['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'DeleteThread' => array( 'حذف_مجموعة_الرسائل' ),
-	'MoveThread' => array( 'نقل_مجموعة_الرسائل' ),
-	'NewMessages' => array( 'رسائل_جديدة' ),
+	'DeleteThread' => array( 'مسح_جروپ_الرسايل' ),
+	'MoveThread' => array( 'نقل_جروپ_الرسايل' ),
+	'NewMessages' => array( 'رسايل_جديده' ),
 	'SplitThread' => array( 'فصل_الخيط' ),
 	'MergeThread' => array( 'دمج_الخيط' ),
 );

@@ -147,7 +147,7 @@ class SpecialAPC extends SpecialPage {
 				Xml::wrapClass( $logo, 'mw-apc-logo-outer', 'span' )
 			) .
 
-			Xml::wrapClass( '', 'mw-apc-separator', 'hr' ) .
+			Xml::element( 'hr', array( 'class' => 'mw-apc-separator' ) ) .
 			Xml::closeElement( 'div' )
 		);
 

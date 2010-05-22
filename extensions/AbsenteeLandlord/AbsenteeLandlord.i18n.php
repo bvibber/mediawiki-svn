@@ -310,6 +310,14 @@ $messages['id'] = array(
 	'absenteelandlord-desc' => 'Mengunci basis data wiki secara otomatis jika seluruh opsis tidak aktif selama periode tertentu.',
 );
 
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'absenteelandlord-reason' => 'Njikota omari nka mèchìrì maka ndi íshí emeghi bọ ihé óbulà.',
+	'absenteelandlord-desc' => 'Na gbáchí njikota omȧrı o bu na sysops eméghị ihe obula ngwa ngwa',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  */
@@ -368,11 +376,12 @@ $messages['ksh'] = array(
 );
 
 /** Luxembourgish (Lëtzebuergesch)
+ * @author Les Meloures
  * @author Robby
  */
 $messages['lb'] = array(
 	'absenteelandlord-reason' => "D'Datebank gouf automatesch gespaart well d'Administratueren net aktiv sinn.",
-	'absenteelandlord-desc' => "Spärt d'Datebank vun dëser Wiki automatesch wann d'Administrateuren alleguer eng zäitlaang net aktiv sinn.",
+	'absenteelandlord-desc' => "Späert d'Datebank vun dëser Wiki automatesch wann d'Administrateuren alleguer eng zäitlaang net aktiv sinn.",
 );
 
 /** Limburgish (Limburgs)
@@ -551,7 +560,7 @@ $messages['rif'] = array(
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
-	'absenteelandlord-reason' => 'Baza de date a fost blocată automat din cauza inactivităţii administratorilor.',
+	'absenteelandlord-reason' => 'Baza de date a fost blocată automat din cauza inactivității administratorilor.',
 	'absenteelandlord-desc' => 'Blochează automat baza de date wiki dacă administratorii sunt inactivi o perioadă de timp',
 );
 

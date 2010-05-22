@@ -1841,6 +1841,8 @@ $messages['pms'] = array(
  */
 $messages['ps'] = array(
 	'readerfeedback-overall' => 'ټولټال',
+	'readerfeedback-submit' => 'سپارل',
+	'readerfeedback-submitting' => 'د سپارلو په حال کې ...',
 	'readerfeedback-finished' => 'مننه!',
 );
 
@@ -1903,8 +1905,8 @@ $messages['pt-br'] = array(
  * @author Stelistcristi
  */
 $messages['ro'] = array(
-	'readerfeedback' => 'Ce părere aveţi despre această pagină ?',
-	'readerfeedback-text' => "''Vă rugăm luaţi-vă un moment pentru a evalua această pagină de mai jos. Feedback-ul este valoros şi ne ajută să îmbunătăţim saitul.''",
+	'readerfeedback' => 'Ce părere aveți despre această pagină ?',
+	'readerfeedback-text' => "''Vă rugăm luați-vă un moment pentru a evalua această pagină de mai jos. Feedback-ul este valoros și ne ajută să îmbunătățim saitul.''",
 	'readerfeedback-reliability' => 'Fiabilitate',
 	'readerfeedback-completeness' => 'Complet',
 	'readerfeedback-npov' => 'Neutralitate',
@@ -1917,12 +1919,12 @@ $messages['ro'] = array(
 	'readerfeedback-level-3' => 'Ridicat',
 	'readerfeedback-level-4' => 'Excelent',
 	'readerfeedback-submit' => 'Trimite',
-	'readerfeedback-main' => 'Doar conţinutul paginilor poate fi evaluat.',
-	'readerfeedback-success' => "'''Mulţumim pentru că aţi revizuit această pagină!''' ([$3 Comentarii sau întrebări?]).",
-	'readerfeedback-voted' => "'''Aţi evaluat deja această pagină''' ([$3 Comentarii sau întrebări?]).",
-	'readerfeedback-error' => "'''A apărut o eroare în timp ce era evaluată această pagină''' ([$2 vedeţi rezultatele]) ([$3 comentarii sau întrebări ?]).",
+	'readerfeedback-main' => 'Doar conținutul paginilor poate fi evaluat.',
+	'readerfeedback-success' => "'''Mulțumim pentru că ați revizuit această pagină!''' ([$3 Comentarii sau întrebări?]).",
+	'readerfeedback-voted' => "'''Ați evaluat deja această pagină''' ([$3 Comentarii sau întrebări?]).",
+	'readerfeedback-error' => "'''A apărut o eroare în timp ce era evaluată această pagină''' ([$2 vedeți rezultatele]) ([$3 comentarii sau întrebări ?]).",
 	'readerfeedback-submitting' => 'Trimit ...',
-	'readerfeedback-finished' => 'Mulţumim!',
+	'readerfeedback-finished' => 'Mulțumim!',
 	'readerfeedback-tagfilter' => 'Etichetă:',
 	'readerfeedback-tierfilter' => 'Evalutare:',
 	'readerfeedback-tier-high' => 'Ridicat',
@@ -2514,9 +2516,11 @@ $messages['zh-hans'] = array(
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Alexsh
  * @author Gaoxuewei
+ * @author Horacewai2
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
+	'readerfeedback-desc' => '頁面驗證允許讀者提供反饋的形式明確評級',
 	'readerfeedback' => '您對這個頁面有什麽意見？',
 	'readerfeedback-text' => "''請花一點時間來評價下面這個頁面。您反饋的意見將幫助我們改進我們的網站。''",
 	'readerfeedback-reliability' => '可靠性',
@@ -2544,5 +2548,6 @@ $messages['zh-hant'] = array(
 	'readerfeedback-tier-poor' => '低',
 	'tooltip-ca-ratinghist' => '本頁面的讀者評分',
 	'specialpages-group-feedback' => '瀏覽者意見',
+	'readerfeedback-tt-review' => '提交審查',
 );
 

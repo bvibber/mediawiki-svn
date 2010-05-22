@@ -88,6 +88,27 @@ $messages['af'] = array(
 	'contactpage-captcha-failed' => 'Die captcha-toets het gefaal! ([[Special:Captcha/help|meer inligting]])',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'contactpage-title' => 'Kontakt',
+	'contactpage-pagetext' => 'Ju lutem përdorni formularin e mëposhtëm për të na kontaktoni.',
+	'contactpage-legend' => 'Dergo e-mail',
+	'contactpage-defsubject' => 'mesazh Kontakt',
+	'contactpage-subject-and-sender' => '$1 (nga $2)',
+	'contactpage-subject-and-sender-withip' => '$1 (prej $2 në $3)',
+	'contactpage-fromname' => 'Emri juaj: *',
+	'contactpage-fromaddress' => 'Your e-mail: **',
+	'contactpage-formfootnotes' => '* Opcionale <br /> ** Dëshirë por e nevojshme qoftë se dëshironi një përgjigje',
+	'contactpage-fromname-required' => 'Emri juaj:',
+	'contactpage-fromaddress-required' => 'Your e-mail:',
+	'contactpage-formfootnotes-required' => 'Të gjitha fushat janë të kërkuara.',
+	'contactpage-captcha' => 'Për të dërguar mesazh, ju lutem zgjidh captcha ([[Special:Captcha/help|më shumë informacion]])',
+	'contactpage-captcha-failed' => 'Captcha test i dështuar! ([[Special:Captcha/help|më shumë informacion]])',
+	'contactpage-includeip' => 'Përfshini IP adresa ime ne kete mesazh.',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK
@@ -1580,6 +1601,7 @@ $messages['pt'] = array(
 /** Brazilian Portuguese (Português do Brasil)
  * @author Carla404
  * @author Eduardo.mps
+ * @author Giro720
  */
 $messages['pt-br'] = array(
 	'contact' => 'Página de contato',
@@ -1590,6 +1612,7 @@ $messages['pt-br'] = array(
 	'contactpage-legend' => 'Enviar e-mail',
 	'contactpage-defsubject' => 'Mensagem de Contato',
 	'contactpage-subject-and-sender' => '$1 (de $2)',
+	'contactpage-subject-and-sender-withip' => '$1 (de $2, endereço $3)',
 	'contactpage-fromname' => 'O seu nome: *',
 	'contactpage-fromaddress' => 'O seu email: **',
 	'contactpage-formfootnotes' => '* opcional<br />
@@ -1599,6 +1622,7 @@ $messages['pt-br'] = array(
 	'contactpage-formfootnotes-required' => 'Todos os campos são obrigatórios.',
 	'contactpage-captcha' => "Para enviar a mensagem, por favor, resolva o ''captcha'' ([[Special:Captcha/help|mais informação]])",
 	'contactpage-captcha-failed' => 'Teste captcha falhou! ([[Special:Captcha/help|mais informação]])',
+	'contactpage-includeip' => 'Incluir o meu endereço IP nesta mensagem.',
 );
 
 /** Romani (Romani)
@@ -1617,19 +1641,19 @@ $messages['ro'] = array(
 	'contactpage' => 'Pagină de contact',
 	'contactpage-desc' => '[[Special:Contact|Formular de contact pentru vizitatori]]',
 	'contactpage-title' => 'Contact',
-	'contactpage-pagetext' => 'Foloseşte formularul de mai jos pentru a ne contacta.',
+	'contactpage-pagetext' => 'Folosește formularul de mai jos pentru a ne contacta.',
 	'contactpage-legend' => 'Trimite e-mail',
 	'contactpage-defsubject' => 'Mesaj de contact',
 	'contactpage-subject-and-sender' => '$1 (de la $2)',
 	'contactpage-fromname' => 'Numele dumneavoastră: *',
 	'contactpage-fromaddress' => 'Adresa dumneavoastră de e-mail: **',
-	'contactpage-formfootnotes' => '* opţional<br />
-** opţională, dar necesară dacă doriţi un răspuns',
+	'contactpage-formfootnotes' => '* opțional<br />
+** opțională, dar necesară dacă doriți un răspuns',
 	'contactpage-fromname-required' => 'Numele dumneavoastră:',
 	'contactpage-fromaddress-required' => 'Adresa dumneavoastră de e-mail:',
 	'contactpage-formfootnotes-required' => 'Toate câmpurile sunt obligatorii.',
 	'contactpage-captcha' => 'Pentru a trimite mesajul, rezolvă captcha ([[Special:Captcha/help|mai multe detalii]])',
-	'contactpage-captcha-failed' => 'Testul captcha a eşuat! ([[Special:Captcha/help|mai multe informaţii]])',
+	'contactpage-captcha-failed' => 'Testul captcha a eșuat! ([[Special:Captcha/help|mai multe informații]])',
 );
 
 /** Tarandíne (Tarandíne)
@@ -1734,17 +1758,23 @@ $messages['sk'] = array(
 $messages['sl'] = array(
 	'contact' => 'Stik z nami',
 	'contactpage' => 'Stik z nami',
+	'contactpage-desc' => '[[Special:Contact|Kontaktni obrazec za obiskovalce]]',
 	'contactpage-title' => 'Kontakt',
 	'contactpage-pagetext' => 'Prosimo, uporabite spodnji obrazec za stik z nami.',
+	'contactpage-legend' => 'Pošljite e-pošto',
 	'contactpage-defsubject' => 'Kontaktno sporočilo',
 	'contactpage-subject-and-sender' => '$1 (od $2)',
+	'contactpage-subject-and-sender-withip' => '$1 (od $2 iz $3)',
 	'contactpage-fromname' => 'Vaše ime: *',
+	'contactpage-fromaddress' => 'Vaš e-poštni naslov: **',
 	'contactpage-formfootnotes' => '* izbirno<br />
 ** izbirno, vendar potrebno, če želite odgovor',
 	'contactpage-fromname-required' => 'Vaše ime:',
+	'contactpage-fromaddress-required' => 'Vaš e-poštni naslov:',
 	'contactpage-formfootnotes-required' => 'Potrebno je izpolniti vsa polja.',
 	'contactpage-captcha' => 'Za pošiljanje sporočila prosimo razrešite captcha ([[Special:Captcha/help|več informacij]])',
 	'contactpage-captcha-failed' => 'Preizkus captcha je spodletel! ([[Special:Captcha/help|več informacij]])',
+	'contactpage-includeip' => 'Vključi moj IP-naslov v tem sporočilu.',
 );
 
 /** Albanian (Shqip)
@@ -1825,6 +1855,7 @@ $messages['su'] = array(
 
 /** Swedish (Svenska)
  * @author Boivie
+ * @author Dafer45
  * @author Lejonel
  * @author M.M.S.
  * @author Najami
@@ -1848,6 +1879,7 @@ $messages['sv'] = array(
 	'contactpage-formfootnotes-required' => 'Alla fält är obligatoriska.',
 	'contactpage-captcha' => 'För att få skicka meddelandet måste du först lösa följande captcha-test ([[Special:Captcha/help|mer information]])',
 	'contactpage-captcha-failed' => 'Captcha-testet misslyckades! ([[Special:Captcha/help|mer information]])',
+	'contactpage-includeip' => 'Inkludera min IP-adress i detta meddelande.',
 );
 
 /** Telugu (తెలుగు)
@@ -2204,6 +2236,7 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Gzdavidwong
+ * @author Horacewai2
  * @author Liangent
  * @author Shinjiman
  * @author Wrightbus
@@ -2217,6 +2250,7 @@ $messages['zh-hant'] = array(
 	'contactpage-legend' => '傳送電郵',
 	'contactpage-defsubject' => '聯絡訊息',
 	'contactpage-subject-and-sender' => '$1 （自$2）',
+	'contactpage-subject-and-sender-withip' => '$1 (由$2在$3)',
 	'contactpage-fromname' => '您的名字： *',
 	'contactpage-fromaddress' => '您的郵箱：**',
 	'contactpage-formfootnotes' => '* 可選<br />
@@ -2226,5 +2260,6 @@ $messages['zh-hant'] = array(
 	'contactpage-formfootnotes-required' => '所有字段都是必需的。',
 	'contactpage-captcha' => '要傳送這個訊息，請先解決這個 captcha （[[Special:Captcha/help|更多資訊]]）',
 	'contactpage-captcha-failed' => 'Captcha 測試失敗! （[[Special:Captcha/help|更多資訊]]）',
+	'contactpage-includeip' => '在此郵件中包含我的IP位置資料。',
 );
 

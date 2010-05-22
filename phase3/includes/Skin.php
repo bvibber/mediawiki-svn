@@ -557,9 +557,7 @@ class Skin extends Linker {
 			$underline = $undopt ? 'underline' : 'none';
 			$s .= "a { text-decoration: $underline; }\n";
 		}
-		if( $wgUser->getOption( 'highlightbroken' ) ) {
-			$s .= "a.new, #quickbar a.new { color: #CC2200; }\n";
-		} else {
+		if( !$wgUser->getOption( 'highlightbroken' ) ) {
 			$s .= <<<CSS
 a.new, #quickbar a.new,
 a.stub, #quickbar a.stub {
@@ -1986,6 +1984,23 @@ CSS;
 			),
 			array( 'known', 'noclasses' )
 		);
+	}
+
+	function uploadLink() {
+		global $wgUploadNavigationUrl;
+
+		if( $wgUploadNavigationUrl ) {
+			# Using an empty class attribute to avoid automatic setting of "external" class
+			return $this->makeExternalLink( $wgUploadNavigationUrl, wfMsgHtml( 'upload' ), false, null, array( 'class' => '') );
+		} else {
+			return $this->link(
+				SpecialPage::getTitleFor('Upload'),
+				wfMsgHtml( 'upload' ),
+				array(),
+				array(),
+				array( 'known', 'noclasses' )
+			);
+		}
 	}
 
 	/* these are used extensively in SkinTemplate, but also some other places */

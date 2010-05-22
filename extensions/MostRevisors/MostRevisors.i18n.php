@@ -320,7 +320,7 @@ $messages['gl'] = array(
 	'mostrevisors-showredir' => 'Mostrar as páxinas de redirección',
 	'mostrevisors-hideredir' => 'Agochar as páxinas de redirección',
 	'mostrevisors-users' => '- $1 {{PLURAL:$1|editor|editores}}',
-	'mostrevisors-viewcontributors' => 'Ver os principais contribuíntes',
+	'mostrevisors-viewcontributors' => 'Ver os principais colaboradores',
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
@@ -627,6 +627,13 @@ $messages['oc'] = array(
 	'mostrevisors-viewcontributors' => 'Veire los contributors principals',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'mostrevisors-submit' => 'Geh los',
+);
+
 /** Polish (Polski)
  * @author Leinad
  * @author Odder
@@ -711,10 +718,10 @@ $messages['pt-br'] = array(
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
-	'mostrevisors-namespace' => 'Spaţiu de nume:',
-	'mostrevisors-submit' => 'Mergeţi',
-	'mostrevisors-showredir' => 'Arată paginile de redirecţionare',
-	'mostrevisors-hideredir' => 'Ascunde paginile de redirecţionare',
+	'mostrevisors-namespace' => 'Spațiu de nume:',
+	'mostrevisors-submit' => 'Mergeți',
+	'mostrevisors-showredir' => 'Arată paginile de redirecționare',
+	'mostrevisors-hideredir' => 'Ascunde paginile de redirecționare',
 );
 
 /** Russian (Русский)

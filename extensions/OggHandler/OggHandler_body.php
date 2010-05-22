@@ -428,7 +428,8 @@ class OggHandler extends MediaHandler {
 	function setHeaders( $out ) {
 		global $wgOggScriptVersion, $wgCortadoJarFile, $wgServer, $wgUser, $wgScriptPath;
 
-		if ( $out->hasHeadItem( 'OggHandler' ) ) {
+		if ( $out->hasHeadItem( 'OggHandlerScript' ) && $out->hasHeadItem( 'OggHandlerInlineScript' ) &&
+			$out->hasHeadItem( 'OggHandlerInlineCSS' ) ) {
 			return;
 		}
 
@@ -451,23 +452,26 @@ class OggHandler extends MediaHandler {
 		$encCortadoUrl = Xml::encodeJsVar( $cortadoUrl );
 		$encExtPathUrl = Xml::encodeJsVar( $scriptPath );
 
-		$out->addHeadItem( 'OggHandler', <<<EOT
-<script type="text/javascript" src="$scriptPath/OggPlayer.js?$wgOggScriptVersion"></script>
-<script type="text/javascript">
+		$out->addHeadItem( 'OggHandlerScript' , Html::linkedScript( "{$scriptPath}/OggPlayer.js?$wgOggScriptVersion" ) );
+
+		$out->addHeadItem( 'OggHandlerInlineScript',  Html::inlineScript( <<<EOT
+
 wgOggPlayer.msg = $jsMsgs;
 wgOggPlayer.cortadoUrl = $encCortadoUrl;
 wgOggPlayer.extPathUrl = $encExtPathUrl;
-</script>
-<style type="text/css">
+
+EOT
+) );
+		$out->addHeadItem( 'OggHandlerInlineCSS', Html::inlineStyle( <<<EOT
+
 .ogg-player-options {
 	border: solid 1px #ccc;
 	padding: 2pt;
 	text-align: left;
 	font-size: 10pt;
-}
-</style>
+
 EOT
-);
+) );
 	}
 
 	function parserTransformHook( $parser, $file ) {
@@ -602,9 +606,7 @@ class OggTransformOutput extends MediaTransformOutput {
 			'isVideo' => $this->isVideo ) );
 
 		$s = Xml::tags( 'div',
-			array(
-				'id' => $id,
-				'style' => "width: {$width}px;" ),
+			array( 'id' => $id ),
 			( $thumb ? Xml::tags( 'div', array(), $thumb ) : '' ) .
 			Xml::tags( 'div', array(),
 				Xml::tags( 'button',

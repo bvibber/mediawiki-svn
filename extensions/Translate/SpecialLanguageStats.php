@@ -26,6 +26,8 @@ class SpecialLanguageStats extends IncludableSpecialPage {
 		$this->setHeaders();
 		$this->outputHeader();
 
+		$wgOut->addExtensionStyle( TranslateUtils::assetPath( 'Translate.css' ) );
+
 		# no UI when including()
 		if ( !$this->including() ) {
 			$code = $wgRequest->getVal( 'code', $par );
@@ -81,7 +83,7 @@ class SpecialLanguageStats extends IncludableSpecialPage {
 		$out .= Xml::closeElement( 'tr' );
 
 		$out .= Xml::openElement( 'tr' );
-		$out .= Xml::openElement( 'td', array( 'class' => 'mw-input'  ) );
+		$out .= Xml::openElement( 'td', array( 'class' => 'mw-input', 'colspan' => 2 ) );
 		$out .= Xml::submitButton( wfMsg( 'allpagessubmit' ) );
 		$out .= Xml::closeElement( 'td' );
 		$out .= Xml::closeElement( 'tr' );
@@ -94,11 +96,10 @@ class SpecialLanguageStats extends IncludableSpecialPage {
 		return $out;
 	}
 
-
 	# Statistics table element (heading or regular cell)
 	function element( $in, $bgcolor = '' ) {
 		if ( $bgcolor ) {
-			$element = Xml::element( 'td', array( 'bgcolor' => "#" . $bgcolor ), $in );
+			$element = Xml::element( 'td', array( 'style' => "background-color: #" . $bgcolor ), $in );
 		} else {
 			$element = Xml::element( 'td', null, $in );
 		}
@@ -149,20 +150,16 @@ class SpecialLanguageStats extends IncludableSpecialPage {
 		$out .= Xml::openElement(
 			'table',
 			array(
-				'class' => "sortable wikitable",
-				'border' => '2',
-				'cellpadding' => '4',
-				'cellspacing' => '0',
-				'style' => "background-color: #F9F9F9; border: 1px #AAAAAA solid; border-collapse: collapse; clear:both;",
-				'width' => "100%"
+				'class' => "sortable wikitable mw-sp-translate-table"
 			)
 		);
+
 		$out .= Xml::openElement( 'tr' );
-		$out .= Xml::element( 'th', null, wfMsg( 'translate-page-group' ) );
-		$out .= Xml::element( 'th', null, wfMsg( 'translate-total' ) );
-		$out .= Xml::element( 'th', null, wfMsg( 'translate-untranslated' ) );
-		$out .= Xml::element( 'th', null, wfMsg( 'translate-percentage-complete' ) );
-		$out .= Xml::element( 'th', null, wfMsg( 'translate-percentage-fuzzy' ) );
+		$out .= Xml::element( 'th', array( 'title' => self::newlineToWordSeparator( wfMsg( 'translate-page-group-tooltip' ) ) ), wfMsg( 'translate-page-group' ) );
+		$out .= Xml::element( 'th', array( 'title' => self::newlineToWordSeparator( wfMsg( 'translate-total-tooltip' ) ) ), wfMsg( 'translate-total' ) );
+		$out .= Xml::element( 'th', array( 'title' => self::newlineToWordSeparator( wfMsg( 'translate-untranslated-tooltip' ) ) ), wfMsg( 'translate-untranslated' ) );
+		$out .= Xml::element( 'th', array( 'title' => self::newlineToWordSeparator( wfMsg( 'translate-percentage-complete-tooltip' ) ) ), wfMsg( 'translate-percentage-complete' ) );
+		$out .= Xml::element( 'th', array( 'title' => self::newlineToWordSeparator( wfMsg( 'translate-percentage-fuzzy-tooltip' ) ) ), wfMsg( 'translate-percentage-fuzzy' ) );
 		$out .= Xml::closeElement( 'tr' );
 
 		return $out;
@@ -296,5 +293,17 @@ class SpecialLanguageStats extends IncludableSpecialPage {
 		}
 
 		return $blacklisted;
+	}
+
+	private static function newlineToWordSeparator( $text ) {
+		$wordSeparator = wfMsg( 'word-separator' );
+
+		$text = strtr( $text, array(
+			"\n" => $wordSeparator,
+			"\r" => $wordSeparator,
+			"\t" => $wordSeparator,
+		) );
+
+		return $text;
 	}
 }

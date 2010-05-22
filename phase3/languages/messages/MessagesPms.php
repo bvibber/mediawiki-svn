@@ -1196,12 +1196,12 @@ A peul ëdcò serne ëd lassé che j'àutri a lo contato an soa pàgina d'utent 
 'right-autoconfirmed'         => 'Modifiché le pàgine semi-protegiùe',
 'right-bot'                   => 'Esse tratà com un process automàtich',
 'right-nominornewtalk'        => "Fé nen comparì l'avis ëd mëssagi neuv, an fasend ëd modìfiche cite a le pàgine ëd discussion",
-'right-apihighlimits'         => 'Dovré ël lìmit pì àut ant le anterogassion API',
+'right-apihighlimits'         => "Dovré ël lìmit pì àut ant j'anterogassion API",
 'right-writeapi'              => "Dovré l'API dë scritura",
-'right-delete'                => 'Scanselé pàgine',
-'right-bigdelete'             => 'Scanselé pàgine con stòrie longhe',
-'right-deleterevision'        => 'Scanselé e dëscanselé spessìfiche vërsion ëd pàgine',
-'right-deletedhistory'        => 'Vardé le revision ëd la stòria scanselà, sensa ël test associà',
+'right-delete'                => 'Scancelé dle pàgine',
+'right-bigdelete'             => 'Scancelé dle pàgine con na stòria longa',
+'right-deleterevision'        => 'Scancelé e disdëscancelé na version ëspessìfica ëd na pàgina',
+'right-deletedhistory'        => 'Vardé le revision ëscancelà ëd la stòria, sensa sò test',
 'right-deletedtext'           => 'Varda ël test scanselà e ij cambi an tra le revision scanselà',
 'right-browsearchive'         => 'Sërché pàgine scanselà',
 'right-undelete'              => 'Arcuperé na pàgina',
@@ -1459,6 +1459,11 @@ JD # Jenoptik
 MGP # Pentax
 PICT # vàire marche diferente
  #</pre> <!-- ch'a lassa sta riga-sì tanme ch'a l'é -->",
+'upload-successful-msg'       => "Lòn ch'a l'ha carià a l'é disponìbil ambelessì: $1",
+'upload-failure-subj'         => 'Problema a carié',
+'upload-failure-msg'          => "A-i é staje un problema con lòn ch'a l'ha carià:
+
+$1",
 
 'upload-proto-error'        => 'Protocòl cioch',
 'upload-proto-error-text'   => "Për carié da dij servent lontan a venta buté dj'anliure ch'as anandio për <code>http://</code> ò pura <code>ftp://</code>.",
@@ -1854,6 +1859,10 @@ L'adrëssa e-mail ch'it l'has butà an [[Special:Preferences|Ij sò gust]] a sar
 'emailsent'            => 'Messagi eletrònich mandà',
 'emailsenttext'        => "Sò messagi eletrònich a l'é stait mandà",
 'emailuserfooter'      => 'St\'e-mail-sì a l\'é stàita mandà da $1 a $2 con la fonsion "E-mail utent" a {{SITENAME}}.',
+
+# User Messenger
+'usermessage-summary' => "A l'ha lassà un mëssagi ëd sistema.",
+'usermessage-editor'  => 'Mëssagerìa ëd sistema',
 
 # Watchlist
 'watchlist'            => 'Ròba che im ten-o sot euj',
@@ -3085,14 +3094,14 @@ a podrìo ëdcò nen ess-ie ant sta lista -sì.",
 'watchlistedit-noitems'        => "A-i é pa gnun tìtol ch'as ten-a sot euj.",
 'watchlistedit-normal-title'   => "Modifiché la lista ëd lòn ch'as ten sot euj",
 'watchlistedit-normal-legend'  => "Gavé via ij tìtoj da 'nt la lista ëd lòn ch'as ten sot euj",
-'watchlistedit-normal-explain' => "Ij tìtoj ch'a l'é dapress a ten-se sot euj a son ambelessì sota. Për gavene via un ch'a-i fasa la crosëtta ant la casela ch'a l'ha aranda, e peuj ch'ai bata ansima a \"Gavé via ij titoj\". As peul ëdcò [[Special:Watchlist/raw|modifiché la lista ampressa]].",
+'watchlistedit-normal-explain' => "Ij tìtoj ch'a ten sot euj a son ësmonù ambelessì-sota. Për gavene via un ch'a-i fasa la crosëtta ant la casela ch'a l'ha aranda, e peuj ch'ai bata ansima a «{{int:Watchlistedit-normal-submit}}». As peul ëdcò [[Special:Watchlist/raw|modifiché la lista ampressa]].",
 'watchlistedit-normal-submit'  => 'Gavé via ij tìtoj',
 'watchlistedit-normal-done'    => "{{PLURAL:$1|1 tìtol a l'é|$1 tìtoj a son}} stait gavà via da 'nt la lista ëd lòn ch'as ten sot euj:",
 'watchlistedit-raw-title'      => "Modifiché ampressa la lista ëd lòn ch'as ten sot euj",
 'watchlistedit-raw-legend'     => "Modifiché ampressa la lista ëd lòn ch'as ten sot euj",
-'watchlistedit-raw-explain'    => "Ij tìtoj ch'a l'é antramentr ch'as ten sot euj a son ambelessì sota, e a peulo modifichesse
-	ën giontand-ne e gavand-ne via da 'nt la lista; un tìtol për riga. Quand a l'ha finì, ch'ai bata ansima a Agiorna la Lista.
-	As peul ëdcò [[Special:Watchlist/edit|dovré l'editor sòlit]].",
+'watchlistedit-raw-explain'    => "Ij tìtoj ch'a l'é antramentr ch'as ten sot euj a son ambelessì-sota, e a peulo modifichesse ën giontand-ne e gavand-ne via da 'nt la lista; un tìtol për riga. 
+Quand a l'ha finì, ch'a-i bata ansima a \"{{int:Watchlistedit-raw-submit}}\".
+As peul ëdcò [[Special:Watchlist/edit|dovré l'editor sòlit]].",
 'watchlistedit-raw-titles'     => 'Tìtoj:',
 'watchlistedit-raw-submit'     => 'Agiorné la Lista',
 'watchlistedit-raw-done'       => "La lista ëd lòn ch'as ten sot euj a l'é staita agiornà.",

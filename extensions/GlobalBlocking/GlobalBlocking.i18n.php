@@ -315,6 +315,35 @@ Die blokkeerlogboek word hieronder weergegee:',
 	'right-globalblock-exempt' => 'Omseil globale blokkades',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'globalblocking-desc' => '[[Special:GlobalBlock|Lejon]] IP adresat që do të [[Special:GlobalBlockList|bllokuar të gjithë të shumta wikis]]',
+	'globalblocking-block' => 'Globalisht bllokojnë një adresë IP',
+	'globalblocking-modify-intro' => 'Ju mund të përdorni këtë formular për të ndryshuar parametrat e një bllok globale.',
+	'globalblocking-block-intro' => 'Ju mund të përdorni këtë faqe për të bllokuar një adresë IP në të gjitha wikis.',
+	'globalblocking-block-reason' => 'Arsyeja:',
+	'globalblocking-block-otherreason' => 'Të tjera / arsye shtesë:',
+	'globalblocking-block-reasonotherlist' => 'arsye të tjera',
+	'globalblocking-block-reason-dropdown' => '* Bllok arsye të përbashkëta spamming Crosswiki ** ** ** Crosswiki abuzimit vandalizëm',
+	'globalblocking-block-edit-dropdown' => 'bllok arsye Edit',
+	'globalblocking-block-expiry' => 'Skadimi:',
+	'globalblocking-block-expiry-other' => 'kohë të tjera të kalimit',
+	'globalblocking-block-expiry-otherfield' => 'kohë të tjera:',
+	'globalblocking-block-legend' => 'Blloku një adresë IP globalisht',
+	'globalblocking-block-options' => 'Mundësitë e zgjedhjes:',
+	'globalblocking-block-errors' => 'blloku juaj ka qenë i pasuksesshëm, për këto {{PLURAL:$1|arsye|arsye}}:',
+	'globalblocking-block-ipinvalid' => 'Adresa IP ($1) keni hyrë është i pavlefshëm. Ju lutem vini re se ju nuk mund të hyjë në një emër përdoruesi!',
+	'globalblocking-block-expiryinvalid' => 'Skadimit të hyrë ($1) është e pavlefshme.',
+	'globalblocking-block-submit' => 'Blloko këtë adresë IP globalisht',
+	'globalblocking-modify-submit' => 'Modifiko këtë bllok globale',
+	'globalblocking-block-success' => 'IP adresa $1 u bllokua me sukses në të gjitha projektet.',
+	'globalblocking-modify-success' => 'Blloku globale për $1 u ndryshua me sukses',
+	'globalblocking-block-successsub' => 'Global bllok i suksesshëm',
+	'globalblocking-modify-successsub' => 'Global bllok modifikuar me sukses',
+);
+
 /** Amharic (አማርኛ)
  * @author Codex Sinaiticus
  */
@@ -2699,7 +2728,7 @@ Por favor, teclee un enderezo IP válido.',
 	'globalblocking-goto-block' => 'Bloquear globalmente un enderezo IP',
 	'globalblocking-goto-unblock' => 'Retirar un bloqueo global',
 	'globalblocking-goto-status' => 'Cambiar o estado local dun bloqueo global',
-	'globalblocking-return' => 'Voltar á lista de bloqueos globais',
+	'globalblocking-return' => 'Volver á lista de bloqueos globais',
 	'globalblocking-notblocked' => 'O enderezo IP ($1) que inseriu non está globalmente bloqueado.',
 	'globalblocking-unblock' => 'Retirar un bloqueo global',
 	'globalblocking-unblock-ipinvalid' => 'O enderezo IP ($1) que tecleou é inválido.
@@ -2724,11 +2753,11 @@ polo que o estado local dos bloqueos globais non pode ser modificado.',
 	'globalblocking-whitelist-dewhitelisted' => "Volveu habilitar con éxito en {{SITENAME}} o bloqueo global #$2 do enderezo IP '''$1'''.",
 	'globalblocking-whitelist-successsub' => 'O estado local foi trocado con éxito',
 	'globalblocking-whitelist-nochange' => 'Non lle fixo ningún cambio ao estado local deste bloqueo.
-[[Special:GlobalBlockList|Voltar á lista dos bloqueos globais]].',
+[[Special:GlobalBlockList|Volver á lista dos bloqueos globais]].',
 	'globalblocking-whitelist-errors' => 'O cambio do estado local dun bloqueo global fracasou {{PLURAL:$1|polo seguinte motivo|polos seguintes motivos}}:',
 	'globalblocking-whitelist-intro' => 'Pode usar este formulario para editar o estado local dun bloqueo global.
 Se un bloqueo global está deshabilitado neste wiki, os usuarios que usen o enderezo IP afectado poderán editar sen problemas.
-[[Special:GlobalBlockList|Voltar á lista dos bloqueos globais]].',
+[[Special:GlobalBlockList|Volver á lista dos bloqueos globais]].',
 	'globalblocking-blocked' => "O seu enderezo IP foi bloqueado en todos os wikis por '''\$1''' (''\$2'').
 A razón que deu foi ''\"\$3\"''. O bloqueo, ''\$4''.",
 	'globalblocking-blocked-nopassreset' => 'Non pode restablecer o contrasinal do usuario porque vostede está bloqueado globalmente.',
@@ -3720,6 +3749,13 @@ Log pemblokiran disediakan di bawah ini sebagai rujukan:',
 	'right-globalblock-exempt' => 'Tidak dikenakan pemblokiran global',
 );
 
+/** Igbo (Igbo) */
+$messages['ig'] = array(
+	'globalblocking-block-reason' => 'Mgbaghaputa:',
+	'globalblocking-unblock-reason' => 'Mgbaghaputa:',
+	'globalblocking-whitelist-reason' => 'Mgbaghaputa:',
+);
+
 /** Ido (Ido)
  * @author Malafaya
  */
@@ -4352,6 +4388,14 @@ $messages['ko'] = array(
 	'right-globalunblock' => '전체 위키에서 차단을 해제',
 	'right-globalblock-whitelist' => '로컬에서 전체 차단을 비활성화',
 	'right-globalblock-exempt' => '전체 차단을 우회',
+);
+
+/** Karachay-Balkar (Къарачай-Малкъар)
+ * @author Iltever
+ */
+$messages['krc'] = array(
+	'globalblocklist' => 'Глобал халда блокланнган IP-адреслени списогу',
+	'globalblockstatus' => 'Глобал блоклауланы локал халлары',
 );
 
 /** Colognian (Ripoarisch)
@@ -5741,6 +5785,7 @@ $messages['os'] = array(
  * @author Xqt
  */
 $messages['pdc'] = array(
+	'globalblocking-block-reasonotherlist' => 'Annerer Grund',
 	'globalblocking-block-expiry-otherfield' => 'Annre Zeit:',
 	'globalblocking-list-modify' => 'ennere',
 	'globalblocking-unblock-reason' => 'Grund:',
@@ -6253,10 +6298,10 @@ $messages['ro'] = array(
 	'globalblocking-block-expiry-other' => 'Alte termene de expirare',
 	'globalblocking-block-expiry-otherfield' => 'Alt termen:',
 	'globalblocking-block-legend' => 'Blochează global un utilizator',
-	'globalblocking-block-options' => 'Opţiuni:',
+	'globalblocking-block-options' => 'Opțiuni:',
 	'globalblocking-block-errors' => 'Blocarea nu a avut succes, din {{PLURAL:$1|următorul motiv|următoarele motive}}:',
 	'globalblocking-block-ipinvalid' => 'Adresa IP introdusă ($1) este invalidă.
-Atenţie, nu poate fi introdus un nume de utilizator!',
+Atenție, nu poate fi introdus un nume de utilizator!',
 	'globalblocking-block-expiryinvalid' => 'Data expirării introdusă ($1) este invalidă.',
 	'globalblocking-block-submit' => 'Blochează global această adresă IP',
 	'globalblocking-modify-submit' => 'Modifică această blocare globală',
@@ -6283,7 +6328,7 @@ Atenţie, nu poate fi introdus un nume de utilizator!',
 	'globalblocking-notblocked' => 'Adresa IP introdusă ($1) nu este blocată global.',
 	'globalblocking-unblock' => 'Elimină o blocare globală',
 	'globalblocking-unblock-ipinvalid' => 'Adresa IP introdusă ($1) este invalidă.
-Atenţie, nu poate fi introdus un nume de utilizator!',
+Atenție, nu poate fi introdus un nume de utilizator!',
 	'globalblocking-unblock-legend' => 'Elimină o blocare globală',
 	'globalblocking-unblock-submit' => 'Elimină blocare globală',
 	'globalblocking-unblock-reason' => 'Motiv:',
@@ -6747,6 +6792,13 @@ $messages['sk'] = array(
 	'globalblocking-modify-intro' => 'Tento formulár môžete použiť na zmenu nastavení globálneho blokovania.',
 	'globalblocking-block-intro' => 'Táto stránka slúži na zablokovanie IP adresy na všetkých wiki.',
 	'globalblocking-block-reason' => 'Dôvod blokovania:',
+	'globalblocking-block-otherreason' => 'Iný/ďalší dôvod:',
+	'globalblocking-block-reasonotherlist' => 'Iný dôvod',
+	'globalblocking-block-reason-dropdown' => '* Bežné dôvody blokovania
+** Spam na viacerých wiki
+** Zneužitie na viacerých wiki
+** Vandalizmus',
+	'globalblocking-block-edit-dropdown' => 'Upraviť dôvody blokovania',
 	'globalblocking-block-expiry' => 'Vypršanie blokovania:',
 	'globalblocking-block-expiry-other' => 'Iný čas vypršania',
 	'globalblocking-block-expiry-otherfield' => 'Iný čas:',
@@ -6842,9 +6894,19 @@ Dolu je pre informáciu záznam blokovaní:',
 );
 
 /** Slovenian (Slovenščina)
+ * @author Dbc334
  * @author Smihael
  */
 $messages['sl'] = array(
+	'globalblocking-block' => 'Globalno blokiraj IP-naslov',
+	'globalblocking-block-reason' => 'Razlog:',
+	'globalblocking-block-otherreason' => 'Drug/dodaten razlog:',
+	'globalblocking-block-reasonotherlist' => 'Drug razlog',
+	'globalblocking-block-legend' => 'Blokiraj IP-naslov globalno',
+	'globalblocking-block-submit' => 'Blokiraj ta IP-naslov globalno',
+	'globalblocking-list' => 'Seznam globalno blokiranih IP-naslovov',
+	'globalblocking-goto-block' => 'Globalno blokiraj IP-naslov',
+	'globalblocking-whitelist-reason' => 'Razlog:',
 	'globalblocking-block2-logentry' => 'globalno blokiran uporabnik [[$1]] ($2)',
 );
 
@@ -7999,6 +8061,11 @@ $messages['vi'] = array(
 	'globalblocking-block-reason' => 'Lý do cấm:',
 	'globalblocking-block-otherreason' => 'Lý do khác/bổ sung:',
 	'globalblocking-block-reasonotherlist' => 'Lý do khác',
+	'globalblocking-block-reason-dropdown' => '* Lý do cấm thường gặp
+** Spam các wiki
+** Lạm dụng các wiki
+** Phá hoại',
+	'globalblocking-block-edit-dropdown' => 'Sửa đổi các lý do cấm',
 	'globalblocking-block-expiry' => 'Hết hạn cấm:',
 	'globalblocking-block-expiry-other' => 'Thời gian hết hạn khác',
 	'globalblocking-block-expiry-otherfield' => 'Thời hạn khác:',
@@ -8410,6 +8477,7 @@ $1',
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Alexsh
  * @author Gaoxuewei
+ * @author Horacewai2
  * @author Mark85296341
  * @author Shinjiman
  */
@@ -8418,8 +8486,15 @@ $messages['zh-hant'] = array(
 	'globalblocking-block' => '全域封鎖一個IP地址',
 	'globalblocking-modify-intro' => '您可以使用本表單改變全域封鎖的設置。',
 	'globalblocking-block-intro' => '您可以用這個頁面去封鎖全部wiki中的一個IP地址。',
-	'globalblocking-block-reason' => '封鎖的理由:',
-	'globalblocking-block-expiry' => '封鎖到期:',
+	'globalblocking-block-reason' => '封鎖的原因:',
+	'globalblocking-block-otherreason' => '其它／附加的理由：',
+	'globalblocking-block-reasonotherlist' => '其它理由',
+	'globalblocking-block-reason-dropdown' => '* 一般封禁原因
+** 跨維基破壞
+** 跨維基濫用
+** 破壞',
+	'globalblocking-block-edit-dropdown' => '編輯查封原因',
+	'globalblocking-block-expiry' => '封鎖到期日:',
 	'globalblocking-block-expiry-other' => '其它的到期時間',
 	'globalblocking-block-expiry-otherfield' => '其它時間:',
 	'globalblocking-block-legend' => '全域封鎖一個IP地址',

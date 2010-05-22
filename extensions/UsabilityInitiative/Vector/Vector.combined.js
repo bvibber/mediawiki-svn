@@ -335,7 +335,8 @@ $j(document).ready( function() {
 				$textbox.closest( 'form' ).submit();
 			}
 		},
-		delay: 120
+		delay: 120,
+		positionFromLeft: $j( 'body' ).is( '.rtl' )
 	} );
 	$j( '#searchInput' ).suggestions( {
 		result: {

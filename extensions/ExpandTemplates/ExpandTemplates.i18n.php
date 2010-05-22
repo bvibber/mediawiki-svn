@@ -918,6 +918,11 @@ $messages['id'] = array(
 	'expand_templates_preview' => 'Pratayang',
 );
 
+/** Igbo (Igbo) */
+$messages['ig'] = array(
+	'expand_templates_ok' => 'Ngwanu',
+);
+
 /** Ido (Ido)
  * @author Malafaya
  */
@@ -1119,6 +1124,13 @@ $messages['ko'] = array(
 	'expand_templates_remove_nowiki' => '결과에서 <nowiki> 태그를 숨기기',
 	'expand_templates_generate_xml' => 'XML 구문 트리 보기',
 	'expand_templates_preview' => '미리보기',
+);
+
+/** Karachay-Balkar (Къарачай-Малкъар)
+ * @author Iltever
+ */
+$messages['krc'] = array(
+	'expandtemplates' => 'Шаблонланы ачыу',
 );
 
 /** Kinaray-a (Kinaray-a)
@@ -1555,7 +1567,7 @@ $messages['ps'] = array(
 	'expandtemplates' => 'کينډۍ غځول',
 	'expand_templates_input' => 'ځايونکی متن:',
 	'expand_templates_output' => 'پايله',
-	'expand_templates_ok' => 'ښه/هو',
+	'expand_templates_ok' => 'ښه',
 	'expand_templates_preview' => 'مخکتنه',
 );
 
@@ -1621,9 +1633,9 @@ $messages['qu'] = array(
  */
 $messages['ro'] = array(
 	'expandtemplates' => 'Expandarea formatelor',
-	'expandtemplates-desc' => '[[Special:ExpandTemplates|Expandează formatele, funcţiile parser şi variabilele]] pentru a vedea expandat textul wiki şi pentru a previzualiza modul de redare a paginii',
+	'expandtemplates-desc' => '[[Special:ExpandTemplates|Expandează formatele, funcțiile parser și variabilele]] pentru a vedea expandat textul wiki și pentru a previzualiza modul de redare a paginii',
 	'expand_templates_output' => 'Rezultat',
-	'expand_templates_xml_output' => 'Ieşire XML',
+	'expand_templates_xml_output' => 'Ieșire XML',
 	'expand_templates_ok' => 'OK',
 	'expand_templates_remove_comments' => 'Elimină comentarii',
 	'expand_templates_generate_xml' => 'Arată arborele analiză XML',

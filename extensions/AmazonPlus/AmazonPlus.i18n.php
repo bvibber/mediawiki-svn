@@ -93,6 +93,27 @@ $messages['af'] = array(
 	'amazonplus-less' => 'minder',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'amazonplus-desc' => 'Një shtrirje shumë të përshtatshëm për të shfaqur informacion Amazon',
+	'amazonplus-nores' => 'Gabim: Nuk gjeti asnjë rezultat!',
+	'amazonplus-noidres' => 'Gabim: Nuk arrij të gjej një produkt ID!',
+	'amazonplus-fgcerr' => 'Gabim: Nuk mund të marrim të dhëna nga Amazon!',
+	'amazonplus-slserr' => 'Gabim: I pamundur analizimi i të dhënave nga Amazon!',
+	'amazonplus-used' => 'përdorur',
+	'amazonplus-german' => 'Gjermanisht',
+	'amazonplus-french' => 'Frëngjisht',
+	'amazonplus-japanese' => 'Japonisht',
+	'amazonplus-amazon' => 'Çmimi Amazon',
+	'amazonplus-new' => 'i ri',
+	'amazonplus-none' => 'Nuk ka kopje e këtij elementi për shitje.',
+	'amazonplus-cp-none' => 'Asnjë',
+	'amazonplus-more' => 'më shumë',
+	'amazonplus-less' => 'më pak',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK
@@ -700,6 +721,11 @@ $messages['id'] = array(
 	'amazonplus-less' => 'kurang',
 );
 
+/** Igbo (Igbo) */
+$messages['ig'] = array(
+	'amazonplus-more' => 'dikarírí',
+);
+
 /** Italian (Italiano)
  * @author Pietrodn
  */
@@ -1146,7 +1172,7 @@ $messages['ro'] = array(
 	'amazonplus-german' => 'germană',
 	'amazonplus-french' => 'franceză',
 	'amazonplus-japanese' => 'japoneză',
-	'amazonplus-amazon' => 'preţul amazon',
+	'amazonplus-amazon' => 'prețul amazon',
 	'amazonplus-new' => 'nou',
 	'amazonplus-cp-none' => 'Nimic',
 );

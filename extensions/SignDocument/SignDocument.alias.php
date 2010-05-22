@@ -25,8 +25,8 @@ $aliases['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'SignDocument' => array( 'توقيع_الوثيقة' ),
-	'CreateSignDocument' => array( 'إنشاء_توقيع_الوثيقة' ),
+	'SignDocument' => array( 'امضى_الوثيقه' ),
+	'CreateSignDocument' => array( 'اعمل_امضة_الوثيقه' ),
 );
 
 /** Bosnian (Bosanski) */

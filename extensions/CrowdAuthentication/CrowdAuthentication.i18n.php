@@ -23,6 +23,13 @@ $messages['qqq'] = array(
 '''''Atlassian Crowd''''' is a proper noun and should not be translated.",
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'crowdauthentication-desc' => 'plugin Authentication për Atlassian turmë',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

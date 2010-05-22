@@ -22,7 +22,7 @@ $aliases['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'DeleteBatch' => array( 'حذف_الباتش' ),
+	'DeleteBatch' => array( 'مشح_الBatch' ),
 );
 
 /** Bosnian (Bosanski) */
@@ -133,6 +133,11 @@ $aliases['no'] = array(
 /** Occitan (Occitan) */
 $aliases['oc'] = array(
 	'DeleteBatch' => array( 'Supression en seria', 'SupressionEnSeria' ),
+);
+
+/** Polish (Polski) */
+$aliases['pl'] = array(
+	'DeleteBatch' => array( 'Skrypt usuwania' ),
 );
 
 /** Portuguese (Português) */

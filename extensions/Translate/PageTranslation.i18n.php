@@ -1799,7 +1799,7 @@ $messages['mg'] = array(
 $messages['mk'] = array(
 	'pagetranslation' => 'Превод на страница',
 	'right-pagetranslation' => 'Обележување на верзии на страници за преведување',
-	'tpt-desc' => 'Проширување за преведување на страници со содржини',
+	'tpt-desc' => 'Додаток за преведување на страници со содржини',
 	'tpt-section' => 'Преводна единица $1',
 	'tpt-section-new' => 'Нова преводна единица.
 Назив: $1',
@@ -2092,6 +2092,7 @@ La pagina qu'ensajatz de modificar sembla pas correspondre a cap de pagina marca
  */
 $messages['pdc'] = array(
 	'pagetranslation' => 'Iwwersetzing vun Bledder',
+	'tpt-rev-latest' => 'Letscht Version',
 	'tpt-translate-this' => 'des Blatt iwwersetze',
 	'translate-tag-translate-link-desc' => 'Des Blatt iwwersetze',
 	'tpt-languages-legend' => 'Annre Schprooche:',
@@ -2354,7 +2355,7 @@ $messages['rm'] = array(
  */
 $messages['ro'] = array(
 	'pagetranslation' => 'Traducerea paginii',
-	'tpt-desc' => 'Extensie pentru traducerea conţinutului paginilor',
+	'tpt-desc' => 'Extensie pentru traducerea conținutului paginilor',
 	'tpt-section' => 'Unitate de traducere $1',
 	'tpt-section-new' => 'Unitate de traducere nouă.
 Nume: $1',
@@ -2363,8 +2364,8 @@ Nume: $1',
 	'tpt-diff-old' => 'Text precedent',
 	'tpt-diff-new' => 'Text nou',
 	'tpt-submit' => 'Marchează această versiune pentru traducere',
-	'tpt-sections-oldnew' => 'Unităţi de traducere noi şi existente',
-	'tpt-sections-deleted' => 'Unităţi de traducere şterse',
+	'tpt-sections-oldnew' => 'Unități de traducere noi și existente',
+	'tpt-sections-deleted' => 'Unități de traducere șterse',
 	'tpt-badsect' => '"$1" nu este un nume valid pentru unitatea de traducere $2.',
 	'tpt-mark-summary' => 'Marcat această versiune pentru traducere',
 	'tpt-already-marked' => 'Ultima versiune a acestei pagini a fost deja marcată pentru traducere.',
@@ -2609,6 +2610,7 @@ $messages['stq'] = array(
 );
 
 /** Swedish (Svenska)
+ * @author Dafer45
  * @author Fluff
  * @author M.M.S.
  * @author Najami
@@ -2657,6 +2659,7 @@ Innan den här versionen märks för översättning, kontrollera att förändrin
 	'tpt-languages-legend' => 'Andra språk:',
 	'tpt-target-page' => 'Den här sidan kan inte uppdateras manuellt. Den här sidan är en översättning av [[$1]] och översättningen kan uppdateras genom att använda [$2 översättningsverktyget].',
 	'tpt-unknown-page' => 'Den här namnrymden är reserverad för översättningar av sidor. Sidan du försöker redigera verkar inte stämma överens med någon sida som är märkt för översättning.',
+	'tpt-render-summary' => 'Uppdaterar för att matcha den nya versionen av källpaketet',
 	'tpt-download-page' => 'Exportera sidan med översättningar',
 );
 
@@ -2678,6 +2681,7 @@ $messages['te'] = array(
 	'tpt-badtitle' => 'ఇచ్చిన పేజీ పేరు ($1) సరైన శీర్షిక కాదు',
 	'tpt-edit-failed' => 'పేజీని తాజాకరించలేకపోయాం: $1',
 	'tpt-already-marked' => 'ఈ పేజీ యొక్క సరికొత్త కూర్పుని ఇప్పటికే అనువాదానికై గుర్తించారు.',
+	'tpt-rev-latest' => 'చిట్టచివరి కూర్పు',
 	'tpt-rev-mark-new' => 'ఈ కూర్పుని అనువాదం కొరకై గుర్తించు',
 	'tpt-translate-this' => 'ఈ పేజీని అనువదించండి',
 	'translate-tag-translate-link-desc' => 'ఈ పేజీని అనువదించండి',
@@ -2813,6 +2817,28 @@ $messages['tt-cyrl'] = array(
 	'pagetranslation' => 'Битләр тәрҗемәсе',
 	'tpt-translate-this' => 'бу битне тәрҗемә итү',
 	'translate-tag-translate-link-desc' => 'Бу битне тәрҗемә итү',
+);
+
+/** ئۇيغۇرچە (ئۇيغۇرچە)
+ * @author Sahran
+ */
+$messages['ug-arab'] = array(
+	'pagetranslation' => 'بەت تەرجىمە',
+	'tpt-section' => '$1 تەرجىمە بۆلىكى',
+	'tpt-section-new' => 'يېڭى تەرجىمە بۆلىكى.
+ئاتى: $1',
+	'tpt-section-deleted' => '$1 تەرجىمە بۆلىكى',
+	'tpt-template' => 'بەت قېلىپى',
+	'tpt-templatediff' => 'بەت قېلىپى ئۆزگەردى.',
+	'tpt-diff-old' => 'ئالدىنقى تېكست',
+	'tpt-diff-new' => 'يېڭى تېكست',
+	'tpt-rev-latest' => 'ئاخىرقى نەشرى',
+	'tpt-rev-old' => 'ئالدىنقى بەلگە قويۇلغان نەشرى بىلەن بولغان پەرقى',
+	'tpt-rev-mark-new' => 'تەرجىمە ئۈچۈن بۇ نەشرىگە بەلگە سال',
+	'tpt-translate-this' => 'بۇ بەتنى تەرجىمە قىل',
+	'translate-tag-translate-link-desc' => 'بۇ بەتنى تەرجىمە قىل',
+	'translate-tag-markthis' => 'تەرجىمە ئۈچۈن بۇ بەتكە بەلگە سال',
+	'tpt-languages-legend' => 'باشقا تىل',
 );
 
 /** Ukrainian (Українська)

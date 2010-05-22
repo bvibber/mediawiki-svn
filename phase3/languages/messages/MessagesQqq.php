@@ -490,7 +490,7 @@ Format penggunaannya adalah : "{{int:youhavenewmessagesmulti| [[MediaWiki:Newmes
 'editlink'                => 'Text dari pranala yang terlihat disebelah setiap templat yang dapat disunting (tidak di proteksi) pada daftar templat dibawah jendela penyuntingan. Lihat juga {{msg-mw|Viewsourcelink}}.
 
 {{Identical|Edit}}',
-'viewsourcelink'          => 'Text dari pranala yang terlihat disebelah setiap templat yang tidak dapat disunting (di proteksi) pada daftar templat dibawah jendela penyuntingan. Lihat juga {{msg-mw|Editlink}}.
+'viewsourcelink'          => 'Text of the link shown next to every uneditable (protected) template in the list of used templates below the edit window. See also {{msg-mw|Editlink}}.
 
 {{Identical|View source}}',
 'editsectionhint'         => "Tool tip shown when hovering the mouse over the link to '[{{MediaWiki:Editsection}}]' a section. Example: Edit section: Heading name",
@@ -771,6 +771,7 @@ Tip for internal links',
 'anonpreviewwarning'               => 'See also {{msg-mw|Anoneditwarning}}',
 'missingsummary'                   => 'The text "sdit summary" is in {{msg-mw|summary}}.
 The text "Save" is in {{msg-mw|savearticle}}.',
+'missingcommenttext'               => 'This message is shown, when the textbox by a new-section is empty.',
 'missingcommentheader'             => '
 The text "Save" is in {{msg-mw|savearticle}}.',
 'summary-preview'                  => 'Preview of the edit summary, shown under the edit summary itself.
@@ -1153,6 +1154,7 @@ $1 is the relevance of this result in per cent.
 'search-redirect'                => "\$1 is a link to the redirect to the page (so, \$1 is the page that the search result is redirected '''from'''). \"Redirect\" is a noun here, not a verb.",
 'search-section'                 => 'This text will be shown on the search result listing after the page title of a result if the search algorithm thinks that section is more relevant than the rest of the page. $1 is a section title.',
 'search-interwiki-default'       => '* $1 is the hostname of the remote wiki from where the additional results listed below are returned',
+'search-interwiki-more'          => '{{Identical|More}}',
 'search-relatedarticle'          => '{{Identical|Related}}
 
 This is a search result (and I guess search engine) dependent messages. I do not know how to trigger the feature. The message is displayed if the search result contains information that related pages can also be provided from the search engine. I assume this is "More Like This" functionality. Microsoft glossary defines MLT as "A way to refine search by identifying the right set of documents and then locating similar documents. This allows the searcher to control the direction of the search and focus on the most fruitful lines of inquiry."[http://www.microsoft.com/enterprisesearch/en/us/search-glossary.aspx]',
@@ -2171,6 +2173,10 @@ Special:EmailUser appears when you click on the link "E-mail this user" in the s
 
 * $1: username of the sender
 * $2: username of the recipient',
+
+# User Messenger
+'usermessage-summary' => 'Translate "leaving" in the sense of: to leave behind, to have remaining.',
+'usermessage-editor'  => 'The user that is the editor of system messages',
 
 # Watchlist
 'watchlist'            => '{{Identical|My watchlist}}',
@@ -3395,8 +3401,7 @@ Hint: the text "Remove Titles" is in {{msg-mw|watchlistedit-normal-submit}}',
 'watchlistedit-raw-legend'     => 'Heading of dialogue box on [[Special:Watchlist/raw]].
 
 {{Identical|Edit raw watchlist}}',
-'watchlistedit-raw-explain'    => 'An introduction/explanation about the [[Special:Watchlist/raw|raw edit watchlist function]].
-Hint: the text "Update Watchlist" is in {{msg-mw|watchlistedit-raw-submit}}',
+'watchlistedit-raw-explain'    => 'An introduction/explanation about the [[Special:Watchlist/raw|raw edit watchlist function]].',
 'watchlistedit-raw-titles'     => 'Text above edit box containing items being watched on [[Special:Watchlist/raw]].',
 'watchlistedit-raw-submit'     => 'Text of submit button on [[Special:Watchlist/raw]].',
 'watchlistedit-raw-done'       => 'A message which appears after the raw watchlist has been updated using [[Special:Watchlist/raw]].',

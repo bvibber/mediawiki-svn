@@ -54,6 +54,23 @@ $messages['af'] = array(
 	'watchers_less_than_x' => 'Minder as $1 gebruikers hou die bladsy dop.',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'watchers' => 'Mbikqyrësve',
+	'watchers-desc' => 'Tregon [[Special:Watchers|mbikqyrësve|që përdoruesit kanë një faqe në listën mbikqyrëse e tyre]]',
+	'watchers_link_title' => 'Kush e shikon këtë faqe?',
+	'watchers_error_article' => "Gabim''':''' Faqja nuk ekziston.",
+	'watchers-error-invalid-page' => "Gabim''':''' \"\$1\" është një titull i vlefshëm faqe.",
+	'watchers_header' => '{{PLURAL:$2|User cili është|Përdoruesit që janë}} shikuar "[[:$1]]"',
+	'watchers_noone_watches' => 'Askush nuk e shikon faqen e [[:$1]].',
+	'watchers_x_or_more' => '$1 ose me shume {{PLURAL:$1|përdorues|përdorues}}kanë faqen e [[:$2]] në listën mbikqyrëse të tyre.',
+	'watchers_less_than_x' => 'Më pak se $1 {{PLURAL:$1|përdorues|përdorues}} kanë faqen e [[:$2]] në listën mbikqyrëse të tyre.',
+	'watchers-num' => '$1 {{PLURAL:$1|përdorues ka|perdorues kanë}} faqen e [[:$2]] të {{PLURAL:$1|e tyre|e tyre}} listën mbikqyrëse.',
+	'right-watchers-list' => '[[Special:Watchers|Lista e përdoruesve shikuar një faqe të veçantë]]',
+);
+
 /** Old English (Ænglisc)
  * @author Wōdenhelm
  */
@@ -815,7 +832,7 @@ $messages['ps'] = array(
 	'watchers_error_article' => '<b>ستونزه:</b> دا مخ نه شته.',
 	'watchers_header' => '{{PLURAL:$2|هغه کارن|هغه کارنان}} چې "[[:$1]]" ګوري',
 	'watchers_noone_watches' => 'همدا مخ اوس هېڅوک نه ګوري.',
-	'watchers_x_or_more' => '$1 او يا هم تر دې ډېر {{PLURAL:$1|کارن|کارنان}} همدا مخ په خپل کتنلړليک کې لري.',
+	'watchers_x_or_more' => '$1 او يا هم تر دې ډېر {{PLURAL:$1|کارن|کارنان}} د [[:$2]] مخ په خپل کتنلړليک کې لري.',
 	'watchers_less_than_x' => 'له $1 لږ {{PLURAL:$1|کارونکي|کارونکي}} همدا مخ په خپل کتنلړليک کې لري.',
 );
 
@@ -856,12 +873,12 @@ $messages['pt-br'] = array(
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
-	'watchers_link_title' => 'Cine urmăreşte această pagină?',
+	'watchers_link_title' => 'Cine urmărește această pagină?',
 	'watchers_error_article' => "'''Eroare:''' Pagina nu există.",
-	'watchers_header' => '{{PLURAL:$2|Utilizator care urmăreşte|Utilizatori care urmăresc}} "[[:$1]]"',
-	'watchers_noone_watches' => 'Nimeni nu urmăreşte această pagină.',
-	'watchers_x_or_more' => '$1 sau mai mulţi {{PLURAL:$1|utilizatori|utilizatori}} au această pagină în lista de urmărire.',
-	'watchers_less_than_x' => 'Mai puţin de $1 {{PLURAL:$1|utilizatori|utilizatori}} au această pagină pe lista de urmărire.',
+	'watchers_header' => '{{PLURAL:$2|Utilizator care urmărește|Utilizatori care urmăresc}} "[[:$1]]"',
+	'watchers_noone_watches' => 'Nimeni nu urmărește această pagină.',
+	'watchers_x_or_more' => '$1 sau mai mulți {{PLURAL:$1|utilizatori|utilizatori}} au această pagină în lista de urmărire.',
+	'watchers_less_than_x' => 'Mai puțin de $1 {{PLURAL:$1|utilizatori|utilizatori}} au această pagină pe lista de urmărire.',
 );
 
 /** Russian (Русский)
@@ -942,6 +959,7 @@ $messages['stq'] = array(
 
 /** Swedish (Svenska)
  * @author Boivie
+ * @author Dafer45
  * @author Lejonel
  * @author Najami
  */
@@ -950,6 +968,7 @@ $messages['sv'] = array(
 	'watchers-desc' => 'Visar [[Special:Watchers|vilka användare som bevakar en viss sida]]',
 	'watchers_link_title' => 'Användare som bevakar sidan',
 	'watchers_error_article' => '<b>Fel:</b> Sidan finns inte.',
+	'watchers-error-invalid-page' => "'''Fel:''' \"\$1\" är en ogiltig sidtitel.",
 	'watchers_header' => '{{PLURAL:$2|Användare}} som bevakar "[[:$1]]"',
 	'watchers_noone_watches' => 'Ingen bevakar denna sida.',
 	'watchers_x_or_more' => '$1 eller fler {{PLURAL:$1|användare|användare}} har denna sida på sin bevakningslista.',

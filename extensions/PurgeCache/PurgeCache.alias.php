@@ -17,7 +17,7 @@ $aliases['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'PurgeCache' => array( 'إفراغ_الكاش' ),
+	'PurgeCache' => array( 'Purge_Cach' ),
 );
 
 /** German (Deutsch) */
@@ -58,6 +58,11 @@ $aliases['gl'] = array(
 /** Swiss German (Alemannisch) */
 $aliases['gsw'] = array(
 	'PurgeCache' => array( 'Cache lääre' ),
+);
+
+/** Croatian (Hrvatski) */
+$aliases['hr'] = array(
+	'PurgeCache' => array( 'Očisti_cache' ),
 );
 
 /** Upper Sorbian (Hornjoserbsce) */

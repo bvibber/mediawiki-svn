@@ -829,17 +829,17 @@ $messages['mhr'] = array(
  * @author Brest
  */
 $messages['mk'] = array(
-	'player' => 'Преслушувач',
-	'player-desc' => 'Вметнат мултимедијален преслушувач кој користи обични додатоци од прелистувачот, и [[Special:Player|специјална страница]]',
-	'player-title' => 'Преслушувач',
-	'player-playertitle' => 'Преслушувач: $1',
+	'player' => 'Изведувач',
+	'player-desc' => 'Вметнат мултимедијален изведувач кој користи обични додатоци од прелистувачот, и [[Special:Player|специјална страница]]',
+	'player-title' => 'Изведувач',
+	'player-playertitle' => 'Изведувач: $1',
 	'player-file' => 'Име на податотека',
 	'player-play' => 'Пушти',
 	'player-not-allowed' => 'недозволен формат',
 	'player-not-found' => 'податотеката не беше најдена',
 	'player-invalid-title' => 'лош наслов',
 	'player-clicktoplay' => 'Пушти ја $1',
-	'player-goto-player' => 'преслушувач',
+	'player-goto-player' => 'изведувач',
 	'player-goto-page' => 'Страница',
 	'player-goto-file' => 'податотека',
 );
@@ -1006,6 +1006,7 @@ $messages['os'] = array(
  */
 $messages['pdc'] = array(
 	'player-goto-page' => 'Blatt',
+	'player-goto-file' => 'Feil',
 );
 
 /** Polish (Polski)
@@ -1113,15 +1114,15 @@ $messages['ro'] = array(
 	'player' => 'Jucător',
 	'player-title' => 'Jucător',
 	'player-playertitle' => 'Jucător: $1',
-	'player-file' => 'Nume fişier',
+	'player-file' => 'Nume fișier',
 	'player-play' => 'Redare',
 	'player-not-allowed' => 'format nepermis',
-	'player-not-found' => 'fişier negăsit',
+	'player-not-found' => 'fișier negăsit',
 	'player-invalid-title' => 'titlu incorect',
 	'player-clicktoplay' => 'Joacă $1',
 	'player-goto-player' => 'jucător',
 	'player-goto-page' => 'Pagină',
-	'player-goto-file' => 'fişier',
+	'player-goto-file' => 'fișier',
 );
 
 /** Tarandíne (Tarandíne)

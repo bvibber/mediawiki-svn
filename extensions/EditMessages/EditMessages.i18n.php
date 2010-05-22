@@ -706,6 +706,11 @@ $messages['id'] = array(
 	'editmsg-patch-success' => 'Ditambal dengan sukses',
 );
 
+/** Igbo (Igbo) */
+$messages['ig'] = array(
+	'editmsg-search' => 'Chöwá',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  * @author Pietrodn
@@ -1233,21 +1238,21 @@ $messages['rif'] = array(
  * @author Mihai
  */
 $messages['ro'] = array(
-	'editmessages-desc' => '[[Special:EditMessages|Modificare prin internet]] a unui număr mare de fişiere Messages*.php',
+	'editmessages-desc' => '[[Special:EditMessages|Modificare prin internet]] a unui număr mare de fișiere Messages*.php',
 	'editmessages' => 'Modifică mesajele',
-	'editmsg-target' => 'Mesaj ţintă:',
+	'editmsg-target' => 'Mesaj țintă:',
 	'editmsg-search' => 'Caută',
 	'editmsg-show-list' => 'Arată valorile pentru numele de mesaj "$1"',
 	'editmsg-get-patch' => 'Creează un patch',
 	'editmsg-new-search' => 'Căutare nouă',
 	'editmsg-warning-parse1' => '* Expresia curentă a numelor de mesaj nedetectată: $1',
-	'editmsg-warning-parse2' => '* Caracter de citare aşteptat după săgeată: $1',
-	'editmsg-warning-parse3' => '* Sfârşitul şirului de caractere nu a fost găsit: $1',
-	'editmsg-warning-file' => '* Au fost întâlnite erori la citirea fişierului pentru {{PLURAL:$2|limbă următoarea|următoarele limbi}}: $1',
-	'editmsg-warning-mismatch' => '* Textul original nu are valoarea aşteptată pentru următoarea {{PLURAL:$2|limbă următoarea|următoarele limbi}}: $1',
+	'editmsg-warning-parse2' => '* Caracter de citare așteptat după săgeată: $1',
+	'editmsg-warning-parse3' => '* Sfârșitul șirului de caractere nu a fost găsit: $1',
+	'editmsg-warning-file' => '* Au fost întâlnite erori la citirea fișierului pentru {{PLURAL:$2|limbă următoarea|următoarele limbi}}: $1',
+	'editmsg-warning-mismatch' => '* Textul original nu are valoarea așteptată pentru următoarea {{PLURAL:$2|limbă următoarea|următoarele limbi}}: $1',
 	'editmsg-apply-patch' => 'Aplică patch-ul',
 	'editmsg-no-patch' => 'Imposibil de executat comanda "patch"',
-	'editmsg-patch-failed' => 'Eşec al patch-ului cu eroarea la ieşire $1',
+	'editmsg-patch-failed' => 'Eșec al patch-ului cu eroarea la ieșire $1',
 	'editmsg-patch-success' => 'Patch aplicat cu succes.',
 );
 

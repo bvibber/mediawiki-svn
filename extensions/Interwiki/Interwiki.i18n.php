@@ -1742,6 +1742,12 @@ Kemungkinan karena prefiks ini tidak ada.',
 	'action-interwiki' => 'Ubah masukan untuk interwiki ini',
 );
 
+/** Igbo (Igbo) */
+$messages['ig'] = array(
+	'interwiki_edit' => 'Rüwa',
+	'interwiki_reasonfield' => 'Mgbaghaputa:',
+);
+
 /** Ido (Ido)
  * @author Malafaya
  */
@@ -2113,7 +2119,7 @@ Fortasse nondum est in tabula intervica.',
 $messages['lb'] = array(
 	'interwiki' => 'Interwiki-Date kucken a veränneren',
 	'interwiki-title-norights' => 'Interwiki-Date kucken',
-	'interwiki-desc' => "Setzt eng [[Special:Interwiki|Spezialsäit]] derbäi fir d'Interwiki-Tabell ze gesin an z'änneren",
+	'interwiki-desc' => "Setzt eng [[Special:Interwiki|Spezialsäit]] derbäi fir d'Interwiki-Tabell ze gesinn an z'änneren",
 	'interwiki_intro' => "Dëst ass en Iwwerbléck iwwert d'Interwiki-Tabell.
 D'Bedeitung vun den Informatiounen an de Kolonnen:",
 	'interwiki_prefix' => 'Prefix',
@@ -2150,7 +2156,7 @@ Denkt drunn datt keng Espacen ( ), Et-commerciale (&), Gläichzeechen (=) a keng
 Méiglecherweis gëtt et e schn an der Interwiki-Tabell.',
 	'interwiki_edittext' => 'En interwiki Prefix änneren',
 	'interwiki_editintro' => 'Dir ännert en Interwiki Prefix.
-Denkt drun, datt dëst kann dozou féieren datt Linen déi et scho gëtt net méi fonctionnieren.',
+Denkt drun, datt dat kann dozou féieren datt Linken déi et scho gëtt net méi fonctionnéieren.',
 	'interwiki_edited' => 'De Prefix "$1" gouf an der Interwiki-Tabell geännert.',
 	'interwiki_editerror' => 'De Prefix "$1" kann an der Interwiki-Tabell net geännert ginn.
 Méiglecherweis gëtt et en net.',
@@ -2833,6 +2839,8 @@ $messages['pnt'] = array(
 $messages['ps'] = array(
 	'interwiki_prefix' => 'مختاړی',
 	'interwiki-prefix-label' => 'مختاړی:',
+	'interwiki_1' => 'هو',
+	'interwiki_0' => 'نه',
 	'interwiki_edit' => 'سمول',
 	'interwiki_reasonfield' => 'سبب:',
 	'interwiki_delquestion' => '"$1" د ړنګولو په حال کې دی...',
@@ -2962,7 +2970,7 @@ $messages['ro'] = array(
 	'interwiki_reasonfield' => 'Motiv',
 	'interwiki_delquestion' => 'Ştergere "$1"',
 	'interwiki_addbutton' => 'Adaugă',
-	'action-interwiki' => 'modificaţi această legătură interwiki',
+	'action-interwiki' => 'modificați această legătură interwiki',
 );
 
 /** Tarandíne (Tarandíne)
@@ -3799,6 +3807,7 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Alexsh
+ * @author Horacewai2
  * @author Liangent
  * @author Wrightbus
  */
@@ -3809,6 +3818,7 @@ $messages['zh-hant'] = array(
 	'interwiki_intro' => '這是跨維基連結表的概覽。列中的數據的含義：',
 	'interwiki_prefix' => '前綴',
 	'interwiki-prefix-label' => '前綴:',
+	'interwiki_prefix_intro' => '跨網站的前綴，用於<code>[ [prefix: <i>pagename</i> ]]</code> <nowiki /> <code>[ [prefix: <i>pagename</i> ]]</code>。',
 	'interwiki_local' => '轉發',
 	'interwiki-local-label' => '定義這個為一個本地wiki:',
 	'interwiki_trans' => '包含',
@@ -3816,6 +3826,7 @@ $messages['zh-hant'] = array(
 	'interwiki_1' => '是',
 	'interwiki_0' => '否',
 	'interwiki_error' => '錯誤: 跨維基連結表為空，或是發生其它錯誤。',
+	'interwiki_edit' => '編輯',
 	'interwiki_reasonfield' => '原因：',
 	'interwiki_delquestion' => '正在刪除"$1"',
 	'interwiki_deleting' => '您正在刪除前綴"$1"。',
@@ -3835,9 +3846,11 @@ $messages['zh-hant'] = array(
 	'interwiki_editerror' => '前綴 "$1" 不能在跨維基連結表中修改。
 可能它並不存在。',
 	'interwiki-badprefix' => '所指定的跨維基前綴 "$1" 含有無效的字母',
+	'interwiki_logpagename' => '跨維基連結修改日誌',
 	'interwiki_log_added' => '加入了連結前綴 "$2" （$3） （含: $4） （本: $5） 到跨維基連結表中',
 	'interwiki_log_edited' => '在跨維基連結表中修改了連結前綴 "$2" : （$3） （含: $4） （本: $5）',
 	'interwiki_log_deleted' => '在跨維基連結表中已刪除 "$2"',
+	'interwiki_logpagetext' => '這是一個[[Special:Interwiki|跨維基連結]]修改的日誌。',
 	'right-interwiki' => '修改跨維基資料',
 );
 

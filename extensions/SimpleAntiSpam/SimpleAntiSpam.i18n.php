@@ -34,6 +34,15 @@ $messages['af'] = array(
 	'simpleantispam-desc' => "Voeg 'n eenvoudige spam/robot-kontrole op vorms by",
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'simpleantispam' => 'Your redakto shkaktoi mekanizmi anti-spam',
+	'simpleantispam-label' => "Anti-spam kontrolloni. A'''''NUK' plotësoni këtë!",
+	'simpleantispam-desc' => 'Shton një spam i thjeshtë / kontrolloni bot me format e',
+);
+
 /** Aragonese (Aragonés)
  * @author Juanpabl
  */
@@ -608,9 +617,9 @@ $messages['pt-br'] = array(
  * @author Stelistcristi
  */
 $messages['ro'] = array(
-	'simpleantispam' => 'Editarea dvs a declanşat mecanismul antispam',
+	'simpleantispam' => 'Editarea dvs a declanșat mecanismul antispam',
 	'simpleantispam-label' => "Verificare antispam.
-'''NU''' completaţi !",
+'''NU''' completați !",
 );
 
 /** Tarandíne (Tarandíne)

@@ -226,13 +226,15 @@ $messages['cs'] = array(
 /** German (Deutsch)
  * @author Giftpflanze
  * @author Imre
+ * @author Kghbln
  * @author Umherirrender
  */
 $messages['de'] = array(
-	'reviewedpages' => 'Liste der gesichteten Seiten',
+	'reviewedpages' => 'Liste der markierten Seiten',
 	'reviewedpages-leg' => 'Markierte Seiten auflisten',
-	'reviewedpages-list' => 'Diese Spezialseite zeigt Seiten, die bisher mit dem angegebenem Level als höchstes markiert wurden.',
-	'reviewedpages-none' => 'Die Liste ist leer.',
+	'reviewedpages-list' => 'Diese Listen enthalten [[{{MediaWiki:Validationpage}}|markierte]] Seiten, deren höchster Qualitätsstatus (einer Version) dem angegebenen Status entspricht.
+Der Link zu neuesten Version dieses Status ist angegeben.',
+	'reviewedpages-none' => 'Diese Liste enthält keine Seiten.',
 	'reviewedpages-lev-0' => 'Gesichtet',
 	'reviewedpages-lev-1' => 'Geprüft',
 	'reviewedpages-lev-2' => 'Exzellent',
@@ -675,11 +677,15 @@ $messages['km'] = array(
 );
 
 /** Korean (한국어)
+ * @author Devunt
  * @author Kwj2772
  */
 $messages['ko'] = array(
 	'reviewedpages' => '검토된 문서',
+	'reviewedpages-leg' => '검토된 문서들의 목록',
+	'reviewedpages-none' => '이 목록에 문서가 없습니다.',
 	'reviewedpages-all' => '검토된 버전',
+	'reviewedpages-best' => '최고 판',
 );
 
 /** Colognian (Ripoarisch)
@@ -955,7 +961,7 @@ $messages['pt-br'] = array(
  */
 $messages['ro'] = array(
 	'reviewedpages' => 'Pagini revizuite',
-	'reviewedpages-list' => 'Această pagină afişează paginile care au fost revizuite (la cel mai mare nivel) la nivelul specificat.',
+	'reviewedpages-list' => 'Această pagină afișează paginile care au fost revizuite (la cel mai mare nivel) la nivelul specificat.',
 	'reviewedpages-none' => 'Nu există pagini în această listă',
 	'reviewedpages-lev-1' => 'Calitate',
 	'reviewedpages-all' => 'versiuni revizuite',
@@ -1098,6 +1104,7 @@ $messages['su'] = array(
 
 /** Swedish (Svenska)
  * @author Boivie
+ * @author Dafer45
  * @author Lejonel
  * @author M.M.S.
  * @author McDutchie
@@ -1106,7 +1113,7 @@ $messages['su'] = array(
  */
 $messages['sv'] = array(
 	'reviewedpages' => 'Granskade sidor',
-	'reviewedpages-leg' => 'Lista sidor efter högsta granskningsnivå',
+	'reviewedpages-leg' => 'Lista sidor som har blivit granskade',
 	'reviewedpages-list' => 'Följande {{PLURAL:$1|sida|sidor}} har granskats till (högst) den angivna nivån.',
 	'reviewedpages-none' => 'Den här listan innehåller inga sidor',
 	'reviewedpages-lev-0' => '{{int:revreview-lev-basic}}',
@@ -1123,14 +1130,14 @@ $messages['sv'] = array(
  */
 $messages['te'] = array(
 	'reviewedpages' => 'సమీక్షించిన పేజీలు',
-	'reviewedpages-leg' => 'అత్యధిక స్థాయి వరకు పేజీలను చూపించు, స్థాయిని బట్టి',
+	'reviewedpages-leg' => 'సమీక్షితమై ఉన్న పుటలను చూపించు',
 	'reviewedpages-list' => 'ఈ క్రింద పేర్కొన్న {{PLURAL:$1|పేజీ|పేజీలు}} మీరడిగిన స్థాయివరకు ఎక్కువగా సమీక్షించబడినవి',
 	'reviewedpages-none' => 'ఈ జాబితాలో పేజీలు లేవు.',
 	'reviewedpages-lev-0' => 'కనబడింది',
 	'reviewedpages-lev-1' => 'నాణ్యత',
 	'reviewedpages-lev-2' => 'విశేషం',
 	'reviewedpages-all' => 'సమీక్షిత కూర్పులు',
-	'reviewedpages-best' => 'మూల కూర్పు',
+	'reviewedpages-best' => 'ఉత్తమ కూర్పు',
 );
 
 /** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))
@@ -1308,12 +1315,13 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Horacewai2
  * @author Shinjiman
  */
 $messages['zh-hant'] = array(
 	'reviewedpages' => '複審過的頁面',
 	'reviewedpages-leg' => '列示複審過到指定級數之頁面',
-	'reviewedpages-list' => '以下的頁面已經複審到一個指定的級數',
+	'reviewedpages-list' => '以下的頁面[[{{MediaWiki:Validationpage}}|已經複審]]到一個指定的級數',
 	'reviewedpages-none' => '沒有頁面在這個清單中',
 	'reviewedpages-lev-0' => '視察過',
 	'reviewedpages-lev-1' => '質素',

@@ -253,6 +253,13 @@ $messages['id'] = array(
 	'cldr-desc' => 'Ekstensi yang menyediakan nama-nama bahasa dalam bahasa aslinya',
 );
 
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'cldr-desc' => 'Ogologo né nyé áhà asụsụ nke bi nsó',
+);
+
 /** Italian (Italiano)
  * @author Pietrodn
  */
@@ -332,10 +339,11 @@ $messages['mg'] = array(
 );
 
 /** Macedonian (Македонски)
+ * @author Bjankuloski06
  * @author Brest
  */
 $messages['mk'] = array(
-	'cldr-desc' => 'Проширување кое дава локализирани јазични имиња',
+	'cldr-desc' => 'Додаток кој дава локализирани имиња на јазиците',
 );
 
 /** Malayalam (മലയാളം)

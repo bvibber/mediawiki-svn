@@ -10,9 +10,6 @@
  * @author Jeroen De Dauw
  */
 
-// Registration of the GoeCoords class.
-$wgAutoloadClasses['SMGeoCoords'] = __FILE__;
-
 // Registration of the Geographical Coordinate type.
 $wgAutoloadClasses['SMGeoCoordsValue'] = dirname( __FILE__ ) . '/SM_GeoCoordsValue.php';
 
@@ -24,6 +21,8 @@ $wgAutoloadClasses['SMAreaValueDescription'] = dirname( __FILE__ ) . '/SM_AreaVa
 
 // Hook for initializing the Geographical Coordinate type.
 $wgHooks['smwInitDatatypes'][] = 'SMGeoCoordsValue::initGeoCoordsType';
+
+$wgHooks['SMWCustomSQLStoreFieldType'][] = 'SMGeoCoordsValue::initGeoCoordsFieldTypes';
 
 // Hook for defining a table to store geographical coordinates in.
 $wgHooks['SMWPropertyTables'][] = 'SMGeoCoordsValue::initGeoCoordsTable';

@@ -39,6 +39,18 @@ Similar to {{msg-mw|Rightslogentry}}.',
 See also {{msg-mw|Right-userrights-shared}}',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'globaluserrights' => 'Global drejtat Përdoruesi Menaxhim',
+	'gur-desc' => 'Easy [[Special:GlobalUserRights|të drejtat përgjithshme përdoruesi]] administratës',
+	'gur-rightslog-name' => 'të drejtat e Global log',
+	'gur-rightslog-header' => 'Ky është një regjistër për ndryshimet e të drejtave globale.',
+	'gur-rightslog-entry' => 'ndryshuar anëtarësimit globale e $1 nga $2 në $3',
+	'right-userrights-global' => 'të drejtat e përdoruesit Manage global',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author Ouda
@@ -499,10 +511,10 @@ $messages['pt-br'] = array(
  */
 $messages['ro'] = array(
 	'globaluserrights' => 'Administrarea drepturilor utilizatorilor globali',
-	'gur-desc' => 'Uşor de administrat [[Special: GlobalUserRights |drepturile globale pentru utilizator]]',
+	'gur-desc' => 'Ușor de administrat [[Special: GlobalUserRights |drepturile globale pentru utilizator]]',
 	'gur-rightslog-name' => 'Jurnal drepturi globale',
 	'gur-rightslog-header' => 'Acest jurnal cuprinde modificările drepturilor globale.',
-	'gur-rightslog-entry' => 'Schimbă apartenenţa grupului global pentru $1 de la $2 la $3',
+	'gur-rightslog-entry' => 'Schimbă apartenența grupului global pentru $1 de la $2 la $3',
 	'right-userrights-global' => 'Administrează drepturile utilizatorilor globali',
 );
 

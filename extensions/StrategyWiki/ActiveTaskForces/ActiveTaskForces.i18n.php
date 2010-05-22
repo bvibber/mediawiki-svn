@@ -18,10 +18,12 @@ $messages['be-tarask'] = array(
 );
 
 /** Breton (Brezhoneg)
+ * @author Fulup
  * @author Y-M D
  */
 $messages['br'] = array(
 	'activetaskforces' => 'Strolladoù labour oberient',
+	'active-task-forces-desc' => 'Diskwel a ra an niver a wezhioù eo bet kemmet pajennoù ar strollad labour',
 	'active-task-forces-intro' => 'Niver a gemm pajennoù evit ar strollad labour e-kerzh an {{PLURAL:$1|devezh ziwezhañ|$1 zevezh ziwezhañ}}.',
 );
 
@@ -95,6 +97,7 @@ $messages['hsb'] = array(
  */
 $messages['hu'] = array(
 	'activetaskforces' => 'Aktív munkacsoportok',
+	'active-task-forces-desc' => 'Megjeleníti az egyes munkacsoport lapokon végzett szerkesztések számát',
 	'active-task-forces-intro' => 'Szerkesztések száma a munkacsoport lapokon az elmúlt $1 napban.',
 );
 
@@ -109,10 +112,21 @@ $messages['ia'] = array(
 
 /** Japanese (日本語)
  * @author Aotake
+ * @author 青子守歌
  */
 $messages['ja'] = array(
 	'activetaskforces' => '活動中の特別チーム',
+	'active-task-forces-desc' => 'タスクフォースのページ数を表示',
 	'active-task-forces-intro' => '最近$1日間に特別チームのページに加えられた編集回数',
+);
+
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'activetaskforces' => '활동 중인 태스크 포스',
+	'active-task-forces-desc' => '태스크 포스 문서에 대한 편집 수를 표시',
+	'active-task-forces-intro' => '최근 $1일동안의 태스크 포스 문서에 대한 편집 횟수입니다.',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -151,6 +165,15 @@ $messages['nl'] = array(
 	'active-task-forces-intro' => "Aantal bewerkingen aan taskforcepagina's in de afgelopen {{PLURAL:$1|dag|$1 dagen}}.",
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Laaknor
+ */
+$messages['no'] = array(
+	'activetaskforces' => 'Aktive arbeidsgrupper',
+	'active-task-forces-desc' => 'Viser antall redigeringer på arbeidsgruppesider',
+	'active-task-forces-intro' => 'Antall redigeringer på arbeidsgruppesider {{PLURAL:$1|den siste $1 dag|de siste $1 dager}}.',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */
@@ -161,9 +184,11 @@ $messages['oc'] = array(
 
 /** Piedmontese (Piemontèis)
  * @author Borichèt
+ * @author Dragonòt
  */
 $messages['pms'] = array(
 	'activetaskforces' => 'Echip ëd travaj ative',
+	'active-task-forces-desc' => 'Mostra ël nùmer ëd modìfiche a le pàgine dla partìa ëd travaj',
 	'active-task-forces-intro' => "Nùmer ëd modìfiche a le pàgine dl'echip ëd travaj ant {{PLURAL:$1|l'ùltim di|j'ùltim $1 di}}.",
 );
 
@@ -192,5 +217,14 @@ $messages['sv'] = array(
 	'activetaskforces' => 'Aktiva arbetsgrupper',
 	'active-task-forces-desc' => 'Visar antal redigeringar på arbetsgruppsidor',
 	'active-task-forces-intro' => 'Antal redigeringar av arbetsgruppsidor under senaste ((PLURALIS: $1 | $1 dagen | $1 dagarna)).',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Horacewai2
+ */
+$messages['zh-hant'] = array(
+	'activetaskforces' => '積極工作隊',
+	'active-task-forces-desc' => '以數字顯示工作隊的編輯頁面',
+	'active-task-forces-intro' => '此頁面編輯數 (在過去{{PLURAL:$1|$1日|$1日}})',
 );
 

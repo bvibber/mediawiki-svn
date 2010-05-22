@@ -20,7 +20,7 @@ $aliases['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'ImportFreeImages' => array( 'استيراد_صور_حرة' ),
+	'ImportFreeImages' => array( 'استوراد_صور_حره' ),
 );
 
 /** Bosnian (Bosanski) */

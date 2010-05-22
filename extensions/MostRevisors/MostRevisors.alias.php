@@ -20,7 +20,7 @@ $aliases['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'MostRevisors' => array( 'أكثر_المراجعين' ),
+	'MostRevisors' => array( 'اكتر_مراجعين' ),
 );
 
 /** Interlingua (Interlingua) */
@@ -41,6 +41,11 @@ $aliases['ksh'] = array(
 /** Macedonian (Македонски) */
 $aliases['mk'] = array(
 	'MostRevisors' => array( 'НајвеќеПрегледувачи' ),
+);
+
+/** Malayalam (മലയാളം) */
+$aliases['ml'] = array(
+	'MostRevisors' => array( 'ഏറ്റവുംകൂടുതൽസംശോധനംചെയ്തവർ' ),
 );
 
 /** Nedersaksisch (Nedersaksisch) */

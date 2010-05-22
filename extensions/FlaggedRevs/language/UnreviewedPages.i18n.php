@@ -65,6 +65,16 @@ $messages['af'] = array(
 	'unreviewed-recent' => '(minder as 1 uur)',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'unreviewed-viewing' => '(Në shqyrtim)',
+	'unreviewed-hours' => '($1 {{PLURAL:$1|orë|orë}})',
+	'unreviewed-days' => '($1 {{PLURAL:$1|ditë|ditët}})',
+	'unreviewed-recent' => '(Më pak se 1 orë)',
+);
+
 /** Amharic (አማርኛ)
  * @author Codex Sinaiticus
  */
@@ -1240,6 +1250,7 @@ $messages['pt'] = array(
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
+ * @author Giro720
  */
 $messages['pt-br'] = array(
 	'unreviewedpages' => 'Páginas não analisadas',
@@ -1248,7 +1259,7 @@ $messages['pt-br'] = array(
 	'unreviewed-diff' => 'analisar',
 	'unreviewed-unwatched' => '(não-vigiada)',
 	'unreviewed-watched' => '($1 {{PLURAL:$1|utilizador ativo|utilizadores ativos}} a vigiar)',
-	'unreviewed-list' => 'Esta página lista as páginas de conteúdo que ainda não foram analisadas.',
+	'unreviewed-list' => 'Esta página lista as páginas de conteúdo que não foram revistas até ao nível escolhido.',
 	'unreviewed-none' => 'No momento não há páginas que se enquadrem nestes critérios',
 	'unreviewed-viewing' => '(sob análise)',
 	'unreviewed-hours' => '($1 {{PLURAL:$1|hora|horas}})',
@@ -1262,14 +1273,14 @@ $messages['pt-br'] = array(
  */
 $messages['ro'] = array(
 	'unreviewedpages' => 'Pagini nerevizuite',
-	'unreviewed-legend' => 'Afişează pagini cu conţinut nerevizuit',
+	'unreviewed-legend' => 'Afișează pagini cu conținut nerevizuit',
 	'unreviewed-category' => 'Categorie:',
 	'unreviewed-diff' => 'recenzie',
 	'unreviewed-unwatched' => '(neurmărit)',
-	'unreviewed-watched' => '($1 {{PLURAL:$1|utilizator activ  care urmăreşte|utilizatori activi care urmăresc}})',
+	'unreviewed-watched' => '($1 {{PLURAL:$1|utilizator activ  care urmărește|utilizatori activi care urmăresc}})',
 	'unreviewed-hours' => '($1 {{PLURAL:$1|oră|ore}})',
 	'unreviewed-days' => '($1 {{PLURAL:$1|zi|zile}})',
-	'unreviewed-recent' => '(mai puţin de 1 oră)',
+	'unreviewed-recent' => '(mai puțin de 1 oră)',
 );
 
 /** Tarandíne (Tarandíne)
@@ -1330,6 +1341,17 @@ $messages['sah'] = array(
 	'unreviewed-hours' => '($1 чаас)',
 	'unreviewed-days' => '($1 {{PLURAL:$1|хонук|күн}})',
 	'unreviewed-recent' => '(1 чаастан кылгас)',
+);
+
+/** Sardinian (Sardu)
+ * @author Andria
+ */
+$messages['sc'] = array(
+	'unreviewed-category' => 'Categoria:',
+	'unreviewed-diff' => 'revisiona',
+	'unreviewed-hours' => '($1 {{PLURAL:$1|ora|oras}})',
+	'unreviewed-days' => '($1 {{PLURAL:$1|die|dies}})',
+	'unreviewed-recent' => '(nemmancu 1 ora)',
 );
 
 /** Slovak (Slovenčina)

@@ -20,7 +20,7 @@ $aliases['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'GlobalUsage' => array( 'استخدام_عام' ),
+	'GlobalUsage' => array( 'استعمال_عام' ),
 );
 
 /** Bulgarian (Български) */
@@ -41,6 +41,11 @@ $aliases['de'] = array(
 /** Lower Sorbian (Dolnoserbski) */
 $aliases['dsb'] = array(
 	'GlobalUsage' => array( 'Globalne wužywanje' ),
+);
+
+/** Spanish (Español) */
+$aliases['es'] = array(
+	'GlobalUsage' => array( 'Uso global', 'UsoGlobal' ),
 );
 
 /** Estonian (Eesti) */
@@ -71,6 +76,11 @@ $aliases['gsw'] = array(
 /** Gujarati (ગુજરાતી) */
 $aliases['gu'] = array(
 	'GlobalUsage' => array( 'વૈશ્વીક વપરાશ' ),
+);
+
+/** Croatian (Hrvatski) */
+$aliases['hr'] = array(
+	'GlobalUsage' => array( 'Globalna_uporaba' ),
 );
 
 /** Upper Sorbian (Hornjoserbsce) */
@@ -136,6 +146,11 @@ $aliases['nds-nl'] = array(
 /** Dutch (Nederlands) */
 $aliases['nl'] = array(
 	'GlobalUsage' => array( 'GlobaalGebruik' ),
+);
+
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬) */
+$aliases['nn'] = array(
+	'GlobalUsage' => array( 'Global bruk' ),
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */

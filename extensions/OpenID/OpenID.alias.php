@@ -28,10 +28,10 @@ $aliases['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'OpenIDLogin' => array( 'دخول_الهوية_المفتوحة' ),
-	'OpenIDConvert' => array( 'تحويل_الهوية_المفتوحة' ),
-	'OpenIDServer' => array( 'خادم_الهوية_المفتوحة' ),
-	'OpenIDXRDS' => array( 'إكسردس_الهوية_المفتوحة' ),
+	'OpenIDLogin' => array( 'دخول_Open_ID' ),
+	'OpenIDConvert' => array( 'تحويل_Open_ID' ),
+	'OpenIDServer' => array( 'Open_ID_Server' ),
+	'OpenIDXRDS' => array( 'Open_ID_XRDS' ),
 );
 
 /** Finnish (Suomi) */
@@ -73,6 +73,12 @@ $aliases['ksh'] = array(
 $aliases['lb'] = array(
 	'OpenIDLogin' => array( 'Login fir OpenID' ),
 	'OpenIDConvert' => array( 'OpenID ëmwandelen' ),
+);
+
+/** Malayalam (മലയാളം) */
+$aliases['ml'] = array(
+	'OpenIDLogin' => array( 'ഓപ്പൺഐ.ഡി.പ്രവേശനം' ),
+	'OpenIDServer' => array( 'ഓപ്പൺഐ.ഡി.സെർവർ' ),
 );
 
 /** Dutch (Nederlands) */

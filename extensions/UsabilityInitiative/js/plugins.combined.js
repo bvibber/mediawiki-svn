@@ -5182,7 +5182,9 @@ $.fn.autoEllipsis = function( options ) {
 	options = $.extend( {
 		'position': 'center',
 		'tooltip': false,
-		'restoreText': false
+		'selector': 'span',
+		'restoreText': false,
+		'hasSpan': false
 	}, options );
 	$(this).each( function() {
 		var $this = $(this);
@@ -5195,8 +5197,13 @@ $.fn.autoEllipsis = function( options ) {
 		}
 		var text = $this.text();
 		var w = $this.width();
-		var $text = $( '<span />' ).css( 'whiteSpace', 'nowrap' );
-		$this.empty().append( $text );
+		var $text;
+		if ( options.hasSpan ) {
+			$text = $this.children( options.selector );
+		} else {
+			$text = $( '<span />' ).css( 'whiteSpace', 'nowrap' );
+			$this.empty().append( $text );
+		}
 		
 		// Try cache
 		if ( !( text in cache ) ) {
@@ -5204,6 +5211,8 @@ $.fn.autoEllipsis = function( options ) {
 		}
 		if ( w in cache[text] ) {
 			$text.text( cache[text][w] );
+			if ( options.tooltip )
+				$text.attr( 'title', text );
 			return;
 		}
 		
@@ -5252,9 +5261,9 @@ $.fn.autoEllipsis = function( options ) {
 					}
 					break;
 			}
-			if ( options.tooltip )
-				$text.attr( 'title', text );
 		}
+		if ( options.tooltip )
+			$text.attr( 'title', text );
 		cache[text][w] = $text.text();
 	} );
 };
@@ -5782,6 +5791,15 @@ $.fn.extend( {
  * 		Type: Number, Range: 1 - 100, Default: 7
  * delay: Number of ms to wait for the user to stop typing
  * 		Type: Number, Range: 0 - 1200, Default: 120
+ * submitOnClick: Whether to submit the form containing the textbox when a suggestion is clicked
+ *		Type: Boolean, Default: false
+ * maxExpandFactor: Maximum suggestions box width relative to the textbox width.  If set to e.g. 2, the suggestions box
+ *		will never be grown beyond 2 times the width of the textbox.
+ *		Type: Number, Range: 1 - infinity, Default: 3
+ * positionFromLeft: Whether to position the suggestion box with the left attribute or the right
+ *		Type: Boolean, Default: true
+ *  highlightInput: Highlights the matched text in the suggestions
+ *		Type: Boolean, Default: true
  */
 ( function( $ ) {
 
@@ -5871,18 +5889,27 @@ $.suggestions = {
 						// Rebuild the suggestions list
 						context.data.$container.show();
 						// Update the size and position of the list
-						context.data.$container.css( {
+						var newCSS = {
 							'top': context.config.$region.offset().top + context.config.$region.outerHeight(),
 							'bottom': 'auto',
 							'width': context.config.$region.outerWidth(),
-							'height': 'auto',
-							'left': context.config.$region.offset().left,
-							'right': 'auto'
-						} );
+							'height': 'auto'
+						}
+						if ( context.config.positionFromLeft ) {
+							newCSS['left'] = context.config.$region.offset().left;
+							newCSS['right'] = 'auto';
+						} else {
+							newCSS['left'] = 'auto';
+							newCSS['right'] = $( 'body' ).width() - ( context.config.$region.offset().left + context.config.$region.outerWidth() );
+						}
+						context.data.$container.css( newCSS );
 						var $results = context.data.$container.children( '.suggestions-results' );
 						$results.empty();
+						var expWidth = -1;
+						var $autoEllipseMe = $( [] );
 						for ( var i = 0; i < context.config.suggestions.length; i++ ) {
-							$result = $( '<div />' )
+							var text = context.config.suggestions[i];
+							var $result = $( '<div />' )
 								.addClass( 'suggestions-result' )
 								.attr( 'rel', i )
 								.data( 'text', context.config.suggestions[i] )
@@ -5892,13 +5919,43 @@ $.suggestions = {
 									);
 								} )
 								.appendTo( $results );
+							
 							// Allow custom rendering
 							if ( typeof context.config.result.render == 'function' ) {
-								context.config.result.render.call( $result, context.config.suggestions[i] );
+								context.config.result.render.call( $result, text );
 							} else {
-								$result.text( context.config.suggestions[i] ).autoEllipsis();
+								// Add <span> with text
+								if( context.config.highlightInput ) {
+									var matchedText = text.substr( 0, context.data.prevText.length );
+									text = text.substr( context.data.prevText.length, text.length );
+									$result.append( $( '<div />' )
+											.css( 'whiteSpace', 'nowrap' )
+											.text( text )
+											.prepend( $( '<strong />' ).text( matchedText ) )
+										);
+								} else {
+									$result.append( $( '<div />' )
+											.css( 'whiteSpace', 'nowrap' )
+											.text( text )
+										);
+								}
+								
+								// Widen results box if needed
+								// New width is only calculated here, applied later
+								var $span = $result.children( 'div' );
+								if ( $span.outerWidth() > $result.width() && $span.outerWidth() > expWidth ) {
+									expWidth = $span.outerWidth();
+								}
+								$autoEllipseMe = $autoEllipseMe.add( $result );
 							}
 						}
+						// Apply new width for results box, if any
+						if ( expWidth > context.data.$container.width() ) {
+							var maxWidth = context.config.maxExpandFactor*context.data.$textbox.width();
+							context.data.$container.width( Math.min( expWidth, maxWidth ) );
+						}
+						// autoEllipse the results. Has to be done after changing the width
+						$autoEllipseMe.autoEllipsis( { hasSpan: true, tooltip: true, selector: 'div' } );
 					}
 				}
 				break;
@@ -5908,7 +5965,12 @@ $.suggestions = {
 			case 'delay':
 				context.config[property] = Math.max( 0, Math.min( 1200, value ) );
 				break;
+			case 'maxExpandFactor':
+				context.config[property] = Math.max( 1, value );
+				break;
 			case 'submitOnClick':
+			case 'positionFromLeft':
+			case 'highlightInput':
 				context.config[property] = value ? true : false;
 				break;
 		}
@@ -6009,7 +6071,11 @@ $.suggestions = {
 				context.data.$container.hide();
 				preventDefault = wasVisible;
 				selected = context.data.$container.find( '.suggestions-result-current' );
-				if ( selected.is( '.suggestions-special' ) ) {
+				if ( selected.size() == 0 ) {
+					// if nothing is selected, cancel any current requests and submit the form
+					$.suggestions.cancel( context );
+					context.config.$region.closest( 'form' ).submit();
+				} else if ( selected.is( '.suggestions-special' ) ) {
 					if ( typeof context.config.special.select == 'function' ) {
 						context.config.special.select.call( selected, context.data.$textbox );
 					}
@@ -6043,10 +6109,10 @@ $.fn.suggestions = function() {
 		/* Construction / Loading */
 		
 		var context = $(this).data( 'suggestions-context' );
-		if ( typeof context == 'undefined' ) {
+		if ( typeof context == 'undefined' || context == null ) {
 			context = {
 				config: {
-				    'fetch' : function() {},
+					'fetch' : function() {},
 					'cancel': function() {},
 					'special': {},
 					'result': {},
@@ -6054,7 +6120,10 @@ $.fn.suggestions = function() {
 					'suggestions': [],
 					'maxRows': 7,
 					'delay': 120,
-					'submitOnClick': false
+					'submitOnClick': false,
+					'maxExpandFactor': 3,
+					'positionFromLeft': true,
+					'highlightInput': true
 				}
 			};
 		}
@@ -6093,13 +6162,22 @@ $.fn.suggestions = function() {
 				'mouseDownOn': $( [] ),
 				'$textbox': $(this)
 			};
+			// Setup the css for positioning the results box
+			var newCSS = {
+				'top': Math.round( context.data.$textbox.offset().top + context.data.$textbox.outerHeight() ),
+				'width': context.data.$textbox.outerWidth(),
+				'display': 'none'
+			}
+			if ( context.config.positionFromLeft ) {
+				newCSS['left'] = context.config.$region.offset().left;
+				newCSS['right'] = 'auto';
+			} else {
+				newCSS['left'] = 'auto';
+				newCSS['right'] = $( 'body' ).width() - ( context.config.$region.offset().left + context.config.$region.outerWidth() );
+			}
+			
 			context.data.$container = $( '<div />' )
-				.css( {
-					'top': Math.round( context.data.$textbox.offset().top + context.data.$textbox.outerHeight() ),
-					'left': Math.round( context.data.$textbox.offset().left ),
-					'width': context.data.$textbox.outerWidth(),
-					'display': 'none'
-				} )
+				.css( newCSS )
 				.addClass( 'suggestions' )
 				.append(
 					$( '<div />' ).addClass( 'suggestions-results' )
@@ -6685,6 +6763,7 @@ $.wikiEditor = {
 	'isSupported': function( module ) {
 		// Fallback to the wikiEditor browser map if no special map is provided in the module
 		var mod = module && 'browsers' in module ? module : $.wikiEditor;
+		return mod.supported = true;
 		// Check for and make use of cached value and early opportunities to bail
 		if ( typeof mod.supported !== 'undefined' ) {
 			// Cache hit
@@ -6996,7 +7075,7 @@ if ( !context || typeof context == 'undefined' ) {
 				// Surround by <p> if it does not already have it
 				var cursorPos = context.fn.getCaretPosition();
 				var t = context.fn.getOffset( cursorPos[0] );
-				if ( t && t.node.nodeName == '#text' && t.node.parentNode.nodeName.toLowerCase() == 'body' ) {
+				if ( ! $.browser.msie && t && t.node.nodeName == '#text' && t.node.parentNode.nodeName.toLowerCase() == 'body' ) {
 					$( t.node ).wrap( "<p></p>" );
 					context.fn.purgeOffsets();
 					context.fn.setSelection( { start: cursorPos[0], end: cursorPos[1] } );
@@ -7018,8 +7097,12 @@ if ( !context || typeof context == 'undefined' ) {
 		'paste': function( event ) {
 			// Save the cursor position to restore it after all this voodoo
 			var cursorPos = context.fn.getCaretPosition();
-			var oldLength = context.fn.getContents().length - ( cursorPos[1] - cursorPos[0] );
-			context.$content.find( ':not(.wikiEditor)' ).addClass( 'wikiEditor' );
+			if ( !context.$content.text() ) {
+				context.$content.empty();
+			}
+			var oldLength = context.fn.getContents().length;
+			
+			context.$content.find( '*' ).addClass( 'wikiEditor' );
 			if ( $.layout.name !== 'webkit' ) {
 				context.$content.addClass( 'pasting' );
 			}
@@ -7039,72 +7122,88 @@ if ( !context || typeof context == 'undefined' ) {
 						var outerParent = $(this).parent();
 						outerParent.replaceWith( outerParent.childNodes );
 					} );
+
 				// Unwrap the span found in webkit copies (Apple Richtext)
-				context.$content.find( 'span.Apple-style-span' ).each( function() {
-					$(this).replaceWith( this.childNodes );
-				} );
+				if ( ! $.browser.msie ) {
+					context.$content.find( 'span.Apple-style-span' ).each( function() {
+						$(this).replaceWith( this.childNodes );
+					} );
+				}
 				
-				// If the pasted content is plain text then wrap it in a <p> and adjust the <br> accordingly 
-				var pasteContent = context.fn.getOffset( cursorPos[0] ).node;
-				var removeNextBR = false;
-				while ( pasteContent != null && !$( pasteContent ).hasClass( 'wikiEditor' ) ) {
-					var currentNode = pasteContent;
-					pasteContent = pasteContent.nextSibling;
-					if ( currentNode.nodeName == '#text' && currentNode.nodeValue == currentNode.wholeText ) {
-						var pWrapper = $( '<p />' ).addClass( 'wikiEditor' );
-						$( currentNode ).wrap( pWrapper );
-						$( currentNode ).addClass( 'wikiEditor' );
-						removeNextBR = true;
-					} else if ( currentNode.nodeName == 'BR' && removeNextBR ) {
-						$( currentNode ).remove();
-						removeNextBR = false;
-					} else {
-						removeNextBR = false;
-					}
-				}	
 				var $selection = context.$content.find( ':not(.wikiEditor)' );
+				var newElementHTML = '' ;
+				var $markElement = null;
 				while ( $selection.length && $selection.length > 0 ) {
 					var $currentElement = $selection.eq( 0 );
+						
+					//go up till we find the first pasted element
 					while ( !$currentElement.parent().is( 'body' ) && !$currentElement.parent().is( '.wikiEditor' ) ) {
 						$currentElement = $currentElement.parent();
 					}
+					//go to the previous element till we find the first pasted element
+					while ( $currentElement[0] != null && 
+							$currentElement[0].previousSibling != null && 
+							!$( $currentElement[0].previousSibling ).hasClass( 'wikiEditor' ) ) {
+						$currentElement = $( $currentElement[0].previousSibling );
+					}
 					
-					var $newElement;
-					if ( $currentElement.is( 'p' ) || $currentElement.is( 'div' ) || $currentElement.is( 'pre' ) ) {
-						//Convert all <div>, <p> and <pre> that was pasted into a <p> element
-						$newElement = $( '<p />' );
+					// we're going to collect and sanitize all the pasted content and then insert it at $markElement 
+					var currentHTML = '';
+					if ( $currentElement[0].nodeName == '#text' ) { 
+						//if it is a text node then just append it
+						currentHTML = $currentElement[0].nodeValue;
 					} else {
-						// everything else becomes a <span>
-						$newElement = $( '<span />' ).addClass( 'wikiEditor' );
+						currentHTML = $currentElement.html();
+						// First remove all new lines
+						currentHTML = currentHTML.replace( /\r?\n/g, '');
+						//replace all forms of <p> tags with a \n. All other tags get removed.
+						currentHTML = currentHTML.replace(/(<[\s]*p[^>]*>)|(<[\s]*\/p[^>]*>)|(<[\s]*p[^\/>]*\/>)/gi, '\n');
+						// Replace all forms of html tags that should end up in their own <p>
+						currentHTML = currentHTML.replace(/(<[\s]*p[^>]*>)|(<[\s]*\/p[^>]*>)|(<[\s]*p[^\/>]*\/>)|(<[\s]*h[\d][^>]*>)|(<[\s]*h[\d][^\/>]*\/>)/gi, '\n');
+						currentHTML = currentHTML.replace(/(<[^>]*>)|(<[^\>]*\>)/gi, '');
+						currentHTML += '\n';
 					}
+					newElementHTML += currentHTML;
 					
-					// If the pasted content was html, just convert it into text and <br>
-					var pieces = $.trim( $currentElement.text() ).split( '\n' );
-					var newElementHTML = '';
-					for ( var i = 0; i < pieces.length; i++ ) {
-						if ( pieces[i] ) {
-							newElementHTML += $.trim( pieces[i] );
-						} else {
-							newElementHTML += '<span><br class="wikiEditor" /></span>';
-						}
-					}
-					$newElement.html( newElementHTML )
-						.addClass( 'wikiEditor' )
-						.insertAfter( $currentElement );
+					if ( $markElement == null ) {
+						$markElement = $( '<div></div>' ).addClass( 'wikiEditor' ).insertAfter( $currentElement );
+                    }
 					$currentElement.remove();
-
 					$selection = context.$content.find( ':not(.wikiEditor)' );
 				}
+				
+				//now put a <p> around each line of pasted content
+				var pieces = newElementHTML.split( '\n' );
+				var $newElement;
+				for ( var i = 0; i < pieces.length; i++ ) {
+					$newElement = $( '<p></p>' );
+					if ( pieces[i] ) {
+						$newElement.text( pieces[i] );
+					} else {
+						$newElement.html( '<br>' );
+					}
+					
+					$newElement.insertAfter( $markElement );
+					if (i == 0 ) {
+						$markElement.remove();
+					}
+					$markElement = $newElement;
+				}
+
 
 				context.$content.find( '.wikiEditor' ).removeClass( 'wikiEditor' );
 				if ( $.layout.name !== 'webkit' ) {
 					context.$content.removeClass( 'pasting' );
 				}
 				
+				
 				// Restore cursor position
 				context.fn.purgeOffsets();
 				var newLength = context.fn.getContents().length;
 				var restoreTo = cursorPos[0] + newLength - oldLength;
+				if ( restoreTo > newLength ) {
+					restoreTo = newLength;
+				}
 				context.fn.setSelection( { start: restoreTo, end: restoreTo } );
 			}, 0 );
 			return true;
@@ -8226,10 +8325,10 @@ if ( !context || typeof context == 'undefined' ) {
 					end = e ? e.offset : null;
 					// Don't try to set the selection past the end of a node, causes errors
 					// Just put the selection at the end of the node in this case
-					if ( sc.nodeName == '#text' && start > sc.nodeValue.length ) {
+					if ( sc != null && sc.nodeName == '#text' && start > sc.nodeValue.length ) {
 						start = sc.nodeValue.length - 1;
 					}
-					if ( ec.nodeName == '#text' && end > ec.nodeValue.length ) {
+					if ( ec != null && ec.nodeName == '#text' && end > ec.nodeValue.length ) {
 						end = ec.nodeValue.length - 1;
 					}
 				}

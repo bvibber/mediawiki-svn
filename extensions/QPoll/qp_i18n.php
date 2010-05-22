@@ -228,6 +228,59 @@ Om \'n peiling te stoor, stuur dit sonder dat enig voorstel beantwoord word.',
 	'qp_error_unique' => 'Vir die vraag van die tipe unique() is daar meer voorstelle as moontlike antwoorde gedefinieer. Dit is nie reg voorberei nie.',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'qp_votes_count' => '$1 {{PLURAL:$1|votuar|vota}}',
+	'qp_source_link' => 'Burim',
+	'qp_stats_link' => 'Statistika',
+	'qp_users_link' => 'Përdorues',
+	'qp_voice_link' => 'zëri i përdoruesit',
+	'qp_voice_link_inv' => 'zë User?',
+	'qp_user_polls_link' => 'Marrë pjesë në $1 {{PLURAL:$1|sondazhi|Sondazhet}}',
+	'qp_user_missing_polls_link' => 'Nuk ka pjesëmarrje',
+	'qp_not_participated_link' => 'Nuk ka marrë pjesë',
+	'qp_order_by_username' => 'Rendit nga username',
+	'qp_order_by_polls_count' => 'Rendit nga sondazhet numërimin e',
+	'qp_results_line_qupl' => 'Faqja "$1" Hulumtimi i opinionit publik "$2": $3',
+	'qp_results_line_qpl' => 'Faqja "$1" Hulumtimi i opinionit publik "$2": $3, $4, $5, $6',
+	'qp_header_line_qpul' => '$1 [ Faqja "$2" Hulumtimi i opinionit publik "$3"]',
+	'qp_export_to_xls' => 'Statistikat e eksportit në formatin XLS',
+	'qp_users_answered_questions' => '$1 {{PLURAL:$1|përdorues|përdorues}} përgjigjur në pyetjet',
+	'qp_func_no_such_poll' => 'Asnjë sondazh i tillë ($1)',
+	'qp_func_missing_question_id' => 'Ju lutem specifikoni një pyetje id ekzistuese (duke filluar nga 1) për sondazhi i $1',
+	'qp_func_invalid_question_id' => 'pyetje e pavlefshme id = $2 (nuk një numër) për sondazhi i $1',
+	'qp_func_missing_proposal_id' => 'Ju lutem specifikoni një propozim id ekzistuese (duke filluar nga 0) për votimin e pyetjes $1, $2',
+	'qp_func_invalid_proposal_id' => 'propozimin e pavlefshme id = $3 nuk (një numër) për votimin e pyetjes $1, $2',
+	'qp_error_no_such_poll' => 'Asnjë sondazh i tillë ($1). Sigurohuni që sondazhi i deklaruar dhe ruhet, gjithashtu të jetë e sigurtë për të përdorur karakter adresën Kufi #',
+	'qp_error_in_question_header' => 'Fillim i pavlefshëm pyetje: $1',
+	'qp_error_id_in_stats_mode' => 'Nuk mund të deklarojë një ID të anketës në mënyrë statistikore',
+	'qp_error_dependance_in_stats_mode' => 'Nuk mund të deklaroj zinxhir dependance e anketës në mënyrë statistikore',
+	'qp_error_no_stats' => 'Nuk ka të dhëna statistikore është në dispozicion, sepse askush nuk ka votuar për këtë sondazh, por (adresa = $1)',
+	'qp_error_address_in_decl_mode' => 'Nuk mund të merrni një adresë e anketës në deklaratë mode',
+	'qp_error_question_not_implemented' => 'Pyetjet e tipit të tillë nuk janë zbatuar: $1',
+	'qp_error_invalid_question_type' => 'Lloj i pavlefshëm pyetje: $1',
+	'qp_error_type_in_stats_mode' => 'Lloji i Pyetja nuk mund të përcaktohet në mënyrë të shfaqur statistikore: $1',
+	'qp_error_no_poll_id' => 'tag Anketa id ka asnjë atribut të përcaktuar.',
+	'qp_error_invalid_poll_id' => 'Sondazhi id pavlefshme (id = $1). id Anketa mund të përmbajë vetëm shkronja, numra dhe karakterin hapësirë',
+	'qp_error_already_used_poll_id' => 'Id sondazh është tashmë të përdorura në këtë faqe (id = $1).',
+	'qp_error_invalid_dependance_value' => 'Anketa (id = 1 $) zinxhirit të dependance ka vlerë të pavlefshme e vetive dependance (dependance = "$2")',
+	'qp_error_missed_dependance_title' => 'Anketa (id = $1) është i varur nga anketa e një tjetër (id = $3) nga faqja [[$2]], por titullin [[$2]] nuk u gjet.
+Ose hequr atribut dependance, ose rivendosjen e [[$2]]',
+	'qp_error_missed_dependance_poll' => 'Anketa (id = $1) është i varur nga anketa e një tjetër (id = $3) në faqe $2, por se sondazhi nuk ekziston ose nuk është ruajtur akoma. Ose hequr atribut dependance, apo krijimi i anketës me id = $3 në faqe $2 dhe për të shpëtuar atë. Për të ruajtur një sondazh, i jepni kohë nuk iu përgjigjur ndonjë pyetje propozim.',
+	'qp_error_vote_dependance_poll' => 'Ju lutemi të votojnë për sondazh $1 të parë.',
+	'qp_error_too_many_spans' => 'Shumë grupe të kategorisë së për numrin e përgjithshëm të nën-kategori të përcaktuara',
+	'qp_error_unanswered_span' => 'nënkategori pa përgjigje',
+	'qp_error_non_unique_choice' => 'Kjo pyetje kërkon përgjigje unike propozim',
+	'qp_error_category_name_empty' => 'Emri Kategoria është e zbrazët',
+	'qp_error_proposal_text_empty' => 'tekstit Propozimi është e zbrazët',
+	'qp_error_too_few_categories' => 'Së paku dy kategori duhet të përcaktohet',
+	'qp_error_too_few_spans' => 'Çdo grup kategori Duhet të përmbajë të paktën dy nën-kategori',
+	'qp_error_no_answer' => 'propozim pa përgjigje',
+	'qp_error_unique' => 'Pyetje të tipit () ka unike propozimet më shumë se përgjigje të mundshme të përcaktuara: e pamundur për të kompletuar',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK
@@ -1867,9 +1920,9 @@ $messages['pt-br'] = array(
  * @author Firilacroco
  */
 $messages['ro'] = array(
-	'qp_vote_button' => 'Votaţi',
-	'qp_polls_list' => 'Arătaţi toate sondajele',
-	'qp_users_list' => 'Arătaţi toţi utilizatorii',
+	'qp_vote_button' => 'Votați',
+	'qp_polls_list' => 'Arătați toate sondajele',
+	'qp_users_list' => 'Arătați toți utilizatorii',
 	'qp_source_link' => 'Sursa',
 	'qp_stats_link' => 'Statistici',
 	'qp_users_link' => 'Utilizatori',

@@ -33,6 +33,14 @@ $messages['af'] = array(
 	'vector-desc' => 'Verbeter die gebruikerskoppelvlak-elemente van die Vektor omslag (skin).',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'vector' => 'përmirësime UI për Vektor',
+	'vector-desc' => 'Në elementet përmirëson ndërfaqen e përdoruesit të lëkurës Vektor.',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -378,8 +386,8 @@ $messages['pt-br'] = array(
  * @author Stelistcristi
  */
 $messages['ro'] = array(
-	'vector' => 'Îmbunătăţiri la nivelul interfaţei pentru Vector',
-	'vector-desc' => 'Îmbunătăţiri la elementele interfaţei a temei Vector.',
+	'vector' => 'Îmbunătățiri la nivelul interfaței pentru Vector',
+	'vector-desc' => 'Îmbunătățiri la elementele interfaței a temei Vector.',
 );
 
 /** Tarandíne (Tarandíne)

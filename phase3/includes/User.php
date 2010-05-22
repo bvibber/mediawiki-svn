@@ -2160,7 +2160,7 @@ class User {
 					'ug_user'  => $this->getID(),
 					'ug_group' => $group,
 				),
-				'User::addGroup',
+				__METHOD__,
 				array( 'IGNORE' ) );
 		}
 
@@ -2183,8 +2183,7 @@ class User {
 			array(
 				'ug_user'  => $this->getID(),
 				'ug_group' => $group,
-			),
-			'User::removeGroup' );
+			), __METHOD__ );
 
 		$this->loadGroups();
 		$this->mGroups = array_diff( $this->mGroups, array( $group ) );
@@ -2777,7 +2776,7 @@ class User {
 			return $res;
 		else {
 			$dbr = wfGetDB( DB_SLAVE );
-			return $res = $dbr->selectField( 'user', 'max(user_id)', false, 'User::getMaxID' );
+			return $res = $dbr->selectField( 'user', 'max(user_id)', false, __METHOD__ );
 		}
 	}
 
@@ -3747,5 +3746,95 @@ class User {
 		*/
 
 		return $ret;
+	}
+
+	/**
+	 * Format the user message using a hook, a template, or, failing these, a static format.
+	 * @param $subject   String the subject of the message
+	 * @param $text      String the content of the message
+	 * @param $signature String the signature, if provided.
+	 */
+	static protected function formatUserMessage( $subject, $text, $signature ) {
+		if ( wfRunHooks( 'FormatUserMessage',
+				array( $subject, &$text, $signature ) ) ) {
+
+			$signature = empty($signature) ? "~~~~~" : "{$signature} ~~~~~";
+
+			$template = Title::newFromText( wfMsgForContent( 'usermessage-template' ) );
+			if ( !$template
+					|| $template->getNamespace() !== NS_TEMPLATE
+					|| !$template->exists() ) {
+				$text = "== $subject ==\n\n$text\n\n-- $signature";
+			} else {
+				$text = '{{'. $template->getText()
+					. " | subject=$subject | body=$text | signature=$signature }}";
+			}
+		}
+
+		return $text;
+	}
+
+	/**
+	 * Leave a user a message
+	 * @param $subject String the subject of the message
+	 * @param $text String the message to leave
+	 * @param $signature String Text to leave in the signature
+	 * @param $summary String the summary for this change, defaults to
+	 *                        "Leave system message."
+	 * @param $article Article The article to update, defaults to the
+	 *                        user's talk page.
+	 * @param $editor User The user leaving the message, defaults to
+	 *                        "{{MediaWiki:usermessage-editor}}"
+	 * @param $flags Int default edit flags
+	 *
+	 * @return boolean true if it was successful
+	 */
+	public function leaveUserMessage( $subject, $text, $signature = "",
+			$summary = null, $editor = null, $flags = 0 ) {
+		if ( !isset( $summary ) ) {
+			$summary = wfMsgForContent( 'usermessage-summary' );
+		}
+
+		if ( !isset( $editor ) ) {
+			$editor = User::newFromName( wfMsgForContent( 'usermessage-editor' ) );
+			if ( !$editor->isLoggedIn() ) {
+				$editor->addToDatabase();
+			}
+		}
+
+		$article = new Article( $this->getTalkPage() );
+		wfRunHooks( 'SetupUserMessageArticle',
+			array( $this, &$article, $subject, $text, $signature, $summary, $editor ) );
+
+
+		$text = self::formatUserMessage( $subject, $text, $signature );
+		$flags = $article->checkFlags( $flags );
+
+		if ( $flags & EDIT_UPDATE ) {
+			$text .= $article->getContent();
+		}
+
+		$dbw = wfGetDB( DB_MASTER );
+		$dbw->begin();
+
+		try {
+			$status = $article->doEdit( $text, $summary, $flags, false, $editor );
+		} catch ( DBQueryError $e ) {
+			$status = Status::newFatal("DB Error");
+		}
+
+		if ( $status->isGood() ) {
+			// Set newtalk with the right user ID
+			$this->setNewtalk( true );
+			wfRunHooks( 'AfterUserMessage',
+				array( $this, $article, $summary, $text, $signature, $summary, $editor ) );
+			$dbw->commit();
+		} else {
+			// The article was concurrently created
+			wfDebug( __METHOD__ . ": Error ".$status->getWikiText() );
+			$dbw->rollback();
+		}
+
+		return $status->isGood();
 	}
 }

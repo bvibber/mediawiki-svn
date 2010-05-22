@@ -17,7 +17,7 @@ $aliases['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'RecordAdmin' => array( 'تسجيل_إدارى' ),
+	'RecordAdmin' => array( 'تسجيل_ادارى' ),
 );
 
 /** French (Français) */

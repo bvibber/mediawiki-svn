@@ -1012,6 +1012,12 @@ $4',
 	'right-todosubmit' => 'Membatasi hak daftar tugas pengguna',
 );
 
+/** Igbo (Igbo) */
+$messages['ig'] = array(
+	'todo-list-change' => 'Gbanwere',
+	'todo-list-cancel' => 'Emekwàlà',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  */
@@ -1191,7 +1197,7 @@ $messages['mhr'] = array(
  */
 $messages['mk'] = array(
 	'todo' => 'Листа на задачи',
-	'todo-desc' => 'Експериментално проширување за лична [[Special:Todo|листа на задачи]]',
+	'todo-desc' => 'Експериментален додаток за лична [[Special:Todo|листа на задачи]]',
 	'todo-tab' => 'задачи',
 	'todo-new-queue' => 'нова',
 	'todo-mail-subject' => 'Завршена задача на листата на задачи на $1',
@@ -1651,7 +1657,7 @@ $messages['ro'] = array(
 	'todo-list-cancel' => 'Anulează',
 	'todo-new-item' => 'Element nou',
 	'todo-form-details' => 'Detalii:',
-	'todo-form-submit' => 'Trimiteţi interogare',
+	'todo-form-submit' => 'Trimiteți interogare',
 );
 
 /** Tarandíne (Tarandíne)

@@ -1156,7 +1156,7 @@ $messages['it'] = array(
 Un registro delle aggiunte recenti agli osservati speciali è disponibile presso [[Special:PovWatch/log]].',
 	'povwatch_subscriber_list' => 'È disponibile un [[Special:PovWatch/subscribers|elenco degli iscritti]].',
 	'povwatch_subscriber_list_intro' => '<strong>Elenco degli iscritti</strong>',
-	'povwatch_not_allowed_subscribers' => 'Non sei autorizzato a visualizzare l&#39;elenco degli iscritti a PovWatch.',
+	'povwatch_not_allowed_subscribers' => "Non sei autorizzato a visualizzare l'elenco degli iscritti a PovWatch.",
 	'povwatch_unknown_subpage' => 'Sottopagina sconosciuta.',
 	'povwatch_push' => 'Aggiungi',
 	'povwatch_push_intro' => 'Usa il modulo sottostante per aggiungere pagine alle liste degli osservati speciali degli utenti iscritti.
@@ -1172,7 +1172,7 @@ Clicca sul pulsante qui sotto per cancellarti.',
 Clicca sul pulsante qui sotto per iscriverti.',
 	'povwatch_subscribe' => 'Iscriviti',
 	'povwatch_added' => 'aggiunto',
-	'right-povwatch_admin' => 'Amministra i diritti utente per l&#39;aggiunta di pagine alle liste degli osservati speciali di altri utenti',
+	'right-povwatch_admin' => "Amministra i diritti utente per l'aggiunta di pagine alle liste degli osservati speciali di altri utenti",
 	'right-povwatch_user' => 'Aggiungi pagine alle liste degli osservati speciali di altri utenti',
 	'action-povwatch_admin' => 'gestire i diritti degli utenti per PovWatch',
 	'action-povwatch_user' => 'aggiungere questa pagina alla lista degli osservati speciali di un altro utente',
@@ -1445,7 +1445,7 @@ $messages['lt'] = array(
  */
 $messages['mk'] = array(
 	'povwatch' => 'PovWatch',
-	'povwatch_desc' => 'Проширување за [[Special:PovWatch|вметнување на страници во листите на набљудувања]] на други корисници',
+	'povwatch_desc' => 'Додаток за [[Special:PovWatch|вметнување на страници во листите на набљудувања]] на други корисници',
 	'povwatch_no_session' => 'Грешка: Не можев да го испратам образецот заради губење на сесиски податоци.',
 	'povwatch_not_allowed_push' => 'Не сте администратор на PovWatch, и затоа не можете да вметнувате страници во листи на набљудувања.',
 	'povwatch_already_subscribed' => 'Веќе сте запишани на PovWatch',
@@ -1825,6 +1825,7 @@ $messages['os'] = array(
  * @author Xqt
  */
 $messages['pdc'] = array(
+	'povwatch_title' => 'Blattnaame:',
 	'povwatch_added' => 'dezu geduh',
 );
 
@@ -2014,14 +2015,14 @@ Clique no botão abaixo para inscrever-se.',
 $messages['ro'] = array(
 	'povwatch_no_session' => 'Eroare: Formularul nu a putut fi trimis din cauza pierderii datelor sesiunii.',
 	'povwatch_invalid_title' => 'Titlul specificat este incorect',
-	'povwatch_subscriber_list' => 'O [[Special:PovWatch/subscribers|listă de înscrişi]] este disponibilă.',
-	'povwatch_subscriber_list_intro' => '<strong>Lista abonaţilor</strong>',
+	'povwatch_subscriber_list' => 'O [[Special:PovWatch/subscribers|listă de înscriși]] este disponibilă.',
+	'povwatch_subscriber_list_intro' => '<strong>Lista abonaților</strong>',
 	'povwatch_unknown_subpage' => 'Subpagină necunoscută.',
 	'povwatch_push' => 'Apasă',
 	'povwatch_title' => 'Titlu:',
 	'povwatch_comment' => 'Comentariu pentru jurnal:',
 	'povwatch_no_log' => 'Nu există intrări în jurnal.',
-	'povwatch_no_subscribers' => 'Nu există abonaţi.',
+	'povwatch_no_subscribers' => 'Nu există abonați.',
 	'povwatch_unsubscribe' => 'Dezabonare',
 	'povwatch_subscribe' => 'Subscriere',
 	'povwatch_added' => 'adăugat',

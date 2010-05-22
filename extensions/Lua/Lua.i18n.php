@@ -601,7 +601,7 @@ $messages['ro'] = array(
 	'lua_error_internal' => 'Eroare internă',
 	'lua_overflow_recursion' => 'Limita de recursie a fost atinsă',
 	'lua_overflow_loc' => 'Numărul maxim de linii de cod a fost atins',
-	'lua_overflow_time' => 'Timpul maxim de execuţie a fost atins',
+	'lua_overflow_time' => 'Timpul maxim de execuție a fost atins',
 );
 
 /** Tarandíne (Tarandíne)

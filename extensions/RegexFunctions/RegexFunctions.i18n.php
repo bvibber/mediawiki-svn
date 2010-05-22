@@ -290,7 +290,7 @@ $messages['pt-br'] = array(
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
-	'regexfunctions-desc' => 'Funcţii de parsare a expresiilor regulate',
+	'regexfunctions-desc' => 'Funcții de parsare a expresiilor regulate',
 );
 
 /** Tarandíne (Tarandíne)

@@ -23,6 +23,13 @@ $messages['qqq'] = array(
 	'semanticgallery-desc' => '{{desc}}',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'semanticgallery-desc' => 'Shton një format të prodhimit galeri të SMW pyetje Inline',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

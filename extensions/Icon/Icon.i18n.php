@@ -527,7 +527,7 @@ $messages['pt-br'] = array(
  */
 $messages['ro'] = array(
 	'icon-badimage' => 'Imagine coruptă',
-	'icon-badwidth' => 'Lăţime incorectă',
+	'icon-badwidth' => 'Lățime incorectă',
 );
 
 /** Tarandíne (Tarandíne)

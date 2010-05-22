@@ -42,10 +42,18 @@ No configuration is possible.',
 	'stabilization-def-short' => 'Default',
 	'stabilization-def-short-0' => 'Current',
 	'stabilization-def-short-1' => 'Published',
-	'stabilize_expiry_invalid' => 'Invalid expiration date.',
-	'stabilize_expiry_old' => 'This expiration time has already passed.',
-	'stabilize-expiring' => 'expires $1 (UTC)',
-	'stabilization-review' => 'Mark the current revision checked',
+    'stabilize_page_invalid'       => 'The target page title is invalid.',
+    'stabilize_page_notexists'     => 'The target page does not exist.',
+    'stabilize_page_unreviewable'  => 'The target page is not in reviewable namespace.',
+    'stabilize_invalid_precedence' => 'Invalid version precedence.',
+    'stabilize_invalid_autoreview' => 'Invalid autoreview restriction.',
+    'stabilize_invalid_level'      => 'Invalid protection level.',
+	'stabilize_expiry_invalid'     => 'Invalid expiration date.',
+	'stabilize_expiry_old'         => 'This expiration time has already passed.',
+    'stabilize_denied'             => 'Permission denied.',
+    'stabilize_protect_quota'      => 'The maximum number of currently flag-protected pages has already been reached.', # do not translate
+	'stabilize-expiring'           => 'expires $1 (UTC)',
+	'stabilization-review'         => 'Mark the current revision checked',
 );
 
 /** Message documentation (Message documentation)
@@ -154,6 +162,53 @@ Geen konfigurasie is moontlik nie.',
 	'stabilize_expiry_invalid' => 'Ongeldige vervaldatum.',
 	'stabilize_expiry_old' => 'Die vervaldatum is reeds verby.',
 	'stabilize-expiring' => 'verval $1 (UTC)',
+);
+
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'stabilization-tab' => 'veteriner',
+	'stabilization' => 'stabilizimin e faqes',
+	'stabilization-text' => "''' Ndryshimi parametrat e mëposhtëm për të rregulluar si versionin e publikuar i [[:\$1|\$1]] është zgjedhur dhe të shfaqet. '''
+
+'''Shënim:''' ndryshim ''botuar versionin e përzgjedhjes'' të preferojnë \"cilësisë\" apo \"i pacenuar\" versione do të ketë efekt në qoftë se nuk ka versione të tilla. Gjithashtu, theksohet se një \"cilësi\" version është konsideruar gjithashtu një \"kontrolluar\" versionin e kështu me radhë.",
+	'stabilization-perm' => 'Llogaria juaj nuk ka leje për të ndryshuar konfigurimin versionin e botuar. Këtu janë parametrat aktual për [[:$1|$1]]:',
+	'stabilization-page' => 'Emri i faqes:',
+	'stabilization-leg' => 'Paneli i Konfirmo publikuar versionin',
+	'stabilization-select' => 'Publikuar zgjedhjen version përparësi',
+	'stabilization-select1' => 'rishikimin e fundit të cilësisë; pastaj e fundit të kthjellët',
+	'stabilization-select2' => 'version i fundit i zgjedhur',
+	'stabilization-select3' => 'version i fundit i pacenuar; pastaj të fundit një cilësi, atëherë e fundit të kthjellët',
+	'stabilization-def' => 'Revision shfaqet në faqe të parë default',
+	'stabilization-def1' => 'Versioni i publikuar, e nëse nuk është i pranishëm, atëherë / draftin aktual',
+	'stabilization-def2' => 'Aktuale / rishikim projekt',
+	'stabilization-restrict' => 'Rishikimi / auto-përmbledhje kufizime',
+	'stabilization-restrict-none' => 'Nuk ka kufizime shtesë',
+	'stabilization-submit' => 'Konfirmoj',
+	'stabilization-notexists' => 'Nuk ka asnjë faqe quhet "[[:$1|$1]] ". Nuk konfigurimit është e mundur.',
+	'stabilization-notcontent' => 'Faqja "[[:$1|$1]] "nuk mund të rishikohet. Nr konfigurimit është e mundur.',
+	'stabilization-comment' => 'Arsyeja:',
+	'stabilization-otherreason' => 'arsye të tjera:',
+	'stabilization-expiry' => 'Skadon:',
+	'stabilization-othertime' => 'kohë të tjera:',
+	'stabilization-sel-short' => 'Përparësi',
+	'stabilization-sel-short-0' => 'Cilësi',
+	'stabilization-sel-short-1' => 'Asnjë',
+	'stabilization-sel-short-2' => 'I pacenuar',
+	'stabilization-def-short' => 'Default',
+	'stabilization-def-short-0' => 'Aktual',
+	'stabilization-def-short-1' => 'Publikuar',
+	'stabilize_page_invalid' => 'Faqja e objektivit titull është i pavlefshëm.',
+	'stabilize_page_notexists' => 'Faqja objektiv nuk ekziston.',
+	'stabilize_page_unreviewable' => 'Faqja objektivi nuk është në hapësirën rishikueshme.',
+	'stabilize_invalid_precedence' => 'përparësi e pavlefshme version.',
+	'stabilize_invalid_autoreview' => 'kufizimin e pavlefshme autoreview',
+	'stabilize_invalid_level' => 'nivelin e pavlefshme mbrojtje.',
+	'stabilize_expiry_invalid' => 'data e skadimit pavlefshme.',
+	'stabilize_expiry_old' => 'Kjo kohë ka kaluar skadimit tashmë.',
+	'stabilize-expiring' => 'kalon $1 (UTC)',
+	'stabilization-review' => 'Mark versionin e fundit kontrolluar',
 );
 
 /** Amharic (አማርኛ)
@@ -422,8 +477,15 @@ $messages['be-tarask'] = array(
 	'stabilization-def-short' => 'Па змоўчваньні',
 	'stabilization-def-short-0' => 'Цяперашняя',
 	'stabilization-def-short-1' => 'Апублікаваная',
+	'stabilize_page_invalid' => 'Няслушная назва мэтавай старонкі.',
+	'stabilize_page_notexists' => 'Мэтавая старонка не існуе.',
+	'stabilize_page_unreviewable' => 'Мэтавай старонкі няма ў прасторы назваў, якую можна рэцэнзаваць.',
+	'stabilize_invalid_precedence' => 'Няслушны прыярытэт вэрсіяў.',
+	'stabilize_invalid_autoreview' => 'Няслушнае абмежаваньне аўтаматычнага рэцэнзаваньня',
+	'stabilize_invalid_level' => 'Няслушны ўзровень абароны.',
 	'stabilize_expiry_invalid' => 'Няслушны тэрмін.',
 	'stabilize_expiry_old' => 'Час сканчэньня ўжо прайшоў.',
+	'stabilize_denied' => 'Доступ забаронены.',
 	'stabilize-expiring' => 'канчаецца $1 (UTC)',
 	'stabilization-review' => 'Пазначыць цяперашнюю вэрсію як правераную',
 );
@@ -652,6 +714,7 @@ $messages['da'] = array(
 /** German (Deutsch)
  * @author Als-Holder
  * @author Giftpflanze
+ * @author Kghbln
  * @author Metalhead64
  * @author Purodha
  * @author Steef389
@@ -660,21 +723,21 @@ $messages['da'] = array(
 $messages['de'] = array(
 	'stabilization-tab' => 'Konfig.',
 	'stabilization' => 'Seitenkonfiguration',
-	'stabilization-text' => "'''Ändere die Einstellungen um festzulegen, wie die markierte Version von „[[:$1|$1]]“ ausgewählt und angezeigt werden soll.'''
+	'stabilization-text' => "'''Ändere die folgenden Einstellungen, um festzulegen, wie die zu veröffentlichende Version von „[[:$1|$1]]“ ausgewählt und angezeigt werden soll.'''
 
-Bei einer Änderung der Konfiguration der standardmäßig angezeigten Version auf „geprüft“ oder „ursprünglich“, sollte darauf geachtet werden, dass die Seite eine solche Version enthält, andernfalls hat die Änderung keine große Auswirkung.",
+'''Hinweis:''' Die Änderung der Konfiguration hinsichtlich der standardmäßig anzuzeigenden Version, auf „geprüft“ oder „neueste markierte“, hat keinerlei Auswirkungen, sofern derartige Versionen nicht vorhanden sind. Bedenke, dass in diesem Zusammenhang eine „markierte“ Version als „geprüfte“ Version angesehen wird.",
 	'stabilization-perm' => 'Du hast nicht die erforderliche Berechtigung, um die Einstellungen der markierten Version zu ändern.
 Die aktuellen Einstellungen für „[[:$1|$1]]“ sind:',
 	'stabilization-page' => 'Seitenname:',
-	'stabilization-leg' => 'Einstellungen der markierten Version für eine Seite',
+	'stabilization-leg' => 'Bestätige die Einstellungen bezüglich der zu veröffentlichenden Version',
 	'stabilization-select' => 'Vorzugsweise letzte stabile Version auswählen',
 	'stabilization-select1' => 'Die letzte geprüfte Version; wenn keine vorhanden ist, dann die letzte gesichtete Version',
 	'stabilization-select2' => 'letzte markierte Version',
 	'stabilization-select3' => 'Die letzte ursprüngliche Version; wenn keine vorhanden ist, dann die letzte gesichtete oder geprüfte Version',
 	'stabilization-def' => 'Angezeigte Version in der normalen Seitenansicht',
-	'stabilization-def1' => 'Die markierte Version; wenn keine vorhanden ist, dann die aktuelle Version/der Entwurf',
+	'stabilization-def1' => 'Die veröffentlichte Version. Sofern keine vorhanden ist, die aktuelle Version/der aktuelle Entwurf',
 	'stabilization-def2' => 'Die aktuelle Version/der Entwurf',
-	'stabilization-restrict' => 'Einschränkung der automatischen Markierung',
+	'stabilization-restrict' => 'Einschränkungen bezüglich des Markierens/des automatischen Markierens',
 	'stabilization-restrict-none' => 'Keine zusätzlichen Einschränkungen',
 	'stabilization-submit' => 'Bestätigen',
 	'stabilization-notexists' => 'Es gibt keine Seite „[[:$1|$1]]“. Keine Einstellungen möglich.',
@@ -690,8 +753,15 @@ Die aktuellen Einstellungen für „[[:$1|$1]]“ sind:',
 	'stabilization-def-short' => 'Standard',
 	'stabilization-def-short-0' => 'Aktuell',
 	'stabilization-def-short-1' => 'stabile Version',
+	'stabilize_page_invalid' => 'Der gewählte Seitentitel ist ungültig.',
+	'stabilize_page_notexists' => 'Die gewählte Seite existiert nicht.',
+	'stabilize_page_unreviewable' => 'Die gewählte Seite befindet sich nicht in einem Namensraum, in dem Markierungen gesetzt werden können.',
+	'stabilize_invalid_precedence' => 'Ungültige Versionspriorität.',
+	'stabilize_invalid_autoreview' => 'Ungültige Einschränkung bezüglich automatischer Markierungen.',
+	'stabilize_invalid_level' => 'Ungültige Seitenschutzart',
 	'stabilize_expiry_invalid' => 'Ungültiges Ablaufdatum.',
 	'stabilize_expiry_old' => 'Das Ablaufdatum wurde überschritten.',
+	'stabilize_denied' => 'Zugriff verweigert.',
 	'stabilize-expiring' => 'erlischt am $2, $3 Uhr (UTC)',
 	'stabilization-review' => 'Markiere die aktuelle Version',
 );
@@ -887,8 +957,11 @@ Neniu konfiguro eblas.',
 	'stabilization-def-short' => 'Defaŭlta',
 	'stabilization-def-short-0' => 'Nuna',
 	'stabilization-def-short-1' => 'Publikigita',
+	'stabilize_page_invalid' => 'La titolo de la cela paĝo estas malvalida.',
+	'stabilize_page_notexists' => 'La cela paĝo ne ekzistas.',
 	'stabilize_expiry_invalid' => 'Malvalida findato.',
 	'stabilize_expiry_old' => 'Ĉi tiu findato jam estas pasita.',
+	'stabilize_denied' => 'Malpermesita.',
 	'stabilize-expiring' => 'findato $1 (UTC)',
 	'stabilization-review' => 'Marki la nunan revizion kiel kontrolitan',
 );
@@ -939,8 +1012,15 @@ La configuración no es posible.',
 	'stabilization-def-short' => 'Por defecto',
 	'stabilization-def-short-0' => 'Actual',
 	'stabilization-def-short-1' => 'Publicado',
+	'stabilize_page_invalid' => 'El título de la página de destino es inválido.',
+	'stabilize_page_notexists' => 'La página de destino es no existe.',
+	'stabilize_page_unreviewable' => 'La página de destino no está en un espacio de nombre en el que sea posible una revisión.',
+	'stabilize_invalid_precedence' => 'Precedencia de versión inválida.',
+	'stabilize_invalid_autoreview' => 'Restricciión e autorevisión inválida.',
+	'stabilize_invalid_level' => 'Nivel de protección inválido.',
 	'stabilize_expiry_invalid' => 'La fecha de caducidad no es válida.',
 	'stabilize_expiry_old' => 'Este tiempo de expiración ya ha pasado',
+	'stabilize_denied' => 'Permiso denegado.',
 	'stabilize-expiring' => 'caduca el $1 (UTC)',
 	'stabilization-review' => 'Marcar la versión actual verificada',
 );
@@ -1125,6 +1205,12 @@ Voici les paramètres actuels de [[:$1|$1]] :",
 	'stabilization-def-short' => 'Défaut',
 	'stabilization-def-short-0' => 'Courante',
 	'stabilization-def-short-1' => 'Publié',
+	'stabilize_page_invalid' => 'Le titre de la page cible est incorrect',
+	'stabilize_page_notexists' => "La page cible n'existe pas.",
+	'stabilize_page_unreviewable' => "La page cible n'est pas dans un espace de noms qui peut être relu.",
+	'stabilize_invalid_precedence' => 'Priorité de version invalide.',
+	'stabilize_invalid_autoreview' => 'Restriction de relecture automatique invalide',
+	'stabilize_invalid_level' => 'Niveau de protection invalide.',
 	'stabilize_expiry_invalid' => "Date d'expiration invalide.",
 	'stabilize_expiry_old' => "Cette durée d'expiration est déjà écoulée.",
 	'stabilize-expiring' => 'Expire le $1 (UTC)',
@@ -1232,8 +1318,15 @@ Velaquí está a configuración actual de "[[:$1|$1]]":',
 	'stabilization-def-short' => 'Por defecto',
 	'stabilization-def-short-0' => 'Actual',
 	'stabilization-def-short-1' => 'Publicada',
-	'stabilize_expiry_invalid' => 'Data non válida de caducidade.',
+	'stabilize_page_invalid' => 'O título da páxina de destino non é correcto.',
+	'stabilize_page_notexists' => 'A páxina de destino non existe.',
+	'stabilize_page_unreviewable' => 'A páxina de destino non está nun espazo de nomes que se poida revisar.',
+	'stabilize_invalid_precedence' => 'Prioridade de versión incorrecta.',
+	'stabilize_invalid_autoreview' => 'Restrición de revisión automática incorrecta',
+	'stabilize_invalid_level' => 'Nivel de protección incorrecto.',
+	'stabilize_expiry_invalid' => 'Data de caducidade non válida.',
 	'stabilize_expiry_old' => 'O tempo de caducidade xa pasou.',
+	'stabilize_denied' => 'Permisos rexeitados.',
 	'stabilize-expiring' => 'caduca o $2 ás $3 (UTC)',
 	'stabilization-review' => 'Marcar a revisión actual como comprobada',
 );
@@ -1479,8 +1572,15 @@ Aktualne nastajenja za „[[:$1|$1]]“ su:',
 	'stabilization-def-short' => 'Standard',
 	'stabilization-def-short-0' => 'Aktualny',
 	'stabilization-def-short-1' => 'Wozjewjeny',
+	'stabilize_page_invalid' => 'Titul ciloweje strony je njepłaćiwy.',
+	'stabilize_page_notexists' => 'Cilowa strona njeeksistuje.',
+	'stabilize_page_unreviewable' => 'Cilowa strona w přepruwujomnym mjenowym rumje njeje.',
+	'stabilize_invalid_precedence' => 'Njepłaćiwa wersijowa priorita.',
+	'stabilize_invalid_autoreview' => 'Njepłaćiwe wobmjezowanje awtomatiskeho přepruwowanja',
+	'stabilize_invalid_level' => 'Njepłaćiwy škitny schodźenk.',
 	'stabilize_expiry_invalid' => 'Njepłaćiwy datum spadnjenja.',
 	'stabilize_expiry_old' => 'Tutón čas spadnjenja je hižo zańdźeny.',
+	'stabilize_denied' => 'Prawo zapowědźene.',
 	'stabilize-expiring' => 'spadnje $1 hodź. (UTC)',
 	'stabilization-review' => 'Aktualnu wersiju jako skontrolowanu markěrować',
 );
@@ -1571,8 +1671,15 @@ Nulle configuration es possibile.',
 	'stabilization-def-short' => 'Predefinition',
 	'stabilization-def-short-0' => 'Actual',
 	'stabilization-def-short-1' => 'Publicate',
+	'stabilize_page_invalid' => 'Le titulo del pagina de destination es invalide.',
+	'stabilize_page_notexists' => 'Le pagina de destination non existe.',
+	'stabilize_page_unreviewable' => 'Le pagina de destination non es in un spatio de nomines revisibile.',
+	'stabilize_invalid_precedence' => 'Precedentia de versiones invalide.',
+	'stabilize_invalid_autoreview' => 'Restriction de autorevision invalide.',
+	'stabilize_invalid_level' => 'Nivello de protection invalide.',
 	'stabilize_expiry_invalid' => 'Data de expiration invalide.',
 	'stabilize_expiry_old' => 'Iste tempore de expiration ha ja passate.',
+	'stabilize_denied' => 'Permission refusate.',
 	'stabilize-expiring' => 'expira le $1 (UTC)',
 	'stabilization-review' => 'Marcar le version actual como verificate',
 );
@@ -1627,6 +1734,7 @@ Konfigurasi tak dapat diterapkan.',
  * @author Ukabia
  */
 $messages['ig'] = array(
+	'stabilization-comment' => 'Mgbaghaputa:',
 	'stabilization-sel-short-1' => 'O digị',
 );
 
@@ -1702,6 +1810,7 @@ Non è possibile effettuare la configurazione.',
  * @author Hosiryuhosi
  * @author JtFuruhata
  * @author Whym
+ * @author 青子守歌
  */
 $messages['ja'] = array(
 	'stabilization-tab' => '固定',
@@ -1735,8 +1844,15 @@ $messages['ja'] = array(
 	'stabilization-def-short' => '既定表示',
 	'stabilization-def-short-0' => '最新版',
 	'stabilization-def-short-1' => '公開済み',
+	'stabilize_page_invalid' => '指定したページ名が無効です。',
+	'stabilize_page_notexists' => '指定したページ名が存在しません。',
+	'stabilize_page_unreviewable' => '指定したページは査読可能な名前空間にありません。',
+	'stabilize_invalid_precedence' => '無効なバージョン優先度。',
+	'stabilize_invalid_autoreview' => '無効な自動査読の制限。',
+	'stabilize_invalid_level' => '不正な保護レベル。',
 	'stabilize_expiry_invalid' => '有効期限に不正な日時が設定されました。',
 	'stabilize_expiry_old' => '有効期限に指定された日時を過ぎています。',
+	'stabilize_denied' => '許可されていません。',
 	'stabilize-expiring' => '有効期限: $1 (UTC)',
 	'stabilization-review' => '現在の版を査読済みとする',
 );
@@ -1914,11 +2030,26 @@ $messages['kn'] = array(
 );
 
 /** Korean (한국어)
+ * @author Devunt
  * @author Kwj2772
  */
 $messages['ko'] = array(
+	'stabilization-tab' => '검토',
+	'stabilization' => '문서 안정화',
 	'stabilization-text' => "'''[[:$1]] 문서의 어떤 버전이 선택되어 안정 버전으로 보이게 할 것인지에 대한 설정을 바꾸시려면 아래 양식을 이용해주세요.'''",
+	'stabilization-perm' => '당신의 계정은 게시 설정 변경을 할 수 있는 권한이 없습니다.
+[[:$1|$1]]에 현재 설정이 있습니다',
 	'stabilization-page' => '문서 이름:',
+	'stabilization-leg' => '게시 설정 확인',
+	'stabilization-select' => '게시 버전 선택 우선순위',
+	'stabilization-select1' => '최근 품질 판; 마지막 확인된 판',
+	'stabilization-select2' => '마지막 확인된 판',
+	'stabilization-select3' => '마지막 원본 판; 마지막 풀질 판, 마지막 확인된 판',
+	'stabilization-def' => '기본 문서 보기에서 판 표시',
+	'stabilization-def1' => '게시 판; 현재 판이 아니라면, 현재/임시 판',
+	'stabilization-def2' => '현재/임시 판',
+	'stabilization-restrict' => '검토/자동 검토 제한',
+	'stabilization-restrict-none' => '추가 제한 없음',
 	'stabilization-submit' => '확인',
 	'stabilization-notexists' => '"[[:$1|$1]]" 문서가 존재하지 않습니다.
 설정이 불가능합니다.',
@@ -1928,9 +2059,22 @@ $messages['ko'] = array(
 	'stabilization-otherreason' => '다른 이유:',
 	'stabilization-expiry' => '기한:',
 	'stabilization-othertime' => '다른 시간:',
+	'stabilization-sel-short' => '우선 순위',
+	'stabilization-sel-short-0' => '품질',
+	'stabilization-sel-short-1' => '없음',
+	'stabilization-sel-short-2' => '원본',
 	'stabilization-def-short' => '기본 설정',
+	'stabilization-def-short-0' => '현재',
+	'stabilization-def-short-1' => '게시',
+	'stabilize_page_invalid' => '문서 이름이 잘못되었습니다.',
+	'stabilize_page_notexists' => '문서가 존재하지 않습니다.',
+	'stabilize_page_unreviewable' => '문서가 검토 가능한 이름공간에 존재하지 않습니다',
+	'stabilize_invalid_precedence' => '잘못된 우선순위.',
+	'stabilize_invalid_autoreview' => '잘못된 자동 검토 제한',
+	'stabilize_invalid_level' => '잘못된 보호 수준.',
 	'stabilize_expiry_invalid' => '기한을 잘못 입력하였습니다.',
 	'stabilize_expiry_old' => '기한을 과거로 입력하였습니다.',
+	'stabilize_denied' => '권한 없음',
 	'stabilize-expiring' => '$1 (UTC)에 만료',
 	'stabilization-review' => '현재 판을 확인한 것으로 표시',
 );
@@ -2122,8 +2266,15 @@ $messages['mk'] = array(
 	'stabilization-def-short' => 'Основно',
 	'stabilization-def-short-0' => 'Моментално',
 	'stabilization-def-short-1' => 'Објавена',
+	'stabilize_page_invalid' => 'Целната страница е неважечка.',
+	'stabilize_page_notexists' => 'Целната страница не постои.',
+	'stabilize_page_unreviewable' => 'Целната страница не е во проверлив именски простор.',
+	'stabilize_invalid_precedence' => 'Неважечко првенство на верзија.',
+	'stabilize_invalid_autoreview' => 'Неважечко ограничување на автопрегледот',
+	'stabilize_invalid_level' => 'Неважечко ниво на заштита.',
 	'stabilize_expiry_invalid' => 'Погрешен датум на важност.',
 	'stabilize_expiry_old' => 'Времето на важност веќе е поминато.',
+	'stabilize_denied' => 'Пристапот е забранет.',
 	'stabilize-expiring' => 'истекува $1 (UTC)',
 	'stabilization-review' => 'Обележи ја тековната верзија како проверена',
 );
@@ -2160,6 +2311,11 @@ $messages['ml'] = array(
 	'stabilization-def-short' => 'സ്വതവെ',
 	'stabilization-def-short-0' => 'നിലവിലുള്ളത്',
 	'stabilization-def-short-1' => 'പ്രസിദ്ധീകരിക്കപ്പെട്ടത്',
+	'stabilize_page_invalid' => 'താളിനു ലക്ഷ്യമിട്ട പേര് അസാധുവാണ്.',
+	'stabilize_page_notexists' => 'ലക്ഷ്യമിട്ട താൾ നിലവിലില്ല.',
+	'stabilize_page_unreviewable' => 'ലക്ഷ്യമിട്ട താൾ സംശോധനം ചെയ്യാവുന്ന നാമമേഖലയിലല്ല.',
+	'stabilize_invalid_autoreview' => 'അസാധുവായ സ്വയംസംശോധന പരിമിതപ്പെടുത്തൽ',
+	'stabilize_invalid_level' => 'അസാധുവായ സംരക്ഷണ മാനം.',
 	'stabilize_expiry_invalid' => 'അസാധുവായ കാലാവധി തീയതി.',
 	'stabilize_expiry_old' => 'ഈ കാലാവധി സമയം കഴിഞ്ഞു പോയി.',
 	'stabilize-expiring' => 'കാലാവധി തീരുന്നത് - $1 (UTC)',
@@ -2328,8 +2484,15 @@ Instellen is niet mogelijk.',
 	'stabilization-def-short' => 'Standaard',
 	'stabilization-def-short-0' => 'Huidig',
 	'stabilization-def-short-1' => 'Gepubliceerd',
+	'stabilize_page_invalid' => 'De naam van de doelpagina is ongeldig.',
+	'stabilize_page_notexists' => 'De doelpagina bestaat niet.',
+	'stabilize_page_unreviewable' => 'De doelpagina is bevindt zich niet in een te controleren naamruimte.',
+	'stabilize_invalid_precedence' => 'Ongeldig versievoorvoegsel.',
+	'stabilize_invalid_autoreview' => 'Ongeldige beperking voor automatische controle',
+	'stabilize_invalid_level' => 'Ongeldig beschermingsniveau.',
 	'stabilize_expiry_invalid' => 'Ongeldige vervaldatum.',
 	'stabilize_expiry_old' => 'Deze vervaldatum is al verstreken.',
+	'stabilize_denied' => 'Geen toegang.',
 	'stabilize-expiring' => 'vervalt $1 (UTC)',
 	'stabilization-review' => 'Huidige versie als gecontroleerd markeren',
 );
@@ -2419,6 +2582,12 @@ Her er de nåværende innstillingene for [[:$1|$1]]:',
 	'stabilization-def-short' => 'Standard',
 	'stabilization-def-short-0' => 'Nåværende',
 	'stabilization-def-short-1' => 'Publisert',
+	'stabilize_page_invalid' => 'Målsidetittelen er ugyldig.',
+	'stabilize_page_notexists' => 'Målsiden finnes ikke.',
+	'stabilize_page_unreviewable' => 'Målsiden er ikke i et reviderbart navnerom.',
+	'stabilize_invalid_precedence' => 'Ugyldig versjonsforrang.',
+	'stabilize_invalid_autoreview' => 'Ugyldig autorevideringsbegrensning',
+	'stabilize_invalid_level' => 'Ugyldig beskyttelsesnivå.',
 	'stabilize_expiry_invalid' => 'Ugyldig varighet.',
 	'stabilize_expiry_old' => 'Varigheten har allerede utløpt.',
 	'stabilize-expiring' => 'utgår $1 (UTC)',
@@ -2648,8 +2817,15 @@ Não é possível configurá-la.',
 	'stabilization-def-short' => 'Padrão',
 	'stabilization-def-short-0' => 'Actual',
 	'stabilization-def-short-1' => 'Publicada',
+	'stabilize_page_invalid' => 'O título da página de destino é inválido.',
+	'stabilize_page_notexists' => 'A página de destino não existe.',
+	'stabilize_page_unreviewable' => 'A página de destino não está num espaço nominal sujeito a revisão.',
+	'stabilize_invalid_precedence' => 'Precedência de versões inválida.',
+	'stabilize_invalid_autoreview' => 'Restrição de auto-revisão é inválida',
+	'stabilize_invalid_level' => 'Nível de protecção é inválido.',
 	'stabilize_expiry_invalid' => 'Data de expiração inválida.',
 	'stabilize_expiry_old' => 'Esta data de expiração já passou.',
+	'stabilize_denied' => 'Permissão negada.',
 	'stabilize-expiring' => 'expira às $1 (UTC)',
 	'stabilization-review' => 'Marcar a edição actual como verificada',
 );
@@ -2708,16 +2884,16 @@ Não é possível configurá-la.',
  */
 $messages['ro'] = array(
 	'stabilization-tab' => 'config.',
-	'stabilization-perm' => 'Contul tău nu are permisiunea de a schimba versiunea stabilă a configuraţiei.
-Iată configuraţia curentă pentru [[:$1|$1]]:',
+	'stabilization-perm' => 'Contul tău nu are permisiunea de a schimba versiunea stabilă a configurației.
+Iată configurația curentă pentru [[:$1|$1]]:',
 	'stabilization-page' => 'Numele paginii:',
-	'stabilization-leg' => 'Confirmaţi setările versiunii stabile',
-	'stabilization-select' => 'Precedenta selecţie a versiunii stabile',
-	'stabilization-def' => 'Revizie afişată pe vizualizarea paginii implicite',
+	'stabilization-leg' => 'Confirmați setările versiunii stabile',
+	'stabilization-select' => 'Precedenta selecție a versiunii stabile',
+	'stabilization-def' => 'Revizie afișată pe vizualizarea paginii implicite',
 	'stabilization-def1' => 'Revizia stabilă; dacă nu există, atunci cea curentă',
 	'stabilization-def2' => 'Revizia curentă',
-	'stabilization-restrict' => 'Restricţii pentru revizualizarea automată',
-	'stabilization-restrict-none' => 'Nicio restricţie suplimentară',
+	'stabilization-restrict' => 'Restricții pentru revizualizarea automată',
+	'stabilization-restrict-none' => 'Nicio restricție suplimentară',
 	'stabilization-submit' => 'Confirmă',
 	'stabilization-comment' => 'Motiv:',
 	'stabilization-otherreason' => 'Alt motiv',
@@ -2733,7 +2909,7 @@ Iată configuraţia curentă pentru [[:$1|$1]]:',
 	'stabilize_expiry_invalid' => 'Data expirării incorectă.',
 	'stabilize_expiry_old' => 'Această dată de expirare a trecut deja.',
 	'stabilize-expiring' => 'expiră $1 (UTC)',
-	'stabilization-review' => 'Revizuieşte versiunea curentă',
+	'stabilization-review' => 'Revizuiește versiunea curentă',
 );
 
 /** Tarandíne (Tarandíne)
@@ -2821,8 +2997,15 @@ $messages['ru'] = array(
 	'stabilization-def-short' => 'по умолчанию',
 	'stabilization-def-short-0' => 'текущая',
 	'stabilization-def-short-1' => 'Опубликованная',
+	'stabilize_page_invalid' => 'Целевое название страницы ошибочно.',
+	'stabilize_page_notexists' => 'Целевой страницы не существует.',
+	'stabilize_page_unreviewable' => 'Целевая страница не находится в проверяемом пространстве имён.',
+	'stabilize_invalid_precedence' => 'Ошибочный приоритет версий.',
+	'stabilize_invalid_autoreview' => 'Ошибочные ограничения автопроверки',
+	'stabilize_invalid_level' => 'Ошибочный уровень защиты.',
 	'stabilize_expiry_invalid' => 'Ошибочная дата истечения.',
 	'stabilize_expiry_old' => 'Указанное время окончания действия уже прошло.',
+	'stabilize_denied' => 'Доступ запрещён.',
 	'stabilize-expiring' => 'истекает $1 (UTC)',
 	'stabilization-review' => 'Отметить текущую версию как проверенную',
 );
@@ -2883,6 +3066,18 @@ $messages['sah'] = array(
 	'stabilize_expiry_old' => 'Болдьох этиллибит кэмэ номнуо ааспыт.',
 	'stabilize-expiring' => 'Болдьоҕо бүтэр: $1 (UTC)',
 	'stabilization-review' => 'Билиҥни барылын көрүү',
+);
+
+/** Sardinian (Sardu)
+ * @author Andria
+ */
+$messages['sc'] = array(
+	'stabilization-page' => 'Nùmene pàgina:',
+	'stabilization-submit' => 'Cunfirma',
+	'stabilization-comment' => 'Motivu:',
+	'stabilization-otherreason' => 'Àteru motivu:',
+	'stabilization-sel-short-0' => 'Calidade',
+	'stabilization-sel-short-1' => 'Nudda',
 );
 
 /** Slovak (Slovenčina)
@@ -3103,6 +3298,7 @@ KOnfigurasi teu bisa dilarapkeun.',
 
 /** Swedish (Svenska)
  * @author Boivie
+ * @author Dafer45
  * @author Lejonel
  * @author M.M.S.
  * @author Najami
@@ -3141,10 +3337,13 @@ Här visas de nuvarande inställningarna för [[:$1|$1]]:',
 	'stabilization-def-short' => 'Standard',
 	'stabilization-def-short-0' => 'Senaste',
 	'stabilization-def-short-1' => 'Publicerad',
+	'stabilize_page_invalid' => 'Målsidans titel är ogiltig.',
+	'stabilize_page_notexists' => 'Målsidan finns ej.',
+	'stabilize_invalid_level' => 'Ogiltig skyddsnivå.',
 	'stabilize_expiry_invalid' => 'Ogiltig varaktighet.',
 	'stabilize_expiry_old' => 'Varaktigheten har redan löpt ut.',
 	'stabilize-expiring' => 'upphör den $1 (UTC)',
-	'stabilization-review' => 'Granska den nuvarande versionen',
+	'stabilization-review' => 'Markera den nuvarande revisionen som kontrollerad',
 );
 
 /** Silesian (Ślůnski)
@@ -3404,6 +3603,12 @@ Yapılandırma mümkün değil.',
 	'stabilization-def-short' => 'Varsayılan',
 	'stabilization-def-short-0' => 'Şuanki',
 	'stabilization-def-short-1' => 'Yayımlandı',
+	'stabilize_page_invalid' => 'Hedef sayfa başlığı geçersiz.',
+	'stabilize_page_notexists' => 'Hedef sayfa mevcut değil.',
+	'stabilize_page_unreviewable' => 'Hedef sayfa incelenebilir ad alanında değil.',
+	'stabilize_invalid_precedence' => 'Geçersiz sürüm önceliği.',
+	'stabilize_invalid_autoreview' => 'Geçersiz oto-inceleme kısıtlaması',
+	'stabilize_invalid_level' => 'Geçersiz koruma seviyesi.',
 	'stabilize_expiry_invalid' => 'Geçersiz sona erme tarihi.',
 	'stabilize_expiry_old' => 'Sona erme tarihi zaten geçmiş.',
 	'stabilize-expiring' => '$1 (UTC) tarihinde sona eriyor',
@@ -3723,13 +3928,16 @@ $messages['zh-hans'] = array(
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Alexsh
  * @author Gaoxuewei
+ * @author Horacewai2
  * @author Liangent
  * @author Shinjiman
  */
 $messages['zh-hant'] = array(
 	'stabilization-tab' => '調查',
 	'stabilization' => '穩定頁面',
-	'stabilization-text' => "'''更改以下的設定去調節所選擇的[[:$1|$1]]之穩定版本如何顯示。'''",
+	'stabilization-text' => "'''更改以下的設定去調節所選擇的[[:$1|$1]]之穩定版本如何顯示。'''
+
+注意：如果那麼沒有這樣的版本，更改出版版本設定去選擇「已審核」或是「原始」版本是不會影響的。而且，有質數的版本是已被檢查的。",
 	'stabilization-perm' => '您的賬戶並沒有權限去更改穩定版本設定。
 這是[[:$1|$1]]當前的設定：',
 	'stabilization-page' => '頁面名稱:',
@@ -3739,8 +3947,8 @@ $messages['zh-hant'] = array(
 	'stabilization-select2' => '最近複審過的修訂',
 	'stabilization-select3' => '最近原始的修訂；如果未有，則是最近有質素或視察過的',
 	'stabilization-def' => '在預設頁視的修訂顯示',
-	'stabilization-def1' => '穩定修訂；如果未有，則是現時的',
-	'stabilization-def2' => '現時的修訂',
+	'stabilization-def1' => '穩定修訂；如果未有，則是現時或草稿',
+	'stabilization-def2' => '!現時的修訂',
 	'stabilization-restrict' => '自動審核限制',
 	'stabilization-restrict-none' => '無其他限制',
 	'stabilization-submit' => '確認',
@@ -3759,8 +3967,16 @@ $messages['zh-hant'] = array(
 	'stabilization-def-short' => '預設',
 	'stabilization-def-short-0' => '現時',
 	'stabilization-def-short-1' => '穩定',
+	'stabilize_page_invalid' => '目標頁面名稱是無效的',
+	'stabilize_page_notexists' => '目標頁面不存在',
+	'stabilize_page_unreviewable' => '目標頁面的名字空間不是一個需要審查的名字空間。',
+	'stabilize_invalid_precedence' => '無效的修訂版本。',
+	'stabilize_invalid_autoreview' => '沒有自動複查權限',
+	'stabilize_invalid_level' => '無效的保護水平。',
 	'stabilize_expiry_invalid' => '無效的到期日。',
 	'stabilize_expiry_old' => '到期日已過。',
+	'stabilize_denied' => '權限錯誤',
 	'stabilize-expiring' => '於 $1 （UTC） 到期',
+	'stabilization-review' => '將此當前版本標記為已查閱',
 );
 

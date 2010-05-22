@@ -79,6 +79,33 @@ $messages['af'] = array(
 	'refreshspecial-choice' => 'besig met die verfris van spesiale bladsye',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'refreshspecial' => 'Rifresko faqet speciale',
+	'refreshspecial-desc' => 'Lejon [[Special:RefreshSpecial|manual rifreskoni faqen speciale]] i faqeve speciale',
+	'refreshspecial-title' => 'Rifresko faqet speciale',
+	'refreshspecial-help' => "Kjo faqe speciale siguron mjetet për të rifreskoni manualisht faqe të veçantë. Kur ju keni zgjedhur të gjitha faqet që ju doni të rifreskoni, klikoni në \"Refresh zgjedhur\" butonin e mëposhtëm për të rifreskoni të veçantë faqet e zgjedhur. \"Kujdes'':'''refresh mund të të marrë një kohë më wikis më të madhe.",
+	'refreshspecial-button' => 'Rifresko zgjedhur',
+	'refreshspecial-fail' => 'Ju lutem kontrolloni të paktën një faqe të veçantë për të rifreskuar.',
+	'refreshspecial-refreshing' => 'faqe freskuese speciale',
+	'refreshspecial-skipped' => 'lirë, anashkalua',
+	'refreshspecial-choice' => 'faqe freskuese speciale',
+	'refreshspecial-js-disabled' => '<i>(Ju nuk mund të zgjidhni të gjitha faqet kur JavaScript është i paaftë)</i>',
+	'refreshspecial-select-all-pages' => 'Zgjidh të gjitha faqet',
+	'refreshspecial-link-back' => 'Kthehu mbrapa tek faqja speciale',
+	'refreshspecial-none-selected' => 'Ju nuk keni zgjedhur ndonjë faqe të veçantë. U kthye tek default përzgjedhje.',
+	'refreshspecial-db-error' => 'Gabim: gabim Baza e të dhënave',
+	'refreshspecial-no-page' => 'Nuk ekziston kjo faqe',
+	'refreshspecial-slave-lagged' => 'Rob mbetur, duke pritur ...',
+	'refreshspecial-reconnected' => 'Rilidhën.',
+	'refreshspecial-reconnecting' => 'Lidhja deshtoi, reconnecting në 10 sekonda ...',
+	'refreshspecial-page-result' => 'u $1 {{PLURAL:$1|radhë|rreshtave}} në',
+	'refreshspecial-total-display' => 'Refreshed $1 {{PLURAL:$1|faqe|faqe}} që arrijnë në $2 {{PLURAL:$2 |radhë|rreshtave}} në kohë $3 (kohën e plotë të drejtuar shkrimit është $4)',
+	'right-refreshspecial' => 'Rifresko faqet speciale',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK
@@ -518,7 +545,7 @@ Aviso: o refrescado pode levar uns intres nos wikis grandes.',
 	'refreshspecial-choice' => 'actualizando as páxinas especiais',
 	'refreshspecial-js-disabled' => '(<i>Non pode seleccionar todas as páxinas cando o JavaScript está deshabilitado</i>)',
 	'refreshspecial-select-all-pages' => 'Seleccionar todas as páxinas',
-	'refreshspecial-link-back' => 'Voltar á extensión',
+	'refreshspecial-link-back' => 'Volver á extensión',
 	'refreshspecial-none-selected' => 'Non seleccionou ningunha páxina especial. Revertendo á selección por defecto.',
 	'refreshspecial-db-error' => 'Fallou: erro da base de datos',
 	'refreshspecial-no-page' => 'Non existe tal páxina especial',
@@ -1128,23 +1155,23 @@ $messages['ro'] = array(
 	'refreshspecial-desc' => 'Permite [[Special:RefreshSpecial|actualizarea manuală]] a paginilor speciale',
 	'refreshspecial-title' => 'Actualizează paginile speciale',
 	'refreshspecial-help' => "Această pagină specială furnizează mijloacele pentru a actualiza manual paginile speciale.
-După ce aţi ales toate paginile pe care doriţi să le reîmprospătaţi, faceţi clic pe butonul de mai jos, \"Actualizează marcările\", pentru a actualiza paginile speciale marcate.
-'''Atenţie:''' Actualizarea poate dura un timp mai îndelungat în wiki-urile mari.",
+După ce ați ales toate paginile pe care doriți să le reîmprospătați, faceți clic pe butonul de mai jos, \"Actualizează marcările\", pentru a actualiza paginile speciale marcate.
+'''Atenție:''' Actualizarea poate dura un timp mai îndelungat în wiki-urile mari.",
 	'refreshspecial-button' => 'Actualizează marcările',
-	'refreshspecial-fail' => 'Te rog marchează cel puţin o pagină specială care să fie actualizată',
+	'refreshspecial-fail' => 'Te rog marchează cel puțin o pagină specială care să fie actualizată',
 	'refreshspecial-refreshing' => 'se actualizează paginile speciale',
 	'refreshspecial-skipped' => 'superficial, omis',
 	'refreshspecial-choice' => 'se actualizează paginile speciale',
-	'refreshspecial-js-disabled' => '(<i>Nu poţi selecta toate paginile dacă JavaScript is dezactivat</i>)',
+	'refreshspecial-js-disabled' => '(<i>Nu poți selecta toate paginile dacă JavaScript is dezactivat</i>)',
 	'refreshspecial-select-all-pages' => 'Marchează toate paginile',
 	'refreshspecial-link-back' => 'Înapoi la pagina specială',
 	'refreshspecial-none-selected' => 'Nu ai selectat nicio pagină specială. Vor fi readuse marcările implicite.',
-	'refreshspecial-db-error' => 'Eşuat: eroare la baza de date',
+	'refreshspecial-db-error' => 'Eșuat: eroare la baza de date',
 	'refreshspecial-no-page' => 'Nu există o astfel de pagină specială',
-	'refreshspecial-slave-lagged' => 'Întârziere la serverul secundar, aştept ...',
+	'refreshspecial-slave-lagged' => 'Întârziere la serverul secundar, aștept ...',
 	'refreshspecial-reconnected' => 'Reconectat.',
 	'refreshspecial-reconnecting' => 'Eroare la conectare, reconectare în 10 secunde ...',
-	'refreshspecial-page-result' => '$1 {{PLURAL:$1|rând obţinut|rânduri obţinute}} în',
+	'refreshspecial-page-result' => '$1 {{PLURAL:$1|rând obținut|rânduri obținute}} în',
 	'refreshspecial-total-display' => 'Au fost actualizate $1 {{PLURAL:$1|pagină|pagini}} însumând $2 {{PLURAL:$2|rând|rânduri}} în timpul de $3 (timpul complet de rulare a script-ului a fost de $4)',
 	'right-refreshspecial' => 'Actualizez paginile speciale',
 );

@@ -472,7 +472,7 @@ $messages['li'] = array(
  * @author Brest
  */
 $messages['mk'] = array(
-	'categorywatch-desc' => 'Проширување на функциите на набљудувана листа, известување за промени врз членови од набљудувани категории',
+	'categorywatch-desc' => 'Ги проширува можностите на функциите на листата на набљудувани страници со известување за промени во членството во набљудуваните категории',
 	'categorywatch-emailsubject' => 'Активности поврзани со набљудувана категорија "$1"',
 	'categorywatch-catmovein' => 'преместено $1 во категорија $2 од $3',
 	'categorywatch-catmoveout' => 'преместено $1 од категорија $2 во $3',
@@ -593,7 +593,7 @@ $messages['pt-br'] = array(
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
-	'categorywatch-desc' => 'Extinde funcţionalitatea listei de urmărire pentru a include notifcări privind modificările categoriilor urmărite',
+	'categorywatch-desc' => 'Extinde funcționalitatea listei de urmărire pentru a include notifcări privind modificările categoriilor urmărite',
 	'categorywatch-emailsubject' => 'Activitatea privind categoria urmărită "$1"',
 	'categorywatch-catmovein' => 'a mutat $1 în categoria $2 din $3',
 	'categorywatch-catmoveout' => 'a mutat $1 din categoria $2 în $3',
@@ -792,10 +792,14 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Horacewai2
  * @author Wrightbus
  */
 $messages['zh-hant'] = array(
+	'categorywatch-catmovein' => '$1已經由$2搬到$3。',
+	'categorywatch-catmoveout' => '$1已經移離$2並改到$3',
 	'categorywatch-catadd' => '已把$1新增至分類$2',
 	'categorywatch-catsub' => '已把$1從分類$2移除',
+	'categorywatch-autocat' => '由$1自動監視',
 );
 

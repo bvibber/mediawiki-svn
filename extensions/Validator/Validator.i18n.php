@@ -16,7 +16,7 @@ $messages = array();
  */
 $messages['en'] = array(
 	'validator_name' => 'Validator',
-	'validator-desc' => 'Validator provides an easy way for other extensions to validate parameters of parser functions and tag extensions, set default values and generate error messages',
+	'validator-desc' => 'Validator is a MediaWiki extension that provides generic parameter handling support to other extensions',
 
 	'validator_error_parameters' => 'The following {{PLURAL:$1|error has|errors have}} been detected in your syntax:',
 	'validator_warning_parameters' => 'There {{PLURAL:$1|is an error|are errors}} in your syntax.',
@@ -70,6 +70,30 @@ $messages['af'] = array(
 	'validator_error_invalid_range' => 'Die parameter $1 moet tussen $2 en $3 lê.',
 	'validator_error_invalid_argument' => 'Die waarde $1 is nie geldig vir parameter $2 nie.',
 	'validator_error_accepts_only' => 'Die parameter $1 kan slegs die volgende {{PLURAL:$3|waarde|waardes}} hê: $2.',
+);
+
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'validator_name' => 'Validator',
+	'validator-desc' => 'Validator është një zgjerim MediaWiki që ofron parametër përgjithshme trajtimin mbështetje të shtesave të tjera',
+	'validator_error_parameters' => 'Më poshtë {{PLURAL:$1|gabim ka gabime|kanë}} është zbuluar në sintaksën e juaj:',
+	'validator_warning_parameters' => 'Ka {{PLURAL:$1|është|janë gabime gabim}} në sintaksë tuaj.',
+	'validator_error_unknown_argument' => '$1 nuk është një parametër i vlefshëm.',
+	'validator_error_required_missing' => 'Parametrat e nevojshëm $1 nuk jepet.',
+	'validator_error_empty_argument' => 'Parametër $1 nuk mund të ketë një vlerë bosh.',
+	'validator_error_must_be_number' => 'Parametër $1 mund të jetë vetëm një numër.',
+	'validator_error_must_be_integer' => 'Parametër $1 mund të jetë vetëm një numër i plotë.',
+	'validator_error_invalid_range' => 'Parametër $1 duhet të jetë në mes të $2 dhe $3.',
+	'validator_error_invalid_argument' => 'Vlera $1 nuk është i vlefshëm për parametër $2.',
+	'validator_list_error_empty_argument' => 'Parametër $1 nuk e pranon vlerat bosh.',
+	'validator_list_error_must_be_number' => 'Parametër $1 mund të përmbajë vetëm numrat.',
+	'validator_list_error_must_be_integer' => 'Parametër $1 mund të përmbajë vetëm numra të plotë.',
+	'validator_list_error_invalid_range' => 'Të gjitha vlerat e parametrit $1 duhet të jetë në mes të $2 dhe $3.',
+	'validator_list_error_invalid_argument' => 'Një ose më shumë vlera për parametër $1 janë të pavlefshme.',
+	'validator_list_omitted' => '{{PLURAL:$2 |vlerë|vlerat}} $1 {{PLURAL:$2|ka|kanë}} janë lënë jashtë.',
+	'validator_error_accepts_only' => 'Parametër $1 vetëm pranon {{PLURAL:$3|kjo vlerë|këtyre vlerave}}: $2.',
 );
 
 /** Arabic (العربية)
@@ -588,11 +612,12 @@ $messages['ksh'] = array(
 );
 
 /** Luxembourgish (Lëtzebuergesch)
+ * @author Les Meloures
  * @author Robby
  */
 $messages['lb'] = array(
 	'validator_name' => 'Validator',
-	'validator-desc' => 'Validator erlaabt et op eng einfach Manéier fir Parameter vu Parser-Fonctiounen an Tag-Erweiderungen ze validéieren, fir Standard-Werter festzeleeën a fir Feeler-Messagen ze generéieren',
+	'validator-desc' => 'Validator erlaabt et op eng einfach Manéier fir Parametere vu Parser-Fonctiounen an Tag-Erweiderungen ze validéieren, fir Standard-Wäerter festzeleeën a fir Feeler-Messagen ze generéieren',
 	'validator_error_parameters' => '{{PLURAL:$1|Dëse Feeler gouf|Dës Feeler goufen}} an Ärer Syntax fonnt:',
 	'validator_warning_parameters' => 'Et {{PLURAL:$1|ass ee|si}} Feeler an Ärer Syntax.',
 	'validator_error_unknown_argument' => '$1 ass kee valbele Parameter.',
@@ -608,7 +633,7 @@ $messages['lb'] = array(
 	'validator_list_error_invalid_range' => 'All Wäerter vum Parameter $1 mussen tëschent $2 an $3 leien.',
 	'validator_list_error_invalid_argument' => 'Een oder méi Wäerter fir de Parameter $1 sinn net valabel.',
 	'validator_list_omitted' => "{{PLURAL:$2|De Wäert|D'Wäerter}} $1 {{PLURAL:$2|gouf|goufe}} vergiess.",
-	'validator_error_accepts_only' => 'De Parameter $1 akzeptéiert just {{PLURAL:$3|dëse Wert|dës Werter}}: $2',
+	'validator_error_accepts_only' => 'De Parameter $1 akzeptéiert just {{PLURAL:$3|dëse Wäert|dës Wäerter}}: $2',
 );
 
 /** Macedonian (Македонски)
@@ -617,7 +642,7 @@ $messages['lb'] = array(
  */
 $messages['mk'] = array(
 	'validator_name' => 'Потврдувач',
-	'validator-desc' => 'Потврдувачот овозможува лесен начин другите проширувања да ги потврдат параметрите на парсерските функции и проширувањата со ознаки, да поставаат основно зададени вредности и да создаваат пораки за грешки',
+	'validator-desc' => 'Потврдувачот овозможува лесен начин другите додатоци да ги потврдат параметрите на парсерските функции и додатоците со ознаки, да поставаат основно зададени вредности и да создаваат пораки за грешки',
 	'validator_error_parameters' => 'Во вашата синтакса {{PLURAL:$1|е откриена следнава грешка|се откриени следниве грешки}}:',
 	'validator_warning_parameters' => 'Имате {{PLURAL:$1|грешка|грешки}} во синтаксата.',
 	'validator_error_unknown_argument' => '$1 не е важечки параметар.',

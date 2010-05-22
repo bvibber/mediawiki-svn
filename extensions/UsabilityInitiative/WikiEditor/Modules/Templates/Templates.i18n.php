@@ -15,6 +15,13 @@ $messages['en'] = array(
 	'wikieditor-templates-preference' => 'Enable template collapsing',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'wikieditor-templates-preference' => 'Aktivizo template kolaps',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  */
@@ -64,6 +71,13 @@ $messages['dsb'] = array(
 	'wikieditor-templates-preference' => 'Fałdowanje pśedłogow zmóžniś',
 );
 
+/** Greek (Ελληνικά)
+ * @author Απεργός
+ */
+$messages['el'] = array(
+	'wikieditor-templates-preference' => 'Ενεργοποίηση της απόκρυψης προτύπων',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
@@ -99,11 +113,25 @@ $messages['gsw'] = array(
 	'wikieditor-templates-preference' => 'Aktivierig vum Yy- un Uusblände vu Vorlage',
 );
 
+/** Hebrew (עברית)
+ * @author Amire80
+ */
+$messages['he'] = array(
+	'wikieditor-templates-preference' => 'הפעלת קיפול תבניות',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
 $messages['hsb'] = array(
 	'wikieditor-templates-preference' => 'Fałdowanje předłohow zmóžnić',
+);
+
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'wikieditor-templates-preference' => 'Sablonok összecsukásának engedélyezése',
 );
 
 /** Interlingua (Interlingua)
@@ -190,6 +218,13 @@ $messages['oc'] = array(
 	'wikieditor-templates-preference' => 'Activar lo replegament dels modèls',
 );
 
+/** Polish (Polski)
+ * @author Nux
+ */
+$messages['pl'] = array(
+	'wikieditor-templates-preference' => 'Włącz zwijanie szablonów',
+);
+
 /** Piedmontese (Piemontèis)
  * @author Borichèt
  */
@@ -216,5 +251,19 @@ $messages['ru'] = array(
  */
 $messages['sv'] = array(
 	'wikieditor-templates-preference' => 'Aktivera ihopfällbara mallar',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'wikieditor-templates-preference' => 'Cho phép làm xẹp các bản mẫu',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Horacewai2
+ */
+$messages['zh-hant'] = array(
+	'wikieditor-templates-preference' => '使模板倒塌',
 );
 

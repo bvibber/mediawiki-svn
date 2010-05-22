@@ -743,8 +743,11 @@ $messages['zh-hans'] = array(
 	'contributionseditcount' => '这个用户拥有 $1 次编辑。',
 );
 
-/** Traditional Chinese (‪中文(繁體)‬) */
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Horacewai2
+ */
 $messages['zh-hant'] = array(
 	'contributionseditcount' => '這個用戶擁有 $1 次編輯。',
+	'contributionseditcount-desc' => '在[[Special:Contributions|特殊頁面]]中顯示用戶的編輯統計',
 );
 

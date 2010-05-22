@@ -308,6 +308,25 @@ Die nuutste weergawe $2 is beskikbaar by http://pecl.php.net/package/APC/$2",
 	'viewapc-usercache-cleared' => "'''''Applikasiekas is opgeruim.'''''",
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'viewapc-ls-sort-timeout' => 'Kohëzgjatja',
+	'viewapc-ls-limit-none' => 'Të gjithë',
+	'viewapc-ls-more' => "''Nuk më $1 {{PLURAL:$1|hyrje|entries}}''",
+	'viewapc-ls-nodata' => "''Nuk ka të dhëna përputhen''",
+	'viewapc-delete-ok' => 'hyrje Cache <nowiki> $1 </nowiki> fshihet.',
+	'viewapc-delete-failed' => 'Gabim hyrje të fshini cache <nowiki> $1 </nowiki> .',
+	'viewapc-version-info' => 'informacion Version',
+	'viewapc-version-changelog' => 'Changelog',
+	'viewapc-version-failed' => 'Në pamundësi për të shkoj të marr informacion versionin.',
+	'viewapc-version-ok' => 'Ju po xhironi versionin më të fundit të APC ($1)',
+	'viewapc-version-old' => 'Ju jeni drejtimin e një version më të vjetër të APC ($1). Version i ri $2 është në dispozicion në http://pecl.php.net/package/APC/ $2',
+	'viewapc-filecache-cleared' => "''''' Cache File pastruara .'''''",
+	'viewapc-usercache-cleared' => "''''' Cache Aplikimi pastruara .'''''",
+);
+
 /** Amharic (አማርኛ)
  * @author Codex Sinaiticus
  */
@@ -4470,6 +4489,7 @@ $messages['os'] = array(
  */
 $messages['pdc'] = array(
 	'viewapc-display-mem_size' => 'Grees',
+	'viewapc-ls-submit' => 'Geh los!',
 	'viewapc-ls-header-name' => 'Naame',
 	'viewapc-ls-header-size' => 'Grees',
 	'viewapc-ls-sort-size' => 'Grees',
@@ -4973,26 +4993,26 @@ $messages['rif'] = array(
  * @author Silviubogan
  */
 $messages['ro'] = array(
-	'apc' => 'Informaţii APC',
-	'viewapc-clear-confirm' => 'Doriţi golirea cache-ului?',
-	'viewapc-clear-user-cache' => 'Goleşte cache-ul utilizatorului',
+	'apc' => 'Informații APC',
+	'viewapc-clear-confirm' => 'Doriți golirea cache-ului?',
+	'viewapc-clear-user-cache' => 'Golește cache-ul utilizatorului',
 	'viewapc-mode-version-check' => 'Verifică versiunea',
-	'viewapc-info-general' => 'Informaţii generale',
+	'viewapc-info-general' => 'Informații generale',
 	'viewapc-apc-version' => 'Versiune APC',
 	'viewapc-php-version' => 'Versiune PHP',
 	'viewapc-shared-memory' => 'Memorie partajată',
-	'viewapc-cached-files-d' => '$1 {{PLURAL:$1|fişier|fişiere}} ($2)',
+	'viewapc-cached-files-d' => '$1 {{PLURAL:$1|fișier|fișiere}} ($2)',
 	'viewapc-misses' => 'Ratări',
 	'viewapc-requests' => 'Rată de cerere',
 	'viewapc-missrate' => 'Rată de ratare',
-	'viewapc-insertrate' => 'Rată de inserţie',
+	'viewapc-insertrate' => 'Rată de inserție',
 	'viewapc-rps' => '$1 cereri pe secundă',
 	'viewapc-memory-free' => 'Liber: $1 ($2)',
 	'viewapc-memory-used' => 'Utilizat: $1 ($2)',
 	'viewapc-fragmentation-none' => 'Fragmentare: fără fragmentare',
 	'viewapc-display-attribute' => 'Atribut',
 	'viewapc-display-value' => 'Valoare',
-	'viewapc-display-filename' => 'Nume fişier',
+	'viewapc-display-filename' => 'Nume fișier',
 	'viewapc-display-device' => 'Aparat',
 	'viewapc-display-info' => 'Nume',
 	'viewapc-display-type' => 'Tip',
@@ -5002,8 +5022,8 @@ $messages['ro'] = array(
 	'viewapc-display-access_time' => 'accesat',
 	'viewapc-display-mem_size' => 'Mărime',
 	'viewapc-display-stored-value' => 'Valoare memorată',
-	'viewapc-display-too-big' => "''Conţinutul este prea mare pentru a putea fi afişat.''",
-	'viewapc-ls-options-legend' => 'Opţiuni',
+	'viewapc-display-too-big' => "''Conținutul este prea mare pentru a putea fi afișat.''",
+	'viewapc-ls-options-legend' => 'Opțiuni',
 	'viewapc-ls-submit' => 'Du-te',
 	'viewapc-ls-header-name' => 'Nume',
 	'viewapc-ls-header-size' => 'Mărime',
@@ -5023,17 +5043,17 @@ $messages['ro'] = array(
 	'viewapc-ls-sort-deleted' => 'Şters',
 	'viewapc-ls-limit-none' => 'Toate',
 	'viewapc-ls-more' => "''Mai există $1 {{PLURAL:$1|intrare|intrări}}''",
-	'viewapc-ls-nodata' => "''Nicio dată nu se potriveşte''",
-	'viewapc-delete-ok' => 'Intrarea din cache <nowiki>$1</nowiki> a fost ştearsă.',
-	'viewapc-delete-failed' => 'Ştergerea intrărilor din cache a eşuat <nowiki>$1</nowiki>.',
-	'viewapc-version-info' => 'Informaţii despre versiune',
+	'viewapc-ls-nodata' => "''Nicio dată nu se potrivește''",
+	'viewapc-delete-ok' => 'Intrarea din cache <nowiki>$1</nowiki> a fost ștearsă.',
+	'viewapc-delete-failed' => 'Ştergerea intrărilor din cache a eșuat <nowiki>$1</nowiki>.',
+	'viewapc-version-info' => 'Informații despre versiune',
 	'viewapc-version-changelog' => 'Jurnalul schimbărilor',
-	'viewapc-version-failed' => 'Nu pot fi identificate informaţii despre versiune.',
-	'viewapc-version-ok' => 'Foloseşti ultima versiune de APC ($1)',
-	'viewapc-version-old' => 'Foloseşti o versiune veche de APC ($1).
+	'viewapc-version-failed' => 'Nu pot fi identificate informații despre versiune.',
+	'viewapc-version-ok' => 'Folosești ultima versiune de APC ($1)',
+	'viewapc-version-old' => 'Folosești o versiune veche de APC ($1).
 O versiune mai nouă $2 este disponibilă la http://pecl.php.net/package/APC/$2',
-	'viewapc-filecache-cleared' => "'''''Fişierul cache a fost şters.'''''",
-	'viewapc-usercache-cleared' => "'''''Cache-ul aplicaţiei a fost şters.'''''",
+	'viewapc-filecache-cleared' => "'''''Fișierul cache a fost șters.'''''",
+	'viewapc-usercache-cleared' => "'''''Cache-ul aplicației a fost șters.'''''",
 );
 
 /** Tarandíne (Tarandíne)

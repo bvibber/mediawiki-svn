@@ -11,7 +11,7 @@ $aliases = array();
  * @author Jon Harald Søby
  */
 $aliases['en'] = array(
-    'Renameuser' => array( 'RenameUser' ),
+	'Renameuser' => array( 'RenameUser' ),
 );
 
 /** Arabic (العربية) */
@@ -21,7 +21,7 @@ $aliases['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'Renameuser' => array( 'إعادة_تسمية_مستخدم' ),
+	'Renameuser' => array( 'سمّى_تانى_يوزر' ),
 );
 
 /** Bulgarian (Български) */
@@ -62,6 +62,11 @@ $aliases['dv'] = array(
 /** Greek (Ελληνικά) */
 $aliases['el'] = array(
 	'Renameuser' => array( 'ΜετονομασίαΧρήστη' ),
+);
+
+/** Esperanto (Esperanto) */
+$aliases['eo'] = array(
+	'Renameuser' => array( 'Alinomigi uzanton' ),
 );
 
 /** Spanish (Español) */
@@ -242,6 +247,11 @@ $aliases['sk'] = array(
 /** Albanian (Shqip) */
 $aliases['sq'] = array(
 	'Renameuser' => array( 'RiemërtoPërdorues' ),
+);
+
+/** Serbian Cyrillic ekavian (Српски (ћирилица)) */
+$aliases['sr-ec'] = array(
+	'Renameuser' => array( 'ПреименјуКорисника' ),
 );
 
 /** Swedish (Svenska) */

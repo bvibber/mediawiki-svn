@@ -640,6 +640,11 @@ ketikan beberapa karakter pertama dan tekan tombol kirim untuk mencari judul hal
 Clik panah untuk melihat semua halaman indek dibawah judul itu.',
 );
 
+/** Igbo (Igbo) */
+$messages['ig'] = array(
+	'index-search' => 'Chöwá',
+);
+
 /** Italian (Italiano)
  * @author Civvì
  * @author Darth Kule
@@ -944,6 +949,14 @@ Për piasì gava "$1" da l\'<nowiki>{{#index:}}</nowiki> an {{PLURAL:$3|la pàgi
 Scriv pòchi caràter inissiaj e sgnaca ël boton \"spediss\" për serché ij tìtoj ëd pàgina e vos ëd l'ìndes che a ancamin-o con la stringa d'arserca",
 	'index-details-explain' => "Vos con frece a son vos ëd l'ìndes.
 Sgnaca la frecia për mosté tute le pàgine indicisà sota col tìtol-lì.",
+);
+
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'index-search' => 'پلټنه:',
+	'index-submit' => 'سپارل',
 );
 
 /** Portuguese (Português)

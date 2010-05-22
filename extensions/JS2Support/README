@@ -1,12 +1,16 @@
 = JS2 Support Extension =
 
-The JS2 Support extension includes a ScriptLoader and associated javascript helper library. 
+The JS2 Support extension includes a ScriptLoader, mwEmbed javascript library
+and a repository for shared javascript like jquery.ui components. 
 
 The js2-work branch has been depreciated.
 
-The stand-alone mwEmbed support contains all the the stand alone mwEmbed modules
-and these core mwEmbed libraries. You can learn more about mwEmbed stand alone in 
+== mwEmbed Stand Alone ==
+mwEmbed also works stand alone but does not work stand alone from a js2 support checkout. 
+You can learn more about mwEmbed stand alone in 
 /branches/mwEmbedStandAlone/README  
+and or
+http://www.kaltura.org/project/html5-kaltura-library
 
 This extension solely supports other extensions, and hence would be a good candidate for 
 inclusion into core. Its built as an extension to enable development to move forward while
@@ -76,9 +80,16 @@ inside extensions or optionally used in stand-alone javascript interfaces.
 The use of "loaders" enables dynamic packaging of modules with the intent of avoiding multiple requests, 
 for dynamically loaded interfaces.    
 
-JS2 enables the server to deliver static configuration files that drive interface customizations in
-javascript rather than costly dynamically html output from php.
- 
+To add a javascript Module to your extension you must supply the relative path to the module in your main 
+extension .php file: 
+
+$wgExtensionJavascriptModules[ 'myJsModule' ] =  'extensions/myExtension/MyJsModule';
+
+Your MyJsModule folder should contain: 
+loader.js ( "module loader" ) 
+{moduleName}.i18n.php ( "mediaWiki localization format localization file" )
+{libraryCode.js files} ( "library code" ) 
+
 == JS Module Components == 
 
 The three components of a js-module are  "module loaders", "module activators" and "library code and assets". 
@@ -193,17 +204,19 @@ You have three options for packaging messages in your javascript module
 
 1) If your javascript module is simple and your interface is mostly set in a single
 file you may want to load all your msgs at once.  You can get all the msgs in your javascript
-module's localization file by simply isssuing the call: 
-mw.includeAllModuleMsgs(); 
+module's localization file by simply running: 
+mw.includeAllModuleMessages(); 
 
 Putting this function call at the top of your primary library code javascript file will be 
 replaced with all the msgs in your modules php localization file in the current language. 
+NOTE you won't be able to pull in msgKeys that are hosted outside of your extension ( to do that 
+you must list the keys you want at the top of the javascript file with localization option 2 )
 
 2 ) If your code includes many sub-modules and you may want fine grain control over what msgs 
 are packaged when. You can define the set of msg keys it at the top of any javascript file.
 
 For example: 
-mw.addMessegeKeys( ['list', 'of', 'msg-keys' ] );
+mw.addMessageKeys( ['list', 'of', 'msg-keys' ] );
 
 Will be replaced by the script-loader with the localized msgs for every listed key. 
   
@@ -215,8 +228,9 @@ mw.addMesseges( { "msg-key" : "English fallback" } );
 copy your English fallbacks into the php localization file for the translate wiki scripts to work with.  
 Running the JS2Support maintenance script "mergeJavascriptMsgs.php" will sync javascript into phpt files. 
 
-This is the most complicated setup, if your unsure use the first option: 
-mw.includeAllModuleMsgs(); 
+This is the most complicated setup, if your unsure use the first option and call: 
+mw.includeAllModuleMessages(); 
+In your primary library code javascript. 
   
 === Accessing Msgs in Javascript ===
 

@@ -39,6 +39,11 @@ $aliases['dsb'] = array(
 	'Editcount' => array( 'Licak změnow' ),
 );
 
+/** Esperanto (Esperanto) */
+$aliases['eo'] = array(
+	'Editcount' => array( 'Redaktkontilo' ),
+);
+
 /** Spanish (Español) */
 $aliases['es'] = array(
 	'Editcount' => array( 'Ediciones_de_Usuario' ),

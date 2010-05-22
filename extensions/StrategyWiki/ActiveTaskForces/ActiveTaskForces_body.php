@@ -42,7 +42,7 @@ class ActiveTaskForcesQP extends QueryPage {
 			SELECT 
 				'ActiveTaskForces' AS type,
 				page_namespace AS namespace,
-				page_title AS title, 
+				substring_index(page_title, '/', 2) AS title, 
 				COUNT(*) AS value
 			FROM $revisionTable
 			JOIN $pageTable ON page_id = rev_page
@@ -50,7 +50,7 @@ class ActiveTaskForcesQP extends QueryPage {
 				page_namespace = 0 AND 
 				page_title LIKE 'Task_force/%' AND
 				rev_timestamp > $encPeriodStart
-			GROUP BY page_namespace, page_title
+			GROUP BY page_namespace, title
 SQL;
 		$sql = strtr( $sql, "\r\n\t", '   ' );
 		return $sql;

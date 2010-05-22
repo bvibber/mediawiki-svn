@@ -36,6 +36,16 @@ $messages['af'] = array(
 	'usabilityinitiative-desc' => 'Funksionaliteit wat deur Wikipedia se Bruikbaarheid-inisiatief ontwikkel is om MediaWiki meer bruikbaarheid te maak',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'usabilityinitiative' => 'Përdorshmërisë Nisma',
+	'usabilityinitiative-desc' => 'Karakteristika të zhvilluar nga Iniciativa përdorshmërisë Wikipedia për të rritur përdorshmërisë së MediaWiki',
+	'prefs-beta' => 'karakteristika Beta',
+	'prefs-labs' => 'Laboratorë karakteristika',
+);
+
 /** Arabic (العربية)
  * @author OsamaK
  */
@@ -511,11 +521,12 @@ $messages['oc'] = array(
 
 /** Polish (Polski)
  * @author Leinad
+ * @author Nux
  * @author Sp5uhe
  */
 $messages['pl'] = array(
 	'usabilityinitiative' => 'Inicjatywa Użyteczności',
-	'usabilityinitiative-desc' => 'Funkcje rozwijane przez Inicjatywę Użyteczności Wikipedii w celu poszerzenia przydatności oprogramowania MediaWiki',
+	'usabilityinitiative-desc' => 'Funkcjonalności rozwijane przez Inicjatywę Użyteczności Wikipedii w celu poszerzenia przydatności oprogramowania MediaWiki',
 	'prefs-beta' => 'Funkcjonalności testowe',
 	'prefs-labs' => 'Funkcjonalności doświadczalne',
 );
@@ -559,8 +570,8 @@ $messages['pt-br'] = array(
  * @author Stelistcristi
  */
 $messages['ro'] = array(
-	'usabilityinitiative' => 'Iniţiativa de utilizabilitate',
-	'usabilityinitiative-desc' => 'Funcţionalităţi dezvoltate de Wikipedia Usability Initiative pentru a spori gradul de folosire a MediaWiki',
+	'usabilityinitiative' => 'Inițiativa de utilizabilitate',
+	'usabilityinitiative-desc' => 'Funcționalități dezvoltate de Wikipedia Usability Initiative pentru a spori gradul de folosire a MediaWiki',
 );
 
 /** Tarandíne (Tarandíne)
@@ -723,14 +734,18 @@ $messages['zh-hans'] = array(
 	'usabilityinitiative' => 'Usability Initiative',
 	'usabilityinitiative-desc' => '由维基百科可用性小组开发的新功能，用以增强MediaWiki的可用性',
 	'prefs-beta' => 'Beta特性',
+	'prefs-labs' => '实验室功能',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Gaoxuewei
+ * @author Horacewai2
  * @author Shinjiman
  */
 $messages['zh-hant'] = array(
 	'usabilityinitiative' => 'Usability Initiative',
 	'usabilityinitiative-desc' => '由維基百科可用性小組開發的新功能，用以增強MediaWiki的可用性',
+	'prefs-beta' => 'Beta特性',
+	'prefs-labs' => '實驗中的功能',
 );
 

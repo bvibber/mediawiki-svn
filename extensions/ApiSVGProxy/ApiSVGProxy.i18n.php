@@ -133,6 +133,13 @@ $messages['id'] = array(
 	'apisvgproxy-desc' => 'File Proxy SVG dari gudang file (mungkin remote) ke domain lokal',
 );
 
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'apisvgproxy-desc' => 'Ihe íshí nke akwukwo orunotu shı (o nweriki di ebe ntakiri) akwukwo orunotu nke ebe ihe di ga ébé di nsó',
+);
+
 /** Japanese (日本語)
  * @author Aotake
  */
@@ -211,6 +218,13 @@ $messages['pt'] = array(
 	'apisvgproxy-desc' => 'Representa os ficheiros SVG de um repositório (possivelmente remoto) no domínio local',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Giro720
+ */
+$messages['pt-br'] = array(
+	'apisvgproxy-desc' => 'Representa os ficheiros SVG de um repositório (possivelmente remoto) no domínio local',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */
@@ -237,5 +251,19 @@ $messages['sv'] = array(
  */
 $messages['te'] = array(
 	'apisvgproxy-desc' => 'ఎక్కడో ఉన్న SVG ఫైళ్ళు ప్రాంతీయ డొమైన్ ఉన్నట్లుగా చూపబడతాయి',
+);
+
+/** Turkish (Türkçe)
+ * @author Joseph
+ */
+$messages['tr'] = array(
+	'apisvgproxy-desc' => 'Bir dosya deposundan (muhtemelen uzaktaki) yerel alana SVG dosyaları vekil eder',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Horacewai2
+ */
+$messages['zh-hant'] = array(
+	'apisvgproxy-desc' => '代理從 SVG文件（可能是遠程）文件存放到本地域名',
 );
 

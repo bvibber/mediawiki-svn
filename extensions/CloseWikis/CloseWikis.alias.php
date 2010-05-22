@@ -20,7 +20,7 @@ $aliases['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'CloseWiki' => array( 'إغلاق_الويكى' ),
+	'CloseWiki' => array( 'قفل_الويكى' ),
 );
 
 /** Bosnian (Bosanski) */
@@ -36,6 +36,16 @@ $aliases['de'] = array(
 /** Lower Sorbian (Dolnoserbski) */
 $aliases['dsb'] = array(
 	'CloseWiki' => array( 'Wiki zacyniś' ),
+);
+
+/** Esperanto (Esperanto) */
+$aliases['eo'] = array(
+	'CloseWiki' => array( 'Fermi vikion' ),
+);
+
+/** Spanish (Español) */
+$aliases['es'] = array(
+	'CloseWiki' => array( 'Cerrar wikis', 'CerrarWikis' ),
 );
 
 /** Basque (Euskara) */

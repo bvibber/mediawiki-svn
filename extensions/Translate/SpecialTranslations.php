@@ -66,7 +66,7 @@ class SpecialTranslations extends SpecialAllpages {
 		global $wgContLang, $wgScript, $wgTranslateMessageNamespaces;
 		$t = $this->getTitle();
 
-		$namespaces = new XmlSelect( 'namespace' );
+		$namespaces = new XmlSelect( 'namespace', 'namespace' );
 		$namespaces->setDefault( $title->getNamespace() );
 
 		foreach ( $wgTranslateMessageNamespaces as $ns ) {
@@ -144,10 +144,8 @@ class SpecialTranslations extends SpecialAllpages {
 		$pageInfo = TranslateUtils::getContents( $titles, $namespace );
 
 		$tableheader = Xml::openElement( 'table', array(
-			'class'   => 'mw-sp-translate-table',
-			'border'  => '1',
-			'cellspacing' => '0' )
-		);
+			'class'   => 'mw-sp-translate-table'
+		) );
 
 		$tableheader .= Xml::openElement( 'tr' );
 		$tableheader .= Xml::element( 'th', null, wfMsg( 'allmessagesname' ) );
@@ -187,7 +185,7 @@ class SpecialTranslations extends SpecialAllpages {
 			);
 
 			$anchor = 'msg_' . $key;
-			$anchor = Xml::element( 'a', array( 'name' => $anchor, 'href' => "#$anchor" ), "↓" );
+			$anchor = Xml::element( 'a', array( 'id' => $anchor, 'href' => "#$anchor" ), "↓" );
 
 			$extra = '';
 

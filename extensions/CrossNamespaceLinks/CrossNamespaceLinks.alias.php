@@ -21,7 +21,7 @@ $aliases['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'CrossNamespaceLinks' => array( 'وصلات_عبر_النطاقات' ),
+	'CrossNamespaceLinks' => array( 'لينكات_فى_اسم_المساحه' ),
 );
 
 /** Bosnian (Bosanski) */
@@ -42,6 +42,11 @@ $aliases['de'] = array(
 /** Lower Sorbian (Dolnoserbski) */
 $aliases['dsb'] = array(
 	'CrossNamespaceLinks' => array( 'Wótkaze do drugich mjenjowych rumow' ),
+);
+
+/** Spanish (Español) */
+$aliases['es'] = array(
+	'CrossNamespaceLinks' => array( 'Enlaces entre distintos espacios de nombres' ),
 );
 
 /** Estonian (Eesti) */

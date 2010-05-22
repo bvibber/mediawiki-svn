@@ -30,6 +30,15 @@ $messages['af'] = array(
 	'whosonline-desc' => "Vertoon [[Special:WhosOnline|'n lys]] van aangetekende en anonieme gebruikers wat tans aanlyn is",
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ * @author MicroBoy
+ */
+$messages['aln'] = array(
+	'whosonline' => 'Kush o në linjë',
+	'whosonline-desc' => 'Shfaq [[Special:WhosOnline|një listë]] për e regjistruar dhe përdoruesit anonim aktualisht online',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

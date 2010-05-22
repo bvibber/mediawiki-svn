@@ -20,7 +20,7 @@ $aliases['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'GlobalUserrights' => array( 'سماحات_المستخدم_العامة' ),
+	'GlobalUserrights' => array( 'حقوق_اليوزر_العامه' ),
 );
 
 /** Bosnian (Bosanski) */
@@ -66,6 +66,11 @@ $aliases['gl'] = array(
 /** Gujarati (ગુજરાતી) */
 $aliases['gu'] = array(
 	'GlobalUserrights' => array( 'વૈશ્વીકસભ્ય હક્કો' ),
+);
+
+/** Croatian (Hrvatski) */
+$aliases['hr'] = array(
+	'GlobalUserrights' => array( 'Globalna_prava', 'Globalno_članstvo_grupe' ),
 );
 
 /** Upper Sorbian (Hornjoserbsce) */
@@ -115,7 +120,7 @@ $aliases['mk'] = array(
 
 /** Malayalam (മലയാളം) */
 $aliases['ml'] = array(
-	'GlobalUserrights' => array( 'ആഗോളാംഗത്വാവകാശങ്ങള്‍', 'ആഗോളസംഘാംഗത്വം' ),
+	'GlobalUserrights' => array( 'ആഗോളാംഗത്വാവകാശങ്ങൾ', 'ആഗോളസംഘാംഗത്വം' ),
 );
 
 /** Marathi (मराठी) */
@@ -146,6 +151,11 @@ $aliases['no'] = array(
 /** Occitan (Occitan) */
 $aliases['oc'] = array(
 	'GlobalUserrights' => array( 'Dreches dels utilizaires globals', 'DrechesDelsUtilizairesGlobals' ),
+);
+
+/** Polish (Polski) */
+$aliases['pl'] = array(
+	'GlobalUserrights' => array( 'Globalne uprawnienia użytkownika' ),
 );
 
 /** Portuguese (Português) */

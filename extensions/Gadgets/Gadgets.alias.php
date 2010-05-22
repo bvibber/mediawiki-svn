@@ -26,7 +26,7 @@ $aliases['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'Gadgets' => array( 'إضافات' ),
+	'Gadgets' => array( 'ادوات' ),
 );
 
 /** Bulgarian (Български) */
@@ -62,6 +62,11 @@ $aliases['dsb'] = array(
 /** Greek (Ελληνικά) */
 $aliases['el'] = array(
 	'Gadgets' => array( 'Εργαλεία', 'Προσαρτήματα' ),
+);
+
+/** Esperanto (Esperanto) */
+$aliases['eo'] = array(
+	'Gadgets' => array( 'Aldonaĵoj' ),
 );
 
 /** Spanish (Español) */

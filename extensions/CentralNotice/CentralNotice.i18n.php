@@ -228,6 +228,43 @@ U kan een hieronder byvoeg',
 	'centralnotice-preferred' => 'Voorkeur',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'centralnotice' => 'admin Qendrore njoftim',
+	'noticetemplate' => 'njoftim Qendrore template',
+	'centralnotice-desc' => 'Shton një sitenotice qendrore',
+	'centralnotice-summary' => 'Ky modul ju lejon që të redaktoj setup aktualisht qendrore njoftimeve tuaj. Ajo mund të përdoret gjithashtu për të shtuar ose hequr njoftimeve të vjetër.',
+	'centralnotice-query' => 'Njoftime Modifiko e tanishme',
+	'centralnotice-notice-name' => 'Emri i Autorit',
+	'centralnotice-end-date' => 'Data Fundi',
+	'centralnotice-enabled' => 'Aktivizuar',
+	'centralnotice-modify' => 'Submit',
+	'centralnotice-preview' => 'Preview',
+	'centralnotice-add-new' => 'Shto një njoftim të ri qendror',
+	'centralnotice-remove' => 'Heq',
+	'centralnotice-translate-heading' => 'Perkthime për $1',
+	'centralnotice-manage' => 'njoftim Manage qendrore',
+	'centralnotice-add' => 'Shtoj',
+	'centralnotice-add-notice' => 'Shto një njoftim',
+	'centralnotice-add-template' => 'Shto një template',
+	'centralnotice-show-notices' => 'Shfaq njoftimet',
+	'centralnotice-list-templates' => 'Lista e templates',
+	'centralnotice-translations' => 'Përkthime',
+	'centralnotice-translate-to' => 'Translate në',
+	'centralnotice-translate' => 'Përkthej',
+	'centralnotice-english' => 'Anglisht',
+	'centralnotice-template-name' => 'Emri Template',
+	'centralnotice-templates' => 'Templates',
+	'centralnotice-weight' => 'Peshë',
+	'centralnotice-locked' => 'I bllokuar',
+	'centralnotice-notices' => 'Njoftime',
+	'centralnotice-notice-exists' => 'Njoftim ekziston. Jo duke shtuar',
+	'centralnotice-template-exists' => 'Template ekziston. Jo duke shtuar',
+	'centralnotice-notice-doesnt-exist' => 'Njoftim nuk ekziston. Asgjë për të hequr',
+);
+
 /** Amharic (አማርኛ)
  * @author Codex Sinaiticus
  * @author Elfalem
@@ -3008,6 +3045,11 @@ Tambahkan di bawah ini.',
 	'centralnotice-preferred' => 'Preferensi',
 );
 
+/** Igbo (Igbo) */
+$messages['ig'] = array(
+	'centralnotice-message' => 'Ozi',
+);
+
 /** Ido (Ido)
  * @author Malafaya
  */
@@ -4815,6 +4857,7 @@ $messages['pnt'] = array(
 $messages['ps'] = array(
 	'centralnotice-desc' => 'يو مرکزي ويبځی-يادښت ورګډول',
 	'centralnotice-end-date' => 'د پای نېټه',
+	'centralnotice-modify' => 'سپارل',
 	'centralnotice-preview' => 'مخکتنه',
 	'centralnotice-translate-heading' => 'د $1 لپاره ژباړه',
 	'centralnotice-add' => 'ورګډول',
@@ -5116,21 +5159,21 @@ Kay qatiqpi hukta yapay',
  * @author Stelistcristi
  */
 $messages['ro'] = array(
-	'centralnotice-desc' => 'Adaugă un anunţ central sitului',
-	'centralnotice-query' => 'Modifică anunţurile curente',
-	'centralnotice-notice-name' => 'Numele anunţului',
+	'centralnotice-desc' => 'Adaugă un anunț central sitului',
+	'centralnotice-query' => 'Modifică anunțurile curente',
+	'centralnotice-notice-name' => 'Numele anunțului',
 	'centralnotice-end-date' => 'Dată de încheiere',
 	'centralnotice-enabled' => 'Activat',
 	'centralnotice-modify' => 'Trimite',
 	'centralnotice-preview' => 'Previzualizare',
-	'centralnotice-add-new' => 'Adaugă un anunţ central nou',
+	'centralnotice-add-new' => 'Adaugă un anunț central nou',
 	'centralnotice-remove' => 'Şterge',
 	'centralnotice-translate-heading' => 'Traducere pentru $1',
-	'centralnotice-manage' => 'Gestionaţi anunţ central',
+	'centralnotice-manage' => 'Gestionați anunț central',
 	'centralnotice-add' => 'Adaugă',
-	'centralnotice-add-notice' => 'Adaugă un anunţ',
+	'centralnotice-add-notice' => 'Adaugă un anunț',
 	'centralnotice-add-template' => 'Adaugă un format',
-	'centralnotice-show-notices' => 'Arată anunţurile',
+	'centralnotice-show-notices' => 'Arată anunțurile',
 	'centralnotice-list-templates' => 'Lista de formate',
 	'centralnotice-translations' => 'Traduceri',
 	'centralnotice-translate-to' => 'Tradu în',
@@ -5154,14 +5197,14 @@ $messages['ro'] = array(
 	'centralnotice-preview-template' => 'Previzualizare formate',
 	'centralnotice-start-hour' => 'Ora de început',
 	'centralnotice-change-lang' => 'Schimbă limba de traducere',
-	'centralnotice-weights' => 'Greutăţi',
+	'centralnotice-weights' => 'Greutăți',
 	'centralnotice-edit-template' => 'Modifică format',
 	'centralnotice-message' => 'Mesaj',
-	'centralnotice-clone' => 'Clonaţi',
+	'centralnotice-clone' => 'Clonați',
 	'centralnotice-clone-notice' => 'Creează o copie a formatului',
-	'right-centralnotice-translate' => 'Traduce anunţurile centrale',
-	'action-centralnotice-admin' => 'administraţi anunţurile centrale',
-	'action-centralnotice-translate' => 'traduceţi anunţurile centrale',
+	'right-centralnotice-translate' => 'Traduce anunțurile centrale',
+	'action-centralnotice-admin' => 'administrați anunțurile centrale',
+	'action-centralnotice-translate' => 'traduceți anunțurile centrale',
 );
 
 /** Tarandíne (Tarandíne)
@@ -6933,6 +6976,7 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Alex S.H. Lin
+ * @author Horacewai2
  * @author Liangent
  * @author Wrightbus
  */

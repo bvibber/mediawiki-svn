@@ -393,6 +393,63 @@ Daar kan nie meer bladsye byvoeg nie.',
 	'right-collectionsaveasuserpage' => 'Stoor boeke as gebruikerbladsy',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'coll-unknown_subpage_title' => 'subpage Panjohur',
+	'coll-unknown_subpage_text' => 'Kjo subpage e [[Special:Book|Libri]] nuk ekziston',
+	'coll-couldnotaddarticle_title' => 'Nuk mund të shtoni faqe wiki',
+	'coll-couldnotaddarticle_msg' => 'Faqe wiki nuk mund të shtohet.',
+	'coll-couldnotremovearticle_title' => 'Nuk mund të hiqni faqe wiki',
+	'coll-couldnotremovearticle_msg' => 'Faqe wiki nuk mund të hiqet.',
+	'coll-noscript_text' => '<h1> Nevojitet JavaScript! </h1> <strong>Shfletuesi juaj nuk përmban JavaScript-in apo JavaScript ka qenë i fikur. Kjo faqe nuk do të funksionoj në rregull, përveç nëse JavaScript është aktivizuar.</strong>',
+	'coll-savedbook_template' => 'saved_book',
+	'coll-your_book' => 'libri juaj',
+	'coll-download_title' => 'Shkarko',
+	'coll-download_text' => 'Për të shkarkuar librin tuaj të zgjidhni një format dhe klikoni butonin.',
+	'coll-download_as_text' => 'Për të shkarkuar librin tuaj në formatin $1  klikoni butonin.',
+	'coll-download' => 'Shkarko',
+	'coll-format_label' => 'Formati:',
+	'coll-remove' => 'Heq',
+	'coll-show' => 'Tregoj',
+	'coll-move_to_top' => 'Dërgo në krye',
+	'coll-move_up' => 'Ngre',
+	'coll-move_down' => 'Leviz poshtë',
+	'coll-move_to_bottom' => 'Dërgo në fund',
+	'coll-title' => 'Titulli:',
+	'coll-subtitle' => 'Subtitle:',
+	'coll-contents' => 'Përmbajtje',
+	'coll-drag_and_drop' => 'Përdorimi drag & drop për Reorder faqet wiki dhe kapituj',
+	'coll-create_chapter' => 'kapitull Krijo',
+	'coll-sort_alphabetically' => 'Renditur alfabetike',
+	'coll-rename' => 'Riemërtoj',
+	'coll-new_chapter' => 'Fusni emrin e kapitull të ri',
+	'coll-rename_chapter' => 'Shkruani emër të ri për kapitullin',
+	'coll-no_such_category' => 'Nuk ka kategori të tilla',
+	'coll-notitle_title' => 'Titulli i faqes nuk mund të përcaktohet.',
+	'coll-post_failed_title' => 'kërkesë PAS dështuar',
+	'coll-post_failed_msg' => 'Kërkesa PAS tek $1 dështoi ($2).',
+	'coll-mwserve_failed_title' => 'gabim Render server',
+	'coll-mwserve_failed_msg' => 'Ka ndodhur një gabim në server të bëjnë: <nowiki> $1 </nowiki>',
+	'coll-error_reponse' => 'Gabim përgjigje nga serveri',
+	'coll-empty_collection' => 'Libri Bosh',
+	'coll-revision' => 'Revision: $1',
+	'coll-save_collection_title' => 'Save and share librin tuaj',
+	'coll-save_collection_text' => 'Zgjidhni një vend depozitimi për librin tuaj:',
+	'coll-login_to_save' => 'Nëse dëshironi të kurseni libra për përdorim më vonë, ju lutem [[Special:UserLogin|të hyni ose të hapni një llogari]].',
+	'coll-personal_collection_label' => 'libër Personale:',
+	'coll-community_collection_label' => 'Komuniteti libër:',
+	'coll-save_collection' => 'Libri Ruaj',
+	'coll-save_category' => 'Të gjitha librat e ruajtur janë shtuar në [[:Category:{{MediaWiki:Coll-bookscategory }}|{{MediaWiki:Coll-bookscategory}}]]',
+	'coll-overwrite_title' => 'Page ekziston. Mbishkruaj?',
+	'coll-overwrite_text' => 'Një faqe me të emri [[:$1]] ekziston.
+A ju dëshironi që ajo të zëvendësohet me librin tuaj?',
+	'coll-yes' => 'Po',
+	'coll-no' => 'Jo',
+	'coll-load_overwrite_text' => 'Ju tashmë keni disa faqe në librin tuaj. A doni ta prishësh aktuale librin tuaj, append përmbajtje të re, apo anulimin e ngarkimit këtë libër?',
+);
+
 /** Amharic (አማርኛ)
  * @author Codex Sinaiticus
  */
@@ -1227,7 +1284,7 @@ Marteze eo bet diverket hag ezhomm zo he genel en-dro.",
 	'coll-invalid_podpartner_title' => 'Keveler moullañ diouzh ar goulenn (POD) direizh',
 	'coll-invalid_podpartner_msg' => "N'eo ket mat ar c'heveler moullañ diouzh ar goulenn (POD) merket.
 Kit e darempred gant ur merour MediaWiki.",
-	'coll-license' => 'Aotre implijout',
+	'coll-license' => 'Aotre-implijout',
 	'coll-return_to' => 'Distreiñ da [[:$1]]',
 	'coll-more_info' => "Diskouez muioc'h a ditouroù",
 	'coll-hide_info' => 'Kuzhat an titouroù',
@@ -1248,6 +1305,7 @@ Hizivaet eo ar roll bep tro ma glikoc'h war ar bouton ouzhpennañ pe tennañ.",
 	'coll-suggest_article_remove' => 'Tennnet eo bet ar bajenn <strong>$1</strong> eus ho levr ($2).',
 	'coll-suggest_undo_tooltip' => 'Dizober an ober-mañ',
 	'coll-suggest_undo' => 'dizober',
+	'coll-load_local_book' => "Klikit war Mat eo evit kenderc'hel ho levr %TITLE% hag en deus %NUMPAGES% pajenn wiki. Klikit war Nullañ evit dilemel ha kregiñ gant ul levr goullo.",
 	'right-collectionsaveasuserpage' => 'Enrollañ levrioù evel pajenn implijer',
 	'right-collectionsaveascommunitypage' => 'Enrollañ levrioù evel ur bajenn eus ar gumuniezh',
 );
@@ -2356,7 +2414,7 @@ Coš swóje aktualne knigły pśepisaś, nowe wopśimjeśe pśipowjesyś abo zac
 	'coll-limit_exceeded_title' => 'Knigły pśewjelike',
 	'coll-limit_exceeded_text' => 'Twóje knigły su pśewjelike.
 Njedaju se boki pśidaś.',
-	'coll-rendering_title' => 'Kreslenje',
+	'coll-rendering_title' => 'Twórjenje',
 	'coll-rendering_text' => '<p><strong>Pšosym pócakaj, mjaztym až se dokument napórajo.</strong></p>
 
 <p><strong>Póstup:</strong> <span id="renderingProgress">$1</span>% <span id="renderingStatus">$2</span></p>
@@ -2368,7 +2426,7 @@ Jolic to njefunkcioněrujo, klikni pšosym tłocašk "Znowego" swójogo wobglěd
 	'coll-rendering_page' => '(bok: $1)',
 	'coll-rendering_page_info_text_article' => '{{MediaWiki:Coll-helppage}}/Cerjenje infoteksta boka',
 	'coll-rendering_collection_info_text_article' => '{{MediaWiki:Coll-helppage}}/Cerjenje infoteksta zběrki',
-	'coll-rendering_finished_title' => 'Kreslenje dokóńcone',
+	'coll-rendering_finished_title' => 'Twórjenje dokóńcone',
 	'coll-rendering_finished_text' => '<strong>Dokumentowa dataja jo se napórała.</strong>
 <strong>[$1 Ześěgni dataju]</strong> do swójogo licadła.
 
@@ -2387,14 +2445,14 @@ Pśispomnjeśa:
 	'coll-blacklisted-templates' => '* Pśedłogi na cornej lisćinje [[:$1]] su se wuzamknuli.',
 	'coll-return_to_collection' => '<p>Slědk k <a href="$1">$2</a></p>',
 	'coll-book_title' => 'Ako wuśišćane knigły skazaś',
-	'coll-book_text' => 'Wuśišćane knigły wót našogo parnera za śišć na pominanje skazaś:',
+	'coll-book_text' => 'Wuśišćane knigły wót našogo partnera za śišć na pominanje skazaś:',
 	'coll-order_from_pp' => 'Pśeglěd pla $1',
 	'coll-about_pp' => 'Wó $1',
 	'coll-invalid_podpartner_title' => 'Njepłaśiwy partner za śišć na pominanje',
 	'coll-invalid_podpartner_msg' => 'Pódany partner za śišć na pominanje jo njepłaśiwy.
 Skontaktuj pšosym swójogo administratora MediaWiki',
 	'coll-license' => 'Licenca',
-	'coll-return_to' => 'Slědk k [[:$1]]',
+	'coll-return_to' => 'Slědk k bokoju [[:$1]]',
 	'coll-more_info' => 'Dalšne informacije pokazaś',
 	'coll-hide_info' => 'Informacije schowaś',
 	'coll-order_info_article' => '{{MediaWiki:Coll-helppage}}/PediaPress skazańske informacije',
@@ -3753,7 +3811,7 @@ Notas:
 	'coll-is_cached' => '<ul><li>Atopouse unha versión do documento na memoria caché, polo que non vai ser necesaria a renderización. <a href="$1">Forzala.</a></li></ul>',
 	'coll-excluded-templates' => '* O modelos que están na categoría "[[:Category:$1|$1]]" foron excluídos.',
 	'coll-blacklisted-templates' => '* O modelos da lista negra "[[:$1]]" foron excluídos.',
-	'coll-return_to_collection' => '<p>Voltar a <a href="$1">$2</a></p>',
+	'coll-return_to_collection' => '<p>Volver a <a href="$1">$2</a></p>',
 	'coll-book_title' => 'Encargar como un libro impreso',
 	'coll-book_text' => 'Obteña un libro impreso desde un dos nosos seguintes compañeiros de solicitudes de impresión:',
 	'coll-order_from_pp' => 'Vista previa con $1',
@@ -3762,7 +3820,7 @@ Notas:
 	'coll-invalid_podpartner_msg' => 'O compañeiro de solicitudes de impresión (POD) indicado é inválido.
 Por favor, contacte co seu administrador MediaWiki.',
 	'coll-license' => 'Licenza',
-	'coll-return_to' => 'Voltar a "[[:$1]]"',
+	'coll-return_to' => 'Volver a "[[:$1]]"',
 	'coll-more_info' => 'Obter máis información',
 	'coll-hide_info' => 'Agochar a información',
 	'coll-order_info_article' => '{{MediaWiki:Coll-helppage}}/Información de pedido a PediaPress',
@@ -4440,7 +4498,7 @@ Njadadźa so hižo žane strony přidać.',
 <p>Tuta strona dyrbjała so awtomatisce kóžde por sekundow aktualizować.
 Jeli so to njestawa, klikń prošu na tłóčatko "Znowa" swojeho wobhladowaka.</p>',
 	'coll-rendering_status' => '<strong>Status:</strong> $1',
-	'coll-rendering_article' => '(wikijowa strona: $1)',
+	'coll-rendering_article' => '(wikistrona: $1)',
 	'coll-rendering_page' => '(strona: $1)',
 	'coll-rendering_page_info_text_article' => '{{MediaWiki:Coll-helppage}}/Rysowanje infoteksta strony',
 	'coll-rendering_collection_info_text_article' => '{{MediaWiki:Coll-helppage}}/Rysowanje infoteksta zběrki',
@@ -4470,7 +4528,7 @@ Přispomnjenka:
 	'coll-invalid_podpartner_msg' => 'Podaty partner za ćišć na žadanje je njepłaćiwy.
 Skontaktuj prošu swojeho administratora MediaWiki.',
 	'coll-license' => 'Licenca',
-	'coll-return_to' => 'Wróćo k [[:$1]]',
+	'coll-return_to' => 'Wróćo k stronje [[:$1]]',
 	'coll-more_info' => 'Dalše informacije pokazać',
 	'coll-hide_info' => 'Informacije schować',
 	'coll-order_info_article' => '{{MediaWiki:Coll-helppage}}/PediaPress skazanske informacije',
@@ -4594,6 +4652,8 @@ Ha ez nem történik meg, kérlek nyomd meg a böngésződ frissítés gombját!
 
 Megjegyzés:
 * Nem vagy elégedett az eredménnyel? Lásd a  [[{{MediaWiki:Coll-helppage}}|könyvekről szóló segítség oldalt]] a javítási lehetőségekről.',
+	'coll-finished_page_info_text_article' => '{{MediaWiki:Coll-helppage}}/Lapinformációk renderelése',
+	'coll-finished_collection_info_text_article' => '{{MediaWiki:Coll-helppage}}/Gyűjtemény információinak renderelése',
 	'coll-notfound_title' => 'A könyv nem található',
 	'coll-notfound_text' => 'A könyvoldal nem található.',
 	'coll-download_notfound_title' => 'A fájl nem található',
@@ -4632,6 +4692,7 @@ A lista minden alkalommal frissül, amikor a „hozzáadás” vagy „eltávol�
 	'coll-suggest_article_remove' => 'A(z) <strong>$1</strong> lap eltávolítva a könyvedből ($2).',
 	'coll-suggest_undo_tooltip' => 'Művelet visszavonása',
 	'coll-suggest_undo' => 'visszavonás',
+	'coll-load_local_book' => 'Kattints az „OK” gombra a(z) %TITLE% című könyved folytatásához, ami %NUMPAGES% wikilapot tartalmaz. Kattints a „Mégse” gombra a törléséhez, és kezdéshez egy üres könyvvel.',
 	'right-collectionsaveasuserpage' => 'Könyvek mentése mint felhasználói lap',
 	'right-collectionsaveascommunitypage' => 'Könyvek mentése közösségi lapként',
 );
@@ -5021,6 +5082,14 @@ Daftar diperbaharui kapanpun anda clik tombol tambahkan atau hapus.',
 	'coll-suggest_undo' => 'batalkan',
 	'right-collectionsaveasuserpage' => 'Menyimpan koleksi buku sebagai halaman pengguna',
 	'right-collectionsaveascommunitypage' => 'Menyimpan koleksi buku sebagai halaman komunitas',
+);
+
+/** Igbo (Igbo) */
+$messages['ig'] = array(
+	'coll-show' => 'Zi',
+	'coll-cancel' => 'Emekwàlà',
+	'coll-about_pp' => 'Maka $1',
+	'coll-suggest_show' => 'zi',
 );
 
 /** Ido (Ido)
@@ -5660,13 +5729,19 @@ $messages['ko'] = array(
 	'coll-book_creator_help' => '자세한 정보에 대해서는 [[{{MediaWiki:Coll-helppage}}|책에 대한 도움말]]을 참고하십시오.',
 	'coll-start_book_creator' => '책 생성기 시작하기',
 	'coll-book_creator_continue' => '책 생성기를 이용해 진행하기',
+	'coll-book_creator_disable_text' => "'''책 생성기'''가 비활성화되고 작업하던 책이 제거될 것입니다.",
+	'coll-book_creator_text_article' => '{{MediaWiki:Coll-helppage}}/책 생성기',
 	'coll-collection' => '책',
 	'coll-collections' => '책',
 	'coll-exclusion_category_title' => '인쇄시 제외할 문서',
 	'coll-print_template_prefix' => '인쇄',
 	'coll-print_template_pattern' => '$1/인쇄',
 	'coll-unknown_subpage_title' => '알 수 없는 하위 문서',
-	'coll-unknown_subpage_text' => '[[Special:Book|책]] 하위 문서가 없습니다.',
+	'coll-unknown_subpage_text' => '[[Special:Book|책]]의 이 하위 문서가 없습니다.',
+	'coll-couldnotaddarticle_title' => '문서 추가 실패',
+	'coll-couldnotaddarticle_msg' => '이 위키 문서를 추가하지 못했습니다.',
+	'coll-couldnotremovearticle_title' => '문서 제거 실패',
+	'coll-couldnotremovearticle_msg' => '해당 문서를 제거하지 못했습니다.',
 	'coll-noscript_text' => '<h1>자바스크립트가 필요합니다!</h1>
 <strong>당신의 브라우저는 자바스크립트를 지원하지 않거나 비활성화되어 있습니다.
 자바스크립트가 활성화되지 않으면 이 문서는 제대로 동작하지 않을 수 있습니다.</strong>',
@@ -5674,7 +5749,7 @@ $messages['ko'] = array(
 	'coll-your_book' => '당신의 책',
 	'coll-download_title' => '다운로드',
 	'coll-download_text' => '책을 다운로드하려면 원하는 형식을 선택한 다음 버튼을 클릭해주세요.',
-	'coll-download_as_text' => '$1 형식으로 된 책을 다운로드하려면 버튼을 클릭해 주세요.',
+	'coll-download_as_text' => '$1 형식으로 된 책을 다운로드하려면 버튼을 클릭해주세요.',
 	'coll-download' => '다운로드',
 	'coll-format_label' => '포맷:',
 	'coll-remove' => '제거',
@@ -5707,7 +5782,7 @@ $messages['ko'] = array(
 	'coll-personal_collection_label' => '개인 책:',
 	'coll-community_collection_label' => '공동체 책:',
 	'coll-save_collection' => '책 저장',
-	'coll-save_category' => '모든 책은 [[:Category:{{MediaWiki:Coll-bookscategory}}|{{MediaWiki:Coll-bookscategory}}]] 분류에 포함됩니다.',
+	'coll-save_category' => '모든 저장된 책은 [[:Category:{{MediaWiki:Coll-bookscategory}}|{{MediaWiki:Coll-bookscategory}}]] 분류에 포함됩니다.',
 	'coll-overwrite_title' => '문서가 존재합니다.
 덮어쓰시겠습니까?',
 	'coll-overwrite_text' => '[[:$1]]이라는 이름을 가진 문서가 이미 존재합니다.
@@ -5731,23 +5806,29 @@ $messages['ko'] = array(
 	'coll-rendering_status' => '<strong>상태:</strong> $1',
 	'coll-rendering_article' => '(문서: $1)',
 	'coll-rendering_page' => '(페이지: $1)',
+	'coll-rendering_page_info_text_article' => '{{MediaWiki:Coll-helppage}}/책 만들기',
+	'coll-rendering_collection_info_text_article' => '{{MediaWiki:Coll-helppage}}/책 만들기',
 	'coll-rendering_finished_title' => '렌더링 완료',
 	'coll-rendering_finished_text' => '<strong>문서 파일이 생성되었습니다.</strong>
 이 파일을 당신의 컴퓨터로 <strong>[$1 다운로드]</strong>하십시오.
 
 참고:
 * 출력 결과에 만족하지 않으신가요? 이 기능을 향상시킬 수 있도록 [[{{MediaWiki:Coll-helppage}}|책에 대한 도움말 문서]]를 참고해 주세요.',
+	'coll-finished_page_info_text_article' => '{{MediaWiki:Coll-helppage}}/책 만들기',
+	'coll-finished_collection_info_text_article' => '{{MediaWiki:Coll-helppage}}/책 만들기',
 	'coll-notfound_title' => '책을 찾을 수 없음',
 	'coll-notfound_text' => '해당 페이지를 찾을 수 없습니다.',
 	'coll-download_notfound_title' => '파일을 찾을 수 없습니다.',
 	'coll-download_notfound_text' => '다운로드 받을 파일이 없습니다: 파일을 지웠을 가능성이 있으며, 다시 만들 필요가 있습니다.',
+	'coll-download_failed_title' => '다운로드 중 오류',
+	'coll-download_failed_text' => '파일을 다운로드하는 중 오류가 있었습니다: $1',
 	'coll-is_cached' => '<ul><li>이 문서의 캐시된 버전이 발견되었습니다. 따라서 다시 렌더링하지 않으셔도 됩니다. <a href="$1">다시 렌더링하기</a></li></ul>',
 	'coll-excluded-templates' => '[[:Category:$1|$1]] 분류에 속한 틀은 제외되었습니다.',
 	'coll-blacklisted-templates' => '틀 블랙리스트 [[:$1]]에 있는 틀은 제외되었습니다.',
 	'coll-return_to_collection' => '<p><a href="$1">$2</a>로 돌아갑니다</p>',
 	'coll-book_title' => '인쇄된 책으로 주문',
 	'coll-book_text' => '인쇄 협력자를 통해 책을 인쇄합니다.',
-	'coll-order_from_pp' => '$1에서 책 주문하기',
+	'coll-order_from_pp' => '$1에서 책 미리 보기',
 	'coll-about_pp' => '$1에 대하여',
 	'coll-invalid_podpartner_title' => '인쇄 협력자 정보 잘못됨',
 	'coll-invalid_podpartner_msg' => '제공받은 인쇄 협력자 정보가 잘못되었습니다. 관리자에게 해당 문제를 연락해주세요.',
@@ -5756,6 +5837,25 @@ $messages['ko'] = array(
 	'coll-more_info' => '정보 더 보기',
 	'coll-hide_info' => '정보 숨기기',
 	'coll-order_info_article' => '{{MediaWiki:Coll-helppage}}/PediaPress 주문 정보',
+	'coll-suggest_title' => '당신의 책에 넣을 문서 제안',
+	'coll-suggest_intro_text' => '문서 제안은 지금 당신의 책에 있는 위키 문서의 집합을 바탕으로 이루어집니다.
+추가 또는 제거 버튼을 누를 때마다 목록이 업데이트됩니다.',
+	'coll-suggested_articles' => '추천하는 문서',
+	'coll-suggest_reset_bans' => '초기화',
+	'coll-suggest_reset_bans_tooltip' => '이전에 지운 문서 제안을 표시합니다.',
+	'coll-suggest_add_selected' => '선택한 문서를 추가하기',
+	'coll-suggest_ban_selected' => '선택한 문서 지우기',
+	'coll-suggest_your_book' => '당신의 책',
+	'coll-suggest_show' => '보기',
+	'coll-suggest_ban_tooltip' => '이 문서를 문서 제안 목록에서 빼기',
+	'coll-suggest_article_ban' => '<strong>$1</strong> 문서가 문서 제안 목록에서 지워졌습니다 ($2).',
+	'coll-suggest_article_add' => '<strong>$1</strong> 문서가 문서 제안 목록에 추가되었습니다 ($2).',
+	'coll-suggest_article_remove' => '<strong>$1</strong> 문서를 당신의 책에서 뺐습니다 ($2).',
+	'coll-suggest_undo_tooltip' => '이 동작 되돌리기',
+	'coll-suggest_undo' => '되돌리기',
+	'coll-load_local_book' => '문서 %NUMPAGES%개를 포함하고 있는 %TITLE% 책을 계속 작업하시려면 확인을 클릭하십시오. 책을 삭제하고 새 책으로 다시 시작하려면 취소를 클릭하십시오',
+	'right-collectionsaveasuserpage' => '사용자 문서에 책 저장하기',
+	'right-collectionsaveascommunitypage' => '프로젝트 문서에 책 저장하기',
 );
 
 /** Krio (Krio)
@@ -5928,8 +6028,8 @@ $messages['kw'] = array(
  */
 $messages['lb'] = array(
 	'coll-desc' => '[[Special:Book|Bicher uleeën]]',
-	'coll-book_creator_intro' => "<big>Mam ''Buchmodus'' kënnt Dir e Buch uleeën datt aus Wikisäite bestteet déi Dir eraussicht. Dir kënnt Ärt Buch a verschidde Formater (zum Beispill PDF oder ODF) exportéieren oder eng gedréckte Kopie bestellen.</big>",
-	'coll-manage_your_book' => 'Geréiert Ärt Buch',
+	'coll-book_creator_intro' => "<big>Mam ''Buchmodus (book creator)'' kënnt Dir e Buch uleeën dat aus Wikisäite besteet déi Dir eraussicht. Dir kënnt Äert Buch a verschidde Formater (zum Beispill PDF oder ODF) exportéieren oder eng gedréckte Kopie bestellen.</big>",
+	'coll-manage_your_book' => 'Geréiert Äert Buch',
 	'coll-book_creator_help' => "Kuckt d'[[{{MediaWiki:Coll-helppage}}|Hëllef fir Bicher]] fir méi Informatiounen.",
 	'coll-start_book_creator' => 'Buchfonctioun starten',
 	'coll-book_creator_continue' => "D'Buchfonctioun weider benotzen",
@@ -5949,11 +6049,11 @@ $messages['lb'] = array(
 	'coll-noscript_text' => '<h1>JavaScript gëtt gebraucht!</h1>
 <strong>Äre Browser ënnerstëtzt Java Script net oder JavaScript ass ausgeschalt.
 Dës Säit fonctionnéiert net richteg, ausser wa JavaScript ageschalt ass</strong>',
-	'coll-savedbook_template' => 'gespäichert_buch',
-	'coll-your_book' => 'Ärt Buch',
+	'coll-savedbook_template' => 'gespäichert Buch',
+	'coll-your_book' => 'Äert Buch',
 	'coll-download_title' => 'Eroflueden',
-	'coll-download_text' => 'Fir Ärt Buch erofzelueden, wielt w.e.g. e Format a klickt op de Knäppchen.',
-	'coll-download_as_text' => 'Fir Ärt Buch am Format $1 erofzelueden, klickt w.e.g. op de Knäppchen.',
+	'coll-download_text' => 'Fir Äert Buch erofzelueden, wielt w.e.g. e Format a klickt op de Knäppchen.',
+	'coll-download_as_text' => 'Fir Äert Buch am Format $1 erofzelueden, klickt w.e.g. op de Knäppchen.',
 	'coll-download' => 'Eroflueden',
 	'coll-format_label' => 'Format:',
 	'coll-remove' => 'Ewechhuelen',
@@ -5992,14 +6092,14 @@ Dës Säit fonctionnéiert net richteg, ausser wa JavaScript ageschalt ass</stro
 Wëllt Dir déi duerch är Sammlung ersetzen?',
 	'coll-yes' => 'Jo',
 	'coll-no' => 'Neen',
-	'coll-load_overwrite_text' => 'Dir hutt schon e puer Säiten an Ärem Buch.
-Wëllt Dir Ärt aktuellt Buch iwwerschreiwen, den nien Inhalt hanndrun hänken, oder luede vun dësm Buch ofbriechen?',
+	'coll-load_overwrite_text' => "Dir hutt schon e puer Säiten an Ärem Buch.
+Wëllt Dir Äert aktuellt Buch iwwerschreiwen, den neien Inhalt hannendrun hänken, oder d'Luede vun dësem Buch ofbriechen?",
 	'coll-overwrite' => 'Iwwerschreiwen',
 	'coll-append' => 'Derbäisetzen',
 	'coll-cancel' => 'Annulléieren',
 	'coll-update' => 'Aktualiséieren',
 	'coll-limit_exceeded_title' => 'Buch ze grouss',
-	'coll-limit_exceeded_text' => 'Ärt Buch ass ze grouss.
+	'coll-limit_exceeded_text' => 'Äert Buch ass ze grouss.
 Et kënne keng Säite méi derbäigesat ginn.',
 	'coll-rendering_title' => 'Maachen',
 	'coll-rendering_text' => '<p><strong>Gedëllegt Iech w.e.g. bis d\'Dokument zesummegestallt ass.</strong></p>
@@ -6041,7 +6141,7 @@ Kontaktéiert w.e.g. Äre MediaWiki Adminstrateur.',
 	'coll-more_info' => 'Méi Informatioune weisen',
 	'coll-hide_info' => 'Informatioune verstoppen',
 	'coll-order_info_article' => '{{MediaWiki:Coll-helppage}}/PediaPress Bestellinformatiounen',
-	'coll-suggest_title' => 'Virgeschloe Säite fir Ärt Buch',
+	'coll-suggest_title' => 'Virgeschloe Säite fir Äert Buch',
 	'coll-suggest_intro_text' => "D'Virschléi baséieren op den aktuelle Säiten an Ärem Buch.
 D'Lëscht gëtt all kéier aktuliséiert wann dir op d'Knäppecher derbäisetzen oder ewechuele klickt.",
 	'coll-suggested_articles' => 'Virschléi',
@@ -6049,11 +6149,11 @@ D'Lëscht gëtt all kéier aktuliséiert wann dir op d'Knäppecher derbäisetzen
 	'coll-suggest_reset_bans_tooltip' => 'Virschléi weisen déi virdrun ewechgeholl goufen',
 	'coll-suggest_add_selected' => 'Erausgesichte Säiten derbäisetzen',
 	'coll-suggest_ban_selected' => 'Erausgesichte Säiten ewechhuelen',
-	'coll-suggest_your_book' => 'Ärt Buch',
+	'coll-suggest_your_book' => 'Äert Buch',
 	'coll-suggest_show' => 'weisen',
 	'coll-suggest_ban_tooltip' => 'Dës Säit vun der Lëscht vun de Virschléi erofhuelen',
 	'coll-suggest_article_ban' => "D'Säit <strong>$1</strong> gouf vun de Virschléi ewechgeholl ($2).",
-	'coll-suggest_article_add' => "D'Säit <strong>$1</strong> gouf bäi Ärt Buch derbäigesat ($2).",
+	'coll-suggest_article_add' => "D'Säit <strong>$1</strong> gouf bäi Äert Buch derbäigesat ($2).",
 	'coll-suggest_article_remove' => "D'Säit <strong>$1</strong> gouf aus Ärem Buch erausgeholl ($2).",
 	'coll-suggest_undo_tooltip' => 'Dës Aktioun réckgängeg maachen',
 	'coll-suggest_undo' => 'réckgängeg maachen',
@@ -7276,6 +7376,7 @@ Listen oppdateres når du klikker på legg til- eller fjern-knappene.',
 	'coll-suggest_article_remove' => 'Siden <strong>$1</strong> har blitt fjernet fra boken din ($2).',
 	'coll-suggest_undo_tooltip' => 'Angre denne handligen',
 	'coll-suggest_undo' => 'Angre',
+	'coll-load_local_book' => 'Klikk OK for å fortsette med boken din %TITLE% som inneholder %NUMPAGES% wikisider. Klikk Avbryt for å slette den og starte med en tom bok.',
 	'right-collectionsaveasuserpage' => 'Lagre bøker som brukersider',
 	'right-collectionsaveascommunitypage' => 'Lagre bøker som samfunnsside',
 );
@@ -7446,6 +7547,7 @@ $messages['pdc'] = array(
 	'coll-download' => 'Runnerlaade',
 	'coll-remove' => 'Lösche',
 	'coll-show' => 'Zeige',
+	'coll-title' => 'Titel:',
 	'coll-rename' => 'Naame ennere',
 	'coll-empty_collection' => 'Leeres Buch',
 	'coll-revision' => 'Version: $1',
@@ -7750,6 +7852,7 @@ La lista a l'é modificà minca vira ch'a sgnaca an sij boton për gionté o gav
 	'coll-suggest_article_remove' => "La pàgina <strong>$1</strong> a l'é stàita gavà da sò lìber ($2).",
 	'coll-suggest_undo_tooltip' => "Anula st'assion-sì",
 	'coll-suggest_undo' => "buta 'me ch'a l'era",
+	'coll-load_local_book' => "Sgnaca Va bin për continué con tò lìber %TITLE% ch'a conten %NUMPAGES% pàgine wiki. Sgnaca Scancelé për scancelelo e parte con un lìber veuid.",
 	'right-collectionsaveasuserpage' => "Salvé dij lìber ansima a dle pàgine d'utent",
 	'right-collectionsaveascommunitypage' => 'Salvé dij lìber com dle pàgine dla comunità',
 );
@@ -8110,15 +8213,15 @@ $messages['qu'] = array(
  * @author Stelistcristi
  */
 $messages['ro'] = array(
-	'coll-desc' => '[[Special:Book|Creare cărţi]]',
-	'coll-book_creator_help' => 'Vedeţi [[{{MediaWiki:Coll-helppage}}|pagina de ajutor despre cărţi]] pentru mai multe informaţii.',
+	'coll-desc' => '[[Special:Book|Creare cărți]]',
+	'coll-book_creator_help' => 'Vedeți [[{{MediaWiki:Coll-helppage}}|pagina de ajutor despre cărți]] pentru mai multe informații.',
 	'coll-collection' => 'Carte',
-	'coll-collections' => 'Cărţi',
+	'coll-collections' => 'Cărți',
 	'coll-exclusion_category_title' => 'Exclude la imprimare',
 	'coll-print_template_prefix' => 'Imprimare',
 	'coll-print_template_pattern' => '$1/Imprimare',
 	'coll-unknown_subpage_title' => 'Subpagină necunoscută',
-	'coll-unknown_subpage_text' => 'Această subpagină a [[Special:Book|Cărţii]] nu există',
+	'coll-unknown_subpage_text' => 'Această subpagină a [[Special:Book|Cărții]] nu există',
 	'coll-couldnotaddarticle_title' => 'Nu pot adăuga pagina wiki',
 	'coll-couldnotaddarticle_msg' => 'Pagina wiki nu a putut fi adăugată',
 	'coll-couldnotremovearticle_title' => 'Nu pot elimina pagina wiki',
@@ -8129,8 +8232,8 @@ Această pagină nu va lucra corect, doar dacă JavaScript este pornit.</strong>
 	'coll-savedbook_template' => 'carte_salvată',
 	'coll-your_book' => 'Cartea dumneavoastră',
 	'coll-download_title' => 'Descarcă',
-	'coll-download_text' => 'Pentru a descărca o versiune alegeţi un format şi apăsaţi butonul.',
-	'coll-download_as_text' => 'Pentru a descărca o versiune în formatul $1, apăsaţi butonul.',
+	'coll-download_text' => 'Pentru a descărca o versiune alegeți un format și apăsați butonul.',
+	'coll-download_as_text' => 'Pentru a descărca o versiune în formatul $1, apăsați butonul.',
 	'coll-download' => 'Descarcă',
 	'coll-format_label' => 'Format:',
 	'coll-remove' => 'Elimină',
@@ -8142,36 +8245,36 @@ Această pagină nu va lucra corect, doar dacă JavaScript este pornit.</strong>
 	'coll-title' => 'Titlu:',
 	'coll-subtitle' => 'Subtitlu:',
 	'coll-contents' => 'Cuprins',
-	'coll-drag_and_drop' => 'Folosiţi drag & drop pentru a ordona wiki paginile şi capitolele',
+	'coll-drag_and_drop' => 'Folosiți drag & drop pentru a ordona wiki paginile și capitolele',
 	'coll-create_chapter' => 'Creează capitol',
 	'coll-sort_alphabetically' => 'Ordonează alfabetic',
-	'coll-rename' => 'Redenumeşte',
-	'coll-new_chapter' => 'Introduceţi numele noului capitol',
-	'coll-rename_chapter' => 'Introduceţi noul nume pentru capitol',
+	'coll-rename' => 'Redenumește',
+	'coll-new_chapter' => 'Introduceți numele noului capitol',
+	'coll-rename_chapter' => 'Introduceți noul nume pentru capitol',
 	'coll-no_such_category' => 'Nu există o asemenea catergorie',
 	'coll-notitle_title' => 'Titlul paginii nu poate fii determinat.',
-	'coll-post_failed_title' => 'Cerere POST eşuată',
-	'coll-post_failed_msg' => 'Cererea POST către $1 a eşuat ($2).',
+	'coll-post_failed_title' => 'Cerere POST eșuată',
+	'coll-post_failed_msg' => 'Cererea POST către $1 a eșuat ($2).',
 	'coll-mwserve_failed_title' => 'Eroare a serverului',
 	'coll-mwserve_failed_msg' => 'A apărut o eroare la server: <nowiki>$1</nowiki>',
 	'coll-error_reponse' => 'Răspuns de eroare de la server',
 	'coll-empty_collection' => 'Carte goală',
 	'coll-revision' => 'Versiune: $1',
-	'coll-save_collection_title' => 'Salvează şi împarte cartea',
-	'coll-save_collection_text' => 'Alegeţi o locaţie de depozitare pentru cartea dumneavoastră:',
-	'coll-login_to_save' => 'Dacă doriţi să salvaţi cărţile pentru o folosire ulterioară, vă rugăm [[Special:UserLogin|să vă autentificaţi sau să vă creaţi un cont]].',
+	'coll-save_collection_title' => 'Salvează și împarte cartea',
+	'coll-save_collection_text' => 'Alegeți o locație de depozitare pentru cartea dumneavoastră:',
+	'coll-login_to_save' => 'Dacă doriți să salvați cărțile pentru o folosire ulterioară, vă rugăm [[Special:UserLogin|să vă autentificați sau să vă creați un cont]].',
 	'coll-personal_collection_label' => 'Carte personală:',
-	'coll-community_collection_label' => 'Carte a comunităţii:',
+	'coll-community_collection_label' => 'Carte a comunității:',
 	'coll-save_collection' => 'Salvează cartea',
-	'coll-save_category' => 'Toate cărţile sunt salvate în categoria [[:Category:{{MediaWiki:Coll-bookscategory}}|{{MediaWiki:Coll-bookscategory}}]].',
+	'coll-save_category' => 'Toate cărțile sunt salvate în categoria [[:Category:{{MediaWiki:Coll-bookscategory}}|{{MediaWiki:Coll-bookscategory}}]].',
 	'coll-overwrite_title' => 'Pagina există.
 Suprascrie?',
 	'coll-overwrite_text' => 'O pagină cu numele [[:$1]] există deja.
-Doriţi ca aceasta să fie înlocuită cu cartea dumneavoastră?',
+Doriți ca aceasta să fie înlocuită cu cartea dumneavoastră?',
 	'coll-yes' => 'Da',
 	'coll-no' => 'Nu',
-	'coll-load_overwrite_text' => 'Deja aveţi câteva pagini în cartea dumneavoastră.
-Doriţi să rescrieţi cartea actuală, să adăugaţi noul conţinut, sau să revocaţi încărcarea acestei cărţi?',
+	'coll-load_overwrite_text' => 'Deja aveți câteva pagini în cartea dumneavoastră.
+Doriți să rescrieți cartea actuală, să adăugați noul conținut, sau să revocați încărcarea acestei cărți?',
 	'coll-overwrite' => 'Suprascrie',
 	'coll-append' => 'Adaugă',
 	'coll-cancel' => 'Anulează',
@@ -8180,59 +8283,59 @@ Doriţi să rescrieţi cartea actuală, să adăugaţi noul conţinut, sau să r
 	'coll-limit_exceeded_text' => 'Cartea dumneavoastră este prea mare.
 Nicio altă pagină nu poate fii adăugată.',
 	'coll-rendering_title' => 'Generare',
-	'coll-rendering_text' => '<p><strong>Vă rugăm să aşteptaţi până când documentul este generat.</strong></p>
+	'coll-rendering_text' => '<p><strong>Vă rugăm să așteptați până când documentul este generat.</strong></p>
 
 <p><strong>Progres:</strong> <span id="renderingProgress">$1</span>% <span id="renderingStatus">$2</span></p>
 
 <p>Această pagină ar trebui să se actualizeze automat.
-Dacă aceasta nu funcţionează, vă rugăm să apăsaţi butonul de reîncărcare a paginii din browser-ul dumneavoastră.</p>',
+Dacă aceasta nu funcționează, vă rugăm să apăsați butonul de reîncărcare a paginii din browser-ul dumneavoastră.</p>',
 	'coll-rendering_status' => '<strong>Stare:</strong> $1',
 	'coll-rendering_article' => '(wiki pagină: $1)',
 	'coll-rendering_page' => '(pagină: $1)',
 	'coll-rendering_finished_title' => 'Generare terminată',
-	'coll-rendering_finished_text' => '<strong>Fişierul documentului a fost generat.</strong>
-<strong>[$1 Descarcă fişierul]</strong> în calculatorul dumneavoastră.
+	'coll-rendering_finished_text' => '<strong>Fișierul documentului a fost generat.</strong>
+<strong>[$1 Descarcă fișierul]</strong> în calculatorul dumneavoastră.
 
 Note:
-* Nu sunteţi mulţumit de rezultat? Vedeţi [[{{MediaWiki:Coll-helppage}}|pagina de ajutor în legătură cu cărţile]] pentru posibilităţi de îmbunătăţire.',
+* Nu sunteți mulțumit de rezultat? Vedeți [[{{MediaWiki:Coll-helppage}}|pagina de ajutor în legătură cu cărțile]] pentru posibilități de îmbunătățire.',
 	'coll-notfound_title' => 'Carte negăsită',
-	'coll-notfound_text' => 'Pagina cărţii nu a putut fii găsită.',
-	'coll-download_notfound_title' => 'Fişier negăsit',
-	'coll-download_notfound_text' => 'Fişierul pe care încercaţi să în descărcaţi nu există: Poate a fost şters şi trebuie regenerat.',
+	'coll-notfound_text' => 'Pagina cărții nu a putut fii găsită.',
+	'coll-download_notfound_title' => 'Fișier negăsit',
+	'coll-download_notfound_text' => 'Fișierul pe care încercați să în descărcați nu există: Poate a fost șters și trebuie regenerat.',
 	'coll-download_failed_title' => 'Eroare în timpul descărcării',
-	'coll-download_failed_text' => 'S-a produs o eroare când se descărca fişierul: $1',
-	'coll-is_cached' => '<ul><li>O versiune din cache a documentului a fost găsită, deci nu a mai fost necesară o regenerare. <a href="$1">Forţaţi regenerarea.</a></li></ul>',
+	'coll-download_failed_text' => 'S-a produs o eroare când se descărca fișierul: $1',
+	'coll-is_cached' => '<ul><li>O versiune din cache a documentului a fost găsită, deci nu a mai fost necesară o regenerare. <a href="$1">Forțați regenerarea.</a></li></ul>',
 	'coll-excluded-templates' => '* Formatele din categoria [[:Category:$1|$1]] au fost excluse.',
 	'coll-blacklisted-templates' => '* Formatele de pe lista neagră [[:$1]] au fost excluse.',
 	'coll-return_to_collection' => '<p>Întoarcere la <a href="$1">$2</a></p>',
-	'coll-book_title' => 'Comandaţi ca o carte imprimată',
-	'coll-book_text' => 'Obţineţi o carte printată de la partenerul nostru.',
+	'coll-book_title' => 'Comandați ca o carte imprimată',
+	'coll-book_text' => 'Obțineți o carte printată de la partenerul nostru.',
 	'coll-order_from_pp' => 'Comandă cartea la $1',
 	'coll-about_pp' => 'Despre $1',
 	'coll-invalid_podpartner_title' => 'Partener incorect',
 	'coll-invalid_podpartner_msg' => 'Partenerul ales este incorect.
-Vă rugăm să contactaţi administratorul MediaWiki.',
-	'coll-license' => 'Licenţă',
-	'coll-return_to' => 'Întoarceţi-vă la [[:$1]]',
-	'coll-more_info' => 'Arată mai multe informaţii',
-	'coll-hide_info' => 'Ascunde informaţii',
-	'coll-order_info_article' => '{{MediaWiki:Coll-helppage}}/PediaPress informaţii despre comandă',
+Vă rugăm să contactați administratorul MediaWiki.',
+	'coll-license' => 'Licență',
+	'coll-return_to' => 'Întoarceți-vă la [[:$1]]',
+	'coll-more_info' => 'Arată mai multe informații',
+	'coll-hide_info' => 'Ascunde informații',
+	'coll-order_info_article' => '{{MediaWiki:Coll-helppage}}/PediaPress informații despre comandă',
 	'coll-suggest_title' => 'Pagini cu sugestii pentru cartea dvs',
 	'coll-suggested_articles' => 'Sugestii',
 	'coll-suggest_reset_bans' => 'resetare',
 	'coll-suggest_reset_bans_tooltip' => 'Arată sugestiile eliminate anterior',
-	'coll-suggest_add_selected' => 'Adăugaţi paginile selectate',
-	'coll-suggest_ban_selected' => 'Eliminaţi paginile selectate',
+	'coll-suggest_add_selected' => 'Adăugați paginile selectate',
+	'coll-suggest_ban_selected' => 'Eliminați paginile selectate',
 	'coll-suggest_your_book' => 'Cartea dvs',
 	'coll-suggest_show' => 'arată',
-	'coll-suggest_ban_tooltip' => 'Eliminaţi această pagină din lista cu sugestii',
+	'coll-suggest_ban_tooltip' => 'Eliminați această pagină din lista cu sugestii',
 	'coll-suggest_article_ban' => 'Pagina <strong>$1</strong> a fost eliminată de la sugestii ($2).',
 	'coll-suggest_article_add' => 'Pagina <strong>$1</strong> a fost adăugată în cartea dvs ($2).',
 	'coll-suggest_article_remove' => 'Pagina <strong>$1</strong> a fost eliminată din cartea dvs ($2).',
-	'coll-suggest_undo_tooltip' => 'Anulaţi această acţiune',
-	'coll-suggest_undo' => 'anulaţi',
-	'right-collectionsaveasuserpage' => 'Salvaţi cartea ca o pagină de utilizator',
-	'right-collectionsaveascommunitypage' => 'Salvează cartea ca o pagină a comunităţii',
+	'coll-suggest_undo_tooltip' => 'Anulați această acțiune',
+	'coll-suggest_undo' => 'anulați',
+	'right-collectionsaveasuserpage' => 'Salvați cartea ca o pagină de utilizator',
+	'right-collectionsaveascommunitypage' => 'Salvează cartea ca o pagină a comunității',
 );
 
 /** Tarandíne (Tarandíne)
@@ -8546,6 +8649,19 @@ $messages['sah'] = array(
 	'coll-suggest_undo' => 'төннөрөргө',
 	'right-collectionsaveasuserpage' => 'кинигэлэри кытааччы тус сирэйин курдук хаалларыы',
 	'right-collectionsaveascommunitypage' => 'кинигэлэри бөлөх тус сирэйин курдук хаалларыы',
+);
+
+/** Sardinian (Sardu)
+ * @author Andria
+ */
+$messages['sc'] = array(
+	'coll-collection' => 'Libru',
+	'coll-collections' => 'Libros',
+	'coll-print_template_prefix' => 'Imprenta',
+	'coll-print_template_pattern' => '$1/Imprenta',
+	'coll-show' => 'Ammustra',
+	'coll-yes' => 'Eja',
+	'coll-suggest_show' => 'ammustra',
 );
 
 /** Serbo-Croatian (Srpskohrvatski / Српскохрватски)
@@ -9990,6 +10106,8 @@ Dosyayı bilgisayarınıza <strong>[$1 indirin]</strong>.
 
 Not:
 * Çıktıdan memnun değil misiniz? Geliştirme olanakları için [[{{MediaWiki:Coll-helppage}}|kitaplar hakkındaki yardım sayfalarına]] bakın.',
+	'coll-finished_page_info_text_article' => '{{MediaWiki:Coll-helppage}}/İşleyici sayfası bilgi metni',
+	'coll-finished_collection_info_text_article' => '{{MediaWiki:Coll-helppage}}/İşleyici koleksiyonu bilgi metni',
 	'coll-notfound_title' => 'Kitap bulunamadı',
 	'coll-notfound_text' => 'Kitap sayfası bulunamadı.',
 	'coll-download_notfound_title' => 'Dosya bulunamadı',
@@ -10028,6 +10146,7 @@ Ekle veya sil butonlarına her bastığınızda liste yenilenir.',
 	'coll-suggest_article_remove' => '<strong>$1</strong> sayfası kitabınızdan ($2) çıkarıldı.',
 	'coll-suggest_undo_tooltip' => 'Bu eylemi geri al',
 	'coll-suggest_undo' => 'geri al',
+	'coll-load_local_book' => "%NUMPAGES% viki sayfası içeren kitabınız %TITLE% ile devam etmek için Tamam'a tıklayın. Bunu silmek ve boş bir kitaba başlamak için İptal'e tıklayın.",
 	'right-collectionsaveasuserpage' => 'Kitapları kullanıcı sayfası olarak kaydet',
 	'right-collectionsaveascommunitypage' => 'Kitapları topluluk sayfası olarak kaydet',
 );

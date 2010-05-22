@@ -23,8 +23,7 @@ $aliases['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'HideRevision' => array( 'إخفاء_نسخة' ),
-	'Oversight' => array( 'أوفرسايت' ),
+	'HideRevision' => array( 'خبّى_نسخه' ),
 );
 
 /** Bosnian (Bosanski) */

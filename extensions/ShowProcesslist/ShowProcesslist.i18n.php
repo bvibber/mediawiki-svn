@@ -861,7 +861,7 @@ $messages['ro'] = array(
 	'showprocesslist-db' => 'Baza de date',
 	'showprocesslist-command' => 'Comandă',
 	'showprocesslist-time' => 'Timp',
-	'showprocesslist-info' => 'Informaţii',
+	'showprocesslist-info' => 'Informații',
 );
 
 /** Tarandíne (Tarandíne)

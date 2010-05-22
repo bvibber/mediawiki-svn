@@ -35,6 +35,16 @@ $messages['af'] = array(
 	'msfunc_div_zero' => 'Deling deur nul',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'msfunc_desc' => 'Një koleksion të funksioneve matematikore dhe statistikore',
+	'msfunc_nan' => 'rezultojnë vlera nuk është një numër',
+	'msfunc_inf' => 'Vlera rezultojnë është pafundësi',
+	'msfunc_div_zero' => 'Ndarja nga zero',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -540,10 +550,10 @@ $messages['pt-br'] = array(
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
-	'msfunc_desc' => 'O colecţie de funcţii matematice şi statistice',
+	'msfunc_desc' => 'O colecție de funcții matematice și statistice',
 	'msfunc_nan' => 'Valoarea rezultată nu este număr',
 	'msfunc_inf' => 'Valoarea rezultată este infinit',
-	'msfunc_div_zero' => 'Împărţire la zero',
+	'msfunc_div_zero' => 'Împărțire la zero',
 );
 
 /** Tarandíne (Tarandíne)

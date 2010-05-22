@@ -34,6 +34,15 @@ $messages['af'] = array(
 	'authors_anonymous' => 'Anoniem',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'authors-desc' => 'QUESTION një listë të faqeve që kontribuan në',
+	'authors_authors' => 'Autorët',
+	'authors_anonymous' => 'Anonim',
+);
+
 /** Arabic (العربية)
  * @author OsamaK
  */
@@ -222,7 +231,7 @@ $messages['ga'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
-	'authors-desc' => 'Adxunta unha lista dos contribuíntes ás páxinas',
+	'authors-desc' => 'Adxunta unha lista dos colaboradores ás páxinas',
 	'authors_authors' => 'Autores',
 	'authors_anonymous' => 'Anónimos',
 );
@@ -498,7 +507,7 @@ $messages['pt-br'] = array(
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
-	'authors-desc' => 'Adaugă o listă de contribuitori la sfârşitul paginilor',
+	'authors-desc' => 'Adaugă o listă de contribuitori la sfârșitul paginilor',
 	'authors_authors' => 'Autori',
 	'authors_anonymous' => 'Anonim',
 );
@@ -539,6 +548,14 @@ $messages['sk'] = array(
 	'authors-desc' => 'Pridáva na stránky zoznam autorov',
 	'authors_authors' => 'Autori',
 	'authors_anonymous' => 'Anonym',
+);
+
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'authors_authors' => 'Avtorji',
+	'authors_anonymous' => 'Brezimnež',
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))

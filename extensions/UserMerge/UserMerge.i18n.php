@@ -93,6 +93,35 @@ Kliek "{{int:usermerge-submit}}" om die handeling uit te voer.',
 	'right-usermerge' => 'Versmelt gebruikers',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'usermerge' => 'Përziej dhe fshini përdoruesit',
+	'usermerge-desc' => "[[Special:UserMerge|referencat bashkohet nga një user në një përdorues tjetër]] në bazën e të dhënave wiki - do të fshini gjithashtu përdoruesit e vjetër pas bashkohen. Kërkon''''usermerge privilegje",
+	'usermerge-badolduser' => 'emrin e pavlefshme të vjetra',
+	'usermerge-badnewuser' => 'emrin e pavlefshme të reja',
+	'usermerge-nonewuser' => 'Bosh emrin e re - duke supozuar të bashkohen për të "" $1 ". <br /> Kliko "{{int:usermerge-submit}}" për të pranuar.',
+	'usermerge-noolduser' => 'Bosh emrin e vjetër',
+	'usermerge-fieldset' => 'Emr të bashkojë',
+	'usermerge-olduser' => 'përdorues Vjetër (bashkojë nga):',
+	'usermerge-newuser' => 'Përdorues i ri (të bashkohen për të):',
+	'usermerge-deleteolduser' => 'Fshi përdorues i vjetër',
+	'usermerge-submit' => 'Merge përdorues',
+	'usermerge-badtoken' => 'Pavlefshme redakto shenjë',
+	'usermerge-userdeleted' => '$1 ($2) është fshirë.',
+	'usermerge-userdeleted-log' => 'përdorues Deleted: $2 ($3)',
+	'usermerge-updating' => 'Tabela Përditësimi $1 ($2 në $3)',
+	'usermerge-success' => 'Merge nga $1 ($2) për $3 ($4), është i kompletuar.',
+	'usermerge-success-log' => 'User $2 ($3) bashkohen në $4 ($5)',
+	'usermerge-logpage' => 'Përdoruesi bashkojë log',
+	'usermerge-logpagetext' => 'Ky është një regjistër i përdoruesit bashkojë veprimet.',
+	'usermerge-noselfdelete' => 'Ju nuk mund të fshini ose përpuqni nga vetë!',
+	'usermerge-unmergable' => 'Në pamundësi për të bashkuar nga përdoruesit - ID ose emër është përcaktuar si unmergable.',
+	'usermerge-protectedgroup' => 'Në pamundësi për të bashkuar nga përdoruesi - user është në një grup të mbrojtura.',
+	'right-usermerge' => 'Merge përdoruesit',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK
@@ -1503,27 +1532,27 @@ Clique "{{int:usermerge-submit}}" para aceitar.',
  * @author Mihai
  */
 $messages['ro'] = array(
-	'usermerge' => 'Contopire şi ştergere utilizatori',
-	'usermerge-desc' => "[[Special:UserMerge|Contopeşte două conturi diferite de utilizatori]] totodată şterge din baza de date wiki contul de utilizator vechi ca urmare a contopirii. Necesită drepturi speciale (''usermerge'')",
+	'usermerge' => 'Contopire și ștergere utilizatori',
+	'usermerge-desc' => "[[Special:UserMerge|Contopește două conturi diferite de utilizatori]] totodată șterge din baza de date wiki contul de utilizator vechi ca urmare a contopirii. Necesită drepturi speciale (''usermerge'')",
 	'usermerge-badolduser' => 'Nume de utilizator vechi incorect',
 	'usermerge-badnewuser' => 'Nume de utilizator nou incorect',
 	'usermerge-nonewuser' => 'Noul nume de utilizator nu este introdus - Este presupusă fuzionarea în "$1".<br />
 Apasă "{{int:usermerge-submit}}" pentru a accepta.',
 	'usermerge-noolduser' => 'Nume de utilizator vechi gol',
 	'usermerge-fieldset' => 'Nume de utilizator de contopit',
-	'usermerge-olduser' => 'Utilizator vechi (redenumeşte din):',
-	'usermerge-newuser' => 'Utilizator nou (contopeşte în):',
+	'usermerge-olduser' => 'Utilizator vechi (redenumește din):',
+	'usermerge-newuser' => 'Utilizator nou (contopește în):',
 	'usermerge-deleteolduser' => 'Şterge contul de utilizator vechi',
-	'usermerge-submit' => 'Contopeşte utilizatorul',
+	'usermerge-submit' => 'Contopește utilizatorul',
 	'usermerge-badtoken' => 'Jetonul de modificare este invalid',
-	'usermerge-userdeleted' => '$1 ($2) a fost şters.',
+	'usermerge-userdeleted' => '$1 ($2) a fost șters.',
 	'usermerge-userdeleted-log' => 'Şterge utilizator: $2 ($3)',
 	'usermerge-updating' => 'Actualizarea tabelului $1 ($2 în $3)',
 	'usermerge-success' => 'Contopirea din $1 ($2) în $3 ($4) este completă.',
 	'usermerge-success-log' => 'Utilizatorul $2 ($3) a fost contopit în $4 ($5)',
 	'usermerge-logpage' => 'Jurnal contopire utilizatori',
-	'usermerge-logpagetext' => 'Acesta este jurnalul acţiunilor de contopire a conturilor de utilizator.',
-	'usermerge-noselfdelete' => 'Nu poate fi şters sau contopit contul propriu!',
+	'usermerge-logpagetext' => 'Acesta este jurnalul acțiunilor de contopire a conturilor de utilizator.',
+	'usermerge-noselfdelete' => 'Nu poate fi șters sau contopit contul propriu!',
 	'usermerge-unmergable' => 'Nu poate fi contopit utilizatorul - ID-ul sau numele a fost definit ca fiind de necontopit.',
 	'usermerge-protectedgroup' => 'Nu poate fi contopit utilizatorul - utilizatorul face parte dintr-un grup protejat.',
 	'right-usermerge' => 'Contopire conturi de utilizator',

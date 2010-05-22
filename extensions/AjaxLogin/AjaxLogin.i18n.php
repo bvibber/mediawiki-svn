@@ -480,6 +480,7 @@ Periksa ejaan anda.',
  * @author Ukabia
  */
 $messages['ig'] = array(
+	'ajaxlogin-desc' => 'Ngwa di ichiche nké né nyé uzor ndi na banife Í bàtá na Í chétá édémédé hé shì a batá',
 	'ajaxlogin-create' => 'Ké buwa',
 	'al-nosuchuser' => 'O díg.ʼonye né ji "$1".
 Orúnotu né lékwa I dé na ukwu na ntà.
@@ -753,11 +754,11 @@ Cheque se você soletrou corretamente.',
  * @author Pixi
  */
 $messages['ro'] = array(
-	'ajaxlogin-desc' => 'Casetă dinamică care permite utilizatorilor să se autentifice şi să-şi reamintească parola',
+	'ajaxlogin-desc' => 'Casetă dinamică care permite utilizatorilor să se autentifice și să-și reamintească parola',
 	'ajaxLogin1' => 'Pentru a te autentifica, trebuie să introduci o parolă nouă.
-Aceasta înseamnă că vei părăsi pagina de editare şi vei pierde editările efectuate până acum.',
-	'ajaxLogin2' => 'Eşti sigur?
-Vei pierde editările efectuate dacă părăseşti această pagină acum.',
+Aceasta înseamnă că vei părăsi pagina de editare și vei pierde editările efectuate până acum.',
+	'ajaxLogin2' => 'Ești sigur?
+Vei pierde editările efectuate dacă părăsești această pagină acum.',
 	'ajaxlogin-create' => 'Creează un cont',
 );
 
@@ -1044,6 +1045,7 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Alexsh
+ * @author Horacewai2
  * @author 許瑜真 (Yuchen Hsu/KaurJmeb)
  */
 $messages['zh-hant'] = array(
@@ -1052,6 +1054,9 @@ $messages['zh-hant'] = array(
 這將可以讓您不損失任何編輯資料直接登入。',
 	'ajaxLogin2' => '這動作可能會使你跳離編輯頁面，可能會損失編輯結果。確定要離開嗎？',
 	'ajaxlogin-create' => '建立新帳號',
+	'al-nosuchuser' => '用户名"$1"不存在。
+用户名區分大小寫及繁體和簡體
+請重新檢查你的拼寫',
 );
 
 /** Chinese (Hong Kong) (‪中文(香港)‬)

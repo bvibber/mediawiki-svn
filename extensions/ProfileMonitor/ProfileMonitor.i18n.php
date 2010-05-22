@@ -483,7 +483,7 @@ $messages['id'] = array(
  * @author Ukabia
  */
 $messages['ig'] = array(
-	'profiling-ok' => 'Odinma',
+	'profiling-ok' => 'Ngwanu',
 	'profiling-data-count' => 'Güó',
 	'profiling-data-time' => 'Ogẹ (nke níle)',
 );

@@ -13,13 +13,24 @@ class SpecialSupportedLanguages extends UnlistedSpecialPage {
 	public function execute( $par ) {
 		global $wgLang, $wgOut;
 
+		if( !defined( 'NS_PORTAL' ) ) {
+			$wgOut->showErrorPage( 'supportedlanguages-noportal-title', 'supportedlanguages-noportal' );
+			return;
+		}
+
 		$this->outputHeader();
 		$this->setHeaders();
 
-		$locals = LanguageNames::getNames( $wgLang->getCode(),
-			LanguageNames::FALLBACK_NORMAL,
-			LanguageNames::LIST_MW_AND_CLDR
-		);
+		// Check if CLDR extension has been installed.
+		$cldrInstalled = class_exists( 'LanguageNames' );
+
+		if( $cldrInstalled ) {
+			$locals = LanguageNames::getNames( $wgLang->getCode(),
+				LanguageNames::FALLBACK_NORMAL,
+				LanguageNames::LIST_MW_AND_CLDR
+			);
+		}
+
 		$natives = Language::getLanguageNames( false );
 		ksort( $natives );
 
@@ -59,29 +70,79 @@ class SpecialSupportedLanguages extends UnlistedSpecialPage {
 		$lb->execute();
 		global $wgUser;
 		$skin = $wgUser->getSkin();
-		$portalText = wfMsg( 'portal' );
+		$portalBaseText = wfMsg( 'portal' );
+
+		// Information to be used inside the foreach loop
+		$linkInfo['rc']['title'] = SpecialPage::getTitleFor( 'Recentchanges' );
+		$linkInfo['rc']['msg'] = wfMsg( 'languagestats-recenttranslations' );
+		$linkInfo['stats']['title'] = SpecialPage::getTitleFor( 'LanguageStats' );
+		$linkInfo['stats']['msg'] = wfMsg( 'languagestats' );
 
 		foreach ( array_keys( $users ) as $code ) {
 			$portalTitle = Title::makeTitleSafe( NS_PORTAL, $code );
+
+			$portalText = $portalBaseText;
+
+			// If CLDR is installed, add localised header and link title.
+			if( $cldrInstalled ) {
+				$headerText = wfMsg( 'supportedlanguages-portallink', $code, $locals[$code], $natives[$code] );
+				$portalText .= ' ' . $locals[$code];
+			} else {
+				// No CLDR, so a less localised header and link title.
+				$headerText = wfMsg( 'supportedlanguages-portallink-nocldr', $code, $natives[$code] );
+				$portalText .= ' ' . $natives[$code];
+			}
+
 			$portalLink = $skin->link(
 				$portalTitle,
-				wfMsg( 'supportedlanguages-portallink', $code, $locals[$code], $natives[$code] ),
+				$headerText,
 				array(
 					'id' => $code,
-					'title' => $portalText . ' ' . $locals[$code]
+					'title' => $portalText
 				),
 				array(),
 				array( 'known', 'noclasses' )
 			);
-				
+
 			$wgOut->addHTML( "<h2>" . $portalLink . "</h2>" );
+
+			// Add useful links for language stats and recent changes for the language
+			$links = array();
+			$links[] = $skin->link(
+				$linkInfo['stats']['title'],
+				$linkInfo['stats']['msg'],
+				array(),
+				array(
+					'code' => $code,
+					'suppresscomplete' => '1'
+				),
+				array( 'known', 'noclasses' )
+			);
+			$links[] = $skin->link(
+				$linkInfo['rc']['title'],
+				$linkInfo['rc']['msg'],
+				array(),
+				array(
+					'translations' => 'only',
+					'trailer' => "/" . $code
+				),
+				array( 'known', 'noclasses' )
+			);
+			$linkList = $wgLang->listToText( $links );
+
+			$wgOut->addHTML( "<p>" . $linkList . "</p>\n" );
 
 			foreach ( $users[$code] as $index => $username ) {
 				$title = Title::makeTitleSafe( NS_USER, $username );
 				$users[$code][$index] = $skin->link( $title, $username );
 			}
 
-			$wgOut->addHTML( $wgLang->listToText( $users[$code] ) );
+			$wgOut->addHTML( "<p>" . wfMsgExt(
+				'supportedlanguages-translators',
+				'parsemag',
+				$wgLang->listToText( $users[$code] ),
+				count( $users[$code] )
+			) . "</p>\n" );
 		}
 	}
 }

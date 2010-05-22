@@ -12,6 +12,7 @@ Add Media Wizard
 Add Media Wizard - Add Media
 file = AddMediaWizard/AddMedia/AddMedia.i18n.php
 optional = rsd-archive_org-title, rsd-flickr-title, rsd-metavid-title, mwe-no-import-by-url-linktext
+optional = rsd-wiki_commons-title, mwe-cc_title
 
 Add Media Wizard - Clip Edit
 file = AddMediaWizard/ClipEdit/ClipEdit.i18n.php
@@ -85,6 +86,8 @@ Bread Crumbs
 
 Call
 aliasfile = Call/Call.alias.php
+
+Cassandra
 
 Category Feed
 
@@ -426,6 +429,7 @@ descmsg = reviewedversions-leg1
 Flagged Revisions - Stabilization
 id = ext-flaggedrevs-stabilization
 file = FlaggedRevs/language/Stabilization.i18n.php
+ignored = stabilize_protect_quota
 descmsg = stabilization
 
 Flagged Revisions - Stable Pages
@@ -1155,7 +1159,7 @@ id = ext-translate-core
 descmsg = translate-desc
 file = Translate/Translate.i18n.php
 aliasfile = Translate/Translate.alias.php
-optional = translate-page-paging-links, translate-languagestats-groups, supportedlanguages-portallink
+optional = translate-page-paging-links, translate-languagestats-groups, supportedlanguages-portallink, supportedlanguages-portallink-nocldr
 
 
 Translate - Page Translation
@@ -1176,10 +1180,7 @@ descmsg = ukgeocoding_desc
 Upload Blacklist
 
 Upload Wizard
-#aliasfile = UploadWizard/UploadWizard.alias.php
-
-Upload Wizard
-file = UploadWizard/UploadWizard.i18n.php
+aliasfile = UploadWizard/UploadWizard.alias.php
 
 Unicode Converter
 

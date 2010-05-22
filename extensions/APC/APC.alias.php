@@ -15,7 +15,7 @@ $aliases['en'] = array(
 
 /** Arabic (العربية) */
 $aliases['ar'] = array(
-	'APC' => array( 'عرض_إيه_بي_سي' ),
+	'APC' => array( 'إيه_بي_سي', 'عرض_إيه_بي_سي' ),
 );
 
 /** Egyptian Spoken Arabic (مصرى) */
@@ -36,11 +36,6 @@ $aliases['bs'] = array(
 /** German (Deutsch) */
 $aliases['de'] = array(
 	'APC' => array( 'APC-Informationen' ),
-);
-
-/** Lower Sorbian (Dolnoserbski) */
-$aliases['dsb'] = array(
-	'APC' => array( 'APC' ),
 );
 
 /** Finnish (Suomi) */
@@ -66,11 +61,6 @@ $aliases['gl'] = array(
 /** Swiss German (Alemannisch) */
 $aliases['gsw'] = array(
 	'APC' => array( 'APC-Informatione' ),
-);
-
-/** Upper Sorbian (Hornjoserbsce) */
-$aliases['hsb'] = array(
-	'APC' => array( 'APC' ),
 );
 
 /** Hungarian (Magyar) */

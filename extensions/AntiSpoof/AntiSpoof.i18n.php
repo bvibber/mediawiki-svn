@@ -52,6 +52,26 @@ $messages['af'] = array(
 	'antispoof-tooshort' => 'Afgekorte naam te kort',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'antispoof-desc' => 'Bllokon krijimin e llogarive me script-të përziera, konfuze dhe të ngjashme përdoruesve',
+	'antispoof-conflict-top' => 'Emrin "$1" është shumë e ngjashme me {{PLURAL:$2|llogari ekzistuese|mëposhtme $2 llogaritë}}:',
+	'antispoof-conflict-bottom' => 'Ju lutem zgjidhni një tjetër.',
+	'antispoof-name-illegal' => 'Emrin "$1" nuk është e lejuar për të parandaluar ose spoofed përdoruesve konfuze: $2. Ju lutem zgjidhni një tjetër.',
+	'antispoof-badtype' => 'Bad dhënat lloj',
+	'antispoof-empty' => 'string bosh',
+	'antispoof-blacklisted' => 'Përmban në listën e zezë karakter',
+	'antispoof-combining' => 'Fillon me shenjën e kombinuar',
+	'antispoof-unassigned' => 'Përmban unassigned ose deprecated karakter',
+	'antispoof-noletters' => 'Nuk përmban asnjë shkronja',
+	'antispoof-mixedscripts' => 'Përmban Scripts papajtueshëm të përziera',
+	'antispoof-tooshort' => 'Emri Canonicalized shumë i shkurtër',
+	'antispoof-ignore' => 'Ignore spoofing kontrolle',
+	'right-override-antispoof' => 'Refuzim spoofing kontrolle',
+);
+
 /** Aragonese (Aragonés)
  * @author Juanpabl
  */
@@ -1539,14 +1559,14 @@ $messages['qu'] = array(
  */
 $messages['ro'] = array(
 	'antispoof-conflict-top' => 'Numele „$1” este prea asemănător cu {{PLURAL:$2|următorul cont deja existent|următoarele $2 conturi}}:',
-	'antispoof-conflict-bottom' => 'Vă rugăm să alegeţi alt nume.',
-	'antispoof-name-illegal' => 'Numele „$1” nu este permis pentru a preveni confuziile cu numele: $2. Vă rog alegeţi alt nume de utilizator.',
-	'antispoof-badtype' => 'Tip de date greşit',
+	'antispoof-conflict-bottom' => 'Vă rugăm să alegeți alt nume.',
+	'antispoof-name-illegal' => 'Numele „$1” nu este permis pentru a preveni confuziile cu numele: $2. Vă rog alegeți alt nume de utilizator.',
+	'antispoof-badtype' => 'Tip de date greșit',
 	'antispoof-empty' => 'Şir vid',
-	'antispoof-blacklisted' => 'Conţine un caracter interzis',
-	'antispoof-noletters' => 'Nu conţine nici o literă',
-	'antispoof-ignore' => 'Nu verifica existenţa unor nume de cont similare',
-	'right-override-antispoof' => 'Asupreşte verificările spoofing',
+	'antispoof-blacklisted' => 'Conține un caracter interzis',
+	'antispoof-noletters' => 'Nu conține nici o literă',
+	'antispoof-ignore' => 'Nu verifica existența unor nume de cont similare',
+	'right-override-antispoof' => 'Asuprește verificările spoofing',
 );
 
 /** Tarandíne (Tarandíne)

@@ -562,12 +562,12 @@ Veja {{PLURAL:$2|esta página relacionada|estas páginas relacionadas}}: $1.',
  */
 $messages['ro'] = array(
 	'editsimilar-desc' => 'Încurajează utilizatorii să modifice o pagină similară după salvearea unei pagini',
-	'editsimilar-thanks' => 'Mulţumim pentru contribuţie.
-Vizitează şi {{PLURAL:$2|această pagină conexă|aceste pagini conexe}}: $1.',
-	'editsimilar-thanks-notsimilar' => 'Mulţumim pentru contribuţie.
+	'editsimilar-thanks' => 'Mulțumim pentru contribuție.
+Vizitează și {{PLURAL:$2|această pagină conexă|aceste pagini conexe}}: $1.',
+	'editsimilar-thanks-notsimilar' => 'Mulțumim pentru contribuție.
 Şi {{PLURAL:$2|această pagină|aceste pagini}} ar avea nevoie de ajutor: $1.',
-	'editsimilar-thankyou' => 'Mulţumim pentru contribuţia dumneaovastră, $1!',
-	'editsimilar-link-disable' => 'setare preferinţe',
+	'editsimilar-thankyou' => 'Mulțumim pentru contribuția dumneaovastră, $1!',
+	'editsimilar-link-disable' => 'setare preferințe',
 	'tog-edit-similar' => 'Activează sugestiile paginilor similare',
 );
 
@@ -673,5 +673,17 @@ Bạn cũng có thể giúp đỡ {{PLURAL:$2|trang|những trang}} sau: $1.',
 	'editsimilar-thankyou' => 'Cảm ơn về sự đóng góp của $1!',
 	'editsimilar-link-disable' => 'tùy chọn',
 	'tog-edit-similar' => 'Kích hoạt đề nghị về trang tương tự',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Horacewai2
+ */
+$messages['zh-hant'] = array(
+	'editsimilar-desc' => '當用戶保存頁面後鼓勵用戶編輯一個類似的頁面。',
+	'editsimilar-thanks' => '多謝你的貢獻。建議你編輯以下$2個相關頁面：$1',
+	'editsimilar-thanks-notsimilar' => '多謝你的貢獻，不防繼續考慮編輯這$2個頁面：$1',
+	'editsimilar-thankyou' => '$1，多謝你的貢獻。',
+	'editsimilar-link-disable' => '設置參數',
+	'tog-edit-similar' => '啟用類似頁面編輯建議',
 );
 

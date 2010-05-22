@@ -637,7 +637,18 @@ $messages['id'] = array(
  * @author Ukabia
  */
 $messages['ig'] = array(
+	'adminlinks' => 'Jikodo ndi íshí',
+	'adminlinks-desc' => 'Né tinyé [[Special:AdminLinks|ihü mkpa]] né jidé jikodo nke ne nyé nkwado maka ndi íshí',
+	'adminlinks_documentation' => 'akwukwo $1',
 	'adminlinks_general' => 'Nke níle',
+	'adminlinks_editsidebar' => 'Rüwá na ngwa di na ákùkù',
+	'adminlinks_editcss' => 'Rüwá na akwukwo orúnotu nke CSS',
+	'adminlinks_editmainpagename' => 'Rüwá na áhà ihü íshí',
+	'adminlinks_users' => 'Ndi na banife',
+	'adminlinks_createuser' => 'Ké onye na banife',
+	'adminlinks_browsesearch' => 'Nlearia na Í tú',
+	'adminlinks_importexport' => 'I tinyé na Í kpata',
+	'right-adminlinks' => 'Zi jikodo na ga [[Special:AdminLinks|Jikodo ndi íshí]]',
 );
 
 /** Italian (Italiano)
@@ -797,7 +808,7 @@ $messages['mg'] = array(
 	'adminlinks_documentation' => "fanoroan'ny $1",
 	'adminlinks_general' => 'ankabiazany/jeneraly',
 	'adminlinks_editsidebar' => 'ovay ny bara sisiny',
-	'adminlinks_editcss' => 'Ovao ny rakitra CSS',
+	'adminlinks_editcss' => 'Hanova ny rakitra CSS',
 	'adminlinks_editmainpagename' => "ovay ny anaran'ny pejy fandraisana",
 	'adminlinks_users' => 'mpikambana',
 	'adminlinks_createuser' => 'hamorona mpikambana',
@@ -1089,7 +1100,7 @@ $messages['pt-br'] = array(
 $messages['ro'] = array(
 	'adminlinks_users' => 'Utilizatori',
 	'adminlinks_createuser' => 'Creează un utilizator',
-	'adminlinks_importexport' => 'Importare şi exportare',
+	'adminlinks_importexport' => 'Importare și exportare',
 );
 
 /** Tarandíne (Tarandíne)
@@ -1368,5 +1379,23 @@ $messages['zh-hans'] = array(
 	'adminlinks_browsesearch' => '浏览与搜索',
 	'adminlinks_importexport' => '导入和导出',
 	'right-adminlinks' => '查看[[Special:AdminLinks|管理员链接]]',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Horacewai2
+ */
+$messages['zh-hant'] = array(
+	'adminlinks' => '管理連結',
+	'adminlinks-desc' => '添加一个[[Special:AdminLinks|特殊頁面]]為管理员提供有用的鏈接',
+	'adminlinks_documentation' => '$1說明文件',
+	'adminlinks_general' => '一般',
+	'adminlinks_editsidebar' => '編輯導航欄',
+	'adminlinks_editcss' => '編輯 CSS文件',
+	'adminlinks_editmainpagename' => '編輯首頁名稱',
+	'adminlinks_users' => '用戶',
+	'adminlinks_createuser' => '創建一個新帳戶',
+	'adminlinks_browsesearch' => '瀏覽和搜索',
+	'adminlinks_importexport' => '導入和導出',
+	'right-adminlinks' => '查看[[Special:AdminLinks|管理鏈接]]',
 );
 

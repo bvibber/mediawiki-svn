@@ -22,8 +22,8 @@ $aliases['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'AbuseLog' => array( 'سجل_الإساءة' ),
-	'AbuseFilter' => array( 'فلتر_الإساءة' ),
+	'AbuseLog' => array( 'سجل_الاساءه' ),
+	'AbuseFilter' => array( 'فيلتر_الاساءه' ),
 );
 
 /** Bulgarian (Български) */
@@ -120,6 +120,12 @@ $aliases['gu'] = array(
 $aliases['he'] = array(
 	'AbuseLog' => array( 'יומן_ההשחתות' ),
 	'AbuseFilter' => array( 'מסנן_ההשחתות' ),
+);
+
+/** Croatian (Hrvatski) */
+$aliases['hr'] = array(
+	'AbuseLog' => array( 'Evidencija_zloporaba' ),
+	'AbuseFilter' => array( 'Filtar_zloporaba' ),
 );
 
 /** Upper Sorbian (Hornjoserbsce) */
@@ -234,6 +240,12 @@ $aliases['oc'] = array(
 $aliases['pl'] = array(
 	'AbuseLog' => array( 'Rejestr nadużyć' ),
 	'AbuseFilter' => array( 'Filtr nadużyć' ),
+);
+
+/** Brazilian Portuguese (Português do Brasil) */
+$aliases['pt-br'] = array(
+	'AbuseLog' => array( 'Registro de abusos' ),
+	'AbuseFilter' => array( 'Filtro de abusos' ),
 );
 
 /** Romanian (Română) */

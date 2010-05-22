@@ -22,7 +22,7 @@ $aliases['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'Form' => array( 'استمارة' ),
+	'Form' => array( 'استماره' ),
 );
 
 /** German (Deutsch) */

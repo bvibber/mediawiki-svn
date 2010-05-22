@@ -11,7 +11,7 @@ mw.addMessages({
 	"fogg-select_new_file" : "Select new file",
 	"fogg-select_url" : "Select URL",
 	"fogg-check_for_firefogg" : "Checking for Firefogg...",
-	"fogg-installed" : "Firefogg is installed,",
+	"fogg-installed" : "Firefogg is installed.",
 	"fogg-not-installed" : "Firefogg is not installed or not enabled.",
 	"fogg-for_improved_uploads" : "For improved uploads:",
 	"fogg-please-install" : "$1. More $2",

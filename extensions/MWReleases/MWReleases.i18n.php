@@ -294,7 +294,7 @@ $messages['pt-br'] = array(
  * @author Stelistcristi
  */
 $messages['ro'] = array(
-	'mwreleases-desc' => 'Adăugaţi o [[Mediawiki:Mwreleases-list|listă]] cu lansările susţinute, accesibile prin API',
+	'mwreleases-desc' => 'Adăugați o [[Mediawiki:Mwreleases-list|listă]] cu lansările susținute, accesibile prin API',
 );
 
 /** Tarandíne (Tarandíne)

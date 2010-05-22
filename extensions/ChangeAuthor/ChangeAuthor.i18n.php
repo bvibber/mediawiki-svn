@@ -120,6 +120,32 @@ $messages['af'] = array(
 	'changeauthor-nosuchtitle' => 'Daar is geen bladsy genaamd "$1" nie.',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ * @author MicroBoy
+ */
+$messages['aln'] = array(
+	'changeauthor-title' => 'Ndryshimi autor i një rishikim',
+	'changeauthor-search-box' => 'Kërko shqyrtime',
+	'changeauthor-pagename-or-revid' => 'Emri i faqes ose rishikim ID:',
+	'changeauthor-pagenameform-go' => 'Shkoj',
+	'changeauthor-comment' => 'Koment:',
+	'changeauthor-changeauthors-multi' => 'Ndryshimi {{PLURAL:$1|autor|autorëve}}',
+	'changeauthor-explanation-multi' => 'Me këtë formë mund të ndryshoni autorëve rishikim. Thjesht ndryshojnë një ose më shumë përdoruesve në listën e mëposhtme, të shtoni një koment (optional) dhe kliko "Ndryshimi autorit (s)" button.',
+	'changeauthor-changeauthors-single' => 'Autori Ndryshimi',
+	'changeauthor-explanation-single' => 'Me këtë formë ju mund të ndryshojë një autor rishikim. Thjesht ndryshuar emrin më poshtë, shtoni një koment (optional) dhe kliko "autori Ndrysho" button.',
+	'changeauthor-invalid-username' => 'Invalid username "$1".',
+	'changeauthor-nosuchuser' => 'Asnjë përdorues të tillë "$1".',
+	'changeauthor-revview' => 'Revision #$1 prej $2',
+	'changeauthor-nosuchtitle' => 'Nuk ka asnjë faqe të quajtur "$1".',
+	'changeauthor-weirderror' => 'Një gabim shumë e çuditshme ka ndodhur. Ju lutemi të rigjykuar kërkesën tuaj. Nëse ky gabim mban treguar deri, baza e të dhënave është prishur ndoshta.',
+	'changeauthor-invalidform' => 'Ju lutem përdorni formularin e dhënë nga [[Special:ChangeAuthor|faqe speciale]] në vend të një forme me porosi.',
+	'changeauthor-success' => 'Kërkesa juaj ka qenë i proceduar me sukses.',
+	'changeauthor-logentry' => 'Changed autor i $2 e $1 nga $3 deri 4$',
+	'changeauthor-logpagename' => 'ndryshim Author log',
+	'right-changeauthor' => 'Ndryshimi autor i një rishikim',
+);
+
 /** Amharic (አማርኛ)
  * @author Codex Sinaiticus
  */
@@ -1613,6 +1639,7 @@ $messages['oc'] = array(
  * @author Xqt
  */
 $messages['pdc'] = array(
+	'changeauthor-pagenameform-go' => 'Guck uff',
 	'changeauthor-comment' => 'Anmaerricking:',
 );
 
@@ -2372,6 +2399,7 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Alex S.H. Lin
+ * @author Horacewai2
  */
 $messages['zh-hant'] = array(
 	'changeauthor' => '更改修訂版本作者',
@@ -2381,7 +2409,7 @@ $messages['zh-hant'] = array(
 	'changeauthor-pagename-or-revid' => '頁面名稱或修定版本號碼：',
 	'changeauthor-pagenameform-go' => '尋找',
 	'changeauthor-comment' => '理由：',
-	'changeauthor-changeauthors-multi' => '{{int:changeauthor-changeauthors-single}}',
+	'changeauthor-changeauthors-multi' => '更改{{PLURAL:$1|作者|作者}}',
 	'changeauthor-explanation-multi' => '您可以在這個表單中更改任一修訂版本的作者。
 更改完成後請輸入更改理由並按下「{{int:changeauthor-changeauthors-single}}」以完成更改。',
 	'changeauthor-changeauthors-single' => '更改作者',
@@ -2396,5 +2424,6 @@ $messages['zh-hant'] = array(
 	'changeauthor-success' => '處理完成',
 	'changeauthor-logentry' => '更改[[$1]]修訂版本$2的作者從 $3 到 $4',
 	'changeauthor-logpagename' => '作者更改日誌',
+	'right-changeauthor' => '更換特定修訂版本作者',
 );
 

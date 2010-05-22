@@ -55,7 +55,7 @@ $specialPageAliases = array(
 	'Listfiles'                 => array( 'Dataje' ),
 	'Newimages'                 => array( 'Nowe dataje' ),
 	'Listusers'                 => array( 'Wužiwarjo' ),
-	'Listgrouprights'           => array( 'Skupinske prawa' ),
+	'Listgrouprights'           => array( 'Prawa skupinow', 'Skupinske prawa' ),
 	'Statistics'                => array( 'Statistika' ),
 	'Randompage'                => array( 'Připadna strona' ),
 	'Lonelypages'               => array( 'Wosyroćene strony' ),
@@ -129,6 +129,7 @@ $specialPageAliases = array(
 	'LinkSearch'                => array( 'Wotkazowe pytanje' ),
 	'DeletedContributions'      => array( 'Zničene přinoški' ),
 	'Tags'                      => array( 'Taflički' ),
+	'Activeusers'               => array( 'Aktiwni wužiwarjo' ),
 );
 
 $messages = array(
@@ -1511,6 +1512,11 @@ JD # Jenoptik
 MGP # Pentax
 PICT # misc.
  #</pre> <!-- Njezměń tutu linku! -->',
+'upload-successful-msg'       => 'Twoje nahraće steji tu k dispoziciji: $1',
+'upload-failure-subj'         => 'Nahrawanski problem',
+'upload-failure-msg'          => 'Bě problem z twojim nahraćom:
+
+$1',
 
 'upload-proto-error'        => 'Wopačny protokol',
 'upload-proto-error-text'   => 'URL dyrbi so z <code>http://</code> abo <code>ftp://</code> započeć.',
@@ -1819,7 +1825,7 @@ Hlej tež [[Special:WantedCategories|požadane kategorije]].',
 'linksearch'       => 'Eksterne wotkazy',
 'linksearch-pat'   => 'Pytanski muster:',
 'linksearch-ns'    => 'Mjenowy rum:',
-'linksearch-ok'    => 'OK',
+'linksearch-ok'    => 'Pytać',
 'linksearch-text'  => 'Zastupniske znamjenja kaž "*.wikipedia.org" smědźa so wužiwać.<br />Podpěrowane protokole: <tt>$1</tt>',
 'linksearch-line'  => '$1 je z $2 wotkazany.',
 'linksearch-error' => 'Zastupniske znamjenja dadźa so jenož na spočatku URL wužiwać.',
@@ -1835,7 +1841,7 @@ Hlej tež [[Special:WantedCategories|požadane kategorije]].',
 'activeusers-intro'      => 'To je lisćina wužiwarjow, kotřiž běchu aktiwni za {{PLURAL:$1|posledni dźeń|poslednjej $1 dnjej|poslednje $1 dny|poslednich $1 dnjow}}:',
 'activeusers-count'      => '$1 {{PLURAL:$1|změna|změnje|změny|změnow}} w {{PLURAL:$3|zańdźenej dnju|zańdźenymaj $3 dnjomaj|zańdźenych $3 dnjach|zańdźenych $3 dnjach}}',
 'activeusers-from'       => 'Wužiwarjow zwobraznić, započinajo z:',
-'activeusers-hidebots'   => 'Boćiki schowa´c',
+'activeusers-hidebots'   => 'Boćiki schować',
 'activeusers-hidesysops' => 'Administratorow schować',
 'activeusers-noresult'   => 'Žani wužiwarjo namakani.',
 
@@ -1891,6 +1897,10 @@ E-mejlowa adresa, kotruž sy w [[Special:Preferences|swojich wužiwarskich nasta
 'emailsent'            => 'Mejlka wotesłana',
 'emailsenttext'        => 'Twoja mejlka bu wotesłana.',
 'emailuserfooter'      => 'Tuta e-mejlka bu z pomocu funkcije "Wužiwarjej mejlku pósłać" na {{SITENAME}} wot $1 do $2 pósłana.',
+
+# User Messenger
+'usermessage-summary' => 'Systemowu  zdźělenku zawostajić.',
+'usermessage-editor'  => 'Systemowy powěstnik',
 
 # Watchlist
 'watchlist'            => 'wobkedźbowanki',
@@ -3067,14 +3077,14 @@ Spytaj normalny přehlad.',
 'watchlistedit-noitems'        => 'Twoje wobkedźbowanki su prózdne.',
 'watchlistedit-normal-title'   => 'Wobkedźbowanki wobdźěłać',
 'watchlistedit-normal-legend'  => 'Zapiski z wobkedźbowankow wotstronić',
-'watchlistedit-normal-explain' => 'Tu su zapiski z twojich wobkedźbowankow. Zo by zapiski wušmórnył, markěruj kašćiki pódla zapiskow a klikń na „Zapiski wušmórnyć“. Móžeš tež swoje wobkedźbowanki [[Special:Watchlist/raw|w lisćinowym formaće wobdźěłać]].',
+'watchlistedit-normal-explain' => 'Tu su zapiski z twojich wobkedźbowankow. Zo by zapisk wušmórnył, markěruj kašćik pódla njeho a klikń na {{int:Watchlistedit-normal-submit}}". Móžeš tež swoje wobkedźbowanki [[Special:Watchlist/raw|w lisćinowym formaće wobdźěłać]].',
 'watchlistedit-normal-submit'  => 'Zapiski wotstronić',
 'watchlistedit-normal-done'    => '{{PLURAL:$1|1 zapisk bu|$1 zapiskaj buštej|$1 zapiski buchu|$1 zapiskow  buchu}} z twojich wobkedźbowankow {{PLURAL:$1|wotstronjeny|wotstronjenej|wotstronjene|wotstronjene}}:',
 'watchlistedit-raw-title'      => 'Wobkedźbowanki w lisćinowym formaće wobdźěłać',
 'watchlistedit-raw-legend'     => 'Wobkedźbowanki w lisćinowym formaće wobdźěłać',
-'watchlistedit-raw-explain'    => 'To su twoje wobkedźbowanki w lisćinowym formaće. Zapiski hodźa so po linkach wušmórnyć abo přidać.
-Na linku je jedyn zapisk dowoleny.
-Hdyž sy hotowy, klikń na „wobkedźbowanki składować“.
+'watchlistedit-raw-explain'    => 'Titule mjez twojimi wobkedźbowankach so deleka pokazuja, a dadźa so lisćinje přidać abo z njeje wotstronić;
+jedyn titul na linku.
+Hdyž sy hotowy, klikń na "{{int:Watchlistedit-raw-submit}}".
 Móžeš tež [[Special:Watchlist/edit|standardnu wobdźěłowansku stronu]] wužiwać.',
 'watchlistedit-raw-titles'     => 'Zapiski:',
 'watchlistedit-raw-submit'     => 'Wobkedźbowanki składować',

@@ -616,9 +616,9 @@ $messages['qu'] = array(
  * @author Mihai
  */
 $messages['ro'] = array(
-	'assert_edit_title' => 'Aserţiune eşuată',
-	'assertedit-desc' => 'Adaugă aserţiunile de editare pentru uzul roboţilor',
-	'assert_edit_message' => 'Aserţiunea specificată ($1) a eşuat.',
+	'assert_edit_title' => 'Aserțiune eșuată',
+	'assertedit-desc' => 'Adaugă aserțiunile de editare pentru uzul roboților',
+	'assert_edit_message' => 'Aserțiunea specificată ($1) a eșuat.',
 );
 
 /** Tarandíne (Tarandíne)

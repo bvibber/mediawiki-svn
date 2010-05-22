@@ -40,6 +40,35 @@ $messages['qqq'] = array(
 	'sphinxSearchWarning' => '{{Identical|Warning}}',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'sphinxsearch' => 'Kërko wiki duke përdorur sfinks',
+	'sphinxsearch-desc' => 'Zëvendëson MediaWiki motor kërkimi me [http://www.sphinxsearch.com/ Sphinx]',
+	'sphinxSearchInNamespaces' => 'Kërko në hapësirën:',
+	'sphinxSearchInCategories' => 'Kërko në kategoritë:',
+	'sphinxExcludeCategories' => 'Temat për të përjashtuar',
+	'sphinxResultPage' => 'Rezultati faqes:',
+	'sphinxPreviousPage' => 'I mëparshëm',
+	'sphinxNextPage' => 'Tjetër',
+	'sphinxSearchPreamble' => 'Shfaqja e $1 - $2 prej $3 {{PLURAL:$3|ndeshje|ndeshje}} për pyetjen "<nowiki>$4</nowiki> "Marrë në sek $5 me këto Statistikat:',
+	'sphinxSearchStats' => '* "$1" gjet $2 {{PLURAL:$2|koha|herë}} në $3 {{PLURAL:$3 |Dokumenti|dokumentet}}',
+	'sphinxSearchStatsInfo' => "''Mbi numrat mund të përfshijnë dokumente nuk listuara opsionet për shkak të kërkimit.''",
+	'sphinxSearchButton' => 'Kërkim',
+	'sphinxSearchEpilogue' => 'kohë shtesë regjistrit ishte $1 sec.',
+	'sphinxSearchDidYouMean' => 'Did you mean:',
+	'sphinxMatchAny' => 'përputhen me ndonjë fjalë',
+	'sphinxMatchAll' => 'Kërko të gjitha fjalët',
+	'sphinxMatchTitles' => 'tituj ndeshje vetëm',
+	'sphinxLoading' => 'Loading ...',
+	'sphinxPowered' => 'Mundësuar nga: $1',
+	'sphinxClientFailed' => 'Nuk mund të ilustroj me shembull konkret klientit sfinks.',
+	'sphinxSearchFailed' => 'Query dështoi: $1',
+	'sphinxSearchWarning' => 'Warning: $1',
+	'sphinxPspellError' => 'Nuk mund të kërkoj vazhdimin pspell.',
+);
+
 /** Arabic (العربية)
  * @author OsamaK
  */
@@ -406,6 +435,11 @@ $messages['id'] = array(
 	'sphinxNextPage' => 'Selanjutnya',
 );
 
+/** Igbo (Igbo) */
+$messages['ig'] = array(
+	'sphinxSearchButton' => 'Chöwá',
+);
+
 /** Japanese (日本語)
  * @author Aotake
  * @author Fryed-peach
@@ -492,7 +526,7 @@ $messages['mk'] = array(
 	'sphinxClientFailed' => 'Не можев да повикам Sphinx клиент.',
 	'sphinxSearchFailed' => 'Барањето не успеа $1',
 	'sphinxSearchWarning' => 'Предупредување $1',
-	'sphinxPspellError' => 'Не можев да повикам pspell проширување.',
+	'sphinxPspellError' => 'Не можев да повикам pspell додаток.',
 );
 
 /** Dutch (Nederlands)
@@ -552,6 +586,15 @@ $messages['no'] = array(
 	'sphinxSearchFailed' => 'Søk feilet: $1',
 	'sphinxSearchWarning' => 'Advarsel: $1',
 	'sphinxPspellError' => 'Kunne ikke starte utvidelsen pspell.',
+);
+
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'sphinxNextPage' => 'Neegscht',
+	'sphinxSearchDidYouMean' => 'Hoscht du gmeent:',
+	'sphinxSearchWarning' => 'Warning: $1',
 );
 
 /** Polish (Polski) */
@@ -658,5 +701,19 @@ $messages['ru'] = array(
 	'sphinxSearchFailed' => 'Ошибка при выполнении запроса $1',
 	'sphinxSearchWarning' => 'Предупреждение $1',
 	'sphinxPspellError' => 'Невозможно вызвать расширение pspell.',
+);
+
+/** Swedish (Svenska)
+ * @author Dafer45
+ */
+$messages['sv'] = array(
+	'sphinxsearch-desc' => 'Ersätter MediaWiki-sökmotorn med [http://www.sphinxsearch.com/ Sphinx]',
+	'sphinxSearchInCategories' => 'Sök i kategorier:',
+	'sphinxExcludeCategories' => 'Kategorier som skall uteslutas',
+	'sphinxResultPage' => 'Resultatsida:',
+	'sphinxPreviousPage' => 'Föregående',
+	'sphinxNextPage' => 'Nästa',
+	'sphinxLoading' => 'Laddar ...',
+	'sphinxSearchWarning' => 'Varning: $1',
 );
 

@@ -137,6 +137,10 @@ form.mwe-upwiz-form {
 	text-align: center;
 }
 
+.mwe-upwiz-count {
+	height: 60px;
+}
+
 .mwe-upwiz-add-files-n {
 	float: left;
 	margin-top: 5px;
@@ -334,7 +338,7 @@ a[disabled=true]:hover {
 	margin-left: 24px;
 }
 
-.mwe-upwiz-deed-name {
+.mwe-upwiz-deed.selected .mwe-upwiz-deed-name {
 	font-weight: bold;
 }
 
@@ -462,7 +466,7 @@ legend.mwe-legend {
 }
 
 .mwe-upwiz-deed-form-internal {
-	padding: 5px 0px 20px 20px;
+	padding: 5px 0px 20px 40px;
 }
 
 
@@ -496,3 +500,11 @@ legend.mwe-legend {
 	text-align: right;  /* works for now, only one 'next' button */
 }
 
+a.mwe-upwiz-tooltip-link {
+	cursor: pointer;
+}
+
+.mwe-error {
+	color: #ff0000;
+	display: none;
+}

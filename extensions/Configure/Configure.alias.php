@@ -26,9 +26,8 @@ $aliases['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'Configure' => array( 'ضبط' ),
-	'Extensions' => array( 'امتدادات' ),
-	'ViewConfig' => array( 'عرض_الإعدادات' ),
+	'Configure' => array( "'بط" ),
+	'ViewConfig' => array( 'عرض_التظبيطات' ),
 );
 
 /** Assamese (অসমীয়া) */
@@ -85,7 +84,8 @@ $aliases['el'] = array(
 
 /** Esperanto (Esperanto) */
 $aliases['eo'] = array(
-	'Configure' => array( 'Konfiguri' ),
+	'Configure' => array( 'Agordi' ),
+	'Extensions' => array( 'Etendaĵoj' ),
 );
 
 /** Spanish (Español) */
@@ -218,15 +218,15 @@ $aliases['lb'] = array(
 /** Macedonian (Македонски) */
 $aliases['mk'] = array(
 	'Configure' => array( 'Конфигурирај' ),
-	'Extensions' => array( 'Проширувања' ),
+	'Extensions' => array( 'Додатоци' ),
 	'ViewConfig' => array( 'ВидиКонфигурација' ),
 );
 
 /** Malayalam (മലയാളം) */
 $aliases['ml'] = array(
-	'Configure' => array( 'സജ്ജീകരണങ്ങള്‍' ),
-	'Extensions' => array( 'അനുബന്ധങ്ങള്‍' ),
-	'ViewConfig' => array( 'സജ്ജീകരണങ്ങള്‍ കാണുക' ),
+	'Configure' => array( 'സജ്ജീകരണങ്ങൾ' ),
+	'Extensions' => array( 'അനുബന്ധങ്ങൾ' ),
+	'ViewConfig' => array( 'സജ്ജീകരണങ്ങൾ കാണുക' ),
 );
 
 /** Marathi (मराठी) */
@@ -290,7 +290,7 @@ $aliases['pt'] = array(
 /** Brazilian Portuguese (Português do Brasil) */
 $aliases['pt-br'] = array(
 	'Configure' => array( 'Configurar' ),
-	'Extensions' => array( 'Extenções' ),
+	'Extensions' => array( 'Extensões' ),
 	'ViewConfig' => array( 'Ver configurações', 'Ver configuração' ),
 );
 

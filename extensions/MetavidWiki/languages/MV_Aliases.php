@@ -39,16 +39,16 @@ $aliases['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'MediaSearch' => array( 'بحث_ميديا' ),
-	'Mv_Add_Stream' => array( 'إضافة_ستريم_مف' ),
-	'MVAdmin' => array( 'إدارى_مف' ),
-	'MvExportAsk' => array( 'تصدير_سؤال_مف' ),
-	'MvExportSearch' => array( 'تصدير_بحث_مف' ),
-	'MvExportSequence' => array( 'تصدير_تتابع_مف' ),
-	'MvExportStream' => array( 'تصدير_ستريم_مف' ),
-	'Mv_List_Streams' => array( 'عرض_ستريمات_مف' ),
-	'MV_SpecialSearch' => array( 'بحث_خاص_مف' ),
-	'MvVideoFeed' => array( 'تلقيم_فيديو_مف' ),
+	'MediaSearch' => array( 'تدوير_ميديا' ),
+	'Mv_Add_Stream' => array( 'تزويد_Stream_Mv' ),
+	'MVAdmin' => array( 'ادارى_Mv' ),
+	'MvExportAsk' => array( 'تصدير_سؤال_Mv' ),
+	'MvExportSearch' => array( 'تصدير_تدوير_Mv' ),
+	'MvExportSequence' => array( 'تصدير_تسلسل_Mv' ),
+	'MvExportStream' => array( 'تصدير_Stream_Mv' ),
+	'Mv_List_Streams' => array( 'عرض_Mv_Streams' ),
+	'MV_SpecialSearch' => array( 'تدوير_مخصوص_Mv' ),
+	'MvVideoFeed' => array( 'Mv_Video_Feed' ),
 );
 
 /** Bosnian (Bosanski) */
@@ -101,6 +101,11 @@ $aliases['ko'] = array(
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'MediaSearch' => array( 'Medie sichen' ),
+);
+
+/** Malayalam (മലയാളം) */
+$aliases['ml'] = array(
+	'MediaSearch' => array( 'മീഡിയതിരച്ചിൽ' ),
 );
 
 /** Marathi (मराठी) */

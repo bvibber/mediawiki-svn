@@ -25,6 +25,16 @@ $messages['qqq'] = array(
 	'autocreatecategorypages-desc' => '{{desc}}',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'autocreatecategorypages-desc' => 'faqe Krijo humbur kategori automatikisht në shpëtuar',
+	'autocreatecategorypages-stub' => 'Kjo është një faqe kategori. Ai rreshton të gjitha faqet në kategorinë "$1", si dhe gjith nenkategorive e kategori "$1" në qoftë se ndonjë ekzistojnë.',
+	'autocreatecategorypages-createdby' => 'Krijuar automatikisht nga extension AutoCreateCategoryPages.',
+	'autocreatecategorypages-editor' => 'krijues Automatik kategori',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author Ouda
@@ -457,7 +467,7 @@ Ela lista todas as páginas da categoria "$1", bem como todas as subcategorias d
 $messages['ro'] = array(
 	'autocreatecategorypages-desc' => 'Creează paginile lipsă ale categoriilor automat la salvare',
 	'autocreatecategorypages-stub' => 'Aceasta este o pagină de categorie.
-Afişează toate paginile din categoria "$1" şi toate subcategoriile categoriei "$1", dacă există.',
+Afișează toate paginile din categoria "$1" și toate subcategoriile categoriei "$1", dacă există.',
 	'autocreatecategorypages-createdby' => 'Creat automat de extensia AutoCreateCategoryPages',
 	'autocreatecategorypages-editor' => 'Creator automat de categorii',
 );

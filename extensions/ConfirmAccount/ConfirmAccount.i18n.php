@@ -413,6 +413,23 @@ $messages['af'] = array(
 	'usercredentials-member' => 'Regte:',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'requestaccount' => 'Kërkesë llogari',
+	'requestaccount-text' => "'''E plota dhe të dorëzojë formularin e mëposhtëm për të kërkuar një llogari përdoruesi'''.
+
+Sigurohuni që e keni parë lexuar [[{{MediaWiki:Requestaccount-page}}|Kushtet e Shërbimit]] para se të kërkojnë një llogari.
+
+Pasi llogari është aprovuar, ju do të jetë e-mail një mesazh njoftim dhe llogari do të jetë i përdorshëm në [[Special:UserLogin|login]].",
+	'requestaccount-page' => '{{ns:project}}: Terms of Service',
+	'requestaccount-dup' => "'''Shënim: Ju tashmë jeni i regjistruar me një llogari të regjistruar.'''",
+	'requestaccount-leg-user' => 'Profili i përdoruesit',
+	'requestaccount-leg-areas' => 'fushat kryesore të interesit',
+	'requestaccount-leg-person' => 'Të dhënat personale',
+);
+
 /** Amharic (አማርኛ)
  * @author Codex Sinaiticus
  */
@@ -6194,8 +6211,8 @@ Wann Äre Benotzekont ugeholl as, kritt Dir eng Informatioun per E-Mail an Dir k
 	'requestaccount-leg-other' => 'Aner Informatiounen',
 	'requestaccount-leg-tos' => 'Conditioune vun der Notzung',
 	'requestaccount-acc-text' => 'Esoubal wéi Dir dës Ufro geschéckt hutt kritt Dir e Confirmatiouns-Message op Är E-Mailadress.
-Äntwert w.e.g. duerch klicken op de Confirmatiouns-Link deen an däer Mail drasteet.
-Och Ärt Passwuert gëtt Iech gemailt esoubal wéi Äre Benotzerkonnt ugeluecht ginn ass.',
+Äntwert w.e.g. duerch klicken op de Confirmatiouns-Link deen an där Mail drasteet.
+Och Äert Passwuert gëtt Iech gemailt esoubal wéi Äre Benotzerkonnt ugeluecht gouf.',
 	'requestaccount-areas-text' => 'Wielt déi Sujeten aus an denen Dir formaalt Fachwëssen huet oder an deem Dir am léifste schaffe wëllt.',
 	'requestaccount-ext-text' => "Dës Informatioune gi vertraulech behandelt a gi just fir dës Ufro benotzt.
 Dir kënnt Kontaktinformatiounen wéi eng Telefonsnummer uginn fir d'Identitéitskonfirmatioun ze vereinfachen.",
@@ -6322,7 +6339,7 @@ Numm vum Benotzerkont: $1
 
 Passwuert: $2
 
-Aus Sécherheetsgrënn musst Dir Ärt Passwuert ännere wann Dir Iech déi éischt Kéier aloggt.
+Aus Sécherheetsgrënn musst Dir Äert Passwuert ännere wann Dir Iech déi éischt Kéier aloggt.
 Fir Iech anzelogge gitt w.e.g. op {{fullurl:Special:UserLogin}}.',
 	'confirmaccount-email-body2' => 'Är Ufro fir e Benotzerkont op {{SITENAME}} gouf ugeholl.
 
@@ -6332,7 +6349,7 @@ Passwuert: $2
 
 $3
 
-Aus Sécherheetsgrënn musst Dir Ärt Passwuert ännere wann Dir Iech déi éischt Kéier aloggt.
+Aus Sécherheetsgrënn musst Dir Äert Passwuert ännere wann Dir Iech déi éischt Kéier aloggt.
 Fir Iech anzelogge gitt w.e.g. op {{fullurl:Special:UserLogin}}.',
 	'confirmaccount-email-body3' => 'Pardon, Är Ufro fir e Benotzerkont "$1" op {{SITENAME}} gouf refuséiert.
 
@@ -8551,6 +8568,7 @@ Podem haver listas de contactos no site que poderá usar se deseja saber mais so
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
+ * @author Giro720
  * @author Heldergeovane
  * @author Luckas Blade
  */
@@ -8684,6 +8702,7 @@ Se simplesmente abandonar esta página sem confirmar ou rejeitar esta requisiç�
 	'confirmaccount-spam' => 'Spam (não enviar email)',
 	'confirmaccount-reason' => 'Comentário (será incluído no email):',
 	'confirmaccount-ip' => 'Endereço IP:',
+	'confirmaccount-legend' => 'Confirmar ou rejeitar esta conta',
 	'confirmaccount-submit' => 'Confirmar',
 	'confirmaccount-needreason' => 'Deverá fornecer um motivo na caixa de comentário abaixo.',
 	'confirmaccount-canthold' => 'Esta requisição já está em espera ou apagada.',
@@ -8767,47 +8786,47 @@ $messages['rm'] = array(
  */
 $messages['ro'] = array(
 	'requestaccount' => 'Solicitare deschidere cont',
-	'requestaccount-text' => "'''Completează şi aplică următorul formular pentru a cere deschiderea unui cont de utilizator'''.
+	'requestaccount-text' => "'''Completează și aplică următorul formular pentru a cere deschiderea unui cont de utilizator'''.
 
 Asigură-te că ai citit [[{{MediaWiki:Requestaccount-page}}|Termenii]] înainte de a cere deschiderea unui cont.
 
-După ce contul va fi aprobat, vei fi anunţat printr-un mesaj trimis prin e-mail, iar contul va putea fi accesat apelând [[Special:UserLogin|autentificare]].",
+După ce contul va fi aprobat, vei fi anunțat printr-un mesaj trimis prin e-mail, iar contul va putea fi accesat apelând [[Special:UserLogin|autentificare]].",
 	'requestaccount-page' => '{{ns:project}}:Termeni',
 	'requestaccount-leg-user' => 'Cont de utilizator',
 	'requestaccount-leg-areas' => 'Arii principale de interes',
-	'requestaccount-leg-person' => 'Informaţii personale',
-	'requestaccount-leg-other' => 'Alte informaţii',
+	'requestaccount-leg-person' => 'Informații personale',
+	'requestaccount-leg-other' => 'Alte informații',
 	'requestaccount-bio-text' => 'Biografia ta va fi introdusă automat în pagina ta de utilizator.
-Încearcă să incluzi referiri la diplome care să ateste cunoştinţele tale.
-Asigură-te că publicarea acestora nu-ţi aduce prejudicii.
-Numele tău poate fi schimbat din [[Special:Preferences|preferinţele tale]].',
+Încearcă să incluzi referiri la diplome care să ateste cunoștințele tale.
+Asigură-te că publicarea acestora nu-ți aduce prejudicii.
+Numele tău poate fi schimbat din [[Special:Preferences|preferințele tale]].',
 	'requestaccount-real' => 'Nume real:',
-	'requestaccount-same' => '(acelaşi cu numele real)',
+	'requestaccount-same' => '(același cu numele real)',
 	'requestaccount-email' => 'Adresă e-mail:',
-	'requestaccount-reqtype' => 'Poziţie:',
+	'requestaccount-reqtype' => 'Poziție:',
 	'requestaccount-level-0' => 'autor',
 	'requestaccount-bio' => 'Biografie personală:',
-	'requestaccount-attach' => 'CV (opţional):',
-	'requestaccount-notes' => 'Note adiţionale:',
-	'requestaccount-agree' => 'Trebuie să certifici că numele tău real este corect introdus şi că accepţi Termenii Serviciului.',
-	'requestaccount-inuse' => 'Numele de utilizator este deja folosit într-o cerere de deschidere de cont în aşteptare.',
-	'requestaccount-tooshort' => 'Biografia ta trebuie să conţină cel puţin $1 {{PLURAL:$1|cuvânt|cuvinte}}.',
-	'requestaccount-tos' => 'Am citit şi accept să respect [[{{MediaWiki:Requestaccount-page}}|Termenii]] sitului {{SITENAME}}.
+	'requestaccount-attach' => 'CV (opțional):',
+	'requestaccount-notes' => 'Note adiționale:',
+	'requestaccount-agree' => 'Trebuie să certifici că numele tău real este corect introdus și că accepți Termenii Serviciului.',
+	'requestaccount-inuse' => 'Numele de utilizator este deja folosit într-o cerere de deschidere de cont în așteptare.',
+	'requestaccount-tooshort' => 'Biografia ta trebuie să conțină cel puțin $1 {{PLURAL:$1|cuvânt|cuvinte}}.',
+	'requestaccount-tos' => 'Am citit și accept să respect [[{{MediaWiki:Requestaccount-page}}|Termenii]] sitului {{SITENAME}}.
 Numele pe care l-am introdus în câmpul "Nume real" este numele meu real.',
 	'requestaccount-submit' => 'Solicitare deschidere cont',
-	'request-account-econf' => 'Adresa ta de e-mail a fost confirmată şi va fi listată în cererea de deschidere de cont.',
+	'request-account-econf' => 'Adresa ta de e-mail a fost confirmată și va fi listată în cererea de deschidere de cont.',
 	'requestaccount-email-subj' => '{{SITENAME}} confirmare adresă e-mail',
 	'requestaccount-email-body' => 'Cineva, probabil tu de la adresa IP $1, a cerut deschiderea unui cont "$2" cu această adresă de e-mail în {{SITENAME}}.
 
-Pentru a confirma că într-adevăr adresa întrodusă în {{SITENAME}} îţi aparţine, deschide legătura următoare în programul tău de navigare pe internet:
+Pentru a confirma că într-adevăr adresa întrodusă în {{SITENAME}} îți aparține, deschide legătura următoare în programul tău de navigare pe internet:
 
 $3
 
-Dacă acest cont a fost creat, doar ţie îţi va fi trimisă parola.
-Dacă acest mesaj nu-ţi este destinat, nu deschide legătura.
+Dacă acest cont a fost creat, doar ție îți va fi trimisă parola.
+Dacă acest mesaj nu-ți este destinat, nu deschide legătura.
 Codul de confirmare expiră în $4.',
-	'requestaccount-email-body-admin' => '"$1" a cerut deschiderea unui cont şi aşteaptă confirmarea.
-Adresa de e-mail a fost confirmată. Poţi confirma cererea aici "$2".',
+	'requestaccount-email-body-admin' => '"$1" a cerut deschiderea unui cont și așteaptă confirmarea.
+Adresa de e-mail a fost confirmată. Poți confirma cererea aici "$2".',
 	'confirmaccount-real-q' => 'Nume',
 	'confirmaccount-email-q' => 'E-mail',
 	'confirmaccount-bio-q' => 'Biografie',
@@ -8819,22 +8838,22 @@ Adresa de e-mail a fost confirmată. Poţi confirma cererea aici "$2".',
 	'confirmaccount-q-stale' => 'cereri expirate',
 	'confirmaccount-leg-user' => 'Cont de utilizator',
 	'confirmaccount-leg-areas' => 'Arii principale de interes',
-	'confirmaccount-leg-person' => 'Informaţii personale',
-	'confirmaccount-leg-other' => 'Alte informaţii',
+	'confirmaccount-leg-person' => 'Informații personale',
+	'confirmaccount-leg-other' => 'Alte informații',
 	'confirmaccount-name' => 'Nume de utilizator',
 	'confirmaccount-real' => 'Nume:',
 	'confirmaccount-email' => 'E-mail:',
-	'confirmaccount-reqtype' => 'Poziţie:',
+	'confirmaccount-reqtype' => 'Poziție:',
 	'confirmaccount-pos-0' => 'autor',
 	'confirmaccount-bio' => 'Biografie:',
 	'confirmaccount-attach' => 'CV:',
-	'confirmaccount-notes' => 'Note adiţionale:',
+	'confirmaccount-notes' => 'Note adiționale:',
 	'confirmaccount-urls' => 'Listă de situri web:',
 	'confirmaccount-econf' => '(confirmat)',
 	'confirmaccount-rational' => 'Motiv oferit aplicantului:',
 	'confirmaccount-create' => 'Acceptare (crează cont)',
 	'confirmaccount-deny' => 'Respinge (delist)',
-	'confirmaccount-hold' => 'Reţine',
+	'confirmaccount-hold' => 'Reține',
 	'confirmaccount-spam' => 'Spam (nu trimite e-mail)',
 	'confirmaccount-reason' => 'Comentariu (va fi inclus în e-mail):',
 	'confirmaccount-ip' => 'Adresă IP:',
@@ -8843,13 +8862,13 @@ Adresa de e-mail a fost confirmată. Poţi confirma cererea aici "$2".',
 	'usercredentials-user' => 'Nume de utilizator:',
 	'usercredentials-leg-user' => 'Cont de utilizator',
 	'usercredentials-leg-areas' => 'Arii principale de interes',
-	'usercredentials-leg-person' => 'Informaţii personale',
-	'usercredentials-leg-other' => 'Alte informaţii',
+	'usercredentials-leg-person' => 'Informații personale',
+	'usercredentials-leg-other' => 'Alte informații',
 	'usercredentials-email' => 'E-mail:',
 	'usercredentials-real' => 'Nume real:',
 	'usercredentials-bio' => 'Biografie:',
 	'usercredentials-attach' => 'CV:',
-	'usercredentials-notes' => 'Note adiţionale:',
+	'usercredentials-notes' => 'Note adiționale:',
 	'usercredentials-urls' => 'Listă de situri web:',
 	'usercredentials-ip' => 'Adresă IP originală:',
 	'usercredentials-member' => 'Drepturi:',

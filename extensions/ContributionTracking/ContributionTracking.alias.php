@@ -20,7 +20,7 @@ $aliases['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'ContributionTracking' => array( 'تتبع_المساهمة' ),
+	'ContributionTracking' => array( 'متابعة_المساهمه' ),
 );
 
 /** Bosnian (Bosanski) */

@@ -20,7 +20,7 @@ $aliases['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'SpecialWikiAtHome' => array( 'الويكي_في_المنزل' ),
+	'SpecialWikiAtHome' => array( 'الويكى_فى_البيت' ),
 );
 
 /** Azerbaijani (Azərbaycanca) */

@@ -21,7 +21,7 @@ $aliases['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'Nuke' => array( 'حذف_كمى' ),
+	'Nuke' => array( 'مسح_كامل' ),
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца)) */
@@ -51,7 +51,7 @@ $aliases['fa'] = array(
 
 /** Finnish (Suomi) */
 $aliases['fi'] = array(
-	'Nuke' => array( 'Massapoistaminen' ),
+	'Nuke' => array( 'Massapoisto' ),
 );
 
 /** Swiss German (Alemannisch) */
@@ -76,7 +76,7 @@ $aliases['hsb'] = array(
 
 /** Hungarian (Magyar) */
 $aliases['hu'] = array(
-	'Nuke' => array( 'Kiírtás' ),
+	'Nuke' => array( 'Kiirtás' ),
 );
 
 /** Interlingua (Interlingua) */
@@ -152,6 +152,11 @@ $aliases['sa'] = array(
 /** Slovak (Slovenčina) */
 $aliases['sk'] = array(
 	'Nuke' => array( 'Zničenie' ),
+);
+
+/** Swedish (Svenska) */
+$aliases['sv'] = array(
+	'Nuke' => array( 'Massradering' ),
 );
 
 /** Tagalog (Tagalog) */

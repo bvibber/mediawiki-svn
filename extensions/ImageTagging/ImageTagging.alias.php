@@ -20,7 +20,7 @@ $aliases['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'ImageTagging' => array( 'وسم_الصور' ),
+	'ImageTagging' => array( 'Tagging_للصور' ),
 );
 
 /** Bosnian (Bosanski) */

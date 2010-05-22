@@ -52,6 +52,15 @@ $messages['af'] = array(
 	'dplforum-toomany' => 'DPL Forum: te veel kategorieë!',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'dplforum-never' => 'Kurrë',
+	'dplforum-toofew' => 'DPL Forum: kategori Shumë pak!',
+	'dplforum-toomany' => 'DPL Forum: Shumë shumë kategori!',
+);
+
 /** Arabic (العربية)
  * @author Alnokta
  * @author Meno25
@@ -399,6 +408,11 @@ $messages['id'] = array(
 	'dplforum-toomany' => 'Forum DPL: Terlalu banyak kategori!',
 );
 
+/** Igbo (Igbo) */
+$messages['ig'] = array(
+	'dplforum-never' => 'Anáobulạ',
+);
+
 /** Italian (Italiano)
  * @author Beta16
  * @author Darth Kule
@@ -490,7 +504,7 @@ $messages['mhr'] = array(
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
-	'dplforum-desc' => 'Форумско проширување на основа на DPL',
+	'dplforum-desc' => 'Форумски додаток на основа на DPL',
 	'dplforum-by' => 'од $1',
 	'dplforum-edited' => '- Последно уредено',
 	'dplforum-never' => 'Никогаш',

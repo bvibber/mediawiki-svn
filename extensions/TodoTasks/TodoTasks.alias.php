@@ -25,8 +25,13 @@ $aliases['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'TaskList' => array( 'قائمة_المهام' ),
-	'TaskListByProject' => array( 'قائمة_المهام_حسب_المشروع' ),
+	'TaskList' => array( 'ليستة_المهمات' ),
+	'TaskListByProject' => array( 'ليستة_المهمات_حسب_المشروع' ),
+);
+
+/** Breton (Brezhoneg) */
+$aliases['br'] = array(
+	'TaskList' => array( 'RollTrevelloù' ),
 );
 
 /** German (Deutsch) */
@@ -151,6 +156,12 @@ $aliases['nl'] = array(
 $aliases['no'] = array(
 	'TaskList' => array( 'Oppgaveliste' ),
 	'TaskListByProject' => array( 'Oppgaveliste per prosjekt' ),
+);
+
+/** Polish (Polski) */
+$aliases['pl'] = array(
+	'TaskList' => array( 'Lista zadań' ),
+	'TaskListByProject' => array( 'Lista zadań dla projektów' ),
 );
 
 /** Sanskrit (संस्कृत) */

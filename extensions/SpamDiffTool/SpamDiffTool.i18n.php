@@ -591,7 +591,7 @@ Estas opcións van das máis restritivas ás menos, bloqueando o dominio enteiro
 
 Asegúrese de non bloquear dominios enteiros que alberguen contas de usuario, como blogspot.com, geocities.com etc.',
 	'spamdifftool_no_urls_detected' => "Non se detectou ningún enderezo URL.
-Prema <a href='$1'>aquí</a> para voltar.",
+Prema <a href='$1'>aquí</a> para volver.",
 	'spamdifftool_spam_link_text' => 'engadir ao spam',
 	'spamdifftool_option_domain' => 'todo o deste dominio',
 	'spamdifftool_option_subdomain' => 'todo o deste subdominio',
@@ -675,7 +675,7 @@ $messages['hi'] = array(
 $messages['hsb'] = array(
 	'spamdifftool' => 'Spamowu čornu lisćinu zrjadować',
 	'spamdifftool-desc' => 'Skići zakładne wašnje přidawanja nowych zapiskow spamowej čornej lisćinje ze stronow z rozdźělemi wersijow',
-	'spamdifftool_cantedit' => 'Bohužel nimaš dowolenje spamowu čornu lisćinu wobdźěłować.',
+	'spamdifftool_cantedit' => 'Bohužel nimaš dowolnosć spamowu čornu lisćinu wobdźěłować.',
 	'spamdifftool-no-title' => "'''Zmylk:''' žadyn titul podaty.",
 	'spamdifftool_notext' => "Njeje žadyn tekst, kotryž móhł so spamowej čornej lisćinje přidać. Klikń <href='$1'>sem</a>, zo by pokročował.",
 	'spamdifftool_confirm' => "Potwjerdź, zo chceš tute zapiski spamowej čornej lisćinje přidać. (Klikń <a href='$1' target='new'>sem</a>, zo by wo problemje rozprawjał.)",
@@ -702,6 +702,7 @@ $messages['hu'] = array(
 	'spamdifftool' => 'Spam-feketelista kezelése',
 	'spamdifftool-desc' => 'Egyszerű lehetőség új bejegyzések hozzáadására a spam feketelistához lapváltoztatásokból',
 	'spamdifftool_cantedit' => 'Sajnáljuk, de nincs jogosultságod szerkeszteni a spam-feketelistát.',
+	'spamdifftool-no-title' => "'''Hiba:''' nem adtál meg lapcímet.",
 	'spamdifftool_notext' => "Nincs hozzáadandó szöveg a spam feketelistához.
 Kattints <a href='$1'>ide</a> a folytatáshoz.",
 	'spamdifftool_confirm' => "Erősítsd meg, hogy hozzá szeretnéd adni ezeket a bejegyzéseket a spam feketelistához.
@@ -927,9 +928,9 @@ Klickt <a href='$1'>hei</a> fir weiderzefueren.",
 (Klickt <a href='$1' target='new'>hei</a> fir e Problem ze mellen.)",
 	'spamdifftool_summary' => "Op d'schwaarz Lëscht vum Spam derbäisetzen",
 	'spamdifftool_urls_detected' => "Dës URLen goufen an den Ännerunge fonnt, watfireng wëllt Dir op déi Schwaarz Lëscht vum Spam derbäisetzen?
-Dës Optioune gi vu méi restriktiv op manner restriktiv. D'Späre vun engem ganzen Domain spärt all Linken op alles wat vun dem Domain kënnt.
+Déi Optioune gi vu méi restriktiv op manner restriktiv. D'Späre vun engem ganzen Domain späert all Linken op alles wat vun dem Domain kënnt.
 
- Vergewëssert Iech datt Dir net ganz Domaine spärt déi Benotzerkonten hosten, esou wéi blogspot.com, geocities.com, asw.",
+Vergewëssert Iech datt Dir net ganz Domaine späert déi Benotzerkonten hosten, esou wéi blogspot.com, geocities.com, asw.",
 	'spamdifftool_no_urls_detected' => "Et goufe keng URLe fonnt.
 Klickt w.e.g. <a href='$1'>heihi</a> fir zréck.",
 	'spamdifftool_spam_link_text' => 'bei de Spam setzen',
@@ -1307,7 +1308,7 @@ $messages['ro'] = array(
 	'spamdifftool_spam_link_text' => 'adaugă la spam',
 	'spamdifftool_option_domain' => 'toate din acest domeniu',
 	'spamdifftool_option_subdomain' => 'toate de pe acest subdomeniu',
-	'spamdifftool_option_directory' => 'acest subdomeniu şi directorul',
+	'spamdifftool_option_directory' => 'acest subdomeniu și directorul',
 	'spamdifftool_option_none' => 'nimic',
 	'spamdifftool_block' => 'Blocare:',
 	'spamdifftool_submit_buttom' => 'Trimite',

@@ -21,7 +21,7 @@ $aliases['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'SiteMatrix' => array( 'مصفوفة_الموقع', 'ويكيات_ويكيميديا' ),
+	'SiteMatrix' => array( 'Matrix_السايت', 'ويكيهات_ويكيميديا' ),
 );
 
 /** Catalan (Català) */

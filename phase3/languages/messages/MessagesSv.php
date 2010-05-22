@@ -9,6 +9,7 @@
  *
  * @author Ainali
  * @author Boivie
+ * @author Dafer45
  * @author Fluff
  * @author GameOn
  * @author Grillo
@@ -152,7 +153,7 @@ $specialPageAliases = array(
 	'Blankpage'                 => array( 'Tom sida' ),
 	'LinkSearch'                => array( 'Länksökning' ),
 	'DeletedContributions'      => array( 'Raderade bidrag' ),
-	'Tags'                      => array( 'Taggar' ),
+	'Tags'                      => array( 'Märken', 'Taggar' ),
 );
 
 $magicWords = array(
@@ -1130,7 +1131,7 @@ $1",
 'logdelete-success'           => "'''Loggåtgärdens synlighet har ändrats.'''",
 'logdelete-failure'           => "'''Loggens synlighet kunde inte ställas in:'''
 $1",
-'revdel-restore'              => 'Ändra synlighet',
+'revdel-restore'              => 'ändra synlighet',
 'pagehist'                    => 'Sidhistorik',
 'deletedhist'                 => 'Raderad historik',
 'revdelete-content'           => 'innehåll',
@@ -1717,6 +1718,11 @@ JD # Jenoptik
 MGP # Pentax
 PICT # allmänt bildprefix
  #</pre> <!-- ändra inte den här raden -->',
+'upload-successful-msg'       => 'Din uppladdade fil finns tillgänglig här: $1',
+'upload-failure-subj'         => 'Uppladdningsproblem',
+'upload-failure-msg'          => 'Det uppstod ett problem med din uppladdning:
+
+$1',
 
 'upload-proto-error'        => 'Felaktigt protokoll',
 'upload-proto-error-text'   => 'Fjärruppladdning kräver URL:ar som börjar med <code>http://</code> eller <code>ftp://</code>.',
@@ -2678,6 +2684,7 @@ All överföring mellan wikier (transwiki) listas i  [[Special:Log/import|import
 'importstart'                => 'Importerar sidor....',
 'import-revision-count'      => '$1 {{PLURAL:$1|version|versioner}}',
 'importnopages'              => 'Det finns inga sidor att importera.',
+'imported-log-entries'       => 'Importerade $1 {{PLURAL: $1 |loggpost|loggposter}}.',
 'importfailed'               => 'Importen misslyckades: <nowiki>$1</nowiki>',
 'importunknownsource'        => 'Okänd typ av importkälla',
 'importcantopen'             => 'Misslyckades med att öppna importfilen.',

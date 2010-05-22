@@ -25,7 +25,7 @@ $aliases['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'NewsChannel' => array( 'قناة_أخبار' ),
+	'NewsChannel' => array( 'قناة_اخبار' ),
 );
 
 /** Bulgarian (Български) */

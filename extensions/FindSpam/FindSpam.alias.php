@@ -20,7 +20,7 @@ $aliases['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'FindSpam' => array( 'إيجاد_السبام' ),
+	'FindSpam' => array( 'شوف_الSpam' ),
 );
 
 /** Bosnian (Bosanski) */
@@ -41,6 +41,16 @@ $aliases['dsb'] = array(
 /** Greek (Ελληνικά) */
 $aliases['el'] = array(
 	'FindSpam' => array( 'ΑναζήτησηSpam' ),
+);
+
+/** Esperanto (Esperanto) */
+$aliases['eo'] = array(
+	'FindSpam' => array( 'Trovi spamon' ),
+);
+
+/** Spanish (Español) */
+$aliases['es'] = array(
+	'FindSpam' => array( 'Buscar spam' ),
 );
 
 /** Persian (فارسی) */
@@ -115,7 +125,7 @@ $aliases['mk'] = array(
 
 /** Malayalam (മലയാളം) */
 $aliases['ml'] = array(
-	'FindSpam' => array( 'സ്പാംകണ്ടെത്തുക' ),
+	'FindSpam' => array( 'പാഴ്‌‌എഴുത്തുകൾകണ്ടെത്തുക' ),
 );
 
 /** Marathi (मराठी) */

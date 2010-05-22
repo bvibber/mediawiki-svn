@@ -27,7 +27,7 @@ $aliases['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'Farmer' => array( 'مزارع' ),
+	'Farmer' => array( 'فلاح' ),
 );
 
 /** Gujarati (ગુજરાતી) */

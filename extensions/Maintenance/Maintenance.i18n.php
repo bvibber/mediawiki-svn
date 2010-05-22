@@ -1489,7 +1489,7 @@ $messages['gl'] = array(
 	'maintenance' => 'Executar as escrituras de mantemento',
 	'maintenance-desc' => '[[Special:Maintenance|Interface da web]] para diversas escrituras de mantemento',
 	'right-maintenance' => 'Executar escrituras de mantemento mediante [[Special:Maintenance]]',
-	'maintenance-backlink' => 'Voltar á selección de escrituras',
+	'maintenance-backlink' => 'Volver á selección de escrituras',
 	'maintenance-header' => 'Por favor, seleccione a escritura de embaixo que queira executar.
 As descricións están ao lado de cada escritura',
 	'maintenance-changePassword-desc' => 'Cambiar o contrasinal dun usuario',
@@ -1534,7 +1534,7 @@ Cada liña debería especificar unha fonte e destino da páxina separados por un
 	'maintenance-revnotfound' => 'A revisión $1 non foi atopada!',
 	'maintenance-sql' => 'Use este formulario para executar unha pescuda SQL na base de datos.',
 	'maintenance-sql-aff' => 'Ringleiras afectadas: $1',
-	'maintenance-sql-res' => '{{PLURAL:$1|Voltou unha ringleira|Voltaron $1 ringleiras}}:
+	'maintenance-sql-res' => '{{PLURAL:$1|Voltou unha ringleira|Volveron $1 ringleiras}}:
 $2',
 	'maintenance-stats-edits' => 'Número de edicións: $1',
 	'maintenance-stats-articles' => 'Número de páxinas no espazo de nomes principal: $1',
@@ -2289,6 +2289,12 @@ Pemindahan dibatalkan',
 	'maintenance-re-rce' => 'Entri PerubahanTerbaru: $1',
 	'maintenance-re-total' => 'Entri total untuk diubah: $1',
 	'maintenance-re-re' => 'Pengalihan suntingan{{int:ellipsis}} berhasil',
+);
+
+/** Igbo (Igbo) */
+$messages['ig'] = array(
+	'maintenance-password' => 'Mkpurụ okwu ejị a gafẹ',
+	'maintenance-reason' => 'Mgbaghaputa:',
 );
 
 /** Icelandic (Íslenska)
@@ -3873,30 +3879,30 @@ Abortando a movimentação',
  * @author Minisarm
  */
 $messages['ro'] = array(
-	'maintenance' => 'Rulează scripturile de întreţinere',
-	'maintenance-desc' => '[[Special:Maintenance|Interfaţa wiki]] pentru diferite scripturi de întreţinere',
-	'right-maintenance' => 'Rulează scripturile de întreţinere prin [[Special:Maintenance]]',
-	'maintenance-backlink' => 'Înapoi la selecţia scriptului',
-	'maintenance-header' => 'Vă rugăm să selectaţi de mai jos un script pentru executare.
+	'maintenance' => 'Rulează scripturile de întreținere',
+	'maintenance-desc' => '[[Special:Maintenance|Interfața wiki]] pentru diferite scripturi de întreținere',
+	'right-maintenance' => 'Rulează scripturile de întreținere prin [[Special:Maintenance]]',
+	'maintenance-backlink' => 'Înapoi la selecția scriptului',
+	'maintenance-header' => 'Vă rugăm să selectați de mai jos un script pentru executare.
 Descrierile se află în apropierea fiecărui script',
 	'maintenance-changePassword-desc' => 'Schimbă parola unui utilizator',
-	'maintenance-createAndPromote-desc' => 'Creează un utilizator şi promovează-l la statutul de administrator',
+	'maintenance-createAndPromote-desc' => 'Creează un utilizator și promovează-l la statutul de administrator',
 	'maintenance-deleteBatch-desc' => 'Şterge pagini în masă',
 	'maintenance-deleteRevision-desc' => 'Şterge reviziile din baza de date',
 	'maintenance-eval-desc' => 'Evaluează codul PHP în mediul MediaWiki',
 	'maintenance-initEditCount-desc' => 'Recalculează numărul de modificări ale utilizatorilor',
 	'maintenance-initStats-desc' => 'Recalculează statisticile sitului',
 	'maintenance-moveBatch-desc' => 'Mută pagini în masă',
-	'maintenance-reassignEdits-desc' => 'Redistribuie contribuţiile de la un utilizator la altul',
+	'maintenance-reassignEdits-desc' => 'Redistribuie contribuțiile de la un utilizator la altul',
 	'maintenance-sql-desc' => 'Execută o interogare SQL',
 	'maintenance-stats-desc' => 'Arată statisticile Memcached',
-	'maintenance-changePassword' => 'Utilizaţi acest formular pentru a schimba parola unui utilizator',
-	'maintenance-createAndPromote' => 'Utilizaţi acest formular pentru a crea un nou utilizator şi a-l promova la statutul de administrator.
-Bifaţi şi caseta „birocrat” dacă doriţi să-l promovaţi şi la statutul de birocrat',
-	'maintenance-deleteBatch' => 'Utilizaţi acest formular pentru ştergerea în masă a paginilor.
-Puneţi doar o pagină pe un rând',
-	'maintenance-deleteRevision' => 'Utilizaţi acest formular pentru ştergerea în masă a reviziilor.
-Puneţi doar o revizie pe un rând',
+	'maintenance-changePassword' => 'Utilizați acest formular pentru a schimba parola unui utilizator',
+	'maintenance-createAndPromote' => 'Utilizați acest formular pentru a crea un nou utilizator și a-l promova la statutul de administrator.
+Bifați și caseta „birocrat” dacă doriți să-l promovați și la statutul de birocrat',
+	'maintenance-deleteBatch' => 'Utilizați acest formular pentru ștergerea în masă a paginilor.
+Puneți doar o pagină pe un rând',
+	'maintenance-deleteRevision' => 'Utilizați acest formular pentru ștergerea în masă a reviziilor.
+Puneți doar o revizie pe un rând',
 	'maintenance-invalidtype' => 'Tip incorect!',
 	'maintenance-name' => 'Nume de utilizator',
 	'maintenance-password' => 'Parolă',
@@ -3914,11 +3920,11 @@ Puneţi doar o revizie pe un rând',
 	'maintenance-sql-res' => '$1 {{PLURAL:$1|rând returnat|rânduri returnate}}:
 $2',
 	'maintenance-stats-edits' => 'Număr de modificări: $1',
-	'maintenance-stats-articles' => 'Număr de pagini în spaţiul de nume principal: $1',
+	'maintenance-stats-articles' => 'Număr de pagini în spațiul de nume principal: $1',
 	'maintenance-stats-pages' => 'Număr de pagini: $1',
 	'maintenance-stats-users' => 'Număr de utilizatori: $1',
 	'maintenance-stats-admins' => 'Număr de administratori: $1',
-	'maintenance-stats-images' => 'Număr de fişiere: $1',
+	'maintenance-stats-images' => 'Număr de fișiere: $1',
 	'maintenance-error' => 'Eroare: $1',
 	'maintenance-memc-requests' => 'Cereri',
 	'maintenance-memc-withsession' => 'cu sesiune:',
@@ -3930,7 +3936,7 @@ $2',
 	'maintenance-memc-absent' => 'absent:',
 	'maintenance-memc-updates' => 'actualizări:',
 	'maintenance-re-ce' => 'Modificări curente: $1',
-	'maintenance-re-de' => 'Modificări şterse: $1',
+	'maintenance-re-de' => 'Modificări șterse: $1',
 );
 
 /** Tarandíne (Tarandíne)

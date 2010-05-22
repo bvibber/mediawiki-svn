@@ -1758,10 +1758,10 @@ As avaliações são as seguintes:
  */
 $messages['ro'] = array(
 	'ratinghistory' => 'Istoricul evaluării paginii',
-	'ratinghistory-leg' => 'Informaţii despre istoricul evaluarii pentru [[:$1|$1]]',
+	'ratinghistory-leg' => 'Informații despre istoricul evaluarii pentru [[:$1|$1]]',
 	'ratinghistory-tab' => 'evaluare',
 	'ratinghistory-link' => 'Evaluarea paginii',
-	'ratinghistory-thanks' => "''<font color=\"darkred\">Mulţumim pentru că aţi revizuit această pagină!</font>''",
+	'ratinghistory-thanks' => "''<font color=\"darkred\">Mulțumim pentru că ați revizuit această pagină!</font>''",
 	'ratinghistory-period' => 'Perioadă de timp:',
 	'ratinghistory-month' => 'ultima lună',
 	'ratinghistory-3months' => 'ultimele 3 luni',
@@ -1769,14 +1769,14 @@ $messages['ro'] = array(
 	'ratinghistory-3years' => 'ultimii 3 ani',
 	'ratinghistory-ave' => 'Medie: $1',
 	'ratinghistory-chart' => 'Evaluările cititorilor de-a lungul timpului',
-	'ratinghistory-purge' => 'curăţa cache-ul',
+	'ratinghistory-purge' => 'curăța cache-ul',
 	'ratinghistory-table' => 'Privire de ansamblu asupra evaluării cititorilor',
-	'ratinghistory-users' => 'Utilizatori care şi-au exprimat opinia',
+	'ratinghistory-users' => 'Utilizatori care și-au exprimat opinia',
 	'ratinghistory-svg' => 'Vizualizează drept SVG',
 	'ratinghistory-table-rating' => 'Evaluare',
 	'ratinghistory-table-votes' => 'Voturi',
 	'ratinghistory-none' => 'Nu există suficiente date disponibile pentru a genera grafice în acest moment.',
-	'right-feedback' => 'Folosiţi formularul de feedback-ul pentru a evalua o pagină',
+	'right-feedback' => 'Folosiți formularul de feedback-ul pentru a evalua o pagină',
 );
 
 /** Tarandíne (Tarandíne)
@@ -2324,6 +2324,7 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Gaoxuewei
+ * @author Horacewai2
  * @author Liangent
  * @author Wrightbus
  */
@@ -2339,6 +2340,7 @@ $messages['zh-hant'] = array(
 	'ratinghistory-year' => '過去一年',
 	'ratinghistory-3years' => '過去三年',
 	'ratinghistory-ave' => '平均：$1',
+	'ratinghistory-chart' => '讀者評分隨著時間的推移',
 	'ratinghistory-purge' => '清空緩存',
 	'ratinghistory-table' => '讀者評論總覽',
 	'ratinghistory-users' => '給出評價的用戶',

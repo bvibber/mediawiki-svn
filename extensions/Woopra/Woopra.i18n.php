@@ -25,6 +25,13 @@ $messages['af'] = array(
 	'woopra-desc' => 'Maak dit moontlik om die [http://www.woopra.com/ Woopra Live Tracking] sagteware saam met MediaWiki te gebruik',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'woopra-desc' => 'Lejon [http://www.woopra.com/ Woopra Live Tracking Software] për të punuar për instalimin tuaj MediaWiki',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

@@ -38,6 +38,11 @@ $aliases['dsb'] = array(
 	'CountEdits' => array( 'Pśinoski licyś' ),
 );
 
+/** Esperanto (Esperanto) */
+$aliases['eo'] = array(
+	'CountEdits' => array( 'Konti redaktojn' ),
+);
+
 /** Spanish (Español) */
 $aliases['es'] = array(
 	'CountEdits' => array( 'Contador_de_Ediciones' ),

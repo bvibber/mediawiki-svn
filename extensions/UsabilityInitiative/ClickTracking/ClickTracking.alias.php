@@ -19,7 +19,12 @@ $aliases['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'ClickTracking' => array( 'تتبع_الضغطات' ),
+	'ClickTracking' => array( 'متابعة_الدوسات' ),
+);
+
+/** Breton (Brezhoneg) */
+$aliases['br'] = array(
+	'ClickTracking' => array( 'HeuliañKlikoù' ),
 );
 
 /** Persian (فارسی) */
@@ -45,6 +50,11 @@ $aliases['ja'] = array(
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
 	'ClickTracking' => array( 'Opzeechne vun de Klicken' ),
+);
+
+/** Malayalam (മലയാളം) */
+$aliases['ml'] = array(
+	'ClickTracking' => array( 'ഞെക്കൽപിന്തുടരൽ' ),
 );
 
 /** Marathi (मराठी) */

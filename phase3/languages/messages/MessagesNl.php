@@ -132,6 +132,7 @@ $magicWords = array(
 	'subjectpagenamee'      => array( '1', 'ONDERWERPPAGINANAAME', 'ARTIKELPAGINANAAME', 'SUBJECTPAGENAMEE', 'ARTICLEPAGENAMEE' ),
 	'msg'                   => array( '0', 'BERICHT:', 'MSG:' ),
 	'subst'                 => array( '0', 'VERV:', 'SUBST:' ),
+	'safesubst'             => array( '0', 'VEILIGVERV:', 'SAFESUBST:' ),
 	'msgnw'                 => array( '0', 'BERICHTNW', 'MSGNW:' ),
 	'img_thumbnail'         => array( '1', 'miniatuur', 'thumbnail', 'thumb' ),
 	'img_manualthumb'       => array( '1', 'miniatuur=$1', 'thumbnail=$1', 'thumb=$1' ),
@@ -210,6 +211,8 @@ $magicWords = array(
 	'staticredirect'        => array( '1', '__STATISCHEDOORVERWIJZING__', '__STATISCHEREDIRECT__', '__STATICREDIRECT__' ),
 	'protectionlevel'       => array( '1', 'BEVEILIGINGSNIVEAU', 'PROTECTIONLEVEL' ),
 	'formatdate'            => array( '0', 'datumopmaak', 'formatdate', 'dateformat' ),
+	'url_path'              => array( '0', 'PAD', 'PATH' ),
+	'url_query'             => array( '0', 'ZOEKOPDRACHT', 'QUERY' ),
 );
 
 $specialPageAliases = array(
@@ -257,6 +260,7 @@ $specialPageAliases = array(
 	'Allpages'                  => array( 'AllePaginas', 'AllePagina’s', 'AllePagina\'s' ),
 	'Prefixindex'               => array( 'Voorvoegselindex', 'Prefixindex' ),
 	'Ipblocklist'               => array( 'Blokkeerlijst', 'IP-blokkeerlijst', 'IPblokkeerlijst', 'IpBlokkeerlijst' ),
+	'Unblock'                   => array( 'Deblokkeren' ),
 	'Specialpages'              => array( 'SpecialePaginas', 'SpecialePagina’s', 'SpecialePagina\'s' ),
 	'Contributions'             => array( 'Bijdragen' ),
 	'Emailuser'                 => array( 'GebruikerE-mailen', 'E-mailGebruiker' ),
@@ -1781,6 +1785,11 @@ JD # Jenoptik
 MGP # Pentax
 PICT # overig
  #</pre> <!-- leave this line exactly as it is -->',
+'upload-successful-msg'       => 'Uw upload is hier beschikbaar: $1',
+'upload-failure-subj'         => 'Uploadprobleem',
+'upload-failure-msg'          => 'Er was een probleem met uw upload:
+
+$1',
 
 'upload-proto-error'        => 'Verkeerd protocol',
 'upload-proto-error-text'   => "Uploads via deze methode vereisen URL's die beginnen met <code>http://</code> of <code>ftp://</code>.",
@@ -2186,6 +2195,10 @@ De ontvanger kan dus direct naar u reageren.',
 'emailsent'            => 'E-mail verzonden',
 'emailsenttext'        => 'Uw e-mail is verzonden.',
 'emailuserfooter'      => 'Deze e-mail is verstuurd door $1 aan $2 door de functie "Deze gebruiker e-mailen" van {{SITENAME}}.',
+
+# User Messenger
+'usermessage-summary' => 'Systeembericht achtergelaten',
+'usermessage-editor'  => 'Systeembericht',
 
 # Watchlist
 'watchlist'            => 'Volglijst',
@@ -2774,6 +2787,7 @@ Alle transwiki-importhandelingen worden opgeslagen in het [[Special:Log/import|i
 'importstart'                => "Pagina's aan het importeren…",
 'import-revision-count'      => '$1 {{PLURAL:$1|versie|versies}}',
 'importnopages'              => "Geen pagina's te importeren.",
+'imported-log-entries'       => '$1 {{PLURAL:$1|logboekregel|logboekregels}} geïmporteerd.',
 'importfailed'               => 'Import is mislukt: $1',
 'importunknownsource'        => 'Onbekend importbrontype',
 'importcantopen'             => 'Kon het importbestand niet openen',
@@ -3449,8 +3463,8 @@ Probeer normale voorvertoning.',
 'watchlistedit-normal-title'   => 'Volglijst bewerken',
 'watchlistedit-normal-legend'  => 'Pagina’s van uw volglijst verwijderen',
 'watchlistedit-normal-explain' => 'Hieronder worden de pagina’s op uw volglijst weergegeven.
-Klik op het vierkantje ernaast en daarna op ‘Pagina’s verwijderen’ om een pagina te verwijderen.
-U kunt ook [[Special:Watchlist/raw|de ruwe lijst bewerken]].',
+Klik op het vierkantje ernaast en daarna op "{{int:Watchlistedit-normal-submit}}" om een pagina te verwijderen.
+U kunt ook de [[Special:Watchlist/raw|ruwe lijst bewerken]].',
 'watchlistedit-normal-submit'  => "Pagina's verwijderen",
 'watchlistedit-normal-done'    => 'Er {{PLURAL:$1|is 1 pagina|zijn $1 pagina’s}} verwijderd van uw volglijst:',
 'watchlistedit-raw-title'      => 'Ruwe volglijst bewerken',
@@ -3458,7 +3472,7 @@ U kunt ook [[Special:Watchlist/raw|de ruwe lijst bewerken]].',
 'watchlistedit-raw-explain'    => 'Hieronder staan pagina’s op uw volglijst.
 U kunt de lijst bewerken door pagina’s te verwijderen en toe te voegen.
 Eén pagina per regel.
-Als u klaar bent, klik dan op ‘Volglijst bijwerken’.
+Als u klaar bent, klik dan op "{{int:Watchlistedit-raw-submit}}".
 U kunt ook [[Special:Watchlist/edit|het standaard bewerkingsscherm gebruiken]].',
 'watchlistedit-raw-titles'     => 'Pagina’s:',
 'watchlistedit-raw-submit'     => 'Volglijst bijwerken',

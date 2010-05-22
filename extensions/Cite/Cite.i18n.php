@@ -39,6 +39,8 @@ parameter "group" is allowed only.
 Use <code>&lt;references /&gt;</code>, or <code>&lt;references group="..." /&gt;</code>',
 	'cite_error_references_no_backlink_label'        => 'Ran out of custom backlink labels.
 Define more in the <nowiki>[[MediaWiki:Cite references link many format backlink labels]]</nowiki> message',
+	'cite_error_no_link_label_group'        => 'Ran out of custom link labels for group \'$1\'.
+Define more in the <nowiki>[[MediaWiki:$2]]</nowiki> message',
 	'cite_error_references_no_text'                  => 'Invalid <code>&lt;ref&gt;</code> tag;
 no text was provided for refs named <code>$1</code>',
 	'cite_error_included_ref'                        => 'Closing &lt;/ref&gt; missing for &lt;ref&gt; tag',
@@ -1396,6 +1398,13 @@ tidak ditemukan teks untuk ref bernama <code>$1</code>',
 	'cite_error_empty_references_define' => 'Tag <code>&lt;ref&gt;</code> yang didefinisikan di di <code>&lt;references&gt;</code> dengan nama "$1" tidak memiliki isi.',
 );
 
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'cite-desc' => 'Tikwá <nowiki><ref[ áhà=id]></nowiki> and <nowiki><references/></nowiki> ndö, maka ntabi okwu',
+);
+
 /** Ido (Ido)
  * @author Malafaya
  */
@@ -1720,8 +1729,8 @@ et gouf keen Text ugi fir d'Referenze mam Numm <code>$1</code>",
 	'cite_error_refs_without_references' => "D'Markéierung <code>&lt;ref&gt;</code> gëtt et, awer d'Markéierung <code>&lt;references/&gt;</code> gouf net fonnt",
 	'cite_error_group_refs_without_references' => 'D\'Markéierung <code>&lt;ref&gt;</code> gëtt et fir d\'Grupp "$1", awer d\'entspriechend Markéierung <code>&lt;references group="$1"/&gt;</code> gouf net fonnt',
 	'cite_error_references_group_mismatch' => 'Den <code>&lt;ref&gt;</code>-Tag an <code>&lt;references&gt;</code> huet den Attribut "$1" deen am Konflikt mat deem am <code>&lt;references&gt;</code> steet.',
-	'cite_error_references_missing_group' => 'Deen am <code>&lt;references&gt;</code> definierten <code>&lt;ref&gt;</code>-Tag huet en Attribut "$1" deen am Text virdrun net dran ass.',
-	'cite_error_references_missing_key' => 'Deen am <code>&lt;references&gt;</code> definierten <code>&lt;ref&gt;</code>-Tag mam Numm "$1" gëtt am Text virdrun net benotzt.',
+	'cite_error_references_missing_group' => 'Deen am <code>&lt;references&gt;</code> definéierten <code>&lt;ref&gt;</code>-Tag huet en Attribut "$1" deen am Text virdrun net dran ass.',
+	'cite_error_references_missing_key' => 'Deen am <code>&lt;references&gt;</code> definéierten <code>&lt;ref&gt;</code>-Tag mam Numm "$1" gëtt am Text virdrun net benotzt.',
 	'cite_error_references_no_key' => "D'Markéierung <code>&lt;ref&gt;</code> déi an <code>&lt;references&gt;</code> definéiert ass huet keng Nummeegeschaft.",
 	'cite_error_empty_references_define' => "D'Markéierung <code>&lt;ref&gt;</code> déi am <code>&lt;references&gt;</code> mat dem Numm  « $1 » definéiert ass, ass eidel.",
 );
@@ -2273,29 +2282,29 @@ Astawan sut'ichay <nowiki>[[MediaWiki:Cite references link many format backlink 
  * @author Mihai
  */
 $messages['ro'] = array(
-	'cite-desc' => 'Adaugă etichete <nowiki><ref[ name=id]></nowiki> şi <nowiki><references/></nowiki>, pentru citări',
+	'cite-desc' => 'Adaugă etichete <nowiki><ref[ name=id]></nowiki> și <nowiki><references/></nowiki>, pentru citări',
 	'cite_croak' => 'Citare coruptă; $1 : $2',
 	'cite_error_key_str_invalid' => 'Eroare internă;
-$str invalid sau/şi $key.
+$str invalid sau/și $key.
 Acestea nu ar trebui să se întâmple.',
 	'cite_error_stack_invalid_input' => 'Eroare internă;
 stivă cheie invalidă.
 Acestea nu ar trebui să se întâmple.',
 	'cite_error' => 'Eroare la citare: $1',
 	'cite_error_ref_numeric_key' => 'Etichetă <code>&lt;ref&gt;</code> invalidă;
-numele nu poate fi un număr. Foloseşte un titlu descriptiv',
+numele nu poate fi un număr. Folosește un titlu descriptiv',
 	'cite_error_ref_no_key' => 'Etichetă <code>&lt;ref&gt;</code> invalidă;
-ref-urile fără conţinut trebuie să aibă un nume',
+ref-urile fără conținut trebuie să aibă un nume',
 	'cite_error_ref_too_many_keys' => 'Etichetă <code>&lt;ref&gt;</code> invalidă;
 nume invalid, ex. prea multe nume',
 	'cite_error_ref_no_input' => 'Etichetă <code>&lt;ref&gt;</code> invalidă;
-ref-urile fără nume trebuie să aibă conţinut',
+ref-urile fără nume trebuie să aibă conținut',
 	'cite_error_references_invalid_parameters' => 'Etichetă <code>&lt;references&gt;</code> invalidă;
-parametrii nu sunt permişi.
-Foloseşte eticheta <code>&lt;references /&gt;</code>',
+parametrii nu sunt permiși.
+Folosește eticheta <code>&lt;references /&gt;</code>',
 	'cite_error_references_invalid_parameters_group' => 'Etichetă <code>&lt;references&gt;</code> invalidă;
 doar parametrul „grup” este permis.
-Foloseşte eticheta <code>&lt;references /&gt;</code>, sau <code>&lt;references group="..." /&gt;</code>',
+Folosește eticheta <code>&lt;references /&gt;</code>, sau <code>&lt;references group="..." /&gt;</code>',
 	'cite_error_references_no_text' => 'Etichetă <code>&lt;ref&gt;</code> invalidă;
 niciun text nu a fost furnizat pentru ref-urile numite <code>$1</code>',
 	'cite_error_included_ref' => 'Adaugă &lt;/ref&gt; eticheta a fost deschisă prin &lt;ref&gt;',
@@ -2517,6 +2526,8 @@ $messages['sl'] = array(
 	'cite_croak' => 'Hreščeča navedba; $1: $2',
 	'cite_error' => 'Napaka pri navajanju: $1',
 	'cite_error_included_ref' => 'Zaključek &lt;/ref&gt; manjka za etiketo &lt;ref&gt;',
+	'cite_error_references_no_key' => 'Etiketa <code>&lt;ref&gt;</code>, določena v <code>&lt;references&gt;</code>, nima lastnosti »name«.',
+	'cite_error_empty_references_define' => 'Etiketa <code>&lt;ref&gt;</code>, določena v <code>&lt;references&gt;</code> z imenom »$1«, nima vsebine.',
 	'cite_references_link_many_format_backlink_labels' => 'a b c č d e f g h i j k l m n o p r s š t u v z ž a aa ab ac ač ad ae af ag ah ai aj ak al am an ao ap ar as aš at au av az až b ba bb bc bč bd be bf bg bh bi bj bk bl bm bn bo bp br bs bš bt bu bv bz bž c ca cb cc cč cd ce cf cg ch ci cj ck cl cm cn co cp cr cs cš ct cu cv cz cž č ča čb čc čč čd če čf čg čh či čj čk čl čm čn čo čp čr čs čš čt ču čv čz čž d da db dc dč dd de df dg dh di dj dk dl dm dn do dp dr ds dš dt du dv dz dž e ea eb ec eč ed ee ef eg eh ei ej ek el em en eo ep er es eš et eu ev ez ež f fa fb fc fč fd fe ff fg fh fi fj fk fl fm fn fo fp fr fs fš ft fu fv fz fž g ga gb gc gč gd ge gf gg gh gi gj gk gl gm gn go gp gr gs gš gt gu gv gz gž h ha hb hc hč hd he hf hg hh hi hj hk hl hm hn ho hp hr hs hš ht hu hv hz hž i ia ib ic ič id ie if ig ih ii ij ik il im in io ip ir is iš it iu iv iz iž j ja jb jc jč jd je jf jg jh ji jj jk jl jm jn jo jp jr js jš jt ju jv jz jž k ka kb kc kč kd ke kf kg kh ki kj kk kl km kn ko kp kr ks kš kt ku kv kz kž l la lb lc lč ld le lf lg lh li lj lk ll lm ln lo lp lr ls lš lt lu lv lz lž m ma mb mc mč md me mf mg mh mi mj mk ml mm mn mo mp mr ms mš mt mu mv mz mž n na nb nc nč nd ne nf ng nh ni nj nk nl nm nn no np nr ns nš nt nu nv nz nž o oa ob oc oč od oe of og oh oi oj ok ol om on oo op or os oš ot ou ov oz ož p pa pb pc pč pd pe pf pg ph pi pj pk pl pm pn po pp pr ps pš pt pu pv pz pž r ra rb rc rč rd re rf rg rh ri rj rk rl rm rn ro rp rr rs rš rt ru rv rz rž s sa sb sc sč sd se sf sg sh si sj sk sl sm sn so sp sr ss sš st su sv sz sž š ša šb šc šč šd še šf šg šh ši šj šk šl šm šn šo šp šr šs šš št šu šv šz šž t ta tb tc tč td te tf tg th ti tj tk tl tm tn to tp tr ts tš tt tu tv tz tž u ua ub uc uč ud ue uf ug uh ui uj uk ul um un uo up ur us uš ut uu uv uz už v va vb vc vč vd ve vf vg vh vi vj vk vl vm vn vo vp vr vs vš vt vu vv vz vž z za zb zc zč zd ze zf zg zh zi zj zk zl zm zn zo zp zr zs zš zt zu zv zz zž ž ža žb žc žč žd že žf žg žh ži žj žk žl žm žn žo žp žr žs žš žt žu žv žz žž',
 );
 

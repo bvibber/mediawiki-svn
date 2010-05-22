@@ -546,8 +546,8 @@ $messages['pt-br'] = array(
  * @author Mihai
  */
 $messages['ro'] = array(
-	'newusermessage-desc' => 'Adaugă un mesaj în paginile de discuţie ale utilizatorilor nou înregistraţi',
-	'newuseredit-summary' => 'Adaugă [[{{int:newusermessage-template}}|un mesaj de bun venit]] în paginile de discuţie ale utilizatorilor noi',
+	'newusermessage-desc' => 'Adaugă un mesaj în paginile de discuție ale utilizatorilor nou înregistrați',
+	'newuseredit-summary' => 'Adaugă [[{{int:newusermessage-template}}|un mesaj de bun venit]] în paginile de discuție ale utilizatorilor noi',
 );
 
 /** Tarandíne (Tarandíne)

@@ -27,7 +27,7 @@ $aliases['ar'] = array(
 $aliases['arz'] = array(
 	'RequestAccount' => array( 'طلب_حساب' ),
 	'ConfirmAccounts' => array( 'تأكيد_الحساب' ),
-	'UserCredentials' => array( 'شهادات_المستخدم' ),
+	'UserCredentials' => array( 'شهادات_اليوزر' ),
 );
 
 /** Bosnian (Bosanski) */
@@ -56,6 +56,19 @@ $aliases['el'] = array(
 	'RequestAccount' => array( 'ΑίτησηΛογαριασμού' ),
 	'ConfirmAccounts' => array( 'ΕπιβεβαίωσηΛογαριασμού' ),
 	'UserCredentials' => array( 'ΣυστάσειςΧρήστη' ),
+);
+
+/** Esperanto (Esperanto) */
+$aliases['eo'] = array(
+	'RequestAccount' => array( 'Peti konton' ),
+	'ConfirmAccounts' => array( 'Konfirmi konton' ),
+);
+
+/** Spanish (Español) */
+$aliases['es'] = array(
+	'RequestAccount' => array( 'Pedir_cuenta_de_usuario', 'PedirCuentaUsuario' ),
+	'ConfirmAccounts' => array( 'Confirmar cuentas' ),
+	'UserCredentials' => array( 'Credenciales' ),
 );
 
 /** Finnish (Suomi) */

@@ -24,7 +24,7 @@ $aliases['ar'] = array(
 /** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
 	'Code' => array( 'كود', 'مراجعة_الكود' ),
-	'RepoAdmin' => array( 'إدارة_المستودع' ),
+	'RepoAdmin' => array( 'ادارة_المستودع' ),
 );
 
 /** Breton (Brezhoneg) */
@@ -46,6 +46,11 @@ $aliases['de'] = array(
 /** Lower Sorbian (Dolnoserbski) */
 $aliases['dsb'] = array(
 	'Code' => array( 'Žrědłowy tekst' ),
+);
+
+/** Esperanto (Esperanto) */
+$aliases['eo'] = array(
+	'Code' => array( 'Kodo' ),
 );
 
 /** Basque (Euskara) */

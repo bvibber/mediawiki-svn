@@ -106,6 +106,40 @@ Wees asseblief geduldig.',
 	'youtubeauthsub_jserror_nodesc' => "Verskaf asseblief 'n beskrywing vir die video.",
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'youtubeauthsub' => 'Ngarko YouTube video',
+	'youtubeauthsub-desc' => 'Lejon përdoruesit të [[Special:YouTubeAuthSub|ngarkoni videot]] drejtpërdrejt në YouTube',
+	'youtubeauthsub_info' => 'Për të ngarkoj një video në YouTube për të përfshirë në një faqe, plotësoni informacionin e mëposhtëm:',
+	'youtubeauthsub_title' => 'Titull',
+	'youtubeauthsub_description' => 'Përshkrim',
+	'youtubeauthsub_password' => 'Fjalëkalimi YouTube',
+	'youtubeauthsub_username' => 'username YouTube',
+	'youtubeauthsub_keywords' => 'Fjalë kyçe',
+	'youtubeauthsub_category' => 'Kategori',
+	'youtubeauthsub_submit' => 'Submit',
+	'youtubeauthsub_clickhere' => 'Kliko këtu për të hyni brënda për të YouTube',
+	'youtubeauthsub_tokenerror' => 'autorizim Gabim gjeneruar shenjë, do të përpiqen të freskëta.',
+	'youtubeauthsub_success' => "Urime!
+Video juaj është ngarkuar.
+<a href='http://www.youtube.com/watch?v=$1'>View video tuaj</a>.
+ YouTube mund të kërkojë pak kohë për procesin video tuaj, kështu që nuk mund të jetë gati vetëm ende.
+
+Për të përfshijnë video tuaj në një faqe në wiki, futni kodin e mëposhtëm në një faqe: <code>{{#ev:youtube|$1}}</code>",
+	'youtubeauthsub_authsubinstructions' => 'Për të ngarkoj një video, ju do të kërkohet të hyni brënda për të parë në YouTube.',
+	'youtubeauthsub_uploadhere' => 'Upload your video nga këtu:',
+	'youtubeauthsub_uploadbutton' => 'Ngarko',
+	'youtubeauthsub_code' => '{{#ev:youtube|$1}}. [http://www.youtube.com/watch?v=$1 Shiko këtë video]',
+	'youtubeauthsub_summary' => 'Ngarkimi YouTube video',
+	'youtubeauthsub_uploading' => 'video juaj është duke u ngarkuar së fundi. Ju lutemi keni durim.',
+	'youtubeauthsub_viewpage' => 'Përndryshe, ju mund të [[$1|view video tuaj]].',
+	'youtubeauthsub_jserror_nokeywords' => 'Ju lutemi shkruani 1 ose më shumë fjalë kyçe.',
+	'youtubeauthsub_jserror_notitle' => 'Ju lutemi shkruani një titull për videon.',
+	'youtubeauthsub_jserror_nodesc' => 'Ju lutemi shkruani një përshkrim për videon.',
+);
+
 /** Amharic (አማርኛ)
  * @author Codex Sinaiticus
  */
@@ -2327,6 +2361,7 @@ $messages['os'] = array(
  * @author Xqt
  */
 $messages['pdc'] = array(
+	'youtubeauthsub_title' => 'Titel',
 	'youtubeauthsub_password' => 'YouTube-Paesswatt',
 	'youtubeauthsub_keywords' => 'Keywadde',
 	'youtubeauthsub_category' => 'Abdeeling',
@@ -2545,7 +2580,7 @@ Por favor seja paciente.',
 $messages['ro'] = array(
 	'youtubeauthsub' => 'Încarcă video YouTube',
 	'youtubeauthsub-desc' => 'Permite utilizatorilor să [[Special:YouTubeAuthSub|încarce videoclipuri]] direct la YouTube',
-	'youtubeauthsub_info' => 'Pentru a încărca un video la YouTube, pentru a-l include într-o pagină, completaţi următoarele informaţii:',
+	'youtubeauthsub_info' => 'Pentru a încărca un video la YouTube, pentru a-l include într-o pagină, completați următoarele informații:',
 	'youtubeauthsub_title' => 'Titlu',
 	'youtubeauthsub_description' => 'Descriere',
 	'youtubeauthsub_password' => 'Parolă YouTube',
@@ -2554,27 +2589,27 @@ $messages['ro'] = array(
 	'youtubeauthsub_category' => 'Categorie',
 	'youtubeauthsub_submit' => 'Aplică',
 	'youtubeauthsub_clickhere' => 'Apasă aici pentru a te autentifica la YouTube',
-	'youtubeauthsub_tokenerror' => 'Eroare la generarea autentificării, apăsaţi butonul refresh.',
+	'youtubeauthsub_tokenerror' => 'Eroare la generarea autentificării, apăsați butonul refresh.',
 	'youtubeauthsub_success' => "Felicitări!
-Fişierul video este încărcat.
-<a href='http://www.youtube.com/watch?v=$1'>Vezi fişierul video</a>.
-Uneori YouTube are nevoie de timp pentru a procesa fişierul tău, astfel că acesta poate să nu fie disponibil imediat.
+Fișierul video este încărcat.
+<a href='http://www.youtube.com/watch?v=$1'>Vezi fișierul video</a>.
+Uneori YouTube are nevoie de timp pentru a procesa fișierul tău, astfel că acesta poate să nu fie disponibil imediat.
 
-Pentru a include fişierul tău într-o pagină wiki, introdu acest cod:
+Pentru a include fișierul tău într-o pagină wiki, introdu acest cod:
 <code>{{&#35;ev:youtube|$1}}</code>",
-	'youtubeauthsub_authsubinstructions' => 'Pentru a încărca un fişier video sunteţi rugaţi să vă logaţi la YouTube.',
-	'youtubeauthsub_uploadhere' => 'Încarcă fişierul video de aici:',
+	'youtubeauthsub_authsubinstructions' => 'Pentru a încărca un fișier video sunteți rugați să vă logați la YouTube.',
+	'youtubeauthsub_uploadhere' => 'Încarcă fișierul video de aici:',
 	'youtubeauthsub_uploadbutton' => 'Încarcă',
 	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
 
 [http://www.youtube.com/watch?v=$1 Vizualizează acest videoclip]',
 	'youtubeauthsub_summary' => 'Încărcare video YouTube',
 	'youtubeauthsub_uploading' => 'Videoclipul dumneavoastră este în curs de încărcare.
-Vă rugăm să aveţi răbdare.',
-	'youtubeauthsub_viewpage' => 'Alternativ, puteţi [[$1|vizualiza fişierul video]].',
-	'youtubeauthsub_jserror_nokeywords' => 'Vă rugăm să introduceţi cel puţin un cuvânt cheie.',
-	'youtubeauthsub_jserror_notitle' => 'Vă rugăm să introduceţi un titlu pentru videoclip.',
-	'youtubeauthsub_jserror_nodesc' => 'Vă rugăm să introduceţi o descriere pentru videoclip.',
+Vă rugăm să aveți răbdare.',
+	'youtubeauthsub_viewpage' => 'Alternativ, puteți [[$1|vizualiza fișierul video]].',
+	'youtubeauthsub_jserror_nokeywords' => 'Vă rugăm să introduceți cel puțin un cuvânt cheie.',
+	'youtubeauthsub_jserror_notitle' => 'Vă rugăm să introduceți un titlu pentru videoclip.',
+	'youtubeauthsub_jserror_nodesc' => 'Vă rugăm să introduceți o descriere pentru videoclip.',
 );
 
 /** Tarandíne (Tarandíne)
@@ -2678,12 +2713,15 @@ $messages['sah'] = array(
 );
 
 /** Sardinian (Sardu)
+ * @author Andria
  * @author Marzedu
  */
 $messages['sc'] = array(
 	'youtubeauthsub_title' => 'Tìtulu',
+	'youtubeauthsub_description' => 'Descritzione',
 	'youtubeauthsub_password' => 'Password de YouTube',
 	'youtubeauthsub_username' => 'Nòmene usuàriu de YouTube',
+	'youtubeauthsub_category' => 'Categoria',
 );
 
 /** Sicilian (Sicilianu)

@@ -600,6 +600,11 @@ $messages['id'] = array(
 	'right-edituser-exempt' => 'Orang lain tidak dapat menyunting preferensi pengguna ini',
 );
 
+/** Igbo (Igbo) */
+$messages['ig'] = array(
+	'edituser-dosearch' => 'Chöwá',
+);
+
 /** Ido (Ido)
  * @author Malafaya
  */
@@ -1036,8 +1041,8 @@ $messages['ro'] = array(
 	'edituser-dosearch' => 'Caută',
 	'edituser-nouser' => 'Utilizatorul specificat nu există.',
 	'edituser-exempt' => 'Utilizatorul specificat nu poate fi modificat',
-	'right-edituser' => 'Modifică preferinţele altor utilizatori',
-	'right-edituser-exempt' => 'Preferinţele lor nu pot fi modificate de alţi utilizatori',
+	'right-edituser' => 'Modifică preferințele altor utilizatori',
+	'right-edituser-exempt' => 'Preferințele lor nu pot fi modificate de alți utilizatori',
 );
 
 /** Tarandíne (Tarandíne)

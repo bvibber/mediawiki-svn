@@ -24,8 +24,8 @@ $aliases['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'WhiteList' => array( 'قائمة_بيضاء' ),
-	'WhiteListEdit' => array( 'تعديل_القائمة_البيضاء' ),
+	'WhiteList' => array( 'ليسته_بيضا' ),
+	'WhiteListEdit' => array( 'تعديل_اليسته_البيضا' ),
 );
 
 /** Bosnian (Bosanski) */

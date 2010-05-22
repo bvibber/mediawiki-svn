@@ -102,6 +102,13 @@ $messages['hsb'] = array(
 	'hidens-desc' => 'Chowa mjenowy rum we hłowje a titulu, hdyž strona je w podatym mjenowym rumje abo hdyž <code><nowiki>{{#hidens:}}</nowiki></code> parserowa funkcija so zawoła',
 );
 
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'hidens-desc' => 'Elrejti a névteret a fejlécben és a címben, ha a lap megadott névtérben van, vagy a <code><nowiki>{{#hidens:}}</nowiki></code> elemzőfüggvény hívásakor',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */
@@ -152,10 +159,11 @@ $messages['no'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'hidens-desc' => "Stërma lë spassi nominal ant la testà e ant ël tìtol quand che na pàgina a l'é ant lë spassi nominal specificà o quand che la funsion <code><nowiki>{{#hidens:}}</nowiki></code> a l'é ciamà",
+	'hidens-desc' => "A stërma lë spassi nominal ant l'antestassion e ant ël tìtol quand che na pàgina a l'é ant lë spassi nominal specificà o quand che la funsion <code><nowiki>{{#hidens:}}</nowiki></code> a l'é ciamà",
 );
 
 /** Portuguese (Português)

@@ -22,7 +22,7 @@ $aliases['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'ExternalPages' => array( 'صفحات_خارجية' ),
+	'ExternalPages' => array( 'صفح_برّانيّه' ),
 );
 
 /** Bosnian (Bosanski) */
@@ -33,6 +33,11 @@ $aliases['bs'] = array(
 /** Greek (Ελληνικά) */
 $aliases['el'] = array(
 	'ExternalPages' => array( 'ΕξωτερικέςΣελίδες' ),
+);
+
+/** Spanish (Español) */
+$aliases['es'] = array(
+	'ExternalPages' => array( 'Enlaces externos' ),
 );
 
 /** Interlingua (Interlingua) */

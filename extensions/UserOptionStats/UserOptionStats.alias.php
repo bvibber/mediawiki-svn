@@ -21,7 +21,7 @@ $aliases['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'UserOptionStats' => array( 'إحصاءات_خيارات_المستخدم' ),
+	'UserOptionStats' => array( 'احصائيات_أوپشنز_اليوزر' ),
 );
 
 /** Czech (Česky) */

@@ -34,14 +34,17 @@ if( $myScriptLoader->outputFromCache() ){
 	exit();
 }
 
-// Else no-cache hit load up mediaWiki stuff and continue scriptloader processing:
+// No-cache hit load up mediaWiki stuff and continue scriptloader processing:
 
-// Change to root mediaWiki directory
-chdir( '../../' );
+// Check if we need to use directory traversal:
+if( !getenv( 'MW_INSTALL_PATH' ) ){
+	// Use '../../' because WebStart.php uses realpath( '.' ); to define $IP
+	chdir( '../../' );
+}
 
 // include WebStart.php
 ob_start();
-require_once('includes/WebStart.php'); //60ms
+require_once( "includes/WebStart.php" ); //60ms
 $webstartwhitespace = ob_end_clean();
 
 wfProfileIn( 'mwScriptLoader.php' );
@@ -53,11 +56,11 @@ if( $wgRequest->isPathInfoBad() ){
 	return;
 }
 // Verify the script loader is on:
-if ( !$wgEnableScriptLoader ) {
+if ( !$wgEnableScriptLoader && $myScriptLoader->outputFormat != 'messages' ) {
 	echo '/*ScriptLoader is not enabled for this site. To enable add the following line to your LocalSettings.php';
 	echo '<pre><b>$wgEnableScriptLoader=true;</b></pre>*/';
 	echo 'alert(\'Script loader is disabled\');';
-	die( 1 );
+	wfAbruptExit( 1 );
 }
 
 // Run jsScriptLoader action:

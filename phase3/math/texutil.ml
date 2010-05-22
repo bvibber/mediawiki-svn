@@ -80,7 +80,7 @@ let find = function
     | "\\Gamma"            -> LITERAL (HTMLABLEC (FONT_UF, "\\Gamma ", "&Gamma;"))
     | "\\delta"            -> LITERAL (HTMLABLEC (FONT_UF,  "\\delta ", "&delta;"))
     | "\\Delta"            -> LITERAL (HTMLABLEC (FONT_UF, "\\Delta ", "&Delta;"))
-    | "\\epsilon"          -> LITERAL (HTMLABLEC (FONT_UF,  "\\epsilon ", "&epsilon;"))
+    | "\\epsilon"          -> LITERAL (TEX_ONLY "\\epsilon ")
     | "\\Epsilon"          -> (tex_use_ams (); LITERAL (HTMLABLEC (FONT_UF,
     "\\mathrm{E}", "&Epsilon;")))
     | "\\varepsilon"       -> LITERAL (TEX_ONLY "\\varepsilon ")
@@ -128,7 +128,7 @@ let find = function
     "\\mathrm{T}", "&Tau;")))
     | "\\upsilon"          -> LITERAL (HTMLABLEC (FONT_UF,  "\\upsilon ", "&upsilon;"))
     | "\\Upsilon"          -> LITERAL (HTMLABLEC (FONT_UF, "\\Upsilon ", "&Upsilon;"))
-    | "\\phi"              -> LITERAL (HTMLABLEC (FONT_UF,  "\\phi ", "&phi;"))
+    | "\\phi"              -> LITERAL (TEX_ONLY "\\phi ")
     | "\\Phi"              -> LITERAL (HTMLABLEC (FONT_UF, "\\Phi ", "&Phi;"))
     | "\\varphi"           -> LITERAL (TEX_ONLY "\\varphi ")
     | "\\chi"              -> LITERAL (HTMLABLEC (FONT_UF,  "\\chi ", "&chi;"))

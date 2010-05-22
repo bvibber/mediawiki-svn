@@ -46,6 +46,20 @@ $messages['af'] = array(
 	'right-lastlogin' => "Wys laaste keer wat 'n gebruiker aangeteken het",
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'lastuserlogin' => 'login përdoruesit të fundit',
+	'lastuserlogin-desc' => 'Shfaq hera e fundit e një përdorues të regjistruar',
+	'lastuserlogin_userid' => 'Emri i përdoruesit',
+	'lastuserlogin_username' => 'Emri i vërtetë',
+	'lastuserlogin_useremail' => 'e-mail User',
+	'lastuserlogin_lastlogin' => 'login fundit',
+	'lastuserlogin_daysago' => 'Ditë më parë',
+	'right-lastlogin' => 'Shiko hera e fundit e një përdorues të regjistruar',
+);
+
 /** Arabic (العربية)
  * @author OsamaK
  */
@@ -455,6 +469,17 @@ $messages['ru'] = array(
 	'lastuserlogin_lastlogin' => 'Недавнее посещение',
 	'lastuserlogin_daysago' => 'Дней назад',
 	'right-lastlogin' => 'просмотр времени последнего входа участника',
+);
+
+/** Swedish (Svenska)
+ * @author Dafer45
+ */
+$messages['sv'] = array(
+	'lastuserlogin' => 'Senaste användarinloggning',
+	'lastuserlogin_userid' => 'Användarnamn',
+	'lastuserlogin_username' => 'Riktigt namn',
+	'lastuserlogin_lastlogin' => 'Senaste inloggning',
+	'lastuserlogin_daysago' => 'Dagar sedan',
 );
 
 /** Telugu (తెలుగు)

@@ -17,12 +17,17 @@ $aliases['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'UserMerge' => array( 'دمج_مستخدم' ),
+	'UserMerge' => array( 'دمج_يوزر' ),
 );
 
 /** Assamese (অসমীয়া) */
 $aliases['as'] = array(
 	'UserMerge' => array( 'সদস্য চামিল কৰক' ),
+);
+
+/** Breton (Brezhoneg) */
+$aliases['br'] = array(
+	'UserMerge' => array( 'KendeuziñImplijer' ),
 );
 
 /** Bosnian (Bosanski) */
@@ -178,5 +183,10 @@ $aliases['tl'] = array(
 /** Turkish (Türkçe) */
 $aliases['tr'] = array(
 	'UserMerge' => array( 'KullanıcıBirleştir' ),
+);
+
+/** Yiddish (ייִדיש) */
+$aliases['yi'] = array(
+	'UserMerge' => array( 'צונויפגיסן באניצער' ),
 );
 

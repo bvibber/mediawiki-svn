@@ -125,6 +125,29 @@ $messages['af'] = array(
 	'storyboard-publish' => 'Publiseer',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'storyboard-notsubmitted' => 'Authentication dështuar, nuk ka histori është ruajtur.',
+	'storyboard-charstomany' => '$1 shkronja shumë!',
+	'storyboard-morecharsneeded' => 'karaktere $1 më të nevojshme',
+	'storyboard-charactersleft' => '$1 shkronja majtë',
+	'storyboard-createdsuccessfully' => 'Thank you for sharing historinë tënde me ne! Ne do të analizojmë atë së shpejti. Ju mund [$1 të lexuar të botuar tregimet].',
+	'storyboard-emailtitle' => 'paraqitjes Story suksesshëm',
+	'storyboard-emailbody' => 'Historia juaj me titull "$1" është paraqitur me sukses. Ne do të analizojmë atë së shpejti. Ju mund [$2 lexuar botuar tregimet].',
+	'storyreview' => 'shqyrtim Story',
+	'storyboard-deleteimage' => 'image Fshije',
+	'storyboard-done' => 'E bërë',
+	'storyboard-working' => 'Duke punuar ...',
+	'storyboard-imagedeletionconfirm' => 'A jeni i sigurt që dëshironi të fshijë imazhin kjo histori e?',
+	'storyboard-imagedeleted' => 'Image fshirë',
+	'storyboard-showimage' => 'image Show',
+	'storyboard-hideimage' => 'image Hide',
+	'storyboard-deletestory' => 'Heq',
+	'storyboard-storydeletionconfirm' => 'A jeni i sigurt se doni te fshini përgjithmonë këtë histori?',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
@@ -464,14 +487,14 @@ Puede haber sido eliminada.',
 	'storyboard-language' => 'Idioma',
 	'storyboard-storymetadata' => 'Enviado por $1 en $2, $3.',
 	'storyboard-storymetadatafrom' => 'Enviada por $1 de $2 el $3, $4.',
-	'storyboard-yourname' => 'Tu nombre',
+	'storyboard-yourname' => 'Tu nombre (requerido)',
 	'storyboard-location' => 'Tu ubicación',
 	'storyboard-occupation' => 'Tu ocupación',
 	'storyboard-story' => 'Su historia.',
 	'storyboard-photo' => '¿Tiene una foto propia?
 ¿Por qué no compartirla?',
-	'storyboard-email' => 'Tu dirección de correo electrónico',
-	'storyboard-storytitle' => 'Un título corto y descriptivo',
+	'storyboard-email' => 'Tu dirección de correo electrónico (requerido)',
+	'storyboard-storytitle' => 'Un título corto y descriptivo (requerido)',
 	'storyboard-agreement' => 'Estoy de acuerdo con la publicación y el uso de esta historia bajo los términos de la licencia [http://creativecommons.org/licenses/by-sa/3.0/deed.es Creative Commons Atribución/Compartir-Igual].',
 	'storyboard-charsleft' => '({{PLURAL:$1|queda un carácter|quedan $1 caracteres}})',
 	'storyboard-cannotbelonger' => 'Su historia es <b>$1</b> {{PLURAL:$1|carácter|caracteres}} ¡demasiado largo!',
@@ -499,6 +522,8 @@ Puede [$1 Leer historias publicadas]',
 	'storyboard-imagedeleted' => 'Imagen borrada',
 	'storyboard-showimage' => 'Mostrar imagen',
 	'storyboard-hideimage' => 'Ocultar imagen',
+	'storyboard-deletestory' => 'Remover',
+	'storyboard-storydeletionconfirm' => 'Estás seguro que deseas borrar permanentemente esta historia?',
 );
 
 /** Finnish (Suomi)
@@ -817,8 +842,34 @@ Móžeće [$1 wozjewjene powědančka čitać].',
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(
+	'storyboard-anerroroccured' => 'Hiba történt: $1',
+	'storyboard-unpublished' => 'Nincs közzétéve',
+	'storyboard-published' => 'Közzétéve',
+	'storyboard-hidden' => 'Rejtett',
 	'storyboard-unpublish' => 'Közzététel visszavonása',
 	'storyboard-publish' => 'Közzététel',
+	'storyboard-hide' => 'Elrejtés',
+	'storyboard-option-unpublished' => 'nincs közzétéve',
+	'storyboard-option-published' => 'közzétéve',
+	'storyboard-option-hidden' => 'elrejtve',
+	'storyboard-storystate' => 'Megye/állam',
+	'storyboard-language' => 'Nyelv',
+	'storyboard-occupation' => 'A foglalkozásod',
+	'storyboard-email' => 'Az email címed (kötelező)',
+	'storyboard-storytitle' => 'Egy rövid, beszédes cím (kötelező)',
+	'storyboard-submissioncomplete' => 'A beküldés kész',
+	'storyboard-submissionincomplete' => 'A beküldés meghiúsult',
+	'storyboard-changetitle' => 'Cím megváltoztatása.',
+	'storyboard-charstomany' => '$1 karakterrel több, mint lehetne!',
+	'storyboard-morecharsneeded' => 'még $1 karakter szükséges',
+	'storyboard-charactersleft' => '$1 karakter maradt',
+	'storyboard-deleteimage' => 'Kép törlése',
+	'storyboard-done' => 'Kész',
+	'storyboard-working' => 'Feldolgozás…',
+	'storyboard-imagedeleted' => 'Kép törölve',
+	'storyboard-showimage' => 'Kép megjelenítése',
+	'storyboard-hideimage' => 'Kép elrejtése',
+	'storyboard-deletestory' => 'Eltávolítás',
 );
 
 /** Interlingua (Interlingua)
@@ -905,6 +956,11 @@ $messages['id'] = array(
 	'storyboard-hide' => 'Sembunyikan',
 );
 
+/** Igbo (Igbo) */
+$messages['ig'] = array(
+	'storyboard-hide' => 'Zonari',
+);
+
 /** Japanese (日本語)
  * @author Aotake
  * @author Joe Elkins
@@ -914,6 +970,7 @@ $messages['ja'] = array(
 	'storyboard-name' => '絵コンテ',
 	'storyboard-desc' => 'ストーリーの[[Special:StorySubmission|投稿]]ができる[[Special:Story|提供者のための着地ページ]]と[[Special:StoryReview|ストーリー改変インターフェース]]を準備する。',
 	'right-storyreview' => '査読、編集、公開、ストーリーを非表示にする',
+	'storyboard-anerroroccured' => 'エラーが発生しました：$1',
 	'storyboard-unpublished' => '非公開',
 	'storyboard-published' => '公開',
 	'storyboard-hidden' => '非表示',
@@ -939,14 +996,14 @@ $messages['ja'] = array(
 	'storyboard-thestory' => 'ストーリー',
 	'storyboard-storystate' => '状態',
 	'storyboard-language' => '言語',
-	'storyboard-storymetadata' => '$1により$2,$3へ投稿',
-	'storyboard-yourname' => 'あなたの名前',
+	'storyboard-storymetadata' => '$1が $2$3に投稿',
+	'storyboard-yourname' => 'あなたの名前（必須）',
 	'storyboard-location' => 'あなたの位置',
 	'storyboard-occupation' => 'あなたの職業',
 	'storyboard-story' => 'あなたのストーリー',
 	'storyboard-photo' => 'ご自分の写真をお持ちですか？公開してみませんか？',
-	'storyboard-email' => 'あなたの電子メールアドレス',
-	'storyboard-storytitle' => '短く説明的なタイトル',
+	'storyboard-email' => 'あなたの電子メールアドレス（必須）',
+	'storyboard-storytitle' => '短く説明的なタイトル（必須）',
 	'storyboard-agreement' => '私はこのストーリーの公開と使用を[http://creativecommons.org/licenses/by-sa/3.0/deed.ja Creative Commons 表示-継承ライセンス]の条件の下に行なうことに同意します。',
 	'storyboard-charsleft' => '(残り$1文字)',
 	'storyboard-cannotbelonger' => 'あなたのストーリーは文字数を<b>$1</b>文字分超過しています！',
@@ -957,14 +1014,19 @@ $messages['ja'] = array(
 	'storyboard-alreadyexists' => '"$1"は既に使用されています。',
 	'storyboard-changetitle' => 'タイトルを変更。',
 	'storyboard-notsubmitted' => '認証に失敗したため、ストーリーは保存されませんでした。',
+	'storyboard-charstomany' => '$1 文字が多すぎます！',
+	'storyboard-morecharsneeded' => '$1 文字がさらに必要です',
 	'storyboard-createdsuccessfully' => 'ストーリーを私たちと共有してくださってありがとうございます！すぐに評価を行なう予定です。[$1 公開されているストーリーを読む]ことができます。',
 	'storyreview' => 'ストーリーの評価',
 	'storyboard-deleteimage' => '画像を削除',
+	'storyboard-done' => '完了',
 	'storyboard-working' => '処理中...',
-	'storyboard-imagedeleted' => '画像は消去されました',
+	'storyboard-imagedeletionconfirm' => 'このストーリーから画像を永久に削除してもよろしいですか？',
+	'storyboard-imagedeleted' => '画像は削除されました',
 	'storyboard-showimage' => '画像を表示する',
 	'storyboard-hideimage' => '画像を隠す',
-	'storyboard-deletestory' => '削除',
+	'storyboard-deletestory' => '除去',
+	'storyboard-storydeletionconfirm' => 'このストーリーを永久に削除してもよろしいですか？',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -974,6 +1036,7 @@ $messages['lb'] = array(
 	'storyboard-name' => 'Storyboard',
 	'storyboard-desc' => 'Stellt eng [[Special:Story|Entréessäit fir Donateuren]] zur Verfügung, eng Säit wou Anekdoten [[Special:StorySubmission|presentéiert]] kënne ginn, an e [[Special:StoryReview|Moderatiouns-Interface fir Anekdoten]]',
 	'right-storyreview' => 'Anekdoten nokucken, änneren, publizéieren a verstoppen',
+	'storyboard-anerroroccured' => 'Et ass e Feeler geschitt: $1',
 	'storyboard-unpublished' => 'Net verëffentlecht',
 	'storyboard-published' => 'Verëffentlecht',
 	'storyboard-hidden' => 'Verstoppt',
@@ -1016,9 +1079,12 @@ Dir kënnt [$1 publizéiert Anekdote liesen].',
 	'storyreview' => 'Anekdot nokucken',
 	'storyboard-deleteimage' => 'Bild läschen',
 	'storyboard-done' => 'Fäerdeg',
+	'storyboard-imagedeletionconfirm' => "Sidd Dir sécher datt Dir d'Bild vun dëser Anekdot definitiv läsche wëllt?",
 	'storyboard-imagedeleted' => 'Bild geläscht',
 	'storyboard-showimage' => 'Bild weisen',
 	'storyboard-hideimage' => 'Bild verstoppen',
+	'storyboard-deletestory' => 'Ewechhuelen',
+	'storyboard-storydeletionconfirm' => 'Sidd Dir sécher datt Dir dës Anekdot definitiv läsche wëllt?',
 );
 
 /** Macedonian (Македонски)
@@ -1255,6 +1321,13 @@ $messages['oc'] = array(
 	'storyboard-publish' => 'Publicar',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'storyboard-language' => 'Schprooch',
+);
+
 /** Piedmontese (Piemontèis)
  * @author Borichèt
  * @author Dragonòt
@@ -1420,6 +1493,41 @@ $messages['ru'] = array(
 	'storyboard-hideimage' => 'Скрыть изображение',
 	'storyboard-deletestory' => 'Удалить',
 	'storyboard-storydeletionconfirm' => 'Вы уверены, что хотите удалить эту историю?',
+);
+
+/** Swedish (Svenska)
+ * @author Dafer45
+ */
+$messages['sv'] = array(
+	'storyboard-unpublished' => 'Ej publicerad',
+	'storyboard-published' => 'Publicerad',
+	'storyboard-hidden' => 'Dold',
+	'storyboard-unpublish' => 'Ej publicerad',
+	'storyboard-publish' => 'Publicera',
+	'storyboard-hide' => 'Dölj',
+	'storyboard-option-unpublished' => 'ej publicerad',
+	'storyboard-option-published' => 'publicerad',
+	'storyboard-option-hidden' => 'dold',
+	'storyboard-submittedbyon' => 'Insänt av $1 på $2, $3.',
+	'storyboard-authorname' => 'Författarnamn',
+	'storyboard-language' => 'Språk',
+	'storyboard-yourname' => 'Ditt namn (krävs)',
+	'storyboard-occupation' => 'Ditt yrke',
+	'storyboard-photo' => 'Har du ett foto på dig själv?
+Varför inte dela med dig av det?',
+	'storyboard-email' => 'Din e-postadress (krävs)',
+	'storyboard-storytitle' => 'En kort, beskrivande titel (krävs)',
+	'storyboard-charsneeded' => '($ 1 fler ((plural: $ 1 | tecken | tecken)) behövs)',
+	'storyboard-alreadyexists' => '"$1" är redan upptagen.',
+	'storyboard-alreadyexistschange' => '"{0}" är redan upptaget, välj en annan titel.',
+	'storyboard-changetitle' => 'Ändra titeln.',
+	'storyboard-deleteimage' => 'Radera bild',
+	'storyboard-done' => 'Klar',
+	'storyboard-working' => 'Arbetar...',
+	'storyboard-imagedeleted' => 'Bild raderad',
+	'storyboard-showimage' => 'Visa bild',
+	'storyboard-hideimage' => 'Dölj bild',
+	'storyboard-deletestory' => 'Radera',
 );
 
 /** Telugu (తెలుగు)

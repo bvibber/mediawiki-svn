@@ -26,7 +26,7 @@ $aliases['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'NewestPages' => array( 'أجدد_الصفحات' ),
+	'NewestPages' => array( 'اجدد_الصفح' ),
 );
 
 /** Bulgarian (Български) */
@@ -146,7 +146,7 @@ $aliases['mk'] = array(
 
 /** Malayalam (മലയാളം) */
 $aliases['ml'] = array(
-	'NewestPages' => array( 'പുതുപുത്തന്‍‌താളുകള്‍' ),
+	'NewestPages' => array( 'പുതുപുത്തൻ‌താളുകൾ' ),
 );
 
 /** Marathi (मराठी) */
@@ -182,6 +182,11 @@ $aliases['no'] = array(
 /** Occitan (Occitan) */
 $aliases['oc'] = array(
 	'NewestPages' => array( 'Paginas mai recentas', 'PaginasMaiRecentas' ),
+);
+
+/** Polish (Polski) */
+$aliases['pl'] = array(
+	'NewestPages' => array( 'Najnowsze strony' ),
 );
 
 /** Pashto (پښتو) */

@@ -55,6 +55,11 @@ $aliases['el'] = array(
 	'Vote' => array( 'Ψηφοφορία' ),
 );
 
+/** Esperanto (Esperanto) */
+$aliases['eo'] = array(
+	'Vote' => array( 'Voĉdoni' ),
+);
+
 /** Spanish (Español) */
 $aliases['es'] = array(
 	'Vote' => array( 'Votar' ),
@@ -223,6 +228,11 @@ $aliases['sk'] = array(
 /** Albanian (Shqip) */
 $aliases['sq'] = array(
 	'Vote' => array( 'Voto' ),
+);
+
+/** Serbian Cyrillic ekavian (Српски (ћирилица)) */
+$aliases['sr-ec'] = array(
+	'Vote' => array( 'Гласај' ),
 );
 
 /** Sundanese (Basa Sunda) */

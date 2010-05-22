@@ -65,6 +65,18 @@ $messages['af'] = array(
 	'pfunc_string_too_long' => 'Fout: String oorskry $1 karakter limiet',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'pfunc_desc' => 'Enhance parser me funksione logjike',
+	'pfunc_time_error' => 'Gabim: koha e pavlefshme',
+	'pfunc_time_too_long' => 'Gabim: kohë shumë # thirrjet',
+	'pfunc_rel2abs_invalid_depth' => 'Gabim: thellësia e pavlefshme në rrugën: "$1" (u përpoq për të hyrë në një nyjë mbi nyjen e rrënjë)',
+	'pfunc_expr_stack_exhausted' => 'gabim Shprehja: qipi rraskapitur',
+	'pfunc_expr_unexpected_number' => 'gabim Shprehja: Numri i papritur',
+);
+
 /** Aragonese (Aragonés)
  * @author Juanpabl
  */
@@ -1206,7 +1218,7 @@ $messages['lt'] = array(
  * @author Brest
  */
 $messages['mk'] = array(
-	'pfunc_desc' => 'Проширување на парсерот со логички функции',
+	'pfunc_desc' => 'Проширување на можностите на парсерот со логички функции',
 	'pfunc_time_error' => 'Грешка: погрешен фомат за време',
 	'pfunc_time_too_long' => 'Грешка: премногу #time повикувања',
 	'pfunc_rel2abs_invalid_depth' => 'Грешка: Невалидна длабочина во патеката: "$1" (обид за пристап до чвор над root чворот)',
@@ -1592,25 +1604,25 @@ $messages['qu'] = array(
  * @author Stelistcristi
  */
 $messages['ro'] = array(
-	'pfunc_desc' => 'Îmbunătăţiţi parser-ul cu funcţii logice',
+	'pfunc_desc' => 'Îmbunătățiți parser-ul cu funcții logice',
 	'pfunc_time_error' => 'Eroare: timp incorect',
 	'pfunc_time_too_long' => 'Eroare: prea multe apeluri #time',
 	'pfunc_rel2abs_invalid_depth' => 'Eroare: adâncime incorectă în cale: "$1" (încercat accesarea unui nod deasupra nodului rădăcină)',
 	'pfunc_expr_stack_exhausted' => 'Eroare de expresie: Stivă epuizată',
-	'pfunc_expr_unexpected_number' => 'Eroare de expresie: număr neaşteptat',
-	'pfunc_expr_preg_match_failure' => 'Eroare de expresie: eşuare preg_match neaşteptată',
+	'pfunc_expr_unexpected_number' => 'Eroare de expresie: număr neașteptat',
+	'pfunc_expr_preg_match_failure' => 'Eroare de expresie: eșuare preg_match neașteptată',
 	'pfunc_expr_unrecognised_word' => 'Eroare de expresie: "$1" este cuvânt necunoscut',
-	'pfunc_expr_unexpected_operator' => 'Eroare de expresie: operator $1 neaşteptat',
+	'pfunc_expr_unexpected_operator' => 'Eroare de expresie: operator $1 neașteptat',
 	'pfunc_expr_missing_operand' => 'Eroare de expresie: operand lipsă pentru $1',
-	'pfunc_expr_unexpected_closing_bracket' => 'Eroare de expresie: paranteză închisă neaşteptată',
-	'pfunc_expr_unrecognised_punctuation' => 'Eroare de expresie: caracter de punctuaţie "$1" necunoscut',
+	'pfunc_expr_unexpected_closing_bracket' => 'Eroare de expresie: paranteză închisă neașteptată',
+	'pfunc_expr_unrecognised_punctuation' => 'Eroare de expresie: caracter de punctuație "$1" necunoscut',
 	'pfunc_expr_unclosed_bracket' => 'Eroare de expresie: paranteză neînchisă',
-	'pfunc_expr_division_by_zero' => 'Împărţire la zero',
+	'pfunc_expr_division_by_zero' => 'Împărțire la zero',
 	'pfunc_expr_invalid_argument' => 'Argument incorect pentru $1: < -1 sau > 1',
 	'pfunc_expr_invalid_argument_ln' => 'Argument incorect pentru ln: <= 0',
 	'pfunc_expr_unknown_error' => 'Eroare de expresie: eroare necunoscută ($1)',
 	'pfunc_expr_not_a_number' => 'În $1: rezultatul nu este un număr',
-	'pfunc_string_too_long' => 'Eroare: Şirul depăşeşte limita de caractere de $1',
+	'pfunc_string_too_long' => 'Eroare: Şirul depășește limita de caractere de $1',
 );
 
 /** Tarandíne (Tarandíne)

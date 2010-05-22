@@ -30,6 +30,14 @@ $messages['qqq'] = array(
 	'mediafunctions-not-exist' => '* $1 is a file name',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'mediafunctions-invalid-title' => '"$1" nuk është një titull i vlefshëm',
+	'mediafunctions-not-exist' => '"$1" nuk ekziston',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

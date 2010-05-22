@@ -2149,6 +2149,11 @@ JD # Jenoptik
 MGP # Pentax
 PICT # misc.
  #</pre> <!-- leave this line exactly as it is -->', # only translate this message to other languages if you have to change it
+'upload-successful-msg'       => 'Your upload is available here: $1',
+'upload-failure-subj'         => 'Upload problem',
+'upload-failure-msg'          => 'There was a problem with your upload:
+
+$1',
 
 'upload-proto-error'        => 'Incorrect protocol',
 'upload-proto-error-text'   => 'Remote upload requires URLs beginning with <code>http://</code> or <code>ftp://</code>.',
@@ -2601,6 +2606,11 @@ The e-mail address you entered in [[Special:Preferences|your user preferences]] 
 'emailsent'            => 'E-mail sent',
 'emailsenttext'        => 'Your e-mail message has been sent.',
 'emailuserfooter'      => 'This e-mail was sent by $1 to $2 by the "E-mail user" function at {{SITENAME}}.',
+
+# User Messenger
+'usermessage-summary'  => 'Leaving system message.',
+'usermessage-editor'   => 'System messenger',
+'usermessage-template' => 'Template:UserMessage', # only translate this message to other languages if you have to change it
 
 # Watchlist
 'watchlist'            => 'My watchlist',
@@ -4067,7 +4077,7 @@ Try normal preview.',
 'watchlistedit-normal-title'   => 'Edit watchlist',
 'watchlistedit-normal-legend'  => 'Remove titles from watchlist',
 'watchlistedit-normal-explain' => 'Titles on your watchlist are shown below.
-To remove a title, check the box next to it, and click "Remove titles".
+To remove a title, check the box next to it, and click "{{int:Watchlistedit-normal-submit}}".
 You can also [[Special:Watchlist/raw|edit the raw list]].',
 'watchlistedit-normal-submit'  => 'Remove titles',
 'watchlistedit-normal-done'    => '{{PLURAL:$1|1 title was|$1 titles were}} removed from your watchlist:',
@@ -4075,7 +4085,7 @@ You can also [[Special:Watchlist/raw|edit the raw list]].',
 'watchlistedit-raw-legend'     => 'Edit raw watchlist',
 'watchlistedit-raw-explain'    => 'Titles on your watchlist are shown below, and can be edited by adding to and removing from the list;
 one title per line.
-When finished, click Update Watchlist.
+When finished, click "{{int:Watchlistedit-raw-submit}}".
 You can also [[Special:Watchlist/edit|use the standard editor]].',
 'watchlistedit-raw-titles'     => 'Titles:',
 'watchlistedit-raw-submit'     => 'Update watchlist',

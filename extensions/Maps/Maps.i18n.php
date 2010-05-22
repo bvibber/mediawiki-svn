@@ -106,6 +106,24 @@ $1.',
 	'maps_webcams' => 'Webkameras',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'maps_desc' => 'Ofron mundësinë për të shfaqur koordinimin e të dhënave në harta, dhe adresat geocode ([http://wiki.bn2vs.com/wiki/Maps demo]). Hartës shërbimet në dispozicion: $1',
+	'maps_map' => 'Hartë',
+	'maps-loading-map' => 'Loading Harta ...',
+	'maps-abb-north' => 'N',
+	'maps-abb-east' => 'E',
+	'maps-abb-south' => 'S',
+	'maps-abb-west' => 'W',
+	'maps-latitude' => 'Latitude:',
+	'maps-longitude' => 'Gjatësi:',
+	'maps-invalid-coordinates' => 'Vlera $1 nuk është njohur si një grup të vlefshme të kordinatave.',
+	'maps_coordinates_missing' => 'Nuk ka koordinon parashikuara në hartë.',
+	'maps_geocoding_failed' => 'Më poshtë {{PLURAL:$2|Adresa|adresat}} nuk mund të geocoded: $1.',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -998,7 +1016,7 @@ $1',
  * @author Universal Life
  */
 $messages['lad'] = array(
-	'maps_wikipedia' => 'Vikipedia',
+	'maps_wikipedia' => 'Vikipeddia',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -1304,6 +1322,7 @@ $messages['ps'] = array(
 	'maps_photos' => 'انځورونه',
 	'maps_videos' => 'ويډيوګانې',
 	'maps_wikipedia' => 'ويکيپېډيا',
+	'maps_webcams' => 'وېبکامرې',
 );
 
 /** Portuguese (Português)
@@ -1369,7 +1388,7 @@ $1',
  * @author Minisarm
  */
 $messages['ro'] = array(
-	'maps_desc' => 'Asigură capacitatea de a afişa coordonate pe hărţi şi adrese geocode ([http://wiki.bn2vs.com/wiki/Maps demonstraţie]).
+	'maps_desc' => 'Asigură capacitatea de a afișa coordonate pe hărți și adrese geocode ([http://wiki.bn2vs.com/wiki/Maps demonstrație]).
 Servici de cartografiere disponibile: $1',
 	'maps_map' => 'Hartă',
 	'maps-abb-north' => 'N',
@@ -1380,8 +1399,8 @@ Servici de cartografiere disponibile: $1',
 	'maps-longitude' => 'Longitudine:',
 	'maps_coordinates_missing' => 'Nici o coordonată oferită pentru hartă.',
 	'maps_geocoding_failed' => '{{PLURAL:$2|Următoarea|Următoarele}} {{PLURAL:$2|adresă|adrese}} nu {{PLURAL:$2|a|au}} putut fi {{PLURAL:$2|geocodificată|geocodificate}}: $1.
-Harta nu poate fi afişată.',
-	'maps_geocoding_failed_for' => '{{PLURAL:$2|Următoarea|Următoarele}} {{PLURAL:$2|adresă|adrese}} nu {{PLURAL:$2|a|au}} putut fi {{PLURAL:$2|geocodificată|geocodificate}} şi {{PLURAL:$2|a|au}} fost {{PLURAL:$2|omisă|omise}} de pe hartă:
+Harta nu poate fi afișată.',
+	'maps_geocoding_failed_for' => '{{PLURAL:$2|Următoarea|Următoarele}} {{PLURAL:$2|adresă|adrese}} nu {{PLURAL:$2|a|au}} putut fi {{PLURAL:$2|geocodificată|geocodificate}} și {{PLURAL:$2|a|au}} fost {{PLURAL:$2|omisă|omise}} de pe hartă:
 $1',
 	'maps_photos' => 'Fotografii',
 	'maps_videos' => 'Filme',
@@ -1471,6 +1490,7 @@ $messages['sr-el'] = array(
 );
 
 /** Swedish (Svenska)
+ * @author Dafer45
  * @author Fluff
  * @author Per
  */
@@ -1478,6 +1498,7 @@ $messages['sv'] = array(
 	'maps_desc' => 'Ger möjlighet till att visa koordinater på kartor och geokodade adresser ([http://wiki.bn2vs.com/wiki/Maps demo]).
 Tillgängliga karttjänster: $1',
 	'maps_map' => 'Karta',
+	'maps-loading-map' => 'Laddar karta ...',
 	'maps-abb-north' => 'N',
 	'maps-abb-east' => 'Ö',
 	'maps-abb-south' => 'S',
@@ -1495,6 +1516,7 @@ $1',
 	'maps_click_to_activate' => 'Klicka för att aktivera karta',
 	'maps_photos' => 'Foton',
 	'maps_wikipedia' => 'Wikipedia',
+	'maps_webcams' => 'Webbkameror',
 );
 
 /** Telugu (తెలుగు)

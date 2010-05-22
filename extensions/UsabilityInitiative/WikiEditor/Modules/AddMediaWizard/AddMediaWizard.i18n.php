@@ -15,6 +15,13 @@ $messages['en'] = array(
     'wikieditor-addMediaWizard-preference' => 'Enable "Add media wizard" gadget',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'wikieditor-addMediaWizard-preference' => 'Aktivo "Shto mediat magjistar" vegël',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  */
@@ -64,6 +71,13 @@ $messages['dsb'] = array(
 	'wikieditor-addMediaWizard-preference' => 'Funkciju "Medijowy asistent pśidaś" zmóžniś',
 );
 
+/** Greek (Ελληνικά)
+ * @author Απεργός
+ */
+$messages['el'] = array(
+	'wikieditor-addMediaWizard-preference' => 'Ενεργοποίηση του εργαλείου «Οδηγός προσθήκης πολυμέσων»',
+);
+
 /** Spanish (Español)
  * @author Crazymadlover
  */
@@ -92,11 +106,25 @@ $messages['gsw'] = array(
 	'wikieditor-addMediaWizard-preference' => 'Dr „Medienassischtänt“ aktiviere, as Hilfsprogramm zum Yyfiege vu Mediedateie',
 );
 
+/** Hebrew (עברית)
+ * @author Amire80
+ */
+$messages['he'] = array(
+	'wikieditor-addMediaWizard-preference' => 'הפעלת גאדג\'ט "אשף הוספת מדיה"',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
 $messages['hsb'] = array(
 	'wikieditor-addMediaWizard-preference' => 'Funkciju "Medijowy asistent přidać" zmóžnić',
+);
+
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'wikieditor-addMediaWizard-preference' => '„Média hozzáadása varázsló” segédeszköz engedélyezése',
 );
 
 /** Interlingua (Interlingua)
@@ -169,6 +197,13 @@ $messages['nl'] = array(
 	'wikieditor-addMediaWizard-preference' => 'Uitbreiding "Wizard media toevoegen" inschakelen',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Laaknor
+ */
+$messages['no'] = array(
+	'wikieditor-addMediaWizard-preference' => 'Aktiver "Legg til media veiviser"-funksjonen.',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */
@@ -212,10 +247,24 @@ $messages['sv'] = array(
 	'wikieditor-addMediaWizard-preference' => 'Aktivera "Lägg till media guiden" finessen',
 );
 
+/** Turkish (Türkçe)
+ * @author Joseph
+ */
+$messages['tr'] = array(
+	'wikieditor-addMediaWizard-preference' => '"Ortam ekleme sihirbazı" gadget\'ını etkinleştir',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */
 $messages['vi'] = array(
 	'wikieditor-addMediaWizard-preference' => 'Kích hoạt công cụ "Hướng dẫn từng bước để thêm tập tin phương tiện"',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Horacewai2
+ */
+$messages['zh-hant'] = array(
+	'wikieditor-addMediaWizard-preference' => '啟用「添加媒體嚮導」小工具',
 );
 

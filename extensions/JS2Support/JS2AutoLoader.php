@@ -37,6 +37,12 @@ $wgScriptLoaderNamedPaths = array_merge(  $wgScriptLoaderNamedPaths, array(
 	'sticky' => 'skins/common/sticky.js',
 	'upload' => 'skins/common/upload.js',
 	'wikibits' => 'skins/common/wikibits.js',
+
+	//css named paths
+	'mw.style.commonShared' => 'skins/common/shared.css',
+	'mw.style.commonPrint' => 'skins/common/commonPrint.css',
+	'mw.style.vectorMainLtr' => 'skins/vector/main-ltr.css'
+
 ) );
 
 ?>

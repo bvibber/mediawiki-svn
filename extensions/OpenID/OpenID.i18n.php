@@ -265,6 +265,27 @@ Sonder 'n OpenID sou u glad nie meer kon aanteken nie.",
 	'openid-provider-label-other-username' => 'U gebruikersnaam by $1',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'openiddelete-sucess' => 'OpenID u hoq me sukses nga llogaria juaj.',
+	'openiddelete-error' => 'Gabim gjatë heqjes OpenID nga llogaria juaj.',
+	'openid-prefstext' => '[http://openid.net/ OpenID preferencat]',
+	'openid-pref-hide' => 'Fshih URL OpenID tuaj në faqen tuaj të përdoruesit, nëse ju hyni në me OpenID.',
+	'openid-pref-update-userinfo-on-login' => 'Update informacionin e mëposhtëm nga persona OpenID çdo herë që në hyrje:',
+	'openid-urls-desc' => 'OpenIDs lidhur me llogarinë tuaj:',
+	'openid-urls-action' => 'Veprim',
+	'openid-urls-delete' => 'Fshij',
+	'openid-add-url' => 'Shto një OpenID ri',
+	'openidsigninorcreateaccount' => 'Regjistrohu ose hapni një llogari të re',
+	'openid-provider-label-openid' => 'Shkruani URL OpenID tuaj',
+	'openid-provider-label-google' => 'Hyni në llogarinë tuaj duke përdorur Google',
+	'openid-provider-label-yahoo' => 'Hyni ose duke përdorur llogarinë tuaj Yahoo',
+	'openid-provider-label-aol' => 'Shkruani AOL screenname tuaj',
+	'openid-provider-label-other-username' => 'Fusni emrin e përdoruesit $1',
+);
+
 /** Amharic (አማርኛ)
  * @author Codex Sinaiticus
  */
@@ -2591,6 +2612,12 @@ Anda tidak akan dapat masuk log lagi dengan OpenID ini.',
 	'openid-provider-label-other-username' => 'Masukkan nama pengguna $1 Anda',
 );
 
+/** Igbo (Igbo) */
+$messages['ig'] = array(
+	'openidchoosepassword' => 'Mkpurụ okwu ejị a gafẹ',
+	'openid-urls-delete' => 'Gbakashia',
+);
+
 /** Icelandic (Íslenska)
  * @author S.Örvarr.S
  */
@@ -2878,6 +2905,7 @@ $messages['km'] = array(
  */
 $messages['kn'] = array(
 	'openidoptional' => 'ಐಚ್ಛಿಕ',
+	'openidnickname' => 'ಉಪನಾಮ',
 	'openidlanguage' => 'ಭಾಷೆ',
 	'openidtimezone' => 'ಸಮಯ ವಲಯ',
 	'openid-urls-delete' => 'ಅಳಿಸು',
@@ -3104,7 +3132,7 @@ Kontaktéiert w.e.g. een [[Special:ListUsers/sysop|Administrateur]].",
 	'openidsuccess' => 'Iwwerpréifung huet geklappt',
 	'openidsuccesstext' => "D'Iwwerpréifung vun der OpenID-URL huet geklappt.",
 	'openidusernameprefix' => 'OpenIDBenotzer',
-	'openidserverlogininstructions' => 'Gitt ärt Passwuert hei ënnendrënner an, fir iech als Benotzer $2 op $3 unzemellen (Benotzersäit $1).',
+	'openidserverlogininstructions' => 'Gitt Äert Passwuert hei drënner an, fir iech als Benotzer $2 op $3 unzemellen (Benotzersäit $1).',
 	'openidtrustinstructions' => 'Klickt un wann Dir Donnéeën mat $1 deele wellt.',
 	'openidallowtrust' => 'Erlaabt $1 fir dësem Benotzerkont ze vertrauen.',
 	'openidnopolicy' => 'De Site huet keng Richtlinne fir den Dateschutz uginn.',
@@ -3569,7 +3597,7 @@ Dan zou u niet langer kunnen aanmelden zonder een OpenID.",
 	'openid-pref-update-userinfo-on-login' => 'Iedere keer als ik aanmeld de volgende informatie vanuit de OpenID-gebruiker bijwerken:',
 	'openid-urls-desc' => "Aan uw gebruiker gekoppelde OpenID's:",
 	'openid-urls-action' => 'Handeling',
-	'openid-urls-delete' => 'Wissen',
+	'openid-urls-delete' => 'Verwijderen',
 	'openid-add-url' => 'Een nieuwe OpenID toevoegen',
 	'openidsigninorcreateaccount' => 'Aanmelden of nieuwe gebruiker aanmaken',
 	'openid-provider-label-openid' => 'Voer de URL van uw OpenID in',
@@ -4297,38 +4325,38 @@ Você não poderia entrar sem um OpenID.',
  * @author Misterr
  */
 $messages['ro'] = array(
-	'openid-desc' => 'Loghează-te pe acest wiki cu un [http://openid.net/ OpenID], şi conectaţi-vă la alte site-uri web OpenID cu un cont de utilizator wiki.',
+	'openid-desc' => 'Loghează-te pe acest wiki cu un [http://openid.net/ OpenID], și conectați-vă la alte site-uri web OpenID cu un cont de utilizator wiki.',
 	'openidlogin' => 'Autentificare cu OpenID',
 	'openidserver' => 'Server OpenID',
-	'openidxrds' => 'Fişier Yadis',
+	'openidxrds' => 'Fișier Yadis',
 	'openidconvert' => 'Convertor OpenID',
 	'openiderror' => 'Eroare de verificare',
 	'openiderrortext' => 'A avut loc o eroare în timpul verificării URL-ului OpenID',
 	'openidconfigerror' => 'Eroare de configurare OpenID',
 	'openidconfigerrortext' => 'Configurarea de stocare OpenID pentru acest wiki este nulă.
-Vă rugăm să contactaţi un [[Special:ListUsers/sysop|administrator]].',
+Vă rugăm să contactați un [[Special:ListUsers/sysop|administrator]].',
 	'openidpermission' => 'Eroare de permisiune OpenID',
 	'openidpermissiontext' => 'OpenID nu este permis de a se loga pe acest server.',
 	'openidcancel' => 'Verificare anulată',
 	'openidcanceltext' => 'Verificarea URL-ului OpenID a fost anulată.',
-	'openidfailure' => 'Verificare eşuată',
-	'openidfailuretext' => 'Verificarea URL-ului OpenID a eşuat. Mesaj de eroare: "$1"',
+	'openidfailure' => 'Verificare eșuată',
+	'openidfailuretext' => 'Verificarea URL-ului OpenID a eșuat. Mesaj de eroare: "$1"',
 	'openidsuccess' => 'Verificare cu succes',
-	'openidsuccesstext' => 'Verificarea URL-ului OpenID a reuşit.',
+	'openidsuccesstext' => 'Verificarea URL-ului OpenID a reușit.',
 	'openidusernameprefix' => 'Utilizator OpenID',
-	'openidserverlogininstructions' => 'Introduceţi parola mai jos pentru a vă conecta la $3 ca utilizator $2 (pagină de utilizator $1).',
-	'openidtrustinstructions' => 'Verificaţi dacă doriţi să partajaţi datele cu $1.',
+	'openidserverlogininstructions' => 'Introduceți parola mai jos pentru a vă conecta la $3 ca utilizator $2 (pagină de utilizator $1).',
+	'openidtrustinstructions' => 'Verificați dacă doriți să partajați datele cu $1.',
 	'openidallowtrust' => '$1 permite să aibă încredere în acest cont de utilizator',
-	'openidnopolicy' => 'Site-ul nu a specificat politica de confidenţialitate.',
-	'openidoptional' => 'Opţional',
+	'openidnopolicy' => 'Site-ul nu a specificat politica de confidențialitate.',
+	'openidoptional' => 'Opțional',
 	'openidrequired' => 'Necesar',
 	'openidnickname' => 'Poreclă',
 	'openidfullname' => 'Nume complet:',
 	'openidemail' => 'Adresă e-mail',
 	'openidlanguage' => 'Limbă',
 	'openidtimezone' => 'Fus orar',
-	'openidchooseinstructions' => 'Toţi utilizatorii necesită o poreclă;
-se poate alege una din opţiunile de mai jos.',
+	'openidchooseinstructions' => 'Toți utilizatorii necesită o poreclă;
+se poate alege una din opțiunile de mai jos.',
 	'openidchoosenick' => 'Porecla dvs. ($1)',
 	'openidchoosefull' => 'Numele întreg ($1)',
 	'openidchooseauto' => 'Un nume generat automat ($1)',
@@ -4338,21 +4366,21 @@ se poate alege una din opţiunile de mai jos.',
 	'openidchoosepassword' => 'parolă:',
 	'openidconvertsuccess' => 'Convertit cu succes la OpenID',
 	'openidconvertothertext' => 'Acesta este OpenID-ul altcuiva.',
-	'openidalreadyloggedin' => "'''Sunteţi deja logat, $1!'''
+	'openidalreadyloggedin' => "'''Sunteți deja logat, $1!'''
 
-Dacă doriţi să utilizaţi OpenID în viitor, puteţi [[Special:OpenIDConvert|converti contul dvs. OpenID]].",
+Dacă doriți să utilizați OpenID în viitor, puteți [[Special:OpenIDConvert|converti contul dvs. OpenID]].",
 	'openidnousername' => 'Nici un nume de utilizator specificat.',
-	'openidbadusername' => 'Nume de utilizator specificat greşit.',
+	'openidbadusername' => 'Nume de utilizator specificat greșit.',
 	'openidloginlabel' => 'URL OpenID',
 	'openiddelete' => 'Şterge OpenID',
 	'openiddelete-button' => 'Confirmă',
-	'openid-urls-action' => 'Acţiune',
+	'openid-urls-action' => 'Acțiune',
 	'openid-urls-delete' => 'Şterge',
 	'openid-add-url' => 'Adaugă un nou OpenID',
-	'openidsigninorcreateaccount' => 'Înregistraţi-vă sau creaţi-vă un nou cont.',
+	'openidsigninorcreateaccount' => 'Înregistrați-vă sau creați-vă un nou cont.',
 	'openid-provider-label-google' => 'Autentificare folosind contul Google',
 	'openid-provider-label-yahoo' => 'Autentificare folosind contul Yahoo',
-	'openid-provider-label-other-username' => 'Introduceţi numele dumneavoastră de $1 utilizator.',
+	'openid-provider-label-other-username' => 'Introduceți numele dumneavoastră de $1 utilizator.',
 );
 
 /** Tarandíne (Tarandíne)
@@ -5661,6 +5689,7 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Gzdavidwong
+ * @author Horacewai2
  * @author Liangent
  * @author Wrightbus
  */
@@ -5696,13 +5725,16 @@ $messages['zh-hant'] = array(
 	'openidemail' => '電郵地址',
 	'openidlanguage' => '語言',
 	'openidtimezone' => '時區',
+	'openidchooselegend' => '用戶名選擇',
 	'openidchooseinstructions' => '所有的用戶都需要提供昵稱；
 您可以從下面任選一個。',
+	'openidchoosenick' => '你的暱稱 ($1)',
 	'openidchoosefull' => '您的全名 （$1）',
 	'openidchooseurl' => '從您的OpenID獲取的名稱（$1）',
 	'openidchooseauto' => '自動生成的名稱（$1）',
 	'openidchoosemanual' => '您選擇的名稱：',
 	'openidchooseexisting' => '本維基已經存在的帳戶：',
+	'openidchooseusername' => '用戶名：',
 	'openidchoosepassword' => '密碼：',
 	'openidconvertinstructions' => '本表單可以將您的用戶賬號修改為OpenID地址。',
 	'openidconvertoraddmoreids' => '轉換到OpenID或添加另一個OpenID URL',
@@ -5721,6 +5753,7 @@ $messages['zh-hant'] = array(
 	'openidloginlabel' => 'OpenID網址',
 	'openidupdateuserinfo' => '更新我的個人信息',
 	'openiddelete' => '刪除OpenID',
+	'openiddelete-text' => '當你按下"{{int:openiddelete-button}}"按鈕，你會將OpenID $1從你的戶口中移除。你以後都不可以再使用這個OpenID登入。',
 	'openiddelete-button' => '確認',
 	'openid-prefstext' => '[http://openid.net/ OpenID]參數設置',
 	'openid-pref-hide' => '如果使用OpenID登陸，您可以在您的用戶頁隱藏您的OpenID。',

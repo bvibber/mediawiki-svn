@@ -563,7 +563,7 @@ $messages['lb'] = array(
 	'torblock-blocked' => 'Är IP-Adress,  <tt>$1</tt>, gouf automatesch als Tor-ausgangsknuet erkannt.
 Ännerungen iwwer Tor si gespaart fir Mëssbrauch ze verhënneren.',
 	'torblock-isexitnode' => "D'IP-Adress $1 ass als Ausgangspunkt vun engem Tor gespaart.",
-	'right-torunblocked' => 'Automatesch Spär fir Tor-Ausgangskniet ëmgoen',
+	'right-torunblocked' => "Automatesch Spär fir Tor-Ausgangskniet z'ëmgoen",
 	'tag-tor-description' => 'Wann dës Markéierung gesat ass da gouf eng Ännerung vun engem Tor-Ausgangsknuet gemaach.',
 	'tag-tor' => "Iwwer ''Tor'' gemaach",
 	'abusefilter-edit-builder-vars-tor-exit-node' => "Ob d'Ännerungen iwwer en Tor-Ausgangsknuet gemaach goufen",
@@ -790,10 +790,10 @@ A edição através de Tor está bloqueada para prevenir abusos.',
  * @author Stelistcristi
  */
 $messages['ro'] = array(
-	'torblock-desc' => 'Permite nodurile de ieşire tor ca să fie blocat de la modificarea unui wiki',
-	'torblock-blocked' => 'Adresa dvs IP - <tt>$1</tt> - a fost identificată automat ca un nod de ieşire tor.
+	'torblock-desc' => 'Permite nodurile de ieșire tor ca să fie blocat de la modificarea unui wiki',
+	'torblock-blocked' => 'Adresa dvs IP - <tt>$1</tt> - a fost identificată automat ca un nod de ieșire tor.
 Editarea prin tor este blocată pentru a preveni abuzuri.',
-	'torblock-isexitnode' => 'Adresa IP $1 este blocată ca un nod de ieşire Tor.',
+	'torblock-isexitnode' => 'Adresa IP $1 este blocată ca un nod de ieșire Tor.',
 	'tag-tor' => 'Făcut prin tor',
 );
 

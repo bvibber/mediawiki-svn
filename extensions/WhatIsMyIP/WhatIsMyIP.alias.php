@@ -25,7 +25,12 @@ $aliases['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'WhatIsMyIP' => array( 'ما_هو_الأيبى_خاصتى' ),
+	'WhatIsMyIP' => array( 'ايه_هو_الIP_بتاعى' ),
+);
+
+/** Breton (Brezhoneg) */
+$aliases['br'] = array(
+	'WhatIsMyIP' => array( 'PetraEoMaIP' ),
 );
 
 /** Bosnian (Bosanski) */

@@ -22,7 +22,12 @@ $aliases['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'WhosOnline' => array( 'من_موجود' ),
+	'WhosOnline' => array( 'مين_موجود' ),
+);
+
+/** Breton (Brezhoneg) */
+$aliases['br'] = array(
+	'WhosOnline' => array( 'PivZoKevreet' ),
 );
 
 /** Bosnian (Bosanski) */

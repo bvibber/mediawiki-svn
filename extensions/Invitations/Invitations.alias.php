@@ -49,6 +49,16 @@ $aliases['dsb'] = array(
 	'Invitations' => array( 'Pśepšosenja' ),
 );
 
+/** Esperanto (Esperanto) */
+$aliases['eo'] = array(
+	'Invitations' => array( 'Invitilo' ),
+);
+
+/** Spanish (Español) */
+$aliases['es'] = array(
+	'Invitations' => array( 'Invitaciones' ),
+);
+
 /** Basque (Euskara) */
 $aliases['eu'] = array(
 	'Invitations' => array( 'Gonbidapenak' ),
@@ -82,6 +92,11 @@ $aliases['gsw'] = array(
 /** Hebrew (עברית) */
 $aliases['he'] = array(
 	'Invitations' => array( 'הזמנות' ),
+);
+
+/** Croatian (Hrvatski) */
+$aliases['hr'] = array(
+	'Invitations' => array( 'Pozivnice' ),
 );
 
 /** Upper Sorbian (Hornjoserbsce) */
@@ -182,6 +197,11 @@ $aliases['no'] = array(
 /** Occitan (Occitan) */
 $aliases['oc'] = array(
 	'Invitations' => array( 'Convits' ),
+);
+
+/** Polish (Polski) */
+$aliases['pl'] = array(
+	'Invitations' => array( 'Zaproszenia' ),
 );
 
 /** Pashto (پښتو) */

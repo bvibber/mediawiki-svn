@@ -640,6 +640,13 @@ $messages['oc'] = array(
 	'filelist-image-desc' => 'desc',
 );
 
+/** Deitsch (Deitsch)
+ * @author Xqt
+ */
+$messages['pdc'] = array(
+	'filelist' => 'Lischt vun Feils',
+);
+
 /** Polish (Polski)
  * @author Maire
  * @author Sp5uhe
@@ -705,7 +712,7 @@ $messages['qu'] = array(
  * @author Firilacroco
  */
 $messages['ro'] = array(
-	'filelist' => 'Listă de fişiere',
+	'filelist' => 'Listă de fișiere',
 	'filelist-show-list' => 'Arată lista',
 	'filelist-show-gallery' => 'Arată galeria',
 	'filelist-image-desc' => 'desc',

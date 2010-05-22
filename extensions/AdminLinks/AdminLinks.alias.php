@@ -25,7 +25,12 @@ $aliases['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'AdminLinks' => array( 'وصلات_الإدارة' ),
+	'AdminLinks' => array( 'لينكات_الاداره' ),
+);
+
+/** Esperanto (Esperanto) */
+$aliases['eo'] = array(
+	'AdminLinks' => array( 'Ligiloj por administrantoj' ),
 );
 
 /** Spanish (Español) */
@@ -70,7 +75,7 @@ $aliases['mk'] = array(
 
 /** Malayalam (മലയാളം) */
 $aliases['ml'] = array(
-	'AdminLinks' => array( 'കാര്യനിര്‍വാഹകകണ്ണികള്‍' ),
+	'AdminLinks' => array( 'കാര്യനിർവാഹകകണ്ണികൾ' ),
 );
 
 /** Marathi (मराठी) */

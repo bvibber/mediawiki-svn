@@ -278,6 +278,20 @@ $wgGoogleMapsMessages['af'] = array(
 	'gm-mars' => 'Mars',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$wgGoogleMapsMessages['aln'] = array(
+	'gm-back' => 'prapa',
+	'gm-kml-include' => 'KML jashtme / GeoRSS:',
+	'gm-kml-include-link' => 'shtoni në hartë',
+	'gm-kml-loading' => 'loading ...',
+	'gm-kml-export' => 'Eksporti këtë hartë të KML',
+	'gm-earth' => 'Tokë',
+	'gm-moon' => 'Hënë',
+	'gm-mars' => 'Mars',
+);
+
 /** Amharic (አማርኛ)
  * @author Codex Sinaiticus
  */
@@ -2053,7 +2067,7 @@ Probe coa última versión do <a href="http://www.microsoft.com/ie">Internet Exp
 	'gm-line-width' => 'Ancho',
 	'gm-make-map' => 'facer un mapa',
 	'gm-hide-map' => 'agochar mapa',
-	'gm-back' => 'voltar',
+	'gm-back' => 'volver',
 	'gm-kml-include' => 'KML/GeoRSS externo:',
 	'gm-kml-include-link' => 'engadir ao mapa',
 	'gm-kml-loading' => 'cargando…',
@@ -2689,7 +2703,9 @@ $wgGoogleMapsMessages['ig'] = array(
 	'gm-search' => 'Chöwá',
 	'gm-save-path' => 'Donyéré',
 	'gm-back' => 'azú',
+	'gm-earth' => 'Àlà',
 	'gm-moon' => 'Önwa',
+	'gm-mars' => 'Ùwà Ikenga',
 );
 
 /** Ido (Ido)
@@ -4065,6 +4081,7 @@ Subukan me ing pekabayung bersion ning <a href="http://www.microsoft.com/ie">Int
  * @author Xqt
  */
 $wgGoogleMapsMessages['pdc'] = array(
+	'gm-balloon-title' => 'Titel:',
 	'gm-height' => 'Heeh',
 	'gm-zoom-control' => 'Faahre-Gnepp',
 	'gm-large' => 'Gross',
@@ -4072,6 +4089,7 @@ $wgGoogleMapsMessages['pdc'] = array(
 	'gm-yes' => 'Ya',
 	'gm-no' => 'Nee',
 	'gm-search' => 'Uffgucke',
+	'gm-back' => 'zerrick',
 	'gm-kml-loading' => 'laade…',
 	'gm-earth' => 'Erd',
 	'gm-moon' => 'Moond',
@@ -4444,11 +4462,11 @@ $wgGoogleMapsMessages['ro'] = array(
 	'gm-no-results' => 'Ne pare rău, nici un rezultat',
 	'gm-searching' => 'căutare…',
 	'gm-map' => 'Hartă',
-	'gm-are-you-sure' => 'Sunteţi sigur?',
+	'gm-are-you-sure' => 'Sunteți sigur?',
 	'gm-clear-all-points' => 'Şterge toate punctele',
 	'gm-refresh-points' => 'Reactualizează toate punctele',
-	'gm-width' => 'Lăţime',
-	'gm-height' => 'Înălţime',
+	'gm-width' => 'Lățime',
+	'gm-height' => 'Înălțime',
 	'gm-scale-control' => 'Scală',
 	'gm-zoom-control' => 'Navigare',
 	'gm-large' => 'Mare',
@@ -4457,9 +4475,9 @@ $wgGoogleMapsMessages['ro'] = array(
 	'gm-no-zoom-control' => 'Niciunul',
 	'gm-yes' => 'Da',
 	'gm-no' => 'Nu',
-	'gm-no-search-preface' => 'Apăsaţi pe hartă pentru a adăuga un punct.',
+	'gm-no-search-preface' => 'Apăsați pe hartă pentru a adăuga un punct.',
 	'gm-search' => 'Caută',
-	'gm-clear-search' => 'şterge rezultatele căutării',
+	'gm-clear-search' => 'șterge rezultatele căutării',
 	'gm-meters' => 'metri',
 	'gm-miles' => 'mile',
 	'gm-save-path' => 'Salvează',
@@ -4468,7 +4486,7 @@ $wgGoogleMapsMessages['ro'] = array(
 	'gm-color-path' => 'schimbă culoare',
 	'gm-line-color' => 'Culoarea liniei',
 	'gm-opacity' => 'Opacitate',
-	'gm-line-width' => 'Lăţime',
+	'gm-line-width' => 'Lățime',
 	'gm-make-map' => 'creează o hartă',
 	'gm-hide-map' => 'ascunde hartă',
 	'gm-back' => 'înapoi',

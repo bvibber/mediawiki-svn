@@ -21,7 +21,7 @@ $aliases['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'ImportUsers' => array( 'استيراد_المستخدمين' ),
+	'ImportUsers' => array( 'استوراد_اليوزرات' ),
 );
 
 /** Bosnian (Bosanski) */

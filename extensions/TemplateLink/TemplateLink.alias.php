@@ -17,7 +17,12 @@ $aliases['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'TemplateLink' => array( 'وصلة_قالب' ),
+	'TemplateLink' => array( 'لينك_قالب' ),
+);
+
+/** Breton (Brezhoneg) */
+$aliases['br'] = array(
+	'TemplateLink' => array( 'LiammPatrom' ),
 );
 
 /** German (Deutsch) */

@@ -22,7 +22,7 @@ $aliases['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'Maintenance' => array( 'صيانة' ),
+	'Maintenance' => array( 'صيانه' ),
 );
 
 /** Bulgarian (Български) */
@@ -48,6 +48,11 @@ $aliases['de'] = array(
 /** Lower Sorbian (Dolnoserbski) */
 $aliases['dsb'] = array(
 	'Maintenance' => array( 'Wótwardowanje' ),
+);
+
+/** Spanish (Español) */
+$aliases['es'] = array(
+	'Maintenance' => array( 'Mantenimiento' ),
 );
 
 /** Basque (Euskara) */

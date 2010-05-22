@@ -31,6 +31,15 @@ $messages['af'] = array(
 	'block_title_error' => "Jammer, die stoor van 'n bladsy met hierdie naam word nie toegelaat nie.",
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'block_title_error_page_title' => 'Titulli Blocked',
+	'blocktitles-desc' => 'Ofron një mënyrë themelore të parandalimit të faqeve me tituj të caktuara nga të qenit të ruajtur apo e krijuar',
+	'block_title_error' => 'Na vjen keq, titulli i kësaj faqeje nuk është e lejuar të ruhet.',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

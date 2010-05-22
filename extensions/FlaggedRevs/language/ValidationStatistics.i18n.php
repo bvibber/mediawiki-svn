@@ -1104,7 +1104,13 @@ $4
 	'validationstatistics-table' => "넘겨주기 문서를 '''제외한''' 문서의 검토 통계가 이름공간별로 보여지고 있습니다.",
 	'validationstatistics-ns' => '이름공간',
 	'validationstatistics-total' => '문서 수',
+	'validationstatistics-stable' => '검토됨',
+	'validationstatistics-latest' => '동기화됨',
+	'validationstatistics-synced' => '동기화됨/검토됨',
+	'validationstatistics-old' => '업데이트 필요함',
+	'validationstatistics-utable' => '아래는 지난 1시간 동안의 최고 검토자 5명의 목록입니다',
 	'validationstatistics-user' => '사용자',
+	'validationstatistics-reviews' => '검토',
 );
 
 /** Karachay-Balkar (Къарачай-Малкъар)
@@ -1551,10 +1557,10 @@ A versão estável de uma página é a revisão mais recente que foi aprovada pa
  */
 $messages['ro'] = array(
 	'validationstatistics-users' => "'''{{SITENAME}}''' are în prezent '''[[Special:ListUsers/editor|$1]]''' {{PLURAL:$1|utilizator|utilizatori}} cu drepturi de [[{{MediaWiki:Validationpage}}|editare]]
-şi '''[[Special:ListUsers/reviewer|$2]]''' {{PLURAL:$2|utilizator|utilizatori}} cu drepturi de [[{{MediaWiki:Validationpage}}|recenzie]].
+și '''[[Special:ListUsers/reviewer|$2]]''' {{PLURAL:$2|utilizator|utilizatori}} cu drepturi de [[{{MediaWiki:Validationpage}}|recenzie]].
 
-Editorii şi recenzorii sunt utilizatori stabiliţi care pot verifica modificările din pagini.",
-	'validationstatistics-ns' => 'Spaţiu de nume',
+Editorii și recenzorii sunt utilizatori stabiliți care pot verifica modificările din pagini.",
+	'validationstatistics-ns' => 'Spațiu de nume',
 	'validationstatistics-total' => 'Pagini',
 	'validationstatistics-stable' => 'Revizualizată',
 	'validationstatistics-latest' => 'Sincronizată',
@@ -1646,6 +1652,15 @@ $messages['sah'] = array(
 	'validationstatistics-reviews' => 'Бэрэбиэркэ',
 );
 
+/** Sardinian (Sardu)
+ * @author Andria
+ */
+$messages['sc'] = array(
+	'validationstatistics-ns' => 'Nùmene-logu',
+	'validationstatistics-total' => 'Pàginas',
+	'validationstatistics-user' => 'Usuàriu',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */
@@ -1719,12 +1734,13 @@ $messages['sr-el'] = array(
 
 /** Swedish (Svenska)
  * @author Boivie
+ * @author Dafer45
  * @author M.M.S.
  * @author Rotsee
  * @author Skalman
  */
 $messages['sv'] = array(
-	'validationstatistics' => 'Valideringsstatistik',
+	'validationstatistics' => 'Statistik över sidgranskning',
 	'validationstatistics-users' => "'''{{SITENAME}}''' har just nu '''[[Special:ListUsers/editor|$1]]''' {{PLURAL:$1|användare|användare}} med [[{{MediaWiki:Validationpage}}|skribenträttigheter]].
 
 Skribenter är etablerade användare som kan granska sidversioner.",
@@ -2033,12 +2049,13 @@ $4
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Gaoxuewei
+ * @author Horacewai2
  * @author Mark85296341
  * @author Tomchiukc
  */
 $messages['zh-hant'] = array(
-	'validationstatistics' => '判定統計',
-	'validationstatistics-users' => "'''{{SITENAME}}'''現時有'''[[Special:ListUsers/editor|$1]]'''個用戶具有[[{{MediaWiki:Validationpage}}|編輯]]的權限，而'''[[Special:ListUsers/reviewer|$2]]'''個用戶有[[{{MediaWiki:Validationpage}}|審定]]的權限。
+	'validationstatistics' => '審核統計',
+	'validationstatistics-users' => "'''{{SITENAME}}'''現時有'''[[Special:ListUsers/editor|$1]]'''{{PLURAL:$1|個|個}}用戶具有[[{{MediaWiki:Validationpage}}|編輯]]的權限。
 
 編輯及審定皆為已確認的用戶，並可以檢查各頁面的修定。",
 	'validationstatistics-time' => "''下列資訊於 $5 $6 進行了最後更新。 ''
@@ -2048,7 +2065,7 @@ $messages['zh-hant'] = array(
 ''未登錄用戶''的編輯平均等待審核時間為'''$1'''；中值時間為'''$3'''。
 $4
 [[Special:OldReviewedPages|未審核的頁面編輯等待]]平均滯後時間為'''$2'''。
-這些頁面被認為''過期''了。同樣的，如果[[{{MediaWiki:Validationpage}}|完美版本]]是目前的待定版本，這些頁面就被認為''已同步''。
+這些頁面被認為''過期''了。同樣的，如果完美版本是目前的待定版本，這些頁面就被認為''已同步''。
 頁面的完美版本是被讀者普遍接受的最新版本。",
 	'validationstatistics-table' => "各名稱空間的統計資訊顯示如下，''不包含''轉向頁。",
 	'validationstatistics-ns' => '名稱空間',

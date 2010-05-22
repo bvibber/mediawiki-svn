@@ -335,6 +335,18 @@ $messages['km'] = array(
 	'signaturelogentry' => 'បានចុះហត្ថលេខាលើឯកសារ $1',
 );
 
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'signaturelogpage' => '서명 기록',
+	'signature-desc' => '[[Special:SignDocument|문서 서명]]을 활성화',
+	'signaturelogpagetext' => '[[Special:SignDocument|문서에 추가된 모든 서명]]의 기록입니다.',
+	'signaturelogentry' => '사용자가 $1 문서에 서명하였습니다.',
+	'right-sigadmin' => '관리 문서에 서명하기',
+	'right-createsigndocument' => '서명 가능한 문서를 생성하기',
+);
+
 /** Colognian (Ripoarisch)
  * @author Purodha
  */

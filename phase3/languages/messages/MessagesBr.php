@@ -62,22 +62,37 @@ $specialPageAliases = array(
 
 $magicWords = array(
 	'redirect'              => array( '0', '#ADKAS', '#REDIRECT' ),
+	'numberofpages'         => array( '1', 'NIVERABAJENNOU', 'NUMBEROFPAGES' ),
+	'numberofarticles'      => array( '1', 'NIVERABENNADOU', 'NUMBEROFARTICLES' ),
+	'numberoffiles'         => array( '1', 'NIVERARESTROU', 'NUMBEROFFILES' ),
+	'numberofusers'         => array( '1', 'NIVERAIMPLIJERIEN', 'NUMBEROFUSERS' ),
+	'numberofactiveusers'   => array( '1', 'NIVERAIMPLIJERIENOBERIANT', 'NUMBEROFACTIVEUSERS' ),
+	'numberofedits'         => array( '1', 'NIVERAZEGASEDENNOU', 'NUMBEROFEDITS' ),
+	'numberofviews'         => array( '1', 'NIVERALENNADENNOU', 'NUMBEROFVIEWS' ),
 	'pagename'              => array( '1', 'ANVPAJENN', 'PAGENAME' ),
+	'namespace'             => array( '1', 'ESAOUENNANV', 'NAMESPACE' ),
+	'fullpagename'          => array( '1', 'ANVPAJENNKLOK', 'FULLPAGENAME' ),
+	'subpagename'           => array( '1', 'ANVISPAJENN', 'SUBPAGENAME' ),
 	'img_right'             => array( '1', 'dehou', 'right' ),
 	'img_left'              => array( '1', 'kleiz', 'left' ),
 	'img_none'              => array( '1', 'netra', 'none' ),
-	'img_center'            => array( '1', 'kreiz', 'center', 'centre' ),
+	'img_center'            => array( '1', 'kreizenn', 'center', 'centre' ),
+	'img_page'              => array( '1', 'pajenn=$1', 'pajenn $1', 'page=$1', 'page $1' ),
 	'img_top'               => array( '1', 'krec\'h', 'top' ),
+	'img_middle'            => array( '1', 'kreiz', 'middle' ),
 	'img_bottom'            => array( '1', 'traoñ', 'bottom' ),
 	'sitename'              => array( '1', 'ANVLEC\'HIENN', 'SITENAME' ),
 	'server'                => array( '0', 'SERVIJER', 'SERVER' ),
 	'servername'            => array( '0', 'ANVSERVIJER', 'SERVERNAME' ),
 	'grammar'               => array( '0', 'YEZHADUR:', 'GRAMMAR:' ),
+	'gender'                => array( '0', 'JENER:', 'GENDER:' ),
 	'plural'                => array( '0', 'LIESTER:', 'PLURAL:' ),
+	'fullurl'               => array( '0', 'URLKLOK:', 'FULLURL:' ),
 	'currentversion'        => array( '1', 'STUMMRED', 'CURRENTVERSION' ),
 	'language'              => array( '0', '#YEZH:', '#LANGUAGE:' ),
 	'special'               => array( '0', 'dibar', 'special' ),
 	'pagesize'              => array( '1', 'MENTPAJENN', 'PAGESIZE' ),
+	'url_path'              => array( '0', 'HENT', 'PATH' ),
 );
 
 $bookstoreList = array(
@@ -1405,11 +1420,11 @@ Evit enklozañ ur skeudenn en ur pennad, lakait er pennad-se ul liamm skrivet ev
 'uploadlogpagetext'           => "Setu a-is marilh ar restroù diwezhañ bet karget war ar servijer.
 S.o [[Special:NewFiles|rann ar skeudennoù nevez]] evit kaout ur sell gwiroc'h",
 'filename'                    => 'Anv&nbsp;',
-'filedesc'                    => 'Deskrivadur&nbsp;',
+'filedesc'                    => 'Deskrivadur',
 'fileuploadsummary'           => 'Diverrañ :',
 'filereuploadsummary'         => 'Kemmoù er restr :',
 'filestatus'                  => 'Statud ar gwirioù aozer:',
-'filesource'                  => 'Mammenn:',
+'filesource'                  => 'Mammenn :',
 'uploadedfiles'               => 'Restroù karget',
 'ignorewarning'               => "Na ober van ouzh ar c'hemennoù diwall ha saveteiñ ar restr forzh penaos",
 'ignorewarnings'              => "Na ober van ouzh ar c'hemennoù diwall",
@@ -1501,6 +1516,11 @@ JD # Jenoptik
 MGP # Pentax
 PICT # misc.
  #</pre> <!-- leave this line exactly as it is -->",
+'upload-successful-msg'       => "Ho kargadenn a c'heller kavout amañ : $1",
+'upload-failure-subj'         => 'Kudenn kargañ',
+'upload-failure-msg'          => "Ur gudenn 'zo bet e-pad ho kargadenn :
+
+$1",
 
 'upload-proto-error'        => 'Protokol direizh',
 'upload-proto-error-text'   => 'Rekis eo an URLoù a grog gant <code>http://</code> pe <code>ftp://</code> evit enporzhiañ.',
@@ -1898,6 +1918,10 @@ E maezienn \"Kaser\" ho postel e vo merket ar chomlec'h postel resisaet ganeoc'h
 'emailsent'            => 'Postel kaset',
 'emailsenttext'        => 'Kaset eo bet ho postel.',
 'emailuserfooter'      => 'Kaset eo bet ar postel-mañ gant $1 da $2 dre an arc\'hwel "Kas ur postel d\'an implijer" war {{SITENAME}}.',
+
+# User Messenger
+'usermessage-summary' => 'En deus laosket ur gemennadenn sistem.',
+'usermessage-editor'  => 'Kemennerezh ar reizhiad',
 
 # Watchlist
 'watchlist'            => 'Roll evezhiañ',
@@ -2465,6 +2489,7 @@ Miret eo an holl enporzhiadennoù etrewiki e-barzh [[Special:Log/import|log an e
 'importstart'                => "Oc'h enporzhiañ pajennoù...",
 'import-revision-count'      => '$1 {{PLURAL:$1|stumm|stumm}}',
 'importnopages'              => 'Pajenn ebet da enporzhiañ.',
+'imported-log-entries'       => '$1 moned{{PLURAL:$1||}} eus ar marilh enporzhiet{{PLURAL:$1||}}.',
 'importfailed'               => "C'hwitet eo an enporzhiadenn: $1",
 'importunknownsource'        => 'Dianav eo seurt ar vammenn enporzhiañ',
 'importcantopen'             => "N'eus ket bet gallet digeriñ ar restr enporzhiet",
@@ -3133,9 +3158,8 @@ Klaskit rakwelet er mod boutin.',
 'watchlistedit-normal-done'    => 'Tennet ez eus bet {{PLURAL:$1|1 pajenn|$1 pajenn}} a-ziwar ho roll evezhiañ :',
 'watchlistedit-raw-title'      => 'Kemmañ ar roll evezhiañ (mod diginkl)',
 'watchlistedit-raw-legend'     => 'Kemmañ ar roll evezhiañ (mod diginkl)',
-'watchlistedit-raw-explain'    => 'Dindan emañ roll ar pajennoù zo war ho roll evezhiañ; gallout a rit kemmañ anezhañ en ur
-	ouzhpennañ pe dennañ pajennoù a-ziwarnañ; ur bajenn dre linenn. Ur wech graet, klikañ war Nevesaat ar roll evezhiañ.
-	Tu zo da [[Special:Watchlist/edit|implijout an aozer boutin ivez]].',
+'watchlistedit-raw-explain'    => 'Dindan emañ titloù ar pajennoù zo war ho roll evezhiañ; gallout a rit kemmañ anezho en ur ouzhpennañ pe tennañ pajennoù a-ziwar ar roll; un titl dre linenn. Ur wech graet, klikañ war "{{int:Watchlistedit-raw-submit}}".
+Gallout a rit [[Special:Watchlist/edit|implijout an aozer boutin ivez]].',
 'watchlistedit-raw-titles'     => 'Titloù :',
 'watchlistedit-raw-submit'     => 'Nevesaat ar roll evezhiañ',
 'watchlistedit-raw-done'       => 'Nevesaet eo bet ho roll evezhiañ.',
@@ -3181,7 +3205,7 @@ Klaskit rakwelet er mod boutin.',
 'version-hook-name'                => 'Anv ar galv',
 'version-hook-subscribedby'        => 'Termenet gant',
 'version-version'                  => '(Stumm $1)',
-'version-license'                  => 'Aotre implijout',
+'version-license'                  => 'Aotre-implijout',
 'version-software'                 => 'Meziant staliet',
 'version-software-product'         => 'Produ',
 'version-software-version'         => 'Stumm',

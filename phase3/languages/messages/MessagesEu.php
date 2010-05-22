@@ -838,7 +838,7 @@ $3(e)k emandako arrazoia: ''$2''",
 'viewpagelogs'           => 'Orrialde honen erregistroak ikusi',
 'nohistory'              => 'Orrialde honek ez dauka aldaketa historiarik.',
 'currentrev'             => 'Oraingo berrikuspena',
-'currentrev-asof'        => '$1(e)an momentuko aldaketa',
+'currentrev-asof'        => '$1 datarekin, hauxe da uneko bertsioa:',
 'revisionasof'           => '$1(e)ko berrikuspena',
 'revision-info'          => '$2(r)en berrikusketa, ordua: $1',
 'previousrevision'       => '←Berrikuspen zaharragoa',
@@ -1494,6 +1494,10 @@ Kontuan izan fitxategia igotzea egokia ote den.
 Fitxategi honen ezabaketa erregistroa jarraian ikus dezakezu:",
 'filename-bad-prefix'         => "Igotzen ari zaren fitxategiaren izena '''\"\$1\"'''ekin hasten da, normalki kamera digitalek automatikoki ezartzen duten izen ez deskriptibo bat.
 Aukera ezazu, mesedez, fitxategi izen deskriptiboago bat.",
+'upload-failure-subj'         => 'Igoera-arazoa',
+'upload-failure-msg'          => 'Hurrengo arazoa egon da zure igoerarekin:
+
+$1',
 
 'upload-proto-error'        => 'Protokolo ezegokia',
 'upload-proto-error-text'   => 'Kanpo igoerak <code>http://</code> edo <code>ftp://</code> hasiera duen URLa izan behar du.',
@@ -1507,9 +1511,16 @@ Aukera ezazu, mesedez, fitxategi izen deskriptiboago bat.",
 
 # img_auth script messages
 'img-auth-accessdenied' => 'Sarbide ukatua',
+'img-auth-nopathinfo'   => 'PATH_INFO falta da.
+Zure zerbitzaria ez dago informazio hau pasatzeko konfiguratuta.
+CGI-oinarriduna izan daiteke, img_auth onartzen ez duena.
+Ikus http://www.mediawiki.org/wiki/Manual:Image_Authorization.',
 'img-auth-notindir'     => 'Eskatutako bidea ez dago kofiguratutako igoera-direktorioan.',
 'img-auth-badtitle'     => 'Ezin izan da baleko izenbururik eraiki "$1" izenetik abiatuta',
+'img-auth-nologinnWL'   => 'Ez duzu saioa hasi eta "$1" ez dago zerrenda zurian.',
 'img-auth-nofile'       => 'Ez dago "$1" fitxategirik.',
+'img-auth-isdir'        => '"$1" direktorio batera iristen saiatzen ari zara.
+Fitxategien sarbidea baino ez da onartzen.',
 'img-auth-streaming'    => '"$1" sekuentziatzen.',
 'img-auth-noread'       => 'Erabiltzaileak ez du "$1" irakurtzeko sarbiderik.',
 
@@ -1711,10 +1722,10 @@ Ondorengo zerrendak fitxategira dauden {{PLURAL:$1|lehen lotura|lehen $1 loturak
 'protectedpages-indef'    => 'Babes mugagabeak bakarrik',
 'protectedpages-cascade'  => 'Kaskada moduko babesak bakarrik',
 'protectedpagestext'      => 'Jarraian azaltzen diren orrialdeak mugitu edo aldatzeko babestuta daude',
-'protectedpagesempty'     => 'Ez dago parametro hauetarako babesturiko orrialderik momentu honetan.',
+'protectedpagesempty'     => 'Ez dago parametro horiek dituen babesturiko orrialderik oraintxe.',
 'protectedtitles'         => 'Babestutako tituluak',
 'protectedtitlestext'     => 'Hurrengo tituluen sorrera babestua dago',
-'protectedtitlesempty'    => 'Ez dago parametro horiekin babesturiko izenbururik momentu honetan.',
+'protectedtitlesempty'    => 'Ez dago parametro horiek dituen babesturiko izenbururik oraintxe.',
 'listusers'               => 'Erabiltzaileen zerrenda',
 'listusers-editsonly'     => 'Aldaketak egin dituzten erabiltzaileak soilik erakutsi',
 'listusers-creationsort'  => 'Sorrera dataren arabera sailkatu',
@@ -2004,7 +2015,7 @@ Hemen daude '''$1''' orrialdearen egungo ezarpenak:",
 Hemen daude '''$1''' orriaren oraingo ezarpenak:",
 'protect-locked-access'       => "Zure kontuak ez du baimenik babes mailak aldatzeko.
 Hemen daude '''$1''' orrialderako oraingo ezarpenak:",
-'protect-cascadeon'           => 'Orrialde hau momentu honetan babespean dago honako orrialde {{PLURAL:$1|honek kaskada bidezko babesa duelako|hauek kaskada bidezko babesa dutelako}}.
+'protect-cascadeon'           => 'Orrialde hau babestuta dago orain, ondorengo orrialde {{PLURAL:$1|honek kaskada bidezko babesa aktibatua duelako|hauek kaskada bidezko babesa aktibatua dutelako}}.
 Orrialde honen babes maila alda dezakezu, baina ez du eraginik izango kaskada bidezko babesean.',
 'protect-default'             => 'Lankide guztiak baimendu',
 'protect-fallback'            => '"$1" baimena eskatu',

@@ -49,6 +49,26 @@ $messages['af'] = array(
 	'onlinestatus-toggle-online' => 'Aanlyn',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'onlinestatus-desc' => 'Shto një preferencë për të treguar nëse përdoruesi është aktualisht i pranishëm ose jo në wiki',
+	'onlinestatus-js-anon' => 'Gabim: ju duhet të keni hyrë brenda për të përdorur këtë veçori',
+	'onlinestatus-js-changed' => 'Gjendja juaj është ndryshuar për "$1"',
+	'onlinestatus-js-error' => 'Pamundur për të ndryshuar statusin, vlerë "$1" është i pavlefshëm',
+	'onlinestatus-subtitle-offline' => 'Ky përdorues është offline',
+	'onlinestatus-subtitle-online' => 'Ky përdorues është aktualisht online',
+	'onlinestatus-tab' => 'Statusi',
+	'onlinestatus-toggles-desc' => 'Statusi i juaj:',
+	'onlinestatus-toggles-explain' => 'Kjo ju lejon të treguar përdoruesve të tjerë nëse jeni të vërtetë online apo jo duke shfletuar faqen tuaj të përdoruesit.',
+	'onlinestatus-toggles-show' => 'Gjendja Trego online në faqen time përdorues',
+	'onlinestatus-toggle-offline' => 'Offline',
+	'onlinestatus-toggle-online' => 'Online',
+	'onlinestatus-pref-onlineonlogin' => 'Ndryshimi statusin tim në internet kur të hyni në',
+	'onlinestatus-pref-offlineonlogout' => 'Ndryshimi statusin tim të fundit kur hyni-out',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK

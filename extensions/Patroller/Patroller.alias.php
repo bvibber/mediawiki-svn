@@ -20,7 +20,7 @@ $aliases['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'Patroller' => array( 'مراجع' ),
+	'Patroller' => array( 'نبطشى' ),
 );
 
 /** German (Deutsch) */

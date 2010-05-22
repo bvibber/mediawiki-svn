@@ -27,6 +27,13 @@ $messages['qqq'] = array(
 	'semanticinternalobjects-desc' => '{{desc}}',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'semanticinternalobjects-desc' => 'Vendosja e objekteve të brendshëm në Semantic MediaWiki',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

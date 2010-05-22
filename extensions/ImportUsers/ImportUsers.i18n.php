@@ -88,6 +88,21 @@ $messages['af'] = array(
 	'importusers-realname' => 'regte naam',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'importusers-log-summary' => 'Përmbledhje',
+	'importusers-log-summary-all' => 'Të gjithë',
+	'importusers-log-summary-added' => 'Added',
+	'importusers-log-summary-updated' => 'Përditësuar',
+	'importusers-login-name' => 'Emri Identifikohu',
+	'importusers-password' => 'fjalëkalim',
+	'importusers-email' => 'e-mail',
+	'importusers-realname' => 'Emri i vërtetë',
+	'right-import_users' => 'Importi përdoruesit në masë',
+);
+
 /** Amharic (አማርኛ)
  * @author Codex Sinaiticus
  */
@@ -905,6 +920,11 @@ Dilompati.',
 	'right-import_users' => 'Impor banyak pengguna',
 );
 
+/** Igbo (Igbo) */
+$messages['ig'] = array(
+	'importusers-password' => 'mkpurụ okwu ejị a gafẹ',
+);
+
 /** Icelandic (Íslenska)
  * @author S.Örvarr.S
  */
@@ -1544,8 +1564,8 @@ $messages['rif'] = array(
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
-	'importusers' => 'Importaţi utilizatori',
-	'importusers-uploadfile' => 'Încarcă fişier',
+	'importusers' => 'Importați utilizatori',
+	'importusers-uploadfile' => 'Încarcă fișier',
 	'importusers-form-button' => 'Importă',
 	'importusers-log-summary' => 'Rezumat',
 	'importusers-log-summary-all' => 'Total',

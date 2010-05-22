@@ -49,14 +49,14 @@ $aliases['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'Translate' => array( 'ترجمة' ),
+	'Translate' => array( 'ترجمه' ),
 	'Magic' => array( 'ترجمة_متقدمة', 'ماجيك' ),
-	'TranslationChanges' => array( 'تغييرات_الترجمة' ),
-	'TranslationStats' => array( 'إحصاءات_الترجمة' ),
+	'TranslationChanges' => array( 'تغييرات_الترجمه' ),
+	'TranslationStats' => array( 'احصائيات_الترجمه' ),
 	'Translations' => array( 'ترجمات' ),
-	'LanguageStats' => array( 'إحصاءات_اللغات' ),
-	'PageTranslation' => array( 'ترجمة_صفحة' ),
-	'ImportTranslations' => array( 'استيراد_الترجمات' ),
+	'LanguageStats' => array( 'احصائيات_اللغات' ),
+	'PageTranslation' => array( 'ترجمة_صفحه' ),
+	'ImportTranslations' => array( 'استوراد_الترجمات' ),
 );
 
 /** Assamese (অসমীয়া) */
@@ -82,7 +82,14 @@ $aliases['bcc'] = array(
 /** Breton (Brezhoneg) */
 $aliases['br'] = array(
 	'Translate' => array( 'Treiñ' ),
+	'Magic' => array( 'TreiñAraokaet' ),
+	'TranslationChanges' => array( 'KemmoùTreiñ' ),
+	'TranslationStats' => array( 'StadegoùTreiñ' ),
+	'Translations' => array( 'Troidigezhioù' ),
 	'LanguageStats' => array( 'StadegoùYezh' ),
+	'PageTranslation' => array( 'TroidigezhPajenn' ),
+	'ImportTranslations' => array( 'EnporzhiañTroidigezhioù' ),
+	'FirstSteps' => array( 'PazennoùKentañ' ),
 );
 
 /** Bosnian (Bosanski) */
@@ -120,6 +127,9 @@ $aliases['de'] = array(
 	'TranslationStats' => array( 'Übersetzungsstatistik' ),
 	'Translations' => array( 'Übersetzungen' ),
 	'LanguageStats' => array( 'Sprachstatistiken' ),
+	'PageTranslation' => array( 'Übersetzung von Seiten' ),
+	'ImportTranslations' => array( 'Übersetzungen importieren' ),
+	'FirstSteps' => array( 'Erste Schritte' ),
 );
 
 /** Lower Sorbian (Dolnoserbski) */
@@ -138,8 +148,15 @@ $aliases['dv'] = array(
 	'Translations' => array( 'ތަރުޖަމާތައް' ),
 );
 
+/** Esperanto (Esperanto) */
+$aliases['eo'] = array(
+	'Translate' => array( 'Traduki' ),
+);
+
 /** Spanish (Español) */
 $aliases['es'] = array(
+	'Translate' => array( 'Traducir' ),
+	'Magic' => array( 'Traducción avanzada' ),
 	'Translations' => array( 'Traducciones' ),
 );
 
@@ -292,6 +309,7 @@ $aliases['ja'] = array(
 	'LanguageStats' => array( '言語統計' ),
 	'PageTranslation' => array( 'ページ翻訳' ),
 	'ImportTranslations' => array( '翻訳インポート' ),
+	'FirstSteps' => array( '開始手順' ),
 );
 
 /** Georgian (ქართული) */
@@ -340,6 +358,8 @@ $aliases['lb'] = array(
 	'LanguageStats' => array( 'Sproochestatistiken' ),
 	'PageTranslation' => array( 'Säiten-Iwwersetzung' ),
 	'ImportTranslations' => array( 'Iwwersetzungen importéieren' ),
+	'FirstSteps' => array( 'Éischt Schrëtt' ),
+	'SupportedLanguages' => array( 'Ënnerstetzte Sproochen' ),
 );
 
 /** Lumbaart (Lumbaart) */
@@ -376,6 +396,8 @@ $aliases['ml'] = array(
 	'LanguageStats' => array( 'ഭാഷാസ്ഥിതിവിവരം' ),
 	'PageTranslation' => array( 'താളിന്റെതർജ്ജമ' ),
 	'ImportTranslations' => array( 'തർജ്ജമ ഇറക്കുമതി' ),
+	'FirstSteps' => array( 'ആദ്യചുവടുകൾ' ),
+	'SupportedLanguages' => array( 'പിന്തുണയുള്ളഭാഷകൾ' ),
 );
 
 /** Marathi (मराठी) */
@@ -428,6 +450,11 @@ $aliases['nah'] = array(
 	'Translate' => array( 'Tlahtōlcuepāz', 'Traducir' ),
 );
 
+/** Norwegian Bokmål (‪Norsk (bokmål)‬) */
+$aliases['nb'] = array(
+	'FirstSteps' => array( 'Første trinn' ),
+);
+
 /** Low German (Plattdüütsch) */
 $aliases['nds'] = array(
 	'Translate' => array( 'Översetten' ),
@@ -452,6 +479,7 @@ $aliases['nl'] = array(
 	'LanguageStats' => array( 'Taalstatistieken' ),
 	'PageTranslation' => array( 'Paginavertaling' ),
 	'ImportTranslations' => array( 'VertalingenImporteren' ),
+	'FirstSteps' => array( 'EersteStappen' ),
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬) */
@@ -470,6 +498,7 @@ $aliases['no'] = array(
 	'LanguageStats' => array( 'Språkstatistikk' ),
 	'PageTranslation' => array( 'Sideoversettelse' ),
 	'ImportTranslations' => array( 'Importer oversettelser' ),
+	'FirstSteps' => array( 'Første steg' ),
 );
 
 /** Occitan (Occitan) */
@@ -488,6 +517,8 @@ $aliases['pl'] = array(
 	'TranslationStats' => array( 'Statystyki tłumaczenia' ),
 	'Translations' => array( 'Tłumaczenia' ),
 	'LanguageStats' => array( 'Statystyka językowa' ),
+	'PageTranslation' => array( 'Tłumaczenie strony' ),
+	'FirstSteps' => array( 'Pierwsze kroki' ),
 );
 
 /** Pashto (پښتو) */
@@ -554,6 +585,11 @@ $aliases['sk'] = array(
 /** Albanian (Shqip) */
 $aliases['sq'] = array(
 	'Translate' => array( 'Përkthe' ),
+);
+
+/** Serbian Cyrillic ekavian (Српски (ћирилица)) */
+$aliases['sr-ec'] = array(
+	'Translate' => array( 'Преведи' ),
 );
 
 /** Sundanese (Basa Sunda) */

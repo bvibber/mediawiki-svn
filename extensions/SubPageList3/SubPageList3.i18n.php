@@ -397,8 +397,8 @@ $messages['pt-br'] = array(
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
-	'spl3_debug' => 'Valoare necunoscută pentru opţiunea $1.',
-	'spl3_nosubpages' => '$1 nu are subpagini pentru afişat.',
+	'spl3_debug' => 'Valoare necunoscută pentru opțiunea $1.',
+	'spl3_nosubpages' => '$1 nu are subpagini pentru afișat.',
 );
 
 /** Tarandíne (Tarandíne)

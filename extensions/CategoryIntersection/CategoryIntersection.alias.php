@@ -65,7 +65,7 @@ $aliases['dsb'] = array(
 
 /** Esperanto (Esperanto) */
 $aliases['eo'] = array(
-	'CategoryIntersection' => array( 'Kategoria Intersekcio' ),
+	'CategoryIntersection' => array( 'Kategoria intersekcio' ),
 );
 
 /** Spanish (Español) */
@@ -195,7 +195,7 @@ $aliases['pt'] = array(
 
 /** Brazilian Portuguese (Português do Brasil) */
 $aliases['pt-br'] = array(
-	'CategoryIntersection' => array( 'Intersecção de categorias' ),
+	'CategoryIntersection' => array( 'Interseção de categorias' ),
 );
 
 /** Romanian (Română) */

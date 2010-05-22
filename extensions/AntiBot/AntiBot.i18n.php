@@ -28,6 +28,13 @@ $messages['af'] = array(
 	'antibot-desc' => 'Eenvoudige raamwerk vir die kontrole van spambots en trigger payloads',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'antibot-desc' => 'kuadrin e thjeshtë për kontrolle Spambot dhe payloads shkaktojnë',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -424,7 +431,7 @@ $messages['pt-br'] = array(
  * @author Stelistcristi
  */
 $messages['ro'] = array(
-	'antibot-desc' => 'Cadru simplu pentru verificări spambot şi sarcinile utile de declanşare',
+	'antibot-desc' => 'Cadru simplu pentru verificări spambot și sarcinile utile de declanșare',
 );
 
 /** Tarandíne (Tarandíne)

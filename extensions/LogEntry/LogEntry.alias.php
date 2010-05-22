@@ -95,6 +95,11 @@ $aliases['mk'] = array(
 	'LogEntry' => array( 'ЗаписВоДневник' ),
 );
 
+/** Malayalam (മലയാളം) */
+$aliases['ml'] = array(
+	'LogEntry' => array( 'രേഖയിലുൾപ്പെടുത്തൽ' ),
+);
+
 /** Maltese (Malti) */
 $aliases['mt'] = array(
 	'LogEntry' => array( 'DaħlaReġistru' ),

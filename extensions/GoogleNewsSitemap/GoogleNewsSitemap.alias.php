@@ -21,12 +21,17 @@ $aliases['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'GoogleNewsSitemap' => array( 'خريطة_موقع_أخبار_جوجل' ),
+	'GoogleNewsSitemap' => array( 'خريطة_سايت_اخبار_جوجل' ),
 );
 
 /** Interlingua (Interlingua) */
 $aliases['ia'] = array(
 	'GoogleNewsSitemap' => array( 'Mappa de sito Google News' ),
+);
+
+/** Japanese (日本語) */
+$aliases['ja'] = array(
+	'GoogleNewsSitemap' => array( 'Googleニュースサイトマップ' ),
 );
 
 /** Malayalam (മലയാളം) */

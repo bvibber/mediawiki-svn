@@ -20,7 +20,7 @@ $aliases['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'SpecialUserStats' => array( 'إحصاءات_المستخدم', 'خاص_إحصاءات_المستخدم' ),
+	'SpecialUserStats' => array( 'احصائيات_اليوزر', 'مخصوص_احصائيات_اليوزر' ),
 );
 
 /** Assamese (অসমীয়া) */
@@ -68,6 +68,11 @@ $aliases['gsw'] = array(
 	'SpecialUserStats' => array( 'Benutzerstatischtik' ),
 );
 
+/** Croatian (Hrvatski) */
+$aliases['hr'] = array(
+	'SpecialUserStats' => array( 'Statistika_uporabe' ),
+);
+
 /** Upper Sorbian (Hornjoserbsce) */
 $aliases['hsb'] = array(
 	'SpecialUserStats' => array( 'Wužiwarska statistika' ),
@@ -105,7 +110,7 @@ $aliases['ksh'] = array(
 
 /** Luxembourgish (Lëtzebuergesch) */
 $aliases['lb'] = array(
-	'SpecialUserStats' => array( 'Benotzerstistiken' ),
+	'SpecialUserStats' => array( 'Benotzerstatistiken' ),
 );
 
 /** Lumbaart (Lumbaart) */
@@ -116,6 +121,11 @@ $aliases['lmo'] = array(
 /** Macedonian (Македонски) */
 $aliases['mk'] = array(
 	'SpecialUserStats' => array( 'СтатистикиЗаКорисник', 'СпецијалниСтатистикиЗаКорисник' ),
+);
+
+/** Malayalam (മലയാളം) */
+$aliases['ml'] = array(
+	'SpecialUserStats' => array( 'ഉപയോക്തൃസ്ഥിതിവിവരം', 'പ്രത്യേക‌‌ഉപയോക്തൃസ്ഥിതിവിവരം' ),
 );
 
 /** Marathi (मराठी) */

@@ -142,6 +142,31 @@ $messages['af'] = array(
 	'regexblock-view-time' => 'op $1',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'regexblock-unblock-success' => 'Zhbllokuar sukses',
+	'regexblock-unblock-log' => "''$1''Emri i përdoruesit ose IP adresa ',' është çbllokoi.",
+	'regexblock-unblock-error' => 'Gabim zhbllokimin e $1. Ndoshta nuk ka përdorues të tillë.',
+	'regexblock-regex-filter' => 'ose vlera regex:',
+	'regexblock-view-blocked' => 'View bllokuar nga:',
+	'regexblock-view-all' => 'Të gjithë',
+	'regexblock-view-go' => 'Shkoj',
+	'regexblock-view-match' => '(Ndeshje e saktë)',
+	'regexblock-view-regex' => '(Ndeshje regex)',
+	'regexblock-view-account' => '(Krijimi llogari bllok)',
+	'regexblock-view-reason' => 'arsye: $1',
+	'regexblock-view-reason-default' => 'arsye gjenerike',
+	'regexblock-view-block-infinite' => 'bllok i përhershëm',
+	'regexblock-view-block-by' => 'bllokuar nga:',
+	'regexblock-view-block-unblock' => 'zhbllokuar',
+	'regexblock-view-stats' => 'Statistikat',
+	'regexblock-view-empty' => 'Lista e emrave të bllokuar dhe adresat është e zbrazët.',
+	'regexblock-view-time' => 'në $1',
+	'right-regexblock' => 'Blloko përdoruesit nga redaktimi në të gjitha wikis në fermë wiki',
+);
+
 /** Amharic (አማርኛ)
  * @author Codex Sinaiticus
  */
@@ -1508,6 +1533,11 @@ Mungkin tidak ada pengguna seperti itu.',
 	'right-regexblock' => 'Memblokir pengguna untuk menyunting pada semua wiki di kebun wiki',
 );
 
+/** Igbo (Igbo) */
+$messages['ig'] = array(
+	'regexblock-form-reason' => 'Mgbaghaputa:',
+);
+
 /** Ido (Ido)
  * @author Malafaya
  */
@@ -1814,7 +1844,7 @@ $messages['mk'] = array(
 	'regexblock-block-log' => "Корисничкото име или IP-адресата '''$1''' е блокирана.",
 	'regexblock-block-success' => 'Блокирањето успеа',
 	'regexblock-currently-blocked' => 'Моментално блокирани адреси:',
-	'regexblock-desc' => 'Проширување за блокирање на кориснички имиња и IP-адреси со помош на регуларни изрази. Го содржи механизмот за блокирање и [[Special:Regexblock|специјална страница]] за давање/раководење со блокови',
+	'regexblock-desc' => 'Додаток за блокирање на кориснички имиња и IP-адреси со помош на регуларни изрази. Го содржи механизмот за блокирање и [[Special:Regexblock|специјална страница]] за давање/раководење со блокови',
 	'regexblock-expire-duration' => '1 час,2 часа,4 часа,6 часа,1 ден,3 дена,1 недела,2 недели,1 месец,3 месеци,6 месеци,1 година,без рок',
 	'regexblock-page-title' => 'Блокирање на име по регуларен израз',
 	'regexblockstats' => 'Статистика за блок по регуларен израз',
@@ -2269,6 +2299,8 @@ $messages['pdc'] = array(
 	'regexblock-form-username' => 'IP-Adress odder Yuusernaame:',
 	'regexblock-form-reason' => 'Grund:',
 	'regexblock-view-all' => 'All',
+	'regexblock-view-go' => 'Geh los',
+	'regexblock-view-reason' => 'Grund: $1',
 );
 
 /** Polish (Polski)
@@ -2567,8 +2599,8 @@ $messages['ro'] = array(
 	'regexblock-form-submit-regex' => 'Expresie regulată incorectă.',
 	'regexblock-unblock-success' => 'Deblocare cu succes',
 	'regexblock-unblock-log' => "Utilizatorul sau adresa IP '''$1''' a fost deblocat.",
-	'regexblock-view-all' => 'Toţi',
-	'regexblock-view-go' => 'Mergeţi',
+	'regexblock-view-all' => 'Toți',
+	'regexblock-view-go' => 'Mergeți',
 	'regexblock-view-account' => '(blocare creare conturi)',
 	'regexblock-view-reason' => 'motiv: $1',
 	'regexblock-view-reason-default' => 'motiv generic',
@@ -2576,7 +2608,7 @@ $messages['ro'] = array(
 	'regexblock-view-block-by' => 'blocat de către:',
 	'regexblock-view-block-unblock' => 'deblocare',
 	'regexblock-view-stats' => 'statistici',
-	'regexblock-view-empty' => 'Lista de nume şi adrese blocate este goală.',
+	'regexblock-view-empty' => 'Lista de nume și adrese blocate este goală.',
 );
 
 /** Tarandíne (Tarandíne)

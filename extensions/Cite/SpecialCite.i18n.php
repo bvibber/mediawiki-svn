@@ -908,6 +908,14 @@ $messages['ko'] = array(
 	'cite_submit' => '인용',
 );
 
+/** Karachay-Balkar (Къарачай-Малкъар)
+ * @author Iltever
+ */
+$messages['krc'] = array(
+	'cite_article_link' => 'Бетни цитата эт',
+	'cite' => 'Цитата этиу',
+);
+
 /** Kinaray-a (Kinaray-a)
  * @author Jose77
  */
@@ -1309,6 +1317,7 @@ $messages['pnt'] = array(
  */
 $messages['ps'] = array(
 	'cite_article_link' => 'د همدې ليکنې درک',
+	'tooltip-cite-article' => 'د دې مخ د درک لګولو مالومات',
 	'cite' => 'درک',
 	'cite_page' => 'مخ:',
 	'cite_submit' => 'درک لګول',
@@ -1331,10 +1340,12 @@ $messages['pt'] = array(
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Carla404
+ * @author Giro720
  */
 $messages['pt-br'] = array(
 	'cite_article_desc' => 'Adiciona uma página especial de [[Special:Cite|citação]] e link para a caixa de ferramentas',
 	'cite_article_link' => 'Citar esta página',
+	'tooltip-cite-article' => 'Informação sobre como citar esta página',
 	'cite' => 'Citar',
 	'cite_page' => 'Página:',
 	'cite_submit' => 'Citar',
@@ -1373,12 +1384,12 @@ $messages['rmy'] = array(
  * @author Stelistcristi
  */
 $messages['ro'] = array(
-	'cite_article_desc' => 'Adaugă o pagină specială [[Special:Cite|citare]] şi o legătură cutie unelte',
+	'cite_article_desc' => 'Adaugă o pagină specială [[Special:Cite|citare]] și o legătură cutie unelte',
 	'cite_article_link' => 'Citează acest articol',
-	'tooltip-cite-article' => 'Informaţiile cu privire la modul de a cita această pagină',
+	'tooltip-cite-article' => 'Informațiile cu privire la modul de a cita această pagină',
 	'cite' => 'Citează',
 	'cite_page' => 'Pagină:',
-	'cite_submit' => 'Deschide informaţii',
+	'cite_submit' => 'Deschide informații',
 );
 
 /** Aromanian (Armãneashce) */

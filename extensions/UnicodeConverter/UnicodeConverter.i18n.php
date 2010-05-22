@@ -34,6 +34,17 @@ $messages['af'] = array(
 	'unicodeconverter-newtext' => 'Omgeskakelde teks:',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'unicodeconverter' => 'konvertim Unicode',
+	'unicodeconverter-desc' => 'Një shembull i thjeshtë i një modul faqe të veçantë. [[Special:UnicodeConverter|Duke pasur parasysh një varg në UTF-8]], që konverton atë të subjekteve HTML përshtatshme për një faqe ISO 8859-1 web',
+	'unicodeconverter-ok' => 'Në rregull',
+	'unicodeconverter-oldtext' => 'Teksti origjinal:',
+	'unicodeconverter-newtext' => 'tekstit të konvertuar:',
+);
+
 /** Amharic (አማርኛ)
  * @author Codex Sinaiticus
  */
@@ -349,6 +360,11 @@ $messages['id'] = array(
 	'unicodeconverter-ok' => 'OK',
 	'unicodeconverter-oldtext' => 'Teks asli:',
 	'unicodeconverter-newtext' => 'Teks ubahan:',
+);
+
+/** Igbo (Igbo) */
+$messages['ig'] = array(
+	'unicodeconverter-ok' => 'Ngwanu',
 );
 
 /** Italian (Italiano)

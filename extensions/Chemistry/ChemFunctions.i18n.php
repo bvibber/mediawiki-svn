@@ -164,6 +164,7 @@ $messages['bn'] = array(
 $messages['br'] = array(
 	'chemicalsources' => 'Mammennoù kimiek',
 	'chemicalsource-desc' => 'Ouzhpennañ a ra ar valizenn <nowiki><chemform></nowiki>, evit ar formulennoù kimiek',
+	'chemicalsources-desc' => '[[Special:ChemicalSources|Pajenn dibar]] mammennoù evit ar gimiezh',
 	'chemFunctions_ListPage' => 'Mammennoù kimiek',
 	'chemFunctions_DataList' => 'Dindan ez eus ur roll liammoù a gas da lec\'hiennoù a c\'hall reiñ titouroù diwar-benn an danvezennoù kimiek a glaskit.<br /><br />
 * <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Kediad $MIXCASNameFormula at NIST</a><br />
@@ -530,10 +531,12 @@ $messages['hsb'] = array(
 /** Hungarian (Magyar)
  * @author Dani
  * @author Dorgan
+ * @author Glanthor Reviol
  */
 $messages['hu'] = array(
 	'chemicalsources' => 'Kémiával kapcsolatos források',
 	'chemicalsource-desc' => '<nowiki><chemform></nowiki> tag kémiai formulák elhelyezéséhez',
+	'chemicalsources-desc' => '[[Special:ChemicalSources|Speciális lap]] a kémiai forrásokhoz',
 	'chemFunctions_ListPage' => 'Kémiával kapcsolatos források',
 	'chemFunctions_DataList' => 'Lenn azon oldalak listája található, amelyek információval szolgálhatnak az általad keresett kémiai anyagról.<br /><br />
 * <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Compound $MIXCASNameFormula az NIST-nél</a><br />
@@ -668,6 +671,7 @@ $messages['km'] = array(
 $messages['ko'] = array(
 	'chemicalsources' => '화학 자료',
 	'chemicalsource-desc' => '화학식 표현을 위해 <nowiki><chemform></nowiki> 태그를 추가',
+	'chemicalsources-desc' => '화학 자료 인용을 위한 [[Special:ChemicalSources|특수 문서]]',
 	'chemFunctions_ListPage' => '화학 자료',
 	'chemFunctions_DataList' => '다음은 당신이 찾는 화학 물질에 대한 정보를 제공해 줄 수 있는 사이트입니다.<br /><br />
 * <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">NIST의 $MIXCASNameFormula 화합물</a><br />
@@ -850,20 +854,22 @@ $messages['nn'] = array(
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
+ * @author Nghtwlkr
  */
 $messages['no'] = array(
 	'chemicalsources' => 'Kjemiske kilder',
-	'chemicalsource-desc' => 'Legger til taggen <nowiki><chemform></nowiki> for kjemiske formler',
+	'chemicalsource-desc' => 'Legger til elementet <nowiki><chemform></nowiki> for kjemiske formler',
+	'chemicalsources-desc' => '[[Special:ChemicalSources|Spesialside]] for kjemiske kilder',
 	'chemFunctions_ListPage' => 'Kjemiske kilder',
-	'chemFunctions_DataList' => 'Nedenunder er en liste over lenker til sider som kan gi nyttig informasjon om den kjemiske substansen du leter etter.<br /><br />
+	'chemFunctions_DataList' => 'Nedenunder er en liste over lenker til nettsted som kan gi nyttig informasjon om den kjemikaliet du leter etter.<br /><br />
 * <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Compound $MIXCASNameFormula ved NIST</a><br />
 * <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS ved Oxford University (UK) (ikke søkbar)</a><br />',
 	'chemFunctions_CAS' => 'CAS-nummer',
-	'chemFunctions_ATCCode' => 'ATCCode',
-	'chemFunctions_ECNumber' => 'ECNumber',
+	'chemFunctions_ATCCode' => 'ATC-kode',
+	'chemFunctions_ECNumber' => 'EC-nummer',
 	'chemFunctions_Formula' => 'Formel',
 	'chemFunctions_Name' => 'IUPAC-navn',
-	'chemFunctions_ChemFormInputError' => 'Chemform: Input-feil!',
+	'chemFunctions_ChemFormInputError' => 'Chemform: Inndatafeil!',
 );
 
 /** Occitan (Occitan)
@@ -920,12 +926,14 @@ $messages['pl'] = array(
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Bèrto 'd Sèra
  * @author Dragonòt
  */
 $messages['pms'] = array(
 	'chemicalsources' => 'Sorgiss Chìmiche',
 	'chemicalsource-desc' => 'A gionta ël tag <nowiki><chemform></nowiki>, për fórmule chìmiche',
+	'chemicalsources-desc' => '[[Special:ChemicalSources|Pàgina special]] për sorgiss ëd chìmica',
 	'chemFunctions_ListPage' => 'Sorgiss Chìmiche',
 	'chemFunctions_DataList' => 'Di seguito viene presentato un elenco di collegamenti a siti presso i quali si possono referire informazioni sui composti chimici cercati.<br /><br />
 * <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&Units=SI">Scheda del composto $MIXCASNameFormula presso il NIST</a><br />
@@ -975,10 +983,12 @@ $messages['pt'] = array(
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
+ * @author Giro720
  */
 $messages['pt-br'] = array(
 	'chemicalsources' => 'Fontes de química',
 	'chemicalsource-desc' => 'Adiciona a marca <nowiki><chemform></nowiki> para fórmulas químicas',
+	'chemicalsources-desc' => '[[Special:ChemicalSources|Página especial]] para fontes químicas',
 	'chemFunctions_ListPage' => 'Fontes de química',
 	'chemFunctions_DataList' => 'Abaixo está uma lista de ligações para sítios que oferecem informação sobre a substância química que procura.<br /><br />
 * <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Composto $MIXCASNameFormula no NIST</a><br />
@@ -998,7 +1008,7 @@ $messages['ro'] = array(
 	'chemicalsources' => 'Surse pentru chimie',
 	'chemicalsource-desc' => 'Adaugă eticheta <nowiki><chemform></nowiki>, pentru formule chimice',
 	'chemFunctions_ListPage' => 'Surse pentru chimie',
-	'chemFunctions_DataList' => 'Mai ajos este inclusă o listă de situri care pot oferi informaţii despre substanţa chimică pe care o căutaţi.<br /><br />
+	'chemFunctions_DataList' => 'Mai ajos este inclusă o listă de situri care pot oferi informații despre substanța chimică pe care o căutați.<br /><br />
 * <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Compusul $MIXCASNameFormula la NIST</a><br />
 * <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS la Universitatea Oxford (nu permite căutare)</a><br />',
 	'chemFunctions_CAS' => 'Număr CAS',
@@ -1089,8 +1099,10 @@ $messages['sk'] = array(
 $messages['sl'] = array(
 	'chemicalsources' => 'Kemijski viri',
 	'chemicalsource-desc' => 'Doda etiketo <nowiki><chemform></nowiki> za prikaz kemijskih formul',
+	'chemicalsources-desc' => '[[Special:ChemicalSources|Posebna stran]] za kemijske vire',
 	'chemFunctions_ListPage' => 'Kemijski viri',
 	'chemFunctions_CAS' => 'Število CAS',
+	'chemFunctions_ATCCode' => 'Oznaka ATC',
 	'chemFunctions_Formula' => 'Formula',
 	'chemFunctions_Name' => 'Ime po IUPAC',
 	'chemFunctions_ChemFormInputError' => 'Chemform: Napaka pri vnosu!',
@@ -1244,6 +1256,7 @@ $messages['tl'] = array(
 $messages['tr'] = array(
 	'chemicalsources' => 'Kimyasal kaynaklar',
 	'chemicalsource-desc' => 'Kimyasal formüller için, <nowiki><chemform></nowiki> etiketini ekler',
+	'chemicalsources-desc' => 'Kimyasal kaynaklar için [[Special:ChemicalSources|özel sayfa]]',
 	'chemFunctions_ListPage' => 'Kimyasal kaynaklar',
 	'chemFunctions_DataList' => 'Aşağıdaki, aradığınız kimyasal madde hakkında bilgi sağlayabilecek sitelere bağlantıların bir listesidir.<br /><br />
 * <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">NIST\'de Bileşik $MIXCASNameFormula</a><br />

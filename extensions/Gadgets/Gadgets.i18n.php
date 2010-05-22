@@ -369,7 +369,7 @@ Denne oversigtsside giver simpel adgang til de beskedsider som definerer hver ga
 $messages['de'] = array(
 	'gadgets-desc' => 'Ermöglicht Benutzern, in ihren [[Special:Preferences|persönlichen Einstellungen]] vordefinierte [[Special:Gadgets|CSS- und JavaScript-Helferlein]] zu aktivieren',
 	'prefs-gadgets' => 'Helferlein',
-	'gadgets-prefstext' => 'Liste von speziellen Helferlein die für jeden Benutzer aktiviert werden können.
+	'gadgets-prefstext' => 'Liste von speziellen Helferlein, die für jeden Benutzer aktiviert werden können.
 Die Helferlein basieren zumeist auf JavaScript, daher muss JavaScript im Browser aktiviert sein, damit sie funktionieren.
 Die Helferlein funktionieren allerdings nicht auf dieser Seite mit persönlichen Einstellungen.
 
@@ -900,6 +900,7 @@ Tinjoan iki mènèhi aksès sing gampang menyang kaca-kaca pesen sistem sing nga
  */
 $messages['ka'] = array(
 	'prefs-gadgets' => 'გაჯეტები',
+	'gadgets-title' => 'გაჯეტები',
 );
 
 /** Kazakh (Arabic script) (‫قازاقشا (تٴوتە)‬) */
@@ -985,6 +986,13 @@ $messages['ko'] = array(
 	'gadgets-pagetext' => '[[Special:Preferences|사용자 환경 설정]]에서 설정할 수 있는 소도구 목록입니다. 해당 목록은 [[MediaWiki:Gadgets-definition|소도구 정의]]에서 편집할 수 있습니다.
 이 문서에서는 각 소도구의 각 설명 문서/코드의 시스템 메시지 링크를 제공합니다.',
 	'gadgets-uses' => '다음 코드를 이용',
+);
+
+/** Karachay-Balkar (Къарачай-Малкъар)
+ * @author Iltever
+ */
+$messages['krc'] = array(
+	'gadgets' => 'Гаджетле',
 );
 
 /** Colognian (Ripoarisch)
@@ -1387,7 +1395,7 @@ Esta visão geral proporciona um acesso fácil para as mensagens de sistema que 
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
-	'gadgets-desc' => 'Permite utilizatorilor să îşi aleagă [[Special:Gadgets|gadgeturi CSS şi JavaScript]] în [[Special:Preferences|preferinţele]] lor',
+	'gadgets-desc' => 'Permite utilizatorilor să își aleagă [[Special:Gadgets|gadgeturi CSS și JavaScript]] în [[Special:Preferences|preferințele]] lor',
 	'prefs-gadgets' => 'Gadgeturi',
 	'gadgets' => 'Gadgeturi',
 	'gadgets-title' => 'Gadgeturi',
@@ -1794,6 +1802,7 @@ $messages['zh-hans'] = array(
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
+ * @author Horacewai2
  * @author Mark85296341
  * @author Shinjiman
  */
@@ -1807,7 +1816,8 @@ $messages['zh-hant'] = array(
 亦都同時留意這些小工具的特殊頁面不是MediaWiki軟件的一部份，通常都是由您本地的wiki中開發以及維護。本地管理員可以在[[MediaWiki:Gadgets-definition]]以及[[Special:Gadgets]]編輯可供使用的小工具。',
 	'gadgets' => '小工具',
 	'gadgets-title' => '小工具',
-	'gadgets-pagetext' => '以下是一個按照[[MediaWiki:Gadgets-definition]]的定義特殊小工具清單，用戶可以在它們的參數設置頁面中啟用它們。
+	'gadgets-pagetext' => '以下是一個按照[[MediaWiki:Gadgets-definition]]的定義特殊小工具清單，用戶可以在它們的[[Special:Preferences|參數設置頁面]]中啟用它們。
+
 這個概覽提供的系統資訊頁面的簡易存取，可以定義每個小工具的描述以及原碼。',
 	'gadgets-uses' => '使用',
 );

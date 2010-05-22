@@ -25,7 +25,7 @@ $aliases['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'Book' => array( 'كتاب', 'مجموعة' ),
+	'Book' => array( 'كتاب', 'مجموعه' ),
 );
 
 /** Assamese (অসমীয়া) */
@@ -61,6 +61,11 @@ $aliases['dsb'] = array(
 /** Greek (Ελληνικά) */
 $aliases['el'] = array(
 	'Book' => array( 'Συλλογή' ),
+);
+
+/** Esperanto (Esperanto) */
+$aliases['eo'] = array(
+	'Book' => array( 'Libro' ),
 );
 
 /** Spanish (Español) */
@@ -205,7 +210,7 @@ $aliases['nn'] = array(
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
 $aliases['no'] = array(
-	'Book' => array( 'Samling' ),
+	'Book' => array( 'Bok', 'Samling' ),
 );
 
 /** Occitan (Occitan) */

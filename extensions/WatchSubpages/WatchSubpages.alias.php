@@ -20,7 +20,7 @@ $aliases['ar'] = array(
 
 /** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
-	'WatchSubpages' => array( 'مراقبة_الصفحات_الفرعية' ),
+	'WatchSubpages' => array( 'مراقبة_الصفح_الفرعيه' ),
 );
 
 /** Bosnian (Bosanski) */

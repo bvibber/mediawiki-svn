@@ -24,6 +24,11 @@ $aliases['arz'] = array(
 	'Plotters' => array( 'طابعات' ),
 );
 
+/** Spanish (Español) */
+$aliases['es'] = array(
+	'Plotters' => array( 'Gráficos' ),
+);
+
 /** Japanese (日本語) */
 $aliases['ja'] = array(
 	'Plotters' => array( 'プロッター' ),
@@ -32,5 +37,10 @@ $aliases['ja'] = array(
 /** Macedonian (Македонски) */
 $aliases['mk'] = array(
 	'Plotters' => array( 'Цртачи' ),
+);
+
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬) */
+$aliases['no'] = array(
+	'Plotters' => array( 'Plottere' ),
 );
 

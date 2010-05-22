@@ -50,23 +50,25 @@ $aliases['ar'] = array(
 /** Egyptian Spoken Arabic (مصرى) */
 $aliases['arz'] = array(
 	'Ask' => array( 'سؤال' ),
-	'Browse' => array( 'تصفح' ),
-	'ExportRDF' => array( 'تصدير_آر_دى_إف' ),
-	'PageProperty' => array( 'خاصية_الصفحة' ),
-	'Properties' => array( 'خصائص' ),
-	'SMWAdmin' => array( 'إدارى_سمو' ),
-	'SearchByProperty' => array( 'بحث_بواسطة_الخاصية' ),
-	'SemanticStatistics' => array( 'إحصاءات_سيمانتيك' ),
-	'Types' => array( 'أنواع' ),
-	'URIResolver' => array( 'محلل_يو_آر_آى' ),
-	'UnusedProperties' => array( 'خصائص_مش_مستخدمة' ),
-	'WantedProperties' => array( 'خصائص_مطلوبة' ),
+	'Browse' => array( 'براوز' ),
+	'ExportRDF' => array( 'تصدير_RDF' ),
+	'PageProperty' => array( 'خاصية_الصفحه' ),
+	'Properties' => array( 'خصايص' ),
+	'SMWAdmin' => array( 'ادارى_SMW' ),
+	'SearchByProperty' => array( 'دوّر_بالخاصيه' ),
+	'SemanticStatistics' => array( 'إحصائيات_Semantic' ),
+	'Types' => array( 'انواع' ),
+	'URIResolver' => array( 'URI_Resolver' ),
+	'UnusedProperties' => array( 'خصايص_مش_مستعمله' ),
+	'WantedProperties' => array( 'خصايص_مطلوبه' ),
 );
 
 /** Breton (Brezhoneg) */
 $aliases['br'] = array(
 	'Ask' => array( 'Goulenn' ),
 	'Browse' => array( 'Furchal' ),
+	'ExportRDF' => array( 'EzorzhiañRDF' ),
+	'PageProperty' => array( 'PerzhioùPajenn' ),
 	'Properties' => array( 'Perzhioù' ),
 	'Types' => array( 'Seurtoù' ),
 );
@@ -271,7 +273,7 @@ $aliases['lb'] = array(
 	'SearchByProperty' => array( 'No Eegeschaft sichen' ),
 	'SemanticStatistics' => array( 'Semantesch Statistiken' ),
 	'Types' => array( 'Datentypen' ),
-	'UnusedProperties' => array( 'Netbenotzen Eegeschaften' ),
+	'UnusedProperties' => array( 'Netbenotzten Eegeschaften' ),
 	'WantedProperties' => array( 'Gewënschten Eegeschaften' ),
 );
 
@@ -355,6 +357,7 @@ $aliases['no'] = array(
 	'ExportRDF' => array( 'Eksporter RDF' ),
 	'PageProperty' => array( 'Sideegenskaper' ),
 	'Properties' => array( 'Egenskaper' ),
+	'SMWAdmin' => array( 'SMW-administrasjon' ),
 	'SearchByProperty' => array( 'Søk etter egenskap' ),
 	'SemanticStatistics' => array( 'Semantisk statistikk' ),
 	'Types' => array( 'Typer' ),
@@ -390,6 +393,7 @@ $aliases['pl'] = array(
 /** Pashto (پښتو) */
 $aliases['ps'] = array(
 	'Ask' => array( 'پوښتل' ),
+	'Browse' => array( 'سپړل' ),
 	'PageProperty' => array( 'د مخ ځانتياوې' ),
 	'Properties' => array( 'ځانتياوې' ),
 	'Types' => array( 'ډولونه' ),

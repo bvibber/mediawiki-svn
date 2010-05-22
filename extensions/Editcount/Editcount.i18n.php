@@ -861,7 +861,10 @@ $messages['pms'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'editcount' => 'د سمونونو شمېر',
+	'editcount-desc' => 'د يوه کارن [[Special:Editcount|د سمونونو شمېر]] ښکاره کوي',
 	'editcount_username' => 'کارن:',
+	'editcount_submit' => 'سپارل',
 	'editcount_total' => 'ټولټال',
 );
 
@@ -899,8 +902,8 @@ $messages['rm'] = array(
  * @author Minisarm
  */
 $messages['ro'] = array(
-	'editcount' => 'Contribuţii',
-	'editcount-desc' => 'Afişează [[Special:Editcount|contribuţiile]] unui utilizator',
+	'editcount' => 'Contribuții',
+	'editcount-desc' => 'Afișează [[Special:Editcount|contribuțiile]] unui utilizator',
 	'editcount_username' => 'Utilizator:',
 	'editcount_submit' => 'Trimite',
 	'editcount_total' => 'Total',
