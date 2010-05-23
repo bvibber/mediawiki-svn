@@ -31,7 +31,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'url' => 'http://www.mediawiki.org/wiki/Extension:PureWikiDeletion',
 	'description' => 'Implements pure wiki deletion',
 	'descriptionmsg' => 'PureWikiDeletion-desc',
-	'version' => '1.0.0 alpha release',
+	'version' => '1.0.1',
 );
  
 $dir = dirname(__FILE__) . '/';
@@ -55,6 +55,7 @@ $wgHooks['GetPreferences'][] = 'PureWikiDeletionGetPreferences';
 $wgHooks['ParserFirstCallInit'][] = 'PureWikiDeletionHooks::efPureWikiDeletionParserFunction_Setup';
 $wgHooks['LanguageGetMagic'][]       = 'PureWikiDeletionHooks::efPureWikiDeletionParserFunction_Magic';
 $wgHooks['AlternateEdit'][] = 'PureWikiDeletionAlternateEditHook';
+$wgHooks['OutputPageParserOutput'][] = 'PureWikiDeletionHooks::PureWikiDeletionOutputPageParserOutputHook';
 
 $wgDefaultUserOptions['watchblank'] = 0;
 $wgDefaultUserOptions['watchunblank'] = 0;

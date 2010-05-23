@@ -9,9 +9,33 @@ EOT;
 
 class PureWikiDeletionHooks {
        
+       public static function PureWikiDeletionOutputPageParserOutputHook( &$out, $parseroutput ) {
+		$dbr = wfGetDB( DB_SLAVE );
+		$target=$out->getTitle();
+		$blank_page_id=$target->getArticleID();
+		if( $target->getNamespace() == NS_SPECIAL
+			    || $target->getNamespace() == NS_MEDIA
+			    || $target->getNamespace() == NS_FILE
+			    || $target->isExternal()) {
+			    return true;
+		     }
+	        $result=$dbr->selectRow('blanked_page','blank_page_id'
+		        ,array("blank_page_id" => $blank_page_id));
+		if (!$result){
+			return true;
+		}
+		$out->setRobotPolicy('noindex,nofollow');
+		if ($out->getPageTitle()==$target->getPrefixedText()){
+			$out->redirect($target->getEditURL());
+		}
+		
+		$out->setPageTitle($out->getPageTitle());
+		return true;
+       }
+       
        public static function PureWikiDeletionSaveCompleteHook( &$article, &$user, $text, $summary,
 	      $minoredit, $watchthis, $sectionanchor, &$flags, $revision, &$status, $baseRevId ){
-	      if (!isset($revision)){
+		     if (!isset($revision)){
 		     return true;
 	      }
 	      $mTitle=$article->getTitle();
@@ -46,7 +70,7 @@ class PureWikiDeletionHooks {
 			    $myWatched->addWatch();
 			    $watchthis=true;
 		     }
-		     } else {
+		} else {
 			    $dbr = wfGetDB( DB_SLAVE );
 			    $blank_page_id=$article->getID();
 			    $result=$dbr->selectRow('blanked_page','blank_page_id'
