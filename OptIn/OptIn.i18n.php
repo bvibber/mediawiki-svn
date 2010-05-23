@@ -232,6 +232,8 @@ $messages['aln'] = array(
  * @author Juanpabl
  */
 $messages['an'] = array(
+	'optin-survey-yes' => 'Sí',
+	'optin-survey-no' => 'No',
 	'optin-survey-answer-whyoptout-other' => 'Atra razón:',
 	'optin-survey-answer-changes-other' => 'Atros:',
 );

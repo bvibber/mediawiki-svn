@@ -713,6 +713,14 @@ $messages['tk'] = array(
 	'vector-simplesearch-containing' => 'öz içine alýar...',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'vector-simplesearch-search' => 'Maghanap',
+	'vector-simplesearch-containing' => 'naglalaman ng ...',
+);
+
 /** Turkish (Türkçe)
  * @author Joseph
  */

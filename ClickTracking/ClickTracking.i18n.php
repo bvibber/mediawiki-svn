@@ -966,6 +966,7 @@ $messages['ka'] = array(
 	'ct-end-date' => 'დამთავრების თარიღი (წწწწთთდდ)',
 	'ct-change-graph' => 'გრაფიკის შეცვლა',
 	'ct-beginner' => 'დამწყები',
+	'ct-intermediate' => 'შუალედური',
 	'ct-expert' => 'ექსპერტი',
 	'ct-date-range' => 'თარიღის დიაპაზონი',
 	'ct-editing' => 'ამჟამად რედაქტირდება:',
@@ -1698,6 +1699,34 @@ $messages['tk'] = array(
 	'ct-user-span' => 'Wagtyň dowamynda ulanyjy goşantlary',
 	'ct-and' => 'we',
 	'ct-update-table' => 'Tablisany täzele',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'clicktracking' => 'papindot na pagsubaybay sa Pasimula ng Pagkanagagamit',
+	'clicktracking-desc' => 'Papindot na pangpagsubaybay para sa pagsubaybay ng  mga kaganapang hindi nakakasanhi ng pagsariwa ng isang pahina',
+	'ct-title' => 'Tinipong mga pagpindot ng tagagamit',
+	'ct-event-name' => 'Pangalan ng kaganapan',
+	'ct-expert-header' => 'Mga pagpindot na "dalubhasa"',
+	'ct-intermediate-header' => 'Mga pagpindot na "nasa pagitan"',
+	'ct-beginner-header' => 'Mga pagpindot na "pambaguhan"',
+	'ct-total-header' => 'Kabuoan ng mga pagpindot',
+	'ct-start-date' => 'Simula ng Petsa (TTTTBBAA)',
+	'ct-end-date' => 'Pangwakas na Petsa (TTTTBBAA)',
+	'ct-increment-by' => 'Bilang ng mga araw na kinakatawan ng bawat punto ng dato',
+	'ct-change-graph' => 'Baguhin ang talangguhit',
+	'ct-beginner' => 'Baguhan',
+	'ct-intermediate' => 'Panggitna',
+	'ct-expert' => 'Dalubhasa',
+	'ct-date-range' => 'Sakop na petsa',
+	'ct-editing' => 'Kasalukuyang pinapatnugutan:',
+	'ct-anon-users' => 'Hindi nakikilalang mga tagagamit',
+	'ct-user-contribs' => 'Kabuuan ng mga ambag ng tagagamit',
+	'ct-user-span' => 'Mga ambag ng tagagamit sa loob ng dangkal ng panahon',
+	'ct-and' => 'at',
+	'ct-update-table' => 'Isapanahon ang tabla',
 );
 
 /** Turkish (Türkçe)

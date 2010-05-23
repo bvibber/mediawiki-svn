@@ -1045,6 +1045,21 @@ $messages['tk'] = array(
 	'wikieditor-publish-dialog-goback' => 'Yza gaýt',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'wikieditor-publish-preference' => 'Paganahin ang hakbang-hakbang na paglalathala',
+	'wikieditor-publish-button-publish' => 'Ilathala',
+	'wikieditor-publish-button-cancel' => 'Huwag ituloy',
+	'wikieditor-publish-dialog-title' => 'Ilathala sa {{SITENAME}}',
+	'wikieditor-publish-dialog-summary' => 'Buod ng pagbabago (maikling ilarawan ang mga pagbabagong ginawa mo):',
+	'wikieditor-publish-dialog-minor' => 'Maliit na pagbabago',
+	'wikieditor-publish-dialog-watch' => 'Bantayan ang pahinang ito',
+	'wikieditor-publish-dialog-publish' => 'Ilathala',
+	'wikieditor-publish-dialog-goback' => 'Bumalik',
+);
+
 /** Turkish (Türkçe)
  * @author Joseph
  * @author Vito Genovese

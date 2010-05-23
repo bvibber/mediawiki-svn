@@ -388,6 +388,13 @@ $messages['sv'] = array(
 	'wikieditor-highlight-preference' => 'Aktivera markering av syntax vid redigering',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'wikieditor-highlight-preference' => 'Paganahin ang pagpapatingkad-kulay ng sintaks kapag namamatnugot',
+);
+
 /** Turkish (Türkçe)
  * @author Vito Genovese
  */
