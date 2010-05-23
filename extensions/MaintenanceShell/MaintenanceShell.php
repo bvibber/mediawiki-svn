@@ -139,7 +139,7 @@ function wfMsg_MS($key)
 	$args = func_get_args();
    array_shift( $args );
 
-	if (array_key_exists($key, $messages[$wgMaintenanceShellLang])) // FIXME
+	if ( array_key_exists( $wgMaintenanceShellLang, $messages ) && array_key_exists( $key, $messages[$wgMaintenanceShellLang] ) ) { 
 	{	$ret = $messages[$wgMaintenanceShellLang][$key];
 	}
 	else
