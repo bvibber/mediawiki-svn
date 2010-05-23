@@ -51,8 +51,9 @@ class ExternalStoreCassandra {
 	function fetchFromURL( $url ) {
 		global $wgCassandraReadConsistency, $wgCassandraColumnFamily;
 
+		$this->connect( $url );
+
 		try {
-			$this->connect( $url );
 			$splitted = explode( '/', $url );
 			$key = end( $splitted );
 
@@ -105,7 +106,7 @@ class MWCassandraException extends MWException {
 	
 	public function __construct( TException $e ) {
 		$this->innerException = $e;
-		parent::__construct( 'Cassandra error ' . get_class( $e ) . ': ' . $e->why
+		parent::__construct( 'Cassandra error ' . get_class( $e ) . ': ' . $e->getMessage()
 			. "\n\nStack trace: " . $e->getTraceAsString()
 		);
 	}
