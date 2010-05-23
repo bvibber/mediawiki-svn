@@ -14,6 +14,9 @@ $dir = dirname( __FILE__ ) . '/';
 
 $wgExtensionMessagesFiles['AjaxQueryPages'] = $dir . 'AjaxQueryPages.i18n.php';
 
+$wgHooks['AjaxAddScript'][] = 'wfAjaxQueryPagesAddJS';
+$wgAjaxExportList[] = 'wfAjaxQueryPages';
+
 // Load hooks
 require_once( $dir . 'Hooks.php' );
 
