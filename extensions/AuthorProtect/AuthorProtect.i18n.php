@@ -66,6 +66,13 @@ $messages['am'] = array(
 	'authorprotect-failure' => 'ቁለፋው አልተሳካም!',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'authorprotect-reason' => 'Razón:',
+);
+
 /** Arabic (العربية)
  * @author Alnokta
  * @author Meno25
@@ -1473,6 +1480,7 @@ $messages['tl'] = array(
 	'authorprotect-failure' => 'Hindi nagtagumpay ang pagsasanggalang',
 	'protect-level-author' => 'Isanggalang mula sa hindi mga may-akda',
 	'restriction-level-author' => 'Nakasanggalang para sa may-akda',
+	'right-authorprotect' => 'Prutektahan ang inakdaang mga pahina',
 );
 
 /** Turkish (Türkçe)

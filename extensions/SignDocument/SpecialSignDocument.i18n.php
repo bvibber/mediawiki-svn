@@ -593,6 +593,8 @@ $messages['br'] = array(
 	'signdocument' => 'Sinañ an teul',
 	'sign-nodocselected' => "Diuzit an teul hoc'h eus c'hoant da sinañ, mar plij.",
 	'sign-selectdoc' => 'Teul :',
+	'sign-docheader' => 'Grit gant ar furmskrid-mañ evit sinañ ar teul "[[$1]]," diskouezet dindan.
+Lennit-pizh an teul ha, mar fell deoc\'h embann ho skoazell, leugnit ar maeziennoù rekis evit e sinañ.',
 	'sign-error-nosuchdoc' => "N'eus ket eus an teul ($1) hoc'h eus goulennet.",
 	'sign-realname' => 'Anv :',
 	'sign-address' => "Chomlec'h :",
@@ -604,6 +606,7 @@ $messages['br'] = array(
 	'sign-bday' => 'Oad :',
 	'sign-email' => "Chomlec'h postel :",
 	'sign-indicates-req' => '<small><i><font color="red">*</font> diskouez a ra ar maeziennoù ret.</i></small>',
+	'sign-hide-note' => '<small><i><font color="red">**</font> Notenn : Gallout a raio atav an habaskerien lenn an titouroù n\'int ket bet rollet.</i></small>',
 	'sign-list-anonymous' => 'Rollañ en un doare dianv',
 	'sign-list-hideaddress' => "Chom hep menegiñ ar chomlec'h",
 	'sign-list-hideextaddress' => "Arabat menegiñ ar gêr, ar stad (departamant), ar c'hod post pe ar vro",
@@ -611,6 +614,14 @@ $messages['br'] = array(
 	'sign-list-hidebday' => 'Chom hep menegiñ an oad',
 	'sign-list-hideemail' => "Chom hep menegiñ ar chomlec'h postel",
 	'sign-submit' => 'Sinañ an teul',
+	'sign-information' => "<div class=\"noarticletext\">Ho trugarekaat da vezañ kemeret amzer da lenn an teul-mañ penn-da-benn.
+M'emaoc'h a-du gantañ, embannit ho skoazell en ur leuniañ ar maeziennoù rekis a-is ha klikit war \"Sinañ an teul\".
+Gwiriit mat eo reizh ho titouroù personel hag e c'hallomp mont e darempred ganeoc'h en un doare bennak evit gwiriañ piv oc'h.
+Notit ma vo enrollet ho chomlec'h IP ha titouroù all gant ar furmskrid-mañ; implijet e vint gant an habaskerien evit skarzhañ ar sinadurioù doubl ha kadarnaat reizhder an titouroù merket.
+Dre ma n'hallomp ket ober se pa implijer proksioù digor ha dianavout ne vo ket kontet ar sinadurioù o tont diwar seurt proksioù. 
+Mard oc'h kevreet dre ur servijer proksi, digevreit ha grit gant ur gevreadenn voutin evit sinañ.</div>
+
+\$1",
 	'sig-success' => "Sinet hoc'h eus an teul.",
 	'sign-view-selectfields' => "'''Maeziennoù da ziskwel :'''",
 	'sign-viewfield-entryid' => 'Id ar gasadenn',

@@ -2732,6 +2732,7 @@ Magbalik sa:
 * [[Special:CrosswikiBlock|Pormularyo ng paghadlang]]
 * [[$4]]",
 	'crosswikiunblock-local' => 'Hindi tinatangkilik ang pampook na mga paghahadlang sa pamamagitan ng ugnayang-hangganang ito. Gamitin ang [[Special:IPBlockList|{{int:ipblocklist}}]]',
+	'right-crosswikiblock' => 'Hadlangan at huwag hadlangang ang mga tagagamit na nasa iba pang mga wiki',
 );
 
 /** Turkish (Türkçe)

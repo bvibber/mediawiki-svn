@@ -1473,9 +1473,11 @@ $messages['mr'] = array(
 );
 
 /** Maltese (Malti)
+ * @author Chrisportelli
  * @author Roderick Mallia
  */
 $messages['mt'] = array(
+	'changeauthor-pagenameform-go' => 'Mur',
 	'changeauthor-comment' => 'Kumment:',
 );
 

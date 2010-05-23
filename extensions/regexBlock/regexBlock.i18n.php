@@ -2002,6 +2002,7 @@ $messages['ms'] = array(
 $messages['mt'] = array(
 	'regexblock-already-blocked' => '"$1" diġà bblokkjat',
 	'regexblock-expire-duration' => 'siegħa,sagħtejn,4 sigħat,6 sigħat,ġurnata,3 ġranet,ġimgħa,ġimgħatejn,xahar,3 xhur,6 xhur,sena,infinta',
+	'regexblock-view-go' => 'Mur',
 );
 
 /** Erzya (Эрзянь)

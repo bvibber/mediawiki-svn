@@ -108,9 +108,10 @@ $messages['gsw'] = array(
 
 /** Hebrew (עברית)
  * @author Amire80
+ * @author Rotemliss
  */
 $messages['he'] = array(
-	'wikieditor-addMediaWizard-preference' => 'הפעלת גאדג\'ט "אשף הוספת מדיה"',
+	'wikieditor-addMediaWizard-preference' => 'הפעלת הסקריפט "אשף הוספת מדיה"',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -153,6 +154,13 @@ $messages['it'] = array(
  */
 $messages['ja'] = array(
 	'wikieditor-addMediaWizard-preference' => '「メディア追加ウィザード」ガジェットを有効化する',
+);
+
+/** Georgian (ქართული)
+ * @author BRUTE
+ */
+$messages['ka'] = array(
+	'wikieditor-addMediaWizard-preference' => '"დაამატეთ მედია ოსტატი" გაჯეტის ჩართვა',
 );
 
 /** Korean (한국어)
@@ -245,6 +253,13 @@ $messages['ru'] = array(
  */
 $messages['sv'] = array(
 	'wikieditor-addMediaWizard-preference' => 'Aktivera "Lägg till media guiden" finessen',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'wikieditor-addMediaWizard-preference' => 'Paganahin ang gadyet na "Magdagdag ng media wizard"',
 );
 
 /** Turkish (Türkçe)

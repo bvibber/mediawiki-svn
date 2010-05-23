@@ -12815,14 +12815,19 @@ $messages['sah'] = array(
 );
 
 /** Sardinian (Sardu)
+ * @author Andria
  * @author Cedric31
  */
 $messages['sc'] = array(
-	'wikieditor-toolbar-tool-heading-1' => 'Livèddu 1',
-	'wikieditor-toolbar-tool-heading-2' => 'Livèddu 2',
-	'wikieditor-toolbar-tool-heading-3' => 'Livèddu 3',
-	'wikieditor-toolbar-tool-heading-4' => 'Livèddu 4',
-	'wikieditor-toolbar-tool-heading-5' => 'Livèddu 5',
+	'wikieditor-toolbar-tool-bold' => 'Grassu',
+	'wikieditor-toolbar-tool-bold-example' => 'Testu grassu',
+	'wikieditor-toolbar-tool-italic' => 'Corsivu',
+	'wikieditor-toolbar-tool-italic-example' => 'Testu corsivu',
+	'wikieditor-toolbar-tool-heading-1' => 'Livellu 1',
+	'wikieditor-toolbar-tool-heading-2' => 'Livellu 2',
+	'wikieditor-toolbar-tool-heading-3' => 'Livellu 3',
+	'wikieditor-toolbar-tool-heading-4' => 'Livellu 4',
+	'wikieditor-toolbar-tool-heading-5' => 'Livellu 5',
 	'wikieditor-toolbar-tool-heading-example' => 'Testu de su tìtulu',
 );
 

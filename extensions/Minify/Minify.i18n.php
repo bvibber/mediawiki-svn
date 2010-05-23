@@ -272,6 +272,13 @@ $messages['sv'] = array(
 	'minify-desc' => 'Minimerar CSS och JavaScript i utdata från action=raw',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'minify-desc' => 'Pinapaliit mga lumalabas mula sa CSS and JavaScript mula sa action=raw',
+);
+
 /** Turkish (Türkçe)
  * @author Vito Genovese
  */

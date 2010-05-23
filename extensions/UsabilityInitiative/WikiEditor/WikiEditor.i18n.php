@@ -631,6 +631,16 @@ $messages['tk'] = array(
 	'wikieditor-wikitext-tab' => 'Wikitekst',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'wikieditor' => 'Mas masulong na dugtungang-mukha na pambago ng wikiteksto',
+	'wikieditor-desc' => 'Nagbibigay ng maidurugtong na dugtungang-mukha na pambago ng wikiteksto at maraming mga modulong nagbibigay ng katangiang-kasangkapan',
+	'wikieditor-wikitext-tab' => 'Wikiteksto',
+	'wikieditor-loading' => 'Ikinakarga',
+);
+
 /** Turkish (Türkçe)
  * @author Joseph
  * @author Vito Genovese

@@ -529,6 +529,16 @@ $messages['tk'] = array(
 	'externalpages-no-page' => 'Hiç hili sahypa görkezilmedi',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'externalpages' => 'Panlabas na mga Pahina',
+	'externalpages-desc' => 'Nagbabawi at nagpapakita ng mga pahina mula sa malalayong mga sityong WMF',
+	'externalpages-bad-page' => 'Tumutukoy ng masamang pahina',
+	'externalpages-no-page' => 'Walang tinukoy na pahina',
+);
+
 /** Turkish (Türkçe)
  * @author Joseph
  */

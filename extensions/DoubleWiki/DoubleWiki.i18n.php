@@ -427,6 +427,13 @@ $messages['pms'] = array(
 	'doublewiki-desc' => "A presenta na pàgina e soa tradussion da n'àutra wiki an doe colone ëd la midema pàgina",
 );
 
+/** Western Punjabi (پنجابی)
+ * @author Arslan
+ */
+$messages['pnb'] = array(
+	'doublewiki-desc' => 'دوجے وکی توں، ورقے تے اودھا ترجمہ اوس ورقے دے دو کالماں تےوکھاندا اے۔',
+);
+
 /** Pashto (پښتو)
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */

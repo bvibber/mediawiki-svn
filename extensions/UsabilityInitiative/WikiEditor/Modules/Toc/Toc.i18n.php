@@ -615,6 +615,15 @@ $messages['tk'] = array(
 	'wikieditor-toc-hide' => 'Mazmuny gizle',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'wikieditor-toc-preference' => 'Paganahin ang malilibot na tabla ng mga nilalaman',
+	'wikieditor-toc-show' => 'Ipakita ang mga nilalaman',
+	'wikieditor-toc-hide' => 'Itago ang mga nilalaman',
+);
+
 /** Turkish (Türkçe)
  * @author Joseph
  * @author Vito Genovese

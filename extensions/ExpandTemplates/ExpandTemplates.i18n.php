@@ -2008,6 +2008,7 @@ Ginagawa ito nito sa pamamagitan ng pagtawag sa mga kaugnay na mga tanghalang pa
 	'expand_templates_xml_output' => 'kinalabasang XML',
 	'expand_templates_ok' => "Sige/Ayos 'yan",
 	'expand_templates_remove_comments' => 'Tanggalin ang mga puna (kumento)',
+	'expand_templates_remove_nowiki' => 'Pigilin ang mga tatak na <nowiki> sa loob ng resulta',
 	'expand_templates_generate_xml' => 'Ipakita ang puno na pambanghay ng XML',
 	'expand_templates_preview' => 'Paunang tingin',
 );

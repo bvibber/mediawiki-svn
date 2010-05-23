@@ -637,9 +637,9 @@ $messages['te'] = array(
 $messages['tl'] = array(
 	'editsimilar-desc' => 'Humihimok sa mga tagagamit na bumago ng isang katulad na pahina pagkaraan magsagip ng isang pahina',
 	'editsimilar-thanks' => 'Salamat sa iyong ambag.
-Suriin ang kaugnay na mga pahinang ito: $1.',
+Suriin ang {{PLURAL:$2|kaugnay na pahinang ito|kaugnay na mga pahinang ito}}: $1.',
 	'editsimilar-thanks-notsimilar' => 'Salamat sa iyong ambag. 
-Mapapakinabangan din ng mga pahinang ito ang tulong mo: $1.',
+Mapapakinabangan din ng {{PLURAL:$2|pahinang ito|mga pahinang ito }} ang tulong mo: $1.',
 	'editsimilar-thankyou' => 'Salamat sa iyong ambag, $1!',
 	'editsimilar-link-disable' => 'itakda ang mga kagustuhan',
 	'tog-edit-similar' => 'Paganahin ang mga mungkahi para sa katulad na mga pahina',

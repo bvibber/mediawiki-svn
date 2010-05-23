@@ -291,6 +291,7 @@ $messages['an'] = array(
 	'deletequeue-delnom-otherreason' => 'Atra razón',
 	'deletequeue-list-header-page' => 'Pachina',
 	'deletequeue-case-page' => 'Pachina:',
+	'deletequeue-case-reason' => 'Razón:',
 );
 
 /** Arabic (العربية)

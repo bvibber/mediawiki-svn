@@ -601,6 +601,16 @@ $messages['te'] = array(
 	'wikieditor-template-editor-dialog-cancel' => 'రద్దుచేయి',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'wikieditor-template-editor-preference' => 'Paganahin ang pagpapatnugot ng mga suleras na pangwiki na nakasalalay sa pormularyo',
+	'wikieditor-template-editor-dialog-title' => 'Baguhin ang suleras',
+	'wikieditor-template-editor-dialog-submit' => 'Isapanahon',
+	'wikieditor-template-editor-dialog-cancel' => 'Huwag ituloy',
+);
+
 /** Turkish (Türkçe)
  * @author Joseph
  */

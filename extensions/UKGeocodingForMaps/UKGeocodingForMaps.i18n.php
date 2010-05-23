@@ -221,3 +221,12 @@ $messages['ru'] = array(
 	'ukgeocoding_couldNotGeocode' => 'Один или несколько почтовых кодов не могут быть геокодированы, они были исключены из карты.',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'ukgeocoding_name' => 'Pagge-geokodigong UK para sa mga Mapa',
+	'ukgeocoding_desc' => 'Nagdurugtong ng mga Mapa na may isang pareser na tungkuling para sa display_uk_point na may pagpapatupad na Mga Mapa ng Google',
+	'ukgeocoding_couldNotGeocode' => 'Hindi mageokodigong ang isa o mahigit pang mga kodigong postal at inalis mula sa mapa.',
+);
+

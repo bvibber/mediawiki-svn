@@ -1914,8 +1914,10 @@ riddler|''Riddler'' (\"Mambubugtong\")",
 	'vote-results-choice' => 'Pinili',
 	'vote-results-count' => 'Bilang',
 	'vote-results-none' => 'Wala pang iniligay na mga boto/paghalal sa panahong (oras) ito.',
-	'vote-login' => 'Dapat kang [$1 lumagda/tumala] para makapaghalal/makaboto.',
+	'vote-login' => 'Dapat kang [$1 lumagdang papasok] upang makaboto.',
 	'vote-invalid-choice' => 'Dapat kang pumili ng isa mula sa makukuhang mga pagpipilian.',
+	'right-vote' => 'Bumoto',
+	'right-voteadmin' => 'Tingnan ang mga resulta ng pagboto',
 );
 
 /** Turkish (Türkçe)

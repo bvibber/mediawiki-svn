@@ -1547,6 +1547,7 @@ $messages['tl'] = array(
 	'spamdifftool' => "Pangasiwaan ang talaan ng pinagbabawalang mga \"manlulusbo\" (''spam'')",
 	'spamdifftool-desc' => "Nagbibigay ng isang payak na paraan ng pagdaragdag ng bagong mga entrada/lahok sa talaan ng pinagbabawalang mga \"manlulusob\" (''spam'') mula sa iba't ibang mga pahina",
 	'spamdifftool_cantedit' => "Paumanhin - wala kang pahintulot na baguhin ang talaan ng pinagbabawalang mga \"manlulusob\" (''spam'').",
+	'spamdifftool-no-title' => "'''Kamalian:''' walang tinukoy na pamagat ng pahina.",
 	'spamdifftool_notext' => "Walang tekstong mapagdaragdagan ng talaan ng pinagbabawalang mga \"manlulusob\" (''spam'').
 Pindutin <a href='\$1'>dito</a> upang makapagpatuloy.",
 	'spamdifftool_confirm' => "Tiyakin kung ibig mong idagdag ang mga lahok (entrada) na ito sa talaan ng pinagbabawalang mga \"manlulusob\" (''spam'').

@@ -414,6 +414,13 @@ $messages['te'] = array(
 	'categorytests-desc' => 'వర్గముల పరీక్షకు ఫంక్షన్సు',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'categorytests-desc' => 'Mga tungkulin para sa pagsubok ng kategorya',
+);
+
 /** Turkish (Türkçe)
  * @author Vito Genovese
  */

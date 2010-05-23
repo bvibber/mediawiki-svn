@@ -930,6 +930,9 @@ $messages['tl'] = array(
 	'ajaxLogin2' => 'Nakatitiyak ka ba?
 Maaaring mawala ang mga pagbabago mo sa pahinang ito kapag nilisan mo ngayon ang pahinang ito.',
 	'ajaxlogin-create' => 'Lumikha ng isang akawnt',
+	'al-nosuchuser' => 'Walang tagagamit na may pangalang "$1".
+Maramdamin sa pagtipa ang mga pangalan ng tagagamit.
+Suriin ang iyong pagbabaybay.',
 );
 
 /** Turkish (Türkçe)

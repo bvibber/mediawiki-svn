@@ -568,11 +568,14 @@ $messages['ja'] = array(
 
 /** Georgian (ქართული)
  * @author Alsandro
+ * @author BRUTE
  * @author გიორგიმელა
  */
 $messages['ka'] = array(
 	'optin-try' => 'მოსინჯეთ ბეტა',
+	'tooltip-pt-optin-try' => 'სცადეთ ახალი შესაძლებლობები',
 	'optin-leave' => 'ბეტადან გასვლა',
+	'tooltip-pt-optin-leave' => 'გამორთეთ ახალი შესაძლებლობები',
 	'optin-feedback' => 'გამოხმაურება',
 );
 

@@ -376,6 +376,13 @@ $messages['sv'] = array(
 	'userdailycontribs-desc' => 'Dagliga användarbidrag för tilläggsfunktionen klickningsspårning',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'userdailycontribs-desc' => 'Pang-araw-araw na ambag ng tagagamit para sa pagpindot ng dugtong na pangsubaybay',
+);
+
 /** Turkish (Türkçe)
  * @author Joseph
  */

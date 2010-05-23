@@ -1950,6 +1950,8 @@ $4',
 	'todo-form-details' => 'Mga detalye:',
 	'todo-form-email' => 'Upang makatanggap ng pagbibigay-alam sa pamamagitan ng e-liham kung naisara na ang bagay, makinilyahin dito ang adres mo:',
 	'todo-form-submit' => 'Ipasa/ipadala ang katanungan',
+	'right-todo' => 'May talaan ng mga gagawin',
+	'right-todosubmit' => 'Limitahan ang talaan ng karapatan na panggagawin ng tagagamit',
 );
 
 /** Turkish (Türkçe)

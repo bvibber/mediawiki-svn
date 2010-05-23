@@ -2011,6 +2011,7 @@ Nyebaraké informasi iki bisa ngakibataké hak pangawas (''oversight'') panjenen
 $messages['ka'] = array(
 	'hiderevision' => 'სამუდამოდ დამალე ცვლილებები',
 	'group-oversight' => 'რევიზორები',
+	'grouppage-oversight' => '{{ns:project}}:ოვერსაიტი',
 	'hiderevision-continue' => 'გაგრძელება',
 	'hiderevision-reason' => 'მიზეზი (ჩაიწერება დახურულ ჟურნალში)',
 	'hiderevision-submit' => 'დამალეთ მონაცემები',
@@ -2021,9 +2022,14 @@ $messages['ka'] = array(
 	'hiderevision-status' => 'ვერსია №$1: $2',
 	'hiderevision-success' => 'წარმატებით დაარქივდა და წაიშალა',
 	'hiderevision-error-missing' => 'არ არის ნაპოვნი მონაცემთა ბაზაში.',
+	'hiderevision-error-current' => 'შეუძლებელია გვერდის უკანასკნელი ცვლილების წაშლა.
+თავდაპირველად, გააუქმეთ ეს ცვლილება.',
 	'oversight-log-hiderev' => 'მოშორდა ცვლილება $1-დან',
 	'oversight-view' => 'დეტალები',
+	'oversight-prev' => 'ბოლო წინა ვერსია',
 	'oversight-hidden' => 'დამალული ვერსია',
+	'oversight-oversighter' => 'ოვერსაიტერები:',
+	'oversight-offender' => 'ვერსიის ავტორი:',
 );
 
 /** Kazakh (Arabic script) (‫قازاقشا (تٴوتە)‬)

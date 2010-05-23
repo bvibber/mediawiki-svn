@@ -1529,6 +1529,7 @@ Para sa isang talaan ng tanggap na mga proyekto, tingnan ang [[MediaWiki:TodoTas
 	'tasklistchooseproj' => 'Pumili ng proyekto:',
 	'tasklistprojdisp' => 'Palitawin',
 	'tasklistbyname' => '== Talaan ng gagawin para kay %s ==',
+	'tasklistnowguseprojects' => 'Itinakda mo ang $wgUseProjects sa "mali" at hindi magagamit ang pahinang ito.',
 	'tasklistnoprojects' => "Kamalian: Tila mukhang pinaandar mo ang '''\$wgGamitinMgaProyekto''', ngunit hindi lumikha ng [[MediaWiki:TodoTasksValidProjects]]. Tingnan ang  [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 Mga Panuto Hinggil sa Pagluluklok (Instalasyon)] para sa mas marami pang mga detalye.",
 	'tasklistemailbody' => ',
 

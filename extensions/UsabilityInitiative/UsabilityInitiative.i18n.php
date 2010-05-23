@@ -241,6 +241,14 @@ $messages['eu'] = array(
 	'usabilityinitiative-desc' => 'Wikipediaren Erabilgarritasun Iniziatibak garatutako ezaugarriak MediaWikiren erabilgarritasuna hobetzeko.',
 );
 
+/** Persian (فارسی)
+ * @author Ebraminio
+ */
+$messages['fa'] = array(
+	'prefs-beta' => 'امکانات بتا',
+	'prefs-labs' => 'امکانات آزمایشگاهی',
+);
+
 /** Finnish (Suomi)
  * @author Crt
  * @author Str4nd

@@ -522,6 +522,13 @@ $messages['ms'] = array(
 	'searchbox-namespaces' => 'Ruang nama:',
 );
 
+/** Maltese (Malti)
+ * @author Chrisportelli
+ */
+$messages['mt'] = array(
+	'searchbox-go' => 'Mur',
+);
+
 /** Erzya (Эрзянь)
  * @author Botuzhaleny-sodamo
  */

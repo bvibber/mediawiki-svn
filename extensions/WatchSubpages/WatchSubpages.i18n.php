@@ -909,10 +909,10 @@ $messages['tl'] = array(
 	'watchsubpages-addtitles' => 'Magdagdag ng mga pahina',
 	'watchsubpages-addtitlestowatchlist' => 'Magdagdag ng mga pahina sa talaan ng mga binabantayan',
 	'watchsubpages-desc' => 'Mabilisang [[Special:WatchSubpages|idagdag ang lahat ng kabahaging mga pahina]] ng isang pahina sa talaan ng mga binabantayan',
-	'watchsubpages-form' => 'Piliin ang mga pahinang idaragdag sa iyong talaan ng mga binabantayang nasa ibaba.
-Para magdagdag ng isang pahina, lagyan ng tsek ang kahong katabi nito, at pindutin ang "Magdagdag ng mga pahina."
+	'watchsubpages-form' => 'Piliin ang mga pahinang idaragdag sa iyong talaan ng binabantayang mga pahinang  nasa ibaba.
+Para magdagdag ng isang pahina, lagyan ng tsek ang kahong katabi nito, at pindutin ang "{{int:watchsubpages-addtitles}}".
 
-Kapag naglalagay o nagtatanggal ng mga tsek sa maramihang mga pahina, ang matagalang pagpindot sa "susing pampalit" (\'\'shift key\'\') ay magpapahintulot sa iyong makapili ng magkakasunod na mga kahon sa pamamagitan ng pagpindot sa bawat katapusan ng saklaw na paglalagyan ng tsek.',
+Kapag naglalagay o nagtatanggal ng mga tsek sa maraming mga pahina, ang matagalang pagpindot sa "susing pampalit" (\'\'shift key\'\') ay magpapahintulot sa iyong makapili ng magkakasunod na mga kahong tsetsekan sa pamamagitan ng pagpindot sa bawat katapusan ng saklaw na paglalagyan ng tsek.',
 );
 
 /** Turkish (Türkçe)

@@ -253,6 +253,13 @@ $messages['te'] = array(
 	'apisvgproxy-desc' => 'ఎక్కడో ఉన్న SVG ఫైళ్ళు ప్రాంతీయ డొమైన్ ఉన్నట్లుగా చూపబడతాయి',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'apisvgproxy-desc' => 'Mga talaksang pamalit na SVG mula sa isang (maaaring malayo) taguan ng talaksan sa isang dominyong lokal',
+);
+
 /** Turkish (Türkçe)
  * @author Joseph
  */

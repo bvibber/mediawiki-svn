@@ -122,6 +122,9 @@ $messages['be-tarask'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
+	'emergencydesysop' => 'Lemel gwirioù merour war-zifrae',
+	'emergencydesysop-desc' => "Reiñ a ra an tu d'ur merour da aberzhiñ e wirioù merañ dezhañ e-unan evit gallout lemel kuit gwirioù ur merour all",
+	'emergencydesysop-title' => 'Lemel a ra ar statud merour evit an implijer red hag un merour all war an hevelep tro',
 	'emergencydesysop-otheradmin' => 'Merourien all da zistrollañ',
 	'emergencydesysop-reason' => 'Abeg evit lemel',
 	'emergencydesysop-submit' => 'Kas',
@@ -132,6 +135,7 @@ $messages['br'] = array(
 	'emergencydesysop-invalidtarget' => "N'eus ket eus an implijer buket.",
 	'emergencydesysop-blocked' => "N'hallit ket gwelet ar bajenn-mañ e-keit ha ma'z oc'h stanket",
 	'emergencydesysop-noright' => "N'hoc'h eus ket aotreoù a-walc'h evit mont d'ar bajenn-mañ",
+	'right-emergencydesysop' => 'Posupl lemel gwirioù merour un implijer all en ur goll gwirioù an-unan',
 );
 
 /** Bosnian (Bosanski)

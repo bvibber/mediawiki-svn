@@ -646,6 +646,15 @@ $messages['th'] = array(
 	'vector-editwarning-preference' => 'เตือนฉัน เมื่อฉันกำลังจะออกจากหน้าแก้ไขโดยมีข้อมูลที่ยังไม่ได้บันทึก',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'vector-editwarning-warning' => 'Ang paglisan mula sa pahinang ito ay maaaring makasanhi sa iyo ng pagkawala ng anumang mga pagbabagong ginawa mo.
+Kung nakalagda ka, maaari mong huwag paganahin ang babalang ito sa loob ng seksyong "{{int:prefs-editing}}" ng mga nais mo.',
+	'vector-editwarning-preference' => 'Magbabala sa akin kapag umalis ako sa isang pahina ng pampatnugot na hindi pa nasasagip ang mga pagbabago',
+);
+
 /** Turkish (Türkçe)
  * @author Joseph
  */

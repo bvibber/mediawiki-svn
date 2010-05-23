@@ -501,6 +501,7 @@ $messages['ja'] = array(
  */
 $messages['ka'] = array(
 	'communityvoice-ratings-scale-status-sending' => 'იგზავნება...',
+	'communityvoice-ratings-scale-status-error' => 'შეცდომა გაიგზავნა!',
 	'communityvoice-ratings-scale-status-thanks' => 'გმადლობთ ხმის მიცემისათვის!',
 );
 

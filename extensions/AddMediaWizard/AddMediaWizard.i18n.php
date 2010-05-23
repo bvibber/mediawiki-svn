@@ -16,10 +16,11 @@ $messages['en'] = array(
 );
 
 /** Hebrew (עברית)
+ * @author Rotemliss
  * @author YaronSh
  */
 $messages['he'] = array(
-	'addmediawizard-desc' => 'הוספת אשף מדיה, הפותח בשיתוף בין Kultura לבין קרן ויקימדיה',
+	'addmediawizard-desc' => 'אשף הוספת מדיה, שפותח בשיתוף פעולה בין Kaltura וקרן ויקימדיה',
 );
 
 /** Hungarian (Magyar)
@@ -83,6 +84,13 @@ $messages['sl'] = array(
  */
 $messages['sv'] = array(
 	'addmediawizard-desc' => 'Guide för att lägga till media, utvecklad i samarbete mellan Kaltura och Wikimedia Foundation',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'addmediawizard-desc' => 'Idagdag ang media wizard, pinaunlad sa pakikipagtulungan ng Kaltura at Pundasyong Wikimedia',
 );
 
 /** Turkish (Türkçe)

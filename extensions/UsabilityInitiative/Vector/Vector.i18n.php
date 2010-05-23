@@ -453,6 +453,14 @@ $messages['te'] = array(
 	'vector' => 'వెక్టర్ కొరకు ముఖాంతరపు మెరుగులు',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'vector' => 'Mga pagpapainam na UI para sa Vector',
+	'vector-desc' => 'Nagpapainam sa mga sangkap ng dugtungang-mukha na pangtatagamit ng pabalat ng Vector.',
+);
+
 /** Turkish (Türkçe)
  * @author Vito Genovese
  */

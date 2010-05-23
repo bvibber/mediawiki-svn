@@ -13127,6 +13127,8 @@ $messages['tk'] = array(
  * @author AnakngAraw
  */
 $messages['tl'] = array(
+	'wikidata-desc' => 'Nagdaragdag ng talaan ng datong kamukha ng sa wiki para sa sari-saring mga uri ng nilalaman',
+	'wikidata-handler-namespace-move-error' => 'Hindi maililipat ang mga pahinang nasa pangalan ng puwang na hinahawakan ng karugtong na Wikidata',
 	'languages' => 'Wikidata: Tagapamahala ng wika',
 	'langman-desc' => 'Magdagdag at baguhin ang mga katakdaang pangwika sa pamamagitan ng [[Special:Languages]]',
 	'langman_title' => 'Tagapamahala ng wika',
@@ -13153,7 +13155,7 @@ $messages['tl'] = array(
 	'datasearch_search_text' => 'Hanapin ang teksto:',
 	'datasearch_within_words' => 'Sa loob ng mga salita:',
 	'datasearch_within_ext_ids' => 'Sa loob ng panlabas na mga kumikilala:',
-	'datasearch_showing_only' => 'Nagpapakita lamang ng isang pinakamataas na $1 {{PLURAL:$1|tugmaan|mga tugmaan}}.',
+	'datasearch_showing_only' => 'Nagpapakita lamang ng isang pinakamataas na $1 {{PLURAL:$1|tugmaan|mga tugmaan}} (mula sa $2).',
 	'datasearch_match_ext_ids' => 'Panlabas na mga kumikilalang tumutugma sa <i>$1</i>',
 	'datasearch_match_words' => 'Mga salitang tumutugma sa <i>$1</i> at kaugnay na mga kahulugan',
 	'datasearch_match_words_lang' => 'Mga salitang nasa loob ng <i>$1</i> na tumutugma sa <i>$2</i> at kaugnay na mga kahulugan',
@@ -13188,6 +13190,9 @@ Pumili ng isang kalipunang iluluwas. Sa loob ng kahon ng tektso ng mga wika, mag
 	'ow_exporttsv_not_allowed' => 'Wala kang pahintulot na magsagawa ng isang pagluluwas ng TSV.',
 	'ow_exporttsv_export_failed' => 'Nabigo ang pagluluwas',
 	'addcollection' => 'Wikidata:Idagdag ang kalipunan',
+	'ow_searchnoresult' => "<p>Maaari kang:<br />
+* '''Lumikha ng pangungusap na \"[[Expression:\$1]]\"''' (at magdagdag ng isang kahulugan)<br />
+* '''Lumikha ng pahinang \"[[:\$1]]\"''' (isang karaniwang pahinang pangwiki)</p>",
 	'ow_save' => 'Sagipin',
 	'ow_history' => 'Kasaysayan',
 	'ow_datasets' => 'Pampili ng pangkat ng dato',
@@ -13269,7 +13274,7 @@ Pakisuri ang adres na pangweb.',
 	'ow_Language' => 'Wika',
 	'ow_LevelAnnotation' => 'Anotasyon (paliwanag)',
 	'ow_LinkAttributeHeader' => 'Katangian ng kawing',
-	'ow_Multiple_meanings' => 'Maramihang mga kahulugan:',
+	'ow_Multiple_meanings' => 'Mga kahulugan ng "$1"',
 	'ow_NewExactMeaning' => 'Bagong tumpak na kahulugan',
 	'ow_OptionAttribute' => 'Pag-aari',
 	'ow_OptionAttributeHeader' => 'Katangian ng pamimilian',
@@ -13310,6 +13315,7 @@ Pakisuri ang adres na pangweb.',
 	'ow_meaningsoftitle' => 'Mga kahulugan ng "$1"',
 	'ow_meaningsofsubtitle' => '<em>Wiki-kawing:</em> [[$1]]',
 	'ow_Permission_denied' => '<h2>Tinanggihan ang pagpapahintulot</h2>',
+	'copy' => 'Wikidata: Kopyahin',
 	'ow_copy_no_action_specified' => 'Pakitukoy ang isang galaw',
 	'ow_copy_help' => 'Hindi pa naisasakatuparan ang pagtulong.',
 	'ow_please_proved_dmid' => 'Tila may kulang na "?dmid=<ID>" (dmid=ID ng Nilarawang Kahulugan) ang ipinasok mong puhunan (impormasyon)<br />
@@ -13341,6 +13347,7 @@ Makipagugnayan sa isang tagapamalakad/tagapagpatakbo ng serbidor o tagapangasiwa
 	'ow_needs_xlation_source_lang' => 'Pagmumulang wika:',
 	'ow_needs_xlation_dest_lang' => 'Kapupuntahang wika:',
 	'ow_needs_xlation_no_dest_lang' => 'Pakitukoy ang isang kapupuntahang wika.',
+	'ow_statistics' => 'Wikidata: Estadistika',
 	'ow_show' => 'Ipakita',
 	'ow_upload' => 'Ikarga',
 	'ow_create' => 'Likhain',
@@ -13351,6 +13358,7 @@ Makipagugnayan sa isang tagapamalakad/tagapagpatakbo ng serbidor o tagapangasiwa
 	'ow_nstab_definedmeaning' => 'inilirawang kahulugan',
 	'ow_nstab_edit_copy' => 'baguhin ang sipi',
 	'right-addlanguage' => 'Magdagdag at baguhin ang mga katakdaang pangwika',
+	'ow_shown_datasets' => 'Ipinakitang mga pangkat ng dato',
 );
 
 /** Turkish (Türkçe)

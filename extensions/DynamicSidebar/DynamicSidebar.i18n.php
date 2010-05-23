@@ -238,6 +238,13 @@ $messages['te'] = array(
 	'dynamicsidebar-desc' => 'వాడుకరి పేజీలు, సమూహాలు, వర్గాలను బట్టి అప్పటికప్పుడు పక్క పట్టీని చూపిస్తుంది.',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'dynamicsidebar-desc' => 'Nagbibigay ng masisiglang mga baretang panggilid ayon sa mga pahina ng tagagamit, mga pangkat, at mga kategorya.',
+);
+
 /** Turkish (Türkçe)
  * @author Joseph
  */

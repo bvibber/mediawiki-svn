@@ -1237,6 +1237,7 @@ $messages['tg-latn'] = array(
 $messages['tl'] = array(
 	'chemicalsources' => 'Mga pinagmulang pangkimika',
 	'chemicalsource-desc' => 'Nagdaragdag ng tatak na <nowiki><chemform></nowiki>, para sa mga pormulang pangkimika',
+	'chemicalsources-desc' => '[[Special:ChemicalSources|Natatanging pahina]] para sa mga pinagmulang pangkimika',
 	'chemFunctions_ListPage' => 'Mga pinagmulang pangkimika',
 	'chemFunctions_DataList' => 'Nasa ibaba ang isang talaan ng mga kawing na papunta sa mga sayt na maaaring makapagbigay ng mga kabatiran hinggil sa hinahanap mong sustansyang pangkimika.<br /><br />
 * <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Tambalang $MIXCASNameFormula na nasa NIST</a><br />

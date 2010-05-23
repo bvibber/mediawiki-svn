@@ -570,6 +570,13 @@ $messages['mn'] = array(
 	'mostrevisors-namespace' => 'Нэрний зай:',
 );
 
+/** Maltese (Malti)
+ * @author Chrisportelli
+ */
+$messages['mt'] = array(
+	'mostrevisors-submit' => 'Mur',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

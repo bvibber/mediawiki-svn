@@ -833,8 +833,11 @@ Har du en kommentar till den här sidan? Lägg till den här eller <span class="
  */
 $messages['te'] = array(
 	'commentbox-desc' => 'కొన్ని పేజీలకు వ్యాఖ్యల పెట్టెని చేరుస్తుంది',
+	'commentbox-intro' => '== ఒక వ్యాఖ్యని చేర్చండి... ==
+ఈ పుటపై మీరు వ్యాఖ్యానించేది ఏమైనా ఉందా? దాన్ని ఇక్కడ ఇవ్వండి లేదా <span class="plainlinks">[{{fullurl:{{FULLPAGENAME}}|action=edit}} నేరుగా పుటని మార్చండి]</span>.',
 	'commentbox-savebutton' => 'వ్యాఖ్యని భద్రపరచు',
 	'commentbox-name' => 'పేరు:',
+	'commentbox-name-explanation' => '<small>(చిట్కా: మీరు [[Special:UserLogin|ప్రవేశిస్తే]], మీ పేరుని ఇక్కడ మానవీయంగా పూరించనవసరం ఉండదు.)</small>',
 	'commentbox-log' => 'కొత్త వ్యాఖ్యలు',
 	'commentbox-first-comment-heading' => '== వ్యాఖ్యలు ==',
 	'commentbox-regex' => '/\\n==\\s*వ్యాఖ్యలు\\s*==\\s*\\n/i',

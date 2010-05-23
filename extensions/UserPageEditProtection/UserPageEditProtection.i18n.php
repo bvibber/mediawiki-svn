@@ -244,6 +244,13 @@ $messages['ru'] = array(
 	'right-editalluserpages' => 'изменение страниц участников',
 );
 
+/** Swedish (Svenska)
+ * @author Dafer45
+ */
+$messages['sv'] = array(
+	'right-editalluserpages' => 'Redigera användarsidor',
+);
+
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Wong128hk
  */

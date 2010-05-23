@@ -316,6 +316,13 @@ $messages['te'] = array(
 	'autoincrement-desc' => 'దాని అంతట అదే పెరిగే వేరియబుల్ <nowiki>{{AUTOINCREMENT}}</nowiki> కి ఒక వేరియబుల్ కొక్కెం',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'autoincrement-desc' => 'Isang pabagu-bagong kalawit na nagdaragdag ng kusang nagdaragdag na kaibahang <nowiki>{{AUTOINCREMENT}}</nowiki>',
+);
+
 /** Turkish (Türkçe)
  * @author Vito Genovese
  */

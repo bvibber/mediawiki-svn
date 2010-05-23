@@ -2308,10 +2308,14 @@ $messages['tl'] = array(
 	'usagestatistics-desc' => 'Ipakita ang isang (indibiduwal na) tagagamit at pangkalahatang mga estadistika ng paggamit ng wiki',
 	'usagestatisticsfor' => '<h2>Mga estadistika ng paggamit para kay [[User:$1|$1]]</h2>',
 	'usagestatisticsforallusers' => '<h2>Mga estadistika ng paggamit para sa lahat ng mga tagagamit</h2>',
-	'usagestatisticsinterval' => 'Agwat sa pagitan',
+	'usagestatisticsinterval' => 'Tagal ng agwat:',
+	'usagestatisticsnamespace' => 'Puwang na pampangalan:',
+	'usagestatisticsexcluderedirects' => 'Ibukod ang mga pampalit-puntahan',
+	'usagestatistics-namespace' => 'Ito ang mga estadistika sa [[Special:Allpages/$1|$2]] na puwang na pampangalan.',
+	'usagestatistics-noredirects' => 'Binabalewala ang [[Special:ListRedirects|mga pamalit-puntahan]].',
 	'usagestatisticstype' => 'Uri (tipo)',
-	'usagestatisticsstart' => 'Petsa ng simula',
-	'usagestatisticsend' => 'Petsa ng pagwawakas',
+	'usagestatisticsstart' => 'Petsa ng simula:',
+	'usagestatisticsend' => 'Petsa ng wakas:',
 	'usagestatisticssubmit' => 'Lumikha ng mga palaulatan (estadistika)',
 	'usagestatisticsnostart' => 'Pakitukoy ang isang petsa ng pagsisimula',
 	'usagestatisticsnoend' => 'Pakitukoy ang isang petsa ng pagwawakas',
@@ -2326,6 +2330,7 @@ $messages['tl'] = array(
 	'usagestatisticscalselect' => 'Piliin',
 	'usagestatistics-editindividual' => '$1 mga estadistika ng paggamit para sa indibidwal o isang tagagamit',
 	'usagestatistics-editpages' => '$1 mga estadistika ng pahina para sa isang indibidwal o isang tagagamit',
+	'right-viewsystemstats' => 'Tingnan ang [[Special:UserStats|estadistika ng paggamit ng wiki]]',
 );
 
 /** Turkish (Türkçe)

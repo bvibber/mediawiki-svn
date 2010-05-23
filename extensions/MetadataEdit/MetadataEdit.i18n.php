@@ -1174,6 +1174,7 @@ $messages['tk'] = array(
  * @author AnakngAraw
  */
 $messages['tl'] = array(
+	'metadataedit-desc' => 'Maglagay ng mga kategorya, mga kawing pangwika and pinapayagang mga suleras sa loob ng isang nakahiwalay na kahong pangteksto habang namamatnugot ng mga pahina',
 	'metadata_help' => 'Metadata ("mga datong nasa likuran"):',
 );
 

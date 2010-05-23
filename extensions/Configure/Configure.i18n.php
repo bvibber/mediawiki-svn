@@ -470,6 +470,7 @@ $messages['am'] = array(
  */
 $messages['an'] = array(
 	'configure-desc-ns' => 'Espacio de nombres',
+	'configure-form-reason' => 'Razón:',
 	'configure-section-namespaces' => 'Espacios de nombres',
 	'configure-section-images' => 'Ficheros',
 	'configure-throttle-action-edit' => 'Editar',
@@ -9388,6 +9389,7 @@ $messages['te'] = array(
 	'configure-js-remove' => 'తొలగించు',
 	'configure-js-biglist-show' => '[వివరాలను చూపించు]',
 	'configure-js-biglist-hide' => '[వివరాలను దాచు]',
+	'configure-js-summary-none' => 'అమరికలు లేవు',
 	'configure-js-search-legend' => 'అన్వేషణ అమరికలు',
 	'configure-old' => 'పాత కూర్పులు',
 	'configure-old-changes' => 'మార్పులు',

@@ -311,6 +311,8 @@ $wgGoogleMapsMessages['am'] = array(
  * @author Juanpabl
  */
 $wgGoogleMapsMessages['an'] = array(
+	'gm-yes' => 'Sí',
+	'gm-no' => 'No',
 	'gm-save-path' => 'Alzar',
 );
 

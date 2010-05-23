@@ -117,6 +117,13 @@ $messages['be-tarask'] = array(
 	'framedvideo-desc' => 'Дазваляе убудоўваць відэа з розных сайтаў з дапамогай тэга <code>&lt;video&gt;</code>',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'framedvideo_error' => 'Възникна грешка!',
+);
+
 /** Breton (Brezhoneg)
  * @author Fohanno
  * @author Fulup

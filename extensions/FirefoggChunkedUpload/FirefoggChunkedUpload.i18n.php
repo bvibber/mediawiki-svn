@@ -194,6 +194,13 @@ $messages['te'] = array(
 	'firefoggcu-desc' => 'ఫైర్‌ఫాగ్  విడిభాగాలుగా ఎక్కించే నియమావళి',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'firefoggcu-desc' => 'Pamamaraan sa Matipak na Pagkakargang Paitaas ng Firefogg',
+);
+
 /** Turkish (Türkçe)
  * @author Joseph
  */

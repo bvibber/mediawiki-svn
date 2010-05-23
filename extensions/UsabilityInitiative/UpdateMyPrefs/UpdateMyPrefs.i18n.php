@@ -361,6 +361,15 @@ $messages['sv'] = array(
 	'updatemyprefs-label-message' => 'Uppdatera mina inställningar automatiskt med nya standardinställningarna och verktyg när de blir tillgängliga',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'prefs-updates' => 'Mga pagsasapanahon',
+	'updatemyprefs-desc' => 'Mga pagpipilian para sa mga tagagamit upang matukoy kung nais nila ang panapanahong pagsasapanahon ng dugtungang-mukha na pangtagagamit kapag nagawang makukuha na ang mga ito',
+	'updatemyprefs-label-message' => 'Kusang isapanahon ang mga nais ko na may kusang nakatakdang mga pagtatakda at mga kasangkapan kapag makukuha na ang mga ito',
+);
+
 /** Turkish (Türkçe)
  * @author Joseph
  */

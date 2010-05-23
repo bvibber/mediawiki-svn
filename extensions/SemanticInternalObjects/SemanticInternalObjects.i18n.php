@@ -275,6 +275,13 @@ $messages['sv'] = array(
 	'semanticinternalobjects-desc' => 'Inställning för interna objekt i Semantic MediaWiki',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'semanticinternalobjects-desc' => 'Pagtatakda ng panloob na mga bagay sa Semantic MediaWiki',
+);
+
 /** Turkish (Türkçe)
  * @author Vito Genovese
  */

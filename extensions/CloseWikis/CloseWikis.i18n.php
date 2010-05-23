@@ -90,6 +90,13 @@ $messages['af'] = array(
 	'closewikis-log-reopen' => 'het $2 heropen',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'closewikis-page-reopen-reason' => 'Razón:',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

@@ -302,6 +302,13 @@ $messages['te'] = array(
 	'filepagemasking-desc' => 'ఫైలు వర్ణన పేజీ లంకెలలో ".xxx" నుంచి "_xxx" అని మార్చబడుతుంది',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'filepagemasking-desc' => 'Muling isinusulat ang ".xxx" upang maging "_xxx" sa loob ng mga kawing na pangpaglalarawan ng talaksan',
+);
+
 /** Turkish (Türkçe)
  * @author Vito Genovese
  */

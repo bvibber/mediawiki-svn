@@ -294,6 +294,7 @@ $messages['bg'] = array(
  */
 $messages['br'] = array(
 	'taggedimages' => 'Skeudennoù balizennet',
+	'imagetagging-desc' => "Talvezout a ra d'an implijerien da diuzañ lodennoù eus ur skeudenn enframmet evit he stagañ ouzh ur bajenn.",
 	'imagetagging-addimagetag' => 'Balizennañ ar skeudenn-mañ',
 	'imagetagging-article' => 'Pajenn :',
 	'imagetagging-articletotag' => 'Pajenn da valizennañ',
@@ -316,6 +317,8 @@ $messages['br'] = array(
 	'imagetagging-canteditneedloginmessage' => "Ne c'hallit ket aozañ ar bajenn-mañ.
 Marteze e rankit kevreañ evit balizennañ ar skeudennoù.
 Ha c'hoant hoc'h eus da gevreañ bremañ ?",
+	'imagetagging-oneactionatatimemessage' => "N'haller kas da benn nemet ur balizadur war un dro.
+Gortozit 'ta ma vo echuet an oberiadenn.",
 	'imagetagging-oneuniquetagmessage' => 'Ar skeudenn-mañ he deus dija ur balizenn gant an anv-se.',
 	'imagetagging-imagetag-seemoreimages' => 'Gwelet muioc\'h a skeudennoù eus "$1" ($2)',
 	'imagetagging-taggedimages-title' => 'Skeudennoù eus « $1 »',

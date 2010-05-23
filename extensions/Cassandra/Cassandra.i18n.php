@@ -151,6 +151,13 @@ $messages['ru'] = array(
 	'cassandra-desc' => 'Хранение текста версии страницы в базе данных [http://cassandra.apache.org/ Apache Cassandra]',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'cassandra-desc' => 'Ilagak ang teksto ng pagbabago sa talaan ng dato ng [http://cassandra.apache.org/ Apache Cassandra]',
+);
+
 /** Turkish (Türkçe)
  * @author Joseph
  */

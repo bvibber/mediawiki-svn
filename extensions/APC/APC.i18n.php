@@ -3949,6 +3949,7 @@ $messages['ms'] = array(
 );
 
 /** Maltese (Malti)
+ * @author Chrisportelli
  * @author Giangian15
  * @author Roderick Mallia
  */
@@ -3957,6 +3958,7 @@ $messages['mt'] = array(
 	'viewapc-display-filename' => 'Isem il-fajl',
 	'viewapc-display-info' => 'Isem',
 	'viewapc-display-type' => 'Mudell',
+	'viewapc-ls-submit' => 'Mur!',
 );
 
 /** Erzya (Эрзянь)

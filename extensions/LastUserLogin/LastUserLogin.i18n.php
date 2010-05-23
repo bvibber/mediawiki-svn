@@ -84,6 +84,13 @@ $messages['be-tarask'] = array(
 	'right-lastlogin' => 'прагляд часу апошняга ўваходу ўдзельніка ў сыстэму',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
+$messages['bg'] = array(
+	'lastuserlogin_lastlogin' => 'Последно влизане',
+);
+
 /** Breton (Brezhoneg)
  * @author Y-M D
  */
@@ -494,6 +501,20 @@ $messages['te'] = array(
 	'lastuserlogin_lastlogin' => 'చివరి ప్రవేశం',
 	'lastuserlogin_daysago' => 'రోజుల క్రితం',
 	'right-lastlogin' => 'వాడుకర్లు చివరిసారి ప్రవేశించిన సమయాన్ని చూడగలగడం',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'lastuserlogin' => 'Paglagda ng huling tagagamit',
+	'lastuserlogin-desc' => 'Nagpapakita ng huling oras na paglagda ng isang tagagamit',
+	'lastuserlogin_userid' => 'Pangalan ng tagagamit',
+	'lastuserlogin_username' => 'Tunay ng pangalan',
+	'lastuserlogin_useremail' => 'E-liham ng tagagamit',
+	'lastuserlogin_lastlogin' => 'Huling paglagda',
+	'lastuserlogin_daysago' => 'Nakalipas na mga araw',
+	'right-lastlogin' => 'Tingnan ang huling oras ng paglagda ng isang tagagamit',
 );
 
 /** Ukrainian (Українська)

@@ -734,6 +734,16 @@ $messages['tk'] = array(
 	'wikieditor-preview-loading' => 'Ýüklenilýär...',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'wikieditor-preview-preference' => 'Paganahin ang magkatabing paunang-tingin',
+	'wikieditor-preview-tab' => 'Paunang tanaw',
+	'wikieditor-preview-changes-tab' => 'Mga pagbabago',
+	'wikieditor-preview-loading' => 'Ikinakarga...',
+);
+
 /** Turkish (Türkçe)
  * @author Joseph
  * @author Vito Genovese

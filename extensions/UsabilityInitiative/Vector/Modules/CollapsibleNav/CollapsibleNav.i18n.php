@@ -188,6 +188,13 @@ $messages['ja'] = array(
 	'vector-collapsiblenav-preference' => '左寄りの折り畳めるナビゲーションメニューを使用する',
 );
 
+/** Georgian (ქართული)
+ * @author BRUTE
+ */
+$messages['ka'] = array(
+	'vector-collapsiblenav-preference' => 'მარცხენა სანავიგაციო მენიუს ჩაკეცვა',
+);
+
 /** Korean (한국어)
  * @author Kwj2772
  */
@@ -299,6 +306,13 @@ $messages['sl'] = array(
  */
 $messages['sv'] = array(
 	'vector-collapsiblenav-preference' => 'Gör den vänstra navigeringsmenyn ihopfällbar',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'vector-collapsiblenav-preference' => 'Paganahin ang natitiklop na pangkaliwang menu na panlibot',
 );
 
 /** Turkish (Türkçe)
