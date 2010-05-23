@@ -37,15 +37,17 @@ typedef unsigned __int32  uint32_t;
  * Types
  */
 
-typedef struct
+typedef struct 
 {
 	uint32_t width;
 	uint32_t height;
-	unsigned char bitdepth;
-	unsigned char colortype;
-	unsigned char compression;
-	unsigned char filter_method;
-	unsigned char interlace;
+	struct {
+		unsigned char bitdepth;
+		unsigned char colortype;
+		unsigned char compression;
+		unsigned char filter_method;
+		unsigned char interlace;
+	} properties;
 } pngheader;
 
 typedef struct
@@ -61,16 +63,19 @@ typedef struct
 	unsigned char b;
 } rgbcolor;
 
+struct pngreader_;
 typedef struct
 {
-	// Both last parameters are really pointer to pngreader
-	void (*completed_scanline)(unsigned char*, unsigned char*, uint32_t, void*);
-	void (*read_header)(void*); 
-	void (*done)(void*);
+	void (*completed_scanline)(unsigned char*, unsigned char*, uint32_t, struct pngreader_*);
+	void (*read_header)(struct pngreader_*); 
+	void (*done)(struct pngreader_*);
 } pngcallbacks;
 
 
-typedef struct
+struct pngresize;
+struct pngwriter;
+
+typedef struct pngreader_
 {
 	pngheader *header;
 	
@@ -78,7 +83,7 @@ typedef struct
 	
 	unsigned char bytedepth;
 	unsigned char bpp;
-	rgbcolor **palette;
+	rgbcolor *palette;
 	
 	z_stream zst;
 	
@@ -95,14 +100,14 @@ typedef struct
 	
 	pngcallbacks callbacks;
 	
-	void *extra1;
-	void *extra2;
+	struct pngresize *extra1;
+	struct pngwriter *extra2;
 } pngreader;
 
 /* 
  * Functions
  */
 void png_read(FILE* fin, FILE* fout, pngcallbacks* callbacks, void* extra1, void *extra2);
-void png_write_scanline_raw(unsigned char *scanline, unsigned char *previous_scanline, uint32_t length, void *info_);
+void png_write_scanline_raw(unsigned char *scanline, unsigned char *previous_scanline, uint32_t length, pngreader *info);
 
 #endif

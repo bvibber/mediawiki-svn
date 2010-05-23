@@ -14,17 +14,16 @@
 
 void png_write_chunk(pngreader *info, char *type, void *ptr, uint32_t size);
 
-void png_write_header(void *_info)
+void png_write_header(pngreader *info)
 {
-	pngreader *info = (pngreader*)_info;
-	pngwriter *winfo = (pngwriter*)info->extra2;
+	struct pngwriter *winfo = info->extra2;
 	uint32_t crc = crc32(0, Z_NULL, 0);
 	pngheader header;
 	
 	memcpy(&header, info->header, 13);
 	if (info->extra1 != NULL)
 	{
-		pngresize *rinfo = (pngresize*)info->extra1;
+		struct pngresize *rinfo = info->extra1;
 		header.width = rinfo->width;
 		header.height = rinfo->height;
 	}
@@ -34,7 +33,7 @@ void png_write_header(void *_info)
 	png_fwrite("IHDR", 4, info->fout, &crc);
 	png_write_int(header.width, info->fout, &crc);
 	png_write_int(header.height, info->fout, &crc);
-	png_fwrite((char*)&header + 8, 5, info->fout, &crc);
+	png_fwrite(&header.properties, sizeof(header.properties), info->fout, &crc);
 	png_write_int(crc, info->fout, NULL);
 
 	winfo->zst.zalloc = Z_NULL;
@@ -42,8 +41,8 @@ void png_write_header(void *_info)
 	winfo->zst.opaque = Z_NULL;
 	if (deflateInit(&winfo->zst, winfo->deflate_level) != Z_OK)
 		png_die("zlib_init_error", NULL);
-	winfo->in = malloc(header.width * info->bpp + 1);
-	winfo->out = malloc(BUFFER_OUT_SIZE);
+	winfo->in = xmalloc(header.width * info->bpp + 1);
+	winfo->out = xmalloc(BUFFER_OUT_SIZE);
 	winfo->zst.next_out = winfo->out;
 	winfo->zst.avail_out = BUFFER_OUT_SIZE;
 }
@@ -58,10 +57,9 @@ void png_write_chunk(pngreader *info, char *type, void *ptr, uint32_t size)
 }
 
 void png_write_scanline(unsigned char *scanline, unsigned char *previous_scanline, 
-	uint32_t length, void *info_)
+	uint32_t length, pngreader *info)
 {
-	pngreader *info = (pngreader*)info_;
-	pngwriter *winfo = (pngwriter*)info->extra2;
+	struct pngwriter *winfo = info->extra2;
 	int ret;
 
 	unsigned int i;
@@ -126,10 +124,9 @@ void png_write_scanline(unsigned char *scanline, unsigned char *previous_scanlin
 	
 }
 
-void png_write_end(void *_info)
+void png_write_end(pngreader *info)
 {
-	pngreader *info = (pngreader*)_info;
-	pngwriter *winfo = (pngwriter*)info->extra2;
+	struct pngwriter *winfo = info->extra2;
 	
 	int ret;
 	do
@@ -154,32 +151,30 @@ void png_write_end(void *_info)
 	// Cleanup
 	free(winfo->in);
 	free(winfo->out);
-	free(winfo);
 }
 
 #ifdef PNGDS
 int main(int argc, char **argv)
 {
-	void **opts = pngcmd_getopts(argc, argv);
 	FILE *in, *out;
 	pngcallbacks callbacks;
-	pngwriter *winfo;
-
-	png_open_streams(opts, &in, &out);
+	struct pngwriter winfo;
+	struct pngopts opts;
+	
+	pngcmd_getopts(&opts, argc, argv);
+	
+	png_open_streams(&opts, &in, &out);
 	
 	callbacks.completed_scanline = &png_write_scanline;
 	callbacks.read_header = &png_write_header;
 	callbacks.done = &png_write_end;
 	
-	winfo = calloc(sizeof(pngwriter), 1);
-	winfo->deflate_level = *(char *)opts[PNGOPT_DEFLATE_LEVEL];
-	winfo->filter_method = *(char *)opts[PNGOPT_NO_FILTERING] ? FILTER_NONE : FILTER_PAETH;
+	winfo.deflate_level = opts.deflate_level;
+	winfo.filter_method = opts.no_filtering ? FILTER_NONE : FILTER_PAETH;
 	
-	png_resize(in, out, *(uint32_t *)opts[PNGOPT_WIDTH], 
-		*(uint32_t *)opts[PNGOPT_HEIGHT], &callbacks, winfo);
+	png_resize(in, out, opts.width, opts.height, &callbacks, &winfo);
 	
 	fclose(in); fclose(out);
-	
 	return 0;
 }
 #endif

@@ -13,24 +13,23 @@ typedef unsigned __int32  uint32_t;
 
 void pngcmd_help();
 
-void** pngcmd_getopts(int argc, char **argv)
+void pngcmd_getopts(struct pngopts* opts, int argc, char **argv)
 {
 	int i;
-	void **res;
 	
-	if (argc == 1) pngcmd_help();
+	if (argc <= 1) pngcmd_help();
 	
-	res = calloc(sizeof(void*), PNGOPT_COUNT);
+	opts->stdin = false;
+	opts->stdout = false;
+
+	opts->input_filename = NULL;
+	opts->output_filename = NULL;
+		
+	opts->width = 0;
+	opts->height = 0;
 	
-	res[PNGOPT_STDIN] = calloc(sizeof(char), 1);
-	res[PNGOPT_STDOUT] = calloc(sizeof(char), 1);
-	
-	res[PNGOPT_WIDTH] = calloc(sizeof(uint32_t), 1);
-	res[PNGOPT_HEIGHT] = calloc(sizeof(uint32_t), 1);
-	
-	res[PNGOPT_DEFLATE_LEVEL] = malloc(sizeof(char));
-	*(char *)res[PNGOPT_DEFLATE_LEVEL] = Z_DEFAULT_COMPRESSION;
-	res[PNGOPT_NO_FILTERING] = calloc(sizeof(char), 1);
+	opts->deflate_level = Z_DEFAULT_COMPRESSION;
+	opts->no_filtering = false;
 	
 	
 	for (i = 1; i < argc; i++)
@@ -38,35 +37,34 @@ void** pngcmd_getopts(int argc, char **argv)
 		if (strcmp(argv[i], "--help") == 0)
 			pngcmd_help();
 		else if (strcmp(argv[i], "--from-stdin") == 0)
-			*(char *)res[PNGOPT_STDIN] = 1;
+			opts->stdin = true;
 		else if (strcmp(argv[i], "--to-stdout") == 0)
-			*(char *)res[PNGOPT_STDOUT] = 1;
+			opts->stdout = true;
 #ifndef PNGREADER
 		else if (strcmp(argv[i], "--height") == 0 || 
 				strcmp(argv[i], "--width") == 0)
 			; // Do nothing
-		else if (strcmp(argv[i > 0 ? i - 1 : 0], "--height") == 0 && i != 0)
-			*(uint32_t *)res[PNGOPT_HEIGHT] = strtol(argv[i], NULL, 10);
-		else if (strcmp(argv[i > 0 ? i - 1 : 0], "--width") == 0 && i != 0)
-			*(uint32_t *)res[PNGOPT_WIDTH] = strtol(argv[i], NULL, 10);
+		else if (strcmp(argv[i > 0 ? i - 1 : 0], "--height") == 0)
+			opts->height = strtol(argv[i], NULL, 10);
+		else if (strcmp(argv[i > 0 ? i - 1 : 0], "--width") == 0)
+			opts->width = strtol(argv[i], NULL, 10);
 #endif
 #ifdef PNGDS
 		else if (argv[i][0] == '-' && 
 				(argv[i][1] >= '0' && argv[i][1] <= '9'))
-			*(char *)res[PNGOPT_DEFLATE_LEVEL] = argv[i][1] - 48;
+			opts->deflate_level = argv[i][1] - 48;
 		else if (strcmp(argv[i], "--no-filtering") == 0)
-			*(char *)res[PNGOPT_NO_FILTERING] = 1;
+			opts->no_filtering = true;
 #endif
 		else if (strncmp(argv[i], "--", 2) == 0)
 			pngcmd_die("unknown option",  argv[i]);
-		else if (res[PNGOPT_IN] == NULL)
-			res[PNGOPT_IN] = argv[i];
-		else if (res[PNGOPT_OUT] == NULL)
-			res[PNGOPT_OUT] = argv[i];
+		else if (opts->input_filename == NULL)
+			opts->input_filename = argv[i];
+		else if (opts->output_filename == NULL)
+			opts->output_filename = argv[i];
 		else
 			pngcmd_die("unknown option", argv[i]);
 	}
-	return res;
 }
 
 void pngcmd_die(char *msg, char *extra)

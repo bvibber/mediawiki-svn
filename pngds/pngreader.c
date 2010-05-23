@@ -24,6 +24,11 @@ void png_read(FILE* fin, FILE* fout, pngcallbacks* callbacks, void* extra1, void
 	pngreader info;
 	char header[8];
 	
+	info.header = NULL;
+	info.palette = NULL;
+	info.previous_scanline = NULL;
+	info.current_scanline = NULL;
+	
 	info.fin = fin;
 	info.fout = fout;
 	if (callbacks == NULL)
@@ -42,18 +47,18 @@ void png_read(FILE* fin, FILE* fout, pngcallbacks* callbacks, void* extra1, void
 	
 	png_fread(header, 8, fin, NULL);
 	if (strncmp(header, "\x89PNG\r\n\x1a\n", 8))
-		png_die("header", header);
+		png_die("File is not a PNG", header);
 	
 	while (png_read_chunk(&info));
 		
 	if (info.callbacks.done != NULL)
 		(*info.callbacks.done)(&info);
 	
-	// Cleanup
+	/* Cleanup of fields allocated at png_read_header */
 	free(info.header);
 	free(info.previous_scanline);
 	free(info.current_scanline);
-	// Hmmm need to find a way to free the palette
+	free(info.palette); /* Allocated at png_read_palette */
 }
 
 int png_read_chunk(pngreader *info)
@@ -69,6 +74,10 @@ int png_read_chunk(pngreader *info)
 	{
 		png_read_header(info, c_head.length);
 	}
+	else if (info->header == NULL)
+	{
+		png_die_type("first_chunk_is_not_header", c_head.type);
+	}	
 	else if (strncmp(c_head.type, "PLTE", 4) == 0)
 	{
 		png_read_palette(info, c_head.length);
@@ -83,7 +92,7 @@ int png_read_chunk(pngreader *info)
 	}
 	else if (strncmp(c_head.type, "IEND", 4) != 0)
 	{
-		png_die("critical_chunk", c_head.type);
+		png_die_type("critical_chunk", c_head.type);
 	}
 	
 	crc = png_read_int(info->fin, NULL);
@@ -102,26 +111,29 @@ void png_read_header(pngreader *info, uint32_t length)
 	if (length != 13)
 		png_die("unexpected_header_length", &length);
 	
-	info->header = malloc(sizeof(pngheader));
+	if (info->header) /* Not a valid PNG */
+		png_die("file_has_several_headers", NULL);
+	
+	info->header = xmalloc(sizeof(pngheader));
 	info->header->width = png_read_int(info->fin, &info->crc);
 	info->header->height = png_read_int(info->fin, &info->crc);
 	
 	// Read the last 5 members
-	png_fread(((uint32_t*)info->header) + 2, 5, info->fin, &info->crc);
+	png_fread(&info->header->properties, sizeof(info->header->properties), info->fin, &info->crc);
 	
-	if (info->header->compression != COMPRESS_DEFLATE)
-		png_die("unknown_compression", &info->header->compression);
-	if (info->header->filter_method != FILTER_METHOD_BASIC_ADAPTIVE)
-		png_die("unknown_filter_method", &info->header->filter_method);
-	if (info->header->interlace)
-		png_die("interlace_unsupported", NULL);
+	if (info->header->properties.compression != COMPRESS_DEFLATE)
+		png_die("unknown_properties.compression", &info->header->properties.compression);
+	if (info->header->properties.filter_method != FILTER_METHOD_BASIC_ADAPTIVE)
+		png_die("unknown_properties.filter_method", &info->header->properties.filter_method);
+	if (info->header->properties.interlace)
+		png_die("properties.interlace_unsupported", NULL);
 	
-	info->bytedepth = info->header->bitdepth / 8;
-	if (info->header->bitdepth % 8) info->bytedepth++;
+	info->bytedepth = info->header->properties.bitdepth / 8;
+	if (info->header->properties.bitdepth % 8) info->bytedepth++;
 	
 	// Bytes per pixel
 	info->bpp = info->bytedepth;
-	switch (info->header->colortype)
+	switch (info->header->properties.colortype)
 	{
 		case COLOR_GRAY:
 		case COLOR_PALETTE:
@@ -137,12 +149,13 @@ void png_read_header(pngreader *info, uint32_t length)
 			info->bpp *= 4;
 			break;
 		default:
-			png_die("unknown_colortype", &info->header->colortype);
+			png_die("unknown_colortype", &info->header->properties.colortype);
 	}
 	
 	info->expect_filter = 1;
 	info->previous_scanline = calloc(info->header->width * info->bpp, 1);
-	info->current_scanline = malloc(info->header->width * info->bpp);
+	if (!info->previous_scanline) png_die("insufficient_memory", NULL);
+	info->current_scanline = xmalloc(info->header->width * info->bpp);
 	info->line_count = 0;
 	
 	info->zst.zalloc = Z_NULL;
@@ -161,16 +174,14 @@ void png_read_header(pngreader *info, uint32_t length)
 
 void png_read_palette(pngreader *info, uint32_t length)
 {
-	unsigned short i;
 	if (length % 3)
 		png_die("malformed_palette_length", &length);
 	
-	info->palette = calloc(256, sizeof(rgbcolor*));
-	for (i = 0; i < length; i += 3)
-	{
-		info->palette[i / 3] = malloc(sizeof(rgbcolor));
-		png_fread(info->palette[i / 3], 3, info->fin, &info->crc);
-	}
+	if (info->palette != NULL) /* Invalid PNG */
+		png_die("file_has_several_palettes", NULL);
+	
+	info->palette = xmalloc(sizeof(rgbcolor)*256);
+	png_fread(info->palette, length, info->fin, &info->crc);
 }
 
 void png_read_data(pngreader *info, uint32_t length)
@@ -307,14 +318,13 @@ void png_read_ancillary(pngreader *info, uint32_t length)
 }
 
 void png_write_scanline_raw(unsigned char *scanline, unsigned char *previous_scanline, 
-	uint32_t length, void *info_)
+	uint32_t length, pngreader *info)
 {
-	pngreader *info = (pngreader*)info_;
 	uint32_t i;
 	for (i = 0; i < length; i += info->bpp)
 	{
 		rgbcolor color;
-		switch (info->header->colortype)
+		switch (info->header->properties.colortype)
 		{
 			case (COLOR_GRAY):
 			case (COLOR_GRAYA):
@@ -327,10 +337,10 @@ void png_write_scanline_raw(unsigned char *scanline, unsigned char *previous_sca
 				color.b = scanline[i + 2];
 				break;
 			case (COLOR_PALETTE):
-				color = *info->palette[scanline[i]];
+				color = info->palette[scanline[i]];
 				break;
 			default:
-				png_die("unknown_colortype", &info->header->colortype);
+				png_die("unknown_properties.colortype", &info->header->properties.colortype);
 		}
 		fwrite(&color, 3, 1, info->fout);
 	}
@@ -339,14 +349,15 @@ void png_write_scanline_raw(unsigned char *scanline, unsigned char *previous_sca
 #ifdef PNGREADER
 int main(int argc, char **argv)
 {
-	void **opts = pngcmd_getopts(argc, argv);
-	FILE *in, *out;
-	png_open_streams(opts, &in, &out);
+	FILE *in, *out;	
+	struct pngopts opts;
+	
+	pngcmd_getopts(&opts, argc, argv);
+	png_open_streams(&opts, &in, &out);
 	
 	png_read(in, out, NULL, NULL, NULL);
 	
 	fclose(in); fclose(out);
-	
 	return 0;
 }
 

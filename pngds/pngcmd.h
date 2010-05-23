@@ -1,18 +1,25 @@
 #ifndef	_PNGCMD_H
 #define _PNGCMD_H	1
 
-#define PNGOPT_STDIN	0
-#define PNGOPT_STDOUT	1
-#define PNGOPT_IN	2
-#define PNGOPT_OUT	3
-#define PNGOPT_WIDTH	4
-#define PNGOPT_HEIGHT	5
-#define PNGOPT_DEFLATE_LEVEL	6
-#define PNGOPT_NO_FILTERING	7
+#ifndef __cplusplus
+typedef enum { false, true } bool;
+#endif
 
-#define PNGOPT_COUNT	8
+struct pngopts {
+	bool stdin;
+	bool stdout;
+	
+	char const* input_filename;
+	char const* output_filename;
+	
+	uint32_t width;
+	uint32_t height;
+	
+	int_least8_t deflate_level;
+	bool no_filtering;
+};
 
-void** pngcmd_getopts(int argc, char **argv);
+void pngcmd_getopts(struct pngopts* opts, int argc, char **argv);
 void pngcmd_die(char *msg, char *extra);
 
 #endif
