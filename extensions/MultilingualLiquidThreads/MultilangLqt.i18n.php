@@ -5,8 +5,6 @@
  * @author Daisuke Morita
  */
 
-require_once( dirname( __FILE__ ) . '/../i18n/Lqt.i18n.php' );
-
 /** English
  * @author Daisuke Morita
  */
