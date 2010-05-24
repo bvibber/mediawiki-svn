@@ -698,9 +698,12 @@ $messages['tk'] = array(
  * @author AnakngAraw
  */
 $messages['tl'] = array(
+	'ratedpages' => 'Mga pahinang sinuri ng mambabasa',
+	'ratedpages-leg' => 'Humanap ng mga pahinang niranggo na may masusukat na bilang ng pagranggo',
 	'ratedpages-list' => 'Nasa ibaba ang isang talaan ng mga pahinang inayos ayon sa kanilang kaantasang ibinigay ng mambabasa.',
 	'ratedpages-none' => 'Walang mga pahina sa loob ng talaang ito',
 	'ratedpages-graphs' => 'datong pangpagaantas',
+	'ratedpages-count' => '$1 {{PLURAL:$1|pagsusuri|mga pagsusuri}}',
 );
 
 /** Turkish (Türkçe)

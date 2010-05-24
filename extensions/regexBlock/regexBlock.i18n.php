@@ -3005,6 +3005,7 @@ Pakilikha ang isang kapalit na pangalan ng tagagamit o [[$1|makipag-ugnayan sa a
 	'regexblock-form-submit-empty' => 'Magbigay ng isang pangalan ng tagagamit o isang adres ng IP na hahadlangan.',
 	'regexblock-form-submit-regex' => 'Hindi tanggap na pangkaraniwang pagsasaad.',
 	'regexblock-form-submit-expiry' => 'Pakitukoy ang isang panahon ng pagtatapos.',
+	'regexblock-link' => 'hadlangan na may karaniwang pananalita',
 	'regexblock-match-stats-record' => "Hinadlangan ni $1 sa '$2' noong '$3' sa '$4', lumalagda mula sa adres na '$5'",
 	'regexblock-nodata-found' => 'Walang natagpuang dato',
 	'regexblock-stats-title' => 'Mga estadistika ng paghadlang sa pangkaraniwang pagsasaad',

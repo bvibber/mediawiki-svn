@@ -393,6 +393,15 @@ $messages['sv'] = array(
 	'tspoll-id-error' => 'Inget ID är angivet!',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'tspoll-desc' => 'Isama ang [http://www.toolserver.org/~jan/poll/index.php Toolserver-Poll-Skript] bilang tatak na HTML',
+	'tspoll-fetch-error' => 'May mali habang kinukuha ang URL!',
+	'tspoll-id-error' => 'Walang ibinigay na ID!',
+);
+
 /** Turkish (Türkçe)
  * @author Vito Genovese
  */

@@ -1013,6 +1013,7 @@ $messages['tl'] = array(
 	'security-unchain' => 'Baguhin na paisa-isa ang mga galaw',
 	'security-type-category' => 'kaurian',
 	'security-type-namespace' => 'espasyo ng pangalan',
+	'security-restricttogroup' => 'Puntahan ang nilalaman na nakalaan lamang para sa mga kasapi ng "$1"',
 );
 
 /** Turkish (Türkçe)

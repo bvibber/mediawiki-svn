@@ -274,6 +274,13 @@ $messages['id'] = array(
 	'ajaxquerypages-desc' => 'Menambahkan beberapa teknik AJAX ke halaman kueri seperti [[Special:Shortpages|{{int:shortpages}}]]',
 );
 
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'ajaxquerypages-desc' => 'Tinyé tú ihü orü AJAX dí kà [[Special:Shortpages|{{int:shortpages}}]]',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  * @author Pietrodn

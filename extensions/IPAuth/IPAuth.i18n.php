@@ -318,6 +318,13 @@ $messages['sv'] = array(
 	'ipauth-desc' => 'Automatisk inloggning från fasta IP adresser',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'ipauth-desc' => 'Kusang paglagdang papasok mula sa nakalapat na mga adres ng IP',
+);
+
 /** Turkish (Türkçe)
  * @author Vito Genovese
  */

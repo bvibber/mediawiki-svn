@@ -481,6 +481,8 @@ Periksa ejaan anda.',
  */
 $messages['ig'] = array(
 	'ajaxlogin-desc' => 'Ngwa di ichiche nké né nyé uzor ndi na banife Í bàtá na Í chétá édémédé hé shì a batá',
+	'ajaxLogin2' => 'I chorí mé iheá?
+I nwèríkí lúfùu ihe í gbanwere na ihüá Í háfụ ihüá ubuá.',
 	'ajaxlogin-create' => 'Ké buwa',
 	'al-nosuchuser' => 'O díg.ʼonye né ji "$1".
 Orúnotu né lékwa I dé na ukwu na ntà.

@@ -15,10 +15,13 @@ $messages['en'] = array(
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
  * @author Jim-by
  */
 $messages['be-tarask'] = array(
 	'js2support-desc' => 'Падтрымка JS2 у форме пашырэньня',
+	'js2support-debug-preference' => 'Выключыць групіроўку скрыптоў і мініфікацыю',
+	'prefs-script-debug' => 'Наладка скрыптоў',
 );
 
 /** Breton (Brezhoneg)
@@ -198,5 +201,14 @@ $messages['ru'] = array(
 	'js2support-desc' => 'Поддержка JS2 в виде расширения',
 	'js2support-debug-preference' => 'Отключить группировку скриптов и минификацию',
 	'prefs-script-debug' => 'Отладка скриптов',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'js2support-desc' => 'Suportang JS2 bilang isang karugtong',
+	'js2support-debug-preference' => 'Huwag paganahin ang panitik na pampangkat at pampaliit',
+	'prefs-script-debug' => 'Pagtanggal ng depekto mula sa panitik',
 );
 

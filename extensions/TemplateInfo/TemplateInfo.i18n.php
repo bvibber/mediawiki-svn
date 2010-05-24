@@ -301,6 +301,14 @@ $messages['sv'] = array(
 	'templateinfo-header' => 'XML-definitionen för denna mall är:',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'templateinfo-desc' => 'Tumatangkilik sa mga suleras na nagbibigay kahulugan sa kanilang kayarian ng dato sa pamamagitan ng pagmarkang XML',
+	'templateinfo-header' => 'Ang kahulugang XML para sa suleras na ito ay:',
+);
+
 /** Turkish (Türkçe)
  * @author Vito Genovese
  */

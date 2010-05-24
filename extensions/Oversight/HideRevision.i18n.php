@@ -3976,8 +3976,8 @@ $messages['tl'] = array(
 	'group-oversight' => 'Mga tagapagingat-tago',
 	'group-oversight-member' => 'tagapagingat-tago',
 	'grouppage-oversight' => '{{ns:project}}:Tagapagingat-tago',
-	'right-oversight' => 'Tingnan ang isang dating nakatagong pagbabago',
-	'right-hiderevision' => 'Itago ang mga pagbabago mula sa mga tagapangasiwa',
+	'right-oversight' => 'Tingnan ang isang dating nakatagong pagbabago na may Extension:Oversight',
+	'right-hiderevision' => 'Itago ang mga pagbabago mula sa mga tagapangasiwa na may Extension:Oversight',
 	'hiderevision-prompt' => 'Ang tatanggaling bilang ng pagbabago:',
 	'hiderevision-continue' => 'Magpatuloy',
 	'hiderevision-text' => "Dapat na gamitin '''lamang''' ito sa sumusunod na mga pagkakataon:
@@ -4013,7 +4013,7 @@ Ibalik muna ang pagbabagong ito.',
 Magreresulta/Hahantong ang paglalabas ng kabatirang (impormasyon) ito sa pagkawala ng mga karapatang pangtagapagingat-tago.',
 	'oversight-legend' => 'Maghanap sa talaan ng mga pagtatago ng pagbabago',
 	'oversight-oversighter' => 'Tagapagingat-tago:',
-	'oversight-offender' => 'Ang nagkamali:',
+	'oversight-offender' => 'May-akda ng pagbabago:',
 );
 
 /** Turkish (Türkçe)

@@ -162,6 +162,13 @@ $messages['id'] = array(
 	'autoincrement-desc' => "Sebuah ''hook'' variabel yang menambahkan variabel penambahan otomatis <nowiki>{{AUTOINCREMENT}}</nowiki>",
 );
 
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'autoincrement-desc' => 'Mmérí mmérí ndór nke né tí mmérí mmérí autoincrementing <nowiki>{{AUTOINCREMENT}}</nowiki>',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  */

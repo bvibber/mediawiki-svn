@@ -827,6 +827,7 @@ $messages['jv'] = array(
  */
 $messages['ka'] = array(
 	'imagemap_no_image' => 'შეცდომა: პირველ ხაზზე უნდა მიუთითოთ სურათი',
+	'imagemap_invalid_image' => 'შეცდომა: სურათი მცდარია ან არ არსებობს',
 	'imagemap_no_link' => 'შეცდომა: არასწორი ბმული $1 ხაზის ბოლოს',
 	'imagemap_invalid_title' => 'შეცდომა: არასწორი სათაური ბმულში ხაზზე $1',
 	'imagemap_missing_coord' => 'შეცდომა: ხაზ $1 არ არის საკმარისი რაოდენობის კოორდინატები',

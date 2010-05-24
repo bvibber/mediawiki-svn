@@ -606,6 +606,8 @@ $messages['tl'] = array(
 	'signature-desc' => 'Nagpapagana/nagpapaandar sa [[Special:SignDocument|paglalagda]] sa kasulatan',
 	'signaturelogpagetext' => 'Isa itong talaan ng [[Special:SignDocument|lahat ng mga lagdang idinagdag sa mga kasulatan]].',
 	'signaturelogentry' => 'nilagdaan na ang kasulatang $1',
+	'right-sigadmin' => 'Pangasiwaan ang paglagda ng kasulatan',
+	'right-createsigndocument' => 'Lumikha ng mga kasulatang maaaring lagdaan',
 );
 
 /** Turkish (Türkçe)

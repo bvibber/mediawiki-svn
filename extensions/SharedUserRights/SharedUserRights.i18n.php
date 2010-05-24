@@ -545,6 +545,7 @@ $messages['tl'] = array(
 	'gblrights-logpage' => 'Talaan ng mga Karapatang Pandaigdigan',
 	'gblrights-pagetext' => 'Isa itong talaan ng lahat ng mga pagbabagong ginawa sa tabla ng mga karapatang pandaigdigan ng mag-anak ng wiki',
 	'gblrights-rights-entry' => 'binago ang kasapian sa pandaigidigang pangkat para kay $1 mula $2 patungo sa $3',
+	'right-userrights-shared' => 'Pamahalaan ang mga karapatang pinagsasaluhan ng tagagamit',
 );
 
 /** Turkish (Türkçe)

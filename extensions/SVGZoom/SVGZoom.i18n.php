@@ -262,6 +262,13 @@ $messages['sv'] = array(
 	'svgzoom-desc' => 'Lägger till panorerings och zoom-funktioner i MediaWiki när SVG filer visas',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'svgzoom-desc' => 'Nagdaragdag ng mga kakayahang pag-ikot na pan at paglapit-tutok sa MediaWiki kapag tinatanaw ang mga talaksang SVG',
+);
+
 /** Turkish (Türkçe)
  * @author Vito Genovese
  */

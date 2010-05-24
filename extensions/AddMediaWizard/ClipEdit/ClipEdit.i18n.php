@@ -617,6 +617,14 @@ $messages['id'] = array(
 	'mwe-clipedit-duration' => 'Durasi:',
 );
 
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'mwe-clipedit-crop' => 'Cháfù nnunuuche',
+	'mwe-clipedit-layout' => 'Mgbásà',
+);
+
 /** Japanese (日本語)
  * @author 青子守歌
  */

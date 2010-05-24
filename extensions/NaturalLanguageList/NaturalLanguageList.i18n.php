@@ -241,6 +241,14 @@ $messages['te'] = array(
 	'nll-lastseparator' => '&#32;మరియు&#32;',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'nll-desc' => 'Madaling pagpopormat ng mga talaan sa likas na mga wika',
+	'nll-lastseparator' => '&#32;at&#32;',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

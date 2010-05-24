@@ -316,6 +316,13 @@ $messages['id'] = array(
 Dapat digunakan seperti [[{{#special:advancedrandom}}/{{ns:template}}:Featured/{{ns:talk}}]] untuk mendapatkan pembicaraan sembarang artikel pilihan, atau seperti [[{{#special:advancedrandom}}/{{ns:template}}:GFDL/{{ns:file}}]] untuk mendapatkan sembarang berkas GFDL.',
 );
 
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'advancedrandom' => 'Nkowula nke nkápurú',
+);
+
 /** Italian (Italiano)
  * @author Civvì
  * @author Pietrodn

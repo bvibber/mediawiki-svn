@@ -187,3 +187,10 @@ $messages['ru'] = array(
 	'peoplecategories-desc' => 'Изменяет отображение названий страниц в особо указанных категориях с «Firstname Lastname» на «Lastname, Firstname»',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'peoplecategories-desc' => 'Nagbabago ng ipinakikitang mga pangalan ng pahina mula sa "Unangpangalan Apelyido" to "Apelyido, Unangpangalan" sa ibabaw ng tinukoy na mga pahina ng kategorya',
+);
+

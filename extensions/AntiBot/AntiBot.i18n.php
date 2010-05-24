@@ -254,6 +254,13 @@ $messages['id'] = array(
 	'antibot-desc' => 'Kerangka kerja sederhana untuk memeriksa spambot dan alat pemicu',
 );
 
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'antibot-desc' => 'Njide spambot dí sérém nè lé na na dór ngwóngwó',
+);
+
 /** Italian (Italiano)
  * @author BrokenArrow
  */

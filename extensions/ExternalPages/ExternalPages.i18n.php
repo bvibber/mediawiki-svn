@@ -325,6 +325,7 @@ $messages['ja'] = array(
  * @author BRUTE
  */
 $messages['ka'] = array(
+	'externalpages' => 'გარე გვერდები',
 	'externalpages-bad-page' => 'გვერდი შეცდომითაა მითითებული',
 	'externalpages-no-page' => 'გვერდი არ არის მითითებული',
 );

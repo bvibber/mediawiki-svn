@@ -1935,6 +1935,14 @@ $messages['tt-cyrl'] = array(
 	'group-patroller-member' => 'тикшерүче',
 );
 
+/** ئۇيغۇرچە (ئۇيغۇرچە)
+ * @author Sahran
+ */
+$messages['ug-arab'] = array(
+	'group-patroller' => 'چارلىغۇچىلار',
+	'group-patroller-member' => 'چارلىغۇچى',
+);
+
 /** Ukrainian (Українська)
  * @author AS
  * @author Ahonc

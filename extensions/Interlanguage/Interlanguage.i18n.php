@@ -331,6 +331,13 @@ $messages['te'] = array(
 	'interlanguage-desc' => 'అంతర భాషా లింకులను వేరొక వికీ నుంచి సంపాదిస్తుంది',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'interlanguage-desc' => 'Kumukuha ng mga kawing na pang-interwika mula sa ibang wiki',
+);
+
 /** Turkish (Türkçe)
  * @author Joseph
  */

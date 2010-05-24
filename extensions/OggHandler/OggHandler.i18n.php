@@ -516,6 +516,8 @@ $messages['br'] = array(
 	'ogg-dismiss' => 'Serriñ',
 	'ogg-download' => 'Pellgargañ ar restr',
 	'ogg-desc-link' => 'Diwar-benn ar restr-mañ',
+	'ogg-oggThumb-version' => "Rekis eo stumm $1 oggThumb, pe nevesoc'h, evit implijout OggHandler.",
+	'ogg-oggThumb-failed' => "N'eo ket deuet a-benn oggThumb da grouiñ ar munud.",
 );
 
 /** Bosnian (Bosanski)
@@ -3204,6 +3206,8 @@ Hindi makapagpapatugtog ang QuickTime ng mga talaksang Ogg kapag wala ang ganito
 	'ogg-dismiss' => 'Isara',
 	'ogg-download' => 'Ikarga ang talaksan',
 	'ogg-desc-link' => 'Tungkol sa talaksang ito',
+	'ogg-oggThumb-version' => 'Nangangailangan ang OggHandler ng bersyong $1 o mas luma.',
+	'ogg-oggThumb-failed' => 'Nabigo ang oggThumb na lumikha ng munting larawan.',
 );
 
 /** Turkish (Türkçe)
