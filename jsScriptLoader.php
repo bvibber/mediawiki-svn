@@ -131,7 +131,7 @@ class jsScriptLoader {
 
 				// Output the loaders js
 				$loaderJS = jsClassLoader::getCombinedLoaderJs();
-				// Transform the loader text to remove debug statments and
+				// Transform the loader text to remove debug statements and
 				// update language msgs if any are present
 				$this->output .= $this->transformScriptText( $loaderJS , 'mwEmbed');
 
@@ -789,6 +789,7 @@ class jsScriptLoader {
 	/*
 	 * Transform script text with language key substitution
 	 * and clear out debug lines if present.
+	 * @param {String} $scriptText Text string to be transformed
 	 */
 	function transformScriptText( $scriptText , $moduleName){
 		global $wgEnableScriptLocalization;
@@ -801,7 +802,6 @@ class jsScriptLoader {
 		if ( $wgEnableScriptLocalization ){
 			// Get the mw.addMessage javascript from scriptText and moduleName
 			$addMessageJs  = $this->getAddMessagesFromScriptText( & $scriptText , $moduleName);
-
 			//@@NOTE getAddMessagesFromClass could identify which mode we are in and we would not need to
 			// try each of these search patterns in the same order as before.
 
@@ -1033,7 +1033,7 @@ class jsScriptLoader {
 	 * @param {Array} $jmsg Associative array of message key -> message value pairs
 	 * @param {String} $langCode Language code override
 	 */
-	static public function updateMessageValues(& $messegeArray, $langCode = false){
+	static public function updateMessageValues( & $messegeArray, $langCode = false ){
 		global $wgLang;
 		// Check the langCode
 		if(!$langCode && $wgLang) {

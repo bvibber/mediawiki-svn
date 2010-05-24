@@ -148,7 +148,7 @@ function wfLoadMsgKeys( $langKey ){
 		if( !is_file( $msgFile ) ) {
 			throw new MWException( "Missing msgFile: " . htmlspecialchars( $msgFile ) . "\n" );
 		}
-		require_once( $msgFile );
+		require( $msgFile );
 		// Save some time by only including the current language in the cache:
 		if( isset( $messages[ $langKey ] ) ) {
 			$wgMessageCache = array_merge( $wgMessageCache, $messages[ $langKey ] );

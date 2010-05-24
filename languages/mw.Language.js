@@ -187,7 +187,10 @@
 		* @param {Array} args  An array of string or jquery objects to be swapped in
 		* @return string
 		*/
-		replaceStringArgs : function() {				
+		replaceStringArgs : function() {
+			if( ! this.arguments ) { 
+				return ;			
+			}	
 			// Replace Values
 			for ( var v = 0; v < this.arguments.length; v++ ) {				
 				if( typeof this.arguments[v] == 'undefined' ) {
