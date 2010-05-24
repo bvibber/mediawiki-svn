@@ -76,7 +76,6 @@ function FrontBackForcedParserBeforeStripHook( &$parser, &$text, &$strip_state )
                                 $endPosition=0;
                                 $endSubstPosition=0;
                                 $thisCount=0;
-                                $keepGoing=0;
 				while (1){
                                     $oldStrPosition=$strPosition;
                                     $strPosition=strpos($forcedMatterText,'>',$strPosition);
@@ -116,7 +115,6 @@ function FrontBackForcedParserBeforeStripHook( &$parser, &$text, &$strip_state )
 		}
 	}
 		
-	#$text=$text.$myText.$text.$myText;
 	return true;
 }
 
