@@ -1575,7 +1575,7 @@ Torna a <span class="plainlinks">[$1 $2]</span>.',
 	'prefswitch-main-anon' => '===Riportami indietro===
 Se vorresti disattivare le nuove funzionalità, <span class="plainlinks">[$1 clicca qui]</span>. Ti sarà chiesto di entrare o di creare un account.',
 	'prefswitch-main-on' => '===Feedback?===
-Ci piacerebbe ascoltarvi.  Per favore visita la nostra <span class="plainlinks">[$1 pagina di feedback]</span>.
+Ci piacerebbe ascoltare i tuoi pareri.  Per favore visita la nostra <span class="plainlinks">[$1 pagina di feedback]</span>.
 ===Riportami indietro!===
 Se vuoi disattivare le nuove funzioni, <span class="plainlinks">[$2 clicca qui]</span>.',
 	'prefswitch-main-off' => '===Provale!===
@@ -2274,7 +2274,7 @@ Për piasì, ch'a selession-a tute le motivassion.",
 	'prefswitch-success-feedback' => 'Ij sò coment a son ëstàit mandà.',
 	'prefswitch-return' => '<hr style="clear:both">
 Artorna a <span class="plainlinks">[$1 $2]</span>.',
-	'prefswitch-main' => "I l'oma travajà sech për fé le ròbe belfé për ij nòstri utent. I l'oma gòj ëd condivide chèich ameliorament, comprèis na presentassion neuva e dle possibilità ëd modìfica neuve. Amelioré la comodità d'utilisassion dij nòstri proget a l'é na priorità dla Fondassion Wikimedia e noi i condivideroma d'àutre modìfiche ant l'avnì.
+	'prefswitch-main' => "I l'oma travajà sech për fé le ròbe belfé për ij nòstri utent. I l'oma gòj ëd condivide chèich ameliorament, comprèis na presentassion neuva e dle possibilità ëd modìfica neuve. Amelioré la comodità d'utilisassion dij nòstri proget a l'é na priorità dla Fondassion Wikimedia e noi i condivideroma d'àutre modìfiche ant l'avnì. Për savèjne ëd pi, vìsita ël sit colegà [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/ blog ëd Wikimedia]
 
 [[File:UsabilityNavigation.png|right|link=|Scren ëd la neuva navigassion]]
 [[File:UsabilityToolbar.png|right|link=|Scren ëd la bara dj'utiss ëd modìfica ameliorà]]
@@ -2284,7 +2284,8 @@ Artorna a <span class="plainlinks">[$1 $2]</span>.',
 * '''Ameliorament ëd la bara dj'utiss ëd modìfica:''' I l'oma riorganisà la bara dj'utiss ëd modìfica për ch'a fussa pi belfé dovrela. Adess, l'ampaginassion a l'é pi sempia e pi intuitiva.
 * '''Assistent dij colegament:''' N'utiss bel da dovré a-j përmët ëd gionté d'anliure a d'àutre pàgine ëd Wikipedia e ëd colegament a d'àutri sit.
 * '''Ameliorament ëd l'arserca:''' I l'oma ameliorà ij sugeriment d'arserca për portelo pi an pressa a la pàgina ch'a sërca.
-* '''Àutre possibilità neuve:''' I l'oma ëdcò giontà n'assistent për le tàule për rende pì bel fé creé e trové le tàule e na possibilità ëd rimpiass për semplifiché la modìfica ëd le pàgine.",
+* '''Àutre possibilità neuve:''' I l'oma ëdcò giontà n'assistent për le tàule për rende pì bel fé creé e trové le tàule e na possibilità ëd rimpiass për semplifiché la modìfica ëd le pàgine.
+* '''Wikipedia puzzle globe''': I l'oma modificà ël puzzle globe. Les ëd pi an sël [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ blog ëd Wikimedia].",
 	'prefswitch-main-anon' => '===Pòrtme andré===
 S\'it veule disabilité le neuve funsionalità, <span class="plainlinks">[$1 sgnaca sì]</span>. At sarà ciamà d\'intré o ëd creé prima un cont.',
 	'prefswitch-main-on' => '===Sugeriment?===
@@ -2642,8 +2643,16 @@ Lütfen uygun olanları seçin.',
 * '''Vikipedi bulmaca küresi''': Bulmaca küresini güncelleştirdik. [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/  Vikimedya bloğunda] daha fazlasını okuyun.",
 	'prefswitch-main-anon' => '===Beni geri götür===
 Eğer yeni özellikleri kapatmak isterseniz, <span class="plainlinks">[$1 buraya tıklayın]</span>. Öncelikle giriş yapmanız veya bir hesap oluşturmanız istenecektir.',
+	'prefswitch-main-on' => '===Geridönüt?===
+Sizi dinlemek isteriz. Lütfen <span class="plainlinks">[$1 geridönüt sayfamızı]</span> ziyaret edin.
+===Beni geri götür!===
+Eğer yeni özellikleri kapatmak isterseniz, lütfen <span class="plainlinks">[$2 buraya tıklayın]</span>.',
 	'prefswitch-main-off' => '===Deneyin!===
 Yeni özellikleri açmak için lütfen <span class="plainlinks">[$1 buraya tıklayın]</span>.',
+	'prefswitch-survey-intro-feedback' => 'Sizi dinlemek isteriz.
+Lütfen "[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]" bağlantısına tıklamadan önce aşağıdaki isteğe bağlı anketimizi doldurun.',
+	'prefswitch-survey-intro-off' => 'Yeni özellikleri denediğiniz için teşekkürler.
+Bunları geliştirmemize yardımcı olmak için, lütfen "[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]" bağlantısına tıklamadan önce aşağıdaki isteğe bağlı anketimizi doldurun.',
 );
 
 /** Ukrainian (Українська)
