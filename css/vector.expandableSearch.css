@@ -1,0 +1,10 @@
+.expandableField {
+	display: block;
+	float: left;
+}
+#simpleSearch { 
+	overflow: auto;
+}
+div#simpleSearch button#searchButton {
+	margin: 0.4em 0 0 0;
+}
