@@ -417,8 +417,9 @@ mw.ApiProxy = { };
 	* @param {URL} apiUrl The url of the api server
 	*/
 	// Include gadget js ( in case the user has not enabled the gadget on that domain )
-	var gadgetWithJS = '?withJS=MediaWiki:MwEmbed.js';
-	//var gadgetWithJS = '';
+	//var gadgetWithJS = '?withJS=MediaWiki:MwEmbed.js';
+	var gadgetWithJS = '';
+	
 	function getServerFrame( context ) {
 		if( ! context || ! context.apiUrl ){
 			mw.log( "Error no context api url " );

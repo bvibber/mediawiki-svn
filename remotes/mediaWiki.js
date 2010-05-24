@@ -4,7 +4,7 @@
  */
 var urlparts = getRemoteEmbedPath();
 var mwEmbedHostPath = urlparts[0];
-var mwRemoteVersion = 'r123';
+var mwRemoteVersion = 'r124';
 var mwUseScriptLoader = true;
 
 // Log the mwRemote version ( will determine what version of js we get )

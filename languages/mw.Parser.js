@@ -2,12 +2,11 @@
 * Mediawiki language text parser
 */
 
-	// Setup jQuery swap string constant
-	
+// Setup swap string constants
+var JQUERY_SWAP_STRING = 'ZjQuerySwapZ';	
+var LINK_SWAP_STRING = 'ZreplaceZ';
 	
 ( function( mw ) {
-	var JQUERY_SWAP_STRING = 'ZjQuerySwapZ';	
-	var LINK_SWAP_STRING = 'ZreplaceZ';
 	
 	// The parser magic global 
 	var pMagicSet = { };

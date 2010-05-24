@@ -1821,7 +1821,7 @@ mw.RemoteSearchDriver.prototype = {
 	* @param {Number} resIndex the resource index to build unique ids
 	* @param {Object} resource the resource object 
 	*/
-	getResultHtmlList:function( provider, resIndex, resource ) {
+	getResultHtmlList: function( provider, resIndex, resource ) {
 		
 		var $resultBox = $j( '<div />' )
 			.addClass( 'mv_clip_list_result' )
