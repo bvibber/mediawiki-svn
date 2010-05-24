@@ -329,6 +329,7 @@ $messages['ksh'] = array(
 $messages['lb'] = array(
 	'mwe-loading_txt' => 'lueden ...',
 	'mwe-apiproxy-setup' => 'API-Proxy astellen',
+	'mwe-load-drag-item' => 'Den agebonnen Objet gëtt gelueden',
 	'mwe-ok' => 'OK',
 	'mwe-cancel' => 'Ofbriechen',
 	'mwe-enable-gadget' => 'Multimedia-Beta-Gadget (mwEmbed) fir all Säiten aktivéieren',

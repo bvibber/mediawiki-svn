@@ -72,7 +72,6 @@ class jsClassLoader {
 			'jsClassLoader::preg_buildComponentList',
 			$fileContent
 		);
-		print_r(  self::$coreComponentsList );
 
 		// Get the list of enabled modules into $moduleList
 		preg_replace_callback(
