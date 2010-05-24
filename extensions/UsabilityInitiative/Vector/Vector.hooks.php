@@ -14,6 +14,7 @@ class VectorHooks {
 		'raw' => array(
 			array( 'src' => 'Modules/CollapsibleNav/CollapsibleNav.js', 'version' => 12 ),
 			array( 'src' => 'Modules/CollapsibleTabs/CollapsibleTabs.js', 'version' => 8 ),
+			array( 'src' => 'Modules/ExpandableSearch/ExpandableSearch.js', 'version' => 2 ),
 			array( 'src' => 'Modules/EditWarning/EditWarning.js', 'version' => 8 ),
 			array( 'src' => 'Modules/FooterCleanup/FooterCleanup.js', 'version' => 5 ),
 			array( 'src' => 'Modules/SimpleSearch/SimpleSearch.js', 'version' => 11 ),
@@ -57,6 +58,8 @@ class VectorHooks {
 			'messages' => array(
 				'vector-editwarning-warning',
 			),
+		),
+		'expandablesearch' => array(
 		),
 		'footercleanup' => array(
 		),

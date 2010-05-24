@@ -18,23 +18,24 @@
 
 $.expandableField = {
 	/**
-	 * Cancel any delayed updateSuggestions() call and inform the user so
-	 * they can cancel their result fetching if they use AJAX or something
+	 * Expand the field, make the callback
 	 */
 	expandField: function( e, context ) {
+		context.config.beforeExpand.call( context.data.$field, context );
 		context.data.$field
-		.css( { 'display' : 'inline-block' } )
-		.animate( { 'width': context.data.expandedWidth } );
+			.animate( { 'width': context.data.expandedWidth }, 'fast', function() {
+				context.config.afterExpand.call( this, context );
+			} );
 	},
 	/**
-	 * Restore the text the user originally typed in the textbox, before it was overwritten by highlight(). This
-	 * restores the value the currently displayed suggestions are based on, rather than the value just before
-	 * highlight() overwrote it; the former is arguably slightly more sensible.
+	 * Condense the field, make the callback
 	 */
 	condenseField: function( e, context ) {
+		context.config.beforeCondense.call( context.data.$field, context );
 		context.data.$field
-			.css( { 'display' : 'inline-block' } )
-			.animate( { 'width': context.data.condensedWidth, 'display': 'inline'} );
+			.animate( { 'width': context.data.condensedWidth }, 'fast', function() {
+				context.config.afterCondense.call( this, context );
+			} );
 	},
 	/**
 	 * Sets the value of a property, and updates the widget accordingly
@@ -65,23 +66,30 @@ $.fn.expandableField = function() {
 		if ( context == null ) {
 			context = {
 				config: {
+					// callback function for before collapse
+					'beforeCondense': function( context ) {},
+					// callback function for before expand
+					'beforeExpand': function( context ) {},
+					// callback function for after collapse
+					'afterCondense': function( context ) {},
+					// callback function for after expand
+					'afterExpand': function( context ) {},
 				}
 			};
 		}
 		
 		/* API */
-		
 		// Handle various calling styles
 		if ( args.length > 0 ) {
 			if ( typeof args[0] == 'object' ) {
 				// Apply set of properties
 				for ( var key in args[0] ) {
-					$.suggestions.configure( context, key, args[0][key] );
+					$.expandableField.configure( context, key, args[0][key] );
 				}
 			} else if ( typeof args[0] == 'string' ) {
 				if ( args.length > 1 ) {
 					// Set property values
-					$.suggestions.configure( context, args[0], args[1] );
+					$.expandableField.configure( context, args[0], args[1] );
 				} else if ( returnValue == null ) {
 					// Get property values, but don't give access to internal data - returns only the first
 					returnValue = ( args[0] in context.config ? undefined : context.config[args[0]] );
@@ -102,11 +110,11 @@ $.fn.expandableField = function() {
 			};
 			
 			$( this )
-				.addClass( 'expandableField-condensed' )
+				.addClass( 'expandableField' )
 				.focus( function( e ) {
 					$.expandableField.expandField( e, context );
 				} )
-				.blur( function( e ) {
+				.delayedBind( 250, 'blur', function( e ) {
 					$.expandableField.condenseField( e, context );
 				} );
 		}
