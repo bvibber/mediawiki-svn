@@ -32,15 +32,15 @@ class DynamicSidebar {
 		$catSB = array();
 		if ( $wgDynamicSidebarUseGroups && isset( $sidebar['GROUP-SIDEBAR'] ) ) {
 			self::printDebug( "Using group sidebar" );
-			$skin->addToSidebarPlain( $groupSB, self::doGroupSidebar() );
+			$skin->addToSidebar( $groupSB, self::doGroupSidebar() );
 		}
 		if ( $wgDynamicSidebarUseUserpages && isset( $sidebar['USER-SIDEBAR'] ) ) {
 			self::printDebug( "Using user sidebar" );
-			$skin->addToSidebarPlain( $userSB, self::doUserSidebar() );
+			$skin->addToSidebar( $userSB, self::doUserSidebar() );
 		}
 		if ( $wgDynamicSidebarUseCategories && isset( $sidebar['CATEGORY-SIDEBAR'] ) ) {
 			self::printDebug( "Using category sidebar" );
-			$skin->addToSidebarPlain( $catSB, self::doCategorySidebar() );
+			$skin->addToSidebar( $catSB, self::doCategorySidebar() );
 		}
 
 		$sidebar_copy = array();
