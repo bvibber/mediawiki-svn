@@ -65,6 +65,7 @@ class PureWikiDeletionHooks {
 			    array( 'rc_this_oldid' => $blankRevId
 				   ));
 		     Article::onArticleDelete( $mTitle );
+		     $mTitle->resetArticleID( 0 );
 		     if ($user->getOption( 'watchblank' )){
 			    $myWatched=WatchedItem::fromUserTitle($user,$mTitle);
 			    $myWatched->addWatch();

@@ -614,6 +614,9 @@ class PopulateBlankedPagesTable extends SpecialPage {
 						,array("blank_page_id" => $myId));
 					if (!$checkPresence){
 						$dbw->insert('blanked_page',$blank_row);
+					$mTitle=Title::newFromID($myId);
+					Article::onArticleDelete( $mTitle );
+					$mTitle->resetArticleID( 0 );
 					}
 				}
 			}
