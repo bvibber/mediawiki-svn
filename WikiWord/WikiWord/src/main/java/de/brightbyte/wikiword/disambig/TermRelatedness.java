@@ -51,7 +51,7 @@ public class TermRelatedness<C extends WikiWordConcept> implements Similarity<St
 	
 	public Relatedness relatedness(String a, String b) {
 		try {
-			Disambiguator.Result<Term, ? extends WikiWordConcept> r = disambig.<Term>disambiguate(Term.asTerms(a, b), context);
+			Disambiguator.Disambiguation<Term, ? extends WikiWordConcept> r = disambig.<Term>disambiguate(Term.asTerms(a, b), context);
 			if (r==null || r.getMeanings().size()!=2) return null;
 			
 			double d;

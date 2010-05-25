@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 import de.brightbyte.util.PersistenceException;
-import de.brightbyte.wikiword.disambig.Disambiguator.Result;
+import de.brightbyte.wikiword.disambig.Disambiguator.Disambiguation;
 import de.brightbyte.wikiword.model.LocalConcept;
 import de.brightbyte.wikiword.model.PhraseOccurance;
 import de.brightbyte.wikiword.model.PhraseOccuranceSet;
@@ -115,7 +115,7 @@ public class PopularityDisambiguatorTest extends DisambiguatorTestBase {
 		Term underground = new Term("Underground");
 		
 		List<Term> sequence = Arrays.asList(new Term[] {uk, london, underground});
-		Disambiguator.Result<Term, LocalConcept> result = disambiguator.disambiguate(sequence, null);
+		Disambiguator.Disambiguation<Term, LocalConcept> result = disambiguator.disambiguate(sequence, null);
 
 		assertEquals("sequence", sequence, result.getSequence());
 		
@@ -130,7 +130,7 @@ public class PopularityDisambiguatorTest extends DisambiguatorTestBase {
 		PopularityDisambiguator disambiguator = new PopularityDisambiguator(meaningFetcher, 10);
 		disambiguator.setTrace(traceOutput);
 		
-		Result<PhraseOccurance, LocalConcept> result = disambiguator.disambiguate(set.getRootNode(), null);
+		Disambiguation<PhraseOccurance, LocalConcept> result = disambiguator.disambiguate(set.getRootNode(), null);
 		
 		List<? extends PhraseOccurance> sequence = result.getSequence();
 		Map<? extends PhraseOccurance, ? extends LocalConcept> meanings = result.getMeanings();

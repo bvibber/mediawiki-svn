@@ -536,7 +536,7 @@ public class QueryConsole extends ConsoleApp<WikiWordConceptStore> {
 	}		
 
 	public void showDisambiguation(PhraseNode<? extends TermReference> root, ConsoleOutput out) throws PersistenceException {
-		Disambiguator.Result r = getDisambiguator().disambiguate(root, null);
+		Disambiguator.Disambiguation r = getDisambiguator().disambiguate(root, null);
 		out.writeInterpretation(r.getMeanings());
 	}		
 

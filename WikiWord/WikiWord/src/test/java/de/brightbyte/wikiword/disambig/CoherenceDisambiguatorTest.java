@@ -11,7 +11,7 @@ import de.brightbyte.io.ConsoleIO;
 import de.brightbyte.io.Output;
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.disambig.Disambiguator.Interpretation;
-import de.brightbyte.wikiword.disambig.Disambiguator.Result;
+import de.brightbyte.wikiword.disambig.Disambiguator.Disambiguation;
 import de.brightbyte.wikiword.model.LocalConcept;
 import de.brightbyte.wikiword.model.PhraseOccurance;
 import de.brightbyte.wikiword.model.PhraseOccuranceSet;
@@ -125,7 +125,7 @@ public class CoherenceDisambiguatorTest extends DisambiguatorTestBase {
 		
 		List<Term> sequence = terms("UK", "London", "Underground", "Bank");
 
-		Result<Term, LocalConcept> result = disambiguator.disambiguate(sequence, null);
+		Disambiguation<Term, LocalConcept> result = disambiguator.disambiguate(sequence, null);
 		
 		Map<? extends Term, ? extends LocalConcept> meanings = result.getMeanings();
 		
@@ -146,7 +146,7 @@ public class CoherenceDisambiguatorTest extends DisambiguatorTestBase {
 		CoherenceDisambiguator disambiguator = new CoherenceDisambiguator(meaningFetcher, featureFetcher, 10);
 		disambiguator.setTrace(traceOutput);
 
-		Result<PhraseOccurance, LocalConcept> result = disambiguator.disambiguate(set.getRootNode(), null);
+		Disambiguation<PhraseOccurance, LocalConcept> result = disambiguator.disambiguate(set.getRootNode(), null);
 		
 		List<? extends PhraseOccurance> sequence = result.getSequence();
 		Map<? extends PhraseOccurance, ? extends LocalConcept> meanings = result.getMeanings();

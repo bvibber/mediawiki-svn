@@ -182,17 +182,17 @@ public abstract class AbstractDisambiguator<T extends TermReference, C extends W
 		return meanings;
 	}
 	
-	public <X extends T>Result<X, C> disambiguate(List<X> terms, Collection<? extends C> context) throws PersistenceException {
+	public <X extends T>Disambiguation<X, C> disambiguate(List<X> terms, Collection<? extends C> context) throws PersistenceException {
 		return this.<X>disambiguate(new TermListNode<X>(terms, 0), context);
 	}
 	
-	public <X extends T>Result<X, C> disambiguate(PhraseNode<X> root, Collection<? extends C> context) throws PersistenceException {
+	public <X extends T>Disambiguation<X, C> disambiguate(PhraseNode<X> root, Collection<? extends C> context) throws PersistenceException {
 		Collection<X> terms = getTerms(root, Integer.MAX_VALUE);
 		Map<X, List<? extends C>> meanings = getMeanings(terms);
 		return disambiguate(root, meanings, context);
 	}
 	
-	public abstract <X extends T>Result<X, C> disambiguate(PhraseNode<X> root, Map<X, List<? extends C>> meanings, Collection<? extends C> context) throws PersistenceException;
+	public abstract <X extends T>Disambiguation<X, C> disambiguate(PhraseNode<X> root, Map<X, List<? extends C>> meanings, Collection<? extends C> context) throws PersistenceException;
 
 	public Output getTrace() {
 		return trace;

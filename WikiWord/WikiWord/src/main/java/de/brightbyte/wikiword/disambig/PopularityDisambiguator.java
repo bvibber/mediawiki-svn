@@ -66,16 +66,16 @@ public class PopularityDisambiguator extends AbstractDisambiguator<TermReference
 		this.weigthCombiner = weigthCombiner;
 	}
 
-	public <X extends TermReference>Result<X, LocalConcept> disambiguate(PhraseNode<X> root, Map<X, List<? extends LocalConcept>> meanings, Collection<? extends LocalConcept> context) {
+	public <X extends TermReference>Disambiguation<X, LocalConcept> disambiguate(PhraseNode<X> root, Map<X, List<? extends LocalConcept>> meanings, Collection<? extends LocalConcept> context) {
 		Collection<List<X>> sequences = getSequences(root, Integer.MAX_VALUE);
 		return disambiguate(sequences, root, meanings, context);
 	}
 	
-	public <X extends TermReference>Result<X, LocalConcept> disambiguate(Collection<List<X>> sequences, PhraseNode<X> root, Map<X, List<? extends LocalConcept>> meanings, Collection<? extends LocalConcept> context) {
-		Result<X, LocalConcept> best = null;
+	public <X extends TermReference>Disambiguation<X, LocalConcept> disambiguate(Collection<List<X>> sequences, PhraseNode<X> root, Map<X, List<? extends LocalConcept>> meanings, Collection<? extends LocalConcept> context) {
+		Disambiguation<X, LocalConcept> best = null;
 		
 		for (List<X> sequence: sequences) {
-			Result<X, LocalConcept> r = disambiguate(sequence, meanings, context);
+			Disambiguation<X, LocalConcept> r = disambiguate(sequence, meanings, context);
 			trace(r.toString());
 			if (best == null || best.getScore() < r.getScore()) {
 				best = r;
@@ -86,8 +86,8 @@ public class PopularityDisambiguator extends AbstractDisambiguator<TermReference
 		return best;
 	}
 	
-	public <X extends TermReference>Result<X, LocalConcept> disambiguate(List<X> sequence, Map<X, List<? extends LocalConcept>> meanings, Collection<? extends LocalConcept> context) {
-		if (sequence.isEmpty() || meanings.isEmpty()) return new Disambiguator.Result<X, LocalConcept>(Collections.<X, LocalConcept>emptyMap(), Collections.<X>emptyList(), 0.0, "no terms or meanings");
+	public <X extends TermReference>Disambiguation<X, LocalConcept> disambiguate(List<X> sequence, Map<X, List<? extends LocalConcept>> meanings, Collection<? extends LocalConcept> context) {
+		if (sequence.isEmpty() || meanings.isEmpty()) return new Disambiguator.Disambiguation<X, LocalConcept>(Collections.<X, LocalConcept>emptyMap(), Collections.<X>emptyList(), 0.0, "no terms or meanings");
 
 		Map<X, LocalConcept> disambig = new HashMap<X, LocalConcept>();
 		double score = 0;
@@ -112,7 +112,7 @@ public class PopularityDisambiguator extends AbstractDisambiguator<TermReference
 
 		if (disambig.size()>0) score = score / sequence.size(); //NOTE: treat unknown terms as having pop = 0
 		
-		Result<X, LocalConcept> r = new Result<X, LocalConcept>(disambig, sequence, score, "score="+score+"; pop="+totalPop);
+		Disambiguation<X, LocalConcept> r = new Disambiguation<X, LocalConcept>(disambig, sequence, score, "score="+score+"; pop="+totalPop);
 		return r;
 	}
 

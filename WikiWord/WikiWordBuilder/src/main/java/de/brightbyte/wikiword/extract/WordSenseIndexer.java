@@ -25,7 +25,7 @@ import de.brightbyte.wikiword.disambig.SlidingCoherenceDisambiguator;
 import de.brightbyte.wikiword.disambig.StoredFeatureFetcher;
 import de.brightbyte.wikiword.disambig.StoredMeaningFetcher;
 import de.brightbyte.wikiword.disambig.Term;
-import de.brightbyte.wikiword.disambig.Disambiguator.Result;
+import de.brightbyte.wikiword.disambig.Disambiguator.Disambiguation;
 import de.brightbyte.wikiword.model.LocalConcept;
 import de.brightbyte.wikiword.model.TermReference;
 import de.brightbyte.wikiword.model.WikiWordConcept;
@@ -121,14 +121,14 @@ public class WordSenseIndexer extends StreamProcessorApp<String, String, WikiWor
 		List<Term> terms =  Term.asTerms(chunker.chunk(line.trim()));
 		if (flip) Collections.reverse(terms);
 		
-		Disambiguator.Result<Term, LocalConcept> result = disambiguator.disambiguate(terms, null);
+		Disambiguator.Disambiguation<Term, LocalConcept> result = disambiguator.disambiguate(terms, null);
 		if (flip) Collections.reverse(terms);
 		
 		String s = assembleMeanings(terms, result); //TODO: use proper TSV or something
 		commit(s);
 	}
 
-	private String assembleMeanings(List<Term> terms, Result<Term, LocalConcept> result) {
+	private String assembleMeanings(List<Term> terms, Disambiguation<Term, LocalConcept> result) {
 		StringBuilder s = new StringBuilder();
 		
 		for (Term t: terms) {

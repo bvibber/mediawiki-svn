@@ -7,7 +7,7 @@ import java.util.Map;
 import de.brightbyte.io.ConsoleIO;
 import de.brightbyte.io.Output;
 import de.brightbyte.util.PersistenceException;
-import de.brightbyte.wikiword.disambig.Disambiguator.Result;
+import de.brightbyte.wikiword.disambig.Disambiguator.Disambiguation;
 import de.brightbyte.wikiword.model.LocalConcept;
 import de.brightbyte.wikiword.model.PhraseOccurance;
 import de.brightbyte.wikiword.model.PhraseOccuranceSet;
@@ -25,7 +25,7 @@ public class SlidingCoherenceDisambiguatorTest extends DisambiguatorTestBase {
 		
 		List<Term> sequence = terms("UK", "London", "Underground", "Bank");
 
-		Result<Term, LocalConcept> result = disambiguator.disambiguate(sequence, null);
+		Disambiguation<Term, LocalConcept> result = disambiguator.disambiguate(sequence, null);
 		
 		Map<? extends Term, ? extends LocalConcept> meanings = result.getMeanings();
 		
@@ -48,7 +48,7 @@ public class SlidingCoherenceDisambiguatorTest extends DisambiguatorTestBase {
 		disambiguator.setInitialWindow(1);
 		disambiguator.setWindow(3);
 
-		Result<PhraseOccurance, LocalConcept> result = disambiguator.disambiguate(set.getRootNode(), null);
+		Disambiguation<PhraseOccurance, LocalConcept> result = disambiguator.disambiguate(set.getRootNode(), null);
 		
 		List<? extends PhraseOccurance> sequence = result.getSequence();
 		Map<? extends PhraseOccurance, ? extends LocalConcept> meanings = result.getMeanings();

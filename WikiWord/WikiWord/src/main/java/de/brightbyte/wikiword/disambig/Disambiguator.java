@@ -112,26 +112,32 @@ public interface Disambiguator<T extends TermReference, C extends WikiWordConcep
 		
 	}
 	
-	public static class Result<T extends TermReference, C extends WikiWordConcept> implements Comparable {
-		private Map<? extends T, ? extends C> meanings;
-		private List<? extends T> sequence;
+	public static class Disambiguation<T extends TermReference, C extends WikiWordConcept> implements Comparable {
+		private Interpretation<T, C>  interpretation;
 		private double score;
 		private String description;
 		
-		public Result(Map<? extends T, ? extends C> meanings, List<? extends T> sequence, double score, String description) {
-			super();
-			this.meanings = meanings;
-			this.sequence = sequence;
+		public Disambiguation(Map<T, C> meanings, List<T> sequence, double score, String description) {
+			this(new Interpretation<T, C>(meanings, sequence), score, description);
+		}
+		
+		public Disambiguation(Interpretation<T, C> interpretation, double score, String description) {
+			if (interpretation==null) throw new NullPointerException();
+			this.interpretation = interpretation;
 			this.score = score;
 			this.description = description;
 		}
 		
+		public Interpretation<T, C> getInterpretation() {
+			return interpretation;
+		}
+		
 		public Map<? extends T, ? extends C> getMeanings() {
-			return meanings;
+			return getInterpretation().getMeanings();
 		}
 		
 		public List<? extends T> getSequence() {
-			return sequence;
+			return getInterpretation().getSequence();
 		}
 
 		public double getScore() {
@@ -144,11 +150,11 @@ public interface Disambiguator<T extends TermReference, C extends WikiWordConcep
 		
 		@Override
 		public String toString() {
-			return "("+score+"|"+description+") "+meanings;
+			return "("+score+"|"+description+") "+getMeanings();
 		}
 	
 		public int compareTo(Object o) {
-			Result r = (Result)o;
+			Disambiguation r = (Disambiguation)o;
 			double d = score - r.score;
 			
 			if (d==0) return 0;
@@ -160,7 +166,7 @@ public interface Disambiguator<T extends TermReference, C extends WikiWordConcep
 
 	public void setTrace(Output trace);
 
-	public <X extends T>Result<X, C> disambiguate(List<X> terms, Collection<? extends C> context) throws PersistenceException;
-	public <X extends T>Result<X, C> disambiguate(PhraseNode<X> root, Collection<? extends C> context) throws PersistenceException;
+	public <X extends T>Disambiguation<X, C> disambiguate(List<X> terms, Collection<? extends C> context) throws PersistenceException;
+	public <X extends T>Disambiguation<X, C> disambiguate(PhraseNode<X> root, Collection<? extends C> context) throws PersistenceException;
 
 }
