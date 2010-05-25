@@ -81,10 +81,17 @@ class ExternalStoreCassandra {
 	}
 
 	private function connect( $cluster ) {
-		global $wgCassandraPort;
+		global $wgCassandraPort, $wgCassandraClusters;
 
 		$cluster = str_replace( 'cassandra://', '', $cluster );
-		list( $host, $this->keyspace ) = explode( '/', $cluster );
+		list( $cluster, $this->keyspace ) = explode( '/', $cluster );
+		
+		if ( isset( $wgCassandraClusters[$cluster] ) ) {
+			$hosts = $wgCassandraClusters[$cluster];
+			$host = $hosts[mt_rand( 0, count( $hosts ) - 1 )];
+		} else {
+			$host = $cluster;
+		}
 
 		try {
 			$this->socket = new TSocket( $host, $wgCassandraPort );
