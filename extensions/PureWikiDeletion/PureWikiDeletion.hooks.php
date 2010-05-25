@@ -99,9 +99,6 @@ class PureWikiDeletionHooks {
 		            $dbw->delete( 'recentchanges',
 				   array( 'rc_this_oldid' => $blankRevId
 				   ) );
-			    if ( $user->getOption( 'watchunblank' ) ) {
-		     		   $watchthis = true;
-			    }
 		            $mTitle->touchLinks();
 		            $mTitle->invalidateCache();
 		            $mTitle->purgeSquid();
@@ -139,7 +136,7 @@ class PureWikiDeletionHooks {
 	       return true;
        }
        
-       public static function PureWikiDeletionEditHook( $editPage ) {
+       public static function PureWikiDeletionEditHook( &$editPage ) {
 	      global $wgLang;
 	      wfLoadExtensionMessages( 'PureWikiDeletion' );
 	      $dbr = wfGetDB( DB_SLAVE );
@@ -172,6 +169,10 @@ class PureWikiDeletionHooks {
 		     , $result->blank_summary
 		     , $result->blank_parent_id ) );
 	      $editPage->editFormPageTop .= $html;
+	      
+	      if ($blanking_user->getOption( 'watchunblank' )){
+		   $editPage->watchthis = true;
+	      }
 	      
 	      return true;
        }
