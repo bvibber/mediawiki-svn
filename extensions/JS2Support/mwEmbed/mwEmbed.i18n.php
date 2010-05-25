@@ -402,6 +402,13 @@ $messages['pl'] = array(
 	'mwe-error_load_lib' => 'Błąd – W plik JavaScript $1 brak jest możliwości pobrania oraz definicji $2',
 );
 
+/** Piedmontese (Piemontèis)
+ * @author Dragonòt
+ */
+$messages['pms'] = array(
+	'mwe-loading_txt' => 'A caria ...',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  * @author Malafaya

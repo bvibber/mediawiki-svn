@@ -154,7 +154,7 @@ $messages['an'] = array(
 	'usagestatisticsstart' => 'Calendata de prenzipio',
 	'usagestatisticsend' => 'Calendata final',
 	'usagestatisticsnoend' => 'Por fabor, escriba una calendata final',
-	'usagestatisticsbadstartend' => '<b>As calendatas de <i>enzete</i> y/u <i>fin</i> no son conformes!</b>',
+	'usagestatisticsbadstartend' => '<b>As calendatas de <i>inicio</i> y/u <i>fin</i> no son conformes!</b>',
 );
 
 /** Arabic (العربية)

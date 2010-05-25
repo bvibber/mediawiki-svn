@@ -626,6 +626,7 @@ $messages['ig'] = array(
 );
 
 /** Japanese (日本語)
+ * @author Fryed-peach
  * @author 青子守歌
  */
 $messages['ja'] = array(
@@ -654,6 +655,9 @@ $messages['ja'] = array(
 	'mwe-clipedit-inline-description' => 'キャプション',
 	'mwe-clipedit-edit-video-tools' => '動画編集ツール:',
 	'mwe-clipedit-duration' => '時間:',
+	'mwe-clipedit-layout' => 'レイアウト',
+	'mwe-clipedit-layout_right' => '右側の画像の配置',
+	'mwe-clipedit-layout_left' => '左側の画像の配置',
 );
 
 /** Georgian (ქართული) */

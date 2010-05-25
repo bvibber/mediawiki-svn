@@ -1125,6 +1125,7 @@ $messages['vi'] = array(
  * @author פוילישער
  */
 $messages['yi'] = array(
+	'fundraiserportal' => 'געלטשאַפֿערײַ פארטאַל',
 	'fundraiserportal-desc' => 'לייגט צו א "ביטע בײַשטײַערן" פארטאַל אין דער הייך פון זײַטפאַס',
 	'fundraiserportal-plain-button' => 'שטיצט וויקיפּעדיע!',
 	'fundraiserportal-ruby-button' => 'בײַשטײַערט אצינד',

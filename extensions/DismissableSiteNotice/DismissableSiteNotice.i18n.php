@@ -965,9 +965,11 @@ $messages['wa'] = array(
 
 /** Yiddish (ייִדיש)
  * @author Jiddisch
+ * @author פוילישער
  */
 $messages['yi'] = array(
 	'sitenotice_close' => 'צומאַכן',
+	'sitenotice-desc' => 'ערלויבט באַניצער שליסן דעם נאטיץ',
 );
 
 /** Cantonese (粵語) */

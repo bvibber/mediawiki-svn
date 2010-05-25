@@ -1118,6 +1118,13 @@ $messages['lmo'] = array(
 	'group-patroller' => 'Gent de rónda',
 );
 
+/** Lithuanian (Lietuvių)
+ * @author Hugo.arg
+ */
+$messages['lt'] = array(
+	'group-patroller' => 'Patruliai',
+);
+
 /** Malagasy (Malagasy)
  * @author Jagwar
  */

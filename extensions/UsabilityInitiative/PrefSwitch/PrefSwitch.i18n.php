@@ -120,6 +120,15 @@ It is not in used at the referred page, as of 16 May 2010.
 	'prefswitch-survey-answer-whyoff-other' => '{{Identical|Other reason}}',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'prefswitch-survey-true' => 'Ja',
+	'prefswitch-survey-false' => 'Nee',
+	'prefswitch-survey-answer-whyoff-other' => '',
+);
+
 /** Gheg Albanian (Gegë)
  * @author Mdupont
  */
@@ -1208,6 +1217,8 @@ $messages['gsw'] = array(
 	'prefswitch-survey-cancel-off' => 'Wänn di neje Funktione wyter bruche witt, chasch zu $1 zruckgoh.',
 	'prefswitch-survey-submit-feedback' => 'Ruckmäldig gee',
 	'prefswitch-survey-cancel-feedback' => 'Wänn kei Ruckmäldig witt gee, chasch zue $1 zruckgoh.',
+	'prefswitch-survey-question-like' => 'Was het Dir an dr neje Funktione gfalle?',
+	'prefswitch-survey-question-dislike' => 'Was het Dir an dr neje Funktione nit gfalle?',
 	'prefswitch-survey-question-whyoff' => 'Wurum schaltsch di neje Funktione ab?
 Bitte wehl alli Pinkt, wu zuedräffe uus.',
 	'prefswitch-survey-answer-whyoff-hard' => 'D Verwändig isch z schwirig gsi.',
@@ -1222,17 +1233,18 @@ Bitte wehl alli Pinkt, wu zuedräffe uus.',
 	'prefswitch-survey-question-os' => 'Wel Betribssyschtem bruchsch Du?',
 	'prefswitch-survey-answer-os-other' => 'Anders Betribssyschtem:',
 	'prefswitch-survey-question-res' => 'Was fir e Uflesig het Dyy Bildschirm?',
-	'prefswitch-title-on' => 'Was isch nej?',
+	'prefswitch-title-on' => 'Neji Funktione',
 	'prefswitch-title-switched-on' => 'Vil Spaß!',
 	'prefswitch-title-off' => 'Neji Funktione abschalte',
 	'prefswitch-title-switched-off' => 'Dankschen',
 	'prefswitch-title-feedback' => 'Ruckmäldig',
-	'prefswitch-success-on' => 'Di neje Funktione sin jetz yygschalte.',
-	'prefswitch-success-off' => 'Di neje Funktione sin jetz abgschalte.',
+	'prefswitch-success-on' => 'Di neje Funktione sin jetz yygschalte. Mir winsche Dir vil Freid dermit. Du chasch si jederzyt abschalte dur e Klick uf s Gleich „[[Special:UsabilityInitiativePrefSwitch|Beta verloo]]“ obe uf dr Websyte.',
+	'prefswitch-success-off' => 'Di neje Funktione sin jetz abgschalte. Dankschen fir s Uusbrobiere. Du chasch si jederzyt wider aaschalte dur e Klick uf s Gleich „[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-off}}]]“ obe uf dr Websyte.',
 	'prefswitch-success-feedback' => 'Dyy Ruckmäldig isch gschickt wore.',
 	'prefswitch-return' => '<hr style="clear:both">
 Zruck zue <span class="plainlinks">[$1 $2]</span>.',
-	'prefswitch-main' => "Mi hän zimli dra gschafft, d Sache fir unsri Benutzer eifacher z mache. Mir freien is, ass mir e baar Verbesserige chenne aabiete, derzue e nej Uussäh un vereifachti Bearbeitigsfunktione. D Benutzerfrejndligkeit verbessere het Prioritet bi dr Wikimedia Foundation un mir stelle in dr Zuechumpft meh Update z Verfiegig.
+	'prefswitch-main' => "Mi hän zimli dra gschafft, d Sache fir unsri Benutzer eifacher z mache. Mir freien is, ass mir e baar Verbesserige chenne aabiete, derzue e nej Uussäh un vereifachti Bearbeitigsfunktione. D Benutzerfrejndligkeit verbessere het Prioritet bi dr Wikimedia Foundation un mir stelle in dr Zuechumpft meh Update z Verfiegig. Fir meh Informatione, kueg dr [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/ Wikimedia-Blog]-Yytrag. 
+
 
 [[File:UsabilityNavigation.png|right|link=|Screenshot vu dr neje Navigation]]
 [[File:UsabilityToolbar.png|right|link=|Screenshot vum verbesserete Wärchzyygchäschtli]]
@@ -1242,7 +1254,8 @@ Zruck zue <span class="plainlinks">[$1 $2]</span>.',
 * '''Verbesserige vum Wärchzyygchäschtli:''' Mir hän s Wärchzyygchäschtli umorganisiert, ass es cha eifacher brucht wäre. Jetz isch s Formatiere eifacher un intuitiver.
 * '''Gleichhilf:'''  E eifach Wärchzyyg, wu Dir s megli macht, Gleicher zue andere Wikipediasyte un zue extärne Syte.
 * '''Verbesserige vu dr Suechi:''' Mir hän d Suechvorschleg verbesseret, ass Du schnäller uf die Syte chunnsch, wu Du suechsch.
-* '''Anderi neji Funktione:'''  Mir hän au ne Tabällehilf yygfiert, wu s Aalege vu Tabälle eifacher macht, un e Hilf zum Sueche un Ersetze, wu s Bearbeite vu Syte eifacher macht.",
+* '''Anderi neji Funktione:'''  Mir hän au ne Tabällehilf yygfiert, wu s Aalege vu Tabälle eifacher macht, un e Hilf zum Sueche un Ersetze, wu s Bearbeite vu Syte eifacher macht.
+* '''Wikipedia-Puzzle-Wältchugle: wir hän d Puzzle-Wältchugle nej gmacht, meh Informatione im [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ Wikimedia-Blog.]",
 	'prefswitch-main-anon' => '===Zruck===
 Wänn Du di neje Funktione witt abschalte, no <span class="plainlinks">[$1 druck do]</span>. Du wirsch derno bätte Di aazmälde oder zerscht e nej Benutzerkonto aazlege.',
 	'prefswitch-main-on' => '=== Ruckmäldig? ===
@@ -1253,9 +1266,9 @@ Wänn Du di neje Funktione witt abschalte, <span class="plainlinks">[$2 druck do
 	'prefswitch-main-off' => '=== Probier s uus! ===
 Wänn Du di neje Funktione witt yyschalte, <span class="plainlinks">[$1 druck do]</span>.',
 	'prefswitch-survey-intro-feedback' => 'Mir deeten is freie, vu Dir z here.
-Bitte fill di frejwillig Umfrog uus.',
+Bitte fill di frejwillig Umfrog uus, voreb Du uf „[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]“ drucksch.',
 	'prefswitch-survey-intro-off' => 'Dankschen fir s Uusprobiere vu unsre neje Funktione.
-Ass mir no besser chenne wäre, fill bitte di frejwillig Umfrog uus.',
+Ass mir no besser chenne wäre, fill bitte di frejwillig Umfrog uus, voreb Du uf „[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]“ drucksch.',
 );
 
 /** Hebrew (עברית)
@@ -1575,13 +1588,13 @@ Torna a <span class="plainlinks">[$1 $2]</span>.',
 	'prefswitch-main-anon' => '===Riportami indietro===
 Se vorresti disattivare le nuove funzionalità, <span class="plainlinks">[$1 clicca qui]</span>. Ti sarà chiesto di entrare o di creare un account.',
 	'prefswitch-main-on' => '===Feedback?===
-Ci piacerebbe ascoltare i tuoi pareri.  Per favore visita la nostra <span class="plainlinks">[$1 pagina di feedback]</span>.
+Ci piacerebbe ascoltare il tuo parere.  Per favore visita la nostra <span class="plainlinks">[$1 pagina di feedback]</span>.
 ===Riportami indietro!===
 Se vuoi disattivare le nuove funzioni, <span class="plainlinks">[$2 clicca qui]</span>.',
 	'prefswitch-main-off' => '===Provale!===
 Se vuoi attivare le nuove funzioni, <span class="plainlinks">[$1 clicca qui]</span>.',
-	'prefswitch-survey-intro-feedback' => 'Ci piacerebbe ascoltarvi.
-Per favore riempi il seguente questionario facoltativo.',
+	'prefswitch-survey-intro-feedback' => 'Ci piacerebbe ascoltare il tuo parere.
+Per favore, compila il seguente sondaggio facoltativo prima di cliccare "[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]".',
 	'prefswitch-survey-intro-off' => 'Grazie per aver provato le nostre nuove funzioni.
 Per aiutarci a migliorarle, per favore riempi il seguente questionario facoltativo.',
 );
@@ -1626,7 +1639,7 @@ $messages['ja'] = array(
 	'prefswitch-success-feedback' => 'フィードバックが送信されました。',
 	'prefswitch-return' => '<hr style="clear:both">
 <span class="plainlinks">[$1 $2]</span>に戻る。',
-	'prefswitch-main' => "私たちは、より使いやすいサイトを利用者の皆さまにお届けするために努力してまいりました。そして新しい外観や雰囲気、わかりやすくなった編集機能などの改善を皆さまと共有できることを大変うれしく思っています。私たちのプロジェクトの使いやすさを改善することは、ウィキメディア財団の優先課題の一つであり、今後も更なるアップデートを実施していく予定です。詳細は、[http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/ Wikimediaブログ]の関連投稿（英語）をご覧ください。
+	'prefswitch-main' => "私たちは、より使いやすいサイトを利用者の皆さまにお届けするために努力してまいりました。そして新しい外観や使い勝手、わかりやすくなった編集機能などの改善を皆さまと共有できることを大変うれしく思っています。私たちのプロジェクトの使いやすさを改善することは、ウィキメディア財団の優先課題の一つであり、今後も更なるアップデートを実施していく予定です。詳細は、[http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/ Wikimediaブログ]の関連投稿（英語）をご覧ください。
 
 [[File:UsabilityNavigation.png|right|link=|新しいナビゲーションのスクリーンショット]]
 [[File:UsabilityToolbar.png|right|link=|拡張編集ツールバーのスクリーンショット]]
@@ -1691,6 +1704,8 @@ $messages['ka'] = array(
 	'prefswitch-success-feedback' => 'თქვენი გამოხმაურება გაგზავნილია.',
 	'prefswitch-return' => '<hr style="clear:both">
 დაბრუნება <span class="plainlinks">[$1 $2]</span>.',
+	'prefswitch-main-anon' => '===დაბრუნება===
+თუ გსურთ გამორთოთ ბეტა, <span class="plainlinks">[$1 დააჭირეთ აქ]</span>. შემდეგ კი გაიარეთ ავტორიზაცია ან შექმენით ანგარიში.',
 );
 
 /** Korean (한국어)

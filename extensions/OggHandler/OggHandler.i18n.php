@@ -493,6 +493,7 @@ $messages['bn'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
+	'ogg-desc' => 'Skor evit ar restroù Ogg Theora ha Vorbis, gant ul lenner JavaScript',
 	'ogg-short-audio' => 'Restr son Ogg $1, $2',
 	'ogg-short-video' => 'Restr video Ogg $1, $2',
 	'ogg-short-general' => 'Restr media Ogg $1, $2',
@@ -506,6 +507,11 @@ $messages['br'] = array(
 	'ogg-stop' => 'Paouez',
 	'ogg-play-video' => 'Lenn ar video',
 	'ogg-play-sound' => 'Lenn ar son',
+	'ogg-no-player' => 'Evit doare n\'eus gant ho reizhiad hini ebet eus al lennerioù skoret.
+<a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">Pellgargit ul lenner skoret</a> mar plij.',
+	'ogg-no-xiphqt' => 'Evit doare e vank deoc\'h ar parzh XiphQT evit QuickTime.
+N\'hall ket QuickTime lenn ar restroù Ogg files hep ar parzh-se.
+<a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">Pellgargit XiphQT</a> pe dibabit ul lenner all.',
 	'ogg-player-videoElement' => 'Skor ar merdeer orin',
 	'ogg-player-oggPlugin' => 'Adveziant ar merdeer',
 	'ogg-player-thumbnail' => 'Skeudenn statek hepken',

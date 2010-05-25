@@ -570,6 +570,7 @@ $messages['vo'] = array(
  */
 $messages['yi'] = array(
 	'minnamelength-error' => 'אײַער באַניצער־נאָמען איז צו קורץ. די מינימאַלע לענג איז $1.',
+	'minnamelength-desc' => 'צווינגען א מינימאַלע לענג פֿאַר א באַניצער־נאָמען',
 );
 
 /** Cantonese (粵語)

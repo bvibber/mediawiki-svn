@@ -281,6 +281,8 @@ $messages['af'] = array(
 	'mwe-return-to-form' => 'Terug na die vorm',
 	'mwe-file-exists-duplicate' => "Hierdie lêer is 'n duplikaat van die volgende lêer:",
 	'mwe-fileexists-thumb' => 'Bestaande lêer',
+	'mwe-filedesc' => 'Samevatting',
+	'mwe-filesource' => 'Bron:',
 	'fogg-save_local_file' => 'Stoor Ogg',
 	'fogg-videoQuality-title' => 'Videokwaliteit',
 	'fogg-starttime-title' => 'Beginsekonde',
@@ -295,10 +297,12 @@ $messages['af'] = array(
 	'fogg-license-title' => 'Lisensie',
 	'fogg-contact-title' => 'Kontak',
 	'mwe-stream_title' => '$1 $2 tot $3',
+	'rsd-media-filter-images' => '',
 	'mwe-select_file' => 'Kies lêer',
 	'mwe-upload' => 'Laai lêer',
 	'mwe-summary' => 'Samevatting',
 	'mwe-error_not_loggedin' => 'U is nie aangeteken nie of het nie regte om op te mag laai nie.',
+	'mwe-link-login' => 'aanmeld',
 	'mwe-upload-in-progress' => 'Besig om op te laai (moenie hierdie venster toemaak nie)',
 	'mwe-uploaded-status' => 'Opgelaai',
 	'rsd_results_desc' => 'Resultate $1 tot $2',
@@ -381,6 +385,13 @@ $messages['aln'] = array(
 	'mwe-ftype-ogg' => 'Ogg file video',
 	'mwe-ftype-unk' => 'Panjohur format file',
 	'rsd-wiki_commons' => 'Wikimedia Commons, një arkiv i lirshëm, të licencuar arsimor përmbajtjen e medias (imazhe, tinguj dhe video)',
+);
+
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'fogg-date-title' => 'Calendata',
 );
 
 /** Arabic (العربية)
@@ -1850,9 +1861,9 @@ $messages['fi'] = array(
 	'fogg-select_file' => 'Valitse tiedosto',
 	'fogg-select_new_file' => 'Valitse uusi tiedosto',
 	'fogg-select_url' => 'Valitse URL',
-	'fogg-installed' => 'Firefogg on asennettu',
+	'fogg-installed' => 'Firefogg on asennettu.',
 	'fogg-for_improved_uploads' => 'Parannettua tallentamista varten:',
-	'fogg-use_latest_firefox' => 'Asenna ensin <a href="http://www.mozilla.com/en-US/firefox/upgrade.html?from=firefogg">Firefox 3.5</a> (tai uudempi). <i>Tule sen jälkeen uudelleen tälle sivulle ja asenna <b>Firefogg</b>-laajennus.</i>',
+	'fogg-use_latest_firefox' => 'Asenna ensin $1. <i>Tule sen jälkeen uudelleen tälle sivulle ja asenna <b>Firefogg</b>-laajennus.</i>',
 	'fogg-preview' => 'Videon esikatselu',
 	'fogg-hidepreview' => 'Piilota esikatselu',
 );
