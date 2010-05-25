@@ -127,6 +127,16 @@ body.rtl #panel.collapsible-nav #p-navigation div.body {
 #panel.collapsible-nav #p-navigation h5 {
 	display: none;
 }
+.expandableField {
+	display: block;
+	float: left;
+}
+#simpleSearch { 
+	overflow: auto;
+}
+div#simpleSearch button#searchButton {
+	margin: 0.4em 0 0 0;
+}
 /* wikiEditor plugin */
 
 /* This ID (#editform) could change in MediaWiki */
