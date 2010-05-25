@@ -2648,14 +2648,18 @@ mw.EmbedPlayer.prototype = {
 		// Update the playerElement volume	
 		this.setPlayerElementVolume( percent );
 		
-		mw.log(" setVolume:: " + percent + ' this.volume is: ' + this.volume);		
+		//mw.log(" setVolume:: " + percent + ' this.volume is: ' + this.volume);		
 	},
 	
 	/**
-	* Updates the interface volume 
+	* Updates the interface volume
+	* TODO should move to ctrlBuilder
+	* @param 
 	*/
 	setInterfaceVolume: function( percent ) {
-		this.$interface.find( '.volume-slider' ).slider( 'value', percent * 100 );
+		if( this.supports[ 'volumeControl' ] ) {
+			this.$interface.find( '.volume-slider' ).slider( 'value', percent * 100 );
+		}
 	},	
 	
 	/**

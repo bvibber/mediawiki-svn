@@ -1961,8 +1961,9 @@ var MW_EMBED_VERSION = '1.1f';
 					// Set up mvEmbed utility jQuery bindings
 					mw.dojQueryBindings();					
 					
-					// Speical Hack for condtional jquery ui inclution ( once Usability extension
-					//  registers the jquery.ui skin in mw.sytle this won't be needed:  
+					
+					// Special Hack for conditional jquery ui inclusion ( once Usability extension
+					//  registers the jquery.ui skin in mw.style this won't be needed:  
 					if( mw.hasJQueryUiCss() ){
 						mw.style[ mw.getConfig( 'jQueryUISkin' ) ] = true;
 					}
@@ -1995,8 +1996,8 @@ var MW_EMBED_VERSION = '1.1f';
 	
 	/**
 	* Checks for jquery ui css by name jquery-ui-1.7.2.css
-	*	NOTE: this is kind of a hack for usability jquery-ui
-	* 	in the future usability should register the class in mw.skin
+	*	NOTE: this is a hack for usability jquery-ui
+	* 	in the future usability should register a class in mw.skin
 	*
 	* @return true if found, return false if not found
 	*/
@@ -2004,7 +2005,7 @@ var MW_EMBED_VERSION = '1.1f';
 		var hasUiCss = false;
 		// Load the jQuery ui skin if usability skin not set
 		$j( 'link' ).each( function(  na, linkNode ){
-			if( $j( linkNode ).attr( 'href' ).indexOf('jquery-ui-1.7.2.css') != -1 ) {
+			if( $j( linkNode ).attr( 'href' ).indexOf( 'jquery-ui-1.7.2.css' ) != -1 ) {
 				hasUiCss = true;
 				return false;
 			}
@@ -2250,7 +2251,7 @@ var MW_EMBED_VERSION = '1.1f';
 					' class="ui-state-default ui-corner-all ui-icon_link ' +
 					className + '"><span class="ui-icon ui-icon-' + iconId + '" ></span>' +
 					'<span class="btnText">' + msg + '</span></a>';
-			}
+			};
 			
 			// Shortcut to jQuery button ( should replace all btnHtml with button )
 			var mw_default_button_options = {
@@ -2265,7 +2266,8 @@ var MW_EMBED_VERSION = '1.1f';
 				
 				// The icon id that precceeds the button link:
 				'icon_id' : 'carat-1-n' 
-			}
+			};
+			
 			$.button = function( options ) {
 				var options = $j.extend( mw_default_button_options, options);
 				
@@ -2288,7 +2290,7 @@ var MW_EMBED_VERSION = '1.1f';
 						.text( options.text )
 				);
 				return $btn;					
-			}
+			};
 			
 			// Shortcut to bind hover state
 			$.fn.buttonHover = function() {
@@ -2301,7 +2303,7 @@ var MW_EMBED_VERSION = '1.1f';
 					}
 				)
 				return this;
-			}
+			};
 			
 			/**
 			* Resize a dialog to fit the window
@@ -2322,9 +2324,9 @@ var MW_EMBED_VERSION = '1.1f';
 					'right':'0px',
 					'bottom':'0px'
 				} );
-			}	
+			};
 			
-		} )( jQuery );
+		} )( $j );
 	}	
 	
 } )( window.mw );
