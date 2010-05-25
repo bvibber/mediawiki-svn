@@ -17,7 +17,7 @@
 
 # Alert the user that this is not a valid entry point to MediaWiki if they try to access the
 #	special pages file directly.
-if (!defined('MEDIAWIKI')) {
+if ( !defined( 'MEDIAWIKI' ) ) {
         echo <<<EOT
 To install the Pure Wiki Deletion extension, put the following line in LocalSettings.php:
 require_once( "\$IP/extensions/PureWikiDeletion/PureWikiDeletion.php" );
@@ -31,10 +31,10 @@ $wgExtensionCredits['specialpage'][] = array(
 	'url' => 'http://www.mediawiki.org/wiki/Extension:PureWikiDeletion',
 	'description' => 'Implements pure wiki deletion',
 	'descriptionmsg' => 'PureWikiDeletion-desc',
-	'version' => '1.0.1',
+	'version' => '1.0.2',
 );
  
-$dir = dirname(__FILE__) . '/';
+$dir = dirname( __FILE__ ) . '/';
 
 $wgAutoloadClasses['PureWikiDeletionHooks'] = "$dir/PureWikiDeletion.hooks.php";
 $wgAutoloadClasses['RandomExcludeBlank'] = "$dir/SpecialPureWikiDeletion.php";
@@ -75,12 +75,12 @@ function wfPureWikiDeletion() {
     wfLoadExtensionMessages( 'PureWikiDeletion' );
 }
 
-function wfBlankLogActionText( $type, $action, $title = null, $skin = null, $params = array(), $filterWikilinks=false ) {
+function wfBlankLogActionText( $type, $action, $title = null, $skin = null, $params = array(), $filterWikilinks = false ) {
 	$rv = wfMsgReal( 'blank-log-entry-blank', $params );
 	return $rv;
 }
 
-function wfUnblankLogActionText( $type, $action, $title = null, $skin = null, $params = array(), $filterWikilinks=false ) {	      
+function wfUnblankLogActionText( $type, $action, $title = null, $skin = null, $params = array(), $filterWikilinks = false ) {
 	$rv = wfMsgReal( 'blank-log-entry-unblank', $params );
 	return $rv;
 }
@@ -88,27 +88,27 @@ function wfUnblankLogActionText( $type, $action, $title = null, $skin = null, $p
 function PureWikiDeletionSaveHook( &$article, &$user, &$text, &$summary,
        $minor, $watch, $sectionanchor, &$flags ) {
        global $wgOut;
-       if ($text==""){
-		if (!($user->isLoggedIn())){
-			$wgOut->showErrorPage( 'blanknologin','blanknologintext');
+       if ( $text == "" ) {
+		if ( !( $user->isLoggedIn() ) ) {
+			$wgOut->showErrorPage( 'blanknologin', 'blanknologintext' );
 			return false;
 		}
-		if ($summary==wfMsgForContent( 'autosumm-blank')){
+		if ( $summary == wfMsgForContent( 'autosumm-blank' ) ) {
 			$hasHistory = false;
-			$summary=$article->generateReason($hasHistory);
+			$summary = $article->generateReason( $hasHistory );
 		}
 	} else {
 		$dbr = wfGetDB( DB_SLAVE );
-		$blank_page_id=$article->getID();
-		$result=$dbr->selectRow('blanked_page','blank_page_id'
-			,array("blank_page_id" => $blank_page_id));
-		if ($result){
-			if (!($user->isLoggedIn())){
-				$wgOut->showErrorPage( 'blanknologin','blanknologintext');
+		$blank_page_id = $article->getID();
+		$result = $dbr->selectRow( 'blanked_page', 'blank_page_id'
+			, array( "blank_page_id" => $blank_page_id ) );
+		if ( $result ) {
+			if ( !( $user->isLoggedIn() ) ) {
+				$wgOut->showErrorPage( 'blanknologin', 'blanknologintext' );
 				return false;
 			}
-			if ($summary==''){
-				$summary=$article->getAutosummary('',$text,EDIT_NEW);
+			if ( $summary == '' ) {
+				$summary = $article->getAutosummary( '', $text, EDIT_NEW );
 			}
 		}
 	}
@@ -133,18 +133,18 @@ function PureWikiDeletionGetPreferences( $user, &$preferences ) {
 	return true;
 }
 
-function PureWikiDeletionAlternateEditHook ($editPage){
-	global $wgUser,$wgOut;
-	if ($wgUser->isLoggedIn()){
+function PureWikiDeletionAlternateEditHook ( $editPage ) {
+	global $wgUser, $wgOut;
+	if ( $wgUser->isLoggedIn() ) {
 		return true;
 	}
 	$dbr = wfGetDB( DB_SLAVE );
-	$blank_page_id=$editPage->getArticle()->getID();
-	$result=$dbr->selectRow('blanked_page','blank_page_id',array
-	       ("blank_page_id" => $blank_page_id));
-	if (!$result){
+	$blank_page_id = $editPage->getArticle()->getID();
+	$result = $dbr->selectRow( 'blanked_page', 'blank_page_id', array
+	       ( "blank_page_id" => $blank_page_id ) );
+	if ( !$result ) {
 	       return true;
 	}
-	$wgOut->showErrorPage( 'blanknologin','blanknologintext');
+	$wgOut->showErrorPage( 'blanknologin', 'blanknologintext' );
 	return false;
 }
