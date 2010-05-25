@@ -80,7 +80,7 @@ Return to <span class="plainlinks">[$1 $2]</span>.',
 * '''Search improvements''': We have improved search suggestions to get you to the page you are looking for more quickly.
 * '''Other new features''':  We have also introduced a table wizard to make creating tables easier and find and a replace feature to simplify page editing.
 * '''Wikipedia puzzle globe''': We have updated the puzzle globe. Read more at the [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/  Wikimedia blog].",
-	'prefswitch-main-anon' => "===Take Me Back===
+	'prefswitch-main-anon' => "===Take me back===
 If you would like to turn off the new features, <span class=\"plainlinks\">[$1 click here]</span>. You will be asked to login or create an account first.",
 	'prefswitch-main-on' => "===Feedback?===
 We would love to hear from you.  Please visit our <span class=\"plainlinks\">[$1 feedback page]</span>.
