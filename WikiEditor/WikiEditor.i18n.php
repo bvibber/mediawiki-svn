@@ -687,6 +687,8 @@ $messages['vi'] = array(
  * @author פוילישער
  */
 $messages['yi'] = array(
+	'wikieditor' => 'פֿארטגעשריטענע וויקיטעקסט רעדאַקטירונג',
+	'wikieditor-desc' => 'פֿאַרברייטבאַרער וויקיטעקס רעדאַקטירונג אויבערפֿלאך מיט א סך מאדולן וואָס פֿאַרזארגן נײַע פֿונקציאנען',
 	'wikieditor-wikitext-tab' => 'וויקיטעקסט',
 	'wikieditor-loading' => 'לאָדנדיק',
 );

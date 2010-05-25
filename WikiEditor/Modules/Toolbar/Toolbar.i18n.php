@@ -8978,6 +8978,7 @@ $messages['lb'] = array(
 /** Lithuanian (Lietuvių)
  * @author Garas
  * @author Homo
+ * @author Hugo.arg
  * @author Matasg
  */
 $messages['lt'] = array(
@@ -9020,6 +9021,10 @@ $messages['lt'] = array(
 	'wikieditor-toolbar-tool-file-example' => 'Pavyzdys.jpg',
 	'wikieditor-toolbar-tool-reference' => 'Išnaša',
 	'wikieditor-toolbar-tool-reference-example' => 'Čia įterpkite teksto išnašą',
+	'wikieditor-toolbar-tool-reference-cancel' => 'Atšaukti',
+	'wikieditor-toolbar-tool-reference-title' => 'Įtraukti nuorodą',
+	'wikieditor-toolbar-tool-reference-insert' => 'Įtraukti',
+	'wikieditor-toolbar-tool-reference-text' => 'Nuorodos tekstas',
 	'wikieditor-toolbar-tool-signature' => 'Jūsų parašas bei laikas',
 	'wikieditor-toolbar-section-advanced' => 'Išplėstinis',
 	'wikieditor-toolbar-tool-heading' => 'Antraštė',
@@ -9036,6 +9041,10 @@ $messages['lt'] = array(
 	'wikieditor-toolbar-tool-olist-example' => 'Numeruoto sąrašo elementas',
 	'wikieditor-toolbar-tool-indent' => 'Įtrauka',
 	'wikieditor-toolbar-tool-indent-example' => 'Įtraukta eilutė',
+	'wikieditor-toolbar-tool-nowiki' => 'Ignoruoti wiki formatą',
+	'wikieditor-toolbar-tool-nowiki-example' => 'Čia įterpkite neformuotą tekstą',
+	'wikieditor-toolbar-tool-redirect' => 'nukreipimą',
+	'wikieditor-toolbar-tool-redirect-example' => 'Tikslinio puslapio pavadinimas',
 	'wikieditor-toolbar-tool-big' => 'Didelis',
 	'wikieditor-toolbar-tool-big-example' => 'Didelis tekstas',
 	'wikieditor-toolbar-tool-small' => 'Mažas',
@@ -15637,6 +15646,7 @@ $messages['xmf'] = array(
  */
 $messages['yi'] = array(
 	'wikieditor-toolbar' => 'רעדאקטירונג געצייג־פאס',
+	'wikieditor-toolbar-desc' => 'רעדאַקטירן בלאַט געצייגפאַס מיט פֿאַרברייטערטער ניצלעכקייט',
 	'wikieditor-toolbar-loading' => 'אָנלאָדן...',
 	'wikieditor-toolbar-tool-bold' => 'דיק',
 	'wikieditor-toolbar-tool-bold-example' => 'דיקער טעקסט',
@@ -15721,6 +15731,7 @@ $messages['yi'] = array(
 | ריי 2, צעל 3',
 	'wikieditor-toolbar-tool-table-example-cell-text' => 'צעל טעקסט',
 	'wikieditor-toolbar-tool-table-example-header' => 'קעפל טעקסט',
+	'wikieditor-toolbar-tool-table-title' => 'צולייגן טאַבעלע',
 	'wikieditor-toolbar-tool-table-dimensions-rows' => 'שורות',
 	'wikieditor-toolbar-tool-table-dimensions-columns' => 'עמודים',
 	'wikieditor-toolbar-tool-table-example' => 'צעל טעקסט',
@@ -15751,14 +15762,19 @@ $messages['yi'] = array(
 	'wikieditor-toolbar-help-page-reference' => 'רעפערענצן',
 	'wikieditor-toolbar-help-content-bold-description' => 'דיק',
 	'wikieditor-toolbar-help-content-ilink-description' => 'אינערלעכער לינק',
+	'wikieditor-toolbar-help-content-heading1-description' => 'ערשטער ניווא קעפל',
 	'wikieditor-toolbar-help-content-heading1-syntax' => '= קעפל טעקסט =',
 	'wikieditor-toolbar-help-content-heading1-result' => '<h1>קעפל טעקסט</h1>',
+	'wikieditor-toolbar-help-content-heading2-description' => 'צווייטער ניווא קעפל',
 	'wikieditor-toolbar-help-content-heading2-syntax' => '== קעפל טעקסט ==',
 	'wikieditor-toolbar-help-content-heading2-result' => '<h2>קעפל טעקסט</h2>',
+	'wikieditor-toolbar-help-content-heading3-description' => 'דריטער ניווא קעפל',
 	'wikieditor-toolbar-help-content-heading3-syntax' => '=== קעפל טעקסט ===',
 	'wikieditor-toolbar-help-content-heading3-result' => '<h3>קעפל טעקסט</h3>',
+	'wikieditor-toolbar-help-content-heading4-description' => 'פֿערטער ניווא קעפל',
 	'wikieditor-toolbar-help-content-heading4-syntax' => '==== קעפל טעקסט ====',
 	'wikieditor-toolbar-help-content-heading4-result' => '<h4>קעפל טעקסט</h4>',
+	'wikieditor-toolbar-help-content-heading5-description' => 'פֿיפֿטער ניווא קעפל',
 	'wikieditor-toolbar-help-content-heading5-result' => '<h5>קעפל טעקסט</h5>',
 	'wikieditor-toolbar-help-content-ulist-syntax' => '* ליסטע איינצל<br />* ליסטע איינצל',
 	'wikieditor-toolbar-help-content-ulist-result' => '<ul><li>ליסטע איינצל</li><li>ליסטע איינצל</li></ul>',

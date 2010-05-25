@@ -321,6 +321,7 @@ $messages['ja'] = array(
  */
 $messages['ka'] = array(
 	'prefswitch-link-anon' => 'ახალი შესაძლებლობები',
+	'tooltip-pt-prefswitch-link-anon' => 'გაიგეთ მეტი ახალ შესაძლებლობებზე',
 	'prefswitch-link-on' => 'გასვლა',
 	'tooltip-pt-prefswitch-link-on' => 'ახალი შესაძლებლობების გამორთვა',
 	'prefswitch-link-off' => 'ახალი შესაძლებლობები',
