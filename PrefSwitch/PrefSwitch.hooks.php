@@ -17,8 +17,6 @@ class PrefSwitchHooks {
 	}
 	public static function personalUrls( &$personal_urls, &$title ) {
 		global $wgUser, $wgRequest;		
-		// Loads opt-in messages
-		wfLoadExtensionMessages( 'PrefSwitchLink' );
 		// Figure out the orgin to include in the link
 		$fromquery = array();
 		if ( !( $wgRequest->wasPosted() ) ) {

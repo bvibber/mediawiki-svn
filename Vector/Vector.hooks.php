@@ -109,7 +109,6 @@ class VectorHooks {
 				$enabledModules[$module] = true;
 				// Messages
 				if ( isset( self::$modules[$module]['i18n'], self::$modules[$module]['messages'] ) ) {
-					wfLoadExtensionMessages( self::$modules[$module]['i18n'] );
 					UsabilityInitiativeHooks::addMessages( self::$modules[$module]['messages'] );
 				}
 				// Variables
@@ -159,7 +158,6 @@ class VectorHooks {
 			if ( ( $enable['global'] || $enable['user'] ) &&
 					isset( self::$modules[$module]['i18n'] ) &&
 					isset( self::$modules[$module]['preferences'] ) ) {
-				wfLoadExtensionMessages( self::$modules[$module]['i18n'] );
 				foreach ( self::$modules[$module]['preferences'] as $key => $preference ) {
 					if ( $key == 'enable' && !$enable['user'] ) {
 						continue;
