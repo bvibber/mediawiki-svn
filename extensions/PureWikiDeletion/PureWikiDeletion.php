@@ -31,7 +31,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'url' => 'http://www.mediawiki.org/wiki/Extension:PureWikiDeletion',
 	'description' => 'Implements pure wiki deletion',
 	'descriptionmsg' => 'PureWikiDeletion-desc',
-	'version' => '1.0.2',
+	'version' => '1.0.3',
 );
  
 $dir = dirname( __FILE__ ) . '/';
@@ -67,6 +67,7 @@ $wgLogNames['blank']		= 'blank-log-name';
 $wgLogHeaders['blank']		= 'blank-log-header';
 $wgLogActions['blank/blank'] 	= 'blank-log-entry-blank';
 $wgLogActions['blank/unblank']  = 'blank-log-entry-unblank';
+
 $wgSpecialPages['RandomExcludeBlank'] = 'RandomExcludeBlank';
 $wgSpecialPages['AllPagesExcludeBlank'] = 'AllPagesExcludeBlank';
 $wgSpecialPages['PopulateBlankedPagesTable'] = 'PopulateBlankedPagesTable';
@@ -89,9 +90,9 @@ function wfUnblankLogActionText( $type, $action, $title = null, $skin = null, $p
 
 function PureWikiDeletionSaveHook( &$article, &$user, &$text, &$summary,
        $minor, $watch, $sectionanchor, &$flags ) {
-       global $wgOut;
+       global $wgOut, $wgPureWikiDeletionLoginRequiredToBlank, $wgPureWikiDeletionLoginRequiredToUnblank;
        if ( $text == "" ) {
-		if ( !( $user->isLoggedIn() ) ) {
+		if ( $wgPureWikiDeletionLoginRequiredToBlank && !( $user->isLoggedIn() ) ) {
 			$wgOut->showErrorPage( 'blanknologin', 'blanknologintext' );
 			return false;
 		}
@@ -105,8 +106,8 @@ function PureWikiDeletionSaveHook( &$article, &$user, &$text, &$summary,
 		$result = $dbr->selectRow( 'blanked_page', 'blank_page_id'
 			, array( "blank_page_id" => $blank_page_id ) );
 		if ( $result ) {
-			if ( !( $user->isLoggedIn() ) ) {
-				$wgOut->showErrorPage( 'blanknologin', 'blanknologintext' );
+			if ( $wgPureWikiDeletionLoginRequiredToUnblank && !( $user->isLoggedIn() ) ) {
+				$wgOut->showErrorPage( 'blanknologin', 'unblanknologintext' );
 				return false;
 			}
 			if ( $summary == '' ) {
@@ -136,8 +137,8 @@ function PureWikiDeletionGetPreferences( $user, &$preferences ) {
 }
 
 function PureWikiDeletionAlternateEditHook ( $editPage ) {
-	global $wgUser, $wgOut;
-	if ( $wgUser->isLoggedIn() ) {
+	global $wgUser, $wgOut, $wgPureWikiDeletionLoginRequiredToUnblank;
+	if ( $wgUser->isLoggedIn() || !$wgPureWikiDeletionLoginRequiredToUnblank ) {
 		return true;
 	}
 	$dbr = wfGetDB( DB_SLAVE );
@@ -147,6 +148,6 @@ function PureWikiDeletionAlternateEditHook ( $editPage ) {
 	if ( !$result ) {
 	       return true;
 	}
-	$wgOut->showErrorPage( 'blanknologin', 'blanknologintext' );
+	$wgOut->showErrorPage( 'blanknologin', 'unblanknologintext' );
 	return false;
 }

@@ -137,7 +137,7 @@ class PureWikiDeletionHooks {
        }
        
        public static function PureWikiDeletionEditHook( &$editPage ) {
-	      global $wgLang;
+	      global $wgLang, $wgUser;
 	      wfLoadExtensionMessages( 'PureWikiDeletion' );
 	      $dbr = wfGetDB( DB_SLAVE );
 	      $blank_page_id = $editPage->getArticle()->getID();
@@ -170,7 +170,7 @@ class PureWikiDeletionHooks {
 		     , $result->blank_parent_id ) );
 	      $editPage->editFormPageTop .= $html;
 	      
-	      if ($blanking_user->getOption( 'watchunblank' )){
+	      if ($wgUser->getOption( 'watchunblank' )){
 		   $editPage->watchthis = true;
 	      }
 	      

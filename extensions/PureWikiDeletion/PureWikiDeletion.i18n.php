@@ -22,7 +22,9 @@ $messages['en'] = array(
         'blank-log-link' => '[[Special:Log/blank|blank log]]',
         'blanknologin' => 'Not logged in',
         'blanknologintext' => 'You must be a registered user and '
-        . '[[Special:UserLogin|logged in]] to blank or unblank a page.',
+        . '[[Special:UserLogin|logged in]] to blank a page.',
+        'unblanknologintext' => 'You must be a registered user and '
+        . '[[Special:UserLogin|logged in]] to unblank a page.',
         'blankedtext' => '[[$1]] has been blanked. See $2 for a record of recent blankings.'
 );
 
