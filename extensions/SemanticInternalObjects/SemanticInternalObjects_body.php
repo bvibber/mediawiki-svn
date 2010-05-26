@@ -10,26 +10,28 @@ if ( !defined( 'MEDIAWIKI' ) ) die();
  * its properties.
  */
 class SIOInternalObject {
-	var $main_title;
-	var $index;
-	var $property_value_pairs;
+	public $mPropertyValuePairs;
+	
+	protected $mMainTitle;
+	protected $mIndex;
 
-	public function SIOInternalObject( $main_title, $index ) {
-		$this->main_title = $main_title;
-		$this->index = $index;
-		$this->property_value_pairs = array();
+	public function SIOInternalObject( $mainTitle, $index ) {
+		$this->mMainTitle = $mainTitle;
+		$this->mIndex = $index;
+		$this->mPropertyValuePairs = array();
 	}
 
-	public function addPropertyAndValue( $prop_name, $value ) {
-		$property = SMWPropertyValue::makeUserProperty( $prop_name );
-		$data_value = SMWDataValueFactory::newPropertyObjectValue( $property, $value );
-		if ( $data_value->isValid() ) {
-			$this->property_value_pairs[] = array( $property, $data_value );
+	public function addPropertyAndValue( $propName, $value ) {
+		$property = SMWPropertyValue::makeUserProperty( $propName );
+		$dataValue = SMWDataValueFactory::newPropertyObjectValue( $property, $value );
+		
+		if ( $dataValue->isValid() ) {
+			$this->mPropertyValuePairs[] = array( $property, $dataValue );
 		} // else - show an error message?
 	}
 
 	public function getName() {
-		return $this->main_title->getDBkey() . '#' . $this->index;
+		return $this->mMainTitle->getDBkey() . '#' . $this->mIndex;
 	}
 }
 
@@ -46,21 +48,26 @@ class SIOSQLStore extends SMWSQLStore2 {
 		$iw = '';
 		$db = wfGetDB( DB_SLAVE );
 		$res = $db->select( 'smw_ids', array( 'smw_id' ), 'smw_title LIKE ' . $db->addQuotes( $page_name . '#%' ) . ' AND ' . 'smw_namespace=' . $db->addQuotes( $namespace ) . ' AND smw_iw=' . $db->addQuotes( $iw ), 'SIO::getSMWPageObjectIDs', array() );
+		
 		while ( $row = $db->fetchObject( $res ) ) {
 			$ids[] = $row->smw_id;
 		}
+		
 		return $ids;
 	}
 
 	function getStorageSQL( $main_page_name, $namespace, $internal_object ) {
 		$main_page_id = $this->makeSMWPageID( $main_page_name, $namespace, '' );
 		$io_id = $this->makeSMWPageID( $internal_object->getName(), $namespace, '' );
+		
 		$up_rels2 = array();
 		$up_atts2 = array();
 		$up_text2 = array();
+		
 		// set all the properties pointing from this internal object
-		foreach ( $internal_object->property_value_pairs as $property_value_pair ) {
+		foreach ( $internal_object->mPropertyValuePairs as $property_value_pair ) {
 			list( $property, $value ) = $property_value_pair;
+			
 			// handling changed in SMW 1.5
 			if ( method_exists( 'SMWSQLStore2', 'findPropertyTableID' ) ) {
 				$tableid = SMWSQLStore2::findPropertyTableID( $property );
@@ -73,6 +80,7 @@ class SIOSQLStore extends SMWSQLStore2 {
 				$is_attribute = ( $mode == SMW_SQL2_ATTS2 );
 				$is_text = ( $mode == SMW_SQL2_TEXT2 );
 			}
+			
 			if ( $is_relation ) {
 				$up_rels2[] = array(
 					's_id' => $io_id,
@@ -81,27 +89,31 @@ class SIOSQLStore extends SMWSQLStore2 {
 				);
 			} elseif ( $is_attribute ) {
 				$keys = $value->getDBkeys();
+				
 				if ( method_exists( $value, 'getValueKey' ) ) {
 					$value_num = $value->getValueKey();
 				} else {
 					$value_num = $value->getNumericValue();
 				}
+				
 				$up_atts2[] = array(
 					's_id' => $io_id,
 					'p_id' => $this->makeSMWPropertyID( $property ),
 					'value_unit' => $value->getUnit(),
-					'value_xsd' => $keys[0],
+					'value_xsd' => $keys[0], // FIXME: this fails for all datatypes with more then one value field
 					'value_num' => $value_num
 				);
 			} elseif ( $is_text ) {
 				$keys = $value->getDBkeys();
+				
 				$up_text2[] = array(
 					's_id' => $io_id,
 					'p_id' => $this->makeSMWPropertyID( $property ),
-					'value_blob' => $keys[0]
+					'value_blob' => $keys[0] // FIXME: this fails for all datatypes with more then one value field
 				);
 			}
 		}
+		
 		return array( $up_rels2, $up_atts2, $up_text2 );
 	}
 }
@@ -120,12 +132,14 @@ class SIOHandler {
 		self::$cur_page_name = '';
 		self::$cur_page_namespace = 0;
 		self::$internal_object_index = 1;
+		
 		return true;
 	}
 
 	public static function doSetInternal( &$parser ) {
 		$main_page_name = $parser->getTitle()->getDBKey();
 		$main_page_namespace = $parser->getTitle()->getNamespace();
+		
 		if ( $main_page_name == self::$cur_page_name &&
 			$main_page_namespace == self::$cur_page_namespace ) {
 			self::$internal_object_index++;
@@ -134,26 +148,35 @@ class SIOHandler {
 			self::$cur_page_namespace = $main_page_namespace;
 			self::$internal_object_index = 1;
 		}
+		
 		$cur_object_num = self::$internal_object_index;
+		
 		$params = func_get_args();
 		array_shift( $params ); // we already know the $parser...
+		
 		$internal_object = new SIOInternalObject( $parser->getTitle(), $cur_object_num );
 		$obj_to_page_prop_name = array_shift( $params );
 		$main_page_name = $parser->getTitle()->getText();
+		
 		if ( ( $ns_text = $parser->getTitle()->getNsText() ) != '' ) {
 			$main_page_name = $ns_text . ':' . $main_page_name;
 		}
+		
 		$internal_object->addPropertyAndValue( $obj_to_page_prop_name, $main_page_name );
+		
 		foreach ( $params as $param ) {
-			$parts = explode( "=", trim( $param ), 2 );
+			$parts = explode( '=', trim( $param ), 2 );
+			
 			if ( count( $parts ) == 2 ) {
 				$key = $parts[0];
 				$value = $parts[1];
+				
 				// if the property name ends with '#list', it's
 				// a comma-delimited group of values
 				if ( substr( $key, - 5 ) == '#list' ) {
 					$key = substr( $key, 0, strlen( $key ) - 5 );
 					$list_values = explode( ',', $value );
+					
 					foreach ( $list_values as $list_value ) {
 						$internal_object->addPropertyAndValue( $key, trim( $list_value ) );
 					}
@@ -162,11 +185,13 @@ class SIOHandler {
 				}
 			}
 		}
+		
 		self::$internal_objects[] = $internal_object;
 	}
 
 	public static function updateData( $subject ) {
 		$sio_sql_store = new SIOSQLStore();
+		
 		// Find all "pages" in the SMW IDs table that are internal
 		// objects for this page, and delete their properties from
 		// the SMW tables.
@@ -179,8 +204,10 @@ class SIOHandler {
 		$all_rels2_inserts = array();
 		$all_atts2_inserts = array();
 		$all_text2_inserts = array();
+		
 		foreach ( self::$internal_objects as $internal_object ) {
 			list( $up_rels2, $up_atts2, $up_text2 ) = $sio_sql_store->getStorageSQL( $page_name, $namespace, $internal_object );
+			
 			$all_rels2_inserts = array_merge( $all_rels2_inserts, $up_rels2 );
 			$all_atts2_inserts = array_merge( $all_atts2_inserts, $up_atts2 );
 			$all_text2_inserts = array_merge( $all_text2_inserts, $up_text2 );
@@ -189,6 +216,7 @@ class SIOHandler {
 		// now save everything to the database, in a single transaction
 		$db = wfGetDB( DB_MASTER );
 		$db->begin( 'SIO::updatePageData' );
+		
 		if ( count( $ids_for_deletion ) > 0 ) {
 			$ids_string = '(' . implode ( ', ', $ids_for_deletion ) . ')';
 			$db->delete( 'smw_rels2', array( "(s_id IN $ids_string) OR (o_id IN $ids_string)" ), 'SIO::deleteRels2Data' );
@@ -199,15 +227,20 @@ class SIOHandler {
 		if ( count( $all_rels2_inserts ) > 0 ) {
 			$db->insert( 'smw_rels2', $all_rels2_inserts, 'SIO::updateRels2Data' );
 		}
+		
 		if ( count( $all_atts2_inserts ) > 0 ) {
 			$db->insert( 'smw_atts2', $all_atts2_inserts, 'SIO::updateAtts2Data' );
 		}
+		
 		if ( count( $all_text2_inserts ) > 0 ) {
 			$db->insert( 'smw_text2', $all_text2_inserts, 'SIO::updateText2Data' );
 		}
+		
 		// end transaction
 		$db->commit( 'SIO::updatePageData' );
+		
 		self::$internal_objects = array();
+		
 		return true;
 	}
 
@@ -219,15 +252,19 @@ class SIOHandler {
 	 */
 	static function handleUpdatingOfInternalObjects( &$jobs ) {
 		$unique_titles = array();
+		
 		foreach ( $jobs as $i => $job ) {
 			$title = Title::makeTitleSafe( $job->title->getNamespace(), $job->title->getText() );
 			$id = $title->getArticleID();
 			$unique_titles[$id] = $title;
 		}
+		
 		$jobs = array();
+		
 		foreach ( $unique_titles as $id => $title ) {
 			$jobs[] = new SMWUpdateJob( $title );
 		}
+		
 		return true;
 	}
 
@@ -238,13 +275,17 @@ class SIOHandler {
 	 * will be in a single one of these batches so we remove everything updating
 	 * a SIO object instead of filtering them down to unique titles.
 	 */
-	 static function handleRefreshingOfInternalObjects(&$jobs) {
+	 static function handleRefreshingOfInternalObjects( &$jobs ) {
 	 	$all_jobs = $jobs;
 	 	$jobs = array();
+	 	
 	 	foreach  ( $all_jobs as $job ) {
-	 		if ( strpos( $job->title->getText(), '#' ) === false )
+	 		if ( strpos( $job->title->getText(), '#' ) === false ) {
 	 			$jobs[] = $job;
+	 		}
 	 	}
+	 	
 	 	return true;
 	 }
+	 
 }
