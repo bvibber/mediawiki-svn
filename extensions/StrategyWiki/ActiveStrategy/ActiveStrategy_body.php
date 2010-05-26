@@ -33,8 +33,8 @@ SQL;
 		$title = Title::makeTitle( $result->namespace, $result->title );
 		$text = $wgContLang->convert( $title->getPrefixedText() );
 		$pageLink = $skin->linkKnown( $title, $text );
-		$members = 0;
-		$details = '';
+		$members = self::getMemberCount( $title->getPrefixedText() );
+		$details = array();
 
 		$numberLink = $skin->linkKnown(
 			$title,
@@ -44,10 +44,14 @@ SQL;
 			array( 'action' => 'history' )
 		);
 		
-		$members = wfMsgExt( 'nmembers', array( 'parsemag', 'escape' ),
-				$wgLang->formatNum( $members ) );
+		$details = array( $numberLink );
+		
+		if ($members >= 0) {
+			$details[] = wfMsgExt( 'nmembers', array( 'parsemag', 'escape' ),
+					$wgLang->formatNum( $members ) );
+		}
 				
-		$details = $wgLang->commaList( array( $numberLink, $members ) );
+		$details = $wgLang->commaList( $details );
 		
 		return wfSpecialList( $pageLink, $details );
 	}
@@ -69,6 +73,44 @@ SQL;
 		$html = Xml::tags( 'ul', null, $html );
 		
 		return $html;
+	}
+	
+	static function getMemberCount( $taskForce ) {
+		global $wgMemc;
+		
+		$key = wfMemcKey( 'taskforce-member-count', $taskForce );
+		$cacheVal = $wgMemc->get( $key );
+		
+		if ( $cacheVal !== false ) {
+			return $cacheVal;
+		}
+		
+		$article = new Article( Title::newFromText( $taskForce ) );
+		$content = $article->getContent();
+		
+		$count = self::parseMemberList( $content );
+		
+		$wgMemc->set( $key, $count, 86400 );
+		
+		return $count;
+	}
+	
+	// FIXME THIS IS TOTALLY AWFUL
+	static function parseMemberList( $text ) {
+		$regex = "/'''Members'''.*<!--- begin --->(.*)?<!--- end --->/s";
+		$matches = array();
+		
+		if ( !preg_match( $regex, $text, $matches ) ) {
+			return -1;
+		} else {
+			$regex = "/^\* .*/m";
+			$text = $matches[1];
+			$matches = array();
+			
+			preg_match_all( $regex, $text, $matches );
+			
+			return count( $matches[0] );
+		}
 	}
 }
 
