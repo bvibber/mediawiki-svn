@@ -77,8 +77,6 @@ function wfLinkOpenIDInitPrefs($prefs, $request) {
 }
 
 function wfLinkOpenIDRenderPrefs($prefs, $out) {
-	wfLoadExtensionMessages( 'LinkOpenID' );
-
 	$out->addHTML( "<fieldset><legend>" .
 		wfMsgHtml( 'linkopenid-prefs' ) .
 		"</legend>");

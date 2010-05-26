@@ -39,7 +39,6 @@ class HideRevisionHooks {
 	public static function onContributionsToolLinks( $id, $nt, &$tools ) {
 		global $wgUser;
 		if( $wgUser->isAllowed( 'oversight' ) ) {
-			wfLoadExtensionMessages( 'HideRevision' );
 			$title = SpecialPage::getTitleFor( 'Oversight' );
 			$tools[] = $wgUser->getSkin()->makeKnownLinkObj( $title, wfMsgHtml( 'hiderevision-link' ), 'author=' . $nt->getPartialUrl() );
 		}
@@ -83,7 +82,6 @@ class HideRevisionTabInstaller {
 	}
 
 	function insertTab( $skin, &$content_actions ) {
-		wfLoadExtensionMessages( 'HideRevision' );
 		$special = SpecialPage::getTitleFor( 'HideRevision' );
 		$content_actions['hiderevision'] = array(
 			'class' => false,

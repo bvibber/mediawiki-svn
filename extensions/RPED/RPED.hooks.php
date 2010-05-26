@@ -15,7 +15,6 @@ class RPEDHooks {
 		&$customAttribs, &$query, &$options, &$ret
 	) {
 		global $wgLocalStyle, $wgRemoteStyle, $wgPureWikiDeletionInEffect, $wgTitle, $wgRequest;
-		wfLoadExtensionMessages('RPED');
 		if ( $wgTitle->getNamespace () == -1 ) {
 			return true;
 		}

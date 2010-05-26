@@ -19,8 +19,6 @@ class SpecialYouTubeAuthSub extends SpecialPage {
 		global $wgYTAS_User, $wgYTAS_Password, $wgYTAS_DeveloperId;
 		global $wgYTAS_DefaultCategory, $wgYTAS_UseClientLogin, $wgYTAS_EnableLogging, $wgYTAS_UseNamespace, $wgYTAS_ClientId;
 
-		wfLoadExtensionMessages( 'YouTubeAuthSub' );
-
 		$this->setHeaders();
 
 		# Check permissions

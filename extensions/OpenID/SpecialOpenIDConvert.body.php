@@ -35,8 +35,6 @@ class SpecialOpenIDConvert extends SpecialOpenID {
 	function execute( $par ) {
 		global $wgRequest, $wgUser, $wgOut;
 
-		wfLoadExtensionMessages( 'OpenID' );
-
 		$this->setHeaders();
 
 		if ( $wgUser->getID() == 0 ) {

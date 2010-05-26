@@ -42,7 +42,6 @@ function efSubpageList3() {
  */
 function efRenderSubpageList3( $input, $args, $parser ) {
 	$list = new SubpageList3( $parser );
-	wfLoadExtensionMessages('SubPageList3');
 	$list->options( $args );
 	# $parser->disableCache();
 	return $list->render();

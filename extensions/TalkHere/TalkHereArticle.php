@@ -44,8 +44,6 @@ class TalkHereArticle {
 	function view() {
 		global $wgOut, $wgUser, $wgJsMimeType, $wgUseAjax;
 
-		wfLoadExtensionMessages( 'TalkHere' );
-
 		$skin = $wgUser->getSkin();
 		$hastalk = $this->_talkTitle->exists();
 		$cantalk = $this->_talkTitle->userCan('edit');

@@ -40,7 +40,6 @@ class SpecialDuplicator extends SpecialPage {
 	 */
 	public function execute( $title ) {
 		global $wgUser, $wgOut, $wgRequest, $wgLang, $wgDuplicatorRevisionLimit;
-		wfLoadExtensionMessages( 'Duplicator' );
 		$this->setHeaders();
 
 		# Check permissions

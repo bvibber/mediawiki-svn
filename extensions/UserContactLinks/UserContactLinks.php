@@ -32,7 +32,6 @@ $dir = dirname(__FILE__) . '/';
 $wgExtensionMessagesFiles['UserContactLinks'] = $dir . 'UserContactLinks.i18n.php';
 
 function parseUserSignatures(&$parser, &$text, &$strip_state) {
-	wfLoadExtensionMessages( 'UserContactLinks' );
 	while (preg_match('/\^\^\^(.+?)\^\^\^/', $text, $matches)) {
 		$userid = getUserIDFromUserText($matches[1]);
 			if ($userid != 0) { // successfully found the user based on first word

@@ -8,8 +8,6 @@ class ContributionTotal extends SpecialPage {
 	function execute( $par ) {
 		global $wgRequest, $wgOut;
 
-		wfLoadExtensionMessages( 'ContributionReporting' );
-
 		$this->setHeaders();
 
 		# Get request data from, e.g.

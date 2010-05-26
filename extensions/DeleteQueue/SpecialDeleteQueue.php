@@ -10,8 +10,6 @@ class SpecialDeleteQueue extends SpecialPage {
 	function execute( $subpage ) {
 		$params = explode( '/', $subpage );
 
-		wfLoadExtensionMessages( 'DeleteQueue' );
-
 		global $wgOut, $wgScriptPath, $wgDeleteQueueStyleVersion;
 		$wgOut->addExtensionStyle(
 				"$wgScriptPath/extensions/DeleteQueue/deletequeue.css?"

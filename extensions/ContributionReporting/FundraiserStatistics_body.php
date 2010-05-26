@@ -12,7 +12,6 @@ class SpecialFundraiserStatistics extends SpecialPage {
 
 	public function __construct() {
 		parent::__construct( 'FundraiserStatistics' );
-		wfLoadExtensionMessages( 'ContributionReporting' );
 	}
 	
 	public function execute( $sub ) {

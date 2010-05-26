@@ -63,7 +63,6 @@ class BackAndForth {
 			)
 		);
 		if ( $dbr->numRows( $res ) > 0 ) {
-			wfLoadExtensionMessages( 'BackAndForth' );
 			$row = $dbr->fetchObject( $res );
 			$dbr->freeResult( $res );
 			$target = Title::makeTitleSafe( $row->page_namespace, $row->page_title );

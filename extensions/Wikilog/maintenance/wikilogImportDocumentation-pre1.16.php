@@ -192,9 +192,6 @@ if( wfReadOnly() ) {
 	wfDie( "Wiki is in read-only mode; you'll need to disable it for import to work.\n" );
 }
 
-# Load extension messages.
-wfLoadExtensionMessages( 'Wikilog' );
-
 # Perform import.
 $i = new WikilogDocImport( $wgWikilogDocumentationXML );
 

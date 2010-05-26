@@ -16,8 +16,6 @@ class BadImageManipulator extends SpecialPage {
 	function execute( $par ) {
 		global $wgUser, $wgOut, $wgRequest;
 
-		wfLoadExtensionMessages( 'BadImages' );
-
 		$this->setHeaders();
 		$this->outputHeader();
 

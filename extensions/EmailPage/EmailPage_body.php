@@ -31,7 +31,6 @@ class SpecialEmailPage extends SpecialPage {
 
 		$db = wfGetDB(DB_SLAVE);		
 		$param = str_replace( '_', ' ', $param );
-		wfLoadExtensionMessages( 'EmailPage' );
 		$this->setHeaders();
 
 		# Get info from request or set to defaults

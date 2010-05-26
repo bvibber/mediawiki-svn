@@ -5,7 +5,6 @@
  */
 class HideRevisionForm extends SpecialPage {
 	function __construct() {
-		wfLoadExtensionMessages( 'HideRevision' );
 		parent::__construct( 'HideRevision', 'hiderevision' );
 	}
 
@@ -354,7 +353,6 @@ class HideRevisionForm extends SpecialPage {
 class SpecialOversight extends SpecialPage {
 
 	function __construct(){
-		wfLoadExtensionMessages('HideRevision');
 		parent::__construct( 'Oversight', 'oversight' );
 	}
 

@@ -41,7 +41,6 @@ $wgHooks['SkinTemplateBuildNavUrlsNav_urlsAfterPermalink'][] = 'wfSpecialMultiUp
 // Add the link to Special:MultipleUpload to all SkinTemplate-based skins for users with the 'upload' user right
 function wfSpecialMultiUploadNav( &$skintemplate, &$nav_urls, &$oldid, &$revid ) {
 	global $wgUser;
-	wfLoadExtensionMessages( 'MultiUpload' );
 	if( $wgUser->isAllowed( 'upload' ) )
 		$nav_urls['multiupload'] = array(
 			'text' => wfMsg( 'multiupload_link' ),
@@ -53,7 +52,6 @@ function wfSpecialMultiUploadNav( &$skintemplate, &$nav_urls, &$oldid, &$revid )
 
 // Add the link to Special:MultipleUpload to the Monobook skin
 function wfMultiUploadToolbox( &$monobook ) {
-	wfLoadExtensionMessages( 'MultiUpload' );
 	if ( isset( $monobook->data['nav_urls']['multiupload'] ) )  {
 		if ( $monobook->data['nav_urls']['multiupload']['href'] == '' ) {
 			?><li id="t-ismultiupload"><?php echo $monobook->msg( 'multiupload-toolbox' ); ?></li><?php

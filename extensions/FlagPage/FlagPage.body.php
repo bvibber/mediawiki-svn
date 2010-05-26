@@ -7,7 +7,6 @@
 class FlagPage extends SpecialPage {
 	function __construct() {
 		parent::__construct( 'FlagPage' );
-		wfLoadExtensionMessages( 'FlagPage' );
 	}
  
 	/*

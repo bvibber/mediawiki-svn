@@ -29,7 +29,6 @@ if( defined( 'MEDIAWIKI' ) ) {
 
 	function efUserRightsNotifierSetup() {
 		global $wgHooks;
-		wfLoadExtensionMessages( 'UserRightsNotif' );
 		$wgHooks['UserRights'][] = 'efUserRightsNotifier';
 	}
 

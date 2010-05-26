@@ -8,8 +8,6 @@ class RatingHistory extends UnlistedSpecialPage
 {
 	public function __construct() {
 		parent::__construct( 'RatingHistory', 'feedback' );
-		wfLoadExtensionMessages( 'RatingHistory' );
-		wfLoadExtensionMessages( 'ReaderFeedback' );
 	}
 
 	public function execute( $par ) {

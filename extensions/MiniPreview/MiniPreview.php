@@ -54,7 +54,6 @@ function efMiniPreviewShow ( &$imagePage, &$output )  {
 	if ( !$wgMiniPreviewEnabled )
 		return ;
 
-	wfLoadExtensionMessages( 'MiniPreview' );
 	# Register CSS
 	$output->addLink(
 		array(

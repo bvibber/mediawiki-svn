@@ -17,8 +17,6 @@ function wfAjaxShowEditors( $articleId, $username ) {
 	global $wgOut;
 	$articleId = intval( $articleId );
 
-	wfLoadExtensionMessages( 'AjaxShowEditors' );
-
 	// Validate request
 	$title = Title::newFromID( $articleId );
 	if ( !( $title ) ) { return wfMsg( 'ajax-se-pagedoesnotexist' ); }

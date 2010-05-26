@@ -16,7 +16,6 @@ class LastUserLogin extends SpecialPage {
 	 */
 	public function execute( $par ) {
 		global $wgUser, $wgOut, $wgLang, $wgRequest;
-		wfLoadExtensionMessages( 'LastUserLogin' );
 
 		# If user is blocked, s/he doesn't need to access this page
 		if ( $wgUser->isBlocked() ) {

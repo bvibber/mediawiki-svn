@@ -53,7 +53,6 @@ $wgAutoloadClasses['DPLForum'] = $dir . 'DPLforum_body.php';
 function wfDPLforum() {
 	global $wgParser;
 
-	wfLoadExtensionMessages( 'DPLforum' );
 	$wgParser->setHook( 'forum', 'parseForum' );
 	$wgParser->setFunctionHook( 'forumlink', array( new DPLForum(), 'link' ) );
 }

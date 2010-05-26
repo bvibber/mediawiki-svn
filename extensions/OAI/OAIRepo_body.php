@@ -28,8 +28,6 @@ class SpecialOAIRepository extends UnlistedSpecialPage {
 		global $wgRequest, $wgOut;
 		$wgOut->disable();
 
-		wfLoadExtensionMessages( 'OAIRepository' );
-
 		# FIXME: Replace the DB error handler
 		header( 'Content-type: text/xml; charset=utf-8' );
 

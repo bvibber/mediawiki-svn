@@ -17,8 +17,6 @@ class Poll extends SpecialPage {
 	public function execute( $par ) {
 		global $wgRequest, $wgUser, $wgOut;
 
-		wfLoadExtensionMessages( 'Poll' );
-
 		$this->setHeaders();
 		
 		$skin = $wgUser->getSkin();

@@ -16,9 +16,6 @@ class ContributionHistory extends SpecialPage {
 		$offset = $wgRequest->getIntOrNull( 'offset' );
 		$show = 100;
 		
-		wfLoadExtensionMessages( 'ContributionReporting' );
-		wfLoadExtensionMessages( 'ContributionReporting', $language );
-		
 		$this->setHeaders();
 		
 		$db = efContributionReportingConnection();

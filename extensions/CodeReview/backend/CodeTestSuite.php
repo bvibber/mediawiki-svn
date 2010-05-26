@@ -53,7 +53,6 @@ class CodeTestSuite {
 			$user = $codeRev->getWikiUser();
 			// User must exist on wiki and have a valid email addy
 			if ( $user && $user->canReceiveEmail() ) {
-				wfLoadExtensionMessages( 'CodeReview' );
 				// Send message in receiver's language
 				// Get repo and build comment title (for url)
 				$title = SpecialPage::getTitleFor( 'Code', $this->repo->getName() . '/' . $revId );

@@ -91,7 +91,6 @@ define( 'AMAZONPLUS_USED', 3 );
 function efAmazonPlusSetup() {
 	global $wgParser;
 	$wgParser->setHook( 'amazon', 'efAmazonPlusRender' );
-	wfLoadExtensionMessages( 'AmazonPlus' );
 	return true;
 }
 

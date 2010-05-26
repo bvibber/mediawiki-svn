@@ -41,9 +41,7 @@ $wgExtensionCredits['other'][] = array(
 $wgExtensionMessagesFiles['MicroID'] = dirname(__FILE__) . '/MicroID.i18n.php';
 
 function setupMicroID() {
-
 	global $wgOut, $wgRequest, $wgHooks;
-	wfLoadExtensionMessages( 'MicroID' );
 
 	$wgHooks['UserToggles'][] = 'MicroIDUserToggle';
 

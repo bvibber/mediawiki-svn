@@ -2,7 +2,6 @@
 
 class SpecialConfigure extends SpecialPage {
 	function __construct() {
-		wfLoadExtensionMessages( 'ConfigureWMF' );
 		parent::__construct( 'Configure', 'configure' );
 	}
 

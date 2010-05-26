@@ -9,7 +9,6 @@ class HoneypotIntegration {
 	}
 
 	public static function onAbuseFilterBuilder( &$builder ) {
-		wfLoadExtensionMessages( 'HoneypotIntegration' );
 		$builder['vars']['honeypot_list_count'] = 'honeypot-list-count';
 		return true;
 	}

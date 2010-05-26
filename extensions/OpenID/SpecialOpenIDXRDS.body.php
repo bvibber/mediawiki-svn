@@ -39,8 +39,6 @@ class SpecialOpenIDXRDS extends SpecialOpenID {
 	function execute( $par ) {
 		global $wgOut, $wgOpenIDClientOnly;
 
-		wfLoadExtensionMessages( 'OpenID' );
-
 		# No server functionality if this site is only a client
 		# Note: special page is un-registered if this flag is set,
 		# so it'd be unusual to get here.

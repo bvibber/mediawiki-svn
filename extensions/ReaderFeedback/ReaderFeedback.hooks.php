@@ -16,8 +16,6 @@ class ReaderFeedbackHooks {
 			return true;
 		}
 		global $wgScriptPath, $wgJsMimeType, $wgFeedbackStylePath, $wgFeedbackStyleVersion;
-		# Load required messages
-		wfLoadExtensionMessages( 'ReaderFeedback' );
 		
 		$stylePath = str_replace( '$wgScriptPath', $wgScriptPath, $wgFeedbackStylePath );
 
@@ -116,7 +114,6 @@ class ReaderFeedbackHooks {
 		# Revision being displayed
 		$id = $wgOut->getRevisionId();
 		# Load required messages
-		wfLoadExtensionMessages( 'ReaderFeedback' );
 		$reviewTitle = SpecialPage::getTitleFor( 'ReaderFeedback' );
 		$action = $reviewTitle->getLocalUrl( 'action=submit' );
 		$form = Xml::openElement( 'form', array( 'method' => 'post', 'action' => $action,
@@ -172,7 +169,6 @@ class ReaderFeedbackHooks {
 		global $wgTitle;
 		# Add rating tab
 		if( isset($wgTitle) && ReaderFeedback::isPageRateable($wgTitle) ) {
-			wfLoadExtensionMessages( 'RatingHistory' );
 			$nav_urls['ratinghist'] = array( 
 				'text' => wfMsg( 'ratinghistory-link' ),
 				'href' => $skintemplate->makeSpecialUrl( 'RatingHistory', 

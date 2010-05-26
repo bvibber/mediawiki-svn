@@ -25,7 +25,6 @@ $wgExtensionMessagesFiles['Filelist'] = $dir . 'SpecialFilelist.i18n.php';
 require_once( 'ImageGallery.php' );
 
 function wfSpecialFilelist () {
-	wfLoadExtensionMessages( 'Filelist' );
 	global $IP;
 	require_once "$IP/includes/SpecialPage.php";
 	class SpecialFilelist extends SpecialPage {

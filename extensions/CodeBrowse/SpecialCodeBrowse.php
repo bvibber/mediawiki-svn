@@ -5,8 +5,6 @@ class SpecialCodeBrowse extends SpecialPage {
 		parent::__construct( 'CodeBrowse', 'codebrowse' );
 	}
 	function execute( $par ) {
-		wfLoadExtensionMessages( 'CodeReview' );
-		wfLoadExtensionMessages( 'CodeBrowse' );
 		
 		$this->setHeaders();
 		

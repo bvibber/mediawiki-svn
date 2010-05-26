@@ -10,7 +10,6 @@ class ExternalPages extends UnlistedSpecialPage {
 	public function __construct() {
 		global $wgExternalPagesSites, $wgExternalPages, $wgExternalPagesCacheExpiry;
 		parent::__construct( 'ExternalPages' );
-		wfLoadExtensionMessages( 'ExternalPages' );
 		$this->epSites = $wgExternalPagesSites;
 		$this->epPages = $wgExternalPages;
 		$this->epExpiry = $wgExternalPagesCacheExpiry;

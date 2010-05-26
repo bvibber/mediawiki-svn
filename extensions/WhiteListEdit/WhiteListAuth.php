@@ -329,15 +329,11 @@ class WhiteListHooks {
 
 	    $userIsRestricted = in_array( $wgWhiteListRestrictedGroup, $wgUser->getGroups() );
 
-	    if ($wgUser->isLoggedIn() && $userIsRestricted) {
-		# In older versions of MW, loading of message files was done differently than the
-		# current default. So, let's work around that by forcing the load of the message file.
-		WhiteList::loadMessages();
-		
-		$personal_urls['mypages'] = array(
-		    'text' => wfMsg('mywhitelistpages'),
-		    'href' => Skin::makeSpecialUrl('WhiteList')
-		);
+	    if ($wgUser->isLoggedIn() && $userIsRestricted) {		
+			$personal_urls['mypages'] = array(
+				'text' => wfMsg('mywhitelistpages'),
+				'href' => Skin::makeSpecialUrl('WhiteList')
+			);
 	    }
 	    return true;
 	}

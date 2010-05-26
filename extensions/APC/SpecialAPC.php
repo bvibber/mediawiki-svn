@@ -45,7 +45,6 @@ class SpecialAPC extends SpecialPage {
 
 	public function execute( $parameters ) {
 		global $wgOut, $wgScriptPath, $wgStyleVersion, $wgUser;
-		wfLoadExtensionMessages( 'APC' );
 		$this->setHeaders();
 		$this->setup();
 

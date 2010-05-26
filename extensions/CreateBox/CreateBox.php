@@ -52,7 +52,6 @@ function wfCreateBox( &$parser ) {
 }
 
 function actionCreate( $action, $article ) {
-	wfLoadExtensionMessages( 'CreateBox' );
 	if( $action != 'create' )
 		return true;
 
@@ -92,7 +91,6 @@ function acGetOption( &$input, $name, $value = null ) {
 }
 
 function acMakeBox( $input, $argv, &$parser ) {
-	wfLoadExtensionMessages( 'CreateBox' );
 	global $wgRequest, $wgScript;
 	if( $wgRequest->getVal( 'action' ) == 'create' ) {
 		$prefix = $wgRequest->getVal( 'prefix' );

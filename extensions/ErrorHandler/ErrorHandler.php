@@ -209,11 +209,7 @@ function efErrorHandlerGetMessage(){
 	static $loaded = false;
 	$args = func_get_args();
 	if( !$loaded ){
-		global $wgMessageCache;
-		if( function_exists( 'wfMsgExt' ) && is_object( $wgMessageCache ) ){
-			$loaded = true;
-			wfLoadExtensionMessages( 'ErrorHandler' );
-		}
+		$loaded = function_exists( 'wfMsgExt' ) && is_object( $wgMessageCache );
 	}
 	if( $loaded ){
 		global $wgTitle;

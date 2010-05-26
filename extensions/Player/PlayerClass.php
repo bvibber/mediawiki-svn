@@ -29,7 +29,6 @@ class Player {
 	var $playerTitle;
 
 	function __construct( $image, $options, $sizeDefault = 'imagesize' ) {
-		wfLoadExtensionMessages( 'Player' );
 
 		if ( is_null( $options ) ) $options = array();
 		if ( is_string( $options ) ) $options = urldecodeMap( $options );
@@ -47,8 +46,6 @@ class Player {
 	}
 
 	static function newFromTitle( $title, $options, $sizeDefault = 'imagesize' ) {
-		wfLoadExtensionMessages( 'Player' );
-
 		$image = wfFindFile( $title );
 		if ( !$image->exists() ) {
 			throw new PlayerException(wfMsg("player-not-found"), 404);
@@ -58,8 +55,6 @@ class Player {
 	}
 
 	static function newFromName( $name, $options, $sizeDefault = 'imagesize' ) {
-		wfLoadExtensionMessages( 'Player' );
-
 		$title = Title::makeTitleSafe(NS_IMAGE, $name);
 		if (!$title) throw new PlayerException(wfMsg("player-invalid-title"), 400);
 
@@ -223,7 +218,6 @@ class Player {
 	 */
 	static function setHeaders( &$outputPage ) {
 		global $wgJsMimeType, $wgPlayerExtensionPath, $wgContLang;
-		wfLoadExtensionMessages( 'Player' );
 
 		# Register css file for Player
 		/*$outputPage->addLink(

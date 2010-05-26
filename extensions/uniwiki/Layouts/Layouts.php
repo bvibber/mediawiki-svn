@@ -52,7 +52,6 @@ function UW_Layouts_EF() {
 /* render a note to display the name of the
  * layout that this page was created from */
 function UW_Layouts_EF_Render ( $input, $args, $parser ) {
-	// wfLoadExtensionMessages( 'Layouts' );
 	// $name = isset($args['name']) ? Title::newFromURL("Layout:".$args['name'])->getText() : wfMsg('layouts_unknown');
 	// return "<div class='layout-name'><p>".wfMsg('layouts_tagline', $name)."</p></div>";
 	return "";
@@ -119,8 +118,6 @@ function UW_Layouts_checkActionIsLayout( $action, $article ) {
 	$url   = $article->mTitle->getInternalUrl();
 	$name  = $article->mTitle->getPrefixedURL();
 	$namespace = $article->mTitle->getNamespace();
-
-	wfLoadExtensionMessages( 'Layouts' );
 
 	$wgOut->setPageTitle ( wfMsg ( "layouts_title" ) );
 

@@ -23,7 +23,6 @@ class FindSpamPage extends SpecialPage {
 		global $wgRequest, $wgOut, $wgLocalDatabases, $wgUser;
 		global $wgConf, $wgCanonicalNamespaceNames, $wgLang;
 
-		wfLoadExtensionMessages( 'FindSpam' );
 		$this->setHeaders();
 
 		# Check permissions

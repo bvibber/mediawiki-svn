@@ -23,8 +23,6 @@ class DeleteQueueHooks {
 
 		$selected = false;
 
-		wfLoadExtensionMessages( 'DeleteQueue' );
-
 		if ( $queue == '' ) {
 			$actions['deletequeue'] = array(
 				'text' => wfMsg( 'deletequeue-action' ),
@@ -44,7 +42,6 @@ class DeleteQueueHooks {
 
 	public static function onUnknownAction( $action, $article ) {
 		if ( $action == 'deletequeue' ) {
-			wfLoadExtensionMessages( 'DeleteQueue' );
 			global $wgOut;
 
 			$wgOut->setPageTitle( wfMsg( 'deletequeue-action-title',
@@ -65,8 +62,6 @@ class DeleteQueueHooks {
 	}
 
 	public static function onArticleViewHeader( &$article ) {
-		wfLoadExtensionMessages( 'DeleteQueue' );
-
 		global $wgOut, $wgLang;
 
 		if ( $article->mTitle->getNamespace() == NS_DELETION ) {

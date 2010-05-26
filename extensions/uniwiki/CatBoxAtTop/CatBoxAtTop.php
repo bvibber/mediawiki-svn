@@ -36,8 +36,6 @@ function UW_CatBoxAtTop_Rejig ( &$out, &$text ) {
 	if ( !$out->mCategoryLinks )
 		return true;
 
-	wfLoadExtensionMessages( 'CatBoxAtTop' );
-
 	/* add a category box to the top of the output,
 	 * to be dropped into the top right via CSS */
 	$catbox = "<div id=\"catbox\"><div>\n";

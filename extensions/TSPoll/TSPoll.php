@@ -59,7 +59,6 @@ function efTSPollRender( $input, $args, $parser ) {
   if ( isset( $args['id'] ) && $args['id'] != "" ) {
 		$id = wfUrlencode( $args['id'] );
 	} else {
-		wfLoadExtensionMessages( 'TSPoll' );
 		return wfMsg( 'tspoll-id-error' );
 	}
   
@@ -75,7 +74,6 @@ function efTSPollRender( $input, $args, $parser ) {
 		return $get_server;
 	}
 	else {
-		wfLoadExtensionMessages( 'TSPoll' );
 		return wfMsg( 'tspoll-fetch-error' );
 	}
 }

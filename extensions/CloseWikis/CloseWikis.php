@@ -189,7 +189,6 @@ class CloseWikisHooks {
 		if( is_null( $closed ) )
 			$closed = CloseWikis::getClosedRow( wfWikiID() );
 		if( $closed->isClosed() && !$user->isAllowed( 'editclosedwikis' ) ) {
-			wfLoadExtensionMessages( 'CloseWikis' );
 			$reason = $closed->getReason();
 			$ts = $closed->getTimestamp();	
 			$by = $closed->getBy();

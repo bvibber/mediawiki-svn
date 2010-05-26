@@ -25,8 +25,6 @@ function wfCommentPagesSkinTemplateTabs ( &$skin, &$content_actions )
 {
 	global $wgContLang, $wgCommentPagesNS;
 
-	wfLoadExtensionMessages( 'CommentPages' );
-
 	$pagename = $skin->mTitle->getText();
 	$namespace = $skin->mTitle->getNamespace();
 	$class = '';

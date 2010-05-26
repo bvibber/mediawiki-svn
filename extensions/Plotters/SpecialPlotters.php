@@ -32,7 +32,6 @@ class SpecialPlotters extends SpecialPage {
 	function execute( $par ) {
 		global $wgOut, $wgUser;
 
-		wfLoadExtensionMessages( 'Plotters' );
 		$skin = $wgUser->getSkin();
 
 		$this->setHeaders();

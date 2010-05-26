@@ -46,7 +46,6 @@ function setupCatRSSExtension() {
 
 	require_once( "$IP/includes/CategoryPage.php" );
 	require_once( "Feed.php" );
-	wfLoadExtensionMessages( 'catfeed' );
 	global $wgHooks;
 
 	$wgHooks['CategoryPageView'][] = 'viewCatFeed';

@@ -14,7 +14,6 @@ class SpamRegex extends SpecialPage {
 	 */
 	public function __construct() {
 		parent::__construct( 'SpamRegex', 'spamregex' );
-		wfLoadExtensionMessages( 'SpamRegex' );
 	}
 
 	/**

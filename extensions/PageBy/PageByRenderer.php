@@ -150,7 +150,6 @@ class PageByRenderer {
 
 		$html = '<ul class="pageby">';
 
-		wfLoadExtensionMessages( 'PageBy' );
 		#TODO: somehere link the page history. And mention the page name, if it's not the local page.
 
 		if ($this->showfirst) {

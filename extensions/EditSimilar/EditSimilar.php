@@ -57,8 +57,6 @@ function wfEditSimilarCheck( $article ) {
 function wfEditSimilarViewMesg( &$out ) {
 	global $wgTitle, $wgUser, $wgEditSimilarAlwaysShowThanks;
 
-	wfLoadExtensionMessages( 'EditSimilar' );
-
 	if ( !empty( $_SESSION['ES_saved'] ) && ( 1 == $wgUser->getOption( 'edit-similar', 1 ) ) && $out->isArticle() ) {
 		if ( EditSimilar::checkCounter() ) {
 			$message_text = '';
@@ -109,8 +107,6 @@ function wfEditSimilarViewMesg( &$out ) {
  * @return true
  */
 function wfEditSimilarToggle( $user, &$preferences ) {
-	wfLoadExtensionMessages( 'EditSimilar' );
-
 	$preferences['edit-similar'] = array(
 		'type' => 'toggle',
 		'section' => 'editing',

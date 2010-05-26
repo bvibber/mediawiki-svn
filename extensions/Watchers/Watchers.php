@@ -55,8 +55,6 @@ function wfWatchersExtensionAfterToolbox( &$tpl ) { # Checked for HTML and MySQL
 		return true;
 	}
 
-	wfLoadExtensionMessages( 'Watchers' );
-
 	echo '<li id="t-watchers"><a href="' ;
 	$nt = SpecialPage::getTitleFor( 'Watchers' );
 	echo $nt->escapeLocalURL( 'page=' . $wgTitle->getPrefixedDBkey() );

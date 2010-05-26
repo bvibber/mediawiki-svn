@@ -25,7 +25,6 @@ class HTMLForm {
 	);
 
 	function __construct( $descriptor, $messagePrefix ) {
-		wfLoadExtensionMessages( 'Lqt-Compat' );
 
 		$this->mMessagePrefix = $messagePrefix;
 

@@ -20,8 +20,6 @@ class SpecialUserOptionStats extends SpecialPage {
 	public function execute( $par ) {
 		global $wgRequest, $wgUser, $wgOut, $wgLang, $wgAutoloadClasses;
 
-		wfLoadExtensionMessages( 'UserOptionStats' );
-
 		$this->setHeaders();
 		$this->outputHeader();
 

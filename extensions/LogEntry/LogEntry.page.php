@@ -14,9 +14,6 @@ class LogEntry extends UnlistedSpecialPage {
 	public function __construct() {
 		// Register the special page as unlisted
 		UnlistedSpecialPage::UnlistedSpecialPage( 'LogEntry' );
-		
-		// Internationalization
-		wfLoadExtensionMessages( 'LogEntry' );
 	}
 	
 	public function execute( $par ) {

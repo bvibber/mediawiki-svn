@@ -282,7 +282,6 @@ class SMWSQLStore2QueryEngineNM {
 						$qid = $this->compileQueries( $desc );
 						$query = $this->m_queries[$qid];
 					} else {
-						wfLoadExtensionMessages( 'SemanticMediaWiki' );
 						$this->m_errors[] = wfMsg( 'smw_concept_cache_miss', $description->getConcept()->getText() );
 					}
 				} // else: no cache, no description (this may happen); treat like empty concept

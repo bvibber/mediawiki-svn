@@ -19,7 +19,6 @@ class WebIRC extends SpecialPage {
  
     function execute( $par ) {
         global $wgOut, $wgUser, $wgIRCServer, $wgIRCChannel, $wgIRCSettings;
-        wfLoadExtensionMessages( 'WebIRC' );
         $this->setHeaders();
  
         if( !$this->userCanExecute( $wgUser ) ){

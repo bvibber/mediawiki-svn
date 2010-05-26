@@ -18,7 +18,6 @@ class ec_CurrentEdits extends SpecialPage {
 
 	public function __construct() {
 		parent::__construct( 'CurrentEdits', 'delete' );
-		wfLoadExtensionMessages('EditConflict');
 	}
 
 	public function execute( $par ) {

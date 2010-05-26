@@ -41,8 +41,6 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 	function execute( $par ) {
 		global $wgRequest, $wgUser, $wgOut, $wgOpenIDConsumerForce;
 
-		wfLoadExtensionMessages( 'OpenID' );
-
 		$this->setHeaders();
 
 		if ( $wgUser->getID() != 0 ) {

@@ -42,7 +42,6 @@ if ( version_compare( $wgVersion, '1.13', '>=' ) ) {
 
 # Login hook function
 function wfStalkerLogin( &$user ) {
-	wfLoadExtensionMessages('stalkerlog');
 	$log = new LogPage( 'stalkerlog', false);
 	$log->addEntry( 'login', $user->getUserPage(), '', null, $user );
 	return true;
@@ -50,7 +49,6 @@ function wfStalkerLogin( &$user ) {
 
 # Logout hook function
 function wfStalkerLogout( &$user, &$inject_html, $old_name ) {
-	wfLoadExtensionMessages('stalkerlog');
 	$log = new LogPage( 'stalkerlog', false);
 	$log->addEntry( 'logout', Title::newFromText( NS_USER, $old_name ), '', null, User::newFromName( $old_name ) );
 	return true;

@@ -17,7 +17,6 @@ class InterwikiList extends SpecialPage {
 	*/
 	public function InterwikiList() {
 		SpecialPage::SpecialPage("InterwikiList");
-		wfLoadExtensionMessages('InterwikiList');
 	}
 	
 	/**

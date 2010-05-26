@@ -236,7 +236,6 @@ function efSecurePasswordsValidate( $password, &$result, $user ) {
 	
 	global $wgValidPasswords, $wgContLang, $wgSecurePasswordsSpecialChars;
 	$lang = $wgContLang->getPreferredVariant( false );
-	wfLoadExtensionMessages( 'SecurePasswords' );
 	// check password length
 	if( strlen( $password ) < $wgValidPasswords['minlength'] ) {
 		$result = 'securepasswords-invalid';
@@ -326,7 +325,6 @@ function efSecurePasswordsMessage( &$key, &$useDB, &$langCode, &$transform ) {
 		// quit early... we can't properly change the message
 		return true;
 	}
-	wfLoadExtensionMessages('SecurePasswords');
 	$key = 'securepasswords-password';
 	$msg = wfMsg( 'securepasswords-valid' ) . "\n* ";
 	$msg .= wfMsgExt( 'securepasswords-minlength', array( 'parsemag' ), $wgValidPasswords['minlength'] );

@@ -169,7 +169,6 @@ class IndexFunctionHooks {
 		if ( !isset($parser->mOutput->mIndexes) ) {
 			$parser->mOutput->mIndexes = array();
 		}		
-		wfLoadExtensionMessages( 'IndexFunction' );
 		static $indexCount = 0;
 		static $indexes = array();
 		$args = func_get_args();
@@ -286,7 +285,6 @@ class IndexFunctionHooks {
 		if (!$index) {
 			return true;
 		}
-		wfLoadExtensionMessages( 'IndexFunction' );
 		$list = $index->makeTargetList();
 		$c = count( $index->getTargets() );
 		$warn = wfMsgExt( 'indexfunc-editwarning', array( 'parsemag' ), $list, $c );

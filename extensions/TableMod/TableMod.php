@@ -41,7 +41,6 @@ function tablemodSetup( $parser ) {
 	if(count($errors)) return true;
 
 	$parser->setHook('table-mod', 'tablemodRender');
-	wfLoadExtensionMessages('TableMod');
 
 	return true;
 }

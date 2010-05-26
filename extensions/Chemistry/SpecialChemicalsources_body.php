@@ -69,8 +69,6 @@ class SpecialChemicalsources extends SpecialPage {
 		$this->Parameters = $this->wgChemFunctions_Parameters;
 		$this->Prefix = $this->wgChemFunctions_Prefix;
 
-		wfLoadExtensionMessages( 'SpecialChemicalsources' );
-
 		$Params = $wgRequest->getValues();
 
 		$ParamsCheck = "";

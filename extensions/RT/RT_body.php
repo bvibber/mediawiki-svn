@@ -25,8 +25,6 @@ class RT {
 			$wgRequestTracker_TIMEFORMAT_RESOLVED2,
 			$wgRequestTracker_TIMEFORMAT_NOW;
    
-		wfLoadExtensionMessages( 'RT' );
-   
 		// Grab the number if one was given between the <tr> tags
 		$ticketnum = 0;
 		$matches = array();

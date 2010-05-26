@@ -12,8 +12,6 @@ class SpecialSpamDiffTool extends UnlistedSpecialPage {
 		global $wgRequest, $wgContLang, $wgOut, $wgUser,
 			$wgScript, $wgSpamBlacklistArticle;
 
-		wfLoadExtensionMessages( 'SpamDiffTool' );
-
 		$this->setHeaders();
 
 		// can the user even edit this?

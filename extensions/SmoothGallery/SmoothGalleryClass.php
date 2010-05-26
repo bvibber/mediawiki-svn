@@ -25,7 +25,6 @@ class SmoothGallery {
 			// If even one gallery is missing all images, we
 			// are going to return an error to the user.
 			if ( !isset( $galleryArray["images"] ) ) {
-				wfLoadExtensionMessages( 'SmoothGallery' );
 				$error = wfMsg( "smoothgallery-error" );
 
 				if ( isset( $galleryArray["missing_images"] )  && isset( $galleryArray["invalid_images"] ) ) {
@@ -164,7 +163,6 @@ class SmoothGallery {
 
 			$output .= '<div id="' . $galleryArray['gallery_name'] . '-fallback" class="MediaWikiSGalleryWarning" style="width: ' . $this->argumentArray["width"] . ';height: ' . $this->argumentArray["height"] . ';" alt="' . $galleryArray["images"][0]["description"] . '">';
 
-			wfLoadExtensionMessages( 'SmoothGallery' );
 			$output .= wfMsg( "smoothgallery-javascript-disabled" );
 
 			$output .= '<div class="MediaWikiSGallerySingleImage">';

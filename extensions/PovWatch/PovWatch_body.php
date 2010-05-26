@@ -16,8 +16,6 @@ class SpecialPovWatch extends SpecialPage {
 	function execute( $subpage ) {
 		global $wgRequest, $wgUser, $wgOut;
 
-		wfLoadExtensionMessages( 'PovWatch' );
-
 		$this->setHeaders();
 
 		if ( !$wgUser->isAllowed( 'povwatch_user' ) ) {

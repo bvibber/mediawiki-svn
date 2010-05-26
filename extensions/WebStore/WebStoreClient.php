@@ -4,10 +4,6 @@ class WebStoreClient extends FileStore {
 	// Last error, in wikitext form
 	var $lastError;
 
-	function __construct() {
-		wfLoadExtensionMessages( 'WebStore' );
-	}
-
 	function getURL( $script ) {
 		global $wgServer, $wgScriptPath;
 		return "$wgServer$wgScriptPath/extensions/WebStore/$script";

@@ -549,8 +549,6 @@ class RegexBlock {
 			return $result;
 		}
 
-		wfLoadExtensionMessages( 'RegexBlock' );
-
 		if ( is_array( $valid ) ) {
 			$user->mBlockedby = User::idFromName( $blocker );
 			if ( $valid['reason'] != '' ) {
@@ -626,7 +624,6 @@ class RegexBlock {
 	public static function loadContribsLink( $id, $nt, &$links ){
 		global $wgUser;
 		if( $wgUser->isAllowed( 'regexblock' ) ) {
-			wfLoadExtensionMessages( 'RegexBlock' );
 			$links[] = $wgUser->getSkin()->makeKnownLinkObj(
 				SpecialPage::getTitleFor( 'RegexBlock' ),
 				wfMsgHtml( 'regexblock-link' ),

@@ -30,7 +30,6 @@ class AdvancedSearch extends SpecialPage {
 
 	public function execute( $par ) {
 		global $wgOut, $wgRequest;
-		wfLoadExtensionMessages( 'AdvancedSearch' );
 		$this->setHeaders();
 		$wgOut->setPageTitle( wfMsg( 'advancedsearch-title' ) );
 		if ( $wgRequest->getVal( 'do' ) == 'search' || !is_null( $par ) )

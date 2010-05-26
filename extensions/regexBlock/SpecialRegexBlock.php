@@ -34,7 +34,6 @@ class RegexBlockForm extends SpecialPage {
 		$this->mFilter = $this->mRegexFilter = '';
 		$this->mError = $this->mMsg = '';
 		parent::__construct( 'RegexBlock'/*class*/, 'regexblock'/*restriction*/ );
-		wfLoadExtensionMessages( 'RegexBlock' );
 	}
 
 	/**

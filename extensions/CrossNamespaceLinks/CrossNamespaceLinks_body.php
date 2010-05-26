@@ -17,7 +17,6 @@ class CrossNamespaceLinks extends SpecialPage {
 	 * main()
 	 */
 	function execute( $parameters ) {
-		wfLoadExtensionMessages( 'CrossNamespaceLinks' );
 		$this->setHeaders();
 		list( $limit, $offset ) = wfCheckLimits();
 
@@ -69,7 +68,6 @@ class CrossNamespaceLinksPage extends QueryPage {
 
 	function getPageHeader() {
 		global $wgOut;
-		wfLoadExtensionMessages( 'CrossNamespaceLinks' );
 		return $wgOut->parse( wfMsg( 'crossnamespacelinks-summary' ) );
 	}
 
@@ -113,7 +111,6 @@ class CrossNamespaceLinksPage extends QueryPage {
 
 		$plink = $skin->makeKnownLink( $nt->getPrefixedText(), htmlspecialchars( $text ) );
 
-		wfLoadExtensionMessages( 'CrossNamespaceLinks' );
 		return wfMsgExt( 'crossnamespacelinkstext', array( 'parsemag' ), $plink, $wgLang->formatNum( $result->namespace ), htmlspecialchars( $wgLang->getNsText( $result->value ) ) );
 	}
 }

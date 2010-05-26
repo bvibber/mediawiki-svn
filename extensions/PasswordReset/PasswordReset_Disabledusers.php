@@ -15,7 +15,6 @@
 class Disabledusers extends SpecialPage {
 	///StalePages Class Constructor
 	public function __construct() {
-		wfLoadExtensionMessages('PasswordReset');
 		SpecialPage::SpecialPage( 'Disabledusers', 'passwordreset' );
 	}
 

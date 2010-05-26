@@ -70,7 +70,6 @@ class UserImagesGallery {
 	 * @return string
 	 */
 	public function render() {
-		wfLoadExtensionMessages( 'UserImages' );
 		if( is_object( $this->user ) ) {
 			$this->user->load();
 			if( $this->user->getId() > 0 ) {

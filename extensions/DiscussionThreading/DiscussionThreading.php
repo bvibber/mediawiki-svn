@@ -53,7 +53,6 @@ function efDiscussionLink4other ($callobj, $title, $section , $url , &$result)
 {
 	global $wgSectionThreadingOn;
 	if($wgSectionThreadingOn && $title->isTalkPage() ) {
-		wfLoadExtensionMessages( 'DiscussionThreading' );
 		$commenturl = '&section='.$section.'&replyto=yes';
 		$curl = $callobj->makeKnownLinkObj( $title, wfMsg('discussionthreading-replysection'), 'action=edit'.$commenturl );
 		$newthreadurl = '&section=new';
@@ -78,7 +77,6 @@ function efDiscussionLink ($callobj, $nt, $section, $hint='', $url , &$result)
 {
 	global $wgSectionThreadingOn;
 	if($wgSectionThreadingOn && $nt->isTalkPage() ) {
-		wfLoadExtensionMessages( 'DiscussionThreading' );
 		$commenturl = '&section='.$section.'&replyto=yes';
 		$hint = ( $hint=='' ) ? '' : ' title="' . wfMsgHtml( 'discussionthreading-replysectionhint', htmlspecialchars( $hint ) ) . '"';
 		$curl = $callobj->makeKnownLinkObj( $nt, wfMsg('discussionthreading-replysection'), 'action=edit'.$commenturl, '', '', '',  $hint );

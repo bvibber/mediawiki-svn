@@ -10,7 +10,6 @@ class OggHandler extends MediaHandler {
 	}
 
 	function getParamMap() {
-		wfLoadExtensionMessages( 'OggHandler' );
 		return array(
 			'img_width' => 'width',
 			'ogg_noplayer' => 'noplayer',
@@ -352,7 +351,6 @@ class OggHandler extends MediaHandler {
 
 	function getShortDesc( $file ) {
 		global $wgLang, $wgOggAudioTypes, $wgOggVideoTypes;
-		wfLoadExtensionMessages( 'OggHandler' );
 		$streamTypes = $this->getStreamTypes( $file );
 		if ( !$streamTypes ) {
 			return parent::getShortDesc( $file );
@@ -371,7 +369,6 @@ class OggHandler extends MediaHandler {
 
 	function getLongDesc( $file ) {
 		global $wgLang, $wgOggVideoTypes, $wgOggAudioTypes;
-		wfLoadExtensionMessages( 'OggHandler' );
 		$streamTypes = $this->getStreamTypes( $file );
 		if ( !$streamTypes ) {
 			$unpacked = $this->unpackMetadata( $file->getMetadata() );
@@ -410,7 +407,6 @@ class OggHandler extends MediaHandler {
 
 	function getDimensionsString( $file ) {
 		global $wgLang;
-		wfLoadExtensionMessages( 'OggHandler' );
 		if ( $file->getWidth() ) {
 			return wfMsg( 'video-dims', $wgLang->formatTimePeriod( $this->getLength( $file ) ),
 				$wgLang->formatNum( $file->getWidth() ),
@@ -432,8 +428,6 @@ class OggHandler extends MediaHandler {
 			$out->hasHeadItem( 'OggHandlerInlineCSS' ) ) {
 			return;
 		}
-
-		wfLoadExtensionMessages( 'OggHandler' );
 
 		$msgNames = array( 'ogg-play', 'ogg-pause', 'ogg-stop', 'ogg-no-player',
 			'ogg-player-videoElement', 'ogg-player-oggPlugin', 'ogg-player-cortado', 'ogg-player-vlc-mozilla',
@@ -508,7 +502,6 @@ class OggTransformOutput extends MediaTransformOutput {
 	}
 
 	function toHtml( $options = array() ) {
-		wfLoadExtensionMessages( 'OggHandler' );
 		if ( count( func_get_args() ) == 2 ) {
 			throw new MWException( __METHOD__ .' called in the old style' );
 		}

@@ -1,8 +1,5 @@
 <?php
 
-# Add messages
-wfLoadExtensionMessages( 'ExpandTemplates' );
-
 class ExpandTemplates extends SpecialPage {
 	var $generateXML, $removeComments, $removeNowiki, $isNewParser;
 

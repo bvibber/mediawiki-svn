@@ -18,7 +18,6 @@ class RandomPageInCategory extends SpecialPage {
 
 	function execute( $par ) {
 		global $wgOut, $wgRequest;
-		wfLoadExtensionMessages( 'RandomInCategory' );
 
 		$this->setHeaders();
 		if( is_null( $par ) ) {

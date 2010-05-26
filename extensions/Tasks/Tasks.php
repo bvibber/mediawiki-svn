@@ -158,7 +158,6 @@ function wfTaskExtensionHeaderHook( &$article ) { # Checked for HTML and MySQL i
 	}
 	
 	wfTasksAddCache();
-	wfLoadExtensionMessages('Tasks');
 	$st = new SpecialTasks();
 	$task = '';
 	$page_title = $st->get_title_from_task( $taskid, $task );
@@ -198,7 +197,6 @@ function wfTaskExtensionHeaderSign() {
 	}
 
 	wfTasksAddCache();
-	wfLoadExtensionMessages('Tasks');
 	$st = new SpecialTasks();
 	$tasks = $st->get_open_task_list( $wgTitle, true );
 	if( count( $tasks ) == 0 ) {
@@ -264,7 +262,6 @@ function wfTasksExtensionAfterToolbox( &$tpl ) { # Checked for HTML and MySQL in
 	}
 	
 	wfTasksAddCache();
-	wfLoadExtensionMessages('Tasks');
 	$st = new SpecialTasks;
 	$tasks = $st->get_open_task_list( $wgTitle, true );
 	if( count( $tasks ) == 0 ) {
@@ -312,7 +309,6 @@ function wfTasksExtensionAfterMove( &$special_page, &$old_title, &$new_title ) {
 	}
 
 	wfTasksAddCache();
-	wfLoadExtensionMessages('Tasks');
 
 	$st = new SpecialTasks;
 	$st->rename_tasks_page( $old_title, $new_title );
@@ -326,7 +322,6 @@ function wfTasksExtensionAfterMove( &$special_page, &$old_title, &$new_title ) {
 function wfTasksExtensionArticleDeleteComplete( &$article, &$user, $reason ) { # Checked for HTML and MySQL insertion attacks
 	# return false ; # Uncomment this line to prevent deletion of tasks upon deletion of article
 	wfTasksAddCache();
-	wfLoadExtensionMessages('Tasks');
 	$t = $article->getTitle();
 	if( $t->isTalkPage() ) {
 		# No tasks for talk pages, no need to bother the database...
@@ -354,7 +349,6 @@ function wfTasksExtensionArticleDeleteComplete( &$article, &$user, $reason ) { #
 function wfTasksExtensionArticleSaveComplete( &$article, &$user, $text, $summary, $isminor, $watchthis, $something ) { # Checked for HTML and MySQL insertion attacks
 	global $wgUser;
 	wfTasksAddCache();
-	wfLoadExtensionMessages('Tasks');
 	$t = $article->getTitle();
 	if( $t->isTalkPage() ) {
 		# No tasks for talk pages, no need to bother the database...
@@ -426,7 +420,6 @@ function wfTasksExtensionTab( $skin, &$content_actions ) { # Checked for HTML an
 	}
 
 	wfTasksAddCache();
-	wfLoadExtensionMessages('Tasks');
 	$content_actions['tasks'] = array(
 		'class' => ($action == 'tasks') ? 'selected' : false,
 		'text' => wfMsgHTML('tasks_tab'),
@@ -445,7 +438,6 @@ function wfTasksExtensionAction( $action, $article ) { # Checked for HTML and My
 	}
 	
 	wfTasksAddCache();
-	wfLoadExtensionMessages('Tasks');
 	
 	$t = new SpecialTasks;
 	$t->page_management( $article->getTitle() );
@@ -461,7 +453,6 @@ function wfTasksExtensionAction( $action, $article ) { # Checked for HTML and My
 function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 	global $IP;
 	wfTasksAddCache();
-	wfLoadExtensionMessages('Tasks');
 
 	require_once $IP.'/includes/SpecialPage.php';
 
@@ -535,7 +526,6 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 		 */
 		function update_types() { # Checked for HTML and MySQL insertion attacks
 			wfTasksAddCache();
-			wfLoadExtensionMessages('Tasks');
 			
 			# task type numeric key, text key, localized text
 			$this->task_types = array();

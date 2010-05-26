@@ -27,7 +27,6 @@ function wfTidy() {
 	class TidyAction {
 		public function __construct() {
 			global $wgUseTidy, $wgHooks;
-			wfLoadExtensionMessages( 'tidy' );
 
 			$wgHooks['SkinTemplateContentActions'][] = array( &$this, 'tidyHook' );
 			$wgHooks['UnknownAction'][] = array( &$this, 'action' );

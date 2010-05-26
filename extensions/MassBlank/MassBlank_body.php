@@ -5,7 +5,6 @@ if( !defined( 'MEDIAWIKI' ) )
 
 class SpecialMassBlank extends SpecialPage {
 	function __construct() {
-		wfLoadExtensionMessages( 'MassBlank' );
 		parent::__construct( 'MassBlank', 'massblank' );
 	}
 

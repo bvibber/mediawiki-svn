@@ -29,7 +29,6 @@ $dir = dirname(__FILE__) . '/';
 $wgExtensionMessagesFiles['PostComment'] = $dir . 'Postcomment.i18n.php';
 
 function wfPostcomment( ) {
-	wfLoadExtensionMessages( 'PostComment' );
 	SpecialPage::AddPage(new UnlistedSpecialPage('Postcomment'));
 }
 

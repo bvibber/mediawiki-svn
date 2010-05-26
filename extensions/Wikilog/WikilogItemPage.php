@@ -49,7 +49,6 @@ class WikilogItemPage
 	 */
 	function __construct( &$title, &$wi ) {
 		parent::__construct( $title );
-		wfLoadExtensionMessages( 'Wikilog' );
 		$this->mItem = WikilogItem::newFromInfo( $wi );
 	}
 

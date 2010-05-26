@@ -31,8 +31,6 @@ function fnSelectCategoryShowHook( $m_isUpload = false, &$m_pageObj ) {
 
     # Get all categories from wiki:
     $m_allCats = fnSelectCategoryGetAllCategories();
-    # Load system messages:
-    wfLoadExtensionMessages( 'SelectCategory' );
     # Get the right member variables, depending on if we're on an upload form or not:
     if( !$m_isUpload ) {
       # Extract all categorylinks from page:

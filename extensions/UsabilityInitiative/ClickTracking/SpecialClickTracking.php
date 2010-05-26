@@ -16,7 +16,6 @@ class SpecialClickTracking extends SpecialPage {
 	
 	function __construct() {
 		parent::__construct( 'ClickTracking' , 'clicktrack' );
-		wfLoadExtensionMessages( 'ClickTracking' );
 		UsabilityInitiativeHooks::initialize();
 		UsabilityInitiativeHooks::addStyle( 'ClickTracking/SpecialClickTracking.css' );
 		UsabilityInitiativeHooks::addScript( 'ClickTracking/SpecialClickTracking.js' );

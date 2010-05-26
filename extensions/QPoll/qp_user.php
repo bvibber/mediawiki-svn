@@ -151,15 +151,6 @@ class qp_Setup {
 		$wgHooks['LanguageGetMagic'][]       = 'qp_Setup::languageGetMagic';
 		$wgHooks['MediaWikiPerformAction'][] = 'qp_Setup::mediaWikiPerformAction';
 		$wgHooks['ParserFirstCallInit'][] = 'qp_Setup::parserFirstCallInit';
-		$wgHooks['LoadAllMessages'][] = 'qp_Setup::loadMessages';
-	}
-
-	static function loadMessages() {
-		if ( !self::$messagesLoaded ) {
-			self::$messagesLoaded = true;
-			wfLoadExtensionMessages('QPoll');
-		}
-		return true;
 	}
 
 	static function ParserFunctionsWords( $lang ) {
@@ -324,8 +315,6 @@ class qp_AbstractPoll {
 		$this->parser = &$parser;
 		$this->mRequest = &$wgRequest;
 		$this->mResponse = $wgRequest->response();
-		# Determine which messages will be used, according to the language.
-		self::loadMessages();
 		# load current skin
 		if ( self::$skin === null ) {
 			self::$skin = $wgUser->getSkin();
@@ -400,14 +389,6 @@ class qp_AbstractPoll {
 	function isUniquePollId( $pollId ) {
 		return !in_array( $pollId, self::$sPrevPollIDs );
 	}
-
-	static function loadMessages() {
-		if ( !self::$messagesLoaded ) {
-			self::$messagesLoaded = true;
-			wfLoadExtensionMessages('QPoll');
-		}
-		return true;
-	}	
 
 	static function currentUserName() {
 		global $wgUser, $wgSquidServers;
@@ -1227,7 +1208,6 @@ class qp_FunctionsHook {
 	var $error_message = 'no_such_poll';
 
 	function qpuserchoice( &$parser, $frame, $args ) {
-		qp_Setup::loadMessages();
 		$this->frame = &$frame;
 		$this->args = &$args;
 		if ( isset( $args[ 0 ] ) ) {

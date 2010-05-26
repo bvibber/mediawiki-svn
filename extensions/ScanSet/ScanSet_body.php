@@ -26,8 +26,6 @@ class ScanSet {
 		// Non-overrideable variables
 		$this->attributes = $attributes;
 		$this->parser =& $parser;
-
-		wfLoadExtensionMessages( 'ScanSet' );
 	}
 
 	function execute() {

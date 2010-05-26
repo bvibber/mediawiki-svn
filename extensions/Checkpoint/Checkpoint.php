@@ -26,7 +26,6 @@ $wgHooks['ArticleSave'][] = 'efCheckpointSave';
 $wgHooks['GetFullURL'][] = 'efCheckpointReturn';
 
 function efCheckpointButton( &$editpage, &$buttons ) {
-	wfLoadExtensionMessages( 'Checkpoint' );
 	$attr = array(
 		'id'    => 'wpCheckpoint',
 		'name'  => 'wpCheckpoint',
@@ -41,7 +40,6 @@ function efCheckpointButton( &$editpage, &$buttons ) {
 function efCheckpointSave( $article, $user, $text, &$summary, $minor, $watch, $sectionanchor, $flags ) {
 	global $wgRequest;
 
-	wfLoadExtensionMessages( 'Checkpoint' );
 	if ( $wgRequest->getCheck( 'wpCheckpoint' ) ) {
 		if ( $summary == '' ) {
 			// blank summary, so let's get an automatic one if

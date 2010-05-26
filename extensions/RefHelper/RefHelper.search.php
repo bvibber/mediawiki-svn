@@ -2,7 +2,6 @@
 class RefSearch extends SpecialPage {
 	function __construct() {
 		parent::__construct( 'RefSearch', 'edit', true, false, 'default', false );
-		wfLoadExtensionMessages( 'RefHelper' );
 	}
 
 	function execute( $par ) {
@@ -47,7 +46,6 @@ class RefSearch extends SpecialPage {
 	}
 
 	static function newArticleHook( &$editpage ) {
-		wfLoadExtensionMessages( 'RefHelper' );
 		global $wgOut, $wgRefHelperCiteNS;
 
 		// don't display if page already exists

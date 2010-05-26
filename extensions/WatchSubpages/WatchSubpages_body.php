@@ -27,8 +27,6 @@ class WatchSubpages extends SpecialPage {
 			return;
 		}
 
-		wfLoadExtensionMessages( 'WatchSubpages' );
-
 		$namespace = $wgRequest->getInt( 'namespace' );
 		$guide = $wgRequest->getVal( 'guide' );
 		if ( isset( $guide ) ) {

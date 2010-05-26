@@ -24,9 +24,6 @@ class SearchBoxHooks {
 	public static function render( $input, $args, $parser ) {
 		global $wgContLang;
 
-		// Internationalization
-		wfLoadExtensionMessages( 'SearchBox' );
-
 		/*
 		 * Label
 		 *

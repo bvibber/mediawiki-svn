@@ -25,7 +25,6 @@ $wgHooks['EditPage::attemptSave'][] = 'efSimpleAntiSpamCheck';
 
 //add the form field
 function efSimpleAntiSpamField(&$editpage, &$out) {
-	wfLoadExtensionMessages('SimpleAntiSpam');
 	$out->addHTML("<div id=\"antispam-container\" style=\"display: none;\">
 <label for=\"wpAntispam\">".wfMsgExt('simpleantispam-label', array( 'parseinline' ))."</label> <input type=\"text\" name=\"wpAntispam\" id=\"wpAntispam\" value=\"\" />
 </div>\n");
@@ -44,7 +43,6 @@ function efSimpleAntiSpamCheck( $editpage ) {
 			'" submitted bogus field "' .
 			$spam .
 			'"' );
-		wfLoadExtensionMessages( 'SimpleAntiSpam' );
 		$editpage->spamPage();
 		return false;
 	}

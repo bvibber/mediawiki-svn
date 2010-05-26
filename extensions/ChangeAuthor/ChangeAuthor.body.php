@@ -33,7 +33,6 @@ class ChangeAuthor extends SpecialPage {
 	 */
 	public function __construct() {
 		global $wgUser;
-		wfLoadExtensionMessages( 'ChangeAuthor' );
 		parent::__construct( 'ChangeAuthor'/* class */, 'changeauthor'/* restriction */ );
 		$this->selfTitle = SpecialPage::getTitleFor( 'ChangeAuthor' );
 		$this->skin = $wgUser->getSkin();

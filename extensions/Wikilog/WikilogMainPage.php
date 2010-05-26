@@ -52,7 +52,6 @@ class WikilogMainPage
 	 */
 	public function __construct( &$title, &$wi ) {
 		parent::__construct( $title );
-		wfLoadExtensionMessages( 'Wikilog' );
 	}
 
 	/**

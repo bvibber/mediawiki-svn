@@ -313,7 +313,6 @@ Class ExtRightFunctions {
 
 	function getrestrictions(&$parser, $right = 'edit', $page = '', $returnall = false) {
 		global $wgRightFunctionsAllowCaching, $wgRightFunctionsDisableFunctions, $wgRestrictionLevels, $wgNamespaceProtection;
-		wfLoadExtensionMessages( 'RightFunctions' );
 		if(in_array('getrestrictions', $wgRightFunctionsDisableFunctions)) {
 			return;
 		}

@@ -50,7 +50,6 @@ class SpecialWikilog
 	 */
 	function __construct( ) {
 		parent::__construct( 'Wikilog' );
-		wfLoadExtensionMessages( 'Wikilog' );
 	}
 
 	/**
