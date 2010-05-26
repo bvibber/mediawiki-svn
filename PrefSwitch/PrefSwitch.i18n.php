@@ -745,17 +745,18 @@ Pšosym wubjeŕ wšykne, kótarež maju se nałožyś.',
 	'prefswitch-success-feedback' => 'Twójo měnjenje jo se pósłało.',
 	'prefswitch-return' => '<hr style="clear:both">
 Slědk k <span class="plainlinks">[$1 $2]</span>.',
-	'prefswitch-main' => "Źěłamy śežko, aby my wólažcyli wěcy za swójich wužywarjow. My by se wjaselili, se wó pólěpšenjach wuměniś, inkluziwnje nowy naglěd a zjadnorjone wobźěłowańske funkcije. Pólěpšenje wužywajobnosći našych projektow jo priorita załožby Wikimedia foundation a rozdźělijomy wěcej aktualizacijow w pśichoźe.
+	'prefswitch-main' => "Źěłamy śežko, aby my wólažcyli wěcy za swójich wužywarjow. My by se wjaselili, se wó pólěpšenjach wuměniś, inkluziwnje nowy naglěd a zjadnorjone wobźěłowańske funkcije. Pólěpšenje wužywajobnosći našych projektow jo priorita załožby Wikimedia foundation a rozdźělijomy wěcej aktualizacijow w pśichoźe. Za dalšne informacije, woglědaj se wótpowědny [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/ Wikimedia blogowy zapisk].
 
 [[File:UsabilityNavigation.png|right|link=|Wobrazowkowe foto noweje nawigacije]]
 [[File:UsabilityToolbar.png|right|link=|Wobrazowkowe foto pólěpšoneje wobźěłowańskeje lejstwy]]
 [[File:UsabilityDialogs.png|right|link=|Wobrazowkowe foto nowych dialogow napóranja wopśimjeśa]]
 ===Tole smy změnili===
-* '''Nawigacija:''' Smy pólěpšyli nawigaciju za cytanje a wobźěłowanje bokow.´Něnto ejtarki górjejce na boku mógu jasnjej definěrowaś, lěc woglědujoš se nastawk abo diskusijny bok, a lěc cytaš abo wobźěłujoš bok.
-* '''Pólěpšenja wobźěkowańskeje lejstwy:''' Smy spóznali, až musymy wužywanje wólažcyś. Něnto jo formatěrowanje bokow lažčejše a intuitiwnjejše.
-* '''Wótkazowy asistent:''' Rěd, kótaryž dajo se wužywaś a śi dowólujo, wótkaze drugim wikibokam ako teke wótkaze eksternym sedłam pśidaś.
-* '''Pytańske pólěpšenja:''' Smy pytańske naraźenja pólěpšyli, aby my śi wjadli malsnjej k tomu bokoju, kótaryž pytaš.
-* '''Druge nowe funkcije:''' Smy teke zawjadli tabelowy asistent, aby my wólažcyli napóranje tabelow a funkciju za pytanje a wuměnjenje, aby my zjadnorili wobźěłowanje bokow.",
+* '''Nawigacija''': Smy pólěpšyli nawigaciju za cytanje a wobźěłowanje bokow. Něnto rejtarki górjejce na boku mógu jasnjej definěrowaś, lěc woglědujoš se nastawk abo diskusijny bok, a lěc cytaš abo wobźěłujoš bok.
+* '''Pólěpšenja wobźěłowańskeje lejstwy''': Smy pśeorganizowali wobźěłowańsku lejstwu, aby wužywanje wólažcyli. Něnto jo formatěrowanje bokow lažčejše a intuitiwnjejše.
+* '''Wótkazowy asistent''': Rěd, kótaryž dajo se lažko wužywaś a śi dowólujo, wótkaze drugim wikibokam ako teke wótkaze eksternym sedłam pśidaś.
+* '''Pytańske pólěpšenja''' Smy pytańske naraźenja pólěpšyli, aby śi wjadli malsnjej k tomu bokoju, kótaryž pytaš.
+* '''Druge nowe funkcije''': Smy teke zawjadli tabelowy asistent, aby wólažcyli napóranje tabelow a funkciju za pytanje a narownanje, aby my zjadnorili wobźěłowanje bokow.
+* '''Wikipedia puzzle globe''': My smy puzzlowy globus aktualizěrowali. Cytaj wěcej wó tom na [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/  blogu Wikimedije].",
 	'prefswitch-main-anon' => '===Slědk===
 Jolic coš nowe funkcije znjemóžnis, <span class="plainlinks">[$1 klikni how]</span>.  Pšose śi se pśizjawiś abo nejpjerwjej konto załožyś.',
 	'prefswitch-main-on' => '===Rezonanca?===
@@ -1536,6 +1537,7 @@ $messages['id'] = array(
 );
 
 /** Italian (Italiano)
+ * @author Beta16
  * @author Una giornata uggiosa '94
  */
 $messages['it'] = array(
@@ -1596,7 +1598,7 @@ Se vuoi attivare le nuove funzioni, <span class="plainlinks">[$1 clicca qui]</sp
 	'prefswitch-survey-intro-feedback' => 'Ci piacerebbe ascoltare il tuo parere.
 Per favore, compila il seguente sondaggio facoltativo prima di cliccare "[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]".',
 	'prefswitch-survey-intro-off' => 'Grazie per aver provato le nostre nuove funzioni.
-Per aiutarci a migliorarle, per favore riempi il seguente questionario facoltativo.',
+Per aiutarci a migliorarle, per favore riempi il seguente questionario facoltativo prima di fare clic su "[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]".',
 );
 
 /** Japanese (日本語)
@@ -2284,12 +2286,12 @@ Për piasì, ch'a selession-a tute le motivassion.",
 	'prefswitch-title-off' => 'Disativa le possibilità neuve',
 	'prefswitch-title-switched-off' => 'Mersì',
 	'prefswitch-title-feedback' => 'Sugeriment',
-	'prefswitch-success-on' => 'Le neuve funsionalità a son adess ativà. I speroma ch\'at piasa dovré le neuve funsionalità. It peule sempe gaveje via an sgnacand dzora al colegament "[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-on}}]]" a la sima dla pàgina.',
-	'prefswitch-success-off' => 'Le neuve funsionalità a son adess disativà. Mersì për avèj provà le neuve funsionalità. It peule sempe torna buteje an sgnacand dzora al colegament "[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-off}}]]" a la sima dla pàgina.',
+	'prefswitch-success-on' => 'Le neuve funsionalità a son adess ativà. I speroma ch\'a-j piasa dovré le neuve funsionalità. A peul sempe gaveje via an sgnacand dzora al colegament "[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-on}}]]" an cò dla pàgina.',
+	'prefswitch-success-off' => 'Le neuve funsionalità a son adess disativà. Mersì për avèj provà le neuve funsionalità. A peul sempe torna buteje an sgnacand dzora al colegament "[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-off}}]]" an cò dla pàgina.',
 	'prefswitch-success-feedback' => 'Ij sò coment a son ëstàit mandà.',
 	'prefswitch-return' => '<hr style="clear:both">
 Artorna a <span class="plainlinks">[$1 $2]</span>.',
-	'prefswitch-main' => "I l'oma travajà sech për fé le ròbe belfé për ij nòstri utent. I l'oma gòj ëd condivide chèich ameliorament, comprèis na presentassion neuva e dle possibilità ëd modìfica neuve. Amelioré la comodità d'utilisassion dij nòstri proget a l'é na priorità dla Fondassion Wikimedia e noi i condivideroma d'àutre modìfiche ant l'avnì. Për savèjne ëd pi, vìsita ël sit colegà [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/ blog ëd Wikimedia]
+	'prefswitch-main' => "I l'oma travajà sech për fé le ròbe belfé për ij nòstri utent. I l'oma gòj ëd condivide chèich ameliorament, comprèis na presentassion neuva e dle possibilità ëd modìfica neuve. Amelioré la comodità d'utilisassion dij nòstri proget a l'é na priorità dla Fondassion Wikimedia e noi i condivideroma d'àutre modìfiche ant l'avnì. Për savèjne ëd pi, ch'a vìsita ël sit colegà [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/ scartari ëd Wikimedia]
 
 [[File:UsabilityNavigation.png|right|link=|Scren ëd la neuva navigassion]]
 [[File:UsabilityToolbar.png|right|link=|Scren ëd la bara dj'utiss ëd modìfica ameliorà]]
@@ -2312,7 +2314,7 @@ S\'it veule ativé le possibilità neuve, për piasì <span class="plainlinks">[
 	'prefswitch-survey-intro-feedback' => 'An piasrìa sente soa opinion.
 Për piasì, ch\'a ampinissa ël sondagi opsional sì-sota an sgnacand "[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]".',
 	'prefswitch-survey-intro-off' => 'Mersì ëd prové nòstre neuve funsionalità.
-Për giutene a melioreje, për piasì ch\'a ampinissa ël sondagi opsional sì-sota an sgnacand "[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]".',
+Për giutene a amelioreje, për piasì ch\'a ampinissa ël sondagi opsional sì-sota an sgnacand "[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]".',
 );
 
 /** Portuguese (Português)
