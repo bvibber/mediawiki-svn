@@ -36,6 +36,8 @@ $wgExtensionCredits['specialpage'][] = array(
  
 $dir = dirname( __FILE__ ) . '/';
 
+$wgPureWikiDeletionInEffect=true; # Tell other extensions that this is installed
+
 $wgAutoloadClasses['PureWikiDeletionHooks'] = "$dir/PureWikiDeletion.hooks.php";
 $wgAutoloadClasses['RandomExcludeBlank'] = "$dir/SpecialPureWikiDeletion.php";
 $wgAutoloadClasses['AllPagesExcludeBlank'] = "$dir/SpecialPureWikiDeletion.php";
