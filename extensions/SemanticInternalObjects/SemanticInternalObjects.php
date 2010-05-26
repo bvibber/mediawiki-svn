@@ -27,9 +27,8 @@ $wgHooks['smwDeleteSemanticData'][] = 'SIOHandler::updateData';
 $wgHooks['smwUpdatePropertySubjects'][] = 'SIOHandler::handleUpdatingOfInternalObjects';
 $wgHooks['smwRefreshDataJobs'][] = 'SIOHandler::handleRefreshingOfInternalObjects';
 
-$siogIP = $IP . '/extensions/SemanticInternalObjects';
-$wgExtensionMessagesFiles['SemanticInternalObjects'] = $siogIP . '/SemanticInternalObjects.i18n.php';
-$wgAutoloadClasses['SIOHandler'] = $siogIP . '/SemanticInternalObjects_body.php';
+$wgExtensionMessagesFiles['SemanticInternalObjects'] = dirname( __FILE__ ) . '/SemanticInternalObjects.i18n.php';
+$wgAutoloadClasses['SIOHandler'] = dirname( __FILE__ ) . '/SemanticInternalObjects_body.php';
 
 function siofRegisterParserFunctions( &$parser ) {
 	$parser->setFunctionHook( 'set_internal', array( 'SIOHandler', 'doSetInternal' ) );
