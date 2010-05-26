@@ -21,7 +21,7 @@ put in a comment and hit the button to blank them.',
 Input the username or IP address to get a list of pages to blank.',
 	'massblank-submit-user'   => 'Go',
 	'massblank-submit-blank'  => 'Blank selected',
-	'massblank-blankcomment'  => 'Reason for blanking:',
+	'massblank-blankcomment'  => 'Reason:',
 	'right-massblank'         => 'Mass blank pages',
 );
 
