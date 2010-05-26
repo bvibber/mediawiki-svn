@@ -1025,6 +1025,8 @@ Perkara iki dilakokaké caranémawa nyeluk tahapan parser sing rélévan saka Me
  * @author BRUTE
  */
 $messages['ka'] = array(
+	'expand_templates_title' => 'კონტექსტის სათაური, {{PAGENAME}}-სთვის და ა.შ.:',
+	'expand_templates_input' => 'შესაყვანი ტექსტი:',
 	'expand_templates_output' => 'შედეგი',
 	'expand_templates_ok' => 'OK',
 	'expand_templates_preview' => 'წინა',

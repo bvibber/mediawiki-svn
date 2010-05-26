@@ -811,11 +811,12 @@ $messages['roa-tara'] = array(
 );
 
 /** Russian (Русский)
+ * @author Kaganer
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'languageselector' => 'Язык',
-	'languageselector-desc' => 'Выбор языка на каждой странице, также и для посетителей',
+	'languageselector-desc' => 'Выбор языка на каждой странице, доступный также и для посетителей',
 	'languageselector-setlang' => 'установить',
 );
 

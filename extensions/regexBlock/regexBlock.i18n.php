@@ -181,6 +181,7 @@ $messages['am'] = array(
 $messages['an'] = array(
 	'regexblock-already-blocked' => '$1 ya yera bloqueyato.',
 	'regexblock-form-reason' => 'Razón:',
+	'regexblock-view-all' => 'Todas',
 );
 
 /** Arabic (العربية)

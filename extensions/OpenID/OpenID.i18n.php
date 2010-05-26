@@ -2595,6 +2595,8 @@ Ada banyak [http://openid.net/get penyedia OpenID], dan Anda mungkin telah memil
 	'openiddelete-text' => 'Dengan menekan tombol "{{int:openiddelete-button}}", Anda akan menghapuskan OpenID $1 dari akun Anda.
 Anda tidak akan dapat masuk log lagi dengan OpenID ini.',
 	'openiddelete-button' => 'Konfirmasi',
+	'openiddeleteerrornopassword' => 'Anda tidak dapat menghapus semua OpenID Anda karena akun Anda tidak diberi kata sandi.
+Anda tidak akan dapat masuk log tanpa OpenID.',
 	'openiddelete-sucess' => 'OpenID telah dihapus dari akun Anda.',
 	'openiddelete-error' => 'Terjadi kesalahan saat berusaha menghapus OpenID dari akun Anda.',
 	'openid-prefstext' => 'Preferensi [http://openid.net/ OpenID]',
@@ -2908,6 +2910,7 @@ $messages['kn'] = array(
 	'openidnickname' => 'ಉಪನಾಮ',
 	'openidlanguage' => 'ಭಾಷೆ',
 	'openidtimezone' => 'ಸಮಯ ವಲಯ',
+	'openidchoosepassword' => 'ಪ್ರವೇಶಪದ:',
 	'openid-urls-delete' => 'ಅಳಿಸು',
 );
 

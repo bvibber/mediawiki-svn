@@ -13,3 +13,4 @@ $aliases = array();
 $aliases['en'] = array(
 	'MassBlank' => array( 'MassBlank' ),
 );
+

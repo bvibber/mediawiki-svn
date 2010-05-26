@@ -306,9 +306,13 @@ $messages['id'] = array(
 
 /** Italian (Italiano)
  * @author Aushulz
+ * @author Beta16
  */
 $messages['it'] = array(
+	'externalpages' => 'Pagine esterne',
+	'externalpages-desc' => 'Recupera e visualizza le pagine da altri siti della WMF',
 	'externalpages-bad-page' => "Errore nell'immissione della pagina",
+	'externalpages-no-page' => 'Nessuna pagina specificata',
 );
 
 /** Japanese (日本語)

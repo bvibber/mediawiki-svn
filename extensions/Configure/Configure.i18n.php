@@ -1983,7 +1983,7 @@ $messages['de'] = array(
 	'configure-ext-ext-dependencies' => "'''Warnung:''' Diese Extension erfordert, dass folgende {{PLURAL:$2|Extension aktiviert wird|Extensions aktiviert werden}}: $1.",
 	'configure-ext-ext-dependency-err' => "'''Fehler:''' Die Extension „$1“ erfordert, dass Extension „$2“ aktiviert ist.",
 	'configure-ext-doc' => 'Siehe Online-Dokumentation',
-	'configure-ext-schemachange' => "'''Warnung:''' diese Erweiterung benötigt ein Datenbankupdate um korrekt zu funktionieren!",
+	'configure-ext-schemachange' => "'''Warnung:''' Für diese Softwareerweiterung muss eine [http://www.mediawiki.org/wiki/Manual:Update.php Datenbankaktualisierung] durchgeführt werden, damit sie richtig funktionieren kann!",
 	'configure-ext-settings' => 'Einstellungen',
 	'configure-ext-settings-dep-errors' => 'Die Extension kann nicht aktiviert werden, da folgende {{PLURAL:$1|Einstellung|Einstellungen}} einen inakzeptablen Wert {{PLURAL:$1|hat|haben}}:',
 	'configure-ext-settings-dep-error' => '$1: erforderlicher Wert: $2; aktueller Wert: $3',
@@ -3337,7 +3337,7 @@ $messages['gl'] = array(
 	'configure-ext-ext-dependencies' => "'''Aviso:''' esta extensión require {{PLURAL:$2|a seguinte extensión|as seguintes extensións}} para ser activada: $1.",
 	'configure-ext-ext-dependency-err' => "'''Erro:''' a extensión $1 require a extensión $2 para ser activada.",
 	'configure-ext-doc' => 'Ver a documentación en liña',
-	'configure-ext-schemachange' => "'''Perigo:''' esta extensión require unha actualización da base de datos para que traballe correctamente!",
+	'configure-ext-schemachange' => "'''Atención:''' esta extensión require unha [http://www.mediawiki.org/wiki/Manual:Update.php actualización da base de datos] para traballar correctamente!",
 	'configure-ext-settings' => 'Parámetros',
 	'configure-ext-settings-dep-errors' => 'Esta extensión non pode ser activada porque {{PLURAL:$1|a seguinte característica posúe|as seguintes características posúen}} un valor inaceptable:',
 	'configure-ext-settings-dep-error' => '$1: valor requirido: $2, valor actual: $3',
@@ -7229,7 +7229,7 @@ $messages['oc'] = array(
 	'configure-ext-ext-dependencies' => "'''Atencion :''' aquesta extension requerís que {{PLURAL:$2|l'extension seguenta siá activada|las extensions seguentas sián activadas}} : $1",
 	'configure-ext-ext-dependency-err' => "'''Error :''' l'extension $1 requerís que l'extension $2 siá activada.",
 	'configure-ext-doc' => 'Veire la documentacion en linha',
-	'configure-ext-schemachange' => "'''Atencion :''' aquesta extension requerís una mesa a jorn de la banca de donadas per foncionar corrèctament !",
+	'configure-ext-schemachange' => "'''Atencion :''' aquesta extension requerís una [http://www.mediawiki.org/wiki/Manual:Update.php mesa a jorn de la banca de donadas] per foncionar corrèctament !",
 	'configure-ext-settings' => 'Paramètres',
 	'configure-ext-settings-dep-errors' => 'Aquesta extension pòt pas èsser activada perque {{PLURAL:$1|lo paramètre seguent a|los paramètres seguents an}} una valor incorrècta :',
 	'configure-ext-settings-dep-error' => '$1 : valor requesa : $2, valor actuala : $3',
@@ -8062,10 +8062,10 @@ Para usar esta extensão crie-o ou altere-o, por favor.',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
+ * @author 555
  * @author Crazymadlover
  * @author Hamilton Abreu
  * @author Luckas Blade
- * @author 555
  */
 $messages['pt-br'] = array(
 	'configure' => 'Configurar o wiki',
@@ -8307,7 +8307,7 @@ $messages['ru'] = array(
 	'configure-ext-ext-dependencies' => "'''Внимание.''' Для этого расширения необходимо активировать {{PLURAL:$2|следующее расширение|следующие расширения}}: $1.",
 	'configure-ext-ext-dependency-err' => "'''Ошибка.''' Расширение $1 требует активации расширения $2.",
 	'configure-ext-doc' => 'Смотрите документацию в сети',
-	'configure-ext-schemachange' => "'''Внимание.''' Для корректной работы этого расширения необходимо обновление базы данных!",
+	'configure-ext-schemachange' => "'''Внимание.''' Для корректной работы этого расширения необходимо [http://www.mediawiki.org/wiki/Manual:Update.php обновление базы данных]!",
 	'configure-ext-settings' => 'Настройки',
 	'configure-ext-settings-dep-errors' => 'Это расширение не может быть включено из-за {{PLURAL:$1|следующей настройки с неприемлемым значением|следующих настроек с неприемлемыми значениями}} :',
 	'configure-ext-settings-dep-error' => '$1: требуемое значение: $2, текущее значение: $3',

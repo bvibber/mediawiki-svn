@@ -4605,6 +4605,7 @@ $messages['io'] = array(
 );
 
 /** Italian (Italiano)
+ * @author Beta16
  * @author BrokenArrow
  * @author Darth Kule
  * @author Gianfranco
@@ -4626,12 +4627,15 @@ $messages['it'] = array(
 	'code-prop-changes' => 'Registro dello stato e dei tag',
 	'codereview-desc' => '[[Special:Code|Strumento per la revisione del codice]] con [[Special:RepoAdmin|supporto per Subversion]]',
 	'code-no-repo' => 'Nessun repository configurato.',
+	'code-repo-not-found' => 'Repository <b>$1</b> non esiste!',
 	'code-load-diff' => 'Caricamento diff in corso…',
 	'code-notes' => 'commenti più recenti',
 	'code-statuschanges' => 'cambiamenti di stato',
+	'code-mycommits' => 'i miei commit',
 	'code-authors' => 'autori',
 	'code-status' => 'indica',
 	'code-tags' => 'tag',
+	'code-tests' => 'Casi di test',
 	'code-authors-text' => 'Di seguito viene presentata una lista di autori relativi al repository, in ordine cronologico per i commit recenti. Gli account wiki locali sono mostrati fra parentesi.',
 	'code-author-haslink' => "Questo autore è collegato all'utente wiki $1",
 	'code-author-orphan' => 'Questo autore non è collegato a un utente wiki',
@@ -4643,6 +4647,7 @@ $messages['it'] = array(
 	'code-author-link' => 'collega?',
 	'code-author-unlink' => 'scollega?',
 	'code-author-unlinksuccess' => "È stato rimosso il collegamento all'autore $1",
+	'code-browsing-path' => "Esplora le revisioni in '''$1'''",
 	'code-field-id' => 'Revisione',
 	'code-field-author' => 'Autore',
 	'code-field-user' => 'Autore del commento',
@@ -4675,14 +4680,21 @@ $messages['it'] = array(
 	'code-rev-inline-preview' => 'Anteprima:',
 	'code-rev-diff' => 'Diff',
 	'code-rev-diff-link' => 'diff',
+	'code-rev-diff-too-large' => 'La diff è troppo grande per essere visualizzata.',
 	'code-rev-purge-link' => 'purga',
+	'code-rev-total' => 'Numero totale di risultati: $1',
 	'code-status-new' => 'nuovo',
 	'code-status-reverted' => 'annullato',
 	'code-status-resolved' => 'risolto',
 	'code-status-ok' => 'ok',
 	'code-status-verified' => 'verificato',
+	'code-status-deferred' => 'differito',
 	'code-pathsearch-legend' => 'Ricerca nelle revisioni di questo repository in base al percorso',
 	'code-pathsearch-path' => 'Percorso:',
+	'code-pathsearch-filter' => 'Filtro applicato:',
+	'code-revfilter-cr_status' => 'Stato = $1',
+	'code-revfilter-cr_author' => 'Autore = $1',
+	'code-revfilter-clear' => 'Cancella filtro',
 	'code-rev-submit' => 'Salva le modifiche',
 	'code-rev-submit-next' => 'Salva e vai alla prossima situazione irrisolta',
 	'code-batch-status' => 'Modifica stato:',
@@ -4693,8 +4705,14 @@ $messages['it'] = array(
 	'code-release-legend' => 'Genera note di versione',
 	'code-release-startrev' => 'Revisione iniziale:',
 	'code-release-endrev' => 'Revisione finale:',
+	'code-release-badrange' => "L'intervallo è troppo ampio!",
 	'codereview-subtitle' => 'Per $1',
 	'codereview-reply-link' => 'rispondi',
+	'codereview-tests-succeeded2' => 'Eseguiti correttamente $1 {{PLURAL:$2|test|tests}}',
+	'codereview-tests-failed2' => 'Eseguiti correttamente $1 {{PLURAL:$2|test|tests}}, $3{{PLURAL:$4|test|tests}} falliti:',
+	'codereview-tests-running' => 'Casi di test in esecuzione...',
+	'codereview-tests-aborted' => 'Il test è stato interrotto.',
+	'codereview-tests-failed' => 'Fallito',
 	'codereview-email-subj' => '[$1] [$2]: Aggiunto un commento',
 	'codereview-email-body' => 'L\'utente "$1" ha inviato un commento a $3.
 
@@ -4989,6 +5007,7 @@ $messages['ka'] = array(
 	'code-notes' => 'ბოლო კომენტარები',
 	'code-statuschanges' => 'სტატუსის შეცვლა',
 	'code-authors' => 'ავტორები',
+	'code-tests' => 'ტესტური შემთხვევები',
 	'code-author-orphan' => 'ამ ავტორს არ აქვს ვიკი-ანგარიშის ბმული',
 	'code-author-name' => 'მომხმარებლის სახელის შეტანა:',
 	'code-author-link' => 'კავშირის დამყარება?',
@@ -5000,11 +5019,13 @@ $messages['ka'] = array(
 	'code-rev-author' => 'ავტორი:',
 	'code-rev-date' => 'თარიღი:',
 	'code-rev-message' => 'კომენტარი:',
+	'code-rev-repo' => 'საცავი:',
 	'code-rev-modified-a' => 'დაემატა',
 	'code-rev-modified-r' => 'ჩაენაცვლა',
 	'code-rev-modified-d' => 'წაშლილი',
 	'code-rev-status' => 'სტატუსი:',
 	'code-rev-status-set' => 'სტატუსის შეცვლა',
+	'code-rev-tags' => 'ღილაკები:',
 	'code-rev-tag-remove' => 'წაშალეთ მინიშნებები:',
 	'code-rev-comment-by' => '$1-ს კომენტარი',
 	'code-rev-comment-preview' => 'წინასწარ',
@@ -5043,6 +5064,7 @@ $messages['ka'] = array(
 	'codereview-tests-succeeded2' => '$1 {{PLURAL:$2|წარმატებული შემოწმება|წარმატებული შემოწმების}}',
 	'codereview-tests-running' => 'კონკრეტული მაგალითების შესრულება...',
 	'codereview-tests-aborted' => 'შემოწმების შესრულება დასრულდა.',
+	'codereview-tests-failed' => 'წარუმატებელია',
 	'codereview-email-body3' => 'ავტომატურმა შემოწმებამ აღმოაჩინა რეგრესია $1 ცვლილებასთან.
 
 სრული URL: $2

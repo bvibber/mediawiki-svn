@@ -346,6 +346,7 @@ $messages['an'] = array(
 	'viewapc-display-info' => 'Nombre',
 	'viewapc-ls-header-name' => 'Nombre',
 	'viewapc-ls-sort-name' => 'Nombre',
+	'viewapc-ls-limit-none' => 'Tot',
 );
 
 /** Arabic (العربية)

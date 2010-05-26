@@ -8,8 +8,8 @@ $aliases['en'] = array(
     'PopulateBlankedPagesTable' => array( 'PopulateBlankedPagesTable' ),
 );
 
-/** Arabic */
+/** Arabic (العربية) */
 $aliases['ar'] = array(
-    'PureWikiDeletion' => array( 'حذف_الويكي_النقي' ),
+	'PureWikiDeletion' => array( 'حذف_الويكي_النقي' ),
 );
 

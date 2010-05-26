@@ -122,10 +122,11 @@ $messages['da'] = array(
 
 /** German (Deutsch)
  * @author Raimond Spekking
+ * @author The Evil IP address
  * @author Umherirrender
  */
 $messages['de'] = array(
-	'contributionseditcount' => 'Dieser Benutzer hat {{PLURAL:$1|eine Bearbeitung|$1 Bearbeitungen}}.',
+	'contributionseditcount' => '{{GENDER:$2|Dieser Benutzer|Diese Benutzerin|Dieser Benutzer}} hat {{PLURAL:$1|eine Bearbeitung|$1 Bearbeitungen}}.',
 	'contributionseditcount-desc' => 'Zeigt einen Beitragszähler auf der [[Special:Contributions|Beitragsseite des Benutzers]] an',
 );
 

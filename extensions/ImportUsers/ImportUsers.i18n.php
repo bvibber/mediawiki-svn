@@ -111,6 +111,13 @@ $messages['am'] = array(
 	'importusers-email' => 'ኢ-ሜል',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'importusers-log-summary-all' => 'Tot',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -1053,6 +1060,7 @@ $messages['km'] = array(
  */
 $messages['kn'] = array(
 	'importusers-log-summary' => 'ಸಾರಾಂಶ',
+	'importusers-password' => 'ಪ್ರವೇಶಪದ',
 	'importusers-email' => 'ಇ-ಅಂಚೆ',
 );
 

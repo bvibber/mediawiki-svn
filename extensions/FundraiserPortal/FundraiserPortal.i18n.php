@@ -657,6 +657,7 @@ $messages['km'] = array(
  */
 $messages['kn'] = array(
 	'fundraiserportal' => 'ನಿಧಿ ಸಂಗ್ರಹ ದ್ವಾರ',
+	'fundraiserportal-desc' => 'ಸೈಡ್‍ಬಾರಿನ ಮೇಲ್ಭಾಗದಲ್ಲಿ "ದಯವಿಟ್ಟು ದಾನ ಮಾಡಿ " ಎಂದು ಸೇರಿಸು.',
 	'fundraiserportal-plain-button' => 'ವಿಕಿಪೀಡಿಯ ಬೆಂಬಲಿಸಿ!',
 	'fundraiserportal-ruby-button' => 'ಈಗಲೇ ದಾನ ಮಾಡಿ',
 	'fundraiserportal-rubytext-button' => 'ಈಗಲೇ ದಾನ ಮಾಡಿ',
