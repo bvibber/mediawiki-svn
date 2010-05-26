@@ -696,7 +696,7 @@ extensions-dependencies[] = SemanticMediaWiki
 url = http://www.mediawiki.org/wiki/Extension:Semantic_Forms
 
 SemanticMediaWiki
-file = includes/SMW_Settings.php
+file = SMW_Settings.php
 settings[] = smwgQComparators: text
 settings[] = smwgShowFactbox: text
 settings[] = smwgShowFactboxEdit: text
@@ -825,6 +825,7 @@ url = http://www.mediawiki.org/wiki/Extension:TorBlock
 
 Translate
 settings[] = wgEnablePageTranslation: bool, wgPageTranslationNamespace: int
+settings[] = wgTranslateStaticTags: array
 settings[] = wgTranslateExtensionDirectory: text, wgTranslateLanguageFallbacks: array
 settings[] = wgTranslateFuzzyBotName: text, wgTranslateCssLocation: text
 settings[] = wgTranslateCssLocation: text, wgTranslateDocumentationLanguageCode: text
@@ -837,14 +838,15 @@ settings[] = wgTranslateYamlLibrary: text
 settings[] = wgTranslateGroupRoot: text, wgTranslateGroupFiles: array
 settings[] = wgGoogleApiKey: text, wgTranslateTM: array
 settings[] = wgTranslateApertium: text
+array[] = wgTranslateStaticTags: assoc
 array[] = wgTranslateLanguageFallbacks: assoc, wgTranslateBlacklist: array
 array[] = wgTranslateMessageNamespaces: ns-simple, wgTranslateAuthorBlacklist: array
 array[] = wgTranslateAC: assoc, wgTranslateGroupStructure: array
 array[] = wgTranslateEC: simple, wgTranslateCC: assoc
 array[] = wgTranslateTasks: assoc, wgTranslateGroupFiles: simple
 array[] = wgTranslateTM: assoc
-empty[] = wgTranslateTM: false, wgGoogleApiKey: false
-empty[] = wgTranslateApertium: false
+empty[] = wgTranslateStaticTags: false, wgTranslateTM: false
+empty[] = wgGoogleApiKey: false, wgTranslateApertium: false
 url = http://www.mediawiki.org/wiki/Extension:Translate
 
 Uniwiki - Authors
