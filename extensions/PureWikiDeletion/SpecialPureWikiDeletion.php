@@ -565,7 +565,7 @@ class AllPagesExcludeBlank extends IncludableSpecialPage {
 class PopulateBlankedPagesTable extends SpecialPage {
 	function __construct() {
 		parent::__construct( 'PopulateBlankedPagesTable','purewikideletion' );
-		wfLoadExtensionMessages('PopulateBlankedPagesTable');
+		wfLoadExtensionMessages( 'PureWikiDeletion' );
 	}
  
 	function execute( $par ) {
@@ -622,7 +622,7 @@ class PopulateBlankedPagesTable extends SpecialPage {
 			}
 			
 		}
-		$output="Done populating blanked_page table.";
+		$output = wfMsg( 'purewikideletion-population-done' );
 		$wgOut->addWikiText($output);
 	}
 }

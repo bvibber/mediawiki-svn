@@ -26,11 +26,12 @@ EOT;
 }
  
 $wgExtensionCredits['specialpage'][] = array(
+	'path' => __FILE__,
 	'name' => 'Pure wiki deletion',
 	'author' => 'Tisane',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:PureWikiDeletion',
 	'description' => 'Implements pure wiki deletion',
-	'descriptionmsg' => 'PureWikiDeletion-desc',
+	'descriptionmsg' => 'purewikideletion-desc',
 	'version' => '1.0.3',
 );
  
@@ -71,7 +72,12 @@ $wgLogActions['blank/unblank']  = 'blank-log-entry-unblank';
 $wgSpecialPages['RandomExcludeBlank'] = 'RandomExcludeBlank';
 $wgSpecialPages['AllPagesExcludeBlank'] = 'AllPagesExcludeBlank';
 $wgSpecialPages['PopulateBlankedPagesTable'] = 'PopulateBlankedPagesTable';
+$wgSpecialPageGroups['RandomExcludeBlank'] = 'redirects';
+$wgSpecialPageGroups['AllPagesExcludeBlank'] = 'pages';
+$wgSpecialPageGroups['PopulateBlankedPagesTable'] = 'wiki';
 
+# User right to execute Special:PopulateBlankedPagesTable
+$wgAvailableRights[] = 'purewikideletion';
 $wgGroupPermissions['bureaucrat']['purewikideletion']    = true;
 
 function wfPureWikiDeletion() {
@@ -93,7 +99,7 @@ function PureWikiDeletionSaveHook( &$article, &$user, &$text, &$summary,
        global $wgOut, $wgPureWikiDeletionLoginRequiredToBlank, $wgPureWikiDeletionLoginRequiredToUnblank;
        if ( $text == "" ) {
 		if ( $wgPureWikiDeletionLoginRequiredToBlank && !( $user->isLoggedIn() ) ) {
-			$wgOut->showErrorPage( 'blanknologin', 'blanknologintext' );
+			$wgOut->showErrorPage( 'purewikideletion-blanknologin', 'purewikideletion-blanknologintext' );
 			return false;
 		}
 		if ( $summary == wfMsgForContent( 'autosumm-blank' ) ) {
@@ -107,7 +113,7 @@ function PureWikiDeletionSaveHook( &$article, &$user, &$text, &$summary,
 			, array( "blank_page_id" => $blank_page_id ) );
 		if ( $result ) {
 			if ( $wgPureWikiDeletionLoginRequiredToUnblank && !( $user->isLoggedIn() ) ) {
-				$wgOut->showErrorPage( 'blanknologin', 'unblanknologintext' );
+				$wgOut->showErrorPage( 'purewikideletion-blanknologin', 'purewikideletion-blanknologintext' );
 				return false;
 			}
 			if ( $summary == '' ) {
@@ -148,6 +154,6 @@ function PureWikiDeletionAlternateEditHook ( $editPage ) {
 	if ( !$result ) {
 	       return true;
 	}
-	$wgOut->showErrorPage( 'blanknologin', 'unblanknologintext' );
+	$wgOut->showErrorPage( 'purewikideletion-blanknologin', 'purewikideletion-unblanknologintext' );
 	return false;
 }

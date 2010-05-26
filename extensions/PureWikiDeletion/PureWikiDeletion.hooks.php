@@ -76,7 +76,7 @@ class PureWikiDeletionHooks {
 		     $wgOut->setPagetitle( wfMsg( 'actioncomplete' ) );
 		     $wgOut->setRobotPolicy( 'noindex,nofollow' );
 		     $loglink = wfMsg( 'blank-log-link' );
-		     $wgOut->addWikiMsg( 'blankedtext', $mTitle->getPrefixedText(), $loglink );
+		     $wgOut->addWikiMsg( 'purewikideletion-blankedtext', $mTitle->getPrefixedText(), $loglink );
 	             $wgOut->returnToMain( false );
 		} else {
 			    $dbr = wfGetDB( DB_SLAVE );
