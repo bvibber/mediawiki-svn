@@ -325,6 +325,7 @@ class ExtMathStatFunctions {
 		}
 		$tmp = tan( $res );
 		if ( $tmp == 0 ) {
+			wfLoadExtensionMessages( 'MathStatFunctions' );
 			return wfMsg( 'msfunc_div_zero' );
 		}
 		$result = 1 / $tmp;
@@ -340,6 +341,7 @@ class ExtMathStatFunctions {
 		}
 		$tmp = cos( $res );
 		if ( $tmp == 0 ) {
+			wfLoadExtensionMessages( 'MathStatFunctions' );
 			return wfMsg( 'msfunc_div_zero' );
 		}
 
@@ -356,6 +358,7 @@ class ExtMathStatFunctions {
 		}
 		$tmp = sin( $res );
 		if ( $tmp == 0 ) {
+			wfLoadExtensionMessages( 'MathStatFunctions' );
 			return wfMsg( 'msfunc_div_zero' );
 		}
 		$result = 1 / $tmp;
@@ -401,9 +404,11 @@ class ExtMathStatFunctions {
 
 	private function check( $value ) {
 		if ( is_nan( $value ) ) {
+			wfLoadExtensionMessages( 'MathStatFunctions' );
 			return wfMsg( 'msfunc_nan' );
 		}
 		elseif ( is_infinite( $value ) and false ) {
+			wfLoadExtensionMessages( 'MathStatFunctions' );
 			return wfMsg( 'msfunc_inf' ) . ( $value < 0 ? '-' : '+' );
 		}
 		else {

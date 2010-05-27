@@ -204,6 +204,7 @@ class SiteMatrixPage extends SpecialPage {
 
 	function execute( $par ) {
 		global $wgOut, $wgRequest, $wgLanguageNames;
+		wfLoadExtensionMessages( 'SiteMatrix' );
 
 		$this->setHeaders();
 		$this->outputHeader();

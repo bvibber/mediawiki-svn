@@ -6,6 +6,7 @@ class SpecialPlayerStatsGrabber extends SpecialPage {
 	var $action = '';
 	function SpecialPlayerStatsGrabber() {
 		SpecialPage::SpecialPage( "PlayerStatsGrabber" );
+		wfLoadExtensionMessages( 'PlayerStatsGrabber' );
 	}
 	// used for page title
 	function getDescription() {

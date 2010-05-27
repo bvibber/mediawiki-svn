@@ -29,6 +29,8 @@ class SpecialVote extends SpecialPage {
 	public function execute( $mode ) {
 		global $wgOut, $wgUser;
 
+		wfLoadExtensionMessages( 'Vote' );
+
 		$this->setHeaders();
 		$this->user = $wgUser;
 		if ( strtolower( $mode ) == 'results' ) {

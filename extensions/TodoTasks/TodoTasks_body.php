@@ -1,6 +1,14 @@
 <?php
 
+function TaskListLoadMessages() {
+    static $messagesLoaded = false;
+    if ($messagesLoaded) return;
+        $messagesLoaded = true;
+	wfLoadExtensionMessages('TaskList');
+}
+
 function wfMsgTL($key) {
+    TaskListLoadMessages();
     return wfMsg($key);
 }
 
@@ -268,6 +276,12 @@ class TaskList extends SpecialPage
 {
     function TaskList() {
         SpecialPage::SpecialPage("TaskList");
+        self::loadMessages();
+        return true;
+    }
+
+    function loadMessages() {
+        TaskListLoadMessages();
         return true;
     }
 
@@ -308,8 +322,14 @@ class TaskListByProject extends SpecialPage
 	public function __construct() {
 		parent::__construct( 'TaskListByProject' );
 		SpecialPage::SpecialPage("TaskListByProject");
+		self::loadMessages();
 		return true;
 	}
+
+    function loadMessages() {
+        TaskListLoadMessages();
+        return true;
+    }
 
 	function execute($proj) {
 		global $wgRequest, $wgOut, $wgUseProjects;

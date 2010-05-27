@@ -15,6 +15,8 @@ class SpecialImportUsers extends SpecialPage {
 
 		$wgOut->setArticleRelated( false );
 
+		wfLoadExtensionMessages( 'ImportUsers' );
+
 		if( !$wgUser->isAllowed( 'import_users' ) ) {
 			$wgOut->permissionRequired( 'import_users' );
 			return;

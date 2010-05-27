@@ -13,6 +13,7 @@
  */
 class PasswordReset extends SpecialPage {
 	function PasswordReset() {
+		wfLoadExtensionMessages('PasswordReset');
 		SpecialPage::SpecialPage( "PasswordReset", "passwordreset" );
 	}
 

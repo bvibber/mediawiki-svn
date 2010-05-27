@@ -20,6 +20,7 @@ class LuaError extends Exception {
 	 * @param $parameter \type{\string} Optional parameter for that message
 	 */
 	public function __construct($msg, $parameter = ''){
+		wfLoadExtensionMessages( 'Lua' );
 		$this->message = '<strong class="error">' . wfMsgForContent( "lua_$msg", htmlspecialchars( $parameter ) ) . '</strong>';
 	}
 }

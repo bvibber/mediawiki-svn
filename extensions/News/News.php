@@ -43,6 +43,7 @@ function wfNewsExtension() {
     $wgParser->setHook( "news", "wfNewsTag" );
     $wgParser->setHook( "newsfeed", "wfNewsFeedTag" );
     $wgParser->setHook( "newsfeedlink", "wfNewsFeedLinkTag" );
+    wfLoadExtensionMessages( 'NewsExtension' );
 }
 
 function wfNewsTag( $templatetext, $argv, &$parser ) {

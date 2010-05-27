@@ -54,6 +54,8 @@ function efAssertEditHook( $editpage ) {
 	if ( $pass ) {
 		return true;
 	} else {
+		wfLoadExtensionMessages( 'AssertEdit' );
+
 		// slightly modified from showErrorPage(), to return back here.
 		$wgOut->setPageTitle( wfMsg( 'assert_edit_title' ) );
 		$wgOut->setHTMLTitle( wfMsg( 'errorpagetitle' ) );

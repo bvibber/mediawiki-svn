@@ -33,6 +33,7 @@ function efI18nTagsInit( &$parser ) {
 	$parser->setHook( 'grammar',   array($class, 'grammar') );
 	$parser->setHook( 'plural',    array($class, 'plural') );
 	$parser->setHook( 'linktrail', array($class, 'linktrail') );
+	wfLoadExtensionMessages( 'I18nTags' ); // FOR BC
 	$parser->setFunctionHook( 'languagename',  array($class, 'languageName' ) );
 	return true;
 }

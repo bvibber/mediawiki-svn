@@ -39,6 +39,8 @@ class MassEditRegex extends SpecialPage {
 	function execute( $par ) {
 		global $wgUser, $wgRequest, $wgOut;
 
+		wfLoadExtensionMessages('MassEditRegex');
+
 		$this->setHeaders();
 
 		#if ( !$wgUser->isAllowed( 'bot' ) ) {

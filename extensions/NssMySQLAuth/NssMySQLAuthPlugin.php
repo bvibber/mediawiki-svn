@@ -23,7 +23,9 @@ class NssMySQLAuthPlugin extends AuthPlugin {
 		foreach ( $wgAuth->getAllGroups() as $group ) {
 			if ( !isset( $wgGroupPermissions[$group] ) )
 				$wgGroupPermissions[$group] = array();
-		}
+		}		
+		
+		wfLoadExtensionMessages( 'nssmysqlauth' );
 	}
 
 	function __construct( $wikiName = false ) {

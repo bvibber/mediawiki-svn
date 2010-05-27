@@ -473,6 +473,7 @@ function wfGenerateWikiFeed( $article, $feedFormat = 'atom', $filterTags = null 
 			if ( !$feedDescription ) {
 				$feedDescription = $segDesc;
 			} else {
+				wfLoadExtensionMessages( 'WikiArticleFeeds' );
 				$feedDescription = wfMsg( 'wikiarticlefeeds_combined_description' );
 			}
 		}

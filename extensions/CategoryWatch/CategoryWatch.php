@@ -233,6 +233,8 @@ class CategoryWatch {
 function wfSetupCategoryWatch() {
 	global $wgCategoryWatch;
 
+	wfLoadExtensionMessages( 'CategoryWatch' );
+
 	# Instantiate the CategoryWatch singleton now that the environment is prepared
 	$wgCategoryWatch = new CategoryWatch();
 }

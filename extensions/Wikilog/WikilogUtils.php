@@ -179,6 +179,10 @@ class WikilogUtils
 	 * with links to their user and user-talk pages, according to the
 	 * 'wikilog-author-signature' system message.
 	 *
+	 * @pre wfLoadExtensionMessages( 'Wikilog' ) must have been called. It
+	 *   is not called here since this function can potentially be called
+	 *   lots of times in a single page load.
+	 *
 	 * @param $list Array of authors.
 	 * @return Wikitext-formatted textual list of authors.
 	 */
@@ -201,6 +205,10 @@ class WikilogUtils
 	 * Formats a single author signature.
 	 * Uses the 'wikilog-author-signature' system message, in order to provide
 	 * user and user-talk links.
+	 *
+	 * @pre wfLoadExtensionMessages( 'Wikilog' ) must have been called. It
+	 *   is not called here since this function can potentially be called
+	 *   lots of times in a single page load.
 	 *
 	 * @param $author String, author name.
 	 * @return Wikitext-formatted author signature.

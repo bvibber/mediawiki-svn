@@ -19,6 +19,7 @@ class SpecialCountEdits extends SpecialPage {
 
 	public function execute( $params ) {
 		global $wgOut, $wgUser;
+		wfLoadExtensionMessages( 'CountEdits' );
 		$skin = $wgUser->getSkin();
 		$this->setHeaders();
 		$this->loadRequest( $params );

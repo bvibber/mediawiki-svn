@@ -471,8 +471,10 @@ class NSOldLocalFile extends OldLocalFile
  * Initial setup, add .i18n. messages from $IP/extensions/DiscussionThreading/DiscussionThreading.i18n.php
 */
 function NSFileRepoSetup() {
-	global $wgLocalFileRepo;
-
+	global $wgLocalFileRepo,$wgVersion;
+	$xversion = explode(".",$wgVersion);
+	if ($xversion[0] <= "1" && $xversion[1] < "16") wfLoadExtensionMessages( 'img_auth' );  // loads img_auth messages for versions <1.16
+	wfLoadExtensionMessages( 'NSFileRepo' );
 	$wgLocalFileRepo['class'] = "NSLocalRepo";
 	RepoGroup::destroySingleton();
 }

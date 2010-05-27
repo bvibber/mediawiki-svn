@@ -44,6 +44,7 @@ $wgAvailableRights[] = 'todosubmit';
 
 // FIXME: use $wgSpecialPages and delay message loading
 function todoSetup() {
+	wfLoadExtensionMessages( 'todoAddTab' );
 	SpecialPage::addPage( new SpecialPage( 'Todo' ) );
 }
 

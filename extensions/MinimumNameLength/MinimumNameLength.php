@@ -42,6 +42,7 @@ function efMinimumNameLength( $user, &$error ) {
 	global $wgMinimumUsernameLength;
 
 	if( mb_strlen( $user->getName() ) < $wgMinimumUsernameLength ) {
+		wfLoadExtensionMessages( 'MinimumNameLength' );
 		$error = wfMsgHtml( 'minnamelength-error', $wgMinimumUsernameLength );
 		return false;
 	}

@@ -15,6 +15,7 @@ class DTViewXML extends SpecialPage {
 	public function DTViewXML() {
 		global $wgLanguageCode;
 		SpecialPage::SpecialPage( 'ViewXML' );
+		wfLoadExtensionMessages( 'DataTransfer' );
 	}
 
 	function execute( $query ) {

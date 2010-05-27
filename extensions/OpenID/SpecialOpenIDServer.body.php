@@ -53,6 +53,8 @@ class SpecialOpenIDServer extends SpecialOpenID {
 	function execute( $par ) {
 		global $wgOut, $wgOpenIDClientOnly;
 
+		wfLoadExtensionMessages( 'OpenID' );
+
 		$this->setHeaders();
 
 		# No server functionality if this site is only a client

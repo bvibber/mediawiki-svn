@@ -19,6 +19,7 @@ class SpamRegexHooks {
 
 			foreach( $s_phrases as $s_phrase ) {
 				if ( preg_match( $s_phrase, $editpage->summary, $s_matches ) ) {
+					wfLoadExtensionMessages( 'SpamRegex' );
 					$wgOut->setPageTitle( wfMsg( 'spamprotectiontitle' ) );
 					$wgOut->setRobotPolicy( 'noindex,nofollow' );
 					$wgOut->setArticleRelated( false );
@@ -62,6 +63,7 @@ class SpamRegexHooks {
 		if ( $s_phrases && $reason ) {
 			foreach( $s_phrases as $s_phrase ) {
 				if ( preg_match( $s_phrase, $reason, $s_matches ) ) {
+					wfLoadExtensionMessages( 'SpamRegex' );
 					$error .= wfMsgExt( 'spamregex-move', 'parseinline' ) . wfMsg( 'word_separator' );
 					$error .= wfMsgExt( 'spamprotectionmatch', 'parseinline', "<nowiki>{$s_matches[0]}</nowiki>" );
 					wfProfileOut( __METHOD__ );

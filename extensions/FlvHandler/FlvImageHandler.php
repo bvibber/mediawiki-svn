@@ -123,6 +123,7 @@ class FlvImageHandler extends ImageHandler {
 
 	function getLongDesc( $file ) {
 		global $wgLang;
+		wfLoadExtensionMessages('FlvHandler');
 		return wfMsgExt( 'flv-long-desc', 'parseinline',
 			$wgLang->formatNum( $file->getWidth() ),
 			$wgLang->formatNum( $file->getHeight() ),

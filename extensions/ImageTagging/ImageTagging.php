@@ -385,6 +385,8 @@ function wfImageTagPageSetup() {
 	$wgLogHeaders['tag'] = 'tag-logpagetext';
 	$wgLogActions['tag'] = 'imagetagging-log-tagged';
 
+	wfLoadExtensionMessages('ImageTagging');
+
 	class ImageTagPage extends ImagePage {
 		function openShowImage() {
 			global $wgOut, $wgUser, $wgServer, $wgStyleVersion, $wgJsMimeType, $wgScriptPath;

@@ -21,6 +21,8 @@ class CommunityVoicePage extends SpecialPage {
 	public function execute( $sub ) {
 		global $wgOut, $wgRequest, $wgUser;
 
+		wfLoadExtensionMessages( 'CommunityVoice' );
+
 		/* Control */
 
 		// Gets edit token

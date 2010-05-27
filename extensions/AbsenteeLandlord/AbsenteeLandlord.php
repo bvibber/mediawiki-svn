@@ -37,6 +37,9 @@ function efAbsenteeLandlord_Setup() {
 
 		if ( !in_array( 'sysop', $groups ) ) {
 			global $wgReadOnly;
+
+			# Add Messages (don't need them unless we get here)
+			wfLoadExtensionMessages( 'AbsenteeLandlord' );
 			$wgReadOnly = wfMsg( 'absenteelandlord-reason' );
 		}
 	}

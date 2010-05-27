@@ -61,6 +61,9 @@ function efCategoryStepper( $out, $text ) {
 	// Only render on the actual view page; not edit, delete etc.
 	if ( $wgRequest->getBool( 'action' ) ) return true;
 
+	// Load messages into the message cache.
+	wfLoadExtensionMessages( 'CategoryStepper' );
+
 	// Open a database connection.
 	$dbr = wfGetDB( DB_SLAVE );
 

@@ -197,6 +197,7 @@ function efGPManagerReplaceEditMessage(&$key, &$useDB, &$langCode, $transform) {
 		global $wgTitle;
 		if(!$wgTitle instanceOf Title || !$wgTitle->userCan('edit')) return true;
 	}
+	loadGPMessages();
 	if($key == 'right-edit') {
 		$key = 'right-edit-new';
 		return false; //so it doesn't change load times TOO much

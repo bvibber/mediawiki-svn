@@ -51,6 +51,7 @@ function efDuplicatorNavigation( &$skin, &$nav_urls, &$oldid, &$revid ) {
 	global $wgUser;
 	$ns = $skin->mTitle->getNamespace();
 	if( ( $ns === NS_MAIN || $ns === NS_TALK ) && $wgUser->isAllowed( 'duplicate' ) ) {
+		wfLoadExtensionMessages( 'Duplicator' );
 		$nav_urls['duplicator'] = array(
 			'text' => wfMsg( 'duplicator-toolbox' ),
 			'href' => $skin->makeSpecialUrl( 'Duplicator', "source=" . wfUrlEncode( "{$skin->thispage}" ) )
@@ -64,6 +65,7 @@ function efDuplicatorNavigation( &$skin, &$nav_urls, &$oldid, &$revid ) {
  */
 function efDuplicatorToolbox( &$monobook ) {
 	if ( isset( $monobook->data['nav_urls']['duplicator'] ) ) {
+		wfLoadExtensionMessages( 'Duplicator' );
 		if ( $monobook->data['nav_urls']['duplicator']['href'] == '' ) {
 			?><li id="t-isduplicator"><?php echo $monobook->msg( 'duplicator-toolbox' ); ?></li><?php
 		} else {

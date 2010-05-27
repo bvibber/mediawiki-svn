@@ -10,6 +10,7 @@ class ExtensionDistributorPage extends SpecialPage {
 	function execute( $subpage ) {
 		global $wgExtDistTarDir, $wgExtDistWorkingCopy, $wgOut, $wgRequest;
 
+		wfLoadExtensionMessages( 'ExtensionDistributor' );
 		$this->setHeaders();
 
 		if ( !$wgExtDistTarDir || !$wgExtDistWorkingCopy ) {

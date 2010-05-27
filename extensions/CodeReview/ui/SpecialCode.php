@@ -9,6 +9,8 @@ class SpecialCode extends SpecialPage {
 	function execute( $subpage ) {
 		global $wgOut, $wgRequest, $wgUser, $wgScriptPath, $wgCodeReviewStyleVersion;
 
+		wfLoadExtensionMessages( 'CodeReview' );
+
 		if ( !$this->userCanExecute( $wgUser ) ) {
 			$this->displayRestrictionError();
 			return;

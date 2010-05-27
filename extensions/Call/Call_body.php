@@ -31,6 +31,7 @@
 class Call extends SpecialPage {
 	function Call() {
 		SpecialPage::SpecialPage( "Call" );
+		wfLoadExtensionMessages( 'Call' );
 	}
 
 

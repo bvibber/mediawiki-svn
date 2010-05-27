@@ -32,6 +32,8 @@ class PurgeAction {
 		if ( $wgTitle->getNamespace() !== NS_SPECIAL ) {
 			$action = $wgRequest->getText( 'action' );
 
+			wfLoadExtensionMessages( 'Purge' );
+
 			$content_actions['purge'] = array(
 				'class' => $action === 'purge' ? 'selected' : false,
 				'text' => wfMsg( 'purge' ),

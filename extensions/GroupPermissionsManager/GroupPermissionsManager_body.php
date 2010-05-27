@@ -29,6 +29,7 @@ class GroupPermissions extends SpecialPage {
 			$wgOut->permissionRequired( 'grouppermissions' );
 			return;
 		}
+		loadGPMessages();
 		$this->setHeaders();
 		$wgOut->addWikiText( wfMsg( 'grouppermissions-header' ) );
 

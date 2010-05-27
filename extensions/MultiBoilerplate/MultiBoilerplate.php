@@ -75,6 +75,9 @@ function efMultiBoilerplate( $form ) {
 	// Get various variables needed for this extension.
 	global $wgMultiBoilerplateOptions, $wgMultiBoilerplateOverwrite, $wgTitle, $wgRequest;
 
+	// Load messages into the message cache.
+	wfLoadExtensionMessages( 'MultiBoilerplate' );
+
 	// If $wgMultiBoilerplateOverwrite is true then detect whether
 	// the current page exists or not and if it does return true
 	// to end execution of this function.

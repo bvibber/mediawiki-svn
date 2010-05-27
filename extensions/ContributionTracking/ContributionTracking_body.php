@@ -7,12 +7,15 @@ class ContributionTracking extends UnlistedSpecialPage {
 
 	function execute( $language ) {
 		global $wgRequest, $wgOut;
+		wfLoadExtensionMessages( 'ContributionTracking' );
 		
 		if ( !preg_match( '/^[a-z-]+$/', $language ) ) {
 			$language = 'en';
 		}
 		$this->lang = Language::factory( $language );
-	
+		wfLoadExtensionMessages( 'ContributionTracking' );
+		wfLoadExtensionMessages( 'ContributionTracking', $language );
+		
 		$this->setHeaders();
 		
 		$gateway = $wgRequest->getText( 'gateway' );

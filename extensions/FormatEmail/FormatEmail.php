@@ -13,6 +13,8 @@ if ( ! defined( 'MEDIAWIKI' ) )
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
  */
 
+$wgExtensionFunctions[] = 'wfFormatEmailInit';
+
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'FormatEmail',
@@ -25,6 +27,10 @@ $dir = dirname(__FILE__) . '/';
 $wgExtensionMessagesFiles['EmailUser'] = $dir . 'FormatEmail.i18n.php';
 
 $wgHooks['EmailUser'][] = 'wfFormatEmail';
+
+function wfFormatEmailInit() {
+	wfLoadExtensionMessages( 'EmailUser' );
+}
 
 function wfFormatEmail (&$to, &$from, &$subject, &$text ) {
 	global $wgUser;

@@ -4,6 +4,28 @@ class WhoIsWatching extends SpecialPage
 {
 	function WhoIsWatching() {
 		SpecialPage::SpecialPage( 'WhoIsWatching' );
+
+		# the standard method for LoadingExtensionMessages was apparently broken in several versions of MW
+		# so, to make this work with multiple versions of MediaWiki, let's load the messages nicely
+		if (function_exists('wfLoadExtensionMessages'))
+		    wfLoadExtensionMessages( 'WhoIsWatching' );
+		else
+		    self::loadMessages();
+
+		return true;
+	}
+
+	function loadMessages() {
+		static $messagesLoaded = false;
+		global $wgMessageCache;
+		if ( !$messagesLoaded ) {
+		    $messagesLoaded = true;
+
+		    require( dirname( __FILE__ ) . '/SpecialWhoIsWatching.i18n.php' );
+		    foreach ( $messages as $lang => $langMessages ) {
+			$wgMessageCache->addMessages( $langMessages, $lang );
+		    }
+		}
 		return true;
 	}
 

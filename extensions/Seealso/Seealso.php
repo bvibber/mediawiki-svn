@@ -25,6 +25,7 @@ $dir = dirname(__FILE__) . '/';
 $wgExtensionMessagesFiles['seealso'] = $dir . 'Seealso.i18n.php';
 
 function wfSeealso () {
+	wfLoadExtensionMessages( 'seealso' );
 	global $wgParser ;
 	$wgParser->setHook ('seealso', 'parse_seealso' ) ;
 	$l = trim ( 'seealso-local', "" ) ;

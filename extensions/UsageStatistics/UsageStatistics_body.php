@@ -4,6 +4,8 @@ class SpecialUserStats extends SpecialPage {
 
 	function __construct() {
 		parent::__construct( 'SpecialUserStats' );
+
+		wfLoadExtensionMessages( 'UserStats' );
 	}
 
 	function execute( $par ) {

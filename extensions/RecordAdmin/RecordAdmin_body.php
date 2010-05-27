@@ -26,6 +26,7 @@ class SpecialRecordAdmin extends SpecialPage {
 
 		# Name to use for creating a new record either via RecordAdmin or a public form
 		$this->guid();
+		wfLoadExtensionMessages ( 'RecordAdmin' );
 		SpecialPage::SpecialPage( 'RecordAdmin', 'recordadmin', true, false, 'default', true );
 
 		# Make recordID's of articles created with public forms available via recordid tag

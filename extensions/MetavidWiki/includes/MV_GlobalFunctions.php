@@ -59,6 +59,8 @@ function mvSetupExtension() {
 	$wgAutoloadClasses, $wgSpecialPages, $wgMediaHandlers, $wgJSAutoloadClasses,
 	$wgAPIModules;
 
+
+	mvfInitMessages();
 	//add the ALL page header
 	mvfAutoAllPageHeader();
 
@@ -422,6 +424,36 @@ function mvfInitUserLanguage( $langcode ) {
 		$mvgLang = $mvgContLang;
 	} else {
 		$mvgLang = new $mvLangClass();
+	}
+}
+/**
+ * Initialize messages - these settings must be applied later on, since
+ * the MessageCache does not exist yet when the settings are loaded in
+ * LocalSettings.php.
+ * Function based on version in ContributionScores extension
+ */
+function mvfInitMessages() {
+	global $wgVersion, $wgExtensionFunctions;
+	if ( version_compare( $wgVersion, '1.11', '>=' ) ) {
+		wfLoadExtensionMessages( 'MetavidWiki' );
+	} else {
+		$wgExtensionFunctions[] = 'sffLoadMessagesManually';
+	}
+}
+
+/**
+ * Setting of message cache for versions of MediaWiki that do not support
+ * wgExtensionFunctions - based on ceContributionScores() in
+ * ContributionScores extension
+ */
+function sffLoadMessagesManually() {
+	global $mvgIP, $wgMessageCache;
+
+	# add messages
+	require( $mvgIP . '/languages/MV_Messages.php' );
+	global $messages;
+	foreach ( $messages as $key => $value ) {
+		$wgMessageCache->addMessages( $messages[$key], $key );
 	}
 }
 

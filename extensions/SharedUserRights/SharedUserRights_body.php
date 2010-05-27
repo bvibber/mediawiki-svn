@@ -38,6 +38,8 @@ class SharedUserRights extends SpecialPage {
 	function execute( $par ) {
 		global $wgUser, $wgRequest;
 
+		wfLoadExtensionMessages( 'SharedUserRights' );
+
 		if ( $par ) {
 			$this->mTarget = $par;
 		} else {

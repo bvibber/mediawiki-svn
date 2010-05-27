@@ -8,6 +8,7 @@ class EditMessagesPage extends SpecialPage {
 
 	function execute( $subpage = '' ) {
 		global $wgOut, $wgRequest;
+		wfLoadExtensionMessages('EditMessages');
 		$this->setHeaders();
 
 		$messageName = $wgRequest->getVal( 'messageName' );

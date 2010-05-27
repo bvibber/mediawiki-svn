@@ -42,6 +42,8 @@ class TalkpageHeaderView extends LqtView {
 		global $wgOut, $wgTitle, $wgRequest;
 
 		if ( $wgRequest->getVal( 'action' ) === 'edit' ) {
+			wfLoadExtensionMessages( 'LiquidThreads' );
+
 			$html = '';
 
 			$warn_bold = Xml::tags(

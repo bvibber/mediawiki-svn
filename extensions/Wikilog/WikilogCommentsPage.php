@@ -71,6 +71,7 @@ class WikilogCommentsPage
 		global $wgUser, $wgRequest;
 
 		parent::__construct( $title );
+		wfLoadExtensionMessages( 'Wikilog' );
 
 		# Check if user can post.
 		$this->mUserCanPost = $wgUser->isAllowed( 'wl-postcomment' ) ||

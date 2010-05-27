@@ -3,6 +3,7 @@ class RefHelper extends SpecialPage {
 	const MSG = 'refhelper-';
 	function __construct() {
 		parent::__construct( 'RefHelper', 'edit', true, false, 'default', false );
+		wfLoadExtensionMessages( 'RefHelper' );
 	}
 
 	/** A simple helper function to output the html of a table row with an input box.

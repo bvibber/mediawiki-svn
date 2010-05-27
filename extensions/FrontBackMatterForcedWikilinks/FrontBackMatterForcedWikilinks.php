@@ -43,6 +43,7 @@ function FrontBackForcedParserBeforeStripHook( &$parser, &$text, &$strip_state )
         $frontMsg=wfMsg( 'frontbackforced-front');
         $backMsg=wfMsg( 'frontbackforced-back');
         $forcedMsg=wfMsg( 'frontbackforced-forced');
+        wfLoadExtensionMessages('FrontBackMatterForcedWikilinks');
 	$dbr = wfGetDB( DB_SLAVE );
 	$title=$parser->getTitle();
 	if( $title->getNamespace() == NS_SPECIAL
@@ -120,6 +121,7 @@ function FrontBackForcedParserBeforeStripHook( &$parser, &$text, &$strip_state )
 function FrontBackForcedArticleSaveCompleteHook (&$article, &$user, $text, $summary,
 	      $minoredit, $watchthis, $sectionanchor, &$flags, $revision, &$status, $baseRevId ){
         global $wgLang;
+        wfLoadExtensionMessages('FrontBackMatterForcedWikilinks');
 	$frontMsg=wfMsg( 'frontbackforced-front');
         $backMsg=wfMsg( 'frontbackforced-back');
         $forcedMsg=wfMsg( 'frontbackforced-forced');

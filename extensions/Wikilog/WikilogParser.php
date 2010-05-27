@@ -216,6 +216,7 @@ class WikilogParser
 	 */
 	public static function settings( &$parser /* ... */ ) {
 		global $wgOut;
+		wfLoadExtensionMessages( 'Wikilog' );
 		self::checkNamespace( $parser );
 
 		$mwIcon     =& MagicWord::get( 'wlk-icon' );
@@ -256,6 +257,7 @@ class WikilogParser
 	 * {{wl-publish:...}} parser function handler.
 	 */
 	public static function publish( &$parser, $pubdate /*, $author... */ ) {
+		wfLoadExtensionMessages( 'Wikilog' );
 		self::checkNamespace( $parser );
 
 		$parser->mExtWikilog->mPublish = true;
@@ -288,6 +290,7 @@ class WikilogParser
 	 * {{wl-author:...}} parser function handler.
 	 */
 	public static function author( &$parser /*, $author... */ ) {
+		wfLoadExtensionMessages( 'Wikilog' );
 		self::checkNamespace( $parser );
 
 		$args = array_slice( func_get_args(), 1 );
@@ -302,6 +305,7 @@ class WikilogParser
 	 * {{wl-tags:...}} parser function handler.
 	 */
 	public static function tags( &$parser /*, $tag... */ ) {
+		wfLoadExtensionMessages( 'Wikilog' );
 		self::checkNamespace( $parser );
 
 		$args = array_slice( func_get_args(), 1 );

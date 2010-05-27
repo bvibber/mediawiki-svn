@@ -40,6 +40,8 @@ class WebStoreCommon {
 			}
 		}
 		$this->windows = wfIsWindows();
+
+		wfLoadExtensionMessages( 'WebStore' );
 	}
 
 	function setErrorHandler() {

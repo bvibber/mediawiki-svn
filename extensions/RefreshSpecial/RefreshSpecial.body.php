@@ -25,6 +25,8 @@ class RefreshSpecial extends SpecialPage {
 	public function execute( $par ) {
 		global $wgOut, $wgUser, $wgRequest;
 
+		wfLoadExtensionMessages( 'RefreshSpecial' );
+
 		$wgOut->setPageTitle( wfMsg( 'refreshspecial-title' ) );
 
 		# If the user doesn't have the required permission, display an error

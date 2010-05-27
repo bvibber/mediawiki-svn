@@ -18,6 +18,8 @@ class TemplateLink extends SpecialPage
 	public function execute( $par ){
 		global $wgOut, $wgRequest;
 
+		wfLoadExtensionMessages( 'TemplateLink' );
+
 		$this->setHeaders();
 		$template = $wgRequest->getText('template');
 

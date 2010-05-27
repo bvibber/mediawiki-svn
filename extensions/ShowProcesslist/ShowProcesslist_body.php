@@ -8,6 +8,8 @@ class SpecialShowProcesslist extends UnlistedSpecialPage {
 	function execute( $par ) {
 		global $wgOut, $wgUser;
 
+		wfLoadExtensionMessages( 'ShowProcesslist' );
+
 		$this->setHeaders();
 		if ( !$wgUser->isAllowed( 'siteadmin' ) ) {
 			$wgOut->permissionRequired( 'siteadmin' );

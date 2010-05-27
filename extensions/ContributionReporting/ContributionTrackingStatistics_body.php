@@ -15,6 +15,9 @@ class SpecialContributionTrackingStatistics extends SpecialPage {
 	public function __construct() {
 		// Initialize special page
 		parent::__construct( 'ContributionTrackingStatistics' );
+
+		// Internationalization
+		wfLoadExtensionMessages( 'ContributionReporting' );
 	}
 
 	public function execute( $sub ) {

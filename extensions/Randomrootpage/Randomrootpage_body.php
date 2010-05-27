@@ -26,6 +26,8 @@ class SpecialRandomrootpage extends SpecialPage {
 	public function execute( $par ) {
 		global $wgOut, $wgContLang;
 
+		wfLoadExtensionMessages( 'Randomrootpage' );
+
 		if ($par)
 			$this->setNamespace( $wgContLang->getNsIndex( $par ) );
 

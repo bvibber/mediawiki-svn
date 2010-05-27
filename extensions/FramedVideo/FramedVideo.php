@@ -48,6 +48,7 @@ function renderFramedVideo( $input, $args, $parser ) {
 	global $wgFramedVideoPosition, $wgFramedVideoForcePosition;
 	if ( !isset( $wgFramedVideoConfigLoaded ) ) {
 	if ( !isset( $wgFramedVideoLightMode ) || $wgFramedVideoLightMode == false ) {
+		wfLoadExtensionMessages( 'FramedVideo' );
 		$wgFramedVideoDefaultWidth = intval( wfMsg( 'framedvideo_default_width' ) );
 		$wgFramedVideoForceDefaultSize = false;
 		if ( ( wfMsg( 'framedvideo-forcesize' ) == "true" ) ) {
@@ -63,6 +64,7 @@ function renderFramedVideo( $input, $args, $parser ) {
 		$wgFramedVideoForcePosition = trueOrFalse( wfMsg( 'framedvideo_force_position' ) );
 		$wgFramedVideoConfigLoaded = true;
 	} else {
+		wfLoadExtensionMessages( 'FramedVideo' );
 		if ( !isset( $wgFramedVideoDefaultWidth ) || !isset( $wgFramedVideoForceDefaultSize ) || !isset( $wgFramedVideoMaxWidth )
 		|| !isset( $wgFramedVideoMaxHeight ) || !isset( $wgFramedVideoAllowFullScreen ) || !isset( $wgFramedVideoForceAllowFullScreen )
 		|| !isset( $wgFramedVideoFrames ) || !isset( $wgFramedVideoForceFrames ) || !isset ( $wgFramedVideoPosition )
@@ -595,6 +597,7 @@ function renderFramedVideo( $input, $args, $parser ) {
 		global $wgFramedVideoErrorFullSizeNotAllowed, $wgFramedVideoHeightAndWidthRequired, $wgFramedVideoErrorNoIntegerWidth;
 		global $wgFramedVideoErrorSeeHelp;
 		$output .= '<div class="thumbcaption" align="left">';
+		wfLoadExtensionMessages( 'FramedVideo' );
 		$errors = array_sum( $errorid );
 		if ( $errors == 1 ) {
 			if ( !isset( $wgFramedVideoError ) ) { $wgFramedVideoError = wfMsg( 'framedvideo_error' ); }

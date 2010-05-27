@@ -40,6 +40,7 @@ class PollResults extends SpecialPage {
 
 	public function __construct() {
 		parent::__construct( 'PollResults', 'delete' );
+		wfLoadExtensionMessages('QPoll');
 	}
 
 	static $skin = null;

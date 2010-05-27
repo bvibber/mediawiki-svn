@@ -254,6 +254,7 @@ class WikilogHooks
 	 * @todo Remove this in Wikilog 1.1.0, along with support for Mw < 1.16.
 	 */
 	static function LanguageGetSpecialPageAliases( &$specialPageAliases, $lang ) {
+		wfLoadExtensionMessages( 'Wikilog' );
 		$title = Title::newFromText( wfMsg( 'wikilog-specialwikilog' ) );
 		$specialPageAliases['SpecialWikilog'][] = $title->getDBKey();
 		return true;

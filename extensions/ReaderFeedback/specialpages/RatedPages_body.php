@@ -8,6 +8,8 @@ class RatedPages extends SpecialPage
 {
     public function __construct() {
         parent::__construct( 'RatedPages' );
+		wfLoadExtensionMessages( 'RatedPages' );
+		wfLoadExtensionMessages( 'ReaderFeedback' );
     }
 
     public function execute( $par ) {

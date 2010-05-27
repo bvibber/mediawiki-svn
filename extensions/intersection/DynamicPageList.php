@@ -52,6 +52,7 @@ $dir = dirname(__FILE__) . '/';
 $wgExtensionMessagesFiles['DynamicPageList'] = $dir . 'DynamicPageList.i18n.php';
 
 function wfDynamicPageList( &$parser ) {
+	wfLoadExtensionMessages( 'DynamicPageList' );
 	$parser->setHook( "DynamicPageList", "DynamicPageList" );
 	return true;
 }

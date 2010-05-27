@@ -197,6 +197,7 @@ class TagContent {
 */
 function efTagContentSetup () {
 	global $wgParser, $egTagContentBlacklist, $egTagContentDefine;
+	wfLoadExtensionMessages('TagContent');
 	foreach ($egTagContentDefine as $k => $a) {
 		$template = $a[0];
 		$tag = strtolower($k);

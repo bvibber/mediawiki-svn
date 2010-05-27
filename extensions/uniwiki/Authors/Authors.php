@@ -68,6 +68,8 @@ function UW_Authors_List ( &$out, &$text ) {
 	// now build a sensible authors display in HTML
 	require_once ( "includes/Credits.php" );
 
+	wfLoadExtensionMessages( 'Authors' );
+
 	$authors = "\n<div class='authors'>" .
 		"<h4>" . wfMsg( 'authors_authors' ) . "</h4>" .
 		"<ul>";

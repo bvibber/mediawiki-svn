@@ -24,6 +24,7 @@ class LookupUserPage extends SpecialPage {
 	 */
 	public function execute( $subpage ) {
 		global $wgRequest, $wgUser;
+		wfLoadExtensionMessages( 'LookupUser' );
 
 		$this->setHeaders();
 

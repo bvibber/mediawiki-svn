@@ -8,6 +8,7 @@ class DeleteQueueViewList extends DeleteQueueView {
 	public function show( $params ) {
 		global $wgOut;
 
+		wfLoadExtensionMessages( 'DeleteQueue' );
 		$wgOut->setPageTitle( wfMsg( 'deletequeue' ) );
 
 		$this->loadSearch();

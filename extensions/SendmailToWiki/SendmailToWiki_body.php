@@ -3,6 +3,7 @@ class SendmailToWiki extends UnlistedSpecialPage {
 
 	function __construct() {
 		parent::__construct( 'SendmailToWiki' );
+		wfLoadExtensionMessages('SendmailToWiki');
 	}
  
 	function execute( $SPparams ) {

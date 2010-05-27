@@ -13,6 +13,7 @@ class WebChat extends SpecialPage {
 	function execute( $par ) {
 		global $wgOut, $wgUser, $wgWebChatServer, $wgWebChatChannel,
 			$wgWebChatClient, $wgWebChatClients;
+		wfLoadExtensionMessages( 'WebChat' );
 		$this->setHeaders();
 		$wgOut->addWikiMsg( 'webchat-header' );
 

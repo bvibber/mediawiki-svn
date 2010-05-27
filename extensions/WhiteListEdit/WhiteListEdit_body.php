@@ -39,10 +39,39 @@ function WhiteListUserFromId($id) {
 	}
 }
 
+# older versions of MW did not have the standard method for loading messages. So, let's recreate it
+function WhiteListLoadMessages() {
+	static $messagesLoaded = false;
+	global $wgMessageCache;
+	if ($messagesLoaded) return;
+		$messagesLoaded = true;
+
+	require_once(dirname(__FILE__) . '/WhiteListEdit.i18n.php' );
+	foreach ( $messages as $lang => $langMessages ) {
+		$wgMessageCache->addMessages( $langMessages, $lang );
+	}
+}
+
 class WhiteListEdit extends SpecialPage
 {
 	function __construct() {
+		self::loadMessages();
 		SpecialPage::SpecialPage( 'WhiteListEdit', 'editwhitelist' );
+	}
+
+	function loadMessages() {
+		# the new method for loading extension messages is only available in MW versions > 1.12
+		# so let's keep the compatibility with older versions
+		if (function_exists('wfLoadExtensionMessages'))
+		{
+			wfLoadExtensionMessages('WhiteListEdit');
+		}
+		else
+		{
+			WhiteListLoadMessages();
+		}
+		
+		return true;
 	}
 
 	function execute( $par ) {
@@ -614,7 +643,23 @@ if ($debug)  $wgOut->addWikiText("* Adding '$headertext'\n");
 class WhiteList extends SpecialPage
 {
 	function __construct() {
+		self::loadMessages();
 		SpecialPage::SpecialPage( 'WhiteList', 'restricttowhitelist' );
+	}
+
+	function loadMessages() {
+		# the new method for loading extension messages is only available in MW versions > 1.12
+		# so let's keep the compatibility with older versions
+		if (function_exists('wfLoadExtensionMessages'))
+		{
+			wfLoadExtensionMessages('WhiteList');
+		}
+		else
+		{
+			WhiteListLoadMessages();
+		}
+		
+		return true;
 	}
 
 	function execute( $para ) {

@@ -70,6 +70,7 @@ function efJSKitSetup( &$parser ) {
 	if( $wgJSKitTypes['reviews'] ) {
 		$parser->setHook( 'review', 'efJSKitReview' );
 	}
+	wfLoadExtensionMessages( 'JSKit' );
 	return true;
 }
 

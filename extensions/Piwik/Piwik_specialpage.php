@@ -11,6 +11,8 @@ class Piwik extends SpecialPage {
 	function execute( $par ) {
 		global $wgRequest, $wgOut, $wgPiwikURL, $wgScriptPath, $wgPiwikIDSite, $wgPiwikSpecialPageDate;
 
+		wfLoadExtensionMessages( 'Piwik' );
+
 		$this->setHeaders();
 
 		$wgOut->setPagetitle( 'Piwik' );

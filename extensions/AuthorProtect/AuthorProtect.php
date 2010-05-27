@@ -99,6 +99,7 @@ function efMakeContentAction( &$cactions ) {
 function efAuthorProtectForm( $action, &$article ) {
 	global $wgTitle, $wgAuthorProtectDoProtect;
 	if ( $action == 'authorprotect' ) {
+		wfLoadExtensionMessages( 'AuthorProtect' );
 		global $wgOut, $wgUser, $wgRequest, $wgRestrictionTypes;
 		if ( $wgUser->isAllowed( 'authorprotect' ) ) {
 			if ( userIsAuthor() ) {

@@ -79,6 +79,7 @@ class OpenIDHooks {
 		global $wgHideOpenIDLoginLink, $wgUser, $wgLang, $wgOpenIDOnly;
 
 		if ( !$wgHideOpenIDLoginLink && $wgUser->getID() == 0 ) {
+			wfLoadExtensionMessages( 'OpenID' );
 			$sk = $wgUser->getSkin();
 			$returnto = $title->isSpecial( 'Userlogout' ) ?
 			  '' : ( 'returnto=' . $title->getPrefixedURL() );
@@ -135,6 +136,8 @@ class OpenIDHooks {
 
 	public static function onGetPreferences( $user, &$preferences ) {
 		global $wgOpenIDShowUrlOnUserPage, $wgAllowRealName;
+
+		wfLoadExtensionMessages( 'OpenID' );
 
 		if ( $wgOpenIDShowUrlOnUserPage == 'user' ) {
 			$preferences['openid-hide'] =
@@ -200,6 +203,8 @@ class OpenIDHooks {
 
 	public static function onRenderPreferencesForm( $prefs, $out ) {
 		global $wgUser;
+
+		wfLoadExtensionMessages( 'OpenID' );
 
 		$out->addHeadItem( 'openidwikitablestyle', self::wikitableStyle() );
 

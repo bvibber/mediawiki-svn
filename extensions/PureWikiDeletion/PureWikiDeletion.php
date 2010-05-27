@@ -45,6 +45,7 @@ $wgAutoloadClasses['AllPagesExcludeBlank'] = "$dir/SpecialPureWikiDeletion.php";
 $wgAutoloadClasses['PopulateBlankedPagesTable'] = "$dir/SpecialPureWikiDeletion.php";
 $wgExtensionMessagesFiles['PureWikiDeletion'] = $dir . 'PureWikiDeletion.i18n.php';
 $wgExtensionAliasesFiles['PureWikiDeletion'] = $dir . 'PureWikiDeletion.alias.php';
+$wgExtensionFunctions[] = 'wfPureWikiDeletion';
 
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'PureWikiDeletionHooks::PureWikiDeletionCreateTable';
 $wgHooks['ArticleSaveComplete'][] = 'PureWikiDeletionHooks::PureWikiDeletionSaveCompleteHook';
@@ -78,6 +79,10 @@ $wgSpecialPageGroups['PopulateBlankedPagesTable'] = 'wiki';
 # User right to execute Special:PopulateBlankedPagesTable
 $wgAvailableRights[] = 'purewikideletion';
 $wgGroupPermissions['bureaucrat']['purewikideletion']    = true;
+
+function wfPureWikiDeletion() {
+    wfLoadExtensionMessages( 'PureWikiDeletion' );
+}
 
 function wfBlankLogActionText( $type, $action, $title = null, $skin = null, $params = array(), $filterWikilinks = false ) {
 	$rv = wfMsgReal( 'blank-log-entry-blank', $params );

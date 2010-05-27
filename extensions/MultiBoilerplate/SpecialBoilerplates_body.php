@@ -18,6 +18,7 @@ class SpecialBoilerplates extends IncludableSpecialPage {
 	function execute( $par ) {
 		global $wgOut, $wgMultiBoilerplateOptions;
 		if ( !isset($wgMultiBoilerplateOptions)) return true; // No options found in either configuration file, abort.
+		wfLoadExtensionMessages( 'MultiBoilerplate' );
 		if( !$this->mIncluding ) {
 			$this->setHeaders();
 			$wgOut->addWikiMsg( "multiboilerplate-special-pagetext" );

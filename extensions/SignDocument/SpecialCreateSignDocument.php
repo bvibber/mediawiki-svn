@@ -15,6 +15,8 @@ class SpecialCreateSignDocument extends SpecialPage {
 	function execute( $par ) {
 		global $wgOut, $wgRequest, $wgUser;
 
+		wfLoadExtensionMessages( 'CreateSignDocument' );
+
 		$this->setHeaders();
 		if ( $wgUser->isAllowed( 'createsigndocument' ) ) {
 

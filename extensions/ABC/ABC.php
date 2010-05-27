@@ -64,6 +64,7 @@ $wgHooks['ParserFirstCallInit'][] = 'efABCInit';
 
 function efABCInit( &$parser ) {
 	global $wgOut, $abcOggHandler;
+	wfLoadExtensionMessages( 'ABC' );
 	$parser->setHook( 'abc', 'efABCRender' );
 
 	if ( $abcOggHandler ) {

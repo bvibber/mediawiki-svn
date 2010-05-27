@@ -9,6 +9,7 @@ class CategoryIntersection extends SpecialPage {
 	# Constructor
 	function CategoryIntersection() {
 		SpecialPage::SpecialPage( "CategoryIntersection" );
+		wfLoadExtensionMessages( 'CategoryIntersection' );
 
 		# Limits
 		$this->max_categories = 5;

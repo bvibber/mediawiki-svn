@@ -35,6 +35,8 @@ class DeleteBatch extends SpecialPage {
 			return;
 		}
 
+		wfLoadExtensionMessages( 'DeleteBatch' );
+
 		$wgOut->setPageTitle( wfMsg( 'deletebatch-title' ) );
 		$cSF = new DeleteBatchForm( $par, $this->getTitle() );
 

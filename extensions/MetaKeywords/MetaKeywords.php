@@ -33,6 +33,13 @@ $wgExtensionMessagesFiles['MetaKeywords'] = dirname( __FILE__ ) . '/MetaKeywords
 
 $wgHooks['BeforePageDisplay'][] = 'wfMetaKeywordOutput';
 $wgHooks['ArticleSaveComplete'][] = 'wfMetaKeywordClearCache';
+$wgHooks['ParserFirstCallInit'][] = 'wfMetaKeywordLoadMessages';
+
+//Load messages, seeing as wfLoadExtensionMessages isn't defined when the file is included.
+function wfMetaKeywordLoadMessages ( ){
+	wfLoadExtensionMessages ('MetaKeywords');
+	return true;
+}
 
 //Adds customised keywords after the pagename of the <meta keywords> tag
 function wfMetaKeywordOutput( &$out ){

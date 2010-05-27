@@ -295,6 +295,7 @@ class LqtView {
 	}
 
 	function showReplyProtectedNotice( $thread ) {
+		wfLoadExtensionMessages( 'LiquidThreads' );
 		$log_url = SpecialPage::getTitleFor( 'Log' )->getFullURL(
 			"type=protect&user=&page={$thread->title()->getPrefixedURL()}" );
 		$this->output->addHTML( '<p>' . wfMsg( 'lqt_protectedfromreply',
@@ -961,6 +962,7 @@ class LqtView {
 	*   )
 	*/
 	function threadCommands( $thread ) {
+		wfLoadExtensionMessages( 'LiquidThreads' );
 		$commands = array();
 
 		$history_url = self::permalinkUrlWithQuery( $thread, array( 'action' => 'history' ) );
@@ -1039,6 +1041,8 @@ class LqtView {
 
 	// Commands for the bottom.
 	function threadMajorCommands( $thread ) {
+		wfLoadExtensionMessages( 'LiquidThreads' );
+
 		if ( $thread->isHistorical() ) {
 			// No links for historical threads.
 			$history_url = self::permalinkUrlWithQuery( $thread,
@@ -1102,6 +1106,7 @@ class LqtView {
 	}
 
 	function topLevelThreadCommands( $thread ) {
+		wfLoadExtensionMessages( 'LiquidThreads' );
 		$commands = array();
 
 		$commands['history'] = array(
@@ -1199,6 +1204,8 @@ class LqtView {
 	}
 
 	static function exportJSLocalisation() {
+		wfLoadExtensionMessages( 'LiquidThreads' );
+
 		$messages = array(
 				'lqt-quote-intro',
 				'lqt-quote',
@@ -1610,6 +1617,8 @@ class LqtView {
 
 	// Shows a single thread, rather than a thread tree.
 	function showSingleThread( $thread ) {
+		wfLoadExtensionMessages( 'LiquidThreads' );
+
 		$html = '';
 
 		// If it's a 'moved' thread, show the placeholder
@@ -2043,6 +2052,7 @@ class LqtView {
 	function getSummary( $t ) {
 		if ( !$t->summary() ) return;
 		if ( !$t->summary()->getContent() ) return; // Blank summary
+		wfLoadExtensionMessages( 'LiquidThreads' );
 		global $wgUser;
 		$sk = $wgUser->getSkin();
 

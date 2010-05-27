@@ -34,6 +34,7 @@ $wgGroupPermissions['sysop']['emergencydesysop'    ] = true;
 $wgEmDesysop = array('Requestor' => null, 'Target' => null);
 
 function EmergencyDeSysopLocalizedPageName(&$specialPageArray, $code) {
+	wfLoadExtensionMessages('EmergencyDeSysop');
 	$text = wfMsg('emergencydesysop');
  
 	$title = Title::newFromText($text);

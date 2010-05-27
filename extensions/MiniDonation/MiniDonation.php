@@ -18,6 +18,8 @@ function wfSetupMiniDonation() {
 }
 
 function wfMiniDonationHook( $text, $params, $parser ) {
+	wfLoadExtensionMessages( 'MiniDonation' );
+
 	$default = "25";
 	$fontSize = "90%";
 	$encDefault = htmlspecialchars( $default );

@@ -10,6 +10,7 @@
 class UpdateMyPrefsHooks {
 	
 	public static function addPreferences( $user, &$defaultPreferences ) {
+		wfLoadExtensionMessages( 'UpdateMyPrefs' );
 		$ui = array(
 			'type' => 'toggle',
 			'label-message' => 'updatemyprefs-label-message',

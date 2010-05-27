@@ -88,6 +88,7 @@ class ReplaceSet {
 	}
 
 	static function error( $msg /*, ... */ ) {
+		wfLoadExtensionMessages( 'ReplaceSet' );
 		$args = func_get_args();
 		return '<strong class="error">' . call_user_func_array( 'wfMsgForContent', $args ) . '</strong>';
 	}

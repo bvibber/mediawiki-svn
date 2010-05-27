@@ -45,6 +45,7 @@ $wgHooks['LinksUpdate'][] = 'AdvancedSearchCategoryIntersector::LinksUpdate';
 $wgHooks['ArticleDeleteComplete'][] = 'AdvancedSearchCategoryIntersector::ArticleDeleteComplete';
 
 function AdvancedSearchLocalizedPageName( &$specialPageArray, $code ) {
+	wfLoadExtensionMessages( 'AdvancedSearch' );
 	$text = wfMsg( 'advancedsearch-pagename' );
 
 	$title = Title::newFromText( $text );

@@ -103,6 +103,8 @@ class SpecialWhosOnline extends SpecialPage {
 	public function execute( $para ) {
 		global $wgRequest, $wgOut, $wgDBname;
 
+		wfLoadExtensionMessages( 'WhosOnline' );
+
 		$db = wfGetDB( DB_MASTER );
 		$db->selectDB( $wgDBname );
 		$old = gmdate("YmdHis", time() - 3600);

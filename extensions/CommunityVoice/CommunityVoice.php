@@ -67,6 +67,17 @@ abstract class CommunityVoice {
 	);
 	private static $messagesLoaded = false;
 
+	/* Private Static Functions */
+
+	private static function autoLoadMessages() {
+		// Checks if extension messages have been loaded already
+		if ( !self::$messagesLoaded ) {
+			// Loads extension messages
+			wfLoadExtensionMessages( 'CommunityVoice' );
+			self::$messagesLoaded = true;
+		}
+	}
+
 	/* Static Functions */
 
 	public static function getModules() {
@@ -125,6 +136,8 @@ abstract class CommunityVoice {
 		$message,
 		$parameter = null
 	) {
+		// Makes sure messages are laoded
+		self::autoLoadMessages();
 		// Returns message
 		return wfMsg( 'communityvoice-' . $module . '-' . $message, $parameter );
 	}
@@ -133,6 +146,8 @@ abstract class CommunityVoice {
 		$module,
 		$message
 	) {
+		// Makes sure messages are laoded
+		self::autoLoadMessages();
 		// Gets variadic parameters
 		$parameters = func_get_args();
 		// Less the first two

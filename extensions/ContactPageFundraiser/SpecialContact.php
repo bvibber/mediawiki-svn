@@ -37,6 +37,7 @@ class SpecialContact extends SpecialPage {
 	function execute( $par ) {
 		global $wgUser, $wgOut, $wgRequest, $wgEnableEmail, $wgContactUser;
 
+		wfLoadExtensionMessages( 'ContactPage' );
 		$fname = "SpecialContact::execute";
 
 	 	if ( $wgRequest->wasPosted() ) {

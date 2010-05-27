@@ -13,6 +13,8 @@ class SpecialPurgeCache extends SpecialPage {
 	function execute( $par ) {
 		global $wgUser, $wgRequest, $wgOut;
 
+		wfLoadExtensionMessages( 'PurgeCache' );
+
 		$this->setHeaders();
 		if ( $wgUser->isAllowed( 'purgecache' ) ) {
 			if ( $wgRequest->getCheck( 'purge' ) && $wgRequest->wasPosted() ) {

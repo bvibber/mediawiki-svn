@@ -251,6 +251,8 @@ class DataCenterPage extends SpecialPage {
 	public function __construct() {
 		// Initialize special page
 		parent::__construct( 'DataCenter' );
+		// Internationalization
+		wfLoadExtensionMessages( 'DataCenter' );
 	}
 
 	public function execute( $sub ) {

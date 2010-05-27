@@ -155,6 +155,7 @@ $wgLatexDoc = new LatexDoc;
 
 function wfLatexDocInit() {
 	global $wgHooks, $wgLatexDoc;
+	wfLoadExtensionMessages( 'LatexDoc' );
 	$wgHooks['UnknownAction'][] = &$wgLatexDoc;
 	$wgHooks['ParserBeforeStrip'][] = &$wgLatexDoc;
 }

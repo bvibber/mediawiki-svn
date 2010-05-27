@@ -12,6 +12,7 @@ class SpecialEval extends SpecialPage {
 
 	public function execute( $par ) {
 		global $wgUser, $wgOut, $wgRequest, $wgUseTidy;
+		wfLoadExtensionMessages( 'Eval' );
 
 		$this->setHeaders();
 

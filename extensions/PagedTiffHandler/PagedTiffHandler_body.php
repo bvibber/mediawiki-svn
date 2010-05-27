@@ -73,6 +73,7 @@ class PagedTiffHandler extends ImageHandler {
 	static function check( $saveName, $tempName, &$error ) {
 		global $wgTiffMaxEmbedFiles, $wgTiffMaxMetaSize, $wgMaxUploadSize, $wgTiffRejectOnError, $wgTiffRejectOnWarning,
 			   $wgTiffUseTiffReader, $wgTiffReaderPath, $wgTiffReaderCheckEofForJS;
+		wfLoadExtensionMessages( 'PagedTiffHandler' );
 		if ( $wgTiffUseTiffReader ) {
 			$tr = new TiffReader( $tempName );
 			$tr->check();
@@ -362,6 +363,7 @@ class PagedTiffHandler extends ImageHandler {
 	 * Returns a new Error-Message.
 	 */
 	protected function doThumbError( $width, $height, $msg ) {
+		wfLoadExtensionMessages( 'PagedTiffHandler' );
 		return new MediaTransformError( 'thumbnail_error',
 			$width, $height, wfMsg( $msg ) );
 	}
@@ -391,6 +393,7 @@ class PagedTiffHandler extends ImageHandler {
 		}
 		$metadata = $this->getMetaArray( $image );
 		if ( $metadata ) {
+			wfLoadExtensionMessages( 'PagedTiffHandler' );
 			return wfMsgExt( 'tiff-file-info-size', 'parseinline',
 			$wgLang->formatNum( $metadata['page_data'][$page]['width'] ),
 			$wgLang->formatNum( $metadata['page_data'][$page]['height'] ),
