@@ -1892,7 +1892,10 @@ $messages['fa'] = array(
 	'optin-title-optedin' => 'خروج از بتا',
 	'optin-title-justoptedin' => 'به نسخه بتا خوش‌آمدید',
 	'optin-title-justoptedout' => 'ممنونیم از اینکه نسخه بتا را امتحان کردید',
+	'optin-title-feedback' => 'بازخورد نسخه بتا',
 	'optin-needlogin' => 'شما برای استفاده از نسخه بتا باید [$1 وارد شوید].',
+	'optin-feedback-intro' => 'با سپاس از اینکه نسخه بتا را امتحان می‌کنید. ما مایلیم نظر شما را در مورد نمایش جدید صفحات بدانیم. در نتیجه اگر در نظرخواهی زیر شرکت کنید ما را یاری می‌کنید. خیلی بهتر است اگر پاسخ سوالات را به زبان انگلیسی بدهید. با سپاس فراوان.',
+	'optin-feedback-back' => 'اگر علاقه‌ای به شرکت در نظرخواهی ندارید، می‌توانید به $1 بازگردید.',
 	'optin-success-in' => 'در حال حاضر شما نسخه بتا را آزمایش می‌کنید.
 شما می‌توانید هر وقت که خواستید با کلیک بر روی «{{int:optin-leave}}» به حالت قبل برگردید.',
 	'optin-accept-long' => 'خروج از بتا',
@@ -1902,6 +1905,8 @@ $messages['fa'] = array(
 	'optin-survey-yes' => 'بله',
 	'optin-survey-no' => 'نه',
 	'optin-survey-answer-whyoptout-other' => 'دلایل دیگر:',
+	'optin-survey-answer-changes-lookfeel' => 'به روز رسانی ظاهر وب‌گاه',
+	'optin-survey-answer-changes-other' => 'سایر موارد:',
 	'optin-improvements2' => '== چه چیزهایی بهبود یافته؟ ==
 [[پرونده:UsabilityToolbar.png|left|link=|Screenshot of the enhanced edit toolbar]]
 [[پرونده:UsabilityDialogs.png|left|link=|Screenshot of the new content generation dialogs]]
