@@ -921,6 +921,13 @@ $messages['sah'] = array(
 	'reviewedversions-review' => '$2 кыттааччы ырыппыт <i>$1</i>',
 );
 
+/** Sardinian (Sardu)
+ * @author Andria
+ */
+$messages['sc'] = array(
+	'reviewedversions-page' => 'Nùmene pàgina:',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */
@@ -1080,11 +1087,11 @@ $messages['tk'] = array(
  * @author AnakngAraw
  */
 $messages['tl'] = array(
-	'reviewedversions' => 'Tingnan ang matatatag na mga bersyon',
+	'reviewedversions' => 'Nasuring mga bersyon',
 	'reviewedversions-leg1' => 'Talaan ng nasuring mga pagbabago para sa isang pahina',
 	'reviewedversions-page' => 'Pangalan ng pahina:',
 	'reviewedversions-none' => 'Wala pang nasusuring mga pagbabago sa/ang "[[:$1]]".',
-	'reviewedversions-list' => 'Ang sumusuunod ay isang talaan ng pagbabago sa/ng [[:$1]] na nasuri na:',
+	'reviewedversions-list' => 'Ang sumusunod ay isang talaan ng {{PLURAL:$2|nag-iisang pagbabago|mga pagbabago}} sa [[:$1]] na {{PLURAL:$2|may|may mga}} nasuri na:',
 	'reviewedversions-review' => 'Nasuri na noong <i>$1</i> ni $2',
 );
 

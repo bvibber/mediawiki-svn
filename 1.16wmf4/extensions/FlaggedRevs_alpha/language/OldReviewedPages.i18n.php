@@ -9,8 +9,8 @@ $messages = array();
 
 $messages['en'] = array(
 	'oldreviewedpages' => 'Pages with pending changes',
-	'oldreviewedpages-legend' => 'List reviewed pages with pending edits',
-	'oldreviewedpages-list' => 'This page lists {{PLURAL:$1|a reviewed page|reviewed pages}} having pending edits.',
+	'oldreviewedpages-legend' => 'List reviewed pages with pending changes',
+	'oldreviewedpages-list' => 'This page lists {{PLURAL:$1|a reviewed page|reviewed pages}} having pending changes.',
 	'oldreviewedpages-none' => 'There are currently no pages meeting these criteria',
 	'oldreviewedpages-hours' => '($1 {{PLURAL:$1|hour|hours}})',
 	'oldreviewedpages-days' => '($1 {{PLURAL:$1|day|days}})',
@@ -900,6 +900,9 @@ $messages['ja'] = array(
  */
 $messages['ka'] = array(
 	'oldreviewedpages-none' => 'ამ დროისათვის არ არსებობს სტატიები ასეთი კრიტერიუმებით',
+	'oldreviewedpages-recent' => '(1 საათზე ნაკლები)',
+	'oldreviewed-category' => 'კატეგორია:',
+	'oldreviewed-watched' => 'ჩემი კონტროლის სიის გვერდები',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -927,16 +930,22 @@ $messages['kn'] = array(
 );
 
 /** Korean (한국어)
+ * @author Devunt
  * @author Kwj2772
  */
 $messages['ko'] = array(
-	'oldreviewedpages' => '오래 전에 검토된 문서',
+	'oldreviewedpages' => '보류중인 편을 가지고 있는 문서',
+	'oldreviewedpages-legend' => '검토 대기 중인 편집이 있는 검토된 문서의 목록',
+	'oldreviewedpages-list' => '이 페이지에서는 검토 대기 중인 {{PLURAL:$1|편집}}이 있는 검토된 문서를 나열하고 있습니다.',
 	'oldreviewedpages-none' => '조건에 맞는 문서가 없습니다.',
 	'oldreviewedpages-hours' => '($1시간 전)',
 	'oldreviewedpages-days' => '($1일 전)',
 	'oldreviewedpages-recent' => '(1시간 미만)',
 	'oldreviewed-category' => '분류:',
 	'oldreviewed-watched' => '내가 주시하고 있는 문서',
+	'oldreviewed-stable' => '검토 설정이 된 문서',
+	'oldreviewed-diff' => '검토',
+	'oldreviewed-size' => '최대 변화량 (바이트):',
 	'oldreviewedpages-unwatched' => '(주시되지 않음)',
 	'oldreviewedpages-watched' => '($1명의 활동적인 {{PLURAL:$1|사용자가|사용자들이}} 주시중)',
 	'oldreviewedpages-viewing' => '(확인 중)',
@@ -1378,6 +1387,16 @@ $messages['sah'] = array(
 	'oldreviewedpages-viewing' => '(тургутулла тураллар)',
 );
 
+/** Sardinian (Sardu)
+ * @author Andria
+ */
+$messages['sc'] = array(
+	'oldreviewedpages-hours' => '($1 {{PLURAL:$1|ora|oras}})',
+	'oldreviewedpages-days' => '($1 {{PLURAL:$1|die|dies}})',
+	'oldreviewedpages-recent' => '(nemmancu 1 ora)',
+	'oldreviewed-category' => 'Categoria:',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */
@@ -1474,7 +1493,8 @@ $messages['sv'] = array(
  * @author వైజాసత్య
  */
 $messages['te'] = array(
-	'oldreviewedpages' => 'కాలంచెల్లిన పనఃసమీక్షించిన పేజీలు',
+	'oldreviewedpages' => 'మార్పులతో వేచియున్న పుటలు',
+	'oldreviewedpages-legend' => 'వేచియున్న మార్పులతో కూడిన పుటలను చూపించు',
 	'oldreviewedpages-list' => 'వేచియున్న మార్పులు కలిగిన {{PLURAL:$1|ఒక సమీక్షిత పేజీని|సమీక్షిత పేజీలను}} ఈ పేజీ చూపిస్తుంది.',
 	'oldreviewedpages-none' => 'ఈ నియమాలకు సరిపోలుతున్న పేజీలు ఏమీ ప్రస్తుతం లేవు',
 	'oldreviewedpages-hours' => '($1 {{PLURAL:$1|గంట|గంటలు}})',
@@ -1522,15 +1542,15 @@ $messages['tk'] = array(
  * @author AnakngAraw
  */
 $messages['tl'] = array(
-	'oldreviewedpages' => 'Wala na sa panahong nasuring mga pahina',
+	'oldreviewedpages' => 'Mga pahinang may nakaabang na mga pagbabago',
 	'oldreviewedpages-legend' => 'Nagtatala ng mga pahinang nasuri na ngunit may mga pagbabagong naghihintay na lamang na masuri pang muli',
-	'oldreviewedpages-list' => 'Itinatala ng pahinang ito ang mga nasuring nang mga pahina na mayroong naghihintay na mga pagbabago.',
+	'oldreviewedpages-list' => 'Nagtatala ang pahinang ito ng {{PLURAL:$1|isang nasuring pahina|nasuring mga pahina}} na mayroong naghihintay na mga pagbabago.',
 	'oldreviewedpages-none' => 'Sa kasalukuyan, walang mga pahinang umaabot sa ganitong mga kaurian',
 	'oldreviewedpages-hours' => '($1 {{PLURAL:$1|oras|mga oras}})',
 	'oldreviewedpages-days' => '($1 {{PLURAL:$1|araw|mga araw}})',
 	'oldreviewedpages-recent' => '(mas mababa kaysa 1 oras)',
 	'oldreviewed-category' => 'Kaurian:',
-	'oldreviewed-watched' => 'Nasa loob ng aking talaan ng mga binabantayan',
+	'oldreviewed-watched' => 'Mga pahinang nasa loob ng aking talaan ng mga binabantayan',
 	'oldreviewed-stable' => 'Napatatag na',
 	'oldreviewed-diff' => 'suriing muli',
 	'oldreviewed-size' => "Pinakamataas na bilang ng pagbabago (mga ''byte''):",

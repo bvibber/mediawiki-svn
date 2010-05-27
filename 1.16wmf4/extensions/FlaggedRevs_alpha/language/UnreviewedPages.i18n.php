@@ -295,6 +295,7 @@ $messages['da'] = array(
 );
 
 /** German (Deutsch)
+ * @author Kghbln
  * @author Raimond Spekking
  * @author Umherirrender
  */
@@ -305,7 +306,7 @@ $messages['de'] = array(
 	'unreviewed-diff' => 'sichten',
 	'unreviewed-unwatched' => '(unbeobachtet)',
 	'unreviewed-watched' => '(von $1 {{PLURAL:$1|aktivem Benutzer|aktiven Benutzern}} beobachtet)',
-	'unreviewed-list' => 'Diese Spezialseite zeigt Seiten, die bisher noch nicht mit dem angegebenem Level markiert wurden.',
+	'unreviewed-list' => 'Diese Spezialseite zeigt Seiten, die bisher noch nicht in der angegebenen Stufe markiert wurden.',
 	'unreviewed-none' => 'Es gibt keine Seiten, die den eingegebenen Kriterien entsprechen.',
 	'unreviewed-viewing' => '(wird überprüft)',
 	'unreviewed-hours' => '($1 {{PLURAL:$1|Stunde|Stunden}})',
@@ -1334,6 +1335,17 @@ $messages['sah'] = array(
 	'unreviewed-recent' => '(1 чаастан кылгас)',
 );
 
+/** Sardinian (Sardu)
+ * @author Andria
+ */
+$messages['sc'] = array(
+	'unreviewed-category' => 'Categoria:',
+	'unreviewed-diff' => 'revisiona',
+	'unreviewed-hours' => '($1 {{PLURAL:$1|ora|oras}})',
+	'unreviewed-days' => '($1 {{PLURAL:$1|die|dies}})',
+	'unreviewed-recent' => '(nemmancu 1 ora)',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */
@@ -1522,9 +1534,12 @@ $messages['tl'] = array(
 	'unreviewed-diff' => 'suriing muli',
 	'unreviewed-unwatched' => '(hindi binabantayan)',
 	'unreviewed-watched' => '($1 {{PLURAL:$1|tagagamit|mga tagagamit}} na nagmamasid)',
-	'unreviewed-list' => 'Nakatala sa pahinang ito ang mga pahina ng nilalaman na hindi pa nasusuring muli.',
+	'unreviewed-list' => 'Nakatala sa pahinang ito ang mga pahina ng nilalaman na hindi pa nasusuring muli para sa tinukoy na antas.',
 	'unreviewed-none' => 'Sa ngayon, wala pang mga pahinang nakakaabot sa ganitong mga kaurian (kategorya).',
 	'unreviewed-viewing' => '(nasa ilalim ng pagsusuri)',
+	'unreviewed-hours' => '($1 {{PLURAL:$1|oras|mga oras}})',
+	'unreviewed-days' => '($1 {{PLURAL:$1|araw|mga araw}})',
+	'unreviewed-recent' => '(mas mababa kaysa 1 oras)',
 );
 
 /** Turkish (Türkçe)

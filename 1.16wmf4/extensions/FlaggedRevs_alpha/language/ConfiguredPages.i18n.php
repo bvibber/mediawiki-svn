@@ -19,7 +19,7 @@ Some settings might change which version is displayed to readers or further rest
 	'configuredpages-prec-quality'  => 'latest quality',
 	'configuredpages-prec-pristine' => 'latest pristine',
 	'configuredpages-def-draft'     => 'latest version',
-	'configuredpages-def-stable'    => 'published version',
+	'configuredpages-def-stable'    => 'accepted version',
 );
 
 /** Message documentation (Message documentation)
@@ -407,10 +407,12 @@ $messages['ko'] = array(
 	'configuredpages-text' => '다음은 기본값과 다른 검토 설정이 되어 있는 문서의 목록입니다.
 
 어떤 설정은 독자에게 보여지는 판을 바꾸거나 검토 없이 편집할 수 있는 사용자를 제한할 수 있습니다.',
-	'configuredpages-none' => '이 목옥에 문서가 없습니다.',
+	'configuredpages-none' => '이 목록에 문서가 없습니다.',
 	'configuredpages-config' => '설정',
 	'configuredpages-precedence' => '우선 순위:',
-	'configuredpages-prec-none' => '최근 검토된 판',
+	'configuredpages-prec-none' => '최근 검토된 문서',
+	'configuredpages-prec-quality' => '최근의 고품질 문서',
+	'configuredpages-prec-pristine' => '최근의 깨끗한 문서',
 	'configuredpages-def-draft' => '최신 버전',
 	'configuredpages-def-stable' => '공개된 버전',
 );
@@ -638,6 +640,13 @@ $messages['sah'] = array(
 	'configuredpages-prec-pristine' => 'эрдэтээҥҥитэ баһыйыылаах',
 );
 
+/** Sardinian (Sardu)
+ * @author Andria
+ */
+$messages['sc'] = array(
+	'configuredpages-config' => 'Configuratzione',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */
@@ -729,10 +738,12 @@ $messages['vep'] = array(
 
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
+ * @author Trần Nguyễn Minh Huy
  */
 $messages['vi'] = array(
 	'configuredpages-none' => 'Danh sách không có trang nào.',
 	'configuredpages-config' => 'Thiết lập',
+	'configuredpages-precedence' => 'Bản trước:',
 	'configuredpages-prec-none' => 'không có bản trước',
 	'configuredpages-prec-quality' => 'bản chất lượng trước',
 	'configuredpages-prec-pristine' => 'bản trong sạch trước',

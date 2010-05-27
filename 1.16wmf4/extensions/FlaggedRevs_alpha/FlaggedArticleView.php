@@ -970,7 +970,7 @@ class FlaggedArticleView {
 				$templateIDs = $wgOut->mTemplateIds;
 				$fileSHA1Keys = $wgOut->fr_ImageSHA1Keys;
 			}
-			$form = FlaggedRevsXML::buildQuickReview( $this->article,
+			$form = RevisionReviewForm::buildQuickReview( $this->article,
 				$rev, $templateIDs, $fileSHA1Keys, $this->isDiffFromStable );
 			# Diff action: place the form at the top of the page
 			if ( $wgRequest->getVal( 'diff' ) ) {
@@ -1100,7 +1100,7 @@ class FlaggedArticleView {
 		global $wgRequest, $wgOut;
 	 	$tabs = array(
 	 		'read' => array( // view stable
-				'text'  => wfMsg( 'revreview-stable' ), // unused
+				'text'  => '', // unused
 				'href'  => $fa->getTitle()->getLocalUrl( 'stable=1' ),
 	 			'class' => ''
 	 		),

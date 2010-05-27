@@ -20,7 +20,7 @@ The average wait for edits by \'\'users that have not logged in\'\' to be review
 $4
 The average lag for [[Special:OldReviewedPages|pages with unreviewed edits pending]] is \'\'\'$2\'\'\'.
 These pages are considered \'\'outdated\'\'. Likewise, pages are considered \'\'synchronized\'\' if there are no edits pending review.
-The published version of a page is the newest revision that has been approved to show by default to all readers.',
+The accepted version of a page is the newest revision that has been approved to show by default to all readers.',
 	'validationstatistics-table'  => "Statistics for each namespace are shown below, ''excluding'' redirect pages.",
 	'validationstatistics-ns'     => 'Namespace',
 	'validationstatistics-total'  => 'Pages',
@@ -458,7 +458,7 @@ The average wait for edits by ''users that have not logged in'' to be reviewed i
 $4
 The average lag for [[Special:OldReviewedPages|pages with unreviewed edits pending]] is '''$2'''.
 These pages are considered ''outdated''. Likewise, pages are considered ''synchronised'' if there are no edits pending review.
-The published version of a page is the newest revision that has been approved to show by default to all readers.",
+The accepted version of a page is the newest revision that has been approved to show by default to all readers.",
 );
 
 /** Esperanto (Esperanto)
@@ -1051,8 +1051,10 @@ $messages['ka'] = array(
 	'validationstatistics-users' => "'''{{SITENAME}}-ს''' ამჟამად ჰყავს '''[[Special:ListUsers/editor|$1]]''' {{PLURAL:$1|მომხმარებელი|მომხმარებელი}} [[{{MediaWiki:Validationpage}}|რედაქტორის]] უფლებებით.
 
 რედაქტორები არისნ მომხმარებლები, რომელთაც შეუძლიათ სტატიის ცვლილებების შემოწმება.",
+	'validationstatistics-table' => "სტატისტიკა თითოეული სახელთა სივრცისათვის ნაჩვენებია ქვემოთ, ''გარდა'' გადამისამართების გვერდებისა.",
 	'validationstatistics-ns' => 'სახელთა სივრცე',
 	'validationstatistics-total' => 'გვერდები',
+	'validationstatistics-stable' => 'შემოწმებულია',
 	'validationstatistics-user' => 'მომხმარებელი',
 );
 
@@ -1092,12 +1094,18 @@ $messages['ko'] = array(
 '''로그인하지 않은 사용자'''의 편집의 평균 대기 시간은 '''$1'''이고 중앙값은 '''$3'''입니다.
 $4
 [[Special:OldReviewedPages|검토되지 않은 편집이 있는 문서]]의 검토 평균 대기 시간은 '''$2'''입니다.
-이 문서는 오래 전에 검토되었으며, [[{{MediaWiki:Validationpage}}|안정 버전]]이 현재 버전과 일치할 때 동기화되었다고 표현합니다.
-문서의 안정 버전이 모든 독자에게 기본적으로 보여질 것입니다.",
+이 문서는 오래 전에 검토되었으며, 검토를 기다리고 있는 편집이 없을 때 ''동기화''되었다고 표현합니다.
+검토를 거친 문서의 배포판이 모든 독자에게 기본적으로 보여질 것입니다.",
 	'validationstatistics-table' => "넘겨주기 문서를 '''제외한''' 문서의 검토 통계가 이름공간별로 보여지고 있습니다.",
 	'validationstatistics-ns' => '이름공간',
 	'validationstatistics-total' => '문서 수',
+	'validationstatistics-stable' => '검토됨',
+	'validationstatistics-latest' => '동기화됨',
+	'validationstatistics-synced' => '동기화됨/검토됨',
+	'validationstatistics-old' => '업데이트 필요함',
+	'validationstatistics-utable' => '아래는 지난 1시간 동안의 최고 검토자 5명의 목록입니다',
 	'validationstatistics-user' => '사용자',
+	'validationstatistics-reviews' => '검토',
 );
 
 /** Karachay-Balkar (Къарачай-Малкъар)
@@ -1637,6 +1645,15 @@ $messages['sah'] = array(
 	'validationstatistics-utable' => 'Бүтэһик чааска ордук көхтөөх 5 тургутааччы тиһигэ көстөр.',
 	'validationstatistics-user' => 'Кыттааччы',
 	'validationstatistics-reviews' => 'Бэрэбиэркэ',
+);
+
+/** Sardinian (Sardu)
+ * @author Andria
+ */
+$messages['sc'] = array(
+	'validationstatistics-ns' => 'Nùmene-logu',
+	'validationstatistics-total' => 'Pàginas',
+	'validationstatistics-user' => 'Usuàriu',
 );
 
 /** Slovak (Slovenčina)

@@ -367,9 +367,12 @@ $messages['kn'] = array(
 );
 
 /** Korean (한국어)
+ * @author Devunt
  * @author Kwj2772
  */
 $messages['ko'] = array(
+	'problemchanges' => '표시된 보류중인 변경 내용',
+	'problemchanges-legend' => '검토해야할 편집들이 표시된 리스트',
 	'problemchanges-none' => '이 조건에 맞는 문서가 없습니다.',
 	'problemchanges-category' => '분류:',
 );
@@ -610,6 +613,16 @@ $messages['tk'] = array(
 	'problemchanges-legend' => 'Tegli özgerdişleri gözden geçirmeklige garaşýan sahypalary sanawla',
 	'problemchanges-none' => 'Häzirki wagtda hiç bir sahypa bu şertlere gabat gelmeýär',
 	'problemchanges-category' => 'Kategoriýa:',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'problemchanges' => 'Tinatakang mga pagbabagong naghihintay',
+	'problemchanges-legend' => 'Itala ang mga pahinang may tinatakang mga pagbabago na naghihintay ng pagsusuri',
+	'problemchanges-none' => 'Kasalukuyang walang mga pahinang ummabot sa ganitong mga kategorya',
+	'problemchanges-category' => 'Kaurian:',
 );
 
 /** Turkish (Türkçe)
