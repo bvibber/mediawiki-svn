@@ -82,6 +82,7 @@ class SpecialPrefSwitch extends SpecialPage {
 	
 	public function __construct() {
 		parent::__construct( 'PrefSwitch' );
+		wfLoadExtensionMessages( 'PrefSwitch' );
 	}
 	public function execute( $par ) {
 		global $wgRequest, $wgOut, $wgUser, $wgPrefSwitchSurveys, $wgPrefSwitchStyleVersion;
