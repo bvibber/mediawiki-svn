@@ -786,6 +786,7 @@ Le valores de reimplaciamento non debe esser escappate.',
 );
 
 /** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
  * @author IvanLanin
  */
 $messages['id'] = array(
@@ -820,7 +821,7 @@ Nilai pengganti tidak boleh diloloskan.',
 	'masseditregex-listtype-categories' => 'Nama kategori (sunting tiap halaman dalam kategori ini; pemilihan ruang nama diabaikan)',
 	'masseditregex-listtype-backlinks' => 'Pranala balik (sunting halaman yang bertaut ke halaman-halaman ini)',
 	'masseditregex-namespace-intro' => 'Semua halaman ini berada dalam ruang nama ini:',
-	'masseditregex-exprnomatch' => 'Ekspresi "$1" tidak cocok dengan halaman apapun.',
+	'masseditregex-exprnomatch' => 'Ekspresi "$1" tidak cocok dengan halaman apa pun.',
 	'masseditregex-badregex' => 'Regex tidak valid:',
 	'masseditregex-editfailed' => 'Penyuntingan gagal.',
 	'masseditregex-tooltip-execute' => 'Terapkan perubahan ini ke setiap halaman',

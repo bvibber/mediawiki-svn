@@ -669,6 +669,16 @@ $messages['tk'] = array(
 	'usabilityinitiative-desc' => 'MediaWikiniň oňaýlylygyny güýçlendirmek maksady bilen Oňaýlylyk Başlangyjy tarapyndan taýýarlanylan funksiýalar',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'usabilityinitiative' => 'Pasimulang Pangpagkanagagamit',
+	'usabilityinitiative-desc' => 'Mga katangiang-kasangkapang pinaunlat ng Pampanimula ng Pagkanagagamit ng Wikipedia upang mapahusay ang paggamit ng MediaWiki',
+	'prefs-beta' => 'Mga kaangkapang-katangiang pang-beta',
+	'prefs-labs' => 'Mga kasangkapang-katangiang pang-Labs',
+);
+
 /** Turkish (Türkçe)
  * @author Joseph
  */

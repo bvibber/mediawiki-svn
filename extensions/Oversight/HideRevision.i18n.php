@@ -2011,6 +2011,7 @@ Nyebaraké informasi iki bisa ngakibataké hak pangawas (''oversight'') panjenen
 $messages['ka'] = array(
 	'hiderevision' => 'სამუდამოდ დამალე ცვლილებები',
 	'group-oversight' => 'რევიზორები',
+	'group-oversight-member' => 'ზედამხედველი',
 	'grouppage-oversight' => '{{ns:project}}:ოვერსაიტი',
 	'hiderevision-continue' => 'გაგრძელება',
 	'hiderevision-reason' => 'მიზეზი (ჩაიწერება დახურულ ჟურნალში)',

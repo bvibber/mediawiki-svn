@@ -219,6 +219,15 @@ $messages['sv'] = array(
 	'active-strategy-intro' => 'Antal redigeringar av arbetsgruppsidor under senaste ((PLURALIS: $1 | $1 dagen | $1 dagarna)).',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'activestrategy' => 'Masiglang Paraan',
+	'active-strategy-desc' => 'Nagpapaikta ng bilang ng mga pagbabago sa mga pahina ng madiskarteng pagpaplano',
+	'active-strategy-intro' => 'Bilang ng mga pagbabago sa mga pahina ng puwersang panggawain sa loob ng huling {{PLURAL:$1|$1 araw|$1 mga araw}}.',
+);
+
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Horacewai2
  */

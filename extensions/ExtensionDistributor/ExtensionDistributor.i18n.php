@@ -1526,6 +1526,8 @@ Windows では [http://www.7-zip.org/ 7-zip] がアーカイブの展開に利�
  * @author BRUTE
  */
 $messages['ka'] = array(
+	'extensiondistributor' => 'მედიავიკის გაფართოების ჩაწერა',
+	'extdist-no-such-extension' => 'არ არსებობს გაფართოება "$1"',
 	'extdist-submit-extension' => 'გაგრძელება',
 	'extdist-choose-version' => '<big>თქვენ იწერთ <b>$1</b> გაფართოებას.</big>
 

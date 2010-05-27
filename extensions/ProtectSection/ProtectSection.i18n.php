@@ -618,7 +618,9 @@ $messages['tl'] = array(
 	'protectsection_desc' => 'Nagpapahintulot sa mga pinapayagang mga tagagamit na isanggalang ang mga bahagi ng isang pahina sa pamamagitan ng tatak na <code>&lt;protect&gt;</code>',
 	'protectsection_add_remove' => 'Sinubukan mong magdagdag o magtanggal ng isang nakasanggalang na seksyon',
 	'protectsection_modify' => 'Sinubukan mong baguhin ang nakasanggalang na teksto',
+	'protectsection_add_above' => 'Sinubok mong pagsingit ng teksto sa harap ng isang seksyong prutektado',
 	'protectsection_forbidden' => 'Ipinagbabawal',
+	'right-protectsection' => 'Prutektahan ang mga seksyon ng pahina',
 );
 
 /** Turkish (Türkçe)

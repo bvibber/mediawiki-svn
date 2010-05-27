@@ -725,7 +725,7 @@ Ketika Anda memilih semua halaman yang ingin Anda perbaharui, klik pada tombol \
 	'refreshspecial-js-disabled' => '(<i>Anda tidak dapat memilih semua halaman ketika JavaScript diaktifkan</i>)',
 	'refreshspecial-select-all-pages' => 'Pilih semua halaman',
 	'refreshspecial-link-back' => 'Kembali ke halaman istimewa',
-	'refreshspecial-none-selected' => 'Anda belum memilih halaman istimewa apapun. Kembali ke pilihan default.',
+	'refreshspecial-none-selected' => 'Anda belum memilih halaman istimewa apa pun. Kembali ke pilihan default.',
 	'refreshspecial-db-error' => 'Gagal: kesalahan basis data',
 	'refreshspecial-no-page' => 'Tidak ada halaman istimewa tersebut',
 	'refreshspecial-slave-lagged' => 'Slave tertinggal, tunggu...',

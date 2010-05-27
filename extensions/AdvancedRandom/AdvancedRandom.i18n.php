@@ -308,11 +308,12 @@ $messages['ia'] = array(
 );
 
 /** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
  * @author Kandar
  */
 $messages['id'] = array(
 	'advancedrandom' => 'Sembarang lanjutan',
-	'advancedrandom-desc' => 'Dapatkan halaman sembarang dari ruang nama apapun, halaman artikel atau pembicaraan yang terhubung ke halaman yang diminta.
+	'advancedrandom-desc' => 'Dapatkan halaman sembarang dari ruang nama apa pun, halaman artikel atau pembicaraan yang terhubung ke halaman yang diminta.
 Dapat digunakan seperti [[{{#special:advancedrandom}}/{{ns:template}}:Featured/{{ns:talk}}]] untuk mendapatkan pembicaraan sembarang artikel pilihan, atau seperti [[{{#special:advancedrandom}}/{{ns:template}}:GFDL/{{ns:file}}]] untuk mendapatkan sembarang berkas GFDL.',
 );
 

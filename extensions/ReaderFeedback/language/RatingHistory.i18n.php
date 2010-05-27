@@ -2101,13 +2101,14 @@ $messages['tl'] = array(
 	'ratinghistory-table-rating' => 'Kaantasan',
 	'ratinghistory-table-votes' => 'Mga boto',
 	'ratinghistory-none' => 'Sa ngayon, walang makukuhang sapat na datong pambalik-pahayag para sa mga talangguhit (grap) mula sa mambabasa.',
-	'ratinghistory-legend' => "Ang '''pangaraw-araw na pangkaraniwang kaantasan''' <font color=\"blue\">''(bughaw)''</font> at  
-'''tumatakbong pangkaraniwang kaantasan''' <font color=\"green\">''(lunti)''</font> ay nakatalangguhit sa ibaba, ayon sa petsa. Ang  
-'''tumatakbong pangkaraniwang kaantasan''' ay payak na pinagsamasamang pangkaraniwang halaga ng lahat ng mga pangaraw-araw na kaantasang ''nasa loob'' ng saklaw ng kapanahunang ito para sa bawat araw.
-
-Sukat: '''[1]''' - Walang kuwenta; '''[2]''' - Mababa; '''[3]''' - Patas; '''[4]''' - Mataas; '''[5]''' - Mahusay;
-
-Ang '''bilang ng mga pagsusuri sa bawat araw''' <font color=\"red\">''(pula)''</font> ay ipinapakita sa mga talangguhit sa ibaba, sa isang sukat na ''1:\$1''.",
+	'ratinghistory-ratings' => "'''Kahulugan:''' '''(1)''' - Mahina; '''(2)''' - Mababa; '''(3)''' - Patas; '''(4)''' - Mataas; '''(5)''' - Mahusay;",
+	'ratinghistory-legend' => "Ang '''pang-araw-araw na bilang ng mga pagsuri''' <font color=\"red\">''(pula)''</font>,  
+'''pang-araw-araw na pangkaraniwang kaantasan''' <font color=\"blue\">''(bughaw)''</font>, at '''tumatakbong pangkaraniwang kaantasan''' <font color=\"green\">''(lunti)''</font> ay nakatalangguhit sa ibaba, ayon sa petsa.
+Ang '''tumatakbong pangkaraniwang kaantasan''' ay payak na ang pangkaraniwang kaantasan ng lahat ng mga pang-araw-araw ng mga kaantasan ''sa loob'' ng saklaw ng panahong ito para sa bawat araw.
+Ang mga sumusunod ay ang mga kaantasan:
+ 
+'''(1)''' - Mahina; '''(2)''' - Mababa; '''(3)''' - Patas; '''(4)''' - Mataas; '''(5)''' - Mahusay;",
+	'ratinghistory-graph-scale' => "'''Mga pagsusuri sa bawat araw''' <font color=\"red\">''(pula)''</font> ipinapakita sa tumbasang ''1:\$1''.",
 	'right-feedback' => "Gamitin ang pormularyong pangpagbibigay ng balik-pahayag (''feedback'') upang mabigyan ng kaantasan/halaga ang isang pahina",
 );
 

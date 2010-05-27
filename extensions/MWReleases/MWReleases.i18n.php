@@ -346,6 +346,13 @@ $messages['tk'] = array(
 	'mwreleases-desc' => 'Goldanylýan wersiýalaryň [[Mediawiki:Mwreleases-list|sanawyny]] goşýar, API bilen baryp bolýar',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'mwreleases-desc' => 'Nagdaragdag ng isang [[Mediawiki:Mwreleases-list|talaan]] ng tinatangkilik na mga labas, na mapupuntahan sa pamamagitan ng API',
+);
+
 /** Turkish (Türkçe)
  * @author Joseph
  */

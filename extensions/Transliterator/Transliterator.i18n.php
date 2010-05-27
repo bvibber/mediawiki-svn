@@ -474,6 +474,18 @@ $messages['sv'] = array(
 	'transliterator-error-prefix' => '[[MediaWiki:$2]] måste vara minst {{PLURAL:$1|ett tecken|$1 tecken}} långt.',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'transliterator-desc' => 'Nagbibigay ng isang maisasaayos na tungkuling pamparser para sa transliterasyon',
+	'transliterator-error-ambiguous' => 'Alanganing tuntuning <code>$1</code> sa loob ng [[MediaWiki:$2]]',
+	'transliterator-error-syntax' => 'Hindi tanggap na sintaks na <code>$1</code> sa loob ng [[MediaWiki:$2]]',
+	'transliterator-error-rulecount' => 'Mahigit sa  $1 {{PLURAL:$1|tuntunin|mga tuntunin}} sa loob ng [[MediaWiki:$2]]',
+	'transliterator-error-rulesize' => 'Ang tuntuning <code>$1</code> ay may mahigit sa $3 {{PLURAL:$3|panitikr|mga panitiks}} sa kaliwa sa loob ng [[MediaWiki:$2]]',
+	'transliterator-error-prefix' => 'Hindi dapat bababa sa $1 na {{PLURAL:$1|panitik|mga panitik}} ang haba ng [[MediaWiki:$2]].',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */

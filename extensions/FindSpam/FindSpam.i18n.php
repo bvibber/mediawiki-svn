@@ -459,7 +459,7 @@ $messages['id'] = array(
 	'findspam-desc' => 'Menambahkan [[Special:FindSpam|halaman istimewa]] untuk mencari spam yang baru ditambahkan',
 	'findspam-ip' => 'Alamat IP:',
 	'findspam-ok' => 'OK',
-	'findspam-notextfound' => 'Tidak ditemukan kontribusi apapun',
+	'findspam-notextfound' => 'Tidak ditemukan kontribusi apa pun',
 	'right-findspam' => 'Cari spam yang baru ditambahkan',
 );
 

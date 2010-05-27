@@ -699,6 +699,19 @@ $messages['te'] = array(
 	'uos-other' => '*ఇతర',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'useroptionstats' => 'Estadistika ng pagpili ng tagagamit',
+	'useroptionstats-desc' => '[[Special:UserOptionStats|Natatanging pahina]] para sa pag-uulat sa paggamit ng pampili ng tagagamit ng MediaWiki',
+	'uos-warn' => 'Hindi nakalagay ang PHPlot!',
+	'uos-choose' => 'Pumili ng isa sa sumusunod na mga pagpipiliang pangtagagamit: $1',
+	'uos-unknown' => '*Likas na nakatakda',
+	'uos-other' => '*Iba pa',
+	'uos-title' => 'Pamamahagi ng mga halaga ng pampili na pangtagagamit na $1',
+);
+
 /** Turkish (Türkçe)
  * @author Vito Genovese
  */

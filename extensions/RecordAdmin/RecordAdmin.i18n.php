@@ -2137,7 +2137,12 @@ $messages['tl'] = array(
 	'recordadmin-modified' => 'Binago',
 	'recordadmin-actions' => 'Mga galaw',
 	'recordadmin-needscontent' => 'Idagdag ang nilalaman...',
+	'recordadmin-editwithform' => 'Mga pag-aari',
+	'recordadmin-typeinfo' => '$1 tala',
 	'right-recordadmin' => 'Hanapin at baguhin ang mga pahina ng tala/rekord',
+	'recordadmin-export-csv' => 'CSV',
+	'recordadmin-export-pdf' => 'PDF',
+	'recordadmin-notset' => 'Walang "$1"',
 );
 
 /** Turkish (Türkçe)

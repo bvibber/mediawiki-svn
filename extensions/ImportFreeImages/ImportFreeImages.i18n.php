@@ -1219,6 +1219,12 @@ $messages['tl'] = array(
 	'importfreeimages_owner' => 'May-akda',
 	'importfreeimages_importthis' => 'angkatin ito',
 	'importfreeimages_next' => 'Susunod na $1',
+	'importfreeimages_size_square' => 'Parisukat',
+	'importfreeimages_size_thumbnail' => 'Kagyat',
+	'importfreeimages_size_small' => 'Maliit',
+	'importfreeimages_size_medium' => 'Gitnang sukat',
+	'importfreeimages_size_large' => 'Malaki',
+	'importfreeimages_size_original' => 'Orihinal',
 );
 
 /** Turkish (Türkçe)

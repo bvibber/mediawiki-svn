@@ -30,6 +30,13 @@ $messages['hu'] = array(
 	'addmediawizard-desc' => 'Média hozzáadása varázsló, a Kaltura és a Wikimédia Alapítvány közös fejlesztése',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'addmediawizard-desc' => 'Tambahkan media wizard, dikembangkan atas kerjasama Kaltura dan Wikimedia Foundation',
+);
+
 /** Igbo (Igbo)
  * @author Ukabia
  */

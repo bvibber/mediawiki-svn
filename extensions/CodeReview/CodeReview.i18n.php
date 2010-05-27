@@ -5015,6 +5015,7 @@ $messages['ka'] = array(
 	'code-field-author' => 'ავტორი',
 	'code-field-status' => 'სტატუსი',
 	'code-field-timestamp' => 'თარიღი',
+	'code-field-tests' => 'ტესტი',
 	'code-field-select' => 'არჩევა',
 	'code-rev-author' => 'ავტორი:',
 	'code-rev-date' => 'თარიღი:',
@@ -5023,6 +5024,7 @@ $messages['ka'] = array(
 	'code-rev-modified-a' => 'დაემატა',
 	'code-rev-modified-r' => 'ჩაენაცვლა',
 	'code-rev-modified-d' => 'წაშლილი',
+	'code-rev-modified-m' => 'განახლებული',
 	'code-rev-status' => 'სტატუსი:',
 	'code-rev-status-set' => 'სტატუსის შეცვლა',
 	'code-rev-tags' => 'ღილაკები:',
@@ -5065,6 +5067,13 @@ $messages['ka'] = array(
 	'codereview-tests-running' => 'კონკრეტული მაგალითების შესრულება...',
 	'codereview-tests-aborted' => 'შემოწმების შესრულება დასრულდა.',
 	'codereview-tests-failed' => 'წარუმატებელია',
+	'codereview-email-body' => 'მომხმარებელმა "$1" დადო კომენტარი $3-ზე.
+
+ბმული: $2
+
+კომენტარი:
+
+$4',
 	'codereview-email-body3' => 'ავტომატურმა შემოწმებამ აღმოაჩინა რეგრესია $1 ცვლილებასთან.
 
 სრული URL: $2
@@ -9078,15 +9087,21 @@ $messages['tl'] = array(
 	'code-change-tags' => "binago ang '''mga tatak''' para sa $1",
 	'code-change-removed' => 'tinanggal:',
 	'code-change-added' => 'idinagdag:',
+	'code-old-status' => 'Lumang kalagayan',
+	'code-new-status' => 'Bagong kalagayan',
 	'code-prop-changes' => 'Talaan ng kalagayan at pagtatatak',
 	'codereview-desc' => '[[Special:Code|Kasangkapang na pang muling pagsusuri ng kodigo]] na may [[Special:RepoAdmin|Suportang pamuksa]]',
 	'code-no-repo' => 'Walang naisaayos na repositoryo!',
+	'code-repo-not-found' => 'Hindi umiiral ang repositoryong <b>$1</b>!',
 	'code-load-diff' => 'Ikinakarga ang pagkakaiba…',
 	'code-notes' => 'kamakailang mga puna/kumento',
+	'code-statuschanges' => 'katayuan ng mga pagbabago',
+	'code-mycommits' => 'mga nagawa ko',
 	'code-authors' => 'mga may-akda',
-	'code-status' => 'kalagayan',
+	'code-status' => 'mga kalagayan',
 	'code-tags' => 'mga tatak',
-	'code-authors-text' => 'Nasa ibaba ang isang talaan ng mga may-akda ng repositoryo ayon sa kamakailan lamang na mga pagsasagawa/pagsasakatuparan.',
+	'code-tests' => 'Mga kaso ng pagsubok',
+	'code-authors-text' => 'Nasa ibaba ang isang talaan ng mga may-akda ng repositoryo ayon sa kamakailan lamang na mga pagsasagawa.  Ipinapakita sa loob ng mga saklong ang mga akawnt na panglokal na wiki.',
 	'code-author-haslink' => 'Nakakawing ang may-akdang ito sa tagagamit ng wiking si $1',
 	'code-author-orphan' => 'Ang may-akdang ito ay walang kawing sa isang kuwenta/akawnt ng wiki',
 	'code-author-dolink' => 'Ikawing ang may-akdang ito sa isang tagagamit ng wiki:',
@@ -9097,6 +9112,7 @@ $messages['tl'] = array(
 	'code-author-link' => 'ikakawing?',
 	'code-author-unlink' => 'tanggalin sa pagkakakawing?',
 	'code-author-unlinksuccess' => 'Tinanggal na sa pagkakakawing ang may-akdang si $1',
+	'code-browsing-path' => "Tinitingnan-tingnan ng mga rebisyon sa loob ng '''$1'''",
 	'code-field-id' => 'Pagbabago',
 	'code-field-author' => 'May-akda',
 	'code-field-user' => 'Tagapagpuna/Nagbigay ng kumento',
@@ -9104,6 +9120,7 @@ $messages['tl'] = array(
 	'code-field-status' => 'Kalagayan',
 	'code-field-timestamp' => 'Petsa',
 	'code-field-comments' => 'Mga tala',
+	'code-field-tests' => 'Mga pagsusulit',
 	'code-field-path' => 'Daanan',
 	'code-field-text' => 'Tala',
 	'code-field-select' => 'Piliin',
@@ -9126,9 +9143,12 @@ $messages['tl'] = array(
 	'code-rev-tag-remove' => 'Alisin ang mga tatak:',
 	'code-rev-comment-by' => 'Komento ni $1',
 	'code-rev-comment-preview' => 'Unang tingin',
+	'code-rev-inline-preview' => 'Paunang tingin:',
 	'code-rev-diff' => 'Pagkakaiba',
 	'code-rev-diff-link' => 'pagkakaiba',
+	'code-rev-diff-too-large' => 'Napakalaki ng kaibahan upang maipakita.',
 	'code-rev-purge-link' => 'purgahin',
+	'code-rev-total' => 'Kabuuang bilang ng mga resulta: $1',
 	'code-status-new' => 'bago',
 	'code-status-fixme' => 'ayusinako',
 	'code-status-reverted' => 'ibinalik',
@@ -9138,6 +9158,10 @@ $messages['tl'] = array(
 	'code-status-deferred' => 'ipinagpaliban',
 	'code-pathsearch-legend' => 'Maghanap ng mga pagbabago sa repositoryong ito sa pamamagitan ng daanan',
 	'code-pathsearch-path' => 'Daanan:',
+	'code-pathsearch-filter' => 'Ginamit na pansala:',
+	'code-revfilter-cr_status' => 'Katayuan = $1',
+	'code-revfilter-cr_author' => 'May-akda = $1',
+	'code-revfilter-clear' => 'Dalisayin ang pansala',
 	'code-rev-submit' => 'Sagipin an mga pagbabago',
 	'code-rev-submit-next' => 'Sagipin at susunod na hindi pa nalulutas',
 	'code-batch-status' => 'Baguhin ang kalagayan:',
@@ -9148,8 +9172,14 @@ $messages['tl'] = array(
 	'code-release-legend' => 'Gawin ang pagpapalabas ng mga tala',
 	'code-release-startrev' => 'Simula ng pagbabago:',
 	'code-release-endrev' => 'Huling pagbabago:',
+	'code-release-badrange' => 'Napakalaki ng saklaw!',
 	'codereview-subtitle' => 'Para kay $1',
 	'codereview-reply-link' => 'tugon',
+	'codereview-tests-succeeded2' => 'Nagtagumpay ang $1 na {{PLURAL:$2|pagsusulit|mga pagsusulit}}',
+	'codereview-tests-failed2' => 'Nagtagumpay ang $1 na {{PLURAL:$2|pagsusulit|mga pagsusulit}}, $3 nabigo na {{PLURAL:$4|pagsusulit|mga pagsusulit}}:',
+	'codereview-tests-running' => 'Tumatakbo ang mga kasong sinusubok...',
+	'codereview-tests-aborted' => 'Iniurong ang pagpapatakbo ng pagsubok.',
+	'codereview-tests-failed' => 'Nabigo',
 	'codereview-email-subj' => '[$1] [$2]: Nagdagdag ng bagong puna/kumento',
 	'codereview-email-body' => 'Nagtala si tagagamit "$1" ng bagong kumento/puna sa $3.
 
@@ -9166,6 +9196,14 @@ Buong URL: $3
 Buod ng pagsasagawa:
 
 $4',
+	'codereview-email-subj3' => '[$1] [$2]: Pagpapabalik na napansin ng kusang pagsubok',
+	'codereview-email-body3' => 'Nagbunyag ang kusang pagsusulit ng isang pagpapabalik dahil sa mga pagbabago sa loob ng $1.
+
+Buongl URL: $2
+
+Buod ng pagsasagawa:
+
+$3',
 	'repoadmin' => 'Pamamahala ng Repositoryo',
 	'repoadmin-new-legend' => 'Lumikha ng isang bagong repositoryo',
 	'repoadmin-new-label' => 'Pangalan ng repositoryo:',

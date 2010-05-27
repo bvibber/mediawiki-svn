@@ -1042,6 +1042,23 @@ $messages['tk'] = array(
 	'fundraiserportal-tourmaline-close' => 'Indiden beýläk görkezme',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'fundraiserportal' => 'Pintuan para sa Paglikom na Pampondo',
+	'fundraiserportal-desc' => 'Nagdaragdag ng isang pintuang pang-"mag-abuloy po sana" sa itaas ng panggilid na bareta.',
+	'fundraiserportal-plain-button' => 'Tangkilikin ang Wikipedia!',
+	'fundraiserportal-ruby-button' => 'Mag-abuloy na Ngayon',
+	'fundraiserportal-rubytext-button' => 'Mag-abuloy na Ngayon',
+	'fundraiserportal-rubytext-message' => 'Nakakatulong sa amin ang bawat abuloy upang mapanatiling malaya ang Wikipedia para sa lahat.',
+	'fundraiserportal-rubytext-close' => 'Itago ang mga ito mula ngayon',
+	'fundraiserportal-sapphire-button' => 'Mag-abuloy na Ngayon',
+	'fundraiserportal-tourmaline-button' => 'Mag-ambag na Ngayon',
+	'fundraiserportal-tourmaline-message' => 'Nakakatulong sa amin ang bawat abuloy upang mapanatiling malaya ang Wikipedia para sa lahat.',
+	'fundraiserportal-tourmaline-close' => 'Itago ito mula ngayon',
+);
+
 /** Turkish (Türkçe)
  * @author Joseph
  */

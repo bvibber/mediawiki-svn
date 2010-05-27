@@ -139,6 +139,14 @@ $messages['ia'] = array(
 	'nll-lastseparator' => '&#32;e&#32;',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'nll-desc' => 'Daftar dalam bahasa natural yang mudah format',
+	'nll-lastseparator' => '&#32;dan&#32;',
+);
+
 /** Japanese (日本語)
  * @author Naohiro19
  * @author 青子守歌

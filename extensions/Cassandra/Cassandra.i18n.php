@@ -81,6 +81,13 @@ $messages['ia'] = array(
 	'cassandra-desc' => 'Immagazina le texto del versiones in un base de datos [http://cassandra.apache.org/ Apache Cassandra]',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'cassandra-desc' => 'Simpan teks revisi di basis data [http://cassandra.apache.org/ Cassandra Apache]',
+);
+
 /** Japanese (日本語)
  * @author 青子守歌
  */
