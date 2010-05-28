@@ -85,9 +85,9 @@ public class FeatureCache<C extends WikiWordConcept, K> implements FeatureFetche
 		if (!todo.isEmpty()) {
 			Map<Integer, ConceptFeatures<C, K>> parentFeatures = parent.getFeatures(todo);
 			features.putAll(parentFeatures);
-			cache.putAll(parentFeatures);
 		}
 		
+		cache.putAll(features);
 		return features;
 	}
 	

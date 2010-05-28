@@ -90,6 +90,7 @@ public class MeaningCache<C extends WikiWordConcept> implements MeaningFetcher<C
 				 List<? extends C> m = cache.get(t.getTerm());
 				if (m!=null) {
 					meanings.put(t, m);
+					cache.put(t.getTerm(), m);
 					continue;
 				} else {
 					todo.add(t);
