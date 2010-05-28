@@ -238,7 +238,8 @@ class jsClassLoader {
 			$moduleName = str_replace( array( '../', '\'', '"'), '', trim( $moduleName ));
 			// Check if there is there are module loader files
 			if( is_file( $mwEmbedAbsolutePath . '/modules/' . $moduleName . '/loader.js' )){
-				array_push( self::$moduleList, $moduleName );			} else {
+				array_push( self::$moduleList, $moduleName );
+			} else {
 				// Not valid module ( missing loader.js )
 				throw new MWException( "Missing module: $moduleName \n" );
 			}
