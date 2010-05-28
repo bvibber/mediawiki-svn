@@ -11,12 +11,10 @@ import de.brightbyte.data.LabeledMatrix;
 import de.brightbyte.data.LabeledVector;
 import de.brightbyte.data.MapLabeledMatrix;
 import de.brightbyte.data.MapLabeledVector;
-import de.brightbyte.data.measure.CosineVectorSimilarity;
 import de.brightbyte.data.measure.Measure;
-import de.brightbyte.data.measure.ScalarVectorSimilarity;
 import de.brightbyte.data.measure.Similarity;
 import de.brightbyte.util.PersistenceException;
-import de.brightbyte.wikiword.disambig.Disambiguator.Disambiguation;
+import de.brightbyte.wikiword.model.ConceptFeatures;
 import de.brightbyte.wikiword.model.LocalConcept;
 import de.brightbyte.wikiword.model.PhraseNode;
 import de.brightbyte.wikiword.model.TermReference;
@@ -74,7 +72,7 @@ public class SlidingCoherenceDisambiguator extends CoherenceDisambiguator {
 	 * @see de.brightbyte.wikiword.disambig.Disambiguator#disambiguate(java.util.List)
 	 */
 	public <X extends TermReference>CoherenceDisambiguation<X, LocalConcept> disambiguate(PhraseNode<X> root, Map<X, List<? extends LocalConcept>> meanings, Collection<? extends LocalConcept> context) throws PersistenceException {
-		if (meanings.isEmpty()) return new CoherenceDisambiguation<X, LocalConcept>(Collections.<X, LocalConcept>emptyMap(), Collections.<X>emptyList(), new MapLabeledVector<Integer>(), 0.0, "no terms or meanings");
+		if (meanings.isEmpty()) return new CoherenceDisambiguation<X, LocalConcept>(Collections.<X, LocalConcept>emptyMap(), Collections.<X>emptyList(), Collections.<Integer, ConceptFeatures<LocalConcept, Integer>>emptyMap(), new MapLabeledVector<Integer>(), 0.0, "no terms or meanings");
 
 		int sz = meanings.size();
 		if (context!=null) sz += context.size();

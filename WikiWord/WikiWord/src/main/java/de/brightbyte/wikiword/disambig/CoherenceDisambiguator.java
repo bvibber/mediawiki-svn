@@ -32,20 +32,32 @@ public class CoherenceDisambiguator extends AbstractDisambiguator<TermReference,
 
 	public static class CoherenceDisambiguation<T extends TermReference, C extends LocalConcept> extends Disambiguator.Disambiguation<T, C> {
 		protected LabeledVector<Integer> centroid;
+		protected Map<Integer, ConceptFeatures<C, Integer>> features;
 
-		public CoherenceDisambiguation(Interpretation<T, C> interpretation, LabeledVector<Integer> centroid, double score, String description) {
+		public CoherenceDisambiguation(Interpretation<T, C> interpretation, Map<Integer, ConceptFeatures<C, Integer>> features, LabeledVector<Integer> centroid, double score, String description) {
 			super(interpretation, score, description);
 			this.centroid = centroid;
+			this.features = features;
 		}
 
-		public CoherenceDisambiguation(Map<T, C> meanings, List<T> sequence, LabeledVector<Integer> centroid, double score, String description) {
+		public CoherenceDisambiguation(Map<T, C> meanings, List<T> sequence, Map<Integer, ConceptFeatures<C, Integer>> features, LabeledVector<Integer> centroid, double score, String description) {
 			super(meanings, sequence, score, description);
 			this.centroid = centroid;
+			this.features = features;
 		}
 
 		public LabeledVector<Integer> getCentroid() {
 			return centroid;
 		}
+
+		public Map<Integer, ConceptFeatures<C, Integer>> getFeatures() {
+			return features;
+		}
+		
+		public ConceptFeatures<C, Integer> getFeature(int concept) {
+			return getFeatures().get(concept);
+		}
+		
 	}
 	
 	protected int minPopularity = 2; //FIXME: use complex cutoff specifier!
@@ -217,7 +229,7 @@ public class CoherenceDisambiguator extends AbstractDisambiguator<TermReference,
 	 * @see de.brightbyte.wikiword.disambig.Disambiguator#disambiguate(java.util.List)
 	 */
 	public <X extends TermReference>CoherenceDisambiguation<X, LocalConcept> disambiguate(PhraseNode<X> root, Map<X, List<? extends LocalConcept>> meanings, Collection<? extends LocalConcept> context) throws PersistenceException {
-		if (meanings.isEmpty()) return new CoherenceDisambiguation<X, LocalConcept>(Collections.<X, LocalConcept>emptyMap(), Collections.<X>emptyList(), new MapLabeledVector<Integer>(), 0.0, "no terms or meanings");
+		if (meanings.isEmpty()) return new CoherenceDisambiguation<X, LocalConcept>(Collections.<X, LocalConcept>emptyMap(), Collections.<X>emptyList(), Collections.<Integer, ConceptFeatures<LocalConcept, Integer>>emptyMap(), new MapLabeledVector<Integer>(), 0.0, "no terms or meanings");
 		
 		LabeledMatrix<LocalConcept, LocalConcept> similarities = new MapLabeledMatrix<LocalConcept, LocalConcept>(true);
 		FeatureFetcher<LocalConcept, Integer> features = getFeatureCache(meanings, context); 
@@ -384,11 +396,12 @@ public class CoherenceDisambiguator extends AbstractDisambiguator<TermReference,
 		int c = interp.getSequence().size();
 		
 		if (c == 0) {
-			CoherenceDisambiguation<X, LocalConcept> r = new CoherenceDisambiguation<X, LocalConcept>(interp.getMeanings(), interp.getSequence(), new MapLabeledVector<Integer>(), 0, "empty");
+			CoherenceDisambiguation<X, LocalConcept> r = new CoherenceDisambiguation<X, LocalConcept>(interp.getMeanings(), interp.getSequence(), Collections.<Integer, ConceptFeatures<LocalConcept, Integer>>emptyMap(), new MapLabeledVector<Integer>(), 0, "empty");
 			return r;
 		} 
 		
 		LabeledVector<Integer> sum = new MapLabeledVector<Integer>();
+		Map<Integer, ConceptFeatures<LocalConcept, Integer>> disambigFeatures = new HashMap<Integer, ConceptFeatures<LocalConcept, Integer>>();
 		double sim = 0, pop = 0, weight = 0;
 		int i=0, j=0;
 		for (Map.Entry<? extends TermReference, LocalConcept> ea: concepts.entrySet()) {
@@ -399,6 +412,7 @@ public class CoherenceDisambiguator extends AbstractDisambiguator<TermReference,
 			if (a==null) continue;
 			
 			ConceptFeatures<LocalConcept, Integer> fa = features.getFeatures(a);
+			disambigFeatures.put(a.getId(), fa);
 			sum.add(fa.getFeatureVector());
 
 			j=0;
@@ -483,7 +497,7 @@ public class CoherenceDisambiguator extends AbstractDisambiguator<TermReference,
 		double score = scoreCombiner.apply(simf, popf);
 		if (score<0 || score>1) throw new SanityException("encountered insane score ("+score+"); check scoreCombiner!");
 		
-		CoherenceDisambiguation<X, LocalConcept> r = new CoherenceDisambiguation<X, LocalConcept>(interp.getMeanings(), interp.getSequence(), centroid, score, "simf="+simf+", popf="+popf+", sim="+sim+", pop="+pop+", weight="+weight);
+		CoherenceDisambiguation<X, LocalConcept> r = new CoherenceDisambiguation<X, LocalConcept>(interp.getMeanings(), interp.getSequence(), disambigFeatures, centroid, score, "simf="+simf+", popf="+popf+", sim="+sim+", pop="+pop+", weight="+weight);
 		return r;
 	}
 
