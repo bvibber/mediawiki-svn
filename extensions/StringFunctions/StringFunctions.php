@@ -96,13 +96,17 @@
 
 */
 
+if ( !defined( 'MEDIAWIKI' ) ) {
+	die();
+}
+
 $wgExtensionCredits['parserhook'][] = array(
-	'path'            => __FILE__,
-	'name'            => 'StringFunctions',
-	'version'         => '2.0.3', // Nov 30, 2008
-	'descriptionmsg'  => 'stringfunctions-desc',
-	'author'          => array('Ross McClure', 'Juraj Simlovic'),
-	'url'             => 'http://www.mediawiki.org/wiki/Extension:StringFunctions',
+	'path' => __FILE__,
+	'name' => 'StringFunctions',
+	'version' => '2.0.3', // Nov 30, 2008
+	'author' => array( 'Ross McClure', 'Juraj Simlovic' ),
+	'url' => 'http://www.mediawiki.org/wiki/Extension:StringFunctions',
+	'descriptionmsg' => 'stringfunctions-desc',
 );
 
 $dir = dirname( __FILE__ ) . '/';
@@ -112,40 +116,40 @@ $wgExtensionFunctions[] = 'wfStringFunctions';
 
 $wgHooks['LanguageGetMagic'][] = 'wfStringFunctionsLanguageGetMagic';
 
-function wfStringFunctions ( ) {
+function wfStringFunctions() {
 	global $wgParser, $wgExtStringFunctions;
 	global $wgStringFunctionsLimitSearch;
 	global $wgStringFunctionsLimitReplace;
 	global $wgStringFunctionsLimitPad;
 
-	$wgExtStringFunctions = new ExtStringFunctions ( );
-	$wgStringFunctionsLimitSearch  =  30;
-	$wgStringFunctionsLimitReplace =  30;
+	$wgExtStringFunctions = new ExtStringFunctions();
+	$wgStringFunctionsLimitSearch  = 30;
+	$wgStringFunctionsLimitReplace = 30;
 	$wgStringFunctionsLimitPad     = 100;
 
-	$wgParser->setFunctionHook('len',      array(&$wgExtStringFunctions,'runLen'      ));
-	$wgParser->setFunctionHook('pos',      array(&$wgExtStringFunctions,'runPos'      ));
-	$wgParser->setFunctionHook('rpos',     array(&$wgExtStringFunctions,'runRPos'     ));
-	$wgParser->setFunctionHook('sub',      array(&$wgExtStringFunctions,'runSub'      ));
-	$wgParser->setFunctionHook('pad',      array(&$wgExtStringFunctions,'runPad'      ));
-	$wgParser->setFunctionHook('replace',  array(&$wgExtStringFunctions,'runReplace'  ));
-	$wgParser->setFunctionHook('explode',  array(&$wgExtStringFunctions,'runExplode'  ));
-	$wgParser->setFunctionHook('urlencode',array(&$wgExtStringFunctions,'runUrlEncode'));
-	$wgParser->setFunctionHook('urldecode',array(&$wgExtStringFunctions,'runUrlDecode'));
+	$wgParser->setFunctionHook( 'len', array( &$wgExtStringFunctions, 'runLen' ) );
+	$wgParser->setFunctionHook( 'pos', array( &$wgExtStringFunctions, 'runPos' ) );
+	$wgParser->setFunctionHook( 'rpos', array( &$wgExtStringFunctions, 'runRPos' ) );
+	$wgParser->setFunctionHook( 'sub', array( &$wgExtStringFunctions, 'runSub' ) );
+	$wgParser->setFunctionHook( 'pad', array( &$wgExtStringFunctions, 'runPad' ) );
+	$wgParser->setFunctionHook( 'replace', array( &$wgExtStringFunctions, 'runReplace' ) );
+	$wgParser->setFunctionHook( 'explode', array( &$wgExtStringFunctions, 'runExplode' ) );
+	$wgParser->setFunctionHook( 'urlencode', array( &$wgExtStringFunctions, 'runUrlEncode' ) );
+	$wgParser->setFunctionHook( 'urldecode', array( &$wgExtStringFunctions, 'runUrlDecode' ) );
 }
 
-function wfStringFunctionsLanguageGetMagic( &$magicWords, $langCode = "en" ) {
+function wfStringFunctionsLanguageGetMagic( &$magicWords, $langCode = 'en' ) {
 	switch ( $langCode ) {
 		default:
-		$magicWords['len']          = array ( 0, 'len' );
-		$magicWords['pos']          = array ( 0, 'pos' );
-		$magicWords['rpos']         = array ( 0, 'rpos' );
-		$magicWords['sub']          = array ( 0, 'sub' );
-		$magicWords['pad']          = array ( 0, 'pad' );
-		$magicWords['replace']      = array ( 0, 'replace' );
-		$magicWords['explode']      = array ( 0, 'explode' );
-		$magicWords['urlencode']    = array ( 0, 'urlencode' );
-		$magicWords['urldecode']    = array ( 0, 'urldecode' );
+		$magicWords['len']          = array( 0, 'len' );
+		$magicWords['pos']          = array( 0, 'pos' );
+		$magicWords['rpos']         = array( 0, 'rpos' );
+		$magicWords['sub']          = array( 0, 'sub' );
+		$magicWords['pad']          = array( 0, 'pad' );
+		$magicWords['replace']      = array( 0, 'replace' );
+		$magicWords['explode']      = array( 0, 'explode' );
+		$magicWords['urlencode']    = array( 0, 'urlencode' );
+		$magicWords['urldecode']    = array( 0, 'urldecode' );
 	}
 	return true;
 }
@@ -156,15 +160,16 @@ class ExtStringFunctions {
 	 * Returns part of the perl regexp pattern that matches a marker.
 	 * Unfortunatelly, we are still backward-supporting old versions.
 	 */
-	function mwMarkerRE ( &$parser )
-	{
-		if ( defined('Parser::MARKER_SUFFIX') )
+	function mwMarkerRE( &$parser ) {
+		if ( defined( 'Parser::MARKER_SUFFIX' ) ) {
 			$suffix = preg_quote( Parser::MARKER_SUFFIX, '/' );
-		elseif ( isset($parser->mMarkerSuffix) )
+		} elseif ( isset( $parser->mMarkerSuffix ) ) {
 			$suffix = preg_quote( $parser->mMarkerSuffix, '/' );
-		elseif ( defined('MW_PARSER_VERSION') && strcmp( MW_PARSER_VERSION, '1.6.1' ) > 0 )
+		} elseif ( defined( 'MW_PARSER_VERSION' ) && strcmp( MW_PARSER_VERSION, '1.6.1' ) > 0 ) {
 			$suffix = "QINU\x07";
-		else $suffix = 'QINU';
+		} else {
+			$suffix = 'QINU';
+		}
 
 		return preg_quote( $parser->mUniqPrefix, '/' ) . '.*?' . $suffix;
 	}
@@ -174,17 +179,17 @@ class ExtStringFunctions {
 	 *
 	 * Main idea: Count multibytes. Find markers. Substract.
 	 */
-	function runLen ( &$parser, $inStr = '' ) {
-
-		$len = mb_strlen ( (string)$inStr );
+	function runLen( &$parser, $inStr = '' ) {
+		$len = mb_strlen( (string)$inStr );
 
 		$count = preg_match_all (
-			'/' . $this->mwMarkerRE($parser) . '/',
+			'/' . $this->mwMarkerRE( $parser ) . '/',
 			(string) $inStr, $matches
 		);
 
-		foreach ($matches[0] as $match)
-			$len -= strlen ($match) - 1;
+		foreach ( $matches[0] as $match ) {
+			$len -= strlen( $match ) - 1;
+		}
 
 		return $len;
 	}
@@ -194,19 +199,21 @@ class ExtStringFunctions {
 	 * $chars is set to the resulting array of multibyte characters.
 	 * Returns count($chars).
 	 */
-	function mwSplit ( &$parser, $str, &$chars ) {
+	function mwSplit( &$parser, $str, &$chars ) {
 		# Get marker prefix & suffix
 		$prefix = preg_quote( $parser->mUniqPrefix, '/' );
-		if ( defined('Parser::MARKER_SUFFIX') )
+		if ( defined( 'Parser::MARKER_SUFFIX' ) ) {
 			$suffix = preg_quote( Parser::MARKER_SUFFIX, '/' );
-		elseif ( isset($parser->mMarkerSuffix) )
+		} elseif ( isset( $parser->mMarkerSuffix ) ) {
 			$suffix = preg_quote( $parser->mMarkerSuffix, '/' );
-		elseif ( defined('MW_PARSER_VERSION') && strcmp( MW_PARSER_VERSION, '1.6.1' ) > 0 )
+		} elseif ( defined( 'MW_PARSER_VERSION' ) && strcmp( MW_PARSER_VERSION, '1.6.1' ) > 0 ) {
 			$suffix = "QINU\x07";
-		else $suffix = 'QINU';
+		} else {
+			$suffix = 'QINU';
+		}
 
 		# Treat strip markers as single multibyte characters
-		$count = preg_match_all('/' . $prefix . '.*?' . $suffix . '|./su', $str, $arr);
+		$count = preg_match_all( '/' . $prefix . '.*?' . $suffix . '|./su', $str, $arr );
 		$chars = $arr[0];
 		return $count;
 	}
@@ -217,33 +224,39 @@ class ExtStringFunctions {
 	 * Note: If the needle is not found, empty string is returned.
 	 * Note: The needle is limited to specific length.
 	 */
-	function runPos ( &$parser, $inStr = '', $inNeedle = '', $inOffset = 0 ) {
+	function runPos( &$parser, $inStr = '', $inNeedle = '', $inOffset = 0 ) {
 		global $wgStringFunctionsLimitSearch;
 
 		if ( $inNeedle === '' ) {
 			# empty needle
-			$needle = array(' ');
+			$needle = array( ' ' );
 			$nSize = 1;
 		} else {
 			# convert needle
-			$nSize = $this->mwSplit ( $parser, $inNeedle, $needle );
+			$nSize = $this->mwSplit( $parser, $inNeedle, $needle );
 
 			if ( $nSize > $wgStringFunctionsLimitSearch ) {
 				$nSize = $wgStringFunctionsLimitSearch;
-				$needle = array_slice ( $needle, 0, $nSize );
+				$needle = array_slice( $needle, 0, $nSize );
 			}
 		}
 
 		# convert string
 		$size = $this->mwSplit( $parser, $inStr, $chars ) - $nSize;
-		$inOffset = max ( intval($inOffset), 0 );
+		$inOffset = max( intval( $inOffset ), 0 );
 
 		# find needle
 		for ( $i = $inOffset; $i <= $size; $i++ ) {
-			if ( $chars[$i] !== $needle[0] ) continue;
+			if ( $chars[$i] !== $needle[0] ) {
+				continue;
+			}
 			for ( $j = 1; ; $j++ ) {
-				if ( $j >= $nSize ) return $i;
-				if ( $chars[$i + $j] !== $needle[$j] ) break;
+				if ( $j >= $nSize ) {
+					return $i;
+				}
+				if ( $chars[$i + $j] !== $needle[$j] ) {
+					break;
+				}
 			}
 		}
 
@@ -257,16 +270,16 @@ class ExtStringFunctions {
 	 * Note: If the needle is not found, -1 is returned.
 	 * Note: The needle is limited to specific length.
 	 */
-	function runRPos ( &$parser, $inStr = '', $inNeedle = '' ) {
+	function runRPos( &$parser, $inStr = '', $inNeedle = '' ) {
 		global $wgStringFunctionsLimitSearch;
 
 		if ( $inNeedle === '' ) {
 			# empty needle
-			$needle = array(' ');
+			$needle = array( ' ' );
 			$nSize = 1;
 		} else {
 			# convert needle
-			$nSize = $this->mwSplit ( $parser, $inNeedle, $needle );
+			$nSize = $this->mwSplit( $parser, $inNeedle, $needle );
 
 			if ( $nSize > $wgStringFunctionsLimitSearch ) {
 				$nSize = $wgStringFunctionsLimitSearch;
@@ -279,31 +292,38 @@ class ExtStringFunctions {
 
 		# find needle
 		for ( $i = $size; $i >= 0; $i-- ) {
-			if ( $chars[$i] !== $needle[0] ) continue;
+			if ( $chars[$i] !== $needle[0] ) {
+				continue;
+			}
 			for ( $j = 1; ; $j++ ) {
-				if ( $j >= $nSize ) return $i;
-				if ( $chars[$i + $j] !== $needle[$j] ) break;
+				if ( $j >= $nSize ) {
+					return $i;
+				}
+				if ( $chars[$i + $j] !== $needle[$j] ) {
+					break;
+				}
 			}
 		}
 
 		# return -1 upon not found
-		return "-1";
+		return '-1';
 	}
 
 	/**
 	 * {{#sub:value|start|length}}
 	 * Note: If length is zero, the rest of the input is returned.
 	 */
-	function runSub ( &$parser, $inStr = '', $inStart = 0, $inLength = 0 ) {
+	function runSub( &$parser, $inStr = '', $inStart = 0, $inLength = 0 ) {
 		# convert string
 		$this->mwSplit( $parser, $inStr, $chars );
 
 		# zero length
-		if ( intval($inLength) == 0 )
-		return join('', array_slice( $chars, intval($inStart) ));
+		if ( intval( $inLength ) == 0 ) {
+			return join( '', array_slice( $chars, intval( $inStart ) ) );
+		}
 
 		# non-zero length
-		return join('', array_slice( $chars, intval($inStart), intval($inLength) ));
+		return join( '', array_slice( $chars, intval( $inStart ), intval( $inLength ) ) );
 	}
 
 	/**
@@ -314,7 +334,7 @@ class ExtStringFunctions {
 		global $wgStringFunctionsLimitPad;
 
 		# direction
-		switch ( strtolower ( $inDirection ) ) {
+		switch ( strtolower( $inDirection ) ) {
 			case 'center':
 				$direction = STR_PAD_BOTH;
 				break;
@@ -328,21 +348,24 @@ class ExtStringFunctions {
 		}
 
 		# prevent markers in padding
-		$a = explode ( $parser->mUniqPrefix, $inWith, 2 );
-		if ( $a[0] === '' )
+		$a = explode( $parser->mUniqPrefix, $inWith, 2 );
+		if ( $a[0] === '' ) {
 			$inWith = ' ';
-		else $inWith = $a[0];
+		} else {
+			$inWith = $a[0];
+		}
 
 		# limit pad length
-		$inLen = intval ( $inLen );
-		if ($wgStringFunctionsLimitPad > 0)
-			$inLen = min ( $inLen, $wgStringFunctionsLimitPad );
+		$inLen = intval( $inLen );
+		if ( $wgStringFunctionsLimitPad > 0 ) {
+			$inLen = min( $inLen, $wgStringFunctionsLimitPad );
+		}
 
 		# adjust for multibyte strings
 		$inLen += strlen( $inStr ) - $this->mwSplit( $parser, $inStr, $a );
 
 		# pad
-		return str_pad ( $inStr, $inLen, $inWith, $direction );
+		return str_pad( $inStr, $inLen, $inWith, $direction );
 	}
 
 	/**
@@ -356,46 +379,52 @@ class ExtStringFunctions {
 
 		if ( $inReplaceFrom === '' ) {
 			# empty needle
-			$needle = array(' ');
+			$needle = array( ' ' );
 			$nSize = 1;
 		} else {
 			# convert needle
-			$nSize = $this->mwSplit ( $parser, $inReplaceFrom, $needle );
+			$nSize = $this->mwSplit( $parser, $inReplaceFrom, $needle );
 			if ( $nSize > $wgStringFunctionsLimitSearch ) {
 				$nSize = $wgStringFunctionsLimitSearch;
-				$needle = array_slice ( $needle, 0, $nSize );
+				$needle = array_slice( $needle, 0, $nSize );
 			}
 		}
 
 		# convert product
-		$pSize = $this->mwSplit ( $parser, $inReplaceTo, $product );
+		$pSize = $this->mwSplit( $parser, $inReplaceTo, $product );
 		if ( $pSize > $wgStringFunctionsLimitReplace ) {
 			$pSize = $wgStringFunctionsLimitReplace;
-			$product = array_slice ( $product, 0, $pSize );
+			$product = array_slice( $product, 0, $pSize );
 		}
 
 		# remove markers in product
 		for( $i = 0; $i < $pSize; $i++ ) {
-			if( strlen( $product[$i] ) > 6 ) $product[$i] = ' ';
+			if( strlen( $product[$i] ) > 6 ) {
+				$product[$i] = ' ';
+			}
 		}
 
 		# convert string
-		$size = $this->mwSplit ( $parser, $inStr, $chars ) - $nSize;
+		$size = $this->mwSplit( $parser, $inStr, $chars ) - $nSize;
 
 		# replace
 		for ( $i = 0; $i <= $size; $i++ ) {
-			if ( $chars[$i] !== $needle[0] ) continue;
+			if ( $chars[$i] !== $needle[0] ) {
+				continue;
+			}
 			for ( $j = 1; ; $j++ ) {
 				if ( $j >= $nSize ) {
-					array_splice ( $chars, $i, $j, $product );
+					array_splice( $chars, $i, $j, $product );
 					$size += ( $pSize - $nSize );
 					$i += ( $pSize - 1 );
 					break;
 				}
-				if ( $chars[$i + $j] !== $needle[$j] ) break;
+				if ( $chars[$i + $j] !== $needle[$j] ) {
+					break;
+				}
 			}
 		}
-		return join('', $chars);
+		return join( '', $chars );
 	}
 
 	/**
@@ -405,16 +434,16 @@ class ExtStringFunctions {
 	 * Note: The divider is limited to specific length.
 	 * Note: Empty string is returned, if there is not enough exploded chunks.
 	 */
-	function runExplode ( &$parser, $inStr = '', $inDiv = '', $inPos = 0 ) {
+	function runExplode( &$parser, $inStr = '', $inDiv = '', $inPos = 0 ) {
 		global $wgStringFunctionsLimitSearch;
 
 		if ( $inDiv === '' ) {
 			# empty divider
-			$div = array(' ');
+			$div = array( ' ' );
 			$dSize = 1;
 		} else {
 			# convert divider
-			$dSize = $this->mwSplit ( $parser, $inDiv, $div );
+			$dSize = $this->mwSplit( $parser, $inDiv, $div );
 			if ( $dSize > $wgStringFunctionsLimitSearch ) {
 				$dSize = $wgStringFunctionsLimitSearch;
 				$div = array_slice ( $div, 0, $dSize );
@@ -422,35 +451,46 @@ class ExtStringFunctions {
 		}
 
 		# convert string
-		$size = $this->mwSplit ( $parser, $inStr, $chars ) - $dSize;
+		$size = $this->mwSplit( $parser, $inStr, $chars ) - $dSize;
 
 		# explode
-		$inPos = intval ( $inPos );
+		$inPos = intval( $inPos );
 		$tokens = array();
 		$start = 0;
 		for ( $i = 0; $i <= $size; $i++ ) {
-			if ( $chars[$i] !== $div[0] ) continue;
+			if ( $chars[$i] !== $div[0] ) {
+				continue;
+			}
 			for ( $j = 1; ; $j++ ) {
 				if ( $j >= $dSize ) {
-					if ( $inPos > 0 ) $inPos--;
-					else {
-						$tokens[] = join('', array_slice($chars, $start, ($i - $start)));
-						if ( $inPos == 0 ) return $tokens[0];
+					if ( $inPos > 0 ) {
+						$inPos--;
+					} else {
+						$tokens[] = join( '', array_slice( $chars, $start, ( $i - $start ) ) );
+						if ( $inPos == 0 ) {
+							return $tokens[0];
+						}
 					}
 					$start = $i + $j;
 					$i = $start - 1;
 					break;
 				}
-				if ( $chars[$i + $j] !== $div[$j] ) break;
+				if ( $chars[$i + $j] !== $div[$j] ) {
+					break;
+				}
 			}
 		}
-		$tokens[] = join('', array_slice( $chars, $start ));
+		$tokens[] = join( '', array_slice( $chars, $start ) );
 
 		# negative $inPos
-		if ( $inPos < 0 ) $inPos += count ( $tokens );
+		if ( $inPos < 0 ) {
+			$inPos += count( $tokens );
+		}
 
 		# out of range
-		if ( !isset ( $tokens[$inPos] ) ) return "";
+		if ( !isset( $tokens[$inPos] ) ) {
+			return '';
+		}
 
 		# in range
 		return $tokens[$inPos];
@@ -459,16 +499,16 @@ class ExtStringFunctions {
 	/**
 	 * {{#urlencode:value}}
 	 */
-	function runUrlEncode ( &$parser, $inStr = '' ) {
+	function runUrlEncode( &$parser, $inStr = '' ) {
 		# encode
-		return urlencode ( $inStr );
+		return urlencode( $inStr );
 	}
 
 	/**
 	 * {{#urldecode:value}}
 	 */
-	function runUrlDecode ( &$parser, $inStr = '' ) {
+	function runUrlDecode( &$parser, $inStr = '' ) {
 		# decode
-		return urldecode ( $inStr );
+		return urldecode( $inStr );
 	}
 }
