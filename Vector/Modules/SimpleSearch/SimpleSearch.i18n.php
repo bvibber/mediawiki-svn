@@ -225,10 +225,12 @@ $messages['eu'] = array(
 );
 
 /** Persian (فارسی)
+ * @author Ebraminio
  * @author Mardetanha
  */
 $messages['fa'] = array(
 	'vector-simplesearch-search' => 'جستجو',
+	'vector-simplesearch-containing' => 'حاوی...',
 );
 
 /** Finnish (Suomi)

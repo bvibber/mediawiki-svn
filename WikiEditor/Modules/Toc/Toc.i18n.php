@@ -226,6 +226,13 @@ $messages['eu'] = array(
 	'wikieditor-toc-hide' => 'Edukiak ezkutatu',
 );
 
+/** Persian (فارسی)
+ * @author Ebraminio
+ */
+$messages['fa'] = array(
+	'wikieditor-toc-preference' => 'فعال‌سازی فهرست قابل پیمایش',
+);
+
 /** Finnish (Suomi)
  * @author Crt
  * @author Str4nd

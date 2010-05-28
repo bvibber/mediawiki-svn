@@ -1052,6 +1052,18 @@ $messages['tk'] = array(
 	'tooltip-pt-optin-feedback' => 'Täze funksiýalardaky tejribeleriňiz barada seslenme ýazyň',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'optin-try' => 'Subukan ang Beta',
+	'tooltip-pt-optin-try' => 'Subukan ang bagong mga kasangkapang-katangian',
+	'optin-leave' => 'Umalis mula sa Beta',
+	'tooltip-pt-optin-leave' => 'Huwag buhayin ang bagong mga kasangkapang-katangian',
+	'optin-feedback' => 'Mga puna sa Beta',
+	'tooltip-pt-optin-feedback' => 'Magbigay ng mga puna tungkol sa iyong karanasan sa bagong mga kasangkapang-katangian',
+);
+
 /** Turkish (Türkçe)
  * @author Joseph
  * @author Vito Genovese

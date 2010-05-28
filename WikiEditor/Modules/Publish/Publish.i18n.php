@@ -383,6 +383,16 @@ $messages['eu'] = array(
 	'wikieditor-publish-dialog-goback' => 'Atzera joan',
 );
 
+/** Persian (فارسی)
+ * @author Ebraminio
+ */
+$messages['fa'] = array(
+	'wikieditor-publish-button-publish' => 'انتشار',
+	'wikieditor-publish-button-cancel' => 'انصراف',
+	'wikieditor-publish-dialog-minor' => 'ویرایش جزئی',
+	'wikieditor-publish-dialog-goback' => 'بازگشت به عقب',
+);
+
 /** Finnish (Suomi)
  * @author Crt
  * @author Str4nd

@@ -111,6 +111,13 @@ $messages['eu'] = array(
 	'vector-collapsiblenav-preference' => 'Ezkerreko nabigazio menua irekigarri bihurtzen du',
 );
 
+/** Persian (فارسی)
+ * @author Ebraminio
+ */
+$messages['fa'] = array(
+	'vector-collapsiblenav-preference' => 'فعال‌کردن منوی تاشوی ناوبری  سمت چپ',
+);
+
 /** French (Français)
  * @author IAlex
  */
