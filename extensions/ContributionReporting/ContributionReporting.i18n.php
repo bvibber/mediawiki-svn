@@ -2574,6 +2574,7 @@ $messages['ka'] = array(
 	'contrib-hist-date' => 'დრო და თარიღი',
 	'contrib-hist-amount' => 'თანხა',
 	'contrib-hist-anonymous' => 'ანონიმური',
+	'contributionstatistics' => 'წვლილის სტატისტიკა',
 	'contribstats-day' => 'დღე',
 	'contribstats-month' => 'თვე',
 	'contribstats-currency' => 'ვალუტა',

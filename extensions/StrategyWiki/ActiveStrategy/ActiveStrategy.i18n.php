@@ -27,6 +27,14 @@ $messages['br'] = array(
 	'active-strategy-intro' => 'Niver a gemm pajennoù evit ar strollad labour e-kerzh an {{PLURAL:$1|devezh ziwezhañ|$1 zevezh ziwezhañ}}.',
 );
 
+/** Czech (Česky)
+ * @author Mormegil
+ */
+$messages['cs'] = array(
+	'active-strategy-desc' => 'Zobrazuje počty editací stránek plánování strategie',
+	'active-strategy-intro' => 'Počet editací stránek pracovních skupin za {{PLURAL:$1|poslední den|poslední $1 dny|posledních $1 dní}}.',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */

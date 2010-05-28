@@ -3340,9 +3340,11 @@ $wgGoogleMapsMessages['lt'] = array(
 );
 
 /** Latvian (Latviešu)
+ * @author GreenZeb
  * @author Yyy
  */
 $wgGoogleMapsMessages['lv'] = array(
+	'gm-search' => 'Meklēt',
 	'gm-kml-loading' => 'ielādējas...',
 );
 

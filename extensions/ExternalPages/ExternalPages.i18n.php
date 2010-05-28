@@ -504,6 +504,16 @@ $messages['sk'] = array(
 	'externalpages-no-page' => 'Neuvedená stránka',
 );
 
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Charmed94
+ */
+$messages['sr-ec'] = array(
+	'externalpages' => 'Спољашње странице',
+	'externalpages-desc' => 'Преузима и приказује странице из даљинских WMF сајтова',
+	'externalpages-bad-page' => 'Одређена је лоша страница',
+	'externalpages-no-page' => 'Страница није одређена.',
+);
+
 /** Swedish (Svenska)
  * @author Boivie
  * @author Per

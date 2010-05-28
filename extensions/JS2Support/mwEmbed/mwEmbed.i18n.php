@@ -170,8 +170,18 @@ $messages['eu'] = array(
 	'mwe-cancel' => 'Ezeztatu',
 );
 
+/** Finnish (Suomi)
+ * @author Crt
+ * @author Str4nd
+ */
 $messages['fi'] = array(
+	'mwe-loading_txt' => 'Ladataan...',
+	'mwe-error_load_lib' => 'Virhe: JavaScript $1 ei ollut haettavissa tai se ei määrittele luokkaa $2',
+	'mwe-apiproxy-setup' => 'Pystytetään API-välityspalvelinta',
+	'mwe-ok' => 'OK',
 	'mwe-cancel' => 'Peruuta',
+	'mwe-must-login-gadget' => 'Sinun tulee <a target="_new" href="$1">kirjautua sisään</a>, jotta voisit käyttää pienoisohjelmaa',
+	'mwe-test-plural' => 'Ajoin {{PLURAL:$1|$1 testin|$1 testiä}}',
 );
 
 /** French (Français)

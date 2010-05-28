@@ -234,6 +234,13 @@ Saioa hasi baduzu, mezu hau kendu dezakezu zure hobespenen orrialdeko "{{int:pre
 	'vector-editwarning-preference' => 'Abisa nazazu gorde gabeko aldaketak eginez orrialde bat uzten dudanean',
 );
 
+/** Persian (فارسی)
+ * @author Ebraminio
+ */
+$messages['fa'] = array(
+	'vector-editwarning-preference' => 'زمان خروج از صفحه در صورت داشتن ویرایش‌های‌ ذخیره‌نشده به من هشدار بده',
+);
+
 /** Finnish (Suomi)
  * @author Crt
  * @author Str4nd

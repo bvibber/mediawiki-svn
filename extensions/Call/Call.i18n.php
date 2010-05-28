@@ -1031,6 +1031,18 @@ V prípade problémov môžete skúsiť <b>{{#special:call}}/DebuG</b>",
 	'call-save-failed' => "Nasledovný text NEBOL uložený na stránku ''$1'', pretože taká stránka už existuje.",
 );
 
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Charmed94
+ */
+$messages['sr-ec'] = array(
+	'call' => 'Позив',
+	'call-desc' => 'Направите хипервезу ка шаблону (или на обичну вики страницу) с параметрима у пролазу.
+Може се користити на командној линији прегледача или у вики тексту',
+	'call-save' => "Одредишна датотека овог позива би била сачувана на страницу под називом ''$1''.",
+	'call-save-success' => 'Следећи текст је сачуван у страници <big>[[$1]]</big>.',
+	'call-save-failed' => 'Следећи текст није сачуван на страници <big>[[$1]]</big> јер та страница већ постоји.',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

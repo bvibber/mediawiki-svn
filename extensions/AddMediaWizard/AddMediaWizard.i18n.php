@@ -15,6 +15,13 @@ $messages['en'] = array(
 	'addmediawizard-desc' => 'Add media wizard, developed in partnership by Kaltura and Wikimedia Foundation',
 );
 
+/** Finnish (Suomi)
+ * @author Str4nd
+ */
+$messages['fi'] = array(
+	'addmediawizard-desc' => 'Lisää ohjatun mediatoiminnon, joka on kehitetty yhteistyössä Kalturan ja Wikimedia Foundationin kanssa.',
+);
+
 /** Hebrew (עברית)
  * @author Rotemliss
  * @author YaronSh
@@ -84,6 +91,13 @@ $messages['pt-br'] = array(
  */
 $messages['sl'] = array(
 	'addmediawizard-desc' => 'Doda predstavnostni čarovnik, ki je nastal v sodelovanju Kalture in fundacije Wikimedia',
+);
+
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Charmed94
+ */
+$messages['sr-ec'] = array(
+	'addmediawizard-desc' => 'Додај медија водич, развијен у партнерству с Калтуром и Викимедија Задужбином',
 );
 
 /** Swedish (Svenska)

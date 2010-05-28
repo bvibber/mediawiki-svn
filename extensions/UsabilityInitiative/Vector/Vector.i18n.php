@@ -171,6 +171,13 @@ $messages['es'] = array(
 	'vector-desc' => 'Mejora los elementos de la interfaz de usuario del skin Vector.',
 );
 
+/** Persian (فارسی)
+ * @author Ebraminio
+ */
+$messages['fa'] = array(
+	'vector' => 'بهبودهای رابط کاربر برای پوستهٔ وکتور',
+);
+
 /** Finnish (Suomi)
  * @author Str4nd
  */

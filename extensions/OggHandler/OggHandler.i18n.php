@@ -958,6 +958,7 @@ $messages['eu'] = array(
 );
 
 /** Persian (فارسی)
+ * @author Ebraminio
  * @author Huji
  */
 $messages['fa'] = array(
@@ -972,7 +973,7 @@ $messages['fa'] = array(
 	'ogg-long-error' => '(پرونده Ogg غیرمجاز: $1)',
 	'ogg-play' => 'پخش',
 	'ogg-pause' => 'توقف',
-	'ogg-stop' => 'قطع',
+	'ogg-stop' => 'باز ایست',
 	'ogg-play-video' => 'پخش تصویر',
 	'ogg-play-sound' => 'پخش صوت',
 	'ogg-no-player' => 'متاسفانه دستگاه شما نرم‌افزار پخش‌کنندهٔ مناسب ندارد. لطفاً <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">یک برنامهٔ پخش‌کننده بارگیری کنید</a>.',
@@ -982,7 +983,7 @@ $messages['fa'] = array(
 	'ogg-player-thumbnail' => 'فقط تصاویر ثابت',
 	'ogg-player-soundthumb' => 'فاقد پخش‌کننده',
 	'ogg-player-selected' => '(انتخاب شده)',
-	'ogg-use-player' => 'استفاده از پخش‌کننده:',
+	'ogg-use-player' => 'این پخش‌کننده را به کارگیر:',
 	'ogg-more' => 'بیشتر...',
 	'ogg-dismiss' => 'بستن',
 	'ogg-download' => 'بارگیری پرونده',

@@ -2195,7 +2195,7 @@ $messages['dsb'] = array(
 	'configure-ext-ext-dependencies' => "'''Warnowanje:''' toś to rozšyrjenje trjeba {{PLURAL:$2|slědujuce rozšyrjenje|slědujucej rozšyrjeni|slědujuce rozšyrjenja|slědujucych rozšyrjenjow}} za aktiwizěrowanje: $1.",
 	'configure-ext-ext-dependency-err' => "'''Zmólka:''' rozšyrjenje $1 trjeba rozšyrjenje $2 za aktiwizěrowanje.",
 	'configure-ext-doc' => 'Glědaj dolumentaciju online',
-	'configure-ext-schemachange' => "'''Warnowanje:''' toś to rozšyrjenje pomina se aktualizaciju datoweje banki, aby funkcioněrowało korektnje!",
+	'configure-ext-schemachange' => "'''Warnowanje:''' toś to rozšyrjenje pomina se [http://www.mediawiki.org/wiki/Manual:Update.php aktualizaciju datoweje banki], aby funkcioněrowało korektnje!",
 	'configure-ext-settings' => 'Nastajenja',
 	'configure-ext-settings-dep-errors' => 'Toś to rozšyrjenje njedajo se zmóžniś, dokulaž {{PLURAL:$1|slědujuce nastajenje ma|slědujucej nastajeni matej|slědujuce nastajenja maju|slědujucych nastajenjow ma}} njedowólonu gódnotu.',
 	'configure-ext-settings-dep-error' => '$1: trěbna gódnota: $2, aktualna gódnota: $3',
@@ -2917,6 +2917,13 @@ $messages['eu'] = array(
 	'configure-boolop-description-xor' => 'Bakarrik baldintza bete behar da',
 	'configure-boolop-description-not' => 'Baldintzak ez dira bete behar',
 	'configure-farmer-settings' => '[[Special:Configure|Wiki hau konfiguratu]].',
+);
+
+/** Persian (فارسی)
+ * @author Ebraminio
+ */
+$messages['fa'] = array(
+	'viewconfig' => 'نمایش پیکربندی ویکی',
 );
 
 /** Finnish (Suomi)
@@ -7662,7 +7669,7 @@ $messages['pms'] = array(
 	'configure-ext-ext-dependencies' => "'''Atension:''' sta estension-sì a l'ha damanca che {{PLURAL:$2|l'estension|j'estension}} sì-sota a sio ativà: $1.",
 	'configure-ext-ext-dependency-err' => "'''Eror:''' l'estension $1 a veul che l'estension $2 a sia ativà.",
 	'configure-ext-doc' => 'Varda documentassion an linia',
-	'configure-ext-schemachange' => "'''Atension:''' sta estension-sì a ciama n'agiornament dël databese për travajé da bin!",
+	'configure-ext-schemachange' => "'''Atension:''' sta estension-sì a ciama n'[http://www.mediawiki.org/wiki/Manual:Update.php agiornament dël database] për travajé da bin!",
 	'configure-ext-settings' => 'Regolassion',
 	'configure-ext-settings-dep-errors' => "St'estension-sì a peul pa esse abilità përchè {{PLURAL:$1|la regolassion sota a l'ha|le regolassion sota a l'han}} un valor pa acetàbil:",
 	'configure-ext-settings-dep-error' => '$1: valor ciamà: $2, valor corent: $3',

@@ -1201,6 +1201,24 @@ $messages['sl'] = array(
 	'right-adminlinks' => 'Ogled povezav na [[Special:AdminLinks|Skrbniških povezavah]]',
 );
 
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Charmed94
+ */
+$messages['sr-ec'] = array(
+	'adminlinks' => 'Администраторске везе',
+	'adminlinks-desc' => 'Додаје [[Special:AdminLinks|посебне странице]] које садрже корисне везе за администраторе',
+	'adminlinks_documentation' => '$1 документација',
+	'adminlinks_general' => 'Опште',
+	'adminlinks_editsidebar' => 'Уреди бочну траку',
+	'adminlinks_editcss' => 'Уреди CSS датотеку',
+	'adminlinks_editmainpagename' => 'Измени назив главне странице',
+	'adminlinks_users' => 'Корисници',
+	'adminlinks_createuser' => 'Направи корисника',
+	'adminlinks_browsesearch' => 'Претраживање',
+	'adminlinks_importexport' => 'Увожење и извожење',
+	'right-adminlinks' => 'Погледајте везу до [[Special:AdminLinks|администраторских везâ]]',
+);
+
 /** Swedish (Svenska)
  * @author Gabbe.g
  */

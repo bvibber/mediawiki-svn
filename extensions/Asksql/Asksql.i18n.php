@@ -1115,12 +1115,21 @@ Ta funkcija lahko pogosto precej obremeni strežnik, zato jo uporabljajte varčn
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Charmed94
  * @author Sasa Stefanovic
  */
 $messages['sr-ec'] = array(
+	'asksql' => 'SQL упит',
+	'asksql-desc' => 'Одради SQL упите преко [[Special:Asksql|посебне странице]]',
+	'asksqltext' => "Користите образац испод да направите директан упит базе података.
+Користите апострофе ('као ово') да ограничите буквалне ниске.
+Ово често може довести до значајног оптерећења сервера, зато користите ову функцију пажљиво.",
+	'sqlislogged' => 'Упамтите да су сви упити забележени.',
 	'sqlquery' => 'Унеси упит',
-	'querybtn' => 'Постави упит',
-	'querysuccessful' => 'Упит успешан',
+	'querybtn' => 'Пошаљи упит',
+	'selectonly' => 'Дозвољени су упити који се само могу читати.',
+	'querysuccessful' => 'Упит је успешан',
+	'right-asksql' => 'Направи SQL упите',
 );
 
 /** Serbian Latin ekavian (Srpski (latinica))

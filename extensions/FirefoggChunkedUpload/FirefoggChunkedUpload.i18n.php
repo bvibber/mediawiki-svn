@@ -187,6 +187,13 @@ $messages['ru'] = array(
 	'firefoggcu-desc' => 'Порционный протокол загрузки Firefogg',
 );
 
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Charmed94
+ */
+$messages['sr-ec'] = array(
+	'firefoggcu-desc' => 'Firefogg-ов протокол отпремања',
+);
+
 /** Telugu (తెలుగు)
  * @author Ravichandra
  */

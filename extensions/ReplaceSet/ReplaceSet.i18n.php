@@ -362,6 +362,16 @@ $messages['sv'] = array(
 	'replaceset-error-regexbadmodifier' => "Regex-modifiern '$1' är inte giltig.",
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'replaceset-desc' => 'Nagdaragdag ng isang tungkuling pangparser na <nowiki>{{#replaceset}}</nowiki> na ginagamit sa pagpapalit ng mga seksyon ng teksto ng dato na binigyan ng anyo',
+	'replaceset-error-calllimit' => 'Naabot na ang pangtawag ng hangganan ng ReplaceSet.',
+	'replaceset-error-regexnoend' => 'Kulang ng pangtanggal ng hangganang $2\' ang padrong "$1" ng regex',
+	'replaceset-error-regexbadmodifier' => "Hindi tanggap ang panturing na '$1' ng regex.",
+);
+
 /** Turkish (Türkçe)
  * @author Vito Genovese
  */

@@ -635,10 +635,20 @@ $messages['sk'] = array(
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Charmed94
  * @author Обрадовић Горан
  */
 $messages['sr-ec'] = array(
-	'editsubpages-desc' => 'Омогућава администраторима да одблокирају страницу и све подстранице те странице за анонимно уређивање помоћу [[MediaWiki:Unlockedpages]]',
+	'editsubpages-desc' => 'Омогућава администраторима да откључају страницу и све подстранице исте за анонимно уређивање помоћу [[MediaWiki:Unlockedpages]]',
+	'unlockedpages' => ' #<!-- leave this line alone --><pre>
+# Постави странице које желите да откључате испод користећи
+# * Назив странице
+# Откључане странице морају да почињу са зрном да би се рачунало,
+# све остало се сматра као коментар
+# Називи страница могу бити [[везе]] и осетљиви су на велика и мала слова
+# Такође, странице за разговор биће аутоматски откључане са страницом
+# Видите http://www.mediawiki.org/wiki/Extension:EditSubpages за више информација
+ #</pre><!-- leave this line alone -->',
 );
 
 /** Serbian Latin ekavian (Srpski (latinica))

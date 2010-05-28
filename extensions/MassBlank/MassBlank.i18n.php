@@ -25,11 +25,32 @@ Input the username or IP address to get a list of pages to blank.',
 	'right-massblank'         => 'Mass blank pages',
 );
 
-/** Message documentation (Message documentation) */
+/** Message documentation (Message documentation)
+ * @author EugeneZelenko
+ */
 $messages['qqq'] = array(
 	'massblank-desc' => 'Short description of the MassBlank extension, shown in [[Special:Version]]. Do not translate or change links.',
 	'massblank-submit-user' => '{{Identical|Go}}',
+	'massblank-blankcomment' => '{{Identical|Reason}}',
 	'right-massblank' => '{{doc-right}}',
+);
+
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ * @author Jim-by
+ * @author Wizardist
+ */
+$messages['be-tarask'] = array(
+	'massblank' => 'Масавае ачышчэньне',
+	'massblank-desc' => 'Дае адміністратарам магчымасьць [[Special:MassBlank|масавага ачышчэньня]] старонак',
+	'massblank-nopages' => 'У апошніх зьменах няма новых старонак, створаных [[Special:Contributions/$1|$1]].',
+	'massblank-list' => 'Наступныя старонкі былі нядаўна створаныя [[Special:Contributions/$1|$1]];
+дадайце камэнтар і націсьніце кнопку для іх ачысткі.',
+	'massblank-defaultreason' => 'Масавае ачышчэньне старонак, дададзеных $1',
+	'massblank-tools' => 'Гэты інструмэнт дазваляе рабіць масавыя ачышчэньні старонак, дададзеных пэўным удзельнікам альбо з IP-адрасу. Увядзіце імя ўдзельніка альбо IP-адрас для таго, каб атрымаць сьпіс старонак для ачысткі.',
+	'massblank-submit-user' => 'Выканаць',
+	'massblank-blankcomment' => 'Прычына:',
+	'right-massblank' => 'масавая ачыстка старонак',
 );
 
 /** Breton (Brezhoneg)
@@ -160,18 +181,18 @@ $messages['no'] = array(
  * @author Hamilton Abreu
  */
 $messages['pt'] = array(
-	'massblank' => 'Remoção do conteúdo de múltiplas páginas',
-	'massblank-desc' => 'Dá a administradores a capacidade de [[Special:MassBlank|remover o conteúdo de múltiplas páginas]]',
+	'massblank' => 'Esvaziar múltiplas páginas',
+	'massblank-desc' => 'Dá a administradores a capacidade de [[Special:MassBlank|esvaziar múltiplas páginas]] (remover o seu conteúdo)',
 	'massblank-nopages' => 'Não existem páginas novas criadas por [[Special:Contributions/$1|$1]] nas mudanças recentes.',
 	'massblank-list' => 'As páginas seguintes foram criadas recentemente por [[Special:Contributions/$1|$1]];
-insira um comentário e carregue no botão para remover o seu conteúdo.',
-	'massblank-defaultreason' => 'Remoção do conteúdo das páginas adicionadas por $1',
+insira um comentário e carregue no botão para esvaziá-las.',
+	'massblank-defaultreason' => 'Esvaziamento das páginas adicionadas por $1',
 	'massblank-tools' => 'Esta ferramenta permite remover o conteúdo de múltiplas páginas adicionadas recentemente por um utilizador ou endereço IP.
 Insira o nome do utilizador ou o endereço IP para obter a lista das páginas cujo conteúdo será removido.',
 	'massblank-submit-user' => 'Prosseguir',
-	'massblank-submit-blank' => 'Remover conteúdo',
-	'massblank-blankcomment' => 'Motivo para remoção do conteúdo:',
-	'right-massblank' => 'Remoção do conteúdo de múltiplas páginas',
+	'massblank-submit-blank' => 'Esvaziar seleccionadas',
+	'massblank-blankcomment' => 'Motivo:',
+	'right-massblank' => 'Esvaziar (remover o conteúdo de) múltiplas páginas',
 );
 
 /** Russian (Русский)

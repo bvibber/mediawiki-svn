@@ -237,6 +237,14 @@ $messages['eu'] = array(
 	'wikieditor-loading' => 'Kargatzen',
 );
 
+/** Persian (فارسی)
+ * @author Ebraminio
+ */
+$messages['fa'] = array(
+	'wikieditor' => 'رابط ویرایش پیشرفته ویکی‌متن',
+	'wikieditor-loading' => 'بارگیری',
+);
+
 /** Finnish (Suomi)
  * @author Crt
  * @author ZeiP

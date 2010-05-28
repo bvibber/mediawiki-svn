@@ -776,6 +776,31 @@ $messages['te'] = array(
 	'plotters-uses' => 'వాడుకలు',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'plotters-desc' => 'Nagpapahintulot sa mga tagagamit na gumamit ng mga pasadyang JavaScript sa loob ng mga tatak na jsplot',
+	'plotters' => 'Mga pampitak',
+	'plotters-title' => 'Mga pampitak',
+	'plotters-pagetext' => 'Nasa ibaba ang isang talaan ng natatanging mga pamitak na magagamit ng mga tagagamit sa kanilang mga tatak na jsplot, bilang binigyang kahulugan ng [[MediaWiki:Plotters-definition]].
+Nagbibigay ang pang-ibabaw na tanawing ito ng maginhawang pagpunta sa mga pahina ng mensahe ng sistema na nagbibigay ng kahulugan sa bawat paglalarawan at kodigo ng pamitak.',
+	'plotters-uses' => 'Mga mapaggagamitan',
+	'plotters-missing-script' => 'Walang panitik na binigyan ng kahulugan.',
+	'plotters-missing-arguments' => 'Walang tinukoy na pangangatwiran.',
+	'plotters-excessively-long-scriptname' => 'Napakahaba ng pangalan ng panitikan na ito.
+Paki bigyang kahulugan ang isang panitik, ang pangalan nito ay may habang 255 mga pantitik ang pinakamarami.',
+	'plotters-excessively-long-preprocessorname' => 'Napakahaba ng pangalan ng paunang-tagagawa.
+Pakibigyang kahulugan ang isang paunang-tagagawa, ang pangalan ay may habang 255 mga panitik ang pinakamarami.',
+	'plotters-excessively-long-name' => 'Napakahaba ng pangalan ng pitak.
+Pakibigyang kahulugan ang isang pangalan ng pitak na may habang 255 mga panitik ang pinakamarami.',
+	'plotters-excessively-long-tableclass' => 'Napakahaba ng klase ng tabla.
+Pakibigyang kahulugan ang isang klase ng tablang may habang 255 mga panitik ang pinakamarami.',
+	'plotters-no-data' => 'Walang ibinigay na dato.',
+	'plotters-invalid-renderer' => 'Napili ang isang hindi tanggap na tagagawa.',
+	'plotters-errors' => '{{PLURAL:$1|Kamalian|Mga kamalian}} ng mga pampitak:',
+);
+
 /** Turkish (Türkçe)
  * @author Vito Genovese
  */

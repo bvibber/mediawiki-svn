@@ -61,6 +61,15 @@ $messages['es'] = array(
 	'js2support-desc' => 'Soporte JS2 como una extensión',
 );
 
+/** Finnish (Suomi)
+ * @author Str4nd
+ */
+$messages['fi'] = array(
+	'js2support-desc' => 'JS2-tuki laajennuksena.',
+	'js2support-debug-preference' => 'Poista ohjelmien ryhmittely ja pienennys',
+	'prefs-script-debug' => 'Komentosarjojen vianjäljtys',
+);
+
 /** French (Français)
  * @author IAlex
  */

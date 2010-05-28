@@ -288,6 +288,13 @@ $messages['sk'] = array(
 	'filepagemasking-desc' => 'Prepisuje „.xxx“ na „_xxx“ v odkazoch na popisných stránkach súborov',
 );
 
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Charmed94
+ */
+$messages['sr-ec'] = array(
+	'filepagemasking-desc' => 'Записује „.xxx“ у „_xxx“ у опису веза',
+);
+
 /** Swedish (Svenska)
  * @author Boivie
  */
