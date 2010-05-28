@@ -566,7 +566,7 @@ class ScriptLoaderOutputPage extends OutputPage {
 
 		// Included script without script-loader
 		// Generate the localized msgs inline since we can't rely on ScriptLoader to localize
-		$inlineMsg = $this->mScriptLoader->getInlineMsgFromClass( $className );
+		$inlineMsg = $this->mScriptLoader->getAddMessagesFromClass( $className );
 		if( $inlineMsg != '' ) {
 			$this->addScript( Html::inlineScript( $inlineMsg ) );
 		}

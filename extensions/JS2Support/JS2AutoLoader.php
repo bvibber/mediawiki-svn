@@ -1,7 +1,7 @@
 <?php
 
 /****************************
-* JS2 AutoLoader.php
+* JS2 AutoLoader php files
 *****************************/
 $wgAutoloadClasses = array_merge( $wgAutoloadClasses,  array(
 	'JSMin' => $js2Dir . 'mwEmbed/includes/library/JSMin.php',
