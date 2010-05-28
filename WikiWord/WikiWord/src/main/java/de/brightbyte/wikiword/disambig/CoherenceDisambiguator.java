@@ -364,41 +364,47 @@ public class CoherenceDisambiguator extends AbstractDisambiguator<TermReference,
 	protected <X extends TermReference>CoherenceDisambiguation<X, LocalConcept> getScore(Disambiguator.Interpretation<X, LocalConcept> interp, Collection<? extends LocalConcept> context, LabeledMatrix<LocalConcept, LocalConcept> similarities, FeatureFetcher<LocalConcept, Integer> features) throws PersistenceException {
 		Map<? extends TermReference, LocalConcept> concepts;
 		
-		int c;
-		
-		if (context!=null) {
+		if (context!=null || interp.getMeanings().size()!=interp.getSequence().size()) {
 			concepts = new HashMap<TermReference, LocalConcept>();
 			
-			for (Map.Entry<X, LocalConcept> e: interp.getMeanings().entrySet()) {
-				((HashMap<TermReference, LocalConcept>)concepts).put(e.getKey(), e.getValue());
+			for (X t: interp.getSequence()) {
+				LocalConcept m = interp.getMeanings().get(t);
+				((HashMap<TermReference, LocalConcept>)concepts).put(t, m);
 			}
-			
-			for (LocalConcept con: context) {
-				((HashMap<TermReference, LocalConcept>)concepts).put(new Term("", 1), con);
+
+			if (context != null) {
+				for (LocalConcept con: context) {
+					((HashMap<TermReference, LocalConcept>)concepts).put(new Term("", 1), con);
+				}
 			}
-			
-			c = interp.getSequence().size() + context.size();
 		} else {
 			concepts = interp.getMeanings();
-			c = interp.getSequence().size();
-		}		
+		}
+		
+		int c = interp.getSequence().size();
+		
+		if (c == 0) {
+			CoherenceDisambiguation<X, LocalConcept> r = new CoherenceDisambiguation<X, LocalConcept>(interp.getMeanings(), interp.getSequence(), new MapLabeledVector<Integer>(), 0, "empty");
+			return r;
+		} 
 		
 		LabeledVector<Integer> sum = new MapLabeledVector<Integer>();
 		double sim = 0, pop = 0, weight = 0;
 		int i=0, j=0;
 		for (Map.Entry<? extends TermReference, LocalConcept> ea: concepts.entrySet()) {
 			LocalConcept a = ea.getValue();
-			TermReference term = ea.getKey();
-			ConceptFeatures<LocalConcept, Integer> fa = features.getFeatures(a);
-
-			sum.add(fa.getFeatureVector());
-			i++;
+			TermReference term = ea.getKey(); 
 			
+			i++;
 			if (a==null) continue;
 			
+			ConceptFeatures<LocalConcept, Integer> fa = features.getFeatures(a);
+			sum.add(fa.getFeatureVector());
+
 			j=0;
 			for (Map.Entry<? extends TermReference, LocalConcept> eb: concepts.entrySet()) {
 				LocalConcept b = eb.getValue();
+
 				j++;
 				if (i==j) break;
 				if (b==null) continue;
