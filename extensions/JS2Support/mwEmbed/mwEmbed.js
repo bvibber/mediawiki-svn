@@ -1,6 +1,6 @@
 // Add support for html5 / mwEmbed elements to IE ( comment must come before js code ) 
 // For discussion and comments, see: http://remysharp.com/2009/01/07/html5-enabling-script/
-/*@cc_on'video source itext playlist'.replace(/\w+/g,function(n){document.createElement(n)})@*/
+/*@cc_on@if(@_jscript_version<9){'video audio source itext playlist'.replace(/\w+/g,function(n){document.createElement(n)})}@end@*/
 
 /**
  * ~mwEmbed ~
@@ -53,7 +53,9 @@ var MW_EMBED_VERSION = '1.1f';
 	*/	
 		
 	// Local scope configuration var:
-	var mwConfig = { };
+	if( !mwConfig ){
+		var mwConfig = { };
+	}	
 	
 	// Local scope mwUserConfig var. Stores user configuration 
 	var mwUserConfig = { };
@@ -135,23 +137,19 @@ var MW_EMBED_VERSION = '1.1f';
 	var setupUserConfigFlag = false;
 	mw.setupUserConfig = function( callback ) {	
 		if( setupUserConfigFlag ) {
-			if( callback ) 
+			if( callback ) { 
 				callback();
+				}
 		}
 		// Do Setup user config: 		
-		mw.load( [ '$j.cookie', 'JSON' ], function() {
+		mw.load( [ '$j.cookie', 'JSON' ], function() {			
 			if( $j.cookie( 'mwUserConfig' ) ) {
 				mwUserConfig = JSON.parse( $j.cookie( 'mwUserConfig' ) );
-			}
-			mw.log( 'mw UserConfig: ' +  $j.cookie( 'mwUserConfig' ) );
-			for(var i in mwUserConfig ) {
-				mw.log( 'i: ' + i + ' ' + mwUserConfig[ i ] ) ;
-			}
-			//debugger;
-			
+			}									
 			setupUserConfigFlag = true;
-			if( callback ) 
-				callback();				
+			if( callback ) {
+				callback();	
+			}			
 		});				
 	}
 
@@ -1076,9 +1074,15 @@ var MW_EMBED_VERSION = '1.1f';
 	}
 	
 	/**
+	 * Mobile Safari has special properties for html5 video::
+	 * 
 	 * NOTE: should be moved to browser detection script
 	 */
-	mw.isMobileSafari = function(){
+	mw.isMobileSafari = function() {		
+		// check mobile safari foce ( for debug )
+		if( mw.getConfig( 'forceMobileSafari' ) ){
+			return true;
+		}
 		if ((navigator.userAgent.indexOf('iPhone') != -1) || 
 			(navigator.userAgent.indexOf('iPod') != -1) || 
 			(navigator.userAgent.indexOf('iPad') != -1)) {
@@ -1313,7 +1317,7 @@ var MW_EMBED_VERSION = '1.1f';
 	* Runs all the queued functions
 	* called by mwEmbedSetup
 	*/ 
-	mw.runReadyFunctions = function ( ) {		
+	mw.runReadyFunctions = function ( ) {
 		// Run all the queued functions: 
 		while( mwOnLoadFunctions.length ) {
 			mwOnLoadFunctions.shift()();
@@ -1369,6 +1373,7 @@ var MW_EMBED_VERSION = '1.1f';
 		//( will use XHR if on same domain ) 
 		if( mw.isset( 'window.jQuery' ) 
 			&& mw.getConfig( 'debug' ) === false 
+			&& $j
 			&& !isCssFile ) 
 		{	
 			$j.getScript( url, myCallback); 		
@@ -1432,7 +1437,7 @@ var MW_EMBED_VERSION = '1.1f';
 			styleNode.appendChild( styleText );
 		}
 		var head = document.getElementsByTagName("head")[0];       
-		head.appendChild( styleNode );				
+		head.appendChild( styleNode );
 	};
 	
 	/**
@@ -1542,6 +1547,11 @@ var MW_EMBED_VERSION = '1.1f';
 		if( src.indexOf( 'jsScriptLoader.php' ) !== -1 ) {
 			mwpath = src.substr( 0, src.indexOf( 'jsScriptLoader.php' ) );			
 		}	
+		
+		// For static packages mwEmbed packages start with: "mwEmbed-"
+		if( src.indexOf( 'mwEmbed-' ) !== -1 && src.indexOf( '-static' ) !== -1 ) {
+			mwpath = src.substr( 0, src.indexOf( 'mwEmbed-' ) );
+		}
 		
 		// Error out if we could not get the path:
 		if( mwpath === null ) {
@@ -1653,21 +1663,23 @@ var MW_EMBED_VERSION = '1.1f';
 			// Check for mwEmbed.js and/or script loader
 			var src = js_elements[i].getAttribute( "src" );
 			if ( src ) {
-				if ( 
+				if ( // Check for mwEmbed.js ( debug mode )					
 					( src.indexOf( 'mwEmbed.js' ) !== -1 &&  src.indexOf( 'MediaWiki:Gadget') == -1 )
-				 	|| 
+				 	|| // Check for script-loader				 	
 				 	( 
 				 		( src.indexOf( 'mwScriptLoader.php' ) !== -1 || src.indexOf( 'jsScriptLoader.php' ) !== -1 )
 						&& 
 						src.indexOf( 'mwEmbed' ) !== -1 
-					) 
+					)
+					|| // Check for static mwEmbed package
+					( src.indexOf( 'mwEmbed' ) !== -1 && src.indexOf( 'static' ) !== -1 )
 				) {
 					mwEmbedSrc = src;
 					return mwEmbedSrc;
 				}
 			}
 		}
-		mw.log( 'Error: getMwEmbedScriptURL failed to get script path' );
+		mw.log( 'Error: getMwEmbedSrc failed to get script path' );
 		return false;
 	}	
 	
@@ -2018,9 +2030,29 @@ var MW_EMBED_VERSION = '1.1f';
 			callback();
 			return ;
 		}
+		
+		// Check if we are using a static package ( mwEmbed path includes -static )
+		if( mw.isStaticPackge ){
+			callback();
+			return ;
+		}
+
 		// Add the Core loader to the request
 		// The follow code is ONLY RUN in debug / raw file mode		
 		mw.load( 'loader.js', callback );
+	}
+	/**
+	* Checks if the javascript is a static package ( not using script-loader )
+	* @return {boolean} 
+	* 	true the included script is static
+	* 	false the included script 
+	*/ 
+	mw.isStaticPackge = function(){
+		var src = mw.getMwEmbedSrc();
+		if( src.indexOf('-static') !== -1 ){			
+			return true;	
+		}
+		return false;
 	}
 	
 	/**
@@ -2032,9 +2064,10 @@ var MW_EMBED_VERSION = '1.1f';
 	mw.checkModuleLoaderFiles = function( callback ) {
 		mw.log( 'doLoaderCheck::' );
 		
-		// Check if we are using scriptloader ( handles loader include automatically ) 
-		if( mw.getScriptLoaderPath() ) {
-				callback();	
+		// Check if we are using scriptloader ( handles loader include automatically )
+		// Or if mwEmbed is a static package ( all classes are already loaded )  
+		if( mw.getScriptLoaderPath() || mw.isStaticPackge() ) {
+			callback();	
 			return ;
 		}
 							
@@ -2414,7 +2447,11 @@ if( mw.getScriptLoaderPath() && !window.jQuery ) {
 	mw.log( 'Error: jQuery is required for mwEmbed, please update your script-loader request' );
 }
 
-/*
+if( mw.isStaticPackge() && !window.jQuery ){
+	alert( 'Error: jQuery is required for mwEmbed ');
+}
+
+/**
  * Hack to keep jQuery in $ when its
  * already there, but also use noConflict to get $j = jQuery
  * 
