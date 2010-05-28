@@ -81,7 +81,7 @@ SQL;
 		$key = wfMemcKey( 'taskforce-member-count', $taskForce );
 		$cacheVal = $wgMemc->get( $key );
 		
-		if ( $cacheVal !== false ) {
+		if ( $cacheVal > 0 || $cacheVal === 0 ) {
 			return $cacheVal;
 		}
 		
