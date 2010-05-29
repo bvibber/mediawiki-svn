@@ -152,6 +152,15 @@ $messages['ja'] = array(
 	'checkpoint-notice' => '([[{{ns:project}}:Checkpoint|チェックポイントの保存]])',
 );
 
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'checkpoint' => '저장하고 편집을 계속하기',
+	'checkpoint-desc' => '편집을 저장함과 동시에 계속하여 편집할 수 있도록 함',
+	'checkpoint-tooltip' => '지금까지 편집한 내용을 저장하고 편집을 계속합니다.',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -248,6 +257,16 @@ $messages['ru'] = array(
 	'checkpoint-desc' => 'Позволяет сохранить изменения и продолжить редактирование',
 	'checkpoint-tooltip' => 'Сохраните вашу работу и продолжите редактирование страницы',
 	'checkpoint-notice' => '([[{{ns:project}}:Checkpoint|сохранение контрольной точки]])',
+);
+
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Charmed94
+ */
+$messages['sr-ec'] = array(
+	'checkpoint' => 'Сачувај и настави уређивање',
+	'checkpoint-desc' => 'Омогућава Вам да сачувате измене и наставите уређивање',
+	'checkpoint-tooltip' => 'Сачувајте свој напредак и наставите уређивање стране',
+	'checkpoint-notice' => '([[{{ns:project}}:Checkpoint|прелаз чувања]])',
 );
 
 /** Swedish (Svenska)

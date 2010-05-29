@@ -971,10 +971,10 @@ $messages['mk'] = array(
 	'masseditregex-hint-headreplace' => 'Замена',
 	'masseditregex-hint-headeffect' => 'Резултат',
 	'masseditregex-hint-toappend' => 'Приложете некој текст на крајот на страницата - одлично за додавање страници во категории',
-	'masseditregex-hint-remove' => 'Отстранување на извесен текст од сите страници на листата',
+	'masseditregex-hint-remove' => 'Отстранување на извесен текст од сите страници на списокот',
 	'masseditregex-hint-removecat' => 'Отстранете ги сите категории од една страница (обратете внимание на исклучувањето на квадратните загради од викикодот.)
 Вредностите за заменување не треба да се исклучуваат.',
-	'masseditregex-listtype-intro' => 'Ова е листа на:',
+	'masseditregex-listtype-intro' => 'Ова е список на:',
 	'masseditregex-listtype-pagenames' => 'Имиња на страниците (уредете ги тие страници)',
 	'masseditregex-listtype-pagename-prefixes' => 'Префикси на имиња на страници (уредете ги страниците чие име започнува со овој текст)',
 	'masseditregex-listtype-categories' => 'Имиња на категориите (уредете ја секоја страница во тие категории; изборот на именски простори се занемарува)',

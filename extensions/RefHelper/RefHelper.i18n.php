@@ -955,3 +955,39 @@ $messages['te'] = array(
 	'refhelper-search' => 'వెతుకు',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'refhelper' => 'Pantulong sa sanggunian',
+	'refsearch' => 'Paghanap ng sanggunian',
+	'refhelper-desc' => 'Tumutulong sa paglikha ng mga pahina para sa mga sanggunian',
+	'refhelper-refsearch' => 'Paghanap ng sanggunian',
+	'refhelper-refcreate_legend' => 'Lumikha ng bagong sanggunian',
+	'refhelper-refsearch_legend' => 'Maghanap sa PubMed para sa mga sanggunian',
+	'refhelper-refcreate_another' => 'Lumikha ng ibang sanggunian',
+	'refhelper-refcreate_autocomment' => 'Kusang paglikha ng pahina.',
+	'refhelper-refcreate_success' => 'Hindi umiiral ang pahinang [[$1]] at nalikha na.',
+	'refhelper-refcreate_failure' => 'Umiiral na ang pahinang [[$1]]!',
+	'refhelper-label_workspace' => 'Puwang na gawaan (lugar ng pagkopya at pagdikit):',
+	'refhelper-label_authorforename' => 'Unang pangalan ng may-akdang si $1:',
+	'refhelper-label_authorsurname' => 'Apelyido:',
+	'refhelper-title' => 'Pamagat:',
+	'refhelper-journal' => 'Diyaryo:',
+	'refhelper-volume' => 'Tomo:',
+	'refhelper-pages' => 'Mga pahina:',
+	'refhelper-year' => 'Taon:',
+	'refhelper-refname' => 'Pangalan ng sanggunian:',
+	'refhelper-category' => 'Kategoryang $1:',
+	'refhelper-create' => 'Likhain',
+	'refhelper-search' => 'Hanapin',
+	'refhelper-toolbox_link_create' => 'Likhain ang sanggunian',
+	'refhelper-toolbox_link_search' => 'Lumikha ng sanggunian mula sa paghahanap',
+	'refhelper-newarticle_nocitation' => 'Kasalukuyang walang ganitong pagbanggit na may ganitong pangalan.',
+	'refhelper-newarticle_suggestions' => 'Kung may isang tumutugmang sipi mula sa ibaba, maaari mong likhain ang pahinang ito sa pamamagitan ng pagpindot sa nauukol na pindutang "Likhain". 
+
+<h2>Mga mungkahi</h2>',
+	'refhelper-newarticle_nosuggestions' => 'Sa kamalasan, Hindi ako nagawang makapagmungkahi ng anumang mga sanggunian.
+Maaari mong [[Special:RefHelper|kinakamay na idagdag ang sanggunian]] o [[Special:RefSearch|maghanap ng pagbanggit na idaragdag]].',
+);
+

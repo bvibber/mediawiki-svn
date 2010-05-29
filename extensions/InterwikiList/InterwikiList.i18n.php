@@ -475,11 +475,11 @@ $messages['lb'] = array(
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
-	'interwikilist' => 'Интервики листа',
+	'interwikilist' => 'Список на интервики',
 	'interwikilist-desc' => 'Додава [[Special:Interwikilist|специјална страница]] на која се гледаат интервики врските на располагање',
 	'interwikilist-linkname' => 'Интервики врска',
 	'interwikilist-target' => 'Целна URL',
-	'interwikilist-filter' => 'Филтрирај ја листата',
+	'interwikilist-filter' => 'Филтрирај го списокот',
 	'interwikilist-prefix' => 'Интервики префикс:',
 );
 

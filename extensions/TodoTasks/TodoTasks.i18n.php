@@ -930,29 +930,29 @@ Fir är komplett Aufgabelëscht ze gesinn, gitt w.e.g. op %s.
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
-	'tasklist' => 'Листа на задачи',
+	'tasklist' => 'Список на задачи',
 	'tasklist-parser-desc' => 'Додава парерска функција <nowiki>{{#todo:}}</nowiki> за доделување на задачи',
 	'tasklist-special-desc' => 'Додава специјална страница за прегледување на [[Special:TaskList|доделени задачи]]',
-	'tasklistbyproject' => 'Листа на задачи по проект',
+	'tasklistbyproject' => 'Список на задачи по проект',
 	'tasklistunknownproject' => 'Непознат проект',
 	'tasklistunspecuser' => 'Неназначен корисник',
 	'tasklistincorrectuser' => 'Погрешно корисничко име',
 	'tasklistemail' => 'Почитуван(a) %s',
-	'tasklistemailsubject' => '[%s] Промена на листа на задачи',
+	'tasklistemailsubject' => '[%s] Промена на список на задачи',
 	'tasklistmytasks' => 'Мои задачи',
 	'tasklistbyprojectbad' => "Проектот '''%s''' не е важечки проект.
-За листа на важечки проекти, погледајте [[MediaWiki:TodoTasksValidProjects]].",
+За список на важечки проекти, погледајте [[MediaWiki:TodoTasksValidProjects]].",
 	'tasklistbyprojname' => "Доделени задачи за '''%s'''",
 	'tasklistchooseproj' => 'Изберете проект:',
 	'tasklistprojdisp' => 'Прикажи',
-	'tasklistbyname' => '== Листа на задачи за %s ==',
+	'tasklistbyname' => '== Список на задачи за %s ==',
 	'tasklistnowguseprojects' => 'Го имате наместено $wgUseProjects на „false“ и затоа не можете да ја користите оваа страница.',
 	'tasklistnoprojects' => "Грешка: Изгледа сте овозможиле '''\$wgUseProjects''', но не сте создале [[MediaWiki:TodoTasksValidProjects]]. Видете [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 Напатствија за инсталирање] за повеќе детали.",
-	'tasklistemailbody' => 'Некој ви доделилнова Задача на %s.
+	'tasklistemailbody' => 'Некој ви доделил нова Задача на %s.
 
-За да ја видите вашата полна Листа на задачи, одете на %s.
+За да ја видите вашиот полн Список на задачи, одете на %s.
 
-Вашиот %s систем известување',
+Вашиот систем известување на %s',
 );
 
 /** Malayalam (മലയാളം)

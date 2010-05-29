@@ -7920,6 +7920,7 @@ Vläicht koumt Dir direkt op dës Säit: Normalerweis braucht Dir net hei ze sin
 	'ow_needs_xlation_source_lang' => 'Quellsprooch:',
 	'ow_needs_xlation_dest_lang' => 'Zilsprooch:',
 	'ow_needs_xlation_no_dest_lang' => 'Gitt w.e.g. eng Zilsprooch un.',
+	'ow_statistics' => 'Wikidata: Statistiken',
 	'ow_show' => 'Weisen',
 	'ow_upload' => 'Eroplueden',
 	'ow_create' => 'Uleeën',
@@ -8146,7 +8147,7 @@ $messages['mk'] = array(
 	'exporttsv' => 'Википодатоци: Извези TSV',
 	'ow_exporttsv_title' => 'Извеси збирка во TSV',
 	'ow_exporttsv_header' => '<p>Извезување на збирка во табеларно-одделен текстуален формат кој може да се увезува во OpenOffice.org, Excel и други програми за табели.<br />
-Одберете збирка за извоз. Во полето за јазици внесете листа на ISO 639-3 јазични кодови, одделени со запирка. Започнете со јазиците од кои сакате да преведувате (одберете колку што сакате) и завршете со јазиците на кои ќе работите превод. Потоа кликнете на „Создај“ за да ја создадете податотеката.</p>',
+Одберете збирка за извоз. Во полето за јазици внесете список на ISO 639-3 јазични кодови, одделени со запирка. Започнете со јазиците од кои сакате да преведувате (одберете колку што сакате) и завршете со јазиците на кои ќе работите превод. Потоа кликнете на „Создај“ за да ја создадете податотеката.</p>',
 	'ow_exporttsv_languages' => 'Јазици:',
 	'ow_exporttsv_not_allowed' => 'Немате дозвола да вршите TSV извоз.',
 	'ow_exporttsv_export_failed' => 'Извозот не успеа',
@@ -8186,7 +8187,7 @@ $messages['mk'] = array(
 	'ow_conceptmapping_help' => '<p>можни дејства: <ul>
 <li>&action=insert&<data_context_prefix>=<defined_id>&... вметни пресликување</li>
 <li>&action=get&concept=<concept_id> прочитај соодветство</li>
-<li>&action=list_sets наведи листа на можни префикси за контекст на податоци и местата кадешто тие упатуваат.</li>
+<li>&action=list_sets наведи список на можни префикси за контекст на податоци и местата кадешто тие упатуваат.</li>
 <li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> за едно определено значење во концепт, наведи ги сите останати</li>
 <li>&action=help Прикажи корисни помошни информации.</li>
 </ul></p>',
@@ -8238,9 +8239,9 @@ $messages['mk'] = array(
 	'ow_Multiple_meanings' => 'Значења на „$1“',
 	'ow_NewExactMeaning' => 'Ново точно значење',
 	'ow_OptionAttribute' => 'Својство',
-	'ow_OptionAttributeHeader' => 'Атрибут за опции',
-	'ow_OptionAttributeOption' => 'Опција',
-	'ow_OptionAttributeOptions' => 'Опции',
+	'ow_OptionAttributeHeader' => 'Нагодителен атрибут',
+	'ow_OptionAttributeOption' => 'Елемент',
+	'ow_OptionAttributeOptions' => 'Нагодувања',
 	'ow_OptionAttributeValues' => 'Изборни вредности',
 	'ow_OtherDefinedMeaning' => 'Друго дефинирано значење',
 	'ow_PopupAnnotation' => 'Забелешка',
@@ -8302,7 +8303,7 @@ $messages['mk'] = array(
 	'ow_class_attr_type_xlate' => 'Преводлив текст',
 	'ow_class_attr_type_plain' => 'Прост текст',
 	'ow_class_attr_type_link' => 'Врска',
-	'ow_class_attr_type_option' => 'Листа на опции',
+	'ow_class_attr_type_option' => 'Список на избори',
 	'needstranslation' => 'Википодатоци: Изрази што треба да се преведат',
 	'ow_needs_xlation_title' => 'Изрази што треба да се преведат',
 	'ow_needs_xlation_source_lang' => 'Изворен јазик:',

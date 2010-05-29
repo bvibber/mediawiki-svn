@@ -172,6 +172,13 @@ $messages['sr-ec'] = array(
 	'cassandra-desc' => 'Смешта ревизију текста у [http://cassandra.apache.org Апаш Касандра] базу података',
 );
 
+/** Swedish (Svenska)
+ * @author Ainali
+ */
+$messages['sv'] = array(
+	'cassandra-desc' => 'Lagra versionstext i  [http://cassandra.apache.org/ Apache Cassandra] databas',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

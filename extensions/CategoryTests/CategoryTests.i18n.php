@@ -246,6 +246,13 @@ $messages['lb'] = array(
 	'categorytests-desc' => 'Fonctioune fir Teste vu Kategorien',
 );
 
+/** Latgalian (Latgaļu)
+ * @author Dark Eagle
+ */
+$messages['ltg'] = array(
+	'categorytests-desc' => 'Funkcejis kategoreju puorvērei',
+);
+
 /** Malagasy (Malagasy)
  * @author Jagwar
  */

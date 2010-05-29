@@ -283,7 +283,7 @@ $messages['lt'] = array(
  * @author Brest
  */
 $messages['mk'] = array(
-	'trustedxff-desc' => 'Ракување со листа на прокси адреси од доверба ([http://meta.wikimedia.org/wiki/XFF_project проект XFF])',
+	'trustedxff-desc' => 'Ракување со список на застапнички (proxy) адреси од доверба ([http://meta.wikimedia.org/wiki/XFF_project проект XFF])',
 );
 
 /** Malayalam (മലയാളം)

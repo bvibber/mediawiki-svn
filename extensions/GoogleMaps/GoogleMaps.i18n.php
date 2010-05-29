@@ -3362,7 +3362,7 @@ $wgGoogleMapsMessages['mhr'] = array(
 $wgGoogleMapsMessages['mk'] = array(
 	'gm-desc' => 'Правете карти лесно со викифицирани одбележувачи',
 	'gm-incompatible-browser' => 'За да ја видите картата која ќе биде на овој простор треба да користите компатибилен прелистувач.',
-	'gm-incompatible-browser-link' => 'Клинете тука за да погледате листа на компатибилни прелистувачи.',
+	'gm-incompatible-browser-link' => 'Клинете тука за список на соодветни прелистувачи.',
 	'gm-no-editor' => 'Нажалост, вашиот прелистувач не поддржува интерактивни алатки за правење карти.  Преземете ја најновата верзија на <a href="http://www.microsoft.com/ie">Internet Explorer</a> (Windows) или <a href="http://www.mozilla.org/products/firefox">Firefox</a> (Windows, Mac и Linux).',
 	'gm-balloon-title' => 'Наслов:',
 	'gm-balloon-link-article' => 'Врска до оваа страница (изборно):',
@@ -3376,7 +3376,7 @@ $wgGoogleMapsMessages['mk'] = array(
 	'gm-save-point' => 'зачувај и затвори',
 	'gm-load-map-from-article' => 'Вчитај карта од страницата:',
 	'gm-no-maps' => 'На страницава нема карти за вчитување.',
-	'gm-refresh-list' => 'Превчитај ја листата',
+	'gm-refresh-list' => 'Превчитај го списокот',
 	'gm-load-map' => 'Вчитај карта',
 	'gm-clip-result' => 'Додај на картата',
 	'gm-no-results' => 'Жалиме, но нема резултати',

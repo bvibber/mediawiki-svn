@@ -390,6 +390,7 @@ $messages['fa'] = array(
 	'wikieditor-publish-button-publish' => 'انتشار',
 	'wikieditor-publish-button-cancel' => 'انصراف',
 	'wikieditor-publish-dialog-minor' => 'ویرایش جزئی',
+	'wikieditor-publish-dialog-publish' => 'انتشار',
 	'wikieditor-publish-dialog-goback' => 'بازگشت به عقب',
 );
 

@@ -168,7 +168,7 @@ $messages['lb'] = array(
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
-	'nll-desc' => 'Лесно форматирање на листи напишани во природен јазик',
+	'nll-desc' => 'Лесно форматирање на списоци во природни јазици',
 	'nll-lastseparator' => '&#32;и&#32;',
 );
 

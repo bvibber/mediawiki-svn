@@ -384,10 +384,11 @@ $messages['lo'] = array(
 );
 
 /** Macedonian (Македонски)
+ * @author Bjankuloski06
  * @author Brest
  */
 $messages['mk'] = array(
-	'categorystepper-desc' => 'Прикажува навигациска кутија за навигација низ азбучна листа на категории на страница',
+	'categorystepper-desc' => 'Прикажува навигациона кутија за навигација низ азбучен список на категории на страница',
 	'categorystepper-end' => '(Крај на категорија)',
 	'categorystepper-start' => '(Почеток на категорија)',
 );

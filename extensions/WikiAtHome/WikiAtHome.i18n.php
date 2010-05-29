@@ -1680,6 +1680,45 @@ $messages['tk'] = array(
 	'wah-menu-pref' => 'Ileri tutmalar',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'wah-desc' => 'Nagpapagana ng pagpapamahagi ng mga pagtatranskodigo ng mga trabahong pangbidyo papunta sa mga kliyente sa pamamagitan ng Firefogg',
+	'wah-user-desc' => 'Nagbibigay-daan ang Wiki@Home na makapag-ambag ang mga kasapi ng pamayanan ng nakatabing mga ikot ng cpu upang makatulong sa masusing mga operasyon na pangpinagmulan',
+	'wah-short-audio' => '$1 na talaksan ng tunog, $2',
+	'wah-short-video' => '$1 talaksa ng bidyo, $2',
+	'wah-short-general' => '$1 talaksan ng midya, $2',
+	'wah-long-audio' => '($1 talaksan ng tunog, haba $2, $3)',
+	'wah-long-video' => '($1 talaksan ng bidyo, haba $2, $4×$5 mga piksel, $3)',
+	'wah-long-multiplexed' => '(audiong multipleks/talaksan ng bidyo, $1, haba $2, $4×$5 mga piksel, $3 ang kabuoan)',
+	'wah-long-general' => '(talaksan ng midya, haba $2, $3)',
+	'wah-long-error' => '(hindi mabasa ng ffmpeg ang talaksang ito: $1)',
+	'wah-transcode-working' => 'Isinasagawa na ang bidyong ito, sumubok na lang ulit mamaya',
+	'wah-transcode-helpout' => 'Makakatulong ka sa paglilipat ng kodigo ng bidyong ito sa pamamagitan ng pagdalaw sa [[Special:WikiAtHome|Wiki@Home]].',
+	'wah-transcode-fail' => 'Nabigong maglipat ng kodigo ang talaksang ito.',
+	'wah-javascript-off' => 'Kailangang mayroon kang JavaScript upang makalahok sa Wiki@Home',
+	'wah-loading' => 'ikinakarga ang inter-mukha ng Wiki@Home ...',
+	'wah-menu-jobs' => 'Mga gawain',
+	'wah-menu-stats' => 'Estadistika',
+	'wah-menu-pref' => 'Mga nais',
+	'wah-lookingforjob' => 'Naghahanap ng isang gawain ...',
+	'wah-start-on-visit' => 'Simulan ang Wiki@Home anumang oras na dadalawin ko ang sityong ito.',
+	'wah-jobs-while-away' => 'Patakbuhin lamang ang mga gawain kapag lumayo ako mula sa pambasa-basa ko na may tagal na 20 mga minuto.',
+	'wah-nojobfound' => 'Walang natagpuang gawain.  Susubukan uli sa loob ng $1.',
+	'wah-notoken-login' => 'Nakalagda ka ba? Kung hindi, lumagda ka muna.',
+	'wah-apioff' => 'Tila lumilitaw na hindi buhay ang Wiki@Home API.  Mangyaring makipag-ugnayan sa tagapangasiwa ng wiki.',
+	'wah-doing-job' => 'Gawain: <i>$1</i> sa: <i>$2</i>',
+	'wah-downloading' => 'Kumpleto na ang pagkakarga ng talaksang <i>$1%</i>',
+	'wah-encoding' => 'Kumpleto na ang pagkokodigo ng talaksang <i>$1%</i>',
+	'wah-encoding-fail' => 'Nabigo ang pagkokodigo.  Mangyaring muling ikarga ang pahinang ito o subukan ulit mamaya.',
+	'wah-uploading' => 'Nakumpleto na ang pagkakarga ng talaksang <i>$1</i>',
+	'wah-uploadfail' => 'Nabigo ang paitaas na pagkarga',
+	'wah-doneuploading' => 'Kumpleto na ang paitaas na pagkarga.  Salamat sa iyong ambag.',
+	'wah-needs-firefogg' => 'Upang makalahok sa Wiki@Home kailangang mong ilagay ang <a href="http://firefogg.org">Firefogg</a>.',
+	'wah-api-error' => 'Nagkaroon ng kamalian sa API.  Subukan ulit mamaya.',
+);
+
 /** Turkish (Türkçe)
  * @author Vito Genovese
  */

@@ -231,7 +231,7 @@ $messages['lb'] = array(
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
-	'mwreleases-desc' => 'Додава [[Mediawiki:Mwreleases-list|листа]] на поддржани верзии, достапни преку API',
+	'mwreleases-desc' => 'Додава [[Mediawiki:Mwreleases-list|список]] на поддржани верзии, достапни преку API',
 );
 
 /** Malayalam (മലയാളം)

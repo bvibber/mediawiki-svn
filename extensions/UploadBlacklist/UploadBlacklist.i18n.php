@@ -268,7 +268,7 @@ $messages['lb'] = array(
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
-	'uploadblacklist-desc' => 'Додава функција за црна листа на подигања',
+	'uploadblacklist-desc' => 'Додава функција за црн список на подигања',
 );
 
 /** Malayalam (മലയാളം)

@@ -1073,6 +1073,40 @@ $messages['te'] = array(
 	'mwe-clipedit-duration' => 'నిడివి:',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'mwe-clipedit-crop' => 'Umani sa larawan',
+	'mwe-clipedit-apply_crop' => 'Gamitin ang inani sa larawan',
+	'mwe-clipedit-reset_crop' => 'Itakdang muli ang pag-ani',
+	'mwe-clipedit-insert_image_page' => 'Isingit sa pahina',
+	'mwe-clipedit-insert_into_sequence' => 'Isingit sa pagkakasunod-sunod',
+	'mwe-clipedit-preview_insert' => 'Paunang tingnan ang isiningit',
+	'mwe-clipedit-cancel_image_insert' => 'Huwag ituloy ang pagsisingit',
+	'mwe-clipedit-sc_attributes' => 'Gupitin ang detalye ng pagbabago',
+	'mwe-clipedit-sc_inoutpoints' => 'Itakda ang mga puntos ng pasok-labas',
+	'mwe-clipedit-sc_overlays' => 'Mga patong',
+	'mwe-clipedit-sc_audio' => 'Pangtaban ng naririnig',
+	'mwe-clipedit-sc_duration' => 'Tagal ng panahon',
+	'mwe-clipedit-template_properties' => 'Mga pag-aari ng suleras',
+	'mwe-clipedit-custom_title' => 'Pasadyang pamagat',
+	'mwe-clipedit-edit_properties' => 'Mga pag-aaring pambago',
+	'mwe-clipedit-other_properties' => 'Iba pang mga pag-aari',
+	'mwe-clipedit-resource_page' => 'Pinagmumulang pahina:',
+	'mwe-clipedit-set_in_out_points' => 'Itakda ang mga puntos ng pasok-labas',
+	'mwe-clipedit-start_time' => 'Oras ng pagsisimula',
+	'mwe-clipedit-end_time' => 'Oras ng wakas',
+	'mwe-clipedit-preview_inout' => 'Paunang tingnan ang puntos ng pasok-labas',
+	'mwe-clipedit-edit-tools' => 'Mga kasangkapang pambago',
+	'mwe-clipedit-inline-description' => 'Paliwanag',
+	'mwe-clipedit-edit-video-tools' => 'Baguhin ang mga kasangkapang pangbidyo:',
+	'mwe-clipedit-duration' => 'Katagalan:',
+	'mwe-clipedit-layout' => 'Kaayusan',
+	'mwe-clipedit-layout_right' => 'Pakanang ayos ng larawan',
+	'mwe-clipedit-layout_left' => 'Pakaliwang ayos ng larawan',
+);
+
 /** Turkish (Türkçe) */
 $messages['tr'] = array(
 	'mwe-clipedit-crop' => 'Resmi kırp',

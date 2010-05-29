@@ -549,7 +549,7 @@ $messages['lg'] = array(
  */
 $messages['mk'] = array(
 	'mostrevisors' => 'Страници со највеќе уредници',
-	'mostrevisors-desc' => 'Листа на [[Special:MostRevisors|страници со највеќе уредници]]',
+	'mostrevisors-desc' => 'Список на [[Special:MostRevisors|страници со највеќе уредници]]',
 	'mostrevisors-header' => "'''На оваа страница {{PLURAL:$1|е наведена страница|се наведени $1 страници}} со највеќе уредници.'''",
 	'mostrevisors-limitlinks' => 'Прикажи $1 страници',
 	'mostrevisors-namespace' => 'Именски простор:',

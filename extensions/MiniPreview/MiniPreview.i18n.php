@@ -536,7 +536,7 @@ $messages['mk'] = array(
 	'minipreview-files_in_gallery' => "Оваа галерија содржи '''$1''' {{PLURAL:$1|податотека|податотеки}}.",
 	'minipreview-no_more_files_here' => 'Нема повеќе податотеки во оваа насока.',
 	'minipreview-no_category_gallery' => 'Нема категории или галерии!',
-	'minipreview-ignore_categories' => 'Ова е листа на називи на категории или почетоци на називи.
+	'minipreview-ignore_categories' => 'Ова е список на називи на категории или почетоци на називите.
 Овие категории нема да се прикажат на MiniPreview.
 На пример, „* PD-“ нема да ги прикаже сите категории кои започнуваат со „PD-“, како да речеме „PD-old“.
 * GFDL-

@@ -1971,7 +1971,7 @@ $messages['mk'] = array(
 
 За да го вгнездите вашиот видео запис на некоја вики страница, внесете го следниов код:
 <code>{{&#35;ev:youtube|$1}}</code>",
-	'youtubeauthsub_authsubinstructions' => 'За подигнување на видео запис, потребно е најпрво да се логирате на YouTube.',
+	'youtubeauthsub_authsubinstructions' => 'За подигање на видеоснимка потребно е најпрвин да се најавите на YouTube.',
 	'youtubeauthsub_uploadhere' => 'Подигнување на видео записот од овде:',
 	'youtubeauthsub_uploadbutton' => 'Подигнување',
 	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.

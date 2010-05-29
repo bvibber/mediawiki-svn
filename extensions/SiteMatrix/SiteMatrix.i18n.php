@@ -1146,9 +1146,9 @@ $messages['lv'] = array(
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
-	'sitematrix' => 'Листа на вики-проектите на Викимедија',
-	'sitematrix-summary' => 'Оваа специјална страница е листа на сите вики-проекти на Викимедија.',
-	'sitematrix-desc' => 'Прикажува [[Special:SiteMatrix|листа на вики-проектите на Викимедија]]',
+	'sitematrix' => 'Список на вики-проектите на Викимедија',
+	'sitematrix-summary' => 'Оваа специјална страница е список на сите вики-проекти на Викимедија.',
+	'sitematrix-desc' => 'Прикажува [[Special:SiteMatrix|список на вики-проектите на Викимедија]]',
 	'sitematrix-language' => 'Јазик',
 	'sitematrix-project' => 'Име на проектот, меѓупроектна врска и инервики',
 	'sitematrix-others' => 'Други проекти на Викимедија',

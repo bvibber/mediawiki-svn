@@ -275,6 +275,7 @@ $messages['fa'] = array(
 	'wikieditor-preview-preference' => 'فعال‌سازی پیش‌نمایش کنار یک دیگر',
 	'wikieditor-preview-tab' => 'پیش‌نمایش',
 	'wikieditor-preview-changes-tab' => 'تغییرها',
+	'wikieditor-preview-loading' => 'در حال بارگذاری...',
 );
 
 /** Finnish (Suomi)

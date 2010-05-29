@@ -6266,7 +6266,7 @@ $messages['mk'] = array(
 	'configure-no-setup' => 'Потребно е експлицитно да го повикате <code>efConfigureSetup()</code> во вашата LocalSettings.php податотека за да може да се користи овој додаток.',
 	'configure-no-transwiki' => 'Немате дозвола за промена на нагодувањата на други викија.',
 	'configure-old' => 'Стари верзии',
-	'configure-old-versions' => 'Листа на стари верзии на конфигурацијата:',
+	'configure-old-versions' => 'Список на стари верзии на нагодувањата:',
 	'configure-old-not-available' => 'Старата верзија на нагодувањата која ја баравте, $1, не постои',
 	'configure-old-changes' => 'промени',
 	'configure-old-summary' => '$1 од $2 $4 $3',
@@ -6344,7 +6344,7 @@ $messages['mk'] = array(
 	'configure-setting-not-available' => 'Ова нагодување не е достапно за оваа верзија на МедијаВики',
 	'configure-transwiki-not-in-range' => 'Бараното вики, $1, не спаѓа под {{PLURAL:$3|дозволената вредност|дозволените вредности}}: $2.',
 	'configure-view' => 'Поглед',
-	'configure-view-all-versions' => 'Целосна листа на верзии',
+	'configure-view-all-versions' => 'Целосен список на верзии',
 	'configure-view-default' => 'Основни нагодувања',
 	'configure-view-not-allowed' => 'Немате дозвола да ги видите овие нагодувања',
 	'configure-viewconfig-line' => '$1 $2 од $3 $5: $4',
@@ -6403,7 +6403,7 @@ $messages['mk'] = array(
 	'configure-boolop-description-not' => 'Условите не мора да се вистинити',
 	'configure-farmer-settings' => '[[Special:Configure|Конфигурирање на ова вики]].',
 	'configure-farmer-extensions' => '[[Special:Extensions|Конфигурирање на додатоците за ова вики]].',
-	'configure-farmer-extensions-list' => '[[Special:Extensions|Листа на додатоци достапни за ова вики]].',
+	'configure-farmer-extensions-list' => '[[Special:Extensions|Список на додатоци достапни за ова вики]].',
 );
 
 /** Malayalam (മലയാളം)
@@ -9171,6 +9171,7 @@ $messages['su'] = array(
 );
 
 /** Swedish (Svenska)
+ * @author Ainali
  * @author Boivie
  * @author Fluff
  * @author Gabbe.g
@@ -9193,7 +9194,7 @@ $messages['sv'] = array(
 	'configure-ext-ext-dependencies' => "'''Varning:''' det här tillägget kräver att följande {{PLURAL:$2|tillägg|tillägg}} är aktiverade: $1.",
 	'configure-ext-ext-dependency-err' => "'''Fel:''' tillägget $1 kräver att tillägg $2 är aktiverat.",
 	'configure-ext-doc' => 'Se online-dokumentation',
-	'configure-ext-schemachange' => "'''Varning:''' det här progamtillägget kräver en uppdatering av databasen för att fungera korrekt!",
+	'configure-ext-schemachange' => "'''Varning:''' det här progamtillägget kräver en [http://www.mediawiki.org/wiki/Manual:Update.php uppdatering av databasen] för att fungera korrekt!",
 	'configure-ext-settings' => 'Inställningar',
 	'configure-ext-settings-dep-errors' => 'Det här tillägget kan inte aktiveras på grund av att följande {{PLURAL:$1|inställning|inställningar}} har ett felaktigt värde:',
 	'configure-ext-settings-dep-error' => '$1: begärt värde: $2, nuvarande värde: $3',
@@ -9868,6 +9869,7 @@ $messages['ug-latn'] = array(
  * @author Ahonc
  * @author NickK
  * @author Prima klasy4na
+ * @author Тест
  */
 $messages['uk'] = array(
 	'configure' => 'Конфігурувати вікі',
@@ -9882,7 +9884,7 @@ $messages['uk'] = array(
 	'configure-ext-ext-dependencies' => "'''Увага:''' це розширення вимагає активації {{PLURAL:$2|такого розширення|таких розширень}}: $1.",
 	'configure-ext-ext-dependency-err' => "'''Помилка:''' розширення $1 вимагає активації розширення $2.",
 	'configure-ext-doc' => 'Див. документацію в мережі',
-	'configure-ext-schemachange' => "'''Увага:''' це розширення вимагає оновлення бази даних для коректної роботи!",
+	'configure-ext-schemachange' => "'''Увага:''' це розширення вимагає [http://www.mediawiki.org/wiki/Manual:Update.php оновлення бази даних] для коректної роботи!",
 	'configure-ext-settings' => 'Налаштування',
 	'configure-ext-use-extension' => 'Використовувати це розширення',
 	'configure-ext-use' => 'Використовувати',

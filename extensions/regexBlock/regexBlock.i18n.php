@@ -1892,7 +1892,7 @@ $messages['mk'] = array(
 	'regexblock-view-block-by' => 'блокиран од:',
 	'regexblock-view-block-unblock' => 'одблокирај',
 	'regexblock-view-stats' => 'статистики',
-	'regexblock-view-empty' => 'Листата на блокирани имиња и адреси е празна.',
+	'regexblock-view-empty' => 'Списокот на блокирани имиња и адреси е празен.',
 	'regexblock-view-time' => 'на $1',
 	'right-regexblock' => 'Блокирање на корисници од уредување на сите викија на вики-фармата',
 );

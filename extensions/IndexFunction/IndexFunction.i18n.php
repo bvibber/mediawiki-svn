@@ -794,7 +794,7 @@ $2
 	'index-disambig-start' => "'''$1''' може да се однесува на неколку страници:",
 	'index-emptylist' => 'Нема страници поврзани со „$1“',
 	'index-expand-detail' => 'Прикажи ги страниците индексирани под овој наслов',
-	'index-hide-detail' => 'Сокриј ја листата на страници',
+	'index-hide-detail' => 'Сокриј го списокот на страници',
 	'index-no-results' => 'Пребарувањето не даде резултати.',
 	'index-search-explain' => 'Оваа страница користи префиксно пребарување.
 
@@ -1126,6 +1126,38 @@ $messages['te'] = array(
  */
 $messages['tk'] = array(
 	'index-submit' => 'Tabşyr',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'indexfunc-desc' => 'Tungkulin ng parser upang lumikha ng mga pahina ng kusang mga kapalit na pupuntahan at mga paglilinaw',
+	'indexfunc-badtitle' => 'Hindi tanggap na pamagat: "$1"',
+	'indexfunc-editwarning' => 'Babala:
+Ang pamagat na ito ay isang pamagat ng talatuntunan para sa sumusunod na {{PLURAL:$2|pahina|mga pahina}}:
+$1
+Tiyakin na ang pahinang lilikhain mo ay hindi pa umiiral sa ilalim ng isang ibang pamagat.
+Kapag nilikha mo ang pahinang ito, alisin ang pamagat nito mula sa <nowiki>{{#index:}}</nowiki> na nasa ibabaw ng {{PLURAL:$2|pahina|mga pahina}}.',
+	'indexfunc-index-exists' => 'Umiiral na ang pahinang "$1"',
+	'indexfunc-movewarn' => 'Babala:
+Ang "$1" ay isang pamagat ng talatuntunan para sa sumusunod na {{PLURAL:$3|pahina|mga pahina}}:
+$2
+Pakitanggal ang "$1" magmula sa <nowiki>{{#index:}}</nowiki> na nasa ibabaw na {{PLURAL:$3|pahina|mga pahina}}.',
+	'index' => 'Paghahanap ng talatuntunan',
+	'index-legend' => 'Maghanap sa talatuntunan',
+	'index-search' => 'Maghanap:',
+	'index-submit' => 'Ipadala',
+	'index-disambig-start' => "Maaaring tumukoy ang '''$1''' sa ilang mga pahina:",
+	'index-emptylist' => 'Walang mga pahinang kaugnay ng "$1"',
+	'index-expand-detail' => 'Ipakita ang mga pahina nakatalunton sa ilalim ng pahinang ito',
+	'index-hide-detail' => 'Itago ang talaan ng mga pahina',
+	'index-no-results' => 'Nagbalik ang paghahanap ng walang mga resulta',
+	'index-search-explain' => 'Gumagamit ang pahinang ito ng paghahanap ng unlapi.
+
+Imakinilya ang unang mangilan-ngilang mga panitik at pindutin ang pindutang pangpasa upang makapaghanap ng mga pamagat ng pahina at mga paglalagay sa talatuntunan na nagsisimula sa bagting ng paghahanap',
+	'index-details-explain' => 'Ang mga paglalagay na may palaso ay mga paglalagay na pangtaluntunan.
+Pindutin ang palaso upang maipakita ang lahat ng mga pahinang nakatalunton sa ilalim ng ganyang pamagat.',
 );
 
 /** Turkish (Türkçe)

@@ -36,6 +36,13 @@ $messages['be-tarask'] = array(
 	'vector-collapsiblenav-preference' => 'Дазволіць згортваць навігацыйнае мэню зьлева',
 );
 
+/** Bulgarian (Български)
+ * @author Spiritia
+ */
+$messages['bg'] = array(
+	'vector-collapsiblenav-preference' => 'Включване на сгъваемо/разгъваемо меню за навигация вляво',
+);
+
 /** Bengali (বাংলা)
  * @author Bellayet
  */

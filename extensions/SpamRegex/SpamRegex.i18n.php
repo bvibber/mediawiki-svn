@@ -328,7 +328,7 @@ $messages['da'] = array(
  */
 $messages['de'] = array(
 	'spamregex' => 'Spam regex',
-	'spamregex-desc' => '[[Special:SpamRegex|Filtere]] ungewollte Phrasen, basierend auf regulären Ausdrücken, aus geänderten Seiten aus',
+	'spamregex-desc' => '[[Special:SpamRegex|Filtert]] ungewollte Phrasen, basierend auf regulären Ausdrücken, aus geänderten Seiten aus',
 	'spamregex-error-unblocking' => 'Konnte „$1“ nicht freigeben. Wahrscheinlich existiert kein solches Muster.',
 	'spamregex-summary' => 'Der Text wurde in der Zusammenfassung gefunden.',
 	'spamregex-intro' => 'Benutze dieses Formular, um effektiv zu verhindern, dass angegebene Phrasen in den Text einer Seite eingefügt werden.

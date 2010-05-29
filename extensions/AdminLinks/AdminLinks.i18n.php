@@ -289,7 +289,7 @@ $messages['da'] = array(
  */
 $messages['de'] = array(
 	'adminlinks' => 'Links für Administratoren',
-	'adminlinks-desc' => 'Ergänzt eine [[Special:AdminLinks|Spezialseite]] mit hilfreichen Links für Administratoren',
+	'adminlinks-desc' => '[[Special:AdminLinks|Spezialseite]] mit hilfreichen Links für Administratoren',
 	'adminlinks_documentation' => 'Dokumentation von „$1“',
 	'adminlinks_general' => 'Allgemein',
 	'adminlinks_editsidebar' => 'Sidebar bearbeiten',

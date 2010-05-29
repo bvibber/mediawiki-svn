@@ -451,7 +451,7 @@ $messages['lo'] = array(
 $messages['mk'] = array(
 	'categoryintersection' => 'Пресек на категории',
 	'categoryintersection-desc' => 'Одржување на табела со тарабни вредности за [[Special:CategoryIntersection|пресек на категории]] во страница',
-	'categoryintersection-doit' => 'Листа на страници во сите овие категории',
+	'categoryintersection-doit' => 'Список на страници во сите овие категории',
 	'categoryintersection-maxcategories' => 'Максимално дозволен број на категории чиј пресек се бара е $1.',
 	'categoryintersection-mincategories' => 'Треба да вклучите барем две категории.',
 	'categoryintersection-results' => 'Пребарувањето врати $1 {{PLURAL:$1|резултат|резултати}}.',
@@ -646,13 +646,15 @@ $messages['sk'] = array(
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Charmed94
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'categoryintersection' => 'Пресек категорија',
 	'categoryintersection-desc' => 'Одржава табелу са хеш вредностима за [[Special:CategoryIntersection|пресеке категорија]] унутар стране',
-	'categoryintersection-doit' => 'Дај списак страна у свим овим категоријама',
+	'categoryintersection-doit' => 'Сврстава стране у свим овим категоријама',
 	'categoryintersection-maxcategories' => 'Максималан дозвољен број категорија у пресеку је $1.',
+	'categoryintersection-mincategories' => 'Морате да укључите најмање две категорије.',
 	'categoryintersection-results' => 'Претрага је вратила $1 {{PLURAL:$1|резултат|резултата}}.',
 );
 
@@ -688,6 +690,7 @@ $messages['su'] = array(
 );
 
 /** Swedish (Svenska)
+ * @author Ainali
  * @author Lejonel
  * @author M.M.S.
  */
@@ -696,6 +699,7 @@ $messages['sv'] = array(
 	'categoryintersection-desc' => 'Hanterar en tabell med hashvärden för de [[Special:CategoryIntersection|kategorisnitt]] som en sida är medlem i.',
 	'categoryintersection-doit' => 'Visa sidor som tillhör alla dessa kategorier',
 	'categoryintersection-maxcategories' => 'Det största antal kategorier som kan sökas i är $1.',
+	'categoryintersection-mincategories' => 'Du måste ange minst två kategorier.',
 	'categoryintersection-results' => 'Sökningen gav $1 {{PLURAL:$1|resultat|resultat}}.',
 );
 

@@ -194,6 +194,13 @@ $messages['sr-ec'] = array(
 	'firefoggcu-desc' => 'Firefogg-ов протокол отпремања',
 );
 
+/** Swedish (Svenska)
+ * @author Ainali
+ */
+$messages['sv'] = array(
+	'firefoggcu-desc' => 'Firefoggs segmenterade uppladdningskontroll',
+);
+
 /** Telugu (తెలుగు)
  * @author Ravichandra
  */

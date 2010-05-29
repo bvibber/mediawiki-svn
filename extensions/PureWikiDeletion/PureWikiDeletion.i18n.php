@@ -43,7 +43,7 @@ $messages['ar'] = array(
 	'purewikideletion-pref-watchblank' => 'أضف الفصفحات التي أفرغها إلى قائمة مراقبتي',
 	'purewikideletion-pref-watchunblank' => 'أضف الصفحات التي أملؤها إلى قائمة مراقبتي',
 	'purewikideletion-blanked' => "نسخة سابقة من هذه الصفحة تم إفراغها بواسطة [[User:$1|$1]] ([[User talk:$1|نقاش]]) ([[Special:Contributions/$1|مساهمات]]) في $2
-
+	
 السبب المعطى للإفراغ كان: ''<nowiki>$3</nowiki>''.
 
 يمكنك [{{fullurl:{{FULLPAGENAMEE}}|action=history}} رؤية تاريخ المقالة], [{{fullurl:{{FULLPAGENAMEE}}|oldid=$4&action=edit}} تعديل آخر نسخة]،
@@ -69,7 +69,7 @@ $messages['be-tarask'] = array(
 	'purewikideletion-pref-watchblank' => 'Дадаваць у мой сьпіс назіраньня старонкі, якія я буду ачышчаць',
 	'purewikideletion-pref-watchunblank' => 'Дадаваць у мой сьпіс назіраньня старонкі, у якіх я буду адмяняць ачыстку',
 	'purewikideletion-blanked' => "Папярэдняя вэрсія гэтай старонкі была ачышчаная [[User:$1|$1]] ([[User talk:$1|гутаркі]]) ([[Special:Contributions/$1|унёсак]]) $2
-
+        
 Пададзеная прычына ачысткі была: ''<nowiki>$3</nowiki>''.
 
 Вы можаце [{{fullurl:{{FULLPAGENAMEE}}|action=history}} праглядзець гісторыю старонкі], [{{fullurl:{{FULLPAGENAMEE}}|oldid=$4&action=edit}} рэдагаваць апошнюю вэрсію], альбо ўвесьці тэкст новай старонкі ў белае поле ніжэй.",
@@ -81,10 +81,34 @@ $messages['be-tarask'] = array(
 );
 
 /** Breton (Brezhoneg)
+ * @author Fulup
  * @author Y-M D
  */
 $messages['br'] = array(
+	'purewikideletion' => "Dilamidigezh c'hlan wiki",
+	'randomexcludeblank' => "Ur bajenn dre zegouezh (forc'hañ ar bajennoù gwenn)",
+	'populateblankedpagestable' => 'Leuniañ taolenn ar pajennoù gwennaet',
+	'purewikideletion-desc' => "Un dra all c'hoazh, lakaat a ra ar pajennoù gwennaet e liamm ruz",
+	'purewikideletion-pref-watchblank' => "Ouzhpennañ da'm roll evezhiañ ar pajennoù gwennaet ganin",
+	'purewikideletion-pref-watchunblank' => "Ouzhpennañ da'm roll evezhiañ ar pajennoù diwennaet ganin",
+	'purewikideletion-blanked' => "Gwennet ez eus bet ur stumm kozh eus ar bajenn-mañ gant [[User:$1|$1]] ([[User talk:$1|kaozeal]]) ([[Special:Contributions/$1|degasadennoù]]) d'an $5 da $6.
+
+Setu an abeg gwennañ : ''<nowiki>$3</nowiki>''.
+
+Gallout a rit [{{fullurl:{{FULLPAGENAMEE}}|action=history}} gwelet istor ar bajenn], [{{fullurl:{{FULLPAGENAMEE}}|oldid=$4&action=edit}} kemmañ ar stumm diwezhañ], pe skrivañ ur bajenn nevez en ur leuniañ an ichoù amañ dindan.",
+	'blank-log' => 'gwennadurioù',
+	'blank-log-name' => 'Roll ar gwennadurioù',
+	'blank-log-header' => 'Roll ar pajennoù gwennaet ha diwennaet a zo diskouezet amañ a-is.',
+	'blank-log-entry-blank' => 'en deus gwennaet $1',
+	'blank-log-entry-unblank' => 'en deus diwennaet $1',
+	'blank-log-link' => '[[{{#Special:Log}}/blank|roll ar gwennadurioù]]',
 	'purewikideletion-blanknologin' => 'Digevreet',
+	'purewikideletion-blanknologintext' => 'A-benn gellout gwennaat ur pennad e rankit bezañ un implijer enrollet ha bezañ [[Special:UserLogin|kevreet]].',
+	'purewikideletion-unblanknologintext' => 'A-benn gellout diwennaat ur pennad e rankit bezañ un implijer enrollet ha bezañ [[Special:UserLogin|kevreet]].',
+	'purewikideletion-blankedtext' => '[[$1]] a zo bet gwennaet.
+Sellit ouzh $2 evit ur roll eus ar gwennadurioù nevez.',
+	'purewikideletion-population-done' => 'Leuniet eo bet an daolenn blanked_page.',
+	'right-purewikideletion' => '[[Special:PopulateBlankedPagesTable|Leuniañ]] taolenn ar pajennoù gwennaet',
 );
 
 /** German (Deutsch)
@@ -98,7 +122,7 @@ $messages['de'] = array(
 	'purewikideletion-desc' => 'Sorgt unter anderem dafür, dass geleerte Seiten als roter Link erscheinen',
 	'purewikideletion-pref-watchblank' => 'Selbst geleerte Seiten automatisch beobachten',
 	'purewikideletion-pref-watchunblank' => 'Seiten mit von mir zurückgenommenen Leerungen automatisch beobachten',
-	'purewikideletion-blanked' => "Eine ehemalige Version dieser Seite wurde am $2 von [[User:$1|$1]] ([[User talk:$1|talk]]) ([[Special:Contributions/$1|contribs]]) geleert.
+	'purewikideletion-blanked' => "Eine ehemalige Version dieser Seite wurde am $2 von [[User:$1|$1]] ([[User talk:$1|Diskussion]]) ([[Special:Contributions/$1|Bearbeitungen]]) geleert.
 
 Angegebene Begründung für die Leerung: ''<nowiki>$3</nowiki>''.
 
@@ -135,7 +159,7 @@ $messages['fr'] = array(
 	'purewikideletion-desc' => 'Entre autres choses, met les pages blanchies en lien rouge',
 	'purewikideletion-pref-watchblank' => 'Ajouter les pages que je blanchis à ma liste de suivi',
 	'purewikideletion-pref-watchunblank' => 'Ajouter les pages dé-blanchis à ma liste de suivi',
-	'purewikideletion-blanked' => "Une ancienne version de cette page a été blanchie par [[User:$1|$1]] ([[User talk:$1|discuter]]) ([[Special:Contributions/$1|contributions]]) le $2
+	'purewikideletion-blanked' => "Une ancienne version de cette page a été blanchie par [[User:$1|$1]] ([[User talk:$1|discuter]]) ([[Special:Contributions/$1|contributions]]) le $5 à $6.
 
 La raison du blanchissement était : ''<nowiki>$3</nowiki>''.
 
@@ -145,7 +169,7 @@ Vous pouvez [{{fullurl:{{FULLPAGENAMEE}}|action=history}} voir l'historique de c
 	'blank-log-header' => 'Une liste des pages blanchies et dé-blanchies est affichée ci-dessous.',
 	'blank-log-entry-blank' => 'a blanchi $1',
 	'blank-log-entry-unblank' => 'a dé-blanchi $1',
-	'blank-log-link' => '[[Special:Log/blank|journal des blanchissements]]',
+	'blank-log-link' => '[[{{#Special:Log}}/blank|journal des blanchissements]]',
 	'purewikideletion-blanknologin' => 'Non connecté',
 	'purewikideletion-blanknologintext' => 'Vous devez être enregistré et [[Special:UserLogin|connecté]] pour blanchir des pages.',
 	'purewikideletion-unblanknologintext' => 'Vous devez être enregistré et [[Special:UserLogin|connecté]] pour dé-blanchir des pages.',
@@ -199,11 +223,17 @@ Hlej $2 za datowu sadźbu najnowšich wuprózdnjenjow.',
  * @author Robby
  */
 $messages['lb'] = array(
+	'purewikideletion' => 'Eidelmaache vu Säiten',
+	'randomexcludeblank' => 'Zoufälleg Säit (ouni déi eidelgemaachte Säiten)',
 	'purewikideletion-pref-watchblank' => 'Säiten déi ech eidelmaachen op meng Iwwerwaachungslëscht derbäisetzen',
 	'purewikideletion-pref-watchunblank' => 'Säiten déi ech eidelmaachen op meng Iwwerwaachungslëscht derbäisetzen',
 	'blank-log' => 'eidel maachen',
+	'blank-log-name' => 'Logbuch vun de Säiten déi eidel gemaach goufen',
 	'blank-log-entry-blank' => 'huet $1 eidegemaacht',
+	'blank-log-entry-unblank' => "huet d'eidelmaache vu(n) $1 réckgängeg gemaach",
 	'purewikideletion-blanknologin' => 'Net ageloggt',
+	'purewikideletion-blankedtext' => "[[$1]] gouf eidel gemaacht.
+Kuckt $2 fir d'Lëscht vun de Säiten déi rezent eidel gemaach goufen.",
 );
 
 /** Macedonian (Македонски)
@@ -214,10 +244,10 @@ $messages['mk'] = array(
 	'randomexcludeblank' => 'Случајна страница (без празни)',
 	'populateblankedpagestable' => 'Исполни ја табелата со испразнети страници',
 	'purewikideletion-desc' => 'Меѓу останатите функции, ги брише испразнетите страници',
-	'purewikideletion-pref-watchblank' => 'Додавај ги страниците што ги празнам во мојата листа на набљудувања',
-	'purewikideletion-pref-watchunblank' => 'Додавај ги испразнетите страници што ги враќам во мојата листа на набљудувања',
+	'purewikideletion-pref-watchblank' => 'Додавај ги страниците што ги празнам во мојот список на набљудувања',
+	'purewikideletion-pref-watchunblank' => 'Додавај ги испразнетите страници што ги враќам во мојот список на набљудувања',
 	'purewikideletion-blanked' => "Претходна верзија на оваа страница беше испразнета од [[User:$1|$1]] ([[User talk:$1|разговор]]) ([[Special:Contributions/$1|придонеси]]) на $2
-
+        
 За испразнувањето беше наведена следнава причина: ''<nowiki>$3</nowiki>''.
 
 Можете да ја [{{fullurl:{{FULLPAGENAMEE}}|action=history}} погледате историјата на статијата], да ја [{{fullurl:{{FULLPAGENAMEE}}|oldid=$4&action=edit}} уредите најновата верзија], или пак да напишете нова содржина за страницата во просторот подолу.",
@@ -234,6 +264,36 @@ $messages['mk'] = array(
 Видете $2 за евиденција на скорешни празнења.',
 	'purewikideletion-population-done' => 'Завршив со исполнувањето на табелата blanked_page.',
 	'right-purewikideletion' => '[[Special:PopulateBlankedPagesTable|Исополни]] ја тебалата со испразнети страници',
+);
+
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'purewikideletion' => 'Pure wikiverwijdering',
+	'randomexcludeblank' => "Willekeurige pagina (lege pagina's uitgezonderd)",
+	'populateblankedpagestable' => "Tabel met lege pagina's vullen",
+	'purewikideletion-desc' => "Zorgt er onder anderen voor dat met rode verwijzingen naar lege pagina's wordt verwezen",
+	'purewikideletion-pref-watchblank' => 'Pagina’s die ik leegmaak automatisch volgen',
+	'purewikideletion-pref-watchunblank' => 'Pagina’s die ik vul automatisch volgen',
+	'purewikideletion-blanked' => "Een eerdere versie van deze pagina is leeggemaakt door [[User:$1|$1]] ([[User talk:$1|overleg]]) ([[Special:Contributions/$1|bijdragen]]) op $5 om $6.
+
+De opgegeven reden bij leegmaken is: ''<nowiki>$3</nowiki>''.
+
+U kunt de [{{fullurl:{{FULLPAGENAMEE}}|action=history}} geschiedenis van de pagina bekijken], de [{{fullurl:{{FULLPAGENAMEE}}|oldid=$4&action=edit}} laatste versie bewerken] of de pagina hieronder vullen.",
+	'blank-log' => 'leeggemaakt',
+	'blank-log-name' => "Logboek lege pagina's",
+	'blank-log-header' => "Hieronder staat een lijst met leeggemaakte en gevulde pagina's.",
+	'blank-log-entry-blank' => 'heeft $1 leeggemaakt',
+	'blank-log-entry-unblank' => 'heeft $1 gevuld',
+	'blank-log-link' => "[[{{#Special:Log}}/blank|Logboek lege pagina's]]",
+	'purewikideletion-blanknologin' => 'Niet aangemeld',
+	'purewikideletion-blanknologintext' => 'U moet geregistreerd zijn en [[Special:UserLogin|aangemeld]] zijn om een pagina leeg te kunnen maken.',
+	'purewikideletion-unblanknologintext' => 'U moet geregistreerd zijn en [[Special:UserLogin|aangemeld]] zijn om een pagina te kunnen vullen.',
+	'purewikideletion-blankedtext' => "[[$1]] is leeggemaakt.
+Zie $2 voor een overzicht van recent leeggemaakte pagina's.",
+	'purewikideletion-population-done' => 'De tabel blanked_page is gevuld.',
+	'right-purewikideletion' => "[[Special:PopulateBlankedPagesTable|De tabel met leggemaakte pagina's vullen]]",
 );
 
 /** Portuguese (Português)
@@ -277,7 +337,7 @@ $messages['ru'] = array(
 	'purewikideletion-desc' => 'Среди прочего, делает красными ссылки на пустые страницы',
 	'purewikideletion-pref-watchblank' => 'Добавлять очищенные мной страницы в список наблюдения',
 	'purewikideletion-pref-watchunblank' => 'Добавлять возвращённые после очистки мной страницы в список наблюдения',
-	'purewikideletion-blanked' => "Предыдущая версия этой страницы была очищена участником [[User:$1|$1]] ([[User talk:$1|обсуждение]]) ([[Special:Contributions/$1|вклад]]) $2
+	'purewikideletion-blanked' => "Предыдущая версия этой страницы была очищена участником [[User:$1|$1]] ([[User talk:$1|обсуждение]]) ([[Special:Contributions/$1|вклад]]) $5 $6.
 
 Указанная причина очистки: ''<nowiki>$3</nowiki>''.
 
@@ -287,7 +347,7 @@ $messages['ru'] = array(
 	'blank-log-header' => 'Ниже приведён список очищенных страниц и страниц, возвращённых после очистки.',
 	'blank-log-entry-blank' => 'очищена $1',
 	'blank-log-entry-unblank' => 'возвращена после очистки $1',
-	'blank-log-link' => '[[Special:Log/blank|журнал очисток]]',
+	'blank-log-link' => '[[{{#Special:Log}}/blank|журнал очисток]]',
 	'purewikideletion-blanknologin' => 'Вы не представились системе',
 	'purewikideletion-blanknologintext' => 'Вы должны [[Special:UserLogin|представиться системе]], чтобы иметь возможность очищать страницы.',
 	'purewikideletion-unblanknologintext' => 'Вы должны [[Special:UserLogin|представиться системе]], чтобы иметь возможность возвращать страницы после очистки.',
@@ -295,5 +355,35 @@ $messages['ru'] = array(
 Список недавних очисток см. на $2.',
 	'purewikideletion-population-done' => 'Закончено заполнение таблицы blanked_page.',
 	'right-purewikideletion' => '[[Special:PopulateBlankedPagesTable|заполнение]] таблицы очищенных страниц',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'purewikideletion' => 'Pagbura ng dalisay na wiki',
+	'randomexcludeblank' => 'Alinmang pahina (huwag isali ang walang laman)',
+	'populateblankedpagestable' => 'Damihan ang laman ng tabla ng mga pahinang inalisan ng laman',
+	'purewikideletion-desc' => 'Kabilang sa ibang mga bagay, nagsasanhi na maging pulang kawing ang mga pahinang inalisan ng laman',
+	'purewikideletion-pref-watchblank' => 'Idagdag ang mga pahinang inalisan ko ng laman sa aking tala ng mga binabantayan',
+	'purewikideletion-pref-watchunblank' => 'Idagdag ang mga pahinang hindi ko tinanggalan ng laman sa aking tala ng mga binabantayan',
+	'purewikideletion-blanked' => "Isang dating bersyon ng pahinang ito ang inalisan ng laman ni [[User:$1|$1]] ([[User talk:$1|usapan]]) ([[Special:Contributions/$1|ambag]]) noong $5 ng $6.
+        
+Ang ibinigay na dahilan ng pagtanggal ng laman ay: ''<nowiki>$3</nowiki>''.
+
+Maaari mong [{{fullurl:{{FULLPAGENAMEE}}|action=history}} tingnan ang kasaysayan ng artikulo], [{{fullurl:{{FULLPAGENAMEE}}|oldid=$4&action=edit}} baguhin ang huling bersyon], o magmakiniliya ng bagong pahina sa puting puwang sa ibaba.",
+	'blank-log' => 'Walang laman',
+	'blank-log-name' => 'Talaan ng pag-alis ng laman',
+	'blank-log-header' => 'Nasa ibaba ang isang talaan ng mga pag-aalis at paglalagay ng laman sa pahina.',
+	'blank-log-entry-blank' => 'inalisan ng laman ang $1',
+	'blank-log-entry-unblank' => 'hindi inalis ang laman ng $1',
+	'blank-log-link' => '[[{{#Special:Log}}/blank|talaan ng pagtanggal ng laman]]',
+	'purewikideletion-blanknologin' => 'Hindi nakalagda',
+	'purewikideletion-blanknologintext' => 'Dapat na isa kang nagpatalang tagagamit at [[Special:UserLogin|nakalagdang papasok]] upang makapag-alis ng laman ng isang pahina.',
+	'purewikideletion-unblanknologintext' => 'Dapat na isa kang nagpatalang tagagamit at [[Special:UserLogin|nakalagdang papasok]] upang makapaglagay ng laman sa isang pahina.',
+	'purewikideletion-blankedtext' => 'Inalis ang laman ng  [[$1]].
+Tingnan ang $2 para sa isang tala ng kamakailang lamang na mga pagtanggal ng laman.',
+	'purewikideletion-population-done' => 'Tapos na ang pagpapadami sa tabla ng pahinang_inalisan_ng_laman .',
+	'right-purewikideletion' => '[[Special:PopulateBlankedPagesTable|Paramihin ang loob]] ng tabla ng mga pahinang inalisan ng laman',
 );
 

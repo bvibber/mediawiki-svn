@@ -1039,7 +1039,7 @@ $messages['mk'] = array(
 	'passwordreset-disablesuccess' => 'Корисничката сметка е оневозможена за корисничкиот ид. бр.: $1',
 	'passwordreset-accountdisabled' => 'Сметката е оневозможена',
 	'disabledusers' => 'Оневозможени корисници',
-	'disabledusers-summary' => 'Ова е листа на корисници кои се оневозможени со PasswordReset.',
+	'disabledusers-summary' => 'Ова е список на корисници кои се оневозможени со PasswordReset.',
 	'right-passwordreset' => 'Менување на лозинка на корисник ([[Special:PasswordReset|специјална страница]])',
 );
 

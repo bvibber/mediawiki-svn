@@ -2238,6 +2238,37 @@ Ileri tutmalary yzarlamak üçin konfigurirläň: $wgPrefStatsTrackPrefs',
 	'prefstats-legend-in' => 'Goşulan',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'prefstats' => 'Estadistika ng nais',
+	'prefstats-desc' => 'Subaybayan ang estadistika tungkol sa ilang mga tagagamit ang mayroong partikular na pinaaandar na mga nais',
+	'prefstats-title' => 'Estadistika ng nais',
+	'prefstats-list-intro' => 'Sa kasalukuyan, sinusubaybayan ang sumusunod na mga nais.
+Pindutin ang isa upang matingnan ang estadistikang tungkol dito.',
+	'prefstats-noprefs' => 'Kasalukuyang walang sinusubaybayang mga nais.
+Iayos ang $wgPrefStatsTrackPrefs upang subaybayan ang mga nais.',
+	'prefstats-counters' => ' $1 {{PLURAL:$1|tagagamit|mga tagagamit}} ang nagpapagana ng ganitong nais magmula noong pasiglahin ang estadistika ng nais
+** $2 {{PLURAL:$2|tagagamit pa rin|mga tagagamit pa rin}} nagpapagana nito
+** $3 {{PLURAL:$3|tagagamit|mga tagagamit}} ang hindi na nagpagana nito mula noon',
+	'prefstats-counters-expensive' => '$1 {{PLURAL:$1|tagagamit|mga tagagamit}} ang nagpapagana ng ganitong nais magmula noong pasiglahin ang estadistika ng nais
+** $2 {{PLURAL:$2|tagagamit pa rin|mga tagagamit pa rin}} nagpapagana nito
+** $3 {{PLURAL:$3|tagagamit|mga tagagamit}} ang hindi na nagpagana nito mula noon
+* Sa kabuoan, {{PLURAL:$4|tagagamit ang|mga tagagamit ang}}  nagtakda ng ganitong nais',
+	'prefstats-xaxis' => 'Pamamarati (mga oras)',
+	'prefstats-factors' => 'Pagtingin bawat: $1',
+	'prefstats-factor-hour' => 'oras',
+	'prefstats-factor-sixhours' => 'anim na oras',
+	'prefstats-factor-day' => 'araw',
+	'prefstats-factor-week' => 'linggo',
+	'prefstats-factor-twoweeks' => 'dalawang linggo',
+	'prefstats-factor-fourweeks' => 'apat na linggo',
+	'prefstats-factor-default' => 'bumalik sa likas na nakatakdang tumbasan',
+	'prefstats-legend-out' => 'Hindi sumali',
+	'prefstats-legend-in' => 'Sumali',
+);
+
 /** Turkish (Türkçe)
  * @author Joseph
  */

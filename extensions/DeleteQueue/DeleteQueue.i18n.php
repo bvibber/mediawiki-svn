@@ -3831,7 +3831,7 @@ $messages['mk'] = array(
 	'deletequeue-speedy-text' => "Овој образец служи за означување на страницата „'''$1'''“ за брзо бришење.
 
 Барањето ќе го разгледа администратор и, ако има добра основа, ќе ја избрише страницата.
-Мора да одберете причина за бришење од расклопната листа подолу, и да додадете други релевантни информации.",
+Мора да одберете причина за бришење од паѓачкиот список подолу, и да додадете други релевантни информации.",
 	'deletequeue-prod-title' => 'Предложи бришење на „$1“',
 	'deletequeue-prod-text' => "Овој образец служи за предлагање на „'''$1'''“ за бришење.
 
@@ -3891,7 +3891,7 @@ $messages['mk'] = array(
 	'deletequeue-reviewdeletediscuss-title' => 'Прегледување на разговорот за бришење на „$1“',
 	'deletequeue-reviewdeletediscuss-text' => "Овој образец служи за прегледување на разговорот за бришење на „'''$1'''“.
 
-На располагање ви е [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} листа] на одобренија и приговори, а самиот разговор ќе го најдете на [[$2]].
+На располагање ви е [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} список] на одобренија и приговори, а самиот разговор ќе го најдете на [[$2]].
 Имајте на ум дека одлука што ќе ја донесете треба да биде во согласност со консензусот во разговорот.",
 	'deletequeue-review-success' => 'Успешно го прегледавте бришењето на оваа страница',
 	'deletequeue-review-success-title' => 'Прегледот е завршен',
@@ -3940,7 +3940,7 @@ You may [{{fullurl:$1|action=delvote}} endorse or object] to deletion, or [{{ful
 	'deletequeue-list-expired' => 'Прикажи само предложени што треба да се затвораат.',
 	'deletequeue-list-search' => 'Пребарување',
 	'deletequeue-list-anyqueue' => '(било кој)',
-	'deletequeue-list-votes' => 'Листа на гласови',
+	'deletequeue-list-votes' => 'Список на гласови',
 	'deletequeue-list-votecount' => '$1 {{PLURAL:$1|одобрение|одобренија}}, $2 {{PLURAL:$2|приговор|приговори}}',
 	'deletequeue-list-header-page' => 'Страница',
 	'deletequeue-list-header-queue' => 'Редица',

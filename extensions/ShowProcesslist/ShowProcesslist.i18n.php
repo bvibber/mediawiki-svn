@@ -615,7 +615,7 @@ $messages['mhr'] = array(
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
-	'showprocesslist' => 'Прикажи листа на процеси',
+	'showprocesslist' => 'Прикажи список на процеси',
 	'showprocesslist-desc' => 'Прикажи го изводот од наредбата „[[Special:ShowProcesslist|SHOW FULL PROCESSLIST]]“',
 	'showprocesslist-id' => 'Id',
 	'showprocesslist-user' => 'Корисник',

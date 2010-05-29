@@ -1177,6 +1177,37 @@ $messages['te'] = array(
 	'tog-riched_disable' => 'సిరి కూర్పరిని అచేతనం చేయండి',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'fckeditor-desc' => 'Ipahintulot ang pamamatnugot na gamit ang patnugot na FCK ng patnugot na WYSIWYG',
+	'textrichditor' => 'Mayamang Patnugot',
+	'prefs-fckeditor' => 'Mayamang Patnugot',
+	'tog-riched_disable' => 'Huwag paganahin ang mayamang patnugot',
+	'tog-riched_disable_ns_main' => 'Huwag paganahin ang mayamang patnugot sa loob ng pangunang puwang na pampangalan',
+	'tog-riched_disable_ns_talk' => 'Huwag paganahin ang mayamang patnugot sa loob ng puwang na pampangalang "{{ns:talk}}"',
+	'tog-riched_disable_ns_user' => 'Huwag paganahin ang mayamang patnugot sa loob ng puwang na pampangalang "{{ns:user}}"',
+	'tog-riched_disable_ns_user_talk' => 'Huwag paganahin ang mayamang patnugot sa loob ng puwang na pampangalang "{{ns:user_talk}}"',
+	'tog-riched_disable_ns_project' => 'Huwag paganahin ang mayamang patnugot sa loob ng puwang na pampangalang "{{ns:project}}"',
+	'tog-riched_disable_ns_project_talk' => 'Huwag paganahin ang mayamang patnugot sa loob ng puwang na pampangalang "{{ns:project_talk}}"',
+	'tog-riched_disable_ns_image' => 'Huwag paganahin ang mayamang patnugot sa loob ng puwang na pampangalang "{{ns:file}}"',
+	'tog-riched_disable_ns_image_talk' => 'Huwag paganahin ang mayamang patnugot sa loob ng puwang na pampangalang "{{ns:file_talk}}"',
+	'tog-riched_disable_ns_mediawiki' => 'Huwag paganahin ang mayamang patnugot sa loob ng puwang na pampangalang "{{ns:mediawiki}}"',
+	'tog-riched_disable_ns_mediawiki_talk' => 'Huwag paganahin ang mayamang patnugot sa loob ng puwang na pampangalang "{{ns:mediawiki_talk}}"',
+	'tog-riched_disable_ns_template' => 'Huwag paganahin ang mayamang patnugot sa loob ng puwang na pampangalang "{{ns:template}}"',
+	'tog-riched_disable_ns_template_talk' => 'Huwag paganahin ang mayamang patnugot sa loob ng puwang na pampangalang "{{ns:template_talk}}"',
+	'tog-riched_disable_ns_help' => 'Huwag paganahin ang mayamang patnugot sa loob ng puwang na pampangalang "{{ns:help}}"',
+	'tog-riched_disable_ns_help_talk' => 'Huwag paganahin ang mayamang patnugot sa loob ng puwang na pampangalang "{{ns:help_talk}}"',
+	'tog-riched_disable_ns_category' => 'Huwag paganahin ang mayamang patnugot sa loob ng puwang na pampangalang "{{ns:category}}"',
+	'tog-riched_disable_ns_category_talk' => 'Huwag paganahin ang mayamang patnugot sa loob ng puwang na pampangalang "{{ns:category_talk}}"',
+	'rich_editor_new_window' => 'Buksan ang mayamang patnugot sa loob ng bagong dungawan',
+	'tog-riched_start_disabled' => 'Magsimulang hindi gumagana ang mayamang patnugot',
+	'tog-riched_use_popup' => 'Buksan ang mayamang patnugot sa loob ng isang biglang-litaw',
+	'tog-riched_use_toggle' => 'Gamitin ang panglipat-lipat upang magpalipat-lipat sa pagitan ng wikiteksto at mayamang patnugot (palitan ang lugar ng teksto ng mayamang patnugot)',
+	'tog-riched_toggle_remember_state' => 'Tandaan ang huling katayuan ng panglipat-lipat',
+);
+
 /** Turkish (Türkçe)
  * @author Vito Genovese
  */

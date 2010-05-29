@@ -367,7 +367,7 @@ $messages['lt'] = array(
  */
 $messages['mk'] = array(
 	'whosonline' => 'Кој е на линија',
-	'whosonline-desc' => 'Прикажува [[Special:WhosOnline|листа]] на најавени и анонимни корисници кои се моментално на линија',
+	'whosonline-desc' => 'Прикажува [[Special:WhosOnline|список]] на најавени и анонимни корисници кои се моментално на линија',
 );
 
 /** Malayalam (മലയാളം)

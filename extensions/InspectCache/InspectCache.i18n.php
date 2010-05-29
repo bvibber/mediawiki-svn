@@ -637,7 +637,7 @@ $messages['mk'] = array(
 	'inspectcache-get' => 'Дај',
 	'inspectcache-delete' => 'Избриши',
 	'inspectcache-deleted' => 'Избришан кеш',
-	'inspectcache-list' => 'Листа',
+	'inspectcache-list' => 'Список',
 	'right-inspectcache' => 'Преглед и бришење на записи во кешот',
 );
 

@@ -686,10 +686,12 @@ $messages['kn'] = array(
 );
 
 /** Korean (한국어)
+ * @author Kwj2772
  * @author ToePeu
  */
 $messages['ko'] = array(
 	'edituser-dosearch' => '찾기',
+	'right-edituser-exempt' => '다른 사용자가 이 사용자의 환경 설정을 바꿀 수 없게 함',
 );
 
 /** Krio (Krio)
