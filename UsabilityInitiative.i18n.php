@@ -83,6 +83,8 @@ $messages['be-tarask'] = array(
 $messages['bg'] = array(
 	'usabilityinitiative' => 'Инициатива по ползваемост',
 	'usabilityinitiative-desc' => 'Софтуерни възможности, разработени от Инициативата за ползваемост на Уикипедия с цел за подобряване ползваемостта на МедияУики',
+	'prefs-beta' => 'Функционалности на Бета',
+	'prefs-labs' => 'Функционалности на Labs',
 );
 
 /** Bengali (বাংলা)

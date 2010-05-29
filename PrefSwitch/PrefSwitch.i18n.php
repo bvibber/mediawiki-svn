@@ -2528,6 +2528,8 @@ Da nam jih pomagate izboljšati, prosimo izpolnite neobvezno anketo spodaj, pred
  * @author Dafer45
  */
 $messages['sv'] = array(
+	'prefswitch' => 'Preferensväljare för Användbarhetsiniativet.',
+	'prefswitch-desc' => 'Tillåt användare att byta uppsättningar av preferenser',
 	'prefswitch-survey-true' => 'Ja',
 	'prefswitch-survey-false' => 'Nej',
 	'prefswitch-survey-submit-off' => 'Stäng av de nya funktionerna',

@@ -5411,6 +5411,7 @@ $messages['su'] = array(
 );
 
 /** Swedish (Svenska)
+ * @author Ainali
  * @author Hannibal
  * @author Micke
  * @author Rotsee
@@ -5482,24 +5483,16 @@ Du kan prova betaversionen igen när som helst genom att klicka på "{{int:optin
 	'optin-survey-answer-changes-custom' => 'Tillåt mer skräddarsydda inställningar.',
 	'optin-survey-answer-changes-other' => "Övrigt ''(endast engelska)'':",
 	'optin-improvements2' => '== Vad har förbättrats? == 
-[[Fil: UsabilityToolbar.png | vänster | link = | Skärmdump av det förbättrade redigeringsverktygsfältet]] 
-[[Fil: UsabilityDialogs.png | vänster | link = | Skärmdump av de nya dialogrutorna för att skapa innehåll]]
+[[Fil:UsabilityToolbar.png|vänster|link=|Skärmdump av det förbättrade redigeringsverktygsfältet]] 
+[[Fil:UsabilityDialogs.png|vänster|link=|Skärmdump av de nya dialogrutorna för att skapa innehåll]]
 ;Förbättrat verktygsfält Det förbättrade verktygsfältet gör det enklare att redigera artiklar. 
-
 Nya och förbättrade ikoner gör det tydligare vad de olika verktygen gör. 
-
 Utfällbara avsnitt minskar röran, samtidigt som verktyg som används sällan finns ett enda klick bort.
-
-; Dialogruta
-
-Numera när du skapar länkar eller tabeller, och klickar på verktygsikonen, så öppnas en dialogruta som hjälper dig att skapa länkar och tabeller genom att du bara kan fylla i ett formulär.
-
-; Dessutom
-
+;Dialogruta
+Numera när du skapar länkar eller tabeller och klickar på verktygsikonen, så öppnas en dialogruta som hjälper dig att skapa länkar och tabeller genom att du bara kan fylla i ett formulär.
+;Dessutom
 Vi har infört en rad andra förbättringar såsom enklare navigering, utfällbara flikar, förbättrad sökning, med mera. 
-
 == Så här kan du hjälpa till == 
-
 Om du vill veta mer om användbarhetsinitiativet, besök vår [http://usability.wikimedia.org/wiki/Wikipedia_Usability_Initiative webbplats].
 <div style="clear:both"></div>',
 );

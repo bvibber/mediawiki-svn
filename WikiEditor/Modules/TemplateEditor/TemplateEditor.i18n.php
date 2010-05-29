@@ -236,6 +236,15 @@ $messages['eu'] = array(
 	'wikieditor-template-editor-dialog-cancel' => 'Utzi',
 );
 
+/** Persian (فارسی)
+ * @author Ebraminio
+ */
+$messages['fa'] = array(
+	'wikieditor-template-editor-dialog-title' => 'ویرایش الگو',
+	'wikieditor-template-editor-dialog-submit' => 'بروزرسانی',
+	'wikieditor-template-editor-dialog-cancel' => 'انصراف',
+);
+
 /** Finnish (Suomi)
  * @author Crt
  */
