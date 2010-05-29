@@ -743,7 +743,6 @@ settings[] = smwgRSSEnabled: bool
 settings[] = smwgRSSWithPages: bool
 settings[] = smwgAllowRecursiveExport: bool
 settings[] = smwgExportBacklinks: bool
-settings[] = smwgOWLFullExport: bool
 settings[] = smwgNamespace: text
 settings[] = smwgMaxNonExpNumber: int
 settings[] = smwgEnableUpdateJobs: bool
