@@ -54,6 +54,7 @@ class ApiQueryIWLinks extends ApiQueryBase {
 
 		$this->addTables( 'iwlinks' );
 		$this->addWhereFld( 'iwl_from', array_keys( $this->getPageSet()->getGoodTitles() ) );
+
 		if ( !is_null( $params['continue'] ) ) {
 			$cont = explode( '|', $params['continue'] );
 			if ( count( $cont ) != 3 ) {
@@ -91,6 +92,14 @@ class ApiQueryIWLinks extends ApiQueryBase {
 				break;
 			}
 			$entry = array( 'prefix' => $row->iwl_prefix );
+
+			if ( !is_null( $params['url'] ) ) {
+				$title = Title::newFromText( "{$row->iwl_prefix}:{$row->iwl_title}" );
+				if ( $title ) {
+					$entry = array_merge( $entry, array( 'url' => $title->getFullURL() ) );
+				}
+			}
+
 			ApiResult::setContent( $entry, $row->iwl_title );
 			$fit = $this->addPageSubItem( $row->iwl_from, $entry );
 			if ( !$fit ) {
@@ -103,6 +112,7 @@ class ApiQueryIWLinks extends ApiQueryBase {
 
 	public function getAllowedParams() {
 		return array(
+			'url' => null,
 			'limit' => array(
 				ApiBase::PARAM_DFLT => 10,
 				ApiBase::PARAM_TYPE => 'limit',
@@ -116,6 +126,7 @@ class ApiQueryIWLinks extends ApiQueryBase {
 
 	public function getParamDescription() {
 		return array(
+			'url' => 'Whether to get the full URL',
 			'limit' => 'How many interwiki links to return',
 			'continue' => 'When more results are available, use this to continue',
 		);
@@ -134,7 +145,7 @@ class ApiQueryIWLinks extends ApiQueryBase {
 	protected function getExamples() {
 		return array(
 			'Get interwiki links from the [[Main Page]]:',
-			'  api.php?action=query&prop=iwlinks&titles=Main%20Page&redirects',
+			'  api.php?action=query&prop=iwlinks&titles=Main%20Page',
 		);
 	}
 

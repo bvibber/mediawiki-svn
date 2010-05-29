@@ -1,6 +1,9 @@
 This file lists changes on this extension. Localisation updates are done
 through translatewiki.net and are not listed here.
 
+0.15.27 - 26 May 2010
+  Updated SemanticMediaWiki and Translate extensions.
+
 0.15.26 - 10 May 2010
   Added $wgCommandLineDarkBg, $wgDBadminuser, $wgDBadminpassword.
 

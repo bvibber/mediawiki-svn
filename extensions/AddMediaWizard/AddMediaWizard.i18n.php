@@ -15,11 +15,19 @@ $messages['en'] = array(
 	'addmediawizard-desc' => 'Add media wizard, developed in partnership by Kaltura and Wikimedia Foundation',
 );
 
+/** Finnish (Suomi)
+ * @author Str4nd
+ */
+$messages['fi'] = array(
+	'addmediawizard-desc' => 'Lisää ohjatun mediatoiminnon, joka on kehitetty yhteistyössä Kalturan ja Wikimedia Foundationin kanssa.',
+);
+
 /** Hebrew (עברית)
+ * @author Rotemliss
  * @author YaronSh
  */
 $messages['he'] = array(
-	'addmediawizard-desc' => 'הוספת אשף מדיה, הפותח בשיתוף בין Kultura לבין קרן ויקימדיה',
+	'addmediawizard-desc' => 'אשף הוספת מדיה, שפותח בשיתוף פעולה בין Kaltura וקרן ויקימדיה',
 );
 
 /** Hungarian (Magyar)
@@ -27,6 +35,13 @@ $messages['he'] = array(
  */
 $messages['hu'] = array(
 	'addmediawizard-desc' => 'Média hozzáadása varázsló, a Kaltura és a Wikimédia Alapítvány közös fejlesztése',
+);
+
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'addmediawizard-desc' => 'Tambahkan media wizard, dikembangkan atas kerjasama Kaltura dan Wikimedia Foundation',
 );
 
 /** Igbo (Igbo)
@@ -78,11 +93,25 @@ $messages['sl'] = array(
 	'addmediawizard-desc' => 'Doda predstavnostni čarovnik, ki je nastal v sodelovanju Kalture in fundacije Wikimedia',
 );
 
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Charmed94
+ */
+$messages['sr-ec'] = array(
+	'addmediawizard-desc' => 'Додај медија водич, развијен у партнерству с Калтуром и Викимедија Задужбином',
+);
+
 /** Swedish (Svenska)
  * @author Dafer45
  */
 $messages['sv'] = array(
 	'addmediawizard-desc' => 'Guide för att lägga till media, utvecklad i samarbete mellan Kaltura och Wikimedia Foundation',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'addmediawizard-desc' => 'Idagdag ang media wizard, pinaunlad sa pakikipagtulungan ng Kaltura at Pundasyong Wikimedia',
 );
 
 /** Turkish (Türkçe)

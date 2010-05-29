@@ -31,23 +31,29 @@ class ExternalStoreCassandra {
 	
 	public function store( $cluster, $data ) {
 		global $wgCassandraKeyPrefix, $wgCassandraWriteConsistency, $wgCassandraColumnFamily;
-		$this->connect( $cluster );
-		$key = 'ES:' . $wgCassandraKeyPrefix . sha1( $data );
 
-		$columnPath = new cassandra_ColumnPath();
-		$columnPath->column = 'data';
-		$columnPath->super_column = null;
-		$columnPath->column_family = $wgCassandraColumnFamily;
+		try {
+			$this->connect( $cluster );
+			$key = $wgCassandraKeyPrefix . sha1( $data );
 
-		$this->client->insert( $this->keyspace, $key, $columnPath, $data, time(), $wgCassandraWriteConsistency );
-		return "cassandra://$cluster/$key";
+			$columnPath = new cassandra_ColumnPath();
+			$columnPath->column = 'data';
+			$columnPath->super_column = null;
+			$columnPath->column_family = $wgCassandraColumnFamily;
+
+			$this->client->insert( $this->keyspace, $key, $columnPath, $data, time(), $wgCassandraWriteConsistency );
+			return "cassandra://$cluster/$key";
+		} catch ( TException $e ) {
+			throw new MWCassandraException( $e );
+		}
 	}
 
 	function fetchFromURL( $url ) {
 		global $wgCassandraReadConsistency, $wgCassandraColumnFamily;
 
-		try{
-			$this->connect( $url );
+		$this->connect( $url );
+
+		try {
 			$splitted = explode( '/', $url );
 			$key = end( $splitted );
 
@@ -61,7 +67,7 @@ class ExternalStoreCassandra {
 			$predicate = new cassandra_SlicePredicate();
 			$predicate->slice_range = $sliceRange;
 			
-			$result = $this->client->get_slice($this->keyspace, $key, $columnParent, $predicate, $wgCassandraReadConsistency);
+			$result = $this->client->get_slice( $this->keyspace, $key, $columnParent, $predicate, $wgCassandraReadConsistency );
 			if ( empty ( $result ) ) {
 				return false;
 			}
@@ -75,25 +81,39 @@ class ExternalStoreCassandra {
 	}
 
 	private function connect( $cluster ) {
-		global $wgThriftPort;
+		global $wgCassandraPort, $wgCassandraClusters;
 
 		$cluster = str_replace( 'cassandra://', '', $cluster );
-		list( $host, $this->keyspace ) = explode( '/', $cluster );
+		list( $cluster, $this->keyspace ) = explode( '/', $cluster );
+		
+		if ( isset( $wgCassandraClusters[$cluster] ) ) {
+			$hosts = $wgCassandraClusters[$cluster];
+			$host = $hosts[mt_rand( 0, count( $hosts ) - 1 )];
+		} else {
+			$host = $cluster;
+		}
 
-		$this->socket = new TSocket( $host, $wgThriftPort);
-		$this->transport = new TBufferedTransport( $this->socket, 1024, 1024 );
-		$this->protocol = new TBinaryProtocolAccelerated( $this->transport );
-		$this->client = new CassandraClient( $this->protocol );
-		$this->transport->open();
+		try {
+			$this->socket = new TSocket( $host, $wgCassandraPort );
+			$this->transport = new TBufferedTransport( $this->socket, 1024, 1024 );
+			$this->protocol = new TBinaryProtocolAccelerated( $this->transport );
+			$this->client = new CassandraClient( $this->protocol );
+			$this->transport->open();
+		} catch ( TException $e ) {
+			throw new MWCassandraException( $e );
+		}
 	}
 }
 
+/**
+ * Wrapper exception for better handling in MW
+ */
 class MWCassandraException extends MWException {
 	public $innerException;
 	
 	public function __construct( TException $e ) {
 		$this->innerException = $e;
-		parent::__construct( 'Cassandra error ' . get_class( $e ) . ': ' . $e->__toString() 
+		parent::__construct( 'Cassandra error ' . get_class( $e ) . ': ' . $e->getMessage()
 			. "\n\nStack trace: " . $e->getTraceAsString()
 		);
 	}

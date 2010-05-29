@@ -2122,7 +2122,7 @@ $messages['tl'] = array(
 	'recordadmin-buttonreset' => 'Muling itakda',
 	'recordadmin-searchresult' => 'Kinalabasan/resulta ng paghahanap',
 	'recordadmin-nomatch' => 'Walang natagpuang mga tala/rekord na tumutugma!',
-	'recordadmin-edit' => 'Binabago ang $1',
+	'recordadmin-edit' => 'Binabago ang $2 tala na "$1"',
 	'recordadmin-typeupdated' => '$1 mga pag-aari ang naisapanahon na',
 	'recordadmin-updatesuccess' => '$1 naisapanahon na',
 	'recordadmin-updateerror' => 'Naganap ang isang kamalian habang nagsasapanahon',
@@ -2137,7 +2137,12 @@ $messages['tl'] = array(
 	'recordadmin-modified' => 'Binago',
 	'recordadmin-actions' => 'Mga galaw',
 	'recordadmin-needscontent' => 'Idagdag ang nilalaman...',
+	'recordadmin-editwithform' => 'Mga pag-aari',
+	'recordadmin-typeinfo' => '$1 tala',
 	'right-recordadmin' => 'Hanapin at baguhin ang mga pahina ng tala/rekord',
+	'recordadmin-export-csv' => 'CSV',
+	'recordadmin-export-pdf' => 'PDF',
+	'recordadmin-notset' => 'Walang "$1"',
 );
 
 /** Turkish (Türkçe)

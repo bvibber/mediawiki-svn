@@ -9,7 +9,7 @@
 
 if ( !defined( 'MEDIAWIKI' ) ) die();
 
-define( 'SIO_VERSION', '0.4.1' );
+define( 'SIO_VERSION', '0.5' );
 
 $wgExtensionCredits['parserhook'][] = array(
 	'path' => __FILE__,
@@ -26,10 +26,12 @@ $wgHooks['ParserClearState'][] = 'SIOHandler::clearState';
 $wgHooks['smwDeleteSemanticData'][] = 'SIOHandler::updateData';
 $wgHooks['smwUpdatePropertySubjects'][] = 'SIOHandler::handleUpdatingOfInternalObjects';
 $wgHooks['smwRefreshDataJobs'][] = 'SIOHandler::handleRefreshingOfInternalObjects';
+$wgHooks['smwAddToRDFExport'][] = 'SIOSQLStore::createRDF';
 
-$siogIP = $IP . '/extensions/SemanticInternalObjects';
+$siogIP = dirname( __FILE__ );
 $wgExtensionMessagesFiles['SemanticInternalObjects'] = $siogIP . '/SemanticInternalObjects.i18n.php';
 $wgAutoloadClasses['SIOHandler'] = $siogIP . '/SemanticInternalObjects_body.php';
+$wgAutoloadClasses['SIOSQLStore'] = $siogIP . '/SemanticInternalObjects_body.php';
 
 function siofRegisterParserFunctions( &$parser ) {
 	$parser->setFunctionHook( 'set_internal', array( 'SIOHandler', 'doSetInternal' ) );

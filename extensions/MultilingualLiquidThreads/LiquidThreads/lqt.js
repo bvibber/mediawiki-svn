@@ -162,7 +162,7 @@ var liquidThreads = {
 		$j(container).before( loadSpinner );
 
 		var finishShow = function() {
-			// Scroll to the textbox
+			// Scroll to the source content
 			var targetOffset = $j(container).find('.source-content').offset().top;
 			var windowHeight = $j(window).height();
 			var editBoxHeight = $j(container).height();
@@ -179,12 +179,7 @@ var liquidThreads = {
 				$j('html,body').animate({scrollTop: scrollOffset}, 'slow');
 			}
 
-			// Auto-focus and set to auto-grow as well
-			$j(container).find('#wpTextbox1').focus();//.autogrow();
-			// Focus the subject field if there is one. Overrides previous line.
-			$j(container).find('#lqt_subject_field').focus();
-
-		}
+		};
 
 		var finishSetup = function() {
 			// Kill the loader.

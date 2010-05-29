@@ -23,7 +23,7 @@ $messages['en'] = array(
 	'configure-ext-ext-dependencies'      => "'''Warning:''' this extension requires the following {{PLURAL:$2|extension|extensions}} to be activated: $1.",
 	'configure-ext-ext-dependency-err'    => "'''Error:''' the $1 extension requires the $2 extension to be activated.",
 	'configure-ext-doc'                   => 'See online documentation',
-	'configure-ext-schemachange'          => "'''Warning:''' this extension requires a database update to work correctly!",
+	'configure-ext-schemachange'          => "'''Warning:''' this extension requires a [http://www.mediawiki.org/wiki/Manual:Update.php database update] to work correctly!",
 	'configure-ext-settings'              => 'Settings',
 	'configure-ext-settings-dep-errors'   => 'This extension cannot be enabled because the following {{PLURAL:$1|setting has|settings have}} an unacceptable value:',
 	'configure-ext-settings-dep-error'    => '$1: required value: $2, current value: $3',
@@ -470,6 +470,7 @@ $messages['am'] = array(
  */
 $messages['an'] = array(
 	'configure-desc-ns' => 'Espacio de nombres',
+	'configure-form-reason' => 'Razón:',
 	'configure-section-namespaces' => 'Espacios de nombres',
 	'configure-section-images' => 'Ficheros',
 	'configure-throttle-action-edit' => 'Editar',
@@ -912,6 +913,7 @@ $messages['as'] = array(
  * @author Cesco
  * @author EugeneZelenko
  * @author Jim-by
+ * @author Wizardist
  */
 $messages['be-tarask'] = array(
 	'configure' => 'Канфігурацыя вікі',
@@ -926,7 +928,7 @@ $messages['be-tarask'] = array(
 	'configure-ext-ext-dependencies' => "'''Папярэджаньне:''' гэтак пашырэньне патрабуе актывацыі {{PLURAL:$2|наступнага пашырэньня|наступных пашырэньняў}}: $1.",
 	'configure-ext-ext-dependency-err' => "'''Памылка:''' пашырэньне $1 патрабуе актывацыі пашырэньня $2.",
 	'configure-ext-doc' => 'Глядзіце дакумэнтацыю',
-	'configure-ext-schemachange' => "'''Папярэджаньне:''' для карэктнай працы гэтага пашырэньня патрабуецца абнаўленьня базы зьвестак!",
+	'configure-ext-schemachange' => "'''Папярэджаньне:''' для карэктнай працы гэтага пашырэньня патрабуецца [http://www.mediawiki.org/wiki/Manual:Update.php абнаўленьне базы зьвестак]!",
 	'configure-ext-settings' => 'Устаноўкі',
 	'configure-ext-settings-dep-errors' => 'Гэта пашырэньне ня можа быць уключана з-за таго, што {{PLURAL:$1|наступная ўстаноўка мае няслушнае значэньне|наступныя ўстаноўкі маюць няслушныя значэньні}}:',
 	'configure-ext-settings-dep-error' => '$1: патрабуемае значэньне: $2, цяперашняе значэньне: $3',
@@ -1597,7 +1599,7 @@ $messages['cs'] = array(
 	'configure-ext-settings' => 'Nastavení',
 	'configure-ext-use-extension' => 'Používat toto rozšíření',
 	'configure-ext-use' => 'Používat',
-	'configure-form-reason' => 'Důvod změny:',
+	'configure-form-reason' => 'Důvod:',
 	'configure-customised' => "''Toto nastavení bylo přizpůsobené''",
 	'configure-arrayinput-oneperline' => "''(jeden na řádek)''",
 	'configure-summary' => 'Tato speciální stránka Vám umožňuje konfiguraci této wiki. Další informace najdete na stránce [http://www.mediawiki.org/wiki/Manual:Configuration_settings Nastavení konfigurace]',
@@ -1982,7 +1984,7 @@ $messages['de'] = array(
 	'configure-ext-ext-dependencies' => "'''Warnung:''' Diese Extension erfordert, dass folgende {{PLURAL:$2|Extension aktiviert wird|Extensions aktiviert werden}}: $1.",
 	'configure-ext-ext-dependency-err' => "'''Fehler:''' Die Extension „$1“ erfordert, dass Extension „$2“ aktiviert ist.",
 	'configure-ext-doc' => 'Siehe Online-Dokumentation',
-	'configure-ext-schemachange' => "'''Warnung:''' diese Erweiterung benötigt ein Datenbankupdate um korrekt zu funktionieren!",
+	'configure-ext-schemachange' => "'''Warnung:''' Für diese Softwareerweiterung muss eine [http://www.mediawiki.org/wiki/Manual:Update.php Datenbankaktualisierung] durchgeführt werden, damit sie richtig funktionieren kann!",
 	'configure-ext-settings' => 'Einstellungen',
 	'configure-ext-settings-dep-errors' => 'Die Extension kann nicht aktiviert werden, da folgende {{PLURAL:$1|Einstellung|Einstellungen}} einen inakzeptablen Wert {{PLURAL:$1|hat|haben}}:',
 	'configure-ext-settings-dep-error' => '$1: erforderlicher Wert: $2; aktueller Wert: $3',
@@ -2193,7 +2195,7 @@ $messages['dsb'] = array(
 	'configure-ext-ext-dependencies' => "'''Warnowanje:''' toś to rozšyrjenje trjeba {{PLURAL:$2|slědujuce rozšyrjenje|slědujucej rozšyrjeni|slědujuce rozšyrjenja|slědujucych rozšyrjenjow}} za aktiwizěrowanje: $1.",
 	'configure-ext-ext-dependency-err' => "'''Zmólka:''' rozšyrjenje $1 trjeba rozšyrjenje $2 za aktiwizěrowanje.",
 	'configure-ext-doc' => 'Glědaj dolumentaciju online',
-	'configure-ext-schemachange' => "'''Warnowanje:''' toś to rozšyrjenje pomina se aktualizaciju datoweje banki, aby funkcioněrowało korektnje!",
+	'configure-ext-schemachange' => "'''Warnowanje:''' toś to rozšyrjenje pomina se [http://www.mediawiki.org/wiki/Manual:Update.php aktualizaciju datoweje banki], aby funkcioněrowało korektnje!",
 	'configure-ext-settings' => 'Nastajenja',
 	'configure-ext-settings-dep-errors' => 'Toś to rozšyrjenje njedajo se zmóžniś, dokulaž {{PLURAL:$1|slědujuce nastajenje ma|slědujucej nastajeni matej|slědujuce nastajenja maju|slědujucych nastajenjow ma}} njedowólonu gódnotu.',
 	'configure-ext-settings-dep-error' => '$1: trěbna gódnota: $2, aktualna gódnota: $3',
@@ -2917,6 +2919,13 @@ $messages['eu'] = array(
 	'configure-farmer-settings' => '[[Special:Configure|Wiki hau konfiguratu]].',
 );
 
+/** Persian (فارسی)
+ * @author Ebraminio
+ */
+$messages['fa'] = array(
+	'viewconfig' => 'نمایش پیکربندی ویکی',
+);
+
 /** Finnish (Suomi)
  * @author Crt
  * @author Nike
@@ -3128,7 +3137,7 @@ $messages['fr'] = array(
 	'configure-ext-ext-dependencies' => "'''Attention :''' cette extension requiert que {{PLURAL:$2|l'extension suivante soit activée|les extensions suivantes soient activées}} : $1",
 	'configure-ext-ext-dependency-err' => "'''Erreur :''' l'extension $1 requiert que l'extension $2 soit activée.",
 	'configure-ext-doc' => 'Voir la documentation en ligne',
-	'configure-ext-schemachange' => "'''Attention :''' cette extension requiert une mise à jour de la base de données pour fonctionner correctement !",
+	'configure-ext-schemachange' => "'''Attention :''' cette extension requiert une [http://www.mediawiki.org/wiki/Manual:Update.php mise à jour de la base de données] pour fonctionner correctement !",
 	'configure-ext-settings' => 'Paramètres',
 	'configure-ext-settings-dep-errors' => 'Cette extension ne peut pas être activée car {{PLURAL:$1|le paramètre suivant a|les paramètres suivants ont}} une valeur incorrecte :',
 	'configure-ext-settings-dep-error' => '$1 : valeur requise : $2, valeur actuelle : $3',
@@ -3336,7 +3345,7 @@ $messages['gl'] = array(
 	'configure-ext-ext-dependencies' => "'''Aviso:''' esta extensión require {{PLURAL:$2|a seguinte extensión|as seguintes extensións}} para ser activada: $1.",
 	'configure-ext-ext-dependency-err' => "'''Erro:''' a extensión $1 require a extensión $2 para ser activada.",
 	'configure-ext-doc' => 'Ver a documentación en liña',
-	'configure-ext-schemachange' => "'''Perigo:''' esta extensión require unha actualización da base de datos para que traballe correctamente!",
+	'configure-ext-schemachange' => "'''Atención:''' esta extensión require unha [http://www.mediawiki.org/wiki/Manual:Update.php actualización da base de datos] para traballar correctamente!",
 	'configure-ext-settings' => 'Parámetros',
 	'configure-ext-settings-dep-errors' => 'Esta extensión non pode ser activada porque {{PLURAL:$1|a seguinte característica posúe|as seguintes características posúen}} un valor inaceptable:',
 	'configure-ext-settings-dep-error' => '$1: valor requirido: $2, valor actual: $3',
@@ -4141,7 +4150,7 @@ $messages['hsb'] = array(
 	'configure-ext-ext-dependencies' => "'''Warnowanje:''' tute rozšěrjenje trjeba {{PLURAL:$2|slědowace rozšěrjenje|slědowacej rozšěrjeni|slědowace rozšěrjenja|slědowacych rozšěrjenjow}} za aktiwizowanje: $1.",
 	'configure-ext-ext-dependency-err' => "'''Zmylk:''' rozšěrjenje $1 trjeba rozšěrjenja $2 za aktiwizowanje.",
 	'configure-ext-doc' => 'Hlej dokumentaciju online',
-	'configure-ext-schemachange' => "'''Warnowanje:''' tute rozšěrjenje wužaduje sej aktualizaciju datoweje banki, zo by korektnje fungowało!",
+	'configure-ext-schemachange' => "'''Warnowanje:''' tute rozšěrjenje wužaduje sej [http://www.mediawiki.org/wiki/Manual:Update.php aktualizaciju datoweje banki], zo by korektnje fungowało!",
 	'configure-ext-settings' => 'Nastajenja',
 	'configure-ext-settings-dep-errors' => 'Tute rozšěrjenje njeda so zmóžnić, dokelž {{PLURAL:$1|slědowace nastajenja ma|slědowacej nastajeni matej|slědowace nastajenja maja|slědowacych nastajenjow ma}} njedowolenu hódnotu:',
 	'configure-ext-settings-dep-error' => '$1: trěbna hódnota: $2, aktualna hódnota: $3',
@@ -4870,7 +4879,7 @@ Silakan membuat atau mengubahnya untuk menggunakan ekstensi ini.',
 	'configure-throttle-none' => 'Tanpa limit',
 	'configure-condition-operator' => 'Operator:',
 	'configure-condition-operator-or' => 'Or',
-	'configure-condition-operator-and' => 'And',
+	'configure-condition-operator-and' => 'Dan',
 	'configure-condition-operator-xor' => 'Xor',
 	'configure-condition-operator-not' => 'Not',
 	'configure-condition-name' => 'Kondisi',
@@ -5140,7 +5149,7 @@ $messages['ja'] = array(
 	'configure-ext-ext-dependencies' => "'''警告:''' この拡張機能は、次の{{PLURAL:$2|拡張機能}}を有効にする必要があります: $1",
 	'configure-ext-ext-dependency-err' => "'''エラー:''' $1 拡張機能は、$2 拡張機能を有効にする必要があります。",
 	'configure-ext-doc' => 'オンラインマニュアルを参照',
-	'configure-ext-schemachange' => "'''警告:''' この拡張機能を正常に動作させるにはデータベースの更新を必要とします！",
+	'configure-ext-schemachange' => "'''警告:''' この拡張機能を正常に動作させるには[http://www.mediawiki.org/wiki/Manual:Update.php データベースの更新]が必要です！",
 	'configure-ext-settings' => '設定',
 	'configure-ext-settings-dep-errors' => '以下の{{PLURAL:$1|設定}}に不正な値が指定されているため、この拡張機能を有効化できません:',
 	'configure-ext-settings-dep-error' => '$1: 必要値: $2、現在の値: $3',
@@ -5784,7 +5793,7 @@ $messages['lb'] = array(
 	'configure-ext-ext-dependencies' => "'''Warnung:''' Dës Erweiderung brauch dës {{PLURAL:$2|Erweiderung|Erweiderungen}}: $1",
 	'configure-ext-ext-dependency-err' => "'''Feeler:''' Fir d'Erweiderung $1 muss d'Erweiderung $2 aktivéiert si fir ze fonctionnéieren",
 	'configure-ext-doc' => "Kuckt d'online-Dokumentatioun",
-	'configure-ext-schemachange' => "'''Opgepasst:''' dës Erweiderung brauch en Update vun der Datebank fir korrekt ze fonctionnéieren!",
+	'configure-ext-schemachange' => "'''Opgepasst:''' dës Erweiderung brauch en [http://www.mediawiki.org/wiki/Manual:Update.php Update vun der Datebank] fir korrekt ze fonctionnéieren!",
 	'configure-ext-settings' => 'Astellungen',
 	'configure-ext-settings-dep-errors' => 'Dës Erweiderung kann net ageschalt ginn well dës {{PLURAL:$1|Astellung|Astellungen}} en net akzeptabele Wert hunn:',
 	'configure-ext-settings-dep-error' => '$1: erfuederleche Wert: $2; aktuelle Wert: $3',
@@ -6218,7 +6227,7 @@ $messages['mk'] = array(
 	'configure-ext-ext-dependencies' => "'''Предупредување:''' ова дополнување бара да се {{PLURAL:$2|активира следново дополнување|активираат следниве дополнувања}}: $1.",
 	'configure-ext-ext-dependency-err' => "'''Грешка:''' дополнувањето $1 бара да се активира дополнувањето $2.",
 	'configure-ext-doc' => 'Видете документација на интернет',
-	'configure-ext-schemachange' => "'''Предупредување:''' ова дополнуваењ бара надградба на базата на податоци за да работи како што треба!",
+	'configure-ext-schemachange' => "'''Предупредување:''' ова дополнување бара [http://www.mediawiki.org/wiki/Manual:Update.php поднова на базата на податоци] за да работи како што треба!",
 	'configure-ext-settings' => 'Нагодувања',
 	'configure-ext-settings-dep-errors' => 'Ова дополнување не може да се овозможи бидејќи {{PLURAL:$1|следново прилагодување има|следниве прилагодувања имаат}} неприфатлива вредност:',
 	'configure-ext-settings-dep-error' => '$1: потребна вредност: $2, моментална вредност: $3',
@@ -6653,7 +6662,7 @@ $messages['nl'] = array(
 	'configure-ext-ext-dependencies' => "'''Waarschuwing:''' deze uitbreiding vereist installatie van de volgende {{PLURAL:$2|uitbreiding|uitbreidingen}}: $1",
 	'configure-ext-ext-dependency-err' => "'''Fout:''' de uitbreiding uitbreiding $1 vereist dat de uitbreiding $2 wordt geactiveerd.",
 	'configure-ext-doc' => 'Zie online handleiding',
-	'configure-ext-schemachange' => "'''Waarschuwing:''' om deze uitbreiding juist te laten werken dient de database bijgewerkt te worden!",
+	'configure-ext-schemachange' => "''Waarschuwing:''' om deze uitbreiding juist te laten werken dient [http://www.mediawiki.org/wiki/Manual:Update.php de database bijgewerkt te worden]!",
 	'configure-ext-settings' => 'Instellingen',
 	'configure-ext-settings-dep-errors' => 'Deze uitbreiding kan niet worden ingeschakeld, omdat de volgende {{PLURAL:$1|instelling een ongeldige waarde heeft|instellingen een ongeldige waarde hebben}}:',
 	'configure-ext-settings-dep-error' => '$1: vereiste waarde: $2, huidige waarde: $3',
@@ -7228,7 +7237,7 @@ $messages['oc'] = array(
 	'configure-ext-ext-dependencies' => "'''Atencion :''' aquesta extension requerís que {{PLURAL:$2|l'extension seguenta siá activada|las extensions seguentas sián activadas}} : $1",
 	'configure-ext-ext-dependency-err' => "'''Error :''' l'extension $1 requerís que l'extension $2 siá activada.",
 	'configure-ext-doc' => 'Veire la documentacion en linha',
-	'configure-ext-schemachange' => "'''Atencion :''' aquesta extension requerís una mesa a jorn de la banca de donadas per foncionar corrèctament !",
+	'configure-ext-schemachange' => "'''Atencion :''' aquesta extension requerís una [http://www.mediawiki.org/wiki/Manual:Update.php mesa a jorn de la banca de donadas] per foncionar corrèctament !",
 	'configure-ext-settings' => 'Paramètres',
 	'configure-ext-settings-dep-errors' => 'Aquesta extension pòt pas èsser activada perque {{PLURAL:$1|lo paramètre seguent a|los paramètres seguents an}} una valor incorrècta :',
 	'configure-ext-settings-dep-error' => '$1 : valor requesa : $2, valor actuala : $3',
@@ -7660,7 +7669,7 @@ $messages['pms'] = array(
 	'configure-ext-ext-dependencies' => "'''Atension:''' sta estension-sì a l'ha damanca che {{PLURAL:$2|l'estension|j'estension}} sì-sota a sio ativà: $1.",
 	'configure-ext-ext-dependency-err' => "'''Eror:''' l'estension $1 a veul che l'estension $2 a sia ativà.",
 	'configure-ext-doc' => 'Varda documentassion an linia',
-	'configure-ext-schemachange' => "'''Atension:''' sta estension-sì a ciama n'agiornament dël databese për travajé da bin!",
+	'configure-ext-schemachange' => "'''Atension:''' sta estension-sì a ciama n'[http://www.mediawiki.org/wiki/Manual:Update.php agiornament dël database] për travajé da bin!",
 	'configure-ext-settings' => 'Regolassion',
 	'configure-ext-settings-dep-errors' => "St'estension-sì a peul pa esse abilità përchè {{PLURAL:$1|la regolassion sota a l'ha|le regolassion sota a l'han}} un valor pa acetàbil:",
 	'configure-ext-settings-dep-error' => '$1: valor ciamà: $2, valor corent: $3',
@@ -7886,7 +7895,7 @@ $messages['pt'] = array(
 	'configure-ext-ext-dependencies' => "'''Aviso:''' esta extensão exige que {{PLURAL:$2|a seguinte extensão esteja activada|as seguintes extensões estejam activadas}}: $1.",
 	'configure-ext-ext-dependency-err' => "'''Erro:''' a extensão $1 requer a extensão $2 para ser activada.",
 	'configure-ext-doc' => 'Veja a documentação online',
-	'configure-ext-schemachange' => "'''Atenção''': esta extensão requer actualizações na base de dados para funcionar correctamente!",
+	'configure-ext-schemachange' => "'''Aviso:''' esta extensão requer uma [http://www.mediawiki.org/wiki/Manual:Update.php actualização da base de dados] para funcionar correctamente!",
 	'configure-ext-settings' => 'Configurações',
 	'configure-ext-settings-dep-errors' => 'Esta extensão não pode ser activada porque {{PLURAL:$1|a seguinte definição possui|as seguintes definições possuem}} um valor inaceitável:',
 	'configure-ext-settings-dep-error' => '$1: valor requerido: $2, valor actual: $3',
@@ -8061,10 +8070,10 @@ Para usar esta extensão crie-o ou altere-o, por favor.',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
+ * @author 555
  * @author Crazymadlover
  * @author Hamilton Abreu
  * @author Luckas Blade
- * @author 555
  */
 $messages['pt-br'] = array(
 	'configure' => 'Configurar o wiki',
@@ -8306,7 +8315,7 @@ $messages['ru'] = array(
 	'configure-ext-ext-dependencies' => "'''Внимание.''' Для этого расширения необходимо активировать {{PLURAL:$2|следующее расширение|следующие расширения}}: $1.",
 	'configure-ext-ext-dependency-err' => "'''Ошибка.''' Расширение $1 требует активации расширения $2.",
 	'configure-ext-doc' => 'Смотрите документацию в сети',
-	'configure-ext-schemachange' => "'''Внимание.''' Для корректной работы этого расширения необходимо обновление базы данных!",
+	'configure-ext-schemachange' => "'''Внимание.''' Для корректной работы этого расширения необходимо [http://www.mediawiki.org/wiki/Manual:Update.php обновление базы данных]!",
 	'configure-ext-settings' => 'Настройки',
 	'configure-ext-settings-dep-errors' => 'Это расширение не может быть включено из-за {{PLURAL:$1|следующей настройки с неприемлемым значением|следующих настроек с неприемлемыми значениями}} :',
 	'configure-ext-settings-dep-error' => '$1: требуемое значение: $2, текущее значение: $3',
@@ -9388,6 +9397,7 @@ $messages['te'] = array(
 	'configure-js-remove' => 'తొలగించు',
 	'configure-js-biglist-show' => '[వివరాలను చూపించు]',
 	'configure-js-biglist-hide' => '[వివరాలను దాచు]',
+	'configure-js-summary-none' => 'అమరికలు లేవు',
 	'configure-js-search-legend' => 'అన్వేషణ అమరికలు',
 	'configure-old' => 'పాత కూర్పులు',
 	'configure-old-changes' => 'మార్పులు',
@@ -9480,13 +9490,13 @@ $messages['tl'] = array(
 	'configure-ext-ext-dependencies' => "'''Babala:''' nangangailangan ang karugtong ng sumusunod na {{PLURAL:$2|karugtong|mga karugtong}} upang mapasigla: $1.",
 	'configure-ext-ext-dependency-err' => "'''Kamalian:''' nangangailangan ang karugtong na $1 ng karugtong na $2 upang mapasigla.",
 	'configure-ext-doc' => 'Tingnan ang kasulatang nasa internet',
-	'configure-ext-schemachange' => "'''Babala:''' nangangailangan ang karugtong na ito ng isang pagsasapanahon ng kalipunan ng dato upang maging tama ang pag-andar!",
+	'configure-ext-schemachange' => "'''Babala:''' nangangailangan ang karugtong na ito ng isang [http://www.mediawiki.org/wiki/Manual:Update.php pagsasapanahon ng kalipunan ng dato] upang maging tama ang pag-andar!",
 	'configure-ext-settings' => 'Mga katakdaan',
 	'configure-ext-settings-dep-errors' => 'Hindi maaaring paganahin ang karugtong na ito dahil ang sumusunod na {{PLURAL:$1|katakdaan|mga katakdaan}} ay mayroong hindi katanggap-tanggap na halaga:',
 	'configure-ext-settings-dep-error' => '$1: kailangang halaga: $2, kasalukuyang halaga: $3',
 	'configure-ext-use-extension' => 'Gamitin ang karugtong na ito',
 	'configure-ext-use' => 'Gamitin',
-	'configure-form-reason' => 'Dahilan ng pagbago:',
+	'configure-form-reason' => 'Dahilan:',
 	'configure-customised' => "''Naging ipinasadya na ang katakdaang ito''",
 	'configure-arrayinput-oneperline' => "''(isa bawat guhit)''",
 	'configure-summary' => 'Nagpapahintulot ang natatanging pahinang ito na maisaayos mo ang wiking ito, tingnan ang [http://www.mediawiki.org/wiki/Manual:Configuration_settings Mga pagtatakdang pangkaayusan] para sa mas marami pang kabatiran.',
@@ -9548,6 +9558,7 @@ Pakilikha ito o baguhin ito upang magamit ang ganitong karugtong.',
 	'configure-section-namespaces' => 'Mga espasyo ng pangalan',
 	'configure-section-stats' => 'Mga estadistika ng sityo',
 	'configure-section-skin' => 'Mga pabalat',
+	'configure-section-vector' => 'Pabalat ng Vector',
 	'configure-section-category' => 'Mga kaurian',
 	'configure-section-cache' => 'Nakakubling taguan',
 	'configure-section-pcache' => 'Taguan ng banghay',
@@ -9568,6 +9579,7 @@ Pakilikha ito o baguhin ito upang magamit ang ganitong karugtong.',
 	'configure-section-specialpages' => 'Natatanging mga pahina',
 	'configure-section-recentchanges' => 'Kamakailang mga pagbabago',
 	'configure-section-users' => 'Mga tagagamit',
+	'configure-section-externalauth' => 'Panlabas na pagpapatunay',
 	'configure-section-feed' => 'Pasubo',
 	'configure-section-job' => 'Mga gawain',
 	'configure-section-extension' => 'Mga karugtong',
@@ -9583,7 +9595,7 @@ Pakilikha ito o baguhin ito upang magamit ang ganitong karugtong.',
 	'configure-section-output' => 'Kinalabasan',
 	'configure-select-wiki' => 'Piliang wiki',
 	'configure-select-wiki-desc' => 'Piliin ang wiking nais mong ayusin.',
-	'configure-select-wiki-view-desc' => 'Pumili ng isang wiking nais mong tingnan ang mga bersyon.',
+	'configure-select-wiki-view-desc' => 'Pumili ng isang wiking nais mong tingnan ang mga bersyon ng pagkakaayos.',
 	'configure-select-wiki-view-all' => 'Lahat ng mga wiki',
 	'configure-select-wiki-view-specific' => 'Naaangkop na wiki:',
 	'configure-select-wiki-submit' => 'Piliin',
@@ -9647,6 +9659,9 @@ Pakilikha ito o baguhin ito upang magamit ang ganitong karugtong.',
 	'configure-boolop-description-or' => 'Dapat na totoo ang kahit na isang kalakaran',
 	'configure-boolop-description-xor' => 'Dapat na ganap na totoo ang isang kalakaran',
 	'configure-boolop-description-not' => 'Dapat na walang totoong mga kalakaran',
+	'configure-farmer-settings' => '[[Special:Configure|Iayos ang wiking ito]].',
+	'configure-farmer-extensions' => '[[Special:Extensions|Iayos ang mga dugtong para sa wiking ito]].',
+	'configure-farmer-extensions-list' => '[[Special:Extensions|Itala ang makukuhang mga dugtong para sa wiking ito]].',
 );
 
 /** Turkish (Türkçe)

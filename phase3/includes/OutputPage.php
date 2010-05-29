@@ -1935,7 +1935,7 @@ class OutputPage {
 			// Wiki is read only
 			$this->setPageTitle( wfMsg( 'readonly' ) );
 			$reason = wfReadOnlyReason();
-			$this->wrapWikiMsg( "<div class='mw-readonly-error'>\n$1</div>", array( 'readonlytext', $reason ) );
+			$this->wrapWikiMsg( "<div class='mw-readonly-error'>\n$1\n</div>", array( 'readonlytext', $reason ) );
 		}
 
 		// Show source, if supplied
@@ -2138,8 +2138,7 @@ class OutputPage {
 		$ret .= implode( "\n", array(
 			$this->getHeadLinks(),
 			$this->buildCssLinks(),
-			$this->getHeadScripts( $sk ),
-			$this->getHeadItems(),
+			$this->getHeadScripts( $sk ) . $this->getHeadItems(),
 		) );
 		if ( $sk->usercss ) {
 			$ret .= Html::inlineStyle( $sk->usercss );
@@ -2202,7 +2201,7 @@ class OutputPage {
 		global $wgUser, $wgRequest, $wgJsMimeType, $wgUseSiteJs;
 		global $wgStylePath, $wgStyleVersion;
 
-		$scripts = Skin::makeGlobalVariablesScript( $sk->getSkinName() );
+		$scripts = Skin::makeGlobalVariablesScript( $sk->getSkinName() ) . "\n";
 		$scripts .= Html::linkedScript( "{$wgStylePath}/common/wikibits.js?$wgStyleVersion" );
 
 		// add site JS if enabled
@@ -2416,15 +2415,18 @@ class OutputPage {
 	 * These will be applied to various media & IE conditionals.
 	 */
 	public function buildCssLinks() {
+		return implode( "\n", $this->buildCssLinksArray() );
+	}
+
+	public function buildCssLinksArray() {
 		$links = array();
 		foreach( $this->styles as $file => $options ) {
 			$link = $this->styleLink( $file, $options );
 			if( $link ) {
-				$links[] = $link;
+				$links[$file] = $link;
 			}
 		}
-
-		return implode( "\n", $links );
+		return $links;
 	}
 
 	/**
@@ -2588,11 +2590,11 @@ class OutputPage {
 	 *
 	 * For example:
 	 *
-	 *    $wgOut->wrapWikiMsg( "<div class='error'>\n$1</div>", 'some-error' );
+	 *    $wgOut->wrapWikiMsg( "<div class='error'>\n$1\n</div>", 'some-error' );
 	 *
 	 * Is equivalent to:
 	 *
-	 *    $wgOut->addWikiText( "<div class='error'>\n" . wfMsgNoTrans( 'some-error' ) . '</div>' );
+	 *    $wgOut->addWikiText( "<div class='error'>\n" . wfMsgNoTrans( 'some-error' ) . "\n</div>" );
 	 *
 	 * The newline after opening div is needed in some wikitext. See bug 19226.
 	 */

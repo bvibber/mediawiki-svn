@@ -162,6 +162,13 @@ $messages['ja'] = array(
 	'wikieditor-templates-preference' => 'テンプレート折り畳みを有効にする',
 );
 
+/** Georgian (ქართული)
+ * @author BRUTE
+ */
+$messages['ka'] = array(
+	'wikieditor-templates-preference' => 'ჩაკეცილი თარგის ჩართვა',
+);
+
 /** Korean (한국어)
  * @author Kwj2772
  */
@@ -251,6 +258,13 @@ $messages['ru'] = array(
  */
 $messages['sv'] = array(
 	'wikieditor-templates-preference' => 'Aktivera ihopfällbara mallar',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'wikieditor-templates-preference' => 'Paganahin ang bumabagsak na suleras',
 );
 
 /** Vietnamese (Tiếng Việt)

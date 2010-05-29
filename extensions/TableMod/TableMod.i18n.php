@@ -503,6 +503,21 @@ $messages['tk'] = array(
 	'tablemod-msg-remove' => 'Aýyr',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'tablemod' => 'TableMod',
+	'tablemod-desc' => 'Pagmamanipula ng tablang pangwiki',
+	'tablemod-msg-remove' => 'Tanggalin',
+	'tablemod-error-format' => 'Tumatangkilik lamang ang tatak na ito ng isang payak na tabla bawat tatak, na walang anumang teksto bago o pagkaraan nito.',
+	'tablemod-error-colcount' => 'Tumatangkilik lamang ang tatak na ito ng mga tablang may tapatang mga bilang ng mga patayong hanay bawat pahalang na hanay kapag nag-aalis.',
+	'tablemod-error-headcount' => 'Tumatangkilik lamang ang tatak na ito ng mga tablang may isahang patayong hanay na pang-ulo kapag pumipili.',
+	'tablemod-error-invalidsort' => 'Hindi tanggap na mga parametrong pampili.',
+	'tablemod-error-invalidaction' => 'Hindi tanggap na galaw.',
+	'tablemod-error-missingid' => 'Nawawala sa loob ng tatak ang katangian ng ident.',
+);
+
 /** Turkish (Türkçe)
  * @author Vito Genovese
  */

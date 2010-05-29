@@ -111,6 +111,13 @@ $messages['am'] = array(
 	'importusers-email' => 'ኢ-ሜል',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'importusers-log-summary-all' => 'Tot',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -1053,6 +1060,7 @@ $messages['km'] = array(
  */
 $messages['kn'] = array(
 	'importusers-log-summary' => 'ಸಾರಾಂಶ',
+	'importusers-password' => 'ಪ್ರವೇಶಪದ',
 	'importusers-email' => 'ಇ-ಅಂಚೆ',
 );
 
@@ -1894,7 +1902,7 @@ $messages['tl'] = array(
 	'importusers-user-present-update' => "Umiiral na ang tagagamit na si '''$1'''. Isinapanahon.",
 	'importusers-user-present-not-update' => "Umiiral na ang tagagamit na si '''$1'''. Hindi isinapanahon.",
 	'importusers-user-invalid-format' => 'Hindi tanggap ang anyo/pormat o walang laman ang dato ng tagagamit na nasa guhit na #$1. Nilaktawan.',
-	'importusers-log' => 'Tala ng pag-aangkat',
+	'importusers-log' => 'Talaan ng mga tagagamit na umaangkat',
 	'importusers-log-summary' => 'Buod',
 	'importusers-log-summary-all' => 'Lahat',
 	'importusers-log-summary-added' => 'Idinagdag',

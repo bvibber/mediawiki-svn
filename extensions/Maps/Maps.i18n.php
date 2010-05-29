@@ -524,17 +524,19 @@ $messages['fi'] = array(
 	'maps_desc' => 'Mahdollistaa koordinaattitiedon esittämisen karttoina ja osoitteiden geokoodauksen ([http://wiki.bn2vs.com/wiki/Maps demo]).
 Käytettävissä olevat karttapalvelut: $1',
 	'maps_map' => 'Kartta',
+	'maps-loading-map' => 'Ladataan karttaa...',
 	'maps-abb-north' => 'Pohj.',
 	'maps-abb-east' => 'It.',
 	'maps-abb-south' => 'Etel.',
 	'maps-abb-west' => 'Länt.',
 	'maps-latitude' => 'Korkeusaste:',
 	'maps-longitude' => 'Pituuspiiri:',
+	'maps-invalid-coordinates' => 'Arvoa $1 ei tunnistettu oikeaksi koordinaattisarjaksi.',
 	'maps_coordinates_missing' => 'Karttaa varten ei tarjottu koordinaatteja.',
 	'maps_geocoding_failed' => '{{PLURAL:$2|Seuraavaa osoitetta|Seuraavia osoitteita}} ei voitu geokoodata: $1.
 Karttaa ei voida näyttää.',
 	'maps_geocoding_failed_for' => '{{PLURAL:$2|Seuraavaa osoitetta|Seuraavia osoitteita}} ei voitu geokoodata ja {{PLURAL:$2|on|ovat}} jätetty kartalta: $1',
-	'maps_unrecognized_coords' => 'Seuraavia koordinaatteja ei tunnistettu: $1.',
+	'maps_unrecognized_coords' => '{{PLURAL:$2|Seuraavaa koordinaattia|Seuraavia koordinaatteja}} ei tunnistettu: $1.',
 	'maps_unrecognized_coords_for' => '{{PLURAL:$2|Seuraavaa koordinaattia|Seuraavia koordinaatteja}} ei tunnistettu ja {{PLURAL:$2|se|ne}} on jätetty pois kartasta:
 $1',
 	'maps_map_cannot_be_displayed' => 'Karttaa ei voida näyttää.',
@@ -1025,6 +1027,7 @@ $messages['lad'] = array(
 $messages['lb'] = array(
 	'maps_desc' => "Gëtt d'Méiglechkeet fir d'Date vun de Koordinaten op Kaarten an Geocode Adressen ze weisen. Disponibel mapping Servicer: $1 [http://www.mediawiki.org/wiki/Extension:Maps Dokumentatioun]. [http://wiki.bn2vs.com/wiki/Maps Démo]",
 	'maps_map' => 'Kaart',
+	'maps-loading-map' => "D'Kaart gëtt gelueden…",
 	'maps-abb-north' => 'N',
 	'maps-abb-east' => 'O',
 	'maps-abb-south' => 'S',
@@ -1046,6 +1049,33 @@ $1',
 	'maps_videos' => 'Videoen',
 	'maps_wikipedia' => 'Wikipedia',
 	'maps_webcams' => 'Web-Kameraen',
+);
+
+/** Lithuanian (Lietuvių)
+ * @author Hugo.arg
+ */
+$messages['lt'] = array(
+	'maps_desc' => 'Suteikia galimybę atvaizduoti koordinačių duomenis žemėlapiuose ir geografinio kodavimo adresus ([http://wiki.bn2vs.com/wiki/Maps demo]).
+Katrografavimo paslaugos pasiekiamos: $1',
+	'maps_map' => 'Žemėlapis',
+	'maps-loading-map' => 'Kraunamas žemėlapis ...',
+	'maps-abb-north' => 'Š',
+	'maps-abb-east' => 'R',
+	'maps-abb-south' => 'P',
+	'maps-abb-west' => 'V',
+	'maps-latitude' => 'Platuma:',
+	'maps-longitude' => 'Ilguma:',
+	'maps-invalid-coordinates' => 'Vertė $ 1 nepripažįstama kaip galiojanti koordinatė.',
+	'maps_coordinates_missing' => 'Nesudarytos koordinatės žemėlapiui.',
+	'maps_geocoding_failed' => '{{PLURAL:$2|Šis adresas|Šie adresai}} negali būti kartografuoti: $1.',
+	'maps_unrecognized_coords' => '{{PLURAL:$2|Ši koordinatė|Šios koordinatės}} nebuvo atpažintos: $1.',
+	'maps_map_cannot_be_displayed' => 'Žemėlapis negal būti parodytas.',
+	'maps_click_to_activate' => 'Spustelėkite, norėdami įjungti žemėlapį',
+	'maps_centred_on' => 'Žemėlapis centruotas link $1, $2.',
+	'maps_photos' => 'Nuotraukos',
+	'maps_videos' => 'Vaizdo klipai',
+	'maps_wikipedia' => 'Vikipedija',
+	'maps_webcams' => 'Interneto kameros',
 );
 
 /** Macedonian (Македонски)
@@ -1544,14 +1574,37 @@ $messages['th'] = array(
 	'maps_coordinates_missing' => 'ไม่ได้กำหนดพิกัดของแผนที่มาให้',
 );
 
-/** Tagalog (Tagalog) */
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
 $messages['tl'] = array(
+	'maps_desc' => 'Nagbibigay ng kakayahang ipakita ang dato ng tugmaang-pampook sa loob ng mga mapa, at mga adres ([http://wiki.bn2vs.com/wiki/Maps pagpapakita]).
+Makukuhang mga paglilingkod na pangpagmamapa: $1',
+	'maps_map' => 'Mapa',
+	'maps-loading-map' => 'Ikinakarga ang mapa...',
 	'maps-abb-north' => 'H',
 	'maps-abb-east' => 'S',
 	'maps-abb-south' => 'T',
 	'maps-abb-west' => 'K',
 	'maps-latitude' => 'Latitud:',
 	'maps-longitude' => 'Longhitud:',
+	'maps-invalid-coordinates' => 'Hindi kinilala ang halagang $1 bilang isang tanggap na pangkat ng mga tugmaang-pampook.',
+	'maps_coordinates_missing' => 'Walang mga tugmaang-pampook na ibinigay para sa mapa.',
+	'maps_geocoding_failed' => 'Hindi mageokodigo ang sumusunod na {{PLURAL:$2|tirahan|mga tirahan}}:  $1.',
+	'maps_geocoding_failed_for' => 'Hindi mageokodigo ang sumusunod na {{PLURAL:$2|tirahan|mga tirahan}} at {{PLURAL:$2|tinanggal|mga tinanggal}} na mula sa mapa:
+$1',
+	'maps_unrecognized_coords' => 'Hindi kinilala ang sumusunod na {{PLURAL:$2|tugmaan|mga tugmaan}}: $1.',
+	'maps_unrecognized_coords_for' => 'Hindi nakilala ang sumusunod na {{PLURAL:$2|tugmaang pampook|mga tugmaang pampook}} at {{PLURAL:$2|inalis|mga inalis}} na mula sa mapa:
+$1',
+	'maps_map_cannot_be_displayed' => 'Hindi maipapakita ang mapa.',
+	'maps-geocoder-not-available' => 'Wala ang katangiang-kasangkapang pang-geokodigo ng Mga Mapa.  Hindi mageokodigo ang lokasyon mo.',
+	'maps_click_to_activate' => 'Pindutin upang mabuhay ang mapa',
+	'maps_centred_on' => 'Nakagitna ang mapa sa $1, $2.',
+	'maps_overlays' => 'Mga patong',
+	'maps_photos' => 'Mga larawan',
+	'maps_videos' => 'Mga bidyo',
+	'maps_wikipedia' => 'Wikipedia',
+	'maps_webcams' => 'Mga webkam',
 );
 
 /** Turkish (Türkçe)

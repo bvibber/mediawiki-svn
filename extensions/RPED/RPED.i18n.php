@@ -210,3 +210,12 @@ $messages['ru'] = array(
 	'rped-wikipedia-url' => 'http://ru.wikipedia.org/',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'rped' => 'Pangtuklas ng pag-iral ng malayong pahina',
+	'rped-desc' => 'Nagkakawing ng mga ng kawing na pangwika sa Wikipedia kapag hindi umiiral ang pahina sa katutubong wiki subalit umiiral sa Wikipedia',
+	'rped-wikipedia-url' => 'http://tl.wikipedia.org/wiki/',
+);
+

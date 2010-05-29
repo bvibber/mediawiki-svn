@@ -340,6 +340,13 @@ $messages['te'] = array(
 	'editsectionhilitelink-desc' => "మౌస్ ని '''మార్చు''' లంకె మీదుగా తీసుకెళ్ళినప్పుడు వ్యాసములోని భాగమును గుర్తించేటట్టు చేస్తుంది",
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'editsectionhilitelink-desc' => 'Patindihin ang kulay ng naaangkop na seksyon ng isang pahina kapag pinagalaw ang maws sa ibaba ng kawing na pambago',
+);
+
 /** Turkish (Türkçe)
  * @author Vito Genovese
  */

@@ -48,10 +48,11 @@ require_once( "$IP/extensions/TimedMediaHandler/TimedMediaHandler.php" );
 Once you include the extension you can use the following: 
 
 To add a javascript or css to the named paths ( so that the script loader can load it by name )
-$wgScriptLoaderNamedPaths[ 'myExtension' ] = 'extensions/myExtension/myExtension.js';
+$wgScriptLoaderNamedPaths[ 'myJavascriptFile' ] = 'extensions/myExtension/myJavascriptFile.js';
 
 Then in your php you can include your with the following line:   
-$wgOut->addScriptClass( 'myExtension' /* scriptloader named path */ , 'page'/* group bucket id */ );
+$wgOut->addScriptClass( 'myJavascriptFile' /* scriptloader named path */ , 'page'/* group bucket id */ );
+
 This lets you use the named-path for includes and gives you control over script grouping with the 
 grouping argument. If for example your script is included on a set of special pages then you could
 create a bucket id string for that set to not mangle the cache of each special page .
@@ -63,9 +64,10 @@ us to send the same "cached" page to all logging users that share a base configu
 If you would like to keep compatibility with non-js2 extension support you can use the base outputPage 
 addScriptFile method:
 $wgOut->addScriptFile( 'extensions/myExtension/myExtension.js' )
+
 This way regardless of if your running the js2support extension or not script-includes will continue to work.
 But you won't be able to control the script bucket, and the script-loader will have to guess 
-what group to put it in. ( This should be resolved with updates to the trunk output page) 
+what group to put it in.  
 
 For more info see  ScriptLoaderOutputPage.php $mScriptLoaderClassList
 

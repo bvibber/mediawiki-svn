@@ -244,6 +244,21 @@ $messages['ru'] = array(
 	'right-editalluserpages' => 'изменение страниц участников',
 );
 
+/** Swedish (Svenska)
+ * @author Dafer45
+ */
+$messages['sv'] = array(
+	'right-editalluserpages' => 'Redigera användarsidor',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'userpageeditprotection-desc' => 'Naglilimita ng pagbabago ng mga pahina ng tagagamit para sa tagagamit at pinahihintulutang mga patnugot',
+	'right-editalluserpages' => 'Baguhin ang mga pahina ng tagagamit',
+);
+
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Wong128hk
  */

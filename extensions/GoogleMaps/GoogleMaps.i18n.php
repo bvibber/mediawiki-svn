@@ -311,6 +311,8 @@ $wgGoogleMapsMessages['am'] = array(
  * @author Juanpabl
  */
 $wgGoogleMapsMessages['an'] = array(
+	'gm-yes' => 'Sí',
+	'gm-no' => 'No',
 	'gm-save-path' => 'Alzar',
 );
 
@@ -3338,9 +3340,11 @@ $wgGoogleMapsMessages['lt'] = array(
 );
 
 /** Latvian (Latviešu)
+ * @author GreenZeb
  * @author Yyy
  */
 $wgGoogleMapsMessages['lv'] = array(
+	'gm-search' => 'Meklēt',
 	'gm-kml-loading' => 'ielādējas...',
 );
 

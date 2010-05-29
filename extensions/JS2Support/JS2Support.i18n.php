@@ -15,10 +15,13 @@ $messages['en'] = array(
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
  * @author Jim-by
  */
 $messages['be-tarask'] = array(
 	'js2support-desc' => 'Падтрымка JS2 у форме пашырэньня',
+	'js2support-debug-preference' => 'Выключыць групіроўку скрыптоў і мініфікацыю',
+	'prefs-script-debug' => 'Наладка скрыптоў',
 );
 
 /** Breton (Brezhoneg)
@@ -58,11 +61,22 @@ $messages['es'] = array(
 	'js2support-desc' => 'Soporte JS2 como una extensión',
 );
 
+/** Finnish (Suomi)
+ * @author Str4nd
+ */
+$messages['fi'] = array(
+	'js2support-desc' => 'JS2-tuki laajennuksena.',
+	'js2support-debug-preference' => 'Poista ohjelmien ryhmittely ja pienennys',
+	'prefs-script-debug' => 'Komentosarjojen vianjäljtys',
+);
+
 /** French (Français)
  * @author IAlex
  */
 $messages['fr'] = array(
 	'js2support-desc' => "Support de JS2 en tant qu'extension",
+	'js2support-debug-preference' => 'Désactiver le groupement et la miniaturisation des scripts',
+	'prefs-script-debug' => 'Débogage des scripts',
 );
 
 /** Galician (Galego)
@@ -70,6 +84,7 @@ $messages['fr'] = array(
  */
 $messages['gl'] = array(
 	'js2support-desc' => 'Apoio JS2 en forma de extensión',
+	'js2support-debug-preference' => 'Desactivar a escritura de agrupamento e limpeza',
 	'prefs-script-debug' => 'Escritura de depuración',
 );
 
@@ -85,6 +100,8 @@ $messages['gsw'] = array(
  */
 $messages['hsb'] = array(
 	'js2support-desc' => 'Podpěra JS2 jako rozšěrjenje',
+	'js2support-debug-preference' => 'Skript za zeskupjenje a miniměrowanje znjemóžnjenje',
+	'prefs-script-debug' => 'Skriptowe testowanje',
 );
 
 /** Hungarian (Magyar)
@@ -129,6 +146,8 @@ $messages['lb'] = array(
  */
 $messages['mk'] = array(
 	'js2support-desc' => 'JS2 поддршка како додаток',
+	'js2support-debug-preference' => 'Оневозможи групирање на скрипти и смалување',
+	'prefs-script-debug' => 'Отстранување грешки од скрипта',
 );
 
 /** Dutch (Nederlands)
@@ -172,7 +191,9 @@ $messages['pms'] = array(
  * @author Hamilton Abreu
  */
 $messages['pt'] = array(
-	'js2support-desc' => 'Suporte JS2 na forma de extensão',
+	'js2support-desc' => 'Suporte para JS2, na forma de extensão',
+	'js2support-debug-preference' => "Desactivar o agrupamento e minimização ''(minification)'' de scripts",
+	'prefs-script-debug' => "Depuração ''(debugging)'' de scripts",
 );
 
 /** Brazilian Portuguese (Português do Brasil)
@@ -189,5 +210,14 @@ $messages['ru'] = array(
 	'js2support-desc' => 'Поддержка JS2 в виде расширения',
 	'js2support-debug-preference' => 'Отключить группировку скриптов и минификацию',
 	'prefs-script-debug' => 'Отладка скриптов',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'js2support-desc' => 'Suportang JS2 bilang isang karugtong',
+	'js2support-debug-preference' => 'Huwag paganahin ang panitik na pampangkat at pampaliit',
+	'prefs-script-debug' => 'Pagtanggal ng depekto mula sa panitik',
 );
 

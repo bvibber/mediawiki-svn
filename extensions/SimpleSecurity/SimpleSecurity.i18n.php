@@ -1006,13 +1006,14 @@ $messages['tl'] = array(
 	'security-info' => 'Mayroon mga $1 sa ibabaw ng pahinang ito',
 	'security-info-toggle' => 'mga hangganang pangkaligtasan',
 	'security-inforestrict' => 'Nakahangga ang $1 sa $2',
-	'security-desc-LS' => "''(naaangkop dahil nasa loob ng '''$2 $1''' ang pahinang ito)''",
-	'security-desc-PR' => "''(itinakda mula sa '''panglaylay na pangpananggalang''')''",
-	'security-infosysops' => 'Walang umiiral na mga paghahanga dahil isa kang kasapi ng pangkat na tagapagpaandar ng sistema',
+	'security-desc-LS' => "(naaangkop dahil nasa loob ng '''$2 $1''' ang pahinang ito)''",
+	'security-desc-PR' => '(itinakda mula sa panglaylay na "pangpananggalang")',
+	'security-infosysops' => 'Walang umiiral na mga paghahangga dahil isa kang kasapi ng pangkat na "tagapagpaandar ng sistema"',
 	'security-manygroups' => 'mga pangkat na $1 at $2',
 	'security-unchain' => 'Baguhin na paisa-isa ang mga galaw',
 	'security-type-category' => 'kaurian',
 	'security-type-namespace' => 'espasyo ng pangalan',
+	'security-restricttogroup' => 'Puntahan ang nilalaman na nakalaan lamang para sa mga kasapi ng "$1"',
 );
 
 /** Turkish (Türkçe)

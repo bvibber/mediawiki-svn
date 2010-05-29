@@ -1,18 +1,50 @@
 <?php
+
+/**
+ * Class to parse translatable wiki pages.
+ *
+ * @author Niklas Laxström
+ * @copyright Copyright © 2009-2010 Niklas Laxström
+ * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
+ */
 class TranslatablePage {
+	/**
+	 * Title of the page.
+	 */
+	protected $title = null;
 
-	private $title = null;
-	private $text = null;
-	private $revision = null;
-	private $source = null;
-	private $init = false;
+	/**
+	 * Text contents of the page.
+	 */
+	protected $text = null;
 
-	private function __construct( Title $title ) {
+	/**
+	 * Revision of the page, if applicaple.
+	 */
+	protected $revision = null;
+
+	/**
+	 * From which source this object was constructed.
+	 * Can be: text, revision, title
+	 */
+	protected $source = null;
+
+	/**
+	 * Whether the page contents is already loaded.
+	 */
+	protected $init = false;
+
+	protected function __construct( Title $title ) {
 		$this->title = $title;
 	}
 
 	// Public constructors //
 
+	/**
+	 * Constructs a translatable page from given text.
+	 * Some functions will fail unless you set revision
+	 * parameter manually.
+	 */
 	public static function newFromText( Title $title, $text ) {
 		$obj = new self( $title );
 		$obj->text = $text;
@@ -20,9 +52,17 @@ class TranslatablePage {
 		return $obj;
 	}
 
+	/**
+	 * Constructs a translatable page from given revision.
+	 * The revision must belong to the title given or unspecified
+	 * behaviour will happen.
+	 */
+
 	public static function newFromRevision( Title $title, $revision ) {
 		$rev = Revision::newFromTitle( $title, $revision );
-		if ( $rev === null ) throw new MWException( 'Revision is null' );
+		if ( $rev === null ) {
+			throw new MWException( 'Revision is null' );
+		}
 
 		$obj = new self( $title );
 		$obj->source = 'revision';
@@ -30,6 +70,10 @@ class TranslatablePage {
 		return $obj;
 	}
 
+	/**
+	 * Constructs a translatable page from title.
+	 * The text of last marked revision is loaded when neded.
+	 */
 	public static function newFromTitle( Title $title ) {
 		$obj = new self( $title );
 		$obj->source = 'title';
@@ -38,10 +82,16 @@ class TranslatablePage {
 
 	// Getters //
 
+	/**
+	 * Returns the title for this translatable page.
+	 */
 	public function getTitle() {
 		return $this->title;
 	}
 
+	/**
+	 * Returns the text for this translatable page.
+	 */
 	public function getText() {
 		if ( $this->init === false ) {
 			switch ( $this->source ) {
@@ -56,18 +106,27 @@ class TranslatablePage {
 			}
 		}
 
-		if ( !is_string( $this->text ) ) throw new MWException( 'We have no text' );
+		if ( !is_string( $this->text ) ) {
+			throw new MWException( 'We have no text' );
+		}
+
 		$this->init = true;
+
 		return $this->text;
 	}
 
 	/**
 	 * Revision is null if object was constructed using newFromText.
+	 * @return null or integer
 	 */
 	public function getRevision() {
 		return $this->revision;
 	}
 
+	/**
+	 * Manually set a revision number to use loading page text.
+	 * @param $revision integer
+	 */
 	public function setRevision( $revision ) {
 		$this->revision = $revision;
 		$this->source = 'revision';
@@ -76,10 +135,20 @@ class TranslatablePage {
 
 	// Public functions //
 
+	/**
+	 * Returns a TPParse object which represents the parsed page.
+	 * Throws TPExcetion if the page is malformed as a translatable
+	 * page.
+	 */
 	public function getParse() {
-		if ( isset( $this->cachedParse ) ) return $this->cachedParse;
+		if ( isset( $this->cachedParse ) ) {
+			return $this->cachedParse;
+		}
 
 		$text = $this->getText();
+
+		$nowiki = array();
+		$text = self::armourNowiki( $nowiki, $text );
 
 		$sections = array();
 		$tagPlaceHolders = array();
@@ -88,11 +157,13 @@ class TranslatablePage {
 			$re = '~(<translate>)\s*(.*?)(</translate>)~s';
 			$matches = array();
 			$ok = preg_match_all( $re, $text, $matches, PREG_OFFSET_CAPTURE );
-			if ( $ok === false ) return array( 'pt-error', 'tag', $text );
-			if ( $ok === 0 ) break; // No matches
+
+			if ( $ok === 0 ) {
+				break; // No matches
+			}
 
 			// Do-placehold for the whole stuff
-			$ph    = $this->getUniq();
+			$ph    = self::getUniq();
 			$start = $matches[0][0][1];
 			$len   = strlen( $matches[0][0][0] );
 			$end   = $start + $len;
@@ -105,21 +176,36 @@ class TranslatablePage {
 			$len   = strlen( $matches[2][0][0] ); // len of the content
 			$end   = $start + $len;
 
-			$ret = $this->sectionise( $sections, substr( $contents, $start, $len ) );
+			$sectiontext = substr( $contents, $start, $len );
+
+			if ( strpos( $sectiontext, '<translate>' ) !== false ) {
+				throw new TPException( array( 'pt-parse-nested', $sectiontext ) );
+			}
+
+			$sectiontext = self::unArmourNowiki( $nowiki, $sectiontext );
+
+			$ret = $this->sectionise( $sections, $sectiontext );
 
 			$tagPlaceHolders[$ph] =
 				self::index_replace( $contents, $ret, $start, $end );
 		}
 
-		if ( strpos( $text, '<translate>' ) !== false )
-			throw new TPException( array( 'pt-parse-open', $text ) );
+		$prettyTemplate = $text;
+		foreach ( $tagPlaceHolders as $ph => $value ) {
+			$prettyTemplate = str_replace( $ph, '[...]', $prettyTemplate );
+		}
 
-		if ( strpos( $text, '</translate>' ) !== false )
-			throw new TPException( array( 'pt-parse-close', $text ) );
+		if ( strpos( $text, '<translate>' ) !== false ) {
+			throw new TPException( array( 'pt-parse-open', $prettyTemplate ) );
+		} elseif ( strpos( $text, '</translate>' ) !== false ) {
+			throw new TPException( array( 'pt-parse-close', $prettyTemplate ) );
+		}
 
 		foreach ( $tagPlaceHolders as $ph => $value ) {
 			$text = str_replace( $ph, $value, $text );
 		}
+
+		$text = self::unArmourNowiki( $nowiki, $text );
 
 		$parse = new TPParse( $this->getTitle() );
 		$parse->template = $text;
@@ -133,8 +219,32 @@ class TranslatablePage {
 
 	// Inner functionality //
 
-	protected function getUniq() {
+	public static function armourNowiki( &$holders, $text ) {
+		$re = '~(<nowiki>)(.*?)(</nowiki>)~';
+
+		while ( preg_match( $re, $text, $matches ) ) {
+			$ph = self::getUniq();
+			$text = str_replace( $matches[0], $ph, $text );
+			$holders[$ph] = $matches[0];
+		}
+
+		return $text;
+	}
+
+	public static function unArmourNowiki( $holders, $text ) {
+		foreach ( $holders as $ph => $value ) {
+			$text = str_replace( $ph, $value, $text );
+		}
+
+		return $text;
+	}
+
+	/**
+	 * Returns a random string that can be used as placeholder.
+	 */
+	protected static function getUniq() {
 		static $i = 0;
+
 		return "\x7fUNIQ" . dechex( mt_rand( 0, 0x7fffffff ) ) . dechex( mt_rand( 0, 0x7fffffff ) ) . '|' . $i++;
 	}
 
@@ -142,29 +252,50 @@ class TranslatablePage {
 		return substr( $string, 0, $start ) . $rep . substr( $string, $end );
 	}
 
+	/**
+	 * Splits the content marked with \<translate> tags into sections, which
+	 * are separated with with two or more newlines. Extra whitespace is captured
+	 * in the template and not included in the sections.
+	 * @param $sections Array of placeholder => TPSection.
+	 * @param $text Contents of one pair of \<translate> tags.
+	 * @return string Templace with placeholders for sections, which itself are added to $sections.
+	 */
 	protected function sectionise( &$sections, $text ) {
 		$flags = PREG_SPLIT_NO_EMPTY | PREG_SPLIT_DELIM_CAPTURE;
 		$parts = preg_split( '~(\s*\n\n\s*|\s*$)~', $text, -1, $flags );
-		
+
 		$template = '';
 		foreach ( $parts as $_ ) {
 			if ( trim( $_ ) === '' ) {
 				$template .= $_;
 			} else {
-				$ph = $this->getUniq();
+				$ph = self::getUniq();
 				$sections[$ph] = $this->shakeSection( $_ );
 				$template .= $ph;
 			}
 		}
+
 		return $template;
 	}
 
+	/**
+	 * Checks if this section already contains a section marker. If there
+	 * is not, a new one will be created. Marker will have the value of
+	 * -1, which will later be replaced with a real value.
+	 *
+	 * May throw a TPException if there is error with existing section
+	 * markers.
+	 * @param $content string Content of one section
+	 * @return TPSection
+	 */
 	protected function shakeSection( $content ) {
 		$re = '~<!--T:(.*?)-->~';
 		$matches = array();
 		$count = preg_match_all( $re, $content, $matches, PREG_SET_ORDER );
-		if ( $count === false ) throw new TPException( 'pt-error', 'shake', $content );
-		if ( $count > 1 ) throw new TPException( 'pt-shake-dupid', $content );
+
+		if ( $count > 1 ) {
+			throw new TPException( array( 'pt-shake-multiple', $content ) );
+		}
 
 		$section = new TPSection;
 		if ( $count === 1 ) {
@@ -172,16 +303,23 @@ class TranslatablePage {
 				list( /*full*/, $id ) = $match;
 				$section->id = $id;
 
-				$rer1 = '~^\s*<!--T:(.*?)-->\s*~'; // Normal sections
-				$rer2 = '~\s*<!--T:(.*?)-->~'; // Sections with title
+				// Currently handle only these two standard places.
+				// Is this too strict?
+				$rer1 = '~^<!--T:(.*?)-->\n~'; // Normal sections
+				$rer2 = '~\s*<!--T:(.*?)-->\n~'; // Sections with title
 				$content = preg_replace( $rer1, '', $content );
 				$content = preg_replace( $rer2, '', $content );
+
+				if ( preg_match( $re, $content ) === 1 ) {
+					throw new TPException( array( 'pt-shake-position', $content ) );
+				} elseif ( trim( $content ) === '' ) {
+					throw new TPException( array( 'pt-shake-empty', $id ) );
+				}
 			}
-		} else { // New section
+		} else {
+			// New section
 			$section->id = -1;
 		}
-
-		if ( $content === '' ) throw new TPException( 'pt-shake-empty' );
 
 		$section->text = $content;
 
@@ -197,12 +335,13 @@ class TranslatablePage {
 	}
 
 	protected function addTag( $tag, $revision, $value = null ) {
-
 		$dbw = wfGetDB( DB_MASTER );
 
 		$id = $this->getTagId( $tag );
 
-		if ( is_object( $revision ) ) throw new MWException( 'Got object, excepted id' );
+		if ( is_object( $revision ) ) {
+			throw new MWException( 'Got object, excepted id' );
+		}
 
 		$conds = array(
 			'rt_page' => $this->getTitle()->getArticleId(),
@@ -210,15 +349,33 @@ class TranslatablePage {
 			'rt_revision' => $revision
 		);
 		$dbw->delete( 'revtag', $conds, __METHOD__ );
-		if ( $value !== null ) $conds['rt_value'] = serialize( implode( '|', $value ) );
+
+		if ( $value !== null ) {
+			$conds['rt_value'] = serialize( implode( '|', $value ) );
+		}
+
 		$dbw->insert( 'revtag', $conds, __METHOD__ );
 	}
 
 	public function getMarkedTag( $db = DB_SLAVE ) {
 		return $this->getTag( 'tp:mark' );
 	}
+
 	public function getReadyTag( $db = DB_SLAVE ) {
 		return $this->getTag( 'tp:tag' );
+	}
+
+	public function removeTags() {
+		$dbw = wfGetDB( DB_MASTER );
+		$conds = array(
+			'rt_page' => $this->getTitle()->getArticleId(),
+			'rt_type' => array(
+				$this->getTagId( 'tp:mark' ),
+				$this->getTagId( 'tp:tag' ),
+			),
+		);
+
+		$dbw->delete( 'revtag', $conds, __METHOD__ );
 	}
 
 	// Returns false if not found
@@ -227,14 +384,18 @@ class TranslatablePage {
 
 		$id = $this->getTagId( $tag );
 
-		if ( !$this->getTitle()->exists() ) return false;
+		if ( !$this->getTitle()->exists() ) {
+			return false;
+		}
 
 		$fields = 'rt_revision';
 		$conds = array(
 			'rt_page' => $this->getTitle()->getArticleId(),
 			'rt_type' => $id,
 		);
+
 		$options = array( 'ORDER BY' => 'rt_revision DESC' );
+
 		return $db->selectField( 'revtag', $fields, $conds, __METHOD__, $options );
 	}
 
@@ -245,7 +406,10 @@ class TranslatablePage {
 			'group' => 'page|' . $this->getTitle()->getPrefixedText(),
 			'task' => 'view'
 		);
-		if ( $code ) $params['language'] = $code;
+		if ( $code ) {
+			$params['language'] = $code;
+		}
+
 		return $translate->getFullURL( $params );
 	}
 
@@ -262,6 +426,7 @@ class TranslatablePage {
 			'rt_type' => $id,
 		);
 		$options = array( 'ORDER BY' => 'rt_revision DESC' );
+
 		return $db->select( 'revtag', $fields, $conds, __METHOD__, $options );
 	}
 
@@ -275,9 +440,12 @@ class TranslatablePage {
 			array(
 				'page_namespace' => $this->getTitle()->getNamespace(),
 				"page_title LIKE '$likePattern'"
-			), __METHOD__ );
+			),
+			__METHOD__
+		);
 
 		$titles = TitleArray::newFromResult( $res );
+
 		return $titles;
 	}
 
@@ -286,18 +454,22 @@ class TranslatablePage {
 		global $wgMemc, $wgRequest;
 		$memcKey = wfMemcKey( 'pt', 'status', $this->getTitle()->getPrefixedText() );
 		$cache = $wgMemc->get( $memcKey );
+
 		if ( !$force && $wgRequest->getText( 'action' ) !== 'purge' ) {
-			if ( is_array( $cache ) ) return $cache;
+			if ( is_array( $cache ) ) {
+				return $cache;
+			}
 		}
 
 		$titles = $this->getTranslationPages();
 
 		// Calculate percentages for the available translations
 		$group = MessageGroups::getGroup( 'page|' . $this->getTitle()->getPrefixedText() );
-		if ( !$group instanceof WikiPageMessageGroup ) return null;
+		if ( !$group instanceof WikiPageMessageGroup ) {
+			return null;
+		}
 
 		$markedRevs = $this->getMarkedRevs( 'tp:mark' );
-
 
 		$temp = array();
 		foreach ( $titles as $t ) {
@@ -307,19 +479,22 @@ class TranslatablePage {
 			$percent = $this->getPercentageInternal( $collection, $markedRevs );
 			// To avoid storing 40 decimals of inaccuracy, truncate to two decimals
 			$temp[$collection->code] = sprintf( '%.2f', $percent );
-				
 		}
+
 		// Content language is always up-to-date
 		global $wgContLang;
 		$temp[$wgContLang->getCode()] = 1.00;
 
 		$wgMemc->set( $memcKey, $temp, 60 * 60 * 12 );
+
 		return $temp;
 	}
 
 	protected function getPercentageInternal( $collection, $markedRevs ) {
 		$count = count( $collection );
-		if ( $count === 0 ) return 0;
+		if ( $count === 0 ) {
+			return 0;
+		}
 
 		// We want to get fuzzy though
 		$collection->filter( 'hastranslation', false );
@@ -331,7 +506,9 @@ class TranslatablePage {
 			$score = 1;
 
 			// Fuzzy halves score
-			if ( $message->hasTag( 'fuzzy' ) ) $score *= 0.5;
+			if ( $message->hasTag( 'fuzzy' ) ) {
+				$score *= 0.5;
+			}
 
 			// Reduce 20% for every newer revision than what is translated against
 			$rev = $this->getTransrev( $key . '/' . $collection->code );
@@ -366,14 +543,19 @@ class TranslatablePage {
 			'rt_type' => $id,
 		);
 		$options = array( 'ORDER BY' => 'rt_revision DESC' );
+
 		return $db->selectField( 'revtag', $fields, $conds, __METHOD__, $options );
-			
 	}
 
 	protected function getTagId( $tag ) {
 		$validTags = array( 'tp:mark', 'tp:tag', 'tp:transver' );
 		if ( !in_array( $tag, $validTags ) ) {
 			throw new MWException( "Invalid tag $tag requested" );
+		}
+
+		global $wgTranslateStaticTags;
+		if ( is_array( $wgTranslateStaticTags ) ) {
+			return $wgTranslateStaticTags[$tag];
 		}
 
 		// Simple static cache
@@ -387,32 +569,53 @@ class TranslatablePage {
 				array( 'rtt_name' => $validTags ),
 				__METHOD__
 			);
+
 			foreach ( $res as $r ) {
 				$tagcache[$r->rtt_name] = $r->rtt_id;
 			}
 		}
+
 		return $tagcache[$tag];
 	}
 
 	public static function isTranslationPage( Title $title ) {
 		list( $key, $code ) = TranslateUtils::figureMessage( $title->getText() );
-		if ( $key === '' || $code === '' ) return false;
+
+		if ( $key === '' || $code === '' ) {
+			return false;
+		}
+
 		$newtitle = self::changeTitleText( $title, $key );
-		if ( !$newtitle ) return false;
+
+		if ( !$newtitle ) {
+			return false;
+		}
+
 		$page = TranslatablePage::newFromTitle( $newtitle );
 
-		if ( $page->getMarkedTag() === false ) return false;
+		if ( $page->getMarkedTag() === false ) {
+			return false;
+		}
+
 		return $page;
 	}
 
-	public static function changeTitleText( Title $title, $text ) {
+	protected static function changeTitleText( Title $title, $text ) {
 		return Title::makeTitleSafe( $title->getNamespace(), $text );
 	}
 }
 
+/**
+ * Class to signal translatable page parser exceptions.
+ */
 class TPException extends MWException {
+	protected $msg = null;
 	public function __construct( $msg ) {
+		$this->msg = $msg;
 		parent::__construct( call_user_func_array( 'wfMsg', $msg ) );
 	}
-}
 
+	public function getMsg() {
+		return $this->msg;
+	}
+}

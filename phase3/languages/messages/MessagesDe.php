@@ -460,7 +460,7 @@ $messages = array(
 'category-media-header'          => 'Medien in der Kategorie „$1“',
 'category-empty'                 => "''Diese Kategorie enthält zurzeit keine Seiten oder Medien.''",
 'hidden-categories'              => '{{PLURAL:$1|Versteckte Kategorie|Versteckte Kategorien}}',
-'hidden-category-category'       => 'Versteckte Kategorie',
+'hidden-category-category'       => 'Versteckte Kategorien',
 'category-subcat-count'          => '{{PLURAL:$2|Diese Kategorie enthält folgende Unterkategorie:|{{PLURAL:$1|Folgende Unterkategorie ist eine von insgesamt $2 Unterkategorien in dieser Kategorie:|Es werden $1 von insgesamt $2 Unterkategorien in dieser Kategorie angezeigt:}}}}',
 'category-subcat-count-limited'  => 'Diese Kategorie enthält folgende {{PLURAL:$1|Unterkategorie|$1 Unterkategorien}}:',
 'category-article-count'         => '{{PLURAL:$2|Diese Kategorie enthält folgende Seite:|{{PLURAL:$1|Folgende Seite ist eine von insgesamt $2 Seiten in dieser Kategorie:|Es werden $1 von insgesamt $2 Seiten in dieser Kategorie angezeigt:}}}}',
@@ -639,8 +639,8 @@ Siehe die [[Special:Version|Versionsseite]]',
 'feedlinks'               => 'Feed:',
 'feed-invalid'            => 'Ungültiger Feed-Abonnement-Typ.',
 'feed-unavailable'        => 'Es stehen keine Feeds zur Verfügung.',
-'site-rss-feed'           => 'RSS-Feed für $1',
-'site-atom-feed'          => 'Atom-Feed für $1',
+'site-rss-feed'           => 'RSS-Feed für „$1“',
+'site-atom-feed'          => 'Atom-Feed für „$1“',
 'page-rss-feed'           => 'RSS-Feed für „$1“',
 'page-atom-feed'          => 'Atom-Feed für „$1“',
 'red-link-title'          => '$1 (Seite nicht vorhanden)',
@@ -689,7 +689,7 @@ Grund der Sperrung: $1',
 
 Die Seite ist möglicherweise gelöscht oder verschoben worden.
 
-Falls dies nicht der Fall ist, hast du eventuell einen Fehler in der Software gefunden. Bitte melde dies einem [[Special:ListUsers/sysop|Administrator]] unter Nennung der URL.',
+Falls dies nicht  zutrifft, hast du eventuell einen Fehler in der Software gefunden. Bitte melde dies einem [[Special:ListUsers/sysop|Administrator]] unter Nennung der URL.',
 'missingarticle-rev'   => '(Versionsnummer: $1)',
 'missingarticle-diff'  => '(Unterschied zwischen Versionen: $1, $2)',
 'readonly_lag'         => 'Die Datenbank wurde automatisch für Schreibzugriffe gesperrt, damit sich die verteilten Datenbankserver (slaves) mit dem Hauptdatenbankserver (master) abgleichen können.',
@@ -707,7 +707,7 @@ Falls dies nicht der Fall ist, hast du eventuell einen Fehler in der Software ge
 'formerror'            => 'Fehler: Die Eingaben konnten nicht verarbeitet werden.',
 'badarticleerror'      => 'Diese Aktion kann auf diese Seite nicht angewendet werden.',
 'cannotdelete'         => 'Die Seite oder Datei „$1“ kann nicht gelöscht werden.
-Möglicherweise wurde sie bereits von jemand anders entfernt.',
+Möglicherweise wurde sie bereits von jemand anders gelöscht.',
 'badtitle'             => 'Ungültiger Titel',
 'badtitletext'         => 'Der Titel der angeforderten Seite ist ungültig, leer oder ein ungültiger Sprachlink von einem anderen Wiki.',
 'perfcached'           => 'Die folgenden Daten stammen aus dem Cache und sind möglicherweise nicht aktuell:',
@@ -755,7 +755,7 @@ Vergiss nicht, deine [[Special:Preferences|{{SITENAME}}-Einstellungen]] anzupass
 'yourpasswordagain'          => 'Passwort wiederholen:',
 'remembermypassword'         => 'dauerhaft anmelden',
 'yourdomainname'             => 'Deine Domain:',
-'externaldberror'            => 'Entweder es liegt ein Fehler bei der externen Authentifizierung vor, oder du darfst dein externes Benutzerkonto nicht aktualisieren.',
+'externaldberror'            => 'Entweder es liegt ein Fehler bei der externen Authentifizierung vor oder du darfst dein externes Benutzerkonto nicht aktualisieren.',
 'login'                      => 'Anmelden',
 'nav-login-createaccount'    => 'Anmelden / Benutzerkonto erstellen',
 'loginprompt'                => 'Zur Anmeldung müssen Cookies aktiviert sein.',
@@ -783,7 +783,7 @@ Vergiss nicht, deine [[Special:Preferences|{{SITENAME}}-Einstellungen]] anzupass
 Überprüfe die Schreibweise (Groß-/Kleinschreibung beachten) oder [[Special:UserLogin/signup|melde dich als neuer Benutzer an]].',
 'nosuchusershort'            => 'Der Benutzername „<nowiki>$1</nowiki>“ existiert nicht. Bitte überprüfe die Schreibweise.',
 'nouserspecified'            => 'Bitte gib einen Benutzernamen an.',
-'login-userblocked'          => 'Dieser Benutzer ist gesperrt. Anmeldung nicht erlaubt.',
+'login-userblocked'          => '{{GENDER:$1|Dieser Benutzer|Dieser Benutzerin|Dieser Benutzer}} ist gesperrt. Anmeldung nicht erlaubt.',
 'wrongpassword'              => 'Das Passwort ist falsch. Bitte versuche es erneut.',
 'wrongpasswordempty'         => 'Es wurde kein Passwort eingegeben. Bitte versuche es erneut.',
 'passwordtooshort'           => 'Passwörter müssen mindestens {{PLURAL:$1|1 Zeichen|$1 Zeichen}} lang sein.',
@@ -798,7 +798,7 @@ Falls du dies wirklich gewünscht hast, solltest du dich jetzt anmelden und das 
 Das neue Passwort ist {{PLURAL:$5|1 Tag|$5 Tage}} gültig.
 
 Bitte ignoriere diese E-Mail, falls du sie nicht selbst angefordert hast. Das alte Passwort bleibt weiterhin gültig.',
-'noemail'                    => 'Benutzer „$1“ hat keine E-Mail-Adresse angegeben.',
+'noemail'                    => '{{GENDER:$1|Benutzer|Benutzerin|Benutzer}} „$1“ hat keine E-Mail-Adresse angegeben.',
 'noemailcreate'              => 'Du musst eine gültige E-Mail-Adresse angeben',
 'passwordsent'               => 'Ein neues, temporäres Passwort wurde an die E-Mail-Adresse von Benutzer „$1“ gesandt.
 Bitte melde dich damit an, sobald du es erhalten hast. Das alte Passwort bleibt weiterhin gültig.',
@@ -943,7 +943,7 @@ Du kannst diesen Titel auf den anderen Seiten [[Special:Search/{{PAGENAME}}|such
 oder in den zugehörigen <span class="plainlinks">[{{fullurl:{{#special:Log}}|page={{FULLPAGENAMEE}}}} Logbüchern suchen].</span>',
 'userpage-userdoesnotexist'        => 'Das Benutzerkonto „$1“ ist nicht vorhanden. Bitte prüfe, ob du diese Seite wirklich erstellen/bearbeiten willst.',
 'userpage-userdoesnotexist-view'   => 'Benutzerkonto „$1“ existiert nicht.',
-'blocked-notice-logextract'        => 'Dieser Benutzer ist zurzeit gesperrt.
+'blocked-notice-logextract'        => '{{GENDER:$1|Dieser Benutzer|Diese Benutzerin|Dieser Benutzer}} ist zurzeit gesperrt.
 Zur Information folgt ein aktueller Auszug aus dem Benutzersperr-Logbuch:',
 'clearyourcache'                   => "'''Hinweis - Leere nach dem Speichern den Browser-Cache, um die Änderungen sehen zu können:''' '''Mozilla/Firefox/Safari:''' ''Shift'' gedrückt halten und auf ''Aktualisieren'' klicken oder alternativ entweder ''Strg-F5'' oder ''Strg-R'' (''Befehlstaste-R'' bei Macintosh) drücken; '''Konqueror: '''Auf ''Aktualisieren'' klicken oder ''F5'' drücken; '''Opera:''' Cache unter ''Extras → Einstellungen'' leeren; '''Internet Explorer:''' ''Strg-F5'' drücken oder ''Strg'' gedrückt halten und dabei ''Aktualisieren'' anklicken.",
 'usercssyoucanpreview'             => "'''Tipp:''' Benutze den Vorschau-Button, um dein neues CSS vor dem Speichern zu testen.",
@@ -1034,7 +1034,7 @@ Sie wurde anscheinend gelöscht.',
 'expensive-parserfunction-warning'        => 'Achtung: Diese Seite enthält zu viele Aufrufe aufwendiger Parserfunktionen.
 
 Es {{PLURAL:$2|darf nicht mehr als 1 Aufruf|dürfen nicht mehr als $1 Aufrufe}} sein.',
-'expensive-parserfunction-category'       => 'Seiten, die aufwändige Parserfunktionen zu oft aufrufen',
+'expensive-parserfunction-category'       => 'Seiten mit zu vielen aufwändigen Parserfunktionen',
 'post-expand-template-inclusion-warning'  => 'Warnung: Die Größe eingebundener Vorlagen ist zu groß, einige Vorlagen können nicht eingebunden werden.',
 'post-expand-template-inclusion-category' => 'Seiten, in denen die maximale Größe eingebundener Vorlagen überschritten ist',
 'post-expand-template-argument-warning'   => 'Warnung: Diese Seite enthält mindestens ein Argument in einer Vorlage, das expandiert zu groß ist. Diese Argumente werden ignoriert.',
@@ -1072,8 +1072,8 @@ Grund der Sperre: ''$2''",
 'page_first'             => 'Anfang',
 'page_last'              => 'Ende',
 'histlegend'             => 'Zur Anzeige der Änderungen einfach die zu vergleichenden Versionen auswählen und die Schaltfläche „{{int:compareselectedversions}}“ klicken.<br />
-* (Aktuell) = Unterschied zur aktuellen Version, (Vorherige) = Unterschied zur vorherigen Version
-* Uhrzeit/Datum = Version zu dieser Zeit, Benutzername/IP-Adresse des Bearbeiters, K = Kleine Änderung',
+* ({{int:cur}}) = Unterschied zur aktuellen Version, ({{int:last}}) = Unterschied zur vorherigen Version
+* Uhrzeit/Datum = Version zu dieser Zeit, Benutzername/IP-Adresse des Bearbeiters, {{int:minoreditletter}} = Kleine Änderung',
 'history-fieldset-title' => 'Suche in der Versionsgeschichte',
 'history-show-deleted'   => 'nur gelöschte Versionen',
 'histfirst'              => 'Älteste',
@@ -1161,6 +1161,8 @@ $1",
 'logdelete-failure'           => "'''Logbuchsichtbarkeit kann nicht geändert werden:'''
 $1",
 'revdel-restore'              => 'Sichtbarkeit ändern',
+'revdel-restore-deleted'      => 'gelöschte Versionen',
+'revdel-restore-visible'      => 'sichtbare Versionen',
 'pagehist'                    => 'Versionsgeschichte',
 'deletedhist'                 => 'Gelöschte Versionen',
 'revdelete-content'           => 'Seiteninhalt',
@@ -2399,7 +2401,7 @@ $1',
 'sp-contributions-logs'                => 'Logbücher',
 'sp-contributions-talk'                => 'Diskussion',
 'sp-contributions-userrights'          => 'Benutzerrechteverwaltung',
-'sp-contributions-blocked-notice'      => 'Dieser Benutzer ist derzeit gesperrt. Es folgt der aktuelle Eintrag aus dem Benutzersperr-Logbuch:',
+'sp-contributions-blocked-notice'      => '{{GENDER:$1|Dieser Benutzer|Diese Benutzerin|Dieser Benutzer}} ist derzeit gesperrt. Es folgt der aktuelle Eintrag aus dem Benutzersperr-Logbuch:',
 'sp-contributions-blocked-notice-anon' => 'Diese IP-Adresse ist zur Zeit gesperrt.
 Zur Information folgt der aktuelle Auszug aus dem Sperr-Logbuch:',
 'sp-contributions-search'              => 'Suche nach Benutzerbeiträgen',
@@ -2498,8 +2500,8 @@ Zur Aufhebung der Sperre siehe die [[Special:IPBlockList|Liste aller aktiven Spe
 'contribslink'                    => 'Beiträge',
 'autoblocker'                     => 'Automatische Sperre, da du eine gemeinsame IP-Adresse mit [[User:$1|$1]] benutzt. Grund der Benutzersperre: „$2“.',
 'blocklogpage'                    => 'Benutzersperr-Logbuch',
-'blocklog-showlog'                => 'Dieser Benutzer wurde schon früher gesperrt. Es folgt der Eintrag aus dem Benutzersperr-Logbuch:',
-'blocklog-showsuppresslog'        => 'Dieser Benutzer wurde schon früher gesperrt und versteckt.
+'blocklog-showlog'                => '{{GENDER:$1|Dieser Benutzer|Diese Benutzerin|Dieser Benutzer}} wurde schon früher gesperrt. Es folgt der Eintrag aus dem Benutzersperr-Logbuch:',
+'blocklog-showsuppresslog'        => '{{GENDER:$1|Dieser Benutzer|Diese Benutzerin|Dieser Benutzer}} wurde schon früher gesperrt und versteckt.
 Es folgt der Eintrag aus dem Unterdrückungs-Logbuch:',
 'blocklogentry'                   => 'sperrte „[[$1]]“ für den Zeitraum: $2 $3',
 'reblock-logentry'                => 'änderte die Sperre für „[[$1]]“ für den Zeitraum: $2 $3',

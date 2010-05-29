@@ -416,9 +416,12 @@ $messages['bn'] = array(
 
 /** Breton (Brezhoneg)
  * @author Fulup
+ * @author Y-M D
  */
 $messages['br'] = array(
 	'renameuser' => 'Adenvel an implijer',
+	'renameuser-linkoncontribs' => 'adenvel an implijer',
+	'renameuser-linkoncontribs-text' => 'adenvel an implijer-mañ',
 	'renameuser-desc' => "Adenvel un implijer (ret eo kaout ''gwirioù adenvel'')",
 	'renameuserold' => 'Anv a-vremañ an implijer :',
 	'renameusernew' => 'Anv implijer nevez :',
@@ -680,6 +683,7 @@ Til information er omdøbningsloggen vist nedenfor.',
  * @author Kghbln
  * @author Raimond Spekking
  * @author Spacebirdy
+ * @author The Evil IP address
  * @author Umherirrender
  */
 $messages['de'] = array(
@@ -711,7 +715,7 @@ $messages['de'] = array(
 	'renameuser-log' => '{{PLURAL:$1|1 Bearbeitung|$1 Bearbeitungen}}. Grund: $2',
 	'renameuser-move-log' => 'durch die Umbenennung von „[[User:$1|$1]]“ nach „[[User:$2|$2]]“ automatisch verschobene Seite',
 	'right-renameuser' => 'Benutzer umbenennen',
-	'renameuser-renamed-notice' => 'Dieser Benutzer wurde umbenannt.
+	'renameuser-renamed-notice' => '{{GENDER:$1|Dieser Benutzer|Diese Benutzerin|Dieser Benutzer}} wurde umbenannt.
 Zur Information folgt das Benutzernamenänderungs-Logbuch.',
 );
 
@@ -1244,6 +1248,8 @@ $messages['grc'] = array(
  */
 $messages['gsw'] = array(
 	'renameuser' => 'Benutzer umnänne',
+	'renameuser-linkoncontribs' => 'Benutzer umnänne',
+	'renameuser-linkoncontribs-text' => 'Dää Benutzer umnänne',
 	'renameuser-desc' => "Ergänzt e [[Special:Renameuser|Spezialsyte]] fir d Umnännig vun eme Benutzer (brucht s ''renameuser''-Rächt)",
 	'renameuserold' => 'Bishärige Benutzername:',
 	'renameusernew' => 'Neije Benutzername:',
@@ -1752,6 +1758,8 @@ Mangga balènana lan nyoba manèh.',
  */
 $messages['ka'] = array(
 	'renameuser' => 'მომხმარებლის სახელის გამოცვლა',
+	'renameuser-linkoncontribs' => 'მომხმარებლის სახელის გადარქმევა',
+	'renameuser-linkoncontribs-text' => 'ამ მომხმარებლის სახელის გადარქმევა',
 	'renameuserold' => 'ამჟამინდელი მომხმარებლის სახელი:',
 	'renameusernew' => 'ახალი მომხმარებლის სახელი:',
 	'renameuserreason' => 'სახელის შეცვლის მიზეზი:',
@@ -1772,6 +1780,7 @@ $messages['ka'] = array(
 	'renameuserlogentry' => 'სახელი გადაერქვა $1-ს "$2"-ზე',
 	'renameuser-log' => '$1 რედაქცია. მიზეზი: $2',
 	'renameuser-move-log' => 'ავტომატურად იქნა გადატანილი გვერდი მომხმარებლის "[[User:$1|$1]]" სახელის შეცვლისას "[[User:$2|$2]]-ით"',
+	'right-renameuser' => 'მომხმარებლების სახელის გადარქმევა',
 );
 
 /** Kazakh (Arabic script) (‫قازاقشا (تٴوتە)‬) */
@@ -2010,6 +2019,8 @@ Commodule notatio renominationum usoris subter datur.',
  */
 $messages['lb'] = array(
 	'renameuser' => 'Benotzernumm änneren',
+	'renameuser-linkoncontribs' => 'Benotzer ëmbenennen',
+	'renameuser-linkoncontribs-text' => 'Dëse Benotzer ëmbenennen',
 	'renameuser-desc' => "Benotzernumm änneren (Dir braucht dofir  ''renameuser''-Rechter)",
 	'renameuserold' => 'Aktuelle Benotzernumm:',
 	'renameusernew' => 'Neie Benotzernumm:',
@@ -2452,32 +2463,35 @@ Til informasjon er omdøpingsloggen synt nedanfor.',
  */
 $messages['no'] = array(
 	'renameuser' => 'Døp om bruker',
-	'renameuser-desc' => "Døp om en bruker (krever ''renameuser''-rettigheter)",
-	'renameuserold' => 'Nåværende navn:',
+	'renameuser-linkoncontribs' => 'døp om bruker',
+	'renameuser-linkoncontribs-text' => 'Døp om denne brukeren',
+	'renameuser-desc' => "Legger til en [[Special:Renameuser|spesialside]] for å døpe om en bruker (krever ''renameuser''-rettigheter)",
+	'renameuserold' => 'Nåværende brukernavn:',
 	'renameusernew' => 'Nytt brukernavn:',
-	'renameuserreason' => 'Grunn for omdøping:',
+	'renameuserreason' => 'Årsak for omdøping:',
 	'renameusermove' => 'Flytt bruker- og brukerdiskusjonssider (og deres undersider) til nytt navn',
-	'renameuserreserve' => 'Reserver det gamle brukernavnet mot framtidig bruk',
+	'renameuserreserve' => 'Blokker det gamle brukernavnet fra framtidig bruk',
 	'renameuserwarnings' => 'Advarsler:',
-	'renameuserconfirm' => 'Ja, endre navn på brukeren',
-	'renameusersubmit' => 'Døp om',
-	'renameusererrordoesnotexist' => 'Brukeren «<nowiki>$1</nowiki>» finnes ikke',
-	'renameusererrorexists' => 'Brukeren «<nowiki>$1</nowiki>» finnes allerede',
-	'renameusererrorinvalid' => 'Brukernavnet «<nowiki>$1</nowiki>» er ugyldig',
-	'renameusererrortoomany' => 'Brukeren «<nowiki>$1</nowiki>» har $2&nbsp;{{PLURAL:$2|redigering|redigeringer}}. Å døpe om brukere med mer enn $3&nbsp;{{PLURAL:$3|redigering|redigeringer}} vil kunne påvirke sidens ytelse.',
-	'renameuser-error-request' => 'Det var et problem med å motte forespørselen. Gå tilbake og prøv igjen.',
+	'renameuserconfirm' => 'Ja, døp om brukeren',
+	'renameusersubmit' => 'Utfør',
+	'renameusererrordoesnotexist' => 'Brukeren «<nowiki>$1</nowiki>» finnes ikke.',
+	'renameusererrorexists' => 'Brukeren «<nowiki>$1</nowiki>» finnes allerede.',
+	'renameusererrorinvalid' => 'Brukernavnet «<nowiki>$1</nowiki>» er ugyldig.',
+	'renameusererrortoomany' => 'Brukeren «<nowiki>$1</nowiki>» har {{PLURAL:$2|ett bidrag|$2 bidrag}}. Å døpe om brukere med mer enn {{PLURAL:$3|ett bidrag|$3 bidrag}} vil kunne påvirke nettstedets ytelse negativt.',
+	'renameuser-error-request' => 'Det var et problem med å motta forespørselen.
+Gå tilbake og prøv igjen.',
 	'renameuser-error-same-user' => 'Du kan ikke gi en bruker samme navn som han/hun allerede har.',
-	'renameusersuccess' => 'Brukeren «<nowiki>$1</nowiki>» har blitt omdøpt til «<nowiki>$2</nowiki>»',
+	'renameusersuccess' => 'Brukeren «<nowiki>$1</nowiki>» har blitt omdøpt til «<nowiki>$2</nowiki>».',
 	'renameuser-page-exists' => 'Siden $1 finnes allerede, og kunne ikke erstattes automatisk.',
 	'renameuser-page-moved' => 'Siden $1 har blitt flyttet til $2.',
 	'renameuser-page-unmoved' => 'Siden $1 kunne ikke flyttes til $2.',
 	'renameuserlogpage' => 'Omdøpingslogg',
 	'renameuserlogpagetext' => 'Dette er en logg over endringer i brukernavn.',
-	'renameuserlogentry' => 'endret navn på $1 til «$2»',
-	'renameuser-log' => '{{PLURAL:$1|Én redigering|$1 redigeringer}}. Grunn: $2',
+	'renameuserlogentry' => 'døpte om $1 til «$2»',
+	'renameuser-log' => '{{PLURAL:$1|1 bidrag|$1 bidrag}}. Årsak: $2',
 	'renameuser-move-log' => 'Flyttet side automatisk under omdøping av brukeren «[[User:$1|$1]]» til «[[User:$2|$2]]»',
-	'right-renameuser' => 'Omdøpe brukere',
-	'renameuser-renamed-notice' => 'Denne brukeren har fått nytt navn.
+	'right-renameuser' => 'Døpe om brukere',
+	'renameuser-renamed-notice' => 'Denne brukeren er døpt om.
 Til informasjon er omdøpningsloggen vist nedenfor.',
 );
 
@@ -2934,10 +2948,11 @@ $messages['sah'] = array(
 );
 
 /** Sardinian (Sardu)
+ * @author Andria
  * @author Marzedu
  */
 $messages['sc'] = array(
-	'renameusernew' => 'Nòmene usuàriu nou:',
+	'renameusernew' => 'Nou nùmene usuàriu:',
 );
 
 /** Sicilian (Sicilianu)
@@ -3275,6 +3290,8 @@ Som referens återfinns omdöpningsloggen nedan.',
  */
 $messages['te'] = array(
 	'renameuser' => 'సభ్యనామం మార్పు',
+	'renameuser-linkoncontribs' => 'వాడుకరి పేరుమార్చు',
+	'renameuser-linkoncontribs-text' => 'ఈ వాడుకరి పేరుని మార్చండి',
 	'renameuser-desc' => "వాడుకరి పేరు మార్చండి (''renameuser'' అన్న అధికారం కావాలి)",
 	'renameuserold' => 'ప్రస్తుత వాడుకరి పేరు:',
 	'renameusernew' => 'కొత్త వాడుకరి పేరు:',
@@ -3459,6 +3476,8 @@ At üýtgediş gündeligi aşakda salgylanma üçin berilýär.',
  */
 $messages['tl'] = array(
 	'renameuser' => 'Muling pangalanan ang tagagamit',
+	'renameuser-linkoncontribs' => 'muling pangalanan ang tagagamit',
+	'renameuser-linkoncontribs-text' => 'muling pangalanan ang tagagamit na ito',
 	'renameuser-desc' => "Nagdaragdag ng isang [[Special:Renameuser|natatanging pahina]] para mapangalanang muli ang isang tagagamit (kailangang ang karapatang ''pangalanangmuliangtagagamit'')",
 	'renameuserold' => 'Pangkasalukuyang pangalan ng tagagamit:',
 	'renameusernew' => 'Bagong pangalan ng tagagamit:',
@@ -3485,6 +3504,8 @@ Magbalik lamang at subukan uli.',
 	'renameuser-log' => '{{PLURAL:$1|1 pagbabago|$1 mga pagbabago}}. Dahilan: $2',
 	'renameuser-move-log' => 'Kusang inilipat ang pahina habang muling pinapangalanan ang tagagamit na si "[[User:$1|$1]]" patungo sa "[[User:$2|$2]]"',
 	'right-renameuser' => 'Muling pangalanan ang mga tagagamit',
+	'renameuser-renamed-notice' => 'Napangalanan nang muli ang tagagamit na ito.
+Ibinigay sa ibaba ang talaan ng pagpapangalang muli para masangguni.',
 );
 
 /** Tonga (lea faka-Tonga) */

@@ -12,7 +12,7 @@ if ( !defined( 'MEDIAWIKI' ) ) die();
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
  */
 
-define( 'TRANSLATE_VERSION', '2010-05-15' );
+define( 'TRANSLATE_VERSION', '2010-05-24' );
 
 $wgExtensionCredits['specialpage'][] = array(
 	'path'           => __FILE__,
@@ -77,6 +77,7 @@ $wgHooks['ArticleSaveComplete'][] = 'TranslationMemoryUpdater::update';
 
 $wgEnablePageTranslation = false;
 $wgPageTranslationNamespace = 1198;
+$wgTranslateStaticTags = false;
 
 $wgJobClasses['RenderJob'] = 'RenderJob';
 $wgAvailableRights[] = 'translate';
@@ -277,6 +278,8 @@ function efTranslateInit() {
 
 		// Check syntax for <translate>
 		$wgHooks['ArticleSave'][] = 'PageTranslationHooks::tpSyntaxCheck';
+		$wgHooks['EditFilter'][] = 'PageTranslationHooks::tpSyntaxCheckForEditPage';
+
 
 		// Add transtag to page props for discovery
 		$wgHooks['ArticleSaveComplete'][] = 'PageTranslationHooks::addTranstag';

@@ -20,7 +20,7 @@ The average wait for edits by \'\'users that have not logged in\'\' to be review
 $4
 The average lag for [[Special:OldReviewedPages|pages with unreviewed edits pending]] is \'\'\'$2\'\'\'.
 These pages are considered \'\'outdated\'\'. Likewise, pages are considered \'\'synchronized\'\' if there are no edits pending review.
-The published version of a page is the newest revision that has been approved to show by default to all readers.',
+The accepted version of a page is the newest revision that has been approved to show by default to all readers.',
 	'validationstatistics-table'  => "Statistics for each namespace are shown below, ''excluding'' redirect pages.",
 	'validationstatistics-ns'     => 'Namespace',
 	'validationstatistics-total'  => 'Pages',
@@ -465,7 +465,7 @@ The average wait for edits by ''users that have not logged in'' to be reviewed i
 $4
 The average lag for [[Special:OldReviewedPages|pages with unreviewed edits pending]] is '''$2'''.
 These pages are considered ''outdated''. Likewise, pages are considered ''synchronised'' if there are no edits pending review.
-The published version of a page is the newest revision that has been approved to show by default to all readers.",
+The accepted version of a page is the newest revision that has been approved to show by default to all readers.",
 );
 
 /** Esperanto (Esperanto)
@@ -1058,8 +1058,10 @@ $messages['ka'] = array(
 	'validationstatistics-users' => "'''{{SITENAME}}-ს''' ამჟამად ჰყავს '''[[Special:ListUsers/editor|$1]]''' {{PLURAL:$1|მომხმარებელი|მომხმარებელი}} [[{{MediaWiki:Validationpage}}|რედაქტორის]] უფლებებით.
 
 რედაქტორები არისნ მომხმარებლები, რომელთაც შეუძლიათ სტატიის ცვლილებების შემოწმება.",
+	'validationstatistics-table' => "სტატისტიკა თითოეული სახელთა სივრცისათვის ნაჩვენებია ქვემოთ, ''გარდა'' გადამისამართების გვერდებისა.",
 	'validationstatistics-ns' => 'სახელთა სივრცე',
 	'validationstatistics-total' => 'გვერდები',
+	'validationstatistics-stable' => 'შემოწმებულია',
 	'validationstatistics-user' => 'მომხმარებელი',
 );
 
@@ -1099,8 +1101,8 @@ $messages['ko'] = array(
 '''로그인하지 않은 사용자'''의 편집의 평균 대기 시간은 '''$1'''이고 중앙값은 '''$3'''입니다.
 $4
 [[Special:OldReviewedPages|검토되지 않은 편집이 있는 문서]]의 검토 평균 대기 시간은 '''$2'''입니다.
-이 문서는 오래 전에 검토되었으며, [[{{MediaWiki:Validationpage}}|안정 버전]]이 현재 버전과 일치할 때 동기화되었다고 표현합니다.
-문서의 안정 버전이 모든 독자에게 기본적으로 보여질 것입니다.",
+이 문서는 오래 전에 검토되었으며, 검토를 기다리고 있는 편집이 없을 때 ''동기화''되었다고 표현합니다.
+검토를 거친 문서의 배포판이 모든 독자에게 기본적으로 보여질 것입니다.",
 	'validationstatistics-table' => "넘겨주기 문서를 '''제외한''' 문서의 검토 통계가 이름공간별로 보여지고 있습니다.",
 	'validationstatistics-ns' => '이름공간',
 	'validationstatistics-total' => '문서 수',
@@ -1841,16 +1843,19 @@ Durnukly wersiýalar sahypalaryň iň bolmanda bir sany kesgitli ulanyjy tarapyn
  * @author AnakngAraw
  */
 $messages['tl'] = array(
-	'validationstatistics' => 'Mga estadistika ng pagpapatunay (balidasyon)',
-	'validationstatistics-users' => "Ang '''{{SITENAME}}''' ay  pangkasalukuyang may '''[[Special:ListUsers/editor|$1]]''' {{PLURAL:$1|tagagamit|mga tagagamit}} na may karapatan bilang [[{{MediaWiki:Validationpage}}|Patnugot]] 
-at '''$2''' {{PLURAL:$2|tagagamit|mga tagagamit}} na may karapatan bilang [[{{MediaWiki:Validationpage}}|Tagapagsuri]].",
-	'validationstatistics-time' => "''Ang sumusunod na dato ay nakatago at maaaring wala na sa panahon.''
+	'validationstatistics' => 'Estadistika ng pagsusuri ng pahina',
+	'validationstatistics-users' => "Ang '''{{SITENAME}}''' ay  pangkasalukuyang may '''[[Special:ListUsers/editor|$1]]''' {{PLURAL:$1|tagagamit|mga tagagamit}} na may karapatan bilang [[{{MediaWiki:Validationpage}}|Patnugot]] .
 
-Ang karaniwang panahon ng paghihintay para sa mga pagbabago ng ''mga tagagamit na hindi lumalagdang papasok'' na susuriin pa ay '''$1'''; ang panggitnaan ay '''$3'''. 
+Ang mga patnugot ay mga matatagal nang mga tagagamit na makakasipat ng mga pagbabago sa mga pahina.",
+	'validationstatistics-time' => "''Ang sumusunod na dato ay huling naisapanahon noong $5 at $6.''
+
+Ang mga pagbabagong nasuri na ng matatagal nang mga tagagamit ay itinuturing nang nasuri.
+
+Ang karaniwang paghihintay para sa mga pagbabagong gawa ng ''mga tagagamit na hindi lumagdang papasok'' na susuriin ay '''$1'''; ang midyan ay '''$3'''. 
 $4
-Ang karaniwang panahon ng pagkakaiwan para sa [[Special:OldReviewedPages|mga pahinang may nakabinbing pagsusuri ng mga pagbabago]] ay '''$2'''.
-Ang mga pahinang ito itinuturing na ''wala na sa panahon''. Gayun din, ang mga pahina ay itinuturing na ''naisabay na'' kapag ang [[{{MediaWiki:Validationpage}}|matatag na bersyon]] ay siya ring pangkasalukuyang balangkas na bersyon.
-Ang matatatag na mga bersyon ay mga rebisyon ng mga pahinang nasuri ng kahit na isang kinikilalang tagagamit.",
+Ang karaniwang pagkahuli para sa [[Special:OldReviewedPages|mga pahinang may naghihintay na pagsusuri ng mga pagbabago]] ay '''$2'''.
+Itinuturing ang mga pahinang ito na ''wala na sa panahon''.  Gayundin, itinuturing na ''nakasabay na'' kung walang mga pagbabagong naghihintay ng pagsusuri.
+Ang tinanggap na bersyon ng isang pahina ay ang pinakabagong pagbabagong pinayagang maipakita sa lahat ng mga mambabasa ayon sa likas na pagkakatakda.",
 	'validationstatistics-table' => "Ipinapakita sa ibaba ang mga estadistika para sa bawat espasyo ng pangalan, ''hindi kasama'' ang mga pahinang tumuturo papunta sa ibang pahina.",
 	'validationstatistics-ns' => 'Espasyo ng pangalan',
 	'validationstatistics-total' => 'Mga pahina',
@@ -1858,6 +1863,9 @@ Ang matatatag na mga bersyon ay mga rebisyon ng mga pahinang nasuri ng kahit na 
 	'validationstatistics-latest' => 'Napagsabay na',
 	'validationstatistics-synced' => 'Pinagsabay-sabay/Nasuri nang muli',
 	'validationstatistics-old' => 'Wala na sa panahon (luma)',
+	'validationstatistics-utable' => 'Nasa ibaba ang talaan ng limang pinakamataas na manunuri sa loob ng huling oras.',
+	'validationstatistics-user' => 'Tagagamit',
+	'validationstatistics-reviews' => 'Mga pagsusuri',
 );
 
 /** Turkish (Türkçe)

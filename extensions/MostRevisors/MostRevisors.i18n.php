@@ -570,6 +570,13 @@ $messages['mn'] = array(
 	'mostrevisors-namespace' => 'Нэрний зай:',
 );
 
+/** Maltese (Malti)
+ * @author Chrisportelli
+ */
+$messages['mt'] = array(
+	'mostrevisors-submit' => 'Mur',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -808,6 +815,25 @@ $messages['th'] = array(
  */
 $messages['tk'] = array(
 	'mostrevisors-submit' => 'Git',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'mostrevisors' => 'Mga pahinang may pinakamaraming mga tagapagbago',
+	'mostrevisors-desc' => 'Itala ang [[Special:MostRevisors|mga pahinang may pinakamaraming mga tagapagbago]]',
+	'mostrevisors-header' => "'''Nagtatala ang pahinang ito ng {{PLURAL:$1|pahina|$1 mga pahina}} na may pinakamaraming mga tagapagbago sa wiki.'''",
+	'mostrevisors-limitlinks' => 'Magpakita ng hanggang sa $1 mga pahina',
+	'mostrevisors-namespace' => 'Puwang na pampangalan:',
+	'mostrevisors-none' => 'Walang natagpuang mga ipinasok.',
+	'mostrevisors-ns-header' => "'''Nagtatala ang pahinang ito ng {{PLURAL:$1|pahina|$1 mga pahina}} na may pinakamaraming mga tagapagbago sa $2 na puwang na pampangalan.'''",
+	'mostrevisors-showing' => 'Itinatala ang {{PLURAL:$1|pahina|$1 mga pahina}}:',
+	'mostrevisors-submit' => 'Gawin',
+	'mostrevisors-showredir' => 'Ipakita ang mga pahinang naglilipat ng pupuntahan',
+	'mostrevisors-hideredir' => 'Itago ang mga pahinang nagpapalit ng pupuntahan',
+	'mostrevisors-users' => '- $1 {{PLURAL:$1|patnugot|mga patnugot}}',
+	'mostrevisors-viewcontributors' => 'Tingnan ang pangunahing mga tagapag-ambag',
 );
 
 /** Turkish (Türkçe)

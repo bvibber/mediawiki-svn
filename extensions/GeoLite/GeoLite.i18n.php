@@ -343,6 +343,13 @@ $messages['tk'] = array(
 	'geolite-desc' => 'Ýeňil GeoIP gönükdirmesi',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'geolite-desc' => 'Magaang na Paglilipat ng Pupuntahan ng GeoIp',
+);
+
 /** Turkish (Türkçe)
  * @author Joseph
  */

@@ -51,7 +51,7 @@ class ApiParse extends ApiBase {
 		}
 		$prop = array_flip( $params['prop'] );
 		$revid = false;
-		
+
 		if ( isset( $params['section'] ) ) {
 			$this->section = $params['section'];
 		} else {
@@ -211,21 +211,37 @@ class ApiParse extends ApiBase {
 		if ( isset( $prop['sections'] ) ) {
 			$result_array['sections'] = $p_result->getSections();
 		}
+
 		if ( isset( $prop['displaytitle'] ) ) {
 			$result_array['displaytitle'] = $p_result->getDisplayTitle() ?
 							$p_result->getDisplayTitle() :
 							$titleObj->getPrefixedText();
 		}
 
+		if ( isset( $prop['headitems'] ) || isset( $prop['headhtml'] ) ) {
+			$out = new OutputPage;
+			$out->addParserOutputNoText( $p_result );
+			$userSkin = $wgUser->getSkin();
+		}
+
 		if ( isset( $prop['headitems'] ) ) {
-			$result_array['headitems'] = $this->formatHeadItems( $p_result->getHeadItems() );
+			$headItems = $this->formatHeadItems( $p_result->getHeadItems() );
+
+			$userSkin->setupUserCss( $out );
+			$css = $this->formatCss( $out->buildCssLinksArray() );
+
+			$scripts = array( $out->getHeadScripts( $userSkin ) );
+
+			$result_array['headitems'] = array_merge( $headItems , $css, $scripts );
 		}
 
 		if ( isset( $prop['headhtml'] ) ) {
-			$out = new OutputPage;
-			$out->addParserOutputNoText( $p_result );
 			$result_array['headhtml'] = array();
-			$result->setContent( $result_array['headhtml'], $out->headElement( $wgUser->getSkin() ) );
+			$result->setContent( $result_array['headhtml'], $out->headElement( $userSkin ) );
+		}
+		
+		if ( isset( $prop['iwlinks'] ) ) {
+			$result_array['iwlinks'] = $this->formatIWLinks( $p_result->getInterwikiLinks() );
 		}
 
 		if ( !is_null( $oldid ) ) {
@@ -240,8 +256,9 @@ class ApiParse extends ApiBase {
 			'templates' => 'tl',
 			'images' => 'img',
 			'externallinks' => 'el',
+			'iwlinks' => 'iw',
 			'sections' => 's',
-			'headitems' => 'hi'
+			'headitems' => 'hi',
 		);
 		$this->setIndexedTagNames( $result_array, $result_mapping );
 		$result->addValue( null, $this->getModuleName(), $result_array );
@@ -299,12 +316,42 @@ class ApiParse extends ApiBase {
 		return $result;
 	}
 
+	private function formatIWLinks( $iw ) {
+		$result = array();
+		foreach ( $iw as $prefix => $titles ) {
+			foreach ( $titles as $title => $id ) {
+				$entry = array();
+				$entry['prefix'] = $prefix;
+				
+				$title = Title::newFromText( "{$prefix}:{$title}" );
+				if ( $title ) {
+					$entry['url'] = $title->getFullURL();
+				}
+				
+				$this->getResult()->setContent( $entry, $title->getFullText() );
+				$result[] = $entry;
+			}
+		}
+		return $result;
+	}
+
 	private function formatHeadItems( $headItems ) {
 		$result = array();
 		foreach ( $headItems as $tag => $content ) {
 			$entry = array();
 			$entry['tag'] = $tag;
 			$this->getResult()->setContent( $entry, $content );
+			$result[] = $entry;
+		}
+		return $result;
+	}
+
+	private function formatCss( $css ) {
+		$result = array();
+		foreach ( $css as $file => $link ) {
+			$entry = array();
+			$entry['file'] = $file;
+			$this->getResult()->setContent( $entry, $link );
 			$result[] = $entry;
 		}
 		return $result;
@@ -344,7 +391,8 @@ class ApiParse extends ApiBase {
 					'revid',
 					'displaytitle',
 					'headitems',
-					'headhtml'
+					'headhtml',
+					'iwlinks',
 				)
 			),
 			'pst' => false,

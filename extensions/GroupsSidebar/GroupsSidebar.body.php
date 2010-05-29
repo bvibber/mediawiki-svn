@@ -11,7 +11,7 @@ class GroupsSidebar {
 		foreach ( $wgGroupsSidebar as $group => $sectiontitle ) {
 			if (in_array($group, $wgUser->getEffectiveGroups())) {
 				$message = 'sidebar-'.$sectiontitle;
-				$skin->addToSidebar( &$bar, $message );
+				$skin->addToSidebar( $bar, wfMsgForContentNoTrans( $message ) );
 			}
 		}
 		return true;

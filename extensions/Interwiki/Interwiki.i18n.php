@@ -231,7 +231,8 @@ $messages['am'] = array(
  * @author Juanpabl
  */
 $messages['an'] = array(
-	'interwiki_reasonfield' => 'Razón',
+	'interwiki_1' => 'Sí',
+	'interwiki_reasonfield' => 'Razón:',
 );
 
 /** Arabic (العربية)
@@ -454,7 +455,7 @@ $messages['bg'] = array(
 	'interwiki-desc' => 'Добавя [[Special:Interwiki|специална страница]] за преглед и управление на таблицата с междууикита',
 	'interwiki_intro' => 'Вижте [http://www.mediawiki.org/wiki/Interwiki_table MediaWiki.org] за повече информация относно таблицата с междууикита. Съществува [[Special:Log/interwiki|дневник на промените]] в таблицата с междууикита.',
 	'interwiki_prefix' => 'Представка:',
-	'interwiki-prefix-label' => 'Представка::',
+	'interwiki-prefix-label' => 'Представка:',
 	'interwiki_local' => 'Локално',
 	'interwiki-local-label' => 'Локално:',
 	'interwiki_1' => 'да',
@@ -514,6 +515,7 @@ Ho pezet soñj e c'hall an dra-se terriñ liammoù zo anezho dija.",
 Marteze n'eus ket anezhañ.",
 	'interwiki-badprefix' => 'Arouezennoù direizh zo er rakger interwiki « $1 »',
 	'interwiki_logpagename' => 'Deizlevr an daolenn interwiki',
+	'interwiki_log_added' => 'en deus ouzhpennet "$2" ($3) (trans: $4) (local: $5) en daolenn etrewiki',
 	'interwiki_log_deleted' => 'en deus lamet ar rakger « $2 » eus an daolenn interwiki',
 	'interwiki_logpagetext' => "Ur marilh eus ar c'hemmoù en [[Special:Interwiki|daolenn etrewiki]] eo.",
 	'right-interwiki' => 'Aozañ ar roadennoù interwiki',
@@ -2960,6 +2962,7 @@ Existe um [[Special:Log/interwiki|registro de modificações]] à tabela de inte
 /** Romanian (Română)
  * @author Firilacroco
  * @author KlaudiuMihaila
+ * @author Minisarm
  */
 $messages['ro'] = array(
 	'interwiki_prefix' => 'Prefix',
@@ -2968,7 +2971,7 @@ $messages['ro'] = array(
 	'interwiki_0' => 'nu',
 	'interwiki_edit' => 'Modificare',
 	'interwiki_reasonfield' => 'Motiv',
-	'interwiki_delquestion' => 'Ştergere "$1"',
+	'interwiki_delquestion' => 'Ștergere „$1”',
 	'interwiki_addbutton' => 'Adaugă',
 	'action-interwiki' => 'modificați această legătură interwiki',
 );
@@ -3471,12 +3474,12 @@ $messages['tl'] = array(
 	'interwiki-url-label' => 'URL:',
 	'interwiki_url_intro' => 'Suleras para sa mga URL. Ang tagpaghawak ng pook na $1 ay mapapalitan ng <i>pagename</i> ng teksto ng wiki, kapag ginamit ang nabanggit sa itaas na palaugnayang teksto ng wiki.',
 	'interwiki_local' => 'Isulong',
-	'interwiki-local-label' => 'Isulong:',
+	'interwiki-local-label' => 'Pasulong:',
 	'interwiki_local_intro' => 'Ang isang kahilingang http sa pampook na wiki na may ganitong unlapi ng ugnayang-wiki na nasa loob ng URL ay:',
 	'interwiki_local_0_intro' => 'huwag tanggapin, karaniwang hinahadlangan ng "hindi natagpuan ang pahina",',
 	'interwiki_local_1_intro' => 'itinuro papunta sa pinupukol na ibinigay na URL sa loob ng mga kahulugan ng kawing ng ugnayang-wiki (iyong mga itinuturing na katulad ng mga sanggunian sa pampook na mga pahina)',
 	'interwiki_trans' => 'Paglilipat-sama (transklusyon)',
-	'interwiki-trans-label' => 'Paglilipat-sama (transklusyon):',
+	'interwiki-trans-label' => 'Ilipat-sama:',
 	'interwiki_trans_intro' => 'Kapag ginamit ang palaugnayang <code>{<nowiki />{prefix:<i>pagename</i>}}</code> ng teksto ng wiki, kung gayon:',
 	'interwiki_trans_1_intro' => 'pahintulutan ang paglilipat-sama mula sa dayuhang wiki, kung pangkalahatang pinapayagan sa wiking ito ang paglilipat-sama',
 	'interwiki_trans_0_intro' => 'huwag itong pahintulutan, sa halip maghanap ng isang pahinang nasa loob ng espasyo ng pangalan ng suleras.',
@@ -3486,7 +3489,7 @@ Mayroong isang [[Special:Log/interwiki|talaan ng mga pagbabago]] sa tabla ng ugn
 	'interwiki_0' => 'hindi',
 	'interwiki_error' => "Kamalian: Walang laman ang tablang pangugnayang-wiki (''interwiki''), o may iba pang bagay na nagkaroon ng kamalian/suliranin.",
 	'interwiki_edit' => 'Baguhin',
-	'interwiki_reasonfield' => 'Dahilan',
+	'interwiki_reasonfield' => 'Dahilan:',
 	'interwiki_delquestion' => 'Binubura ang "$1"',
 	'interwiki_deleting' => 'Binubura mo ang unlaping "$1".',
 	'interwiki_deleted' => "Matagumpay na natanggal ang unlaping \"\$1\" mula sa tablang pangugnayang-wiki (''interwiki'').",

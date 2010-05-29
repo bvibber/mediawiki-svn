@@ -1526,6 +1526,8 @@ Windows では [http://www.7-zip.org/ 7-zip] がアーカイブの展開に利�
  * @author BRUTE
  */
 $messages['ka'] = array(
+	'extensiondistributor' => 'მედიავიკის გაფართოების ჩაწერა',
+	'extdist-no-such-extension' => 'არ არსებობს გაფართოება "$1"',
 	'extdist-submit-extension' => 'გაგრძელება',
 	'extdist-choose-version' => '<big>თქვენ იწერთ <b>$1</b> გაფართოებას.</big>
 
@@ -1533,6 +1535,7 @@ $messages['ka'] = array(
 
 გაფართოებათა უმრავლესობა მუშაობს მედიავიკის უმრავლეს ვერსიებზე, ასე რომ თუ თქვენი მედიავიკის ვერსია აქ არ არის, ან თუ გჭირდებათ უახლესი გაფართოება, სცადეთ გამოიყენოთ ამჟამინდელი ვერსია.',
 	'extdist-submit-version' => 'გაგრძელება',
+	'extdist-want-more' => 'სხვა გაფართოების ნახვა',
 );
 
 /** Khmer (ភាសាខ្មែរ)

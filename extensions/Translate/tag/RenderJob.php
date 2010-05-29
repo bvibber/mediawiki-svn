@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Job for updating translation pages.
  *
@@ -19,6 +18,7 @@ class RenderJob extends Job {
 		$job->setUser( $wgTranslateFuzzyBotName );
 		$job->setFlags( EDIT_FORCE_BOT );
 		$job->setSummary( wfMsgForContent( 'tpt-render-summary' ) );
+
 		return $job;
 	}
 
@@ -44,11 +44,7 @@ class RenderJob extends Job {
 		$group = MessageGroups::getGroup( "page|$key" );
 		$collection = $group->initCollection( $code );
 
-		// Muck up the text
 		$text = $page->getParse()->getTranslationPageText( $collection );
-		// Same as in renderSourcePage
-		$cb = array( __CLASS__, 'replaceTagCb' );
-		$text = preg_replace_callback( '~(\n?<translate>\s*?)(.*?)(\s*?</translate>)~s', $cb, $text );
 
 		// Other stuff
 		$user    = $this->getUser();
@@ -79,10 +75,6 @@ class RenderJob extends Job {
 		return true;
 	}
 
-	public static function replaceTagCb( $matches ) {
-		return $matches[2];
-	}
-
 	public function setFlags( $flags ) {
 		$this->params['flags'] = $flags;
 	}
@@ -90,7 +82,6 @@ class RenderJob extends Job {
 	public function getFlags() {
 		return $this->params['flags'];
 	}
-
 
 	public function setSummary( $summary ) {
 		$this->params['summary'] = $summary;
@@ -100,7 +91,6 @@ class RenderJob extends Job {
 		return $this->params['summary'];
 	}
 
-
 	public function setUser( $user ) {
 		if ( $user instanceof User ) {
 			$this->params['user'] = $user->getName();
@@ -108,6 +98,7 @@ class RenderJob extends Job {
 			$this->params['user'] = $user;
 		}
 	}
+
 	/**
 	 * Get a user object for doing edits.
 	 */
@@ -115,4 +106,3 @@ class RenderJob extends Job {
 		return User::newFromName( $this->params['user'], false );
 	}
 }
-

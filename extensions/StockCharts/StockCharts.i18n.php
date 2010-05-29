@@ -316,6 +316,15 @@ $messages['sv'] = array(
 Använd: &lt;stockchart ticker="AAPL"/&gt;',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'stockcharts-desc' => 'Nagdaragdag ng tatak na <nowiki><stockchart ticker="AAPL"/></nowiki> para sa interaktibong tsart na pangnakataang pamimilak',
+	'stockcharts-missingticker' => 'Upang makapagbaon ng isang tsart na pangpamimilak, kailangan mong tumukoy ng kahit na isang pangkudlit.
+Gamitin ang: &lt;stockchart ticker="AAPL"/&gt;',
+);
+
 /** Turkish (Türkçe)
  * @author Vito Genovese
  */

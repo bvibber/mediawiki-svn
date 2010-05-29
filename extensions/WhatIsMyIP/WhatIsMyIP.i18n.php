@@ -435,6 +435,16 @@ $messages['km'] = array(
 	'whatismyip-out' => 'អសយដ្ឋានIP របស់អ្នក៖',
 );
 
+/** Kannada (ಕನ್ನಡ)
+ * @author Nayvik
+ */
+$messages['kn'] = array(
+	'whatismyip' => 'ನನ್ನ ಐಪಿ ಏನು',
+	'whatismyip-desc' => 'ಪ್ರಸ್ತಕ ಬಳಕೆದಾರರ [[Special:WhatIsMyIP|ಐಪಿ ವಿಳಾಸ]] ತೋರಿಸು',
+	'whatismyip-out' => 'ನಿಮ್ಮ ಐಪಿ ವಿಳಾಸ:',
+	'right-whatismyip' => '[[Special:WhatIsMyIP|ಸ್ವಂತ ಐಪಿ ವಿಳಾಸವನ್ನು]] ನೋಡಿ',
+);
+
 /** Korean (한국어)
  * @author ITurtle
  */
@@ -770,8 +780,9 @@ $messages['th'] = array(
  */
 $messages['tl'] = array(
 	'whatismyip' => 'Ano ba ang aking IP',
-	'whatismyip-desc' => 'Nagpapakita ng adress ng IP ng pangkasulukuyang tagagamit sa [[Special:WhatIsMyIP|Natatangi:AnoBaAngAkingIP]]',
-	'whatismyip-out' => 'Ang IP mo:',
+	'whatismyip-desc' => 'Nagpapakita ng [[Special:WhatIsMyIP|adres ng IP]] ng pangkasulukuyang tagagamit',
+	'whatismyip-out' => 'Ang iyong adres ng IP:',
+	'right-whatismyip' => 'Tingnan ang [[Special:WhatIsMyIP|sariling adres ng IP]]',
 );
 
 /** Turkish (Türkçe)

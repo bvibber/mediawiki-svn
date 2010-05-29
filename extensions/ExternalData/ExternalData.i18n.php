@@ -408,11 +408,21 @@ $messages['id'] = array(
 );
 
 /** Italian (Italiano)
+ * @author Beta16
  * @author Pietrodn
  */
 $messages['it'] = array(
 	'getdata' => 'Ottieni dati',
-	'externaldata-desc' => 'Consente di recuperare dati nei formati CSV, XML e JSON sia da URL esterni sia da pagine wiki locali',
+	'externaldata-desc' => 'Consente di recuperare dati strutturati da URL esterni, database o altre sorgenti',
+	'externaldata-ldap-unable-to-connect' => 'Impossibile connettersi a $1',
+	'externaldata-json-decode-not-supported' => 'Errore: json_decode() non è supportato in questa versione di PHP',
+	'externaldata-xml-error' => 'Errore XML: $1 alla linea $2',
+	'externaldata-db-incomplete-information' => 'Errore: informazioni incomplete per questo server ID.',
+	'externaldata-db-could-not-get-url' => "Impossibile raggiungere l'URL dopo $1 {{PLURAL:$1|tentativo|tentativi}}.",
+	'externaldata-db-unknown-type' => 'Errore: tipo di database sconosciuto.',
+	'externaldata-db-could-not-connect' => 'Errore: impossibile connettersi al database.',
+	'externaldata-db-no-return-values' => 'Errore: non è stato specificato alcun valore di ritorno.',
+	'externaldata-db-invalid-query' => 'Query non valida.',
 );
 
 /** Japanese (日本語)
@@ -697,11 +707,21 @@ $messages['sk'] = array(
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Charmed94
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'getdata' => 'Преузми податке',
-	'externaldata-desc' => 'Омогућава преузимање података у CSV, JSON и XML форматима, како преко спољашњих веза, тако и са локалних вики-страна',
+	'externaldata-desc' => 'Омогућава преузимање података из спољашњих адреса, бази података и других извора',
+	'externaldata-ldap-unable-to-connect' => 'Повезивање на $1 није успело',
+	'externaldata-json-decode-not-supported' => 'Грешка: json_decode() није подржан у овом издању PHP-а',
+	'externaldata-xml-error' => 'XML грешка: $1 по линији $2',
+	'externaldata-db-incomplete-information' => 'Грешка: Непотпуни подаци за овај ID сервера.',
+	'externaldata-db-could-not-get-url' => 'Преузимање адресе после $1 {{PLURAL:$1|try|покушаја}} није успело.',
+	'externaldata-db-unknown-type' => 'Грешка: Непозната врста базе података.',
+	'externaldata-db-could-not-connect' => 'Грешка: Повезивање с базом података није успело.',
+	'externaldata-db-no-return-values' => 'Грешка: Повратне вредности нису одређене.',
+	'externaldata-db-invalid-query' => 'Неисправан упит.',
 );
 
 /** Serbian Latin ekavian (Srpski (latinica))
@@ -738,10 +758,20 @@ $messages['te'] = array(
 
 /** Tagalog (Tagalog)
  * @author AnakngAraw
+ * @author Sky Harbor
  */
 $messages['tl'] = array(
 	'getdata' => 'Kunin ang dato',
-	'externaldata-desc' => 'Nagpapahintulot sa muling pagkuha ng datong nasa mga anyong CSV, JSON at XML na kapwa mula sa panlabas na mga URL at pampook na mga pahina ng wiki',
+	'externaldata-desc' => 'Nagpapahintulot sa pagkuha ng nakabalangkas na datos mula sa panlabas na mga URL, mga kalipunan ng datos at sa ibang mga pinagmulan',
+	'externaldata-ldap-unable-to-connect' => 'Hindi makakunekta sa $1',
+	'externaldata-json-decode-not-supported' => 'Kamalian: hindi sinusuporta ang json_decode() sa bersyong ito ng PHP',
+	'externaldata-xml-error' => 'Kamalian sa XML: $1 sa linyang $2',
+	'externaldata-db-incomplete-information' => 'Kamalian: Hindi-kumpletong impormasyon para sa itong ID ng serbidor.',
+	'externaldata-db-could-not-get-url' => 'Hindi makuha ang URL pagkatapos ng $1 {{PLURAL:$1|pagsubok|pagsubok}}',
+	'externaldata-db-unknown-type' => 'Kamalian: Hindi-kilalang uri ng kalipunan ng datos.',
+	'externaldata-db-could-not-connect' => 'Kamalian: Hindi makakunekta sa talaan ng dato.',
+	'externaldata-db-no-return-values' => 'Kamalian: Walang tinukoy na halagang pabalik.',
+	'externaldata-db-invalid-query' => 'Hindi tanggap na katanungan.',
 );
 
 /** Turkish (Türkçe)

@@ -833,8 +833,11 @@ Har du en kommentar till den här sidan? Lägg till den här eller <span class="
  */
 $messages['te'] = array(
 	'commentbox-desc' => 'కొన్ని పేజీలకు వ్యాఖ్యల పెట్టెని చేరుస్తుంది',
+	'commentbox-intro' => '== ఒక వ్యాఖ్యని చేర్చండి... ==
+ఈ పుటపై మీరు వ్యాఖ్యానించేది ఏమైనా ఉందా? దాన్ని ఇక్కడ ఇవ్వండి లేదా <span class="plainlinks">[{{fullurl:{{FULLPAGENAME}}|action=edit}} నేరుగా పుటని మార్చండి]</span>.',
 	'commentbox-savebutton' => 'వ్యాఖ్యని భద్రపరచు',
 	'commentbox-name' => 'పేరు:',
+	'commentbox-name-explanation' => '<small>(చిట్కా: మీరు [[Special:UserLogin|ప్రవేశిస్తే]], మీ పేరుని ఇక్కడ మానవీయంగా పూరించనవసరం ఉండదు.)</small>',
 	'commentbox-log' => 'కొత్త వ్యాఖ్యలు',
 	'commentbox-first-comment-heading' => '== వ్యాఖ్యలు ==',
 	'commentbox-regex' => '/\\n==\\s*వ్యాఖ్యలు\\s*==\\s*\\n/i',
@@ -849,6 +852,25 @@ $messages['te'] = array(
  */
 $messages['tk'] = array(
 	'commentbox-name' => 'At:',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'commentbox-desc' => 'Nagdaragdag ng isang kahon ng kumento sa partikular na mga pahina',
+	'commentbox-intro' => '== Magdagdag ng puna... ==
+Mayroon kang kumento sa pahinang ito? Idagdag iyon dito o <span class="plainlinks">[{{fullurl:{{FULLPAGENAME}}|action=edit}} tuwirang baguhin ang pahina]</span>.',
+	'commentbox-savebutton' => 'Sagipin ang puna',
+	'commentbox-name' => 'Pangalan:',
+	'commentbox-name-explanation' => '<small>(Balato: Kapag [[Special:UserLogin|lumagda ka]], hindi mo kailangang kinakamay na ipasok ang pangalan mo rito)</small>',
+	'commentbox-log' => 'Bagong mga puna',
+	'commentbox-first-comment-heading' => '== Mga puna ==',
+	'commentbox-regex' => '\\n==\\s*Mga kumento\\s*==\\s*\\n/i',
+	'commentbox-errorpage-title' => 'Kamalian habang nililikha ang puna',
+	'commentbox-error-page-nonexistent' => 'Hindi umiiral ang pahinang ito!',
+	'commentbox-error-namespace' => 'Hindi pinapahintulutan ang mga kumento sa loob ng puwang na pampangalang ito!',
+	'commentbox-error-empty-comment' => 'Hindi pinapahintulutan ang mga kumentong walang laman!',
 );
 
 /** Turkish (Türkçe)

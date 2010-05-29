@@ -377,7 +377,9 @@ $messages['id'] = array(
  */
 $messages['ig'] = array(
 	'newschannel' => 'Nkushi Akíkó Uwà',
+	'newschannel_format' => 'Udi:',
 	'newschannel_limit' => 'Érúrú:',
+	'newschannel_exclude_category' => 'Kúfù na uzor ebe ihe nor:',
 	'newschannel_submit_button' => 'Ké ntá',
 );
 

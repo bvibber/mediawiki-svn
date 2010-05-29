@@ -324,3 +324,14 @@ $messages['sk'] = array(
 	'poolcounter-remote-error' => 'Chyba servera počítadla skupiny: $1',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'poolcounter-desc' => 'Kliyente ng MediaWiki para sa pambilang ng lawa ng  poolcounter.py ng daemon',
+	'poolcounter-connection-error' => 'Kamalian sa pagkunekta sa tagapaghain ng pambilang ng lawa: $1',
+	'poolcounter-read-error' => 'Maling pagbasa mula sa tagapaghain ng pambilang ng lawa',
+	'poolcounter-write-error' => 'Kamalian sa pagsulat sa tagapaghain ng pambilang ng lawa',
+	'poolcounter-remote-error' => 'Kamalian sa tagapaghain ng pambilang ng lawa: $1',
+);
+

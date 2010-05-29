@@ -8711,6 +8711,10 @@ $messages['ka'] = array(
 	'lqt_toc_thread_modified' => 'ბოლოს შეიცვალა',
 	'lqt_add_header' => 'სათაურის ჩამატება',
 	'lqt_new_thread' => 'ახალი განხილვის დაწყება',
+	'lqt_invalid_subject' => 'სათაური, რომელიც თქვენ მიუთითეთ, არასწორია.
+შეიძლება:
+* ის ძალიან დიდია, ან
+* შეცდომაა საერთაშორისუ ბმულების ინდექსებში ან სახელთა სივრცის სახელებში.',
 	'lqt_empty_subject' => 'თქვენ უნდა მიუთითოთ თემა.',
 	'lqt_reply' => 'პასუხი',
 	'lqt-parent' => 'მშობელი',
@@ -8734,20 +8738,41 @@ $messages['ka'] = array(
 	'lqt_hist_view_whole_thread' => 'იხილეთ მთელი ტოტის ისტორია',
 	'lqt_hist_no_revisions_error' => 'ამ ტოტს არა აქვს ისტორია',
 	'lqt_hist_past_last_page_error' => 'თქვენ გახვედით ნებადართული გვერდების რაოდენობიდან.',
+	'lqt_hist_tooltip_newer_disabled' => 'ეს ბმული გამორთულია, ვინაიდან თქვენ იმყოფებით პირველ გვერდზე.',
+	'lqt_hist_tooltip_older_disabled' => 'ეს ბმული გამორთულია, ვინაიდან თქვენ იმყოფებით ბოლო გვერდზე.',
+	'lqt_hist_edited_subject' => 'შეცვლილია სათაური "$2-დან" "$3-ზე"',
+	'lqt_hist_edited_subject_corrupt' => 'თემა შეცვლილია',
+	'lqt_hist_split_from' => 'ახალ ტოტში გადატანა',
 	'lqt_hist_root_blanked' => 'კომენტარი წაშლილია',
+	'lqt_hist_adjusted_sortkey' => 'დაზუსტებული თემის პოზიცია',
 	'lqt_change_deleted' => '[$1 ეს ტოტი] ან მისი მშობლიური ტოტი წაიშალა',
+	'lqt_change_moved' => '[$ 1 ეს თემა] გადატანილია სხვა განხილვის გვერდზე',
 	'lqt_change_root_blanked' => 'ტექსტი [$1 კომენტარის] წაშლილია.',
 	'lqt_youhavenewmessages' => 'თქვენ გაქვთ [[$1|ახალი შეტყობინება]].',
 	'lqt_protectedfromreply_link' => 'დაცულია',
+	'lqt_subject' => 'თემა:',
 	'lqt_noreason' => 'მიზეზი ნაჩვენები არაა.',
+	'lqt_summary_notice_link' => 'რეზიუმეს დაწერა',
+	'lqt_summary_label' => 'თემის რეზიუმე:',
+	'lqt_summary_subtitle' => '"$1-ის" რეზიუმე',
+	'lqt_nosuchthread' => 'თქვენს მიერ მითითებული ტოტი არ არსებობს.',
+	'lqt_nosuchthread_title' => 'არ არის ასეთი ტოტი',
+	'lqt_move_movingthread' => 'გადადის  $1.
+ეს ტორი არის $2-ის ნაწილი.',
+	'lqt_move_torename' => "ამ ტოტის სახელის შესაცვლელად, $1 და შეცვალეთ 'სათაური' ველი.",
 	'lqt_move_torename_edit' => 'მისი რედაქტირება',
 	'lqt_move_move' => 'გადატანა',
+	'lqt_move_nodestination' => 'თქვენ უნდა მიუთითოთ დანიშნულების ადგილი.',
 	'lqt_move_samedestination' => 'ტოტი უკვე არის ამ გვერდზე!',
 	'lqt_move_noreason' => 'მიზეზი ნაჩვენები არაა.',
+	'lqt_delete_partof' => "ეს თემა არის '''$1-ის''' ნაწილი.",
+	'lqt_delete_deletethread' => 'თემებისა და პასუხების წაშლა',
 	'lqt_delete_return' => 'დაბრუნება $1-ზე.',
 	'lqt_delete_return_link' => 'განხილვის გვერდი',
 	'lqt_delete_unallowed' => 'თქვენ არ შეგიძლიათ სტატიების წაშლა.',
+	'lqt_delete_show_checkbox' => 'აჩვენე წაშლილი ტოტები',
 	'lqt_header_warning_big' => 'თქვენ არედაქტირებთ $1-ს.',
+	'lqt_header_warning_bold' => 'განხილვის გვერდის თავი',
 	'lqt_header_warning_new_discussion' => 'ახალი დისკუსიის დაწყება',
 	'lqt_sorting_order' => 'სორტირების წესი:',
 	'lqt_sort_newest_changes' => 'ბოლოს შეცვლილი თავში',
@@ -8838,26 +8863,51 @@ $messages['ka'] = array(
 	'lqt-enotif-subject-newthread' => '{{SITENAME}} განხილვა - ახალი თემა: $1',
 	'lqt-quote' => 'ციტირება',
 	'lqt-search-legend' => 'განხილვის ძიება ამ გვერდზე',
+	'lqt-search-label' => 'ტერმინების ძიება:',
 	'lqt-search-button' => 'ძიება',
 	'searchprofile-threads' => 'განხილვები',
 	'lqt-ajax-update-link' => 'განახლება',
+	'lqt-thread-show-more' => 'მეტი პასუხის ჩვენება',
 	'lqt-thread-link-url' => 'URL ბმული:',
 	'lqt-thread-link-title' => 'ვიკიტექსტის ბმული:',
+	'lqt-change-subject' => 'სათაურის შეცვლა',
 	'lqt-save-subject' => 'შენახვა',
+	'lqt-save-subject-failed' => 'წარმოიშვა შეცდომა თემის სათაურის შეცვლისას: $1',
+	'lqt-ajax-invalid-subject' => 'თქვენს მიერ მითითებული სათაური არასწორი აღმოჩნდა, შეიძლება ის ძალიან გრძელია.',
+	'lqt-ajax-no-subject' => 'თქვენ უნდა მიუთითოთ სათაური.',
+	'lqt-save-subject-error-unknown' => 'წარმოიშვა შეცდომა თემის სათაურის შექმნისას. გთხოვთ სცადეთ კვლავ ღილაკის "რედაქტირება" დაჭერით.',
 	'lqt-cancel-subject-edit' => 'გაუქმება',
+	'lqt-drag-activate' => 'ახალ ადგილას გადატანა',
+	'lqt-drag-confirm' => 'ამ მოქმედების შესასრულებლად, გთხოვთ შეავსეთ მიზეზის ველი და დააჭირეთ "დადასტურება".',
+	'lqt-drag-split' => 'გადაიტანეთ თემა მის საკუთარ ტოტში',
+	'lqt-drag-bump' => 'თემის გადატანა განხილვის გვერდის თავში',
 	'lqt-drag-save' => 'დადასტურება',
 	'lqt-drag-reason' => 'მიზეზი:',
+	'lqt-drag-subject' => 'სათაური ახალი ტოტისათვის:',
+	'lqt-edit-signature' => '(რედაქტირების ხელმოწერა)',
 	'lqt-preview-signature' => '(წინა)',
 	'lqt-feed-title-all' => '{{SITENAME}} — ახალი თემები',
+	'lqt-feed-title-all-from' => '{{SITENAME}} — ახალი თემები $1-დან',
+	'lqt-feed-title-new-threads' => '{{SITENAME}} — ახალი თემები',
+	'lqt-feed-title-new-threads-from' => '{{SITENAME}} — ახალი თემები $1-დან',
 	'lqt-feed-title-replies' => '{{SITENAME}} — პასუხები',
 	'lqt-feed-title-replies-from' => '{{SITENAME}} — პასუხები $1-დან',
+	'lqt-feed-new-thread-intro' => 'ახალი თემა $1-ზე, დადებული $2-ის მიერ',
+	'lqt-feed-reply-intro' => 'პასუხი $3-ს ($1-ზე), დადებული $2-ის მიერ',
 	'lqt-newmessages-n' => 'ახალი შეტყობინებები ($1)',
 	'lqt_newmessages' => 'ახალი შეტყობინებები',
 	'lqt_newmessages-title' => 'ახალი შეტყობინებები',
-	'lqt-newpost-summary' => '',
+	'lqt-newpost-summary' => 'ახალი თემა: $1',
 	'lqt-reply-summary' => 'პასუხი [[$2|$1]]-ზე',
 	'lqt-talkpage-history-title' => 'განხილვის გვერდის ისტორია',
 	'lqt-talkpage-history-subtitle' => '$1-სთვის',
+	'lqt-talkpage-history-tab' => 'თავი',
+	'restriction-reply' => 'პასუხების დადება',
+	'restriction-newthread' => 'ახალი ტოტების დადება',
+	'lqt-protected-reply-thread' => 'თქვენ არ შეგიძლიათ თემის დადება ამ ტოტში, ვინაიდან ის დაცულია ახალი თემებისაგან.',
+	'lqt-protected-reply-talkpage' => 'თქვენ არ შეგიძლიათ თემის დადება ამ ტოტში, ვინაიდან ეს განხილვის გვერდი დაცულია პასუხებისაგან მის ტოტში.',
+	'lqt-protected-newthread' => 'თქვენ არ შეგიძლიათ ახალი ტოტების დადება ამ განხილვის გვერდზე, ვინაიდან ის დაცულია ახალი ტოტებისაგან.',
+	'lqt-edit-bump-tooltip' => 'ამ ტოტის მისი განხილვის გვერდის თავში გადატანა',
 	'lqt-reply-subpage' => 'პასუხი',
 );
 
@@ -9828,6 +9878,14 @@ $messages['lt'] = array(
 	'lqt_delete' => 'Ištrinti',
 	'lqt-no-new-messages' => 'Jūs negavote naujų žinučių.',
 	'lqt_newmessages' => 'Naujos žinutės',
+);
+
+/** Latvian (Latviešu)
+ * @author GreenZeb
+ */
+$messages['lv'] = array(
+	'lqt-save-subject' => 'Saglabāt',
+	'lqt-cancel-subject-edit' => 'Atcelt',
 );
 
 /** Malagasy (Malagasy)
@@ -16132,6 +16190,7 @@ $messages['vo'] = array(
  * @author Huuchin
  */
 $messages['xal'] = array(
+	'lqt_youhavenewmessages' => 'Та [[$1|шин зәңгстә]] бәәнәт.',
 	'lqt_newmessages' => 'Шин зәңгс',
 );
 

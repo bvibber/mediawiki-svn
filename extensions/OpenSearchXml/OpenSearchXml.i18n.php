@@ -248,6 +248,13 @@ $messages['jv'] = array(
 	'opensearchxml-desc' => 'Antarmuka [http://www.opensearch.org OpenSearch] XML sing nyadiakaké èkstraksi tèks.',
 );
 
+/** Georgian (ქართული)
+ * @author BRUTE
+ */
+$messages['ka'] = array(
+	'opensearchxml-desc' => '[Http://www.opensearch.org OpenSearch] XML ინტერფეისი უზრუნველყოფს ტექსტის ამონაწერებს',
+);
+
 /** Korean (한국어)
  * @author Kwj2772
  */

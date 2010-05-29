@@ -473,8 +473,8 @@ See also [[MediaWiki:Lastmodifiedatby/{{SUBPAGENAME}}]].',
 Do '''not''' replace SITENAME with a translation of Wikipedia or some encycopedic additions. The message has to be neutral for all projects.",
 'pagetitle-view-mainpage' => '{{optional}}',
 'retrievedfrom'           => 'Message which appears in the source of every page, but it is hidden. It is shown when printing. $1 is a link back to the current page: {{FULLURL:{{FULLPAGENAME}}}}.',
-'youhavenewmessages'      => 'Pesan dengan pita warna oranye muncul saat seseorang menyunting halaman Pembicaraan_Pengguna anda.
-Formatnya adalah: "{{int:youhavenewmessages| [[MediaWiki:Newmessageslink/{{SUBPAGENAME}}|{{int:newmessageslink}}]] |[[MediaWiki:Newmessagesdifflink/{{SUBPAGENAME}}|{{int:newmessagesdifflink}}]]}}"',
+'youhavenewmessages'      => 'The orange message appearing when someone edited your user talk page.
+The format is: "{{int:youhavenewmessages| [[MediaWiki:Newmessageslink/{{SUBPAGENAME}}|{{int:newmessageslink}}]] |[[MediaWiki:Newmessagesdifflink/{{SUBPAGENAME}}|{{int:newmessagesdifflink}}]]}}"',
 'newmessageslink'         => 'Ini adalah pranala pertama yang tampak pada pita oranye saat pengguna mendapat pesan pada pembicaraan_penggunanya. Tampak pada pesan {{msg-mw|youhavenewmessages}} (sebagai parameter $1).
 
 {{Identical|New messages}}',
@@ -511,10 +511,14 @@ View or restore <nowiki>{{PLURAL:$1|one deleted edit|$1 deleted edits}}</nowiki>
 'feed-unavailable'        => 'This message is displayed when a user tries to use an RSS or Atom feed on a wiki where such feeds have been disabled.',
 'site-rss-feed'           => "Used in the HTML header of a wiki's RSS feed.
 $1 is <nowiki>{{SITENAME}}</nowiki>.
-HTML markup cannot be used.",
+HTML markup cannot be used.
+{{Identical|S1 RSS/Atom feed}}",
 'site-atom-feed'          => "Used in the HTML header of a wiki's Atom feed.
 $1 is <nowiki>{{SITENAME}}</nowiki>.
-HTML markup cannot be used.",
+HTML markup cannot be used.
+{{Identical|S1 RSS/Atom feed}}",
+'page-rss-feed'           => '{{Identical|S1 RSS/Atom feed}}',
+'page-atom-feed'          => '{{Identical|S1 RSS/Atom feed}}',
 'feed-atom'               => '{{optional}}',
 'feed-rss'                => '{{optional}}',
 'red-link-title'          => 'Title for red hyperlinks. Indicates, that the page is empty, not written yet.',
@@ -673,7 +677,10 @@ $1 is the minimum number of characters in the password.',
 * $3 is a password. Example: er##@fdas!
 * $4 is a URL. Example: http://wiki.example.com
 * $5 is a number of days in which the temporary password will expire',
-'noemail'                    => 'Shown as error message when trying to register a user sending password to e-mail adress and no e-mail address has been given. Registering users and sending a password to an e-mail address may require non-standard user rights. ([http://translatewiki.net/w/i.php?title=Special:UserLogin&action=submitlogin&type=signup Register user link])',
+'noemail'                    => 'Shown as error message when trying to register a user sending password to e-mail adress and no e-mail address has been given. Registering users and sending a password to an e-mail address may require non-standard user rights ([http://translatewiki.net/w/i.php?title=Special:UserLogin&action=submitlogin&type=signup register user link]).
+
+Parameters:
+* $1 is a user name. This parameter can be used with GENDER.',
 'eauthentsent'               => "This message appears after entering an e-mail address in [[Special:Preferences]] > {{int:prefs-personal}} > {{int:email}}, then clicking on '{{int:saveprefs}}'.",
 'acct_creation_throttle_hit' => 'Errormessage at [[Special:CreateAccount]].
 "in the last day" precisely means: during the lasts 86400 seconds (24 hours) ending right now.',
@@ -818,6 +825,8 @@ See also {{msg-mw|Noarticletext-nopermission}}.',
 'noarticletext-nopermission'       => 'See also {{msg-mw|Noarticletext}}.',
 'userpage-userdoesnotexist'        => 'Error message displayed when trying to edit or create a page or a subpage that belongs to a user who is not registered on the wiki',
 'userpage-userdoesnotexist-view'   => 'Shown in user pages of non existing users. See for example [http://translatewiki.net/wiki/User:Foo User:Foo].',
+'blocked-notice-logextract'        => 'Parameters:
+* $1 is the name of the blocked user (optional). Can be used for GENDER.',
 'clearyourcache'                   => 'Text at the top of .js/.css pages',
 'usercssyoucanpreview'             => "Text displayed on every css page. The 'Show preview' part should be the same as {{msg-mw|showpreview}} (or you can use <nowiki>{{int:showpreview}}</nowiki>).",
 'userjsyoucanpreview'              => "Text displayed on every js page. The 'Show preview' part should be the same as {{msg-mw|showpreview}} (or you can use <nowiki>{{int:showpreview}}</nowiki>).",
@@ -992,10 +1001,18 @@ This is the message for the log entry in [[Special:Log/delete]] when changing vi
 The parameter $1 is the log name in brackets.
 
 The name of the user who did this task appears before this message.',
-'revdelete-success'           => '{{RevisionDelete}}',
-'revdelete-failure'           => '{{RevisionDelete}}',
-'logdelete-success'           => '{{RevisionDelete}}',
-'logdelete-failure'           => '{{RevisionDelete}}',
+'revdelete-success'           => "{{RevisionDelete}}
+
+Possible alternative text - 'Restrictions on the revision visibility were successfully changed.'",
+'revdelete-failure'           => "{{RevisionDelete}}
+
+Possible alternative text - 'Restrictions on the revision visibility could not be changed'",
+'logdelete-success'           => "{{RevisionDelete}}
+
+Possible alternative message - 'Restrictions on log entry visibility successfully set.'",
+'logdelete-failure'           => "{{RevisionDelete}}
+
+Possible alternative message - 'Restrictions could not be set on the visibility of the log entry.'",
 'revdel-restore'              => '{{RevisionDelete}}',
 'pagehist'                    => 'Links to page history at Special:RevisionDelete header together with links to the logs and Special:Undelete.',
 'deletedhist'                 => 'Links to Special:Undelete at Special:RevisionDelete header together with links to the logs and page history.',
@@ -1818,7 +1835,7 @@ $1 is the name of the shared repository. On wikimedia sites, $1 is {{msg-mw|shar
 * $3 is a hour
 * $4 is an URL and must follow square bracket: [$4
 {{Identical|Revert}}',
-'filerevert-comment'        => '{{Identical|Comment}}',
+'filerevert-comment'        => '{{Identical|Reason}}',
 'filerevert-defaultcomment' => '* $1 is a date
 * $2 is an hour
 {{Identical|Revert}}',
@@ -2175,8 +2192,8 @@ Special:EmailUser appears when you click on the link "E-mail this user" in the s
 * $2: username of the recipient',
 
 # User Messenger
-'usermessage-summary' => 'Translate "leaving" in the sense of: to leave behind, to have remaining.',
-'usermessage-editor'  => 'The user that is the editor of system messages',
+'usermessage-summary' => 'This message is used as an edit summary for any message that is posted because of a system event. Translate "leaving a message" in the sense of: to give a message to someone; to deliver a message somewhere; to deposit.',
+'usermessage-editor'  => 'The user name for the user that is the editor of system messages.',
 
 # Watchlist
 'watchlist'            => '{{Identical|My watchlist}}',
@@ -2378,7 +2395,7 @@ This message was something like "unlock move protection" in the past.',
 'undeletereset'              => 'Shown on [[Special:Undelete]] as button caption.
 {{Identical|Reset}}',
 'undeleteinvert'             => '{{Identical|Invert selection}}',
-'undeletecomment'            => '{{Identical|Comment}}',
+'undeletecomment'            => '{{Identical|Reason}}',
 'undelete-search-submit'     => '{{Identical|Search}}',
 'undelete-show-file-confirm' => 'A confirmation message shown on Special:Undelete when the request does not contain a valid token (e.g. when a user clicks a link received in mail).
 * <code>$1</code> is the name of the file being undeleted.

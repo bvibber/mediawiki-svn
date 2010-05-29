@@ -175,6 +175,7 @@ $wgUpdates = array(
 
 		// 1.17
 		array( 'add_table', 'iwlinks',                           'patch-iwlinks.sql' ),
+		array( 'add_index', 'iwlinks', 'iwl_prefix_from_title',  'patch-rename-iwl_prefix.sql' ),
 	),
 
 	'sqlite' => array(
@@ -204,7 +205,8 @@ $wgUpdates = array(
 		array( 'sqlite_setup_searchindex' ),
 
 		// 1.17
-		array( 'add_table', 'iwlinks',                           'patch-iwlinks.sql' ), // @fixme so far untested on sqlite 2010-04-16
+		array( 'add_table', 'iwlinks',                           'patch-iwlinks.sql' ),
+		array( 'add_index', 'iwlinks', 'iwl_prefix_from_title',  'patch-rename-iwl_prefix.sql' ),
 	),
 );
 
@@ -312,6 +314,21 @@ function add_index( $table, $index, $patch, $fullpath = false ) {
 			$wgDatabase->sourceFile( archive( $patch ) );
 		}
 		wfOut( "ok\n" );
+	}
+}
+
+function drop_index_if_exists( $table, $index, $patch, $fullpath = false ) {
+	global $wgDatabase;
+	if ( $wgDatabase->indexExists( $table, $index ) ) {
+		wfOut( "Dropping $index from table $table... " );
+		if ( $fullpath ) {
+			$wgDatabase->sourceFile( $patch );
+		} else {
+			$wgDatabase->sourceFile( archive( $patch ) );
+		}
+		wfOut( "ok\n" );
+	} else {
+		wfOut( "...$index doesn't exist.\n" );
 	}
 }
 
@@ -1947,6 +1964,12 @@ function do_postgres_updates() {
 	}
 	else {
 		wfOut( "Adding ipb_address_unique index\n" );
+		$wgDatabase->sourceFile( archive( 'patch-ipb_address_unique.sql' ) );
+	}
+	
+	# Fix iwlinks index
+	if ( pg_index_exists( 'iwlinks', 'iwl_prefix' ) ) {
+		wfOut( "Replacing index 'iwl_prefix' with 'iwl_prefix_from_title'...\n" );
 		$wgDatabase->sourceFile( archive( 'patch-ipb_address_unique.sql' ) );
 	}
 

@@ -657,6 +657,7 @@ $messages['km'] = array(
  */
 $messages['kn'] = array(
 	'fundraiserportal' => 'ನಿಧಿ ಸಂಗ್ರಹ ದ್ವಾರ',
+	'fundraiserportal-desc' => 'ಸೈಡ್‍ಬಾರಿನ ಮೇಲ್ಭಾಗದಲ್ಲಿ "ದಯವಿಟ್ಟು ದಾನ ಮಾಡಿ " ಎಂದು ಸೇರಿಸು.',
 	'fundraiserportal-plain-button' => 'ವಿಕಿಪೀಡಿಯ ಬೆಂಬಲಿಸಿ!',
 	'fundraiserportal-ruby-button' => 'ಈಗಲೇ ದಾನ ಮಾಡಿ',
 	'fundraiserportal-rubytext-button' => 'ಈಗಲೇ ದಾನ ಮಾಡಿ',
@@ -1041,6 +1042,23 @@ $messages['tk'] = array(
 	'fundraiserportal-tourmaline-close' => 'Indiden beýläk görkezme',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'fundraiserportal' => 'Pintuan para sa Paglikom na Pampondo',
+	'fundraiserportal-desc' => 'Nagdaragdag ng isang pintuang pang-"mag-abuloy po sana" sa itaas ng panggilid na bareta.',
+	'fundraiserportal-plain-button' => 'Tangkilikin ang Wikipedia!',
+	'fundraiserportal-ruby-button' => 'Mag-abuloy na Ngayon',
+	'fundraiserportal-rubytext-button' => 'Mag-abuloy na Ngayon',
+	'fundraiserportal-rubytext-message' => 'Nakakatulong sa amin ang bawat abuloy upang mapanatiling malaya ang Wikipedia para sa lahat.',
+	'fundraiserportal-rubytext-close' => 'Itago ang mga ito mula ngayon',
+	'fundraiserportal-sapphire-button' => 'Mag-abuloy na Ngayon',
+	'fundraiserportal-tourmaline-button' => 'Mag-ambag na Ngayon',
+	'fundraiserportal-tourmaline-message' => 'Nakakatulong sa amin ang bawat abuloy upang mapanatiling malaya ang Wikipedia para sa lahat.',
+	'fundraiserportal-tourmaline-close' => 'Itago ito mula ngayon',
+);
+
 /** Turkish (Türkçe)
  * @author Joseph
  */
@@ -1125,6 +1143,7 @@ $messages['vi'] = array(
  * @author פוילישער
  */
 $messages['yi'] = array(
+	'fundraiserportal' => 'געלטשאַפֿערײַ פארטאַל',
 	'fundraiserportal-desc' => 'לייגט צו א "ביטע בײַשטײַערן" פארטאַל אין דער הייך פון זײַטפאַס',
 	'fundraiserportal-plain-button' => 'שטיצט וויקיפּעדיע!',
 	'fundraiserportal-ruby-button' => 'בײַשטײַערט אצינד',

@@ -454,6 +454,7 @@ $messages['br'] = array(
 	'grouppermissions-true' => 'Gwir',
 	'grouppermissions-false' => 'Gaou',
 	'grouppermissions-never' => 'Morse',
+	'grouppermissions-nooldrev' => "C'hoarvezet ez eus ur fazi e-ser klask diellaouiñ ar restr gefluniañ. Ne vo krouet diell ebet.",
 	'grouppermissions-sort-read' => 'O lenn',
 	'grouppermissions-sort-edit' => "Oc'h aozañ",
 	'grouppermissions-sort-manage' => 'Merañ',
@@ -466,6 +467,7 @@ $messages['br'] = array(
 	'grouppermissions-log-name' => 'Marilh aotreoù ar strollad',
 	'grouppermissions-log-header' => "Treseal a ra ar bajenn-mañ ar c'hemmoù aotreoù islinennet evit ar stolladoù implijerien.",
 	'grouppermissions-needjs' => "'''Kemennadenn :''' Diweredekaet eo JavaScript war ho merdeer. Posubl-tre eo ne zafe ket en-dro arc'hweladurioù 'zo !",
+	'grouppermissions-sp-header' => "Implijout ar bajenn-mañ a c'hallit evit merañ an doare da ziskwel an aotreoù hag evit ouzhpennañ aotreoù nevez. Kit dre un aotre da lenn an deskrivadur anezhañ.",
 	'grouppermissions-sp-sort' => 'Urzhiañ an aotreoù',
 	'grouppermissions-sp-save' => 'Enrollañ',
 	'grouppermissions-sp-success' => 'Urzhiet eo bet an aotreoù',
@@ -2105,9 +2107,11 @@ $messages['mn'] = array(
 );
 
 /** Maltese (Malti)
+ * @author Chrisportelli
  * @author Roderick Mallia
  */
 $messages['mt'] = array(
+	'grouppermissions-dosearch' => 'Mur',
 	'grouppermissions-comment' => 'Kumment:',
 );
 
@@ -3112,12 +3116,15 @@ $messages['te'] = array(
 	'grouppermissions-deletesuccess' => '$1ని విజయవంతంగా తొలగించాం',
 	'grouppermissions-true' => 'సత్యం',
 	'grouppermissions-false' => 'అసత్యం',
+	'grouppermissions-sort-manage' => 'నిర్వహణ',
+	'grouppermissions-sort-admin' => 'పరిపాలన',
 	'grouppermissions-sort-tech' => 'సాంకేతికం',
 	'grouppermissions-log-add' => '"$2" గుంపుని చేర్చారు',
 	'grouppermissions-log-change' => '"$2" గుంపు యొక్క అనుమతులని మార్చారు',
 	'grouppermissions-log-delete' => '"$2" గుంపుని తొలగించారు',
 	'grouppermissions-log-name' => 'గుంపు అనుమతుల చిట్టా',
 	'grouppermissions-log-header' => 'వాడుకరి గుంపుల యొక్క అనుమతులకి జరిగిన మార్పులను ఈ పేజీ గమనిస్తుంది.',
+	'grouppermissions-needjs' => "'''హెచ్చరిక:''' మీ విహారిణిలో జావాస్క్రిప్టు అచేతనమై ఉంది. కొన్ని సౌలభ్యాలు పనిచేయకపోవచ్చు!",
 	'grouppermissions-sp-save' => 'భద్రపరచు',
 	'grouppermissions-sp-remove' => 'తొలగించు',
 	'right-raw' => 'ముడి పేజీలను చూడగలడం',

@@ -10,19 +10,19 @@ $messages = array();
 $messages['en'] = array(
 	'stabilization-tab' => 'vet',
 	'stabilization' => 'Page stabilization',
-	'stabilization-text' => '\'\'\'Change the settings below to adjust how the published version of [[:$1|$1]] is selected and displayed.\'\'\'
+	'stabilization-text' => '\'\'\'Change the settings below to adjust how the accepted version of [[:$1|$1]] is selected and displayed.\'\'\'
 
-\'\'\'Note:\'\'\' changing the \'\'published version selection\'\' to prefer "quality" or "pristine" versions will have no effect if there are no such versions. Also, note that a "quality" version is also considered a "checked" version and so on.',
-	'stabilization-perm' => 'Your account does not have permission to change the published version configuration.
+\'\'\'Note:\'\'\' changing the \'\'accepted version selection\'\' to prefer "quality" or "pristine" versions will have no effect if there are no such versions. Also, note that a "quality" version is also considered a "checked" version and so on.',
+	'stabilization-perm' => 'Your account does not have permission to change the accepted version configuration.
 Here are the current settings for [[:$1|$1]]:',
 	'stabilization-page' => 'Page name:',
-	'stabilization-leg' => 'Confirm published version settings',
-	'stabilization-select' => 'Published version selection precedence',
+	'stabilization-leg' => 'Confirm accepted version settings',
+	'stabilization-select' => 'Accepted version selection precedence',
 	'stabilization-select1' => 'Latest quality revision; then latest sighted one',
 	'stabilization-select2' => 'Latest checked revision',
 	'stabilization-select3' => 'Latest pristine revision; then latest quality one; then latest sighted one',
 	'stabilization-def' => 'Revision displayed on default page view',
-	'stabilization-def1' => 'The published revision; if not present, then the current/draft one',
+	'stabilization-def1' => 'The accepted revision; if not present, then the current/draft one',
 	'stabilization-def2' => 'The current/draft revision',
 	'stabilization-restrict' => 'Review/auto-review restrictions',
 	'stabilization-restrict-none' => 'No extra restrictions',
@@ -41,7 +41,7 @@ No configuration is possible.',
 	'stabilization-sel-short-2' => 'Pristine',
 	'stabilization-def-short' => 'Default',
 	'stabilization-def-short-0' => 'Current',
-	'stabilization-def-short-1' => 'Published',
+	'stabilization-def-short-1' => 'Accepted',
     'stabilize_page_invalid'       => 'The target page title is invalid.',
     'stabilize_page_notexists'     => 'The target page does not exist.',
     'stabilize_page_unreviewable'  => 'The target page is not in reviewable namespace.',
@@ -70,7 +70,7 @@ No configuration is possible.',
 $messages['qqq'] = array(
 	'stabilization-tab' => '{{Flagged Revs-small}}
 
-Some skins (e.g. standard/classic) display an additional tab to control visibility of the page revisions, e.g. whether last revision should be included or perhaps the last sighted or published version.',
+Some skins (e.g. standard/classic) display an additional tab to control visibility of the page revisions, e.g. whether last revision should be included or perhaps the last sighted or accepted version.',
 	'stabilization' => '{{Flagged Revs-small}}
 Page title of Special:Stabilization.',
 	'stabilization-text' => '{{Flagged Revs-small}}
@@ -85,15 +85,15 @@ Used on Special:Stabilization when the user has not the permission to change the
 	'stabilization-leg' => '{{Flagged Revs}}',
 	'stabilization-select' => '{{Flagged Revs}}',
 	'stabilization-select1' => '{{Flagged Revs-small}}
-Used on Special:Stabilization as an option for "How the published version is selected".',
+Used on Special:Stabilization as an option for "How the accepted version is selected".',
 	'stabilization-select2' => '{{Flagged Revs-small}}
-Used on Special:Stabilization as an option for "How the published version is selected".',
+Used on Special:Stabilization as an option for "How the accepted version is selected".',
 	'stabilization-select3' => '{{Flagged Revs}}',
 	'stabilization-def' => '{{Flagged Revs}}',
 	'stabilization-def1' => '{{Flagged Revs-small}}
 Used on Special:Stabilization as an option for "Revision displayed on default page view".
 
-This option has sub-options, see "How the published version is selected".',
+This option has sub-options, see "How the accepted version is selected".',
 	'stabilization-def2' => '{{Flagged Revs-small}}
 Used on Special:Stabilization as an option for "Revision displayed on default page view".',
 	'stabilization-restrict' => '{{Flagged Revs}}
@@ -241,7 +241,7 @@ $messages['an'] = array(
 No ye posible confegurar-la.',
 	'stabilization-notcontent' => 'A pachina "[[:$1|$1]]" no se puede rebisar.
 No ye posible confegurar-la.',
-	'stabilization-comment' => 'Comentario:',
+	'stabilization-comment' => 'Razón:',
 	'stabilization-otherreason' => 'Atra razón:',
 	'stabilization-expiry' => 'Zircunduze:',
 	'stabilization-sel-short' => 'Prezendenzia',
@@ -551,7 +551,11 @@ $messages['bn'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
+	'stabilization-tab' => 'argas',
 	'stabilization' => 'Stabiladur ar bajenn',
+	'stabilization-text' => "'''Cheñch ar c'hefluniadur dindan da spisaat an doare ma vez diuzet ha diskwelet stumm embannet [[:\$1|\$1]].'''
+
+'''Notenn :''' pa vez cheñchet ''diuzadenn ar stumm embannet'' da gavout gwell stummoù \"perzhded\" pe \"deraouiñ\" ne vez tamm efed ebet ma n'eus ket eus ar stummoù-se. Notit ivez ervat e seller ouzh ur stumm \"perzhded\" evel ouzh stumm \"gwiriet\" ha kement zo.",
 	'stabilization-perm' => "N'eo ket aotreet ho kont da gemmañ arventennoù ar stumm embannet.
 Setu an arventennoù red eus [[:$1|$1]] :",
 	'stabilization-page' => 'Anv ar bajenn :',
@@ -559,6 +563,8 @@ Setu an arventennoù red eus [[:$1|$1]] :",
 	'stabilization-select' => 'kentwir diuzadur ar stumm embannet',
 	'stabilization-select1' => 'An adweladenn ziwezhañ a galite, mod all ar stumm bet gwelet da ziwezhañ',
 	'stabilization-select2' => 'An adweladenn ziwezhañ bet gwiriet',
+	'stabilization-select3' => "Stumm klok diwezhañ; ma n'ues ket, neuze an hini mat diwezhañ pe adlennet da ziwezhañ",
+	'stabilization-def' => 'Stumm diskwelet er mod diskwel dre ziouer',
 	'stabilization-def1' => 'Ar stumm embannet ma vez; a-hend-all lakaat ar stumm red pe ar brouilhed',
 	'stabilization-def2' => 'Ar stumm red pe ar brouilhed',
 	'stabilization-restrict' => 'Strishadurioù adlenn/adlenn emgefre',
@@ -579,8 +585,15 @@ N\'haller ket kefluniañ netra.',
 	'stabilization-def-short' => 'Dre ziouer',
 	'stabilization-def-short-0' => 'Red',
 	'stabilization-def-short-1' => 'Embannet',
+	'stabilize_page_invalid' => 'Fall eo titl ar bajenn buket.',
+	'stabilize_page_notexists' => "N'eus ket eus ar bajenn buket.",
+	'stabilize_page_unreviewable' => "N'emañ ket ar bajenn buket en un esaouenn anv a c'haller adwelet",
+	'stabilize_invalid_precedence' => 'Urzh ar stumm direizh',
+	'stabilize_invalid_autoreview' => 'Strishadur adlenn emgefre direizh',
+	'stabilize_invalid_level' => 'Live gwareziñ direizh.',
 	'stabilize_expiry_invalid' => 'Direizh eo an deiziad termen.',
 	'stabilize_expiry_old' => 'Tremenet eo dija an amzer termen-se.',
+	'stabilize_denied' => "Aotre nac'het.",
 	'stabilize-expiring' => "Termenet d'an $1 (UTC)",
 	'stabilization-review' => 'Merkañ ar stumm red evel adwelet.',
 );
@@ -758,7 +771,7 @@ Die aktuellen Einstellungen für „[[:$1|$1]]“ sind:',
 	'stabilize_page_unreviewable' => 'Die gewählte Seite befindet sich nicht in einem Namensraum, in dem Markierungen gesetzt werden können.',
 	'stabilize_invalid_precedence' => 'Ungültige Versionspriorität.',
 	'stabilize_invalid_autoreview' => 'Ungültige Einschränkung bezüglich automatischer Markierungen.',
-	'stabilize_invalid_level' => 'Ungültige Seitenschutzart',
+	'stabilize_invalid_level' => 'Ungültige Seitenschutzstufe.',
 	'stabilize_expiry_invalid' => 'Ungültiges Ablaufdatum.',
 	'stabilize_expiry_old' => 'Das Ablaufdatum wurde überschritten.',
 	'stabilize_denied' => 'Zugriff verweigert.',
@@ -857,8 +870,15 @@ $messages['dsb'] = array(
 	'stabilization-def-short' => 'Standard',
 	'stabilization-def-short-0' => 'Aktualny',
 	'stabilization-def-short-1' => 'Wózjawjony',
+	'stabilize_page_invalid' => 'Titel celowego boka jo njepłaśiwy.',
+	'stabilize_page_notexists' => 'Celowy bok njeeksistěrujo.',
+	'stabilize_page_unreviewable' => 'Celowy bok njejo w pśeglědujobnem mjenjowem rumje.',
+	'stabilize_invalid_precedence' => 'Njepłaśiwa wersijowa priorita.',
+	'stabilize_invalid_autoreview' => 'Njepłaśiwe wobgranicowanje awtomatiskich pśeglědanjow.',
+	'stabilize_invalid_level' => 'Njepłaśiwy šćitowy schojźeńk.',
 	'stabilize_expiry_invalid' => 'Njpłaśiwy datum pśepadnjenja.',
 	'stabilize_expiry_old' => 'Toś ten cas pśepadnjenja jo se južo minuł.',
+	'stabilize_denied' => 'Pšawo wótpokazane.',
 	'stabilize-expiring' => 'pśepadnjo $1 (UTC)',
 	'stabilization-review' => 'Aktualnu wersiju ako pśekontrolěrowanu markěrowaś',
 );
@@ -1213,6 +1233,7 @@ Voici les paramètres actuels de [[:$1|$1]] :",
 	'stabilize_invalid_level' => 'Niveau de protection invalide.',
 	'stabilize_expiry_invalid' => "Date d'expiration invalide.",
 	'stabilize_expiry_old' => "Cette durée d'expiration est déjà écoulée.",
+	'stabilize_denied' => 'Permission refusée.',
 	'stabilize-expiring' => 'Expire le $1 (UTC)',
 	'stabilization-review' => 'Marquer la version actuelle comme vérifiée',
 );
@@ -1391,8 +1412,15 @@ Di aktuällen Yystellige fir „[[:$1|$1]]“ sin:',
 	'stabilization-def-short' => 'Standard',
 	'stabilization-def-short-0' => 'Aktuäll',
 	'stabilization-def-short-1' => 'Vereffetligt',
+	'stabilize_page_invalid' => 'Dää Sytename isch nit giltig.',
+	'stabilize_page_notexists' => 'Die gwehlt Syte git s nit.',
+	'stabilize_page_unreviewable' => 'Die gwehlt Syte git snit in eme Namensruum, wu Markierige chenne gsetzt wäre.',
+	'stabilize_invalid_precedence' => 'Nit giltigi Versionsprioritet.',
+	'stabilize_invalid_autoreview' => 'Nit giltigi Yyschränkig vu dr automatische Markierig.',
+	'stabilize_invalid_level' => 'Nit giltigi Syteschitzstapfle.',
 	'stabilize_expiry_invalid' => 'Nid giltigs Ablaufdatum.',
 	'stabilize_expiry_old' => 'S Ablaufdatum isch iberschritte wore.',
+	'stabilize_denied' => 'Zuegriff verweigeret.',
 	'stabilize-expiring' => 'erlischt $1 (UTC)',
 	'stabilization-review' => 'Di aktuäll Version as aagluegt markiere',
 );
@@ -1687,6 +1715,7 @@ Nulle configuration es possibile.',
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
  * @author Irwangatot
+ * @author Kenrick95
  * @author Rex
  */
 $messages['id'] = array(
@@ -1726,6 +1755,7 @@ Konfigurasi tak dapat diterapkan.',
 	'stabilization-def-short-1' => 'Stabil',
 	'stabilize_expiry_invalid' => 'Tanggal kadaluwarsa tak valid.',
 	'stabilize_expiry_old' => 'Tanggal kadaluwarsa telah terlewati.',
+	'stabilize_denied' => 'Hak ases ditolak',
 	'stabilize-expiring' => 'kadaluwarsa $1 (UTC)',
 	'stabilization-review' => 'Tinjau versi sekarang',
 );
@@ -1918,6 +1948,7 @@ $messages['ka'] = array(
 	'stabilize_expiry_invalid' => 'ვადის გასვლის არასწორი თარიღი.',
 	'stabilize_expiry_old' => 'მოქმედების ვადა გავიდა.',
 	'stabilize-expiring' => 'ვადა გასდის: $1 (UTC)',
+	'stabilization-review' => 'მონიშნეთ ამჟამინდელი ცვლილება შემოწმებულად',
 );
 
 /** Kazakh (Arabic script) (‫قازاقشا (تٴوتە)‬) */
@@ -2035,8 +2066,10 @@ $messages['kn'] = array(
  */
 $messages['ko'] = array(
 	'stabilization-tab' => '검토',
-	'stabilization' => '문서 안정화',
-	'stabilization-text' => "'''[[:$1]] 문서의 어떤 버전이 선택되어 안정 버전으로 보이게 할 것인지에 대한 설정을 바꾸시려면 아래 양식을 이용해주세요.'''",
+	'stabilization' => '문서 배포 설정',
+	'stabilization-text' => "'''[[:\$1|\$1]] 문서의 배포판을 어떻게 선택되어 보여질 지에 대한 설정을 아래 양식을 통해 바꿀 수 있습니다.'''
+
+'''참고:''' ''배포판 선택''을 \"고품질판\"이나 \"깨끗한 판\"으로 바꾸는 것은 그런 판이 없다면 아무런 효과가 없습니다. 그리고 \"고품질판\"이나 \"깨끗한 판\" 역시 \"검토된 판\"으로 간주됩니다.",
 	'stabilization-perm' => '당신의 계정은 게시 설정 변경을 할 수 있는 권한이 없습니다.
 [[:$1|$1]]에 현재 설정이 있습니다',
 	'stabilization-page' => '문서 이름:',
@@ -2167,8 +2200,12 @@ Et ass keng Konfiguratioun méiglech.',
 	'stabilization-def-short' => 'Standard',
 	'stabilization-def-short-0' => 'Aktuell',
 	'stabilization-def-short-1' => 'Publizéiert',
+	'stabilize_page_invalid' => 'Den Titel vun der Zilsäit ass net valabel.',
+	'stabilize_page_notexists' => "D'Zilsäit gëtt et net",
+	'stabilize_page_unreviewable' => "D'Zilsäit ass net an engem Nummraum wou Säite kënnen nogekuckt ginn.",
 	'stabilize_expiry_invalid' => 'Net valabele Schlussdatum',
 	'stabilize_expiry_old' => 'Den Oflafdatum ass schonn eriwwer.',
+	'stabilize_denied' => 'Erlaabnes refuséiert',
 	'stabilize-expiring' => 'bis $1 (UTC)',
 	'stabilization-review' => 'Déi aktuell Versioun als nogekuckt markéieren',
 );
@@ -3539,7 +3576,7 @@ Narito ang pangkasalukuyang mga katakdaan para sa [[:$1|$1]]:',
 	'stabilization-def' => 'Ang pagbabagong ipinakita sa natatanaw na likas na nakatakdang pahina',
 	'stabilization-def1' => 'Ang matatag na pagbabago, kung, ang pangkasalukuyang isa na lamang',
 	'stabilization-def2' => 'Ang pangkasalukuyang pagbabago',
-	'stabilization-restrict' => 'Mga hangganan ng kusang pagsusuri',
+	'stabilization-restrict' => 'Mga hangganan ng pagsusuri/kusang pagsusuri',
 	'stabilization-restrict-none' => 'Walang karagdagang mga hangganan',
 	'stabilization-submit' => 'Tiyakin',
 	'stabilization-notexists' => 'Walang pahinang tinatawag na "[[:$1|$1]]".
@@ -3547,16 +3584,16 @@ Walang maaaring maging pagkakaayos (konpigurasyon).',
 	'stabilization-notcontent' => 'Hindi masusuri ang "[[:$1|$1]]".
 Walang maaaring maging pagkakaayos (konpigurasyon).',
 	'stabilization-comment' => 'Dahilan:',
-	'stabilization-otherreason' => 'Ibang dahilan',
+	'stabilization-otherreason' => 'Ibang dahilan:',
 	'stabilization-expiry' => 'Magtatapos sa:',
-	'stabilization-othertime' => 'Ibang oras',
+	'stabilization-othertime' => 'Ibang oras:',
 	'stabilization-sel-short' => 'Pagkakauna-una (pagkakasunud-sunod)',
 	'stabilization-sel-short-0' => 'Kaantasan ng uri (kalidad)',
 	'stabilization-sel-short-1' => 'Wala',
 	'stabilization-sel-short-2' => 'Dalisay (malinis)',
 	'stabilization-def-short' => 'Likas na nakatakda',
 	'stabilization-def-short-0' => 'Pangkasalukuyan',
-	'stabilization-def-short-1' => 'Matatag',
+	'stabilization-def-short-1' => 'Nalathala na',
 	'stabilize_expiry_invalid' => 'Hindi tanggap na petsa ng pagtatapos.',
 	'stabilize_expiry_old' => 'Lagpas na ang oras/panahon ng pagtatapos na ito.',
 	'stabilize-expiring' => 'magtatapos sa $1 (UTC)',
@@ -3761,6 +3798,7 @@ Ei voi järgeta.',
 
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
+ * @author Trần Nguyễn Minh Huy
  * @author Vinhtantran
  */
 $messages['vi'] = array(
@@ -3800,8 +3838,12 @@ Không thể cấu hình.',
 	'stabilization-def-short' => 'Mặc định',
 	'stabilization-def-short-0' => 'Hiện hành',
 	'stabilization-def-short-1' => 'Ổn định',
+	'stabilize_page_invalid' => 'Tên trang đích không hợp lệ',
+	'stabilize_page_notexists' => 'Trang đích không tồn tại',
+	'stabilize_invalid_level' => 'Mức độ bảo vệ không hợp lệ.',
 	'stabilize_expiry_invalid' => 'Thời hạn không hợp lệ.',
 	'stabilize_expiry_old' => 'Thời hạn đã qua.',
+	'stabilize_denied' => 'Không cho phép.',
 	'stabilize-expiring' => 'hết hạn vào $1 (UTC)',
 	'stabilization-review' => 'Duyệt phiên bản hiện hành',
 );

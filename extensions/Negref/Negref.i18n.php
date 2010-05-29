@@ -248,6 +248,13 @@ $messages['sk'] = array(
 	'negref-desc' => 'Poskytuje značku na vyjednanie umiestnenia akýchkoľvek značiek <nowiki><ref/></nowiki> v zadávanom texte na opravu niektorých prípadov použitia šablón.',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'negref-desc' => 'Nagbibigay ng isang tatak upang mapag-usapan ang lokasyon ng anumang mga tatak na <nowiki><ref/></nowiki> sa loob ng ipinasok na teksto upang maayos ang ilang mga kaso ng paggamit ng suleras',
+);
+
 /** Turkish (Türkçe)
  * @author Vito Genovese
  */

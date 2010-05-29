@@ -2266,6 +2266,7 @@ $messages['tk'] = array(
  * @author AnakngAraw
  */
 $messages['tl'] = array(
+	'readerfeedback-desc' => 'Ang pahina ng pagpapatunay ay nagbibigay-daan para sa mga mambabasa na magbigay ng balik-hain sa anyo ng mga pag-aantas na pangkategorya',
 	'readerfeedback' => 'Ano ba ang tingin mo sa pahinang ito?',
 	'readerfeedback-text' => "''Magbigay lamang po sana ng panahon upang makapagbigay sa ibaba ng kaantasan para sa pahinang ito.  Mahalaga ang iyong pagbibigay ng puna at nakatutulong sa amin upang lalo pang mapainam ang websayt namin.''",
 	'readerfeedback-reliability' => 'Antas na pagiging katiwatiwala',
@@ -2281,11 +2282,19 @@ $messages['tl'] = array(
 	'readerfeedback-level-4' => 'Mahusay',
 	'readerfeedback-submit' => 'Ipasa',
 	'readerfeedback-main' => 'Tanging mga pahina ng nilalaman lamang ang mabibigyan ng kaantasan.',
-	'readerfeedback-success' => "'''Salamat sa muling pagsuri ng pahinang ito!''' ([$3 Mga puna o mga katanungan?]).",
-	'readerfeedback-voted' => "'''Tila parang nabigyan mo na ng antas ang pahinang ito''' ([$3 Mga puna o mga katanungan?]).",
+	'readerfeedback-success' => "'''Salamat sa muling pagsuri mo ng pahinang ito!''' ([$2 tingnan ang mga kinalabasan])  ([$3 mga puna o mga katanungan?]).",
+	'readerfeedback-voted' => "'''Tila parang nabigyan mo na ng antas ang pahinang ito''' ([$2 tingnan ang mga kinalabasan]) ([$3 mga puna o mga katanungan?]).",
+	'readerfeedback-error' => "'''Naganap ang isang kamalian habang binibigyan ng antas ang pahinang ito''' ([$2 tingnan ang mga resulta]) ([$3 mga puna o mga tanong?]).",
 	'readerfeedback-submitting' => 'Ipinapasa na...',
 	'readerfeedback-finished' => 'Salamat sa iyo!',
+	'readerfeedback-tagfilter' => 'Tatak:',
+	'readerfeedback-tierfilter' => 'Kaantasan:',
+	'readerfeedback-tier-high' => 'Mataas',
+	'readerfeedback-tier-medium' => 'Katamtaman',
+	'readerfeedback-tier-poor' => 'Mahina',
 	'tooltip-ca-ratinghist' => 'Mga pagsusukat ng mambabasa para sa pahinang ito',
+	'specialpages-group-feedback' => 'Wari ng tumatanaw',
+	'readerfeedback-tt-review' => 'Ipasa ang pagsusuri',
 );
 
 /** Turkish (Türkçe)

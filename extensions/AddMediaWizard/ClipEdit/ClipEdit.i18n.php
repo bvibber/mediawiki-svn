@@ -617,7 +617,16 @@ $messages['id'] = array(
 	'mwe-clipedit-duration' => 'Durasi:',
 );
 
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'mwe-clipedit-crop' => 'Cháfù nnunuuche',
+	'mwe-clipedit-layout' => 'Mgbásà',
+);
+
 /** Japanese (日本語)
+ * @author Fryed-peach
  * @author 青子守歌
  */
 $messages['ja'] = array(
@@ -646,6 +655,9 @@ $messages['ja'] = array(
 	'mwe-clipedit-inline-description' => 'キャプション',
 	'mwe-clipedit-edit-video-tools' => '動画編集ツール:',
 	'mwe-clipedit-duration' => '時間:',
+	'mwe-clipedit-layout' => 'レイアウト',
+	'mwe-clipedit-layout_right' => '右側の画像の配置',
+	'mwe-clipedit-layout_left' => '左側の画像の配置',
 );
 
 /** Georgian (ქართული) */
@@ -1000,6 +1012,40 @@ $messages['sk'] = array(
 	'mwe-clipedit-start_time' => 'Čas začiatku',
 	'mwe-clipedit-end_time' => 'Čas konca',
 	'mwe-clipedit-preview_inout' => 'Náhľad/prehranie bodov priblíženia/vzdialenia',
+);
+
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Charmed94
+ */
+$messages['sr-ec'] = array(
+	'mwe-clipedit-crop' => 'Исеци слику',
+	'mwe-clipedit-apply_crop' => 'Примени исецање слике',
+	'mwe-clipedit-reset_crop' => 'Поништи исецање',
+	'mwe-clipedit-insert_image_page' => 'Убаци у страницу',
+	'mwe-clipedit-insert_into_sequence' => 'Убаци у низ',
+	'mwe-clipedit-preview_insert' => 'Претпреглед уметка',
+	'mwe-clipedit-cancel_image_insert' => 'Поништи уметак',
+	'mwe-clipedit-sc_attributes' => 'Уреди податке снимка',
+	'mwe-clipedit-sc_inoutpoints' => 'Постави у-ван тачке',
+	'mwe-clipedit-sc_overlays' => 'Преклапања',
+	'mwe-clipedit-sc_audio' => 'Аудио контрола',
+	'mwe-clipedit-sc_duration' => 'Трајање',
+	'mwe-clipedit-template_properties' => 'Својства шаблона',
+	'mwe-clipedit-custom_title' => 'Прилагођени наслов',
+	'mwe-clipedit-edit_properties' => 'Измени својства',
+	'mwe-clipedit-other_properties' => 'Остала својства',
+	'mwe-clipedit-resource_page' => 'Изворна страница:',
+	'mwe-clipedit-set_in_out_points' => 'Постави у-ван тачке',
+	'mwe-clipedit-start_time' => 'Почетно време',
+	'mwe-clipedit-end_time' => 'Завршно време',
+	'mwe-clipedit-preview_inout' => 'Прегледај у-ван тачке',
+	'mwe-clipedit-edit-tools' => 'Уреди алатке',
+	'mwe-clipedit-inline-description' => 'Наслов',
+	'mwe-clipedit-edit-video-tools' => 'Уреди видео алатке:',
+	'mwe-clipedit-duration' => 'Трајање:',
+	'mwe-clipedit-layout' => 'Изглед',
+	'mwe-clipedit-layout_right' => 'Изглед с десне стране слике',
+	'mwe-clipedit-layout_left' => 'Изглед с леве стране слике',
 );
 
 /** Swedish (Svenska)

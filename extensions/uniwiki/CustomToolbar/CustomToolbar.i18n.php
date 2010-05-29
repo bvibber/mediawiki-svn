@@ -1778,6 +1778,13 @@ $wgCustomToolbarMessages['mk'] = array(
 	'ct_user_sample' => 'Корисничко име',
 );
 
+/** Maltese (Malti)
+ * @author Chrisportelli
+ */
+$wgCustomToolbarMessages['mt'] = array(
+	'ct_submit' => 'Mur!',
+);
+
 /** Erzya (Эрзянь)
  * @author Botuzhaleny-sodamo
  */

@@ -266,11 +266,13 @@ $messages['bn'] = array(
  */
 $messages['br'] = array(
 	'patrol' => "Gwiriekadur ar c'hemmoù",
+	'patrol-desc' => 'Etrefas patrouilhañ gwellaet evit rannañ ar garg labour',
 	'patrol-endorse' => 'Aprouiñ',
 	'patrol-revert' => 'Assevel',
 	'patrol-revert-reason' => 'Abeg :',
 	'patrol-skip' => 'Lezel a-gostez',
 	'patrol-reverting' => 'O tisteuler : $1',
+	'patrol-nonefound' => "N'eus bet kavet degasadenn genglotus ebet da wiriañ.",
 	'patrol-endorsed-ok' => "Merket eo bet ar c'hemm evel gwiriekaet.",
 	'patrol-endorsed-failed' => "N'eo ket bet merket an embann evel gwiriekaet.",
 	'patrol-reverted-ok' => "Distaolet eo bet ar c'hemm-se.",
@@ -280,6 +282,7 @@ $messages['br'] = array(
 * Taol esae un den nevez
 * Gwelet ar bajenn gaozeal',
 	'patrol-another' => "Diskouez ur c'hemm all, ma 'z eo posupl.",
+	'patrol-stopped' => "Dibabet hoc'h eus chom hep gwiriañ degasadenn ebet all. $1",
 	'patrol-resume' => "Klikit amañ evit kenderc'hel.",
 	'group-patroller' => 'Patrouilherien',
 	'group-patroller-member' => 'patrouilher',
@@ -521,7 +524,7 @@ $messages['es'] = array(
 	'patrol-stopped' => 'Has optado no marcar otra edición como verificada. $1',
 	'patrol-resume' => 'Haz click aquí para continuar.',
 	'group-patroller' => 'Patrulleros',
-	'group-patroller-member' => 'verificador',
+	'group-patroller-member' => 'patrulleros',
 	'grouppage-patroller' => '{{ns:project}}:Verificador',
 	'right-patroller' => 'Verificar páginas',
 );
@@ -1113,6 +1116,13 @@ $messages['lb'] = array(
 $messages['lmo'] = array(
 	'patrol-resume' => 'Fà click chì-inscì-chì per tacà ancamò.',
 	'group-patroller' => 'Gent de rónda',
+);
+
+/** Lithuanian (Lietuvių)
+ * @author Hugo.arg
+ */
+$messages['lt'] = array(
+	'group-patroller' => 'Patruliai',
 );
 
 /** Malagasy (Malagasy)
@@ -1930,6 +1940,14 @@ $messages['tr'] = array(
  */
 $messages['tt-cyrl'] = array(
 	'group-patroller-member' => 'тикшерүче',
+);
+
+/** ئۇيغۇرچە (ئۇيغۇرچە)
+ * @author Sahran
+ */
+$messages['ug-arab'] = array(
+	'group-patroller' => 'چارلىغۇچىلار',
+	'group-patroller-member' => 'چارلىغۇچى',
 );
 
 /** Ukrainian (Українська)

@@ -9647,7 +9647,7 @@ $messages['id'] = array(
 	'configure-setting-wgMaxArticleSize' => 'Ukuran halaman maksimum (kB)',
 	'configure-setting-wgMaxRedirects' => 'Jumlah maksimum pengalihan yang diikuti sewaktu menyelesaikan pengalihan',
 	'configure-setting-wgNoFollowLinks' => 'Tambahkan rel="nofollow" pada pranala',
-	'configure-setting-wgNoFollowDomainExceptions' => 'Pranala luar ke nama domain ini (atau subdomain apapun) tidak akan memiliki atribut rel="nofollow"',
+	'configure-setting-wgNoFollowDomainExceptions' => 'Pranala luar ke nama domain ini (atau subdomain apa pun) tidak akan memiliki atribut rel="nofollow"',
 	'configure-setting-wgPageShowWatchingUsers' => 'Tampilkan pengguna yang memantau suatu halaman',
 	'configure-setting-wgRestrictionLevels' => 'Tingkat restriksi yang dapat dipilih',
 	'configure-setting-wgSiteNotice' => 'Pengumuman Situs',

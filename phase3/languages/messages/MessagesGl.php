@@ -1053,6 +1053,8 @@ $1",
 'logdelete-failure'           => "'''A visibilidade do rexistro non pode ser fixada:'''
 $1",
 'revdel-restore'              => 'Cambiar a visibilidade',
+'revdel-restore-deleted'      => 'revisións borradas',
+'revdel-restore-visible'      => 'revisións visibles',
 'pagehist'                    => 'Historial da páxina',
 'deletedhist'                 => 'Historial de borrado',
 'revdelete-content'           => 'contido',
@@ -1596,7 +1598,8 @@ Se dispón dunha versión desta imaxe de maior resolución, se non, múdelle o n
 'fileexists-forbidden'        => 'Xa existe un ficheiro co mesmo nome e este non pode ser sobrescrito.
 Se aínda quere cargar o seu ficheiro, por favor, retroceda e use un novo nome. [[File:$1|thumb|center|$1]]',
 'fileexists-shared-forbidden' => 'Xa existe un ficheiro con este nome no repositorio de ficheiros compartidos.
-Se aínda quere cargar o seu ficheiro, por favor, volte atrás e use outro nome. [[File:$1|thumb|center|$1]]',
+Se aínda quere cargar o seu ficheiro, volva atrás e use outro nome.
+[[File:$1|thumb|center|$1]]',
 'file-exists-duplicate'       => 'Este ficheiro é un duplicado {{PLURAL:$1|do seguinte|dos seguintes}}:',
 'file-deleted-duplicate'      => 'Un ficheiro idéntico a este ("[[$1]]") foi borrado previamente. Debería comprobar o historial de borrados do ficheiro antes de proceder a cargalo de novo.',
 'successfulupload'            => 'A carga realizouse correctamente',
@@ -1759,7 +1762,7 @@ A descrición da [$2 páxina de descrición do ficheiro] móstrase a continuaci�
 'filerevert'                => 'Desfacer $1',
 'filerevert-legend'         => 'Reverter o ficheiro',
 'filerevert-intro'          => 'Está revertendo "\'\'\'[[Media:$1|$1]]\'\'\'", vai volver á versión [$4 de $2, ás $3].',
-'filerevert-comment'        => 'Comentario:',
+'filerevert-comment'        => 'Motivo:',
 'filerevert-defaultcomment' => 'Volveuse á versión do $1 ás $2',
 'filerevert-submit'         => 'Reverter',
 'filerevert-success'        => 'Reverteuse "\'\'\'[[Media:$1|$1]]\'\'\'" á versión [$4 de $2, ás $3].',
@@ -2265,7 +2268,7 @@ O texto destas revisións eliminadas só está á disposición dos administrador
 'undeleteviewlink'             => 'ver',
 'undeletereset'                => 'Limpar',
 'undeleteinvert'               => 'Inverter a selección',
-'undeletecomment'              => 'Razón para desprotexer:',
+'undeletecomment'              => 'Motivo:',
 'undeletedarticle'             => 'restaurou "[[$1]]"',
 'undeletedrevisions'           => '$1 {{PLURAL:$1|revisión restaurada|revisións restauradas}}',
 'undeletedrevisions-files'     => '$1 {{PLURAL:$1|revisión|revisións}} e $2 {{PLURAL:$2|ficheiro restaurado|ficheiros restaurados}}',

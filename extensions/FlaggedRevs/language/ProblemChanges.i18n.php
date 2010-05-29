@@ -584,6 +584,16 @@ $messages['sl'] = array(
 	'problemchanges-category' => 'Kategorija:',
 );
 
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Charmed94
+ */
+$messages['sr-ec'] = array(
+	'problemchanges' => 'Означене измене на чекању',
+	'problemchanges-legend' => 'Прелистај странице на чекању с означеним изменама за преглед',
+	'problemchanges-none' => 'Тренутно нема страница које испуњавају овај критеријум',
+	'problemchanges-category' => 'Категорија:',
+);
+
 /** Sundanese (Basa Sunda)
  * @author Irwangatot
  */
@@ -620,6 +630,16 @@ $messages['tk'] = array(
 	'problemchanges-legend' => 'Tegli özgerdişleri gözden geçirmeklige garaşýan sahypalary sanawla',
 	'problemchanges-none' => 'Häzirki wagtda hiç bir sahypa bu şertlere gabat gelmeýär',
 	'problemchanges-category' => 'Kategoriýa:',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'problemchanges' => 'Tinatakang mga pagbabagong naghihintay',
+	'problemchanges-legend' => 'Itala ang mga pahinang may tinatakang mga pagbabago na naghihintay ng pagsusuri',
+	'problemchanges-none' => 'Kasalukuyang walang mga pahinang ummabot sa ganitong mga kategorya',
+	'problemchanges-category' => 'Kaurian:',
 );
 
 /** Turkish (Türkçe)

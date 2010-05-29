@@ -234,6 +234,13 @@ Saioa hasi baduzu, mezu hau kendu dezakezu zure hobespenen orrialdeko "{{int:pre
 	'vector-editwarning-preference' => 'Abisa nazazu gorde gabeko aldaketak eginez orrialde bat uzten dudanean',
 );
 
+/** Persian (فارسی)
+ * @author Ebraminio
+ */
+$messages['fa'] = array(
+	'vector-editwarning-preference' => 'زمان خروج از صفحه در صورت داشتن ویرایش‌های‌ ذخیره‌نشده به من هشدار بده',
+);
+
 /** Finnish (Suomi)
  * @author Crt
  * @author Str4nd
@@ -644,6 +651,15 @@ $messages['th'] = array(
 	'vector-editwarning-warning' => 'การออาจากหน้านี้อาจจะทำให้ความเปลี่ยนแปลงที่คุณกระทำสูญหาย
 ถ้าคุณลงชื่อเข้าใช้แล้ว คุณสามารถยกเลิกคำเตือนนี้ได้ที่หน้าตั้งค่าของคุณในส่วนของ "{{int:prefs-editing}}"',
 	'vector-editwarning-preference' => 'เตือนฉัน เมื่อฉันกำลังจะออกจากหน้าแก้ไขโดยมีข้อมูลที่ยังไม่ได้บันทึก',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'vector-editwarning-warning' => 'Ang paglisan mula sa pahinang ito ay maaaring makasanhi sa iyo ng pagkawala ng anumang mga pagbabagong ginawa mo.
+Kung nakalagda ka, maaari mong huwag paganahin ang babalang ito sa loob ng seksyong "{{int:prefs-editing}}" ng mga nais mo.',
+	'vector-editwarning-preference' => 'Magbabala sa akin kapag umalis ako sa isang pahina ng pampatnugot na hindi pa nasasagip ang mga pagbabago',
 );
 
 /** Turkish (Türkçe)

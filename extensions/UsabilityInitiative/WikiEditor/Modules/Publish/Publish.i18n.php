@@ -383,6 +383,16 @@ $messages['eu'] = array(
 	'wikieditor-publish-dialog-goback' => 'Atzera joan',
 );
 
+/** Persian (فارسی)
+ * @author Ebraminio
+ */
+$messages['fa'] = array(
+	'wikieditor-publish-button-publish' => 'انتشار',
+	'wikieditor-publish-button-cancel' => 'انصراف',
+	'wikieditor-publish-dialog-minor' => 'ویرایش جزئی',
+	'wikieditor-publish-dialog-goback' => 'بازگشت به عقب',
+);
+
 /** Finnish (Suomi)
  * @author Crt
  * @author Str4nd
@@ -1043,6 +1053,21 @@ $messages['tk'] = array(
 	'wikieditor-publish-dialog-watch' => 'Sahypany gözegçilige al',
 	'wikieditor-publish-dialog-publish' => 'Neşir et',
 	'wikieditor-publish-dialog-goback' => 'Yza gaýt',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'wikieditor-publish-preference' => 'Paganahin ang hakbang-hakbang na paglalathala',
+	'wikieditor-publish-button-publish' => 'Ilathala',
+	'wikieditor-publish-button-cancel' => 'Huwag ituloy',
+	'wikieditor-publish-dialog-title' => 'Ilathala sa {{SITENAME}}',
+	'wikieditor-publish-dialog-summary' => 'Buod ng pagbabago (maikling ilarawan ang mga pagbabagong ginawa mo):',
+	'wikieditor-publish-dialog-minor' => 'Maliit na pagbabago',
+	'wikieditor-publish-dialog-watch' => 'Bantayan ang pahinang ito',
+	'wikieditor-publish-dialog-publish' => 'Ilathala',
+	'wikieditor-publish-dialog-goback' => 'Bumalik',
 );
 
 /** Turkish (Türkçe)

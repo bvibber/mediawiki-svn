@@ -154,6 +154,14 @@ $messages['ca'] = array(
 	'abcdownload' => 'Descarrega:',
 );
 
+/** Chechen (Нохчийн)
+ * @author Sasan700
+ */
+$messages['ce'] = array(
+	'abc-desc' => 'Тlетуха къастам <code>&lt;abc&gt;</code> оц эшарна барамхlоттор ABC',
+	'abcdownload' => 'Чуйаккха:',
+);
+
 /** Czech (Česky)
  * @author Mormegil
  * @author Reaperman

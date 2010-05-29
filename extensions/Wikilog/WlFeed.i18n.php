@@ -275,6 +275,13 @@ $messages['sv'] = array(
 	'wlfeed-desc' => 'Utökade feed-skapningsklasser',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'wlfeed-desc' => 'Pinainam na mga klase ng paglikha ng pakain',
+);
+
 /** Turkish (Türkçe)
  * @author Vito Genovese
  */

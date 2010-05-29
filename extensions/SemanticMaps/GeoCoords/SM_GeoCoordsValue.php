@@ -47,7 +47,7 @@ class SMGeoCoordsValue extends SMWDataValue {
 
 		// Only add the table when the SQL store is not a postgres database, and it has not been added by SMW itself.
 		if ( $smgUseSpatialExtensions && !array_key_exists( 'c', $fieldTypes ) ) {
-			$fieldTypes['c'] = 'Point';
+			$fieldTypes['c'] = 'Point NOT NULL';
 		}
 		
 		return true;
@@ -63,11 +63,12 @@ class SMGeoCoordsValue extends SMWDataValue {
 		
 		// No spatial extensions support for postgres yet, so just store as 2 float fields.
 		$signature = $smgUseSpatialExtensions ? array( 'point' => 'c' ) : array( 'lat' => 'f', 'lon' => 'f' );
+		$indexes = $smgUseSpatialExtensions ? array( array( 'point', 'SPATIAL INDEX' ) ) : array_keys( $signature );
 		
 		$propertyTables['smw_coords'] = new SMWSQLStore2Table(
 			'sm_coords',
 			$signature,
-			array_keys( $signature ) // These are the fields that should be indexed.
+			$indexes // These are the fields that should be indexed.
 		);
 		
 		return true;
@@ -157,11 +158,12 @@ class SMGeoCoordsValue extends SMWDataValue {
 		global $smgUseSpatialExtensions, $smgQPCoodFormat, $smgQPCoodDirectional;
 		
 		if ( $smgUseSpatialExtensions ) {
-			// TODO
+			//die(__METHOD__);
+			//var_dump($args);exit;
 		}
 		else {
 			$this->mCoordinateSet['lat'] = $args[0];
-			$this->mCoordinateSet['lon'] = $args[1];			
+			$this->mCoordinateSet['lon'] = $args[1];
 		}
 		
 		$this->m_caption = MapsCoordinateParser::formatCoordinates(
@@ -182,11 +184,9 @@ class SMGeoCoordsValue extends SMWDataValue {
 		$this->unstub();
 		
 		if ( $smgUseSpatialExtensions ) {
-			// TODO
-			return array(
-				// GeomFromText()
-				str_replace( ',', '.', " POINT({$this->mCoordinateSet['lat']} {$this->mCoordinateSet['lon']}) " )
-			);
+			$point = str_replace( ',', '.', " POINT({$this->mCoordinateSet['lat']} {$this->mCoordinateSet['lon']}) " );
+			//var_dump("GeomFromText( '$point' )");exit;
+			return array( "GeomFromText( '$point' )" );
 		}
 		else {
 			return array(

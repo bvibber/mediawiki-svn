@@ -269,3 +269,13 @@ $messages['te'] = array(
 	'checkpoint-tooltip' => 'మీ మార్పులని భద్రపరిచి పుటని దిద్దడం కొనసాగించండి',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'checkpoint' => 'Sagipin at magpatuloy sa pagpapatnugot',
+	'checkpoint-desc' => 'Nagpapahintulot sa isang tao na masagip ang pagbabago at magpatuloy sa pagpatnugot',
+	'checkpoint-tooltip' => 'Sagipin ang iyong ginagawa at magpatuloy sa pagbago ng pahina',
+	'checkpoint-notice' => '([[{{ns:project}}:Checkpoint|Sagipin ang pagsisiyasat]])',
+);
+

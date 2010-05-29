@@ -575,6 +575,7 @@ $messages['ext'] = array(
 );
 
 /** Persian (فارسی)
+ * @author Ebraminio
  * @author Huji
  */
 $messages['fa'] = array(
@@ -583,7 +584,7 @@ $messages['fa'] = array(
 	'expand_templates_intro' => 'این صفحهٔ ویژه متنی را دریافت کرده و تمام الگوهای به‌کاررفته در آن را به طور بازگشتی بسط می‌دهد. همچنین تابع‌های تجزیه چون <nowiki>{{</nowiki>#if:...}} و متغیرهایی چون  <nowiki>{{</nowiki>CURRENTDAY}} را هم بسط می‌دهد — در واقع تقریباً هرچه را که داخل دوآکولاد باشد. این کار با صدازدن مرحلهٔ تجزیهٔ مربوط در خود مدیاویکی صورت می‌گیرد.',
 	'expand_templates_title' => 'عنوان موضوع، برای {{PAGENAME}} و غیره:',
 	'expand_templates_input' => 'متن ورودی:',
-	'expand_templates_output' => 'نتیجه',
+	'expand_templates_output' => 'نتیجه:',
 	'expand_templates_xml_output' => 'خروجی XML',
 	'expand_templates_ok' => 'تایید',
 	'expand_templates_remove_comments' => 'حذف توضیحات',
@@ -1024,6 +1025,8 @@ Perkara iki dilakokaké caranémawa nyeluk tahapan parser sing rélévan saka Me
  * @author BRUTE
  */
 $messages['ka'] = array(
+	'expand_templates_title' => 'კონტექსტის სათაური, {{PAGENAME}}-სთვის და ა.შ.:',
+	'expand_templates_input' => 'შესაყვანი ტექსტი:',
 	'expand_templates_output' => 'შედეგი',
 	'expand_templates_ok' => 'OK',
 	'expand_templates_preview' => 'წინა',
@@ -2008,6 +2011,7 @@ Ginagawa ito nito sa pamamagitan ng pagtawag sa mga kaugnay na mga tanghalang pa
 	'expand_templates_xml_output' => 'kinalabasang XML',
 	'expand_templates_ok' => "Sige/Ayos 'yan",
 	'expand_templates_remove_comments' => 'Tanggalin ang mga puna (kumento)',
+	'expand_templates_remove_nowiki' => 'Pigilin ang mga tatak na <nowiki> sa loob ng resulta',
 	'expand_templates_generate_xml' => 'Ipakita ang puno na pambanghay ng XML',
 	'expand_templates_preview' => 'Paunang tingin',
 );

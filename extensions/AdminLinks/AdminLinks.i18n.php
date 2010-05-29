@@ -1201,6 +1201,24 @@ $messages['sl'] = array(
 	'right-adminlinks' => 'Ogled povezav na [[Special:AdminLinks|Skrbniških povezavah]]',
 );
 
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Charmed94
+ */
+$messages['sr-ec'] = array(
+	'adminlinks' => 'Администраторске везе',
+	'adminlinks-desc' => 'Додаје [[Special:AdminLinks|посебне странице]] које садрже корисне везе за администраторе',
+	'adminlinks_documentation' => '$1 документација',
+	'adminlinks_general' => 'Опште',
+	'adminlinks_editsidebar' => 'Уреди бочну траку',
+	'adminlinks_editcss' => 'Уреди CSS датотеку',
+	'adminlinks_editmainpagename' => 'Измени назив главне странице',
+	'adminlinks_users' => 'Корисници',
+	'adminlinks_createuser' => 'Направи корисника',
+	'adminlinks_browsesearch' => 'Претраживање',
+	'adminlinks_importexport' => 'Увожење и извожење',
+	'right-adminlinks' => 'Погледајте везу до [[Special:AdminLinks|администраторских везâ]]',
+);
+
 /** Swedish (Svenska)
  * @author Gabbe.g
  */
@@ -1252,6 +1270,25 @@ $messages['th'] = array(
  */
 $messages['tk'] = array(
 	'adminlinks_users' => 'Ulanyjylar',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ * @author Sky Harbor
+ */
+$messages['tl'] = array(
+	'adminlinks' => 'Mga kawing pantagapangasiwa',
+	'adminlinks-desc' => 'Nagdaragdag ng isang [[Special:AdminLinks|natatanging pahina]]ng humahawak ng makakatulong na mga kawing para sa mga tagapangasiwa',
+	'adminlinks_documentation' => 'Dokumentasyon ng $1',
+	'adminlinks_general' => 'Pangkalahatan',
+	'adminlinks_editsidebar' => 'Baguhin ang baretang panggilid',
+	'adminlinks_editcss' => 'Baguhin ang talaksan ng CSS',
+	'adminlinks_editmainpagename' => 'Baguhin ang pangalan ng unang pahina',
+	'adminlinks_users' => 'Mga tagagamit',
+	'adminlinks_createuser' => 'Lumikha ng tagagamit',
+	'adminlinks_browsesearch' => 'Pagbabasa-basa at paghahanap',
+	'adminlinks_importexport' => 'Pag-aangkat at pagluluwas',
+	'right-adminlinks' => 'Tingnan ang kawing sa [[Special:AdminLinks|mga kawing pantagapangasiwa]]',
 );
 
 /** Turkish (Türkçe)

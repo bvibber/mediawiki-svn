@@ -38,9 +38,9 @@ Use <code>&lt;references /&gt;</code>',
 parameter "group" is allowed only.
 Use <code>&lt;references /&gt;</code>, or <code>&lt;references group="..." /&gt;</code>',
 	'cite_error_references_no_backlink_label'        => 'Ran out of custom backlink labels.
-Define more in the <nowiki>[[MediaWiki:Cite references link many format backlink labels]]</nowiki> message',
-	'cite_error_no_link_label_group'        => 'Ran out of custom link labels for group \'$1\'.
-Define more in the <nowiki>[[MediaWiki:$2]]</nowiki> message',
+Define more in the <nowiki>[[MediaWiki:Cite references link many format backlink labels]]</nowiki> message.',
+	'cite_error_no_link_label_group'        => 'Ran out of custom link labels for group "$1".
+Define more in the <nowiki>[[MediaWiki:$2]]</nowiki> message.',
 	'cite_error_references_no_text'                  => 'Invalid <code>&lt;ref&gt;</code> tag;
 no text was provided for refs named <code>$1</code>',
 	'cite_error_included_ref'                        => 'Closing &lt;/ref&gt; missing for &lt;ref&gt; tag',
@@ -371,6 +371,8 @@ $messages['be-tarask'] = array(
 Карыстайцеся <code>&lt;references /&gt;</code>, ці <code>&lt;references group="..." /&gt;</code>',
 	'cite_error_references_no_backlink_label' => 'Не хапае сымбаляў для адваротных спасылак.
 Неабходна пашырыць сыстэмнае паведамленьне <nowiki>[[MediaWiki:Cite references link many format backlink labels]]</nowiki>',
+	'cite_error_no_link_label_group' => 'Скончыліся нестандартныя меткі спасылак для групы «$1».
+Вызначыце болей у паведамленьні <nowiki>[[MediaWiki:$2]]</nowiki>.',
 	'cite_error_references_no_text' => 'Няслушны тэг <code>&lt;ref&gt;</code>;
 няма тэксту ў назьве зносак <code>$1</code>',
 	'cite_error_included_ref' => 'Няма закрываючага тэга  &lt;/ref&gt; пасьля адкрытага тэга &lt;ref&gt;',
@@ -458,6 +460,8 @@ n\'eus nemet an arventenn "strollad" zo aotreet.
 Grit gant ar valizenn <code>&lt;references /&gt;</code>, pe <code>&lt;references group="..." /&gt;</code>',
 	'cite_error_references_no_backlink_label' => "N'eus ket a dikedennoù personelaet mui.
 Spisait un niver brasoc'h anezho er gemennadenn <nowiki>[[MediaWiki:Cite references link many format backlink labels]]</nowiki>",
+	'cite_error_no_link_label_group' => 'Tikedenn liamm bersonelaet ebet ken evit ar strollad "$1".
+Termenit re all e kemennadenn <nowiki>[[MediaWiki:$2]]</nowiki>.',
 	'cite_error_references_no_text' => 'Balizenn <code>&lt;ref&gt;</code> direizh ;
 ne oa bet lakaet tamm testenn ebet evit ar valizenn <code>$1</code>',
 	'cite_error_included_ref' => 'Kod digeriñ &lt;/ref&gt; hep kod serriñ &lt;ref&gt;',
@@ -571,6 +575,8 @@ $messages['cs'] = array(
 je povolen pouze parametr „group“.
 Použijte <tt>&lt;references /&gt;</tt> nebo <tt>&lt;references group="..." /&gt;</tt>.',
 	'cite_error_references_no_backlink_label' => 'Došla označení zpětných odkazů, přidejte jich několik do zprávy <nowiki>[[MediaWiki:Cite references link many format backlink labels]]</nowiki>',
+	'cite_error_no_link_label_group' => 'Došly definované značky pro skupinu „$1“.
+Zvyšte jejich počet ve zprávě <nowiki>[[MediaWiki:$2]]</nowiki>.',
 	'cite_error_references_no_text' => 'Chyba v tagu <code>&lt;ref&gt;</code>; citaci označené <code>$1</code> není určen žádný text',
 	'cite_error_included_ref' => 'Chybí ukončovací &lt;/ref&gt; k&nbsp;tagu &lt;ref&gt;',
 	'cite_error_refs_without_references' => 'Nalezena značka <code>&lt;ref&gt;</code> bez příslušné značky <code>&lt;references/&gt;</code>.',
@@ -647,6 +653,7 @@ $messages['da'] = array(
 );
 
 /** German (Deutsch)
+ * @author Kghbln
  * @author Metalhead64
  * @author Raimond Spekking
  * @author Umherirrender
@@ -664,6 +671,8 @@ $messages['de'] = array(
 	'cite_error_references_invalid_parameters' => 'Ungültige <tt>&lt;references&gt;</tt>-Verwendung: Es sind keine zusätzlichen Parameter erlaubt, verwende ausschließlich <tt><nowiki><references /></nowiki></tt>.',
 	'cite_error_references_invalid_parameters_group' => 'Ungültige <code>&lt;references&gt;</code>-Verwendung: Nur der Parameter „group“ ist erlaubt, verwende <tt>&lt;references /&gt;</tt> oder <tt>&lt;references group="…" /&gt;</tt>',
 	'cite_error_references_no_backlink_label' => 'Eine Referenz der Form <tt>&lt;ref name="…" /&gt;</tt> wird öfter benutzt als Buchstaben vorhanden sind. Ein Administrator muss <nowiki>[[MediaWiki:Cite references link many format backlink labels]]</nowiki> um weitere Buchstaben/Zeichen ergänzen.',
+	'cite_error_no_link_label_group' => 'Es sind für Gruppe „$1“ keine benutzerdefinierte Linkbezeichnungen mehr verfügbar.
+Definiere weitere unter Systemtext <nowiki>[[MediaWiki:$2]]</nowiki>.',
 	'cite_error_references_no_text' => 'Ungültiger <tt>&lt;ref&gt;</tt>-Tag; es wurde kein Text für das Ref mit dem Namen <tt>$1</tt> angegeben.',
 	'cite_error_included_ref' => 'Es fehlt ein schließendes &lt;/ref&gt;',
 	'cite_error_refs_without_references' => '<code>&lt;ref&gt;</code>-Tags existieren, jedoch wurde kein <code>&lt;references /&gt;</code>-Tag gefunden.',
@@ -1026,6 +1035,8 @@ seul l’attribut « group » est autorisé.
 Utilisez <code>&lt;references /&gt;</code>, ou bien <code>&lt;references group="..." /&gt;</code>.',
 	'cite_error_references_no_backlink_label' => 'Épuisement des étiquettes de liens personnalisées.
 Définissez-en un plus grand nombre dans le message <nowiki>[[MediaWiki:Cite references link many format backlink labels]]</nowiki>.',
+	'cite_error_no_link_label_group' => "Plus d'étiquettes de liens personnalisées pour le groupe « $1 ».
+Définissez-en plus dans le message <nowiki>[[MediaWiki:$2]]</nowiki>.",
 	'cite_error_references_no_text' => 'Balise <code>&lt;ref&gt;</code> incorrecte ;
 aucun texte n’a été fourni pour les références nommées <code>$1</code>.',
 	'cite_error_included_ref' => 'Clôture <code>&lt;/ref&gt;</code> manquante pour la balise <code>&lt;ref&gt;</code>.',
@@ -1094,6 +1105,8 @@ só está permitido o parámetro "group" ("grupo").
 Use <code>&lt;references /&gt;</code> ou <code>&lt;references group="..." /&gt;</code>',
 	'cite_error_references_no_backlink_label' => 'As etiquetas personalizadas esgotáronse.
 Defina máis na mensaxe <nowiki>[[MediaWiki:Cite references link many format backlink labels]]</nowiki>',
+	'cite_error_no_link_label_group' => 'As etiquetas personalizadas esgotáronse para o grupo "$1".
+Defina máis na mensaxe <nowiki>[[MediaWiki:$2]]</nowiki>.',
 	'cite_error_references_no_text' => 'etiqueta <code>&lt;ref&gt;</code> non válida;
 non se forneceu texto para as referencias de nome <code>$1</code>',
 	'cite_error_included_ref' => 'peche a etiqueta &lt;/ref&gt; que lle falta á outra etiqueta &lt;ref&gt;',
@@ -1129,6 +1142,8 @@ $messages['gsw'] = array(
 	'cite_error_references_invalid_parameters' => 'Uugiltigi <tt>&lt;references&gt;</tt>-Verwändig: S sin kei zuesätzligi Parameter erlaubt, verwänd usschließli <tt><nowiki><references /></nowiki></tt>.',
 	'cite_error_references_invalid_parameters_group' => 'Uugiltigi <tt>&lt;references&gt;</tt>-Verwändig: Nume dr Parameter „group“ isch erlaubt, verwänd <tt>&lt;references /&gt;</tt> oder <tt>&lt;references group="..." /&gt;</tt>',
 	'cite_error_references_no_backlink_label' => 'E Referenz mit dr Form <tt>&lt;ref name="..."/&gt;</tt> wird meh brucht as es Buechstabe git. E Ammann muess  <nowiki>[[MediaWiki:Cite references link many format backlink labels]]</nowiki> go wyteri Buechstabe/Zeiche ergänze.',
+	'cite_error_no_link_label_group' => 'Fir d Gruppe „$1“ sin kei benutzerdefinierti Linkbezeichnige me verfiegbar.
+Definier meh unter Systemnochricht <nowiki>[[MediaWiki:$2]]</nowiki>.',
 	'cite_error_references_no_text' => 'Uugiltige <tt>&lt;ref&gt;</tt>-Tag; s isch kei Täxt fir s Ref mit em Name <tt>$1</tt> aagee wore.',
 	'cite_error_included_ref' => 'S fählt s schließend &lt;/ref&gt;',
 	'cite_error_refs_without_references' => '<code>&lt;ref&gt;</code>-Tag git s, aber s isch kei <code>&lt;references/&gt;</code>-Tag gfunde wore.',
@@ -1245,6 +1260,8 @@ jenož parameter "group" je dowoleny.
 Wužij <code>&lt;references /&gt;</code> abo <code>&lt;references group="..." /&gt;</code>',
 	'cite_error_references_no_backlink_label' => 'Zwučene etikety wróćowotkazow wućerpjene.
 Definuj wjace w powěsći <nowiki>[[MediaWiki:Cite references link many format backlink labels]]</nowiki>',
+	'cite_error_no_link_label_group' => 'Swójske wotkazowe etikety za skupinu "$1" hižo njejsu.
+Definuj dalše w zdźělence <nowiki>[[MediaWiki:$2]]</nowiki>.',
 	'cite_error_references_no_text' => 'Njepłaćiwa referenca formy <code>&lt;ref&gt;</code>; žadyn tekst za referency z mjenom  <code>$1</code> podaty.',
 	'cite_error_included_ref' => 'Kónčny &lt;/ref&gt; za tafličku &lt;ref&gt; faluje',
 	'cite_error_refs_without_references' => 'Taflički <code>&lt;ref&gt;</code> ekistuja, ale žana taflička code>&lt;references/&gt;</code> je so namakała',
@@ -1342,6 +1359,8 @@ solmente le parametro "group" es permittite.
 Usa <code>&lt;references /&gt;</code>, o <code>&lt;references group="..." /&gt;</code>',
 	'cite_error_references_no_backlink_label' => 'Le etiquettas de retroligamine personalisate es exhaurite.
 Defini plus in le message <nowiki>[[MediaWiki:Cite references link many format backlink labels]]</nowiki>',
+	'cite_error_no_link_label_group' => 'Exhauriva le etiquettas de ligamine personalisabile pro le gruppo "$1".
+Defini plus de istes in le message <nowiki>[[MediaWiki:$2]]</nowiki>.',
 	'cite_error_references_no_text' => 'Etiquetta <code>&lt;ref&gt;</code> invalide;
 nulle texto esseva fornite pro le refs nominate <code>$1</code>',
 	'cite_error_included_ref' => 'Le clausura &lt;/ref&gt; manca pro le etiquetta &lt;ref&gt;',
@@ -1467,6 +1486,7 @@ $messages['ja'] = array(
 	'cite_error_references_invalid_parameters' => '無効な <code>&lt;references&gt;</code> タグ。引数は指定できません。<code>&lt;references /&gt;</code> を用いてください',
 	'cite_error_references_invalid_parameters_group' => '無効な <code>&lt;references&gt;</code> タグです。使用できるパラメータは "group" のみです。<code>&lt;references /&gt;</code> または <code>&lt;references group="..." /&gt;</code> を用いてください',
 	'cite_error_references_no_backlink_label' => 'バックリンクラベルが使用できる個数を超えました。<nowiki>[[MediaWiki:Cite references link many format backlink labels]]</nowiki> メッセージでの定義を増やしてください',
+	'cite_error_no_link_label_group' => 'グループ「$1」用のカスタム・リンクラベルを使い果たしました。<nowiki>[[MediaWiki:$2]]</nowiki> メッセージを編集してラベルの定義を増やしてください。',
 	'cite_error_references_no_text' => '無効な <code>&lt;ref&gt;</code> タグ。「<code>$1</code>」という名前の引用句に対するテキストがありません',
 	'cite_error_included_ref' => '&lt;ref&gt; タグに対応する &lt;/ref&gt; が不足しています',
 	'cite_error_refs_without_references' => '<code>&lt;ref&gt;</code> タグがありますが、<code>&lt;references/&gt;</code> タグが見つかりません',
@@ -1632,6 +1652,8 @@ $str 혹은 $key가 잘못되었습니다.
 <code>&lt;references /&gt;</code>나 <code>&lt;references group="..." /&gt;</code>만 이용하십시오.',
 	'cite_error_references_no_backlink_label' => '역링크 라벨이 부족합니다.
 <nowiki>[[MediaWiki:Cite references link many format backlink labels]]</nowiki>에 더 많은 라벨을 추가하십시오.',
+	'cite_error_no_link_label_group' => '그룹 "$1"에 대해 링크 레이블이 모두 떨어졌습니다.
+<nowiki>[[MediaWiki:$2]]</nowiki> 메시지에 더 많은 레이블을 정의해주십시오.',
 	'cite_error_references_no_text' => '<code>&lt;ref&gt;</code> 태그가 잘못되었습니다.
 <code>$1</code>라는 이름을 가진 주석에 대한 내용이 없습니다.',
 	'cite_error_included_ref' => '&lt;ref&gt; 태그를 닫는 &lt;/ref&gt; 태그가 없습니다.',
@@ -1832,6 +1854,8 @@ $messages['mk'] = array(
 Употребувајте <code>&lt;references /&gt;</code>, или <code>&lt;references group="..." /&gt;</code>',
 	'cite_error_references_no_backlink_label' => 'Недостаток на беклинк ознаки.
 Дефинирај повеќе во пораката <nowiki>[[MediaWiki:Cite references link many format backlink labels]]</nowiki>',
+	'cite_error_no_link_label_group' => 'Се потрошија називите на прилагодените врски за групата „$1“.
+Определете уште во пораката <nowiki>[[MediaWiki:$2]]</nowiki>.',
 	'cite_error_references_no_text' => 'Погрешна <code>&lt;ref&gt;</code> ознака;
 нема текст за наводот означен како <code>$1</code>',
 	'cite_error_included_ref' => 'Затворање на &lt;/ref&gt; недостасува за &lt;ref&gt; ознака',
@@ -1954,6 +1978,7 @@ $messages['nds-nl'] = array(
 );
 
 /** Dutch (Nederlands)
+ * @author Niels
  * @author Siebrand
  */
 $messages['nl'] = array(
@@ -1983,9 +2008,11 @@ alleen de parameter "group" is toegestaan.
 Gebruik <code>&lt;references /&gt;</code>, of <code>&lt;references group="..." /&gt;</code>',
 	'cite_error_references_no_backlink_label' => 'Het aantal beschikbare backlinklabels is opgebruikt.
 Geef meer labels op in het bericht <nowiki>[[MediaWiki:Cite references link many format backlink labels]]</nowiki>',
+	'cite_error_no_link_label_group' => 'Het aantal aangepaste verwijzinglabels voor de group "$1" is uitgeput.
+U kunt er meer instellen in het systeembericht <nowiki>[[MediaWiki:$2]]</nowiki>.',
 	'cite_error_references_no_text' => 'Onjuiste tag <code>&lt;ref&gt;</code>;
 er is geen tekst opgegeven voor refs met de naam <code>$1</code>',
-	'cite_error_included_ref' => 'Het sluitteken &lt;/ref&gt; mist voor de tag &lt;ref&gt;',
+	'cite_error_included_ref' => 'Na de tag &lt;ref&gt; ontbreekt de afsluitende tag &lt;/ref&gt;',
 	'cite_error_refs_without_references' => 'De tag <code>&lt;ref&gt;</code> bestaat, maar de tag <code>&lt;references/&gt;</code> is niet aangetroffen',
 	'cite_error_group_refs_without_references' => 'Er bestaat een tag <code>&lt;ref&gt;</code> voor de groep "$1", maar er is geen bijbehorende tag <code>&lt;references group="$1"/&gt;</code> aangetroffen',
 	'cite_error_references_group_mismatch' => 'De tag <code>&lt;ref&gt;</code> in <code>&lt;references&gt;</code> conflicteert met groepseigenschap "$1".',
@@ -2020,6 +2047,7 @@ Definer fleire i meldinga <nowiki>[[MediaWiki:Cite references link many format b
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Audun
  * @author Jon Harald Søby
  * @author Laaknor
  */
@@ -2036,6 +2064,8 @@ $messages['no'] = array(
 	'cite_error_references_invalid_parameters' => 'Ugyldig <code>&lt;references&gt;</code>-kode; ingen parametere tillates, bruk <code>&lt;references /&gt;</code>',
 	'cite_error_references_invalid_parameters_group' => 'Ugyldig <code>&lt;references&gt;</code>-tagg; kun parameteret «group» tillates. Bruk <code>&lt;references /&gt;</code> eller <code>&lt;references group="..." /&gt;</code>',
 	'cite_error_references_no_backlink_label' => "Gikk tom for egendefinerte tilbakelenketekster; definer flere i beskjeden «''cite_references_link_many_format_backlink_labels''»",
+	'cite_error_no_link_label_group' => 'Gikk tom for egendefinerte lenkemerker for gruppen «$1».
+Definér fler i <nowiki>[[MediaWiki:$2]]</nowiki>-beskjeden.',
 	'cite_error_references_no_text' => 'Ugyldig <code>&lt;ref&gt;</code>-tagg; ingen tekst ble oppgitt for referansen ved navn <code>$1</code>',
 	'cite_error_included_ref' => 'Avsluttende &lt;/ref&gt;-tagg mangler for &lt;ref&gt;',
 	'cite_error_refs_without_references' => '<code>&lt;ref&gt;</code>-merker finnes, men ingen <code>&lt;references/&gt;</code>-merke funnet',
@@ -2191,6 +2221,8 @@ só o parâmetro "group" é permitido.
 Use <code>&lt;references /&gt;</code>, ou <code>&lt;references group="..." /&gt;</code>',
 	'cite_error_references_no_backlink_label' => 'Esgotamento das legendas personalizadas para backlinks.
 Defina mais na mensagem <nowiki>[[MediaWiki:Cite references link many format backlink labels]]</nowiki>',
+	'cite_error_no_link_label_group' => 'Esgotamento das legendas personalizadas para links, no grupo "$1".
+Defina mais na mensagem <nowiki>[[MediaWiki:$2]]</nowiki>.',
 	'cite_error_references_no_text' => 'Tag <code>&lt;ref&gt;</code> inválida; não foi fornecido texto para as refs chamadas <code>$1</code>',
 	'cite_error_included_ref' => '&lt;/ref&gt; de fecho em falta para a marca &lt;ref&gt;',
 	'cite_error_refs_without_references' => 'existem tags <code>&lt;ref&gt;</code>, mas nenhuma tag <code>&lt;references/&gt;</code> foi encontrada',
@@ -2376,6 +2408,8 @@ $messages['ru'] = array(
 Используйте <code>&lt;references /&gt;</code>, или <code>&lt;references group="..." /&gt;</code>',
 	'cite_error_references_no_backlink_label' => 'Не хватает символов для возвратных гиперссылок.
 Следует расширить системное сообщение <nowiki>[[MediaWiki:Cite references link many format backlink labels]]</nowiki>',
+	'cite_error_no_link_label_group' => 'Закончились отметки пользовательских ссылок для группы «$1».
+Определите дополнительные в сообщении <nowiki>[[MediaWiki:$2]]</nowiki>.',
 	'cite_error_references_no_text' => 'Неверный тег <code>&lt;ref&gt;</code>; для сносок <code>$1</code> не указан текст',
 	'cite_error_included_ref' => 'Отсутствует закрывающий тег &lt;/ref&gt;',
 	'cite_error_refs_without_references' => 'Для существующего тега <code>&lt;ref&gt;</code> не найдено соответствующего тега <code>&lt;references/&gt;</code>',
@@ -2778,11 +2812,18 @@ Pinapahintulutan lamang ang parametrong "pangkat" (\'\'group\'\').
 Gamitin ang <code>&lt;references /&gt;</code>, o <code>&lt;references group="..." /&gt;</code>',
 	'cite_error_references_no_backlink_label' => 'Naubusan ng pasadyang mga tatak na pantukoy ng panlikod na kawing.
 Dagdagan pa ng pakahulugan sa loob ng mensaheng <nowiki>[[MediaWiki:Cite references link many format backlink labels]]</nowiki>',
+	'cite_error_no_link_label_group' => 'Naubusan ng mga tatak ng pasadyang kawing para sa pangkat na "$1".
+Magbigay ng marami pang kahulugan sa loob ng mensaheng <nowiki>[[MediaWiki:$2]]</nowiki>.',
 	'cite_error_references_no_text' => "Hindi tanggap ang tatak na <code>&lt;ref&gt;</code>;
 walang tekstong ibinigay para sa mga sangguniang (''ref'') pinangalanang <code>$1</code>",
 	'cite_error_included_ref' => 'Naawawala ang pansarang &lt;/ref&gt; na para sa tatak na &lt;ref&gt;',
 	'cite_error_refs_without_references' => 'Umiiral na ang mga tatak na <code>&lt;ref&gt;</code>, subalit walang natagpuang tatak na <code>&lt;references/&gt;</code>',
 	'cite_error_group_refs_without_references' => 'Umiiral na ang tatak na <code>&lt;ref&gt;</code> para sa pangkat na pinangalanang "$1", subalit walang natagpuang katumbas na tatak na <code>&lt;references group="$1"/&gt;</code>',
+	'cite_error_references_group_mismatch' => 'May hindi nagbabanggaang katangiang pampangkat na "$1" ang <code>&lt;ref&gt;</code> tatak na nasa <code>&lt;references&gt;</code>.',
+	'cite_error_references_missing_group' => 'Ang tatak na <code>&lt;ref&gt;</code> na binigyang kahulugan sa <code>&lt;references&gt;</code> ay may katangiang pampangkat na "$1" na hindi lumilitawa sa naunang teksto.',
+	'cite_error_references_missing_key' => 'Ang tatak na <code>&lt;ref&gt;</code> na may pangalang "$1" na binigyang kahulugan sa <code>&lt;references&gt;</code> ay hindi ginamit sa naunang teksto.',
+	'cite_error_references_no_key' => 'Ang tatak na <code>&lt;ref&gt;</code> na binigyang kahulugan sa <code>&lt;references&gt;</code> ay walang katangiang pampangalan.',
+	'cite_error_empty_references_define' => 'Ang tatak na <code>&lt;ref&gt;</code> na binigyang kahulugan sa <code>&lt;references&gt;</code> na may pangalang "$1" ay walang nilalaman.',
 );
 
 /** Turkish (Türkçe)

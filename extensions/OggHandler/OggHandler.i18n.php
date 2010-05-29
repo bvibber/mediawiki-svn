@@ -493,6 +493,7 @@ $messages['bn'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
+	'ogg-desc' => 'Skor evit ar restroù Ogg Theora ha Vorbis, gant ul lenner JavaScript',
 	'ogg-short-audio' => 'Restr son Ogg $1, $2',
 	'ogg-short-video' => 'Restr video Ogg $1, $2',
 	'ogg-short-general' => 'Restr media Ogg $1, $2',
@@ -506,6 +507,11 @@ $messages['br'] = array(
 	'ogg-stop' => 'Paouez',
 	'ogg-play-video' => 'Lenn ar video',
 	'ogg-play-sound' => 'Lenn ar son',
+	'ogg-no-player' => 'Evit doare n\'eus gant ho reizhiad hini ebet eus al lennerioù skoret.
+<a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">Pellgargit ul lenner skoret</a> mar plij.',
+	'ogg-no-xiphqt' => 'Evit doare e vank deoc\'h ar parzh XiphQT evit QuickTime.
+N\'hall ket QuickTime lenn ar restroù Ogg files hep ar parzh-se.
+<a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">Pellgargit XiphQT</a> pe dibabit ul lenner all.',
 	'ogg-player-videoElement' => 'Skor ar merdeer orin',
 	'ogg-player-oggPlugin' => 'Adveziant ar merdeer',
 	'ogg-player-thumbnail' => 'Skeudenn statek hepken',
@@ -516,6 +522,8 @@ $messages['br'] = array(
 	'ogg-dismiss' => 'Serriñ',
 	'ogg-download' => 'Pellgargañ ar restr',
 	'ogg-desc-link' => 'Diwar-benn ar restr-mañ',
+	'ogg-oggThumb-version' => "Rekis eo stumm $1 oggThumb, pe nevesoc'h, evit implijout OggHandler.",
+	'ogg-oggThumb-failed' => "N'eo ket deuet a-benn oggThumb da grouiñ ar munud.",
 );
 
 /** Bosnian (Bosanski)
@@ -950,6 +958,7 @@ $messages['eu'] = array(
 );
 
 /** Persian (فارسی)
+ * @author Ebraminio
  * @author Huji
  */
 $messages['fa'] = array(
@@ -964,7 +973,7 @@ $messages['fa'] = array(
 	'ogg-long-error' => '(پرونده Ogg غیرمجاز: $1)',
 	'ogg-play' => 'پخش',
 	'ogg-pause' => 'توقف',
-	'ogg-stop' => 'قطع',
+	'ogg-stop' => 'باز ایست',
 	'ogg-play-video' => 'پخش تصویر',
 	'ogg-play-sound' => 'پخش صوت',
 	'ogg-no-player' => 'متاسفانه دستگاه شما نرم‌افزار پخش‌کنندهٔ مناسب ندارد. لطفاً <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">یک برنامهٔ پخش‌کننده بارگیری کنید</a>.',
@@ -974,7 +983,7 @@ $messages['fa'] = array(
 	'ogg-player-thumbnail' => 'فقط تصاویر ثابت',
 	'ogg-player-soundthumb' => 'فاقد پخش‌کننده',
 	'ogg-player-selected' => '(انتخاب شده)',
-	'ogg-use-player' => 'استفاده از پخش‌کننده:',
+	'ogg-use-player' => 'این پخش‌کننده را به کارگیر:',
 	'ogg-more' => 'بیشتر...',
 	'ogg-dismiss' => 'بستن',
 	'ogg-download' => 'بارگیری پرونده',
@@ -3204,6 +3213,8 @@ Hindi makapagpapatugtog ang QuickTime ng mga talaksang Ogg kapag wala ang ganito
 	'ogg-dismiss' => 'Isara',
 	'ogg-download' => 'Ikarga ang talaksan',
 	'ogg-desc-link' => 'Tungkol sa talaksang ito',
+	'ogg-oggThumb-version' => 'Nangangailangan ang OggHandler ng bersyong $1 o mas luma.',
+	'ogg-oggThumb-failed' => 'Nabigo ang oggThumb na lumikha ng munting larawan.',
 );
 
 /** Turkish (Türkçe)

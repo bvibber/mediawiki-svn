@@ -19,7 +19,7 @@ Some settings might change which version is displayed to readers or further rest
 	'configuredpages-prec-quality'  => 'latest quality',
 	'configuredpages-prec-pristine' => 'latest pristine',
 	'configuredpages-def-draft'     => 'latest version',
-	'configuredpages-def-stable'    => 'published version',
+	'configuredpages-def-stable'    => 'accepted version',
 );
 
 /** Message documentation (Message documentation)
@@ -422,8 +422,8 @@ $messages['ko'] = array(
 	'configuredpages-none' => '이 목록에 문서가 없습니다.',
 	'configuredpages-config' => '설정',
 	'configuredpages-precedence' => '우선 순위:',
-	'configuredpages-prec-none' => '최근 검토된 판',
-	'configuredpages-prec-quality' => '최근의 양질 문서',
+	'configuredpages-prec-none' => '최근 검토된 문서',
+	'configuredpages-prec-quality' => '최근의 고품질 문서',
 	'configuredpages-prec-pristine' => '최근의 깨끗한 문서',
 	'configuredpages-def-draft' => '최신 버전',
 	'configuredpages-def-stable' => '공개된 버전',
@@ -699,11 +699,22 @@ $messages['tk'] = array(
 	'configuredpages-prec-pristine' => 'başky öňürtilik',
 );
 
-/** Tagalog (Tagalog) */
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
 $messages['tl'] = array(
+	'configuredpages' => 'Mga pahinang may kaayusan ng pagsusuri',
+	'configuredpages-text' => "Nasa ibaba ang isang talaan ng mga pahinan inayos upang magkaroon ng iba't ibang mga pagtatakda ng pagpayag kaysa sa katakdaan ng sityo.
+
+May ilang mga pagtatakdang maaaring magbago na ang bersyon ay ipinapakita sa mga mambabasa o magbabawal pa lalo kung sino ang makapamamatnugot na hindi nangangailangan ng pagsusuri.",
+	'configuredpages-none' => 'Walang mga pahina sa loob ng talaang ito.',
+	'configuredpages-config' => 'Pagkakaayos',
+	'configuredpages-precedence' => 'Pagkakauna-una:',
 	'configuredpages-prec-none' => 'walang pagkakauna',
 	'configuredpages-prec-quality' => 'pagkauna ng kataasan ng uri',
 	'configuredpages-prec-pristine' => 'Pagkakaunang nasa orihinal na kalagayan',
+	'configuredpages-def-draft' => 'pinakabagong bersyon',
+	'configuredpages-def-stable' => 'tinanggap na bersyon',
 );
 
 /** Turkish (Türkçe)
@@ -759,10 +770,12 @@ $messages['vep'] = array(
 
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
+ * @author Trần Nguyễn Minh Huy
  */
 $messages['vi'] = array(
 	'configuredpages-none' => 'Danh sách không có trang nào.',
 	'configuredpages-config' => 'Thiết lập',
+	'configuredpages-precedence' => 'Bản trước:',
 	'configuredpages-prec-none' => 'không có bản trước',
 	'configuredpages-prec-quality' => 'bản chất lượng trước',
 	'configuredpages-prec-pristine' => 'bản trong sạch trước',

@@ -417,6 +417,7 @@ CREATE TABLE /*_*/archive (
 
 CREATE INDEX /*i*/name_title_timestamp ON /*_*/archive (ar_namespace,ar_title,ar_timestamp);
 CREATE INDEX /*i*/ar_usertext_timestamp ON /*_*/archive (ar_user_text,ar_timestamp);
+CREATE INDEX /*i*/ar_page_revid ON /*_*/archive (ar_namespace, ar_title, ar_rev_id);
 
 
 --
@@ -622,7 +623,7 @@ CREATE TABLE /*_*/iwlinks (
 ) /*$wgDBTableOptions*/;
 
 CREATE UNIQUE INDEX /*i*/iwl_from ON /*_*/iwlinks (iwl_from, iwl_prefix, iwl_title);
-CREATE INDEX /*i*/iwl_prefix ON /*_*/iwlinks (iwl_prefix, iwl_title);
+CREATE INDEX /*i*/iwl_prefix_from_title ON /*_*/iwlinks (iwl_prefix, iwl_from, iwl_title);
 
 
 --

@@ -4661,6 +4661,8 @@ $messages['ka'] = array(
 	'securepoll-too-few-params' => 'არ არის საკმარისი ქვეკატეგორიების პარამეტრები (არასწორი ბმული).',
 	'securepoll-invalid-election' => '"$1" არ წარმოადგენს არჩევნებისათვის დასაშვებ იდენტიფიკატორს.',
 	'securepoll-welcome' => '<strong>კეთილი იყოს თქვენი მობრძანება $1!</strong>',
+	'securepoll-not-started' => 'ხმიც მიცემა ჯერ არ დაწყებულა.
+დაიწყება $3-ის $2-ზე.',
 	'securepoll-finished' => 'ეს არჩევნები დასრულებულია, თქვენ აღარ შეგიძლიათ ხმის მიცემა.',
 	'securepoll-not-qualified' => 'თქვენ არ შეგიძლიათ ამ არჩევნებში ხმის მიცემა: $1',
 	'securepoll-submit' => 'ხმის მიცემა',
@@ -7716,11 +7718,12 @@ $wgSecurePollShowErrorDetail=true; туруоруутун LocalSettings.php би
 );
 
 /** Sardinian (Sardu)
+ * @author Andria
  * @author Marzedu
  */
 $messages['sc'] = array(
-	'securepoll-header-voter-name' => 'Nòmene',
-	'securepoll-header-title' => 'Nòmene',
+	'securepoll-header-voter-name' => 'Nùmene',
+	'securepoll-header-title' => 'Nùmene',
 );
 
 /** Sicilian (Sicilianu)
@@ -8468,7 +8471,7 @@ $messages['tl'] = array(
 	'securepoll' => 'Ligtas na Halalan',
 	'securepoll-desc' => 'Karugtong para sa mga halalan at mga pagtatanung-tanong',
 	'securepoll-invalid-page' => 'Hindi tanggap na kabahaging pahinang "<nowiki>$1</nowiki>"',
-	'securepoll-need-admin' => 'Kailangan mong maging isang tagapangasiwa upang maisagawa ang galaw na ito.',
+	'securepoll-need-admin' => 'Kailangan mong maging isang tagapangasiwa ng halalan upang maisagawa ang galaw na ito.',
 	'securepoll-too-few-params' => 'Hindi sapat na mga parametro ng kabahaging pahina (hindi tanggap na kawing).',
 	'securepoll-invalid-election' => 'Ang "$1" ay hindi isang tanggap na ID ng halalan.',
 	'securepoll-welcome' => '<strong>Maligayang pagdating, $1!</strong>',
@@ -8509,6 +8512,11 @@ Hindi matanggal ang kodigo.',
 	'securepoll-jump' => 'Pumunta sa tagapaghain ng pagboto',
 	'securepoll-bad-ballot-submission' => 'Hindi tinanggap ang boto mo: $1',
 	'securepoll-unanswered-questions' => 'Dapat mong sagutin ang lahat ng mga katanungan.',
+	'securepoll-invalid-rank' => 'Hindi wastong ranggo. Kailangan mong magbigay sa mga kandidato ng isang ranggo sa pagitan ng 1 at 999.',
+	'securepoll-unranked-options' => 'Ang ilang mga opsyon ay hindi niraranggo. 
+Ikaw ay dapat magbigay ng lahat ng mga mapagpipilian ng isang ranggo sa pagitan ng 1 at 999.',
+	'securepoll-invalid-score' => 'Ang mga iskor ay kailangang isang bilang sa pagitan ng $1 at $2.',
+	'securepoll-unanswered-options' => 'Kailangan mong magbigay ng sagot para sa bawat tanong.',
 	'securepoll-remote-auth-error' => 'Kamalian sa pagpulot ng kabatiran ng akawnt mo mula sa tagapaghain.',
 	'securepoll-remote-parse-error' => 'Kamalian sa pagpapaliwanag ng tugon ng pagpapahintulot mula sa tagapaghain.',
 	'securepoll-api-invalid-params' => 'Hindi tanggap na mga parametro.',
@@ -8533,6 +8541,7 @@ Hindi matanggal ang kodigo.',
 	'securepoll-strike-reason' => 'Dahilan:',
 	'securepoll-strike-cancel' => 'Huwag ipagpatuloy',
 	'securepoll-strike-error' => 'Kamalian sa pagsasagawa ng kalusin/huwag kalusin: $1',
+	'securepoll-strike-token-mismatch' => 'Nawalang dato ng pulong',
 	'securepoll-details-link' => 'Mga detalye',
 	'securepoll-details-title' => 'Mga detalye ng boto: #$1',
 	'securepoll-invalid-vote' => 'Ang "$1" ay hindi isang tanggap na ID ng boto',
@@ -8548,11 +8557,14 @@ Hindi matanggal ang kodigo.',
 	'securepoll-dump-not-finished' => 'Makakakuha lamang ng nakakodigong mga tala ng halalan pagkalipas ng petsa ng katapusang $1 sa $2',
 	'securepoll-dump-no-urandom' => 'Hindi mabuksan /dev/urandom.
 Upang mapanitili ang paglilihim ng manghahalal, makukuha lamang ng madla ang nakakodigong mga talaan ng halalan kapag mababalasa na sila sa isang ligtas na daloy ng alin mang bilang.',
+	'securepoll-urandom-not-supported' => 'Hindi nagsusuporta ang tagapaghaing ito ng paglikha ng kriptograpikong bilang na bigay ng pagkakataon.
+Upang mapanatili ang pagkapribado ng botante, makukuha lamang ng madla ang nakakodigong mga tala ng halalan kapag mababalasa sila ng isang ligtas na sibol ng bilang na bigay ng pagkakataon.',
 	'securepoll-translate-title' => 'Isalinwika: $1',
 	'securepoll-invalid-language' => 'Hindi tanggap na kodigo ng wikang "$1"',
 	'securepoll-submit-translate' => 'Isapanahon',
 	'securepoll-language-label' => 'Piliin ang wika:',
 	'securepoll-submit-select-lang' => 'Isalinwika',
+	'securepoll-entry-text' => 'Nasa ibaba ang talaan ng mga paghalal.',
 	'securepoll-header-title' => 'Pangalan',
 	'securepoll-header-start-date' => 'Petsa ng simula',
 	'securepoll-header-end-date' => 'Petsa ng katapusan',
@@ -8572,6 +8584,12 @@ Maaari mong piliin ang itala ang bilang ng mga kinalabasang naroroon sa loob ng 
 	'securepoll-tally-upload-submit' => 'Likhain ang talaan ng mga bilang',
 	'securepoll-tally-error' => 'Kamalian sa pagpapaliwanag ng talaan ng boto, hindi malikha ang isang talaan ng bilang.',
 	'securepoll-no-upload' => 'Walang naikargang talaksan, hindi maitatala ang mga kinalabasan.',
+	'securepoll-dump-corrupt' => 'Sira ang  talaksang tambakan at hindi maaaring isagawa.',
+	'securepoll-tally-upload-error' => 'Kamalian sa paglalapat ng talaksang tambakan: $1',
+	'securepoll-pairwise-victories' => 'Pangmatagumpay na matris sa gawi ng tambalan',
+	'securepoll-strength-matrix' => 'Matris ng lakas ng landas',
+	'securepoll-ranks' => 'Pinakahuling pag-aantas',
+	'securepoll-average-score' => 'Pangkaraniwang kutab',
 );
 
 /** Turkish (Türkçe)
@@ -9179,7 +9197,7 @@ $messages['yi'] = array(
 
 <pre>$1</pre>',
 	'securepoll-return' => 'צוריק צו $1',
-	'securepoll-bad-ballot-submission' => 'אייער שטים איז געווען אומגילטיג.',
+	'securepoll-bad-ballot-submission' => 'אײַער שטים איז געווען אומגילטיג: $1',
 	'securepoll-unanswered-questions' => 'איר מוזט ענטפערן אלע שאלות.',
 	'securepoll-api-invalid-params' => 'אומגילטיגע פאראמעטערס',
 	'securepoll-not-logged-in' => 'איר מוזט אריינלאגירן צו שטימען אין דער אפשטימונג',

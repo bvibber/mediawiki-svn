@@ -88,7 +88,7 @@ Special page aliases and magic words can have multiple translations.
 Translations are separated by a comma (,).
 Namespaces can have only one translation.
 
-In namespace translations <tt>$1 talk</tt> is special. <tt>$1</tt> is replaced with sitename (for example <tt>{{ns:project_talk}}</tt>).
+In namespace translations <code>$1 talk</code> is special. <code>$1</code> is replaced with sitename (for example <code>{{ns:project_talk}}</code>).
 If it is not possible in your language to form valid expression without changing sitename, please contact a developer.
 
 You need to be in the translators group to save changes.
@@ -106,7 +106,7 @@ Changes are not saved until you click save button below.',
 	'translate-magic-cm-comment' => 'Comment:',
 	'translate-magic-cm-save'    => 'Save',
 
-	'translate-magic-cm-updatedusing' => 'Updated using [[Special:Magic]]',
+	'translate-magic-cm-updatedusing' => 'Updated using [[Special:AdvancedTranslate|{{int:Translate-magic-pagename}}]]',
 	'translate-magic-cm-savefailed'   => 'Save failed',
 
 	'translate-magic-special'   => 'Special page aliases',
@@ -260,7 +260,6 @@ The subpage "translators" must contain the template [[:{{ns:template}}:User|User
 	'translate-group-desc-wikitravelextensions' => 'Meta message group containing all messages for supported MediaWiki extensions used by [http://wikitravel.org Wikitravel]',
 	'translate-group-desc-uniwiki' => 'Meta message group containing all messages for extensions related to [http://unicefinnovation.org/wiki.php Uniwiki]',
 	'translate-group-desc-ui' => 'Meta message group containing all messages for extensions related to the [http://meta.wikimedia.org/wiki/Wikipedia_Usability_Initiative Wikipedia Usability Initiative]',
-	#'translate-group-desc-mwembed' => '[http://www.mediawiki.org/wiki/MwEmbed MwEmbed] is a library for embedding MediaWiki interfaces',
 	'translate-group-desc-nodesc' => 'No description is available for this message group',
 
 	'translate-manage-groups' => 'Group management',
@@ -320,7 +319,7 @@ If you choose to ignore changes, they will be overridden on next export.',
 	'translate-import-load' => 'Load file',
 
 	'translate-import-err-type-not-supported' => 'Unable to load the file:
-Method <tt>$1</tt> is not supported.',
+Method <code>$1</code> is not supported.',
 	'translate-import-err-dl-failed' => 'Unable to fetch the file:
 $1',
 	'translate-import-err-ul-failed' => 'File upload was not successful',
@@ -462,9 +461,20 @@ These messages will not be submitted to svn, but will only affect the interface 
 	'supportedlanguages-noportal' => '{{doc-important|Do not translate "translators" and "<nowiki>[[:{{ns:template}}:User|User]]</nowiki>"!}}',
 	'translate-save' => '{{Identical|Save}}',
 	'translate-jssti-add' => 'Name of button in [[Special:Preferences]], tab Editing.',
+	'translate-manage-groups' => 'Special page title. See screenshot. [[File:Manage-1.png|right|thumb|Group management interface]]',
+	'translate-manage-listgroups' => 'Section heading on special page. See screenshot [[File:Manage-1.png|150px|right|Group management interface]].',
+	'translate-manage-listgroups-old' => 'Section heading on special page. See screenshot [[File:Manage-1.png|right|thumb|Group management interface]].',
+	'translate-manage-modlangs' => '{{doc-screenshot|Manage-3.png|twn}}Part of group management special page.',
 	'translate-manage-modlang-new' => '{{Identical|New}}
 
 "new" means that the translations for that languages has never been imported/cached yet. $1 is a link to the page that allows do that.',
+	'translate-manage-import-diff' => 'See screenshot [[File:Manage-2.png|150px|right|Group management interface]].
+Variables:
+*$1 - Message name
+*$2 - radio buttons 
+**{{msg-mw|MediaWiki:Translate-manage-action-import}}
+**{{msg-mw|Translate-manage-action-conflict}}
+**{{msg-mw|Translate-manage-action-ignore}}',
 	'translate-manage-action-import' => '{{Identical|Import}}
 
 Used in the group management interface. {{doc-screenshot|Manage-4.png|twn}}',
@@ -475,9 +485,15 @@ fuzzy = mark translations for review',
 	'translate-manage-action-fuzzy' => 'Used in the group management interface. {{doc-screenshot|Manage-4.png|twn}}
 
 fuzzy = mark translations for review',
-	'translate-manage-submit' => 'Used in the group management interface. {{doc-screenshot|Manage-4.png|twn}}',
+	'translate-manage-submit' => 'Used in the group management interface. {{doc-screenshot|Manage-3.png|twn}}',
 	'translate-manage-import-fuzzy' => 'fuzzy = mark translations for review',
-	'translate-manage-intro-en' => 'If your language and its grammar permit, you can refer to <code>ignore</code> as <code>{<nowiki />{int:{{msg-mw|translate-manage-action-ignore}}}}</code>.',
+	'translate-manage-intro-en' => 'Introduction to special page. See screenshot [[File:Manage-2.png|150px|right|Group management interface]].
+
+If your language and its grammar permit, you can refer to <code>ignore</code> as <code>{<nowiki />{int:{{msg-mw|translate-manage-action-ignore}}}}</code>.',
+	'translate-manage-intro-other' => 'Introduction to special page. See screenshot. [[File:Manage-2.png|150px|right|Group management interface]]
+$1 is a language name.',
+	'translate-manage-import-rebuild-all' => 'Submit button on group management special page.
+{{doc-screenshot|Manage-3.png|twn}}',
 	'importtranslations' => 'Used in [[Special:ImportTranslations]]. {{doc-screenshot|Import-1.png|twn}}',
 	'translate-import-from-url' => 'Used in [[Special:ImportTranslations]]. {{doc-screenshot|Import-1.png|twn}}',
 	'translate-import-from-wiki' => 'Used in [[Special:ImportTranslations]]. {{doc-screenshot|Import-1.png|twn}}',
@@ -621,7 +637,7 @@ $messages['af'] = array(
 	'translate-magic-cm-original' => 'Oorspronklik',
 	'translate-magic-cm-comment' => 'Samevatting:',
 	'translate-magic-cm-save' => 'Stoor',
-	'translate-magic-cm-updatedusing' => 'Opgedateer deur [[Special:Magic]] te gebruik',
+	'translate-magic-cm-updatedusing' => 'Opgedateer deur [[Special:AdvancedTranslate|{{int:Translate-magic-pagename}}]] te gebruik',
 	'translate-magic-cm-savefailed' => 'Stoor het gefaal',
 	'translate-magic-special' => 'Alternatiewe spesiale bladsye',
 	'translate-magic-words' => 'Magiese woorde',
@@ -698,6 +714,8 @@ Alle waardes het hoër en laer limiete.',
 	'translate-translations-including-no-param' => "Verskaf asseblief 'n geldige boodskapnaam as subbladsy-parameter",
 	'languagestats' => 'Taalstatistieke',
 	'languagestats-summary' => "Op hierdie bladsy word vertaalstatistieke vir alle boodskapgroepe van 'n taal weergegee.",
+	'languagestats-stats-for' => 'Vertaalstatistieke vir $1 ($2).',
+	'languagestats-recenttranslations' => 'onlangse vertalings',
 	'translate-language-code' => 'Taalkode',
 	'translate-language-code-field-name' => 'Taalkode:',
 	'translate-suppress-complete' => 'Verberg volledig vertaalde boodskapgroepe',
@@ -706,6 +724,9 @@ Alle waardes het hoër en laer limiete.',
 	'translate-untranslated' => 'Onvertaal',
 	'translate-percentage-complete' => 'Vertaal',
 	'translate-percentage-fuzzy' => 'Verouderd',
+	'supportedlanguages' => 'Ondersteunde tale',
+	'supportedlanguages-translators' => '{{PLURAL:$2|Vertaler|Vertalers}}: $1',
+	'supportedlanguages-noportal-title' => 'Die portaalnaamruimte is nie gedefinieer nie',
 	'translate-save' => 'Stoor ($1)',
 	'translate-jssti-add' => 'Voeg by lys',
 	'translate-group-desc-mediawikicore' => 'Hierdie boodskapgroep bevat die boodskappe wat in die huidige alfa-weergawe van MediaWiki gebruik word - {{CURRENTVERSION}}',
@@ -762,7 +783,7 @@ Kontroleer die wysiging.",
 	'translate-import-from-local' => 'Lokale lêer oplaai:',
 	'translate-import-load' => 'Laai lêer',
 	'translate-import-err-type-not-supported' => 'Dit was nie moontlik om die lêer op te laai nie:
-die metode <tt>$1</tt> word nie ondersteun nie.',
+die metode <code>$1</code> word nie ondersteun nie.',
 	'translate-import-err-dl-failed' => 'Kon nie die lêer gaan haal nie: $1',
 	'translate-import-err-ul-failed' => 'Die oplaai van die lêer was onsuksesvol',
 	'translate-import-err-invalid-title' => 'Die gespesifiseerde lêernaam <nowiki>$1</nowiki> is ongeldig.',
@@ -770,6 +791,11 @@ die metode <tt>$1</tt> word nie ondersteun nie.',
 	'translate-import-err-warnings' => 'Die lêer is nie goed gevorm nie.
 Maak seker dat u teksverwerker nie "msgctxt"-velde verwyder nie.
 Besonderhede: $1',
+	'translate-js-next' => 'Stoor en open die volgende',
+	'translate-js-nonext' => 'Dit was die laaste boodskap op hierdie bladsy.',
+	'translate-js-skip' => 'Slaan oor en volgende',
+	'translate-js-save-failed' => 'Stoor het misluk. Rapporteer asb. hierdie fout.',
+	'translate-js-history' => 'Vertaalgeskiedenis',
 	'translate-gs-pos' => 'Pos.',
 	'translate-gs-code' => 'Kode',
 	'translate-gs-continent' => 'Kontinent',
@@ -879,7 +905,7 @@ $messages['aln'] = array(
 	'translate-import-from-wiki' => 'File në këtë wiki:',
 	'translate-import-from-local' => 'upload lokale file:',
 	'translate-import-load' => 'Ngarko foto',
-	'translate-import-err-type-not-supported' => 'I pamundur ngarkimi i file: Metoda <tt>$1</tt> nuk është i mbështetur.',
+	'translate-import-err-type-not-supported' => 'I pamundur ngarkimi i file: Metoda <code>$1</code> nuk është i mbështetur.',
 	'translate-import-err-dl-failed' => 'Në pamundësi për të shkoj të marr file: $1',
 	'translate-import-err-ul-failed' => 'File upload nuk ishte i suksesshëm',
 	'translate-import-err-invalid-title' => 'Me kusht që emri i file <nowiki> $1 </nowiki> ishte e pavlefshme.',
@@ -967,7 +993,7 @@ En as palabras machicas, ha d'encluyir a traduzión en anglés, porque si no lo 
 
 Os alias d'as pachinas espezials y as parabras machicas pueden tener barias traduzions. As traduzions se deseparan por una coma (,). Os nombres d'as aparenzias y d'os espazios de nombres no pueden tener que una unica traduzión.
 
-En as traduzions d'os espazios de nombres <tt>\$1 talk</tt> ye espezial. <tt>\$1</tt> ye escambiata por o nombre d'o sitio (por exemplo <tt>{{ns:project_talk}}</tt>). Si no ye posible en a suya luenga formar una esprisión correuta sin cambiar o nombre d'o sitio, contaute con un programador.
+En as traduzions d'os espazios de nombres <code>\$1 talk</code> ye espezial. <code>\$1</code> ye escambiata por o nombre d'o sitio (por exemplo <code>{{ns:project_talk}}</code>). Si no ye posible en a suya luenga formar una esprisión correuta sin cambiar o nombre d'o sitio, contaute con un programador.
 
 Ha de pertenexer á la colla de tradutors ta alzar os cambeos. Ístos no quedan rechistratos dica que no se puncha en o botón \"Alzar pachina\" que ye en o cobaxo d'a pachina.",
 	'translate-magic-submit' => 'Ir á escar',
@@ -977,7 +1003,7 @@ Ha de pertenexer á la colla de tradutors ta alzar os cambeos. Ístos no quedan 
 	'translate-magic-cm-original' => 'Orichinal',
 	'translate-magic-cm-comment' => 'Comentario:',
 	'translate-magic-cm-save' => 'Alzar',
-	'translate-magic-cm-updatedusing' => 'Esbiellato usando [[Special:Magic]]',
+	'translate-magic-cm-updatedusing' => 'Esbiellato usando [[Special:AdvancedTranslate|{{int:Translate-magic-pagename}}]]',
 	'translate-magic-cm-savefailed' => 'No se podió alzar a pachina',
 	'translate-magic-special' => 'Alias de pachinas espezials',
 	'translate-magic-words' => 'Parabras machicas',
@@ -1066,7 +1092,7 @@ $messages['ar'] = array(
 الترجمات تفصل بواسطة فاصلة (,).
 أسماء النطاقات يمكن أن يكون لها ترجمة واحدة فقط.
 
-في ترجمات النطاقات <tt>$1 talk</tt> خاص. <tt>$1</tt> يتم استبدالها باسم الموقع (على سبيل المثال <tt>{{ns:project_talk}}</tt>).
+في ترجمات النطاقات <code>$1 talk</code> خاص. <code>$1</code> يتم استبدالها باسم الموقع (على سبيل المثال <code>{{ns:project_talk}}</code>).
 لو أنه من غير الممكن في لغتك صياغة تعبير صحيح بدون تغيير اسم الموقع، من فضلك اتصل بمطور.
 
 تحتاج إلى أن تكون في مجموعة المترجمين لحفظ التغييرات.
@@ -1080,7 +1106,7 @@ $messages['ar'] = array(
 	'translate-magic-cm-original' => 'الأصلي',
 	'translate-magic-cm-comment' => 'تعليق:',
 	'translate-magic-cm-save' => 'احفظ',
-	'translate-magic-cm-updatedusing' => 'حدث باستخدام [[Special:Magic]]',
+	'translate-magic-cm-updatedusing' => 'حدث باستخدام [[Special:AdvancedTranslate|{{int:Translate-magic-pagename}}]]',
 	'translate-magic-cm-savefailed' => 'الحفظ فشل',
 	'translate-magic-special' => 'أسماء الصفحات الخاصة',
 	'translate-magic-words' => 'كلمات سحرية',
@@ -1240,7 +1266,7 @@ $messages['ar'] = array(
 	'translate-import-from-local' => 'رفع ملف محلي:',
 	'translate-import-load' => 'حمّل الملف',
 	'translate-import-err-type-not-supported' => 'غير قادر على تحميل الملف:
-الطريقة <tt>$1</tt> غير مدعومة.',
+الطريقة <code>$1</code> غير مدعومة.',
 	'translate-import-err-dl-failed' => 'تعذّر جلب الملف:
 $1',
 	'translate-import-err-ul-failed' => 'لم ينجح رفع الملف',
@@ -1415,7 +1441,7 @@ $messages['arz'] = array(
 الترجمات تفصل بواسطه فاصله (,).
 أسماء النطاقات يمكن أن يكون لها ترجمه واحده فقط.
 
-فى ترجمات النطاقات <tt>$1 talk</tt> خاص. <tt>$1</tt> يتم استبدالها باسم الموقع (على سبيل المثال <tt>{{ns:project_talk}}</tt>).
+فى ترجمات النطاقات <code>$1 talk</code> خاص. <code>$1</code> يتم استبدالها باسم الموقع (على سبيل المثال <code>{{ns:project_talk}}</code>).
 لو أنه من غير الممكن فى لغتك صياغه تعبير صحيح بدون تغيير اسم الموقع، من فضلك اتصل بمطور.
 
 تحتاج إلى أن تكون فى مجموعه المترجمين لحفظ التغييرات.
@@ -1429,7 +1455,7 @@ $messages['arz'] = array(
 	'translate-magic-cm-original' => 'الأصلي',
 	'translate-magic-cm-comment' => 'تعليق:',
 	'translate-magic-cm-save' => 'احفظ',
-	'translate-magic-cm-updatedusing' => 'حدث باستخدام [[Special:Magic]]',
+	'translate-magic-cm-updatedusing' => 'حدث باستخدام [[Special:AdvancedTranslate|{{int:Translate-magic-pagename}}]]',
 	'translate-magic-cm-savefailed' => 'الحفظ فشل',
 	'translate-magic-special' => 'أسماء الصفحات الخاصة',
 	'translate-magic-words' => 'كلمات سحرية',
@@ -1582,7 +1608,7 @@ $messages['arz'] = array(
 	'translate-import-from-local' => 'رفع ملف محلي:',
 	'translate-import-load' => 'حمّل الملف',
 	'translate-import-err-type-not-supported' => 'غير قادر على تحميل الملف:
-الطريقه <tt>$1</tt> غير مدعومه.',
+الطريقه <code>$1</code> غير مدعومه.',
 	'translate-import-err-dl-failed' => 'تعذّر جلب الملف:
 $1',
 	'translate-import-err-ul-failed' => 'لم ينجح رفع الملف',
@@ -1714,7 +1740,7 @@ Los nomes de les páxines especiales y les pallabres máxiques puen tener múlti
 Les traducciones sepártense con una coma (,).
 Los espacios de nome namái puen tener una traducción.
 
-Nes traducciones de los espacios de nome <tt>$1 talk</tt> ye especial. <tt>$1</tt> ye sustituyíu pol nome del sitiu (por exemplu <tt>{{ns:project_talk}}</tt>).
+Nes traducciones de los espacios de nome <code>$1 talk</code> ye especial. <code>$1</code> ye sustituyíu pol nome del sitiu (por exemplu <code>{{ns:project_talk}}</code>).
 Si na to llingua nun ye posible formar una espresión válida ensin camudar el nome del sitiu, por favor contauta con un desenrollador.
 
 Necesites tar nel grupu de traductores pa guardar los cambeos.
@@ -1727,7 +1753,7 @@ Los cambeos nun se graben hasta que calques nel botón guardar d'abaxo.",
 	'translate-magic-cm-original' => 'Orixinal',
 	'translate-magic-cm-comment' => 'Comentariu:',
 	'translate-magic-cm-save' => 'Guardar',
-	'translate-magic-cm-updatedusing' => 'Actualizao usando [[Special:Magic]]',
+	'translate-magic-cm-updatedusing' => 'Actualizao usando [[Special:AdvancedTranslate|{{int:Translate-magic-pagename}}]]',
 	'translate-magic-cm-savefailed' => "Falló'l guardáu",
 	'translate-magic-special' => 'Nomes de páxines especiales',
 	'translate-magic-words' => 'Pallabres máxiques',
@@ -1902,7 +1928,7 @@ $messages['be-tarask'] = array(
 Псэўданімы спэцыяльных старонак і магічныя словы могуць мець некалькі перакладаў, якія разьдзяляюцца коскай (,).
 Прасторы назваў могуць мець толькі адзін пераклад.
 
-У перакладах прастораў назваў радок <tt>абмеркаваньне $1</tt> мае спэцыяльнае значэньне. <tt>$1</tt> будзе замененае на назву сайта (напрыклад, <tt>{{ns:project_talk}}</tt>).
+У перакладах прастораў назваў радок <code>абмеркаваньне $1</code> мае спэцыяльнае значэньне. <code>$1</code> будзе замененае на назву сайта (напрыклад, <code>{{ns:project_talk}}</code>).
 Калі для Вашай мовы немагчыма стварыць адпаведны выраз бязь зьмены назвы сайта, калі ласка, зьвяжыцеся з распрацоўшчыкамі.
 
 Вам неабходна ўваходзіць у групу перакладчыкаў, каб захаваць зьмены.
@@ -1916,7 +1942,7 @@ $messages['be-tarask'] = array(
 	'translate-magic-cm-original' => 'Арыгінальнае',
 	'translate-magic-cm-comment' => 'Камэнтар:',
 	'translate-magic-cm-save' => 'Захаваць',
-	'translate-magic-cm-updatedusing' => 'Абноўлена з дапамогай [[Special:Magic]]',
+	'translate-magic-cm-updatedusing' => 'Абноўлена з дапамогай [[Special:AdvancedTranslate|{{int:Translate-magic-pagename}}]]',
 	'translate-magic-cm-savefailed' => 'Памылка запісу',
 	'translate-magic-special' => 'Псэўданімы спэцыяльных старонак',
 	'translate-magic-words' => 'Магічныя словы',
@@ -2089,7 +2115,7 @@ $messages['be-tarask'] = array(
 	'translate-import-from-wiki' => 'Файл у {{GRAMMAR:месны|{{SITENAME}}}}:',
 	'translate-import-from-local' => 'Загрузіць лякальны файл:',
 	'translate-import-load' => 'Загрузіць файл',
-	'translate-import-err-type-not-supported' => 'Немагчыма загрузіць файл: мэтад <tt>$1</tt> не падтрымліваецца.',
+	'translate-import-err-type-not-supported' => 'Немагчыма загрузіць файл: мэтад <code>$1</code> не падтрымліваецца.',
 	'translate-import-err-dl-failed' => 'Немагчыма загрузіць файл:
 $1',
 	'translate-import-err-ul-failed' => 'Загрузка файла не атрымалася',
@@ -2180,7 +2206,7 @@ $messages['bg'] = array(
 	'translate-magic-cm-original' => 'Оригинално',
 	'translate-magic-cm-comment' => 'Коментар:',
 	'translate-magic-cm-save' => 'Съхранение',
-	'translate-magic-cm-updatedusing' => 'Обновено чрез [[Special:Magic]]',
+	'translate-magic-cm-updatedusing' => 'Обновено чрез [[Special:AdvancedTranslate|{{int:Translate-magic-pagename}}]]',
 	'translate-magic-cm-savefailed' => 'Съхраняването беше неуспешно',
 	'translate-magic-special' => 'Имена на специални страници',
 	'translate-magic-words' => 'Вълшебни думички',
@@ -2312,6 +2338,8 @@ Abeg :
 	'translate-page-settings-legend' => 'Dibaboù',
 	'translate-page-task' => "C'hoant am eus da",
 	'translate-page-group' => 'Strollad',
+	'translate-page-group-tooltip' => "Anv ur strollad kemennadennoù.
+Ma ya d'ober ar strollad istrolladoù pe usstrolladoù kemennadennoù tennet eus strolladoù all, e vo merket e tev.",
 	'translate-page-language' => 'Yezh',
 	'translate-page-limit' => 'Bevenn',
 	'translate-page-limit-option' => '$1 {{PLURAL:$1|gemennadenn|kemennadenn}} dre bajenn',
@@ -2348,7 +2376,7 @@ Aliasoù ar pajennoù dibar hag ar gerioù burzhudus a c'hall kaout meur a droid
 Dispartiet eo an troidigezhioù dre skejoù (,).
 N'hall anvioù an esaouennoù anv kaout nemet un droidigezh.
 
-E troidigezhioù an esaouennoù anv eo dibar <tt>$1 talk</tt>. Erlec'hiet eo <tt>$1</tt> gant anv al lec'hienn (da skouer <tt>{{ns:project_talk}}</tt>).
+E troidigezhioù an esaouennoù anv eo dibar <code>$1 talk</code>. Erlec'hiet eo <code>$1</code> gant anv al lec'hienn (da skouer <code>{{ns:project_talk}}</code>).
 Ma n'haller ket sevel lavarennoù reizh en ho yezh hep kemmañ anv al lec'hienn, kit e darempred gant un diorroer.
 
 Ret eo deoc'h bezañ ezel eus ar strollad troerien evit enrollañ ar c'hemmoù.
@@ -2362,7 +2390,7 @@ Ne vo ket enrollet ar c'hemmoù e-keit ha ne vo ket bet pouezet war ar bouton en
 	'translate-magic-cm-original' => 'Orin',
 	'translate-magic-cm-comment' => 'Notenn :',
 	'translate-magic-cm-save' => 'Enrollañ',
-	'translate-magic-cm-updatedusing' => 'Hizivaet en ur implijout [[Special:Magic]]',
+	'translate-magic-cm-updatedusing' => 'Hizivaet en ur implijout [[Special:AdvancedTranslate|{{int:Translate-magic-pagename}}]]',
 	'translate-magic-cm-savefailed' => "C'hwitet enrollañ",
 	'translate-magic-special' => 'Aliasoù ar pajennoù dibar',
 	'translate-magic-words' => 'Gerioù burzhudus',
@@ -2443,9 +2471,15 @@ Bevennoù izel hag uhel zo d'an holl dalvoudoù.",
 	'translate-suppress-complete' => 'Arabat diskouez ar strolladoù kemennadennoù zo bet troet penn-da-benn.',
 	'translate-language' => 'Yezh :',
 	'translate-total' => 'Kemennadennoù',
+	'translate-total-tooltip' => 'An niver hollek a gemennadennoù er strollad-mañ.',
 	'translate-untranslated' => 'Didro',
+	'translate-untranslated-tooltip' => "An niver hollek a gemennadennoù didro zo er strollad-mañ.
+En o zouez ar c'hemennadennoù merket evel dispredet.",
 	'translate-percentage-complete' => 'Echu',
+	'translate-percentage-complete-tooltip' => "An dregantad a gemennadennoù er strollad-mañ hag a zo bet troet ha n'int ket dispredet.",
 	'translate-percentage-fuzzy' => 'Dispredet',
+	'translate-percentage-fuzzy-tooltip' => "An dregantad a gemennadennoù zo bet troet er strollad-maén hag a zo bet merket evel dispredet.
+Merket e vez kemennadennoù zo evel dispredet pe peogwir eo bet cheñchet ar gemennadenn orin e saozneg pe peogwir eo bet c'hwitet ar gwiriekadur emgefre.",
 	'translate-nothing-to-do' => "Evit doare eo bet kaset da benn kement troidigezh posupl.
 Broudet oc'h da adwelet ar c'hemennadennoù adal [[Special:Translate|{{int:translate}}]].",
 	'supportedlanguages' => 'Yezhoù skoret',
@@ -2457,6 +2491,11 @@ Ma vank ur yezh bennak er roll e c'hallit kavout penaos kregiñ gant ur raktres 
 
 Ma troit en ur yezh bennak ha ma ne zeu ket hoc'h anv war wel e c'hallit ouzhpennañ anezhañ war [[:Category:Languages|porched]] ar yezh-se.
 Sellit ouzh al lañser evit al liamm a gas d'ar yezh spisaet ganeoc'h en ho penndibaboù.",
+	'supportedlanguages-translators' => '{{PLURAL:$2|Troer|Troerien}} : $1',
+	'supportedlanguages-noportal-title' => "N'eo termenet esaouenn anv ebet evit ar porchedoù",
+	'supportedlanguages-noportal' => 'N\'eus bet termenet NS_PORTAL ebet gant merour ar wiki. Gant se n\'hall ket ar bajenn-mañ mont en-dro.
+War ar bajenn-mañ e vo gwelet ur roll yezhoù evit an holl borchedoù a glot gant ur yezh resis hag un ispajenn anvet "translators".
+Dre ret emañ en ispajenn "translators" ar patrom [[:{{ns:template}}:User|User]], a gemer un anv implijer da arventenn.',
 	'translate-save' => 'Enrollañ ($1)',
 	'translate-jssti-add' => "Ouzhpennañ d'ar roll",
 	'translate-group-desc-mediawikicore' => "Er strollad kemennadennoù-mañ emañ ar c'hemennadennoù implijet e stumm red MediaWiki ({{CURRENTVERSION}})",
@@ -2524,7 +2563,7 @@ Ma tibabit chom hep kemer ar c'hemmoù e kont e vint riñset-lip kentañ tro ma 
 	'translate-import-from-local' => "Enporzhiañ ur restr lec'hel :",
 	'translate-import-load' => 'Kargañ ar restr',
 	'translate-import-err-type-not-supported' => "Dibosupl kargañ ar restr :
-N'eo ket skoret an hentenn <tt>$1</tt>.",
+N'eo ket skoret an hentenn <code>$1</code>.",
 	'translate-import-err-dl-failed' => "Dibosupl kerc'hat ar restr :
 $1",
 	'translate-import-err-ul-failed' => "C'hwitet eo bet enporzhiañ ar restr",
@@ -2616,7 +2655,7 @@ Skraćenice posebnih stranica i magične riječi mogu imati višestruke prijevod
 Prijevodi su odvojeni zarezom (,).
 Imenski prostori mogu imati samo jedan prijevod.
 
-U prijevodima imenskih prostora <tt>$1 razgovor</tt> je poseban. <tt>$1</tt> je zamijeneno sa imenom sajta (naprimjer <tt>{{ns:project_talk}}</tt>).
+U prijevodima imenskih prostora <code>$1 razgovor</code> je poseban. <code>$1</code> je zamijeneno sa imenom sajta (naprimjer <code>{{ns:project_talk}}</code>).
 Ako nije moguće na Vašem jeziku da se obrazuje validan izraz bez promjene imena sajta, molimo da kontaktirate razvojnog programera..
 
 Morate pripadati grupi prevodioca da bi spremili promjene.
@@ -2630,7 +2669,7 @@ Promjene nisu spremljene sve dok ne kliknete dugme spremi koje se nalazi ispod.'
 	'translate-magic-cm-original' => 'Originalno',
 	'translate-magic-cm-comment' => 'Komentar:',
 	'translate-magic-cm-save' => 'Sačuvaj',
-	'translate-magic-cm-updatedusing' => 'Ažurirano putem [[Special:Magic]]',
+	'translate-magic-cm-updatedusing' => 'Ažurirano putem [[Special:AdvancedTranslate|{{int:Translate-magic-pagename}}]]',
 	'translate-magic-cm-savefailed' => 'Spremanje nije uspjelo',
 	'translate-magic-special' => 'Skraćenice posebnih stranica',
 	'translate-magic-words' => 'Magične riječi',
@@ -2783,7 +2822,7 @@ Ako odaberete da zanemarite izmjene, one će biti prepisane pri slijedećem izvo
 	'translate-import-from-local' => 'Postavljanje lokalne datoteke:',
 	'translate-import-load' => 'Učitaj datoteku',
 	'translate-import-err-type-not-supported' => 'Ne može se učitati datoteka:
-Metod <tt>$1</tt> nije podržan.',
+Metod <code>$1</code> nije podržan.',
 	'translate-import-err-dl-failed' => 'Nije moguće uvesti datoteku:
 $1',
 	'translate-import-err-ul-failed' => 'Postavljanje datoteke nije uspjelo',
@@ -2890,7 +2929,7 @@ $messages['ca'] = array(
 
 Els títols de les pàgines especials i les paraules màgiques poden tenir múltiples traduccions. Separeu-les per una coma (,) i un espai. Els espais de noms només poden tenir una traducció.
 
-Dins les traduccions dels espais de noms, la <tt>$1 talk</tt> és especial. <tt>$1</tt> es substitueix pel nom del projecte (per exemple <tt>{{ns:project_talk}}</tt>). Si no és possible fer-ho així en el vostre idioma sense canviar la forma gramatical del nom del projecte, contacteu amb un programador.
+Dins les traduccions dels espais de noms, la <code>$1 talk</code> és especial. <code>$1</code> es substitueix pel nom del projecte (per exemple <code>{{ns:project_talk}}</code>). Si no és possible fer-ho així en el vostre idioma sense canviar la forma gramatical del nom del projecte, contacteu amb un programador.
 
 Heu de tenir permisos de traductor per a desar els canvis, que no es guardaran fins que no cliqueu el botó corresponent.",
 	'translate-magic-module' => 'Mòdul:',
@@ -2901,7 +2940,7 @@ Heu de tenir permisos de traductor per a desar els canvis, que no es guardaran f
 	'translate-magic-cm-original' => 'Original',
 	'translate-magic-cm-comment' => 'Comentari:',
 	'translate-magic-cm-save' => 'Desa',
-	'translate-magic-cm-updatedusing' => 'Actualitzat amb [[Special:Magic]]',
+	'translate-magic-cm-updatedusing' => 'Actualitzat amb [[Special:AdvancedTranslate|{{int:Translate-magic-pagename}}]]',
 	'translate-magic-cm-savefailed' => 'Error al desar',
 	'translate-magic-special' => 'Noms de les pàgines especials',
 	'translate-magic-words' => 'Paraules màgiques',
@@ -2988,7 +3027,7 @@ Us animem a revisar missatges a través de [[Special:Translate|{{int:translate}}
 	'translate-import-from-local' => 'Càrrega de fitxer local:',
 	'translate-import-load' => 'Carrega fitxer',
 	'translate-import-err-type-not-supported' => "No s'ha pogut carregar el fitxer:
-El mètode <tt>$1</tt> no està suportat.",
+El mètode <code>$1</code> no està suportat.",
 	'translate-import-err-dl-failed' => "No s'ha pogut obtenir el fitxer:
 $1",
 	'translate-import-err-ul-failed' => "La càrrega del fitxer no s'ha completat",
@@ -3122,7 +3161,7 @@ Aliasy speciálních stránek a kouzelná slova mohou mít více překladů.
 Překlady se oddělují čárkou (,).
 Názvy jmenných prostorů mohou mít jen jeden překlad.
 
-V překladech jmenných prostorů se <tt>$1 talk</tt> chová zvláštně. <tt>$1</tt> se nahradí názvem projektu (např. <tt>{{ns:project_talk}}</tt>).
+V překladech jmenných prostorů se <code>$1 talk</code> chová zvláštně. <code>$1</code> se nahradí názvem projektu (např. <code>{{ns:project_talk}}</code>).
 Pokud není ve vašem jazyce možné vytvořit smysluplný výraz bez změny názvu projektu, kontaktujte vývojáře.
 
 Abyste mohli ukládat změny, musíte být členem skupiny ''překladatelé''.
@@ -3136,7 +3175,7 @@ Změny se neuloží, dokud nekliknete na tlačítko „Uložit změny“ pod edi
 	'translate-magic-cm-original' => 'původní',
 	'translate-magic-cm-comment' => 'Komentář:',
 	'translate-magic-cm-save' => 'Uložit',
-	'translate-magic-cm-updatedusing' => 'Aktualizovat pomocí [[Special:Magic]]',
+	'translate-magic-cm-updatedusing' => 'Aktualizovat pomocí [[Special:AdvancedTranslate|{{int:Translate-magic-pagename}}]]',
 	'translate-magic-cm-savefailed' => 'Uložení se nepovedlo',
 	'translate-magic-special' => 'Alternativní jména speciálních stránek',
 	'translate-magic-words' => 'Kouzelná slůvka',
@@ -3248,7 +3287,7 @@ Teď doporučujeme zkontrolovat hlášení pomocí stránky [[Special:Translate|
 	'translate-import-from-local' => 'Načtení lokálního souboru:',
 	'translate-import-load' => 'Načíst soubor',
 	'translate-import-err-type-not-supported' => 'Nepodařilo se načíst soubor:
-Metoda <tt>$1</tt> není podporována.',
+Metoda <code>$1</code> není podporována.',
 	'translate-import-err-ul-failed' => 'Načtení souboru se nezdařilo.',
 	'translate-import-err-invalid-title' => 'Zadané jméno souboru <nowiki>$1</nowiki> není platné.',
 	'translate-import-err-no-such-file' => 'Soubor <nowiki>$1</nowiki> neexistuje nebo nebyl načten lokálně.',
@@ -3359,7 +3398,7 @@ Specialside-aliaser og magiske ord kan have flere oversættelser.
 Oversættelserne adskilles med komma (,).
 Navnerum kan kun have én oversættelse.
 
-Ved navnerumsoversættelser er <tt>$1 talk</tt> speciel. <tt>$1</tt> erstattes med sidens navn (for eksempel <tt>{{ns:project_talk}}</tt>).
+Ved navnerumsoversættelser er <code>$1 talk</code> speciel. <code>$1</code> erstattes med sidens navn (for eksempel <code>{{ns:project_talk}}</code>).
 Hvis det ikke er muligt i dit sprog at danne et gyldigt udtryk uden at ændre sidenavnet, bedes du venligst kontakte en udvikler.
 
 Du skal være i oversættergruppen for at gemme ændringer.
@@ -3373,7 +3412,7 @@ Du skal være i oversættergruppen for at gemme ændringer.
 	'translate-magic-cm-original' => 'Original',
 	'translate-magic-cm-comment' => 'Kommentar:',
 	'translate-magic-cm-save' => 'Gem',
-	'translate-magic-cm-updatedusing' => 'Opdateret med [[Special:Magic]]',
+	'translate-magic-cm-updatedusing' => 'Opdateret med [[Special:AdvancedTranslate|{{int:Translate-magic-pagename}}]]',
 	'translate-magic-cm-savefailed' => 'Gemning mislykkedes',
 	'translate-magic-special' => 'Specialside-aliaser',
 	'translate-magic-words' => 'Magiske ord',
@@ -3505,7 +3544,7 @@ $messages['de'] = array(
 	'translate-page-no-such-language' => 'Die angegebene Sprache ist ungültig.',
 	'translate-page-no-such-task' => 'Die angegebene Aufgabe ist ungültig.',
 	'translate-page-no-such-group' => 'Die angegebene Gruppe ist ungültig.',
-	'translate-page-disabled' => "Übersetzungen in dieser Sprache in dieser Gruppe wurde deaktiviert. Grund:
+	'translate-page-disabled' => "Übersetzungen in dieser Sprache in dieser Gruppe wurden deaktiviert. Grund:
 
 ''$1''",
 	'translate-page-settings-legend' => 'Einstellungen',
@@ -3547,7 +3586,7 @@ Sofern die Gruppe aus einer Teil- oder Obermenge von Systemnachrichten einer and
 
 Spezialseiten und magische Wörter können mehrere Übersetzungen haben, sie werden jeweils durch ein Komma (,) getrennt. Namensraumnamen dürfen nur je eine Übersetzung haben.
 
-In der Übersetzung eines Namensraumnamens hat <tt>$1 talk</tt> eine spezielle Bedeutung. <tt>$1</tt> wird durch den Projektnamen ersetzt (zum Beispiel <tt>{{ns:project_talk}}</tt>).
+In der Übersetzung eines Namensraumnamens hat <code>$1 talk</code> eine spezielle Bedeutung. <code>$1</code> wird durch den Projektnamen ersetzt (zum Beispiel <code>{{ns:project_talk}}</code>).
 Wenn es in deiner Sprache nicht möglich ist, eine grammatikalisch korrekte Form davon zu bilden ohne den Projektnamen zu verändern, kontaktiere bitte einen Softwareentwickler.
 
 Du musst in der Übersetzer-Gruppe sein, um Änderungen zu speichern.
@@ -3561,7 +3600,7 @@ Du musst in der Übersetzer-Gruppe sein, um Änderungen zu speichern.
 	'translate-magic-cm-original' => 'Original',
 	'translate-magic-cm-comment' => 'Kommentar:',
 	'translate-magic-cm-save' => 'Speichern',
-	'translate-magic-cm-updatedusing' => 'Aktualisiert durch [[Special:Magic]]',
+	'translate-magic-cm-updatedusing' => 'Aktualisiert durch [[Special:AdvancedTranslate|{{int:Translate-magic-pagename}}]]',
 	'translate-magic-cm-savefailed' => 'Speichern fehlgeschlagen',
 	'translate-magic-special' => 'Spezialseiten-Aliase',
 	'translate-magic-words' => 'Magische Wörter',
@@ -3735,7 +3774,7 @@ Wenn du dich entscheidest, Änderungen zu ignorieren, werden sie mit dem nächst
 	'translate-import-from-local' => 'Datei lokal hochladen:',
 	'translate-import-load' => 'Datei laden',
 	'translate-import-err-type-not-supported' => 'Datei kann nicht geladen werden:
-Methode <tt>$1</tt> wird nicht unterstützt.',
+Methode <code>$1</code> wird nicht unterstützt.',
 	'translate-import-err-dl-failed' => 'Datei kann nicht abgerufen werden:
 $1',
 	'translate-import-err-ul-failed' => 'Das Hochladen der Datei war nicht erfolgreich',
@@ -3841,6 +3880,8 @@ $messages['dsb'] = array(
 	'translate-page-settings-legend' => 'Nastajenja',
 	'translate-page-task' => 'Cu',
 	'translate-page-group' => 'Kupka',
+	'translate-page-group-tooltip' => 'Mě kupki powěźeńkow.
+Jolic kupka jo z pódkupki abo nadkupki powěźeńkow drugich kupkow, zwobraznjujo se tucnje.',
 	'translate-page-language' => 'Rěc',
 	'translate-page-limit' => 'Licba powěsćow',
 	'translate-page-limit-option' => '$1 {{PLURAL:$1|powěsć|powěsći|powěsći|powěsćow}} na bok',
@@ -3875,7 +3916,7 @@ $messages['dsb'] = array(
 
 Aliasy specialnych bokow a magiske słowa mógu měś někotare pśełožki. Pśełožki wótźěluju se pśez komu (,). Mjenjowe rumy mógu jano jaden pśełožk měś.
 
-W pśełožkach mjenjowych rumow <tt>$1 diskusija</tt> jo wósebna. <tt>$1</tt> se pśez mjenjom sedła wuměnja (na pśikład <tt>{{SITENAME}} diskusija</tt>). Jolic w twójej rěcy njejo móžno płaśiwy wuraz tworiś, mimo až dejš mě sedła změniš, staj se pšosym z wuwiwarjom do zwiska.
+W pśełožkach mjenjowych rumow <code>$1 diskusija</code> jo wósebna. <code>$1</code> se pśez mjenjom sedła wuměnja (na pśikład <code>{{SITENAME}} diskusija</code>). Jolic w twójej rěcy njejo móžno płaśiwy wuraz tworiś, mimo až dejš mě sedła změniš, staj se pšosym z wuwiwarjom do zwiska.
 
 Musyš w kupce pśełožowarjow byś, aby mogł změny cyniś. Změny se njeskładuju, až njekliknjoš tłocanko "Składowaś" dołojce.',
 	'translate-magic-module' => 'Modul:',
@@ -3887,7 +3928,7 @@ Musyš w kupce pśełožowarjow byś, aby mogł změny cyniś. Změny se njeskł
 	'translate-magic-cm-original' => 'Original',
 	'translate-magic-cm-comment' => 'Komentar',
 	'translate-magic-cm-save' => 'Składowaś',
-	'translate-magic-cm-updatedusing' => 'Z pomocu [[Special:Magic]] zaktualizěrowany',
+	'translate-magic-cm-updatedusing' => 'Z pomocu [[Special:AdvancedTranslate|{{int:Translate-magic-pagename}}]] zaktualizěrowany',
 	'translate-magic-cm-savefailed' => 'Składowanje jo se njeraźiło',
 	'translate-magic-special' => 'Aliasy specialnych bokow',
 	'translate-magic-words' => 'Magiske słowa',
@@ -3965,9 +4006,15 @@ Standardna lisćina rěcow wótwisujo wót swójeje rěcy.',
 	'translate-suppress-complete' => 'Dopołnje pśełožone zdźěleńske kupki pódtłocyś',
 	'translate-language' => 'Rěc:',
 	'translate-total' => 'Zdźělenja',
+	'translate-total-tooltip' => 'Cełkowna licba powěźeńkow w toś tej kupce powěźeńkow.',
 	'translate-untranslated' => 'Njepśełožony',
+	'translate-untranslated-tooltip' => 'Cełkowna licba njepśełožonych powěźeńkow w toś tej kupce powěźeńkow.
+Wóna wopśimujo powěźeńki, kótarež su seako zestarjone markěrowali.',
 	'translate-percentage-complete' => 'Dopołnjenje',
+	'translate-percentage-complete-tooltip' => 'Procentualny późěl powěźeńkow w kupce, kótayž jo se pśełožył a njejo se markěrował ako zestarjony.',
 	'translate-percentage-fuzzy' => 'Zestarjony',
+	'translate-percentage-fuzzy-tooltip' => 'Procentualny późěl powěźeńkow w kupce, kótaryž jo se pśełožył a jo se markěrował ako zestarjony.
+Powěźeńki markěruju se ako zestarjone, dokulaž engelske žrědłowa powěźeńka jo se změniła, dokulaž awtomatiska kontrola za powěźeńku jo se njeraźiła abo dokulaž něchten jo ju ako zestarjonu markěrował.',
 	'translate-nothing-to-do' => 'Zda se, až móžne pśełožki su cynjone.
 Pśiraźijo se, až pśeglědujoš powěźeńki pśez [[Special:Translate|{{int:translate}}]].',
 	'supportedlanguages' => 'Pódpěrane rěcy',
@@ -3979,6 +4026,11 @@ Jolic rěc njejo pódane, móžoš pód "[[Translating:Process|Nowa rěc]]" zgó
 
 Jolic pśełožujoš do rěcy a twójo mě njejo pódane, pśidaj pšosym swójo mě lisćinje pśełožowarjow na [[:Category:Languages|portalu]] teje rěcy.
 Glědaj menijowu lejstwu za wótkaz k portaloju twójeje preferowaneje rěcy.',
+	'supportedlanguages-translators' => '{{PLURAL:$2|Pśełožowaŕ|Pśełožowarja|Pśełožowarje|Pśełožowarjow}}: $1',
+	'supportedlanguages-noportal-title' => 'Žeden portalowy mjenjowy rum definěrowany',
+	'supportedlanguages-noportal' => 'Wikiadministrator njejo NS_PORTAL definěrował, togodla bok njefunkcioněrujo.
+Na toś tom boku buźo se lisćina rěcnych portalow pokazowaś, za wšykne portale, kótarež wótpowěduju definěrowanemu rěcnemu kodoju pódbokoju z mjenim "pśełožowarje".
+Pódbok "pśełožowarje" musy pśedłogu [[:{{ns:template}}:User|Wužywaŕ]] wopśimjeś, z wužywarskim mjenim ako parameter.',
 	'translate-save' => 'Składowaś ($1)',
 	'translate-jssti-add' => 'Lisćinje pśidaś',
 	'translate-group-desc-mediawikicore' => 'Toś ta kupka powěźeńkow wopśimujo powěźeńki, kótarež wužywaju se w aktualnej alfa-wersiji MediaWiki ({{CURRENTVERSION}})',
@@ -4047,7 +4099,7 @@ Jolic ignorěrujoš změny, pśepišu se pśi pśiducem eksporśe.',
 	'translate-import-from-local' => 'Nagraśe lokalneje dataje:',
 	'translate-import-load' => 'Dataju zacytaś',
 	'translate-import-err-type-not-supported' => 'Njemóžno dataju zacytaś:
-Metoda <tt>$1</tt> se njepódpěra.',
+Metoda <code>$1</code> se njepódpěra.',
 	'translate-import-err-dl-failed' => 'Njemóžno dataju wótwołaś:
 $1',
 	'translate-import-err-ul-failed' => 'Nagraśe dataje njejo wuspěšne było',
@@ -4154,7 +4206,7 @@ $messages['el'] = array(
 Οι μεταφράσεις χωρίζονται με ένα κόμμα (,).
 Οι περιοχές ονομάτων μπορούν να έχουν μόνο μία μετάφραση.
 
-Στις μεταφράσεις περιοχών ονομάτων η σελίδα <tt>$1 talk</tt> είναι ειδική. Η μεταβλητή <tt>$1</tt> αντικαθίσταται με το όνομα του ιστοτόπου (για παράδειγμα <tt>{{ns:project_talk}}</tt>).
+Στις μεταφράσεις περιοχών ονομάτων η σελίδα <code>$1 talk</code> είναι ειδική. Η μεταβλητή <code>$1</code> αντικαθίσταται με το όνομα του ιστοτόπου (για παράδειγμα <code>{{ns:project_talk}}</code>).
 Αν δεν είναι δυνατόν στη γλώσσα σας να σχηματίσετε έγκυρη έκφραση χωρίς να αλλάξετε το όνομα του ιστοτόπου, παρακαλούμε επικοινωνήστε με έναν developer.
 
 Πρέπει να είστε στην ομάδα των μεταφραστών για να αποθηκεύσετε αλλαγές.
@@ -4168,7 +4220,7 @@ $messages['el'] = array(
 	'translate-magic-cm-original' => 'Πρωτότυπο',
 	'translate-magic-cm-comment' => 'Σχόλιο:',
 	'translate-magic-cm-save' => 'Αποθήκευση',
-	'translate-magic-cm-updatedusing' => 'Ενημερώθηκε χρησιμοποιώντας τη σελίδα [[Special:Magic]]',
+	'translate-magic-cm-updatedusing' => 'Ενημερώθηκε χρησιμοποιώντας τη σελίδα [[Special:AdvancedTranslate|{{int:Translate-magic-pagename}}]]',
 	'translate-magic-cm-savefailed' => 'Η αποθήκευση απέτυχε',
 	'translate-magic-special' => 'Ψευδώνυμα ειδικών σελίδων',
 	'translate-magic-words' => 'Μαγικές λέξεις',
@@ -4282,7 +4334,7 @@ $messages['el'] = array(
 	'translate-import-from-local' => 'Επιφόρτωση τοπικού αρχείου:',
 	'translate-import-load' => 'Επιφόρτωση αρχείου',
 	'translate-import-err-type-not-supported' => 'Μη ικανό να φορτώσει το αρχείο:
-Η μέθοδος <tt>$1</tt> δεν υποστηρίζεται.',
+Η μέθοδος <code>$1</code> δεν υποστηρίζεται.',
 	'translate-import-err-ul-failed' => 'Η επιφόρτωση του αρχείου δεν ήταν επιτυχής',
 	'translate-import-err-invalid-title' => 'Το όνομα του αρχείου <nowiki>$1</nowiki> δεν ήταν έγκυρο.',
 	'translate-import-err-no-such-file' => 'Το αρχείο <nowiki>$1</nowiki> δεν υπάρχει ή δεν έχει φορτωθεί τοπικά.',
@@ -4365,7 +4417,7 @@ Specialaj kromnomoj de paĝoj kaj magiaj vortoj povas havi multajn tradukojn.
 Tradukoj estas apartigitaj de komo (,).
 Nomoj de nomspacoj nur povas havi unu tradukon.
 
-En nomspacaj tradukoj <tt>$1 diskuto</tt> estas speciala. <tt>$1</tt> estas anstataŭigita de la nomo de la retejo (ekz-e <tt>{{ns:project_talk}})</tt>.
+En nomspacaj tradukoj <code>$1 diskuto</code> estas speciala. <code>$1</code> estas anstataŭigita de la nomo de la retejo (ekz-e <code>{{ns:project_talk}})</code>.
 Se ne eblas per via lingvo formi validan esprimon sen ŝanĝi la nomon de la retejo, bonvolu kontakti programisto.
 
 Vi devas esti en la grupo de tradukantoj por konservi ŝanĝojn.
@@ -4379,7 +4431,7 @@ Vi devas esti en la grupo de tradukantoj por konservi ŝanĝojn.
 	'translate-magic-cm-original' => 'Originalo',
 	'translate-magic-cm-comment' => 'Komento:',
 	'translate-magic-cm-save' => 'Konservi',
-	'translate-magic-cm-updatedusing' => 'Ĝisdatigita pere de [[Special:Magic]]',
+	'translate-magic-cm-updatedusing' => 'Ĝisdatigita pere de [[Special:AdvancedTranslate|{{int:Translate-magic-pagename}}]]',
 	'translate-magic-cm-savefailed' => 'Konservado malsukcesis',
 	'translate-magic-special' => 'Kromnomoj de specialaj paĝoj',
 	'translate-magic-words' => 'Magiaj vortoj',
@@ -4568,7 +4620,7 @@ Si el grupo consiste en un subconjunto o superconjunto de mensajes de otros grup
 Los nombres de las páginas especiales y las palabras mágicas pueden tener varias traducciones, que se separan por comas (,).
 los nombres de espacios de nombre sólo pueden tener una traducción
 
-En las traducciones de espacios de nombre <tt>$1 talk</tt> es especial. <tt>$1</tt> se reemplaza por el nombre del sitio (por ejemplo <tt>{{ns:project_talk}}</tt>). Si en tu idioma no es posible formar una expresión válidad sin cambiar el nombre del sitio, contacta con un desarrollador, por favor.
+En las traducciones de espacios de nombre <code>$1 talk</code> es especial. <code>$1</code> se reemplaza por el nombre del sitio (por ejemplo <code>{{ns:project_talk}}</code>). Si en tu idioma no es posible formar una expresión válidad sin cambiar el nombre del sitio, contacta con un desarrollador, por favor.
 
 Para guardar los cambios debes pertenecer al grupo de traductores
 Los cambios no se graban hasta que no pulses el boton de guardar de abajo.',
@@ -4581,7 +4633,7 @@ Los cambios no se graban hasta que no pulses el boton de guardar de abajo.',
 	'translate-magic-cm-original' => 'Original',
 	'translate-magic-cm-comment' => 'Comentario:',
 	'translate-magic-cm-save' => 'Guardar',
-	'translate-magic-cm-updatedusing' => 'Actualizado usando [[Special:Magic]]',
+	'translate-magic-cm-updatedusing' => 'Actualizado usando [[Special:AdvancedTranslate|{{int:Translate-magic-pagename}}]]',
 	'translate-magic-cm-savefailed' => 'Grabación fallada',
 	'translate-magic-special' => 'Nombres de páginas especiales',
 	'translate-magic-words' => 'Palabras mágicas',
@@ -4754,7 +4806,7 @@ Si prefiere ignorar los cambios, se sobrescribirán en la próxima exportación.
 	'translate-import-from-local' => 'Importación de archivo local:',
 	'translate-import-load' => 'Subir archivo',
 	'translate-import-err-type-not-supported' => 'Incapaz de cargar el archivo:
-Método <tt>$1</tt> no está soportado.',
+Método <code>$1</code> no está soportado.',
 	'translate-import-err-dl-failed' => 'Imposible buscar el archivo:
 $1',
 	'translate-import-err-ul-failed' => 'La carga del archivo no fue exitosa.',
@@ -5068,7 +5120,7 @@ $messages['fa'] = array(
 
 نام‌های مستعار صفحه‌های ویژه و واژه‌های جادویی می‌توانند بیش از یک ترجمه داشته باشند. ترجمه‌ها با یک کامای انگلیسی (,) از هم جدا می‌شوند. نام پوسته‌ها و فضاهای نام تنها می‌تواند یک ترجمه داشته باشد.
 
-در ترجمهٔ نام فضاهای نام <tt>$1 talk</tt> خاص است. <tt>$1</tt> توسط نام وبگاه جایگزین می‌شود (مانند <tt>{{ns:project_talk}}</tt>). اگر در زبان شما امکان ایجاد چنین عبارتی بدون تغییر دادن نام وبگاه وجود ندارد، لطفاً با یکی از توسعه‌دهندگان نرم‌افزار تماس بگیرید.
+در ترجمهٔ نام فضاهای نام <code>$1 talk</code> خاص است. <code>$1</code> توسط نام وبگاه جایگزین می‌شود (مانند <code>{{ns:project_talk}}</code>). اگر در زبان شما امکان ایجاد چنین عبارتی بدون تغییر دادن نام وبگاه وجود ندارد، لطفاً با یکی از توسعه‌دهندگان نرم‌افزار تماس بگیرید.
 
 برای ذخیره کردن تغییرها باید عضو گروه ترجمه‌کنندگان باشید. تغییرات زمانی ذخیره می‌شوند که دکمهٔ ذخیره را در پایین صفحه فشار دهید.',
 	'translate-magic-submit' => 'بیاور',
@@ -5078,7 +5130,7 @@ $messages['fa'] = array(
 	'translate-magic-cm-original' => 'اصلی',
 	'translate-magic-cm-comment' => 'توضیحات:',
 	'translate-magic-cm-save' => 'ذخیره',
-	'translate-magic-cm-updatedusing' => 'به روز شده توسط Special:Magic',
+	'translate-magic-cm-updatedusing' => 'به روز شده توسط [[Special:AdvancedTranslate|{{int:Translate-magic-pagename}}]]',
 	'translate-magic-cm-savefailed' => 'شکست در ذخیره کردن اطلاعات',
 	'translate-magic-special' => 'نام مستعار صفحه‌های ویژه',
 	'translate-magic-words' => 'واژه‌های جادویی',
@@ -5171,7 +5223,7 @@ Toimintosivujen vaihtoehtoisilla nimillä ja taikasanoilla voi olla useita kää
 Käännökset erotetaan pilkulla (,).
 Nimiavaruuksilla voi olla vain yksi käännös.
 
-Nimiavaruuksien käännöksissä <tt>$1 talk</tt> on erikoistapaus. <tt>$1</tt> korvataan sivuston nimellä (esimerkiksi <tt>{{ns:project_talk}}</tt>).
+Nimiavaruuksien käännöksissä <code>$1 talk</code> on erikoistapaus. <code>$1</code> korvataan sivuston nimellä (esimerkiksi <code>{{ns:project_talk}}</code>).
 Jos kielessäsi on mahdotonta muotoilla oikeaa käännöstä ilman sivuston nimen muuttamista, ota yhteyttä kehittäjään.
 
 Sinun tulee olla kääntäjä, jotta voisit tallentaa muutokset.
@@ -5185,7 +5237,7 @@ Muutoksia ei tallenneta, ennen kuin painat tallenna-painiketta.',
 	'translate-magic-cm-original' => 'Alkuperäinen',
 	'translate-magic-cm-comment' => 'Yhteenveto',
 	'translate-magic-cm-save' => 'Tallenna',
-	'translate-magic-cm-updatedusing' => 'Päivitetty [[Special:Magic]]-sivun kautta',
+	'translate-magic-cm-updatedusing' => 'Päivitetty [[Special:AdvancedTranslate|{{int:Translate-magic-pagename}}]] -sivun kautta',
 	'translate-magic-cm-savefailed' => 'Tallennus epäonnistui',
 	'translate-magic-special' => 'Toimintosivujen nimet',
 	'translate-magic-words' => 'Taikasanat',
@@ -5317,7 +5369,7 @@ Tarkistathan.',
 	'translate-import-from-local' => 'Paikallinen tiedosto',
 	'translate-import-load' => 'Tallenna tiedosto',
 	'translate-import-err-type-not-supported' => 'Tiedostoa ei voitu ladata:
-Menetelmä <tt>$1</tt> ei kuulu tuettuihin.',
+Menetelmä <code>$1</code> ei kuulu tuettuihin.',
 	'translate-import-err-dl-failed' => 'Tiedostoa ei voitu noutaa:
 $1',
 	'translate-import-err-ul-failed' => 'Tiedoston lähettäminen ei onnistunut',
@@ -5338,6 +5390,7 @@ $1',
  * @author Guillom
  * @author IAlex
  * @author Jean-Frédéric
+ * @author Litlok
  * @author Louperivois
  * @author McDutchie
  * @author Peter17
@@ -5411,7 +5464,7 @@ Les alias de pages spéciales et les mots magiques peuvent avoir plusieurs tradu
 Les traductions sont séparées par une virgule (,).
 Les espaces de noms ne peuvent avoir qu’une seule traduction.
 
-Dans les traductions d’espaces de noms, <tt>$1 talk</tt> est spécial. <tt>$1</tt> est remplacé par le nom du site (par exemple <tt>{{ns:project_talk}}</tt>).
+Dans les traductions d’espaces de noms, <code>$1 talk</code> est spécial. <code>$1</code> est remplacé par le nom du site (par exemple <code>{{ns:project_talk}}</code>).
 S’il n’est pas possible d’obtenir une expression valide dans votre langue sans changer le nom du site, veuillez contacter un développeur.
 Vous devez appartenir au groupe des traducteurs pour enregistrer toute modification.
 Les modifications ne sont pas enregistrées tant que vous n’avez pas cliqué sur le bouton « {{int:translate-magic-cm-save}} ».',
@@ -5424,7 +5477,7 @@ Les modifications ne sont pas enregistrées tant que vous n’avez pas cliqué s
 	'translate-magic-cm-original' => 'Original',
 	'translate-magic-cm-comment' => 'Commentaire :',
 	'translate-magic-cm-save' => 'Publier',
-	'translate-magic-cm-updatedusing' => 'Mis à jour via [[Special:Magic]]',
+	'translate-magic-cm-updatedusing' => 'Mis à jour via [[Special:AdvancedTranslate|{{int:Translate-magic-pagename}}]]',
 	'translate-magic-cm-savefailed' => 'La publication a échoué.',
 	'translate-magic-special' => 'Alias des pages spéciales',
 	'translate-magic-words' => 'Mots magiques',
@@ -5540,7 +5593,7 @@ La sous-page « translators » doit contenir le modèle [[:{{ns:template}}:User|
 	'translate-save' => 'Publier ($1)',
 	'translate-jssti-add' => 'Ajouter à la liste',
 	'translate-group-desc-mediawikicore' => 'Ce groupe de messages contient les messages utilisés dans la version alpha actuelle de MediaWiki ({{CURRENTVERSION}}).',
-	'translate-group-desc-mediawikimostused' => 'Ce groupe de message contient les [http://translatewiki.net/wiki/Most_often_used_messages_in_MediaWiki 500 messages les plus souvent utilisés] dans MediaWiki.',
+	'translate-group-desc-mediawikimostused' => 'Ce groupe de messages contient les [http://translatewiki.net/wiki/Most_often_used_messages_in_MediaWiki 500 messages les plus souvent utilisés] dans MediaWiki.',
 	'translate-group-desc-mediawikiextensions' => 'Ce méta-groupe de messages contient les messages de toutes les extensions pour MediaWiki supportées.',
 	'translate-group-desc-collection' => 'Ce méta-groupe de messages contient tous les messages de l’extension MediaWiki [http://www.mediawiki.org/wiki/Extension:Collection Collection].',
 	'translate-group-desc-flaggedrevs' => 'Groupe des messages Meta contenant tous les messages de l’extension MediaWiki [http://www.mediawiki.org/wiki/Extension:FlaggedRevs FlaggedRevs]',
@@ -5601,7 +5654,7 @@ Si vous décidez d’ignorer les modifications, elles seront écrasées lors de 
 	'translate-import-from-wiki' => 'Fichier sur ce wiki :',
 	'translate-import-from-local' => 'Importer un fichier local :',
 	'translate-import-load' => 'Charger le fichier',
-	'translate-import-err-type-not-supported' => 'Impossible de charger le fichier: la méthode <tt>$1</tt> n’est pas supportée.',
+	'translate-import-err-type-not-supported' => 'Impossible de charger le fichier: la méthode <code>$1</code> n’est pas supportée.',
 	'translate-import-err-dl-failed' => 'Impossible d’accéder au fichier :
 $1',
 	'translate-import-err-ul-failed' => 'Le téléversement du fichier n’a pas été réussi',
@@ -5716,7 +5769,7 @@ Los noms paralèlos de les pâges spèciâles et los mots magicos pôvont avêr 
 Les traduccions sont sèparâs per una virgula (,).
 Los èspâços de noms pôvont avêr ren que yona traduccion.
 
-Dens les traduccions des èspâços de noms, <tt>$1 talk</tt> est spèciâl. <tt>$1</tt> est remplaciê per lo nom du seto (per ègzemplo <tt>{{ns:project_talk}}</tt>).
+Dens les traduccions des èspâços de noms, <code>$1 talk</code> est spèciâl. <code>$1</code> est remplaciê per lo nom du seto (per ègzemplo <code>{{ns:project_talk}}</code>).
 S’o est pas possiblo d’avêr una èxprèssion valida dens voutra lengoua sen changiér lo nom du seto, vos volyéd veriér vers un dèvelopor.
 
 Vos dête étre a la tropa ux traductors por sôvar los changements.
@@ -5730,7 +5783,7 @@ Los changements sont pas sôvâs tant que vos éd pas clicâ sur lo boton « Sô
 	'translate-magic-cm-original' => 'Originâl',
 	'translate-magic-cm-comment' => 'Comentèro :',
 	'translate-magic-cm-save' => 'Sôvar',
-	'translate-magic-cm-updatedusing' => 'Betâ a jorn avouéc [[Special:Magic]]',
+	'translate-magic-cm-updatedusing' => 'Betâ a jorn avouéc [[Special:AdvancedTranslate|{{int:Translate-magic-pagename}}]]',
 	'translate-magic-cm-savefailed' => 'La sôvegouârda at pas reussia.',
 	'translate-magic-special' => 'Noms paralèlos de les pâges spèciâles',
 	'translate-magic-words' => 'Mots magicos',
@@ -5971,7 +6024,7 @@ Os alias das páxinas especiais e as palabras máxicas poden ter numerosas tradu
 As traducións sepáranse mediante unha coma (,).
 Os nomes dos espazos de nomes só poden ter unha tradución.
 
-Nas traducións dos espazos de nomes, <tt>$1 talk</tt> é especial. <tt>$1</tt> substitúese polo nome do sitio (por exemplo, <tt>{{ns:project_talk}}</tt>).
+Nas traducións dos espazos de nomes, <code>$1 talk</code> é especial. <code>$1</code> substitúese polo nome do sitio (por exemplo, <code>{{ns:project_talk}}</code>).
 Se na súa lingua non resulta posíbel formar unha expresión válida sen mudar o nome do sitio, contacte cun desenvolvedor.
 
 Ten que estar no grupo de tradutores para gardar os cambios.
@@ -5985,7 +6038,7 @@ Os cambios non se gardan ata que prema no botón "Gardar" de embaixo.',
 	'translate-magic-cm-original' => 'Orixinal',
 	'translate-magic-cm-comment' => 'Comentario:',
 	'translate-magic-cm-save' => 'Gardar',
-	'translate-magic-cm-updatedusing' => 'Actualizado mediante [[Special:Magic]]',
+	'translate-magic-cm-updatedusing' => 'Actualizado mediante [[Special:AdvancedTranslate|{{int:Translate-magic-pagename}}]]',
 	'translate-magic-cm-savefailed' => 'Fallou o gardado',
 	'translate-magic-special' => 'Alias de páxinas especiais',
 	'translate-magic-words' => 'Palabras máxicas',
@@ -6159,7 +6212,7 @@ Se opta por ignorar as modificacións, estas serán sobrescritas na vindeira exp
 	'translate-import-from-local' => 'Carga dun ficheiro local:',
 	'translate-import-load' => 'Cargar o ficheiro',
 	'translate-import-err-type-not-supported' => 'Non se pode cargar o ficheiro:
-o método <tt>$1</tt> non é compatible.',
+o método <code>$1</code> non é compatible.',
 	'translate-import-err-dl-failed' => 'Non se pode acceder ao ficheiro:
 $1',
 	'translate-import-err-ul-failed' => 'Fallou a carga do ficheiro',
@@ -6318,7 +6371,7 @@ $messages['gsw'] = array(
 
 Spezialsyten un magischi Werter chenne mehreri Ibersetzige haa, si wäre jewyyls dur e Komma (,) trännt. Namensruumnäme derfe nume je ei Ibersetzig haa.
 
-In dr Ibersetzig vun eme Namensruumnamen het <tt>$1 talk</tt> e spezielli Bedytig. <tt>$1</tt> wird dur dr Projäktname ersetzt (zum Byspil <tt>{{ns:project_talk}}</tt>).
+In dr Ibersetzig vun eme Namensruumnamen het <code>$1 talk</code> e spezielli Bedytig. <code>$1</code> wird dur dr Projäktname ersetzt (zum Byspil <code>{{ns:project_talk}}</code>).
 Wänn s in Dyynere Sproch nit megli isch, e grammatikalisch korrekti Form dervu z bilde ohni dr Projäktname z verändere, no nimm bitte Kontakt uf mit eme Softwareentwickler.
 
 Du muesch in dr Ibersetzer-Gruppe syy go Änderige z spychere.
@@ -6332,7 +6385,7 @@ Du muesch in dr Ibersetzer-Gruppe syy go Änderige z spychere.
 	'translate-magic-cm-original' => 'Original',
 	'translate-magic-cm-comment' => 'Kommentar:',
 	'translate-magic-cm-save' => 'Spychere',
-	'translate-magic-cm-updatedusing' => 'Aktualisiert dur [[Special:Magic]]',
+	'translate-magic-cm-updatedusing' => 'Aktualisiert dur [[Special:AdvancedTranslate|{{int:Translate-magic-pagename}}]]',
 	'translate-magic-cm-savefailed' => 'Spychere fählgschlaa',
 	'translate-magic-special' => 'Spezialsyte-Alias',
 	'translate-magic-words' => 'Magischi Werter',
@@ -6490,7 +6543,7 @@ Wänn Du Änderige witt ignoriere, wäre si bim negschte Export ußer Chraft gse
 	'translate-import-from-local' => 'Datei lokal uffelade:',
 	'translate-import-load' => 'Datei lade',
 	'translate-import-err-type-not-supported' => 'Datei cha nit glade wäre:
-D Method <tt>$1</tt> wird nit unterstitzt.',
+D Method <code>$1</code> wird nit unterstitzt.',
 	'translate-import-err-dl-failed' => 'Datei cha nit abgruefe wäre:
 $1',
 	'translate-import-err-ul-failed' => 'S Uffelade vu dr Datei isch nit erfolgryych gsi',
@@ -6761,7 +6814,7 @@ $messages['he'] = array(
 יש להפריד את התרגומים באמצעות פסיק (,).
 למרחבי שם יכול להיות תרגום אחד בלבד.
 
-בתרגום מרחבי השם, <tt>שיחת $1</tt> הוא מקרה מיוחד. <tt>$1</tt> יוחלף בשם האתר (לדוגמה, <tt>{{ns:project_talk}}</tt>).
+בתרגום מרחבי השם, <code>שיחת $1</code> הוא מקרה מיוחד. <code>$1</code> יוחלף בשם האתר (לדוגמה, <code>{{ns:project_talk}}</code>).
 אם אין זה אפשרי בשפתכם לתרגם את מרחב השם הזה מבלי לשנות את שם האתר, אנא צרו קשר עם מפתח.
 
 עליכם להיות בקבוצת המתרגמים כדי לשמור שינויים.
@@ -6775,7 +6828,7 @@ $messages['he'] = array(
 	'translate-magic-cm-original' => 'מקוריים',
 	'translate-magic-cm-comment' => 'סיבה:',
 	'translate-magic-cm-save' => 'שמירה',
-	'translate-magic-cm-updatedusing' => 'עודכן באמצעות [[Special:Magic]]',
+	'translate-magic-cm-updatedusing' => 'עודכן באמצעות [[Special:AdvancedTranslate|{{int:Translate-magic-pagename}}]]',
 	'translate-magic-cm-savefailed' => 'השמירה נכשלה',
 	'translate-magic-special' => 'שמות דפים מיוחדים',
 	'translate-magic-words' => 'מילות קסם',
@@ -6899,7 +6952,7 @@ $messages['he'] = array(
 	'translate-import-from-local' => 'העלאת קובץ מקומי:',
 	'translate-import-load' => 'טעינת קובץ',
 	'translate-import-err-type-not-supported' => 'לא ניתן לטעון את הקובץ:
-השיטה <tt>$1</tt> אינה נתמכת.',
+השיטה <code>$1</code> אינה נתמכת.',
 	'translate-import-err-dl-failed' => 'לא ניתן לאחזר את הקובץ:
 $1',
 	'translate-import-err-ul-failed' => 'העלאת הקובץ לא הצליחה',
@@ -7025,7 +7078,7 @@ $messages['hr'] = array(
 	'translate-magic-cm-original' => 'Izvornik',
 	'translate-magic-cm-comment' => 'Komentar:',
 	'translate-magic-cm-save' => 'Spremi',
-	'translate-magic-cm-updatedusing' => 'Osvježeno uporabom [[Special:Magic]] stranice',
+	'translate-magic-cm-updatedusing' => 'Osvježeno uporabom [[Special:AdvancedTranslate|{{int:Translate-magic-pagename}}]] stranice',
 	'translate-magic-cm-savefailed' => 'Snimanje nije uspjelo',
 	'translate-magic-special' => 'Alijasi posebnih stranica',
 	'translate-magic-words' => 'Magične riječi (stringovi)',
@@ -7156,7 +7209,7 @@ Aliasy specialnych stronow a magiske słowow móža wjacore přełožki měć.
 Přełožki so přež komu (,) wotdźěleja.
 Mjena mjenowych rumow móža jenož jedyn přełožk měć.
 
-W přełožkach mjenowych rumow <tt>$1 diskusija</tt> je wosebita. <tt>$1</tt> so přez mjeno sydła, na př. <tt>{{ns:project_talk}}</tt> naruna. Jeli w twojej rěči njeje móžno płaćiwy wuraz tworić, bjeztoho zo by so mjeno strony změniło, skontaktuj prošu wuwiwarja.
+W přełožkach mjenowych rumow <code>$1 diskusija</code> je wosebita. <code>$1</code> so přez mjeno sydła, na př. <code>{{ns:project_talk}}</code> naruna. Jeli w twojej rěči njeje móžno płaćiwy wuraz tworić, bjeztoho zo by so mjeno strony změniło, skontaktuj prošu wuwiwarja.
 
 Dyrbiš w skupinje přełožowarjow być, zo by změny składował. Změny so njeskładuja, doniž  składowanske tłóčatko njekliknješ.',
 	'translate-magic-module' => 'Modul:',
@@ -7168,7 +7221,7 @@ Dyrbiš w skupinje přełožowarjow być, zo by změny składował. Změny so nj
 	'translate-magic-cm-original' => 'Original',
 	'translate-magic-cm-comment' => 'Komentar:',
 	'translate-magic-cm-save' => 'Składować',
-	'translate-magic-cm-updatedusing' => 'Z [[Special:Magic]] zaktualizowany',
+	'translate-magic-cm-updatedusing' => 'Z [[Special:AdvancedTranslate|{{int:Translate-magic-pagename}}]] zaktualizowany',
 	'translate-magic-cm-savefailed' => 'Składowanje njeporadźiło',
 	'translate-magic-special' => 'Aliasy specialnych stronow',
 	'translate-magic-words' => 'Magiske słowa',
@@ -7338,7 +7391,7 @@ Jeli změny ignoruješ, přepisaja so při přichodnym eksportowanju.',
 	'translate-import-from-local' => 'Lokalne nahraće dataje:',
 	'translate-import-load' => 'Dataju začitać',
 	'translate-import-err-type-not-supported' => 'Njemóžno dataju začitać:
-Metoda <tt>$1</tt> so njepodpěruje.',
+Metoda <code>$1</code> so njepodpěruje.',
 	'translate-import-err-dl-failed' => 'Dataja njeda so wotwołać:
 $1',
 	'translate-import-err-ul-failed' => 'Nahraće dataje wuspěšne njebě',
@@ -7421,7 +7474,7 @@ Alias paj espesyal yo ak mo majik yo kapab gen miltip tradiksyon.
 Tradiksyon yo separe pa yon vigil (,).
 Non po ak nonespas kapab gen yon sèl tradiksyon.
 
-Nan nonespas tradiksyon yo <tt>$1 pale</tt> espesyal. <tt>$1</tt> ranplase pa nonsitwèb (pa ekzanp <tt>{{SITENAME}} pale</tt>).
+Nan nonespas tradiksyon yo <code>$1 pale</code> espesyal. <code>$1</code> ranplase pa nonsitwèb (pa ekzanp <code>{{SITENAME}} pale</code>).
 Si li pa posib nan langaj ou pou fòme expresyon valid san ou pa chanje nonsitwèb, souple kontakte yon devlopè.
 
 Fò ke ou nan yon group tradiktè pou ou kapab sove chanjman.
@@ -7433,7 +7486,7 @@ Chanjman yo pa sove tou pandan ou pa klike sou bouton sove anba.',
 	'translate-magic-cm-original' => 'Orijinal',
 	'translate-magic-cm-comment' => 'Kòmantè:',
 	'translate-magic-cm-save' => 'Sove',
-	'translate-magic-cm-updatedusing' => 'Met an kouran itilize [[Special:Magic]]',
+	'translate-magic-cm-updatedusing' => 'Met an kouran itilize [[Special:AdvancedTranslate|{{int:Translate-magic-pagename}}]]',
 	'translate-magic-cm-savefailed' => 'Sove chwe',
 	'translate-magic-special' => 'Alias paj espesyal yo',
 	'translate-magic-words' => 'Mo majik yo',
@@ -7516,7 +7569,7 @@ A speciális lapoknak és a varázsszavaknak több fordítása is lehet.
 A fordításokat vesszővel (,) kell elválasztani.
 A névterek csak egyetlen fordítása lehet.
 
-A névterek fordításánál a <tt>$1 talk</tt> speciális, a <tt>$1</tt> az oldal nevére lesz lecserélve (pl. <tt>{{ns:project_talk}}</tt>).
+A névterek fordításánál a <code>$1 talk</code> speciális, a <code>$1</code> az oldal nevére lesz lecserélve (pl. <code>{{ns:project_talk}}</code>).
 Ha a te nyelveden nem lehet az oldal nevének változtatása nélkül értelmes kifejezést összehozni, értesítsd a fejlesztőt.
 
 A változtatások mentését csak az tudja elvégezni, aki tagja a fordítók csoportjának.
@@ -7530,7 +7583,7 @@ A változtatások nem mentődnek, míg alul a mentés gombra nem kattintasz.',
 	'translate-magic-cm-original' => 'Eredeti',
 	'translate-magic-cm-comment' => 'Megjegyzés:',
 	'translate-magic-cm-save' => 'Mentés',
-	'translate-magic-cm-updatedusing' => 'Frissítve a [[Special:Magic]] használatával',
+	'translate-magic-cm-updatedusing' => 'Frissítve a [[Special:AdvancedTranslate|{{int:Translate-magic-pagename}}]] használatával',
 	'translate-magic-cm-savefailed' => 'Mentés sikertelen',
 	'translate-magic-special' => 'Speciális lapok álnevei',
 	'translate-magic-words' => 'Varázsszavak',
@@ -7687,7 +7740,7 @@ Ha figyelmen kívül hagyod a változtatásokat, felül lesznek bírálva a köv
 	'translate-import-from-local' => 'Helyi fájlfeltöltés:',
 	'translate-import-load' => 'Fájl betöltése',
 	'translate-import-err-type-not-supported' => 'Nem sikerült betölteni a fájlt:
-A(z) <tt>$1</tt> metódus nem támogatott.',
+A(z) <code>$1</code> metódus nem támogatott.',
 	'translate-import-err-dl-failed' => 'Nem sikerült olvasni a fájlt:
 $1',
 	'translate-import-err-ul-failed' => 'A fájlfeltöltés sikertelen volt',
@@ -7782,7 +7835,7 @@ Le aliases de paginas special e le parolas magic pote haber plure traductiones.
 Le traductiones es separate per un comma (,).
 Le spatios de nomines pote haber solmente un traduction.
 
-In le traductiones de spatios de nomines, <tt>$1 talk</tt> es special. <tt>$1</tt> es reimplaciate per le nomine del sito (per exemplo <tt>{{ns:project_talk}}</tt>).
+In le traductiones de spatios de nomines, <code>$1 talk</code> es special. <code>$1</code> es reimplaciate per le nomine del sito (per exemplo <code>{{ns:project_talk}}</code>).
 Si non es possibile in tu lingua formar un expression valide sin cambiar le nomine del sito, per favor contacta un disveloppator.
 
 Es necessari appertiner al gruppo de traductores pro publicar le modificationes.
@@ -7796,7 +7849,7 @@ Le modificationes non es immagazinate usque tu clicca super le button Publicar i
 	'translate-magic-cm-original' => 'Original',
 	'translate-magic-cm-comment' => 'Commento:',
 	'translate-magic-cm-save' => 'Publicar',
-	'translate-magic-cm-updatedusing' => 'Actualisate con [[Special:Magic]]',
+	'translate-magic-cm-updatedusing' => 'Actualisate con [[Special:AdvancedTranslate|{{int:Translate-magic-pagename}}]]',
 	'translate-magic-cm-savefailed' => 'Non poteva salveguardar',
 	'translate-magic-special' => 'Aliases de paginas special',
 	'translate-magic-words' => 'Parolas magic',
@@ -7975,7 +8028,7 @@ Si tu decide de ignorar alcun modificationes, illos essera omittite durante le p
 	'translate-import-from-local' => 'Incargar un file local:',
 	'translate-import-load' => 'Cargar file',
 	'translate-import-err-type-not-supported' => 'Impossibile incargar le file:
-Le methodo <tt>$1</tt> non es supportate.',
+Le methodo <code>$1</code> non es supportate.',
 	'translate-import-err-dl-failed' => 'Impossibile obtener le file:
 $1',
 	'translate-import-err-ul-failed' => 'Le cargamento del file non ha succedite',
@@ -8071,7 +8124,7 @@ Alias untuk halaman istimewa dan kata-kata magis dapat memiliki lebih dari satu 
 Setiap terjemahan harus dipisahkan dengan sebuah tanda koma (,).
 Ruang nama hanya dapat memiliki satu terjemahan.
 
-Dalam menerjemahkan, ruang nama <tt>$1 talk</tt> harus diperlakukan khusus. <tt>$1</tt> digantikan dengan nama situs (contohnya <tt>{{ns:project_talk}}</tt>).
+Dalam menerjemahkan, ruang nama <code>$1 talk</code> harus diperlakukan khusus. <code>$1</code> digantikan dengan nama situs (contohnya <code>{{ns:project_talk}}</code>).
 Jika bahasa Anda tidak memungkinkan untuk membentuk suatu ekspresi yang valid tanpa mengganti nama situs, silakan kontak salah seorang pengembang.
 
 Anda perlu menjadi anggota kelompok penerjemah untuk dapat menyimpan terjemahan.
@@ -8085,7 +8138,7 @@ Perubahan tidak akan disimpan hingga Anda mengklik tombol simpan di bawah.',
 	'translate-magic-cm-original' => 'Asal',
 	'translate-magic-cm-comment' => 'Komentar:',
 	'translate-magic-cm-save' => 'Simpan',
-	'translate-magic-cm-updatedusing' => 'Diperbaharui menggunakan [[Special:Magic]]',
+	'translate-magic-cm-updatedusing' => 'Diperbaharui menggunakan [[Special:AdvancedTranslate|{{int:Translate-magic-pagename}}]]',
 	'translate-magic-cm-savefailed' => 'Penyimpanan gagal',
 	'translate-magic-special' => 'Alias halaman istimewa',
 	'translate-magic-words' => 'Kata magis',
@@ -8239,7 +8292,7 @@ Jika Anda memilih untuk tidak menghiraukan perubahan, mereka akan ditimpa pada e
 	'translate-import-from-local' => 'Berkas lokal di Unggah:',
 	'translate-import-load' => 'Muatkan berkas',
 	'translate-import-err-type-not-supported' => 'Tidak dapat memuat berkas:
-Metode <tt>$1</tt> tidak didukung.',
+Metode <code>$1</code> tidak didukung.',
 	'translate-import-err-dl-failed' => 'Tidak dapat mengambil berkas:
 $1',
 	'translate-import-err-ul-failed' => 'Pemuatan berkas tidak berhasil',
@@ -8504,7 +8557,7 @@ Gli alias delle pagine speciali e le parole magiche possono avere più traduzion
 Le traduzioni sono separate da una virgola (,).
 I namespace possono avere solo una traduzione.
 
-Nelle traduzioni dei namespace <tt>$1 talk</tt> è speciale. <tt>$1</tt> viene rimpiazzato con il nome del sito (per esempio <tt>{{ns:project_talk}}</tt>).
+Nelle traduzioni dei namespace <code>$1 talk</code> è speciale. <code>$1</code> viene rimpiazzato con il nome del sito (per esempio <code>{{ns:project_talk}}</code>).
 Se non è possibile formare un\'espressione valida nella tua lingua senza cambiare il nome del sito, per favore contatta uno sviluppatore.
 
 Devi essere nel gruppo dei traduttori per salvare le modifiche.
@@ -8518,7 +8571,7 @@ Le modifiche non vengono salvate finché non clicchi sul bottone "Salva" sotto.'
 	'translate-magic-cm-original' => 'Originale',
 	'translate-magic-cm-comment' => 'Commento:',
 	'translate-magic-cm-save' => 'Salva',
-	'translate-magic-cm-updatedusing' => 'Aggiornato usando [[Special:Magic]]',
+	'translate-magic-cm-updatedusing' => 'Aggiornato usando [[Special:AdvancedTranslate|{{int:Translate-magic-pagename}}]]',
 	'translate-magic-cm-savefailed' => 'Salvataggio fallito',
 	'translate-magic-special' => 'Alias delle pagine speciali',
 	'translate-magic-words' => 'Parole magiche',
@@ -8693,7 +8746,7 @@ $messages['ja'] = array(
 
 特別ページへのエイリアスとマジックワードには複数の翻訳を割り当てることができます。複数の翻訳がある時はコンマ(,)で区切ってください。名前空間名には一つの翻訳しか当てることができません。
 
-名前空間を翻訳する際、<tt>$1 talk</tt> には特別な注意事項があります。それは、<tt>$1</tt> がサイト名に変更される点です(例えば<tt>{{ns:project_talk}}</tt>の様に)。あなたが翻訳しようとしている言語において、サイト名の変更なしには正しい形式で表現できない場合、開発者に相談してください。
+名前空間を翻訳する際、<code>$1 talk</code> には特別な注意事項があります。それは、<code>$1</code> がサイト名に変更される点です(例えば<code>{{ns:project_talk}}</code>の様に)。あなたが翻訳しようとしている言語において、サイト名の変更なしには正しい形式で表現できない場合、開発者に相談してください。
 
 変更を保存できるのは、翻訳者グループに属する利用者のみです。以下の{{int:translate-magic-cm-save}}ボタンを押すまで変更は保存されません。',
 	'translate-magic-module' => 'モジュール:',
@@ -8705,7 +8758,7 @@ $messages['ja'] = array(
 	'translate-magic-cm-original' => '元の内容',
 	'translate-magic-cm-comment' => '編集内容の要約:',
 	'translate-magic-cm-save' => '保存',
-	'translate-magic-cm-updatedusing' => '[[Special:Magic]] による更新に成功しました',
+	'translate-magic-cm-updatedusing' => '[[Special:AdvancedTranslate|{{int:Translate-magic-pagename}}]] による更新に成功しました',
 	'translate-magic-cm-savefailed' => '保存に失敗しました',
 	'translate-magic-special' => '特別ページへのエイリアス',
 	'translate-magic-words' => 'マジックワード',
@@ -8868,7 +8921,7 @@ $messages['ja'] = array(
 	'translate-import-from-wiki' => 'このウィキ内のファイル:',
 	'translate-import-from-local' => 'ローカルファイルのアップロード:',
 	'translate-import-load' => 'ファイル読み込み',
-	'translate-import-err-type-not-supported' => 'ファイルを読み込めませんでした: <tt>$1</tt> 方式には対応していません。',
+	'translate-import-err-type-not-supported' => 'ファイルを読み込めませんでした: <code>$1</code> 方式には対応していません。',
 	'translate-import-err-dl-failed' => 'ファイルを取得できませんでした:
 $1',
 	'translate-import-err-ul-failed' => 'ファイルのアップロードが失敗しました',
@@ -8954,7 +9007,7 @@ Alias kanggo kaca istiméwa lan tembung magis bisa nduwèni luwih saka siji terj
 Siji lan sijiné kudu dipisahaké nganggo tandha koma (,).
 Bilik jeneng mung bisa duwé siji terjemahan.
 
-Jroning nerjemahaké bilik-jeneng <tt>$1 talk</tt> kuwi istiméwa. <tt>$1</tt> digantèkaké nganggo jeneng situs (conto <tt>{{ns:project_talk}}</tt>).
+Jroning nerjemahaké bilik-jeneng <code>$1 talk</code> kuwi istiméwa. <code>$1</code> digantèkaké nganggo jeneng situs (conto <code>{{ns:project_talk}}</code>).
 Yèn basa panjenengan ora mungkinaké gawé èksprèsi sing sah tanpa ngganti jeneng situs, mangga hubungi salah siji pangembang.
 
 Panjenengan perlu dadi anggota klompok penerjemah kanggo nyimpen owah-owahan.
@@ -8967,7 +9020,7 @@ Owah-owahan ora bakal disimpen nganti panjenengan ngeklik tombol simpen ing ngis
 	'translate-magic-cm-original' => 'Asli',
 	'translate-magic-cm-comment' => 'Komentar:',
 	'translate-magic-cm-save' => 'Simpen',
-	'translate-magic-cm-updatedusing' => 'Dimutakiraké nganggo [[Special:Magic]]',
+	'translate-magic-cm-updatedusing' => 'Dimutakiraké nganggo [[Special:AdvancedTranslate|{{int:Translate-magic-pagename}}]]',
 	'translate-magic-cm-savefailed' => 'Gagal disimpen',
 	'translate-magic-special' => 'Sesinglon kaca istiméwa',
 	'translate-magic-words' => 'Tembung-tembung magis',
@@ -9138,7 +9191,7 @@ $messages['kaa'] = array(
 	'translate-magic-cm-original' => 'Original',
 	'translate-magic-cm-comment' => 'Kommentariy:',
 	'translate-magic-cm-save' => 'Saqla',
-	'translate-magic-cm-updatedusing' => "[[Special:Magic]] qollanıp saqlang'an",
+	'translate-magic-cm-updatedusing' => "[[Special:AdvancedTranslate|{{int:Translate-magic-pagename}}]] qollanıp saqlang'an",
 	'translate-magic-cm-savefailed' => "Saqlaw sa'tsiz tamamlandı",
 	'translate-magic-special' => 'Arnawlı bet laqabı',
 	'translate-magic-words' => "Sıyqırlı so'zler",
@@ -9211,14 +9264,14 @@ $messages['kk-arab'] = array(
 
 ارنايى بەت بۇركەمەلەرىندە جانە سىيقىرلى سوزدەرىندە بىرنەشە اۋدارما بولۋى مۇمكىن. اۋدارمالار ۇتىرمەن (,) بولىكتەنەدى. بەزەندىرۋ مانەر جانە ەسىم ايا اتاۋلارىندا تەك ٴبىر اۋدارما بولۋى ٴتىيىس.
 
-ەسىم ايا اۋدارمالارىندا <tt>$1_talk</tt> دەگەن ارنايى كەلتىرىلەدى. <tt>$1</tt> دەگەن اينالمالى وزدىكتىك توراپ اتاۋىمەن الماستىرىلادى (مىسالى, <tt>{{SITENAME}} تالقىلاۋى</tt>). ەگەر ٴسىزدىڭ تىلىڭىزدە توراپ اتاۋىن وزگەرتپەي دۇرىس سويلەم قۇرىلماسا, دامىتۋشىلارعا حابارلاسىڭىز.',
+ەسىم ايا اۋدارمالارىندا <code>$1_talk</code> دەگەن ارنايى كەلتىرىلەدى. <code>$1</code> دەگەن اينالمالى وزدىكتىك توراپ اتاۋىمەن الماستىرىلادى (مىسالى, <code>{{SITENAME}} تالقىلاۋى</code>). ەگەر ٴسىزدىڭ تىلىڭىزدە توراپ اتاۋىن وزگەرتپەي دۇرىس سويلەم قۇرىلماسا, دامىتۋشىلارعا حابارلاسىڭىز.',
 	'translate-magic-submit' => 'كەلتىر',
 	'translate-magic-cm-export' => 'سىرتقا بەر',
 	'translate-magic-cm-to-be' => 'بولۋعا ٴتىيىستىسى',
 	'translate-magic-cm-current' => 'اعىمداعىسى',
 	'translate-magic-cm-original' => 'تۇپنۇسقاسى',
 	'translate-magic-cm-save' => 'ساقتا!',
-	'translate-magic-cm-updatedusing' => 'Special:Magic دەگەندى قولدانىپ ساقتالعان',
+	'translate-magic-cm-updatedusing' => '[[Special:AdvancedTranslate|{{int:Translate-magic-pagename}}]] دەگەندى قولدانىپ ساقتالعان',
 	'translate-magic-cm-savefailed' => 'ساقتاۋ ٴساتسىز بولدى',
 	'translate-magic-special' => 'ارنايى بەت بۇركەمەلەرى',
 	'translate-magic-words' => 'سىيقىر سوزدەر',
@@ -9291,7 +9344,7 @@ $messages['kk-cyrl'] = array(
 Аудармалар үтірмен (,) бөлінеді.
 Мәнер және есім ая атауларында тек бір аударма болуы мүмкін.
 
-Есім ая аудармаларында <tt>$1_talk</tt> деген арнайы боп табылады. <tt>$1</tt> айналмалысы торап атауымен алмастырылады (мысалы, <tt>{{SITENAME}} талқылауы</tt>).
+Есім ая аудармаларында <code>$1_talk</code> деген арнайы боп табылады. <code>$1</code> айналмалысы торап атауымен алмастырылады (мысалы, <code>{{SITENAME}} талқылауы</code>).
 Егер сіздің тіліңізде торап атауын өзгертпей дұрыс айтылым құрылмаса, дамытушыға хабарласыңыз.
 
 Өзгерістерді сақтау үшін аудармашылар тобына кіруіңіз жөн.
@@ -9303,7 +9356,7 @@ $messages['kk-cyrl'] = array(
 	'translate-magic-cm-original' => 'Түпнұсқасы',
 	'translate-magic-cm-comment' => 'Мәндеме:',
 	'translate-magic-cm-save' => 'Сақта!',
-	'translate-magic-cm-updatedusing' => 'Special:Magic дегенді қолданып сақталған',
+	'translate-magic-cm-updatedusing' => '[[Special:AdvancedTranslate|{{int:Translate-magic-pagename}}]] дегенді қолданып сақталған',
 	'translate-magic-cm-savefailed' => 'Сақтау сәтсіз болды',
 	'translate-magic-special' => 'Арнайы бет бүркеме аттары',
 	'translate-magic-words' => 'Сиқыр сөздер',
@@ -9376,14 +9429,14 @@ Sïqırlı sözderde ağılşınşa nusqasın kirgizwiñiz jön, äýtpese qızm
 
 Arnaýı bet bürkemelerinde jäne sïqırlı sözderinde birneşe awdarma bolwı mümkin. Awdarmalar ütirmen (,) böliktenedi. Bezendirw mäner jäne esim aya atawlarında tek bir awdarma bolwı tïis.
 
-Esim aya awdarmalarında <tt>$1_talk</tt> degen arnaýı keltiriledi. <tt>$1</tt> degen aýnalmalı özdiktik torap atawımen almastırıladı (mısalı, <tt>{{SITENAME}} talqılawı</tt>). Eger sizdiñ tiliñizde torap atawın özgertpeý durıs söýlem qurılmasa, damıtwşılarğa xabarlasıñız.',
+Esim aya awdarmalarında <code>$1_talk</code> degen arnaýı keltiriledi. <code>$1</code> degen aýnalmalı özdiktik torap atawımen almastırıladı (mısalı, <code>{{SITENAME}} talqılawı</code>). Eger sizdiñ tiliñizde torap atawın özgertpeý durıs söýlem qurılmasa, damıtwşılarğa xabarlasıñız.',
 	'translate-magic-submit' => 'Keltir',
 	'translate-magic-cm-export' => 'Sırtqa ber',
 	'translate-magic-cm-to-be' => 'Bolwğa tïistisi',
 	'translate-magic-cm-current' => 'Ağımdağısı',
 	'translate-magic-cm-original' => 'Tüpnusqası',
 	'translate-magic-cm-save' => 'Saqta!',
-	'translate-magic-cm-updatedusing' => 'Special:Magic degendi qoldanıp saqtalğan',
+	'translate-magic-cm-updatedusing' => '[[Special:AdvancedTranslate|{{int:Translate-magic-pagename}}]] degendi qoldanıp saqtalğan',
 	'translate-magic-cm-savefailed' => 'Saqtaw sätsiz boldı',
 	'translate-magic-special' => 'Arnaýı bet bürkemeleri',
 	'translate-magic-words' => 'Sïqır sözder',
@@ -9525,7 +9578,7 @@ $messages['km'] = array(
 លំហឈ្មោះអាចមានបទប្រែសំរួលតែមួយប៉ុណ្ណោះ ។
 
 
-ក្នុងការបកប្រែលំហឈ្មោះ <tt>ការពិភាក្សាអំពី $1</tt> ជាករណីពិសេស។ <tt>$1</tt> ត្រូវបានជំនួសដោយឈ្មោះវិបសាយ (ឧទាហរណ៍៖ <tt>{{ns:project_talk}}</tt>)។
+ក្នុងការបកប្រែលំហឈ្មោះ <code>ការពិភាក្សាអំពី $1</code> ជាករណីពិសេស។ <code>$1</code> ត្រូវបានជំនួសដោយឈ្មោះវិបសាយ (ឧទាហរណ៍៖ <code>{{ns:project_talk}}</code>)។
 ប្រសិនបើ​ភាសារបស់អ្នក​មិនបានបង្ហាញត្រឹមត្រូវដោយមិនប្តូរឈ្មោះវិបសាយទេ សូមទាក់ទងអ្នកអភិវឌ្ឍ (អ្នករចនាវិបសាយ)។
 
 
@@ -9540,7 +9593,7 @@ $messages['km'] = array(
 	'translate-magic-cm-original' => 'ដើម',
 	'translate-magic-cm-comment' => 'យោបល់៖',
 	'translate-magic-cm-save' => 'រក្សាទុក',
-	'translate-magic-cm-updatedusing' => 'បានបន្ទាន់សម័យ​ដោយប្រើប្រាស់ [[Special:Magic]]',
+	'translate-magic-cm-updatedusing' => 'បានបន្ទាន់សម័យ​ដោយប្រើប្រាស់ [[Special:AdvancedTranslate|{{int:Translate-magic-pagename}}]]',
 	'translate-magic-cm-savefailed' => 'រក្សាទុកមិនបានសម្រេច',
 	'translate-magic-special' => 'ឈ្មោះផ្សេងទៀតនៃទំព័រពិសេស',
 	'translate-magic-words' => 'ពាក្យទិព្វ',
@@ -9632,7 +9685,7 @@ $messages['km'] = array(
 	'translate-import-from-wiki' => 'ឯកសារ​នៅ​ក្នុង​វិគីនេះ​៖',
 	'translate-import-load' => 'ផ្ទុក​ឯកសារ​',
 	'translate-import-err-type-not-supported' => 'មិន​អាចផ្ទុក​ឯកសារ​៖
-វិធីសាស្រ្ត​ <tt>$1</tt> មិនត្រូវបាន​ទទួលស្គាល់​។​',
+វិធីសាស្រ្ត​ <code>$1</code> មិនត្រូវបាន​ទទួលស្គាល់​។​',
 	'translate-import-err-ul-failed' => 'ការផ្ទុក​ឡើង​នៃឯកសារ​ មិនបានជោគជ័យ​',
 );
 
@@ -9643,8 +9696,12 @@ $messages['kn'] = array(
 	'translate-edit' => 'ಸಂಪಾದಿಸಿ',
 	'translate-history' => 'ಇತಿಹಾಸ',
 	'translate-page-language' => 'ಭಾಷೆ',
+	'translate-next' => 'ಮುಂದಿನ ಪುಟ',
+	'translate-prev' => 'ಹಿಂದಿನ ಪುಟ',
 	'translate-page-edit' => 'ಸಂಪಾದಿಸಿ',
 	'translate-optional' => '(ಐಚ್ಛಿಕ)',
+	'translate-edit-goto-prev' => 'ಹಿಂದಿನ ಸಂದೇಶವನ್ನು ಸಂಪಾದಿಸು',
+	'translate-edit-goto-next' => 'ಮುಂದಿನ ಸಂದೇಶವನ್ನು ಸಂಪಾದಿಸು',
 	'translate-stats-edits' => 'ಸಂಪಾದನೆಗಳು',
 	'translate-statsf-width' => 'ಪಿಕ್ಸಲ್‌ಗಳಲ್ಲಿ ಅಗಲ:',
 	'translate-statsf-height' => 'ಪಿಕ್ಸಲ್‌ಗಳಲ್ಲಿ ಎತ್ತರ:',
@@ -9662,6 +9719,7 @@ $messages['kn'] = array(
 	'translate-language-code-field-name' => 'ಭಾಷಾ ಸಂಕೇತ:',
 	'translate-language' => 'ಭಾಷೆ',
 	'translate-total' => 'ಸಂದೇಶಗಳು',
+	'translate-manage-modlang-new' => '$1 (ಹೊಸ)',
 	'translate-gs-total' => 'ಒಟ್ಟು',
 );
 
@@ -9727,7 +9785,7 @@ $1',
 	'translate-magic-nothing-to-export' => '내보낼 것이 없습니다.',
 	'translate-magic-cm-to-be' => '번역 후',
 	'translate-magic-cm-save' => '저장',
-	'translate-magic-cm-updatedusing' => '[[Special:Magic]]을 통해 업데이트함',
+	'translate-magic-cm-updatedusing' => '[[Special:AdvancedTranslate|{{int:Translate-magic-pagename}}]]을 통해 업데이트함',
 	'translate-magic-cm-savefailed' => '저장 실패',
 	'translate-magic-special' => '특수 문서 이름',
 	'translate-magic-words' => '매직 워드',
@@ -9859,8 +9917,8 @@ Söndersigge ier Zweijtname, un de Zauberwööter könne mieh wi eijn Övversäz
 Dozwesche shteijt jeeweijls_e "," (Komma).
 De Name fö_de Appachtemangs könne nur eijn Övversätzong han.
 
-Beij de Övversäzonge för de Appachtemangs ier Name hät „<tt>$1 talk</tt>“ ene shpezjälle Senn.
-Dat „<tt>$1</tt>“ shteijt doh als enne Plazhallder för dä Projäkname (zem Beijshpöll dat „<tt>{{SITENAME}}</tt>“ en: „<tt>Övver {{SITENAME}} Klaafe</tt>“).
+Beij de Övversäzonge för de Appachtemangs ier Name hät „<code>$1 talk</code>“ ene shpezjälle Senn.
+Dat „<code>$1</code>“ shteijt doh als enne Plazhallder för dä Projäkname (zem Beijshpöll dat „<code>{{SITENAME}}</code>“ en: „<code>Övver {{SITENAME}} Klaafe</code>“).
 Wann Ding Shprooch ed nit heerjitt, dat_De ene grammatesch reschtejje Forrem henkreßß, ohne an dämm Projek singem Name ändere zo mößße, dann donn ene Äntwecklor do drop aansäzze.
 
 Do moß en de Jrop „Övversäzer“ sen, för hee Änderonge maache ze könne.
@@ -9874,7 +9932,7 @@ Do moß en de Jrop „Övversäzer“ sen, för hee Änderonge maache ze könne.
 	'translate-magic-cm-original' => 'Orrijinaal',
 	'translate-magic-cm-comment' => 'Koot zesamme jefaß, Quell',
 	'translate-magic-cm-save' => 'Seschere',
-	'translate-magic-cm-updatedusing' => 'Övver [[Special:Magic|{{#special:magic}}]] jeänndert.',
+	'translate-magic-cm-updatedusing' => 'Övver [[Special:AdvancedTranslate|{{#special:magic}}]] jeänndert.',
 	'translate-magic-cm-savefailed' => 'Et Seschere eß donäve jejange',
 	'translate-magic-special' => 'Zweijtname för Söndersigge',
 	'translate-magic-words' => 'Zauberwööter',
@@ -10019,7 +10077,7 @@ Wann De entscheids, Änderunge ze övverjonn, dann wääde di Änderunge beim n�
 	'translate-import-from-wiki' => 'vun ene Datei heh em Wiki:',
 	'translate-import-from-local' => 'vun Dingem Rääschner:',
 	'translate-import-load' => 'Datei laade',
-	'translate-import-err-type-not-supported' => 'Mer künne di Datei nit laade, weil et Verfahre <tt lang="en">$1</tt> nit ongerschtöz weedt.',
+	'translate-import-err-type-not-supported' => 'Mer künne di Datei nit laade, weil et Verfahre <tt lang="en">$1</code> nit ongerschtöz weedt.',
 	'translate-import-err-dl-failed' => 'Kunnt de Datei nit jriife:
 $1',
 	'translate-import-err-ul-failed' => 'Di Datei huhzelaade es donevve jejange',
@@ -10119,7 +10177,7 @@ Spezial Säit ''Aliasen'' a ''magesch Wierder'' kënne méi Iwwersetzungen hunn.
 Iwwersetzungen gi mat engem Komma (,) getrennt.
 Nummraim kënne nëmmen eng Iwwersetzung hunn.
 
-Am Nummraum Iwwersetzungen ass <tt>$1 Diskussioun</tt> speziell. <tt>$1</tt> gëtt duerch ''sitename'' ersat (zum Beispill <tt>{{ns:project_talk}}</tt>).
+Am Nummraum Iwwersetzungen ass <code>$1 Diskussioun</code> speziell. <code>$1</code> gëtt duerch ''sitename'' ersat (zum Beispill <code>{{ns:project_talk}}</code>).
 Wann et an ärer Sprooch net méiglech ass fir e gëltegen Ausdrock ze maachen ouni ''sitename'' z'änneren, da kontaktéiert w.e.g. en Entwéckler (developer).
 
 Dir musst am Grupp vun den Iwwersetzer si fir Ännerungen ofspäicheren ze kënnen.
@@ -10133,7 +10191,7 @@ Dir musst am Grupp vun den Iwwersetzer si fir Ännerungen ofspäicheren ze kënn
 	'translate-magic-cm-original' => 'Original',
 	'translate-magic-cm-comment' => 'Bemierkung:',
 	'translate-magic-cm-save' => 'Späicheren',
-	'translate-magic-cm-updatedusing' => 'Geännert ma Hëllef vu [[Special:Magic]]',
+	'translate-magic-cm-updatedusing' => 'Geännert ma Hëllef vu [[Special:AdvancedTranslate|{{int:Translate-magic-pagename}}]]',
 	'translate-magic-cm-savefailed' => 'Späicheren huet net fonktionéiert',
 	'translate-magic-special' => "Spezialsäit vun den 'Aliasnimm'",
 	'translate-magic-words' => 'Magesch Wierder',
@@ -10217,8 +10275,10 @@ D'Standard-Lëscht vu Sproochen hànkt vun Ärer Sprooch of.",
 	'translate-suppress-complete' => 'Gruppe vu Messagen. déi komplett iwwersat sinn, net weisen',
 	'translate-language' => 'Sprooch',
 	'translate-total' => 'Messagen',
+	'translate-total-tooltip' => "D'Gesamtzuel vu Systemmessagen an dësem Grupp.",
 	'translate-untranslated' => 'Net iwwersat',
 	'translate-percentage-complete' => 'Fäerdeg zu',
+	'translate-percentage-complete-tooltip' => 'De Prozentsaz vu Systemmessagen an der Grupp, déi iwwersat, bzw. net als vereelst markéiert goufen.',
 	'translate-percentage-fuzzy' => 'Net à jour',
 	'translate-nothing-to-do' => "All méiglech Iwwersetzunge sinn anscheinend scho gemaach.
 Dir sidd awer häerzlech Invitéiert fir d'Systemmessagn op [[Special:Translate|{{int:translate}}]] nozekucken.",
@@ -10301,7 +10361,7 @@ Wann dir decidéiert fir Ännerungen z'ignoréieren, da gi si beim nächsten Exp
 	'translate-import-from-local' => 'Fichier lokal eropgelueden:',
 	'translate-import-load' => 'Fichier lueden',
 	'translate-import-err-type-not-supported' => "De Fichier kann net geluede ginn:
-D'Method <tt>$1</tt> gëtt net ënnerstëtzt.",
+D'Method <code>$1</code> gëtt net ënnerstëtzt.",
 	'translate-import-err-dl-failed' => 'De Fichier kann net erreescht ginn:
 $1',
 	'translate-import-err-ul-failed' => "D'Eropluede vum Fichier huet net geklappt",
@@ -10420,7 +10480,7 @@ $messages['lmo'] = array(
 	'translate-edit-goto-list' => 'Va indree a la lista',
 	'translate-magic-pagename' => 'Tradüzión estendüda de MediaWiki',
 	'translate-magic-submit' => 'Fàm vedè',
-	'translate-magic-cm-updatedusing' => 'Agiurnaa druvand: [[Special:Magic]]',
+	'translate-magic-cm-updatedusing' => 'Agiurnaa druvand: [[Special:AdvancedTranslate|{{int:Translate-magic-pagename}}]]',
 	'translate-pref-editassistlang' => 'Assistent di lenguv:',
 	'prefs-translate' => 'Opzión di tradüzión',
 	'translate-rc-translation-filter' => 'Filtra i tradüzión',
@@ -10495,7 +10555,7 @@ Specialiojo puslapio pavadinimo ir magiško žodžio vertimai gali būti keli.
 Vertimai yra atskiriami kableliu (,).
 Vardų srities pavadinimas gali turėti tik vieną vertimą.
 
-Vardų sričių vertimuose <tt>$1 aptarimas</tt> yra specialus. <tt>$1</tt> yra pakeičiamas svetainės pavadinimu (pavyzdžiui <tt>{{SITENAME}} aptarimas</tt>). Jei nėra galimybės Jūsų kalboje suformuoti teisingos išraiškos su svetainės pavadinimo pakeitimu, prašome kreiptis į kūrėjus.
+Vardų sričių vertimuose <code>$1 aptarimas</code> yra specialus. <code>$1</code> yra pakeičiamas svetainės pavadinimu (pavyzdžiui <code>{{SITENAME}} aptarimas</code>). Jei nėra galimybės Jūsų kalboje suformuoti teisingos išraiškos su svetainės pavadinimo pakeitimu, prašome kreiptis į kūrėjus.
 
 Jūs turite priklausyti vertėjų grupei, kad galėtumėte įrašyti pakeitimus.
 Pakeitimai nebus įrašyti iki Jūs nuspausite išsaugojimo mygtuką apačioje.',
@@ -10505,7 +10565,7 @@ Pakeitimai nebus įrašyti iki Jūs nuspausite išsaugojimo mygtuką apačioje.'
 	'translate-magic-cm-current' => 'Einamasis',
 	'translate-magic-cm-original' => 'Originalas',
 	'translate-magic-cm-save' => 'Išsaugoti',
-	'translate-magic-cm-updatedusing' => 'Atnaujintas, naudojant [[Special:Magic]]',
+	'translate-magic-cm-updatedusing' => 'Atnaujintas, naudojant [[Special:AdvancedTranslate|{{int:Translate-magic-pagename}}]]',
 	'translate-magic-cm-savefailed' => 'Nepavyko išsaugoti',
 	'translate-magic-special' => 'Specialių puslapių pavadinimai',
 	'translate-magic-words' => 'Magiški žodžiai',
@@ -10648,7 +10708,7 @@ $messages['mk'] = array(
 Преводите се одделуваат со запирка (,).
 Именските простори може да имаат само еден превод.
 
-Преведувањето на <tt>Разговор за $1</tt> кај именски простор е специфично. <tt>$1</tt> се заменува со името на сајтот (пример <tt>Разговор за {{SITENAME}} </tt>).
+Преведувањето на <code>Разговор за $1</code> кај именски простор е специфично. <code>$1</code> се заменува со името на сајтот (пример <code>Разговор за {{SITENAME}} </code>).
 Ако не е можно во вашиот јазик да формирате валиден израз без промена на името на страницата, ве молиме контактирајте со развивачите на софтверот.
 
 Потребно е да припаѓате на групата преведувачи и да ги зачувате измените.
@@ -10662,7 +10722,7 @@ $messages['mk'] = array(
 	'translate-magic-cm-original' => 'Оригинален',
 	'translate-magic-cm-comment' => 'Коментар:',
 	'translate-magic-cm-save' => 'Зачувај',
-	'translate-magic-cm-updatedusing' => 'Ажурирано со помош на [[Special:Magic]]',
+	'translate-magic-cm-updatedusing' => 'Ажурирано со помош на [[Special:AdvancedTranslate|{{int:Translate-magic-pagename}}]]',
 	'translate-magic-cm-savefailed' => 'Неуспешно зачувување',
 	'translate-magic-special' => 'Алијаси на специјална страница',
 	'translate-magic-words' => 'Магични зборови',
@@ -10837,7 +10897,7 @@ $messages['mk'] = array(
 	'translate-import-from-local' => 'Локално подигање на податотека:',
 	'translate-import-load' => 'Вчитај податотека',
 	'translate-import-err-type-not-supported' => 'Не можам да ја вчитам податотеката:
-Методот <tt>$1</tt> не е поддржан.',
+Методот <code>$1</code> не е поддржан.',
 	'translate-import-err-dl-failed' => 'Не можам да ја преземам податотеката:
 $1',
 	'translate-import-err-ul-failed' => 'Подигнувањето на податотеката е неуспешно',
@@ -10986,7 +11046,7 @@ $messages['mr'] = array(
 	'translate-magic-cm-original' => 'मूळ',
 	'translate-magic-cm-comment' => 'प्रतिक्रीया',
 	'translate-magic-cm-save' => 'जतन करा',
-	'translate-magic-cm-updatedusing' => '[[Special:Magic]] वापरून बदलले',
+	'translate-magic-cm-updatedusing' => '[[Special:AdvancedTranslate|{{int:Translate-magic-pagename}}]] वापरून बदलले',
 	'translate-magic-cm-savefailed' => 'जतन अयशस्वी',
 	'translate-magic-special' => 'विशेष पान टोपणनावे',
 	'translate-magic-words' => 'जादूई शब्द',
@@ -11070,7 +11130,31 @@ $messages['mt'] = array(
 	'translate-task-optional' => 'Uri messaġġi opzjonali minn',
 	'translate-task-untranslatedoptional' => 'Uri l-messaġġi opzjonali li għadhom ma ġewx traddoti minn',
 	'translate-task-problematic' => 'Uri messaġġi li għadhom problemi',
+	'translate-task-review' => 'Irrevedi tibdil minn',
+	'translate-task-reviewall' => "Irrevedi kull messaġġ tradott f'",
+	'translate-task-export' => 'Esporta t-traduzzjonijiet minn',
+	'translate-task-export-to-file' => 'Esporta t-traduzzjoni lejn fajl minn',
+	'translate-task-export-as-po' => "Esporta t-traduzzjoni f'format Gettext",
+	'translate-task-export-to-xliff' => "Esporta t-traduzzjoni f'format Xliff",
+	'translate-page-no-such-language' => 'Il-lingwa speċifikata hi invalida.',
+	'translate-page-no-such-task' => 'L-azzjoni speċifikata kienet invalida.',
+	'translate-page-no-such-group' => 'Il-grupp speċifikat huwa invalidu.',
+	'translate-page-disabled' => "Traduzzjonijiet f'din il-lingwa għal dan il-grupp ġew diżabilitati.. Raġuni:
+
+''$1''",
+	'translate-page-settings-legend' => 'Impostazzjonijiet',
+	'translate-page-task' => 'Irrid',
+	'translate-page-group' => 'Grupp',
 	'translate-page-language' => 'Lingwa',
+	'translate-page-limit' => 'Limitu',
+	'translate-page-limit-option' => '$1 {{PLURAL:$1|messaġġ|messaġġ}} kull paġna',
+	'translate-submit' => 'Ikseb',
+	'translate-page-navigation-legend' => 'Navigazzjoni',
+	'translate-page-showing' => "Qed jidhru l-messaġġi minn $1 sa $2 ta' $3",
+	'translate-page-showing-all' => 'Qed jidhru $1 {{PLURAL:$1|messaġġ|messaġġ}}.',
+	'translate-page-showing-none' => "L-ebda messaġġ x'jintwera.",
+	'translate-next' => 'Paġna suċċessiva',
+	'translate-prev' => 'Paġna preċedenti',
 	'translate-page-description-legend' => 'Informazzjoni dwar il-grupp',
 	'translate-page-edit' => 'editja',
 	'translate-ext-url' => '<hr />Sit elettroniku: $1',
@@ -11097,7 +11181,7 @@ It-titli tal-paġni speċjali u l-frażijiet maġiċi jista' jkollhom aktar minn
 It-traduzzjonijiet għandhom jiġu separati minn virgoletta (,).
 L-ispazji tal-isem irid ikollhom traduzzjoni waħda biss.
 
-Fit-traduzzjoni tal-ispazji tal-isem, <tt>$1 talk</tt> hi speċjali. <tt>$1</tt> hi mibdula mal-isem tas-sit (per eżempju <tt>{{ns:project_talk}}</tt>).
+Fit-traduzzjoni tal-ispazji tal-isem, <code>$1 talk</code> hi speċjali. <code>$1</code> hi mibdula mal-isem tas-sit (per eżempju <code>{{ns:project_talk}}</code>).
 Jekk mhuwiex possibbli li fil-lingwa tiegħek tiġi formulata espressjonali valida mingħajr ma tbiddel l-isem tas-sit, jekk jogħġbok ikkuntatja lil żviluppatur.
 
 Biex issalva t-tibdil, trid tkun parti mill-grupp tat-tradutturi.
@@ -11111,7 +11195,7 @@ It-tibdil ma jiġix salvat sakemm ma tagħfasx il-buttuna t'isfel biex issalva."
 	'translate-magic-cm-original' => 'Oriġinali',
 	'translate-magic-cm-comment' => 'Kumment:',
 	'translate-magic-cm-save' => 'Salva',
-	'translate-magic-cm-updatedusing' => "Aġġornat bl-użu ta' [[Special:Magic]]",
+	'translate-magic-cm-updatedusing' => "Aġġornat bl-użu ta' [[Special:AdvancedTranslate|{{int:Translate-magic-pagename}}]]",
 	'translate-magic-cm-savefailed' => 'L-issejvjar ma seħħx',
 	'translate-magic-special' => 'Psewdonimi tal-paġni speċjali',
 	'translate-magic-words' => 'Kliem maġiku',
@@ -11137,7 +11221,7 @@ It-tibdil ma jiġix salvat sakemm ma tagħfasx il-buttuna t'isfel biex issalva."
 	'translate-checks-format' => 'Din it-traduzzjoni ma ssegwix id-definizzjoni segwenti jew għandha sintassi invalidi: $1',
 	'translate-checks-escape' => "L-''escapes'' segwenti jistgħu jkunu aċċidentali: <strong>$1</strong>",
 	'translate-checks-fudforum-syntax' => "Uża <nowiki>$1</nowiki> minflok <nowiki>$2</nowiki> f'dan il-proġett.",
-	'translate-pref-nonewsletter' => "Tibgħatlix ''newsletter'' b'permezz ta' ittra-e",
+	'translate-pref-nonewsletter' => "Tibgħatlix ''newsletters'' permezz ta' ittra-e",
 	'translate-pref-editassistlang' => 'Lingwi assistenti:',
 	'prefs-translate' => 'Opzjonijiet għat-traduzzjoni',
 	'translate-pref-editassistlang-help' => "Kodiċi tal-lingwi separati minn virgola.
@@ -11162,6 +11246,8 @@ Il-lista predefinita tal-lingwi tiddependi fuq il-lingwa tiegħek.",
 	'translate-translations-project' => 'Proġett:',
 	'languagestats' => 'Statistika tal-lingwi',
 	'languagestats-summary' => "Din il-paġna turi l-istatistika tat-traduzzjonijiet għall-gruppi kollha tal-messaġġi ta' lingwa.",
+	'translate-language-code' => 'Kodiċi tal-lingwa',
+	'translate-language-code-field-name' => 'Kodiċi tal-lingwa:',
 	'translate-group-desc-nodesc' => "L-ebda deskrizzjoni mhi disponibbli għal dan il-grupp ta' messaġġi",
 	'translate-js-next' => 'Salvaha u għaddi għal li jmiss',
 	'translate-js-skip' => 'Li jmiss',
@@ -11401,7 +11487,7 @@ Alternatieven voor speciale pagina\'s en magische woorden kunnen meerdere vertal
 Scheid vertalingen met een komma (,).
 Naamruimtebenamingen kunnen slechts één vertaling hebben.
 
-In naamruimtebenamingen is <tt>$1 talk</tt> een uitzondering. <tt>$1</tt> wordt vervangen door de sitenaam (bijvoorbeeld <tt>{{ns:project_talk}}</tt>).
+In naamruimtebenamingen is <code>$1 talk</code> een uitzondering. <code>$1</code> wordt vervangen door de sitenaam (bijvoorbeeld <code>{{ns:project_talk}}</code>).
 Als het in uw taal niet mogelijk is een geldige uitdrukking te vormen zonder de sitenaam te wijzigen, neem dan contact op met een ontwikkelaar.
 
 Om wijzigingen op te slaan moet u lid zijn van de groep vertalers.
@@ -11415,7 +11501,7 @@ Wijzigingen worden niet bewaard totdat u op "Pagina opslaan" hebt geklikt.',
 	'translate-magic-cm-original' => 'Brontekst',
 	'translate-magic-cm-comment' => 'Samenvatting:',
 	'translate-magic-cm-save' => 'Opslaan',
-	'translate-magic-cm-updatedusing' => 'Bijgewerkt via [[Special:Magic]]',
+	'translate-magic-cm-updatedusing' => 'Bijgewerkt via [[Special:AdvancedTranslate|{{int:Translate-magic-pagename}}]]',
 	'translate-magic-cm-savefailed' => 'Opslaan mislukt',
 	'translate-magic-special' => "Alternatieven speciale pagina's",
 	'translate-magic-words' => 'Magische woorden',
@@ -11592,7 +11678,7 @@ Als u wijzigingen negeert, worden deze bij de volgende export overschreven.',
 	'translate-import-from-local' => 'Lokaal bestand uploaden:',
 	'translate-import-load' => 'Bestand laden',
 	'translate-import-err-type-not-supported' => 'Het was niet mogelijk om het bestand te laden:
-de methode <tt>$1</tt> wordt niet ondersteund.',
+de methode <code>$1</code> wordt niet ondersteund.',
 	'translate-import-err-dl-failed' => 'Het was niet mogelijk het bestand op te halen: $1',
 	'translate-import-err-ul-failed' => 'De bestandsupload is mislukt',
 	'translate-import-err-invalid-title' => 'De opgegeven bestandsnaam <nowiki>$1</nowiki> is ongeldig.',
@@ -11688,7 +11774,7 @@ Spesialsidenamn og magiske ord kan ha fleire omsetjingar.
 Omsetjingane vert fråskilde med komma (,).
 Namnerom kan berre ha éi omsetjing.
 
-I namneromomsetjingane er <tt>$1 talk</tt> spesiell. <tt>$1</tt> vert erstatta med namnet på sida (til dømes <tt>{{ns:project_talk}}</tt>).
+I namneromomsetjingane er <code>$1 talk</code> spesiell. <code>$1</code> vert erstatta med namnet på sida (til dømes <code>{{ns:project_talk}}</code>).
 Om det ikkje er mogeleg å få til eit gyldig uttrykk på ditt språk her utan å endre sidenamnet, kontakt ein utviklar.
 
 Du må vere i omsetjargruppar for å lagre endringar.
@@ -11702,7 +11788,7 @@ Endringar vert ikkje lagra før du klikkar på lagreknappen nedanfor.',
 	'translate-magic-cm-original' => 'Original',
 	'translate-magic-cm-comment' => 'Kommentar:',
 	'translate-magic-cm-save' => 'Lagre',
-	'translate-magic-cm-updatedusing' => 'Oppdatert vha. [[Special:Magic]]',
+	'translate-magic-cm-updatedusing' => 'Oppdatert vha. [[Special:AdvancedTranslate|{{int:Translate-magic-pagename}}]]',
 	'translate-magic-cm-savefailed' => 'Lagringa var mislukka',
 	'translate-magic-special' => 'Spesialsidenamn',
 	'translate-magic-words' => 'Magiske ord',
@@ -11795,7 +11881,7 @@ Sjå gjerne over meldingar gjennom [[Special:Translate|{{int:translate}}]].',
 	'translate-import-from-local' => 'Lokal filopplasting:',
 	'translate-import-load' => 'Last fil',
 	'translate-import-err-type-not-supported' => 'Kunne ikkje lasta fila:
-Metoden <tt>$1</tt> er ikkje støtta.',
+Metoden <code>$1</code> er ikkje støtta.',
 	'translate-import-err-dl-failed' => 'Kunne ikkje henta fila:
 $1',
 	'translate-import-err-ul-failed' => 'Filopplastinga var ikkje vellukka',
@@ -11878,7 +11964,7 @@ Spesialsidealias og magiske ord kan ha flere oversettelser.
 Oversettelsene er adskilt med komma (,).
 Navnerom kan kun ha én oversettelse.
 
-I navneromoversettelsene er <tt>$1 talk</tt> spesiell. <tt>$1</tt> erstattes med nettstedsnavnet (for eksempel <tt>{{ns:project_talk}}</tt>).
+I navneromoversettelsene er <code>$1 talk</code> spesiell. <code>$1</code> erstattes med nettstedsnavnet (for eksempel <code>{{ns:project_talk}}</code>).
 Om det ikke er mulig å få til et gyldig uttrykk på ditt språk uten å endre nettstedsnavnet, vennligst kontakt en utvikler.
 
 Du må være i oversettergruppen for å lagre endringer.
@@ -11892,7 +11978,7 @@ Endringer lagres ikke før du klikker på lagre-knappen nedenfor.',
 	'translate-magic-cm-original' => 'Opprinnelig',
 	'translate-magic-cm-comment' => 'Kommentar:',
 	'translate-magic-cm-save' => 'Lagre',
-	'translate-magic-cm-updatedusing' => 'Oppdatert ved å bruke [[Special:Magic]]',
+	'translate-magic-cm-updatedusing' => 'Oppdatert ved å bruke [[Special:AdvancedTranslate|{{int:Translate-magic-pagename}}]]',
 	'translate-magic-cm-savefailed' => 'Lagring mislyktes',
 	'translate-magic-special' => 'Spesialsidealias',
 	'translate-magic-words' => 'Magiske ord',
@@ -12069,7 +12155,7 @@ Dersom du velger å ignorere endringene vil de bli overkjørt ved neste eksport.
 	'translate-import-from-local' => 'Lokal filopplasting:',
 	'translate-import-load' => 'Last fil',
 	'translate-import-err-type-not-supported' => 'Kunne ikke laste filen:
-Metoden <tt>$1</tt> støttes ikke.',
+Metoden <code>$1</code> støttes ikke.',
 	'translate-import-err-dl-failed' => 'Kunne ikke hente filen:
 $1',
 	'translate-import-err-ul-failed' => 'Filopplastingen mislyktes',
@@ -12186,7 +12272,7 @@ Los aliases de paginas especialas e los mots magics pòdon aver mantuna traducci
 Las traduccions son separadas per una virgula (,).
 Los espacis de noms pòdon pas aver qu'una traduccion.
 
-Dins las traduccions d'espacis de noms, <tt>$1 talk</tt> es especial. <tt>$1</tt> es remplaçat pel nom del site (per exemple <tt>{{ns:project_talk}}</tt>).
+Dins las traduccions d'espacis de noms, <code>$1 talk</code> es especial. <code>$1</code> es remplaçat pel nom del site (per exemple <code>{{ns:project_talk}}</code>).
 S'es pas possible d'obténer una expression valida dins vòstra lenga sens cambiar lo nom del site, contactatz un desvolopaire.
 
 Vos cal aparténer al grop dels traductors per salvar los cambiaments.
@@ -12200,7 +12286,7 @@ Los cambiaments seràn pas salvats abans que cliquèssetz sul boton « Salvar »
 	'translate-magic-cm-original' => 'Original',
 	'translate-magic-cm-comment' => 'Comentari :',
 	'translate-magic-cm-save' => 'Salvar',
-	'translate-magic-cm-updatedusing' => 'Mesa a jorn en utilizant [[Special:Magic]]',
+	'translate-magic-cm-updatedusing' => 'Mesa a jorn en utilizant [[Special:AdvancedTranslate|{{int:Translate-magic-pagename}}]]',
 	'translate-magic-cm-savefailed' => 'Lo salvament a pas capitat',
 	'translate-magic-special' => 'Pagina especiala d’aliases',
 	'translate-magic-words' => 'Mots magics',
@@ -12349,7 +12435,7 @@ Se decidètz d'ignorar las modificacions, seràn espotits al moment de l'expòrt
 	'translate-import-from-wiki' => 'Fichièr sus aqueste wiki :',
 	'translate-import-from-local' => 'Importar un fichièr local :',
 	'translate-import-load' => 'Cargar lo fichièr',
-	'translate-import-err-type-not-supported' => 'Impossible de cargar lo fichièr: lo metòde <tt>$1</tt> es pas suportat.',
+	'translate-import-err-type-not-supported' => 'Impossible de cargar lo fichièr: lo metòde <code>$1</code> es pas suportat.',
 	'translate-import-err-dl-failed' => "Impossible d'accedir al fichièr :
 $1",
 	'translate-import-err-ul-failed' => 'Lo telecargament del fichièr a pas capitat',
@@ -12514,7 +12600,7 @@ Aliasy stron specjalnych i magiczne słowa mogą mieć wiele tłumaczeń.
 Tłumaczenia rozdziela się przecinkiem (,).
 Przestrzenie nazw mogą mieć tylko jedno tłumaczenie.
 
-Podczas tłumaczenia przestrzeni nazw specjalne znaczenie ma zapis <tt>Dyskusja $1</tt>, gdzie <tt>$1</tt> zamieniane jest w nazwę serwisu – na przykład <tt>{{ns:project_talk}}</tt>.
+Podczas tłumaczenia przestrzeni nazw specjalne znaczenie ma zapis <code>Dyskusja $1</code>, gdzie <code>$1</code> zamieniane jest w nazwę serwisu – na przykład <code>{{ns:project_talk}}</code>.
 Jeśli w danym języku niemożliwe jest sformułowanie prawidłowego wpisu bez zmiany nazwy serwisu, należy skontaktować się z deweloperem.
 
 Zapisanie zmian jest możliwe tylko dla członków grupy tłumaczy.
@@ -12528,7 +12614,7 @@ Zmiany nie są zapisywane, dopóki użytkownik nie naciśnie umieszczonego poni�
 	'translate-magic-cm-original' => 'Początkowy',
 	'translate-magic-cm-comment' => 'Opis zmian:',
 	'translate-magic-cm-save' => 'Zapisz',
-	'translate-magic-cm-updatedusing' => 'Uaktualniane za pomocą strony [[Special:Magic]]',
+	'translate-magic-cm-updatedusing' => 'Uaktualniane za pomocą strony [[Special:AdvancedTranslate|{{int:Translate-magic-pagename}}]]',
 	'translate-magic-cm-savefailed' => 'Zapis nieudany',
 	'translate-magic-special' => 'Aliasy stron specjalnych',
 	'translate-magic-words' => 'Magiczne słowa',
@@ -12691,7 +12777,7 @@ Jeśli polecisz zignorować zmiany, zostaną one nadpisane przy następnym ekspo
 	'translate-import-from-wiki' => 'Plik w tej wiki',
 	'translate-import-from-local' => 'Załadowanie lokalnego pliku',
 	'translate-import-load' => 'Ładowanie pliku',
-	'translate-import-err-type-not-supported' => 'Nie udało się załadować pliku – metoda <tt>$1</tt> nie jest obsługiwana.',
+	'translate-import-err-type-not-supported' => 'Nie udało się załadować pliku – metoda <code>$1</code> nie jest obsługiwana.',
 	'translate-import-err-dl-failed' => 'Nie udało się przesłać pliku $1',
 	'translate-import-err-ul-failed' => 'Nie udało się przesłać pliku',
 	'translate-import-err-invalid-title' => 'Podana nazwa pliku <nowiki>$1</nowiki> jest nieprawidłowa.',
@@ -12787,7 +12873,7 @@ J'àlias dle pàgine soeciaj e le paròle màgiche a peulo avej pì che na tradu
 Le tradussion a son separà da 'd vìrgole (,).
 Ij nòm ëd jë spassi nominaj a peulo avej mach na tradussion.
 
-Ant la tradussion djë spassi nominaj ël cas ëd <tt>$1 talk</tt> a l'é special. <tt>$1</tt> a ven rampiassà col nòm dël sit (pr'esempi <tt>{{ns:project_talk}}</tt>).
+Ant la tradussion djë spassi nominaj ël cas ëd <code>$1 talk</code> a l'é special. <code>$1</code> a ven rampiassà col nòm dël sit (pr'esempi <code>{{ns:project_talk}}</code>).
 Se sòn as peul nen fesse an soa lenga për rivé a n'espression bon-a sensa cambié ël nòm dël sit, për piasì, ch'as buta an contat con un programista.
 
 A venta ch'a sia ant la partìa dij tradutor për podej salvé soe modìfiche.
@@ -12801,7 +12887,7 @@ Le modìfiche as salvo nen fin ch'a-i da nen un colp ansima al al boton ambeless
 	'translate-magic-cm-original' => 'Original',
 	'translate-magic-cm-comment' => 'Coment:',
 	'translate-magic-cm-save' => 'Salvé',
-	'translate-magic-cm-updatedusing' => 'Agiornà ën dovrand [[Special:Magic]]',
+	'translate-magic-cm-updatedusing' => 'Agiornà ën dovrand [[Special:AdvancedTranslate|{{int:Translate-magic-pagename}}]]',
 	'translate-magic-cm-savefailed' => 'Salvatagi falì',
 	'translate-magic-special' => 'Àlias dle pàgine speciaj',
 	'translate-magic-words' => 'Paròle màgiche',
@@ -12888,13 +12974,13 @@ Tùit ij valor a l'han dij lìmit superior e anferior.",
 	'translate-total' => 'Mëssagi',
 	'translate-total-tooltip' => 'Ël nùmer total ëd mëssagi an sta partìa ëd mëssagi.',
 	'translate-untranslated' => 'Nen voltà',
-	'translate-untranslated-tooltip' => "Ël nùmer total ëd mëssagi pa virà an sta partìa ëd mëssagi sì.
-Sòn sì a anclud ij mëssagi ch'a son ëstàit marcà com vej.",
+	'translate-untranslated-tooltip' => "Ël nùmer total ëd mëssagi pa voltà an sta partìa ëd mëssagi sì.
+Sòn a anclud ij mëssagi ch'a son ëstàit marcà com vej.",
 	'translate-percentage-complete' => 'Completà',
-	'translate-percentage-complete-tooltip' => "La persentual ëd mëssagi ant la partìa ch'a son ëstàit virà e pa marcà com vej.",
+	'translate-percentage-complete-tooltip' => "La përsentual ëd mëssagi ant la partìa ch'a son ëstàit voltà e pa marcà com vej.",
 	'translate-percentage-fuzzy' => 'Veje',
-	'translate-percentage-fuzzy-tooltip' => "La përsentual ëd mëssagi ant la partìa ch'a son ëstàit virà e a son ëstàit marcà com vej.
-Ij mëssagi a son marcà com vej përchè ël mëssagi sorziss an lenga Anglèisa a l'é cangià, përchè un control automàtich për ël mëssagi a l'é falì, o përchè cheidun a l'ha marcalo com vej.",
+	'translate-percentage-fuzzy-tooltip' => "La përsentual ëd mëssagi ant la partìa ch'a son ëstàit voltà e a son ëstàit marcà com vej.
+Ij mëssagi a son marcà com vej përchè ël mëssagi sorgiss an lenga anglèisa a l'é cangià, përchè un contròl automàtich për ël mëssagi a l'é falì, o përchè cheidun a l'ha marcalo com vej.",
 	'translate-nothing-to-do' => "Tute le tradussion possìbij a smijo esse stàite fàite.
 A l'é ancoragià a revisioné ij mëssagi con [[Special:Translate|{{int:translate}}]].",
 	'supportedlanguages' => 'Lenghe mantnùe',
@@ -12906,11 +12992,11 @@ Se na lenga a l'é nen ant la lista, a peul trové coma anandié un proget ëd l
 
 Se chiel a fa 'd tradussion an na lenga e sò nòm a l'é nen comprèis, për piasì ch'a gionta sò nòm a la lista dij tradutor an sël [[:Category:Languages|portal]] ëd cola lenga.
 Ch'a bèica la bara ëd menù për n'anliura al portal ëd la lenga soa preferensa.",
-	'supportedlanguages-translators' => '{{PLURAL:$2|Virador|Virador}}: $1',
-	'supportedlanguages-noportal-title' => 'Pa gnun spassi nominal ëd portal definì',
-	'supportedlanguages-noportal' => 'L\'aministrador dla wiki a l\'ha pa definì NS_PORTAL, parèj sta pàgina-sì a travaja pa.
-Su sta pàgina-sì na lista ëd portaj ëd lenghe a pararirà për tùit ij portaj corespondent con un còdes ëd lenga definì e con na pàgina ciamà "translators".
-La sotpàgina "translators" a deuv conten-e lë stamp [[:{{ns:template}}:User|User]], ch\'a pija un nòm utent com paràmetr.',
+	'supportedlanguages-translators' => '{{PLURAL:$2|Tradutor|Tradutor}}: $1',
+	'supportedlanguages-noportal-title' => 'Gnun ëspassi nominal ëd portal definì',
+	'supportedlanguages-noportal' => 'L\'aministrator dla wiki a l\'ha pa definì NS_PORTAL, parèj sta pàgina-sì a travaja pa.
+Su sta pàgina-sì na lista ëd portaj ëd lenghe a comparrirà për tùit ij portaj corespondent con un còdes ëd lenga definì e con na pàgina ciamà "translators".
+La sot-pàgina "translators" a deuv conten-e lë stamp [[:{{ns:template}}:User|User]], ch\'a pija un nòm utent com paràmetr.',
 	'translate-save' => 'Salva ($1)',
 	'translate-jssti-add' => 'Gionté a la lista',
 	'translate-group-desc-mediawikicore' => 'Sta partìa ëd mëssagi-sì a conten ij mëssagi dovrà ant la version alfa corenta ëd MediaWiki ({{CURRENTVERSION}})',
@@ -12978,7 +13064,7 @@ S'a sern d'ignoré ij cangiament, a saran coatà durant l'esportassion ch'a-i ve
 	'translate-import-from-local' => "Carié n'archivi local:",
 	'translate-import-load' => "Carié l'archivi",
 	'translate-import-err-type-not-supported' => "L'archivi as peul pa cariesse:
-Ël métod <tt>$1</tt> a l'é pa mantnù.",
+Ël métod <code>$1</code> a l'é pa mantnù.",
 	'translate-import-err-dl-failed' => "L'archivi as peul pa argionz-se:
 $1",
 	'translate-import-err-ul-failed' => "Ël cariagi dl'archivi a l'ha pa marcià",
@@ -13060,7 +13146,7 @@ $messages['ps'] = array(
 د کامې (,) په کارولو سره تاسې ژباړې يو له بل نه بېلولی شی.
 نوم-تشيالونه بايد يوه ژباړه ولري.
 
-In namespace translations <tt>$1 talk</tt> is special. <tt>$1</tt> is replaced with sitename (for example <tt>{{ns:project_talk}}</tt>).
+In namespace translations <code>$1 talk</code> is special. <code>$1</code> is replaced with sitename (for example <code>{{ns:project_talk}}</code>).
 If it is not possible in your language to form valid expression without changing sitename, please contact a developer.
 
 You need to be in the translators group to save changes.
@@ -13128,14 +13214,14 @@ $messages['pt'] = array(
 	'translate-task-export-to-file' => 'Exportar para ficheiro as traduções de',
 	'translate-task-export-as-po' => 'Exportar tradução em formato Gettext',
 	'translate-task-export-to-xliff' => 'Exportar tradução em formato Xliff',
-	'translate-page-no-such-language' => 'A língua especificada é inválida',
-	'translate-page-no-such-task' => 'A tarefa especificada é inválida',
+	'translate-page-no-such-language' => 'A língua especificada é inválida.',
+	'translate-page-no-such-task' => 'A tarefa especificada é inválida.',
 	'translate-page-no-such-group' => 'O grupo especificado é inválido.',
 	'translate-page-disabled' => "As traduções para esta língua, neste grupo, foram impossibilitadas. Motivo:
 
 ''$1''",
 	'translate-page-settings-legend' => 'Configurações',
-	'translate-page-task' => 'Eu desejo',
+	'translate-page-task' => 'Eu pretendo',
 	'translate-page-group' => 'Grupo',
 	'translate-page-group-tooltip' => 'O nome de um grupo de mensagens.
 Se o grupo é composto por um subconjunto ou superconjunto de mensagens de outros grupos, o mesmo é apresentado a negrito.',
@@ -13175,7 +13261,7 @@ Os nomes alternativos de páginas especiais e as palavras mágicas podem ter vá
 As traduções são separadas por vírgulas (,).
 Os nomes de espaços nominais só podem ter uma tradução.
 
-Nas traduções de espaços nominais, a partícula <tt>$1 talk</tt> é especial. <tt>$1</tt> é substituído pelo nome do site (por exemplo, <tt>{{ns:project_talk}}</tt>).
+Nas traduções de espaços nominais, a partícula <code>$1 talk</code> é especial. <code>$1</code> é substituído pelo nome do site (por exemplo, <code>{{ns:project_talk}}</code>).
 Se não é possível formar na sua língua expressões válidas sem alterar o nome do site, por favor, contacte um programador.
 
 É necessário pertencer ao grupo de tradutores para conseguir gravar as alterações.
@@ -13189,7 +13275,7 @@ As alterações não serão gravadas até clicar no botão de gravar abaixo.',
 	'translate-magic-cm-original' => 'Original',
 	'translate-magic-cm-comment' => 'Comentário:',
 	'translate-magic-cm-save' => 'Guardar',
-	'translate-magic-cm-updatedusing' => 'Actualizado usando [[Special:Magic]]',
+	'translate-magic-cm-updatedusing' => 'Actualizado usando [[Special:AdvancedTranslate|{{int:Translate-magic-pagename}}]]',
 	'translate-magic-cm-savefailed' => 'Erro ao gravar',
 	'translate-magic-special' => 'Nomes alternativos de páginas especiais',
 	'translate-magic-words' => 'Palavras mágicas',
@@ -13362,7 +13448,7 @@ Se escolher ignorar as alterações, elas serão sobrepostas na próxima exporta
 	'translate-import-from-local' => 'Carregamento de ficheiro local:',
 	'translate-import-load' => 'Carregar ficheiro',
 	'translate-import-err-type-not-supported' => 'Não foi possível carregar o ficheiro:
-O método <tt>$1</tt> não é suportado.',
+O método <code>$1</code> não é suportado.',
 	'translate-import-err-dl-failed' => 'Não foi possível obter o ficheiro:
 $1',
 	'translate-import-err-ul-failed' => 'Carregamento do ficheiro falhou',
@@ -13455,7 +13541,7 @@ Os nomes alternativos de páginas especiais e palavras mágicas podem receber m�
 As traduções são separadas por vírgulas (,).
 Nomes de espaços nominais podem receber apenas uma tradução.
 
-Nas traduções de espaços nominais, a partícula <tt>$1 talk</tt> é especial. <tt>$1</tt> é substituído pelo nome do sítio (por exemplo, <tt>{{ns:project_talk}}</tt>).
+Nas traduções de espaços nominais, a partícula <code>$1 talk</code> é especial. <code>$1</code> é substituído pelo nome do sítio (por exemplo, <code>{{ns:project_talk}}</code>).
 Se não é possível formar no seu idioma expressões válidas sem alterar o nome do sítio, por favor, contate um desenvolvedor.
 
 É necessário pertencer ao grupo de tradutores para conseguir gravar as alterações.
@@ -13469,7 +13555,7 @@ As alterações não serão gravadas até que você clique abaixo no botão de g
 	'translate-magic-cm-original' => 'Original',
 	'translate-magic-cm-comment' => 'Comentário:',
 	'translate-magic-cm-save' => 'Guardar',
-	'translate-magic-cm-updatedusing' => 'Atualizado usando [[Special:Magic]]',
+	'translate-magic-cm-updatedusing' => 'Atualizado usando [[Special:AdvancedTranslate|{{int:Translate-magic-pagename}}]]',
 	'translate-magic-cm-savefailed' => 'Erro ao salvar',
 	'translate-magic-special' => 'Nomes alternativos de páginas especiais',
 	'translate-magic-words' => 'Palavras mágicas',
@@ -13598,7 +13684,7 @@ Por favor, confira.',
 	'translate-import-from-local' => 'Carregamento de arquivo local:',
 	'translate-import-load' => 'Carregar arquivo',
 	'translate-import-err-type-not-supported' => 'Impossível carregar o arquivo:
-O método <tt>$1</tt> não é suportado.',
+O método <code>$1</code> não é suportado.',
 	'translate-import-err-ul-failed' => 'Carregamento de arquivo sem sucesso',
 	'translate-import-err-invalid-title' => 'O nome <nowiki>$1</nowiki> fornecido para o arquivo era inválido.',
 	'translate-import-err-no-such-file' => 'O arquivo <nowiki>$1</nowiki> não existe ou não foi carregado localmente.',
@@ -13711,7 +13797,7 @@ Dacă știți unde sau cum este folosit acest mesaj, îi puteți ajuta pe ceilal
 	'translate-magic-cm-original' => 'Original',
 	'translate-magic-cm-comment' => 'Comentariu:',
 	'translate-magic-cm-save' => 'Salvează',
-	'translate-magic-cm-updatedusing' => 'Actualizat folosind [[Special:Magic]]',
+	'translate-magic-cm-updatedusing' => 'Actualizat folosind [[Special:AdvancedTranslate|{{int:Translate-magic-pagename}}]]',
 	'translate-magic-cm-savefailed' => 'Salvare eșuată',
 	'translate-magic-words' => 'Cuvinte magice',
 	'translate-magic-namespace' => 'Nume de spații de nume',
@@ -13802,7 +13888,7 @@ Dacă știți unde sau cum este folosit acest mesaj, îi puteți ajuta pe ceilal
 	'translate-import-from-local' => 'Încărcare fișier local:',
 	'translate-import-load' => 'Încarcă fișier',
 	'translate-import-err-type-not-supported' => 'Imposibil de încărcat fișierul:
-Metoda <tt>$1</tt> nu este suportată.',
+Metoda <code>$1</code> nu este suportată.',
 	'translate-import-err-ul-failed' => 'Încărcarea fișierului nu a avut succes',
 	'translate-import-err-no-such-file' => 'Fișierul <nowiki>$1</nowiki> nu există sau nu a fost încărcat local.',
 	'translate-gs-pos' => 'Poz.',
@@ -13967,7 +14053,7 @@ $messages['ru'] = array(
 	'translate-magic-cm-original' => 'Исходное',
 	'translate-magic-cm-comment' => 'Примечание:',
 	'translate-magic-cm-save' => 'Сохранить',
-	'translate-magic-cm-updatedusing' => 'Обновлено с помощью [[Special:Magic]]',
+	'translate-magic-cm-updatedusing' => 'Обновлено с помощью [[Special:AdvancedTranslate|{{int:Translate-magic-pagename}}]]',
 	'translate-magic-cm-savefailed' => 'Сохранение не удалось',
 	'translate-magic-special' => 'Псевдонимы служебных страниц',
 	'translate-magic-words' => 'Магические слова',
@@ -14140,7 +14226,7 @@ $messages['ru'] = array(
 	'translate-import-from-wiki' => 'Файл в этой вики:',
 	'translate-import-from-local' => 'Загрузить локальный файл:',
 	'translate-import-load' => 'Загрузить файл',
-	'translate-import-err-type-not-supported' => 'Невозможно загрузить файл: метод <tt>$1</tt> не поддерживается.',
+	'translate-import-err-type-not-supported' => 'Невозможно загрузить файл: метод <code>$1</code> не поддерживается.',
 	'translate-import-err-dl-failed' => 'Невозможно загрузить файл:
 $1',
 	'translate-import-err-ul-failed' => 'Не удалось загрузить файл',
@@ -14275,7 +14361,7 @@ $messages['sah'] = array(
 Тылбаастар соппутуойунан (,) араарыллаллар.
 Аат дала биир эрэ тылбаастаах буолуохтаах.
 
-Аат далларын тылбааһыгар <tt>$1 ырытыыта</tt> атыннык тылбаастанар, Бу бэлиэ <tt>$1</tt> саайт аатынан уларытыллыа (холобур <tt>{{ns:project_talk}}</tt>).
+Аат далларын тылбааһыгар <code>$1 ырытыыта</code> атыннык тылбаастанар, Бу бэлиэ <code>$1</code> саайт аатынан уларытыллыа (холобур <code>{{ns:project_talk}}</code>).
 Эн тылгар ол сатаммат буоллаҕына разработчиктарга этээр.
 
 Уларытыыгын бигэргэтэргэ тылбаасчыттар бөлөхтөрүгэр киирэриҥ ирдэнэр.
@@ -14289,7 +14375,7 @@ $messages['sah'] = array(
 	'translate-magic-cm-original' => 'Маҥнайгы барыла',
 	'translate-magic-cm-comment' => 'Быһаарыы:',
 	'translate-magic-cm-save' => 'Бигэргэт',
-	'translate-magic-cm-updatedusing' => 'Бу көмөтүнэн саҥардылынна: [[Special:Magic]]',
+	'translate-magic-cm-updatedusing' => 'Бу көмөтүнэн саҥардылынна: [[Special:AdvancedTranslate|{{int:Translate-magic-pagename}}]]',
 	'translate-magic-cm-savefailed' => 'Бигэргэтэр табыллыбата',
 	'translate-magic-special' => 'Анал сирэйдэр псевдонимнара',
 	'translate-magic-words' => 'Аптаах тыллар',
@@ -14503,7 +14589,7 @@ Aliasy špeciálnych stránok a magických slov môžu mať viacero prekladov.
 Preklady sa oddeľujú čiarkami („,“).
 Názvy tém vzhľadu a názvy menných priestorov môžu mať iba jeden preklad.
 
-V prekladoch menných priestorov je <tt>$1 talk</tt> špeciálne. <tt>$1</tt> sa nahradí názvom webovej lokality (napr. <tt>{{ns:project_talk}}</tt>). Ak vo vašom jazyku nie je možné vytvoriť zmysluplný výraz bez zmeny názvu webovej lokality, prosím, kontaktujte vývojára.
+V prekladoch menných priestorov je <code>$1 talk</code> špeciálne. <code>$1</code> sa nahradí názvom webovej lokality (napr. <code>{{ns:project_talk}}</code>). Ak vo vašom jazyku nie je možné vytvoriť zmysluplný výraz bez zmeny názvu webovej lokality, prosím, kontaktujte vývojára.
 
 Aby ste mohli ukladať zmeny, musíte byť členom skupiny prekladatelia.
 Zmeny sa neuložia, kým nekliknete na tlačidlo Uložiť dolu.',
@@ -14516,7 +14602,7 @@ Zmeny sa neuložia, kým nekliknete na tlačidlo Uložiť dolu.',
 	'translate-magic-cm-original' => 'Pôvodná',
 	'translate-magic-cm-comment' => 'Komentár:',
 	'translate-magic-cm-save' => 'Uložiť',
-	'translate-magic-cm-updatedusing' => 'Aktualizované pomocou [[Special:Magic]]',
+	'translate-magic-cm-updatedusing' => 'Aktualizované pomocou [[Special:AdvancedTranslate|{{int:Translate-magic-pagename}}]]',
 	'translate-magic-cm-savefailed' => 'Uloženie sa nepodarilo',
 	'translate-magic-special' => 'Aliasy špeciálnych stránok',
 	'translate-magic-words' => 'Magické slová',
@@ -14667,7 +14753,7 @@ Ak sa rozhodnete ignorovať zmeny, prepíšu sa pri ďalšom exporte.',
 	'translate-import-from-local' => 'Nahranie lokálneho súboru:',
 	'translate-import-load' => 'Nahrať súbor',
 	'translate-import-err-type-not-supported' => 'Nepodarilo sa nahrať súbor:
-Metóda <tt>$1</tt> nie je podporovaná.',
+Metóda <code>$1</code> nie je podporovaná.',
 	'translate-import-err-dl-failed' => 'Nepodarilo sa získať súbor:
 $1',
 	'translate-import-err-ul-failed' => 'Nahranie súboru neprebehlo úspešne',
@@ -14760,7 +14846,7 @@ Razlog:
 	'translate-magic-cm-original' => 'Original',
 	'translate-magic-cm-comment' => 'Komentar:',
 	'translate-magic-cm-save' => 'Shrani',
-	'translate-magic-cm-updatedusing' => 'Posodobitev z uporabo [[Special:Magic]]',
+	'translate-magic-cm-updatedusing' => 'Posodobitev z uporabo [[Special:AdvancedTranslate|{{int:Translate-magic-pagename}}]]',
 	'translate-magic-cm-savefailed' => 'Shranjevanje ni uspelo',
 	'translate-magic-special' => 'Vzdevki posebnih strani',
 	'translate-magic-words' => 'Čarobne besede',
@@ -14934,7 +15020,7 @@ $messages['sr-ec'] = array(
 	'translate-magic-cm-original' => 'Оригинал',
 	'translate-magic-cm-comment' => 'Коментар:',
 	'translate-magic-cm-save' => 'Сачувај',
-	'translate-magic-cm-updatedusing' => 'Актуелизовано коришћењем [[Special:Magic]]',
+	'translate-magic-cm-updatedusing' => 'Актуелизовано коришћењем [[Special:AdvancedTranslate|{{int:Translate-magic-pagename}}]]',
 	'translate-magic-cm-savefailed' => 'Промене нису запамћене',
 	'translate-magic-special' => 'Кодови за специјалне стране',
 	'translate-magic-words' => 'Магичне речи',
@@ -15066,7 +15152,7 @@ Ako znate gde se i kako koristi, možete pomoći ostalim prevodiocima dodavanjem
 	'translate-magic-cm-original' => 'Original',
 	'translate-magic-cm-comment' => 'Komentar:',
 	'translate-magic-cm-save' => 'Sačuvaj',
-	'translate-magic-cm-updatedusing' => 'Aktuelizovano korišćenjem [[Special:Magic]]',
+	'translate-magic-cm-updatedusing' => 'Aktuelizovano korišćenjem [[Special:AdvancedTranslate|{{int:Translate-magic-pagename}}]]',
 	'translate-magic-cm-savefailed' => 'Promene nisu zapamćene',
 	'translate-magic-special' => 'Kodovi za specijalne strane',
 	'translate-magic-words' => 'Magične reči',
@@ -15209,7 +15295,7 @@ $messages['stq'] = array(
 
 Spezioalsieden un magiske Woude konnen moorere Uursättengen hääbe, jo wäide älkemoal truch n Komma (,) tränd. Noomensruumnoomen duuren bloot je een Uursättenge hääbe.
 
-In ju Uursättenge fon n Noomensruumnoome häd <tt>$1 talk</tt> ne spezielle Betjuudenge. <tt>$1</tt> wäd truch dän Projektnoome ärsät (toun Biespil <tt>{{ns:project_talk}}</tt>).
+In ju Uursättenge fon n Noomensruumnoome häd <code>$1 talk</code> ne spezielle Betjuudenge. <code>$1</code> wäd truch dän Projektnoome ärsät (toun Biespil <code>{{ns:project_talk}}</code>).
 Wan et in dien Sproake nit muugelk is, ne grammatikalisk korrekte Foarm deerfon tou bildjen sunner dän Projektnoome tou ferannerjen, kontaktier n Softwareäntwikler.
 
 Du moast in ju Uursätter-Gruppe weese, uum Annerengen tou spiekerjen.
@@ -15222,7 +15308,7 @@ Annerengen wäide eerste bie dän Klik ap dän Spiekerje-Knoop spiekerd.',
 	'translate-magic-cm-original' => 'Originoal',
 	'translate-magic-cm-comment' => 'Kommentoar:',
 	'translate-magic-cm-save' => 'Spiekerje',
-	'translate-magic-cm-updatedusing' => 'Aktualisierd truch [[Special:Magic]]',
+	'translate-magic-cm-updatedusing' => 'Aktualisierd truch [[Special:AdvancedTranslate|{{int:Translate-magic-pagename}}]]',
 	'translate-magic-cm-savefailed' => 'Spiekerjen failsloain',
 	'translate-magic-special' => 'Spezioalsieden-Aliase',
 	'translate-magic-words' => 'Magiske Woude',
@@ -15346,7 +15432,7 @@ Pikeun kecap magis, Anjeun perlu nyantumkeun ogé tarjamahan basa Inggris atawa 
 
 Landian pikeun halaman husus sarta kecap magis bisa ngabogaan leuwih ti hiji tarjamahan anu lainna dipisahkan ku koma (,). Ngaran kulit sarta ngaranspasi ngan bisa ngabogaan hiji tarjamahan.
 
-Dina tarjamahan ngaranspasi <tt>$1 talk</tt> diperlakukan husus. <tt>$1</tt>  digantikeun kalawan ngaran loka (contona {{ns:project_talk}}).
+Dina tarjamahan ngaranspasi <code>$1 talk</code> diperlakukan husus. <code>$1</code>  digantikeun kalawan ngaran loka (contona {{ns:project_talk}}).
 Lamun basa Anjeun henteu matak bisa pikeun nyieun hiji ekspresi anu valid tanpa ngaganti ngaran loka, sumangga kontak salah saurang pengembang.
 
 Anjeun perlu jadi anggota grup panarjamah pikeun nyimpen parobahan. Parobahan moal disimpen nepi ka Anjeun ngaklik tombol simpen di handapeun.",
@@ -15358,7 +15444,7 @@ Anjeun perlu jadi anggota grup panarjamah pikeun nyimpen parobahan. Parobahan mo
 	'translate-magic-cm-original' => 'Asli',
 	'translate-magic-cm-comment' => 'Kamandang:',
 	'translate-magic-cm-save' => 'Simpen',
-	'translate-magic-cm-updatedusing' => 'Dirobah ngagunakeun [[Special:Magic]]',
+	'translate-magic-cm-updatedusing' => 'Dirobah ngagunakeun [[Special:AdvancedTranslate|{{int:Translate-magic-pagename}}]]',
 	'translate-magic-cm-savefailed' => 'Gagal nyimpen',
 	'translate-magic-special' => 'Landihan kaca husus',
 	'translate-magic-words' => 'Kecap magis',
@@ -15466,7 +15552,7 @@ Alias för specialsidor och magiska ord kan ha flera översättningar.
 Översättningar skiljs åt med ett komma (,).
 Namnrymder kan endast ha en översättning.
 
-Vid översättning av namnrymder så är <tt>$1 talk</tt> speciellt. <tt>$1</tt> ersätts med webbplatsens namn (till exempel <tt>{{ns:project_talk}}</tt>).
+Vid översättning av namnrymder så är <code>$1 talk</code> speciellt. <code>$1</code> ersätts med webbplatsens namn (till exempel <code>{{ns:project_talk}}</code>).
 Om det inte är möjligt att skapa en giltig översättning till ditt språk utan att ändra webbplatsens namn, så ta kontakt med en utvecklare.
 
 För att kunna spara ändringar så behöver du tillhöra översättargruppen.
@@ -15480,7 +15566,7 @@ För att kunna spara ändringar så behöver du tillhöra översättargruppen.
 	'translate-magic-cm-original' => 'Original',
 	'translate-magic-cm-comment' => 'Kommentar:',
 	'translate-magic-cm-save' => 'Spara',
-	'translate-magic-cm-updatedusing' => 'Uppdaterad med hjälp av [[Special:Magic]]',
+	'translate-magic-cm-updatedusing' => 'Uppdaterad med hjälp av [[Special:AdvancedTranslate|{{int:Translate-magic-pagename}}]]',
 	'translate-magic-cm-savefailed' => 'Det gick ej att spara',
 	'translate-magic-special' => 'Alias till specialsidor',
 	'translate-magic-words' => 'Magiska ord',
@@ -15637,7 +15723,7 @@ Om du väljer att ignorera dessa förändringar så kommer de att åsidosättas 
 	'translate-import-from-local' => 'Lokal filuppladdning:',
 	'translate-import-load' => 'Ladda fil',
 	'translate-import-err-type-not-supported' => 'Kan inte ladda filen:
-Metoden <tt>$1</tt> stöds inte.',
+Metoden <code>$1</code> stöds inte.',
 	'translate-import-err-dl-failed' => 'Kan inte hämta denna filen: 
 $1',
 	'translate-import-err-ul-failed' => 'Filuppladdningen misslyckades',
@@ -15768,7 +15854,7 @@ $messages['te'] = array(
 	'translate-magic-cm-original' => 'అసలు',
 	'translate-magic-cm-comment' => 'వ్యాఖ్య:',
 	'translate-magic-cm-save' => 'భద్రపరచు',
-	'translate-magic-cm-updatedusing' => '[[Special:Magic]] ద్వారా తాజాకరించారు',
+	'translate-magic-cm-updatedusing' => '[[Special:AdvancedTranslate|{{int:Translate-magic-pagename}}]] ద్వారా తాజాకరించారు',
 	'translate-magic-cm-savefailed' => 'భద్రపరచడం విఫలమైంది',
 	'translate-magic-special' => 'ప్రత్యేక పేజీల మారుపేర్లు',
 	'translate-magic-words' => 'మాయా పదాలు',
@@ -15852,10 +15938,16 @@ $messages['te'] = array(
 	'translate-manage-action-import' => 'దిగుమతి చెయ్యి',
 	'translate-manage-action-ignore' => 'పట్టించుకోవద్దు',
 	'translate-manage-import-done' => 'అంతా పూర్తయ్యింది!',
+	'translate-manage-subtitle' => 'నిర్వహణ',
 	'importtranslations' => 'అనువాదాల దిగుమతి',
 	'translate-import-from-wiki' => 'ఈ వికీలోని ఫైలు:',
 	'translate-import-from-local' => 'స్థానిక ఫైలు ఎక్కింపు:',
 	'translate-import-err-ul-failed' => 'ఫైలు ఎక్కింపు విజయవంతం కాలేదు',
+	'translate-js-next' => 'భద్రపరిచి తర్వాతి దానికి వెళ్ళు',
+	'translate-js-nonext' => 'ఈ పుటలో ఇది చివరి సందేశం',
+	'translate-js-skip' => 'వదిలేసి తర్వాతి దానికి వెళ్ళు',
+	'translate-js-save-failed' => 'భద్రపరచడం విఫలమైంది. దయచేసి ఈ పొరపాటుని నివేదించండి.',
+	'translate-js-history' => 'అనువాద చరిత్ర',
 	'translate-gs-pos' => 'స్ధానం',
 	'translate-gs-code' => 'సంకేతం',
 	'translate-gs-continent' => 'ఖండం',
@@ -15944,7 +16036,7 @@ $messages['tg-cyrl'] = array(
 	'translate-magic-cm-original' => 'Аслӣ',
 	'translate-magic-cm-comment' => 'Тавзеҳот:',
 	'translate-magic-cm-save' => 'Захира',
-	'translate-magic-cm-updatedusing' => 'Барӯз шуд тавассути [[Special:Magic]]',
+	'translate-magic-cm-updatedusing' => 'Барӯз шуд тавассути [[Special:AdvancedTranslate|{{int:Translate-magic-pagename}}]]',
 	'translate-magic-cm-savefailed' => 'Шикаст дар захира кардан',
 	'translate-magic-words' => 'Калимаҳои ҷодуӣ',
 	'translate-magic-namespace' => 'Исми фазоҳои ном',
@@ -16004,7 +16096,7 @@ Agar şumo medoned in paƣom ciguna jo dar kuço istifoda meşavad, şumo metavo
 	'translate-magic-cm-original' => 'Aslī',
 	'translate-magic-cm-comment' => 'Tavzehot:',
 	'translate-magic-cm-save' => 'Zaxira',
-	'translate-magic-cm-updatedusing' => 'Barūz şud tavassuti [[Special:Magic]]',
+	'translate-magic-cm-updatedusing' => 'Barūz şud tavassuti [[Special:AdvancedTranslate|{{int:Translate-magic-pagename}}]]',
 	'translate-magic-cm-savefailed' => 'Şikast dar zaxira kardan',
 	'translate-magic-words' => 'Kalimahoi çoduī',
 	'translate-magic-namespace' => 'Ismi fazohoi nom',
@@ -16081,7 +16173,7 @@ $messages['th'] = array(
 คำแปลจะแยกโดยการใช้ จุลภาค (,)
 ชื่อแบบหน้าตาและเนมสเปซสามารถมีคำแปลได้แค่คำเดียว
 
-ในคำแปลชื่อเนมสเปซ <tt>คุยเรื่อง$1</tt> ต้องระวังเป็นพิเศษ <tt>$1</tt> จะถูกแทนที่โดยชื่อเว็บไซต์ (เช่น <tt>{{ns:project_talk}}</tt>)
+ในคำแปลชื่อเนมสเปซ <code>คุยเรื่อง$1</code> ต้องระวังเป็นพิเศษ <code>$1</code> จะถูกแทนที่โดยชื่อเว็บไซต์ (เช่น <code>{{ns:project_talk}}</code>)
 ถ้าไม่สามารถกระทำการดังกล่าวได้ในภาษาของคุณ กรุณาติดต่อผู้ดูแลระบบขั้นสูง
 
 คุณต้องอยู่ในกลุ่มคนแปลเพื่อที่จะบันทึกข้อมูลได้
@@ -16094,7 +16186,7 @@ $messages['th'] = array(
 	'translate-magic-cm-original' => 'ต้นฉบับ',
 	'translate-magic-cm-comment' => 'หมายเหตุ:',
 	'translate-magic-cm-save' => 'บันทึก',
-	'translate-magic-cm-updatedusing' => 'แก้ไขด้วย [[{{ns:special}}:Magic]]',
+	'translate-magic-cm-updatedusing' => 'แก้ไขด้วย [[Special:AdvancedTranslate|{{int:Translate-magic-pagename}}]]',
 	'translate-magic-cm-savefailed' => 'บันทึกไม่สำเร็จ',
 	'translate-magic-special' => 'ชื่อ alias ของหน้าพิเศษ',
 	'translate-magic-words' => 'ตัวแปรพิเศษ',
@@ -16188,7 +16280,7 @@ $messages['th'] = array(
 	'translate-import-from-local' => 'อัพโหลดไฟล์:',
 	'translate-import-load' => 'โหลดไฟล์',
 	'translate-import-err-type-not-supported' => 'ไม่สามารถโหลดไฟล์ได้:
-<br />ไม่สนับสนุนวิธีการ <tt>$1</tt>',
+<br />ไม่สนับสนุนวิธีการ <code>$1</code>',
 	'translate-import-err-dl-failed' => 'ไม่สามารถดีงไฟล์นี้ได้:
 <br />$1',
 	'translate-import-err-ul-failed' => 'อัพโหลดไฟล์ไม่สำเร็จ',
@@ -16309,8 +16401,8 @@ $messages['tl'] = array(
 	'translate-edit-contribute' => 'magambag',
 	'translate-edit-no-information' => "''Walang kasulatan ang mensaheng ito.
 Kung alam mo kung saan o paano ginagamit ang mensaheng ito, makakatulong ka sa iba pang mga tagapagsalinwika sa pamamagitan ng pagdaragdag ng kasulatan sa mensaheng ito.''",
-	'translate-edit-information' => 'Kabatiran hinggil sa mensaheng ito ($1)',
-	'translate-edit-in-other-languages' => 'Mga mensaheng nasa ibang mga wika',
+	'translate-edit-information' => 'Kabatiran hinggil sa mensaheng "$2" ($1)',
+	'translate-edit-in-other-languages' => 'Mensaheng "$1" na nasa ibang mga wika',
 	'translate-edit-committed' => 'Pangkasalukuyang salinwikang nasa sopwer',
 	'translate-edit-warnings' => 'Mga babala hinggil sa hindi pa ganap na mga salinwika',
 	'translate-edit-goto-no-prev' => 'Walang sinusundang mensahe',
@@ -16325,7 +16417,7 @@ Maaaring magkaroon ng maramihang mga salinwika ang mga bansag ng natatanging mga
 Pinaghihiwalay-hiwalay ng mga kuwit (,) ang mga salinwika.
 May iisang salinwika lamang ang mga espasyo ng pangalan.
 
-Sa loob ng mga salinwika ng espasyo ng pangalan ang <tt>$1 usapan</tt> ay natatangi. Ang <tt>$1</tt> ay pinapalitan ng pangalan ng sityo (halimbawa na ang <tt>usapang {{SITENAME}} </tt>).
+Sa loob ng mga salinwika ng espasyo ng pangalan ang <code>$1 usapan</code> ay natatangi. Ang <code>$1</code> ay pinapalitan ng pangalan ng sityo (halimbawa na ang <code>usapang {{SITENAME}} </code>).
 Kung hindi maaari sa inyong wika ang makahubog ng isang tanggap na pagsasaad na hindi binabago ang pangalan ng sayt, makipag-ugnayan lamang sa isang tagapagunlad.
 
 Kinakailangan mong mapabilang sa pangkat ng mga tagapagsalinwika upang makapagsagip ng mga pagbabago.
@@ -16338,7 +16430,7 @@ Hindi sinasagip ang mga pagbabago maliban na lamang kapag pinindot mo na ang pin
 	'translate-magic-cm-original' => 'Orihinal',
 	'translate-magic-cm-comment' => 'Puna/Kumento:',
 	'translate-magic-cm-save' => 'Sagipin',
-	'translate-magic-cm-updatedusing' => 'Isinapanahong ginagamitan ng [[Special:Magic|Natatangi:Salamangka]]',
+	'translate-magic-cm-updatedusing' => 'Isinapanahong ginagamitan ng [[Special:AdvancedTranslate|{{int:Translate-magic-pagename}}]]',
 	'translate-magic-cm-savefailed' => 'Nabigo ang pagsagip',
 	'translate-magic-special' => 'Mga bansag (alyas) na pangnatatanging pahina',
 	'translate-magic-words' => 'Mga salitang may salamangka',
@@ -16651,7 +16743,7 @@ $messages['ug-arab'] = array(
 	'translate-magic-cm-original' => 'ئەسلى',
 	'translate-magic-cm-comment' => 'ئىزاھات:',
 	'translate-magic-cm-save' => 'ساقلا',
-	'translate-magic-cm-updatedusing' => 'يېڭىلانغان ئىشلىتىش [[Special:Magic]]',
+	'translate-magic-cm-updatedusing' => 'يېڭىلانغان ئىشلىتىش [[Special:AdvancedTranslate|{{int:Translate-magic-pagename}}]]',
 	'translate-magic-cm-savefailed' => 'ساقلىيالمىدى',
 	'translate-magic-notsaved' => 'تەھرىرلىگىنىڭىز ساقلانمىدى!',
 	'translationchanges' => 'تەرجىمە ئۆزگۈرۈشى',
@@ -16800,7 +16892,7 @@ $messages['uk'] = array(
 Псевдоніми спеціальних сторінок і магічні слова можуть мати декілька варіантів перекладу, які розділяються комою (,).
 Простори назв можуть мати тільки один переклад.
 
-У перекладах просторів назв рядок <tt>Обговорення $1</tt> обробляється по-особливому. <tt>$1</tt> замінюється на назву сайту (наприклад <tt>{{ns:project_talk}}</tt>). Зв'яжіться з розробниками, якщо подібна граматична конструкція невірна для вашої мови.
+У перекладах просторів назв рядок <code>Обговорення $1</code> обробляється по-особливому. <code>$1</code> замінюється на назву сайту (наприклад <code>{{ns:project_talk}}</code>). Зв'яжіться з розробниками, якщо подібна граматична конструкція невірна для вашої мови.
 
 Щоб зберегти зміни, ви повинні належати до групи перекладачів.
 Зміни не будуть збережені, поки ви не натиснете кнопку нижче.",
@@ -16813,7 +16905,7 @@ $messages['uk'] = array(
 	'translate-magic-cm-original' => 'Вихідне',
 	'translate-magic-cm-comment' => 'Коментар:',
 	'translate-magic-cm-save' => 'Зберегти',
-	'translate-magic-cm-updatedusing' => 'Оновлено за допомогою [[Special:Magic]]',
+	'translate-magic-cm-updatedusing' => 'Оновлено за допомогою [[Special:AdvancedTranslate|{{int:Translate-magic-pagename}}]]',
 	'translate-magic-cm-savefailed' => 'Не вдалося зберегти',
 	'translate-magic-special' => 'Псевдоніми спеціальних сторінок',
 	'translate-magic-words' => 'Магічні слова',
@@ -16909,6 +17001,7 @@ $messages['uk'] = array(
 
 Якщо ви перекладач на певну мову, але у відповідному списку вас нема, додайте своє ім\'я до списку перекладачів на [[:Category:Languages|порталі]] цієї мови.
 На бічній панель знаходиться посилання на портал мови вашого інтерфейсу.',
+	'supportedlanguages-translators' => 'Перекладачів: $1',
 	'translate-save' => 'Зберегти ($1)',
 	'translate-jssti-add' => 'Додати в список',
 	'translate-group-desc-mediawikicore' => 'Ця група містить повідомлення, які використовують у поточній альфа-версії MediaWiki ({{CURRENTVERSION}})',
@@ -16976,7 +17069,7 @@ $messages['uk'] = array(
 	'translate-import-from-local' => 'Завантажити локальний файл:',
 	'translate-import-load' => 'Завантажити файл',
 	'translate-import-err-type-not-supported' => 'Не вдалося завантажити файл:
-Метод <tt>$1</tt> не підтримується.',
+Метод <code>$1</code> не підтримується.',
 	'translate-import-err-dl-failed' => 'Не вдалося переслати файл:
 $1',
 	'translate-import-err-ul-failed' => 'Не вдалося переслати файл',
@@ -17060,7 +17153,7 @@ I alias e le parole magiche le pol verghe più tradussion.
 Le tradussion le xe separà da na virgola (,).
 I nomi dei namespace i pol verghe na tradussion sola.
 
-In te le tradussion dei namespace <tt>$1 talk</tt> el xe speciale. <tt>$1</tt> el vien sostituìo col nome del sito (par esenpio <tt>{{ns:project_talk}}</tt>).
+In te le tradussion dei namespace <code>$1 talk</code> el xe speciale. <code>$1</code> el vien sostituìo col nome del sito (par esenpio <code>{{ns:project_talk}}</code>).
 Se ne la to lengua no se riesse a scrivar na espression valida sensa canbiar el nome del sito, par piaser contata un svilupador.
 
 Te ghè da èssar nel grupo dei tradutori par salvar i canbiamenti.
@@ -17073,7 +17166,7 @@ I canbiamenti no i xe salvà finché no te struchi el boton qua soto.',
 	'translate-magic-cm-original' => 'Originàl',
 	'translate-magic-cm-comment' => 'Comento:',
 	'translate-magic-cm-save' => 'Salva',
-	'translate-magic-cm-updatedusing' => 'Agiornà doparando [[Special:Magic]]',
+	'translate-magic-cm-updatedusing' => 'Agiornà doparando [[Special:AdvancedTranslate|{{int:Translate-magic-pagename}}]]',
 	'translate-magic-cm-savefailed' => 'Salvatagio mìa riussìo',
 	'translate-magic-special' => 'Nomi alternativi de le pagine speciali',
 	'translate-magic-words' => 'Parole magiche',
@@ -17172,7 +17265,7 @@ $messages['vep'] = array(
 	'translate-magic-cm-original' => 'Originalilne',
 	'translate-magic-cm-comment' => 'Homaičend:',
 	'translate-magic-cm-save' => 'Kirjutada muštho',
-	'translate-magic-cm-updatedusing' => 'Udištadud [[Special:Magic]]-lehtpolen kävutaden',
+	'translate-magic-cm-updatedusing' => 'Udištadud [[Special:AdvancedTranslate|{{int:Translate-magic-pagename}}]]-lehtpolen kävutaden',
 	'translate-magic-cm-savefailed' => 'Ei voi kirjutada muštho',
 	'translate-magic-words' => 'Noidsanad',
 	'translationchanges-export' => 'eksport',
@@ -17282,7 +17375,7 @@ Bí danh của các trang đặc biệt và câu thần chú có thể có nhi�
 Các bản dịch phân cách nhau bằng dấu phẩy (,).
 Tên hình dạng giao diện và không gian tên chỉ có thể có một bản dịch.
 
-Trong các bản dịch không gian tên, <tt>$1 talk</tt> có đặc biệt hơn. <tt>$1</tt> được thay thế bằng tên trang (ví dụ <tt>{{ns:project_talk}}</tt>).
+Trong các bản dịch không gian tên, <code>$1 talk</code> có đặc biệt hơn. <code>$1</code> được thay thế bằng tên trang (ví dụ <code>{{ns:project_talk}}</code>).
 Nếu ngôn ngữ của bạn không thể hiển thị đúng nếu không đổi tên trang (SITENAME), xin hãy liên hệ với một lập trình viên.
 
 Bạn cần phải thuộc nhóm biên dịch viên để có thể lưu các thay đổi.
@@ -17296,7 +17389,7 @@ Các thay đổi sẽ không được lưu lại đến khi nào bạn nhấn v�
 	'translate-magic-cm-original' => 'Bản gốc',
 	'translate-magic-cm-comment' => 'Tóm lược:',
 	'translate-magic-cm-save' => 'Lưu',
-	'translate-magic-cm-updatedusing' => 'Đã cập nhật bằng [[Special:Magic]]',
+	'translate-magic-cm-updatedusing' => 'Đã cập nhật bằng [[Special:AdvancedTranslate|{{int:Translate-magic-pagename}}]]',
 	'translate-magic-cm-savefailed' => 'Lưu thất bại',
 	'translate-magic-special' => 'Bí danh của các trang đặc biệt',
 	'translate-magic-words' => 'Từ thần chú',
@@ -17455,7 +17548,7 @@ Nếu bạn chọn bỏ qua thay đổi, chúng sẽ bị ghi đè trong lần x
 	'translate-import-from-local' => 'Tải tập tin từ máy tính:',
 	'translate-import-load' => 'Tải tập tin',
 	'translate-import-err-type-not-supported' => 'Không thể tải tập tin:
-Phương thức <tt>$1</tt> không được hỗ trợ.',
+Phương thức <code>$1</code> không được hỗ trợ.',
 	'translate-import-err-dl-failed' => 'Không thể truy xuất tập tin:
 $1',
 	'translate-import-err-ul-failed' => 'Tải tập tin thất bại',
@@ -17644,6 +17737,7 @@ $messages['xal'] = array(
 	'translate-edit-goto-prev' => 'Урдк халхиг чиклх',
 	'translate-edit-goto-next' => 'Дарук халхиг чиклх',
 	'translate-pref-editassistlang' => 'Туслмҗин келс',
+	'translate-sidebar-alltrans' => 'Талдан келәр',
 	'translate-language' => 'Келн',
 	'translate-js-next' => 'Хадһлад, дарук секх',
 	'translate-js-skip' => 'Дарук',
@@ -17677,6 +17771,7 @@ $messages['yi'] = array(
 	'translate-task-export-to-file' => 'עקספארטירן טײַטש פֿון טעקע צו',
 	'translate-page-no-such-language' => 'באַשטימטע שפראַך אומגילטיג.',
 	'translate-page-no-such-group' => 'ספעציפֿירטע גרופע נישט גילטיק.',
+	'translate-page-settings-legend' => 'איינשטעלונגען',
 	'translate-page-task' => 'איך וויל',
 	'translate-page-group' => 'גרופע',
 	'translate-page-language' => 'שפראך',
@@ -17703,6 +17798,7 @@ $messages['yi'] = array(
 	'translate-edit-goto-next' => 'רעדאקטירן די קומענדיגע מעלדונג',
 	'translate-edit-goto-list' => 'צוריק צו דער ליסטע',
 	'translate-magic-pagename' => 'פֿאַרברײטערטע מעדיעוויקי איבערזעצונג',
+	'translate-magic-module' => 'מאדול:',
 	'translate-magic-submit' => 'ווייזן',
 	'translate-magic-cm-export' => 'עקספארט',
 	'translate-magic-nothing-to-export' => 'נישטא וואס צו עקספארטירן.',
@@ -17711,7 +17807,7 @@ $messages['yi'] = array(
 	'translate-magic-cm-original' => 'מאגישע ווערטער',
 	'translate-magic-cm-comment' => 'הערה:',
 	'translate-magic-cm-save' => 'אויפֿהיטן',
-	'translate-magic-cm-updatedusing' => 'דערהײַנטיגט מיט [[Special:Magic]]',
+	'translate-magic-cm-updatedusing' => 'דערהײַנטיגט מיט [[Special:AdvancedTranslate|{{int:Translate-magic-pagename}}]]',
 	'translate-magic-cm-savefailed' => 'אויפהיטן דורכגעפאלן',
 	'translate-magic-words' => 'מאגישע ווערטער',
 	'translate-magic-namespace' => 'נאמענטייל נעמען',
@@ -17723,6 +17819,7 @@ $messages['yi'] = array(
 	'translate-checks-parameters' => '{{PLURAL:$2|דער פֿאלגנדער פאראמעטער ווערט|די פֿאלגנדע פאראמעטערס ווערן}} נישט געניצט:
 <strong><nowiki>$1</nowiki></strong>',
 	'translate-checks-pagename' => 'נאמענטייל געענדערט פון דער דעפיניציע',
+	'translate-checks-fudforum-syntax' => 'באַניצט <nowiki>$1</nowiki> אַנשטאט <nowiki>$2</nowiki> אין דעם דאָזיקן פראיעקט.',
 	'translate-rc-translation-filter-no' => 'גאָרנישט',
 	'translationstats' => 'פֿארטײַטשן סטאטיסטיק',
 	'translate-stats-edits' => 'רעדאקטירונגען',
@@ -17807,7 +17904,7 @@ $messages['yue'] = array(
 翻譯係以逗號 (,) 分隔。
 皮名同埋空間名只可以有一項翻譯。
 
-響空間名翻譯度， <tt>$1 talk</tt> 係特別嘅。 <tt>$1</tt> 會由網名代替咗（例如<tt>{{ns:project_talk}}</tt>）。
+響空間名翻譯度， <code>$1 talk</code> 係特別嘅。 <code>$1</code> 會由網名代替咗（例如<code>{{ns:project_talk}}</code>）。
 如果你嘅語言組合唔能夠響網站名唔改嘅情況之下去組合成你嘅意思，請聯絡技術員。
 
 你需要係翻譯組嘅組員去儲存嘅啲信息。
@@ -17819,7 +17916,7 @@ $messages['yue'] = array(
 	'translate-magic-cm-original' => '原本',
 	'translate-magic-cm-comment' => '註解:',
 	'translate-magic-cm-save' => '保存',
-	'translate-magic-cm-updatedusing' => '用[[Special:Magic]]更新咗',
+	'translate-magic-cm-updatedusing' => '用[[Special:AdvancedTranslate|{{int:Translate-magic-pagename}}]]更新咗',
 	'translate-magic-cm-savefailed' => '保存失敗',
 	'translate-magic-special' => '特別頁替身',
 	'translate-magic-words' => '魔術字',
@@ -17841,6 +17938,7 @@ $messages['yue'] = array(
  * @author Jimmy xu wrk
  * @author Liangent
  * @author PhiLiP
+ * @author Sahran
  * @author Wmr89502270
  */
 $messages['zh-hans'] = array(
@@ -17905,7 +18003,7 @@ $messages['zh-hans'] = array(
 这些翻译使用一个逗号（,）分隔。
 名字空间只能有一个翻译。
 
-名字空间翻译中<tt>$1 talk</tt>是特别的。<tt>$1</tt>会被替换为站点名字（例如<tt>{{ns:project_talk}}</tt>）。
+名字空间翻译中<code>$1 talk</code>是特别的。<code>$1</code>会被替换为站点名字（例如<code>{{ns:project_talk}}</code>）。
 如果在不改变站点名字的情况下，使用你的语言不可能构造一个有效的表达形式，请联系一个开发者。
 
 你需要在“翻译者”群组中以保存改变。
@@ -17919,7 +18017,7 @@ $messages['zh-hans'] = array(
 	'translate-magic-cm-original' => '原始消息',
 	'translate-magic-cm-comment' => '原因：',
 	'translate-magic-cm-save' => '保存',
-	'translate-magic-cm-updatedusing' => '已使用[[Special:Magic]]更新',
+	'translate-magic-cm-updatedusing' => '已使用[[Special:AdvancedTranslate|{{int:Translate-magic-pagename}}]]更新',
 	'translate-magic-cm-savefailed' => '保存失败',
 	'translate-magic-special' => '特殊页面别名',
 	'translate-magic-words' => '魔术字',
@@ -17989,6 +18087,7 @@ $messages['zh-hans'] = array(
 	'translate-translations-messagename' => '名称：',
 	'translate-translations-project' => '计划:',
 	'languagestats' => '语言统计',
+	'languagestats-recenttranslations' => '最近的翻译',
 	'translate-language-code' => '语言代码',
 	'translate-language-code-field-name' => '语言代码：',
 	'translate-language' => '语言',
@@ -17996,10 +18095,18 @@ $messages['zh-hans'] = array(
 	'translate-untranslated' => '未翻译',
 	'translate-percentage-complete' => '完成度',
 	'translate-percentage-fuzzy' => '已过时',
+	'supportedlanguages-translators' => '{{PLURAL:$2|翻译者|翻译者}}: $1',
 	'translate-save' => '保存（$1）',
 	'translate-jssti-add' => '新增至清单',
 	'translate-group-desc-mediawikicore' => '此界面消息群组包含了当前MediaWiki alpha版本所使用的消息（{{CURRENTVERSION}}）',
+	'translate-manage-groups' => '组管理',
+	'translate-manage-listgroups' => '配置组',
+	'translate-manage-listgroups-old' => '旧样式组',
+	'translate-managegroups' => '组管理',
+	'translate-manage-newgroup' => '以前此消息组没有被导入过。',
 	'translate-manage-modlang-new' => '$1（新）',
+	'translate-manage-import-new' => '新消息 $1',
+	'translate-manage-import-deleted' => '删除的消息  $1',
 	'translate-manage-action-import' => '导入',
 	'translate-manage-action-ignore' => '忽略',
 	'translate-manage-submit' => '执行',
@@ -18077,7 +18184,7 @@ $messages['zh-hant'] = array(
 
 特殊頁面別名以及魔術字可以使用複數的翻譯，請使用逗號（,）分隔。面板名稱以及名字空間名稱只能有一個翻譯。
 
-名字空間名稱中，要注意<tt>$1 討論</tt>這個空間名稱在翻譯時，<tt>$1</tt>會受到網站名稱影響（例如<tt>{{ns:project_talk}}</tt>）。
+名字空間名稱中，要注意<code>$1 討論</code>這個空間名稱在翻譯時，<code>$1</code>會受到網站名稱影響（例如<code>{{ns:project_talk}}</code>）。
 如果您的翻譯沒有更動網站名稱，但無法正確顯示的話，請聯絡MediaWiki開發者。
 
 您必需屬於翻譯者群組才能保存這些更改。在按下保存之前，這些更改均不會被更動。",
@@ -18090,7 +18197,7 @@ $messages['zh-hant'] = array(
 	'translate-magic-cm-original' => '原始訊息',
 	'translate-magic-cm-comment' => '原因：',
 	'translate-magic-cm-save' => '保存',
-	'translate-magic-cm-updatedusing' => '已使用[[Special:Magic]]更新',
+	'translate-magic-cm-updatedusing' => '已使用[[Special:AdvancedTranslate|{{int:Translate-magic-pagename}}]]更新',
 	'translate-magic-cm-savefailed' => '保存失敗',
 	'translate-magic-special' => '特殊頁面別名',
 	'translate-magic-words' => '魔術字',

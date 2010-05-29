@@ -513,6 +513,7 @@ $messages['fi'] = array(
  * @author PieRRoMaN
  * @author Quentinv57
  * @author Urhixidur
+ * @author Zetud
  */
 $messages['fr'] = array(
 	'masseditregex' => "Modification en masse à l'aide des expressions rationnelles",
@@ -545,7 +546,7 @@ $messages['fr'] = array(
 	'masseditregex-namespace-intro' => 'Toutes ces pages sont dans cet espace de noms:',
 	'masseditregex-exprnomatch' => 'L’expression « $1 » n’a été trouvée dans aucune page.',
 	'masseditregex-badregex' => 'Regex invalide:',
-	'masseditregex-editfailed' => "Erreur lors de l'édition:",
+	'masseditregex-editfailed' => "Erreur lors de l'édition :",
 	'masseditregex-tooltip-execute' => 'Appliquer ces changements à chaque page',
 );
 
@@ -785,6 +786,7 @@ Le valores de reimplaciamento non debe esser escappate.',
 );
 
 /** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
  * @author IvanLanin
  */
 $messages['id'] = array(
@@ -819,7 +821,7 @@ Nilai pengganti tidak boleh diloloskan.',
 	'masseditregex-listtype-categories' => 'Nama kategori (sunting tiap halaman dalam kategori ini; pemilihan ruang nama diabaikan)',
 	'masseditregex-listtype-backlinks' => 'Pranala balik (sunting halaman yang bertaut ke halaman-halaman ini)',
 	'masseditregex-namespace-intro' => 'Semua halaman ini berada dalam ruang nama ini:',
-	'masseditregex-exprnomatch' => 'Ekspresi "$1" tidak cocok dengan halaman apapun.',
+	'masseditregex-exprnomatch' => 'Ekspresi "$1" tidak cocok dengan halaman apa pun.',
 	'masseditregex-badregex' => 'Regex tidak valid:',
 	'masseditregex-editfailed' => 'Penyuntingan gagal.',
 	'masseditregex-tooltip-execute' => 'Terapkan perubahan ini ke setiap halaman',

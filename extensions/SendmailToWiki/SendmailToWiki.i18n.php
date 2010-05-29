@@ -552,6 +552,23 @@ $messages['sv'] = array(
 	'sendmailtowiki-err-onlyplain' => 'Pågrund av risken för feltolkningar så är endast rena textmeddelanden tillåtna.',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'sendmailtowiki-desc' => 'Ipaskil ang nilalaman ng wiki sa pamamagitan ng nakalaang masiglang adres ng e-liham',
+	'prefs-sendmailtowiki' => 'Ipinapaskil ang nilalaman na may e-liham',
+	'sendmailtowiki-inemail' => 'Nakalaang tirahan ng e-liham:',
+	'sendmailtowiki-inpin' => 'PIN:',
+	'prefs-help-sendmailtowiki_pin' => 'Hindi pinagagana ng walang lamang lugar para sa bilang ng PIN ang pagpapaskil ng nilalaman sa wiki na may akawnt mo.',
+	'sendmailtowiki-err-pinlength' => 'Dapat na maglaman ng ganap na 5 mga bilang ang PIN.',
+	'sendmailtowiki-err-wrongprefix' => 'Maling unlapi ng akawnt na pangwiki.  Makipag-ugnayan sa iyong tagapangasiwa.',
+	'sendmailtowiki-err-invalidaccount' => 'Hindi tanggap na akawnt.  Suriin ang tirahan ng e-liham na padadalhan mo.',
+	'sendmailtowiki-err-invalidsender' => 'Hindi tanggap na tagapagpadala.  Suriin ang tirahan ng e-liham na panggagalingan mo.',
+	'sendmailtowiki-err-invalidpin' => 'Hindi tanggap na PIN. Tinanggihan ang pagpunta.',
+	'sendmailtowiki-err-onlyplain' => 'Dahil sa maaaring maging maling pag-unawa tanging dalisay na mga mensaheng teksto lang ang tinatanggap.',
+);
+
 /** Turkish (Türkçe)
  * @author Vito Genovese
  */

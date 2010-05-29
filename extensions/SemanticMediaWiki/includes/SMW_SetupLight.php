@@ -134,6 +134,7 @@ function enableSemantics( $namespace = null, $complete = false ) {
 // 	$wgAutoloadClasses['SMWRecordFieldDescription'] = $smwgIP . 'includes/SMW_Record_Descriptions.php';
 // 	$wgAutoloadClasses['SMWSQLStore2']              = $smwgIP . 'includes/storage/SMW_SQLStore2.php';
 	$wgAutoloadClasses['SMWSQLStoreLight']          = $smwgIP . 'includes/storage/SMW_SQLStoreLight.php';
+	$wgAutoloadClasses['SMWSQLStore2Table']         = $smwgIP . 'includes/storage/SMW_SQLStore2Table.php';
 	$wgAutoloadClasses['SMWSQLHelpers']             = $smwgIP . 'includes/storage/SMW_SQLHelpers.php';
 	// Do not autoload RAPStore, since some special pages load all autoloaded classes, which causes
 	// troubles with RAP store if RAP is not installed (require_once fails).
@@ -265,7 +266,7 @@ function smwfUnregisterDatatypes() {
  * Adds links to Admin Links page
  **/
 function smwfAddToAdminLinks( &$admin_links_tree ) {
-	wfLoadExtensionMessages( 'SemanticMediaWiki' );
+	smwfLoadExtensionMessages( 'SemanticMediaWiki' );
 	$data_structure_section = new ALSection( wfMsg( 'smw_adminlinks_datastructure' ) );
 // 	$smw_row = new ALRow( 'smw' );
 // 	$smw_row->addItem( ALItem::newFromSpecialPage( 'Categories' ) );

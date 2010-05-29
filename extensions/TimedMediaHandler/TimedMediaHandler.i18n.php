@@ -452,6 +452,7 @@ $messages['bn'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
+	'timedmedia-desc' => 'Benveg kontrolliñ elfennoù liesmedia sinkronek (video, son, ha testenn sinkronekaet) gant treuzkodiñ da Ogg Theora/Vorbis',
 	'timedmedia-short-audio' => 'Restr son Ogg $1, $2',
 	'timedmedia-short-video' => 'Restr video Ogg $1, $2',
 	'timedmedia-short-general' => 'Restr media Ogg $1, $2',
@@ -460,21 +461,14 @@ $messages['br'] = array(
 	'timedmedia-long-multiplexed' => '(Restr Ogg klevet/video liesplezhet $1, pad $2, $4×$5 piksel, $3 hollad)',
 	'timedmedia-long-general' => '(Restr media Ogg, pad $2, $3)',
 	'timedmedia-long-error' => '(Restr ogg direizh : $1)',
-	'timedmedia-play' => 'Lenn',
-	'timedmedia-pause' => 'Ehan',
-	'timedmedia-stop' => 'Paouez',
-	'timedmedia-play-video' => 'Lenn ar video',
-	'timedmedia-play-sound' => 'Lenn ar son',
-	'timedmedia-player-videoElement' => 'Skor ar merdeer orin',
-	'timedmedia-player-oggPlugin' => 'Adveziant ar merdeer',
-	'timedmedia-player-thumbnail' => 'Skeudenn statek hepken',
-	'timedmedia-player-soundthumb' => 'Lenner ebet',
-	'timedmedia-player-selected' => '(diuzet)',
-	'timedmedia-use-player' => 'Ober gant al lenner :',
+	'timedmedia-no-player-js' => 'Ho tigarez, pe eo diweredekaet JavaScript war ho merdeer pen n\'eo ket skoret lenner ebet gantañ.<br />
+<a href="$1">Pellgargañ ar c\'hlip</a> a c\'hallit pe <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">pellgargañ ul lenner</a> da lenn ar c\'hlip gant ho merdeer.',
 	'timedmedia-more' => "Muioc'h...",
 	'timedmedia-dismiss' => 'Serriñ',
 	'timedmedia-download' => 'Pellgargañ ar restr',
 	'timedmedia-desc-link' => 'Diwar-benn ar restr-mañ',
+	'timedmedia-oggThumb-version' => "Rekis eo stumm $1 oggThumb, pe nevesoc'h, evit implijout OggHandler.",
+	'timedmedia-oggThumb-failed' => "N'eo ket deuet a-benn oggThumb da grouiñ ar munud.",
 );
 
 /** Bosnian (Bosanski)
@@ -2805,35 +2799,14 @@ $messages['tl'] = array(
 	'timedmedia-long-multiplexed' => '(magkasanib at nagsasabayang talaksang nadirinig o audio/palabas ng Ogg, $1, haba $2, $4×$5 mga piksel, $3 sa kalahatan)',
 	'timedmedia-long-general' => "(Talaksang pangmidya ng ''Ogg'', haba $2, $3)",
 	'timedmedia-long-error' => "(Hindi tanggap na talaksang ''ogg'': $1)",
-	'timedmedia-play' => 'Paandarin',
-	'timedmedia-pause' => 'Pansamantalang pahintuin',
-	'timedmedia-stop' => 'Ihinto/itigil',
-	'timedmedia-play-video' => "Paandarin ang palabas (''video'')",
-	'timedmedia-play-sound' => 'Patugtugin ang tunog',
-	'timedmedia-no-player' => 'Paumanhin, tila parang walang anumang sinusuportahang pamapatugtog/pampaandar na sopwer ang sistema mo.
-<a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">Magkarga lamang po muna ng isang panugtog/pampaandar</a>.',
-	'timedmedia-no-xiphqt' => 'Tila parang wala ka pang sangkap (komponente) na XiphQT para sa QuickTime.
-Hindi makapagpapatugtog ang QuickTime ng mga talaksang Ogg kapag wala ang ganitong sangkap.
-<a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">Magkarga muna po ng XiphQT</a> o pumili ng iba pang panugtog/pampaandar.',
-	'timedmedia-player-videoElement' => "Katutubong tagapagtangkilik/pangsuporta ng pantingin-tingin (''browser'')",
-	'timedmedia-player-oggPlugin' => "Pampasak sa pantingin-tingin (''browser'')",
-	'timedmedia-player-cortado' => 'Cortado (Java)',
-	'timedmedia-player-vlc-mozilla' => 'VLC',
-	'timedmedia-player-vlc-activex' => 'VLC (ActiveX)',
-	'timedmedia-player-quicktime-mozilla' => 'QuickTime',
-	'timedmedia-player-quicktime-activex' => 'QuickTime (ActiveX)',
-	'timedmedia-player-totem' => 'Totem',
-	'timedmedia-player-kmplayer' => 'KMPlayer',
-	'timedmedia-player-kaffeine' => 'Kaffeine',
-	'timedmedia-player-mplayerplug-in' => "pampasak na pampatugtog/pampaandar ng tunog (''mplayerplug-in'')",
-	'timedmedia-player-thumbnail' => 'Larawang hindi gumagalaw lamang',
-	'timedmedia-player-soundthumb' => 'Walang pampatugtog/pampaandar',
-	'timedmedia-player-selected' => '(napili na)',
-	'timedmedia-use-player' => 'Gamitin ang pampaandar:',
+	'timedmedia-no-player-js' => 'Paumahin, ang pantingin-tingin mo ay maaaring may hindi gumaganang JavaScript o walang anumang tinatangkilik na pampaandar.<br />
+Maaari kang <a href="$1">magkargang pababa ng kaputol</a> o <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">magkargang pababa ng isang pampaandar</a> upang mapaandar ang kaputol sa loob ng iyong pantingin-tingin.',
 	'timedmedia-more' => 'Marami pa…',
 	'timedmedia-dismiss' => 'Isara',
 	'timedmedia-download' => 'Ikarga ang talaksan',
 	'timedmedia-desc-link' => 'Tungkol sa talaksang ito',
+	'timedmedia-oggThumb-version' => 'Nangangailangan ang OggHandler ng bersyong $1 o mas luma ng oggThumb.',
+	'timedmedia-oggThumb-failed' => 'Nabigong lumikha ang oggThumb ng munting larawan.',
 );
 
 /** Turkish (Türkçe)

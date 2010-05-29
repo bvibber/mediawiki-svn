@@ -67,6 +67,21 @@ $messages['qqq'] = array(
 	'mwe-timedtext-textcat-nb' => '{{Identical|Annotation}}',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'mwe-timedtext-stage-translate' => 'Vertaal',
+	'mwe-timedtext-select-language' => 'Kies taal',
+	'mwe-timedtext-upload-text-preview' => 'Hersien teks',
+	'mwe-timedtext-back-btn' => 'Terug',
+	'mwe-timedtext-choose-text' => 'Kies teks',
+	'mwe-timedtext-layout' => 'Uitleg',
+	'mwe-timedtext-textcat-cc' => 'Onderskrifte',
+	'mwe-timedtext-textcat-nb' => '',
+	'mwe-timedtext-textcat-lrc' => 'Lirieke',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
@@ -124,24 +139,44 @@ $messages['be-tarask'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
+	'mwe-timedtext-editor' => 'Embanner testennoù sinkronelaet',
 	'mwe-timedtext-stage-transcribe' => 'Treuzskrivañ',
+	'mwe-timedtext-stage-sync' => 'Kempredañ',
 	'mwe-timedtext-stage-translate' => 'Treiñ',
 	'mwe-timedtext-stage-upload' => "Kargañ eus ur restr lec'hel",
 	'mwe-timedtext-select-language' => 'Dibab ar yezh',
+	'mwe-timedtext-file-language' => 'Yezh ar restr istitloù',
+	'mwe-timedtext-upload-text' => 'Enporzhiañ ar restr testenn',
+	'mwe-timedtext-uploading-text' => 'O kargañ ar restr testenn',
+	'mwe-timedtext-upload-text-desc-title' => 'Enporzhiañ ur restr testenn',
+	'mwe-timedtext-upload-text-desc-help' => 'An etrefas kargañ restroù testenn a aotre ar restroù .srt',
+	'mwe-timedtext-upload-text-desc-help-browse' => "Furchit en ho urzhiataer lec'hel evit kavout ar restr .srt hoc'h eus c'hoant da gargañ",
 	'mwe-timedtext-upload-text-desc-help-select' => 'Dibabit yezh ar restr',
+	'mwe-timedtext-upload-text-preview' => 'Gwiriekaat an destenn',
 	'mwe-timedtext-upload-text-done' => 'Graet eo ar gargadenn',
 	'mwe-timedtext-upload-text-another' => 'Kargañ unan all',
+	'mwe-timedtext-upload-text-done-uploading' => 'Kargadenn graet',
 	'mwe-timedtext-back-btn' => 'Distreiñ',
 	'mwe-timedtext-choose-text' => 'Dibab an destenn',
+	'mwe-timedtext-add-timed-text' => 'Ouzhpennañ un tamm testenn sinkronelaet',
+	'mwe-timedtext-loading-text-edit' => 'O kargañ an embanner testennoù sinkronelaet',
 	'mwe-timedtext-search' => "Klask ar c'hlip",
+	'mwe-timedtext-layout' => "Lec'hiadur",
+	'mwe-timedtext-layout-ontop' => 'E penn ar video',
+	'mwe-timedtext-layout-below' => 'Dindan ar video',
 	'mwe-timedtext-layout-off' => 'Kuzhat an istitloù',
 	'mwe-timedtext-loading-text' => 'O kargañ an destenn...',
 	'mwe-timedtext-textcat-cc' => "Alc'hwezioù",
 	'mwe-timedtext-textcat-sub' => 'Istitloù',
+	'mwe-timedtext-textcat-tad' => 'Deskrivadur son',
 	'mwe-timedtext-textcat-ktv' => 'Karaoke',
+	'mwe-timedtext-textcat-tik' => 'Barenn titouroù',
+	'mwe-timedtext-textcat-ar' => 'Rannvroioù oberiant',
 	'mwe-timedtext-textcat-nb' => 'Notennadur',
 	'mwe-timedtext-textcat-trx' => 'Treuzskrivañ',
 	'mwe-timedtext-textcat-lrc' => 'Komzoù',
+	'mwe-timedtext-textcat-lin' => 'Balizennoù yezhel',
+	'mwe-timedtext-textcat-cue' => "Poent lec'hiañ",
 	'mwe-timedtext-language-subtitles-for-clip' => "$1 istitl evit ar c'hlip : $2",
 	'mwe-timedtext-language-no-subtitles-for-clip' => "N'eo ket bet kavet $1 istitl evit ar c'hlip : $2",
 );
@@ -195,6 +230,48 @@ $messages['de'] = array(
 	'mwe-timedtext-textcat-cue' => 'Cue-Punkte',
 	'mwe-timedtext-language-subtitles-for-clip' => '$1 Untertitel für den Videoclip gefunden: $2',
 	'mwe-timedtext-language-no-subtitles-for-clip' => 'Kein $1 Untertitel für den Videoclip gefunden: $2',
+);
+
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'mwe-timedtext-stage-transcribe' => 'Pśepisaś',
+	'mwe-timedtext-stage-sync' => 'Synchronizěrowaś',
+	'mwe-timedtext-stage-translate' => 'Pśełožyś',
+	'mwe-timedtext-stage-upload' => 'Z lokalneje dataje nagraś',
+	'mwe-timedtext-select-language' => 'Rěc wubraś',
+	'mwe-timedtext-file-language' => 'Rěc dataje pódtitela',
+	'mwe-timedtext-upload-text' => 'Tekstowu dataju nagraś',
+	'mwe-timedtext-uploading-text' => 'Tekstowa dataja se nagrawa',
+	'mwe-timedtext-upload-text-desc-title' => 'Tekstowu dataju nagraś',
+	'mwe-timedtext-upload-text-desc-help' => 'Pówjerch za nagrawanje tekstowych datajow akceptěrujo .srt-dataje',
+	'mwe-timedtext-upload-text-desc-help-browse' => 'Pśepytaj swój lokalny kompjuter za .srt-dataju, kótaruž coš nagraś',
+	'mwe-timedtext-upload-text-desc-help-select' => 'Rěc dataje wubraś',
+	'mwe-timedtext-upload-text-desc-help-review' => 'Pśeglědaj abo wobźěłaj tekstowe wopśimjeśe a klikni pótom na Nagraś, aby tekst pśidał',
+	'mwe-timedtext-upload-text-preview' => 'Tekst pśeglědaś',
+	'mwe-timedtext-upload-text-success' => 'Nagraśe synchronizowanego teksta jo wuspěšne było',
+	'mwe-timedtext-upload-text-done' => 'Nagraśe skóńcone',
+	'mwe-timedtext-upload-text-fail-desc' => 'Nagraśe jo se njeraźiło',
+	'mwe-timedtext-upload-text-fail-title' => 'Nagraśe jo se njeraźiło',
+	'mwe-timedtext-upload-text-another' => 'Dalšnu nagraś',
+	'mwe-timedtext-upload-text-done-uploading' => 'Nagraśe skóńcone',
+	'mwe-timedtext-back-btn' => 'Slědk',
+	'mwe-timedtext-choose-text' => 'Tekst wubraś',
+	'mwe-timedtext-add-timed-text' => 'Snychronizěrowany tekst pśidaś',
+	'mwe-timedtext-search' => 'Klip pytaś',
+	'mwe-timedtext-layout' => 'Wusměrjenje',
+	'mwe-timedtext-layout-ontop' => 'Nad wideo',
+	'mwe-timedtext-layout-below' => 'Pód wideo',
+	'mwe-timedtext-layout-off' => 'Pódtitele schowaś',
+	'mwe-timedtext-loading-text' => 'Tekst se zacytujo...',
+	'mwe-timedtext-textcat-cc' => 'Wopisanja',
+	'mwe-timedtext-textcat-sub' => 'Pódtitele',
+	'mwe-timedtext-textcat-ktv' => 'Karaoke',
+	'mwe-timedtext-textcat-ar' => 'Aktiwne regiony',
+	'mwe-timedtext-textcat-meta' => 'Synchronizěrowane metadaty',
+	'mwe-timedtext-language-subtitles-for-clip' => '$1 {{PLURAL:$1|pódtitel|pódtitela|pódtitele|oódtitelow}} za klip: $2',
+	'mwe-timedtext-language-no-subtitles-for-clip' => 'Žedne pódtitele $1 su se za klip namakali: $2',
 );
 
 /** Spanish (Español)
@@ -482,9 +559,11 @@ $messages['ia'] = array(
 );
 
 /** Japanese (日本語)
+ * @author Aotake
  * @author 青子守歌
  */
 $messages['ja'] = array(
+	'mwe-timedtext-stage-sync' => '同期',
 	'mwe-timedtext-stage-translate' => '翻訳',
 	'mwe-timedtext-stage-upload' => 'ローカルファイルからアップロード',
 	'mwe-timedtext-select-language' => '言語を選択',
@@ -492,7 +571,11 @@ $messages['ja'] = array(
 	'mwe-timedtext-upload-text' => 'テキストファイルをアップロード',
 	'mwe-timedtext-uploading-text' => 'テキストファイルのアップロード',
 	'mwe-timedtext-upload-text-desc-title' => 'テキストファイルをアップロード',
+	'mwe-timedtext-upload-text-desc-help' => 'アップロードするテキストファイルのインターフェースは .srt ファイルを受け付けます',
+	'mwe-timedtext-upload-text-desc-help-browse' => 'ローカルのコンピューターの上からアップロードする .srt ファイルを探す',
 	'mwe-timedtext-upload-text-desc-help-select' => 'ファイルの言語を選択',
+	'mwe-timedtext-upload-text-desc-help-review' => 'テキストの内容を確認・編集してからアップロードを推してテキストを追加してください',
+	'mwe-timedtext-upload-text-preview' => 'テキストを確認',
 	'mwe-timedtext-upload-text-done' => 'アップロード完了',
 	'mwe-timedtext-upload-text-fail-desc' => 'アップロードが失敗しました',
 	'mwe-timedtext-upload-text-fail-title' => 'アップロードに失敗',
@@ -529,6 +612,8 @@ $messages['lb'] = array(
 	'mwe-timedtext-back-btn' => 'Zréck',
 	'mwe-timedtext-choose-text' => 'Text eraussichen',
 	'mwe-timedtext-layout' => 'Layout',
+	'mwe-timedtext-layout-ontop' => 'Iwwert dem Video',
+	'mwe-timedtext-layout-below' => 'Ënnert dem Video',
 	'mwe-timedtext-layout-off' => 'Ënnertitele verstoppen',
 	'mwe-timedtext-textcat-sub' => 'Ënnertitelen',
 	'mwe-timedtext-textcat-ktv' => 'Karaoke',

@@ -974,6 +974,7 @@ $messages['da'] = array(
  * @author Purodha
  * @author Raimond Spekking
  * @author Revolus
+ * @author The Evil IP address
  * @author Umherirrender
  */
 $messages['de'] = array(
@@ -984,20 +985,20 @@ $messages['de'] = array(
 	'babel-autocreate-reason' => 'Automatisch erstellte [[$1|Babel]]-Kategorie.',
 	'babel-autocreate-text-levels' => 'Benutzer in dieser Kategorie haben Kenntnisse der Stufe $1 in der Sprache $2.',
 	'babel-autocreate-text-main' => 'Benutzer in dieser Kategorie haben Kenntnisse der Sprache $1.',
-	'babel-0' => 'Dieser Benutzer beherrscht [[$2|$3]] [[$1|nicht]] (oder versteht es nur mit beträchtlichen Schwierigkeiten).',
-	'babel-1' => 'Dieser Benutzer beherrscht [[$2|$3]] auf [[$1|grundlegendem]] Niveau.',
-	'babel-2' => 'Dieser Benutzer beherrscht [[$2|$3]] auf [[$1|fortgeschrittenem]] Niveau.',
-	'babel-3' => 'Dieser Benutzer beherrscht [[$2|$3]] auf [[$1|hohem]] Niveau.',
-	'babel-4' => 'Dieser Benutzer beherrscht [[$2|$3]] auf [[$1|muttersprachlichem Niveau]].',
-	'babel-5' => 'Dieser Benutzer beherrscht [[$2|$3]] auf [[$1|professionellem]] Niveau.',
-	'babel-N' => 'Dieser Benutzer spricht [[$2|$3]] als [[$1|Muttersprache]].',
-	'babel-0-n' => 'Dieser Benutzer beherrscht [[$2|Deutsch]] [[$1|nicht]] (oder versteht es nur mit beträchtlichen Schwierigkeiten).',
-	'babel-1-n' => 'Dieser Benutzer beherrscht [[$2|Deutsch]] auf [[$1|grundlegendem]] Niveau.',
-	'babel-2-n' => 'Dieser Benutzer beherrscht [[$2|Deutsch]] auf [[$1|fortgeschrittenem]] Niveau.',
-	'babel-3-n' => 'Dieser Benutzer beherrscht [[$2|Deutsch]] auf [[$1|hohem]] Niveau.',
-	'babel-4-n' => 'Dieser Benutzer beherrscht [[$2|Deutsch]] auf [[$1|muttersprachlichem Niveau]].',
-	'babel-5-n' => 'Dieser Benutzer beherrscht [[$2|Deutsch]] auf [[$1|professionellem]] Niveau.',
-	'babel-N-n' => 'Dieser Benutzer spricht [[$2|Deutsch]] als [[$1|Muttersprache]].',
+	'babel-0' => '{{GENDER:$4|Dieser Benutzer|Dieser Benutzerin|Dieser Benutzer}} beherrscht [[$2|$3]] [[$1|nicht]] (oder versteht es nur mit beträchtlichen Schwierigkeiten).',
+	'babel-1' => '{{GENDER:$4|Dieser Benutzer|Diese Benutzerin|Dieser Benutzer}} beherrscht [[$2|$3]] auf [[$1|grundlegendem]] Niveau.',
+	'babel-2' => '{{GENDER:$4|Dieser Benutzer|Diese Benutzerin|Dieser Benutzer}} beherrscht [[$2|$3]] auf [[$1|fortgeschrittenem]] Niveau.',
+	'babel-3' => '{{GENDER:$4|Dieser Benutzer|Diese Benutzerin|Dieser Benutzer}} beherrscht [[$2|$3]] auf [[$1|hohem]] Niveau.',
+	'babel-4' => '{{GENDER:$4|Dieser Benutzer|Diese Benutzerin|Dieser Benutzer}} beherrscht [[$2|$3]] auf [[$1|muttersprachlichem Niveau]].',
+	'babel-5' => '{{GENDER:$4|Dieser Benutzer|Diese Benutzerin|Dieser Benutzer}} beherrscht [[$2|$3]] auf [[$1|professionellem]] Niveau.',
+	'babel-N' => '{{GENDER:$4|Dieser Benutzer|Diese Benutzerin|Dieser Benutzer}} spricht [[$2|$3]] als [[$1|Muttersprache]].',
+	'babel-0-n' => '{{GENDER:$4|Dieser Benutzer|Diese Benutzerin|Dieser Benutzer}} beherrscht [[$2|Deutsch]] [[$1|nicht]] (oder versteht es nur mit beträchtlichen Schwierigkeiten).',
+	'babel-1-n' => '{{GENDER:$4|Dieser Benutzer|Diese Benutzerin|Dieser Benutzer}} beherrscht [[$2|Deutsch]] auf [[$1|grundlegendem]] Niveau.',
+	'babel-2-n' => '{{GENDER:$4|Dieser Benutzer|Diese Benutzerin|Dieser Benutzer}} beherrscht [[$2|Deutsch]] auf [[$1|fortgeschrittenem]] Niveau.',
+	'babel-3-n' => '{{GENDER:$4|Dieser Benutzer|Diese Benutzerin|Dieser Benutzer}} beherrscht [[$2|Deutsch]] auf [[$1|hohem]] Niveau.',
+	'babel-4-n' => '{{GENDER:$4|Dieser Benutzer|Diese Benutzerin|Dieser Benutzer}} beherrscht [[$2|Deutsch]] auf [[$1|muttersprachlichem Niveau]].',
+	'babel-5-n' => '{{GENDER:$4|Dieser Benutzer|Diese Benutzerin|Dieser Benutzer}} beherrscht [[$2|Deutsch]] auf [[$1|professionellem]] Niveau.',
+	'babel-N-n' => '{{GENDER:$4|Dieser Benutzer|Diese Benutzerin|Dieser Benutzer}} spricht [[$2|Deutsch]] als [[$1|Muttersprache]].',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -3941,6 +3942,16 @@ $messages['te'] = array(
 	'babel-4-n' => 'ఈ వాడుకరికి [[$2|తెలుగు]] భాషపై [[$1|మాతృభాషపై ఉన్నంత]] అవగాహన ఉంది.',
 	'babel-5-n' => 'ఈ వాడుకరికి [[$2|తెలుగు]] భాషపై [[$1|వృత్తి నైపుణ్యం]] ఉంది.',
 	'babel-N-n' => 'ఈ వాడుకరి [[$1|మాతృభాష]] [[$2|తెలుగు]].',
+);
+
+/** Tetum (Tetun)
+ * @author MF-Warburg
+ */
+$messages['tet'] = array(
+	'babel-1' => "Uza-na'in ne'e bele kontribui ho nivel [[$1|báziku]] iha lian [[$2|$3]].",
+	'babel-2' => "Uza-na'in ne'e bele kontribui ho nivel [[$1|maizumenus]] iha lian [[$2|$3]].",
+	'babel-3' => "Uza-na'in ne'e bele kontribui ho nivel [[$1|aas]] iha lian [[$2|$3]].",
+	'babel-N' => "Uza-na'in ne'e iha [[$2|$3]] nu'udar [[$1|lian inan]].",
 );
 
 /** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))

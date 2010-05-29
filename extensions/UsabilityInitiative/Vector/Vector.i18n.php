@@ -171,6 +171,13 @@ $messages['es'] = array(
 	'vector-desc' => 'Mejora los elementos de la interfaz de usuario del skin Vector.',
 );
 
+/** Persian (فارسی)
+ * @author Ebraminio
+ */
+$messages['fa'] = array(
+	'vector' => 'بهبودهای رابط کاربر برای پوستهٔ وکتور',
+);
+
 /** Finnish (Suomi)
  * @author Str4nd
  */
@@ -451,6 +458,14 @@ $messages['sv'] = array(
  */
 $messages['te'] = array(
 	'vector' => 'వెక్టర్ కొరకు ముఖాంతరపు మెరుగులు',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'vector' => 'Mga pagpapainam na UI para sa Vector',
+	'vector-desc' => 'Nagpapainam sa mga sangkap ng dugtungang-mukha na pangtatagamit ng pabalat ng Vector.',
 );
 
 /** Turkish (Türkçe)

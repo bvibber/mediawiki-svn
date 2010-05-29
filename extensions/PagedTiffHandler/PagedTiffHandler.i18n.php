@@ -500,6 +500,26 @@ $messages['ru'] = array(
 	'tiff-file-info-size' => '(страница $5, $1 × $2 пикселов, размер файла: $3, MIME-тип: $4)',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'tiff-desc' => 'Tagapaghawak para sa pagtanaw ng mga talaksang TIFF na nasa modalidad na panglarawan',
+	'tiff_no_metadata' => 'Hindi makuha ang metadata mula sa TIFF',
+	'tiff_page_error' => 'Wala sa sakop ang bilang ng pahina',
+	'tiff_too_many_embed_files' => 'Naglalaman ang larawan ng napakaraming ibinaong mga talaksan.',
+	'tiff_sourcefile_too_large' => 'Napakalaki ng resolusyon ng pinagmulang talaksan.  Walang malilikhang maliit na larawan.',
+	'tiff_targetfile_too_large' => 'Napakalaki ng resolusyon ng puntiryang talaksan. Walang malilikhang maliit na larawan.',
+	'tiff_file_too_large' => "Napakalaki ng ikinargang-paitaas na talaksan kaya't tinanggihan.",
+	'tiff_out_of_service' => 'Hindi maaasikaso ang talaksang ikinargang pataas.  Hindi kasi makuha ang ImageMagick.',
+	'tiff_too_much_meta' => 'Gumagamit ng labis na puwang ang metadata.',
+	'tiff_error_cached' => 'Maaari lamang muling ibigay ang talaksan pagkatapos ng tagal ng agwat ng pagkukubli.',
+	'tiff_size_error' => 'Hindi tumutugma ang inulat na sukat ng talaksan sa talagang sukat ng talaksan.',
+	'tiff_script_detected' => 'Naglalaman ng mga baybayin ang ikinargang talaksan.',
+	'tiff_bad_file' => 'Naglalaman ng mga kamalian ang ikinargang talaksan.',
+	'tiff-file-info-size' => '(pahina $5, $1 × $2 piksel, sukat ng talaksan: $3, uri ng MIME: $4)',
+);
+
 /** Yiddish (ייִדיש)
  * @author פוילישער
  */

@@ -311,6 +311,14 @@ $messages['te'] = array(
 	'flv-long-desc' => '(ఫ్లాష్ దృశ్యం, $1 × $2 పిక్సెళ్ళు, ఫైలు పరిమాణం: $3)',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'flvhandler_desc' => 'Nagpapahintulot na maidagdag ang mga talaksang Flash Video (.flv) bilang pangkaraniwang mga talaksan (halimbawa na ang <nowiki>[[</nowiki>{{ns:file}}:Movie.flv<nowiki>]]</nowiki>)',
+	'flv-long-desc' => '(Flash Video, $1 × $2 mga piksel, sukat ng talaksan: $3)',
+);
+
 /** Turkish (Türkçe)
  * @author Karduelis
  * @author Vito Genovese

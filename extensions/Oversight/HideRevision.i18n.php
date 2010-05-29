@@ -2011,6 +2011,8 @@ Nyebaraké informasi iki bisa ngakibataké hak pangawas (''oversight'') panjenen
 $messages['ka'] = array(
 	'hiderevision' => 'სამუდამოდ დამალე ცვლილებები',
 	'group-oversight' => 'რევიზორები',
+	'group-oversight-member' => 'ზედამხედველი',
+	'grouppage-oversight' => '{{ns:project}}:ოვერსაიტი',
 	'hiderevision-continue' => 'გაგრძელება',
 	'hiderevision-reason' => 'მიზეზი (ჩაიწერება დახურულ ჟურნალში)',
 	'hiderevision-submit' => 'დამალეთ მონაცემები',
@@ -2021,9 +2023,14 @@ $messages['ka'] = array(
 	'hiderevision-status' => 'ვერსია №$1: $2',
 	'hiderevision-success' => 'წარმატებით დაარქივდა და წაიშალა',
 	'hiderevision-error-missing' => 'არ არის ნაპოვნი მონაცემთა ბაზაში.',
+	'hiderevision-error-current' => 'შეუძლებელია გვერდის უკანასკნელი ცვლილების წაშლა.
+თავდაპირველად, გააუქმეთ ეს ცვლილება.',
 	'oversight-log-hiderev' => 'მოშორდა ცვლილება $1-დან',
 	'oversight-view' => 'დეტალები',
+	'oversight-prev' => 'ბოლო წინა ვერსია',
 	'oversight-hidden' => 'დამალული ვერსია',
+	'oversight-oversighter' => 'ოვერსაიტერები:',
+	'oversight-offender' => 'ვერსიის ავტორი:',
 );
 
 /** Kazakh (Arabic script) (‫قازاقشا (تٴوتە)‬)
@@ -3970,8 +3977,8 @@ $messages['tl'] = array(
 	'group-oversight' => 'Mga tagapagingat-tago',
 	'group-oversight-member' => 'tagapagingat-tago',
 	'grouppage-oversight' => '{{ns:project}}:Tagapagingat-tago',
-	'right-oversight' => 'Tingnan ang isang dating nakatagong pagbabago',
-	'right-hiderevision' => 'Itago ang mga pagbabago mula sa mga tagapangasiwa',
+	'right-oversight' => 'Tingnan ang isang dating nakatagong pagbabago na may Extension:Oversight',
+	'right-hiderevision' => 'Itago ang mga pagbabago mula sa mga tagapangasiwa na may Extension:Oversight',
 	'hiderevision-prompt' => 'Ang tatanggaling bilang ng pagbabago:',
 	'hiderevision-continue' => 'Magpatuloy',
 	'hiderevision-text' => "Dapat na gamitin '''lamang''' ito sa sumusunod na mga pagkakataon:
@@ -4007,7 +4014,7 @@ Ibalik muna ang pagbabagong ito.',
 Magreresulta/Hahantong ang paglalabas ng kabatirang (impormasyon) ito sa pagkawala ng mga karapatang pangtagapagingat-tago.',
 	'oversight-legend' => 'Maghanap sa talaan ng mga pagtatago ng pagbabago',
 	'oversight-oversighter' => 'Tagapagingat-tago:',
-	'oversight-offender' => 'Ang nagkamali:',
+	'oversight-offender' => 'May-akda ng pagbabago:',
 );
 
 /** Turkish (Türkçe)

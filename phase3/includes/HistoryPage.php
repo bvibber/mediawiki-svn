@@ -374,7 +374,7 @@ class HistoryPager extends ReverseChronologicalPager {
 		$this->counter = 1;
 		$this->oldIdChecked = 0;
 
-		$wgOut->wrapWikiMsg( "<div class='mw-history-legend'>\n$1</div>", 'histlegend' );
+		$wgOut->wrapWikiMsg( "<div class='mw-history-legend'>\n$1\n</div>", 'histlegend' );
 		$s = Xml::openElement( 'form', array( 'action' => $wgScript,
 			'id' => 'mw-history-compare' ) ) . "\n";
 		$s .= Xml::hidden( 'title', $this->title->getPrefixedDbKey() ) . "\n";
@@ -590,7 +590,7 @@ class HistoryPager extends ReverseChronologicalPager {
 		global $wgLang;
 		$date = $wgLang->timeanddate( wfTimestamp(TS_MW, $rev->getTimestamp()), true );
 		$date = htmlspecialchars( $date );
-		if( !$rev->isDeleted( Revision::DELETED_TEXT ) ) {
+		if ( $rev->userCan( Revision::DELETED_TEXT ) ) {
 			$link = $this->getSkin()->link(
 				$this->title,
 				$date,
@@ -599,7 +599,10 @@ class HistoryPager extends ReverseChronologicalPager {
 				array( 'known', 'noclasses' )
 			);
 		} else {
-			$link = "<span class=\"history-deleted\">$date</span>";
+			$link = $date;
+		}
+		if ( $rev->isDeleted( Revision::DELETED_TEXT ) ) {
+			$link = "<span class=\"history-deleted\">$link</span>";
 		}
 		return $link;
 	}

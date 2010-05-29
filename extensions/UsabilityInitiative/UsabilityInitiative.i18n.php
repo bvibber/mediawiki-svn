@@ -241,6 +241,14 @@ $messages['eu'] = array(
 	'usabilityinitiative-desc' => 'Wikipediaren Erabilgarritasun Iniziatibak garatutako ezaugarriak MediaWikiren erabilgarritasuna hobetzeko.',
 );
 
+/** Persian (فارسی)
+ * @author Ebraminio
+ */
+$messages['fa'] = array(
+	'prefs-beta' => 'امکانات بتا',
+	'prefs-labs' => 'امکانات آزمایشگاهی',
+);
+
 /** Finnish (Suomi)
  * @author Crt
  * @author Str4nd
@@ -659,6 +667,16 @@ $messages['te'] = array(
 $messages['tk'] = array(
 	'usabilityinitiative' => 'Oňaýlylyk Başlangyjy',
 	'usabilityinitiative-desc' => 'MediaWikiniň oňaýlylygyny güýçlendirmek maksady bilen Oňaýlylyk Başlangyjy tarapyndan taýýarlanylan funksiýalar',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'usabilityinitiative' => 'Pasimulang Pangpagkanagagamit',
+	'usabilityinitiative-desc' => 'Mga katangiang-kasangkapang pinaunlat ng Pampanimula ng Pagkanagagamit ng Wikipedia upang mapahusay ang paggamit ng MediaWiki',
+	'prefs-beta' => 'Mga kaangkapang-katangiang pang-beta',
+	'prefs-labs' => 'Mga kasangkapang-katangiang pang-Labs',
 );
 
 /** Turkish (Türkçe)

@@ -3189,8 +3189,8 @@ $messages['tk'] = array(
  */
 $messages['tl'] = array(
 	'boardblastlogintitle' => 'Dapat na nakalagda ka muna upang makapagpadala ng mga pitadang pampisara',
-	'boardblastlogintext' => 'Dapat na nakalagda ka muna upang makapagpadala ng mga pitadang pampisara.
-Pindutin <a href="index.php?title=Special:UserLogin">dito upang makalagda</a>',
+	'boardblastlogintext' => 'Upang makapagpadala ng mga pitadang pampisara, 
+dapat na <a href="index.php?title=Special:UserLogin">nakalagda ka muna</a>.',
 	'messagesenttitle' => 'Naipadala na ang mga mensahe',
 	'boardblasttitle' => 'Ipadala ang pitadang pampisara',
 	'boardblaststep1' => 'Hakbang 1 - Isulat ang mensahe mo',
@@ -3229,6 +3229,11 @@ Pindutin <a href="index.php?title=Special:UserLogin">dito upang makalagda</a>',
 	'userboard_sendbutton' => 'Ipadala',
 	'userboard_loggedout' => 'Dapat na <a href="$1">nakalagda</a>  ka muna upang makapagtala/makapagpaskil ng mga mensahe sa iba pang mga tagagamit.',
 	'userboard_showingmessages' => 'Nagpapakita ng {{PLURAL:$4|mensaheng $3|mga mensaheng $2-$3}} ng {{PLURAL:$1|$1 mensahe|$1 mga mensahe}}',
+	'right-userboard-delete' => 'Burahin ang mga mensahe sa pisara ng iba',
+	'userboard-time-days' => '{{PLURAL:$1|isang araw|$1 mga araw}}',
+	'userboard-time-hours' => '{{PLURAL:$1|isang horasr|$1 mga oras}}',
+	'userboard-time-minutes' => '{{PLURAL:$1|isang minuto|$1 mga minuto}}',
+	'userboard-time-seconds' => '{{PLURAL:$1|isang segundo|$1 mga segundo}}',
 	'message_received_subject' => 'Sumulat si $1 sa iyong pisarang nasa {{SITENAME}}',
 	'message_received_body' => 'Kumusta ka $1:
 

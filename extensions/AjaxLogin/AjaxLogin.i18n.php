@@ -481,6 +481,8 @@ Periksa ejaan anda.',
  */
 $messages['ig'] = array(
 	'ajaxlogin-desc' => 'Ngwa di ichiche nké né nyé uzor ndi na banife Í bàtá na Í chétá édémédé hé shì a batá',
+	'ajaxLogin2' => 'I chorí mé iheá?
+I nwèríkí lúfùu ihe í gbanwere na ihüá Í háfụ ihüá ubuá.',
 	'ajaxlogin-create' => 'Ké buwa',
 	'al-nosuchuser' => 'O díg.ʼonye né ji "$1".
 Orúnotu né lékwa I dé na ukwu na ntà.
@@ -930,6 +932,9 @@ $messages['tl'] = array(
 	'ajaxLogin2' => 'Nakatitiyak ka ba?
 Maaaring mawala ang mga pagbabago mo sa pahinang ito kapag nilisan mo ngayon ang pahinang ito.',
 	'ajaxlogin-create' => 'Lumikha ng isang akawnt',
+	'al-nosuchuser' => 'Walang tagagamit na may pangalang "$1".
+Maramdamin sa pagtipa ang mga pangalan ng tagagamit.
+Suriin ang iyong pagbabaybay.',
 );
 
 /** Turkish (Türkçe)

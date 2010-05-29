@@ -625,6 +625,7 @@ $messages['tl'] = array(
 	'piwik-lastvisits' => 'Huling mga pagdalaw',
 	'piwik-countries' => 'Mga bansa',
 	'piwik-browsers' => 'Mga pantingin-tingin',
+	'right-viewpiwik' => 'Tingnan ang [[Special:Piwik|estadistika ng Piwik]]',
 );
 
 /** Turkish (Türkçe)

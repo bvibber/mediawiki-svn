@@ -1011,10 +1011,13 @@ $messages['tl'] = array(
 	'watchers-desc' => 'Nagpapakita [[Special:Watchers|kung sinu-sinong mga tagagamit ang mayroon ng isang pahina sa kanilang talaan ng mga binabantayan]]',
 	'watchers_link_title' => 'Sino ang nagbabantay sa pahinang ito?',
 	'watchers_error_article' => "'''Kamalian:''' Hindi umiiral ang pahina.",
+	'watchers-error-invalid-page' => "'''Kamalian''': ang \"\$1\" ay isang hindi wastong pamagat ng pahina.",
 	'watchers_header' => '{{PLURAL:$2|Tagagamit na|Mga tagagamit na}} nagbabantay ng "[[:$1]]"',
 	'watchers_noone_watches' => 'Walang nagbabantay ng (nagmamatyag sa) pahinang ito.',
 	'watchers_x_or_more' => '$1 o mahigit pa sa {{PLURAL:$1|mga tagagamit|mga tagagamit}} ang mayroon ng pahinang ito sa kanilang talaan ng mga binabantayan.',
 	'watchers_less_than_x' => 'Mas kakaunti kaysa $1 {{PLURAL:$1|mga tagagamit|mga tagagamit}} ang mayroon ng pahinang ito sa kanilang talaan ng mga binabantayan.',
+	'watchers-num' => '$1 {{PLURAL:$1|tagagamit|mga tagagamit}} ang mayroon ng pahinang [[:$2]] sa {{PLURAL:$1|its|their}} talaan ng mga binabantayan.',
+	'right-watchers-list' => '[[Special:Watchers|Nagtatala ng mga tagagamit na nagbabantay sa isang tiyak na pahina]]',
 );
 
 /** Turkish (Türkçe)

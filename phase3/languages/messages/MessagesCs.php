@@ -1732,6 +1732,11 @@ JD # Jenoptik
 MGP # Pentax
 PICT # různé
  #</pre> <!-- tuto řádku ponechte beze změny -->',
+'upload-successful-msg'       => 'Vámi načtený soubor je dostupný na $1',
+'upload-failure-subj'         => 'Problém s načítaným souborem',
+'upload-failure-msg'          => 'U vámi načítaného souboru se vyskytl problém:
+
+$1',
 
 'upload-proto-error'        => 'Neplatný protokol',
 'upload-proto-error-text'   => 'Nahrání vzdáleného souboru vyžaduje zadání URLs začínající na <code>http://</code> nebo <code>ftp://</code>.',
@@ -1840,7 +1845,7 @@ Níže jsou zobrazeny informace, které obsahuje jeho [$2 tamější stránka s 
 'filerevert'                => 'Vrátit zpět $1',
 'filerevert-legend'         => 'Vrátit zpět soubor',
 'filerevert-intro'          => "Vracíte zpět '''[[Media:$1|$1]]''' na [$4 verzi z $3 $2].",
-'filerevert-comment'        => 'Zdůvodnění:',
+'filerevert-comment'        => 'Důvod:',
 'filerevert-defaultcomment' => 'Navrácena verze nahraná v $2 dne $1.',
 'filerevert-submit'         => 'Vrátit zpět',
 'filerevert-success'        => "Soubor '''[[Media:$1|$1]]''' byl vrácen zpět na [$4 verzi z $3 $2].",
@@ -2124,6 +2129,10 @@ E-mailová adresa, kterou máte uvedenu v [[Special:Preferences|nastavení]], se
 'emailsenttext'        => 'Váš e-mail byl odeslán.',
 'emailuserfooter'      => 'Tento e-mail byl odeslán z {{grammar:2sg|{{SITENAME}}}} pomocí funkce „Poslat e-mail“; odeslal ho uživatel $1 uživateli $2',
 
+# User Messenger
+'usermessage-summary' => 'Doručena zpráva od systému.',
+'usermessage-editor'  => 'Systémový poslíček',
+
 # Watchlist
 'watchlist'            => 'Sledované stránky',
 'mywatchlist'          => 'Sledované stránky',
@@ -2323,7 +2332,7 @@ Archiv může být pravidelně vyprazdňován.',
 'undeleteviewlink'             => 'prohlédnout',
 'undeletereset'                => 'Resetovat',
 'undeleteinvert'               => 'Invertovat výběr',
-'undeletecomment'              => 'Komentář:',
+'undeletecomment'              => 'Důvod:',
 'undeletedarticle'             => 'obnovuje „[[$1]]“',
 'undeletedrevisions'           => '{{PLURAL:$1|Obnovena $1 verze|Obnoveny $1 verze|Obnoveno $1 verzí}}',
 'undeletedrevisions-files'     => '{{PLURAL:$1|Obnovena jedna verze|Obnoveny $1 verze|Obnoveno $1 verzí}} a $2 {{PLURAL:$2|soubor|soubory|souborů}}.',
@@ -3325,7 +3334,9 @@ Opravdu si přejete znovu tuto stránku založit?',
 'watchlistedit-noitems'        => 'Váš seznam sledovaných stránek neobsahuje žádnou položku.',
 'watchlistedit-normal-title'   => 'Editace seznamu sledovaných stránek',
 'watchlistedit-normal-legend'  => 'Odstranění položek ze seznamu sledovaných stránek',
-'watchlistedit-normal-explain' => 'Položky vašeho seznamu sledovaných stránek jsou zobrazeny níže. Ty, které chcete ze seznamu odstranit, označte zaškrtnutím a poté stiskněte tlačítko Odstranit položky. Editovat seznam sledovaných stránek můžete také [[Special:Watchlist/raw|v textové podobě]].',
+'watchlistedit-normal-explain' => 'Položky vašeho seznamu sledovaných stránek jsou zobrazeny níže.
+Stránku můžete ze seznamu odstranit tak, že zaškrtnete její políčko a kliknete na tlačítko „{{int:Watchlistedit-normal-submit}}“.
+Také můžete [[Special:Watchlist/raw|editovat seznam v textové podobě]].',
 'watchlistedit-normal-submit'  => 'Odstranit položky',
 'watchlistedit-normal-done'    => '{{PLURAL:$1|Byla odstraněna 1 položka|Byly odstraněny $1 položky|Bylo odstraněno $1 položek}} z Vašeho seznamu sledovaných stránek:',
 'watchlistedit-raw-title'      => 'Textový režim editace seznamu',

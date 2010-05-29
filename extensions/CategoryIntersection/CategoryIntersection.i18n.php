@@ -705,6 +705,7 @@ $messages['sv'] = array(
 $messages['te'] = array(
 	'categoryintersection' => 'వర్గం ఖండన',
 	'categoryintersection-doit' => 'ఈ వర్గాల్లో ఉన్న అన్ని పేజీలూ చూపించు',
+	'categoryintersection-mincategories' => 'మీరు కనీసం రెండు వర్గాలని చేర్చాలి.',
 	'categoryintersection-results' => 'ఈ అన్వేషణ $1 {{PLURAL:$1|ఫలితాన్ని|ఫలితాలను}} ఇచ్చింది.',
 );
 
@@ -739,6 +740,7 @@ $messages['tl'] = array(
 	'categoryintersection-desc' => 'Nagpapanatili ng isang tablang may magkakahalong mga halaga para sa [[Special:CategoryIntersection|mga pinagsangahan ng kaurian]] na nasa loob ng isang pahina',
 	'categoryintersection-doit' => 'Itala ang mga pahinang nasa loob ng mga kauriang ito',
 	'categoryintersection-maxcategories' => 'Ang pinakamataas na pinahihintulutang bilang ng pinagsasangahang mga kaurian ay $1.',
+	'categoryintersection-mincategories' => 'Dapat kang magsama ng hindi bababa sa dalawang mga kategorya.',
 	'categoryintersection-results' => 'Nagbalik ang paghahanap ng $1 {{PLURAL:$1|kinalabasan|mga kinalabasan}}.',
 );
 

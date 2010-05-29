@@ -292,6 +292,11 @@ $messages['id'] = array(
  * @author Una giornata uggiosa '94
  */
 $messages['it'] = array(
+	'prefswitch-link-anon' => 'Nuove funzionalità',
+	'tooltip-pt-prefswitch-link-anon' => 'Informazioni sulle nuove funzionalità',
+	'prefswitch-link-on' => 'Riportami indietro',
+	'tooltip-pt-prefswitch-link-on' => 'Disattiva le nuove funzionalità',
+	'prefswitch-link-off' => 'Nuove funzionalità',
 	'tooltip-pt-prefswitch-link-off' => 'Prova le nuove funzioni',
 );
 
@@ -311,9 +316,15 @@ $messages['ja'] = array(
 );
 
 /** Georgian (ქართული)
+ * @author BRUTE
  * @author გიორგიმელა
  */
 $messages['ka'] = array(
+	'prefswitch-link-anon' => 'ახალი შესაძლებლობები',
+	'tooltip-pt-prefswitch-link-anon' => 'გაიგეთ მეტი ახალ შესაძლებლობებზე',
+	'prefswitch-link-on' => 'გასვლა',
+	'tooltip-pt-prefswitch-link-on' => 'ახალი შესაძლებლობების გამორთვა',
+	'prefswitch-link-off' => 'ახალი შესაძლებლობები',
 	'tooltip-pt-prefswitch-link-off' => 'სცადეთ ახალი ხელსაწყოები',
 );
 
@@ -473,6 +484,18 @@ $messages['te'] = array(
 	'tooltip-pt-prefswitch-link-anon' => 'కొత్త విశేషాల గురించి తెలుసుకోండి',
 	'prefswitch-link-off' => 'కొత్త సౌలభ్యాలు',
 	'tooltip-pt-prefswitch-link-off' => 'కొత్త సౌలభ్యాలను ప్రయత్నించండి',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'prefswitch-link-anon' => 'Bagong mga kasangkapang-katangian',
+	'tooltip-pt-prefswitch-link-anon' => 'Pag-aralan ang bagong mga kasangkapang-katangian',
+	'prefswitch-link-on' => 'Ibalik ako',
+	'tooltip-pt-prefswitch-link-on' => 'Huwag paganahin ang bagong mga kasangkapang-katangian',
+	'prefswitch-link-off' => 'Bagong mga kasangkapang-katangian',
+	'tooltip-pt-prefswitch-link-off' => 'Subukan ang bagong mga kasangkapang-katangian',
 );
 
 /** Turkish (Türkçe)

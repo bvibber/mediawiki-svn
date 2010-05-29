@@ -1186,7 +1186,7 @@ class Article {
 		if ( $this->mTitle->isTalkPage() ) {
 			$msg = wfMsgNoTrans( 'talkpageheader' );
 			if ( $msg !== '-' && !wfEmptyMsg( 'talkpageheader', $msg ) ) {
-				$wgOut->wrapWikiMsg( "<div class=\"mw-talkpageheader\">\n$1</div>", array( 'talkpageheader' ) );
+				$wgOut->wrapWikiMsg( "<div class=\"mw-talkpageheader\">\n$1\n</div>", array( 'talkpageheader' ) );
 			}
 		}
 	}
@@ -1259,7 +1259,7 @@ class Article {
 			$user = User::newFromName( $rootPart, false /* allow IP users*/ );
 			$ip = User::isIP( $rootPart );
 			if ( !$user->isLoggedIn() && !$ip ) { # User does not exist
-				$wgOut->wrapWikiMsg( "<div class=\"mw-userpage-userdoesnotexist error\">\n\$1</div>",
+				$wgOut->wrapWikiMsg( "<div class=\"mw-userpage-userdoesnotexist error\">\n\$1\n</div>",
 					array( 'userpage-userdoesnotexist-view', $rootPart ) );
 			} else if ( $user->isBlocked() ) { # Show log extract if the user is currently blocked
 				LogEventsList::showLogExtract(
@@ -1329,7 +1329,7 @@ class Article {
 		}
 		// If the user is not allowed to see it...
 		if ( !$this->mRevision->userCan( Revision::DELETED_TEXT ) ) {
-			$wgOut->wrapWikiMsg( "<div class='mw-warning plainlinks'>\n$1</div>\n",
+			$wgOut->wrapWikiMsg( "<div class='mw-warning plainlinks'>\n$1\n</div>\n",
 				'rev-deleted-text-permission' );
 			return false;
 		// If the user needs to confirm that they want to see it...
@@ -1339,14 +1339,14 @@ class Article {
 			$link = $this->mTitle->getFullUrl( "oldid={$oldid}&unhide=1" );
 			$msg = $this->mRevision->isDeleted( Revision::DELETED_RESTRICTED ) ?
 				'rev-suppressed-text-unhide' : 'rev-deleted-text-unhide';
-			$wgOut->wrapWikiMsg( "<div class='mw-warning plainlinks'>\n$1</div>\n",
+			$wgOut->wrapWikiMsg( "<div class='mw-warning plainlinks'>\n$1\n</div>\n",
 				array( $msg, $link ) );
 			return false;
 		// We are allowed to see...
 		} else {
 			$msg = $this->mRevision->isDeleted( Revision::DELETED_RESTRICTED ) ?
 				'rev-suppressed-text-view' : 'rev-deleted-text-view';
-			$wgOut->wrapWikiMsg( "<div class='mw-warning plainlinks'>\n$1</div>\n", $msg );
+			$wgOut->wrapWikiMsg( "<div class='mw-warning plainlinks'>\n$1\n</div>\n", $msg );
 			return true;
 		}
 	}
@@ -1513,7 +1513,7 @@ class Article {
 					$o->tb_name,
 					$rmvtxt );
 		}
-		$wgOut->wrapWikiMsg( "<div id='mw_trackbacks'>$1</div>\n", array( 'trackbackbox', $tbtext ) );
+		$wgOut->wrapWikiMsg( "<div id='mw_trackbacks'>\n$1\n</div>\n", array( 'trackbackbox', $tbtext ) );
 	}
 
 	/**
@@ -1811,28 +1811,8 @@ class Article {
 			( $suppressRC ? EDIT_SUPPRESS_RC : 0 ) |
 			( $bot ? EDIT_FORCE_BOT : 0 );
 
-		# If this is a comment, add the summary as headline
-		if ( $comment && $summary != "" ) {
-			$text = wfMsgForContent( 'newsectionheaderdefaultlevel', $summary ) . "\n\n" . $text;
-		}
+		$this->doEdit( $text, $summary, $flags, false, null, $watchthis, $comment, '', true );
 
-		$this->doEdit( $text, $summary, $flags );
-
-		$dbw = wfGetDB( DB_MASTER );
-		if ( $watchthis ) {
-			if ( !$this->mTitle->userIsWatching() ) {
-				$dbw->begin();
-				$this->doWatch();
-				$dbw->commit();
-			}
-		} else {
-			if ( $this->mTitle->userIsWatching() ) {
-				$dbw->begin();
-				$this->doUnwatch();
-				$dbw->commit();
-			}
-		}
-		$this->doRedirect( $this->isRedirect( $text ) );
 	}
 
 	/**
@@ -1843,30 +1823,11 @@ class Article {
 			( $minor ? EDIT_MINOR : 0 ) |
 			( $forceBot ? EDIT_FORCE_BOT : 0 );
 
-		$status = $this->doEdit( $text, $summary, $flags );
+		$status = $this->doEdit( $text, $summary, $flags, false, null, $watchthis, false, $sectionanchor, true );
 		if ( !$status->isOK() ) {
 			return false;
 		}
 
-		$dbw = wfGetDB( DB_MASTER );
-		if ( $watchthis ) {
-			if ( !$this->mTitle->userIsWatching() ) {
-				$dbw->begin();
-				$this->doWatch();
-				$dbw->commit();
-			}
-		} else {
-			if ( $this->mTitle->userIsWatching() ) {
-				$dbw->begin();
-				$this->doUnwatch();
-				$dbw->commit();
-			}
-		}
-
-		$extraQuery = ''; // Give extensions a chance to modify URL query on update
-		wfRunHooks( 'ArticleUpdateBeforeRedirect', array( $this, &$sectionanchor, &$extraQuery ) );
-
-		$this->doRedirect( $this->isRedirect( $text ), $sectionanchor, $extraQuery );
 		return true;
 	}
 
@@ -1920,6 +1881,10 @@ class Article {
 	 *
 	 * @param $baseRevId the revision ID this edit was based off, if any
 	 * @param $user Optional user object, $wgUser will be used if not passed
+	 * @param $watchthis Watch the page if true, unwatch the page if false, do nothing if null
+	 * @param $sectionanchor The section anchor for the page; used for redirecting the user back to the page
+	 *              after the edit is successfully committed
+	 * @param $redirect If true, redirect the user back to the page after the edit is successfully committed
 	 *
 	 * @return Status object. Possible errors:
 	 *     edit-hook-aborted:       The ArticleSave hook aborted the edit but didn't set the fatal flag of $status
@@ -1936,7 +1901,8 @@ class Article {
 	 *
 	 *  Compatibility note: this function previously returned a boolean value indicating success/failure
 	 */
-	public function doEdit( $text, $summary, $flags = 0, $baseRevId = false, $user = null ) {
+	public function doEdit( $text, $summary, $flags = 0, $baseRevId = false, $user = null , $watchthis = null,
+			$comment = false, $sectionanchor = '', $redirect = false) {
 		global $wgUser, $wgDBtransactions, $wgUseAutomaticEditSummaries;
 
 		# Low-level sanity check
@@ -1953,9 +1919,14 @@ class Article {
 		$this->loadPageData();
 
 		$flags = $this->checkFlags( $flags );
+		
+		# If this is a comment, add the summary as headline
+		if ( $comment && $summary != "" ) {
+			$text = wfMsgForContent( 'newsectionheaderdefaultlevel', $summary ) . "\n\n" . $text;
+		}
 
 		if ( !wfRunHooks( 'ArticleSave', array( &$this, &$user, &$text, &$summary,
-			$flags & EDIT_MINOR, null, null, &$flags, &$status ) ) )
+			$flags & EDIT_MINOR, &$watchthis, null, &$flags, &$status) ) )
 		{
 			wfDebug( __METHOD__ . ": ArticleSave hook aborted save!\n" );
 			wfProfileOut( __METHOD__ );
@@ -2148,7 +2119,7 @@ class Article {
 			Article::onArticleCreate( $this->mTitle );
 
 			wfRunHooks( 'ArticleInsertComplete', array( &$this, &$user, $text, $summary,
-				$flags & EDIT_MINOR, null, null, &$flags, $revision ) );
+				$flags & EDIT_MINOR, &$watchthis, null, &$flags, $revision ) );
 		}
 
 		# Do updates right now unless deferral was requested
@@ -2160,9 +2131,37 @@ class Article {
 		$status->value['revision'] = $revision;
 
 		wfRunHooks( 'ArticleSaveComplete', array( &$this, &$user, $text, $summary,
-			$flags & EDIT_MINOR, null, null, &$flags, $revision, &$status, $baseRevId ) );
-
+			$flags & EDIT_MINOR, &$watchthis, null, &$flags, $revision, &$status, $baseRevId,
+			&$redirect) );
+		
+		# Watch or unwatch the page
+		if ( $watchthis === true ) {
+			if ( !$this->mTitle->userIsWatching() ) {
+				$dbw->begin();
+				$this->doWatch();
+				$dbw->commit();
+			}
+		} elseif ( $watchthis === false ) {
+			if ( $this->mTitle->userIsWatching() ) {
+				$dbw->begin();
+				$this->doUnwatch();
+				$dbw->commit();
+			}
+		}
+			
+		# Give extensions a chance to modify URL query on update
+		$extraQuery = ''; 
+		wfRunHooks( 'ArticleUpdateBeforeRedirect', array( $this, &$sectionanchor, &$extraQuery ) );
+		if ( $redirect ) {
+			if ( $sectionanchor || $extraQuery ) {
+				$this->doRedirect( $this->isRedirect( $text ), $sectionanchor, $extraQuery );
+			} else {
+				$this->doRedirect( $this->isRedirect( $text ) );
+			}
+		}
+		
 		wfProfileOut( __METHOD__ );
+		
 		return $status;
 	}
 
@@ -2674,7 +2673,7 @@ class Article {
 		$bigHistory = $this->isBigDeletion();
 		if ( $bigHistory && !$this->mTitle->userCan( 'bigdelete' ) ) {
 			global $wgLang, $wgDeleteRevisionsLimit;
-			$wgOut->wrapWikiMsg( "<div class='error'>\n$1</div>\n",
+			$wgOut->wrapWikiMsg( "<div class='error'>\n$1\n</div>\n",
 				array( 'delete-toobig', $wgLang->formatNum( $wgDeleteRevisionsLimit ) ) );
 			return;
 		}
@@ -2705,7 +2704,7 @@ class Article {
 			);
 			if ( $bigHistory ) {
 				global $wgDeleteRevisionsLimit;
-				$wgOut->wrapWikiMsg( "<div class='error'>\n$1</div>\n",
+				$wgOut->wrapWikiMsg( "<div class='error'>\n$1\n</div>\n",
 					array( 'delete-warning-toobig', $wgLang->formatNum( $wgDeleteRevisionsLimit ) ) );
 			}
 		}
@@ -2846,7 +2845,7 @@ class Article {
 				) ) .
 				"</td>
 			</tr>";
-		# Dissalow watching is user is not logged in
+		# Disallow watching if user is not logged in
 		if ( $wgUser->isLoggedIn() ) {
 			$form .= "
 			<tr>
@@ -3487,8 +3486,7 @@ class Article {
 			return;
 		}
 
-		$unhide = $wgRequest->getInt( 'unhide' ) == 1 &&
-			$wgUser->matchEditToken( $wgRequest->getVal( 'token' ), $oldid );
+		$unhide = $wgRequest->getInt( 'unhide' ) == 1;
 		# Cascade unhide param in links for easy deletion browsing
 		$extraParams = array();
 		if ( $wgRequest->getVal( 'unhide' ) ) {

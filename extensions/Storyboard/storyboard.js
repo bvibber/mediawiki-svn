@@ -222,7 +222,8 @@ function stbAddStories( ajaxscrollObj, $storyboard, data ) {
 		if ( story.state != 0 ) {
 			controlDiv.append(
 				jQuery( "<button />" ).text( stbMsg( "storyboard-unpublish" ) )
-					.attr( "onclick", "stbDoStoryAction( this, " + story.id + ", 'unpublish' )" )
+					.data( 'storyID', story.id )
+					.click( function() { stbDoStoryAction( this, jQuery( this ).data( 'storyID' ), 'unpublish' ); } )
 			);
 		}
 		
@@ -232,7 +233,8 @@ function stbAddStories( ajaxscrollObj, $storyboard, data ) {
 			}
 			controlDiv.append(
 				jQuery( "<button />" ).text( stbMsg( "storyboard-publish" ) )
-					.attr( "onclick", "stbDoStoryAction( this, " + story.id + ", 'publish' )" )
+					.data( 'storyID', story.id )
+					.click( function() { stbDoStoryAction( this, jQuery( this ).data( 'storyID' ), 'publish' ); } )
 			);
 		}
 		
@@ -240,21 +242,24 @@ function stbAddStories( ajaxscrollObj, $storyboard, data ) {
 			controlDiv.append( '&nbsp;&nbsp;&nbsp;' );
 			controlDiv.append(
 				jQuery( "<button />" ).text( stbMsg( "storyboard-hide" ) )
-					.attr( "onclick", "stbDoStoryAction( this, " + story.id + ", 'hide' )" )
+					.data( 'storyID', story.id )
+					.click( function() { stbDoStoryAction( this, jQuery( this ).data( 'storyID' ), 'hide' ); } )
 			);
 		}
 		
 		controlDiv.append( '&nbsp;&nbsp;&nbsp;' );
 		controlDiv.append( jQuery( "<button />" )
 			.text( stbMsg( "edit" ) )
-			.attr( "onclick", "window.location='" + story.modifyurl + "'" )
+			.data( 'storyModifyUrl', story.modifyurl )
+			.click( function() { window.location = jQuery( this ).data( 'storyModifyUrl' ); } )
 		);
 		
 		if ( window.storyboardCanDelete ) {
 			controlDiv.append( '&nbsp;&nbsp;&nbsp;' );
 			controlDiv.append( jQuery( "<button />" )
 				.text( stbMsg( "storyboard-deletestory" ) )
-				.attr( "onclick", "stbDeleteStory( this, " + story.id + " )" )
+				.data( 'storyID', story.id )
+				.click( function() { stbDeleteStory( this, jQuery( this ).data( 'storyID' ) ); } )
 			);			
 		}
 		
@@ -263,7 +268,8 @@ function stbAddStories( ajaxscrollObj, $storyboard, data ) {
 			
 			controlDiv.append(
 				jQuery( "<button />" ).text( stbMsg( "storyboard-deleteimage" ) )
-					.attr( "onclick", "stbDeleteStoryImage( this, " + story.id + " )" )
+					.data( 'storyID', story.id )
+					.click( function() { stbDeleteStoryImage( this, jQuery( this ).data( 'storyID' ) ); } )
 			);
 			
 			controlDiv.append( '&nbsp;&nbsp;&nbsp;' );
@@ -271,16 +277,16 @@ function stbAddStories( ajaxscrollObj, $storyboard, data ) {
 			if ( story.imagehidden == "1" ) {
 				controlDiv.append(
 					jQuery( "<button />" ).text( stbMsg( "storyboard-showimage" ) )
-						.attr( "onclick", "stbDoStoryAction( this, " + story.id + ", 'unhideimage' )" )
+						.data( 'storyID', story.id )
+						.click( function() { stbDoStoryAction( this, jQuery( this ).data( 'storyID' ), 'unhideimage' ); } )
 				);
 			}
 			else {
 				controlDiv.append(
 					jQuery( "<button />" ).text( stbMsg( "storyboard-hideimage" ) )
-						.attr( {
-							"onclick": "stbDoStoryAction( this, " + story.id + ", 'hideimage' )",
-							"id": "image_button_" + story.id
-						} )
+						.attr( "id", "image_button_" + story.id )
+						.data( 'storyID', story.id )
+						.click( function() { stbDoStoryAction( this, jQuery( this ).data( 'storyID' ), 'hideimage' ); } )
 				);				
 			}
 		}

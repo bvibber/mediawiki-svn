@@ -346,6 +346,7 @@ $messages['an'] = array(
 	'viewapc-display-info' => 'Nombre',
 	'viewapc-ls-header-name' => 'Nombre',
 	'viewapc-ls-sort-name' => 'Nombre',
+	'viewapc-ls-limit-none' => 'Tot',
 );
 
 /** Arabic (العربية)
@@ -2956,11 +2957,25 @@ Versi lebih baru $2 tersedia di http://pecl.php.net/package/APC/$2',
  * @author Ukabia
  */
 $messages['ig'] = array(
+	'apc' => 'Ómárí APC',
+	'right-apc' => 'Jí ihe níle nor nà [[Special:ViewAPC|LéAPC]]',
+	'viewapc-clear-user-cache' => 'Wúfù cache onyé na banife',
+	'viewapc-uptime' => 'Ógẹ ó di élu',
+	'viewapc-hits' => 'Kùrù',
+	'viewapc-memory-free' => 'Owérè: $1 ($2)',
 	'viewapc-display-value' => 'Onuogụgụ',
 	'viewapc-display-info' => 'Áhà',
+	'viewapc-display-type' => 'Nkè',
+	'viewapc-display-mem_size' => 'Ívụ',
+	'viewapc-ls-options-legend' => 'I cho, ka I chogị',
 	'viewapc-ls-submit' => 'Gá!',
+	'viewapc-ls-header-size' => 'Ívụ',
+	'viewapc-ls-delete' => '[Gbakashia ubuwá]',
+	'viewapc-ls-scope-deleted' => 'Gbakashiala',
+	'viewapc-ls-scope-both' => 'Nké abụo',
 	'viewapc-ls-sort-size' => 'Ivụ',
 	'viewapc-ls-sort-name' => 'Áhà',
+	'viewapc-ls-sort-created' => 'Kèrè',
 	'viewapc-ls-sort-timeout' => 'Ogẹ afüolé',
 	'viewapc-ls-limit-none' => 'Nke níle',
 );
@@ -3949,6 +3964,7 @@ $messages['ms'] = array(
 );
 
 /** Maltese (Malti)
+ * @author Chrisportelli
  * @author Giangian15
  * @author Roderick Mallia
  */
@@ -3957,6 +3973,7 @@ $messages['mt'] = array(
 	'viewapc-display-filename' => 'Isem il-fajl',
 	'viewapc-display-info' => 'Isem',
 	'viewapc-display-type' => 'Mudell',
+	'viewapc-ls-submit' => 'Mur!',
 );
 
 /** Erzya (Эрзянь)

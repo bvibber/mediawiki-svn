@@ -603,6 +603,7 @@ $messages['vo'] = array(
  * @author פוילישער
  */
 $messages['yi'] = array(
+	'catboxattop-desc' => 'לייגט צו א קאַטעגאריע קעסטל אין דער הייך לינקס פֿון בלעטער',
 	'catboxattop-categories' => 'קאַטעגאריעס',
 );
 

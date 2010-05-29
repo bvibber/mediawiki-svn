@@ -1903,9 +1903,13 @@ $messages['tl'] = array(
 	'dt_xml_freetext' => 'Malayang Teksto',
 	'importxml' => 'Angkatin ang XML',
 	'dt_import_selectfile' => 'Pakipili ang talaksang $1 na aangkatin:',
-	'dt_import_editsummary' => 'Angkat ng $1',
+	'dt_import_encodingtype' => 'Uri ng pagkokodigo',
+	'dt_import_editsummary' => 'Pag-angkat ng $1',
 	'dt_import_importing' => 'Inaangkat...',
-	'dt_import_success' => '$1 {{PLURAL:$1|pahina|mga pahina}} ang aangkatin mula sa talaksang $2.',
+	'dt_import_success' => '$1 {{PLURAL:$1|pahina|mga pahina}} ang lilikhain mula sa talaksang $2.',
+	'importcsv' => 'Angkatin ang CSV',
+	'dt_importcsv_badheader' => "Kamalian: ang patayong hanay ng paulong $1, '$2', ay dapat na '$3', '$4' o nasa pormang 'template_name[field_name]'",
+	'right-datatransferimport' => 'Angkatin ang dato',
 );
 
 /** Turkish (Türkçe)

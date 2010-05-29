@@ -11,7 +11,7 @@ $messages['en'] = array(
 	'cite_article_desc'       => 'Adds a [[Special:Cite|citation]] special page and toolbox link',
 	'cite_article_link'       => 'Cite this page',
 	'tooltip-cite-article'    => 'Information on how to cite this page',
-	'accesskey-cite-article'  => 'g', # Do not translate this
+	'accesskey-cite-article'  => '', # Do not translate this
 	'cite'                    => 'Cite',
 	'cite_page'               => 'Page:',
 	'cite_submit'             => 'Cite',
@@ -1106,10 +1106,13 @@ $messages['ms'] = array(
 );
 
 /** Maltese (Malti)
+ * @author Chrisportelli
  * @author Giangian15
  */
 $messages['mt'] = array(
+	'cite' => 'Iċċita',
 	'cite_page' => 'Paġna:',
+	'cite_submit' => 'Iċċita',
 );
 
 /** Mirandese (Mirandés)
@@ -1664,6 +1667,7 @@ $messages['tk'] = array(
 $messages['tl'] = array(
 	'cite_article_desc' => 'Nagdaragdag ng isang natatanging pahinang [[Special:Cite|pampagtutukoy]] at kawing sa kahon (lalagyan) ng kagamitan',
 	'cite_article_link' => 'Tukuyin ang pahinang ito',
+	'tooltip-cite-article' => 'Kabatiran kung paano tutukuyin ang pahinang ito',
 	'cite' => 'Tukuyin',
 	'cite_page' => 'Pahina:',
 	'cite_submit' => 'Tukuyin',

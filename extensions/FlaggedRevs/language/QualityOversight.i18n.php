@@ -510,12 +510,13 @@ $messages['sl'] = array(
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Charmed94
  * @author Millosh
  */
 $messages['sr-ec'] = array(
-	'qualityoversight' => 'Надгледање квалитета',
-	'qualityoversight-list' => 'На овој страни се налази списак скоро одобрених и потиснутих верзија.',
-	'qualityoversight-legend' => 'Претрага лога скорих прегледа.',
+	'qualityoversight' => 'Напредни преглед извештаја',
+	'qualityoversight-list' => 'На овој страни се налази списак недавно одобрених и потиснутих ревизија.',
+	'qualityoversight-legend' => 'Претрага извештаја недавних прегледа',
 );
 
 /** Serbian Latin ekavian (Srpski (latinica))
@@ -557,7 +558,7 @@ $messages['tk'] = array(
  * @author AnakngAraw
  */
 $messages['tl'] = array(
-	'qualityoversight' => 'Pagiingat na pangkaantasan ng uri (kalidad)',
+	'qualityoversight' => 'Masulong na talaan ng pagsusuri',
 	'qualityoversight-list' => 'Nagtatala ang pahinang ito ng pinakakamakailan lamang na mga pagpayag at pagbaba ng halaga/katururan ng mga pagbabago.',
 	'qualityoversight-legend' => 'Maghanap sa mga talaan ng mga kamakailang pagsusuri',
 );

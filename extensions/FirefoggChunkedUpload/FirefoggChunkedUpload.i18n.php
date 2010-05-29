@@ -187,11 +187,25 @@ $messages['ru'] = array(
 	'firefoggcu-desc' => 'Порционный протокол загрузки Firefogg',
 );
 
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Charmed94
+ */
+$messages['sr-ec'] = array(
+	'firefoggcu-desc' => 'Firefogg-ов протокол отпремања',
+);
+
 /** Telugu (తెలుగు)
  * @author Ravichandra
  */
 $messages['te'] = array(
 	'firefoggcu-desc' => 'ఫైర్‌ఫాగ్  విడిభాగాలుగా ఎక్కించే నియమావళి',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'firefoggcu-desc' => 'Pamamaraan sa Matipak na Pagkakargang Paitaas ng Firefogg',
 );
 
 /** Turkish (Türkçe)

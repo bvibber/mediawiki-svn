@@ -131,9 +131,15 @@ class SMWLinearValue extends SMWNumberValue {
 			$printunit = $unit;
 		}
 
-		$this->m_caption = smwfNumberFormat( $value );
-		if ( $printunit != '' ) {
-			$this->m_caption .= '&nbsp;' . $printunit;
+		$this->m_caption = '';
+		if ( $this->m_outformat != '-u' ) { // -u is the format for displaying the unit only
+			$this->m_caption .= ( ( $this->m_outformat != '-' ) && ( $this->m_outformat != '-n' ) ? smwfNumberFormat( $value ) : $value );
+		}
+		if ( ( $printunit != '' ) && ( $this->m_outformat != '-n' ) ) { // -n is the format for displaying the number only
+			if ( $this->m_outformat != '-u' ) {
+				$this->m_caption .=  ( $this->m_outformat != '-' ? '&nbsp;' : ' ' );
+			}
+			$this->m_caption .= $printunit;
 		}
 		$this->m_wikivalue = $this->m_caption;
 		$this->m_unitin = $unit;
@@ -166,7 +172,7 @@ class SMWLinearValue extends SMWNumberValue {
 		if ( count( $factors ) == 0 ) { // no custom type
 			// delete all previous errors, this is our real problem
 			/// TODO: probably we should check for this earlier, but avoid unnecessary DB requests ...
-			wfLoadExtensionMessages( 'SemanticMediaWiki' );
+			smwfLoadExtensionMessages( 'SemanticMediaWiki' );
 			$this->addError( wfMsgForContent( 'smw_unknowntype', SMWDataValueFactory::findTypeLabel( $this->getTypeID() ) ) );
 			return;
 		}

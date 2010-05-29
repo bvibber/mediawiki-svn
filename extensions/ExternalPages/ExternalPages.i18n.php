@@ -306,9 +306,13 @@ $messages['id'] = array(
 
 /** Italian (Italiano)
  * @author Aushulz
+ * @author Beta16
  */
 $messages['it'] = array(
+	'externalpages' => 'Pagine esterne',
+	'externalpages-desc' => 'Recupera e visualizza le pagine da altri siti della WMF',
 	'externalpages-bad-page' => "Errore nell'immissione della pagina",
+	'externalpages-no-page' => 'Nessuna pagina specificata',
 );
 
 /** Japanese (日本語)
@@ -325,6 +329,7 @@ $messages['ja'] = array(
  * @author BRUTE
  */
 $messages['ka'] = array(
+	'externalpages' => 'გარე გვერდები',
 	'externalpages-bad-page' => 'გვერდი შეცდომითაა მითითებული',
 	'externalpages-no-page' => 'გვერდი არ არის მითითებული',
 );
@@ -499,6 +504,16 @@ $messages['sk'] = array(
 	'externalpages-no-page' => 'Neuvedená stránka',
 );
 
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Charmed94
+ */
+$messages['sr-ec'] = array(
+	'externalpages' => 'Спољашње странице',
+	'externalpages-desc' => 'Преузима и приказује странице из даљинских WMF сајтова',
+	'externalpages-bad-page' => 'Одређена је лоша страница',
+	'externalpages-no-page' => 'Страница није одређена.',
+);
+
 /** Swedish (Svenska)
  * @author Boivie
  * @author Per
@@ -527,6 +542,16 @@ $messages['tk'] = array(
 	'externalpages-desc' => 'Uzak WMF saýtlaryndan sahypalary alýar we görkezýär',
 	'externalpages-bad-page' => 'Nädogry sahypa görkezildi',
 	'externalpages-no-page' => 'Hiç hili sahypa görkezilmedi',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'externalpages' => 'Panlabas na mga Pahina',
+	'externalpages-desc' => 'Nagbabawi at nagpapakita ng mga pahina mula sa malalayong mga sityong WMF',
+	'externalpages-bad-page' => 'Tumutukoy ng masamang pahina',
+	'externalpages-no-page' => 'Walang tinukoy na pahina',
 );
 
 /** Turkish (Türkçe)

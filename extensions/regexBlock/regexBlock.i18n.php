@@ -181,6 +181,7 @@ $messages['am'] = array(
 $messages['an'] = array(
 	'regexblock-already-blocked' => '$1 ya yera bloqueyato.',
 	'regexblock-form-reason' => 'Razón:',
+	'regexblock-view-all' => 'Todas',
 );
 
 /** Arabic (العربية)
@@ -2002,6 +2003,7 @@ $messages['ms'] = array(
 $messages['mt'] = array(
 	'regexblock-already-blocked' => '"$1" diġà bblokkjat',
 	'regexblock-expire-duration' => 'siegħa,sagħtejn,4 sigħat,6 sigħat,ġurnata,3 ġranet,ġimgħa,ġimgħatejn,xahar,3 xhur,6 xhur,sena,infinta',
+	'regexblock-view-go' => 'Mur',
 );
 
 /** Erzya (Эрзянь)
@@ -3004,6 +3006,7 @@ Pakilikha ang isang kapalit na pangalan ng tagagamit o [[$1|makipag-ugnayan sa a
 	'regexblock-form-submit-empty' => 'Magbigay ng isang pangalan ng tagagamit o isang adres ng IP na hahadlangan.',
 	'regexblock-form-submit-regex' => 'Hindi tanggap na pangkaraniwang pagsasaad.',
 	'regexblock-form-submit-expiry' => 'Pakitukoy ang isang panahon ng pagtatapos.',
+	'regexblock-link' => 'hadlangan na may karaniwang pananalita',
 	'regexblock-match-stats-record' => "Hinadlangan ni $1 sa '$2' noong '$3' sa '$4', lumalagda mula sa adres na '$5'",
 	'regexblock-nodata-found' => 'Walang natagpuang dato',
 	'regexblock-stats-title' => 'Mga estadistika ng paghadlang sa pangkaraniwang pagsasaad',

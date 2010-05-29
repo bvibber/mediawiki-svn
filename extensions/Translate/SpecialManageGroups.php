@@ -27,6 +27,11 @@ class SpecialManageGroups {
 		$group = $wgRequest->getText( 'group' );
 		$group = MessageGroups::getGroup( $group );
 
+		// Only supported for FileBasedMessageGroups
+		if ( !$group instanceof FileBasedMessageGroup ) {
+			$group = null;
+		}
+
 		if ( $group ) {
 			if (
 				$wgRequest->getBool( 'rebuildall', false ) &&
@@ -46,6 +51,13 @@ class SpecialManageGroups {
 
 			$cache = new MessageGroupCache( $group );
 			$code = $wgRequest->getText( 'language', 'en' );
+
+			// Go to English for undefined codes.
+			$codes = array_keys( Language::getLanguageNames( false ) );
+			if ( !in_array( $code, $codes ) ) {
+				$code = 'en';
+			}
+
 			$this->importForm( $cache, $group, $code );
 		} else {
 			global $wgLang, $wgOut;
@@ -142,10 +154,14 @@ class SpecialManageGroups {
 		$diff->setReducedLineNumbers();
 
 		$ignoredMessages = $collection->getTags( 'ignored' );
+		if ( !is_array( $ignoredMessages ) ) {
+			$ignoredMessages = array();
+		}
+
 		$changed = array();
 		foreach ( $messages as $key => $value ) {
 			// ignored? ignore
-			if( in_array( $key, $ignoredMessages ) ) {
+			if ( in_array( $key, $ignoredMessages ) ) {
 				continue;
 			}
 
@@ -187,10 +203,12 @@ class SpecialManageGroups {
 
 					global $wgRequest, $wgLang;
 
+					$requestKey = str_replace( '.', '_', $key );
+					$requestKey = str_replace( ' ', '_', $key );
 					$action = $wgRequest->getVal( "action-$type-$key" );
 
 					if ( $action === null ) {
-						$message = wfMsgExt( 'translate-manage-inconsistent', 'parseinline', wfEscapeWikiText( "action-$type-$key" ) );
+						$message = wfMsgExt( 'translate-manage-inconsistent', 'parseinline', wfEscapeWikiText( "action-$type-$requestKey" ) );
 						$changed[] = "<li>$message</li></ul>";
 						$process = false;
 					} else {

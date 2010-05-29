@@ -232,6 +232,8 @@ $messages['aln'] = array(
  * @author Juanpabl
  */
 $messages['an'] = array(
+	'optin-survey-yes' => 'Sí',
+	'optin-survey-no' => 'No',
 	'optin-survey-answer-whyoptout-other' => 'Atra razón:',
 	'optin-survey-answer-changes-other' => 'Atros:',
 );
@@ -1881,15 +1883,24 @@ Erabilgarritasunerako Ekimenari buruz gehiago jakiteko, bisitatu [http://usabili
 );
 
 /** Persian (فارسی)
+ * @author Ebraminio
  * @author Ladsgroup
  * @author Mardetanha
  */
 $messages['fa'] = array(
+	'optin' => 'انتخاب‌کردن قابلیت',
 	'optin-title-optedout' => 'استفاده از بتا',
 	'optin-title-optedin' => 'خروج از بتا',
 	'optin-title-justoptedin' => 'به نسخه بتا خوش‌آمدید',
 	'optin-title-justoptedout' => 'ممنونیم از اینکه نسخه بتا را امتحان کردید',
+	'optin-title-feedback' => 'بازخورد نسخه بتا',
 	'optin-needlogin' => 'شما برای استفاده از نسخه بتا باید [$1 وارد شوید].',
+	'optin-intro' => 'بخش بهبود کیفیت ویکی‌پدیا در تلاش است تا رابط کاربری ویکی‌پدیا را بهبود ببخشد. آیا مایلید که نسخه رابط کاربری بتا را امتحان کنید؟',
+	'optin-feedback-intro' => 'با سپاس از اینکه نسخه بتا را امتحان می‌کنید. ما مایلیم نظر شما را در مورد نمایش جدید صفحات بدانیم. در نتیجه اگر در نظرخواهی زیر شرکت کنید ما را یاری می‌کنید. خیلی بهتر است اگر پاسخ سوالات را به زبان انگلیسی بدهید. با سپاس فراوان.',
+	'optin-feedback-back' => 'اگر علاقه‌ای به شرکت در نظرخواهی ندارید، می‌توانید به $1 بازگردید.',
+	'optin-success-in' => 'در حال حاضر شما نسخه بتا را آزمایش می‌کنید.
+شما می‌توانید هر وقت که خواستید با کلیک بر روی «{{int:optin-leave}}» به حالت قبل برگردید.',
+	'optin-accept-short' => 'بزن بریم!',
 	'optin-accept-long' => 'خروج از بتا',
 	'optin-deny-short' => 'نه ممنون!',
 	'optin-deny-long' => 'بازگشت به صفحه قبلی',
@@ -1897,6 +1908,22 @@ $messages['fa'] = array(
 	'optin-survey-yes' => 'بله',
 	'optin-survey-no' => 'نه',
 	'optin-survey-answer-whyoptout-other' => 'دلایل دیگر:',
+	'optin-survey-answer-changes-lookfeel' => 'به روز رسانی ظاهر وب‌گاه',
+	'optin-survey-answer-changes-other' => 'سایر موارد:',
+	'optin-improvements2' => '== چه چیزهایی بهبود یافته؟ ==
+[[پرونده:UsabilityToolbar.png|left|link=|Screenshot of the enhanced edit toolbar]]
+[[پرونده:UsabilityDialogs.png|left|link=|Screenshot of the new content generation dialogs]]
+;نوار ابزار پیشرفته
+نوار ابزار پیشرفته ویرایش مقالات را ساده‌تر می‌سازد.
+نمایه‌ها جدید و بهبود یافته کاری را که ابزارها انجام می‌دهند را واضح‌تر می‌کند.
+گسترش بخش‌ها، درهم و برهمی را کم ساخته در حالیکه ابزارهایی که به ندرت استفاده می‌شوند فقط با یک کلیک قابل دسترس هستند.
+;گفتگو
+وقتی که پیوندها یا جدول‌ها را درست می‌کنید، کلیک کردن بر روی نمایه ابزار یک جعبه تعاملی را درست می‌کند که به شما در درست کردن پیوندها و جدول‌ها به وسیله پر کردن یک فرم ساده کمک می‌کند.
+;و بیشتر
+ما تعداد دیگری از به‌سازی هایمان را از قبیل ناوبری پیشرفته، زبانه‌های آبشاری، جستجوی بهبود یافته . خیلی دیگر را در این نسخه پیاده ساخته‌ایم.
+
+== چگونه می‌توانید در این تغییرات نقش بازی کنید؟ ==
+برای اطلاع بیشتر در رابطه با  توانایی استفاده ابتکاری به [http://usability.wikimedia.org/wiki/Wikipedia_Usability_Initiative اینجا] بیایید.',
 );
 
 /** Finnish (Suomi)

@@ -1034,6 +1034,7 @@ $messages['ext'] = array(
 );
 
 /** Persian (فارسی)
+ * @author Ebraminio
  * @author Huji
  */
 $messages['fa'] = array(
@@ -1059,7 +1060,7 @@ $messages['fa'] = array(
 	'categorytree-no-pages' => 'هیچ صفحه یا زیررده‌ای ندارد.',
 	'categorytree-not-found' => 'ردهٔ <i>$1</i> يافت نشد',
 	'categorytree-error' => 'اشکال در دریافت اطلاعات.',
-	'categorytree-retry' => 'لطفاً چند لحظه صبر کنید و سپس دوباره امتحان کنید.',
+	'categorytree-retry' => 'لطفاً دمی درنگ کنید و باز امتحان کنید.',
 );
 
 /** Finnish (Suomi)
@@ -1876,10 +1877,13 @@ $messages['ka'] = array(
 	'categorytree-legend' => 'კატეგორიების სქემის ჩვენება',
 	'categorytree-category' => 'კატეგორია:',
 	'categorytree-go' => 'სქემის ჩვენება',
+	'categorytree-parents' => 'მშობლები',
 	'categorytree-mode-categories' => 'მხოლოდ კატეგორიები',
 	'categorytree-mode-pages' => 'გვერდები ფაილების გარდა',
 	'categorytree-mode-all' => 'ყველა გვერდი',
+	'categorytree-member-counts' => 'შეიცავს {{PLURAL:$1|1 ქვეკატეგორიას|$1 ქვეკატეგორიას}},  {{PLURAL:$2|1 გვერდს|$2 გვერდს}},  და {{PLURAL:$3|1 ფაილს|$3 ფაილს}}',
 	'categorytree-loading' => 'იტვირთება…',
+	'categorytree-no-subcategories' => 'ქვეკატეგორიები არ არის',
 	'categorytree-not-found' => 'კატეგორია <i>$1</i> არ არსებობს',
 	'categorytree-retry' => 'გთხოვთ, დაიცადეთ ცოტა ხნით და კვლავ სცადეთ.',
 );

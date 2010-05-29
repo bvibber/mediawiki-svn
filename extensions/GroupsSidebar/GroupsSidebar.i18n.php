@@ -242,6 +242,13 @@ $messages['sv'] = array(
 	'groupssidebar-desc' => 'Detta programtillägg möjliggör för sajtadministratörer att inkludera element till sidokolumnen för specifika användargrupper',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'groupssidebar-desc' => 'Nagpapagana ang dugtong na ito sa mga tagapangasiwa ng sityo na makapagsali ng mga sangkap na panggilid na bareta para sa tiyak na mga pangkat ng tagagamit',
+);
+
 /** Turkish (Türkçe)
  * @author Vito Genovese
  */

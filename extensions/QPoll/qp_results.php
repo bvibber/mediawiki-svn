@@ -403,7 +403,8 @@ class PollResults extends SpecialPage {
 				} else {
 					$row = $qdata->Percents[ $propkey ];
 					foreach ( $row as $catkey => &$cell ) {
-						$formatted_cell = str_replace( " ", "&ensp;", sprintf( '%3d%%', intval( round( 100 * $cell ) ) ) );
+						# Replace spaces with en spaces
+						$formatted_cell = str_replace( " ", "&#8194;", sprintf( '%3d%%', intval( round( 100 * $cell ) ) ) );
 						# only percents !=0 are displayed as link
 						if ( $cell == 0.0 && $qdata->question_id !==null ) {
 							$cell = array( 0=> $formatted_cell, "style"=>"color:gray" );

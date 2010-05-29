@@ -403,6 +403,16 @@ $messages['te'] = array(
 	'getfamily' => 'పివైవికీపీడియాబాట్ కుటుంబాన్ని తీసుకురా',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'getfamily-desc' => 'Lumilikha ng talaksang pangmag-anak para sa pywikipediabot',
+	'getfamily' => 'Kunin ang mag-anak na pywikipediabot',
+	'getfamily-interwikierror' => 'Kamalian: hindi tamang ayos ng interwiki, makipag-ugnayan sa iyong lokal na tagapangasiwa.',
+	'right-getfamily' => 'Lumikha ng isang talaksang pangmag-anak para sa pywikipediabot',
+);
+
 /** Turkish (Türkçe)
  * @author Vito Genovese
  */

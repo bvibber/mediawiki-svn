@@ -388,6 +388,13 @@ $messages['te'] = array(
 	'localisationupdate-desc' => 'స్ధానికీకరించిన సందేశాలను సాధ్యమైనంత తాజాగా ఉంచుతుంది',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'localisationupdate-desc' => 'Pinananatili ang mga mensaheng lokalisado bilang pinaka nasasapanahon',
+);
+
 /** Turkish (Türkçe)
  * @author Joseph
  */

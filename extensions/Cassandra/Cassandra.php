@@ -36,6 +36,14 @@ $wgThriftRoot = '/usr/share/php/Thrift';
 // in Cassandra's storage-conf.xml
 $wgCassandraPort = 9160;
 
+// Mapping of cluster names to lists of server IPs
+// Example:
+// $wgCassandraClusters = array( 
+//     'foo' => array( '192.168.1.1', '192.168.1.2', ),
+//     'bar' => array( 'somehostname' ),
+// );
+$wgCassandraClusters = array();
+
 // String prepended to saved key names, can be used to distinct between
 // different wikis, etc. Does not affect the already saved revisions.
 $wgCassandraKeyPrefix = $wgDBname;

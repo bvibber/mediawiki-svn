@@ -268,6 +268,15 @@ $messages['eu'] = array(
 	'wikieditor-preview-loading' => 'Kargatzen...',
 );
 
+/** Persian (فارسی)
+ * @author Ebraminio
+ */
+$messages['fa'] = array(
+	'wikieditor-preview-preference' => 'فعال‌سازی پیش‌نمایش کنار یک دیگر',
+	'wikieditor-preview-tab' => 'پیش‌نمایش',
+	'wikieditor-preview-changes-tab' => 'تغییرها',
+);
+
 /** Finnish (Suomi)
  * @author Crt
  * @author Str4nd
@@ -732,6 +741,16 @@ $messages['tk'] = array(
 	'wikieditor-preview-tab' => 'Deslapky syn',
 	'wikieditor-preview-changes-tab' => 'Üýtgeşmeler',
 	'wikieditor-preview-loading' => 'Ýüklenilýär...',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'wikieditor-preview-preference' => 'Paganahin ang magkatabing paunang-tingin',
+	'wikieditor-preview-tab' => 'Paunang tanaw',
+	'wikieditor-preview-changes-tab' => 'Mga pagbabago',
+	'wikieditor-preview-loading' => 'Ikinakarga...',
 );
 
 /** Turkish (Türkçe)

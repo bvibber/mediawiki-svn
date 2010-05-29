@@ -500,7 +500,10 @@ $messages['ja'] = array(
  * @author BRUTE
  */
 $messages['ka'] = array(
+	'communityvoice' => 'საზოგადოების არჩევანი',
+	'communityvoice-ratings' => 'რეიტინგი',
 	'communityvoice-ratings-scale-status-sending' => 'იგზავნება...',
+	'communityvoice-ratings-scale-status-error' => 'შეცდომა გაიგზავნა!',
 	'communityvoice-ratings-scale-status-thanks' => 'გმადლობთ ხმის მიცემისათვის!',
 );
 

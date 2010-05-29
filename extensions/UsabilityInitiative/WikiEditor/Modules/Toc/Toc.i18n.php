@@ -226,6 +226,13 @@ $messages['eu'] = array(
 	'wikieditor-toc-hide' => 'Edukiak ezkutatu',
 );
 
+/** Persian (فارسی)
+ * @author Ebraminio
+ */
+$messages['fa'] = array(
+	'wikieditor-toc-preference' => 'فعال‌سازی فهرست قابل پیمایش',
+);
+
 /** Finnish (Suomi)
  * @author Crt
  * @author Str4nd
@@ -613,6 +620,15 @@ $messages['tk'] = array(
 	'wikieditor-toc-preference' => 'Nawigasiýaly mazmun tablisasyny aç',
 	'wikieditor-toc-show' => 'Mazmuny görkez',
 	'wikieditor-toc-hide' => 'Mazmuny gizle',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'wikieditor-toc-preference' => 'Paganahin ang malilibot na tabla ng mga nilalaman',
+	'wikieditor-toc-show' => 'Ipakita ang mga nilalaman',
+	'wikieditor-toc-hide' => 'Itago ang mga nilalaman',
 );
 
 /** Turkish (Türkçe)

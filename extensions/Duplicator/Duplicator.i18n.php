@@ -1642,6 +1642,7 @@ Naganap ang isang hindi mapag-alamang kamalian.',
 	'duplicator-dest-exists' => 'Umiiral na ang [[$1]]. Pakibigay ang isang hindi pa umiiral na kapupuntahang pamagat.',
 	'duplicator-toomanyrevisions' => 'Ang [[$1]] ay may napakaraming ($2) mga pagbabago at hindi masisipi.
 Ang kasalukuyang hangganan ay $3.',
+	'right-duplicate' => 'Gayahin ang mga pahina',
 );
 
 /** Turkish (Türkçe)

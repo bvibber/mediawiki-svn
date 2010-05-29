@@ -688,6 +688,7 @@ $messages['xal'] = array(
  */
 $messages['yi'] = array(
 	'seealso' => 'זעט אויך',
+	'seealso-desc' => "לאקאַליזירטע  'זעט אויך' קעפלעך מיטן טאַג <code><nowiki><seealso></nowiki></code>",
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

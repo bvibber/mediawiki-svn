@@ -344,6 +344,7 @@ $messages['eu'] = array(
 );
 
 /** Persian (فارسی)
+ * @author Ebraminio
  * @author Ladsgroup
  */
 $messages['fa'] = array(
@@ -351,6 +352,7 @@ $messages['fa'] = array(
 	'tooltip-pt-optin-try' => 'خروج از امکانات جدید',
 	'optin-leave' => 'خروج از بتا',
 	'tooltip-pt-optin-leave' => 'خاموش کردن امکانات جدید',
+	'optin-feedback' => 'بازخورد نسخه بتا',
 );
 
 /** Finnish (Suomi)
@@ -568,11 +570,14 @@ $messages['ja'] = array(
 
 /** Georgian (ქართული)
  * @author Alsandro
+ * @author BRUTE
  * @author გიორგიმელა
  */
 $messages['ka'] = array(
 	'optin-try' => 'მოსინჯეთ ბეტა',
+	'tooltip-pt-optin-try' => 'სცადეთ ახალი შესაძლებლობები',
 	'optin-leave' => 'ბეტადან გასვლა',
+	'tooltip-pt-optin-leave' => 'გამორთეთ ახალი შესაძლებლობები',
 	'optin-feedback' => 'გამოხმაურება',
 );
 
@@ -1045,6 +1050,18 @@ $messages['tk'] = array(
 	'tooltip-pt-optin-leave' => 'Täze funksiýalary ýap',
 	'optin-feedback' => 'Beta seslenmesi',
 	'tooltip-pt-optin-feedback' => 'Täze funksiýalardaky tejribeleriňiz barada seslenme ýazyň',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'optin-try' => 'Subukan ang Beta',
+	'tooltip-pt-optin-try' => 'Subukan ang bagong mga kasangkapang-katangian',
+	'optin-leave' => 'Umalis mula sa Beta',
+	'tooltip-pt-optin-leave' => 'Huwag buhayin ang bagong mga kasangkapang-katangian',
+	'optin-feedback' => 'Mga puna sa Beta',
+	'tooltip-pt-optin-feedback' => 'Magbigay ng mga puna tungkol sa iyong karanasan sa bagong mga kasangkapang-katangian',
 );
 
 /** Turkish (Türkçe)

@@ -310,6 +310,13 @@ $messages['te'] = array(
 	'conditionalshowsection-desc' => 'వికీపాఠ్యంలోని ఒక భాగం షరతుల ప్రకారం చూపడానికి/దాచడానికి cshow పట్టీను తగిలిస్తున్నాం.',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'conditionalshowsection-desc' => 'Idinaragdag ang tatak na cshow upang may kundisyong ipakita/itago ang isang seksyon ng teksto ng wiki',
+);
+
 /** Turkish (Türkçe)
  * @author Vito Genovese
  */

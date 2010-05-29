@@ -1,6 +1,6 @@
 // Add support for html5 / mwEmbed elements to IE ( comment must come before js code ) 
 // For discussion and comments, see: http://remysharp.com/2009/01/07/html5-enabling-script/
-/*@cc_on'video source itext playlist'.replace(/\w+/g,function(n){document.createElement(n)})@*/
+/*@cc_on@if(@_jscript_version<9){'video audio source itext playlist'.replace(/\w+/g,function(n){document.createElement(n)})}@end@*/
 
 /**
  * ~mwEmbed ~
@@ -53,7 +53,9 @@ var MW_EMBED_VERSION = '1.1f';
 	*/	
 		
 	// Local scope configuration var:
-	var mwConfig = { };
+	if( !mwConfig ){
+		var mwConfig = { };
+	}	
 	
 	// Local scope mwUserConfig var. Stores user configuration 
 	var mwUserConfig = { };
@@ -135,23 +137,19 @@ var MW_EMBED_VERSION = '1.1f';
 	var setupUserConfigFlag = false;
 	mw.setupUserConfig = function( callback ) {	
 		if( setupUserConfigFlag ) {
-			if( callback ) 
+			if( callback ) { 
 				callback();
+				}
 		}
 		// Do Setup user config: 		
-		mw.load( [ '$j.cookie', 'JSON' ], function() {
+		mw.load( [ '$j.cookie', 'JSON' ], function() {			
 			if( $j.cookie( 'mwUserConfig' ) ) {
 				mwUserConfig = JSON.parse( $j.cookie( 'mwUserConfig' ) );
-			}
-			mw.log( 'mw UserConfig: ' +  $j.cookie( 'mwUserConfig' ) );
-			for(var i in mwUserConfig ) {
-				mw.log( 'i: ' + i + ' ' + mwUserConfig[ i ] ) ;
-			}
-			//debugger;
-			
+			}									
 			setupUserConfigFlag = true;
-			if( callback ) 
-				callback();				
+			if( callback ) {
+				callback();	
+			}			
 		});				
 	}
 
@@ -300,7 +298,7 @@ var MW_EMBED_VERSION = '1.1f';
 		load: function( loadRequest, instanceCallback ) {
 			// Ensure the callback is only called once per load instance 
 			var callback = function(){
-				if( instanceCallback ){
+				if( instanceCallback ) {
 					instanceCallback( loadRequest );
 					instanceCallback = null;
 				}
@@ -563,7 +561,7 @@ var MW_EMBED_VERSION = '1.1f';
 			// Issue the request to load the class (include class name in result callback:					
 			mw.getScript( scriptRequest, function( scriptRequest ) {
 			
-				// If its a "syle sheet" manually set its class to true
+				// If its a "style sheet" manually set its class to true
 				var ext = scriptRequest.substr( scriptRequest.split('?')[0].lastIndexOf( '.' ), 4 ).toLowerCase();
 				if( ext == '.css' &&	className.substr(0,8) == 'mw.style' ){				
 					mw.style[ className.substr( 9 ) ] = true;
@@ -578,36 +576,27 @@ var MW_EMBED_VERSION = '1.1f';
 				
 				// If ( debug mode ) and the script include is missing class messages
 				// do a separate request to retrieve the msgs
-				if( mw.currentClassMissingMessages ){
-					mw.loadClassMessages( className, function(){
-						//reset the currentClassMissingMessages flag
+				if( mw.currentClassMissingMessages ) {
+					mw.loadClassMessages( className, function() {
+						// Reset the currentClassMissingMessages flag
 						mw.currentClassMissingMessages = false;
-						// Run the onDone callback 
+						
+						// Run the onDone callback 					
 						mw.loadDone( className );
 					});
 				} else { 				
-					// Call load done ( when in debug mode the scriptLoader
-					// is not able to append the loadDone call
-					mw.loadDone( className );
+					// If not using the script-loader make sure the className is avaliable before firing the loadDone
+					if( !mw.getScriptLoaderPath() ) {
+						mw.waitForObject( className, function( className ) {														
+							// Once object is ready run loadDone 
+							mw.loadDone( className );
+						} );
+					} else {
+						// loadDone should be appended to the bottom of the script-loader response 
+						//mw.loadDone( className );
+					}
 				}
-			} );	
-			//mw.log( 'done with running getScript request ' );
-			
-			/*
-			* ( If scriptLoader is not enabled )
-			* 
-			* Check if the class is ready: 
-			* ( not all browsers support onLoad script attribute )
-			* In the case of a "class" we can pull the javascript state until its ready
-			*/
-			if( !mw.getScriptLoaderPath() ) {
-				setTimeout( function() {
-					mw.waitForObject( className, function( className ) {														
-						// Once object is ready run loadDone 
-						mw.loadDone( className );
-					} );
-				}, 25 ); 
-			}
+			} );							
 		},				
 		
 		/**
@@ -1085,9 +1074,15 @@ var MW_EMBED_VERSION = '1.1f';
 	}
 	
 	/**
+	 * Mobile Safari has special properties for html5 video::
+	 * 
 	 * NOTE: should be moved to browser detection script
 	 */
-	mw.isMobileSafari = function(){
+	mw.isMobileSafari = function() {		
+		// check mobile safari foce ( for debug )
+		if( mw.getConfig( 'forceMobileSafari' ) ){
+			return true;
+		}
 		if ((navigator.userAgent.indexOf('iPhone') != -1) || 
 			(navigator.userAgent.indexOf('iPod') != -1) || 
 			(navigator.userAgent.indexOf('iPad') != -1)) {
@@ -1322,7 +1317,7 @@ var MW_EMBED_VERSION = '1.1f';
 	* Runs all the queued functions
 	* called by mwEmbedSetup
 	*/ 
-	mw.runReadyFunctions = function ( ) {		
+	mw.runReadyFunctions = function ( ) {
 		// Run all the queued functions: 
 		while( mwOnLoadFunctions.length ) {
 			mwOnLoadFunctions.shift()();
@@ -1378,6 +1373,7 @@ var MW_EMBED_VERSION = '1.1f';
 		//( will use XHR if on same domain ) 
 		if( mw.isset( 'window.jQuery' ) 
 			&& mw.getConfig( 'debug' ) === false 
+			&& $j
 			&& !isCssFile ) 
 		{	
 			$j.getScript( url, myCallback); 		
@@ -1441,7 +1437,7 @@ var MW_EMBED_VERSION = '1.1f';
 			styleNode.appendChild( styleText );
 		}
 		var head = document.getElementsByTagName("head")[0];       
-		head.appendChild( styleNode );				
+		head.appendChild( styleNode );
 	};
 	
 	/**
@@ -1551,6 +1547,11 @@ var MW_EMBED_VERSION = '1.1f';
 		if( src.indexOf( 'jsScriptLoader.php' ) !== -1 ) {
 			mwpath = src.substr( 0, src.indexOf( 'jsScriptLoader.php' ) );			
 		}	
+		
+		// For static packages mwEmbed packages start with: "mwEmbed-"
+		if( src.indexOf( 'mwEmbed-' ) !== -1 && src.indexOf( '-static' ) !== -1 ) {
+			mwpath = src.substr( 0, src.indexOf( 'mwEmbed-' ) );
+		}
 		
 		// Error out if we could not get the path:
 		if( mwpath === null ) {
@@ -1662,21 +1663,23 @@ var MW_EMBED_VERSION = '1.1f';
 			// Check for mwEmbed.js and/or script loader
 			var src = js_elements[i].getAttribute( "src" );
 			if ( src ) {
-				if ( 
+				if ( // Check for mwEmbed.js ( debug mode )					
 					( src.indexOf( 'mwEmbed.js' ) !== -1 &&  src.indexOf( 'MediaWiki:Gadget') == -1 )
-				 	|| 
+				 	|| // Check for script-loader				 	
 				 	( 
 				 		( src.indexOf( 'mwScriptLoader.php' ) !== -1 || src.indexOf( 'jsScriptLoader.php' ) !== -1 )
 						&& 
 						src.indexOf( 'mwEmbed' ) !== -1 
-					) 
+					)
+					|| // Check for static mwEmbed package
+					( src.indexOf( 'mwEmbed' ) !== -1 && src.indexOf( 'static' ) !== -1 )
 				) {
 					mwEmbedSrc = src;
 					return mwEmbedSrc;
 				}
 			}
 		}
-		mw.log( 'Error: getMwEmbedScriptURL failed to get script path' );
+		mw.log( 'Error: getMwEmbedSrc failed to get script path' );
 		return false;
 	}	
 	
@@ -1961,8 +1964,9 @@ var MW_EMBED_VERSION = '1.1f';
 					// Set up mvEmbed utility jQuery bindings
 					mw.dojQueryBindings();					
 					
-					// Speical Hack for condtional jquery ui inclution ( once Usability extension
-					//  registers the jquery.ui skin in mw.sytle this won't be needed:  
+					
+					// Special Hack for conditional jquery ui inclusion ( once Usability extension
+					//  registers the jquery.ui skin in mw.style this won't be needed:  
 					if( mw.hasJQueryUiCss() ){
 						mw.style[ mw.getConfig( 'jQueryUISkin' ) ] = true;
 					}
@@ -1995,8 +1999,8 @@ var MW_EMBED_VERSION = '1.1f';
 	
 	/**
 	* Checks for jquery ui css by name jquery-ui-1.7.2.css
-	*	NOTE: this is kind of a hack for usability jquery-ui
-	* 	in the future usability should register the class in mw.skin
+	*	NOTE: this is a hack for usability jquery-ui
+	* 	in the future usability should register a class in mw.skin
 	*
 	* @return true if found, return false if not found
 	*/
@@ -2004,7 +2008,7 @@ var MW_EMBED_VERSION = '1.1f';
 		var hasUiCss = false;
 		// Load the jQuery ui skin if usability skin not set
 		$j( 'link' ).each( function(  na, linkNode ){
-			if( $j( linkNode ).attr( 'href' ).indexOf('jquery-ui-1.7.2.css') != -1 ) {
+			if( $j( linkNode ).attr( 'href' ).indexOf( 'jquery-ui-1.7.2.css' ) != -1 ) {
 				hasUiCss = true;
 				return false;
 			}
@@ -2026,9 +2030,29 @@ var MW_EMBED_VERSION = '1.1f';
 			callback();
 			return ;
 		}
+		
+		// Check if we are using a static package ( mwEmbed path includes -static )
+		if( mw.isStaticPackge ){
+			callback();
+			return ;
+		}
+
 		// Add the Core loader to the request
 		// The follow code is ONLY RUN in debug / raw file mode		
 		mw.load( 'loader.js', callback );
+	}
+	/**
+	* Checks if the javascript is a static package ( not using script-loader )
+	* @return {boolean} 
+	* 	true the included script is static
+	* 	false the included script 
+	*/ 
+	mw.isStaticPackge = function(){
+		var src = mw.getMwEmbedSrc();
+		if( src.indexOf('-static') !== -1 ){			
+			return true;	
+		}
+		return false;
 	}
 	
 	/**
@@ -2040,9 +2064,10 @@ var MW_EMBED_VERSION = '1.1f';
 	mw.checkModuleLoaderFiles = function( callback ) {
 		mw.log( 'doLoaderCheck::' );
 		
-		// Check if we are using scriptloader ( handles loader include automatically ) 
-		if( mw.getScriptLoaderPath() ) {
-				callback();	
+		// Check if we are using scriptloader ( handles loader include automatically )
+		// Or if mwEmbed is a static package ( all classes are already loaded )  
+		if( mw.getScriptLoaderPath() || mw.isStaticPackge() ) {
+			callback();	
 			return ;
 		}
 							
@@ -2250,7 +2275,7 @@ var MW_EMBED_VERSION = '1.1f';
 					' class="ui-state-default ui-corner-all ui-icon_link ' +
 					className + '"><span class="ui-icon ui-icon-' + iconId + '" ></span>' +
 					'<span class="btnText">' + msg + '</span></a>';
-			}
+			};
 			
 			// Shortcut to jQuery button ( should replace all btnHtml with button )
 			var mw_default_button_options = {
@@ -2265,7 +2290,8 @@ var MW_EMBED_VERSION = '1.1f';
 				
 				// The icon id that precceeds the button link:
 				'icon_id' : 'carat-1-n' 
-			}
+			};
+			
 			$.button = function( options ) {
 				var options = $j.extend( mw_default_button_options, options);
 				
@@ -2288,7 +2314,7 @@ var MW_EMBED_VERSION = '1.1f';
 						.text( options.text )
 				);
 				return $btn;					
-			}
+			};
 			
 			// Shortcut to bind hover state
 			$.fn.buttonHover = function() {
@@ -2301,7 +2327,7 @@ var MW_EMBED_VERSION = '1.1f';
 					}
 				)
 				return this;
-			}
+			};
 			
 			/**
 			* Resize a dialog to fit the window
@@ -2322,9 +2348,9 @@ var MW_EMBED_VERSION = '1.1f';
 					'right':'0px',
 					'bottom':'0px'
 				} );
-			}	
+			};
 			
-		} )( jQuery );
+		} )( $j );
 	}	
 	
 } )( window.mw );
@@ -2421,7 +2447,11 @@ if( mw.getScriptLoaderPath() && !window.jQuery ) {
 	mw.log( 'Error: jQuery is required for mwEmbed, please update your script-loader request' );
 }
 
-/*
+if( mw.isStaticPackge() && !window.jQuery ){
+	alert( 'Error: jQuery is required for mwEmbed ');
+}
+
+/**
  * Hack to keep jQuery in $ when its
  * already there, but also use noConflict to get $j = jQuery
  * 

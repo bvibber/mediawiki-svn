@@ -225,10 +225,12 @@ $messages['eu'] = array(
 );
 
 /** Persian (فارسی)
+ * @author Ebraminio
  * @author Mardetanha
  */
 $messages['fa'] = array(
 	'vector-simplesearch-search' => 'جستجو',
+	'vector-simplesearch-containing' => 'حاوی...',
 );
 
 /** Finnish (Suomi)
@@ -711,6 +713,14 @@ $messages['th'] = array(
 $messages['tk'] = array(
 	'vector-simplesearch-search' => 'Gözleg',
 	'vector-simplesearch-containing' => 'öz içine alýar...',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'vector-simplesearch-search' => 'Maghanap',
+	'vector-simplesearch-containing' => 'naglalaman ng ...',
 );
 
 /** Turkish (Türkçe)

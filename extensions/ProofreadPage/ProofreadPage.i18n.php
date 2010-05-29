@@ -2368,10 +2368,12 @@ $messages['ka'] = array(
 	'proofreadpage_indexdupe' => 'დუბლიკატი ბმული',
 	'proofreadpage_nologin' => 'შესვლა არ მომხდარა',
 	'proofreadpage_notallowed' => 'ცვლილებები არაა დაშვებული',
+	'proofreadpage_interval_too_large' => 'შეცდომა: ინტერვალი ძალიან დიდია',
 	'proofreadpage_nextpage' => 'შემდეგი გვერდი',
 	'proofreadpage_prevpage' => 'წინა გვერდი',
 	'proofreadpage_quality0_category' => 'ტექსტის გარეშე',
 	'proofreadpage_quality2_category' => 'პრობლემატური',
+	'proofreadpage_quality4_category' => 'შემოწმებული',
 	'proofreadpage_index_listofpages' => 'გვერდების სია',
 	'proofreadpage_page_status' => 'გვერდის სტატუსი',
 	'proofreadpage_index_attributes' => 'ავტორი
@@ -2428,6 +2430,8 @@ $messages['km'] = array(
  */
 $messages['kn'] = array(
 	'proofreadpage_image' => 'ಚಿತ್ರ',
+	'proofreadpage_nextpage' => 'ಮುಂದಿನ ಪುಟ',
+	'proofreadpage_prevpage' => 'ಹಿಂದಿನ ಪುಟ',
 );
 
 /** Korean (한국어)

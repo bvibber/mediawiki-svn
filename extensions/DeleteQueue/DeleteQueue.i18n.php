@@ -291,6 +291,7 @@ $messages['an'] = array(
 	'deletequeue-delnom-otherreason' => 'Atra razón',
 	'deletequeue-list-header-page' => 'Pachina',
 	'deletequeue-case-page' => 'Pachina:',
+	'deletequeue-case-reason' => 'Razón:',
 );
 
 /** Arabic (العربية)
@@ -3080,7 +3081,7 @@ Alasan yang diberikan untuk penghapusan ini adalah ''$1''.",
 	'deletequeue-review-delete' => 'Hapus halaman.',
 	'deletequeue-review-change' => 'Hapus halaman ini, tapi dengan alasan berbeda.',
 	'deletequeue-review-requeue' => 'Pindahkan halaman ini ke daftar berikut:',
-	'deletequeue-review-dequeue' => 'Tidak mengambil langkah apapun, dan hapus halaman dari daftar penghapusan.',
+	'deletequeue-review-dequeue' => 'Tidak mengambil langkah apa pun, dan hapus halaman dari daftar penghapusan.',
 	'deletequeue-review-reason' => 'Komentar:',
 	'deletequeue-review-newreason' => 'Alasan baru:',
 	'deletequeue-review-newextra' => 'Informasi tambahan:',
@@ -3140,7 +3141,7 @@ Anda dapat [{{fullurl:{{FULLPAGENAME}}|action=delvote}} mendaftarkan dukungan at
 	'deletequeue-list-status' => 'Status:',
 	'deletequeue-list-expired' => 'Hanya perlihatkan pencalonan yang membutuhkan penutupan.',
 	'deletequeue-list-search' => 'Cari',
-	'deletequeue-list-anyqueue' => '(apapun)',
+	'deletequeue-list-anyqueue' => '(apa pun)',
 	'deletequeue-list-votes' => 'Daftar suara',
 	'deletequeue-list-votecount' => '$1 {{PLURAL:$1|dukungan|dukungan}}, $2 {{PLURAL:$2|penolakan|penolakan}}',
 	'deletequeue-list-header-page' => 'Halaman',

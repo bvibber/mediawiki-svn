@@ -977,6 +977,8 @@ $1",
 'logdelete-failure'           => "'''D'Sichtbarkeet vum Logbuch konnt net agestllt ginn:'''
 $1",
 'revdel-restore'              => 'Sichtbarkeet änneren',
+'revdel-restore-deleted'      => 'geläschte Versiounen',
+'revdel-restore-visible'      => 'sichtbar Versiounen',
 'pagehist'                    => 'Versioune vun dëser Säit',
 'deletedhist'                 => 'Geläschte Versiounen',
 'revdelete-content'           => 'Inhalt',
@@ -1661,7 +1663,7 @@ D'Beschreiwung op senger [$2 Beschreiwungssäit] steet hei ënnedrënner.",
 'filerevert'                => '"$1" zrécksetzen',
 'filerevert-legend'         => 'De Fichier zrécksetzen.',
 'filerevert-intro'          => "Dir setzt de Fichier '''[[Media:$1|$1]]''' op d'[$4 Versioun vum $2, $3 Auer] zréck.",
-'filerevert-comment'        => 'Grond:',
+'filerevert-comment'        => 'Bemierkung:',
 'filerevert-defaultcomment' => "zréckgesat op d'Versioun vum $1, $2 Auer",
 'filerevert-submit'         => 'Zrécksetzen',
 'filerevert-success'        => "'''[[Media:$1|$1]]''' gouf op d'[$4 Versioun vum $2, $3 Auer] zréckgesat.",
@@ -3149,7 +3151,7 @@ Benotzt w.e.g. d'Funktioun fir déi nach net gespäichert Versioun ze kucken (Ku
 'watchlistedit-normal-title'   => 'Iwwerwaachungslëscht änneren',
 'watchlistedit-normal-legend'  => 'Säite vun der Iwwerwaachungslëscht erofhuelen',
 'watchlistedit-normal-explain' => 'D\'Säite vun ärer Iwwerwaachungslëscht ginn drënner gewisen.
-Fir eng Säit erofzehuelen, klickt op d\'Haischen niewendrunn a klickt duerno op "Säiten erofhuelen".
+Fir eng Säit erofzehuelen, klickt op d\'Haischen niewendrun a klickt duerno op "{{int:Watchlistedit-normal-submit}}".
 Dir kënnt och [[Special:Watchlist/raw|déi net formatéiert Iwwerwaachungslëscht änneren]].',
 'watchlistedit-normal-submit'  => 'Säiten erofhuelen',
 'watchlistedit-normal-done'    => '{{PLURAL:$1|1 Säit gouf|$1 Säite goufe}} vun ärer Iwwerwaachungslëscht erofgeholl:',

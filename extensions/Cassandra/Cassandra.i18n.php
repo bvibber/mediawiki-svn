@@ -46,6 +46,13 @@ $messages['es'] = array(
 	'cassandra-desc' => 'Almacenar el text ode revisión en la base de datos [http://cassandra.apache.org/ Apache Cassandra]',
 );
 
+/** Finnish (Suomi)
+ * @author Str4nd
+ */
+$messages['fi'] = array(
+	'cassandra-desc' => 'Säilyttää muutostekstit [http://cassandra.apache.org/ Apache Cassandra] -tietokannassa.',
+);
+
 /** French (Français)
  * @author IAlex
  */
@@ -79,6 +86,13 @@ $messages['hu'] = array(
  */
 $messages['ia'] = array(
 	'cassandra-desc' => 'Immagazina le texto del versiones in un base de datos [http://cassandra.apache.org/ Apache Cassandra]',
+);
+
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'cassandra-desc' => 'Simpan teks revisi di basis data [http://cassandra.apache.org/ Cassandra Apache]',
 );
 
 /** Japanese (日本語)
@@ -149,6 +163,20 @@ $messages['pt-br'] = array(
  */
 $messages['ru'] = array(
 	'cassandra-desc' => 'Хранение текста версии страницы в базе данных [http://cassandra.apache.org/ Apache Cassandra]',
+);
+
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Charmed94
+ */
+$messages['sr-ec'] = array(
+	'cassandra-desc' => 'Смешта ревизију текста у [http://cassandra.apache.org Апаш Касандра] базу података',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'cassandra-desc' => 'Ilagak ang teksto ng pagbabago sa talaan ng dato ng [http://cassandra.apache.org/ Apache Cassandra]',
 );
 
 /** Turkish (Türkçe)

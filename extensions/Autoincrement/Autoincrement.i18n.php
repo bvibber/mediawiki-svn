@@ -162,6 +162,13 @@ $messages['id'] = array(
 	'autoincrement-desc' => "Sebuah ''hook'' variabel yang menambahkan variabel penambahan otomatis <nowiki>{{AUTOINCREMENT}}</nowiki>",
 );
 
+/** Igbo (Igbo)
+ * @author Ukabia
+ */
+$messages['ig'] = array(
+	'autoincrement-desc' => 'Mmérí mmérí ndór nke né tí mmérí mmérí autoincrementing <nowiki>{{AUTOINCREMENT}}</nowiki>',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  */
@@ -314,6 +321,13 @@ $messages['sv'] = array(
  */
 $messages['te'] = array(
 	'autoincrement-desc' => 'దాని అంతట అదే పెరిగే వేరియబుల్ <nowiki>{{AUTOINCREMENT}}</nowiki> కి ఒక వేరియబుల్ కొక్కెం',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'autoincrement-desc' => 'Isang pabagu-bagong kalawit na nagdaragdag ng kusang nagdaragdag na kaibahang <nowiki>{{AUTOINCREMENT}}</nowiki>',
 );
 
 /** Turkish (Türkçe)

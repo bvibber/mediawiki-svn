@@ -1027,6 +1027,7 @@ $messages['tl'] = array(
 	'inspectcache-delete' => 'Burahin',
 	'inspectcache-deleted' => 'Burahin ang taguan',
 	'inspectcache-list' => 'Talaan',
+	'right-inspectcache' => 'Tingnan at burahan ang mga ipinasok sa taguan',
 );
 
 /** Turkish (Türkçe)

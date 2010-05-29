@@ -1,18 +1,21 @@
 <?php
 
 class PageTranslationHooks {
-
 	// Uuugly hack
 	static $allowTargetEdit = false;
 
 	public static function renderTagPage( $parser, &$text, $state ) {
 		$title = $parser->getTitle();
-		if ( strpos( $text, '</translate>' ) !== false ) {
+
+		if ( strpos( $text, '<translate>' ) !== false ) {
+			$nowiki = array();
+			$text = TranslatablePage::armourNowiki( $nowiki, $text );
 			$cb = array( __CLASS__, 'replaceTagCb' );
 			# Remove the tags nicely, trying to not leave excess whitespace lying around
-			$text = preg_replace_callback( '~(\n?<translate>\s*?)(.*?)(\s*?</translate>)~s', $cb, $text );
+			$text = preg_replace_callback( '~(<translate>)\s*(.*?)(</translate>)~s', $cb, $text );
 			# Replace variable markers
 			$text = preg_replace_callback( '~(<tvar[^<>]+>)(.*)(</>)~s', $cb, $text );
+			$text = TranslatablePage::unArmourNowiki( $nowiki, $text );
 		}
 
 		// For translation pages, parse plural, grammar etc with correct language
@@ -20,6 +23,7 @@ class PageTranslationHooks {
 			list( , $code ) = TranslateUtils::figureMessage( $title->getText() );
 			$parser->mOptions->setTargetLanguage( Language::factory( $code ) );
 		}
+
 		return true;
 	}
 
@@ -37,6 +41,7 @@ class PageTranslationHooks {
 		$namespace = $title->getNamespace();
 		$text = $title->getDBkey();
 		list( $key, ) = TranslateUtils::figureMessage( $text );
+
 		return TranslateUtils::messageKeyToGroup( $namespace, $key );
 	}
 
@@ -47,14 +52,21 @@ class PageTranslationHooks {
 		// Some checks
 
 		// We are only interested in the translations namespace
-		if ( $title->getNamespace() != NS_TRANSLATIONS ) return true;
+		if ( $title->getNamespace() != NS_TRANSLATIONS ) {
+			return true;
+		}
+
 		// Do not trigger renders for fuzzy
-		if ( strpos( $text, TRANSLATE_FUZZY ) !== false ) return true;
+		if ( strpos( $text, TRANSLATE_FUZZY ) !== false ) {
+			return true;
+		}
 
 		// Figure out the group
 		$groupKey = self::titleToGroup( $title );
 		$group = MessageGroups::getGroup( $groupKey );
-		if ( !$group instanceof WikiPageMessageGroup ) return;
+		if ( !$group instanceof WikiPageMessageGroup ) {
+			return;
+		}
 
 		// Finally we know the title and can construct a Translatable page
 		$page = TranslatablePage::newFromTitle( $group->title );
@@ -72,7 +84,9 @@ class PageTranslationHooks {
 	}
 
 	protected static function addSectionTag( Title $title, $revision, $pageRevision ) {
-		if ( $pageRevision === null ) throw new MWException( 'Page revision is null' );
+		if ( $pageRevision === null ) {
+			throw new MWException( 'Page revision is null' );
+		}
 
 		$dbw = wfGetDB( DB_MASTER );
 
@@ -126,6 +140,7 @@ class PageTranslationHooks {
 	public static function addSidebar( $out, $tpl ) {
 		// TODO: fixme
 		return true;
+
 		global $wgLang;
 
 		// Sort by translation percentage
@@ -134,7 +149,7 @@ class PageTranslationHooks {
 		foreach ( $status as $code => $percent ) {
 			$name = TranslateUtils::getLanguageName( $code, false, $wgLang->getCode() );
 			$percent = $wgLang->formatNum( round( 100 * $percent ) );
-			$label = "$name ($percent%)";
+			$label = "$name ($percent%)"; // FIXME: i18n
 
 			$_title = TranslateTagUtils::codefyTitle( $title, $code );
 
@@ -153,8 +168,6 @@ class PageTranslationHooks {
 		return true;
 	}
 
-		
-
 	public static function languages( $data, $params, $parser ) {
 		$title = $parser->getTitle();
 
@@ -163,10 +176,15 @@ class PageTranslationHooks {
 		if ( $page->getMarkedTag() === false ) {
 			$page = TranslatablePage::isTranslationPage( $title );
 		}
-		if ( $page === false || $page->getMarkedTag() === false )  return '';
+
+		if ( $page === false || $page->getMarkedTag() === false ) {
+			return '';
+		}
 
 		$status = $page->getTranslationPercentages();
-		if ( !$status ) return '';
+		if ( !$status ) {
+			return '';
+		}
 
 		// Fix title
 		$title = $page->getTitle();
@@ -186,9 +204,10 @@ class PageTranslationHooks {
 		$languages = array();
 		foreach ( $status as $code => $percent ) {
 			$name = TranslateUtils::getLanguageName( $code, false, $wgLang->getCode() );
+			$name = htmlspecialchars( $name ); // Unlikely, but better safe
 
 			/* Percentages are too accurate and take more
-			 * space than plain images */
+			 * space than simple images */
 			$percent *= 100;
 			if     ( $percent < 20 ) $image = 1;
 			elseif ( $percent < 40 ) $image = 2;
@@ -198,8 +217,8 @@ class PageTranslationHooks {
 
 			$percent = Xml::element( 'img', array(
 				'src'   => TranslateUtils::assetPath( "images/prog-$image.png" ),
-				'alt'   => "$percent%",
-				'title' => "$percent%",
+				'alt'   => "$percent%", // FIXME: i18n
+				'title' => "$percent%", // FIXME: i18n
 				'width' => '9',
 				'height' => '9',
 			) );
@@ -210,14 +229,17 @@ class PageTranslationHooks {
 			$_title = Title::makeTitle( $title->getNamespace(), $title->getDBkey() . $suffix );
 
 			// For some reason self-links are not done automatically
+			if ( $code === $wgLang->getCode() ) {
+				$label = Html::rawElement( 'b', null, $label );
+			}
+
 			if ( $parser->getTitle()->getText() === $_title->getText() ) {
-				$languages[] = "<b>$label</b>";
+				$languages[] = "$label";
 			} else {
-				$languages[] = $sk->link( $_title, $label );
+				$languages[] = $sk->linkKnown( $_title, $label );
 			}
 		}
 
-		wfLoadExtensionMessages( 'PageTranslation' );
 		$legend = wfMsg( 'tpt-languages-legend' );
 		$languages = implode( '&nbsp;• ', $languages );
 
@@ -234,21 +256,38 @@ class PageTranslationHooks {
 FOO;
 	}
 
-	// When attempting to save
+	// To display nice error for editpage
+	public static function tpSyntaxCheckForEditPage( $editpage, $text, $section, &$error, $summary ) {
+		if ( strpos( $text, '<translate>' ) === false ) {
+			return true;
+		}
+
+		$page = TranslatablePage::newFromText( $editpage->mTitle, $text );
+		try {
+			$page->getParse();
+		} catch ( TPException $e ) {
+			$error .= Html::rawElement( 'div', array( 'class' => 'error' ), $e->getMessage() );
+		}
+
+		return true;
+	}
+
+	/**
+	 * When attempting to save, last resort. Edit page would only display
+	 * edit conflict if there wasn't tpSyntaxCheckForEditPage
+	 */
 	public static function tpSyntaxCheck( $article, $user, $text, $summary,
 			$minor, $_, $_, $flags, $status ) {
 		// Quick escape on normal pages
-		if ( strpos( $text, '</translate>' ) === false ) return true;
+		if ( strpos( $text, '<translate>' ) === false ) {
+			return true;
+		}
 
 		$page = TranslatablePage::newFromText( $article->getTitle(), $text );
 		try {
-			/* This does not catch all problems yet,
-			 * like markup spanning between sections. */
 			$page->getParse();
 		} catch ( TPException $e ) {
-			// FIXME: throws "PHP Notice:  Undefined variable: ret" when <translate>/</translate> is uneven
-			// and an 'edit conflict'.
-			call_user_func_array( array( $status, 'fatal' ), $ret );
+			call_user_func_array( array( $status, 'fatal' ), $e->getMsg() );
 			return false;
 		}
 
@@ -258,14 +297,20 @@ FOO;
 	public static function addTranstag( $article, $user, $text, $summary,
 			$minor, $_, $_, $flags, $revision ) {
 		// We are not interested in null revisions
-		if ( $revision === null ) return true;
+		if ( $revision === null ) {
+			return true;
+		}
 
 		// Quick escape on normal pages
-		if ( strpos( $text, '</translate>' ) === false ) return true;
+		if ( strpos( $text, '</translate>' ) === false ) {
+			return true;
+		}
 
 		// Add the ready tag
 		$page = TranslatablePage::newFromTitle( $article->getTitle() );
-		$page->addReadyTag( $revision->getId() );
+		if ( $page->getParse()->countSections() > 0 ) {
+			$page->addReadyTag( $revision->getId() );
+		}
 
 		return true;
 	}
@@ -276,9 +321,8 @@ FOO;
 		if ( $title->getNamespace() == NS_TRANSLATIONS && $action === 'edit' ) {
 			$group = self::titleToGroup( $title );
 			if ( $group === null ) {
-				// No group means that the page is currently not 
+				// No group means that the page is currently not
 				// registered to any page translation message groups
-				wfLoadExtensionMessages( 'PageTranslation' );
 				$result = array( 'tpt-unknown-page' );
 				return false;
 			}
@@ -286,16 +330,15 @@ FOO;
 			return true;
 		}
 
-
 		// Case 2: Target pages
 		$page = TranslatablePage::isTranslationPage( $title );
 		if ( $page !== false ) {
-			if ( self::$allowTargetEdit ) return true;
+			if ( self::$allowTargetEdit ) {
+				return true;
+			}
 
 			if ( $page->getMarkedTag() ) {
 				list( , $code ) = TranslateUtils::figureMessage( $title->getText() );
-				wfLoadExtensionMessages( 'PageTranslation' );
-				// FIXME: Core chokes on this, passing an array as first parameter to wfMsgNoTrans
 				$result = array(
 					'tpt-target-page',
 					$page->getTitle()->getPrefixedText(),
@@ -310,6 +353,7 @@ FOO;
 
 	public static function schemaUpdates() {
 		global $wgExtNewTables;
+
 		$dir = dirname( __FILE__ ) . '/..';
 		$wgExtNewTables[] = array( 'translate_sections', "$dir/translate.sql" );
 		$wgExtNewTables[] = array( 'revtag_type', "$dir/revtags.sql" );
@@ -320,9 +364,11 @@ FOO;
 	// TODO: fix the name
 	public static function test( &$article, &$outputDone, &$pcache ) {
 		global $wgOut;
+
 		if ( !$article->getOldID() ) {
 			self::header( $article->getTitle() );
 		}
+
 		return true;
 	}
 
@@ -340,11 +386,8 @@ FOO;
 		}
 	}
 
-	protected static function sourcePageHeader( TranslatablePage $page,
-		$marked, $ready ) {
-
+	protected static function sourcePageHeader( TranslatablePage $page, $marked, $ready ) {
 		global $wgUser, $wgLang;
-		wfLoadExtensionMessages( 'PageTranslation' );
 
 		$title = $page->getTitle();
 		$sk = $wgUser->getSkin();
@@ -360,6 +403,7 @@ FOO;
 				'language' => $wgLang->getCode(),
 				'task' => 'view'
 			);
+
 			$translate = SpecialPage::getTitleFor( 'Translate' );
 			$linkDesc  = wfMsgHtml( 'translate-tag-translate-link-desc' );
 			$actions[] = $sk->link( $translate, $linkDesc, array(), $par );
@@ -384,19 +428,18 @@ FOO;
 			}
 		}
 
-		if ( !count( $actions ) ) return;
-		$legend  = "<div style=\"font-size: x-small; text-align: center\">";
-		if ( method_exists( $wgLang, 'semicolonList' ) ) {
-			// BC for <1.15
-			$legend .= $wgLang->semicolonList( $actions );
-		} else {
-			$legend .= implode( '; ', $actions );
+		if ( !count( $actions ) ) {
+			return;
 		}
-		$legend .= '</div><hr />';
-		
+
+		$legend  = Html::rawElement(
+			'div',
+			array( 'style' => 'font-size: x-small; text-align: center;' ),
+			$wgLang->semicolonList( $actions )
+		) . Html::element( 'hr' );
+
 		global $wgOut;
 		$wgOut->addHTML( $legend );
-
 	}
 
 	protected static function translationPageHeader( Title $title ) {
@@ -404,7 +447,9 @@ FOO;
 
 		// Check if applicable
 		$page = TranslatablePage::isTranslationPage( $title );
-		if ( $page === false ) return;
+		if ( $page === false ) {
+			return;
+		}
 
 		list( , $code ) = TranslateUtils::figureMessage( $title->getText() );
 
@@ -416,9 +461,8 @@ FOO;
 		$url = $page->getTranslationUrl( $code );
 
 		// Output
-		wfLoadExtensionMessages( 'PageTranslation' );
 		$wrap = '<div style="font-size: x-small; text-align: center">$1</div>';
-		
+
 		$wgOut->wrapWikiMsg( $wrap, array( 'tpt-translation-intro', $url, $titleText, $per ) );
 
 		if ( ( (int) $per ) < 100 ) {
@@ -426,7 +470,6 @@ FOO;
 			$wgOut->wrapWikiMsg( $wrap, array( 'tpt-translation-intro-fuzzy' ) );
 		}
 		$wgOut->addHTML( '<hr />' );
-
 	}
 
 	public static function parserTestTables( &$tables ) {
@@ -444,10 +487,14 @@ FOO;
 		if ( $page->getMarkedTag() === false ) {
 			$page = TranslatablePage::isTranslationPage( $title );
 		}
-		if ( $page === false || $page->getMarkedTag() === false )  return true;
+
+		if ( $page === false || $page->getMarkedTag() === false ) {
+			return true;
+		}
 
 		$export = array( $page->getTitle()->getPrefixedText() ); // Source page
 		$titles = $page->getTranslationPages();
+
 		foreach ( $titles as $title ) {
 			$export[] = $title->getPrefixedText();
 		}
@@ -457,8 +504,8 @@ FOO;
 		$href = SpecialPage::getTitleFor( 'Export' )->getLocalUrl( $params );
 		$linkText = wfMsgHtml( 'tpt-download-page' );
 
-		print "<li id=\"t-download-as-pdf\"><a href=\"$href\" rel=\"nofollow\">$linkText</a></li>";
+		print "<li id=\"t-export-translationpages\"><a href=\"$href\" rel=\"nofollow\">$linkText</a></li>";
+
 		return true;
 	}
-
 }

@@ -17,8 +17,8 @@ $messages['en'] = array(
 	'nuke-list'          => "The following pages were recently created by [[Special:Contributions/$1|$1]];
 put in a comment and hit the button to delete them.",
 	'nuke-defaultreason' => "Mass removal of pages added by $1",
-	'nuke-tools'         => 'This tool allows for mass deletions of pages recently added by a given user or IP.
-Input the username or IP to get a list of pages to delete.',
+	'nuke-tools'         => 'This tool allows for mass deletions of pages recently added by a given user or an IP address.
+Input the username or IP address to get a list of pages to delete.',
 	'nuke-submit-user'   => 'Go',
 	'nuke-submit-delete' => 'Delete selected',
 	'right-nuke'         => 'Mass delete pages',
@@ -302,18 +302,20 @@ Skriv et brugernavn eller en IP for at få en liste over sider at slette.',
 );
 
 /** German (Deutsch)
+ * @author Kghbln
  * @author Raimond Spekking
  */
 $messages['de'] = array(
 	'nuke' => 'Massenlöschung',
 	'nuke-desc' => 'Ermöglicht Administratoren die [[Special:Nuke|Massenlöschung]] von Seiten',
-	'nuke-nopages' => 'Es gibt in den Letzten Änderungen keine neuen Seiten von [[Special:Contributions/$1|$1]].',
-	'nuke-list' => 'Die folgenden Seiten wurden von [[Special:Contributions/$1|$1]] erzeugt;
-gib einen Kommentar ein und drücke auf den Löschknopf.',
-	'nuke-defaultreason' => 'Massenlöschung von Seiten, die von „$1“ angelegt wurden',
-	'nuke-tools' => 'Dieses Werkzeug ermöglicht die Massenlöschung von Seiten, die von einer IP-Adresse oder einem Benutzer angelegt wurden. Gib die IP-Adresse/den Benutzernamen ein, um eine Liste zu erhalten.',
-	'nuke-submit-user' => 'Hole Liste',
-	'nuke-submit-delete' => 'Löschen',
+	'nuke-nopages' => 'Es gibt in den „Letzten Änderungen“ keine neuen Seiten von [[Special:Contributions/$1|$1]].',
+	'nuke-list' => 'Die folgenden Seiten wurden von [[Special:Contributions/$1|$1]] angelegt.
+Gib einen Kommentar ein und drücke auf den Knopf zum Löschen.',
+	'nuke-defaultreason' => 'Massenlöschung der Seiten, die von „$1“ angelegt wurden',
+	'nuke-tools' => 'Diese Arbeitshilfe ermöglicht die Massenlöschung von Seiten, die von einer IP-Adresse oder einem Benutzer angelegt wurden.
+Gib die IP-Adresse oder den Benutzernamen ein, um eine Liste der zu löschenden Seiten zu erhalten.',
+	'nuke-submit-user' => 'Hole die Liste',
+	'nuke-submit-delete' => 'Ausgewählte Seiten löschen',
 	'right-nuke' => 'Massenlöschung von Seiten',
 );
 
@@ -533,7 +535,8 @@ $messages['gl'] = array(
 	'nuke' => 'Eliminar en masa',
 	'nuke-desc' => 'Dá aos administradores a posibilidade de [[Special:Nuke|borrar páxinas]] masivamente',
 	'nuke-nopages' => 'Non hai novas páxinas feitas por [[Special:Contributions/$1|$1]] nos cambios recentes.',
-	'nuke-list' => 'As seguintes páxinas foron recentemente creadas por [[Special:Contributions/$1|$1]]; poña un comentario e prema o botón para borralos.',
+	'nuke-list' => '[[Special:Contributions/$1|$1]] creou nos últimos intres as seguintes páxinas;
+escriba un comentario e prema o botón para borralas.',
 	'nuke-defaultreason' => 'Eliminación en masa das páxinas engadidas por $1',
 	'nuke-tools' => 'Esta ferramenta permite supresións masivas das páxinas engadidas recentemente por un determinado usuario ou enderezo IP. Introduza o nome do usuario ou enderezo IP para obter unha lista das páxinas para borrar.',
 	'nuke-submit-user' => 'Adiante',
@@ -793,11 +796,13 @@ Lebokna jeneng panganggo utawa alamat IP kanggo olèh daftar kaca-kaca sing bisa
  * @author Sopho
  */
 $messages['ka'] = array(
+	'nuke' => 'მასობრივი წაშლა',
 	'nuke-nopages' => 'ბოლო ცვლილებებში არ არის ახალი გვერდები [[Special:Contributions/$1|$1]]-ის მიერ.',
 	'nuke-list' => 'ეს გვერდები შეიქმნა [[Special:Contributions/$1|$1]]-ის მიერ;
 შეიყვანეთ კომენტარი და დააჭირეთ ღილაკს მათ წასაშლელად.',
 	'nuke-submit-user' => 'გადასვლა',
 	'nuke-submit-delete' => 'არჩეულის წაშლა',
+	'right-nuke' => 'გვერდების მასობრივად წაშლა',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -1010,6 +1015,17 @@ $messages['ms'] = array(
 	'nuke-submit-user' => 'Pergi',
 	'nuke-submit-delete' => 'Hapus',
 	'right-nuke' => 'Menghapuskan laman secara pukal',
+);
+
+/** Maltese (Malti)
+ * @author Chrisportelli
+ */
+$messages['mt'] = array(
+	'nuke' => 'Tħassir tal-massa',
+	'nuke-tools' => "Din l-għodda tippermetti t-tħassir ta' massa ta' paġni li ġew miżjuda riċentament minn utent partikulari jew IP.
+Daħħal l-isem tal-utent jew l-IP biex tikseb lista ta' paġni li jridu jitħassru.",
+	'nuke-submit-user' => 'Mur',
+	'right-nuke' => 'Ħassar paġni bil-massa',
 );
 
 /** Erzya (Эрзянь)

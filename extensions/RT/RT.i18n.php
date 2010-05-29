@@ -715,6 +715,28 @@ Du försökte: '''$1'''",
 	'rt-nomatches' => 'Inga matchande RT-tickets hittades',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'rt-desc' => 'Makapritsong hugpungang-mukha sa RT (Request Tracker)',
+	'rt-inactive' => 'Hindi gumagana ang dugtong sa RT',
+	'rt-badquery' => 'Nakasalubong ng kamalian ang dugtong na RT habang nakikipag-usap sa talaan ng mga dato ng RT',
+	'rt-badlimit' => "Hindi tanggap na  LIMIT (l) katwiran: dapat na isang bilang.
+Sinubok mo ang: '''$1'''",
+	'rt-badorderby' => "Hindi tanggap na ORDER BY (ob) katwiran: dapat na pampantayang larangan (tingnan ang dokumentasyon).
+Sinubok mo ang: '''$1'''",
+	'rt-badstatus' => "Hindi tanggap na status (s) katwiran: dapat na pampamantayang larangan (tingnan ang dokumentasyon).
+Sinubok mo ang: '''$1'''",
+	'rt-badcfield' => "Hindi tanggap na pasadyang larangan, katwiran: dapat na isang payak na salita (tingnan ang dokumentasyon).
+Sinubok mo ang: '''$1'''",
+	'rt-badqueue' => "Hindi tanggap na queue (q) katwiran: dapat na isang payak na salita.
+Sinubok mo ang: '''$1'''",
+	'rt-badowner' => "Hindi tanggap na owner (o) katwiran: dapat na isang tanggap na pangalan ng tagagamit.
+Sinubok mo ang: '''$1'''",
+	'rt-nomatches' => 'Walang natagpuang tumutugma na mga tiket ng RT',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  * @author Vinhtantran

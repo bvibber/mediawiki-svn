@@ -4,9 +4,10 @@
  * extracted sections and a template.
  *
  * @author Niklas Laxström
- * @copyright Copyright © 2009 Niklas Laxström
+ * @copyright Copyright © 2009-2010 Niklas Laxström
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
  */
+
 class TPParse {
 	protected $title = null;
 
@@ -32,8 +33,8 @@ class TPParse {
 		foreach ( $sections as $ph => $s ) {
 			$text = str_replace( $ph, "<!--T:{$s->id}-->", $text );
 		}
-		return $text;
 
+		return $text;
 	}
 
 	public function getSectionsForSave() {
@@ -45,7 +46,10 @@ class TPParse {
 			$highest = max( $highest, $key );
 		}
 
-		foreach ( $sections as $_ ) $highest = max( $_->id, $highest );
+		foreach ( $sections as $_ ) {
+			$highest = max( $_->id, $highest );
+		}
+
 		foreach ( $sections as $s ) {
 			$s->type = 'old';
 
@@ -68,17 +72,21 @@ class TPParse {
 
 	public function getDeletedSections() {
 		$sections = $this->getSectionsForSave();
-
 		$deleted = $this->dbSections;
+
 		foreach ( $sections as $s ) {
-			if ( isset( $deleted[$s->id] ) )
+			if ( isset( $deleted[$s->id] ) ) {
 				unset( $deleted[$s->id] );
+			}
 		}
+
 		return $deleted;
 	}
 
 	protected function loadFromDatabase() {
-		if ( $this->dbSections !== null ) return;
+		if ( $this->dbSections !== null ) {
+			return;
+		}
 
 		$this->dbSections = array();
 
@@ -89,7 +97,7 @@ class TPParse {
 
 		$res = $db->select( $tables, $vars, $conds, __METHOD__ );
 		foreach ( $res as $r ) {
-			$section = new TPsection;
+			$section = new TPSection;
 			$section->id = $r->trs_key;
 			$section->text = $r->trs_text;
 			$section->type = 'db';
@@ -99,9 +107,11 @@ class TPParse {
 
 	public function getSourcePageText() {
 		$text = $this->template;
+
 		foreach ( $this->sections as $ph => $s ) {
 			$text = str_replace( $ph, $s->getMarkedText(), $text );
 		}
+
 		return $text;
 	}
 
@@ -115,31 +125,52 @@ class TPParse {
 		$collection->loadTranslations();
 
 		foreach ( $this->sections as $ph => $s ) {
+			$sectiontext = null;
+
 			if ( isset( $collection[$prefix . $s->id] ) ) {
 				$msg = $collection[$prefix . $s->id];
-				if ( $msg->translation() === null ) {
-					// Just use the orignal string
-					$text = str_replace( $ph, $s->getTextForTrans(), $text );
-				} else {
-					$sectiontext = $msg->translation();
+				$translation = $msg->translation();
 
+				if ( $translation !== null ) {
 					// Ideally we should not have fuzzy here, but old texts do
-					$sectiontext = str_replace( TRANSLATE_FUZZY, '', $sectiontext );
-
-					$vars = $s->getVariables();
-					foreach ( $vars as $key => $value ) {
-						$sectiontext = str_replace( $key, $value, $sectiontext );
-					}
+					$sectiontext = str_replace( TRANSLATE_FUZZY, '', $translation );
 
 					if ( $msg->hasTag( 'fuzzy' ) ) {
-						$sectiontext = "<div class=\"mw-translate-fuzzy\">\n$sectiontext\n</div>";
+						$sectiontext = "<span class=\"mw-translate-fuzzy\">\n$sectiontext\n</span>";
 					}
-					$text = str_replace( $ph, $sectiontext, $text );
 				}
-			} else {
-				$text = str_replace( $ph, $s->getTextForTrans(), $text );
 			}
+
+			// Use the original text if no translation is available
+			if ( $sectiontext === null ) {
+				$sectiontext = $s->getTextForTrans();
+			}
+
+			// Substitute variables into section text and substitute text into document
+			$sectiontext = self::replaceVariables( $s->getVariables(), $sectiontext );
+			$text = str_replace( $ph, $sectiontext, $text );
 		}
+
+		$nph = array();
+		$text = TranslatablePage::armourNowiki( $nph, $text );
+
+		// Remove translation markup
+		$cb = array( __CLASS__, 'replaceTagCb' );
+		$text = preg_replace_callback( '~(<translate>\n?)(.*?)(\n?</translate>)~s', $cb, $text );
+		$text = TranslatablePage::unArmourNowiki( $nph, $text );
+
 		return $text;
+	}
+
+	protected static function replaceVariables( $variables, $text ) {
+		foreach ( $variables as $key => $value ) {
+			$text = str_replace( $key, $value, $text );
+		}
+
+		return $text;
+	}
+
+	protected static function replaceTagCb( $matches ) {
+		return $matches[2];
 	}
 }

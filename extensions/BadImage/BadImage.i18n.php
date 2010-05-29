@@ -2477,6 +2477,7 @@ $messages['tl'] = array(
 	'badimages-log-add' => 'idinagdag ang [[$1]] sa talaan ng masamang larawan',
 	'badimages-log-remove' => 'tinanggal ang [[$1]] mula sa talaan ng masamang larawan',
 	'badimages-page' => '{{ns:help}}:Talaan ng masamang larawan',
+	'right-badimages' => 'Isapanahon ang talaan ng masamang larawan',
 );
 
 /** Turkish (Türkçe)

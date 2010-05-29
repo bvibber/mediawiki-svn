@@ -2595,6 +2595,8 @@ Ada banyak [http://openid.net/get penyedia OpenID], dan Anda mungkin telah memil
 	'openiddelete-text' => 'Dengan menekan tombol "{{int:openiddelete-button}}", Anda akan menghapuskan OpenID $1 dari akun Anda.
 Anda tidak akan dapat masuk log lagi dengan OpenID ini.',
 	'openiddelete-button' => 'Konfirmasi',
+	'openiddeleteerrornopassword' => 'Anda tidak dapat menghapus semua OpenID Anda karena akun Anda tidak diberi kata sandi.
+Anda tidak akan dapat masuk log tanpa OpenID.',
 	'openiddelete-sucess' => 'OpenID telah dihapus dari akun Anda.',
 	'openiddelete-error' => 'Terjadi kesalahan saat berusaha menghapus OpenID dari akun Anda.',
 	'openid-prefstext' => 'Preferensi [http://openid.net/ OpenID]',
@@ -2908,6 +2910,7 @@ $messages['kn'] = array(
 	'openidnickname' => 'ಉಪನಾಮ',
 	'openidlanguage' => 'ಭಾಷೆ',
 	'openidtimezone' => 'ಸಮಯ ವಲಯ',
+	'openidchoosepassword' => 'ಪ್ರವೇಶಪದ:',
 	'openid-urls-delete' => 'ಅಳಿಸು',
 );
 
@@ -5142,15 +5145,20 @@ Makipagugnayan po lamang sa isang [[Special:ListUsers/sysop|tagapangasiwa]].',
 	'openidfullname' => 'Buong pangalan',
 	'openidemail' => 'Adres ng e-liham',
 	'openidlanguage' => 'Wika',
+	'openidtimezone' => 'Sona ng oras',
+	'openidchooselegend' => 'Mapagpipiliang pangalan ng tagagamit',
 	'openidchooseinstructions' => 'Lahat ng mga tagagamit ay kinakailangang may bansag;
 makakapili ka mula sa mga pagpipiliang nasa ibaba.',
+	'openidchoosenick' => 'Ang palayaw mo ($1)',
 	'openidchoosefull' => 'Ang buong pangalan mo ($1)',
 	'openidchooseurl' => 'Isang pangalang napulot (napili/nakuha) mula sa iyong OpenID ($1)',
 	'openidchooseauto' => 'Isang pangalang kusang nalikha ($1)',
 	'openidchoosemanual' => 'Isang pangalang ikaw ang pumili:',
-	'openidchooseexisting' => 'Isang umiiral na kuwenta sa wiking ito:',
+	'openidchooseexisting' => 'Isang umiiral na akawnt sa wiking ito:',
+	'openidchooseusername' => 'Pangalan ng tagagamit:',
 	'openidchoosepassword' => 'hudyat:',
-	'openidconvertinstructions' => 'Nagpapahintulot ang pormularyong ito upang mabago mo ang iyong kuwenta ng tagagamit para magamit ang isang URL ng OpenID.',
+	'openidconvertinstructions' => 'Nagpapahintulot ang pormularyong ito upang mabago mo ang iyong akawnt na pangtagagamit upang magamit ang isang URL ng OpenID o makapagdagdag ng maraming pang mga URL na pang-OpenID.',
+	'openidconvertoraddmoreids' => 'Gawing OpenID o magdagdag ng iba pang URL na pang-OpenID',
 	'openidconvertsuccess' => 'Matagumpay na napalitan (nabago) upang maging OpenID',
 	'openidconvertsuccesstext' => 'Matagumpay mong napalitan/nabago ang iyong OpenID para maging $1.',
 	'openidconvertyourstext' => 'Iyan na mismo ang iyong OpenID.',
@@ -5172,10 +5180,29 @@ Kung mayroon ka nang kuwenta sa {{SITENAME}}, maaari kang [[Special:UserLogin|lu
 Upang makagamit ng OpenID sa hinaharap, maaari mong [[Special:OpenIDConvert|palitan ang iyong akawnt upang maging OpenID]] pagkatapos mong lumagda sa karaniwang paraan.
 
 Maraming mga [http://wiki.openid.net/Public_OpenID_providers tagapagbigay ng OpenID], at maaaring mayroon ka nang isang kuwentang pinagana ng OpenID na nasa iba pang palingkuran.",
-	'openidupdateuserinfo' => 'Isapanahon ang aking pansariling kabatiran',
+	'openidupdateuserinfo' => 'Isapanahon ang aking pansariling kabatiran:',
+	'openiddelete' => 'Burahin ang OpenID',
+	'openiddelete-text' => 'Sa pagpaindot ng pindutang "{{int:openiddelete-button}}", aalisin mo ang OpenID na $1 mula sa iyong akawnt.  Hindi ka na makalalagdang papasok sa pamamagitan ng ganitong OpenID.',
+	'openiddelete-button' => 'Tiyakin',
+	'openiddeleteerrornopassword' => 'Hindi mo mabubura ang lahat ng mga OpenID mo dahil walang hudyat ang akawnt mo.
+Hindi ka makalalagda na walang OpenID.',
+	'openiddeleteerroropenidonly' => 'Hindi mo mabubura ang lahat ng mga OpenID mo dahil hindi pinapayagan kang lumagda sa pamamagitan lang ng OpenID.
+Hindi ka maaaring makalagda na walang OpenID.',
+	'openiddelete-sucess' => 'Matagumpay na natanggal ang OpenID mula sa iyong akawnt.',
+	'openiddelete-error' => 'Naganap ang isang kamalian habang tinatanggal ang OpenID mula sa iyong akawnt.',
 	'openid-prefstext' => 'Mga kagustuhang pang-[http://openid.net/ OpenID]',
 	'openid-pref-hide' => 'Itago ang OpenID mo sa ibabaw ng iyong pahina ng tagagamit, kapag lumagda ka sa pamamagitan ng OpenID.',
-	'openid-pref-update-userinfo-on-login' => 'Isapahaon ang aking kabatiran mula sa katauhang pang-OpenID sa bawat pagkakataong lalagda akong papasok',
+	'openid-pref-update-userinfo-on-login' => 'Isapanahon ang sumusunod na kabatiran mula sa katauhang pang-OpenID sa bawat pagkakataong lalagda akong papasok:',
+	'openid-urls-desc' => 'Mga openID na may kaugnayan sa akawnt mo:',
+	'openid-urls-action' => 'Galaw',
+	'openid-urls-delete' => 'Burahin',
+	'openid-add-url' => 'Magdagdag ng isang bagong OpenID',
+	'openidsigninorcreateaccount' => 'Lumagda o lumikha ng bagong akawnt',
+	'openid-provider-label-openid' => 'Ipasok ang iyong URL na pang-OpenID',
+	'openid-provider-label-google' => 'Lumagdang ginagamit ang iyong akawnt na pang-Google',
+	'openid-provider-label-yahoo' => 'Lumagdang ginagamit ang akawnt mong pang-Yahoo',
+	'openid-provider-label-aol' => 'Ipasok ang iyong katawagang pang-AOL',
+	'openid-provider-label-other-username' => 'Ipasok ang iyong pangalang pangtagagamit na pang-$1',
 );
 
 /** Turkish (Türkçe)

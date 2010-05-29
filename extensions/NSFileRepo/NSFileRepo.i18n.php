@@ -254,6 +254,13 @@ $messages['sv'] = array(
 	'nsfilerepo-desc' => 'Ge namnrymdbaserade funktioner till uppladdade filer',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'nsfilerepo-desc' => 'Ibigay ang mga katangiang-kasangkapan na nakabatay sa puwang na pampangalan upang makapagkarga ng mga talaksan',
+);
+
 /** Turkish (Türkçe)
  * @author Vito Genovese
  */

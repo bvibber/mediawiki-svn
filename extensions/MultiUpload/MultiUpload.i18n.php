@@ -1635,7 +1635,7 @@ $messages['th'] = array(
  * @author AnakngAraw
  */
 $messages['tl'] = array(
-	'multipleupload' => 'Ikarga ang mga talaksan',
+	'multipleupload' => 'Magkarga ng maramihang mga talaksan',
 	'multiupload-desc' => 'Nagpapahintulot sa mga tagagamit na [[Special:MultipleUpload|kaagad na mapagsabay-sabay ang  pagkakarga ng mangilan-ngilang mga talaksan]]',
 	'multipleupload-ignoreallwarnings' => "Balewalain ang '''lahat ng mga babala''' at sagipin pa rin ang mga talaksan.",
 	'multipleupload-saveallfiles' => 'Sagipin ang lahat ng mga talaksan',

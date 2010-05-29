@@ -10,26 +10,78 @@ if ( !defined( 'MEDIAWIKI' ) ) die();
  * its properties.
  */
 class SIOInternalObject {
-	var $main_title;
-	var $index;
-	var $property_value_pairs;
+	protected $mMainTitle;
+	protected $mIndex;
+	protected $mPropertyValuePairs;
 
-	public function SIOInternalObject( $main_title, $index ) {
-		$this->main_title = $main_title;
-		$this->index = $index;
-		$this->property_value_pairs = array();
+	public function SIOInternalObject( $mainTitle, $index ) {
+		$this->mMainTitle = $mainTitle;
+		$this->mIndex = $index;
+		$this->mPropertyValuePairs = array();
 	}
 
-	public function addPropertyAndValue( $prop_name, $value ) {
-		$property = SMWPropertyValue::makeUserProperty( $prop_name );
-		$data_value = SMWDataValueFactory::newPropertyObjectValue( $property, $value );
-		if ( $data_value->isValid() ) {
-			$this->property_value_pairs[] = array( $property, $data_value );
+	public function addPropertyAndValue( $propName, $value ) {
+		$property = SMWPropertyValue::makeUserProperty( $propName );
+		$dataValue = SMWDataValueFactory::newPropertyObjectValue( $property, $value );
+		if ( $dataValue->isValid() ) {
+			$this->mPropertyValuePairs[] = array( $property, $dataValue );
 		} // else - show an error message?
 	}
 
+	public function getPropertyValuePairs() {
+		return $this->mPropertyValuePairs;
+	}
+
 	public function getName() {
-		return $this->main_title->getDBkey() . '#' . $this->index;
+		return $this->mMainTitle->getDBkey() . '#' . $this->mIndex;
+	}
+}
+
+/**
+ * The SIOTitle and SIOInternalObjectValue exist for only one reason: in order
+ * to be used by SIOSQLStore::createRDF(), to spoof Semantic MediaWiki's
+ * RDF-exporting code into thinking that it's dealing with actual wiki pages.
+ */
+class SIOTitle {
+	function __construct ($name, $namespace) {
+		$this->mName = $name;
+		$this->mNamespace = $namespace;
+	}
+
+	/**
+	 * Based on functions in Title class
+	 */
+	function getPrefixedName() {
+		$s = '';
+		if ( 0 != $this->mNamespace ) {
+			global $wgContLang;
+			$s .= $wgContLang->getNsText( $this->mNamespace ) . ':';
+		}
+		$s .= $this->mName;
+		return $s;
+	}
+
+	function getPrefixedURL() {
+		$s = $this->getPrefixedName();
+		return wfUrlencode( str_replace( ' ', '_', $s ) );
+	}
+}
+
+class SIOInternalObjectValue extends SMWWikiPageValue {
+	function __construct($name, $namespace) {
+		$this->mSIOTitle = new SIOTitle( $name, $namespace );
+	}
+	function getExportData() {
+		global $smwgNamespace;
+		return new SMWExpData( new SMWExpResource( null ) );
+	}
+
+	function getTitle() {
+		return $this->mSIOTitle;
+	}
+
+	function getWikiValue() {
+		return $this->mSIOTitle->getPrefixedName();
 	}
 }
 
@@ -40,69 +92,105 @@ class SIOInternalObject {
  * protected, and thus can't be accessed externally.
  */
 class SIOSQLStore extends SMWSQLStore2 {
-	function getIDsForDeletion( $page_name, $namespace ) {
+	static function getIDsForDeletion( $pageName, $namespace ) {
 		$ids = array();
 
 		$iw = '';
 		$db = wfGetDB( DB_SLAVE );
-		$res = $db->select( 'smw_ids', array( 'smw_id' ), 'smw_title LIKE ' . $db->addQuotes( $page_name . '#%' ) . ' AND ' . 'smw_namespace=' . $db->addQuotes( $namespace ) . ' AND smw_iw=' . $db->addQuotes( $iw ), 'SIO::getSMWPageObjectIDs', array() );
+		$res = $db->select( 'smw_ids', array( 'smw_id' ), 'smw_title LIKE ' . $db->addQuotes( $pageName . '#%' ) . ' AND ' . 'smw_namespace=' . $db->addQuotes( $namespace ) . ' AND smw_iw=' . $db->addQuotes( $iw ), 'SIO::getSMWPageObjectIDs', array() );
 		while ( $row = $db->fetchObject( $res ) ) {
 			$ids[] = $row->smw_id;
 		}
 		return $ids;
 	}
 
-	function getStorageSQL( $main_page_name, $namespace, $internal_object ) {
-		$main_page_id = $this->makeSMWPageID( $main_page_name, $namespace, '' );
-		$io_id = $this->makeSMWPageID( $internal_object->getName(), $namespace, '' );
-		$up_rels2 = array();
-		$up_atts2 = array();
-		$up_text2 = array();
+	function getStorageSQL( $mainPageName, $namespace, $internalObject ) {
+		$mainPageID = $this->makeSMWPageID( $mainPageName, $namespace, '' );
+		$ioID = $this->makeSMWPageID( $internalObject->getName(), $namespace, '' );
+		$upRels2 = array();
+		$upAtts2 = array();
+		$upText2 = array();
+		$upCoords = array();
 		// set all the properties pointing from this internal object
-		foreach ( $internal_object->property_value_pairs as $property_value_pair ) {
-			list( $property, $value ) = $property_value_pair;
+		foreach ( $internalObject->getPropertyValuePairs() as $propertyValuePair ) {
+			list( $property, $value ) = $propertyValuePair;
 			// handling changed in SMW 1.5
 			if ( method_exists( 'SMWSQLStore2', 'findPropertyTableID' ) ) {
 				$tableid = SMWSQLStore2::findPropertyTableID( $property );
-				$is_relation = ( $tableid == 'smw_rels2' );
-				$is_attribute = ( $tableid == 'smw_atts2' );
-				$is_text = ( $tableid == 'smw_text2' );
+				$isRelation = ( $tableid == 'smw_rels2' );
+				$isAttribute = ( $tableid == 'smw_atts2' );
+				$isText = ( $tableid == 'smw_text2' );
+				// new with SMW 1.5.1 / SM 0.6
+				$isCoords = ( $tableid == 'smw_coords' );
 			} else {
 				$mode = SMWSQLStore2::getStorageMode( $property->getPropertyTypeID() );
-				$is_relation = ( $mode == SMW_SQL2_RELS2 );
-				$is_attribute = ( $mode == SMW_SQL2_ATTS2 );
-				$is_text = ( $mode == SMW_SQL2_TEXT2 );
+				$isRelation = ( $mode == SMW_SQL2_RELS2 );
+				$isAttribute = ( $mode == SMW_SQL2_ATTS2 );
+				$isText = ( $mode == SMW_SQL2_TEXT2 );
+				$isCoords = false;
 			}
-			if ( $is_relation ) {
-				$up_rels2[] = array(
-					's_id' => $io_id,
+			if ( $isRelation ) {
+				$upRels2[] = array(
+					's_id' => $ioID,
 					'p_id' => $this->makeSMWPropertyID( $property ),
 					'o_id' => $this->makeSMWPageID( $value->getDBkey(), $value->getNamespace(), $value->getInterwiki() )
 				);
-			} elseif ( $is_attribute ) {
+			} elseif ( $isAttribute ) {
 				$keys = $value->getDBkeys();
 				if ( method_exists( $value, 'getValueKey' ) ) {
-					$value_num = $value->getValueKey();
+					$valueNum = $value->getValueKey();
 				} else {
-					$value_num = $value->getNumericValue();
+					$valueNum = $value->getNumericValue();
 				}
-				$up_atts2[] = array(
-					's_id' => $io_id,
+				$upAtts2[] = array(
+					's_id' => $ioID,
 					'p_id' => $this->makeSMWPropertyID( $property ),
 					'value_unit' => $value->getUnit(),
 					'value_xsd' => $keys[0],
-					'value_num' => $value_num
+					'value_num' => $valueNum
 				);
-			} elseif ( $is_text ) {
+			} elseif ( $isText ) {
 				$keys = $value->getDBkeys();
-				$up_text2[] = array(
-					's_id' => $io_id,
+				$upText2[] = array(
+					's_id' => $ioID,
 					'p_id' => $this->makeSMWPropertyID( $property ),
 					'value_blob' => $keys[0]
 				);
+			} elseif ( $isCoords ) {
+				$keys = $value->getDBkeys();
+				$upCoords[] = array(
+					's_id' => $ioID,
+					'p_id' => $this->makeSMWPropertyID( $property ),
+					'lat' => $keys[0],
+					'lon' => $keys[1],
+				);
 			}
 		}
-		return array( $up_rels2, $up_atts2, $up_text2 );
+		return array( $upRels2, $upAtts2, $upText2, $upCoords );
+	}
+
+	static function createRDF( $title, $rdfDataArray ) {
+		$pageName = $title->getText();
+		$namespace = $title->getNamespace();
+
+		// go through all SIOs for the current page, create RDF for
+		// each one, and add it to the general array
+		$iw = '';
+		$db = wfGetDB( DB_SLAVE );
+		$res = $db->select( 'smw_ids', array( 'smw_id', 'smw_namespace', 'smw_title' ), 'smw_title LIKE ' . $db->addQuotes( $pageName . '#%' ) . ' AND ' . 'smw_namespace=' . $db->addQuotes( $namespace ) . ' AND smw_iw=' . $db->addQuotes( $iw ), 'SIO::getSMWPageObjectIDs', array() );
+		while ( $row = $db->fetchObject( $res ) ) {
+			$value = new SIOInternalObjectValue( $row->smw_title, $row->smw_namespace );
+			$semdata = new SMWSemanticData( $value, false );
+			$propertyTables = SMWSQLStore2::getPropertyTables();
+			foreach ( $propertyTables as $tableName => $propertyTable ) {
+				$data = smwfGetStore()->fetchSemanticData( $row->smw_id, null, $propertyTable );
+				foreach ( $data as $d ) {
+					$semdata->addPropertyStubValue( reset( $d ), end( $d ) );
+				}
+			}
+			$rdfDataArray[] = SMWExporter::makeExportData( $semdata, null );
+		}
+		return true;
 	}
 }
 
@@ -111,39 +199,39 @@ class SIOSQLStore extends SMWSQLStore2 {
  */
 class SIOHandler {
 
-	static $cur_page_name = '';
-	static $cur_page_namespace = 0;
-	static $internal_object_index = 1;
-	static $internal_objects = array();
+	static $mCurPageName = '';
+	static $mCurPageNamespace = 0;
+	static $mInternalObjectIndex = 1;
+	static $mInternalObjects = array();
 
 	public static function clearState( &$parser ) {
-		self::$cur_page_name = '';
-		self::$cur_page_namespace = 0;
-		self::$internal_object_index = 1;
+		self::$mCurPageName = '';
+		self::$mCurPageNamespace = 0;
+		self::$mInternalObjectIndex = 1;
 		return true;
 	}
 
 	public static function doSetInternal( &$parser ) {
-		$main_page_name = $parser->getTitle()->getDBKey();
-		$main_page_namespace = $parser->getTitle()->getNamespace();
-		if ( $main_page_name == self::$cur_page_name &&
-			$main_page_namespace == self::$cur_page_namespace ) {
-			self::$internal_object_index++;
+		$mainPageName = $parser->getTitle()->getDBKey();
+		$mainPageNamespace = $parser->getTitle()->getNamespace();
+		if ( $mainPageName == self::$mCurPageName &&
+			$mainPageNamespace == self::$mCurPageNamespace ) {
+			self::$mInternalObjectIndex++;
 		} else {
-			self::$cur_page_name = $main_page_name;
-			self::$cur_page_namespace = $main_page_namespace;
-			self::$internal_object_index = 1;
+			self::$mCurPageName = $mainPageName;
+			self::$mCurPageNamespace = $mainPageNamespace;
+			self::$mInternalObjectIndex = 1;
 		}
-		$cur_object_num = self::$internal_object_index;
+		$curObjectNum = self::$mInternalObjectIndex;
 		$params = func_get_args();
 		array_shift( $params ); // we already know the $parser...
-		$internal_object = new SIOInternalObject( $parser->getTitle(), $cur_object_num );
-		$obj_to_page_prop_name = array_shift( $params );
-		$main_page_name = $parser->getTitle()->getText();
-		if ( ( $ns_text = $parser->getTitle()->getNsText() ) != '' ) {
-			$main_page_name = $ns_text . ':' . $main_page_name;
+		$internalObject = new SIOInternalObject( $parser->getTitle(), $curObjectNum );
+		$objToPagePropName = array_shift( $params );
+		$mainPageName = $parser->getTitle()->getText();
+		if ( ( $nsText = $parser->getTitle()->getNsText() ) != '' ) {
+			$mainPageName = $nsText . ':' . $mainPageName;
 		}
-		$internal_object->addPropertyAndValue( $obj_to_page_prop_name, $main_page_name );
+		$internalObject->addPropertyAndValue( $objToPagePropName, $mainPageName );
 		foreach ( $params as $param ) {
 			$parts = explode( "=", trim( $param ), 2 );
 			if ( count( $parts ) == 2 ) {
@@ -153,61 +241,67 @@ class SIOHandler {
 				// a comma-delimited group of values
 				if ( substr( $key, - 5 ) == '#list' ) {
 					$key = substr( $key, 0, strlen( $key ) - 5 );
-					$list_values = explode( ',', $value );
-					foreach ( $list_values as $list_value ) {
-						$internal_object->addPropertyAndValue( $key, trim( $list_value ) );
+					$listValues = explode( ',', $value );
+					foreach ( $listValues as $listValue ) {
+						$internalObject->addPropertyAndValue( $key, trim( $listValue ) );
 					}
 				} else {
-					$internal_object->addPropertyAndValue( $key, $value );
+					$internalObject->addPropertyAndValue( $key, $value );
 				}
 			}
 		}
-		self::$internal_objects[] = $internal_object;
+		self::$mInternalObjects[] = $internalObject;
 	}
 
 	public static function updateData( $subject ) {
-		$sio_sql_store = new SIOSQLStore();
+		$sioSQLStore = new SIOSQLStore();
 		// Find all "pages" in the SMW IDs table that are internal
 		// objects for this page, and delete their properties from
 		// the SMW tables.
-		// Then save the current contents of the $internal_objects
+		// Then save the current contents of the $mInternalObjects
 		// array.
-		$page_name = $subject->getDBKey();
+		$pageName = $subject->getDBKey();
 		$namespace = $subject->getNamespace();
-		$ids_for_deletion = $sio_sql_store->getIDsForDeletion( $page_name, $namespace );
+		$idsForDeletion = SIOSQLStore::getIDsForDeletion( $pageName, $namespace );
 
-		$all_rels2_inserts = array();
-		$all_atts2_inserts = array();
-		$all_text2_inserts = array();
-		foreach ( self::$internal_objects as $internal_object ) {
-			list( $up_rels2, $up_atts2, $up_text2 ) = $sio_sql_store->getStorageSQL( $page_name, $namespace, $internal_object );
-			$all_rels2_inserts = array_merge( $all_rels2_inserts, $up_rels2 );
-			$all_atts2_inserts = array_merge( $all_atts2_inserts, $up_atts2 );
-			$all_text2_inserts = array_merge( $all_text2_inserts, $up_text2 );
+		$allRels2Inserts = array();
+		$allAtts2Inserts = array();
+		$allText2Inserts = array();
+		$allCoordsInserts = array();
+		foreach ( self::$mInternalObjects as $internalObject ) {
+			list( $upRels2, $upAtts2, $upText2, $upCoords ) = $sioSQLStore->getStorageSQL( $pageName, $namespace, $internalObject );
+			$allRels2Inserts = array_merge( $allRels2Inserts, $upRels2 );
+			$allAtts2Inserts = array_merge( $allAtts2Inserts, $upAtts2 );
+			$allText2Inserts = array_merge( $allText2Inserts, $upText2 );
+			$allCoordsInserts = array_merge( $allCoordsInserts, $upCoords );
 		}
 
 		// now save everything to the database, in a single transaction
 		$db = wfGetDB( DB_MASTER );
 		$db->begin( 'SIO::updatePageData' );
-		if ( count( $ids_for_deletion ) > 0 ) {
-			$ids_string = '(' . implode ( ', ', $ids_for_deletion ) . ')';
-			$db->delete( 'smw_rels2', array( "(s_id IN $ids_string) OR (o_id IN $ids_string)" ), 'SIO::deleteRels2Data' );
-			$db->delete( 'smw_atts2', array( "s_id IN $ids_string" ), 'SIO::deleteAtts2Data' );
-			$db->delete( 'smw_text2', array( "s_id IN $ids_string" ), 'SIO::deleteText2Data' );
+		if ( count( $idsForDeletion ) > 0 ) {
+			$idsString = '(' . implode ( ', ', $idsForDeletion ) . ')';
+			$db->delete( 'smw_rels2', array( "(s_id IN $idsString) OR (o_id IN $idsString)" ), 'SIO::deleteRels2Data' );
+			$db->delete( 'smw_atts2', array( "s_id IN $idsString" ), 'SIO::deleteAtts2Data' );
+			$db->delete( 'smw_text2', array( "s_id IN $idsString" ), 'SIO::deleteText2Data' );
+			$db->delete( 'sm_coords', array( "s_id IN $idsString" ), 'SIO::deleteCoordsData' );
 		}
 
-		if ( count( $all_rels2_inserts ) > 0 ) {
-			$db->insert( 'smw_rels2', $all_rels2_inserts, 'SIO::updateRels2Data' );
+		if ( count( $allRels2Inserts ) > 0 ) {
+			$db->insert( 'smw_rels2', $allRels2Inserts, 'SIO::updateRels2Data' );
 		}
-		if ( count( $all_atts2_inserts ) > 0 ) {
-			$db->insert( 'smw_atts2', $all_atts2_inserts, 'SIO::updateAtts2Data' );
+		if ( count( $allAtts2Inserts ) > 0 ) {
+			$db->insert( 'smw_atts2', $allAtts2Inserts, 'SIO::updateAtts2Data' );
 		}
-		if ( count( $all_text2_inserts ) > 0 ) {
-			$db->insert( 'smw_text2', $all_text2_inserts, 'SIO::updateText2Data' );
+		if ( count( $allText2Inserts ) > 0 ) {
+			$db->insert( 'smw_text2', $allText2Inserts, 'SIO::updateText2Data' );
+		}
+		if ( count( $allCoordsInserts ) > 0 ) {
+			$db->insert( 'sm_coords', $allCoordsInserts, 'SIO::updateCoordsData' );
 		}
 		// end transaction
 		$db->commit( 'SIO::updatePageData' );
-		self::$internal_objects = array();
+		self::$mInternalObjects = array();
 		return true;
 	}
 
@@ -218,14 +312,14 @@ class SIOHandler {
 	 * etc. should be turned into just "Page name".
 	 */
 	static function handleUpdatingOfInternalObjects( &$jobs ) {
-		$unique_titles = array();
+		$uniqueTitles = array();
 		foreach ( $jobs as $i => $job ) {
 			$title = Title::makeTitleSafe( $job->title->getNamespace(), $job->title->getText() );
 			$id = $title->getArticleID();
-			$unique_titles[$id] = $title;
+			$uniqueTitles[$id] = $title;
 		}
 		$jobs = array();
-		foreach ( $unique_titles as $id => $title ) {
+		foreach ( $uniqueTitles as $id => $title ) {
 			$jobs[] = new SMWUpdateJob( $title );
 		}
 		return true;
@@ -238,13 +332,13 @@ class SIOHandler {
 	 * will be in a single one of these batches so we remove everything updating
 	 * a SIO object instead of filtering them down to unique titles.
 	 */
-	 static function handleRefreshingOfInternalObjects(&$jobs) {
-	 	$all_jobs = $jobs;
+	 static function handleRefreshingOfInternalObjects( &$jobs ) {
+	 	$allJobs = $jobs;
 	 	$jobs = array();
-	 	foreach  ( $all_jobs as $job ) {
+	 	foreach ( $allJobs as $job ) {
 	 		if ( strpos( $job->title->getText(), '#' ) === false )
 	 			$jobs[] = $job;
 	 	}
-	 	return true;
-	 }
+		return true;
+	}
 }

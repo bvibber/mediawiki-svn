@@ -565,7 +565,7 @@ class AllPagesExcludeBlank extends IncludableSpecialPage {
 class PopulateBlankedPagesTable extends SpecialPage {
 	function __construct() {
 		parent::__construct( 'PopulateBlankedPagesTable','purewikideletion' );
-		wfLoadExtensionMessages('PopulateBlankedPagesTable');
+		wfLoadExtensionMessages( 'PureWikiDeletion' );
 	}
  
 	function execute( $par ) {
@@ -614,12 +614,15 @@ class PopulateBlankedPagesTable extends SpecialPage {
 						,array("blank_page_id" => $myId));
 					if (!$checkPresence){
 						$dbw->insert('blanked_page',$blank_row);
+					$mTitle=Title::newFromID($myId);
+					Article::onArticleDelete( $mTitle );
+					$mTitle->resetArticleID( 0 );
 					}
 				}
 			}
 			
 		}
-		$output="Done populating blanked_page table.";
+		$output = wfMsg( 'purewikideletion-population-done' );
 		$wgOut->addWikiText($output);
 	}
 }

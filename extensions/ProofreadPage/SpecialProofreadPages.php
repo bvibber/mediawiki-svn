@@ -4,15 +4,21 @@
  * @ingroup SpecialPage
  */
 
-class IndexPagesPage extends QueryPage {
-	public function __construct() {
-		SpecialPage::__construct( 'IndexPages' );
+
+if ( !defined( 'MEDIAWIKI' ) ) die( 1 );
+global $wgHooks, $IP;
+require_once "$IP/includes/QueryPage.php";
+
+
+class ProofreadPages extends SpecialPage {
+
+	function ProofreadPages() {
+		SpecialPage::SpecialPage( 'IndexPages' );
 	}
 
-	public function execute( $parameters ) {
+	function execute( $parameters ) {
 		global $wgOut, $wgRequest, $wgDisableTextSearch;
 
-		wfLoadExtensionMessages( 'ProofreadPage' );
 		$this->setHeaders();
 		list( $limit, $offset ) = wfCheckLimits();
 		$wgOut->addWikiText( wfMsgForContentNoTrans( 'proofreadpage_specialpage_text' ) );
@@ -43,45 +49,66 @@ class IndexPagesPage extends QueryPage {
 				}
 			}
 		}
-		parent::execute( $parameters );
+		$cnl = new ProofreadPagesQuery( $searchList, $searchTerm );
+		$cnl->doQuery( $offset, $limit );
+	}
+}
+
+class ProofreadPagesQuery extends QueryPage {
+	function ProofreadPagesQuery( $searchList, $searchTerm ) {
+		$this->searchList = $searchList;
+		$this->searchTerm = $searchTerm;
 	}
 
-	public function getQueryInfo() {
-		$conds = array();
-		if ( $this->searchTerm ) {
-			if ( $this->searchList ) {
-				$index_namespace = pr_index_ns();
-				$index_ns_index = MWNamespace::getCanonicalIndex( strtolower( $index_namespace ) );
-				$conds = array( 'page_namespace' => $index_ns_index, 'page_title' => $this->searchList );
-			} else {
-				$conds = array( 'false' ); // FIXME: This is ugly
-			}
-		}
-		return array(
-			'tables' => array( 'pr_index', 'page' ),
-			'fields' => array( 'page_title AS title', 'pr_count',
-				'pr_q0', 'pr_q1', 'pr_q2' ,'pr_q3', 'pr_q4' ),
-			'conds' => $conds,
-			'options' => array(),
-			'join_conds' => array( 'page' => array( 'LEFT JOIN', 'page_id=pr_page_id' ) )
-		);
-	}
-
-	public function getOrderFields() {
-		return array( '2*pr_q4+pr_q3' ); // FIXME: This causes a filesort
-	}
-
-	public function sortDescending() {
-		return true;
+	function getName() {
+		return 'IndexPages';
 	}
 
 	function isExpensive() {
-		// FIXME: the query does filesort, so we're kinda lying here right now
 		return false;
 	}
 
 	function isSyndicated() {
 		return false;
+	}
+
+	function linkParameters() {
+		return array( 'key'=> $this->searchTerm );
+	}
+
+	function getSQL() {
+		$dbr = wfGetDB( DB_SLAVE );
+		$page = $dbr->tableName( 'page' );
+		$pr_index = $dbr->tableName( 'pr_index' );
+
+		$query = "SELECT page_title as title,
+		pr_count,pr_q0,pr_q1,pr_q2,pr_q3,pr_q4
+		FROM $pr_index LEFT JOIN $page ON page_id = pr_page_id";
+
+		if( $this->searchTerm ) {
+			if( $this->searchList ) {
+				$index_namespace = pr_index_ns() ;
+				$index_ns_index = MWNamespace::getCanonicalIndex( strtolower( $index_namespace ) );
+				$querylist = '';
+				foreach( $this->searchList as $item ) {
+					if( $querylist ) $querylist .= ', ';
+					$querylist .= "'" . $dbr->strencode( $item ). "'";
+				}
+				$query .= " WHERE page_namespace=$index_ns_index AND page_title IN ($querylist)";
+			} else {
+				# The SQL query is complete
+			}
+		}
+		return $query;
+	}
+
+	function getOrder() {
+		return ' ORDER BY 2*pr_q4+pr_q3 ' .
+			($this->sortDescending() ? 'DESC' : '');
+	}
+
+	function sortDescending() {
+		return true;
 	}
 
 	function formatResult( $skin, $result ) {

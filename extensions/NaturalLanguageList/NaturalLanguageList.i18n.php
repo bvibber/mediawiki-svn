@@ -139,6 +139,14 @@ $messages['ia'] = array(
 	'nll-lastseparator' => '&#32;e&#32;',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Bennylin
+ */
+$messages['id'] = array(
+	'nll-desc' => 'Daftar dalam bahasa natural yang mudah format',
+	'nll-lastseparator' => '&#32;dan&#32;',
+);
+
 /** Japanese (日本語)
  * @author Naohiro19
  * @author 青子守歌
@@ -239,6 +247,14 @@ $messages['sv'] = array(
  */
 $messages['te'] = array(
 	'nll-lastseparator' => '&#32;మరియు&#32;',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'nll-desc' => 'Madaling pagpopormat ng mga talaan sa likas na mga wika',
+	'nll-lastseparator' => '&#32;at&#32;',
 );
 
 /** Vietnamese (Tiếng Việt)

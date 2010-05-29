@@ -180,3 +180,10 @@ $messages['ru'] = array(
 	'hidens-desc' => 'Скрывает пространство имён в заголовке и названии, если страница относится к определённому пространству имён, или содержит вызов функции парсера <code><nowiki>{{#hidens:}}</nowiki></code>',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'hidens-desc' => 'Itinatago ang mga puwang na pampangalan sa loob ng pang-ulo at pamagat kapag ang pahina ay nasa loob ng tiyak na puwang na pampangalan o kapag tinawag ang tungkulin ng parser na <code><nowiki>{{#hidens:}}</nowiki></code>',
+);
+

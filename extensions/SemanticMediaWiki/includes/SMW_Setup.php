@@ -112,6 +112,7 @@ function enableSemantics( $namespace = null, $complete = false ) {
 	$wgAutoloadClasses['SMWRecordDescription']      = $smwgIP . 'includes/SMW_Record_Descriptions.php';
 	$wgAutoloadClasses['SMWRecordFieldDescription'] = $smwgIP . 'includes/SMW_Record_Descriptions.php';
 	$wgAutoloadClasses['SMWSQLStore2']              = $smwgIP . 'includes/storage/SMW_SQLStore2.php';
+	$wgAutoloadClasses['SMWSQLStore2Table']         = $smwgIP . 'includes/storage/SMW_SQLStore2Table.php';
 	$wgAutoloadClasses['SMWSQLHelpers']             = $smwgIP . 'includes/storage/SMW_SQLHelpers.php';
 	// Do not autoload RAPStore, since some special pages load all autoloaded classes, which causes
 	// troubles with RAP store if RAP is not installed (require_once fails).
@@ -237,7 +238,7 @@ function smwfSetupExtension() {
  * Adds links to Admin Links page
  **/
 function smwfAddToAdminLinks( &$admin_links_tree ) {
-	wfLoadExtensionMessages( 'SemanticMediaWiki' );
+	smwfLoadExtensionMessages( 'SemanticMediaWiki' );
 	$data_structure_section = new ALSection( wfMsg( 'smw_adminlinks_datastructure' ) );
 	$smw_row = new ALRow( 'smw' );
 	$smw_row->addItem( ALItem::newFromSpecialPage( 'Categories' ) );
@@ -312,7 +313,7 @@ function smwfOnParserTestTables( &$tables ) {
  */
 function smwfShowBrowseLink( $skintemplate ) {
 	if ( $skintemplate->data['isarticle'] ) {
-		wfLoadExtensionMessages( 'SemanticMediaWiki' );
+		smwfLoadExtensionMessages( 'SemanticMediaWiki' );
 		$browselink = SMWInfolink::newBrowsingLink( wfMsg( 'smw_browselink' ),
 		               $skintemplate->data['titleprefixeddbkey'], false );
     	echo "<li id=\"t-smwbrowselink\">" . $browselink->getHTML() . "</li>";

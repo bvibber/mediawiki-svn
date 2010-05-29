@@ -389,6 +389,16 @@ $messages['te'] = array(
 	'delaydef-error-no-name' => "పొరపాటు: 'పేరు' అనబడే ఏ పారామీటర్ను పేర్కొనలేదు",
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'delayeddefinition-desc' => 'Nagdaragdag ng &lt;bigyang kahulugan&gt; at &lt;ipakita&gt; upang makapagpahintulot na maiba ang puwesto ng kodigo',
+	'delaydef-error-missing-def' => 'Kamalian: Kailangang kahulugan para sa lt;pangalang ipinapakita="$1"&gt; hindi natagpuan.',
+	'delaydef-error-no-name' => 'Kamalian: Walang tinukoy na pangalan ng parametro.',
+	'delaydef-error-redef' => 'Kamalian: Tinangkang muling bigyan ng kahulugan ang $1.',
+);
+
 /** Turkish (Türkçe)
  * @author Vito Genovese
  */

@@ -662,6 +662,7 @@ $messages['tl'] = array(
 	'purgecache-warning' => 'Pupurgahin (lilinisin) nito ang mga tabla ng taguan.',
 	'purgecache-purged' => 'Napurga/nalinis na ang taguan.',
 	'purgecache-button' => 'Purgahin (linisin)',
+	'right-purgecache' => 'Punasan ang tablang OBJECTCACHE',
 );
 
 /** Turkish (Türkçe)

@@ -205,7 +205,7 @@ $messages['hil'] = array(
  * @author Michawiki
  */
 $messages['hsb'] = array(
-	'tooltip-desc' => 'přidawa tafličku <nowiki><tooltip></nowiki> a <nowiki>{{#tooltip:}}</nowiki>',
+	'tooltip-desc' => 'Přidawa tafličku <nowiki><tooltip></nowiki> a <nowiki>{{#tooltip:}}</nowiki>',
 );
 
 /** Hungarian (Magyar)

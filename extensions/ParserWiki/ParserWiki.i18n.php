@@ -181,3 +181,10 @@ $messages['ru'] = array(
 	'parserwiki-desc' => 'Позволяет определить грамматику в вики, и затем использовать эту грамматику для ввода информации в эту же вики',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'parserwiki-desc' => 'Nagpapahintulot na bigyang kahulugang ang isang balarila sa loob ng isang wiki at pagkaraan ay gamitin ang balarilang iyon upang magpasok ng kabatiran sa wiking iyon din',
+);
+

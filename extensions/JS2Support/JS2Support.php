@@ -56,6 +56,13 @@ $wgEnableJS2system = true;
 $wgExtensionJavascriptModules = array();
 
 /**
+* If the mwEmbed loader.js javascript should be used to get a list of enabled modules
+* This is for stand-alone usage and is set to false for mediaWiki.
+*  ( all modules should be loaded from $wgExtensionJavascriptModules var )
+*/
+$wgUseMwEmbedLoaderModuleList = false;
+
+/**
  * The set of script-loader Named Paths, populated via extensions and javascript module loaders
  */
 $wgScriptLoaderNamedPaths = array();
@@ -114,9 +121,15 @@ $wgClosureCompilerLevel = 'SIMPLE_OPTIMIZATIONS';
  */
 $wgScriptModifiedMsgCheck = false;
 
+/**
+ * If the scriptloader should output relative css paths
+ * Should be set to false if the script-loader is on a different domain
+ * from your css
+ */
+$wgScriptLoaderRelativeCss = true;
 
 /**
- * boolean; if we should enable javascript localization (it loads mw.addMessages json
+ * boolean; if scriptLoader should localize script text(it loads mw.addMessages json
  * call with mediaWiki msgs)
  */
 $wgEnableScriptLocalization = true;

@@ -195,9 +195,13 @@ $messages['br'] = array(
 	'invite-logentry' => "en deus pedet $1 da implijout an arc'hwel <i>$2</i>.",
 	'invitations' => "Merañ pedadennoù an arc'hweladurioù meziant",
 	'invitations-desc' => "Aotreañ a ra [[Special:Invitations|merañ an arc'hweladurioù nevez]] en ur strishaat anezho dre ur sistem diazezet war ar bedadenn.",
+	'invitations-invitedlist-description' => "Gallout a rit ober gant elfennoù da-heul ar meziant pediñ hepken.
+Evit merañ ar pedadennoù evit un elfenn hiniennel, klikit war hec'h anv.",
 	'invitations-invitedlist-none' => "N'oc'h ket bet pedet evit implijout arc'hweladurioù ar meziant pediñ ec'h unan.",
 	'invitations-invitedlist-item-count' => '({{PLURAL:$1|Ur bedadenn|$1 pedadenn}} posupl a zo)',
 	'invitations-pagetitle' => "Arc'hweladurioù ar meziant pediñ ec'h unan",
+	'invitations-uninvitedlist-description' => "N'oc'h ket aotreet d'ober gant elfennoù ar programm pediñ hepken.",
+	'invitations-uninvitedlist-none' => "Evit ar mare n'eus bet merket elfenn veziantel ebet all gant ar pediñ hepken",
 	'invitations-feature-pagetitle' => 'Merañ ar bedadenn - $1',
 	'invitations-feature-access' => 'Er mare-mañ ho peus ar moned evit implijout <i>$1</i>.',
 	'invitations-feature-numleft' => "{{PLURAL:$2|Ur bedadenn|<b>$1</b> pedadenn diwar $2 pedadenn}} ho peus c'hoazh.",

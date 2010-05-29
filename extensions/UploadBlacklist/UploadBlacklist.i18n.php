@@ -397,6 +397,13 @@ $messages['tk'] = array(
 	'uploadblacklist-desc' => 'Ýükleme gara sanawy funksionallygyny goşýar',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'uploadblacklist-desc' => 'Nagdaragdag ng isang tungkulin na pang-talaan ng mga binabawalang maikarga',
+);
+
 /** Turkish (Türkçe)
  * @author Joseph
  */

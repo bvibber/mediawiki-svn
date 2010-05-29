@@ -650,6 +650,13 @@ $messages['ms'] = array(
 	'randomincategory-label' => 'Kategori:',
 );
 
+/** Maltese (Malti)
+ * @author Chrisportelli
+ */
+$messages['mt'] = array(
+	'randomincategory-submit' => 'Mur',
+);
+
 /** Erzya (Эрзянь)
  * @author Botuzhaleny-sodamo
  */

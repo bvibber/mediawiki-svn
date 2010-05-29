@@ -111,6 +111,13 @@ $messages['eu'] = array(
 	'vector-collapsiblenav-preference' => 'Ezkerreko nabigazio menua irekigarri bihurtzen du',
 );
 
+/** Persian (فارسی)
+ * @author Ebraminio
+ */
+$messages['fa'] = array(
+	'vector-collapsiblenav-preference' => 'فعال‌کردن منوی تاشوی ناوبری  سمت چپ',
+);
+
 /** French (Français)
  * @author IAlex
  */
@@ -186,6 +193,13 @@ $messages['it'] = array(
  */
 $messages['ja'] = array(
 	'vector-collapsiblenav-preference' => '左寄りの折り畳めるナビゲーションメニューを使用する',
+);
+
+/** Georgian (ქართული)
+ * @author BRUTE
+ */
+$messages['ka'] = array(
+	'vector-collapsiblenav-preference' => 'მარცხენა სანავიგაციო მენიუს ჩაკეცვა',
 );
 
 /** Korean (한국어)
@@ -301,6 +315,13 @@ $messages['sv'] = array(
 	'vector-collapsiblenav-preference' => 'Gör den vänstra navigeringsmenyn ihopfällbar',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'vector-collapsiblenav-preference' => 'Paganahin ang natitiklop na pangkaliwang menu na panlibot',
+);
+
 /** Turkish (Türkçe)
  * @author Joseph
  */
@@ -313,6 +334,13 @@ $messages['tr'] = array(
  */
 $messages['vi'] = array(
 	'vector-collapsiblenav-preference' => 'Bật trình đơn chuyển hướng gấp lại được ở bên phải',
+);
+
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'vector-collapsiblenav-preference' => 'אַקטיווירן צונויפֿלייגבאַרן מעניו לינקס',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

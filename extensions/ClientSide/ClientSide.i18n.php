@@ -378,6 +378,13 @@ $messages['te'] = array(
 	'clientside-desc' => 'క్లయింట్ వైపు వాడే హెచ్టిఎంఎల్, జావాస్క్రిప్ట్, సిఎసెస్ వంటి సాప్టువేరుకి కోడుని తయ్యరు చేసే ఫంక్షనులను చూపిస్తుంది',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'clientside-desc' => 'Nagbibigay ng mga tungkulin para sa paglikha ng kodigo sa mga pormatong nasa gawi ng kliyente katulad ng HTML, CSS at JavaScript',
+);
+
 /** Turkish (Türkçe)
  * @author Joseph
  */

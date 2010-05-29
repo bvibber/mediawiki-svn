@@ -532,6 +532,27 @@ $messages['sv'] = array(
 	'pf-header-approve' => 'Godkänn',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'packageforce' => 'PaketengPuwersa',
+	'packageforceadmin' => 'Tagapangasiwa ng PaketengPuwersa',
+	'pf-desc' => '[[Special:PackageForce|Ikargang pababa ang mga pakete]] ng magagamit na mga suleras/atbp.',
+	'pf-only-admins-allowed' => "Ang pahinang ito ay para lamang sa mga tagagamit na may karapatang 'tagapangasiwa ng paketengpuwersa'.",
+	'pf-admin-menu-default' => 'Likas na nakatakda',
+	'pf-admin-menu-unsortedtemplates' => 'Hinpi na napipili ang mga suleras',
+	'pf-admin-link-view-documentation' => 'Tingnan ang mga kasulatang nakatali sa pahina.',
+	'pf-admin-link-editlink-page' => 'Baguhin ang pahina',
+	'pf-admin-link-approve' => 'Payagan ang pahina',
+	'pf-header-documentation' => 'Dokumentasyon',
+	'pf-header-in_packages' => 'Mga pakete',
+	'pf-header-edit' => 'Baguhin ang kawing',
+	'pf-header-type' => 'Uri ng pahina',
+	'pf-header-page_title' => 'Pamagat',
+	'pf-header-approve' => 'Payagan',
+);
+
 /** Yiddish (ייִדיש)
  * @author פוילישער
  */

@@ -742,6 +742,24 @@ $messages['te'] = array(
 	'cooperationstatistics-articles' => '$1 {{PLURAL:$1|పేజీ|పేజీలు}}',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'cooperationstatistics' => 'Estadistika ng pakikiisa',
+	'cooperationstatistics-desc' => 'Ipakita ang [[Special:CooperationStatistics|estadistika ng pakikiisa sa pangunahing puwang na pampangalan]].',
+	'cooperationstatistics-text' => "Ipakita ang estadistika ng pakikiisa sa pangunahing puwang na pampangalan.
+Mula mga tagapagpabagong [[MediaWiki:Cooperationstatistics-limit-few-revisors|{{MediaWiki:Cooperationstatistics-limit-few-revisors}}]] hanggang  [[MediaWiki:Cooperationstatistics-limit-many-revisors|{{MediaWiki:cooperationstatistics-limit-many-revisors}}+]].<br />
+Tingnan din ang [[Special:MostRevisors|'''mga pahinang may pinakamaraming mga tagapagbago''']] at [[Special:MostRevisions|mga pahinang may pinakamaraming mga pagbabago]].",
+	'cooperationstatistics-tablearticle' => 'Bilang ng pahina',
+	'cooperationstatistics-tablevalue' => 'Bilang ng mga patnugot',
+	'cooperationstatistics-articles' => '$1 {{PLURAL:$1|pahina|mga pahina}}',
+	'cooperationstatistics-nbusers' => '{{PLURAL:$2|may|may mga}} $1 na {{PLURAL:$1|patnugot|mga patnugot}}',
+	'cooperationstatistics-nblessusers' => '{{PLURAL:$2|may|may mga}} $1 na {{PLURAL:$1|patnugot|o mas kaunting mga patnugot}}',
+	'cooperationstatistics-nbmoreusers' => '{{PLURAL:$2|may|may mga}} $1 o mas mahigit pang mga patnugot',
+	'cooperationstatistics-legendmore' => 'o mahigit pang mga patnugot.',
+);
+
 /** Turkish (Türkçe)
  * @author Vito Genovese
  */

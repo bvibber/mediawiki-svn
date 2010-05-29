@@ -4829,9 +4829,12 @@ $messages['eu'] = array(
 );
 
 /** Persian (فارسی)
+ * @author Ebraminio
  * @author Ladsgroup
  */
 $messages['fa'] = array(
+	'wikieditor-toolbar-preference' => 'فعال‌کردن نوارابزار ویرایش پیشرفته',
+	'wikieditor-toolbar-dialogs-preference' => 'قعال‌سازی پنجره‌های تعاملی برای وارد کردن لینک‌ها، جدول‌ها و ...',
 	'wikieditor-toolbar-tool-italic' => 'ایتالیک',
 	'wikieditor-toolbar-tool-italic-example' => 'متن ایتالیک',
 	'wikieditor-toolbar-tool-ilink' => 'پیوند داخلی',
@@ -4853,24 +4856,59 @@ $messages['fa'] = array(
 	'wikieditor-toolbar-tool-link-int-target-status-invalid' => 'عنوان نادرست',
 	'wikieditor-toolbar-tool-file-example' => 'مثال.jpg',
 	'wikieditor-toolbar-tool-reference' => 'منبع',
+	'wikieditor-toolbar-tool-reference-cancel' => 'انصراف',
 	'wikieditor-toolbar-tool-signature' => 'امضا و زمان',
 	'wikieditor-toolbar-section-advanced' => 'پیشرفته',
 	'wikieditor-toolbar-tool-heading-example' => 'عنوان سطح',
 	'wikieditor-toolbar-group-format' => 'فهرست',
+	'wikieditor-toolbar-tool-ulist' => 'لیست گلوله‌ای',
+	'wikieditor-toolbar-tool-redirect-example' => 'نام صفحه مقصد',
 	'wikieditor-toolbar-tool-big' => 'بزرگ',
 	'wikieditor-toolbar-tool-big-example' => 'متن بزرگ',
 	'wikieditor-toolbar-tool-small' => 'کوچک',
 	'wikieditor-toolbar-tool-small-example' => 'متن کوچک',
+	'wikieditor-toolbar-tool-superscript' => 'بالانویس',
+	'wikieditor-toolbar-tool-superscript-example' => 'متن بالانویس',
+	'wikieditor-toolbar-tool-subscript' => 'زیرنویس',
+	'wikieditor-toolbar-tool-subscript-example' => 'متن زیرنویس',
+	'wikieditor-toolbar-group-insert' => 'اضافه‌کردن',
 	'wikieditor-toolbar-tool-newline' => 'خط جدید',
 	'wikieditor-toolbar-tool-table' => 'جدول',
+	'wikieditor-toolbar-tool-table-example-cell-text' => 'متن سلول',
+	'wikieditor-toolbar-tool-table-title' => 'اضافه‌کردن جدول',
+	'wikieditor-toolbar-tool-table-dimensions-rows' => 'سطرها',
+	'wikieditor-toolbar-tool-table-dimensions-columns' => 'ستون‌ها',
+	'wikieditor-toolbar-tool-table-dimensions-header' => 'افزودن سطر سرتیتر',
+	'wikieditor-toolbar-tool-table-wikitable' => 'سبک با مرز',
+	'wikieditor-toolbar-tool-table-sortable' => 'ساختن جدول قابل مرتب‌سازی',
+	'wikieditor-toolbar-tool-table-example' => 'مثال',
 	'wikieditor-toolbar-tool-table-cancel' => 'لغو',
+	'wikieditor-toolbar-tool-table-invalidnumber' => 'اعداد را درست و به انگلیسی وارد کنید.',
+	'wikieditor-toolbar-tool-replace-title' => 'جستجو و جایگزین‌کردن',
+	'wikieditor-toolbar-tool-replace-search' => 'جستجو برای:',
+	'wikieditor-toolbar-tool-replace-replace' => 'جایگزین‌کردن با:',
+	'wikieditor-toolbar-section-characters' => 'نویسه‌های ویژه',
+	'wikieditor-toolbar-characters-page-latin' => 'لاتین',
+	'wikieditor-toolbar-characters-page-latinextended' => 'لاتین گسترش‌یافته',
+	'wikieditor-toolbar-characters-page-ipa' => 'آوانگاری بین‌المللی',
+	'wikieditor-toolbar-characters-page-symbols' => 'نماد',
 	'wikieditor-toolbar-characters-page-greek' => 'یونانی',
 	'wikieditor-toolbar-characters-page-cyrillic' => 'سیریلیک',
 	'wikieditor-toolbar-characters-page-arabic' => 'عربی',
 	'wikieditor-toolbar-characters-page-hebrew' => 'عبری',
+	'wikieditor-toolbar-characters-page-bangla' => 'بنگالی',
 	'wikieditor-toolbar-characters-page-telugu' => 'تالوگو',
+	'wikieditor-toolbar-characters-page-sinhala' => 'سینهالی',
+	'wikieditor-toolbar-characters-page-gujarati' => 'گجراتی',
 	'wikieditor-toolbar-section-help' => 'راهنما',
 	'wikieditor-toolbar-help-content-italic-description' => 'ایتالیک',
+	'wikieditor-toolbar-help-content-bold-description' => 'ضخیم',
+	'wikieditor-toolbar-help-content-bold-syntax' => "'''متن ضخیم'''",
+	'wikieditor-toolbar-help-content-bold-result' => '<strong>متن ضخیم</strong>',
+	'wikieditor-toolbar-help-content-bolditalic-description' => 'ضخیم و مورب',
+	'wikieditor-toolbar-help-content-bolditalic-syntax' => "'''''متن ضخیم و مورب'''''",
+	'wikieditor-toolbar-help-content-bolditalic-result' => '<strong><em>متن ضخیم و مورب</em></strong>',
+	'wikieditor-toolbar-help-content-file-description' => 'پرونده جاسازی‌شده',
 	'wikieditor-toolbar-help-content-signature-description' => 'امضا',
 );
 
@@ -7305,7 +7343,7 @@ $messages['id'] = array(
 	'wikieditor-toolbar-tool-link-lookslikeinternal' => 'URL yang Anda berikan tampaknya merupakan pranala ke halaman wiki lain. Apakah Anda ingin membuatnya menjadi pranala internal?',
 	'wikieditor-toolbar-tool-link-lookslikeinternal-int' => 'Pranala internal',
 	'wikieditor-toolbar-tool-link-lookslikeinternal-ext' => 'Pranala luar',
-	'wikieditor-toolbar-tool-link-empty' => 'Anda tidak memasukkan apapun untuk ditautkan.',
+	'wikieditor-toolbar-tool-link-empty' => 'Anda tidak memasukkan apa pun untuk ditautkan.',
 	'wikieditor-toolbar-tool-file' => 'Sisipkan berkas',
 	'wikieditor-toolbar-tool-file-example' => 'Contoh.jpg',
 	'wikieditor-toolbar-tool-reference' => 'Referensi',
@@ -7383,7 +7421,7 @@ $messages['id'] = array(
 	'wikieditor-toolbar-tool-replace-close' => 'Batalkan',
 	'wikieditor-toolbar-tool-replace-nomatch' => 'Pencarian Anda tidak membuahkan hasil.',
 	'wikieditor-toolbar-tool-replace-success' => 'Terjadi $1 penggantian.',
-	'wikieditor-toolbar-tool-replace-emptysearch' => 'Anda tidak memasukan apapun untuk di pencarian.',
+	'wikieditor-toolbar-tool-replace-emptysearch' => 'Anda tidak memasukan apa pun untuk di pencarian.',
 	'wikieditor-toolbar-tool-replace-invalidregex' => 'Kalimat biasa yang Anda masukkan tidak sah: $1',
 	'wikieditor-toolbar-section-characters' => 'Karakter spesial',
 	'wikieditor-toolbar-characters-page-latin' => 'Latin',
@@ -8978,6 +9016,7 @@ $messages['lb'] = array(
 /** Lithuanian (Lietuvių)
  * @author Garas
  * @author Homo
+ * @author Hugo.arg
  * @author Matasg
  */
 $messages['lt'] = array(
@@ -9020,6 +9059,10 @@ $messages['lt'] = array(
 	'wikieditor-toolbar-tool-file-example' => 'Pavyzdys.jpg',
 	'wikieditor-toolbar-tool-reference' => 'Išnaša',
 	'wikieditor-toolbar-tool-reference-example' => 'Čia įterpkite teksto išnašą',
+	'wikieditor-toolbar-tool-reference-cancel' => 'Atšaukti',
+	'wikieditor-toolbar-tool-reference-title' => 'Įtraukti nuorodą',
+	'wikieditor-toolbar-tool-reference-insert' => 'Įtraukti',
+	'wikieditor-toolbar-tool-reference-text' => 'Nuorodos tekstas',
 	'wikieditor-toolbar-tool-signature' => 'Jūsų parašas bei laikas',
 	'wikieditor-toolbar-section-advanced' => 'Išplėstinis',
 	'wikieditor-toolbar-tool-heading' => 'Antraštė',
@@ -9036,6 +9079,10 @@ $messages['lt'] = array(
 	'wikieditor-toolbar-tool-olist-example' => 'Numeruoto sąrašo elementas',
 	'wikieditor-toolbar-tool-indent' => 'Įtrauka',
 	'wikieditor-toolbar-tool-indent-example' => 'Įtraukta eilutė',
+	'wikieditor-toolbar-tool-nowiki' => 'Ignoruoti wiki formatą',
+	'wikieditor-toolbar-tool-nowiki-example' => 'Čia įterpkite neformuotą tekstą',
+	'wikieditor-toolbar-tool-redirect' => 'nukreipimą',
+	'wikieditor-toolbar-tool-redirect-example' => 'Tikslinio puslapio pavadinimas',
 	'wikieditor-toolbar-tool-big' => 'Didelis',
 	'wikieditor-toolbar-tool-big-example' => 'Didelis tekstas',
 	'wikieditor-toolbar-tool-small' => 'Mažas',
@@ -9428,7 +9475,7 @@ $messages['mk'] = array(
 	'wikieditor-toolbar-tool-reference' => 'Навод',
 	'wikieditor-toolbar-tool-reference-example' => 'Тука внесете текст на фуснотата',
 	'wikieditor-toolbar-tool-reference-cancel' => 'Откажи',
-	'wikieditor-toolbar-tool-reference-title' => 'Вметни референца',
+	'wikieditor-toolbar-tool-reference-title' => 'Вметни навод',
 	'wikieditor-toolbar-tool-reference-insert' => 'Вметни',
 	'wikieditor-toolbar-tool-reference-text' => 'Текст на наводот',
 	'wikieditor-toolbar-tool-signature' => 'Вашиот потпис со време',
@@ -12815,14 +12862,19 @@ $messages['sah'] = array(
 );
 
 /** Sardinian (Sardu)
+ * @author Andria
  * @author Cedric31
  */
 $messages['sc'] = array(
-	'wikieditor-toolbar-tool-heading-1' => 'Livèddu 1',
-	'wikieditor-toolbar-tool-heading-2' => 'Livèddu 2',
-	'wikieditor-toolbar-tool-heading-3' => 'Livèddu 3',
-	'wikieditor-toolbar-tool-heading-4' => 'Livèddu 4',
-	'wikieditor-toolbar-tool-heading-5' => 'Livèddu 5',
+	'wikieditor-toolbar-tool-bold' => 'Grassu',
+	'wikieditor-toolbar-tool-bold-example' => 'Testu grassu',
+	'wikieditor-toolbar-tool-italic' => 'Corsivu',
+	'wikieditor-toolbar-tool-italic-example' => 'Testu corsivu',
+	'wikieditor-toolbar-tool-heading-1' => 'Livellu 1',
+	'wikieditor-toolbar-tool-heading-2' => 'Livellu 2',
+	'wikieditor-toolbar-tool-heading-3' => 'Livellu 3',
+	'wikieditor-toolbar-tool-heading-4' => 'Livellu 4',
+	'wikieditor-toolbar-tool-heading-5' => 'Livellu 5',
 	'wikieditor-toolbar-tool-heading-example' => 'Testu de su tìtulu',
 );
 
@@ -15632,6 +15684,7 @@ $messages['xmf'] = array(
  */
 $messages['yi'] = array(
 	'wikieditor-toolbar' => 'רעדאקטירונג געצייג־פאס',
+	'wikieditor-toolbar-desc' => 'רעדאַקטירן בלאַט געצייגפאַס מיט פֿאַרברייטערטער ניצלעכקייט',
 	'wikieditor-toolbar-loading' => 'אָנלאָדן...',
 	'wikieditor-toolbar-tool-bold' => 'דיק',
 	'wikieditor-toolbar-tool-bold-example' => 'דיקער טעקסט',
@@ -15716,6 +15769,7 @@ $messages['yi'] = array(
 | ריי 2, צעל 3',
 	'wikieditor-toolbar-tool-table-example-cell-text' => 'צעל טעקסט',
 	'wikieditor-toolbar-tool-table-example-header' => 'קעפל טעקסט',
+	'wikieditor-toolbar-tool-table-title' => 'צולייגן טאַבעלע',
 	'wikieditor-toolbar-tool-table-dimensions-rows' => 'שורות',
 	'wikieditor-toolbar-tool-table-dimensions-columns' => 'עמודים',
 	'wikieditor-toolbar-tool-table-example' => 'צעל טעקסט',
@@ -15746,14 +15800,19 @@ $messages['yi'] = array(
 	'wikieditor-toolbar-help-page-reference' => 'רעפערענצן',
 	'wikieditor-toolbar-help-content-bold-description' => 'דיק',
 	'wikieditor-toolbar-help-content-ilink-description' => 'אינערלעכער לינק',
+	'wikieditor-toolbar-help-content-heading1-description' => 'ערשטער ניווא קעפל',
 	'wikieditor-toolbar-help-content-heading1-syntax' => '= קעפל טעקסט =',
 	'wikieditor-toolbar-help-content-heading1-result' => '<h1>קעפל טעקסט</h1>',
+	'wikieditor-toolbar-help-content-heading2-description' => 'צווייטער ניווא קעפל',
 	'wikieditor-toolbar-help-content-heading2-syntax' => '== קעפל טעקסט ==',
 	'wikieditor-toolbar-help-content-heading2-result' => '<h2>קעפל טעקסט</h2>',
+	'wikieditor-toolbar-help-content-heading3-description' => 'דריטער ניווא קעפל',
 	'wikieditor-toolbar-help-content-heading3-syntax' => '=== קעפל טעקסט ===',
 	'wikieditor-toolbar-help-content-heading3-result' => '<h3>קעפל טעקסט</h3>',
+	'wikieditor-toolbar-help-content-heading4-description' => 'פֿערטער ניווא קעפל',
 	'wikieditor-toolbar-help-content-heading4-syntax' => '==== קעפל טעקסט ====',
 	'wikieditor-toolbar-help-content-heading4-result' => '<h4>קעפל טעקסט</h4>',
+	'wikieditor-toolbar-help-content-heading5-description' => 'פֿיפֿטער ניווא קעפל',
 	'wikieditor-toolbar-help-content-heading5-result' => '<h5>קעפל טעקסט</h5>',
 	'wikieditor-toolbar-help-content-ulist-syntax' => '* ליסטע איינצל<br />* ליסטע איינצל',
 	'wikieditor-toolbar-help-content-ulist-result' => '<ul><li>ליסטע איינצל</li><li>ליסטע איינצל</li></ul>',

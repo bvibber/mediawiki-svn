@@ -232,6 +232,13 @@ $messages['ru'] = array(
 	'apisvgproxy-desc' => 'Замещение SVG-файлов из хранилища файлов (возможно удаленного), на локальный домен',
 );
 
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Charmed94
+ */
+$messages['sr-ec'] = array(
+	'apisvgproxy-desc' => 'Посредници SVG датотека из (вероватно даљинске) датотеке на дељеном складишту у локалном домену',
+);
+
 /** Sundanese (Basa Sunda)
  * @author Kandar
  */
@@ -251,6 +258,13 @@ $messages['sv'] = array(
  */
 $messages['te'] = array(
 	'apisvgproxy-desc' => 'ఎక్కడో ఉన్న SVG ఫైళ్ళు ప్రాంతీయ డొమైన్ ఉన్నట్లుగా చూపబడతాయి',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'apisvgproxy-desc' => 'Mga talaksang pamalit na SVG mula sa isang (maaaring malayo) taguan ng talaksan sa isang dominyong lokal',
 );
 
 /** Turkish (Türkçe)

@@ -1937,6 +1937,11 @@ $messages['mg'] = array(
 	'youtubeauthsub_category' => 'Sokajy',
 	'youtubeauthsub_submit' => 'Alefa',
 	'youtubeauthsub_clickhere' => "Tsindrio eto ra tia hiditra anatin'ny Youtube",
+	'youtubeauthsub_uploadhere' => 'Hampiditra ny video-nao avy eto :',
+	'youtubeauthsub_uploadbutton' => 'Hampiditra',
+	'youtubeauthsub_summary' => 'Hampiditra video YouTube',
+	'youtubeauthsub_uploading' => 'Mampiditra ny video-nao ny rindrankajy.
+Andraso.',
 	'youtubeauthsub_jserror_nokeywords' => 'Mampidira teny iray na maro.',
 	'youtubeauthsub_jserror_notitle' => "Mampidira lohateny ho an'ilay video.",
 	'youtubeauthsub_jserror_nodesc' => "Mampidira ambangovangony ho an'ilay video.",

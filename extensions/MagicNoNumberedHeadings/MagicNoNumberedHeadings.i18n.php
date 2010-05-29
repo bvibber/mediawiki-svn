@@ -335,6 +335,13 @@ $messages['te'] = array(
 	'magicnonumberedheadings-desc' => '"<nowiki>__NONUMBEREDHEADINGS__</nowiki>" అనే పదాన్ని చేరుస్తుంది',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'magicnonumberedheadings-desc' => 'Nagdaragdag ng salitang masalamangka na "<nowiki>__NONUMBEREDHEADINGS__</nowiki>"',
+);
+
 /** Turkish (Türkçe)
  * @author Vito Genovese
  */

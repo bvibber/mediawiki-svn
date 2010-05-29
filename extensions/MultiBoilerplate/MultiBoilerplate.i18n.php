@@ -626,6 +626,10 @@ $messages['tl'] = array(
 	'multiboilerplate-desc' => 'Nagpapahintulot na makapili ng isang "pakuluang-bakal" mula sa isang kahong bumabagsak pababa na nasa itaas ng pormularyong pampatnugot (pambago) kapag nagbabago ng mga pahina',
 	'multiboilerplate-legend' => 'Pumili ng pakuluang-bakal',
 	'multiboilerplate-submit' => 'Ikarga',
+	'boilerplates' => 'Makukuhang mga platong pampakulo',
+	'multiboilerplate-special-pagetext' => 'Maaaring mapaunang ikarga ang mga suleras na ito sa paglikha ng pahina. (<span class=plainlinks>[{{fullurl:This page does not exist|action=edit}} pagpapakita]</span>)',
+	'multiboilerplate-special-define-in-localsettings' => 'Binigyang kahulugana ng mga platong pamakulo sa loob ng LocalSettings.',
+	'multiboilerplate-special-define-in-interface' => 'Binigyang kahulugan ang mga platong pampakulo sa loob ng [[MediaWiki:Multiboilerplate]].',
 );
 
 /** Turkish (Türkçe)
