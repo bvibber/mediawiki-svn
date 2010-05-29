@@ -8,7 +8,7 @@ EOT;
 }
 
 class PureWikiDeletionHooks {
-       
+
        public static function PureWikiDeletionOutputPageParserOutputHook( &$out, $parseroutput ) {
 		$dbr = wfGetDB( DB_SLAVE );
 		$target = $out->getTitle();
@@ -28,11 +28,11 @@ class PureWikiDeletionHooks {
 		if ( $out->getPageTitle() == $target->getPrefixedText() ) {
 			$out->redirect( $target->getEditURL() );
 		}
-		
+
 		$out->setPageTitle( $out->getPageTitle() );
 		return true;
        }
-       
+
        public static function PureWikiDeletionSaveCompleteHook( &$article, &$user, $text, $summary,
 	      $minoredit, &$watchthis, $sectionanchor, &$flags, $revision, &$status, $baseRevId,
 	      &$redirect ) {
@@ -106,8 +106,8 @@ class PureWikiDeletionHooks {
 	      }
 	      return true;
        }
-       
-            
+
+
        public static function PureWikiDeletionLink( $skin, $target, &$text, &$customAttribs, &$query, &$options
 	      , &$ret ) {
 	      global $wgPureWikiDeletionBlankLinkStyle;
@@ -135,7 +135,7 @@ class PureWikiDeletionHooks {
 	       }
 	       return true;
        }
-       
+
        public static function PureWikiDeletionEditHook( &$editPage ) {
 	      global $wgLang, $wgUser;
 	      wfLoadExtensionMessages( 'PureWikiDeletion' );
@@ -148,13 +148,13 @@ class PureWikiDeletionHooks {
 		     'blank_summary',
 		     'blank_parent_id'
 	      );
-	      
+
 	      $result = $dbr->selectRow( 'blanked_page', $blank_row, array
 		     ( 'blank_page_id' => $blank_page_id ) );
 	      if ( !$result ) {
 		     return true;
 	      }
-	      
+
 	      $blank_user_id = $result->blank_user_id;
 	      if ( $blank_user_id == 0 ) {
 		     $blank_user_name = $result->blank_user_name;
@@ -162,21 +162,23 @@ class PureWikiDeletionHooks {
 		     $blanking_user = User::newFromId( $blank_user_id );
 		     $blank_user_name = $blanking_user->getName();
 	      }
-	      $html = wfMsgExt( 'purewikideletion-blanked', 'parse', array
-		     ( $blank_user_name
-		     , $wgLang->timeanddate( wfTimestamp( TS_MW
-		     , $result->blank_timestamp ), true )
-		     , $result->blank_summary
-		     , $result->blank_parent_id ) );
-	      $editPage->editFormPageTop .= $html;
-	      
+		$html = wfMsgExt( 'purewikideletion-blanked', 'parse', array(
+			$blank_user_name,
+			$wgLang->timeanddate( wfTimestamp( TS_MW, $result->blank_timestamp ), true ),
+			$result->blank_summary,
+			$result->blank_parent_id,
+			$wgLang->date( wfTimestamp( TS_MW, $result->blank_timestamp ), true ),
+			$wgLang->time( wfTimestamp( TS_MW, $result->blank_timestamp ), true )
+		) );
+		$editPage->editFormPageTop .= $html;
+
 	      if ($wgUser->getOption( 'watchunblank' )){
 		   $editPage->watchthis = true;
 	      }
-	      
+
 	      return true;
        }
-       
+
        public static function PureWikiDeletionDeleteHook( &$article, &$user, $reason, $id )
        {
 	      $dbr = wfGetDB( DB_SLAVE );
@@ -190,7 +192,7 @@ class PureWikiDeletionHooks {
 	      }
 	      return true;
        }
-       
+
        public static function PureWikiDeletionUndeleteHook( $title, $create ) {
 	      $dbr = wfGetDB( DB_SLAVE );
 	      $myRevision = Revision::loadFromTitle( $dbr, $title );
@@ -208,14 +210,14 @@ class PureWikiDeletionHooks {
 	      }
 	      return true;
        }
-       
+
        public static function efPureWikiDeletionParserFunction_Setup( $parser ) {
 	       # Set a function hook associating the "example" magic word with our function
 	       $parser->setFunctionHook( 'ifnotblank', 'PureWikiDeletionHooks::efPureWikiDeletionParserFunction_RenderNotBlank' );
 	       $parser->setFunctionHook( 'ifblank', 'PureWikiDeletionHooks::efPureWikiDeletionParserFunction_RenderBlank' );
 	       return true;
        }
-	
+
        public static function efPureWikiDeletionParserFunction_Magic( &$magicWords, $langCode ) {
 	       # Add the magic word
 	       # The first array element is whether to be case sensitive, in this case (0) it is not case
@@ -226,15 +228,15 @@ class PureWikiDeletionHooks {
 	       # unless we return true, other parser functions extensions won't get loaded.
 	       return true;
        }
-       
+
        public static function efPureWikiDeletionParserFunction_RenderBlank( $parser, $param1 = '', $param2 = '', $param3 = '' ) {
 	       return PureWikiDeletionHooks::evaluateBlankness ( $parser, $param1, $param2, $param3 );
        }
-       
+
        public static function efPureWikiDeletionParserFunction_RenderNotBlank( $parser, $param1 = '', $param2 = '', $param3 = '' ) {
 	       return PureWikiDeletionHooks::evaluateBlankness ( $parser, $param1, $param3, $param2 );
        }
-       
+
        public static function evaluateBlankness ( $parser, $param1 = '', $param2 = '', $param3 = '' ) {
 	       global $wgNamespaceAliases, $wgExpensiveParserFunctionLimit;
 	       if ( $parser->incrementExpensiveFunctionCount() ) {
@@ -262,7 +264,7 @@ class PureWikiDeletionHooks {
 	       }
 	       return false; // If too many expensive functions have been run
        }
-       
+
        public static function PureWikiDeletionCreateTable() {
 	   global $wgExtNewTables;
 	   $wgExtNewTables[] = array(

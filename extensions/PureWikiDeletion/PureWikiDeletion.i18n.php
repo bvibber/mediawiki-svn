@@ -1,6 +1,12 @@
 <?php
+/**
+ * Internationalisation file for extension AbsenteeLandlord.
+ */
+
 $messages = array();
- 
+
+/** English
+ */
 $messages['en'] = array(
 	'purewikideletion' => 'Pure wiki deletion',
 	'randomexcludeblank' => 'Random page (exclude blank)',
@@ -8,8 +14,8 @@ $messages['en'] = array(
 	'purewikideletion-desc' => 'Among other things, causes blanked pages to be redlinked',
 	'purewikideletion-pref-watchblank' => 'Add pages I blank to my watchlist',
 	'purewikideletion-pref-watchunblank' => 'Add pages I unblank to my watchlist',
-	'purewikideletion-blanked' => "A former version of this page was blanked by [[User:$1|$1]] ([[User talk:$1|talk]]) ([[Special:Contributions/$1|contribs]]) on $2
-        
+	'purewikideletion-blanked' => "A former version of this page was blanked by [[User:$1|$1]] ([[User talk:$1|talk]]) ([[Special:Contributions/$1|contribs]]) on $5 at $6.
+
 The reason given for blanking was: ''<nowiki>$3</nowiki>''.
 
 You may [{{fullurl:{{FULLPAGENAMEE}}|action=history}} view the article's history], [{{fullurl:{{FULLPAGENAMEE}}|oldid=$4&action=edit}} edit the last version], or type new page into the white space below.",
@@ -18,7 +24,7 @@ You may [{{fullurl:{{FULLPAGENAMEE}}|action=history}} view the article's history
 	'blank-log-header' => 'Below is a list of page blankings and unblankings.',
 	'blank-log-entry-blank' => 'blanked $1',
 	'blank-log-entry-unblank' => 'unblanked $1',
-	'blank-log-link' => '[[Special:Log/blank|blank log]]',
+	'blank-log-link' => '[[{{#Special:Log}}/blank|blank log]]',
 	'purewikideletion-blanknologin' => 'Not logged in',
 	'purewikideletion-blanknologintext' => 'You must be a registered user and [[Special:UserLogin|logged in]] to blank a page.',
 	'purewikideletion-unblanknologintext' => 'You must be a registered user and [[Special:UserLogin|logged in]] to unblank a page.',
@@ -37,7 +43,7 @@ $messages['ar'] = array(
 	'purewikideletion-pref-watchblank' => 'أضف الفصفحات التي أفرغها إلى قائمة مراقبتي',
 	'purewikideletion-pref-watchunblank' => 'أضف الصفحات التي أملؤها إلى قائمة مراقبتي',
 	'purewikideletion-blanked' => "نسخة سابقة من هذه الصفحة تم إفراغها بواسطة [[User:$1|$1]] ([[User talk:$1|نقاش]]) ([[Special:Contributions/$1|مساهمات]]) في $2
-	
+
 السبب المعطى للإفراغ كان: ''<nowiki>$3</nowiki>''.
 
 يمكنك [{{fullurl:{{FULLPAGENAMEE}}|action=history}} رؤية تاريخ المقالة], [{{fullurl:{{FULLPAGENAMEE}}|oldid=$4&action=edit}} تعديل آخر نسخة]،
@@ -63,7 +69,7 @@ $messages['be-tarask'] = array(
 	'purewikideletion-pref-watchblank' => 'Дадаваць у мой сьпіс назіраньня старонкі, якія я буду ачышчаць',
 	'purewikideletion-pref-watchunblank' => 'Дадаваць у мой сьпіс назіраньня старонкі, у якіх я буду адмяняць ачыстку',
 	'purewikideletion-blanked' => "Папярэдняя вэрсія гэтай старонкі была ачышчаная [[User:$1|$1]] ([[User talk:$1|гутаркі]]) ([[Special:Contributions/$1|унёсак]]) $2
-        
+
 Пададзеная прычына ачысткі была: ''<nowiki>$3</nowiki>''.
 
 Вы можаце [{{fullurl:{{FULLPAGENAMEE}}|action=history}} праглядзець гісторыю старонкі], [{{fullurl:{{FULLPAGENAMEE}}|oldid=$4&action=edit}} рэдагаваць апошнюю вэрсію], альбо ўвесьці тэкст новай старонкі ў белае поле ніжэй.",
@@ -211,7 +217,7 @@ $messages['mk'] = array(
 	'purewikideletion-pref-watchblank' => 'Додавај ги страниците што ги празнам во мојата листа на набљудувања',
 	'purewikideletion-pref-watchunblank' => 'Додавај ги испразнетите страници што ги враќам во мојата листа на набљудувања',
 	'purewikideletion-blanked' => "Претходна верзија на оваа страница беше испразнета од [[User:$1|$1]] ([[User talk:$1|разговор]]) ([[Special:Contributions/$1|придонеси]]) на $2
-        
+
 За испразнувањето беше наведена следнава причина: ''<nowiki>$3</nowiki>''.
 
 Можете да ја [{{fullurl:{{FULLPAGENAMEE}}|action=history}} погледате историјата на статијата], да ја [{{fullurl:{{FULLPAGENAMEE}}|oldid=$4&action=edit}} уредите најновата верзија], или пак да напишете нова содржина за страницата во просторот подолу.",
