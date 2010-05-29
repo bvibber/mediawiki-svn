@@ -63,9 +63,12 @@
 						$( "<a />" ).attr( {
 							"target": "_blank",
 							"rel": "nofollow",
-							"href": deliciousUrl,
-							"onclick": "window.open( '" + deliciousUrl + "', 'delicious-sharer', 'toolbar=0, status=0, width=850, height=650' ); return false;"
+							"href": deliciousUrl
 						} )
+						.click( function() { 
+							window.open( jQuery( this ).attr( 'href' ), 'delicious-sharer', 'toolbar=0, status=0, width=850, height=650' );
+							return false;
+						} )						
 						.append( $( "<img />" ).attr( "src",
 							wgScriptPath + "/extensions/Storyboard/images/storyboard-delicious.png"
 						) )
@@ -76,8 +79,11 @@
 						$( "<a />" ).attr( {
 							"target": "_blank",
 							"rel": "nofollow",
-							"href": facebookUrl,
-							"onclick": "window.open( '" + facebookUrl + "', 'facebook-sharer', 'toolbar=0, status=0, width=626, height=436' ); return false;"
+							"href": facebookUrl
+						} )
+						.click( function() { 
+							window.open( jQuery( this ).attr( 'href' ), 'facebook-sharer', 'toolbar=0, status=0, width=626, height=436' );
+							return false;
 						} )
 						.append( $( "<img />" ).attr( "src",
 							wgScriptPath + "/extensions/Storyboard/images/storyboard-facebook.png"
