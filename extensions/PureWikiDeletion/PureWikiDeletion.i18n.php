@@ -18,7 +18,7 @@ $messages['en'] = array(
 
 The reason given for blanking was: ''<nowiki>$3</nowiki>''.
 
-You may [{{fullurl:{{FULLPAGENAMEE}}|action=history}} view the article's history], [{{fullurl:{{FULLPAGENAMEE}}|oldid=$4&action=edit}} edit the last version], or type new page into the white space below.",
+You may [{{fullurl:{{FULLPAGENAMEE}}|action=history}} view the page's history], [{{fullurl:{{FULLPAGENAMEE}}|oldid=$4&action=edit}} edit the last version], or type new page into the white space below.",
 	'blank-log' => 'blank',
 	'blank-log-name' => 'Blank log',
 	'blank-log-header' => 'Below is a list of page blankings and unblankings.',
