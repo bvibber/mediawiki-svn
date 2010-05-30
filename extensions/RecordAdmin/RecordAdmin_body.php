@@ -134,7 +134,7 @@ class SpecialRecordAdmin extends SpecialPage {
 		}
 		$wgOut->addHTML(
 			'<div class="recordadmin-menubar"><a href="' . $title->getLocalURL() . "/$type\">" . wfMsg( 'recordadmin-newsearch', $type ) . '</a>'
-			. '&nbsp;'
+			. '&#160;'
 			. '<a href="' . $title->getLocalURL() . '">' . wfMsg( 'recordadmin-newrecord' ) . '</a></div>'."\n"
 		);
 
@@ -170,7 +170,7 @@ class SpecialRecordAdmin extends SpecialPage {
 
 			# Render type select list
 			if ( $options ) $wgOut->addHTML(
-				"<select name='wpType'>$options</select>&nbsp;"
+				"<select name='wpType'>$options</select>&#160;"
 				. Xml::element( 'input', array( 'type' => 'submit', 'value' => wfMsg( 'recordadmin-submit' ) ) )
 			);
 			else {
@@ -182,7 +182,7 @@ class SpecialRecordAdmin extends SpecialPage {
 			# Render type create
 			$wgOut->addWikiText( "<br />\n==" . wfMsg( 'recordadmin-createtype' ) . "==\n" );
 			$wgOut->addHTML( Xml::element( 'input', array( 'name' => 'wpNewType', 'type' => 'text' ) )
-				. '&nbsp;'
+				. '&#160;'
 				. Xml::element( 'input', array( 'type' => 'submit', 'value' => wfMsg( 'recordadmin-buttoncreate' ) ) )
 				. '</form>'
 			);
@@ -237,8 +237,8 @@ class SpecialRecordAdmin extends SpecialPage {
 			$wgOut->addWikiText( "==" . wfMsg( 'recordadmin-create', $type ) . "==\n" );
 			$wgOut->addHTML(
 				'<table class="recordadmin-create">'
-				. '<tr><td class="recordadmin-create-id"><b>' . wfMsg( 'recordadmin-recordid' ) . '</b>&nbsp;' . Xml::element( 'input', array( 'id' => 'ra-title', 'name' => 'wpTitle', 'size' => 30, 'value' => $wpTitle ) )
-				. '&nbsp;&nbsp;&nbsp;' . Xml::element( 'input', array( 'name' => 'wpInvert', 'type' => 'checkbox' ) ) . ' ' . wfMsg( 'recordadmin-invert' )
+				. '<tr><td class="recordadmin-create-id"><b>' . wfMsg( 'recordadmin-recordid' ) . '</b>&#160;' . Xml::element( 'input', array( 'id' => 'ra-title', 'name' => 'wpTitle', 'size' => 30, 'value' => $wpTitle ) )
+				. '&#160;&#160;&#160;' . Xml::element( 'input', array( 'name' => 'wpInvert', 'type' => 'checkbox' ) ) . ' ' . wfMsg( 'recordadmin-invert' )
 				. '</td></tr>'
 				. '<tr><td>' . $this->form . '</td></tr>'
 				. '<tr><td>' . Xml::element( 'input', array( 'type' => 'hidden', 'id' => 'ra-type', 'name' => 'wpType', 'value' => $type ) ) . '</td></tr>'
@@ -302,16 +302,16 @@ class SpecialRecordAdmin extends SpecialPage {
 					$wgOut->addHTML( Xml::element( 'input', array( 'type' => 'hidden', 'name' => 'wpType', 'id' => 'ra-type', 'value' => $type ) ) );
 					$wgOut->addHTML( Xml::element( 'input', array( 'type' => 'hidden', 'name' => 'wpRecord', 'id' => 'ra-record', 'value' => $record ) ) );
 					$wgOut->addHTML( '<br /><hr /><br />'
-						. "<span id='wpSummaryLabel'><label for='wpSummary'>Summary:</label></span>&nbsp;"
+						. "<span id='wpSummaryLabel'><label for='wpSummary'>Summary:</label></span>&#160;"
 						. Xml::element( 'input', array( 'type' => 'text', 'name' => 'wpSummary', 'id' => 'wpSummary', 'maxlength' => '200', 'size' => '60' ) )
 						. "<br />\n"
 						. Xml::element( 'input', array( 'type' => 'checkbox', 'name' => 'wpMinoredit', 'value' => '1', 'id' => 'wpMinoredit', 'accesskey' => 'i' ) )
-						. "&nbsp;<label for='wpMinoredit' title='Mark this as a minor edit [i]' accesskey='i'>This is a minor edit</label>&nbsp;"
+						. "&#160;<label for='wpMinoredit' title='Mark this as a minor edit [i]' accesskey='i'>This is a minor edit</label>&#160;"
 						. Xml::element( 'input', array( 'type' => 'checkbox', 'name' => 'wpWatchthis', 'value' => '1', 'id' => 'wpWatchthis', 'accesskey' => 'w' ) )
-						. "&nbsp;<label for='wpWatchthis' title='Add this page to your watchlist [w]' accesskey='w'>Watch this page</label>\n"
+						. "&#160;<label for='wpWatchthis' title='Add this page to your watchlist [w]' accesskey='w'>Watch this page</label>\n"
 						. "<br />\n"
 						. ( ( !$wgSecurityProtectRecords || $this->template->userCan( 'edit' ) )
-							? Xml::element( 'input', array( 'type' => 'submit', 'value' => wfMsg( 'recordadmin-buttonsave' ) ) ) . '&nbsp;'
+							? Xml::element( 'input', array( 'type' => 'submit', 'value' => wfMsg( 'recordadmin-buttonsave' ) ) ) . '&#160;'
 							: '' )
 						. Xml::element( 'input', array( 'type' => 'reset', 'value' => wfMsg( 'recordadmin-buttonreset' ) ) ) . '</form>'
 					);
@@ -556,7 +556,7 @@ class SpecialRecordAdmin extends SpecialPage {
 					);
 					foreach ( $cols as $col ) {
 						if ( !isset( $row[$col] ) ) {
-							$v = isset( $r[$col] ) ? $wgParser->parse( $r[$col], $wgTitle, $wgParser->mOptions, true, false )->getText() : '&nbsp;';
+							$v = isset( $r[$col] ) ? $wgParser->parse( $r[$col], $wgTitle, $wgParser->mOptions, true, false )->getText() : '&#160;';
 							$class = 'col' . preg_replace( '|\W|', '-', $col );
 							$row[$col] = "<td class='$class'>$v</td>";
 						}

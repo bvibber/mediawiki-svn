@@ -70,7 +70,7 @@ function wfPostcommentForm() {
         <b>$msg:</b><br /><br /></td></tr>
 
         <tr><td valign=\"top\"></td><td><textarea tabindex=3 rows=\"15\"cols=\"50\" name=\"comment_text\"></TEXTAREA>
-        <tr><td>&nbsp;</td><td>
+        <tr><td>&#160;</td><td>
         <input tabindex='4' type='submit' name=\"wpLoginattempt\" value=\"".wfMsg('postcomment_post')."\" class=\"btn\"
            onmouseover=\"this.className='btn btnhov'\" onmouseout=\"this.className='btn'\"/>
         </td>

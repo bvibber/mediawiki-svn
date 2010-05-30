@@ -214,7 +214,7 @@ abstract class SvnTablePager extends TablePager {
 			$value = isset( $row->$field ) ? $row->$field : null;
 			$formatted = strval( $this->formatValue( $field, $value, $row ) );
 			if ( $formatted == '' ) {
-				$formatted = '&nbsp;';
+				$formatted = '&#160;';
 			}
 			$class = 'TablePager_col_' . htmlspecialchars( $field );
 			$s .= "<td class=\"$class\">$formatted</td>\n";

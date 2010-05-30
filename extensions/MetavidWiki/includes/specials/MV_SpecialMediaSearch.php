@@ -758,7 +758,7 @@ class MV_SpecialMediaSearch {
 
 			// output the master selecter per line:
 			$s .= '<br /><span id="mvs_' . htmlspecialchars( $i ) . '">';
-			$s .= '&nbsp;&nbsp;';
+			$s .= '&#160;&#160;';
 			// selctor (don't display if i==0')
 			$s .= $this->selector( $i, 'a', $filter['a'], ( $i == 0 ) ? false : true );
 			$s .= $this->selector( $i, 't', $filter['t'] ); // type selector
@@ -808,7 +808,7 @@ class MV_SpecialMediaSearch {
 			}
 			$s .= '</span>';
 			if ( $i > 0 )
-				$s .= '&nbsp; <a href="javascript:mv_remove_filter(' .
+				$s .= '&#160; <a href="javascript:mv_remove_filter(' .
 				$i . ');">' .
 				' <img title="' . wfMsg( 'mv_remove_filter' ) . '" ' .
 					'src="' . $mvgScriptPath . '/skins/images/cog_delete.png"></a>';

@@ -50,7 +50,7 @@ function efPhpbbData_BeforePageDisplay(&$out) {
 		# just came from
 		$link = '<div style="float: right;"><a href="' . 
 			htmlspecialchars($wgRequest->getText('toForum')) . 
-			'">&rarr; Return to Forum</a></div>' . $text;
+			'">→ Return to Forum</a></div>' . $text;
 		
 		# Add the Return to Forum link in to the page title
 		# Since we're making it render HTML in a second,

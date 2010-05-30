@@ -223,10 +223,10 @@ class TableMod {
 		if (isset($this->table['headers'])) {
 			if (isset($this->index_actions['sort'])) {
 				foreach ($this->table['headers'] as $key=>$header)
-					$output .= '!'.$header.' <span class="plainlinks">['.$wgTitle->getFullURL(array('tablemod'=>$this->id.'|sort|'.($key+1).'|asc')).' &uarr;]</span><span class="plainlinks">['.$wgTitle->getFullURL(array('tablemod'=>$this->id.'|sort|'.($key+1).'|desc')).' &darr;]</span>'."\n";
+					$output .= '!'.$header.' <span class="plainlinks">['.$wgTitle->getFullURL(array('tablemod'=>$this->id.'|sort|'.($key+1).'|asc')).' ↑]</span><span class="plainlinks">['.$wgTitle->getFullURL(array('tablemod'=>$this->id.'|sort|'.($key+1).'|desc')).' ↓]</span>'."\n";
 		
 				if ($this->index_column == 0)
-					$output .= '!&nbsp;'."\n";
+					$output .= '!&#160;'."\n";
 			} else {
 				foreach ($this->table['headers'] as $key=>$header)
 					$output .= '!'.$header."\n";

@@ -148,7 +148,7 @@ class SpecialEmailPage extends SpecialPage {
 		$wgOut->addHTML( "</fieldset>" );
 
 		# Submit buttons & hidden values
-		$wgOut->addHTML(Xml::element( 'input', array( 'type' => 'submit', 'name' => 'ea-send', 'value' => wfMsg( 'ea-send' ) ) ) . '&nbsp;' );
+		$wgOut->addHTML(Xml::element( 'input', array( 'type' => 'submit', 'name' => 'ea-send', 'value' => wfMsg( 'ea-send' ) ) ) . '&#160;' );
 		$wgOut->addHTML(Xml::element( 'input', array( 'type' => 'submit', 'name' => 'ea-show', 'value' => wfMsg( 'ea-show' ) ) ) );
 		$wgOut->addHTML(Xml::element( 'input', array( 'type' => 'hidden', 'name' => 'ea-title', 'value' => $this->title ) ) );
 

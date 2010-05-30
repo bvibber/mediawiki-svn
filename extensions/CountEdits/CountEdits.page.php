@@ -53,8 +53,8 @@ class SpecialCountEdits extends SpecialPage {
 	function makeForm() {
 		$self = $this->getTitle();
 		$form  = '<form method="post" action="'. $self->getLocalUrl() . '">';
-		$form .= '<p><label for="target">' . wfMsgHtml( 'countedits-username' ) . '</label>&nbsp;';
-		$form .= '<input type="text" name="target" id="target" size="25" value="' . htmlspecialchars( $this->target ) . '" />&nbsp;';
+		$form .= '<p><label for="target">' . wfMsgHtml( 'countedits-username' ) . '</label>&#160;';
+		$form .= '<input type="text" name="target" id="target" size="25" value="' . htmlspecialchars( $this->target ) . '" />&#160;';
 		$form .= '<input type="submit" name="countedits" value="' . wfMsgHtml( 'countedits-ok' ) . '" />';
 		$form .= '</p></form>';
 		return $form;

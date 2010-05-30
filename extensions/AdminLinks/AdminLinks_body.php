@@ -227,7 +227,7 @@ class ALRow {
 		$text = "	<p>\n";
 		foreach ( $this->items as $i => $item ) {
 			if ( $i > 0 )
-				$text .= " &middot;\n";
+				$text .= " ·\n";
 			$text .= '		' . $item->text;
 		}
 		return $text . "\n	</p>\n";

@@ -128,7 +128,7 @@ class TaggedImages extends SpecialPage {
 		else
 			$html = '<b>' . $pageText . '</b>';
 
-		$html .= '&nbsp;';
+		$html .= '&#160;';
 		return $html;
 	}
 

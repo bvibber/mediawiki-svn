@@ -79,7 +79,7 @@ $sample_embed[9]['desc'] = ' <br /><b>MediaWiki example:</b><br />'.
 	    }
    } ?>
   </table>
-	<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />&nbsp;
+	<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />&#160;
   </body>
 </html>
 <?php

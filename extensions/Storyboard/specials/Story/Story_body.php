@@ -347,7 +347,7 @@ class SpecialStory extends IncludableSpecialPage {
 		
 		$formBody .= '<tr><td colspan="2">' .
 			Html::input( '', wfMsg( 'htmlform-submit' ), 'submit', array( 'id' => 'storysubmission-button' ) ) .
-			"&nbsp;&nbsp;<span class='editHelp'>" . 
+			"&#160;&#160;<span class='editHelp'>" . 
 			Html::element(
 				'a',
 				array( 'href' => $this->getTitle()->getLocalURL( $query ) ),

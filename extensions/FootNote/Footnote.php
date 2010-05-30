@@ -57,7 +57,7 @@ function insert_endnotes( &$parser, &$text ) {
 	$ret = "" ;
 	foreach( $footnoteNotes AS $num => $entry ) {
 		$x = " <a name='footnote{$num}'></a>\n";
-		$x = $x . "<li>$entry <a href='#footnoteback{$num}'>&uarr;</a></li>\n" ;
+		$x = $x . "<li>$entry <a href='#footnoteback{$num}'>↑</a></li>\n" ;
 		$ret .= $x ;
 	}
 	$ret = "<hr /><ol>" . $ret . "</ol>" ;

@@ -148,7 +148,7 @@ $messages['qqq'] = array(
 * $6 is a link to the with link label {{msg-mw|qp_not_participated_link}}',
 	'qp_error_missed_dependance_poll' => 'Parameters:
 {| cellpadding="0" cellspacing="0" border="0"
-!$1||&nbsp;
+!$1||&#160;
 | is the poll ID of the poll having an error.
 |-
 !$2||

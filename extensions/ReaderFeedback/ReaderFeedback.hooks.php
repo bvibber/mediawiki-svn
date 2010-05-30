@@ -135,7 +135,7 @@ class ReaderFeedbackHooks {
 			$form .= "<b>" . Xml::label( wfMsgHtml("readerfeedback-$quality"), "wp$quality" ) . ":</b>";
 			$attribs = array( 'name' => "wp$quality", 'id' => "wp$quality",
 				'onchange' => "updateFeedbackForm()" );
-			$form .= '&nbsp;' . Xml::openElement( 'select', $attribs );
+			$form .= '&#160;' . Xml::openElement( 'select', $attribs );
 			$levels = array_reverse($levels,true);
 			foreach( $levels as $i => $name ) {
 				$optionClass = array( 'class' => "rfb-rating-option-$i" );

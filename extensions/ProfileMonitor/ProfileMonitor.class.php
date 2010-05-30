@@ -45,7 +45,7 @@ class ProfileMonitor extends SpecialPage {
 		$html .= '<table><tr><td>' . wfMsgHtml( 'profiling-process' ) . '</td><td>';
 		$html .= Xml::input( 'process', 50, $process ) . '</td></tr><td align="right">' . Xml::check( 'wildcard', $wild ) . '</td>';
 		$html .= '<td>' . wfMsgHtml( 'profiling-wildcard' ) . '</td></tr>';
-		$html .= '<tr><td>&nbsp;</td><td>' . Xml::submitButton( wfMsg( 'profiling-ok' ), array( 'name' => 'submit' ) ) . '</td></table></form>';
+		$html .= '<tr><td>&#160;</td><td>' . Xml::submitButton( wfMsg( 'profiling-ok' ), array( 'name' => 'submit' ) ) . '</td></table></form>';
 		return $html;
 	}
 

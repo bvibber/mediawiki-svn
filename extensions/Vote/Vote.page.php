@@ -141,14 +141,14 @@ class SpecialVote extends SpecialPage {
 		$form  = Xml::openElement( 'form', array( 'method' => 'post', 'action' => $self->getLocalUrl() ) );
 		$form .= Xml::hidden( 'token', $wgUser->editToken( 'vote' ) );
 		$form .= '<fieldset><legend>' . wfMsgHtml( 'vote-legend' ) . '</legend>';
-		$form .= '<p>' . Xml::label( wfMsg( 'vote-caption' ), 'vote' ) . '&nbsp;';
+		$form .= '<p>' . Xml::label( wfMsg( 'vote-caption' ), 'vote' ) . '&#160;';
 		$form .= Xml::openElement( 'select', array( 'name' => 'vote', 'id' => 'vote' ) );
 		foreach ( $this->getChoices() as $short => $desc ) {
 			$checked = $short == $current;
 			$form .= self::makeSelectOption( $short, $desc, $checked );
 		}
 		$form .= Xml::closeElement( 'select' );
-		$form .= '&nbsp;' . Xml::submitButton( wfMsg( 'vote-submit' ) );
+		$form .= '&#160;' . Xml::submitButton( wfMsg( 'vote-submit' ) );
 		$form .= '</fieldset></form>';
 		return $form;
 	}

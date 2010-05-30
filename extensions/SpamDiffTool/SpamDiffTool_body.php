@@ -192,7 +192,7 @@ class SpecialSpamDiffTool extends UnlistedSpecialPage {
 				$wgOut->addHTML(
 					Xml::tags( 'tr', array(),
 						Xml::tags( 'td', array( 'class' => 'spam-url-row' ),
-							"<b>$url</b><br />" . wfMsgHtml( 'spamdifftool_block' ) . "&nbsp;&nbsp;" .
+							"<b>$url</b><br />" . wfMsgHtml( 'spamdifftool_block' ) . "&#160;&#160;" .
 							Xml::radioLabel( wfMsg( 'spamdifftool_option_domain'), $name, 'domain', '{$name}-domain', true ) . "\n" .
 							Xml::radioLabel( wfMsg( 'spamdifftool_option_subdomain' ), $name, 'subdomain', '{$name}-subdomain' ) . "\n" .
 							Xml::radioLabel( wfMsg( 'spamdifftool_option_directory' ), $name, 'dir', '{$name}-dir' ) . "\n" .

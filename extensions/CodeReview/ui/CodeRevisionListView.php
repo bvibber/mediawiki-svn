@@ -47,7 +47,7 @@ class CodeRevisionListView extends CodeView {
 			$pager->getNavigationBar() .
 			$pager->getLimitForm() .
 			'</td><td style="padding-left: 2em;">' .
-			'&nbsp;<strong>' . wfMsgHtml( 'code-rev-total', $revCount ) . '</strong>' .
+			'&#160;<strong>' . wfMsgHtml( 'code-rev-total', $revCount ) . '</strong>' .
 			'</td></tr></table>' .
 			Xml::openElement( 'form',
 				array( 'action' => $pager->getTitle()->getLocalURL(), 'method' => 'post' )
@@ -148,14 +148,14 @@ class CodeRevisionListView extends CodeView {
 			"<fieldset><legend>" . wfMsgHtml( 'code-pathsearch-legend' ) . "</legend>" .
 				'<table width="100%"><tr><td>' .
 				Xml::inputlabel( wfMsg( "code-pathsearch-path" ), 'path', 'path', 55, $this->mPath ) .
-				'&nbsp;' . Xml::submitButton( wfMsg( 'allpagessubmit' ) ) .
+				'&#160;' . Xml::submitButton( wfMsg( 'allpagessubmit' ) ) .
 				'</td>'
 		);
 		if ( strlen( $this->mAppliedFilter ) ) {
 			$wgOut->addHTML(
 				'<td>' .
 				Xml::label( wfMsg( 'code-pathsearch-filter' ), 'revFilter' ) . '<strong>' .
-				Xml::span( $this->mAppliedFilter, '' ) . '</strong>&nbsp;' .
+				Xml::span( $this->mAppliedFilter, '' ) . '</strong>&#160;' .
 				Xml::submitButton( wfMsg( 'code-revfilter-clear' ) ) .
 				'</td>' .
 				Xml::hidden( 'title', SpecialPage::getTitleFor( 'Code', $this->mRepo->getName() ) )
@@ -332,7 +332,7 @@ class SvnRevTablePager extends SvnTablePager {
 			$rev = CodeRevision::newFromRow( $this->mRepo, $row );
 			$runs = $rev->getTestRuns();
 			if ( empty( $runs ) ) {
-				return '&nbsp;';
+				return '&#160;';
 			} else {
 				$total = 0;
 				$success = 0;
@@ -391,7 +391,7 @@ class SvnRevTablePager extends SvnTablePager {
 			$value = isset( $row->$field ) ? $row->$field : null;
 			$formatted = strval( $this->formatRevValue( $field, $value, $row ) );
 			if ( $formatted == '' ) {
-				$formatted = '&nbsp;';
+				$formatted = '&#160;';
 			}
 			$class = 'TablePager_col_' . htmlspecialchars( $field );
 			$s .= "<td class=\"$class\">$formatted</td>\n";

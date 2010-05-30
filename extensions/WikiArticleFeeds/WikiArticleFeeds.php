@@ -287,7 +287,7 @@ function wfWikiArticleFeedsToolboxLinks( $template ) {
 				$result .=
 				'<span id="feed-' . htmlspecialchars( $feed ) . '">' .
 				'<a href="http://feeds.feedburner.com/' . urlencode( $feedBurnerName ) . '?format=xml">' .
-				htmlspecialchars( $name ) . '</a>&nbsp;</span>';
+				htmlspecialchars( $name ) . '</a>&#160;</span>';
 			}
 			$burned = true;
 		}
@@ -303,7 +303,7 @@ function wfWikiArticleFeedsToolboxLinks( $template ) {
 			$result .=
 			'<span id="feed-' . htmlspecialchars( $feed ) . '">' .
 			'<a href="' . htmlspecialchars( $baseUrl . $feed ) . '">' .
-			htmlspecialchars( $name ) . '</a>&nbsp;</span>';
+			htmlspecialchars( $name ) . '</a>&#160;</span>';
 		}
 	}
 

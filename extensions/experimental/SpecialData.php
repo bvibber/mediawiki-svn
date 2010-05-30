@@ -215,7 +215,7 @@ function wfDataEdit ( $dt ) # $dt = data type
 		else $s .= $x ;
 		}
 	$s .= "<br />Comment : <input type='test' name='comment' value='{$comment}' />" ;
-	$s .= " &nbsp; <input type='hidden' name='revision' value='{$revision}' />" ;
+	$s .= " &#160; <input type='hidden' name='revision' value='{$revision}' />" ;
 	$s .= "<input type='hidden' name='add_data' value='1' />" ;
 	if ( $masterkey ) $s .= "<input type='hidden' name='masterkey' value='{$masterkey}' />" ;
 	$s .= "<input type='hidden' name='data_type' value='{$dt}' />" ;

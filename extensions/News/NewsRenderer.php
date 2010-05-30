@@ -661,8 +661,8 @@ class NewsRenderer {
 		if ($iconurl) {
 			$ic = '<img border="0" src="'.htmlspecialchars($iconurl).'" alt="'.htmlspecialchars($ttl).'" title="'.htmlspecialchars($ttl).'"/>';
 			if ($s === '') $s = $ic;
-			else if ($iconright) $s = "$s&nbsp;$ic";
-			else $s = "$ic&nbsp;$s";
+			else if ($iconright) $s = "$s&#160;$ic";
+			else $s = "$ic&#160;$s";
 		}
 
 		$html = '<a href="'.htmlspecialchars($url).'" title="'.htmlspecialchars($ttl).'">'.$s.'</a>';

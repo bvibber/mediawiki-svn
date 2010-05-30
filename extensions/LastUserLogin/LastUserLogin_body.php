@@ -88,7 +88,7 @@ class LastUserLogin extends SpecialPage {
 							$name = $skin->makeLinkObj( $userPage, htmlspecialchars( $userPage->getText() ) );
 							$out .= '<td>' . $name . '</a></td>';
 						} else {
-							$out .= '<td>' . htmlspecialchars( $row[$key] ) . '&nbsp;</td>';
+							$out .= '<td>' . htmlspecialchars( $row[$key] ) . '&#160;</td>';
 						}
 					}
 				}

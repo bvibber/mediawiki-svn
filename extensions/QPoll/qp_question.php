@@ -365,7 +365,7 @@ class qp_QuestionStats extends qp_AbstractQuestion {
 	# transform input according to showresults=1 (numerical percents)
 	# *** warning! parameters should be passed only by value, not by reference ***
 	function addShowResults1( $proposalId, $catId ) {
-		$this->cellTemplateParam['percents'] = '&nbsp;';
+		$this->cellTemplateParam['percents'] = '&#160;';
 		if ( ( $percents = $this->getPercents( $proposalId, $catId ) ) !== false ) {
 			# there is a stat in cell
 			$this->cellTemplateParam['percents'] = $percents . '%';
@@ -390,8 +390,8 @@ class qp_QuestionStats extends qp_AbstractQuestion {
 		# has one available template ('bar')
 		$this->cellTemplate = array(
 			'bar'=>array( '__tag'=>'div', 'class'=>'stats2',
-				0=>array( '__tag'=>'div', 'class'=>'bar1', 'style'=>&$this->cellTemplateParam['bar1style'], 0=>'&nbsp;' ),
-				1=>array( '__tag'=>'div', 'class'=>'bar2', 'style'=>&$this->cellTemplateParam['bar2style'], 0=>'&nbsp;' ),
+				0=>array( '__tag'=>'div', 'class'=>'bar1', 'style'=>&$this->cellTemplateParam['bar1style'], 0=>'&#160;' ),
+				1=>array( '__tag'=>'div', 'class'=>'bar2', 'style'=>&$this->cellTemplateParam['bar2style'], 0=>'&#160;' ),
 				2=>array( '__tag'=>'div', 'class'=>'bar3', 'style'=>$percentstyle, 0=>&$this->cellTemplateParam['percents'] )
 			),
 			# the following entries are not real templates, but pre-calculated values of css attributes taken from showresults parameter
@@ -410,7 +410,7 @@ class qp_QuestionStats extends qp_AbstractQuestion {
 	# transform input according to showresults=2 (bars)
 	# *** warning! parameters should be passed only by value, not by reference ***
 	function addShowResults2( $proposalId, $catId ) {
-		$this->cellTemplateParam['percents'] = '&nbsp;';
+		$this->cellTemplateParam['percents'] = '&#160;';
 		if ( ( $percents = $this->getPercents( $proposalId, $catId ) ) !== false ) {
 			# there is a stat in cell
 			$this->cellTemplateParam['percents'] = $percents . '%';
@@ -1094,7 +1094,7 @@ class qp_Question extends qp_AbstractQuestion {
 	# *** warning! parameters should be passed only by value, not by reference ***
 	function addShowResults1( $inp, $proposalId, $catId ) {
 		$this->cellTemplateParam['inp'] = $inp;
-		$this->cellTemplateParam['percents'] = '&nbsp;';
+		$this->cellTemplateParam['percents'] = '&#160;';
 		if ( ( $percents = $this->getPercents( $proposalId, $catId ) ) !== false ) {
 			# there is a stat in cell
 			$this->cellTemplateParam['percents'] = $percents . '%';
@@ -1119,12 +1119,12 @@ class qp_Question extends qp_AbstractQuestion {
 		# html arrays used in templates below
 		$bar = array( '__tag'=>'div', 'class'=>'stats1',
 			0=>array( '__tag'=>'div', 'class'=>'bar0', 0=>&$this->cellTemplateParam['inp'] ),
-			1=>array( '__tag'=>'div', 'class'=>'bar1', 'style'=>&$this->cellTemplateParam['bar1style'], 0=>'&nbsp;' ),
-			2=>array( '__tag'=>'div', 'class'=>'bar2', 'style'=>&$this->cellTemplateParam['bar2style'], 0=>'&nbsp;' ),
+			1=>array( '__tag'=>'div', 'class'=>'bar1', 'style'=>&$this->cellTemplateParam['bar1style'], 0=>'&#160;' ),
+			2=>array( '__tag'=>'div', 'class'=>'bar2', 'style'=>&$this->cellTemplateParam['bar2style'], 0=>'&#160;' ),
 			3=>array( '__tag'=>'div', 'class'=>'bar0', 'style'=>$percentstyle, 0=>&$this->cellTemplateParam['percents'] )
 		);
 		$bar2 = array( '__tag'=>'div', 'class'=>'stats1',
-			0=>array( '__tag'=>'div', 'class'=>'bar0', 0=>'&nbsp;' ),
+			0=>array( '__tag'=>'div', 'class'=>'bar0', 0=>'&#160;' ),
 			1=>&$bar[1],
 			2=>&$bar[2],
 			3=>&$bar[3]
@@ -1159,7 +1159,7 @@ class qp_Question extends qp_AbstractQuestion {
 	# *** warning! parameters should be passed only by value, not by reference ***
 	function addShowResults2( $inp, $proposalId, $catId ) {
 		$this->cellTemplateParam['inp'] = $inp;
-		$this->cellTemplateParam['percents'] = '&nbsp;';
+		$this->cellTemplateParam['percents'] = '&#160;';
 		if ( ( $percents = $this->getPercents( $proposalId, $catId ) ) !== false ) {
 			# there is a stat in cell
 			$this->cellTemplateParam['percents'] = $percents . '%';

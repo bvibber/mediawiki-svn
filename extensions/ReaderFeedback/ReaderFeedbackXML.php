@@ -46,7 +46,7 @@ class ReaderFeedbackXML {
 	 */
 	public static function getTagMenu( $selected = '' ) {
 		wfLoadExtensionMessages( 'ReaderFeedback' );
-		$s  = "<label for='wpRatingTag'>" . wfMsgHtml('readerfeedback-tagfilter') . "</label>&nbsp;";
+		$s  = "<label for='wpRatingTag'>" . wfMsgHtml('readerfeedback-tagfilter') . "</label>&#160;";
 		$s .= Xml::openElement( 'select', array('name' => 'ratingtag', 'id' => 'wpRatingTag') );
 		foreach( ReaderFeedback::getFeedbackTags() as $tag => $weight ) {
 			$s .= Xml::option( wfMsg( "readerfeedback-$tag" ), $tag, $selected===$tag );
@@ -62,7 +62,7 @@ class ReaderFeedbackXML {
 	 */	
 	 public static function getRatingTierMenu( $selected = '' ) {
 		wfLoadExtensionMessages( 'ReaderFeedback' );
-		$s  = "<label for='wpRatingTier'>" . wfMsgHtml('readerfeedback-tierfilter') . "</label>&nbsp;";
+		$s  = "<label for='wpRatingTier'>" . wfMsgHtml('readerfeedback-tierfilter') . "</label>&#160;";
 		$s .= Xml::openElement( 'select', array('name' => 'ratingtier', 'id' => 'wpRatingTier') );
 		$s .= Xml::option( wfMsg( "readerfeedback-tier-high" ), 3, $selected===3);
 		$s .= Xml::option( wfMsg( "readerfeedback-tier-medium" ), 2, $selected===2 );

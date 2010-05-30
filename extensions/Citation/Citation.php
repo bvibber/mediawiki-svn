@@ -29,7 +29,7 @@ function citation_hooker( &$parser, &$text ) {
 		return true;
 	$ret = "" ;
 	foreach ( $wgCitationCache AS $num => $entry ) {
-		$x = "<li>" . $entry . " <a href='#citeback{$num}'>&uarr;</a></li>\n" ;
+		$x = "<li>" . $entry . " <a href='#citeback{$num}'>↑</a></li>\n" ;
 		$ret .= $x ;
 	}
 	$ret = "<hr /><ol>" . $ret . "</ol>" ;

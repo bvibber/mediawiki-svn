@@ -363,7 +363,7 @@ END;
 			} else {
 				$wgOut->addHTML( wfMsg( 'whitelisttableview' ) );
 			}
-			$wgOut->addHTML( "</center></td><td>&nbsp;$row->wl_expires_on</td><td>" );
+			$wgOut->addHTML( "</center></td><td>&#160;$row->wl_expires_on</td><td>" );
 			$u = WhiteListUserFromId( $row->wl_updated_by_user_id );
 			$wgOut->addHTML( $u->getRealName() );
 			$wgOut->addHTML( "</td><td>$row->wl_updated_on</td></tr>" );
@@ -625,7 +625,7 @@ if ($debug)  $wgOut->addWikiText("* Adding '$headertext'\n");
 		$wgOut->addHTML( '<div class="NavFrame" style="padding:0px;border-style:none;">' );
 		$wgOut->addHTML( '<div class="NavHead" style="background: #ffffff; text-align: left; font-size:100%;">' );
 		# this is a hack to make the [show]/[hide] always appear after the text
-		$wgOut->addHtml("$headertext" . wfMsgExt('whitelistnummatches', array( 'parsemag' ), $num_matches) . "&nbsp;<font color='#ffffff'>[show]</font>&nbsp;</div>");
+		$wgOut->addHtml("$headertext" . wfMsgExt('whitelistnummatches', array( 'parsemag' ), $num_matches) . "&#160;<font color='#ffffff'>[show]</font>&#160;</div>");
 		$wgOut->addHTML( '<div class="NavContent" style="display:none; font-size:normal; text-align:left">' );
 
 		foreach ( $wildcard_match as $pageid )
