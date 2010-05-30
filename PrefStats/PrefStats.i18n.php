@@ -1250,6 +1250,8 @@ $messages['ka'] = array(
 	'prefstats-factor-week' => 'კვირა',
 	'prefstats-factor-twoweeks' => 'ორი კვირა',
 	'prefstats-factor-fourweeks' => 'ოთხი კვირა',
+	'prefstats-legend-out' => 'გამორიცხვის პრინციპით',
+	'prefstats-legend-in' => 'დაშვების პრინციპით',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -1993,6 +1995,19 @@ $messages['sah'] = array(
 	'prefstats-factor-default' => 'төттөрү, ыйыллыбатаҕына көстөр улаханыгар (масштаабыгар)',
 	'prefstats-legend-out' => 'Арахсарга',
 	'prefstats-legend-in' => 'Холбонорго',
+);
+
+/** Sardinian (Sardu)
+ * @author Andria
+ */
+$messages['sc'] = array(
+	'prefstats-xaxis' => 'Durada (oras)',
+	'prefstats-factor-hour' => 'ora',
+	'prefstats-factor-sixhours' => 'ses oras',
+	'prefstats-factor-day' => 'die',
+	'prefstats-factor-week' => 'chida',
+	'prefstats-factor-twoweeks' => 'duas chidas',
+	'prefstats-factor-fourweeks' => 'bator chidas',
 );
 
 /** Sicilian (Sicilianu)

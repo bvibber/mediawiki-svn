@@ -211,6 +211,13 @@ $messages['ca'] = array(
 	'wikieditor-publish-dialog-goback' => 'Torna',
 );
 
+/** Chechen (Нохчийн)
+ * @author Sasan700
+ */
+$messages['ce'] = array(
+	'wikieditor-publish-button-cancel' => 'Цаоьшу',
+);
+
 /** Czech (Česky)
  * @author Mormegil
  */
@@ -936,6 +943,14 @@ $messages['sah'] = array(
 	'wikieditor-publish-dialog-watch' => 'Бу сирэйи кэтииргэ',
 	'wikieditor-publish-dialog-publish' => 'Бэчээттииргэ',
 	'wikieditor-publish-dialog-goback' => 'Төнүн',
+);
+
+/** Sardinian (Sardu)
+ * @author Andria
+ */
+$messages['sc'] = array(
+	'wikieditor-publish-dialog-minor' => 'Acontzu minore',
+	'wikieditor-publish-dialog-watch' => 'Pone custa pàgina in sa watchlist mea',
 );
 
 /** Sinhala (සිංහල)

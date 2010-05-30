@@ -230,7 +230,7 @@ $messages['eu'] = array(
  */
 $messages['fa'] = array(
 	'vector-simplesearch-search' => 'جستجو',
-	'vector-simplesearch-containing' => 'صفحات دارای...',
+	'vector-simplesearch-containing' => '...صفحه‌های دربردارنده',
 );
 
 /** Finnish (Suomi)
@@ -614,6 +614,13 @@ $messages['ru'] = array(
 $messages['sah'] = array(
 	'vector-simplesearch-search' => 'Көрдөөһүн',
 	'vector-simplesearch-containing' => 'иһинээҕи...',
+);
+
+/** Sardinian (Sardu)
+ * @author Andria
+ */
+$messages['sc'] = array(
+	'vector-simplesearch-search' => 'Chirca',
 );
 
 /** Sicilian (Sicilianu)

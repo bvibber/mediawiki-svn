@@ -522,6 +522,18 @@ $messages['vi'] = array(
 	'tooltip-pt-prefswitch-link-off' => 'Hãy thử các tính năng mới',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'prefswitch-link-anon' => 'נײַע אייגנשאַפֿטן',
+	'tooltip-pt-prefswitch-link-anon' => 'לערנען וועגן נײַע אייגנקייטן',
+	'prefswitch-link-on' => 'פֿירן מיך צוריק',
+	'tooltip-pt-prefswitch-link-on' => 'אַנולירן נײַע אייגנקייטן',
+	'prefswitch-link-off' => 'נײַע אייגנשאַפֿטן',
+	'tooltip-pt-prefswitch-link-off' => 'פרובירן נײַע אייגנקייטן',
+);
+
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Horacewai2
  */

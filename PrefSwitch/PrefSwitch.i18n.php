@@ -2317,6 +2317,15 @@ Për piasì, ch\'a ampinissa ël sondagi opsional sì-sota an sgnacand "[[#prefs
 Për giutene a amelioreje, për piasì ch\'a ampinissa ël sondagi opsional sì-sota an sgnacand "[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]".',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'prefswitch-survey-true' => 'هو',
+	'prefswitch-survey-false' => 'نه',
+	'prefswitch-title-switched-off' => 'مننه',
+);
+
 /** Portuguese (Português)
  * @author Giro720
  * @author Hamilton Abreu
@@ -2466,6 +2475,14 @@ $messages['ru'] = array(
 Чтобы помочь нам улучшить их, пожалуйста, ответьте на несколько необязательных вопросов, прежде чем нажмёте «[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]».',
 );
 
+/** Sardinian (Sardu)
+ * @author Andria
+ */
+$messages['sc'] = array(
+	'prefswitch-survey-true' => 'Eja',
+	'prefswitch-survey-answer-whyoff-other' => 'Àteru motivu:',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */
@@ -2610,6 +2627,70 @@ $messages['te'] = array(
 మీరు కొత్త సౌలభ్యాలని చూడాలనుకుంటే, దయచేసి <span class="plainlinks">[$1 ఇక్కడ నొక్కండి]</span>.',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'prefswitch' => 'Pindutan ng nais sa Pampanimula ng Pagkanagagamit',
+	'prefswitch-desc' => 'Pahintulutan ang mga tagagamit na magpalit ng mga pangkat ng mga nais',
+	'prefswitch-survey-true' => 'Oo',
+	'prefswitch-survey-false' => 'Huwag',
+	'prefswitch-survey-submit-off' => 'Huwag buhayin ang bagong mga katasangkapang-katangian',
+	'prefswitch-survey-cancel-off' => 'Kung nais mong magpatuloy sa paggamit ng bagong mga kasangkapang-katangian, maaaring kang magbalik sa $1.',
+	'prefswitch-survey-submit-feedback' => 'Magpadala ng pabalik-sabi',
+	'prefswitch-survey-cancel-feedback' => 'Kung ayaw mong magbigay ng balik-puna, maaaring kang magbalik sa $1.',
+	'prefswitch-survey-question-like' => 'Ano ang nagustuhan mo tungkol sa bagong mga kasangkapang-katangian?',
+	'prefswitch-survey-question-dislike' => 'Ano ang hindi mo naibigan tungkol sa mga kasangkapang-katangian?',
+	'prefswitch-survey-question-whyoff' => 'Bakit mo hindi binubuhay ang bagong mga kasangkapang-katangian?
+Mangyaring piliin ang lahat ng maaari.',
+	'prefswitch-survey-answer-whyoff-hard' => 'Napakahirap gamitin ng mga kasangkapang-katangian.',
+	'prefswitch-survey-answer-whyoff-didntwork' => 'Hindi gumandar ng maayos ang mga kasangkapang-katangian.',
+	'prefswitch-survey-answer-whyoff-notpredictable' => 'Hindi maaasahan ang pagganap ng mga kasangkapang-katangian.',
+	'prefswitch-survey-answer-whyoff-didntlike-look' => 'Hindi ko nagustuhan ang hitsura ng mga kasangkapang-katangian.',
+	'prefswitch-survey-answer-whyoff-didntlike-layout' => 'Hindi ko gusto ang bagong mga panglaylay at pagkakaayos.',
+	'prefswitch-survey-answer-whyoff-didntlike-toolbar' => 'Hindi ko nagustuhan ang bagong kahong ng kasangkapan.',
+	'prefswitch-survey-answer-whyoff-other' => 'Ibang dahilan:',
+	'prefswitch-survey-question-browser' => 'Anong pantingin-tingin ang ginagamit mo?',
+	'prefswitch-survey-answer-browser-other' => 'Ibang pantingin-tingin:',
+	'prefswitch-survey-question-os' => 'Anong sistema ng pagpapaandar ang ginagamit mo?',
+	'prefswitch-survey-answer-os-other' => 'Ibang sistemang pampaandar:',
+	'prefswitch-survey-question-res' => 'Ano ang resolusyon ng iyong tanawan?',
+	'prefswitch-title-on' => 'Bagong mga kasangkapang-katangian',
+	'prefswitch-title-switched-on' => 'Lasapin!',
+	'prefswitch-title-off' => 'Huwag buhayin ang bagong mga katasangkapang-katangian',
+	'prefswitch-title-switched-off' => 'Salamat',
+	'prefswitch-title-feedback' => 'Balik-sabi',
+	'prefswitch-success-on' => 'Binuhay na ang bagong mga kasangkapang-katangian.  Umaasa kaming masisiyahan ka sa paggamit ng bagong mga tampok.  Palaging maaari mong huwag buhayin ang mga ito sa pamamagitan ng pagpindot sa kawing na "[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-on}}]]" na nasa itaas ng pahina.',
+	'prefswitch-success-off' => 'Hindi na binuhay ang mga kasangkapang-katangian.  Salamat sa pagsubok mo ng bagong mga tampok.  Palaging maaari mong silang buhaying muli sa pamamagitan ng pagpindot ng kawing na "[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-off}}]]" na nasa itaas ng pahina.',
+	'prefswitch-success-feedback' => 'Naipadala na ang iyong pabalik-sabi.',
+	'prefswitch-return' => 'Bumalik sa <span class="plainlinks">[$1 $2]</span>.',
+	'prefswitch-main' => "Nasusumikap kami upang mapaginhawa ang mga bagay para sa aming mga tagagamit.  Nasasabik kaming ipamahagi ang ilang mga pagpapainam, kabilang ang isang bagong pagmumukha at pinapayak na mga kasangkapang-katangian sa pamamatnugot.  Ang pagpapaigi ng pagkanagagamit ng aming mga proyekto ang inuuna ng Pundasyong Wikimedia at magpapamahagi pa kami ng marami pang mga pagsasapanahon sa hinaharap.  Para sa mas marami pang mga detalye, dumalaw sa kaugnay na paskil sa [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/ Blog ng Wikimedia].
+
+[[File:UsabilityNavigation.png|right|link=|Larawan ng bagong panlibot]]
+[[File:UsabilityToolbar.png|right|link=|Larawan ng pinainam na kahong ng kasangkapan na pampatnugot]]
+[[File:UsabilityDialogs.png|right|link=|Larawan ng bagong mga salitaan na panglikha ng bagong nilalaman]]
+===Naririto ang mga binago namin===
+===Here's what we have changed===
+* '''Panglibot''': Pinainam namin ang nabigasyon para sa pagbasa at pagbago ng mga pahina. Ngayon, mas malinaw na nilalarawan ng mga panglaylay na nasa itaas ng bawat pahina kung tinitingnan ba ang pahina o isang pahina ng usapan, at kung binabasa mo ba o binabago ang isang pahina.
+* '''Mga pagpapainam ng kahon ng kasangkapan na pampatnugot''':  Muli naming inayos ang kahon ng kasangkapan na pampatnugot upang maging mas maginhawa ang paggamit nito.  Ngayon, mas payak na ang pag-aayos ng pahina at mas mapangpadama.
+* '''Mahiwagang kawing''':  Isang kasangkapang madaling gamitin na nagpapahintulot sa iyo na magdagdag ng mga kawing sa iba pang mga pahina ng wiki pati na mga kawing sa mga sityong nasa labas.
+* '''Mga pagpapainam sa paghahanap''': Pinainam namin ang mga mungkahi sa paghahanap upang mas mabilis kang makapunta sa pahinang hinahanap mo.
+* '''Iba pang bagong mga kasangkapang-katangian''':  Ipinakilala rin namin ang isang mahiwagang tabla upang maging maginhawa ang paggawa ng mga tabla at kasangkapang-katangiang panghanap at pampalit upang mapapayak ang pagbago sa pahina.
+* '''Palaisipang globo ng Wikipedia''': Isinapanahon namin ang palaisipang globo. Magbasa pa ng marami sa [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/  Blog ng Wikimedia].",
+	'prefswitch-main-anon' => '===Ibalik ako===
+Kung nais mong patayin ang bagong mga kasangkapang-katangian, <span class="plainlinks">[$1 pindutin dito]</span>. Hihilingin sa iyong lumagda ka o lumikha muna ng isang akawnt.',
+	'prefswitch-main-on' => '===Balik-sabi?===
+Ibig naming makarinig mula sa iyo.  Mangyaring dalawin ang aming span class="plainlinks">[$1 pahina ng pabalik-sabi]</span>.
+===Ibalik ako!===
+Kung nais mong huwag buhayin ang bagong mga kasangkapang-katangian, paki <span class="plainlinks">[$2 pindot dito]</span>.',
+	'prefswitch-main-off' => '===Subukin ang mga ito!=== 
+Kung nais mong buhayin ang mga bagong kasangkapang-katangian, mangyaring <span class="plainlinks">[$1 pindutin  dito].</span>',
+	'prefswitch-survey-intro-feedback' => 'Ibig naming marinig ka.
+Mangyaring sulatan ang maaaring hindi saguting pangangalap na nasa ibaba bago pindutin ang "[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]".',
+	'prefswitch-survey-intro-off' => 'Salamat sa pagsubok ng bago naming mga kasangkapang-katangian.
+Upang makatulong sa pagpapainam ng mga ito, mangyaring sulatan ang maaaring walang pangangalap na nasa ibaba bago pindutin ang "[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]".',
+);
+
 /** Turkish (Türkçe)
  * @author Joseph
  */
@@ -2745,6 +2826,31 @@ Nếu bạn muốn bật các tính năng mới, xin <span class="plainlinks">[$
 Xin vui lòng điền vào bảng điều tra phía dưới trước khi bấm “[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]”.',
 	'prefswitch-survey-intro-off' => 'Cảm ơn bạn đã dùng thử những tính năng mới của chúng tôi.
 Để giúp chúng tôi cải tiến chúng hơn nữa, xin vui lòng điền vào bảng điều tra phía dưới trước khi bấm “[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]”.',
+);
+
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'prefswitch-survey-true' => 'יא',
+	'prefswitch-survey-false' => 'ניין',
+	'prefswitch-survey-answer-whyoff-other' => 'אַנדער טעם:',
+	'prefswitch-survey-question-browser' => 'וועלכן בלעטערער ניצט איר?',
+	'prefswitch-survey-answer-browser-other' => 'אנדער בלעטערער:',
+	'prefswitch-survey-question-os' => 'וועלכע אפערירן סיסטעם ניצט איר?',
+	'prefswitch-survey-answer-os-other' => 'אנדער אפערירן סיסטעם:',
+	'prefswitch-survey-question-res' => 'וואָס איז די רעזאלוציע פֿון אײַער עקראַן?',
+	'prefswitch-title-on' => 'נײַע אייגנשאַפֿטן',
+	'prefswitch-title-switched-on' => 'האט הנאה!',
+	'prefswitch-title-off' => 'אַנולירן נ ײַע אייגנקייטן',
+	'prefswitch-title-switched-off' => 'א דאַנק',
+	'prefswitch-title-feedback' => 'פֿידבעק',
+	'prefswitch-success-on' => 'די נײַע אייגנקייטן זענען איצט אַקטיוו. מיר האָפן איר וועט האָבן הנאה פֿון ניצן די נײַע אייגנקייטן. איר קענט שטענדיק צוריקווענדן דורך געבן אַ קליק אויף דעם "[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-on}}]]" לינק אין דער הייך פונעם בלאַט.',
+	'prefswitch-success-feedback' => "מ'האט געשיקט אײַער פֿידבעק.",
+	'prefswitch-return' => '<hr style="clear:both">
+צוריק צו <span class="plainlinks">[$1 $2]</span>.',
+	'prefswitch-survey-intro-off' => 'א דאַנק פֿאַרן אויספרובירן אונזערע נײַע אייגנקייטן.
+בכדי צו העלפֿן אונז פֿאַרבעסערן זיי, זײַט אזוי גוט אויספֿילן דעם אפציאנאַלן אומפֿרעג אונטער איידער איר קליקט "[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]".',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

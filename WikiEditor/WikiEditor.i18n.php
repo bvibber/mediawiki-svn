@@ -134,6 +134,14 @@ $messages['ca'] = array(
 	'wikieditor-loading' => 'Carregant',
 );
 
+/** Chechen (Нохчийн)
+ * @author Sasan700
+ */
+$messages['ce'] = array(
+	'wikieditor-wikitext-tab' => 'Викийоза',
+	'wikieditor-loading' => 'Чуйолуш',
+);
+
 /** Czech (Česky)
  * @author Mormegil
  */
@@ -423,8 +431,8 @@ $messages['lt'] = array(
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
-	'wikieditor' => 'Интерфејс за напредно уредување со викитекст',
-	'wikieditor-desc' => 'Дава проширлив интерфејс за уредување со викитекст и многу модули за разни други алатки',
+	'wikieditor' => 'Посредник за напредно уредување со викитекст',
+	'wikieditor-desc' => 'Дава проширлив посредник за уредување со викитекст и многу модули за разни други алатки',
 	'wikieditor-wikitext-tab' => 'ВикиТекст',
 	'wikieditor-loading' => 'Вчитувам',
 );

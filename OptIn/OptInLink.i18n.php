@@ -911,6 +911,14 @@ $messages['sah'] = array(
 	'tooltip-pt-optin-feedback' => 'Саҥаны туттубутуҥ туһунан кэпсээ',
 );
 
+/** Sardinian (Sardu)
+ * @author Andria
+ */
+$messages['sc'] = array(
+	'optin-try' => 'Proa sa Beta',
+	'optin-leave' => 'Lassa sa Beta',
+);
+
 /** Sinhala (සිංහල)
  * @author චතුනි අලහප්පෙරුම
  */

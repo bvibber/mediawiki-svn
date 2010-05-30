@@ -3594,7 +3594,7 @@ $messages['mk'] = array(
 	'optin-intro' => 'Иницијативата за употребливост на Википедија работеше напорно за да ја подобри употребливоста на Википедија.
 Дали би сакале да ја пробате нашата Бета?',
 	'optin-feedback-intro' => 'Ви благодариме што ја пробавте Бета.
-Би сакале да знаеме што мислите за нашиот нов интерфејс, па затоа би ценеле доколку го пополните изборниот прашалник подолу.',
+Би сакале да знаеме што мислите за нашиот нов посредник, па затоа би ценеле доколку го пополните прашалникот подолу (незадолжително).',
 	'optin-feedback-back' => 'Доколку не сакате да го пополните прашалникот, можете да се вратите на $1.',
 	'optin-success-in' => 'Моментално ја испробувате Бета.
 Можете да ја напуштите во било кога со кликнување на врската „{{int:optin-leave}}“ на врвот од страницата.',
@@ -3612,7 +3612,7 @@ $messages['mk'] = array(
 	'optin-survey-yes' => 'Да',
 	'optin-survey-no' => 'Не',
 	'optin-survey-intro' => 'Ви благодариме што ја пробавте Бета.
-Би сакале да знаеме што мислите за нашиот нов интерфејс, и затоа би ценеле доколку го пополние изборниот прашалник подолу пред да кликнете на „[[#leave|{{int:optin-submit-out}}]]“.',
+Би сакале да знаеме што мислите за нашиот нов посредник, и затоа би ценеле доколку го пополните прашалникот подолу (незадолжително) пред да кликнете на „[[#leave|{{int:optin-submit-out}}]]“.',
 	'optin-survey-question-likedislike' => 'Што ви се допаѓаше кај Бета? А што не ви се допадна?',
 	'optin-survey-question-whyoptout' => 'Зошто ја напуштате Бета? (Изберете колку што сакате.)',
 	'optin-survey-answer-whyoptout-hard' => 'Беше премногу тешка за употреба.',
@@ -4554,6 +4554,7 @@ $messages['ps'] = array(
 	'optin-survey-question-browser' => 'تاسې کوم کتنمل کاروۍ؟',
 	'optin-survey-answer-browser-other' => 'بل کتنمل:',
 	'optin-survey-question-os' => 'تاسې کوم چليز غونډال کاروۍ؟',
+	'optin-survey-answer-changes-other' => 'بل:',
 );
 
 /** Portuguese (Português)
@@ -5047,6 +5048,29 @@ Beta-ны боруобалаары гынаҕын дуо?',
 	'optin-survey-answer-changes-predictability' => 'Үлэлиирэ "дьэҥкирин" ситиһэргэ.',
 	'optin-survey-answer-changes-custom' => 'Тус туруоруулары өссө киэҥник уларытары көҥүллүүргэ.',
 	'optin-survey-answer-changes-other' => 'Атын:',
+);
+
+/** Sardinian (Sardu)
+ * @author Andria
+ */
+$messages['sc'] = array(
+	'optin-title-optedout' => 'Proa Beta',
+	'optin-title-optedin' => 'Lassa Beta',
+	'optin-title-justoptedin' => 'Bene bènnidu a sa Beta',
+	'optin-title-justoptedout' => 'Gràtzias pro àer proadu sa nostra Beta',
+	'optin-title-feedback' => 'Feedback pro sa Beta',
+	'optin-needlogin' => 'Depes èsser [$1 identificadu (log in)] pro proare sa Beta.',
+	'optin-accept-short' => 'Proa·dda!',
+	'optin-accept-long' => 'Proare sa Beta',
+	'optin-accept-long-anon' => 'Identìfica·ti e proa sa Beta',
+	'optin-deny-short' => 'No gràtzias',
+	'optin-submit-out' => 'Lassa sa Beta',
+	'optin-submit-feedback' => 'Lassa unu feedback',
+	'optin-survey-yes' => 'Eja',
+	'optin-survey-question-likedislike' => 'Ite as agradadu de sa Beta? Ite no as agradadu de sa Beta?',
+	'optin-survey-question-whyoptout' => 'Pro ite ses lassende sa Beta? (Seletziona totu is respostas pertinentes)',
+	'optin-survey-answer-whyoptout-hard' => "Fiat tropu difìtzile a dd'usare.",
+	'optin-survey-answer-whyoptout-other' => 'Àteru motivu:',
 );
 
 /** Sicilian (Sicilianu)
@@ -5724,6 +5748,86 @@ Täze interfeýsimiz baradaky pikiriňizi bilesimiz gelýär, şonuň üçinem "
 	'optin-survey-answer-changes-upload' => 'Mazmuny we media ýüklemelerini gowulandyryň.',
 	'optin-survey-answer-changes-richtext' => 'Baý tekst redaktorlaryna meňzeş ösdürme gurallaryny taýýarlaň.',
 	'optin-survey-answer-changes-other' => 'Başga:',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'optin' => 'Paglahok sa Pagpapanimula ng Pagkanagagamit',
+	'optin-desc' => 'Pahintulutan ang mga tagagamit na subukan ang Beta, ang pinakabagong mga pagpapaigi ng pagkanagagamit ng Pagpapanimula ng Pagkanagagamit',
+	'optin-title-optedout' => 'Subukan ang Beta',
+	'optin-title-optedin' => 'Umalis mula sa Beta',
+	'optin-title-justoptedin' => 'Maligayang pagdating sa Beta',
+	'optin-title-justoptedout' => 'Salamat sa pagsubok mo ng aming Beta',
+	'optin-title-feedback' => 'Mga puna sa Beta',
+	'optin-needlogin' => 'Kailangan mong [$1 lumagda] upang masubukan ang Beta.',
+	'optin-intro' => 'Ang Pagpapanimula ng Pagkanagagamit ng Wikipedia ay nagsusumikap upang mapainam ang pagiging nagagamit ng Wikipedia. Nais mo bang subukan ang aming Beta?',
+	'optin-feedback-intro' => 'Salamat sapagsubok mo ng Beta. 
+Nais namin na malaman kung ano ang tingin mo sa aming bagong hangganang-mukha, mamarapatin namin ang maaaring hindi gawing pagtugon mo sa mga katanungang nasa ibaba.',
+	'optin-feedback-back' => 'Kung hindi mo nais na sagutin ang pagtatanong, maaari kang magbalik sa $1.',
+	'optin-success-in' => 'Sinusubukan mo na ngayon ang Beta.
+Maaari kang umatras at huwag makilahok anumang oras sa pamamagitan ng pagpindot sa kawing na "{{int:optin-leave}}" na nasa kawing na nasa itaas ng pahina.',
+	'optin-leave-cancel' => 'Kung nais mong magpatuloy sa paggamit ng Beta, maaaring kang bumalik sa $1.',
+	'optin-success-out' => 'Matagumpay ka nang nakaalis mula sa Beta.
+Maaari mo itong subukang muli anumang oras sa pamamagitan ng pagpindot sa kawing na "{{int:optin-try}}" na nasa itaas ng pahina.',
+	'optin-success-feedback' => 'Salamat sa iyong mga puna!',
+	'optin-accept-short' => 'Iyan ang gawin natin!',
+	'optin-accept-long' => 'Subukan ang Beta',
+	'optin-accept-long-anon' => 'Lumagda at subukan ang Beta',
+	'optin-deny-short' => 'Huwag, salamat na lang',
+	'optin-deny-long' => 'Bumalik sa nakaraang pahina',
+	'optin-submit-out' => 'Umalis mula sa Beta',
+	'optin-submit-feedback' => 'Magbigay ng puna',
+	'optin-survey-yes' => 'Oo',
+	'optin-survey-no' => 'Huwag',
+	'optin-survey-intro' => 'Salamat sa pagsubok mo ng Beta.
+Nais naming malaman ang tingin mo sa aming bagong hangganang-mukha, mamarapatin namin ang maaaring huwag gawing pagtugon mo sa mga pagtatanong na nasa ibaba bago pindutin ang "[[#leave|{{int:optin-submit-out}}]]".',
+	'optin-survey-question-likedislike' => 'Ano ang naibigan mo tungkol sa Beta? Ano ang hindi mo nagustuhan tungkol sa Beta?',
+	'optin-survey-question-whyoptout' => 'Bakit ka aalis mula sa Beta? (Pakipili ang lahat ng mga maaari.)',
+	'optin-survey-answer-whyoptout-hard' => 'Mahirap itong gamitin.',
+	'optin-survey-answer-whyoptout-didntwork' => 'Hindi maayos ang pag-andar nito.',
+	'optin-survey-answer-whyoptout-notpredictable' => 'Hindi maaasahan ang pagganap nito.',
+	'optin-survey-answer-whyoptout-didntlike-look' => 'Hindi ko naibigan ang anyo nito.',
+	'optin-survey-answer-whyoptout-didntlike-layout' => 'Hindi ko naibigan ang bagong mga panglaylay at pagkakaayos.',
+	'optin-survey-answer-whyoptout-didntlike-toolbar' => 'Hindi ko gusto ang bagong kahon ng kasangkapan.',
+	'optin-survey-answer-whyoptout-other' => 'Ibang dahilan:',
+	'optin-survey-question-explain' => 'Mangyaring ipaliwanag o palawigin ang sagot mong nasa itaas:',
+	'optin-survey-question-techfail' => 'Nakaranas ka ba ng anumang mga kabiguang teknikal habang ginagamit ang Beta?',
+	'optin-survey-question-techfail-ifyes' => 'Kung oo, mangyaring palawigin o ipaliwanag:',
+	'optin-survey-question-usedtoolbar' => 'Nagamit mo ang bagong napapalawak na kahon ng kasangkapan sa pamamatnugot ng isang pahina?',
+	'optin-survey-question-usedtoolbar-ifyes' => 'Kung oo, ano ang naibigan mo tungkol dito? Ano ang hindi mo nagustuhan tungkol dito?',
+	'optin-survey-question-usedtoolbar-ifno' => 'Kung hindi, bakit hindi? Gagamitin mo ba ito sa hinaharap? Mangyaring ipaliwanag.',
+	'optin-survey-question-different' => 'Ano ba ang magagawa naming naiiba upang mapanatili kang gumagamit ng Beta?',
+	'optin-survey-question-feedback' => 'Mangyaring ipaalam sa amin ang tungkol sa iba pang mga pagpuna, mga alalahanin, o mga kaisipan mayroon ka para sa amin - magagamit ang lahat ng mga pabalik-sabi:',
+	'optin-survey-question-browser' => 'Anong pambasa-basa ba ang ginagamit mo?',
+	'optin-survey-answer-browser-other' => 'Ibang pambasa-basa:',
+	'optin-survey-question-os' => 'Anong sistemang pampaandar ang ginagamit mo?',
+	'optin-survey-answer-os-other' => 'Iba pang sistema ng pampaandar:',
+	'optin-survey-question-res' => 'Ano ang resolusyon ng tanawan mo?',
+	'optin-survey-question-changes' => 'Anong mga pagbabago ang nais mong makita sa loob ng Beta pagdating ng hinaharap (pakipili ang lahat ng maaari)?',
+	'optin-survey-answer-changes-nav' => 'Gawing mas maginhawa ang paggamit na kabuoang paglilibot sa sayt.',
+	'optin-survey-answer-changes-edittools' => 'Dagdagan at paigihin ang mga kasangkapang pampatnugot.',
+	'optin-survey-answer-changes-upload' => 'Painamin ang mga paitaas na pagkakarga ng nilalaman at midya.',
+	'optin-survey-answer-changes-richtext' => 'Magpaunlad ng mga kasangkapang pampatnugot na katulad ng sa mga patnugot ng mayamang teksto.',
+	'optin-survey-answer-changes-lookfeel' => 'Isapanahon ang "wangis at hipo" ng sayt.',
+	'optin-survey-answer-changes-predictability' => 'Painamin ang pagka naaasahan ng pagganap.',
+	'optin-survey-answer-changes-custom' => 'Pahintulutan ang mas malaking pagpapasadya ng tagagamit.',
+	'optin-survey-answer-changes-other' => 'Iba pa:',
+	'optin-improvements2' => '== Ano ba ang napainam? ==
+[[File:UsabilityToolbar.png|left|link=|Larawan ng pinainam na kahon ng kasangkapan na pampatnugot]]
+[[File:UsabilityDialogs.png|left|link=|Larawan ng mga salitaan na para sa paglikha ng bagong nilalaman]]
+;Pinainam na kahon ng kasangkapan
+Nakapagpapaginhawa sa pamamatnugot ng mga lathalain ang pinainam na kahon ng kasangkapan.
+Nakapagpapalinaw sa kung anong galaw ang gagampanan ng bawat isang kasangkapan ang bago at napainam na mga larawan.
+Nakapagbabawas ng kalat ang pinalawak na mga seksyon habang pinananatiling mapipindot lang kaagad ang hindi gaanong ginagamit na mga kasangkapan.
+;Diyalogo
+Kapag lumilikha ng mga kawing o mga talahanayan, nagbubukas na ngayon ng isang kahon ng salitaan ang pagpindot sa larawan na pangkasangkapan na nakakatulong sa iyo na makalikha ng mga kawing at mga talahanayan sa pamamagitan ng pagpupuno sa isang payak na pormularyo.
+;At marami pa
+Nagpakilala kami ng isang bilan gng iba pang mga pagpapainam katulad ng pinaiging panglibot, dumudulas na mga panglaylay, pinainam na paghahanap, at marami pa.
+== Paano makakalahok ==
+Upang makatuklas ng iba pang tungkol sa Pampanimula ng Pagkanagagamit, mangyaring dalawin ang aming [http://usability.wikimedia.org/wiki/Wikipedia_Usability_Initiative bahay-pahina].
+<div style="clear:both"></div>',
 );
 
 /** Turkish (Türkçe)
