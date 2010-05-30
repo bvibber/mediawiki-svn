@@ -108,6 +108,7 @@ class EmailContactForm {
 		$this->text = $wgRequest->getText( 'wpText' );
 		$this->subject = $wgRequest->getText( 'wpSubject' );
 		$this->cc_me = $wgRequest->getBool( 'wpCCMe' );
+		$this->includeIP = $wgRequest->getBool( 'wpIncludeIP' );
 
 		$this->fromname = $wgRequest->getText( 'wpFromName' );
 		$this->fromaddress = $wgRequest->getText( 'wpFromAddress' );
@@ -165,7 +166,7 @@ class EmailContactForm {
 	}
 
 	function showForm() {
-		global $wgOut, $wgUser, $wgContactRequireAll;
+		global $wgOut, $wgUser, $wgContactRequireAll, $wgContactIncludeIP;
 
 		#TODO: show captcha
 
@@ -228,8 +229,17 @@ class EmailContactForm {
 				<td class="mw-input">' .
 					Xml::textarea( 'wpText', $this->text, 80, 20, array( 'id' => 'wpText' ) ) .
 				'</td>
-			</tr>
-			<tr>
+			</tr>';
+			if ( $wgContactIncludeIP ) {
+				$form .= '<tr>
+					<td></td>
+					<td class="mw-input">' .
+						Xml::checkLabel( wfMsg( 'contactpage-includeip' ), 'wpIncludeIP', 'wpIncludeIP', $wgUser->isAnon() ) .
+					'</td>
+				</tr>';
+			}
+			
+			$form .= '<tr>
 				<td></td>
 				<td class="mw-input">' .
 					Xml::checkLabel( wfMsg( 'emailccme' ), 'wpCCMe', 'wpCCMe', $wgUser->getBoolOption( 'ccmeonemails' ) ) .
@@ -292,10 +302,11 @@ class EmailContactForm {
 	function doSubmit() {
 		global $wgOut;
 		global $wgEnableEmail, $wgUserEmailUseReplyTo, $wgEmergencyContact;
-		global $wgContactUser, $wgContactSender, $wgContactSenderName;
+		global $wgContactUser, $wgContactSender, $wgContactSenderName, $wgContactIncludeIP;
 
 		$csender = $wgContactSender ? $wgContactSender : $wgEmergencyContact;
 		$cname = $wgContactSenderName;
+		$senderIP = wfGetIP();
 
 		wfDebug( __METHOD__ . ": start\n" );
 
@@ -318,10 +329,21 @@ class EmailContactForm {
 			$subject = wfMsgForContent( 'contactpage-defsubject' );
 		}
 
+		$includeIP = $wgContactIncludeIP && $this->includeIP;
 		if ( $this->fromname !== '' ) {
-			$subject = wfMsgForContent( 'contactpage-subject-and-sender', $subject, $this->fromname );
+			if ( $includeIP ) {
+				$subject = wfMsgForContent( 'contactpage-subject-and-sender-withip', $subject, $this->fromname, $senderIP );
+			} else {
+				$subject = wfMsgForContent( 'contactpage-subject-and-sender', $subject, $this->fromname );
+			}
 		} elseif ( $this->fromaddress !== '' ) {
-			$subject = wfMsgForContent( 'contactpage-subject-and-sender', $subject, $this->fromaddress );
+			if ( $includeIP ) {
+				$subject = wfMsgForContent( 'contactpage-subject-and-sender-withip', $subject, $this->fromaddress, $senderIP );
+			} else {
+				$subject = wfMsgForContent( 'contactpage-subject-and-sender', $subject, $this->fromaddress );
+			}
+		} else if ( $includeIP ) {
+			$subject = wfMsgForContent( 'contactpage-subject-and-sender', $subject, $senderIP );
 		}
 
 		if( !wfRunHooks( 'ContactForm', array( &$targetAddress, &$replyto, &$subject, &$this->text ) ) ) {
