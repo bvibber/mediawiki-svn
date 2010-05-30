@@ -222,6 +222,10 @@ class NssMySQLAuthPlugin extends AuthPlugin {
 		$insert['pwd_uid'] = $uid;
 
 		$dbw->insert( 'passwd', $insert, __METHOD__ );
+		$dbw->commit();
+		
+		$user = User::newFromName( $insert['pwd_name'] );
+		$user->addToDatabase();
 
 		return $password;
 	}

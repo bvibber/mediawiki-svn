@@ -33,6 +33,12 @@ class AmUserView {
 	function createHeader() {
 		global $wgOut;
 		
+		if ( $this->user->exists ) {
+			$wgOut->addHtml( '<h2>' . wfMsgExt( 'am-edit-user', 'parseinline', 
+				$this->user->name ) . '</h2>' );
+		} else {
+			$wgOut->addHtml( '<h2>' . wfMsgExt( 'am-create-user', 'parseinline' ) . '</h2>' );
+		}
 		$wgOut->addHtml( Xml::openElement( 'form', array(
 			'action' => $this->title->getLocalUrl( array( 
 				'action' => $this->action,
@@ -50,14 +56,23 @@ class AmUserView {
 		$label = wfMsg( $amName );
 		if ( wfEmptyMsg( $amName, $label ) )
 			$label = $prop;
+			
+		if ( $prop == 'active' ) {
+			global $wgUserActivityLevels;
+			$select = new XmlSelect( $amName, false, 'active' );
+			foreach ( $wgUserActivityLevels as $level )
+				$select->addOption( $level );
+
+			$input = $select->getHTML();
+		} else {
+			$input = Xml::input( /* $name */ $amName, /* $size */ 40, 
+				/* $value */ $this->user->get( $prop ),
+				array( 'id' => $amName ) );
+		}
 		
 		return ( "\t<tr><td>" . 
 			Xml::label( $label, $amName ) .
-			"</td><td>" .
-			Xml::input( /* $name */ $amName, /* $size */ false, 
-				/* $value */ $this->user->get( $prop ),
-				array( 'id' => $amName ) ) .
-			"</td></tr>\n"
+			"</td><td>$input</td></tr>\n"
 		);
 	}
 	

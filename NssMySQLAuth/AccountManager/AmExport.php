@@ -60,4 +60,18 @@ class AmExport {
 		header( "Content-Disposition: inline;filename*=utf-8'en'export.csv" );
 		return $result;
 	}
+	
+	public static function setSubtitle() {
+		global $wgOut;
+		$title = SpecialPage::getTitleFor( 'AccountManager' );
+		$wgOut->setSubtitle( wfMsgExt( 'am-download-subtitle', 
+			array( 'parse', 'replaceafter' ),
+			Xml::element( 'a', array( 'href' => $title->getLocalURL( 'format=csv') ),
+				wfMsg( 'am-download-cvs' )
+			),
+			Xml::element( 'a', array( 'href' => $title->getLocalURL( 'format=csvexcel') ),
+				wfMsg( 'am-download-cvsexcel' )
+			)
+		) );
+	}
 }

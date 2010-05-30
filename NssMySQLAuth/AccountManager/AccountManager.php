@@ -16,4 +16,4 @@ $wgAutoloadClasses['AmExport'] = $dir . 'AmExport.php';
 $wgSpecialPages['AccountManager'] = 'SpecialAccountManager';
 
 $wgUserProperties = array( 'address', 'city' );
-
+$wgUserActivityLevels = array( 'active', 'inactive' );

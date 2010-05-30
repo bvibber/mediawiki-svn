@@ -75,6 +75,8 @@ class SpecialAccountManager extends SpecialPage {
 				return;
 		}
 		
+		AmExport::setSubtitle();
+		
 		$username = $wgRequest->getVal( 'user' );
 		
 		$result = $this->processData();

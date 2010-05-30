@@ -16,6 +16,12 @@ $messages['en'] = array(
 	'am-email' => 'e-mail',
 	'am-active' 	=> 'active',
 	'am-updated' => 'Your changes have been saved successfully',
+	'am-edit-user' => 'Edit properties for [[User:$1|$1]]',
+	'am-create-user' => 'Create new user account',
+	'am-users-by-status' => 'Users by status',
+	'am-download-subtitle' => 'Download user list as $1 ($2)',
+	'am-download-cvs' => 'CSV',
+	'am-download-cvsexcel' => 'CSV semicolon separated',
 
 	'am-rights'	=>  'rights',
 	'am-save-changes'	=> 'Save changes',
