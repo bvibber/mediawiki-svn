@@ -21,7 +21,7 @@ $messages['en'] = array(
 	'am-users-by-status' => 'Users by status',
 	'am-download-subtitle' => 'Download user list as $1 ($2)',
 	'am-download-cvs' => 'CSV',
-	'am-download-cvsexcel' => 'CSV semicolon separated',
+	'am-download-cvsexcel' => 'semicolon separated',
 
 	'am-rights'	=>  'rights',
 	'am-save-changes'	=> 'Save changes',

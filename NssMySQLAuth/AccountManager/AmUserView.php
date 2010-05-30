@@ -58,9 +58,9 @@ class AmUserView {
 			$label = $prop;
 			
 		if ( $prop == 'active' ) {
-			global $wgUserActivityLevels;
+			global $wgActivityModes;
 			$select = new XmlSelect( $amName, false, 'active' );
-			foreach ( $wgUserActivityLevels as $level )
+			foreach ( $wgActivityModes as $level )
 				$select->addOption( $level );
 
 			$input = $select->getHTML();
