@@ -113,7 +113,9 @@ $messages['am'] = array(
  * @author Juanpabl
  */
 $messages['an'] = array(
+	'patrol-revert' => 'Revertir',
 	'patrol-revert-reason' => 'Razón:',
+	'patrol-reverting' => 'Revertindo: $1',
 );
 
 /** Old English (Ænglisc)
@@ -257,6 +259,8 @@ $messages['bn'] = array(
 	'patrol-endorse' => 'সত্যায়িত',
 	'patrol-revert-reason' => 'কারণ:',
 	'patrol-skipped-ok' => 'সম্পাদনা উপেক্ষা করুন।',
+	'group-patroller' => 'পর্যবেক্ষক',
+	'group-patroller-member' => 'পর্যবেক্ষক',
 );
 
 /** Breton (Brezhoneg)
@@ -548,6 +552,14 @@ $messages['eu'] = array(
 	'group-patroller-member' => 'patruilaria',
 	'grouppage-patroller' => '{{ns:project}}:Patruilaria',
 	'right-patroller' => 'Orriak patruilatu',
+);
+
+/** Persian (فارسی)
+ * @author Ebraminio
+ */
+$messages['fa'] = array(
+	'group-patroller' => 'گشت‌زنان',
+	'group-patroller-member' => 'گشت‌زن',
 );
 
 /** Finnish (Suomi)

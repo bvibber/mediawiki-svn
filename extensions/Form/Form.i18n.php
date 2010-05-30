@@ -937,7 +937,7 @@ $messages['mhr'] = array(
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
-	'form-desc' => '[[Special:Form|Интерфејс]] за започнување нови страници',
+	'form-desc' => '[[Special:Form|Посредник]] за започнување на нови страници',
 	'form' => 'Образец',
 	'formnoname' => 'Нема име на образецот',
 	'formnonametext' => 'Мора да наведете име на образецот, како да речеме „Special:Form/ИмеНаОбразец“',

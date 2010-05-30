@@ -274,7 +274,7 @@ $messages['lb'] = array(
  */
 $messages['mk'] = array(
 	'honeypot-desc' => 'Овозможува интеграција со [http://projecthoneypot.org/ Project Honey Pot] за проекти и страници на МедијаВики',
-	'abusefilter-edit-builder-vars-honeypot-list-count' => 'Број на скорешни настани поттикнати од IP адресата, според Project Honey Pot',
+	'abusefilter-edit-builder-vars-honeypot-list-count' => 'Број на скорешни настани поттикнати од IP-адресата, според проектот Honey Pot',
 );
 
 /** Malayalam (മലയാളം)

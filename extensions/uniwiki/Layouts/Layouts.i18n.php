@@ -126,6 +126,14 @@ $messages['bg'] = array(
 	'layouts-layoutcategorypage' => 'MediaWiki:Editpagetags',
 );
 
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'layouts_title' => 'পাতা তৈরি কর',
+	'layouts_unknown' => 'অজানা',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */

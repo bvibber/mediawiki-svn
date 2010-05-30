@@ -144,6 +144,15 @@ $messages['ca'] = array(
 	'wikieditor-preview-loading' => 'Carregant ...',
 );
 
+/** Chechen (Нохчийн)
+ * @author Sasan700
+ */
+$messages['ce'] = array(
+	'wikieditor-preview-tab' => 'Хьалха муха ю хьажа',
+	'wikieditor-preview-changes-tab' => 'Хийцамаш',
+	'wikieditor-preview-loading' => 'Чуйолуш…',
+);
+
 /** Czech (Česky)
  * @author Mormegil
  */

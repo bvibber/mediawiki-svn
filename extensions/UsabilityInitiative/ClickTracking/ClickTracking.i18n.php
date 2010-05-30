@@ -1562,6 +1562,13 @@ $messages['sah'] = array(
 	'ct-update-table' => 'Таабылы саҥардыы',
 );
 
+/** Sardinian (Sardu)
+ * @author Andria
+ */
+$messages['sc'] = array(
+	'ct-and' => 'e',
+);
+
 /** Sinhala (සිංහල)
  * @author චතුනි අලහප්පෙරුම
  */

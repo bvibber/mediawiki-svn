@@ -2051,11 +2051,11 @@ $messages['mk'] = array(
 	'ogg-stop' => 'Стопирај',
 	'ogg-play-video' => 'Пушти видеоснимка',
 	'ogg-play-sound' => 'Слушни аудио снимка',
-	'ogg-no-player' => 'Изгледа дека вашиот систем нема инсталирано било каков софтвер за преслушување/прегледување на аудио или видео записи.
-Можете <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">да симнете некој софтвер за оваа намена од тука</a>.',
+	'ogg-no-player' => 'Изгледа дека вашиот систем нема инсталирано било каква програмска опрема за преслушување/прегледување на аудио или видео записи.
+Можете <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">да симнете некој програм за оваа намена од тука</a>.',
 	'ogg-no-xiphqt' => 'Изгледа ја немате инсталирано XiphQT компонентата за QuickTime.
 QuickTime не може да преслушува/прегледува Ogg податотеки без оваа компонента.
-Можете да го <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">симнете XiphQT</a> или да изберете некој друг софтвер за преслушување/прегледување.',
+Можете да го <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">симнете XiphQT</a> или да изберете некоја друга програмска опрема за преслушување/прегледување.',
 	'ogg-player-videoElement' => 'Поддржано од прелистувачот',
 	'ogg-player-oggPlugin' => 'Вградено во прелистувачот',
 	'ogg-player-cortado' => 'Cortado (Java)',

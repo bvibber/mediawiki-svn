@@ -127,7 +127,13 @@ $messages['bg'] = array(
  * @author Bellayet
  */
 $messages['bn'] = array(
+	'profiling' => 'প্রোফাইল ডাটা',
 	'profiling-ok' => 'ঠিক আছে',
+	'profiling-data' => '`$1` এর জন্য প্রোফাইল ডাটা',
+	'profiling-data-process' => 'প্রসেস',
+	'profiling-data-count' => 'গণনা',
+	'profiling-data-time' => 'সময় (সমস্ত)',
+	'profiling-data-average' => 'সময় (গড়)',
 );
 
 /** Breton (Brezhoneg)

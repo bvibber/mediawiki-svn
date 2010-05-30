@@ -129,6 +129,14 @@ $messages['ca'] = array(
 	'wikieditor-template-editor-dialog-cancel' => 'Anuŀla',
 );
 
+/** Chechen (Нохчийн)
+ * @author Sasan700
+ */
+$messages['ce'] = array(
+	'wikieditor-template-editor-dialog-title' => 'Куцкеп хийцам',
+	'wikieditor-template-editor-dialog-cancel' => 'Цаоьшу',
+);
+
 /** Czech (Česky)
  * @author Kuvaly
  * @author Mormegil
@@ -507,6 +515,13 @@ $messages['pms'] = array(
 	'wikieditor-template-editor-dialog-title' => 'Modifiché lë stamp',
 	'wikieditor-template-editor-dialog-submit' => 'Agiorné',
 	'wikieditor-template-editor-dialog-cancel' => 'Scancela',
+);
+
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'wikieditor-template-editor-dialog-submit' => 'اوسمهالول',
 );
 
 /** Portuguese (Português)

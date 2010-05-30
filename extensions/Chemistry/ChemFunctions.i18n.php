@@ -141,6 +141,7 @@ $messages['bg'] = array(
 );
 
 /** Bengali (বাংলা)
+ * @author Bellayet
  * @author Zaheen
  */
 $messages['bn'] = array(
@@ -153,7 +154,7 @@ $messages['bn'] = array(
 	'chemFunctions_CAS' => 'CAS সংখ্যা',
 	'chemFunctions_ATCCode' => 'ATCকোড',
 	'chemFunctions_ECNumber' => 'ECNumber',
-	'chemFunctions_Formula' => 'সংকেত',
+	'chemFunctions_Formula' => 'সূত্র',
 	'chemFunctions_Name' => 'IUPAC নাম',
 	'chemFunctions_ChemFormInputError' => 'রাসায়নিক ফর্ম: ইনপুট ত্রুটি!',
 );

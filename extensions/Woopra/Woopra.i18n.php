@@ -278,7 +278,7 @@ $messages['lt'] = array(
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
-	'woopra-desc' => 'Му овозможува на [http://www.woopra.com/ Woopra софтверот за следење во живо] да работи со вашата МедијаВики инсталација',
+	'woopra-desc' => 'Му овозможува на програмот за следење во живо [http://www.woopra.com/ Woopra Live Tracking Software] да работи на вашата инсталација на МедијаВики',
 );
 
 /** Marathi (मराठी)

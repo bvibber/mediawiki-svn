@@ -247,6 +247,7 @@ $messages['eu'] = array(
  * @author Ebraminio
  */
 $messages['fa'] = array(
+	'usabilityinitiative' => 'گام مقدماتی قابلیت استفاده',
 	'prefs-beta' => 'امکانات بتا',
 	'prefs-labs' => 'امکانات آزمایشگاهی',
 );

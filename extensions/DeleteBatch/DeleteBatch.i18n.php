@@ -264,6 +264,13 @@ El fitxer indicat només pot contenir el títol de la pàgina i el motiu per a e
 	'right-deletebatch' => 'Lot de pàgines a esborrar',
 );
 
+/** Chechen (Нохчийн)
+ * @author Sasan700
+ */
+$messages['ce'] = array(
+	'deletebatch-delete' => 'Дlадайá',
+);
+
 /** German (Deutsch)
  * @author Als-Holder
  * @author ChrisiPK

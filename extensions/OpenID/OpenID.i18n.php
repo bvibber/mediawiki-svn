@@ -3239,7 +3239,7 @@ $messages['mhr'] = array(
 $messages['mk'] = array(
 	'openid-desc' => 'Најавувајте се на викито со [http://openid.net/ OpenID], и најавувајте се со други OpenID-поддржни страници со вики-корисничка сметка',
 	'openidlogin' => 'Најавување со OpenID',
-	'openidserver' => 'OpenID сервер',
+	'openidserver' => 'OpenID опслужувач',
 	'openidxrds' => 'Yadis податотека',
 	'openidconvert' => 'OpenID претворач',
 	'openiderror' => 'Грешка при потврдувањето',
@@ -3248,7 +3248,7 @@ $messages['mk'] = array(
 	'openidconfigerrortext' => 'Складишната конфигурација на OpenID за ова вики е погрешна.
 Консултирајте се со [[Special:ListUsers/sysop|администратор]].',
 	'openidpermission' => 'Грешка при дозволување на OpenID',
-	'openidpermissiontext' => 'На внесениот OpenID не му е дозволено најавување на овој сервер.',
+	'openidpermissiontext' => 'На внесениот OpenID не му е дозволено најавување на овој опслужувач.',
 	'openidcancel' => 'Потврдувањето е откажано',
 	'openidcanceltext' => 'Потврдувањето на URL адресата на OpenID беше откажана.',
 	'openidfailure' => ' Потврдувањето не успеа',

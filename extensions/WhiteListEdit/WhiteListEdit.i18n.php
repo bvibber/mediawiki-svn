@@ -508,6 +508,15 @@ $2',
  */
 $messages['bn'] = array(
 	'mywhitelistpages' => 'আমার পাতাসমূহ',
+	'whitelisttablemodify' => 'পরিবর্তন',
+	'whitelisttablemodifyall' => 'সমস্ত',
+	'whitelisttablemodifynone' => 'কিছু নয়',
+	'whitelisttablepage' => 'উইকি পাতা',
+	'whitelisttableremove' => 'অপসারণ',
+	'whitelistnewtableprocess' => 'প্রসেস',
+	'whitelistnever' => 'কখনো নয়',
+	'group-manager' => 'ব্যাবস্থাপক',
+	'group-manager-member' => 'ব্যাবস্থাপক',
 );
 
 /** Breton (Brezhoneg)
@@ -3200,7 +3209,7 @@ $messages['sr-ec'] = array(
 	'whitelistnewtabledate' => 'Датум истека:',
 	'whitelistoverview' => '== Преглед измена за $1 ==',
 	'whitelistoverviewcd' => "* Мењање датума на '''$1''' за [[:$2|$2]]",
-	'whitelistoverviewsa' => "* Постављање приступа на '''$1''' за [:$2|$2]]",
+	'whitelistoverviewsa' => "* Постављање приступа на '''$1''' за [[:$2|$2]]",
 	'whitelistoverviewrm' => '* Уклањање приступа за [[:$1|$1]]',
 	'whitelistrequest' => 'Захтевање приступа за више страна',
 	'whitelistrequestmsg' => '$1 је захтевао приступ {{PLURAL:$3|следећој страни|следећим странама}}:

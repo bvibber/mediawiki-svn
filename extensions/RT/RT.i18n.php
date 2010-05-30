@@ -464,7 +464,7 @@ $messages['lb'] = array(
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
-	'rt-desc' => 'Збогатен интерфејс за RT (Request Tracker, „Следење на барања“)',
+	'rt-desc' => 'Збогатен посредник за RT (Request Tracker, „Следење на барања“)',
 	'rt-inactive' => 'Проширувањето RT не е активно',
 	'rt-badquery' => 'Проширувањето RT наиде на грешка при комуницирањето со RT базата на податоци',
 	'rt-badlimit' => "Неважечки LIMIT (l) аргумент: мора да биде број.

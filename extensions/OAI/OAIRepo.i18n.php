@@ -313,7 +313,7 @@ $messages['li'] = array(
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
-	'oai-desc' => 'Дава интерфејс за [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH] складот',
+	'oai-desc' => 'Дава посредник за [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH] складот',
 );
 
 /** Malayalam (മലയാളം)

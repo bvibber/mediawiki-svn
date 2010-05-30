@@ -183,6 +183,13 @@ $messages['ja'] = array(
 	'autoincrement-desc' => '自動インクリメント変数 <nowiki>{{AUTOINCREMENT}}</nowiki> を追加する変数フック',
 );
 
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'autoincrement-desc' => '자동으로 증가하는 변수 <nowiki>{{AUTOINCREMENT}}</nowiki>를 추가하는 변수 훅',
+);
+
 /** Colognian (Ripoarisch)
  * @author Purodha
  */

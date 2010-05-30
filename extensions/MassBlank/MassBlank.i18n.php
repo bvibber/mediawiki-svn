@@ -49,6 +49,7 @@ $messages['be-tarask'] = array(
 	'massblank-defaultreason' => 'Масавае ачышчэньне старонак, дададзеных $1',
 	'massblank-tools' => 'Гэты інструмэнт дазваляе рабіць масавыя ачышчэньні старонак, дададзеных пэўным удзельнікам альбо з IP-адрасу. Увядзіце імя ўдзельніка альбо IP-адрас для таго, каб атрымаць сьпіс старонак для ачысткі.',
 	'massblank-submit-user' => 'Выканаць',
+	'massblank-submit-blank' => 'Ачысьціць выбраныя',
 	'massblank-blankcomment' => 'Прычына:',
 	'right-massblank' => 'масавая ачыстка старонак',
 );
@@ -89,12 +90,40 @@ Gib die IP-Adresse oder den Benutzernamen ein, um eine Liste der zu leerenden Se
 	'right-massblank' => 'Massenleerung von Seiten',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'massblank' => 'Masowe wuproznjenje',
+	'massblank-desc' => 'Dajo administratoram móžnosć [[Special:MassBlank|masowego wuproznjenja]] bokow',
+	'massblank-nopages' => 'Žedne nowe boki wót [[Special:Contributions/$1|$1]] w aktualnych změnach.',
+	'massblank-list' => 'Slědujuce boki su se rowno wót [[Special:Contributions/$1|$1]] napórali;
+zapódaj komentar a klikni na tłocašk, aby je wótpórał.',
+	'massblank-defaultreason' => 'Masowe wuproznjenje bokow, kótarež $1 jo pśidał',
+	'massblank-tools' => 'Toś ten rěd zmóžnja masowe wuproznjenja bokow, kótarež wěsty wužywaŕ abo IP jo rowno pśidał. Zapódaj wužywarske mě abo IP-adresu, aby dostał lisćinu bokow, kótarež maju se wuprozniś.',
+	'massblank-submit-user' => 'W pórědku',
+	'massblank-submit-blank' => 'Wubrane boki wuprozniś',
+	'massblank-blankcomment' => 'Pśicyna:',
+	'right-massblank' => 'Masowe wuproznjenje bokow',
+);
+
 /** Spanish (Español)
  * @author Crazymadlover
+ * @author Translationista
  */
 $messages['es'] = array(
+	'massblank' => 'Vaciar en masa',
+	'massblank-desc' => 'Proporciona a los administradores la capacidad de [[Special:MassBlank|vaciar en masa]] páginas',
+	'massblank-nopages' => 'No hay páginas nuevas hechas por [[Special:Contributions/$1|$1]] en cambios recientes.',
+	'massblank-list' => 'Las siguientes páginas han sido creadas recientemente por [[Special:Contributions/$1|$1]];
+añade un comentario y haz clic sobre el botón para vaciarlas.',
+	'massblank-defaultreason' => 'Vaciado en masa de páginas añadidas por $1',
+	'massblank-tools' => 'Esta herramienta permite el vaciado de páginas añadidas recientemente por un usuario o dirección IP dados.
+Introduce el nombre de usuario o la dirección de IP para obtener un listado de las páginas a vaciar.',
 	'massblank-submit-user' => 'Ir',
+	'massblank-submit-blank' => 'Vaciar la selección',
 	'massblank-blankcomment' => 'Razón para dejar en blanco:',
+	'right-massblank' => 'Vaciar páginas en masa',
 );
 
 /** French (Français)

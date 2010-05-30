@@ -337,9 +337,13 @@ Ho fa cridant el nivell sintàctic pertinent del mateix MediaWiki.",
 	'expand_templates_preview' => 'Previsualitza',
 );
 
-/** Chechen (Нохчийн) */
+/** Chechen (Нохчийн)
+ * @author Sasan700
+ */
 $messages['ce'] = array(
+	'expand_templates_output' => 'Хилам',
 	'expand_templates_remove_comments' => 'Комментариш дIаяккха',
+	'expand_templates_preview' => 'Хьалха муха ю хьажа',
 );
 
 /** Corsican (Corsu) */
@@ -587,7 +591,7 @@ $messages['fa'] = array(
 	'expand_templates_output' => 'نتیجه:',
 	'expand_templates_xml_output' => 'خروجی XML',
 	'expand_templates_ok' => 'تایید',
-	'expand_templates_remove_comments' => 'حذف توضیحات',
+	'expand_templates_remove_comments' => 'حذف <nowiki><!-ملاحظات--></nowiki>',
 	'expand_templates_generate_xml' => 'نمایش درخت تجزیهٔ XML',
 	'expand_templates_preview' => 'پیش‌نمایش',
 );

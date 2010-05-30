@@ -135,6 +135,13 @@ $messages['bg'] = array(
 	'createpage_editexisting' => 'Да. Искам да допринеса за съществуващата страница.',
 );
 
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'createpage' => 'পাতা তৈরি কর',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */

@@ -985,6 +985,15 @@ $messages['ca'] = array(
 	'viewapc-version-info' => 'Informació de la versió',
 );
 
+/** Chechen (Нохчийн)
+ * @author Sasan700
+ */
+$messages['ce'] = array(
+	'viewapc-cached-files-d' => '$1 {{PLURAL:$1|хlум|хlума|хlумнаш}} ($2)',
+	'viewapc-display-filename' => 'Хlуман цlе',
+	'viewapc-ls-delete' => '[Дlадайá]',
+);
+
 /** Czech (Česky)
  * @author Li-sung
  * @author Matěj Grabovský

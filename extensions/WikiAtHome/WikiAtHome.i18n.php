@@ -313,6 +313,19 @@ $messages['bg'] = array(
 	'wah-api-error' => 'Възникна грешка в приложно-програмния интерфейс. Моля, опитайте пак по-късно.',
 );
 
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'wah-menu-jobs' => 'চাকুরী',
+	'wah-menu-pref' => 'আমার পছন্দ',
+	'wah-lookingforjob' => 'চাকুরী অনুসন্ধান...',
+	'wah-downloading' => 'ফাইল ডাউনলোড <i>$1%</i> সম্পন্ন',
+	'wah-encoding' => 'ফাইল এনকোড <i>$1%</i> সম্পন্ন',
+	'wah-uploading' => 'ফাইল আপলোড <i>$1%</i> সম্পন্ন',
+	'wah-uploadfail' => 'আপলোড ব্যর্থ',
+);
+
 /** Breton (Brezhoneg)
  * @author Fohanno
  * @author Fulup
@@ -1136,7 +1149,7 @@ $messages['lzz'] = array(
  */
 $messages['mk'] = array(
 	'wah-desc' => 'Овозможува дистрибуирање на задачи за видео транскодирање на клиенти со помош на firefogg',
-	'wah-user-desc' => 'Wiki@Home им овозможува на членовите на заедницата да донираат одвишок процесорски циклуси како помош во операции кои бараат доста ресурси',
+	'wah-user-desc' => 'Wiki@Home им овозможува на членовите на заедницата да донираат одвишок обработувачка (CPU) моќ како помош во операции кои бараат доста ресурси',
 	'wah-short-audio' => '$1 аудиоснимка, $2',
 	'wah-short-video' => '$1 видеоснимка, $2',
 	'wah-short-general' => '$1 снимка, $2',
@@ -1149,7 +1162,7 @@ $messages['mk'] = array(
 	'wah-transcode-helpout' => 'Можете да помогнете со транскодирање на оваа видеоснимка ако ја посетите страницата [[Special:WikiAtHome|Wiki@Home]]',
 	'wah-transcode-fail' => 'Оваа податотека не успеа да се транскодира.',
 	'wah-javascript-off' => 'Мора да имате овозможено JavaScript за да учествувате во Wiki@Home',
-	'wah-loading' => 'се вчитува интерфејсот на Wiki@Home ...',
+	'wah-loading' => 'се вчитува посредникот на Wiki@Home ...',
 	'wah-menu-jobs' => 'Задачи',
 	'wah-menu-stats' => 'Статистики',
 	'wah-menu-pref' => 'Прилагодувања',
@@ -1583,11 +1596,11 @@ $messages['sr-ec'] = array(
 	'wah-short-video' => '$1 видео-фајл, $2',
 	'wah-short-general' => '$1 медија-фајл, $2',
 	'wah-long-audio' => '($1 звучни фајл, трајање $2, $3)',
-	'wah-long-video' => '($1 видео-фајл, трајање $2, $3×$5 пиксела, $3)',
+	'wah-long-video' => '($1 видео-фајл, трајање $2, $4×$5 пиксела, $3)',
 	'wah-long-multiplexed' => '(мултиплексовани аудио/видео фајл, $1, трајање $2, $4×$5 пиксела, $3 укупно)',
 	'wah-long-general' => '(медија-фајл, трајање $2, $3)',
 	'wah-long-error' => '(ffmpeg није могао да прочита овај фајл: $1)',
-	'wah-transcode-working' => 'Овај видео се тренутно обрађује, и готово је $1% посла',
+	'wah-transcode-working' => 'Овај видео се тренутно обрађује. Покушајте опет касније',
 	'wah-javascript-off' => 'Морате омогућити JavaScript, да бисте учествовали у Wiki@Home',
 	'wah-loading' => 'учитавање Wiki@Home интерфејса ...',
 );

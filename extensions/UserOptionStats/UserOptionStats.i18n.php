@@ -115,6 +115,14 @@ $messages['bg'] = array(
 	'uos-warn' => 'PHPlot не е инсталиран!',
 );
 
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'uos-unknown' => '*পূর্বনির্ধারিত',
+	'uos-other' => '*অন্য',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */

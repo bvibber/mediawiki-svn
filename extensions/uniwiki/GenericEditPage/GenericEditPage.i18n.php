@@ -205,6 +205,17 @@ $messages['bg'] = array(
 	'gep-categorypage' => 'MediaWiki:Editpagetags',
 );
 
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'gep-categories' => 'বিষয়শ্রেণী',
+	'gep-addcategory' => 'বিষয়শ্রেণী যোগ',
+	'gep-addcategorybutton' => 'যোগ',
+	'gep-suggestcategorybutton' => 'জমা দাও',
+	'gep-sections' => 'অনুচ্ছেদ',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */

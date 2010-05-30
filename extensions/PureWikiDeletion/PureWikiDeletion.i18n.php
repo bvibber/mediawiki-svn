@@ -34,6 +34,13 @@ See $2 for a record of recent blankings.',
 	'right-purewikideletion' => '[[Special:PopulateBlankedPagesTable|Populate]] the blanked pages table',
 );
 
+/** Message documentation (Message documentation)
+ * @author EugeneZelenko
+ */
+$messages['qqq'] = array(
+	'purewikideletion-blanknologin' => '{{Identical|Not logged in}}',
+);
+
 /** Arabic (العربية) */
 $messages['ar'] = array(
 	'purewikideletion' => 'حذف الويكي النقي',
@@ -43,7 +50,7 @@ $messages['ar'] = array(
 	'purewikideletion-pref-watchblank' => 'أضف الفصفحات التي أفرغها إلى قائمة مراقبتي',
 	'purewikideletion-pref-watchunblank' => 'أضف الصفحات التي أملؤها إلى قائمة مراقبتي',
 	'purewikideletion-blanked' => "نسخة سابقة من هذه الصفحة تم إفراغها بواسطة [[User:$1|$1]] ([[User talk:$1|نقاش]]) ([[Special:Contributions/$1|مساهمات]]) في $2
-	
+
 السبب المعطى للإفراغ كان: ''<nowiki>$3</nowiki>''.
 
 يمكنك [{{fullurl:{{FULLPAGENAMEE}}|action=history}} رؤية تاريخ المقالة], [{{fullurl:{{FULLPAGENAMEE}}|oldid=$4&action=edit}} تعديل آخر نسخة]،
@@ -68,8 +75,8 @@ $messages['be-tarask'] = array(
 	'purewikideletion-desc' => 'Сярод іншых наступстваў, спасылкі на пустыя старонкі будуць выдзяляцца чырвоным колерам',
 	'purewikideletion-pref-watchblank' => 'Дадаваць у мой сьпіс назіраньня старонкі, якія я буду ачышчаць',
 	'purewikideletion-pref-watchunblank' => 'Дадаваць у мой сьпіс назіраньня старонкі, у якіх я буду адмяняць ачыстку',
-	'purewikideletion-blanked' => "Папярэдняя вэрсія гэтай старонкі была ачышчаная [[User:$1|$1]] ([[User talk:$1|гутаркі]]) ([[Special:Contributions/$1|унёсак]]) $2
-        
+	'purewikideletion-blanked' => "Папярэдняя вэрсія гэтай старонкі была ачышчаная [[User:$1|$1]] ([[User talk:$1|гутаркі]]) ([[Special:Contributions/$1|унёсак]]) $5 у $6.
+
 Пададзеная прычына ачысткі была: ''<nowiki>$3</nowiki>''.
 
 Вы можаце [{{fullurl:{{FULLPAGENAMEE}}|action=history}} праглядзець гісторыю старонкі], [{{fullurl:{{FULLPAGENAMEE}}|oldid=$4&action=edit}} рэдагаваць апошнюю вэрсію], альбо ўвесьці тэкст новай старонкі ў белае поле ніжэй.",
@@ -78,6 +85,14 @@ $messages['be-tarask'] = array(
 	'blank-log-header' => 'Ніжэй пададзены сьпіс ачышчаных старонак і ў якіх ачыстка была адмененая.',
 	'blank-log-entry-blank' => 'ачышчаная $1',
 	'blank-log-entry-unblank' => 'адмененая ачыстка $1',
+	'blank-log-link' => '[[{{#Special:Log}}/blank|журнал ачыстак]]',
+	'purewikideletion-blanknologin' => 'Вы не ўвайшлі ў сыстэму',
+	'purewikideletion-blanknologintext' => 'Вам неабходна [[Special:UserLogin|ўвайсьці ў сыстэму]], каб ачысьціць старонку.',
+	'purewikideletion-unblanknologintext' => 'Вам неабходна [[Special:UserLogin|ўвайсьці ў сыстэму]], каб адмяніць ачыстку старонкі.',
+	'purewikideletion-blankedtext' => 'Старонка [[$1]] была ачышчаная.
+Глядзіце сьпіс апошніх ачыстак на $2.',
+	'purewikideletion-population-done' => 'Выкананае запаўненьне табліцы blanked_page.',
+	'right-purewikideletion' => '[[Special:PopulateBlankedPagesTable|Запоўніць]] табліцу ачышчаных старонак',
 );
 
 /** Breton (Brezhoneg)
@@ -122,7 +137,7 @@ $messages['de'] = array(
 	'purewikideletion-desc' => 'Sorgt unter anderem dafür, dass geleerte Seiten als roter Link erscheinen',
 	'purewikideletion-pref-watchblank' => 'Selbst geleerte Seiten automatisch beobachten',
 	'purewikideletion-pref-watchunblank' => 'Seiten mit von mir zurückgenommenen Leerungen automatisch beobachten',
-	'purewikideletion-blanked' => "Eine ehemalige Version dieser Seite wurde am $2 von [[User:$1|$1]] ([[User talk:$1|Diskussion]]) ([[Special:Contributions/$1|Bearbeitungen]]) geleert.
+	'purewikideletion-blanked' => "Eine ehemalige Version dieser Seite wurde am $5 um $6 von [[User:$1|$1]] ([[User talk:$1|Diskussion]]) ([[Special:Contributions/$1|Bearbeitungen]]) geleert.
 
 Angegebene Begründung für die Leerung: ''<nowiki>$3</nowiki>''.
 
@@ -132,7 +147,7 @@ Du kannst [{{fullurl:{{FULLPAGENAMEE}}|action=history}} die Versionsgeschichte b
 	'blank-log-header' => 'Es folgt eine Liste von Seitenleerungen und zurückgenommenen Entleerungen.',
 	'blank-log-entry-blank' => 'leerte „$1“',
 	'blank-log-entry-unblank' => 'entleerte „$1“',
-	'blank-log-link' => '[[Special:Log/blank|Leerungs-Logbuch]]',
+	'blank-log-link' => '[[{{#Special:Log}}/blank|Leerungs-Logbuch]]',
 	'purewikideletion-blanknologin' => 'Nicht angemeldet',
 	'purewikideletion-blanknologintext' => 'Du musst ein registrierter Benutzer und [[Special:UserLogin|angemeldet sein]], um eine Seite zu leeren.',
 	'purewikideletion-unblanknologintext' => 'Du musst ein registrierter Benutzer und [[Special:UserLogin|angemeldet sein]], um die Leerung einer Seite zurücknehmen zu können.',
@@ -142,11 +157,54 @@ Siehe das $2 für eine Liste der letzten Leerungen.',
 	'right-purewikideletion' => '[[Special:PopulateBlankedPagesTable|Erzeuge]] Tabelle mit geleerten Seiten',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'purewikideletion' => 'Dopołne wulašowanje',
+	'randomexcludeblank' => 'Pśipadny bok (bźez proznych bokow)',
+	'populateblankedpagestable' => 'Tabelu wuproznjonych bokow napóraś',
+	'purewikideletion-desc' => 'Zawinujo mj. dr., až se wuproznjone boki pokazuju se ako cerwjone wótkaze',
+	'purewikideletion-pref-watchblank' => 'Boki, kótarež som wuproznił, awtomatiski wobglědowaś',
+	'purewikideletion-pref-watchunblank' => 'Boki, kótarež som napołnił, awtomatiski wobglědowaś',
+	'purewikideletion-blanked' => "Pjerwjejšna wersija toś togo boka jo se wót [[User:$1|$1]] ([[User talk:$1|diskusija]]) ([[Special:Contributions/$1|pśinoski]]) $5  $6 wuprozniła.
+
+Pśicyna za wuproznjenje: ''<nowiki>$3</nowiki>''.
+
+Móžoš [{{fullurl:{{FULLPAGENAMEE}}|action=history}} historiju boka se woglědaś], [{{fullurl:{{FULLPAGENAMEE}}|oldid=$4&action=edit}} slědnu wersiju wobźěłaś] abo nowy bok spisaś.",
+	'blank-log' => 'prozniś',
+	'blank-log-name' => 'Protokol wuproznjenjow',
+	'blank-log-header' => 'Dołojce jo lisćina wuproznjenjow a napołnjenjow bokow.',
+	'blank-log-entry-blank' => 'jo $1 wuproznił',
+	'blank-log-entry-unblank' => 'jo $1 napołnił',
+	'blank-log-link' => '[[{{#Special:Log}}/blank|protokol wuproznjenjow]]',
+	'purewikideletion-blanknologin' => 'Njepśizjawjony',
+	'purewikideletion-blanknologintext' => 'Musyš zregistrěrowany wužywaŕ a [[Special:UserLogin|pśizjawjony]] byś, aby wuproznił bok.',
+	'purewikideletion-unblanknologintext' => 'Musyš zregistrěrowany wužywaŕ a [[Special:UserLogin|pśizjawjony]] byś, aby napołnił bok.',
+	'purewikideletion-blankedtext' => '[[$1]] jo se wuproznił.
+Glědaj $2 za dataowa sajźbu nejnowšych wuproznjenjow.',
+	'purewikideletion-population-done' => 'Tabela z wuproznjonymi bokami napórana',
+	'right-purewikideletion' => 'Tabelu z wuproznjonymi bokami [[Special:PopulateBlankedPagesTable|napóraś]]',
+);
+
 /** Spanish (Español)
  * @author Crazymadlover
+ * @author Translationista
  */
 $messages['es'] = array(
+	'purewikideletion' => 'Eliminación wiki pura',
+	'randomexcludeblank' => 'Página aleatoria (excluye páginas en blanco)',
+	'populateblankedpagestable' => 'Llenar la tabla de páginas vaciadas',
+	'purewikideletion-desc' => 'Entre otras cosas, hace que los vínculos a las páginas vaciadas se muestren en rojo',
+	'purewikideletion-pref-watchblank' => 'Añadir las páginas que blanquee a mi lista de seguimiento',
+	'purewikideletion-pref-watchunblank' => 'Añadir a mi lista de seguimiento las páginas cuyo vaciado revierta',
 	'blank-log' => 'en blanco',
+	'blank-log-name' => 'Registro de vaciados',
+	'blank-log-header' => 'A continuación se muestra un listado de vaciados y reversiones de vaciados de páginas.',
+	'blank-log-entry-blank' => 'se ha vaciado $1',
+	'blank-log-entry-unblank' => 'se ha revertido el vaciado de $1',
+	'purewikideletion-blanknologin' => 'No has iniciado sesión',
+	'purewikideletion-blanknologintext' => 'Debes ser un usuario registrado e [[Special:UserLogin|iniciar sesión]] para dejar en blanco un página.',
 );
 
 /** French (Français)
@@ -199,7 +257,7 @@ $messages['hsb'] = array(
 	'purewikideletion-desc' => 'Wuskutkuje mj. dr., zo prózdne strony jewja so jako čerwjene wotkazy',
 	'purewikideletion-pref-watchblank' => 'Strony, kotrež prózdnju, mojim wobkedźbowankam přidać',
 	'purewikideletion-pref-watchunblank' => 'Strony, kotrež pjelnju, mojim wobkedźbowankam přidać',
-	'purewikideletion-blanked' => "Prjedawša wersija tuteje strony bu wot [[User:$1|$1]] ([[User talk:$1|diskusija]]) ([[Special:Contributions/$1|přinoški]])  $2 wuprózdnjena.
+	'purewikideletion-blanked' => "Prjedawša wersija tuteje strony bu wot [[User:$1|$1]] ([[User talk:$1|diskusija]]) ([[Special:Contributions/$1|přinoški]])  $5 $6 wuprózdnjena.
 
 Přičina za wuprózdnjenje: ''<nowiki>$3</nowiki>''.
 
@@ -209,7 +267,7 @@ Móžeš sej  [{{fullurl:{{FULLPAGENAMEE}}|action=history}} wersijowe stawizny n
 	'blank-log-header' => 'Deleka je lisćina wuprózdnjenjow a napjelnjenjow stronow.',
 	'blank-log-entry-blank' => 'je $1 wuprózdnił',
 	'blank-log-entry-unblank' => 'je $1 napjelnił',
-	'blank-log-link' => '[[Special:Log/blank|protokol wuprózdnjenjow]]',
+	'blank-log-link' => '[[{{#Special:Log}}/blank|protokol wuprózdnjenjow]]',
 	'purewikideletion-blanknologin' => 'Njepřizjewjeny',
 	'purewikideletion-blanknologintext' => 'Dyrbiš zregistrowany wužiwar a  [[Special:UserLogin|přizjewjeny]] być, zo by stronu wuprózdnił.',
 	'purewikideletion-unblanknologintext' => 'Dyrbiš zregistrowany wužiwar a  [[Special:UserLogin|přizjewjeny]] być, zo by stronu napjelnił.',
@@ -246,8 +304,8 @@ $messages['mk'] = array(
 	'purewikideletion-desc' => 'Меѓу останатите функции, ги брише испразнетите страници',
 	'purewikideletion-pref-watchblank' => 'Додавај ги страниците што ги празнам во мојот список на набљудувања',
 	'purewikideletion-pref-watchunblank' => 'Додавај ги испразнетите страници што ги враќам во мојот список на набљудувања',
-	'purewikideletion-blanked' => "Претходна верзија на оваа страница беше испразнета од [[User:$1|$1]] ([[User talk:$1|разговор]]) ([[Special:Contributions/$1|придонеси]]) на $2
-        
+	'purewikideletion-blanked' => "Претходна верзија на оваа страница беше испразнета од [[User:$1|$1]] ([[User talk:$1|разговор]]) ([[Special:Contributions/$1|придонеси]]) на $5 во $6.
+
 За испразнувањето беше наведена следнава причина: ''<nowiki>$3</nowiki>''.
 
 Можете да ја [{{fullurl:{{FULLPAGENAMEE}}|action=history}} погледате историјата на статијата], да ја [{{fullurl:{{FULLPAGENAMEE}}|oldid=$4&action=edit}} уредите најновата верзија], или пак да напишете нова содржина за страницата во просторот подолу.",
@@ -256,7 +314,7 @@ $messages['mk'] = array(
 	'blank-log-header' => 'Подолу е наведен список на празнења и враќања на испразнети страници.',
 	'blank-log-entry-blank' => 'испразнета $1',
 	'blank-log-entry-unblank' => 'вратено празнење на $1',
-	'blank-log-link' => '[[Special:Log/blank|дневник на празнења]]',
+	'blank-log-link' => '[[{{#Special:Log}}/blank|дневник на празнења]]',
 	'purewikideletion-blanknologin' => 'Не сте најавени',
 	'purewikideletion-blanknologintext' => 'Мора да сте регистриран корисник и да сте [[Special:UserLogin|најавени]] за да можете да празните страници.',
 	'purewikideletion-unblanknologintext' => 'Мора да сте регистриран корисник и да сте [[Special:UserLogin|најавени]] за да можете да враќате испразнети страници.',
@@ -306,7 +364,7 @@ $messages['pt'] = array(
 	'purewikideletion-desc' => 'Entre outras coisas, causa que links para páginas esvaziadas apareçam a vermelho',
 	'purewikideletion-pref-watchblank' => 'Adicionar as páginas que eu esvaziar às minhas páginas vigiadas',
 	'purewikideletion-pref-watchunblank' => 'Adicionar as páginas cujo esvaziamento eu reverter, às minhas páginas vigiadas',
-	'purewikideletion-blanked' => "Uma versão anterior desta página foi esvaziada por [[User:$1|$1]] ([[User talk:$1|discussão]]) ([[Special:Contributions/$1|contribs]]) em $2
+	'purewikideletion-blanked' => "Uma versão anterior desta página foi esvaziada por [[User:$1|$1]] ([[User talk:$1|discussão]]) ([[Special:Contributions/$1|contribs]]) em $5 às $6.
 
 O motivo apresentado para o esvaziamento da página, foi: ''<nowiki>$3</nowiki>''.
 
@@ -316,7 +374,7 @@ Pode [{{fullurl:{{FULLPAGENAMEE}}|action=history}} ver o historial da página], 
 	'blank-log-header' => 'Encontra abaixo uma lista de esvaziamentos e reversões de esvaziamentos de páginas.',
 	'blank-log-entry-blank' => 'esvaziou $1',
 	'blank-log-entry-unblank' => 'reverteu esvaziamento de $1',
-	'blank-log-link' => '[[Special:Log/blank|registo de esvaziamento de páginas]]',
+	'blank-log-link' => '[[{{#Special:Log}}/blank|registo de esvaziamento de páginas]]',
 	'purewikideletion-blanknologin' => 'Não está autenticado',
 	'purewikideletion-blanknologintext' => 'Tem de ser um utilizador registado e estar [[Special:UserLogin|autenticado]] para esvaziar uma página.',
 	'purewikideletion-unblanknologintext' => 'Tem de ser um utilizador registado e estar [[Special:UserLogin|autenticado]] para reverter o esvaziamento de uma página.',

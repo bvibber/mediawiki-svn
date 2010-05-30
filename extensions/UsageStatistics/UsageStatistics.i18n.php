@@ -328,6 +328,7 @@ $messages['bg'] = array(
 );
 
 /** Bengali (বাংলা)
+ * @author Bellayet
  * @author Zaheen
  */
 $messages['bn'] = array(
@@ -335,10 +336,11 @@ $messages['bn'] = array(
 	'usagestatistics' => 'ব্যবহার পরিসংখ্যান',
 	'usagestatistics-desc' => 'একজন নির্দিষ্ট ব্যবহারকারী এবং সামগ্রিক উইকি ব্যবহার পরিসংখ্যান দেখানো হোক',
 	'usagestatisticsfor' => '<h2>ব্যবহারকারী [[User:$1|$1]]-এর জন্য ব্যবহার পরিসংখ্যান</h2>',
-	'usagestatisticsinterval' => 'ব্যবধান',
+	'usagestatisticsinterval' => 'ব্যবধান:',
+	'usagestatisticsnamespace' => 'নামস্থান:',
 	'usagestatisticstype' => 'ধরন',
-	'usagestatisticsstart' => 'শুরুর তারিখ',
-	'usagestatisticsend' => 'শেষের তারিখ',
+	'usagestatisticsstart' => 'শুরুর তারিখ:',
+	'usagestatisticsend' => 'শেষের তারিখ:',
 	'usagestatisticssubmit' => 'পরিসংখ্যান সৃষ্টি করা হোক',
 	'usagestatisticsnostart' => 'অনুগ্রহ করে একটি শুরুর তারিখ দিন',
 	'usagestatisticsnoend' => 'অনুগ্রহ করে একটি শেষের তারিখ দিন',

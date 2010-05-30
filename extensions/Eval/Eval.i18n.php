@@ -411,7 +411,7 @@ $messages['lb'] = array(
  */
 $messages['mk'] = array(
 	'eval' => 'Пресметка',
-	'eval-desc' => 'Додава [[Special:Eval|интерфејс]] на функцијата <code>eval()</code>',
+	'eval-desc' => 'Додава [[Special:Eval|посредник]] на функцијата <code>eval()</code>',
 	'eval_submit' => 'Пресметај',
 	'eval_escape' => 'Екранизирај ги излезните податоци',
 	'eval_out' => 'Излезни податоци',

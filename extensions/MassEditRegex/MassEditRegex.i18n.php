@@ -286,6 +286,7 @@ $messages['br'] = array(
 	'masseditregex-hint-remove' => 'Tennañ kuit un tamm destenn eus holl bajennoù ar roll',
 	'masseditregex-listtype-intro' => 'Setu ur roll :',
 	'masseditregex-listtype-pagenames' => 'Anv ar bajennoù (kemmañ ar bajennoù-se)',
+	'masseditregex-listtype-categories' => "Anv ar rummadoù (kemmañ pep pajenn a zo er rummadoù-se ; graet 'vez van eus diuzadenn an esaouenn anv)",
 	'masseditregex-listtype-backlinks' => 'Pajennoù liammet (kemmañ ar pajennoù enno ul liamm davet houmañ)',
 	'masseditregex-namespace-intro' => 'Emañ an holl bajennoù-mañ en esaouenn anv :',
 	'masseditregex-exprnomatch' => 'N\'eo bet kavet ar jedad "$1" e pajenn ebet.',

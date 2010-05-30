@@ -194,7 +194,7 @@ $messages['lb'] = array(
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
-	'conditionalshowsection-desc' => 'Додавање наознаката cshow за условен приказ/сокривање на дел од вики-текст',
+	'conditionalshowsection-desc' => 'Додавање на ознаката cshow за условен приказ/сокривање на дел од вики-текст',
 );
 
 /** Nedersaksisch (Nedersaksisch)

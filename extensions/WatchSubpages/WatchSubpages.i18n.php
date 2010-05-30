@@ -125,6 +125,13 @@ $messages['bg'] = array(
 	'watchsubpages-desc' => 'Бързо [[Special:WatchSubpages|добавяне на всички подстраници]] на страница в списъка за наблюдение',
 );
 
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'watchsubpages-addtitles' => 'পাতা যোগ',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */

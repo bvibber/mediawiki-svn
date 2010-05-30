@@ -417,6 +417,7 @@ $messages['an'] = array(
 	'code-field-path' => 'Camín',
 	'code-field-text' => 'Nota',
 	'code-rev-date' => 'Calendata:',
+	'code-status-reverted' => 'revertito',
 	'code-status-ok' => "D'alcuerdo",
 	'codereview-email-body' => 'L\'usuario "$1" publicó un comentario en $3
 
@@ -5016,6 +5017,7 @@ $messages['ka'] = array(
 	'code-field-status' => 'სტატუსი',
 	'code-field-timestamp' => 'თარიღი',
 	'code-field-tests' => 'ტესტი',
+	'code-field-text' => 'შენიშვნა',
 	'code-field-select' => 'არჩევა',
 	'code-rev-author' => 'ავტორი:',
 	'code-rev-date' => 'თარიღი:',

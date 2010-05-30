@@ -269,6 +269,7 @@ $messages['br'] = array(
 Perak chom hep rannañ anezhi ?",
 	'storyboard-email' => "Ho chomlec'h postel (ret)",
 	'storyboard-storytitle' => 'Un titl, berr hag evit deskrivañ (ret)',
+	'storyboard-agreement' => 'Degemer a ran embann hag implij an istor-mañ dindan an aotre-implijout [http://creativecommons.org/licenses/by-sa/3.0/ Deroadenn Creative Commons/Share-Alike License].',
 	'storyboard-charsleft' => '($1 arouezenn{{PLURAL:$1||}} a chom{{PLURAL:$1||}})',
 	'storyboard-cannotbelonger' => '<b>$1</b> arouezenn{{PLURAL:$1||}} e re en deus ho istor !',
 	'storyboard-charsneeded' => "(ezhomm 'zo $1 arouezenn ouzhpenn{{PLURAL:$1||}})",
@@ -282,6 +283,7 @@ Perak chom hep rannañ anezhi ?",
 	'storyboard-charstomany' => '$1 arouezenn e re !',
 	'storyboard-morecharsneeded' => "Ezhomm 'zo $1 arouezenn c'hoazh",
 	'storyboard-charactersleft' => 'Chom a ra $1 arouezenn',
+	'storyboard-emailtitle' => 'Kinnig an istor graet mat',
 	'storyreview' => 'Barnadenn an istor',
 	'storyboard-deleteimage' => 'Dilemel ar skeudenn',
 	'storyboard-done' => 'Graet',
@@ -1110,7 +1112,7 @@ Dir kënnt [$1 publizéiert Anekdote liesen].',
  */
 $messages['mk'] = array(
 	'storyboard-name' => 'Раскажувачница',
-	'storyboard-desc' => 'Дава [[Special:Story|страница за дарителите]], кадешто тие можат [[Special:StorySubmission|да објават]] своја приказна, како и [[Special:StoryReview|интерфејс за модерирање на приказните]]',
+	'storyboard-desc' => 'Дава [[Special:Story|страница за дарителите]], кадешто можат [[Special:StorySubmission|да објават]] своја приказна, како и [[Special:StoryReview|посредник за модерација на приказните]]',
 	'right-storyreview' => 'Прегледување, уредување, објавување и сокривање на приказни',
 	'storyboard-anerroroccured' => 'Се појави гешка: $1',
 	'storyboard-unpublished' => 'Необјавено',
@@ -1553,5 +1555,51 @@ Varför inte dela med dig av det?',
  */
 $messages['te'] = array(
 	'storyboard-publish' => 'ప్రచురించు',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'storyboard-name' => 'Talahanayan ng salaysay',
+	'storyboard-desc' => 'Nagbibigay ng isang [[Special:Story|lapagang pahina para sa mga tagapagkaloob]], isang pahina kung saan [[Special:StorySubmission|maipapasa]] ang mga kuwento at isang [[Special:StoryReview|hangganang-mukha ng pagtimpla ng kuwento]]',
+	'right-storyreview' => 'Suriin, baguhin, ilathala, at itago ang mga kuwento',
+	'storyboard-anerroroccured' => 'Naganap ang isang kamalian: $1',
+	'storyboard-unpublished' => 'Hindi pa nalathala',
+	'storyboard-published' => 'Nalathala na',
+	'storyboard-hidden' => 'Nakatago',
+	'storyboard-unpublish' => 'Huwag ilathala',
+	'storyboard-publish' => 'Ilathala',
+	'storyboard-hide' => 'Itago',
+	'storyboard-option-unpublished' => 'hindi pa nalathala',
+	'storyboard-option-published' => 'nalathala na',
+	'storyboard-option-hidden' => 'nakatago',
+	'story' => 'Kuwento',
+	'storyboard-submittedbyon' => 'Ipinasa ni $1 noong $2, $3.',
+	'storyboard-viewstories' => 'Tingnan ang mga kuwento',
+	'storyboard-nosuchstory' => 'Hindi umiirl ang hiniling mong kuwento.
+Maaaring tinanggal ito.',
+	'storyboard-storyunpublished' => 'Hindi pa nalalathala ang hiniling mong kuwento.',
+	'storyboard-nostorytitle' => 'Dapat kang tumukoy ng isang pamagat o ID ng kuwentong nais mong tingnan.',
+	'storyboard-cantedit' => 'Wala kang pahintulot na mamatnugot ng mga kuwento.',
+	'storyboard-canedit' => 'Maaari mong [$1 baguhin] at ilathala ang kuwentong ito.',
+	'storyboard-createdandmodified' => 'Nilikha noong $1, $2 at huling binago noong $3, $4',
+	'storyboard-authorname' => 'Pangalan ng may-akda',
+	'storyboard-authorlocation' => 'Lugar ng may-akda',
+	'storyboard-authoroccupation' => 'Hanapbuhay ng may-akda',
+	'storyboard-authoremail' => 'Tirahan ng e-liham ng may-akda',
+	'storyboard-thestory' => 'Ang kuwento',
+	'storyboard-storystate' => 'Estado',
+	'storyboard-language' => 'Wika',
+	'storyboard-storymetadata' => 'Ipinasa ni $1 noong $2, $3.',
+	'storyboard-storymetadatafrom' => 'Ipinasa ni $1 mula sa $2 noong $3, $4.',
+	'storyboard-yourname' => 'Pangalan mo (kailangan)',
+	'storyboard-location' => 'Lokasyon mo',
+	'storyboard-occupation' => 'Hanapbuhay mo',
+	'storyboard-story' => 'Ang kuwento mo',
+	'storyboard-photo' => 'May larawan ka ng sarili mo?
+Bakit hindi mo ito ibahagi?',
+	'storyboard-email' => 'Tirahan mo ng e-liham (kailangan)',
+	'storyboard-storytitle' => 'Isang maikli, mapaglarawang pamagat (kailangan)',
 );
 

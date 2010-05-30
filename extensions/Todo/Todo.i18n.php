@@ -257,6 +257,8 @@ $messages['bn'] = array(
 	'todo' => 'করণীয় তালিকা',
 	'todo-tab' => 'করণীয়',
 	'todo-new-queue' => 'নতুন',
+	'todo-list-change' => 'পরিবর্তন',
+	'todo-list-cancel' => 'বাতিল',
 	'todo-form-details' => 'বিস্তারিত:',
 );
 

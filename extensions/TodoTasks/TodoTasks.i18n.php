@@ -180,6 +180,19 @@ $messages['bg'] = array(
 	'tasklistnoprojects' => "Грешка: Изглежда сте включили '''\$wgUseProjects''', но не сте създали [[MediaWiki:TodoTasksValidProjects]]. За повече информация, прегледайте [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 инструкциите за инсталация].",
 );
 
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'tasklist' => 'কর্মতালিকা',
+	'tasklistunknownproject' => 'অজানা প্রকল্প',
+	'tasklistincorrectuser' => 'ভুল ব্যবহারকারী নাম',
+	'tasklistemail' => 'সুপ্রিয় %s',
+	'tasklistmytasks' => 'আমার কর্ম',
+	'tasklistchooseproj' => 'প্রকল্প নির্বাচন:',
+	'tasklistprojdisp' => 'প্রদর্শন',
+);
+
 /** Breton (Brezhoneg)
  * @author Fohanno
  * @author Fulup

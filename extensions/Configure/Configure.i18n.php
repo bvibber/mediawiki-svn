@@ -2607,6 +2607,7 @@ $messages['eo'] = array(
  * @author Locos epraix
  * @author Pertile
  * @author Sanbec
+ * @author Translationista
  */
 $messages['es'] = array(
 	'configure' => 'Configurar la wiki',
@@ -2621,7 +2622,7 @@ $messages['es'] = array(
 	'configure-ext-ext-dependencies' => "'''Advertencia:''' esta extensión requiere las siguientes {{PLURAL:$2|extensión|extensiones}} a ser activadas: $1.",
 	'configure-ext-ext-dependency-err' => "'''Error:''' la extensión $1 requiere la extensión $2 para ser activada.",
 	'configure-ext-doc' => 'Ver documentación online',
-	'configure-ext-schemachange' => "'''Advertencia:''' ¡esta extensión requiere una actualización en la base de datos para trabajar correctamente!",
+	'configure-ext-schemachange' => "'''Advertencia:''' ¡esta extensión requiere una [http://www.mediawiki.org/wiki/Manual:Update.php actualización de base de datos] para funcionar correctamente!",
 	'configure-ext-settings' => 'Configuraciones',
 	'configure-ext-settings-dep-errors' => 'Esta extensión no puede ser habilitada porque las siguientes {{PLURAL:$1|configuración tiene|configuraciones tienen}} un valor inaceptable:',
 	'configure-ext-settings-dep-error' => '$1: valor requerido: $2, valor actual: $3',
@@ -6216,7 +6217,7 @@ $messages['mhr'] = array(
  */
 $messages['mk'] = array(
 	'configure' => 'Нагодување на викито',
-	'configure-desc' => 'Авторизирани корисници можат да вршат [[Special:Configure|нагодување]] на викито преку веб интерфејс',
+	'configure-desc' => 'Авторизирани корисници можат да вршат [[Special:Configure|нагодување]] на викито преку посредник на мрежна страница',
 	'configure-desc-group' => 'Група',
 	'configure-desc-key' => 'Клуч',
 	'configure-desc-ns' => 'Именски простор',
@@ -6367,7 +6368,7 @@ $messages['mk'] = array(
 	'configure-throttle-group-anon' => 'Сите анонимни корисници',
 	'configure-throttle-group-user' => 'За корисничка сметка',
 	'configure-throttle-group-newbie' => 'За нова корисничка сметка',
-	'configure-throttle-group-ip' => 'За IP-адреса',
+	'configure-throttle-group-ip' => 'По IP-адреса',
 	'configure-throttle-group-subnet' => 'За подмрежа од класа C',
 	'configure-throttle-count' => 'Дозволени дејства:',
 	'configure-throttle-period' => 'Период на враќање по основно (секунди):',
@@ -6386,8 +6387,8 @@ $messages['mk'] = array(
 	'configure-condition-name-2' => 'Минимум старост',
 	'configure-condition-name-3' => 'Потврдена е-пошта',
 	'configure-condition-name-4' => 'Во групи',
-	'configure-condition-name-5' => 'Корисничка IP адреса',
-	'configure-condition-name-6' => 'Корисничка IP адреса во CIDR опсег',
+	'configure-condition-name-5' => 'Корисничка IP-адреса',
+	'configure-condition-name-6' => 'Корисничка IP-адреса во CIDR опсег',
 	'configure-condition-name-7' => 'Минимална старост од првото уредување',
 	'configure-autopromote-noconds' => 'Нема предуслови',
 	'configure-condition-description-1' => 'Минимален број на уредувања: $1',

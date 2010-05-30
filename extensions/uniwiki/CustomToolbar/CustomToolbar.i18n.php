@@ -385,6 +385,32 @@ $wgCustomToolbarMessages['bg'] = array(
 	'ct_user_sample' => 'Потребителско име',
 );
 
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$wgCustomToolbarMessages['bn'] = array(
+	'ct_bold_sample' => 'গাঢ় লেখা',
+	'ct_bold_tip_ins' => 'গাঢ় লেখা যোগ',
+	'ct_bold_tip_wrap' => 'এই লেখাকে গাঢ় কর',
+	'ct_bold_caption' => 'গাঢ়',
+	'ct_italic_sample' => 'ইটালিক লেখা',
+	'ct_italic_tip_ins' => 'ইটালিক লেখা যোগ',
+	'ct_italic_tip_wrap' => 'এই লেখাকে ইটালিক কর',
+	'ct_italic_caption' => 'ইটালিক',
+	'ct_internal_caption' => 'আন্তঃসংযোগ',
+	'ct_external_caption' => 'বহিঃসংযোগ',
+	'ct_image_caption' => 'ছবি যোগ কর',
+	'ct_attachment_caption' => 'সংযুক্তি যোগ',
+	'ct_math_caption' => 'সূত্র',
+	'ct_nowiki_caption' => 'উইকি নয়',
+	'ct_horizontal_caption' => 'অনুভূমিক রেখা',
+	'ct_upload' => 'আপলোড $1',
+	'ct_submit' => 'চলো!',
+	'ct_close' => 'উইন্ডো বন্ধ',
+	'ct_user_user' => 'ব্যবহারকারী',
+	'ct_user_sample' => 'ব্যবহারকারী নাম',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */

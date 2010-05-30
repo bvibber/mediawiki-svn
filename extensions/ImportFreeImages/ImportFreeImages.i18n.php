@@ -988,6 +988,8 @@ $messages['ps'] = array(
 	'importfreeimages_next' => 'راتلونکي $1',
 	'importfreeimages_size_thumbnail' => 'بټنوک',
 	'importfreeimages_size_small' => 'وړوکی',
+	'importfreeimages_size_medium' => 'منځوی',
+	'importfreeimages_size_large' => 'لوی',
 );
 
 /** Portuguese (Português)

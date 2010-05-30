@@ -1670,7 +1670,7 @@ $messages['mk'] = array(
 * [[Special:CrosswikiBlock|Образецот за блокирање]]
 * [[$2]]",
 	'crosswikiblock-nousername' => 'Нема наведено корисничко име',
-	'crosswikiblock-local' => 'Локалните блокирања не се поддржани преку овој интерфејс. Користете [[Special:BlockIP|{{int:blockip}}]]',
+	'crosswikiblock-local' => 'Локалните блокирања не се поддржани преку овој посредник. Користете [[Special:BlockIP|{{int:blockip}}]]',
 	'crosswikiblock-dbnotfound' => 'Базата на податоци $1 не постои',
 	'crosswikiblock-noname' => '„$1“ не е важечко корисничко име.',
 	'crosswikiblock-nouser' => 'Корисникот „$3“ не е пронајден.',
@@ -1684,7 +1684,7 @@ $messages['mk'] = array(
 Назад кон:
 * [[Special:CrosswikiBlock|Образецот за блокирање]]
 * [[$4]]",
-	'crosswikiunblock-local' => 'Локалните одблокирања не се поддржани преку овој интерфејс. Користете [[Special:IPBlockList|{{int:ipblocklist}}]]',
+	'crosswikiunblock-local' => 'Локалните одблокирања не се поддржани преку овој посредник. Користете [[Special:IPBlockList|{{int:ipblocklist}}]]',
 	'right-crosswikiblock' => 'Блокирање и одблокирање на корисници на други викија',
 );
 

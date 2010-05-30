@@ -1111,18 +1111,19 @@ Ezabatutakoak ezin izango inork ikusi, baina akats bat eginez gero ezabaketak go
 );
 
 /** Persian (فارسی)
+ * @author Ebraminio
  * @author Huji
  * @author Ladsgroup
  */
 $messages['fa'] = array(
-	'hiderevision' => 'پنهان کردن همیشگی نسخه‌ها',
-	'hiderevision-desc' => 'پنهان کردن نسخه‌های خاص از تمام کاربرها به دلایل قانونی و غیره',
-	'group-oversight' => 'ناظران',
-	'group-oversight-member' => 'ناظر',
+	'hiderevision' => 'نهفتن نسخه‌ها برای همیشه',
+	'hiderevision-desc' => 'نهفتن نسخه‌های خاص از تمام کاربرها به دلایل قانونی و غیره',
+	'group-oversight' => 'پنهانگران',
+	'group-oversight-member' => 'پنهانگر',
 	'grouppage-oversight' => '{{ns:project}}:ناظر',
 	'right-oversight' => 'مشاهدهٔ نسخه‌ای که قبلاً پنهان شده',
 	'right-hiderevision' => 'پنهان کردن نسخه از مدیران',
-	'hiderevision-prompt' => 'شماره نسخه‌ای که حذف می‌شود:',
+	'hiderevision-prompt' => 'شمارهٔ نسخهٔ حذف‌شونده:',
 	'hiderevision-continue' => 'ادامه',
 	'hiderevision-text' => "این قابلیت '''فقط''' در موارد زیر باید استفاده شود:
 * اطلاعات شخصی نامناسب
@@ -1133,18 +1134,18 @@ $messages['fa'] = array(
 مواردی که حذف می‌شوند توسط هیچ کاربر در وبگاه قابل دیدن نخواهند بود،
 اما این موارد در سیاهه مربوط به آن ثبت می‌شوند و اگر اشتباهی صورت بگیرد
 توسط مدیر پایگاه داده قابل برگشت خواهد بود.",
-	'hiderevision-reason' => 'دلیل (به طور خصوصی ثبت می‌شود):',
-	'hiderevision-submit' => 'پنهان کردن همیشگی این اطلاعات',
-	'hiderevision-tab' => 'پنهان کردن نسخه',
+	'hiderevision-reason' => 'دلیل (محرمانه ثبت خواهد شد):',
+	'hiderevision-submit' => 'نفهتن ابدی این داده‌ها',
+	'hiderevision-tab' => 'نهفتن نسخه',
 	'hiderevision-link' => 'ویرایش‌های پنهان شدهٔ کاربر',
-	'hiderevision-norevisions' => 'نسخه‌ای برای حذف مشخص نشده بود.',
-	'hiderevision-noreason' => 'باید دلیل این حذف را توضیح دهید.',
-	'hiderevision-status' => 'نسخه $1: $2',
+	'hiderevision-norevisions' => 'هیچ نسخه‌ای برای حذف مشخص نشد.',
+	'hiderevision-noreason' => 'باید دلیل این زدایش را توضیح دهید.',
+	'hiderevision-status' => 'نسخهٔ $1: $2',
 	'hiderevision-success' => 'با موفقیت بایگانی و حذف شد.',
-	'hiderevision-error-missing' => 'در پایگاه داده پیدا نشد.',
-	'hiderevision-error-current' => 'آخرین ویرایش یک صفحه را نمی‌توان حذف کرد. ابتدا آخرین تغییر را واگردانی کنید.',
-	'hiderevision-error-delete' => 'امکان بایگانی کردن وجود نداشت؛ آیا قبلاً حذف شده‌است؟',
-	'hiderevision-archive-status' => 'نسخه‌ای از $1 را حذف کرد: $2',
+	'hiderevision-error-missing' => 'در پایگاه داده یافت نشد.',
+	'hiderevision-error-current' => 'آخرین ویرایش صفحه را نتوان حذف کرد. لطفاً نخست این تغییر را واگردانید.',
+	'hiderevision-error-delete' => 'نشد بایگانی کرد؛ آیا پیشتر حذف شده بود؟',
+	'hiderevision-archive-status' => 'نسخهٔ حذف‌شدهٔ $1: $2',
 	'oversight-nodiff' => 'امکان ردیابی تغییرات وجود ندارد چرا که این صفحه در حال حاضر نسخهٔ قدیمی‌تری ندارد. احتمالاً:
 *صفحه حذف شده‌است
 *نسخهٔ پنهان شده اولین نسخهٔ صفحه بوده‌است',

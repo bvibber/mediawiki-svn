@@ -237,6 +237,7 @@ $messages['bg'] = array(
 );
 
 /** Bengali (বাংলা)
+ * @author Bellayet
  * @author Zaheen
  */
 $messages['bn'] = array(
@@ -257,6 +258,8 @@ $messages['bn'] = array(
 	'vote-results-none' => 'এ পর্যন্ত কোন ভোট পড়েনি।',
 	'vote-login' => 'ভোট দিতে হলে আপনাকে অবশ্যই [$1 লগ ইন] করতে হবে।',
 	'vote-invalid-choice' => 'আপনাকে অবশ্যই প্রদত্ত পছন্দগুলি থেকে যেকোন একটি নির্বাচন করতে হবে।',
+	'right-vote' => 'ভোট',
+	'right-voteadmin' => 'ভোটের ফলাফল দেখুন',
 );
 
 /** Breton (Brezhoneg)
