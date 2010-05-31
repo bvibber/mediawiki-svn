@@ -106,7 +106,7 @@ public class CalculatedProximityStore<T extends WikiWordConcept>
 	public LabeledVector<Integer> getEnvironmentVector(int concept, double minProximity)
 			throws PersistenceException {
 		
-		LabeledVector<Integer> env = new MapLabeledVector<Integer>();
+		LabeledVector<Integer> env = ConceptFeatures.newIntFeaturVector();
 		
 		ConceptFeatures<T, Integer> c = getConceptFeatures(concept);
 		DataSet<ConceptFeatures<T, Integer>> n = featureStore.getNeighbourhoodFeatures(concept);

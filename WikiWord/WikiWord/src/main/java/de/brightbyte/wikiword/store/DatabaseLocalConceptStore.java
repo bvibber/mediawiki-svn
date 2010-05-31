@@ -122,6 +122,7 @@ public class DatabaseLocalConceptStore extends DatabaseWikiWordConceptStore<Loca
 		sql += " WHERE M.term_text = "+database.quoteString(term)+" ";
 		if (spec!=null && spec.getRequireType()!=null) sql += " AND C.type = "+spec.getRequireType().getCode()+" ";
 		sql += " ORDER BY freq DESC";
+		if (spec!=null && spec.getLimit()>0) sql += " LIMIT "+spec.getLimit();
 		return sql;
 	}
 	

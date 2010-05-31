@@ -13,8 +13,9 @@ public interface WikiWordConceptStore<T extends WikiWordConcept> extends WikiWor
 		private boolean includeStatistics;
 		private boolean includeResource;
 		private boolean includeTerms;
-		private ConceptType requireType;
 		private boolean includeDefinition;
+		private ConceptType requireType;
+		private int limit;
 		
 		public boolean getIncludeRelations() {
 			return includeRelations;
@@ -61,6 +62,14 @@ public interface WikiWordConceptStore<T extends WikiWordConcept> extends WikiWor
 		
 		public void setIncludeTerms(boolean includeTerms) {
 			this.includeTerms = includeTerms;
+		}
+		
+		public int getLimit() {
+			return limit;
+		}
+		
+		public void setLimit(int limit) {
+			this.limit = limit;
 		}
 	}
 
