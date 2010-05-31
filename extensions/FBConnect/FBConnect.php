@@ -43,7 +43,7 @@ if ( !defined( 'MEDIAWIKI' )) {
 /*
  * FBConnect version.
  */
-define( 'MEDIAWIKI_FBCONNECT_VERSION', '1.1.1' );
+define( 'MEDIAWIKI_FBCONNECT_VERSION', '2.0.2' );
 
 /*
  * Add information about this extension to Special:Version.
