@@ -51,7 +51,6 @@ mw.addMessages( {
 	"mwe-embedplayer-ogg-player-flowplayer" : "Flowplayer",
 	"mwe-embedplayer-ogg-player-kplayer" : "Kaltura player",
 	"mwe-embedplayer-ogg-player-selected" : "(selected)",
-	"mwe-embedplayer-ogg-player-omtkplayer" : "OMTK Flash Vorbis",
 	"mwe-embedplayer-generic_missing_plugin" : "You browser does not appear to support the following playback type: <b>$1<\/b><br \/>Visit the <a href=\"http:\/\/commons.wikimedia.org\/wiki\/Commons:Media_help\">Playback methods<\/a> page to download a player.<br \/>",
 	"mwe-embedplayer-missing-source" : "No source video was found. Check that your embed code includes a valid source or API key",
 	"mwe-embedplayer-for_best_experience" : "For a better video playback experience we recommend the <b><a href=\"http:\/\/www.mozilla.com\/en-US\/firefox\/upgrade.html?from=mwEmbed\">latest Firefox<\/a>.<\/b>",
@@ -222,7 +221,7 @@ mw.setConfig( 'embedPlayerSourceAttributes', [
 	'default',
 	
 	// Language key used for subtitle tracks
-	'lang',
+	'srclang',
 	
 	// titleKey ( used for api lookups )  
 	'titleKey',
@@ -553,8 +552,7 @@ EmbedPlayerManager.prototype = {
 					'width' : '32px',
 					'height' : '32px'
 				} )
-				.loadingSpinner()
-				.addClass( "loadingSpinner" )
+				.loadingSpinner()				
 			);
 		}
 		return true;
@@ -945,7 +943,7 @@ mediaElement.prototype = {
 			_this.tryAddSource( videoElement );
 		}
 			
-		$j( videoElement ).find( 'source,itext' ).each( function( ) {			
+		$j( videoElement ).find( 'source,track' ).each( function( ) {			
 			_this.tryAddSource( this );
 		} );		
 	},
@@ -1833,9 +1831,7 @@ mw.EmbedPlayer.prototype = {
 					'width' : this.width + 'px',
 					'height' : this.height + 'px'
 				})
-				.text(
-					gM( 'mwe-embedplayer-loading_plugin' ) 
-				)
+				.loadingSpinner()
 			);
 		}
 		
@@ -3119,7 +3115,6 @@ mediaPlayer.prototype = {
 //Flash based players: 
 
 var kplayer = new mediaPlayer('kplayer', ['video/x-flv', 'video/h264'], 'kplayer');
-var omtkPlayer = new mediaPlayer( 'omtkplayer', ['audio/ogg'], 'omtk' );
 
 // Java based player
 var cortadoPlayer = new mediaPlayer( 'cortado', ['video/ogg', 'audio/ogg', 'application/ogg'], 'java' );
@@ -3180,7 +3175,7 @@ mediaPlayers.prototype =
 		
 		this.default_players['video/ogg'] = ['native', 'vlc', 'java', 'generic'];
 		this.default_players['application/ogg'] = ['native', 'vlc', 'java', 'generic'];
-		this.default_players['audio/ogg'] = ['native', 'vlc', 'java', 'omtk' ];
+		this.default_players['audio/ogg'] = ['native', 'vlc', 'java' ];
 		this.default_players['video/mp4'] = ['vlc'];
 		
 		this.default_players['text/html'] = ['html'];
@@ -3341,7 +3336,7 @@ mw.EmbedTypes = {
 	 * @constructor 
 	 */
 	 init: function() {
-		// detect supported types
+		// detect supported types	
 		this.detect();
 		this.detect_done = true;
 	},
@@ -3363,8 +3358,8 @@ mw.EmbedTypes = {
 	/**
 	* Detects what plug-ins the client supports 
 	*/
-	detect: function() {
-		mw.log( "embedPlayer: running detect" );
+	detect: function() {		
+		mw.log( "embedPlayer: running detect" );		
 		this.players = new mediaPlayers();
 		// every browser supports html rendering:
 		this.players.addPlayer( htmlPlayer );
@@ -3382,34 +3377,19 @@ mw.EmbedTypes = {
 		// ActiveX plugins
 		if ( $j.browser.msie ) {
 			// check for flash		 
-			if ( this.testActiveX( 'ShockwaveFlash.ShockwaveFlash' ) ) {
-				// try to get the flash version for omtk include: 
-				try {
-					a = new ActiveXObject( SHOCKWAVE_FLASH_AX + ".7" );
-					d = a.GetVariable( "$version" );	// Will crash fp6.0.21/23/29
-					if ( d ) {
-						d = d.split( " " )[1].split( "," );
-						// we need flash version 10 or greater:
-						if ( parseInt( d[0] ) >= 10 ) {
-							this.players.addPlayer( omtkPlayer );
-						}
-					}
-				} catch ( e ) {
-					// failed to check for flash
-				}
-				// flowplayer has pretty good compatiablity 
-				// (but if we wanted to be fancy we would check for version of flash and update the mp4/h.264 support
-
+			if ( this.testActiveX( 'ShockwaveFlash.ShockwaveFlash' ) ) {			
 				this.players.addPlayer( kplayer );
 				//this.players.addPlayer( flowPlayer );
 			}
 			 // VLC
-			 if ( this.testActiveX( 'VideoLAN.VLCPlugin.2' ) )
+			 if ( this.testActiveX( 'VideoLAN.VLCPlugin.2' ) ) {
 				 this.players.addPlayer( vlcPlayer );
+			 }
 				 
 			 // Java ActiveX
-			 if ( this.testActiveX( 'JavaWebStart.isInstalled' ) )
+			 if ( this.testActiveX( 'JavaWebStart.isInstalled' ) ) {
 				 this.players.addPlayer( cortadoPlayer );
+			 }
 			 // quicktime (currently off) 
 			 // if ( this.testActiveX( 'QuickTimeCheckObject.QuickTimeCheck.1' ) )
 			 //	this.players.addPlayer(quicktimeActiveXPlayer);			 
@@ -3496,10 +3476,7 @@ mw.EmbedTypes = {
 						var descArray = flashDescription.split( " " );
 						var tempArrayMajor = descArray[2].split( "." );
 						var versionMajor = tempArrayMajor[0];
-						// mw.log("version of flash: " + versionMajor);
-						if ( versionMajor >= 10 ) {
-							this.players.addPlayer( omtkPlayer );
-						}
+						// mw.log("version of flash: " + versionMajor);					
 					}
 					continue;
 				}

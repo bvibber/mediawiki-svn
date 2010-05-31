@@ -81,7 +81,7 @@
 		
 		"ctrlBuilder"		: "skins/ctrlBuilder.js",
 	
-	  "mw.style.EmbedPlayer" : "mw.style.EmbedPlayer.css",
+		"mw.style.EmbedPlayer" : "mw.style.EmbedPlayer.css",
 		
 		"mw.style.kskin" 	: "skins/kskin/EmbedPlayer.css",	
 		"kskinConfig"		: "skins/kskin/kskinConfig.js",
@@ -214,9 +214,9 @@
 		if( $j.browser.msie ) {
 			dependencyRequest[0].push( 'javaEmbed' )		
 		}
-		
+				
 		// Safari gets slower load since we have to detect ogg support 
-		if( typeof HTMLVideoElement == 'object' &&  !$j.browser.safari  ) {
+		if( !!document.createElement('video').canPlayType &&  !$j.browser.safari  ) {		
 			dependencyRequest[0].push( 'nativeEmbed' )
 		}		
 		

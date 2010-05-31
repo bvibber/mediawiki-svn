@@ -4,10 +4,10 @@
  */
 var urlparts = getRemoteEmbedPath();
 var mwEmbedHostPath = urlparts[0];
-var mwRemoteVersion = 'r126';
+var mwRemoteVersion = 'r127';
 var mwUseScriptLoader = true;
 
-// Log the mwRemote version ( will determine what version of js we get )
+// Log the mwRemote version makes it easy to debug cache issues
 if( window.console ){
 	window.console.log( 'mwEmbed:remote:' + mwRemoteVersion );
 }
@@ -24,7 +24,7 @@ for ( var i = 0; i < reqParts.length; i++ ) {
 	
 
 // Use wikibits onLoad hook: ( since we don't have js2 / mw object loaded ) 
-addOnloadHook( function() {		
+addOnloadHook( function() {
 	doPageSpecificRewrite();
 } );
 
@@ -52,7 +52,7 @@ function doPageSpecificRewrite() {
 	}
 	
 	// Timed text display:
-	if ( wgPageName.indexOf( "TimedText" ) === 0 ) {
+	if ( wgPageName.indexOf( "TimedText:" ) === 0 ) {
 		if( wgAction == 'view' ){
 			var orgBody = mwSetPageToLoading();
 			//load the "player" ( includes call to  loadMwEmbed )
@@ -74,12 +74,14 @@ function doPageSpecificRewrite() {
 	}
 	
 	// Remote Sequencer
-	if( wgPageName.indexOf( "Sequence" ) === 0 ){	
-		console.log( 'spl: ' + typeof mwSetPageToLoading );
+	if( wgPageName.indexOf( "Sequence:" ) === 0 ){		
+		//console.log( 'spl: ' + typeof mwSetPageToLoading );
 		// If on a view page set content to "loading" 
 		mwSetPageToLoading();
 		// Loading with loadMwEmbed not so big a deal since "sequencer is huge
 		loadMwEmbed( function(){
+			$j('#bodyContent').text ( 'Sequencer interface under development ');
+			/*
 			mw.load( 'Sequencer', function(){
 				mw.load( 'RemoteMwSequencer', function(){
 					mw.log('RemoteMwSequencer loaded' ); 
@@ -92,6 +94,7 @@ function doPageSpecificRewrite() {
 						myRemote.updateUI();
 				} );
 			} );
+			*/
 		} );
 	}
 	
@@ -159,7 +162,7 @@ function mwSetPageToLoading(){
 	importStylesheetURI( mwEmbedHostPath + '/skins/mvpcf/EmbedPlayer.css?' + mwGetReqArgs() );
 	var body = document.getElementById('bodyContent');
 	var oldBodyHTML = body.innerHTML;
-	body.innerHTML = '<div class="loading_spinner"></div>';
+	body.innerHTML = '<div class="loadingSpinner"></div>';
 	return oldBodyHTML;
 }
 /**

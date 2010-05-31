@@ -1,6 +1,6 @@
 // Add support for html5 / mwEmbed elements to IE ( comment must come before js code ) 
 // For discussion and comments, see: http://remysharp.com/2009/01/07/html5-enabling-script/
-/*@cc_on@if(@_jscript_version<9){'video audio source itext playlist'.replace(/\w+/g,function(n){document.createElement(n)})}@end@*/
+/*@cc_on@if(@_jscript_version<9){'video audio source track playlist'.replace(/\w+/g,function(n){document.createElement(n)})}@end@*/
 
 /**
  * ~mwEmbed ~
@@ -23,10 +23,10 @@
  */
 
 /*
-* Setup the mw global: 
+* Setup the "mw" global: 
 */
-if ( ! window['mw'] ) {
-	window['mw'] = { };
+if ( typeof window.mw == 'undefined' ) {
+	window.mw = { };
 }
 
 /*
@@ -34,6 +34,14 @@ if ( ! window['mw'] ) {
 */
 var MW_EMBED_VERSION = '1.1f';
 
+// Globals to pre-set ready functions in dynamic loading of mwEmbed 
+if( typeof preMwEmbedReady == 'undefined'){
+	var preMwEmbedReady = [];	
+}
+//Globals to pre-set config values in dynamic loading of mwEmbed
+if( typeof preMwEmbedConfig == 'undefined') {
+	var preMwEmbedConfig = [];
+}
 
 /**
 * The global mw object:
@@ -1077,7 +1085,9 @@ var MW_EMBED_VERSION = '1.1f';
 	* @param {String} msg_txt text text of the loader msg
 	*/
 	mw.addLoaderDialog = function( msg_txt ) {
-		mw.addDialog( msg_txt, msg_txt + '<br>' + mw.loading_spinner() );
+		mw.addDialog( msg_txt, msg_txt + '<br>' + 
+				$j('<div />').loadingSpinner().html() 
+		);
 	}
 	
 	/**
@@ -1281,18 +1291,6 @@ var MW_EMBED_VERSION = '1.1f';
 		}
 	}
 	
-	/**
-	* Get a loading spinner html
-	* NOTE: this is depreciated use jQuery binding $j(target).loadingSpinner()" instead 
-	*
-	* @param {String} [Optional] style Style string to apply to the spinner 
-	*/
-	mw.loading_spinner = function( style ) {
-		var style_txt = ( style ) ? style : '';
-		return '<div class="loading_spinner" style="' + style_txt + '"></div>';
-	}
-	
-	
 	//Setup the local mwOnLoadFunctions array: 
 	var mwOnLoadFunctions = [];
 	
@@ -1325,6 +1323,11 @@ var MW_EMBED_VERSION = '1.1f';
 	* called by mwEmbedSetup
 	*/ 
 	mw.runReadyFunctions = function ( ) {
+		// run any pre-setup ready functions		
+		while( preMwEmbedReady.length ){
+			preMwEmbedReady.shift()();
+		}
+		
 		// Run all the queued functions: 
 		while( mwOnLoadFunctions.length ) {
 			mwOnLoadFunctions.shift()();
@@ -1382,7 +1385,7 @@ var MW_EMBED_VERSION = '1.1f';
 		//( will use XHR if on same domain ) 
 		if( mw.isset( 'window.jQuery' ) 
 			&& mw.getConfig( 'debug' ) === false 
-			&& $j
+			&& typeof $j != 'undefined'
 			&& !isCssFile ) 
 		{	
 			$j.getScript( url, myCallback); 		
@@ -1930,12 +1933,14 @@ var MW_EMBED_VERSION = '1.1f';
 		}				 
 		mwSetupFlag = true;			
 		
+		// Apply any pre-setup config: 		
+		mw.setConfig( preMwEmbedConfig );			
 		
-		mw.log( 'mw:setupMwEmbed :: ' + mw.getMwEmbedSrc() );			
+		
+		mw.log( 'mw:setupMwEmbed SRC:: ' + mw.getMwEmbedSrc() );			
 		
 		// Check core mwEmbed loader.js file ( to get configuration and paths )
-		mw.checkCoreLoaderFile( function(){
-			
+		mw.checkCoreLoaderFile( function(){						
 			// Make sure we have jQuery 
 			mw.load( 'window.jQuery', function() {	
 				
@@ -2204,8 +2209,13 @@ var MW_EMBED_VERSION = '1.1f';
 		// Set the onDomReady Flag
 		mwDomReadyFlag = true;	
 		
-		// Setup MwEmbed 
-		mw.setupMwEmbed();
+		// Give us a chance to get to the bottom of the script. 
+		// When loading mwEmbed asynchronously the dom ready gets called  
+		// directly and in some browsers beets the $j = jQuery.noConflict(); call 
+		// and causes symbol undefined errors.  
+		setTimeout(function(){
+			mw.setupMwEmbed();
+		},1);
 	}	
 	
 	/**
@@ -2251,7 +2261,7 @@ var MW_EMBED_VERSION = '1.1f';
 				if ( this ) {
 					$j( this ).html(
 						$j( '<div />' )
-						.addClass( "loading_spinner" )  
+						.addClass( "loadingSpinner" )  
 					 );
 				}			
 				return this;
