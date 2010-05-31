@@ -25,7 +25,7 @@ public class StoredFeatureFetcher<C extends WikiWordConcept, K> implements Featu
 	}
 
 	public Map<Integer, ConceptFeatures<C, K>> getFeatures(Collection<? extends C> concepts) throws PersistenceException {
-		trace("fetching features for "+concepts); 
+		trace("fetching features for "+concepts.size()+" concepts"); 
 		
 		int[] ids = new int[concepts.size()];
 		int i = 0;

@@ -8,5 +8,6 @@
 	<classpathentry kind="var" path="M2_REPO/mysql/mysql-connector-java/3.1.11/mysql-connector-java-3.1.11.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/BrightByteDB"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/BrightByteRDF"/>
+	<classpathentry kind="var" path="M2_REPO/trove/trove/3.0.0a3/trove-3.0.0a3.jar" sourcepath="/HOME/src/trove-3.0.0a3/lib/trove-src-3.0.0a3.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

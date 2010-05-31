@@ -229,7 +229,7 @@ public class CoherenceDisambiguator extends AbstractDisambiguator<TermReference,
 	 * @see de.brightbyte.wikiword.disambig.Disambiguator#disambiguate(java.util.List)
 	 */
 	public <X extends TermReference>CoherenceDisambiguation<X, LocalConcept> disambiguate(PhraseNode<X> root, Map<X, List<? extends LocalConcept>> meanings, Collection<? extends LocalConcept> context) throws PersistenceException {
-		if (meanings.isEmpty()) return new CoherenceDisambiguation<X, LocalConcept>(Collections.<X, LocalConcept>emptyMap(), Collections.<X>emptyList(), Collections.<Integer, ConceptFeatures<LocalConcept, Integer>>emptyMap(), new MapLabeledVector<Integer>(), 0.0, "no terms or meanings");
+		if (meanings.isEmpty()) return new CoherenceDisambiguation<X, LocalConcept>(Collections.<X, LocalConcept>emptyMap(), Collections.<X>emptyList(), Collections.<Integer, ConceptFeatures<LocalConcept, Integer>>emptyMap(), ConceptFeatures.newIntFeaturVector(), 0.0, "no terms or meanings");
 		
 		LabeledMatrix<LocalConcept, LocalConcept> similarities = new MapLabeledMatrix<LocalConcept, LocalConcept>(true);
 		FeatureFetcher<LocalConcept, Integer> features = getFeatureCache(meanings, context); 
@@ -396,7 +396,7 @@ public class CoherenceDisambiguator extends AbstractDisambiguator<TermReference,
 		int c = interp.getSequence().size();
 		
 		if (c == 0) {
-			CoherenceDisambiguation<X, LocalConcept> r = new CoherenceDisambiguation<X, LocalConcept>(interp.getMeanings(), interp.getSequence(), Collections.<Integer, ConceptFeatures<LocalConcept, Integer>>emptyMap(), new MapLabeledVector<Integer>(), 0, "empty");
+			CoherenceDisambiguation<X, LocalConcept> r = new CoherenceDisambiguation<X, LocalConcept>(interp.getMeanings(), interp.getSequence(), Collections.<Integer, ConceptFeatures<LocalConcept, Integer>>emptyMap(), ConceptFeatures.newIntFeaturVector(), 0, "empty");
 			return r;
 		} 
 		
@@ -444,8 +444,8 @@ public class CoherenceDisambiguator extends AbstractDisambiguator<TermReference,
 								fb.getConcept().setCardinality(b.getCardinality());
 								fb.getConcept().setRelevance(b.getRelevance());
 								
-								double lena = fa.getFeatureVector().getLength();
-								double lenb = fb.getFeatureVector().getLength();
+								//double lena = fa.getFeatureVector().getLength();
+								//double lenb = fb.getFeatureVector().getLength();
 
 								//if (lena<0 || lena>1.000000001) throw new SanityException("encountered bad length ("+lena+") for "+a+"; ooops!");
 								//if (lenb<0 || lenb>1.000000001) throw new SanityException("encountered bad length ("+lenb+") for "+b+"; ooops!");
@@ -454,11 +454,12 @@ public class CoherenceDisambiguator extends AbstractDisambiguator<TermReference,
 								d = similarityMeasure.similarity(fa.getFeatureVector(), fb.getFeatureVector());
 						}
 						
+						System.out.format("  sim(%s, %s) = %07.5f", a, b, d); System.out.println();
 						similarities.set(a, b, d);
 					}
 				}
 				
-				if (d<0 || d>1) throw new SanityException("encountered invalid similarity score ("+d+") for "+a+" / "+b+"; check similarityMeasure.");
+				d = doubleSanity(d, "normal similarity score for "+a+" / "+b, "check similarityMeasure!", 0, 0.1, 1, 0.1);
 				
 				sim += d;
 			}
@@ -485,20 +486,33 @@ public class CoherenceDisambiguator extends AbstractDisambiguator<TermReference,
 		pop = c == 0 ? 0 : pop / c; //scale
 		weight = c == 0 ? 0 : weight / c; //scale
 		
-		if (pop<0) throw new SanityException("encountered insane popularity ("+pop+"); check popularityMeasure.");
-		if (sim<0 || sim>1) throw new SanityException("encountered insane average simility ("+sim+"); ooops!");
+		pop = doubleSanity(pop, "normal popularity", "check popularityMeasure!", 0, 0.1, Double.MAX_VALUE, 0);
+		sim = doubleSanity(sim, "normal average simility", "ooops!", 0, 0.1, 1, 0.1);
 		
 		double popf = popularityNormalizer.apply(pop);
 		double simf = similarityNormalizer.apply(sim);
 
-		if (popf<0 || popf>1) throw new SanityException("encountered insane normal popularity ("+popf+"); check popularityNormalizer!");
-		if (simf<0 || simf>1) throw new SanityException("encountered insane normal similarity ("+simf+"); check similarityNormalizer!");
-
+		popf = doubleSanity(popf, "normal popularity", "check popularityNormalizer!", 0, 0.1, 1, 0.1);
+		simf = doubleSanity(simf, "normal similarity", "check similarityNormalizer!", 0, 0.1, 1, 0.1);
+		
 		double score = scoreCombiner.apply(simf, popf);
-		if (score<0 || score>1) throw new SanityException("encountered insane score ("+score+"); check scoreCombiner!");
+		score = doubleSanity(score, "score", "check scoreCombiner!", 0, 0.1, 1, 0.1);
 		
 		CoherenceDisambiguation<X, LocalConcept> r = new CoherenceDisambiguation<X, LocalConcept>(interp.getMeanings(), interp.getSequence(), disambigFeatures, centroid, score, "simf="+simf+", popf="+popf+", sim="+sim+", pop="+pop+", weight="+weight);
 		return r;
+	}
+	
+	protected static double doubleSanity(double value, String name, String hint, double minValue, double minTollerance, double maxValue, double maxTollerance) {
+		if (value<(minValue-minTollerance) || value>(maxValue+maxTollerance)) {
+			String m = "encountered insane "+name+": "+value;
+			if (hint != null) m += "; " + hint;
+			throw new SanityException(m);
+		}
+		
+		if (value<minValue) value= minValue;
+		if (value>maxValue) value= maxValue;
+		
+		return value;
 	}
 
 }

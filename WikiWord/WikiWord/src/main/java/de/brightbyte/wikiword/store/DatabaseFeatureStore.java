@@ -28,6 +28,10 @@ public class DatabaseFeatureStore<T extends WikiWordConcept>
 				extends DatabaseWikiWordStore
 				implements FeatureTopologyStore<T, Integer> {
 	
+		protected static enum NormalizationMode {
+			NEVER, AUTO, ALWAYS
+		}
+
 		protected WikiWordConcept.Factory<T> conceptFactory;
 		protected DatabaseWikiWordConceptStore<T> conceptStore;
 		protected RelationTable featureTable;
@@ -38,7 +42,7 @@ public class DatabaseFeatureStore<T extends WikiWordConcept>
 			public ConceptFeatures<T, Integer> newInstance(ResultSet row) throws Exception {
 				int concept = -1;
 				String name = null;
-				LabeledVector<Integer> f = new MapLabeledVector<Integer>(); 
+				LabeledVector<Integer> f = ConceptFeatures.newIntFeaturVector(); 
 				
 				do {
 					int c = row.getInt("concept");
@@ -73,7 +77,7 @@ public class DatabaseFeatureStore<T extends WikiWordConcept>
 		    this.conceptTable = (EntityTable)conceptStore.getDatabaseAccess().getTable("concept"); 
 			this.featureTable = (RelationTable)database.getTable("feature");
 			
-			this.maxConceptFeatures = tweaks.getTweak("dbstore.maxConceptFeatures", 512);
+			this.maxConceptFeatures = tweaks.getTweak("dbstore.maxConceptFeatures", 4*1024);
 		}
 
 		protected T newConcept(int id, String name, ConceptType type, int cardinality, double relevance) throws PersistenceException {
@@ -102,11 +106,12 @@ public class DatabaseFeatureStore<T extends WikiWordConcept>
 			}
 		}
 
-		protected  <K> LabeledVector<K> readVector(String name, String sql, String keyField, String valueField, int limit) throws PersistenceException {
+		protected  <K> LabeledVector<K> readVector(String name, String sql, String keyField, String valueField, int limit, NormalizationMode normalize) throws PersistenceException {
 			try {
 				ResultSet rs = database.executeQuery(name, sql);
 				try {
-					return readVector(rs, null, keyField, valueField, new MapLabeledVector<K>(), limit);
+					LabeledVector<K> v = readVector(rs, null, keyField, valueField, new MapLabeledVector<K>(), limit, normalize);
+					return v;
 				} finally {
 					rs.close();
 				}
@@ -163,7 +168,7 @@ public class DatabaseFeatureStore<T extends WikiWordConcept>
 				double r = relevanceField == null ? 1 : DatabaseUtil.asDouble(rs.getObject(relevanceField));
 				rs.previous();
 
-				LabeledVector<Integer> v = readVector(rs, conceptField, keyField, valueField, new MapLabeledVector<Integer>(), maxConceptFeatures);
+				LabeledVector<Integer> v = readVector(rs, conceptField, keyField, valueField, ConceptFeatures.newIntFeaturVector(), maxConceptFeatures, NormalizationMode.AUTO);
 				
 				T ref = conceptFactory.newInstance(id, n, null, c, r);
 				return new ConceptFeatures<T, Integer>(ref, v);
@@ -172,7 +177,7 @@ public class DatabaseFeatureStore<T extends WikiWordConcept>
 			}
 		}
 		
-		protected  <K> LabeledVector<K> readVector(ResultSet rs, String conceptField, String keyField, String valueField, LabeledVector<K> v, int limit) throws SQLException {
+		protected  <K> LabeledVector<K> readVector(ResultSet rs, String conceptField, String keyField, String valueField, LabeledVector<K> v, int limit, NormalizationMode normalize) throws SQLException {
 			if (v==null) v = new MapLabeledVector<K>();
 			
 			int concept = -1;
@@ -192,12 +197,19 @@ public class DatabaseFeatureStore<T extends WikiWordConcept>
 				
 				count++;
 				
-				if (limit>0 && count>limit) continue;
+				if (limit>0 && count>limit) 
+					continue;
 				
 				Object n = rs.getObject(valueField);
-				v.set(k,  DatabaseUtil.asDouble(n));
+				double d = DatabaseUtil.asDouble(n);
+				v.set(k,  d);
 			}
 			
+			if (normalize==NormalizationMode.ALWAYS || (normalize==NormalizationMode.AUTO && limit>0 && v.size()==limit)) { 
+				double length = v.getLength();
+				v = v.scaled(length);
+			}
+
 			return v;
 		}
 

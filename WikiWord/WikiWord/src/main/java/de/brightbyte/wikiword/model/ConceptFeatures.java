@@ -1,5 +1,6 @@
 package de.brightbyte.wikiword.model;
 
+import de.brightbyte.data.IntLabeledVector;
 import de.brightbyte.data.LabeledVector;
 
 public class ConceptFeatures<C extends WikiWordConcept, K> {
@@ -47,5 +48,9 @@ public class ConceptFeatures<C extends WikiWordConcept, K> {
 		
 		return concept.equals(other.concept);
 	}	
+	
+	public static LabeledVector<Integer>newIntFeaturVector() {
+		return new IntLabeledVector();
+	}
 
 }

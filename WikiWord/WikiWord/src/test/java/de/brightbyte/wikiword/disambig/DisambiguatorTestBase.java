@@ -84,7 +84,7 @@ public class DisambiguatorTestBase extends TestCase {
 		
 		List<List<String>> group;
 		while ((group = cursor.next()) != null) {
-			LabeledVector<Integer> v = new MapLabeledVector<Integer>();
+			LabeledVector<Integer> v = ConceptFeatures.newIntFeaturVector();
 			Integer id = null;
 			String name = null;
 			
