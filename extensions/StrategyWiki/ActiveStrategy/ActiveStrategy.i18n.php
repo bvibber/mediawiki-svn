@@ -128,6 +128,13 @@ $messages['ja'] = array(
 	'active-strategy-intro' => '最近$1日間に特別チームのページに加えられた編集回数',
 );
 
+/** Georgian (ქართული)
+ * @author ITshnik
+ */
+$messages['ka'] = array(
+	'activestrategy' => 'აქტიური სტრატეგია',
+);
+
 /** Korean (한국어)
  * @author Kwj2772
  */

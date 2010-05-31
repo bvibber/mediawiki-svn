@@ -234,6 +234,7 @@ $messages['qqq'] = array(
 	'fogg-videoBitrate-help' => 'This is an explanation of what the term "video bitrate" means (i.e. the speed of video encoding in kilobits per second).',
 	'fogg-title-title' => '{{Identical|Title}}',
 	'fogg-date-title' => '{{Identical|Date}}',
+	'fogg-location-title' => '{{Identical|Location}}',
 	'fogg-copyright-title' => '{{Identical|Copyright}}',
 	'fogg-license-title' => '{{Identical|License}}',
 	'fogg-contact-title' => '{{Identical|Contact}}',

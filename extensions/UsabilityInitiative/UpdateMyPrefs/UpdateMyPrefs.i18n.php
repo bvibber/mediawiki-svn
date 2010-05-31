@@ -351,6 +351,13 @@ $messages['ru'] = array(
 	'updatemyprefs-label-message' => 'Автоматически обновлять мои настройки новыми настройками по умолчанию и инструментами, по мере их появления',
 );
 
+/** Sinhala (සිංහල)
+ * @author බිඟුවා
+ */
+$messages['si'] = array(
+	'prefs-updates' => 'යාවත්කාලීන කළ',
+);
+
 /** Swedish (Svenska)
  * @author Ainali
  * @author Dafer45

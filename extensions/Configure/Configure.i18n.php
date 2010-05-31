@@ -6202,6 +6202,13 @@ $messages['lt'] = array(
 	'configure-section-misc' => 'Įvairūs nustatymai',
 );
 
+/** Latvian (Latviešu)
+ * @author GreenZeb
+ */
+$messages['lv'] = array(
+	'configure-section-search' => 'Meklēt',
+);
+
 /** Eastern Mari (Олык Марий)
  * @author Сай
  */

@@ -367,7 +367,7 @@ Et stinn all d\'Säiten aus der Kategorie "$1" drop genee wéi all Ënnerkategor
 $messages['mk'] = array(
 	'autocreatecategorypages-desc' => 'Со зачувувањето, автомарски создавај ги страниците кои недостасуваат во категоријата',
 	'autocreatecategorypages-stub' => 'Ова е категориска страница.
-Ги наведува сите страници во категоријата „$1“ како и сите подкатегории на категоријата „$1“, ако постојат.',
+Ги наведува сите страници во категоријата „$1“ како и сите поткатегории на категоријата „$1“, ако постојат.',
 	'autocreatecategorypages-createdby' => 'Автоматски создадено од проширувањето AutoCreateCategoryPages.',
 	'autocreatecategorypages-editor' => 'Автоматски создавач на категории',
 );

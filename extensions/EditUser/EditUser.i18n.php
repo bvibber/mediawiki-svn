@@ -776,6 +776,13 @@ $messages['lt'] = array(
 	'right-edituser-exempt' => 'Kiti negali redaguoti šio naudotojo nustatymų',
 );
 
+/** Latvian (Latviešu)
+ * @author GreenZeb
+ */
+$messages['lv'] = array(
+	'edituser-dosearch' => 'Meklēt',
+);
+
 /** Eastern Mari (Олык Марий)
  * @author Сай
  */

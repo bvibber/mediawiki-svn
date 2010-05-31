@@ -370,6 +370,14 @@ $messages['jv'] = array(
 	'newuseredit-summary' => 'Nambahaké [[{{int:newusermessage-template}}|pesen sugeng rawuh]] ing kaca wicara panganggo anyar',
 );
 
+/** Georgian (ქართული)
+ * @author BRUTE
+ */
+$messages['ka'] = array(
+	'newusermessage-desc' => 'ამატებს შეტყობინებას ახალ-დარეგისტრირებული მომხმარებლის განხილვის გვერდზე',
+	'newuseredit-summary' => 'დაემატა [[{{int:newusermessage-template}}|მისალმების შეტყობინება]] ახალი მომხმარებლის განხილვის გვერდზე',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author Chhorran
  * @author Lovekhmer

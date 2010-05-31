@@ -1582,6 +1582,7 @@ $messages['ms'] = array(
 );
 
 /** Maltese (Malti)
+ * @author Chrisportelli
  * @author Giangian15
  */
 $messages['mt'] = array(
@@ -1601,6 +1602,11 @@ $messages['mt'] = array(
 	'badimages-subheading' => 'Affarijiet kurrenti',
 	'badimages-unprivileged' => "(M'għandhekx biżżejjed permessi sabiex tbiddel il-lista)",
 	'badimages-log-name' => "Lista ta' stampi ħżiena",
+	'badimages-log-header' => "Dawn huwa reġistru ta' tibdil fil-[{{MediaWiki:Badimages-page}}|lista ta' stampi ħżiena]].",
+	'badimages-log-add' => "żied [[$1]] mal-lista ta' stampi ħżiena",
+	'badimages-log-remove' => "neħħa [[$1]] mil-lista ta' stampi ħżiena",
+	'badimages-page' => "{{ns:help}}:Lista ta' stampi ħżiena",
+	'right-badimages' => "Aġġorna l-lista ta' stampi ħżiena",
 );
 
 /** Erzya (Эрзянь)

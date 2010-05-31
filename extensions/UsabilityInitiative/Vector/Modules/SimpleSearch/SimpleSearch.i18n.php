@@ -438,6 +438,14 @@ $messages['lt'] = array(
 	'vector-simplesearch-search' => 'Ieškoti',
 );
 
+/** Latvian (Latviešu)
+ * @author GreenZeb
+ */
+$messages['lv'] = array(
+	'vector-simplesearch-search' => 'Meklēt',
+	'vector-simplesearch-containing' => 'Meklējamā frāze:',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

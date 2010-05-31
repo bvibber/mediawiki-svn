@@ -891,6 +891,13 @@ $messages['lt'] = array(
 	'editmsg-search' => 'Ieškoti',
 );
 
+/** Latvian (Latviešu)
+ * @author GreenZeb
+ */
+$messages['lv'] = array(
+	'editmsg-search' => 'Meklēt',
+);
+
 /** Eastern Mari (Олык Марий)
  * @author Сай
  */

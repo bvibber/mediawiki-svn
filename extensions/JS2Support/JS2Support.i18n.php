@@ -59,6 +59,7 @@ $messages['dsb'] = array(
  */
 $messages['es'] = array(
 	'js2support-desc' => 'Soporte JS2 como una extensión',
+	'prefs-script-debug' => 'Depuración de script',
 );
 
 /** Finnish (Suomi)

@@ -212,13 +212,22 @@ $messages['es'] = array(
 	'purewikideletion-desc' => 'Entre otras cosas, hace que los vínculos a las páginas vaciadas se muestren en rojo',
 	'purewikideletion-pref-watchblank' => 'Añadir las páginas que blanquee a mi lista de seguimiento',
 	'purewikideletion-pref-watchunblank' => 'Añadir a mi lista de seguimiento las páginas cuyo vaciado revierta',
+	'purewikideletion-blanked' => "Una anterior versión de esta página fue dejada en blanco por [[User:$1|$1]] ([[User talk:$1|talk]]) ([[Special:Contributions/$1|contribuciones]]) el $5 a las $6.
+
+La razón dada para dejar en blanco fue: ''<nowiki>$3</nowiki>''.
+
+Puedes [{{fullurl:{{FULLPAGENAMEE}}|action=history}} ver el historial de la página], [{{fullurl:{{FULLPAGENAMEE}}|oldid=$4&action=edit}} editar la última versión], o escribir una nueva página dentro del espacio en blancom de abajo.",
 	'blank-log' => 'en blanco',
 	'blank-log-name' => 'Registro de vaciados',
 	'blank-log-header' => 'A continuación se muestra un listado de vaciados y reversiones de vaciados de páginas.',
 	'blank-log-entry-blank' => 'se ha vaciado $1',
 	'blank-log-entry-unblank' => 'se ha revertido el vaciado de $1',
+	'blank-log-link' => '[[{{#Special:Log}}/blank|registro de páginas en blanco]]',
 	'purewikideletion-blanknologin' => 'No has iniciado sesión',
 	'purewikideletion-blanknologintext' => 'Debes ser un usuario registrado e [[Special:UserLogin|iniciar sesión]] para dejar en blanco un página.',
+	'purewikideletion-unblanknologintext' => 'Debes ser un usuario registrado e [[Special:UserLogin|iniciar sesión]] para revertir un blanqueado de página.',
+	'purewikideletion-blankedtext' => '[[$1]] ha sido dejada en blanco.
+Ver $2 para un registro de blanqueado de páginas reciente.',
 );
 
 /** French (Français)
