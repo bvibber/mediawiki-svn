@@ -15,7 +15,6 @@ import de.brightbyte.data.Functor2;
 import de.brightbyte.data.LabeledMatrix;
 import de.brightbyte.data.LabeledVector;
 import de.brightbyte.data.MapLabeledMatrix;
-import de.brightbyte.data.MapLabeledVector;
 import de.brightbyte.data.measure.CosineVectorSimilarity;
 import de.brightbyte.data.measure.Measure;
 import de.brightbyte.data.measure.ScalarVectorSimilarity;
@@ -286,7 +285,12 @@ public class CoherenceDisambiguator extends AbstractDisambiguator<TermReference,
 				double p = popularityMeasure.measure(c);
 				
 				if (p<minPopularity) {
-					cit.remove();
+					if (m.size()==1) {
+						eit.remove();
+						break;
+					} else {
+						cit.remove();
+					}
 				}
 			}
 			
@@ -386,21 +390,28 @@ public class CoherenceDisambiguator extends AbstractDisambiguator<TermReference,
 
 			if (context != null) {
 				for (LocalConcept con: context) {
-					((HashMap<TermReference, LocalConcept>)concepts).put(new Term("", 1), con);
+					if (con!=null)((HashMap<TermReference, LocalConcept>)concepts).put(new Term(con.getName(), 1), con);
 				}
 			}
 		} else {
 			concepts = interp.getMeanings();
 		}
 		
-		int c = interp.getSequence().size();
-		
+		int c = concepts.size();
+
 		if (c == 0) {
 			CoherenceDisambiguation<X, LocalConcept> r = new CoherenceDisambiguation<X, LocalConcept>(interp.getMeanings(), interp.getSequence(), Collections.<Integer, ConceptFeatures<LocalConcept, Integer>>emptyMap(), ConceptFeatures.newIntFeaturVector(), 0, "empty");
 			return r;
 		} 
+
+		for (X t: interp.getSequence()) { //also count "missing" concepts.
+			if (!concepts.containsKey(t)) c++; 
+		}
+
+		int n = (c-1)*c/2; //Number of distinct pairs of different concepts, including "missing" concepts
+		int simCount = 0; //simCount should be <= n in the end. count and check.
 		
-		LabeledVector<Integer> sum = new MapLabeledVector<Integer>();
+		LabeledVector<Integer> sum = ConceptFeatures.newIntFeaturVector();
 		Map<Integer, ConceptFeatures<LocalConcept, Integer>> disambigFeatures = new HashMap<Integer, ConceptFeatures<LocalConcept, Integer>>();
 		double sim = 0, pop = 0, weight = 0;
 		int i=0, j=0;
@@ -462,6 +473,7 @@ public class CoherenceDisambiguator extends AbstractDisambiguator<TermReference,
 				d = doubleSanity(d, "normal similarity score for "+a+" / "+b, "check similarityMeasure!", 0, 0.1, 1, 0.1);
 				
 				sim += d;
+				simCount ++;
 			}
 			
 			double p = popularityMeasure.measure(a); 
@@ -480,7 +492,9 @@ public class CoherenceDisambiguator extends AbstractDisambiguator<TermReference,
 		//normalize
 		LabeledVector<Integer> centroid = sum.scaled(1.0/i);
 		
-		int n = (c-1)*c/2; //Number of distinct pairs of different concepts, including "missing" concepts
+		if (n<simCount) {
+			throw new SanityException("sim-count mismatches calculated number of permutations: counted "+simCount+", caclulated "+n);
+		}
 		
 		sim = n == 0 ? 0 : sim / n; //scale
 		pop = c == 0 ? 0 : pop / c; //scale
