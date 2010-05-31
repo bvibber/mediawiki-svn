@@ -62,7 +62,7 @@ public abstract class AbstractDisambiguator<T extends TermReference, C extends W
 	
 	private Output trace;
 
-	private Map<? extends T, C> meaningOverrides;
+	private Map<String, C> meaningOverrides;
 	
 	public AbstractDisambiguator(MeaningFetcher<? extends C> meaningFetcher, int cacheDepth) {
 		this(new MeaningCache.Manager<C>(meaningFetcher, cacheDepth)); 
@@ -77,7 +77,7 @@ public abstract class AbstractDisambiguator<T extends TermReference, C extends W
 		return meaningCacheManager;
 	}
 
-	public void setMeaningOverrides(Map<? extends T, C> overrideMap) {
+	public void setMeaningOverrides(Map<String, C> overrideMap) {
 		this.meaningOverrides = overrideMap;
 	}	
 	
@@ -165,7 +165,7 @@ public abstract class AbstractDisambiguator<T extends TermReference, C extends W
 		if (meaningOverrides!=null) {
 			todo = new ArrayList<X>();
 			for (X t: terms) {
-				if (!meaningOverrides.containsKey(t)) todo.add(t);
+				if (!meaningOverrides.containsKey(t.getTerm())) todo.add(t);
 			}
 		}
 		
@@ -174,7 +174,7 @@ public abstract class AbstractDisambiguator<T extends TermReference, C extends W
 		
 		if (meaningOverrides!=null && todo.size()!=terms.size()) {
 			for (X t: terms) {
-				C c = meaningOverrides.get(t);
+				C c = meaningOverrides.get(t.getTerm());
 				if (c!=null) meanings.put(t, Collections.singletonList(c));
 			}
 		}
