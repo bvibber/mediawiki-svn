@@ -454,7 +454,7 @@ public class CoherenceDisambiguator extends AbstractDisambiguator<TermReference,
 								d = similarityMeasure.similarity(fa.getFeatureVector(), fb.getFeatureVector());
 						}
 						
-						System.out.format("  sim(%s, %s) = %07.5f", a, b, d); System.out.println();
+						//System.out.format("  sim(%s, %s) = %07.5f", a, b, d); System.out.println();
 						similarities.set(a, b, d);
 					}
 				}
