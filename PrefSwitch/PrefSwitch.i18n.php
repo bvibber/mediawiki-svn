@@ -2511,6 +2511,15 @@ $messages['sc'] = array(
 	'prefswitch-title-switched-off' => 'Gràtzias',
 );
 
+/** Sinhala (සිංහල)
+ * @author බිඟුවා
+ */
+$messages['si'] = array(
+	'prefswitch-survey-true' => 'ඔව්',
+	'prefswitch-survey-false' => 'නැත',
+	'prefswitch-title-switched-off' => 'ස්තුතියි',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

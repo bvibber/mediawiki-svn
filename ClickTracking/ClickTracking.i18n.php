@@ -957,11 +957,13 @@ $messages['ja'] = array(
 
 /** Georgian (ქართული)
  * @author BRUTE
+ * @author ITshnik
  * @author Temuri rajavi
  */
 $messages['ka'] = array(
 	'ct-event-name' => 'მოვლენის სახელი',
 	'ct-expert-header' => '"ექსპერტის" დაჭერა',
+	'ct-beginner-header' => '"დამწყებთა" მოქმედებები',
 	'ct-start-date' => 'დაწყების თარიღი (წწწწთთდდ)',
 	'ct-end-date' => 'დამთავრების თარიღი (წწწწთთდდ)',
 	'ct-change-graph' => 'გრაფიკის შეცვლა',

@@ -486,6 +486,13 @@ $messages['ru'] = array(
 	'tooltip-pt-prefswitch-link-off' => 'Опробуйте новые возможности',
 );
 
+/** Sinhala (සිංහල)
+ * @author බිඟුවා
+ */
+$messages['si'] = array(
+	'prefswitch-link-anon' => 'බීටා අනුවාදයේ ලක්ෂණ',
+);
+
 /** Slovenian (Slovenščina)
  * @author Dbc334
  */

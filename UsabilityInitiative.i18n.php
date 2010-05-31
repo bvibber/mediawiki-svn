@@ -615,10 +615,12 @@ $messages['sah'] = array(
 
 /** Sinhala (සිංහල)
  * @author Calcey
+ * @author බිඟුවා
  */
 $messages['si'] = array(
 	'usabilityinitiative' => 'පරිශීලන හැකියා මුල් පිරුම',
 	'usabilityinitiative-desc' => 'මීඩියාවිකියෙහි පරිශීලන හැකියාව වර්ධනය කිරීමට විකිපීඩියා පරිශීලන හැකියා මුල් පිරීම මඟින් සංවර්ධනය කළ විශේෂාංග',
+	'prefs-beta' => 'බීටා අනුවාදයේ ලක්ෂණ',
 );
 
 /** Slovak (Slovenčina)

@@ -5766,7 +5766,7 @@ $messages['tl'] = array(
 	'optin-title-feedback' => 'Mga puna sa Beta',
 	'optin-needlogin' => 'Kailangan mong [$1 lumagda] upang masubukan ang Beta.',
 	'optin-intro' => 'Ang Pagpapanimula ng Pagkanagagamit ng Wikipedia ay nagsusumikap upang mapainam ang pagiging nagagamit ng Wikipedia. Nais mo bang subukan ang aming Beta?',
-	'optin-feedback-intro' => 'Salamat sapagsubok mo ng Beta. 
+	'optin-feedback-intro' => 'Salamat sa pagsubok mo ng Beta. 
 Nais namin na malaman kung ano ang tingin mo sa aming bagong hangganang-mukha, mamarapatin namin ang maaaring hindi gawing pagtugon mo sa mga katanungang nasa ibaba.',
 	'optin-feedback-back' => 'Kung hindi mo nais na sagutin ang pagtatanong, maaari kang magbalik sa $1.',
 	'optin-success-in' => 'Sinusubukan mo na ngayon ang Beta.
