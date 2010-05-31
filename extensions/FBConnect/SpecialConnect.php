@@ -207,7 +207,7 @@ class SpecialConnect extends SpecialPage {
 	}
 
 	protected function createUser($fb_id, $name) {
-		global $wgUser, $wgOut, $fbConnectOnly, $wgAuth, $wgRequest, $wgMemc;
+		global $wgUser, $wgOut, $wgFbConnectOnly, $wgAuth, $wgRequest, $wgMemc;
 		wfProfileIn(__METHOD__);
 		
 		// Handle accidental reposts.
@@ -232,8 +232,8 @@ class SpecialConnect extends SpecialPage {
 		if ( wfReadOnly() ) {
 			$wgOut->readOnlyPage();
 			return;
-		} elseif ( !isset($fbConnectOnly) || !$fbConnectOnly ) {
-			// These two permissions don't apply in $fbConnectOnly mode
+		} elseif ( !isset($wgFbConnectOnly) || !$wgFbConnectOnly ) {
+			// These two permissions don't apply in $wgFbConnectOnly mode
 			if ( $wgUser->isBlockedFromCreateAccount() ) {
 				wfDebug("FBConnect: Blocked user was attempting to create account via Facebook Connect.\n");
 				$wgOut->showErrorPage('fbconnect-error', 'fbconnect-errortext');
@@ -353,8 +353,8 @@ class SpecialConnect extends SpecialPage {
 		}
 		
 		// Process the FBConnectPushEvent preference checkboxes if fbConnectPushEvents are enabled.
-		global $fbEnablePushToFacebook;
-		if($fbEnablePushToFacebook){
+		global $wgFbEnablePushToFacebook;
+		if($wgFbEnablePushToFacebook){
 			global $fbPushEventClasses;
 			if(!empty($fbPushEventClasses)){
 				foreach($fbPushEventClasses as $pushEventClassName){
@@ -567,14 +567,14 @@ class SpecialConnect extends SpecialPage {
 	 */
 	private function chooseNameForm($messagekey = 'fbconnect-chooseinstructions') {
 		// Permissions restrictions.
-		global $wgUser, $facebook, $wgOut, $fbConnectOnly;
+		global $wgUser, $facebook, $wgOut, $wgFbConnectOnly;
 		$titleObj = SpecialPage::getTitleFor( 'Connect' );
 		if ( wfReadOnly() ) {
 			// The wiki is in read-only mode
 			$wgOut->readOnlyPage();
 			return;
-		} elseif ( !isset($fbConnectOnly) || !$fbConnectOnly ) {
-			// These two permissions don't apply in $fbConnectOnly mode
+		} elseif ( !isset($wgFbConnectOnly) || !$wgFbConnectOnly ) {
+			// These two permissions don't apply in $wgFbConnectOnly mode
 			if ( $wgUser->isBlockedFromCreateAccount() ) {
 				wfDebug("FBConnect: Blocked user was attempting to create account via Facebook Connect.\n");
 				$wgOut->showErrorPage('fbconnect-error', 'fbconnect-errortext');
@@ -607,8 +607,8 @@ class SpecialConnect extends SpecialPage {
 			<fieldset id="mw-fbconnect-choosename">
 				<legend>' . wfMsg('fbconnect-chooselegend') . '</legend>
 				<table>');
-		// Let them attach to an existing user if $fbConnectOnly allows it
-		if (!$fbConnectOnly) {
+		// Let them attach to an existing user if $wgFbConnectOnly allows it
+		if (!$wgFbConnectOnly) {
 			// Grab the UserName from the cookie if it exists
 			global $wgCookiePrefix;
 			$name = isset($_COOKIE[$wgCookiePrefix . 'UserName']) ?

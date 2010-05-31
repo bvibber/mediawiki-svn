@@ -19,8 +19,6 @@
  * FBConnect plugin. Integrates Facebook Connect into MediaWiki.
  * 
  * Facebook Connect single sign on (SSO) experience and XFBML are currently available.
- * Please rename config.sample.php to config.php, follow the instructions inside and
- * customize variables as you like to set up your Facebook Connect extension.
  *
  * Info is available at http://www.mediawiki.org/wiki/Extension:FBConnect
  * and at http://wiki.developers.facebook.com/index.php/MediaWiki
@@ -62,15 +60,15 @@ $wgExtensionCredits['specialpage'][] = array(
  * Initialization of the autoloaders and special extension pages.
  */
 $dir = dirname(__FILE__) . '/';
-require_once $dir . 'config.php';
+require_once $dir . 'config.default.php';
 require_once $dir . 'php-sdk/facebook.php';
-if (!empty( $fbIncludePreferencesExtension ) && version_compare($wgVersion, '1.16', '<')) {
+if (!empty( $wgFbIncludePreferencesExtension ) && version_compare($wgVersion, '1.16', '<')) {
 	require_once $dir . 'PreferencesExtension.php';
 }
 
 $wgExtensionFunctions[] = 'FBConnect::init';
 
-if( !empty( $fbEnablePushToFacebook ) ){
+if( !empty( $wgFbEnablePushToFacebook ) ){
 	// Need to include it explicitly instead of autoload since it has initialization code of its own.
 	// This should be done after FBConnect::init is added to wgExtensionFunctions so that FBConnect
 	// gets fully initialized first.
@@ -98,7 +96,7 @@ define( 'APCOND_FB_ISADMIN',   'fb*a' );
 $wgGroupPermissions['fb-user'] = $wgGroupPermissions['user'];
 
 // If we are configured to pull group info from Facebook, then create the group permissions
-if ($fbUserRightsFromGroup) {
+if ($wgFbUserRightsFromGroup) {
 	$wgGroupPermissions['fb-groupie'] = $wgGroupPermissions['user'];
 	$wgGroupPermissions['fb-officer'] = $wgGroupPermissions['bureaucrat'];
 	$wgGroupPermissions['fb-admin'] = $wgGroupPermissions['sysop'];
@@ -131,7 +129,7 @@ class FBConnect {
 	 */
 	public static function init() {
 		global $wgXhtmlNamespaces, $wgSharedTables, $facebook, $wgHooks;
-		global $fbOnLoginJsOverride;
+		global $wgFbOnLoginJsOverride;
 		
 		// The xmlns:fb attribute is required for proper rendering on IE
 		$wgXhtmlNamespaces['fb'] = 'http://www.facebook.com/2008/fbml';
@@ -149,8 +147,8 @@ class FBConnect {
 		}
 
 		// Allow configurable over-riding of the onLogin handler.
-		if(!empty($fbOnLoginJsOverride)){
-			self::$fbOnLoginJs = $fbOnLoginJsOverride;
+		if(!empty($wgFbOnLoginJsOverride)){
+			self::$fbOnLoginJs = $wgFbOnLoginJsOverride;
 		} else {
 			self::$fbOnLoginJs = "window.location.reload(true);";
 		}
@@ -191,10 +189,10 @@ class FBConnect {
 	 * Return the code for the permissions attribute (with leading space) to use on all fb:login-buttons.
 	 */
 	public static function getPermissionsAttribute(){
-		global $fbExtendedPermissions;
+		global $wgFbExtendedPermissions;
 		$attr = "";
-		if(!empty($fbExtendedPermissions)){
-			$attr = " perms=\"".implode(",", $fbExtendedPermissions)."\"";
+		if(!empty($wgFbExtendedPermissions)){
+			$attr = " perms=\"".implode(",", $wgFbExtendedPermissions)."\"";
 		}
 		return $attr;
 	} // end getPermissionsAttribute()
