@@ -23,10 +23,15 @@ $IP = realpath( dirname( __FILE__ ) . '/../' );
 // $wgMwEmbedDirectory becomes the root file system:
 $wgMwEmbedDirectory = '';
 
+$wgScriptPath = '';
+
 $wgUseFileCache = true;
 
 // Named paths for the script loader
 $wgScriptLoaderNamedPaths = array();
+
+//If the scriptLoader should use relative css
+$wgScriptLoaderRelativeCss = false;
 
 // Named Module Paths
 $wgExtensionJavascriptModules = array();
@@ -36,8 +41,10 @@ $wgExtensionMessagesFiles = array();
 
 /*Localization:*/
 $wgEnableScriptLocalization = true;
+
 // Array to store all loaded msgs
 $wgMessageCache = array();
+
 // flag for loading msgs
 $wgLoadedMsgKeysFlag = false;
 
@@ -48,6 +55,8 @@ $wgStyleVersion = '218';
 $wgEnableScriptMinify = true;
 $wgUseGzip = true;
 
+// If the core loader.js should be used to set the module list.
+$wgUseMwEmbedLoaderModuleList = true;
 
 /**
  * Default value for chmoding of new directories.
@@ -58,8 +67,6 @@ $wgJsMimeType = 'text/javascript';
 
 // Get the autoload classes
 require_once( realpath( dirname( __FILE__ ) ) . '/jsClassLoader.php' );
-// Load the javascript Classes
-jsClassLoader::loadClassPaths();
 
 // Get the JSmin class:
 require_once( realpath( dirname( __FILE__ ) ) . '/library/JSMin.php' );
@@ -140,7 +147,10 @@ function wfMsgGetKey( $msgKey, $na, $langKey = false ) {
  * @param $langKey String Language key to be used
  */
 function wfLoadMsgKeys( $langKey ){
-	global $wgExtensionMessagesFiles, $wgMessageCache;
+	global $wgExtensionMessagesFiles, $wgMessageCache, $wgLoadedMsgKeysFlag;
+	if( $wgLoadedMsgKeysFlag ) {
+		return true;
+	}
 	foreach( $wgExtensionMessagesFiles as $msgFile ){
 		if( !is_file( $msgFile ) ) {
 			throw new MWException( "Missing msgFile: " . htmlspecialchars( $msgFile ) . "\n" );

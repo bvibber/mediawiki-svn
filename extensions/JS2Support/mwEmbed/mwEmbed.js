@@ -1,6 +1,6 @@
 // Add support for html5 / mwEmbed elements to IE ( comment must come before js code ) 
 // For discussion and comments, see: http://remysharp.com/2009/01/07/html5-enabling-script/
-/*@cc_on@if(@_jscript_version<9){'video audio source itext playlist'.replace(/\w+/g,function(n){document.createElement(n)})}@end@*/
+/*@cc_on@if(@_jscript_version<9){'video audio source track playlist'.replace(/\w+/g,function(n){document.createElement(n)})}@end@*/
 
 /**
  * ~mwEmbed ~
@@ -23,10 +23,10 @@
  */
 
 /*
-* Setup the mw global: 
+* Setup the "mw" global: 
 */
-if ( ! window['mw'] ) {
-	window['mw'] = { };
+if ( typeof window.mw == 'undefined' ) {
+	window.mw = { };
 }
 
 /*
@@ -34,6 +34,14 @@ if ( ! window['mw'] ) {
 */
 var MW_EMBED_VERSION = '1.1f';
 
+// Globals to pre-set ready functions in dynamic loading of mwEmbed 
+if( typeof preMwEmbedReady == 'undefined'){
+	var preMwEmbedReady = [];	
+}
+//Globals to pre-set config values in dynamic loading of mwEmbed
+if( typeof preMwEmbedConfig == 'undefined') {
+	var preMwEmbedConfig = [];
+}
 
 /**
 * The global mw object:
@@ -297,8 +305,8 @@ var MW_EMBED_VERSION = '1.1f';
 		*/				
 		load: function( loadRequest, instanceCallback ) {
 			// Ensure the callback is only called once per load instance 
-			var callback = function(){
-				if( instanceCallback ) {
+			var callback = function(){				
+				if( instanceCallback ){
 					instanceCallback( loadRequest );
 					instanceCallback = null;
 				}
@@ -386,12 +394,7 @@ var MW_EMBED_VERSION = '1.1f';
 				// Set the initial load state for every item in the loadSet
 				for( var i = 0; i < loadSet.length ; i++ ) {							
 					var loadName = loadSet[ i ];				
-					loadStates[ loadName ] = 0;					
-					// Check for style sheet dependencies
-					if( this.classStyleDependency[ loadName ] ) {						
-						loadStates[ this.classStyleDependency[ loadName ] ] = 0;
-					}
-									
+					loadStates[ loadName ] = 0;				
 				}						
 			}	
 			
@@ -419,8 +422,7 @@ var MW_EMBED_VERSION = '1.1f';
 		},
 						
 		/**
-		* Get grouped load state for script loader.
-		* Groups the loadSet into a single sequential array
+		* Get grouped load state for script loader
 		* 
 		* Groups the scriptRequest where possible: 
 		* 	Modules include "loader code" so they are separated
@@ -465,6 +467,7 @@ var MW_EMBED_VERSION = '1.1f';
 						}						
 					}					
 				} else if ( this.moduleLoaders[ loadName ] ) {
+					
 					// Module loaders break up grouped script requests ( add the current groupClassKey )
 					if( groupClassKey != '' ) {
 						loadStates[ groupClassKey ] = 0;
@@ -521,7 +524,19 @@ var MW_EMBED_VERSION = '1.1f';
 		* @param {Function} callback Function to run once class is loaded 
 		*/
 		loadClass: function( className , callback) {		
-			var _this = this;						
+			var _this = this;		
+			// Check for css depedency on class name 
+			if( this.classStyleDependency[ className ] ) {				
+				if( ! mw.isset( this.classStyleDependency[ className ] )){
+					mw.log(" load dependent css class: "  + this.classStyleDependency[ className ]  );
+					_this.loadClass(  this.classStyleDependency[ className ] , function(){
+						// Continue the orginal loadClass request. 
+						_this.loadClass( className, callback );
+					});
+					return ;
+				}
+			}
+			
 			// Make sure the class is not already defined:
 			if ( mw.isset( className ) ) {
 				mw.log( 'Class ( ' + className + ' ) already defined ' );
@@ -534,8 +549,7 @@ var MW_EMBED_VERSION = '1.1f';
 			
 			
 			// If the scriptloader is enabled use the className as the scriptRequest: 
-			if( mw.getScriptLoaderPath() ) {
-				// replace $j with j since php strips the $ from the request class			
+			if( mw.getScriptLoaderPath() ) {		
 				scriptRequest =  className;
 			}else{
 				// Get the class url:
@@ -585,7 +599,7 @@ var MW_EMBED_VERSION = '1.1f';
 						mw.loadDone( className );
 					});
 				} else { 				
-					// If not using the script-loader make sure the className is avaliable before firing the loadDone
+					// If not using the script-loader make sure the className is available before firing the loadDone
 					if( !mw.getScriptLoaderPath() ) {
 						mw.waitForObject( className, function( className ) {														
 							// Once object is ready run loadDone 
@@ -1070,7 +1084,9 @@ var MW_EMBED_VERSION = '1.1f';
 	* @param {String} msg_txt text text of the loader msg
 	*/
 	mw.addLoaderDialog = function( msg_txt ) {
-		mw.addDialog( msg_txt, msg_txt + '<br>' + mw.loading_spinner() );
+		mw.addDialog( msg_txt, msg_txt + '<br>' + 
+				$j('<div />').loadingSpinner().html() 
+		);
 	}
 	
 	/**
@@ -1274,18 +1290,6 @@ var MW_EMBED_VERSION = '1.1f';
 		}
 	}
 	
-	/**
-	* Get a loading spinner html
-	* NOTE: this is depreciated use jQuery binding $j(target).loadingSpinner()" instead 
-	*
-	* @param {String} [Optional] style Style string to apply to the spinner 
-	*/
-	mw.loading_spinner = function( style ) {
-		var style_txt = ( style ) ? style : '';
-		return '<div class="loading_spinner" style="' + style_txt + '"></div>';
-	}
-	
-	
 	//Setup the local mwOnLoadFunctions array: 
 	var mwOnLoadFunctions = [];
 	
@@ -1318,6 +1322,11 @@ var MW_EMBED_VERSION = '1.1f';
 	* called by mwEmbedSetup
 	*/ 
 	mw.runReadyFunctions = function ( ) {
+		// run any pre-setup ready functions		
+		while( preMwEmbedReady.length ){
+			preMwEmbedReady.shift()();
+		}
+		
 		// Run all the queued functions: 
 		while( mwOnLoadFunctions.length ) {
 			mwOnLoadFunctions.shift()();
@@ -1365,15 +1374,17 @@ var MW_EMBED_VERSION = '1.1f';
 		// Add on the request parameters to the url:
 		url += ( url.indexOf( '?' ) == -1 )? '?' : '&';				
 		url += mw.getUrlParam();		
-				
-				
-		mw.log( 'mw.getScript: ' + url );
+			
+		// Only log sciprts ( Css is logged via "add css" )
+		if( !isCssFile ){		
+			mw.log( 'mw.getScript: ' + url );
+		}
 		
 		// If jQuery is available and debug is off load the scirpt via jQuery 
 		//( will use XHR if on same domain ) 
 		if( mw.isset( 'window.jQuery' ) 
 			&& mw.getConfig( 'debug' ) === false 
-			&& $j
+			&& typeof $j != 'undefined'
 			&& !isCssFile ) 
 		{	
 			$j.getScript( url, myCallback); 		
@@ -1583,7 +1594,8 @@ var MW_EMBED_VERSION = '1.1f';
 	}
 
 	/**
-	 * Given a float number of seconds, returns npt format response.
+	 * Given a float number of seconds, returns npt format response. 
+	 * ( ignore days for now )
 	 *
 	 * @param {Float} sec Seconds
 	 * @param {Boolean} show_ms If milliseconds should be displayed.
@@ -1591,24 +1603,37 @@ var MW_EMBED_VERSION = '1.1f';
 	 */
 	mw.seconds2npt = function( sec, show_ms ) {
 		if ( isNaN( sec ) ) {
-			// mw.log("warning: trying to get npt time on NaN:" + sec);
-			return '0:0:0';
+			mw.log("Warning: trying to get npt time on NaN:" + sec);			
+			return '0:00:00';
 		}
-		var hours = Math.floor( sec / 3600 );
-		var minutes = Math.floor( ( sec / 60 ) % 60 );
-		var seconds = sec % 60;
+		
+		var tm = mw.seconds2Measurements( sec )
+				
 		// Round the number of seconds to the required number of significant digits
 		if ( show_ms ) {
-			seconds = Math.round( seconds * 1000 ) / 1000;
+			tm.seconds = Math.round( tm.seconds * 1000 ) / 1000;
 		} else {
-			seconds = Math.round( seconds );
+			tm.seconds = Math.round( tm.seconds );
 		}
-		if ( seconds < 10 )
-			seconds = '0' +	seconds;
-		if ( minutes < 10 )
-			minutes = '0' + minutes;
+		if ( tm.seconds < 10 )
+			tm.seconds = '0' +	tm.seconds;
+		if ( tm.minutes < 10 )
+			tm.minutes = '0' + tm.minutes;
 	
-		return hours + ":" + minutes + ":" + seconds;
+		return tm.hours + ":" + tm.minutes + ":" + tm.seconds;
+	}
+	
+	/**
+	 * Given seconds return array with 'days', 'hours', 'min', 'seconds' 
+	 * @param {float} sec Seconds to be converted into time mesurements  
+	 */
+	mw.seconds2Measurements = function ( sec ){
+		var tm = {};
+		tm.days = Math.floor( sec / ( 3600 * 24 ) )
+		tm.hours = Math.floor( sec / 3600 );
+		tm.minutes = Math.floor( ( sec / 60 ) % 60 );
+		tm.seconds = sec % 60;
+		return tm;
 	}
 	
 	/**
@@ -1921,12 +1946,14 @@ var MW_EMBED_VERSION = '1.1f';
 		}				 
 		mwSetupFlag = true;			
 		
+		// Apply any pre-setup config: 		
+		mw.setConfig( preMwEmbedConfig );			
 		
-		mw.log( 'mw:setupMwEmbed :: ' + mw.getMwEmbedSrc() );			
+		
+		mw.log( 'mw:setupMwEmbed SRC:: ' + mw.getMwEmbedSrc() );			
 		
 		// Check core mwEmbed loader.js file ( to get configuration and paths )
-		mw.checkCoreLoaderFile( function(){
-			
+		mw.checkCoreLoaderFile( function(){						
 			// Make sure we have jQuery 
 			mw.load( 'window.jQuery', function() {	
 				
@@ -2032,7 +2059,7 @@ var MW_EMBED_VERSION = '1.1f';
 		}
 		
 		// Check if we are using a static package ( mwEmbed path includes -static )
-		if( mw.isStaticPackge ){
+		if( mw.isStaticPackge() ){			
 			callback();
 			return ;
 		}
@@ -2195,8 +2222,13 @@ var MW_EMBED_VERSION = '1.1f';
 		// Set the onDomReady Flag
 		mwDomReadyFlag = true;	
 		
-		// Setup MwEmbed 
-		mw.setupMwEmbed();
+		// Give us a chance to get to the bottom of the script. 
+		// When loading mwEmbed asynchronously the dom ready gets called  
+		// directly and in some browsers beets the $j = jQuery.noConflict(); call 
+		// and causes symbol undefined errors.  
+		setTimeout(function(){
+			mw.setupMwEmbed();
+		},1);
 	}	
 	
 	/**
@@ -2242,7 +2274,7 @@ var MW_EMBED_VERSION = '1.1f';
 				if ( this ) {
 					$j( this ).html(
 						$j( '<div />' )
-						.addClass( "loading_spinner" )  
+						.addClass( "loadingSpinner" )  
 					 );
 				}			
 				return this;

@@ -35,12 +35,12 @@ class jsClassLoader {
 	 * Get the javascript class paths from javascript files
 	 */
 	public static function loadClassPaths(){
-		global $wgMwEmbedDirectory, $wgExtensionJavascriptModules,
+		global $wgMwEmbedDirectory, $wgExtensionJavascriptModules, $wgUseMwEmbedLoaderModuleList,
 		$wgScriptLoaderNamedPaths, $wgExtensionMessagesFiles, $IP;
 
 		// Only run once
 		if( self::$classesLoaded ) {
-			return false;
+			return true;
 		}
 		self::$classesLoaded = true;
 
@@ -53,7 +53,6 @@ class jsClassLoader {
 		// Add the mwEmbed localizations
 		$wgExtensionMessagesFiles[ 'mwEmbed' ] = $mwEmbedAbsolutePath . '/mwEmbed.i18n.php';
 
-
 		// Load javascript classes from mwEmbed.js
 		if ( !is_file( $mwEmbedAbsolutePath . '/loader.js' ) ) {
 			// throw error no mwEmbed found
@@ -61,7 +60,7 @@ class jsClassLoader {
 			return false;
 		}
 
-		// Proccess the mwEmbed loader file:
+		// Process the mwEmbed loader file:
 		$fileContent = file_get_contents( $mwEmbedAbsolutePath . '/loader.js' );
 		self::$directoryContext = $wgMwEmbedDirectory;
 		self::proccessLoaderContent( $fileContent , 'mwEmbed' );
@@ -73,12 +72,15 @@ class jsClassLoader {
 			$fileContent
 		);
 
-		// Get the list of enabled modules into $moduleList
-		preg_replace_callback(
-			'/mwEnabledModuleList\s*\=\s*\[(.*)\]/siU',
-			'jsClassLoader::preg_buildModuleList',
-			$fileContent
-		);
+		// Check if we should load module list from mwEmbed loader.js
+		if( $wgUseMwEmbedLoaderModuleList ) {
+			// Get the list of enabled modules into $moduleList
+			preg_replace_callback(
+				'/mwEnabledModuleList\s*\=\s*\[(.*)\]/siU',
+				'jsClassLoader::preg_buildModuleList',
+				$fileContent
+			);
+		}
 
 		// Change to the root mediawiki directory ( loader.js paths are relative to root mediawiki directory )
 		// ( helpful for when running maintenance scripts )
@@ -88,7 +90,7 @@ class jsClassLoader {
 		}
 
 		// Get all the classes from the enabled mwEmbed modules folder
-		foreach( self::$moduleList as  $na => $moduleName){
+		foreach( self::$moduleList as  $na => $moduleName ) {
 			$relativeSlash = ( $wgMwEmbedDirectory == '' )? '' : '/';
 			$modulePath = $wgMwEmbedDirectory . $relativeSlash . 'modules/' . $moduleName;
 			self::proccessModulePath( $moduleName, $modulePath );
@@ -175,25 +177,6 @@ class jsClassLoader {
 	}
 
 	/**
-	 * Get combined core component javascript
-	 *
-	 * NOTE: Component JS is javascript that is part of the
-	 * core mwEmbed javascript lib but in a separate file
-	 * for core library maintainability
-	 *
-	 * @return String combined component javascript
-	 */
-	public static function getCombinedComponentJs( $scriptLoader ) {
-		self::loadClassPaths();
-		$jsOut = '';
-		foreach(  self::$coreComponentsList as $componentClassName ) {
-			// Output the core component via the script loader:
-			$jsOut .= $scriptLoader->getLocalizedScriptText( $componentClassName );
-		}
-		return $jsOut;
-	}
-
-	/**
 	 * Get the combined loader javascript
 	 *
 	 * @return the combined loader jss
@@ -263,7 +246,9 @@ class jsClassLoader {
 				throw new MWException( "Missing module: $moduleName \n" );
 			}
 		}
+
 	}
+
 	/**
 	 * Adds javascript autoloader class names and paths
 	 * to $wgScriptLoaderNamedPaths global
@@ -293,12 +278,13 @@ class jsClassLoader {
 			if( isset( $wgScriptLoaderNamedPaths[ $className ] ) ){
 
 				// Presently extensions don't register were the named path parent module
-				// so we just have a gnneral extension error.
+				// so we just have a general extension error.
 				$setInModuleError = ( self::$classParentModuleName [ $className ] )
 					? " set in module: " . self::$classParentModuleName [ $className ]
 					: " set in an extension ";
-
-				throw new MWException( "Error class $className already $setInModuleError \n" );
+				
+				throw new MWException( "Error class $className already $setInModuleError , " . 
+					" can't reassign in " . self::$currentModuleName . "\n" );
 			}
 
 			// Else update the global $wgScriptLoaderNamedPaths ( all scriptloader named paths )

@@ -8,6 +8,12 @@
 // ( has to be hard coded rather than config based for fast non-mediawiki config hits )
 $wgScriptCacheDirectory = realpath( dirname( __FILE__ ) ) . '/includes/cache';
 
+// Check if being used in mediaWiki ( jsScriptLoader.php is NOT an entry point )
+if( is_file ( dirname( __FILE__ ) .'../mwScriptLoader.php' )
+ 	&& !defined( 'SCRIPTLOADER_MEDIAWIKI') ) {	
+	die( 'jsScriptLoader.php is not an entry point when used with the JS2 extension' );
+}
+
 // Check if we are an entry point or being used as part of MEDIAWIKI:
 if ( !defined( 'MEDIAWIKI' ) && !defined( 'SCRIPTLOADER_MEDIAWIKI') ) {
 	$myScriptLoader = new jsScriptLoader();
@@ -137,15 +143,6 @@ class jsScriptLoader {
 
 				// Output the current language class js
 				$this->output .= jsClassLoader::getLanguageJs( $this->langCode );
-
-				// Check that mwEmbed required style sheets are part of the request,
-				// if not include them here
-				// This is so all mwEmbed requests get dependent interface css
-				foreach( array( 'mw.style.mwCommon' ) as $styleKey ){
-					if( !isset( $this->namedFileList[ $styleKey ] ) ) {
-						$this->output .= $this->getScriptText( $styleKey );
-					}
-				}
 
 				// Output "special" IE comment tag to support "special" mwEmbed tags.
 				$this->notMinifiedTopOutput .='/*@cc_on@if(@_jscript_version<9){\'video audio source itext playlist\'.replace(/\w+/g,function(n){document.createElement(n)})}@end@*/'."\n";
@@ -459,8 +456,8 @@ class jsScriptLoader {
 			header("Cache-Control: no-cache, must-revalidate"); // HTTP/1.1
 			header("Expires: Sat, 26 Jul 1997 05:00:00 GMT"); // Date in the past
 		}else{
-			// Cache for 5 days ( we update the request urid so this has a long expire delay )
-			$one_day = 60 * 60 * 24 * 5;
+			// Cache for 1 day ( we update the request urid so this has a long expire delay )
+			$one_day = 60 * 60 * 24;
 			header( "Expires: " . gmdate( "D, d M Y H:i:s", time() + $one_day ) . " GM" );
 		}
 	}

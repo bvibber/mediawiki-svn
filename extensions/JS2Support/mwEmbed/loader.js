@@ -13,19 +13,19 @@
 * These components are pieces of the core mwEmbed lib
 * They are in separate files to keep the code easier to maintain. 
 *
-* All mwEmbed core classes are loaded on every mwEmbed class request
+* All mwEmbed core classes are loaded on every mwEmbed request
 * 
 * NOTE: All user / application module code should go into /modules
 * and enabled in mwEnabledModuleList below.
 */
-var mwCoreComponentList = [	
+var mwCoreComponentList = [
 	'mw.Parser',
-	'mw.Language'
+	'mw.Language'	
 ];
 
 
 /**
-* The default set of enabled modules 
+* The default set of enabled modules
 * ( Modules can also be enabled via mediaWiki extensions ) 
 * 
 * Each enabledModules array value should be a name
@@ -45,7 +45,7 @@ var mwCoreComponentList = [
 *  is transcluded into base mwEmbed class include.  
 */
 var mwEnabledModuleList = [
-];  
+];
 
 /**
 * mwEmbed default config values.  
@@ -101,6 +101,7 @@ mw.setDefaultConfig ( {
 	
 	// Set the default providers ( you can add more provider via {provider_id}_apiurl = apiUrl	  
 	'commons_apiurl' : 'http://commons.wikimedia.org/w/api.php'
+			
 } );
 
 /**
@@ -142,14 +143,16 @@ mw.addClassFilePaths( {
 	
 	"mw.style.jqueryUiRedmond" : "libraries/jquery/jquery.ui/themes/redmond/jquery-ui-1.7.1.custom.css",
 	"mw.style.jqueryUiSmoothness"	: "libraries/jquery/jquery.ui/themes/smoothness/jquery-ui-1.7.1.custom.css",
-	"mw.style.mwCommon"		: "skins/common/common.css",		
+	"mw.style.mwCommon"		: "skins/common/common.css",
+	
+	"mw.testLang"			:  "tests/testLang.js",		
 
 	"$j.cookie"				: "libraries/jquery/plugins/jquery.cookie.js",
+	
 	"$j.contextMenu"		: "libraries/jquery/plugins/jquery.contextMenu.js",
 	"$j.fn.suggestions"		: "libraries/jquery/plugins/jquery.suggestions.js",
 	"$j.fn.textSelection" 	: "libraries/jquery/plugins/jquery.textSelection.js",
-	"$j.browserTest"		: "libraries/jquery/plugins/jquery.browserTest.js",
-	"$j.fn.jWizard"			: "libraries/jquery/plugins/jquery.jWizard.js",
+	"$j.browserTest"		: "libraries/jquery/plugins/jquery.browserTest.js",	
 
 	"$j.effects.blind"		: "libraries/jquery/jquery.ui/ui/effects.blind.js",
 	"$j.effects.drop"		: "libraries/jquery/jquery.ui/ui/effects.drop.js",
@@ -178,7 +181,7 @@ mw.addClassFilePaths( {
 
 } );
 
-// For now just the special case of $j.ui 
+// Add a special css dependency for $j.ui 
 mw.addClassStyleDependency( {
 	'$j.ui' : ( 'mw.style.' + mw.getConfig( 'jQueryUISkin' ) )	
 } );
