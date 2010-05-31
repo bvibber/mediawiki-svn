@@ -16,6 +16,7 @@ import java.io.Writer;
 import de.brightbyte.data.cursor.DataCursor;
 import de.brightbyte.data.cursor.DataSink;
 import de.brightbyte.io.ConsoleIO;
+import de.brightbyte.io.LogOutput;
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.StoreBackedApp;
 import de.brightbyte.wikiword.builder.InputFileHelper;
@@ -66,6 +67,10 @@ public abstract class StreamProcessorApp<I, O, S extends WikiWordConceptStoreBas
 				outputWriter = new OutputStreamWriter(out, getOutputFileEncoding());
 				usingStdout = out == System.out;
 			}
+		}
+		
+		if (usingStdout && out.getOutput() == ConsoleIO.output) {
+			out.setOutput(ConsoleIO.errorOutput);
 		}
 		
 		return outputWriter;
