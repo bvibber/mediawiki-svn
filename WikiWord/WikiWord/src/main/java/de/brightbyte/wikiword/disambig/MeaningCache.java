@@ -35,7 +35,10 @@ public class MeaningCache<C extends WikiWordConcept> implements MeaningFetcher<C
 			MeaningCache<C> cache = new MeaningCache<C>( getTop() );
 			stack.add(cache);
 			
-			if (stack.size()>maxDepth) stack.remove(0);
+			if (stack.size()>maxDepth) {
+				MeaningCache<C> old = stack.remove(0);
+				old.dispose();
+			}
 			if (!stack.isEmpty()) stack.get(0).setParent(root);
 			
 			return cache;
@@ -111,4 +114,10 @@ public class MeaningCache<C extends WikiWordConcept> implements MeaningFetcher<C
 		return meanings;
 	}
 
+	protected void dispose() {
+		this.cache.clear();
+		this.cache = null;
+		this.parent = null;
+	}
+	
 }

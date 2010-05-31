@@ -34,7 +34,11 @@ public class FeatureCache<C extends WikiWordConcept, K> implements FeatureFetche
 			FeatureCache<C, K> cache = new FeatureCache<C, K>( getTop() );
 			stack.add(cache);
 			
-			if (stack.size()>maxDepth) stack.remove(0);
+			if (stack.size()>maxDepth) {
+				FeatureCache<C, K> old = stack.remove(0);
+				old.dispose();
+			}
+			
 			if (!stack.isEmpty()) stack.get(0).setParent(root);
 			
 			return cache;
@@ -55,6 +59,12 @@ public class FeatureCache<C extends WikiWordConcept, K> implements FeatureFetche
 		this.cache = new HashMap<Integer, ConceptFeatures<C,K>>();
 	}
 
+	protected void dispose() {
+		this.cache.clear();
+		this.cache = null;
+		this.parent = null;
+	}
+	
 	public ConceptFeatures<C, K> getFeatures(C c)
 			throws PersistenceException {
 		 
