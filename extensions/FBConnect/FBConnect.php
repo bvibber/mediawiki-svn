@@ -41,9 +41,9 @@ if ( !defined( 'MEDIAWIKI' )) {
 }
 
 /*
- * FBConnect version. Note: this is not necessarily the most recent SVN revision number.
+ * FBConnect version.
  */
-define( 'MEDIAWIKI_FBCONNECT_VERSION', 'r203, May 22, 2010' );
+define( 'MEDIAWIKI_FBCONNECT_VERSION', '1.1.1' );
 
 /*
  * Add information about this extension to Special:Version.
