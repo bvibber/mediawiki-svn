@@ -131,6 +131,15 @@ $messages['cs'] = array(
 	'assert_edit_message' => 'Uvedený předpoklad ($1) selhal.',
 );
 
+/** Welsh (Cymraeg)
+ * @author (vinny)
+ */
+$messages['cy'] = array(
+	'assert_edit_title' => 'Bendant yn methu',
+	'assertedit-desc' => 'Adds golygu honiadau ar gyfer defnydd gan bots',
+	'assert_edit_message' => "Mae'r honiad penodol ($1) wedi methu.",
+);
+
 /** Danish (Dansk)
  * @author Emilkris33
  * @author Jan Friberg

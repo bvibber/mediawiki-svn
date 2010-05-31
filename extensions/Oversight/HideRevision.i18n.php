@@ -137,8 +137,8 @@ $messages['af'] = array(
 $messages['an'] = array(
 	'hiderevision' => 'Amagar bersions ta cutio',
 	'hiderevision-desc' => 'Amagar as bersions endibiduals ta toz os usuarios por razons legals, etz.',
-	'group-oversight' => 'Superbisors',
-	'group-oversight-member' => 'Superbisor',
+	'group-oversight' => 'Supervisors',
+	'group-oversight-member' => 'Supervisor',
 	'grouppage-oversight' => '{{ns:project}}:Superbisión',
 	'right-oversight' => 'Amostrar una bersión prebiament amagata',
 	'right-hiderevision' => 'Rebisar y recuperar bersions amagatas ta os Almenistradors',
@@ -168,7 +168,7 @@ Puestar que:
 * A pachina s'aiga borrato
 * Esta bersión amagata sía a primer bersión",
 	'oversight-log-hiderev' => 'borrata una edizión de $1',
-	'oversight' => 'Superbisión',
+	'oversight' => 'Supervisión',
 	'oversight-view' => 'detalles',
 	'oversight-difference' => '(Esferenzias dende a bersión anterior autual)',
 	'oversight-prev' => 'Zaguera bersión anterior',
@@ -2653,6 +2653,17 @@ Pendedahan maklumat ini boleh mengakibatkan jawatan pengawal ditarik balik.',
 	'oversight-legend' => 'Cari dalam log penyembunyian semakan',
 	'oversight-oversighter' => 'Penyembunyi:',
 	'oversight-offender' => 'Pesalah:',
+);
+
+/** Maltese (Malti)
+ * @author Chrisportelli
+ */
+$messages['mt'] = array(
+	'group-oversight-member' => 'superviżur',
+	'hiderevision-tab' => 'Aħbi r-reviżjoni',
+	'hiderevision-status' => 'Reviżjoni $1: $2',
+	'oversight' => 'Superviżjoni',
+	'oversight-oversighter' => 'Superviżur:',
 );
 
 /** Low German (Plattdüütsch)

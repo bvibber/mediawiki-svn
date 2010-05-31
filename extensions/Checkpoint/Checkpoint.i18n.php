@@ -52,6 +52,13 @@ $messages['de'] = array(
 	'checkpoint-notice' => '([[{{ns:project}}:Checkpoint|Zwischenspeicherung]])',
 );
 
+/** German (formal address) (Deutsch (Sie-Form))
+ * @author Kghbln
+ */
+$messages['de-formal'] = array(
+	'checkpoint-tooltip' => 'Speichern Sie den aktuellen Bearbeitungsstand und fahren Sie sogleich mit der Bearbeitung fort',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

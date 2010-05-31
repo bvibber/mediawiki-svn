@@ -5064,6 +5064,7 @@ $messages['sc'] = array(
 	'optin-accept-long' => 'Proare sa Beta',
 	'optin-accept-long-anon' => 'Identìfica·ti e proa sa Beta',
 	'optin-deny-short' => 'No gràtzias',
+	'optin-deny-long' => 'Torra a sa pàgina de prima',
 	'optin-submit-out' => 'Lassa sa Beta',
 	'optin-submit-feedback' => 'Lassa unu feedback',
 	'optin-survey-yes' => 'Eja',
@@ -5071,6 +5072,8 @@ $messages['sc'] = array(
 	'optin-survey-question-whyoptout' => 'Pro ite ses lassende sa Beta? (Seletziona totu is respostas pertinentes)',
 	'optin-survey-answer-whyoptout-hard' => "Fiat tropu difìtzile a dd'usare.",
 	'optin-survey-answer-whyoptout-other' => 'Àteru motivu:',
+	'optin-survey-answer-browser-other' => 'Àteru browser:',
+	'optin-survey-answer-changes-other' => 'Àteru:',
 );
 
 /** Sicilian (Sicilianu)

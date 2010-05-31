@@ -165,6 +165,7 @@ $messages['am'] = array(
  * @author Juanpabl
  */
 $messages['an'] = array(
+	'tasks_noone' => 'dengún',
 	'tasks_delete' => 'Borrar',
 	'tasks_table_header_page' => 'Pachina',
 );

@@ -132,7 +132,7 @@ $messages['avk'] = array(
 	'restriction-level-author' => 'Sutesikafa nendara',
 );
 
-/** Azerbaijani (Azərbaycan)
+/** Azerbaijani (Azərbaycanca)
  * @author Sortilegus
  */
 $messages['az'] = array(

@@ -88,7 +88,7 @@ $messages['avk'] = array(
 	'metadata_help' => 'Metadata:',
 );
 
-/** Azerbaijani (Azərbaycan)
+/** Azerbaijani (Azərbaycanca)
  * @author Wertuose
  */
 $messages['az'] = array(

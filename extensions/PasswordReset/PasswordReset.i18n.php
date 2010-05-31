@@ -173,7 +173,7 @@ $messages['arz'] = array(
 	'right-passwordreset' => 'إعادة ضبط كلمة سر مستخدم([[Special:PasswordReset|صفحة خاصة]])',
 );
 
-/** Azerbaijani (Azərbaycan)
+/** Azerbaijani (Azərbaycanca)
  * @author Wertuose
  */
 $messages['az'] = array(

@@ -7579,6 +7579,7 @@ $messages['io'] = array(
 );
 
 /** Italian (Italiano)
+ * @author Andria
  * @author Aushulz
  * @author Darth Kule
  * @author F. Cosoleto
@@ -7745,7 +7746,7 @@ $messages['it'] = array(
 	'wikieditor-toolbar-help-content-xlink-description' => 'Collegamento esterno',
 	'wikieditor-toolbar-help-content-xlink-syntax' => '[http://www.example.org Etichetta collegamento]<br />[http://www.example.org]<br />http://www.example.org',
 	'wikieditor-toolbar-help-content-xlink-result' => "<a href='#' class='external'>Etichetta collegamento</a><br /><a href='#' class='external autonumber'>[1]</a><br /><a href='#' class='external'>http://www.example.org</a>",
-	'wikieditor-toolbar-help-content-heading1-description' => '1° livello di intestazione',
+	'wikieditor-toolbar-help-content-heading1-description' => '1° livellu de intestada',
 	'wikieditor-toolbar-help-content-heading1-syntax' => '= Titolo sezione =',
 	'wikieditor-toolbar-help-content-heading1-result' => '<h1>Titolo sezione</h1>',
 	'wikieditor-toolbar-help-content-heading2-description' => '2° livello di intestazione',
@@ -9732,7 +9733,7 @@ $messages['ml'] = array(
 	'wikieditor-toolbar-tool-reference-insert' => 'ചേർക്കുക',
 	'wikieditor-toolbar-tool-reference-text' => 'അവലംബ എഴുത്ത്',
 	'wikieditor-toolbar-tool-signature' => 'ഒപ്പും സമയമുദ്രയും',
-	'wikieditor-toolbar-section-advanced' => 'വിപുലീകരിക്കപ്പെട്ടവ',
+	'wikieditor-toolbar-section-advanced' => 'വിപുലം',
 	'wikieditor-toolbar-tool-heading' => 'തലക്കെട്ട്',
 	'wikieditor-toolbar-tool-heading-1' => 'തലം 1',
 	'wikieditor-toolbar-tool-heading-2' => 'തലം 2',
@@ -9810,7 +9811,7 @@ $messages['ml'] = array(
 	'wikieditor-toolbar-characters-page-latin' => 'ലാറ്റിൻ',
 	'wikieditor-toolbar-characters-page-latinextended' => 'ലാറ്റിൻ വിപുലം',
 	'wikieditor-toolbar-characters-page-ipa' => 'ഐ.പി.എ.',
-	'wikieditor-toolbar-characters-page-symbols' => 'ചിഹ്നനങ്ങൾ',
+	'wikieditor-toolbar-characters-page-symbols' => 'ചിഹ്നങ്ങൾ',
 	'wikieditor-toolbar-characters-page-greek' => 'ഗ്രീക്ക്',
 	'wikieditor-toolbar-characters-page-cyrillic' => 'സിറിലിക്',
 	'wikieditor-toolbar-characters-page-arabic' => 'അറബിക്',
@@ -12933,6 +12934,20 @@ $messages['sc'] = array(
 	'wikieditor-toolbar-tool-heading-4' => 'Livellu 4',
 	'wikieditor-toolbar-tool-heading-5' => 'Livellu 5',
 	'wikieditor-toolbar-tool-heading-example' => 'Testu de su tìtulu',
+	'wikieditor-toolbar-help-content-heading1-syntax' => '= Tìtulu de sa setzione =',
+	'wikieditor-toolbar-help-content-heading1-result' => '<h1>Tìtulu de sa setzione</h1>',
+	'wikieditor-toolbar-help-content-heading2-description' => 'Su de 2 livellu de intestada',
+	'wikieditor-toolbar-help-content-heading2-syntax' => '== Tìtulu de sa setzione ==',
+	'wikieditor-toolbar-help-content-heading2-result' => '<h2>Tìtulu de sa setzione</h2>',
+	'wikieditor-toolbar-help-content-heading3-description' => 'Su de 3 livellu de intestada',
+	'wikieditor-toolbar-help-content-heading3-syntax' => '=== Tìtulu de sa setzione ===',
+	'wikieditor-toolbar-help-content-heading3-result' => '<h3>Tìtulu de sa setzione</h3>',
+	'wikieditor-toolbar-help-content-heading4-description' => 'Su de 4 livellu de intestada',
+	'wikieditor-toolbar-help-content-heading4-syntax' => '==== Tìtulu de sa setzione ====',
+	'wikieditor-toolbar-help-content-heading4-result' => '<h4>Tìtulu de sa setzione</h4>',
+	'wikieditor-toolbar-help-content-heading5-description' => 'Su de 5 livellu de intestada',
+	'wikieditor-toolbar-help-content-heading5-syntax' => '===== Tìtulu de sa setzione =====',
+	'wikieditor-toolbar-help-content-heading5-result' => '<h5>Tìtulu de sa setzione</h5>',
 	'wikieditor-toolbar-help-content-signature-description' => 'Firma',
 );
 
@@ -12959,6 +12974,7 @@ $messages['sco'] = array(
 /** Sinhala (සිංහල)
  * @author Calcey
  * @author චතුනි අලහප්පෙරුම
+ * @author බිඟුවා
  */
 $messages['si'] = array(
 	'wikieditor-toolbar' => 'සංස්කරණ මෙවලම් තීරුව',
@@ -13000,6 +13016,7 @@ $messages['si'] = array(
 	'wikieditor-toolbar-tool-file-example' => 'උදාහරණ.jpg',
 	'wikieditor-toolbar-tool-reference' => 'යොමුව',
 	'wikieditor-toolbar-tool-reference-example' => 'මෙහි පාද සටහන් පෙළක් ඇතුල් කරන්න',
+	'wikieditor-toolbar-tool-reference-insert' => 'ඇතුල් කරන්න',
 	'wikieditor-toolbar-tool-signature' => 'අත්සන හා කාල මුද්‍රාව',
 	'wikieditor-toolbar-section-advanced' => 'දියුණු කළ',
 	'wikieditor-toolbar-tool-heading' => 'ශීර්ෂය',
@@ -13016,6 +13033,7 @@ $messages['si'] = array(
 	'wikieditor-toolbar-tool-olist-example' => 'අංකිත ලැයිස්තු අයිතමය',
 	'wikieditor-toolbar-tool-indent' => 'ඉන්ඩෙන්ට් කිරීම',
 	'wikieditor-toolbar-tool-indent-example' => 'ඉන්ඩෙන්ට් කළ රේඛාව',
+	'wikieditor-toolbar-tool-redirect' => 'යළියොමුව',
 	'wikieditor-toolbar-tool-big' => 'විශාල',
 	'wikieditor-toolbar-tool-big-example' => 'විශාල පෙළ',
 	'wikieditor-toolbar-tool-small' => 'කුඩා',

@@ -311,6 +311,7 @@ $wgGoogleMapsMessages['am'] = array(
  * @author Juanpabl
  */
 $wgGoogleMapsMessages['an'] = array(
+	'gm-no-zoom-control' => 'Garra',
 	'gm-yes' => 'Sí',
 	'gm-no' => 'No',
 	'gm-save-path' => 'Alzar',
@@ -494,7 +495,7 @@ $wgGoogleMapsMessages['arz'] = array(
 	'gm-mars' => 'المريخ',
 );
 
-/** Azerbaijani (Azərbaycan)
+/** Azerbaijani (Azərbaycanca)
  * @author PrinceValiant
  */
 $wgGoogleMapsMessages['az'] = array(

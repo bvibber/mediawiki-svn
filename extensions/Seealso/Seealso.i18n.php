@@ -54,7 +54,7 @@ $messages['arz'] = array(
 	'seealso-desc' => "عناوين 'See also' مترجمة باستخدام الوسم <code><nowiki><seealso></nowiki></code>.",
 );
 
-/** Azerbaijani (Azərbaycan)
+/** Azerbaijani (Azərbaycanca)
  * @author Gulmammad
  * @author Wertuose
  */

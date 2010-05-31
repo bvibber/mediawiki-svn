@@ -52,6 +52,13 @@ $messages['af'] = array(
 	'emergencydesysop-nogroups' => 'Geen',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'emergencydesysop-nogroups' => 'Garra',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author Ouda

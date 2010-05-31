@@ -370,6 +370,7 @@ Du kannst bereits veröffentlichte Botschaften [$1 hier] lesen.',
 
 /** German (formal address) (Deutsch (Sie-Form))
  * @author Kghbln
+ * @author Umherirrender
  */
 $messages['de-formal'] = array(
 	'storyboard-nosuchstory' => 'Die Botschaft, die Sie aufrufen wollten, existiert nicht. Vielleicht wurde sie gelöscht.',
@@ -377,16 +378,22 @@ $messages['de-formal'] = array(
 	'storyboard-nostorytitle' => 'Sie müssen den Titel oder die Kennung der Botschaft angeben, die Sie lesen möchten.',
 	'storyboard-cantedit' => 'Sie haben nicht die Berechtigung Botschaften zu bearbeiten.',
 	'storyboard-canedit' => 'Sie können diese Botschaft [$1 bearbeiten] und veröffentlichen.',
-	'storyboard-yourname' => 'Ihre Name',
+	'storyboard-yourname' => 'Ihr Name (erforderlich)',
 	'storyboard-location' => 'Ihr Standort',
 	'storyboard-occupation' => 'Ihr Beruf',
 	'storyboard-story' => 'Ihre Botschaft',
 	'storyboard-photo' => 'Gibt es ein Foto von Ihnen? Was spricht dagegen es zu veröffentlichen?',
-	'storyboard-email' => 'Ihre E-Mail-Adresse:',
-	'storyboard-cannotbelonger' => "Ihre Botschaft ist '''$1''' {{PLURAL:$1|Anschlag|Anschläge}} zu lang!",
+	'storyboard-email' => 'Ihre E-Mail-Adresse (erforderlich)',
+	'storyboard-cannotbelonger' => "Ihre Botschaft ist '''$1''' {{PLURAL:$1|Zeichen|Zeichen}} zu lang!",
 	'storyboard-needtoagree' => 'Sie müssen der Veröffentlichung Ihrer Botschaft zustimmen, um sie einreichen zu können.',
+	'storyboard-alreadyexistschange' => '„{0}“ ist bereits vergeben. Bitte wählen Sie einen anderen Titel.',
+	'storyboard-changetitle' => 'Ändern Sie den Titel',
 	'storyboard-createdsuccessfully' => 'Vielen Dank, dass Sie uns Ihre Botschaft mitgeteilt haben! Wir werden sie in Kürze überprüfen.
 Sie können bereits veröffentlichte Botschaften [$1 hier] lesen.',
+	'storyboard-emailtitle' => 'Die Einreichung Ihrer Botschaft war erfolgreich.',
+	'storyboard-emailbody' => 'Ihre Botschaft mit dem Titel „$1“ wurde erfolgreich übermittelt. Wir werden sie in Kürze überprüfen. Einstweilen können Sie [$2 hier] bereits veröffentlichte Botschaften lesen.',
+	'storyboard-imagedeletionconfirm' => 'Sind Sie sicher, dass Sie das Bild zu dieser Botschaft dauerhaft löschen möchten?',
+	'storyboard-storydeletionconfirm' => 'Sind Sie sicher, dass Sie diese Botschaft dauerhaft löschen möchten?',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -1361,6 +1368,19 @@ $messages['pms'] = array(
 	'storyboard-hidden' => 'Stërmà',
 	'storyboard-unpublish' => 'Pùblica pa',
 	'storyboard-publish' => 'Publiché',
+);
+
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'storyboard-hidden' => 'پټ',
+	'storyboard-publish' => 'خپرول',
+	'storyboard-hide' => 'پټول',
+	'storyboard-option-hidden' => 'پټ',
+	'storyboard-storystate' => 'ايالت',
+	'storyboard-language' => 'ژبه',
+	'storyboard-done' => 'ترسره شو',
 );
 
 /** Portuguese (Português)

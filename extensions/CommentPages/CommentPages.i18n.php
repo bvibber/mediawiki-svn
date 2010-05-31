@@ -53,7 +53,7 @@ $messages['avk'] = array(
 	'nstab-comments' => 'Sebuks',
 );
 
-/** Azerbaijani (Azərbaycan)
+/** Azerbaijani (Azərbaycanca)
  * @author Sortilegus
  */
 $messages['az'] = array(

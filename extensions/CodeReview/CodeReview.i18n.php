@@ -5176,6 +5176,7 @@ $messages['kn'] = array(
 	'code-rev-status' => 'ಸ್ಥಾನಮಾನ:',
 	'code-rev-comment-preview' => 'ಮುನ್ನೋಟ',
 	'code-rev-inline-preview' => 'ಮುನ್ನೋಟ:',
+	'code-status-new' => 'ಹೊಸ',
 	'code-revfilter-cr_status' => 'ಸ್ಥಾನಮಾನ = $1',
 );
 

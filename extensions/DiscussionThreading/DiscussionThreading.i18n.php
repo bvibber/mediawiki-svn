@@ -608,6 +608,15 @@ $messages['sk'] = array(
 	'discussionthreading-threadnewsectionhint' => 'Začať nové vlákno',
 );
 
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'discussionthreading-replysection' => 'одговори',
+	'discussionthreading-threadnewsection' => 'ново',
+	'discussionthreading-threadnewsectionhint' => 'Започни нову тему',
+);
+
 /** Swedish (Svenska)
  * @author Najami
  */

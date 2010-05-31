@@ -79,7 +79,7 @@ $messages['arz'] = array(
 	'right-whatismyip' => 'رؤية [[Special:WhatIsMyIP|عنوان الأيبى الشخصي]]',
 );
 
-/** Azerbaijani (Azərbaycan)
+/** Azerbaijani (Azərbaycanca)
  * @author Wertuose
  */
 $messages['az'] = array(

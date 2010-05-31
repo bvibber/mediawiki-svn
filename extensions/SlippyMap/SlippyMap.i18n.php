@@ -484,7 +484,7 @@ $messages['gl'] = array(
 	'slippymap_error_invalid_attribute_zoom_value_out_of_range' => 'O valor <tt>$1</tt> non é válido para o atributo <tt>zoom</tt>. Os niveis de zoom deben estar entre $2 e $3.',
 	'slippymap_error_invalid_attribute_width_value_out_of_range' => 'O valor <tt>$1</tt> non é válido para o atributo <tt>width</tt> (largo). Os largos deben estar entre $2 e $3.',
 	'slippymap_error_invalid_attribute_height_value_out_of_range' => 'O valor <tt>$1</tt> non é válido para o atributo <tt>height</tt> (altura). As alturas deben estar entre $2 e $3.',
-	'slippymap_code' => 'Código wiki para o visionado deste mapa:',
+	'slippymap_code' => 'Código wiki para a visualización deste mapa:',
 	'slippymap_button_code' => 'Obter o código wiki',
 	'slippymap_resetview' => 'Axustar a vista',
 	'slippymap_clicktoactivate' => 'Prema para activar o mapa',
@@ -550,7 +550,7 @@ $messages['he'] = array(
 );
 
 /** Croatian (Hrvatski)
- * @author Suradnik13
+ * @author Ex13
  */
 $messages['hr'] = array(
 	'slippymap_button_code' => 'Preuzmi wikikod',
@@ -668,7 +668,7 @@ $messages['id'] = array(
 	'slippymap_error' => 'Galat $1: $2',
 	'slippymap_errors' => 'Galat $1:',
 	'slippymap_error_tag_content_given' => 'Tag <tt>&lt;$1&gt;</tt> hanya menerima masukan atribut (&lt;$1 [...]/&gt;), tapi tidak masukan teks (&lt;$1&gt; ... &lt;/$1&gt;)',
-	'slippymap_error_missing_arguments' => 'Anda tidak memberikan atribut apapun untuk tag &lt;$1&gt;, lihat [http://www.mediawiki.org/wiki/Extension:SlippyMap#Syntax informasi penggunaan]',
+	'slippymap_error_missing_arguments' => 'Anda tidak memberikan atribut apa pun untuk tag &lt;$1&gt;, lihat [http://www.mediawiki.org/wiki/Extension:SlippyMap#Syntax informasi penggunaan]',
 	'slippymap_error_missing_attribute_lat' => 'Kurang atribut <tt>lat</tt> (untuk garis lintang).',
 	'slippymap_error_missing_attribute_lon' => 'Kurang atribut <tt>lon</tt> (untuk garis bujur).',
 	'slippymap_error_missing_attribute_zoom' => 'Kurang atribut <tt>zoom</tt> (untuk tingkat pembesaran).',
@@ -746,7 +746,7 @@ $messages['km'] = array(
 	'slippymap_resetview' => 'កំណត់​ការមើល​ឡើងវិញ',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -814,7 +814,7 @@ $messages['mk'] = array(
 	'slippymap_error_missing_arguments' => 'Не зададовте никакви атрибути за ознаката &lt;$1&gt;, видете [http://www.mediawiki.org/wiki/Extension:SlippyMap#Syntax информации за употреба] за да дознаете како да ја повикате.',
 	'slippymap_error_missing_attribute_lat' => 'Недостига <tt>lat</tt> атрибут (за географската ширина).',
 	'slippymap_error_missing_attribute_lon' => 'Недостига <tt>lon</tt> атрибут (за географската должина).',
-	'slippymap_error_missing_attribute_zoom' => 'Недостига <tt>zoom</tt> атрибут (за нивото на зум).',
+	'slippymap_error_missing_attribute_zoom' => 'Недостига <tt>zoom</tt> атрибут (за нивото на приближеност).',
 	'slippymap_error_invalid_attribute_lat_value_nan' => 'Вредноста <tt>$1</tt> е погрешна за атрибутот <tt>lat</tt> (географска ширина), внесената вредност мора да биде важечки број.',
 	'slippymap_error_invalid_attribute_lon_value_nan' => 'Вредноста <tt>$1</tt> е погрешна за атрибутот <tt>lon</tt> (географска должина), внесената вредност мора да биде важечки број.',
 	'slippymap_error_invalid_attribute_zoom_value_nan' => 'Вредноста <tt>$1</tt> е погрешна за атрибутот <tt>zoom</tt>, внесената вредност мора да виде важечки број.',
@@ -826,7 +826,7 @@ $messages['mk'] = array(
 	'slippymap_error_unknown_attribute' => 'Атрибутот <tt>$1</tt> е непознат.',
 	'slippymap_error_invalid_attribute_lat_value_out_of_range' => 'Вредноста <tt>$1</tt> е погрешна за атрибутот <tt>lat</tt> (географска ширина). Географските ширини мора да изнесуваат помеѓу -90 и 90 степени.',
 	'slippymap_error_invalid_attribute_lon_value_out_of_range' => 'Вредноста <tt>$1</tt> е погрешна за атрибутот <tt>lon</tt> (географска должина). Географските должини се помеѓу -180 и 180 степени.',
-	'slippymap_error_invalid_attribute_zoom_value_out_of_range' => 'Вредноста <tt>$1</tt> е погрешна за атрибутот <tt>zoom</tt>. Нивото на зум мора да е помеѓу $2 и $3.',
+	'slippymap_error_invalid_attribute_zoom_value_out_of_range' => 'Вредноста <tt>$1</tt> е погрешна за атрибутот <tt>zoom</tt>. Нивото на приближеност мора да биде помеѓу $2 и $3.',
 	'slippymap_error_invalid_attribute_width_value_out_of_range' => 'Вредноста <tt>$1</tt> е погрешна за атрибутот <tt>width</tt>. Вредноста мора да е помеѓу $2 и $3.',
 	'slippymap_error_invalid_attribute_height_value_out_of_range' => 'Вредноста <tt>$1</tt> е погрешна за атрибутот <tt>height</tt>. Вредноста мора да е помеѓу $2 и $3.',
 	'slippymap_code' => 'Викикод за овој поглед на карта:',
@@ -1008,21 +1008,21 @@ $messages['pt-br'] = array(
  * @author KlaudiuMihaila
  */
 $messages['ro'] = array(
-	'slippymap_error_missing_attribute_lat' => 'Atributul <tt>lat</tt> lipseşte (pentru latitudine).',
-	'slippymap_error_missing_attribute_lon' => 'Atributul <tt>lon</tt> lipseşte (pentru longitudine).',
-	'slippymap_error_missing_attribute_zoom' => 'Atributul <tt>zoom</tt> lipseşte (pentru nivelul de zoom).',
+	'slippymap_error_missing_attribute_lat' => 'Atributul <tt>lat</tt> lipsește (pentru latitudine).',
+	'slippymap_error_missing_attribute_lon' => 'Atributul <tt>lon</tt> lipsește (pentru longitudine).',
+	'slippymap_error_missing_attribute_zoom' => 'Atributul <tt>zoom</tt> lipsește (pentru nivelul de zoom).',
 	'slippymap_error_invalid_attribute_lat_value_nan' => 'Valoarea <tt>$1</tt> nu este corectă pentru atributul <tt>lat</tt>, valoarea dată trebuie să fie un număr valid.',
 	'slippymap_error_invalid_attribute_lon_value_nan' => 'Valoarea <tt>$1</tt> nu este corectă pentru atributul <tt>lon</tt>, valoarea dată trebuie să fie un număr valid.',
 	'slippymap_error_invalid_attribute_zoom_value_nan' => 'Valoarea <tt>$1</tt> nu este corectă pentru atributul <tt>zoom</tt>, valoarea dată trebuie să fie un număr valid.',
 	'slippymap_error_invalid_attribute_width_value_nan' => 'Valoarea <tt>$1</tt> nu este corectă pentru atributul <tt>width</tt>, valoarea dată trebuie să fie un număr valid.',
 	'slippymap_error_invalid_attribute_height_value_nan' => 'Valoarea <tt>$1</tt> nu este corectă pentru atributul <tt>height</tt>, valoarea dată trebuie să fie un număr valid.',
 	'slippymap_error_unknown_attribute' => 'Atributul <tt>$1</tt> nu este cunoscut.',
-	'slippymap_error_invalid_attribute_lat_value_out_of_range' => 'Valoarea <tt>$1</tt> nu este corectă pentru atributul <tt>lat</tt>. Latitudinea trebuie să fie între -90 şi 90 grade.',
-	'slippymap_error_invalid_attribute_lon_value_out_of_range' => 'Valoarea <tt>$1</tt> nu este corectă pentru atributul <tt>lon</tt>. Longitudinea trebuie să fie între -180 şi 180 grade.',
-	'slippymap_error_invalid_attribute_zoom_value_out_of_range' => 'Valoarea <tt>$1</tt> nu este corectă pentru atributul <tt>zoom</tt>. Nivelul de zoom trebuie să fie între $2 şi $3.',
-	'slippymap_error_invalid_attribute_width_value_out_of_range' => 'Valoarea <tt>$1</tt> nu este corectă pentru atributul <tt>width</tt>. Lăţimea trebuie să fie între $2 şi $3.',
-	'slippymap_error_invalid_attribute_height_value_out_of_range' => 'Valoarea <tt>$1</tt> nu este corectă pentru atributul <tt>height</tt>. Înălţimea trebuie să fie între $2 şi $3.',
-	'slippymap_clicktoactivate' => 'Click pentru activarea hărţii',
+	'slippymap_error_invalid_attribute_lat_value_out_of_range' => 'Valoarea <tt>$1</tt> nu este corectă pentru atributul <tt>lat</tt>. Latitudinea trebuie să fie între -90 și 90 grade.',
+	'slippymap_error_invalid_attribute_lon_value_out_of_range' => 'Valoarea <tt>$1</tt> nu este corectă pentru atributul <tt>lon</tt>. Longitudinea trebuie să fie între -180 și 180 grade.',
+	'slippymap_error_invalid_attribute_zoom_value_out_of_range' => 'Valoarea <tt>$1</tt> nu este corectă pentru atributul <tt>zoom</tt>. Nivelul de zoom trebuie să fie între $2 și $3.',
+	'slippymap_error_invalid_attribute_width_value_out_of_range' => 'Valoarea <tt>$1</tt> nu este corectă pentru atributul <tt>width</tt>. Lățimea trebuie să fie între $2 și $3.',
+	'slippymap_error_invalid_attribute_height_value_out_of_range' => 'Valoarea <tt>$1</tt> nu este corectă pentru atributul <tt>height</tt>. Înălțimea trebuie să fie între $2 și $3.',
+	'slippymap_clicktoactivate' => 'Click pentru activarea hărții',
 );
 
 /** Russian (Русский)
@@ -1180,6 +1180,13 @@ $messages['vi'] = array(
 $messages['yi'] = array(
 	'slippymap_error' => '$1 גרײַז: $2',
 	'slippymap_errors' => '$1 גרײַזן:',
+);
+
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Liangent
+ */
+$messages['zh-hans'] = array(
+	'slippymap_error' => '$1错误：$2',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

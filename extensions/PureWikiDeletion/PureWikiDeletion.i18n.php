@@ -92,7 +92,7 @@ $messages['be-tarask'] = array(
 	'purewikideletion-blankedtext' => 'Старонка [[$1]] была ачышчаная.
 Глядзіце сьпіс апошніх ачыстак на $2.',
 	'purewikideletion-population-done' => 'Выкананае запаўненьне табліцы blanked_page.',
-	'right-purewikideletion' => '[[Special:PopulateBlankedPagesTable|Запоўніць]] табліцу ачышчаных старонак',
+	'right-purewikideletion' => '[[Special:PopulateBlankedPagesTable|запаўненьне]] табліцы ачышчаных старонак',
 );
 
 /** Breton (Brezhoneg)
@@ -155,6 +155,20 @@ Du kannst [{{fullurl:{{FULLPAGENAMEE}}|action=history}} die Versionsgeschichte b
 Siehe das $2 für eine Liste der letzten Leerungen.',
 	'purewikideletion-population-done' => 'Tabelle „blanked_page“ mit geleerten Seiten erzeugt',
 	'right-purewikideletion' => '[[Special:PopulateBlankedPagesTable|Erzeuge]] Tabelle mit geleerten Seiten',
+);
+
+/** German (formal address) (Deutsch (Sie-Form))
+ * @author Kghbln
+ * @author The Evil IP address
+ */
+$messages['de-formal'] = array(
+	'purewikideletion-blanked' => "Eine ehemalige Version dieser Seite wurde am $5 um $6 von [[User:$1|$1]] ([[User talk:$1|Diskussion]]) ([[Special:Contributions/$1|Bearbeitungen]]) geleert.
+
+Angegebene Begründung für die Leerung: ''<nowiki>$3</nowiki>''.
+
+Sie können [{{fullurl:{{FULLPAGENAMEE}}|action=history}} die Versionsgeschichte betrachten], [{{fullurl:{{FULLPAGENAMEE}}|oldid=$4&action=edit}} dessen letzte Version bearbeiten] oder unten im Bearbeitungsfeld eine neue Seite erfassen.",
+	'purewikideletion-blanknologintext' => 'Sie müssen ein registrierter Benutzer und [[Special:UserLogin|angemeldet sein]], um eine Seite zu leeren.',
+	'purewikideletion-unblanknologintext' => 'Sie müssen ein registrierter Benutzer und [[Special:UserLogin|angemeldet sein]], um die Leerung einer Seite zurücknehmen zu können.',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -283,6 +297,7 @@ Hlej $2 za datowu sadźbu najnowšich wuprózdnjenjow.',
 $messages['lb'] = array(
 	'purewikideletion' => 'Eidelmaache vu Säiten',
 	'randomexcludeblank' => 'Zoufälleg Säit (ouni déi eidelgemaachte Säiten)',
+	'populateblankedpagestable' => "D'Tabell vun den eidelgemaachte Säiten opfëllen",
 	'purewikideletion-pref-watchblank' => 'Säiten déi ech eidelmaachen op meng Iwwerwaachungslëscht derbäisetzen',
 	'purewikideletion-pref-watchunblank' => 'Säiten déi ech eidelmaachen op meng Iwwerwaachungslëscht derbäisetzen',
 	'blank-log' => 'eidel maachen',
@@ -290,6 +305,7 @@ $messages['lb'] = array(
 	'blank-log-entry-blank' => 'huet $1 eidegemaacht',
 	'blank-log-entry-unblank' => "huet d'eidelmaache vu(n) $1 réckgängeg gemaach",
 	'purewikideletion-blanknologin' => 'Net ageloggt',
+	'purewikideletion-unblanknologintext' => 'Dir musst e registréierte Benotzer an [[Special:UserLogin|ageloggt]] sinn, fir eng Säit eidel ze maachen.',
 	'purewikideletion-blankedtext' => "[[$1]] gouf eidel gemaacht.
 Kuckt $2 fir d'Lëscht vun de Säiten déi rezent eidel gemaach goufen.",
 );

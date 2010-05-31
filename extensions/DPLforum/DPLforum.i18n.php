@@ -88,7 +88,7 @@ $messages['arz'] = array(
 	'dplforum-toomany' => 'منتدى DPL: تصنيفات كثيرة جدا!',
 );
 
-/** Azerbaijani (Azərbaycan)
+/** Azerbaijani (Azərbaycanca)
  * @author Sortilegus
  */
 $messages['az'] = array(

@@ -1525,6 +1525,13 @@ $messages['sah'] = array(
 	'sitematrix-fishbowl' => 'көннөрүү хааччахтаммыт',
 );
 
+/** Sardinian (Sardu)
+ * @author Andria
+ */
+$messages['sc'] = array(
+	'sitematrix-language' => 'Limba',
+);
+
 /** Sinhala (සිංහල)
  * @author නන්දිමිතුරු
  */

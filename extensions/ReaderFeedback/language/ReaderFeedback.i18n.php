@@ -1342,6 +1342,7 @@ $messages['ka'] = array(
 	'readerfeedback-level-3' => 'მაღალი',
 	'readerfeedback-level-4' => 'ჩინებულია',
 	'readerfeedback-submit' => 'გაგზავნა',
+	'readerfeedback-submitting' => 'ინახება …',
 	'readerfeedback-finished' => 'გმადლობთ!',
 	'readerfeedback-tagfilter' => 'მინიშნება:',
 	'readerfeedback-tierfilter' => 'შეფასება:',

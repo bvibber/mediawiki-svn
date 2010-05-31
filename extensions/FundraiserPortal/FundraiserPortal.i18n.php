@@ -842,6 +842,13 @@ $messages['pms'] = array(
 	'fundraiserportal-tourmaline-close' => 'Stërma sòn-sì da adess an peui',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'fundraiserportal-plain-button' => 'د ويکيمېډيا ملاتړ وکړی',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  * @author Lijealso

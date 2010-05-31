@@ -2559,6 +2559,13 @@ Ak máte otázky týkajúce sa tohto systému distribúcie rozšírení, navšt�
 	'extdist-want-more' => 'Stiahnuť iné rozšírenie',
 );
 
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'extdist-want-more' => 'Преузми другу екстензију',
+);
+
 /** Swedish (Svenska)
  * @author Boivie
  * @author M.M.S.

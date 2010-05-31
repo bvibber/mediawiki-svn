@@ -90,6 +90,16 @@ Gib die IP-Adresse oder den Benutzernamen ein, um eine Liste der zu leerenden Se
 	'right-massblank' => 'Massenleerung von Seiten',
 );
 
+/** German (formal address) (Deutsch (Sie-Form))
+ * @author Kghbln
+ */
+$messages['de-formal'] = array(
+	'massblank-list' => 'Die folgenden Seiten wurden von [[Special:Contributions/$1|$1]] erzeugt.
+Geben Sie einen Kommentar ein und drücken Sie auf den Knopf zum Leeren der Seiten.',
+	'massblank-tools' => 'Diese Arbeitshilfe ermöglicht die Massenleerung von Seiten, die von einer IP-Adresse oder einem Benutzer angelegt wurden.
+Geben Sie die IP-Adresse oder den Benutzernamen ein, um eine Liste der zu leerenden Seiten zu erhalten.',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */

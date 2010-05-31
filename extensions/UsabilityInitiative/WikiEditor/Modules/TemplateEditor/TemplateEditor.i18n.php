@@ -582,9 +582,12 @@ $messages['sah'] = array(
 
 /** Sinhala (සිංහල)
  * @author Calcey
+ * @author බිඟුවා
  */
 $messages['si'] = array(
 	'wikieditor-template-editor-preference' => 'විකි අච්චුවල පෝරම-මූලික සංස්කරණය සක්‍රීය කරන්න',
+	'wikieditor-template-editor-dialog-submit' => 'යාවත්කාලීන කළ',
+	'wikieditor-template-editor-dialog-cancel' => 'අත් හරින්න',
 );
 
 /** Slovak (Slovenčina)

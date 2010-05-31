@@ -673,6 +673,9 @@ $messages['be-tarask'] = array(
 	'mwe-review-upload' => 'Праглядзець загрузку {{PLURAL:$1|файла|файлаў}}',
 );
 
+/** Bulgarian (Български)
+ * @author DCLXVI
+ */
 $messages['bg'] = array(
 	'fogg-date-title' => 'Дата',
 	'fogg-license-title' => 'Лиценз',
@@ -869,6 +872,9 @@ $messages['bs'] = array(
 	'fogg-badtoken' => 'Token nije valjan',
 );
 
+/** Catalan (Català)
+ * @author Solde
+ */
 $messages['ca'] = array(
 	'rsd_results_desc' => 'Resultats',
 	'rsd_results_next' => 'següent',
@@ -1146,6 +1152,34 @@ $messages['de'] = array(
 	'mwe-review-upload' => 'Hochgeladene {{PLURAL:$1|Datei|Dateien}} überprüfen',
 );
 
+/** German (formal address) (Deutsch (Sie-Form))
+ * @author Kghbln
+ * @author The Evil IP address
+ */
+$messages['de-formal'] = array(
+	'mwe-cancel-confim' => 'Möchten Sie  wirklich abbrechen?',
+	'mwe-fileexists' => 'Eine Datei dieses Namens ist bereits vorhanden. Bitte prüfen Sie <b><tt>$1</tt></b>, sofern Sie sich nicht sicher sind, ob Sie sie ersetzen möchten.',
+	'mwe-wgfogg_warning_bad_extension' => 'Sie haben eine Datei mit einer nicht unterstützten Erweiterung ausgewählt (<a href="http://commons.wikimedia.org/wiki/Commons:Firefogg#Supported_file_types">mehr Informationen</a>).',
+	'fogg-audioQuality-help' => 'Wird verwendet, um die <i>akustische Qualität</i> kodierter Audiodateien einzustellen (Wird nicht verwendet, sofern Sie die Bitrate unten in den erweiterten Einstellungen ändern.).',
+	'mwe-ie-inline-upload' => 'Das Inline-Hochladen ist momentan für den Internet Explorer deaktiviert. Sie können $1, dann $2',
+	'mwe-upload-done' => 'Ihr Upload <i>sollte</i> zugänglich sein.',
+	'mwe-no-import-by-url' => 'Dieser Benutzer oder dieses Wiki <b>kann keine</b> Dateien fremder URLs importieren. <p>Müssen Sie sich anmelden?</p><p>Verfügen Sie über das notwendige Benutzerrecht „upload_by_url“?<br />Wurde $1 bei diesem Wiki aktiviert?</p>',
+	'mwe-missing_desc_see_source' => 'Diese Datei verfügt über keine Beschreibung. Bitte sehen Sie sich [$1 die Quelle] an und helfen Sie mit, sie zu beschreiben.',
+	'mwe-your-recent-uploads' => 'Ihre bisherigen Uploads nach $1',
+	'mwe-not-logged-in-uploads' => 'Es kann sein, dass Sie nicht angemeldet sind, weswegen keine aktuellen Uploads angezeigt werden können. $1 Anmeldung und $2',
+	'mwe-ie-eye-permision' => 'Sofern Sie den Internet Explorer nutzen und angemeldet sind, müssen Sie gegebenenfalls Ihre Einstellung zur Privatsphäre anpassen',
+	'mwe-loggin-link' => '{{delete|unangemedet ist de-formal nicht einstellbar --[[User:Kghbln|kgh]] 10:24, 15 May 2010 (UTC)}}
+
+Bitte melden Sie sich an',
+	'mwe-try-again-link' => 'versuchen Sie es erneut',
+	'mwe-do-more-modification' => 'Führen Sie mehr Anpassungen durch',
+	'mwe-warning-upload-to-commons' => '$1 empfiehlt das Hochladen nach Wikimedia Commons. Laden Sie erst lokal hoch, nachdem Sie $2 gelesen haben',
+	'rsd-search-timeout' => 'Die Suchanfrage konnte nicht abgeschlossen werden. Der Server könnte ausgefallen oder ausgelastet sein. Sie können es später noch einmal versuchen',
+	'fogg-use_latest_firefox' => 'Bitte installieren Sie zunächst $1. <i>Besuchen Sie danach diese Seite erneut, um die <b>Firefogg</b>-Erweiterung zu installieren.</i>',
+	'fogg-passthrough_mode' => 'Die von Ihnen ausgewählte Datei ist bereits eine Ogg-Datei oder keine Videodatei',
+	'fogg-warning-firebug' => '<b>Firebug</b> kann Konflikte mit <i>Firefogg</i> verursachen. Bitte deaktivieren Sie <b>Firebug</b> auf dieser Seite.',
+);
+
 /** Zazaki (Zazaki)
  * @author Aspar
  * @author Xoser
@@ -1399,8 +1433,10 @@ $messages['dsb'] = array(
 	'fogg-contact-title' => 'Kontakt',
 	'fogg-contact-help' => 'Kontaktowy wótkaz',
 	'mwe-stream_title' => '$1 $2 do $3',
+	'rsd-media-filter-title' => 'Medije',
 	'rsd-media-filter-videos' => 'Wideo',
 	'rsd-media-filter-images' => 'Wobraze',
+	'rsd-provider-filter-title' => 'Pobitowarje',
 	'mwe-imported_from' => '$1 jo z [$2 $3] importěrował. Glědaj originalny [$4 resursowy bok] za dalšne informacije.',
 	'mwe-import-description' => '$1, z $2 importěrowany',
 	'mwe-select_file' => 'Dataju wubraś',
@@ -1411,14 +1447,17 @@ $messages['dsb'] = array(
 	'mwe-summary' => 'Zespominanje',
 	'mwe-date-of-work' => 'Datum źěła',
 	'mwe-error_not_loggedin' => 'Zda se, až njejsy pśizjawjony abo njamaš nagraśowe pšawa.',
+	'mwe-error-not-loggedin-file' => 'Zda se, až njejsy pśizjawjony abo jo zmólka w softwarje była. Móžoš $1 a wopytaj hyšći raz',
 	'mwe-link-login' => 'pśizjawiś',
 	'mwe-watch-this-file' => 'Toś tu dataju wobglědowaś',
 	'mwe-ignore-any-warnings' => 'Warnowanja ignorěrowaś',
 	'mwe-i-would-like-to' => 'Ja by rady',
 	'mwe-upload-own-file' => 'Swójo źěło do $1 nagraś',
+	'mwe-upload-once-done' => 'Pšosym $1. Gaž sy swójo nagraśe skóńcył, $2',
 	'mwe-upload-in-progress' => 'Nagraśe se rowno stawa (njezacyń toś to wokno)',
 	'mwe-uploaded-status' => 'Nagraty',
 	'mwe-uploaded-time-remaining' => 'Zwóstawajucy cas: $1',
+	'mwe-upload-done' => 'Twójo nagraśe <i>by měło</i> dostupne byś.',
 	'mwe-add_media_wizard' => 'Medijowy asistent pśidaś',
 	'mwe-media_search' => 'Medijowe pytanje',
 	'rsd_box_layout' => 'Kašćikowe wugótowanje',
@@ -1443,6 +1482,11 @@ $messages['dsb'] = array(
 	'mwe-results_from' => 'Wuslědki z $1',
 	'mwe-missing_desc_see_source' => 'Toś ta resursa njama wopisanje. Pšosym glědaj [$1 žrědło] a pomož ju wopisaś.',
 	'rsd_config_error' => 'Konfiguracisku zmólku medijowego asistenta pśidaś: $1',
+	'mwe-your-recent-uploads' => 'Twóje nejnowše nagraśa do $1',
+	'mwe-loggin-link' => 'Pšosym pśizjaw se',
+	'mwe-try-again-link' => 'wopytaj hyšći raz',
+	'mwe-upload-a-file' => 'Nagraj nowu dataju',
+	'mwe-upload-a-file-to' => 'Nagraj nowu dataju do $1',
 	'mwe-resource_page_desc' => 'Wopsianje resursowego boka:',
 	'mwe-edit_resource_desc' => 'Wopisanje wikitekstoweje resurse wobźěłaś:',
 	'mwe-local_resource_title' => 'Titel lokalneje resurse:',
@@ -1451,6 +1495,7 @@ $messages['dsb'] = array(
 	'mwe-update_preview' => 'Pśeglěd aktualizěrowaś',
 	'mwe-importing_asset' => 'Resursa se importěrujo',
 	'mwe-preview_insert_resource' => 'Pśeglěd zasajźenja resurse: $1',
+	'mwe-do-more-modification' => 'Pśewjeź dalšne změny',
 	'mwe-checking-resource' => 'Pyta se resursa',
 	'mwe-resource-needs-import' => 'Resursa $1 musy se do $2 importěrowaś',
 	'mwe-ftype-svg' => 'Wektorowa dataja SVG',
@@ -1461,6 +1506,7 @@ $messages['dsb'] = array(
 	'mwe-ftype-unk' => 'Njeznaty datajowy format',
 	'rsd-wiki_commons-title' => 'Wikimedija Commons',
 	'rsd-wiki_commons' => 'Wikimedija Commons, archiw licho licencěrowanego wopśimjeśa wucbnych medijow (wobraze, awdiomaterial a wideoklipy)',
+	'rsd-kaltura-title' => 'Wšykne žrědła',
 	'rsd-this_wiki-title' => 'Toś ten wiki',
 	'rsd-this_wiki-desc' => 'Lokalny wiki',
 	'rsd-archive_org-desc' => 'Internetny archiw, digitalna biblioteka kulturnych twórbow',
@@ -1474,13 +1520,18 @@ $messages['dsb'] = array(
 	'fogg-select_url' => 'URL wubraś',
 	'fogg-check_for_firefogg' => 'Za Firefogg pśeglědaś ...',
 	'fogg-installed' => 'Firefogg jo instalěrowany.',
+	'fogg-not-installed' => 'Firefogg njejo instalěrowany abo znjemóžnjony.',
 	'fogg-for_improved_uploads' => 'Za pólěpšone nagraśa:',
+	'fogg-please-install-install-linktext' => 'Firefogg instalěrowaś',
+	'fogg-please-install-about-linktext' => 'wó Firefogg',
 	'fogg-use_latest_firefox' => 'Pšosym instalěruj njepjerwjej <a href="http://www.mozilla.com/en-US/firefox/upgrade.html?from=firefogg">Firefox 3.5</a> (abo wuši). <i>Woglědaj pótom k toś tomu bokoju zasego, aby rozšyrjenje <b>Firefogg</b> instalěrował.</i>',
+	'fogg-latest-firefox' => 'nejnowšy Firefox',
 	'fogg-passthrough_mode' => 'Twója wubrana dataja jo južo dataja Ogg abo njejo wideojowa dataja',
 	'fogg-encoding-done' => 'Koděrowanje skóńcone',
 	'fogg-badtoken' => 'Token njejo płaśiwy',
 	'fogg-preview' => 'Pśeglěd wideo pokazaś',
 	'fogg-hidepreview' => 'Pśeglěd schowaś',
+	'fogg-warning-firebug' => '<b>Firebug</b> móžo konflikty z <i>Firefogg</i> zawinowaś. Pšosym znjemóžni <b>Firebug</b> za toś ten bok.',
 	'mwe-upload-multi' => '{{PLURAL:$1|Dataju|Dataji|Dataje|Dataje}} nagraś',
 	'mwe-review-upload' => '{{PLURAL:$1|Datajowe nagraśe|Datajowej nagraśi|Datajowe nagraśa|Datajowe nagraśa}} pśeglědaś',
 );
@@ -1560,7 +1611,12 @@ $messages['el'] = array(
 	'fogg-badtoken' => 'Το δείγμα δεν είναι έγκυρο',
 );
 
+/** Esperanto (Esperanto)
+ * @author Lucas
+ * @author Yekrats
+ */
 $messages['eo'] = array(
+	'mwe-upload-stats-fileprogress' => '$1 el $2',
 	'fogg-videoQuality-title' => 'Videa kvalito',
 	'fogg-starttime-title' => 'Komenca sekundo',
 	'fogg-endtime-title' => 'Fina sekundo',
@@ -2303,7 +2359,12 @@ $messages['gl'] = array(
 	'mwe-review-upload' => 'Revisar {{PLURAL:$1|a carga do ficheiro|as cargas dos ficheiros}}',
 );
 
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
+ * @author Crazymadlover
+ * @author Omnipaedista
+ */
 $messages['grc'] = array(
+	'fogg-title-title' => 'Ἐπιγραφή',
 	'mwe-upload' => 'Ἐπιφορτίζειν ἀρχεῖον',
 	'mwe-summary' => 'Σύνοψις',
 	'rsd_results_next' => 'ἑπομέναι',
@@ -3317,13 +3378,20 @@ $messages['ig'] = array(
 	'mwe-link-login' => 'banyé',
 );
 
+/** Ido (Ido)
+ * @author Malafaya
+ */
 $messages['io'] = array(
+	'mwe-upload-stats-fileprogress' => '$1 ek $2',
 	'fogg-title-title' => 'Titulo',
 	'fogg-date-title' => 'Dato',
 	'mwe-upload' => 'Adkargar arkivo',
 	'rsd-this_wiki-title' => 'Ca wiki',
 );
 
+/** Italian (Italiano)
+ * @author Gianfranco
+ */
 $messages['it'] = array(
 	'mwe-upload-unknown-size' => 'Dimensione sconosciuta',
 	'mwe-file-exists-duplicate' => 'Questo file è un duplicato del seguente file:',
@@ -3332,7 +3400,7 @@ $messages['it'] = array(
 	'fogg-width-title' => 'Larghezza video',
 	'fogg-width-help' => 'Ridimensiona alla larghezza indicata.',
 	'fogg-height-title' => 'Altezza video',
-	'fogg-height-help' => 'Ridimensiona all\'altezza indicata.',
+	'fogg-height-help' => "Ridimensiona all'altezza indicata.",
 	'fogg-title-title' => 'Titolo',
 	'fogg-license-title' => 'Licenza',
 	'mwe-cc_by_title' => 'Attribuzione',
@@ -3543,6 +3611,9 @@ $messages['ja'] = array(
 	'mwe-review-upload' => 'ファイルの{{PLURAL:$1|アップロード}}を精査',
 );
 
+/** Georgian (ქართული)
+ * @author BRUTE
+ */
 $messages['ka'] = array(
 	'mwe-file-exists-duplicate' => 'ეს ფაილი არის დუბლიკატი შემდეგი ფაილისა:',
 	'fogg-date-title' => 'თარიღი',
@@ -3552,6 +3623,15 @@ $messages['ka'] = array(
 	'rsd_results_next' => 'შემდეგი',
 	'rsd_results_prev' => 'წინა',
 	'fogg-select_file' => 'ფაილის არჩევა',
+);
+
+/** Kannada (ಕನ್ನಡ)
+ * @author Nayvik
+ */
+$messages['kn'] = array(
+	'fogg-title-title' => 'ಶೀರ್ಷಿಕೆ',
+	'fogg-date-title' => 'ದಿನಾಂಕ',
+	'mwe-summary' => 'ಸಾರಾಂಶ',
 );
 
 /** Korean (한국어)
@@ -3844,6 +3924,13 @@ $messages['lb'] = array(
 	'fogg-hidepreview' => 'Preview verstoppen',
 	'mwe-upload-multi' => '{{PLURAL:$1|Fichier|Fichieren}} eroplueden',
 	'mwe-review-upload' => '{{PLURAL:$1|Eropgeluedene Fichier|Eropgeluede Fichieren}} nokucken',
+);
+
+/** Malagasy (Malagasy)
+ * @author Jagwar
+ */
+$messages['mg'] = array(
+	'mwe-imported_from' => "$1 nampiditra avy amin'ny [$2 $3]. Jereo ny [$4 pejin'ny loharano] fototra ho an'ny antsipirihany.",
 );
 
 /** Macedonian (Македонски)
@@ -4888,6 +4975,10 @@ $messages['pt'] = array(
 	'mwe-review-upload' => 'Rever o upload {{PLURAL:$1|do ficheiro|dos ficheiros}}',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Hamilton Abreu
+ * @author Luckas Blade
+ */
 $messages['pt-br'] = array(
 	'mwe-upload-unknown-size' => 'Tamanho desconhecido',
 	'mwe-unknown-error' => 'Erro desconhecido:',
@@ -5263,6 +5354,14 @@ $messages['sr-ec'] = array(
 	'mwe-upload_tab' => 'Пошаљи фајл',
 	'mwe-link' => 'веза',
 	'rsd_do_insert' => 'Убаци',
+	'mwe-try-again-link' => 'покушај опет',
+	'mwe-upload-a-file-to' => 'пошаљи нови фајл на $1',
+	'mwe-ftype-svg' => 'SVG векторски фајл',
+	'mwe-ftype-jpg' => 'JPEG слика',
+	'mwe-ftype-png' => 'PNG слика',
+	'mwe-ftype-oga' => 'Ogg аудио фајл',
+	'mwe-ftype-ogg' => 'Ogg видео фајл',
+	'mwe-ftype-unk' => 'Непознати формат фајла',
 );
 
 /** Swedish (Svenska)
@@ -5447,6 +5546,14 @@ $messages['te'] = array(
 	'rsd-this_wiki-desc' => 'స్థానిక వికీ',
 );
 
+/** Turkmen (Türkmençe)
+ * @author Hanberke
+ */
+$messages['tk'] = array(
+	'rsd_results_prev' => 'Öňki',
+	'mwe-upload_tab' => 'Ýükle',
+);
+
 /** Turkish (Türkçe)
  * @author Joseph
  * @author Vito Genovese
@@ -5625,6 +5732,9 @@ $messages['tr'] = array(
 	'mwe-review-upload' => 'Dosya {{PLURAL:$1|yüklemesini|yüklemelerini}} incele',
 );
 
+/** Ukrainian (Українська)
+ * @author Prima klasy4na
+ */
 $messages['uk'] = array(
 	'mwe-summary' => 'Опис змін',
 	'rsd_results_next' => 'наступний',
@@ -5726,17 +5836,20 @@ $messages['vec'] = array(
 	'mwe-review-upload' => 'Contròla el caricamento {{PLURAL:$1|del file|dei file}}',
 );
 
+/** Veps (Vepsan kel')
+ * @author Игорь Бродский
+ */
 $messages['vep'] = array(
 	'mwe-upload-unknown-size' => 'Tundmatoi suruz',
 	'mwe-uploaderror' => 'Jügutoitandan petuz',
 	'mwe-unknown-error' => 'Tundmatoi petuz:',
 	'mwe-upload' => 'Jügutoitta fail',
-	'rsd_results_desc' => 'Rezul\'tatad',
-	'rsd_results_next' => 'jäl\'ghine',
+	'rsd_results_desc' => "Rezul'tatad",
+	'rsd_results_next' => "jäl'ghine",
 	'rsd_results_prev' => 'edeline',
 	'mwe-cc_by_title' => 'Attribucii',
 	'fogg-select_file' => 'Valiče fail',
-	'fogg-select_new_file' => 'Valiče uz\' fail',
+	'fogg-select_new_file' => "Valiče uz' fail",
 	'fogg-select_url' => 'Valiče URL',
 );
 

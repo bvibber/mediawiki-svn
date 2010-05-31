@@ -768,18 +768,11 @@ $messages['el'] = array(
 );
 
 /** British English (British English)
+ * @author Bruce89
  * @author Reedy
  */
 $messages['en-gb'] = array(
-	'grouppermissions-desc3' => "''The following data was last updated on $5 at $6.''
-
-Edits that have been checked by established users are considered to be reviewed.
-
-The average wait for edits by ''users that have not logged in'' to be reviewed is '''$1'''; the median is '''$3'''.  
-$4
-The average lag for [[Special:OldReviewedPages|pages with unreviewed edits pending]] is '''$2'''.
-These pages are considered ''outdated''. Likewise, pages are considered ''synchronised'' if there are no edits pending review.
-The published version of a page is the newest revision that has been approved to show by default to all readers.",
+	'grouppermissions-desc3' => 'Allows for the content actions (tabs) to be customised',
 );
 
 /** Esperanto (Esperanto)

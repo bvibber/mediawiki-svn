@@ -225,10 +225,14 @@ Beim Markieren von mehreren Seiten, erlaubt es die gedrücktgehaltene Shift-Tast
 
 /** German (formal address) (Deutsch (Sie-Form))
  * @author Imre
+ * @author The Evil IP address
  */
 $messages['de-formal'] = array(
 	'watchsubpages-addedtowatchlist' => 'Die folgenden Seiten wurden Ihrer Beobachtungsliste hinzugefügt.',
-	'watchsubpages-form' => 'Wählen Sie die Seiten aus, die Ihrer Beobachtungsliste hinzugefügt werden sollen.',
+	'watchsubpages-form' => 'Wählen Sie die Seiten aus, die Ihrer Beobachtungsliste hinzugefügt werden sollen.
+Um eine Seite hinzuzufügen, markieren Sie die Kästchen neben den Einträgen und klicken Sie auf „{{int:watchsubpages-addtitles}}“.
+
+Beim Markieren von mehreren Seiten, erlaubt es die gedrücktgehaltene Shift-Taste aufeinanderfolgende Kästchen zu markieren oder die Markierung zu entfernen.',
 );
 
 /** Lower Sorbian (Dolnoserbski)

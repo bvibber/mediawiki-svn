@@ -1110,6 +1110,13 @@ $messages['km'] = array(
 	'todo-form-details' => 'លំអិត ៖',
 );
 
+/** Kannada (ಕನ್ನಡ)
+ * @author Nayvik
+ */
+$messages['kn'] = array(
+	'todo-new-queue' => 'ಹೊಸ',
+);
+
 /** Kinaray-a (Kinaray-a)
  * @author Jose77
  */

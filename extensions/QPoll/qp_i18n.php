@@ -147,16 +147,9 @@ $messages['qqq'] = array(
 * $5 is a link to the users that participated in the poll with link label {{msg-mw|qp_users_link}}
 * $6 is a link to the with link label {{msg-mw|qp_not_participated_link}}',
 	'qp_error_missed_dependance_poll' => 'Parameters:
-{| cellpadding="0" cellspacing="0" border="0"
-!$1||&#160;
-| is the poll ID of the poll having an error.
-|-
-!$2||
-|is a link to the page with the poll, that this erroneous poll depends on.
-|-
-!$3||
-|is the poll ID of the poll, which this erroneous poll depends on.
-|}',
+* $1 is the poll ID of the poll having an error.
+* $2 is a link to the page with the poll, that this erroneous poll depends on.
+* $3 is the poll ID of the poll, which this erroneous poll depends on.',
 	'qp_error_too_many_spans' => 'There cannot be more category groups defined than the total count of subcategories.',
 	'qp_error_too_few_spans' => 'Every category group should include at least two subcategories',
 );
@@ -2074,6 +2067,74 @@ $messages['te'] = array(
  */
 $messages['tk'] = array(
 	'qp_users_link' => 'Ulanyjylar',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'pollresults' => 'Mga resulta ng halalan sa sityong ito',
+	'qp_desc' => 'Nagpapahintulot sa paglikha ng mga halalan',
+	'qp_desc-sp' => '[[Special:PollResults|Natatnging pahina]] para sa pagtingin sa mga resulta ng mga halalan',
+	'qp_result_NA' => 'Hindi sinagutan',
+	'qp_result_error' => 'Kamalian sa palaugnayan',
+	'qp_vote_button' => 'Bumoto',
+	'qp_vote_again_button' => 'Baguhin ang boto mo',
+	'qp_polls_list' => 'Talaan ng lahat ng mga pagboto',
+	'qp_users_list' => 'Itala ang lahat ng mga tagagamit',
+	'qp_browse_to_poll' => 'Tumingin-tingin sa $1',
+	'qp_browse_to_user' => 'Tumingin-tingin sa $1',
+	'qp_votes_count' => '$1 {{PLURAL:$1|boto|mga boto}}',
+	'qp_source_link' => 'Pinagmulan',
+	'qp_stats_link' => 'Estadistika',
+	'qp_users_link' => 'Mga tagagamit',
+	'qp_voice_link' => 'Tinig ng tagagamit',
+	'qp_voice_link_inv' => 'Tinig ng tagagamit?',
+	'qp_user_polls_link' => 'Nakilahok sa $1 {{PLURAL:$1|botohan|mga botohan}}',
+	'qp_user_missing_polls_link' => 'Walang pakikilahok',
+	'qp_not_participated_link' => 'Hindi lumahok',
+	'qp_order_by_username' => 'Pagkakasunud-sunod ayon sa pangalan ng tagagamit',
+	'qp_order_by_polls_count' => 'Pagkakasunud-sunod ayon sa bilang ng botohan',
+	'qp_results_line_qupl' => 'Pahina "$1" Botohan "$2": $3',
+	'qp_results_line_qpl' => 'Pahina "$1" Botohan "$2": $3, $4, $5, $6',
+	'qp_header_line_qpul' => '$1 [ Pahina "$2" Botohan "$3" ]',
+	'qp_export_to_xls' => 'Iluwas ang estadistika sa anyong XLS',
+	'qp_users_answered_questions' => '$1 {{PLURAL:$1|tagagamit|mga tagagamit}} sumagot sa mga tanong',
+	'qp_func_no_such_poll' => 'Walang ganyang botohan ($1)',
+	'qp_func_missing_question_id' => 'Mangyaring tukuyin ang isang umiiral na id ng tanong (simula sa 1) para sa botohang $1',
+	'qp_func_invalid_question_id' => 'Hindi tanggap na tanong na id=$2 (hindi isang bilang) para sa botohang $1',
+	'qp_func_missing_proposal_id' => 'Mangyaring tukuyin ang isang umiiral na iminungkahing id (simula sa 0) para sa botohang $1, tanong $2',
+	'qp_func_invalid_proposal_id' => 'Hindi tanggap na mungkahing id=$3 (hindi isang bilang) para sa botohang $1, tanong $2',
+	'qp_error_no_such_poll' => 'Walang ganyang botohan ($1).
+Tiyaking na nagpahayag ang botohan at nasagip, tiyakin ding ginamit ang panghanggang tirahan ng panitik na #',
+	'qp_error_in_question_header' => 'Hindi tanggap na paulo ng tanong: $1',
+	'qp_error_id_in_stats_mode' => 'Hindi maipahayag ang ID ng botohan sa modalidad ng pang-estadistika',
+	'qp_error_dependance_in_stats_mode' => 'Hindi maipahayag ang tanikalang pangsandig ng botohan sa modalidad na pang-estadistika',
+	'qp_error_no_stats' => 'Walang makuhang datong pang-estadistika, dahil wala pang bumoboto para sa halalang ito,  (tirahan=$1)',
+	'qp_error_address_in_decl_mode' => 'Hindi makakuha ng tirahan ng botohan sa modalidad ng pagpapahayag',
+	'qp_error_question_not_implemented' => 'Hindi ipinapatupad ang ganyang uri ng mga tanong: $1',
+	'qp_error_invalid_question_type' => 'Hindi tanggap na uri ng tanong: $1',
+	'qp_error_type_in_stats_mode' => 'Hindi mabigyang kahulugan ang uri ng tanong sa modalidad ng nagpapakita ng estadistika: $1',
+	'qp_error_no_poll_id' => 'Walang tinukoy na id ng katangian ng tatak ng botohan.',
+	'qp_error_invalid_poll_id' => 'Hindi tanggap na id ng botohan (id=$1).
+Maaaring maglaman lang ang id ng botohan ng mga titik, mga bilang at patlang na panitik',
+	'qp_error_already_used_poll_id' => 'Nagamit na ang id ng botohan sa pahinang ito (id=$1).',
+	'qp_error_invalid_dependance_value' => 'Ang tanikala ng pagsandig ng botohan (id=$1) ay may hindi tanggap na halaga ng katangian ng pagsandig (pagsandig="$2")',
+	'qp_error_missed_dependance_title' => 'Ang botohan (id=$1) ay nakasandig sa ibang botohan (id=$3) mula sa pahinang [[$2]], subalit hindi natagpuan ang pamagat na  [[$2]].
+Maaaring tanggalin ang katangian ng pagsandig, o ibalik ang [[$2]]',
+	'qp_error_missed_dependance_poll' => 'Ang botohang (id=$1) ay nakasandig sa ibang botohan (id=$3) sa pahinang $2, subalit hindi umiiral ang botohang iyon o hindi pa nasasagip.
+Maaaring tanggalin ang katangian ng pagsandig, o likhain ang botohan na may id=$3 sa pahinang $2 at sagipin ito.
+To save a poll, submit it while not answering to any proposal questions.',
+	'qp_error_vote_dependance_poll' => 'Mangyaring bumoto muna para sa botohang $1.',
+	'qp_error_too_many_spans' => 'Napakaraming tinukoy na mga pangkat ng kategorya para sa kabuoang bilang ng kabahaging mga kategorya',
+	'qp_error_unanswered_span' => 'Hindi sinagot na kabahaging kategorya',
+	'qp_error_non_unique_choice' => 'Nangangailangan ang tanong na ito ng natatanging sagot na pangmungkahi',
+	'qp_error_category_name_empty' => 'Walang laman ang pangalan ng kategorya',
+	'qp_error_proposal_text_empty' => 'Walang laman ang teksto ng mungkahi',
+	'qp_error_too_few_categories' => 'Dapat na tumukoy ng kahit na dalawang mga kategorya',
+	'qp_error_too_few_spans' => 'Dapat na maglaman ang bawat pangkat ng kategorya ng kahit na dalawang kabahaging mga kategorya',
+	'qp_error_no_answer' => 'Hindi tinugunang mungkahi',
+	'qp_error_unique' => 'Ang tanong ng uring natatangi() ay may mas maraming mga mungkahi kaysa tinukoy na maaaring mga tugon: hindi maaaring makumpleto',
 );
 
 /** Turkish (Türkçe)

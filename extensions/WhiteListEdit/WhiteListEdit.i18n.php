@@ -245,6 +245,7 @@ $messages['am'] = array(
  */
 $messages['an'] = array(
 	'whitelisttablemodifyall' => 'Tot',
+	'whitelisttablemodifynone' => 'Garra',
 	'whitelisttableedit' => 'Editar',
 	'whitelisttablenewdate' => 'Nueba calendata:',
 	'whitelisttablechangedate' => 'Cambiar a calendata de zircunduzión',

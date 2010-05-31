@@ -978,6 +978,13 @@ $messages['cu'] = array(
 	'openidlanguage' => 'ѩꙁꙑ́къ',
 );
 
+/** Welsh (Cymraeg)
+ * @author (vinny)
+ */
+$messages['cy'] = array(
+	'openidoptional' => 'Dewisol',
+);
+
 /** Danish (Dansk)
  * @author Jon Harald Søby
  */

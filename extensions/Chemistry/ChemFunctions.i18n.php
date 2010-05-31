@@ -102,7 +102,7 @@ $messages['arz'] = array(
 	'chemFunctions_ChemFormInputError' => 'Chemform: خطأ إدخال!',
 );
 
-/** Azerbaijani (Azərbaycan)
+/** Azerbaijani (Azərbaycanca)
  * @author Sortilegus
  */
 $messages['az'] = array(

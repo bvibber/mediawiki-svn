@@ -691,20 +691,45 @@ Damit wir besser werden können, fülle bitte die freiwillige Umfrage aus, bevor
 );
 
 /** German (formal address) (Deutsch (Sie-Form))
+ * @author Kghbln
  * @author The Evil IP address
  */
 $messages['de-formal'] = array(
-	'prefswitch-main' => 'Wir haben hart gearbeitet, um die Arbeit für unsere Benutzer einfacher zu machen. Wir freuen uns sehr, dass wir nun einige Neuheiten präsentieren können, darunter ein neues Aussehen und vereinfachte Bearbeitungs-Möglichkeiten. Die Verbesserung der Bedienbarkeit unserer Projekte hat Priorität für die Wikimedia Foundation und wir werden auch in Zukunft weitere Neuheiten vorstellen.
+	'prefswitch-survey-cancel-off' => 'Wenn Sie die neuen Features weiter verwenden wollen, können Sie zu $1 zurückkehren.',
+	'prefswitch-survey-cancel-feedback' => 'Wenn Sie kein Feedback geben möchten, können Sie zu $1 zurückkehren.',
+	'prefswitch-survey-question-like' => 'Was gefiel Ihnen an den Features?',
+	'prefswitch-survey-question-dislike' => 'Was mochten Sie an den Features nicht?',
+	'prefswitch-survey-question-whyoff' => 'Warum schalten Sie die neuen Features ab?
+Bitte wählen Sie alle zutreffenden Punkte aus.',
+	'prefswitch-survey-question-browser' => 'Welchen Browser verwenden Sie?',
+	'prefswitch-survey-question-os' => 'Welches Betriebssystem verwenden Sie?',
+	'prefswitch-survey-question-res' => 'Was ist Ihre Bildschirmauflösung?',
+	'prefswitch-success-on' => 'Die neuen Funktionalitäten sind jetzt aktiv. Wir wünschen Ihnen viel Freude bei deren Verwendung. Sie können sie jederzeit deaktivieren, indem Sie auf den Link „[[Special:UsabilityInitiativePrefSwitch|Beta verlassen]]“ oben auf der Webseite klicken.',
+	'prefswitch-success-off' => 'Die neuen Funktionalitäten sind jetzt inaktiv. Vielen Dank, dass Sie sie verwendet haben. Sie können sie jederzeit aktivieren, indem Sie auf den Link „[[Special:UsabilityInitiativePrefSwitch|Beta aktivieren]]“ oben auf der Webseite klicken.',
+	'prefswitch-success-feedback' => 'Ihr Feedback wurde versandt.',
+	'prefswitch-main' => "Wir haben hart gearbeitet, um die Arbeit für unsere Benutzer einfacher zu machen. Wir freuen uns sehr, dass wir nun einige Neuheiten präsentieren können, darunter ein neues Aussehen und vereinfachte Bearbeitungs-Möglichkeiten. Die Verbesserung der Bedienbarkeit unserer Projekte hat Priorität für die Wikimedia Foundation und wir werden auch in Zukunft weitere Neuheiten vorstellen. Für weitere Informationen, siehe den [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/ Wikimedia-Blog]-Eintrag.
 
 [[File:UsabilityNavigation.png|right|link=|Screenshot der neuen Navigation]]
 [[File:UsabilityToolbar.png|right|link=|Screenshot der erweiterten Werkzeugleiste]]
 [[File:UsabilityDialogs.png|right|link=|Screenshot der neuen Dialoge]]
 ===Was sich geändert hat===
-* Navigation: Wir haben die Navigation zum Lesen und zur Bearbeitung der Seiten verbessert. Die Reiter am Kopf jeder Seite zeigen klarer, ob Sie eine Seite oder eine Diskussionsseite lesen und ob Sie eine Seite lesen oder bearbeiten.
-* Werkzeugleiste: Wir haben die Werkzeugleiste einfacher bedienbar gemacht. Die Formatierung von Seiten ist nun einfacher und intuitiver.
-* Link-Assistent: Ein einfach zu bedienender Dialog ermöglicht das Hinzufügen von Links sowohl zu anderen Wiki-Seiten als auch zu externen Seiten.
-* Suche: Wir haben die Suchvorschläge verbessert, damit Sie schneller zu der von Ihnen gesuchten Seite kommen.
-* Weiteres: Ein Tabellen-Assistent ermöglicht das einfache Erstellen von Tabellen und ein Suchen-und-Ersetzen-Dialog vereinfacht die Seitenbearbeitung.',
+* '''Navigation:''' Wir haben die Navigation zum Lesen und zur Bearbeitung der Seiten verbessert. Die Reiter am Kopf jeder Seite zeigen klarer, ob Sie eine Seite oder eine Diskussionsseite lesen und ob Sie eine Seite lesen oder bearbeiten.
+* '''Werkzeugleiste:''' Wir haben die Werkzeugleiste einfacher bedienbar gemacht. Die Formatierung von Seiten ist nun einfacher und intuitiver.
+* '''Link-Assistent:''' Ein einfach zu bedienender Dialog ermöglicht das Hinzufügen von Links sowohl zu anderen Wiki-Seiten als auch zu externen Seiten.
+* '''Suche:''' Wir haben die Suchvorschläge verbessert, damit Sie schneller zu der von Ihnen gesuchten Seite kommen.
+* '''Weiteres:''' Ein Tabellen-Assistent ermöglicht das einfache Erstellen von Tabellen und ein Suchen-und-Ersetzen-Dialog vereinfacht die Seitenbearbeitung.
+* '''Wikipedia-Puzzle-Globus''': wir haben den Puzzle-Globus erneuert, mehr Informationen im [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ Wikimedia-Blog.]",
+	'prefswitch-main-anon' => '===Zurück===
+Sofern Sie die neuen Funktionen deaktivieren möchten, dann <span class="plainlinks">[$1 klicken Sie hier]</span>. Sie werden dann gebeten sich anzumelden oder zunächst ein neues Benutzerkonto zu erstellen.',
+	'prefswitch-main-on' => '=== Feedback? ===
+Wir würden uns freuen, von Ihnen zu hören.
+Bitte besuchen Sie unsere <span class="plainlinks">[$1 Feedback-Seite]</span>.
+=== Bring mich zurück! ===
+Wenn Sie die neuen Features abschalten möchten, <span class="plainlinks">[$2 klicken Sie hier]</span>.',
+	'prefswitch-survey-intro-feedback' => 'Wir würden uns freuen, von Ihnen zu hören.
+Bitte füllen Sie die freiwillige Umfrage aus, bevor Sie auf „[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]“ klicken.',
+	'prefswitch-survey-intro-off' => 'Danke für das Ausprobieren unserer neuen Features.
+Damit wir besser werden können, füllen Sie bitte die freiwillige Umfrage aus, bevor Sie auf „[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]“ klicken.',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -900,6 +925,7 @@ Helpi nin por plibonigi ilin, bonvolu plenumi la jenan malnepran enketon antaŭ 
 /** Spanish (Español)
  * @author Crazymadlover
  * @author Locos epraix
+ * @author Muro de Aguas
  * @author Pertile
  * @author Translationista
  */
@@ -965,8 +991,8 @@ Hemos estado trabajando arduamente para facilitar la experiencia de nuestros usu
 * '''Mejoras en la búsqueda:''' hemos mejorado las sugerencias para llegar más rápido a la página que se está buscando.
 * '''Otras nuevas características:''' también hemos introducido un asistente de tablas para hacer más sencilla la creación de tablas y una funcionalidad de buscar y reemplazar que simplifica la edición de páginas.
 * '''Globo rompecabezas de Wikipedia''': Hemos actualizado nuestro logo.Encontrarás más información al respecto en el [http://blog.wikimedia.org/2010/wikipedia-in-3d/  blog Wikimedia en inglés].",
-	'prefswitch-main-anon' => '===Regresarme===
-Si deseas deshabilitar las nuevas características, <span class="plainlinks">[$1 hazclick aquí]</span>. Se te solicitará iniciar sesión o crear una cuenta primero.',
+	'prefswitch-main-anon' => '=== Volver a la versión anterior ===
+Si deseas deshabilitar las nuevas características, haz clic <span class="plainlinks">[$1 aquí]</span>. Necesitarás iniciar sesión o crear una cuenta primero.',
 	'prefswitch-main-on' => '===Retroalimentar?===
 Nos encantaría escucharte. Por favor visita nuestra <span class="plainlinks">[$1 página de retroalimentación]</span>.
 ===Llévenme de vuelta===
@@ -2481,6 +2507,8 @@ $messages['ru'] = array(
 $messages['sc'] = array(
 	'prefswitch-survey-true' => 'Eja',
 	'prefswitch-survey-answer-whyoff-other' => 'Àteru motivu:',
+	'prefswitch-survey-answer-browser-other' => 'Àteru browser:',
+	'prefswitch-title-switched-off' => 'Gràtzias',
 );
 
 /** Slovak (Slovenčina)

@@ -1451,6 +1451,7 @@ $messages['sr-ec'] = array(
 	'duplicator-dest-exists' => '[[$1]] већ постоји. Молимо Вас да наведете незаузет циљани наслов.',
 	'duplicator-toomanyrevisions' => '[[$1]] има превише ($2) измена и не може бити ископиран.
 Тренутни лимит је $3.',
+	'right-duplicate' => 'Дуплиране стране',
 );
 
 /** Serbian Latin ekavian (Srpski (latinica))

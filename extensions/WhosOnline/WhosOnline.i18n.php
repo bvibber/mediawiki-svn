@@ -72,7 +72,7 @@ $messages['avk'] = array(
 	'whosonline-desc' => 'Nedira va [[Special:WhosOnline|vexala]] dem dogluyayan favesik yo isu yoltiskik',
 );
 
-/** Azerbaijani (Azərbaycan)
+/** Azerbaijani (Azərbaycanca)
  * @author Wertuose
  */
 $messages['az'] = array(

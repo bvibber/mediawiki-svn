@@ -1097,7 +1097,7 @@ Mer kann jetz dat [{{fullurl:{{#Special:SignDocument}}|doc=$2}} Ungerschriive oc
 	'createsigndoc-error-alreadycreated' => 'De Ongerschreffte-Mapp för de Sigg „$1“ es ald aanjelaat.',
 );
 
-/** Cornish (Kernowek)
+/** Cornish (Kernewek)
  * @author Kernoweger
  * @author Kw-Moon
  */

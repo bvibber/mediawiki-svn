@@ -99,7 +99,7 @@ $messages['avk'] = array(
 	'backforth-prev' => 'Abdif ($1)',
 );
 
-/** Azerbaijani (Azərbaycan)
+/** Azerbaijani (Azərbaycanca)
  * @author Sortilegus
  */
 $messages['az'] = array(

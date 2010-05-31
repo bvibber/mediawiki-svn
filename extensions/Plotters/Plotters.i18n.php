@@ -188,13 +188,18 @@ Bitte definiere eine Tabellenklasse, die maximal 255 Zeichen aufweist.',
 
 /** German (formal address) (Deutsch (Sie-Form))
  * @author Imre
+ * @author Kghbln
  * @author Umherirrender
  */
 $messages['de-formal'] = array(
-	'plotters-excessively-long-scriptname' => 'Der Skriptname ist zu lang.
-Bitte legen Sie ein Skript fest, dessen Titel 255 Zeichen nicht übersteigt.',
+	'plotters-excessively-long-scriptname' => 'Der Name des Skripts ist zu lang.
+Bitte legen Sie ein Skript fest, dessen Name maximal 255 Zeichen aufweist.',
 	'plotters-excessively-long-preprocessorname' => 'Der Name des Präprozessors ist zu lang.
-Bitte legen Sie einen Präprozessor fest, dessen Name 255 Zeichen nicht übersteigt.',
+Bitte definieren Sie einen Präprozessor, dessen Name maximal 255 Zeichen aufweist.',
+	'plotters-excessively-long-name' => 'Der Name des Entwurfs ist zu lang.
+Bitte definieren Sie einen Entwurf, dessen Name maximal 255 Zeichen aufweist.',
+	'plotters-excessively-long-tableclass' => 'Die Tabellenklasse ist zu lang.
+Bitte definieren Sie eine Tabellenklasse, die maximal 255 Zeichen aufweist.',
 );
 
 /** Lower Sorbian (Dolnoserbski)

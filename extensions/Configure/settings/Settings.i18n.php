@@ -4642,6 +4642,13 @@ $messages['de'] = array(
 	'configure-setting-wgUDPProfilerPort' => 'Port für den UDP-Profiler',
 );
 
+/** German (formal address) (Deutsch (Sie-Form))
+ * @author Kghbln
+ */
+$messages['de-formal'] = array(
+	'configure-setting-wgJQueryMinified' => 'Verwenden Sie eine schlankere Version von jQuery',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
@@ -12069,7 +12076,7 @@ $messages['mk'] = array(
 	'configure-setting-wgNoFollowNsExceptions' => 'Именски простори кадешто се преопределува nofollow',
 	'configure-setting-wgNonincludableNamespaces' => 'Невклучливи именски простори',
 	'configure-setting-wgPreviewOnOpenNamespaces' => 'Именски простори кои имаат специјален третман со тоа што се дава преглед при нивно отворање',
-	'configure-setting-wgSitemapNamespaces' => 'Именски простори за приказ на картата на веб-сајтот',
+	'configure-setting-wgSitemapNamespaces' => 'Именски простори за приказ на картата на мрж. место',
 	'configure-setting-wgCategoryMagicGallery' => 'Прикажувај галерија од минијатури во категориските страници',
 	'configure-setting-wgCategoryPagingLimit' => 'Ограничување на страници за ставки во категориите',
 	'configure-setting-wgCategoryPrefixedDefaultSortkey' => 'Вклучиименски простор во основно-зададениот клуч за сортирање категории',
@@ -12273,7 +12280,7 @@ $messages['mk'] = array(
 	'configure-setting-wgDiff' => 'Патека до алатката GNU diff',
 	'configure-setting-wgDiff3' => 'Патека до алатката GNU diff3',
 	'configure-setting-wgFavicon' => 'URL-адреса на фавиконата на  веб-страницата',
-	'configure-setting-wgLogo' => 'URL-адреса на логото на веб-сајтот',
+	'configure-setting-wgLogo' => 'URL-адреса на логото на мрж. место',
 	'configure-setting-wgMathDirectory' => 'Патека на податочниот систем до директориумот кој содржи LaTeX math слики',
 	'configure-setting-wgMathPath' => 'URL-основа на директориумот кој содржи LaTeX math слики',
 	'configure-setting-wgRedirectScript' => 'URL-адреса на redirect.php, потребна за обратна компатибилност',
