@@ -239,7 +239,7 @@ function rewrite_for_OggHandler( vidIdList ) {
 		src = re.exec( rewriteHTML )[2];
 
 		var apiTitleKey = src.split( '/' );
-		apiTitleKey = unescape( apiTitleKey[ apiTitleKey.length - 1 ] );
+		apiTitleKey = decodeURI( apiTitleKey[ apiTitleKey.length - 1 ] );
 
 		var re = new RegExp( /length(&quot;:?\s*)*([^,]*)/ );
 		var dv = parseFloat( re.exec( rewriteHTML )[2] );
