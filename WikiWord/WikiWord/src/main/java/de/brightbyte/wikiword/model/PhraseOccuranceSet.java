@@ -5,7 +5,9 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 import java.util.RandomAccess;
 import java.util.Set;
 
@@ -201,6 +203,66 @@ public class PhraseOccuranceSet extends AbstractList<PhraseOccurance> implements
 		return subList(i, j); //NOTE: Phraseoccurrance.compareTo assures that longest phrases come first.
 	}
 
+	public void clear() {
+		phrases.clear();
+	}
+
+	public boolean contains(Object o) {
+		return phrases.contains(o);
+	}
+
+	public boolean containsAll(Collection<?> c) {
+		return phrases.containsAll(c);
+	}
+
+	public boolean equals(Object o) {
+		return phrases.equals(o);
+	}
+
+	public int indexOf(Object o) {
+		return phrases.indexOf(o);
+	}
+
+	public boolean isEmpty() {
+		return phrases.isEmpty();
+	}
+
+	public Iterator<PhraseOccurance> iterator() {
+		return phrases.iterator();
+	}
+
+	public ListIterator<PhraseOccurance> listIterator() {
+		return phrases.listIterator();
+	}
+
+	public ListIterator<PhraseOccurance> listIterator(int index) {
+		return phrases.listIterator(index);
+	}
+
+	public PhraseOccurance remove(int index) {
+		return phrases.remove(index);
+	}
+
+	public boolean remove(Object o) {
+		return phrases.remove(o);
+	}
+
+	public boolean removeAll(Collection<?> c) {
+		return phrases.removeAll(c);
+	}
+
+	public boolean retainAll(Collection<?> c) {
+		return phrases.retainAll(c);
+	}
+
+	public Object[] toArray() {
+		return phrases.toArray();
+	}
+
+	public <T> T[] toArray(T[] a) {
+		return phrases.toArray(a);
+	}
+
 	/*
 	public List<PhraseOccurance> getDisjointPhraseSequence(Filter<String> filter) {
 		List<PhraseOccurance> phrases = new ArrayList<PhraseOccurance>();
@@ -224,4 +286,6 @@ public class PhraseOccuranceSet extends AbstractList<PhraseOccurance> implements
 		return phrases;
 	}
 	*/
+	
+	
 }
