@@ -62,6 +62,8 @@ public class DatabaseFeatureStore<T extends WikiWordConcept>
 		
 		};
 		
+		protected int maxConceptFeatures;
+		
 		protected DatabaseFeatureStore(DatabaseWikiWordConceptStore<T> conceptStore, ProximityStoreSchema database, TweakSet tweaks) throws SQLException {
 			super(database, tweaks);
 			
@@ -69,7 +71,9 @@ public class DatabaseFeatureStore<T extends WikiWordConcept>
 			this.conceptFactory = conceptStore.getConceptFactory();
 
 		    this.conceptTable = (EntityTable)conceptStore.getDatabaseAccess().getTable("concept"); 
-			this.featureTable = (RelationTable)database.getTable("feature"); 
+			this.featureTable = (RelationTable)database.getTable("feature");
+			
+			this.maxConceptFeatures = tweaks.getTweak("dbstore.maxConceptFeatures", 512);
 		}
 
 		protected T newConcept(int id, String name, ConceptType type, int cardinality, double relevance) throws PersistenceException {
@@ -79,6 +83,7 @@ public class DatabaseFeatureStore<T extends WikiWordConcept>
 		public ConceptFeatures<T, Integer> getConceptFeatures(int concept) throws PersistenceException {
 			String sql = "SELECT concept, feature, normal_weight FROM " +featureTable.getSQLName()+" as F ";
 			sql += " WHERE concept = "+concept;
+			if (maxConceptFeatures>0) sql += " ORDER BY normal_weight DESC LIMIT "+maxConceptFeatures; 
 
 			return readConceptFeatures("getFeatureVector", sql, "concept", null, null, null, "feature", "normal_weight"); //FIXME: name, card, relevance
 		}
@@ -89,6 +94,7 @@ public class DatabaseFeatureStore<T extends WikiWordConcept>
 			try {
 				String sql = "SELECT concept, feature, normal_weight FROM " +featureTable.getSQLName()+" as F ";
 				sql += " WHERE concept IN "+database.encodeSet(concepts);
+				if (maxConceptFeatures>0) sql += " ORDER BY concept, normal_weight DESC"; 
 
 				return readConceptsFeatures("getFeatureVectors", sql, "concept", null, null, null, "feature", "normal_weight"); //FIXME: name, card, relevance
 			} catch (SQLException e) {
@@ -96,11 +102,11 @@ public class DatabaseFeatureStore<T extends WikiWordConcept>
 			}
 		}
 
-		protected  <K> LabeledVector<K> readVector(String name, String sql, String keyField, String valueField) throws PersistenceException {
+		protected  <K> LabeledVector<K> readVector(String name, String sql, String keyField, String valueField, int limit) throws PersistenceException {
 			try {
 				ResultSet rs = database.executeQuery(name, sql);
 				try {
-					return readVector(rs, null, keyField, valueField, new MapLabeledVector<K>());
+					return readVector(rs, null, keyField, valueField, new MapLabeledVector<K>(), limit);
 				} finally {
 					rs.close();
 				}
@@ -156,8 +162,8 @@ public class DatabaseFeatureStore<T extends WikiWordConcept>
 				int c = cardinalityField == null ? 1 : DatabaseUtil.asInt(rs.getObject(cardinalityField));
 				double r = relevanceField == null ? 1 : DatabaseUtil.asDouble(rs.getObject(relevanceField));
 				rs.previous();
-				
-				LabeledVector<Integer> v = readVector(rs, conceptField, keyField, valueField, new MapLabeledVector<Integer>());
+
+				LabeledVector<Integer> v = readVector(rs, conceptField, keyField, valueField, new MapLabeledVector<Integer>(), maxConceptFeatures);
 				
 				T ref = conceptFactory.newInstance(id, n, null, c, r);
 				return new ConceptFeatures<T, Integer>(ref, v);
@@ -166,10 +172,11 @@ public class DatabaseFeatureStore<T extends WikiWordConcept>
 			}
 		}
 		
-		protected  <K> LabeledVector<K> readVector(ResultSet rs, String conceptField, String keyField, String valueField, LabeledVector<K> v) throws SQLException {
+		protected  <K> LabeledVector<K> readVector(ResultSet rs, String conceptField, String keyField, String valueField, LabeledVector<K> v, int limit) throws SQLException {
 			if (v==null) v = new MapLabeledVector<K>();
 			
 			int concept = -1;
+			int count = 0;
 			
 			while (rs.next()) {
 				K k = (K)rs.getObject(keyField);
@@ -182,6 +189,10 @@ public class DatabaseFeatureStore<T extends WikiWordConcept>
 						break;
 					}
 				}
+				
+				count++;
+				
+				if (limit>0 && count>limit) continue;
 				
 				Object n = rs.getObject(valueField);
 				v.set(k,  DatabaseUtil.asDouble(n));

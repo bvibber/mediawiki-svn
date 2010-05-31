@@ -38,7 +38,7 @@ public class DatabaseProximityStore<T extends WikiWordConcept>
 			sql += " WHERE concept1 = "+concept;
 			if (minProximity>0) sql += " AND proximity >= "+minProximity;
 
-			return readVector("getEnvironmentVector", sql, "concept2", "proximity");
+			return readVector("getEnvironmentVector", sql, "concept2", "proximity", maxConceptFeatures);
 		}
 
 		public double getProximity(int concept1, int concept2) throws PersistenceException {
