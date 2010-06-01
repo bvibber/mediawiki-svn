@@ -607,6 +607,15 @@ $messages['sl'] = array(
 	'wikieditor-template-editor-dialog-cancel' => 'Prekliči',
 );
 
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'wikieditor-template-editor-dialog-title' => 'Измени шаблон',
+	'wikieditor-template-editor-dialog-submit' => 'Ажурирај',
+	'wikieditor-template-editor-dialog-cancel' => 'Поништи',
+);
+
 /** Swedish (Svenska)
  * @author Boivie
  * @author Hannibal

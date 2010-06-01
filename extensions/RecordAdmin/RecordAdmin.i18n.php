@@ -110,6 +110,7 @@ $messages['af'] = array(
  * @author Juanpabl
  */
 $messages['an'] = array(
+	'recordadmin-submit' => 'Ninviar',
 	'recordadmin-buttoncreate' => 'Creyar',
 	'recordadmin-buttonsave' => 'Alzar',
 	'recordadmin-actions' => 'Accions',
@@ -2109,7 +2110,7 @@ $messages['tl'] = array(
 	'recordadmin-recordtype' => 'uri ng talaan',
 	'recordadmin-newsearch' => 'Bagong paghahanap ng $1',
 	'recordadmin-newrecord' => 'Pumili ng iba pang uri ng tala/rekord',
-	'recordadmin-submit' => 'Ipasa/ipadala',
+	'recordadmin-submit' => 'Ipasa',
 	'recordadmin-create' => 'Hanapin o likhain ang "$1" mga talaan',
 	'recordadmin-alreadyexist' => 'Paumanhin, umiiral na ang "$1"!',
 	'recordadmin-createsuccess' => '$1 nalikha na',

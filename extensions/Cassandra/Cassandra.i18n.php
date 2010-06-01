@@ -193,3 +193,10 @@ $messages['tr'] = array(
 	'cassandra-desc' => 'Revizyon metnini [http://cassandra.apache.org/ Apache Cassandra] veritabanında sakla',
 );
 
+/** Ukrainian (Українська)
+ * @author AS
+ */
+$messages['uk'] = array(
+	'cassandra-desc' => 'Зберігати текст версії в базі даних [http://cassandra.apache.org/ Apache Cassandra]',
+);
+

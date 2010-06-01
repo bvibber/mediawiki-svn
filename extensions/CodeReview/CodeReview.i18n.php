@@ -419,6 +419,7 @@ $messages['an'] = array(
 	'code-rev-date' => 'Calendata:',
 	'code-status-reverted' => 'revertito',
 	'code-status-ok' => "D'alcuerdo",
+	'codereview-batch-submit' => 'Ninviar',
 	'codereview-email-body' => 'L\'usuario "$1" publicó un comentario en $3
 
 URL completo: $2

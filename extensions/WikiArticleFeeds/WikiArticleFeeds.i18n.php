@@ -344,6 +344,14 @@ $messages['sk'] = array(
 	'wikiarticlefeeds_combined_description' => 'Toto je kombinovaný kanál, ktorý obsahuje položky z niekoľkých zdrojov kanálov.',
 );
 
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'wikiarticlefeeds-desc' => 'Израђује фидове произведене код МедијаВики страна',
+	'wikiarticlefeeds_combined_description' => 'Ово је комбиновани фид, који садржи елементе неколико изворних фидова.',
+);
+
 /** Swedish (Svenska)
  * @author Micke
  */

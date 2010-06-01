@@ -60,6 +60,13 @@ $messages['aln'] = array(
 	'createpage-badtitle' => '"$1" nuk mund të përdoret si një titull në faqe',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'createpage_submitbutton' => 'Ninviar',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK

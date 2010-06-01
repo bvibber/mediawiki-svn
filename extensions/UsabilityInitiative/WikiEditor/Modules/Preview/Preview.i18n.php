@@ -704,6 +704,13 @@ $messages['sl'] = array(
 	'wikieditor-preview-loading' => 'Nalaganje ...',
 );
 
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'wikieditor-preview-loading' => 'Учитавање...',
+);
+
 /** Swedish (Svenska)
  * @author Boivie
  */

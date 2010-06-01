@@ -741,6 +741,15 @@ $messages['sv'] = array(
 	'searchbox-namespaces' => 'Namnrymder:',
 );
 
+/** Tamil (தமிழ்)
+ * @author Mahir78
+ */
+$messages['ta'] = array(
+	'searchbox-search' => 'தேடுக',
+	'searchbox-go' => 'செல்க',
+	'searchbox-namespaces' => 'பெயர்வெளி:',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */

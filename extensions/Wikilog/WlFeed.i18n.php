@@ -268,6 +268,13 @@ $messages['si'] = array(
 	'wlfeed-desc' => 'වර්ධිත සංග්‍රහ ප්‍රවේණි පංති',
 );
 
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'wlfeed-desc' => 'Класе за побољшане фидове',
+);
+
 /** Swedish (Svenska)
  * @author Boivie
  */

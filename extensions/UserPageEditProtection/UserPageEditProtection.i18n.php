@@ -252,6 +252,14 @@ $messages['ru'] = array(
 	'right-editalluserpages' => 'изменение страниц участников',
 );
 
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'userpageeditprotection-desc' => 'Ограничава уређивање корисничких страна на корисника и одобрене уреднике',
+	'right-editalluserpages' => 'Измена корисничких страна',
+);
+
 /** Swedish (Svenska)
  * @author Dafer45
  */

@@ -126,6 +126,13 @@ U terugvoer is waardevol en help ons om ons webwerf te verbeter.''",
 	'specialpages-group-feedback' => 'Mening van die leser',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'readerfeedback-submit' => 'Ninviar',
+);
+
 /** Arabic (العربية)
  * @author Antime
  * @author Meno25
@@ -1765,6 +1772,7 @@ $messages['oc'] = array(
  * @author Leinad
  * @author Maikking
  * @author McMonster
+ * @author Nux
  * @author Pimke
  * @author Sp5uhe
  * @author ToSter
@@ -1787,7 +1795,7 @@ $messages['pl'] = array(
 	'readerfeedback-submit' => 'Oznacz',
 	'readerfeedback-main' => 'Tylko strony z treścią mogą być oceniane.',
 	'readerfeedback-success' => "'''Dziękujemy za ocenę strony!''' ([$2 wyniki]) ([$3 uwagi lub pytania]).",
-	'readerfeedback-voted' => "'''Tę stronę prawdopodobnie już {{GENDER:|oceniałeś|oceniałaś}}''' ([$2 wyniki]) ([$3 komentarze lub pytania]).",
+	'readerfeedback-voted' => "'''Najprawdopodobniej już oceniał{{GENDER:|eś|aś|eś/aś}} tę stronę''' ([$2 zobacz wyniki]) ([$3 komentarze lub pytania]).",
 	'readerfeedback-error' => "'''Podczas oceniania strony wystąpił błąd''' ([$2 wyniki]) ([$3 komentarze lub pytania]).",
 	'readerfeedback-submitting' => 'Zapisywanie...',
 	'readerfeedback-finished' => 'Dziękujemy!',

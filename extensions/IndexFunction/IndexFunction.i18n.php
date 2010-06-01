@@ -67,6 +67,13 @@ $messages['af'] = array(
 	'index-submit' => 'OK',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'index-submit' => 'Ninviar',
+);
+
 /** Arabic (العربية)
  * @author OsamaK
  */
@@ -1147,7 +1154,7 @@ Pakitanggal ang "$1" magmula sa <nowiki>{{#index:}}</nowiki> na nasa ibabaw na {
 	'index' => 'Paghahanap ng talatuntunan',
 	'index-legend' => 'Maghanap sa talatuntunan',
 	'index-search' => 'Maghanap:',
-	'index-submit' => 'Ipadala',
+	'index-submit' => 'Ipasa',
 	'index-disambig-start' => "Maaaring tumukoy ang '''$1''' sa ilang mga pahina:",
 	'index-emptylist' => 'Walang mga pahinang kaugnay ng "$1"',
 	'index-expand-detail' => 'Ipakita ang mga pahina nakatalunton sa ilalim ng pahinang ito',

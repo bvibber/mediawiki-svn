@@ -491,6 +491,8 @@ $messages['ru'] = array(
  */
 $messages['si'] = array(
 	'prefswitch-link-anon' => 'බීටා අනුවාදයේ ලක්ෂණ',
+	'prefswitch-link-off' => 'බීටා අනුවාදයේ ලක්ෂණ',
+	'tooltip-pt-prefswitch-link-off' => 'නවාංගයන් අත්හදා බලන්න',
 );
 
 /** Slovenian (Slovenščina)

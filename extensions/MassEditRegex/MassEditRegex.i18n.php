@@ -1316,6 +1316,14 @@ $messages['te'] = array(
 	'masseditregex-num-articles-changed' => '$1 {{PLURAL:$1|పేజీని|పేజీలను}} మార్చారు',
 );
 
+/** Tagalog (Tagalog) */
+$messages['tl'] = array(
+	'masseditregex-matchtxt' => 'Hanapin ang:',
+	'masseditregex-replacetxt' => 'Palitan ng:',
+	'masseditregex-executebtn' => 'Isakatuparan',
+	'masseditregex-hint-headreplace' => 'Palitan',
+);
+
 /** Turkish (Türkçe)
  * @author Vito Genovese
  */

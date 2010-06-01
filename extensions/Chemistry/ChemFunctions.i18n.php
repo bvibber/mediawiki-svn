@@ -1272,11 +1272,13 @@ $messages['tr'] = array(
 );
 
 /** Ukrainian (Українська)
+ * @author AS
  * @author Ahonc
  */
 $messages['uk'] = array(
 	'chemicalsources' => 'Джерела з хімії',
 	'chemicalsource-desc' => 'Додає тег <nowiki><chemform></nowiki> для хімічних формул',
+	'chemicalsources-desc' => '[[Special:ChemicalSources|Спеціальна сторінка]] для хімічних джерел',
 	'chemFunctions_ListPage' => 'Джерела з хімії',
 	'chemFunctions_DataList' => 'Нижче наведено список посилань на сайти, які можуть містити інформацію про хімічну речовину, яка вас цікавить.<br /><br />
 * <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Сполука $MIXCASNameFormula на сайті NIST</a><br />

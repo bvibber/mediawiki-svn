@@ -8188,7 +8188,7 @@ $messages['mk'] = array(
 Погледајте ги [[{{MediaWiki:Ow editing policy url}}|нашите правила за уредување]].',
 	'ow_uipref_datasets' => 'Основен поглед:',
 	'ow_uiprefs' => 'Викидата',
-	'ow_none_selected' => 'Ништо не е селектирано',
+	'ow_none_selected' => 'Ништо не е одбрано',
 	'transaction' => 'Википодатоци: Дневник на трансакции',
 	'ow_transaction_from_transaction' => 'Од трансакцијата:',
 	'ow_transaction_count' => 'Број:',

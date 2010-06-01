@@ -601,6 +601,7 @@ $messages['an'] = array(
 	'wikilog-new-item-go' => 'Creyar',
 	'wikilog-actions' => 'Accions',
 	'wikilog-form-date' => 'Calendata:',
+	'wikilog-submit' => 'Ninviar',
 	'wikilog-edit-lc' => 'editar',
 	'wikilog-page-lc' => 'pachina',
 );
@@ -5805,7 +5806,7 @@ $messages['sr-ec'] = array(
 	'wikilog-comment-approve' => 'Одобри овај коментар (моментална акција)',
 	'wikilog-feed-description' => 'Прочитај најскорије уносе у овом фиду.',
 	'wikilog-comment-feed-title1' => 'Коментар од $2 (#$1)',
-	'wikilog-comment-feed-title2' => 'Коментар од $2 за $2 (#$1)',
+	'wikilog-comment-feed-title2' => 'Коментар од $2 за $3 (#$1)',
 	'wikilog-invalid-param' => 'Неисправан параметар: $1.',
 	'wikilog-invalid-author' => 'Непостојећи аутор: $1.',
 	'wikilog-invalid-date' => 'Неисправан датум: $1.',

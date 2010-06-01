@@ -84,7 +84,7 @@ Kliek <a href='$1'>hier</a> om terug te keer.",
  * @author Juanpabl
  */
 $messages['an'] = array(
-	'spamdifftool_submit_buttom' => 'Nimbiar',
+	'spamdifftool_submit_buttom' => 'Ninviar',
 );
 
 /** Arabic (العربية)

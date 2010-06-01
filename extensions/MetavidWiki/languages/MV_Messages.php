@@ -8730,7 +8730,7 @@ Alebo môžete <a href="$3">Pridať stream</a>.',
  */
 $messages['sr-ec'] = array(
 	'mv_error_stream_missing' => '<span class="error">Грешка: Не постоји видео-фајл придружен овом стриму.</span><br />
-Молимо Вас да пријавите ово администратору сајта.',
+Молимо Вас да пријавите ово [[{{MediaWiki:Grouppage-sysop}}|администратору сајта]].',
 	'mv_stream_added' => 'Додали сте стрим $1',
 	'mv_move_delete_msg' => 'премештено у $1',
 	'mv_add_stream_submit' => 'Додај стрим',
@@ -9667,7 +9667,7 @@ Tumalon patungo sa tanawan ng daloy na: $2',
 	'mv_history_title' => "Kasaysayan ng pagtutuwid ng pagbabago at palabas (''video'')",
 	'mv_edit_title' => 'Baguhin ang teksto',
 	'mv_edit_adjust_title' => 'Baguhin ang pagkakatuwid ng teksto at palabas',
-	'mv_remove' => 'Tanggalin',
+	'mv_remove' => 'tanggalin',
 	'mv_remove_title' => 'tanggalin ang tapyas/segmentong ito ng panlikod na dato/metadato',
 	'mv_adjust' => 'iakma',
 	'mv_adjust_submit' => 'Sagipin ang pag-aakma',

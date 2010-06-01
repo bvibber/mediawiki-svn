@@ -1621,5 +1621,7 @@ Maaaring tinanggal ito.',
 Bakit hindi mo ito ibahagi?',
 	'storyboard-email' => 'Tirahan mo ng e-liham (kailangan)',
 	'storyboard-storytitle' => 'Isang maikli, mapaglarawang pamagat (kailangan)',
+	'storyboard-done' => 'Nagawa na',
+	'storyboard-deletestory' => 'Tanggalin',
 );
 

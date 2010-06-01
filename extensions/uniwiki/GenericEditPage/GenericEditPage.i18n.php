@@ -1357,6 +1357,7 @@ Pomocou nástrojov v paneli s ponukou ich môžete pridať.',
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
+	'gep-desc' => 'Чини да корисничка страна буде лакша за коришћење',
 	'gep-emailsubject' => '[$1] Сугерисана категорија: $2',
 	'gep-emailbody' => 'Корисник "$1" је сугерисао категорију "$2" за сајт "$3".',
 	'gep-emailfailure' => 'Жао нам је, Ваша сугестија није могла бити процесирана.',

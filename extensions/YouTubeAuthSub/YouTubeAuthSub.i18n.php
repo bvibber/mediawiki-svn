@@ -153,7 +153,7 @@ $messages['am'] = array(
  * @author Juanpabl
  */
 $messages['an'] = array(
-	'youtubeauthsub_submit' => 'Nimbiar',
+	'youtubeauthsub_submit' => 'Ninviar',
 );
 
 /** Old English (Ænglisc)
@@ -3336,7 +3336,7 @@ $messages['tl'] = array(
 	'youtubeauthsub_username' => 'Pangalan ng tagagamit sa YouTube',
 	'youtubeauthsub_keywords' => "Mga susing-salita o salitang-naglalarawan (''keyword'')",
 	'youtubeauthsub_category' => 'Kaurian',
-	'youtubeauthsub_submit' => 'Ipasa/ipadala',
+	'youtubeauthsub_submit' => 'Ipasa',
 	'youtubeauthsub_clickhere' => 'Pindutin rito para makalagda sa YouTube',
 	'youtubeauthsub_tokenerror' => 'May kamalian sa paglikha ng sagisag ng pagbibigay ng pahintulot, subuking sariwain.',
 	'youtubeauthsub_success' => "Maligayang bati!

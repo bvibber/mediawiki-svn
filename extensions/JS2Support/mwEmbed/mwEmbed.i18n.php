@@ -558,7 +558,7 @@ $messages['te'] = array(
  * @author AnakngAraw
  */
 $messages['tl'] = array(
-	'mwe-loading_txt' => 'Ikinakarga ...',
+	'mwe-loading_txt' => 'Ikinakarga...',
 	'mwe-error_load_lib' => 'Kamalian: hindi makukuha ang JavaScript na $1 o hindi nagbigay kahulugan sa $2',
 	'mwe-apiproxy-setup' => 'Nagtatalaga ng pamalit na API',
 	'mwe-load-drag-item' => 'Ikinakarga ang hinilang bagay',

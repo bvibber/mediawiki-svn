@@ -199,8 +199,11 @@ $messages['ja'] = array(
 	'massblank-nopages' => '最近の更新に[[Special:Contributions/$1|$1]]による新規ページはありません。',
 	'massblank-list' => '以下のページが[[Special:Contributions/$1|$1]]によって最近作成されました。コメントを入力し、ボタンを押して白紙化を行います。',
 	'massblank-defaultreason' => '$1が追加したページの一括白紙化',
+	'massblank-tools' => 'このツールを使うと、指定された利用者や IP アドレスにより最近追加されたページの、一括白紙化を行うことができるようになります。白紙化するページの一覧を得るには利用者名か IP アドレスを入力してください。',
 	'massblank-submit-user' => '実行',
+	'massblank-submit-blank' => '選択したページを白紙化',
 	'massblank-blankcomment' => '理由:',
+	'right-massblank' => 'ページの一括白紙化',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

@@ -56,6 +56,7 @@ $messages['af'] = array(
  * @author Juanpabl
  */
 $messages['an'] = array(
+	'emergencydesysop-submit' => 'Ninviar',
 	'emergencydesysop-nogroups' => 'Garra',
 );
 
