@@ -380,7 +380,10 @@ $j(document).ready( function() {
 		},
 		delay: 120,
 		positionFromLeft: $j( 'body' ).is( '.rtl' )
-	} );
+	} )
+		.bind( 'paste cut click', function() {
+			$j( this ).trigger( 'keypress' );
+		} );
 	$j( '#searchInput' ).suggestions( {
 		result: {
 			select: function( $textbox ) {
@@ -415,5 +418,8 @@ $j(document).ready( function() {
 			}
 		},
 		$region: $j( '#simpleSearch' )
-	} );
+	} )
+		.bind( 'paste cut click', function() {
+			$j( this ).trigger( 'keypress' );
+		} );
 });
