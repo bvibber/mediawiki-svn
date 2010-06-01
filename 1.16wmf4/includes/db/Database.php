@@ -527,7 +527,10 @@ abstract class DatabaseBase {
 				$sqlx = strtr( $sqlx, "\t\n", '  ' );
 				global $wgRequestTime;
 				$elapsed = round( microtime(true) - $wgRequestTime, 3 );
-				wfLogDBError( "Connection lost and reconnected after {$elapsed}s, query: $sqlx\n" );
+				if ($elapsed < 300 ) {
+					# Not a database error to lose transaction after a minute or two
+					wfLogDBError( "Connection lost and reconnected after {$elapsed}s, query: $sqlx\n" );
+				}
 				$ret = $this->doQuery( $commentedSql );
 			} else {
 				wfDebug( "Failed\n" );
