@@ -419,13 +419,13 @@ class CategoryTree {
 		$namespaces = $this->getOption('namespaces');
 
 		if ( $inverse ) {
-			$ctJoinCond = ' cl_to = cat.page_title AND cat.page_namespace = ' . NS_CATEGORY;
+			$ctJoinCond = ' ON cl_to = cat.page_title AND cat.page_namespace = ' . NS_CATEGORY;
 			$ctWhere = ' cl_from = ' . $title->getArticleId();
 			$ctJoin = ' RIGHT JOIN ';
 			$nsmatch = '';
 		}
 		else {
-			$ctJoinCond = ' cl_from = cat.page_id ';
+			$ctJoinCond = ' FORCE INDEX (cl_sortkey) ON cl_from = cat.page_id ';
 			$ctWhere = ' cl_to = ' . $dbr->addQuotes( $title->getDBkey() );
 			$ctJoin = ' JOIN ';
 
@@ -467,7 +467,7 @@ class CategoryTree {
 					  $transFields
 					  $countFields
 				FROM $page as cat
-				$ctJoin $categorylinks ON $ctJoinCond
+				$ctJoin $categorylinks $ctJoinCond
 				$transJoin
 				$countJoin
 				WHERE $ctWhere
