@@ -150,7 +150,7 @@ CategoryTests
 url = http://www.mediawiki.org/wiki/Extension:CategoryTests
 
 CategoryTree
-settings[] = wgCategoryTreeMaxChildren: int, wgCategoryTreeMaxChildren: int,
+settings[] = wgCategoryTreeMaxChildren: int, wgCategoryTreeMaxScanRows: int,
 settings[] = wgCategoryTreeAllowTag: bool, wgCategoryTreeDisableCache: bool
 settings[] = wgCategoryTreeDynamicTag: bool, wgCategoryTreeHTTPCache: bool
 settings[] = wgCategoryTreeForceHeaders: bool, wgCategoryTreeSidebarRoot: text
