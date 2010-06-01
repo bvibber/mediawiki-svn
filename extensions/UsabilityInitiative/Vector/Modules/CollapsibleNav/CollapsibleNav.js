@@ -23,10 +23,14 @@ $j(document).ready( function() {
 			} else {
 				$j(this).addClass( 'collapsed' );
 			}
+			// Re-save cookie
+			if ( state != null ) {
+				$j.cookie( 'vector-nav-' + $j(this).attr( 'id' ), state, { expires: 30 } );
+			}
 		} );
 	// Use the same function for all navigation headings - don't repeat yourself
 	function toggle( $element ) {
-		$j.cookie( 'vector-nav-' + $element.parent().attr( 'id' ), $element.parent().is( '.collapsed' ) );
+		$j.cookie( 'vector-nav-' + $element.parent().attr( 'id' ), $element.parent().is( '.collapsed' ), { expires: 30 } );
 		$element
 			.parent()
 			.toggleClass( 'expanded' )
