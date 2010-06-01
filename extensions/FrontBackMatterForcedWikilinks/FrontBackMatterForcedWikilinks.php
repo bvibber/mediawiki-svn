@@ -16,19 +16,20 @@
 # Alert the user that this is not a valid entry point to MediaWiki if they try to access the
 #	special pages file directly.
 if (!defined('MEDIAWIKI')) {
-        echo <<<EOT
+	echo <<<EOT
 To install the Front and Back Matter and Forced Wikilinks extension, put the following line in LocalSettings.php:
 require_once( "\$IP/extensions/FrontBackMatterForcedWikilinks/FrontBackMatterForcedWikilinks.php" );
 EOT;
-        exit( 1 );
+	exit( 1 );
 }
 
 $wgExtensionCredits['parserhook'][] = array(
+	'path' => __FILE__,
 	'name' => 'Front and Back Matter and Forced Wikilinks',
 	'author' => 'Tisane',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:FrontBackMatterForcedWikilinks',
 	'description' => 'Prepends front matter and appends back matter to pages and implements forced wikilinks',
-	'descriptionmsg' => 'FrontBackForced-desc',
+	'descriptionmsg' => 'frontbackforced-desc',
 	'version' => '1.0.0',
 );
 
@@ -39,18 +40,18 @@ $wgHooks['ParserBeforeStrip'][] = 'FrontBackForcedParserBeforeStripHook';
 $wgHooks['ArticleSaveComplete'][] = 'FrontBackForcedArticleSaveCompleteHook';
 
 function FrontBackForcedParserBeforeStripHook( &$parser, &$text, &$strip_state ) {
-        global $wgLang;
-        $frontMsg=wfMsg( 'frontbackforced-front');
-        $backMsg=wfMsg( 'frontbackforced-back');
-        $forcedMsg=wfMsg( 'frontbackforced-forced');
-        wfLoadExtensionMessages('FrontBackMatterForcedWikilinks');
+	global $wgLang;
+	wfLoadExtensionMessages('FrontBackMatterForcedWikilinks');
+	$frontMsg=wfMsgForContent( 'frontbackforced-front' );
+	$backMsg=wfMsgForContent( 'frontbackforced-back' );
+	$forcedMsg=wfMsgForContent( 'frontbackforced-forced' );
 	$dbr = wfGetDB( DB_SLAVE );
 	$title=$parser->getTitle();
 	if( $title->getNamespace() == NS_SPECIAL
 		|| $title->getNamespace() == NS_MEDIA
 		|| $title->getNamespace() == NS_FILE
 		|| $title->isExternal()) {
-		    return true;
+			return true;
 		}
 	$myRevision=Revision::loadFromTitle($dbr,$title);
 	if ($myRevision!=null){
@@ -68,49 +69,49 @@ function FrontBackForcedParserBeforeStripHook( &$parser, &$text, &$strip_state )
 				$backMatterText=$backMatterRev->getRawText();
 				$text=$text.$backMatterText;
 			}
-                        $forcedMatterTitle=Title::newFromDBkey($title->getPrefixedDBkey().$forcedMsg);
+			$forcedMatterTitle=Title::newFromDBkey($title->getPrefixedDBkey().$forcedMsg);
 			$forcedMatterRev=Revision::loadFromTitle($dbr,$forcedMatterTitle);
 			if ($forcedMatterRev!=null){
 				$forcedMatterText=$forcedMatterRev->getRawText();
-                                $strPosition=0;
-                                $endPosition=0;
-                                $endSubstPosition=0;
-                                $thisCount=0;
+				$strPosition=0;
+				$endPosition=0;
+				$endSubstPosition=0;
+				$thisCount=0;
 				while (1){
-                                    $oldStrPosition=$strPosition;
-                                    $strPosition=strpos($forcedMatterText,'>',$strPosition);
-                                    if ($strPosition===false || $strPosition<=$oldStrPosition && $thisCount>0){
-                                        break;
-                                    }
-                                    $oldEndPosition=$endPosition;
-                                    $endPosition=strpos($forcedMatterText,'<',$strPosition);
-                                    if ($endPosition===false || $endPosition<=$oldEndPosition && $thisCount>0){
-                                        break;
-                                    }
-                                    $wfyText=substr($forcedMatterText,$strPosition+1,$endPosition-$strPosition-1);
-                                    $oldEndSubstPosition=$endSubstPosition;
-                                    $endSubstPosition=strpos($forcedMatterText,'#',$endPosition);
-                                    if ($endSubstPosition===false || $endSubstPosition-$endPosition==1 || $endSubstPosition<=$oldEndSubstPosition  && $thisCount>0){
-                                        $wfyToText=$wfyText;
-                                    } else {
-                                        $wfyToText=substr($forcedMatterText,$endPosition+1,$endSubstPosition-$endPosition-1);
-                                    }
-                                    $articleStartPos=strpos($text,$wfyText);
-                                    $continueThis=true;
-                                    if ($articleStartPos===false){
-                                        $continueThis=false;
-                                    }
-                                    if ($articleStartPos>2){
-                                        if (substr($text,$articleStartPos-2,2)=='[['){
-                                            $continueThis=false;
-                                        }
-                                    }
-                                    if ($continueThis==true){
-                                        $text=substr($text,0,$articleStartPos).'[['.$wfyToText.'|'.$wfyText.']]'.substr($text,$articleStartPos+strlen($wfyText),strlen($text)-$articleStartPos-strlen($wfyText));
-                                    }
-                                    $thisCount++;
-                                    $strPosition++;
-                                }
+					$oldStrPosition=$strPosition;
+					$strPosition=strpos($forcedMatterText,'>',$strPosition);
+					if ($strPosition===false || $strPosition<=$oldStrPosition && $thisCount>0){
+						break;
+					}
+					$oldEndPosition=$endPosition;
+					$endPosition=strpos($forcedMatterText,'<',$strPosition);
+					if ($endPosition===false || $endPosition<=$oldEndPosition && $thisCount>0){
+						break;
+					}
+					$wfyText=substr($forcedMatterText,$strPosition+1,$endPosition-$strPosition-1);
+					$oldEndSubstPosition=$endSubstPosition;
+					$endSubstPosition=strpos($forcedMatterText,'#',$endPosition);
+					if ($endSubstPosition===false || $endSubstPosition-$endPosition==1 || $endSubstPosition<=$oldEndSubstPosition  && $thisCount>0){
+						$wfyToText=$wfyText;
+					} else {
+						$wfyToText=substr($forcedMatterText,$endPosition+1,$endSubstPosition-$endPosition-1);
+					}
+					$articleStartPos=strpos($text,$wfyText);
+					$continueThis=true;
+					if ($articleStartPos===false){
+						$continueThis=false;
+					}
+					if ($articleStartPos>2){
+						if (substr($text,$articleStartPos-2,2)=='[['){
+							$continueThis=false;
+						}
+					}
+					if ($continueThis==true){
+						$text=substr($text,0,$articleStartPos).'[['.$wfyToText.'|'.$wfyText.']]'.substr($text,$articleStartPos+strlen($wfyText),strlen($text)-$articleStartPos-strlen($wfyText));
+					}
+					$thisCount++;
+					$strPosition++;
+				}
 			}
 		}
 	}
@@ -119,30 +120,30 @@ function FrontBackForcedParserBeforeStripHook( &$parser, &$text, &$strip_state )
 }
 
 function FrontBackForcedArticleSaveCompleteHook (&$article, &$user, $text, $summary,
-	      $minoredit, $watchthis, $sectionanchor, &$flags, $revision, &$status, $baseRevId ){
-        global $wgLang;
-        wfLoadExtensionMessages('FrontBackMatterForcedWikilinks');
-	$frontMsg=wfMsg( 'frontbackforced-front');
-        $backMsg=wfMsg( 'frontbackforced-back');
-        $forcedMsg=wfMsg( 'frontbackforced-forced');
-        $myTitle=$article->getTitle()->getPrefixedDBkey();
+		$minoredit, $watchthis, $sectionanchor, &$flags, $revision, &$status, $baseRevId ){
+	global $wgLang;
+	wfLoadExtensionMessages('FrontBackMatterForcedWikilinks');
+	$frontMsg=wfMsgForContent( 'frontbackforced-front' );
+	$backMsg=wfMsgForContent( 'frontbackforced-back' );
+	$forcedMsg=wfMsgForContent( 'frontbackforced-forced' );
+	$myTitle=$article->getTitle()->getPrefixedDBkey();
 	if (substr($myTitle,strlen($myTitle)-strlen($frontMsg),strlen($frontMsg))==$frontMsg){
-            $frontBaseTitle=Title::newFromDBkey(substr($myTitle,0,strlen($myTitle)-strlen($frontMsg)));
-            $frontBaseTitle->invalidateCache();
-            Article::onArticleCreate($frontBaseTitle);
-            Article::onArticleEdit($frontBaseTitle);
+		$frontBaseTitle=Title::newFromDBkey(substr($myTitle,0,strlen($myTitle)-strlen($frontMsg)));
+		$frontBaseTitle->invalidateCache();
+		Article::onArticleCreate($frontBaseTitle);
+		Article::onArticleEdit($frontBaseTitle);
 	}
-        if (substr($myTitle,strlen($myTitle)-strlen($backMsg),strlen($backMsg))==$backMsg){
-            $backBaseTitle=Title::newFromDBkey(substr($myTitle,0,strlen($myTitle)-strlen($backMsg)));
-            $backBaseTitle->invalidateCache();
-            Article::onArticleCreate($backBaseTitle);
-            Article::onArticleEdit($backBaseTitle);
+	if (substr($myTitle,strlen($myTitle)-strlen($backMsg),strlen($backMsg))==$backMsg){
+		$backBaseTitle=Title::newFromDBkey(substr($myTitle,0,strlen($myTitle)-strlen($backMsg)));
+		$backBaseTitle->invalidateCache();
+		Article::onArticleCreate($backBaseTitle);
+		Article::onArticleEdit($backBaseTitle);
 	}
-        if (substr($myTitle,strlen($myTitle)-strlen($forcedMsg),strlen($forcedMsg))==$forcedMsg){
-            $forcedBaseTitle=Title::newFromDBkey(substr($myTitle,0,strlen($myTitle)-strlen($forcedMsg)));
-            $forcedBaseTitle->invalidateCache();
-            Article::onArticleCreate($forcedBaseTitle);
-            Article::onArticleEdit($forcedBaseTitle);
+	if (substr($myTitle,strlen($myTitle)-strlen($forcedMsg),strlen($forcedMsg))==$forcedMsg){
+		$forcedBaseTitle=Title::newFromDBkey(substr($myTitle,0,strlen($myTitle)-strlen($forcedMsg)));
+		$forcedBaseTitle->invalidateCache();
+		Article::onArticleCreate($forcedBaseTitle);
+		Article::onArticleEdit($forcedBaseTitle);
 	}
-        return true;
+	return true;
 }
