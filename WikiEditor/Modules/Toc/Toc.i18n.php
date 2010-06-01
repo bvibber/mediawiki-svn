@@ -578,6 +578,14 @@ $messages['sl'] = array(
 	'wikieditor-toc-hide' => 'Skrij vsebino',
 );
 
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'wikieditor-toc-show' => 'Покажи садржај',
+	'wikieditor-toc-hide' => 'Сакриј садржај',
+);
+
 /** Swedish (Svenska)
  * @author Boivie
  */

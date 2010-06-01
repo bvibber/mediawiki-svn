@@ -1633,7 +1633,7 @@ Per aiutarci a migliorarle, per favore riempi il seguente questionario facoltati
  * @author 青子守歌
  */
 $messages['ja'] = array(
-	'prefswitch' => 'ユーザビリティイニシアティブ設定スイッチ',
+	'prefswitch' => '使用性改善の設定スイッチ',
 	'prefswitch-desc' => '利用者が個人設定の組み合わせを切り替えられるようにする',
 	'prefswitch-survey-true' => 'はい',
 	'prefswitch-survey-false' => 'いいえ',
@@ -2575,6 +2575,20 @@ Vrnitev na <span class="plainlinks">[$1 $2]</span>.',
 Prosimo, izpolnite neobvezno anketo spodaj, preden kliknete »[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]«.',
 	'prefswitch-survey-intro-off' => 'Zahvaljujemo se vam za preizkušanje naših novih funkcij.
 Da nam jih pomagate izboljšati, prosimo izpolnite neobvezno anketo spodaj, preden kliknete »[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]«.',
+);
+
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'prefswitch-survey-true' => 'Да',
+	'prefswitch-survey-false' => 'Не',
+	'prefswitch-survey-question-browser' => 'Који браузер користите?',
+	'prefswitch-survey-question-os' => 'Који оперативни систем користите?',
+	'prefswitch-survey-answer-os-other' => 'Други оперативни систем:',
+	'prefswitch-survey-question-res' => 'Која је резолуција Вашег екрана?',
+	'prefswitch-title-switched-on' => 'Уживајте!',
+	'prefswitch-title-switched-off' => 'Хвала',
 );
 
 /** Swedish (Svenska)

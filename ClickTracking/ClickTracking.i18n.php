@@ -931,7 +931,7 @@ $messages['it'] = array(
  * @author 青子守歌
  */
 $messages['ja'] = array(
-	'clicktracking' => 'Usability Initiative クリック追跡',
+	'clicktracking' => '使用性改善のクリック追跡',
 	'clicktracking-desc' => 'クリック追跡：ページの再描画を引き起こさないイベントを追跡記録する機能',
 	'ct-title' => '利用者クリック集計',
 	'ct-event-name' => 'イベント名',
@@ -1628,6 +1628,27 @@ $messages['sl'] = array(
 	'clicktracking-desc' => 'Sledenje klikom, namenjeno odkrivanju dogodkov, ki preprečujejo osvežitev strani med urejanjem',
 	'ct-anon-users' => 'Brezimni uporabniki',
 	'ct-and' => 'in',
+);
+
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'ct-expert-header' => 'Кликови "експерата"',
+	'ct-intermediate-header' => 'Кликови "напредних"',
+	'ct-beginner-header' => 'Кликови "почетника"',
+	'ct-total-header' => 'Укупно кликова',
+	'ct-start-date' => 'Почетни датум (YYYYMMDD)',
+	'ct-end-date' => 'Крајњи датум (YYYYMMDD)',
+	'ct-beginner' => 'Почетник',
+	'ct-intermediate' => 'Напредни',
+	'ct-expert' => 'Експерт',
+	'ct-date-range' => 'Опсег датума',
+	'ct-editing' => 'Тренутно мења:',
+	'ct-anon-users' => 'Анонимни корисници',
+	'ct-user-contribs' => 'Укупно корисничких доприноса',
+	'ct-and' => 'и',
+	'ct-update-table' => 'Ажурирај табелу',
 );
 
 /** Swedish (Svenska)

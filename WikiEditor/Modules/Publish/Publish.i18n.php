@@ -998,6 +998,17 @@ $messages['sl'] = array(
 	'wikieditor-publish-dialog-goback' => 'Pojdi nazaj',
 );
 
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'wikieditor-publish-button-publish' => 'Објави',
+	'wikieditor-publish-button-cancel' => 'Поништи',
+	'wikieditor-publish-dialog-minor' => 'Мала измена',
+	'wikieditor-publish-dialog-publish' => 'Објави',
+	'wikieditor-publish-dialog-goback' => 'Врати се',
+);
+
 /** Swedish (Svenska)
  * @author Boivie
  */

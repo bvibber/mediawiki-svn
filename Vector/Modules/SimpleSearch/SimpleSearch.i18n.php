@@ -230,7 +230,7 @@ $messages['eu'] = array(
  */
 $messages['fa'] = array(
 	'vector-simplesearch-search' => 'جستجو',
-	'vector-simplesearch-containing' => '...صفحه‌های دربردارنده',
+	'vector-simplesearch-containing' => 'صفحه‌های دربردارنده...',
 );
 
 /** Finnish (Suomi)

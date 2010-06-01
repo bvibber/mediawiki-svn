@@ -2961,15 +2961,15 @@ Per sapere altro sull'Iniziativa per l'Usabilità, visita il nostro [http://usab
  * @author 青子守歌
  */
 $messages['ja'] = array(
-	'optin' => 'ユーザビリティー改善への参加',
-	'optin-desc' => 'ユーザビリティ改善プロジェクトによる最新のユーザビリティー改善案のベータ版の試用を可能にする',
+	'optin' => '使用性改善への参加',
+	'optin-desc' => '使用性改善プロジェクトによる最新の使用性改善案のベータ版の試用を可能にする',
 	'optin-title-optedout' => 'ベータ版を試す',
 	'optin-title-optedin' => 'ベータ版をやめる',
 	'optin-title-justoptedin' => 'ベータ版にようこそ',
 	'optin-title-justoptedout' => 'ベータ版をお試しいただきありがとうございます',
 	'optin-title-feedback' => 'フィードバックしてください',
 	'optin-needlogin' => 'ベータ版を試すには[$1 ログイン]する必要があります。',
-	'optin-intro' => 'ウィキペディア・ユーザビリティ改善プロジェクトでは、ウィキペディアの使いやすさを改善するために活動しています。ベータ版を試してみませんか？',
+	'optin-intro' => 'Wikipedia Usability Initiativeでは、ウィキペディアの使いやすさを改善するために活動しています。ベータ版を試してみませんか？',
 	'optin-feedback-intro' => 'ベータ版をお試しいただきありがとうございます。よろしければこの新しいインタフェースについてご意見をお聞かせください。以下の任意調査にご協力いただければ幸いです。',
 	'optin-feedback-back' => '調査表への記入を望まない場合は、$1 へお戻りください。',
 	'optin-success-in' => 'ベータ版を試用しています。ページ上部の「{{int:optin-leave}}」のリンクをクリックすると、いつでも試用をやめることができます。',
@@ -3030,7 +3030,7 @@ $messages['ja'] = array(
 ;それだけではありません
 :他にも使いやすくなったナビゲーション、縦方向のタブ、検索機能の強化などなど、多くの改善を行ないました。
 ==改善にご協力ください==
-ユーザビリティイニシアティブについて、ぜひ[http://usability.wikimedia.org/wiki/Wikipedia_Usability_Initiative ホームページ]をご覧ください。 
+使用性改善について、ぜひ[http://usability.wikimedia.org/wiki/Wikipedia_Usability_Initiative ホームページ]をご覧ください。 
 <div style="clear:both"></div>',
 );
 

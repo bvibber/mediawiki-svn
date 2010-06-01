@@ -385,8 +385,8 @@ $messages['it'] = array(
  * @author 青子守歌
  */
 $messages['ja'] = array(
-	'usabilityinitiative' => 'ユーザビリティ・イニシアティブ',
-	'usabilityinitiative-desc' => 'ウィキペディア・ユーザビリティ・イニシアティブによって MediaWiki の使いやすさを向上させるために開発された各種機能',
+	'usabilityinitiative' => '使用性改善',
+	'usabilityinitiative-desc' => 'Wikipedia Usability Initiativeによって MediaWiki の使いやすさを向上させるために開発された各種機能',
 	'prefs-beta' => 'ベータ版機能',
 	'prefs-labs' => 'ラボの機能',
 );
