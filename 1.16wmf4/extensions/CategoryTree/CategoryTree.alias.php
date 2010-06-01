@@ -192,7 +192,7 @@ $aliases['ko'] = array(
 	'CategoryTree' => array( '분류트리' ),
 );
 
-/** Ripoarisch (Ripoarisch) */
+/** Colognian (Ripoarisch) */
 $aliases['ksh'] = array(
 	'CategoryTree' => array( 'Saachjruppeboum' ),
 );
@@ -214,7 +214,7 @@ $aliases['mk'] = array(
 
 /** Malayalam (മലയാളം) */
 $aliases['ml'] = array(
-	'CategoryTree' => array( 'വര്‍ഗ്ഗവൃക്ഷം' ),
+	'CategoryTree' => array( 'വർഗ്ഗവൃക്ഷം' ),
 );
 
 /** Marathi (मराठी) */
