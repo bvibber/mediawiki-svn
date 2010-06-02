@@ -37,7 +37,8 @@ PLUGINS := \
 	js/plugins/jquery.wikiEditor.publish.js\
 	js/plugins/jquery.wikiEditor.templateEditor.js\
 	js/plugins/jquery.wikiEditor.toc.js\
-	js/plugins/jquery.wikiEditor.toolbar.js
+	js/plugins/jquery.wikiEditor.toolbar.js\
+	js/thirdparty/contentCollector.js
 
 WIKIEDITOR_MODULES := \
 	WikiEditor/Modules/Highlight/Highlight.js\
