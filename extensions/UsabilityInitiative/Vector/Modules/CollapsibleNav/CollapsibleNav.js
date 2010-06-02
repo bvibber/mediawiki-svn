@@ -5,6 +5,29 @@ $j(document).ready( function() {
 	if( !wgVectorEnabledModules.collapsiblenav ) {
 		return true;
 	}
+	var mod = {
+		'browsers': {
+			// Left-to-right languages
+			'ltr': {
+				// Collapsible Nav is broken in Opera < 9.6
+				'opera': [['>=', 9.6]],
+				'blackberry': false,
+				'ipod': false,
+				'iphone': false
+			},
+			// Right-to-left languages
+			'rtl': {
+				'opera': [['>=', 9.6]],
+				'blackberry': false,
+				'ipod': false,
+				'iphone': false
+			}
+		}
+	};
+	if ( !$j.wikiEditor.isSupported( mod ) ) {
+		return true;
+	}
+	
 	$j( '#panel' ).addClass( 'collapsible-nav' );
 	// Always show the first portal
 	$j( '#panel > div.portal:first' )
