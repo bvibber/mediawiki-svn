@@ -108,3 +108,25 @@ class CachingDataTransclusionSource extends DataTransclusionSource {
     return $rec;
   }
 }
+
+class FakeDataTransclusionSource extends DataTransclusionSource {
+  function __construct( $spec, $data ) {
+    DataTransclusionSource::__construct( $spec );
+
+    $this->lookup = array();
+
+    $fields = $this->getKeyFields();
+    foreach ( $fields as $f ) {
+	$this->lookup[ $f ] = array();
+
+	foreach ( $data as $rec ) {
+	    $k = $rec[ $f ];
+	    $this->lookup[ $f ][ $k ] = $rec;
+	}
+    }
+  }
+
+  public function fetchRecord( $key, $value ) {
+    return @$this->lookup[ $key ][ $value ];
+  }
+}

@@ -30,6 +30,7 @@ $wgAutoloadClasses['DataTransclusionRenderer'] = $dir. 'DataTransclusionRenderer
 $wgAutoloadClasses['DataTransclusionHandler'] = $dir. 'DataTransclusionHandler.php';
 $wgAutoloadClasses['DataTransclusionSource'] = $dir. 'DataTransclusionSource.php';
 $wgAutoloadClasses['CachingDataTransclusionSource'] = $dir. 'DataTransclusionSource.php';
+$wgAutoloadClasses['FakeDataTransclusionSource'] = $dir. 'DataTransclusionSource.php';
 $wgAutoloadClasses['DBDataTransclusionSource'] = $dir. 'DBDataTransclusionSource.php';
 #$wgAutoloadClasses['WAPIDataTransclusionSource'] = $dir. 'WAPIDataTransclusionSource.php';
 
