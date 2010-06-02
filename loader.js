@@ -50,7 +50,8 @@ var mwEnabledModuleList = [
 	'EmbedPlayer',
 	'ApiProxy',
 	'Sequencer',
-	'TimedText'
+	'TimedText',
+	'SwarmTransport'
 ];
 
 /**

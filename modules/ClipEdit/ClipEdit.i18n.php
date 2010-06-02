@@ -47,7 +47,9 @@ $messages['af'] = array(
 	'mwe-clipedit-other_properties' => 'Ander eienskappe',
 	'mwe-clipedit-start_time' => 'Begintyd',
 	'mwe-clipedit-end_time' => 'Eindtyd',
+	'mwe-clipedit-inline-description' => 'Byskrif',
 	'mwe-clipedit-duration' => 'Duur:',
+	'mwe-clipedit-layout' => 'Uitleg',
 );
 
 $messages['ar'] = array(
