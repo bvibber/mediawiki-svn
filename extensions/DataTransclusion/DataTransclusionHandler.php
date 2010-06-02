@@ -113,6 +113,9 @@ class DataTransclusionHandler {
 	    $t = Title::newFromText( $template, NS_TEMPLATE );
 	    if ( empty( $t ) ) return DataTransclusionHandler::errorMessage( 'datatransclusion-bad-template-name', $asHTML, $template );
 
+	    //FIXME: log the template we used into the parser output, like regular template use 
+	    //       (including templates used by the template, etc)
+
 	    $handler = new DataTransclusionHandler( $parser, $source, $t );
 
 	    $record = $handler->normalizeRecord( $record );
