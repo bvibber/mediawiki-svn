@@ -27,7 +27,7 @@ class PageByRenderer {
 	var $showfirst;
 	var $showcomments;
 
-	function __construct( $page, $argv, &$parser ) {
+	function __construct( $page, $argv, $parser ) {
 		global $wgTitle;
 
 		$this->parser = $parser;

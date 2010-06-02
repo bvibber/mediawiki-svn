@@ -54,7 +54,7 @@ class NewsRenderer {
 	var $pubtrigger; //word to use in summaries to trigger publication
 	var $permalinks; //wether to force permalinks in feeds, even in publication mode
 
-	static function newFromArticle( &$article, &$parser ) {
+	static function newFromArticle( $article, $parser ) {
 		$title = $article->getTitle();
 		$article->getContent(); 
 		$text = $article->mContent;
@@ -78,7 +78,7 @@ class NewsRenderer {
 		return null;
 	}
 
-	function __construct( $title, $templatetext, $argv, &$parser ) {
+	function __construct( $title, $templatetext, $argv, $parser ) {
 		global $wgContLang, $wgUser;
 
 		$this->title = $title;
@@ -611,7 +611,7 @@ class NewsRenderer {
 		return $url;
 	}
 
-	static function renderFeedLink( $text, $argv, &$parser ) {
+	static function renderFeedLink( $text, $argv, $parser ) {
 		$t = @$argv['feed'];
 		if ($t) $t = NewsRenderer::replaceVariables( $parser, $t );
 

@@ -40,7 +40,7 @@ class DataTransclusionHandler {
     * Entry point for the {{#record}} parser function.
     * This is a wrapper around handleRecordTag
     */
-    static function handleRecordFunction ( &$parser ) {
+    static function handleRecordFunction ( $parser ) {
 	    $params = func_get_args();
 	    array_shift( $params ); // first is &$parser, strip it
 
@@ -132,7 +132,7 @@ class DataTransclusionHandler {
 	    }
     }
 
-    static function renderTemplate( &$parser, $title, $record ) {
+    static function renderTemplate( $parser, $title, $record ) {
 	    $p = new Article( $title );
 	    if ( !$p->exists() ) return false;
 

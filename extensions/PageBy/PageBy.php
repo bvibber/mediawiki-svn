@@ -33,7 +33,7 @@ function wfPageByExtension() {
     $wgParser->setHook( "pageby", "newsxRenderPageBy" );
 }
 
-function newsxRenderPageBy( $page, $argv, &$parser ) {
+function newsxRenderPageBy( $page, $argv, $parser ) {
     $renderer = new PageByRenderer($page, $argv, $parser);
     return $renderer->renderPageBy();
 }

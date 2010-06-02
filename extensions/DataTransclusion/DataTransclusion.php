@@ -36,7 +36,7 @@ $wgHooks['ParserFirstCallInit'][] = 'efDataTransclusionSetHooks';
 
 $wgDataTransclusionSources = array();
 
-function efDataTransclusionSetHooks( &$parser ) {
+function efDataTransclusionSetHooks( $parser ) {
 	$parser->setHook( 'record' , 'DataTransclusionHandler::handleRecordTag' );
 	$parser->setFunctionHook( 'record' , 'DataTransclusionHandler::handleRecordFunction' ); #FIXME: this doesn't work.
 	return true;
