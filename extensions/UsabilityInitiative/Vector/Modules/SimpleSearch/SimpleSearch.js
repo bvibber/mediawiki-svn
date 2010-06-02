@@ -57,6 +57,11 @@ $j(document).ready( function() {
 				$j(this).parent().find( 'label' ).fadeIn( 100 );
 			}
 		})
+		.bind( 'keypress', function() {
+			// just in case the text field was focus before our handler was bound to it
+			if ( $j(this).parent().find( 'label:visible' ).size() > 0 )
+				$j(this).parent().find( 'label' ).fadeOut( 100 );
+		})
 		.focus( function() {
 			$j(this).parent().find( 'label' ).fadeOut( 100 );
 		})
