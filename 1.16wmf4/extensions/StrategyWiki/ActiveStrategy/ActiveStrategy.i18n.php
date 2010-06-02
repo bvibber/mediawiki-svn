@@ -5,6 +5,7 @@ $messages['en'] = array(
 	'activestrategy' => 'Active Strategy',
 	'active-strategy-desc' => 'Shows number of edits to strategic planning pages',
 	'active-strategy-intro' => 'Number of edits to task force pages in the last {{PLURAL:$1|$1 day|$1 days}}.',
+	'nedits' => '$1 {{PLURAL:$1|edit|edits}}',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
@@ -25,6 +26,14 @@ $messages['br'] = array(
 	'activestrategy' => 'Strolladoù labour oberient',
 	'active-strategy-desc' => 'Diskwel a ra an niver a wezhioù eo bet kemmet pajennoù ar strollad labour',
 	'active-strategy-intro' => 'Niver a gemm pajennoù evit ar strollad labour e-kerzh an {{PLURAL:$1|devezh ziwezhañ|$1 zevezh ziwezhañ}}.',
+);
+
+/** Czech (Česky)
+ * @author Mormegil
+ */
+$messages['cs'] = array(
+	'active-strategy-desc' => 'Zobrazuje počty editací stránek plánování strategie',
+	'active-strategy-intro' => 'Počet editací stránek pracovních skupin za {{PLURAL:$1|poslední den|poslední $1 dny|posledních $1 dní}}.',
 );
 
 /** German (Deutsch)
@@ -118,6 +127,13 @@ $messages['ja'] = array(
 	'activestrategy' => '活動中の特別チーム',
 	'active-strategy-desc' => 'タスクフォースのページ数を表示',
 	'active-strategy-intro' => '最近$1日間に特別チームのページに加えられた編集回数',
+);
+
+/** Georgian (ქართული)
+ * @author ITshnik
+ */
+$messages['ka'] = array(
+	'activestrategy' => 'აქტიური სტრატეგია',
 );
 
 /** Korean (한국어)

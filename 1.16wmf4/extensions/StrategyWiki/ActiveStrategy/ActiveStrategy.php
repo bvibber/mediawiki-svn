@@ -22,3 +22,15 @@ $wgAutoloadClasses['ActiveStrategyPF'] = $dir."ParserFunctions.php";
  * Period for edit counts, in seconds
  */
 $wgActiveStrategyPeriod = 7 * 86400;
+
+/**
+ * Colors to display task forces/proposals in.
+ * First looks for the specific sort field, otherwise looks at default.
+ */
+$wgActiveStrategyColors = array(
+	'default' => array(
+		0 => 'F00',
+		1 => 'FF0',
+		5 => 'AEA',
+	),
+);

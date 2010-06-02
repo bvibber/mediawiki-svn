@@ -2,7 +2,7 @@
 
 class ActiveStrategyPF {
 	static function activityTag( $str, $args, $parser ) {
-		return ActiveStrategy::getOutput();
+		return ActiveStrategy::getOutput( $args );
 	}
 	
 	static function setup( $parser ) {
