@@ -32,7 +32,7 @@ $wgAutoloadClasses['DataTransclusionSource'] = $dir. 'DataTransclusionSource.php
 $wgAutoloadClasses['CachingDataTransclusionSource'] = $dir. 'DataTransclusionSource.php';
 $wgAutoloadClasses['FakeDataTransclusionSource'] = $dir. 'DataTransclusionSource.php';
 $wgAutoloadClasses['DBDataTransclusionSource'] = $dir. 'DBDataTransclusionSource.php';
-#$wgAutoloadClasses['WAPIDataTransclusionSource'] = $dir. 'WAPIDataTransclusionSource.php';
+$wgAutoloadClasses['WebDataTransclusionSource'] = $dir. 'WebDataTransclusionSource.php';
 
 $wgHooks['ParserFirstCallInit'][] = 'efDataTransclusionSetHooks';
 
