@@ -52,7 +52,7 @@ class DataTransclusionHandler {
 	    // build associative arguments from flat parameter list
 	    $argv = DataTransclusionHandler::buildAssociativeArguments( $params );
 
-	    // now handle just like a <record> tag
+	    //FIXME: error messages contining special blocks like <nowiki> don't get re-substitutet correctly.
 	    $text = DataTransclusionHandler::handleRecordTag( null, $argv, $parser, false );
 	    return array( $text, 'noparse' => false, 'isHTML' => false );
     }
@@ -162,7 +162,7 @@ class DataTransclusionHandler {
 	    if ( !$p->exists() ) return false;
 
 	    $text = $p->getContent(); 
-	    $text = $parser->replaceVariables( $text, $record );
+	    $text = $parser->replaceVariables( $text, $record, true );
 
 	    return $text;
     }
