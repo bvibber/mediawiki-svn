@@ -24,7 +24,7 @@ $wgExtensionCredits['other'][] = array(
 
 $dir = dirname(__FILE__) . '/';
 $wgExtensionMessagesFiles['DataTransclusion'] = $dir . 'DataTransclusion.i18n.php';
-$wgExtensionMessagesFiles['DataTransclusion'] = $dir . 'DataTransclusion.i18n.magic.php';
+$wgExtensionMessagesFiles['DataTransclusionMagic'] = $dir . 'DataTransclusion.i18n.magic.php';
 
 $wgAutoloadClasses['DataTransclusionRenderer'] = $dir. 'DataTransclusionRenderer.php';
 $wgAutoloadClasses['DataTransclusionHandler'] = $dir. 'DataTransclusionHandler.php';
