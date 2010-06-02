@@ -133,18 +133,37 @@ class DataTransclusionHandler {
     }
 
     static function renderTemplate( $parser, $title, $record ) {
+	    //XXX: use cached & preparsed template. $template doesn't have the right type, it seems
+	    /*
+	    list( $text, $title ) = $parser->getTemplateDom( $title );
+	    $frame = $parser->getPreprocessor()->newCustomFrame( $record );
+	    $text = $frame->expand( $template );
+	    */
+
+	    //XXX: trying another way. but $piece['parts'] needs to be a PPNode. how to do that?
+	    /*
+	    $frame = $parser->getPreprocessor()->newCustomFrame( $record );
+
+	    $piece = array();
+
+	    if ( $title->getNamespace() == NS_TEMPLATE ) $n = "";
+	    else $n = $title->getNsText() . ":";
+
+	    $piece ['title'] = $n . $title->getText();
+	    $piece['parts'] = $record;
+	    $piece['lineStart'] = false; //XXX: ugly. can't know here whether the brace was at the start of a line
+
+	    $ret = $parser->braceSubstitution( $piece, $frame );
+	    $text = $ret[ 'text' ];
+	    */
+
+	    //dumb and slow, but works
 	    $p = new Article( $title );
 	    if ( !$p->exists() ) return false;
 
 	    $text = $p->getContent(); 
 	    $text = $parser->replaceVariables( $text, $record );
 
-	    //FIXME: use cached & preparsed template. figure out how to...
-	    /*
-	    list( $text, $title ) = $parser->getTemplateDom( $title );
-	    $frame = $parser->getPreprocessor()->newCustomFrame( $record );
-	    $text = $frame->expand( $template );
-	    */
 	    return $text;
     }
 
