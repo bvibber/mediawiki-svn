@@ -273,7 +273,7 @@ class ScriptLoaderOutputPage extends OutputPage {
 	 * 		'bucket' String: Script-loader grouping string
 	 */
 	public function addStyleClass( $cssClass , $options = array()) {
-		global $wgExtensionAssetsPath;
+		global $wgExtensionAssetsPath, $wgScriptPath;
 		// Build the bucket key with supplied options
 
 
@@ -292,7 +292,8 @@ class ScriptLoaderOutputPage extends OutputPage {
 		if( $this->isScriptGroupingEnabled() ) {
 			$this->addScriptClass( $cssClass, $bucketKey, 'css');
 		} else {
-			$stylePath = jsScriptLoader::getPathFromClass( $cssClass );
+			$stylePath = $wgScriptPath . '/' .  jsScriptLoader::getPathFromClass( $cssClass );
+
 			// Else use normal styles output
 			//( unfortunately $this->styles appends /skins ) so use addLink
 			$this->addLink(
