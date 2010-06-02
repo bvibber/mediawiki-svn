@@ -7,7 +7,19 @@
 ini_set( 'display_errors', false);
 header('Content-type: application/x-php-serialized');
 
-$data = runAction( "http://svn.wikimedia.org/svnroot/mediawiki" );
+$allowedBases = array(
+	'http://svn.wikimedia.org/svnroot/mediawiki',
+	'http://svn.wikimedia.org/svnroot/pywikipedia',
+	'http://svn.wikimedia.org/svnroot/mysql',
+);
+
+$base = inputStr( 'base', $allowedBases[0] );
+if ( !in_array( $base, $allowedBases ) ) {
+	echo serialize( false );
+	exit;
+}
+
+$data = runAction( $base );
 echo serialize( $data );
 
 function inputStr( $key, $default=null ) {
