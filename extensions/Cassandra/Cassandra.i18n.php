@@ -102,6 +102,13 @@ $messages['ja'] = array(
 	'cassandra-desc' => '[http://cassandra.apache.org/ Apache Cassandra]データベースの版テキストを格納する',
 );
 
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'cassandra-desc' => '[http://cassandra.apache.org/ Apache Cassandra] 데이터베이스에 편집 내용을 저장',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

@@ -117,6 +117,17 @@ $messages['es'] = array(
 	'replaceset-error-regexbadmodifier' => "El modificador de expresión regular '$1' es inválido.",
 );
 
+/** Finnish (Suomi)
+ * @author Centerlink
+ * @author Crt
+ */
+$messages['fi'] = array(
+	'replaceset-desc' => 'Lisää <nowiki>{{#replaceset}}</nowiki>-jäsenninfunktion, jota käytetään tekstilohkojen korvaamiseen muotoillulla datalla.',
+	'replaceset-error-calllimit' => 'ReplaceSet-funktion kutsuraja saavutettu.',
+	'replaceset-error-regexnoend' => 'Säännöllisen lausekkeen mallista "$1" puuttuu loppurajoitin \'$2\'',
+	'replaceset-error-regexbadmodifier' => "Säännöllisen lausekkeen määre '$1' ei ole kelvollinen.",
+);
+
 /** French (Français)
  * @author PieRRoMaN
  * @author Urhixidur

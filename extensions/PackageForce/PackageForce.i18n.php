@@ -168,10 +168,24 @@ $messages['es'] = array(
 	'pf-header-approve' => 'Aprobar',
 );
 
-/** Finnish (Suomi) */
+/** Finnish (Suomi)
+ * @author Centerlink
+ * @author Crt
+ */
 $messages['fi'] = array(
+	'packageforce' => 'PackageForce',
+	'packageforceadmin' => 'Hallintointisivu PackageForce-ohjelmalle',
+	'pf-desc' => '[[Special:PackageForce|Lataa pakkaukset]], jotka sisältävät hyödyllisiä mallineita ja muuta.',
+	'pf-only-admins-allowed' => 'Tämä sivu on vain käyttäjille, joilla on "packageforce-admin\'-oikeudet.',
 	'pf-admin-menu-default' => 'Oletus',
+	'pf-admin-menu-unsortedtemplates' => 'Mallineita ei ole vielä lajiteltu',
+	'pf-admin-link-view-documentation' => 'Katso sivuun liittyviä dokumentteja',
+	'pf-admin-link-editlink-page' => 'Muokkaa sivua',
+	'pf-admin-link-approve' => 'Hyväksy sivu',
 	'pf-header-documentation' => 'Dokumentaatio',
+	'pf-header-in_packages' => 'Pakkaukset',
+	'pf-header-edit' => 'Muokkaa linkkiä',
+	'pf-header-type' => 'Sivun tyyppi',
 	'pf-header-page_title' => 'Otsikko',
 	'pf-header-approve' => 'Hyväksy',
 );

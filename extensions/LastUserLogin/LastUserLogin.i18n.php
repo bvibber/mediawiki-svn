@@ -478,6 +478,18 @@ $messages['ru'] = array(
 	'right-lastlogin' => 'просмотр времени последнего входа участника',
 );
 
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'lastuserlogin-desc' => 'Приказује када се корисник задњи пут улоговао',
+	'lastuserlogin_userid' => 'Корисничко име',
+	'lastuserlogin_username' => 'Право име',
+	'lastuserlogin_useremail' => 'Корисникова електронска пошта',
+	'lastuserlogin_lastlogin' => 'Последње логовање',
+	'lastuserlogin_daysago' => 'Протекли дани',
+);
+
 /** Swedish (Svenska)
  * @author Dafer45
  */

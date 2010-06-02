@@ -24,6 +24,16 @@ $messages['qqq'] = array(
 	'frontbackforced-forced' => 'Page name postfix (supposed not to be long)',
 );
 
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author Wizardist
+ */
+$messages['be-tarask'] = array(
+	'frontbackforced-desc' => 'Дадае прэфіксную і постфіксную частку да старонак, рэалізуе прымусовыя вікі-спасылкі',
+	'frontbackforced-front' => '_(прэфікс_старонкі)',
+	'frontbackforced-back' => '_(постфікс_старонкі)',
+	'frontbackforced-forced' => '_(прымусовыя_спасылкі)',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
@@ -34,6 +44,33 @@ $messages['de'] = array(
 	'frontbackforced-forced' => '_(Pflichtverlinkungen)',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'frontbackforced-desc' => 'Pśidawa boki pśed a/abo za bokami a implementěrujo wunuźone wikiwótkaze',
+	'frontbackforced-front' => '_(pśed_to_stajony)',
+	'frontbackforced-back' => '_(slědk_togo_stajony)',
+	'frontbackforced-forced' => '_(wunuźone_wótkaze)',
+);
+
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'frontbackforced-desc' => 'Přidawa strony před a/abo za stronami a implementuje wunuzowane wikiwotkazy',
+	'frontbackforced-front' => '_(předwěšk)',
+	'frontbackforced-back' => '_(přiwěšk)',
+	'frontbackforced-forced' => '_(nućene_wotkazy)',
+);
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'frontbackforced-forced' => '_(forcéiert Wikilinken)',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
@@ -42,5 +79,25 @@ $messages['mk'] = array(
 	'frontbackforced-front' => '_(воведен_материјал)',
 	'frontbackforced-back' => '_(завршен_материјал)',
 	'frontbackforced-forced' => '_(наметнати_викиврски)',
+);
+
+/** Portuguese (Português)
+ * @author Hamilton Abreu
+ */
+$messages['pt'] = array(
+	'frontbackforced-desc' => 'Acrescenta secções iniciais e finais às páginas e implementa links wiki automáticos',
+	'frontbackforced-front' => '_(secção_inicial)',
+	'frontbackforced-back' => '_(secção_final)',
+	'frontbackforced-forced' => '_(links_wiki_automáticos)',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'frontbackforced-desc' => 'Nagtitimbang ng materyang pangharap at nagkakabit ng materyang panlikod sa mga pahina at nagsasakatuparan ng pinilit na mga kawing ng wiki',
+	'frontbackforced-front' => '_(materyang_pangharap)',
+	'frontbackforced-back' => '_(materyang_panlikod)',
+	'frontbackforced-forced' => '_(pinilit_na_mga_kawing_ng_wiki)',
 );
 

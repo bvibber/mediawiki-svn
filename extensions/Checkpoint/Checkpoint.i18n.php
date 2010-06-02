@@ -166,6 +166,7 @@ $messages['ko'] = array(
 	'checkpoint' => '저장하고 편집을 계속하기',
 	'checkpoint-desc' => '편집을 저장함과 동시에 계속하여 편집할 수 있도록 함',
 	'checkpoint-tooltip' => '지금까지 편집한 내용을 저장하고 편집을 계속합니다.',
+	'checkpoint-notice' => '([[{{ns:project}}:중간 저장]])',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

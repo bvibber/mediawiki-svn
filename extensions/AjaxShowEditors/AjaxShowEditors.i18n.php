@@ -664,6 +664,19 @@ $messages['km'] = array(
 	'ajax-se-usernotfound' => 'កំហុស៖ អ្នកប្រើប្រាស់មិនត្រូវបានរកឃើញទេ',
 );
 
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'ajaxshoweditors-desc' => '같은 문서를 편집하고 있는 사용자를 보여 줌',
+	'ajax-se-title' => '현재 편집 중:',
+	'ajax-se-pending' => '갱신하기… (이 상자를 클릭하거나 편집을 시작하십시오)',
+	'ajax-se-idling' => '($1초 전)',
+	'ajax-se-pagedoesnotexist' => '문서가 존재하지 않습니다.',
+	'ajax-se-userinvalid' => '오류: 사용자가 잘못되었습니다.',
+	'ajax-se-usernotfound' => '오류: 사용자를 찾을 수 없습니다.',
+);
+
 /** Colognian (Ripoarisch)
  * @author Purodha
  */

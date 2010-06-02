@@ -85,9 +85,11 @@ $messages['et'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Centerlink
  * @author Nike
  */
 $messages['fi'] = array(
+	'nll-desc' => 'Helpot muotoiluluettelot luonnollisilla kielillä',
 	'nll-lastseparator' => ' ja&#32;',
 );
 

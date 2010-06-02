@@ -1938,9 +1938,12 @@ $messages['km'] = array(
 
 /** Korean (한국어)
  * @author Klutzy
+ * @author Kwj2772
  * @author Yknok29
  */
 $messages['ko'] = array(
+	'math_noblahtex' => 'blahtex를 실행할 수 없습니다. blahtex는 $1에 있어야 합니다.',
+	'blahtext-desc' => '&lt;math&gt; 태그에서 MathML을 출력',
 	'math_CannotCreateTexFile' => 'tex 파일을 생성할 수 없습니다',
 	'math_CannotWriteTexFile' => 'tex 파일에 내용을 쓸 수 없습니다',
 );

@@ -331,8 +331,11 @@ $messages['fa'] = array(
 	'metadata_help' => 'متاداده:',
 );
 
-/** Finnish (Suomi) */
+/** Finnish (Suomi)
+ * @author Crt
+ */
 $messages['fi'] = array(
+	'metadataedit-desc' => 'Laittaa luokat, kielilinkit ja sallitut mallineet erilliseen tekstikenttään, kun sivuja muokataan.',
 	'metadata_help' => 'Sisältökuvaukset:',
 );
 

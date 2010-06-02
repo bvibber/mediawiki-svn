@@ -1023,6 +1023,8 @@ $messages['fi'] = array(
 	'ogg-dismiss' => 'Sulje',
 	'ogg-download' => 'Lataa',
 	'ogg-desc-link' => 'Tiedoston tiedot',
+	'ogg-oggThumb-version' => 'OggHandler vaatii oggThumb $1 -version tai uudemman.',
+	'ogg-oggThumb-failed' => 'oggThumb ei onnistunut luomaan pienoiskuvaa.',
 );
 
 /** Faroese (Føroyskt)

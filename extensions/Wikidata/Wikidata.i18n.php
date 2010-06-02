@@ -8011,6 +8011,13 @@ $messages['lt'] = array(
 	'datasearch' => 'Wikidata: Duomenų paieška',
 );
 
+/** Latvian (Latviešu)
+ * @author GreenZeb
+ */
+$messages['lv'] = array(
+	'ow_none_selected' => 'Neviena licence nav izvēlēta',
+);
+
 /** Lazuri (Lazuri)
  * @author Bombola
  */
@@ -12853,7 +12860,7 @@ $messages['te'] = array(
 	'ow_GotoSource' => 'మూలానికి వెళ్ళు',
 	'ow_Language' => 'భాష',
 	'ow_LevelAnnotation' => 'వివరణ',
-	'ow_Multiple_meanings' => '"$1" యొక్క అర్ధములు',
+	'ow_Multiple_meanings' => '"$1" యొక్క అర్థాలు',
 	'ow_NewExactMeaning' => 'కొత్త ఖచ్చిత అర్థం',
 	'ow_OptionAttribute' => 'లక్షణం',
 	'ow_OptionAttributeOption' => 'ఎంపిక',

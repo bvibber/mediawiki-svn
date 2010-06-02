@@ -85,6 +85,7 @@ $messages['af'] = array(
 	'imagetagging-article' => 'Bladsy:',
 	'imagetagging-imghistory' => 'Geskiedenis',
 	'imagetagging-images' => 'beelde',
+	'imagetagging-tag-button' => 'Etiket',
 	'imagetagging-tagcancel-button' => 'Kanselleer',
 );
 

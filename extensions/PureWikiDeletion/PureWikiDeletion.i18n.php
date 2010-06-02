@@ -41,6 +41,13 @@ $messages['qqq'] = array(
 	'purewikideletion-blanknologin' => '{{Identical|Not logged in}}',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'purewikideletion-blanknologin' => 'Nie ingeteken nie',
+);
+
 /** Arabic (العربية) */
 $messages['ar'] = array(
 	'purewikideletion' => 'حذف الويكي النقي',
@@ -137,7 +144,7 @@ $messages['de'] = array(
 	'purewikideletion-desc' => 'Sorgt unter anderem dafür, dass geleerte Seiten als roter Link erscheinen',
 	'purewikideletion-pref-watchblank' => 'Selbst geleerte Seiten automatisch beobachten',
 	'purewikideletion-pref-watchunblank' => 'Seiten mit von mir zurückgenommenen Leerungen automatisch beobachten',
-	'purewikideletion-blanked' => "Eine ehemalige Version dieser Seite wurde am $5 um $6 von [[User:$1|$1]] ([[User talk:$1|Diskussion]]) ([[Special:Contributions/$1|Bearbeitungen]]) geleert.
+	'purewikideletion-blanked' => "Eine ehemalige Version dieser Seite wurde am $5 um $6 von [[User:$1|$1]] ([[User talk:$1|Diskussion]]) ([[Special:Contributions/$1|Beiträge]]) geleert.
 
 Angegebene Begründung für die Leerung: ''<nowiki>$3</nowiki>''.
 

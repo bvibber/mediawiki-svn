@@ -536,6 +536,15 @@ $messages['sk'] = array(
 	'mwe-error_load_lib' => 'Error: JavaScript $1 nebolo možné získať alebo neobsahuje definíciu $2',
 );
 
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'mwe-loading_txt' => 'Учитавање ...',
+	'mwe-ok' => 'ОК',
+	'mwe-cancel' => 'Поништи',
+);
+
 /** Swedish (Svenska)
  * @author Dafer45
  * @author GameOn

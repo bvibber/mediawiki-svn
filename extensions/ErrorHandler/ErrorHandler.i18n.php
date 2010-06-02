@@ -64,6 +64,8 @@ $messages['qqq'] = array(
  */
 $messages['af'] = array(
 	'errorhandler-errors' => 'Foute:',
+	'errorhandler-error-warning' => 'Waarskuwing',
+	'errorhandler-error-notice' => 'Kennisgewing',
 );
 
 /** Arabic (العربية)

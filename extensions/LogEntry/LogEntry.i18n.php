@@ -36,6 +36,8 @@ Do not translate or change tag names, or link anchors.',
  */
 $messages['af'] = array(
 	'logentry-append' => 'Byvoeg',
+	'logentry-invalidpage' => 'Ongeldige bladsy',
+	'logentry-invalidtoken' => 'Ongeldige token',
 );
 
 /** Arabic (العربية)

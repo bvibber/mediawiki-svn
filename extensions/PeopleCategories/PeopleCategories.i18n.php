@@ -61,6 +61,13 @@ $messages['es'] = array(
 	'peoplecategories-desc' => 'Los cambios mostraron nombres de páginas de "Nombre Apellido" a "Apellido, Nombre" en las páginas de categoría especificadas',
 );
 
+/** Finnish (Suomi)
+ * @author Crt
+ */
+$messages['fi'] = array(
+	'peoplecategories-desc' => 'Vaihtaa näytetyt sivunimet "Etunimi Sukunimi" -muodosta "Sukunimi, Etunimi" -muotoon määritellyillä luokkasivuilla.',
+);
+
 /** French (Français)
  * @author Peter17
  */

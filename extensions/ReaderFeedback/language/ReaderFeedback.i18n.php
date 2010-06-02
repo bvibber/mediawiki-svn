@@ -2183,6 +2183,37 @@ $messages['sv'] = array(
 	'readerfeedback-tt-review' => 'Skicka recension',
 );
 
+/** Tamil (தமிழ்)
+ * @author Mahir78
+ */
+$messages['ta'] = array(
+	'readerfeedback' => 'இந்தப் பக்கம் பற்றி நீங்கள் என்ன நினைக்கிறீர்கள்?',
+	'readerfeedback-text' => "''தயவு செய்து சிறிது அவகாசம் எடுத்து இந்தப் பக்கத்தின் கீழ் அளவீடு செய்யுங்கள். உங்களது கருத்துக்கள் மிக முக்கியமானதும் மற்றும் எங்களது இணையதளத்தின் வளர்ச்சிக்கும் உதவும்.''",
+	'readerfeedback-reliability' => 'நன்பகமானது',
+	'readerfeedback-completeness' => 'முடிவடைந்தது',
+	'readerfeedback-npov' => 'நடுநிலையானது',
+	'readerfeedback-overall' => 'ஒட்டுமொத்தமாக',
+	'readerfeedback-level-none' => '(நிச்சயமற்ற)',
+	'readerfeedback-level-0' => 'தரமற்றது',
+	'readerfeedback-level-1' => 'மோசம்',
+	'readerfeedback-level-2' => 'பரவாயில்லை',
+	'readerfeedback-level-3' => 'நன்றாகவுள்ளது',
+	'readerfeedback-level-4' => 'பிரமாதம்',
+	'readerfeedback-submit' => 'சமர்ப்பி',
+	'readerfeedback-success' => "'''இந்தப் பக்கத்தை மீளாய்வு செயதமைக்கு நன்றி!''' ([$2 முடிவுகளை காண்க]) ([$3 பின்னூட்டங்கள் அல்லது கேள்விகள்?]).",
+	'readerfeedback-voted' => "'''It appears that you already rated this page''' ([$2 முடிவுகளை காண்க]) ([$3 பின்னூட்டங்கள் அல்லது கேள்விகள்?]).",
+	'readerfeedback-submitting' => 'சமர்பிக்கப்படுகிறது ...',
+	'readerfeedback-finished' => 'நன்றி!',
+	'readerfeedback-tagfilter' => 'குறிச்சொல்:',
+	'readerfeedback-tierfilter' => 'படிநிலை:',
+	'readerfeedback-tier-high' => 'நன்றாகவுள்ளது',
+	'readerfeedback-tier-medium' => 'மிதமான',
+	'readerfeedback-tier-poor' => 'தரமற்ற',
+	'tooltip-ca-ratinghist' => 'இந்தப் பக்கத்திற்கான பயனர் படிநிலைகள்',
+	'specialpages-group-feedback' => 'பார்வையாளர்கள் கருத்துகள்',
+	'readerfeedback-tt-review' => 'மீளாய்வை சமர்ப்பி',
+);
+
 /** Telugu (తెలుగు)
  * @author Chaduvari
  * @author Mpradeep

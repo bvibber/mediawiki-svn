@@ -61,6 +61,7 @@ $messages['qqq'] = array(
  */
 $messages['af'] = array(
 	'indexfunc-badtitle' => 'Ongeldige bladsynaam: "$1"',
+	'indexfunc-index-exists' => 'Die bladsy "$1" bestaan al reeds!',
 	'index' => 'Indeks',
 	'index-legend' => 'Die indeks deursoek',
 	'index-search' => 'Soek:',

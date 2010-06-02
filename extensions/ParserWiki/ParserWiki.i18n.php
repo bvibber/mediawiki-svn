@@ -53,6 +53,13 @@ $messages['es'] = array(
 	'parserwiki-desc' => 'Permite definir una gramática en un wiki luego usar esa gramática para ingresar información a dicha wiki',
 );
 
+/** Finnish (Suomi)
+ * @author Crt
+ */
+$messages['fi'] = array(
+	'parserwiki-desc' => 'Mahdollistaa määritellä kieliopin wikissä ja sitten käyttää tuota kielioppia tiedonsyöttöön samaan wikiin.',
+);
+
 /** French (Français)
  * @author Peter17
  */

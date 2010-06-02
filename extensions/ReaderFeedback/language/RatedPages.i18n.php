@@ -674,6 +674,16 @@ $messages['sv'] = array(
 	'ratedpages-count' => '$1 {{PLURAL:$1|granskning|granskningar}}',
 );
 
+/** Tamil (தமிழ்)
+ * @author Mahir78
+ */
+$messages['ta'] = array(
+	'ratedpages' => 'வாசகர் மதிப்பீடு செய்த பக்கங்கள்',
+	'ratedpages-none' => 'இந்த பட்டியலில் ஒரு பக்கமும் இல்லை',
+	'ratedpages-graphs' => 'அளவீடு தரவு',
+	'ratedpages-count' => '$1 {{PLURAL:$1|review|மீளாய்வு}}',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */

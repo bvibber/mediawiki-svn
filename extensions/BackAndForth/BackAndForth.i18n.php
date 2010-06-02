@@ -498,6 +498,15 @@ $messages['kn'] = array(
 	'backforth-prev' => 'ಹಿಂದಿನ ($1)',
 );
 
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'backforth-next' => '다음 ($1)',
+	'backandforth-desc' => '알파벳순으로 "이전"과 "다음" 페이지 링크를 문서 맨 위에 추가',
+	'backforth-prev' => '이전 ($1)',
+);
+
 /** Colognian (Ripoarisch)
  * @author Purodha
  */

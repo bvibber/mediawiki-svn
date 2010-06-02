@@ -125,6 +125,7 @@ $messages['af'] = array(
 	'grouppermissions-true' => 'Waar',
 	'grouppermissions-false' => 'Onwaar',
 	'grouppermissions-never' => 'Nooit',
+	'grouppermissions-sort-misc' => 'Ander',
 	'grouppermissions-sp-save' => 'Stoor',
 	'grouppermissions-sp-remove' => 'verwyder',
 );

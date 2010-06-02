@@ -35,6 +35,13 @@ $messages['qqq'] = array(
 	'right-massblank' => '{{doc-right}}',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'massblank-blankcomment' => 'Rede:',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by

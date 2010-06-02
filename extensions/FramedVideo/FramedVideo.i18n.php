@@ -528,6 +528,17 @@ $messages['km'] = array(
 	'framedvideo_helppage' => 'Help: វិដេអូ',
 );
 
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'framedvideo_errors' => '여러 가지 오류가 발생했습니다!',
+	'framedvideo_error' => '오류가 발생했습니다!',
+	'framedvideo_error_unknown_type' => '비디어 서비스 ID("$1")를 알 수 없습니다: "type" 변수를 확인하십시오.',
+	'framedvideo_error_no_id_given' => '"id" 변수가 없습니다.',
+	'framedvideo_error_height_required' => '"$1" 비디오 종류에는 "height" 변수가 필요합니다.',
+);
+
 /** Colognian (Ripoarisch)
  * @author Purodha
  */

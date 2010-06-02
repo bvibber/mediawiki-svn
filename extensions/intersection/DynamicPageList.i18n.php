@@ -28,6 +28,7 @@ $messages['qqq'] = array(
 $messages['af'] = array(
 	'intersection_toomanycats' => 'Fout: Te veel kategorieë!',
 	'intersection_noresults' => 'Fout: Geen resultate!',
+	'intersection_noincludecats' => "Fout: U moet ten minste een kategorie insluit, of spesifiseer 'n naamspasie!",
 );
 
 /** Aragonese (Aragonés)

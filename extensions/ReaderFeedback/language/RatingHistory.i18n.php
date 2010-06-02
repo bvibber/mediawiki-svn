@@ -2010,6 +2010,29 @@ Betygsskalan är enligt följande:
 	'right-feedback' => 'Använd feedback-formuläret för att betygsätta en sida',
 );
 
+/** Tamil (தமிழ்)
+ * @author Mahir78
+ */
+$messages['ta'] = array(
+	'ratinghistory' => 'பக்க படிநிலை வரலாறு',
+	'ratinghistory-leg' => '[[:$1|$1]] க்கான படிநிலை வரலாற்றுத் தகவல்',
+	'ratinghistory-tab' => 'படிநிலை',
+	'ratinghistory-link' => 'பக்க படிநிலை',
+	'ratinghistory-thanks' => "''<font color=\"darkred\">சிறிது அவகாசம் எடுத்து இந்தப் பக்கத்தை மீளாய்வு செய்தமைக்கு நன்றி!</font>''",
+	'ratinghistory-period' => 'நேர காலம்:',
+	'ratinghistory-month' => 'கடந்த மாதம்',
+	'ratinghistory-3months' => 'கடந்த 3 மாதங்கள்',
+	'ratinghistory-year' => 'சென்ற வருடம்',
+	'ratinghistory-3years' => 'கடந்த 3 ஆண்டுகள்',
+	'ratinghistory-ave' => 'சராசரி: $1',
+	'ratinghistory-chart' => 'கால ஓட்டத்தில் வாசகர் அளவீடு',
+	'ratinghistory-users' => 'அளவீடு செய்த பயனர்கள்',
+	'ratinghistory-graph' => '"$3" உடைய $2 ($1 {{PLURAL:$1|review|reviews}})',
+	'ratinghistory-table-rating' => 'அளவீடு',
+	'ratinghistory-table-votes' => 'ஓட்டெடுப்புகள்',
+	'ratinghistory-ratings' => "'''Legend:''' '''(1)''' - மிக மோசம்; '''(2)''' - மோசம்; '''(3)''' - பரவாயில்லை; '''(4)''' - நன்றாகவுள்ளது; '''(5)''' - பிரமாதம்;",
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */
