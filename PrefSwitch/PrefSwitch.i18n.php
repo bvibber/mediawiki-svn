@@ -1695,6 +1695,7 @@ $messages['ja'] = array(
 
 /** Georgian (ქართული)
  * @author BRUTE
+ * @author ITshnik
  * @author გიორგიმელა
  */
 $messages['ka'] = array(
@@ -1722,18 +1723,20 @@ $messages['ka'] = array(
 	'prefswitch-survey-question-os' => 'რომელ ოპერაციულ სისტემას იყენებთ?',
 	'prefswitch-survey-answer-os-other' => 'სხვა ოპერაციული სისტემა:',
 	'prefswitch-survey-question-res' => 'თქვენი მონიტორის გაფართოება:',
-	'prefswitch-title-on' => 'რა არის ახალი?',
+	'prefswitch-title-on' => 'ახალი შესაძლებლობები',
 	'prefswitch-title-switched-on' => 'ისიამოვნეთ!',
 	'prefswitch-title-off' => 'გათიშეთ ახალი შესაძლებლობები',
 	'prefswitch-title-switched-off' => 'მადლობა',
 	'prefswitch-title-feedback' => 'კონტაქტი',
-	'prefswitch-success-on' => 'ახალი შესაძლებლობები ჩართულია.',
-	'prefswitch-success-off' => 'ახალი შესაძლებლობები გათიშულია.',
+	'prefswitch-success-on' => 'ახალი შესაძლებლობები ჩაირთო. ვიმედოვნებთ, ისიამოვნებთ მათი გამოყენებით. თქვენ ყოველთვის შეგიძლიათ გამორთათ ისინი ბმულზე "[[სპეციალური: UsabilityInitiativePrefSwitch | ((int: prefswitch-link-on }}]]" დაწკაპუნებით, რომელიც ამ გვერდის თავში მდებარეობს.',
+	'prefswitch-success-off' => 'ახალი ფუნქციები ამჟამად გამორთულია. მადლობთ ახალი შესაძლებლობების მოსინჯვისათვის. თქვენ ყოველთვის შეგიძლიათ ჩართათ ისინი ბმულზე "[[სპეციალური: UsabilityInitiativePrefSwitch | ((int: prefswitch-link-off }}]]" დაწკაპებით, რომელიც ამ გვერდის თავში მდებარეობს.',
 	'prefswitch-success-feedback' => 'თქვენი გამოხმაურება გაგზავნილია.',
 	'prefswitch-return' => '<hr style="clear:both">
 დაბრუნება <span class="plainlinks">[$1 $2]</span>.',
 	'prefswitch-main-anon' => '===დაბრუნება===
 თუ გსურთ გამორთოთ ბეტა, <span class="plainlinks">[$1 დააჭირეთ აქ]</span>. შემდეგ კი გაიარეთ ავტორიზაცია ან შექმენით ანგარიში.',
+	'prefswitch-main-off' => '=== მოსინჯეთ! === 
+თუ გსურთ, რომ ჩართათ ახალი ფუნქციები, <span class="plainlinks">[$ 1 დააწკაპეთ აქ].</span>',
 );
 
 /** Korean (한국어)

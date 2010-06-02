@@ -543,6 +543,7 @@ $messages['hu'] = array(
 );
 
 /** Armenian (Հայերեն)
+ * @author Chaojoker
  * @author Xelgen
  */
 $messages['hy'] = array(
@@ -553,7 +554,7 @@ $messages['hy'] = array(
 	'wikieditor-publish-dialog-minor' => 'Չնչին խմբագրում',
 	'wikieditor-publish-dialog-watch' => 'Հսկել այս էջը',
 	'wikieditor-publish-dialog-publish' => 'Հրատարակել',
-	'wikieditor-publish-dialog-goback' => 'Ետ գնալ',
+	'wikieditor-publish-dialog-goback' => 'Հետ գնալ',
 );
 
 /** Interlingua (Interlingua)
