@@ -29,7 +29,7 @@ $messages['en'] = array(
 /** Message documentation (Message documentation)
  */
 $messages['qqq'] = array(
-	'pageby-desc' => 'Shown in [[Special:Version]] as a short description of this extension. Do not translate links.',
+	'datatransclusion-desc' => 'Shown in [[Special:Version]] as a short description of this extension. Do not translate links.',
 
 	'datatransclusion-missing-source'            => 'issued if no data source was specified.',
 	'datatransclusion-unknown-source'            => 'issued if an unknown data source was specified. $1 is the name of the data source.',
