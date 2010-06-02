@@ -23,7 +23,7 @@ mw.addMessages( {
 	"mwe-file-thumbnail-no" : "The filename begins with <b><tt>$1<\/tt><\/b>",
 	"mwe-go-to-resource" : "Go to resource page",
 	"mwe-upload-misc-error" : "Unknown upload error",	
-	"mwe-wgfogg_warning_bad_extension" : "You have selected a file with an unsupported extension (<a href=\"http:\/\/commons.wikimedia.org\/wiki\/Commons:Firefogg#Supported_file_types\">more information<\/a>).",	
+	"mwe-wgfogg_warning_bad_extension" : "You have selected a file with an unsupported extension (<a href=\"http:\/\/commons.wikimedia.org\/wiki\/Commons:Firefogg#Supported_File_Types\">more information<\/a>).",	
 	"mwe-thumbnail-more" : "Enlarge",	
 	"mwe-license-header" : "Licensing",
 	"mwe-filedesc" : "Summary",
@@ -536,9 +536,7 @@ mw.UploadHandler.prototype = {
 			// Run the JS equivalent of SpecialUpload.php getInitialPageText	
 			comment_value = this.getCommentText( comment_value, license, copyStatus, source  );
 			this.rewriteDescriptionText = false;
-		}
-		var cat = $j( '#wpUploadDescription' );
-		debugger;
+		}		
 		mw.log( 'getUploadDescription:: new val:' + comment_value  );		
 		return comment_value;
 	},
@@ -1015,13 +1013,8 @@ mw.UploadHandler.prototype = {
 								'href' : img.descriptionurl
 							} ),
 							
-							$j( '<img />' )
-							.attr( {
-								'border' : 0,
-								'width' : 15,
-								'height' : 11,
-								'src' : mw.getConfig( 'imagesPath' ) + 'magnify-clip.png'
-							} ), 
+							$j( '<div />' )
+							.addClass("rsd_magnify_clip"), 
 							
 							$j('<span />')
 							.html( gM( 'mwe-fileexists-thumb' ) )
