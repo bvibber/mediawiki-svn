@@ -24,6 +24,7 @@ $wgExtensionCredits['other'][] = array(
 
 $dir = dirname(__FILE__) . '/';
 $wgExtensionMessagesFiles['DataTransclusion'] = $dir . 'DataTransclusion.i18n.php';
+$wgExtensionMessagesFiles['DataTransclusion'] = $dir . 'DataTransclusion.i18n.magic.php';
 
 $wgAutoloadClasses['DataTransclusionRenderer'] = $dir. 'DataTransclusionRenderer.php';
 $wgAutoloadClasses['DataTransclusionHandler'] = $dir. 'DataTransclusionHandler.php';
@@ -38,6 +39,6 @@ $wgDataTransclusionSources = array();
 
 function efDataTransclusionSetHooks( $parser ) {
 	$parser->setHook( 'record' , 'DataTransclusionHandler::handleRecordTag' );
-	$parser->setFunctionHook( 'record' , 'DataTransclusionHandler::handleRecordFunction' ); #FIXME: this doesn't work.
+	$parser->setFunctionHook( 'record' , 'DataTransclusionHandler::handleRecordFunction' ); 
 	return true;
 }
