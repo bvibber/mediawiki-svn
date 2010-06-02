@@ -109,13 +109,15 @@ class DataTransclusionHandler {
 	    $record = $source->fetchRecord( $by, $key );
 	    if ( empty( $record ) ) return DataTransclusionHandler::errorMessage( 'datatransclusion-record-not-found', $asHTML, $sourceName, $by, $key );
 
-	    $record = DataTransclusionHandler::normalizeRecord( $record, $source );
-
 	    //render the record into wiki text
 	    $t = Title::newFromText( $template, NS_TEMPLATE );
 	    if ( empty( $t ) ) return DataTransclusionHandler::errorMessage( 'datatransclusion-bad-template-name', $asHTML, $template );
 
-	    $text = DataTransclusionHandler::renderTemplate( $parser, $t, $record );
+	    $handler = new DataTransclusionHandler( $parser, $source, $t );
+
+	    $record = $handler->normalizeRecord( $record );
+	    $text = $handler->render( $record );
+
 	    if ( $text === false ) return DataTransclusionHandler::errorMessage( 'datatransclusion-unknown-template', $asHTML, $template );
 
 	    //set parser output expiry
@@ -132,64 +134,93 @@ class DataTransclusionHandler {
 	    }
     }
 
-    static function renderTemplate( $parser, $title, $record ) {
+    function __construct( $parser, $source, $template ) {
+	    $this->template = $template;
+	    $this->source = $source;
+	    $this->parser = $parser;
+    }
+
+    function render( $record ) {
 	    //XXX: use cached & preparsed template. $template doesn't have the right type, it seems
 	    /*
-	    list( $text, $title ) = $parser->getTemplateDom( $title );
-	    $frame = $parser->getPreprocessor()->newCustomFrame( $record );
+	    list( $text, $this->template ) = $this->parser->getTemplateDom( $this->template );
+	    $frame = $this->parser->getPreprocessor()->newCustomFrame( $record );
 	    $text = $frame->expand( $template );
 	    */
 
 	    //XXX: trying another way. but $piece['parts'] needs to be a PPNode. how to do that?
 	    /*
-	    $frame = $parser->getPreprocessor()->newCustomFrame( $record );
+	    $frame = $this->parser->getPreprocessor()->newCustomFrame( $record );
 
 	    $piece = array();
 
-	    if ( $title->getNamespace() == NS_TEMPLATE ) $n = "";
-	    else $n = $title->getNsText() . ":";
+	    if ( $this->template->getNamespace() == NS_TEMPLATE ) $n = "";
+	    else $n = $this->template->getNsText() . ":";
 
-	    $piece ['title'] = $n . $title->getText();
+	    $piece ['title'] = $n . $this->template->getText();
 	    $piece['parts'] = $record;
 	    $piece['lineStart'] = false; //XXX: ugly. can't know here whether the brace was at the start of a line
 
-	    $ret = $parser->braceSubstitution( $piece, $frame );
+	    $ret = $this->parser->braceSubstitution( $piece, $frame );
 	    $text = $ret[ 'text' ];
 	    */
 
 	    //dumb and slow, but works
-	    $p = new Article( $title );
+	    $p = new Article( $this->template );
 	    if ( !$p->exists() ) return false;
 
 	    $text = $p->getContent(); 
-	    $text = $parser->replaceVariables( $text, $record, true );
+	    $text = $this->parser->replaceVariables( $text, $record, true );
 
 	    return $text;
     }
 
-    static function normalizeRecord( $record, $source ) {
+    function normalizeRecord( $record ) {
 	    $rec = array();
 
 	    //keep record fields, add missing values
-	    $fields = $source->getFieldNames();
+	    $fields = $this->source->getFieldNames();
 	    foreach ( $fields as $f ) {
 		if ( isset( $record[ $f ] ) ) $v = $record[ $f ];
 		else $v = '';
 
-		$rec[ $f ] = $v;
+		$rec[ $f ] = $this->sanitizeValue( $v );
 	    }
 
 	    //add source meta info, so we can render links back to the source, 
 	    //provide license info, etc
-	    $info = $source->getSourceInfo();
+	    $info = $this->source->getSourceInfo();
 	    foreach ( $info as $f => $v ) {
 		if ( is_array( $v ) || is_object( $v ) || is_resource( $v ) ) continue;
-		$rec[ "source.$f" ] = $v;
+		$rec[ "source.$f" ] = $this->sanitizeValue( $v );
 	    }
 
 	    return $rec;
     }
-	
+
+    protected static $sanitizerSubstitution = array(
+	    '!\[!' => '&#91;', 
+	    '!\]!' => '&#93;', 
+	    '!\{!' => '&#123;', 
+	    '!\}!' => '&#125;', 
+	    '!\'!' => '&#apos;', 
+	    '!\|!' => '&#124;', 
+	    '!^\*!m' => '&#42;', 
+	    '!^#!m' => '&#35;', 
+	    '!^:!m' => '&#58;', 
+	    '!^;!m' => '&#59;', 
+	    '!^ !m' => '&#32;', 
+    );
+
+    function sanitizeValue( $v ) {
+	    $v = htmlspecialchars( $v );
+
+	    $find = array_keys( self::$sanitizerSubstitution );
+	    $subst = array_values( self::$sanitizerSubstitution );
+
+	    $v = preg_replace( $find, $subst, $v );
+	    return $v;
+    }
 
     static function getDataSource( $name ) {
 	    global $wgDataTransclusionSources;
