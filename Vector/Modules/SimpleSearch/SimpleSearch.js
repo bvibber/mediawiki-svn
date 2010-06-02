@@ -70,6 +70,13 @@ $j(document).ready( function() {
 				$j(this).parent().find( 'label' ).fadeIn( 100 );
 			}
 		});
+		// listen for dragend events in order to clear the label from the search field if
+		// text is dragged into it. Only works for mozilla
+		$j( document ).bind( 'dragend', function( event ) {
+			if ( $j( 'div#simpleSearch > label:visible' ).size() > 0 
+				&& $j( 'div#simpleSearch > input#searchInput' ).val().length > 0 )
+					$j( 'div#simpleSearch > label' ).fadeOut( 100 );
+		} );
 	$j( '#searchInput, #searchInput2, #powerSearchText, #searchText' ).suggestions( {
 		fetch: function( query ) {
 			var $this = $j(this);
