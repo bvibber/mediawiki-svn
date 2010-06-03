@@ -49,10 +49,20 @@ class ApiClickTracking extends ApiBase {
 		// For links that go off the page, redirect the user
 		// FIXME: The API should have a proper infrastructure for this
 		if ( !is_null( $params['redirectto'] ) ) {
-			global $wgOut;
-			$wgOut->enable();
-			$wgOut->redirect( $params['redirectto'] );
-			$wgOut->output();
+			// Validate the redirectto parameter
+			// Must be a local URL, may not be protocol-relative
+			$href = $params['redirectto'];
+			if ( strlen( $href ) > 0 && $href{0} == '/' && ( strlen( $href ) == 1 || $href{1} != '/' ) ) {
+				global $wgOut;
+				$wgOut->redirect( $params['redirectto'] );
+				$wgOut->output();
+				
+				// Prevent any further output
+				$wgOut->disable();
+				$this->getMain()->getPrinter()->disable();
+			} else {
+				$this->dieUsage( 'The URL to redirect to must be domain-relative, i.e. start with a /', 'badurl' );
+			}
 		}
 	}
 
