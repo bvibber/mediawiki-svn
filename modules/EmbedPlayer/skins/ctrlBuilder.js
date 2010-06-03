@@ -48,7 +48,10 @@ ctrlBuilder.prototype = {
 	
 	// Flag to store the current fullscreen mode
 	fullscreenMode: false,
-		
+	
+	// Flag to store if a warning binding has been added 
+	addWarningFlag: false,
+	
 	/**
 	* Initialization Object for the control builder
 	*
@@ -122,7 +125,7 @@ ctrlBuilder.prototype = {
 		this.addControlComponents();
 	
 		// Add hooks once Controls are in DOM
-		this.addControlHooks();
+		this.addControlBindings();
 	},
 	
 	/**
@@ -503,10 +506,10 @@ ctrlBuilder.prototype = {
 	},
 	
 	/**
-	* addControlHooks
+	* addControlBindings
 	* Adds control hooks once controls are in the DOM
 	*/
-	addControlHooks: function( ) {
+	addControlBindings: function( ) {
 		// Set up local pointer to the embedPlayer
 		var embedPlayer = this.embedPlayer;
 		var _this = this;		
@@ -514,7 +517,7 @@ ctrlBuilder.prototype = {
 		
 		// Setup target shortcut to	control-bar
 		$target = embedPlayer.$interface;	
-		var mouseIn = false;
+
 		// Add hide show bindings for control overlay (if overlay is enabled ) 
 		if( ! _this.checkOverlayControls() ) {
 			$interface.unbind().show();		
@@ -526,52 +529,40 @@ ctrlBuilder.prototype = {
 				// ( once the user touched the video "don't hide" ) 
 			} );
 			// Add a special absolute overlay for hover ( to keep menu displayed 
-			$interface.hover(
-				function(){						
+			$interface.hoverIntent({
+				'timeout' : 2000,
+				'over' : function(){						
 					// Show controls with a set timeout ( avoid fade in fade out on short mouse over )				
-					setTimeout( function() {
-						if( mouseIn ){
-							_this.showControlBar()
-						}
-					}, 250 );
-					mouseIn = true;
+					_this.showControlBar()					
 				},
-				function(){
-					mouseIn = false;
-					// Hide controls ( delay hide if menu is visible )
-					function hideCheck(){					
-						if ( $interface.find( '.overlay-win' ).length != 0 
-						||  $j('.menuPositionHelper').is(':visible' ) ) {
-							setTimeout( hideCheck, 250 );
-							return ;
-						}	
-						if( _this.checkOverlayControls() && !mouseIn ) {
-							_this.hideControlBar();
-						}
-												
-					}
-					// Don't remove until user is out of player for 1 second
-					setTimeout( hideCheck, 1000 );
+				'out' : function(){
+					_this.hideControlBar();
 				}
-			);
+			});
 		}
 				
 		// Add recommend firefox if we have non-native playback:
-		if ( _this.checkNativeWarning( ) ) {
-			_this.doNativeWarning();
+		if ( _this.checkNativeWarning( ) ) {			
+			_this.doWarningBindinng(
+				'showNativePlayerWarning',
+				gM( 'mwe-embedplayer-for_best_experience' ) 
+			);
 		}
 			
 		// Do png fix for ie6
 		if ( $j.browser.msie  &&  $j.browser.version <= 6 ) {			
 			$j('#' + embedPlayer.id + ' .play-btn-large' ).pngFix();
 		}
-		
+						
 		this.doVolumeBinding();
 		
 		// Check if we have any custom skin Bindings to run
 		if ( this.addSkinControlBindings && typeof( this.addSkinControlBindings ) == 'function' ){
 			this.addSkinControlBindings();
 		}
+		
+		mw.log('tirgger::addControlBindingsEvent');
+		$j( embedPlayer ).trigger( 'addControlBindingsEvent');
 	},
 	
 	/**
@@ -579,15 +570,22 @@ ctrlBuilder.prototype = {
 	*/
 	hideControlBar : function(){
 		var animateDuration = 'slow';	 	
+		
+		// Hide the control bar
 		this.embedPlayer.$interface.find( '.control-bar')
 			.fadeOut( animateDuration );
-					
+		
+		// Move the timed text XXX this should go into timedText module 			
 		this.embedPlayer.$interface.find( '.track' )
 			.stop()
 			.animate( { 
 				'bottom' : 10 
 			}, 'slow' );
 		
+		// Hide the warning if present
+		if( this.addWarningFlag ){
+			$j( '#warningOverlay_' + this.embedPlayer.id ).fadeOut( 'slow' );
+		}
 	},
 	
 	/**
@@ -596,7 +594,8 @@ ctrlBuilder.prototype = {
 	showControlBar : function(){
 		var animateDuration = 'slow';	
 		$j( this.embedPlayer.getPlayerElement() ).css('z-index', '1')	
-		// Move up track if present
+		
+		// Move up text track if present
 		this.embedPlayer.$interface.find( '.track' )
 			.animate( 
 				{ 
@@ -604,9 +603,10 @@ ctrlBuilder.prototype = {
 				}, 
 				animateDuration
 			); 
-		// Show controls
+		
+		// Show interface controls
 		this.embedPlayer.$interface.find( '.control-bar')
-			.fadeIn( animateDuration );
+			.fadeIn( animateDuration );			
 	},
 	
 	/**
@@ -640,16 +640,7 @@ ctrlBuilder.prototype = {
 	* dependent on mediaElement being setup 
 	*/ 
 	checkNativeWarning: function( ) {				
-		// Check the global config 
-		if( mw.getConfig( 'showNativePlayerWarning' ) == false ) {
-			return false;
-		}	
-		
-		// Check the user cookie to see if user requested to hide it
-		if ( $j.cookie( 'showNativePlayerWarning' ) == 'false' ) {
-			return false;
-		}		
-		
+	
 		// If the resolution is too small don't display the warning
 		if( this.embedPlayer.getPlayerHeight() < 199 ){
 			return false;
@@ -680,22 +671,27 @@ ctrlBuilder.prototype = {
 	},
 	
 	/**
-	* Does a native warning check binding to the player on mouse over. 
+	* Does a native warning check binding to the player on mouse over.
+	* @param {string} preferenceId The preference Id
+	* @param {object} warningMsg The jQuery object warning message to be displayed.  
+	* 
 	*/
-	doNativeWarning: function( ) {
+	doWarningBindinng: function( preferenceId, warningMsg ) {
+		mw.log( 'ctrlBuilder: doWarningBindinng: ' + preferenceId +  ' wm: ' + warningMsg);
 		// Set up local pointer to the embedPlayer
 		var embedPlayer = this.embedPlayer;
-		var _this = this;		
+		var _this = this;			
 		
-		$j( embedPlayer ).hover(
-			function() {					
-				if ( $j( '#gnp_' + embedPlayer.id ).length == 0 ) {
+		$j( embedPlayer ).hoverIntent({
+			'timeout': 2000,
+			'over': function() {				
+				if ( $j( '#warningOverlay_' + embedPlayer.id ).length == 0 ) {
 					var toppos = ( embedPlayer.instanceOf == 'mvPlayList' ) ? 25 : 10;
 					
 					$j( this ).append(
 						$j('<div />')
 						.attr( {
-							'id': "gnp_" + embedPlayer.id								
+							'id': "warningOverlay_" + embedPlayer.id								
 						} )
 						.addClass( 'ui-state-highlight ui-corner-all' )
 						.css({
@@ -705,19 +701,19 @@ ctrlBuilder.prototype = {
 							'color' : '#111',
 							'top' : toppos + 'px',
 							'left' : '10px',
-							'right' : '10px'
+							'right' : '10px',
+							'padding' : '4px'
 						})
-						.html( gM( 'mwe-embedplayer-for_best_experience' ) )
+						.html( warningMsg  )
 					)
 					
-					$target_warning = $j( '#gnp_' + embedPlayer.id );			
+					$targetWarning = $j( '#warningOverlay_' + embedPlayer.id );			
 										
-					$target_warning.append( 					 
+					$targetWarning.append( 					 
 						$j('<br />')
-					);
-						
+					);						
 					
-					$target_warning.append( 
+					$targetWarning.append( 
 						$j( '<input />' )
 						.attr({
 							'id' : 'ffwarn_' + embedPlayer.id,
@@ -727,31 +723,32 @@ ctrlBuilder.prototype = {
 						.click( function() {
 							if ( $j( this ).is( ':checked' ) ) {
 								// Set up a cookie for 7 days:
-								$j.cookie( 'showNativePlayerWarning', false, { expires: 7 } );
+								$j.cookie( preferenceId, false, { expires: 7 } );
 								// Set the current instance
-								mw.setConfig( 'showNativePlayerWarning', false );
-								$j( '#gnp_' + embedPlayer.id ).fadeOut( 'slow' );
+								mw.setConfig( preferenceId, false );
+								$j( '#warningOverlay_' + embedPlayer.id ).fadeOut( 'slow' );
+								// set the local prefrence to false
+								_this.addWarningFlag = false;
 							} else {
-								mw.setConfig( 'showNativePlayerWarning', true );
-								$j.cookie( 'showNativePlayerWarning', true );
+								mw.setConfig( preferenceId, true );
+								$j.cookie( preferenceId, true );
 							}
 						} )							
 					);
-					$target_warning.append( 
+					$targetWarning.append( 
 						$j('<span />')
 						.text( gM( 'mwe-embedplayer-do_not_warn_again' ) )
 					)
+				}								
+				// Check the global config before showing the warning
+				if ( mw.getConfig( preferenceId ) === true  ){
+					$j( '#warningOverlay_' + embedPlayer.id ).fadeIn( 'slow' );
 				}				
-															
-				// Only show the warning if cookie and config are true
-				if ( mw.getConfig( 'showNativePlayerWarning' ) === true  ){
-					$j( '#gnp_' + embedPlayer.id ).fadeIn( 'slow' );
-				}
 			},
-			function() {
-				$j( '#gnp_' + embedPlayer.id ).fadeOut( 'slow' );
+			'out': function() {	
+				$j( '#warningOverlay_' + embedPlayer.id ).fadeOut( 'slow' );
 			}
-		);
+		});
 	},
 	
 	/**
@@ -824,7 +821,7 @@ ctrlBuilder.prototype = {
 	/**
 	* Get the options menu ul with li menu items
 	*/
-	getOptionsMenu: function( ) {		
+	getOptionsMenu: function( ) {
 		$optionsMenu = $j( '<ul />' );
 		for( var i in this.optionMenuItems ){
 		
@@ -1108,11 +1105,10 @@ ctrlBuilder.prototype = {
 			$j( '<h2 />' )
 			.text( gM( 'mwe-embedplayer-choose_player' )  )
 		);
-		 		
-		$j.each( embedPlayer.mediaElement.getPlayableSources(), function( source_id, source ) {
-			var playable = mw.EmbedTypes.players.defaultPlayer( source.getMIMEType() );
-
-			var is_selected = ( source == embedPlayer.mediaElement.selected_source );			
+		
+		$j.each( embedPlayer.mediaElement.getPlayableSources(), function( sourceId, source ) {
+			var playable = mw.EmbedTypes.players.defaultPlayer( source.getMIMEType() );			
+			var is_selected = ( source == embedPlayer.mediaElement.selectedSource );			
 			
 			$playerSelect.append( 
 				$j( '<h2 />' )
@@ -1140,15 +1136,15 @@ ctrlBuilder.prototype = {
 							.attr({
 								'href' : '#',
 								'rel' : 'sel_source',
-								'id' : 'sc_' + source_id + '_' + supportingPlayers[i].id 
+								'id' : 'sc_' + sourceId + '_' + supportingPlayers[i].id 
 							})
 							.addClass( 'ui-corner-all')
 							.text( supportingPlayers[i].getName() )
 							.click( function() {
 								var iparts = $j( this ).attr( 'id' ).replace(/sc_/ , '' ).split( '_' );
-								var source_id = iparts[0];
+								var sourceId = iparts[0];
 								var default_player_id = iparts[1];
-								mw.log( 'source id: ' +  source_id + ' player id: ' + default_player_id );
+								mw.log( 'source id: ' +  sourceId + ' player id: ' + default_player_id );
 				
 								embedPlayer.ctrlBuilder.closeMenuOverlay();
 								
@@ -1157,11 +1153,11 @@ ctrlBuilder.prototype = {
 									_this.restoreWindowPlayer()
 								}
 								
-								embedPlayer.mediaElement.selectSource( source_id );
+								embedPlayer.mediaElement.selectSource( sourceId );
 				
 								mw.EmbedTypes.players.setPlayerPreference( 
 									default_player_id,
-									embedPlayer.mediaElement.sources[ source_id ].getMIMEType() 
+									embedPlayer.mediaElement.sources[ sourceId ].getMIMEType() 
 								);
 				
 								// Issue a stop
