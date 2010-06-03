@@ -30,7 +30,7 @@ if ( !defined( 'MEDIAWIKI' ) && !defined( 'SCRIPTLOADER_MEDIAWIKI') ) {
 class jsScriptLoader {
 
 	// The list of named javascript & css files
-	var $namedFileList = array();
+	private $namedFileList = array();
 
 	// The language code for the script-loader request
 	var $langCode = '';
@@ -144,6 +144,15 @@ class jsScriptLoader {
 				// Output the current language class js
 				$this->output .= jsClassLoader::getLanguageJs( $this->langCode );
 
+				// Add the required core mwEmbed style sheets Commted out 
+				// because when creating stand alone packages js package with css 
+				// the paths get messed up.  				
+				/*				
+				if( !isset( $this->namedFileList[ 'mw.style.mwCommon' ] ) ) {
+					$this->output .= $this->getScriptText( 'mw.style.mwCommon' );
+				}
+				*/
+				
 				// Output "special" IE comment tag to support "special" mwEmbed tags.
 				$this->notMinifiedTopOutput .='/*@cc_on@if(@_jscript_version<9){\'video audio source itext playlist\'.replace(/\w+/g,function(n){document.createElement(n)})}@end@*/'."\n";
 			}
@@ -797,7 +806,7 @@ class jsScriptLoader {
 		// Do language swap by index:
 		if ( $wgEnableScriptLocalization ){
 			// Get the mw.addMessage javascript from scriptText and moduleName
-			$addMessageJs  = $this->getAddMessagesFromScriptText( & $scriptText , $moduleName);
+			$addMessageJs  = $this->getAddMessagesFromScriptText( $scriptText , $moduleName);
 			//@@NOTE getAddMessagesFromClass could identify which mode we are in and we would not need to
 			// try each of these search patterns in the same order as before.
 

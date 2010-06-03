@@ -52,6 +52,9 @@ ctrlBuilder.prototype = {
 	// Flag to store if a warning binding has been added 
 	addWarningFlag: false,
 	
+	// Flag to store state of overlay on player  
+	displayOptionsMenuFlag: false, 
+	
 	/**
 	* Initialization Object for the control builder
 	*
@@ -569,7 +572,17 @@ ctrlBuilder.prototype = {
 	* Hide the control bar. 
 	*/
 	hideControlBar : function(){
-		var animateDuration = 'slow';	 	
+		var animateDuration = 'slow';
+		var _this = this;			
+		
+		// Do not hide control bar if overlay menu item is being displayed:
+		if( _this.displayOptionsMenuFlag ){
+			setTimeout( function(){
+				_this.hideControlBar();
+			}, 200 );
+			return ;
+		}
+		
 		
 		// Hide the control bar
 		this.embedPlayer.$interface.find( '.control-bar')
@@ -581,11 +594,7 @@ ctrlBuilder.prototype = {
 			.animate( { 
 				'bottom' : 10 
 			}, 'slow' );
-		
-		// Hide the warning if present
-		if( this.addWarningFlag ){
-			$j( '#warningOverlay_' + this.embedPlayer.id ).fadeOut( 'slow' );
-		}
+
 	},
 	
 	/**
@@ -594,7 +603,7 @@ ctrlBuilder.prototype = {
 	showControlBar : function(){
 		var animateDuration = 'slow';	
 		$j( this.embedPlayer.getPlayerElement() ).css('z-index', '1')	
-		
+		mw.log( 'showControlBar' );
 		// Move up text track if present
 		this.embedPlayer.$interface.find( '.track' )
 			.animate( 
@@ -921,8 +930,11 @@ ctrlBuilder.prototype = {
 		var embedPlayer = this.embedPlayer;
 		var $overlay = embedPlayer.$interface.find( '.overlay-win,.ui-widget-overlay,.ui-widget-shadow' );
 		
+		this.displayOptionsMenuFlag = false;
+		mw.log(' closeMenuOverlay: ' + this.displayOptionsMenuFlag);
+		
 		$overlay.fadeOut( "slow", function() {
-			$overlay.remove();
+			$overlay.remove();		
 		} );
 		// Show the big play button: 
 		embedPlayer.$interface.find( '.play-btn-large' ).fadeIn( 'slow' );
@@ -938,6 +950,10 @@ ctrlBuilder.prototype = {
 	displayOverlay: function( overlayContent ) {
 		var _this = this;
 		var embedPlayer = this.embedPlayer;
+		mw.log( 'displayOverlay::' );
+		//	set the overlay display flag to true:
+		this.displayOptionsMenuFlag = true;
+		mw.log(" set displayOptionsMenuFlag:: " + this.displayOptionsMenuFlag);
 		
 		if ( !this.supportedComponets[ 'overlays' ] ) {
 			embedPlayer.stop();
@@ -1104,9 +1120,10 @@ ctrlBuilder.prototype = {
 		.append( 
 			$j( '<h2 />' )
 			.text( gM( 'mwe-embedplayer-choose_player' )  )
-		);
+		);		
 		
 		$j.each( embedPlayer.mediaElement.getPlayableSources(), function( sourceId, source ) {
+			
 			var playable = mw.EmbedTypes.players.defaultPlayer( source.getMIMEType() );			
 			var is_selected = ( source == embedPlayer.mediaElement.selectedSource );			
 			
@@ -1118,12 +1135,13 @@ ctrlBuilder.prototype = {
 			if ( playable ) {
 				$playerList = $j('<ul />');
 				// output the player select code:
+		
 				var supportingPlayers = mw.EmbedTypes.players.getMIMETypePlayers( source.getMIMEType() );
 
 				for ( var i = 0; i < supportingPlayers.length ; i++ ) {									
 									
 					// Add link to select the player if not already selected )
-					if( embedPlayer.selected_player.id == supportingPlayers[i].id && is_selected ) {	
+					if( embedPlayer.selectedPlayer.id == supportingPlayers[i].id && is_selected ) {	
 						// Active player ( no link )
 						$playerLine = $j( '<span />' )
 						.text( 
@@ -1434,7 +1452,7 @@ ctrlBuilder.prototype = {
 							.addClass( 'ui-icon ui-icon-wrench' )
 						)	
 						.buttonHover()		
-						// Options binding:
+						// Options binding:						
 						.menu( {
 							'content' : ctrlObj.getOptionsMenu(),
 							'zindex' : mw.getConfig( 'fullScreenIndex' ) + 1, 		

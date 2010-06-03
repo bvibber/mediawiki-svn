@@ -5,7 +5,7 @@
 var urlparts = getRemoteEmbedPath();
 var mwEmbedHostPath = urlparts[0];
 var mwRemoteVersion = 'r127';
-var mwUseScriptLoader = false;
+var mwUseScriptLoader = true;
 
 // Log the mwRemote version makes it easy to debug cache issues
 if( window.console ){
@@ -171,17 +171,28 @@ function mwSetPageToLoading(){
 */
 function mwLoadPlayer( callback ){
 	// the jsPlayerRequest includes both javascript and style sheets for the embedPlayer 
-	var jsPlayerRequest = [
+	var jsPlayerRequest = [	 
+	                       
 		'mw.EmbedPlayer', 
+		'mw.style.EmbedPlayer',
 		'$j.ui', 
 		'ctrlBuilder', 
+		'$j.fn.hoverIntent',		
 		'$j.cookie', 
+		'JSON',
 		'$j.ui.slider', 
 		'kskinConfig',
 		'mw.style.kskin',
 		'$j.fn.menu',
 		'mw.style.jquerymenu',
-		'mw.TimedText' 
+		
+		// Timed Text module
+		'mw.TimedText',
+		'mw.style.TimedText',
+		
+		// mwSwarmTransport module
+		'mw.SwarmTransport'
+		
 	];		
 	// Quick sniff use java if IE and native if firefox 
 	// ( other browsers will run detect and get on-demand )

@@ -197,9 +197,8 @@
 			]
 			
 		];
-			
-		// Get the class of all embed video elements 
-		// to add the skin to the load request
+
+		// Pass every tag being rewritten through the update request function
 		$j( mw.getConfig( 'rewritePlayerTags' ) ).each( function() {	
 			var playerElement = this;		
 			mw.embedPlayerUpdateLibraryRequest( playerElement,  dependencyRequest[ 0 ] )			
@@ -226,9 +225,7 @@
 			// Setup userConfig 
 			mw.setupUserConfig( function() {
 				// Remove no video html elements:
-				$j( '.videonojs' ).remove();
-				
-				
+				$j( '.videonojs' ).remove();				
 				
 				// Detect supported players:  
 				mw.EmbedTypes.init();		
@@ -284,6 +281,7 @@
 		
 		$j( mw ).trigger( 'LoaderEmbedPlayerUpdateRequest', 
 				[ playerElement, dependencyRequest ] );
+
 	}
 
 } )( window.mw );
