@@ -14,7 +14,8 @@ class RPEDHooks {
 	public static function wikipediaLink( $skin, $target, &$text,
 		&$customAttribs, &$query, &$options, &$ret
 	) {
-		global $wgLocalStyle, $wgRemoteStyle, $wgPureWikiDeletionInEffect, $wgTitle, $wgRequest;
+		global $wgLocalStyle, $wgRemoteStyle, $wgPureWikiDeletionInEffect
+		, $wgTitle, $wgRequest, $wgRPEDBrokenLinkStyle, $wgRPEDExcludeNamespaced;
 		wfLoadExtensionMessages('RPED');
 		if ( $wgTitle->getNamespace () == -1 ) {
 			return true;
@@ -30,6 +31,40 @@ class RPEDHooks {
 
 		$itIsBlank = false;
 
+		// If it's an external link, see if it leads to Wikipedia, and
+		// if so, whether that page exists on Wikipedia
+		if ( $target->isExternal() ) {
+			$interwikiURL = wfMsgExt( 'rped-wikipedia-url','parsemag');
+			$dbr = wfGetDB( DB_SLAVE );
+			$title = $target->getDBkey ();
+			
+			if ( strpos ( $title, ':' ) && $wgRPEDExcludeNamespaced ) {
+				return true;
+			}
+			
+			$interwikiPrefix = $target->getInterwiki ();
+			$result = $dbr->selectRow(
+				'interwiki',
+				'iw_prefix',
+				array( "iw_url" => $interwikiURL
+				      , "iw_prefix" => $interwikiPrefix )
+			);
+			
+			if ( !$result ) {
+				return true;
+			}
+			
+			$result = $dbr->selectRow(
+				'rped_page',
+				'rped_page_id',
+				array( "rped_page_title" => $title )
+			);
+			if ( !$result ) {
+				$query['action'] = "edit";
+				$customAttribs['style'] = $wgRPEDBrokenLinkStyle;
+			}
+			return true;
+		}
 		// Return immediately if we know it's existent on the local wiki
 		if ( in_array( 'known', $options ) ) {
 			if ( !isset( $query['action'] ) && !isset( $query['curid'] ) ) {
@@ -50,7 +85,6 @@ class RPEDHooks {
 				'blank_page_id',
 				array( "blank_page_id" => $id )
 			);
-
 			if ( !$result ) {
 				return true;
 			}
@@ -79,8 +113,9 @@ class RPEDHooks {
 			if ( !$result ) {
 				return true;
 			} else {
-				$title = htmlentities( $title );
-				$url = wfMsgExt( 'rped-wikipedia-url','parsemag') . $title;
+				$newTitle = $target->getPrefixedURL ();
+				#$title = urlencode ( $title );
+				$url = wfMsgExt( 'rped-wikipedia-url','parsemag', $newTitle );
 
 				// The page that we'll link to
 				$text = '<a href="' . $url . $fragment. '">' . $text. '</a>';

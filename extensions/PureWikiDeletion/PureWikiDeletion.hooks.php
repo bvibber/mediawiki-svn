@@ -9,6 +9,9 @@ EOT;
 
 class PureWikiDeletionHooks {
 
+       /**
+        * When a user visits the URL of a blanked page, redirect to the edit page
+        */ 
        public static function PureWikiDeletionOutputPageParserOutputHook( &$out, $parseroutput ) {
 		$dbr = wfGetDB( DB_SLAVE );
 		$target = $out->getTitle();
@@ -33,6 +36,11 @@ class PureWikiDeletionHooks {
 		return true;
        }
 
+       /**
+        * After a page is saved, add or remove it from the blank_page table if
+        * it has been blanked or unblanked, respectively; if blanked, redirect
+        * the user to the "Action complete" page
+        */ 
        public static function PureWikiDeletionSaveCompleteHook( &$article, &$user, $text, $summary,
 	      $minoredit, &$watchthis, $sectionanchor, &$flags, $revision, &$status, $baseRevId,
 	      &$redirect ) {
@@ -107,7 +115,9 @@ class PureWikiDeletionHooks {
 	      return true;
        }
 
-
+	/**
+        * Change the link style if the target page is in the blank_table
+        */ 
        public static function PureWikiDeletionLink( $skin, $target, &$text, &$customAttribs, &$query, &$options
 	      , &$ret ) {
 	      global $wgPureWikiDeletionBlankLinkStyle;
@@ -136,6 +146,9 @@ class PureWikiDeletionHooks {
 	       return true;
        }
 
+       /**
+        * Provide historical information about a blank page that the user is editing
+        */ 
        public static function PureWikiDeletionEditHook( &$editPage ) {
 	      global $wgLang, $wgUser;
 	      wfLoadExtensionMessages( 'PureWikiDeletion' );
@@ -179,6 +192,9 @@ class PureWikiDeletionHooks {
 	      return true;
        }
 
+       /**
+        * Remove blanked pages from the blank_page table when they are deleted
+        */ 
        public static function PureWikiDeletionDeleteHook( &$article, &$user, $reason, $id )
        {
 	      $dbr = wfGetDB( DB_SLAVE );
@@ -192,7 +208,10 @@ class PureWikiDeletionHooks {
 	      }
 	      return true;
        }
-
+       
+       /**
+        * Add blanked pages back to the blank_page table when they are undeleted
+        */ 
        public static function PureWikiDeletionUndeleteHook( $title, $create ) {
 	      $dbr = wfGetDB( DB_SLAVE );
 	      $myRevision = Revision::loadFromTitle( $dbr, $title );

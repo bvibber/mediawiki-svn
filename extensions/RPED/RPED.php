@@ -32,7 +32,7 @@ $wgExtensionCredits['other'][] = array(
 	'author' => 'Tisane',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:RemotePageExistenceDetection',
 	'descriptionmsg' => 'rped-desc',
-	'version' => '1.0.1',
+	'version' => '1.0.2',
 );
  
 $dir = dirname( __FILE__ ) . '/';
@@ -44,3 +44,7 @@ $wgGroupPermissions['RPED']['rped']    = true;
 
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'RPEDHooks::RPEDCreateTable';
 $wgHooks['LinkBegin'][] = 'RPEDHooks::wikipediaLink';
+
+$wgRPEDBrokenLinkStyle = "color: red";
+$wgRPEDExcludeNamespaced = false;
+$wgRemoteStyle = 'color: blue';

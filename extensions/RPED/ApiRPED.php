@@ -31,6 +31,11 @@ class ApiRPED extends ApiBase {
         return;
     }
     
+	/*
+	 * Insert or delete a row from the rped_page table
+	 * @param key "insert" or "delete"
+	 * @param $value Page name to delete
+	 */
 	public function paramProcess( $key,$value ){
 		$dbr = wfGetDB( DB_SLAVE );
 		$dbw = wfGetDB( DB_MASTER );
