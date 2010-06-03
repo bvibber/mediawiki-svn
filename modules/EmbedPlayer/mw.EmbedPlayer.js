@@ -1320,7 +1320,10 @@ mw.EmbedPlayer.prototype = {
 			if( this[ attr ] == "false" ) this[attr] = false;
 			if( this[ attr ] == "true" ) this[attr] = true;
 		}
-				
+		// Restore the apiTitle key escaping
+		if( this.apiTitleKey )
+			this.apiTitleKey = unescape( this.apiTitleKey );
+		
 		// Hide "controls" if using native player controls: 
 		if( this.useNativeControls() ){
 			_this.controls = false;
