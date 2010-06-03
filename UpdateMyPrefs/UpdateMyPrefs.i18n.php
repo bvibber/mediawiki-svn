@@ -146,9 +146,11 @@ $messages['es'] = array(
 
 /** Finnish (Suomi)
  * @author Crt
+ * @author Str4nd
  */
 $messages['fi'] = array(
 	'prefs-updates' => 'Päivitykset',
+	'updatemyprefs-label-message' => 'Päivitä asetukseni automaattisesti uusilla oletusasetuksilla ja työkaluilla, kun niitä tulee saataville',
 );
 
 /** French (Français)

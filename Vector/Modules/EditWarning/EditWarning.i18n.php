@@ -236,9 +236,10 @@ Saioa hasi baduzu, mezu hau kendu dezakezu zure hobespenen orrialdeko "{{int:pre
 
 /** Persian (فارسی)
  * @author Ebraminio
+ * @author Huji
  */
 $messages['fa'] = array(
-	'vector-editwarning-preference' => 'زمان خروج از صفحه در صورت داشتن ویرایش‌های‌ ذخیره‌نشده به من هشدار بده',
+	'vector-editwarning-preference' => 'زمان خروج از صفحهٔ ویرایش در صورت داشتن ویرایش‌های‌ ذخیره‌نشده به من هشدار بده',
 );
 
 /** Finnish (Suomi)

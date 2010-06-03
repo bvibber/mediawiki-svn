@@ -247,10 +247,13 @@ $messages['eu'] = array(
 
 /** Persian (فارسی)
  * @author Ebraminio
+ * @author Huji
  */
 $messages['fa'] = array(
 	'wikieditor' => 'رابط ویرایش پیشرفته ویکی‌متن',
-	'wikieditor-loading' => 'بارگیری',
+	'wikieditor-desc' => 'یک رابط ویرایش پیشرفته ویکی‌متن و چندین پودمان دارای قابلیت فراهم می‌کند',
+	'wikieditor-wikitext-tab' => 'ویکی‌متن',
+	'wikieditor-loading' => 'در حال بارگیری',
 );
 
 /** Finnish (Suomi)

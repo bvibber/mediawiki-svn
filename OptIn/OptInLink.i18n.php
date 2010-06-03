@@ -948,9 +948,9 @@ $messages['sk'] = array(
  * @author Smihael
  */
 $messages['sl'] = array(
-	'optin-try' => 'Poskusite Beta različico',
+	'optin-try' => 'Preizkusite betarazličico',
 	'tooltip-pt-optin-try' => 'Preizkusite nove funkcije',
-	'optin-leave' => 'Zapusti Beta različico',
+	'optin-leave' => 'Zapusti betarazličico',
 	'tooltip-pt-optin-leave' => 'Izklopite nove funkcije',
 	'optin-feedback' => 'Mnenja o betarazličici',
 	'tooltip-pt-optin-feedback' => 'Nudi povratne informacije o vaših izkušnjah z novimi funkcijami',

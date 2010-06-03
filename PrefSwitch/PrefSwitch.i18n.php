@@ -1053,8 +1053,10 @@ Horiek hobetzen laguntzeko, bere ezazu, mesedez, borondatezko beheko inkesta.',
 
 /** Finnish (Suomi)
  * @author Crt
+ * @author Str4nd
  */
 $messages['fi'] = array(
+	'prefswitch' => 'Käytettävyyshankkeen asetusvalinta',
 	'prefswitch-desc' => 'Mahdollistaa käyttäjille asetussarjan vaihtamisen.',
 	'prefswitch-survey-true' => 'Kyllä',
 	'prefswitch-survey-false' => 'Ei',
@@ -1083,11 +1085,23 @@ Valitse kaikki sopivat.',
 	'prefswitch-title-off' => 'Poista käytöstä uudet omaisuudet',
 	'prefswitch-title-switched-off' => 'Kiitos',
 	'prefswitch-title-feedback' => 'Palaute',
-	'prefswitch-success-on' => 'Uudet ominaisuudet ovat nyt käytössä.',
-	'prefswitch-success-off' => 'Uudet ominaisuudet ovat nyt poistettu käytöstä.',
+	'prefswitch-success-on' => 'Uudet ominaisuudet ovat nyt käytössä. Toivomme, että nautit uusien ominaisuuksien käytöstä. Voit aina ottaa ne pois käytöstä napsauttamalla ”[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-on}}]]” -linkkiä sivun yläreunasta.',
+	'prefswitch-success-off' => 'Uudet ominaisuudet ovat nyt poistettu käytöstä. Kiitos uusien ominaisuuksien kokeilusta. Voit aina ottaa ne takaisin käyttöön napsauttamalla ”[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-off}}]]” -linkkiä sivun yläreunasta.',
 	'prefswitch-success-feedback' => 'Palautteesi on lähetetty.',
 	'prefswitch-return' => '<hr style="clear:both">
 Palaa sivulle <span class="plainlinks">[$1 $2]</span>.',
+	'prefswitch-main' => "Olemme tehneet kovasti töitä tehdessämme asioita helpommaksi käyttäjillemme. Olemme jakaneet joitain parannuksia, kuten uuden ilmeen ja yksinkertaistetut muokkaustoiminnot. Käytettävyyden parantaminen hankkeissamme on etusijalla Wikimedia Foundationissa ja tulemme jakamaan lisää päivityksiä tulevaisuudessa. Lisätietoja löytyy aiheeseen liittyvässä [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/ Wikimedian blogin] viestistä.
+
+[[File:UsabilityNavigation.png|right|link=|Kuvakaappaus uudesta navigaatiosta]]
+[[File:UsabilityToolbar.png|right|link=|Kuvakaappaus parannetusta muokkauspalkista]]
+[[File:UsabilityDialogs.png|right|link=|Kuvakaappaus uudesta sisällöntuoton valintaikkunasta]]
+==Mitä olemme muuttaneet==
+* '''Navigaatio''': Paransimme navigaatiota sivujen lukemiseksi ja muokkaamiseksi. Nyt jokaisen sivun yläreunassa olevat välilehdet ovat selvempiä
+* '''Muokkauspalkin parannukset''':  Olemme järjestäneet muokkauspalkin uudelleen, jotta sitä olisi helpompi käyttää. Nyt sivujen muotoilu on yksinkertaisempaa ja havainnollisempaa.
+* '''Ohjattu linkkitoiminto''':  Helppokäyttöinen työkalu antaa sinun lisätä linkkejä sekä muille wikisivuille että ulkoisille sivustoille.
+* '''Hakuparannukset''': Olemme parantaneet hakuehdotuksia, jotta löytäisit etsimäsi sivun nopeammin.
+* '''Muut uudet toiminnot''':  Olemme myös tuoneet esiin ohjatun taulukonlisäystoiminnon taulukoiden helpompaan lisäämiseen ja etsi ja korvaa -toiminnon yksinkertaisempaan muokkaamiseen.
+* '''Wikipedia-palapelimaapallo''': Olemme päivittäneet palapelimaapalloa. Lue lisää [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ Wikimedian blogista].",
 	'prefswitch-main-anon' => '=== Palaa takaisin ===
 Jos haluat poistaa käytöstä uudet ominaisuudet – <span class="plainlinks">[$1 napsauta tästä]</span>. Sinua pyydetään ensin kirjautumaan sisään tai luomaan tunnus.',
 	'prefswitch-main-on' => '=== Palautetta? ===
@@ -2146,6 +2160,7 @@ $messages['nn'] = array(
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Jon Harald Søby
  * @author Nghtwlkr
  */
 $messages['no'] = array(
@@ -2183,17 +2198,18 @@ Velg alle som passer.',
 	'prefswitch-success-feedback' => 'Tilbakemeldingen din er sendt.',
 	'prefswitch-return' => '<hr style="clear:both">
 Tilbake til <span class="plainlinks">[$1 $2]</span>.',
-	'prefswitch-main' => "Vi har jobbet hardt for å gjøre ting lettere for våre brukere. Vi er glade for å dele noen forbedringer, inkludert et nytt utseende og forenklede redigeringsfunksjoner. Å forbedre brukeligheten av våre prosjekt er en prioritet for Wikimedia Foundation og vi vil dele flere oppdateringer med dere i fremtiden.
+	'prefswitch-main' => "Vi har jobbet hardt for å gjøre ting lettere for brukerne våre. Vi er glade for å dele noen forbedringer, blant annet et nytt utseende og enklere redigeringsfunksjoner. Å forbedre brukervennligheten til prosjektene våre er en prioritet for Wikimedia Foundation og vi vil dele flere oppdateringer med dere i fremtiden. Se [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/ Wikimedia-bloggen] (engelsk) for mer informasjon.
 
-[[File:UsabilityNavigation.png|right|link=|Screenshot of the new navigation]]
-[[File:UsabilityToolbar.png|right|link=|Screenshot of the enhanced edit toolbar]]
-[[File:UsabilityDialogs.png|right|link=|Screenshot of the new content generation dialogs]]
+[[File:UsabilityNavigation.png|right|link=|Skjermbilde av den nye navigasjonen]]
+[[File:UsabilityToolbar.png|right|link=|Skjermbilde av den nye verktøylinja]]
+[[File:UsabilityDialogs.png|right|link=|Skjermbilde av de nye dialogboksene]]
 ===Dette har vi endret===
-* '''Navigering:''' Vi har forbedret navigeringen for lesing og redigering av sider. Nå viser fanene på toppen av siden klarere om du ser på siden eller på en diskusjonsside, og hvorvidt du leser eller redigerer en side.
-* '''Forbedring av verktøylinje for redigering:''' Vi har omorganisert verktøyslinjen for redigering for å gjøre den lettere å bruke. Nå er det lettere og mer intuitivt å formatere sider.
-* '''Lenkehjelp:''' Et verktøy som er lett å bruke tillater deg å legge til lenker til andre Wikipediasider og andre eksterne nettsteder.
+* '''Navigasjon:''' Vi har forbedret navigeringen for lesing og redigering av sider. Nå viser fanene på toppen av siden klarere om du ser på siden eller på en diskusjonsside, og hvorvidt du leser eller redigerer en side.
+* '''Forbedring av redigeringsverktøylinja:''' Vi har omorganisert verktøyslinja for redigering for å gjøre den lettere å bruke. Nå er det lettere og mer intuitivt å formatere sider.
+* '''Lenkehjelp:''' Et verktøy som er lett å bruke tillater deg å legge til lenker til andre wikisider og eksterne nettsteder.
 * '''Forbedring av søk:''' Vi har forbedret søkeforslagene for å hjelpe deg til siden du leter etter raskere.
-* '''Andre nye funksjoner:''' Vi har også introdusert en tabellhjelper for å gjøre det lettere å opprette tabeller og en finn og erstatt-funksjon for å gjøre sideredigering lettere.",
+* '''Andre nye funksjoner:''' Vi har også introdusert en tabellhjelper for å gjøre det lettere å opprette tabeller og en finn og erstatt-funksjon for å gjøre sideredigering lettere.
+* '''Logoen:''' Vi har oppgradert logoen. Les mer på [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ Wikimedia-bloggen] (engelsk).",
 	'prefswitch-main-anon' => '===Ta meg tilbake===
 Om du vil slå av de nye funksjonene, <span class="plainlinks">[$1 klikk her]</span>. Du vil bli spurt om å logge inn eller opprette en konto først.',
 	'prefswitch-main-on' => '===Tilbakemelding?===
@@ -2596,6 +2612,7 @@ $messages['sr-ec'] = array(
 
 /** Swedish (Svenska)
  * @author Ainali
+ * @author Boivie
  * @author Dafer45
  */
 $messages['sv'] = array(
@@ -2632,6 +2649,18 @@ Välj alla som stämmer.',
 	'prefswitch-success-off' => 'De nya funktionerna är nu avstängda. Tack för att du provade dessa. Du kan alltid sätta på dem igen genom att klicka på "[[Special:UsabilityInitiativePrefSwitch|nya funktioner]]" längst upp på sidan.',
 	'prefswitch-success-feedback' => 'Dina kommentarer har skickats.',
 	'prefswitch-return' => '<hr style="clear:both"> Återgå till <span class="plainlinks">[$1 $2].</span>',
+	'prefswitch-main' => "Vi har arbetat hårt för att göra det lättare för våra användare. Vi är glada över att kunna dela vissa förbättringar, inklusive ett nytt utseende och enklare redigeringsfunktioner. Att förbättra användbarheten för våra projekt är en prioritet för Wikimedia Foundation och vi kommer att göra fler uppdateringar i framtiden. För mer information, besök den relaterade [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/ Wikimedia blogg]-inlägget.
+
+[[File:UsabilityNavigation.png|right|link=|Skärmdump av den nya navigeringen]]
+[[File:UsabilityToolbar.png|right|link=|Skärmdump av det utökade redigeringsverktygsfältet]]
+[[File:UsabilityDialogs.png|right|link=|Skärmdump av de nya dialogrutorna för innehållsskapande]]
+===Detta är vad vi har ändrat===
+* '''Navigering''': Vi har förbättrat navigeringen för att läsa och redigera sidor. Nu definierar flikarna högst upp på varje sida tydligare om du tittar på sidan eller diskussionssidan, och om du läser eller redigerar en sida.
+* '''Förbättringar av redigeringsverktygsfältet''': Vi har omorganiserat redigeringsverktygsfältet att göra det lättare att använda. Nu är sidformatering enklare och mer intuitiv.
+* '''Länk-guiden''': Ett lättanvänt verktyg låter dig lägga till länkar till andra wiki-sidor samt länkar till externa webbplatser.
+* '''Sökningsförbättringar''': Vi har förbättrat sökförslag att snabbare få dig till den sida du söker.
+* '''Andra nya funktioner''': Vi har också infört en tabellguide för att göra tabellskapande lättare och en sök-och-ersätt-funktion för att förenkla sidredigering.
+* '''Wikipedia pussel-jordglob''': Vi har uppdaterat pusselgloben. Läs mer på [ttp://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ Wikimedia-bloggen].",
 	'prefswitch-main-anon' => '=== Ta Mig Tillbaka ===
 Om du vill stänga av de nya funktionerna, <span class="plainlinks">[$1 klicka här]</span>. Du blir ombedd att logga in eller skapa ett konto först.',
 	'prefswitch-main-on' => '===Feedback?===
@@ -2641,9 +2670,9 @@ Om du vill stänga av de nya funktionerna, <span class="plainlinks">[$2 klicka h
 	'prefswitch-main-off' => '===Testa dem!===
 Om du vill slå på de nya funktioner, vänligen <span class="plainlinks">[$1 klicka här].</span>',
 	'prefswitch-survey-intro-feedback' => 'Vi vill gärna höra din åsikt.
-Vänligen fyll i den valfria undersökningen nedan.',
+Vänligen fyll i den frivilliga undersökningen nedan innan du klickar på "[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]".',
 	'prefswitch-survey-intro-off' => 'Tack för att du testar de nya funktionerna.
-Var vänlig och fyll i den valfria undersökningen nedan för att hjälpa oss göra dem bättre.',
+För att hjälpa oss förbättra dem, var vänlig och fyll i den frivilliga undersökningen nedan innan du klickar på "[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]".',
 );
 
 /** Telugu (తెలుగు)

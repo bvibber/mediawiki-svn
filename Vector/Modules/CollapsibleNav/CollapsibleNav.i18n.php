@@ -125,6 +125,13 @@ $messages['fa'] = array(
 	'vector-collapsiblenav-preference' => 'فعال‌کردن منوی تاشوی ناوبری  سمت چپ',
 );
 
+/** Finnish (Suomi)
+ * @author Str4nd
+ */
+$messages['fi'] = array(
+	'vector-collapsiblenav-preference' => 'Ota käyttöön vasemman navigaatiovalikon piilottaminen',
+);
+
 /** French (Français)
  * @author IAlex
  */
