@@ -34,7 +34,7 @@ class CodeRevisionAuthorLink extends CodeRevisionAuthorView {
 			'action' => $this->getTitle()->getLocalUrl(),
 			'name' => 'uluser', 'id' => 'mw-codeauthor-form1' ) );
 
-		$form .= Html::hidden( 'linktoken', $wgUser->getToken() );
+		$form .= Html::hidden( 'linktoken', $wgUser->editToken('link') );
 		$form .= Xml::openElement( 'fieldset' );
 
 		$additional = '';
@@ -62,7 +62,7 @@ class CodeRevisionAuthorLink extends CodeRevisionAuthorView {
 		global $wgOut, $wgRequest, $wgUser;
 		// Link an author to a wiki user
 		
-		if ( $wgRequest->getVal( 'linktoken') != $wgUser->getToken() ) {
+		if ( $wgUser->matchEditToken( $wgRequest->getVal( 'linktoken'), 'link' ) {
 			$wgOut->addWikiMsg( 'code-author-badtoken' );
 			return;
 		}
