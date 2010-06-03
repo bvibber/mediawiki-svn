@@ -62,7 +62,7 @@ class DataTransclusionHandler {
 	    array_shift( $params ); // $key
 	    array_shift( $params ); // $asHTML
 
-	    if ( $asHTML ) $mode = 'parseinline';
+	    if ( $asHTML ) $mode = 'parseinline'; //TESTME
 	    else $mode = 'parsemag';
 
 	    $m = wfMsgExt( $key, $mode, $params );
@@ -75,31 +75,31 @@ class DataTransclusionHandler {
     static function handleRecordTag( $key, $argv, $parser = null, $asHTML = true ) {
             //find out which data source to use...
 	    if ( empty( $argv['source'] ) ) {
-		if ( empty( $argv[1] ) ) return DataTransclusionHandler::errorMessage( 'datatransclusion-missing-source', $asHTML );
+		if ( empty( $argv[1] ) ) return DataTransclusionHandler::errorMessage( 'datatransclusion-missing-source', $asHTML ); //TESTME
 		else $sourceName = $argv[1];
 	    } else {
 		$sourceName = $argv['source'];
 	    }
 
 	    $source = DataTransclusionHandler::getDataSource( $sourceName );
-	    if ( empty( $source ) ) return DataTransclusionHandler::errorMessage( 'datatransclusion-unknown-source', $asHTML, $sourceName );
+	    if ( empty( $source ) ) return DataTransclusionHandler::errorMessage( 'datatransclusion-unknown-source', $asHTML, $sourceName ); //TESTME
 
             //find out how to find the desired record
 	    if ( empty( $argv['by'] ) ) $by = $source->getDefaultKey();
 	    else $by = $argv['by'];
 
 	    $keyFields = $source->getKeyFields();
-	    if ( ! in_array( $by, $keyFields ) ) return DataTransclusionHandler::errorMessage( 'datatransclusion-bad-argument-by', $asHTML, $sourceName, $by, join(', ', $keyFields) );
+	    if ( ! in_array( $by, $keyFields ) ) return DataTransclusionHandler::errorMessage( 'datatransclusion-bad-argument-by', $asHTML, $sourceName, $by, join(', ', $keyFields) ); //TESTME
 
 	    if ( !empty( $argv['key'] ) ) $key = $argv['key'];
 	    else if ( $key === null || $key === false ) {
-		if ( empty( $argv[2] ) ) return DataTransclusionHandler::errorMessage( 'datatransclusion-missing-argument-key', $asHTML );
+		if ( empty( $argv[2] ) ) return DataTransclusionHandler::errorMessage( 'datatransclusion-missing-argument-key', $asHTML ); //TESTME
 		else $key = $argv[2];
 	    }
 
             //find out how to render the record
 	    if ( empty( $argv['template'] ) ) {
-		if ( empty( $argv[3] ) ) return DataTransclusionHandler::errorMessage( 'datatransclusion-missing-argument-template', $asHTML );
+		if ( empty( $argv[3] ) ) return DataTransclusionHandler::errorMessage( 'datatransclusion-missing-argument-template', $asHTML ); //TESTME
 		else $template = $argv[3];
 	    } else {
 		$template = $argv['template'];
@@ -107,11 +107,11 @@ class DataTransclusionHandler {
 
             //load the record
 	    $record = $source->fetchRecord( $by, $key );
-	    if ( empty( $record ) ) return DataTransclusionHandler::errorMessage( 'datatransclusion-record-not-found', $asHTML, $sourceName, $by, $key );
+	    if ( empty( $record ) ) return DataTransclusionHandler::errorMessage( 'datatransclusion-record-not-found', $asHTML, $sourceName, $by, $key ); //TESTME
 
 	    //render the record into wiki text
 	    $t = Title::newFromText( $template, NS_TEMPLATE );
-	    if ( empty( $t ) ) return DataTransclusionHandler::errorMessage( 'datatransclusion-bad-template-name', $asHTML, $template );
+	    if ( empty( $t ) ) return DataTransclusionHandler::errorMessage( 'datatransclusion-bad-template-name', $asHTML, $template ); //TESTME
 
 	    //FIXME: log the template we used into the parser output, like regular template use 
 	    //       (including templates used by the template, etc)
@@ -121,19 +121,19 @@ class DataTransclusionHandler {
 	    $record = $handler->normalizeRecord( $record );
 	    $text = $handler->render( $record );
 
-	    if ( $text === false ) return DataTransclusionHandler::errorMessage( 'datatransclusion-unknown-template', $asHTML, $template );
+	    if ( $text === false ) return DataTransclusionHandler::errorMessage( 'datatransclusion-unknown-template', $asHTML, $template ); //TESTME
 
 	    //set parser output expiry
 	    $expire = $source->getCacheDuration();
 	    if ( $expire !== false && $expire !== null ) { 
-		$parser->getOutput()->updateCacheExpiry( $expire ); //NOTE: this works only since r67185
+		$parser->getOutput()->updateCacheExpiry( $expire ); //NOTE: this works only since r67185 //TESTME
 	    } 
 
 	    if ( $asHTML && $parser ) { //render into HTML if desired
-		$html = $parser->recursiveTagParse( $text );
-		return $html;
+		$html = $parser->recursiveTagParse( $text ); 
+		return $html; //TESTME
 	    } else {
-		return $text;
+		return $text; //TESTME
 	    }
     }
 
@@ -170,7 +170,7 @@ class DataTransclusionHandler {
 
 	    //dumb and slow, but works
 	    $p = new Article( $this->template );
-	    if ( !$p->exists() ) return false;
+	    if ( !$p->exists() ) return false; //TESTME
 
 	    $text = $p->getContent(); 
 	    $text = $this->parser->replaceVariables( $text, $record, true );
@@ -202,6 +202,9 @@ class DataTransclusionHandler {
     }
 
     protected static $sanitizerSubstitution = array(
+	    # '!&!' => '&amp;',  #breaks URLs. not really needed when parsed as wiki-text...
+	    '!<!' => '&lt;', 
+	    '!>!' => '&gt;', 
 	    '!\[!' => '&#91;', 
 	    '!\]!' => '&#93;', 
 	    '!\{!' => '&#123;', 
@@ -216,8 +219,6 @@ class DataTransclusionHandler {
     );
 
     function sanitizeValue( $v ) {
-	    $v = htmlspecialchars( $v );
-
 	    $find = array_keys( self::$sanitizerSubstitution );
 	    $subst = array_values( self::$sanitizerSubstitution );
 
