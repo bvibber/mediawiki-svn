@@ -29,10 +29,12 @@ class CodeRevisionAuthorLink extends CodeRevisionAuthorView {
 	}
 
 	function doForm() {
-		global $wgOut;
+		global $wgOut, $wgUser;
 		$form = Xml::openElement( 'form', array( 'method' => 'post',
 			'action' => $this->getTitle()->getLocalUrl(),
 			'name' => 'uluser', 'id' => 'mw-codeauthor-form1' ) );
+
+		$form .= Html::hidden( 'linktoken', $wgUser->getToken() );
 		$form .= Xml::openElement( 'fieldset' );
 
 		$additional = '';
@@ -57,8 +59,14 @@ class CodeRevisionAuthorLink extends CodeRevisionAuthorView {
 	}
 
 	function doSubmit() {
-		global $wgOut, $wgRequest;
+		global $wgOut, $wgRequest, $wgUser;
 		// Link an author to a wiki user
+		
+		if ( $wgRequest->getVal( 'linktoken') != $wgUser->getToken() ) {
+			$wgOut->addWikiMsg( 'code-author-badtoken' );
+			return;
+		}
+		
 		if ( strlen( $this->mTarget ) && $wgRequest->getCheck( 'newname' ) ) {
 			$user = User::newFromName( $this->mTarget, false );
 			if ( !$user || !$user->getId() ) {

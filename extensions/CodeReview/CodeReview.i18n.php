@@ -43,6 +43,7 @@ $messages['en'] = array(
 	'code-author-link' => 'link?',
 	'code-author-unlink' => 'unlink?',
 	'code-author-unlinksuccess' => 'Author $1 has been unlinked',
+	'code-author-badtoken' => 'Session error trying to perform the action.',
 	'code-browsing-path' => "Browsing revisions in '''$1'''",
 	'code-field-id' => 'Revision',
 	'code-field-author' => 'Author',
