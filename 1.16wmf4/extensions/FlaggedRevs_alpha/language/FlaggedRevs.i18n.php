@@ -49,9 +49,9 @@ $messages['en'] = array(
 	'revreview-hist-basic-auto'    => '[{{fullurl:$1|stableid=$2}} automatically checked]',
 	'revreview-hist-quality-auto'  => '[{{fullurl:$1|stableid=$2}} automatically approved]',
 	'revreview-hist-pending'       => '\'\'\'[[{{fullurl:$1|oldid=$2&diff=$3}} pending review]]\'\'\'',
-	'review-edit-diff'             => '\'\'\'NOTICE: Some pending changes to the accepted version are incorporated into the edit form below.\'\'\'',
-	'revreview-diff-toggle-show'   => 'show changes',
-	'revreview-diff-toggle-hide'   => 'hide changes',
+	'review-edit-diff'             => '\'\'\'NOTICE: Some of the pending changes affect the area of the page you are editing.\'\'\'',
+	'revreview-diff-toggle-show'   => 'show those changes',
+	'revreview-diff-toggle-hide'   => 'hide those changes',
 	'revreview-diff-toggle-title'  => 'Toggle display of pending changes to the accepted version',
 	'revreview-log-toggle-show'    => 'show stability log',
 	'revreview-log-toggle-hide'    => 'hide stability log',
@@ -110,9 +110,13 @@ Refreshing the page and rereviewing can solve this problem.',
 	'revreview-depth-4'            => 'Featured',
 	'revreview-draft-title'        => 'Pending changes are displayed on this page',
 	'revreview-edit'               => 'Edit',
-	'revreview-editnotice'         => '\'\'\'Your changes will be accepted once an authorized user reviews them. ([[{{MediaWiki:Validationpage}}|?]])\'\'\'',
-	'revreview-check-flag'         => 'Accept currently pending changes',
-	'revreview-edited'             => '\'\'\'Changes will be accepted once an authorized user reviews them. ([[{{MediaWiki:Validationpage}}|?]])\'\'\'
+	'revreview-editnotice'         => '\'\'\'Your changes will be accepted once an authorized user reviews them. ([[{{MediaWiki:Validationpage}}|help]])\'\'\'',
+	'revreview-check-flag'         => 'Accept the pending changes',
+	'revreview-check-flag-title'   => 'Accept all the currently pending changes along with your own edit.
+	Only use this if you have already seen the entire pending changes diff.',
+	'revreview-submitedit'         => 'Submit changes',
+	'revreview-submitedit-title'   => 'Submit your changes for review',
+	'revreview-edited'             => '\'\'\'Your changes will be accepted once an authorized user reviews them. ([[{{MediaWiki:Validationpage}}|help]])\'\'\'
 
 There {{PLURAL:$2|is|are}} [{{fullurl:{{FULLPAGENAMEE}}|oldid=$1&diff=cur&diffonly=0}} $2 pending {{PLURAL:$2|change|changes}}] \'\'(shown below)\'\' awaiting review.',
 	'revreview-edited-section'     => 'Return to page section named "[[#$1|$2]]".',
@@ -132,7 +136,7 @@ See the [[Special:Unreviewedpages|list of unreviewed pages]].',
 	'revreview-pending-quality'     => 'The [{{fullurl:{{FULLPAGENAMEE}}|stable=1}} accepted version] was [{{fullurl:{{#Special:Log}}|type=review&page={{FULLPAGENAMEE}}}} approved] on <i>$2</i>. There {{PLURAL:$3|is|are}} [{{fullurl:{{FULLPAGENAMEE}}|oldid=$1&diff=cur&diffonly=0}} $3 pending {{PLURAL:$3|change|changes}}] awaiting review.',
  	'revreview-pending-nosection'  => 'Try viewing the [{{fullurl:{{FULLPAGENAMEE}}|stable=0}} latest revision], which includes
 [{{fullurl:{{FULLPAGENAMEE}}|oldid=$1&diff=cur&diffonly=0}} $2 pending {{PLURAL:$2|change|changes}}], to see if the section was moved or deleted.',
-	'revreview-noflagged'          => 'There are no [[{{MediaWiki:Validationpage}}|reviewed]] revisions of this page, so it may \'\'\'not\'\'\' have been [[{{MediaWiki:Validationpage}}|checked]] for quality.',
+	'revreview-noflagged'          => 'There are no [[{{MediaWiki:Validationpage}}|reviewed versions]] of this page, so it may \'\'\'not\'\'\' have been checked for adherence to standards.',
 	'revreview-note'               => '[[User:$1|$1]] made the following notes [[{{MediaWiki:Validationpage}}|reviewing]] this revision:',
 	'revreview-notes'              => 'Observations or notes to display:',
 	'revreview-oldrating'          => 'It was rated:',
@@ -185,7 +189,11 @@ To remove the review status of a revision, set \'\'all\'\' fields to "inadequate
 Please hit the "back" button in your browser and try again.',
 	'revreview-update'             => '\'\'\'Please [[{{MediaWiki:Validationpage}}|review]] any pending changes \'\'(shown below)\'\' made to the accepted version.\'\'\'
 	You may first need to follow-up on or "undo" edits.',
-	'revreview-update-edited'      => '<span class="flaggedrevs_important">Your changes have not yet been accepted. There are previous edits pending review.</span>
+	'revreview-update-edited'      => '<span class="flaggedrevs_important">Your changes have not yet been accepted.</span>
+
+Please review all the changes shown below to make your edits accepted.
+You may first need to follow-up on or "undo" edits.',
+	'revreview-update-edited-prev'  => '<span class="flaggedrevs_important">Your changes have not yet been accepted. There are previous changes pending review.</span>
 
 Please review all the changes shown below to make your edits accepted.
 You may first need to follow-up on or "undo" edits.',
@@ -208,7 +216,7 @@ Please check the URL you used to access this page.',
 	'stable-logentry-config'       => 'set acceptance settings for $1',
 	'stable-logentry-modify'       => 'changed acceptance settings for $1',
 	'stable-logentry-reset'        => 'reset acceptance settings for $1',
-	'stable-log-restriction'       => 'Auto-accept: requires "$1" permission',
+	'stable-log-restriction'       => 'Auto-review: requires "$1" permission',
 	'stable-logpage'               => 'Stability log',
 	'stable-logpagetext'           => 'This is a log of changes to the [[{{MediaWiki:Validationpage}}|accepted version]] configuration of content pages.',
 	
@@ -236,7 +244,7 @@ Please check the URL you used to access this page.',
 	'revreview-def-draft'          => 'latest',
 	'revreview-def-stable'         => 'accepted',
 
-	'revreview-restrictfilter'     => 'Restriction level:',
+	'revreview-restrictfilter'     => 'Auto-review restriction:',
 	'revreview-restriction-any'    => 'any',
 	'revreview-restriction-none'   => 'none',
 
@@ -248,7 +256,7 @@ Please check the URL you used to access this page.',
 	'tooltip-ca-stable'            => 'View the accepted version of this page',
 	'tooltip-ca-default'           => 'Quality assurance settings',
 
-	'flaggedrevs-protect-legend'   => 'Automatic edit acceptance ([[{{MediaWiki:Validationpage}}|?]])',
+	'flaggedrevs-protect-legend'   => 'Automatic edit review ([[{{MediaWiki:Validationpage}}|help]])',
 	'flaggedrevs-protect-none'     => 'Allow all users',
 	'flaggedrevs-protect-basic'    => 'Default settings',
 	
@@ -630,6 +638,7 @@ $messages['af'] = array(
 	'revreview-style-4' => 'Uitgelig',
 	'revreview-submit' => 'Dien in',
 	'revreview-submitting' => 'Besig om in te stuur...',
+	'revreview-submit-review' => 'Aanvaar',
 	'revreview-toggle-title' => 'wys/versteek details',
 	'revreview-update-includes' => "'''Sommige sjablone/lêers is bygewerk:'''",
 	'revreview-revnotfound' => 'Die ou weergawe wat jy aangevra het kon nie gevind word nie. Gaan asseblief die URL na wat jy gebruik het.',
@@ -646,8 +655,14 @@ $messages['af'] = array(
 	'revreview-filter-manual' => 'Handmatig',
 	'revreview-levelfilter' => 'Vlak:',
 	'revreview-precedencefilter' => 'Volgorde:',
+	'revreview-lev-all' => 'enige',
 	'revreview-lev-quality' => 'kwaliteit',
 	'revreview-lev-pristine' => 'onaangeroerd',
+	'revreview-def-all' => 'enige',
+	'revreview-def-draft' => 'nuutste',
+	'revreview-restrictfilter' => 'Beperkingsvlak:',
+	'revreview-restriction-any' => 'enige',
+	'revreview-restriction-none' => 'geen',
 	'tooltip-ca-default' => 'Instellings vir kwaliteitsbeheer',
 	'flaggedrevs-protect-legend' => 'Publiseer wysigings',
 	'flaggedrevs-protect-none' => 'Alle gebruikers toelaat',
@@ -675,7 +690,7 @@ $messages['aln'] = array(
 	'revreview-toggle-title' => 'shfaqje / fshih detajet',
 	'revreview-toolow' => '\'\'\'Ju duhet të kursit të secilit prej atributeve më të larta se "paaprovuar" në mënyrë që për një rishikim të merren parasysh rishikohet.\'\'\' Për të hequr statusin shqyrtimin e rishikimit, i vendosur të gjitha fushat për të "paaprovuar". Ju lutem goditi "mbrapa "butonin e shfletuesit tuaj dhe provoni përsëri.',
 	'revreview-update' => "Ju lutem [[{{MediaWiki:Validationpage}}|rishikim]] ndonjë ndryshim në pritje''(treguar më poshtë),''e bëra në versionin e botuar.",
-	'revreview-update-edited' => '<span class="flaggedrevs_important">Ndryshimet juaja ende nuk janë botuar.</span> Ka redaktimet e mëparshme në pritje të shqyrtimit. Për të publikojë ndryshimet tuaj, ju lutemi shqyrtimin e të gjitha ndryshimet e treguar më poshtë.',
+	'revreview-update-edited-prev' => '<span class="flaggedrevs_important">Ndryshimet juaja ende nuk janë botuar.</span> Ka redaktimet e mëparshme në pritje të shqyrtimit. Për të publikojë ndryshimet tuaj, ju lutemi shqyrtimin e të gjitha ndryshimet e treguar më poshtë.',
 	'revreview-update-includes' => "'''Disa templates / Fotografi të ishin më të azhornuara:'''",
 	'revreview-update-use' => "'''Shënim:''' Versioni i publikuar të secilit prej këtyre templates / fotografi është përdorur në versionin e publikuar të kësaj faqeje.",
 	'revreview-visibility' => "'''Kjo faqe është e azhurnuar [[{{MediaWiki:Validationpage}}|publikuar versionin]]; settings faqe e stabilitetit mund të [{{fullurl:{{#Special:Stabilization}}|page={{FULLPAGENAMEE}}}} konfiguruar ].'''",
@@ -836,7 +851,7 @@ S'han feito nuebos [{{fullurl:{{FULLPAGENAMEE}}|oldid=$1&diff=cur&diffonly=0}} c
 	'revreview-style-2' => 'Bueno',
 	'revreview-style-3' => 'Conziso',
 	'revreview-style-4' => 'Destacato',
-	'revreview-submit' => 'Nimbiar rebisión',
+	'revreview-submit' => 'Ninviar',
 	'revreview-successful' => "'''S'ha siñalato a bersión trigata de [[:$1|$1]]. ([{{fullurl:{{#Special:Stableversions}}|page=$2}} amostrar todas as bersions siñalatas])'''",
 	'revreview-successful2' => "'''S'ha sacato o siñal d'as bersions trigatas de [[:$1|$1]]'''",
 	'revreview-text' => "''As pachinas de conteniu que s'amuestran por defeuto son as [[{{MediaWiki:Validationpage}}|bersions estables]] en cuenta de as zagueras bersions.''",
@@ -1403,7 +1418,7 @@ $messages['avk'] = array(
 	'revreview-revnotfound' => 'Abdif siatos ke batu bu me zo rodimtrasir. Ta vansara va batu bu va faveyene URL mane ageltal.',
 );
 
-/** Azerbaijani (Azərbaycan) */
+/** Azerbaijani (Azərbaycanca) */
 $messages['az'] = array(
 	'revreview-revnotfound' => 'Səhifənin istədiyiniz köhnə versiyası tapıla bilmir.
 Xahiş edirik, URL ünvanını yoxlayasınız.',
@@ -1580,7 +1595,7 @@ $messages['be-tarask'] = array(
 	'revreview-hist-basic-auto' => '[{{fullurl:$1|stableid=$2}} правераная аўтаматычна]',
 	'revreview-hist-quality-auto' => '[{{fullurl:$1|stableid=$2}} зацьверджаная аўтаматычна]',
 	'revreview-hist-pending' => "'''[[{{fullurl:$1|oldid=$2&diff=$3}} чакае праверкі]]'''",
-	'review-edit-diff' => "'''ЗАЎВАГА: Некаторыя чакаючыя праверкі зьмены да апублікаванай вэрсіі былі далучаны да прыведзенай ніжэй формы рэдагаваньня.'''",
+	'review-edit-diff' => "'''ЗАЎВАГА: Некаторыя зьмены, якія чакаюць рэцэнзіі, адносяцца да вобласьці старонкі, якую Вы рэдагуеце.'''",
 	'revreview-diff-toggle-show' => '(паказаць зьмены)',
 	'revreview-diff-toggle-hide' => 'схаваць зьмены',
 	'revreview-diff-toggle-title' => 'Пераключэньне паказу неравераных зьменаў апублікаванай вэрсіяй',
@@ -1641,7 +1656,11 @@ $messages['be-tarask'] = array(
 	'revreview-edit' => 'Рэдагаваць',
 	'revreview-editnotice' => "'''Вашыя рэдагаваньні будуць апублікаваныя пасьля таго, як іх прарэцэнзуе аўтарызаваны удзельнік.([[{{MediaWiki:Validationpage}}|?]])'''",
 	'revreview-check-flag' => 'Апублікаваць цяперашнія рэдагаваньні, якія чакаюць праверкі',
-	'revreview-edited' => "'''Рэдагаваньні будуць апублікаваныя пасьля таго, як іх прарэцэнзуе аўтарызаваны удзельнік.([[{{MediaWiki:Validationpage}}|?]])'''
+	'revreview-check-flag-title' => 'Прыняць усе цяперашнія зьмены, якія чакаюць рэцэнзіі разам з Вашым рэдагаваньнем.
+Выкарыстоўвайце толькі калі Вы ўжо праглядзелі зьмены, якія чакаюць праверкі.',
+	'revreview-submitedit' => 'Прыняць зьмены',
+	'revreview-submitedit-title' => 'Прапанаваць Вашыя зьмены для рэцэнзаваньня',
+	'revreview-edited' => "'''Рэдагаваньні будуць апублікаваныя пасьля таго, як іх прарэцэнзуе ўпаўнаважаны ўдзельнік.([[{{MediaWiki:Validationpage}}|?]])'''
 
 [{{fullurl:{{FULLPAGENAMEE}}|oldid=$1&diff=cur&diffonly=0}} $2 {{PLURAL:$2|зьмена|зьмены|зьмены}}] {{PLURAL:$2|''(паказаная ніжэй)'' чакае|''(паказаныя ніжэй)'' чакаюць|''(паказаныя ніжэй)'' чакаюць}}] рэцэнзаваньня.",
 	'revreview-edited-section' => 'Вярнуцца да сэкцыі з назвай «[[#$1|$2]]».',
@@ -1719,7 +1738,11 @@ $messages['be-tarask'] = array(
 Калі ласка, націсьніце ў Вашым браўзэры кнопку «вярнуцца» і паспрабуйце зноў.",
 	'revreview-update' => "'''Калі ласка, [[{{MediaWiki:Validationpage}}|прарэцэнзуйце]] ўсе зьмены ''(паказаныя ніжэй)'', зробленыя ў апублікаванай вэрсіі.'''
 Верагодна спачатку Вам неабходна прыняць рэдагаваньні ці іх «адмяніць».",
-	'revreview-update-edited' => '<span class="flaggedrevs_important">Вашыя зьмены яшчэ не былі прынятыя. Існуюць рэдагаваньні, якія чакаюць рэцэнзаваньня.</span>
+	'revreview-update-edited' => '<span class="flaggedrevs_important">Вашыя зьмены яшчэ не былі прынятыя.</span>
+
+Калі ласка, прарэцэнзуйце ўсе паказаныя ніжэй зьмены, каб Вашыя зьмены былі прынятыя.
+Верагодна, Вам прыйдзецца праглядзець гісторыю рэдагаваньняў альбо «адмяніць» рэдагаваньні.',
+	'revreview-update-edited-prev' => '<span class="flaggedrevs_important">Вашыя зьмены яшчэ не былі прынятыя. Існуюць рэдагаваньні, якія чакаюць рэцэнзаваньня.</span>
 
 Калі ласка, прарэцэензуйце ўсе зьмены пададзеныя ніжэй, каб прыняць Вашыя рэдагаваньні.
 Верагодна спачатку Вам неабходна прыняць рэдагаваньні ці іх «адмяніць».',
@@ -2024,8 +2047,10 @@ $messages['br'] = array(
 	'revreview-diff-toggle-hide' => "kuzhat ar c'hemmoù",
 	'revreview-log-toggle-show' => 'diskouez marilh ar stabilder',
 	'revreview-log-toggle-hide' => 'kuzhat ar marilh stabilder',
+	'revreview-log-toggle-title' => 'Gwintañ diskwel marilh an arventennoù stabilder',
 	'revreview-log-details-show' => 'diskouez ar munudoù',
 	'revreview-log-details-hide' => 'kuzhat ar munudoù',
+	'revreview-log-details-title' => 'Gwintañ diskwel marilh an arventennoù stabilder',
 	'review-diff2stable' => "Gwelet ar c'hemmoù a vezer oc'h ober da geñver ar stummoù embannet.",
 	'review-logentry-app' => 'en deus adwelet ur stumm eus [[$1]]',
 	'review-logentry-dis' => 'en deus dizaprouet ur stumm eus [[$1]]',
@@ -2037,7 +2062,7 @@ $messages['br'] = array(
 	'reviewer' => 'Reizher',
 	'revisionreview' => 'Adwelet ar reizhadennoù',
 	'revreview-accuracy' => 'Pizhder',
-	'revreview-accuracy-0' => 'Ket aprouet',
+	'revreview-accuracy-0' => 'Digevazas',
 	'revreview-accuracy-1' => 'Gwelet',
 	'revreview-accuracy-2' => 'Resis',
 	'revreview-accuracy-3' => 'Titouret mat',
@@ -2061,7 +2086,7 @@ $messages['br'] = array(
 	'review_param_missing' => 'Un arventenn a vank pe a zo direizh.',
 	'revreview-current' => "Kemmoù o c'hortoz",
 	'revreview-depth' => 'Donder',
-	'revreview-depth-0' => 'Ket aprouet',
+	'revreview-depth-0' => 'Digevazas',
 	'revreview-depth-1' => 'Diazez',
 	'revreview-depth-2' => 'Etre',
 	'revreview-depth-3' => 'Uhel',
@@ -2070,9 +2095,12 @@ $messages['br'] = array(
 	'revreview-edit' => 'Kemmañ',
 	'revreview-editnotice' => "'''Ho kemmoù a vo embannet pa 'vo bet adlennet gant un implijer en deus ar gwirioù a zere. ([[{{MediaWiki:Validationpage}}|?]])'''",
 	'revreview-check-flag' => "Embann ar c'hemmoù o c'hortoz er mare-mañ",
-	'revreview-edited' => "'''[[{{MediaWiki:Validationpage}}|Embannet]] e vo ar c'hemmoù ur wezh bet [[{{MediaWiki:Validationpage}}|adlennet]] gant un implijer aotreet.'''
+	'revreview-edited' => "'''Embannet e vo ar c'hemmoù ur wezh bet adlennet gant un implijer aotreet. ([[{{MediaWiki:Validationpage}}|?]])'''
 
-Bez ez eus [{{fullurl:{{FULLPAGENAMEE}}|oldid=$1&diff=cur&diffonly=0}} $2 {{PLURAL:$2|c'hemm|kemm}}] ''(diskouezet a-is)'' o c'hortoz bezañ adlennet.",
+Bez' ez eus [{{fullurl:{{FULLPAGENAMEE}}|oldid=$1&diff=cur&diffonly=0}} $2 pending {{PLURAL:$2|change|changes}}] ''(shown below)'' awaiting review.
+
+
+[{{fullurl:{{FULLPAGENAMEE}}|oldid=$1&diff=cur&diffonly=0}} $2 {{PLURAL:$2|c'hemm|kemm}}] ''(diskouezet a-is)'' o c'hortoz bezañ adlennet.",
 	'revreview-edited-section' => 'Distreiñ da rann "[[#$1|$2]]" ar bajenn.',
 	'revreview-flag' => 'Adwelet an adweladenn',
 	'revreview-reflag' => 'Adlenn adarre an adweladenn-mañ',
@@ -2117,7 +2145,7 @@ Bez ez eus [{{fullurl:{{FULLPAGENAMEE}}|oldid=$1&diff=cur&diffonly=0}} kemmoù p
 	'revreview-stable1' => "Marteze o peus c'hoant gwelet [{{fullurl:$1|stableid=$2}} ar stumm merket] a-benn gouzout ma 'z eo bremañ [{{fullurl:$1|stable=1}} ar stumm embannet] eus ar bajenn-mañ.",
 	'revreview-stable2' => "Marteze o peus c'hoant gwelet [{{fullurl:$1|stable=1}} ar stumm embannet] eus ar bajenn-mañ.",
 	'revreview-style' => 'Lennuster',
-	'revreview-style-0' => 'Ket aprouet',
+	'revreview-style-0' => 'Digevazas',
 	'revreview-style-1' => 'Degemeradus',
 	'revreview-style-2' => 'Mat',
 	'revreview-style-3' => 'Krenn',
@@ -2139,7 +2167,7 @@ Evit tennañ kuit statud adlenn ur stumm, lakait an ''holl'' maeziennoù da \"ke
 Implijit bouton \"disteiñ\" ho merder ha klaskit en-dro.",
 	'revreview-update' => "'''Mar plij [[{{MediaWiki:Validationpage}}|adlennit]] an holl gemmoù ''(diskouezet a-is)'' bet graet d'ar stumm degemeret.'''
 Marteze ho po da reizhañ pe \"tennañ\" kemmoù 'zo da gentañ.",
-	'revreview-update-edited' => '<span class="flaggedrevs_important">N\'eo ket bet degemeret ho kemmoù c\'hoazh. Kemmoù all a zo o c\'hortoz bezañ adlennet.</span>
+	'revreview-update-edited-prev' => '<span class="flaggedrevs_important">N\'eo ket bet degemeret ho kemmoù c\'hoazh. Kemmoù all a zo o c\'hortoz bezañ adlennet.</span>
 
 Rankout a rit adlenn an holl gemmoù diskouezet a-is.
 Marteze ho po da reizhañ pe "tennañ" kemmoù \'zo da gentañ.',
@@ -2782,7 +2810,7 @@ $messages['de'] = array(
 	'revreview-hist-basic-auto' => '[{{fullurl:$1|stableid=$2}} automatisch markiert]',
 	'revreview-hist-quality-auto' => '[{{fullurl:$1|stableid=$2}} automatisch markiert]',
 	'revreview-hist-pending' => "'''[[{{fullurl:$1|oldid=$2&diff=$3}} Überprüfung ausstehend]]'''",
-	'review-edit-diff' => "'''Hinweis: Einige der ausstehenden Änderungen, an der veröffentlichten Version, wurden mit ins Eingabefeld unten aufgenommen.'''",
+	'review-edit-diff' => "'''Hinweis: Einige der noch nicht überprüften Änderungen betreffen den Abschnitt des Textes, den du gerade bearbeitest.'''",
 	'revreview-diff-toggle-show' => 'Änderungen anzeigen',
 	'revreview-diff-toggle-hide' => 'Änderungen verstecken',
 	'revreview-diff-toggle-title' => 'Schaltet die Anzeige der ausstehenden Änderungen zur veröffentlichten Version um',
@@ -2844,6 +2872,10 @@ Ein Neuladen der Seite und erneutes Speichern der Markierung kann das Problem be
 	'revreview-edit' => 'Bearbeiten',
 	'revreview-editnotice' => "'''Deine Änderungen werden veröffentlicht, sobald ein dazu berechtigter Benutzer sie kontrolliert hat. ([[{{MediaWiki:Validationpage}}|?]])'''",
 	'revreview-check-flag' => 'Veröffentliche derzeit unmarkierte Änderungen',
+	'revreview-check-flag-title' => 'Akzeptieren aller noch nicht überprüften Änderungen, zusammen mit deiner Bearbeitung.
+Mache dies nur, sofern du bereits alle bislang noch nicht überprüften Änderungen angesehen hast.',
+	'revreview-submitedit' => 'Änderungen übertragen',
+	'revreview-submitedit-title' => 'Deine Änderungen zum Überprüfen übertragen',
 	'revreview-edited' => "'''Änderungen werden übernommen, sobald ein dazu berechtigter Benutzer sie überprüft hat. ([[{{MediaWiki:Validationpage}}|?]])'''
 
 Momentan {{PLURAL:$2|gibt|gibt}} es [{{fullurl:{{FULLPAGENAMEE}}|oldid=$1&diff=cur&diffonly=0}} $2 nicht überprüfte {{PLURAL:$2|Änderung|Änderungen}}]  ''(siehe unten)''.",
@@ -2913,6 +2945,14 @@ Um eine Version zu verwerfen, müssen alle Attribute auf „{{int:revreview-accu
 Klicke auf die „Zurück“-Schaltfläche deines Browsers und versuche es erneut.',
 	'revreview-update' => "'''Bitte [[{{MediaWiki:Validationpage}}|überprüfe]] alle nicht überprüften Änderungen ''(siehe unten)'', die seit der neuesten freigegebenen Version gemacht wurden.'''
 Gegebenenfalls musst du zunächst diese Bearbeitungen nachvollziehen oder ''rückgängig'' machen.",
+	'revreview-update-edited' => '<span class="flaggedrevs_important">Deine Änderungen wurden bislang nicht übernommen.</span>
+
+Bitte überprüfe alle unten angezeigten Änderungen, damit deine Bearbeitungen übernommen werden können.
+Gegebenenfalls musst du zunächst diese Bearbeitungen nachvollziehen oder rückgängig machen.',
+	'revreview-update-edited-prev' => "<span class=\"flaggedrevs_important\">Deine Änderungen wurden bislang nicht übernommen. Es gibt ältere Bearbeitungen, die noch überprüft werden müssen.</span>
+
+Bitte überprüfte alle unten angezeigten Änderungen, damit deine Bearbeitungen übernommen werden können.
+Gegebenenfalls musst du zunächst diese Bearbeitungen nachvollziehen oder ''rückgängig'' machen.",
 	'revreview-update-includes' => "'''Einige Vorlagen/Dateien wurden aktualisiert:'''",
 	'revreview-update-use' => "'''Bitte beachten:''' Falls eine dieser Vorlagen/Dateien eine gesichtete Version hat, wird diese in der gesichteten Version dieser Seite angezeigt.",
 	'revreview-visibility' => "'''Diese Seite hat eine aktualisierte [[{{MediaWiki:Validationpage}}|markierte Version]]; die Anzeigeeinstellungen können [{{fullurl:{{#Special:Stabilization}}|page={{FULLPAGENAMEE}}}} konfiguriert] werden.'''",
@@ -2977,20 +3017,41 @@ die Anzeigeeinstellungen können [{{fullurl:{{#Special:Stabilization}}|page={{FU
 /** German (formal address) (Deutsch (Sie-Form))
  * @author Imre
  * @author Jens Liebenau
+ * @author Kghbln
  * @author Umherirrender
  */
 $messages['de-formal'] = array(
 	'flaggedrevs-backlog' => 'Die [[Special:OldReviewedPages|Liste der Seiten mit ungesichteten Versionen]] ist sehr lang. Bitte helfen Sie mit, sie abzuarbeiten. Danke.',
 	'flaggedrevs-watched-pending' => "Es sind aktuell [{{fullurl:{{#Special:OldReviewedPages}}|watched=1}} ungesichtete Bearbeitungen] von gesichteten Seiten auf Ihrer Beobachtungsliste. '''Ihre Aufmerksamkeit ist nötig!'''",
+	'review-edit-diff' => "'''Hinweis: Einige der noch nicht überprüften Änderungen betreffen den Abschnitt des Textes, den Sie gerade bearbeiten.'''",
+	'revreview-editnotice' => "'''Ihre Änderungen werden veröffentlicht, sobald ein dazu berechtigter Benutzer sie kontrolliert hat. ([[{{MediaWiki:Validationpage}}|?]])'''",
+	'revreview-check-flag-title' => 'Akzeptieren aller noch nicht überprüften Änderungen, zusammen mit Ihrer Bearbeitung.
+Machen Sie dies nur, sofern Sie bereits alle bislang noch nicht überprüften Änderungen angesehen haben.',
+	'revreview-submitedit-title' => 'Ihre Änderungen zum Überprüfen übertragen',
 	'revreview-main' => 'Sie müssen eine Version zur Markierung auswählen.
 
 Siehe die [[Special:Unreviewedpages|Liste unmarkierter Versionen]].',
-	'revreview-stable1' => 'Möchten Sie die [{{fullurl:$1|stableid=$2}} soeben markierte Version] dieser Seite sehen, falls es jetzt die [{{fullurl:$1|stable=1}} gesichtete Version] dieser Seite ist?',
-	'revreview-stable2' => 'Möchten Sie die [{{fullurl:$1|stable=1}} gesichtete Version] dieser Seite sehen (falls es noch eine gibt)?',
-	'revreview-toolow' => 'Sie müssen für jedes der untenstehenden Attribute einen Wert höher als „{{int:revreview-accuracy-0}}“ einstellen, damit eine Version als gesichtet gilt. Um eine Version zu verwerfen, müssen alle Attribute auf „{{int:revreview-accuracy-0}}“ stehen.',
-	'revreview-update' => "Bitte [[{{MediaWiki:Validationpage}}|sichten Sie]] die Änderungen ''(siehe unten)'', die seit der [{{fullurl:{{#Special:Log}}|type=review&page={{FULLPAGENAMEE}}}} letzten gesichteten Version] vorgenommen wurden.<br />
-'''Die folgenden Vorlagen und Dateien wurden verändert:'''",
+	'revreview-pending-nosection' => 'Versuchen Sie die [{{fullurl:{{FULLPAGENAMEE}}|stable=0}} neueste Version], die [{{fullurl:{{FULLPAGENAMEE}}|oldid=$1&diff=cur&diffonly=0}} $2 zu überprüfende {{PLURAL:$2|Änderung|Änderungen}}] enthält, anzusehen, um festzustellen, ob der Abschnitt verschoben oder gelöscht wurde.',
+	'revreview-stable1' => 'Vielleicht möchten Sie [{{fullurl:$1|stableid=$2}} die markierte Version] aufrufen, um zu sehen, ob es nunmehr die [{{fullurl:$1|stable=1}} freigegebene Version] dieser Seite ist?',
+	'revreview-stable2' => 'Vielleicht möchten Sie die [{{fullurl:$1|stable=1}} freigegebene Version] dieser Seite sehen?',
+	'revreview-toolow' => "'''Sie müssen jedes der Attribute besser als „unzureichend“ einstufen, damit eine Version als überprüft angesehen werden kann.'''
+
+Um den Überprüfungsstatus einer Version aufzuheben, müssen ''alle'' Attribute auf „unzureichend“ gesetzt werden.
+
+Klicken Sie auf die „Zurück“-Schaltfläche Ihres Browsers und versuchen Sie es erneut.",
+	'revreview-update' => "'''Bitte [[{{MediaWiki:Validationpage}}|überprüfen]] Sie alle nicht überprüften Änderungen ''(siehe unten)'', die seit der neuesten freigegebenen Version gemacht wurden.'''
+Gegebenenfalls müssen Sie zunächst diese Bearbeitungen nachvollziehen oder ''rückgängig'' machen.",
+	'revreview-update-edited' => '<span class="flaggedrevs_important">Ihre Änderungen wurden bislang nicht übernommen.</span>
+
+Bitte überprüfen Sie alle unten angezeigten Änderungen, damit Ihre Bearbeitungen übernommen werden können.
+Gegebenenfalls müssen Sie zunächst diese Bearbeitungen nachvollziehen oder rückgängig machen.',
+	'revreview-update-edited-prev' => "<span class=\"flaggedrevs_important\">Ihre Änderungen wurden bislang nicht übernommen. Es gibt ältere Bearbeitungen, die noch überprüft werden müssen.</span>
+
+Bitte überprüften Sie alle unten angezeigten Änderungen, damit Ihre Bearbeitungen übernommen werden können.
+Gegebenenfalls müssen Sie zunächst diese Bearbeitungen nachvollziehen oder ''rückgängig'' machen.",
 	'revreview-revnotfound' => 'Die Version dieser Seite, nach der Sie suchen, konnte nicht gefunden werden. Bitte überprüfen Sie die URL dieser Seite.',
+	'revreview-tt-flag' => 'Diese Version akzeptieren, indem Sie sie als „überprüft“ markieren',
+	'revreview-tt-unflag' => 'Diese Version nicht akzeptieren, indem Sie sie als „nicht überprüft“ markieren',
 );
 
 /** Zazaki (Zazaki)
@@ -3229,7 +3290,7 @@ $messages['dsb'] = array(
 	'revreview-hist-basic-auto' => '[{{fullurl:$1|stableid=$2}} awtomatiski pśekontrolěrowany]',
 	'revreview-hist-quality-auto' => '[{{fullurl:$1|stableid=$2}} awtomatiski pśizwólony]',
 	'revreview-hist-pending' => "'''[[{{fullurl:$1|oldid=$2&diff=$3}} caka na pśeglědanje]]'''",
-	'review-edit-diff' => "'''POWĚŹEŃKA: Někotare njedocynjone změny wózjawjoneje wersije zapśěguju se dołojce do wobźěłowańskego formulara.'''",
+	'review-edit-diff' => "'''POWĚŹEŃKA: Někotare njepśeglědane změny nastupaju wótrězk boka, kótaryž rowno wobźěłujoš.'''",
 	'revreview-diff-toggle-show' => '(změny pokazaś)',
 	'revreview-diff-toggle-hide' => 'změny schowaś',
 	'revreview-diff-toggle-title' => 'Zwobraznjenje njepśeglědanych změnow na wózjawjonej wersiji pśešaltowaś',
@@ -3290,6 +3351,10 @@ Nowozacytanje boka a nowopśeglědowanje móžo toś ten problem rozwězaś.",
 	'revreview-edit' => 'Wobźěłaś',
 	'revreview-editnotice' => "'''Twóje změny budu se wózjawjaś, gaž awtorizěrowany wužywaŕ je pśeglědujo.  ([[{{MediaWiki:Validationpage}}|?]]).'''",
 	'revreview-check-flag' => 'Tuchylu njepśeglědane změny wózjawiś',
+	'revreview-check-flag-title' => 'Wšykne tuchylu njepśeglědane změny gromaźe ze swójsku změnu akceptěrowaś.
+Wužywaj to jano, jolic sy južo wšykne njepśeglědane změny wiźeł.',
+	'revreview-submitedit' => 'Změny wótpósłaś',
+	'revreview-submitedit-title' => 'Twóje změny za pśeglědanje wótpósłaś',
 	'revreview-edited' => "'''Změny budu se wózjawjaś, gaž awtorizěrowany wužywaŕ je pśeglědujo.([[{{MediaWiki:Validationpage}}|?]]).'''
 
 {{PLURAL:$2|Jo|Stej|Su|Jo}} [{{fullurl:{{FULLPAGENAMEE}}|oldid=$1&diff=cur&diffonly=0}} $2 {{PLURAL:$2|njepśeglědna změna|njepśeglědanej změnje|njepśeglědane změny|njepśeglědanych změnow}}], {{PLURAL:$2|kótaraž caka|kótarejž cakatej|kótarež cakaju|kótarež cakaju}} na pśeglědanje.",
@@ -3361,7 +3426,11 @@ Aby pśeglědowański status wersije wótpórał, staj '''wšykne''' póla na \"
 Pšosym klikni na tłocašk \"Slědk\" w swójom wobglědowaku a wopytaj hyšći raz.",
 	'revreview-update' => "'''Pšosym [[{{MediaWiki:Validationpage}}|pśeglědaj]] ''(slědujuce)'' njepśeglědane změny, kótarež su se na akceptěrowanej wersiji pśewjedli.'''
 Musyš nejpjerwjeje změny dalej wobźěłaś abo \"slědk wześ\".",
-	'revreview-update-edited' => '<span class="flaggedrevs_important">Twóje změny hyšći njejsu akceptěrowane. Su hyšći njepśeglědane změny.</span>
+	'revreview-update-edited' => '<span class="flaggedrevs_important">Twóje změny hyšći njejsu akceptěrowane.</span>
+
+Pšosym pśeglědajwšykne slědujuce změny, aby se twóje změny akceptěrowali.
+Móžo byś, až musyš nejpjerwjej změny dalej wobźěłaś abo "anulěrowaś".',
+	'revreview-update-edited-prev' => '<span class="flaggedrevs_important">Twóje změny hyšći njejsu akceptěrowane. Su hyšći njepśeglědane změny.</span>
 
 Pšosym pśeglědaj wšykne slědujuce změny, aby je akoakceptěrowane markěrował.
 Musy nejpjerwjej změny dalej wobźełaś abo je "slědk wześ".',
@@ -3703,7 +3772,7 @@ Malvalidigi revizion, faru ĉiujn kampojn kiel "malaprobitaj".
 
 Bonvolu klaki la "reiri" butonon en via retumilo kaj reprovu.',
 	'revreview-update' => "Bonvolu [[{{MediaWiki:Validationpage}}|kontroli]] iujn kontrolendajn ŝanĝojn ''(montritajn suben)'' faritajn al la publikigita versio:'''",
-	'revreview-update-edited' => '<span class="flaggedrevs_important">Viaj ŝanĝoj ankoraŭ [[{{MediaWiki:Validationpage}}|publikigitaj]].</span>
+	'revreview-update-edited-prev' => '<span class="flaggedrevs_important">Viaj ŝanĝoj ankoraŭ publikigitaj.</span>
 
 Estas antaŭaj kontrolendaj redaktoj. Publikigi viajn ŝanĝojn, bonvolu kontroli ĉiujn jenajn ŝanĝojn.',
 	'revreview-update-includes' => "'''Iuj ŝablonoj/bildoj estis ĝisdatigitaj:'''",
@@ -3777,6 +3846,8 @@ Bonvolu kontroli la retadreson (URL) kiun vi uzis por atingi la paĝon.\\b',
  * @author Locos epraix
  * @author Manuelt15
  * @author McDutchie
+ * @author Muro de Aguas
+ * @author Pertile
  * @author Sanbec
  * @author Translationista
  */
@@ -3813,7 +3884,7 @@ $messages['es'] = array(
 	'revreview-hist-basic-auto' => '[{{fullurl:$1|stableid=$2}} revisada automaticamente]',
 	'revreview-hist-quality-auto' => '[{{fullurl:$1|stableid=$2}} aprobada automáticamente]',
 	'revreview-hist-pending' => "'''[[{{fullurl:$1|oldid=$2&diff=$3}} a espera de revisión]]'''",
-	'review-edit-diff' => "'''NOTA: En el formulario de edición que se muestra abajo se ha incorporado algunos cambios pendientes de aplicar a la versión publicada'''",
+	'review-edit-diff' => "'''Nota: Algunos de los cambios pendientes afectan a la parte de la página en donde estás editando.'''",
 	'revreview-diff-toggle-show' => '(mostrar cambios)',
 	'revreview-diff-toggle-hide' => 'ocultar cambios',
 	'revreview-diff-toggle-title' => 'Muestra u oculta los cambios pendientes en la versión publicada',
@@ -3874,6 +3945,10 @@ Refrescar la página y volviendo a revisar puede solucionar este problema.",
 	'revreview-edit' => 'Editar',
 	'revreview-editnotice' => "'''Tus cambios serán publicados una vez que un usuario autorizado los revise. ([[{{MediaWiki:Validationpage}}|?]])'''",
 	'revreview-check-flag' => 'Publicar cambios actualmente pendientes',
+	'revreview-check-flag-title' => 'Aceptar todos los cambios actualmente pendientesjunto con tu propia edición.
+Solamente usar esto si ya has visto por completo las diferencias de los cambios pendientes.',
+	'revreview-submitedit' => 'Guardar cambios',
+	'revreview-submitedit-title' => 'Enviar tus cambios para revisión',
 	'revreview-edited' => "'''Los cambios serán publicados una vez que un usuario autorizado los revise. ([[{{MediaWiki:Validationpage}}|?]])'''
 
 {{PLURAL:$2|Hay|Hay}} [{{fullurl:{{FULLPAGENAMEE}}|oldid=$1&diff=cur&diffonly=0}} $2 {{PLURAL:$2|cambio|cambios}}] pendientes ''(mostrados abajo)'' esperando revisión.",
@@ -3943,10 +4018,16 @@ Nuevos [{{fullurl:{{FULLPAGENAMEE}}|oldid=$1&diff=cur&diffonly=0}} cambios] pued
 Para remover el status de una revisión, marque ''todos'' los campos como \"inadecuado\".
 
 Por favor presiona el botón ''atrás'' en tu navegador e intenta de nuevo.",
-	'revreview-update' => "Por favor [[{{MediaWiki:Validationpage}}|revisar]] cualquiera de los cambios pendientes ''(mostrados abajo)'' hechos a la versión publicada.",
-	'revreview-update-edited' => '<span class="flaggedrevs_important">Tus cambios aún no han sido [[{{MediaWiki:Validationpage}}|publicados]].</span>
+	'revreview-update' => "'''Por favor,[[{{MediaWiki:Validationpage}}|revisa]] los cambios pendientes ''(que se muestran a continuación)'' hechos en la versión aceptada.'''
+Primero tendrás que hacer un seguimiento de las ediciones, o \"deshacerlas\".",
+	'revreview-update-edited' => '<span class="flaggedrevs_important">Tus cambios aún no han sido aceptados.</span>
 
-Hay revisiones de ediciones pendientes previas. Para publicar tus cambios, por favor revisa todos los cambios mostrados abajo.',
+Por favor revisar todos los cambios mostrados abajo para que tu ediciones sean aceptadas.
+Primero será necesario que hagas un seguimiento a las ediciones o las "deshagas".',
+	'revreview-update-edited-prev' => '<span class="flaggedrevs_important">Tus cambios no han sido aceptados aún. Hay ediciones previas pendientes de ser revisadas.</span>
+
+Por favor, revisa todos los cambios mostrados a continuación para que se acepten tus ediciones.
+Primero tendrás que hacer un seguimiento de las ediciones, o "deshacerlas".',
 	'revreview-update-includes' => "'''Algunas plantillas/archivos fueron actualizados:'''",
 	'revreview-update-use' => "'''NOTA:''' si alguna de estas plantillas/archivos tiene una versión publicada, entonces ya se usa en la versión pubcada de esta página.",
 	'revreview-visibility' => "'''Esta página tiene una [[{{MediaWiki:Validationpage}}|versión estable]] actualizada; configuraciones de estabilidad de página pueden ser [{{fullurl:{{#Special:Stabilization}}|page={{FULLPAGENAMEE}}}} configuradas].'''",
@@ -4514,7 +4595,7 @@ Donne la possibilité aux contributeurs et aux relecteurs de relire les versions
 	'revreview-hist-basic-auto' => '[{{fullurl:$1|stableid=$2}} automatiquement vérifiée]',
 	'revreview-hist-quality-auto' => ' [{{fullurl:$1|stableid=$2}} automatiquement approuvée]',
 	'revreview-hist-pending' => "'''[[{{fullurl:$1|oldid=$2&diff=$3}} en attente de relecture]]'''",
-	'review-edit-diff' => "'''AVERTISSEMENT : Certains changements en cours dans la version publiée sont pris en compte dans le formulaire de modification ci-dessous.'''",
+	'review-edit-diff' => "'''AVERTISSEMENT : Certains changements en cours affectent la zone de la page que vous êtes en train de modifier.'''",
 	'revreview-diff-toggle-show' => '(montrer les modifications)',
 	'revreview-diff-toggle-hide' => 'cacher les modifications',
 	'revreview-diff-toggle-title' => "Basculer l'affichage entre les modifications en attente et la version publiée",
@@ -4575,6 +4656,10 @@ Recharger la page et la relire de nouveau devrait corriger ce problème.",
 	'revreview-edit' => 'Modifier',
 	'revreview-editnotice' => "'''Vos modifications seront publiées une fois qu’un utilisateur disposant des droits nécessaires les aura relues. [[{{MediaWiki:Validationpage}}|?]]'''",
 	'revreview-check-flag' => 'Publier les modifications actuellement en attente',
+	'revreview-check-flag-title' => "Accepter toutes les modifications en attente en même temps que votre propre modification.
+Ne l'utilisez que si vous avez déjà vu le diff de l'ensemble des modifications en attente.",
+	'revreview-submitedit' => 'Soumettez vos modifications',
+	'revreview-submitedit-title' => 'Soumettez vos modifications pour relecture',
 	'revreview-edited' => "'''Les modifications seront publiées dès qu'un utilisateur disposant des droits suffisants les aura relues. [[{{MediaWiki:Validationpage}}|?]]'''
 
 Il y a actuellement [{{fullurl:{{FULLPAGENAMEE}}|oldid=$1&diff=cur&diffonly=0}} $2 {{PLURAL:$2|modification|modifications}} en attente de relecture], affichées ci-dessous.",
@@ -4646,7 +4731,11 @@ Pour retirer le statut de relecture d'une version, mettez ''tous'' les champs à
 Veuillez utiliser le bouton « retour » de votre navigateur puis essayez de nouveau.",
 	'revreview-update' => "Veuillez [[{{MediaWiki:Validationpage}}|relire]] toutes les modifications ''(voir ci-dessous)'' apportées à la version acceptée.
 Vous pourriez d'abord avoir à corriger ou « défaire » certaines modifications.",
-	'revreview-update-edited' => '<span class="flaggedrevs_important">Vos modifications n\'ont pas encore été acceptées. Il y a de précédentes modifications en attente de relecture.</span>
+	'revreview-update-edited' => '<span class="flaggedrevs_important">Vos modifications n’ont pas encore été acceptées.</span>
+
+Veuillez vérifier toutes les modifications affichées ci-dessous pour que la vôtre soit acceptée.
+Il est possible que vous deviez au préalable accepter ou « défaire » des modifications.',
+	'revreview-update-edited-prev' => '<span class="flaggedrevs_important">Vos modifications n\'ont pas encore été acceptées. Il y a de précédentes modifications en attente de relecture.</span>
 
 Vous devez relire toutes les modifications affichées ci-dessous.
 Vous pourriez d\'abord avoir à corriger ou « défaire » certaines modifications.',
@@ -4991,7 +5080,7 @@ $messages['gl'] = array(
 	'revreview-hist-basic-auto' => '[{{fullurl:$1|stableid=$2}} comprobada automaticamente]',
 	'revreview-hist-quality-auto' => '[{{fullurl:$1|stableid=$2}} aprobada automaticamente]',
 	'revreview-hist-pending' => "'''[[{{fullurl:$1|oldid=$2&diff=$3}} agardando por unha revisión]]'''",
-	'review-edit-diff' => "'''AVISO: Algúns cambios pendentes na versión publicada téñense en conta no formulario de edición de embaixo.'''",
+	'review-edit-diff' => "'''AVISO: Algúns cambios pendentes afectan á zona da páxina que está a editar.'''",
 	'revreview-diff-toggle-show' => '(mostrar os cambios)',
 	'revreview-diff-toggle-hide' => 'agochar os cambios',
 	'revreview-diff-toggle-title' => 'Cambiar a visualización de cambios entre os cambios pendentes e a versión publicada',
@@ -5052,6 +5141,10 @@ Actualizar a páxina e volvela revisar pode resolver o problema.",
 	'revreview-edit' => 'Editar',
 	'revreview-editnotice' => "'''Os seus cambios publicaranse unha vez que un usuario autorizado os revise. ([[{{MediaWiki:Validationpage}}|?]])'''",
 	'revreview-check-flag' => 'Publicar os cambios pendentes actualmente',
+	'revreview-check-flag-title' => 'Aceptar todos os cambios pendentes xunto á súa propia edición.
+Use isto soamente en canto olle o conxunto de todas as diferenzas dos cambios pendentes.',
+	'revreview-submitedit' => 'Enviar os cambios',
+	'revreview-submitedit-title' => 'Enviar os cambios á revisión',
 	'revreview-edited' => "'''Os cambios publicaranse unha vez que un usuario autorizado os revise. ([[{{MediaWiki:Validationpage}}|?]])'''
 
 Hai [{{fullurl:{{FULLPAGENAMEE}}|oldid=$1&diff=cur&diffonly=0}} $2 {{PLURAL:$2|cambio|cambios}}], {{PLURAL:$2|mostrado|mostrados}} a continuación, agardando por unha revisión.",
@@ -5122,7 +5215,11 @@ Para retirar o estado de aprobación dunha revisión, encha '''todos''' os campo
 Por favor, prema sobre o botón \"Volver\" do seu navegador e inténteo de novo.",
 	'revreview-update' => "'''[[{{MediaWiki:Validationpage}}|Revise]] os cambios pendentes ''(amósanse a continuación)'' feitos á versión aceptada.'''
 Quizais queira corrixir ou desfacer algunhas modificacións.",
-	'revreview-update-edited' => '<span class="flaggedrevs_important">Aínda non se aceptaron os seus cambios. Hai edicións previas pendentes de revisión.</span>
+	'revreview-update-edited' => '<span class="flaggedrevs_important">Aínda non se aceptaron os seus cambios.</span>
+
+Para aceptar as súas edicións, revise todos os cambios listados a continuación.
+Quizais queira corrixir ou desfacer algunhas modificacións.',
+	'revreview-update-edited-prev' => '<span class="flaggedrevs_important">Aínda non se aceptaron os seus cambios. Hai edicións previas pendentes de revisión.</span>
 
 Para aceptar as súas edicións, revise todos os cambios listados a continuación.
 Quizais queira corrixir ou desfacer algunhas modificacións.',
@@ -5302,7 +5399,7 @@ $messages['gsw'] = array(
 	'revreview-hist-basic-auto' => '[{{fullurl:$1|stableid=$2}} automatisch vum Fäldhieter aaglueget]',
 	'revreview-hist-quality-auto' => '[{{fullurl:$1|stableid=$2}} automatisch frejgee]',
 	'revreview-hist-pending' => '[[{{fullurl:$1|oldid=$2&diff=$3}} nonig prieft]]',
-	'review-edit-diff' => "'''WICHTIG: S het e baar Änderige in in däm Bearbeitigsformular do unte din, wu nonig prieft sin.'''",
+	'review-edit-diff' => "'''WICHTIG: E baar vu dr hängige Änderige beträffe dr Abschnitt, wu Du grad am Bearbeite bisch.'''",
 	'revreview-diff-toggle-show' => '(Änderigen aazeige)',
 	'revreview-diff-toggle-hide' => 'Änderige uusblände',
 	'revreview-diff-toggle-title' => 'Dr Aazeig umschalte vu dr hängige Änderige zue dr vereffentligte Version',
@@ -5364,6 +5461,10 @@ E Vorlag oder e Datei sin ohni spezifischi Versionsnummere aagforderet wore. Des
 	'revreview-edit' => 'Bearbeite',
 	'revreview-editnotice' => "'''Dyyni Bearbeitige vu däre Syte wäre vereffentligt, wänn si vun eme autorisierte Benutzer prieft wore sin. ([[{{MediaWiki:Validationpage}}|?]])'''",
 	'revreview-check-flag' => 'Hängigi Bearbeitige vereffetlige',
+	'revreview-check-flag-title' => 'Alli hängige Änderige akzeptiere zämme mit Dyyre eigene Bearbeitig.
+Mache des nume, wänn Du dir alli hängige Änderige aagluegt hesch.',
+	'revreview-submitedit' => 'Änderige ibertrage',
+	'revreview-submitedit-title' => 'Dyyni Änderige zum Iberpriefe ibertrage',
 	'revreview-edited' => "'''Änderige wäre vereffentligt, wänn si vun eme autorisierte Benutzer prieft wore sin. ([[{{MediaWiki:Validationpage}}|?]])'''
 
 S het [{{fullurl:{{FULLPAGENAMEE}}|oldid=$1&diff=cur&diffonly=0}} $2 hängigi {{PLURAL:$2|Änderig|Änderige}}] (lueg do unte).",
@@ -5442,7 +5543,11 @@ Zum e Version z verwerfe, mien alli Attribut uf „längt nit“ stoh.
 Bitte druck uf dr „Zruck“-Chnopf un versuech s nonemol.",
 	'revreview-update' => "'''Bitte [[{{MediaWiki:Validationpage}}|prief]] di hängige Änderige ''(lueg unte)'', wu syt dr letschte vereffetligte Version gmacht wore sin.'''
 S cha syy, ass Du zerscht Bearbeitige muesch noogoh oder si muesch zrucksetze.",
-	'revreview-update-edited' => '<span class="flaggedrevs_important">Dyy Änderige sin nonig vereffentligt wore. S het no vorigi Änderige, wu hängig sin. </span>
+	'revreview-update-edited' => '<span class="flaggedrevs_important">Dyyni Änderige sin nonig ibernuu wore.</span>
+
+Bitte iberprief alli unte aazeigte Änderige, ass Dyyni Bearbeite chenne ibernuu wäre.
+Villicht muesch zerscht däne Bearbeite noogoh oder si ruckgängig mache.',
+	'revreview-update-edited-prev' => '<span class="flaggedrevs_important">Dyy Änderige sin nonig vereffentligt wore. S het no vorigi Änderige, wu hängig sin. </span>
 
 Go Dyyni Änderige vereffetlige, due bitte alli hängige Änderige priefe, wu do aazeigt wäre. S cha syy, ass Du zerscht Bearbeitige muesch noogoh oder si muesch zrucksetze.',
 	'revreview-update-includes' => "'''E paar Vorlage/Dateie sin aktualisiert wore:'''",
@@ -6118,7 +6223,7 @@ $messages['hsb'] = array(
 	'revreview-hist-basic-auto' => '[{{fullurl:$1|stableid=$2}} awtomatisce skontrolowany]',
 	'revreview-hist-quality-auto' => '[{{fullurl:$1|stableid=$2}} awtomatisce schwaleny]',
 	'revreview-hist-pending' => "'''[[{{fullurl:$1|oldid=$2&diff=$3}} přepruwowanje wusteji]]'''",
-	'review-edit-diff' => "'''ZDŹĚLENKA: Někotre njesčinjene změny wozjewjeneje wersije zapřijimaja so deleka do wobdźěłowanskeho formulara.'''",
+	'review-edit-diff' => "'''POKAZKA: Někotre njepřepruwowane změny nastupaja wotrězk strony, kotryž runje wobdźěłuješ.'''",
 	'revreview-diff-toggle-show' => '(změny pokazać)',
 	'revreview-diff-toggle-hide' => 'změny schować',
 	'revreview-diff-toggle-title' => 'Zwobraznjenje nječinjenych změnow wozjewjeneje wersije přepinyć',
@@ -6178,6 +6283,10 @@ Předłoha abo dataja bu bjez podaća wersije požadana/požadany. To móže so 
 	'revreview-edit' => 'Wobdźěłać',
 	'revreview-editnotice' => "'''Twoje změny budu so wozjewjeć, tak ruče kaž awtorizowany wužiwar je přepruwuje. ([[{{MediaWiki:Validationpage}}|?]])'''",
 	'revreview-check-flag' => 'Tuchwilu njepřepruwowane změny wozjewić',
+	'revreview-check-flag-title' => 'Akceptowanje wšěch tuchwilu njepřepruwowanych změnow hromadźe z twojej swójskej změnu.
+Wužij to jenož, jeli sy hižo wšě hišće njepřepruwowane změny widźał.',
+	'revreview-submitedit' => 'Změny wotpósłać',
+	'revreview-submitedit-title' => 'Twoje změny za přepruwowanje wotpósłać',
 	'revreview-edited' => "'''Změny budu so wozjewjeć, tak ruče kaž awtorizowany wužiwar je přepruwuje. ([[{{MediaWiki:Validationpage}}|?]])'''
 
 {{PLURAL:$2|Je|Stej|Su|Je}} [{{fullurl:{{FULLPAGENAMEE}}|oldid=$1&diff=cur&diffonly=0}} $2 {{PLURAL:$2|njepřepruwowana změna|njepřepruwowanej změnje|njepřepruwowane změny|njepřepruwowanych změnow}}] ''(hlej deleka)'', {{PLURAL:$2|kotrež čaka|kotrejž čakatej|kotrež čakaja|kotrež čaka}} na přepruwowanje.",
@@ -6250,7 +6359,11 @@ Zo by přepruwowanski status wersije wotstronił, staj '''wšě''' pola na \"nje
 Prošu klikń na tłóčatko \"Wróćo\" w swojim wobhladowaku a spytaj hišće raz.",
 	'revreview-update' => "'''Prošu [[{{MediaWiki:Validationpage}}|přepruwuj]] njepřepruwowane změny ''(hlej deleka)'', kotrež buchu na akceptowanej wersiji přewjedźene.'''
 Dyrbiš snano změny dale wobźěłać abo je' 'cofnyć''.",
-	'revreview-update-edited' => '<span class="flaggedrevs_important">Twoje změny hišće njejsu so akceptowali. Su hišće njepřepruwowane změny.</span>
+	'revreview-update-edited' => '<span class="flaggedrevs_important">Twoje změny njejsu so akceptowali.</span>
+
+Prošu přepruwuj wšě slědowace změny, zo bychu so twoje změny akceptowali.
+Móže być, zo dyrbiš najprjedy změny dale wobdźěłać abo "cofnyć".',
+	'revreview-update-edited-prev' => '<span class="flaggedrevs_important">Twoje změny hišće njejsu so akceptowali. Su hišće njepřepruwowane změny.</span>
 
 Přepruwuj prošu wšě změny, kotrež so deleka pokazuja, zo bychu so twoje změny akceptowali.
 Dyrbiš snano změny dale wobdźěłać abo "cofnyć".',
@@ -6479,7 +6592,7 @@ Nem ellenőrzöttnek való visszaminősítéshez állítsd az összes mezőt „
 
 Kattints a böngésződ „Vissza” gombjára, majd próbáld újra.",
 	'revreview-update' => "Kérlek [[{{MediaWiki:Validationpage}}|ellenőrizd]] a közzétett változat utáni, még ellenőrzésre váró változtatásokat ''(lásd alább)''.",
-	'revreview-update-edited' => "<span class=\"flaggedrevs_important\">A változtatásaid még nincsenek [[{{MediaWiki:Validationpage}}|közzétéve]].</span>
+	'revreview-update-edited-prev' => "<span class=\"flaggedrevs_important\">A változtatásaid még nincsenek közzétéve.</span>
 
 A tiédet megelőző szerkesztések várnak ellenőrzésre. Ahhoz, hogy közzétedd a változtatásaidat, kérlek ellenőrizd ''az összes'' alább látható változtatást.",
 	'revreview-update-includes' => "'''Néhány sablon vagy fájl megváltozott:'''",
@@ -6722,7 +6835,7 @@ Pro remover le stato de revision de un version, mitte ''tote'' le campos a \"ina
 Per favor preme le button \"retro\" in tu navigator e reproba.",
 	'revreview-update' => "'''Per favor [[{{MediaWiki:Validationpage}}|revide]] omne modificationes pendente ''(monstrate hic infra)'' facite al version acceptate.'''
 Pote esser necessari primo investigar o \"disfacer\" modificationes.",
-	'revreview-update-edited' => '<span class="flaggedrevs_important">Tu modificationes non ha ancora essite acceptate. Il ha previe modificationes attendente revision.</span>
+	'revreview-update-edited-prev' => '<span class="flaggedrevs_important">Tu modificationes non ha ancora essite acceptate. Il ha previe modificationes attendente revision.</span>
 
 Per favor revide tote le modificationes monstrate hic infra pro facer acceptar tu modificationes.
 Pote esser necessari primo investigar o "disfacer" modificationes.',
@@ -7019,7 +7132,6 @@ $messages['is'] = array(
 	'revreview-flag' => 'Endurskoða þessa útgáfu',
 	'revreview-log' => 'Athugasemd:',
 	'revreview-quick-none' => "'''[[{{MediaWiki:Validationpage}}|Núverandi útgáfa]]''' (óendurskoðuð)",
-	'revreview-stable' => 'Síða',
 	'revreview-submit' => 'Staðfesta',
 	'revreview-submitting' => 'Staðfesta …',
 	'right-unreviewedpages' => 'Skoða [[Special:UnreviewedPages|lista yfir óendurskoðaðar síður]]',
@@ -7226,7 +7338,7 @@ $messages['ja'] = array(
 	'revreview-hist-basic-auto' => '[{{fullurl:$1|stableid=$2}} 自動一覧]',
 	'revreview-hist-quality-auto' => '[{{fullurl:$1|stableid=$2}} 自動的に承認されました]',
 	'revreview-hist-pending' => "'''[[{{fullurl:$1|oldid=$2&diff=$3}} 査読待ち]]'''",
-	'review-edit-diff' => "'''注意: 公開済みの版以降になされた変更が下の編集フォームには含まれています。'''",
+	'review-edit-diff' => "'''注意: あなたが編集しているページの領域には保留中の編集が含まれています。'''",
 	'revreview-diff-toggle-show' => '（変更を表示）',
 	'revreview-diff-toggle-hide' => '変更を隠す',
 	'revreview-diff-toggle-title' => '採用候補と公開中の版の間の変更の表示を切り替える',
@@ -7282,7 +7394,13 @@ $messages['ja'] = array(
 	'revreview-edit' => '編集',
 	'revreview-editnotice' => "'''あなたの変更は権限を持った利用者の[[{{MediaWiki:Validationpage}}|査読]]の後に[[{{MediaWiki:Validationpage}}|公開]]されます。'''",
 	'revreview-check-flag' => '現在査読待ちの編集を公開する',
-	'revreview-edited' => "'''変更は権限を持った利用者による[[{{MediaWiki:Validationpage}}|査読]]の後に[[{{MediaWiki:Validationpage}}|公開]]されます。'''以下に表示されているのが''採用候補''で、[{{fullurl:{{FULLPAGENAMEE}}|oldid=$1&diff=cur&diffonly=0}} $2件の{{PLURAL:$2|変更}}提案]があります。",
+	'revreview-check-flag-title' => '自身の編集とともに現在保留中の変更をすべて承認する。
+これは、あなたが既に保留中の変更全体の差分表示を確認した場合のみに使用してください。',
+	'revreview-submitedit' => '変更を送信',
+	'revreview-submitedit-title' => '変更を査読に送信',
+	'revreview-edited' => "'''変更は権限を持った利用者による査読の後に公開されます。 ([[{{MediaWiki:Validationpage}}|?]])'''
+
+[{{fullurl:{{FULLPAGENAMEE}}|oldid=$1&diff=cur&diffonly=0}} $2件の保留中の変更]（下記参照）が査読を待っています。",
 	'revreview-edited-section' => 'セクション名 "[[#$1|$2]]"へ戻る。',
 	'revreview-flag' => 'この特定版の査読',
 	'revreview-reflag' => 'この版を再査読する',
@@ -7343,7 +7461,10 @@ $messages['ja'] = array(
 
 ブラウザの「戻る」ボタンを押して再試行してください。",
 	'revreview-update' => "'''承認版に加えられた保留中の変更 (''下記参照'') を[[{{MediaWiki:Validationpage}}|査読]]してください。'''過去の編集を追跡したり、取り消す必要があるかもしれません。",
-	'revreview-update-edited' => '<span class="flaggedrevs_important">あなたの加えた変更はまだ公開されていません。あなたの編集よりも前になされた査読待ちの編集があります。</span>
+	'revreview-update-edited' => '<span class="flaggedrevs_important">あなたの変更はまだ承認されていません。</span>
+
+あなたの変更を承認するためには、以下に示した変更すべてを点検してください。編集を追跡したり、「取り消し」したりする必要があるかもしれません。',
+	'revreview-update-edited-prev' => '<span class="flaggedrevs_important">あなたの加えた変更はまだ公開されていません。あなたの編集よりも前になされた査読待ちの編集があります。</span>
 
 あなたの変更が承認されるには、下記の変更をすべて査読してください。過去の編集を追跡したり、取り消す必要があるかもしれません。',
 	'revreview-update-includes' => "'''更新されたテンプレートやファイルがあります:'''",
@@ -7554,6 +7675,7 @@ $messages['ka'] = array(
 	'revreview-edit' => 'რედაქტირება',
 	'revreview-editnotice' => "'''თქვენს მიერ განხორციელებული ცვლილებები იქნება გამოქვეყნებული უფლებამოსილი მომხმარებლის მიერ შემოწმების შემდეგ. ([[{{MediaWiki:Validationpage}}|?]])'''",
 	'revreview-check-flag' => 'შემოწმების მომლოდინე გადაუმოწმებელი რედაქტირების გამოქვეყნება.',
+	'revreview-submitedit' => 'ცვლილებების შენახვა',
 	'revreview-edited' => "რედაქტირება იქნება ჩართული [[{{MediaWiki:Validationpage}}|სტაბილურ ვერსიაში]] მხოლოდ უფლებამოსილი მომხმარებლის მიერ მათი [[{{MediaWiki:Validationpage}}|შემოწმების]] შემდეგ.'''
 ქვემოთ ნაჩვენებია სტატიის ''შავი'' ვერსია, სადაც [{{fullurl:{{FULLPAGENAMEE}}|oldid=$1&diff=cur&diffonly=0}} წარმოდგენილია $2 {{PLURAL:$2|ცვლილება|ცვლილებები|ცვლილებების}}].",
 	'revreview-edited-section' => 'დაბრუნება სტატიის სექციასთან სახელად «[[#$1|$2]]».',
@@ -8140,6 +8262,7 @@ $messages['ko'] = array(
 	'revreview-edit' => '편집',
 	'revreview-editnotice' => "'''당신의 편집은 권한이 있는 사용자가 검토한 후에 배포될 것입니다. ([[{{MediaWiki:Validationpage}}|?]])'''",
 	'revreview-check-flag' => '검토를 기다리고 있는 판 배포하기',
+	'revreview-submitedit' => '변경 사항 제출',
 	'revreview-edited' => "'''당신의 편집은 권한이 있는 사용자가 검토한 후에 배포될 것입니다. ([[{{MediaWiki:Validationpage}}|?]])'''
 
 아래에 보이는 [{{fullurl:{{FULLPAGENAMEE}}|oldid=$1&diff=cur&diffonly=0}} 편집 $2개]가 검토를 기다리고 있습니다.",
@@ -8210,7 +8333,7 @@ $messages['ko'] = array(
 브라우저의 "뒤로" 버튼을 눌러 다시 시도하십시오.',
 	'revreview-update' => "'''승인된 판에 이루어진 아래의 검토를 기다리고 있는 편집을 [[{{MediaWiki:Validationpage}}|검토]]해주십시오.'''
 필요하다면 내용을 보충하거나 편집을 되돌리십시오.",
-	'revreview-update-edited' => '<span class="flaggedrevs_important">당신의 편집은 아직 승인되지 않았습니다. 편집 이전에 검토를 기다리고 있는 편집이 있습니다.</span>
+	'revreview-update-edited-prev' => '<span class="flaggedrevs_important">당신의 편집은 아직 승인되지 않았습니다. 편집 이전에 검토를 기다리고 있는 편집이 있습니다.</span>
 
 당신의 편집을 승인하시려면 아래에 보이는 모든 편집 사항을 검토해주십시오.
 필요하다면 내용을 보충하거나 편집을 되돌리십시오.',
@@ -8530,7 +8653,7 @@ $messages['lb'] = array(
 	'revreview-hist-basic-auto' => '[{{fullurl:$1|stableid=$2}} automatesch nogekuckt]',
 	'revreview-hist-quality-auto' => '[{{fullurl:$1|stableid=$2}} automatesch fräiginn]',
 	'revreview-hist-pending' => "'''[[{{fullurl:$1|oldid=$2&diff=$3}} muss nach nogekuckt ginn]]'''",
-	'review-edit-diff' => "'''INFORMATIOUN: E puer Ännerunge déi drop waarde fir verëffentlecht ze ginn sinn am Ännerungsformlaire hei ënnendrënner mat dran.'''",
+	'review-edit-diff' => "'''INFORMATIOUN: E puer Ännerunge déi drop waarde fir verëffentlecht ze ginn betreffen deen Deel vun Der Säit, deen dir am gaang sidd z'änneren.'''",
 	'revreview-diff-toggle-show' => '(Ännerunge weisen)',
 	'revreview-diff-toggle-hide' => 'Ännerunge verstoppen',
 	'revreview-diff-toggle-title' => 'Tëschent den Ännerungen déi nach am Suspens sinn an der verëffentlechter Versioun ëmschalten',
@@ -8588,6 +8711,8 @@ D'Säit aktualiséieren an nokucke kann dëse Problem léisen.",
 	'revreview-edit' => 'Änneren',
 	'revreview-editnotice' => "'''Är Ännerungen gi verëffentlecht esoubal wéi en autoriséierte Benotzer se nogekuckt huet. ([[{{MediaWiki:Validationpage}}|?]])'''",
 	'revreview-check-flag' => "D'Ännerungen déi elo am Suspens si publizéieren",
+	'revreview-submitedit' => 'Ännerunge schécken',
+	'revreview-submitedit-title' => 'Är Ännerunge fir nozekucke schécken',
 	'revreview-edited' => "'''Ännerunge gi verëffentlecht esoubal wéi en autoriséierte Benotzer se nogekuckt huet. ([[{{MediaWiki:Validationpage}}|?]]).'''
 
 Et gëtt [{{fullurl:{{FULLPAGENAMEE}}|oldid=$1&diff=cur&diffonly=0}} $2 {{PLURAL:$2|Ännerung déi drop waart|Ännerungen déi drop waarde}}] fir nogekuckt ze ginn.",
@@ -8663,7 +8788,7 @@ Fir de Statut nogekuckt vun enger Versioun ewechzehuelen setzt ''all'' Felder op
 Klickt w.e.g op den ''Zréck''-Knäppche vun Ärem Browser a versicht et nach eng Kéier.",
 	'revreview-update' => "'''[[{{MediaWiki:Validationpage}}|Kuckt]] w.e.g. all Ännerungen no ''(déi ënnendrënner gewise sinn)'' déi no der publizéiert Versioun gemaach goufen.'''
 Et ka sinn datt Dir d'éischt Ännerungen noverfolgen oder ''zerécksetze'' musst.",
-	'revreview-update-edited' => "<span class=\"flaggedrevs_important\">Är Ännerungen goufen nach net akzeptéiert. Et gëtt vireg Ännerungen déi drop waarde fir nogekuckt ze ginn.</span>
+	'revreview-update-edited-prev' => "<span class=\"flaggedrevs_important\">Är Ännerungen goufen nach net akzeptéiert. Et gëtt vireg Ännerungen déi drop waarde fir nogekuckt ze ginn.</span>
 
 Kuckt w.e.g. all d'Ännerungen hei drënner no fir datt Är Ännerungen akzeptéiert ginn.
 Et ka sinn datt Dir d'éischt Ännerungen noverfolgen oder ''zrécksetze'' musst.",
@@ -8874,7 +8999,6 @@ $messages['lzh'] = array(
 	'revreview-quick-none' => "'''[[{{MediaWiki:Validationpage}}|今本]]'''（此為底本，未經審校）",
 	'revreview-quick-see-basic' => "'''此為底本''' [[{{fullurl:{{FULLPAGENAMEE}}|stable=1}} 察閱初定本]] （[{{fullurl:{{FULLPAGENAMEE}}|oldid=$1&diff=cur&diffonly=0}} 較二者之別]）",
 	'revreview-quick-see-quality' => "'''此為底本''' [[{{fullurl:{{FULLPAGENAMEE}}|stable=1}} 察閱初定本]] （[{{fullurl:{{FULLPAGENAMEE}}|oldid=$1&diff=cur&diffonly=0}} 較二者之別]）",
-	'revreview-stable' => '校本',
 	'revreview-basic-title' => '初定本',
 	'revreview-submit' => '成',
 	'revreview-submitting' => '在處理',
@@ -8906,7 +9030,7 @@ $messages['mk'] = array(
 	'flaggedrevs-backlog' => "Постои дневник на [[Special:OldReviewedPages|уредувањата во исчекување]] за оценетите страници. '''Ваше внимание е потребно!'''",
 	'flaggedrevs-watched-pending' => "На вашата листа на набљудувања моментално има [{{fullurl:{{#Special:OldReviewedPages}}|watched=1}} уредувања во исчекување] да бидат оценети. ''Потребно е вашето внимание!'''",
 	'flaggedrevs-desc' => 'Им овозможува на уредниците и проверувачите да ги оценат ревизиите и да ги стабилизираат страниците',
-	'flaggedrevs-pref-UI' => 'Основен интерфејс:',
+	'flaggedrevs-pref-UI' => 'Основен посредник:',
 	'flaggedrevs-pref-UI-0' => 'Користи подробни кутии за приказ на одобрителниот статус на страниците',
 	'flaggedrevs-pref-UI-1' => 'Користи мали икони и минимален текст за приказ на одобрителниот статус на страници',
 	'prefs-flaggedrevs' => 'Одобрување на уредувања',
@@ -8932,7 +9056,7 @@ $messages['mk'] = array(
 	'revreview-hist-basic-auto' => '[{{fullurl:$1|stableid=$2}} автоматски проверена]',
 	'revreview-hist-quality-auto' => '[{{fullurl:$1|stableid=$2}} автоматски одобрена]',
 	'revreview-hist-pending' => "'''[[{{fullurl:$1|oldid=$2&diff=$3}} чека оценка]]'''",
-	'review-edit-diff' => "'''НАПОМЕНА: Во образецот за уредување подолу се содржат извесни промени на објавената верзија во исчекување.'''",
+	'review-edit-diff' => "'''НАПОМЕНА: Некои од промените во исчекување се однесуваат на делот од страницата што го уредувате.'''",
 	'revreview-diff-toggle-show' => '(прикажи промени)',
 	'revreview-diff-toggle-hide' => 'сокриј промени',
 	'revreview-diff-toggle-title' => 'Префлување од приказ на промените во исчекување на објавената верзија',
@@ -8993,6 +9117,10 @@ $messages['mk'] = array(
 	'revreview-edit' => 'Уреди',
 	'revreview-editnotice' => "'''Вашите промени ќе бидат објавени откако ќе ги оцени надлежен корисник. ([[{{MediaWiki:Validationpage}}|?]])'''",
 	'revreview-check-flag' => 'Објави уредувања моментално во исчекување',
+	'revreview-check-flag-title' => 'Прифаќање на сите тековни промени во исчекување заедно со сопственото уредување.
+Користете го ова само ако веќе ги имате видено сите разлики со промените во исчекување.',
+	'revreview-submitedit' => 'Поднеси промени',
+	'revreview-submitedit-title' => 'Поднесете ги вашите промени за проверка',
 	'revreview-edited' => "'''Промените ќе бидат објавени штом ќе ги прегледа надлежен корисник. ([[{{MediaWiki:Validationpage}}|?]])'''
 
 Има [{{fullurl:{{FULLPAGENAMEE}}|oldid=$1&diff=cur&diffonly=0}} $2 {{PLURAL:$2|промена|промени}}] ''({{PLURAL:$2|прикажана подолу|прикажани подолу}})'' во исчекување на проверка.",
@@ -9055,8 +9183,8 @@ $messages['mk'] = array(
 	'revreview-submit-unreview' => 'Тргни одобрение',
 	'revreview-submit-reviewed' => 'Готово. Одобрено!',
 	'revreview-submit-unreviewed' => 'Готово. Тргнато одобрение!',
-	'revreview-successful' => "'''Ревизијата на [[:$1|$1]] успешно означена. ([{{fullurl:{{#Special:ReviewedVersions}}|page=$2}} преглед на оценети верзии])'''",
-	'revreview-successful2' => "'''За ревизијата на [[:$1|$1]] успешно е острането означувањето.'''",
+	'revreview-successful' => "'''Ревизијата на [[:$1|$1]] e успешно означена. ([{{fullurl:{{#Special:ReviewedVersions}}|page=$2}} прегледани верзии])'''",
+	'revreview-successful2' => "'''Успешно отстранета ознака од ревизијата на [[:$1|$1]].'''",
 	'revreview-text' => "''[[{{MediaWiki:Validationpage}}|Оценети верзии]] се проверени верзии на страници според кои се определува објавената верзија.''",
 	'revreview-toggle-title' => 'прикажи/сокриј детали',
 	'revreview-toolow' => "'''Атрибутите мора да ги оцените со нешто повисоко од „недоволно“ за ревизијата да се смета за проверена.'''
@@ -9065,7 +9193,11 @@ $messages['mk'] = array(
 
 Притиснете на копчето „назад“ во вашиот прелистувач и обидете се повторно.",
 	'revreview-update' => "'''[[{{MediaWiki:Validationpage}}|проверете]] ги промените ''(прикажани подолу)'' направени на прифатената верзија.'''",
-	'revreview-update-edited' => '<span class="flaggedrevs_important">Вашите промени сè уште не се прифатени.</span> Постојат претходни уредувања што чекаат на проверка.</span>
+	'revreview-update-edited' => '<span class="flaggedrevs_important">Вашите промени сè уште не се прифатени.</span>
+
+Прегледајте ги сите долунаведени промени пред да може да бидат прифатени.
+За таа цел можеби ќе треба да ги измените или вратите уредувањата.',
+	'revreview-update-edited-prev' => '<span class="flaggedrevs_important">Вашите промени сè уште не се прифатени.</span> Постојат претходни уредувања што чекаат на проверка.</span>
 
 Проверете ги сите долунаведени промени за да ви бидат прифатени вашите уредувања.
 Најпрвин можеби ќе треба да проследите или „вратите“ некои уредувања.',
@@ -9170,7 +9302,7 @@ $messages['ml'] = array(
 	'revreview-hist-basic-auto' => '[{{fullurl:$1|stableid=$2}} സ്വയം പരിശോധിച്ചത്]',
 	'revreview-hist-quality-auto' => '[{{fullurl:$1|stableid=$2}} യാന്ത്രികമായി സ്വയം അംഗീകരിച്ചത്]',
 	'revreview-hist-pending' => "'''[[{{fullurl:$1|oldid=$2&diff=$3}} സംശോധനം പ്രതീക്ഷിക്കുന്നവ]]'''",
-	'review-edit-diff' => "'''അറിയിപ്പ്: പ്രസിദ്ധപ്പെടുത്തിയ പതിപ്പിലെ സംശോധനം പ്രതീക്ഷിക്കുന്ന തിരുത്തലുകൾ താഴെയുള്ള തിരുത്തുവാനുള്ള പെട്ടിയിൽ ഉൾക്കൊള്ളിച്ചിട്ടുണ്ട്'''",
+	'review-edit-diff' => "'''അറിയിപ്പ്: സംശോധനത്തിന് അവശേഷിക്കുന്ന ചില മാറ്റങ്ങൾ താളിൽ താങ്കൾ തിരുത്തുന്ന ഭാഗത്ത് ബാധകമാണ്.'''",
 	'revreview-diff-toggle-show' => '(മാറ്റങ്ങൾ പ്രദർശിപ്പിക്കുക)',
 	'revreview-diff-toggle-hide' => 'മാറ്റങ്ങൾ മറയ്ക്കുക',
 	'revreview-diff-toggle-title' => 'അവശേഷിക്കുന്ന മാറ്റങ്ങളും പ്രസിദ്ധീകരിച്ച പതിപ്പും തമ്മിലുള്ള മാറ്റങ്ങൾ മാറി മാറി പ്രദർശിപ്പിക്കാൻ അനുവദിക്കുക',
@@ -9206,6 +9338,15 @@ $messages['ml'] = array(
 
 പ്രത്യേകിച്ചൊരു പതിപ്പ് വ്യക്തമാക്കാതെ ഒരു ഫലകമോ പ്രമാണമോ ആയിരിക്കണം ആവശ്യപ്പെട്ടത്.
 താങ്കൾ ഈ താളിൽ സംശോധനം ചെയ്യാൻ തുടങ്ങിയ ശേഷം, ഒരു ഫലകം തത്സമയമായി മറ്റൊരു പ്രമാണമോ ഫലകമോ ഒരു ചരത്തെ അടിസ്ഥാനമാക്കി മാറ്റിയതിനാലും ഇങ്ങനെ സംഭവിക്കാം. താൾ റിഫ്രഷ് ചെയ്ത് പുനഃസംശോധനം ചെയ്താൽ ഈ പ്രശ്നം പരിഹരിക്കാം.",
+	'review_page_invalid' => 'താളിനു ലക്ഷ്യമിട്ട പേര് അസാധുവാണ്.',
+	'review_page_notexists' => 'ലക്ഷ്യമിട്ട താൾ നിലവിലില്ല.',
+	'review_page_unreviewable' => 'ലക്ഷ്യമിട്ട താൾ സംശോധനം ചെയ്യാനാവില്ല.',
+	'review_no_oldid' => 'നാൾപ്പതിപ്പിന്റെ ഐ.ഡി. വ്യക്തമാക്കിയിട്ടില്ല.',
+	'review_bad_oldid' => 'ലക്ഷ്യം വെച്ച നാൾപ്പതിപ്പ് നിലവിലില്ല.',
+	'review_too_low' => 'ചില മണ്ഡലങ്ങൾ "അപര്യാപ്തം" എന്നു കുറിച്ചിരിക്കെ നാൾപ്പതിപ്പ് സംശോധനം ചെയ്യാൻ കഴിയില്ല.',
+	'review_bad_key' => 'ഉൾപ്പെടുത്താനുള്ള ചരം അസാധുവാണ്.',
+	'review_denied' => 'അനുമതി നിഷേധിച്ചിരിക്കുന്നു.',
+	'review_param_missing' => 'ചരം ലഭ്യമല്ല അല്ലെങ്കിൽ അസാധുവാണ്.',
 	'revreview-current' => 'അവശേഷിക്കുന്ന മാറ്റങ്ങൾ',
 	'revreview-depth' => 'ആഴം',
 	'revreview-depth-0' => 'അംഗീകരിച്ചിട്ടില്ലാത്തത്',
@@ -9217,6 +9358,10 @@ $messages['ml'] = array(
 	'revreview-edit' => 'തിരുത്തുക',
 	'revreview-editnotice' => "'''താങ്കളുടെ തിരുത്തലുകൾ അംഗീകരിക്കപ്പെട്ട ഒരുപയോക്താവ് സംശോധനം ചെയ്ത ശേഷം പ്രസിദ്ധപ്പെടുത്തുന്നതാണ്. [[{{MediaWiki:Validationpage}}|?]]'''",
 	'revreview-check-flag' => 'ഇപ്പോൾ അവശേഷിക്കുന്ന തിരുത്തലുകൾ പ്രസിദ്ധീകരിക്കുക',
+	'revreview-check-flag-title' => 'താങ്കളുടെ തിരുത്തലിനൊപ്പം അവശേഷിക്കുന്ന മാറ്റങ്ങളും സ്വീകരിക്കുക.
+അവശേഷിക്കുന്ന മാറ്റങ്ങൾ സൃഷ്ടിച്ച വ്യത്യാസം കണ്ടിട്ടുണ്ടെങ്കിൽ മാത്രമേ ഇതുപയോഗിക്കാവൂ.',
+	'revreview-submitedit' => 'മാറ്റങ്ങൾ സമർപ്പിക്കുക',
+	'revreview-submitedit-title' => 'താങ്കൾ വരുത്തിയ മാറ്റങ്ങൾ സംശോധനത്തിന് സമർപ്പിക്കുക',
 	'revreview-edited' => "'''അംഗീകരിക്കപ്പെട്ട ഒരു ഉപയോക്താവ് ഒരിക്കൽ സം‌ശോധനം നിർ‌വഹിച്ചാൽ തിരുത്തലുകൾ പ്രസിദ്ധപ്പെടുത്തും. [[{{MediaWiki:Validationpage}}|?]]'''
 
 അതിൽ [{{fullurl:{{FULLPAGENAMEE}}|oldid=$1&diff=cur&diffonly=0}} അവശേഷിക്കുന്ന {{PLURAL:$2|ഒരു മാറ്റം|$2 മാറ്റങ്ങൾ}}] ''(താഴെ കൊടുത്തിരിക്കുന്നു)''സം‌ശോധനം പ്രതീക്ഷിക്കുന്നു.",
@@ -9281,14 +9426,17 @@ $messages['ml'] = array(
 	'revreview-successful2' => "'''[[:$1|$1]] താളിന്റെ നാൾപ്പതിപ്പിൽ നിന്നും പതാക വിജയകരമായി നീക്കിയിരിക്കുന്നു.'''",
 	'revreview-text' => "''പ്രസിദ്ധീകരിക്കാനുള്ള പതിപ്പുകൾക്കായി പരിശോധിക്കപ്പെട്ട പതിപ്പുകളാണ് [[{{MediaWiki:Validationpage}}|സംശോധനം ചെയ്ത പതിപ്പുകൾ]].''",
 	'revreview-toggle-title' => 'വിവരങ്ങൾ കാണിക്കുക/മറയ്ക്കുക',
-	'revreview-toolow' => '\'\'\'നാൾപ്പതിപ്പ് സംശോധനം ചെയ്തതാണെന്ന് കണക്കാക്കാൻ താഴെ കൊടുത്തിരിക്കുന്ന ഓരോന്നിലും താങ്കൾ "അംഗീകരിക്കാത്തത്" എന്ന നിലയ്ക്ക് മുകളിലുള്ള ഒരു നിലവാരമിടേണ്ടതാണ്.\'\'\'
-ഒരു നാൾപ്പതിപ്പിന്റെ സംശോധിത പദവി ഒഴിവാക്കാൻ എല്ലാ മണ്ഡലങ്ങളും "അംഗീകരിക്കാത്തത്" എന്നു കുറിക്കുക.
+	'revreview-toolow' => '\'\'\'നാൾപ്പതിപ്പ് സംശോധനം ചെയ്തതാണെന്ന് കണക്കാക്കാൻ താഴെ കൊടുത്തിരിക്കുന്ന ഓരോന്നിലും താങ്കൾ "അപര്യാപ്തം" എന്ന നിലയ്ക്ക് മുകളിലുള്ള ഒരു നിലവാരമിടേണ്ടതാണ്.\'\'\'
+
+ഒരു നാൾപ്പതിപ്പിന്റെ സംശോധിത പദവി ഒഴിവാക്കാൻ എല്ലാ മണ്ഡലങ്ങളും "അപര്യാപ്തം" എന്നു കുറിക്കുക.
 
 താങ്കളുടെ ബ്രൗസറിന്റെ "ബാക്ക്" ബട്ടൺ ഞെക്കി പിന്നോട്ട് പോയി വീണ്ടും ശ്രമിക്കുക.',
-	'revreview-update' => "പ്രസിദ്ധീകരിക്കപ്പെട്ട പതിപ്പിൽ ഉണ്ടായിട്ടുള്ള അവശേഷിക്കുന്ന മാറ്റങ്ങൾ ''(താഴെ കൊടുത്തിരിക്കുന്നു)'' [[{{MediaWiki:Validationpage}}|സംശോധനം ചെയ്യുക]].",
-	'revreview-update-edited' => '<span class="flaggedrevs_important">താങ്കൾ വരുത്തിയ മാറ്റങ്ങൾ ഇതുവരെ [[{{MediaWiki:Validationpage}}|പ്രസിദ്ധീകരിച്ചിട്ടില്ല]].</span>
+	'revreview-update' => "'''ദയവായി അവശേഷിക്കുന്ന മാറ്റങ്ങൾ ''(താഴെ കൊടുത്തിരിക്കുന്നു)'' [[{{MediaWiki:Validationpage}}|സംശോധനം ചെയ്ത്]] അംഗീകരിക്കപ്പെട്ട പതിപ്പ് ആക്കുക.'''
+ആദ്യം തിരുത്തലുകൾ \"തിരസ്കരിക്കുകയോ\", പൂർത്തീകരിക്കുകയോ ചെയ്യേണ്ടിയിരിക്കാം.",
+	'revreview-update-edited-prev' => '<span class="flaggedrevs_important">താങ്കൾ വരുത്തിയ മാറ്റങ്ങൾ ഇതുവരെ സ്വീകരിച്ചിട്ടില്ല, പഴയ മാറ്റങ്ങൾ സംശോധനത്തിന് അവശേഷിക്കുന്നു.</span>
 
-പഴയ തിരുത്തലുകളും സംശോധനത്തിന് അവശേഷിക്കുന്നുണ്ട്. താങ്കളുടെ തിരുത്തലുകൾ പ്രസിദ്ധീകരിക്കാൻ, ദയവായി താഴെ കൊടുത്തിരിക്കുന്ന എല്ലാ മാറ്റങ്ങളും സംശോധനം ചെയ്യുക.',
+താങ്കളുടെ തിരുത്തലുകൾ സ്വീകരിക്കാൻ താഴെ കൊടുത്തിരിക്കുന്ന മാറ്റങ്ങൾ സംശോധനം ചെയ്യുക.
+ആദ്യം തിരുത്തലുകൾ "തിരസ്കരിക്കുകയോ", പൂർത്തീകരിക്കുകയോ ചെയ്യേണ്ടിയിരിക്കാം.',
 	'revreview-update-includes' => "'''ചില ഫലകങ്ങൾ/പ്രമാണങ്ങൾ പുതുക്കിയിരിക്കുന്നു:'''",
 	'revreview-update-use' => "'''ശ്രദ്ധിക്കുക:''' ഈ ഫലകങ്ങളുടേയും/പ്രമാണങ്ങളുടേയും പ്രസിദ്ധീകരിക്കപ്പെട്ട പതിപ്പായിരിക്കും, ഈ താളിന്റെ പ്രസിദ്ധീകരിക്കപ്പെട്ട പതിപ്പിൽ ഉപയോഗിക്കുക.",
 	'revreview-visibility' => "'''ഈ താളിനു പുതുക്കപ്പെട്ട [[{{MediaWiki:Validationpage}}|പ്രസിദ്ധീകരിച്ച പതിപ്പ്]] ഉണ്ട്; താളിന്റെ സ്ഥിരതാ സജ്ജീകരണങ്ങൾ [{{fullurl:{{#Special:Stabilization}}|page={{FULLPAGENAMEE}}}} ക്രമീകരിക്കാവുന്നതാണ്].'''",
@@ -9304,9 +9452,10 @@ $messages['ml'] = array(
 	'rights-editor-autosum' => 'യാന്ത്രികമായി സ്ഥാനക്കയറ്റം നൽകിയിരിക്കുന്നു',
 	'rights-editor-revoke' => '[[$1]] എന്ന ഉപയോക്താവിന്റെ എഡിറ്റർ അവകാശം പിൻ‌വലിച്ചിരിക്കുന്നു',
 	'specialpages-group-quality' => 'തിരുത്തൽ അംഗീകരണം',
-	'stable-logentry-config' => '[[$1]] താളിന്റെ ക്രമീകരിക്കപ്പെട്ട പ്രസിദ്ധീകരിക്കൽ സജ്ജീകരണങ്ങൾ',
-	'stable-logentry-reset' => '[[$1]] താളിന്റെ ക്രമീകരിക്കപ്പെട്ട പ്രസിദ്ധീകരിക്കൽ സജ്ജീകരണങ്ങൾ പുനഃക്രമീകരിക്കുക',
-	'stable-log-restriction' => 'പ്രസിദ്ധീകരിക്കൽ: "$1" അനുമതി ആവശ്യമാണ്',
+	'stable-logentry-config' => '$1 സ്വീകരിക്കപ്പെടാനുള്ള ക്രമീകരണങ്ങൾ സജ്ജീകരിക്കുക',
+	'stable-logentry-modify' => '$1 സ്വീകരിക്കപ്പെടാനുള്ള ക്രമീകരണങ്ങൾ മാറ്റിയിരിക്കുന്നു',
+	'stable-logentry-reset' => '$1 താളിന്റെ ക്രമീകരിക്കപ്പെട്ട പ്രസിദ്ധീകരിക്കൽ സജ്ജീകരണങ്ങൾ പുനഃക്രമീകരിക്കുക',
+	'stable-log-restriction' => 'സ്വയം-സ്വീകരിക്കൽ: "$1" അനുമതി ആവശ്യമാണ്',
 	'stable-logpage' => 'സ്ഥിരതയുടെ പ്രവർത്തനരേഖ',
 	'stable-logpagetext' => 'ഇത് ഉള്ളടക്ക താളുകളുടെ [[{{MediaWiki:Validationpage}}|പരിശോധിക്കപ്പെട്ട പതിപ്പുകളുടെ]] ക്രമീകരണത്തിൽ ഉണ്ടാകുന്ന മാറ്റങ്ങളുടെ രേഖയാണ്.',
 	'revreview-filter-all' => 'എല്ലാം',
@@ -9336,7 +9485,7 @@ $messages['ml'] = array(
 	'tooltip-ca-current' => 'അവശേഷിക്കുന്ന മാറ്റങ്ങളടക്കം ഈ താൾ കാണുക',
 	'tooltip-ca-stable' => 'ഈ താളിന്റെ പ്രസിദ്ധീകരിക്കപ്പെട്ട പതിപ്പ് കാണുക',
 	'tooltip-ca-default' => 'ഗുണനിലവാര ഉറപ്പാക്കൽ ക്രമീകരണങ്ങൾ',
-	'flaggedrevs-protect-legend' => 'തിരുത്തലുകൾ പ്രസിദ്ധീകരിക്കുക',
+	'flaggedrevs-protect-legend' => 'തിരുത്തലുകൾ സ്വയം സ്വീകരിക്കൽ ([[{{MediaWiki:Validationpage}}|?]])',
 	'flaggedrevs-protect-none' => 'എല്ലാ ഉപയോക്താക്കളേയും അനുവദിക്കുക',
 	'flaggedrevs-protect-basic' => 'സ്വതവേയുള്ള സജ്ജീകരണങ്ങൾ',
 	'revreview-locked-title' => 'ഈ താളിലെ തിരുത്തലുകൾ പ്രദർശിക്കപ്പെടുന്നതിനു മുമ്പ് സംശോധനം ചെയ്യേണ്ടതാണ്.',
@@ -9837,6 +9986,10 @@ Ververs de pagina en start de beoordeling opnieuw om dit probleem op te lossen."
 	'revreview-edit' => 'Bewerken',
 	'revreview-editnotice' => "'''Uw wijzigingen worden gepubliceerd nadat een daartoe bevoegde gebruiker deze heeft  gecontroleerd. ([[{{MediaWiki:Validationpage}}|?]])'''",
 	'revreview-check-flag' => 'Ongecontroleerde wijzigingen publiceren',
+	'revreview-check-flag-title' => 'Alle ongecontroleerde wijzigingen samen met uw wijzigingen publiceren.
+Gebruik dit alleen als u de ongecontroleerde wijzigingen hebt bekeken.',
+	'revreview-submitedit' => 'Wijzigingen opslaan',
+	'revreview-submitedit-title' => 'Wijzigingen voor controle opslaan',
 	'revreview-edited' => "'''Wijzigingen worden gepubliceerd als een gerechtigde gebruiker ze gecontroleerd heeft. ([[{{MediaWiki:Validationpage}}|?]])'''
 
 Er {{PLURAL:$2|is|zijn}} [{{fullurl:{{FULLPAGENAMEE}}|oldid=$1&diff=cur&diffonly=0}} $2 ongecontroleerde {{PLURAL:$2|wijziging|wijzigingen}}]; deze worden hieronder weergegeven.",
@@ -9912,7 +10065,11 @@ Stel alle velden in op "{{int:Revreview-accuracy-0}}" om de waardering van een v
 Klik op de knop "Terug" in uw browser en probeer het opnieuw.',
 	'revreview-update' => "'''[[{{MediaWiki:Validationpage}}|Controleer]] alstublieft de ''onderstaande'' wijzigingen ten opzichte van de gepubliceerde versie.'''
 Wellicht dient u eerst correcties uit te voeren of bewerkingen ongedaan te maken.",
-	'revreview-update-edited' => '<span class="flaggedrevs_important">Uw wijzigingen zijn nog niet gepubliceerd. Er moeten nog bewerkingen gecontroleerd worden.</span>
+	'revreview-update-edited' => '<span class="flaggedrevs_important">Uw wijzigingen zijn nog niet gepubliceerd.</span>
+
+Controleer alle wijzigingen hieronder om uw bewerkingen te publiceren.
+Moet u wellicht eerst de overige ongecontroleerde bewerkingen afhandelen of bewerkingen ongedaan maken.',
+	'revreview-update-edited-prev' => '<span class="flaggedrevs_important">Uw wijzigingen zijn nog niet gepubliceerd. Er moeten nog bewerkingen gecontroleerd worden.</span>
 
 Controleer alle hieronder weergegeven wijzigingen om ook uw bewerking te publiceren.
 Wellicht dient u eerst correcties uit te voeren of bewerkingen ongedaan te maken.',
@@ -10329,7 +10486,7 @@ For å fjerne vurderingsstatusen til en revisjon kan du sette ''alle'' feltene t
 Klikk på «tilbake»-knappen i nettleseren din og prøv igjen.",
 	'revreview-update' => "'''[[{{MediaWiki:Validationpage}}|Revider]] ventende endringer ''(vist nedenfor)'' som har blitt gjort på den aksepterte versjonen.'''
 Du må kanskje følge opp eller «angre» endringer først.",
-	'revreview-update-edited' => '<span class="flaggedrevs_important">Dine endringer har ikke blitt akseptert ennå. Det finnes tidligere endringer som venter på revidering.</span>
+	'revreview-update-edited-prev' => '<span class="flaggedrevs_important">Dine endringer har ikke blitt akseptert ennå. Det finnes tidligere endringer som venter på revidering.</span>
 
 Se igjennom alle endringene vist nedenfor for å gjøre endringene dine akseptert.
 Du må kanskje følge opp eller «angre» endringer først.',
@@ -11014,9 +11171,10 @@ Për gavé lë stat revisionà a na revision, ch'a ampòsta tùit ij camp a \"pa
 
 Për piasì, ch'a sgnaca ël boton \"andré\" an sò navigador e ch'a preuva torna.",
 	'revreview-update' => "Për piasì [[{{MediaWiki:Validationpage}}|ch'a revision-a]] tuti ij cangiament an cors ''(smonù ambelessì-sota)'' fàit a la version publicà.",
-	'revreview-update-edited' => '<span class="flaggedrevs_important">Ij sò cambiament a son anco\' pa stàit [[{{MediaWiki:Validationpage}}|publicà]].</span>
+	'revreview-update-edited-prev' => "<span class=\"flaggedrevs_important\">Ij sò cambiament a son anco' pa stàit acetà. A-i é dle modìfiche precedente ch'a speto na revision.</span>
 
-A-i son dle revision an cors ëd modìfiche precedente. Për publiché ij sò cambiament, për piasì ch\'a revision-a tùit ij cambiament mostrà sì-sota.',
+Për piasì ch'a revision-a tùit ij cambiament mostrà sì-sota prima che soe modìfiche a sio acetà.
+A podrìa avèj da manca ëd corege o «disfé» dle modìfiche.",
 	'revreview-update-includes' => "'''Chèich stamp o archivi a son ëstàit cangià:'''",
 	'revreview-update-use' => "'''NOTA:''' La version publicà ëd mincadun ëd costi stamp/archivi a l'é dovrà ant la version publicà ëd costa pàgina.",
 	'revreview-visibility' => "'''Sta pàgina-sì a l'ha na [[{{MediaWiki:Validationpage}}|version publicà]]; j'ampostassion dë stabilità dla pàgina a peulo esse [{{fullurl:{{#Special:Stabilization}}|page={{FULLPAGENAMEE}}}} configurà].'''",
@@ -11093,12 +11251,18 @@ $messages['ps'] = array(
 	'revreview-depth-1' => 'بنسټيز',
 	'revreview-depth-2' => 'منځوی',
 	'revreview-depth-3' => 'لوړ',
+	'revreview-edit' => 'سمول',
 	'revreview-source' => 'سرچينه کتل',
 	'revreview-style-1' => 'د منلو وړ',
 	'revreview-submit' => 'سپارل',
 	'revreview-submitting' => 'د سپارلو په حال کې ...',
+	'revreview-submit-review' => 'منل',
 	'revreview-filter-all' => 'ټول',
 	'revreview-statusfilter' => 'د دريځ بدلون:',
+	'revreview-lev-all' => 'هر يو',
+	'revreview-def-all' => 'هر يو',
+	'revreview-restriction-any' => 'هر يو',
+	'revreview-restriction-none' => 'هېڅ',
 	'revreview-reviewlink' => 'مخليدنه',
 	'tooltip-ca-current' => 'د همدې مخ اوسنی ګارليک ښکاره کول',
 );
@@ -11147,7 +11311,7 @@ $messages['pt'] = array(
 	'revreview-hist-basic-auto' => '[{{fullurl:$1|stableid=$2}} verificada automaticamente]',
 	'revreview-hist-quality-auto' => '[{{fullurl:$1|stableid=$2}} aprovada automaticamente]',
 	'revreview-hist-pending' => "'''[[{{fullurl:$1|oldid=$2&diff=$3}} revisão pendente]]'''",
-	'review-edit-diff' => "'''NOTA: Algumas alterações pendentes à versão publicada foram incorporadas no formulário de edição abaixo.'''",
+	'review-edit-diff' => "'''NOTA: Algumas das alterações pendentes afectam a área que está a editar na página.'''",
 	'revreview-diff-toggle-show' => '(mostrar alterações)',
 	'revreview-diff-toggle-hide' => 'esconder alterações',
 	'revreview-diff-toggle-title' => 'Alternar entre a apresentação das alterações pendentes e da versão publicada',
@@ -11208,6 +11372,10 @@ Recarregar a página e refazer a revisão pode solucionar este problema.",
 	'revreview-edit' => 'Editar',
 	'revreview-editnotice' => "'''As suas alterações serão publicadas após revisão por um utilizador autorizado ([[{{MediaWiki:Validationpage}}|?]])'''",
 	'revreview-check-flag' => 'Publicar as edições pendentes',
+	'revreview-check-flag-title' => 'Aceitar todas as alterações pendentes em conjunto com a sua edição.
+Faça-o só se já viu a lista completa de diferenças das alterações pendentes.',
+	'revreview-submitedit' => 'Enviar alterações',
+	'revreview-submitedit-title' => 'Enviar as suas alterações para revisão',
 	'revreview-edited' => "'''As alterações serão publicadas após revisão por um utilizador autorizado ([[{{MediaWiki:Validationpage}}|?]])'''
 
 {{PLURAL:$2|Existe|Existem}} [{{fullurl:{{FULLPAGENAMEE}}|oldid=$1&diff=cur&diffonly=0}} $2 {{PLURAL:$2|alteração pendente|alterações pendentes}}] ''(apresentadas abaixo)'' a aguardar revisão.",
@@ -11279,7 +11447,11 @@ Para anular a revisão de uma edição, classifique ''todos'' os atributos como 
 Clique o botão \"voltar\" do seu browser e tente novamente, por favor.",
 	'revreview-update' => "'''[[{{MediaWiki:Validationpage}}|Reveja]] quaisquer alterações pendentes ''(mostradas abaixo)'' que tenham sido feitas à versão aceite, por favor.'''
 Pode ser necessário primeiro investigar ou \"reverter\" algumas edições.",
-	'revreview-update-edited' => '<span class="flaggedrevs_important">As suas alterações ainda não foram aceites. Edições anteriores aguardam revisão.</span> 
+	'revreview-update-edited' => '<span class="flaggedrevs_important">As suas alterações ainda não foram aceites.</span>
+
+Reveja todas as alterações mostradas abaixo, para aceitar as suas edições, por favor.
+Pode ser necessário primeiro investigar ou "reverter" algumas edições.',
+	'revreview-update-edited-prev' => '<span class="flaggedrevs_important">As suas alterações ainda não foram aceites. Edições anteriores aguardam revisão.</span> 
 
 Reveja todas as alterações mostradas abaixo para que as suas edições sejam aceites, por favor.
 Pode ser necessário primeiro investigar ou "reverter" algumas edições.',
@@ -11799,7 +11971,7 @@ $messages['ru'] = array(
 	'revreview-hist-basic-auto' => '[{{fullurl:$1|stableid=$2}} автоматически досмотрена]',
 	'revreview-hist-quality-auto' => '[{{fullurl:$1|stableid=$2}} утверждена автоматически]',
 	'revreview-hist-pending' => "'''[[{{fullurl:$1|oldid=$2&diff=$3}} ожидает проверки]]'''",
-	'review-edit-diff' => "'''ЗАМЕЧАНИЕ. Некоторые ожидающие проверки правки к опубликованной версии были включены в приведённую ниже форму редактирования.'''",
+	'review-edit-diff' => "'''ЗАМЕЧАНИЕ. К области страницы, которую вы редактируете, относятся некоторые ожидающие проверки правки.'''",
 	'revreview-diff-toggle-show' => '(показать изменения)',
 	'revreview-diff-toggle-hide' => 'скрыть изменения',
 	'revreview-diff-toggle-title' => 'Переключить отображение непроверенных изменений к опубликованной версии',
@@ -11860,6 +12032,10 @@ $messages['ru'] = array(
 	'revreview-edit' => 'Править',
 	'revreview-editnotice' => "'''Сделанные вами изменения будут опубликованы после проверки уполномоченным участником. ([[{{MediaWiki:Validationpage}}|?]])'''",
 	'revreview-check-flag' => 'Опубликовать текущие непроверенные изменения',
+	'revreview-check-flag-title' => 'Принять все ожидающие проверки изменения вместе с вашей правкой.
+Используйте, только если вы уже просмотрели все ожидающие проверки изменения.',
+	'revreview-submitedit' => 'Записать изменения',
+	'revreview-submitedit-title' => 'Отправить ваши исправления для проверки',
 	'revreview-edited' => "'''Изменения будут опубликованы только после проверки уполномоченным участником. ([[{{MediaWiki:Validationpage}}|?]])'''
 
 [{{fullurl:{{FULLPAGENAMEE}}|oldid=$1&diff=cur&diffonly=0}} $2 {{PLURAL:$2|изменение|изменения|изменений}}] {{PLURAL:$2|ожидает|ожидают|ожидают}} проверки (показаны ниже).",
@@ -11930,7 +12106,11 @@ $messages['ru'] = array(
 Пожалуйста, нажмите в браузере кнопку «назад», чтобы указать значения заново.",
 	'revreview-update' => "'''Пожалуйста, [[{{MediaWiki:Validationpage}}|проверьте]] изменения ''(показаны ниже)'', сделанные в принятой версии.'''
 Возможно, вам потребуется сначала пройти по правкам или отменить их.",
-	'revreview-update-edited' => '<span class="flaggedrevs_important">Изменения не были приняты. Существуют более ранние правки, требующие проверки.</span>
+	'revreview-update-edited' => '<span class="flaggedrevs_important">Ваши изменения не были приняты.</span>
+
+Пожалуйста, проверьте все показанные ниже изменения, чтобы обеспечить их принятие.
+Возможно, вам потребуется пройти по истории правок или «отменить» изменения.',
+	'revreview-update-edited-prev' => '<span class="flaggedrevs_important">Изменения не были приняты. Существуют более ранние правки, требующие проверки.</span>
 
 Чтобы опубликовать ваши изменения, пожалуйста, проверьте все изменения, показанные ниже.
 Возможно, вам потребуется сначала пройти по правкам или отменить их.',
@@ -13016,9 +13196,30 @@ $messages['szl'] = array(
 );
 
 /** Tamil (தமிழ்)
+ * @author Kanags
+ * @author Mahir78
  * @author Trengarasu
  */
 $messages['ta'] = array(
+	'action-review' => 'திருத்தங்களைப் பார்வையிடுக',
+	'editor' => 'பதிப்பாளர்',
+	'flaggedrevs-backlog' => "There is currently a backlog of [[Special:OldReviewedPages|pending changes]] to reviewed pages. '''உங்களது கவனம் தேவை!'''",
+	'flaggedrevs-watched-pending' => "There are currently [{{fullurl:{{#Special:OldReviewedPages}}|watched=1}} pending changes] to reviewed pages on your watchlist. '''உங்களது கவனம் தேவை!'''",
+	'flaggedrevs-pref-UI' => 'அடிப்படை இடைமுகப்பு:',
+	'prefs-flaggedrevs' => 'மதிப்பீடை தொகு',
+	'prefs-flaggedrevs-ui' => 'மதிப்பீடை தொகு',
+	'group-editor' => 'பதிப்பாசிரியர்கள்',
+	'group-editor-member' => 'பதிப்பாசிரியர்',
+	'group-reviewer' => 'மதிப்பீட்டாளர்கள்',
+	'group-reviewer-member' => 'மதிப்பீட்டாளர்',
+	'grouppage-editor' => '{{ns:project}}:பதிப்பாசிரியர்',
+	'grouppage-reviewer' => '{{ns:project}}:மதிப்பீட்டாளர்',
+	'group-autoreview' => 'தானியக்கமாக சோதிக்கப்பட்ட பயனர்கள்',
+	'group-autoreview-member' => 'தானியக்கமாக சோதிக்கப்பட்ட பயனர்கள்',
+	'grouppage-autoreview' => '{{ns:project}}:தானியக்கமாக சோதிக்கப்பட்ட பயனர்கள்',
+	'revreview-hist-draft' => 'மறுநோக்கு சோதிக்கப்படவில்லை',
+	'revreview-hist-quality' => 'தரமான மேலாய்வு',
+	'revreview-hist-basic' => 'சோதிக்கப்பட்ட மேலாய்வு',
 	'revreview-revnotfound' => 'இப் பக்கத்துக்குரிய, நீங்கள் கோரிய பழைய திருத்தம் காணப்படவில்லை. இந்தப் பக்கத்தை அணுகுவதற்கு நீங்கள் பயன்படுத்திய இணைய முகவரியை அருள் கூர்ந்து சரி பார்க்கவும்.',
 );
 
@@ -13570,15 +13771,21 @@ Brauzeriňizde "yza" düwmesine basyň we gaýtadan synanyşyň.',
  * @author AnakngAraw
  */
 $messages['tl'] = array(
+	'action-review' => 'Suriing muli ang mga binago',
 	'editor' => 'Patnugot',
 	'flaggedrevs' => 'Naibandilang (natatakang) mga pagbabago',
 	'flaggedrevs-backlog' => "Pangkasalukuyang may mga naiwan pa sa [[Special:OldReviewedPages|naghihintay na mga pamamatnugot]] sa nasuri nang mga pahina. '''Kailangan ang pagpansin mo!'''",
 	'flaggedrevs-watched-pending' => "Pangkasalukuyang may [{{fullurl:{{#Special:OldReviewedPages}}|watched=1}} mga naghihintay na pamamatnugot] sa nasuring nang mga pahina ng iyong talaan ng binabantayan. '''Kailangan ang pagpansin mo!'''.",
-	'flaggedrevs-desc' => 'Nagbibigay sa mga patnugot at mga tagapagsuri ng kakayahang mapatunayan ang mga pagbabago at mabigyan ng katatagan ang mga pahina',
-	'flaggedrevs-pref-UI-0' => 'Gamitin ang detalyadong matatag na bersyon ng ugnayang panghangganan na pangtagagamit',
-	'flaggedrevs-pref-UI-1' => 'Gamitin ang payak na matatag na bersyon ng ugnayang-panghangganan na pangtagagamit',
-	'flaggedrevs-prefs-stable' => 'Ipakita palagi ang matatag na bersyon ng mga pahina ng nilalaman ayon sa likas na pagkakatakda (kung mayroon)',
+	'flaggedrevs-desc' => 'Nagbibigay sa mga Patnugot at mga Manunuri ng kakayahang masuri ang mga nabago at mapatatag ang mga pahina',
+	'flaggedrevs-pref-UI' => 'Payak na hangganang-mukha:',
+	'flaggedrevs-pref-UI-0' => 'Gamitin ang detalyadong mga kahon upang ipakita ang katayuan ng pagsuri ng mga pahina',
+	'flaggedrevs-pref-UI-1' => 'Gumamit ng maliliit na mga larawan at pinakakaunting teksto upang ipakita ang kalagayan sa pagsuri ng mga pahina',
+	'prefs-flaggedrevs' => 'Muling pagsuri ng binago',
+	'prefs-flaggedrevs-ui' => 'Muling pagsuri ng binago',
+	'flaggedrevs-prefs-stable' => 'Laging ipakita ang tanggap na bersyon ng mga pahina ng nilalaman ayon sa likas na pagkakatakda (kung may isa)',
 	'flaggedrevs-prefs-watch' => 'Idagdag ang mga pahinang nasuri ko na sa aking talaan ng mga binabantayan',
+	'flaggedrevs-prefs-editdiffs' => 'Ipakita ang naghihintay na pagkakaiba ng mga pagbabago kapag namamatnugot ng mga pahina',
+	'flaggedrevs-prefs-viewdiffs' => 'Ipakita ang naghihintay na pagkakaiba ng mga pagbabago kapag tinitingnan ang huling naghihintay na pagbabago',
 	'group-editor' => 'Mga patnugot',
 	'group-editor-member' => 'patnugot',
 	'group-reviewer' => 'Mga tagapagsuri',
@@ -13588,69 +13795,96 @@ $messages['tl'] = array(
 	'group-autoreview' => 'Mga kusang-tagapagsuri',
 	'group-autoreview-member' => 'Kusang-tagapagsuri',
 	'grouppage-autoreview' => '{{ns:project}}:Kusang-tagapagsuri',
-	'revreview-hist-draft' => 'balangkas ng pagbabago',
+	'revreview-hist-draft' => 'hindi pa nasusuring pagbabago',
 	'revreview-hist-quality' => 'katangiang pangkagalingan ng pagbabago',
-	'revreview-hist-basic' => 'namataang pagbabago',
+	'revreview-hist-basic' => 'nasuring pagbabago',
 	'revreview-hist-quality-user' => '[{{fullurl:$1|stableid=$2}} pinatunayan] ni [[User:$3|$3]]',
-	'revreview-hist-basic-user' => '[{{fullurl:$1|stableid=$2}} namataan na] ni [[User:$3|$3]]',
+	'revreview-hist-basic-user' => '[{{fullurl:$1|stableid=$2}} nasuri na] ni [[User:$3|$3]]',
 	'revreview-hist-basic-auto' => '[{{fullurl:$1|stableid=$2}} kusang namataan]',
-	'review-diff2stable' => 'Tingnan ang mga pagbabago sa pagitan ng matatag at pangkasalukuyang mga pagbabago',
-	'review-logentry-app' => 'nasuri na ang r$2 ng [[$1]]',
-	'review-logentry-dis' => 'bumaba ang halaga/katuturan ng r$2 ng [[$1]]',
-	'review-logentry-id' => 'tingnan: $2',
-	'review-logentry-diff' => 'pagkakaiba sa may katatagan',
+	'revreview-hist-quality-auto' => '[{{fullurl:$1|stableid=$2}} kusang napayagan]',
+	'revreview-hist-pending' => "'''[[{{fullurl:$1|oldid=$2&diff=$3}} naghihintay ng pagsusuri]]'''",
+	'review-edit-diff' => "'''PAUNAWA: Ilan sa mga pagbabagong naghihintay ang makakaapekto sa pahinang binabago mo.'''",
+	'revreview-diff-toggle-show' => 'ipakita ang mga pagbabago',
+	'revreview-diff-toggle-hide' => 'itago ang mga pagbabago',
+	'revreview-diff-toggle-title' => 'Pagpapakitang palipat-lipat ng naghihintay na mga pagbabago sa tanggap na bersyon',
+	'revreview-log-toggle-show' => 'ipakita ang talaan ng katatagan',
+	'revreview-log-toggle-hide' => 'ikubli ang talaan ng katatagan',
+	'revreview-log-toggle-title' => 'Pagpapakita ng paglilipat-lipat ng talaan ng pagtatakda ng katatagan',
+	'revreview-log-details-show' => 'ipakita ang mga detalye',
+	'revreview-log-details-hide' => 'itago ang mga detalye',
+	'revreview-log-details-title' => 'Pampakita palipat-lipat ng talaan ng pagtatakda ng katatagan',
+	'review-diff2stable' => 'Tingnan ang lahat ng naghihintay na mga pagbabago',
+	'review-logentry-app' => 'nasuri ang isang bersyon ng [[$1]]',
+	'review-logentry-dis' => 'bumaba ang katuturan ng [[$1]]',
+	'review-logentry-id' => 'pagbabago: $2',
+	'review-logentry-diff' => 'nasuring mga pagbabago',
+	'review-logentry-diff2' => 'mga pagbabagong bumaba ang katuturan',
 	'review-logpage' => 'Talaan ng pagsusuri',
 	'review-logpagetext' => 'Isa itong talaan ng mga pagbabago sa kalagayan ng [[{{MediaWiki:Validationpage}}|pagpayag]] sa mga pahina ng nilalaman ng mga pagbabago.',
 	'reviewer' => 'Tagapagsuri',
 	'revisionreview' => 'Suriing muli ang mga pagbabago',
 	'revreview-accuracy' => 'Katumpakan',
-	'revreview-accuracy-0' => 'Hindi pinayagan',
+	'revreview-accuracy-0' => 'Hindi sapat',
 	'revreview-accuracy-1' => 'Namataan',
 	'revreview-accuracy-2' => 'Tumpak',
 	'revreview-accuracy-3' => 'Sapat at tumpak ang mga pinagmulan',
 	'revreview-accuracy-4' => 'Naitampok (naitangi)',
 	'revreview-auto' => '(awtomatiko/kusa)',
-	'revreview-basic' => 'Ito ang pinakahuling [[{{MediaWiki:Validationpage}}|namataang]] pagbabago, 
-[{{fullurl:{{#Special:Log}}|type=review&page={{FULLPAGENAMEE}}}} pinayagan] noong <i>$2</i>.
-Ang [{{fullurl:{{FULLPAGENAMEE}}|stable=0}} balangkas] ay may [{{fullurl:{{FULLPAGENAMEE}}|oldid=$1&diff=cur&diffonly=0}} $3 {{PLURAL:$3|pagbabagong|mga pagbabagong}}] naghihintay ng muling pagsusuri.',
-	'revreview-basic-i' => 'Ito ang pinakahuling [[{{MediaWiki:Validationpage}}|namataang]] pagbabago, [{{fullurl:{{#Special:Log}}|type=review&page={{FULLPAGENAMEE}}}} pinayagan] noong <i>$2</i>.
-Ang [{{fullurl:{{FULLPAGENAMEE}}|stable=0}} balangkas] ay may [{{fullurl:{{FULLPAGENAMEE}}|oldid=$1&diff=cur&diffonly=0}} mga pagbabago sa suleras/larawan] na naghihintay ng muling pagsusuri.',
-	'revreview-basic-old' => 'Isa itong [[{{MediaWiki:Validationpage}}|namataang]] pagbabago ([{{fullurl:{{#Special:ReviewedVersions}}|page={{FULLPAGENAMEE}}}} itala ang lahat]), [{{fullurl:{{#Special:Log}}|type=review&page={{FULLPAGENAMEE}}}} pinayagan] noong <i>$2</i>.
-Maaaring may nagawang [{{fullurl:{{FULLPAGENAMEE}}|oldid=$1&diff=cur&diffonly=0}} mga pagbabago].',
-	'revreview-basic-same' => 'Ito ang pinakahuling [[{{MediaWiki:Validationpage}}|namataang]] pagbabago ([{{fullurl:{{#Special:ReviewedVersions}}|page={{FULLPAGENAMEE}}}} itala ang lahat]), [{{fullurl:{{#Special:Log}}|type=review&page={{FULLPAGENAMEE}}}} pinayagan] noong <i>$2</i>.',
-	'revreview-basic-source' => 'Isang [{{fullurl:{{FULLPAGENAMEE}}|stableid=$1}} namataang pagbabago] ng pahinang ito, [{{fullurl:{{#Special:Log}}|type=review&page={{FULLPAGENAMEE}}}} pinayagan] noong <i>$2</i>, na ibinatay mula sa pagbabagong ito.',
-	'revreview-changed' => "'''Hindi maisagawa sa pagbabagong ito ng [[:$1|$1]] ang hiniling na galaw.'''
+	'revreview-basic' => 'Ito ang pinakahuling [[{{MediaWiki:Validationpage}}|tanggap na bersyon]],  
+[{{fullurl:{{#Special:Log}}|type=review&page={{FULLPAGENAMEE}}}} nasuri] noong <i>$2</i>.
+May {{PLURAL:$3|isang|mga}}  [{{fullurl:{{FULLPAGENAMEE}}|oldid=$1&diff=cur&diffonly=0}} $3 na naghihintay na {{PLURAL:$3|pagbabago|pagbabagong}}] naghihintay na masuri.',
+	'revreview-basic-i' => 'Ito ang [[{{MediaWiki:Validationpage}}|tinanggap na bersyon]], [{{fullurl:{{#Special:Log}}|type=review&page={{FULLPAGENAMEE}}}} nasuri] noong <i>$2</i>.
+May mga [{{fullurl:{{FULLPAGENAMEE}}|oldid=$1&diff=cur&diffonly=0}} pagbabago sa suleras/talaksan] na naghihintay ng pagsusuri.',
+	'revreview-basic-old' => 'Isa itong [[{{MediaWiki:Validationpage}}|nasuring]] bersyon ([{{fullurl:{{#Special:ReviewedVersions}}|page={{FULLPAGENAMEE}}}} italang lahat]), [{{fullurl:{{#Special:Log}}|type=review&page={{FULLPAGENAMEE}}}} pinayagan] noong <i>$2</i>.
+Maaaring may mga bagong [{{fullurl:{{FULLPAGENAMEE}}|oldid=$1&diff=cur&diffonly=0}} pagbabagong] nagawa.',
+	'revreview-basic-same' => 'Ito ang [[{{MediaWiki:Validationpage}}|tanggap na bersyon]], [{{fullurl:{{#Special:Log}}|type=review&page={{FULLPAGENAMEE}}}} nasuri] noong <i>$2</i>.',
+	'revreview-basic-source' => 'Isang [{{fullurl:{{FULLPAGENAMEE}}|stableid=$1}} nasuring bersyon] ng pahinang ito, [{{fullurl:{{#Special:Log}}|type=review&page={{FULLPAGENAMEE}}}} pinayagan] noong <i>$2</i>, na ibinatay sa rebisyong ito.',
+	'revreview-failed' => "'''Hindi nagawang masuri ang rebisyong ito.''' Kulang ang pagpapasa o sa kabilang banda ay hindi tanggap.",
+	'revreview-changed' => "'''Ang galaw na hiniling ay hindi maisagawa sa pagbabagong ito ng [[:$1|$1]].'''
 
-Maaaring hiniling ang isang suleras o larawan na hindi natukoy ang partikular na bersyon.
-Maaaring mangyari ito kung may isang masigla/aktibong suleras na naglilipat-sama sa iba pang larawan o suleras ayon sa isang nagbabagong halaga/bagay na nagbago na magmula noong simulan mong suriing muli ang pahinang ito.
-Maaaring malutas ang suliraning ito sa pamamagitan ng pagsariwa sa pahina at isa pang dagdag na pagsusuring muli.",
-	'revreview-current' => 'Balangkas (burador)',
+Maaaring hiniling ang isang suleras o talaksan noong walang tinukoyna partikular na bersyon.
+Maaaring mangyari ito kung may isang masiglang suleras na naglilipat-sama sa iba pang talaksan o suleras ayon sa isang nabagong pabagu-bagong halaga magmula nang simulan mong suriin ang pahinang ito.
+Maaaring malutas ang suliraning ito sa pamamagitan ng pagsariwa sa pahina at muling pagsuri.",
+	'review_page_invalid' => 'Hindi tanggap ang puntiryang pahina ng pamagat.',
+	'review_page_notexists' => 'Hindi umiiral ang pinupukol na pahina.',
+	'review_page_unreviewable' => 'Hindi masusuri ang puntiryang pahina.',
+	'review_no_oldid' => 'Walang tinukoy na ID ng rebisyon.',
+	'review_bad_oldid' => 'Walang ganyang puntiryang rebisyon.',
+	'review_too_low' => 'Hindi masusuri ang rebisyon kung may ilang mga lugar na iniwang "hindi sapat".',
+	'review_bad_key' => 'Hindi tanggap na paramentrong susi ng pagsama.',
+	'review_denied' => 'Ipinagkait ang pahintulot.',
+	'review_param_missing' => 'Nawawala o hindi tanggap ang isang parametro.',
+	'revreview-current' => 'Mga pagbabagong naghihintay',
 	'revreview-depth' => 'Lalim',
-	'revreview-depth-0' => 'Hindi pinayagan',
+	'revreview-depth-0' => 'Kapos',
 	'revreview-depth-1' => 'Payak',
 	'revreview-depth-2' => 'Katamtaman',
 	'revreview-depth-3' => 'Mataas',
 	'revreview-depth-4' => 'Naitampok (naitangi)',
-	'revreview-draft-title' => 'Pahina ng balangkas',
-	'revreview-edit' => 'Baguhin ang balangkas',
-	'revreview-editnotice' => "'''Ang mga pagbabago sa pahinang ito ay isasama sa loob ng [[{{MediaWiki:Validationpage}}|matatag na bersyon]] kapag nasuri na ang mga ito ng isang may pahintulot na tagagamit.'''",
-	'revreview-edited' => "'''Isasama ang mga pagbabago sa loob ng [[{{MediaWiki:Validationpage}}|matatag na bersyon]] kapag nasuri na ang mga ito ng isang may pahintulot na tagagamit.'''
-'''Ipinapakita sa ibaba ang ''balangkas''.''' [{{fullurl:{{FULLPAGENAMEE}}|oldid=$1&diff=cur&diffonly=0}} $2 {{PLURAL:$2|pagbabagong naghihintay|mga pagbabagong naghihintay}}] ng muling pagsusuri.",
+	'revreview-draft-title' => 'Ipinapakita sa pahinang ito ang naghihintay na mga pagbabago',
+	'revreview-edit' => 'Baguhin',
+	'revreview-editnotice' => "'''Ang mga binago mo ay tatanggapin kapag nasuri na ng isang may kapangyarihang tagagamit.  ([[{{MediaWiki:Validationpage}}|?]])'''",
+	'revreview-check-flag' => 'Tanggapin ang kasalukuyang mga pagbabagong naghihintay',
+	'revreview-check-flag-title' => 'Tanggapin ang lahat ng pangkasalukuyang nakabinbing mga pagbabago kasama ang binago mo.
+Gamitin lamang ito kapag nakita mo na ang buong pagkakaiba ng mga pagbabagong nakabinbin.',
+	'revreview-submitedit' => 'Ipasa ang mga pagbabago',
+	'revreview-submitedit-title' => 'Ipasa ang mga pagbabago mo para masuri',
+	'revreview-edited' => "'''Tatanggapin ang mga binago mo kapag nasuri na sila ng may kapangyarihang tagagamit. ([[{{MediaWiki:Validationpage}}|tulong]])'''
+
+May {{PLURAL:$2|isang|mga}} [{{fullurl:{{FULLPAGENAMEE}}|oldid=$1&diff=cur&diffonly=0}} $2 nakabinbing  {{PLURAL:$2|pagbabago|mga pagbabago}}] ''(ipinapakita sa ibaba)'' na naghihintay ng pagsusuri.",
+	'revreview-edited-section' => 'Bumalik sa seksyon ng pahinang may pangalang "[[#$1|$2]]".',
 	'revreview-flag' => 'Suriing muli ang pagbabagong ito',
+	'revreview-reflag' => 'Muling suriin ang rebisyong ito.',
 	'revreview-invalid' => "'''Hindi tanggap na puntirya:''' walang [[{{MediaWiki:Validationpage}}|muling nasuring]] pagbabagong tumutugma sa ibinigay na ID.",
 	'revreview-legend' => 'Bigyan ng halaga/kaantasan ang nilalaman ng pagbabago',
 	'revreview-log' => 'Kumento/puna:',
 	'revreview-main' => 'Dapat kang pumili ng isang partikular na pagbabago mula sa isang pahinan ng nilalaman upang makapagsuri.
 
 Tingnan ang [[Special:Unreviewedpages|talaan ng mga pahina hindi pa nasusuring muli]].',
-	'revreview-newest-basic' => 'Ang [{{fullurl:{{FULLPAGENAMEE}}|stable=1}} pinakahuling namataang pagbabago] ([{{fullurl:{{#Special:ReviewedVersions}}|page={{FULLPAGENAMEE}}}} itala ang lahat]) ay [{{fullurl:{{#Special:Log}}|type=review&page={{FULLPAGENAMEE}}}} pinayagan] noong <i>$2</i>.
-[{{fullurl:{{FULLPAGENAMEE}}|oldid=$1&diff=cur&diffonly=0}} $3 {{PLURAL:$3|pagbabagong|mga pagbabagong}}] {{PLURAL:$3|kailangan|kailangan}} ng muling pagsusuri.',
-	'revreview-newest-basic-i' => 'Ang [{{fullurl:{{FULLPAGENAMEE}}|stable=1}} pinakahuling namataang pagbabago] ([{{fullurl:{{#Special:ReviewedVersions}}|page={{FULLPAGENAMEE}}}} itala ang lahat]) ay [{{fullurl:{{#Special:Log}}|type=review&page={{FULLPAGENAMEE}}}} pinayagan] noong <i>$2</i>.
-[{{fullurl:{{FULLPAGENAMEE}}|oldid=$1&diff=cur&diffonly=0}} Mga pagbabago sa suleras/larawan] nangangailangan ng muling pagsusuri.',
-	'revreview-newest-quality' => 'Ang [{{fullurl:{{FULLPAGENAMEE}}|stable=1}} pinakahuling pagbabagong may mataas na uri (kalidad)] ([{{fullurl:{{#Special:ReviewedVersions}}|page={{FULLPAGENAMEE}}}} itala ang lahat]) ay [{{fullurl:{{#Special:Log}}|type=review&page={{FULLPAGENAMEE}}}} pinayagan] noong <i>$2</i>.
-[{{fullurl:{{FULLPAGENAMEE}}|oldid=$1&diff=cur&diffonly=0}} $3 {{PLURAL:$3|pagbabago|mga pagbabago}}] {{PLURAL:$3|nangangailangan|nangangailangan}} ng muling pagsusuri.',
-	'revreview-newest-quality-i' => 'Ang [{{fullurl:{{FULLPAGENAMEE}}|stable=1}} pinakahuling pagbabagong may mataas na uri (kalidad)] ([{{fullurl:{{#Special:ReviewedVersions}}|page={{FULLPAGENAMEE}}}} itala ang lahat]) ay [{{fullurl:{{#Special:Log}}|type=review&page={{FULLPAGENAMEE}}}} pinayagan] noong <i>$2</i>.
-[{{fullurl:{{FULLPAGENAMEE}}|oldid=$1&diff=cur&diffonly=0}} Mga pagbabago sa suleras/larawang] nangangailangan ng muling pagsusuri.',
+	'revreview-newest-basic' => 'Ang [{{fullurl:{{FULLPAGENAMEE}}|stable=1}} tinanggap na bersyon] ay [{{fullurl:{{#Special:Log}}|type=review&page={{FULLPAGENAMEE}}}} nasuri] noong <i>$2</i>. May {{PLURAL:$3|isang|mga}} [{{fullurl:{{FULLPAGENAMEE}}|oldid=$1&diff=cur&diffonly=0}} $3 nakabinbing {{PLURAL:$3|pagbabago|mga pagbabago}}] na naghihintay ng pagsusuri.',
+	'revreview-newest-basic-i' => 'Ang [{{fullurl:{{FULLPAGENAMEE}}|stable=1}} tanggap na bersyon] ay [{{fullurl:{{#Special:Log}}|type=review&page={{FULLPAGENAMEE}}}} nasuri] noong <i>$2</i>. May [{{fullurl:{{FULLPAGENAMEE}}|oldid=$1&diff=cur&diffonly=0}} mga pagbabago sa suleras/talaksan] na naghihintay ng pagsusuri.',
+	'revreview-newest-quality' => 'Ang [{{fullurl:{{FULLPAGENAMEE}}|stable=1}} tanggap na bersyon] ay [{{fullurl:{{#Special:Log}}|type=review&page={{FULLPAGENAMEE}}}} pinayagan] noong <i>$2</i>. May {{PLURAL:$3|isang|mga}} [{{fullurl:{{FULLPAGENAMEE}}|oldid=$1&diff=cur&diffonly=0}} $3 nakabinbing {{PLURAL:$3|pagbabago|mga pagbabago}}] na naghihintay ng pagsusuri.',
+	'revreview-newest-quality-i' => 'Ang [{{fullurl:{{FULLPAGENAMEE}}|stable=1}} tanggap na bersyon] ay [{{fullurl:{{#Special:Log}}|type=review&page={{FULLPAGENAMEE}}}} pinayagan] noong <i>$2</i>. May mga [{{fullurl:{{FULLPAGENAMEE}}|oldid=$1&diff=cur&diffonly=0}}  pagbabago sa suleras/talaksan] na naghihintay ng pagsusuri.',
 	'revreview-noflagged' => "Walang muling nasuring pagbabago para sa pahinang ito, kaya maaaring '''hindi''' pa ito 
 [[{{MediaWiki:Validationpage}}|nasuri]] para sa kaantasan ng uri (kalidad).",
 	'revreview-note' => 'Gumawa (naglagay) si [[User:$1|$1]] ng sumusunod na mga pagtatala hinggil sa [[{{MediaWiki:Validationpage}}|muling pagsuri]] ng pagbabagong ito:',
@@ -13683,13 +13917,17 @@ Maaaring may bagong [{{fullurl:{{FULLPAGENAMEE}}|oldid=$1&diff=cur&diffonly=0}} 
 	'revreview-stable1' => 'Maaaring naisin mong tingnan ang [{{fullurl:$1|stableid=$2}} ibinandilang bersyong ito] at tingnan kung ito na ngayon ang [{{fullurl:$1|stable=1}} matatag na bersyon] ng pahinang ito.',
 	'revreview-stable2' => 'Maaaring naisin mong tingnan ang [{{fullurl:$1|stable=1}} matatag na bersyon] ng pahinang ito (kung may natitira pang isa).',
 	'revreview-style' => 'Kaantasan ng pagkanababasa',
-	'revreview-style-0' => 'Hindi pinayagan',
+	'revreview-style-0' => 'Hindi sapat',
 	'revreview-style-1' => 'Katanggap-tanggap',
 	'revreview-style-2' => 'Mabuti',
 	'revreview-style-3' => 'Hindi paliguy-ligoy (nasa punto)',
 	'revreview-style-4' => 'Itinampok (itinangi)',
 	'revreview-submit' => 'Ipasa',
 	'revreview-submitting' => 'Ipinapasa...',
+	'revreview-submit-review' => 'Tanggapin',
+	'revreview-submit-unreview' => 'Huwag tanggapin',
+	'revreview-submit-reviewed' => 'Gawa na. Tinanggap na!',
+	'revreview-submit-unreviewed' => 'Ginawa na. Hindi tinanggap!',
 	'revreview-successful' => "'''Matagumpay na ang pagbabandila (pagtatatak) sa pagbabago ng [[:$1|$1]]. ([{{fullurl:{{#Special:ReviewedVersions}}|page=$2}} tingnan ang matatatag na mga bersyon])'''",
 	'revreview-successful2' => "'''Matagumpay ang pagtatanggal ng bandila (pagaalis ng tatak) sa pagbabago ng [[:$1|$1]].'''",
 	'revreview-text' => "''Ang [[{{MediaWiki:Validationpage}}|matatatag na mga bersyon]] ay ang likas na nakatakdang mga pahina ng nilalaman para sa mga tumatanaw sa halip na ang pinakabagong pagbabago.''",
@@ -13708,42 +13946,59 @@ ang mga katakdaang pangkatatagan ng pahina ay maaaring [{{fullurl:{{#Special:Sta
 	'revreview-revnotfound' => 'Hindi matagpuan ang hinihingi mong lumang pagbabago ng pahina.
 Pakisuri ang URL na ginamit para mapuntahan ang pahinang ito.',
 	'right-autoreview' => 'Kusang tatakan ang mga pagbabago bilang namataan na',
-	'right-movestable' => 'Ilipat ang matatatag na mga pahina',
-	'right-review' => 'Tatakan ang mga pagbabago bilang namataan na',
-	'right-stablesettings' => 'Iayos kung paanong pipiliin at palilitawin (ipapakita) ang matatag na bersyon',
-	'right-validate' => 'Tatakan ang mga pagbabago bilang napatunayan na',
+	'right-movestable' => 'Ilipat ang mga pahinang may tanggap na mga bersyon',
+	'right-review' => 'Tatakan ang mga pagbabago bilang "nasuri na"',
+	'right-stablesettings' => 'Iayos kung paano napili at ipinakita ang tanggap na bersyon',
+	'right-validate' => 'Tatakan ang mga pagbabago bilang "mataas ang uri"',
 	'right-unreviewedpages' => 'Tingnan ang [[Special:UnreviewedPages|talaan ng hindi pa nasusuring mga pahina]]',
 	'rights-editor-autosum' => 'itinaas ng kusa ang antas',
 	'rights-editor-revoke' => 'tinanggal ang kalagayan ng patnugot mula sa [[$1]]',
-	'specialpages-group-quality' => 'Paniniyak sa kataasan ng uri (kalidad)',
-	'stable-logentry-config' => 'may pagsasaayos na pagbibigay ng matatag na anyo ng bersyon para sa [[$1]]',
-	'stable-logentry-reset' => 'muling itakda ang pagbibigay ng matatag na anyo ng bersyon para sa [[$1]]',
+	'specialpages-group-quality' => 'Pagsusuri ng binago',
+	'stable-logentry-config' => 'itakda ang mga katakdaan ng pagtanggap para sa $1',
+	'stable-logentry-modify' => 'binagong katakdaan ng pagtanggap para sa $1',
+	'stable-logentry-reset' => 'muling itakda ang katakdaan ng pagtanggap para sa $1',
+	'stable-log-restriction' => 'Kusang pagtanggap: nangangailang ng pahintulot ng "$1"',
 	'stable-logpage' => 'Talaan ng katatagan',
 	'stable-logpagetext' => 'Isa itong talaan ng mga pagbabago sa pagkakaayos ng [[{{MediaWiki:Validationpage}}|matatag na bersyon]] ng mga pahina ng nilalaman.',
 	'revreview-filter-all' => 'Lahat',
-	'revreview-filter-stable' => 'matatag',
-	'revreview-statusfilter' => 'Pagbabago sa kalagayan:',
+	'revreview-filter-stable' => 'tinanggap',
+	'revreview-statusfilter' => 'Galaw ng pagsuri:',
 	'revreview-filter-approved' => 'Pinayagan',
 	'revreview-filter-reapproved' => 'Muling pinayagan',
-	'revreview-filter-unapproved' => 'Hindi pinayagan',
+	'revreview-filter-unapproved' => 'Hindi na pinayagan',
 	'revreview-typefilter' => 'Uri (tipo):',
 	'revreview-filter-auto' => 'Kusa (awtomatiko)',
 	'revreview-filter-manual' => 'Kinakamay (manwal)',
 	'revreview-levelfilter' => 'Antas:',
 	'revreview-precedencefilter' => 'Pagkauna:',
-	'revreview-lev-basic' => 'namataan na',
+	'revreview-lev-all' => 'alin man',
+	'revreview-lev-basic' => 'nasuri',
 	'revreview-lev-quality' => 'antas ng uri',
 	'revreview-lev-pristine' => 'dalisay',
-	'revreview-reviewlink' => 'suriing muli',
-	'tooltip-ca-current' => 'Tingnan ang pangkasalukuyang balangkas ng pahinang ito',
-	'tooltip-ca-stable' => 'Tingnan ang matatag na bersyon ng pahinang ito',
+	'revreview-defaultfilter' => 'Likas na nakatakdang bersyon:',
+	'revreview-def-all' => 'alin man',
+	'revreview-def-draft' => 'pinakabago',
+	'revreview-def-stable' => 'tinanggap',
+	'revreview-restrictfilter' => 'Antas ng pagbabawal:',
+	'revreview-restriction-any' => 'alin man',
+	'revreview-restriction-none' => 'wala',
+	'revreview-reviewlink' => 'mga pagbabagong naghihintay',
+	'revreview-reviewlink-title' => 'Tingnan ang pagkakaiba ng lahat ng mga pagbabagong naghihintay',
+	'revreview-unreviewedpage' => 'pahinang hindi nasuri',
+	'tooltip-ca-current' => 'Tingnan ang pahinang ito na may naghihintay na mga pagbabago',
+	'tooltip-ca-stable' => 'Tingnan ang tanggap na bersyon ng pahinang ito',
 	'tooltip-ca-default' => 'Katakdaan ng pagtitiyak ng pagkakaroon ng mataas na uri (kalidad)',
+	'flaggedrevs-protect-legend' => 'Kusang pagtanggap ng pagbabago ([[{{MediaWiki:Validationpage}}|?]])',
+	'flaggedrevs-protect-none' => 'Pahintulutan ang lahat ng mga tagagamit',
+	'flaggedrevs-protect-basic' => 'Likas na mga katakdaan',
 	'revreview-locked-title' => 'Dapat na sinusuri munang muli ang mga pagbabago bago palitawin sa pahinang ito!',
 	'revreview-unlocked-title' => 'Hindi nangangailangan ng muling pagsusuri ang mga pagbabago bago palitawin sa pahinang ito!',
 	'revreview-locked' => 'Dapat na sinusuri munang muli ang mga pagbabago bago palitawin sa pahinang ito!',
 	'revreview-unlocked' => 'Hindi nangangailangan ng muling pagsusuri ang mga pagbabago bago palitawin sa pahinang ito!',
 	'log-show-hide-review' => '$1 pagtatala ng pagsusuri',
-	'revreview-tt-review' => 'Suriing muli ang pahinang ito',
+	'revreview-tt-review' => 'Gamitin ang katayuang ito sa rebisyong ito',
+	'revreview-tt-flag' => 'Tanggapin ang rebisyong ito sa pamamagitan ng pagtatatak dito bilang "nasuri"',
+	'revreview-tt-unflag' => 'Huwag tanggapin rebisyong ito sa pamamagitan ng pagtatatak dito bilang "hindi nasuri"',
 	'validationpage' => '{{ns:help}}:Pagpapatunay ng pahina',
 );
 
@@ -13921,7 +14176,7 @@ Bir revizyonun gözden geçirme durumunu çıkarmak için, tüm alanları "onayl
 Lütfen tarayıcınızdaki "geri" tuşuna basın ve tekrar deneyin.',
 	'revreview-update' => "'''Lütfen kabul edilmiş sürüme yapılan bekleyen her değişikliği ''(aşağıda gösterilmiş)'' [[{{MediaWiki:Validationpage}}|gözden geçirin]].'''
 Önce, takip etmeniz veya değişiklikleri \"geri almanız\" gerekebilir.",
-	'revreview-update-edited' => '<span class="flaggedrevs_important">Değişiklikleriniz henüz yayınlanmadı.</span>
+	'revreview-update-edited-prev' => '<span class="flaggedrevs_important">Değişiklikleriniz henüz yayınlanmadı.</span>
 
 Gözden geçirme bekleyen önceki değişiklikler var. Değişikliklerinizi yayınlamak için, lütfen aşağıda gösterilen tüm değişiklikleri gözden geçirin.',
 	'revreview-update-includes' => "'''Bazı şablonlar/dosyalar güncellenmiş:'''",
@@ -14150,7 +14405,7 @@ $messages['uk'] = array(
 
 Будь ласка, натисніть кнопку «Назад» у браузері і спробуйте ще раз.",
 	'revreview-update' => "Будь ласка, [[{{MediaWiki:Validationpage}}|перевірте]] всі нерецензовані зміни опублікованої версії ''(показані нижче)''.",
-	'revreview-update-edited' => '<span class="flaggedrevs_important">Ваші зміни ще не [[{{MediaWiki:Validationpage}}|опубліковані]].</span>
+	'revreview-update-edited-prev' => '<span class="flaggedrevs_important">Ваші зміни ще не опубліковані.</span>
 
 Попередні зміни очікують на перевірку. Щоб опублікувати ваші зміни, будь-ласка, перевірте усі зміни, що показані нижче.',
 	'revreview-update-includes' => "'''Деякі шаблони або файли були оновлені:'''",
@@ -14632,6 +14887,7 @@ sab toižetada [{{fullurl:{{#Special:Stabilization}}|page={{FULLPAGENAMEE}}}}-le
 
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
+ * @author Trần Nguyễn Minh Huy
  * @author Vinhtantran
  */
 $messages['vi'] = array(
@@ -14649,7 +14905,7 @@ $messages['vi'] = array(
 	'flaggedrevs-prefs-watch' => 'Thêm trang tôi duyệt vào danh sách theo dõi',
 	'flaggedrevs-prefs-editdiffs' => 'So sánh với phiên bản ổn định khi sửa đổi trang',
 	'flaggedrevs-prefs-viewdiffs' => 'So sánh với phiên bản ổn định khi xem trang nháp.',
-	'group-editor' => 'Người viêt bài',
+	'group-editor' => 'Biên tập viên',
 	'group-editor-member' => 'chủ bút',
 	'group-reviewer' => 'Người duyệt bài',
 	'group-reviewer-member' => 'Người duyệt bài',
@@ -15401,7 +15657,7 @@ $messages['zh-hant'] = array(
 
 請在您的瀏覽器點擊“返回“按鈕，然後再試一次。',
 	'revreview-update' => '請[[{{MediaWiki:Validationpage}}|複審]]自從於這頁的穩定版以來的任何更改 （在下面顯示） 。模版和圖片亦可能同時更改。',
-	'revreview-update-edited' => '<span class="flaggedrevs_important">您的變更尚未發佈。</span>
+	'revreview-update-edited-prev' => '<span class="flaggedrevs_important">您的變更尚未發佈。</span>
 以前的編輯有等待審核。要發布您的變更，請檢查所有的變化 (如下)。',
 	'revreview-update-includes' => "'''一些模板/文件已被更新：'''",
 	'revreview-update-use' => "'''注意：'''發布的版本每個這些模板/文件是用於發布的版本的這一頁。",

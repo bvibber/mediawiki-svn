@@ -70,7 +70,7 @@ No configuration is possible.',
 $messages['qqq'] = array(
 	'stabilization-tab' => '{{Flagged Revs-small}}
 
-Some skins (e.g. standard/classic) display an additional tab to control visibility of the page revisions, e.g. whether last revision should be included or perhaps the last sighted or accepted version.',
+Some skins (e.g. standard/classic) display an additional tab to control visibility of the page revisions, e.g. whether last revision should be included or perhaps the last sighted or published version.',
 	'stabilization' => '{{Flagged Revs-small}}
 Page title of Special:Stabilization.',
 	'stabilization-text' => '{{Flagged Revs-small}}
@@ -85,15 +85,15 @@ Used on Special:Stabilization when the user has not the permission to change the
 	'stabilization-leg' => '{{Flagged Revs}}',
 	'stabilization-select' => '{{Flagged Revs}}',
 	'stabilization-select1' => '{{Flagged Revs-small}}
-Used on Special:Stabilization as an option for "How the accepted version is selected".',
+Used on Special:Stabilization as an option for "How the published version is selected".',
 	'stabilization-select2' => '{{Flagged Revs-small}}
-Used on Special:Stabilization as an option for "How the accepted version is selected".',
+Used on Special:Stabilization as an option for "How the published version is selected".',
 	'stabilization-select3' => '{{Flagged Revs}}',
 	'stabilization-def' => '{{Flagged Revs}}',
 	'stabilization-def1' => '{{Flagged Revs-small}}
 Used on Special:Stabilization as an option for "Revision displayed on default page view".
 
-This option has sub-options, see "How the accepted version is selected".',
+This option has sub-options, see "How the published version is selected".',
 	'stabilization-def2' => '{{Flagged Revs-small}}
 Used on Special:Stabilization as an option for "Revision displayed on default page view".',
 	'stabilization-restrict' => '{{Flagged Revs}}
@@ -199,7 +199,7 @@ No ye posible confegurar-la.',
 	'stabilization-expiry' => 'Zircunduze:',
 	'stabilization-sel-short' => 'Prezendenzia',
 	'stabilization-sel-short-0' => 'Calidat',
-	'stabilization-sel-short-1' => 'Denguna',
+	'stabilization-sel-short-1' => 'Garra',
 	'stabilization-sel-short-2' => 'Zanzera',
 	'stabilization-def-short' => 'Por defeuto',
 	'stabilization-def-short-0' => 'Autual',
@@ -732,11 +732,16 @@ Die aktuellen Einstellungen für „[[:$1|$1]]“ sind:',
 );
 
 /** German (formal address) (Deutsch (Sie-Form))
+ * @author Kghbln
  * @author Umherirrender
  */
 $messages['de-formal'] = array(
-	'stabilization-perm' => 'Sie haben nicht die erforderliche Berechtigung, um die Einstellungen der markierten Version zu ändern.
+	'stabilization-text' => "'''Ändern Sie die folgenden Einstellungen, um festzulegen, wie die zu veröffentlichende Version von „[[:$1|$1]]“ ausgewählt und angezeigt werden soll.'''
+
+'''Hinweis:''' Die Änderung der Konfiguration hinsichtlich der standardmäßig anzuzeigenden Version, auf „geprüft“ oder „neueste markierte“, hat keinerlei Auswirkungen, sofern derartige Versionen nicht vorhanden sind. Bedenke, dass in diesem Zusammenhang eine „markierte“ Version als „geprüfte“ Version angesehen wird.",
+	'stabilization-perm' => 'Sie haben nicht die erforderliche Berechtigung, um die Einstellungen bezüglich der zu veröffentlichenden Version zu ändern.
 Die aktuellen Einstellungen für „[[:$1|$1]]“ sind:',
+	'stabilization-leg' => 'Bestätigen Sie die Einstellungen bezüglich der zu veröffentlichenden Version',
 );
 
 /** Zazaki (Zazaki)
@@ -2755,6 +2760,7 @@ $messages['ps'] = array(
 	'stabilization-page' => 'د مخ نوم:',
 	'stabilization-comment' => 'سبب:',
 	'stabilization-otherreason' => 'بل سبب:',
+	'stabilization-expiry' => 'د پای نېټه:',
 	'stabilization-othertime' => 'بل وخت:',
 	'stabilization-sel-short-1' => 'هېڅ',
 	'stabilization-def-short' => 'تلواليز',
@@ -3340,10 +3346,21 @@ $messages['szl'] = array(
 );
 
 /** Tamil (தமிழ்)
+ * @author Kanags
  * @author Ulmo
  */
 $messages['ta'] = array(
 	'stabilization-page' => 'பக்கப் பெயர்:',
+	'stabilization-submit' => 'உறுதிப்படுத்து',
+	'stabilization-comment' => 'காரணம்:',
+	'stabilization-otherreason' => 'வேறு காரணம்:',
+	'stabilization-expiry' => 'முடிவு நாள்:',
+	'stabilization-othertime' => 'வேறு நேரம்:',
+	'stabilization-sel-short' => 'முன்னுதாரணம்',
+	'stabilization-sel-short-0' => 'தரம்',
+	'stabilization-sel-short-1' => 'எதுவுமில்லை',
+	'stabilization-def-short-0' => 'நடப்பு',
+	'stabilization-def-short-1' => 'ஏற்றுக்கொள்ளப்பட்டது',
 );
 
 /** Telugu (తెలుగు)

@@ -36,7 +36,7 @@ $messages['qqq'] = array(
 $messages['af'] = array(
 	'stablepages' => 'Bladsye onderhewig aan goedkeuring van bywerkings',
 	'stablepages-text' => "Hier is 'n lys van bladsye wat handmatig gestel is om die gepubliseerde weergawe as standaard inhoud vir lesers te wys.",
-	'stablepages-none' => 'Daar is geen bladsye in hierdie lys nie',
+	'stablepages-none' => 'Daar is geen bladsye in hierdie lys nie.',
 	'stablepages-config' => 'Voorkeure',
 );
 
@@ -468,7 +468,7 @@ $messages['mk'] = array(
  */
 $messages['ml'] = array(
 	'stablepages' => 'തിരുത്തൽ അംഗീകരണം ഉപയോഗിക്കുന്ന താളുകൾ',
-	'stablepages-text' => 'സംശോധനം ആവശ്യമില്ലാത്ത വിധം ചില പ്രത്യേക ഉപയോക്താക്കൾക്ക് മാത്രം തിരുത്തുവാൻ കഴിയുന്ന താളുകളുടെ പട്ടികയാണ് താഴെ നൽകിയിരിക്കുന്നത്. അത്തരത്തിലുള്ള തിരുത്തലുകൾ അംഗീകരിക്കപ്പെട്ട ഒരു ഉപയോക്താവ് സംശോധനം ചെയ്യുന്നതു വരെ പ്രസിദ്ധീകരിക്കുന്നതല്ല.',
+	'stablepages-text' => 'സംശോധനം ആവശ്യമില്ലാത്ത വിധം ചില പ്രത്യേക ഉപയോക്താക്കൾക്ക് മാത്രം തിരുത്തുവാൻ കഴിയുന്ന താളുകളുടെ പട്ടികയാണ് താഴെ നൽകിയിരിക്കുന്നത്. അത്തരത്തിലുള്ള തിരുത്തലുകൾ അംഗീകരിക്കപ്പെട്ട ഒരു ഉപയോക്താവ് സംശോധനം ചെയ്യുന്നതു വരെ സ്വീകരിക്കുന്നതല്ല.',
 	'stablepages-none' => 'ഈ പട്ടികയിൽ താളുകൾ ഒന്നും ഇല്ല',
 	'stablepages-config' => 'ക്രമീകരണം',
 );
@@ -688,6 +688,14 @@ $messages['sv'] = array(
 	'stablepages-text' => 'Nedan visas en lista över sidor som manuellt ställts in att visa den publicerade versionen som standardinnehåll för läsare.',
 	'stablepages-none' => 'Det finns inga sidor i denna lista',
 	'stablepages-config' => 'Konfigurering',
+);
+
+/** Tamil (தமிழ்)
+ * @author Kanags
+ */
+$messages['ta'] = array(
+	'stablepages-none' => 'இப்பட்டியலில் எந்தப் பக்கங்களும் இல்லை.',
+	'stablepages-config' => 'வடிவமைப்பு',
 );
 
 /** Telugu (తెలుగు)

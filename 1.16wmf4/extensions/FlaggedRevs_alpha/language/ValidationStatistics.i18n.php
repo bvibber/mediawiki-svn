@@ -447,9 +447,11 @@ $4
 );
 
 /** British English (British English)
+ * @author Bruce89
  * @author Reedy
  */
 $messages['en-gb'] = array(
+	'validationstatistics' => 'Page review statistics',
 	'validationstatistics-time' => "''The following data was last updated on $5 at $6.''
 
 Edits that have been checked by established users are considered to be reviewed.
@@ -458,7 +460,7 @@ The average wait for edits by ''users that have not logged in'' to be reviewed i
 $4
 The average lag for [[Special:OldReviewedPages|pages with unreviewed edits pending]] is '''$2'''.
 These pages are considered ''outdated''. Likewise, pages are considered ''synchronised'' if there are no edits pending review.
-The accepted version of a page is the newest revision that has been approved to show by default to all readers.",
+The published version of a page is the newest revision that has been approved to show by default to all readers.",
 );
 
 /** Esperanto (Esperanto)
@@ -1761,11 +1763,15 @@ En sidas publicerade version är den nyaste version som har blivit godkänd för
 );
 
 /** Tamil (தமிழ்)
+ * @author Kanags
  * @author Ulmo
  */
 $messages['ta'] = array(
 	'validationstatistics-ns' => 'பெயர்வெளி',
 	'validationstatistics-total' => 'பக்கங்கள்',
+	'validationstatistics-stable' => 'மீள்பார்வையிடப்பட்டது',
+	'validationstatistics-old' => 'காலாவதியானது',
+	'validationstatistics-user' => 'பயனர்',
 );
 
 /** Telugu (తెలుగు)
