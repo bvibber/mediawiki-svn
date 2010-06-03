@@ -65,7 +65,12 @@ mw.SwarmTransport = {
 		var finishAddSwarmSource = function(){
 			// Get the highest quality source that the system can playback 
 			// ( for now just grab the first ogg/theora )
-			var source = embedPlayer.mediaElement.getSources( 'video/ogg' )[0];		
+			var source = embedPlayer.mediaElement.getSources( 'video/ogg' )[0];	
+			if( ! source ){
+				mw.log("Error: addSwarmSource: could not find video/ogg source");
+				callback();
+				return ;
+			}
 			var absoluteSource =  mw.absoluteUrl( source.getSrc() );
 			var swarmSrc = httpseed2tstream( absoluteSource );
 			
