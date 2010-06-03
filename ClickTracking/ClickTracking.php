@@ -19,7 +19,7 @@
 /* Configuration */
 
 // Increment this value when you change ClickTracking.js
-$wgClickTrackingStyleVersion = 4;
+$wgClickTrackingStyleVersion = 5;
 
 // click throttle, should be seen as "1 out of every $wgClickTrackThrottle users will have it enabled"
 // setting this to 1 means all users will have it enabled
