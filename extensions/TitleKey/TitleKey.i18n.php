@@ -86,10 +86,11 @@ $messages['cs'] = array(
 );
 
 /** German (Deutsch)
+ * @author Kghbln
  * @author Raimond Spekking
  */
 $messages['de'] = array(
-	'titlekey-desc' => 'Hintergrundprozess für die Titelsuche',
+	'titlekey-desc' => 'Stellt einen Hintergrundprozess für die Titelsuche bereit',
 );
 
 /** Zazaki (Zazaki)

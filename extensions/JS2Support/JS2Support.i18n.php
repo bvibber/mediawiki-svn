@@ -52,6 +52,8 @@ $messages['de'] = array(
  */
 $messages['dsb'] = array(
 	'js2support-desc' => 'Pódpěra JS2 ako rozšyrjenje',
+	'js2support-debug-preference' => 'Rědowanje a pówjetšowanje skriptow znjemóžniś',
+	'prefs-script-debug' => 'Skriptowe testowanje',
 );
 
 /** Spanish (Español)
@@ -132,9 +134,12 @@ $messages['id'] = array(
 
 /** Japanese (日本語)
  * @author Fryed-peach
+ * @author 青子守歌
  */
 $messages['ja'] = array(
 	'js2support-desc' => '拡張機能としてのJS2サポート',
+	'js2support-debug-preference' => 'スクリプトのグループ化と最小化を無効にする',
+	'prefs-script-debug' => 'スクリプトのデバッグ',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

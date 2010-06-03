@@ -1189,6 +1189,7 @@ $messages['jv'] = array(
 
 /** Georgian (ქართული)
  * @author BRUTE
+ * @author ITshnik
  * @author გიორგიმელა
  */
 $messages['ka'] = array(
@@ -1204,8 +1205,12 @@ $messages['ka'] = array(
 	'ratinghistory-chart' => 'ყველა დროის მკითხველთა შეფასებები',
 	'ratinghistory-purge' => 'ქეშის გაწმენდა',
 	'ratinghistory-table' => 'მკითხველთა აზრების შეფასება',
+	'ratinghistory-users' => 'მომხმარებლები, რომელთაც შეაფასეს',
 	'ratinghistory-svg' => 'იხილეთ როგორც SVG',
+	'ratinghistory-table-rating' => 'შეფასება:',
 	'ratinghistory-table-votes' => 'ხმები',
+	'ratinghistory-graph-scale' => "'''მიმოხილვები დღეების მიხედვით''' <font color=\"red\">''(red)''</font> ნაჩვენებია ''1:\$1'' სკალაზე.",
+	'right-feedback' => 'გამოიყენეთ უკუკავშირის ფორმა გვერდის შესაფასებლად.',
 );
 
 /** Khmer (ភាសាខ្មែរ)

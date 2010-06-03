@@ -169,6 +169,7 @@ $messages['el'] = array(
 $messages['eo'] = array(
 	'prefswitch-link-anon' => 'Novaj ecoj',
 	'tooltip-pt-prefswitch-link-anon' => 'Lerni pri novaj ecoj',
+	'prefswitch-link-on' => 'Reveni al la antaŭa versio',
 	'tooltip-pt-prefswitch-link-on' => 'Malŝalti novajn ecojn',
 	'prefswitch-link-off' => 'Novaj ecoj',
 	'tooltip-pt-prefswitch-link-off' => 'Provi novajn funkciojn',

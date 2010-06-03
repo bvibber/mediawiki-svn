@@ -1420,6 +1420,7 @@ Dapatkan ekstensi lain',
  * @author Darth Kule
  * @author McDutchie
  * @author Melos
+ * @author Nemo bis
  */
 $messages['it'] = array(
 	'extensiondistributor' => 'Scarica estensione MediaWiki',
@@ -1436,7 +1437,7 @@ $messages['it'] = array(
 
 Seleziona la tua versione di MediaWiki.
 
-Molte estensioni funzionano su più versioni di MediaWiki, quindi se la tua versione di MediaWiki non è qui o hai bisogno delle ultime funzioni dell'estensione, prova a usare la versione corrente.",
+Molte estensioni funzionano su più versioni di MediaWiki, quindi se la tua versione di MediaWiki non è qui o hai bisogno delle ultime funzioni dell'estensione, prova a usare l'ultima versione.",
 	'extdist-no-versions' => "L'estensione selezionata ($1) non è disponibile in alcuna versione!",
 	'extdist-submit-version' => 'Continua',
 	'extdist-no-remote' => 'Impossibile contattare il client subversion remoto.',

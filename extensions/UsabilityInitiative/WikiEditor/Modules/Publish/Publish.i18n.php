@@ -392,11 +392,16 @@ $messages['eu'] = array(
 
 /** Persian (فارسی)
  * @author Ebraminio
+ * @author Huji
  */
 $messages['fa'] = array(
+	'wikieditor-publish-preference' => 'فعال‌سازی انتشار قدم به قدم',
 	'wikieditor-publish-button-publish' => 'انتشار',
-	'wikieditor-publish-button-cancel' => 'انصراف',
+	'wikieditor-publish-button-cancel' => 'لغو',
+	'wikieditor-publish-dialog-title' => 'انتشار در {{SITENAME}}',
+	'wikieditor-publish-dialog-summary' => 'خلاصه ویرایش (توضیح مختصر در مورد تغییری که دادید):',
 	'wikieditor-publish-dialog-minor' => 'ویرایش جزئی',
+	'wikieditor-publish-dialog-watch' => 'پی‌گیری این صفحه',
 	'wikieditor-publish-dialog-publish' => 'انتشار',
 	'wikieditor-publish-dialog-goback' => 'بازگشت به عقب',
 );

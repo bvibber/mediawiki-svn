@@ -120,12 +120,13 @@ $messages['es'] = array(
 /** Finnish (Suomi)
  * @author Centerlink
  * @author Crt
+ * @author Str4nd
  */
 $messages['fi'] = array(
-	'replaceset-desc' => 'Lisää <nowiki>{{#replaceset}}</nowiki>-jäsenninfunktion, jota käytetään tekstilohkojen korvaamiseen muotoillulla datalla.',
-	'replaceset-error-calllimit' => 'ReplaceSet-funktion kutsuraja saavutettu.',
-	'replaceset-error-regexnoend' => 'Säännöllisen lausekkeen mallista "$1" puuttuu loppurajoitin \'$2\'',
-	'replaceset-error-regexbadmodifier' => "Säännöllisen lausekkeen määre '$1' ei ole kelvollinen.",
+	'replaceset-desc' => 'Lisää <nowiki>{{#replaceset}}</nowiki>-jäsenninfunktion, jota käytetään tekstiosioiden korvaamiseen muotoillulla datalla.',
+	'replaceset-error-calllimit' => 'ReplaceSet-funktion kutsuraja on saavutettu.',
+	'replaceset-error-regexnoend' => 'Säännöllisestä lausekkeesta ”$1” puuttuu loppurajoitin ”$2”',
+	'replaceset-error-regexbadmodifier' => 'Säännöllisen lausekkeen määre ”$1” ei ole kelvollinen.',
 );
 
 /** French (Français)

@@ -55,9 +55,10 @@ $messages['es'] = array(
 
 /** Finnish (Suomi)
  * @author Crt
+ * @author Str4nd
  */
 $messages['fi'] = array(
-	'parserwiki-desc' => 'Mahdollistaa määritellä kieliopin wikissä ja sitten käyttää tuota kielioppia tiedonsyöttöön samaan wikiin.',
+	'parserwiki-desc' => 'Mahdollistaa kieliopin määrittelyn wikissä ja käyttää määritettyä kielioppia saman wikin tiedonsyöttöön.',
 );
 
 /** French (Français)

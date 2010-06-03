@@ -92,6 +92,20 @@ $messages['es'] = array(
 	'wikieditor-templates-preference' => 'Habilitar colapso de plantilla',
 );
 
+/** Persian (فارسی)
+ * @author Huji
+ */
+$messages['fa'] = array(
+	'wikieditor-templates-preference' => 'فعال‌سازی نهفتن الگوها',
+);
+
+/** Finnish (Suomi)
+ * @author Str4nd
+ */
+$messages['fi'] = array(
+	'wikieditor-templates-preference' => 'Ota mallineiden piilotus käyttöön',
+);
+
 /** French (Français)
  * @author Peter17
  */

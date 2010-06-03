@@ -85,6 +85,20 @@ $messages['es'] = array(
 	'wikieditor-addMediaWizard-preference' => 'Habilitar gadget "Agregar asistente de medios"',
 );
 
+/** Persian (فارسی)
+ * @author Huji
+ */
+$messages['fa'] = array(
+	'wikieditor-addMediaWizard-preference' => 'فعال کردن ابزارک «افزودن مدیا»',
+);
+
+/** Finnish (Suomi)
+ * @author Str4nd
+ */
+$messages['fi'] = array(
+	'wikieditor-addMediaWizard-preference' => 'Ota ”Lisää media ohjatusti” -pienoisohjelma käyttöön',
+);
+
 /** French (Français)
  * @author Peter17
  */

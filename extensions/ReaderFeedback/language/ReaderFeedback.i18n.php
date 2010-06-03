@@ -1335,6 +1335,7 @@ $messages['ja'] = array(
 
 /** Georgian (ქართული)
  * @author BRUTE
+ * @author ITshnik
  * @author გიორგიმელა
  */
 $messages['ka'] = array(
@@ -1349,6 +1350,7 @@ $messages['ka'] = array(
 	'readerfeedback-level-3' => 'მაღალი',
 	'readerfeedback-level-4' => 'ჩინებულია',
 	'readerfeedback-submit' => 'გაგზავნა',
+	'readerfeedback-success' => "'''გმადლობთ ამ გვერდის მიმოხილვისთვის!''' ([$2 შედეგების ჩვენება]) ([$3 კომენტარები ან შეკითხვები]).",
 	'readerfeedback-submitting' => 'ინახება …',
 	'readerfeedback-finished' => 'გმადლობთ!',
 	'readerfeedback-tagfilter' => 'მინიშნება:',

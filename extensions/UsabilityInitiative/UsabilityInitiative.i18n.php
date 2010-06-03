@@ -259,6 +259,7 @@ $messages['fa'] = array(
 $messages['fi'] = array(
 	'usabilityinitiative' => 'Käytettävyyshanke',
 	'usabilityinitiative-desc' => 'Wikipedian käytettävyyshankkeen kehittämät MediaWikin helppokäyttöisyyttä parantavat ominaisuudet.',
+	'prefs-beta' => 'Beta-ominaisuudet',
 	'prefs-labs' => 'Kokeelliset ominaisuudet',
 );
 

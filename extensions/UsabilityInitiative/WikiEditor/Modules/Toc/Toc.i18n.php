@@ -228,9 +228,12 @@ $messages['eu'] = array(
 
 /** Persian (فارسی)
  * @author Ebraminio
+ * @author Huji
  */
 $messages['fa'] = array(
-	'wikieditor-toc-preference' => 'فعال‌سازی فهرست قابل پیمایش',
+	'wikieditor-toc-preference' => 'فعال‌سازی فهرست مطالب قابل پیمایش',
+	'wikieditor-toc-show' => 'نمایش محتوا',
+	'wikieditor-toc-hide' => 'نهفتن محتوا',
 );
 
 /** Finnish (Suomi)

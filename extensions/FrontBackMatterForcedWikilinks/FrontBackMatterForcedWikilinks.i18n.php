@@ -81,6 +81,15 @@ $messages['mk'] = array(
 	'frontbackforced-forced' => '_(наметнати_викиврски)',
 );
 
+/** Dutch (Nederlands)
+ * @author Siebrand
+ */
+$messages['nl'] = array(
+	'frontbackforced-front' => '_(front_matter)',
+	'frontbackforced-back' => '_(back_matter)',
+	'frontbackforced-forced' => '_(forced_wikilinks)',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  */
@@ -89,6 +98,16 @@ $messages['pt'] = array(
 	'frontbackforced-front' => '_(secção_inicial)',
 	'frontbackforced-back' => '_(secção_final)',
 	'frontbackforced-forced' => '_(links_wiki_automáticos)',
+);
+
+/** Russian (Русский)
+ * @author Александр Сигачёв
+ */
+$messages['ru'] = array(
+	'frontbackforced-desc' => 'Добавляет к страницам начальный и завершающий блоки, реализует принудительное появление викиссылок.',
+	'frontbackforced-front' => '_(начальный_блок)',
+	'frontbackforced-back' => '_(завершающий_блок)',
+	'frontbackforced-forced' => '_(принудительные_викиссылки)',
 );
 
 /** Tagalog (Tagalog)

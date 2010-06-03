@@ -43,6 +43,7 @@ $messages['de'] = array(
 	'activestrategy' => 'Aktive Arbeitsgruppen',
 	'active-strategy-desc' => 'Zeigt die Anzahl Bearbeitungen an Seiten von Arbeitsgruppen an',
 	'active-strategy-intro' => 'Anzahl der Bearbeitungen auf den Seiten der Arbeitsgruppen während {{PLURAL:$1|des letzten Tages|der letzten $1 Tage}}.',
+	'nedits' => '$1 {{PLURAL:$1|Bearbeitung|Bearbeitungen}}',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -52,6 +53,15 @@ $messages['dsb'] = array(
 	'activestrategy' => 'Aktiwne źěłowe kupki',
 	'active-strategy-desc' => 'Pokazujo licbu změnow na bokach źěłowych kupkow',
 	'active-strategy-intro' => 'Licba změnow na źěłowych kupkach za {{PLURAL:$1|zachadny $1 źeń|zachadnej $1 dnja|zachadne $1 dny|zachadnych $1 dnjow}}.',
+	'nedits' => '$1 {{PLURAL:$1|změna|změnje|změny|změnow}}',
+);
+
+/** Esperanto (Esperanto)
+ * @author Yekrats
+ */
+$messages['eo'] = array(
+	'activestrategy' => 'Aktiva Strategio',
+	'nedits' => '$1 {{PLURAL:$1|redakto|redaktoj}}',
 );
 
 /** Spanish (Español)
@@ -99,6 +109,7 @@ $messages['hsb'] = array(
 	'activestrategy' => 'Aktiwne dźěłarnički',
 	'active-strategy-desc' => 'Pokazuje ličbu změnow na stronach dźěłarničkow',
 	'active-strategy-intro' => 'Ličba změnow na stronach dźěłarničkow za {{PLURAL:$1|zańdźeny $1 dźeń|zańdźenej $1 dnjej|zańdźene $1 dny|zańdźenych $1 dnjow}}.',
+	'nedits' => '$1 {{PLURAL:$1|změna|změnje|změny|změnow}}',
 );
 
 /** Hungarian (Magyar)
@@ -161,6 +172,7 @@ $messages['mk'] = array(
 	'activestrategy' => 'Активни работни групи',
 	'active-strategy-desc' => 'Прикажува број на уредувања на страници на работната група',
 	'active-strategy-intro' => 'Број на уредувања на страници на работни групи во {{PLURAL:$1|изминатиот $1 ден|изминатите $1 дена}}.',
+	'nedits' => '$1 {{PLURAL:$1|уредување|уредувања}}',
 );
 
 /** Malayalam (മലയാളം)
@@ -179,6 +191,7 @@ $messages['nl'] = array(
 	'activestrategy' => 'Actieve taskforces',
 	'active-strategy-desc' => "Geeft het aantal bewerkingen aan taskforcepagina's weer",
 	'active-strategy-intro' => "Aantal bewerkingen aan taskforcepagina's in de afgelopen {{PLURAL:$1|dag|$1 dagen}}.",
+	'nedits' => '$1 {{PLURAL:$1|bewerking|bewerkingen}}',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -224,15 +237,18 @@ $messages['ru'] = array(
 	'activestrategy' => 'Активные комиссии',
 	'active-strategy-desc' => 'Показывает число правок на страницах целевых групп',
 	'active-strategy-intro' => 'Количество правок страниц комиссий за {{PLURAL:$1|последний $1 день|последние $1 дня|последние $1 дней}}.',
+	'nedits' => '$1 {{PLURAL:$1|правка|правки|правок}}',
 );
 
 /** Swedish (Svenska)
+ * @author Boivie
  * @author Dafer45
  */
 $messages['sv'] = array(
 	'activestrategy' => 'Aktiva arbetsgrupper',
 	'active-strategy-desc' => 'Visar antal redigeringar på arbetsgruppsidor',
 	'active-strategy-intro' => 'Antal redigeringar av arbetsgruppsidor under senaste ((PLURALIS: $1 | $1 dagen | $1 dagarna)).',
+	'nedits' => '$1 {{PLURAL:$1|redigering|redigeringar}}',
 );
 
 /** Tagalog (Tagalog)

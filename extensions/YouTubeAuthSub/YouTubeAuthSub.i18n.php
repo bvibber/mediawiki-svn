@@ -972,7 +972,7 @@ Izan pazientzia, arren.',
 $messages['fa'] = array(
 	'youtubeauthsub' => 'بارگذاری ویدیوی یوتوب',
 	'youtubeauthsub_title' => 'عنوان',
-	'youtubeauthsub_description' => 'توضیحات',
+	'youtubeauthsub_description' => 'توضیح',
 	'youtubeauthsub_password' => 'گذرواژهٔ یوتیوب',
 	'youtubeauthsub_username' => 'نام کاربری یوتیوب',
 	'youtubeauthsub_keywords' => 'کلیدواژه‌ها',

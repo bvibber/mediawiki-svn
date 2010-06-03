@@ -863,6 +863,8 @@ Bonvolu <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_downl
 	'ogg-dismiss' => 'Fermi',
 	'ogg-download' => 'Alŝuti dosieron',
 	'ogg-desc-link' => 'Pri ĉi tiu dosiero',
+	'ogg-oggThumb-version' => 'OggHandler bezonas oggThumb version $1 aŭ postan.',
+	'ogg-oggThumb-failed' => 'oggThumb malsukcis krei etan version.',
 );
 
 /** Spanish (Español)
@@ -973,7 +975,7 @@ $messages['fa'] = array(
 	'ogg-long-error' => '(پرونده Ogg غیرمجاز: $1)',
 	'ogg-play' => 'پخش',
 	'ogg-pause' => 'توقف',
-	'ogg-stop' => 'باز ایست',
+	'ogg-stop' => 'بایست',
 	'ogg-play-video' => 'پخش تصویر',
 	'ogg-play-sound' => 'پخش صوت',
 	'ogg-no-player' => 'متاسفانه دستگاه شما نرم‌افزار پخش‌کنندهٔ مناسب ندارد. لطفاً <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">یک برنامهٔ پخش‌کننده بارگیری کنید</a>.',
@@ -1023,7 +1025,7 @@ $messages['fi'] = array(
 	'ogg-dismiss' => 'Sulje',
 	'ogg-download' => 'Lataa',
 	'ogg-desc-link' => 'Tiedoston tiedot',
-	'ogg-oggThumb-version' => 'OggHandler vaatii oggThumb $1 -version tai uudemman.',
+	'ogg-oggThumb-version' => 'OggHandler vaatii oggThumbin version $1 tai uudemman.',
 	'ogg-oggThumb-failed' => 'oggThumb ei onnistunut luomaan pienoiskuvaa.',
 );
 

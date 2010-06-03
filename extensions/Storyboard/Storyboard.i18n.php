@@ -1038,6 +1038,7 @@ $messages['ja'] = array(
 	'storyboard-notsubmitted' => '認証に失敗したため、ストーリーは保存されませんでした。',
 	'storyboard-charstomany' => '$1 文字が多すぎます！',
 	'storyboard-morecharsneeded' => '$1 文字がさらに必要です',
+	'storyboard-charactersleft' => '残り$1文字',
 	'storyboard-createdsuccessfully' => 'ストーリーを私たちと共有してくださってありがとうございます！すぐに評価を行なう予定です。[$1 公開されているストーリーを読む]ことができます。',
 	'storyreview' => 'ストーリーの評価',
 	'storyboard-deleteimage' => '画像を削除',

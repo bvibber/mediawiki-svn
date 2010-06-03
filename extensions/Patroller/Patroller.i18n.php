@@ -790,9 +790,12 @@ $messages['hr'] = array(
 	'patrol' => 'Patrolirane promjene',
 	'patrol-revert' => 'Ukloni',
 	'patrol-revert-reason' => 'Razlog:',
+	'patrol-stopped' => 'Vi ste odabrali ne provjeravati drugo uređivanje. $1',
+	'patrol-resume' => 'Kliknite ovdje za nastavak.',
 	'group-patroller' => 'Patroleri',
-	'group-patroller-member' => 'Patroler',
+	'group-patroller-member' => 'patroler',
 	'grouppage-patroller' => '{{ns:project}}:Patroler',
+	'right-patroller' => 'Patroliranje stranica',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

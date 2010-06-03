@@ -246,11 +246,13 @@ $messages['eu'] = array(
 
 /** Persian (فارسی)
  * @author Ebraminio
+ * @author Huji
  */
 $messages['fa'] = array(
+	'wikieditor-template-editor-preference' => 'فعال‌سازی ویرایش مبتنی بر فرم الگوهای ویکی',
 	'wikieditor-template-editor-dialog-title' => 'ویرایش الگو',
-	'wikieditor-template-editor-dialog-submit' => 'بروزرسانی',
-	'wikieditor-template-editor-dialog-cancel' => 'انصراف',
+	'wikieditor-template-editor-dialog-submit' => 'به روز رسانی',
+	'wikieditor-template-editor-dialog-cancel' => 'لغو',
 );
 
 /** Finnish (Suomi)

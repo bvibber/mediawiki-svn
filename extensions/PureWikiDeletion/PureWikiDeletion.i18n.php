@@ -310,6 +310,35 @@ Hlej $2 za datowu sadźbu najnowšich wuprózdnjenjow.',
 	'right-purewikideletion' => 'Tabelu wuprózdnjenych stronow [[Special:PopulateBlankedPagesTable|napjelnić]]',
 );
 
+/** Japanese (日本語)
+ * @author 青子守歌
+ */
+$messages['ja'] = array(
+	'randomexcludeblank' => 'ランダムページ（白紙状態を除く）',
+	'populateblankedpagestable' => '白紙化されたページの一覧表を読み込む',
+	'purewikideletion-desc' => 'ページが白紙化されるなど、赤リンクになるべきものに関する機能',
+	'purewikideletion-pref-watchblank' => '自分が白紙化したページをウォッチリストに追加する',
+	'purewikideletion-pref-watchunblank' => '自分が白紙化解除したページをウォッチリストに追加する',
+	'purewikideletion-blanked' => "このページの以前の版は、[[User:$1|$1]]（[[User talk:$1|トーク]]) ([[Special:Contributions/$1|投稿記録]]）によって、 $5の$6に白紙化されました。
+
+白紙化の理由は次の通り：''<nowiki>$3</nowiki>''
+
+[{{fullurl:{{FULLPAGENAMEE}}|action=history}} このページの履歴を閲覧]したり、[{{fullurl:{{FULLPAGENAMEE}}|oldid=$4&action=edit}} 最後の版を編集]することができます。あるいは、新しい内容を直接入力してください。",
+	'blank-log' => '白紙化',
+	'blank-log-name' => '白紙化ログ',
+	'blank-log-header' => '以下は、白紙化されたあるいは白紙化が解除されたページの一覧です。',
+	'blank-log-entry-blank' => '$1を白紙化',
+	'blank-log-entry-unblank' => '$1を白紙化解除',
+	'blank-log-link' => '[[{{#Special:Log}}/blank|白紙化ログ]]',
+	'purewikideletion-blanknologin' => 'ログインしていません',
+	'purewikideletion-blanknologintext' => 'ページを白紙化するためには、利用者登録をし、[[Special:UserLogin|ログイン]]しなければなりません。',
+	'purewikideletion-unblanknologintext' => 'ページを白紙化解除するためには、利用者登録をし、[[Special:UserLogin|ログイン]]しなければなりません。',
+	'purewikideletion-blankedtext' => '[[$1]]は既に白紙化されています。
+最近の白紙化の記録は、$2をご覧下さい。',
+	'purewikideletion-population-done' => '白紙化されたページの一覧表の読み込みが完了しました。',
+	'right-purewikideletion' => '白紙化されたページの一覧表を[[Special:PopulateBlankedPagesTable|読み込む]]',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -323,10 +352,12 @@ $messages['lb'] = array(
 	'blank-log-name' => 'Logbuch vun de Säiten déi eidel gemaach goufen',
 	'blank-log-entry-blank' => 'huet $1 eidegemaacht',
 	'blank-log-entry-unblank' => "huet d'eidelmaache vu(n) $1 réckgängeg gemaach",
+	'blank-log-link' => '[[{{#Special:Log}}/blank|Logbuch vun den eidelgmaachte Säiten]',
 	'purewikideletion-blanknologin' => 'Net ageloggt',
 	'purewikideletion-unblanknologintext' => 'Dir musst e registréierte Benotzer an [[Special:UserLogin|ageloggt]] sinn, fir eng Säit eidel ze maachen.',
 	'purewikideletion-blankedtext' => "[[$1]] gouf eidel gemaacht.
 Kuckt $2 fir d'Lëscht vun de Säiten déi rezent eidel gemaach goufen.",
+	'purewikideletion-population-done' => "D'Tabell mat den eidelgemaachte Säiten ass fäerdeg.",
 );
 
 /** Macedonian (Македонски)

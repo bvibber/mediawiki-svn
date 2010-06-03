@@ -63,9 +63,10 @@ $messages['es'] = array(
 
 /** Finnish (Suomi)
  * @author Crt
+ * @author Str4nd
  */
 $messages['fi'] = array(
-	'peoplecategories-desc' => 'Vaihtaa näytetyt sivunimet "Etunimi Sukunimi" -muodosta "Sukunimi, Etunimi" -muotoon määritellyillä luokkasivuilla.',
+	'peoplecategories-desc' => 'Vaihtaa näytetyt sivunimet ”Etunimi Sukunimi” -muodosta ”Sukunimi, Etunimi” -muotoon määritellyillä luokkasivuilla.',
 );
 
 /** French (Français)
