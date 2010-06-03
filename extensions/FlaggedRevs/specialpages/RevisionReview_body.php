@@ -185,6 +185,7 @@ class RevisionReview extends UnlistedSpecialPage
 		$tags = FlaggedRevs::getDimensions();
 		// Make review interface object
 		$form = new RevisionReview();
+		$editToken = ''; // edit token
 		// Each ajax url argument is of the form param|val.
 		// This means that there is no ugly order dependance.
 		foreach ( $args as $x => $arg ) {
@@ -235,9 +236,7 @@ class RevisionReview extends UnlistedSpecialPage
 					$form->retrieveNotes( $val );
 					break;
 				case "wpEditToken":
-					if ( !$wgUser->matchEditToken( $val ) ) {
-						return '<err#>' . wfMsgExt( 'sessionfailure', 'parseinline' );
-					}
+					$editToken = $val;
 					break;
 				default:
 					$p = preg_replace( '/^wp/', '', $par ); // kill any "wp" prefix
@@ -253,6 +252,10 @@ class RevisionReview extends UnlistedSpecialPage
 		// No page?
 		if ( !$form->page ) {
 			return '<err#>' . wfMsgExt( 'revreview-failed', 'parseinline' );
+		}
+		# Check session via user token
+		if ( !$wgUser->matchEditToken( $editToken ) ) {
+			return '<err#>' . wfMsgExt( 'sessionfailure', 'parseinline' );
 		}
 		// Basic permission check
 		$permErrors = $form->page->getUserPermissionsErrors( 'review', $wgUser );
