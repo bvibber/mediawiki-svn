@@ -12,17 +12,17 @@ class VectorHooks {
 	
 	static $scripts = array(
 		'raw' => array(
-			array( 'src' => 'Modules/CollapsibleNav/CollapsibleNav.js', 'version' => 12 ),
+			array( 'src' => 'Modules/CollapsibleNav/CollapsibleNav.js', 'version' => 15 ),
 			array( 'src' => 'Modules/CollapsibleTabs/CollapsibleTabs.js', 'version' => 8 ),
 			array( 'src' => 'Modules/EditWarning/EditWarning.js', 'version' => 8 ),
 			array( 'src' => 'Modules/FooterCleanup/FooterCleanup.js', 'version' => 5 ),
-			array( 'src' => 'Modules/SimpleSearch/SimpleSearch.js', 'version' => 11 ),
+			array( 'src' => 'Modules/SimpleSearch/SimpleSearch.js', 'version' => 13 ),
 		),
 		'combined' => array(
-			array( 'src' => 'Vector.combined.js', 'version' => 31 ),
+			array( 'src' => 'Vector.combined.js', 'version' => 37 ),
 		),
 		'minified' => array(
-			array( 'src' => 'Vector.combined.min.js', 'version' => 31 ),
+			array( 'src' => 'Vector.combined.min.js', 'version' => 37 ),
 		),
 	);
 	static $modules = array(

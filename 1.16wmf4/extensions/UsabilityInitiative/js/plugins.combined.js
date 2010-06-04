@@ -11367,7 +11367,8 @@ fn: {
 				var section = $(this).parent().parent().attr( 'rel' );
 				$.cookie(
 					'wikiEditor-' + $(this).data( 'context' ).instance + '-booklet-' + section + '-page',
-					$(this).attr( 'rel' )
+					$(this).attr( 'rel' ),
+					{ expires: 30, path: '/' }
 				);
 				// Click tracking
 				if($.trackAction != undefined){
@@ -11482,6 +11483,10 @@ fn: {
 	},
 	buildTab : function( context, id, section ) {
 		var selected = $.cookie( 'wikiEditor-' + context.instance + '-toolbar-section' );
+		// Re-save cookie
+		if ( selected != null ) {
+			$.cookie( 'wikiEditor-' + context.instance + '-toolbar-section', selected, { expires: 30, path: '/' } );
+		}
 		return $( '<span />' )
 			.attr( { 'class' : 'tab tab-' + id, 'rel' : id } )
 			.append(
@@ -11548,7 +11553,8 @@ fn: {
 						// Save the currently visible section
 						$.cookie(
 							'wikiEditor-' + $(this).data( 'context' ).instance + '-toolbar-section',
-							show ? $section.attr( 'rel' ) : null
+							show ? $section.attr( 'rel' ) : null,
+							{ expires: 30, path: '/' }
 						);
 						e.preventDefault();
 						return false;
@@ -11612,10 +11618,14 @@ fn: {
 	updateBookletSelection : function( context, id, $pages, $index ) {
 		var cookie = 'wikiEditor-' + context.instance + '-booklet-' + id + '-page';
 		var selected = $.cookie( cookie );
+		// Re-save cookie
+		if ( selected != null ) {
+			$.cookie( cookie, selected, { expires: 30, path: '/' } );
+		}
 		var $selectedIndex = $index.find( '*[rel=' + selected + ']' );
 		if ( $selectedIndex.size() == 0 ) {
 			selected = $index.children().eq( 0 ).attr( 'rel' );
-			$.cookie( cookie, selected );
+			$.cookie( cookie, selected, { expires: 30, path: '/' } );
 		}
 		$pages.children().hide();
 		$pages.find( '*[rel=' + selected + ']' ).show();

@@ -12,6 +12,29 @@ $j(document).ready( function() {
 	if( !wgVectorEnabledModules.simplesearch || skin != 'vector' ) {
 		return true;
 	}
+	var mod = {
+		'browsers': {
+			// Left-to-right languages
+			'ltr': {
+				// SimpleSearch is broken in Opera < 9.6
+				'opera': [['>=', 9.6]],
+				'blackberry': false,
+				'ipod': false,
+				'iphone': false
+			},
+			// Right-to-left languages
+			'rtl': {
+				'opera': [['>=', 9.6]],
+				'blackberry': false,
+				'ipod': false,
+				'iphone': false
+			}
+		}
+	};
+	if ( !$j.wikiEditor.isSupported( mod ) ) {
+		return true;
+	}
+	
 	// Add form submission handler
 	$j( 'div#simpleSearch > input#searchInput' )
 		.each( function() {
