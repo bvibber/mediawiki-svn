@@ -32,7 +32,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'url' => 'http://www.mediawiki.org/wiki/Extension:PureWikiDeletion',
 	'description' => 'Implements pure wiki deletion',
 	'descriptionmsg' => 'purewikideletion-desc',
-	'version' => '1.0.4',
+	'version' => '1.0.5',
 );
  
 $dir = dirname( __FILE__ ) . '/';
@@ -73,10 +73,10 @@ $wgLogActions['blank/blank'] 	= 'blank-log-entry-blank';
 $wgLogActions['blank/unblank']  = 'blank-log-entry-unblank';
 
 $wgSpecialPages['RandomExcludeBlank'] = 'RandomExcludeBlank';
-$wgSpecialPages['AllPagesExcludeBlank'] = 'AllPagesExcludeBlank';
+#$wgSpecialPages['AllPagesExcludeBlank'] = 'AllPagesExcludeBlank';
 $wgSpecialPages['PopulateBlankedPagesTable'] = 'PopulateBlankedPagesTable';
 $wgSpecialPageGroups['RandomExcludeBlank'] = 'redirects';
-$wgSpecialPageGroups['AllPagesExcludeBlank'] = 'pages';
+#$wgSpecialPageGroups['AllPagesExcludeBlank'] = 'pages';
 $wgSpecialPageGroups['PopulateBlankedPagesTable'] = 'wiki';
 
 # User right to execute Special:PopulateBlankedPagesTable
