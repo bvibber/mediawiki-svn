@@ -9,8 +9,9 @@ $j(document).ready( function() {
 		'browsers': {
 			// Left-to-right languages
 			'ltr': {
-				// Collapsible Nav is broken in Opera < 9.6
+				// Collapsible Nav is broken in Opera < 9.6 and Konqueror < 4
 				'opera': [['>=', 9.6]],
+				'konqueror': [['>=', 4.0]],
 				'blackberry': false,
 				'ipod': false,
 				'iphone': false
@@ -18,6 +19,7 @@ $j(document).ready( function() {
 			// Right-to-left languages
 			'rtl': {
 				'opera': [['>=', 9.6]],
+				'konqueror': [['>=', 4.0]],
 				'blackberry': false,
 				'ipod': false,
 				'iphone': false
@@ -48,12 +50,12 @@ $j(document).ready( function() {
 			}
 			// Re-save cookie
 			if ( state != null ) {
-				$j.cookie( 'vector-nav-' + $j(this).attr( 'id' ), state, { expires: 30 } );
+				$j.cookie( 'vector-nav-' + $j(this).attr( 'id' ), state, { expires: 30, path: '/' } );
 			}
 		} );
 	// Use the same function for all navigation headings - don't repeat yourself
 	function toggle( $element ) {
-		$j.cookie( 'vector-nav-' + $element.parent().attr( 'id' ), $element.parent().is( '.collapsed' ), { expires: 30 } );
+		$j.cookie( 'vector-nav-' + $element.parent().attr( 'id' ), $element.parent().is( '.collapsed' ), { expires: 30, path: '/' } );
 		$element
 			.parent()
 			.toggleClass( 'expanded' )
