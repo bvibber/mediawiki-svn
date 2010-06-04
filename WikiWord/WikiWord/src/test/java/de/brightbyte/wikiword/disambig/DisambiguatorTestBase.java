@@ -12,7 +12,6 @@ import java.util.Map;
 import junit.framework.TestCase;
 import de.brightbyte.abstraction.ListAbstractor;
 import de.brightbyte.data.LabeledVector;
-import de.brightbyte.data.MapLabeledVector;
 import de.brightbyte.data.cursor.DataCursor;
 import de.brightbyte.io.ChunkingCursor;
 import de.brightbyte.io.ConsoleIO;
@@ -84,7 +83,7 @@ public class DisambiguatorTestBase extends TestCase {
 		
 		List<List<String>> group;
 		while ((group = cursor.next()) != null) {
-			LabeledVector<Integer> v = ConceptFeatures.newIntFeaturVector();
+			LabeledVector<Integer> v = ConceptFeatures.newIntFeaturVector(group.size());
 			Integer id = null;
 			String name = null;
 			
@@ -100,7 +99,7 @@ public class DisambiguatorTestBase extends TestCase {
 			
 			if (id!=null) {
 				double len = v.getLength();
-				v = v.scaled(len); //normalize
+				v.scale(1.0/len); //normalize
 				
 				LocalConcept c = new LocalConcept(corpus, id, ConceptType.UNKNOWN, name);
 				ConceptFeatures<LocalConcept, Integer> f = new ConceptFeatures<LocalConcept, Integer>(c, v);

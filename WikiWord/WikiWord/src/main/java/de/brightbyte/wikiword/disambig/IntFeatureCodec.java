@@ -13,7 +13,7 @@ public class IntFeatureCodec implements BlockCodec<LabeledVector<Integer>> {
 	public LabeledVector<Integer> decode(byte[] data, int offset, int length)
 			throws CodecException {
 		
-		LabeledVector<Integer> v = ConceptFeatures.newIntFeaturVector();
+		LabeledVector<Integer> v = ConceptFeatures.newIntFeaturVector(data.length / 12 +1);
 		
 		for (int i = 0; i<length; ) {
 			int id = (data[offset + i++] & 0xFF) ;

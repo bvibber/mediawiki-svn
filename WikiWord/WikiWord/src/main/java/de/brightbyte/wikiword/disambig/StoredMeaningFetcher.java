@@ -30,9 +30,11 @@ public class StoredMeaningFetcher implements MeaningFetcher<LocalConcept> {
 	}
 
 	public List<LocalConcept> getMeanings(String term) throws PersistenceException {
-		trace("fetching meanings for \""+term+"\""); 
 		DataSet<LocalConcept> m = store.getMeanings(term, spec); //FIXME: filter/cut-off rules, sort order! //XXX: relevance value?
-		return m.load();
+		List<LocalConcept> meanigns = m.load();
+		
+		trace("fetched "+meanigns.size()+" meanings for \""+term+"\""); 
+		return meanigns;
 	}
 
 	public <X extends TermReference> Map<X, List<? extends LocalConcept>> getMeanings(Collection<X> terms) throws PersistenceException {

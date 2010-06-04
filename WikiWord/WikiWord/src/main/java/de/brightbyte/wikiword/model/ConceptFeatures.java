@@ -1,5 +1,6 @@
 package de.brightbyte.wikiword.model;
 
+import gnu.trove.impl.Constants;
 import de.brightbyte.data.IntLabeledVector;
 import de.brightbyte.data.LabeledVector;
 
@@ -50,7 +51,12 @@ public class ConceptFeatures<C extends WikiWordConcept, K> {
 	}	
 	
 	public static LabeledVector<Integer>newIntFeaturVector() {
-		return new IntLabeledVector();
+		return newIntFeaturVector( -1 );
+	}
+	
+	public static LabeledVector<Integer>newIntFeaturVector(int capacity) {
+		if ( capacity <= 0 ) capacity = Constants.DEFAULT_CAPACITY;
+		return new IntLabeledVector(capacity);
 	}
 
 }

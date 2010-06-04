@@ -228,7 +228,7 @@ public class CoherenceDisambiguator extends AbstractDisambiguator<TermReference,
 	 * @see de.brightbyte.wikiword.disambig.Disambiguator#disambiguate(java.util.List)
 	 */
 	public <X extends TermReference>CoherenceDisambiguation<X, LocalConcept> disambiguate(PhraseNode<X> root, Map<X, List<? extends LocalConcept>> meanings, Collection<? extends LocalConcept> context) throws PersistenceException {
-		if (meanings.isEmpty()) return new CoherenceDisambiguation<X, LocalConcept>(Collections.<X, LocalConcept>emptyMap(), Collections.<X>emptyList(), Collections.<Integer, ConceptFeatures<LocalConcept, Integer>>emptyMap(), ConceptFeatures.newIntFeaturVector(), 0.0, "no terms or meanings");
+		if (meanings.isEmpty()) return new CoherenceDisambiguation<X, LocalConcept>(Collections.<X, LocalConcept>emptyMap(), Collections.<X>emptyList(), Collections.<Integer, ConceptFeatures<LocalConcept, Integer>>emptyMap(), ConceptFeatures.newIntFeaturVector(1), 0.0, "no terms or meanings");
 		
 		LabeledMatrix<LocalConcept, LocalConcept> similarities = new MapLabeledMatrix<LocalConcept, LocalConcept>(true);
 		FeatureFetcher<LocalConcept, Integer> features = getFeatureCache(meanings, context); 
@@ -306,32 +306,30 @@ public class CoherenceDisambiguator extends AbstractDisambiguator<TermReference,
 	protected <X extends TermReference>CoherenceDisambiguation<X, LocalConcept> getBestInterpretation(PhraseNode<X> root, Map<X, List<? extends LocalConcept>> meanings, 
 			Collection<? extends LocalConcept> context, Collection<Disambiguator.Interpretation<X, LocalConcept>> interpretations, 
 			LabeledMatrix<LocalConcept, LocalConcept> similarities, FeatureFetcher<LocalConcept, Integer> features) throws PersistenceException {
+
+		CoherenceDisambiguation<X, LocalConcept>  best = null;
+		double bestScore = 0;
 		
-		List<CoherenceDisambiguation<X, LocalConcept>> rankings = new ArrayList<CoherenceDisambiguation<X, LocalConcept>>();
+		trace("finding best of "+interpretations.size()+" interpretations.");
 		
-		double traceLimit = -1;
 		for (Disambiguator.Interpretation<X, LocalConcept> interp: interpretations) {
 			CoherenceDisambiguation<X, LocalConcept> r = getScore(interp, context, similarities, features);
 			
 			if (r.getScore() >= minScore) {
-				rankings.add(r);
-
-				if (traceLimit<0) traceLimit = r.getScore() / 2;
-				if (r.getScore() >= traceLimit && rankings.size()<=10) trace(" = "+r);
+				if ( best == null || r.getScore() > bestScore) {
+					best = r;
+					bestScore = r.getScore();
+				}
 			}
 		}
 		
-		if (rankings.size()==0) {
+		if (best==null) {
 			Disambiguation<X, LocalConcept> r = popularityDisambiguator.disambiguate(root, meanings, context);
 			return getScore(r.getInterpretation(), context, similarities, features); 
 		}
 		
-		Collections.sort(rankings);
-		Collections.reverse(rankings);
-		
-		//TODO: if result is tight (less than 50% distance), use more popularity score!
-		CoherenceDisambiguation<X, LocalConcept> r = rankings.get(0);
-		return r;
+		//XXX: if result is tight (less than 50% distance), use more popularity score??
+		return best;
 	}
 
 	public <X extends TermReference>Collection<Disambiguator.Interpretation<X, LocalConcept>> getInterpretations(Collection<List<X>> sequences, Map<X, List<? extends LocalConcept>> meanings) {
@@ -400,7 +398,7 @@ public class CoherenceDisambiguator extends AbstractDisambiguator<TermReference,
 		int c = concepts.size();
 
 		if (c == 0) {
-			CoherenceDisambiguation<X, LocalConcept> r = new CoherenceDisambiguation<X, LocalConcept>(interp.getMeanings(), interp.getSequence(), Collections.<Integer, ConceptFeatures<LocalConcept, Integer>>emptyMap(), ConceptFeatures.newIntFeaturVector(), 0, "empty");
+			CoherenceDisambiguation<X, LocalConcept> r = new CoherenceDisambiguation<X, LocalConcept>(interp.getMeanings(), interp.getSequence(), Collections.<Integer, ConceptFeatures<LocalConcept, Integer>>emptyMap(), ConceptFeatures.newIntFeaturVector(1), 0, "empty");
 			return r;
 		} 
 
@@ -411,7 +409,7 @@ public class CoherenceDisambiguator extends AbstractDisambiguator<TermReference,
 		int n = (c-1)*c/2; //Number of distinct pairs of different concepts, including "missing" concepts
 		int simCount = 0; //simCount should be <= n in the end. count and check.
 		
-		LabeledVector<Integer> sum = ConceptFeatures.newIntFeaturVector();
+		LabeledVector<Integer> sum = ConceptFeatures.newIntFeaturVector( concepts.size() * 200 ); //XXX: magic number
 		Map<Integer, ConceptFeatures<LocalConcept, Integer>> disambigFeatures = new HashMap<Integer, ConceptFeatures<LocalConcept, Integer>>();
 		double sim = 0, pop = 0, weight = 0;
 		int i=0, j=0;
@@ -490,7 +488,9 @@ public class CoherenceDisambiguator extends AbstractDisambiguator<TermReference,
 		}
 		
 		//normalize
-		LabeledVector<Integer> centroid = sum.scaled(1.0/i);
+		LabeledVector<Integer> centroid = sum;
+		centroid.compact();
+		centroid.scale(1.0/i);
 		
 		if (n<simCount) {
 			throw new SanityException("sim-count mismatches calculated number of permutations: counted "+simCount+", caclulated "+n);

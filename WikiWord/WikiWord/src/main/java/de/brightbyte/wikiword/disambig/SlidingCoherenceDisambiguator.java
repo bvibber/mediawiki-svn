@@ -72,7 +72,7 @@ public class SlidingCoherenceDisambiguator extends CoherenceDisambiguator {
 	 * @see de.brightbyte.wikiword.disambig.Disambiguator#disambiguate(java.util.List)
 	 */
 	public <X extends TermReference>CoherenceDisambiguation<X, LocalConcept> disambiguate(PhraseNode<X> root, Map<X, List<? extends LocalConcept>> meanings, Collection<? extends LocalConcept> context) throws PersistenceException {
-		if (meanings.isEmpty()) return new CoherenceDisambiguation<X, LocalConcept>(Collections.<X, LocalConcept>emptyMap(), Collections.<X>emptyList(), Collections.<Integer, ConceptFeatures<LocalConcept, Integer>>emptyMap(), ConceptFeatures.newIntFeaturVector(), 0.0, "no terms or meanings");
+		if (meanings.isEmpty()) return new CoherenceDisambiguation<X, LocalConcept>(Collections.<X, LocalConcept>emptyMap(), Collections.<X>emptyList(), Collections.<Integer, ConceptFeatures<LocalConcept, Integer>>emptyMap(), ConceptFeatures.newIntFeaturVector(1), 0.0, "no terms or meanings");
 
 		int sz = meanings.size();
 		if (context!=null) sz += context.size();

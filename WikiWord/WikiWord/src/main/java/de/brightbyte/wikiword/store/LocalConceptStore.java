@@ -5,7 +5,6 @@ import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.model.LocalConcept;
 import de.brightbyte.wikiword.model.TermMeaning;
 import de.brightbyte.wikiword.model.TermReference;
-import de.brightbyte.wikiword.store.WikiWordConceptStore.ConceptQuerySpec;
 
 
 /**

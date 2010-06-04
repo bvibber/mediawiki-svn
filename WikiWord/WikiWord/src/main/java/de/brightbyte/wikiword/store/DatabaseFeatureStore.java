@@ -207,9 +207,10 @@ public class DatabaseFeatureStore<T extends WikiWordConcept>
 			
 			if (normalize==NormalizationMode.ALWAYS || (normalize==NormalizationMode.AUTO && limit>0 && v.size()==limit)) { 
 				double length = v.getLength();
-				v = v.scaled(1.0/length);
+				v.scale(1.0/length);
 			}
 
+			v.compact();
 			return v;
 		}
 
