@@ -47,7 +47,7 @@ char *_sep, *_lasttok, *_firsttok;
 #define TAIL _lasttok
 #define HEAD _firsttok
 
-char *wmwhitelist[] = {"commons","meta","incubator","species","strategy", "outreach", "usability", "quality"};
+char *wmwhitelist[] = {"commons","meta","incubator","species","strategy","outreach","usability","quality"};
 bool check_wikimedia(char *language) {
 	char **p=wmwhitelist;
 	for(;*p;p++) {
