@@ -47,7 +47,7 @@ char *_sep, *_lasttok, *_firsttok;
 #define TAIL _lasttok
 #define HEAD _firsttok
 
-char *wmwhitelist[] = {"commons","meta","incubator","species"};
+char *wmwhitelist[] = {"commons","meta","incubator","species","strategy", "outreach", "usability", "quality"};
 bool check_wikimedia(char *language) {
 	char **p=wmwhitelist;
 	for(;*p;p++) {
@@ -121,9 +121,9 @@ bool parse_url(char *url, struct info *in) {
 	in->project=FIELD;
 
 	if(!strcmp(in->project,"m")) {
-    in->project = "m.wikipedia";
-    in->title = in->language;
-    return true;
+    	in->project = "m.wikipedia";
+    	in->title = in->language;
+    	return true;
 	} else {
   	if(strcmp(TAIL,"org"))
   		return false;
@@ -135,7 +135,7 @@ bool parse_url(char *url, struct info *in) {
 }
 
 bool check_project(struct info *in) {
-	struct project *pr=projects;
+	const struct project *pr=projects;
 	for(;pr->full;pr++) {
 		if(!strcmp(in->project,pr->full)) {
 			in->suffix=pr->suffix;
@@ -151,6 +151,10 @@ bool check_project(struct info *in) {
 
 int main(int ac, char **av) {
 	char line[LINESIZE];
+
+	setuid(65534);
+	setgid(65534);
+	chroot("/tmp")
 
 	char *undef,*ip,*url, *size;
 	while(fgets(line,LINESIZE-1,stdin)) {
