@@ -154,7 +154,7 @@ int main(int ac, char **av) {
 
 	setuid(65534);
 	setgid(65534);
-	chroot("/tmp")
+	chroot("/tmp");
 
 	char *undef,*ip,*url, *size;
 	while(fgets(line,LINESIZE-1,stdin)) {
