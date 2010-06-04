@@ -8,7 +8,8 @@ mw.includeAllModuleMessages();
 * Define mw.SwarmTransport object: 
 */
 mw.SwarmTransport = {
-		
+	loadingHttpseed2tstream: false,
+	
 	addPlayerHooks: function(){	
 		var _this = this; 
 		// Bind some hooks to every player:  		
@@ -19,8 +20,14 @@ mw.SwarmTransport = {
 			// Setup the "embedCode" binding to swap in an updated url
 			$j( embedPlayer ).bind( 'checkPlayerSourcesEvent', function( event, callback ) {				
 				// Confirm SwarmTransport add-on is available ( defines swarmTransport var )  
-				if( typeof window['swarmTransport'] != 'undefined' ){			
-					_this.addSwarmPlayer( embedPlayer );
+				if( typeof window['swarmTransport'] != 'undefined' ){
+				
+					// Make sure the swarmTransport player has been added: 
+					if( mw.EmbedTypes.players.defaultPlayers[ 'video/swarmTransport' ] ){	
+						_this.addSwarmPlayer( embedPlayer );
+					}
+					
+					// Add the swarm source
 					mw.log(" SwarmTransport :: checkPlayerSourcesEvent ");
 					_this.addSwarmSource( embedPlayer, callback );
 										
@@ -92,8 +99,16 @@ mw.SwarmTransport = {
 		// p2p next does not have a lookup service rather a static file that defines a function 
 		// by the name of httpseed2tstream ( check if httpseed2tstream is defined ) 
 		if ( typeof httpseed2tstream == 'undefined' ) {
-			// should do a check to avoid loading tlookup multiple times
-			mw.load('http://wikipedia.p2p-next.org/tlookup.js', function(){
+			// Check if we already started loading httpseed2tstream
+			if( this.loadingHttpseed2tstream ){
+				mw.waitForObject( 'httpseed2tstream', function(){
+					finishAddSwarmSource();	
+				});
+				return ; 
+			}
+			this.loadingHttpseed2tstream = true;
+			// Should do a check to avoid loading tlookup multiple times			
+			mw.load( 'http://wikipedia.p2p-next.org/tlookup.js', function(){
 				finishAddSwarmSource();	
 			});
 			

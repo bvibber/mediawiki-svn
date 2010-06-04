@@ -51,6 +51,7 @@ var mwEnabledModuleList = [
 	'ApiProxy',
 	'Sequencer',
 	'TimedText',
+	'SmilPlayer',
 	'SwarmTransport'
 ];
 

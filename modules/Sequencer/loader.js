@@ -2,7 +2,7 @@
 * Sequencer loader
 */
 mw.addClassFilePaths( {
-	"mw.PlayList"			: "mw.PlayList.js",
+	
 	"mw.Sequencer"			: "mw.Sequencer.js",
 	"mw.SeqRemoteSearchDriver" : "mw.SeqRemoteSearchDriver.js",	
 	"mw.TimedEffectsEdit"	: "mvTimedEffectsEdit.js",
@@ -12,6 +12,7 @@ mw.addClassFilePaths( {
 	
 	"playlistEmbed" : "playlistEmbed.js"
 } );
+
 
 mw.addModuleLoader( 'FirefoggRender', function( callback) {
 	mw.load( [

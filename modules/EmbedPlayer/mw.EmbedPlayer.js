@@ -363,41 +363,23 @@ EmbedPlayerManager.prototype = {
 		this.playerList.push( playerElement.id );		
 		
 		// Check for player attributes such as skins or plugins attributes 
-		// that add to the request set			
+		// that add to the request set	
 		var playerDependencyRequest = [ ];
+		
 		mw.embedPlayerUpdateLibraryRequest( playerElement, playerDependencyRequest );
 		
 		// Load any skins we need then swap in the interface
 		mw.load( playerDependencyRequest, function() {												
 			// We should move all playlist handling to add-in 		
-			switch( playerElement.tagName.toLowerCase() ) {
-				case 'playlist':
-					// Make sure we have the necessary playlist libs loaded:
-					mw.load( 'mw.PlayList', function() {
-					
-						// Create playlist player interface
-						var playlistPlayer = new mw.PlayList( playerElement, attributes );
-						
-						// Swap in playlist player interface
-						_this.swapEmbedPlayerElement( playerElement, playerInterface );	
-						
-						// Pass the id to any hook that needs to interface prior to checkPlayerSources 
-						mw.log("addElement :: trigger :: newEmbedPlayerEvent");
-						$j( mw ).trigger ( 'newEmbedPlayerEvent',  playerInterface.id );
-						
-											
-						// Issue the checkPlayerSources call to the new playlist interface: 				
-						$j( '#' + playlistPlayer.id ).get(0).showPlayer();		
-					} );
-				break;					
+			switch( playerElement.tagName.toLowerCase() ) {					
 				case 'video':
 				case 'audio':
 				// By default treat the rewrite request as "video"
-				default:
+				default:				
 					// Set the wait for meta flag
 					var waitForMeta = _this.waitForMetaCheck( playerElement );
 													
-					var ranPlayerSwapFlag = false;												
+					var ranPlayerSwapFlag = false;									
 					// Local callback to runPlayer swap once playerElement has metadata
 					function runPlayerSwap() {											
 						if( ranPlayerSwapFlag ){
@@ -424,11 +406,13 @@ EmbedPlayerManager.prototype = {
 					
 						// Time-out of 5 seconds ( maybe still playable but no timely metadata ) 
 						setTimeout( runPlayerSwap, 5000 );
+						return ;
 					} else { 
 						runPlayerSwap();
+						return ;
 					}					
-				break;				
-		   }
+				break;
+		   }		   
 	   });
 	},
 	
@@ -444,9 +428,10 @@ EmbedPlayerManager.prototype = {
 		
 		// If we don't have a native player don't wait for metadata
 		if( !mw.EmbedTypes.players.isSupportedPlayer( 'oggNative') &&
-			!mw.EmbedTypes.players.isSupportedPlayer( 'h264Native' ) ){
+			!mw.EmbedTypes.players.isSupportedPlayer( 'h264Native' ) )
+		{
 			return false;
-		}
+		}		
 		
 		
 		var width = $j( playerElement ).css( 'width' );
@@ -484,14 +469,14 @@ EmbedPlayerManager.prototype = {
 		// Firefox default width height is ~sometimes~ 150 / 300
 		if( this.height == 150 && this.width == 300 ){
 			waitForMeta = true; 
-		}
+		}						
 		
 		// Make sure we have a src attribute or source child 
 		// ( i.e not a video tag to be dynamically populated or looked up from xml resource description )
 		if( waitForMeta && 
-			( 
-				$j(playerElement).attr('src') ||
-				$j(playerElement).find("source[src]").length !== 0
+			(
+				$j( playerElement ).attr('src') 
+				$j( playerElement ).find("source[src]").length !== 0		 				
 			)
 		) {
 			// Detect src type ( if no type set ) 
@@ -990,7 +975,7 @@ mediaElement.prototype = {
 	/** 
 	* Returns the array of mediaSources of this element.
 	* 
-	* @param {String} [mime_filter] Filter criteria for set of mediaSources to return
+	* @param {String} [mimeFilter] Filter criteria for set of mediaSources to return
 	* @return {Array} mediaSource elements.
 	*/
 	getSources: function( mimeFilter ) {

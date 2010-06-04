@@ -19,7 +19,7 @@ var genericEmbed = {
 	* Generic embed html
 	*
 	* @return {String}
-	* 	embed code for genneric ogg plugin 
+	* 	embed code for generic ogg plugin 
 	*/
 	doEmbedHTML: function() {
 		$j( this ).html( 
