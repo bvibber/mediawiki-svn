@@ -2,6 +2,20 @@
 #include <stdio.h>
 #include <stdbool.h>
 
+/* 
+
+Modified on Jun 4, 2010 by hcatlin to 
+now process en.m.wikipedia.org requests into
+the mobile project, with the title being the
+language code.
+
+For instance, it might output "en.mw 1 1213 en"
+
+This way, we aren't tracking every page title in
+mobile.
+
+*/
+
 /*
 
 #!/usr/bin/python
@@ -74,6 +88,7 @@ const struct project {
 		{"mediawiki",".w",NULL},
 		{"wikiversity",".v",NULL},
 		{"wikiquote",".q",NULL},
+		{"m.wikipedia", ".mw", NULL},
 		NULL
 	}, *project;
 
@@ -104,12 +119,19 @@ bool parse_url(char *url, struct info *in) {
 	TOKENIZE(host,".");
 	in->language=HEAD;
 	in->project=FIELD;
-	if(strcmp(TAIL,"org"))
-		return false;
-	if (in->language && in->project)
-		return true;
-	else
-		return false;
+
+	if(!strcmp(in->project,"m")) {
+    in->project = "m.wikipedia";
+    in->title = in->language;
+    return true;
+	} else {
+  	if(strcmp(TAIL,"org"))
+  		return false;
+  	if (in->language && in->project)
+  		return true;
+  	else
+  		return false;
+  }
 }
 
 bool check_project(struct info *in) {
