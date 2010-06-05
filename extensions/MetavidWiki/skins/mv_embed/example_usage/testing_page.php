@@ -27,6 +27,6 @@ function do_testing_page(){
 	<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />&#160;
   </body>
 </html>
-<?
+<?php
 }
-?>
+
