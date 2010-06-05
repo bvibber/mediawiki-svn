@@ -19,7 +19,10 @@ class CategoryMultisortChineseHooks {
 	function onCategoryMultisortSortkeys( $parser, $category, &$categoryMultisorts ) {
 		global $wgContLang;
 		
-		$data = CategoryMultisortChineseData::getCategoryMultisortChineseData();
+		static $data = null;
+		if ( is_null( $data ) ) {
+			$data = new CategoryMultisortChineseData();
+		}
 		
 		$title = $parser->getTitle();
 		$text = $title->getText();
