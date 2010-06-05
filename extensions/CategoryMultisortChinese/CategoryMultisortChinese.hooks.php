@@ -16,12 +16,27 @@ class CategoryMultisortChineseHooks {
 		}
 	}
 	
+	function onCategoryMultisortSortkeys_loadData() {
+		$file = dirname( __FILE__ ) . '/CategoryMultisortChinese.dat';
+		
+		if ( file_exists( $file ) ) {
+			$data = unserialize( file_get_contents( $file ) );
+			if ( $data ) {
+				return $data;
+			}
+		}
+		
+		$data = new CategoryMultisortChineseData();
+		file_put_contents( $file, serialize( $data ) );
+		return $data;
+	}
+	
 	function onCategoryMultisortSortkeys( $parser, $category, &$categoryMultisorts ) {
 		global $wgContLang;
 		
 		static $data = null;
 		if ( is_null( $data ) ) {
-			$data = new CategoryMultisortChineseData();
+			$data = $this->onCategoryMultisortSortkeys_loadData();
 		}
 		
 		$title = $parser->getTitle();
