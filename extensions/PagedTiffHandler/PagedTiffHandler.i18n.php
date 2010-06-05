@@ -15,12 +15,15 @@ $messages['en'] = array(
 	'tiff_no_metadata' => 'Cannot get metadata from TIFF',
 	'tiff_page_error' => 'Page number not in range',
 	'tiff_too_many_embed_files' => 'The image contains too many embedded files.',
-	'tiff_sourcefile_too_large' => 'The resolution of the source file is too large. No thumbnail will be generated.',
-	'tiff_targetfile_too_large' => 'The resolution of the target file is too large. No thumbnail will be generated.',	
+	'tiff_sourcefile_too_large' => 'The resolution of the source file is too large.
+No thumbnail will be generated.',
+	'tiff_targetfile_too_large' => 'The resolution of the target file is too large.
+No thumbnail will be generated.',
 	'tiff_file_too_large' => 'The uploaded file is too large and was rejected.',
-	'tiff_out_of_service' => 'The uploaded file could not be processed. ImageMagick is not available.',
+	'tiff_out_of_service' => 'The uploaded file could not be processed.
+ImageMagick is not available.',
 	'tiff_too_much_meta' => 'Metadata uses too much space.',
-	'tiff_error_cached' => 'This file can only be rerendered after the the caching interval.',
+	'tiff_error_cached' => 'This file can only be rerendered after the caching interval.',
 	'tiff_size_error' => 'The reported file size does not match the actual file size.',
 	'tiff_script_detected' => 'The uploaded file contains scripts.',
 	'tiff_bad_file' => 'The uploaded file contains errors.',
@@ -36,7 +39,7 @@ $messages['qqq'] = array(
 	'tiff_page_error' => 'Error message shown when page number is out of range',
 	'tiff_too_many_embed_files' => 'Error message shown when the uploaded image contains too many embedded files.',
 	'tiff_sourcefile_too_large' => 'Error message shown when the resolution of the source file is too large.',
-	'tiff_targetfile_too_large' => 'Error message shown when the resolution of the target file is too large.',	
+	'tiff_targetfile_too_large' => 'Error message shown when the resolution of the target file is too large.',
 	'tiff_file_too_large' => 'Error message shown when the uploaded file is too large.',
 	'tiff_out_of_service' => 'Error message shown when the uploaded file could not be processed by external renderer (ImageMagick).',
 	'tiff_too_much_meta' => 'Error message shown when the metadata uses too much space.',
