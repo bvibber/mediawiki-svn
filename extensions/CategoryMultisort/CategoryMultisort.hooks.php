@@ -16,6 +16,7 @@ class CategoryMultisortHooks {
 			'ParserClearState',
 			'ParserBeforeTidy',
 			'LinksUpdate',
+			'ArticleDeleteComplete',
 			'CategoryPageView',
 			'GetPreferences',
 		) as $hook ) {
@@ -146,7 +147,8 @@ class CategoryMultisortHooks {
 			} else {
 				$exsk = $existing[$cat];
 				foreach ( $sk as $skn => $skv ) {
-					if ( !array_key_exists( $skn, $exsk ) || $exsk[$skn] != $skv ) {
+					# PHP thinks '02' == '002'
+					if ( !array_key_exists( $skn, $exsk ) || $exsk[$skn] !== $skv ) {
 						$invalidates[] = $cat;
 						$this->onLinksUpdate_getCategoryMultisortInsertions_addCategoryInsertion( $linksUpdate, $arr, $cat, $skn, $skv );
 					}
@@ -179,7 +181,8 @@ class CategoryMultisortHooks {
 			} else {
 				$cmsk = $categoryMultisorts[$cat];
 				foreach ( $sk as $skn => $skv ) {
-					if ( !array_key_exists( $skn, $cmsk ) || $cmsk[$skn] != $skv ) {
+					# PHP thinks '02' == '002'
+					if ( !array_key_exists( $skn, $cmsk ) || $cmsk[$skn] !== $skv ) {
 						$invalidates[] = $cat;
 						$arr[$cat][$skn] = $skv;
 					}
@@ -187,6 +190,14 @@ class CategoryMultisortHooks {
 			}
 		}
 		return $arr;
+	}
+	
+	function onArticleDeleteComplete( $article, $user, $reason, $id ) {
+		$dbw = wfGetDB( DB_MASTER );
+		if ( !$dbw->cascadingDeletes() ) {
+			$dbw->delete( 'categorylinks_multisort', array( 'clms_from' => $id ) );
+		}
+		return true;
 	}
 	
 	function parserCategoryMultisort() {
@@ -228,8 +239,7 @@ class CategoryMultisortHooks {
 		if ( $title->getNamespace() != NS_CATEGORY ) {
 			return true;
 		} else {
-			$skn = $wgRequest->getVal( 'sortkey' );
-			if ( !isset( $skn ) ) {
+			if ( is_null( $skn = $wgRequest->getVal( 'sortkey' ) ) ) {
 				$skn = $wgUser->getOption( 'categorymultisort-sortkey' );
 			}
 			
@@ -276,9 +286,10 @@ class CategoryMultisortHooks {
 			$html = Html::element( 'label', array(
 				'for' => 'categorymultisort-select',
 			), wfMsgExt( 'categorymultisort-sortkey', 'parseinline' ) ) . $html;
-			$html .= Html::input( '', wfMsgNoTrans( 'categorymultisort-go' ), 'submit' , array(
+			$html .= Html::rawElement('noscript', array(),
+				Html::input( '', wfMsgNoTrans( 'categorymultisort-go' ), 'submit' , array(
 				'id' => 'categorymultisort-select-go',
-			) );
+			) ) );
 			$html = Html::hidden( 'title', $wgArticle->getTitle()->getPrefixedDBkey() ) . $html;
 			$html = Html::rawElement( 'form', array(
 				'action' => $wgScript,
@@ -286,9 +297,6 @@ class CategoryMultisortHooks {
 				'id' => 'categorymultisort-select-form',
 				'style' => 'float: right;',
 			), $html );
-			$html .= Html::inlineScript( 'addOnloadHook(function() {
-				document.getElementById("categorymultisort-select-go").style.display = "none";
-			});' );
 		}
 		
 		return $html;
