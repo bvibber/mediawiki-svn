@@ -112,7 +112,7 @@ public class DatabasePropertyStoreBuilder extends DatabaseIncrementalStoreBuilde
 	
 	protected boolean hasUnresolvedConceptReferences() throws PersistenceException{
 		try {
-			Number c = (Number)database.executeSingleValueQuery("DatabasePropertyStoreBuilder.finishAliases#hasNull?", "select exists(select * from wmde10apr_en_property where concept is null)");
+			Number c = (Number)database.executeSingleValueQuery("DatabasePropertyStoreBuilder.finishAliases#hasNull?", "select exists(select * from "+propertyTable.getSQLName()+" where concept is null)");
 			return c.intValue() > 0;
 		} catch (SQLException e) {
 			throw new PersistenceException(e);
@@ -121,7 +121,7 @@ public class DatabasePropertyStoreBuilder extends DatabaseIncrementalStoreBuilde
 	
 	protected boolean hasResolvedConceptReferences() throws PersistenceException {
 		try {
-			Number c = (Number)database.executeSingleValueQuery("DatabasePropertyStoreBuilder.finishAliases#hasNull?", "select exists(select * from wmde10apr_en_property where concept is not null)");
+			Number c = (Number)database.executeSingleValueQuery("DatabasePropertyStoreBuilder.finishAliases#hasNull?", "select exists(select * from "+propertyTable.getSQLName()+" where concept is not null)");
 			return c.intValue() > 0;
 		} catch (SQLException e) {
 			throw new PersistenceException(e);
