@@ -89,7 +89,7 @@ public class DatabaseFeatureStore<T extends WikiWordConcept>
 			sql += " WHERE concept = "+concept;
 			if (maxConceptFeatures>0) sql += " ORDER BY normal_weight DESC LIMIT "+maxConceptFeatures; 
 
-			return readConceptFeatures("getFeatureVector", sql, "concept", null, null, null, "feature", "normal_weight"); //FIXME: name, card, relevance
+			return readConceptFeatures("getConceptFeatures", sql, "concept", null, null, null, "feature", "normal_weight"); //FIXME: name, card, relevance
 		}
 
 		public Map<Integer, ConceptFeatures<T, Integer>> getConceptsFeatures(int[] concepts) throws PersistenceException {
@@ -100,7 +100,7 @@ public class DatabaseFeatureStore<T extends WikiWordConcept>
 				sql += " WHERE concept IN "+database.encodeSet(concepts);
 				if (maxConceptFeatures>0) sql += " ORDER BY concept, normal_weight DESC"; 
 
-				return readConceptsFeatures("getFeatureVectors", sql, "concept", null, null, null, "feature", "normal_weight"); //FIXME: name, card, relevance
+				return readConceptsFeatures("getConceptsFeatures", sql, "concept", null, null, null, "feature", "normal_weight"); //FIXME: name, card, relevance
 			} catch (SQLException e) {
 				throw new PersistenceException(e);
 			}

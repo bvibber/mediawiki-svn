@@ -1,28 +1,32 @@
 package de.brightbyte.wikiword.model;
 
 import gnu.trove.impl.Constants;
+
+import java.util.Collection;
+
 import de.brightbyte.data.IntLabeledVector;
 import de.brightbyte.data.LabeledVector;
+import de.brightbyte.data.MultiMap;
 
-public class ConceptFeatures<C extends WikiWordConcept, K> {
-	protected LabeledVector<K> features;
+public class ConceptProperties<C extends WikiWordConcept> {
+	protected MultiMap<String, String, ? extends Collection<String>> properties;
 	protected C concept;
 	
-	public ConceptFeatures(C concept, LabeledVector<K> features) {
-		if (features==null) throw new NullPointerException();
+	public ConceptProperties(C concept, MultiMap<String, String, ? extends Collection<String>> properties) {
+		if (properties==null) throw new NullPointerException();
 		if (concept==null) throw new NullPointerException();
-		this.features = features;
+		this.properties = properties;
 		this.concept = concept;
 	}
 	
 	public String toString() {
-		return concept+ ":"+features;
+		return concept+ ":"+properties;
 	}
 
-	public LabeledVector<K> getFeatureVector() {
-		return features;
+	public MultiMap<String, String, ? extends Collection<String>> getProperties() {
+		return properties;
 	}
-	
+
 	public WikiWordConcept getConcept() {
 		return concept;
 	}
@@ -45,7 +49,7 @@ public class ConceptFeatures<C extends WikiWordConcept, K> {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		final ConceptFeatures other = (ConceptFeatures) obj;
+		final ConceptProperties other = (ConceptProperties) obj;
 		
 		return concept.equals(other.concept);
 	}	
