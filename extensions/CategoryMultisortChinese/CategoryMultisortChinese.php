@@ -11,7 +11,7 @@ $wgExtensionCredits['other'][] = array(
 	'url' => 'http://www.mediawiki.org/wiki/Extension:CategoryMultisortChinese',
 );
 
-$wgAutoloadClasses['CategoryMultisortChineseHooks'] = dirname( __FILE__ ) . '/CategoryMultisortChinese.class.php';
+$wgAutoloadClasses['CategoryMultisortChineseHooks'] = dirname( __FILE__ ) . '/CategoryMultisortChinese.hooks.php';
 $wgAutoloadClasses['CategoryMultisortChineseData'] = dirname( __FILE__ ) . '/CategoryMultisortChinese.data.php';
 
 $wgExtensionMessagesFiles['CategoryMultisortChinese'] = dirname( __FILE__ ) . '/CategoryMultisortChinese.i18n.php';
