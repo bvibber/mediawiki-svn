@@ -1975,7 +1975,7 @@ Haluaisimme tietää, mitä mieltä olet uudesta käyttöliittymästä, joten ar
 	'optin-survey-answer-whyoptout-notpredictable' => 'Se ei toiminut ennustettavalla tavalla.',
 	'optin-survey-answer-whyoptout-didntlike-look' => 'En pitänyt sen ulkonäöstä.',
 	'optin-survey-answer-whyoptout-didntlike-layout' => 'En pitänyt uusista välilehdistä ja asettelusta.',
-	'optin-survey-answer-whyoptout-didntlike-toolbar' => 'En pitänyt uudesta työkalurivistä.',
+	'optin-survey-answer-whyoptout-didntlike-toolbar' => 'En pitänyt uudesta työkalupalkista.',
 	'optin-survey-answer-whyoptout-other' => 'Muu syy',
 	'optin-survey-question-explain' => 'Olisitteko ystävällinen ja selittäisitte tai selventäisitte edelläolevaa vastaustanne:',
 	'optin-survey-question-techfail' => 'Koitko teknisiä häiriöitä käyttäessäsi Betaa?',
@@ -2783,6 +2783,7 @@ Pro ulterior informationes super le Initiativa de Usabilitate, visita nostre [ht
  * @author Bennylin
  * @author Irwangatot
  * @author IvanLanin
+ * @author Kenrick95
  * @author Rex
  */
 $messages['id'] = array(
@@ -2822,7 +2823,7 @@ Kami ingin mengetahui bagaimana pendapat Anda mengenai antarmuka baru kami, kare
 	'optin-survey-answer-whyoptout-notpredictable' => 'Tidak dapat diprediksi.',
 	'optin-survey-answer-whyoptout-didntlike-look' => 'Saya tidak suka dengan penampilannya.',
 	'optin-survey-answer-whyoptout-didntlike-layout' => 'Saya tidak suka dengan tab baru dan tampilannya.',
-	'optin-survey-answer-whyoptout-didntlike-toolbar' => 'Aku tidak suka dengan kotak peralatan baru.',
+	'optin-survey-answer-whyoptout-didntlike-toolbar' => 'Saya tidak menyukai kotak peralatan yang baru.',
 	'optin-survey-answer-whyoptout-other' => 'Alasan lain:',
 	'optin-survey-question-explain' => 'Harap menjelaskan atau menguraikan jawaban Anda di atas:',
 	'optin-survey-question-techfail' => 'Pernahkah anda mengalami kesalahan teknis ketika menggunakan Beta?',
@@ -2846,6 +2847,9 @@ Kami ingin mengetahui bagaimana pendapat Anda mengenai antarmuka baru kami, kare
 	'optin-survey-answer-changes-predictability' => 'Meningkatkan prediktabilitas dari kinerja.',
 	'optin-survey-answer-changes-custom' => 'Memperbolehkan Pengguna yang lebih tinggi untuk kustomisasi',
 	'optin-survey-answer-changes-other' => 'Lain-lain:',
+	'optin-improvements2' => '== Apa yang telah diperbaiki? ==
+[[Berkas:UsabilityToolbar.png|left|link=|Screenshot of the enhanced edit toolbar]]
+[[Berkas:UsabilityDialogs.png|left|link=|Screenshot of the new content generation dialogs]]',
 );
 
 /** Ido (Ido)
@@ -2941,20 +2945,20 @@ Vorremmo sapere cosa ne pensi della nostra nuova interfaccia, quindi apprezzerem
 	'optin-survey-answer-changes-predictability' => 'Migliorare la prevedibilità delle prestazioni.',
 	'optin-survey-answer-changes-custom' => "Consentire una maggiore personalizzazione all'utente.",
 	'optin-survey-answer-changes-other' => 'Altro:',
-	'optin-improvements2' => "== Cosa è stato migliorato? ==
+	'optin-improvements2' => '== Cosa è stato migliorato? ==
 [[File:UsabilityToolbar.png|left|link=|Screenshot della nuova e migliorata toolbar]]
 [[File:UsabilityDialogs.png|left|link=|Screenshot delle nuove finestre di dialogo per la generazione del contenuto]]
-;Toolbar migliorata
-La nuova toolbar rende più semplice modificare le voci.
+;Barra degli strumenti migliorata
+La nuova barra degli strumenti rende più semplice modificare le voci.
 Le icone nuove e migliorate rendono più chiara quale azione è svolta da ogni strumento.
 Le sezioni espandibili riducono il disordine, mentre mantengono strumenti poco usati a un solo click di distanza.
 ;Finestre di dialogo
-Nella creazione di link o tabelle, cliccando l'icona dello strumento adesso si apre una finestra di dialogo che ti aiuta a creare link e tabelle riempendo un semplice modulo.
+Nella creazione di link o tabelle, cliccando l\'icona dello strumento adesso si apre una finestra di dialogo che ti aiuta a creare link e tabelle riempendo un semplice modulo.
 ;E altro ancora
 Abbiamo introdotto una serie di altri miglioramenti come una navigazione migliorata, le schede a cascata, una ricerca migliorata, e altro ancora.
 == Come partecipare ==
-Per sapere altro sull'Iniziativa per l'Usabilità, visita il nostro [http://usability.wikimedia.org/wiki/Wikipedia_Usability_Initiative sito].
-<div style=\"clear:both\"></div>",
+Per sapere altro sul progetto Usabilità, visita il nostro [http://usability.wikimedia.org/wiki/Wikipedia_Usability_Initiative sito]. Oppure, [http://it.wikipedia.org/wiki/Progetto:Coordinamento/Usabilit%C3%A0 qui] puoi fare segnalazioni o dare pareri di ogni genere in italiano. 
+<div style="clear:both"></div>',
 );
 
 /** Japanese (日本語)
@@ -4713,6 +4717,20 @@ Gostaríamos de saber o que você acha da nossa nova interface, por isso agradec
 	'optin-survey-answer-changes-predictability' => 'Melhorar a previsibilidade dos resultados.',
 	'optin-survey-answer-changes-custom' => 'Permitir uma maior personalização para o usuário.',
 	'optin-survey-answer-changes-other' => 'Outros:',
+	'optin-improvements2' => '== O que foi melhorado? ==
+[[File:UsabilityToolbar.png|left|link=|Imagem da barra melhorada das ferramentas de edição]]
+[[File:UsabilityDialogs.png|left|link=|Imagem dos diálogos de geração de novos conteúdos]]
+;Barra de ferramentas melhorada
+A barra de ferramentas melhorada facilita a edição de artigos.
+Ícones novos e melhorados tornam mais clara a função de cada ferramenta.
+Secções expandidas reduzem a confusão ao mesmo tempo que mantêm as ferramentas pouco usadas à distância de um clique.
+;Diálogo
+Ao criar links ou tabelas, clicar o ícone de ferramentas abre agora um diálogo que auxilia a sua criação preenchendo um formulário simples.
+;E mais
+Foram introduzidas várias melhorias, como a navegação melhorada, os separadores em cascata, a pesquisa melhorada e outras.
+== Como pode envolver-se ==
+Para saber mais sobre a Iniciativa de Usabilidade, visite a nossa [http://usability.wikimedia.org/wiki/Wikipedia_Usability_Initiative página].
+<div style="clear:both"></div>',
 );
 
 /** Quechua (Runa Simi)

@@ -255,6 +255,13 @@ $messages['pt'] = array(
 	'wikieditor-addMediaWizard-preference' => 'Activar o gadget "Assistente de Adição de Multimédia"',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Giro720
+ */
+$messages['pt-br'] = array(
+	'wikieditor-addMediaWizard-preference' => 'Ativar o gadget "Assistente de Adição de Multimídia"',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

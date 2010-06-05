@@ -260,6 +260,13 @@ $messages['pt'] = array(
 	'wikieditor-templates-preference' => 'Possibilitar a recolha e expansão de predefinições',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Giro720
+ */
+$messages['pt-br'] = array(
+	'wikieditor-templates-preference' => 'Possibilitar a recolha e expansão de predefinições',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

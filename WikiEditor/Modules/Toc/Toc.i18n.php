@@ -198,6 +198,7 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author AlimanRuna
  * @author Crazymadlover
  * @author Peter17
  */
