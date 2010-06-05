@@ -230,7 +230,7 @@ class CategoryMultisortHooks {
 	}
 	
 	function onCategoryPageView( $categoryArticle ) {
-		global $wgRequest, $wgOut, $wgUser, $wgCategoryMultisortSortkeySettings, $wgUser;
+		global $wgRequest, $wgOut, $wgUser, $wgCategoryMultisortSortkeySettings;
 		
 		wfLoadExtensionMessages( 'CategoryMultisort' );
 		
