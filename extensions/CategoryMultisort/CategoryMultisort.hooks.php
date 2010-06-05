@@ -17,6 +17,7 @@ class CategoryMultisortHooks {
 			'ParserBeforeTidy',
 			'LinksUpdate',
 			'CategoryPageView',
+			'GetPreferences',
 		) as $hook ) {
 			$wgHooks[$hook][] = $this;
 		}
@@ -218,16 +219,20 @@ class CategoryMultisortHooks {
 	}
 	
 	function onCategoryPageView( $categoryArticle ) {
-		global $wgRequest, $wgOut, $wgUser, $wgCategoryMultisortSortkeyNames;
+		global $wgRequest, $wgOut, $wgUser, $wgCategoryMultisortSortkeyNames, $wgUser;
 		
 		wfLoadExtensionMessages( 'CategoryMultisort' );
 		
 		$title = $categoryArticle->getTitle();
-		$skn = $wgRequest->getText( 'sortkey' );
 		
 		if ( $title->getNamespace() != NS_CATEGORY ) {
 			return true;
 		} else {
+			$skn = $wgRequest->getVal( 'sortkey' );
+			if ( !isset( $skn ) ) {
+				$skn = $wgUser->getOption( 'categorymultisort-sortkey' );
+			}
+			
 			$wgOut->addHTML( $this->onCategoryPageView_buildSortkeySelectForm( $skn ) );
 			
 			if ( !$skn || !array_key_exists( $skn, $wgCategoryMultisortSortkeyNames ) ) {
@@ -257,7 +262,6 @@ class CategoryMultisortHooks {
 				array_merge( array( 'value' => '' ), ( $current == '' ? array( 'selected' ) : array() ) ),
 				wfMsgNoTrans( 'categorymultisort-defaultsortkey-name' )
 			);
-			
 			foreach ( $wgCategoryMultisortSortkeyNames as $skn => $sks ) {
 				$html .= Html::element( 'option',
 					array_merge( array( 'value' => $skn ), ( $current == $skn ? array( 'selected' ) : array() ) ),
@@ -288,6 +292,28 @@ class CategoryMultisortHooks {
 		}
 		
 		return $html;
+	}
+	
+	function onGetPreferences( $user, &$preferences ) {
+		global $wgCategoryMultisortSortkeyNames;
+		
+		wfLoadExtensionMessages( 'CategoryMultisort' );
+		
+		$options = array(
+			wfMsgNoTrans( 'categorymultisort-defaultsortkey-name' ) => '',
+		);
+		foreach ( $wgCategoryMultisortSortkeyNames as $skn => $sks ) {
+			$options[wfMsgNoTrans( "categorymultisort-sortkey-name-$skn" )] = $skn;
+		}
+		
+		$preferences['categorymultisort-sortkey'] = array(
+			'type' => 'select',
+			'section' => 'misc/category',
+			'options' => $options,
+			'label-message' => 'categorymultisort-default-sortkey',
+		);
+		
+		return true;
 	}
 	
 	function parseMultisortArgs( $args ) {

@@ -18,4 +18,6 @@ $wgExtensionMessagesFiles['CategoryMultisort'] = dirname( __FILE__ ) . '/Categor
 
 new CategoryMultisortHooks();
 
+$wgDefaultUserOptions['categorymultisort-sortkey'] = '';
+
 $wgCategoryMultisortSortkeyNames = array();

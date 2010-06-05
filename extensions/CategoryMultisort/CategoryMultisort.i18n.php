@@ -11,4 +11,6 @@ $messages['en'] = array(
 	'categorymultisort-defaultsortkey-name' => 'Default',
 	'categorymultisort-sortkey' => 'Sortkey: ',
 	'categorymultisort-go' => 'Go',
+	'categorymultisort-default-sortkey' => 'Default sortkey:',
+	'prefs-category' => 'Category',
 );
