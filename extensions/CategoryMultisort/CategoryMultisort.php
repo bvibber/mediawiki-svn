@@ -20,4 +20,4 @@ new CategoryMultisortHooks();
 
 $wgDefaultUserOptions['categorymultisort-sortkey'] = '';
 
-$wgCategoryMultisortSortkeyNames = array();
+$wgCategoryMultisortSortkeySettings = array();

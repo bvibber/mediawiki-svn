@@ -7,10 +7,10 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 class CategoryMultisortViewer extends CategoryViewer {
 
 	function __construct( $title, $skn, $from = '', $until = '' ) {
-		global $wgCategoryMultisortSortkeyNames;
+		global $wgCategoryMultisortSortkeySettings;
 		parent::__construct( $title, $from, $until );
 		$this->sortkeyName = $skn;
-		$this->sortkeySettings = $wgCategoryMultisortSortkeyNames[$skn];
+		$this->sortkeySettings = $wgCategoryMultisortSortkeySettings[$skn];
 	}
 	
 	function doCategoryQuery() {
@@ -65,17 +65,10 @@ class CategoryMultisortViewer extends CategoryViewer {
 	}
 	
 	function getSubcategorySortChar( $title, $sortkey ) {
-		global $wgContLang;
-		
-		if ( !array_key_exists( 'firstChar', $this->sortkeySettings ) || $this->sortkeySettings['firstChar'] ) {
-			$sortkey = $wgContLang->firstChar( $sortkey );
-		}
-
-		return $wgContLang->convert( $sortkey );
+		return $this->decorateSortkey( $sortkey );
 	}
 	
 	function addPage( $title, $sortkey, $pageLength, $isRedirect = false ) {
-		global $wgContLang;
 		$this->articles[] = $isRedirect
 			? '<span class="redirect-in-category">' .
 				$this->getSkin()->link(
@@ -87,16 +80,39 @@ class CategoryMultisortViewer extends CategoryViewer {
 				) . '</span>'
 			: $this->getSkin()->makeSizeLinkObj( $pageLength, $title );
 		
-		if ( !array_key_exists( 'firstChar', $this->sortkeySettings ) || $this->sortkeySettings['firstChar'] ) {
-			$sortkey = $wgContLang->firstChar( $sortkey );
-		}
-		
-		$this->articles_start_char[] = $wgContLang->convert( $sortkey );
+		$this->articles_start_char[] = $this->decorateSortkey( $sortkey );
 	}
 	
 	function pagingLinks( $title, $first, $last, $limit, $query = array() ) {
 		return parent::pagingLinks( $title, $first, $last, $limit, array_merge( $query, array(
 			'sortkey' => $this->sortkeyName,
 		) ) );
+	}
+	
+	function decorateSortkey( $sk ) {
+		global $wgContLang;
+		
+		$first = array_key_exists( 'first', $this->sortkeySettings )
+			? $this->sortkeySettings['first'] : 1;
+		if ( $first < 0 ) {
+			$sortkey = $sk;
+		} else {
+			$sortkey = '';
+			# PHP thinks '0' == false
+			for ( $i = 0; $i < $first && $sk != ''; $i++ ) {
+				$fc = $wgContLang->firstChar( $sk );
+				$sortkey .= $fc;
+				$sk = substr( $sk, strlen( $fc ) );
+			}
+		}
+		
+		$type = array_key_exists( 'type', $this->sortkeySettings )
+			? $this->sortkeySettings['type'] : '';
+		
+		if ( $type == 'int' ) {
+			$sortkey = strval( intval( $sortkey ) );
+		}
+		
+		return $wgContLang->convert( $sortkey );
 	}
 }

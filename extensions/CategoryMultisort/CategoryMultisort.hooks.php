@@ -230,7 +230,7 @@ class CategoryMultisortHooks {
 	}
 	
 	function onCategoryPageView( $categoryArticle ) {
-		global $wgRequest, $wgOut, $wgUser, $wgCategoryMultisortSortkeyNames, $wgUser;
+		global $wgRequest, $wgOut, $wgUser, $wgCategoryMultisortSortkeySettings, $wgUser;
 		
 		wfLoadExtensionMessages( 'CategoryMultisort' );
 		
@@ -245,7 +245,7 @@ class CategoryMultisortHooks {
 			
 			$wgOut->addHTML( $this->onCategoryPageView_buildSortkeySelectForm( $skn ) );
 			
-			if ( !$skn || !array_key_exists( $skn, $wgCategoryMultisortSortkeyNames ) ) {
+			if ( !$skn || !array_key_exists( $skn, $wgCategoryMultisortSortkeySettings ) ) {
 				return true;
 			} else {
 				$article = new Article( $title );
@@ -262,17 +262,17 @@ class CategoryMultisortHooks {
 	}
 	
 	function onCategoryPageView_buildSortkeySelectForm( $current = '' ) {
-		global $wgCategoryMultisortSortkeyNames, $wgArticle, $wgScript;
+		global $wgCategoryMultisortSortkeySettings, $wgArticle, $wgScript;
 		
 		$html = '';
 		
-		if ( count( $wgCategoryMultisortSortkeyNames ) ) {
+		if ( count( $wgCategoryMultisortSortkeySettings ) ) {
 			wfLoadExtensionMessages( 'CategoryMultisort' );
 			$html = Html::element( 'option',
 				array_merge( array( 'value' => '' ), ( $current == '' ? array( 'selected' ) : array() ) ),
 				wfMsgNoTrans( 'categorymultisort-defaultsortkey-name' )
 			);
-			foreach ( $wgCategoryMultisortSortkeyNames as $skn => $sks ) {
+			foreach ( $wgCategoryMultisortSortkeySettings as $skn => $sks ) {
 				$html .= Html::element( 'option',
 					array_merge( array( 'value' => $skn ), ( $current == $skn ? array( 'selected' ) : array() ) ),
 					wfMsgNoTrans( "categorymultisort-sortkey-name-$skn" )
@@ -303,14 +303,14 @@ class CategoryMultisortHooks {
 	}
 	
 	function onGetPreferences( $user, &$preferences ) {
-		global $wgCategoryMultisortSortkeyNames;
+		global $wgCategoryMultisortSortkeySettings;
 		
 		wfLoadExtensionMessages( 'CategoryMultisort' );
 		
 		$options = array(
 			wfMsgNoTrans( 'categorymultisort-defaultsortkey-name' ) => '',
 		);
-		foreach ( $wgCategoryMultisortSortkeyNames as $skn => $sks ) {
+		foreach ( $wgCategoryMultisortSortkeySettings as $skn => $sks ) {
 			$options[wfMsgNoTrans( "categorymultisort-sortkey-name-$skn" )] = $skn;
 		}
 		
