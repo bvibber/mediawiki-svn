@@ -610,7 +610,7 @@ class mvRSSFeed extends ChannelFeed {
 <description>
 		<?php echo $this->getDescription()?>
 </description>
-		<?
+		<?php
 	}
 	function outPutItem( $wikiTitle, $desc_html = '' ) {
 		global $wgOut, $wgUser;
@@ -746,7 +746,7 @@ foreach($vid_types as $vid_key){
 		?>
 </channel>
 </rss>
-		<?
+		<?php
 	}
 }
 ?>
