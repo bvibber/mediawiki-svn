@@ -19,23 +19,23 @@ $wgExtensionMessagesFiles['CategoryMultisortChinese'] = dirname( __FILE__ ) . '/
 $wgExtensionFunctions[] = 'efCategoryMultisortChineseInit';
 
 function efCategoryMultisortChineseInit() {
-	global $wgContLang, $wgCategoryMultisortSortkeyNames;
+	global $wgContLang, $wgCategoryMultisortSortkeySettings;
 	
 	wfLoadExtensionMessages( 'CategoryMultisortChinese' );
 	
 	if ( in_array( 'zh-hans', $wgContLang->getVariants() ) ) {
-		$wgCategoryMultisortSortkeyNames['stroke-s'] = $wgCategoryMultisortSortkeyNames['stroke'];
-		$wgCategoryMultisortSortkeyNames['radical-s'] = $wgCategoryMultisortSortkeyNames['radical'];
+		$wgCategoryMultisortSortkeySettings['stroke-s'] = $wgCategoryMultisortSortkeySettings['stroke'];
+		$wgCategoryMultisortSortkeySettings['radical-s'] = $wgCategoryMultisortSortkeySettings['radical'];
 	}
 	
 	if ( in_array( 'zh-hant', $wgContLang->getVariants() ) ) {
-		$wgCategoryMultisortSortkeyNames['stroke-t'] = $wgCategoryMultisortSortkeyNames['stroke'];
-		$wgCategoryMultisortSortkeyNames['radical-t'] = $wgCategoryMultisortSortkeyNames['radical'];
+		$wgCategoryMultisortSortkeySettings['stroke-t'] = $wgCategoryMultisortSortkeySettings['stroke'];
+		$wgCategoryMultisortSortkeySettings['radical-t'] = $wgCategoryMultisortSortkeySettings['radical'];
 	}
 }
 
 new CategoryMultisortChineseHooks();
 
-$wgCategoryMultisortSortkeyNames['mandarin'] = array( 'firstChar' => true );
-$wgCategoryMultisortSortkeyNames['stroke'] = array( 'firstChar' => false );
-$wgCategoryMultisortSortkeyNames['radical'] = array( 'firstChar' => true );
+$wgCategoryMultisortSortkeySettings['mandarin'] = array();
+$wgCategoryMultisortSortkeySettings['stroke'] = array( 'first' => 3, 'type' => 'int' );
+$wgCategoryMultisortSortkeySettings['radical'] = array();
