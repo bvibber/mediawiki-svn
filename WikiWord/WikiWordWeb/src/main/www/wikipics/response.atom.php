@@ -110,7 +110,7 @@ header("Content-Type: $ctype; charset=$ctype");
 		} else if ($mode=='concept') {
 			listConceptImages($concept);
 			listRelatedConcepts($concept);
-		} if ($mode=='term') else {
+		} else if ($mode=='term') {
 			listConcepts($languages, $result);
 		}
 		?>
