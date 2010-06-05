@@ -1,16 +1,16 @@
 <?php
-class PopulateIntegrationTable extends SpecialPage {
+class PopulateInterwikiIntegrationTable extends SpecialPage {
 	function __construct() {
-		parent::__construct( 'PopulateIntegrationTable','integration' );
-		wfLoadExtensionMessages( 'Integration' );
+		parent::__construct( 'PopulateInterwikiIntegrationTable','integration' );
+		wfLoadExtensionMessages( 'InterwikiIntegration' );
 	}
  
 	function execute( $par ) {
 		global $wgRequest, $wgOut, $wgUser, $wgLanguageCode
 			,$wgLocalisationCacheConf, $wgExtraNamespaces
-			, $wgLocalDatabases, $wgIntegrationPrefix
+			, $wgLocalDatabases, $wgInterwikiIntegrationPrefix
 			, $wgMetaNamespace, $wgMetaNamespaceTalk
-			, $wgSitename, $wgIntegrationPWD;
+			, $wgSitename, $wgInterwikiIntegrationPWD;
 		if ( !$this->userCanExecute($wgUser) ) {
 			$this->displayRestrictionError();
 			return;
@@ -21,12 +21,12 @@ class PopulateIntegrationTable extends SpecialPage {
 		$localDBname = $dbr -> getProperty ( 'mDBname' );
 		
 		$dbw->delete ( 'integration_db', '*' );
-		if ( isset ( $wgIntegrationPrefix ) ) {
+		if ( isset ( $wgInterwikiIntegrationPrefix ) ) {
 			
-			foreach ( $wgIntegrationPrefix as $thisPrefix => $thisDatabase ) {
+			foreach ( $wgInterwikiIntegrationPrefix as $thisPrefix => $thisDatabase ) {
 				$thisPWD = 0;
-				if ( isset ( $wgIntegrationPWD[$thisDatabase])
-				    && $wgIntegrationPWD[$thisDatabase] == true) {
+				if ( isset ( $wgInterwikiIntegrationPWD[$thisDatabase])
+				    && $wgInterwikiIntegrationPWD[$thisDatabase] == true) {
 					$thisPWD = '1';
 				}
 				$newDatabaseRow = array (

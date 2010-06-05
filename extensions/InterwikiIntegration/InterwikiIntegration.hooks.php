@@ -1,11 +1,11 @@
 <?php
  
-class IntegrationHooks {
+class InterwikiIntegrationHooks {
 	
 	/*
 	 * Creates necessary tables
 	 */
-	public static function IntegrationCreateTable() {
+	public static function InterwikiIntegrationCreateTable() {
 		global $wgExtNewTables;
 		$wgExtNewTables[] = array(
 			'integration_db',
@@ -27,9 +27,9 @@ class IntegrationHooks {
 	 * farm is broken or not; if so, it will be colored red and link to the
 	 * edit page on the target wiki
 	 */
-	public static function IntegrationLink( $skin, $target, &$text,
+	public static function InterwikiIntegrationLink( $skin, $target, &$text,
 		&$customAttribs, &$query, &$options, &$ret ) {
-		global $wgIntegrationBrokenLinkStyle, $wgPureWikiDeletionInEffect;
+		global $wgInterwikiIntegrationBrokenLinkStyle, $wgPureWikiDeletionInEffect;
 		
 		if ( $target->isExternal() ) {
 			$dbr = wfGetDB( DB_SLAVE );
@@ -110,7 +110,7 @@ class IntegrationHooks {
 			
 			if ( !$pageResult || isset ( $blankResult ) && $blankResult ) {
 				$query['action'] = "edit";
-				$customAttribs['style'] = $wgIntegrationBrokenLinkStyle;
+				$customAttribs['style'] = $wgInterwikiIntegrationBrokenLinkStyle;
 			
 			}
 		}

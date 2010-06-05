@@ -1,6 +1,6 @@
 <?php
 /**
- * Internationalisation file for the Integration extension
+ * Internationalisation file for the InterwikiIntegration extension
  * @addtogroup Extensions
  */
  
@@ -10,7 +10,7 @@ $messages = array();
  * @author Tisane
  */
 $messages['en'] = array(
-	'integration' => 'Integration',
+	'integration' => 'InterwikiIntegration',
 	'integration-desc' => 'Comprehensive interwiki integration',
         'populateintegrationtable' => 'Populate integration table',
         'integration-setuptext' => '$1\'s tables have been configured. Be sure '
@@ -20,6 +20,6 @@ $messages['en'] = array(
 $aliases = array(); 
 
 $aliases['en'] = array(
- 	'PopulateIntegrationTable' => array( 'PopulateIntegrationTable' ),
+ 	'PopulateInterwikiIntegrationTable' => array( 'PopulateInterwikiIntegrationTable' ),
  	);
 

@@ -1,7 +1,7 @@
 <?php
 /**
- * Integration extension by Tisane
- * URL: http://www.mediawiki.org/wiki/Extension:Integration
+ * InterwikiIntegration extension by Tisane
+ * URL: http://www.mediawiki.org/wiki/Extension:InterwikiIntegration
  *
  * This program is free software. You can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -20,31 +20,31 @@ special pages file directly.*/
  
 if ( !defined( 'MEDIAWIKI' ) ) {
 	echo <<<EOT
-		To install the Integration extension, put the following line in LocalSettings.php:
-		require( "extensions/Integration/Integration.php" );
+		To install the InterwikiIntegration extension, put the following line in LocalSettings.php:
+		require( "extensions/InterwikiIntegration/InterwikiIntegration.php" );
 EOT;
 	exit( 1 );
 }
  
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
-	'name' => 'Integration',
+	'name' => 'Interwiki Integration',
 	'author' => 'Tisane',
-	'url' => 'http://www.mediawiki.org/wiki/Extension:Integration',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:InterwikiIntegration',
 	'descriptionmsg' => 'integration-desc',
-	'version' => '1.0.0',
+	'version' => '1.0.1',
 );
  
 $dir = dirname( __FILE__ ) . '/';
-$wgAutoloadClasses['IntegrationHooks'] = $dir . 'Integration.hooks.php';
-$wgAutoloadClasses['PopulateIntegrationTable'] = "$dir/SpecialIntegration.php";
-$wgExtensionMessagesFiles['Integration'] = $dir . 'Integration.i18n.php';
-$wgHooks['LoadExtensionSchemaUpdates'][] = 'IntegrationHooks::IntegrationCreateTable';
-$wgHooks['LinkBegin'][] = 'IntegrationHooks::IntegrationLink';
-$wgSpecialPages['PopulateIntegrationTable'] = 'PopulateIntegrationTable'; 
+$wgAutoloadClasses['InterwikiIntegrationHooks'] = $dir . 'InterwikiIntegration.hooks.php';
+$wgAutoloadClasses['PopulateInterwikiIntegrationTable'] = "$dir/SpecialInterwikiIntegration.php";
+$wgExtensionMessagesFiles['InterwikiIntegration'] = $dir . 'InterwikiIntegration.i18n.php';
+$wgHooks['LoadExtensionSchemaUpdates'][] = 'InterwikiIntegrationHooks::InterwikiIntegrationCreateTable';
+$wgHooks['LinkBegin'][] = 'InterwikiIntegrationHooks::InterwikiIntegrationLink';
+$wgSpecialPages['PopulateInterwikiIntegrationTable'] = 'PopulateInterwikiIntegrationTable'; 
 $wgSharedTables[] = 'integration_db';
 $wgSharedTables[] = 'integration_namespace';
-$wgIntegrationBrokenLinkStyle = "color: red";
+$wgInterwikiIntegrationBrokenLinkStyle = "color: red";
 
 $wgAvailableRights[] = 'integration';
 $wgGroupPermissions['bureaucrat']['integration']    = true;
