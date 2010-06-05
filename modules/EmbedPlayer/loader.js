@@ -222,7 +222,7 @@
 		}		
 		
 		// Load the video libs:
-		mw.load( dependencyRequest, function() {			
+		mw.load( dependencyRequest, function() {	
 			// Setup userConfig 
 			mw.setupUserConfig( function() {
 				// Remove no video html elements:

@@ -68,16 +68,17 @@ mw.SwarmTransport = {
 	addSwarmSource: function( embedPlayer, callback ) {
 		var _this = this;
 		
+		var source = embedPlayer.mediaElement.getSources( 'video/ogg' )[0];	
+		if( ! source ){
+			mw.log("Error: addSwarmSource: could not find video/ogg source to gennerate torrent from");
+			callback();
+			return ;
+		}
+		
 		// Setup function to run in context based on callback result
 		var finishAddSwarmSource = function(){
 			// Get the highest quality source that the system can playback 
-			// ( for now just grab the first ogg/theora )
-			var source = embedPlayer.mediaElement.getSources( 'video/ogg' )[0];	
-			if( ! source ){
-				mw.log("Error: addSwarmSource: could not find video/ogg source");
-				callback();
-				return ;
-			}
+			// ( for now just grab the first ogg/theora )			
 			var absoluteSource =  mw.absoluteUrl( source.getSrc() );
 			var swarmSrc = httpseed2tstream( absoluteSource );
 			

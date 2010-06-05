@@ -209,8 +209,8 @@ mw.PlayerControlBuilder.prototype = {
 		var fullHeight =  $j( window ).height() ;
 		
 		// Set target width
-		targetWidth = fullWidth;
-		targetHeight = targetWidth * ( embedPlayer.getHeight() / embedPlayer.getWidth()  ) 
+		var targetWidth = fullWidth;
+		var targetHeight = targetWidth * ( embedPlayer.getHeight() / embedPlayer.getWidth()  ) 
 		// Check if it exceeds the height constraint: 
 		if( targetHeight >  fullHeight ){		
 			targetHeight = fullHeight;				

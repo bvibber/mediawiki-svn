@@ -2,7 +2,7 @@
 /**
 * Extends EmbedPlayer to wrap smil playback in the html5 video tag abstraction. 
 */
-var mw.EmbedPlayerSmil = {
+mw.EmbedPlayerSmil = {
 
 	// Instance Name
 	instanceOf: 'Smil',
@@ -23,7 +23,7 @@ var mw.EmbedPlayerSmil = {
 	doEmbedPlayer: function() {
 		var _this = this;
 		// Set "loading" here:
-		$j(this).html( 	
+		$j( this ).html( 	
 			$j( '<div />')
 			.attr('id', 'smilCanvas_' + this.id )
 			.css( {
@@ -31,19 +31,30 @@ var mw.EmbedPlayerSmil = {
 				'height' : '100%',
 				'position' : 'relative'
 			})
+			.loadingSpinner()
 		);			
 		
-		// Create the smilPlayer
-		this.smil = new mw.SmilPlayer( this );
+		// Create the smilPlayer 
+		this.smil = new mw.Smil();
 		
+		// Load the smil 
+		this.smil.loadFromUrl( this.getSrc(), function(){						
+			// XXX might want to move this into mw.SMIL
+			$j( _this ).html( 
+				_this.smil.getHtmlDOM( {
+					'width': _this.getWidth(), 
+					'height': _this.getHeight() 
+				} )
+			)
+		} ); 		
 		
 	},
-	$j( this ).trigger( 'mediaLoaded' );
+	
 	/**
 	* Return the virtual canvas element
 	*/ 
 	getPlayerElement: function(){
-		// return the virtual canvaus
+		// return the virtual canvas
 		return $j( 'smilCanvas_' + this.id ).get(0);
 	},
 	

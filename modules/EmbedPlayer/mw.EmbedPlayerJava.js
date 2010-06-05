@@ -10,7 +10,7 @@ mw.setDefaultConfig( 'relativeCortadoAppletPath',
 	mw.getMwEmbedPath() + 'modules/EmbedPlayer/binPlayers/cortado/cortado-ovtk-stripped-0.6.0.jar'
 );
 
-var javaEmbed = {
+mw.EmbedPlayerJava = {
 
 	// Instance name:
 	instanceOf: 'Java',

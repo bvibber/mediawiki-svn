@@ -9,7 +9,7 @@ function jsInterfaceReadyFunc(){
 
 
 					
-var mw.EmbedPlayerKplayer = {
+mw.EmbedPlayerKplayer = {
 	
 	// Instance name: 
 	instanceOf:'Kplayer',

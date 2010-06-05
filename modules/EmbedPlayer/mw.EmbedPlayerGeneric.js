@@ -1,7 +1,7 @@
 /* 
 * Simple embed object for unknown application/ogg plugin 
 */
-var mw.EmbedPlayerGeneric = {
+mw.EmbedPlayerGeneric = {
 	// List of supported features of the generic plugin
 	 supports: {	 	
 		'playHead':false,

@@ -3,7 +3,7 @@
 * javascript api: http://www.videolan.org/doc/play-howto/en/ch04.html
 *  assume version > 0.8.5.1
 */
-var mw.EmbedPlayerVlc = {
+mw.EmbedPlayerVlc = {
 
 	//Instance Name: 
 	instanceOf : 'Vlc',
@@ -54,7 +54,8 @@ var mw.EmbedPlayerVlc = {
 					'>' +
 			'</object>'
 		)
-		/*$j( this ).html(
+		/*
+			$j( this ).html(
 			'<embed type="application/x-vlc-plugin" pluginspage="http://www.videolan.org" version="VideoLAN.VLCPlugin.2" '+
 			    'width="' + this.width +'" ' +
 			    'height="' + this.height + '" ' +

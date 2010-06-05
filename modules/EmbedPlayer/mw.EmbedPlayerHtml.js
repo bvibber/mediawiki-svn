@@ -9,7 +9,7 @@ var pcHtmlEmbedDefaults = {
 	'dur':4 
 }
 
-var mw.EmbedPlayerHtml = {
+mw.EmbedPlayerHtml = {
 	
 	// Instance name: 
 	instanceOf: 'Html',	

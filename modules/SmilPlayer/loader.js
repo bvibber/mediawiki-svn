@@ -3,8 +3,11 @@
 */
 
 mw.addClassFilePaths( {
-	"mw.SmilPlayer" : "mw.SmilPlayer.js",
-	"smilEmbed"	: "smilEmbed.js"
+	"mw.Smil" : "mw.Smil.js",
+	"mw.SmilLayout" : "mw.SmilLayout.js",
+	"mw.SmilBody" : "mw.SmilBody.js",
+	
+	"mw.EmbedPlayerSmil" : "mw.EmbedPlayerSmil.js"
 } );
 
 $j( mw ).bind( 'addElementWaitForMetaEvent', function( event, waitForMetaObject ) {
@@ -16,29 +19,36 @@ $j( mw ).bind( 'addElementWaitForMetaEvent', function( event, waitForMetaObject 
 });
 
 // Add the mw.SmilPlayer to the embedPlayer loader:
-$j( mw ).bind( 'LoaderEmbedPlayerUpdateRequest', function( event, playerElement, classRequest ) {		
-	// Add smil / sequence player if needed
+$j( mw ).bind( 'LoaderEmbedPlayerUpdateRequest', function( event, playerElement, classRequest ) {
+	
+	var smilPlayerLibrarySet = [
+		"mw.Smil",
+		"mw.SmilLayout",
+		"mw.SmilBody",
+		"mw.EmbedPlayerSmil"
+	]; 
+		
+	// Add smil library set if needed
 	if( mw.CheckElementForSMIL( playerElement )  ) {				
-		// If the swarm transport is enabled add mw.SwarmTransport to the request.   	
-		if( $j.inArray( 'mw.SmilPlayer', classRequest ) == -1 )  {
-			classRequest.push( 'mw.SmilPlayer' );
-		}
+		// If the swarm transport is enabled add mw.SwarmTransport to the request.   			
+		$j.merge(classRequest, smilPlayerLibrarySet);
 	}
 } );
 
-// Add the smil player to avaliable player types: 
+// Add the smil player to available player types: 
 $j( mw ).bind( 'EmbedPlayerManagerReady', function( event ) {			
 	
 	// Add the swarmTransport playerType	
-	mw.EmbedTypes.players.defaultPlayers[ 'application/smil' ] = [ 'smil' ];
+	mw.EmbedTypes.players.defaultPlayers[ 'application/smil' ] = [ 'Smil' ];
 	
 	// Build the swarm Transport "player"
-	var smilMediaPlayer = new mediaPlayer( 'smilPlayer', [ 'application/smil' ], 'smil' );
+	var smilMediaPlayer = new mediaPlayer( 'smilPlayer', [ 'application/smil' ], 'Smil' );
 	
 	// Add the swarmTransport "player"
 	mw.EmbedTypes.players.addPlayer( smilMediaPlayer );
 				
 } );		
+
 
 /**
 * Check if a video tag element has a smil source
