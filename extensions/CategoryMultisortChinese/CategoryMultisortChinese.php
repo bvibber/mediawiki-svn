@@ -19,7 +19,19 @@ $wgExtensionMessagesFiles['CategoryMultisortChinese'] = dirname( __FILE__ ) . '/
 $wgExtensionFunctions[] = 'efCategoryMultisortChineseInit';
 
 function efCategoryMultisortChineseInit() {
+	global $wgContLang, $wgCategoryMultisortSortkeyNames;
+	
 	wfLoadExtensionMessages( 'CategoryMultisortChinese' );
+	
+	if ( in_array( 'zh-hans', $wgContLang->getVariants() ) ) {
+		$wgCategoryMultisortSortkeyNames['stroke-s'] = $wgCategoryMultisortSortkeyNames['stroke'];
+		$wgCategoryMultisortSortkeyNames['radical-s'] = $wgCategoryMultisortSortkeyNames['radical'];
+	}
+	
+	if ( in_array( 'zh-hant', $wgContLang->getVariants() ) ) {
+		$wgCategoryMultisortSortkeyNames['stroke-t'] = $wgCategoryMultisortSortkeyNames['stroke'];
+		$wgCategoryMultisortSortkeyNames['radical-t'] = $wgCategoryMultisortSortkeyNames['radical'];
+	}
 }
 
 new CategoryMultisortChineseHooks();
