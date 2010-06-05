@@ -19,10 +19,12 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author EugeneZelenko
+ * @author Umherirrender
  */
 $messages['qqq'] = array(
 	'prefs-updates' => 'In the context of software updates
 {{Identical|Update}}',
+	'updatemyprefs-desc' => '{{desc}}',
 );
 
 /** Gheg Albanian (Gegë)
@@ -342,6 +344,15 @@ $messages['pt'] = array(
 	'prefs-updates' => 'Actualizações',
 	'updatemyprefs-desc' => 'Preferência para os utilizadores especificarem se desejam actualizações periódicas da interface à medida que estas estejam disponíveis',
 	'updatemyprefs-label-message' => 'Actualizar automaticamente as minhas preferências com novas configurações predefinidas e ferramentas, à medida que estas estejam disponíveis',
+);
+
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Giro720
+ */
+$messages['pt-br'] = array(
+	'prefs-updates' => 'Atualizações',
+	'updatemyprefs-desc' => 'Preferência para os utilizadores especificarem se desejam atualizações periódicas da interface à medida que estas estejam disponíveis',
+	'updatemyprefs-label-message' => 'Atualizar automaticamente as minhas preferências com novas configurações predefinidas e ferramentas, à medida que estas estejam disponíveis',
 );
 
 /** Russian (Русский)

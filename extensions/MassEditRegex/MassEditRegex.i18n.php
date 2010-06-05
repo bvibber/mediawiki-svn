@@ -1170,6 +1170,13 @@ Ij valor ëd rimpiassadura a dovrìo nen esse trucà.",
 	'masseditregex-tooltip-execute' => 'Fà sti cangiament-sì a minca pàgina',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'masseditregex-matchtxt' => 'پلټنه د:',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  */
@@ -1277,6 +1284,25 @@ $messages['ru'] = array(
 	'masseditregex-badregex' => 'Ошибочное регулярное выражение:',
 	'masseditregex-editfailed' => 'Ошибка редактирования:',
 	'masseditregex-tooltip-execute' => 'Применить эти изменения для каждой страницы',
+);
+
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'masseditregex-matchtxt' => 'Тражи:',
+	'masseditregex-replacetxt' => 'Замени са:',
+	'masseditregex-executebtn' => 'Изврши',
+	'masseditregex-before' => 'Пре',
+	'masseditregex-after' => 'После',
+	'masseditregex-hint-headmatch' => 'Нађи',
+	'masseditregex-hint-headreplace' => 'Замени',
+	'masseditregex-hint-headeffect' => 'Ефекат',
+	'masseditregex-listtype-intro' => 'Ово је списак од:',
+	'masseditregex-exprnomatch' => 'Израз "$1" се не налази ни на једној страни.',
+	'masseditregex-badregex' => 'Неисправан regex:',
+	'masseditregex-editfailed' => 'Измена није снимљена:',
+	'masseditregex-tooltip-execute' => 'Примени ове промене на сваку страну',
 );
 
 /** Swedish (Svenska)

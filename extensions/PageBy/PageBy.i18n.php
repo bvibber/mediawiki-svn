@@ -594,6 +594,14 @@ $messages['sk'] = array(
 	'pageby-anon' => '<i>anonymní</i>',
 );
 
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'pageby-contributors' => 'Доприноси:',
+	'pageby-anon' => '<i>анонимно</i>',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

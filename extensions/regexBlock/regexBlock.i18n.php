@@ -2441,6 +2441,7 @@ $messages['ps'] = array(
 	'regexblock-view-all' => 'ټول',
 	'regexblock-view-go' => 'ورځه',
 	'regexblock-view-reason' => 'سبب: $1',
+	'regexblock-view-block-unblock' => 'بنديز لرې کول',
 );
 
 /** Portuguese (Português)
@@ -2746,9 +2747,24 @@ $messages['sk'] = array(
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Sasa Stefanovic
+ * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
+	'regexblock-block-success' => 'Блок успео',
+	'regexblock-currently-blocked' => 'Тренутно блокиране адресе:',
+	'regexblock-page-title-1' => 'Блокирај адресе користећи регуларне изразе',
 	'regexblock-form-reason' => 'Разлог:',
+	'regexblock-form-expiry' => 'Истек:',
+	'regexblock-form-match' => 'Тачно слагање',
+	'regexblock-form-submit' => 'Блокирај овог корисника',
+	'regexblock-view-all' => 'Све',
+	'regexblock-view-go' => 'Иди',
+	'regexblock-view-reason' => 'разлог: $1',
+	'regexblock-view-reason-default' => 'генерички разлог',
+	'regexblock-view-block-infinite' => 'трајан блок',
+	'regexblock-view-block-by' => 'блокирао:',
+	'regexblock-view-block-unblock' => 'одблокирај',
+	'regexblock-view-stats' => 'статистике',
 );
 
 /** Serbian Latin ekavian (Srpski (latinica))

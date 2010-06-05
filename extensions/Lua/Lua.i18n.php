@@ -647,6 +647,16 @@ $messages['sk'] = array(
 	'lua_overflow_time' => 'Bol dosiahnutý limit času behu',
 );
 
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'lua_error_internal' => 'Интерна грешка',
+	'lua_overflow_recursion' => 'Достигнут лимит за рекурзију',
+	'lua_overflow_loc' => 'Достигнут максимални број линија кода',
+	'lua_overflow_time' => 'Достигнуто максимално време извршења',
+);
+
 /** Swedish (Svenska)
  * @author Fluff
  */

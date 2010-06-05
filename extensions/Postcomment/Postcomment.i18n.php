@@ -943,6 +943,18 @@ $messages['sli'] = array(
 	'postcomment_on' => 'Oam',
 );
 
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'postcomment_youareloggedinas' => 'Улоговани сте као $1',
+	'postcomment_leavemessagefor' => 'Остави поруку за $1',
+	'postcomment_post' => 'Пошаљи',
+	'postcomment_on' => 'На',
+	'postcomment_invalidrequest' => 'Неисправан захтев.',
+	'postcomment_replyto' => 'Одговор на $1',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

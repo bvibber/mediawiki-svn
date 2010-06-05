@@ -11,6 +11,13 @@ $messages['en'] = array(
 	'cassandra-desc' => 'Store revision text in [http://cassandra.apache.org/ Apache Cassandra] database',
 );
 
+/** Message documentation (Message documentation)
+ * @author Umherirrender
+ */
+$messages['qqq'] = array(
+	'cassandra-desc' => '{{desc}}',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author Jim-by
  */
@@ -135,6 +142,13 @@ $messages['nl'] = array(
  */
 $messages['no'] = array(
 	'cassandra-desc' => 'Lagre revisjonstekst i databasen [http://cassandra.apache.org/ Apache Cassandra]',
+);
+
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'cassandra-desc' => 'Zapisuje treść wersji w bazie danych [http://cassandra.apache.org/ Apache Cassandra]',
 );
 
 /** Piedmontese (Piemontèis)

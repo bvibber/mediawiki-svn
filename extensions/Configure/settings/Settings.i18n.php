@@ -14803,7 +14803,13 @@ $messages['pl'] = array(
 $messages['ps'] = array(
 	'configure-setting-wgSitename' => 'د وېبڅي نوم',
 	'configure-setting-wgActionPaths-key' => 'چاره',
+	'configure-setting-wgLanguageCode' => 'د وېبځي د ژبې کوډ',
+	'configure-setting-wgArticleRobotPolicies-key' => 'د مخ سرليک',
+	'configure-setting-wgExtraLanguageNames-key' => 'د ژبې کوډ',
+	'configure-setting-wgExtraLanguageNames-value' => 'نوم',
+	'configure-setting-wgSpecialPageGroups-key' => 'ډله',
 	'configure-setting-wgDebugLogGroups-value' => 'دوتنه',
+	'configure-setting-wgXhtmlNamespaces-key' => 'نوم-تشيال',
 );
 
 /** Portuguese (Português)

@@ -711,6 +711,8 @@ $messages['sk'] = array(
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
+	'searchbox-search' => 'Претрага',
+	'searchbox-go' => 'Иди',
 	'searchbox-namespaces' => 'Именски простори:',
 );
 

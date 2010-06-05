@@ -19,8 +19,10 @@ $messages['en'] = array(
 /** Message documentation (Message documentation)
  * @author Fryed-peach
  * @author Hamilton Abreu
+ * @author Umherirrender
  */
 $messages['qqq'] = array(
+	'tablemod-desc' => '{{desc}}',
 	'tablemod-msg-remove' => '{{Identical|Remove}}',
 	'tablemod-error-headcount' => '[http://www.mediawiki.org/wiki/User_talk:Freakolowsky#TableMod_message May be translated] as "This tag only supports sorting on tables that have headers on every column."',
 	'tablemod-error-missingid' => "{{doc-important|''ident'' is a name of an attribute of tag. Don't translate it!}}",

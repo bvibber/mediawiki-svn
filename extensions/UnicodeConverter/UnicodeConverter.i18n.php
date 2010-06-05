@@ -701,6 +701,7 @@ $messages['sk'] = array(
  */
 $messages['sr-ec'] = array(
 	'unicodeconverter' => 'Јуникод конвертер',
+	'unicodeconverter-desc' => 'Једноставан пример модула специјалне стреане. [[Special:UnicodeConverter|Дати стринг у UTF-8]] може да конвертује у HTML ентитете погодне за неку ISO 8859-1 веб-страну',
 	'unicodeconverter-ok' => 'ОК',
 	'unicodeconverter-oldtext' => 'Оригинални текст:',
 	'unicodeconverter-newtext' => 'Конвертован текст:',

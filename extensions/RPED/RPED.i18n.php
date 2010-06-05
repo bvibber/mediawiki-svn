@@ -15,6 +15,13 @@ $messages['en'] = array(
         'rped-wikipedia-url' => 'http://en.wikipedia.org/wiki/$1',
 );
 
+/** Message documentation (Message documentation)
+ * @author Umherirrender
+ */
+$messages['qqq'] = array(
+	'rped-desc' => '{{desc}}',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by

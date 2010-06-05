@@ -17,6 +17,14 @@ $messages['en'] = array(
 	'right-editalluserpages' => 'Edit user pages',
 );
 
+/** Message documentation (Message documentation)
+ * @author Umherirrender
+ */
+$messages['qqq'] = array(
+	'userpageeditprotection-desc' => '{{desc}}',
+	'right-editalluserpages' => '{{doc-right|editalluserpages}}',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */

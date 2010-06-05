@@ -105,8 +105,11 @@ You can [$2 read published stories].',
 /** Message documentation (Message documentation)
  * @author EugeneZelenko
  * @author Hamilton Abreu
+ * @author Umherirrender
  */
 $messages['qqq'] = array(
+	'storyboard-desc' => '{{desc}}',
+	'right-storyreview' => '{{doc-right|storyreview}}',
 	'storyboard-hidden' => '{{Identical|Hidden}}',
 	'storyboard-publish' => '{{Identical|Publish}}',
 	'storyboard-hide' => '{{Identical|Hide}}',
@@ -1079,6 +1082,7 @@ Et ka sinn datt se ewechgeholl gouf.",
 	'storyboard-cantedit' => 'Dir däerft Anekdote net änneren.',
 	'storyboard-canedit' => 'Dir kënnt dës Anekdot [$1 änneren] a verëffentlechen.',
 	'storyboard-authorname' => 'Numm vum Auteur',
+	'storyboard-authorlocation' => 'Plaz vum Auteur',
 	'storyboard-authoroccupation' => 'Beruff vum Auteur',
 	'storyboard-authoremail' => 'E-Mailadress vum Auteur',
 	'storyboard-thestory' => "D'Anekdot",
@@ -1103,6 +1107,7 @@ Firwat se net hei weisen?',
 	'storyboard-createdsuccessfully' => 'Merci datt dir Är Anekdot mat eis deelt!
 Mir kucken se demnächst no.
 Dir kënnt [$1 publizéiert Anekdote liesen].',
+	'storyboard-emailtitle' => 'Anekdot ass elo ofgespäichert',
 	'storyreview' => 'Anekdot nokucken',
 	'storyboard-deleteimage' => 'Bild läschen',
 	'storyboard-done' => 'Fäerdeg',
@@ -1534,6 +1539,33 @@ $messages['ru'] = array(
 	'storyboard-hideimage' => 'Скрыть изображение',
 	'storyboard-deletestory' => 'Удалить',
 	'storyboard-storydeletionconfirm' => 'Вы уверены, что хотите удалить эту историю?',
+);
+
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'storyboard-anerroroccured' => 'Дошло је до грешке: $1',
+	'storyboard-unpublished' => 'Повучено из објаве',
+	'storyboard-published' => 'Објављено',
+	'storyboard-hidden' => 'Сакривено',
+	'storyboard-unpublish' => 'Повуци објаву',
+	'storyboard-publish' => 'Објави',
+	'storyboard-hide' => 'Сакриј',
+	'storyboard-option-unpublished' => 'необјављено',
+	'storyboard-option-published' => 'објављено',
+	'storyboard-option-hidden' => 'сакривено',
+	'storyboard-authorname' => 'Име аутора',
+	'storyboard-authorlocation' => 'Локација аутора',
+	'storyboard-authoroccupation' => 'Занимање аутора',
+	'storyboard-authoremail' => 'Ауторова адресе електронске поште',
+	'storyboard-deleteimage' => 'Обриши слику',
+	'storyboard-done' => 'Урађено',
+	'storyboard-working' => 'Обрада у току...',
+	'storyboard-imagedeleted' => 'Слика обрисана',
+	'storyboard-showimage' => 'Покажи слику',
+	'storyboard-hideimage' => 'Сакриј слику',
+	'storyboard-deletestory' => 'Обриши',
 );
 
 /** Swedish (Svenska)

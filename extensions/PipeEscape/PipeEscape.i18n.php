@@ -304,6 +304,13 @@ $messages['sk'] = array(
 	'pipeescape-desc' => 'Funkciu syntaktického analyzátora <code>#!</code> použijete vtedy, keď chcete, aby bol znak rúry iba znakom rúry',
 );
 
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'pipeescape-desc' => "Парсерска функција <code>#!</code> за случајеве када пајп-карактер ('|') треба да буде само то.",
+);
+
 /** Swedish (Svenska)
  * @author Najami
  */

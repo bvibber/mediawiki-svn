@@ -1110,9 +1110,11 @@ $messages['sk'] = array(
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Verlor
+ * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'importfreeimages_owner' => 'Аутор',
+	'importfreeimages_importthis' => 'увези ово',
 	'importfreeimages_next' => 'Следеће $1',
 	'importfreeimages_size_small' => 'Мала',
 	'importfreeimages_size_medium' => 'Средња',

@@ -25,12 +25,14 @@ $messages['en'] = array(
  * @author Jon Harald Søby
  * @author Purodha
  * @author Siebrand
+ * @author Umherirrender
  */
 $messages['qqq'] = array(
 	'inspectcache-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
 	'inspectcache-delete' => '{{Identical|Delete}}',
 	'inspectcache-list' => 'Text on button to have the keys listing shown.
 {{Identical|List}}',
+	'right-inspectcache' => '{{doc-right|inspectcache}}',
 );
 
 /** Niuean (ko e vagahau Niuē)
@@ -800,6 +802,7 @@ $messages['pms'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'inspectcache-get' => 'ترلاسه کول',
 	'inspectcache-delete' => 'ړنګول',
 	'inspectcache-list' => 'لړليک',
 );
@@ -908,6 +911,7 @@ $messages['sr-ec'] = array(
 	'inspectcache-delete' => 'Обриши',
 	'inspectcache-deleted' => 'Обрисан кеш',
 	'inspectcache-list' => 'Списак',
+	'right-inspectcache' => 'Преглед и брисање уноса кеша',
 );
 
 /** Serbian Latin ekavian (Srpski (latinica))

@@ -742,6 +742,7 @@ $messages['bcc'] = array(
  * @author EugeneZelenko
  * @author Jim-by
  * @author Red Winged Duck
+ * @author Wizardist
  */
 $messages['be-tarask'] = array(
 	'code' => 'Рэцэнзаваньне коду',
@@ -777,6 +778,7 @@ $messages['be-tarask'] = array(
 	'code-author-link' => 'стварыць спасылку?',
 	'code-author-unlink' => 'выдаліць спасылку?',
 	'code-author-unlinksuccess' => 'Спасылка на рахунак удзельніка вікі для аўтара $1 была выдаленая',
+	'code-author-badtoken' => 'Памылка сэсіі падчас выкананьня.',
 	'code-browsing-path' => "Прагляд вэрсіяў у '''$1'''",
 	'code-field-id' => 'Вэрсія',
 	'code-field-author' => 'Аўтар',
@@ -1439,6 +1441,7 @@ $messages['cs'] = array(
 	'code-author-link' => 'svázat?',
 	'code-author-unlink' => 'zrušit vazbu?',
 	'code-author-unlinksuccess' => 'Vazba autora $1 byla zrušena',
+	'code-author-badtoken' => 'Při provádění operace došlo k chybě sezení.',
 	'code-browsing-path' => "Procházení revizemi v '''$1'''",
 	'code-field-id' => 'Revize',
 	'code-field-author' => 'Autor',
@@ -1685,6 +1688,7 @@ Lokale Wikikonten werden in runden Klammern angezeigt.',
 	'code-author-link' => 'verlinken?',
 	'code-author-unlink' => 'entlinken?',
 	'code-author-unlinksuccess' => 'Der Autor $1 wurde entlinkt',
+	'code-author-badtoken' => 'Sitzungsfehler bei der Ausführung der Aktion.',
 	'code-browsing-path' => "Nach Revisionen in '''$1''' suchen",
 	'code-field-id' => 'Revision',
 	'code-field-author' => 'Autor',
@@ -1976,6 +1980,7 @@ $messages['dsb'] = array(
 	'code-author-link' => 'zwězaś?',
 	'code-author-unlink' => 'rozwězaś?',
 	'code-author-unlinksuccess' => 'Awtor $1 jo se rozwězał',
+	'code-author-badtoken' => 'Pósejźeńska zmólka pśi wuwjeźenju akcije.',
 	'code-browsing-path' => "Pśepytuju se wersije w '''$1'''",
 	'code-field-id' => 'Rewizija',
 	'code-field-author' => 'Awtor',
@@ -2391,6 +2396,7 @@ $3',
 /** Spanish (Español)
  * @author Crazymadlover
  * @author Dferg
+ * @author Diego Grez
  * @author Imre
  * @author McDutchie
  * @author Omnipaedista
@@ -2433,6 +2439,7 @@ $messages['es'] = array(
 	'code-author-link' => '¿enlazar?',
 	'code-author-unlink' => '¿desenlazar?',
 	'code-author-unlinksuccess' => 'El autor $1 ha sido desenlazado',
+	'code-author-badtoken' => 'Error de sesión al intentar realizar la acción.',
 	'code-browsing-path' => "Navegando por las revisiones en '''$1'''",
 	'code-field-id' => 'Revisión',
 	'code-field-author' => 'Autor',
@@ -3005,6 +3012,7 @@ $3',
  * @author Dereckson
  * @author Grondin
  * @author IAlex
+ * @author Jean-Frédéric
  * @author Peter17
  * @author PieRRoMaN
  * @author Verdy p
@@ -3044,6 +3052,7 @@ $messages['fr'] = array(
 	'code-author-link' => 'lier ?',
 	'code-author-unlink' => 'délier ?',
 	'code-author-unlinksuccess' => 'L’auteur $1 a été délié',
+	'code-author-badtoken' => 'Erreur de session lors de l’exécution de cette action.',
 	'code-browsing-path' => "Parcours des révisions dans '''$1'''",
 	'code-field-id' => 'Révision',
 	'code-field-author' => 'Auteur',
@@ -3349,6 +3358,7 @@ $messages['gl'] = array(
 	'code-author-link' => 'quere inserir a ligazón?',
 	'code-author-unlink' => 'quere retirar a ligazón?',
 	'code-author-unlinksuccess' => 'Foi retirada a ligazón que tiña o autor $1',
+	'code-author-badtoken' => 'Erro de sesión ao intentar levar a cabo a acción.',
 	'code-browsing-path' => "Navegando polas revisións en '''$1'''",
 	'code-field-id' => 'Revisión',
 	'code-field-author' => 'Autor',
@@ -3413,7 +3423,7 @@ $messages['gl'] = array(
 	'codereview-subtitle' => 'De $1',
 	'codereview-reply-link' => 'responder',
 	'codereview-tests-succeeded2' => '$1 {{PLURAL:$2|proba exitosa|probas exitosas}}',
-	'codereview-tests-failed2' => '$1 {{PLURAL:$2|proba exitosa|probas exitosas}}, $3 {{PLURAL:$4|proba errada|probas erradas}}:',
+	'codereview-tests-failed2' => '$1 {{PLURAL:$2|proba exitosa|probas exitosas}}, $3 {{PLURAL:$4|proba fallida|probas fallidas}}:',
 	'codereview-tests-running' => 'As probas están en curso...',
 	'codereview-tests-aborted' => 'Interrompeuse a execución da proba.',
 	'codereview-tests-failed' => 'Fallou',
@@ -4019,6 +4029,7 @@ $messages['hsb'] = array(
 	'code-author-link' => 'zwjazać?',
 	'code-author-unlink' => 'wotwjazać?',
 	'code-author-unlinksuccess' => 'Awtor $1 bu wotwjazany',
+	'code-author-badtoken' => 'Posedźenski zmylk při pospyće, akciju wuwjesć.',
 	'code-browsing-path' => "Přepytuja so wersije w '''$1'''",
 	'code-field-id' => 'Rewizija',
 	'code-field-author' => 'Awtor',
@@ -5224,6 +5235,7 @@ $messages['ko'] = array(
 	'code-author-link' => '링크하시겠습니까?',
 	'code-author-unlink' => '링크를 해제하시겠습니까?',
 	'code-author-unlinksuccess' => '저자 $1(으)로의 링크가 제거돼 있습니다.',
+	'code-author-badtoken' => '이 동작을 수행하는 중 세션 오류가 발생했습니다.',
 	'code-browsing-path' => "'''$1'''에서 판 보기",
 	'code-field-id' => '버전',
 	'code-field-author' => '작성자',
@@ -5804,6 +5816,7 @@ $messages['mk'] = array(
 	'code-author-link' => 'да ставам врска?',
 	'code-author-unlink' => 'да отстранам врска?',
 	'code-author-unlinksuccess' => 'Отстранета е врската до авторот $1',
+	'code-author-badtoken' => 'При овидот за извршување на дејството се појави сесиска грешка.',
 	'code-browsing-path' => "Прелистување на ревизии во '''$1'''",
 	'code-field-id' => 'Ревизија',
 	'code-field-author' => 'Автор',
@@ -6377,6 +6390,7 @@ Lokale wikigebruikers worden binnen haakjes weergegeven.',
 	'code-author-link' => 'koppelen?',
 	'code-author-unlink' => 'ontkoppelen?',
 	'code-author-unlinksuccess' => 'De auteur $1 is ontkoppeld.',
+	'code-author-badtoken' => 'Sessiefout tijdens het uitvoeren van de handeling.',
 	'code-browsing-path' => "Versies in '''$1''' aan het bekijken",
 	'code-field-id' => 'Versie',
 	'code-field-author' => 'Auteur',
@@ -6979,6 +6993,7 @@ $messages['pl'] = array(
 	'code-author-link' => 'podlinkować?',
 	'code-author-unlink' => 'odlinkować?',
 	'code-author-unlinksuccess' => 'Autor $1 został odlinkowany',
+	'code-author-badtoken' => 'Wystąpił błąd sesji w trakcie podejmowania akcji.',
 	'code-browsing-path' => "Przeglądanie rewizji w '''$1'''",
 	'code-field-id' => 'Wersja',
 	'code-field-author' => 'Autor',
@@ -7262,6 +7277,7 @@ $messages['ps'] = array(
 	'code-field-select' => 'ټاکل',
 	'code-rev-author' => 'ليکوال:',
 	'code-rev-date' => 'نېټه:',
+	'code-rev-modified-a' => 'ورګډ شو',
 	'code-rev-modified-d' => 'ړنګ شو',
 	'code-rev-status' => 'دريځ:',
 	'code-rev-comment-preview' => 'مخليدنه',
@@ -7318,6 +7334,7 @@ $messages['pt'] = array(
 	'code-author-link' => 'associar?',
 	'code-author-unlink' => 'desassociar?',
 	'code-author-unlinksuccess' => 'O autor $1 foi desassociado',
+	'code-author-badtoken' => 'Erro na sessão ao tentar executar a operação.',
 	'code-browsing-path' => "Visionando revisões em '''$1'''",
 	'code-field-id' => 'Revisão',
 	'code-field-author' => 'Autor',
@@ -7748,6 +7765,7 @@ $messages['ru'] = array(
 	'code-author-link' => 'установить связь?',
 	'code-author-unlink' => 'разорвать связь?',
 	'code-author-unlinksuccess' => 'Для автора $1 удалена связь с учётной записью',
+	'code-author-badtoken' => 'Ошибка сеанса при попытке выполнить действие.',
 	'code-browsing-path' => "Просмотр ревизий в '''$1'''",
 	'code-field-id' => 'Редакция',
 	'code-field-author' => 'Автор',
@@ -8251,11 +8269,13 @@ $messages['sr-ec'] = array(
 	'code-change-tags' => "променио '''тагове''' за $1",
 	'code-change-removed' => 'уклоњено:',
 	'code-change-added' => 'додато:',
+	'code-old-status' => 'Стари статус',
+	'code-new-status' => 'Нови статус',
 	'code-prop-changes' => 'Историја статуса и таговања',
 	'code-load-diff' => 'Учитавање дифа…',
 	'code-notes' => 'скорашњи коментари',
 	'code-authors' => 'аутори',
-	'code-status' => 'статус',
+	'code-status' => 'стања',
 	'code-tags' => 'тагови',
 	'code-author-haslink' => 'Овај аутор је повезан са Вики-корисником $1',
 	'code-author-orphan' => 'Овај аутор није повезан на неки Вики-налог',
@@ -8273,6 +8293,7 @@ $messages['sr-ec'] = array(
 	'code-field-status' => 'Статус',
 	'code-field-timestamp' => 'Датум',
 	'code-field-comments' => 'Напомене',
+	'code-field-tests' => 'Тестови',
 	'code-field-path' => 'Путања',
 	'code-field-text' => 'Напомена',
 	'code-field-select' => 'Изабери',
@@ -8293,6 +8314,7 @@ $messages['sr-ec'] = array(
 	'code-rev-tag-remove' => 'Избриши тагове:',
 	'code-rev-comment-by' => 'Комантарисао $1',
 	'code-rev-comment-preview' => 'Прикажи',
+	'code-rev-inline-preview' => 'Преглед:',
 	'code-rev-diff' => 'Разл',
 	'code-rev-diff-link' => 'разл',
 	'code-rev-purge-link' => 'освежи',
@@ -8303,6 +8325,7 @@ $messages['sr-ec'] = array(
 	'code-status-ok' => 'ок',
 	'code-status-verified' => 'проверено',
 	'code-pathsearch-path' => 'Путања:',
+	'code-revfilter-cr_status' => 'Статус = $1',
 	'code-rev-submit' => 'Запамти измене',
 	'code-batch-status' => 'Измени статус:',
 	'code-batch-tags' => 'Измени тагове:',
@@ -8543,6 +8566,7 @@ $messages['sv'] = array(
 	'code-author-link' => 'länk?',
 	'code-author-unlink' => 'avlänka?',
 	'code-author-unlinksuccess' => 'Författaren $1 har avlänkats',
+	'code-author-badtoken' => 'Sessionsfel när åtgärden försökte utföras.',
 	'code-browsing-path' => "Bläddrar igenom revisioner i '''$1'''",
 	'code-field-id' => 'Version',
 	'code-field-author' => 'Författare',

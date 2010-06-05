@@ -11,6 +11,13 @@ $messages['en'] = array(
 	'parserwiki-desc' => ' Allows to define a grammar in a wiki then use that grammar to input information to the same wiki',
 );
 
+/** Message documentation (Message documentation)
+ * @author Umherirrender
+ */
+$messages['qqq'] = array(
+	'parserwiki-desc' => '{{desc}}',
+);
+
 /** Gheg Albanian (Gegë)
  * @author Mdupont
  */

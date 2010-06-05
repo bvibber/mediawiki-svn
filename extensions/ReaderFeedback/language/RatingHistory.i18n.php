@@ -1679,6 +1679,7 @@ $messages['ps'] = array(
 	'ratinghistory-year' => 'تېر کال',
 	'ratinghistory-3years' => 'تېر ۳ کالونه',
 	'ratinghistory-svg' => 'د SVG په توګه کتل',
+	'ratinghistory-table-votes' => 'رايې',
 );
 
 /** Portuguese (Português)

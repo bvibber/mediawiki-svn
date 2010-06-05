@@ -806,6 +806,13 @@ $messages['sah'] = array(
 	'ajaxlogin-create' => 'Саҥа ааты бэлиэтииргэ',
 );
 
+/** Sinhala (සිංහල)
+ * @author බිඟුවා
+ */
+$messages['si'] = array(
+	'ajaxlogin-create' => 'ගිණුමක් තනන්න',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

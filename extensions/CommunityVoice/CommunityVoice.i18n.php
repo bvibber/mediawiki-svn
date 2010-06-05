@@ -796,6 +796,8 @@ $messages['sk'] = array(
  */
 $messages['sr-ec'] = array(
 	'communityvoice-ratings-scale-status-sending' => 'Слање...',
+	'communityvoice-ratings-scale-status-error' => 'Грешка при слању!',
+	'communityvoice-ratings-scale-status-thanks' => 'Хвала Вам за учешће у гласању!',
 );
 
 /** Serbian Latin ekavian (Srpski (latinica))

@@ -2001,6 +2001,22 @@ $messages['ru'] = array(
 	'qp_error_unique' => 'Опрос, имеющий тип unique(), не должен иметь больше ответов чем вопросов',
 );
 
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'qp_desc' => 'Омогућава покретање анкета',
+	'qp_result_NA' => 'Није одговорено',
+	'qp_result_error' => 'Синтаксна грешка',
+	'qp_vote_button' => 'Гласај',
+	'qp_vote_again_button' => 'Промените свој глас',
+	'qp_polls_list' => 'Прикажи све анкете',
+	'qp_users_list' => 'Прикажи све кориснике',
+	'qp_stats_link' => 'Статистике',
+	'qp_users_link' => 'Корисници',
+	'qp_user_polls_link' => 'Учествовао у $1 {{PLURAL:$1|анкети|анкета}}',
+);
+
 /** Swedish (Svenska)
  * @author Ozp
  * @author Per

@@ -333,6 +333,13 @@ $messages['sk'] = array(
 	'newsextension-desc' => 'Zobrazuje prispôsobené Posledné úpravy na wiki stránkach alebo ako kanál RSS alebo Atom',
 );
 
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'newsextension-desc' => 'Приказује подесиве скорашње измене, или их приказује као RSS или атом фид',
+);
+
 /** Sundanese (Basa Sunda)
  * @author Kandar
  */

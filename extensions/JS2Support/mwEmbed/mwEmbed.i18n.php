@@ -495,6 +495,13 @@ $messages['pms'] = array(
 	'mwe-loading_txt' => 'A caria ...',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'mwe-ok' => 'ښه',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  * @author Malafaya

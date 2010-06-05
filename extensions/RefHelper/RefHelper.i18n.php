@@ -42,8 +42,10 @@ You can [[Special:RefHelper|add the reference manually]] or [[Special:RefSearch|
 
 /** Message documentation (Message documentation)
  * @author EugeneZelenko
+ * @author Umherirrender
  */
 $messages['qqq'] = array(
+	'refhelper-desc' => '{{desc}}',
 	'refhelper-title' => '{{Identical|Title}}',
 	'refhelper-pages' => '{{Identical|Pages}}',
 	'refhelper-year' => '{{Identical|Year}}',
@@ -629,6 +631,14 @@ $messages['kn'] = array(
 	'refhelper-search' => 'ಹುಡುಕು',
 );
 
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'refhelper' => '참고 자료 도우미',
+	'refsearch' => '참고 자료 찾기',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -834,6 +844,7 @@ A peul [[Special:RefHelper|gionté l'arferiment a man]] o [[Special:RefSearch|s�
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'refhelper-label_authorsurname' => 'تخلص:',
 	'refhelper-title' => 'سرليک:',
 	'refhelper-pages' => 'مخونه:',
 	'refhelper-year' => 'کال:',
@@ -923,6 +934,21 @@ $messages['ru'] = array(
 <h2>Предложения</h2>',
 	'refhelper-newarticle_nosuggestions' => 'К сожалению, я не могу предложить какие-либо ссылки.
 Вы можете [[Special:RefHelper|добавить сноску вручную]] или [[Special:RefSearch|произвести поиск ссылок]].',
+);
+
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'refhelper-label_authorsurname' => 'Презиме:',
+	'refhelper-title' => 'Наслов:',
+	'refhelper-journal' => 'Журнал:',
+	'refhelper-pages' => 'Стране:',
+	'refhelper-year' => 'Година:',
+	'refhelper-category' => 'Категорија $1:',
+	'refhelper-create' => 'Направи',
+	'refhelper-search' => 'Претражи',
+	'refhelper-toolbox_link_create' => 'Направи референцу',
 );
 
 /** Swedish (Svenska)

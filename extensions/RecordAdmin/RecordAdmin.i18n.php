@@ -548,6 +548,7 @@ $messages['el'] = array(
 );
 
 /** Esperanto (Esperanto)
+ * @author Airon90
  * @author Michawiki
  * @author Yekrats
  */
@@ -558,7 +559,7 @@ $messages['eo'] = array(
 	'recordadmin-create' => 'Trovi aŭ krei rikordojn "$1"',
 	'recordadmin-alreadyexist' => 'Bedaŭrinde, "$1" jam ekzistas!',
 	'recordadmin-createsuccess' => '$1 kreita',
-	'recordadmin-badtitle' => 'Fuŝa titolo!',
+	'recordadmin-badtitle' => 'Fuŝa titolo',
 	'recordadmin-invert' => 'Inversigi selekton',
 	'recordadmin-buttonsearch' => 'Serĉi',
 	'recordadmin-buttoncreate' => 'Krei',
@@ -1321,6 +1322,8 @@ $messages['lb'] = array(
 	'recordadmin-modified' => 'Geännert',
 	'recordadmin-actions' => 'Aktiounen',
 	'recordadmin-needscontent' => 'Inhalt derbäisetzen ...',
+	'recordadmin-typeinfo' => '$1 Opnamen',
+	'recordadmin-notset' => 'Keng "$1"',
 );
 
 /** Limburgish (Limburgs)
@@ -1739,6 +1742,7 @@ $messages['ps'] = array(
 	'recordadmin-created' => 'جوړ شوي',
 	'recordadmin-modified' => 'بدلېدلي',
 	'recordadmin-actions' => 'کړنې',
+	'recordadmin-editwithform' => 'ځانتياوې',
 );
 
 /** Portuguese (Português)
@@ -1979,7 +1983,17 @@ $messages['sr-ec'] = array(
 	'recordadmin-select' => 'Изабери',
 	'recordadmin-submit' => 'Пошаљи',
 	'recordadmin-alreadyexist' => 'Жао нам је, „$1“ већ постоји!',
+	'recordadmin-badtitle' => 'Лош наслов!',
+	'recordadmin-buttoncreate' => 'Направи',
+	'recordadmin-buttonreset' => 'Ресетуј',
 	'recordadmin-buttonsave' => 'Сними',
+	'recordadmin-viewlink' => 'види',
+	'recordadmin-editlink' => 'измени',
+	'recordadmin-created' => 'Направљено',
+	'recordadmin-modified' => 'Измењено',
+	'recordadmin-actions' => 'Акције',
+	'recordadmin-needscontent' => 'Додај садржај...',
+	'recordadmin-editwithform' => 'Особине',
 );
 
 /** Serbian Latin ekavian (Srpski (latinica))

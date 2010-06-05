@@ -794,25 +794,46 @@ $messages['br'] = array(
 	'mwe-transcoded-status' => 'Treuzkodet',
 	'mwe-uploaded-time-remaining' => 'Amzer hag a chom : $1',
 	'mwe-media_search' => 'Klask media',
+	'rsd_box_layout' => 'Pajennaozañ ar voest',
+	'rsd_list_layout' => 'Pajennaozañ ar roll',
 	'rsd_results_desc' => "Disoc'hoù $1 da $2",
 	'rsd_results_desc_total' => "Disoc'hoù $1 da $2 diwar $3",
 	'rsd_results_next' => "war-lerc'h",
 	'rsd_results_prev' => 'kent',
+	'rsd_no_results' => "Disoc'h ebet evit <b>$1</b>",
+	'rsd_layout' => 'Fichañ :',
 	'rsd_resource_edit' => 'Kemmañ ar vammenn : $1',
 	'mwe-link' => 'liamm',
 	'rsd_do_insert' => "Ober an ensoc'hañ",
 	'mwe-cc_by_title' => 'Deroadenn',
 	'mwe-cc_nc_title' => 'Nann-kenwerzhel',
+	'mwe-cc_nd_title' => 'Labour deveret ebet',
 	'mwe-cc_sa_title' => 'Eskemmañ rik-ha-rik',
 	'mwe-cc_pd_title' => 'Domani foran',
 	'mwe-unknown_license' => 'Aotre-implijout dizanv',
 	'mwe-results_from' => "Disoc'hoù eus $1",
+	'mwe-your-recent-uploads' => 'Ho kargadennoù nevez war $1',
+	'mwe-no_recent_uploads' => 'Kargadenn nevez ebet',
+	'mwe-ie-eye-permision' => "Ma implijoc'h Internet Explorer hag ez oc'h kevreet, e rankfer spisaat an arventennoù prevezded.",
+	'mwe-loggin-link' => 'Mar plij kevreit',
 	'mwe-try-again-link' => 'Klask en-dro',
+	'mwe-upload-a-file' => 'Enporzhiañ ur restr nevez',
+	'mwe-upload-a-file-to' => 'Enporzhiañ ur restr nevez war $1',
+	'mwe-resource_page_desc' => 'Pajenn deskrivañ ar vammenn :',
+	'mwe-local_resource_title' => "Titl ar vammenn lec'hel :",
 	'mwe-watch_this_page' => 'Evezhiañ ar bajenn-mañ',
+	'mwe-do_import_resource' => 'Enporzhiañ ar vammenn',
 	'mwe-update_preview' => 'Hizivaat ar rakwel',
+	'mwe-return-search-results' => "Distreiñ da zisoc'hoù ar c'hlask",
+	'mwe-preview_insert_resource' => "Rakwelet ensoc'hadenn ar vammenn : $1",
 	'mwe-do-more-modification' => "Ober muioc'h a gemmoù",
+	'mwe-checking-resource' => 'Gwiriadur ar vammenn',
+	'mwe-resource-needs-import' => 'Rankout a ra ar vammenn $1 bezañ enporzhiet war $2',
+	'mwe-local-upload-policy-link' => "reolennoù lec'hel an enporzhiañ",
+	'mwe-ftype-svg' => 'Restr vektorel SVG',
 	'mwe-ftype-jpg' => 'Restr skeudenn JPEG',
 	'mwe-ftype-png' => 'Restr skeudenn PNG',
+	'mwe-ftype-oga' => 'Restr son Ogg',
 	'mwe-ftype-unk' => 'Furmad restr dizanv',
 	'rsd-kaltura-title' => 'An holl mammennoù',
 	'rsd-this_wiki-title' => 'Ar wiki-mañ',
@@ -820,11 +841,13 @@ $messages['br'] = array(
 	'mwe-upload-transcoded-status' => 'Treuzkodet',
 	'fogg-select_file' => 'Diuzañ ur restr',
 	'fogg-select_new_file' => 'Diuzañ ur restr nevez',
+	'fogg-select_url' => 'Diuzit un URL',
 	'fogg-installed' => 'Staliet eo Firefogg,',
 	'fogg-please-install' => "$1. Muioc'h $2",
 	'fogg-please-install-install-linktext' => 'Staliañ Firefogg',
 	'fogg-please-install-about-linktext' => 'diwar-benn Firefogg',
 	'fogg-latest-firefox' => 'stumm diwezhañ Firefox',
+	'fogg-encoding-done' => 'Enkodañ echu',
 	'fogg-badtoken' => "N'eo ket reizh ar jedouer",
 	'fogg-preview' => 'Rakwelet ar video',
 	'fogg-hidepreview' => 'Kuzhat ar rakweladenn',
@@ -3672,6 +3695,16 @@ $messages['ka'] = array(
 	'fogg-select_file' => 'ფაილის არჩევა',
 );
 
+/** Khmer (ភាសាខ្មែរ)
+ * @author គីមស៊្រុន
+ */
+$messages['km'] = array(
+	'mwe-upload-stats-fileprogress' => '$1 ក្នុងចំណោម $2',
+	'mwe-upload-unknown-size' => 'មិនដឹងទំហំ',
+	'mwe-cancel-confim' => 'អ្នកប្រាកដហើយឬថាចង់ចាកចេញ?',
+	'mwe-successfulupload' => 'ផ្ទុកឡើងបានសំរេច',
+);
+
 /** Kannada (ಕನ್ನಡ)
  * @author Nayvik
  */
@@ -4811,6 +4844,16 @@ $messages['pl'] = array(
 	'fogg-hidepreview' => 'Ukryj podgląd',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'mwe-filesource' => 'سرچينه:',
+	'fogg-title-title' => 'سرليک',
+	'fogg-date-title' => 'نېټه',
+	'fogg-location-title' => 'ځای',
+);
+
 /** Portuguese (Português)
  * @author Giro720
  * @author Hamilton Abreu
@@ -5388,8 +5431,10 @@ $messages['sr-ec'] = array(
 	'rsd-media-filter-images' => 'Слике',
 	'rsd-provider-filter-title' => 'Провајдери',
 	'mwe-select_file' => 'Избор фајла',
+	'mwe-upload' => 'Пошаљи фајл',
 	'mwe-destfilename' => 'Циљано име фајла:',
 	'mwe-summary' => 'Сажетак',
+	'mwe-date-of-work' => 'Датум рада',
 	'mwe-upload-in-progress' => 'Слање у току (не затварајте овај прозор)',
 	'mwe-uploaded-status' => 'Послато',
 	'mwe-uploaded-time-remaining' => 'Преостало време: $1',
@@ -5401,6 +5446,8 @@ $messages['sr-ec'] = array(
 	'mwe-upload_tab' => 'Пошаљи фајл',
 	'mwe-link' => 'веза',
 	'rsd_do_insert' => 'Убаци',
+	'mwe-cc_pd_title' => 'Јавно власништво',
+	'mwe-unknown_license' => 'Непозната лиценца',
 	'mwe-try-again-link' => 'покушај опет',
 	'mwe-upload-a-file-to' => 'пошаљи нови фајл на $1',
 	'mwe-ftype-svg' => 'SVG векторски фајл',

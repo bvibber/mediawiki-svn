@@ -28,8 +28,10 @@ $messages['en'] = array(
 /** Message documentation (Message documentation)
  * @author Bennylin
  * @author Darth Kule
+ * @author Umherirrender
  */
 $messages['qqq'] = array(
+	'contributiontracking-desc' => '{{desc}}',
 	'contrib-tracking-error' => '{{Identical|Error}}',
 	'contrib-tracking-button' => '{{Identical|Continue}}',
 );
@@ -765,6 +767,13 @@ $messages['pms'] = array(
 	'contrib-tracking-submitting' => 'Spedission al motor ëd pagament ...',
 	'contrib-tracking-continue' => "S'it ses pa rediressionà automaticament, sgnaca ël boton për completé toa donassion a PayPal.",
 	'contrib-tracking-button' => 'Continua',
+);
+
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'contrib-tracking-error' => 'تېروتنه',
 );
 
 /** Portuguese (Português)

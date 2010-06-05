@@ -772,6 +772,14 @@ $messages['sk'] = array(
 	'mostrevisors-viewcontributors' => 'Zobraziť hlavných prispievateľov',
 );
 
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'mostrevisors-namespace' => 'Именски простор:',
+	'mostrevisors-submit' => 'Иди',
+);
+
 /** Swedish (Svenska)
  * @author Per
  */

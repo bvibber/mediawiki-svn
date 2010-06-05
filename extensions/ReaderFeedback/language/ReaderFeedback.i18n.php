@@ -1346,6 +1346,7 @@ $messages['ka'] = array(
 	'readerfeedback-presentation' => 'პრეზენტაცია',
 	'readerfeedback-overall' => 'ზოგადი შეფასება',
 	'readerfeedback-level-none' => '(არაა არჩეული)',
+	'readerfeedback-level-0' => 'დაბალი',
 	'readerfeedback-level-1' => 'დაბალი',
 	'readerfeedback-level-3' => 'მაღალი',
 	'readerfeedback-level-4' => 'ჩინებულია',
@@ -1797,7 +1798,7 @@ $messages['pl'] = array(
 	'readerfeedback-submit' => 'Oznacz',
 	'readerfeedback-main' => 'Tylko strony z treścią mogą być oceniane.',
 	'readerfeedback-success' => "'''Dziękujemy za ocenę strony!''' ([$2 wyniki]) ([$3 uwagi lub pytania]).",
-	'readerfeedback-voted' => "'''Najprawdopodobniej już oceniał{{GENDER:|eś|aś|eś/aś}} tę stronę''' ([$2 zobacz wyniki]) ([$3 komentarze lub pytania]).",
+	'readerfeedback-voted' => "'''Prawdopodobnie już oceniał{{GENDER:|eś|aś|eś (~aś)}} tę stronę''' ([$2 zobacz wyniki]) ([$3 komentarze lub pytania]).",
 	'readerfeedback-error' => "'''Podczas oceniania strony wystąpił błąd''' ([$2 wyniki]) ([$3 komentarze lub pytania]).",
 	'readerfeedback-submitting' => 'Zapisywanie...',
 	'readerfeedback-finished' => 'Dziękujemy!',
@@ -2121,6 +2122,9 @@ $messages['sr-ec'] = array(
 	'readerfeedback-level-4' => 'изузетно',
 	'readerfeedback-submit' => 'пошаљи',
 	'readerfeedback-main' => 'Само стране садржаја могу бити оцењиване.',
+	'readerfeedback-submitting' => 'Слање …',
+	'readerfeedback-finished' => 'Хвала Вам!',
+	'readerfeedback-tagfilter' => 'Таг:',
 	'tooltip-ca-ratinghist' => 'Оцене стране од стране читалаца.',
 );
 

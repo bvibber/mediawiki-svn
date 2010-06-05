@@ -1381,10 +1381,16 @@ $messages['so'] = array(
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Sasa Stefanovic
+ * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
+	'form' => 'Форма',
+	'formnoname' => 'Нема имена форме',
+	'formbadname' => 'Лоше име форме',
+	'formtitlepattern' => 'Додати нову $1',
 	'formsave' => 'Сачувај',
 	'formarticleexists' => 'Страна постоји',
+	'formarticleexiststext' => 'Страна [[$1]] већ постоји.',
 );
 
 /** Serbian Latin ekavian (Srpski (latinica))

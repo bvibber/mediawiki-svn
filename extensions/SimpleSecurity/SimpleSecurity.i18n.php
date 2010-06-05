@@ -951,6 +951,13 @@ $messages['sk'] = array(
 	'security-restricttogroup' => 'Prístup k obsahu obmedzenému len pre členov skupiny „$1“',
 );
 
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'security-info-toggle' => 'сигурносна ограничења',
+);
+
 /** Swedish (Svenska)
  * @author Fluff
  * @author Per

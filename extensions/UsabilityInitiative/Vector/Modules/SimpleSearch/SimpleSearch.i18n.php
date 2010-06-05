@@ -165,8 +165,8 @@ $messages['de'] = array(
  * @author Xoser
  */
 $messages['diq'] = array(
-	'vector-simplesearch-search' => 'cıgêr',
-	'vector-simplesearch-containing' => 'tede esto...',
+	'vector-simplesearch-search' => 'Çekuye binuse',
+	'vector-simplesearch-containing' => 'înan tede estê...',
 );
 
 /** Lower Sorbian (Dolnoserbski)

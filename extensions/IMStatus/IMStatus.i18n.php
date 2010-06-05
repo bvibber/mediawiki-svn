@@ -1201,6 +1201,14 @@ L\'identificativ ch\'it deve dé a son ij nùmer e le litre an tra "$2" e "$3".'
 	'imstatus_yahoo_style' => 'lë stil dël boton, da $1 (ël pi cit) a $2 (ël pi gròss), $3 e $4 a son për mëssagi vocaj.',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'imstatus_example' => 'بېلګه',
+	'imstatus_or' => 'يا',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  * @author Malafaya

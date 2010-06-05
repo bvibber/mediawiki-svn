@@ -503,6 +503,22 @@ $messages['ru'] = array(
 	'tiff-file-info-size' => '(страница $5, $1 × $2 пикселов, размер файла: $3, MIME-тип: $4)',
 );
 
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'tiff_no_metadata' => 'Не могу се преузети метаподаци из TIFF-а',
+	'tiff_page_error' => 'Број стране није у опсегу',
+	'tiff_too_many_embed_files' => 'Слика садржи превише уметнутих фајлова.',
+	'tiff_file_too_large' => 'Послати фајл је превелик и одбачен је.',
+	'tiff_out_of_service' => 'Послати фајл није могао бити обраћен. ImageMagick није доступан.',
+	'tiff_too_much_meta' => 'Метаподаци користе превише простора.',
+	'tiff_error_cached' => 'Овај фајл може бити рендерован само након кеширања.',
+	'tiff_size_error' => 'Пријављена величина фајла не одговара његовој стварној величини.',
+	'tiff_script_detected' => 'Послати фајл садржи скрипте.',
+	'tiff_bad_file' => 'Послати фајл садржи грешке.',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

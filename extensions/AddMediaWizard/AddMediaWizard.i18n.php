@@ -15,6 +15,20 @@ $messages['en'] = array(
 	'addmediawizard-desc' => 'Add media wizard, developed in partnership by Kaltura and Wikimedia Foundation',
 );
 
+/** Message documentation (Message documentation)
+ * @author Umherirrender
+ */
+$messages['qqq'] = array(
+	'addmediawizard-desc' => '{{desc}}',
+);
+
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'addmediawizard-desc' => 'Wizard vir byvoeg van media, ontwikkel in samewerking met Kaltura en die Wikimedia-stigting',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  */

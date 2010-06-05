@@ -1236,6 +1236,23 @@ Upozornenie: na väčších wiki môže obnovenie chvíľu trvať.',
 	'right-refreshspecial' => 'Obnoviť špeciálne stránky',
 );
 
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'refreshspecial-button' => 'Освежи назначено',
+	'refreshspecial-fail' => 'Треба да назначите макар једну специјалну страну за освежавање.',
+	'refreshspecial-refreshing' => 'Освежавање специјалних страна',
+	'refreshspecial-choice' => 'освежавање специјалних страна',
+	'refreshspecial-js-disabled' => '(<i>Не можете да назначите све стране када је JavaScript онемогућен</i>)',
+	'refreshspecial-select-all-pages' => 'Означи све стране',
+	'refreshspecial-link-back' => 'Врати се на специјалну страну',
+	'refreshspecial-none-selected' => 'Можда нисте означили ни једну специјалну страну. Враћање на подразумеван избор.',
+	'refreshspecial-db-error' => 'Није успело: Грешка у бази података',
+	'refreshspecial-no-page' => 'Нема такве специјалне стране',
+	'refreshspecial-page-result' => '{{PLURAL:$1|добијен|добијено}} $1 {{PLURAL:$1|ред|редова}} у',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

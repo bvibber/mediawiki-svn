@@ -17,8 +17,10 @@ $messages['en'] = array (
 
 /** Message documentation (Message documentation)
  * @author Raimond Spekking
+ * @author Umherirrender
  */
 $messages['qqq'] = array(
+	'nll-desc' => '{{desc}}',
 	'nll-separator' => '{{Optional}}<br/>Please include any necessary spacing: <code>,&amp;#32;</code>',
 	'nll-lastseparator' => '{{Identical/And}}<br/>Please include any necessary spacing: <code>&amp;#32;and&amp;#32;</code>',
 );

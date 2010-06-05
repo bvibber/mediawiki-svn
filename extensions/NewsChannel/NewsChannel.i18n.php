@@ -548,6 +548,7 @@ $messages['pms'] = array(
  */
 $messages['ps'] = array(
 	'newschannel' => 'خبري کانال',
+	'newschannel_format' => 'بڼه:',
 	'newschannel_limit' => 'بريد:',
 	'newschannel_include_category' => 'اضافه وېشنيزه:',
 );

@@ -12,6 +12,13 @@ $messages['en'] = array(
 	'dynamicsidebar-desc' => 'Provides dynamic sidebars based on user pages, groups, and categories',
 );
 
+/** Message documentation (Message documentation)
+ * @author Umherirrender
+ */
+$messages['qqq'] = array(
+	'dynamicsidebar-desc' => '{{desc}}',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author Wizardist
  */
@@ -215,6 +222,13 @@ $messages['roa-tara'] = array(
  */
 $messages['ru'] = array(
 	'dynamicsidebar-desc' => 'Обеспечивает динамические боковые панели на основе личных страниц участников, групп и категорий',
+);
+
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'dynamicsidebar-desc' => 'Омогућава динамичке сајдбарове чији се садржај базира на корисничким странама, групама и категоријама',
 );
 
 /** Sundanese (Basa Sunda)

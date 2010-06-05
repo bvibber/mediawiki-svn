@@ -399,6 +399,7 @@ $messages['ja'] = array(
 $messages['ka'] = array(
 	'ratedpages' => 'მკითხველების შეფასებული გვერდები',
 	'ratedpages-none' => 'ამ სიაში გვერდები არ არის',
+	'ratedpages-graphs' => 'მონაცემების შეფასება',
 );
 
 /** Khmer (ភាសាខ្មែរ)

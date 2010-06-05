@@ -4850,11 +4850,15 @@ A peul [{{fullurl:{{FULLPAGENAME}}|action=delvote}} registré sò apogg, o obies
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'deletequeue-delnom-otherreason' => 'بل سبب',
+	'deletequeue-review-newreason' => 'نوی سبب:',
 	'deletequeue-vote-submit' => 'سپارل',
 	'deletequeue-list-status' => 'دريځ:',
 	'deletequeue-list-header-expiry' => 'د پای نېټه',
+	'deletequeue-list-header-reason' => 'د ړنګولو سبب',
 	'deletequeue-case-page' => 'مخ:',
 	'deletequeue-case-reason' => 'سبب:',
+	'deletequeue-case-expiry' => 'د پای نېټه:',
 );
 
 /** Portuguese (Português)
@@ -5537,6 +5541,24 @@ Môžete [{{fullurl:{{FULLPAGENAME}}|action=delvote}} pridať] svoju vlastnú po
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
+	'deletequeue-generic-reasons' => '* Генерички разлози
+** Вандализам
+** Спам
+** Одржавање
+** Није за пројекат',
+	'deletequeue-nom-alreadyqueued' => 'Ова страна се већ налази у реду за брисање.',
+	'deletequeue-speedy-title' => 'Означи "$1" за брзо брисање',
+	'deletequeue-delnom-reason' => 'Разлог за предлог:',
+	'deletequeue-delnom-otherreason' => 'Други разлог',
+	'deletequeue-delnom-extra' => 'Додатне информације:',
+	'deletequeue-delnom-submit' => 'Пошаљи предлог',
+	'deletequeue-log-nominate' => "[[$1]] је предложен за брисање у реду '$2'.",
+	'deletequeue-log-rmspeedy' => 'брзо брисање [[$1]] је одбијено.',
+	'deletequeue-log-dequeue' => "обрисао [[$1]] из реда за брисање '$2'.",
+	'right-speedy-nominate' => 'Предлагање страна за брзо брисање',
+	'right-prod-nominate' => 'Предложите брисање стране',
+	'right-deletediscuss-nominate' => 'Започни расправе о брисању',
+	'right-deletediscuss-review' => 'Затвори расправе о брисњу',
 	'deletequeue-queue-speedy' => 'Брзо брисање',
 	'deletequeue-queue-prod' => 'Предложено брисање',
 	'deletequeue-queue-deletediscuss' => 'Дискусија о брисању',
@@ -5556,7 +5578,9 @@ $messages['sr-ec'] = array(
 	'deletequeue-review-requeue' => 'Пренеси ову страну на следећи ред:',
 	'deletequeue-review-dequeue' => 'Не подузимај никакву акцију, и склони страну из реда за брисање.',
 	'deletequeue-review-reason' => 'Коментари:',
+	'deletequeue-review-newreason' => 'Нови разлог:',
 	'deletequeue-review-newextra' => 'Додатне информације:',
+	'deletequeue-review-submit' => 'Сними преглед',
 	'deletequeue-review-original' => 'Разлог номинације',
 	'deletequeue-review-badaction' => 'Изабрали сте акцију која не стоји на располагању',
 	'deletequeue-review-actiondenied' => 'Изабрали сте акцију која је онемогућена над овом страном',

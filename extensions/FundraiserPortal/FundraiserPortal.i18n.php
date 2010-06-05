@@ -983,6 +983,18 @@ $messages['sl'] = array(
 	'fundraiserportal-tourmaline-close' => 'Skrij od zdaj naprej',
 );
 
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'fundraiserportal-ruby-button' => 'Донирајте сад',
+	'fundraiserportal-rubytext-button' => 'Донирајте сад',
+	'fundraiserportal-rubytext-message' => 'Свака донација нам помаже да одржимо Википедију доступну свима.',
+	'fundraiserportal-rubytext-close' => 'Сакриј ово од сад па надаље',
+	'fundraiserportal-sapphire-button' => 'Донирајте сад',
+	'fundraiserportal-tourmaline-button' => 'Донирајте сад',
+);
+
 /** Swedish (Svenska)
  * @author Fluff
  */

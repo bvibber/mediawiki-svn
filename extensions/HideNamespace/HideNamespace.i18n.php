@@ -158,6 +158,13 @@ $messages['no'] = array(
 	'hidens-desc' => 'Skjuler navnerom i overskriften og tittelen når en side er i et spesifisert navnerom eller når tolkefunksjonen <code><nowiki>{{#hidens:}}</nowiki></code> kalles',
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'hidens-desc' => 'Ukrywa przestrzeń nazw w nagłówku oraz tytule gdy strona jest w wybranej przestrzeni nazw lub gdy zostanie wywołania funkcja parsera <code><nowiki>{{#hidens:}}</nowiki></code>.',
+);
+
 /** Piedmontese (Piemontèis)
  * @author Borichèt
  * @author Dragonòt
@@ -178,6 +185,13 @@ $messages['pt'] = array(
  */
 $messages['ru'] = array(
 	'hidens-desc' => 'Скрывает пространство имён в заголовке и названии, если страница относится к определённому пространству имён, или содержит вызов функции парсера <code><nowiki>{{#hidens:}}</nowiki></code>',
+);
+
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'hidens-desc' => 'Сакрива именси простор и наслов када је страна у задатом именском простору или када је парсерова функција <code><nowiki>{{#hidens:}}</nowiki></code> позвана',
 );
 
 /** Tagalog (Tagalog)

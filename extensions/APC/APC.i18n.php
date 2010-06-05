@@ -989,8 +989,10 @@ $messages['ca'] = array(
  * @author Sasan700
  */
 $messages['ce'] = array(
+	'viewapc-uptime' => 'Белха хан',
 	'viewapc-cached-files-d' => '$1 {{PLURAL:$1|хlум|хlума|хlумнаш}} ($2)',
 	'viewapc-display-filename' => 'Хlуман цlе',
+	'viewapc-ls-options' => 'Литтар: $1 Листар: $2$3$4 Лахар: $5 $6',
 	'viewapc-ls-delete' => '[Дlадайá]',
 );
 

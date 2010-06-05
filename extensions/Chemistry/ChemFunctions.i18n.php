@@ -39,12 +39,14 @@ $messages['en'] = array(
  * @author Jon Harald Søby
  * @author Purodha
  * @author Siebrand
+ * @author Umherirrender
  */
 $messages['qqq'] = array(
 	'chemicalsources' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.
 
 {{Identical|Chemical sources}}',
 	'chemicalsource-desc' => 'Short description of the Chemicalsource extension, shown in [[Special:Version]]. Do not translate or change links.',
+	'chemicalsources-desc' => '{{desc}}',
 	'chemFunctions_ListPage' => '{{Identical|Chemical sources}}',
 );
 
@@ -914,6 +916,7 @@ $messages['pcd'] = array(
 $messages['pl'] = array(
 	'chemicalsources' => 'Źródła informacji z zakresu Chemii',
 	'chemicalsource-desc' => 'Dodaje znacznik <nowiki><chemform></nowiki> służący do wstawiania wzorów chemicznych',
+	'chemicalsources-desc' => '[[Special:ChemicalSources|Strona specjalna]] źródeł informacji chemicznych',
 	'chemFunctions_ListPage' => 'Źródła informacji z zakresu Chemii',
 	'chemFunctions_DataList' => 'Poniżej znajduje się lista linków do witryn, które mogą udostępniać informacje o substancji chemicznej, o której informacji szukasz.<br /><br />
 * <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Związek chemiczny $MIXCASNameFormula w NIST</a><br />

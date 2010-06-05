@@ -302,6 +302,8 @@ $messages['ia'] = array(
  * @author Kenrick95
  */
 $messages['id'] = array(
+	'prefswitch-link-anon' => 'Fitur baru',
+	'prefswitch-link-off' => 'Fitur baru',
 	'tooltip-pt-prefswitch-link-off' => 'Coba fitur baru',
 );
 
@@ -473,6 +475,18 @@ $messages['pt'] = array(
 	'tooltip-pt-prefswitch-link-on' => 'Desactivar as funcionalidades novas',
 	'prefswitch-link-off' => 'Funcionalidades novas',
 	'tooltip-pt-prefswitch-link-off' => 'Experimente novas funcionalidades',
+);
+
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Giro720
+ */
+$messages['pt-br'] = array(
+	'prefswitch-link-anon' => 'Funcionalidades novas',
+	'tooltip-pt-prefswitch-link-anon' => 'Descubra as funcionalidades novas',
+	'prefswitch-link-on' => 'Voltar atrás',
+	'tooltip-pt-prefswitch-link-on' => 'Desativar as funcionalidades novas',
+	'prefswitch-link-off' => 'Funcionalidades novas',
+	'tooltip-pt-prefswitch-link-off' => 'Experimente as novas funcionalidades',
 );
 
 /** Russian (Русский)

@@ -14,6 +14,13 @@ $messages['en'] = array(
 	'checkpoint-notice'  => '([[{{ns:project}}:Checkpoint|checkpoint save]])',
 );
 
+/** Message documentation (Message documentation)
+ * @author Umherirrender
+ */
+$messages['qqq'] = array(
+	'checkpoint-desc' => '{{desc}}',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by

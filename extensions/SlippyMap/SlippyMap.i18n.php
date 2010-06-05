@@ -242,6 +242,13 @@ $messages['ca'] = array(
 	'slippymap_button_code' => 'Obtén el codi wiki',
 );
 
+/** Chechen (Нохчийн)
+ * @author Sasan700
+ */
+$messages['ce'] = array(
+	'slippymap_errors' => 'Гlалаташ $1:',
+);
+
 /** Czech (Česky)
  * @author Danny B.
  */
@@ -896,12 +903,20 @@ $messages['nn'] = array(
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Jon Harald Søby
+ * @author Nghtwlkr
  */
 $messages['no'] = array(
 	'slippymap_desc' => 'Tillater bruk av taggen <tt>&lt;slippymap&gt;</tt> for å vise et «slippy map» fra OpenLayers. Kartene kommer fra [http://openstreetmap.org openstreetmap.org]',
+	'slippymap_error' => '$1-feil: $2',
+	'slippymap_errors' => '$1-feil:',
+	'slippymap_error_missing_attribute_lat' => 'Manglende <tt>lat</tt>-attributt (for breddegraden).',
+	'slippymap_error_missing_attribute_lon' => 'Manglende <tt>lon</tt>-attributt (for lengdegraden).',
+	'slippymap_error_missing_attribute_zoom' => 'Manglende <tt>zoom</tt>-attributt (for zoom-nivået).',
+	'slippymap_error_unknown_attribute' => 'Attributtet <tt>$1</tt> er ukjent.',
 	'slippymap_code' => 'Wikikode for denne kartvisningen:',
 	'slippymap_button_code' => 'Hent wikikode',
 	'slippymap_resetview' => 'Tilbakestill visning',
+	'slippymap_clicktoactivate' => 'Klikk for å aktivere kartet',
 );
 
 /** Occitan (Occitan)

@@ -36,9 +36,12 @@ See $2 for a record of recent blankings.',
 
 /** Message documentation (Message documentation)
  * @author EugeneZelenko
+ * @author Umherirrender
  */
 $messages['qqq'] = array(
+	'purewikideletion-desc' => '{{desc}}',
 	'purewikideletion-blanknologin' => '{{Identical|Not logged in}}',
+	'right-purewikideletion' => '{{doc-right|purewikideletion}}',
 );
 
 /** Afrikaans (Afrikaans)
@@ -310,6 +313,25 @@ Hlej $2 za datowu sadźbu najnowšich wuprózdnjenjow.',
 	'right-purewikideletion' => 'Tabelu wuprózdnjenych stronow [[Special:PopulateBlankedPagesTable|napjelnić]]',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'purewikideletion' => 'Pur deletion wiki',
+	'randomexcludeblank' => 'Pagina aleatori (exclude vacues)',
+	'populateblankedpagestable' => 'Plenar le tabella de paginas vacuate',
+	'purewikideletion-desc' => 'Inter altere cosas, causa que le ligamines a paginas vacuate appare in rubie',
+	'purewikideletion-pref-watchblank' => 'Adder le paginas que io vacua a mi observatorio',
+	'purewikideletion-pref-watchunblank' => 'Adder le paginas que io replena a mi observatorio',
+	'purewikideletion-blanked' => "Un ancian version de iste pagina ha essite vacuate per [[User:$1|$1]] ([[User talk:$1|discussion]]) ([[Special:Contributions/$1|contribs]]) le $5 a $6.
+
+Le motivo date pro le vacuation es: ''<nowiki>$3</nowiki>''.
+
+Tu pote [{{fullurl:{{FULLPAGENAMEE}}|action=history}} vider le historia del pagina], [{{fullurl:{{FULLPAGENAMEE}}|oldid=$4&action=edit}} modificar le ultime version], o scriber un nove pagina in le spatio in blanco hic infra.",
+	'blank-log' => 'vacuationes',
+	'blank-log-name' => 'Registro de vacuationes',
+);
+
 /** Japanese (日本語)
  * @author 青子守歌
  */
@@ -346,14 +368,16 @@ $messages['lb'] = array(
 	'purewikideletion' => 'Eidelmaache vu Säiten',
 	'randomexcludeblank' => 'Zoufälleg Säit (ouni déi eidelgemaachte Säiten)',
 	'populateblankedpagestable' => "D'Tabell vun den eidelgemaachte Säiten opfëllen",
+	'purewikideletion-desc' => 'Féiert ënner anerem dozou datt eidelgemaachte Säiten als roude Link gewise ginn',
 	'purewikideletion-pref-watchblank' => 'Säiten déi ech eidelmaachen op meng Iwwerwaachungslëscht derbäisetzen',
 	'purewikideletion-pref-watchunblank' => 'Säiten déi ech eidelmaachen op meng Iwwerwaachungslëscht derbäisetzen',
 	'blank-log' => 'eidel maachen',
 	'blank-log-name' => 'Logbuch vun de Säiten déi eidel gemaach goufen',
 	'blank-log-entry-blank' => 'huet $1 eidegemaacht',
 	'blank-log-entry-unblank' => "huet d'eidelmaache vu(n) $1 réckgängeg gemaach",
-	'blank-log-link' => '[[{{#Special:Log}}/blank|Logbuch vun den eidelgmaachte Säiten]',
+	'blank-log-link' => '[[{{#Special:Log}}/blank|Logbuch vun den eidelgmaachte Säiten]]',
 	'purewikideletion-blanknologin' => 'Net ageloggt',
+	'purewikideletion-blanknologintext' => 'Dir musst e registréierte Benotzer an [[Special:UserLogin|ageloggt]] sinn, fir eng Säit eidelzemaachen.',
 	'purewikideletion-unblanknologintext' => 'Dir musst e registréierte Benotzer an [[Special:UserLogin|ageloggt]] sinn, fir eng Säit eidel ze maachen.',
 	'purewikideletion-blankedtext' => "[[$1]] gouf eidel gemaacht.
 Kuckt $2 fir d'Lëscht vun de Säiten déi rezent eidel gemaach goufen.",
@@ -420,6 +444,14 @@ Zie $2 voor een overzicht van recent leeggemaakte pagina's.",
 	'right-purewikideletion' => "[[Special:PopulateBlankedPagesTable|De tabel met leggemaakte pagina's vullen]]",
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'blank-log' => 'تش',
+	'blank-log-name' => 'تش يادښت',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  */
@@ -479,6 +511,13 @@ $messages['ru'] = array(
 Список недавних очисток см. на $2.',
 	'purewikideletion-population-done' => 'Закончено заполнение таблицы blanked_page.',
 	'right-purewikideletion' => '[[Special:PopulateBlankedPagesTable|заполнение]] таблицы очищенных страниц',
+);
+
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'purewikideletion-blanknologin' => 'Нисте улоговани',
 );
 
 /** Tagalog (Tagalog)

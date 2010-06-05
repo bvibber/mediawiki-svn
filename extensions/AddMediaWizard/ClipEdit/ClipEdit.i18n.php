@@ -900,6 +900,16 @@ $messages['pl'] = array(
 	'mwe-clipedit-duration' => 'Czas trwania',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'mwe-clipedit-sc_duration' => 'موده',
+	'mwe-clipedit-start_time' => 'د پيل وخت',
+	'mwe-clipedit-end_time' => 'د پای وخت',
+	'mwe-clipedit-duration' => 'موده:',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  */

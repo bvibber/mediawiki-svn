@@ -38,8 +38,10 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author EugeneZelenko
+ * @author Umherirrender
  */
 $messages['qqq'] = array(
+	'pf-desc' => '{{desc}}',
 	'pf-admin-menu-default' => '{{Identical|Default}}',
 	'pf-header-documentation' => '{{Identical|Documentation}}',
 	'pf-header-page_title' => '{{Identical|Title}}',
@@ -477,6 +479,15 @@ $messages['pms'] = array(
 	'pf-header-approve' => 'Apreuva',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'pf-admin-menu-default' => 'تلواليز',
+	'pf-admin-link-editlink-page' => 'مخ سمول',
+	'pf-header-page_title' => 'سرليک',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  */
@@ -530,6 +541,23 @@ $messages['ru'] = array(
 	'pf-header-type' => 'Тип страницы',
 	'pf-header-page_title' => 'Название',
 	'pf-header-approve' => 'Утверждение',
+);
+
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'pf-admin-menu-default' => 'Подразумевано',
+	'pf-admin-menu-unsortedtemplates' => 'Шаблони још увек нису сортирани',
+	'pf-admin-link-view-documentation' => 'Види документацију повезану са страном.',
+	'pf-admin-link-editlink-page' => 'Измени страну',
+	'pf-admin-link-approve' => 'Одобри страну',
+	'pf-header-documentation' => 'Документација',
+	'pf-header-in_packages' => 'Пакети',
+	'pf-header-edit' => 'Измени везу',
+	'pf-header-type' => 'Врста стране',
+	'pf-header-page_title' => 'Наслов',
+	'pf-header-approve' => 'Одобри',
 );
 
 /** Swedish (Svenska)

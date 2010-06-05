@@ -2564,6 +2564,8 @@ Ak máte otázky týkajúce sa tohto systému distribúcie rozšírení, navšt�
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
+	'extdist-submit-extension' => 'Продужи',
+	'extdist-submit-version' => 'Продужи',
 	'extdist-want-more' => 'Преузми другу екстензију',
 );
 

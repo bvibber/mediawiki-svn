@@ -1606,6 +1606,7 @@ Për piasì speta che l'assion an cors a sia completa.",
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'imagetagging-article' => 'مخ:',
 	'imagetagging-imghistory' => 'پېښليک',
 	'imagetagging-images' => 'انځورونه',
 );

@@ -715,6 +715,14 @@ Pozri aj [[Special:MostRevisors|'''stránky s najväčším počtom kontrolórov
 	'cooperationstatistics-legendmore' => 'alebo viac redaktorov.',
 );
 
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'cooperationstatistics-tablearticle' => 'Број страна',
+	'cooperationstatistics-tablevalue' => 'Број уредника',
+);
+
 /** Swedish (Svenska)
  * @author Per
  * @author Sertion

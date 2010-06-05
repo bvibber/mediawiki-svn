@@ -217,10 +217,14 @@ $messages['ja'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'massblank' => 'Vill Säiten eidelmaachen',
+	'massblank-desc' => "Gëtt Administrateuren d'Méiglechkeet fir [[Special:Nuke|vill Säite mateneen eidelzemaachen]]",
 	'massblank-nopages' => 'Keng nei Säite vum [[Special:Contributions/$1|$1]] an de rezenten Ännerungen.',
 	'massblank-defaultreason' => 'Massen-Eidelmaache vu Säiten déi vum $1 ugefaang goufen',
 	'massblank-submit-user' => 'Lass',
+	'massblank-submit-blank' => 'Erausgesichte Säiten eidelmaachen',
 	'massblank-blankcomment' => 'Grond:',
+	'right-massblank' => 'Vill Säite mateneen eidelmaachen',
 );
 
 /** Macedonian (Македонски)
@@ -267,6 +271,14 @@ $messages['no'] = array(
 	'massblank-blankcomment' => 'Årsak:',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'massblank-submit-user' => 'ورځه',
+	'massblank-blankcomment' => 'سبب:',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  */
@@ -302,6 +314,14 @@ $messages['ru'] = array(
 	'massblank-submit-blank' => 'Очистка выбрана',
 	'massblank-blankcomment' => 'Причина очистки:',
 	'right-massblank' => 'массовая очистка страниц',
+);
+
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'massblank-submit-user' => 'Иди',
+	'massblank-blankcomment' => 'Разлог:',
 );
 
 /** Tagalog (Tagalog)

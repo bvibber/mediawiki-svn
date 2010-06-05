@@ -16,9 +16,11 @@ $messages['en'] = array(
 );
 
 /** Message documentation (Message documentation)
+ * @author Umherirrender
  * @author Wizardist
  */
 $messages['qqq'] = array(
+	'frontbackforced-desc' => '{{desc}}',
 	'frontbackforced-front' => 'Page name postfix (supposed not to be long)',
 	'frontbackforced-back' => 'Page name postfix (supposed not to be long)',
 	'frontbackforced-forced' => 'Page name postfix (supposed not to be long)',
@@ -52,6 +54,16 @@ $messages['dsb'] = array(
 	'frontbackforced-front' => '_(pśed_to_stajony)',
 	'frontbackforced-back' => '_(slědk_togo_stajony)',
 	'frontbackforced-forced' => '_(wunuźone_wótkaze)',
+);
+
+/** Spanish (Español)
+ * @author Diego Grez
+ */
+$messages['es'] = array(
+	'frontbackforced-desc' => 'Añade secciones iniciales y finales a la páginas e implementa wikienlaces forzados',
+	'frontbackforced-front' => '_(sección_inicial)',
+	'frontbackforced-back' => '_(sección_final)',
+	'frontbackforced-forced' => '_(wikienlaces_forzados)',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

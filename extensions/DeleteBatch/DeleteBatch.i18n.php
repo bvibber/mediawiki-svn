@@ -1136,7 +1136,9 @@ J'archivi carià a dovrìo conten-e ël nòm dla pàgina e na rason opsional, se
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'deletebatch-or' => '<b>يا</b>',
 	'deletebatch-delete' => 'ړنګول',
+	'deletebatch-select-yourself' => 'تاسې',
 );
 
 /** Portuguese (Português)
@@ -1280,6 +1282,24 @@ Nahraný súbor by mal na každom riadku obsahovať názov stránky a nepovinne 
 	'deletebatch-select-yourself' => 'vy',
 	'deletebatch-no-page' => 'Prosím, zadajte aspoň jednu stránku, ktorá sa má zmazať ALEBO súbor obsahujúci zoznam stránok.',
 	'right-deletebatch' => 'Dávkové mazanie stránok',
+);
+
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'deletebatch-caption' => 'Списак страна:',
+	'deletebatch-link-back' => 'Врати се на специјалну страну',
+	'deletebatch-as' => 'Покрени скрипт као:',
+	'deletebatch-or' => '<b>или</b>',
+	'deletebatch-delete' => 'Обриши',
+	'deletebatch-page' => 'Стране за брисање:',
+	'deletebatch-processing-from-file' => 'у току је брисање страна са списка',
+	'deletebatch-processing-from-form' => 'брисање страна из форме',
+	'deletebatch-omitting-nonexistant' => 'Сакривање непостојеће стране $1.',
+	'deletebatch-omitting-invalid' => 'Сакривање неисправне стране $1.',
+	'deletebatch-file-bad-format' => 'Фајл би требало да буде обичан текст',
+	'deletebatch-file-missing' => 'Није било могуће прочитати задат фајл',
 );
 
 /** Swedish (Svenska)

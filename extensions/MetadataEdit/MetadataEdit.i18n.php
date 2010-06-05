@@ -15,8 +15,10 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Jon Harald Søby
+ * @author Umherirrender
  */
 $messages['qqq'] = array(
+	'metadataedit-desc' => '{{desc}}',
 	'metadata_help' => '{{Identical|Metadata}}',
 );
 
@@ -1071,8 +1073,11 @@ $messages['sq'] = array(
 	'metadata_help' => 'Metadata:',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица)) */
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
 $messages['sr-ec'] = array(
+	'metadataedit-desc' => 'Убацује категорије, језичке везе и одобрене шаблоне у одвојену кутијицу за време измене страна',
 	'metadata_help' => 'Метаподаци:',
 );
 

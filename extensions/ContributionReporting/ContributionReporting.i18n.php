@@ -104,6 +104,7 @@ $messages['en'] = array(
  * @author Malafaya
  * @author Purodha
  * @author Siebrand
+ * @author Umherirrender
  */
 $messages['qqq'] = array(
 	'contributionreporting-desc' => 'Description for the ContributionReporting Extension. Shown in [[Special:Version]]. Do not translate or change tag names.',
@@ -111,6 +112,7 @@ $messages['qqq'] = array(
 	'contrib-hist-name' => '{{Identical|Name}}',
 	'contrib-hist-date' => '{{Identical|Date}}',
 	'contrib-hist-amount' => '{{Identical|Amount}}',
+	'contribstats-desc' => '{{desc}}',
 	'contribstats-currency-range-totals' => '* $1 is a start date
 * $2 is an end date',
 	'contribstats-currency' => '{{Identical|Currency}}',
@@ -3676,6 +3678,7 @@ $messages['ps'] = array(
 	'contribstats-day' => 'ورځ',
 	'contribstats-month' => 'مياشت',
 	'contribstats-currency' => 'د پيسو يوون',
+	'contribstats-contributions' => 'ونډې',
 	'contribstats-total' => 'ټولټال (امريکايي ډالر)',
 	'contribstats-week' => 'اونۍ',
 	'contribstats-donations' => 'بسپنې',
@@ -4144,10 +4147,13 @@ $messages['sr-ec'] = array(
 	'contribstats-value-under' => 'Испод $1',
 	'contribstats-value-from' => 'Од $1 - $2',
 	'contribstats-value-over' => 'Преко $1',
+	'contribstats-template' => 'Шаблон',
 	'fundraiserstats-date' => 'Датум',
+	'fundraiserstats-day' => 'Дан $1 од $2',
 	'fundraiserstats-total' => 'Укупно (USD)',
 	'fundraiserstats-avg' => 'Просечно (USD)',
 	'fundraiserstats-max' => 'Максимум (USD)',
+	'fundraiserstats-tab-contributions' => 'Број доприноса',
 );
 
 /** Serbian Latin ekavian (Srpski (latinica))

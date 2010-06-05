@@ -310,6 +310,13 @@ $messages['sk'] = array(
 	'interlanguage-desc' => 'Získa medzijazykové odkazy z inej wiki',
 );
 
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'interlanguage-desc' => 'Преузима међувики са другог пројекта',
+);
+
 /** Sundanese (Basa Sunda)
  * @author Kandar
  */

@@ -966,6 +966,7 @@ $messages['vep'] = array(
 );
 
 /** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
  * @author Vinhtantran
  */
 $messages['vi'] = array(
@@ -975,9 +976,9 @@ $messages['vi'] = array(
 	'watchsubpages-addtitlestowatchlist' => 'Thêm trang vào danh sách theo dõi',
 	'watchsubpages-desc' => '[[Special:WatchSubpages|Thêm tất cả các trang con]] của một trang vào danh sách theo dõi một cách nhanh chóng.',
 	'watchsubpages-form' => 'Chọn ở dưới những trang bạn muốn thêm vào danh sách theo dõi.
-Để thêm một trang, đánh dấu vào hộp kiểm kế bên nó, rồi nhấn "Thêm trang".
+Để thêm một trang, đánh dấu vào hộp kiểm kế bên nó, rồi nhấn “{{int:watchsubpages-addtitles}}”.
 
-Khi đánh dấu hoặc bỏ dấu nhiều trang, giữ phím shift sẽ giúp cho bạn chọn các hộp kiểm liền nhau bằng cách nhấn vào hai đầu khoảng mà bạn muốn đánh dấu.',
+Khi đánh dấu hoặc bỏ dấu nhiều trang, giữ phím Shift để chọn các hộp kiểm liền nhau bằng cách nhấn vào hai đầu khoản mà bạn muốn đánh dấu.',
 );
 
 /** Volapük (Volapük)

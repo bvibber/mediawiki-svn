@@ -853,6 +853,7 @@ $messages['pt-br'] = array(
  */
 $messages['qu'] = array(
 	'crossnamespacelinks' => "Suti k'itipura t'inkikuna",
+	'crossnamespacelinks-desc' => "{{SITENAME}}pi mana munakusqa [[Special:CrossNamespaceLinks|suti k'itipura t'inkikunata rikuchin]]",
 	'crossnamespacelinks-summary' => "Kay p'anqapiqa rikunki uma suti k'iti p'anqamanta huk suti k'itikunapi p'anqakunaman t'inkimuqkunata (manataq kay suti k'itikunapi: {{ns:special}}, {{ns:talk}}, {{ns:project}}, {{ns:template}}). Kay t'inkikunataqa manam yuyaychaykikuchu.",
 	'crossnamespacelinkstext' => "$1: $2 {{PLURAL:$2|t'inki|t'inkikuna}} $3-man",
 );

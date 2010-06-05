@@ -2030,7 +2030,7 @@ $messages['ka'] = array(
 	'oversight-log-hiderev' => 'მოშორდა ცვლილება $1-დან',
 	'oversight-view' => 'დეტალები',
 	'oversight-prev' => 'ბოლო წინა ვერსია',
-	'oversight-hidden' => 'დამალული ვერსია',
+	'oversight-hidden' => 'დამალული რედაქტირება',
 	'oversight-oversighter' => 'ოვერსაიტერები:',
 	'oversight-offender' => 'ვერსიის ავტორი:',
 );

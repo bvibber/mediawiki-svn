@@ -26,8 +26,10 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Siebrand
+ * @author Umherirrender
  */
 $messages['qqq'] = array(
+	'lastuserlogin-desc' => '{{desc}}',
 	'lastuserlogin_daysago' => 'This message is used as a column header in a table.',
 	'right-lastlogin' => '{{doc-right}}',
 );
@@ -438,6 +440,15 @@ $messages['pms'] = array(
 	'right-lastlogin' => "Vëdde l'ùltima vira che n'utent a l'é intrà ant ël sistema",
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'lastuserlogin_userid' => 'کارن-نوم',
+	'lastuserlogin_username' => 'اصلي نوم',
+	'lastuserlogin_useremail' => 'د کارن برېښليک',
+);
+
 /** Portuguese (Português)
  * @author Giro720
  * @author Hamilton Abreu
@@ -482,12 +493,14 @@ $messages['ru'] = array(
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
+	'lastuserlogin' => 'Последње логовање корисника',
 	'lastuserlogin-desc' => 'Приказује када се корисник задњи пут улоговао',
 	'lastuserlogin_userid' => 'Корисничко име',
 	'lastuserlogin_username' => 'Право име',
 	'lastuserlogin_useremail' => 'Корисникова електронска пошта',
 	'lastuserlogin_lastlogin' => 'Последње логовање',
 	'lastuserlogin_daysago' => 'Протекли дани',
+	'right-lastlogin' => 'Приказивање последњег пута када се неки корисник улоговао',
 );
 
 /** Swedish (Svenska)

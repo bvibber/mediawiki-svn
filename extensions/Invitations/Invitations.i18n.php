@@ -1283,6 +1283,16 @@ $messages['sk'] = array(
 	'invitations-invite-success' => 'Úspešne ste pozvali používateľa $1 využívať túto možnosť!',
 );
 
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'invite-logpage' => 'Исотрија позивница',
+	'invitations-inviteform-title' => 'Позови корисника да користи $1',
+	'invitations-inviteform-username' => 'Корисник који се позива',
+	'invitations-inviteform-submit' => 'Позови',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

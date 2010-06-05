@@ -885,6 +885,23 @@ $3',
 	'latexdoc-desc' => 'Latex Doc.',
 );
 
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'latexdoc_cant_create_dir' => 'Није могао да се направи привремени директоријум $1',
+	'latexdoc_cant_write' => 'Није могло да се пише у фајл $1',
+	'latexdoc_error' => 'Грешка у LaTeX-у:
+
+Команда: $1
+
+Излаз: $2
+
+$3',
+	'latexdoc_get_dvi' => 'Преузми DVI',
+	'latexdoc_get_pdf' => 'Преузми PDF',
+);
+
 /** Swedish (Svenska)
  * @author M.M.S.
  */

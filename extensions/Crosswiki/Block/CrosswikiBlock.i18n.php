@@ -2140,6 +2140,7 @@ Artorna a:
 $messages['ps'] = array(
 	'crosswikiblock-expiry' => 'د پای نېټه:',
 	'crosswikiblock-reason' => 'سبب:',
+	'crosswikiblock-submit' => 'پدې کارن بنديز لګول',
 	'crosswikiunblock-reason' => 'سبب:',
 );
 
@@ -2400,10 +2401,17 @@ Vrátiť sa na:
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Sasa Stefanovic
+ * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
+	'crosswikiblock-expiry' => 'Истек:',
 	'crosswikiblock-reason' => 'Разлог:',
+	'crosswikiblock-submit' => 'Блокирај овог корисника',
 	'crosswikiunblock-reason' => 'Разлог:',
+	'crosswikiblock-noname' => '"$1" није исправно корисничко име.',
+	'crosswikiblock-noreason' => 'Није наведен разлог.',
+	'crosswikiblock-alreadyblocked' => 'Корисник $3 је већ блокиран.',
+	'crosswikiblock-noblock' => 'Овај корисник није блокиран.',
 );
 
 /** Serbian Latin ekavian (Srpski (latinica))

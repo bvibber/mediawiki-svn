@@ -1165,6 +1165,16 @@ $messages['shi'] = array(
 	'right-adminlinks' => 'Ẓr izdayn s [[Special:AdminLinks|Izdayn nu umsfttu]]',
 );
 
+/** Sinhala (සිංහල)
+ * @author බිඟුවා
+ */
+$messages['si'] = array(
+	'adminlinks' => 'පරිපාලක සබැඳුම්',
+	'adminlinks_general' => 'සාමාන්‍ය',
+	'adminlinks_users' => 'පරිශීලකයෝ',
+	'adminlinks_createuser' => 'පරිශීලකයෙක් තනන්න',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

@@ -301,6 +301,13 @@ $messages['sk'] = array(
 	'htmlets-desc' => 'Umožňuje vkladať kúsky HTML kódu zo súborov pomocou značky <code>&lt;htmlet&gt;</code>',
 );
 
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'htmlets-desc' => 'Омогућава убацивање HTML делова из фајлова, коришћењем <code>&lt;htmlet&gt;</code> тага',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

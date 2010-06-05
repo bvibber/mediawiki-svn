@@ -1917,8 +1917,10 @@ Sgnaca ël boton sota për iscrivte.',
  */
 $messages['ps'] = array(
 	'povwatch_invalid_title' => 'ستاسې ځانګړی شوی سرليک سم نه وو',
+	'povwatch_push' => 'ټېلوهل',
 	'povwatch_title' => 'سرليک:',
 	'povwatch_subscribe' => 'ونډه جوړول',
+	'povwatch_added' => 'ورګډ شو',
 );
 
 /** Portuguese (Português)
@@ -2163,9 +2165,13 @@ Záznam posledných zoznamov sledovaných stránok sa nachádza na [[Special:Pov
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Sasa Stefanovic
+ * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
+	'povwatch_invalid_title' => 'Наведени наслов је неисправан',
+	'povwatch_unknown_subpage' => 'Непозната подстрана.',
 	'povwatch_title' => 'Наслов:',
+	'povwatch_added' => 'додато',
 );
 
 /** Serbian Latin ekavian (Srpski (latinica))

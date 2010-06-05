@@ -248,6 +248,13 @@ $messages['sk'] = array(
 	'negref-desc' => 'Poskytuje značku na vyjednanie umiestnenia akýchkoľvek značiek <nowiki><ref/></nowiki> v zadávanom texte na opravu niektorých prípadov použitia šablón.',
 );
 
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'negref-desc' => 'Омогућава таг за подешавање места сваког појединачног <nowiki><ref/></nowiki> тага унутар унешеног текста, да би се поправили неки случајеви употребе шаблона',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

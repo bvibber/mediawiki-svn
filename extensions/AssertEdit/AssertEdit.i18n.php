@@ -13,6 +13,13 @@ $messages['en'] = array(
 	'assert_edit_message' => 'The specified assertion ($1) failed.',
 );
 
+/** Message documentation (Message documentation)
+ * @author Umherirrender
+ */
+$messages['qqq'] = array(
+	'assertedit-desc' => '{{desc}}',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */

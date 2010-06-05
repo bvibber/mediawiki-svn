@@ -12,6 +12,13 @@ $messages['en'] = array(
 	'firefoggcu-desc' => "Firefogg's Chunked Uploading protocol",
 );
 
+/** Message documentation (Message documentation)
+ * @author Umherirrender
+ */
+$messages['qqq'] = array(
+	'firefoggcu-desc' => '{{desc}}',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author Wizardist
  */

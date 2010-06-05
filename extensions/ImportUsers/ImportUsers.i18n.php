@@ -1495,6 +1495,7 @@ $messages['ps'] = array(
 	'importusers-uploadfile' => 'دوتنه پورته کول',
 	'importusers-log-summary' => 'لنډيز',
 	'importusers-log-summary-all' => 'ټول',
+	'importusers-log-summary-added' => 'ورګډ شو',
 	'importusers-log-summary-updated' => 'تازه',
 	'importusers-login-name' => 'د ننوتلو کارن-نوم',
 	'importusers-password' => 'پټنوم',

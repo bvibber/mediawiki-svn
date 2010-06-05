@@ -1087,6 +1087,15 @@ Napíšte niekoľko prvých znakov a stlačte tlačidlo odoslať. Vyhľadajú sa
 Po kliknutí na šípku sa zobrazia všetky stránky indexované pod daným názvom.',
 );
 
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'index-search' => 'Претрага:',
+	'index-submit' => 'Пошаљи',
+	'index-hide-detail' => 'Сакриј списак страна',
+);
+
 /** Swedish (Svenska)
  * @author Rotsee
  */

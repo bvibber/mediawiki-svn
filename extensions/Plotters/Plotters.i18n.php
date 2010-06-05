@@ -765,6 +765,15 @@ Tento prehľad poskytuje jednoduchý prístup k stránkam systémových správ, 
 	'plotters-errors' => '<b>{{PLURAL:$1|Chyba|Chyby}} plotrov:</b>',
 );
 
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'plotters' => 'Плотери',
+	'plotters-title' => 'Плотери',
+	'plotters-no-data' => 'Нису достављени никакви подаци.',
+);
+
 /** Swedish (Svenska)
  * @author Per
  */

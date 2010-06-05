@@ -9851,6 +9851,7 @@ Wybierz kolekcję do wyeksportowania. W polu tekstowym „Języki” wpisz rozdz
 	'ow_needs_xlation_source_lang' => 'Język źródłowy',
 	'ow_needs_xlation_dest_lang' => 'Język docelowy',
 	'ow_needs_xlation_no_dest_lang' => 'Proszę określić język docelowy.',
+	'ow_statistics' => 'Wikidata: Statystyki',
 	'ow_show' => 'Pokaż',
 	'ow_upload' => 'Prześlij',
 	'ow_create' => 'Utwórz',

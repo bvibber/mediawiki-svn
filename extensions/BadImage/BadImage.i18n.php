@@ -2196,6 +2196,7 @@ $messages['sr-ec'] = array(
 	'badimages-log-add' => 'додата [[$1]] у списак лоших слика',
 	'badimages-log-remove' => 'уклоњена [[$1]] са списка лоших слика',
 	'badimages-page' => '{{ns:help}}:Списак лоших слика',
+	'right-badimages' => 'Ажурирање списка лоших слика',
 );
 
 /** Serbian Latin ekavian (Srpski (latinica))

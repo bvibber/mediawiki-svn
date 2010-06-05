@@ -891,6 +891,17 @@ $messages['sk'] = array(
 	'profiling-no-data' => 'Neboli nájdené vyhovujúce údaje.',
 );
 
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'profiling-ok' => 'ОК',
+	'profiling-data-process' => 'Обради',
+	'profiling-data-count' => 'Број',
+	'profiling-data-time' => 'Време (укупно)',
+	'profiling-data-average' => 'Време (средње)',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

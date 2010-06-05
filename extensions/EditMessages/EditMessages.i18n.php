@@ -1183,6 +1183,7 @@ $messages['pms'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'editmessages' => 'پيغام سمول',
 	'editmsg-search' => 'پلټل',
 	'editmsg-new-search' => 'نوې پلټنه',
 );
@@ -1309,8 +1310,11 @@ $messages['sk'] = array(
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Sasa Stefanovic
+ * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
+	'editmessages' => 'Измена порука',
+	'editmsg-target' => 'Циљана порука:',
 	'editmsg-search' => 'Претрага',
 );
 

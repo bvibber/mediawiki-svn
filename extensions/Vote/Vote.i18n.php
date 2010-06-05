@@ -594,7 +594,9 @@ $messages['ext'] = array(
 	'vote-results-count' => 'Cuenta',
 );
 
-/** Persian (فارسی) */
+/** Persian (فارسی)
+ * @author Huji
+ */
 $messages['fa'] = array(
 	'vote' => 'رای‌گیری',
 	'vote-current' => "رای فعلی شما '''$1''' است.",
@@ -607,7 +609,7 @@ $messages['fa'] = array(
 	'vote-results-choice' => 'انتخاب',
 	'vote-results-count' => 'شمارش',
 	'vote-results-none' => 'در حال حاضر هیچ رایی ثبت نشده است.',
-	'vote-login' => 'برای رای دادن باید [$1 به سیستم وارد شوید].',
+	'vote-login' => 'برای رای دادن باید [$1 به سامانه وارد شوید].',
 	'vote-invalid-choice' => 'شما باید یکی از گزینه‌های موجود را انتخاب کنید.',
 );
 

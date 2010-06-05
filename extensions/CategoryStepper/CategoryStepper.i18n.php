@@ -554,8 +554,10 @@ $messages['sk'] = array(
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Sasa Stefanovic
+ * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
+	'categorystepper-desc' => 'Приказује кутијицу која омогућава азбучну навигацију унапред и уназад кроз једну или више категорија у којима се страна налази',
 	'categorystepper-end' => '(Крај категорије)',
 	'categorystepper-start' => '(Почетак категорије)',
 );

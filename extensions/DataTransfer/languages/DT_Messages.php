@@ -1715,6 +1715,11 @@ $messages['sr-ec'] = array(
 	'dt_xml_name' => 'Име',
 	'dt_xml_title' => 'Наслов',
 	'dt_xml_id' => 'ID',
+	'dt_xml_freetext' => 'Слободан текст',
+	'importxml' => 'Увези XML',
+	'dt_import_editsummary' => '$1 увоз',
+	'dt_import_importing' => 'Увоз у току...',
+	'right-datatransferimport' => 'Увези податке',
 );
 
 /** Serbian Latin ekavian (Srpski (latinica))

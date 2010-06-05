@@ -820,6 +820,7 @@ $messages['pms'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'am-username' => 'کارن-نوم',
 	'am-email' => 'برېښليک',
 	'nss-save-changes' => 'بدلونونه خوندي کول',
 );
@@ -955,6 +956,7 @@ $messages['sr-ec'] = array(
 	'am-email' => 'имејл',
 	'am-active' => 'активан',
 	'am-updated' => 'Баше измене су успешно снимљене',
+	'nss-save-changes' => 'Сними промене',
 	'nss-create-account-header' => 'Направи нови налог',
 	'nss-create-account' => 'Направи налог',
 	'nss-no-mail' => 'Не шаљи имејл',
