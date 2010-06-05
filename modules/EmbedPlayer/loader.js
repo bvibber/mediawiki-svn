@@ -70,24 +70,25 @@
 	// Add class file paths 
 	mw.addClassFilePaths( {
 		"mw.EmbedPlayer"	: "mw.EmbedPlayer.js",
-		"flowplayerEmbed"	: "flowplayerEmbed.js",
-		"kplayerEmbed"		: "kplayerEmbed.js",
-		"genericEmbed"		: "genericEmbed.js",
-		"htmlEmbed"			: "htmlEmbed.js",
-		"javaEmbed"			: "javaEmbed.js",
-		"nativeEmbed"		: "nativeEmbed.js",
-		"quicktimeEmbed"	: "quicktimeEmbed.js",
-		"vlcEmbed"			: "vlcEmbed.js",
 		
-		"ctrlBuilder"		: "skins/ctrlBuilder.js",		
+		"mw.EmbedPlayerKplayer"	: "mw.EmbedPlayerKplayer.js",
+		"mw.EmbedPlayerGeneric"	: "mw.EmbedPlayerGeneric.js",
+		"mw.EmbedPlayerHtml" : "mw.EmbedPlayerHtml.js",
+		"mw.EmbedPlayerJava": "mw.EmbedPlayerJava.js",
+		"mw.EmbedPlayerNative"	: "mw.EmbedPlayerNative.js",
+		
+		"mw.EmbedPlayerVlc" : "mw.EmbedPlayerVlc.js",
+		
+		"mw.PlayerControlBuilder" : "skins/mw.PlayerControlBuilder.js",		
 	
-		"mw.style.EmbedPlayer" : "mw.style.EmbedPlayer.css",
+		"mw.style.EmbedPlayer" : "skins/mw.style.EmbedPlayer.css",
 		
-		"mw.style.kskin" 	: "skins/kskin/EmbedPlayer.css",	
-		"kskinConfig"		: "skins/kskin/kskinConfig.js",
+		"mw.style.PlayerSkinKskin" 	: "skins/kskin/mw.style.PlayerSkinKskin.css",
+			
+		"mw.PlayerSkinKskin"		: "skins/kskin/mw.PlayerSkinKskin.js",
 		
-		"mvpcfConfig"		: "skins/mvpcf/mvpcfConfig.js",
-		"mw.style.mvpcf" 	: "skins/mvpcf/EmbedPlayer.css"	
+		"mw.PlayerSkinMvpcf"		: "skins/mvpcf/mw.PlayerSkinMvpcf.js",
+		"mw.style.PlayerSkinMvpcf" 	: "skins/mvpcf/mw.style.PlayerSkinMvpcf.css"	
 	} );
 
 	/**
@@ -183,7 +184,7 @@
 			[
 				'$j.ui',			
 				'mw.EmbedPlayer',
-				'ctrlBuilder',
+				'mw.PlayerControlBuilder',
 				'$j.fn.hoverIntent',
 				'mw.style.EmbedPlayer',
 				'$j.cookie',
@@ -212,12 +213,12 @@
 		// Do short detection, to avoid extra player library request in ~most~ cases. 
 		//( If browser is firefox include native, if browser is IE include java ) 
 		if( $j.browser.msie ) {
-			dependencyRequest[0].push( 'javaEmbed' )		
+			dependencyRequest[0].push( 'mw.EmbedPlayeJava' )		
 		}
 				
 		// Safari gets slower load since we have to detect ogg support 
 		if( !!document.createElement('video').canPlayType &&  !$j.browser.safari  ) {		
-			dependencyRequest[0].push( 'nativeEmbed' )
+			dependencyRequest[0].push( 'mw.EmbedPlayerNative' )
 		}		
 		
 		// Load the video libs:
@@ -259,21 +260,28 @@
 		if( ! playerClassName ){
 			playerClassName = mw.getConfig( 'playerSkinName' );
 		}		
+		// compre with lower case: 
+		playerClassName = playerClassName.toLowerCase();
 		for( var n=0; n < mw.validSkins.length ; n++ ) {
 			// Get any other skins that we need to load 
 			// That way skin js can be part of the single script-loader request: 
-			if( playerClassName.indexOf( mw.validSkins[ n ] ) !== -1) {
+			if( playerClassName.indexOf( mw.validSkins[ n ].toLowerCase() ) !== -1) {
 				// Add skin name to playerSkins
-				playerSkins[ mw.validSkins[ n ] ] = true;
+				playerSkins[ mw.validSkins[ n ].toLowerCase() ] = true;
 			}
 		}
+	
 		
 		// Add the player skins css and js to the load request:	
 		for( var pSkin in playerSkins ) {
+			// Make sure first letter of skin is upper case to load skin class: 
+			var f = pSkin.charAt(0).toUpperCase();
+    		pSkin =  f + pSkin.substr(1);
+    	
 			// Add skin js
-			dependencyRequest.push(  pSkin  + 'Config' );	
+			dependencyRequest.push( 'mw.PlayerSkin' + pSkin );	
 			// Add the skin css 
-			dependencyRequest.push( 'mw.style.' + pSkin );
+			dependencyRequest.push( 'mw.style.PlayerSkin' + pSkin );
 		}	
 		
 		// Allow extension to extend the request. 

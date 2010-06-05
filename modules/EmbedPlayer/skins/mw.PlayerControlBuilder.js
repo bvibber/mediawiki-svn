@@ -3,17 +3,17 @@
 */
 
 /**
-* ctrlBuilder object
+* mw.PlayerControlBuilder object
 *	@param the embedPlayer element we are targeting
 */
-var ctrlBuilder = function( embedPlayer, options ) {
+mw.PlayerControlBuilder = function( embedPlayer, options ) {
 	return this.init( embedPlayer, options );
 };
 
 /**
  * ControlsBuilder prototype:
  */
-ctrlBuilder.prototype = {
+mw.PlayerControlBuilder.prototype = {
 	//Default Local values: 
 	
 	// Parent css Class name
@@ -65,10 +65,11 @@ ctrlBuilder.prototype = {
 		this.embedPlayer = embedPlayer;
 
 		// Check for skin overrides for ctrlBuilder
-		if ( window[ embedPlayer.skinName + 'Config' ] ) {
+		var skinClass =  embedPlayer.skinName[0].toUpperCase() +  embedPlayer.skinName.substr( 1 );		
+		if ( mw['PlayerSkin' + skinClass  ]) {
 		
 			// Clone as to not override prototype with the skin config
-			var _this = $j.extend( true, { }, this, window[ embedPlayer.skinName + 'Config'] );	
+			var _this = $j.extend( true, { }, this, mw['PlayerSkin' + skinClass ] );	
 			return _this;
 		}
 		// Return the ctrlBuilder Object: 

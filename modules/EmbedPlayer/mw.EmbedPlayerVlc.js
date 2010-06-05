@@ -3,10 +3,10 @@
 * javascript api: http://www.videolan.org/doc/play-howto/en/ch04.html
 *  assume version > 0.8.5.1
 */
-var vlcEmbed = {
+var mw.EmbedPlayerVlc = {
 
 	//Instance Name: 
-	instanceOf : 'vlcEmbed',
+	instanceOf : 'Vlc',
 	
 	//What the vlc player / plug-in supports: 
 	supports : { 

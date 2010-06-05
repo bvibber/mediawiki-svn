@@ -4,7 +4,7 @@
 * 
 *  mediaPlayer Media player embed system ie: java, vlc or native.
 *  mediaElement Represents source media elements	
-*  ctrlBuilder Handles skinning of the player controls
+*  mw.PlayerControlBuilder Handles skinning of the player controls
 */
 
 mw.addMessages( {
@@ -326,7 +326,7 @@ EmbedPlayerManager.prototype = {
 	},
 	
 	/**
-	* get the list of players
+	* Get the list of players
 	*/
 	getPlayerList: function( ) {
 		return this.playerList;	
@@ -366,20 +366,39 @@ EmbedPlayerManager.prototype = {
 		// that add to the request set	
 		var playerDependencyRequest = [ ];
 		
+		// Update the list of dependent libraris for the player 
+		// ( allows extensions to add to the dependency list )
 		mw.embedPlayerUpdateLibraryRequest( playerElement, playerDependencyRequest );
 		
 		// Load any skins we need then swap in the interface
-		mw.load( playerDependencyRequest, function() {												
+		mw.load( playerDependencyRequest, function() {							
 			// We should move all playlist handling to add-in 		
 			switch( playerElement.tagName.toLowerCase() ) {					
 				case 'video':
 				case 'audio':
 				// By default treat the rewrite request as "video"
-				default:				
-					// Set the wait for meta flag
-					var waitForMeta = _this.waitForMetaCheck( playerElement );
-													
-					var ranPlayerSwapFlag = false;									
+				default:			
+					var waitForMeta = true;					
+					
+					// Let extensions determin if its worthwhile to wait for metadata:
+					// We pass an object to the trigger to preserve refrence values					
+					var eventObject = { 
+						'playerElement':playerElement, 
+						'waitForMeta' : waitForMeta
+					}
+					
+					$j( mw ).trigger( 'addElementWaitForMetaEvent', eventObject );
+					// update the waitForMeta 
+					waitForMeta = eventObject['waitForMeta'];
+					
+					
+					// Set the wait for meta flag if unset by extension
+					if( waitForMeta ){
+						waitForMeta = _this.waitForMetaCheck( playerElement );
+					}
+			
+					var ranPlayerSwapFlag = false;					
+									
 					// Local callback to runPlayer swap once playerElement has metadata
 					function runPlayerSwap() {											
 						if( ranPlayerSwapFlag ){
@@ -400,7 +419,7 @@ EmbedPlayerManager.prototype = {
 					}
 									
 					if( waitForMeta ) {						
-						mw.log(' WaitForMeta ( video missing height (' + $j( playerElement ).attr('height') + '), width (' + $j( playerElement ).attr('width') + ') or duration' );
+						mw.log('DO WaitForMeta ( video missing height (' + $j( playerElement ).attr('height') + '), width (' + $j( playerElement ).attr('width') + ') or duration' );
 						playerElement.removeEventListener( "loadedmetadata", runPlayerSwap, true );
 						playerElement.addEventListener( "loadedmetadata", runPlayerSwap, true );
 					
@@ -410,7 +429,7 @@ EmbedPlayerManager.prototype = {
 					} else { 
 						runPlayerSwap();
 						return ;
-					}					
+					}				
 				break;
 		   }		   
 	   });
@@ -475,7 +494,7 @@ EmbedPlayerManager.prototype = {
 		// ( i.e not a video tag to be dynamically populated or looked up from xml resource description )
 		if( waitForMeta && 
 			(
-				$j( playerElement ).attr('src') 
+				$j( playerElement ).attr('src') ||
 				$j( playerElement ).find("source[src]").length !== 0		 				
 			)
 		) {
@@ -1059,7 +1078,7 @@ mediaElement.prototype = {
 			var mimeType = playableSources[source].mimeType;
 			var player =  mw.EmbedTypes.players.defaultPlayer( mimeType );
 			mw.log( 'f:autoSelectSource:' +  mimeType );
-			if ( this.isOgg( mimeType )	&& player && player.library == 'native'	) {
+			if ( this.isOgg( mimeType )	&& player && player.library == 'Native'	) {
 				this.selectedSource = playableSources[ source ];
 				return true;
 			}			
@@ -1072,9 +1091,9 @@ mediaElement.prototype = {
 			if ( mimeType == 'video/h264' 
 				&& player 
 				&& ( 
-					player.library == 'native' 
+					player.library == 'Native' 
 					||
-					player.library == 'kplayer'
+					player.library == 'Kplayer'
 				)
 			) {				
 				this.selectedSource = playableSources[ source ];
@@ -1329,9 +1348,10 @@ mw.EmbedPlayer.prototype = {
 				
 		// Set the skin name from the class  
 		var	sn = $j(element).attr( 'class' );
+				
 		if ( sn && sn != '' ) {
 			for ( var n = 0; n < mw.validSkins.length; n++ ) {
-				if ( sn.indexOf( mw.validSkins[n] ) !== -1 ) {
+				if ( sn.indexOf( mw.validSkins[n].toLowerCase() ) !== -1 ) {
 					this.skinName = mw.validSkins[ n ];
 				}
 			}
@@ -1544,7 +1564,11 @@ mw.EmbedPlayer.prototype = {
 				callback( false );
 				return ;
 			}
-			
+			// Make sure we have imageinfo: 
+			if( ! page.imageinfo || !page.imageinfo[0] ){
+				callback( false );
+				return ;
+			}
 			var imageinfo = page.imageinfo[0];
 						
 			// Set the poster
@@ -1684,7 +1708,7 @@ mw.EmbedPlayer.prototype = {
 		this.selectedPlayer.load( function() {
 			mw.log( _this.selectedPlayer.library + " player loaded" );
 			// Get embed library player Interface
-			var playerInterface = window[ _this.selectedPlayer.library + 'Embed' ];			
+			var playerInterface = mw[ 'EmbedPlayer' + _this.selectedPlayer.library  ];			
 			
 			for ( var method in playerInterface ) {  
 				if ( _this[method] && !_this['parent_' + method] ) {
@@ -1730,7 +1754,7 @@ mw.EmbedPlayer.prototype = {
 	* @return start_npt and end_npt time if present
 	*/	
 	getTimeRange: function() {
-		var end_time = (this.ctrlBuilder.longTimeDisp)? '/' + mw.seconds2npt( this.getDuration() ) : '';
+		var end_time = (this.controlBuilder.longTimeDisp)? '/' + mw.seconds2npt( this.getDuration() ) : '';
 		var default_time_range = '0:00:00' + end_time;		
 		if ( !this.mediaElement )
 			return default_time_range;
@@ -1804,7 +1828,7 @@ mw.EmbedPlayer.prototype = {
 		// Run the onSeeking interface update
 		// NOTE ctrlBuilder should really bind to html5 events rather 
 		// than explicitly calling it or inheriting stuff. 
-		this.ctrlBuilder.onSeek(); 
+		this.controlBuilder.onSeek(); 
 	},	
 	
 	/**
@@ -1893,7 +1917,7 @@ mw.EmbedPlayer.prototype = {
 			return ;
 		}
 		// Do the ctrlBuilder onClip done interface
-		this.ctrlBuilder.onClipDone();
+		this.controlBuilder.onClipDone();
 		
 		// Fire the html5 ended binding
 		mw.log("ended");
@@ -1910,7 +1934,7 @@ mw.EmbedPlayer.prototype = {
 		mw.log( 'f:showThumbnail' + this.thumbnail_disp );
 		
 		// Close Menu Overlay:
-		this.ctrlBuilder.closeMenuOverlay();
+		this.controlBuilder.closeMenuOverlay();
 		
 		// update the thumbnail html: 
 		this.updateThumbnailHTML();
@@ -1918,7 +1942,7 @@ mw.EmbedPlayer.prototype = {
 		this.paused = true;
 		this.thumbnail_disp = true;
 		// Make sure the ctrlBuilder bindings are up-to-date 
-		this.ctrlBuilder.addControlBindings();
+		this.controlBuilder.addControlBindings();
 		
 		// Once the thumbnail is shown run the mediaReady trigger (if not using native controls)
 		if( !this.useNativeControls() ){
@@ -1937,7 +1961,7 @@ mw.EmbedPlayer.prototype = {
 			return ;
 		}
 		// Do update controls: 
-		this.ctrlBuilder.addControls();
+		this.controlBuilder.addControls();
 	},
 	
 	/**
@@ -1947,7 +1971,7 @@ mw.EmbedPlayer.prototype = {
 		mw.log( 'Show player: ' + this.id );	
 		var _this = this;
 		// Set-up the local ctrlBuilder instance: 
-		this.ctrlBuilder = new ctrlBuilder( this );
+		this.controlBuilder = new mw.PlayerControlBuilder( this );
 						
 		var _this = this;
 		// Make sure we have interface_wrap
@@ -1956,7 +1980,7 @@ mw.EmbedPlayer.prototype = {
 			$j( this )			
 			.wrap( 
 				$j('<div>')
-				.addClass( 'interface_wrap ' + this.ctrlBuilder.playerClass )
+				.addClass( 'interface_wrap ' + this.controlBuilder.playerClass )
 				.css({				
 					'width' : parseInt( this.width ) + 'px',
 					'height' : parseInt( this.height ) + 'px',
@@ -1974,7 +1998,7 @@ mw.EmbedPlayer.prototype = {
 		// Add controls if enabled:
 		if ( this.controls ) {			
 			mw.log( "embedPlayer:showPlayer::AddControls" );
-			this.ctrlBuilder.addControls();
+			this.controlBuilder.addControls();
 		} else {
 			// Need to think about this some more... 
 			// Interface is hidden if controls are "off" 
@@ -2053,7 +2077,7 @@ mw.EmbedPlayer.prototype = {
 		this.mediaElement.updateSourceTimes( start_npt, end_npt );
 		
 		// update mv_time
-		this.ctrlBuilder.setStatus( start_npt + '/' + end_npt );
+		this.controlBuilder.setStatus( start_npt + '/' + end_npt );
 		
 		// reset slider
 		this.updatePlayHead( 0 );
@@ -2234,10 +2258,10 @@ mw.EmbedPlayer.prototype = {
 		);
 				
 		if ( this.controls 
-			&& this.height > this.ctrlBuilder.getComponentHeight( 'playButtonLarge' ) 
+			&& this.height > this.controlBuilder.getComponentHeight( 'playButtonLarge' ) 
 		) {
 			$j( this ).append(
-				this.ctrlBuilder.getComponent( 'playButtonLarge' )
+				this.controlBuilder.getComponent( 'playButtonLarge' )
 			);
 		}		
 	},
@@ -2388,7 +2412,7 @@ mw.EmbedPlayer.prototype = {
 		if( this.width || this.height ){
 			embedCode += ( this.width )? 'width=&quot;' + this.width +'&quot; ': '';
 			embedCode += ( this.height )? 'height=&quot;' + 
-				parseInt( this.height + this.ctrlBuilder.getHeight() + 2 ) + 
+				parseInt( this.height + this.controlBuilder.getHeight() + 2 ) + 
 				'&quot; ': '';
 		}
 		//Make sure overflow is hidden: 
@@ -2513,7 +2537,7 @@ mw.EmbedPlayer.prototype = {
 		var _this = this;
 		mw.log( "EmbedPlayer:: play" );
 		// Hide any overlay:
-		this.ctrlBuilder.closeMenuOverlay();
+		this.controlBuilder.closeMenuOverlay();
 		
 		// Check if thumbnail is being displayed and embed html
 		if ( this.thumbnail_disp ) {
@@ -2543,10 +2567,6 @@ mw.EmbedPlayer.prototype = {
 	   	 } )
 	   	 .attr( 'title', gM( 'mwe-embedplayer-pause_clip' ) );
 	   	 
-	   	 // Do play tracking if enabled
-	   	 if( mw.getConfig( 'playTracking' ) ) {
-	   	 	this.doPlayTracking(); 
-	   	 }
 	   	 
 	   	 //Run play hook: 
 	   	 mw.log("playEvent");
@@ -2634,7 +2654,7 @@ mw.EmbedPlayer.prototype = {
 			this.showThumbnail();
 			this.bufferedPercent = 0; // reset buffer state
 			this.updatePlayHead( 0 );
-			this.ctrlBuilder.setStatus( this.getTimeRange() );
+			this.controlBuilder.setStatus( this.getTimeRange() );
 		}
 		
 		//Bind play-btn-large play 
@@ -2731,7 +2751,7 @@ mw.EmbedPlayer.prototype = {
 	* Passes a fullscreen request to the ctrlBuilder interface
 	*/
 	fullscreen: function() {
-		this.ctrlBuilder.toggleFullscreen();		
+		this.controlBuilder.toggleFullscreen();		
 	},
 	
 	/**
@@ -2778,25 +2798,7 @@ mw.EmbedPlayer.prototype = {
 	*/
 	isStoped: function() {
 		return this.thumbnail_disp;
-	},
-	
-	/**
-	* Checks if we are monitoring play requests 
-	* presently this function is mediaWiki api specific. 
-	*/ 
-	doPlayTracking: function() {		
-		var playTrackingRate = mw.getConfig( 'playTrackingRate' );
-		// Math.floor ( Math.random() * playTrackingRate ) == 0		
-		if( true ) {			
-			mw.getJSON( {
-				'action' : 'playtracking',
-				'filename' : this.apiTitleKey,
-				'client' : this.selectedPlayer.library + ' && ' + navigator.userAgent   
-			}, function( data ) {
-				mw.log( 'done logging play request' );
-			} );
-		}
-	},
+	},	
 	
 	/**
 	 * Checks if the currentTime was updated outside of 
@@ -2860,13 +2862,13 @@ mw.EmbedPlayer.prototype = {
 				if ( parseInt( this.startOffset ) != 0 ) {				
 					// If start offset include that calculation 
 					this.updatePlayHead( ( this.currentTime - this.startOffset ) / this.duration );
-					var et = ( this.ctrlBuilder.longTimeDisp ) ? '/' + mw.seconds2npt( parseFloat( this.startOffset ) + parseFloat( this.duration ) ) : '';
-					this.ctrlBuilder.setStatus( mw.seconds2npt( this.currentTime ) + et );
+					var et = ( this.controlBuilder.longTimeDisp ) ? '/' + mw.seconds2npt( parseFloat( this.startOffset ) + parseFloat( this.duration ) ) : '';
+					this.controlBuilder.setStatus( mw.seconds2npt( this.currentTime ) + et );
 				} else {					
 					this.updatePlayHead( this.currentTime / this.duration );					
 					// Only include the end time if longTimeDisp is enabled:
-					var et = ( this.ctrlBuilder.longTimeDisp ) ? '/' + mw.seconds2npt( this.duration ) : '';
-					this.ctrlBuilder.setStatus( mw.seconds2npt( this.currentTime ) + et );
+					var et = ( this.controlBuilder.longTimeDisp ) ? '/' + mw.seconds2npt( this.duration ) : '';
+					this.controlBuilder.setStatus( mw.seconds2npt( this.currentTime ) + et );
 				}
 			}
 			// Check if we are "done"
@@ -2878,16 +2880,16 @@ mw.EmbedPlayer.prototype = {
 		} else {
 			// Media lacks duration just show end time			
 			if ( this.isStoped() ) {
-				this.ctrlBuilder.setStatus( this.getTimeRange() );
+				this.controlBuilder.setStatus( this.getTimeRange() );
 			} else if ( this.isPaused() ) {
-				this.ctrlBuilder.setStatus( gM( 'mwe-embedplayer-paused' ) );
+				this.controlBuilder.setStatus( gM( 'mwe-embedplayer-paused' ) );
 			} else if ( this.isPlaying() ) {
 				if ( this.currentTime && ! this.duration )
-					this.ctrlBuilder.setStatus( mw.seconds2npt( this.currentTime ) + ' /' );
+					this.controlBuilder.setStatus( mw.seconds2npt( this.currentTime ) + ' /' );
 				else
-					this.ctrlBuilder.setStatus( " - - - " );
+					this.controlBuilder.setStatus( " - - - " );
 			} else {
-				this.ctrlBuilder.setStatus( this.getTimeRange() );
+				this.controlBuilder.setStatus( this.getTimeRange() );
 			}
 		}
 		
@@ -3008,7 +3010,7 @@ mw.EmbedPlayer.prototype = {
 		this.jump_time =  options['start'];
 		this.seek_time_sec = mw.npt2seconds( options['start'] );
 		// trim output to 
-		this.ctrlBuilder.setStatus( gM( 'mwe-embedplayer-seek_to', mw.seconds2npt( this.seek_time_sec ) ) );
+		this.controlBuilder.setStatus( gM( 'mwe-embedplayer-seek_to', mw.seconds2npt( this.seek_time_sec ) ) );
 		mw.log( 'DO update: ' +  this.jump_time );
 		this.updateThumbTime( rel_start_sec );
 	},
@@ -3019,7 +3021,7 @@ mw.EmbedPlayer.prototype = {
 	hideHighlight: function() {
 		var eid = ( this.pc ) ? this.pc.pp.id:this.id;
 		$j( '#mv_seeker_' + eid + ' .mv_highlight' ).hide();
-		this.ctrlBuilder.setStatus( this.getTimeRange() );		
+		this.controlBuilder.setStatus( this.getTimeRange() );		
 	},		
 	
 	
@@ -3114,7 +3116,7 @@ mediaPlayer.prototype = {
 	*/	
 	load: function( callback ) {			
 		mw.load( [
-			this.library + 'Embed'
+			'mw.EmbedPlayer' + this.library
 		], function() {									
 			callback();
 		} );
@@ -3132,31 +3134,25 @@ mediaPlayer.prototype = {
 
 //Flash based players: 
 
-var kplayer = new mediaPlayer('kplayer', ['video/x-flv', 'video/h264'], 'kplayer');
+var kplayer = new mediaPlayer('kplayer', ['video/x-flv', 'video/h264'], 'Kplayer');
 
 // Java based player
-var cortadoPlayer = new mediaPlayer( 'cortado', ['video/ogg', 'audio/ogg', 'application/ogg'], 'java' );
+var cortadoPlayer = new mediaPlayer( 'cortado', ['video/ogg', 'audio/ogg', 'application/ogg'], 'Java' );
 
 // Native html5 player  
-var oggNativePlayer = new mediaPlayer( 'oggNative', ['video/ogg', 'audio/ogg', 'application/ogg' ], 'native' );
+var oggNativePlayer = new mediaPlayer( 'oggNative', ['video/ogg', 'audio/ogg', 'application/ogg' ], 'Native' );
 
-var h264NativePlayer = new mediaPlayer( 'h264Native', ['video/h264'], 'native' );
+var h264NativePlayer = new mediaPlayer( 'h264Native', ['video/h264'], 'Native' );
 
 // VLC player
 var vlcMineList = ['video/ogg', 'audio/ogg', 'application/ogg', 'video/x-flv', 'video/mp4',  'video/h264'];
-var vlcPlayer = new mediaPlayer( 'vlc-player', vlcMineList, 'vlc' );
+var vlcPlayer = new mediaPlayer( 'vlc-player', vlcMineList, 'Vlc' );
 
 // Generic plugin
-var oggPluginPlayer = new mediaPlayer( 'oggPlugin', ['video/ogg', 'application/ogg'], 'generic' );
+var oggPluginPlayer = new mediaPlayer( 'oggPlugin', ['video/ogg', 'application/ogg'], 'Generic' );
 
 // HTML player for timed display of html content 
-var htmlPlayer = new mediaPlayer( 'html', ['text/html', 'image/jpeg', 'image/png', 'image/svg'], 'html' );
-
-// SMIL player for ( mime types from: http://gonze.com/playlists/playlist-format-survey.html )
-// Only add if playlist module exists
-if( mw.getClassPath( 'playlistEmbed' ) ) {
-	var playlistPlayer = new mediaPlayer( 'playlist', ['application/smil', 'application/xspf+xml', 'audio/mpegurl'], 'playlist' );
-}
+var htmlPlayer = new mediaPlayer( 'html', ['text/html', 'image/jpeg', 'image/png', 'image/svg'], 'Html' );
 
 
 /**
@@ -3188,18 +3184,18 @@ mediaPlayers.prototype =
 		this.loadPreferences();
 		
 		// set up default players order for each library type		
-		this.defaultPlayers['video/x-flv'] = ['kplayer', 'vlc'];
-		this.defaultPlayers['video/h264'] = ['native', 'kplayer', 'vlc'];
+		this.defaultPlayers['video/x-flv'] = ['Kplayer', 'Vlc'];
+		this.defaultPlayers['video/h264'] = ['Native', 'Kplayer', 'Vlc'];
 		
-		this.defaultPlayers['video/ogg'] = ['native', 'vlc', 'java', 'generic'];
-		this.defaultPlayers['application/ogg'] = ['native', 'vlc', 'java', 'generic'];
-		this.defaultPlayers['audio/ogg'] = ['native', 'vlc', 'java' ];
-		this.defaultPlayers['video/mp4'] = ['vlc'];
+		this.defaultPlayers['video/ogg'] = ['Native', 'Vlc', 'Java', 'Generic'];
+		this.defaultPlayers['application/ogg'] = ['Native', 'Vlc', 'Java', 'Generic'];
+		this.defaultPlayers['audio/ogg'] = ['Native', 'Vlc', 'Java' ];
+		this.defaultPlayers['video/mp4'] = ['Vlc'];
 		
-		this.defaultPlayers['text/html'] = ['html'];
-		this.defaultPlayers['image/jpeg'] = ['html'];
-		this.defaultPlayers['image/png'] = ['html'];
-		this.defaultPlayers['image/svg'] = ['html'];			
+		this.defaultPlayers['text/html'] = ['Html'];
+		this.defaultPlayers['image/jpeg'] = ['Html'];
+		this.defaultPlayers['image/png'] = ['Html'];
+		this.defaultPlayers['image/svg'] = ['Html'];			
 					
 	},
 	

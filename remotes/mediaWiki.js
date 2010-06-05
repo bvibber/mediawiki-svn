@@ -197,11 +197,11 @@ function mwLoadPlayer( callback ){
 	// Quick sniff use java if IE and native if firefox 
 	// ( other browsers will run detect and get on-demand )
 	if (navigator.userAgent.indexOf("MSIE") != -1){
-		jsPlayerRequest.push( 'javaEmbed' );
+		jsPlayerRequest.push( 'mw.EmbedPlayeJava' );
 	}
 		
 	if ( navigator.userAgent &&  navigator.userAgent.indexOf("Firefox") != -1 ){
-		jsPlayerRequest.push( 'nativeEmbed' );
+		jsPlayerRequest.push( 'mw.EmbedPlayeNative' );
 	}
 	
 	loadMwEmbed( jsPlayerRequest, function() {

@@ -1,7 +1,7 @@
 /* 
 * Simple embed object for unknown application/ogg plugin 
 */
-var genericEmbed = {
+var mw.EmbedPlayerGeneric = {
 	// List of supported features of the generic plugin
 	 supports: {	 	
 		'playHead':false,
@@ -13,7 +13,7 @@ var genericEmbed = {
 	},
 	
 	// Instance name: 
-	instanceOf:'genericEmbed',
+	instanceOf:'Generic',
 	
 	/*
 	* Generic embed html

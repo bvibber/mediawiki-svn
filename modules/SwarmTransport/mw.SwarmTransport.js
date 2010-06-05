@@ -43,7 +43,7 @@ mw.SwarmTransport = {
 				if( mw.getConfig( 'recommendSwarmTransport' ) &&  
 					typeof window['swarmTransport'] == 'undefined' &&
 					$j.browser.mozilla ) {
-					embedPlayer.ctrlBuilder.doWarningBindinng( 
+					embedPlayer.controlBuilder.doWarningBindinng( 
 						'recommendSwarmTransport',
 						_this.getRecomendSwarmMessage()						
 					);
