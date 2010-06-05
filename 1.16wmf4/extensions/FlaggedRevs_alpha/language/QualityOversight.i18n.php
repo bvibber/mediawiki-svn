@@ -432,7 +432,7 @@ $messages['oc'] = array(
  * @author Sp5uhe
  */
 $messages['pl'] = array(
-	'qualityoversight' => 'Rozbudowany rejestr oznaczania',
+	'qualityoversight' => 'Szczegółowy rejestr oznaczania',
 	'qualityoversight-list' => 'Poniżej znajduje się lista ostatnio oznaczonych i wycofanych oznaczeń wersji.',
 	'qualityoversight-legend' => 'Szukaj w rejestrze oznaczania wersji',
 );
@@ -487,7 +487,7 @@ $messages['roa-tara'] = array(
  */
 $messages['ru'] = array(
 	'qualityoversight' => 'Журнал расширенных проверок',
-	'qualityoversight-list' => 'Эта страница содержит список недавних утверждений и снятий уровней качества версий.',
+	'qualityoversight-list' => 'Эта страница содержит список недавних подтверждений и снятий уровней качества версий.',
 	'qualityoversight-legend' => 'Поиск по журналу проверок',
 );
 
@@ -510,12 +510,13 @@ $messages['sl'] = array(
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Charmed94
  * @author Millosh
  */
 $messages['sr-ec'] = array(
-	'qualityoversight' => 'Надгледање квалитета',
-	'qualityoversight-list' => 'На овој страни се налази списак скоро одобрених и потиснутих верзија.',
-	'qualityoversight-legend' => 'Претрага лога скорих прегледа.',
+	'qualityoversight' => 'Напредни преглед извештаја',
+	'qualityoversight-list' => 'На овој страни се налази списак недавно одобрених и потиснутих ревизија.',
+	'qualityoversight-legend' => 'Претрага извештаја недавних прегледа',
 );
 
 /** Serbian Latin ekavian (Srpski (latinica))

@@ -224,13 +224,14 @@ $messages['cs'] = array(
 );
 
 /** German (Deutsch)
+ * @author Giftpflanze
  * @author Imre
  * @author Kghbln
  * @author Umherirrender
  */
 $messages['de'] = array(
 	'reviewedpages' => 'Liste der markierten Seiten',
-	'reviewedpages-leg' => 'Seiten nach Prüfungsstufe auflisten',
+	'reviewedpages-leg' => 'Markierte Seiten auflisten',
 	'reviewedpages-list' => 'Diese Listen enthalten [[{{MediaWiki:Validationpage}}|markierte]] Seiten, deren höchster Qualitätsstatus (einer Version) dem angegebenen Status entspricht.
 Der Link zu neuesten Version dieses Status ist angegeben.',
 	'reviewedpages-none' => 'Diese Liste enthält keine Seiten.',
@@ -308,14 +309,15 @@ Ligilo estas farata al la lasta revizio de tiu nivelo.",
  */
 $messages['es'] = array(
 	'reviewedpages' => 'Páginas revisadas',
-	'reviewedpages-leg' => 'Listar páginas por nivel más alto de revisión',
-	'reviewedpages-list' => 'Esta página lista páginas que han sido revisadas (al más alto) al nivel especificado.',
+	'reviewedpages-leg' => 'Listar páginas que han sido revisadas',
+	'reviewedpages-list' => "Esta lista contiene páginas [[{{MediaWiki:Validationpage}}|revisadas]] cuyo nivel de revisión''más altamente alcanzado''  (de una revisión) es el nivel especificado.
+Se da un enlace a la última revisión de este nivel.",
 	'reviewedpages-none' => 'No hay páginas en esta lista',
 	'reviewedpages-lev-0' => '{{int:revreview-lev-basic}}',
 	'reviewedpages-lev-1' => '{{int:revreview-lev-quality}}',
 	'reviewedpages-lev-2' => '{{int:revreview-lev-pristine}}',
 	'reviewedpages-all' => 'versiones revisadas',
-	'reviewedpages-best' => 'revisión de primera',
+	'reviewedpages-best' => 'Mejor revisión',
 );
 
 /** Estonian (Eesti)
@@ -576,6 +578,7 @@ $messages['is'] = array(
 );
 
 /** Italian (Italiano)
+ * @author Beta16
  * @author Darth Kule
  * @author Gianfranco
  * @author Pietrodn
@@ -740,10 +743,10 @@ $messages['li'] = array(
  */
 $messages['mk'] = array(
 	'reviewedpages' => 'Оценети страници',
-	'reviewedpages-leg' => 'Листа на оценети страници',
-	'reviewedpages-list' => "Овие листи содржат [[{{MediaWiki:Validationpage}}|оценети]] страници чие назначено ниво е ''највисоко'' оценето ниво (на ревизија).
+	'reviewedpages-leg' => 'Список на проверени страници',
+	'reviewedpages-list' => "Овие списоци содржат [[{{MediaWiki:Validationpage}}|проверени]] страници чие назначено ниво е ''највисоко'' оценето ниво (на ревизија).
 Наведена е врска кон најновата ревизија на тоа ниво.",
-	'reviewedpages-none' => 'Нема страници во оваа листа',
+	'reviewedpages-none' => 'Нема страници на овој список.',
 	'reviewedpages-lev-0' => '{{int:revreview-lev-basic}}',
 	'reviewedpages-lev-1' => 'Квалитетни',
 	'reviewedpages-lev-2' => 'Одлични',
@@ -995,7 +998,7 @@ $messages['ru'] = array(
 	'reviewedpages-none' => 'В данном списке отсутствуют страницы',
 	'reviewedpages-lev-0' => 'Досмотренная',
 	'reviewedpages-lev-1' => 'Выверенная',
-	'reviewedpages-lev-2' => 'Избранная',
+	'reviewedpages-lev-2' => '{{int:revreview-lev-pristine}}',
 	'reviewedpages-all' => 'проверенные версии',
 	'reviewedpages-best' => 'наилучшая версия',
 );
@@ -1046,20 +1049,22 @@ $messages['sq'] = array(
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Charmed94
  * @author Millosh
  * @author Sasa Stefanovic
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'reviewedpages' => 'Прегледане странице',
-	'reviewedpages-leg' => 'Списак страна, сортиран од највишег нивоа',
-	'reviewedpages-list' => 'Ово је списак најкоментарисанијих страна.',
+	'reviewedpages-leg' => 'Сврстај стране које су прегледане',
+	'reviewedpages-list' => "Ови спискови садрже [[{{MediaWiki:Validationpage}}|прегледане]] странице чији ''највиши достигнут'' ниво прегледа (ревизије) је одређени ниво.
+Веза је дата најновијој ревизији тог нивоа.]",
 	'reviewedpages-none' => 'Нема страна у овом списку.',
 	'reviewedpages-lev-0' => 'Прегледано',
 	'reviewedpages-lev-1' => 'Квалитет',
 	'reviewedpages-lev-2' => 'Изабрани',
-	'reviewedpages-all' => 'прегледане верзије',
-	'reviewedpages-best' => 'најбоља верзија',
+	'reviewedpages-all' => 'прегледана издања',
+	'reviewedpages-best' => 'најбоља ревизија',
 );
 
 /** Serbian Latin ekavian (Srpski (latinica))
@@ -1113,7 +1118,8 @@ $messages['su'] = array(
 $messages['sv'] = array(
 	'reviewedpages' => 'Granskade sidor',
 	'reviewedpages-leg' => 'Lista sidor som har blivit granskade',
-	'reviewedpages-list' => 'Följande {{PLURAL:$1|sida|sidor}} har granskats till (högst) den angivna nivån.',
+	'reviewedpages-list' => "Denna förteckning innehåller [[{{MediaWiki:Validationpage}}|granskade]] sidor vars ''högsta uppnådda'' granskningsnivå (för en version) är den angivna nivån.
+En länk ges till den senaste versionen av denna nivå.",
 	'reviewedpages-none' => 'Den här listan innehåller inga sidor',
 	'reviewedpages-lev-0' => '{{int:revreview-lev-basic}}',
 	'reviewedpages-lev-1' => '{{int:revreview-lev-quality}}',
@@ -1129,14 +1135,14 @@ $messages['sv'] = array(
  */
 $messages['te'] = array(
 	'reviewedpages' => 'సమీక్షించిన పేజీలు',
-	'reviewedpages-leg' => 'అత్యధిక స్థాయి వరకు పేజీలను చూపించు, స్థాయిని బట్టి',
+	'reviewedpages-leg' => 'సమీక్షితమై ఉన్న పుటలను చూపించు',
 	'reviewedpages-list' => 'ఈ క్రింద పేర్కొన్న {{PLURAL:$1|పేజీ|పేజీలు}} మీరడిగిన స్థాయివరకు ఎక్కువగా సమీక్షించబడినవి',
 	'reviewedpages-none' => 'ఈ జాబితాలో పేజీలు లేవు.',
 	'reviewedpages-lev-0' => 'కనబడింది',
 	'reviewedpages-lev-1' => 'నాణ్యత',
 	'reviewedpages-lev-2' => 'విశేషం',
 	'reviewedpages-all' => 'సమీక్షిత కూర్పులు',
-	'reviewedpages-best' => 'మూల కూర్పు',
+	'reviewedpages-best' => 'ఉత్తమ కూర్పు',
 );
 
 /** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))

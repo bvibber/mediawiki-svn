@@ -40,6 +40,16 @@ $messages['af'] = array(
 	'stablepages-config' => 'Voorkeure',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'stablepages' => 'Faqet e përdorur redakto miratim',
+	'stablepages-text' => 'Më poshtë është një listë e faqeve të cilat janë të kufizuara në mënyrë që përdoruesit të caktuara mund të bëjë vetëm redaktimet e që nuk kërkojnë shqyrtim. Redaktimet e tillë nuk janë botuar deri në një përdorues të autorizuar kritikat e tyre.',
+	'stablepages-none' => 'Nuk ka faqe në këtë listë.',
+	'stablepages-config' => 'Konfiguracion',
+);
+
 /** Aragonese (Aragonés)
  * @author Juanpabl
  */
@@ -456,9 +466,9 @@ Esou Ännerungen ginn net akzeptéiert bis en autoriséierte Benotzer se nogekuc
  */
 $messages['mk'] = array(
 	'stablepages' => 'Страници што користат оодобрување на уредувања',
-	'stablepages-text' => 'Подолу е наведена листа од страници што само извесни уредници можат да ги уредуваат без да треба да бидат прегледани. 
+	'stablepages-text' => 'Подолу е наведен список на страници што само извесни уредници можат да ги уредуваат без да треба да бидат прегледани. 
 Таквите уредувања не се прифаќаат сè додека не ги провери овластен корисник.',
-	'stablepages-none' => 'Нема страници во оваа листа',
+	'stablepages-none' => 'Нема страници на овој список.',
 	'stablepages-config' => 'Конфигурација',
 );
 
@@ -543,7 +553,7 @@ Slike bidrag blir ikke akseptert før en autorisert bruker reviderer dem.',
  */
 $messages['oc'] = array(
 	'stablepages' => "Paginas qu'utilizan la validacion de las modificacions",
-	'stablepages-text' => 'Aquí, çaijós, una lista de las paginas configuradas manualament per far pas veire que la version publicada coma contengut per defaut pels lectors.',
+	'stablepages-text' => "Çaijós, figura una lista de las paginas que son restrenchas que d'unes utilizaires ne pòdon editar solets sens qu'una relectura siá necessària. Atal, las modificacions son pas publicadas tant qu'un utilizaire abilitat las ajan repassadas.",
 	'stablepages-none' => 'Existís pas cap de pagina dins aquesta lista',
 	'stablepages-config' => 'Configuracion',
 );
@@ -619,7 +629,7 @@ $messages['roa-tara'] = array(
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
-	'stablepages' => 'Страницы, использующие утверждение правок',
+	'stablepages' => 'Страницы, использующие подтверждение правок',
 	'stablepages-text' => 'Ниже показан список страниц с наложенным ограничением, только определённые участники могут делать правки, не требующие проверки.
 Правки этих статей не будут приняты, пока не будут проверены уполномоченными участниками.',
 	'stablepages-none' => 'В данном списке отсутствуют страницы',
@@ -660,13 +670,15 @@ $messages['sl'] = array(
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Charmed94
  * @author Millosh
  */
 $messages['sr-ec'] = array(
-	'stablepages' => 'Стабилне стране',
-	'stablepages-text' => 'Испод се налази списак страна ручно подешених за приказ стабилне верзије као подразумеване стране за читаче садржаја.',
-	'stablepages-none' => 'Не постоје стране у списку.',
-	'stablepages-config' => 'Подешавање',
+	'stablepages' => 'Странице које користе потврду измена',
+	'stablepages-text' => 'Испод се налази списак страна које су ограничене тако да само одређени корисници могу да их уреде.
+Такве измене нису прихваћене док их овлашћени корисник не прегледа.',
+	'stablepages-none' => 'Не постоје стране у овом списку.',
+	'stablepages-config' => 'Поставке',
 );
 
 /** Serbian Latin ekavian (Srpski (latinica))
@@ -684,8 +696,8 @@ $messages['sr-el'] = array(
  * @author M.M.S.
  */
 $messages['sv'] = array(
-	'stablepages' => 'Stabila sidor',
-	'stablepages-text' => 'Nedan visas en lista över sidor som manuellt ställts in att visa den publicerade versionen som standardinnehåll för läsare.',
+	'stablepages' => 'Sidor som använder redigeringsgodkännande',
+	'stablepages-text' => 'Nedan är en lista över sidor som begränsas så att endast vissa användare kan göra ändringar som inte kräver översyn. Sådana ändringar accepteras inte förrän en behörig användare granskar dem.',
 	'stablepages-none' => 'Det finns inga sidor i denna lista',
 	'stablepages-config' => 'Konfigurering',
 );

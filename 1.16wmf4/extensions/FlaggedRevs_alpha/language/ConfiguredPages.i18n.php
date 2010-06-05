@@ -165,10 +165,11 @@ Někotare nastajenja by mógli se změniś, kótara wersija zwobraznja se cytarj
 
 /** Greek (Ελληνικά)
  * @author Crazymadlover
+ * @author Omnipaedista
  */
 $messages['el'] = array(
 	'configuredpages-config' => 'Διαμόρφωση',
-	'configuredpages-precedence' => 'Προνομίων:',
+	'configuredpages-precedence' => 'Προτεραιότητα:',
 	'configuredpages-prec-none' => 'χωρίς προτεραιότητα',
 	'configuredpages-prec-quality' => 'προτεραιότητα ποιότητας',
 	'configuredpages-prec-pristine' => 'προτεραιότητα μη αλλοίωσης',
@@ -293,8 +294,11 @@ E Deil Yystellige chenne sich villicht unterscheide, je nochdäm weli Version em
 	'configuredpages-def-stable' => 'vereffentligti Version',
 );
 
-/** Hebrew (עברית) */
+/** Hebrew (עברית)
+ * @author Amire80
+ */
 $messages['he'] = array(
+	'configuredpages-none' => 'אין דפים ברשימה זו.',
 	'configuredpages-prec-none' => 'ללא עדיפות',
 	'configuredpages-prec-quality' => 'עדיפות לגרסאות איכותיות',
 	'configuredpages-prec-pristine' => 'עדיפות לגרסאות מושלמות',
@@ -364,17 +368,6 @@ Alcun configurationes pote cambiar le version que es monstrate al lectores o lim
 	'configuredpages-def-stable' => 'version publicate',
 );
 
-/** Indonesian (Bahasa Indonesia)
- * @author Kenrick95
- */
-$messages['id'] = array(
-	'configuredpages-config' => 'Pengaturan',
-	'configuredpages-prec-none' => 'tidak ada preseden',
-	'configuredpages-prec-quality' => 'preseden berkualitas',
-	'configuredpages-prec-pristine' => 'preseden murni',
-	'configuredpages-def-draft' => 'versi terbaru',
-);
-
 /** Italian (Italiano) */
 $messages['it'] = array(
 	'configuredpages-config' => 'Configurazione',
@@ -382,11 +375,18 @@ $messages['it'] = array(
 );
 
 /** Japanese (日本語)
+ * @author Aotake
  * @author Naohiro19
  * @author Whym
  */
 $messages['ja'] = array(
+	'configuredpages' => '査読設定のあるページ',
+	'configuredpages-text' => '以下は、サイトの既定とは異なる承認設定がされているページの一覧です。
+
+設定の中には、読者に表示される版を変えたり、査読なしに変更を加えることのできる利用者をより厳しく制限したりするものが含まれる可能性があります。',
 	'configuredpages-none' => 'この一覧にはページがありません。',
+	'configuredpages-config' => '設定',
+	'configuredpages-precedence' => '優先順位:',
 	'configuredpages-prec-none' => '優先なし',
 	'configuredpages-prec-quality' => '{{int:revreview-lev-quality}}優先',
 	'configuredpages-prec-pristine' => '{{int:revreview-lev-pristine}}優先',
@@ -396,37 +396,11 @@ $messages['ja'] = array(
 
 /** Georgian (ქართული)
  * @author BRUTE
- * @author გიორგიმელა
  */
 $messages['ka'] = array(
-	'configuredpages-prec-none' => 'უკანასკნელად შემოწმებული',
+	'configuredpages-config' => 'კონფიგურაცია',
+	'configuredpages-precedence' => 'პრიორიტეტი:',
 	'configuredpages-def-draft' => 'უკანასკნელი ვერსია',
-	'configuredpages-def-stable' => 'გამოქვეყნებული ვერსია',
-);
-
-/** Korean (한국어)
- * @author Kwj2772
- */
-$messages['ko'] = array(
-	'configuredpages' => '검토 설정이 되어 있는 문서',
-	'configuredpages-text' => '다음은 기본값과 다른 검토 설정이 되어 있는 문서의 목록입니다.
-
-어떤 설정은 독자에게 보여지는 판을 바꾸거나 검토 없이 편집할 수 있는 사용자를 제한할 수 있습니다.',
-	'configuredpages-none' => '이 목록에 문서가 없습니다.',
-	'configuredpages-config' => '설정',
-	'configuredpages-precedence' => '우선 순위:',
-	'configuredpages-prec-none' => '최근 검토된 문서',
-	'configuredpages-prec-quality' => '최근의 고품질 문서',
-	'configuredpages-prec-pristine' => '최근의 깨끗한 문서',
-	'configuredpages-def-draft' => '최신 버전',
-	'configuredpages-def-stable' => '공개된 버전',
-);
-
-/** Colognian (Ripoarisch) */
-$messages['ksh'] = array(
-	'configuredpages-prec-none' => 'keine Vürrang',
-	'configuredpages-prec-quality' => 'de {{int:revreview-lev-quality}} hät der Vürrang',
-	'configuredpages-prec-pristine' => 'de {{int:revreview-lev-pristine}} hät der Vörrang',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -452,10 +426,10 @@ Verschidden Astellungen kënne beaflosse wat fir eng Versioun de Lieser gewise g
  */
 $messages['mk'] = array(
 	'configuredpages' => 'Страници со прилагодувања за преглед',
-	'configuredpages-text' => 'Подолу е наведена листа на страници што се прилагодени со поинакви поставки за одобрување од основните на веб-страницата.
+	'configuredpages-text' => 'Подолу е наведен списокот на страници што се прилагодени со поинакви поставки за одобрување од основните на веб-страницата.
 
 Некои поставки може да ја променат верзијата што ќе им се прикажува на корисниците, или уште повеќе да ограничи кој сè може да врши уредувања без да треба тие да се прегледуваат.',
-	'configuredpages-none' => 'Нема страници на оваа листа.',
+	'configuredpages-none' => 'Нема страници на овој список.',
 	'configuredpages-config' => 'Прилагодување',
 	'configuredpages-precedence' => 'Предност:',
 	'configuredpages-prec-none' => 'последна проверена',
@@ -625,7 +599,7 @@ $messages['roa-tara'] = array(
  */
 $messages['ru'] = array(
 	'configuredpages' => 'Страницы с настройками проверки',
-	'configuredpages-text' => 'Ниже приведён список страниц, имеющих настройки утверждения отличные от настроек сайта по умолчанию.
+	'configuredpages-text' => 'Ниже приведён список страниц, имеющих настройки подтверждения отличные от настроек сайта по умолчанию.
 
 Некоторые параметры могут быть изменены, какая версия отображается для читателей, кто сможет вносить изменения, не требующие проверки.',
 	'configuredpages-none' => 'В данном списке нет страниц.',
@@ -664,25 +638,22 @@ $messages['sk'] = array(
 
 /** Swedish (Svenska)
  * @author Ainali
+ * @author Boivie
  * @author Dafer45
  */
 $messages['sv'] = array(
+	'configuredpages' => 'Sidor med granskningsinställningar',
+	'configuredpages-text' => 'Nedan är en lista över sidor konfigurerade för att ha olika godkännandeinställningar än platsens standard.
+
+Vissa inställningar kan ändra vilken version som visas för läsarna eller ytterligare begränsa vem som kan göra ändringar som inte kräver granskning.',
 	'configuredpages-none' => 'Det finns inga sidor i den här listan.',
 	'configuredpages-config' => 'Konfiguration',
+	'configuredpages-precedence' => 'Rangordning:',
 	'configuredpages-prec-none' => 'ingen rangordning',
 	'configuredpages-prec-quality' => 'kvalitetsordning',
 	'configuredpages-prec-pristine' => 'företräde för orörda',
 	'configuredpages-def-draft' => 'senaste versionen',
 	'configuredpages-def-stable' => 'Publicerad version',
-);
-
-/** Tamil (தமிழ்)
- * @author Mahir78
- */
-$messages['ta'] = array(
-	'configuredpages-prec-quality' => 'தற்போதையத் தரம்',
-	'configuredpages-def-draft' => 'தற்போதைய பதிப்பு',
-	'configuredpages-def-stable' => 'ஏற்றுக்கொள்ளப்பட்ட பதிப்பு',
 );
 
 /** Telugu (తెలుగు)
@@ -701,11 +672,22 @@ $messages['tk'] = array(
 	'configuredpages-prec-pristine' => 'başky öňürtilik',
 );
 
-/** Tagalog (Tagalog) */
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
 $messages['tl'] = array(
+	'configuredpages' => 'Mga pahinang may kaayusan ng pagsusuri',
+	'configuredpages-text' => "Nasa ibaba ang isang talaan ng mga pahinan inayos upang magkaroon ng iba't ibang mga pagtatakda ng pagpayag kaysa sa katakdaan ng sityo.
+
+May ilang mga pagtatakdang maaaring magbago na ang bersyon ay ipinapakita sa mga mambabasa o magbabawal pa lalo kung sino ang makapamamatnugot na hindi nangangailangan ng pagsusuri.",
+	'configuredpages-none' => 'Walang mga pahina sa loob ng talaang ito.',
+	'configuredpages-config' => 'Pagkakaayos',
+	'configuredpages-precedence' => 'Pagkakauna-una:',
 	'configuredpages-prec-none' => 'walang pagkakauna',
 	'configuredpages-prec-quality' => 'pagkauna ng kataasan ng uri',
 	'configuredpages-prec-pristine' => 'Pagkakaunang nasa orihinal na kalagayan',
+	'configuredpages-def-draft' => 'pinakabagong bersyon',
+	'configuredpages-def-stable' => 'tinanggap na bersyon',
 );
 
 /** Turkish (Türkçe)

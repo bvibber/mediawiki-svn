@@ -472,7 +472,7 @@ $messages['eo'] = array(
  * @author Translationista
  */
 $messages['es'] = array(
-	'oldreviewedpages' => 'Páginas revisadas desactualizadas',
+	'oldreviewedpages' => 'Páginas con cambios pendientes',
 	'oldreviewedpages-legend' => 'Lista de páginas revisadas con revisiones pendientes de verificación',
 	'oldreviewedpages-list' => 'Esta página lista {{PLURAL:$1|yna páguna revisada|páginas revisadas}} que tienen ediciones pendientes',
 	'oldreviewedpages-none' => 'No hay actualmente páginas que cumplan estos criterios',
@@ -900,10 +900,8 @@ $messages['ja'] = array(
  */
 $messages['ka'] = array(
 	'oldreviewedpages-none' => 'ამ დროისათვის არ არსებობს სტატიები ასეთი კრიტერიუმებით',
-	'oldreviewedpages-days' => '($1 {{PLURAL:$1|დღე|დღე}})',
-	'oldreviewedpages-recent' => '(1 საათზე ნაკლები)',
 	'oldreviewed-category' => 'კატეგორია:',
-	'oldreviewed-watched' => 'ჩემი კონტროლის სიის გვერდები',
+	'oldreviewed-diff' => 'შემოწმება',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -1009,14 +1007,14 @@ $messages['lb'] = array(
  */
 $messages['mk'] = array(
 	'oldreviewedpages' => 'Страници со промени во исчекување',
-	'oldreviewedpages-legend' => 'Листа на оценети страници со уредувања во исчекување за проверка',
+	'oldreviewedpages-legend' => 'Список на оценети страници со уредувања во исчекување за проверка',
 	'oldreviewedpages-list' => 'Оваа страница наведува {{PLURAL:$1|оценета страница|оценети страници}} со уредувања во исчекување на проверка.',
 	'oldreviewedpages-none' => 'Моментално нема страници кои ги задоволуваат овие критериуми',
 	'oldreviewedpages-hours' => '($1 {{PLURAL:$1|час|часа}})',
 	'oldreviewedpages-days' => '($1 {{PLURAL:$1|ден|дена}})',
 	'oldreviewedpages-recent' => '(помалку од 1 час)',
 	'oldreviewed-category' => 'Категорија:',
-	'oldreviewed-watched' => 'Страници во мојата листа на набљудувања',
+	'oldreviewed-watched' => 'Страници во мојот список на набљудувања',
 	'oldreviewed-stable' => 'Стабилизирани страници',
 	'oldreviewed-diff' => 'оцени',
 	'oldreviewed-size' => 'Макс. промена (во бајти):',
@@ -1392,9 +1390,6 @@ $messages['sah'] = array(
  * @author Andria
  */
 $messages['sc'] = array(
-	'oldreviewedpages-hours' => '($1 {{PLURAL:$1|ora|oras}})',
-	'oldreviewedpages-days' => '($1 {{PLURAL:$1|die|dies}})',
-	'oldreviewedpages-recent' => '(nemmancu 1 ora)',
 	'oldreviewed-category' => 'Categoria:',
 );
 
@@ -1471,7 +1466,7 @@ $messages['sr-el'] = array(
  * @author Rotsee
  */
 $messages['sv'] = array(
-	'oldreviewedpages' => 'Föråldrade granskade sidor',
+	'oldreviewedpages' => 'Sidor med väntande ändringar',
 	'oldreviewedpages-legend' => 'Visa granskade sidor med ogranskade sidversioner',
 	'oldreviewedpages-list' => 'Den här sidan visar {{PLURAL:$1|en granskad sida|granskade sidor}} med väntande redigeringar.',
 	'oldreviewedpages-none' => 'Det finns just nu inga sidor som matchar dessa kriterier',

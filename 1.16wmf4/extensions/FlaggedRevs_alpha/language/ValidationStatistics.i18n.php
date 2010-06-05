@@ -85,6 +85,13 @@ $messages['am'] = array(
 	'validationstatistics-ns' => 'ክፍለ-ዊኪ',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'validationstatistics-ns' => 'Espacio de nombres',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK
@@ -1006,17 +1013,17 @@ La versione stabile di una pagina è la revisione più recente fra quelle che so
  * @author Hosiryuhosi
  */
 $messages['ja'] = array(
-	'validationstatistics' => '判定統計',
-	'validationstatistics-users' => "'''{{SITENAME}}''' には現在、[[{{MediaWiki:Validationpage}}|編集者]]権限をもつ利用者が '''[[Special:ListUsers/editor|$1]]'''{{PLURAL:$1|人}}、[[{{MediaWiki:Validationpage}}|査読者]]権限をもつ利用者が '''[[Special:ListUsers/reviewer|$2]]'''{{PLURAL:$2|人}}います。
+	'validationstatistics' => 'ページのレビュー統計',
+	'validationstatistics-users' => "'''{{SITENAME}}''' には現在、[[{{MediaWiki:Validationpage}}|編集者]]権限をもつ利用者が '''[[Special:ListUsers/editor|$1]]'''{{PLURAL:$1|人}}います。
 
-編集者と査読者はページの各版に対して抜き取り検査を行うことを認められた利用者です。",
+編集者とはページの各版に対して抜き取り検査を行うことを認められた利用者です。",
 	'validationstatistics-time' => "''以下の情報は$5 $6に最終更新されました。''
 
 信頼されている利用者によって検査された編集は「査読済」とされます。
 
 未登録利用者による編集の平均査読待ち時間は '''$1'''、中央値は '''$3'''です。
 $4
-[[Special:OldReviewedPages|未査読の編集が保留となっているページ]]の平均遅延時間は '''$2'''です。このようなページは「最新版未査読」とされています。[[{{MediaWiki:Validationpage}}|固定版]]がまた最新版である場合、そのページは「最新版査読済」となります。ページの固定版とは、全読者に対して既定で表示することが承認された、最も新しい版のことです。",
+[[Special:OldReviewedPages|未査読の編集が保留となっているページ]]の平均遅延時間は '''$2'''です。このようなページは「古い版」とされています。保留中の編集がないページは「同期済み」とされています。ページの公開版は、全読者に対して既定で表示することが承認された、最も新しい版です。",
 	'validationstatistics-table' => '名前空間別の統計を以下に表示します。リダイレクトページは除いています。',
 	'validationstatistics-ns' => '名前空間',
 	'validationstatistics-total' => 'ページ数',
@@ -1115,7 +1122,7 @@ $4
  * @author Къарачайлы
  */
 $messages['krc'] = array(
-	'validationstatistics' => 'Сынауну статистикасы',
+	'validationstatistics' => 'Бетлени сынауну статистикасы',
 	'validationstatistics-users' => "{{SITENAME}}''' проектде бусагъатда [[{{MediaWiki:Validationpage}}|Редактор]] хакълагъа ие '''[[Special:ListUsers/editor|$1]]''' {{PLURAL:$1|къошулуучу|къошулуучу}} барды.
 
 «Редакторла» —  бетлени белгили версияларын сайлама сынау бардырыргъа эркин къошулуучуладыла.",
@@ -1217,7 +1224,7 @@ $4
 	'validationstatistics-latest' => 'Синхронизирано',
 	'validationstatistics-synced' => 'Синхронизирани/Оценети',
 	'validationstatistics-old' => 'Застарени',
-	'validationstatistics-utable' => 'Еве листа на 5 најактивни оценувачи во последниов час.',
+	'validationstatistics-utable' => 'Еве список на 5 најактивни прегледувачи во последниов час.',
 	'validationstatistics-user' => 'Корисник',
 	'validationstatistics-reviews' => 'Оцени',
 );
@@ -1619,7 +1626,7 @@ $messages['ru'] = array(
 $4
 Средняя задержка для [[Special:OldReviewedPages|страниц с недосмотренными правками]] равна '''$2'''.
 Данные страницы считаются ''устаревшими''. В свою очередь, страницы считаются ''синхронизированными'', если не существует правок, ожидающих проверки.
-Опубликованные версии — это наиболее новые версии страниц, из тех, которые были утверждены для показа по умолчанию всем читателям.",
+Опубликованные версии — это наиболее новые версии страниц, из тех, которые были подтверждены для показа по умолчанию всем читателям.",
 	'validationstatistics-table' => "Ниже представлена статистика по каждому пространству имён, ''исключая'' страницы перенаправлений.",
 	'validationstatistics-ns' => 'Пространство',
 	'validationstatistics-total' => 'Страниц',
@@ -1629,7 +1636,7 @@ $4
 	'validationstatistics-old' => 'Устаревшие',
 	'validationstatistics-utable' => 'Ниже приведен список из 5 наиболее активных выверяющих за последний час.',
 	'validationstatistics-user' => 'Участник',
-	'validationstatistics-reviews' => 'Проверок',
+	'validationstatistics-reviews' => 'Проверки',
 );
 
 /** Yakut (Саха тыла)
@@ -1653,7 +1660,6 @@ $messages['sah'] = array(
  * @author Andria
  */
 $messages['sc'] = array(
-	'validationstatistics-ns' => 'Nùmene-logu',
 	'validationstatistics-total' => 'Pàginas',
 	'validationstatistics-user' => 'Usuàriu',
 );
@@ -1842,16 +1848,19 @@ Durnukly wersiýalar sahypalaryň iň bolmanda bir sany kesgitli ulanyjy tarapyn
  * @author AnakngAraw
  */
 $messages['tl'] = array(
-	'validationstatistics' => 'Mga estadistika ng pagpapatunay (balidasyon)',
-	'validationstatistics-users' => "Ang '''{{SITENAME}}''' ay  pangkasalukuyang may '''[[Special:ListUsers/editor|$1]]''' {{PLURAL:$1|tagagamit|mga tagagamit}} na may karapatan bilang [[{{MediaWiki:Validationpage}}|Patnugot]] 
-at '''$2''' {{PLURAL:$2|tagagamit|mga tagagamit}} na may karapatan bilang [[{{MediaWiki:Validationpage}}|Tagapagsuri]].",
-	'validationstatistics-time' => "''Ang sumusunod na dato ay nakatago at maaaring wala na sa panahon.''
+	'validationstatistics' => 'Estadistika ng pagsusuri ng pahina',
+	'validationstatistics-users' => "Ang '''{{SITENAME}}''' ay  pangkasalukuyang may '''[[Special:ListUsers/editor|$1]]''' {{PLURAL:$1|tagagamit|mga tagagamit}} na may karapatan bilang [[{{MediaWiki:Validationpage}}|Patnugot]] .
 
-Ang karaniwang panahon ng paghihintay para sa mga pagbabago ng ''mga tagagamit na hindi lumalagdang papasok'' na susuriin pa ay '''$1'''; ang panggitnaan ay '''$3'''. 
+Ang mga patnugot ay mga matatagal nang mga tagagamit na makakasipat ng mga pagbabago sa mga pahina.",
+	'validationstatistics-time' => "''Ang sumusunod na dato ay huling naisapanahon noong $5 at $6.''
+
+Ang mga pagbabagong nasuri na ng matatagal nang mga tagagamit ay itinuturing nang nasuri.
+
+Ang karaniwang paghihintay para sa mga pagbabagong gawa ng ''mga tagagamit na hindi lumagdang papasok'' na susuriin ay '''$1'''; ang midyan ay '''$3'''. 
 $4
-Ang karaniwang panahon ng pagkakaiwan para sa [[Special:OldReviewedPages|mga pahinang may nakabinbing pagsusuri ng mga pagbabago]] ay '''$2'''.
-Ang mga pahinang ito itinuturing na ''wala na sa panahon''. Gayun din, ang mga pahina ay itinuturing na ''naisabay na'' kapag ang [[{{MediaWiki:Validationpage}}|matatag na bersyon]] ay siya ring pangkasalukuyang balangkas na bersyon.
-Ang matatatag na mga bersyon ay mga rebisyon ng mga pahinang nasuri ng kahit na isang kinikilalang tagagamit.",
+Ang karaniwang pagkahuli para sa [[Special:OldReviewedPages|mga pahinang may naghihintay na pagsusuri ng mga pagbabago]] ay '''$2'''.
+Itinuturing ang mga pahinang ito na ''wala na sa panahon''.  Gayundin, itinuturing na ''nakasabay na'' kung walang mga pagbabagong naghihintay ng pagsusuri.
+Ang tinanggap na bersyon ng isang pahina ay ang pinakabagong pagbabagong pinayagang maipakita sa lahat ng mga mambabasa ayon sa likas na pagkakatakda.",
 	'validationstatistics-table' => "Ipinapakita sa ibaba ang mga estadistika para sa bawat espasyo ng pangalan, ''hindi kasama'' ang mga pahinang tumuturo papunta sa ibang pahina.",
 	'validationstatistics-ns' => 'Espasyo ng pangalan',
 	'validationstatistics-total' => 'Mga pahina',
@@ -1859,6 +1868,9 @@ Ang matatatag na mga bersyon ay mga rebisyon ng mga pahinang nasuri ng kahit na 
 	'validationstatistics-latest' => 'Napagsabay na',
 	'validationstatistics-synced' => 'Pinagsabay-sabay/Nasuri nang muli',
 	'validationstatistics-old' => 'Wala na sa panahon (luma)',
+	'validationstatistics-utable' => 'Nasa ibaba ang talaan ng limang pinakamataas na manunuri sa loob ng huling oras.',
+	'validationstatistics-user' => 'Tagagamit',
+	'validationstatistics-reviews' => 'Mga pagsusuri',
 );
 
 /** Turkish (Türkçe)

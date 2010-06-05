@@ -65,6 +65,16 @@ $messages['af'] = array(
 	'unreviewed-recent' => '(minder as 1 uur)',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'unreviewed-viewing' => '(Në shqyrtim)',
+	'unreviewed-hours' => '($1 {{PLURAL:$1|orë|orë}})',
+	'unreviewed-days' => '($1 {{PLURAL:$1|ditë|ditët}})',
+	'unreviewed-recent' => '(Më pak se 1 orë)',
+);
+
 /** Amharic (አማርኛ)
  * @author Codex Sinaiticus
  */
@@ -184,7 +194,7 @@ $messages['be-tarask'] = array(
 $messages['bg'] = array(
 	'unreviewedpages' => 'Нерецензирани страници',
 	'unreviewed-category' => 'Категория:',
-	'unreviewed-diff' => 'Промени',
+	'unreviewed-diff' => 'преглеждане',
 	'unreviewed-unwatched' => '(ненаблюдавана)',
 	'unreviewed-watched' => '($1 {{PLURAL:$1|активен наблюдаващ потребител|активни наблюдаващи потребители}})',
 	'unreviewed-none' => 'В момента не съществуват страници, отговарящи на дадените изисквания',
@@ -977,7 +987,7 @@ $messages['lzh'] = array(
  */
 $messages['mk'] = array(
 	'unreviewedpages' => 'Непрегледани страници',
-	'unreviewed-legend' => 'Листа на непрегледани статии',
+	'unreviewed-legend' => 'Список на непрегледани статии',
 	'unreviewed-category' => 'Категорија:',
 	'unreviewed-diff' => 'преглед',
 	'unreviewed-unwatched' => '(ненабљудувана)',
@@ -1302,7 +1312,6 @@ $messages['roa-tara'] = array(
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
-	'right-unreviewedpages' => 'просмотр [[Special:UnreviewedPages|списка непроверенных страниц]]',
 	'unreviewedpages' => 'Непроверенные страницы',
 	'unreviewed-legend' => 'Список непроверенных статей',
 	'unreviewed-category' => 'Категория:',
@@ -1311,7 +1320,7 @@ $messages['ru'] = array(
 	'unreviewed-watched' => '({{PLURAL:$1|следит $1 активный участник|следят $1 активных участника|следят $1 активных участников}})',
 	'unreviewed-list' => 'На этой странице перечислены статьи, которые не были оценены на указанный уровень.',
 	'unreviewed-none' => 'В настоящий момент нет страниц, удовлетворяющих указанным условиям',
-	'unreviewed-viewing' => '(проверяются)',
+	'unreviewed-viewing' => '(проверяется)',
 	'unreviewed-hours' => '($1 {{PLURAL:$1|час|часа|часов}})',
 	'unreviewed-days' => '($1 {{PLURAL:$1|день|дня|дней}})',
 	'unreviewed-recent' => '(менее, чем 1 час)',
@@ -1340,10 +1349,6 @@ $messages['sah'] = array(
  */
 $messages['sc'] = array(
 	'unreviewed-category' => 'Categoria:',
-	'unreviewed-diff' => 'revisiona',
-	'unreviewed-hours' => '($1 {{PLURAL:$1|ora|oras}})',
-	'unreviewed-days' => '($1 {{PLURAL:$1|die|dies}})',
-	'unreviewed-recent' => '(nemmancu 1 ora)',
 );
 
 /** Slovak (Slovenčina)

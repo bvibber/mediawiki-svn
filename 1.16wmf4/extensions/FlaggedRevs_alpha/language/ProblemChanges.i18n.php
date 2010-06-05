@@ -172,7 +172,7 @@ $messages['eo'] = array(
  * @author Crazymadlover
  */
 $messages['es'] = array(
-	'problemchanges' => 'Revisar cambios etiquetados',
+	'problemchanges' => 'Cambios pendientes etiquetados',
 	'problemchanges-legend' => 'Listar páginas con ediciones etiquetadas pendientes de revisión',
 	'problemchanges-none' => 'No hay actualmente páginas que cumplan estos criterios',
 	'problemchanges-category' => 'Categoría:',
@@ -403,7 +403,7 @@ $messages['lb'] = array(
  */
 $messages['mk'] = array(
 	'problemchanges' => 'Означени промени во исчекување',
-	'problemchanges-legend' => 'Листа на страници со означени уредувања во исчекување на оценка',
+	'problemchanges-legend' => 'Список на страници со означени уредувања во исчекување на проверка',
 	'problemchanges-none' => 'Моментално нема страници кои ги задоволуваат овие критериуми',
 	'problemchanges-category' => 'Категорија:',
 );
@@ -470,7 +470,7 @@ $messages['pdc'] = array(
  * @author Sp5uhe
  */
 $messages['pl'] = array(
-	'problemchanges' => 'Zaznaczone oczekujące zmiany',
+	'problemchanges' => 'Przeglądanie wątpliwych zmian',
 	'problemchanges-legend' => 'Lista stron z oznakowanymi wersjami oczekującymi na przejrzenie',
 	'problemchanges-none' => 'Obecnie nie ma stron spełniających podane kryteria',
 	'problemchanges-category' => 'Kategoria',
@@ -560,6 +560,13 @@ $messages['sah'] = array(
 	'problemchanges-category' => 'Категория:',
 );
 
+/** Sardinian (Sardu)
+ * @author Andria
+ */
+$messages['sc'] = array(
+	'problemchanges-category' => 'Categoria:',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */
@@ -577,6 +584,16 @@ $messages['sl'] = array(
 	'problemchanges-category' => 'Kategorija:',
 );
 
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Charmed94
+ */
+$messages['sr-ec'] = array(
+	'problemchanges' => 'Означене измене на чекању',
+	'problemchanges-legend' => 'Прелистај странице на чекању с означеним изменама за преглед',
+	'problemchanges-none' => 'Тренутно нема страница које испуњавају овај критеријум',
+	'problemchanges-category' => 'Категорија:',
+);
+
 /** Sundanese (Basa Sunda)
  * @author Irwangatot
  */
@@ -587,11 +604,12 @@ $messages['su'] = array(
 );
 
 /** Swedish (Svenska)
+ * @author Boivie
  * @author Per
  * @author Rotsee
  */
 $messages['sv'] = array(
-	'problemchanges' => 'Granska märkta ändringar',
+	'problemchanges' => 'Taggade väntande ändringar',
 	'problemchanges-legend' => 'Visa sidor med märkta ändringar som skall granskas',
 	'problemchanges-none' => 'Det finns just nu inga sidor som matchar dessa kriterier',
 	'problemchanges-category' => 'Kategori:',
