@@ -225,8 +225,8 @@ class CategoryMultisortHooks {
 		return true;
 	}
 	
-	function parserCategoryLink( $parser, $holders, $markers,
-			Title $title, $titleText, &$sortText = null, &$leadingColon = false
+	function parserCategoryLink(
+	    $parser, $holders, $markers, $title, $titleText, &$sortText = null, &$leadingColon = false
 	) {
 		global $wgContLang;
 		
