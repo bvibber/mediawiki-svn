@@ -1092,7 +1092,7 @@ Valitse kaikki sopivat.',
 	'prefswitch-success-feedback' => 'Palautteesi on lähetetty.',
 	'prefswitch-return' => '<hr style="clear:both">
 Palaa sivulle <span class="plainlinks">[$1 $2]</span>.',
-	'prefswitch-main' => "Olemme tehneet kovasti töitä tehdessämme asioita helpommaksi käyttäjillemme. Olemme jakaneet joitain parannuksia, kuten uuden ilmeen ja yksinkertaistetut muokkaustoiminnot. Käytettävyyden parantaminen hankkeissamme on etusijalla Wikimedia Foundationissa ja tulemme jakamaan lisää päivityksiä tulevaisuudessa. Lisätietoja löytyy aiheeseen liittyvästä [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/ Wikimedian blogiviestistä].
+	'prefswitch-main' => "Olemme tehneet kovasti töitä saadaksemme asioita helpommaksi käyttäjillemme. Olemme jakaneet joitain parannuksia, kuten uuden ilmeen ja yksinkertaistetut muokkaustoiminnot. Käytettävyyden parantaminen hankkeissamme on etusijalla Wikimedia Foundationissa ja tulemme jakamaan lisää päivityksiä tulevaisuudessa. Lisätietoja löytyy aiheeseen liittyvästä [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/ Wikimedian blogiviestistä].
 
 [[File:UsabilityNavigation.png|right|link=|Kuvakaappaus uudesta navigaatiosta]]
 [[File:UsabilityToolbar.png|right|link=|Kuvakaappaus parannetusta muokkauspalkista]]
@@ -2280,19 +2280,19 @@ Należy wybrać wszystkie pasujące odpowiedzi.',
 	'prefswitch-success-feedback' => 'Twoja opinia została przesłana.',
 	'prefswitch-return' => '<hr style="clear:both">
 Powrót do <span class="plainlinks">[$1 $2]</span>.',
-	'prefswitch-main' => "Ciężko pracowaliśmy, aby ułatwić życie naszym użytkownikom. Cieszymy się, że możemy zaprezentować część udoskonaleń, wliczając w to nowy wygląd i nowe, uproszczone funkcjonalności edycyjne. Zwiększanie użyteczności naszych projektów jest priorytetem dla Fundacji Wikimedia — z pewności w przyszłości pojawi się więcej nowych funkcjonalności. Więcej (w języku angielskim) można przeczytać na [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/ blogu Wikimedia].
+	'prefswitch-main' => "Ciężko pracowaliśmy, aby ułatwić życie naszym użytkownikom. Cieszymy się, że możemy zaprezentować część udoskonaleń, wliczając w to nowy wygląd i nowe, uproszczone funkcjonalności edycyjne. Zwiększanie użyteczności naszych projektów jest priorytetem dla Fundacji Wikimedia – z pewności w przyszłości pojawi się więcej nowych funkcjonalności. Więcej (w języku angielskim) można przeczytać na [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/ blogu Wikimedia].
 
 [[File:UsabilityNavigation.png|right|link=|Nowy układ strony]]
 [[File:UsabilityToolbar.png|right|link=|Nowy pasek narzędziowy]]
 [[File:UsabilityDialogs.png|right|link=|Nowe okienka edycyjne]]
 
 ===Oto co zmieniliśmy===
-* '''Układ strony''' — Poprawiliśmy układ strony zarówno przy edycji jak i przeglądaniu. Zakładki na górze strony w bardziej czytelny sposób informują o tym czy oglądasz właściwą stronę czy stronę dyskusji oraz czy tylko przeglądasz czy edytujesz daną stronę.
-* '''Udoskonalenia paska narzędziowego''' — Przeorganizowaliśmy pasek narzędziowy, aby łatwiej było się nim posługiwać. Formatowanie stron powinno być teraz prostsze i bardziej intuicyjne.
-* '''Kreator linków''' — Łatwe w użyciu narzędzie pozwala na tworzenie linków zarówno do stron wiki, jak i zewnętrznych serwisów.
-* '''Udoskonalenia wyszukiwania''' — Dzięki nowym, udoskonalonym podpowiedziom szybko znajdziesz to czego szukasz.
-* '''Inne nowe funkcjonalności''' — Nowy kreator tworzenia tabel oraz okno wyszukiwania i zamiany ułatwia edycję stron.
-* '''Wikipedyczny globus z puzzli''' — Zaktualizowaliśmy globus z puzzli będący logo Wikipedii. Więcej informacji (w języku angielskim) znajdziesz na [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ blogu Wikimedia].",
+* '''Układ strony''' – Poprawiliśmy układ strony zarówno przy edycji jak i przeglądaniu. Zakładki na górze strony w bardziej czytelny sposób informują o tym czy oglądasz właściwą stronę czy stronę dyskusji oraz czy tylko przeglądasz czy edytujesz daną stronę.
+* '''Udoskonalenia paska narzędziowego''' – Przeorganizowaliśmy pasek narzędziowy, aby łatwiej było się nim posługiwać. Formatowanie stron powinno być teraz prostsze i bardziej intuicyjne.
+* '''Kreator linków''' – Łatwe w użyciu narzędzie pozwala na tworzenie linków zarówno do stron wiki, jak i zewnętrznych serwisów.
+* '''Udoskonalenia wyszukiwania''' – Dzięki nowym, udoskonalonym podpowiedziom szybko znajdziesz to czego szukasz.
+* '''Inne nowe funkcjonalności''' – Nowy kreator tworzenia tabel oraz okno wyszukiwania i zamiany ułatwia edycję stron.
+* '''Wikipedyczny globus z puzzli''' – Zaktualizowaliśmy globus z puzzli będący logo Wikipedii. Więcej informacji (w języku angielskim) znajdziesz na [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ blogu Wikimedia].",
 	'prefswitch-main-anon' => '=== Chcę wrócić ===
 <span class="plainlinks">[$1 Kliknij tutaj]</span>, jeśli chcesz wyłączyć nowe funkcjonalności. Przed powrotem do starego wyglądu interfejsu musisz utworzyć konto lub zalogować się.',
 	'prefswitch-main-on' => '===Opinia?===
@@ -2440,7 +2440,7 @@ Gostariamos de saber a sua opinião. Visite a nossa <span class="plainlinks">[$1
 ===Voltar atrás!===
 Se quiser desligar as funcionalidades novas <span class="plainlinks">[$2 clique aqui]</span>, por favor.',
 	'prefswitch-main-off' => '===Experimente-as!===
-Se quiser desligar as funcionalidades novas <span class="plainlinks">[$1 clique aqui]</span>, por favor.',
+Se quiser activar as funcionalidades novas <span class="plainlinks">[$1 clique aqui]</span>, por favor.',
 	'prefswitch-survey-intro-feedback' => 'Gostariamos de saber a sua opinião.
 Preencha o questionário opcional abaixo, antes de clicar "[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]", por favor.',
 	'prefswitch-survey-intro-off' => 'Obrigado por ter experimentado as funcionalidades novas.
@@ -2504,7 +2504,7 @@ Gostaríamos de saber a sua opinião. Visite a nossa <span class="plainlinks">[$
 ===Voltar atrás!===
 Se quiser desligar as funcionalidades novas <span class="plainlinks">[$2 clique aqui]</span>, por favor.',
 	'prefswitch-main-off' => '===Experimente-as!===
-Se quiser desligar as funcionalidades novas <span class="plainlinks">[$1 clique aqui]</span>, por favor.',
+Se você quiser ativar as funcionalidades novas <span class="plainlinks">[$1 clique aqui]</span>, por favor.',
 	'prefswitch-survey-intro-feedback' => 'Gostaríamos de saber a sua opinião.
 Preencha o questionário opcional abaixo, antes de clicar "[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]", por favor.',
 	'prefswitch-survey-intro-off' => 'Obrigado por ter experimentado as funcionalidades novas.
