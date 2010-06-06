@@ -16,18 +16,23 @@ $messages = array();
 $messages['en'] = array(
 	'datatransclusion-desc'         => 'Import and rendering of data records from external data sources',
 
-	'datatransclusion-test-wikitext' => 'some <span class="test">html</span> and \'\'markup\'\'.',
-	'datatransclusion-test-evil-html' => 'some <object>evil</object> html.',
-	'datatransclusion-test-nowiki' => 'some <nowiki>{{nowiki}}</nowiki> code.',
+	'datatransclusion-test-wikitext' => 'some <span class="test">html</span> and \'\'markup\'\'.', // Do not translate.
+	'datatransclusion-test-evil-html' => 'some <object>evil</object> html.', // Do not translate.
+	'datatransclusion-test-nowiki' => 'some <nowiki>{{nowiki}}</nowiki> code.', // Do not translate.
 
-	'datatransclusion-missing-source'            => 'no data source specified (first argument is required)',
-	'datatransclusion-unknown-source'            => 'bad data source specified ($1 is not known)',
-	'datatransclusion-bad-argument-by'           => 'bad key field specified ($2 is not a key field in data source $1, valid keys are: $3)',
-	'datatransclusion-missing-argument-key'      => 'no key value specified (second or "key" argument is required)',
-	'datatransclusion-missing-argument-template' => 'no template specified (third or "template" argument is required)',
-	'datatransclusion-record-not-found'          => 'no record matching $2 = $3 was found in data source $1',
-	'datatransclusion-bad-template-name'         => 'bad template name: $1',
-	'datatransclusion-unknown-template'          => '<nowiki>{{</nowiki>[[Template:$1|$1]]<nowiki>}}</nowiki> does not exist.',
+	'datatransclusion-missing-source'            => 'No data source specified.
+First argument is required.',
+	'datatransclusion-unknown-source'            => 'Bad data source specified.
+$1 is not known.',
+	'datatransclusion-bad-argument-by'           => 'Bad key field specified.
+$2 is not a key field in data source $1, valid keys are: $3.',
+	'datatransclusion-missing-argument-key'      => 'No key value specified.
+Second or "key" argument is required.',
+	'datatransclusion-missing-argument-template' => 'No template specified.
+Third or "template" argument is required.',
+	'datatransclusion-record-not-found'          => 'No record matching $2 = $3 was found in data source $1.',
+	'datatransclusion-bad-template-name'         => 'Bad template name: $1.',
+	'datatransclusion-unknown-template'          => '<nowiki>{{</nowiki>[[{{ns:template}}:$1|$1]]<nowiki>}}</nowiki> does not exist.',
 );
 
 /** Message documentation (Message documentation)
