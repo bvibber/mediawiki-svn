@@ -54,6 +54,9 @@ class CategoryMultisortHooks {
 			$this->coreCategoryLinkHook = $parser->setLinkHook(
 				NS_CATEGORY, array( $this, 'parserCategoryLink' )
 			);
+			$this->coreDefaultSortHook = $parser->setFunctionHook(
+				'defaultsort', array( $this, 'parserDefaultSort' ), SFH_NO_HASH
+			);
 		}
 		return true;
 	}
@@ -268,6 +271,25 @@ class CategoryMultisortHooks {
 		}
 		
 		return '';
+	}
+	
+	function parserDefaultSort() {
+		$args = func_get_args();
+		$parser = array_shift( $args );
+		$defaultSort = array_shift( $args );
+		$categoryDefaultMultisorts = &$parser->getOutput()->mCategoryDefaultMultisorts;
+		
+		foreach ( $this->parseMultisortArgs( $args ) as $skn => $skv ) {
+			$categoryDefaultMultisorts[$skn] = $skv;
+		}
+		
+		if ( is_callable( $this->coreDefaultSortHook ) ) {
+			return call_user_func_array( $this->coreDefaultSortHook, array(
+				$parser, $defaultSort
+			) );
+		} else {
+			return '';
+		}
 	}
 	
 	function parserCategoryMultisort() {
