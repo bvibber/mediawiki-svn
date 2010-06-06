@@ -403,7 +403,7 @@ class CategoryMultisortHooks {
 				continue;
 			}
 			list( $skn, $skv ) = $sk;
-			$skn = $this->cleanSortkey( trim( $skn ) );
+			$skn = $this->cleanSortkey( $skn );
 			$skv = $this->cleanSortkey( $skv );
 			if ( $skn ) {
 				$arr[$skn] = $skv;
@@ -416,6 +416,7 @@ class CategoryMultisortHooks {
 	function cleanSortkey( $skx ) {
 		global $wgContLang;
 		
+		$skx = trim( $skx );
 		$skx = Sanitizer::decodeCharReferences( $skx );
 		$skx = str_replace( "\n", '', $skx );
 		$skx = $wgContLang->convertCategoryKey( $skx );
