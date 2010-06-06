@@ -2,7 +2,8 @@
 /**
  * Aliases for Special:ExpandTemplates
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $aliases = array();

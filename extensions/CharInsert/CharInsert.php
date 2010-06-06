@@ -22,8 +22,9 @@
  * the edit page to make it easy to get at special characters and
  * such forth.
  *
+ * @file
  * @author Brion Vibber <brion at pobox.com>
- * @addtogroup Extensions
+ * @ingroup Extensions
  */
 
 if( !defined( 'MEDIAWIKI' ) ) {

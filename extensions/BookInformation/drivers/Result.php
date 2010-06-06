@@ -3,7 +3,8 @@
  * Encapsulates the result of a book information request
  * including response status and the book information itself
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  * @author Rob Church <robchur@gmail.com>
  */
 

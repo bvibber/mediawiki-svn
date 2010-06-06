@@ -4,7 +4,8 @@
  * MiniPreview displays, next to an image, small previews
  * of other images in the same categories or displayed on the same pages
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  * @author Magnus Manske
  * @copyright © 2007 Magnus Manske
  * @licence GNU General Public Licence 2.0 or later

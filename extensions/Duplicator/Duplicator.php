@@ -4,7 +4,8 @@ if (!defined('MEDIAWIKI')) die();
  * Special page which creates independent copies of articles, retaining
  * separate histories
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  * @author Rob Church <robchur@gmail.com>
  */
 

@@ -2,8 +2,8 @@
 /**
  * DataTransclusion extension - shows recent changes on a wiki page.
  *
- * @package MediaWiki
- * @subpackage Extensions
+ * @file
+ * @ingroup Extensions
  * @author Daniel Kinzler for Wikimedia Deutschland
  * @copyright © 2010 Wikimedia Deutschland (Author: Daniel Kinzler)
  * @licence GNU General Public Licence 2.0 or later

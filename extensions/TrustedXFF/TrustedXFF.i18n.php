@@ -2,7 +2,8 @@
 /**
  * Internationalisation file for TrustedXFF extension.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $messages = array();

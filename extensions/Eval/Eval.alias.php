@@ -2,7 +2,8 @@
 /**
  * Aliases for Special:Eval
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $aliases = array();

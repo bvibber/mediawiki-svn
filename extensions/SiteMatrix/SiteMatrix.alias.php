@@ -2,7 +2,8 @@
 /**
  * Aliases for Special:SiteMatrix
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $aliases = array();

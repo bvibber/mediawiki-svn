@@ -1,7 +1,10 @@
 <?php
-/** Internationalization message file for News Extension.
-  * @addtogroup extension
-**/
+/**
+ * Internationalization message file for News Extension.
+ *
+ * @file
+ * @ingroup Extensions
+ */
 
 $messages = array();
 

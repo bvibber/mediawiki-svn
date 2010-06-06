@@ -3,8 +3,9 @@
  * Internationalisation file for extension intersection.
  * Old version of DynamicPageList extension used for Wikinews projects
  *
- * @addtogroup Extensions
-*/
+ * @file
+ * @ingroup Extensions
+ */
 
 $messages= array();
 

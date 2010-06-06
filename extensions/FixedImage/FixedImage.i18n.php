@@ -2,7 +2,8 @@
 /**
  * Internationalisation file for FixedImage extension.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $messages = array();

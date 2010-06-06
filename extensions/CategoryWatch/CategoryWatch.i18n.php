@@ -2,7 +2,8 @@
 /**
  * Internationalisation file for extension CategoryWatch.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $messages = array();

@@ -5,7 +5,8 @@ if ( ! defined( 'MEDIAWIKI' ) )
 /**
  * Special page class for the CountEdits extension
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  * @author Rob Church <robchur@gmail.com>
  */
 

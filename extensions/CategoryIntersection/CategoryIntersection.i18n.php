@@ -2,8 +2,9 @@
 /**
  * Internationalisation file for the extension Category Intersection
  *
+ * @file
  * @author Magnus Manske
- * @addtogroup Extensions
+ * @ingroup Extensions
  */
 
 $messages = array();

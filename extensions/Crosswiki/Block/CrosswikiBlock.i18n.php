@@ -2,8 +2,9 @@
 /**
  * Internationalisation file for extension CrosswikiBlock.
  *
- * @addtogroup Extensions
-*/
+ * @file
+ * @ingroup Extensions
+ */
 
 $messages = array();
 

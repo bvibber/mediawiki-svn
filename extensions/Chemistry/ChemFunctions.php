@@ -7,7 +7,8 @@
  * Installation: copy this file and ChemFunctions.i18n.php into the extensions directory
  *   and add "require_once( "$IP/extensions/ChemFunctions.php" );" to localsettings.php (using the correct path)
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  *
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
  */

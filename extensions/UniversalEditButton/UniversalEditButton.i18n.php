@@ -2,7 +2,8 @@
 /**
  * Internationalisation file for UniversalEditButton extension.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $messages = array();

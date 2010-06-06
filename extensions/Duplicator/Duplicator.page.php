@@ -3,7 +3,8 @@
 /**
  * Special page class for the Duplicator extension
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  * @author Rob Church <robchur@gmail.com>
  */
 

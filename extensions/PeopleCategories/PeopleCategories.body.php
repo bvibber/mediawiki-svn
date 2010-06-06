@@ -3,7 +3,8 @@
 /**
  * Main classes for the PeopleCategories extension.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 class PeopleCategoriesPage extends CategoryPage {

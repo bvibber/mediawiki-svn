@@ -2,7 +2,8 @@
 /**
  * Internationalisation file for the extension ErrorHandler.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $messages = array();

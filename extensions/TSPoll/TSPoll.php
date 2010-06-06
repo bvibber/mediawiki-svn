@@ -5,6 +5,7 @@
  * To activate this extension, add the following into your LocalSettings.php file:
  * require_once("$IP/extensions/TSPoll/TSPoll.php");
  *
+ * @file
  * @ingroup Extensions
  * @author Jan Luca <jan@toolserver.org>
  * @version 1.0 Dev

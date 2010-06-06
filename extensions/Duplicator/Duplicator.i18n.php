@@ -2,7 +2,8 @@
 /**
  * Internationalisation file for extension Duplicator.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  * @author Rob Church <robchur@gmail.com>
  */
 

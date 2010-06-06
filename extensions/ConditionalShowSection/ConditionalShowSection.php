@@ -2,9 +2,9 @@
 /**
  * ConditionalShowSection MediaWiki extension
  *
+ * @file
  * @author Jean-Lou Dupont
- * @package MediaWiki
- * @subpackage Extensions
+ * @ingroup Extensions
  * @license GNU General Public Licence 2.0
  * This extension enables to conditionally show/hide a section
  * of wikitext that appears between the <cshow> </cshow> tags.

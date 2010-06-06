@@ -337,7 +337,7 @@ class SiteMatrixPage extends SpecialPage {
 
 /**
  * Query module to get site matrix
- * @addtogroup API
+ * @ingroup API
  */
 class ApiQuerySiteMatrix extends ApiQueryBase {
 

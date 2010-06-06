@@ -1,7 +1,8 @@
 <?php
 /**
+ * @file
  * @todo document
- * @addtogroup Maintenance
+ * @ingroup Maintenance
  */
 
 $usage = <<<ENDS

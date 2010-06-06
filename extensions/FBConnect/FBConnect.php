@@ -17,19 +17,20 @@
 
 /**
  * FBConnect plugin. Integrates Facebook Connect into MediaWiki.
- * 
+ *
  * Facebook Connect single sign on (SSO) experience and XFBML are currently available.
  *
  * Info is available at http://www.mediawiki.org/wiki/Extension:FBConnect
  * and at http://wiki.developers.facebook.com/index.php/MediaWiki
- * 
+ *
  * Limited support is available at  http://www.mediawiki.org/wiki/Extension_talk:FBConnect
  * and at http://wiki.developers.facebook.com/index.php/Talk:MediaWiki
- * 
+ *
+ * @file
  * @author Garrett Bruin
  * @copyright Copyright © 2008 Garrett Brown
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
- * @addtogroup Extensions
+ * @ingroup Extensions
  */
 
 

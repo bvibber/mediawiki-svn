@@ -1,7 +1,9 @@
 <?php
 /**
  * Magic words used by Wikilog extension.
- * @addtogroup Extensions
+ *
+ * @file
+ * @ingroup Extensions
  */
 
 $magicWords = array();

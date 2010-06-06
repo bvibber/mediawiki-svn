@@ -1,8 +1,9 @@
 <?php
 /**Internationalization aliases for RecordAdmin extension
-*
-* @addtogroup Extensions
-*/
+ *
+ * @file
+ * @ingroup Extensions
+ */
 
 $aliases = array();
 

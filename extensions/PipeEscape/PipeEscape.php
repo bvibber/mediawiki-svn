@@ -1,9 +1,8 @@
 <?php
 
 /**
- * @package MediaWiki
- * @subpackage Extensions
- *
+ * @file
+ * @ingroup Extensions
  * @link http://www.mediawiki.org/wiki/Extension:Pipe_Escape Documentation
  *
  * @author David M. Sledge

@@ -4,6 +4,7 @@
  * Special page used to wipe the OBJECTCACHE table
  * I use it on test wikis when I am fiddling about with things en masse that could be cached
  *
+ * @file
  * @ingroup Extensions
  * @author Rob Church <robchur@gmail.com>
  * @licence Public domain

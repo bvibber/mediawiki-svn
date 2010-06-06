@@ -3,8 +3,9 @@
 /**
  * Internationalisation file for extension Icon.
  *
- * @addtogroup Extensions
-*/
+ * @file
+ * @ingroup Extensions
+ */
 
 require_once( dirname(__FILE__) . '/Icon.i18n.magic.php' );
 

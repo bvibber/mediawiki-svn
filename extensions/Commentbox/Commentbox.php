@@ -1,7 +1,9 @@
 <?php
 /**#@+
  * Adds a comment box to the bottom of wiki pages in predefined namespaces
- * @addtogroup Extensions
+ *
+ * @file
+ * @ingroup Extensions
  *
  * @link http://www.mediawiki.org/wiki/Extension:Commentbox Documentation
  *

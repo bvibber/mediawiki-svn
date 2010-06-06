@@ -2,6 +2,7 @@
 /**
  * Internationalisation file for SlippyMap extension.
  *
+ * @file
  * @ingroup Extensions
  */
 

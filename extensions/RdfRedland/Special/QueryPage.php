@@ -17,11 +17,12 @@ if (!defined('MEDIAWIKI')) die();
  *
  *  You should have received a copy of the GNU General Public License
  *  along with this program; if not, write to the Free Software
- *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA *
+ *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ *
+ * @file
  * @author Evan Prodromou <evan@wikitravel.org>
  * @author Mark Jaroski <mark@geekhive.net>
- * @package MediaWiki
- * @subpackage Extensions
+ * @ingroup Extensions
  */
 
 /**
@@ -29,7 +30,7 @@ if (!defined('MEDIAWIKI')) die();
  * interface extends QueryPage so you can expect roughly the same
  * behaviours.
  *
- * @package MediaWiki
+ * @ingroup Extensions
  */
 abstract class RdfQueryPage extends QueryPage implements RdfQueryPageInterface {
 

@@ -2,7 +2,8 @@
 /**
  * Internationalisation file for extension EmailAddressImage.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $messages = array();

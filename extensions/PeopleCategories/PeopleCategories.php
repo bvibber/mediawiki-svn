@@ -6,7 +6,8 @@
  * Changes displayed page names from "Firstname Lastname" to "Lastname,
  * Firstname" on specified category pages.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  *
  * @link http://www.mediawiki.org/wiki/Extension:PeopleCategories
  *

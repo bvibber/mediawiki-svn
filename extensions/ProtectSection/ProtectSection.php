@@ -20,7 +20,8 @@
  *
  * To protect a section of text, enclose it in a <protect> </protect> block.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  *
  * @author ThomasV <thomasv1@gmx.de>
  * @author Jim Hu (remove Section Edit links in protected text, bug fixes)

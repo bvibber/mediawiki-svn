@@ -3,7 +3,8 @@
 /**
  * Messages file for the TemplateInfo extension
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 /**

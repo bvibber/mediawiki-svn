@@ -5,8 +5,8 @@ if ( ! defined( 'MEDIAWIKI' ) )
 /**#@+
  * An extension that allows users to rate articles.
  *
- * @package MediaWiki
- * @subpackage Extensions
+ * @file
+ * @ingroup Extensions
  *
  * @link http://www.wikihow.com/WikiHow:YouTubeAuthSub-Extension Documentation
  *

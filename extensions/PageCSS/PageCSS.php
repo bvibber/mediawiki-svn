@@ -3,7 +3,8 @@ if (!defined('MEDIAWIKI')) die();
 /**
  * A parser hook to add per-page CSS to pages with the <css> tag
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  *
  * @author Ævar Arnfjörð Bjarmason <avarab@gmail.com>
  * @copyright Copyright © 2005, Ævar Arnfjörð Bjarmason

@@ -3,7 +3,8 @@
 /**
  * Special page that lists the ten most prominent contributors to an article
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  * @author Rob Church <robchur@gmail.com>
  */
 

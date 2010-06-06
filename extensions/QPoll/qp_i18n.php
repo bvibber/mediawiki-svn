@@ -28,10 +28,11 @@
  * * Add this line at the end of your LocalSettings.php file :
  * require_once "$IP/extensions/QPoll/qp_user.php";
  *
+ * @file
  * @version 0.6.5
  * @link http://www.mediawiki.org/wiki/Extension:QPoll
  * @author QuestPC <questpc@rambler.ru>
- * @addtogroup Extensions
+ * @ingroup Extensions
  */
 
 /**

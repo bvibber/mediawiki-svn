@@ -15,7 +15,7 @@ $wgAPIModules['pomsettplparam'] = 'ApiPOMSetTemplateParameter';
 $wgAPIModules['pomgettplparam'] = 'ApiPOMGetTemplateParameter';
 
 /**
- * @addtogroup API
+ * @ingroup API
  */
 class ApiPOMSetTemplateParameter extends ApiBase {
 
@@ -144,7 +144,7 @@ class ApiPOMSetTemplateParameter extends ApiBase {
 }
 
 /**
- * @addtogroup API
+ * @ingroup API
  */
 class ApiPOMGetTemplateParameter extends ApiBase {
 

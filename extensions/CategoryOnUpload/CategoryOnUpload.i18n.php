@@ -2,6 +2,7 @@
 /**
  * Internationalisation file for CategoryOnUpload extension.
  *
+ * @file
  * @ingroup Extensions
  */
 

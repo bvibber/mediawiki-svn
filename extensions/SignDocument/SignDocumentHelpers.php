@@ -5,7 +5,8 @@
  * sigadmin, and SignDocumentSignature, which represents a signature committed by
  * a user to a document.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  *
  * @author Daniel Cannon (AmiDaniel)
  * @copyright Copyright © 2007, Daniel Cannon

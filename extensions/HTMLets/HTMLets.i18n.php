@@ -2,7 +2,8 @@
 /**
  * Internationalisation file for HTMLets extension.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $messages = array();

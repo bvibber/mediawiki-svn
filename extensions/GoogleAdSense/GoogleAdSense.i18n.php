@@ -2,7 +2,8 @@
 /**
  * Internationalisation file for extension GoogleAdSense
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  * @license MIT
  */
 

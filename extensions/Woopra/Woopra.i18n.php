@@ -1,7 +1,10 @@
 <?php
-/*Internationalization file of Woopra extension
-  * @addgroup extension
-*/
+/**
+ * Internationalization file of Woopra extension
+ *
+ * @file
+ * @ingroup extension
+ */
 
 $messages = array();
 

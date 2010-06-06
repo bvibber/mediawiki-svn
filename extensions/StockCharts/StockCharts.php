@@ -7,7 +7,8 @@ if ( ! defined( 'MEDIAWIKI' ) )
  * {{#stockchart: ticker="TIKR"}} parser function for adding
  * interactive financial charts within an article.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  *
  * @author Brendan Meutzner
  * @author Anton Zolotkov

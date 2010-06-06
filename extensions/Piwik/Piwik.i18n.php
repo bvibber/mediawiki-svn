@@ -2,7 +2,8 @@
 /**
  * Internationalisation file for extension Piwik Integration.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $messages = array();

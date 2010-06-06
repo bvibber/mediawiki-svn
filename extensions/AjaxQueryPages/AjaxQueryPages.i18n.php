@@ -2,7 +2,8 @@
 /**
  * Internationalisation file for extension AjaxQueryPages.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $messages = array();

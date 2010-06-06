@@ -19,8 +19,8 @@ if ( !defined( 'MEDIAWIKI' ) ) die();
 /**
  * A Special Page extension to manage contractor access white lists
  *
- * @package MediaWiki
- * @subpackage Extensions
+ * @file
+ * @ingroup Extensions
  *
  * @author Paul Grinberg <gri6507@yahoo.com>
  * @author Mike Sullivan <ms-mediawiki@umich.edu>

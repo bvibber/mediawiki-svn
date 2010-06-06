@@ -2,7 +2,8 @@
 /**
  * Internationalisation file for extension DataTransclusion.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  * @author Daniel Kinzler for Wikimedia Deutschland
  * @copyright © 2010 Wikimedia Deutschland (author: Daniel Kinzler)
  * @license GNU General Public Licence 2.0 or later

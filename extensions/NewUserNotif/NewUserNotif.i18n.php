@@ -1,7 +1,9 @@
 <?php
 /**
  * Internationalisation file for the extension New User Email Notification
- * @addtogroup Extensions
+ *
+ * @file
+ * @ingroup Extensions
  * @author Rob Church <robchur@gmail.com>
  */
 

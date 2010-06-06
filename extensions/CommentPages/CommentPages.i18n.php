@@ -2,8 +2,9 @@
 /**
  * Internationalisation file for extension CommentPages.
  *
- * @addtogroup Extensions
-*/
+ * @file
+ * @ingroup Extensions
+ */
 
 $messages = array();
 

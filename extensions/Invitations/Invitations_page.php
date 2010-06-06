@@ -14,9 +14,8 @@
 /**
  * Special page to allow managing invitations by users.
  *
- * @addtogroup Extensions
+ * @ingroup Extensions
  */
-
 class SpecialInvitations extends SpecialPage {
 	function __construct() {
 		parent::__construct('Invitations');

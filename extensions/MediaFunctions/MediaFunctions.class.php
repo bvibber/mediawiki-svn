@@ -3,7 +3,8 @@
 /**
  * Parser function callbacks for the MediaFunctions extension
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  * @author Rob Church <robchur@gmail.com>
  * @version 1.1
  */

@@ -5,7 +5,8 @@ if ( ! defined( 'MEDIAWIKI' ) )
 /**#@+
  * Allows custom headers/footers to be added to user to user emails.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  *
  * @link http://www.mediawiki.org/wiki/Extension:FormatEmail Documentation
  *

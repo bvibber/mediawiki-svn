@@ -2,7 +2,8 @@
 /**
  * Internationalisation file for YouTubeAuthSub extension.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $messages = array();

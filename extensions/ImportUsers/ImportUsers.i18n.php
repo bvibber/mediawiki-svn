@@ -1,8 +1,10 @@
 <?php
-/** Internationalization messages file for Import User extension
-  *
-  * @addtogroup Extensions
-*/
+/**
+ * Internationalization messages file for Import User extension
+ *
+ * @file
+ * @ingroup Extensions
+ */
 
 $messages = array();
 

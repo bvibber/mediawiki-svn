@@ -5,8 +5,9 @@ if ( ! defined( 'MEDIAWIKI' ) )
 /**
  * Extension to provide customisable email notification of new user creation
  *
+ * @file
  * @author Rob Church <robchur@gmail.com>
- * @addtogroup Extensions
+ * @ingroup Extensions
  * @copyright © 2006 Rob Church
  * @license GNU General Public Licence 2.0 or later
  */

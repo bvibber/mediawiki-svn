@@ -1,8 +1,8 @@
 <?php
 /** Extension:NewUserMessage
  *
- * @package MediaWiki
- * @subpackage Extensions
+ * @file
+ * @ingroup Extensions
  *
  * @author [http://www.organicdesign.co.nz/nad User:Nad]
  * @license GNU General Public Licence 2.0 or later

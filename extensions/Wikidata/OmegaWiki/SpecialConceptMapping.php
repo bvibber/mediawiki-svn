@@ -3,7 +3,9 @@ if ( !defined( 'MEDIAWIKI' ) ) die();
 /**
  * A Special Page extension to create concept-mappings
  * also provides a web-api. Minimal documentation is available by calling with &action=help, as a parameter
- * @addtogroup Extensions
+ *
+ * @file
+ * @ingroup Extensions
  *
  * @author Erik Moeller <Eloquence@gmail.com>
  * @author Kim Bruning <kim@bruning.xs4all.nl>

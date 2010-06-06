@@ -2,7 +2,8 @@
 /**
  * Internationalisation file for Interlanguage extension.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 require_once( dirname(__FILE__) . '/Interlanguage.i18n.magic.php' );

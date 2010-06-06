@@ -2,7 +2,8 @@
 if (!defined('MEDIAWIKI')) die();
 
 /**
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $wgExtensionCredits['parserhook'][] = array(

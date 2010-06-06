@@ -2,7 +2,8 @@
 if ( ! defined( 'MEDIAWIKI' ) )
 	die();
 /**
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  *
  * @author Ævar Arnfjörð Bjarmason <avarab@gmail.com>
  * @copyright Copyright © 2006, Ævar Arnfjörð Bjarmason

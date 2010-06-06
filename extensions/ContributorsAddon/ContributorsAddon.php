@@ -6,8 +6,9 @@
  * this Extension to function.  This extension adds
  * JS popup DIVs when the user moves their mouse over
  * the "Main Contributors" link.
- * 
- * @addtogroup Extensions
+ *
+ * @file
+ * @ingroup Extensions
  * @author Tim Laqua <t.laqua@gmail.com>
  */
  

@@ -2,7 +2,8 @@
 /**
  * Internationalisation file for extension EditOwn.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $messages = array();

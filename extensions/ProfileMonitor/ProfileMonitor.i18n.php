@@ -2,9 +2,10 @@
 /**
  * Internationalisation file for extension ProfileMonitor.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  * @author Rob Church <rob.church@mintrasystems.com>
-*/
+ */
 
 $messages = array();
 

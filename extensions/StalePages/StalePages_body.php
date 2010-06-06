@@ -8,7 +8,7 @@
  * Special page that generates a list of pages that have
  * not been edited in a given timeframe.
  *
- * @addtogroup Extensions
+ * @ingroup Extensions
  * @author Tim Laqua <t.laqua@gmail.com>
  */
 

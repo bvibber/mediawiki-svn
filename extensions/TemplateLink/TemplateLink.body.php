@@ -2,8 +2,7 @@
 /**
  * TemplateLink extension - shows a template as a new page
  *
- * @package MediaWiki
- * @subpackage Extensions
+ * @ingroup Extensions
  * @author Magnus Manske
  * @copyright © 2007 Magnus Manske
  * @licence GNU General Public Licence 2.0 or later

@@ -2,7 +2,7 @@
 /**
  * Class file for the BackAndForth extension
  *
- * @addtogroup Extensions
+ * @ingroup Extensions
  * @author Rob Church <robchur@gmail.com>
  */
 class BackAndForth {

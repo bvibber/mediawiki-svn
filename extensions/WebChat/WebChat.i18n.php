@@ -3,7 +3,8 @@
 /**
  * Internationalisation file for WebChat extension.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $messages = array();

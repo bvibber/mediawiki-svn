@@ -2,7 +2,8 @@
 /**
  * Internationalisation file for CategoryStepper extension.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $messages = array();

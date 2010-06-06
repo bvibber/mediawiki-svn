@@ -5,7 +5,8 @@ if ( ! defined( 'MEDIAWIKI' ) )
  * Allows the use of tag <email>foo@domain.com</email> which will result in
  * inline insertion of an image with the text foo@domain.com
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  *
  * @author Maarten van Dantzich (http://www.mediawiki.org/wiki/User:Thinkling)
  * @comment email address regexp pattern borrowed from: http://www.regular-expressions.info/email.html

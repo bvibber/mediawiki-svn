@@ -1,7 +1,9 @@
 <?php
 /**
  * Internationalisation file for the MassBlank extension
- * @addtogroup Extensions
+ *
+ * @file
+ * @ingroup Extensions
  * @author Tisane
  */
 

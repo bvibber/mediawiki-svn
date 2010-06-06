@@ -2,7 +2,8 @@
 /**
  * Aliases for extension CodeReview
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $aliases = array();

@@ -2,8 +2,9 @@
 /**
  * Internationalization file for the Semantic Gallery extension
  *
- * @addtogroup Extensions
-*/
+ * @file
+ * @ingroup Extensions
+ */
 
 $messages = array();
 

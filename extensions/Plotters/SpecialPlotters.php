@@ -2,7 +2,8 @@
 /**
  * Special:Plotters, provides a preview of MediaWiki:Plotters. Based on the Gadgets extension.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  * @author Ryan Lane, rlane32+mwext@gmail.com
  * @copyright © 2009 Ryan Lane
  * @license GNU General Public Licence 2.0 or later

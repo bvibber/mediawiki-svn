@@ -4,7 +4,8 @@
  * Parser hook which generates a gallery of the last X images
  * uploaded by a particular user
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  * @author Rob Church <robchur@gmail.com>
  */
 

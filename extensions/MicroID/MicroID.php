@@ -23,8 +23,9 @@ if ( ! defined( 'MEDIAWIKI' ) )
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
+ * @file
  * @author Evan Prodromou <evan@wikitravel.org>
- * @addtogroup Extensions
+ * @ingroup Extensions
  */
 
 define('MEDIAWIKI_MICROID_VERSION', '0.2');

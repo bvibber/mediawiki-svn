@@ -2,7 +2,8 @@
 /**
  * Internationalisation file for extension MediaFunctions.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  * @author Rob Church <robchur@gmail.com>
  * @version 1.2
  */

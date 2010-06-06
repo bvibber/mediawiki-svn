@@ -2,7 +2,8 @@
 /**
  * Internationalisation file for extension Tab0.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $messages = array();

@@ -2,8 +2,9 @@
 /**
  * Internationalisation file for extension Scan Set.
  *
- * @addtogroup Extensions
-*/
+ * @file
+ * @ingroup Extensions
+ */
 
 $messages = array();
 

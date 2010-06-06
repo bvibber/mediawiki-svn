@@ -5,9 +5,9 @@
  * edit form when editing non-exstant pages or, optionally (based upon
  * configuration variable $wgMultiBoilerplateOverwrite), load the template
  * over the current contents. 
- * 
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  *
  * @link http://www.mediawiki.org/wiki/Extension:MultiBoilerplate
  *

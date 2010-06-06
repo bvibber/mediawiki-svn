@@ -3,8 +3,8 @@
 /**
  * An extension that adds an upload blacklist functionality
  *
- * @addtogroup Extensions
- *
+ * @file
+ * @ingroup Extensions
  */
 
 if( !defined( 'MEDIAWIKI' ) )

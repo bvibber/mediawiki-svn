@@ -3,8 +3,8 @@ if ( !defined( 'MEDIAWIKI' ) ) die( 'Not an entry point.' );
 /**
  * Extension:RecordAdmin - MediaWiki extension
  *
- * @package MediaWiki
- * @subpackage Extensions
+ * @file
+ * @ingroup Extensions
  * @author Aran Dunkley [http://www.organicdesign.co.nz/nad User:Nad]
  * @author Bertrand GRONDIN
  * @author Siebrand Mazeland

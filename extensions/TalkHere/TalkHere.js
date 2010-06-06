@@ -2,8 +2,8 @@
  * JavaScript functions for the TalkHere extension; 
  * Implements AJAX based inline edit box for adding comments.
  *
- * @package MediaWiki
- * @subpackage Extensions
+ * @file
+ * @ingroup Extensions
  * @author Daniel Kinzler, brightbyte.de
  * @copyright © 2007 Daniel Kinzler
  * @licence GNU General Public Licence 2.0 or later

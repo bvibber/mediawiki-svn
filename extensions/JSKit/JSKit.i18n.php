@@ -2,7 +2,8 @@
 /**
  * Internationalisation file for extension JSKit.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $messages = array();

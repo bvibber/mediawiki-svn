@@ -5,10 +5,10 @@ if ( ! defined( 'MEDIAWIKI' ) )
 /**#@+
  * Allows users to post comments directly to discussion pages.'
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  *
  * @link http://www.mediawiki.org/wiki/Extension:PostComment
- *
  *
  * @author Travis Derouin <travis@wikihow.com>
  * @author Siebrand Mazeland

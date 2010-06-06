@@ -2,8 +2,8 @@
 /**
  * DataTransclusion Source base class
  *
- * @package MediaWiki
- * @subpackage Extensions
+ * @file
+ * @ingroup Extensions
  * @author Daniel Kinzler for Wikimedia Deutschland
  * @copyright © 2010 Wikimedia Deutschland (Author: Daniel Kinzler)
  * @licence GNU General Public Licence 2.0 or later

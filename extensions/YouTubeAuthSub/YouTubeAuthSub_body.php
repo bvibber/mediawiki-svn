@@ -5,7 +5,7 @@ if (!defined('MEDIAWIKI')) {
 /**
  * Class provides a special page
  *
- * @addtogroup Extensions
+ * @ingroup Extensions
  */
 
 class SpecialYouTubeAuthSub extends SpecialPage {

@@ -12,7 +12,7 @@
 if (!defined('MEDIAWIKI')) die();
 
 /**
- * @addtogroup API
+ * @ingroup API
  */
 class APIQueryTemplateInfo extends ApiQueryBase {
 

@@ -2,6 +2,7 @@
 /**
  * Internationalisation file for the RT extension.
  *
+ * @file
  * @ingroup Extensions
  */
 

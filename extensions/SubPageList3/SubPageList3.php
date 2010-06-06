@@ -2,8 +2,8 @@
 /**
  * Add a <splist /> tag which produces a linked list of all subpages of the current page
  *
- * @package MediaWiki
- * @subpackage Extensions
+ * @file
+ * @ingroup Extensions
  * @author James McCormack (email: user "qedoc" at hotmail); preceding version Martin Schallnahs <myself@schaelle.de>, original Rob Church <robchur@gmail.com>
  * @copyright © 2008 James McCormack, preceding version Martin Schallnahs, original Rob Church
  * @licence GNU General Public Licence 2.0 or later

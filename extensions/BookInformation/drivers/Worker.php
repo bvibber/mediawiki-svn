@@ -2,7 +2,8 @@
 /**
  * Class processes book information requests
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  * @author Rob Church <robchur@gmail.com>
  */
 class BookInformation {

@@ -3,8 +3,7 @@
  * Lua parser extensions for MediaWiki - Wrapper classes
  *
  * @author Fran Rogers
- * @package MediaWiki
- * @addtogroup Extensions
+ * @ingroup Extensions
  * @license See 'COPYING'
  * @file
  */

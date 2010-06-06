@@ -5,7 +5,9 @@ if ( ! defined( 'MEDIAWIKI' ) )
 /**#@+
  * Provides a basic way of preventing articles with certain titles from being
  * saved or created
- * @addtogroup Extensions
+ *
+ * @file
+ * @ingroup Extensions
  *
  * @link http://www.mediawiki.org/wiki/Extension:BlockTitles Documentation
  *

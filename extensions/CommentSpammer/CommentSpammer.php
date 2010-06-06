@@ -4,9 +4,10 @@
  * Experimental DNS blacklist extension for rejecting edits
  * from suspected comment spammers.
  *
+ * @file
  * @author Nick Jenkins <nickpj At-The-Host-Called gmail.com>, http://nickj.org/
  * @license GPL v2
- * @addtogroup Extensions
+ * @ingroup Extensions
  */
 
 if ( ! defined( 'MEDIAWIKI' ) ) {

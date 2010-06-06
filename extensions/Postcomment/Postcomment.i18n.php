@@ -2,7 +2,8 @@
 /**
  * Internationalisation file for extension Post Comment.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $messages = array();

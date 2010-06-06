@@ -1,7 +1,8 @@
 <?php
 /**
+ * @file
  * @author Magnus Manske
- * @addtogroup Extensions
+ * @ingroup Extensions
  * @comment Maintains a table with hash values for category intersections within a page
  * @copyright (c) 2008 by Magnus Manske
  * @license Released under GPL

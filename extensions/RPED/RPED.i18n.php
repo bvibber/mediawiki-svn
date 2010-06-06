@@ -1,7 +1,9 @@
 <?php
 /**
  * Internationalisation file for the RPED extension
- * @addtogroup Extensions
+ *
+ * @file
+ * @ingroup Extensions
  */
 
 $messages = array();

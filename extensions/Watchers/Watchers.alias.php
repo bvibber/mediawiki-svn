@@ -2,7 +2,8 @@
 /**
  * Aliases for special pages of Watchers extension.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $aliases = array();

@@ -2,7 +2,8 @@
 /**
  * Internationalisation file for Asksql extension
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  * @author Bertrand Grondin <bertrand.grondin@tiscali.fr>
  */
 

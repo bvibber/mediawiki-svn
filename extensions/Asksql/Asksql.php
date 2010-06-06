@@ -8,7 +8,8 @@
  * Heavy queries could slow down the database specially for the
  * biggest wikis.
  *
- * @addtogroup SpecialPage
+ * @file
+ * @ingroup SpecialPage
  */
 
 if ( !defined( 'MEDIAWIKI' ) )

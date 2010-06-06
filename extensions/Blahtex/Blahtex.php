@@ -2,7 +2,8 @@
 /**
  * Extension to enable MathML output for <math> tags
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  * @author David Harvey <dmharvey@math.harvard.edu>
  * @author Jitse Niesen <j.niesen@latrobe.edu.au>
  * @copyright 2005, 2006 David Harvey and Jitse Niesen

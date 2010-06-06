@@ -3,7 +3,8 @@
 /**
  * Special page to direct the user to a random page in specified category
  *
- * @addtogroup SpecialPage
+ * @file
+ * @ingroup Extensions
  * @author VasilievVV <vasilvv@gmail.com>, based on SpecialRandompage.php code
  * @license GNU General Public Licence 2.0 or later
  */

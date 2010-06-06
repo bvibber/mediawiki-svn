@@ -2,7 +2,8 @@
 /**
  * Internationalisation file for extension TitleKey.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $messages = array();

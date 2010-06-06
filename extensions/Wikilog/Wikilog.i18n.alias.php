@@ -1,7 +1,9 @@
 <?php
 /**
  * Special page aliases used by Wikilog extension.
- * @addtogroup Extensions
+ *
+ * @file
+ * @ingroup Extensions
  */
 
 $specialPageAliases = array();

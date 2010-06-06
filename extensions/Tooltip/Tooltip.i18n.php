@@ -1,7 +1,10 @@
 <?php
-/** Internationalisation extension message for ToolTip
-  * @addtogroup  extension
-**/
+/**
+ * Internationalisation extension message for ToolTip
+ *
+ * @file
+ * @ingroup Extensions
+ */
 
 $messages = array();
 

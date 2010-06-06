@@ -2,7 +2,8 @@
 /**
  * Internationalisation file for Preloader extension.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $messages = array();

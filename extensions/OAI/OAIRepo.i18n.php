@@ -2,7 +2,8 @@
 /**
  * Internationalisation file for OAIRepository extension.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $messages = array();

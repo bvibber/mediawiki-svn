@@ -2,8 +2,9 @@
 /**
  * Internationalisation file for extension Wiki At Home.
  *
- * @addtogroup Extensions
-*/
+ * @file
+ * @ingroup Extensions
+ */
 
 require_once( dirname(__FILE__) . '/WikiAtHome.i18n.magic.php' );
 

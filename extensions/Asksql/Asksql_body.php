@@ -43,7 +43,7 @@ class SpecialAsksql extends SpecialPage {
 
 /**
  * @access private
- * @addtogroup SpecialPage
+ * @ingroup SpecialPage
  */
 class SqlQueryForm {
 	var $query = '';

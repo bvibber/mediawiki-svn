@@ -4,7 +4,8 @@ if ( !defined( 'MEDIAWIKI' ) ) die();
  * Parser functions for MediaWiki providing information
  * about various media files
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  * @author Rob Church <robchur@gmail.com>
  * @version 1.2
  */

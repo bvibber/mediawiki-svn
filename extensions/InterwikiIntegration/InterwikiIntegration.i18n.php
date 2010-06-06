@@ -1,7 +1,9 @@
 <?php
 /**
  * Internationalisation file for the InterwikiIntegration extension
- * @addtogroup Extensions
+ *
+ * @file
+ * @ingroup Extensions
  */
  
 $messages = array();

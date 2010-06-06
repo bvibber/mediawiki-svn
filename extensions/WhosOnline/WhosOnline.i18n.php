@@ -2,6 +2,7 @@
 /**
  * Internationalisation file for Who's Online extension.
  *
+ * @file
  * @ingroup Extensions
  */
 

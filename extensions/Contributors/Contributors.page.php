@@ -3,7 +3,8 @@
 /**
  * Special page class for the Contributors extension
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  * @author Rob Church <robchur@gmail.com>
  */
  

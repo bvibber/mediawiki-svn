@@ -1,7 +1,7 @@
 <?php
 /**
- * @package MediaWiki
- * @subpackage Extensions
+ * @file
+ * @ingroup Extensions
  *
  * @link http://www.mediawiki.org/wiki/Extension:Transliterator Documentation
  *

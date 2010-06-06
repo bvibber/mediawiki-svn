@@ -8,8 +8,8 @@ if ( ! defined( 'MEDIAWIKI' ) )
  * Extension enforces a minimum username length
  * during account registration
  *
- * @package MediaWiki
- * @subpackage Extensions
+ * @file
+ * @ingroup Extensions
  * @author Rob Church <robchur@gmail.com>
  */
 

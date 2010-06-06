@@ -3,7 +3,8 @@
 /**
  * Extension to provide customisable email notification of new user creation
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  * @author Rob Church <robchur@gmail.com>
  */
 

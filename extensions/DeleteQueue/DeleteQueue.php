@@ -4,7 +4,9 @@ if ( ! defined( 'MEDIAWIKI' ) )
 
 /**#@+
  * Creates a queue-based system for managing deletion.
- * @addtogroup Extensions
+ *
+ * @file
+ * @ingroup Extensions
  *
  * @link http://www.mediawiki.org/wiki/Extension:DeletionQueue Documentation
  *

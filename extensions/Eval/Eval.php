@@ -4,8 +4,8 @@ if ( ! defined( 'MEDIAWIKI' ) ) die();
  * An special page extension that provides a public interface to PHP's eval()
  * function, supersecure, install it on your production servers, no really!
  *
+ * @file
  * @addtogroup Extensions
- *
  * @author Ævar Arnfjörð Bjarmason <avarab@gmail.com>
  * @copyright Copyright © 2005, Ævar Arnfjörð Bjarmason
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later

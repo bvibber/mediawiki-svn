@@ -2,7 +2,8 @@
 /**
  * Internationalisation file for the extension Contributors.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  * @author Rob Church <robchur@gmail.com>
  */
 

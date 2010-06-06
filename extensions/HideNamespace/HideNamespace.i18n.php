@@ -3,8 +3,8 @@
 /**
  * Internationalisation for extension HideNamespace.
  *
- * @package MediaWiki
- * @subpackage Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $messages = array();

@@ -2,7 +2,8 @@
 /**
  * Internationalisation file for MassEditRegex extension
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $messages = array();

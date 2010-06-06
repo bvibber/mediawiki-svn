@@ -4,8 +4,8 @@ if (!defined('MEDIAWIKI')) die();
  * A special page querypage extension (the first querypage extension) that
  * lists cross-namespace links that shouldn't exist on Wikimedia projects.
  *
- * @addtogroup Extensions
- *
+ * @file
+ * @ingroup Extensions
  * @author Ævar Arnfjörð Bjarmason <avarab@gmail.com>
  * @copyright Copyright © 2005, Ævar Arnfjörð Bjarmason
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later

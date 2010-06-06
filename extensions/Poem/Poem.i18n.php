@@ -2,7 +2,8 @@
 /**
  * Internationalisation file for Poem extension.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $messages = array();

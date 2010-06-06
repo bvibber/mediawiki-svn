@@ -2,7 +2,8 @@
 /**
  * Internationalisation file for extension SpecialFileList.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
 */
 
 $messages = array();

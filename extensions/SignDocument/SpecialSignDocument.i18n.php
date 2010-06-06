@@ -1,6 +1,9 @@
 <?php
-/* Messages for Special:SignDocument.
- * @addtogroup Extensions
+/**
+ * Messages for Special:SignDocument.
+ *
+ * @file
+ * @ingroup Extensions
  */
 
 $messages = array();

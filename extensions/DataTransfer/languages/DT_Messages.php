@@ -2,8 +2,9 @@
 /**
  * Internationalization file for the Data Transfer extension
  *
- * @addtogroup Extensions
-*/
+ * @file
+ * @ingroup Extensions
+ */
 
 $messages = array();
 

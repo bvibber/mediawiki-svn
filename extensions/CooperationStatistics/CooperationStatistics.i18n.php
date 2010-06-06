@@ -2,8 +2,9 @@
 /**
  * Internationalisation file for extension cooperationstatistics.
  *
- * @addtogroup Extensions
-*/
+ * @file
+ * @ingroup Extensions
+ */
 
 $messages = array();
 

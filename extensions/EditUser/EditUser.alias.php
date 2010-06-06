@@ -2,7 +2,8 @@
 /**
  * Aliases for Special:EditUser
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $aliases = array();

@@ -3,7 +3,8 @@
  * Extension allows Special:Booksource to obtain basic details
  * about a book from available web services
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  * @author Rob Church <robchur@gmail.com>
  */
 

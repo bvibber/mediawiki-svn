@@ -2,7 +2,8 @@
 /**
  * Internationalisation file for extension WebStore.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $messages = array();

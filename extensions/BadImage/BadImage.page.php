@@ -2,7 +2,7 @@
 /**
  * Class provides a special page to manage the bad image list
  *
- * @addtogroup Extensions
+ * @ingroup Extensions
  * @author Rob Church <robchur@gmail.com>
  * @copyright © 2006 Rob Church
  * @licence Copyright holder allows use of the code for any purpose

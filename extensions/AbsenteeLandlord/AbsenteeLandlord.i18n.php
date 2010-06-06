@@ -3,7 +3,8 @@
 /**
  * Internationalisation file for extension AbsenteeLandlord.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
 */
 
 $messages = array();

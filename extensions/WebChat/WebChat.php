@@ -4,7 +4,8 @@
  *
  * Integrates a web chat client in to a special page, for example Mibbit.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  *
  * @link http://www.mediawiki.org/wiki/Extension:WebChat
  *

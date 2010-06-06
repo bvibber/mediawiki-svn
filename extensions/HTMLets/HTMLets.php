@@ -7,8 +7,8 @@
  * configured using <tt>$wgHTMLetsDirectory</tt>; it defaults to $IP/htmlets, i.e. the
  * directory <tt>htmlets</tt> in the installation root of MediaWiki. 
  *
- * @package MediaWiki
- * @subpackage Extensions
+ * @file
+ * @ingroup Extensions
  * @author Daniel Kinzler, brightbyte.de
  * @copyright © 2007 Daniel Kinzler
  * @license GNU General Public Licence 2.0 or later

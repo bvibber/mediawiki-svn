@@ -19,8 +19,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 /**
  * A file for the WhiteList extension
  *
- * @package MediaWiki
- * @subpackage Extensions
+ * @file
+ * @ingroup Extensions
  *
  * @author Paul Grinberg <gri6507@yahoo.com>
  * @author Mike Sullivan <ms-mediawiki@umich.edu>

@@ -2,8 +2,9 @@
 /**
  * Internationalisation file for extension mostrevisors.
  *
- * @addtogroup Extensions
-*/
+ * @file
+ * @ingroup Extensions
+ */
 
 $messages = array();
 

@@ -2,7 +2,8 @@
 /**
  * Aliases for Special:MassBlank
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $aliases = array();

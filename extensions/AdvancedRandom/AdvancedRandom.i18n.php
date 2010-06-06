@@ -2,8 +2,9 @@
 /**
  * Internationalisation file for Advanced Random extension.
  *
- * @addtogroup Extensions
-*/
+ * @file
+ * @ingroup Extensions
+ */
 
 $messages = array();
 

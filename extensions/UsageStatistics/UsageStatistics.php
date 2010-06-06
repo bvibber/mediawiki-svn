@@ -3,8 +3,8 @@ if ( !defined( 'MEDIAWIKI' ) ) die();
 /**
  * A Special Page extension to display user statistics
  *
- * @package MediaWiki
- * @subpackage Extensions
+ * @file
+ * @ingroup Extensions
  *
  * @author Paul Grinberg <gri6507@yahoo.com>
  * @copyright Copyright © 2007, Paul Grinberg

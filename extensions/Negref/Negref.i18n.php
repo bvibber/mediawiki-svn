@@ -2,7 +2,8 @@
 /**
  * Internationalisation file for extension Negref.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 require_once( dirname(__FILE__) . '/Negref.i18n.magic.php' );

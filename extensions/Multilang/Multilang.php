@@ -3,7 +3,8 @@
 /**
  * Adapted form of the MultiLang extension from Arnomane
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  * @author Rob Church <robchur@gmail.com>
  */
  

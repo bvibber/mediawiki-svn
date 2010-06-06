@@ -3,8 +3,9 @@
 /**
  * Internationalisation file for extension phpbbData
  *
- * @addtogroup Extensions
-*/
+ * @file
+ * @ingroup Extensions
+ */
 
 $messages = array();
 

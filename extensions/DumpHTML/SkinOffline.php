@@ -10,7 +10,7 @@ if( !defined( 'MEDIAWIKI' ) )
 /**
  * Inherit main code from SkinTemplate, set the CSS and template filter.
  * @todo document
- * @addtogroup Skins
+ * @ingroup Skins
  */
 class SkinOffline extends SkinTemplate {
 	/** Using monobook. */
@@ -103,7 +103,7 @@ class SkinOffline extends SkinTemplate {
 
 /**
  * @todo document
- * @addtogroup Skins
+ * @ingroup Skins
  */
 class SkinOfflineTemplate extends QuickTemplate {
 	/**

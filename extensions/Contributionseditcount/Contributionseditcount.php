@@ -3,7 +3,8 @@ if (!defined('MEDIAWIKI')) die();
 /**
  * Display an edit count at the top of Special:Contributions
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  *
  * @bug 1725
  *

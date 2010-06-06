@@ -4,8 +4,9 @@
 
  * The optimal solution would be a clean extension that is easily maintainable as the trunk of MW moves foward.
  *
+ * @file
  * @author Jack D. Pond <jack.pond@psitex.com>
- * @addtogroup Extensions
+ * @ingroup Extensions
  * @copyright  2009 Jack D. pond
  * @url http://www.mediawiki.org/wiki/Manual:Extension:NSFileRepo
  * @licence GNU General Public Licence 2.0 or later

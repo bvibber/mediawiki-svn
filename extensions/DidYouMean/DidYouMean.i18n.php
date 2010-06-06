@@ -2,7 +2,8 @@
 /**
  * Internationalisation file for DidYouMean extension.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $messages = array();

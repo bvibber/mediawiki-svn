@@ -3,8 +3,9 @@
 /**
  * Internationalisation file for the UserPageEditProtection extension
  *
+ * @file
  * @author Lisa Ridley
- * @addtogroup Extensions
+ * @ingroup Extensions
  */
 
 $messages = array();

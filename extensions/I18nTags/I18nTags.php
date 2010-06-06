@@ -3,8 +3,8 @@
 /**
  * Some tags to access i18n function in language files
  *
- * @package MediaWiki
- * @subpackage Extensions
+ * @file
+ * @ingroup Extensions
  * @author Niklas Laxström
  */
 

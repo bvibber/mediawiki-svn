@@ -4,7 +4,8 @@
  * Parser hook in which free dates will be refactored to meet the
  * user's date formatting preference
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  * @author Rob Church <robchur@gmail.com>
  * Please see the LICENCE file for terms of use and redistribution
  */

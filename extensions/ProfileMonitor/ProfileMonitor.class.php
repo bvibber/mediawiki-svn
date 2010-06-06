@@ -3,7 +3,8 @@
 /**
  * Class file for the ProfileMonitor extension
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  * @author Rob Church <rob.church@mintrasystems.com>
  */
 
