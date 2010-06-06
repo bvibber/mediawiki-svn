@@ -193,10 +193,10 @@ class CategoryMultisortHooks {
 		$nt = Title::makeTitleSafe( NS_CATEGORY, $cat );
 		$wgContLang->findVariantLink( $cat, $nt, true );
 		$arr[] = array(
-			'clms_from'         => $linksUpdate->mId,
-			'clms_to'           => $cat,
+			'clms_from' => $linksUpdate->mId,
+			'clms_to' => $cat,
 			'clms_sortkey_name' => $skn,
-			'clms_sortkey'      => $skv,
+			'clms_sortkey' => $skv,
 		);
 	}
 	
@@ -229,7 +229,7 @@ class CategoryMultisortHooks {
 	}
 	
 	function parserCategoryLink(
-	    $parser, $holders, $markers, $title, $titleText, &$sortText = null, &$leadingColon = false
+		$parser, $holders, $markers, $title, $titleText, &$sortText = null, &$leadingColon = false
 	) {
 		global $wgContLang;
 		
@@ -259,6 +259,7 @@ class CategoryMultisortHooks {
 			$sort = null;
 		}
 		if ( is_callable( $this->coreCategoryLinkHook ) ) {
+			# Will it return any error message?
 			call_user_func_array( $this->coreCategoryLinkHook, array(
 				$parser, $holders, $markers, $title, $titleText, &$sort, &$leadingColon
 			) );
@@ -313,7 +314,7 @@ class CategoryMultisortHooks {
 		$args = func_get_args();
 		$parser = array_shift( $args );
 		$categoryDefaultMultisorts = &$parser->getOutput()->mCategoryDefaultMultisorts;
-				
+		
 		foreach ( $this->parseMultisortArgs( $args ) as $skn => $skv ) {
 			$categoryDefaultMultisorts[$skn] = $skv;
 		}
