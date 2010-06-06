@@ -27,6 +27,36 @@ if( mwReqParam['debug'] ) {
 	mwUseScriptLoader = false;
 }
 
+// Setup up some globals to wrap mwEmbed mw.ready and mw.setConfig functions
+
+//Setup preMwEmbedReady queue
+if( !preMwEmbedReady ){
+	var preMwEmbedReady = [];
+}
+// Wrap mw.ready to preMwEmbedReady values
+if( !mw.ready){
+	mw.ready = function( fn ){
+		preMwEmbedReady.push( fn );
+	}
+}
+// Setup a preMwEmbedConfig var
+if( ! preMwEmbedConfig ) {
+	var preMwEmbedConfig = [];
+}
+if( !mw.setConfig ){
+	mw.setConfig = function( set, value ){
+		var valueQueue = {};
+		if( value ) {			
+			preMwEmbedConfig[ set	] = value;
+		} else if ( typeof set == 'object' ){
+			for( var i in set ){
+				preMwEmbedConfig[ i ] = set[i];
+			}
+		}
+	}
+}
+
+
 // Use wikibits onLoad hook: ( since we don't have js2 / mw object loaded ) 
 addOnloadHook( function() {
 	doPageSpecificRewrite();
