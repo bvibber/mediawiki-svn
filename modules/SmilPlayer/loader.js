@@ -3,6 +3,8 @@
 */
 
 mw.addClassFilePaths( {
+	"mw.SmilHooks.js" : "mw.SmilHooks",
+	
 	"mw.Smil" : "mw.Smil.js",
 	"mw.SmilLayout" : "mw.SmilLayout.js",
 	"mw.SmilBody" : "mw.SmilBody.js",
@@ -34,20 +36,6 @@ $j( mw ).bind( 'LoaderEmbedPlayerUpdateRequest', function( event, playerElement,
 		$j.merge(classRequest, smilPlayerLibrarySet);
 	}
 } );
-
-// Add the smil player to available player types: 
-$j( mw ).bind( 'EmbedPlayerManagerReady', function( event ) {			
-	
-	// Add the swarmTransport playerType	
-	mw.EmbedTypes.players.defaultPlayers[ 'application/smil' ] = [ 'Smil' ];
-	
-	// Build the swarm Transport "player"
-	var smilMediaPlayer = new mediaPlayer( 'smilPlayer', [ 'application/smil' ], 'Smil' );
-	
-	// Add the swarmTransport "player"
-	mw.EmbedTypes.players.addPlayer( smilMediaPlayer );
-				
-} );		
 
 
 /**

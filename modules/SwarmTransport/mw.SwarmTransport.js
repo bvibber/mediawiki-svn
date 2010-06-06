@@ -21,11 +21,6 @@ mw.SwarmTransport = {
 			$j( embedPlayer ).bind( 'checkPlayerSourcesEvent', function( event, callback ) {				
 				// Confirm SwarmTransport add-on is available ( defines swarmTransport var )  
 				if( typeof window['swarmTransport'] != 'undefined' ){
-				
-					// Make sure the swarmTransport player has been added: 
-					if( mw.EmbedTypes.players.defaultPlayers[ 'video/swarmTransport' ] ){	
-						_this.addSwarmPlayer( embedPlayer );
-					}
 					
 					// Add the swarm source
 					mw.log(" SwarmTransport :: checkPlayerSourcesEvent ");
@@ -50,19 +45,21 @@ mw.SwarmTransport = {
 				}
 			});
 					
-		} );		
+		} );	
+		
+		
+		// Add the swarmTransport player to available player types: 
+		$j( mw ).bind( 'EmbedPlayerManagerReady', function( event ) {
+			// Add the swarmTransport playerType	
+			mw.EmbedTypes.players.defaultPlayers['video/swarmTransport'] = ['Native'];
+			
+			// Build the swarm Transport Player
+			var swarmTransportPlayer = new mediaPlayer( 'swarmTransportPlayer', ['video/swarmTransport' ], 'Native' );
+			
+			// Add the swarmTransport "player"
+			mw.EmbedTypes.players.addPlayer( swarmTransportPlayer );	
+		});
 					
-	},
-	
-	addSwarmPlayer: function( embedPlayer ){
-		// Add the swarmTransport playerType	
-		mw.EmbedTypes.players.defaultPlayers['video/swarmTransport'] = ['native'];
-		
-		// Build the swarm Transport Player
-		var swarmTransportPlayer = new mediaPlayer( 'swarmTransportPlayer', ['video/swarmTransport' ], 'native' );
-		
-		// Add the swarmTransport "player"
-		mw.EmbedTypes.players.addPlayer( swarmTransportPlayer );				
 	},
 	
 	addSwarmSource: function( embedPlayer, callback ) {

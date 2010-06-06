@@ -131,7 +131,7 @@
 				if ( $j( element ).attr( "id" ) == '' ) {
 					$j( element ).attr( "id",  'v' + ( rewriteElementCount++ ) );
 				}
-								
+
 				// Add an absolute positioned loader
 				var pos = $j( element ).offset();
 				mw.log( ' l: ' + pos.left + ' t: ' + pos.top ); 
@@ -147,7 +147,8 @@
 				$j('body').append(
 					$j('<div />')
 					.loadingSpinner()
-					.attr('id', 'loadSpiner_' + $j( element ).attr('id') )
+					.attr('id', 'loadingSpinner_' + $j( element ).attr('id') )
+					.addClass('playerLoadingSpinner')
 					.css({
 						'width' : 32,
 						'height' : 32,
@@ -156,15 +157,13 @@
 						'left' : posLeft + 'px'
 					})						
 				)
-					
-				//$j( element ).hide();
 			});									
 			// Load the embedPlayer module ( then run queued hooks )
-			mw.load( 'EmbedPlayer', function ( ) {
+			mw.load( 'EmbedPlayer', function ( ) {												
 				// Rewrite the rewritePlayerTags with the 
 				$j( mw.getConfig( 'rewritePlayerTags' ) ).embedPlayer();				
 				// Run the setup callback now that we have setup all the players
-				callback();
+				callback();							
 			})
 		} else {
 			callback();
@@ -241,7 +240,7 @@
 			} ); // setupUserConfig
 		} );		
 	} );
-
+	
 	/**
 	 * Takes a embed player element and updates a request object with any 
 	 * dependent libraries per that tags attributes.

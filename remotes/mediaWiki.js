@@ -176,7 +176,7 @@ function mwLoadPlayer( callback ){
 		'mw.EmbedPlayer', 
 		'mw.style.EmbedPlayer',
 		'$j.ui', 
-		'ctrlBuilder', 
+		'mw.PlayerControlBuilder', 
 		'$j.fn.hoverIntent',		
 		'$j.cookie', 
 		'JSON',

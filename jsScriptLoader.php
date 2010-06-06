@@ -95,7 +95,11 @@ class jsScriptLoader {
 
 		// Load the javascript class paths:
 		require_once( realpath( dirname( __FILE__ ) ) . "/includes/jsClassLoader.php");
-		jsClassLoader::loadClassPaths();
+		try {
+			jsClassLoader::loadClassPaths();
+		} catch( Exception $e ) {
+			$this->errorMsg .= $e->getMessage() ;		
+		}
 
 		// Reset the requestKey:
 		$this->requestKey = '';
@@ -183,7 +187,7 @@ class jsScriptLoader {
 		if ( $this->errorMsg != '' ) {
 			//just set the content type (don't send cache header)
 			header( 'Content-Type: text/javascript' );
-			echo 'alert(\'Error With ScriptLoader ::' .
+			echo 'if(console.log)console.log(\'Error With ScriptLoader ::' .
 					 str_replace( "\n", '\'+"\n"+' . "\n'",
 					 	xml::escapeJsString( $this->errorMsg )
 					 ) . '\');'."\n";
@@ -718,7 +722,11 @@ class jsScriptLoader {
 	public static function getPathFromClass( $reqClass ){
 		global $wgScriptLoaderNamedPaths;
 		// Make sure the class is loaded:
-		jsClassLoader::loadClassPaths();
+		try {
+			jsClassLoader::loadClassPaths();
+		} catch( Exception $e ) {
+			$this->errorMsg .= $e->getMessage() ;		
+		}
 
 		if ( isset( $wgScriptLoaderNamedPaths[ $reqClass ] ) ) {
 			return $wgScriptLoaderNamedPaths[ $reqClass ];

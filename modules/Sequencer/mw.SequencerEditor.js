@@ -1526,7 +1526,7 @@ mw.SequenceEditor.prototype = {
 		$j( this.target_sequence_container ).append( '<div id="' + this.timeline_id + '_pl_control"' +
 			' style="position:absolute;top:' + ( this.plObj.height ) + 'px;' +
 			'right:1px;width:' + this.plObj.width + 'px;height:' + this.plObj.org_control_height + '" ' +
-			'class="' + this.plObj.ctrlBuilder.playerClass + '"><div class="ui-widget ui-corner-bottom ui-state-default control-bar">' +
+			'class="' + this.plObj.controlBuilder.playerClass + '"><div class="ui-widget ui-corner-bottom ui-state-default control-bar">' +
 					 this.plObj.getControlsHTML() +
 				 '</div>' +
 			'</div>' );
@@ -1534,7 +1534,7 @@ mw.SequenceEditor.prototype = {
 		this.plObj.updateBaseStatus();
 
 		// once the controls are in the DOM add hooks:
-		this.plObj.ctrlBuilder.addControlBindings( $j( '#' + this.timeline_id + '_pl_control' ) );
+		this.plObj.controlBuilder.addControlBindings( $j( '#' + this.timeline_id + '_pl_control' ) );
 
 		// render out the "jump" div
 		if ( this.timeline_mode == 'time' ) {  // Closure reports this line as inactive -papy
@@ -1646,7 +1646,7 @@ mw.SeqPlayList.prototype = {
 		// get controls from current clip add some playlist specific controls:
 		this.cur_clip.embed.supports['prev_next'] = true;
 		this.cur_clip.embed.supports['options']   = false;
-		return ctrlBuilder.getControls( this.cur_clip.embed );
+		return controlBuilder.getControls( this.cur_clip.embed );
 	},
 	// override renderDisplay
 	renderDisplay:function() {

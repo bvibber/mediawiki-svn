@@ -64,7 +64,7 @@ mw.PlayerControlBuilder.prototype = {
 		var _this = this;
 		this.embedPlayer = embedPlayer;
 
-		// Check for skin overrides for ctrlBuilder
+		// Check for skin overrides for controlBuilder
 		var skinClass =  embedPlayer.skinName[0].toUpperCase() +  embedPlayer.skinName.substr( 1 );		
 		if ( mw['PlayerSkin' + skinClass  ]) {
 		
@@ -72,7 +72,7 @@ mw.PlayerControlBuilder.prototype = {
 			var _this = $j.extend( true, { }, this, mw['PlayerSkin' + skinClass ] );	
 			return _this;
 		}
-		// Return the ctrlBuilder Object: 
+		// Return the controlBuilder Object: 
 		return this;
 	},
 	
@@ -91,11 +91,16 @@ mw.PlayerControlBuilder.prototype = {
 		// Set up local pointer to the embedPlayer
 		var embedPlayer = this.embedPlayer;
 		
-		// Set up local ctrlBuilder
+		// Set up local controlBuilder
 		var _this = this;
 
 		// Remove any old controls & old overlays:
+		mw.log("Remove old embedPlayer control bar:");
 		embedPlayer.$interface.find( '.control-bar,.overlay-win' ).remove();
+		
+		// Reset flag: 
+		_this.displayOptionsMenuFlag = false;
+		
 		
 		// Setup the controlBar container
 		var $controlBar = $j('<div />')
@@ -125,10 +130,10 @@ mw.PlayerControlBuilder.prototype = {
 		// Add the controls to the interface
 		embedPlayer.$interface.append( $controlBar );
 	
-		// Add the Controls with their bindings
+		// Add the Controls Component
 		this.addControlComponents();
 	
-		// Add hooks once Controls are in DOM
+		// Add top level Controls bindings
 		this.addControlBindings();
 	},
 	
@@ -272,7 +277,7 @@ mw.PlayerControlBuilder.prototype = {
 	* Do full-screen mode 
 	*/ 
 	doFullScreenPlayer: function() {
-		mw.log(" ctrlBuilder :: toggle full-screen ");									
+		mw.log(" controlBuilder :: toggle full-screen ");									
 		// Setup pointer to control builder :
 		var _this = this;
 		
@@ -452,7 +457,7 @@ mw.PlayerControlBuilder.prototype = {
 		$interface.animate( {
 			'top' : this.windowOffset.top,
 			'left' : this.windowOffset.left,
-			// height is embedPlayer height + ctrlBuilder height: 
+			// height is embedPlayer height + controlBuilder height: 
 			'height' : interfaceHeight,
 			'width' : embedPlayer.getWidth()					
 		},function(){			
@@ -519,25 +524,26 @@ mw.PlayerControlBuilder.prototype = {
 		var _this = this;		
 		var $interface = embedPlayer.$interface;
 		
-		// Setup target shortcut to	control-bar
-		$target = embedPlayer.$interface;	
-
+		// Remove any old interface bindings
+		$interface.unbind();
+		
 		// Add hide show bindings for control overlay (if overlay is enabled ) 
 		if( ! _this.checkOverlayControls() ) {
-			$interface.unbind().show();		
+			$interface.show();		
 		} else { // hide show controls: 
 			//$interface.css({'background-color': 'red'});
 			// Bind a startTouch to show controls
 			$interface.bind( 'touchstart', function() {
 				_this.showControlBar();
 				// ( once the user touched the video "don't hide" ) 
-			} );
+			} );			
 			// Add a special absolute overlay for hover ( to keep menu displayed 
 			$interface.hoverIntent({
+				'sensitivity': 4,
 				'timeout' : 2000,
 				'over' : function(){						
 					// Show controls with a set timeout ( avoid fade in fade out on short mouse over )				
-					_this.showControlBar()					
+					_this.showControlBar();
 				},
 				'out' : function(){
 					_this.hideControlBar();
@@ -577,7 +583,8 @@ mw.PlayerControlBuilder.prototype = {
 		var _this = this;			
 		
 		// Do not hide control bar if overlay menu item is being displayed:
-		if( _this.displayOptionsMenuFlag ){
+		if( _this.displayOptionsMenuFlag ||  				
+			$j( '#timedTextMenu_' + this.embedPlayer.id ).is( ':visible' ) ) {
 			setTimeout( function(){
 				_this.hideControlBar();
 			}, 200 );
@@ -601,7 +608,7 @@ mw.PlayerControlBuilder.prototype = {
 	/**
 	* Show the control bar
 	*/
-	showControlBar : function(){
+	showControlBar: function(){
 		var animateDuration = 'slow';	
 		$j( this.embedPlayer.getPlayerElement() ).css('z-index', '1')	
 		mw.log( 'showControlBar' );
@@ -687,7 +694,7 @@ mw.PlayerControlBuilder.prototype = {
 	* 
 	*/
 	doWarningBindinng: function( preferenceId, warningMsg ) {
-		mw.log( 'ctrlBuilder: doWarningBindinng: ' + preferenceId +  ' wm: ' + warningMsg);
+		mw.log( 'controlBuilder: doWarningBindinng: ' + preferenceId +  ' wm: ' + warningMsg);
 		// Set up local pointer to the embedPlayer
 		var embedPlayer = this.embedPlayer;
 		var _this = this;			
@@ -835,7 +842,7 @@ mw.PlayerControlBuilder.prototype = {
 		$optionsMenu = $j( '<ul />' );
 		for( var i in this.optionMenuItems ){
 		
-			// Make sure its supported in the current ctrlBuilder config: 
+			// Make sure its supported in the current controlBuilder config: 
 			if( ! this.supportedMenuItems[ i ] 	) {
 			 	continue;
 			}
@@ -848,7 +855,7 @@ mw.PlayerControlBuilder.prototype = {
 	},	
 		
 	/**
-	* Allow the ctrlBuilder to do interface actions onDone
+	* Allow the controlBuilder to do interface actions onDone
 	*/
 	onClipDone: function(){
 		// Related videos could be shown here 
@@ -858,7 +865,7 @@ mw.PlayerControlBuilder.prototype = {
 	 * The ctrl builder updates the interface on seeking 
 	 */
 	onSeek: function(){
-		mw.log( "ctrlBuilder:: onSeek" );
+		mw.log( "controlBuilder:: onSeek" );
 		// Update the interface: 
 		this.setStatus( gM( 'mwe-embedplayer-seeking' ) );
 	},
@@ -1093,7 +1100,7 @@ mw.PlayerControlBuilder.prototype = {
       		.addClass( 'ui-state-default ui-corner-all copycode' )
       		.text( gM( 'mwe-embedplayer-copy-code' ) )
       		.click(function() {
-				$target.find( 'textarea' ).focus().select();
+      			$shareInterface.find( 'textarea' ).focus().select();
 				// Copy the text if supported:
 				if ( document.selection ) {
 					CopiedTxt = document.selection.createRange();
@@ -1122,7 +1129,7 @@ mw.PlayerControlBuilder.prototype = {
 			$j( '<h2 />' )
 			.text( gM( 'mwe-embedplayer-choose_player' )  )
 		);		
-		
+
 		$j.each( embedPlayer.mediaElement.getPlayableSources(), function( sourceId, source ) {
 			
 			var playable = mw.EmbedTypes.players.defaultPlayer( source.getMIMEType() );			
@@ -1165,7 +1172,7 @@ mw.PlayerControlBuilder.prototype = {
 								var default_player_id = iparts[1];
 								mw.log( 'source id: ' +  sourceId + ' player id: ' + default_player_id );
 				
-								embedPlayer.ctrlBuilder.closeMenuOverlay();
+								embedPlayer.controlBuilder.closeMenuOverlay();
 								
 								// Close fullscreen if we are in fullscreen mode
 								if( _this.fullscreenMode ){
@@ -1224,10 +1231,10 @@ mw.PlayerControlBuilder.prototype = {
 		var embedPlayer = this.embedPlayer;
 		var loc = embedPlayer.$interface.find( '.rButton.timed-text' ).offset();
 		mw.log('showTextInterface::' + embedPlayer.id + ' t' + loc.top + ' r' + loc.right);							
-		
+				
 		
 		var $menu = $j( '#timedTextMenu_' + embedPlayer.id );			
-		//This may be unnecessary .. we just need to show a spiner somewhere
+		//This may be unnecessary .. we just need to show a spinner somewhere
 		if ( $menu.length != 0 ) {
 			// Hide show the menu:		
 			if( $menu.is( ':visible' ) ) {
@@ -1256,7 +1263,7 @@ mw.PlayerControlBuilder.prototype = {
 			mw.load( 'TimedText', function() {				
 				$j( '#' + embedPlayer.id ).timedText( 'showMenu', '#timedTextMenu_' + embedPlayer.id );				
 			});		
-		}			
+		}		
 	},
 	
 	/**
@@ -1531,7 +1538,7 @@ mw.PlayerControlBuilder.prototype = {
 						)
 						// Captions binding:
 						.buttonHover()
-						.click( function() {			
+						.click( function() {									
 							ctrlObj.showTextInterface();
 						} )						
 			}

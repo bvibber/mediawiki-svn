@@ -546,17 +546,10 @@ EmbedPlayerManager.prototype = {
 		} );
 		
 		// If we don't already have a loadSpiner add one: 
-		if( $j('#loadSpiner_' + playerInterface.id ).length == 0 ){
+		if( $j('#loadingSpinner_' + playerInterface.id ).length == 0 ){
 			$j( swapPlayerElement ).append( 
 				$j('<div />')
-				.css( {
-					'margin' : 'auto',
-					'top' : '35%',
-					'position' : 'relative',
-					'width' : '32px',
-					'height' : '32px'
-				} )
-				.loadingSpinner()				
+				.loadingSpinner()	
 			);
 		}
 		return true;
@@ -578,7 +571,7 @@ EmbedPlayerManager.prototype = {
 		player.readyToPlay = true;
 		
 		// Remove the player loader spinner:
-		$j('#loadSpiner_' + player.id ).remove();
+		$j('#loadingSpinner_' + player.id ).remove();
 		
 		// Run the player ready trigger
 		mw.log( "playerReady" );
@@ -593,6 +586,9 @@ EmbedPlayerManager.prototype = {
 			}
 		}
 		if ( is_ready ) {
+			// Be sure to remove any player loader spinners
+			$j('.playerLoadingSpinner').remove();
+			
 			mw.log( "All on-page players ready run playerMannager callbacks" );
 			// Run queued functions 
 			if( _this.callbackFunctions ) {
@@ -1690,7 +1686,7 @@ mw.EmbedPlayer.prototype = {
 		
 		// Clear out any non-base embedObj methods:
 		if ( this.instanceOf ) {
-			eval( 'var tmpObj = ' + this.instanceOf );
+			eval( 'var tmpObj = mw.EmbedPlayer' + this.instanceOf );
 			for ( var i in tmpObj ) { // for in loop oky for object  
 				if ( this[ 'parent_' + i ] ) {
 					this[i] = this[ 'parent_' + i];
@@ -1716,7 +1712,7 @@ mw.EmbedPlayer.prototype = {
 				}
 				_this[ method ] = playerInterface[method];
 			}											
-			// Run any constructor code: 
+			// Update feature support 
 			_this.updateFeatureSupport();
 			
 			_this.getDuration();
@@ -1741,9 +1737,19 @@ mw.EmbedPlayer.prototype = {
 		var _this = this;
 		if ( this.selectedPlayer.id != player.id ) {
 			this.selectedPlayer = player;			
-			this.inheritEmbedPlayer( function() { 
-				// Update the controls for the new selected player
-				_this.refreshControls();
+			this.inheritEmbedPlayer(function(){
+				_this.controlBuilder.showControlBar();
+				// We have to re-bind hoverIntent ( has to happen in this scope )
+				_this.$interface.hoverIntent({
+					'sensitivity': 4,
+					'timeout' : 2000,
+					'over' : function(){										
+						_this.controlBuilder.showControlBar();
+					},
+					'out' : function(){
+						_this.controlBuilder.hideControlBar();
+					}
+				})		
 			});			
 		}
 	},		
@@ -1826,7 +1832,7 @@ mw.EmbedPlayer.prototype = {
 		}, 100 );
 		
 		// Run the onSeeking interface update
-		// NOTE ctrlBuilder should really bind to html5 events rather 
+		// NOTE controlBuilder should really bind to html5 events rather 
 		// than explicitly calling it or inheriting stuff. 
 		this.controlBuilder.onSeek(); 
 	},	
@@ -1916,7 +1922,7 @@ mw.EmbedPlayer.prototype = {
 		if ( this.preview_mode ) {
 			return ;
 		}
-		// Do the ctrlBuilder onClip done interface
+		// Do the controlBuilder onClip done interface
 		this.controlBuilder.onClipDone();
 		
 		// Fire the html5 ended binding
@@ -1941,7 +1947,7 @@ mw.EmbedPlayer.prototype = {
 		
 		this.paused = true;
 		this.thumbnail_disp = true;
-		// Make sure the ctrlBuilder bindings are up-to-date 
+		// Make sure the controlBuilder bindings are up-to-date 
 		this.controlBuilder.addControlBindings();
 		
 		// Once the thumbnail is shown run the mediaReady trigger (if not using native controls)
@@ -1952,25 +1958,12 @@ mw.EmbedPlayer.prototype = {
 	},
 	
 	/**
-	* Refresh the player Controls 
-	*  Useful for updating for when new playback system is selected
-	*/	
-	refreshControls: function() {
-		if ( this.$interface.find( '.control-bar' ).length == 0 ) {
-			mw.log( 'Error: refreshControls::control-bar not present, no refresh' );
-			return ;
-		}
-		// Do update controls: 
-		this.controlBuilder.addControls();
-	},
-	
-	/**
 	* Show the player
 	*/
 	showPlayer : function () {	
 		mw.log( 'Show player: ' + this.id );	
 		var _this = this;
-		// Set-up the local ctrlBuilder instance: 
+		// Set-up the local controlBuilder instance: 
 		this.controlBuilder = new mw.PlayerControlBuilder( this );
 						
 		var _this = this;
@@ -2018,7 +2011,7 @@ mw.EmbedPlayer.prototype = {
 	*/
 	showPluginMissingHTML: function( misssingType ) {
 		// Remove the loading spinner if present: 
-		$j('#loadSpiner_' + this.id ).remove();
+		$j('.playerLoadingSpinner').remove();
 		
 		// If the native video is already displayed hide it: 
 		if( $j( '#' + this.pid ).length != 0 ){
@@ -2054,6 +2047,7 @@ mw.EmbedPlayer.prototype = {
 		  	)
 		  )
 		}
+		// hide
 	},
 	
 	/**
@@ -2711,7 +2705,7 @@ mw.EmbedPlayer.prototype = {
 	
 	/**
 	* Updates the interface volume
-	* TODO should move to ctrlBuilder
+	* TODO should move to controlBuilder
 	* @param {float} percent Pecentage volume to update interface
 	*/
 	setInterfaceVolume: function( percent ) {
@@ -2748,7 +2742,7 @@ mw.EmbedPlayer.prototype = {
 	},
 	
 	/**
-	* Passes a fullscreen request to the ctrlBuilder interface
+	* Passes a fullscreen request to the controlBuilder interface
 	*/
 	fullscreen: function() {
 		this.controlBuilder.toggleFullscreen();		
@@ -3115,8 +3109,9 @@ mediaPlayer.prototype = {
 	* @param {Function} callback Function to be called once player library is loaded.
 	*/	
 	load: function( callback ) {			
+		//Load player library ( upper case the first letter of the library )
 		mw.load( [
-			'mw.EmbedPlayer' + this.library
+			'mw.EmbedPlayer' + this.library[0].toUpperCase() + this.library.substr(1)
 		], function() {									
 			callback();
 		} );
