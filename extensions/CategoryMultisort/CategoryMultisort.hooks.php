@@ -88,11 +88,17 @@ class CategoryMultisortHooks {
 		
 		if ( $wgUseDumbLinkUpdate ) {
 			$invalidates = array_merge( $invalidates, array_keys( $existing ) );
-			$insertions = $this->onLinksUpdate_getCategoryMultisortInsertions( $linksUpdate, $categoryMultisorts, $invalidates );
+			$insertions = $this->onLinksUpdate_getCategoryMultisortInsertions(
+				$linksUpdate, $categoryMultisorts, $invalidates
+			);
 			$linksUpdate->dumbTableUpdate( 'categorylinks_multisort', $insertions, 'clms_from' );
 		} else {
-			$categoryDeletes = $this->onLinksUpdate_getCategoryMultisortDeletions( $categoryMultisorts, $invalidates, $existing );
-			$categoryInserts = $this->onLinksUpdate_getCategoryMultisortInsertions( $linksUpdate, $categoryMultisorts, $invalidates, $existing );
+			$categoryDeletes = $this->onLinksUpdate_getCategoryMultisortDeletions(
+				$categoryMultisorts, $invalidates, $existing
+			);
+			$categoryInserts = $this->onLinksUpdate_getCategoryMultisortInsertions(
+				$linksUpdate, $categoryMultisorts, $invalidates, $existing
+			);
 			
 			# incrTableUpdate
 			$to = array();
@@ -135,14 +141,18 @@ class CategoryMultisortHooks {
 		return $arr;
 	}
 		
-	function onLinksUpdate_getCategoryMultisortInsertions( $linksUpdate, &$categoryMultisorts, &$invalidates, $existing = array() ) {
+	function onLinksUpdate_getCategoryMultisortInsertions(
+		$linksUpdate, &$categoryMultisorts, &$invalidates, $existing = array()
+	) {
 		$arr = array();
 		
 		foreach ( $categoryMultisorts as $cat => $sk ) {
 			if ( !array_key_exists( $cat, $existing ) ) {
 				$invalidates[] = $cat;
 				foreach ( $sk as $skn => $skv ) {
-					$this->onLinksUpdate_getCategoryMultisortInsertions_addCategoryInsertion( $linksUpdate, $arr, $cat, $skn, $skv );
+					$this->onLinksUpdate_getCategoryMultisortInsertions_addCategoryInsertion(
+						$linksUpdate, $arr, $cat, $skn, $skv
+					);
 				}
 			} else {
 				$exsk = $existing[$cat];
@@ -150,7 +160,9 @@ class CategoryMultisortHooks {
 					# PHP thinks '02' == '002'
 					if ( !array_key_exists( $skn, $exsk ) || $exsk[$skn] !== $skv ) {
 						$invalidates[] = $cat;
-						$this->onLinksUpdate_getCategoryMultisortInsertions_addCategoryInsertion( $linksUpdate, $arr, $cat, $skn, $skv );
+						$this->onLinksUpdate_getCategoryMultisortInsertions_addCategoryInsertion(
+							$linksUpdate, $arr, $cat, $skn, $skv
+						);
 					}
 				}
 			}
@@ -159,7 +171,9 @@ class CategoryMultisortHooks {
 		return $arr;
 	}
 	
-	function onLinksUpdate_getCategoryMultisortInsertions_addCategoryInsertion( $linksUpdate, &$arr, $cat, $skn, $skv ) {
+	function onLinksUpdate_getCategoryMultisortInsertions_addCategoryInsertion(
+		$linksUpdate, &$arr, $cat, $skn, $skv
+	) {
 		global $wgContLang;
 		
 		$nt = Title::makeTitleSafe( NS_CATEGORY, $cat );
