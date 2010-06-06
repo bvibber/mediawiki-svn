@@ -4,7 +4,7 @@
  */
 var urlparts = getRemoteEmbedPath();
 var mwEmbedHostPath = urlparts[0];
-var mwRemoteVersion = 'r127';
+var mwRemoteVersion = 'r128';
 var mwUseScriptLoader = true;
 
 // Log the mwRemote version makes it easy to debug cache issues
@@ -21,7 +21,11 @@ for ( var i = 0; i < reqParts.length; i++ ) {
 		mwReqParam[ p[0] ] = p[1];
 	}
 }
-	
+
+// Check if debug mode and disable script grouping  
+if( mwReqParam['debug'] ) {
+	mwUseScriptLoader = false;
+}
 
 // Use wikibits onLoad hook: ( since we don't have js2 / mw object loaded ) 
 addOnloadHook( function() {
@@ -332,11 +336,13 @@ function getRemoteEmbedPath() {
 */ 
 function mwGetReqArgs() {
 	var rurl = '';
-	if ( mwReqParam['debug'] )
+	if ( mwReqParam['debug'] ){
 		rurl += 'debug=true&';
+	}
 
-	if ( mwReqParam['uselang'] )
+	if ( mwReqParam['uselang'] ){
 		rurl += 'uselang=' + mwReqParam['uselang'] + '&';
+	}
 
 	if ( mwReqParam['urid'] ) {
 		rurl += 'urid=' + mwReqParam['urid'];
