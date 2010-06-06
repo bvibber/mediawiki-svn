@@ -14,4 +14,3 @@ $magicWords = array();
 $magicWords['en'] = array(
 	'record' => array( 0, 'record' ),
 );
-
