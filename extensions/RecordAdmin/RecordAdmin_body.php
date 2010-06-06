@@ -463,7 +463,7 @@ class SpecialRecordAdmin extends SpecialPage {
 		$type     = $this->type;
 		$sortable = $sortable ? ' sortable' : '';
 		$br       = $sortable ? '<br />' : '';
-		$format   = $wgRequest->getText( 'export' )
+		$format   = $wgRequest->getText( 'export' );
 
 		# If exporting as pdf, ensure the parser renders full URL's
 		if ( $format == 'pdf' ) {
