@@ -17,6 +17,7 @@ class SpecialRecordAdmin extends SpecialPage {
 	var $guid      = '';
 	var $quid      = '';
 	var $filter    = array();
+	var $request   = array();
 	var $acturl    = '';
 	var $done      = false;
 
@@ -336,11 +337,8 @@ class SpecialRecordAdmin extends SpecialPage {
 		# If the page is already rendered, don't run this query
 		if ( $this->done ) return array();
 
-		# Generate a unique id for this set of parameters
-		$this->quid = md5( var_export( array( $type, $posted ), true ) );
-		
-		# If an export has been requested but not for this query-id, then bail with empty set
-		if ( ( $export = $wgRequest->getText( 'quid' ) ) && $export != $this->quid ) return array();
+		# Remember all the args required to reproduce this result (for building export URL's)
+		$this->request = array_merge( $posted, $_GET, $_POST );
 
 		# Loop through all records of this type adding only those that match the regex fields
 		$records = array();
@@ -457,7 +455,7 @@ class SpecialRecordAdmin extends SpecialPage {
 	 * Render a set of records returned by getRecords() as an HTML table
 	 */
 	function renderRecords( $records, $cols = false, $sortable = true, $template = false, $name = 'wpSelect', $export = true, $groupby = false ) {
-		global $wgParser, $wgTitle, $wgRequest;
+		global $wgOut, $wgParser, $wgTitle, $wgRequest;
 		if ( count( $records ) < 1 ) return wfMsg( 'recordadmin-nomatch' );
 		if ( $groupby ) $groupby = self::split( $groupby, ',' );
 
@@ -569,18 +567,18 @@ class SpecialRecordAdmin extends SpecialPage {
 		$table .= "</table>\n";
 
 		# If export requested convert the table to csv and disable output etc
-		if ( $quid = $wgRequest->getText( 'quid' ) ) {
-			global $wgOut;
+		if ( $format = $wgRequest->getText( 'export' ) ) {
 			$wgOut->disable();
+			$filename = $wgTitle->getText();
 
 			# PDF export
-			if ( $wgRequest->getText( 'format' ) == 'pdf' ) {
+			if ( $format == 'pdf' ) {
 				global $wgUploadDirectory;
 				$file = "$wgUploadDirectory/" . uniqid( 'recordadmin' );
 				$table = str_replace( '<table', '<table border', $table );
 				file_put_contents( $file, $table );
 				header("Content-Type: application/pdf");
-				header( "Content-Disposition: attachment; filename=\"$quid.pdf\"" );
+				header( "Content-Disposition: attachment; filename=\"$filename.pdf\"" );
 				putenv( "HTMLDOC_NOCGI=1" );
 				$options = "--left 1cm --right 1cm --top 1cm --bottom 1cm --header ... --footer ... --bodyfont Arial --fontsize 8";
 				passthru( "htmldoc -t pdf --format pdf14 $options --webpage $file" );
@@ -589,19 +587,19 @@ class SpecialRecordAdmin extends SpecialPage {
 
 			# CSV export
 			else {
-				header("Content-Type: text/html");
-				header("Content-Disposition: attachment; filename=\"$quid.csv\"");
+				header("Content-Type: text/plain");
+				header("Content-Disposition: attachment; filename=\"$filename.csv\"");
 				preg_match_all( "|<td.*?>\s*(.*?)\s*</td>|s", $table, $data );
 				$cols = $cols ? $cols : array_keys( $th );
-				$csv = join( "\t", $cols );
+				$csv = join( ',', $cols );
 				foreach ( $data[1] as $i => $cell ) {
 					if ( $i % count( $cols ) == 0 ) {
 						$csv .= "\n";
-						$sep = "";
-					} else $sep = "\t";
-					$cell = strip_tags( $cell );
-					$cell = preg_replace( "/[\\r\\n]+/m", "\\n", $cell );
-					$csv .= "$sep$cell";
+						$sep = '';
+					} else $sep = ',';
+					$cell = trim( strip_tags( $cell ) );
+					$cell = str_replace( '"', '""', $cell );
+					$csv .= "$sep\"$cell\"";
 				}
 				print $csv;
 			}
@@ -611,14 +609,15 @@ class SpecialRecordAdmin extends SpecialPage {
 		# Otherwise add export links
 		elseif ( $export ) {
 			$export = $export === true ? array( 'pdf', 'csv' ) : self::split( strtolower( $export ), ',' );
-			$qs = "wpType=$type&wpFind=1&quid={$this->quid}";
-			foreach ( $this->filter as $k => $v ) $qs .= "&ra_$k=" . urlencode( $v );
+			$qs = "wpType=$type&wpFind=1";
+			foreach ( $this->request as $k => $v ) $qs .= "&$k=$v";
 			$url = $wgTitle->getLocalURL( $qs );
+			$table .= "\n<a class=\"recordadmin-export-url\" href=\"$url\">URL</a>";
 			if ( in_array( 'csv', $export ) ) {
-				$table .= "\n<a class=\"recordadmin-export-csv\" href=\"$url\">" . wfMsg( 'recordadmin-export-csv' ) . "</a>";
+				$table .= "\n<a class=\"recordadmin-export-csv\" href=\"$url&export=csv\">" . wfMsg( 'recordadmin-export-csv' ) . "</a>";
 			}
 			if ( in_array( 'pdf', $export ) ) {
-				$table .= "\n<a class=\"recordadmin-export-pdf\" href=\"$url&format=pdf\">" . wfMsg( 'recordadmin-export-pdf' ) . "</a>";
+				$table .= "\n<a class=\"recordadmin-export-pdf\" href=\"$url&export=pdf\">" . wfMsg( 'recordadmin-export-pdf' ) . "</a>";
 			}
 		}
 
