@@ -1,9 +1,20 @@
 <?php
 
 /**
- * MediaWiki support functions for the wikimedia-mobile project hosted 
+ * MediaWiki support functions for the Wikimedia-mobile project hosted 
  * at http://github.com/hcatlin/wikimedia-mobile
  */
+
+$wgExtensionCredits['other'][] = array(
+	'path' => __FILE__,
+	'name' => 'WikimediaMobile',
+	'author' => 'Tim Starling',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:WikimediaMobile',
+	'descriptionmsg' => 'wikimediamobile-desc',
+);
+
+$dir = dirname(__FILE__) . '/';
+$wgExtensionMessagesFiles['WikimediaMobile'] = $dir . 'WikimediaMobile.i18n.php';
 
 /**
  * Increment this when the JS file changes
