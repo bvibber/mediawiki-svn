@@ -480,6 +480,15 @@ $messages['sl'] = array(
 	'tablemod-error-missingid' => 'Mankajoč ident atribut v znački.',
 );
 
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'tablemod-msg-remove' => 'Обриши',
+	'tablemod-error-invalidsort' => 'Погрешни параметри сортирања.',
+	'tablemod-error-invalidaction' => 'Недозовољена акција.',
+);
+
 /** Swedish (Svenska)
  * @author Dafer45
  * @author Per

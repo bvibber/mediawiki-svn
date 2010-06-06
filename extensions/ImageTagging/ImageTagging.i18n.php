@@ -2,7 +2,6 @@
 /**
  * Internationalisation file for ImageTagging extension.
  *
- * @file
  * @ingroup Extensions
  */
 

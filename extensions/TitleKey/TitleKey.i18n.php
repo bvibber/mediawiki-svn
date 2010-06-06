@@ -79,6 +79,13 @@ $messages['bs'] = array(
 	'titlekey-desc' => 'Pozadinski proces pri traženju po naslovima',
 );
 
+/** Chechen (Нохчийн)
+ * @author Sasan700
+ */
+$messages['ce'] = array(
+	'titlekey-desc' => 'Лохуш цlера дуьххьара элпца дош хьагойтуш болу гlирс',
+);
+
 /** Czech (Česky)
  * @author Mormegil
  */

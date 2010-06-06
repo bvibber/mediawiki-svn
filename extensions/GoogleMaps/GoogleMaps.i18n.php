@@ -4112,7 +4112,7 @@ $wgGoogleMapsMessages['pdc'] = array(
 $wgGoogleMapsMessages['pl'] = array(
 	'gm-desc' => 'Łatwe tworzenie map z użyciem zakładek wiki',
 	'gm-incompatible-browser' => 'Korzystanie z mapy wymaga byś używał współpracującej z nią przeglądarki.',
-	'gm-incompatible-browser-link' => 'Kliknij tutaj, by zobaczyć listę wspieranych przeglądarek.',
+	'gm-incompatible-browser-link' => 'Kliknij tutaj, by zobaczyć listę zgodnych przeglądarek.',
 	'gm-no-editor' => 'Niestety używana przez Ciebie przeglądarka internetowa nie obsługuje mechanizmu mapy interaktywnej.
 Spróbuj użyć najnowszej wersji <a href="http://www.microsoft.com/ie">Internet Explorera</a> (dla systemów Windows) lub <a href="http://www.mozilla.org/products/firefox">Firefoksa</a> (dla systemów Windows, Mac oraz Linux).',
 	'gm-balloon-title' => 'Tytuł:',

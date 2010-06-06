@@ -148,12 +148,14 @@ $messages['ia'] = array(
 
 /** Japanese (日本語)
  * @author Aotake
+ * @author Fryed-peach
  * @author 青子守歌
  */
 $messages['ja'] = array(
 	'activestrategy' => '活動中の特別チーム',
 	'active-strategy-desc' => 'タスクフォースのページ数を表示',
 	'active-strategy-intro' => '最近$1日間に特別チームのページに加えられた編集回数',
+	'nedits' => '$1{{PLURAL:$1|回の編集}}',
 );
 
 /** Georgian (ქართული)
@@ -161,6 +163,7 @@ $messages['ja'] = array(
  */
 $messages['ka'] = array(
 	'activestrategy' => 'აქტიური სტრატეგია',
+	'active-strategy-desc' => 'აჩვენებს რედაქტირების რაოდენობას სტრატეგიული დაგეგმვის გვერდებზე',
 );
 
 /** Korean (한국어)

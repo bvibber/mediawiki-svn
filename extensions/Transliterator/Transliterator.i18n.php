@@ -267,7 +267,7 @@ $messages['hu'] = array(
  * @author McDutchie
  */
 $messages['ia'] = array(
-	'transliterator-desc' => 'Forni un function configurabile de analysator syntactic pro transliteration',
+	'transliterator-desc' => 'Forni un function configurabile del analysator syntactic pro translitteration',
 	'transliterator-error-ambiguous' => 'Regula ambigue <code>$1</code> in [[MediaWiki:$2]]',
 	'transliterator-error-syntax' => 'Syntaxe invalide <code>$1</code> in [[MediaWiki:$2]]',
 	'transliterator-error-rulecount' => 'Plus de $1 {{PLURAL:$1|regula|regulas}} in [[MediaWiki:$2]]',

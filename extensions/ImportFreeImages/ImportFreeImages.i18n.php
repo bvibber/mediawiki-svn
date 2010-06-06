@@ -990,6 +990,7 @@ $messages['ps'] = array(
 	'importfreeimages_size_small' => 'وړوکی',
 	'importfreeimages_size_medium' => 'منځوی',
 	'importfreeimages_size_large' => 'لوی',
+	'importfreeimages_size_original' => 'آرنی',
 );
 
 /** Portuguese (Português)

@@ -2,7 +2,6 @@
 /**
  * Internationalisation file for IM Status extension
  *
- * @file
  * @ingroup Extensions
  */
 

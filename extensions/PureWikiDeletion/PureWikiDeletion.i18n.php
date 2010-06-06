@@ -318,7 +318,7 @@ Hlej $2 za datowu sadźbu najnowšich wuprózdnjenjow.',
  */
 $messages['ia'] = array(
 	'purewikideletion' => 'Pur deletion wiki',
-	'randomexcludeblank' => 'Pagina aleatori (exclude vacues)',
+	'randomexcludeblank' => 'Pagina aleatori (non in blanco)',
 	'populateblankedpagestable' => 'Plenar le tabella de paginas vacuate',
 	'purewikideletion-desc' => 'Inter altere cosas, causa que le ligamines a paginas vacuate appare in rubie',
 	'purewikideletion-pref-watchblank' => 'Adder le paginas que io vacua a mi observatorio',
@@ -330,6 +330,17 @@ Le motivo date pro le vacuation es: ''<nowiki>$3</nowiki>''.
 Tu pote [{{fullurl:{{FULLPAGENAMEE}}|action=history}} vider le historia del pagina], [{{fullurl:{{FULLPAGENAMEE}}|oldid=$4&action=edit}} modificar le ultime version], o scriber un nove pagina in le spatio in blanco hic infra.",
 	'blank-log' => 'vacuationes',
 	'blank-log-name' => 'Registro de vacuationes',
+	'blank-log-header' => 'Infra es un lista de vacuationes e replenationes de paginas.',
+	'blank-log-entry-blank' => 'vacuava $1',
+	'blank-log-entry-unblank' => 'replenava $1',
+	'blank-log-link' => '[[{{#Special:Log}}/blank|registro de vacuationes]]',
+	'purewikideletion-blanknologin' => 'Tu non ha aperite un session',
+	'purewikideletion-blanknologintext' => 'Tu debe esser un usator registrate e [[Special:UserLogin|aperir un session]] pro poter vacuar un pagina.',
+	'purewikideletion-unblanknologintext' => 'Tu debe esser un usator registrate e [[Special:UserLogin|aperir un session]] pro poter replenar un pagina.',
+	'purewikideletion-blankedtext' => '[[$1]] ha essite vacuate.
+Vide $2 pro un registro de vacuationes recente.',
+	'purewikideletion-population-done' => 'Le tabella blanked_page ha essite plenate.',
+	'right-purewikideletion' => '[[Special:PopulateBlankedPagesTable|Plenar]] le tabella de paginas vacuate',
 );
 
 /** Japanese (日本語)

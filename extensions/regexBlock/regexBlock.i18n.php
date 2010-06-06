@@ -537,6 +537,11 @@ $messages['ca'] = array(
 	'regexblock-view-go' => 'Vés-hi',
 );
 
+/** Chechen (Нохчийн) */
+$messages['ce'] = array(
+	'regexblock-form-reason' => 'Бахьан:',
+);
+
 /** Chamorro (Chamoru)
  * @author Jatrobat
  */

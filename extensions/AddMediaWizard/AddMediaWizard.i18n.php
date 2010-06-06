@@ -57,6 +57,13 @@ $messages['dsb'] = array(
 	'addmediawizard-desc' => 'Medijowy asistent pśidaś, wuwity w zgromadnem źěle wót Laltury a załožby Wikimedia Foundation',
 );
 
+/** Esperanto (Esperanto)
+ * @author Airon90
+ */
+$messages['eo'] = array(
+	'addmediawizard-desc' => 'Aldonu asistanton por aldoni plurmedion, evoluigita en partnereco de Kaltura kaj Fondaĵo Vikimedio',
+);
+
 /** Spanish (Español)
  * @author Locos epraix
  */

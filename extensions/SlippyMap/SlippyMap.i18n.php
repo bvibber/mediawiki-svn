@@ -958,7 +958,7 @@ $messages['oc'] = array(
  * @author ToSter
  */
 $messages['pl'] = array(
-	'slippymap_desc' => 'Pozwala na korzystanie ze znacznika <tt><nowiki>&lt;slippymap&gt;</nowiki></tt> powodującego wyświetlenie statycznych oraz dynamicznych map. Wspierane są różne serwisy z mapami, w tym m.in. [http://openstreetmap.org OpenStreetMap] i NASA Worldwind.',
+	'slippymap_desc' => 'Pozwala na korzystanie ze znacznika <tt><nowiki>&lt;slippymap&gt;</nowiki></tt> powodującego wyświetlenie statycznych oraz dynamicznych map. Obsługiwane są różne serwisy z mapami, w tym m.in. [http://openstreetmap.org OpenStreetMap] i NASA Worldwind.',
 	'slippymap_error' => 'Błąd w rozszerzeniu $1 – $2',
 	'slippymap_errors' => 'Błędy w rozszerzeniu $1:',
 	'slippymap_error_missing_attribute_lat' => 'Brak atrybutu <tt>lat</tt> (określenie szerokości geograficznej).',

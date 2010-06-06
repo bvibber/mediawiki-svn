@@ -133,7 +133,9 @@ $messages['ca'] = array(
  * @author Sasan700
  */
 $messages['ce'] = array(
+	'wikieditor-template-editor-preference' => 'Лата é куцкепа рéдаккхар барамаши гlонца',
 	'wikieditor-template-editor-dialog-title' => 'Куцкеп хийцам',
+	'wikieditor-template-editor-dialog-submit' => 'Карлаяккха',
 	'wikieditor-template-editor-dialog-cancel' => 'Цаоьшу',
 );
 

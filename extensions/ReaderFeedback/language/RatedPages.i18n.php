@@ -2,8 +2,7 @@
 /**
  * Internationalisation file for FlaggedRevs extension, section RatedPages
  *
- * @file
- * @ingroup Extensions
+ * @addtogroup Extensions
  */
 
 $messages = array();

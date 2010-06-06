@@ -678,9 +678,10 @@ $messages['pdc'] = array(
 
 /** Polish (Polski)
  * @author Leinad
+ * @author Sp5uhe
  */
 $messages['pl'] = array(
-	'layouts-desc' => 'Wypełnianie nowo utworzonych stron edytowalnym układem strony, tak aby wspierać jednolitą strukturę stron',
+	'layouts-desc' => 'Wypełnianie nowo utworzonych stron edytowalnym wzorem układu strony, w celu ujednolicania struktury stron',
 	'layouts_title' => 'Utwórz stronę',
 	'layouts_chooselayout' => 'Wybierz układ strony dla $1:',
 	'layouts_nolayout' => 'Brak układu strony',

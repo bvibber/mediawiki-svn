@@ -453,6 +453,12 @@ $messages['ca'] = array(
 	'crosswikiblock-alreadyblocked' => "L'usuari $3 ja està blocat.",
 );
 
+/** Chechen (Нохчийн) */
+$messages['ce'] = array(
+	'crosswikiblock-reason' => 'Бахьан:',
+	'crosswikiunblock-reason' => 'Бахьан:',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  * @author Mormegil

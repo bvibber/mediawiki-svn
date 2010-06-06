@@ -339,6 +339,11 @@ $messages['ca'] = array(
 	'right-closewikis' => 'Tanca wikis',
 );
 
+/** Chechen (Нохчийн) */
+$messages['ce'] = array(
+	'closewikis-page-reopen-reason' => 'Бахьан:',
+);
+
 /** Czech (Česky)
  * @author Danny B.
  * @author Li-sung

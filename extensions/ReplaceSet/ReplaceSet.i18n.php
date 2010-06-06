@@ -198,7 +198,7 @@ $messages['hu'] = array(
  * @author McDutchie
  */
 $messages['ia'] = array(
-	'replaceset-desc' => 'Adde un function de analysator syntactic <nowiki>{{#replaceset}}</nowiki> pro reimplaciar sectiones de texto per datos formatate',
+	'replaceset-desc' => 'Adde un function del analysator syntactic <nowiki>{{#replaceset}}</nowiki> pro reimplaciar sectiones de texto per datos formatate',
 	'replaceset-error-calllimit' => 'Le limite de appellos al function ReplaceSet ha essite attingite.',
 	'replaceset-error-regexnoend' => 'Al patrono del expression regular "$1" manca le delimitator final \'$2\'',
 	'replaceset-error-regexbadmodifier' => "Le modificator de expression regular '$1' non es valide.",

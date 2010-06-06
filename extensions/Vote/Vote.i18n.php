@@ -2,8 +2,7 @@
 /**
  * Internationalisation file for extension Vote.
  *
- * @file
- * @ingroup Extensions
+ * @addtogroup Extensions
  * @author Rob Church <robchur@gmail.com>
  * @license Please see the LICENCE file for terms of use and redistribution
  */

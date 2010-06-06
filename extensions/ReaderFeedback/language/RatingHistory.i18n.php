@@ -1624,7 +1624,7 @@ $messages['pl'] = array(
 	'ratinghistory-table-rating' => 'Ocena',
 	'ratinghistory-table-votes' => 'Głosy',
 	'ratinghistory-none' => 'W tej chwil brak liczby ocen czytelników wystarczającej, by móc stworzyć wykresy.',
-	'ratinghistory-ratings' => "'''Legenda:''' '''(1)''' - źle; '''(2)''' - słabo; '''(3)''' - średnio; '''(4)''' - dobrze; '''(5)''' - wspaniale;",
+	'ratinghistory-ratings' => "'''Legenda:''' '''(1)''' – źle; '''(2)''' – słabo; '''(3)''' – średnio; '''(4)''' – dobrze; '''(5)''' – wspaniale;",
 	'ratinghistory-legend' => "'''Liczba ocen w ciągu doby''' <font color=\"red\">''(czerwony)''</font>, '''dobowa średnia''' <font color=\"blue\">''(niebieski)''</font> i '''średnia ocena bieżąca''' <font color=\"green\">''(zielony)''</font> zostały przedstawione względem daty na poniższym wykresie.
 '''Średnia ocena bieżąca''' to średnia dobowych ocen w tym czasie za każdy dzień.
 Skala ocen: 

@@ -546,12 +546,13 @@ $messages['oc'] = array(
 /** Polish (Polski)
  * @author Derbeth
  * @author Leinad
+ * @author Sp5uhe
  */
 $messages['pl'] = array(
 	'userimages-desc' => 'Generuje galerie grafik przesłanych przez użytkownika za pomocą <code><nowiki><userimage /></nowiki></code>',
 	'userimages-caption' => 'Grafiki przesłane przez $1',
 	'userimages-noname' => 'Nieprawidłowa nazwa użytkownika lub nie podano nazwy użytkownika.',
-	'userimages-noimages' => '$1 nie przesłał(-a) żadnych grafik.',
+	'userimages-noimages' => '$1 nie {{GENDER:$1|przesłał|przesłała|przesłał (~a)}} żadnych grafik.',
 );
 
 /** Piedmontese (Piemontèis)

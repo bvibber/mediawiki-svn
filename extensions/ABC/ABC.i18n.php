@@ -765,9 +765,11 @@ $messages['shi'] = array(
 );
 
 /** Sinhala (සිංහල)
+ * @author චතුනි අලහප්පෙරුම
  * @author බිඟුවා
  */
 $messages['si'] = array(
+	'abc-desc' => 'ABC සංගීතය ආතෘතිකරණය තකා <code>&lt;abc&gt;</code> ටැගය එක් කෙරේ',
 	'abcdownload' => 'භාගත කිරීම',
 );
 

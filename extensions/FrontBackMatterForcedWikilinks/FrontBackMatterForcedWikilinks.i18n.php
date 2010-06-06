@@ -76,6 +76,16 @@ $messages['hsb'] = array(
 	'frontbackforced-forced' => '_(nućene_wotkazy)',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'frontbackforced-desc' => 'Adde sectiones initial e final al paginas e implementa wikiligamines fortiate',
+	'frontbackforced-front' => '_(section_initial)',
+	'frontbackforced-back' => '_(section_final)',
+	'frontbackforced-forced' => '_(wikiligamines_fortiate)',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

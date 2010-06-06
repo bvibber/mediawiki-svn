@@ -250,6 +250,11 @@ $messages['ca'] = array(
 	'right-authorprotect' => "Pàgines d'autor protegides",
 );
 
+/** Chechen (Нохчийн) */
+$messages['ce'] = array(
+	'authorprotect-reason' => 'Бахьан',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  * @author Reaperman

@@ -688,7 +688,7 @@ $messages['pl'] = array(
 	'watchsubpages-addtitlestowatchlist' => 'Dodaj strony do listy obserwowanych',
 	'watchsubpages-desc' => 'Pozwala na szybkie dodawanie [[Special:WatchSubpages|wszystkich podstron]] jakiejś strony, do swojej listy obserwowanych',
 	'watchsubpages-form' => 'Wybierz z listy strony, które chcesz dodać do swojej listy obserwowanych.
-By dodać stronę, zaznacz pole obok jej tytułu, po czym kliknij polecenie „Dodaj strony”.
+By dodać stronę, zaznacz pole obok jej tytułu, po czym kliknij polecenie „{{int:watchsubpages-addtitles}}”.
 
 Jeśli chcesz wybrać więcej niż jedną stronę, możesz posłużyć się klawiszem Shift; trzymając go kliknij pierwszą i ostatnią pozycję ciągłej listy stron, które chcesz obserwować.',
 );

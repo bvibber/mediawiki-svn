@@ -131,7 +131,7 @@ $messages['hu'] = array(
  */
 $messages['ia'] = array(
 	'ukgeocoding_name' => 'Geocodification regnounitese pro Maps',
-	'ukgeocoding_desc' => 'Extende Maps con un function syntactic "display_uk_point" con implementation pro Google Maps',
+	'ukgeocoding_desc' => 'Extende Maps con un function analysator "display_uk_point" con implementation pro Google Maps',
 	'ukgeocoding_couldNotGeocode' => 'Un o plus codices postal non poteva esser geocodificate e ha essite omittite del carta.',
 );
 

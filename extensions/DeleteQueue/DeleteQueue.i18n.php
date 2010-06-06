@@ -1015,6 +1015,11 @@ $messages['ca'] = array(
 	'deletequeue-case-reason' => 'Motiu:',
 );
 
+/** Chechen (Нохчийн) */
+$messages['ce'] = array(
+	'deletequeue-case-reason' => 'Бахьан:',
+);
+
 /** Danish (Dansk)
  * @author Lhademmor
  */

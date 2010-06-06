@@ -68,6 +68,13 @@ $messages['ca'] = array(
 	'tab0-desc' => "Afegeix una pestanya '0' que enllaça a la pàgina d'edició de la primera secció de la pàgina",
 );
 
+/** Chechen (Нохчийн)
+ * @author Sasan700
+ */
+$messages['ce'] = array(
+	'tab0-desc' => 'Тlетуху юкъадиллар «0», хьост йеш оцу рéдоккхучу агlон дуьххьаралера агlона дакъан',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  * @author Mormegil

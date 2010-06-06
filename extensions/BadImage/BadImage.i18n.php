@@ -425,6 +425,11 @@ $messages['ca'] = array(
 	'right-badimages' => "Actualitza la llista d'imatges defectuoses",
 );
 
+/** Chechen (Нохчийн) */
+$messages['ce'] = array(
+	'badimages-reason' => 'Бахьан:',
+);
+
 /** Czech (Česky)
  * @author Li-sung
  * @author Matěj Grabovský

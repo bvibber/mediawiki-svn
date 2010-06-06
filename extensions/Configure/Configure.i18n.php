@@ -1580,6 +1580,11 @@ $messages['ca'] = array(
 	'configure-throttle-action-edit' => 'Modifica',
 );
 
+/** Chechen (Нохчийн) */
+$messages['ce'] = array(
+	'configure-form-reason' => 'Бахьан:',
+);
+
 /** Chamorro (Chamoru)
  * @author Jatrobat
  */
@@ -4546,7 +4551,7 @@ $messages['ia'] = array(
 	'configure-ext-ext-dependencies' => "'''Attention:''' iste extension require que le sequente {{PLURAL:$2|extension|extensiones}} sia activate: $1.",
 	'configure-ext-ext-dependency-err' => "'''Error:''' le extension $1 require que le extension $2 sia activate.",
 	'configure-ext-doc' => 'Vider documentation in linea',
-	'configure-ext-schemachange' => "'''Attention:''' iste extension require un actualisation del base de datos pro functionar correctemente!",
+	'configure-ext-schemachange' => "'''Attention:''' iste extension require un [http://www.mediawiki.org/wiki/Manual:Update.php actualisation del base de datos] pro functionar correctemente!",
 	'configure-ext-settings' => 'Configurationes',
 	'configure-ext-settings-dep-errors' => 'Iste extension non pote esser activate proque le sequente {{PLURAL:$1|configuration ha un valor|configurationes ha valores}} non acceptabile:',
 	'configure-ext-settings-dep-error' => '$1: valor requirite: $2, valor actual: $3',
@@ -7495,7 +7500,7 @@ $messages['pl'] = array(
 	'configure-ext-ext-dependencies' => "'''Uwaga –''' to rozszerzenie wymaga aktywacji {{PLURAL:$2|rozszerzenia|następujących rozszerzeń:}} $1.",
 	'configure-ext-ext-dependency-err' => "'''Błąd –''' rozszerzenie $1 wymaga aktywnego rozszerzenia $2.",
 	'configure-ext-doc' => 'Zobacz dokumentację techniczną online',
-	'configure-ext-schemachange' => "'''Uwaga''' — to rozszerzenie do poprawnego działa wymaga [http://www.mediawiki.org/wiki/Manual:Update.php aktualizacji bazy danych]!",
+	'configure-ext-schemachange' => "'''Uwaga''' – to rozszerzenie do poprawnego działa wymaga [http://www.mediawiki.org/wiki/Manual:Update.php aktualizacji bazy danych]!",
 	'configure-ext-settings' => 'Ustawienia',
 	'configure-ext-settings-dep-errors' => 'Nie można włączyć tego rozszerzenia, ponieważ {{PLURAL:$1|następujące ustawienie ma|następujące ustawienia mają}} niedopuszczalne wartości:',
 	'configure-ext-settings-dep-error' => '$1: wymagana wartość: $2, obecna wartość: $3',

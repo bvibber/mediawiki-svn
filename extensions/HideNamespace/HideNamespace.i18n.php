@@ -113,7 +113,7 @@ $messages['hu'] = array(
  * @author McDutchie
  */
 $messages['ia'] = array(
-	'hidens-desc' => 'Absconde le spatio de nomines in le capite e titulo si un pagina es in un spatio de nomines specificate o si le function syntactic <code><nowiki>{{#hidens:}}</nowiki></code> es appellate',
+	'hidens-desc' => 'Absconde le spatio de nomines in le capite e titulo si un pagina es in un spatio de nomines specificate o si le function analysator <code><nowiki>{{#hidens:}}</nowiki></code> es appellate',
 );
 
 /** Indonesian (Bahasa Indonesia)
