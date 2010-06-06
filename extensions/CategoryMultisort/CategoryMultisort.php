@@ -16,8 +16,20 @@ $wgAutoloadClasses['CategoryMultisortViewer'] = dirname( __FILE__ ) . '/Category
 
 $wgExtensionMessagesFiles['CategoryMultisort'] = dirname( __FILE__ ) . '/CategoryMultisort.i18n.php';
 
-new CategoryMultisortHooks();
+$wgCategoryMultisortHooks = new CategoryMultisortHooks();
 
 $wgDefaultUserOptions['categorymultisort-sortkey'] = '';
 
 $wgCategoryMultisortSortkeySettings = array();
+
+function efCategoryMultisortIntegrate( $integrate = true ) {
+	global $wgParserConf, $wgCategoryMultisortHooks;
+	
+	static $defaultParser = null;
+	if ( is_null( $defaultParser ) ) {
+		$defaultParser = $wgParserConf['class'];
+	}
+	
+	$wgParserConf['class'] = $integrate ? 'Parser_LinkHooks' : $defaultParser;
+	$wgCategoryMultisortHooks->setIntegrate( $integrate );
+}

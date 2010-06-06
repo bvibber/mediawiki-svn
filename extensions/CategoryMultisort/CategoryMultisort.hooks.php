@@ -22,6 +22,12 @@ class CategoryMultisortHooks {
 		) as $hook ) {
 			$wgHooks[$hook][] = $this;
 		}
+		
+		$this->integrate = false;
+	}
+	
+	function setIntegrate( $integrate = true ) {
+		$this->integrate = $integrate;
 	}
 
 	function onLoadExtensionSchemaUpdates() {
@@ -44,6 +50,11 @@ class CategoryMultisortHooks {
 			'CategoryDefaultMultisort',
 			array( $this, 'parserCategoryDefaultMultisort' )
 		);
+		if ( $this->integrate ) {
+			$this->coreCategoryLinkHook = $parser->setLinkHook(
+				NS_CATEGORY, array( $this, 'parserCategoryLink' )
+			);
+		}
 		return true;
 	}
 	
@@ -212,6 +223,51 @@ class CategoryMultisortHooks {
 			$dbw->delete( 'categorylinks_multisort', array( 'clms_from' => $id ) );
 		}
 		return true;
+	}
+	
+	function parserCategoryLink( $parser, $holders, $markers,
+			Title $title, $titleText, &$sortText = null, &$leadingColon = false
+	) {
+		global $wgContLang;
+		
+		# When a category link starts with a : treat it as a normal link
+		if ( $leadingColon ) {
+			return true;
+		}
+		
+		if ( isset( $sortText ) && $markers->findMarker( $sortText ) ) {
+			# There are links inside of the sortText
+			# For backwards compatibility the deepest links are dominant so this
+			# link should not be handled
+			$sortText = $markers->expand( $sortText );
+			# Return false so that this link is reverted back to WikiText
+			return false;
+		}
+		
+		# No sortkeys at all
+		$sort = $sortText ? $sortText : '';
+		
+		# If there is only one part (including set to '' above), it will be shifted later and then no multisorts.
+		$sorts = explode( '|', $sort );
+		
+		# Reserve the first for core hook, for compatibility.
+		$sort = array_shift( $sorts );
+		if ( !$sort ) { # Blank string
+			$sort = null;
+		}
+		if ( is_callable( $this->coreCategoryLinkHook ) ) {
+			call_user_func_array( $this->coreCategoryLinkHook, array(
+				$parser, $holders, $markers, $title, $titleText, &$sort, &$leadingColon
+			) );
+		}
+		
+		$category = $title->getDBkey();
+		$categoryMultisorts = &$parser->getOutput()->mCategoryMultisorts;
+		foreach ( $this->parseMultisortArgs( $sorts ) as $skn => $skv ) {
+			$categoryMultisorts[$category][$skn] = $skv;
+		}
+		
+		return '';
 	}
 	
 	function parserCategoryMultisort() {
