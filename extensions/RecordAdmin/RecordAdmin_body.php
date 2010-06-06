@@ -463,6 +463,16 @@ class SpecialRecordAdmin extends SpecialPage {
 		$type     = $this->type;
 		$sortable = $sortable ? ' sortable' : '';
 		$br       = $sortable ? '<br />' : '';
+		$format   = $wgRequest->getText( 'export' )
+
+		# If exporting as pdf, ensure the parser renders full URL's
+		if ( $format == 'pdf' ) {
+			global $wgServer, $wgScript, $wgArticlePath, $wgScriptPath, $wgUploadPath;
+			$wgArticlePath = $wgServer . $wgArticlePath;
+			$wgScriptPath  = $wgServer . $wgScriptPath;
+			$wgUploadPath  = $wgServer . $wgUploadPath;
+			$wgScript      = $wgServer . $wgScript;
+		}
 
 		# Table header (col0-3 class atts are for backward compatibility, only use named from now on)
 		$table = "<table class='recordadmin$sortable $type-record'>\n<tr>";
@@ -567,7 +577,7 @@ class SpecialRecordAdmin extends SpecialPage {
 		$table .= "</table>\n";
 
 		# If export requested convert the table to csv and disable output etc
-		if ( $format = $wgRequest->getText( 'export' ) ) {
+		if ( $format ) {
 			$wgOut->disable();
 			$filename = $wgTitle->getText();
 
@@ -580,7 +590,7 @@ class SpecialRecordAdmin extends SpecialPage {
 				header("Content-Type: application/pdf");
 				header( "Content-Disposition: attachment; filename=\"$filename.pdf\"" );
 				putenv( "HTMLDOC_NOCGI=1" );
-				$options = "--left 1cm --right 1cm --top 1cm --bottom 1cm --header ... --footer ... --bodyfont Arial --fontsize 8";
+				$options = "--left 1cm --right 1cm --top 1cm --bottom 1cm --header ... --footer ... --linkcolor 3333cc --bodyfont Arial --fontsize 8";
 				passthru( "htmldoc -t pdf --format pdf14 $options --webpage $file" );
 				@unlink( $file );
 			}
