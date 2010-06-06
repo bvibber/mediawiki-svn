@@ -597,7 +597,8 @@ class SpecialRecordAdmin extends SpecialPage {
 						$csv .= "\n";
 						$sep = '';
 					} else $sep = ',';
-					$cell = trim( strip_tags( $cell ) );
+					$cell = str_replace( '&'.'nbsp;', ' ', $cell );
+					$cell = trim( strip_tags( html_entity_decode( $cell ) ) );
 					$cell = str_replace( '"', '""', $cell );
 					$csv .= "$sep\"$cell\"";
 				}
