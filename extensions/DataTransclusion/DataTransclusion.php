@@ -36,6 +36,8 @@ $wgAutoloadClasses['WebDataTransclusionSource'] = $dir. 'WebDataTransclusionSour
 
 $wgHooks['ParserFirstCallInit'][] = 'efDataTransclusionSetHooks';
 
+//TODO: Special Page for displaying all configured data sources
+
 $wgDataTransclusionSources = array();
 
 function efDataTransclusionSetHooks( $parser ) {

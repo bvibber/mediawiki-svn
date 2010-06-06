@@ -16,6 +16,10 @@ $messages = array();
 $messages['en'] = array(
 	'datatransclusion-desc'         => 'Import and rendering of data records from external data sources',
 
+	'datatransclusion-test-wikitext' => 'some <span class="test">html</span> and \'\'markup\'\'.',
+	'datatransclusion-test-evil-html' => 'some <object>evil</object> html.',
+	'datatransclusion-test-nowiki' => 'some <nowiki>{{nowiki}}</nowiki> code.',
+
 	'datatransclusion-missing-source'            => 'no data source specified (first argument is required)',
 	'datatransclusion-unknown-source'            => 'bad data source specified ($1 is not known)',
 	'datatransclusion-bad-argument-by'           => 'bad key field specified ($2 is not a key field in data source $1, valid keys are: $3)',
@@ -30,6 +34,10 @@ $messages['en'] = array(
  */
 $messages['qqq'] = array(
 	'datatransclusion-desc' => 'Shown in [[Special:Version]] as a short description of this extension. Do not translate links.',
+
+	'datatransclusion-test-wikitext'  => 'Used to test handling of wiki markup in messages. Do not translate!',
+	'datatransclusion-test-evil-html' => 'Used to test handling of HTML in messages. Do not translate!',
+	'datatransclusion-test-nowiki'    => 'Used to test handling of nowiki-sections in messages. Do not translate!',
 
 	'datatransclusion-missing-source'            => 'issued if no data source was specified.',
 	'datatransclusion-unknown-source'            => 'issued if an unknown data source was specified. $1 is the name of the data source.',

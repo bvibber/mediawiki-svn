@@ -53,7 +53,7 @@ class DataTransclusionHandler {
 	    $argv = DataTransclusionHandler::buildAssociativeArguments( $params );
 
 	    //FIXME: error messages contining special blocks like <nowiki> don't get re-substitutet correctly.
-	    $text = DataTransclusionHandler::handleRecordTag( null, $argv, $parser, false );
+	    $text = DataTransclusionHandler::handleRecordTransclusion( null, $argv, $parser, false );
 	    return array( $text, 'noparse' => false, 'isHTML' => false );
     }
 
@@ -62,17 +62,25 @@ class DataTransclusionHandler {
 	    array_shift( $params ); // $key
 	    array_shift( $params ); // $asHTML
 
-	    if ( $asHTML ) $mode = 'parseinline'; //TESTME
+	    if ( $asHTML ) $mode = 'parseinline'; 
 	    else $mode = 'parsemag';
 
 	    $m = wfMsgExt( $key, $mode, $params );
-	    return "<span class=\"error\">$m</div>";
+	    return "<span class=\"error\">$m</span>";
     }
 
     /**
-    * Entry point for the <record> tag parser hook.
+    * Entry point for the <record> tag parser hook. Delegates to handleRecordTransclusion.
     */
-    static function handleRecordTag( $key, $argv, $parser = null, $asHTML = true ) {
+    static function handleRecordTag( $key, $argv, $parser ) {
+	    DataTransclusionHandler::handleRecordTransclusion( $key, $argv, $parser, true );
+    }
+
+    /**
+    * Fetches a records and renders it, according to the given array of parameters.
+    * Common implementation for parser tag and parser function.
+    */
+    static function handleRecordTransclusion( $key, $argv, $parser, $asHTML ) {
             //find out which data source to use...
 	    if ( empty( $argv['source'] ) ) {
 		if ( empty( $argv[1] ) ) return DataTransclusionHandler::errorMessage( 'datatransclusion-missing-source', $asHTML ); //TESTME
@@ -137,10 +145,11 @@ class DataTransclusionHandler {
 	    }
     }
 
-    function __construct( $parser, $source, $template ) {
+    function __construct( $parser, $source, $template, $templateText = null ) {
 	    $this->template = $template;
 	    $this->source = $source;
 	    $this->parser = $parser;
+	    $this->templateText = $templateText;
     }
 
     function render( $record ) {
@@ -169,10 +178,16 @@ class DataTransclusionHandler {
 	    */
 
 	    //dumb and slow, but works
-	    $p = new Article( $this->template );
-	    if ( !$p->exists() ) return false; //TESTME
+	    if ( $this->templateText ) {
+		if ( is_string( $this->templateText ) ) $text = $this->templateText;
+		else $text = $this->templateText->getContent();
+	    } else {
+		$article = new Article( $this->template );
+		if ( !$article->exists() ) return false; //TESTME
 
-	    $text = $p->getContent(); 
+		$text = $article->getContent();
+	    }
+
 	    $text = $this->parser->replaceVariables( $text, $record, true );
 
 	    return $text;
@@ -187,12 +202,12 @@ class DataTransclusionHandler {
 		if ( isset( $record[ $f ] ) ) $v = $record[ $f ];
 		else $v = '';
 
-		$rec[ $f ] = $this->sanitizeValue( $v );
+		$rec[ $f ] = $this->sanitizeValue( $v ); //TESTME
 	    }
 
 	    //add source meta info, so we can render links back to the source, 
 	    //provide license info, etc
-	    $info = $this->source->getSourceInfo();
+	    $info = $this->source->getSourceInfo(); //TESTME
 	    foreach ( $info as $f => $v ) {
 		if ( is_array( $v ) || is_object( $v ) || is_resource( $v ) ) continue;
 		$rec[ "source.$f" ] = $this->sanitizeValue( $v );
@@ -203,22 +218,24 @@ class DataTransclusionHandler {
 
     protected static $sanitizerSubstitution = array(
 	    # '!&!' => '&amp;',  #breaks URLs. not really needed when parsed as wiki-text...
+	    '!&(#?x?[\w\d]+);!' => '&amp;$1;', 
 	    '!<!' => '&lt;', 
 	    '!>!' => '&gt;', 
 	    '!\[!' => '&#91;', 
 	    '!\]!' => '&#93;', 
 	    '!\{!' => '&#123;', 
 	    '!\}!' => '&#125;', 
-	    '!\'!' => '&#apos;', 
+	    '!\'!' => '&apos;', 
 	    '!\|!' => '&#124;', 
 	    '!^\*!m' => '&#42;', 
 	    '!^#!m' => '&#35;', 
 	    '!^:!m' => '&#58;', 
 	    '!^;!m' => '&#59;', 
+	    '![\r\n]!' => ' ', 
 	    '!^ !m' => '&#32;', 
     );
 
-    function sanitizeValue( $v ) {
+    static function sanitizeValue( $v ) {
 	    $find = array_keys( self::$sanitizerSubstitution );
 	    $subst = array_values( self::$sanitizerSubstitution );
 

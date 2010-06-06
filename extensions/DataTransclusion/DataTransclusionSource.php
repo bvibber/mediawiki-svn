@@ -170,9 +170,9 @@ class CachingDataTransclusionSource extends DataTransclusionSource {
     
     $rec = $this->cache->get( $cacheKey );
 
-    if ( !$rec ) { //TESTME
+    if ( !$rec ) { 
 	$rec = $this->source->fetchRecord( $key, $value );
-	if ( $rec ) $this->cache->set( $cacheKey, $rev, $this->getCacheDuration() ) ; //XXX: also cache negatives??
+	if ( $rec ) $this->cache->set( $cacheKey, $rec, $this->getCacheDuration() ) ; //XXX: also cache negatives??
     }
 
     return $rec;
@@ -193,25 +193,31 @@ class FakeDataTransclusionSource extends DataTransclusionSource {
   *
   * @param $data an array containing a list of records. Records from
   *		this list can be accessed via fetchRecord() using the key fields specified 
-  *		by $spec['keyFields'].
+  *		by $spec['keyFields']. If $data is not given, $spec['data'] must contain the data array.
   */
-  function __construct( $spec, $data ) {
-    DataTransclusionSource::__construct( $spec );
+  function __construct( $spec, $data = null ) {
+	DataTransclusionSource::__construct( $spec );
 
-    $this->lookup = array();
+	if ( $data === null ) $data = $spec[ 'data' ];
 
-    $fields = $this->getKeyFields();
-    foreach ( $fields as $f ) {
-	$this->lookup[ $f ] = array();
+	$this->lookup = array();
 
 	foreach ( $data as $rec ) {
-	    $k = $rec[ $f ];
-	    $this->lookup[ $f ][ $k ] = $rec;
+		$this->putRecord( $rec );
 	}
-    }
+  }
+
+  public function putRecord( $record ) {
+	$fields = $this->getKeyFields();
+	foreach ( $fields as $f ) {
+		$k = $record[ $f ];
+		
+		if ( !isset( $this->lookup[ $f ] ) ) $this->lookup[ $f ] = array();
+		$this->lookup[ $f ][ $k ] = $record;
+	}
   }
 
   public function fetchRecord( $key, $value ) {
-    return @$this->lookup[ $key ][ $value ];
+	return @$this->lookup[ $key ][ $value ];
   }
 }
