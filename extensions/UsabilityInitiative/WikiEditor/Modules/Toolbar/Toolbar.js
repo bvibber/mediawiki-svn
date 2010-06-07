@@ -30,11 +30,12 @@ $j(document).ready( function() {
 							'de': [2, -214],
 							'fr': [2, -286],
 							'es': [2, -358],
+							'he': [2, -142],
 							'it': [2, -286],
 							'nl': [2, -502],
 							'pt': [2, -358],
 							'pt-br': [2, -358],
-							'pl': [2, -430]
+							'pl': [2, -142]
 						},
 						icon: {
 							'default': 'format-bold.png',
@@ -42,6 +43,7 @@ $j(document).ready( function() {
 							'de': 'format-bold-F.png',
 							'fr': 'format-bold-G.png',
 							'es': 'format-bold-N.png',
+							'he': 'format-bold-B.png',
 							'it': 'format-bold-G.png',
 							'nl': 'format-bold-V.png',
 							'pt': 'format-bold-N.png',
@@ -69,11 +71,12 @@ $j(document).ready( function() {
 							'de': [2, -934],
 							'fr': [2, -862],
 							'es': [2, -790],
+							'he': [2, -862],
 							'it': [2, -790],
 							'nl': [2, -790],
 							'pt': [2, -862],
 							'pt-br': [2, -862],
-							'pl': [2, -934]
+							'pl': [2, -862]
 						},
 						icon: {
 							'default': 'format-italic.png',
@@ -81,6 +84,7 @@ $j(document).ready( function() {
 							'de': 'format-italic-K.png',
 							'fr': 'format-italic-I.png',
 							'es': 'format-italic-C.png',
+							'he': 'format-italic-I.png',
 							'it': 'format-italic-C.png',
 							'nl': 'format-italic-C.png',
 							'pt': 'format-italic-I.png',
