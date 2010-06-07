@@ -64,7 +64,7 @@ jQuery Browser Plugin
 			['Navigator', 'Netscape']
 		]) : a).toLowerCase();
 
-		$.browser = $.extend((!z) ? $.browser : {}, c(a, /(camino|chrome|firefox|netscape|konqueror|lynx|msie|opera|safari|ipod|iphone|blackberry)/, [], /(camino|chrome|firefox|netscape|netscape6|opera|version|konqueror|lynx|msie|safari)(\/|\s)([a-z0-9\.\+]*?)(\;|dev|rel|\s|$)/));
+		$.browser = $.extend((!z) ? $.browser : {}, c(a, /(camino|chrome|firefox|netscape|konqueror|lynx|msie|opera|safari|ipod|iphone|blackberry)/, [], /(camino|chrome|firefox|netscape|netscape6|opera|version|konqueror|lynx|msie|safari)(\/|\s)([a-z0-9\.\+]*?)(\;|dev|rel|\)|\s|$)/));
 
 		$.layout = c(a, /(gecko|konqueror|msie|opera|webkit)/, [
 			['konqueror', 'khtml'],
