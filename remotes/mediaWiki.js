@@ -310,7 +310,7 @@ function rewrite_for_OggHandler( vidIdList ) {
 		offset = re.exec( rewriteHTML );
 		var offset_attr = ( offset && offset[2] )? 'startOffset="' + offset[2] + '" ' : '';
 		
-		// Check if file is from commons and therefore should explictly set apiProvider to commons: 
+		// Check if file is from commons and therefore should explicitly set apiProvider to commons: 
 		var apiProviderAttr = ( src.indexOf( 'wikipedia\/commons' ) != -1 )?'apiProvider="commons" ': '';		
 
 		if ( src ) {
@@ -342,7 +342,7 @@ function rewrite_for_OggHandler( vidIdList ) {
 			// Do the actual rewrite 
 			//mw.log("rewrite: "+ vidId );	
 			$j( '#mwe_' + vidId ).embedPlayer();
-			//issue an async request to rewrite the next clip
+			// Issue an async request to rewrite the next clip
 			if ( vidIdList.length != 0 ) {
 				setTimeout( function() {
 					procVidId( vidIdList.pop() )

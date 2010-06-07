@@ -366,13 +366,13 @@ EmbedPlayerManager.prototype = {
 		// that add to the request set	
 		var playerDependencyRequest = [ ];
 		
-		// Update the list of dependent libraris for the player 
+		// Update the list of dependent libraries for the player 
 		// ( allows extensions to add to the dependency list )
 		mw.embedPlayerUpdateLibraryRequest( playerElement, playerDependencyRequest );
 		
 		// Load any skins we need then swap in the interface
 		mw.load( playerDependencyRequest, function() {							
-			// We should move all playlist handling to add-in 		
+			// We should move all playlist handling to add-in 
 			switch( playerElement.tagName.toLowerCase() ) {					
 				case 'video':
 				case 'audio':
@@ -380,8 +380,8 @@ EmbedPlayerManager.prototype = {
 				default:			
 					var waitForMeta = true;					
 					
-					// Let extensions determin if its worthwhile to wait for metadata:
-					// We pass an object to the trigger to preserve refrence values					
+					// Let extensions determine if its worthwhile to wait for metadata:
+					// We pass an object to the trigger to preserve reference values		
 					var eventObject = { 
 						'playerElement':playerElement, 
 						'waitForMeta' : waitForMeta
@@ -400,7 +400,7 @@ EmbedPlayerManager.prototype = {
 					var ranPlayerSwapFlag = false;					
 									
 					// Local callback to runPlayer swap once playerElement has metadata
-					function runPlayerSwap() {											
+					function runPlayerSwap() {			
 						if( ranPlayerSwapFlag ){
 							return ;	
 						}
@@ -408,6 +408,7 @@ EmbedPlayerManager.prototype = {
 						ranPlayerSwapFlag = true;	
 						var playerInterface = new mw.EmbedPlayer( playerElement , attributes);
 						_this.swapEmbedPlayerElement( playerElement, playerInterface );								
+												
 						
 						// Pass the id to any hook that needs to interface prior to checkPlayerSources
 						mw.log("addElement :: trigger :: newEmbedPlayerEvent");
@@ -415,7 +416,7 @@ EmbedPlayerManager.prototype = {
 						
 						// Issue the checkPlayerSources call to the new player interface:
 						// make sure to use the element that is in the DOM:						
-						$j( '#' + playerInterface.id ).get(0).checkPlayerSources();						
+						$j( '#' + playerInterface.id ).get(0).checkPlayerSources();	
 					}
 									
 					if( waitForMeta ) {						
@@ -573,8 +574,7 @@ EmbedPlayerManager.prototype = {
 		// Remove the player loader spinner:
 		$j('#loadingSpinner_' + player.id ).remove();
 		
-		// Run the player ready trigger
-		mw.log( "playerReady" );
+		// Run the player ready trigger		
 		$j( player ).trigger( 'playerReady' );
 		
 		var is_ready = true; 
@@ -1383,7 +1383,7 @@ mw.EmbedPlayer.prototype = {
 		
 		// Set the player size attributes based loaded video element:  
 		this.setPlayerSize( element ); 			
-			 			 			
+			 			 		
 		// Set the plugin id
 		this.pid = 'pid_' + this.id;
 
@@ -1495,8 +1495,8 @@ mw.EmbedPlayer.prototype = {
 		
 		// Scope the end of check for player sources so it can be called in a callback  
 		var finishCheckPlayerSources = function(){
-			// Run embedPlayer sources hook		
-			mw.runTriggersCallback( _this, 'checkPlayerSourcesEvent', function(){
+			// Run embedPlayer sources hook			
+			mw.runTriggersCallback( _this, 'checkPlayerSourcesEvent', function(){							
 				_this.checkForTimedText();
 			})			
 		}
@@ -1575,10 +1575,14 @@ mw.EmbedPlayer.prototype = {
 			if( imageinfo.metadata[2]['name'] == 'length' ) {
 				_this.duration = imageinfo.metadata[2]['value'];
 			}
+			
 			// Set the width height 
 			// Make sure we have an accurate aspect ratio
-			_this.height = parseInt( _this.width * ( imageinfo.height / imageinfo.width ) );
-			//update the css for the player inteface
+			if( imageinfo.height != 0 &&  imageinfo.width != 0 ) {
+				_this.height = parseInt( _this.width * ( imageinfo.height / imageinfo.width ) );
+			}
+			
+			// Update the css for the player interface
 			$j( _this ).css( 'height', _this.height);
 			
 			callback();
@@ -1604,18 +1608,17 @@ mw.EmbedPlayer.prototype = {
 	* Check for timed Text support 
 	* and load necessary libraries
 	* 
-	* @param {Function} callback Function to call once timed text check is done
 	*/
 	checkForTimedText: function( ) {
 		var _this = this;
-		mw.log( 'checkForTimedText: ' + _this.id );
+		mw.log( 'checkForTimedText: ' + _this.id + " height: " + this.height );
 		// Check for timedText support
 		if( this.isTimedTextSupported() ) {			
 			mw.load( 'TimedText', function() {
 				$j( '#' + _this.id ).timedText();
 				_this.setupSourcePlayer();
 			});			
-			return ;			
+			return ;
 		}
 		_this.setupSourcePlayer();
 	},	
@@ -1696,7 +1699,7 @@ mw.EmbedPlayer.prototype = {
 		
 		// Load the selected player		
 		this.selectedPlayer.load( function() {
-			mw.log( _this.selectedPlayer.library + " player loaded" );
+			mw.log( _this.selectedPlayer.library + " player loaded for " + _this.id );
 			// Get embed library player Interface
 			var playerInterface = mw[ 'EmbedPlayer' + _this.selectedPlayer.library  ];			
 			
@@ -1956,8 +1959,7 @@ mw.EmbedPlayer.prototype = {
 		mw.log( 'Show player: ' + this.id );	
 		var _this = this;
 		// Set-up the local controlBuilder instance: 
-		this.controlBuilder = new mw.PlayerControlBuilder( this );
-						
+		this.controlBuilder = new mw.PlayerControlBuilder( this );		
 		var _this = this;
 		// Make sure we have interface_wrap
 		if( $j( this ).parent( '.interface_wrap' ).length == 0 ) {
@@ -1979,10 +1981,9 @@ mw.EmbedPlayer.prototype = {
 		
 		// Update Thumbnail for the "player" 
 		this.updateThumbnailHTML();		
-
+		
 		// Add controls if enabled:
 		if ( this.controls ) {			
-			mw.log( "embedPlayer:showPlayer::AddControls" );
 			this.controlBuilder.addControls();
 		} else {
 			// Need to think about this some more... 
