@@ -83,6 +83,7 @@ function doPageSpecificRewrite() {
 		], function() {
 			mw.load( mwEmbedHostPath + '/remotes/AddMediaWizardEditPage.js?' + mwGetReqArgs() );
 		} );
+		return ;
 	}
 	
 	// Timed text display:
@@ -104,6 +105,7 @@ function doPageSpecificRewrite() {
 					myRemote.updateUI();
 				} );
 			} );
+			return ;
 		}
 	}
 	
@@ -130,6 +132,7 @@ function doPageSpecificRewrite() {
 			} );
 			*/
 		} );
+		return ;
 	}
 	
 	
@@ -149,7 +152,10 @@ function doPageSpecificRewrite() {
 			'$j.ui.draggable'
 		];
 		var scriptUrl = mwEmbedHostPath + '/remotes/' + scriptName + '?' + mwGetReqArgs();
-		loadMwEmbed(libraries, function() { mw.load( scriptUrl ) } );
+		loadMwEmbed(libraries, function() { 
+			mw.load( scriptUrl ) 
+		} );
+		return ;
 	}
 	
 	// Special api proxy page
@@ -158,13 +164,15 @@ function doPageSpecificRewrite() {
 		loadMwEmbed( [ 'mw.ApiProxy' ], function() {
 			mw.load( mwEmbedHostPath + '/remotes/apiProxyPage.js?' + mwGetReqArgs() );
 		} );
+		return ;
 	}
 	
 	// Special api proxy page for nested callback of hash url
 	// Can be replaced with: 
 	if ( wgPageName == 'MediaWiki:ApiProxyNestedCb' ) {
 		// Note top.mw.ApiProxy.nested frame needs to be on the same domain
-		top.mw.ApiProxy.nested( window.location.href.split("#")[1] || false );		
+		top.mw.ApiProxy.nested( window.location.href.split("#")[1] || false );	
+		return ;
 	}
 		
 	// OggHandler rewrite for view pages:
@@ -186,8 +194,16 @@ function doPageSpecificRewrite() {
 				// Do utility rewrite of OggHandler content:
 				rewrite_for_OggHandler( vidIdList );
 			} );
-		} );
+		} );	
+		return ;
 	}
+	
+	// IF we did not match any rewrite ( but we do have a ready function ) load mwEmbed
+	if( preMwEmbedReady.length ){
+		loadMwEmbed( function(){
+			// mwEmbed loaded
+		});
+	}	
 }
 /*
 * Sets the mediaWiki content to "loading" 
@@ -463,7 +479,7 @@ function mwCheckForGadget(){
 	}
 	
 	
-	scripts = document.getElementsByTagName( 'script' );
+	var scripts = document.getElementsByTagName( 'script' );
 	
 	// Check for document paramater withJS and ignore found gadget
 	if( typeof getParamValue == 'undefined' && typeof getURLParamValue == 'undefined'){
@@ -546,7 +562,7 @@ function mwSubmitGadgetPref( gadget_id ){
 			'value' : gadget_id
 		} );
 				
-		// Submit the prefrences
+		// Submit the preferences
 		$j.post( form.url, form.data, function( pageHTML ){
 			var form = mwGetFormFromPage ( pageHTML );
 			if(!form){

@@ -16,7 +16,7 @@
         <par>
 
             <smilText dur="25s" textFontSize="x-large" textFontWeight="normal" textColor="white" region="Title">
-               Tante Chris' Fruits and Treats
+               Tante Chris' Fruits
             </smilText>
 
             <img dur="25s" fill="freeze" fit="meet" id="image"
@@ -37,8 +37,7 @@
             </img>
 
             <smilText dur="25s" textFontSize="large" textFontWeight="normal" textColor="white" region="Captions">
-<!-- On early versions for Win32, the screen did not clear if there is no initial character here.... -->
-                .
+				Clear Text Test
                <clear begin="3s"/>
                  Today, we've got grapes....
                <clear begin="6s"/>

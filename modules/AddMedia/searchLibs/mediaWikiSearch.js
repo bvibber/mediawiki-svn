@@ -2,7 +2,7 @@
 * mediaWiki search implementation
 */
 var mediaWikiSearch = function( options ) {
-	return this.init( options );
+	this.init( options );
 };
 mediaWikiSearch.prototype = {
 

@@ -1495,16 +1495,10 @@ mw.EmbedPlayer.prototype = {
 		
 		// Scope the end of check for player sources so it can be called in a callback  
 		var finishCheckPlayerSources = function(){
-			// Run embedPlayer sources hook 						
-			if ( $j( _this ).data('events') ){			
-				mw.log(" checkPlayerSources:: trigger checkPlayerSourcesEvent" );				
-				$j( _this ).trigger ( 'checkPlayerSourcesEvent', function() {	
-					// Continue application flow and check for Timed Text
-					_this.checkForTimedText();
-				} );
-			} else { 
+			// Run embedPlayer sources hook		
+			mw.runTriggersCallback( _this, 'checkPlayerSourcesEvent', function(){
 				_this.checkForTimedText();
-			}
+			})			
 		}
 		
 		// NOTE: Should could be moved to mediaWiki Api support module		
@@ -1863,8 +1857,7 @@ mw.EmbedPlayer.prototype = {
 						'color' : 'black',
 						'width' : _this.width + 'px',
 						'height' : _this.height + 'px'
-					})
-					.loadingSpinner()
+					})					
 				);
 			}
 			
@@ -1886,7 +1879,6 @@ mw.EmbedPlayer.prototype = {
 				doEmbedPlayerLocal();
 			});
 		} 
-		
 		
 		// mw.log('should embed:' + embed_code);		
 		_this.doEmbedHTML() 		

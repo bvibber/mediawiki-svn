@@ -67,7 +67,7 @@ mw.SwarmTransport = {
 		
 		var source = embedPlayer.mediaElement.getSources( 'video/ogg' )[0];	
 		if( ! source ){
-			mw.log("Error: addSwarmSource: could not find video/ogg source to gennerate torrent from");
+			mw.log("Warning: addSwarmSource: could not find video/ogg source to gennerate torrent from");
 			callback();
 			return ;
 		}
