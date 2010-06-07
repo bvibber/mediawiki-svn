@@ -1468,8 +1468,19 @@ $j(document).ready( function() {
 						// Preserve whitespace when replacing
 						$j( '#wikieditor-toolbar-link-dialog' ).data( 'whitespace', [ matches[1], matches[5] ] );
 					} else {
-						target = text = selection;
+						// Trim any leading and trailing whitespace from the selection,
+						// but preserve it when replacing
+						target = text = $j.trim( selection );
+						if ( target.length < selection.length ) {
+							$j( '#wikieditor-toolbar-link-dialog' ).data( 'whitespace', [
+								selection.substr( 0, selection.indexOf( target.charAt( 0 ) ) ),
+								selection.substr(
+									selection.lastIndexOf( target.charAt( target.length - 1 ) ) + 1
+								) ]
+							);
+						}
 					}
+					
 					// Change the value by calling val() doesn't trigger the change event, so let's do that ourselves
 					if ( typeof text != 'undefined' )
 						$j( '#wikieditor-toolbar-link-int-text' ).val( text ).change();
