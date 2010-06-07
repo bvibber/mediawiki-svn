@@ -262,12 +262,12 @@ $j(document).ready( function() {
 							'heading-2' : {
 								labelMsg: 'wikieditor-toolbar-tool-heading-2',
 								action: {
-									type: 'replace',
+									type: 'encapsulate',
 									options: {
-										pre: '==',
+										pre: '== ',
 										periMsg: 'wikieditor-toolbar-tool-heading-example',
-										post: '==',
-										regex: /^(\s*)(={0,6})(.*?)\2(\s*)$/,
+										post: ' ==',
+										regex: /^(\s*)(={1,6})(.*?)\2(\s*)$/,
 										regexReplace: "\$1==\$3==\$4",
 										ownline: true
 									}
@@ -276,12 +276,12 @@ $j(document).ready( function() {
 							'heading-3' : {
 								labelMsg: 'wikieditor-toolbar-tool-heading-3',
 								action: {
-									type: 'replace',
+									type: 'encapsulate',
 									options: {
-										pre: '===',
+										pre: '=== ',
 										periMsg: 'wikieditor-toolbar-tool-heading-example',
-										post: '===',
-										regex: /^(\s*)(={0,6})(.*?)\2(\s*)$/,
+										post: ' ===',
+										regex: /^(\s*)(={1,6})(.*?)\2(\s*)$/,
 										regexReplace: "\$1===\$3===\$4",
 										ownline: true
 									}
@@ -290,12 +290,12 @@ $j(document).ready( function() {
 							'heading-4' : {
 								labelMsg: 'wikieditor-toolbar-tool-heading-4',
 								action: {
-									type: 'replace',
+									type: 'encapsulate',
 									options: {
-										pre: '====',
+										pre: '==== ',
 										periMsg: 'wikieditor-toolbar-tool-heading-example',
-										post: '====',
-										regex: /^(\s*)(={0,6})(.*?)\2(\s*)$/,
+										post: ' ====',
+										regex: /^(\s*)(={1,6})(.*?)\2(\s*)$/,
 										regexReplace: "\$1====\$3====\$4",
 										ownline: true
 									}
@@ -304,12 +304,12 @@ $j(document).ready( function() {
 							'heading-5' : {
 								labelMsg: 'wikieditor-toolbar-tool-heading-5',
 								action: {
-									type: 'replace',
+									type: 'encapsulate',
 									options: {
-										pre: '=====',
+										pre: '===== ',
 										periMsg: 'wikieditor-toolbar-tool-heading-example',
-										post: '=====',
-										regex: /^(\s*)(={0,6})(.*?)\2(\s*)$/,
+										post: ' =====',
+										regex: /^(\s*)(={1,6})(.*?)\2(\s*)$/,
 										regexReplace: "\$1=====\$3=====\$4",
 										ownline: true
 									}
