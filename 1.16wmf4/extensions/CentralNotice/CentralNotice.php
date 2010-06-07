@@ -2,7 +2,7 @@
 
 // Override this URL to point to the central notice text loader...
 // This guy gets loaded from every page on every wiki, so caching helps!
-///
+// /
 // Can be set to a directory where static files will be made --
 // match that up with $wgNoticeStaticDirectory and use rebuildTemplates.php
 // to fill out the directory tree.
@@ -96,19 +96,18 @@ $wgExtensionCredits['other'][] = array(
 	'name'           => 'CentralNotice',
 	'author'         => 'Brion Vibber',
 	'url'            => 'http://www.mediawiki.org/wiki/Extension:CentralNotice',
-	'description'    => 'Adds a central sitenotice',
 	'descriptionmsg' => 'centralnotice-desc',
 );
 
 $dir = dirname( __FILE__ ) . '/';
 
 $wgExtensionMessagesFiles['CentralNotice'] = $dir . 'CentralNotice.i18n.php';
+$wgExtensionAliasesFiles['CentralNotice'] = $dir . 'CentralNotice.alias.php';
 
 $wgAvailableRights[] = 'centralnotice-admin';
 $wgAvailableRights[] = 'centralnotice-translate';
 $wgGroupPermissions['sysop']['centralnotice-admin'] = true; // Only sysops can make change
 $wgGroupPermissions['sysop']['centralnotice-translate'] = true; // Only sysops can make change
-
 
 function efCentralNoticeSetup() {
 	global $wgHooks, $wgNoticeInfrastructure, $wgAutoloadClasses, $wgSpecialPages;
@@ -116,7 +115,7 @@ function efCentralNoticeSetup() {
 
 	$dir = dirname( __FILE__ ) . '/';
 
-	if( $wgCentralNoticeLoader ) {
+	if ( $wgCentralNoticeLoader ) {
 		$wgHooks['BeforePageDisplay'][] = 'efCentralNoticeLoader';
 		$wgHooks['SiteNoticeAfter'][] = 'efCentralNoticeDisplay';
 		$wgHooks['MakeGlobalVariablesScript'][] = 'efCentralNoticeDefaults';
@@ -134,7 +133,7 @@ function efCentralNoticeSetup() {
 
 		$wgSpecialPages['NoticeTemplate'] = 'SpecialNoticeTemplate';
 		$wgAutoloadClasses['SpecialNoticeTemplate'] = $dir . 'SpecialNoticeTemplate.php';
-		$wgAutoloadClasses['CentralNoticeDB'] = $dir. 'CentralNotice.db.php';
+		$wgAutoloadClasses['CentralNoticeDB'] = $dir . 'CentralNotice.db.php';
 	}
 }
 

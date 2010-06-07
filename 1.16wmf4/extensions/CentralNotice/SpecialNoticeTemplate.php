@@ -6,17 +6,43 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 }
 
 class SpecialNoticeTemplate extends UnlistedSpecialPage {
+	public $limitsShown = array( 20, 50, 100 );
+	public $defaultLimit = 20;
+	public $mOffset, $mLimit;
+	protected $indexField = 'tmp_id';
+	protected $mDb;
 
 	/* Functions */
-
+	
 	function __construct() {
 		// Initialize special page
+		global $wgRequest;
+		$this->mRequest = $wgRequest;
+		
+		# NB: the offset is quoted, not validated. It is treated as an
+		# arbitrary string to support the widest variety of index types. Be
+		# careful outputting it into HTML!
+		$this->mOffset = $this->mRequest->getText( 'offset' );
+		
+		# Set the limit, default to 20, ignore User default
+		$limit = $this->mRequest->getInt( 'limit', 0 );
+		if ( $limit <= 0 ) {
+			$limit = 20;
+		}
+		if ( $limit > 5000 ) {
+			$limit = 5000; # We have *some* limits...
+		}
+		$this->mLimit = $limit;
+		
+		$this->mDb = wfGetDB( DB_SLAVE );
+		
 		parent::__construct( 'NoticeTemplate' );
 
 		// Internationalization
 		wfLoadExtensionMessages( 'CentralNotice' );
 	}
-
+	
+	// Handle different types of page requests
 	function execute( $sub ) {
 		global $wgOut, $wgUser, $wgRequest;
 
@@ -30,15 +56,15 @@ class SpecialNoticeTemplate extends UnlistedSpecialPage {
 		$this->editable = $wgUser->isAllowed( 'centralnotice-admin' );
 
 		// Show summary
-		$wgOut->addWikiText( wfMsg( 'centralnotice-summary' ) );
+		$wgOut->addWikiMsg( 'centralnotice-summary' );
 
 		// Show header
 		CentralNotice::printHeader();
 
-		if( $this->editable ) {
+		if ( $this->editable ) {
 			// Handle forms
 			if ( $wgRequest->wasPosted() ) {
-	
+
 				// Handle removing
 				$toRemove = $wgRequest->getArray( 'removeTemplates' );
 				if ( isset( $toRemove ) ) {
@@ -47,7 +73,7 @@ class SpecialNoticeTemplate extends UnlistedSpecialPage {
 						$this->removeTemplate( $template );
 					}
 				}
-	
+
 				// Handle translation message update
 				$update = $wgRequest->getArray( 'updateText' );
 				$token  = $wgRequest->getArray( 'token' );
@@ -62,8 +88,9 @@ class SpecialNoticeTemplate extends UnlistedSpecialPage {
 					}
 				}
 			}
-	
+
 			// Handle adding
+			// FIXME: getText()? weak comparison
 			if ( $wgRequest->getVal( 'wpMethod' ) == 'addTemplate' ) {
 				$this->addTemplate(
 					$wgRequest->getVal( 'templateName' ),
@@ -93,37 +120,45 @@ class SpecialNoticeTemplate extends UnlistedSpecialPage {
 			return;
 		}
 
-		if( $this->editable ) {
+		if ( $this->editable ) {
 			// Handle viewing a specific template
 			if ( $sub == 'add' ) {
 				$this->showAdd();
 				return;
 			}
-                        if ( $sub == 'clone' ) {
-                            $oldTemplate = $wgRequest->getVal( 'oldTemplate' );
-                            $newTemplate =  $wgRequest->getVal( 'newTemplate' );
-                            //We use the returned name in case any special characters had to be removed
-                            $template = $this->cloneTemplate( $oldTemplate, $newTemplate );
-                            $wgOut->redirect( SpecialPage::getTitleFor( 'NoticeTemplate', 'view' )->getLocalUrl( "template=$template" ) );
-                            return;
-                        }
+
+			if ( $sub == 'clone' ) {
+				$oldTemplate = $wgRequest->getVal( 'oldTemplate' );
+				$newTemplate =  $wgRequest->getVal( 'newTemplate' );
+				// We use the returned name in case any special characters had to be removed
+				$template = $this->cloneTemplate( $oldTemplate, $newTemplate );
+				$wgOut->redirect( SpecialPage::getTitleFor( 'NoticeTemplate', 'view' )->getLocalUrl( "template=$template" ) );
+				return;
+			}
 		}
 
 		// Show list by default
 		$this->showList();
 	}
-
+	
 	function showList() {
-		global $wgOut, $wgUser, $wgRequest;
+		global $wgOut, $wgUser, $wgRequest, $wgLang;
 
 		$sk = $wgUser->getSkin();
 
 		// Templates
-		$templates = $this->queryTemplates();
-		if ( count( $templates ) > 0 ) {
-			$htmlOut = '';
+		$offset = $wgRequest->getVal( 'offset' );
+		if ( $wgRequest->getVal( 'limit' ) ) {
+			$limit = $wgRequest->getVal( 'limit' );
+		} else {
+			$limit = $this->defaultLimit;
+		}
 			
-			if( $this->editable ) {
+		$templates = $this->queryTemplates($offset, $limit);
+		$htmlOut = '';
+		if ( count( $templates ) > 0 ) {
+		
+			if ( $this->editable ) {
 				$htmlOut .= Xml::openElement( 'form',
 					array(
 						'method' => 'post',
@@ -132,13 +167,27 @@ class SpecialNoticeTemplate extends UnlistedSpecialPage {
 				);
 			}
 			$htmlOut .= Xml::fieldset( wfMsg( 'centralnotice-available-templates' ) );
+			
+			//Show pagination links
+			$opts = array( 'parsemag', 'escapenoentities' );
+			$linkTexts = array(
+				'prev' => wfMsgExt( 'prevn', $opts, $wgLang->formatNum( $this->mLimit ) ),
+				'next' => wfMsgExt( 'nextn', $opts, $wgLang->formatNum($this->mLimit ) ),
+				'first' => wfMsgExt( 'page_first', $opts ),
+				'last' => wfMsgExt( 'page_last', $opts )
+			);
+			$pagingLinks = $this->getPagingLinks( $linkTexts, $offset, $limit );
+			$limitLinks = $this->getLimitLinks();
+			$limits = $wgLang->pipeList( $limitLinks );
+			$htmlOut .= wfMsgHTML( 'viewprevnext', $pagingLinks['prev'], $pagingLinks['next'], $limits );
+			
 			$htmlOut .= Xml::openElement( 'table',
 				array(
 					'cellpadding' => 9,
 					'width' => '100%'
 				)
 			);
-			if( $this->editable ) {
+			if ( $this->editable ) {
 				$htmlOut .= Xml::element( 'th', array( 'align' => 'left', 'width' => '5%' ),
 					wfMsg ( 'centralnotice-remove' )
 				);
@@ -148,11 +197,12 @@ class SpecialNoticeTemplate extends UnlistedSpecialPage {
 			);
 
 			$msgConfirmDelete = wfMsgHTML( 'centralnotice-confirm-delete' );
+			
 			foreach ( $templates as $templateName ) {
 				$viewPage = SpecialPage::getTitleFor( 'NoticeTemplate', 'view' );
 				$htmlOut .= Xml::openElement( 'tr' );
 
-				if( $this->editable ) {
+				if ( $this->editable ) {
 					// Remove box
 					$htmlOut .= Xml::tags( 'td', array( 'valign' => 'top' ),
 						Xml::check( 'removeTemplates[]', false,
@@ -179,33 +229,37 @@ class SpecialNoticeTemplate extends UnlistedSpecialPage {
 
 				$htmlOut .= Xml::closeElement( 'tr' );
 			}
-			if( $this->editable ) {
+			if ( $this->editable ) {
 				$htmlOut .= Xml::tags( 'tr', null,
 					Xml::tags( 'td', array( 'colspan' => 3 ),
 						Xml::submitButton( wfMsg( 'centralnotice-modify' ) )
 					)
 				);
 			}
+			$htmlOut .= Xml::closeElement( 'table' );
+			
+			//Show pagination links
+			$htmlOut .= wfMsgHTML( 'viewprevnext', $pagingLinks['prev'], $pagingLinks['next'], $limits );
+			
+			$htmlOut .= Xml::closeElement( 'fieldset' );
+			if ( $this->editable ) {
+				$htmlOut .= Xml::closeElement( 'form' );
+			}
+			
 		} else {
-			$htmlOut = Xml::tags( 'tr', null,
-				Xml::element( 'td', null, wfMsg( 'centralnotice-no-templates' ) )
-			);
+			$htmlOut .= Xml::element( 'p', null, wfMsg( 'centralnotice-no-templates' ) );
 		}
-
-		$htmlOut .= Xml::closeElement( 'table' );
-		$htmlOut .= Xml::closeElement( 'fieldset' );
-		if( $this->editable ) {
-			$htmlOut .= Xml::closeElement( 'form' );
-
-		$htmlOut .= Xml::element( 'p' );
-		$newPage = SpecialPage::getTitleFor( 'NoticeTemplate', 'add' );
-		$htmlOut .= $sk->makeLinkObj( $newPage, wfMsgHtml( 'centralnotice-add-template' ) );
+	
+		if ( $this->editable ) {
+			$htmlOut .= Xml::element( 'p' );
+			$newPage = SpecialPage::getTitleFor( 'NoticeTemplate', 'add' );
+			$htmlOut .= $sk->makeLinkObj( $newPage, wfMsgHtml( 'centralnotice-add-template' ) );
 		}
 
 		// Output HTML
 		$wgOut->addHTML( $htmlOut );
 	}
-
+	
 	function showAdd() {
 		global $wgOut, $wgUser;
 
@@ -239,7 +293,7 @@ class SpecialNoticeTemplate extends UnlistedSpecialPage {
 		global $wgOut, $wgUser, $wgRequest, $wgContLanguageCode;
 
 		$sk = $wgUser->getSkin();
-		if( $this->editable ) {
+		if ( $this->editable ) {
 			$readonly = array();
 		} else {
 			$readonly = array( 'readonly' => 'readonly' );
@@ -263,10 +317,10 @@ class SpecialNoticeTemplate extends UnlistedSpecialPage {
 		);
 
 		// Build HTML
-		if( $this->editable ) {
+		if ( $this->editable ) {
 			$htmlOut .= Xml::openElement( 'form', array( 'method' => 'post' ) );
 		}
-		$htmlOut .= Xml::fieldset( wfMsgHtml( 'centralnotice-translate-heading', $currentTemplate ) );
+		$htmlOut .= Xml::fieldset( wfMsg( 'centralnotice-translate-heading', $currentTemplate ) );
 		$htmlOut .= Xml::openElement( 'table',
 			array (
 				'cellpadding' => 9,
@@ -285,7 +339,7 @@ class SpecialNoticeTemplate extends UnlistedSpecialPage {
 		$bodyPage = Title::newFromText( "Centralnotice-template-{$currentTemplate}", NS_MEDIAWIKI );
 		$curRev = Revision::newFromTitle( $bodyPage );
 		$body = $curRev ? $curRev->getText() : '';
-    
+
 		$fields = array();
 		preg_match_all( '/\{\{\{([A-Za-z0-9\_\-}]+)\}\}\}/', $body, $fields );
 
@@ -343,18 +397,20 @@ class SpecialNoticeTemplate extends UnlistedSpecialPage {
 			);
 			$htmlOut .= Xml::closeElement( 'tr' );
 		}
-		if( $this->editable ) {
+		if ( $this->editable ) {
 			$htmlOut .= Xml::hidden( 'token', $token );
 			$htmlOut .= Xml::hidden( 'wpUserLanguage', $wpUserLang );
 			$htmlOut .= Xml::openElement( 'tr' );
 			$htmlOut .= Xml::tags( 'td', array( 'colspan' => 4 ),
-				Xml::submitButton( wfMsg( 'centralnotice-modify', array( 'name' => 'update' ) ) )
+				Xml::submitButton( wfMsg( 'centralnotice-modify' ), array( 'name' => 'update' ) )
 			);
 			$htmlOut .= Xml::closeElement( 'tr' );
 		}
+
 		$htmlOut .= Xml::closeElement( 'table' );
 		$htmlOut .= Xml::closeElement( 'fieldset' );
-		if( $this->editable ) {
+
+		if ( $this->editable ) {
 			$htmlOut .= Xml::closeElement( 'form' );
 		}
 
@@ -362,22 +418,22 @@ class SpecialNoticeTemplate extends UnlistedSpecialPage {
 		 * Show language selection form
 		 */
 		$htmlOut .= Xml::openElement( 'form', array( 'method' => 'post' ) );
-		$htmlOut .= Xml::fieldset( wfMsgHtml( 'centralnotice-change-lang' ) );
+		$htmlOut .= Xml::fieldset( wfMsg( 'centralnotice-change-lang' ) );
 		$htmlOut .= Xml::openElement( 'table', array ( 'cellpadding' => 9 ) );
 		list( $lsLabel, $lsSelect ) = Xml::languageSelector( $wpUserLang );
 
 		$newPage = SpecialPage::getTitleFor( 'NoticeTemplate', 'view' );
-                 
+
 		$htmlOut .= Xml::tags( 'tr', null,
 			Xml::tags( 'td', null, $lsLabel ) .
 			Xml::tags( 'td', null, $lsSelect ) .
 			Xml::tags( 'td', array( 'colspan' => 2 ),
-				Xml::submitButton( wfMsgHtml( 'centralnotice-modify' ) )
+				Xml::submitButton( wfMsg( 'centralnotice-modify' ) )
 			)
-                ); 
-                $htmlOut .= Xml::tags( 'tr', null,
-                    Xml::tags( 'td', null, '' ) .
-                    Xml::tags( 'td', null, $sk->makeLinkObj( $newPage, wfMsg( 'centralnotice-preview-all-template-translations' ), "template=$currentTemplate&wpUserLanguage=all" ) )
+		);
+		$htmlOut .= Xml::tags( 'tr', null,
+			Xml::tags( 'td', null, '' ) .
+			Xml::tags( 'td', null, $sk->makeLinkObj( $newPage, wfMsgHtml( 'centralnotice-preview-all-template-translations' ), "template=$currentTemplate&wpUserLanguage=all" ) )
 		);
 		$htmlOut .= Xml::closeElement( 'table' );
 		$htmlOut .= Xml::closeElement( 'fieldset' );
@@ -386,11 +442,11 @@ class SpecialNoticeTemplate extends UnlistedSpecialPage {
 		/*
 		 * Show edit form
 		 */
-		if( $this->editable ) {
+		if ( $this->editable ) {
 			$htmlOut .= Xml::openElement( 'form', array( 'method' => 'post' ) );
 			$htmlOut .= Xml::hidden( 'wpMethod', 'editTemplate' );
 		}
-		$htmlOut .= Xml::fieldset( wfMsgHtml( 'centralnotice-edit-template' ) );
+		$htmlOut .= Xml::fieldset( wfMsg( 'centralnotice-edit-template' ) );
 		$htmlOut .= Xml::openElement( 'table',
 			array(
 				'cellpadding' => 9,
@@ -400,22 +456,22 @@ class SpecialNoticeTemplate extends UnlistedSpecialPage {
 		$htmlOut .= Xml::tags( 'tr', null,
 			Xml::tags( 'td', null, Xml::textarea( 'templateBody', $body, 60, 20, $readonly ) )
 		);
-		if( $this->editable ) {
+		if ( $this->editable ) {
 			$htmlOut .= Xml::tags( 'tr', null,
-				Xml::tags( 'td', null, Xml::submitButton( wfMsgHtml( 'centralnotice-modify' ) ) )
+				Xml::tags( 'td', null, Xml::submitButton( wfMsg( 'centralnotice-modify' ) ) )
 			);
 		}
 		$htmlOut .= Xml::closeElement( 'table' );
 		$htmlOut .= Xml::closeElement( 'fieldset' );
-		if( $this->editable ) {
+		if ( $this->editable ) {
 			$htmlOut .= Xml::closeElement( 'form' );
 		}
 
 		/*
 		 * Show Clone form
 		 */
-		if ( $this->editable ) { 
-			$htmlOut .= Xml::openElement ( 'form', 
+		if ( $this->editable ) {
+			$htmlOut .= Xml::openElement ( 'form',
 				array(
 					'method' => 'post',
 					'action' => SpecialPage::getTitleFor( 'NoticeTemplate', 'clone' )->getLocalUrl()
@@ -425,7 +481,8 @@ class SpecialNoticeTemplate extends UnlistedSpecialPage {
 			$htmlOut .= Xml::fieldset( wfMsg( 'centralnotice-clone-notice' ) );
 			$htmlOut .= Xml::openElement( 'table', array( 'cellpadding' => 9 ) );
 			$htmlOut .= Xml::openElement( 'tr' );
-			$htmlOut .= Xml::inputLabel( 'Name:', 'newTemplate', 'newTemplate, 25');
+			// FIXME: hardcoded text?
+			$htmlOut .= Xml::inputLabel( 'Name:', 'newTemplate', 'newTemplate, 25' );
 			$htmlOut .= Xml::submitButton( wfMsg( 'centralnotice-clone' ), array ( 'id' => 'clone' ) );
 			$htmlOut .= Xml::hidden( 'oldTemplate', $currentTemplate );
 
@@ -450,8 +507,8 @@ class SpecialNoticeTemplate extends UnlistedSpecialPage {
 		// Pull all available text for a template
 		$langs = array_keys( $this->getTranslations( $template ) );
 		$htmlOut = '';
-    
-		foreach( $langs as $lang ) {
+
+		foreach ( $langs as $lang ) {
 			// Link and Preview all available translations
 			$viewPage = SpecialPage::getTitleFor( 'NoticeTemplate', 'view' );
 			$render = new SpecialNoticeText();
@@ -460,7 +517,7 @@ class SpecialNoticeTemplate extends UnlistedSpecialPage {
 			$htmlOut .= Xml::tags( 'td', array( 'valign' => 'top' ),
 				$sk->makeLinkObj( $viewPage,
 					$lang,
-					'template=' . urlencode( $template ) . "&wpUserLanguage=$lang") . 
+					'template=' . urlencode( $template ) . "&wpUserLanguage=$lang" ) .
 				Xml::fieldset( wfMsg( 'centralnotice-preview' ),
 					$render->getHtmlNotice( $template )
 				)
@@ -468,7 +525,7 @@ class SpecialNoticeTemplate extends UnlistedSpecialPage {
 		}
 		return $wgOut->addHtml( $htmlOut );
 	}
-            
+
 	private function updateMessage( $text, $translation, $lang, $token = false ) {
 		global $wgUser;
 
@@ -479,24 +536,37 @@ class SpecialNoticeTemplate extends UnlistedSpecialPage {
 		$article = new Article( $title );
 		$article->doEdit( $translation, '', EDIT_FORCE_BOT );
 	}
-
-	static function queryTemplates() {
+	
+	function queryTemplates($offset, $limit) {
 		$dbr = wfGetDB( DB_SLAVE );
-		$res = $dbr->select( 'cn_templates',
-			array( 'tmp_name', 'tmp_id' ),
-			'',
-			__METHOD__,
-			array( 'ORDER BY' => 'tmp_id' )
-		);
-
+		$conds = array();
+		$options['ORDER BY'] = $this->indexField . ' DESC';
+		$options['LIMIT'] = intval( $limit );
+		$operator = '<';
+		if ( $offset ) {
+			$conds[] = $this->indexField . $operator . $this->mDb->addQuotes( $offset );
+			$res = $dbr->select( 'cn_templates',
+				array( 'tmp_name', 'tmp_id' ),
+				$conds,
+				__METHOD__,
+				$options
+			);
+		} else {
+			$res = $dbr->select( 'cn_templates',
+				array( 'tmp_name', 'tmp_id' ),
+				'',
+				__METHOD__,
+				$options
+			);
+		}
 		$templates = array();
-		while ( $row = $dbr->fetchObject( $res ) ) {
+		foreach ( $res as $row ) {
 			array_push( $templates, $row->tmp_name );
 		}
 
 		return $templates;
 	}
-
+	
 	private function getTemplateId ( $templateName ) {
 		global $wgOut, $egCentralNoticeTables;
 
@@ -516,8 +586,10 @@ class SpecialNoticeTemplate extends UnlistedSpecialPage {
 	private function removeTemplate ( $name ) {
 		global $wgOut, $egCentralNoticeTables;
 
+		// FIXME: weak comparison
 		if ( $name == '' ) {
-			$wgOut->addHTML( wfMsg( 'centralnotice-template-doesnt-exist' ) );
+			// FIXME: message not defined?
+			$wgOut->addWikiMsg( 'centralnotice-template-doesnt-exist' );
 			return;
 		}
 
@@ -526,7 +598,7 @@ class SpecialNoticeTemplate extends UnlistedSpecialPage {
 		$res = $dbr->select( 'cn_assignments', 'asn_id', array( 'tmp_id' => $id ), __METHOD__ );
 
 		if ( $dbr->numRows( $res ) > 0 ) {
-			$wgOut->addHTML( wfMsg( 'centralnotice-template-still-bound' ) );
+			$wgOut->addWikiMsg( 'centralnotice-template-still-bound' );
 			return;
 		} else {
 			$dbw = wfGetDB( DB_MASTER );
@@ -548,7 +620,7 @@ class SpecialNoticeTemplate extends UnlistedSpecialPage {
 		global $wgOut, $egCentralNoticeTables;
 
 		if ( $body == '' || $name == '' ) {
-			$wgOut->addHTML( wfMsg( 'centralnotice-null-string' ) );
+			$wgOut->addWikiMsg( 'centralnotice-null-string' );
 			return;
 		}
 
@@ -556,18 +628,21 @@ class SpecialNoticeTemplate extends UnlistedSpecialPage {
 		$name = ereg_replace( '[^A-Za-z0-9\_]', '', $name );
 
 		$dbr = wfGetDB( DB_SLAVE );
-		$res = $dbr->select( 'cn_templates', 'tmp_name',
+		$res = $dbr->select(
+			'cn_templates',
+			'tmp_name',
 			array( 'tmp_name' => $name ),
 			__METHOD__
 		);
 
 		if ( $dbr->numRows( $res ) > 0 ) {
-			$wgOut->addHTML( wfMsg( 'centralnotice-template-exists' ) );
+			$wgOut->addWikiMsg( 'centralnotice-template-exists' );
 			return false;
 		} else {
 			$dbw = wfGetDB( DB_MASTER );
 			$dbw->begin();
-			$res = $dbw->insert( 'cn_templates',
+			$res = $dbw->insert(
+				'cn_templates',
 				array( 'tmp_name' => $name ),
 				__METHOD__
 			);
@@ -588,7 +663,7 @@ class SpecialNoticeTemplate extends UnlistedSpecialPage {
 		global $wgOut, $egCentralNoticeTables;
 
 		if ( $body == '' || $name == '' ) {
-			$wgOut->addHTML( wfMsg( 'centralnotice-null-string' ) );
+			$wgOut->addWikiMsg( 'centralnotice-null-string' );
 			return;
 		}
 
@@ -610,79 +685,256 @@ class SpecialNoticeTemplate extends UnlistedSpecialPage {
 		}
 	}
 
-        /*
-         * Copy all the data from one template to another
-         */
-        public function cloneTemplate( $source, $dest ) {
-            // Reset the timer as updates on meta take a long time
-            set_time_limit( 300 );
-            // Pull all possible langs
-            $langs = $this->getTranslations( $source );
-            
-            // Normalize name
-	    $dest = ereg_replace( '[^A-Za-z0-9\_]', '', $dest );
-     
-            // Pull text and respect any inc: markup
-            $bodyPage = Title::newFromText( "Centralnotice-template-{$source}", NS_MEDIAWIKI );
-            $template_body = Revision::newFromTitle( $bodyPage )->getText();
+	/*
+	 * Copy all the data from one template to another
+	 */
+	public function cloneTemplate( $source, $dest ) {
+		// Reset the timer as updates on meta take a long time
+		set_time_limit( 300 );
+		// Pull all possible langs
+		$langs = $this->getTranslations( $source );
 
-            if ( $this->addTemplate( $dest, $template_body ) ) {
+		// Normalize name
+		$dest = ereg_replace( '[^A-Za-z0-9\_]', '', $dest );
 
-                // Populate the fields
-                foreach($langs as $lang => $fields ) {
-                    foreach( $fields as $field => $text ) {
-                         $this->updateMessage( "$dest-$field", $text, $lang );
-                    }
-                }
-             return $dest;
-            }
-        }
+		// Pull text and respect any inc: markup
+		$bodyPage = Title::newFromText( "Centralnotice-template-{$source}", NS_MEDIAWIKI );
+		$template_body = Revision::newFromTitle( $bodyPage )->getText();
 
-        /*
-         * Find all fields set for a template
-         */
-        private function findFields( $template ) {
-                $messages = array();
-                $body = wfMsg( "Centralnotice-template-{$template}" );
-    
-                // Generate fields from parsing the body
-                $fields = array();
-                preg_match_all( '/\{\{\{([A-Za-z0-9\_\-}]+)\}\}\}/', $body, $fields );
-    
-                // Remove duplicates
-                $filteredFields = array();
-                foreach ( $fields[1] as $field ) { 
-                        $filteredFields[$field] = array_key_exists( $field, $filteredFields ) ? $filteredFields[$field] + 1 :
-1;
-                }
-                return $filteredFields;
-        }
+		if ( $this->addTemplate( $dest, $template_body ) ) {
 
-        /*
-         * Given a template return a list of every set field in every language
-         */
-        public function getTranslations( $template ) {
-            $translations = array();
+			// Populate the fields
+			foreach ( $langs as $lang => $fields ) {
+				foreach ( $fields as $field => $text ) {
+					$this->updateMessage( "$dest-$field", $text, $lang );
+				}
+			}
+			return $dest;
+		}
+	}
 
-            // Pull all language codes to enumerate
-            $allLangs = array_keys( Language::getLanguageNames() );
-            
-            // Lookup all the possible fields for a template
-            $fields = $this->findFields( $template );
+	/*
+	 * Find all fields set for a template
+	 */
+	private function findFields( $template ) {
+		$messages = array();
+		$body = wfMsg( "Centralnotice-template-{$template}" );
 
-            // Iterate through all possible languages to find matches
-            foreach ( $allLangs as $lang ) {
-                // Iterate through all possible fields
-                foreach ( $fields as $field => $count ) {
-                    // Put all fields together for a lookup
-                    $message = ( $lang == 'en' ) ? "Centralnotice-{$template}-{$field}" : "Centralnotice-{$template}-{$field}/{$lang}";
-                    if ( Title::newFromText( $message,  NS_MEDIAWIKI )->exists() ) {
-                        $translations[$lang][$field] = wfMsgExt( "Centralnotice-{$template}-{$field}", 
-                                                array( 'language' => $lang )
-                        );
-                    }
-                }
-            }
-            return $translations;
-        }
+		// Generate fields from parsing the body
+		$fields = array();
+		preg_match_all( '/\{\{\{([A-Za-z0-9\_\-}]+)\}\}\}/', $body, $fields );
+
+		// Remove duplicates
+		$filteredFields = array();
+		foreach ( $fields[1] as $field ) {
+			$filteredFields[$field] = array_key_exists( $field, $filteredFields ) ? $filteredFields[$field] + 1 :
+			1;
+		}
+		return $filteredFields;
+	}
+
+	/*
+	 * Given a template return a list of every set field in every language
+	 */
+	public function getTranslations( $template ) {
+		$translations = array();
+
+		// Pull all language codes to enumerate
+		$allLangs = array_keys( Language::getLanguageNames() );
+
+		// Lookup all the possible fields for a template
+		$fields = $this->findFields( $template );
+
+		// Iterate through all possible languages to find matches
+		foreach ( $allLangs as $lang ) {
+			// Iterate through all possible fields
+			foreach ( $fields as $field => $count ) {
+				// Put all fields together for a lookup
+				$message = ( $lang == 'en' ) ? "Centralnotice-{$template}-{$field}" : "Centralnotice-{$template}-{$field}/{$lang}";
+				if ( Title::newFromText( $message,  NS_MEDIAWIKI )->exists() ) {
+					$translations[$lang][$field] = wfMsgExt(
+						"Centralnotice-{$template}-{$field}",
+						array( 'language' => $lang )
+					);
+				}
+			}
+		}
+		return $translations;
+	}
+	
+	/* Begin methods copied (and modified) from Pager class */
+	
+	/**
+	 * Get a URL query array for the prev and next links.
+	 */
+	function getPagingQueries( $offset, $limit ) {
+		$dbr = wfGetDB( DB_SLAVE );
+		if ( $offset ) {
+			// prev
+			$templates = array();
+			$conds = array();
+			$options['ORDER BY'] = $this->indexField . ' ASC';
+			$options['LIMIT'] = intval( $limit + 1);
+			$conds[] = $this->indexField . '>=' . $this->mDb->addQuotes( $offset );
+			$res = $dbr->select( 'cn_templates',
+				array( 'tmp_name', 'tmp_id' ),
+				$conds,
+				__METHOD__,
+				$options
+			);
+			foreach ( $res as $row ) {
+				array_push( $templates, $row->tmp_name );
+			}
+			if ( count( $templates ) == $limit + 1 ) {
+				$prev = array( 'offset' => end( $templates ), 'limit' => $limit );
+			} else { 
+				$prev = array( 'offset' => '0', 'limit' => $limit );
+			}
+			// next
+			$templates = array();
+			$conds = array();
+			$conds[] = $this->indexField . '<' . $this->mDb->addQuotes( $offset );
+			$options['ORDER BY'] = $this->indexField . ' DESC';
+			$options['LIMIT'] = intval( $limit ) + 1;
+			$res = $dbr->select( 'cn_templates',
+				array( 'tmp_name', 'tmp_id' ),
+				$conds,
+				__METHOD__,
+				$options
+			);
+			foreach ( $res as $row ) {
+				array_push( $templates, $row->tmp_name );
+			}
+			if ( count( $templates ) == $limit + 1 ) {
+				end( $templates );
+				$next = array( 'offset' => prev( $templates ), 'limit' => $limit );
+			} else {
+				$next = false;
+			}
+		} else {
+			$prev = false;
+			// next
+			$templates = array();
+			$options['ORDER BY'] = $this->indexField . ' DESC';
+			$options['LIMIT'] = intval( $limit ) + 1;
+			$res = $dbr->select( 'cn_templates',
+				array( 'tmp_name', 'tmp_id' ),
+				'',
+				__METHOD__,
+				$options
+			);
+			while ( $row = $dbr->fetchObject( $res ) ) {
+				array_push( $templates, $row->tmp_name );
+			}
+			if ( count( $templates ) == $limit + 1 ) {
+				end( $templates );
+				$next = array( 'offset' => prev( $templates ), 'limit' => $limit );
+			} else {
+				$next = false;
+			}
+		}
+		return array( 'prev' => $prev, 'next' => $next );
+	}
+	
+	/**
+	 * Get paging links. If a link is disabled, the item from $disabledTexts
+	 * will be used. If there is no such item, the unlinked text from
+	 * $linkTexts will be used. Both $linkTexts and $disabledTexts are arrays
+	 * of HTML.
+	 */
+	function getPagingLinks( $linkTexts, $offset, $limit, $disabledTexts = array() ) {
+		$queries = $this->getPagingQueries($offset, $limit);
+		$links = array();
+		foreach ( $queries as $type => $query ) {
+			if ( $query !== false ) {
+				$links[$type] = $this->makeLink( $linkTexts[$type], $queries[$type], $type );
+			} elseif ( isset( $disabledTexts[$type] ) ) {
+				$links[$type] = $disabledTexts[$type];
+			} else {
+				$links[$type] = $linkTexts[$type];
+			}
+		}
+		return $links;
+	}
+	
+	/**
+	 * Get limit links, i.e. the links that change the query limit. This list
+	 * is based on the limitsShown array.
+	 */
+	function getLimitLinks() {
+		global $wgLang;
+		$links = array();
+		$offset = $this->mOffset;
+		foreach ( $this->limitsShown as $limit ) {
+			$links[] = $this->makeLink(
+					$wgLang->formatNum( $limit ),
+					array( 'offset' => $offset, 'limit' => $limit ),
+					'num'
+			);
+		}
+		return $links;
+	}
+	
+	/**
+	 * Make a self-link
+	 */
+	function makeLink($text, $query = null, $type=null) {
+		if ( $query === null ) {
+			return $text;
+		}
+
+		$attrs = array();
+		if( in_array( $type, array( 'first', 'prev', 'next', 'last' ) ) ) {
+			# HTML5 rel attributes
+			$attrs['rel'] = $type;
+		}
+
+		if( $type ) {
+			$attrs['class'] = "mw-{$type}link";
+		}
+		return $this->getSkin()->link( $this->getTitle(), $text,
+			$attrs, $query + $this->getDefaultQuery(), array('noclasses','known') );
+	}
+	
+	/**
+	 * Set the offset from an other source than $wgRequest
+	 */
+	function setOffset( $offset ) {
+		$this->mOffset = $offset;
+	}
+	/**
+	 * Set the limit from an other source than $wgRequest
+	 */
+	function setLimit( $limit ) {
+		$this->mLimit = $limit;
+	}
+	
+	/**
+	 * Get the current skin. This can be overridden if necessary.
+	 */
+	function getSkin() {
+		if ( !isset( $this->mSkin ) ) {
+			global $wgUser;
+			$this->mSkin = $wgUser->getSkin();
+		}
+		return $this->mSkin;
+	}
+	
+	/**
+	 * Get an array of query parameters that should be put into self-links.
+	 * By default, all parameters passed in the URL are used, except for a
+	 * short blacklist.
+	 */
+	function getDefaultQuery() {
+		if ( !isset( $this->mDefaultQuery ) ) {
+			$this->mDefaultQuery = $_GET;
+			unset( $this->mDefaultQuery['title'] );
+			unset( $this->mDefaultQuery['offset'] );
+			unset( $this->mDefaultQuery['limit'] );
+		}
+		return $this->mDefaultQuery;
+	}
+	
+	/* End methods copied from Pager class */
+	
 }
