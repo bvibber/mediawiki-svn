@@ -125,6 +125,7 @@ public abstract class StreamProcessorApp<I, O, S extends WikiWordConceptStoreBas
 				inputStream = System.in;
 				usingStdin = true;
 			} else {
+				if (inputHelper==null) inputHelper = new InputFileHelper(tweaks);
 				inputStream = inputHelper.open(path);
 				info("Reading input from "+path);
 				usingStdin = false;
