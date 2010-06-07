@@ -9,7 +9,7 @@ class ActiveStrategy {
 					'page_id',
 					'page_namespace',
 					'page_title',
-					"substring_index(page_title, '/', -1) AS tf_name"
+					"substring_index(page_title, '/', 2) AS tf_name"
 				),
 				array(
 					'page_namespace' => 0,
@@ -24,6 +24,7 @@ class ActiveStrategy {
 
 		$title = Title::newFromText( $taskForce );
 		$text = $wgContLang->convert( $title->getPrefixedText() );
+		$text = substr( $text, strpos($text, '/') + 1 );
 		$pageLink = $skin->linkKnown( $title, $text );
 		$colors = null;
 		$color = null;
@@ -146,7 +147,7 @@ class ActiveStrategy {
 		
 		foreach( $taskForces as $row ) {
 			$title = Title::makeTitle( $row->page_namespace, $row->page_title );
-			$memberCount[$row->title] =
+			$memberCount[$row->tf_name] =
 				self::getMemberCount( $title->getPrefixedText() );
 		}
 		
