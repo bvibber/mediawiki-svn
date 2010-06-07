@@ -78,7 +78,30 @@ $j(document).ready( function() {
 			'cr', 'ch', 'st', 'ik', 'mdf', 'kaa', 'aa', 'fj', 'srn', 'tet', 'or', 'pnt', 'bug', 'ss', 'ts', 'pcd',
 			'pih', 'za', 'sg', 'lg', 'bxr', 'xh', 'ak', 'ha', 'bi', 've', 'tn', 'ff', 'dz', 'ti', 'ki', 'ny', 'rw',
 			'chy', 'tw', 'sn', 'tum', 'ng', 'rn', 'mh', 'ii', 'cho', 'hz', 'kr', 'ho', 'mus', 'kj'
-	 	];
+		];
+		// If the user has an Accept-Language cookie, use it. Otherwise, set it asynchronously but keep the default behavior
+		// for this page view.
+		var acceptLangCookie = $j.cookie( 'accept-language' );
+		if ( acceptLangCookie != null ) {
+			// Put the user's accepted languages before the list ordered by wiki size
+			if ( acceptLangCookie != '' ) {
+				languages = acceptLangCookie.split( ',' ).concat( languages );
+			}
+		} else {
+			$j.getJSON( wgScriptPath + '/api.php?action=query&meta=userinfo&uiprop=acceptlang&format=json', function( data ) {
+				var langs = [];
+				if ( typeof data.query != 'undefined' && typeof data.query.userinfo != 'undefined' &&
+						typeof data.query.userinfo.acceptlang != 'undefined' ) {
+					for ( var j = 0; j < data.query.userinfo.acceptlang.length; j++ ) {
+						if ( data.query.userinfo.acceptlang[j].q != 0 ) {
+							langs.push( data.query.userinfo.acceptlang[j]['*'] );
+						}
+					}
+				}
+				$j.cookie( 'accept-language', langs.join( ',' ), { 'path': '/', 'expires': 30 } );
+			} );
+		}
+		
 		// Shortcuts to the two lists
 		$primary = $j( '#p-lang ul.primary' );
 		$secondary = $j( '#p-lang ul.secondary' );
