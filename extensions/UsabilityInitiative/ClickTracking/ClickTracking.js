@@ -6,6 +6,14 @@
 					wgScriptPath + '/api.php', { 'action': 'clicktracking', 'eventid': id, 'token': wgTrackingToken }
 			);
 		};
+		
+		$.trackActionWithInfo = function( id, info ) {
+			$j.post(
+					wgScriptPath + '/api.php', { 'action': 'clicktracking', 'eventid': id, 'token': wgTrackingToken, 'additional': info }
+			);
+		};
+		
+		
 		// Add click tracking hooks to the sidebar
 		$j(document).ready( function() {
 			$( '#p-logo a, #p-navigation a, #p-interaction a, #p-tb a' ).each( function() {
