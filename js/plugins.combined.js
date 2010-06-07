@@ -8732,6 +8732,12 @@ api: {
 				$.wikiEditor.modules.dialogs.fn.reallyCreate( context, mod );
 				$dialog = $( '#' + mod.id );
 			}
+			
+			// Workaround for bug in jQuery UI: close button in top right retains focus
+			$dialog.closest( '.ui-dialog' )
+				.find( '.ui-dialog-titlebar-close' )
+				.removeClass( 'ui-state-focus' );
+			
 			$dialog.dialog( 'open' );
 		}
 	},
