@@ -13,6 +13,7 @@ $messages = array();
  */
 $messages['en'] = array(
 	'vector-collapsiblenav-preference' => 'Enable collapsible left navigation menu',
+	'vector-collapsiblenav-more' => 'More languages',
 );
 
 /** Gheg Albanian (Gegë)
