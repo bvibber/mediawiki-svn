@@ -9,12 +9,14 @@ import de.brightbyte.job.Progress;
 import de.brightbyte.job.ProgressRateTracker;
 
 public class ChunkedProgressRateTracker extends ProgressRateTracker {
-	protected long counter = 0;
-	protected long timestamp = 0;
+	protected long counter;
+	protected long timestamp;
 	protected String name;
 	
 	public ChunkedProgressRateTracker(String name) {
 		this.name = name;
+		this.timestamp = System.currentTimeMillis();
+		this.counter = 0;
 	}
 	
 	public void step() {
@@ -34,8 +36,10 @@ public class ChunkedProgressRateTracker extends ProgressRateTracker {
 	}
 	
 	public boolean chunkIf(long counter, int sec) {
+		if (sec>0 && this.timestamp<=0) this.timestamp = System.currentTimeMillis(); 
+		long d = System.currentTimeMillis() - this.timestamp;
 		if ((counter>0 && this.counter>=0 && this.counter >= counter) 
-				|| (sec>0 && this.timestamp>0 && (System.currentTimeMillis() - this.timestamp)>sec*1000)) {
+				|| (sec>0 && this.timestamp>0 && d>sec*1000)) {
 			chunk();
 			return true;
 		} else {
