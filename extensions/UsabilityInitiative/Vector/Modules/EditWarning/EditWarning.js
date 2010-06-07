@@ -13,7 +13,7 @@ $j(document).ready( function() {
 	fallbackWindowOnBeforeUnload = window.onbeforeunload;
 	window.onbeforeunload = function() {
 		var fallbackResult = undefined;
-		// Check if someone already set on onbeforunload hook
+		// Check if someone already set on onbeforeunload hook
 		if ( fallbackWindowOnBeforeUnload ) {
 			// Get the result of their onbeforeunload hook
 			fallbackResult = fallbackWindowOnBeforeUnload();
