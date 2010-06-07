@@ -141,7 +141,6 @@ body.rtl #panel.collapsible-nav div.persistent div.body {
 }
 div#simpleSearch button#searchButton {
 	margin: 0.4em 0 0 0;
-	float: right;
 }
 /* wikiEditor plugin */
 
