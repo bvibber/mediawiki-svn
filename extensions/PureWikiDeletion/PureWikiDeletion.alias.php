@@ -10,6 +10,7 @@ $aliases['en'] = array(
 
 /** Arabic (العربية) */
 $aliases['ar'] = array(
-	'PureWikiDeletion' => array( 'حذف_الويكي_النقي' ),
+	'PureWikiDeletion'            => array( 'حذف_الويكي_النقي' ),
+	'RandomExcludeBlank'          => array( 'عشوائي_باستثناء_الفارغ' ),
+	'PopulateBlankedPagesTable'   => array( 'ملء_جدول_الصفحات_المفرغة' ),
 );
-

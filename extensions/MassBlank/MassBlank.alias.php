@@ -15,3 +15,7 @@ $aliases['en'] = array(
 	'MassBlank' => array( 'MassBlank' ),
 );
 
+/** Arabic (العربية) */
+$aliases['ar'] = array(
+	'MassBlank'   => array( 'إفراغ_كمي' ),
+);

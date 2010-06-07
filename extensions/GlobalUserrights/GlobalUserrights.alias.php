@@ -15,7 +15,7 @@ $aliases['en'] = array(
 
 /** Arabic (العربية) */
 $aliases['ar'] = array(
-	'GlobalUserrights' => array( 'صلاحيات المستخدم العامة', 'عضوية المجموعة العامة' ),
+	'GlobalUserrights'   => array( 'صلاحيات_المستخدم_العالمية', 'عضوية_المجموعة_العالمية' ),
 );
 
 /** Egyptian Spoken Arabic (مصرى) */
