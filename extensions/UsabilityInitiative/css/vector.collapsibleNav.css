@@ -37,26 +37,31 @@ body.rtl #panel.collapsible-nav div.collapsed h5 {
 	text-decoration: underline;
 }
 #panel.collapsible-nav div.portal div.body {
+	background: none !important;
 	padding-top: 0px;
 	display: none;
+}
+#panel.collapsible-nav div.persistent div.body {
+	display: block;
+}
+#panel.collapsible-nav div.first h5 {
+	display: none;
+}
+#panel.collapsible-nav div.persistent h5 {
+	background: none !important;
+	padding-left: 0.7em;
 }
 #panel.collapsible-nav div.portal div.body ul li {
 	padding: 0.25em 0;
 }
-#panel.collapsible-nav div.portal div.body {
-	background: none !important;
-}
-#panel.collapsible-nav #p-navigation {
+#panel.collapsible-nav div.first {
 	background-image: none;
 	margin-top: 0px;
 }
-#panel.collapsible-nav #p-navigation div.body {
+#panel.collapsible-nav div.persistent div.body {
 	margin-left: 0.5em;
 }
-body.rtl #panel.collapsible-nav #p-navigation div.body {
+body.rtl #panel.collapsible-nav div.persistent div.body {
 	margin-left: 0;
 	margin-right: 0.5em;
-}
-#panel.collapsible-nav #p-navigation h5 {
-	display: none;
 }
