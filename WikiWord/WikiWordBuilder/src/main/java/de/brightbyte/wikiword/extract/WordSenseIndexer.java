@@ -1,8 +1,6 @@
 package de.brightbyte.wikiword.extract;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.text.ParseException;
 import java.util.Collections;
 import java.util.List;
@@ -11,10 +9,8 @@ import java.util.regex.Pattern;
 import de.brightbyte.data.cursor.DataCursor;
 import de.brightbyte.data.cursor.DataSink;
 import de.brightbyte.data.measure.Measure;
-import de.brightbyte.io.ConsoleIO;
 import de.brightbyte.io.LineCursor;
 import de.brightbyte.io.LineSink;
-import de.brightbyte.io.OutputSink;
 import de.brightbyte.text.Chunker;
 import de.brightbyte.text.RegularExpressionChunker;
 import de.brightbyte.util.PersistenceException;
@@ -46,18 +42,18 @@ public class WordSenseIndexer extends StreamProcessorApp<String, String, WikiWor
 	}
 
 	@Override
-	protected DataSink<String> openSink() throws PersistenceException {
+	protected DataSink<String> openSink(int paramIndex) throws PersistenceException {
 		try {
-			return new LineSink(getOutputWriter());
+			return new LineSink(getOutputWriter(paramIndex));
 		} catch (IOException e) {
 			throw new PersistenceException(e);
 		} 
 	}
 
 	@Override
-	protected DataCursor<String> openCursor() throws PersistenceException {
+	protected DataCursor<String> openCursor(int paramIndex) throws PersistenceException {
 		try {
-			return new LineCursor(getInputReader());
+			return new LineCursor(getInputReader(paramIndex));
 		} catch (IOException e) {
 			throw new PersistenceException(e);
 		}  

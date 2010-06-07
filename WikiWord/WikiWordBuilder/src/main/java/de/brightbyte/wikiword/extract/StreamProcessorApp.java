@@ -16,7 +16,6 @@ import java.io.Writer;
 import de.brightbyte.data.cursor.DataCursor;
 import de.brightbyte.data.cursor.DataSink;
 import de.brightbyte.io.ConsoleIO;
-import de.brightbyte.io.LogOutput;
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.StoreBackedApp;
 import de.brightbyte.wikiword.builder.InputFileHelper;
@@ -37,33 +36,44 @@ public abstract class StreamProcessorApp<I, O, S extends WikiWordConceptStoreBas
 	}
 
 	
-	protected File getOutputFile() {
+	protected File getOutputFile(int paramIndex) {
 		if (outputFile==null) {
-			if (args.getParameterCount()>2) {
-				outputFile = new File(args.getParameter(2));
+			if (args.getParameterCount()>=paramIndex) {
+				String f = args.getParameter(paramIndex);
+				if (!f.equals("-")) outputFile = new File(f);
 			}
 		}
 		return outputFile;
+	}
+
+	protected String getInputPath(int paramIndex) {
+		if (inputPath==null) {
+			if (args.getParameterCount()>=paramIndex) {
+				inputPath = args.getParameter(paramIndex);
+			}
+		}
+		return inputPath;
 	}
 
 	protected String getOutputFileEncoding() {
 		return args.getStringOption("outputencoding", "UTF-8");
 	}
 
+	protected String inputPath;
 	protected File outputFile;
 	protected Writer outputWriter;
 	protected OutputStream outputStream;
 	private InputStream inputStream;
 	private Reader inputReader;
 	
-	protected Writer getOutputWriter() throws FileNotFoundException, UnsupportedEncodingException {
+	protected Writer getOutputWriter(int paramIndex) throws FileNotFoundException, UnsupportedEncodingException {
 		if (outputWriter==null) {
-			File f = getOutputFile();
+			File f = getOutputFile(paramIndex);
 			if (f==null) {
 				outputWriter = ConsoleIO.writer;
 				usingStdout = true;
 			} else {
-				OutputStream out = getOutputStream();
+				OutputStream out = getOutputStream(paramIndex);
 				outputWriter = new OutputStreamWriter(out, getOutputFileEncoding());
 				usingStdout = out == System.out;
 			}
@@ -76,9 +86,9 @@ public abstract class StreamProcessorApp<I, O, S extends WikiWordConceptStoreBas
 		return outputWriter;
 	}
 	
-	protected OutputStream getOutputStream() throws FileNotFoundException {
+	protected OutputStream getOutputStream(int paramIndex) throws FileNotFoundException {
 		if (outputStream==null) {
-			File f = getOutputFile();
+			File f = getOutputFile(paramIndex);
 			if (f==null) {
 				outputStream = System.out;
 				usingStdout = true;
@@ -92,14 +102,14 @@ public abstract class StreamProcessorApp<I, O, S extends WikiWordConceptStoreBas
 		return outputStream;
 	}
 	
-	protected Reader getInputReader() throws IOException {
+	protected Reader getInputReader(int paramIndex) throws IOException {
 		if (inputReader==null) {
-			File f = getOutputFile();
-			if (f==null) {
+			String path = getInputPath(paramIndex);
+			if (path==null || path.equals("-")) {
 				inputReader = ConsoleIO.newReader();
 				usingStdin = true;
 			} else {
-				InputStream in = getInputStream();
+				InputStream in = getInputStream(paramIndex);
 				inputReader = new InputStreamReader(in, getOutputFileEncoding());
 				usingStdin = (in == System.in);
 			}
@@ -108,15 +118,15 @@ public abstract class StreamProcessorApp<I, O, S extends WikiWordConceptStoreBas
 		return inputReader;
 	}
 	
-	protected InputStream getInputStream() throws IOException {
+	protected InputStream getInputStream(int paramIndex) throws IOException {
 		if (inputStream==null) {
-			File f = getOutputFile();
-			if (f==null) {
+			String path = getInputPath(paramIndex);
+			if (path==null || path.equals("-")) {
 				inputStream = System.in;
 				usingStdin = true;
 			} else {
-				inputStream = inputHelper.openFile(f);
-				info("Reading input from "+f);
+				inputStream = inputHelper.open(path);
+				info("Reading input from "+path);
 				usingStdin = false;
 			}
 		}
@@ -127,20 +137,20 @@ public abstract class StreamProcessorApp<I, O, S extends WikiWordConceptStoreBas
 	@Override
 	public void run() throws Exception {
 		init();
-		open();
+		open(1); // 0 = corpus, 1 = input, 2 = output
 		
 		runTransfer(cursor);
 		
 		close();
 	}
 
-	protected void open() throws PersistenceException {
-		cursor = openCursor();
-		sink = openSink();
+	protected void open(int paramOffset) throws PersistenceException {
+		cursor = openCursor(paramOffset);
+		sink = openSink(paramOffset+1);
 	}
 
-	protected abstract DataCursor<? extends I> openCursor() throws PersistenceException;
-	protected abstract DataSink<? super O> openSink() throws PersistenceException;
+	protected abstract DataCursor<? extends I> openCursor(int paramIndex) throws PersistenceException;
+	protected abstract DataSink<? super O> openSink(int paramIndex) throws PersistenceException;
 
 	protected void init() throws Exception {
 		// noop
