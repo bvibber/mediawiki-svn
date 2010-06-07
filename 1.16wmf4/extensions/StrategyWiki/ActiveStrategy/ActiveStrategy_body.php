@@ -9,7 +9,7 @@ class ActiveStrategy {
 					'page_id',
 					'page_namespace',
 					'page_title',
-					"substring_index(page_title, '/', -1) AS tf_name"
+					"substring_index(page_title, '/', 2) AS tf_name"
 				),
 				array(
 					'page_namespace' => 0,
@@ -24,6 +24,7 @@ class ActiveStrategy {
 
 		$title = Title::newFromText( $taskForce );
 		$text = $wgContLang->convert( $title->getPrefixedText() );
+		$text = self::getTaskForceName( $text );
 		$pageLink = $skin->linkKnown( $title, $text );
 		$colors = null;
 		$color = null;
@@ -53,6 +54,16 @@ class ActiveStrategy {
 		return $item;
 	}
 	
+	static function getTaskForceName( $text ) {
+		$text = substr( $text, strpos($text, '/') + 1 );
+		
+		if ( strpos( $text, '/' ) ) {
+			$text = substr( $text, 0, strpos( $text, '/' ) );
+		}
+		
+		return $text;
+	}
+	
 	static function getOutput( $args ) {
 		global $wgUser, $wgActiveStrategyPeriod;
 		
@@ -75,8 +86,9 @@ class ActiveStrategy {
 		}
 		
 		foreach( $taskForces as $row ) {
-			$tempTitle = Title::makeTitleSafe( NS_CATEGORY, $row->tf_name );
-			$categories[] = $tempTitle->getDBkey();
+			$text = self::getTaskForceName( $row->tf_name );
+			$tempTitle = Title::makeTitleSafe( NS_CATEGORY, $text );
+			$categories[$row->tf_name] = $tempTitle->getDBkey();
 		}
 		
 		$tables = array( 'page', 'categorylinks' );
@@ -124,10 +136,12 @@ class ActiveStrategy {
 		
 		$result = $db->select( $tables, $fields, $conds,
 					__METHOD__, $options, $joinConds );
+					
+		$categoryToTaskForce = array_flip( $categories );
 		
 		foreach( $result as $row ) {
 			$number = $row->value;
-			$taskForce = $row->cl_to;
+			$taskForce = $categoryToTaskForce[$row->cl_to];
 			
 			$html .= self::formatResult( $sk, $taskForce, $number, $sortField );
 		}
@@ -146,7 +160,7 @@ class ActiveStrategy {
 		
 		foreach( $taskForces as $row ) {
 			$title = Title::makeTitle( $row->page_namespace, $row->page_title );
-			$memberCount[$row->title] =
+			$memberCount[$row->tf_name] =
 				self::getMemberCount( $title->getPrefixedText() );
 		}
 		
