@@ -2283,8 +2283,13 @@ if( typeof preMwEmbedConfig == 'undefined') {
 		if(  ! $j( targetObject ).data( 'events' )[ triggerName ] ) {
 			callback();
 		}
+		
 		var callbackCount = $j( targetObject ).data( 'events' )[ triggerName ].length;			
-				
+		if( !callbackCount ){
+			// No events run the callback directly
+			callback();
+			return ;
+		}	
 		mw.log(" runTriggersCallback:: " + callbackCount );
 		var callInx = 0;
 		$j( targetObject ).trigger( 'checkPlayerSourcesEvent', function() {
