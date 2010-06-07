@@ -23,16 +23,6 @@
 
 class PagedTiffHandler extends ImageHandler {
 	/**
-	 * Sets $wgShowEXIF to true when file is a tiff file.
-	 * This does not influence other ImageHandlers, which are possibly dependent on read-exif-data.
-	 */
-	function __construct() {
-		// FIXME: Manipulating globals in a constructor this way is evil
-		global $wgShowEXIF;
-		$wgShowEXIF = true;
-	}
-
-	/**
 	 * Add the "lossy"-parameter to image link.
 	 * Usage:
 	 *  lossy=true|false

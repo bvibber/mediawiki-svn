@@ -35,6 +35,7 @@ $wgImageMagickConvertCommand = "C:\Program Files\ImageMagick-6.5.6-Q8\convert";
 $wgImageMagickIdentifyCommand = "C:\Program Files\ImageMagick-6.5.6-Q8\identify";
 $wgTiffExivCommand = "C:\Program Files\Exiv2\exiv2";
 $wgMaxUploadSize = 1073741824;
+$wgShowEXIF = true;
 */
 
 $wgExtensionCredits['media'][] = array(
