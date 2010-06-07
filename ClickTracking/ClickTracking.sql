@@ -28,7 +28,11 @@ CREATE TABLE IF NOT EXISTS /*_*/click_tracking (
 	namespace integer NOT NULL,
 
 	-- event ID (not unique)
-	event_id integer NOT NULL
+	event_id integer NOT NULL,
+	
+	-- additional info for each click, such as state information
+	additional_info varbinary(255)
+	
 ) /*$wgDBTableOptions*/;
 
 CREATE INDEX /*i*/click_tracking_action_time ON /*_*/click_tracking (action_time);
