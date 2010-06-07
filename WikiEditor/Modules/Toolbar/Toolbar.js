@@ -46,7 +46,7 @@ $j(document).ready( function() {
 							'nl': 'format-bold-V.png',
 							'pt': 'format-bold-N.png',
 							'pt-br': 'format-bold-N.png',
-							'pl': 'format-bold-P.png'
+							'pl': 'format-bold-B.png'
 						},
 						action: {
 							type: 'encapsulate',
@@ -85,7 +85,7 @@ $j(document).ready( function() {
 							'nl': 'format-italic-C.png',
 							'pt': 'format-italic-I.png',
 							'pt-br': 'format-italic-I.png',
-							'pl': 'format-italic-K.png'
+							'pl': 'format-italic-I.png'
 						},
 						action: {
 							type: 'encapsulate',
