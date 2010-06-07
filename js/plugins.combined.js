@@ -6500,7 +6500,9 @@ encapsulateSelection: function( options ) {
 		} else if ( document.selection && document.selection.createRange ) {
 			// IE
 			$(this).focus();
-			context.fn.restoreStuffForIE();
+			if ( context ) {
+				context.fn.restoreStuffForIE();
+			}
 			var selText = $(this).textSelection( 'getSelection' );
 			var scrollTop = this.scrollTop;
 			var range = document.selection.createRange();
