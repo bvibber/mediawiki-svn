@@ -193,6 +193,7 @@ $messages['ckb-arab'] = array(
 
 /** Czech (Česky)
  * @author Matěj Grabovský
+ * @author Reaperman
  */
 $messages['cs'] = array(
 	'watchsubpages' => 'Sledovat podstránky',
@@ -201,9 +202,9 @@ $messages['cs'] = array(
 	'watchsubpages-addtitlestowatchlist' => 'Přidat stránky do seznamu sledovaných',
 	'watchsubpages-desc' => 'Rychle [[Special:WatchSubpages|přidat všechny podstránky]] stránky do seznamu sledovaných',
 	'watchsubpages-form' => 'Vyberte stránky, které chcete přidat do svého seznamu sledovaných stránek.
-Stránku přidáte tak, že označíte pole vedle něj a kliknete na „Pridat stránky“.
+Stránku přidáte tak, že označíte pole vedle něj a kliknete na „{{int:watchsubpages-addtitles}}“.
 
-Při označování nebo odznačování více stránek můžete držením klávesy Shift a kliknutím na začatek a konec rozsahu yvbrat více po sobě jdoucích polí současně.',
+Při označování nebo odznačování více stránek můžete držením klávesy Shift a kliknutím na začátek a konec rozsahu vybrat více po sobě jdoucích polí současně.',
 );
 
 /** German (Deutsch)

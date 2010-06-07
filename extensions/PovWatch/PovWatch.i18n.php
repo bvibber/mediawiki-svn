@@ -1474,7 +1474,7 @@ $messages['mk'] = array(
 	'povwatch_unsubscribe' => 'Отпиши се',
 	'povwatch_subscribe_intro' => 'Не сте запишани на PovWatch.
 Кликнете на копчето подолу за да се запишете.',
-	'povwatch_subscribe' => 'Запиши се',
+	'povwatch_subscribe' => 'Претплати се',
 	'povwatch_added' => 'додадено',
 	'right-povwatch_admin' => 'Управување со кориснички права за додавање на страници во списоците на набљудувања на други корисници',
 	'right-povwatch_user' => 'Додавање страници во списоците на набљудувања на други корисници',

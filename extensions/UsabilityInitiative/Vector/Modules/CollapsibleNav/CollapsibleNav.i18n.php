@@ -152,6 +152,7 @@ $messages['gl'] = array(
  */
 $messages['gsw'] = array(
 	'vector-collapsiblenav-preference' => 'Yyklappbar Navgationsmenü yyschalte',
+	'vector-collapsiblenav-more' => 'Meh Sproche',
 );
 
 /** Hebrew (עברית)

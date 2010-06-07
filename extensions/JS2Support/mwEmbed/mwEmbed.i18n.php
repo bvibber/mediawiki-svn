@@ -550,6 +550,7 @@ $messages['sr-ec'] = array(
 	'mwe-loading_txt' => 'Учитавање ...',
 	'mwe-ok' => 'ОК',
 	'mwe-cancel' => 'Поништи',
+	'mwe-test-plural' => 'Покренуо/ла сам {{PLURAL:$1|$1 тест|$1 тестова}}',
 );
 
 /** Swedish (Svenska)

@@ -66,6 +66,16 @@ $messages['es'] = array(
 	'frontbackforced-forced' => '_(wikienlaces_forzados)',
 );
 
+/** French (Français)
+ * @author Peter17
+ */
+$messages['fr'] = array(
+	'frontbackforced-desc' => 'Ajoute des sections initiale et finale aux pages et implémente des wikiliens forcés',
+	'frontbackforced-front' => '_(section initiale)',
+	'frontbackforced-back' => '_(section finale)',
+	'frontbackforced-forced' => '_(wikiliens forcés)',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -107,6 +117,7 @@ $messages['mk'] = array(
  * @author Siebrand
  */
 $messages['nl'] = array(
+	'frontbackforced-desc' => "Voegt voorvoegsels en achtervoegsels aan pagina's toe en implementeert verplichte wikiverwijzingen",
 	'frontbackforced-front' => '_(front_matter)',
 	'frontbackforced-back' => '_(back_matter)',
 	'frontbackforced-forced' => '_(forced_wikilinks)',

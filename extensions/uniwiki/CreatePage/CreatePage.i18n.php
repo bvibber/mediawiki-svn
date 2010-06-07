@@ -161,7 +161,7 @@ $messages['br'] = array(
 	'createpage_titleexists' => "Ur bajenn dezhi an hevelep anv [[$1]] zo c'hoazh.
 Ha fellout a ra deoc'h degas kemmoù war ar bajenn-se ?",
 	'createpage_tryagain' => "Ket - C'hoant am eus da grouiñ ur bajenn nevez ganti un anv disheñvel",
-	'createpage_editexisting' => "Ya, 'vat. C'hoant am eus kemer perzh er bajenn-se.",
+	'createpage_editexisting' => "Ya, 'vat. C'hoant am eus da gemer perzh er bajenn-se.",
 	'createpage-badtitle' => 'N\'haller ket ober gant "$1" da ditl ur bajenn',
 );
 

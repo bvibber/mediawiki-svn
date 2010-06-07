@@ -953,6 +953,7 @@ $messages['oc'] = array(
 );
 
 /** Polish (Polski)
+ * @author Deejay1
  * @author Leinad
  * @author Sp5uhe
  * @author ToSter
@@ -964,6 +965,9 @@ $messages['pl'] = array(
 	'slippymap_error_missing_attribute_lat' => 'Brak atrybutu <tt>lat</tt> (określenie szerokości geograficznej).',
 	'slippymap_error_missing_attribute_lon' => 'Brak atrybutu <tt>lon</tt> (określenie długości geograficznej).',
 	'slippymap_error_missing_attribute_zoom' => 'Brak atrybutu <tt>zoom</tt> (określenie skali).',
+	'slippymap_error_unknown_attribute' => 'Nieznany atrybut <tt>$1</tt>.',
+	'slippymap_error_invalid_attribute_lat_value_out_of_range' => '<tt>$1</tt> nie jest poprawną wartością dla atrybutu <tt>lat</tt> (szerokość geograficzna). Szerokość geograficzna musi się zawierać w przedziale od -90 do 90 stopni.',
+	'slippymap_error_invalid_attribute_lon_value_out_of_range' => '<tt>$1</tt> nie jest poprawną wartością dla atrybutu <tt>lon</tt> (długość geograficzna). Długość geograficzna musi się zawierać w przedziale od -180 do 180 stopni.',
 	'slippymap_code' => 'Kod wiki dla tego widoku mapy:',
 	'slippymap_button_code' => 'Pobierz kod wiki',
 	'slippymap_resetview' => 'Zresetuj widok',

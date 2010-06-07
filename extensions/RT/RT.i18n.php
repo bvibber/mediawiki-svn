@@ -752,7 +752,9 @@ Bạn đã gọi: '''$1'''",
 Bạn đã gọi: '''$1'''",
 	'rt-badstatus' => "Thông số status (s) sai: phải là một trường chuẩn (xem tài liệu đi kèm).
 Bạn đã gọi: '''$1'''",
-	'rt-badqueue' => "Thông số queue (q) sai: phải là từ đơn giản.
+	'rt-badcfield' => "Thông số trường tùy biến sai: phải là một từ đơn giản (xem tài liệu đi kèm).
+Bạn đã gọi: '''$1'''",
+	'rt-badqueue' => "Thông số hàng đợi (q) sai: phải là từ đơn giản.
 Bạn đã gọi: '''$1'''",
 	'rt-badowner' => "Thông số owner (o) sai: phải là một tên người dùng đã có.
 Bạn đã gọi: '''$1'''",

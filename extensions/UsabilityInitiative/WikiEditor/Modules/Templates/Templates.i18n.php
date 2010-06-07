@@ -274,6 +274,13 @@ $messages['ru'] = array(
 	'wikieditor-templates-preference' => 'Включить сворачивание шаблонов',
 );
 
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'wikieditor-templates-preference' => 'Омогућава размотавање шаблона',
+);
+
 /** Swedish (Svenska)
  * @author Ainali
  */

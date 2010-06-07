@@ -193,6 +193,8 @@ $messages['oc'] = array(
  */
 $messages['pl'] = array(
 	'js2support-desc' => 'Wsparcie JS2 w formie rozszerzenia',
+	'js2support-debug-preference' => 'Wyłącz grupowanie skryptów i minifikację (usuwanie białych znaków)',
+	'prefs-script-debug' => 'Debugowanie skryptu',
 );
 
 /** Piedmontese (Piemontèis)

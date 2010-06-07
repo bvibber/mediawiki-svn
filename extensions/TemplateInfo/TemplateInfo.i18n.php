@@ -253,6 +253,14 @@ $messages['oc'] = array(
 	'templateinfo-header' => 'La definicion XML per aqueste modèl es :',
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'templateinfo-desc' => 'Obsługa definiowania struktury szablonów z wykorzystaniem znaczników XML',
+	'templateinfo-header' => 'Definicja XML dla tego szablonu:',
+);
+
 /** Piedmontese (Piemontèis)
  * @author Borichèt
  * @author Dragonòt

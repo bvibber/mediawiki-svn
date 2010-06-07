@@ -115,6 +115,7 @@ $messages['gsw'] = array(
 	'activestrategy' => 'Aktivi Arbetsgruppe',
 	'active-strategy-desc' => 'Zeigt d Aazahl vu Bearbeitige an Syte vu Arbetsgruppe aa',
 	'active-strategy-intro' => 'Aazahl vu Bearbeitige an Arbetsgruppesyte {{PLURAL:$1|am letschte Tag|in dr letschte $1 Täg}}.',
+	'nedits' => '$1 {{PLURAL:$1|Bearbeitig|Bearbeitige}}',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -203,6 +204,7 @@ $messages['ml'] = array(
 	'activestrategy' => 'സജീവ കർത്തവ്യ സേനകൾ',
 	'active-strategy-desc' => 'കർത്തവ്യ സേനയുടെ താളുകളിലെ തിരുത്തലുകളുടെ എണ്ണം കാട്ടുക',
 	'active-strategy-intro' => 'കർത്തവ്യ സേനയുടെ താളുകളിൽ കഴിഞ്ഞ {{PLURAL:$1|ഒരു ദിവസം|$1 ദിവസങ്ങൾക്കുള്ളിൽ}} നടന്ന തിരുത്തലുകളുടെ എണ്ണം.',
+	'nedits' => '{{PLURAL:$1|ഒരു തിരുത്തൽ|$1 തിരുത്തലുകൾ}}',
 );
 
 /** Dutch (Nederlands)
@@ -250,6 +252,7 @@ $messages['pms'] = array(
 	'activestrategy' => 'Echip ëd travaj ative',
 	'active-strategy-desc' => 'Mostra ël nùmer ëd modìfiche a le pàgine dla partìa ëd travaj',
 	'active-strategy-intro' => "Nùmer ëd modìfiche a le pàgine dl'echip ëd travaj ant {{PLURAL:$1|l'ùltim di|j'ùltim $1 di}}.",
+	'nedits' => '$1 {{PLURAL:$1|modìfica|modìfiche}}',
 );
 
 /** Portuguese (Português)
@@ -282,6 +285,13 @@ $messages['sv'] = array(
 	'active-strategy-desc' => 'Visar antal redigeringar på arbetsgruppsidor',
 	'active-strategy-intro' => 'Antal redigeringar av arbetsgruppsidor under senaste ((PLURALIS: $1 | $1 dagen | $1 dagarna)).',
 	'nedits' => '$1 {{PLURAL:$1|redigering|redigeringar}}',
+);
+
+/** Telugu (తెలుగు)
+ * @author Veeven
+ */
+$messages['te'] = array(
+	'nedits' => '$1 {{PLURAL:$1|మార్పు|మార్పులు}}',
 );
 
 /** Tagalog (Tagalog)

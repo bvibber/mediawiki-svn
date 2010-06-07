@@ -1291,15 +1291,22 @@ $messages['ru'] = array(
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
+	'masseditregex-pagelisttxt' => 'Стране за измену (не користите префикс за именски простор):',
 	'masseditregex-matchtxt' => 'Тражи:',
 	'masseditregex-replacetxt' => 'Замени са:',
 	'masseditregex-executebtn' => 'Изврши',
+	'masseditregex-err-nopages' => 'Морате навести најмање једну страну за измену.',
 	'masseditregex-before' => 'Пре',
 	'masseditregex-after' => 'После',
+	'masseditregex-num-changes' => '$1: $2 {{PLURAL:$1|измена|измене|измена}}',
+	'masseditregex-page-not-exists' => '$1 не постоји',
+	'masseditregex-num-articles-changed' => '$1 {{PLURAL:$1|страна|стране|страна}} измењено',
+	'masseditregex-view-full-summary' => 'Види потпун опис измене',
 	'masseditregex-hint-headmatch' => 'Нађи',
 	'masseditregex-hint-headreplace' => 'Замени',
 	'masseditregex-hint-headeffect' => 'Ефекат',
 	'masseditregex-listtype-intro' => 'Ово је списак од:',
+	'masseditregex-listtype-pagenames' => 'Имена страна (измени ове стране)',
 	'masseditregex-exprnomatch' => 'Израз "$1" се не налази ни на једној страни.',
 	'masseditregex-badregex' => 'Неисправан regex:',
 	'masseditregex-editfailed' => 'Измена није снимљена:',
