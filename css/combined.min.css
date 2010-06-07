@@ -134,6 +134,7 @@ overflow:auto;
 }
 div#simpleSearch button#searchButton{
 margin:0.4em 0 0 0;
+float:right;
 }
 form#editform{
 margin:0;
