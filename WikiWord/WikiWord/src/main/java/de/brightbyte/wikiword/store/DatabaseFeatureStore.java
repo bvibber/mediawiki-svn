@@ -85,6 +85,8 @@ public class DatabaseFeatureStore<T extends WikiWordConcept>
 		}
 
 		public ConceptFeatures<T, Integer> getConceptFeatures(int concept) throws PersistenceException {
+			if (concept == 0) return new ConceptFeatures<T, Integer>(newConcept(concept, null, ConceptType.UNKNOWN, 0, 0), ConceptFeatures.newIntFeaturVector(1));
+			
 			String sql = "SELECT concept, feature, normal_weight FROM " +featureTable.getSQLName()+" as F ";
 			sql += " WHERE concept = "+concept;
 			if (maxConceptFeatures>0) sql += " ORDER BY normal_weight DESC LIMIT "+maxConceptFeatures; 
@@ -143,8 +145,10 @@ public class DatabaseFeatureStore<T extends WikiWordConcept>
 				Map<Integer, ConceptFeatures<T, Integer>> features = new HashMap<Integer, ConceptFeatures<T, Integer>>();
 				
 				try {
-					while (!rs.isAfterLast()) {
+					while (!rs.isAfterLast()) { // JDBC sais isAfterLast() returns false for empty sets. WTF??
 						ConceptFeatures<T, Integer> f = readConceptFeatures(rs, conceptField, nameField, cardinalityField, relevanceField, keyField, valueField);
+						if ( f == null ) break; //result set was empty. 
+							
 						features.put(f.getId(), f);
 					}
 					
@@ -161,7 +165,8 @@ public class DatabaseFeatureStore<T extends WikiWordConcept>
 				String conceptField, String nameField, String cardinalityField, String relevanceField,   
 				String keyField, String valueField) throws PersistenceException {
 			try {
-				rs.next(); //TODO: return what iof this fails??
+				if ( !rs.next() ) return  null;
+				
 				int id = DatabaseUtil.asInt(rs.getObject(conceptField));
 				String n = nameField == null ? null : DatabaseUtil.asString(rs.getObject(nameField));
 				int c = cardinalityField == null ? 1 : DatabaseUtil.asInt(rs.getObject(cardinalityField));
