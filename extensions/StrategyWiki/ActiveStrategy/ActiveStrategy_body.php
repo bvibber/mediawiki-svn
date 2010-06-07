@@ -24,7 +24,7 @@ class ActiveStrategy {
 
 		$title = Title::newFromText( $taskForce );
 		$text = $wgContLang->convert( $title->getPrefixedText() );
-		$text = substr( $text, strpos($text, '/') + 1 );
+		$text = self::getTaskForceName( $text );
 		$pageLink = $skin->linkKnown( $title, $text );
 		$colors = null;
 		$color = null;
@@ -54,6 +54,16 @@ class ActiveStrategy {
 		return $item;
 	}
 	
+	static function getTaskForceName( $text ) {
+		$text = substr( $text, strpos($text, '/') + 1 );
+		
+		if ( strpos( $text, '/' ) ) {
+			$text = substr( $text, 0, strpos( $text, '/' ) );
+		}
+		
+		return $text;
+	}
+	
 	static function getOutput( $args ) {
 		global $wgUser, $wgActiveStrategyPeriod;
 		
@@ -76,8 +86,9 @@ class ActiveStrategy {
 		}
 		
 		foreach( $taskForces as $row ) {
-			$tempTitle = Title::makeTitleSafe( NS_CATEGORY, $row->tf_name );
-			$categories[] = $tempTitle->getDBkey();
+			$text = self::getTaskForceName( $row->tf_name );
+			$tempTitle = Title::makeTitleSafe( NS_CATEGORY, $text );
+			$categories[$row->tf_name] = $tempTitle->getDBkey();
 		}
 		
 		$tables = array( 'page', 'categorylinks' );
@@ -125,10 +136,12 @@ class ActiveStrategy {
 		
 		$result = $db->select( $tables, $fields, $conds,
 					__METHOD__, $options, $joinConds );
+					
+		$categoryToTaskForce = array_flip( $categories );
 		
 		foreach( $result as $row ) {
 			$number = $row->value;
-			$taskForce = $row->cl_to;
+			$taskForce = $categoryToTaskForce[$row->cl_to];
 			
 			$html .= self::formatResult( $sk, $taskForce, $number, $sortField );
 		}
