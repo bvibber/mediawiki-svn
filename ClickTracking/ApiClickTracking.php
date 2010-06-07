@@ -19,7 +19,15 @@ class ApiClickTracking extends ApiBase {
 		$this->validateParams( $params );
 		$eventid_to_lookup = $params['eventid'];
 		$session_id = $params['token'];
-
+		
+		$additional = null;
+		
+		if( isset($params['additional'])  && strlen($params['additional']) > 0){
+			$additional = $params['additional'];
+			
+		}
+		
+		
 		// Event ID lookup table
 		// FIXME: API should already have urldecode()d
 		$event_id = ClickTrackingHooks::getEventIDFromName( urldecode( $eventid_to_lookup ) );
@@ -43,7 +51,8 @@ class ApiClickTracking extends ApiBase {
 			( $is_logged_in ? $wgUser->getEditCount() : 0 ), // total edit count or 0 if anonymous
 			$granularity1, // contributions made in granularity 1 time frame
 			$granularity2, // contributions made in granularity 2 time frame
-			$granularity3  // contributions made in granularity 3 time frame
+			$granularity3,  // contributions made in granularity 3 time frame
+			$additional
 		);
 		
 		// For links that go off the page, redirect the user
@@ -83,7 +92,8 @@ class ApiClickTracking extends ApiBase {
 		return array(
 			'eventid' => 'string of eventID',
 			'token'  => 'unique edit ID for this edit session',
-			'redirectto' => 'URL to redirect to (only used for links that go off the page)'
+			'redirectto' => 'URL to redirect to (only used for links that go off the page)',
+			'additional' => 'additional info for the event, like state information'
 		);
 	}
 
@@ -104,7 +114,8 @@ class ApiClickTracking extends ApiBase {
 		return array(
 			'eventid' => null,
 			'token' => null,
-			'redirectto' => null
+			'redirectto' => null,
+			'additional' => null
 		);
 	}
 
