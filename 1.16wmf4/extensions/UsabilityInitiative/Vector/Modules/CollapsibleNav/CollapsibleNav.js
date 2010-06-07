@@ -40,7 +40,7 @@ $j(document).ready( function() {
 	$j( '#panel > div.portal:not(:first)' )
 		.each( function( i ) {
 			var state = $j.cookie( 'vector-nav-' + $j(this).attr( 'id' ) );
-			if ( state == 'true' || ( state == null && i < 1 ) ) {
+			if ( state == 'true' || ( state == null && (i < 1 || ( $j(this).attr( 'id' ) == 'p-lang' ) ) ) ) {
 				$j(this)
 					.addClass( 'expanded' )
 					.find( 'div.body' )
