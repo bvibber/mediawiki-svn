@@ -115,6 +115,7 @@ display:none;
 #panel.collapsible-nav div.persistent h5{
 background:none !important;
 padding-left:0.7em;
+cursor:default;
 }
 #panel.collapsible-nav div.portal div.body ul li{
 padding:0.25em 0;
