@@ -26,7 +26,7 @@ mediaWikiSearch.prototype = {
 	* Adds a resource by its Title
 	*
 	* @param {String} title Title of the resource to be added
-	* @param {Function} callback Function called once title resource aquired   
+	* @param {Function} callback Function called once title resource acquired   
 	*/ 
 	addByTitle:function( title , callback, redirect_count ) {
 	

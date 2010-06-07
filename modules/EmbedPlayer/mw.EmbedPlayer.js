@@ -1679,7 +1679,7 @@ mw.EmbedPlayer.prototype = {
 	* @param {Function} callback Function to be called once playback-system has been inherited
 	*/
 	inheritEmbedPlayer: function( callback ) {
-		mw.log( "inheritEmbedPlayer:duration is: " +  this.getDuration()  + ' p: ' + this.id);		
+		mw.log( "inheritEmbedPlayer:duration is: " +  this.getDuration()  + ' p: ' + this.id );		
 		
 		// Clear out any non-base embedObj methods:
 		if ( this.instanceOf ) {

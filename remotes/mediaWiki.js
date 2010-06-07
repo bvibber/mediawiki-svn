@@ -12,6 +12,7 @@ if( window.console ){
 	window.console.log( 'mwEmbed:remote:' + mwRemoteVersion );
 }
 
+
 // Setup up request Params: 
 var reqParts = urlparts[1].substring( 1 ).split( '&' );
 var mwReqParam = { };
@@ -26,6 +27,7 @@ for ( var i = 0; i < reqParts.length; i++ ) {
 if( mwReqParam['debug'] ) {
 	mwUseScriptLoader = false;
 }
+mwUseScriptLoader = true;
 
 // Setup up some globals to wrap mwEmbed mw.ready and mw.setConfig functions
 
@@ -220,9 +222,10 @@ function mwSetPageToLoading(){
 * ( front-loaded to avoid extra requests )
 */
 function mwLoadPlayer( callback ){
-	// the jsPlayerRequest includes both javascript and style sheets for the embedPlayer 
+
+	// The jsPlayerRequest includes both javascript and style sheets for the embedPlayer 
 	var jsPlayerRequest = [	 
-	                       
+		'mw.style.mwCommon',	                       
 		'mw.EmbedPlayer', 
 		'mw.style.EmbedPlayer',
 		'$j.ui', 
@@ -231,8 +234,10 @@ function mwLoadPlayer( callback ){
 		'$j.cookie', 
 		'JSON',
 		'$j.ui.slider', 
-		'kskinConfig',
-		'mw.style.kskin',
+		
+		'mw.PlayerSkinKskin',
+		'mw.style.PlayerSkinKskin',
+		
 		'$j.fn.menu',
 		'mw.style.jquerymenu',
 		
@@ -247,11 +252,11 @@ function mwLoadPlayer( callback ){
 	// Quick sniff use java if IE and native if firefox 
 	// ( other browsers will run detect and get on-demand )
 	if (navigator.userAgent.indexOf("MSIE") != -1){
-		jsPlayerRequest.push( 'mw.EmbedPlayeJava' );
+		jsPlayerRequest.push( 'mw.EmbedPlayerJava' );
 	}
 		
 	if ( navigator.userAgent &&  navigator.userAgent.indexOf("Firefox") != -1 ){
-		jsPlayerRequest.push( 'mw.EmbedPlayeNative' );
+		jsPlayerRequest.push( 'mw.EmbedPlayerNative' );
 	}
 	
 	loadMwEmbed( jsPlayerRequest, function() {
@@ -268,15 +273,15 @@ function rewrite_for_OggHandler( vidIdList ) {
 		// Don't process empty vids
 		if ( !vidId ){
 			return ;
-		}
-		
+		}			
 			
 		tag_type = 'video';
 				
 		// Check type:
 		var pwidth = $j( '#' + vidId ).width();
-		var $pimg = $j( '#' + vidId + ' img:first' );		
-		if(  $pimg.attr('src') && $pimg.attr('src').split('/').pop() == 'play.png'){
+		var $pimg = $j( '#' + vidId + ' img:first' );
+		var imgSring = $pimg.attr('src').split('/').pop();		
+		if(  $pimg.attr('src') &&  imgSring == 'play.png' || imgSring == 'fileicon-ogg.png' ){
 			tag_type = 'audio';
 			poster_attr = '';		
 			pheight = 0;
@@ -313,6 +318,15 @@ function rewrite_for_OggHandler( vidIdList ) {
 		// Check if file is from commons and therefore should explicitly set apiProvider to commons: 
 		var apiProviderAttr = ( src.indexOf( 'wikipedia\/commons' ) != -1 )?'apiProvider="commons" ': '';		
 
+		// If in a gallery box we will be displaying the video larger in a lightbox
+		if( $j( '#' + vidId ).parents( '.gallerybox' ).length ){
+			// Update the width to 400 and keep scale
+			pwidth = 400;
+			if( pheight != 0 ) {
+				pheight = pwidth * ( $j( '#' + vidId ).height() / $j( '#' + vidId ).width() );
+			}			
+		}
+
 		if ( src ) {
 			var html_out = '';
 			
@@ -336,19 +350,73 @@ function rewrite_for_OggHandler( vidIdList ) {
 				'style="width:' + pwidth + 'px;height:' + pheight + 'px;">' +
 				'</video>';
 			}
-			// Set the video tag inner html and update the height
-			$j( '#' + vidId ).after( html_out ).remove();
+			
+					
+			// If the video is part of a "gallery box" use light-box linker instead
+			if( $j( '#' + vidId ).parents( '.gallerybox' ).length ){				
+				$j( '#' + vidId ).after(
+					 $j( '<div />')
+					.css( { 
+						'width' : $pimg.attr('width' ), 
+						'height' :$pimg.attr( 'height' ),
+						'position' : 'relative'
+					})
+					.addClass( 'k-player' )
+					.append(
+						// The poster image 
+						$j( '<img />' )
+						.css( {
+							'width' : '100%',
+							'height' : '100%'
+						})
+						.attr( 'src', $pimg.attr('src') ),
+						
+						// A play button:
+						$j( '<div />' )
+						.css( {
+							'position' : 'absolute',
+							'top' : ( parseInt( $pimg.attr( 'height' ) ) /2 ) -25,
+							'left' : ( parseInt( $pimg.attr( 'height' ) ) /2 ) - 45
+						}) 
+						.addClass( 'play-btn-large' )
+						.buttonHover()
+						.click( function(){				
+							var dialogHeight = ( $j( this ).data( 'playerHeight') == 0 	)? 175 :
+																	( $j( this ).data( 'playerHeight') - 75 );
+							mw.addDialog( 					
+								decodeURIComponent( $j( this ).data( 'title' ).replace(/_/g, ' ') ),
+								$j( this ).data( 'embedCode' ),
+								gM( 'mwe-ok' )
+							)
+							// Dialog size setup is a bit strange:							
+							.css( {
+								'height' : dialogHeight + 'px'
+							})
+							.parent().css( {
+								// we hard code the default resolution to 400 above
+								'width' : '435px',							
+							} )
+							// Update the embed code to use the mwEmbed player: 
+							$j.embedPlayers();
+						})
+						.data( 'embedCode', html_out )		
+						.data( 'title' , apiTitleKey )						
+						.data( 'playerHeight', pheight )
+					)			
+				).remove();
+					
+			} else {
+				// Set the video tag inner html remove extra player
+				$j( '#' + vidId ).after( html_out ).remove();		
+				$j( '#mwe_' + vidId ).embedPlayer();	 
+			}			
 
-			// Do the actual rewrite 
-			//mw.log("rewrite: "+ vidId );	
-			$j( '#mwe_' + vidId ).embedPlayer();
 			// Issue an async request to rewrite the next clip
 			if ( vidIdList.length != 0 ) {
-				setTimeout( function() {
+				setTimeout( function() {					
 					procVidId( vidIdList.pop() )
 				}, 1 );
 			}
-
 		}		
 	};
 	// Process current top item in vidIdList

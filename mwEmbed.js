@@ -1115,11 +1115,12 @@ if( typeof preMwEmbedConfig == 'undefined') {
 	* Add a (temporary) dialog window:
 	* @param {String} title Title string for the dialog
 	* @param {String} dialogHtml String to be inserted in msg box
-	* @param {Mixed} buttons A button object for the dialog 
-	*					Can be 'ok' for oky button.
+	* @param {Mixed} buttonOption A button object for the dialog 
+	*					Can be a string for the close buton
 	*/
 	mw.addDialog = function ( title, dialogHtml, buttons ) {
 		$j( '#mwTempLoaderDialog' ).remove();
+		
 		// Append the style free loader ontop: 
 		$j( 'body' ).append( 
 			$j('<div />') 
@@ -1130,13 +1131,16 @@ if( typeof preMwEmbedConfig == 'undefined') {
 			.css('display', 'none')
 			.html( dialogHtml )
 		);
+		
 		// Special buttons == ok gives empty give a single "oky" -> "close"
-		if ( buttons == 'ok' ) {
+		if ( typeof buttons == 'string' ) {
+			var buttonMsg = buttons;
 			buttons = { };
-			buttons[ gM( 'mwe-ok' ) ] = function() {
-				$j( '#mwTempLoaderDialog' ).close();
+			buttons[ buttonMsg ] = function() {
+				$j( '#mwTempLoaderDialog' ).dialog( 'close' );
 			}
-		}
+		} 
+		
 		// Load the dialog classes
 		mw.load([
 			[
@@ -2279,17 +2283,18 @@ if( typeof preMwEmbedConfig == 'undefined') {
 	 * 
 	 */
 	mw.runTriggersCallback = function( targetObject, triggerName, callback ){
-		// on trigger calls with many binded functions. 
-		if(  ! $j( targetObject ).data( 'events' )[ triggerName ] ) {
+		// If events are not present directly run callback 
+		if( ! $j( targetObject ).data( 'events' ) ||
+				! $j( targetObject ).data( 'events' )[ triggerName ] ) {
 			callback();
-		}
-		
+		}		
 		var callbackCount = $j( targetObject ).data( 'events' )[ triggerName ].length;			
 		if( !callbackCount ){
 			// No events run the callback directly
 			callback();
 			return ;
-		}	
+		}
+	
 		mw.log(" runTriggersCallback:: " + callbackCount );
 		var callInx = 0;
 		$j( targetObject ).trigger( 'checkPlayerSourcesEvent', function() {
