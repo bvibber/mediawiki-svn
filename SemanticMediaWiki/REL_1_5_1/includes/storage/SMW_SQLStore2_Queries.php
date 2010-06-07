@@ -752,17 +752,22 @@ class SMWSQLStore2QueryEngine {
 
 					if ( $customSQL ) {
 						$where = $customSQL;
-					}
-					else {
+					} else {
+						$value = $keys[$valueIndex];
+
 						switch ( $description->getComparator() ) {
 							case SMW_CMP_EQ: $comparator = '='; break;
 							case SMW_CMP_LEQ: $comparator = '<='; break;
 							case SMW_CMP_GEQ: $comparator = '>='; break;
 							case SMW_CMP_NEQ: $comparator = '!='; break;
+							case SMW_CMP_LIKE: case SMW_CMP_NLKE:
+								$comparator = ' LIKE ';
+								if ( $description->getComparator() == SMW_CMP_NLKE ) $comparator = " NOT{$comparator}";
+								$value =  str_replace( array( '%', '_', '*', '?' ), array( '\%', '\_', '%', '_' ), $value );
 						}
 
 						if ( $comparator ) {
-							$where = "$query->alias.{$fieldName}{$comparator}" . $this->m_dbs->addQuotes( $keys[$valueIndex] );
+							$where = "$query->alias.{$fieldName}{$comparator}" . $this->m_dbs->addQuotes( $value );
 						}
 					}
 				}
