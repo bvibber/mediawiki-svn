@@ -375,7 +375,9 @@ $j( document ).ready( function() {
 					$j.collapsibleTabs.handleResize();
 				}
 			}
-		} );
+		} )
+		.siblings( 'button' )
+		.css( 'float', 'right' );
 });
 /* Prototype code to demonstrate proposed edit page footer cleanups */
 /* First draft and will be changing greatly */

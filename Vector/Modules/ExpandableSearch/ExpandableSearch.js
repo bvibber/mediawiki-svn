@@ -39,5 +39,7 @@ $j( document ).ready( function() {
 					$j.collapsibleTabs.handleResize();
 				}
 			}
-		} );
+		} )
+		.siblings( 'button' )
+		.css( 'float', 'right' );
 });
