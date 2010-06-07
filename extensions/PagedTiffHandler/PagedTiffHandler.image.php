@@ -37,13 +37,6 @@ class PagedTiffImage {
 	}
 	
 	/**
-	* Customize the exiv shell command.
-	*/
-	static function exivCommand( &$cmd, $filename ) {
-		return true;
-	}
-	
-	/**
 	* Called by MimeMagick functions.
 	*/
 	public function isValid() {
@@ -122,7 +115,7 @@ class PagedTiffImage {
 					$cmd = wfEscapeShellArg( $wgTiffExivCommand ) .
 						' -u -psix -Pnt ' . // read EXIF, XMP, IPTC as name-tag => interpreted data -ignore unknown fields
 						// exiv2-doc @link http://www.exiv2.org/sample.html
-						# # In der Linux-Version von exiv2 gibt es einen Bug, sodass diese Parameter dort nicht funktionieren. ^SU
+						# # the linux version of exiv2 has a bug an this command doesn´t work on it. ^SU
 						wfEscapeShellArg( $this->mFilename );
 	
 					wfRunHooks( "PagedTiffHandlerExivCommand", array( &$cmd, $this->mFilename ) );
@@ -212,7 +205,7 @@ class PagedTiffImage {
 					}
 				}
 				if ( !$knownError ) {
-					# # BypassMessages werden nicht gespeichert ^SU
+					# # drop BypassMessages ^SU
 					foreach ( $wgTiffIdentifyBypassMessages as $msg ) {
 						if ( preg_match( $msg, trim( $error ) ) ) {
 							// $data['warnings'][] = $error;

@@ -105,5 +105,5 @@ $wgAutoloadClasses['TiffReader'] = $dir . 'TiffReader.php';
 $wgMediaHandlers['image/tiff'] = 'PagedTiffHandler';
 $wgHooks['UploadVerification'][] = 'PagedTiffHandler::check';
 $wgHooks['LanguageGetMagic'][] = 'PagedTiffHandler::addTiffLossyMagicWordLang';
-$wgHooks['PagedTiffHandlerRenderCommand'][] = 'PagedTiffHandler::renderCommand';
-$wgHooks['PagedTiffHandlerExivCommand'][] = 'PagedTiffImage::exivCommand';
+//$wgHooks['PagedTiffHandlerRenderCommand'][] = 'PagedTiffHandler::renderCommand';
+//$wgHooks['PagedTiffHandlerExivCommand'][] = 'PagedTiffImage::exivCommand';

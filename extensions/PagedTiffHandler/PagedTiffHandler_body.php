@@ -44,14 +44,6 @@ class PagedTiffHandler extends ImageHandler {
 		$magicWords['img_lossy'] = array( 0, "lossy=$1" );
 		return true;
 	}
-	
-	/**
-	 * Customize the thumbnail shell command.
-	 */
-	static function renderCommand( &$cmd, $srcPath, $dstPath, $page, $width, $height ) { # ## why? ^DK
-		// FIXME: This function seems useless
-		return true;
-	}
 
 	function isEnabled() { return true; }
 	function mustRender( $img ) { return true; }
@@ -383,8 +375,8 @@ class PagedTiffHandler extends ImageHandler {
 	 * Creates detail information that is being displayed on image page.
 	 */
 	function getLongDesc( $image ) {
-		global $wgLang;
-		$page = isset( $_GET['page'] ) ? $_GET['page'] : 1;
+		global $wgLang, $wgRequest;
+		$page = $wgRequest->getText('page', 1);
 		if ( !isset( $page ) || $page < 1 ) {
 			$page = 1;
 		}
