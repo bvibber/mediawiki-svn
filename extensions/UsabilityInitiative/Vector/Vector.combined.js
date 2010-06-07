@@ -29,14 +29,16 @@ $j(document).ready( function() {
 	if ( !$j.wikiEditor.isSupported( mod ) ) {
 		return true;
 	}
+	// Fallback to old version
+	var version = 1;
 	// Allow new version override
 	if ( wgCollapsibleNavForceNewVersion == true ) {
-		var version = 2;
+		version = 2;
 	} else {
 		// Make bucket testing optional
 		if ( wgCollapsibleNavBucketTest == true ) {
 			// This is be determined randomly, and then stored in a cookie
-			var version = $j.cookie( 'vector-nav-pref-version' );
+			version = $j.cookie( 'vector-nav-pref-version' );
 			// If the cookie didn't exist, or the value is out of range, generate a new one and save it
 			if ( version == null ) {
 				console.log( version );
@@ -44,9 +46,6 @@ $j(document).ready( function() {
 				version = Math.round( Math.random() + 1 );
 				$j.cookie( 'vector-nav-pref-version', version, { 'expires': 30, 'path': '/' } );
 			}
-		} else {
-			// Fallback to old version
-			var version = 1;
 		}
 	}
 	// Language portal splitting feature (if it's turned on)
@@ -101,7 +100,6 @@ $j(document).ready( function() {
 				$j.cookie( 'accept-language', langs.join( ',' ), { 'path': '/', 'expires': 30 } );
 			} );
 		}
-		
 		// Shortcuts to the two lists
 		$primary = $j( '#p-lang ul.primary' );
 		$secondary = $j( '#p-lang ul.secondary' );
@@ -115,7 +113,7 @@ $j(document).ready( function() {
 			$link = $secondary.find( '.interwiki-' + languages[i] );
 			if ( $link.length ) {
 				if ( count++ < limit ) {
-					$link.remove().appendTo( $primary );
+					$link.appendTo( $primary );
 				} else {
 					break;
 				}
@@ -126,7 +124,7 @@ $j(document).ready( function() {
 		if ( count < limit ) {
 			$secondary.children().each( function() {
 				if ( count++ < limit ) {
-					$j(this).remove().appendTo( $primary );
+					$j(this).appendTo( $primary );
 				} else {
 					return false;
 				}
@@ -138,7 +136,7 @@ $j(document).ready( function() {
 		} else {
 			$j( '#p-lang' ).after( '<div id="p-lang-more" class="portal"><h5></h5><div class="body"></div></div>' );
 			$j( '#p-lang-more h5' ).text( mw.usability.getMsg( 'vector-collapsiblenav-more' ) );
-			$secondary.remove().appendTo( $j( '#p-lang-more div.body' ) );
+			$secondary.appendTo( $j( '#p-lang-more div.body' ) );
 		}
 		// Always show the primary interwiki language portal
 		$j( '#p-lang' ).addClass( 'persistent' );
