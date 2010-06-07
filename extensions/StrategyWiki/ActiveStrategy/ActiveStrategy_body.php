@@ -22,6 +22,11 @@ class ActiveStrategy {
 	static function formatResult( $skin, $taskForce, $number, $type ) {
 		global $wgContLang, $wgLang, $wgActiveStrategyColors;
 
+		if ( ! $taskForce ) {
+			// Fail.
+			return;
+		}
+
 		$title = Title::newFromText( $taskForce );
 		$text = $wgContLang->convert( $title->getPrefixedText() );
 		$text = self::getTaskForceName( $text );
@@ -94,7 +99,7 @@ class ActiveStrategy {
 		$tables = array( 'page', 'categorylinks' );
 		$fields = array( 'categorylinks.cl_to' );
 		$conds = array( 'categorylinks.cl_to' => $categories );
-		$options = array( 'GROUP BY' => 'categorylinks.cl_to' );
+		$options = array( 'GROUP BY' => 'categorylinks.cl_to', 'ORDER BY' => 'value DESC' );
 		$joinConds = array( 'categorylinks' =>
 				array( 'left join', 'categorylinks.cl_from=page.page_id' ) );
 		
@@ -121,12 +126,13 @@ class ActiveStrategy {
 		$conds[] = 'finishedcategory.cl_from IS NULL';
 		
 		if ( $sortField == 'edits' ) {
+			$cutoff = $db->timestamp( time() - $wgActiveStrategyPeriod );
+			$cutoff = $db->addQuotes( $cutoff );
 			$tables[] = 'revision';
 			$joinConds['revision'] =
-				array( 'left join', 'rev_page=page_id' );
+				array( 'left join',
+					array( 'rev_page=page_id', "rev_timestamp > $cutoff" ) );
 			$fields[] = 'count(distinct rev_id) as value';
-			$cutoff = $db->timestamp( time() - $wgActiveStrategyPeriod );
-			$conds[] = "rev_timestamp > $cutoff";
 		} elseif ( $sortField == 'ranking' ) {
 			$tables[] = 'pagelinks';
 			$joinConds['pagelinks'] = array( 'left join',
@@ -136,6 +142,7 @@ class ActiveStrategy {
 		
 		$result = $db->select( $tables, $fields, $conds,
 					__METHOD__, $options, $joinConds );
+					
 					
 		$categoryToTaskForce = array_flip( $categories );
 		
@@ -147,6 +154,8 @@ class ActiveStrategy {
 		}
 		
 		$html = Xml::tags( 'ul', null, $html );
+		$html .= "<!-- " . $db->selectSQLText( $tables, $fields, $conds, __METHOD__,
+							$options, $joinConds ) . '-->';
 		
 		return $html;
 	}
