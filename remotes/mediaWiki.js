@@ -4,7 +4,7 @@
  */
 var urlparts = getRemoteEmbedPath();
 var mwEmbedHostPath = urlparts[0];
-var mwRemoteVersion = 'r128';
+var mwRemoteVersion = 'r129';
 var mwUseScriptLoader = true;
 
 // Log the mwRemote version makes it easy to debug cache issues
@@ -27,7 +27,6 @@ for ( var i = 0; i < reqParts.length; i++ ) {
 if( mwReqParam['debug'] ) {
 	mwUseScriptLoader = false;
 }
-mwUseScriptLoader = true;
 
 // Setup up some globals to wrap mwEmbed mw.ready and mw.setConfig functions
 
@@ -318,6 +317,7 @@ function rewrite_for_OggHandler( vidIdList ) {
 		// Check if file is from commons and therefore should explicitly set apiProvider to commons: 
 		var apiProviderAttr = ( src.indexOf( 'wikipedia\/commons' ) != -1 )?'apiProvider="commons" ': '';		
 
+		var autoPlayAttr = '';
 		// If in a gallery box we will be displaying the video larger in a lightbox
 		if( $j( '#' + vidId ).parents( '.gallerybox' ).length ){
 			// Update the width to 400 and keep scale
@@ -325,18 +325,20 @@ function rewrite_for_OggHandler( vidIdList ) {
 			if( pheight != 0 ) {
 				pheight = pwidth * ( $j( '#' + vidId ).height() / $j( '#' + vidId ).width() );
 			}			
+			autoPlayAttr = ' autoplay="true" ';
 		}
-
+		
 		if ( src ) {
 			var html_out = '';
 			
 			var common_attr = ' id="mwe_' + vidId + '" ' +
-					'apiTitleKey="' + apiTitleKey + '" ' +
-					'src="' + src + '" ' +
-					apiProviderAttr + 
-					duration_attr +
-					offset_attr + ' ' +
-					'class="kskin" ';
+				'apiTitleKey="' + apiTitleKey + '" ' +
+				'src="' + src + '" ' +
+				autoPlayAttr + 
+				apiProviderAttr + 
+				duration_attr +
+				offset_attr + ' ' +
+				'class="kskin" ';
 								
 			if ( tag_type == 'audio' ) {
 				if( pwidth < 250 ){
@@ -376,17 +378,31 @@ function rewrite_for_OggHandler( vidIdList ) {
 						.css( {
 							'position' : 'absolute',
 							'top' : ( parseInt( $pimg.attr( 'height' ) ) /2 ) -25,
-							'left' : ( parseInt( $pimg.attr( 'height' ) ) /2 ) - 45
+							'maring-left' : 'auto',
+							'maring-right' : 'auto'
 						}) 
+						
 						.addClass( 'play-btn-large' )
 						.buttonHover()
-						.click( function(){				
+						.click( function(){		
+							var _this = this;
+									
 							var dialogHeight = ( $j( this ).data( 'playerHeight') == 0 	)? 175 :
-																	( $j( this ).data( 'playerHeight') - 75 );
+												( $j( this ).data( 'playerHeight') - 25 );
+							var buttons = {};
+							buttons[ gM( 'mwe-ok' ) ] = function(){
+								var embedPlayer = $j( '#mwe_' + $j( _this ).data( 'playerId' ) ).get(0);
+								// stop the player ( more healthy way to remove the video from the dom )
+								if( embedPlayer ) {
+									embedPlayer.stop();
+								}
+								// close the dialog
+								$j(this).dialog( 'close' ).remove();
+							};
 							mw.addDialog( 					
 								decodeURIComponent( $j( this ).data( 'title' ).replace(/_/g, ' ') ),
 								$j( this ).data( 'embedCode' ),
-								gM( 'mwe-ok' )
+								buttons
 							)
 							// Dialog size setup is a bit strange:							
 							.css( {
@@ -396,9 +412,20 @@ function rewrite_for_OggHandler( vidIdList ) {
 								// we hard code the default resolution to 400 above
 								'width' : '435px',							
 							} )
-							// Update the embed code to use the mwEmbed player: 
-							$j.embedPlayers();
+							
+							alert( $j('#mwTempLoaderDialog').html() );
+							
+							// Update the embed code to use the mwEmbed player: 		
+							$j.embedPlayers( function(){								
+								var embedPlayer = $j( '#mwe_' + $j( _this ).data( 'playerId' ) ).get(0);
+								// Show the control bar for two seconds (auto play is confusing without it )
+								embedPlayer.controlBuilder.showControlBar();
+								setTimeout( function(){								
+									embedPlayer.controlBuilder.hideControlBar();
+								}, 4000 ); 
+							});															
 						})
+						.data( 'playerId', vidId )
 						.data( 'embedCode', html_out )		
 						.data( 'title' , apiTitleKey )						
 						.data( 'playerHeight', pheight )
@@ -508,8 +535,17 @@ function loadMwEmbed( classSet, callback ) {
 			rurl += '&' + mwGetReqArgs();
 			importScriptURI( rurl );
 		} else { 
-			// Ignore classSet (will be loaded onDemand )
+			// load mwEmbed js
 			importScriptURI( mwEmbedHostPath + '/mwEmbed.js?' + mwGetReqArgs() );
+			
+			// Load the class set as part of mwReady callback
+			var instanceCallback = callback;
+			var callback = function(){
+				mw.load( classSet, function(){
+					instanceCallback();
+				})
+			}
+			
 		}
 	}
 	waitMwEmbedReady( callback );

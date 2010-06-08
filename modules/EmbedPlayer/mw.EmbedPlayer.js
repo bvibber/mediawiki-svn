@@ -160,7 +160,7 @@ mw.setConfig( 'embedPlayerAttributes', {
 	
 	// If the player controls should be overlayed 
 	//( Global default via config overlayControls in module loader.js)  
-	"overlayControls" : mw.getConfig( 'overlayControls' ),
+	"overlayControls" : true,
 	
 	// ROE url ( for xml based metadata )
 	// also see: http://wiki.xiph.org/ROE
@@ -407,6 +407,7 @@ EmbedPlayerManager.prototype = {
 						mw.log("runPlayerSwap::" + $j( playerElement ).attr('id') );
 						ranPlayerSwapFlag = true;	
 						var playerInterface = new mw.EmbedPlayer( playerElement , attributes);
+						
 						_this.swapEmbedPlayerElement( playerElement, playerInterface );								
 												
 						
@@ -1311,9 +1312,10 @@ mw.EmbedPlayer.prototype = {
 		}		
 		
 		var playerAttributes = mw.getConfig( 'embedPlayerAttributes' ); 
+		
 		// Setup the player Interface from supported attributes:
 		for ( var attr in playerAttributes ) {
-			if ( customAttributes[ attr ] ) {
+			if ( customAttributes[ attr ] || customAttributes[ attr ] === false ) {
 				this[ attr ] = customAttributes[ attr ];
 			} else if ( element.getAttribute( attr ) ) {
 				this[ attr ] = element.getAttribute( attr );
@@ -1370,7 +1372,8 @@ mw.EmbedPlayer.prototype = {
 		// Set the source duration ( if provided in the element metaData or durationHint )
 		if ( $j( element ).attr( 'duration' ) ) {
 			_this.duration = $j( element ).attr( 'duration' );
-		}		
+		}
+				
 		if ( !_this.duration && $j( element ).attr( 'durationHint' ) ) {
 			_this.durationHint = $j( element ).attr( 'durationHint' );
 			// Convert duration hint if needed:
@@ -2008,7 +2011,7 @@ mw.EmbedPlayer.prototype = {
 		
 		// If the native video is already displayed hide it: 
 		if( $j( '#' + this.pid ).length != 0 ){
-			$j('#loadSpiner_' + this.id ).remove();
+			$j('#loadingSpinner_' + this.id ).remove();
 			$j( '#' + this.pid ).hide()
 		}
 		if( this.mediaElement.sources.length == 0 ){
@@ -2286,13 +2289,14 @@ mw.EmbedPlayer.prototype = {
 		$j(this).empty();
 		
 		// Remove the player loader spiner if it exists
-		$j('#loadSpiner_' + this.id ).remove();
+		$j('#loadingSpinner_' + this.id ).remove();
 		
 		// Check if we need to refresh mobile safari
 		/*var mobileSafairNeedsRefresh = false;
 		if( $j( '#' + this.pid ).attr('controls') === false ){
 			mobileSafairNeedsRefresh = true;
 		}*/		
+		
 		// For now always refersh ( buggy display control behavior in iPad ) 
 		mobileSafairNeedsRefresh = true;
 		

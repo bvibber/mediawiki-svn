@@ -638,6 +638,7 @@ mw.PlayerControlBuilder.prototype = {
 		if( mw.getConfig( 'overlayControls' ) === false){
 			return false;
 		} 
+		
 		// If disabled via the player
 		if( this.embedPlayer.overlayControls === false ){
 			return false;
