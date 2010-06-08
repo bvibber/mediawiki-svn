@@ -232,7 +232,7 @@ class jsClassLoader {
 
 		$mwEmbedAbsolutePath = ( $wgMwEmbedDirectory == '' )? $IP:  $IP .'/' .$wgMwEmbedDirectory;
 
-		foreach( $moduleSet as $na => $moduleName ){
+		foreach( $moduleSet as $na => $moduleName ) {
 			// Skip empty module names
 			if(trim( $moduleName ) == '' ){
 				continue;
@@ -282,14 +282,12 @@ class jsClassLoader {
 				$setInModuleError = ( self::$classParentModuleName [ $className ] )
 					? " set in module: " . self::$classParentModuleName [ $className ]
 					: " set in an extension ";
-				
-				throw new MWException( "Error class $className already $setInModuleError , " . 
-					" can't reassign in " . self::$currentModuleName . "\n" );
+
+				throw new MWException( "Error class $className already $setInModuleError \n" );
 			}
 
 			// Else update the global $wgScriptLoaderNamedPaths ( all scriptloader named paths )
 			$wgScriptLoaderNamedPaths[ $className ] = $classPath;
-
 			// Register the parent module ( javascript module specific )
 			self::$classParentModuleName [ $className ] = self::$currentModuleName ;
 		}

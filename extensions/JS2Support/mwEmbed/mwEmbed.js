@@ -1,6 +1,6 @@
 // Add support for html5 / mwEmbed elements to IE ( comment must come before js code ) 
 // For discussion and comments, see: http://remysharp.com/2009/01/07/html5-enabling-script/
-/*@cc_on@if(@_jscript_version<9){'video audio source track playlist'.replace(/\w+/g,function(n){document.createElement(n)})}@end@*/
+/*@cc_on@if(@_jscript_version<9){'video audio source track'.replace(/\w+/g,function(n){document.createElement(n)})}@end@*/
 
 /**
  * @license
@@ -281,12 +281,12 @@ if( typeof preMwEmbedConfig == 'undefined') {
 		*		Using defined class names avoids loading the same class
 		*		twice by first checking if the "class variable" is defined
 		*	
-		*	{String} Absolute or relative to mwEmbed file path. 
+		*	{String} Absolute or relative to url path
 		*		The same file won't be loaded twice
 		*
 		*	{Array} can be an array of any combination of the above strings.
-		*		Will be loaded in-order or in a single 
-		*		script-loader request if scriptLoader is enabled 
+		*		Will be loaded in-order or in a single script-loader request 
+		*		if scriptLoader is available.  
 		*
 		* 	{Array} {Array} Can be a set of Arrays for loading.		 
 		*		Some browsers execute included scripts out of order. 
@@ -298,7 +298,8 @@ if( typeof preMwEmbedConfig == 'undefined') {
 		*/				
 		load: function( loadRequest, instanceCallback ) {
 			// Ensure the callback is only called once per load instance 
-			var callback = function(){				
+			var callback = function(){
+				//mw.log( 'instanceCallback::running callback: ' + instanceCallback );
 				if( instanceCallback ){
 					instanceCallback( loadRequest );
 					instanceCallback = null;
@@ -399,7 +400,13 @@ if( typeof preMwEmbedConfig == 'undefined') {
 				mw.log("loadMany: load: " + loadName ); 					
 				this.load( loadName, function ( loadName ) {										
 					loadStates[ loadName ] = 1;
-					//mw.log( loadName + ' finished of: ' + JSON.stringify( loadStates ) );
+					
+					/*
+					for( var i in loadStates ) {
+						mw.log( loadName + ' finished of: ' + i + ' : ' + loadStates[i]   );
+					}
+					*/
+					
 					//Check if all load request states are set 1					
 					var loadDone = true;
 					for( var j in loadStates ) {
@@ -564,7 +571,7 @@ if( typeof preMwEmbedConfig == 'undefined') {
 			
 			// Set the loadDone callback per the provided className				
 			mw.setLoadDoneCB( className, callback );
-			
+						
 			// Issue the request to load the class (include class name in result callback:					
 			mw.getScript( scriptRequest, function( scriptRequest ) {
 			
@@ -582,15 +589,17 @@ if( typeof preMwEmbedConfig == 'undefined') {
 				}
 				
 				// If ( debug mode ) and the script include is missing class messages
-				// do a separate request to retrieve the msgs
+				// do a separate request to retrieve the msgs			
 				if( mw.currentClassMissingMessages ) {
-					mw.loadClassMessages( className, function() {
-						// Reset the currentClassMissingMessages flag
-						mw.currentClassMissingMessages = false;
-						
-						// Run the onDone callback 					
+					mw.log( " className " + className + " is missing messages"  );
+					// Reset the currentClassMissingMessages flag
+					mw.currentClassMissingMessages = false;
+					
+					// Load msgs for this class: 
+					mw.loadClassMessages( className, function() {						
+						// Run the onDone callback 		
 						mw.loadDone( className );
-					});
+					} );
 				} else { 				
 					// If not using the script-loader make sure the className is available before firing the loadDone
 					if( !mw.getScriptLoaderPath() ) {
@@ -660,11 +669,9 @@ if( typeof preMwEmbedConfig == 'undefined') {
 	
 	/**
 	* Load done callback for script loader
-	*  this enables webkit browsers don't have to check if variables are "ready"
 	* @param {String} requestName Name of the load request
 	*/	
-	mw.loadDone =  function( requestName ) {		
-		//mw.log( "LoadDone: " + requestName + ' run callback ');
+	mw.loadDone =  function( requestName ) {				
 		if( !mwLoadDoneCB[ requestName ] ) {			
 			return true;
 		}
@@ -677,6 +684,7 @@ if( typeof preMwEmbedConfig == 'undefined') {
 			}
 			var func = mwLoadDoneCB[ requestName ].pop();			
 			if( typeof func == 'function' ) {
+				//mw.log( "LoadDone: " + requestName + ' run callback::' + func);
 				func( requestName );
 			}else{
 				mw.log('mwLoadDoneCB: Error non callback function on stack');
@@ -981,7 +989,7 @@ if( typeof preMwEmbedConfig == 'undefined') {
 	 * @param {String} [apiUrl] Optional target API URL (uses default local api if unset) 
 	 * @param {String} title The wiki page title you want to edit	 
 	 * @param {callback} callback Function to pass the token to. 
-	 * 						issues callback with "false" if token not retrived
+	 * 						issues callback with "false" if token not retrieved
 	 */
 	mw.getToken = function( apiUrl, title, callback ) {
 		// Make the apiUrl be optional: 
@@ -991,7 +999,7 @@ if( typeof preMwEmbedConfig == 'undefined') {
 			apiUrl = mw.getLocalApiUrl();	
 		}		
 		
-		mw.log( 'mw:getToken' );		
+		mw.log( 'mw:getToken' );
 		
 		var request = {			
 			'prop': 'info',
@@ -1074,12 +1082,15 @@ if( typeof preMwEmbedConfig == 'undefined') {
 	* addLoaderDialog
 	*  small helper for displaying a loading dialog
 	*
-	* @param {String} msg_txt text text of the loader msg
+	* @param {String} dialogHtml text Html of the loader msg
 	*/
-	mw.addLoaderDialog = function( msg_txt ) {
-		mw.addDialog( msg_txt, msg_txt + '<br>' + 
-				$j('<div />').loadingSpinner().html() 
+	mw.addLoaderDialog = function( dialogHtml ) {
+		$dialog = mw.addDialog( dialogHtml, dialogHtml + '<br>' + 
+				$j('<div />')
+				.loadingSpinner()
+				.html() 
 		);
+		return $dialog;
 	}
 	
 	/**
@@ -1098,34 +1109,38 @@ if( typeof preMwEmbedConfig == 'undefined') {
 			return true;
 		}
 		return false;
-	},
+	}
 	
 	/**
 	* Add a (temporary) dialog window:
 	* @param {String} title Title string for the dialog
-	* @param {String} msg_html String to be inserted in msg box
-	* @param {Mixed} buttons A button object for the dialog 
-	*					Can be 'ok' for oky button.
+	* @param {String} dialogHtml String to be inserted in msg box
+	* @param {Mixed} buttonOption A button object for the dialog 
+	*					Can be a string for the close buton
 	*/
-	mw.addDialog = function ( title, msg_html, buttons ) {
-		$j( '#mwe_tmp_loader' ).remove();
+	mw.addDialog = function ( title, dialogHtml, buttons ) {
+		$j( '#mwTempLoaderDialog' ).remove();
+		
 		// Append the style free loader ontop: 
 		$j( 'body' ).append( 
 			$j('<div />') 
 			.attr( {
-				'id' : "mwe_tmp_loader",
+				'id' : "mwTempLoaderDialog",
 				'title' : title
 			})
 			.css('display', 'none')
-			.html( msg_html )
+			.html( dialogHtml )
 		);
+		
 		// Special buttons == ok gives empty give a single "oky" -> "close"
-		if ( buttons == 'ok' ) {
+		if ( typeof buttons == 'string' ) {
+			var buttonMsg = buttons;
 			buttons = { };
-			buttons[ gM( 'mwe-ok' ) ] = function() {
-				$j( '#mwe_tmp_loader' ).close();
+			buttons[ buttonMsg ] = function() {
+				$j( '#mwTempLoaderDialog' ).dialog( 'close' );
 			}
-		}
+		} 
+		
 		// Load the dialog classes
 		mw.load([
 			[
@@ -1135,7 +1150,7 @@ if( typeof preMwEmbedConfig == 'undefined') {
 				'$j.ui.dialog'
 			]
 		], function() {
-			$j( '#mwe_tmp_loader' ).dialog( {
+			$j( '#mwTempLoaderDialog' ).dialog( {
 				'bgiframe': true,
 				'draggable': false,
 				'resizable': false,
@@ -1144,6 +1159,7 @@ if( typeof preMwEmbedConfig == 'undefined') {
 				'buttons': buttons
 			} );
 		} );
+		return $j( '#mwTempLoaderDialog' );
 	}
 	
 	/**
@@ -1154,7 +1170,7 @@ if( typeof preMwEmbedConfig == 'undefined') {
 		if( !mw.isset( '$j.ui.dialog' ) ) {
 			return false;
 		}
-		$j( '#mwe_tmp_loader' ).dialog( 'destroy' ).remove();
+		$j( '#mwTempLoaderDialog' ).dialog( 'destroy' ).remove();
 	}
 	
 	
@@ -1618,7 +1634,7 @@ if( typeof preMwEmbedConfig == 'undefined') {
 	
 	/**
 	 * Given seconds return array with 'days', 'hours', 'min', 'seconds' 
-	 * @param {float} sec Seconds to be converted into time mesurements  
+	 * @param {float} sec Seconds to be converted into time measurements  
 	 */
 	mw.seconds2Measurements = function ( sec ){
 		var tm = {};
@@ -2253,6 +2269,43 @@ if( typeof preMwEmbedConfig == 'undefined') {
 	}
 	 
 	/**
+	 * Runs all the triggers on a given object with a single "callback"
+	 * 
+	 * Normal tirgger calls will run the callback directly multiple times
+	 * for every binded function. 
+	 * 
+	 * With runTriggersCallback() callback is not called until all the 
+	 * binded events have been run. 	 
+	 * 
+	 * @param {object} targetObject Target object to run triggers on
+	 * @param {string} triggerName	Name of trigger to be run
+	 * @param {function} callback Function called once all triggers have been run
+	 * 
+	 */
+	mw.runTriggersCallback = function( targetObject, triggerName, callback ){
+		// If events are not present directly run callback 
+		if( ! $j( targetObject ).data( 'events' ) ||
+				! $j( targetObject ).data( 'events' )[ triggerName ] ) {
+			callback();
+		}		
+		var callbackCount = $j( targetObject ).data( 'events' )[ triggerName ].length;			
+		if( !callbackCount ){
+			// No events run the callback directly
+			callback();
+			return ;
+		}
+	
+		mw.log(" runTriggersCallback:: " + callbackCount );
+		var callInx = 0;
+		$j( targetObject ).trigger( 'checkPlayerSourcesEvent', function() {
+			callInx++;
+			if( callInx == callbackCount ){										
+				// Run callback
+				callback();
+			}
+		} );
+	}
+	/**
 	 * Utility jQuery bindings
 	 *  Setup after jQuery is available ). 
 	 */
@@ -2313,7 +2366,7 @@ if( typeof preMwEmbedConfig == 'undefined') {
 				// The text of the button link
 				'text' : '',
 				
-				// The icon id that precceeds the button link:
+				// The icon id that precedes the button link:
 				'icon_id' : 'carat-1-n' 
 			};
 			
