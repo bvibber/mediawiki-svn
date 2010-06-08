@@ -432,7 +432,7 @@ Estus utila por disigo de artikoloj, ktp.',
 $messages['es'] = array(
 	'duplicator' => 'Duplicar una página',
 	'duplicator-desc' => 'Crear [[Special:Duplicate|copias independientes de página]] con historiales completos de ediciones',
-	'duplicator-toolbox' => 'Duplicar ésta página',
+	'duplicator-toolbox' => 'Duplicar esta página',
 	'duplicator-header' => 'Esta página permite el duplicado completo de una página, creando copias independientes de todos los historiales. Esto es útil para bifurcación de páginas, etc.',
 	'duplicator-options' => 'Opciones',
 	'duplicator-source' => 'Fuente:',
