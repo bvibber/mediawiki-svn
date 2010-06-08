@@ -8,6 +8,6 @@ POWERDNSDIR=/etc/powerdns
 LANGLIST=$POWERDNSDIR/langlist
 LANGLISTSOURCE=""
 
-[ $LANGLIST -nt $POWERDNSDIR/langlist-cnames ] && < $LANGLIST awk '{ print $1"\t\t\t1H\tIN CNAME\trr.wikimedia.org."; print"www."$1"\t\t\t1H\tIN CNAME\trr.wikimedia.org."; print $1".m\t\t\t1H\tIN CNAME\tm.wikimedia.org." }' > $POWERDNSDIR/langlist-cnames
+[ $LANGLIST -nt $POWERDNSDIR/langlist-cnames ] && < $LANGLIST awk '{ print $1"\t\t\t1H\tIN CNAME\ttext.wikimedia.org."; print"www."$1"\t\t\t1H\tIN CNAME\ttext.wikimedia.org."; print $1".m\t\t\t1H\tIN CNAME\tm.wikimedia.org." }' > $POWERDNSDIR/langlist-cnames
 
 exit 0

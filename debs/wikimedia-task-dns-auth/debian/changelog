@@ -1,8 +1,14 @@
-wikimedia-task-dns-auth (0.13) hardy; urgency=high
+wikimedia-task-dns-auth (0.14) hardy; urgency=low
 
   * changed CNAME for local.m.w.org to m.w.o from mobile1
 
- -- Fred Vassard <fvassard@wikimedia.org>  Tue, 8 Jun 2010 17:18:51 +0000
+ -- Fred Vassard <fvassard@wikimedia.org>  Tue, 08 Jun 2010 18:02:03 +0000
+
+wikimedia-task-dns-auth (0.13) hardy; urgency=low
+
+  * Rename rr.wikimedia.org to text.wikimedia.org
+
+ -- Mark Bergsma <mark@wikimedia.org>  Wed, 24 Mar 2010 20:24:27 +0000
 
 wikimedia-task-dns-auth (0.12) hardy; urgency=high
 
