@@ -413,7 +413,7 @@ function rewrite_for_OggHandler( vidIdList ) {
 								'width' : '435px',							
 							} )
 							
-							alert( $j('#mwTempLoaderDialog').html() );
+							//alert( $j('#mwTempLoaderDialog').html() );
 							
 							// Update the embed code to use the mwEmbed player: 		
 							$j.embedPlayers( function(){								
