@@ -47,7 +47,7 @@ $wgExtensionCredits['specialpage'][] = array(
 if ( isset( $_REQUEST['ea-send'] ) ) require_once( $wgPhpMailerClass );
 
 # Add toolbox and action links
-if ( $wgEmailPageToolboxLink ) $wgHooks['MonoBookTemplateToolboxEnd'][] = 'wfEmailPageToolboxLink';
+if ( $wgEmailPageToolboxLink ) $wgHooks['SkinTemplateToolboxEnd'][] = 'wfEmailPageToolboxLink';
 if ( $wgEmailPageActionLink )  $wgHooks['SkinTemplateTabs'][] = 'wfEmailPageActionLink';
 
 function wfEmailPageToolboxLink() {

@@ -3,7 +3,7 @@ if ( !defined( 'MEDIAWIKI' ) ) die();
 
 global $wgHooks;
 
-$wgHooks['MonoBookTemplateToolboxEnd'][] = 'wfFundHook';
+$wgHooks['SkinTemplateToolboxEnd'][] = 'wfFundHook';
 
 function wfFundHook() {
 	$msg = <<<ENDHTML
