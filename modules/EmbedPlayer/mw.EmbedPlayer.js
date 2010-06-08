@@ -1996,7 +1996,10 @@ mw.EmbedPlayer.prototype = {
 				
 		if ( this.autoplay ) {			
 			mw.log( 'showPlayer::activating autoplay' );
-			_this.play();			
+			// Issue a non-blocking play request 
+			setTimeout(function(){
+				_this.play();
+			},0)					
 		}
 		
 	},
