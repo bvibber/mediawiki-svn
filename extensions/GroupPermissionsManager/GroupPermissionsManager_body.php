@@ -1,8 +1,7 @@
 <?php
-
 /**
-* Class definition for the special page
-*/
+ * Class definition for the special page
+ */
 
 class GroupPermissions extends SpecialPage {
 	var $target = '';
@@ -107,7 +106,7 @@ class GroupPermissions extends SpecialPage {
 	* @return $form the HTML of the form
 	*/
 	function makeSearchForm() {
-		$thisTitle = Title::makeTitle( NS_SPECIAL, $this->getName() );
+		$thisTitle = SpecialPage::getTitleFor( $this->getName() );
 		$form = "<fieldset>\n<legend>".wfMsgHtml('grouppermissions-searchlabel')."</legend>\n";
 		$form .= "<form method=\"post\" action=\"".$thisTitle->getLocalUrl()."\">\n";
 		$form .= "<label for=\"groupsearch\">".wfMsg('grouppermissions-search')."</label> ";
@@ -123,7 +122,7 @@ class GroupPermissions extends SpecialPage {
 	*/
 	function makeChangeForm() {
 		//Returns the checkbox toggles for the given group.
-		$thisTitle = Title::makeTitle( NS_SPECIAL, $this->getName() );
+		$thisTitle = SpecialPage::getTitleFor( $this->getName() );
 		$form = "<br /><div>\n";
 		$form .= "<form method=\"post\" action=\"".$thisTitle->getLocalUrl()."\" id=\"preferences\">\n";
 		//get the rows of checkboxes, specify that we should get values for them as well
@@ -148,7 +147,7 @@ class GroupPermissions extends SpecialPage {
 		if(in_array($this->target, $wgImplicitGroups)) {
 			return '';
 		}
-		$thisTitle = Title::makeTitle( NS_SPECIAL, $this->getName() );
+		$thisTitle = SpecialPage::getTitleFor( $this->getName() );
 		$form = "<fieldset>\n<legend>".wfMsgHtml('grouppermissions-deletelabel')."</legend>\n";
 		$form .= "<form method=\"post\" action=\"".$thisTitle->getLocalUrl()."\">\n";
 		$form .= "<label for=\"deletecomment\">".wfMsg('grouppermissions-comment')."</label> ";
@@ -166,7 +165,7 @@ class GroupPermissions extends SpecialPage {
 	*/
 	function makeAddForm() {
 		//make a new group and return all toggles
-		$thisTitle = Title::makeTitle( NS_SPECIAL, $this->getName() );
+		$thisTitle = SpecialPage::getTitleFor( $this->getName() );
 		$form = "<br /><div>\n";
 		$form .= "<form method=\"post\" action=\"".$thisTitle->getLocalUrl()."\" id=\"preferences\">\n";
 		//get the rows of checkboxes, specify that we should not get values for them 

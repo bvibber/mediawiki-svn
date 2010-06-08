@@ -72,7 +72,7 @@ class Patroller extends SpecialPage {
 		# the user wants to pause or stop patrolling
 		if( $wgRequest->getCheck( 'wpToken' ) && !$wgRequest->getCheck( 'wpAnother' ) ) {
 			$skin =& $wgUser->getSkin();
-			$self = Title::makeTitle( NS_SPECIAL, 'Patrol' );
+			$self = SpecialPage::getTitleFor( 'Patrol' );
 			$link = $skin->makeKnownLinkObj( $self, wfMsgHtml( 'patrol-resume' ) );
 			$wgOut->addHTML( wfMsgWikiHtml( 'patrol-stopped', $link ) );
 			return;
@@ -132,7 +132,7 @@ class Patroller extends SpecialPage {
 	 */
 	private function showControls( &$edit ) {
 		global $wgUser, $wgOut;
-		$self = Title::makeTitle( NS_SPECIAL, 'Patrol' );
+		$self = SpecialPage::getTitleFor( 'Patrol' );
 		$form = Xml::openElement( 'form', array( 'method' => 'post', 'action' => $self->getLocalUrl() ) );
 		$form .= '<table>';
 		$form .= '<tr><td align="right">' . Xml::submitButton( wfMsg( 'patrol-endorse' ), array( 'name' => 'wpPatrolEndorse' ) ) . '</td><td></td></tr>';

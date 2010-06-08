@@ -68,7 +68,7 @@ class SqlQueryForm {
 		if ( ! $this->query ) { $this->query = 'SELECT ... FROM ... WHERE ...'; }
 		$q = wfMsg( 'sqlquery' );
 		$qb = wfMsg( 'querybtn' );
-		$titleObj = Title::makeTitle( NS_SPECIAL, 'Asksql' );
+		$titleObj = SpecialPage::getTitleFor( 'Asksql' );
 		$action = $titleObj->escapeLocalURL( 'action=submit' );
 
 		$wgOut->addHTML( "<p>

@@ -46,7 +46,7 @@ if (defined('MEDIAWIKI')) {
 		global $wgOut, $wgUser;
 
 		if ($wgUser->getID() == 0) {
-			$title = Title::makeTitle(NS_SPECIAL, "Userlogin");
+			$title = SpecialPage::getTitleFor( 'Userlogin' );
 		} else {
 			$title = Title::makeTitle(NS_USER, $wgUser->getName());
 		}
@@ -64,9 +64,9 @@ if (defined('MEDIAWIKI')) {
 		global $wgOut, $wgUser;
 
 		if ($wgUser->getID() == 0) {
-			$title = Title::makeTitle(NS_SPECIAL, "Userlogin");
+			$title = SpecialPage::getTitleFor( 'Userlogin' );
 		} else {
-			$title = Title::makeTitle(NS_SPECIAL, "Userlogout");
+			$title = SpecialPage::getTitleFor( 'Userlogout' );
 		}
 		$wgOut->redirect($title->getFullURL());
 	}
@@ -74,8 +74,8 @@ if (defined('MEDIAWIKI')) {
 	function wfSpecialMycontributions( $par ) {
 		global $wgOut, $wgUser;
 
-		$title = Title::makeTitle(NS_SPECIAL, "Contributions");
-		$wgOut->redirect($title->getFullURL('target=' . $wgUser->getName()));
+		$title = SpecialPage::getTitleFor( 'Contributions' );
+		$wgOut->redirect( $title->getFullURL( array( 'target', $wgUser->getName() ) ) );
 	}
 
 	function wfSpecialWatchUnwatch( $par ) {

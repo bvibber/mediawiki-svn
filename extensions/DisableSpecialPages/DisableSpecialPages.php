@@ -46,7 +46,7 @@ function efDspHook( &$list ) {
 function efDspMakeTitle( $page ) {
 	$title = Title::newFromText( $page );
 	if( is_object( $title ) ) {
-		return $title->getNamespace() == NS_SPECIAL ? $title : Title::makeTitle( NS_SPECIAL, $title->getText() );
+		return $title->getNamespace() == NS_SPECIAL ? $title : SpecialPage::getTitleFor( $title->getText() );
 	} else {
 		return false;
 	}

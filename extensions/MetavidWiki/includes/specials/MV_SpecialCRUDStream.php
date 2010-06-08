@@ -83,7 +83,7 @@ class MV_SpecialCRUDStream extends SpecialPage {
     	}
     	// output the stream form
     	// output the add stream form
-			$spectitle = Title::makeTitle( NS_SPECIAL, 'Mv_Add_stream' );
+			$spectitle = SpecialPage::getTitleFor( 'Mv_Add_stream' );
 			$docutitle = Title::newFromText( wfMsg( 'mv_add_stream' ), NS_HELP );
 			if ( $this->mode == 'edit' ) {
 				$mvStreamTitle = Title::makeTitle( MV_NS_STREAM,  $this->stream_name );

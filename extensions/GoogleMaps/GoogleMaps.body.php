@@ -415,7 +415,7 @@ JAVASCRIPT;
 		global $wgTitle;
 		$article = isset($pArgv['article']) && $pArgv['article'] ? $pArgv['article'] : $wgTitle->getText();
 		$title = Title::newFromText($article);
-		$specialTitle = Title::makeTitle( NS_SPECIAL, 'GoogleMapsKML' );
+		$specialTitle = SpecialPage::getTitleFor( 'GoogleMapsKML' );
 		return '<a href="'.$specialTitle->escapeLocalUrl('article='.$title->getPartialURL()).'">'.$pContent.'</a>';
 	}
 

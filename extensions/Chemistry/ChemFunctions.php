@@ -84,7 +84,7 @@ function RenderChemForm( $input, $argv ) {
 	}
 
 	if ( $link ) {
-		$title = Title::makeTitleSafe( NS_SPECIAL, 'Chemicalsources' );
+		$title = SpecialPage::getTitleFor( 'Chemicalsources' );
 		$output = "<a href=\"" . $title->getFullUrl() . "?Formula=" . $searchfor .  "\">" . $showthis . "</a>";
 	} elseif ( $wikilink ) {
 		$title = Title::makeTitleSafe( NS_MAIN, $searchfor );

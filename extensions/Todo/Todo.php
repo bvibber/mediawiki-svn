@@ -58,7 +58,7 @@ function todoSetup() {
 function todoAddTab( $skin, &$actions ) {
 	global $wgTitle;
 	if ( $wgTitle->getNamespace() == NS_USER || $wgTitle->getNamespace() == NS_USER_TALK ) {
-		$title = Title::makeTitle( NS_SPECIAL, 'Todo/' . $wgTitle->getText() );
+		$title = SpecialPage::getTitleFor( 'Todo', $wgTitle->getText() );
 		$actions['todo'] = array(
 			'text' => wfMsg( 'todo-tab' ),
 			'href' => $title->getLocalUrl() );
@@ -94,7 +94,7 @@ function wfSpecialTodo( $par = null ) {
 class TodoForm {
 	function TodoForm( $user ) {
 		$this->target = $user;
-		$this->self = Title::makeTitle( NS_SPECIAL, 'Todo/' . $user->getName() );
+		$this->self = SpecialPage::getTitleFor( 'Todo', $user->getName() );
 	}
 
 	function submit( $request ) {
@@ -337,7 +337,7 @@ class TodoItem {
 		global $wgUser;
 		$capField = ucfirst( $field );
 		$id = $this->id;
-		$todo = Title::makeTitle( NS_SPECIAL, 'Todo' );
+		$todo = SpecialPage::getTitleFor( 'Todo' );
 
 		return Xml::openElement( 'div', array(
 				'id' => "mwTodo{$capField}Update$id",
@@ -372,7 +372,7 @@ class TodoItem {
 	function buildQueueForm( $queues ) {
 		global $wgUser;
 		$id = $this->id;
-		$todo = Title::makeTitle( NS_SPECIAL, 'Todo' );
+		$todo = SpecialPage::getTitleFor( 'Todo' );
 		return Xml::openElement( 'form', array(
 				'action' => $todo->getLocalUrl(),
 				'method' => 'post',

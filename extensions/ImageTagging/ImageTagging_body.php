@@ -14,7 +14,6 @@ define('TAGGEDIMGS_PER_PAGE', 12);
  * Add images to the gallery using add(), then render that list to HTML using toHTML().
  */
 class TaggedImages extends SpecialPage {
-
 	var $mQuery, $mImages, $mShowFilename;
 
 	/**
@@ -135,7 +134,7 @@ class TaggedImages extends SpecialPage {
 	function pagerHTML($topBottom) {
 		global $wgOut;
 
-		$titleObj = Title::makeTitle( NS_SPECIAL, 'TaggedImages' );
+		$titleObj = SpecialPage::getTitleFor( 'TaggedImages' );
 
 		$maxPages = 5; // 5 real pagers
 		$numPages = ceil($this->mCount / TAGGEDIMGS_PER_PAGE);

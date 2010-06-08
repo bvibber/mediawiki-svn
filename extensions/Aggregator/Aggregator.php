@@ -96,7 +96,7 @@ class AggregatorOutput {
 }
 
 function wfAggregatorFeedPage( $name, $type ) {
-	return Title::makeTitleSafe( NS_SPECIAL, "Aggregator/$type/$name" );
+	return SpecialPage::getTitleFor( 'Aggregator', "$type/$name" );
 }
 
 

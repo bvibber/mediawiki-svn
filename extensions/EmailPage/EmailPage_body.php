@@ -55,7 +55,7 @@ class SpecialEmailPage extends SpecialPage {
 		if ( isset( $_REQUEST['ea-send'] ) ) return $this->send();
 
 		# Render form
-		$special = Title::makeTitle( NS_SPECIAL, 'EmailPage' );
+		$special = SpecialPage::getTitleFor( 'EmailPage' );
 		$wgOut->addHTML( Xml::element( 'form', array(
 			'class'  => 'EmailPage',
 			'action' => $special->getLocalURL( 'action=submit' ),

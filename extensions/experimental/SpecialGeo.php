@@ -62,7 +62,7 @@ function wfSpecialGeo( $page = '' ) {
 	}
 	
 	$wgOut->addWikiText( wfMsg( "exporttext" ) );
-	$titleObj = Title::makeTitle( NS_SPECIAL, "Export" );
+	$titleObj = SpecialPage::getTitleFor( 'Export' );
 	$action = $titleObj->escapeLocalURL();
 	$wgOut->addHTML( "
 <form method='post' action=\"$action\">
@@ -120,7 +120,7 @@ function wfSpecialGeo( $page = '' ) {
 			if ( '' == $num || count ( explode ( ':' , $num , 3 ) ) < 2 ) {
 				$text .= "GEO $blank$x";
 			} else {
-				$titleObj = Title::makeTitle( NS_SPECIAL, 'Geo' );
+				$titleObj = SpecialPage::getTitleFor( 'Geo' );
 				$text .= '<a href="' .
 				$titleObj->escapeLocalUrl( 'coordinates='.$num ) .
 					"\" class=\"internal\">GEO $geo</a>";

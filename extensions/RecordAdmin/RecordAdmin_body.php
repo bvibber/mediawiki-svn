@@ -76,7 +76,7 @@ class SpecialRecordAdmin extends SpecialPage {
 				if ( $wgRecordAdminEditWithForm ) {
 					$wgHooks['SkinTemplateTabs'][] = $this;
 					$qs = "wpType={$this->type}&wpRecord=" . urlencode( $title->getPrefixedText() );
-					$this->acturl = Title::makeTitle( NS_SPECIAL, 'RecordAdmin' )->getLocalURL( $qs );
+					$this->acturl = SpecialPage::getTitleFor( 'RecordAdmin' )->getLocalURL( $qs );
 				}
 			}
 		}
@@ -125,7 +125,7 @@ class SpecialRecordAdmin extends SpecialPage {
 		$newtype  = $wgRequest->getText( 'wpNewType' );
 		$invert   = $wgRequest->getText( 'wpInvert' );
 		$record   = $this->record = $wgRequest->getText( 'wpRecord' );
-		$title    = $this->title = Title::makeTitle( NS_SPECIAL, 'RecordAdmin' );
+		$title    = $this->title = SpecialPage::getTitleFor( 'RecordAdmin' );
 		$action   = $title->getLocalURL( 'action=submit' );
 		$wpTitle  = trim( $wgRequest->getText( 'wpTitle' ) );
 		$this->template = Title::makeTitle( NS_TEMPLATE, $type );
@@ -459,7 +459,7 @@ class SpecialRecordAdmin extends SpecialPage {
 		if ( count( $records ) < 1 ) return wfMsg( 'recordadmin-nomatch' );
 		if ( $groupby ) $groupby = self::split( $groupby, ',' );
 
-		$special  = Title::makeTitle( NS_SPECIAL, 'RecordAdmin' );
+		$special  = SpecialPage::getTitleFor( 'RecordAdmin' );
 		$type     = $this->type;
 		$sortable = $sortable ? ' sortable' : '';
 		$br       = $sortable ? '<br />' : '';

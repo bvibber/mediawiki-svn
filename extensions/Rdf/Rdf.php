@@ -144,7 +144,7 @@ if (defined('MEDIAWIKI')) {
 				$nt->getNamespace() != NS_SPECIAL)
 			{
 				if ($action == 'view') {
-					$rdft = Title::makeTitle(NS_SPECIAL, "Rdf");
+					$rdft = SpecialPage::getTitleFor( 'Rdf' );
 					$target = $nt->getPrefixedDBkey();
 					$linkdata = array('title' => 'RDF Metadata',
 									  'type' => 'application/rdf+xml',

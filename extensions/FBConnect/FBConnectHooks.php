@@ -15,15 +15,6 @@
  * with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-
-/*
- * Not a valid entry point, skip unless MEDIAWIKI is defined.
- */
-if ( !defined( 'MEDIAWIKI' ) ) {
-	die( 'This file is a MediaWiki extension, it is not a valid entry point' );
-}
-
-
 /**
  * Class FBConnectHooks
  * 
@@ -575,7 +566,7 @@ STYLE;
 		$id = FBConnectDB::getFacebookIDs($user); 
 		if( count($id) > 0 ) {
 			//action="/index.php?title=TechTeam_QA_8_Wiki&amp;action=submit" method="post"
-			$action = Title::makeTitle(NS_SPECIAL,"Connect");
+			$action = SpecialPage::getTitleFor( 'Connect' );
 			$action  = $action->getFullURL("action=disconnect");
 			$html = Xml::openElement("div");
 			$html .= Xml::openElement( "form", array("submit" => "post", "action" => $action) );

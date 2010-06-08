@@ -1,10 +1,8 @@
 <?php
-
 /**
-* class definition for the special page
-*/
+ * class definition for the special page
+ */
 class RemoveUnusedGroups extends SpecialPage {
-	
 	/**
 	* Constructor function
 	* Registers the special page, restricts it to those with the 'userrights' right
@@ -35,7 +33,7 @@ class RemoveUnusedGroups extends SpecialPage {
 			}
 			return;
 		}
-		$thisTitle = Title::makeTitle( NS_SPECIAL, $this->getName() );
+		$thisTitle = SpecialPage::getTitleFor( $this->getName() );
 		$form = "<form method=\"post\" action=\"".$thisTitle->getLocalUrl()."\">\n<input type=\"submit\" name=\"wpConfirm\" value=\"".wfMsg('grouppermissions-rug-confirm')."\" />\n</form>";
 		$wgOut->addHTML($form);
 	}

@@ -1,10 +1,6 @@
 <?php
-// Sanity check - check for MediaWiki environment...
-if( !defined( 'MEDIAWIKI' ) )
-	die( "This is an extension to the MediaWiki package and cannot be run standalone." );
 
 class MultipleUpload extends SpecialPage {
-
 	/**
 	 * Constructor
 	 */
@@ -278,7 +274,7 @@ class MultipleUploadForm extends UploadForm {
 		$licenseshtml = $licenses->getHtml();
 		$ulb = wfMsgHtml( 'uploadbtn' );
 
-		$titleObj = Title::makeTitle( NS_SPECIAL, 'MultipleUpload' );
+		$titleObj = SpecialPage::getTitleFor( 'MultipleUpload' );
 		$action = $titleObj->escapeLocalURL();
 
 		$watchChecked = $wgUser->getOption( 'watchdefault' )
@@ -447,5 +443,4 @@ class MultipleUploadForm extends UploadForm {
 			parent::cleanupTempFile();
 		}
 	}
-
 }

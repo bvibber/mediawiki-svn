@@ -122,12 +122,14 @@ function setupMwRdf() {
 	if ( ! $action == 'view')
 		return true;
 
-	$rdft = Title::makeTitle(NS_SPECIAL, "Rdf");
+	$rdft = SpecialPage::getTitleFor( 'Rdf' );
 	$target = $nt->getPrefixedDBkey();
 
-	$linkdata = array('title' => 'RDF Metadata',
-	'type' => 'application/rdf+xml',
-	'href' => $rdft->getLocalURL("target={$target}" ));
+	$linkdata = array(
+		'title' => 'RDF Metadata',
+		'type' => 'application/rdf+xml',
+		'href' => $rdft->getLocalURL( array( 'target' => $target ) )
+	);
 	$wgOut->addMetadataLink($linkdata);
 	return true;
 }

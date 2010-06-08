@@ -66,7 +66,7 @@ class SortPermissions extends SpecialPage {
 		}
 		$script .= "  var remove = '".wfMsg('grouppermissions-sp-remove')."'\n</script>";
 		$wgOut->addHTML($script);
-		$thisTitle = Title::makeTitle( NS_SPECIAL, $this->getName() );
+		$thisTitle = SpecialPage::getTitleFor( $this->getName() );
 		$mainform = "\n<fieldset>\n<legend>" . wfMsg('grouppermissions-sp-sort') . "</legend>\n";
 		$mainform .= "<form method=\"post\" action=\"".$thisTitle->getLocalUrl()."\">\n";
 		$mainform .= "<table id=\"sorttable\">";

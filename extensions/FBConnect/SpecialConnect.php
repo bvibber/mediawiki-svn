@@ -15,15 +15,6 @@
  * with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-
-/*
- * Not a valid entry point, skip unless MEDIAWIKI is defined.
- */
-if ( !defined( 'MEDIAWIKI' ) ) {
-	die( 'This file is a MediaWiki extension, it is not a valid entry point' );
-}
-
-
 /**
  * Class SpecialConnect
  * 
@@ -701,9 +692,10 @@ class SpecialConnect extends SpecialPage {
 			}
 		}
 		
-		$title = Title::makeTitle( NS_SPECIAL, "Preferences" );
+		$title = SpecialPage::getTitleFor( 'Preferences' );
 		$url = $title->getFullUrl("#prefsection-10");
 		$wgOut->redirect($url);
+
 		return true;
 	}
 	

@@ -158,7 +158,7 @@
 			$mvd = MV_Index::getMVDbyId( $this->mvd_id );
 			$stream_name = MV_Stream::getStreamNameFromId( $mvd->stream_id );
 
-			$lTitle = Title::makeTitle( NS_SPECIAL, 'Userlogin' );
+			$lTitle = SpecialPage::getTitleFor( 'Userlogin' );
 			$loginLink = $lTitle->getFullURL('returnto=' . MWNamespace::getCanonicalName( MV_NS_STREAM ) . ':' . $stream_name );
 
 			$wgOut->addHTML( wfMsg( 'mv_user_cant_edit', $loginLink, $cancel ) );

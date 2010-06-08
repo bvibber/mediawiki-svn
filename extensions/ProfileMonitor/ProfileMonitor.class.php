@@ -41,7 +41,7 @@ class ProfileMonitor extends SpecialPage {
 	}
 
 	private function makeSearchForm( $process, $wild = false ) {
-		$self = Title::makeTitle( NS_SPECIAL, 'Profiling' );
+		$self = SpecialPage::getTitleFor( 'Profiling' );
 		$html  = Xml::openElement( 'form', array( 'method' => 'post', 'action' => $self->getLocalUrl() ) );
 		$html .= '<table><tr><td>' . wfMsgHtml( 'profiling-process' ) . '</td><td>';
 		$html .= Xml::input( 'process', 50, $process ) . '</td></tr><td align="right">' . Xml::check( 'wildcard', $wild ) . '</td>';

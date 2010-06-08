@@ -158,7 +158,7 @@ class SpecialOpenIDServer extends SpecialOpenID {
 	# for some requests
 
 	function Url() {
-		$nt = Title::makeTitleSafe( NS_SPECIAL, 'OpenIDServer' );
+		$nt = SpecialPage::getTitleFor( 'OpenIDServer' );
 		if ( isset( $nt ) ) {
 			return $nt->getFullURL();
 		} else {
@@ -172,9 +172,11 @@ class SpecialOpenIDServer extends SpecialOpenID {
 		global $wgOpenIDServerStorePath,
 		  $wgOpenIDServerStoreType;
 
-		$store = $this->getOpenIDStore( $wgOpenIDServerStoreType,
-									   'server',
-									   array( 'path' => $wgOpenIDServerStorePath ) );
+		$store = $this->getOpenIDStore(
+			$wgOpenIDServerStoreType,
+			'server',
+			array( 'path' => $wgOpenIDServerStorePath )
+		);
 
 		return new Auth_OpenID_Server( $store, $this->serverUrl() );
 	}

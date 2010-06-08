@@ -285,7 +285,7 @@ function wfSpecialFilelist () {
 		 * Returns the form for keyword matching
 		*/
 		function matchform ( &$params ) {
-			$titleObj = Title::makeTitle( NS_SPECIAL, 'Filelist' );
+			$titleObj = SpecialPage::getTitleFor( 'Filelist' );
 			$action = $titleObj->escapeLocalURL();
 			$sub = wfMsg( 'ilsubmit' );
 			$p2 = $this->convertURLparams ( $params ) ;
@@ -304,7 +304,7 @@ function wfSpecialFilelist () {
 		*/
 		function limits ( &$params ) {
 			global $wgLang ;
-			$titleObj = Title::makeTitle( NS_SPECIAL, 'Filelist' );
+			$titleObj = SpecialPage::getTitleFor( 'Filelist' );
 			$ret = array () ;
 
 			if ( $params['gallery'] ) {
@@ -332,7 +332,7 @@ function wfSpecialFilelist () {
 		function options ( &$params ) {
 			global $wgLang;
 
-			$titleObj = Title::makeTitle( NS_SPECIAL, 'Filelist' );
+			$titleObj = SpecialPage::getTitleFor( 'Filelist' );
 			$ret = array () ;
 
 			$p2 = $this->convertURLparams ( $params ) ;
@@ -354,7 +354,7 @@ function wfSpecialFilelist () {
 		function prevnext ( &$params ) {
 			global $wgLang ;
 			$out = "" ;
-			$titleObj = Title::makeTitle( NS_SPECIAL, 'Filelist' );
+			$titleObj = SpecialPage::getTitleFor( 'Filelist' );
 
 			$prevLink = wfMsg( 'prevn', $wgLang->formatNum( $params['limit'] ) );
 			if( $params['therearebefore'] ) {

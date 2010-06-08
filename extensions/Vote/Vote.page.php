@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Special page class for the Vote extension
  *
@@ -11,7 +10,6 @@
  */
 
 class SpecialVote extends SpecialPage {
-
 	private $user;
 
 	/**
@@ -60,7 +58,7 @@ class SpecialVote extends SpecialPage {
 		$token = $wgRequest->getText( 'token' );
 		if ( $wgUser->isAllowed( 'voteadmin' ) ) {
 			$skin = $wgUser->getSkin();
-			$rtitle = Title::makeTitle( NS_SPECIAL, $self->getText() . '/results' );
+			$rtitle = SpecialPage::getTitleFor( $self->getText(), 'results' );
 			$rlink = $skin->makeKnownLinkObj( $rtitle, wfMsgHtml( 'vote-view-results' ) );
 			$wgOut->addHTML( '<p class="mw-voteresultslink">' . $rlink . '</p>' );
 		}

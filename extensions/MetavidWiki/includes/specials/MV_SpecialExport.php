@@ -286,7 +286,7 @@ class MV_SpecialExport {
 	<?	while ( $row = $dbr->fetchObject( $this->mvd_type_res ) ) {
 		// output cmml header:
 		// @@todo lookup language for layer key patterns
-		$sTitle = Title::makeTitle( NS_SPECIAL, 'MvExportStream' );
+		$sTitle = SpecialPage::getTitleFor( 'MvExportStream' );
 		$query = 'stream_name=' . $this->stream_name . '&t=' . $this->req_time . '&feed_format=cmml&tracks=' . strtolower( $row->mvd_type );
 		$clink = $sTitle->getFullURL( $query );
 

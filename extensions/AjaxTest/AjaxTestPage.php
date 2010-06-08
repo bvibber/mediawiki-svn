@@ -45,7 +45,7 @@ class AjaxTestPage extends SpecialPage {
 	 * Input form for entering a category
 	 */
 	function makeInputForm() {
-		$thisTitle = Title::makeTitle( NS_SPECIAL, $this->getName() );
+		$thisTitle = SpecialPage::getTitleFor( $this->getName() );
 		$form = '';
 		$form .= Xml::openElement( 'form', array( 'name' => 'ajaxtest', 'method' => 'get', 'action' => $thisTitle->getLocalUrl() ) );
 		$form .= Xml::element( 'input', array( 'type' => 'text', 'name' => 'ajaxtest_text', 'id' => 'ajaxtest_text', 'value' => '', 'size' => '64' ) ) . ' ';
