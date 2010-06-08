@@ -15,7 +15,7 @@ class ClickTrackingHooks {
 
 	/* 3 tables for click tracking */
 	public static function schema() {
-		global $wgExtNewTables, $wgExtNewIndexes;
+		global $wgExtNewTables, $wgExtNewIndexes, $wgExtNewFields;
 
 		$wgExtNewTables[] = array(
 			'click_tracking',
@@ -30,6 +30,11 @@ class ClickTrackingHooks {
 		$wgExtNewIndexes[] = array(
 			'click_tracking', 'click_tracking_action_time',
 			dirname( __FILE__ ) . '/patch-action_time.sql'
+		);
+		
+		$wgExtNewFields[] = array(
+			'click_tracking', 'additional_info',
+			dirname( __FILE__ ) . '/patch-additional_info.sql'
 		);
 
 		return true;
