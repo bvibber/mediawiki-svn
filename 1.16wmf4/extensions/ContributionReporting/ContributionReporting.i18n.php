@@ -92,8 +92,6 @@ $messages['en'] = array(
 	'fundraiserstats-tab-averages' => 'Averages (USD)',
 	'fundraiserstats-tab-maximums' => 'Maximums (USD)',
 	'fundraiserstats-tab-ytd' => 'Year-to-date (USD)',
-
-	'specialpages-group-contribution' => 'Contributions/Fundraiser',
 );
 
 /** Message documentation (Message documentation)
@@ -106,6 +104,7 @@ $messages['en'] = array(
  * @author Malafaya
  * @author Purodha
  * @author Siebrand
+ * @author Umherirrender
  */
 $messages['qqq'] = array(
 	'contributionreporting-desc' => 'Description for the ContributionReporting Extension. Shown in [[Special:Version]]. Do not translate or change tag names.',
@@ -113,6 +112,7 @@ $messages['qqq'] = array(
 	'contrib-hist-name' => '{{Identical|Name}}',
 	'contrib-hist-date' => '{{Identical|Date}}',
 	'contrib-hist-amount' => '{{Identical|Amount}}',
+	'contribstats-desc' => '{{desc}}',
 	'contribstats-currency-range-totals' => '* $1 is a start date
 * $2 is an end date',
 	'contribstats-currency' => '{{Identical|Currency}}',
@@ -191,7 +191,6 @@ $messages['af'] = array(
 	'fundraiserstats-tab-averages' => 'Gemiddeldes (in USD)',
 	'fundraiserstats-tab-maximums' => 'Maksimums (in USD)',
 	'fundraiserstats-tab-ytd' => 'Jaar-tot-datum (USD)',
-	'specialpages-group-contribution' => 'Skenkings/Fondsinsameling',
 );
 
 /** Amharic (አማርኛ)
@@ -234,6 +233,7 @@ $messages['an'] = array(
 	'contribstats-max' => 'Masima (USD)',
 	'contribstats-percentage-ytd' => 'Porzentache (YTD)',
 	'contribstats-total-ytd' => 'Total (YTD)',
+	'contribstats-template' => 'Plantilla',
 	'fundraiserstatistics' => "Estatisticas d'a replega de fundos",
 	'fundraiserstats-date' => 'Calendata',
 	'fundraiserstats-day' => 'Día $1 de $2',
@@ -320,7 +320,6 @@ $messages['ar'] = array(
 	'fundraiserstats-tab-averages' => 'المتوسطات (USD)',
 	'fundraiserstats-tab-maximums' => 'القيم القصوى (USD)',
 	'fundraiserstats-tab-ytd' => 'العام حتى الآن (USD)',
-	'specialpages-group-contribution' => 'المساهمات/جمع التبرعات',
 );
 
 /** Aramaic (ܐܪܡܝܐ)
@@ -385,7 +384,6 @@ $messages['arz'] = array(
 	'fundraiserstats-tab-contributions' => 'عدد المساهمات',
 	'fundraiserstats-tab-averages' => 'متوسطات',
 	'fundraiserstats-tab-maximums' => 'الحدود القصوى (بالدولار الامريكاني)',
-	'specialpages-group-contribution' => 'المساهمين/جامعين التبرعات',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
@@ -460,7 +458,6 @@ $messages['be-tarask'] = array(
 	'fundraiserstats-tab-averages' => 'Сярэдні (USD)',
 	'fundraiserstats-tab-maximums' => 'Максымальныя (USD)',
 	'fundraiserstats-tab-ytd' => 'На цяперашні год (USD)',
-	'specialpages-group-contribution' => 'Ахвяраваньні/Збор сродкаў',
 );
 
 /** Bulgarian (Български)
@@ -551,6 +548,7 @@ $messages['bn'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
+	'contributionreporting-desc' => 'Rentañ-kont war-eeun diwar-benn dastumadeg donezonoù Wikimedia',
 	'contributiontotal' => 'Hollad an degasadennoù',
 	'contributionhistory' => 'Istor an degasadennoù',
 	'contrib-hist-header' => 'Kemanadennoù ar roerien, war-eeun dre ar bed a-bezh',
@@ -561,6 +559,7 @@ $messages['br'] = array(
 	'contrib-hist-previous' => "Roadennoù neveshoc'h",
 	'contrib-hist-anonymous' => 'Dizanv',
 	'contributionstatistics' => 'Stadegoù an degasadennoù',
+	'contribstats-desc' => "Diskouez stadegoù an degasadennoù bet graet d'ar Wikimedia Foundation",
 	'contribstats-daily-totals' => '{{PLURAL:$1|Hollad evit hiziv|Hollad dre zevez evit ar $1 devez ziwezhañ}}',
 	'contribstats-monthly-totals' => '{{PLURAL:$1|Hollad evit ar miz-mañ|Hollad dre miz evit ar $1 miz ziwezhañ}}',
 	'contribstats-month-range-totals' => '{{PLURAL:$1|Hollad evit $1 miz|Holladoù miziek evit $1 miz}}',
@@ -614,7 +613,6 @@ $messages['br'] = array(
 	'fundraiserstats-tab-averages' => 'Keidennoù (USD)',
 	'fundraiserstats-tab-maximums' => 'Maximumoù (dollarioù US)',
 	'fundraiserstats-tab-ytd' => 'Er bloavezh (USD)',
-	'specialpages-group-contribution' => 'Degasadenn/dastum fontoù',
 );
 
 /** Bosnian (Bosanski)
@@ -687,7 +685,6 @@ $messages['bs'] = array(
 	'fundraiserstats-tab-averages' => 'Prosjek (USD)',
 	'fundraiserstats-tab-maximums' => 'Najviše (USD)',
 	'fundraiserstats-tab-ytd' => 'Od početka godine (USD)',
-	'specialpages-group-contribution' => 'Doprinosi/donacije',
 );
 
 /** Catalan (Català)
@@ -819,7 +816,6 @@ $messages['cs'] = array(
 	'fundraiserstats-tab-averages' => 'Průměry (USD)',
 	'fundraiserstats-tab-maximums' => 'Maxima (USD)',
 	'fundraiserstats-tab-ytd' => 'Od začátku roku (USD)',
-	'specialpages-group-contribution' => 'Příspěvky/financování',
 );
 
 /** Church Slavic (Словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)
@@ -879,7 +875,6 @@ $messages['da'] = array(
 	'fundraiserstats-tab-contributions' => 'Antal bidrag',
 	'fundraiserstats-tab-averages' => 'Gennemsnit (USD)',
 	'fundraiserstats-tab-maximums' => 'Maksimum (USD)',
-	'specialpages-group-contribution' => 'Bidrag/Indsamling',
 );
 
 /** German (Deutsch)
@@ -958,7 +953,6 @@ $messages['de'] = array(
 	'fundraiserstats-tab-averages' => 'Durchschnittswerte (USD)',
 	'fundraiserstats-tab-maximums' => 'Maxima (USD)',
 	'fundraiserstats-tab-ytd' => 'Aufgelaufen im Jahr (USD)',
-	'specialpages-group-contribution' => 'Spenden/Fundraiser',
 );
 
 /** Zazaki (Zazaki)
@@ -1032,7 +1026,6 @@ $messages['diq'] = array(
 	'fundraiserstats-tab-averages' => 'Orta (USD)',
 	'fundraiserstats-tab-maximums' => 'Tewr zaf (USD)',
 	'fundraiserstats-tab-ytd' => 'Serre be hetan nıka (USD)',
-	'specialpages-group-contribution' => 'Destek dayoğan/Pere berz kerdoğ',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -1105,7 +1098,6 @@ $messages['dsb'] = array(
 	'fundraiserstats-tab-averages' => 'Pśerězki (USD)',
 	'fundraiserstats-tab-maximums' => 'Maksimumy (USD)',
 	'fundraiserstats-tab-ytd' => 'Doněnta w lěśe (USD)',
-	'specialpages-group-contribution' => 'Dary/Pósćiwańska akcija',
 );
 
 /** Greek (Ελληνικά)
@@ -1176,7 +1168,6 @@ $messages['el'] = array(
 	'fundraiserstats-tab-contributions' => 'Αριθμός συνεισφορών',
 	'fundraiserstats-tab-averages' => 'Μέσοι όροι (USD)',
 	'fundraiserstats-tab-maximums' => 'Μέγιστα (USD)',
-	'specialpages-group-contribution' => 'Συνεισφορές/Έρανος',
 );
 
 /** Esperanto (Esperanto)
@@ -1250,7 +1241,6 @@ $messages['eo'] = array(
 	'fundraiserstats-tab-averages' => 'Averaĝoj (USD)',
 	'fundraiserstats-tab-maximums' => 'Maksimumoj (USD)',
 	'fundraiserstats-tab-ytd' => 'Jaro ĝis nun (usonaj dolaroj)',
-	'specialpages-group-contribution' => 'Kontribuoj/Monkolekto',
 );
 
 /** Spanish (Español)
@@ -1329,7 +1319,6 @@ $messages['es'] = array(
 	'fundraiserstats-tab-averages' => 'Promedios (USD)',
 	'fundraiserstats-tab-maximums' => 'Máximos (USD)',
 	'fundraiserstats-tab-ytd' => 'Año hasta la fecha (USD)',
-	'specialpages-group-contribution' => 'Contribuciones/Recaudador de fondos',
 );
 
 /** Estonian (Eesti)
@@ -1395,11 +1384,11 @@ $messages['et'] = array(
 	'fundraiserstats-tab-averages' => 'Keskmised (USD)',
 	'fundraiserstats-tab-maximums' => 'Maksimumid (USD)',
 	'fundraiserstats-tab-ytd' => 'Sel aastal (USD)',
-	'specialpages-group-contribution' => 'Annetamine / korjandused',
 );
 
 /** Basque (Euskara)
  * @author An13sa
+ * @author Joxemai
  */
 $messages['eu'] = array(
 	'contributiontotal' => 'Dohaintzak guztira',
@@ -1427,7 +1416,9 @@ $messages['eu'] = array(
 	'contribstats-week' => 'Astea',
 	'contribstats-clicks' => 'Klikak',
 	'contribstats-donations' => 'Dohaintzak',
+	'contribstats-conversion' => 'Bihurketa-erlazioa (%)',
 	'contribstats-template' => 'Txantiloia',
+	'contribstats-nodata' => 'Daturik ez da sartu',
 	'contribstats-average' => 'Bataz bestekoa',
 	'fundraiserstats-date' => 'Data',
 	'fundraiserstats-contributions' => 'Ekarpenak',
@@ -1490,7 +1481,6 @@ $messages['ext'] = array(
 	'fundraiserstats-tab-contributions' => 'Númeru de contribucionis',
 	'fundraiserstats-tab-averages' => 'Meyas (USD)',
 	'fundraiserstats-tab-maximums' => 'Máissimus (USD)',
-	'specialpages-group-contribution' => 'Contribucionis/Fundraiser',
 );
 
 /** Persian (فارسی)
@@ -1542,7 +1532,6 @@ $messages['fa'] = array(
 	'fundraiserstats-tab-contributions' => 'تعداد مشارکت‌کنندگان',
 	'fundraiserstats-tab-averages' => 'میانگین‌ها (دلار آمریکا)',
 	'fundraiserstats-tab-maximums' => 'بیشینه‌ها (دلار آمریکا)',
-	'specialpages-group-contribution' => 'مشارکت‌ها/جمع‌آوری کمک',
 );
 
 /** Finnish (Suomi)
@@ -1616,7 +1605,6 @@ $messages['fi'] = array(
 	'fundraiserstats-tab-contributions' => 'Lahjoitusten määrä',
 	'fundraiserstats-tab-averages' => 'Keskiarvot (USD)',
 	'fundraiserstats-tab-maximums' => 'Maksimit (USD)',
-	'specialpages-group-contribution' => 'Lahjoituksia/Rahankeräys',
 );
 
 /** French (Français)
@@ -1697,7 +1685,6 @@ $messages['fr'] = array(
 	'fundraiserstats-tab-averages' => 'Moyennes (dollars US)',
 	'fundraiserstats-tab-maximums' => 'Maximums (dollars US)',
 	'fundraiserstats-tab-ytd' => 'Année en cours (dollars US)',
-	'specialpages-group-contribution' => 'Contributions / levée de fonds',
 );
 
 /** Franco-Provençal (Arpetan)
@@ -1770,7 +1757,6 @@ $messages['frp'] = array(
 	'fundraiserstats-tab-averages' => 'Moyenes (dolars US)',
 	'fundraiserstats-tab-maximums' => 'Més (dolars US)',
 	'fundraiserstats-tab-ytd' => 'An en cors (dolars US)',
-	'specialpages-group-contribution' => 'Contribucions / levâ de fonds',
 );
 
 /** Friulian (Furlan)
@@ -1853,7 +1839,6 @@ $messages['gl'] = array(
 	'fundraiserstats-tab-averages' => 'Medias (dólar estadounidense)',
 	'fundraiserstats-tab-maximums' => 'Máximas (dólar estadounidense)',
 	'fundraiserstats-tab-ytd' => 'Total anual ata o de agora (USD)',
-	'specialpages-group-contribution' => 'Contribucións/Recadación',
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
@@ -1947,7 +1932,6 @@ $messages['gsw'] = array(
 	'fundraiserstats-tab-averages' => 'Durchschnittswärt (USD)',
 	'fundraiserstats-tab-maximums' => 'Maxima (USD)',
 	'fundraiserstats-tab-ytd' => 'Kaländerjohr (USD)',
-	'specialpages-group-contribution' => 'Spände/Spändeufruef',
 );
 
 /** Hebrew (עברית)
@@ -2017,7 +2001,6 @@ $messages['he'] = array(
 	'fundraiserstats-tab-contributions' => 'מספר התורמים',
 	'fundraiserstats-tab-averages' => 'ממוצע (USD)',
 	'fundraiserstats-tab-maximums' => 'מקסימום (USD)',
-	'specialpages-group-contribution' => 'תרומות/התרמה',
 );
 
 /** Croatian (Hrvatski)
@@ -2077,7 +2060,6 @@ $messages['hr'] = array(
 	'fundraiserstats-tab-contributions' => 'Broj doprinosa',
 	'fundraiserstats-tab-averages' => 'Prosjeci (USD)',
 	'fundraiserstats-tab-maximums' => 'Maksimumi (USD)',
-	'specialpages-group-contribution' => 'Doprinosi/Prikupljanje',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -2152,7 +2134,6 @@ $messages['hsb'] = array(
 	'fundraiserstats-tab-averages' => 'Přerězki (USD)',
 	'fundraiserstats-tab-maximums' => 'Maksimumy (USD)',
 	'fundraiserstats-tab-ytd' => 'Dotal w lěće (USD)',
-	'specialpages-group-contribution' => 'Dary/Darjenska akcija',
 );
 
 /** Hungarian (Magyar)
@@ -2200,6 +2181,7 @@ $messages['hu'] = array(
 	'contribstats-week' => 'Hét',
 	'contribstats-weekly-totals' => '{{PLURAL:$1|Heti összesítés|Heti összesítések az elmúlt $1 hetet is beleértve}}',
 	'contribstats-payment-type' => 'Fizetés típusa',
+	'contribstats-payment-type-hits' => 'Fizetési módok gyakorisága',
 	'contribstats-clicks' => 'Kattintások',
 	'contribstats-donations' => 'Adományok',
 	'contribstats-conversion' => 'Konverziós ráta (%)',
@@ -2208,6 +2190,8 @@ $messages['hu'] = array(
 	'contribstats-landingpage' => 'Érkezési oldal',
 	'contribstats-donatepage' => 'Adományoldal',
 	'contribstats-average' => 'Átlag',
+	'contribstats-paypal-donations' => 'PayPal adományok',
+	'contribstats-credit-card' => 'Hitelkártya',
 	'fundraiserstatistics' => 'Adományozási statisztikák',
 	'fundraiserstats-date' => 'Dátum',
 	'fundraiserstats-day' => '$2, $1. nap',
@@ -2220,7 +2204,6 @@ $messages['hu'] = array(
 	'fundraiserstats-tab-contributions' => 'Közreműködések száma',
 	'fundraiserstats-tab-averages' => 'Átlagosan (USD)',
 	'fundraiserstats-tab-maximums' => 'Maximum (USD)',
-	'specialpages-group-contribution' => 'Adományok/Adománygyűjtés',
 );
 
 /** Interlingua (Interlingua)
@@ -2293,7 +2276,6 @@ $messages['ia'] = array(
 	'fundraiserstats-tab-averages' => 'Medias (USD)',
 	'fundraiserstats-tab-maximums' => 'Maximos (USD)',
 	'fundraiserstats-tab-ytd' => 'Anno in curso (USD)',
-	'specialpages-group-contribution' => 'Contributiones/Collecta de fundos',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -2369,7 +2351,6 @@ $messages['id'] = array(
 	'fundraiserstats-tab-averages' => 'Rata-rata (USD)',
 	'fundraiserstats-tab-maximums' => 'Tertinggi (USD)',
 	'fundraiserstats-tab-ytd' => 'Tahun berjalan (USD)',
-	'specialpages-group-contribution' => 'Kontribusi/Penggalang dana',
 );
 
 /** Ido (Ido)
@@ -2393,6 +2374,7 @@ $messages['io'] = array(
 );
 
 /** Italian (Italiano)
+ * @author Beta16
  * @author BrokenArrow
  * @author Darth Kule
  */
@@ -2431,25 +2413,32 @@ $messages['it'] = array(
 	'contribstats-value-from' => 'Fra $1 - $2',
 	'contribstats-value-over' => 'Più di $1',
 	'contributiontrackingstatistics' => 'Monitoraggio statistiche dei contributi',
-	'contribstats-day-totals' => 'Totale per oggi',
+	'contribstats-day-totals' => 'Totale per giorno',
 	'contribstats-week' => 'Settimana',
 	'contribstats-weekly-totals' => '{{PLURAL:$1|Totale per questa settimana|Totali settimanali per le ultime $1 settimane}}',
+	'contribstats-payment-type' => 'Tipo di pagamento',
+	'contribstats-banner' => 'Banner',
 	'contribstats-clicks' => 'Clic',
 	'contribstats-donations' => 'Donazioni',
 	'contribstats-conversion' => 'Tasso di conversione (%)',
 	'contribstats-template' => 'Template',
+	'contribstats-nodata' => 'Nessun dato fornito',
+	'contribstats-donatepage' => 'Pagina di donazione',
+	'contribstats-average' => 'Media',
+	'contribstats-paypal-donations' => 'PayPal',
+	'contribstats-credit-card' => 'Carta di credito',
 	'fundraiserstatistics' => 'Statistiche della raccolta fondi',
 	'fundraiserstats-date' => 'Data',
 	'fundraiserstats-day' => 'Giorno $1 di $2',
 	'fundraiserstats-contributions' => 'Contributi',
 	'fundraiserstats-total' => 'Totale (USD)',
 	'fundraiserstats-avg' => 'Media (USD)',
+	'fundraiserstats-ytd' => 'Totale cumulativo (USD)',
 	'fundraiserstats-max' => 'Massimo (USD)',
 	'fundraiserstats-tab-totals' => 'Totali (USD)',
 	'fundraiserstats-tab-contributions' => 'Numero di contributi',
 	'fundraiserstats-tab-averages' => 'Medie (USD)',
 	'fundraiserstats-tab-maximums' => 'Massimi (USD)',
-	'specialpages-group-contribution' => 'Donazioni/Raccolta fondi',
 );
 
 /** Japanese (日本語)
@@ -2522,10 +2511,10 @@ $messages['ja'] = array(
 	'fundraiserstats-tab-averages' => '平均 (米ドル)',
 	'fundraiserstats-tab-maximums' => '最大 (米ドル)',
 	'fundraiserstats-tab-ytd' => '年度累計 (米ドル)',
-	'specialpages-group-contribution' => '寄付/資金調達',
 );
 
 /** Javanese (Basa Jawa)
+ * @author Meursault2004
  * @author Pras
  */
 $messages['jv'] = array(
@@ -2558,6 +2547,8 @@ $messages['jv'] = array(
 	'contribstats-max' => 'Paling akèh (USD)',
 	'contribstats-percentage-ytd' => 'Persèntase (YTD)',
 	'contribstats-total-ytd' => 'Gunggung (YTD)',
+	'contribstats-week' => 'Minggu',
+	'contribstats-donations' => 'Sumbangan',
 	'fundraiserstatistics' => 'Statistik pangumpul dana',
 	'fundraiserstats-date' => 'Tanggal',
 	'fundraiserstats-day' => 'Dina ka-$1 saka $2 dina',
@@ -2579,21 +2570,33 @@ $messages['ka'] = array(
 	'contributionhistory' => 'წვლილის ისტორია',
 	'contrib-hist-name' => 'სახელი',
 	'contrib-hist-date' => 'დრო და თარიღი',
+	'contrib-hist-amount' => 'თანხა',
 	'contrib-hist-anonymous' => 'ანონიმური',
+	'contributionstatistics' => 'წვლილის სტატისტიკა',
 	'contribstats-day' => 'დღე',
 	'contribstats-month' => 'თვე',
+	'contribstats-currency' => 'ვალუტა',
+	'contribstats-amount' => 'თანხა (აშშ დოლარი)',
 	'contribstats-contributions' => 'წვლილი',
 	'contribstats-total' => 'ტოტალური (USD)',
 	'contribstats-avg' => 'საშუალო (USD)',
 	'contribstats-max' => 'მაქსიმუმი (USD)',
+	'contribstats-total-ytd' => 'სულ (YTD)',
+	'contribstats-value-under' => '$ 1-ის ქვეშ',
+	'contribstats-value-from' => '$1 - $2-დან',
+	'contribstats-value-over' => '$1-ზე',
+	'contribstats-week' => 'კვირა',
 	'contribstats-banner' => 'ლოზუნგი',
 	'contribstats-donations' => 'შეწირულობები',
 	'contribstats-conversion' => 'კონვერსიის მაჩვენებელი (%)',
 	'contribstats-template' => 'თარგი',
+	'contribstats-donatepage' => 'შემოწირულობის გვერდი',
 	'contribstats-average' => 'საშუალო',
 	'contribstats-credit-card' => 'საკრედიტო ბარათი',
 	'fundraiserstats-date' => 'თარიღი',
 	'fundraiserstats-contributions' => 'წვლილი',
+	'fundraiserstats-max' => 'მაქსიმუმი (USD)',
+	'fundraiserstats-tab-totals' => 'სულ (USD)',
 	'fundraiserstats-tab-contributions' => 'წვლილის ნომერი',
 	'fundraiserstats-tab-maximums' => 'მაქსიმუმი (USD)',
 );
@@ -2646,6 +2649,8 @@ $messages['km'] = array(
 $messages['kn'] = array(
 	'contrib-hist-name' => 'ಹೆಸರು',
 	'contrib-hist-date' => 'ಸಮಯ ಮತ್ತು ದಿನಾಂಕ',
+	'contrib-hist-anonymous' => 'ಅನಾಮಧೇಯ',
+	'contribstats-month' => 'ತಿಂಗಳು',
 	'fundraiserstats-date' => 'ದಿನಾಂಕ',
 );
 
@@ -2668,11 +2673,18 @@ $messages['ko'] = array(
 	'contrib-hist-anonymous' => '익명',
 	'contributionstatistics' => '기부 통계',
 	'contribstats-desc' => '위키미디어 재단으로의 기부의 통계를 보여 줌',
-	'contribstats-day' => '일',
+	'contribstats-daily-totals' => '{{PLURAL:$1|오늘 기부 총합|과거 $1일간 기부 총합}}',
+	'contribstats-monthly-totals' => '{{PLURAL:$1|이달의 기부 총합|과거 $1개월의 월별 기부 총합}}',
+	'contribstats-month-range-totals' => '{{PLURAL:$1|$1개월간의 총합|$1개월간의 월별 총합}}',
+	'contribstats-currency-range-totals' => '통화별 총합 ($1에서 $2까지)',
+	'contribstats-contribution-range-breakdown' => '액수별 기부 내역 ($1에서 $2까지)',
+	'contribstats-currency-totals' => '회계연도 $1년의 통화별 기부 총액',
+	'contribstats-contribution-breakdown' => '회계연도 $1년의 액수별 기부 내역',
+	'contribstats-day' => '날짜',
 	'contribstats-month' => '월',
 	'contribstats-currency' => '화폐',
 	'contribstats-amount' => '금액 (USD)',
-	'contribstats-contributions' => '기부',
+	'contribstats-contributions' => '기부 횟수',
 	'contribstats-total' => '합계 (USD)',
 	'contribstats-avg' => '평균 (USD)',
 	'contribstats-max' => '최대 (USD)',
@@ -2682,20 +2694,42 @@ $messages['ko'] = array(
 	'contribstats-value-under' => '$1 미만',
 	'contribstats-value-from' => '$1 - $2 사이',
 	'contribstats-value-over' => '$1 초과',
+	'contributiontrackingstatistics' => '기부 추적 통계',
+	'contribstats-day-totals' => '일간 소계',
+	'contribstats-week' => '주',
+	'contribstats-weekly-totals' => '{{PLURAL:$1|이번 주의 총합|과거 $1주일간의 총합}}',
+	'contribstats-payment-type' => '지불 방식',
+	'contribstats-banner' => '배너',
+	'contribstats-payment-type-hits' => '지불 유형 선택 수',
+	'contribstats-clicks' => '클릭 횟수',
+	'contribstats-donations' => '기부 횟수',
+	'contribstats-conversion' => '전환율 (%)',
+	'contribstats-template' => '틀',
+	'contribstats-nodata' => '데이터가 없습니다.',
+	'contribstats-landingpage' => '방문한 페이지',
+	'contribstats-donatepage' => '기부 페이지',
+	'contribstats-average' => '평균',
+	'contribstats-imperfect-data' => '세션 추적 없이 기부를 추적하는 것은 한계가 있기 때문에 이 데이터는 정확하지 않을 수 있습니다.',
+	'contribstats-paypal-donations' => 'PayPal 기부',
+	'contribstats-credit-card' => '신용 카드',
+	'contribstats-fraud-note' => '일부 사기성 기부도 있습니다.',
+	'contribstats-unaudited' => '이는 회계 감사받지 않은 총합입니다.',
 	'fundraiserstatistics' => '모금 활동 통계',
 	'fundraiserstats-date' => '날짜',
 	'fundraiserstats-day' => '$2의 $1일째',
 	'fundraiserstats-contributions' => '기부 횟수',
 	'fundraiserstats-total' => '합계 (USD)',
 	'fundraiserstats-avg' => '평균 (USD)',
+	'fundraiserstats-ytd' => '누계 (USD)',
 	'fundraiserstats-max' => '최대 (USD)',
 	'fundraiserstats-tab-totals' => '합계 (USD)',
 	'fundraiserstats-tab-contributions' => '기여 횟수',
 	'fundraiserstats-tab-averages' => '평균 (USD)',
 	'fundraiserstats-tab-maximums' => '최댓값 (USD)',
+	'fundraiserstats-tab-ytd' => '연간 누계 (USD)',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -2756,7 +2790,6 @@ $messages['ksh'] = array(
 	'fundraiserstats-tab-contributions' => 'Aanzahl Beidrääsch',
 	'fundraiserstats-tab-averages' => 'De Schnette (en Dollar us de USA)',
 	'fundraiserstats-tab-maximums' => 'de Deckste Spende (en Dollar us de USA)',
-	'specialpages-group-contribution' => 'Spendebeidrääsch',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -2829,7 +2862,6 @@ $messages['lb'] = array(
 	'fundraiserstats-tab-averages' => 'Duerchschnëtt (USD)',
 	'fundraiserstats-tab-maximums' => 'Maximumen (USD)',
 	'fundraiserstats-tab-ytd' => 'Joer-bis-Datum (USD)',
-	'specialpages-group-contribution' => 'Donen/Quêteur',
 );
 
 /** Limburgish (Limburgs)
@@ -2881,7 +2913,6 @@ $messages['li'] = array(
 	'fundraiserstats-tab-contributions' => 'Aantal gifter',
 	'fundraiserstats-tab-averages' => 'Gemiddelde (USD)',
 	'fundraiserstats-tab-maximums' => 'Maxima (USD)',
-	'specialpages-group-contribution' => 'Gifte/Fónswèrvingsaksie',
 );
 
 /** Lumbaart (Lumbaart)
@@ -2992,7 +3023,6 @@ $messages['mk'] = array(
 	'fundraiserstats-tab-averages' => 'Просеци (USD)',
 	'fundraiserstats-tab-maximums' => 'Највисоки (USD)',
 	'fundraiserstats-tab-ytd' => 'Догодина на овој ден (USD)',
-	'specialpages-group-contribution' => 'Придонеси/Обезб. средства',
 );
 
 /** Malayalam (മലയാളം)
@@ -3061,7 +3091,6 @@ $messages['ml'] = array(
 	'fundraiserstats-tab-contributions' => 'സംഭാവനകളുടെ എണ്ണം',
 	'fundraiserstats-tab-averages' => 'ശരാശരികൾ (USD)',
 	'fundraiserstats-tab-maximums' => 'പരമാവധികൾ (USD)',
-	'specialpages-group-contribution' => 'സംഭാവനകൾ/ഫണ്ട്‌‌റെയ്സർ',
 );
 
 /** Malay (Bahasa Melayu)
@@ -3113,7 +3142,6 @@ $messages['ms'] = array(
 	'fundraiserstats-tab-contributions' => 'Bilangan sumbangan',
 	'fundraiserstats-tab-averages' => 'Purata (USD)',
 	'fundraiserstats-tab-maximums' => 'Maksimum (USD)',
-	'specialpages-group-contribution' => 'Sumbangan/Tabung',
 );
 
 /** Erzya (Эрзянь)
@@ -3180,7 +3208,6 @@ $messages['nds'] = array(
 	'fundraiserstats-tab-contributions' => 'Tall Spennen',
 	'fundraiserstats-tab-averages' => 'Dörsneden (in USD)',
 	'fundraiserstats-tab-maximums' => 'Maximaltallen (in USD)',
-	'specialpages-group-contribution' => 'Spennen/Fundraiser',
 );
 
 /** Dutch (Nederlands)
@@ -3253,7 +3280,6 @@ $messages['nl'] = array(
 	'fundraiserstats-tab-averages' => 'Gemiddelden (USD)',
 	'fundraiserstats-tab-maximums' => 'Maxima (USD)',
 	'fundraiserstats-tab-ytd' => 'Jaar tot op heden (USD)',
-	'specialpages-group-contribution' => 'Giften/Fondsenwervingsactie',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
@@ -3317,7 +3343,6 @@ $messages['nn'] = array(
 	'fundraiserstats-tab-contributions' => 'Tal på bidrag',
 	'fundraiserstats-tab-averages' => 'Snitt (USD)',
 	'fundraiserstats-tab-maximums' => 'Maksimum (USD)',
-	'specialpages-group-contribution' => 'Bidrag/Innsamling',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -3391,7 +3416,6 @@ $messages['no'] = array(
 	'fundraiserstats-tab-averages' => 'Gjennomsnitt (USD)',
 	'fundraiserstats-tab-maximums' => 'Maksimum (USD)',
 	'fundraiserstats-tab-ytd' => 'Året til idag (USD)',
-	'specialpages-group-contribution' => 'Bidrag/Innsamling',
 );
 
 /** Occitan (Occitan)
@@ -3464,7 +3488,6 @@ $messages['oc'] = array(
 	'fundraiserstats-tab-averages' => 'Mejanas (USD)',
 	'fundraiserstats-tab-maximums' => 'Maximums (USD)',
 	'fundraiserstats-tab-ytd' => 'Annada en cors (dolars US)',
-	'specialpages-group-contribution' => 'Contribucions / Levada de fonses',
 );
 
 /** Ossetic (Иронау)
@@ -3559,7 +3582,6 @@ $messages['pl'] = array(
 	'fundraiserstats-tab-averages' => 'Średnie (USD)',
 	'fundraiserstats-tab-maximums' => 'Maksima (USD)',
 	'fundraiserstats-tab-ytd' => 'Rok do danej chwili (USD)',
-	'specialpages-group-contribution' => 'Darowizny/Zbieranie funduszy',
 );
 
 /** Piedmontese (Piemontèis)
@@ -3633,7 +3655,6 @@ $messages['pms'] = array(
 	'fundraiserstats-tab-averages' => 'Medie (USD)',
 	'fundraiserstats-tab-maximums' => 'Màssim (USD)',
 	'fundraiserstats-tab-ytd' => 'Ann an cors (USD)',
-	'specialpages-group-contribution' => 'Contribussion/Racòlta fond',
 );
 
 /** Pashto (پښتو)
@@ -3647,6 +3668,7 @@ $messages['ps'] = array(
 	'contribstats-day' => 'ورځ',
 	'contribstats-month' => 'مياشت',
 	'contribstats-currency' => 'د پيسو يوون',
+	'contribstats-contributions' => 'ونډې',
 	'contribstats-total' => 'ټولټال (امريکايي ډالر)',
 	'contribstats-week' => 'اونۍ',
 	'contribstats-donations' => 'بسپنې',
@@ -3733,7 +3755,6 @@ $messages['pt'] = array(
 	'fundraiserstats-tab-averages' => 'Médias (USD)',
 	'fundraiserstats-tab-maximums' => 'Máximos (USD)',
 	'fundraiserstats-tab-ytd' => 'Desde o início do ano (USD)',
-	'specialpages-group-contribution' => 'Contribuições/Angariação de fundos',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
@@ -3797,7 +3818,6 @@ $messages['pt-br'] = array(
 	'fundraiserstats-tab-contributions' => 'Número de contribuições',
 	'fundraiserstats-tab-averages' => 'Médias (USD)',
 	'fundraiserstats-tab-maximums' => 'Máximos (USD)',
-	'specialpages-group-contribution' => 'Contribuições/Angariação de fundos',
 );
 
 /** Romanian (Română)
@@ -3806,16 +3826,16 @@ $messages['pt-br'] = array(
  */
 $messages['ro'] = array(
 	'contrib-hist-name' => 'Nume',
-	'contrib-hist-date' => 'Timp şi dată',
+	'contrib-hist-date' => 'Timp și dată',
 	'contrib-hist-amount' => 'sumă',
-	'contrib-hist-next' => 'Donaţii anterioare',
-	'contrib-hist-previous' => 'Donaţii mai noi',
+	'contrib-hist-next' => 'Donații anterioare',
+	'contrib-hist-previous' => 'Donații mai noi',
 	'contrib-hist-anonymous' => 'Anonim',
 	'contribstats-day' => 'Zi',
 	'contribstats-month' => 'Lună',
 	'contribstats-currency' => 'Valută',
 	'contribstats-amount' => 'Sumă (USD)',
-	'contribstats-contributions' => 'Contribuţii',
+	'contribstats-contributions' => 'Contribuții',
 	'contribstats-total' => 'Total (USD)',
 	'contribstats-avg' => 'Medie (USD)',
 	'contribstats-max' => 'Maxim (USD)',
@@ -3830,22 +3850,22 @@ $messages['ro'] = array(
 	'contribstats-payment-type' => 'Tipul de plată',
 	'contribstats-banner' => 'Banner',
 	'contribstats-clicks' => 'Clicuri',
-	'contribstats-donations' => 'Donaţii',
+	'contribstats-donations' => 'Donații',
 	'contribstats-conversion' => 'Rată de conversie (%)',
 	'contribstats-template' => 'Format',
-	'contribstats-nodata' => 'Nicio informaţie furnizată',
-	'contribstats-donatepage' => 'Pagina de donaţii',
+	'contribstats-nodata' => 'Nicio informație furnizată',
+	'contribstats-donatepage' => 'Pagina de donații',
 	'contribstats-average' => 'Medie',
 	'contribstats-credit-card' => 'Card de credit',
-	'contribstats-fraud-note' => 'Câteva donaţii frauduloase există.',
+	'contribstats-fraud-note' => 'Câteva donații frauduloase există.',
 	'fundraiserstats-date' => 'Dată',
 	'fundraiserstats-day' => 'Ziua $1 din $2',
-	'fundraiserstats-contributions' => 'Contribuţii',
+	'fundraiserstats-contributions' => 'Contribuții',
 	'fundraiserstats-total' => 'Total (USD)',
 	'fundraiserstats-avg' => 'Medie (USD)',
 	'fundraiserstats-max' => 'Maxim (USD)',
 	'fundraiserstats-tab-totals' => 'Totaluri (USD)',
-	'fundraiserstats-tab-contributions' => 'Număr de contribuţii',
+	'fundraiserstats-tab-contributions' => 'Număr de contribuții',
 	'fundraiserstats-tab-averages' => 'Medii (USD)',
 	'fundraiserstats-tab-maximums' => 'Maximuri (USD)',
 );
@@ -3933,7 +3953,6 @@ $messages['ru'] = array(
 	'fundraiserstats-tab-averages' => 'Средние (USD)',
 	'fundraiserstats-tab-maximums' => 'Максимумы (USD)',
 	'fundraiserstats-tab-ytd' => 'На данный год (USD)',
-	'specialpages-group-contribution' => 'Пожертвования/Сбор средств',
 );
 
 /** Yakut (Саха тыла)
@@ -3992,7 +4011,6 @@ $messages['sah'] = array(
 	'fundraiserstats-tab-contributions' => 'Үп киллэриитин ахсаана',
 	'fundraiserstats-tab-averages' => 'Ортотунан (USD)',
 	'fundraiserstats-tab-maximums' => 'Саамай үрдээбитэ (USD)',
-	'specialpages-group-contribution' => 'Сиэртибэлээһин/Үп хомуйуу',
 );
 
 /** Slovak (Slovenčina)
@@ -4065,7 +4083,6 @@ $messages['sk'] = array(
 	'fundraiserstats-tab-averages' => 'Priemer (USD)',
 	'fundraiserstats-tab-maximums' => 'Maximum (USD)',
 	'fundraiserstats-tab-ytd' => 'Rok do dátumu (USD)',
-	'specialpages-group-contribution' => 'Prispievateľov/fundraising',
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
@@ -4090,10 +4107,13 @@ $messages['sr-ec'] = array(
 	'contribstats-value-under' => 'Испод $1',
 	'contribstats-value-from' => 'Од $1 - $2',
 	'contribstats-value-over' => 'Преко $1',
+	'contribstats-template' => 'Шаблон',
 	'fundraiserstats-date' => 'Датум',
+	'fundraiserstats-day' => 'Дан $1 од $2',
 	'fundraiserstats-total' => 'Укупно (USD)',
 	'fundraiserstats-avg' => 'Просечно (USD)',
 	'fundraiserstats-max' => 'Максимум (USD)',
+	'fundraiserstats-tab-contributions' => 'Број доприноса',
 );
 
 /** Serbian Latin ekavian (Srpski (latinica))
@@ -4196,7 +4216,6 @@ $messages['sv'] = array(
 	'fundraiserstats-tab-averages' => 'Genomsnitt (USD)',
 	'fundraiserstats-tab-maximums' => 'Maximum (USD)',
 	'fundraiserstats-tab-ytd' => 'Total i år (USD)',
-	'specialpages-group-contribution' => 'Bidrag/Insamling',
 );
 
 /** Telugu (తెలుగు)
@@ -4261,7 +4280,6 @@ $messages['te'] = array(
 	'fundraiserstats-tab-averages' => 'సగటులు (USD)',
 	'fundraiserstats-tab-maximums' => 'గరిష్ఠాలు (USD)',
 	'fundraiserstats-tab-ytd' => 'సంవత్సరంలో-ఇప్పటివరకు (USD)',
-	'specialpages-group-contribution' => 'విరాళాలు/నిధుల సేకరణ',
 );
 
 /** Tetum (Tetun)
@@ -4401,7 +4419,6 @@ $messages['th'] = array(
 	'fundraiserstats-tab-averages' => 'ค่าเฉลี่ย (ดอลลาร์สหรัฐ)',
 	'fundraiserstats-tab-maximums' => 'สูงสุด (ดอลลาร์สหรัฐ)',
 	'fundraiserstats-tab-ytd' => 'ย้อนหลังจากวันนี้ 1 ปี (ดอลลาร์สหรัฐ)',
-	'specialpages-group-contribution' => 'การบริจาค/ระดมทุน',
 );
 
 /** Turkmen (Türkmençe)
@@ -4474,7 +4491,6 @@ $messages['tk'] = array(
 	'fundraiserstats-tab-averages' => 'Ortaçalar (USD)',
 	'fundraiserstats-tab-maximums' => 'Maksimumlar (USD)',
 	'fundraiserstats-tab-ytd' => 'Üstümizdäki ýyl (USD)',
-	'specialpages-group-contribution' => 'Goşantlar/Fond ýygnaýjy',
 );
 
 /** Tagalog (Tagalog)
@@ -4514,18 +4530,39 @@ $messages['tl'] = array(
 	'contribstats-value-under' => 'Mababa sa $1',
 	'contribstats-value-from' => 'Mula $1 - $2',
 	'contribstats-value-over' => 'Mahigit sa $1',
+	'contributiontrackingstatistics' => 'Estadistika ng pagsubaybay sa ambag',
+	'contribstats-day-totals' => 'Kabuoan para sa araw',
+	'contribstats-week' => 'Linggo',
+	'contribstats-weekly-totals' => '{{PLURAL:$1|Kabuuan para sa linggong ito|Kabilang ang lingguhang mga kabuuan para sa huling $1 na mga linggo}}',
+	'contribstats-payment-type' => 'Uri ng pagbabayad',
+	'contribstats-banner' => 'Watawat',
+	'contribstats-payment-type-hits' => 'Mga pagsapol sa uri ng pagbabayad',
+	'contribstats-clicks' => 'Mga pagpindot',
+	'contribstats-donations' => 'Mga donasyon',
+	'contribstats-conversion' => 'Antas ng pagpapalit (%)',
+	'contribstats-template' => 'Suleras',
+	'contribstats-nodata' => 'Walang ibinigay na dato',
+	'contribstats-landingpage' => 'Pahinang lapagan',
+	'contribstats-donatepage' => 'Pahina ng abuloy',
+	'contribstats-average' => 'Karaniwan',
+	'contribstats-imperfect-data' => 'Hindi perpekto ang datong ito dahil may mga hangganan ang nagkakaloob ng pagsubaybay na hindi ginagamit ang pangsubaybay ng pulong.',
+	'contribstats-paypal-donations' => 'Mga donasyong PayPal',
+	'contribstats-credit-card' => 'Tarhetang pang-utang',
+	'contribstats-fraud-note' => 'Umiiral ang ilang donasyong magdaraya.',
+	'contribstats-unaudited' => 'Mga kabuuan itong hindi pa natutuos.',
 	'fundraiserstatistics' => 'Mga estadistika ng pangangalap ng salaping panggugol (pondo)',
 	'fundraiserstats-date' => 'Petsa',
 	'fundraiserstats-day' => '$1 araw ng $2',
 	'fundraiserstats-contributions' => 'Mga ambag',
 	'fundraiserstats-total' => 'Kabuoan (dolyar ng Estados Unidos)',
 	'fundraiserstats-avg' => 'Pinatakang halaga (dolyar ng Estados Unidos)',
+	'fundraiserstats-ytd' => 'Naipong kabuoan (USD)',
 	'fundraiserstats-max' => 'Pinakamataas (dolyar ng Estados Unidos)',
 	'fundraiserstats-tab-totals' => 'Mga kabuoan (dolyar ng Estados Unidos)',
 	'fundraiserstats-tab-contributions' => 'Bilang ng mga ambag',
 	'fundraiserstats-tab-averages' => 'Pinatakang mga halaga (dolyar ng Estados Unidos)',
 	'fundraiserstats-tab-maximums' => 'Mga pinakamatataas (dolyar ng Estados Unidos)',
-	'specialpages-group-contribution' => 'Mga ambag/Pangangalap ng salaping panustos',
+	'fundraiserstats-tab-ytd' => 'Taon-sa-petsa (USD)',
 );
 
 /** Turkish (Türkçe)
@@ -4599,7 +4636,6 @@ $messages['tr'] = array(
 	'fundraiserstats-tab-averages' => 'Ortalamalar (USD)',
 	'fundraiserstats-tab-maximums' => 'Maksimumlar (USD)',
 	'fundraiserstats-tab-ytd' => 'Bugüne kadarki (USD)',
-	'specialpages-group-contribution' => 'Katkı/Fonsağlayıcı',
 );
 
 /** Ukrainian (Українська)
@@ -4675,7 +4711,6 @@ $messages['uk'] = array(
 	'fundraiserstats-tab-averages' => 'У середньому (долари США)',
 	'fundraiserstats-tab-maximums' => 'Максимуми (долари США)',
 	'fundraiserstats-tab-ytd' => 'З початку року (USD)',
-	'specialpages-group-contribution' => 'Пожертвування/Збір коштів',
 );
 
 /** Vèneto (Vèneto)
@@ -4747,7 +4782,6 @@ $messages['vec'] = array(
 	'fundraiserstats-tab-averages' => 'Medie (dolari mericani)',
 	'fundraiserstats-tab-maximums' => 'Massimi (dolari mericani)',
 	'fundraiserstats-tab-ytd' => 'Ano in corso (Dòlari USA)',
-	'specialpages-group-contribution' => 'Contributi/Racolta fondi',
 );
 
 /** Veps (Vepsan kel')
@@ -4779,7 +4813,6 @@ $messages['vep'] = array(
 	'fundraiserstats-tab-contributions' => 'Lahjoičendoiden lugu',
 	'fundraiserstats-tab-averages' => 'Keskmäine (USD)',
 	'fundraiserstats-tab-maximums' => 'Maksimumad (USD)',
-	'specialpages-group-contribution' => 'Lahjoičendad/Rahoidenkeradand',
 );
 
 /** Vietnamese (Tiếng Việt)
@@ -4837,12 +4870,12 @@ $messages['vi'] = array(
 	'fundraiserstats-contributions' => 'Quyên góp',
 	'fundraiserstats-total' => 'Tổng cộng (USD)',
 	'fundraiserstats-avg' => 'Trung bình (USD)',
+	'fundraiserstats-ytd' => 'Tổng số tích lũy (USD)',
 	'fundraiserstats-max' => 'Tối đa (USD)',
 	'fundraiserstats-tab-totals' => 'Tổng cộng (USD)',
 	'fundraiserstats-tab-contributions' => 'Số khoản quyên góp',
 	'fundraiserstats-tab-averages' => 'Trung bình (USD)',
 	'fundraiserstats-tab-maximums' => 'Tối đa (USD)',
-	'specialpages-group-contribution' => 'Quyên góp/Vận động gây quỹ',
 );
 
 /** Volapük (Volapük)
@@ -4930,7 +4963,6 @@ $messages['zh-hans'] = array(
 	'fundraiserstats-tab-contributions' => '贡献数',
 	'fundraiserstats-tab-averages' => '平均（美元）',
 	'fundraiserstats-tab-maximums' => '最大（美元）',
-	'specialpages-group-contribution' => '贡献/募捐者',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
@@ -4981,6 +5013,5 @@ $messages['zh-hant'] = array(
 	'fundraiserstats-tab-contributions' => '貢獻數',
 	'fundraiserstats-tab-averages' => '平均（美元）',
 	'fundraiserstats-tab-maximums' => '最大（美元）',
-	'specialpages-group-contribution' => '貢獻/募捐者',
 );
 
