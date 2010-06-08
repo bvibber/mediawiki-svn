@@ -2,7 +2,8 @@
 /**
  * Internationalisation file for FlaggedRevs extension, section ReviewedPages
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $messages = array();
@@ -628,6 +629,13 @@ $messages['jut'] = array(
 	'reviewedpages-best' => 'erste versje',
 );
 
+/** Georgian (ქართული)
+ * @author ITshnik
+ */
+$messages['ka'] = array(
+	'reviewedpages-none' => 'ამ სიაში გვერდები არ არის',
+);
+
 /** Kazakh (Arabic script) (‫قازاقشا (تٴوتە)‬) */
 $messages['kk-arab'] = array(
 	'reviewedpages' => 'سىن بەرىلگەن بەتتەر',
@@ -1058,7 +1066,7 @@ $messages['sr-ec'] = array(
 	'reviewedpages' => 'Прегледане странице',
 	'reviewedpages-leg' => 'Сврстај стране које су прегледане',
 	'reviewedpages-list' => "Ови спискови садрже [[{{MediaWiki:Validationpage}}|прегледане]] странице чији ''највиши достигнут'' ниво прегледа (ревизије) је одређени ниво.
-Веза је дата најновијој ревизији тог нивоа.]",
+Веза је дата најновијој ревизији тог нивоа.",
 	'reviewedpages-none' => 'Нема страна у овом списку.',
 	'reviewedpages-lev-0' => 'Прегледано',
 	'reviewedpages-lev-1' => 'Квалитет',

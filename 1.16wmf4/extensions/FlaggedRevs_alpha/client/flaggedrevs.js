@@ -47,33 +47,33 @@ var FlaggedRevs = {
 	/* Expands flag info box details */
 	'showBoxDetails': function() {
 		var ratings = document.getElementById('mw-fr-revisiondetails');
-		if( !ratings ) return;
-		var toggle = document.getElementById('mw-fr-revisiontoggle');
-		if( !toggle ) return;
-		ratings.style.display = 'block';
-		toggle.innerHTML = this.messages.toggleHide;
+		if( ratings ) {
+			ratings.style.display = 'block';
+		}
 	},
 	
 	/* Collapses flag info box details */
 	'hideBoxDetails': function( event ) {
 		var ratings = document.getElementById('mw-fr-revisiondetails');
-		if( !ratings ) return;
-		var toggle = document.getElementById('mw-fr-revisiontoggle');
-		if( !toggle ) return;
-		ratings.style.display = 'none';
-		toggle.innerHTML = this.messages.toggleShow;
+		if( ratings ) {
+			ratings.style.display = 'none';
+		}
 	},
 	
-	/* Toggles flag info box details */
+	/* Toggles flag info box details for (+/-) control */
 	'toggleBoxDetails': function() {
+		var toggle = document.getElementById('mw-fr-revisiontoggle');
+		if( !toggle ) return;
 		var ratings = document.getElementById('mw-fr-revisiondetails');
 		if( !ratings ) return;
 		// Collapsed -> expand
 		if( ratings.style.display == 'none' ) {
 			this.showBoxDetails();
+			toggle.innerHTML = this.messages.toggleHide;
 		// Expanded -> collapse
 		} else {
 			this.hideBoxDetails();
+			toggle.innerHTML = this.messages.toggleShow;
 		}
 	},
 	
@@ -87,10 +87,10 @@ var FlaggedRevs = {
 	/* Checks is mouseOut event is for a child of parentId */
 	'isMouseOutBubble': function( event, parentId ) {
 		var toNode = null;
-		if( event.relatedTarget === undefined ) {
-            toNode = event.toElement; // IE
-        } else {
+		if( event.relatedTarget != undefined ) {
             toNode = event.relatedTarget; // FF/Opera/Safari
+        } else {
+            toNode = event.toElement; // IE
         }
 		if( toNode ) {
 			var nextParent = toNode.parentNode;
@@ -112,10 +112,10 @@ var FlaggedRevs = {
 		if( !toggle ) return;
 		if( diff.style.display == 'none' ) {
 			diff.style.display = 'block';
-			toggle.innerHTML = this.messages.diffToggleHide;
+			toggle.getElementsByTagName('a')[0].innerHTML = this.messages.diffToggleHide;
 		} else {
 			diff.style.display = 'none';
-			toggle.innerHTML = this.messages.diffToggleShow;
+			toggle.getElementsByTagName('a')[0].innerHTML = this.messages.diffToggleShow;
 		}
 	},
 	
@@ -127,10 +127,10 @@ var FlaggedRevs = {
 		if( !toggle ) return;
 		if( log.style.display == 'none' ) {
 			log.style.display = 'block';
-			toggle.innerHTML = this.messages.logToggleHide;
+			toggle.getElementsByTagName('a')[0].innerHTML = this.messages.logToggleHide;
 		} else {
 			log.style.display = 'none';
-			toggle.innerHTML = this.messages.logToggleShow;
+			toggle.getElementsByTagName('a')[0].innerHTML = this.messages.logToggleShow;
 		}
 	},
 	
@@ -142,15 +142,13 @@ var FlaggedRevs = {
 		if( !toggle ) return;
 		if( log.style.display == 'none' ) {
 			log.style.display = 'block';
-			toggle.innerHTML = this.messages.logDetailsHide;
+			toggle.getElementsByTagName('a')[0].innerHTML = this.messages.logDetailsHide;
 		} else {
 			log.style.display = 'none';
-			toggle.innerHTML = this.messages.logDetailsShow;
+			toggle.getElementsByTagName('a')[0].innerHTML = this.messages.logDetailsShow;
 		}
 	}
 };
-
-addOnloadHook(FlaggedRevs.enableShowhide);
 
 FlaggedRevs.setCheckTrigger = function() {
 	var checkbox = document.getElementById("wpReviewEdit");
@@ -158,8 +156,6 @@ FlaggedRevs.setCheckTrigger = function() {
 		checkbox.onclick = FlaggedRevs.updateSaveButton;
 	}
 }
-
-hookEvent("load", FlaggedRevs.setCheckTrigger);
 
 FlaggedRevs.updateSaveButton = function() {
 	var checkbox = document.getElementById("wpReviewEdit");
@@ -176,3 +172,10 @@ FlaggedRevs.updateSaveButton = function() {
 		}
 	}
 }
+
+FlaggedRevs.setJSTriggers = function() {
+	FlaggedRevs.enableShowhide();
+	FlaggedRevs.setCheckTrigger();
+}
+
+hookEvent("load", FlaggedRevs.setJSTriggers);

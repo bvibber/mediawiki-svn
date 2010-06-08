@@ -2,7 +2,8 @@
 /**
  * Internationalisation file for FlaggedRevs extension, section UnreviewedPages
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $messages = array();
@@ -1403,9 +1404,12 @@ $messages['sr-ec'] = array(
 	'unreviewed-diff' => 'преглед',
 	'unreviewed-unwatched' => '(ненадзирано)',
 	'unreviewed-watched' => '($1 {{PLURAL:$1|активан корисник надгледа|акхивних корисника надгледају}})',
-	'unreviewed-list' => 'Ово је списак страна које још нису прегледане.',
+	'unreviewed-list' => 'Ово је списак страна садржаја које још нису прегледане до наведеног нивоа.',
 	'unreviewed-none' => 'Не постоји ниједна страна која се поклапа са овим критеријима.',
 	'unreviewed-viewing' => '(под прегледом)',
+	'unreviewed-hours' => '($1 {{PLURAL:$1|сат|сати}})',
+	'unreviewed-days' => '($1 {{PLURAL:$1|дан|дана}})',
+	'unreviewed-recent' => '(мање од сата)',
 );
 
 /** Serbian Latin ekavian (Srpski (latinica))

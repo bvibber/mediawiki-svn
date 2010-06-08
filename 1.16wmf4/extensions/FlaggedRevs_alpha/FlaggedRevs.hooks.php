@@ -176,16 +176,17 @@ class FlaggedRevsHooks {
 	}
 
 	// Mark when an unreviewed page is being reviewed
-	public static function maybeMarkUnderReview( $article, $user, $request ) {
-		if ( !$user->isAllowed( 'review' ) ) {
-			return true; // user cannot review
-		}
+	public static function maybeMarkUnderReview(
+		Article $article, $user, WebRequest $request
+	) {
+		global $wgMemc;
 		# Set a key to note when someone is reviewing this.
 		# NOTE: diff-to-stable views already handled elsewhere.
 		if ( $request->getInt( 'reviewing' ) || $request->getInt( 'rcid' ) ) {
-			global $wgMemc;
-			$key = wfMemcKey( 'unreviewedPages', 'underReview', $article->getId() );
-			$wgMemc->set( $key, '1', 20 * 60 ); // 20 min
+			if ( $article->getTitle()->userCan( 'review' ) ) {
+				$key = wfMemcKey( 'unreviewedPages', 'underReview', $article->getId() );
+				$wgMemc->set( $key, '1', 20 * 60 ); // 20 min
+			}
 		}
 		return true;
 	}
@@ -260,13 +261,16 @@ class FlaggedRevsHooks {
 	* Update pending revision table
 	* Autoreview pages moved into content NS
 	*/
-	public static function onTitleMoveComplete( &$otitle, &$ntitle, $user, $pageId ) {
+	public static function onTitleMoveComplete(
+		Title $otitle, Title $ntitle, User $user, $pageId
+	) {
 		$fa = FlaggedArticle::getTitleInstance( $ntitle );
 		// Re-validate NS/config (new title may not be reviewable)
 		if ( $fa->isReviewable( FR_MASTER ) ) {
 			// Moved from non-reviewable to reviewable NS?
-			if ( FlaggedRevs::autoReviewNewPages() && $user->isAllowed( 'autoreview' )
-				&& !FlaggedRevs::inReviewNamespace( $otitle ) )
+			if ( !FlaggedRevs::inReviewNamespace( $otitle )
+				&& FlaggedRevs::autoReviewNewPages()
+				&& $ntitle->userCan( 'autoreview' ) )
 			{
 				$rev = Revision::newFromTitle( $ntitle );
 				// Treat this kind of like a new page...
@@ -883,7 +887,7 @@ class FlaggedRevsHooks {
 	* Note: RC items not inserted yet, RecentChange_save hook does rc_patrolled bit...
 	*/
 	public static function maybeMakeEditReviewed(
-		$article, $rev, $baseRevId = false, $user = null
+		Article $article, $rev, $baseRevId = false, $user = null
 	) {
 		global $wgRequest;
 		# Edit must be non-null, and to a reviewable page
@@ -894,7 +898,7 @@ class FlaggedRevsHooks {
 		if ( !$user ) {
 			$user = User::newFromId( $rev->getUser() );
 		}
-		$title = $article->getTitle();
+		$title = $article->getTitle(); // convenience
 		$title->resetArticleID( $rev->getPage() ); // Avoid extra DB hit and lag issues
 		# Get what was just the current revision ID
 		$prevRevId = $rev->getParentId();
@@ -904,7 +908,7 @@ class FlaggedRevsHooks {
 		# Is the page manually checked off to be reviewed?
 		if ( $editTimestamp
 			&& $wgRequest->getCheck( 'wpReviewEdit' )
-			&& $user->isAllowed( 'review' ) )
+			&& $title->userCan( 'review' ) )
 		{
 			if ( self::editCheckReview( $article, $rev, $user, $editTimestamp ) ) {
 				return true; // reviewed...done!
@@ -1072,7 +1076,7 @@ class FlaggedRevsHooks {
 		# Is the page checked off to be reviewed?
 		if ( $editTimestamp
 			&& $wgRequest->getCheck( 'wpReviewEdit' )
-			&& $user->isAllowed( 'review' ) )
+			&& $title->userCan( 'review' ) )
 		{
 			# Check wpEdittime against current revision's time.
 			# If an edit was auto-merged in between, review only up to what
@@ -1217,35 +1221,45 @@ class FlaggedRevsHooks {
 	}
 
 	/**
-	* Check for 'autoreview' permission. This lets people who opt-out as
-	* Editors still have their own edits automatically reviewed. Bot
-	* accounts are also handled here to make sure that can autoreview.
+	* Grant 'autoreview' rights to users with the 'bot' right
 	*/
-	public static function checkAutoPromote( $user, &$promote ) {
-		global $wgFlaggedRevsAutoconfirm, $wgMemc;
-		# Make sure bots always have autoreview
-		if ( $user->isAllowed( 'bot' ) ) {
-			$promote[] = 'autoreview'; // add the group
-			return true;
+	public static function onUserGetRights( User $user, array &$rights ) {
+		# Make sure bots always have the 'autoreview' right
+		if ( in_array( 'bot', $rights ) && !in_array( 'autoreview', $rights ) ) {
+			$rights[] = 'autoreview';
 		}
+		return true;
+	}
+
+	/**
+	* Grant implicit 'autoreview' group to users meeting the
+	* $wgFlaggedRevsAutoconfirm requirements. This lets people who
+	* opt-out as Editors still have their own edits automatically reviewed.
+	*
+	* Note: some unobtrusive caching is used to avoid DB hits.
+	*/
+	public static function checkAutoPromote( User $user, array &$promote ) {
+		global $wgFlaggedRevsAutoconfirm, $wgMemc;
 		# Check if $wgFlaggedRevsAutoconfirm is actually enabled
 		# and that this is a logged-in user that doesn't already
 		# have the 'autoreview' permission
-		if ( !$user->getId() || $user->isAllowed( 'autoreview' )
-			|| empty( $wgFlaggedRevsAutoconfirm ) )
-		{
+		if ( !$user->getId() || empty( $wgFlaggedRevsAutoconfirm ) ) {
 			return true;
 		}
 		# Check if results are cached to avoid DB queries.
 		# Checked basic, already available, promotion heuristics first...
 		$APSkipKey = wfMemcKey( 'flaggedrevs', 'autoreview-skip', $user->getId() );
 		$value = $wgMemc->get( $APSkipKey );
-		if ( $value === 'true' ) return true;
+		if ( $value === 'true' ) {
+			return true;
+		}
 		# Check $wgFlaggedRevsAutoconfirm settings...
 		$now = time();
 		$userCreation = wfTimestampOrNull( TS_UNIX, $user->getRegistration() );
 		# User registration was not always tracked in DB...use null for such cases
-		$userage = $userCreation ? floor( ( $now - $userCreation ) / 86400 ) : null;
+		$userage = $userCreation
+			? floor( ( $now - $userCreation ) / 86400 )
+			: null;
 		$p = FlaggedRevs::getUserParams( $user->getId() );
 		# Check if user edited enough content pages
 		$totalCheckedEditsNeeded = false;
@@ -1612,7 +1626,7 @@ class FlaggedRevsHooks {
 			$preferences['flaggedrevsviewdiffs'] =
 				array(
 					'type' => 'toggle',
-					'section' => 'misc/diffs',
+					'section' => 'flaggedrevs/flaggedrevs-ui',
 					'label-message' => 'flaggedrevs-prefs-viewdiffs',
 				);
 		}
@@ -1670,8 +1684,9 @@ class FlaggedRevsHooks {
 	}
 
 	public static function overrideRedirect(
-		&$title, $request, &$ignoreRedirect, &$target, &$article
+		Title &$title, WebRequest $request, &$ignoreRedirect, &$target, Article &$article
 	) {
+		global $wgMemc, $wgParserCacheExpireTime;
 		# Get an instance on the title ($wgTitle)
 		if ( !FlaggedRevs::inReviewNamespace( $title ) ) {
 			return true;
@@ -1679,12 +1694,11 @@ class FlaggedRevsHooks {
 		if ( $request->getVal( 'stableid' ) ) {
 			$ignoreRedirect = true;
 		} else {
-			global $wgMemc, $wgParserCacheExpireTime;
 			# Try the cache...
 			$key = wfMemcKey( 'flaggedrevs', 'overrideRedirect', $title->getArticleId() );
-			$data = $wgMemc->get( $key );
-			if ( is_object( $data ) && $data->time >= $article->getTouched() ) {
-				list( $ignoreRedirect, $target ) = $data->value;
+			$tuple = FlaggedRevs::getMemcValue( $wgMemc->get( $key ), $article );
+			if ( is_array( $tuple ) ) {
+				list( $ignoreRedirect, $target ) = $tuple;
 				return true;
 			}
 			$fa = FlaggedArticle::getTitleInstance( $title );
@@ -2010,19 +2024,18 @@ class FlaggedRevsHooks {
 		$namespaces = FlaggedRevs::getReviewNamespaces();
 		if ( !count( $namespaces ) ) {
 			return true; // nothing to have a backlog on
-		}
-		if ( empty( $wgTitle ) || $wgTitle->getNamespace() !== NS_SPECIAL ) {
+		} elseif ( empty( $wgTitle ) || $wgTitle->getNamespace() !== NS_SPECIAL ) {
 			return true; // nothing to do here
-		}
-		if ( !$wgUser->isAllowed( 'review' ) )
+		} elseif ( !$wgUser->isAllowed( 'review' ) ) {
 			return true; // not relevant to user
-
+		}
 		$watchlist = SpecialPage::getTitleFor( 'Watchlist' );
 		$recentchanges = SpecialPage::getTitleFor( 'Recentchanges' );
 		if ( $wgTitle->equals( $watchlist ) || $wgTitle->equals( $recentchanges ) ) {
 			$dbr = wfGetDB( DB_SLAVE );
 			$watchedOutdated = $dbr->selectField(
-				array( 'watchlist', 'page', 'flaggedpages' ), '1',
+				array( 'watchlist', 'page', 'flaggedpages' ),
+				'1', // existence
 				array( 'wl_user' => $wgUser->getId(), // this user
 					'wl_namespace' => $namespaces, // reviewable
 					'wl_namespace = page_namespace',
@@ -2033,26 +2046,9 @@ class FlaggedRevsHooks {
 			);
 			# Give a notice if pages on the wachlist are outdated
 			if ( $watchedOutdated ) {
-				$notice .= "<div id='mw-fr-oldreviewed-notice' class='plainlinks fr-watchlist-old-notice'>" .
-					wfMsgExt( 'flaggedrevs-watched-pending', array( 'parseinline' ) ) . "</div>";
-			# Otherwise, give a notice if there is a large backlog in general
-			} else {
-				$pages = $dbr->estimateRowCount( 'page', '*',
-					array( 'page_namespace' => $namespaces ), __METHOD__ );
-				# For small wikis, just get the real numbers to avoid some bogus messages
-				if ( $pages < 50 ) {
-					$pages = $dbr->selectField( 'page', 'COUNT(*)',
-						array( 'page_namespace' => $namespaces ), __METHOD__ );
-					$unreviewed = $dbr->selectField( 'flaggedpages', 'COUNT(*)',
-						'fp_pending_since IS NOT NULL', __METHOD__ );
-				} else {
-					$unreviewed = $dbr->estimateRowCount( 'flaggedpages', '*',
-						'fp_pending_since IS NOT NULL', __METHOD__ );
-				}
-				if ( $unreviewed > .02 * $pages ) {
-					$notice .= "<div id='mw-fr-oldreviewed-notice' class='plainlinks fr-backlognotice'>" .
-						wfMsgExt( 'flaggedrevs-backlog', array( 'parseinline' ) ) . "</div>";
-				}
+				$css = 'plainlinks fr-watchlist-pending-notice';
+				$notice .= "<div id='mw-fr-watchlist-pending-notice' class='$css'>" .
+					wfMsgExt( 'flaggedrevs-watched-pending', 'parseinline' ) . "</div>";
 			}
 		}
 		return true;

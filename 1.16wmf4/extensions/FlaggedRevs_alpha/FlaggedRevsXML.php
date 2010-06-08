@@ -345,11 +345,12 @@ class FlaggedRevsXML {
 	 * @returns string
 	 */
 	public static function diffToggle() {
-		$toggle = '<a id="mw-fr-difftoggle" class="fr-toggle-text" style="display:none;"' .
+		$toggle = '<a class="fr-toggle-text" "' .
 			' onclick="FlaggedRevs.toggleDiff()" title="' .
 			wfMsgHtml( 'revreview-diff-toggle-title' ) . '" >' .
 			wfMsgHtml( 'revreview-diff-toggle-show' ) . '</a>';
-		return wfMsgHtml( 'parentheses', $toggle );
+		return '<span id="mw-fr-difftoggle" style="display:none;">' .
+			wfMsgHtml( 'parentheses', $toggle ) . '</span>';
 	}
 
 	/**
@@ -357,11 +358,12 @@ class FlaggedRevsXML {
 	 * @returns string
 	 */
 	public static function logToggle() {
-		$toggle = '<a id="mw-fr-logtoggle" class="fr-toggle-text" style="display:none;"' .
+		$toggle = '<a class="fr-toggle-text" ' .
 			' onclick="FlaggedRevs.toggleLog()" title="' .
 			wfMsgHtml( 'revreview-log-toggle-title' ) . '" >' .
 			wfMsgHtml( 'revreview-log-toggle-show' ) . '</a>';
-		return wfMsgHtml( 'parentheses', $toggle );
+		return '<span id="mw-fr-logtoggle" style="display:none;">' .
+			wfMsgHtml( 'parentheses', $toggle ) . '</span>';
 	}
 
 	/**
@@ -369,11 +371,12 @@ class FlaggedRevsXML {
 	 * @returns string
 	 */
 	public static function logDetailsToggle() {
-		$toggle = '<a id="mw-fr-logtoggle" class="fr-toggle-text" style="display:none;"' .
+		$toggle = '<a class="fr-toggle-text" ' .
 			' onclick="FlaggedRevs.toggleLogDetails()" title="' .
 			wfMsgHtml( 'revreview-log-details-title' ) . '" >' .
 			wfMsgHtml( 'revreview-log-details-show' ) . '</a>';
-		return wfMsgHtml( 'parentheses', $toggle );
+		return '<span id="mw-fr-logtoggle" style="display:none;">' .
+			wfMsgHtml( 'parentheses', $toggle ) . '</span>';
 	}
 
 	/*
@@ -411,11 +414,11 @@ class FlaggedRevsXML {
 		$encPath = htmlspecialchars( FlaggedRevs::styleUrlPath() . '/img' );
 		if ( $flaggedArticle->isPageLocked() ) {
 			$encTitle = wfMsgHtml( 'revreview-locked-title' );
-			return "<img class=\"flaggedrevs-icon\" src=\"$encPath/lock-closed.png\"" .
+			return "<img class=\"flaggedrevs-icon\" src=\"$encPath/checkmark-orange.png\"" .
 				" width=\"16px\" alt=\"$encTitle\" title=\"$encTitle\" />";
 		} elseif ( $flaggedArticle->isPageUnlocked() ) {
 			$encTitle = wfMsgHtml( 'revreview-unlocked-title' );
-			return "<img class=\"flaggedrevs-icon\" src=\"$encPath/lock-open.png\"" .
+			return "<img class=\"flaggedrevs-icon\" src=\"$encPath/checkmark-green.png\"" .
 				" width=\"16px\" alt=\"$encTitle\" title=\"$encTitle\" />";
 		}
 	}

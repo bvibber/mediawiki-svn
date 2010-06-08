@@ -2,7 +2,8 @@
 /**
  * Internationalisation file for FlaggedRevs extension, section ConfiguredPages
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $messages = array();
@@ -634,6 +635,13 @@ $messages['sk'] = array(
 	'configuredpages-prec-none' => 'bez precedencie',
 	'configuredpages-prec-quality' => 'precedencia podľa kvality',
 	'configuredpages-prec-pristine' => 'čistá precedencia',
+);
+
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'configuredpages-config' => 'Поставке',
 );
 
 /** Swedish (Svenska)

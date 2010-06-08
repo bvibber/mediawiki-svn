@@ -2,7 +2,8 @@
 /**
  * Internationalisation file for FlaggedRevs extension, section ValidationStatistics
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $messages = array();
@@ -1055,6 +1056,7 @@ Editor lan Pamriksa iku panganggo mapan sing bisa mriksa langsung owah-owahan ka
 
 /** Georgian (ქართული)
  * @author BRUTE
+ * @author ITshnik
  */
 $messages['ka'] = array(
 	'validationstatistics-users' => "'''{{SITENAME}}-ს''' ამჟამად ჰყავს '''[[Special:ListUsers/editor|$1]]''' {{PLURAL:$1|მომხმარებელი|მომხმარებელი}} [[{{MediaWiki:Validationpage}}|რედაქტორის]] უფლებებით.
@@ -1064,7 +1066,10 @@ $messages['ka'] = array(
 	'validationstatistics-ns' => 'სახელთა სივრცე',
 	'validationstatistics-total' => 'გვერდები',
 	'validationstatistics-stable' => 'შემოწმებულია',
+	'validationstatistics-old' => 'მოძველებული',
+	'validationstatistics-utable' => 'ქვემოთ მოყვანილია ბოლო საათის განმავლობაში ტოპ 5 მიმომხილველის  ჩამონათვალი.',
 	'validationstatistics-user' => 'მომხმარებელი',
+	'validationstatistics-reviews' => 'მიმოხილვები',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -1526,13 +1531,13 @@ A versão publicada de uma página é a edição mais recente que tenha sido apr
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
+ * @author Giro720
  */
 $messages['pt-br'] = array(
-	'validationstatistics' => 'Estatísticas de validações',
-	'validationstatistics-users' => "'''{{SITENAME}}''' possui, no momento, '''[[Special:ListUsers/editor|$1]]''' {{PLURAL:$1|utilizador|utilizadores}} com privilégios de [[{{MediaWiki:Validationpage}}|Editor]]  
-e '''[[Special:ListUsers/reviewer|$2]]''' {{PLURAL:$2|utilizador|utilizadores}} com privilégios de [[{{MediaWiki:Validationpage}}|Crítico]].
+	'validationstatistics' => 'Estatísticas da revisão de páginas',
+	'validationstatistics-users' => "'''{{SITENAME}}''' possui, no momento, '''[[Special:ListUsers/editor|$1]]''' {{PLURAL:$1|utilizador|utilizadores}} com privilégios de [[{{MediaWiki:Validationpage}}|Editor]] .
 
-Editores e Críticos são utilizadores estabelecidos que podem verificar detalhadamente revisões de páginas.",
+Editores são utilizadores estabelecidos que podem verificar detalhadamente revisões de páginas.",
 	'validationstatistics-time' => "''Os seguintes dados estão em cache e podem não estar atualizados.''
 
 Edições que foram verificadas por utilizadores estabelecidos são consideradas como revistas.

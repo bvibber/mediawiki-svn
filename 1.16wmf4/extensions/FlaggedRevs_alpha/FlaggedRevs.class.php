@@ -255,6 +255,17 @@ class FlaggedRevs {
 	}
 
 	/**
+	 * Get the appropriate PageStabilityForm depending on whether protection
+	 * levels are being used
+	 * @return PageStabilityForm
+	 */
+	public static function getPageStabilityForm() {
+		return FlaggedRevs::useProtectionLevels() ?
+			new PageStabilityProtectForm() :
+			new PageStabilityGeneralForm();
+	}
+
+	/**
 	 * Get the autoreview restriction levels available
 	 * @returns array
 	 */
@@ -438,8 +449,9 @@ class FlaggedRevs {
 	 */
 	public static function userCanSetFlags( $flags, $oldflags = array() ) {
 		global $wgUser;
-		if ( !$wgUser->isAllowed( 'review' ) )
+		if ( !$wgUser->isAllowed( 'review' ) ) {
 			return false; // User is not able to review pages
+		}
 		# Check if all of the required site flags have a valid value
 		# that the user is allowed to set.
 		foreach ( self::getDimensions() as $qal => $levels ) {

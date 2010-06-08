@@ -545,6 +545,8 @@ class FlaggedArticleView {
 					$this->article, $text, $srev->getRevId() );
 				# Update the stable version cache
 				FlaggedRevs::updatePageCache( $this->article, $wgUser, $parserOut );
+			} else {
+				$parserOut = null;
 			}
 	   	}
 		$synced = FlaggedRevs::stableVersionIsSynced( $srev, $this->article, $parserOut, null );
@@ -597,6 +599,7 @@ class FlaggedArticleView {
 		if ( $redirHtml != '' ) {
 			$wgOut->addHtml( $redirHtml );
 		} else {
+			// $parserOut will not be null here
 			$wgOut->addParserOutput( $parserOut );
 		}
 	}
@@ -1444,8 +1447,9 @@ class FlaggedArticleView {
 
 	/**
 	* Set $this->isDiffFromStable and $this->isMultiPageDiff fields
+	* Note: $oldRev could be false
 	*/
-	public function setViewFlags( $diff, Revision $oldRev, Revision $newRev ) {
+	public function setViewFlags( $diff, $oldRev, $newRev ) {
 		$this->load();
 		if ( $newRev && $oldRev ) {
 			// Is this a diff between two pages?
@@ -1557,12 +1561,13 @@ class FlaggedArticleView {
 	*/
 	public function addReviewCheck( EditPage $editPage, array &$checkboxes, &$tabindex ) {
 		global $wgUser, $wgRequest;
-		if ( !$this->article->isReviewable() || !$wgUser->isAllowed( 'review' ) ) {
-			return true;
-		} elseif ( FlaggedRevs::autoReviewNewPages() && !$this->article->exists() ) {
+		if ( !$wgUser->isAllowed( 'review' )
+			|| !$this->article->isReviewable()
+			|| !$this->article->revsArePending() )
+		{
 			return true; // not needed
 		}
-		$oldid = $wgRequest->getInt( 'oldid', $this->article->getLatest() );
+		$oldid = $wgRequest->getInt( 'baseRevId', $this->article->getLatest() );
 		if ( $oldid == $this->article->getLatest() ) {
 			$srev = $this->article->getStableRev();
 			# For pages with either no stable version, or an outdated one, let
