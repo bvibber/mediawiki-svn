@@ -71,7 +71,7 @@ Return to <span class="plainlinks">[$1 $2]</span>.',
 	'prefswitch-main' => "<div class=\"plainlinks\">
 [[file:UsabilityNavigation.png|thumb|446px|<big><font color=green>'''''Wikipedia's new theme, "Vector"'''''</font></big>]]
 We at the Wikimedia Foundation have been working hard to make things easier for our users. We are excited to share some improvements, including a new look and feel and simplified editing features. These changes are intended to make it easier for new contributors to get started, and are based on our [http://example.com usability testing conducted over the last year]. Improving the usability of our projects is a priority of the Wikimedia Foundation and we will be sharing more updates in the future. For more details, visit the related Wikimedia [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/ blog post].
-{{clear}}
+<div style=\"clear:both\"></div>
 [[file:UsabilityToolbar.png|thumb|446px|<big><font color=green>'''''New editing toolbar'''''</font></big>]]
 [[file:UsabilityDialogs.png|thumb|446px|<big><font color=green>'''''New dialog box for entering links'''''</font></big>]]
 
@@ -81,9 +81,9 @@ We at the Wikimedia Foundation have been working hard to make things easier for 
 * '''Link wizard:''' An easy-to-use tool allows you to add links to other wiki pages as well as links to external sites.
 * '''Search improvements:''' We have improved search suggestions to get you to the page you are looking for more quickly.
 * '''Other new features:''' We have also introduced a table wizard to make creating tables easier and find and a replace feature to simplify page editing.
-* '''Wikipedia logo:''' We have updated our logo. Read more at the [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ Wikimedia blog].",
+* '''Wikipedia logo:''' We have updated our logo. Read more at the [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ Wikimedia blog].</div>",
 	'prefswitch-main-anon' => "===Take me back===
-If you would like to turn off the new features, <span class=\"plainlinks\">[$1 click here]</span>. You will be asked to login or create an account first.</div>",
+If you would like to turn off the new features, <span class=\"plainlinks\">[$1 click here]</span>. You will be asked to login or create an account first.",
 	'prefswitch-main-on' => "===Feedback?===
 We would love to hear from you.  Please visit our <span class=\"plainlinks\">[$1 feedback page]</span> or, if you are interested in our ongoing efforts to improve the software, visit our [http://example.com usability wiki] for more information.
 
