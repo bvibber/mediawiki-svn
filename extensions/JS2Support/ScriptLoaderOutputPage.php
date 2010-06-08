@@ -246,23 +246,23 @@ class ScriptLoaderOutputPage extends OutputPage {
 		// If script-loader enabled check if we can add the script via script-loader
 		if( $this->isScriptGroupingEnabled() ) {
 			global $wgStylePath, $wgScript;
-			
-			// Append style path if a relative path		
+
+			// Append style path if a relative path
 			if( substr( $style, 0, 1 ) == '/' ){
 				// already absolute path don't modify path
-			
+
 			} else if (
 				substr( $style, 0, 5 ) == 'http:' ||
 				substr( $style, 0, 6 ) == 'https:' ) {
-				
-				// Remote css can't group: 
+
+				// Remote css can't group:
 				$this->styles[ $style ] = $options;
-				
+
 			} else {
 				// Relative core skin path append $wgStylePath
 				$style = $wgStylePath ."/". $style;
 			}
-						
+
 			$cssClass = $this->getClassFromPath( $style );
 			if( $cssClass ) {
 				$this->addScriptClass( $cssClass, $bucketKey, 'css');
@@ -298,6 +298,10 @@ class ScriptLoaderOutputPage extends OutputPage {
 		// No dir for bucket key since dir does not require a separate bucket.
 		unset( $options['dir'] );
 		$bucketKey = implode( '.', $options );
+		// If an empty bucket put into the allpage bucket
+		if( trim( $bucketKey) == '' ){
+			$bucketKey = 'allpage';
+		}
 
 		// Update the css bucket options:
 		$this->setClassBucketOptions( $bucketKey, $options );
@@ -372,7 +376,10 @@ class ScriptLoaderOutputPage extends OutputPage {
 		$wgScriptLoaderNamedPaths, $wgScriptPath;
 
 		// Set core Classes and styles:
-		$coreClasses = array( 'wikibits', 'window.jQuery', 'mwEmbed' , 'mw.style.mwCommon' );
+		$coreClasses = array( 'wikibits', 'window.jQuery', 'mwEmbed'  );
+
+		// Include the core css
+		$this->addStyleClass( 'mw.style.mwCommon' );
 
 
 
@@ -382,6 +389,7 @@ class ScriptLoaderOutputPage extends OutputPage {
 		if( isset( $this->mScriptLoaderClassList[ 'js' ][ 'allpage' ] ) ) {
 			$coreClasses = array_merge($coreClasses, $this->mScriptLoaderClassList[ 'js' ][ 'allpage' ] );
 		}
+
 
 		// Make sure scripts are the first scripts include on the page.
 		// Some extensions directly modify $this->mScripts early on and break
