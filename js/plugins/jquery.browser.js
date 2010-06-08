@@ -56,15 +56,16 @@ jQuery Browser Plugin
 			return r;
 		};
 
-		a = (a.match(/Opera|Navigator|Minefield|KHTML|Chrome/) ? m(a, [
+		a = (a.match(/Opera|Navigator|Minefield|KHTML|Chrome|PLAYSTATION 3/) ? m(a, [
 			[/(Firefox|MSIE|KHTML,\slike\sGecko|Konqueror)/, ''],
 			['Chrome Safari', 'Chrome'],
 			['KHTML', 'Konqueror'],
 			['Minefield', 'Firefox'],
-			['Navigator', 'Netscape']
+			['Navigator', 'Netscape'],
+			['PLAYSTATION 3', 'PS3']
 		]) : a).toLowerCase();
 
-		$.browser = $.extend((!z) ? $.browser : {}, c(a, /(camino|chrome|firefox|netscape|konqueror|lynx|msie|opera|safari|ipod|iphone|blackberry)/, [], /(camino|chrome|firefox|netscape|netscape6|opera|version|konqueror|lynx|msie|safari)(\/|\s)([a-z0-9\.\+]*?)(\;|dev|rel|\)|\s|$)/));
+		$.browser = $.extend((!z) ? $.browser : {}, c(a, /(camino|chrome|firefox|netscape|konqueror|lynx|msie|opera|safari|ipod|iphone|blackberry|ps3)/, [], /(camino|chrome|firefox|netscape|netscape6|opera|version|konqueror|lynx|msie|safari|ps3)(\/|\;?\s|)([a-z0-9\.\+]*?)(\;|dev|rel|\)|\s|$)/));
 
 		$.layout = c(a, /(gecko|konqueror|msie|opera|webkit)/, [
 			['konqueror', 'khtml'],

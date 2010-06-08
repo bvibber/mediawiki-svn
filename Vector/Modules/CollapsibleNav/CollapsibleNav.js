@@ -14,7 +14,8 @@ $j(document).ready( function() {
 				'konqueror': [['>=', 4.0]],
 				'blackberry': false,
 				'ipod': false,
-				'iphone': false
+				'iphone': false,
+				'ps3': false
 			},
 			// Right-to-left languages
 			'rtl': {
@@ -22,7 +23,8 @@ $j(document).ready( function() {
 				'konqueror': [['>=', 4.0]],
 				'blackberry': false,
 				'ipod': false,
-				'iphone': false
+				'iphone': false,
+				'ps3': false
 			}
 		}
 	};
