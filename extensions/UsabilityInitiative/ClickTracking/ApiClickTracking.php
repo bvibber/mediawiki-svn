@@ -73,6 +73,7 @@ class ApiClickTracking extends ApiBase {
 				$this->dieUsage( 'The URL to redirect to must be domain-relative, i.e. start with a /', 'badurl' );
 			}
 		}
+		$this->getMain()->setCacheMaxAge( 0 );
 	}
 
 	/**
