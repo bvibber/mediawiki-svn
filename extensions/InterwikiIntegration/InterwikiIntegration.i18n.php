@@ -10,7 +10,7 @@ $messages = array();
  * @author Tisane
  */
 $messages['en'] = array(
-	'interwikiintegration' => 'InterwikiIntegration',
+	'interwikiintegration' => 'Interwiki integration',
 	'interwikiintegration-desc' => 'Comprehensive interwiki integration',
         'populateinterwikiintegrationtable' => 'Populate interwiki integration table',
         'interwikiintegration-setuptext' => "$1s tables have been configured.
