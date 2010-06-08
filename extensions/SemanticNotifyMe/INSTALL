@@ -14,5 +14,5 @@ Edit $IP/LocalSettings.php and add:
 
 Apply this patch, $IP/extensions/SemanticMediaWiki/includes/storage/SMW_SQLStore2.php
 line  1268, add the following
-		$title = Title::makeTitle(NS_SPECIAL, 'SMWNotifyMe');
+		$title = SpecialPage::getTitleFor( 'SMWNotifyMe' );
 		$updatejobs[] = new SMWNMRefreshJob($title);
