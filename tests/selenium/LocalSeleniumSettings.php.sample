@@ -17,10 +17,10 @@
 #set_include_path( get_include_path() . PATH_SEPARATOR . 'PEAR' );
 
 // Hostname of selenium server
-$wgSeleniumTestsSeleniumHost = 'localhost';
+$wgSeleniumTestsSeleniumHost = 'grid.tesla.usability.wikimedia.org';
 
 // URL of the wiki to be tested. Consult web server configuration.
-$wgSeleniumTestsWikiUrl = 'http://localhost';
+$wgSeleniumTestsWikiUrl = 'http://prototype.wikimedia.org/mwe-gadget-testing';
 
 // Port used by selenium server (optional - default is 4444)
 $wgSeleniumServerPort = 4444;
