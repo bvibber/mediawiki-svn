@@ -52,8 +52,8 @@ if ( $wgEmailPageActionLink )  $wgHooks['SkinTemplateTabs'][] = 'wfEmailPageActi
 
 function wfEmailPageToolboxLink() {
 	global $wgTitle, $wgUser, $wgEmailPageGroup;
-	if ( is_object( $wgTitle ) && ( empty($wgEmailPageGroup) || in_array( $wgEmailPageGroup, $wgUser->getEffectiveGroups() ) ) ) {
-		$url = htmlspecialchars( Title::makeTitle( NS_SPECIAL, 'EmailPage' )->getLocalURL( array('ea-title' => $wgTitle->getPrefixedText() ) ) );
+	if ( is_object( $wgTitle ) && ( empty( $wgEmailPageGroup ) || in_array( $wgEmailPageGroup, $wgUser->getEffectiveGroups() ) ) ) {
+		$url = htmlspecialchars( SpecialPage::getTitleFor( 'EmailPage' )->getLocalURL( array( 'ea-title' => $wgTitle->getPrefixedText() ) ) );
 		echo( "<li><a href=\"$url\">" . wfMsg( 'emailpage' ) . "</a></li>" );
 	}
 	return true;
@@ -62,7 +62,7 @@ function wfEmailPageToolboxLink() {
 function wfEmailPageActionLink( $skin, &$actions ) {
 	global $wgTitle, $wgUser, $wgEmailPageGroup;
 	if ( is_object( $wgTitle ) && ( empty( $wgEmailPageGroup ) || in_array( $wgEmailPageGroup, $wgUser->getEffectiveGroups() ) ) ) {
-		$url = Title::makeTitle( NS_SPECIAL, 'EmailPage' )->getLocalURL( array('ea-title' => $wgTitle->getPrefixedText() ) );
+		$url = SpecialPage::getTitleFor( 'EmailPage' )->getLocalURL( array( 'ea-title' => $wgTitle->getPrefixedText() ) );
 		$actions['email'] = array( 'text' => wfMsg( 'email' ), 'class' => false, 'href' => $url );
 	}
 	return true;
