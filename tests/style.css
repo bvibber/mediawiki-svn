@@ -1,0 +1,10 @@
+body {
+  color: white;
+  background-color: black;
+  font-family: 'Molengo', Arial, sans-serif;
+}
+
+#mwEmbed_video {
+  margin-left: auto;
+  margin-right: auto;
+}
