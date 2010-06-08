@@ -733,6 +733,7 @@ $messages['da'] = array(
 /** German (Deutsch)
  * @author Als-Holder
  * @author Giftpflanze
+ * @author Kghbln
  * @author Metalhead64
  * @author Purodha
  * @author Steef389
@@ -3131,8 +3132,11 @@ $messages['sah'] = array(
  * @author Andria
  */
 $messages['sc'] = array(
+	'stabilization-page' => 'Nùmene pàgina:',
+	'stabilization-submit' => 'Cunfirma',
 	'stabilization-comment' => 'Motivu:',
 	'stabilization-otherreason' => 'Àteru motivu:',
+	'stabilization-sel-short-0' => 'Calidade',
 	'stabilization-sel-short-1' => 'Nudda',
 );
 

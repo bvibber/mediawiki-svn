@@ -1350,6 +1350,10 @@ $messages['sah'] = array(
  */
 $messages['sc'] = array(
 	'unreviewed-category' => 'Categoria:',
+	'unreviewed-diff' => 'revisiona',
+	'unreviewed-hours' => '($1 {{PLURAL:$1|ora|oras}})',
+	'unreviewed-days' => '($1 {{PLURAL:$1|die|dies}})',
+	'unreviewed-recent' => '(nemmancu 1 ora)',
 );
 
 /** Slovak (Slovenčina)

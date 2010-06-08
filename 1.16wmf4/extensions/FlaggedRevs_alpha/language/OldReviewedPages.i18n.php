@@ -902,7 +902,10 @@ $messages['ja'] = array(
  */
 $messages['ka'] = array(
 	'oldreviewedpages-none' => 'ამ დროისათვის არ არსებობს სტატიები ასეთი კრიტერიუმებით',
+	'oldreviewedpages-days' => '($1 {{PLURAL:$1|დღე|დღე}})',
+	'oldreviewedpages-recent' => '(1 საათზე ნაკლები)',
 	'oldreviewed-category' => 'კატეგორია:',
+	'oldreviewed-watched' => 'ჩემი კონტროლის სიის გვერდები',
 	'oldreviewed-stable' => 'სტაბილური გვერდები',
 	'oldreviewed-diff' => 'შემოწმება',
 );
@@ -1393,6 +1396,9 @@ $messages['sah'] = array(
  * @author Andria
  */
 $messages['sc'] = array(
+	'oldreviewedpages-hours' => '($1 {{PLURAL:$1|ora|oras}})',
+	'oldreviewedpages-days' => '($1 {{PLURAL:$1|die|dies}})',
+	'oldreviewedpages-recent' => '(nemmancu 1 ora)',
 	'oldreviewed-category' => 'Categoria:',
 );
 
