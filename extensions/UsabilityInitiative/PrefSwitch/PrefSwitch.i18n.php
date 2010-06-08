@@ -68,22 +68,25 @@ Please select all that apply.',
 	'prefswitch-success-feedback' => 'Your feedback has been sent.',
 	'prefswitch-return' => '<hr style="clear:both">
 Return to <span class="plainlinks">[$1 $2]</span>.',
-	'prefswitch-main' => "We have been working hard to make things easier for our users. We are excited to share some improvements, including a new look and feel and simplified editing features.  Improving the usability of our projects is a priority of the Wikimedia Foundation and we will be sharing more updates in the future. For more details, visit the related [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/ Wikimedia blog] post.
+	'prefswitch-main' => "<div class=\"plainlinks\">
+[[file:UsabilityNavigation.png|thumb|446px|<big><font color=green>'''''Wikipedia's new theme, "Vector"'''''</font></big>]]
+We at the Wikimedia Foundation have been working hard to make things easier for our users. We are excited to share some improvements, including a new look and feel and simplified editing features. These changes are intended to make it easier for new contributors to get started, and are based on our [http://example.com usability testing conducted over the last year]. Improving the usability of our projects is a priority of the Wikimedia Foundation and we will be sharing more updates in the future. For more details, visit the related Wikimedia [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/ blog post].
+{{clear}}
+[[file:UsabilityToolbar.png|thumb|446px|<big><font color=green>'''''New editing toolbar'''''</font></big>]]
+[[file:UsabilityDialogs.png|thumb|446px|<big><font color=green>'''''New dialog box for entering links'''''</font></big>]]
 
-[[File:UsabilityNavigation.png|right|link=|Screenshot of the new navigation]]
-[[File:UsabilityToolbar.png|right|link=|Screenshot of the enhanced edit toolbar]]
-[[File:UsabilityDialogs.png|right|link=|Screenshot of the new content generation dialogs]]
-===Here's what we have changed===
-* '''Navigation''': We have improved the navigation for reading and editing pages. Now, the tabs at the top of each page more clearly define whether you are viewing the page or discussion page, and whether you are reading or editing a page.
-* '''Editing toolbar improvements''':  We have reorganized the editing toolbar to make it easier to use. Now, formatting pages is simpler and more intuitive.
-* '''Link wizard''':  An easy-to-use tool allows you to add links to other wiki pages as well as links to external sites.
-* '''Search improvements''': We have improved search suggestions to get you to the page you are looking for more quickly.
-* '''Other new features''':  We have also introduced a table wizard to make creating tables easier and find and a replace feature to simplify page editing.
-* '''Wikipedia puzzle globe''': We have updated the puzzle globe. Read more at the [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/  Wikimedia blog].",
+=== Here's what we have changed ===
+* '''Navigation:''' We have improved the navigation for reading and editing pages. Now, the tabs at the top of each page more clearly define whether you are viewing the page or discussion page, and whether you are reading or editing a page.
+* '''Editing toolbar improvements:''' We have reorganized the editing toolbar to make it easier to use. Now, formatting pages is simpler and more intuitive.
+* '''Link wizard:''' An easy-to-use tool allows you to add links to other wiki pages as well as links to external sites.
+* '''Search improvements:''' We have improved search suggestions to get you to the page you are looking for more quickly.
+* '''Other new features:''' We have also introduced a table wizard to make creating tables easier and find and a replace feature to simplify page editing.
+* '''Wikipedia logo:''' We have updated our logo. Read more at the [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ Wikimedia blog].",
 	'prefswitch-main-anon' => "===Take me back===
-If you would like to turn off the new features, <span class=\"plainlinks\">[$1 click here]</span>. You will be asked to login or create an account first.",
+If you would like to turn off the new features, <span class=\"plainlinks\">[$1 click here]</span>. You will be asked to login or create an account first.</div>",
 	'prefswitch-main-on' => "===Feedback?===
-We would love to hear from you.  Please visit our <span class=\"plainlinks\">[$1 feedback page]</span>.
+We would love to hear from you.  Please visit our <span class=\"plainlinks\">[$1 feedback page]</span> or, if you are interested in our ongoing efforts to improve the software, visit our [http://example.com usability wiki] for more information.
+
 ===Take me back!===
 If you would like to turn off the new features, please <span class=\"plainlinks\">[$2 click here]</span>.",
 	'prefswitch-main-off' => "===Try them out!===
