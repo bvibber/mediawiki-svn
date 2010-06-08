@@ -1,3 +1,9 @@
+wikimedia-task-dns-auth (0.13) hardy; urgency=high
+
+  * changed CNAME for local.m.w.org to m.w.o from mobile1
+
+ -- Fred Vassard <fvassard@wikimedia.org>  Tue, 8 Jun 2010 17:18:51 +0000
+
 wikimedia-task-dns-auth (0.12) hardy; urgency=high
 
   * Add 'exit 0' to the end of helper scripts
