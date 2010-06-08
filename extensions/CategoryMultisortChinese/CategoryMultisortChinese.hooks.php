@@ -41,37 +41,34 @@ class CategoryMultisortChineseHooks {
 		
 		$title = $parser->getTitle();
 		$text = $title->getText();
-		$fc = utf8ToCodepoint( $wgContLang->firstChar( $text ) );
 		
 		$this->onCategoryMultisortSortkeys_setDefaultSortkey( $categoryMultisorts, 'mandarin',
-			array_key_exists( $fc, $data->mandarin ) ? $data->mandarin[$fc] : ''
+			$this->onCategoryMultisortSortkeys_buildMandarinSortkey( $data, $text )
 		);
 		$this->onCategoryMultisortSortkeys_setDefaultSortkey( $categoryMultisorts, 'stroke',
-			$this->onCategoryMultisortSortkeys_getStroke( $data, $fc )
+			$this->onCategoryMultisortSortkeys_buildStrokeSortkey( $data, $text )
 		);
 		$this->onCategoryMultisortSortkeys_setDefaultSortkey( $categoryMultisorts, 'radical',
-			$this->onCategoryMultisortSortkeys_getRadical( $data, $fc )
+			$this->onCategoryMultisortSortkeys_buildRadicalSortkey( $data, $text )
 		);
 		
 		$conv = $wgContLang->autoConvertToAllVariants( $text );
 		
 		if ( array_key_exists( 'zh-hans', $conv ) ) {
-			$fc = utf8ToCodepoint( $wgContLang->firstChar( $conv['zh-hans'] ) );
 			$this->onCategoryMultisortSortkeys_setDefaultSortkey( $categoryMultisorts, 'stroke-s',
-				$this->onCategoryMultisortSortkeys_getStroke( $data, $fc )
+				$this->onCategoryMultisortSortkeys_buildStrokeSortkey( $data, $conv['zh-hans'] )
 			);
 			$this->onCategoryMultisortSortkeys_setDefaultSortkey( $categoryMultisorts, 'radical-s',
-				$this->onCategoryMultisortSortkeys_getRadical( $data, $fc )
+				$this->onCategoryMultisortSortkeys_buildRadicalSortkey( $data, $conv['zh-hans'] )
 			);
 		}
 		
 		if ( array_key_exists( 'zh-hant', $conv ) ) {
-			$fc = utf8ToCodepoint( $wgContLang->firstChar( $conv['zh-hant'] ) );
 			$this->onCategoryMultisortSortkeys_setDefaultSortkey( $categoryMultisorts, 'stroke-t',
-				$this->onCategoryMultisortSortkeys_getStroke( $data, $fc )
+				$this->onCategoryMultisortSortkeys_buildStrokeSortkey( $data, $conv['zh-hant'] )
 			);
 			$this->onCategoryMultisortSortkeys_setDefaultSortkey( $categoryMultisorts, 'radical-t',
-				$this->onCategoryMultisortSortkeys_getRadical( $data, $fc )
+				$this->onCategoryMultisortSortkeys_buildRadicalSortkey( $data, $conv['zh-hant'] )
 			);
 		}
 		
@@ -97,5 +94,56 @@ class CategoryMultisortChineseHooks {
 			$radicalCp = $data->radicals[$radicalId];
 			return sprintf( '%s%03d', codepointToUtf8( $radicalCp ), $rest );
 		}
+	}
+	
+	function onCategoryMultisortSortkeys_splitString( $str ) {
+	    global $wgContLang;
+	    
+	    $result = array();
+	    while ( $str ) {
+	        $fc = $wgContLang->firstChar( $str );
+	        $result[] = $fc;
+	        $str = substr( $str, strlen( $fc ) );
+	    }
+	    return $result;
+	}
+	
+	function onCategoryMultisortSortkeys_buildMandarinSortkey( $data, $str ) {
+	    $result = '';
+	    foreach ( $this->onCategoryMultisortSortkeys_splitString( $str ) as $ch ) {
+	        # One UTF-8 character can have 4 bytes max.
+	        $c = str_pad( $ch, 4, "\0");
+	        $chcp = utf8ToCodepoint( $ch );
+	        # One Mandarin entry can have 7 bytes max.
+	        $md = str_pad( array_key_exists( $chcp, $data->mandarin ) ? $data->mandarin[$chcp] : '', 7, "\0");
+	        $result .= $md . $c;
+	    }
+	    return $result;
+	}
+	
+	function onCategoryMultisortSortkeys_buildStrokeSortkey( $data, $str ) {
+	    $result = '';
+	    foreach ( $this->onCategoryMultisortSortkeys_splitString( $str ) as $ch ) {
+	        # One UTF-8 character can have 4 bytes max.
+	        $c = str_pad( $ch, 4, "\0");
+	        $chcp = utf8ToCodepoint( $ch );
+	        # One stroke entry always has 3 bytes. 
+	        $s = $this->onCategoryMultisortSortkeys_getStroke( $data, $chcp );
+	        $result .= $s . $c;
+	    }
+	    return $result;
+	}
+	
+	function onCategoryMultisortSortkeys_buildRadicalSortkey( $data, $str ) {
+	    $result = '';
+	    foreach ( $this->onCategoryMultisortSortkeys_splitString( $str ) as $ch ) {
+	        # One UTF-8 character can have 4 bytes max.
+	        $c = str_pad( $ch, 4, "\0");
+	        $chcp = utf8ToCodepoint( $ch );
+	        # One radical-stroke entry always has 3 (radical) + 3 (stroke) = 6 bytes. 
+	        $r = $this->onCategoryMultisortSortkeys_getRadical( $data, $chcp );
+	        $result .= $r . $c;
+	    }
+	    return $result;
 	}
 }
