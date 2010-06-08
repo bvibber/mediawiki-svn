@@ -85,7 +85,7 @@ We at the Wikimedia Foundation have been working hard to make things easier for 
 	'prefswitch-main-anon' => "===Take me back===
 If you would like to turn off the new features, <span class=\"plainlinks\">[$1 click here]</span>. You will be asked to login or create an account first.",
 	'prefswitch-main-on' => "===Feedback?===
-We would love to hear from you.  Please visit our <span class=\"plainlinks\">[$1 feedback page]</span> or, if you are interested in our ongoing efforts to improve the software, visit our [http://example.com usability wiki] for more information.
+We would love to hear from you.  Please visit our <span class=\"plainlinks\">[$1 feedback page]</span> or, if you are interested in our ongoing efforts to improve the software, visit our [http://usability.wikimedia.org usability wiki] for more information.
 
 ===Take me back!===
 If you would like to turn off the new features, please <span class=\"plainlinks\">[$2 click here]</span>.",
