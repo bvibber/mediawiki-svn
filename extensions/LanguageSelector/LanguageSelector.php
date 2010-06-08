@@ -170,7 +170,7 @@ function wfLanguageSelectorExtension() {
 	if ( $wgLanguageSelectorLocation != LANGUAGE_SELECTOR_MANUAL && $wgLanguageSelectorLocation != LANGUAGE_SELECTOR_AT_TOP_OF_TEXT ) {
 		switch ( $wgLanguageSelectorLocation ) {
 			case LANGUAGE_SELECTOR_IN_TOOLBOX:
-				$wgHooks['MonoBookTemplateToolboxEnd'][] = 'wfLanguageSelectorSkinHook';
+				$wgHooks['SkinTemplateToolboxEnd'][] = 'wfLanguageSelectorSkinHook';
 				break;
 			default:
 				$wgHooks['SkinTemplateOutputPageBeforeExec'][] = 'wfLanguageSelectorSkinTemplateOutputPageBeforeExec';

@@ -49,7 +49,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 		$wgHooks['ArticleSaveComplete'][] = 'efContributorsInvalidateCache';
 		# Good god, this is ludicrous!
 		$wgHooks['SkinTemplateBuildNavUrlsNav_urlsAfterPermalink'][] = 'efContributorsNavigation';
-		$wgHooks['MonoBookTemplateToolboxEnd'][] = 'efContributorsToolbox';
+		$wgHooks['SkinTemplateToolboxEnd'][] = 'efContributorsToolbox';
 	}
 
 	/**

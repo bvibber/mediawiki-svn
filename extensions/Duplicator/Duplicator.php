@@ -42,7 +42,7 @@ $wgDuplicatorRevisionLimit = 250;
 function efDuplicator() {
 	global $wgHooks;
 	$wgHooks['SkinTemplateBuildNavUrlsNav_urlsAfterPermalink'][] = 'efDuplicatorNavigation';
-	$wgHooks['MonoBookTemplateToolboxEnd'][] = 'efDuplicatorToolbox';
+	$wgHooks['SkinTemplateToolboxEnd'][] = 'efDuplicatorToolbox';
 }
 
 /**
