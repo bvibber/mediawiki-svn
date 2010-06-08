@@ -112,10 +112,10 @@ class CategoryMultisortChineseHooks {
 	    $result = '';
 	    foreach ( $this->onCategoryMultisortSortkeys_splitString( $str ) as $ch ) {
 	        # One UTF-8 character can have 4 bytes max.
-	        $c = str_pad( $ch, 4, "\0");
+	        $c = str_pad( $ch, 4, '_');
 	        $chcp = utf8ToCodepoint( $ch );
 	        # One Mandarin entry can have 7 bytes max.
-	        $md = str_pad( array_key_exists( $chcp, $data->mandarin ) ? $data->mandarin[$chcp] : '', 7, "\0");
+	        $md = str_pad( array_key_exists( $chcp, $data->mandarin ) ? $data->mandarin[$chcp] : '', 7, '_');
 	        $result .= $md . $c;
 	    }
 	    return $result;
@@ -125,7 +125,7 @@ class CategoryMultisortChineseHooks {
 	    $result = '';
 	    foreach ( $this->onCategoryMultisortSortkeys_splitString( $str ) as $ch ) {
 	        # One UTF-8 character can have 4 bytes max.
-	        $c = str_pad( $ch, 4, "\0");
+	        $c = str_pad( $ch, 4, '_');
 	        $chcp = utf8ToCodepoint( $ch );
 	        # One stroke entry always has 3 bytes. 
 	        $s = $this->onCategoryMultisortSortkeys_getStroke( $data, $chcp );
@@ -138,7 +138,7 @@ class CategoryMultisortChineseHooks {
 	    $result = '';
 	    foreach ( $this->onCategoryMultisortSortkeys_splitString( $str ) as $ch ) {
 	        # One UTF-8 character can have 4 bytes max.
-	        $c = str_pad( $ch, 4, "\0");
+	        $c = str_pad( $ch, 4, '_');
 	        $chcp = utf8ToCodepoint( $ch );
 	        # One radical-stroke entry always has 3 (radical) + 3 (stroke) = 6 bytes. 
 	        $r = $this->onCategoryMultisortSortkeys_getRadical( $data, $chcp );
