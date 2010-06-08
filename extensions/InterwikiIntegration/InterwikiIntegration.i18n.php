@@ -1,9 +1,7 @@
 <?php
 /**
  * Internationalisation file for the InterwikiIntegration extension
- *
- * @file
- * @ingroup Extensions
+ * @addtogroup Extensions
  */
  
 $messages = array();
@@ -14,7 +12,7 @@ $messages = array();
 $messages['en'] = array(
 	'integration' => 'InterwikiIntegration',
 	'integration-desc' => 'Comprehensive interwiki integration',
-        'populateintegrationtable' => 'Populate integration table',
+        'populateinterwikiintegrationtable' => 'Populate interwiki integration table',
         'integration-setuptext' => '$1\'s tables have been configured. Be sure '
             .'to configure the tables on your other wikis as well.'
 );

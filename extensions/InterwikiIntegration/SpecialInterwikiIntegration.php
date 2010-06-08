@@ -20,7 +20,7 @@ class PopulateInterwikiIntegrationTable extends SpecialPage {
 		
 		$localDBname = $dbr -> getProperty ( 'mDBname' );
 		
-		$dbw->delete ( 'integration_db', '*' );
+		$dbw->delete ( 'integration_prefix', '*' );
 		if ( isset ( $wgInterwikiIntegrationPrefix ) ) {
 			
 			foreach ( $wgInterwikiIntegrationPrefix as $thisPrefix => $thisDatabase ) {
@@ -34,7 +34,7 @@ class PopulateInterwikiIntegrationTable extends SpecialPage {
 					'integration_prefix' => $thisPrefix,
 					'integration_pwd'    => $thisPWD
 				);
-				$dbw->insert ( 'integration_db', $newDatabaseRow );
+				$dbw->insert ( 'integration_prefix', $newDatabaseRow );
 				
 				foreach ( $wgLocalDatabases as $thisDB ) {
 					$foreignDbr = wfGetDB ( DB_SLAVE, array(), $thisDB );

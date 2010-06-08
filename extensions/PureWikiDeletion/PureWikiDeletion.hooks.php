@@ -44,7 +44,7 @@ class PureWikiDeletionHooks {
        public static function PureWikiDeletionSaveCompleteHook( &$article, &$user, $text, $summary,
 	      $minoredit, &$watchthis, $sectionanchor, &$flags, $revision, &$status, $baseRevId,
 	      &$redirect ) {
-	      global $wgOut;
+	      global $wgOut, $wgInterWikiIntegrationInEffect;
 	      wfLoadExtensionMessages( 'PureWikiDeletion' );
 	      if ( !isset( $revision ) ) {
 		     return true;
@@ -80,6 +80,7 @@ class PureWikiDeletionHooks {
 		     if ( $user->getOption( 'watchblank' ) ) {
 			    $watchthis = true;
 		     }
+		     wfRunHooks ( 'PureWikiDeletionArticleBlankComplete', array ( $mTitle ) );
 		     $redirect = false;
 		     $wgOut->setPagetitle( wfMsg( 'actioncomplete' ) );
 		     $wgOut->setRobotPolicy( 'noindex,nofollow' );
@@ -110,6 +111,7 @@ class PureWikiDeletionHooks {
 		            $mTitle->touchLinks();
 		            $mTitle->invalidateCache();
 		            $mTitle->purgeSquid();
+			    wfRunHooks ( 'PureWikiDeletionArticleUnblankComplete', array ( $mTitle ) );
 		     }
 	      }
 	      return true;

@@ -32,7 +32,7 @@ $wgExtensionCredits['other'][] = array(
 	'author' => 'Tisane',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:InterwikiIntegration',
 	'descriptionmsg' => 'integration-desc',
-	'version' => '1.0.1',
+	'version' => '1.0.3',
 );
  
 $dir = dirname( __FILE__ ) . '/';
@@ -40,10 +40,19 @@ $wgAutoloadClasses['InterwikiIntegrationHooks'] = $dir . 'InterwikiIntegration.h
 $wgAutoloadClasses['PopulateInterwikiIntegrationTable'] = "$dir/SpecialInterwikiIntegration.php";
 $wgExtensionMessagesFiles['InterwikiIntegration'] = $dir . 'InterwikiIntegration.i18n.php';
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'InterwikiIntegrationHooks::InterwikiIntegrationCreateTable';
+$wgHooks['ArticleEditUpdates'][] = 'InterwikiIntegrationHooks::InterwikiIntegrationArticleEditUpdates';
 $wgHooks['LinkBegin'][] = 'InterwikiIntegrationHooks::InterwikiIntegrationLink';
+$wgHooks['ArticleInsertComplete'][] = 'InterwikiIntegrationHooks::InterwikiIntegrationArticleInsertComplete';
+$wgHooks['ArticleDeleteComplete'][] = 'InterwikiIntegrationHooks::InterwikiIntegrationArticleDeleteComplete';
+$wgHooks['ArticleUndelete'][] = 'InterwikiIntegrationHooks::InterwikiIntegrationArticleUndelete';
+$wgHooks['TitleMoveComplete'][] = 'InterwikiIntegrationHooks::InterwikiIntegrationTitleMoveComplete';
+$wgHooks['PureWikiDeletionArticleBlankComplete'][] = 'InterwikiIntegrationHooks::InterwikiIntegrationArticleBlankComplete';
+$wgHooks['PureWikiDeletionArticleUnblankComplete'][] = 'InterwikiIntegrationHooks::InterwikiIntegrationArticleUnblankComplete';
+
 $wgSpecialPages['PopulateInterwikiIntegrationTable'] = 'PopulateInterwikiIntegrationTable'; 
-$wgSharedTables[] = 'integration_db';
+$wgSharedTables[] = 'integration_prefix';
 $wgSharedTables[] = 'integration_namespace';
+$wgSharedTables[] = 'integration_iwlinks';
 $wgInterwikiIntegrationBrokenLinkStyle = "color: red";
 
 $wgAvailableRights[] = 'integration';
