@@ -371,8 +371,8 @@ class ScriptLoaderOutputPage extends OutputPage {
 		global $wgExtensionJavascriptModules,
 		$wgScriptLoaderNamedPaths, $wgScriptPath;
 
-		// Set core Classes
-		$coreClasses = array( 'wikibits', 'window.jQuery', 'mwEmbed' );
+		// Set core Classes and styles:
+		$coreClasses = array( 'wikibits', 'window.jQuery', 'mwEmbed' , 'mw.style.mwEmbedCommon' );
 
 
 
