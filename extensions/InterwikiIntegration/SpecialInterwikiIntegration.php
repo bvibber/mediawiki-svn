@@ -100,7 +100,7 @@ class PopulateInterwikiIntegrationTable extends SpecialPage {
 		);
 		$dbw->insert ( 'integration_namespace', $newNamespaceRow);
 		$wgOut->setPagetitle( wfMsg( 'actioncomplete' ) );
-		$wgOut->addWikiMsg( 'integration-setuptext', $wgSitename );
+		$wgOut->addWikiMsg( 'interwikiintegration-setuptext', $wgSitename );
 		return;
 	}
 }

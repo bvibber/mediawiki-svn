@@ -31,7 +31,7 @@ $wgExtensionCredits['other'][] = array(
 	'name' => 'Interwiki Integration',
 	'author' => 'Tisane',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:InterwikiIntegration',
-	'descriptionmsg' => 'integration-desc',
+	'descriptionmsg' => 'interwikiintegration-desc',
 	'version' => '1.0.3',
 );
  
@@ -39,6 +39,7 @@ $dir = dirname( __FILE__ ) . '/';
 $wgAutoloadClasses['InterwikiIntegrationHooks'] = $dir . 'InterwikiIntegration.hooks.php';
 $wgAutoloadClasses['PopulateInterwikiIntegrationTable'] = "$dir/SpecialInterwikiIntegration.php";
 $wgExtensionMessagesFiles['InterwikiIntegration'] = $dir . 'InterwikiIntegration.i18n.php';
+$wgExtensionAliasesFiles['InterwikiIntegration'] = $dir . 'InterwikiIntegration.alias.php';
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'InterwikiIntegrationHooks::InterwikiIntegrationCreateTable';
 $wgHooks['ArticleEditUpdates'][] = 'InterwikiIntegrationHooks::InterwikiIntegrationArticleEditUpdates';
 $wgHooks['LinkBegin'][] = 'InterwikiIntegrationHooks::InterwikiIntegrationLink';

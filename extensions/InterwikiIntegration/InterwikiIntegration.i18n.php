@@ -6,20 +6,15 @@
  
 $messages = array();
  
-/* English
+/** English
  * @author Tisane
  */
 $messages['en'] = array(
-	'integration' => 'InterwikiIntegration',
-	'integration-desc' => 'Comprehensive interwiki integration',
+	'interwikiintegration' => 'InterwikiIntegration',
+	'interwikiintegration-desc' => 'Comprehensive interwiki integration',
         'populateinterwikiintegrationtable' => 'Populate interwiki integration table',
-        'integration-setuptext' => '$1\'s tables have been configured. Be sure '
-            .'to configure the tables on your other wikis as well.'
+        'interwikiintegration-setuptext' => "$1s tables have been configured.
+Be sure to configure the tables on your other wikis as well.",
+        'right-integration' => 'Populate the interwiki integration table',
 );
-
-$aliases = array(); 
-
-$aliases['en'] = array(
- 	'PopulateInterwikiIntegrationTable' => array( 'PopulateInterwikiIntegrationTable' ),
- 	);
 
