@@ -18,7 +18,7 @@ class UsabilityInitiativeHooks {
 	private static $styleFiles = array(
 		'base_sets' => array(
 			'raw' => array(
-				array( 'src' => 'css/suggestions.css', 'version' => 14 ),
+				array( 'src' => 'css/suggestions.css', 'version' => 15 ),
 				array( 'src' => 'css/vector.collapsibleNav.css', 'version' => 12 ),
 				array( 'src' => 'css/vector.expandableSearch.css', 'version' => 3 ),
 				array( 'src' => 'css/vector.footerCleanup.css', 'version' => 2 ),
@@ -30,11 +30,11 @@ class UsabilityInitiativeHooks {
 				array( 'src' => 'css/vector/jquery-ui-1.7.2.css', 'version' => '1.7.2y' ),
 			),
 			'combined' => array(
-				array( 'src' => 'css/combined.css', 'version' => 101 ),
+				array( 'src' => 'css/combined.css', 'version' => 102 ),
 				array( 'src' => 'css/vector/jquery-ui-1.7.2.css', 'version' => '1.7.2y' ),
 			),
 			'minified' => array(
-				array( 'src' => 'css/combined.min.css', 'version' => 101 ),
+				array( 'src' => 'css/combined.min.css', 'version' => 102	 ),
 				array( 'src' => 'css/vector/jquery-ui-1.7.2.css', 'version' => '1.7.2y' ),
 			),
 		)
@@ -65,7 +65,7 @@ class UsabilityInitiativeHooks {
 
 				// Core functionality of extension scripts
 				array( 'src' => 'js/plugins/jquery.async.js', 'version' => 3 ),
-				array( 'src' => 'js/plugins/jquery.autoEllipsis.js', 'version' => 11 ),
+				array( 'src' => 'js/plugins/jquery.autoEllipsis.js', 'version' => 12 ),
 				array( 'src' => 'js/plugins/jquery.browser.js', 'version' => 8 ),
 				array( 'src' => 'js/plugins/jquery.collapsibleTabs.js', 'version' => 6 ),
 				array( 'src' => 'js/plugins/jquery.color.js', 'version' => 1 ),
@@ -73,7 +73,7 @@ class UsabilityInitiativeHooks {
 				array( 'src' => 'js/plugins/jquery.delayedBind.js', 'version' => 1 ),
 				array( 'src' => 'js/plugins/jquery.suggestions.js', 'version' => 18 ),
 				array( 'src' => 'js/plugins/jquery.expandableField.js', 'version' => 16 ),
-				array( 'src' => 'js/plugins/jquery.suggestions.js', 'version' => 21 ),
+				array( 'src' => 'js/plugins/jquery.suggestions.js', 'version' => 22 ),
 				array( 'src' => 'js/plugins/jquery.textSelection.js', 'version' => 35 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.js', 'version' => 193 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.highlight.js', 'version' => 53 ),
@@ -89,10 +89,10 @@ class UsabilityInitiativeHooks {
 				array( 'src' => 'js/thirdparty/contentCollector.js', 'version' => 2 ),
 			),
 			'combined' => array(
-				array( 'src' => 'js/plugins.combined.js', 'version' => 422 ),
+				array( 'src' => 'js/plugins.combined.js', 'version' => 423 ),
 			),
 			'minified' => array(
-				array( 'src' => 'js/plugins.combined.min.js', 'version' => 422 ),
+				array( 'src' => 'js/plugins.combined.min.js', 'version' => 423 ),
 			),
 		),
 	);
