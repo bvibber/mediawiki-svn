@@ -100,7 +100,7 @@ The Wikimedia Foundation's User Experience Team has been working with volunteers
 * '''Other new features:''' We have also introduced a table wizard to make creating tables easier and find and a replace feature to simplify page editing.
 * '''Wikipedia logo:''' We have updated our logo. Read more at the [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d Wikimedia blog].",
 	'prefswitch-main-anon' => "===Take me back===
-If you would like to turn off the new features, <span class=\"plainlinks\">[$1 click here]</span>. You will be asked to login or create an account first.",
+<span class=\"plainlinks\">[$1 Click here to turn off the new features]</span>. You will be asked to login or create an account first.",
 	'prefswitch-main-on' => "===Feedback?===
 We would love to hear from you. Please visit our [$1 feedback page] or, if you are interested in our ongoing efforts to improve the software, visit our [http://usability.wkimedia.org usability wiki] for more information.
 ===Take me back!===
