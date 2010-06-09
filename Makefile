@@ -127,11 +127,11 @@ jsmin:
 # Simple incrementer of versions
 
 UsabilityInitiative.hooks.php: $(USABILITYINITIATIVE_HOOKS)
-	for file in $?; do basefile=$${file}; sed -i "s/\(.*'src' => '$${basefile//\//\\/}', 'version' => \)\([0-9 +]*\)\(.*\)/\\1 \\2+ 1 \\3/" $@; done
 WikiEditor/WikiEditor.hooks.php: $(WIKIEDITOR_HOOKS)
-	for file in $?; do basefile="$${file#WikiEditor/}"; sed -i "s/\(.*'src' => '$${basefile//\//\\/}', 'version' => \)\([0-9 +]*\)\(.*\)/\\1 \\2+ 1 \\3/" $@; done
 Vector/Vector.hooks.php: $(VECTOR_HOOKS)
-	for file in $?; do basefile=$${file#Vector/}; sed -i "s/\(.*'src' => '$${basefile//\//\\/}', 'version' => \)\([0-9 +]*\)\(.*\)/\\1 \\2+ 1 \\3/" $@; done
+
+%.hooks.php: $(WIKIEDITOR_HOOKS)
+	for file in $?; do basefile="$${file#$(shell echo $* | sed "s/\([^\/]*\/\).*/\\1/")}"; sed -i "s/\(.*'src' => '$${basefile//\//\\/}', 'version' => \)\([0-9 +]*\)\(.*\)/\\1 \\2+ 1 \\3/" $@; done
 
 # Actions
 
