@@ -374,7 +374,7 @@ $messages['bn'] = array(
 	'prefswitch-survey-question-os' => 'আপনি কোন অপারেটিং সিস্টেম ব্যবহার করেন?',
 	'prefswitch-survey-answer-os-other' => 'অন্য অপারেটিং সিস্টেম:',
 	'prefswitch-survey-question-res' => 'আপনার পর্দার রেজ্যুলেশন কত?',
-	'prefswitch-title-on' => 'নতুন কি আছে?',
+	'prefswitch-title-on' => 'নতুন বৈশিষ্ট্যাবলী',
 	'prefswitch-title-switched-on' => 'উপভোগ করুন!',
 	'prefswitch-title-off' => 'নতুন বৈশিষ্ট্যাবলী বন্ধ করো',
 	'prefswitch-title-switched-off' => 'ধন্যবাদ',
@@ -393,7 +393,7 @@ $messages['bn'] = array(
 	'prefswitch-main-off' => '===সেগুলো ব্যবহার করুন!===
 আপনি যদি নতুন বৈশিষ্ট্যাবলী চালু করতে চান, অনুগ্রহ করে <span class="plainlinks">[$1 এখানে ক্লিক করুন]</span>।',
 	'prefswitch-survey-intro-feedback' => 'আমরা আপনার কাছ থেকে জানতে চাই।
-অনুগ্রহ করে নিচের ঐচ্ছিক জরিপ ফরমটি পূরণ করুন।',
+"[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]" ক্লিক করার আগে অনুগ্রহ করে নিচের ঐচ্ছিক জরিপ ফরমটি পূরণ করুন।',
 );
 
 /** Breton (Brezhoneg)
@@ -684,7 +684,7 @@ Bitte wähle alle zutreffenden Punkte aus.',
 	'prefswitch-success-feedback' => 'Dein Feedback wurde versandt.',
 	'prefswitch-return' => '<hr style="clear:both">
 Zurück zu <span class="plainlinks">[$1 $2]</span>.',
-	'prefswitch-main' => "Wir haben hart gearbeitet, um die Arbeit für unsere Benutzer einfacher zu machen. Wir freuen uns sehr, dass wir nun einige Neuheiten präsentieren können, darunter ein neues Aussehen und vereinfachte Bearbeitungs-Möglichkeiten. Die Verbesserung der Bedienbarkeit unserer Projekte hat Priorität für die Wikimedia Foundation und wir werden auch in Zukunft weitere Neuheiten vorstellen. Für weitere Informationen, siehe den [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/ Wikimedia-Blog]-Eintrag. 
+	'prefswitch-main' => "Wir haben schwer daran gearbeitet, um die Arbeit für unsere Benutzer einfacher zu machen. Wir freuen uns sehr, dass wir nun einige Neuheiten präsentieren können, darunter ein neues Aussehen und vereinfachte Bearbeitungs-Möglichkeiten. Die Verbesserung der Bedienbarkeit unserer Projekte hat Priorität für die Wikimedia Foundation und wir werden auch in Zukunft weitere Neuheiten vorstellen. Für weitere Informationen, siehe den [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/ Wikimedia-Blog]-Eintrag. 
 
 [[File:UsabilityNavigation.png|right|link=|Screenshot der neuen Navigation]]
 [[File:UsabilityToolbar.png|right|link=|Screenshot der erweiterten Werkzeugleiste]]
@@ -1141,6 +1141,7 @@ Auttaaksesi parantamaan niitä – täytä alla oleva valinnainen kysely ennen k
  * @author Coyau
  * @author IAlex
  * @author Jean-Frédéric
+ * @author Kropotkine 113
  */
 $messages['fr'] = array(
 	'prefswitch' => "Commutateur de préférences de l'initiative d'utilisabilité",
@@ -1177,17 +1178,17 @@ Veuillez choisir tout ce qui convient.',
 	'prefswitch-success-feedback' => 'Vos commentaires ont été envoyés.',
 	'prefswitch-return' => '<hr style="clear:both">
 Revenir à <span class="plainlinks">[$1 $2]</span>.',
-	'prefswitch-main' => "Nous avons travaillé dur pour rendre les choses plus facile pour nos utilisateurs. Nous sommes heureux de partager quelques améliorations, notamment un nouveau look et la simplification des fonctions d'édition. Améliorer la convivialité de nos projets est une priorité de la Fondation Wikimedia et nous partagerons plus de mises à jour dans le futur. Pour plus de détails, lisez le post du [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/ blog de Wikimedia] consacré à ces améliorations.
+	'prefswitch-main' => "Nous avons travaillé dur pour rendre les choses plus faciles pour nos utilisateurs. Nous sommes heureux de partager quelques améliorations, notamment un nouveau look et la simplification des fonctions d'édition. Améliorer la convivialité de nos projets est une priorité de la Fondation Wikimedia et nous continuerons à le faire dans le futur. Pour plus de détails, lisez le post du [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/ blog de Wikimedia] consacré à ces améliorations.
 
 [[File:UsabilityNavigation.png|right|link=|Capture d'écran de la nouvelle navigation]]
 [[File:UsabilityToolbar.png|right|link=|Capture d'écran de la barre d'outils d'édition améliorée]]
 [[File:UsabilityDialogs.png|right|link=|Capture d'écran du contenu des boîtes de dialogue de nouvelle génération]]
 === Voici ce que nous avons changé ===
-* '''Navigation :''' Nous avons amélioré la navigation pour la lecture et la modification des pages. Maintenant, les onglets en haut de chaque page définissent plus clairement si vous voyez la page ou la page de discussion, et si vous lisez ou modifiez une page.
-* '''Améliorations de la barre d'outils d'édition :''' Nous avons réorganisé la barre d'outils d'édition pour la rendre plus facile à utiliser. Maintenant, la mise en page est plus simple et plus intuitive.
-* '''Assistant de liens :''' Un outil simple pour vous permettre d'ajouter des liens vers d'autres pages de Wikipédia ainsi que des liens vers des sites externes.
-* '''Amélioration de la recherche :''' Nous avons amélioré les suggestions de recherche pour vous aider à trouvez la page que vous recherchez plus rapidement.
-* '''Autres nouvelles fonctionnalités :''' Nous avons également introduit un assistant de tableaux pour créer des tableaux plus facilement et une fonctionnalité de remplacement pour simplifier la modification de page.
+* '''Navigation :''' nous avons amélioré la navigation pour la lecture et la modification des pages. Maintenant, les onglets en haut de chaque page définissent plus clairement si vous voyez la page ou la page de discussion, et si vous lisez ou modifiez une page.
+* '''Améliorations de la barre d'outils d'édition :''' nous avons réorganisé la barre d'outils d'édition pour la rendre plus facile à utiliser. Maintenant, la mise en page est plus simple et plus intuitive.
+* '''Assistant de liens :''' un outil simple pour vous permettre d'ajouter des liens vers d'autres pages de Wikipédia ainsi que des liens vers des sites externes.
+* '''Amélioration de la recherche :''' nous avons amélioré les suggestions de recherche pour vous aider à trouver la page que vous recherchez plus rapidement.
+* '''Autres nouvelles fonctionnalités :''' nous avons également introduit un assistant de tableaux pour créer des tableaux plus facilement et une fonctionnalité de remplacement pour simplifier la modification de page.
 * '''Globe en puzzle de Wikipédia''': nous avons mis à jour le globe en puzzle, lisez-en plus sur le [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ blog de Wikimedia].",
 	'prefswitch-main-anon' => '===Take Me Back===
 Si vous souhaitez désactiver les nouvelles fonctionnalités, <span class="plainlinks">[$1 cliquez ici]</span>.  Il vous sera demandé de vous connecter ou de vous créer un compte.',
@@ -1957,22 +1958,41 @@ $messages['mk'] = array(
 	'prefswitch-success-feedback' => 'Вашите примедби се испратени.',
 	'prefswitch-return' => '<hr style="clear:both">
 Назад кон <span class="plainlinks">[$1 $2]</span>.',
-	'prefswitch-main' => "Работевме напорно за да им олесниме на корисниците. Со задоволство ги претставуваме направените подобрувања, меѓу кои се и новиот изглед и чувство и упростените функции за уредување. Подобрувањето на употребливоста на проектите е голем приоритет на фондацијата Викимедија и во иднина очекувајте да известуваме за други унапредувања. За повеќе информации, посетете го [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/ Wikimedia блогот].
+	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
+| align=\"center\" |
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
+| [[Image:VectorNavigation-en.png|401px|]]
+|-
+| Изглед на новиот навигациски посредник на Википедија <small>[[Media:VectorNavigation.png|(зголеми)]]</small>
+|}
+|-
+| align=\"center\" |
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
+| [[Image:VectorEditorBasic-en.png|401px|]]
+|-
+| Изглед на основниот посредник за уредување на страници <small>[[Media:VectorEditorBasic.png|(зголеми)]]</small>
+|}
+|-
+| align=\"center\" |
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
+| [[Image:VectorLinkDialog-en.png|401px|]]
+|-
+| Изглед на новата кутија за внесување врски
+|}
+|}
+Екипата за корисничко искуство на Фондацијата Викимедија работеше со доброволци од заедницата за да ви ги олесни нештата. Со задоволство ве известуваме за направените подобрувања, новиот изглед и чувство, како и упростените функции за уредување. Овие промени имаат за цел да им го олеснат почетокот на новите учесници, и се засноваат на [http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study ланските испитувања на употребливоста]. Подобрувањето на употребливоста на проектите претставува приоритет за Фондацијата Викимедија и во иднина ќе продолжиме да ве известуваме за воведените новини. За повеќе информации, посетете го соодветниот [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia блог-напис на Викимедија].
 
-[[File:UsabilityNavigation.png|right|link=|Нов начин на навигација]]
-[[File:UsabilityToolbar.png|right|link=|Подобрен алатник за уредување]]
-[[File:UsabilityDialogs.png|right|link=|Нови дијалози за создавање содржини]]
 ===Еве што променивме===
 * '''Навигација:''' Ја подобривме навигацијата за читање и уредување на страниците. Сега менијата над секоја страница појасно укажуваат на тоа дали ја гледате страницата или страница за разговор, и дали ја читате или уредувате страницата.
 * '''Подобрен алатник за уредување:'''  Го реорганизиравме алатникот за полесна употреба. Сега форматирањето на страниците е упростено и поинтуитивно.
-* '''Волшебник за врски:'''  Едноставна алатка која овозможува додавање врски до други вики-страници како и до надворешни веб-страни.
+* '''Помошник за врски:'''  Едноставна алатка која овозможува додавање врски до други вики-страници како и до надворешни мрежни места.
 * '''Подобрено пребарување:''' Ги подобривме предлозите при пребарување за што побрзо да ви ја најдеме страницата што ја барате.
-* '''Други нови својства:''' Воведовме и волшебник за табели со чија помош табелите се прават полесно, а има и можност за пронаоѓање и заменување, со што се упростува уредувањето на страницата.
-* '''Википедија глобус''': го променивме логото, дознајте повеќе на [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/  Викимедија блогот.]",
+* '''Други нови функции:''' Воведовме и помошник за табели со чија помош табелите се прават полесно, а има и можност за пронаоѓање и заменување, со што се упростува уредувањето на страницата.
+* '''Лого на Википедија:''' Го подновивме и логото. Прочитахте повеќе на [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d блогот на Викимедија].",
 	'prefswitch-main-anon' => '===Врати ме===
 Ако сакате да ги исклучите новите функции, <span class="plainlinks">[$1 кликнете тука]</span>. Ќе ви биде побарано најпрвин да се најавите или да создадете сметка.',
 	'prefswitch-main-on' => '===Примедби?===
-Со задоволство го очекуваме вашето мислење.  Посетете ја нашата <span class="plainlinks">[$1 страница за примедби]</span>.
+Со задоволство го очекуваме вашето мислење.  Посетете ја нашата [$1 feedback страница за примедби], а доколку сте заинтересирани за нашите постојани напори за подобрување на програмот, посетете го нашето [http://usability.wkimedia.org вики посветено на употребливоста].
 ===Врати ме!===
 Ако сакате да ги исклучите новите функции, тогаш <span class="plainlinks">[$2 кликнете тука]</span>.',
 	'prefswitch-main-off' => '===Испробајте ги!===
@@ -2149,27 +2169,47 @@ Vink alstublieft alle mogelijkheden die van toepassing zijn aan.',
 	'prefswitch-success-feedback' => 'Uw terugkoppeling is verzonden.',
 	'prefswitch-return' => '<hr style="clear:both">
 Terug naar <span class="plainlinks">[$1 $2]</span>.',
-	'prefswitch-main' => "We hebben hard gewerkt om dingen makkelijker te maken voor onze gebruikers.
-We zijn verheugd om een aantal verbeteringen met u te delen, inclusief een nieuw uiterlijk en een vereenvoudigde manier om pagina's te bewerken.
+	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
+| align=\"center\" |
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
+| [[Image:VectorNavigation-nl.png|401px|]]
+|-
+| De nieuwe navigatie voor Wikipedia. <small>[[Media:VectorNavigation-nl.png|(vergroten)]]</small>
+|}
+|-
+| align=\"center\" |
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
+| [[Image:VectorEditorBasic-nl.png|401px|]]
+|-
+| Het eenvoudige bewerkingsvenster. <small>[[Media:VectorEditorBasic-nl.png|(vergroten)]]</small>
+|}
+|-
+| align=\"center\" |
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
+| [[Image:VectorLinkDialog-nl.png|401px]]
+|-
+| Het nieuwe dialoog voor het toevoegen van verwijzingen.
+|}
+|}
+Het Bruikbaarheidsteam van de Wikimedia Foundation hard gewerkt om dingen makkelijker te maken voor u. We zijn verheugd om een aantal verbeteringen met u te delen, inclusief een nieuw uiterlijk en een vereenvoudigde manier om pagina's te bewerken.
+De wijzigingen beogen het eenvoudiger te maken voor nieuwelingen om bij te dragen en zijn gebaseerd op onze [http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study bruikbaarheidstests van het afgelopen jaar].
 Het verbeteren van de gebruiksvriendelijkheid van onze projecten is een prioriteit van de Wikimedia Foundation en we verwachten in de toekomst nog verder te kunnen gaan.
-Op de [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/ Wikimedia blog] kunt u hier meer over lezen.
+In het [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia blogbericht] kunt u meer lezen.
 
-[[File:UsabilityNavigation.png|right|link=|Schermafbeelding van de nieuwe navigatie]]
-[[File:UsabilityToolbar.png|right|link=|Schermafbeelding van de uitgebreide bewerkingswerkbalk]]
-[[File:UsabilityDialogs.png|right|link=|Schermafbeelding van de nieuwe inhoudsbewerkingsdialogen]]
-=== Hier is wat we hebben veranderd ===
-* '''Navigatie:''' We hebben de navigatie voor het lezen en bewerken van pagina's verbeterd.
+=== Dit hebben we veranderd ===
+* '''Navigation:''' We hebben de navigatie voor het lezen en bewerken van pagina's verbeterd.
 De tabbladen bovenaan de pagina geven beter aan of u een pagina bekijkt of een overlegpagina, en of u een pagina aan het bekijken of aan het bewerken bent.
-* '''Verbeteringen aan de werkbalk:''' We hebben de werkbalk volledig herontworpen zodat deze eenvoudiger te gebruiken is. Nu is het bewerken van pagina's eenvoudiger en intuïtiever.
-* '''Hulp bij verwijzingen:''' een eenvoudig hulpmiddel bij het toevoegen van verwijzingen naar andere pagina's in Wikipedia en externe websites.
+* '''Verbeteringen aan de werkbalk:''' We hebben de werkbalk volledig herontworpen zodat deze eenvoudiger te gebruiken is.
+Nu is het bewerken van pagina's eenvoudiger en intuïtiever.
+* '''Hulp bij verwijzingen:''' een hulpje voor het eenvoudig toevoegen van verwijzingen naar andere wikipagina's en externe websites.
 * '''Verbeteringen in het zoeken:''' we hebben zoeksuggesties verbeterd zodat u de pagina die u zoekt sneller vindt.
 * '''Andere nieuwe mogelijkheden:''' Wij hebben ook een tabelhulpmiddel toegevoegd om het maken van tabellen te vereenvoudigen en een hulpmiddel voor zoeken en vervangen om het bewerken van pagina's te vereenvoudigen.
-* '''Wikipedia puzzelglobe''': We hebben de puzzel bijgewerkt. Op de [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ Wikimedia blog] kunt u meer lezen.",
+* '''Wikipedia logo''': We hebben ons logo. Op de [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ Wikimedia blog] kunt u meer lezen.",
 	'prefswitch-main-anon' => '===Terug===
 <span class="plainlinks">[$1 U kunt de nieuwe functionaliteit uitschakelen]</span>. U wordt dan gevraagd om aan te melden of te registreren.',
 	'prefswitch-main-on' => '=== Terugkoppeling? ===
 Wij horen graag van u.
-Bezoek onze <span class="plainlinks">[$1 pagina voor terugkoppeling].</span>
+Bezoek onze <span class="plainlinks">[$1 pagina voor terugkoppeling], of ga naar de [http://usability.wkimedia.org bruikbaarheidswiki] voor meer informatie als u geïnteresseerd bent in onze toekomstige plannen.</span>
 
 === Nee, bedankt! ===
 <span class="plainlinks">[$2 Klik om de nieuwe mogelijkheden uit te schakelen]</span>.',
@@ -2611,6 +2651,9 @@ $messages['sc'] = array(
 $messages['si'] = array(
 	'prefswitch-survey-true' => 'ඔව්',
 	'prefswitch-survey-false' => 'නැත',
+	'prefswitch-survey-answer-whyoff-other' => 'වෙනත් හේතුවක්:',
+	'prefswitch-survey-question-browser' => 'ඔබ භාවිතා කරන්නේ කුමන බ්‍රවුසරයද?',
+	'prefswitch-survey-answer-browser-other' => 'අනෙක් බ්‍රවුසරය:',
 	'prefswitch-title-switched-off' => 'ස්තුතියි',
 );
 
@@ -2782,7 +2825,7 @@ $messages['te'] = array(
 	'prefswitch-return' => '<hr style="clear:both">
 తిరిగి <span class="plainlinks">[$1 $2]</span>కి.',
 	'prefswitch-main-on' => '===సలహాలూ, సూచనలూ?===
-మేం మీ నుండి వినాలనుకుంటున్నాం.  దయచేసి మా <span class="plainlinks">[$1 ప్రతిస్పందన పుట]ని సందర్శించండి</span>.
+మేం మీ నుండి వినాలనుకుంటున్నాం.  దయచేసి మా [$1 ప్రతిస్పందన పుట]ని సందర్శించండి లేదా, సాఫ్ట్‌వేర్‌ని మెరుగుపరిచే మా ప్రయత్నాలలో మీకు ఆసక్తి ఉంటే, మరింత సమాచారం కోసం మా [http://usability.wkimedia.org ఉపయోగ్యత వికీ]ని సందర్శించండి.
 ===నన్ను వెనక్కి తీసుకెళ్ళు!===
 ఒకవేళ మీరు కొత్త సౌలభ్యాలని నిలిపివేసుకోవాలనుకుంటే, దయచేసి <span class="plainlinks">[$2 ఇక్కడ నొక్కండి]</span>.',
 	'prefswitch-main-off' => '===వాటిని ఉపయోగించి చూడండి!===
