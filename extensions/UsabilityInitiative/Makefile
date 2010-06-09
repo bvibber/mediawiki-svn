@@ -1,6 +1,7 @@
 #
 # Handy makefile to combine and minify css and javascript files
 #
+SHELL := /bin/bash
 
 CSS := \
 	css/suggestions.css\
