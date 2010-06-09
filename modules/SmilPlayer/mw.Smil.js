@@ -96,12 +96,21 @@ mw.Smil.prototype = {
 	* Get the smil html at a given time 
 	* @param {object} size The target size width, height
 	* @param {float} time The target time to be displayed
+	* @param {callback} callback Function to call once layout is ready 
+	* 	( all images and videos are "ready to play" ) 
 	*/
-	getHtmlDOM: function ( size, time ){		
+	getHtmlDOM: function ( size, time, callback ){		
 		mw.log("getHtmlDOM:: " + size.width + ' time: ' + time);
 		
 		// Have the layout object return the layout HTML DOM					
 		return this.getLayout().getHtmlDOM( size, time );
+	},
+	
+	/** 
+	 * Function called continuously to keep sync smil "in sync"
+	 */
+	syncWithTime: function( time ){
+		mw.log( 'smil sync: ' + time);
 	},
 	
 	/**
@@ -140,12 +149,13 @@ mw.Smil.prototype = {
 	}, 
 	
 	/**
-	* Check if a supplied asset path is relative if and return absolute path   
+	* Get an absolute path to asset based on the smil URL
+	* @param {string} assetPath Path to asset to be transformed into url
 	*/ 
-	getAssetPath: function( assetPath ){
-		if( this.smilUrl ){
-			// get the smilUrl path
-		}
+	getAssetUrl: function( assetPath ){		
+		// Context url is the smil document url: 		
+		var contextUrl = mw.absoluteUrl( this.smilUrl );		
+		return mw.absoluteUrl( assetPath, contextUrl );
 	}
 }
 /**

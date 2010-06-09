@@ -2,11 +2,20 @@
 <html>
 <head>
     <title>Pan Zoom Example</title>
-		 <script type="text/javascript" src="../../../mwEmbed.js?debug=true"></script> 
-		<!--  <script type="text/javascript" src="../../jsScriptLoader.php?class=window.jQuery,mwEmbed&debug=true"></script> -->
-		<script type="text/javascript">
-			mw.setConfig( 'overlayControls', false );
-		</script>
+	 <script type="text/javascript" src="../../../mwEmbed.js?debug=true"></script> 
+	<!--  <script type="text/javascript" src="../../jsScriptLoader.php?class=window.jQuery,mwEmbed&debug=true"></script> -->
+	<script type="text/javascript">
+		mw.setConfig( 'overlayControls', false );
+		mw.ready(function(){
+			$j( "#seekInputTime" ).blur( function(){ 
+				var smilVid = $j('#panzoom').get(0);
+				$j('#seekInProgress').show();
+				smilVid.setCurrentTime( parseFloat( $j(this).val() ), function(){
+					$j('#seekInProgress').hide();
+				});
+			});
+		});
+	</script>
 </head>
 <body>
 <h3>Sample playlist pan-zoom animation</h3>
@@ -15,7 +24,7 @@
 <td>
 
 <video id="panzoom" type="application/smil" src="panzoom/Fruits-4s.smil.xml" width="400" height="400"></video>
-
+<p></p>seek to <input id="seekInputTime" size="4" value = "10"></input><span id="seekInProgress" style="display: none"> Seeking<blink>...</blink></span>
 </td>
 <td valign="top">
 Sample playlist code: 
