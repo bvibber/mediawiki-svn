@@ -196,7 +196,7 @@ function makeContentCollector( browser, domInterface ) {
 	cc.collectContent = function(node, state) {
 		if (!state) {
 			state = {
-				flags : {/* name -> nesting counter */},
+				flags : {/* name -> nesting counter */}
 			};
 		}
 		var isBlock = isBlockElement(node);

@@ -43,7 +43,6 @@ $j(document).ready( function() {
 			version = $j.cookie( 'vector-nav-pref-version' );
 			// If the cookie didn't exist, or the value is out of range, generate a new one and save it
 			if ( version == null ) {
-				console.log( version );
 				// 50% of the people will get the new version
 				version = Math.round( Math.random() + 1 );
 				$j.cookie( 'vector-nav-pref-version', version, { 'expires': 30, 'path': '/' } );

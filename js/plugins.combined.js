@@ -5834,7 +5834,7 @@ $.fn.expandableField = function() {
 					// callback function for after collapse
 					'afterCondense': function( context ) {},
 					// callback function for after expand
-					'afterExpand': function( context ) {},
+					'afterExpand': function( context ) {}
 				}
 			};
 		}
@@ -7340,7 +7340,6 @@ if ( !context || typeof context == 'undefined' ) {
 				
 				//now place the cursor at the end of pasted content
 				var restoreTo = cursorPos[1] + offset;
-				//console.log("CURSOR POS: " + cursorPos[1] + " offset: " + offset + " restoreTo: " + restoreTo );
 				
 				context.fn.setSelection( { start: restoreTo, end: restoreTo } );
 
@@ -12048,7 +12047,7 @@ function makeContentCollector( browser, domInterface ) {
 	cc.collectContent = function(node, state) {
 		if (!state) {
 			state = {
-				flags : {/* name -> nesting counter */},
+				flags : {/* name -> nesting counter */}
 			};
 		}
 		var isBlock = isBlockElement(node);

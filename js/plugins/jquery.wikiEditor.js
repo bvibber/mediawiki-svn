@@ -532,7 +532,6 @@ if ( !context || typeof context == 'undefined' ) {
 				
 				//now place the cursor at the end of pasted content
 				var restoreTo = cursorPos[1] + offset;
-				//console.log("CURSOR POS: " + cursorPos[1] + " offset: " + offset + " restoreTo: " + restoreTo );
 				
 				context.fn.setSelection( { start: restoreTo, end: restoreTo } );
 
