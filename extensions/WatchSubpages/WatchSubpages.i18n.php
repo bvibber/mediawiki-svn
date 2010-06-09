@@ -193,6 +193,7 @@ $messages['ckb-arab'] = array(
 
 /** Czech (Česky)
  * @author Matěj Grabovský
+ * @author Mormegil
  * @author Reaperman
  */
 $messages['cs'] = array(
@@ -202,7 +203,7 @@ $messages['cs'] = array(
 	'watchsubpages-addtitlestowatchlist' => 'Přidat stránky do seznamu sledovaných',
 	'watchsubpages-desc' => 'Rychle [[Special:WatchSubpages|přidat všechny podstránky]] stránky do seznamu sledovaných',
 	'watchsubpages-form' => 'Vyberte stránky, které chcete přidat do svého seznamu sledovaných stránek.
-Stránku přidáte tak, že označíte pole vedle něj a kliknete na „{{int:watchsubpages-addtitles}}“.
+Stránku přidáte tak, že zaškrtnete její políčko a kliknete na „{{int:watchsubpages-addtitles}}“.
 
 Při označování nebo odznačování více stránek můžete držením klávesy Shift a kliknutím na začátek a konec rozsahu vybrat více po sobě jdoucích polí současně.',
 );
@@ -453,15 +454,16 @@ Si tu vole marcar o dismarcar plure paginas, tu pote tener premite le clave Shif
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author Irwangatot
  */
 $messages['id'] = array(
 	'watchsubpages' => 'Pantau upa halaman',
 	'watchsubpages-addedtowatchlist' => 'Yang berikut ini telah ditambahkan ke daftar pantauan Anda.',
 	'watchsubpages-addtitles' => 'Tambahkan halaman',
 	'watchsubpages-addtitlestowatchlist' => 'Tambahkan halaman ke daftar pantauan',
-	'watchsubpages-desc' => 'Dengan cepat [[Special:WatchSubpages|tambahkan semua upa halaman]] ke daftar pantauan',
+	'watchsubpages-desc' => 'Dengan cepat [[Special:WatchSubpages|tambahkan semua sub halaman]] ke daftar pantauan',
 	'watchsubpages-form' => 'Pilih halaman yang ingin Anda tambahkan ke daftar pantauan Anda.
-Untuk menambahkan halaman, tandai kotak di sebelahnya lalu tekan "Tambahkan halaman".
+Untuk menambahkan halaman, tandai kotak di sebelahnya lalu tekan "{{int:watchsubpages-addtitles}}".
 
 Ketika menandai beberapa halaman sekaligus, dengan menekan tombol "Shift" Anda dapat menandai beberapa halaman yang berurutan sekaligus.',
 );

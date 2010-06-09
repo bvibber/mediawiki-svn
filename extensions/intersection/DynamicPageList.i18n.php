@@ -36,10 +36,10 @@ $messages['af'] = array(
  * @author Juanpabl
  */
 $messages['an'] = array(
-	'intersection-desc' => "Preduz una lista d'os elementos más rezients que bi ha en una categoría u a unión de barios categorías",
+	'intersection-desc' => "Quita una lista d'os elementos más recients que bi ha en una categoría u a unión de quantas categorías",
 	'intersection_toomanycats' => 'Error: Masiadas categorías!',
 	'intersection_noresults' => 'Error: No bi ha garra resultau!',
-	'intersection_noincludecats' => "Error: Ha d'encluyir á lo menos una categoría u endicar un espazio de nombres!",
+	'intersection_noincludecats' => "Error: Ha d'encluyir a lo menos una categoría u endicar un espacio de nombres!",
 );
 
 /** Arabic (العربية)

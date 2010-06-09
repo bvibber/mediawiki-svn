@@ -813,6 +813,16 @@ $messages['sk'] = array(
 	'layouts-layoutcategorypage' => 'MediaWiki:Editpagetags',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'layouts_title' => 'Ustvari stran',
+	'layouts_continue' => 'Nadaljuj',
+	'layouts_choosecategory' => 'Izberite kategorijo za $1:',
+	'layouts_unknown' => 'Neznano',
+);
+
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */

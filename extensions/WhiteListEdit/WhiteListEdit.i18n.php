@@ -3208,6 +3208,7 @@ $messages['sr-ec'] = array(
 	'whitelisttablechangedate' => 'Промени датум истека',
 	'whitelisttableremove' => 'Уклони',
 	'whitelistnewtabledate' => 'Датум истека:',
+	'whitelistnewtableprocess' => 'Обради',
 	'whitelistoverview' => '== Преглед измена за $1 ==',
 	'whitelistoverviewcd' => "* Мењање датума на '''$1''' за [[:$2|$2]]",
 	'whitelistoverviewsa' => "* Постављање приступа на '''$1''' за [[:$2|$2]]",
@@ -3218,6 +3219,8 @@ $messages['sr-ec'] = array(
 $2',
 	'whitelistrequestconf' => 'Захтев за новим странама је послат $1',
 	'whitelistnever' => 'никад',
+	'group-manager' => 'Менаџери',
+	'group-manager-member' => 'Менаџер',
 );
 
 /** Serbian Latin ekavian (Srpski (latinica))

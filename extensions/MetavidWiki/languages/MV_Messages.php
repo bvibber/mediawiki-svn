@@ -536,6 +536,7 @@ $messages['am'] = array(
  */
 $messages['an'] = array(
 	'mv_edit' => 'Editar',
+	'mv_history' => 'Historial',
 	'mv_search_date_range' => 'Rango de calendatas',
 	'mv_date_range' => 'Rango de calendatas',
 );

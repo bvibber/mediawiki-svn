@@ -188,6 +188,13 @@ Un tertie parametro "template" es obligatori.',
 	'datatransclusion-unknown-template' => '<nowiki>{{</nowiki>[[{{ns:template}}:$1|$1]]<nowiki>}}</nowiki> non existe.',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'datatransclusion-bad-template-name' => 'Schlechten Numm fir eng Schabloun: $1.',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
@@ -262,5 +269,25 @@ $2 не является ключевым полем в источнике да�
 	'datatransclusion-record-not-found' => 'В источнике данных $1 не найдено записи, соответствующей $2 = $3',
 	'datatransclusion-bad-template-name' => 'Неправильное название шаблона: $1.',
 	'datatransclusion-unknown-template' => '<nowiki>{{</nowiki>[[{{ns:template}}:$1|$1]]<nowiki>}}</nowiki>  не существуе.',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'datatransclusion-desc' => 'Pag-aangkat at pagdudulog ng mga talaan ng dato mula sa mga pinagmulan ng datong panlabas',
+	'datatransclusion-missing-source' => 'Walang tinukoy na pinagmulan ng dato.
+Kailangan ang unang argumento.',
+	'datatransclusion-unknown-source' => 'Natukoy ang masamang pinagmulan ng dato.
+Hindi alam ang $1.',
+	'datatransclusion-bad-argument-by' => 'Natukoy ang isang larangan ng masamang susi.
+Ang $2 ay hindi isang susing larangan sa loob ng pinagmulan ng dato na $1, ang tanggap na mga susi ay: $3.',
+	'datatransclusion-missing-argument-key' => 'Walang tinukoy na halaga ng susi.
+Kailangan ang pangalawa o "susi" na argumento.',
+	'datatransclusion-missing-argument-template' => 'Walang tinukoy na suleras.
+Kailangan ang pangatlo o argumentong "suleras".',
+	'datatransclusion-record-not-found' => 'Walang natagpuang rekord na tumutugma sa $2 = $3 na nasa loob ng pinagmulan ng dato na $1.',
+	'datatransclusion-bad-template-name' => 'Masamang pangalan ng suleras: $1.',
+	'datatransclusion-unknown-template' => 'Hindi umiiral ang <nowiki>{{</nowiki>[[{{ns:template}}:$1|$1]]<nowiki>}}</nowiki>.',
 );
 

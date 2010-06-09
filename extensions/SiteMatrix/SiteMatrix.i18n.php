@@ -80,15 +80,15 @@ $messages['am'] = array(
  */
 $messages['an'] = array(
 	'sitematrix' => 'Lista de wikis de Wikimedia',
-	'sitematrix-summary' => 'Ista pachina espezial amuestra a lista de wikis de Wikimedia.',
+	'sitematrix-summary' => 'Ista pachina especial amuestra a lista de wikis de Wikimedia.',
 	'sitematrix-desc' => 'Amuestra una [[Special:SiteMatrix|lista de wikis de Wikimedia]]',
-	'sitematrix-language' => 'Luenga',
-	'sitematrix-project' => "Nombre d'o procheuto, binclo entre procheutos y binclo interwiki",
+	'sitematrix-language' => 'Idioma',
+	'sitematrix-project' => "Nombre d'o procheuto, vinclo entre procheutos y vinclo interwiki",
 	'sitematrix-others' => 'Atros procheutos de Wikimedia',
 	'sitematrix-total' => "'''Total: $1'''",
 	'sitematrix-sitetotal' => 'Total',
-	'sitematrix-private' => 'pribau',
-	'sitematrix-fishbowl' => 'edizión restrinchita',
+	'sitematrix-private' => 'privau',
+	'sitematrix-fishbowl' => 'edición restrinchita',
 );
 
 /** Old English (Ænglisc) */

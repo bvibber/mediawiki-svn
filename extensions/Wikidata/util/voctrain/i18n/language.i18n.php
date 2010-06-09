@@ -187,7 +187,7 @@ $messages['qqq'] = array(
 	'voctrain_eg_eng_for_English_deu_for_Deutch_German_' => 'Setup:text',
 	'voctrain_Depending_on_your_test_set_some_combinations_might_work_better_than_others_' => 'setup:text',
 	'voctrain_Questions' => 'Questions',
-	'voctrain_Answers' => 'Answers',
+	'voctrain_Answers' => '{{Identical|Answer}}',
 	'voctrain_start_exercise' => 'button:start exercise',
 	'voctrain_collection' => 'a wikidata collection
 
@@ -207,7 +207,7 @@ $messages['qqq'] = array(
 	'voctrain_list_answers' => 'exercise: button',
 	'voctrain_Question' => 'Question',
 	'voctrain_The_word_to_translate' => 'The word to translate',
-	'voctrain_Answer' => 'Answer',
+	'voctrain_Answer' => '{{Identical|Answer}}',
 	'voctrain_one_of' => 'one of',
 	'voctrain_list_of_questions_and_answers' => 'list: heading',
 	'voctrain_Answer_s_' => 'list: table header',

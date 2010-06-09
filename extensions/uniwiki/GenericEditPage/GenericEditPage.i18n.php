@@ -1353,6 +1353,22 @@ Pomocou nástrojov v paneli s ponukou ich môžete pridať.',
 	'gep-categorypage' => 'MediaWiki:Editpagetags',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'gep-emailsuccess' => 'Hvala za predlaganje kategorije: $1.',
+	'gep-categories' => 'Kategorije',
+	'gep-addcategory' => 'Dodaj kategorijo',
+	'gep-addcategorybutton' => 'Dodaj',
+	'gep-suggestcategory' => 'Predlagaj kategorijo',
+	'gep-suggestcategorybutton' => 'Potrdi',
+	'gep-sections' => 'Razdelki',
+	'gep-sectionnotdisabled' => 'Tega razdelka ni mogoče onemogočiti',
+	'gep-addsection' => 'Dodaj razdelek',
+	'gep-addsectionbutton' => 'Dodaj',
+);
+
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */

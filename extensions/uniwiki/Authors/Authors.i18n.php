@@ -555,6 +555,7 @@ $messages['sk'] = array(
  * @author Dbc334
  */
 $messages['sl'] = array(
+	'authors-desc' => 'Strani pripne seznam sodelavcev',
 	'authors_authors' => 'Avtorji',
 	'authors_anonymous' => 'Brezimnež',
 );

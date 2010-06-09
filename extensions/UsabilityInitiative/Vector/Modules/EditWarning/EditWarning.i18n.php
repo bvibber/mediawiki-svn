@@ -144,6 +144,7 @@ Denne advarsel kan slås fra under {{int:prefs-editing}} i dine indstillinger.',
 );
 
 /** German (Deutsch)
+ * @author Church of emacs
  * @author MF-Warburg
  * @author Metalhead64
  * @author Sebastian Wallroth
@@ -152,7 +153,7 @@ Denne advarsel kan slås fra under {{int:prefs-editing}} i dine indstillinger.',
 $messages['de'] = array(
 	'vector-editwarning-warning' => 'Das Verlassen dieser Seite kann dazu führen, dass deine Änderungen verloren gehen.
 Wenn du angemeldet bist, kannst du das Anzeigen dieser Warnung im „{{int:prefs-editing}}“-Bereich deiner Einstellungen abschalten.',
-	'vector-editwarning-preference' => 'Warnen, wenn eine zur Bearbeitung geöffnete Seite verlassen wird, die nicht gesicherte Änderungen enthält',
+	'vector-editwarning-preference' => 'Warnen, wenn eine zur Bearbeitung geöffnete Seite verlassen wird, die nicht gespeicherte Änderungen enthält',
 );
 
 /** German (formal address) (Deutsch (Sie-Form))

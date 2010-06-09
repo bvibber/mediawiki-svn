@@ -302,6 +302,13 @@ $messages['sk'] = array(
 	'autoincrement-desc' => 'Premenlivý prípojný bod, ktorý pridáva automaticky sa zvyšujúcu premennú <nowiki>{{AUTOINCREMENT}}</nowiki>',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'autoincrement-desc' => 'Spremenljiva priponka, ki doda samodejno naraščajočo spremenljivko <nowiki>{{AUTOINCREMENT}}</nowiki>',
+);
+
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */

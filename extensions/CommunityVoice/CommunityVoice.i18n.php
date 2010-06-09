@@ -112,6 +112,14 @@ $messages['bg'] = array(
 	'communityvoice-ratings-scale-stats' => '$1 / 5 ($2 {{PLURAL:$2|глас|гласа}})',
 );
 
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'communityvoice-ratings-scale-status-sending' => 'পাঠাচ্ছে...',
+	'communityvoice-ratings-scale-status-thanks' => 'ভোট দেওয়ার জন্য ধন্যবাদ!',
+);
+
 /** Breton (Brezhoneg)
  * @author Fohanno
  * @author Fulup

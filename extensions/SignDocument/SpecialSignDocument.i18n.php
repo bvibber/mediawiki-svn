@@ -206,10 +206,10 @@ $messages['am'] = array(
 $messages['an'] = array(
 	'sign-realname' => 'Nombre:',
 	'sign-viewfield-realname' => 'Nombre',
-	'sign-viewfield-reviewedby' => 'Rebisador',
+	'sign-viewfield-reviewedby' => 'Revisador',
 	'sign-viewfield-reviewcomment' => 'Comentario',
 	'sign-review-comment' => 'Comentario',
-	'sign-submitreview' => 'Nimbiar rebisión',
+	'sign-submitreview' => 'Ninviar revisión',
 );
 
 /** Old English (Ænglisc) */

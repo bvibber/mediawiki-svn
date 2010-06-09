@@ -162,3 +162,16 @@ $messages['ru'] = array(
 	'embedvideo-illegal-width' => 'EmbedVideo получил недопустимый параметр ширины «$1».',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'embedvideo-desc' => 'Nagdaragdag ng tungkuling pambanghay para sa pagbabaon ng bidyo mula sa tanyag na mga pinagmumulan',
+	'embedvideo-missing-params' => 'Kulang ng isang kailangang parametro ang Ibaon ang Bidyo.',
+	'embedvideo-bad-params' => 'Nakatanggap ng isang masamang parametro ang Ibaon ang Bidyo.',
+	'embedvideo-unparsable-param-string' => 'Tumanggap ng hindi mabanghay na bagting ng parametrong "<code>$1</code>" ang Ibaon ang Bidyo.',
+	'embedvideo-unrecognized-service' => 'Hindi makilala ng Ibaon ang Bidyo ang palingkurang pambidyong "<code>$1</code>".',
+	'embedvideo-bad-id' => 'Nakatanggap ng isang masamang id na "$1" ang Ibaon ang Bidyo para sa serbisyong "$2".',
+	'embedvideo-illegal-width' => 'Nakatanggap ang Ibaon ang Bidyo ng ilegal na parametro ng lapad na "$1".',
+);
+

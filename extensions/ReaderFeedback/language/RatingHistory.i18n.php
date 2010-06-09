@@ -2035,9 +2035,17 @@ $messages['ta'] = array(
 	'ratinghistory-chart' => 'கால ஓட்டத்தில் வாசகர் அளவீடு',
 	'ratinghistory-users' => 'அளவீடு செய்த பயனர்கள்',
 	'ratinghistory-graph' => '"$3" உடைய $2 ($1 {{PLURAL:$1|review|reviews}})',
+	'ratinghistory-svg' => 'SVGயாக பார்க்க',
 	'ratinghistory-table-rating' => 'அளவீடு',
 	'ratinghistory-table-votes' => 'ஓட்டெடுப்புகள்',
-	'ratinghistory-ratings' => "'''Legend:''' '''(1)''' - மிக மோசம்; '''(2)''' - மோசம்; '''(3)''' - பரவாயில்லை; '''(4)''' - நன்றாகவுள்ளது; '''(5)''' - பிரமாதம்;",
+	'ratinghistory-ratings' => "'''கதை:''' '''(1)''' - மிக மோசம்; '''(2)''' - மோசம்; '''(3)''' - பரவாயில்லை; '''(4)''' - நன்றாகவுள்ளது; '''(5)''' - பிரமாதம்;",
+	'ratinghistory-legend' => "↓ The '''daily number of reviews''' <font color=\"red\">''(red)''</font>, '''daily average rating''' <font color=\"blue\">''(blue)''</font>,
+and '''running average rating''' <font color=\"green\">''(green)''</font> are graphed below, by date.
+The '''running average rating''' is simply the average of all the daily ratings ''within'' this time frame for each day.
+The ratings are as follows:
+
+'''(1)''' - மிக மோசம்; '''(2)''' - மோசம்; '''(3)''' - பரவாயில்லை; '''(4)''' - நன்றாகவுள்ளது; '''(5)''' - பிரமாதம்;",
+	'right-feedback' => 'பக்கத்தின் தரம் பற்றிய கருத்தை தெரிவிக்க பின்னூட்டப் படிவத்தை பயன்படுத்தவும்',
 );
 
 /** Telugu (తెలుగు)

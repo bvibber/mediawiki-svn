@@ -574,10 +574,12 @@ $messages['ia'] = array(
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author Irwangatot
  */
 $messages['id'] = array(
 	'chemicalsources' => 'Rujukan kimia',
 	'chemicalsource-desc' => 'Menambahkan tag <nowiki><chemform></nowiki>, untuk formula kimia',
+	'chemicalsources-desc' => '[[Special:ChemicalSources|Halaman istimewa]] untuk sumber kimia',
 	'chemFunctions_ListPage' => 'Rujukan kimia',
 	'chemFunctions_DataList' => 'Berikut adalah daftar pranala ke situs yang mungkin menyediakan informasi mengenai zat kimia yang Anda cari.<br /><br />
 * <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&Units=SI">Senyawa $MIXCASNameFormula di NIST</a><br />

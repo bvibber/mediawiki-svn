@@ -139,6 +139,14 @@ $messages['ca'] = array(
 	'whosonline-desc' => "Mostra [[Special:WhosOnline|una llista]] d'usuaris identificats i anònims que hi ha en línia en aquest moment",
 );
 
+/** Chechen (Нохчийн)
+ * @author Sasan700
+ */
+$messages['ce'] = array(
+	'whosonline' => 'Хlинц кху чохь',
+	'whosonline-desc' => 'Гойту [[Special:WhosOnline|муьлха декъашхо хlинц кху чохь ву]]',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */

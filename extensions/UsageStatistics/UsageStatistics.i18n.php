@@ -152,9 +152,9 @@ $messages['am'] = array(
  */
 $messages['an'] = array(
 	'usagestatisticsnamespace' => 'Espacio de nombres:',
-	'usagestatisticsstart' => 'Calendata de prenzipio',
-	'usagestatisticsend' => 'Calendata final',
-	'usagestatisticsnoend' => 'Por fabor, escriba una calendata final',
+	'usagestatisticsstart' => 'Calendata de prencipio',
+	'usagestatisticsend' => 'Calendata de fin',
+	'usagestatisticsnoend' => 'Por favor, escriba una calendata final',
 	'usagestatisticsbadstartend' => '<b>As calendatas de <i>inicio</i> y/u <i>fin</i> no son conformes!</b>',
 );
 

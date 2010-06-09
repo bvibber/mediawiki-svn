@@ -148,10 +148,11 @@ $messages['ia'] = array(
 );
 
 /** Indonesian (Bahasa Indonesia)
+ * @author Irwangatot
  * @author Kenrick95
  */
 $messages['id'] = array(
-	'userpageeditprotection-desc' => 'Batasi penyuntingan pada halaman pengguna bagi pengguna dan penyunting yang diizinkan',
+	'userpageeditprotection-desc' => 'Batasan penyuntingan pada halaman pengguna bagi pengguna dan penyunting',
 	'right-editalluserpages' => 'Sunting halaman pengguna',
 );
 

@@ -74,6 +74,13 @@ $messages['gl'] = array(
 	'cassandra-desc' => 'Almacena a revisión do texto na base de datos de [http://cassandra.apache.org/ Apache Cassandra]',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'cassandra-desc' => 'Versionstext in dr [http://cassandra.apache.org/ Apache Cassandra]-Datebank spychere',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

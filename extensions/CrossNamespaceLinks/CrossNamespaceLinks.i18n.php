@@ -39,10 +39,10 @@ $messages['af'] = array(
  * @author Juanpabl
  */
 $messages['an'] = array(
-	'crossnamespacelinks' => 'Binclos entre espazios de nombres diferents',
-	'crossnamespacelinks-desc' => "[[Special:CrossNamespaceLinks|Listas de binclos entre espazios de nombres]] que no abrían d'esistir en {{SITENAME}}",
-	'crossnamespacelinks-summary' => "Ista pachina amuestra una lista de binclos dende pachinas d'o espazio de nombre prenzipal ta pachinas en atros espazios de nombres (sacaus os espazios de nombres {{ns:special}}, {{ns:talk}}, {{ns:project}} y {{ns:template}}) que no son aconsellables.",
-	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|binclo|binclos}} ta $3',
+	'crossnamespacelinks' => 'Vinclos entre espacios de nombres diferents',
+	'crossnamespacelinks-desc' => "[[Special:CrossNamespaceLinks|Listas de vinclos entre espacios de nombres]] que no habrían d'existir en {{SITENAME}}",
+	'crossnamespacelinks-summary' => "Ista pachina amuestra una lista de vinclos dende pachinas d'o espacio de nombre prencipal ta pachinas en atros espacios de nombres (sacaus os espacios de nombres {{ns:special}}, {{ns:talk}}, {{ns:project}} y {{ns:template}}) que no son aconsellables.",
+	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|vinclo|vinclos}} ta $3',
 );
 
 /** Arabic (العربية)

@@ -590,6 +590,7 @@ $messages['sah'] = array(
  */
 $messages['si'] = array(
 	'wikieditor-template-editor-preference' => 'විකි අච්චුවල පෝරම-මූලික සංස්කරණය සක්‍රීය කරන්න',
+	'wikieditor-template-editor-dialog-title' => 'සැකිල්ල සංස්කරණය කරන්න',
 	'wikieditor-template-editor-dialog-submit' => 'යාවත්කාලීන කළ',
 	'wikieditor-template-editor-dialog-cancel' => 'අත් හරින්න',
 );

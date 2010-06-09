@@ -48,12 +48,12 @@ $messages['af'] = array(
  * @author Juanpabl
  */
 $messages['an'] = array(
-	'contributiontracking-desc' => "Seguimiento de contrebuzions d'a replegad de fondos de Wikimedia",
-	'contributiontracking' => 'Seguimiento de contrebuzions',
+	'contributiontracking-desc' => "Seguimiento de contrebucions d'a replegad de fondos de Wikimedia",
+	'contributiontracking' => 'Seguimiento de contrebucions',
 	'contrib-tracking-error' => 'Error',
 	'contrib-tracking-error-text' => 'Error en o formulario',
-	'contrib-tracking-submitting' => 'Nimbiando ta o prozesador de pagos...',
-	'contrib-tracking-continue' => 'Si ye endrezato automaticament, faiga click en o botón ta rematar a suya donazión en PayPal.',
+	'contrib-tracking-submitting' => 'Ninviando ta o procesador de pagos...',
+	'contrib-tracking-continue' => 'Si ye endrezato automaticament, faiga click en o botón ta rematar a suya donación en PayPal.',
 	'contrib-tracking-button' => 'Continar',
 );
 

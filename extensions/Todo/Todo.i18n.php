@@ -1722,6 +1722,14 @@ $4',
 	'right-todosubmit' => 'ограничивать права участников на ведение перечня задач',
 );
 
+/** Sinhala (සිංහල)
+ * @author බිඟුවා
+ */
+$messages['si'] = array(
+	'todo-list-change' => 'වෙනස් කිරීම්',
+	'todo-list-cancel' => 'අත් හරින්න',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

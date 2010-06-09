@@ -605,6 +605,7 @@ $messages['an'] = array(
 	'wikilog-submit' => 'Ninviar',
 	'wikilog-edit-lc' => 'editar',
 	'wikilog-page-lc' => 'pachina',
+	'wikilog-history-lc' => 'historial',
 );
 
 /** Arabic (العربية)
@@ -5147,6 +5148,7 @@ O comentário só aparecerá após ser revisto por um moderador.',
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author BrunaaAa
+ * @author Giro720
  * @author Hamilton Abreu
  * @author Juliano
  * @author Luckas Blade
@@ -5155,7 +5157,19 @@ $messages['pt-br'] = array(
 	'wikilog-specialwikilog' => 'Wikilog',
 	'wikilog-log-pagename' => 'Registro de ações wikilog',
 	'wikilog-log-pagetext' => 'Abaixo está uma lista das ações wikilog.',
+	'wikilog-tab' => 'Wikilog',
 	'wikilog-tab-title' => 'Ações wikilog',
+	'wikilog-missing-wikilog' => 'Esta é a página [[{{int:wikilog-help}}|wikilog]] para [[{{FULLPAGENAME}}]].
+
+Este wikilog ainda não existe.
+Para publicar artigos e activar outras funcionalidade do wikilog, tem que criá-lo primeiro.
+
+* <span class="plainlinks">[{{fullurl:{{FULLPAGENAME}}|action=edit}} Criar este wikilog].</span>',
+	'wikilog-information' => 'Informações do wikilog',
+	'wikilog-post-count-published' => 'Há $1 {{PLURAL:$1|artigo publicado|artigos publicados}} neste wikilog',
+	'wikilog-post-count-drafts' => 'Há $1 {{PLURAL:$1|artigo não-publicado (rascunho)|artigos não-publicados (rascunhos)}}',
+	'wikilog-post-count-all' => 'No total há $1 {{PLURAL:$1|artigo|artigos}}.',
+	'wikilog-new-item' => 'Criar novo artigo wikilog',
 	'wikilog-new-item-go' => 'Criar',
 	'wikilog-item-name' => 'Nome do artigo:',
 	'wikilog-published' => 'Publicado',
@@ -5180,15 +5194,23 @@ $messages['pt-br'] = array(
 	'wikilog-pager-empty' => '(sem itens)',
 	'wikilog-no-comments' => 'sem comentários',
 	'wikilog-has-comments' => '{{PLURAL:$1|um comentário|$1 comentários}}',
+	'wikilog-summary-footer' => 'Publicado por $7 em [[$1|$2]] a $8 às $9, $10.',
+	'wikilog-summary-footer-single' => 'Publicado por $7 a $8 às $9, $10.',
+	'wikilog-summary-uncategorized' => 'Não categorizado',
+	'wikilog-summary-categories' => 'Categorizado em $2',
 	'wikilog-summary-more' => '[[$3|→ continuar lendo...]]',
 	'wikilog-author-signature' => '[[{{ns:User}}:$1|$1]] ([[{{ns:User_talk}}:$1|discussão]])',
+	'wikilog-edit-fieldset-legend' => 'Opções wikilog:',
 	'wikilog-edit-signpub' => 'Asssinar e publicar este artigo',
+	'wikilog-edit-signpub-tooltip' => 'Causa que este artigo seja assinado e publicado no respectivo wikilog quando for gravado.
+Desmarque a caixa para manter o artigo em rascunho.',
 	'wikilog-comment-permalink' => '$1 em $2',
 	'wikilog-comment-note-item' => 'postado em $1',
 	'wikilog-comment-note-edited' => 'editado pela ultima vez em $1 às $2',
 	'wikilog-comment-anonsig' => '$3 (anônimo)',
 	'wikilog-comment-pending' => 'Este comentário está aguardando aprovação.',
 	'wikilog-comment-deleted' => 'Este comentário foi apagado.',
+	'wikilog-comment-omitted-x' => 'Comentário omitido (#$1).',
 	'wikilog-comment-autosumm' => 'Novo comentário de $1: $2',
 	'wikilog-reply-to-comment' => 'Postar uma resposta a esse comentário',
 	'wikilog-comment-page' => 'Ir para a página deste comentário',
@@ -5197,9 +5219,15 @@ $messages['pt-br'] = array(
 	'wikilog-comment-history' => 'Ver histórico do comentário',
 	'wikilog-comment-approve' => 'Aprovar este comentário (ação imediata)',
 	'wikilog-comment-reject' => 'Rejeitar este comentário (ação imediata)',
+	'wikilog-newtalk-text' => '<!-- página em branco criada pelo Wikilog -->',
+	'wikilog-newtalk-summary' => 'criado automaticamente pelo wikilog',
 	'wikilog-feed-description' => 'Leia as postagens mais recentes neste feed.',
+	'wikilog-comment-feed-title1' => 'Comentário de $2 (#$1)',
+	'wikilog-comment-feed-title2' => 'Comentário de $2 para $3 (#$1)',
+	'wikilog-comment-feed-description' => 'Ler os comentários mais recentes neste feed.',
 	'wikilog-title-comments' => 'Comentários - $1',
 	'wikilog-error-msg' => 'Wikilog: $1',
+	'wikilog-error-title' => 'Erro no Wikilog',
 	'wikilog-invalid-param' => 'Parâmetro inválido: $1.',
 	'wikilog-invalid-author' => 'Autor inválido: $1.',
 	'wikilog-invalid-date' => 'Data inválida: $1.',
@@ -5213,6 +5241,8 @@ $messages['pt-br'] = array(
 	'wikilog-comment-is-empty' => 'O comentário postado está em branco.',
 	'wikilog-comment-too-long' => 'O comentário postado é muito longo.',
 	'wikilog-comment-invalid-name' => 'O nome fornecido é inválido.',
+	'wikilog-no-such-article' => 'O artigo wikilog solicitado não existe.',
+	'wikilog-reading-draft' => 'Este artigo wikilog é um rascunho, ainda não foi publicado.',
 	'wikilog-posting-anonymously' => 'Você não está autenticado neste momento;
 o seu comentário será postado anonimamente, identificado pelo endereço da sua conexão Internet.
 Você deve fornecer um pseudônimo acima para identificar o seu comentário ou $1 para este ser devidamente atribuído.',
@@ -5241,6 +5271,7 @@ Você deve fornecer um pseudônimo acima para identificar o seu comentário ou $
 	'wikilog-reject-lc' => 'rejeitar',
 	'wikilog-page-lc' => 'página',
 	'wikilog-history-lc' => 'histórico',
+	'wikilog-doc-import-comment' => 'Documentação Wikilog importada',
 );
 
 /** Romanian (Română)
@@ -5795,12 +5826,17 @@ $messages['sr-ec'] = array(
 	'wikilog-pager-last' => 'последње',
 	'wikilog-pager-empty' => '(нема садржаја)',
 	'wikilog-no-comments' => 'нема коментара',
+	'wikilog-has-comments' => '{{PLURAL:$1|један коментар|$1 коментара}}',
+	'wikilog-summary-footer' => 'Послао/ла $7 ка [[$1|$2]] на $8 у $9, $10.',
+	'wikilog-summary-footer-single' => 'Послао/ла $7 ка $8 у $9, $10.',
 	'wikilog-summary-uncategorized' => 'Некатегорисано',
 	'wikilog-summary-categories' => 'Заведено под $2',
+	'wikilog-edit-signpub' => 'Потпиши и објави овај чланак',
 	'wikilog-comment-permalink' => '$1 у $2',
 	'wikilog-comment-note-item' => 'послато на $1',
 	'wikilog-comment-note-edited' => 'последње измењен на $1 у $2',
 	'wikilog-comment-anonsig' => '$3 (анонимни)',
+	'wikilog-comment-autosumm' => 'Нови коментар од $1: $2',
 	'wikilog-reply-to-comment' => 'Пошаљи реплику на овај коментар',
 	'wikilog-comment-page' => 'Иди на страну овог коментара',
 	'wikilog-comment-edit' => 'Измени овај коментар',
@@ -5810,12 +5846,14 @@ $messages['sr-ec'] = array(
 	'wikilog-feed-description' => 'Прочитај најскорије уносе у овом фиду.',
 	'wikilog-comment-feed-title1' => 'Коментар од $2 (#$1)',
 	'wikilog-comment-feed-title2' => 'Коментар од $2 за $3 (#$1)',
+	'wikilog-title-comments' => 'Коментари - $1',
 	'wikilog-invalid-param' => 'Неисправан параметар: $1.',
 	'wikilog-invalid-author' => 'Непостојећи аутор: $1.',
 	'wikilog-invalid-date' => 'Неисправан датум: $1.',
 	'wikilog-invalid-tag' => 'Неисправан таг: $1.',
 	'wikilog-invalid-file' => 'Неисправан фајл: $1.',
 	'wikilog-file-not-found' => 'Непостојећи фајл: $1.',
+	'wikilog-not-an-image' => 'Овај фајл није слика: $1',
 	'wikilog-comment-is-empty' => 'Послати коментар је празан.',
 	'wikilog-comment-too-long' => 'Послати коменар је предугачак.',
 	'wikilog-comment-invalid-name' => 'Достављено име је погрешно.',
@@ -5827,8 +5865,10 @@ $messages['sr-ec'] = array(
 	'wikilog-form-tag' => 'Таг:',
 	'wikilog-form-date' => 'Датум:',
 	'wikilog-form-status' => 'Статус:',
+	'wikilog-form-preview' => 'Преглед:',
 	'wikilog-form-comment' => 'Коментар:',
 	'wikilog-show-all' => 'Све поруке',
+	'wikilog-show-published' => 'Објављено',
 	'wikilog-show-drafts' => 'Нацрти',
 	'wikilog-submit' => 'Пошаљи',
 	'wikilog-preview' => 'Прегледај',

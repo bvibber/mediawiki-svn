@@ -31,10 +31,12 @@ $messages['ar'] = array(
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author Jim-by
  * @author Wizardist
  */
 $messages['be-tarask'] = array(
 	'vector-collapsiblenav-preference' => 'Дазволіць згортваць навігацыйнае мэню зьлева',
+	'vector-collapsiblenav-more' => 'Болей моваў',
 );
 
 /** Bulgarian (Български)
@@ -72,9 +74,12 @@ $messages['cs'] = array(
 	'vector-collapsiblenav-preference' => 'Povolit levé skládací menu',
 );
 
-/** German (Deutsch) */
+/** German (Deutsch)
+ * @author Kghbln
+ */
 $messages['de'] = array(
 	'vector-collapsiblenav-preference' => 'Zusammenklappbares Navigationsmenü links aktivieren',
+	'vector-collapsiblenav-more' => 'Weitere Sprachen',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -99,10 +104,12 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author Crazymadlover
  * @author Manuelt15
  */
 $messages['es'] = array(
 	'vector-collapsiblenav-preference' => 'Activar el menú de navegación izquierda plegable',
+	'vector-collapsiblenav-more' => 'Más idiomas',
 );
 
 /** Estonian (Eesti)
@@ -135,9 +142,11 @@ $messages['fi'] = array(
 
 /** French (Français)
  * @author IAlex
+ * @author Jean-Frédéric
  */
 $messages['fr'] = array(
 	'vector-collapsiblenav-preference' => 'Activer le menu de navigation à gauche repliable',
+	'vector-collapsiblenav-more' => 'Plus de langues',
 );
 
 /** Galician (Galego)
@@ -145,6 +154,7 @@ $messages['fr'] = array(
  */
 $messages['gl'] = array(
 	'vector-collapsiblenav-preference' => 'Activar o menú de navegación despregable á esquerda',
+	'vector-collapsiblenav-more' => 'Máis linguas',
 );
 
 /** Swiss German (Alemannisch)
@@ -188,6 +198,7 @@ $messages['hu'] = array(
  */
 $messages['ia'] = array(
 	'vector-collapsiblenav-preference' => 'Activar le menu de navigation plicabile a sinistra',
+	'vector-collapsiblenav-more' => 'Plus linguas',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -237,6 +248,7 @@ $messages['lb'] = array(
  */
 $messages['mk'] = array(
 	'vector-collapsiblenav-preference' => 'Овозможи расклопно навигационо мени лево',
+	'vector-collapsiblenav-more' => 'Повеќе јазици',
 );
 
 /** Malayalam (മലയാളം)
@@ -265,6 +277,7 @@ $messages['mt'] = array(
  */
 $messages['nl'] = array(
 	'vector-collapsiblenav-preference' => 'Inklapbaar navigatiemenu inschakelen',
+	'vector-collapsiblenav-more' => 'Meer talen',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -301,6 +314,7 @@ $messages['pms'] = array(
  */
 $messages['pt'] = array(
 	'vector-collapsiblenav-preference' => 'Activar o menu de navegação esquerdo',
+	'vector-collapsiblenav-more' => 'Mais línguas',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
@@ -311,10 +325,13 @@ $messages['pt-br'] = array(
 );
 
 /** Russian (Русский)
+ * @author AlexSm
+ * @author G0rn
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
-	'vector-collapsiblenav-preference' => 'Включить скрываемое левое навигационное меню',
+	'vector-collapsiblenav-preference' => 'Разрешить сворачивать блоки в левом меню',
+	'vector-collapsiblenav-more' => 'Больше языков',
 );
 
 /** Slovenian (Slovenščina)
@@ -336,6 +353,7 @@ $messages['sv'] = array(
  */
 $messages['tl'] = array(
 	'vector-collapsiblenav-preference' => 'Paganahin ang natitiklop na pangkaliwang menu na panlibot',
+	'vector-collapsiblenav-more' => 'Iba pang mga wika',
 );
 
 /** Turkish (Türkçe)

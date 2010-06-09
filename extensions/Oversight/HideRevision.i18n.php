@@ -135,45 +135,45 @@ $messages['af'] = array(
  * @author Juanpabl
  */
 $messages['an'] = array(
-	'hiderevision' => 'Amagar bersions ta cutio',
-	'hiderevision-desc' => 'Amagar as bersions endibiduals ta toz os usuarios por razons legals, etz.',
+	'hiderevision' => 'Amagar versions ta cutio',
+	'hiderevision-desc' => 'Amagar as versions individuals ta totz os usuarios por razons legals, etz.',
 	'group-oversight' => 'Supervisors',
 	'group-oversight-member' => 'Supervisor',
-	'grouppage-oversight' => '{{ns:project}}:Superbisión',
-	'right-oversight' => 'Amostrar una bersión prebiament amagata',
-	'right-hiderevision' => 'Rebisar y recuperar bersions amagatas ta os Almenistradors',
-	'hiderevision-prompt' => 'Numero de bersión á borrar:',
+	'grouppage-oversight' => '{{ns:project}}:Supervisión',
+	'right-oversight' => 'Veyer una versión previament amagata con Extension:Oversight',
+	'right-hiderevision' => 'Amagar versions a os administradors con Extension:Oversight',
+	'hiderevision-prompt' => 'Numero de versión a borrar:',
 	'hiderevision-continue' => 'Continar',
-	'hiderevision-text' => "'''Nomás''' d'ha de fer serbir esto en os casos siguients:
-* Informazión personal inapropiata
-*: ''adrezas particulars, numeros de telefono, numeros de seguridat sozial, etc''
+	'hiderevision-text' => "'''Nomás''' d'ha de fer servir esto en os casos siguients:
+* Información personal inapropiata
+*: ''adrezas particulars, numeros de telefono, numeros de seguridat social, etc''
 
 '''Si abusa d'este sistema puede perder os suyos dreitos.'''
 
-Os elementos borratos no serán bisibles ta dengún en o sitio web, pero os borraus serán rechistratos y si s'entiboca, un almenistrador d'a base de datos puede recuperar-los.",
-	'hiderevision-reason' => 'Razón (se rechistrará pribadament)',
+Os elementos borratos no serán bisibles ta dengún en o sitio web, pero os borraus serán rechistratos y si s'entivoca, un almenistrador d'a base de datos puede recuperar-los.",
+	'hiderevision-reason' => 'Razón (se rechistrará privadament)',
 	'hiderevision-submit' => 'Amagar estos datos ta cutio',
-	'hiderevision-tab' => 'Amagar bersión',
-	'hiderevision-norevisions' => "No s'han endicato as bersions que s'han de borrar.",
+	'hiderevision-tab' => 'Amagar versión',
+	'hiderevision-norevisions' => "No s'han endicato as versions que s'han de borrar.",
 	'hiderevision-noreason' => 'Ha de describir a razón ta iste borrau.',
-	'hiderevision-status' => 'Bersión $1: $2',
-	'hiderevision-success' => 'Archibato y borrato esitosament.',
+	'hiderevision-status' => 'Versión $1: $2',
+	'hiderevision-success' => 'Archivato y borrato con exito.',
 	'hiderevision-error-missing' => "No s'ha trobato en a base de datos.",
-	'hiderevision-error-current' => "No se puede borrar a zaguera edizión d'una pachina.
+	'hiderevision-error-current' => "No se puede borrar a zaguera edición d'una pachina.
 Desfaiga en primeras o zaguer cambio.",
-	'hiderevision-error-delete' => "No s'ha puesto archibar; s'eba borrato dinantes?",
-	'hiderevision-archive-status' => "S'ha borrato a bersión de $1: $2",
-	'oversight-nodiff' => "No podié seguir os cambios pues no bi ha autualment garra bersión anterior ta ista pachina.
+	'hiderevision-error-delete' => "No s'ha puesto archivar; s'eba borrato dinantes?",
+	'hiderevision-archive-status' => "S'ha borrato a versión de $1: $2",
+	'oversight-nodiff' => "No ha estato posible seguir os cambios pus no bi ha actualment garra versión anterior ta ista pachina.
 Puestar que:
-* A pachina s'aiga borrato
-* Esta bersión amagata sía a primer bersión",
-	'oversight-log-hiderev' => 'borrata una edizión de $1',
+* A pachina s'haiga borrato
+* Esta versión amagata sía a primer versión",
+	'oversight-log-hiderev' => 'borrata una edición de $1',
 	'oversight' => 'Supervisión',
 	'oversight-view' => 'detalles',
-	'oversight-difference' => '(Esferenzias dende a bersión anterior autual)',
-	'oversight-prev' => 'Zaguera bersión anterior',
-	'oversight-hidden' => 'Bersión amagata',
-	'oversight-header' => "En o cobaixo bi ye una lista de bersions que han estato amagatas de traza permanent fa poco tiempo. Si fa publica esta informazión podría perder de traza permanent os dreitos d'superbisión",
+	'oversight-difference' => '(Diferencias dende a versión anterior actual)',
+	'oversight-prev' => 'Zaguera versión anterior',
+	'oversight-hidden' => 'Versión amagata',
+	'oversight-header' => "En o cobaixo bi ye una lista de versions que han estato amagatas de traza permanent fa poco tiempo. Si fa publica esta información podría perder de traza permanent os dreitos d'supervisión",
 );
 
 /** Arabic (العربية)

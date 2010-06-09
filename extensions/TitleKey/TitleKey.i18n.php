@@ -26,7 +26,7 @@ $messages['qqq'] = array(
  * @author Juanpabl
  */
 $messages['an'] = array(
-	'titlekey-desc' => 'Socherenzias con prefixos en a busca por títols',
+	'titlekey-desc' => 'Socherencias con prefixos en a busca por títols',
 );
 
 /** Arabic (العربية)

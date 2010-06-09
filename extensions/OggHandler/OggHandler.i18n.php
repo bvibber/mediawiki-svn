@@ -153,35 +153,35 @@ $messages['aln'] = array(
  * @author Juanpabl
  */
 $messages['an'] = array(
-	'ogg-desc' => 'Manullador ta archibos Ogg Theora and Vorbis, con un reproductor JavaScript',
-	'ogg-short-audio' => 'Archibo de son ogg $1, $2',
-	'ogg-short-video' => 'Archibo de bidio ogg $1, $2',
-	'ogg-short-general' => 'Archibo multimedia ogg $1, $2',
-	'ogg-long-audio' => '(Archibo de son ogg $1, durada $2, $3)',
-	'ogg-long-video' => '(Archibo de bidio ogg $1, durada $2, $4×$5 píxels, $3)',
-	'ogg-long-multiplexed' => '(archibo ogg multiplexato audio/bidio, $1, durada $2, $4×$5 píxels, $3 total)',
-	'ogg-long-general' => '(archibo ogg multimedia durada $2, $3)',
-	'ogg-long-error' => '(Archibo ogg no conforme: $1)',
-	'ogg-play' => 'Reproduzir',
+	'ogg-desc' => 'Maneyador ta fichers Ogg Theora and Vorbis, con un reproductor JavaScript',
+	'ogg-short-audio' => 'Fichero de son ogg $1, $2',
+	'ogg-short-video' => 'Fichero de vidio ogg $1, $2',
+	'ogg-short-general' => 'Fichero multimedia ogg $1, $2',
+	'ogg-long-audio' => '(Fichero de son ogg $1, durada $2, $3)',
+	'ogg-long-video' => '(Fichero de vidio ogg $1, durada $2, $4×$5 píxels, $3)',
+	'ogg-long-multiplexed' => '(fichero ogg multiplexato audio/vidio, $1, durada $2, $4×$5 píxels, $3 total)',
+	'ogg-long-general' => '(fichero ogg multimedia durada $2, $3)',
+	'ogg-long-error' => '(Fichero ogg no conforme: $1)',
+	'ogg-play' => 'Reproducir',
 	'ogg-pause' => 'Pausa',
 	'ogg-stop' => 'Aturar',
-	'ogg-play-video' => 'Reproduzir bidio',
-	'ogg-play-sound' => 'Reproduzir son',
+	'ogg-play-video' => 'Reproducir vidio',
+	'ogg-play-sound' => 'Reproducir son',
 	'ogg-no-player' => 'No puedo trobar garra software reproductor suportato.
-Abría d\'<a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">escargar un reproductor</a>.',
+Habría d\'<a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">escargar un reproductor</a>.',
 	'ogg-no-xiphqt' => 'No puedo trobar o component XiphQT ta QuickTime.
-QuickTime no puede reproduzir archibos ogg sin este component.
+QuickTime no puede reproducir ficheros ogg sin este component.
 Puede <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">escargar XiphQT</a> u trigar un atro reproductor.',
-	'ogg-player-videoElement' => "Soporte natibo d'o nabegador",
-	'ogg-player-oggPlugin' => "Plugin d'o nabegador",
+	'ogg-player-videoElement' => "Soporte nativo d'o navegador",
+	'ogg-player-oggPlugin' => "Plugin d'o navegador",
 	'ogg-player-thumbnail' => 'Nomás imachen fixa',
 	'ogg-player-soundthumb' => 'Garra reproductor',
 	'ogg-player-selected' => '(trigato)',
-	'ogg-use-player' => 'Fer serbir o reprodutor:',
+	'ogg-use-player' => 'Fer servir o reproductor:',
 	'ogg-more' => 'Más…',
 	'ogg-dismiss' => 'Zarrar',
-	'ogg-download' => 'Escargar archibo',
-	'ogg-desc-link' => 'Informazión sobre este archibo',
+	'ogg-download' => 'Escargar fichero',
+	'ogg-desc-link' => 'Información sobre este fichero',
 );
 
 /** Arabic (العربية)

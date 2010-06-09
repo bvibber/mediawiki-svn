@@ -516,6 +516,13 @@ $messages['sk'] = array(
 	'ajaxquerypages-desc' => 'Pridáva AJAX na stránky požiadaviek ako [[Special:Shortpages|{{int:shortpages}}]]',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'ajaxquerypages-desc' => 'Doda nekaj Ajaxa stranem s poizvedbami, kot je [[Special:Shortpages|{{int:shortpages}}]]',
+);
+
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */

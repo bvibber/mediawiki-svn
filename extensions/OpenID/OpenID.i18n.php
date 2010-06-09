@@ -299,6 +299,7 @@ $messages['am'] = array(
  * @author Juanpabl
  */
 $messages['an'] = array(
+	'openidlanguage' => 'Idioma',
 	'openid-urls-action' => 'Acción',
 	'openid-urls-delete' => 'Borrar',
 );

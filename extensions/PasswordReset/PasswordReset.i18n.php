@@ -110,7 +110,7 @@ $messages['aln'] = array(
  * @author Juanpabl
  */
 $messages['an'] = array(
-	'passwordreset-submit' => 'Restablir a palabra de paso',
+	'passwordreset-submit' => 'Restablir a parola de paso',
 );
 
 /** Arabic (العربية)

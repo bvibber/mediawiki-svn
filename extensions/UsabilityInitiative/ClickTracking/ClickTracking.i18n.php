@@ -1626,8 +1626,24 @@ $messages['sk'] = array(
 $messages['sl'] = array(
 	'clicktracking' => 'Sledenje klikom Iniciative za uporabnost',
 	'clicktracking-desc' => 'Sledenje klikom, namenjeno odkrivanju dogodkov, ki preprečujejo osvežitev strani med urejanjem',
+	'ct-event-name' => 'Ime dogodka',
+	'ct-expert-header' => 'Klikov »Strokovnjakov«',
+	'ct-intermediate-header' => 'Klikov »Nadaljevalcev«',
+	'ct-beginner-header' => 'Klikov »Začetnikov«',
+	'ct-total-header' => 'Skupno klikov',
+	'ct-start-date' => 'Začetni datum (YYYYMMDD)',
+	'ct-end-date' => 'Končni datum (YYYYMMDD)',
+	'ct-increment-by' => 'Število dni, ki jih predstavlja vsaka podatkovna točka',
+	'ct-beginner' => 'Začetnik',
+	'ct-intermediate' => 'Nadaljevalec',
+	'ct-expert' => 'Strokovnjak',
+	'ct-date-range' => 'Časovno obdobje',
+	'ct-editing' => 'Trenutno urejanje:',
 	'ct-anon-users' => 'Brezimni uporabniki',
+	'ct-user-contribs' => 'Skupno število uporabniških prispevkov',
+	'ct-user-span' => 'Uporabniški prispevki v časovnem razponu',
 	'ct-and' => 'in',
+	'ct-update-table' => 'Posodobi tabelo',
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))

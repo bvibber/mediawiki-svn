@@ -54,18 +54,18 @@ $messages['af'] = array(
  * @author Juanpabl
  */
 $messages['an'] = array(
-	'imagemap_desc' => "Premite mapas d'imachens punchables en o client fendo serbir a etiqueta <code>&lt;imagemap&gt;</code>",
+	'imagemap_desc' => "Premite mapas d'imachens punchables en o client fendo servir a etiqueta <code>&lt;imagemap&gt;</code>",
 	'imagemap_no_image' => "Error: ha d'endicar una imachen a primer ringlera",
-	'imagemap_invalid_image' => 'Error: a imachen no ye conforme u no esiste',
+	'imagemap_invalid_image' => 'Error: a imachen no ye conforme u no existe',
 	'imagemap_bad_image' => 'Error: a imachen ye en a lista negra ta ista pachina',
-	'imagemap_no_link' => "Error: no s'ha trobato garra binclo conforme á la fin d'a ringlera $1",
-	'imagemap_invalid_title' => "Error: títol no conforme en o binclo d'a ringlera $1",
+	'imagemap_no_link' => "Error: no s'ha trobato garra vinclo conforme a la fin d'a ringlera $1",
+	'imagemap_invalid_title' => "Error: títol no conforme en o vinclo d'a ringlera $1",
 	'imagemap_missing_coord' => "Error: No bi'n ha prous de coordinadas ta definir a forma en a ringlera $1",
-	'imagemap_unrecognised_shape' => "Error: no s'ha reconoixito a forma en a ringlera $1, cada linia ha de prenzipiar con una d'as siguients espresions: default, rect, circle u poly",
-	'imagemap_no_areas' => "Error: s'ha d'endicar á o menos una espezificazión d'aria",
+	'imagemap_unrecognised_shape' => "Error: no s'ha reconoixito a forma en a ringlera $1, cada linia ha de prencipiar con una d'as siguients espresions: default, rect, circle u poly",
+	'imagemap_no_areas' => "Error: s'ha d'endicar a o menos una especificación d'aria",
 	'imagemap_invalid_coord' => "Error: coordinada no conforme en a ringlera $1, ha d'estar un numero",
-	'imagemap_invalid_desc' => "Error: A descripzión (desc) espezificata no ye conforme, ha d'estar una de: <code>$1</code>",
-	'imagemap_description' => 'Informazión sobre ista imachen',
+	'imagemap_invalid_desc' => "Error: A descripción (desc) especificata no ye conforme, ha d'estar una de: <code>$1</code>",
+	'imagemap_description' => 'Información sobre ista imachen',
 	'imagemap_poly_odd' => "Error: s'ha trobato un polinomio con un numero impar de coordinadas en a linia $1",
 );
 

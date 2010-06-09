@@ -76,6 +76,16 @@ $messages['fr'] = array(
 	'frontbackforced-forced' => '_(wikiliens forcés)',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'frontbackforced-desc' => 'Engade seccións iniciais e finais ás páxinas, ademais de inserir ligazóns internas forzadas',
+	'frontbackforced-front' => '_(sección inicial)',
+	'frontbackforced-back' => '_(sección final)',
+	'frontbackforced-forced' => '_(ligazóns internas forzadas)',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

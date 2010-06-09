@@ -175,6 +175,14 @@ $messages['id'] = array(
 	'flv-long-desc' => '(video Flash, $1 × $2 piksel, ukuran berkas: $3)',
 );
 
+/** Italian (Italiano)
+ * @author HalphaZ
+ */
+$messages['it'] = array(
+	'flvhandler_desc' => "Permetti l'aggiunta di file Flash Video (.flv) come file normali (es. <nowiki>[[</nowiki>{{ns:file}}:Video.flv<nowiki>]]</nowiki>)",
+	'flv-long-desc' => '(Video Flash, $1 × $2 pixels, dimensione file: $3)',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */

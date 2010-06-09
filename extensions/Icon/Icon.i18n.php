@@ -549,6 +549,14 @@ $messages['ru'] = array(
 	'icon-desc' => 'Позволяет использовать изображения как значки и ссылки',
 );
 
+/** Sinhala (සිංහල)
+ * @author බිඟුවා
+ */
+$messages['si'] = array(
+	'icon-badimage' => 'නුසුදුසු ඡායාරූපයක්',
+	'icon-badwidth' => 'නුසුදුසු පළල',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

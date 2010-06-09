@@ -1432,9 +1432,9 @@ $messages['aln'] = array(
  */
 $messages['an'] = array(
 	'configure-setting-wgActionPaths-key' => 'Acción',
-	'configure-setting-wgUseDynamicDates' => 'Reformateyar as calendatas binculatas',
+	'configure-setting-wgUseDynamicDates' => 'Reformateyar as calendatas vinculatas',
 	'configure-setting-wgDebugLogGroups-value' => 'Fichero',
-	'configure-setting-wgDisableSearchContext' => "Desautibar informazión extra en calendatas espezificas u rebisar articlos d'a busca de resultatos",
+	'configure-setting-wgDisableSearchContext' => "Desactivar información extra en calendatas especificas u revisar articlos d'a busca de resultatos",
 	'configure-setting-wgXhtmlNamespaces-key' => 'Espacio de nombres',
 );
 

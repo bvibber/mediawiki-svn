@@ -1448,6 +1448,7 @@ $messages['pt'] = array(
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
+ * @author Giro720
  * @author Heldergeovane
  * @author Luckas Blade
  */
@@ -1467,7 +1468,11 @@ $messages['pt-br'] = array(
 	'wah-transcode-fail' => 'Falha na transcodificação do arquivo',
 	'wah-javascript-off' => 'Você precisa ter habilitado JavaScript para participar de Wiki@Home',
 	'wah-loading' => 'carregando interface Wiki@Home ...',
+	'wah-menu-jobs' => 'Tarefas',
+	'wah-menu-stats' => 'Estatísticas',
 	'wah-menu-pref' => 'Preferências',
+	'wah-lookingforjob' => 'Procurando uma tarefa ...',
+	'wah-start-on-visit' => 'Iniciar o Wiki@Home sempre que eu visitar este site.',
 );
 
 /** Romanian (Română)
@@ -1622,6 +1627,9 @@ $messages['sr-ec'] = array(
 	'wah-transcode-working' => 'Овај видео се тренутно обрађује. Покушајте опет касније',
 	'wah-javascript-off' => 'Морате омогућити JavaScript, да бисте учествовали у Wiki@Home',
 	'wah-loading' => 'учитавање Wiki@Home интерфејса ...',
+	'wah-menu-pref' => 'Поставке',
+	'wah-uploading' => 'Слање фајла <i>$1</i> је комплетирано',
+	'wah-uploadfail' => 'Слање фајла неуспело',
 );
 
 /** Serbian Latin ekavian (Srpski (latinica))

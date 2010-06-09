@@ -948,7 +948,16 @@ $messages['sk'] = array(
  * @author Dbc334
  */
 $messages['sl'] = array(
+	'createpage' => 'Ustvari stran',
+	'createpage-desc' => 'Doda [[Special:CreatePage|posebno stran]] za ustvarjanje novih strani',
 	'createpage_submitbutton' => 'Potrdi',
+	'createpage_instructions' => 'Vnesite naslov strani, ki jo želite ustvariti:',
+	'createpage_entertitle' => 'Prosimo, vnesite naslov vaše strani.',
+	'createpage_titleexists' => 'Stran z naslovom [[$1]] že obstaja.
+Želite urediti obstoječo stran?',
+	'createpage_tryagain' => 'Ne. Želim ustvariti novo stran z različnim naslovom.',
+	'createpage_editexisting' => 'Da. Želim prispevati k obstoječi strani.',
+	'createpage-badtitle' => '»$1« ni mogoče uporabiti kot naslov strani',
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))

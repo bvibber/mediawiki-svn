@@ -121,6 +121,20 @@ $messages['ca'] = array(
 	'right-lastlogin' => 'Veure la darrera vegada que un usuari va iniciar sessió',
 );
 
+/** Chechen (Нохчийн)
+ * @author Sasan700
+ */
+$messages['ce'] = array(
+	'lastuserlogin' => 'Хьалхо чубаьхкина декъашхой',
+	'lastuserlogin-desc' => 'Декъашхо тlаьххьара маца чуваьлла хан гойту',
+	'lastuserlogin_userid' => 'Лелочуьнан цlе',
+	'lastuserlogin_username' => 'Хьан бакъ цlе',
+	'lastuserlogin_useremail' => 'Хааман зlе',
+	'lastuserlogin_lastlogin' => 'Хьалхо чувалар',
+	'lastuserlogin_daysago' => 'Де хьалха',
+	'right-lastlogin' => 'декъашхо тlаьххьара маца чуваьлла хан гойту',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
@@ -302,10 +316,18 @@ $messages['id'] = array(
 	'right-lastlogin' => 'Lihat terakhir kali pengguna masuklog',
 );
 
-/** Italian (Italiano) */
+/** Italian (Italiano)
+ * @author HalphaZ
+ */
 $messages['it'] = array(
+	'lastuserlogin' => 'Ultimo login utente',
+	'lastuserlogin-desc' => "Visualizza l'ultima volta che un utente si è collegato",
 	'lastuserlogin_userid' => 'Nome utente',
 	'lastuserlogin_username' => 'Nome vero',
+	'lastuserlogin_useremail' => 'E-mail utente',
+	'lastuserlogin_lastlogin' => 'Ultimo login',
+	'lastuserlogin_daysago' => 'Giorni fa',
+	'right-lastlogin' => "Visualizza l'ultima volta che un utente si è collegato",
 );
 
 /** Japanese (日本語)

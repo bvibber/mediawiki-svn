@@ -831,7 +831,15 @@ Skontrolujte, či ste ho napísali správne.',
  * @author Dbc334
  */
 $messages['sl'] = array(
+	'ajaxlogin-desc' => 'Dinamični okvir, ki uporabnikom omogoča prijavo in zapomnitev gesla',
+	'ajaxLogin1' => 'Za dokončanje vaše prijave morate vnesti novo geslo.
+To vas bo povedlo stran iz te urejevalne strani in morda boste izgubili trenutno urejanje.',
+	'ajaxLogin2' => 'Ali ste prepričani?
+Morda boste izgubili spremembe te strani, če jo sedaj zapustite.',
 	'ajaxlogin-create' => 'Ustvarite račun',
+	'al-nosuchuser' => 'Uporabnik z imenom »$1« ne obstaja.
+Uporabniška imena so občutljiva na velikost črk.
+Preverite črkovanje.',
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))

@@ -371,6 +371,15 @@ $messages['si'] = array(
 	'prefs-updates' => 'යාවත්කාලීන කළ',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'prefs-updates' => 'Posodobitve',
+	'updatemyprefs-desc' => 'Nastavitev za uporabnike, ki določa, ali želijo redne posodobitve uporabniškega vmesnika, ko postanejo na voljo',
+	'updatemyprefs-label-message' => 'Samodejno posodobi moje nastavitve z novimi privzetimi nastavitvami in orodji, ko ta postanejo na voljo',
+);
+
 /** Swedish (Svenska)
  * @author Ainali
  * @author Dafer45

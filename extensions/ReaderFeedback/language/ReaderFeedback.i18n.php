@@ -315,13 +315,24 @@ $messages['bg'] = array(
  * @author Bellayet
  */
 $messages['bn'] = array(
+	'readerfeedback' => 'এই পাতা সম্পর্কে আপনি কি ভাবছেন?',
+	'readerfeedback-reliability' => 'নির্ভরযোগ্যতা',
+	'readerfeedback-completeness' => 'সম্পূর্ণতা',
+	'readerfeedback-npov' => 'নিরপেক্ষতা',
+	'readerfeedback-presentation' => 'উপস্থাপনা',
+	'readerfeedback-overall' => 'সার্বিকভাবে',
 	'readerfeedback-level-0' => 'খারাপ',
 	'readerfeedback-level-1' => 'ভাল নয়',
 	'readerfeedback-level-2' => 'মোটামোটি',
 	'readerfeedback-level-3' => 'ভাল',
 	'readerfeedback-level-4' => 'খুবই ভাল',
 	'readerfeedback-submit' => 'জমা',
+	'readerfeedback-submitting' => 'জমা হচ্ছে …',
 	'readerfeedback-finished' => 'ধন্যবাদ!',
+	'readerfeedback-tagfilter' => 'ট্যাগ:',
+	'readerfeedback-tier-high' => 'ভাল',
+	'readerfeedback-tier-medium' => 'মোটামোটি',
+	'readerfeedback-tier-poor' => 'খারাপ',
 	'specialpages-group-feedback' => 'দর্শকের মতামত',
 );
 

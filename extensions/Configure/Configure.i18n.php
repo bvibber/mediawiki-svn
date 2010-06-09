@@ -483,6 +483,7 @@ $messages['an'] = array(
 	'configure-section-namespaces' => 'Espacios de nombres',
 	'configure-section-images' => 'Ficheros',
 	'configure-throttle-action-edit' => 'Editar',
+	'configure-throttle-action-rollback' => 'Revertir',
 );
 
 /** Arabic (العربية)
@@ -3581,7 +3582,7 @@ $messages['gsw'] = array(
 	'configure-ext-ext-dependencies' => "'''Warnig:''' die Erwyterig bruucht die {{PLURAL:$2|Erwyterig|Erwyterige}} zum aktiviert wäre: $1.",
 	'configure-ext-ext-dependency-err' => "'''Fähler:''' d $1-Erwyterig bruucht d $2-Erwyterig zum aktiviert wäre.",
 	'configure-ext-doc' => 'Lueg d Online-Dokumäntation',
-	'configure-ext-schemachange' => "'''Warnig:''' die Erwyterig bruucht e Datebankupdate zum korräkt z funktioniere!",
+	'configure-ext-schemachange' => "'''Warnig:''' die Erwyterig bruucht e [http://www.mediawiki.org/wiki/Manual:Update.php Datebankupdate] zum korräkt z funktioniere!",
 	'configure-ext-settings' => 'Yystellige',
 	'configure-ext-settings-dep-errors' => 'Die Erwaterig cha nit megli gmacht wäre, wel die {{PLURAL:$1|Yystellig e falsche Wärt het|Yystellige e falsche Wärt hän}}:',
 	'configure-ext-settings-dep-error' => '$1: Wärt wu s sott haa: $2, Wärt wu s het: $3',

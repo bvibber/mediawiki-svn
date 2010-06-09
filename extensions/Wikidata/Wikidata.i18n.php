@@ -727,9 +727,17 @@ $messages['am'] = array(
  * @author Juanpabl
  */
 $messages['an'] = array(
+	'langman_langname' => "Nombre d'a luenga:",
+	'langman_addlang' => 'Adhibir idioma',
 	'datasearch' => 'Wikidata: Mirar datos',
+	'datasearch_language' => 'Idioma:',
+	'ow_exporttsv_languages' => 'Idiomas:',
 	'ow_save' => 'Alzar',
+	'ow_history' => 'Historial',
+	'ow_transaction_rollback_button' => 'Revertir',
+	'ow_transaction_rollback_header' => 'Revertir',
 	'ow_dm_OK' => "D'alcuerdo",
+	'ow_Language' => 'Idioma',
 	'ow_create' => 'Creyar',
 );
 
@@ -10428,6 +10436,7 @@ Não foi feita nenhuma operação de cópia.',
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
+ * @author Giro720
  * @author Heldergeovane
  * @author Jorge Morais
  */
@@ -10460,7 +10469,7 @@ $messages['pt-br'] = array(
 	'datasearch_search_text' => 'Texto a pesquisar:',
 	'datasearch_within_words' => 'Dentre as palavras:',
 	'datasearch_within_ext_ids' => 'Dentre identificadores externos:',
-	'datasearch_showing_only' => 'Mostrando apenas um máximo de $1 {{PLURAL:$1|resultado|resultados}}.',
+	'datasearch_showing_only' => 'Mostrando apenas um máximo de $1 {{PLURAL:$1|resultado|resultados}} (de um total de $2).',
 	'datasearch_match_ext_ids' => 'Identificadores externos correspondendo a <i>$1</i>',
 	'datasearch_match_words' => 'Palavras correspondendo a <i>$1</i> e significados associados',
 	'datasearch_match_words_lang' => 'Palavras em <i>$1</i> correspondendo a <i>$2</i> e significados associados',
@@ -10577,7 +10586,7 @@ Por favor, verifique o endereço ''web''.",
 	'ow_Language' => 'Idioma',
 	'ow_LevelAnnotation' => 'Anotação',
 	'ow_LinkAttributeHeader' => 'Atributo da ligação',
-	'ow_Multiple_meanings' => 'Múltiplos significados:',
+	'ow_Multiple_meanings' => 'Definições de "$1"',
 	'ow_NewExactMeaning' => 'Novo significado exato',
 	'ow_OptionAttribute' => 'Propriedade',
 	'ow_OptionAttributeHeader' => 'Atributo da opção',
@@ -10650,6 +10659,7 @@ Por favor, contate o operador ou administrador do servidor.',
 	'ow_needs_xlation_source_lang' => 'Língua de origem:',
 	'ow_needs_xlation_dest_lang' => 'Língua de destino:',
 	'ow_needs_xlation_no_dest_lang' => 'Por favor, especifique uma língua de destino.',
+	'ow_statistics' => 'Wikidata: Estatísticas',
 	'ow_show' => 'Mostrar',
 	'ow_upload' => 'Carregar',
 	'ow_create' => 'Criar',
@@ -11907,9 +11917,13 @@ $messages['sr-ec'] = array(
 	'datasearch_match_ext_ids' => 'Спољашњи идентификатори, који одговарају <i>$1</i>',
 	'datasearch_match_words' => 'Речи које одговарају <i>$1</i> и придруженим значењима',
 	'datasearch_match_words_lang' => 'Речи из <i>$1</i>, које одговарају <i>$2</i> и придруженим значењима',
+	'ow_importtsv_title1' => 'Увези TSV',
 	'ow_importtsv_importing' => 'Увожење TSV података',
 	'ow_importtsv_import_failed' => 'Увоз није прошао',
 	'ow_importtsv_file' => 'TSV Фајл:',
+	'ow_importtsv_nothing_added' => 'Ништа није додато.',
+	'ow_importtsv_nothing_added_test' => 'Ништа није додато (урадили сте тест покретање).',
+	'ow_importtsv_results' => '{{PLURAL:$1|Додата једна дефиниција|Додато $1 дефиниција}} и $2 {{PLURAL:$2|превод|превода}}.',
 	'ow_exporttsv_languages' => 'Језици:',
 	'ow_exporttsv_export_failed' => 'Извоз неуспешан',
 	'ow_save' => 'Сачувај',

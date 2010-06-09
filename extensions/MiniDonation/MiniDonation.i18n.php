@@ -24,7 +24,7 @@ $messages['qqq'] = array(
  * @author Juanpabl
  */
 $messages['an'] = array(
-	'donationform-submit' => 'Donar fendo serbir Paypal',
+	'donationform-submit' => 'Donar fendo servir Paypal',
 );
 
 /** Arabic (العربية)

@@ -534,6 +534,15 @@ $messages['sk'] = array(
 	'formatchanges-editedby' => '$1 - upravil $2 ($3)',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'formatchanges-anonymous' => 'Brezimnež',
+	'formatchanges-createdby' => '$1 – ustvaril $2 ($3)',
+	'formatchanges-editedby' => '$1 – uredil $2 ($3)',
+);
+
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */

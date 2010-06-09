@@ -2140,8 +2140,11 @@ $messages['sk'] = array(
  * @author Dbc334
  */
 $messages['sl'] = array(
+	'badimages' => 'Seznam škodljivih slik',
+	'badimage-desc' => 'Razširi zmožnosti seznama škodljivih slik v MediaWiki',
 	'badimages-add-btn' => 'Dodaj',
 	'badimages-added' => '$1 je bila dodana na seznam.',
+	'badimages-count' => "Na seznamu škodljivih slik {{PLURAL:$1|je|sta|so|je}} '''$1''' {{PLURAL:$1|slika|sliki|slike|slik}}.",
 	'badimages-name' => 'Ime:',
 	'badimages-not-added' => 'Slike ni bilo mogoče dodati.',
 	'badimages-not-removed' => 'Slike ni bilo mogoče odstraniti.',
@@ -2152,6 +2155,12 @@ $messages['sl'] = array(
 	'badimages-removed' => '$1 je bila odstranjena iz seznama.',
 	'badimages-subheading' => 'Trenutni predmeti',
 	'badimages-unprivileged' => '(Nimate ustreznih dovoljenj za spreminjanje seznama)',
+	'badimages-log-name' => 'Seznam škodljivih slik',
+	'badimages-log-header' => 'To je dnevnik sprememb [[{{MediaWiki:Badimages-page}}|seznama škodljivih slik]].',
+	'badimages-log-add' => 'dodal(-a) [[$1]] na seznam škodljivih slik',
+	'badimages-log-remove' => 'odstranil(-a) [[$1]] iz seznama škodljivih slik',
+	'badimages-page' => '{{ns:help}}:Seznam škodljivih slik',
+	'right-badimages' => 'Posodabljanje seznama škodljivih slik',
 );
 
 /** Serbian (Српски / Srpski) */

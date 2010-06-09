@@ -136,6 +136,7 @@ $messages['am'] = array(
  */
 $messages['an'] = array(
 	'imagetagging-article' => 'Pachina:',
+	'imagetagging-imghistory' => 'Historial',
 	'imagetagging-tagcancel-button' => 'Cancelar',
 );
 

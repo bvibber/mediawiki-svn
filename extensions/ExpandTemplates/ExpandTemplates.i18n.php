@@ -78,8 +78,8 @@ $messages['am'] = array(
  */
 $messages['an'] = array(
 	'expandtemplates' => 'Espandir plantillas',
-	'expandtemplates-desc' => '[[Special:ExpandTemplates|Estendilla as plantillas, funzions de parseyo y bariables]] ta amostrar o wikitesto estendillato y prebeyer a pachina',
-	'expand_templates_intro' => 'Ista pachina espezial prene bel testo y espande recursibament todas as plantillas que bi ha en el. Tamién espande as funzions parser como <nowiki>{{</nowiki>#if:...}}, y as bariables como <nowiki>{{</nowiki>CURRENTDAY}}&mdash; en cheneral tot o que sía entre dobles claus.
+	'expandtemplates-desc' => '[[Special:ExpandTemplates|Estendilla as plantillas, funcions de parseyo y variables]] ta amostrar o wikitesto estendillato y preveyer a pachina',
+	'expand_templates_intro' => 'Ista pachina especial prene bel testo y espande recursivament todas as plantillas que bi ha en el. Tamién espande as funcions parser como <nowiki>{{</nowiki>#if:...}}, y as variables como <nowiki>{{</nowiki>CURRENTDAY}}&mdash; en cheneral tot o que sía entre dobles claus.
 Isto lo fa clamando ta o parser correspondient dende o propio MediaWiki.',
 	'expand_templates_title' => 'Títol ta contestualizar ({{PAGENAME}} etz.):',
 	'expand_templates_input' => 'Testo ta espandir:',
@@ -88,7 +88,7 @@ Isto lo fa clamando ta o parser correspondient dende o propio MediaWiki.',
 	'expand_templates_ok' => 'Confirmar',
 	'expand_templates_remove_comments' => 'Sacar comentarios',
 	'expand_templates_generate_xml' => "Amostrar l'árbol de parseyo XML",
-	'expand_templates_preview' => 'Prebeyer',
+	'expand_templates_preview' => 'Preveyer',
 );
 
 /** Arabic (العربية)

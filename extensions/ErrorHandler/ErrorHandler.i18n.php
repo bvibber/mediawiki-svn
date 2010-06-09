@@ -69,6 +69,13 @@ $messages['af'] = array(
 	'errorhandler-error-notice' => 'Kennisgewing',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'errorhandler-error-warning' => 'Aviso',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */

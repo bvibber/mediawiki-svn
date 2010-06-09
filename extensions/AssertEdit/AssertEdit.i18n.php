@@ -34,9 +34,9 @@ $messages['af'] = array(
  * @author Juanpabl
  */
 $messages['an'] = array(
-	'assert_edit_title' => "L'aserzión ha fallato",
-	'assertedit-desc' => "Adibe aserzions d'edizión emplegatas por os bots",
-	'assert_edit_message' => "L'aserzión espezificata ($1) ha fallato.",
+	'assert_edit_title' => "L'aserción ha fallato",
+	'assertedit-desc' => "Adibe asercions d'edición emplegatas por os bots",
+	'assert_edit_message' => "L'aserción especificata ($1) ha fallato.",
 );
 
 /** Arabic (العربية)

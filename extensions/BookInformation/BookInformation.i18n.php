@@ -76,15 +76,15 @@ $messages['am'] = array(
  * @author Juanpabl
  */
 $messages['an'] = array(
-	'bookinfo-header' => "Informazión d'o libro",
-	'bookinformation-desc' => 'Estendilla [[Special:Booksources]] con informazión sobre un serbizio web',
+	'bookinfo-header' => "Información d'o libro",
+	'bookinformation-desc' => 'Estendilla [[Special:Booksources]] con información sobre un servicio web',
 	'bookinfo-result-title' => 'Títol:',
 	'bookinfo-result-author' => 'Autor:',
 	'bookinfo-result-publisher' => 'Editorial:',
-	'bookinfo-result-year' => 'Año:',
+	'bookinfo-result-year' => 'Anyo:',
 	'bookinfo-error-invalidisbn' => "S'ha escrito un ISBN incorreuto.",
-	'bookinfo-error-nosuchitem' => "No esiste l'elemento u no s'ha puesto trobar.",
-	'bookinfo-error-nodriver' => "No s'ha puesto enzetar un Driver de Informazión de Libros (Book Information Driver) conforme.",
+	'bookinfo-error-nosuchitem' => "No existe l'elemento u no s'ha puesto trobar.",
+	'bookinfo-error-nodriver' => "No s'ha puesto encetar un Driver de Información de Libros (Book Information Driver) conforme.",
 	'bookinfo-error-noresponse' => "No bi ha garra respuesta u o tiempo de respuesta s'ha acotolato.",
 	'bookinfo-purchase' => 'Mercar iste libro dende $1',
 	'bookinfo-provider' => 'Furnidor de datos: $1',
