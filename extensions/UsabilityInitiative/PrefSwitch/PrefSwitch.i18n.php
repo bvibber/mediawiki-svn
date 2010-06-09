@@ -98,12 +98,13 @@ The Wikimedia Foundation's User Experience Team has been working with volunteers
 * '''Link wizard:''' An easy-to-use tool allows you to add links to other wiki pages as well as links to external sites.
 * '''Search improvements:''' We have improved search suggestions to get you to the page you are looking for more quickly.
 * '''Other new features:''' We have also introduced a table wizard to make creating tables easier and find and a replace feature to simplify page editing.
-* '''Wikipedia logo:''' We have updated our logo. Read more at the [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d Wikimedia blog].",
+* '''Wikipedia logo:''' We have updated our logo. Read more at the [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d Wikimedia blog].
+
+===Feedback?===
+We would love to hear from you. Please visit our [[$1|feedback page]] or, if you are interested in our ongoing efforts to improve the software, visit our [http://usability.wkimedia.org usability wiki] for more information.",
 	'prefswitch-main-anon' => "===Take me back===
 <span class=\"plainlinks\">[$1 Click here to turn off the new features]</span>. You will be asked to login or create an account first.",
-	'prefswitch-main-on' => "===Feedback?===
-We would love to hear from you. Please visit our [$1 feedback page] or, if you are interested in our ongoing efforts to improve the software, visit our [http://usability.wkimedia.org usability wiki] for more information.
-===Take me back!===
+	'prefswitch-main-on' => "===Take me back!===
 If you would like to turn off the new features, please <span class=\"plainlinks\">[$2 click here]</span>.",
 	'prefswitch-main-off' => "===Try them out!===
 If you would like to turn on the new features, please <span class=\"plainlinks\">[$1 click here]</span>.",
@@ -111,6 +112,7 @@ If you would like to turn on the new features, please <span class=\"plainlinks\"
 Please fill out the optional survey below before clicking "[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]".',
 	'prefswitch-survey-intro-off' => 'Thanks for trying out our new features.
 To help us improve them, please fill out the optional survey below before clicking "[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]".',
+	'prefswitch-feedbackpage' => 'Wikipedia:User experience feedback',
 );
 
 /** Message documentation (Message documentation)
@@ -139,6 +141,7 @@ It is not in used at the referred page, as of 16 May 2010.
 	'prefswitch-survey-answer-whyoff-didntwork' => '{{MediaWiki:Prefswitch-survey-answer-whyoff-hard/qqq}}',
 	'prefswitch-survey-answer-whyoff-notpredictable' => '{{MediaWiki:Prefswitch-survey-answer-whyoff-hard/qqq}}',
 	'prefswitch-survey-answer-whyoff-other' => '{{Identical|Other reason}}',
+	'prefswitch-feedbackpage' => 'The name of the user experience feedback page on this wiki. Should only be translated for ja, es, de, fr, it, ru, pl, pt, nl for now.',
 );
 
 /** Afrikaans (Afrikaans)
@@ -709,6 +712,7 @@ Wenn du die neuen Features einschalten möchtest, <span class="plainlinks">[$1 k
 Bitte fülle die freiwillige Umfrage aus, bevor du auf „[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]“ klickst.',
 	'prefswitch-survey-intro-off' => 'Danke für das Ausprobieren unserer neuen Features.
 Damit wir besser werden können, fülle bitte die freiwillige Umfrage aus, bevor du auf „[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]“ klickst.',
+	'prefswitch-feedbackpage' => 'Wikipedia:Usability-Initiative/Feedback',
 );
 
 /** German (formal address) (Deutsch (Sie-Form))
@@ -1024,6 +1028,7 @@ Si deseas activar las nuevas características, por favor haz <span class="plainl
 Por favor llene la encuesta opcional de abajo presionando "[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]".',
 	'prefswitch-survey-intro-off' => 'Gracias por probar nuestras nuevas características.
 Para ayudarnos a mejorarlas, por favor llene la encuesta de abajo presionando "[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]".',
+	'prefswitch-feedbackpage' => 'Wikipedia:Feedback de experiencia de usuario',
 );
 
 /** Estonian (Eesti)
@@ -1202,6 +1207,7 @@ Si vous souhaitez activer les nouvelles  fonctionnalités, veuillez <span class=
 Si vous le désirez, vous pouvez remplir le sondage ci-dessous avant de cliquer sur « [[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]] ».',
 	'prefswitch-survey-intro-off' => "Merci d'avoir essayé nos nouvelles fonctionnalités.
 Pour nous aider à les améliorer, vous pouvez remplir le sondage optionnel ci-dessous avant de cliquer sur « [[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]] ».",
+	'prefswitch-feedbackpage' => "Wikipédia:Retours d'expérience sur l'utilisabilité",
 );
 
 /** Galician (Galego)
@@ -1669,6 +1675,7 @@ Se vuoi attivare le nuove funzioni, <span class="plainlinks">[$1 clicca qui]</sp
 Per favore, compila il seguente sondaggio facoltativo prima di cliccare "[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]".',
 	'prefswitch-survey-intro-off' => 'Grazie per aver provato le nostre nuove funzioni.
 Per aiutarci a migliorarle, per favore riempi il seguente questionario facoltativo prima di fare clic su "[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]".',
+	'prefswitch-feedbackpage' => 'Progetto:Coordinamento/Usabilità',
 );
 
 /** Japanese (日本語)
@@ -1735,6 +1742,7 @@ $messages['ja'] = array(
 「[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]」をクリックする前に、下記の調査に任意でご協力ください。',
 	'prefswitch-survey-intro-off' => '新機能をお試しいただきありがとうございます。
 更なる改善のために、「[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]」をクリックする前に下記の調査に任意でご協力ください。',
+	'prefswitch-feedbackpage' => 'WP:WUI/F',
 );
 
 /** Georgian (ქართული)
@@ -2197,21 +2205,21 @@ Het verbeteren van de gebruiksvriendelijkheid van onze projecten is een priorite
 In het [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia blogbericht] kunt u meer lezen.
 
 === Dit hebben we veranderd ===
-* '''Navigation:''' We hebben de navigatie voor het lezen en bewerken van pagina's verbeterd.
+* '''Navigatie:''' We hebben de navigatie voor het lezen en bewerken van pagina's verbeterd.
 De tabbladen bovenaan de pagina geven beter aan of u een pagina bekijkt of een overlegpagina, en of u een pagina aan het bekijken of aan het bewerken bent.
 * '''Verbeteringen aan de werkbalk:''' We hebben de werkbalk volledig herontworpen zodat deze eenvoudiger te gebruiken is.
 Nu is het bewerken van pagina's eenvoudiger en intuïtiever.
 * '''Hulp bij verwijzingen:''' een hulpje voor het eenvoudig toevoegen van verwijzingen naar andere wikipagina's en externe websites.
 * '''Verbeteringen in het zoeken:''' we hebben zoeksuggesties verbeterd zodat u de pagina die u zoekt sneller vindt.
 * '''Andere nieuwe mogelijkheden:''' Wij hebben ook een tabelhulpmiddel toegevoegd om het maken van tabellen te vereenvoudigen en een hulpmiddel voor zoeken en vervangen om het bewerken van pagina's te vereenvoudigen.
-* '''Wikipedia logo''': We hebben ons logo. Op de [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ Wikimedia blog] kunt u meer lezen.",
+* '''Wikipedia logo''': We hebben ons logo. Op de [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ Wikimedia blog] kunt u meer lezen.
+
+=== Terugkoppeling? ===
+Wij horen graag van u.
+Bezoek onze <span class=\"plainlinks\">[[$1|pagina voor terugkoppeling]], of ga naar de [http://usability.wkimedia.org bruikbaarheidswiki] voor meer informatie als u geïnteresseerd bent in onze toekomstige plannen.</span>",
 	'prefswitch-main-anon' => '===Terug===
 <span class="plainlinks">[$1 U kunt de nieuwe functionaliteit uitschakelen]</span>. U wordt dan gevraagd om aan te melden of te registreren.',
-	'prefswitch-main-on' => '=== Terugkoppeling? ===
-Wij horen graag van u.
-Bezoek onze <span class="plainlinks">[$1 pagina voor terugkoppeling], of ga naar de [http://usability.wkimedia.org bruikbaarheidswiki] voor meer informatie als u geïnteresseerd bent in onze toekomstige plannen.</span>
-
-=== Nee, bedankt! ===
+	'prefswitch-main-on' => '=== Nee, bedankt! ===
 <span class="plainlinks">[$2 Klik om de nieuwe mogelijkheden uit te schakelen]</span>.',
 	'prefswitch-main-off' => '===Uitproberen!===
 <span class="plainlinks">[$1 Klik hier om de nieuwe mogelijkheden in te schakelen]</span>.',
@@ -2219,6 +2227,7 @@ Bezoek onze <span class="plainlinks">[$1 pagina voor terugkoppeling], of ga naar
 Vul alstublieft de optionele vragenlijst hieronder in voordat u klikt op "[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]".',
 	'prefswitch-survey-intro-off' => 'Bedankt voor het uitproberen van de nieuwe mogelijkheden.
 Vul alstublieft de onderstaande vragenlijst in om ons te helpen ze verder te verbeteren voordat u klikt op "[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]".',
+	'prefswitch-feedbackpage' => 'Wikipedia:Feedback voor het User Experience Team',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
@@ -2364,6 +2373,7 @@ Jeśli chcesz przetestować nowe funkcjonalności po prostu <span class="plainli
 Będziemy wdzięczni za wypełnienie poniższej ankiety zanim klikniesz „[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]”.',
 	'prefswitch-survey-intro-off' => 'Dziękujemy za wypróbowanie nowych funkcjonalności.
 Jeśli chcesz nam pomóc je udoskonalić, przed kliknięciem „[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]” wypełnij poniższą ankietę.',
+	'prefswitch-feedbackpage' => 'Wikipedia:Użyteczność – księga skarg, zażaleń i pomysłów',
 );
 
 /** Piedmontese (Piemontèis)
@@ -2504,6 +2514,7 @@ Se quiser activar as funcionalidades novas <span class="plainlinks">[$1 clique a
 Preencha o questionário opcional abaixo, antes de clicar "[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]", por favor.',
 	'prefswitch-survey-intro-off' => 'Obrigado por ter experimentado as funcionalidades novas.
 Para ajudar-nos a melhorá-las preencha, por favor, o questionário opcional abaixo, antes de clicar "[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]".',
+	'prefswitch-feedbacklink' => 'Wikipedia:Feedback de experiência de usuário',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
@@ -2633,6 +2644,7 @@ $messages['ru'] = array(
 Пожалуйста, ответьте на несколько необязательных вопросов ниже, прежде чем нажмёте «[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]».',
 	'prefswitch-survey-intro-off' => 'Спасибо, что опробовали новые возможности.
 Чтобы помочь нам улучшить их, пожалуйста, ответьте на несколько необязательных вопросов, прежде чем нажмёте «[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]».',
+	'prefswitch-feedbackpage' => 'Википедия:Отзывы о новом оформлении',
 );
 
 /** Sardinian (Sardu)

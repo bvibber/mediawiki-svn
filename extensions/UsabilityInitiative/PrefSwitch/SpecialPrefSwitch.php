@@ -231,8 +231,8 @@ class SpecialPrefSwitch extends SpecialPage {
 			$html .= Xml::closeElement( 'form' );
 			$wgOut->addHtml( $html );
 		} else {
-			$wgOut->addWikiMsg(
-				'prefswitch-main', array( 'parse' )
+			$wgOut->addWikiMsgArray(
+				'prefswitch-main', wfMsg( 'prefswitch-feedbackpage' ), array( 'parse' )
 			);
 			$state = self::userState( $wgUser );
 			switch ( $state ) {
