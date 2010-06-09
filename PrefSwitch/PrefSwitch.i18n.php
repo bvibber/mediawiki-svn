@@ -2610,6 +2610,7 @@ Se quiser activar as funcionalidades novas [$1 clique aqui], por favor.',
 Preencha o questionário opcional abaixo, antes de clicar "[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]", por favor.',
 	'prefswitch-survey-intro-off' => 'Obrigado por ter experimentado as funcionalidades novas.
 Para ajudar-nos a melhorá-las preencha, por favor, o questionário opcional abaixo, antes de clicar "[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]".',
+	'prefswitch-feedbackpage' => 'Wikipedia:Feedback de experiência de usuário',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
