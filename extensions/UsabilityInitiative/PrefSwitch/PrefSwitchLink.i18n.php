@@ -514,6 +514,10 @@ $messages['si'] = array(
  * @author Dbc334
  */
 $messages['sl'] = array(
+	'prefswitch-link-anon' => 'Nove funkcije',
+	'tooltip-pt-prefswitch-link-anon' => 'Izvedite več o novih funkcijah',
+	'tooltip-pt-prefswitch-link-on' => 'Onemogoči nove funkcije',
+	'prefswitch-link-off' => 'Nove funkcije',
 	'tooltip-pt-prefswitch-link-off' => 'Preizkusite nove funkcije',
 );
 
