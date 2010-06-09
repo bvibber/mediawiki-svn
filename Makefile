@@ -132,7 +132,8 @@ WikiEditor/WikiEditor.hooks.php: $(WIKIEDITOR_HOOKS)
 Vector/Vector.hooks.php: $(VECTOR_HOOKS)
 
 %.hooks.php: $(WIKIEDITOR_HOOKS)
-	for file in $?; do basefile="$${file#$(shell echo $* | sed "s/\([^\/]*\/\).*/\\1/")}"; sed -i "s/\(.*'src' => '$${basefile//\//\\/}', 'version' => \)\([0-9 +]*\)\(.*\)/\\1 \\2+ 1 \\3/" $@; done
+	for file in $?; do basefile="$${file#$(shell echo $* | sed "s/\([^\/]*\/\).*/\\1/")}"; sed -i "s/\(.*'src' => '$${basefile//\//\\/}', 'version' => \)\([0-9+]*\)\(.*\)/\\1\\2+1\\3/" $@; \
+											for i in $$(grep --only-matching -P " ([0-9]+(\+[0-9]))+ " $@); do sed -i "s/ $$i / $$(bc <<< $$i) /" $@; done; done 
 
 # Actions
 
