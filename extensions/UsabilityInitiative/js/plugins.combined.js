@@ -5255,7 +5255,8 @@ $.fn.autoEllipsis = function( options ) {
 		'position': 'center',
 		'tooltip': false,
 		'restoreText': false,
-		'hasSpan': false
+		'hasSpan': false,
+		'matchText': null
 	}, options );
 	$(this).each( function() {
 		var $this = $(this);
@@ -5266,51 +5267,88 @@ $.fn.autoEllipsis = function( options ) {
 				$this.text( $this.data( 'autoEllipsis.originalText' ) );
 			}
 		}
-		var text = $this.text();
-		var w = $this.width();
-		var $text;
-		if ( options.hasSpan ) {
-			$text = $this.children( 'span' );
+		
+		// container element - used for measuring against
+		var $container = $this;
+		// trimmable text element - only the text within this element will be trimmed
+		var $trimmableText = null;
+		// protected text element - the width of this element is counted, but next is never trimmed from it
+		var $protectedText = null;
+
+		if ( options.matchText ) {
+			var text = $this.text();
+			var matchedText = options.matchText;
+			$trimmableText =  $( '<span />' )
+				.css( 'whiteSpace', 'nowrap' )
+				.addClass( 'autoellipsis-trimmed' )
+				.text( $this.text().substr( matchedText.length, $this.text().length ) );
+			$protectedText = $( '<span />' )
+				.addClass( 'autoellipsis-matched' )
+				.css( 'whiteSpace', 'nowrap' )
+				.text( options.matchText );
+			$container
+				.empty()
+				.append( $protectedText )
+				.append( $trimmableText );
 		} else {
-			$text = $( '<span />' ).css( 'whiteSpace', 'nowrap' );
-			$this.empty().append( $text );
+			if ( options.hasSpan ) {
+				$trimmableText = $this.children( options.selector );
+			} else {
+				$trimmableText = $( '<span />' )
+					.css( 'whiteSpace', 'nowrap' )
+					.text( $this.text() );
+				$this
+					.empty()
+					.append( $trimmableText );
+			}
 		}
 		
+		var text = $container.text();
+		var trimmableText = $trimmableText.text();
+		var w = $container.width();
+		var pw = $protectedText ? $protectedText.width() : 0;
 		// Try cache
 		if ( !( text in cache ) ) {
 			cache[text] = {};
 		}
-		if ( w in cache[text] ) {
-			$text.text( cache[text][w] );
+		if ( options.matchText && !( options.matchText in cache[text] ) ) {
+			cache[text][options.matchText] = {};
+		}
+		if ( !options.matchText && w in cache[text] ) {
+			$container.html( cache[text][w] );
 			if ( options.tooltip )
-				$text.attr( 'title', text );
+				$container.attr( 'title', text );
 			return;
 		}
-		
-		$text.text( text );
-		if ( $text.width() > w ) {
+		if( options.matchText && options.matchText in cache[text] && w in cache[text][options.matchText] ) {
+			$container.html( cache[text][options.matchText][w] );
+			if ( options.tooltip )
+				$container.attr( 'title', text );
+			return;
+		}
+		if ( $trimmableText.width() + pw > w ) {
 			switch ( options.position ) {
 				case 'right':
 					// Use binary search-like technique for efficiency
-					var l = 0, r = text.length;
+					var l = 0, r = trimmableText.length;
 					do {
 						var m = Math.ceil( ( l + r ) / 2 );
-						$text.text( text.substr( 0, m ) + '...' );
-						if ( $text.width() > w ) {
+						$trimmableText.text( trimmableText.substr( 0, m ) + '...' );
+						if ( $trimmableText.width() + pw > w ) {
 							// Text is too long
 							r = m - 1;
 						} else {
 							l = m;
 						}
 					} while ( l < r );
-					$text.text( text.substr( 0, l ) + '...' );
+					$trimmableText.text( trimmableText.substr( 0, l ) + '...' );
 					break;
 				case 'center':
 					// TODO: Use binary search like for 'right'
-					var i = [Math.round( text.length / 2 ), Math.round( text.length / 2 )];
+					var i = [Math.round( trimmableText.length / 2 ), Math.round( trimmableText.length / 2 )];
 					var side = 1; // Begin with making the end shorter
-					while ( $text.outerWidth() > w  && i[0] > 0 ) {
-						$text.text( text.substr( 0, i[0] ) + '...' + text.substr( i[1] ) );
+					while ( $trimmableText.outerWidth() + pw > w  && i[0] > 0 ) {
+						$trimmableText.text( trimmableText.substr( 0, i[0] ) + '...' + trimmableText.substr( i[1] ) );
 						// Alternate between trimming the end and begining
 						if ( side == 0 ) {
 							// Make the begining shorter
@@ -5326,16 +5364,22 @@ $.fn.autoEllipsis = function( options ) {
 				case 'left':
 					// TODO: Use binary search like for 'right'
 					var r = 0;
-					while ( $text.outerWidth() > w && r < text.length ) {
-						$text.text( '...' + text.substr( r ) );
+					while ( $trimmableText.outerWidth() + pw > w && r < trimmableText.length ) {
+						$trimmableText.text( '...' + trimmableText.substr( r ) );
 						r++;
 					}
 					break;
 			}
 		}
-		if ( options.tooltip )
-			$text.attr( 'title', text );
-		cache[text][w] = $text.text();
+		if ( options.tooltip ) {
+			$container.attr( 'title', text );
+		}
+		if ( options.matchText ) {
+			cache[text][options.matchText][w] = $container.html();
+		} else {
+			cache[text][w] = $container.html();
+		}
+		
 	} );
 };
 
@@ -5997,6 +6041,8 @@ $.fn.expandableField = function() {
  *		Type: Number, Range: 1 - infinity, Default: 3
  * positionFromLeft: Whether to position the suggestion box with the left attribute or the right
  *		Type: Boolean, Default: true
+ * highlightInput: Whether to hightlight matched portions of the input or not
+ *		Type: Boolean, Default: false
  */
 ( function( $ ) {
 
@@ -6104,7 +6150,9 @@ $.suggestions = {
 						$results.empty();
 						var expWidth = -1;
 						var $autoEllipseMe = $( [] );
+						var matchedText = null;
 						for ( var i = 0; i < context.config.suggestions.length; i++ ) {
+							var text = context.config.suggestions[i];
 							var $result = $( '<div />' )
 								.addClass( 'suggestions-result' )
 								.attr( 'rel', i )
@@ -6115,16 +6163,18 @@ $.suggestions = {
 									);
 								} )
 								.appendTo( $results );
-							
 							// Allow custom rendering
 							if ( typeof context.config.result.render == 'function' ) {
 								context.config.result.render.call( $result, context.config.suggestions[i] );
 							} else {
 								// Add <span> with text
+								if( context.config.highlightInput ) {
+									matchedText = text.substr( 0, context.data.prevText.length );
+								}
 								$result.append( $( '<span />' )
 										.css( 'whiteSpace', 'nowrap' )
-										.text( context.config.suggestions[i] )
-								);
+										.text( text )
+									);
 								
 								// Widen results box if needed
 								// New width is only calculated here, applied later
@@ -6141,7 +6191,7 @@ $.suggestions = {
 							context.data.$container.width( Math.min( expWidth, maxWidth ) );
 						}
 						// autoEllipse the results. Has to be done after changing the width
-						$autoEllipseMe.autoEllipsis( { hasSpan: true, tooltip: true } );
+						$autoEllipseMe.autoEllipsis( { hasSpan: true, tooltip: true, matchText: matchedText } );
 					}
 				}
 				break;
@@ -6156,6 +6206,7 @@ $.suggestions = {
 				break;
 			case 'submitOnClick':
 			case 'positionFromLeft':
+			case 'highlightInput':
 				context.config[property] = value ? true : false;
 				break;
 		}
@@ -6170,7 +6221,7 @@ $.suggestions = {
 		if ( !result.get || selected.get( 0 ) != result.get( 0 ) ) {
 			if ( result == 'prev' ) {
 				if( selected.is( '.suggestions-special' ) ) {
-					result = context.data.$container.find( '.suggestions-results div:last' )
+					result = context.data.$container.find( '.suggestions-result:last' )
 				} else {
 					result = selected.prev();
 					if ( selected.length == 0 ) {
@@ -6230,7 +6281,7 @@ $.suggestions = {
 			// Arrow down
 			case 40:
 				if ( wasVisible ) {
-					$.suggestions.highlight( context, 'next', false );
+					$.suggestions.highlight( context, 'next', true );
 				} else {
 					$.suggestions.update( context, false );
 				}
@@ -6239,7 +6290,7 @@ $.suggestions = {
 			// Arrow up
 			case 38:
 				if ( wasVisible ) {
-					$.suggestions.highlight( context, 'prev', false );
+					$.suggestions.highlight( context, 'prev', true );
 				}
 				preventDefault = wasVisible;
 				break;
@@ -6307,7 +6358,8 @@ $.fn.suggestions = function() {
 					'delay': 120,
 					'submitOnClick': false,
 					'maxExpandFactor': 3,
-					'positionFromLeft': true
+					'positionFromLeft': true,
+					'highlightInput': false
 				}
 			};
 		}

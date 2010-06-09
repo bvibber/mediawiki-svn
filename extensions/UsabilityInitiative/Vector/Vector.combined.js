@@ -568,7 +568,8 @@ $j(document).ready( function() {
 			}
 		},
 		delay: 120,
-		positionFromLeft: $j( 'body' ).is( '.rtl' )
+		positionFromLeft: $j( 'body' ).is( '.rtl' ),
+		highlightInput: true
 	} )
 		.bind( 'paste cut click', function() {
 			$j( this ).trigger( 'keypress' );

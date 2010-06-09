@@ -38,6 +38,8 @@
  *		Type: Number, Range: 1 - infinity, Default: 3
  * positionFromLeft: Whether to position the suggestion box with the left attribute or the right
  *		Type: Boolean, Default: true
+ * highlightInput: Whether to hightlight matched portions of the input or not
+ *		Type: Boolean, Default: false
  */
 ( function( $ ) {
 
@@ -145,7 +147,9 @@ $.suggestions = {
 						$results.empty();
 						var expWidth = -1;
 						var $autoEllipseMe = $( [] );
+						var matchedText = null;
 						for ( var i = 0; i < context.config.suggestions.length; i++ ) {
+							var text = context.config.suggestions[i];
 							var $result = $( '<div />' )
 								.addClass( 'suggestions-result' )
 								.attr( 'rel', i )
@@ -156,16 +160,18 @@ $.suggestions = {
 									);
 								} )
 								.appendTo( $results );
-							
 							// Allow custom rendering
 							if ( typeof context.config.result.render == 'function' ) {
 								context.config.result.render.call( $result, context.config.suggestions[i] );
 							} else {
 								// Add <span> with text
+								if( context.config.highlightInput ) {
+									matchedText = text.substr( 0, context.data.prevText.length );
+								}
 								$result.append( $( '<span />' )
 										.css( 'whiteSpace', 'nowrap' )
-										.text( context.config.suggestions[i] )
-								);
+										.text( text )
+									);
 								
 								// Widen results box if needed
 								// New width is only calculated here, applied later
@@ -182,7 +188,7 @@ $.suggestions = {
 							context.data.$container.width( Math.min( expWidth, maxWidth ) );
 						}
 						// autoEllipse the results. Has to be done after changing the width
-						$autoEllipseMe.autoEllipsis( { hasSpan: true, tooltip: true } );
+						$autoEllipseMe.autoEllipsis( { hasSpan: true, tooltip: true, matchText: matchedText } );
 					}
 				}
 				break;
@@ -197,6 +203,7 @@ $.suggestions = {
 				break;
 			case 'submitOnClick':
 			case 'positionFromLeft':
+			case 'highlightInput':
 				context.config[property] = value ? true : false;
 				break;
 		}
@@ -211,7 +218,7 @@ $.suggestions = {
 		if ( !result.get || selected.get( 0 ) != result.get( 0 ) ) {
 			if ( result == 'prev' ) {
 				if( selected.is( '.suggestions-special' ) ) {
-					result = context.data.$container.find( '.suggestions-results div:last' )
+					result = context.data.$container.find( '.suggestions-result:last' )
 				} else {
 					result = selected.prev();
 					if ( selected.length == 0 ) {
@@ -271,7 +278,7 @@ $.suggestions = {
 			// Arrow down
 			case 40:
 				if ( wasVisible ) {
-					$.suggestions.highlight( context, 'next', false );
+					$.suggestions.highlight( context, 'next', true );
 				} else {
 					$.suggestions.update( context, false );
 				}
@@ -280,7 +287,7 @@ $.suggestions = {
 			// Arrow up
 			case 38:
 				if ( wasVisible ) {
-					$.suggestions.highlight( context, 'prev', false );
+					$.suggestions.highlight( context, 'prev', true );
 				}
 				preventDefault = wasVisible;
 				break;
@@ -348,7 +355,8 @@ $.fn.suggestions = function() {
 					'delay': 120,
 					'submitOnClick': false,
 					'maxExpandFactor': 3,
-					'positionFromLeft': true
+					'positionFromLeft': true,
+					'highlightInput': false
 				}
 			};
 		}
