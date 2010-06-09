@@ -11634,9 +11634,9 @@ fn: {
 			character = {
 				'label' : character,
 				'action' : {
-					'type' : 'encapsulate',
+					'type' : 'replace',
 					'options' : {
-						'pre' : character
+						'peri' : character
 					}
 				}
 			};
@@ -11644,9 +11644,9 @@ fn: {
 			character = {
 				'label' : character[0],
 				'action' : {
-					'type' : 'encapsulate',
+					'type' : 'replace',
 					'options' : {
-						'pre' : character[1]
+						'peri' : character[1]
 					}
 				}
 			};
