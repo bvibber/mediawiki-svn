@@ -380,10 +380,12 @@ $j( document ).ready( function() {
 				if ( typeof $j.collapsibleTabs != 'undefined' ){
 					$j.collapsibleTabs.handleResize();
 				}
-			}
+			},
+			'expandToLeft': ! $j( 'body' ).is( '.rtl' )
 		} )
+		.css( 'float', $j( 'body' ).is( '.rtl' ) ? 'right' : 'left' )
 		.siblings( 'button' )
-		.css( 'float', 'right' );
+		.css( 'float', $j( 'body' ).is( '.rtl' ) ? 'left' : 'right' );
 });
 /* Prototype code to demonstrate proposed edit page footer cleanups */
 /* First draft and will be changing greatly */
