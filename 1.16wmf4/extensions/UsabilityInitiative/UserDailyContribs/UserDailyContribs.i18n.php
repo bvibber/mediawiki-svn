@@ -31,6 +31,13 @@ $messages['af'] = array(
 	'userdailycontribs-desc' => 'Daaglikse gebruikersbydraes vir die uitbreiding om gebruikers se klieks mee te volg',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'userdailycontribs-desc' => 'Kontributet e përdoruesit çdo ditë për ndjekjen klikoni extension',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -71,6 +78,13 @@ $messages['br'] = array(
  */
 $messages['bs'] = array(
 	'userdailycontribs-desc' => 'Dnevni doprinosi korisnka za proširenje praćenja klikova',
+);
+
+/** Catalan (Català)
+ * @author Vriullop
+ */
+$messages['ca'] = array(
+	'userdailycontribs-desc' => "Contribucions diàries dels usuaris per a l'extensió de seguiment de clics",
 );
 
 /** Czech (Česky)
@@ -310,7 +324,7 @@ $messages['pt-br'] = array(
  * @author Stelistcristi
  */
 $messages['ro'] = array(
-	'userdailycontribs-desc' => 'Contribuţiile zilnice ale contribuitorilor pentru monitorizarea gradului de click-uri',
+	'userdailycontribs-desc' => 'Contribuțiile zilnice ale contribuitorilor pentru monitorizarea gradului de click-uri',
 );
 
 /** Tarandíne (Tarandíne)
@@ -360,6 +374,13 @@ $messages['sl'] = array(
  */
 $messages['sv'] = array(
 	'userdailycontribs-desc' => 'Dagliga användarbidrag för tilläggsfunktionen klickningsspårning',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'userdailycontribs-desc' => 'Pang-araw-araw na ambag ng tagagamit para sa pagpindot ng dugtong na pangsubaybay',
 );
 
 /** Turkish (Türkçe)

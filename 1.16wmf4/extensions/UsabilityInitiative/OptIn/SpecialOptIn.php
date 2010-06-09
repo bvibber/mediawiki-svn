@@ -379,7 +379,7 @@ class SpecialOptIn extends SpecialPage {
 						"survey-$id-other-radio",
 						$answer === 'other'
 					) .
-					'&nbsp;' .
+					'&#160;' .
 					Xml::input(
 						"survey-$id-other",
 						false,
@@ -415,7 +415,7 @@ class SpecialOptIn extends SpecialPage {
 						in_array( 'other', $answers, true ),
 						array( 'value' => 'other' )
 					) .
-					'&nbsp;' .
+					'&#160;' .
 					Xml::input(
 						"survey-$id-other",
 						false,

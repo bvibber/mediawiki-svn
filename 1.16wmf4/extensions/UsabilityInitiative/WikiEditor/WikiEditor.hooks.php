@@ -16,16 +16,16 @@ class WikiEditorHooks {
 			array( 'src' => 'Modules/Preview/Preview.js', 'version' => 6 ),
 			array( 'src' => 'Modules/Publish/Publish.js', 'version' => 6 ),
 			array( 'src' => 'Modules/Toc/Toc.js', 'version' => 7 ),
-			array( 'src' => 'Modules/Toolbar/Toolbar.js', 'version' => 89 ),
+			array( 'src' => 'Modules/Toolbar/Toolbar.js', 'version' => 93 ),
 			array( 'src' => 'Modules/TemplateEditor/TemplateEditor.js', 'version' => 6 ),
 			array( 'src' => 'Modules/Templates/Templates.js', 'version' => 1 ),
 			array( 'src' => 'Modules/AddMediaWizard/AddMediaWizard.js', 'version' => 6 ),
 		),
 		'combined' => array(
-			array( 'src' => 'WikiEditor.combined.js', 'version' => 94 ),
+			array( 'src' => 'WikiEditor.combined.js', 'version' => 99 ),
 		),
 		'minified' => array(
-			array( 'src' => 'WikiEditor.combined.min.js', 'version' => 94 ),
+			array( 'src' => 'WikiEditor.combined.min.js', 'version' => 99 ),
 		),
 	);
 	static $messages = array(
@@ -443,15 +443,11 @@ class WikiEditorHooks {
 				basename( dirname( __FILE__ ) ) . '/' . $script['src'], $script['version']
 			);
 		}
-		// Preferences (maybe the UsabilityInitiative class could do most of this for us?)
-		$wgOut->addScript(
-			Xml::tags(
-				'script',
-				array( 'type' => $wgJsMimeType ),
-				'var wgWikiEditorPreferences = ' . FormatJson::encode( $preferences, true ) . ";\n" .
-				'var wgWikiEditorEnabledModules = ' . FormatJson::encode( $enabledModules, true ) . ';'
-			)
-		);
+		// Preferences
+		UsabilityInitiativeHooks::addVariables( array(
+			'wgWikiEditorPreferences' => $preferences,
+			'wgWikiEditorEnabledModules' => $enabledModules,
+		) );
 		return true;
 	}
 	

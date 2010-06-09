@@ -34,6 +34,16 @@ $messages['af'] = array(
 	'wikieditor-template-editor-preference' => 'Aktiveer vorm-gebaseerde wysiging van wikisjablone',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'wikieditor-template-editor-preference' => 'Lejo redaktimin e bazuar në formë të wiki templates',
+	'wikieditor-template-editor-dialog-title' => 'Edit template',
+	'wikieditor-template-editor-dialog-submit' => 'Update',
+	'wikieditor-template-editor-dialog-cancel' => 'Anuloj',
+);
+
 /** Aragonese (Aragonés)
  * @author Juanpabl
  */
@@ -110,12 +120,23 @@ $messages['bs'] = array(
 
 /** Catalan (Català)
  * @author Paucabot
+ * @author Vriullop
  */
 $messages['ca'] = array(
 	'wikieditor-template-editor-preference' => "Permetre l'edició basada en formularis de plantilles",
-	'wikieditor-template-editor-dialog-title' => 'Edita la plantilla',
+	'wikieditor-template-editor-dialog-title' => 'Modifica la plantilla',
 	'wikieditor-template-editor-dialog-submit' => 'Actualitza',
-	'wikieditor-template-editor-dialog-cancel' => 'Cancel·la',
+	'wikieditor-template-editor-dialog-cancel' => 'Anuŀla',
+);
+
+/** Chechen (Нохчийн)
+ * @author Sasan700
+ */
+$messages['ce'] = array(
+	'wikieditor-template-editor-preference' => 'Лата é куцкепа рéдаккхар барамаши гlонца',
+	'wikieditor-template-editor-dialog-title' => 'Куцкеп хийцам',
+	'wikieditor-template-editor-dialog-submit' => 'Карлаяккха',
+	'wikieditor-template-editor-dialog-cancel' => 'Цаоьшу',
 );
 
 /** Czech (Česky)
@@ -225,6 +246,17 @@ $messages['eu'] = array(
 	'wikieditor-template-editor-dialog-cancel' => 'Utzi',
 );
 
+/** Persian (فارسی)
+ * @author Ebraminio
+ * @author Huji
+ */
+$messages['fa'] = array(
+	'wikieditor-template-editor-preference' => 'فعال‌سازی ویرایش مبتنی بر فرم الگوهای ویکی',
+	'wikieditor-template-editor-dialog-title' => 'ویرایش الگو',
+	'wikieditor-template-editor-dialog-submit' => 'به روز رسانی',
+	'wikieditor-template-editor-dialog-cancel' => 'لغو',
+);
+
 /** Finnish (Suomi)
  * @author Crt
  */
@@ -322,6 +354,11 @@ $messages['ia'] = array(
 $messages['id'] = array(
 	'wikieditor-template-editor-preference' => 'Aktifkan penyuntingan berbasis form dari templat wiki',
 	'wikieditor-template-editor-dialog-cancel' => 'Batalkan',
+);
+
+/** Igbo (Igbo) */
+$messages['ig'] = array(
+	'wikieditor-template-editor-dialog-cancel' => 'Emekwàlà',
 );
 
 /** Italian (Italiano)
@@ -484,6 +521,13 @@ $messages['pms'] = array(
 	'wikieditor-template-editor-dialog-cancel' => 'Scancela',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'wikieditor-template-editor-dialog-submit' => 'اوسمهالول',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  */
@@ -542,9 +586,12 @@ $messages['sah'] = array(
 
 /** Sinhala (සිංහල)
  * @author Calcey
+ * @author බිඟුවා
  */
 $messages['si'] = array(
 	'wikieditor-template-editor-preference' => 'විකි අච්චුවල පෝරම-මූලික සංස්කරණය සක්‍රීය කරන්න',
+	'wikieditor-template-editor-dialog-submit' => 'යාවත්කාලීන කළ',
+	'wikieditor-template-editor-dialog-cancel' => 'අත් හරින්න',
 );
 
 /** Slovak (Slovenčina)
@@ -562,6 +609,15 @@ $messages['sl'] = array(
 	'wikieditor-template-editor-dialog-title' => 'Uredi predlogo',
 	'wikieditor-template-editor-dialog-submit' => 'Posodobi',
 	'wikieditor-template-editor-dialog-cancel' => 'Prekliči',
+);
+
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'wikieditor-template-editor-dialog-title' => 'Измени шаблон',
+	'wikieditor-template-editor-dialog-submit' => 'Ажурирај',
+	'wikieditor-template-editor-dialog-cancel' => 'Поништи',
 );
 
 /** Swedish (Svenska)
@@ -583,6 +639,16 @@ $messages['te'] = array(
 	'wikieditor-template-editor-dialog-title' => 'మూసని మార్చు',
 	'wikieditor-template-editor-dialog-submit' => 'తాజాకరించు',
 	'wikieditor-template-editor-dialog-cancel' => 'రద్దుచేయి',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'wikieditor-template-editor-preference' => 'Paganahin ang pagpapatnugot ng mga suleras na pangwiki na nakasalalay sa pormularyo',
+	'wikieditor-template-editor-dialog-title' => 'Baguhin ang suleras',
+	'wikieditor-template-editor-dialog-submit' => 'Isapanahon',
+	'wikieditor-template-editor-dialog-cancel' => 'Huwag ituloy',
 );
 
 /** Turkish (Türkçe)
@@ -648,9 +714,13 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Gaoxuewei
+ * @author Horacewai2
  * @author Liangent
  */
 $messages['zh-hant'] = array(
 	'wikieditor-template-editor-preference' => '啟用wiki模板的表單式編輯',
+	'wikieditor-template-editor-dialog-title' => '編輯模板',
+	'wikieditor-template-editor-dialog-submit' => '更新',
+	'wikieditor-template-editor-dialog-cancel' => '取消',
 );
 

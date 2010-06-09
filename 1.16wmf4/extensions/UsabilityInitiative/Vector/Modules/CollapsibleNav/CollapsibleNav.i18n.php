@@ -13,6 +13,14 @@ $messages = array();
  */
 $messages['en'] = array(
 	'vector-collapsiblenav-preference' => 'Enable collapsible left navigation menu',
+	'vector-collapsiblenav-more' => 'More languages',
+);
+
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'vector-collapsiblenav-preference' => 'Aktivizo paloset la navigacion menu',
 );
 
 /** Arabic (العربية)
@@ -27,6 +35,13 @@ $messages['ar'] = array(
  */
 $messages['be-tarask'] = array(
 	'vector-collapsiblenav-preference' => 'Дазволіць згортваць навігацыйнае мэню зьлева',
+);
+
+/** Bulgarian (Български)
+ * @author Spiritia
+ */
+$messages['bg'] = array(
+	'vector-collapsiblenav-preference' => 'Включване на сгъваемо/разгъваемо меню за навигация вляво',
 );
 
 /** Bengali (বাংলা)
@@ -104,6 +119,20 @@ $messages['eu'] = array(
 	'vector-collapsiblenav-preference' => 'Ezkerreko nabigazio menua irekigarri bihurtzen du',
 );
 
+/** Persian (فارسی)
+ * @author Ebraminio
+ */
+$messages['fa'] = array(
+	'vector-collapsiblenav-preference' => 'فعال‌کردن منوی تاشوی ناوبری  سمت چپ',
+);
+
+/** Finnish (Suomi)
+ * @author Str4nd
+ */
+$messages['fi'] = array(
+	'vector-collapsiblenav-preference' => 'Ota käyttöön vasemman navigaatiovalikon piilottaminen',
+);
+
 /** French (Français)
  * @author IAlex
  */
@@ -123,6 +152,7 @@ $messages['gl'] = array(
  */
 $messages['gsw'] = array(
 	'vector-collapsiblenav-preference' => 'Yyklappbar Navgationsmenü yyschalte',
+	'vector-collapsiblenav-more' => 'Meh Sproche',
 );
 
 /** Hebrew (עברית)
@@ -181,6 +211,13 @@ $messages['ja'] = array(
 	'vector-collapsiblenav-preference' => '左寄りの折り畳めるナビゲーションメニューを使用する',
 );
 
+/** Georgian (ქართული)
+ * @author BRUTE
+ */
+$messages['ka'] = array(
+	'vector-collapsiblenav-preference' => 'მარცხენა სანავიგაციო მენიუს ჩაკეცვა',
+);
+
 /** Korean (한국어)
  * @author Kwj2772
  */
@@ -207,6 +244,13 @@ $messages['mk'] = array(
  */
 $messages['ml'] = array(
 	'vector-collapsiblenav-preference' => 'ഇടതുവശത്തെ വഴികാട്ടി മെനു ചുരുക്കാവുന്നതാക്കി സജ്ജീകരിക്കുക',
+);
+
+/** Malay (Bahasa Melayu)
+ * @author Aurora
+ */
+$messages['ms'] = array(
+	'vector-collapsiblenav-preference' => 'Aktifkan menu navigasi kiri boleh kuncup',
 );
 
 /** Maltese (Malti)
@@ -287,6 +331,13 @@ $messages['sv'] = array(
 	'vector-collapsiblenav-preference' => 'Gör den vänstra navigeringsmenyn ihopfällbar',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'vector-collapsiblenav-preference' => 'Paganahin ang natitiklop na pangkaliwang menu na panlibot',
+);
+
 /** Turkish (Türkçe)
  * @author Joseph
  */
@@ -299,5 +350,19 @@ $messages['tr'] = array(
  */
 $messages['vi'] = array(
 	'vector-collapsiblenav-preference' => 'Bật trình đơn chuyển hướng gấp lại được ở bên phải',
+);
+
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'vector-collapsiblenav-preference' => 'אַקטיווירן צונויפֿלייגבאַרן מעניו לינקס',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Horacewai2
+ */
+$messages['zh-hant'] = array(
+	'vector-collapsiblenav-preference' => '啟用可折疊左側導航菜單',
 );
 

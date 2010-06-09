@@ -24,6 +24,14 @@ $messages['af'] = array(
 	'vector-editwarning-preference' => "Waarsku my as ek 'n gewysigde bladsy verlaat alvorens dit gestoor is",
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'vector-editwarning-warning' => 'Duke e lënë këtë faqe mund të bëjë që ju të humbni ndonjë ndryshim që keni bërë. Nëse ju jeni regjistruar, ju mund ta çaktivizoni këtë paralajmërim në "{{int:prefs-editing}}" seksionin e preferencave tuaja.',
+	'vector-editwarning-preference' => 'Paralajmëron mua kur unë të lë një redakto faqe me ndryshimet e para shpëtimit',
+);
+
 /** Arabic (العربية)
  * @author OsamaK
  */
@@ -60,7 +68,7 @@ $messages['be-tarask'] = array(
 $messages['bg'] = array(
 	'vector-editwarning-warning' => 'Ако излезете от тази страница, може да загубите всички незапазени промени, които сте направили. 
 Ако сте влезли в системата, можете да изключите това предупреждение през меню "{{int:prefs-editing}}" във вашите лични настройки.',
-	'vector-editwarning-preference' => 'Предупреди ме, ако понеча да изляза от страница в режим на редактиране без да запазя промените',
+	'vector-editwarning-preference' => 'Предупреждаване при опит за напускане на страница, отворена в режим на редактиране, без да са запазени промените',
 );
 
 /** Bengali (বাংলা)
@@ -224,6 +232,14 @@ $messages['eu'] = array(
 	'vector-editwarning-warning' => 'Orrialde honetatik irteten bazara, egindako aldaketak galdu egingo dira.
 Saioa hasi baduzu, mezu hau kendu dezakezu zure hobespenen orrialdeko "{{int:prefs-editing}}" atalean.',
 	'vector-editwarning-preference' => 'Abisa nazazu gorde gabeko aldaketak eginez orrialde bat uzten dudanean',
+);
+
+/** Persian (فارسی)
+ * @author Ebraminio
+ * @author Huji
+ */
+$messages['fa'] = array(
+	'vector-editwarning-preference' => 'زمان خروج از صفحهٔ ویرایش در صورت داشتن ویرایش‌های‌ ذخیره‌نشده به من هشدار بده',
 );
 
 /** Finnish (Suomi)
@@ -537,8 +553,8 @@ Se você estiver autenticado, você pode desabilitar este aviso na seção "{{in
  * @author Stelistcristi
  */
 $messages['ro'] = array(
-	'vector-editwarning-warning' => 'Părăsind această pagină se poate provoca ca să pierdeţi orice schimbare aţi făcut dvs.
-Dacă sunteţi logat, puteţi dezactiva această avertizare în secţiunea „{{int:prefs-editing}}” a preferinţelor dvs.',
+	'vector-editwarning-warning' => 'Părăsind această pagină se poate provoca ca să pierdeți orice schimbare ați făcut dvs.
+Dacă sunteți logat, puteți dezactiva această avertizare în secțiunea „{{int:prefs-editing}}” a preferințelor dvs.',
 	'vector-editwarning-preference' => 'Avertizează-mă când voi părăsi o pagină de editare cu schimbări nesalvate',
 );
 
@@ -636,6 +652,15 @@ $messages['th'] = array(
 	'vector-editwarning-warning' => 'การออาจากหน้านี้อาจจะทำให้ความเปลี่ยนแปลงที่คุณกระทำสูญหาย
 ถ้าคุณลงชื่อเข้าใช้แล้ว คุณสามารถยกเลิกคำเตือนนี้ได้ที่หน้าตั้งค่าของคุณในส่วนของ "{{int:prefs-editing}}"',
 	'vector-editwarning-preference' => 'เตือนฉัน เมื่อฉันกำลังจะออกจากหน้าแก้ไขโดยมีข้อมูลที่ยังไม่ได้บันทึก',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'vector-editwarning-warning' => 'Ang paglisan mula sa pahinang ito ay maaaring makasanhi sa iyo ng pagkawala ng anumang mga pagbabagong ginawa mo.
+Kung nakalagda ka, maaari mong huwag paganahin ang babalang ito sa loob ng seksyong "{{int:prefs-editing}}" ng mga nais mo.',
+	'vector-editwarning-preference' => 'Magbabala sa akin kapag umalis ako sa isang pahina ng pampatnugot na hindi pa nasasagip ang mga pagbabago',
 );
 
 /** Turkish (Türkçe)

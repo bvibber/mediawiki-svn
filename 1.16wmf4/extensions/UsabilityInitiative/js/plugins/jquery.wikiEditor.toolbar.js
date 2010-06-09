@@ -251,17 +251,19 @@ fn: {
 					'peri' : $.wikiEditor.autoMsg( action.options, 'peri' ),
 					'post' : $.wikiEditor.autoMsg( action.options, 'post' )
 				};
+				var replace = action.type == 'replace';
 				if ( 'regex' in action.options && 'regexReplace' in action.options ) {
 					var selection = context.$textarea.textSelection( 'getSelection' );
 					if ( selection != '' && selection.match( action.options.regex ) ) {
 						parts.peri = selection.replace( action.options.regex,
 							action.options.regexReplace );
 						parts.pre = parts.post = '';
+						replace = true;
 					}
 				}
 				context.$textarea.textSelection(
 					'encapsulateSelection',
-					$.extend( {}, action.options, parts, { 'replace': action.type == 'replace' } )
+					$.extend( {}, action.options, parts, { 'replace': replace } )
 				);
 				if ( typeof context.$iframe !== 'undefined' ) {
 					context.$iframe[0].contentWindow.focus();
@@ -538,9 +540,9 @@ fn: {
 			character = {
 				'label' : character,
 				'action' : {
-					'type' : 'encapsulate',
+					'type' : 'replace',
 					'options' : {
-						'pre' : character
+						'peri' : character
 					}
 				}
 			};
@@ -548,9 +550,9 @@ fn: {
 			character = {
 				'label' : character[0],
 				'action' : {
-					'type' : 'encapsulate',
+					'type' : 'replace',
 					'options' : {
-						'pre' : character[1]
+						'peri' : character[1]
 					}
 				}
 			};

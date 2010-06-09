@@ -15,6 +15,13 @@ $messages['en'] = array(
 	'wikieditor-templates-preference' => 'Enable template collapsing',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'wikieditor-templates-preference' => 'Aktivizo template kolaps',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  */
@@ -34,6 +41,13 @@ $messages['bn'] = array(
  */
 $messages['br'] = array(
 	'wikieditor-templates-preference' => "Gweredekaat ar c'huzhat patromoù",
+);
+
+/** Catalan (Català)
+ * @author Vriullop
+ */
+$messages['ca'] = array(
+	'wikieditor-templates-preference' => 'Habilita el replegament de plantilles',
 );
 
 /** Czech (Česky)
@@ -57,6 +71,13 @@ $messages['dsb'] = array(
 	'wikieditor-templates-preference' => 'Fałdowanje pśedłogow zmóžniś',
 );
 
+/** Greek (Ελληνικά)
+ * @author Απεργός
+ */
+$messages['el'] = array(
+	'wikieditor-templates-preference' => 'Ενεργοποίηση της απόκρυψης προτύπων',
+);
+
 /** Esperanto (Esperanto)
  * @author Yekrats
  */
@@ -69,6 +90,20 @@ $messages['eo'] = array(
  */
 $messages['es'] = array(
 	'wikieditor-templates-preference' => 'Habilitar colapso de plantilla',
+);
+
+/** Persian (فارسی)
+ * @author Huji
+ */
+$messages['fa'] = array(
+	'wikieditor-templates-preference' => 'فعال‌سازی نهفتن الگوها',
+);
+
+/** Finnish (Suomi)
+ * @author Str4nd
+ */
+$messages['fi'] = array(
+	'wikieditor-templates-preference' => 'Ota mallineiden piilotus käyttöön',
 );
 
 /** French (Français)
@@ -92,11 +127,25 @@ $messages['gsw'] = array(
 	'wikieditor-templates-preference' => 'Aktivierig vum Yy- un Uusblände vu Vorlage',
 );
 
+/** Hebrew (עברית)
+ * @author Amire80
+ */
+$messages['he'] = array(
+	'wikieditor-templates-preference' => 'הפעלת קיפול תבניות',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
 $messages['hsb'] = array(
 	'wikieditor-templates-preference' => 'Fałdowanje předłohow zmóžnić',
+);
+
+/** Hungarian (Magyar)
+ * @author Glanthor Reviol
+ */
+$messages['hu'] = array(
+	'wikieditor-templates-preference' => 'Sablonok összecsukásának engedélyezése',
 );
 
 /** Interlingua (Interlingua)
@@ -125,6 +174,13 @@ $messages['it'] = array(
  */
 $messages['ja'] = array(
 	'wikieditor-templates-preference' => 'テンプレート折り畳みを有効にする',
+);
+
+/** Georgian (ქართული)
+ * @author BRUTE
+ */
+$messages['ka'] = array(
+	'wikieditor-templates-preference' => 'ჩაკეცილი თარგის ჩართვა',
 );
 
 /** Korean (한국어)
@@ -169,11 +225,25 @@ $messages['nl'] = array(
 	'wikieditor-templates-preference' => 'Inklapbare sjablonen inschakelen',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'wikieditor-templates-preference' => 'Aktiver sammenleggbare maler',
+);
+
 /** Occitan (Occitan)
  * @author Cedric31
  */
 $messages['oc'] = array(
 	'wikieditor-templates-preference' => 'Activar lo replegament dels modèls',
+);
+
+/** Polish (Polski)
+ * @author Nux
+ */
+$messages['pl'] = array(
+	'wikieditor-templates-preference' => 'Włącz zwijanie szablonów',
 );
 
 /** Piedmontese (Piemontèis)
@@ -190,6 +260,13 @@ $messages['pt'] = array(
 	'wikieditor-templates-preference' => 'Possibilitar a recolha e expansão de predefinições',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Giro720
+ */
+$messages['pt-br'] = array(
+	'wikieditor-templates-preference' => 'Possibilitar a recolha e expansão de predefinições',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */
@@ -197,10 +274,38 @@ $messages['ru'] = array(
 	'wikieditor-templates-preference' => 'Включить сворачивание шаблонов',
 );
 
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'wikieditor-templates-preference' => 'Омогућава размотавање шаблона',
+);
+
 /** Swedish (Svenska)
  * @author Ainali
  */
 $messages['sv'] = array(
 	'wikieditor-templates-preference' => 'Aktivera ihopfällbara mallar',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'wikieditor-templates-preference' => 'Paganahin ang bumabagsak na suleras',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
+ */
+$messages['vi'] = array(
+	'wikieditor-templates-preference' => 'Cho phép làm xẹp các bản mẫu',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Horacewai2
+ */
+$messages['zh-hant'] = array(
+	'wikieditor-templates-preference' => '使模板倒塌',
 );
 

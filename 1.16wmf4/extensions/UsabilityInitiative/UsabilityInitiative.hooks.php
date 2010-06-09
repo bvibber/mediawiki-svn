@@ -18,8 +18,9 @@ class UsabilityInitiativeHooks {
 	private static $styleFiles = array(
 		'base_sets' => array(
 			'raw' => array(
-				array( 'src' => 'css/suggestions.css', 'version' => 13 ),
-				array( 'src' => 'css/vector.collapsibleNav.css', 'version' => 9 ),
+				array( 'src' => 'css/suggestions.css', 'version' => 14 ),
+				array( 'src' => 'css/vector.collapsibleNav.css', 'version' => 12 ),
+				array( 'src' => 'css/vector.expandableSearch.css', 'version' => 3 ),
 				array( 'src' => 'css/vector.footerCleanup.css', 'version' => 2 ),
 				array( 'src' => 'css/wikiEditor.css', 'version' => 14 ),
 				array( 'src' => 'css/wikiEditor.dialogs.css', 'version' => 29 ),
@@ -29,11 +30,11 @@ class UsabilityInitiativeHooks {
 				array( 'src' => 'css/vector/jquery-ui-1.7.2.css', 'version' => '1.7.2y' ),
 			),
 			'combined' => array(
-				array( 'src' => 'css/combined.css', 'version' => 95 ),
+				array( 'src' => 'css/combined.css', 'version' => 101 ),
 				array( 'src' => 'css/vector/jquery-ui-1.7.2.css', 'version' => '1.7.2y' ),
 			),
 			'minified' => array(
-				array( 'src' => 'css/combined.min.css', 'version' => 95 ),
+				array( 'src' => 'css/combined.min.css', 'version' => 101 ),
 				array( 'src' => 'css/vector/jquery-ui-1.7.2.css', 'version' => '1.7.2y' ),
 			),
 		)
@@ -64,30 +65,33 @@ class UsabilityInitiativeHooks {
 
 				// Core functionality of extension scripts
 				array( 'src' => 'js/plugins/jquery.async.js', 'version' => 3 ),
-				array( 'src' => 'js/plugins/jquery.autoEllipsis.js', 'version' => 11 ),
-				array( 'src' => 'js/plugins/jquery.browser.js', 'version' => 6 ),
+				array( 'src' => 'js/plugins/jquery.autoEllipsis.js', 'version' => 9 ),
+				array( 'src' => 'js/plugins/jquery.browser.js', 'version' => 8 ),
 				array( 'src' => 'js/plugins/jquery.collapsibleTabs.js', 'version' => 6 ),
 				array( 'src' => 'js/plugins/jquery.color.js', 'version' => 1 ),
 				array( 'src' => 'js/plugins/jquery.cookie.js', 'version' => 4 ),
 				array( 'src' => 'js/plugins/jquery.delayedBind.js', 'version' => 1 ),
-				array( 'src' => 'js/plugins/jquery.expandableField.js', 'version' => 15 ),
-				array( 'src' => 'js/plugins/jquery.suggestions.js', 'version' => 18 ),
-				array( 'src' => 'js/plugins/jquery.textSelection.js', 'version' => 33 ),
-				array( 'src' => 'js/plugins/jquery.wikiEditor.js', 'version' => 187 ),
+				array( 'src' => 'js/plugins/jquery.expandableField.js', 'version' => 16 ),
+				array( 'src' => 'js/plugins/jquery.suggestions.js', 'version' => 21 ),
+				array( 'src' => 'js/plugins/jquery.textSelection.js', 'version' => 35 ),
+				array( 'src' => 'js/plugins/jquery.wikiEditor.js', 'version' => 192 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.highlight.js', 'version' => 53 ),
-				array( 'src' => 'js/plugins/jquery.wikiEditor.toolbar.js', 'version' => 64 ),
-				array( 'src' => 'js/plugins/jquery.wikiEditor.dialogs.js', 'version' => 24 ),
+				array( 'src' => 'js/plugins/jquery.wikiEditor.toolbar.js', 'version' => 66 ),
+				array( 'src' => 'js/plugins/jquery.wikiEditor.dialogs.js', 'version' => 25 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.toc.js', 'version' => 98 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.preview.js', 'version' => 11 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.templateEditor.js', 'version' => 77 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.templates.js', 'version' => 1 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.publish.js', 'version' => 5 ),
+				
+				// thirdparty javascript libraries we use
+				array( 'src' => 'js/thirdparty/contentCollector.js', 'version' => 2 ),
 			),
 			'combined' => array(
-				array( 'src' => 'js/plugins.combined.js', 'version' => 413 ),
+				array( 'src' => 'js/plugins.combined.js', 'version' => 421 ),
 			),
 			'minified' => array(
-				array( 'src' => 'js/plugins.combined.min.js', 'version' => 413 ),
+				array( 'src' => 'js/plugins.combined.min.js', 'version' => 421 ),
 			),
 		),
 	);
@@ -103,7 +107,7 @@ class UsabilityInitiativeHooks {
 	 * Adds scripts
 	 */
 	public static function addResources( $out ) {
-		global $wgExtensionAssetsPath, $wgJsMimeType;
+		global $wgExtensionAssetsPath;
 		global $wgUsabilityInitiativeResourceMode;
 		global $wgEnableJS2system, $wgEditToolbarRunTests;
 		global $wgStyleVersion;
@@ -162,25 +166,15 @@ class UsabilityInitiativeHooks {
 		}
 		// Add javascript to document
 		if ( count( self::$messages ) > 0 ) {
-			$out->addScript(
-				Xml::tags(
-					'script',
-					array( 'type' => $wgJsMimeType ),
-					'mw.usability.addMessages({' . implode( ',', self::$messages ) . '});'
-				)
-			);
+			$out->addScript( Html::inlineScript(
+				'mw.usability.addMessages({' . implode( ',', self::$messages ) . '});'
+			) );
 		}
 		// Loops over each style
 		foreach ( self::$styles as $style ) {
 			// Add css for various styles
-			$out->addLink(
-				array(
-					'rel' => 'stylesheet',
-					'type' => 'text/css',
-					'href' => $wgExtensionAssetsPath .
-							"/UsabilityInitiative/" .
-								"{$style['src']}?{$style['version']}",
-				)
+			$out->addExtensionStyle( $wgExtensionAssetsPath .
+				"/UsabilityInitiative/{$style['src']}?{$style['version']}"
 			);
 		}
 		return true;

@@ -33,6 +33,14 @@ $messages['af'] = array(
 	'vector-desc' => 'Verbeter die gebruikerskoppelvlak-elemente van die Vektor omslag (skin).',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'vector' => 'përmirësime UI për Vektor',
+	'vector-desc' => 'Në elementet përmirëson ndërfaqen e përdoruesit të lëkurës Vektor.',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  */
@@ -115,10 +123,11 @@ $messages['cy'] = array(
 
 /** German (Deutsch)
  * @author Metalhead64
+ * @author Tischbeinahe
  */
 $messages['de'] = array(
-	'vector' => 'Benutzeroberflächenverbesserungen für den Vektor-Skin',
-	'vector-desc' => 'Verbesserungen an den Benutzeroberflächenelementen des Vektor-Skins',
+	'vector' => 'Verbesserungen für die Vektor-Benutzeroberfläche',
+	'vector-desc' => 'Verbesserungen an der Vektor-Benutzeroberfläche',
 );
 
 /** Zazaki (Zazaki)
@@ -161,6 +170,14 @@ $messages['eo'] = array(
 $messages['es'] = array(
 	'vector' => 'Mejoras de interfaz de usuario para Vector',
 	'vector-desc' => 'Mejora los elementos de la interfaz de usuario del skin Vector.',
+);
+
+/** Persian (فارسی)
+ * @author Ebraminio
+ * @author Huji
+ */
+$messages['fa'] = array(
+	'vector' => 'بهبودهای رابط کاربر برای پوستهٔ برداری',
 );
 
 /** Finnish (Suomi)
@@ -296,8 +313,8 @@ $messages['lb'] = array(
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
-	'vector' => 'Подобрувања на интерфејсот на Vector',
-	'vector-desc' => 'Ги подобрува елементите на корисничкиот интерфејс на изгледот „Vector“.',
+	'vector' => 'Подобрувања на посредникот за изгледот „Векторски“',
+	'vector-desc' => 'Ги подобрува елементите на корисничкиот посредник на изгледот „Векторски“.',
 );
 
 /** Malayalam (മലയാളം)
@@ -378,8 +395,8 @@ $messages['pt-br'] = array(
  * @author Stelistcristi
  */
 $messages['ro'] = array(
-	'vector' => 'Îmbunătăţiri la nivelul interfaţei pentru Vector',
-	'vector-desc' => 'Îmbunătăţiri la elementele interfaţei a temei Vector.',
+	'vector' => 'Îmbunătățiri la nivelul interfaței pentru Vector',
+	'vector-desc' => 'Îmbunătățiri la elementele interfaței a temei Vector.',
 );
 
 /** Tarandíne (Tarandíne)
@@ -445,6 +462,14 @@ $messages['te'] = array(
 	'vector' => 'వెక్టర్ కొరకు ముఖాంతరపు మెరుగులు',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'vector' => 'Mga pagpapainam na UI para sa Vector',
+	'vector-desc' => 'Nagpapainam sa mga sangkap ng dugtungang-mukha na pangtatagamit ng pabalat ng Vector.',
+);
+
 /** Turkish (Türkçe)
  * @author Vito Genovese
  */
@@ -475,6 +500,13 @@ $messages['vec'] = array(
 $messages['vi'] = array(
 	'vector' => 'Giao diện tích hợp với Vectơ',
 	'vector-desc' => 'Hoàn thiện các phần giao diện để tích hợp với hình dạng Vectơ.',
+);
+
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'vector' => 'באַניצער־אויבערפֿלאַך פֿאַרבעסערונגען פֿאַר וועקטאר',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

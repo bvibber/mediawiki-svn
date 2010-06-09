@@ -62,6 +62,11 @@ $aliases['lb'] = array(
 	'PrefStats' => array( 'Statistike vun den Astellungen' ),
 );
 
+/** Malayalam (മലയാളം) */
+$aliases['ml'] = array(
+	'PrefStats' => array( 'ക്രമീകരണസ്ഥിതിവിവരം' ),
+);
+
 /** Marathi (मराठी) */
 $aliases['mr'] = array(
 	'PrefStats' => array( 'प्राथम्यसांख्यिकी' ),
@@ -90,5 +95,10 @@ $aliases['pt'] = array(
 /** Slovak (Slovenčina) */
 $aliases['sk'] = array(
 	'PrefStats' => array( 'ŠtatistikyNastavení' ),
+);
+
+/** Yiddish (ייִדיש) */
+$aliases['yi'] = array(
+	'PrefStats' => array( 'פרעפערענצן סטאטיסטיק' ),
 );
 

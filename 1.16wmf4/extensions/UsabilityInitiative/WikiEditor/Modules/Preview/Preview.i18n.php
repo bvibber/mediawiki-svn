@@ -48,6 +48,16 @@ $messages['af'] = array(
 	'wikieditor-preview-loading' => 'Besig om te laai...',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'wikieditor-preview-preference' => 'Aktivizo-krah për krah preview',
+	'wikieditor-preview-tab' => 'Preview',
+	'wikieditor-preview-changes-tab' => 'Ndryshimet',
+	'wikieditor-preview-loading' => 'Loading ...',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK
@@ -125,11 +135,22 @@ $messages['bs'] = array(
 /** Catalan (Català)
  * @author Paucabot
  * @author Solde
+ * @author Vriullop
  */
 $messages['ca'] = array(
+	'wikieditor-preview-preference' => 'Habilita la previsualització costat per costat',
 	'wikieditor-preview-tab' => 'Previsualització',
 	'wikieditor-preview-changes-tab' => 'Canvis',
 	'wikieditor-preview-loading' => 'Carregant ...',
+);
+
+/** Chechen (Нохчийн)
+ * @author Sasan700
+ */
+$messages['ce'] = array(
+	'wikieditor-preview-tab' => 'Хьалха муха ю хьажа',
+	'wikieditor-preview-changes-tab' => 'Хийцамаш',
+	'wikieditor-preview-loading' => 'Чуйолуш…',
 );
 
 /** Czech (Česky)
@@ -254,6 +275,16 @@ $messages['eu'] = array(
 	'wikieditor-preview-tab' => 'Aurreikuspena',
 	'wikieditor-preview-changes-tab' => 'Aldaketak',
 	'wikieditor-preview-loading' => 'Kargatzen...',
+);
+
+/** Persian (فارسی)
+ * @author Ebraminio
+ */
+$messages['fa'] = array(
+	'wikieditor-preview-preference' => 'فعال‌سازی پیش‌نمایش کنار یک دیگر',
+	'wikieditor-preview-tab' => 'پیش‌نمایش',
+	'wikieditor-preview-changes-tab' => 'تغییرها',
+	'wikieditor-preview-loading' => 'در حال بارگذاری...',
 );
 
 /** Finnish (Suomi)
@@ -673,6 +704,13 @@ $messages['sl'] = array(
 	'wikieditor-preview-loading' => 'Nalaganje ...',
 );
 
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'wikieditor-preview-loading' => 'Учитавање...',
+);
+
 /** Swedish (Svenska)
  * @author Boivie
  */
@@ -720,6 +758,16 @@ $messages['tk'] = array(
 	'wikieditor-preview-tab' => 'Deslapky syn',
 	'wikieditor-preview-changes-tab' => 'Üýtgeşmeler',
 	'wikieditor-preview-loading' => 'Ýüklenilýär...',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'wikieditor-preview-preference' => 'Paganahin ang magkatabing paunang-tingin',
+	'wikieditor-preview-tab' => 'Paunang tanaw',
+	'wikieditor-preview-changes-tab' => 'Mga pagbabago',
+	'wikieditor-preview-loading' => 'Ikinakarga...',
 );
 
 /** Turkish (Türkçe)

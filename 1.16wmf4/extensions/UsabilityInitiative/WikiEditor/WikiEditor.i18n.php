@@ -40,6 +40,16 @@ $messages['af'] = array(
 	'wikieditor-wikitext-tab' => 'Wikiteks',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'wikieditor' => 'redaktimi i avancuar wikitext interface',
+	'wikieditor-desc' => 'Siguron një ndërfaqe të vazhdohet redaktimi wikitext dhe module shumë me metrazh të siguruar',
+	'wikieditor-wikitext-tab' => 'Wikitext',
+	'wikieditor-loading' => 'Ngarkim',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK
@@ -78,6 +88,7 @@ $messages['be-tarask'] = array(
  */
 $messages['bg'] = array(
 	'wikieditor' => 'Подобрен интерфейс за редактиране на уикитекст',
+	'wikieditor-desc' => 'Предлага разширяем интерфейс за редактиране на уикитекст и множество модули с допълнителни функционалности',
 	'wikieditor-wikitext-tab' => 'Уикитекст',
 	'wikieditor-loading' => 'Зареждане',
 );
@@ -114,10 +125,21 @@ $messages['bs'] = array(
 /** Catalan (Català)
  * @author Paucabot
  * @author Solde
+ * @author Vriullop
  */
 $messages['ca'] = array(
+	'wikieditor' => 'Interfície avançada de modificació de wikitext',
+	'wikieditor-desc' => 'Proporciona una interfície extensible de modificació de wikitext i diversos mòduls de funcionalitats',
 	'wikieditor-wikitext-tab' => 'Wikitext',
 	'wikieditor-loading' => 'Carregant',
+);
+
+/** Chechen (Нохчийн)
+ * @author Sasan700
+ */
+$messages['ce'] = array(
+	'wikieditor-wikitext-tab' => 'Викийоза',
+	'wikieditor-loading' => 'Чуйолуш',
 );
 
 /** Czech (Česky)
@@ -148,7 +170,7 @@ $messages['cy'] = array(
  */
 $messages['de'] = array(
 	'wikieditor' => 'Fortgeschrittener Wikitext-Editor',
-	'wikieditor-desc' => 'Stellt eine erweiterbare Oberfläche zur Wikitext-Bearbeitung sowie weitere funktionelle Module zur Verfügung',
+	'wikieditor-desc' => 'Erweiterbare Oberfläche zur Wikitext-Bearbeitung sowie viele weitere neue Funktionen',
 	'wikieditor-wikitext-tab' => 'Wikitext',
 	'wikieditor-loading' => 'Lade',
 );
@@ -221,6 +243,17 @@ $messages['et'] = array(
 $messages['eu'] = array(
 	'wikieditor-wikitext-tab' => 'Wikitestua',
 	'wikieditor-loading' => 'Kargatzen',
+);
+
+/** Persian (فارسی)
+ * @author Ebraminio
+ * @author Huji
+ */
+$messages['fa'] = array(
+	'wikieditor' => 'رابط ویرایش پیشرفته ویکی‌متن',
+	'wikieditor-desc' => 'یک رابط ویرایش پیشرفته ویکی‌متن و چندین پودمان دارای قابلیت فراهم می‌کند',
+	'wikieditor-wikitext-tab' => 'ویکی‌متن',
+	'wikieditor-loading' => 'در حال بارگیری',
 );
 
 /** Finnish (Suomi)
@@ -400,8 +433,8 @@ $messages['lt'] = array(
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
-	'wikieditor' => 'Интерфејс за напредно уредување со викитекст',
-	'wikieditor-desc' => 'Дава проширлив интерфејс за уредување со викитекст и многу модули за разни други алатки',
+	'wikieditor' => 'Посредник за напредно уредување со викитекст',
+	'wikieditor-desc' => 'Дава проширлив посредник за уредување со викитекст и многу модули за разни други алатки',
 	'wikieditor-wikitext-tab' => 'ВикиТекст',
 );
 
@@ -511,8 +544,8 @@ $messages['pt-br'] = array(
  * @author Firilacroco
  */
 $messages['ro'] = array(
-	'wikieditor' => 'Interfaţă de modificare wikitext avansată',
-	'wikieditor-desc' => 'Afişează o interfaţă de modificare wikitext ce se poate extinde cu multe funcţionalităţi',
+	'wikieditor' => 'Interfață de modificare wikitext avansată',
+	'wikieditor-desc' => 'Afișează o interfață de modificare wikitext ce se poate extinde cu multe funcționalități',
 	'wikieditor-wikitext-tab' => 'Wikitext',
 );
 
@@ -562,6 +595,7 @@ $messages['sk'] = array(
 	'wikieditor' => 'Pokročilé rozhranie na úpravu wikitextu',
 	'wikieditor-desc' => 'Poskytuje rozšíriteľné rozhranie na úpravu wikitextu a mnohé moduly poskytujúce funkcionalitu',
 	'wikieditor-wikitext-tab' => 'Wikitext',
+	'wikieditor-loading' => 'Načítava sa',
 );
 
 /** Slovenian (Slovenščina)
@@ -572,6 +606,14 @@ $messages['sl'] = array(
 	'wikieditor-desc' => 'Nudi razširjen vmesnik za urejanje wikibesedila in mnogo modulov z dodatnimi funkcijami',
 	'wikieditor-wikitext-tab' => 'Wikibesedilo',
 	'wikieditor-loading' => 'Nalaganje',
+);
+
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'wikieditor-wikitext-tab' => 'Викитекст',
+	'wikieditor-loading' => 'Учитавање',
 );
 
 /** Swedish (Svenska)
@@ -610,6 +652,16 @@ $messages['tk'] = array(
 	'wikieditor' => 'Giňeldilen wikitekst redaktirleme interfeýsi',
 	'wikieditor-desc' => 'Giňeldilýän wikitekst redkatirleme interfeýsini we köp aýratynlykly modullary üpjün edýär',
 	'wikieditor-wikitext-tab' => 'Wikitekst',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'wikieditor' => 'Mas masulong na dugtungang-mukha na pambago ng wikiteksto',
+	'wikieditor-desc' => 'Nagbibigay ng maidurugtong na dugtungang-mukha na pambago ng wikiteksto at maraming mga modulong nagbibigay ng katangiang-kasangkapan',
+	'wikieditor-wikitext-tab' => 'Wikiteksto',
+	'wikieditor-loading' => 'Ikinakarga',
 );
 
 /** Turkish (Türkçe)
@@ -657,6 +709,8 @@ $messages['vi'] = array(
  * @author פוילישער
  */
 $messages['yi'] = array(
+	'wikieditor' => 'פֿארטגעשריטענע וויקיטעקסט רעדאַקטירונג',
+	'wikieditor-desc' => 'פֿאַרברייטבאַרער וויקיטעקס רעדאַקטירונג אויבערפֿלאך מיט א סך מאדולן וואָס פֿאַרזארגן נײַע פֿונקציאנען',
 	'wikieditor-wikitext-tab' => 'וויקיטעקסט',
 	'wikieditor-loading' => 'לאָדנדיק',
 );
@@ -675,11 +729,13 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Gaoxuewei
+ * @author Horacewai2
  * @author Liangent
  */
 $messages['zh-hant'] = array(
 	'wikieditor' => '高級維基文本編輯界面',
 	'wikieditor-desc' => '提供可擴充的維基文本編輯界面及功能組件',
 	'wikieditor-wikitext-tab' => '維基文本',
+	'wikieditor-loading' => '載入中',
 );
 

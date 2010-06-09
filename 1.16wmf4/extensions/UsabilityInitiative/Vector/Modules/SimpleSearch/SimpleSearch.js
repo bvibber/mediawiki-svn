@@ -57,6 +57,11 @@ $j(document).ready( function() {
 				$j(this).parent().find( 'label' ).fadeIn( 100 );
 			}
 		})
+		.bind( 'keypress', function() {
+			// just in case the text field was focus before our handler was bound to it
+			if ( $j(this).parent().find( 'label:visible' ).size() > 0 )
+				$j(this).parent().find( 'label' ).fadeOut( 100 );
+		})
 		.focus( function() {
 			$j(this).parent().find( 'label' ).fadeOut( 100 );
 		})
@@ -65,6 +70,13 @@ $j(document).ready( function() {
 				$j(this).parent().find( 'label' ).fadeIn( 100 );
 			}
 		});
+		// listen for dragend events in order to clear the label from the search field if
+		// text is dragged into it. Only works for mozilla
+		$j( document ).bind( 'dragend', function( event ) {
+			if ( $j( 'div#simpleSearch > label:visible' ).size() > 0 
+				&& $j( 'div#simpleSearch > input#searchInput' ).val().length > 0 )
+					$j( 'div#simpleSearch > label' ).fadeOut( 100 );
+		} );
 	$j( '#searchInput, #searchInput2, #powerSearchText, #searchText' ).suggestions( {
 		fetch: function( query ) {
 			var $this = $j(this);
@@ -99,7 +111,10 @@ $j(document).ready( function() {
 		},
 		delay: 120,
 		positionFromLeft: $j( 'body' ).is( '.rtl' )
-	} );
+	} )
+		.bind( 'paste cut click', function() {
+			$j( this ).trigger( 'keypress' );
+		} );
 	$j( '#searchInput' ).suggestions( {
 		result: {
 			select: function( $textbox ) {
@@ -134,5 +149,8 @@ $j(document).ready( function() {
 			}
 		},
 		$region: $j( '#simpleSearch' )
-	} );
+	} )
+		.bind( 'paste cut click', function() {
+			$j( this ).trigger( 'keypress' );
+		} );
 });

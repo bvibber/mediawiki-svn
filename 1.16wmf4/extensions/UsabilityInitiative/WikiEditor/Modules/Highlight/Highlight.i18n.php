@@ -15,6 +15,13 @@ $messages['en'] = array(
 	'wikieditor-highlight-preference' => 'Enable syntax highlighting when editing',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'wikieditor-highlight-preference' => 'Sintaksa Aktivizo theksuar kur redaktimi',
+);
+
 /** Arabic (العربية)
  * @author OsamaK
  */
@@ -134,6 +141,13 @@ $messages['es'] = array(
  */
 $messages['et'] = array(
 	'wikieditor-highlight-preference' => 'Tõsta süntaks redigeerimise ajal esile',
+);
+
+/** Persian (فارسی)
+ * @author Huji
+ */
+$messages['fa'] = array(
+	'wikieditor-highlight-preference' => 'فعال کردن برجسته‌نمایی نحوی در زمان ویرایش',
 );
 
 /** Finnish (Suomi)
@@ -329,7 +343,7 @@ $messages['pt-br'] = array(
  * @author Firilacroco
  */
 $messages['ro'] = array(
-	'wikieditor-highlight-preference' => 'Activaţi evidenţierea sintaxei când modificaţi',
+	'wikieditor-highlight-preference' => 'Activați evidențierea sintaxei când modificați',
 );
 
 /** Tarandíne (Tarandíne)
@@ -374,11 +388,25 @@ $messages['sl'] = array(
 	'wikieditor-highlight-preference' => 'Omogoči označevanje skladnje med urejanjem',
 );
 
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Charmed94
+ */
+$messages['sr-ec'] = array(
+	'wikieditor-highlight-preference' => 'Истакни текст у току уређивања',
+);
+
 /** Swedish (Svenska)
  * @author Boivie
  */
 $messages['sv'] = array(
 	'wikieditor-highlight-preference' => 'Aktivera markering av syntax vid redigering',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'wikieditor-highlight-preference' => 'Paganahin ang pagpapatingkad-kulay ng sintaks kapag namamatnugot',
 );
 
 /** Turkish (Türkçe)

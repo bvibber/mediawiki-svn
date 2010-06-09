@@ -12,17 +12,18 @@ class VectorHooks {
 	
 	static $scripts = array(
 		'raw' => array(
-			array( 'src' => 'Modules/CollapsibleNav/CollapsibleNav.js', 'version' => 15 ),
+			array( 'src' => 'Modules/CollapsibleNav/CollapsibleNav.js', 'version' => 25 ),
 			array( 'src' => 'Modules/CollapsibleTabs/CollapsibleTabs.js', 'version' => 8 ),
+			array( 'src' => 'Modules/ExpandableSearch/ExpandableSearch.js', 'version' => 3 ),
 			array( 'src' => 'Modules/EditWarning/EditWarning.js', 'version' => 8 ),
 			array( 'src' => 'Modules/FooterCleanup/FooterCleanup.js', 'version' => 5 ),
-			array( 'src' => 'Modules/SimpleSearch/SimpleSearch.js', 'version' => 13 ),
+			array( 'src' => 'Modules/SimpleSearch/SimpleSearch.js', 'version' => 15 ),
 		),
 		'combined' => array(
-			array( 'src' => 'Vector.combined.js', 'version' => 37 ),
+			array( 'src' => 'Vector.combined.js', 'version' => 47 ),
 		),
 		'minified' => array(
-			array( 'src' => 'Vector.combined.min.js', 'version' => 37 ),
+			array( 'src' => 'Vector.combined.min.js', 'version' => 47 ),
 		),
 	);
 	static $modules = array(
@@ -37,6 +38,13 @@ class VectorHooks {
 						'section' => 'rendering/advancedrendering',
 					),
 				),
+			),
+			'messages' => array(
+				'vector-collapsiblenav-more',
+			),
+			'variables' => array(
+				'wgCollapsibleNavBucketTest',
+				'wgCollapsibleNavForceNewVersion',
 			),
 		),
 		'collapsibletabs' => array(
@@ -57,6 +65,8 @@ class VectorHooks {
 			'messages' => array(
 				'vector-editwarning-warning',
 			),
+		),
+		'expandablesearch' => array(
 		),
 		'footercleanup' => array(
 		),
@@ -137,15 +147,11 @@ class VectorHooks {
 				basename( dirname( __FILE__ ) ) . '/' . $script['src'], $script['version']
 			);
 		}
-		// Preferences (maybe the UsabilityInitiative class could do most of this for us?)
-		$wgOut->addScript(
-			Xml::tags(
-				'script',
-				array( 'type' => $wgJsMimeType ),
-				'var wgVectorPreferences = ' . FormatJson::encode( $preferences, true ) . ";\n" .
-				'var wgVectorEnabledModules = ' . FormatJson::encode( $enabledModules, true ) . ';'
-			)
-		);
+		// Preferences
+		UsabilityInitiativeHooks::addVariables( array(
+			'wgVectorPreferences' => $preferences,
+			'wgVectorEnabledModules' => $enabledModules,
+		) );
 		return true;
 	}
 	

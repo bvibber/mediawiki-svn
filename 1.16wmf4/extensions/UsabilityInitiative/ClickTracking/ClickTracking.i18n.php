@@ -931,7 +931,7 @@ $messages['it'] = array(
  * @author 青子守歌
  */
 $messages['ja'] = array(
-	'clicktracking' => 'Usability Initiative クリック追跡',
+	'clicktracking' => '使用性改善のクリック追跡',
 	'clicktracking-desc' => 'クリック追跡：ページの再描画を引き起こさないイベントを追跡記録する機能',
 	'ct-title' => '利用者クリック集計',
 	'ct-event-name' => 'イベント名',
@@ -957,15 +957,18 @@ $messages['ja'] = array(
 
 /** Georgian (ქართული)
  * @author BRUTE
+ * @author ITshnik
  * @author Temuri rajavi
  */
 $messages['ka'] = array(
 	'ct-event-name' => 'მოვლენის სახელი',
 	'ct-expert-header' => '"ექსპერტის" დაჭერა',
+	'ct-beginner-header' => '"დამწყებთა" მოქმედებები',
 	'ct-start-date' => 'დაწყების თარიღი (წწწწთთდდ)',
 	'ct-end-date' => 'დამთავრების თარიღი (წწწწთთდდ)',
 	'ct-change-graph' => 'გრაფიკის შეცვლა',
 	'ct-beginner' => 'დამწყები',
+	'ct-intermediate' => 'შუალედური',
 	'ct-expert' => 'ექსპერტი',
 	'ct-date-range' => 'თარიღის დიაპაზონი',
 	'ct-editing' => 'ამჟამად რედაქტირდება:',
@@ -1186,6 +1189,7 @@ $messages['ms'] = array(
  */
 $messages['mt'] = array(
 	'clicktracking' => "Moniteraġġ tal-klikks tal-Inizjattiva ta' Użabilità",
+	'clicktracking-desc' => "Moniteraġġ tal-klikks għall-moniteraġġ ta' avvenimenti li ma jikkawżawx riffriskar tal-paġna",
 	'ct-title' => 'Klikks tal-utenti aggregati',
 	'ct-event-name' => 'Isem tal-avveniment',
 	'ct-expert-header' => 'Klikks fuq "Espert"',
@@ -1457,12 +1461,12 @@ $messages['pt-br'] = array(
 $messages['ro'] = array(
 	'ct-title' => 'Clicuri utilizator cumulate',
 	'ct-event-name' => 'Numele evenimentului',
-	'ct-expert-header' => 'Clickuri de către "experţi"',
+	'ct-expert-header' => 'Clickuri de către "experți"',
 	'ct-intermediate-header' => 'Clicuri „intermediare”',
 	'ct-beginner-header' => 'Clicuri „începătoare”',
 	'ct-total-header' => 'Clickuri totale',
 	'ct-start-date' => 'Data de start (AAAALLZZ)',
-	'ct-end-date' => 'Data de sfârşit (AAAALLZZ)',
+	'ct-end-date' => 'Data de sfârșit (AAAALLZZ)',
 	'ct-change-graph' => 'Grafic de schimbări',
 	'ct-beginner' => 'Începători',
 	'ct-intermediate' => 'Intermediar',
@@ -1470,9 +1474,9 @@ $messages['ro'] = array(
 	'ct-date-range' => 'Interval în timp',
 	'ct-editing' => 'Editare curentă:',
 	'ct-anon-users' => 'Utilizatori anonimi',
-	'ct-user-contribs' => 'Contribuţiile totale ale utilizatorului',
-	'ct-user-span' => 'Contribuţiile utilizatorului în intervalul de timp',
-	'ct-and' => 'şi',
+	'ct-user-contribs' => 'Contribuțiile totale ale utilizatorului',
+	'ct-user-span' => 'Contribuțiile utilizatorului în intervalul de timp',
+	'ct-and' => 'și',
 	'ct-update-table' => 'Actualizează tabel',
 );
 
@@ -1560,6 +1564,13 @@ $messages['sah'] = array(
 	'ct-update-table' => 'Таабылы саҥардыы',
 );
 
+/** Sardinian (Sardu)
+ * @author Andria
+ */
+$messages['sc'] = array(
+	'ct-and' => 'e',
+);
+
 /** Sinhala (සිංහල)
  * @author චතුනි අලහප්පෙරුම
  */
@@ -1617,6 +1628,27 @@ $messages['sl'] = array(
 	'clicktracking-desc' => 'Sledenje klikom, namenjeno odkrivanju dogodkov, ki preprečujejo osvežitev strani med urejanjem',
 	'ct-anon-users' => 'Brezimni uporabniki',
 	'ct-and' => 'in',
+);
+
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'ct-expert-header' => 'Кликови "експерата"',
+	'ct-intermediate-header' => 'Кликови "напредних"',
+	'ct-beginner-header' => 'Кликови "почетника"',
+	'ct-total-header' => 'Укупно кликова',
+	'ct-start-date' => 'Почетни датум (YYYYMMDD)',
+	'ct-end-date' => 'Крајњи датум (YYYYMMDD)',
+	'ct-beginner' => 'Почетник',
+	'ct-intermediate' => 'Напредни',
+	'ct-expert' => 'Експерт',
+	'ct-date-range' => 'Опсег датума',
+	'ct-editing' => 'Тренутно мења:',
+	'ct-anon-users' => 'Анонимни корисници',
+	'ct-user-contribs' => 'Укупно корисничких доприноса',
+	'ct-and' => 'и',
+	'ct-update-table' => 'Ажурирај табелу',
 );
 
 /** Swedish (Svenska)
@@ -1697,6 +1729,34 @@ $messages['tk'] = array(
 	'ct-user-span' => 'Wagtyň dowamynda ulanyjy goşantlary',
 	'ct-and' => 'we',
 	'ct-update-table' => 'Tablisany täzele',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'clicktracking' => 'papindot na pagsubaybay sa Pasimula ng Pagkanagagamit',
+	'clicktracking-desc' => 'Papindot na pangpagsubaybay para sa pagsubaybay ng  mga kaganapang hindi nakakasanhi ng pagsariwa ng isang pahina',
+	'ct-title' => 'Tinipong mga pagpindot ng tagagamit',
+	'ct-event-name' => 'Pangalan ng kaganapan',
+	'ct-expert-header' => 'Mga pagpindot na "dalubhasa"',
+	'ct-intermediate-header' => 'Mga pagpindot na "nasa pagitan"',
+	'ct-beginner-header' => 'Mga pagpindot na "pambaguhan"',
+	'ct-total-header' => 'Kabuoan ng mga pagpindot',
+	'ct-start-date' => 'Simula ng Petsa (TTTTBBAA)',
+	'ct-end-date' => 'Pangwakas na Petsa (TTTTBBAA)',
+	'ct-increment-by' => 'Bilang ng mga araw na kinakatawan ng bawat punto ng dato',
+	'ct-change-graph' => 'Baguhin ang talangguhit',
+	'ct-beginner' => 'Baguhan',
+	'ct-intermediate' => 'Panggitna',
+	'ct-expert' => 'Dalubhasa',
+	'ct-date-range' => 'Sakop na petsa',
+	'ct-editing' => 'Kasalukuyang pinapatnugutan:',
+	'ct-anon-users' => 'Hindi nakikilalang mga tagagamit',
+	'ct-user-contribs' => 'Kabuuan ng mga ambag ng tagagamit',
+	'ct-user-span' => 'Mga ambag ng tagagamit sa loob ng dangkal ng panahon',
+	'ct-and' => 'at',
+	'ct-update-table' => 'Isapanahon ang tabla',
 );
 
 /** Turkish (Türkçe)

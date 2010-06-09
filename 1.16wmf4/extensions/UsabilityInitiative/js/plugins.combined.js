@@ -5326,15 +5326,16 @@ jQuery Browser Plugin
 			return r;
 		};
 
-		a = (a.match(/Opera|Navigator|Minefield|KHTML|Chrome/) ? m(a, [
+		a = (a.match(/Opera|Navigator|Minefield|KHTML|Chrome|PLAYSTATION 3/) ? m(a, [
 			[/(Firefox|MSIE|KHTML,\slike\sGecko|Konqueror)/, ''],
 			['Chrome Safari', 'Chrome'],
 			['KHTML', 'Konqueror'],
 			['Minefield', 'Firefox'],
-			['Navigator', 'Netscape']
+			['Navigator', 'Netscape'],
+			['PLAYSTATION 3', 'PS3']
 		]) : a).toLowerCase();
 
-		$.browser = $.extend((!z) ? $.browser : {}, c(a, /(camino|chrome|firefox|netscape|konqueror|lynx|msie|opera|safari|ipod|iphone|blackberry)/, [], /(camino|chrome|firefox|netscape|netscape6|opera|version|konqueror|lynx|msie|safari)(\/|\s)([a-z0-9\.\+]*?)(\;|dev|rel|\s|$)/));
+		$.browser = $.extend((!z) ? $.browser : {}, c(a, /(camino|chrome|firefox|netscape|konqueror|lynx|msie|opera|safari|ipod|iphone|blackberry|ps3)/, [], /(camino|chrome|firefox|netscape|netscape6|opera|version|konqueror|lynx|msie|safari|ps3)(\/|\;?\s|)([a-z0-9\.\+]*?)(\;|dev|rel|\)|\s|$)/));
 
 		$.layout = c(a, /(gecko|konqueror|msie|opera|webkit)/, [
 			['konqueror', 'khtml'],
@@ -5756,6 +5757,133 @@ $.fn.extend( {
 		} );
 	}
 } );
+} )( jQuery );
+/**
+ * This plugin provides functionallity to expand a text box on focus to double it's current width
+ *
+ * Usage:
+ *
+ * Set options:
+ *		$('#textbox').expandableField( { option1: value1, option2: value2 } );
+ *		$('#textbox').expandableField( option, value );
+ * Get option:
+ *		value = $('#textbox').expandableField( option );
+ * Initialize:
+ *		$('#textbox').expandableField();
+ *
+ * Options:
+ *
+ */
+( function( $ ) {
+
+$.expandableField = {
+	/**
+	 * Expand the field, make the callback
+	 */
+	expandField: function( e, context ) {
+		context.config.beforeExpand.call( context.data.$field, context );
+		context.data.$field
+			.animate( { 'width': context.data.expandedWidth }, 'fast', function() {
+				context.config.afterExpand.call( this, context );
+			} );
+	},
+	/**
+	 * Condense the field, make the callback
+	 */
+	condenseField: function( e, context ) {
+		context.config.beforeCondense.call( context.data.$field, context );
+		context.data.$field
+			.animate( { 'width': context.data.condensedWidth }, 'fast', function() {
+				context.config.afterCondense.call( this, context );
+			} );
+	},
+	/**
+	 * Sets the value of a property, and updates the widget accordingly
+	 * @param {String} property Name of property
+	 * @param {Mixed} value Value to set property with
+	 */
+	configure: function( context, property, value ) {
+		// Validate creation using fallback values
+		switch( property ) {
+			default:
+				context.config[property] = value;
+				break;
+		}
+	}
+
+};
+$.fn.expandableField = function() {
+	
+	// Multi-context fields
+	var returnValue = null;
+	var args = arguments;
+	
+	$( this ).each( function() {
+
+		/* Construction / Loading */
+		
+		var context = $( this ).data( 'expandableField-context' );
+		if ( context == null ) {
+			context = {
+				config: {
+					// callback function for before collapse
+					'beforeCondense': function( context ) {},
+					// callback function for before expand
+					'beforeExpand': function( context ) {},
+					// callback function for after collapse
+					'afterCondense': function( context ) {},
+					// callback function for after expand
+					'afterExpand': function( context ) {}
+				}
+			};
+		}
+		
+		/* API */
+		// Handle various calling styles
+		if ( args.length > 0 ) {
+			if ( typeof args[0] == 'object' ) {
+				// Apply set of properties
+				for ( var key in args[0] ) {
+					$.expandableField.configure( context, key, args[0][key] );
+				}
+			} else if ( typeof args[0] == 'string' ) {
+				if ( args.length > 1 ) {
+					// Set property values
+					$.expandableField.configure( context, args[0], args[1] );
+				} else if ( returnValue == null ) {
+					// Get property values, but don't give access to internal data - returns only the first
+					returnValue = ( args[0] in context.config ? undefined : context.config[args[0]] );
+				}
+			}
+		}
+		
+		/* Initialization */
+		
+		if ( typeof context.data == 'undefined' ) {
+			context.data = {
+				// The width of the field in it's condensed state
+				'condensedWidth': $( this ).width(),
+				// The width of the field in it's expanded state
+				'expandedWidth': $( this ).width() * 2,
+				// Reference to the field
+				'$field': $( this )
+			};
+			
+			$( this )
+				.addClass( 'expandableField' )
+				.focus( function( e ) {
+					$.expandableField.expandField( e, context );
+				} )
+				.delayedBind( 250, 'blur', function( e ) {
+					$.expandableField.condenseField( e, context );
+				} );
+		}
+		// Store the context for next time
+		$( this ).data( 'expandableField-context', context );
+	} );
+	return returnValue !== null ? returnValue : $(this);
+};
+
 } )( jQuery );
 /**
  * This plugin provides a generic way to add suggestions to a text box.
@@ -6357,7 +6485,9 @@ encapsulateSelection: function( options ) {
 		} else if ( document.selection && document.selection.createRange ) {
 			// IE
 			$(this).focus();
-			context.fn.restoreStuffForIE();
+			if ( context ) {
+				context.fn.restoreStuffForIE();
+			}
 			var selText = $(this).textSelection( 'getSelection' );
 			var scrollTop = this.scrollTop;
 			var range = document.selection.createRange();
@@ -6505,7 +6635,12 @@ setSelection: function( options ) {
 			if ( newLines) length = length - newLines.length;
 			selection.moveStart( 'character', options.start );
 			selection.moveEnd( 'character', -length + options.end );
-			selection.select();
+			
+			// This line can cause an error under certain circumstances (textarea empty, no selection)
+			// Silence that error
+			try {
+				selection.select();
+			} catch( e ) { }
 		}
 	});
 },
@@ -7065,7 +7200,7 @@ if ( !context || typeof context == 'undefined' ) {
 				// Surround by <p> if it does not already have it
 				var cursorPos = context.fn.getCaretPosition();
 				var t = context.fn.getOffset( cursorPos[0] );
-				if ( t && t.node.nodeName == '#text' && t.node.parentNode.nodeName.toLowerCase() == 'body' ) {
+				if ( ! $.browser.msie && t && t.node.nodeName == '#text' && t.node.parentNode.nodeName.toLowerCase() == 'body' ) {
 					$( t.node ).wrap( "<p></p>" );
 					context.fn.purgeOffsets();
 					context.fn.setSelection( { start: cursorPos[0], end: cursorPos[1] } );
@@ -7087,96 +7222,125 @@ if ( !context || typeof context == 'undefined' ) {
 		'paste': function( event ) {
 			// Save the cursor position to restore it after all this voodoo
 			var cursorPos = context.fn.getCaretPosition();
-			var oldLength = context.fn.getContents().length - ( cursorPos[1] - cursorPos[0] );
-			context.$content.find( ':not(.wikiEditor)' ).addClass( 'wikiEditor' );
+			var offset = 0;
+			var oldLength = context.fn.getContents().length;
+			
+			//give everything the wikiEditor class so that we can easily pick out things without that class as pasted 
+			context.$content.find( '*' ).addClass( 'wikiEditor' );
 			if ( $.layout.name !== 'webkit' ) {
 				context.$content.addClass( 'pasting' );
 			}
 			setTimeout( function() {
+				
 				// Kill stuff we know we don't want
 				context.$content.find( 'script,style,img,input,select,textarea,hr,button,link,meta' ).remove();
-				// This is just downright strange - but if we do this on nodes with text nodes, it fixes allot of
-				// space collapsing issues at element boundries
-				context.$content.find( '*' ).each( function() {
-					if ( $(this).children().length == 0 && this.childNodes.length > 0 ) {
-						$(this).text( $(this).text() );
-					}
-				} );
-				// MS Word + webkit
-				context.$content.find( 'p:not(.wikiEditor) p:not(.wikiEditor)' )
-					.each( function(){
-						var outerParent = $(this).parent();
-						outerParent.replaceWith( outerParent.childNodes );
-					} );
-				// Unwrap the span found in webkit copies (Apple Richtext)
-				context.$content.find( 'span.Apple-style-span' ).each( function() {
-					$(this).replaceWith( this.childNodes );
-				} );
 				
-				// If the pasted content is plain text then wrap it in a <p> and adjust the <br> accordingly 
-				var pasteContent = context.fn.getOffset( cursorPos[0] ).node;
-				var removeNextBR = false;
-				while ( pasteContent != null && !$( pasteContent ).hasClass( 'wikiEditor' ) ) {
-					var currentNode = pasteContent;
-					pasteContent = pasteContent.nextSibling;
-					if ( currentNode.nodeName == '#text' && currentNode.nodeValue == currentNode.wholeText ) {
-						var pWrapper = $( '<p />' ).addClass( 'wikiEditor' );
-						$( currentNode ).wrap( pWrapper );
-						$( currentNode ).addClass( 'wikiEditor' );
-						removeNextBR = true;
-					} else if ( currentNode.nodeName == 'BR' && removeNextBR ) {
-						$( currentNode ).remove();
-						removeNextBR = false;
-					} else {
-						removeNextBR = false;
-					}
-				}	
+				//anything without wikiEditor class was pasted.
 				var $selection = context.$content.find( ':not(.wikiEditor)' );
-				while ( $selection.length && $selection.length > 0 ) {
-					var $currentElement = $selection.eq( 0 );
-					while ( !$currentElement.parent().is( 'body' ) && !$currentElement.parent().is( '.wikiEditor' ) ) {
-						$currentElement = $currentElement.parent();
+				var nodeToDelete = [];
+				var firstDirtyNode;
+				if  ( $selection.length == 0 ) {
+					firstDirtyNode = context.fn.getOffset( cursorPos[0] ).node;
+				} else {
+					firstDirtyNode = $selection.eq( 0 )[0];
+				}
+				while ( firstDirtyNode != null ) {
+					//go up till we find the top pasted node
+					while ( firstDirtyNode.parentNode.nodeName != 'BODY' 
+						 && ! $( firstDirtyNode.parentNode ).hasClass( 'wikiEditor' ) 
+						) {
+						firstDirtyNode = firstDirtyNode.parentNode;
 					}
 					
-					var $newElement;
-					if ( $currentElement.is( 'p' ) || $currentElement.is( 'div' ) || $currentElement.is( 'pre' ) ) {
-						//Convert all <div>, <p> and <pre> that was pasted into a <p> element
-						$newElement = $( '<p />' );
-					} else {
-						// everything else becomes a <span>
-						$newElement = $( '<span />' ).addClass( 'wikiEditor' );
-					}
-					
-					// If the pasted content was html, just convert it into text and <br>
-					var pieces = $.trim( $currentElement.text() ).split( '\n' );
-					var newElementHTML = '';
-					for ( var i = 0; i < pieces.length; i++ ) {
-						if ( pieces[i] ) {
-							newElementHTML += $.trim( pieces[i] );
+					//go back till we find the first pasted node
+					while ( firstDirtyNode.previousSibling != null
+							&& ! $( firstDirtyNode.previousSibling ).hasClass( 'wikiEditor' )
+						) {
+						
+						if ( $( firstDirtyNode.previousSibling ).hasClass( '#comment' ) ) {
+							$( firstDirtyNode ).remove();
 						} else {
-							newElementHTML += '<span><br class="wikiEditor" /></span>';
+							firstDirtyNode = firstDirtyNode.previousSibling;
 						}
 					}
-					$newElement.html( newElementHTML )
-						.addClass( 'wikiEditor' )
-						.insertAfter( $currentElement );
-					$currentElement.remove();
-
+					
+					var $lastDirtyNode = $( firstDirtyNode );
+					var cc = makeContentCollector( $.browser, null );
+					while ( firstDirtyNode != null && ! $( firstDirtyNode ).hasClass( 'wikiEditor' ) ) {
+						cc.collectContent(firstDirtyNode);
+						
+						cc.notifyNextNode(firstDirtyNode.nextSibling);
+						pastedContent = cc.getLines();
+						if ((pastedContent.length <= 1 || pastedContent[pastedContent.length - 1] !== "")
+								&& firstDirtyNode.nextSibling) {
+							nodeToDelete.push( firstDirtyNode );
+							firstDirtyNode = firstDirtyNode.nextSibling;
+							cc.collectContent(firstDirtyNode);
+							cc.notifyNextNode(firstDirtyNode.nextSibling);
+						}
+						nodeToDelete.push( firstDirtyNode );
+						firstDirtyNode = firstDirtyNode.nextSibling;
+					}
+					var ccData = cc.finish();
+					var pastedContent = ccData.lines;
+					if ( pastedContent.length == 0 && firstDirtyNode ) {
+						offset += $( firstDirtyNode ).text().length;
+					}
+					
+					if ( nodeToDelete.length > 0 ) {
+						$lastDirtyNode = $( nodeToDelete[nodeToDelete.length - 1] );
+					}
+					
+					var testVal = '';
+					testVal = $( nodeToDelete[0] ).text();
+					
+					var pastedPretty = '';
+					for ( var i = 0; i < pastedContent.length; i++ ) {
+						//escape html
+						pastedPretty = pastedContent[i].replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\r?\n/g, '\\n');
+						//replace leading white spaces with &nbsp;
+						match = pastedContent[i].match(/^[\s]+[^\s]/);
+						if ( match != null && match.length > 0  ) {
+							index = match[0].length;
+							leadingSpace = match[0].replace(/[\s]/g, '&nbsp;');
+							pastedPretty = leadingSpace + pastedPretty.substring(index, pastedPretty.length);
+						}
+						
+						$newElement = $( '<p class="wikiEditor" ></p>' );
+						if ( pastedPretty ) {
+							$newElement.html( '<span class = "wikiEditor">' + pastedPretty + '</span>' );
+						} else {
+							$newElement.html( '<br class="wikiEditor">' );
+						}
+						$newElement.insertAfter( $lastDirtyNode );
+						offset += pastedPretty.length;
+						$lastDirtyNode = $newElement;
+					}
+					
+					while ( nodeToDelete.length > 0 ) {
+						$( nodeToDelete.pop() ).remove();
+					}
+					
+					//find the next node that may not be the next sibling (in IE)
 					$selection = context.$content.find( ':not(.wikiEditor)' );
-				}
-
-				context.$content.find( '.wikiEditor' ).removeClass( 'wikiEditor' );
-				if ( $.layout.name !== 'webkit' ) {
-					context.$content.removeClass( 'pasting' );
+					if  ( $selection.length == 0 ) {
+						firstDirtyNode = null;
+					} else {
+						firstDirtyNode = $selection.eq( 0 )[0];
+					}
 				}
 				
-				// Restore cursor position
-				context.fn.purgeOffsets();
-				var newLength = context.fn.getContents().length;
-				var restoreTo = cursorPos[0] + newLength - oldLength;
+				context.$content.find( '.wikiEditor' ).removeClass( 'wikiEditor' );
+				
+				//context.$content.find( '*' ).addClass( 'wikiEditor' );
+				
+				//now place the cursor at the end of pasted content
+				var restoreTo = cursorPos[1] + offset;
+				
 				context.fn.setSelection( { start: restoreTo, end: restoreTo } );
-			}, 0 );
-			return true;
+
+		}, 0 );
+		return true;
 		},
 		'ready': function( event ) {
 			// Initialize our history queue
@@ -8295,10 +8459,10 @@ if ( !context || typeof context == 'undefined' ) {
 					end = e ? e.offset : null;
 					// Don't try to set the selection past the end of a node, causes errors
 					// Just put the selection at the end of the node in this case
-					if ( sc.nodeName == '#text' && start > sc.nodeValue.length ) {
+					if ( sc != null && sc.nodeName == '#text' && start > sc.nodeValue.length ) {
 						start = sc.nodeValue.length - 1;
 					}
-					if ( ec.nodeName == '#text' && end > ec.nodeValue.length ) {
+					if ( ec != null && ec.nodeName == '#text' && end > ec.nodeValue.length ) {
 						end = ec.nodeValue.length - 1;
 					}
 				}
@@ -8564,6 +8728,12 @@ api: {
 				$.wikiEditor.modules.dialogs.fn.reallyCreate( context, mod );
 				$dialog = $( '#' + mod.id );
 			}
+			
+			// Workaround for bug in jQuery UI: close button in top right retains focus
+			$dialog.closest( '.ui-dialog' )
+				.find( '.ui-dialog-titlebar-close' )
+				.removeClass( 'ui-state-focus' );
+			
 			$dialog.dialog( 'open' );
 		}
 	},
@@ -11172,17 +11342,19 @@ fn: {
 					'peri' : $.wikiEditor.autoMsg( action.options, 'peri' ),
 					'post' : $.wikiEditor.autoMsg( action.options, 'post' )
 				};
+				var replace = action.type == 'replace';
 				if ( 'regex' in action.options && 'regexReplace' in action.options ) {
 					var selection = context.$textarea.textSelection( 'getSelection' );
 					if ( selection != '' && selection.match( action.options.regex ) ) {
 						parts.peri = selection.replace( action.options.regex,
 							action.options.regexReplace );
 						parts.pre = parts.post = '';
+						replace = true;
 					}
 				}
 				context.$textarea.textSelection(
 					'encapsulateSelection',
-					$.extend( {}, action.options, parts, { 'replace': action.type == 'replace' } )
+					$.extend( {}, action.options, parts, { 'replace': replace } )
 				);
 				if ( typeof context.$iframe !== 'undefined' ) {
 					context.$iframe[0].contentWindow.focus();
@@ -11459,9 +11631,9 @@ fn: {
 			character = {
 				'label' : character,
 				'action' : {
-					'type' : 'encapsulate',
+					'type' : 'replace',
 					'options' : {
-						'pre' : character
+						'peri' : character
 					}
 				}
 			};
@@ -11469,9 +11641,9 @@ fn: {
 			character = {
 				'label' : character[0],
 				'action' : {
-					'type' : 'encapsulate',
+					'type' : 'replace',
 					'options' : {
-						'pre' : character[1]
+						'peri' : character[1]
 					}
 				}
 			};
@@ -11675,3 +11847,426 @@ fn: {
 }
 
 }; } )( jQuery );
+// THIS FILE HAS BEEN MODIFIED for use with the mediawiki wikiEditor
+// It no longer requires etherpad.collab.ace.easysync2.Changeset
+// THIS FILE WAS ORIGINALLY AN APPJET MODULE: etherpad.collab.ace.contentcollector
+
+/**
+ * Copyright 2009 Google Inc.
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS-IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
+ */
+
+var _MAX_LIST_LEVEL = 8;
+
+function sanitizeUnicode(s) {
+	return s.replace(/[\uffff\ufffe\ufeff\ufdd0-\ufdef\ud800-\udfff]/g, '?');
+}
+
+function makeContentCollector( browser, domInterface ) {
+	browser = browser || {};
+
+	var dom = domInterface || {
+		isNodeText : function(n) {
+			return (n.nodeType == 3);
+		},
+		nodeTagName : function(n) {
+			return n.tagName;
+		},
+		nodeValue : function(n) {
+			return n.nodeValue;
+		},
+		nodeNumChildren : function(n) {
+			return n.childNodes.length;
+		},
+		nodeChild : function(n, i) {
+			return n.childNodes.item(i);
+		},
+		nodeProp : function(n, p) {
+			return n[p];
+		},
+		nodeAttr : function(n, a) {
+			return n.getAttribute(a);
+		},
+		optNodeInnerHTML : function(n) {
+			return n.innerHTML;
+		}
+	};
+
+	var _blockElems = {
+		"div" : 1,
+		"p" : 1,
+		"pre" : 1,
+		"li" : 1
+	};
+	function isBlockElement(n) {
+		return !!_blockElems[(dom.nodeTagName(n) || "").toLowerCase()];
+	}
+	function textify(str) {
+		return sanitizeUnicode(str.replace(/[\n\r ]/g, ' ').replace(/\xa0/g,
+				' ').replace(/\t/g, '        '));
+	}
+	function getAssoc(node, name) {
+		return dom.nodeProp(node, "_magicdom_" + name);
+	}
+
+	var lines = (function() {
+		var textArray = [];
+		var self = {
+			length : function() {
+				return textArray.length;
+			},
+			atColumnZero : function() {
+				return textArray[textArray.length - 1] === "";
+			},
+			startNew : function() {
+				textArray.push("");
+				self.flush(true);
+			},
+			textOfLine : function(i) {
+				return textArray[i];
+			},
+			appendText : function(txt, attrString) {
+				textArray[textArray.length - 1] += txt;
+				// dmesg(txt+" / "+attrString);
+		},
+		textLines : function() {
+			return textArray.slice();
+		},
+		// call flush only when you're done
+			flush : function(withNewline) {
+				
+			}
+		};
+		self.startNew();
+		return self;
+	}());
+	var cc = {};
+	function _ensureColumnZero(state) {
+		if (!lines.atColumnZero()) {
+			_startNewLine(state);
+		}
+	}
+	var selection, startPoint, endPoint;
+	var selStart = [ -1, -1 ], selEnd = [ -1, -1 ];
+	var blockElems = {
+		"div" : 1,
+		"p" : 1,
+		"pre" : 1
+	};
+	function _isEmpty(node, state) {
+		// consider clean blank lines pasted in IE to be empty
+		if (dom.nodeNumChildren(node) == 0)
+			return true;
+		if (dom.nodeNumChildren(node) == 1 && getAssoc(node, "shouldBeEmpty")
+				&& dom.optNodeInnerHTML(node) == "&nbsp;"
+				&& !getAssoc(node, "unpasted")) {
+			if (state) {
+				var child = dom.nodeChild(node, 0);
+				_reachPoint(child, 0, state);
+				_reachPoint(child, 1, state);
+			}
+			return true;
+		}
+		return false;
+	}
+	function _pointHere(charsAfter, state) {
+		var ln = lines.length() - 1;
+		var chr = lines.textOfLine(ln).length;
+		if (chr == 0 && state.listType && state.listType != 'none') {
+			chr += 1; // listMarker
+		}
+		chr += charsAfter;
+		return [ ln, chr ];
+	}
+	function _reachBlockPoint(nd, idx, state) {
+		if (!dom.isNodeText(nd))
+			_reachPoint(nd, idx, state);
+	}
+	function _reachPoint(nd, idx, state) {
+		if (startPoint && nd == startPoint.node && startPoint.index == idx) {
+			selStart = _pointHere(0, state);
+		}
+		if (endPoint && nd == endPoint.node && endPoint.index == idx) {
+			selEnd = _pointHere(0, state);
+		}
+	}
+	function _incrementFlag(state, flagName) {
+		state.flags[flagName] = (state.flags[flagName] || 0) + 1;
+	}
+	function _decrementFlag(state, flagName) {
+		state.flags[flagName]--;
+	}
+	function _enterList(state, listType) {
+		var oldListType = state.listType;
+		state.listLevel = (state.listLevel || 0) + 1;
+		if (listType != 'none') {
+			state.listNesting = (state.listNesting || 0) + 1;
+		}
+		state.listType = listType;
+		return oldListType;
+	}
+	function _exitList(state, oldListType) {
+		state.listLevel--;
+		if (state.listType != 'none') {
+			state.listNesting--;
+		}
+		state.listType = oldListType;
+	}
+	function _produceListMarker(state) {
+		
+	}
+	function _startNewLine(state) {
+		if (state) {
+			var atBeginningOfLine = lines.textOfLine(lines.length() - 1).length == 0;
+			if (atBeginningOfLine && state.listType && state.listType != 'none') {
+				_produceListMarker(state);
+			}
+		}
+		lines.startNew();
+	}
+	cc.notifySelection = function(sel) {
+		if (sel) {
+			selection = sel;
+			startPoint = selection.startPoint;
+			endPoint = selection.endPoint;
+		}
+	};
+	cc.collectContent = function(node, state) {
+		if (!state) {
+			state = {
+				flags : {/* name -> nesting counter */}
+			};
+		}
+		var isBlock = isBlockElement(node);
+		var isEmpty = _isEmpty(node, state);
+		if (isBlock)
+			_ensureColumnZero(state);
+		var startLine = lines.length() - 1;
+		_reachBlockPoint(node, 0, state);
+		if (dom.isNodeText(node)) {
+			var txt = dom.nodeValue(node);
+			var rest = '';
+			var x = 0; // offset into original text
+			if (txt.length == 0) {
+				if (startPoint && node == startPoint.node) {
+					selStart = _pointHere(0, state);
+				}
+				if (endPoint && node == endPoint.node) {
+					selEnd = _pointHere(0, state);
+				}
+			}
+			while (txt.length > 0) {
+				var consumed = 0;
+				if (!browser.firefox || state.flags.preMode) {
+					var firstLine = txt.split('\n', 1)[0];
+					consumed = firstLine.length + 1;
+					rest = txt.substring(consumed);
+					txt = firstLine;
+				} else { /* will only run this loop body once */
+				}
+				if (startPoint && node == startPoint.node
+						&& startPoint.index - x <= txt.length) {
+					selStart = _pointHere(startPoint.index - x, state);
+				}
+				if (endPoint && node == endPoint.node
+						&& endPoint.index - x <= txt.length) {
+					selEnd = _pointHere(endPoint.index - x, state);
+				}
+				var txt2 = txt;
+				if ((!state.flags.preMode) && /^[\r\n]*$/.exec(txt)) {
+					// prevents textnodes containing just "\n" from being
+					// significant
+					// in safari when pasting text, now that we convert them to
+					// spaces instead of removing them, because in other cases
+					// removing "\n" from pasted HTML will collapse words
+					// together.
+					txt2 = "";
+				}
+				var atBeginningOfLine = lines.textOfLine(lines.length() - 1).length == 0;
+				if (atBeginningOfLine) {
+					// newlines in the source mustn't become spaces at beginning
+					// of line box
+					txt2 = txt2.replace(/^\n*/, '');
+				}
+				if (atBeginningOfLine && state.listType
+						&& state.listType != 'none') {
+					_produceListMarker(state);
+				}
+				lines.appendText(textify(txt2));
+				
+				x += consumed;
+				txt = rest;
+				if (txt.length > 0) {
+					_startNewLine(state);
+				}
+			}
+			
+		} else {
+			var tname = (dom.nodeTagName(node) || "").toLowerCase();
+			if (tname == "br") {
+				_startNewLine(state);
+			} else if (tname == "script" || tname == "style") {
+				// ignore
+			} else if (!isEmpty) {
+				var styl = dom.nodeAttr(node, "style");
+				var cls = dom.nodeProp(node, "className");
+
+				var isPre = (tname == "pre");
+				if ((!isPre) && browser.safari) {
+					isPre = (styl && /\bwhite-space:\s*pre\b/i.exec(styl));
+				}
+				if (isPre)
+					_incrementFlag(state, 'preMode');
+				var oldListTypeOrNull = null;
+
+				var nc = dom.nodeNumChildren(node);
+				for ( var i = 0; i < nc; i++) {
+					var c = dom.nodeChild(node, i);
+					cc.collectContent(c, state);
+				}
+
+				if (isPre)
+					_decrementFlag(state, 'preMode');
+				
+				if (oldListTypeOrNull) {
+					_exitList(state, oldListTypeOrNull);
+				}
+			}
+		}
+		if (!browser.msie) {
+			_reachBlockPoint(node, 1, state);
+		}
+		if (isBlock) {
+			if (lines.length() - 1 == startLine) {
+				_startNewLine(state);
+			} else {
+				_ensureColumnZero(state);
+			}
+		}
+
+		if (browser.msie) {
+			// in IE, a point immediately after a DIV appears on the next line
+			//_reachBlockPoint(node, 1, state);
+		}
+	};
+	// can pass a falsy value for end of doc
+	cc.notifyNextNode = function(node) {
+		// an "empty block" won't end a line; this addresses an issue in IE with
+		// typing into a blank line at the end of the document. typed text
+		// goes into the body, and the empty line div still looks clean.
+		// it is incorporated as dirty by the rule that a dirty region has
+		// to end a line.
+		if ((!node) || (isBlockElement(node) && !_isEmpty(node))) {
+			_ensureColumnZero(null);
+		}
+	};
+	// each returns [line, char] or [-1,-1]
+	var getSelectionStart = function() {
+		return selStart;
+	};
+	var getSelectionEnd = function() {
+		return selEnd;
+	};
+
+	// returns array of strings for lines found, last entry will be "" if
+	// last line is complete (i.e. if a following span should be on a new line).
+	// can be called at any point
+	cc.getLines = function() {
+		return lines.textLines();
+	};
+
+	// cc.applyHints = function(hints) {
+	// if (hints.pastedLines) {
+	//
+	// }
+	// }
+
+	cc.finish = function() {
+		lines.flush();
+		var lineStrings = cc.getLines();
+
+		lineStrings.length--;
+
+		var ss = getSelectionStart();
+		var se = getSelectionEnd();
+
+		function fixLongLines() {
+			// design mode does not deal with with really long lines!
+			var lineLimit = 2000; // chars
+			var buffer = 10; // chars allowed over before wrapping
+			var linesWrapped = 0;
+			var numLinesAfter = 0;
+			for ( var i = lineStrings.length - 1; i >= 0; i--) {
+				var oldString = lineStrings[i];
+				if (oldString.length > lineLimit + buffer) {
+					var newStrings = [];
+					while (oldString.length > lineLimit) {
+						// var semiloc = oldString.lastIndexOf(';',
+						// lineLimit-1);
+						// var lengthToTake = (semiloc >= 0 ? (semiloc+1) :
+						// lineLimit);
+						lengthToTake = lineLimit;
+						newStrings.push(oldString.substring(0, lengthToTake));
+						oldString = oldString.substring(lengthToTake);
+						
+					}
+					if (oldString.length > 0) {
+						newStrings.push(oldString);
+					}
+					function fixLineNumber(lineChar) {
+						if (lineChar[0] < 0)
+							return;
+						var n = lineChar[0];
+						var c = lineChar[1];
+						if (n > i) {
+							n += (newStrings.length - 1);
+						} else if (n == i) {
+							var a = 0;
+							while (c > newStrings[a].length) {
+								c -= newStrings[a].length;
+								a++;
+							}
+							n += a;
+						}
+						lineChar[0] = n;
+						lineChar[1] = c;
+					}
+					fixLineNumber(ss);
+					fixLineNumber(se);
+					linesWrapped++;
+					numLinesAfter += newStrings.length;
+
+					newStrings.unshift(i, 1);
+					lineStrings.splice.apply(lineStrings, newStrings);
+					
+				}
+			}
+			return {
+				linesWrapped : linesWrapped,
+				numLinesAfter : numLinesAfter
+			};
+		}
+		var wrapData = fixLongLines();
+
+		return {
+			selStart : ss,
+			selEnd : se,
+			linesWrapped : wrapData.linesWrapped,
+			numLinesAfter : wrapData.numLinesAfter,
+			lines : lineStrings
+		};
+	}
+
+	return cc;
+}

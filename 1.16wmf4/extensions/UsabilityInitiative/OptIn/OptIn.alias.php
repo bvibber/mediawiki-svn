@@ -50,6 +50,11 @@ $aliases['lb'] = array(
 	'OptIn' => array( 'Benotzerfrëndlechkeetsinitiative matmaachen' ),
 );
 
+/** Malayalam (മലയാളം) */
+$aliases['ml'] = array(
+	'OptIn' => array( 'യൂസബിലിറ്റി‌‌ഇനിഷ്യേറ്റീവ്ഓപ്റ്റിൻ' ),
+);
+
 /** Marathi (मराठी) */
 $aliases['mr'] = array(
 	'OptIn' => array( 'उपयोगक्षमतापुढाकारनिवडा' ),
@@ -83,6 +88,11 @@ $aliases['sk'] = array(
 /** Turkish (Türkçe) */
 $aliases['tr'] = array(
 	'OptIn' => array( 'KullanılabilirlikGirişimiOnayı' ),
+);
+
+/** Yiddish (ייִדיש) */
+$aliases['yi'] = array(
+	'OptIn' => array( 'אײַנשרײַבן אין ניצלעכקייט איניציאטיוו' ),
 );
 
 /** Simplified Chinese (‪中文(简体)‬) */

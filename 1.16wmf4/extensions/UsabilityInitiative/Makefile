@@ -5,6 +5,7 @@
 CSS := \
 	css/suggestions.css\
 	css/vector.collapsibleNav.css\
+	css/vector.expandableSearch.css\
 	css/wikiEditor.css\
 	css/wikiEditor.dialogs.css\
 	css/wikiEditor.toc.css\
@@ -26,6 +27,7 @@ PLUGINS := \
 	js/plugins/jquery.color.js\
 	js/plugins/jquery.cookie.js\
 	js/plugins/jquery.delayedBind.js\
+	js/plugins/jquery.expandableField.js\
 	js/plugins/jquery.suggestions.js\
 	js/plugins/jquery.textSelection.js\
 	js/plugins/jquery.wikiEditor.js\
@@ -35,7 +37,8 @@ PLUGINS := \
 	js/plugins/jquery.wikiEditor.publish.js\
 	js/plugins/jquery.wikiEditor.templateEditor.js\
 	js/plugins/jquery.wikiEditor.toc.js\
-	js/plugins/jquery.wikiEditor.toolbar.js
+	js/plugins/jquery.wikiEditor.toolbar.js\
+	js/thirdparty/contentCollector.js
 
 WIKIEDITOR_MODULES := \
 	WikiEditor/Modules/Highlight/Highlight.js\
@@ -50,6 +53,7 @@ VECTOR_MODULES := \
 	Vector/Modules/CollapsibleNav/CollapsibleNav.js\
 	Vector/Modules/CollapsibleTabs/CollapsibleTabs.js\
 	Vector/Modules/EditWarning/EditWarning.js\
+	Vector/Modules/ExpandableSearch/ExpandableSearch.js\
 	Vector/Modules/FooterCleanup/FooterCleanup.js\
 	Vector/Modules/SimpleSearch/SimpleSearch.js
 

@@ -68,6 +68,21 @@ $messages['af'] = array(
 	'wikieditor-publish-dialog-goback' => 'Terug',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'wikieditor-publish-preference' => 'Aktivizo-hap pas hapi botuese',
+	'wikieditor-publish-button-publish' => 'Publikoj',
+	'wikieditor-publish-button-cancel' => 'Anuloj',
+	'wikieditor-publish-dialog-title' => 'Publikimi në {{SITENAME}}',
+	'wikieditor-publish-dialog-summary' => 'përmbledhje Edit (përshkruaj shkurtimisht ndryshimet që keni bërë):',
+	'wikieditor-publish-dialog-minor' => 'Minor redakto',
+	'wikieditor-publish-dialog-watch' => 'Watch këtë faqe',
+	'wikieditor-publish-dialog-publish' => 'Publikoj',
+	'wikieditor-publish-dialog-goback' => 'Kthehem',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK
@@ -182,17 +197,25 @@ $messages['bs'] = array(
 /** Catalan (Català)
  * @author Paucabot
  * @author Solde
+ * @author Vriullop
  */
 $messages['ca'] = array(
 	'wikieditor-publish-preference' => 'Habilita la publicació pas a pas',
 	'wikieditor-publish-button-publish' => 'Publica',
-	'wikieditor-publish-button-cancel' => 'Cancel·la',
+	'wikieditor-publish-button-cancel' => 'Anuŀla',
 	'wikieditor-publish-dialog-title' => 'Publicar a {{SITENAME}}',
 	'wikieditor-publish-dialog-summary' => "Resum d'edició (descriviu breument els canvis realitzats):",
-	'wikieditor-publish-dialog-minor' => 'Edició menor',
+	'wikieditor-publish-dialog-minor' => 'Modificació menor',
 	'wikieditor-publish-dialog-watch' => 'Vigila aquesta pàgina',
 	'wikieditor-publish-dialog-publish' => 'Publica',
 	'wikieditor-publish-dialog-goback' => 'Torna',
+);
+
+/** Chechen (Нохчийн)
+ * @author Sasan700
+ */
+$messages['ce'] = array(
+	'wikieditor-publish-button-cancel' => 'Цаоьшу',
 );
 
 /** Czech (Česky)
@@ -367,6 +390,22 @@ $messages['eu'] = array(
 	'wikieditor-publish-dialog-goback' => 'Atzera joan',
 );
 
+/** Persian (فارسی)
+ * @author Ebraminio
+ * @author Huji
+ */
+$messages['fa'] = array(
+	'wikieditor-publish-preference' => 'فعال‌سازی انتشار قدم به قدم',
+	'wikieditor-publish-button-publish' => 'انتشار',
+	'wikieditor-publish-button-cancel' => 'لغو',
+	'wikieditor-publish-dialog-title' => 'انتشار در {{SITENAME}}',
+	'wikieditor-publish-dialog-summary' => 'خلاصه ویرایش (توضیح مختصر در مورد تغییری که دادید):',
+	'wikieditor-publish-dialog-minor' => 'ویرایش جزئی',
+	'wikieditor-publish-dialog-watch' => 'پی‌گیری این صفحه',
+	'wikieditor-publish-dialog-publish' => 'انتشار',
+	'wikieditor-publish-dialog-goback' => 'بازگشت به عقب',
+);
+
 /** Finnish (Suomi)
  * @author Crt
  * @author Str4nd
@@ -427,7 +466,7 @@ $messages['gl'] = array(
 	'wikieditor-publish-dialog-minor' => 'Edición pequena',
 	'wikieditor-publish-dialog-watch' => 'Vixiar esta páxina',
 	'wikieditor-publish-dialog-publish' => 'Publicar',
-	'wikieditor-publish-dialog-goback' => 'Voltar',
+	'wikieditor-publish-dialog-goback' => 'Volver',
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
@@ -509,6 +548,7 @@ $messages['hu'] = array(
 );
 
 /** Armenian (Հայերեն)
+ * @author Chaojoker
  * @author Xelgen
  */
 $messages['hy'] = array(
@@ -519,7 +559,7 @@ $messages['hy'] = array(
 	'wikieditor-publish-dialog-minor' => 'Չնչին խմբագրում',
 	'wikieditor-publish-dialog-watch' => 'Հսկել այս էջը',
 	'wikieditor-publish-dialog-publish' => 'Հրատարակել',
-	'wikieditor-publish-dialog-goback' => 'Ետ գնալ',
+	'wikieditor-publish-dialog-goback' => 'Հետ գնալ',
 );
 
 /** Interlingua (Interlingua)
@@ -859,9 +899,9 @@ $messages['ro'] = array(
 	'wikieditor-publish-button-publish' => 'Salvează pagina',
 	'wikieditor-publish-button-cancel' => 'Anulează',
 	'wikieditor-publish-dialog-title' => 'Publică pe {{SITENAME}}',
-	'wikieditor-publish-dialog-summary' => 'Descrierea modificărilor (descrieţi pe scurt modificările făcute):',
+	'wikieditor-publish-dialog-summary' => 'Descrierea modificărilor (descrieți pe scurt modificările făcute):',
 	'wikieditor-publish-dialog-minor' => 'Modificare minoră',
-	'wikieditor-publish-dialog-watch' => 'Urmăreşte pagina',
+	'wikieditor-publish-dialog-watch' => 'Urmărește pagina',
 	'wikieditor-publish-dialog-publish' => 'Salvează pagina',
 	'wikieditor-publish-dialog-goback' => 'Înapoi',
 );
@@ -911,6 +951,14 @@ $messages['sah'] = array(
 	'wikieditor-publish-dialog-goback' => 'Төнүн',
 );
 
+/** Sardinian (Sardu)
+ * @author Andria
+ */
+$messages['sc'] = array(
+	'wikieditor-publish-dialog-minor' => 'Acontzu minore',
+	'wikieditor-publish-dialog-watch' => 'Pone custa pàgina in sa watchlist mea',
+);
+
 /** Sinhala (සිංහල)
  * @author Calcey
  */
@@ -954,6 +1002,17 @@ $messages['sl'] = array(
 	'wikieditor-publish-dialog-watch' => 'Opazuj stran',
 	'wikieditor-publish-dialog-publish' => 'Objavi',
 	'wikieditor-publish-dialog-goback' => 'Pojdi nazaj',
+);
+
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'wikieditor-publish-button-publish' => 'Објави',
+	'wikieditor-publish-button-cancel' => 'Поништи',
+	'wikieditor-publish-dialog-minor' => 'Мала измена',
+	'wikieditor-publish-dialog-publish' => 'Објави',
+	'wikieditor-publish-dialog-goback' => 'Врати се',
 );
 
 /** Swedish (Svenska)
@@ -1027,6 +1086,21 @@ $messages['tk'] = array(
 	'wikieditor-publish-dialog-watch' => 'Sahypany gözegçilige al',
 	'wikieditor-publish-dialog-publish' => 'Neşir et',
 	'wikieditor-publish-dialog-goback' => 'Yza gaýt',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'wikieditor-publish-preference' => 'Paganahin ang hakbang-hakbang na paglalathala',
+	'wikieditor-publish-button-publish' => 'Ilathala',
+	'wikieditor-publish-button-cancel' => 'Huwag ituloy',
+	'wikieditor-publish-dialog-title' => 'Ilathala sa {{SITENAME}}',
+	'wikieditor-publish-dialog-summary' => 'Buod ng pagbabago (maikling ilarawan ang mga pagbabagong ginawa mo):',
+	'wikieditor-publish-dialog-minor' => 'Maliit na pagbabago',
+	'wikieditor-publish-dialog-watch' => 'Bantayan ang pahinang ito',
+	'wikieditor-publish-dialog-publish' => 'Ilathala',
+	'wikieditor-publish-dialog-goback' => 'Bumalik',
 );
 
 /** Turkish (Türkçe)

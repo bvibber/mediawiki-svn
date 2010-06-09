@@ -23,11 +23,17 @@ $wgVectorModules = array(
 	'collapsiblenav' => array( 'global' => true, 'user' => true ),
 	'collapsibletabs' => array( 'global' => true, 'user' => false ),
 	'editwarning' => array( 'global' => false, 'user' => true ),
+	'expandablesearch' => array( 'global' => true, 'user' => true ),
 	'footercleanup' => array( 'global' => false, 'user' => false ),
 	'simplesearch' => array( 'global' => true, 'user' => false ),
 );
 
 /* Setup */
+
+// Enable bucket testing for new version of collapsible nav
+$wgCollapsibleNavBucketTest = false;
+// Force the new version
+$wgCollapsibleNavForceNewVersion = false;
 
 // Credits
 $wgExtensionCredits['other'][] = array(

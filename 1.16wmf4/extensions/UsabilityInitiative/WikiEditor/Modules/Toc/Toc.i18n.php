@@ -36,6 +36,15 @@ $messages['af'] = array(
 	'wikieditor-toc-hide' => 'Versteek inhoud',
 );
 
+/** Gheg Albanian (Gegë)
+ * @author Mdupont
+ */
+$messages['aln'] = array(
+	'wikieditor-toc-preference' => 'Tabela e përmbajtjeve Aktivizo lundrueshëm',
+	'wikieditor-toc-show' => 'Përmbajtja Show',
+	'wikieditor-toc-hide' => 'Përmbajtja Hide',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK
@@ -189,6 +198,7 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author AlimanRuna
  * @author Crazymadlover
  * @author Peter17
  */
@@ -215,6 +225,16 @@ $messages['eu'] = array(
 	'wikieditor-toc-preference' => 'Eduki-taula nabigagarria gaitu',
 	'wikieditor-toc-show' => 'Edukiak erakutsi',
 	'wikieditor-toc-hide' => 'Edukiak ezkutatu',
+);
+
+/** Persian (فارسی)
+ * @author Ebraminio
+ * @author Huji
+ */
+$messages['fa'] = array(
+	'wikieditor-toc-preference' => 'فعال‌سازی فهرست مطالب قابل پیمایش',
+	'wikieditor-toc-show' => 'نمایش محتوا',
+	'wikieditor-toc-hide' => 'نهفتن محتوا',
 );
 
 /** Finnish (Suomi)
@@ -562,6 +582,14 @@ $messages['sl'] = array(
 	'wikieditor-toc-hide' => 'Skrij vsebino',
 );
 
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'wikieditor-toc-show' => 'Покажи садржај',
+	'wikieditor-toc-hide' => 'Сакриј садржај',
+);
+
 /** Swedish (Svenska)
  * @author Boivie
  */
@@ -604,6 +632,15 @@ $messages['tk'] = array(
 	'wikieditor-toc-preference' => 'Nawigasiýaly mazmun tablisasyny aç',
 	'wikieditor-toc-show' => 'Mazmuny görkez',
 	'wikieditor-toc-hide' => 'Mazmuny gizle',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'wikieditor-toc-preference' => 'Paganahin ang malilibot na tabla ng mga nilalaman',
+	'wikieditor-toc-show' => 'Ipakita ang mga nilalaman',
+	'wikieditor-toc-hide' => 'Itago ang mga nilalaman',
 );
 
 /** Turkish (Türkçe)
