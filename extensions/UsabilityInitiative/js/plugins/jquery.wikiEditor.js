@@ -72,8 +72,14 @@ $.wikiEditor = {
 	'imgPath' : wgScriptPath + '/extensions/UsabilityInitiative/images/wikiEditor/',
 	/**
 	 * Checks the current browser against the browsers object to determine if the browser has been black-listed or not.
-	 * Wraps mw.usability.testBrowser() but takes a module rather than a browser map directy, and caches test results.
-	 * 
+	 * Because these rules are often very complex, the object contains configurable operators and can check against
+	 * either the browser version number or string. This process also involves checking if the current browser is amung
+	 * those which we have configured as compatible or not. If the browser was not configured as comptible we just go on
+	 * assuming things will work - the argument here is to prevent the need to update the code when a new browser comes
+	 * to market. The assumption here is that any new browser will be built on an existing engine or be otherwise so
+	 * similar to another existing browser that things actually do work as expected. The merrits of this argument, which
+	 * is essentially to blacklist rather than whitelist are debateable, but at this point we've decided it's the more
+	 * "open-web" way to go.
 	 * @param module Module object, defaults to $.wikiEditor
 	 */
 	'isSupported': function( module ) {
@@ -84,8 +90,33 @@ $.wikiEditor = {
 			// Cache hit
 			return mod.supported;
 		}
-		// Run a browser support test and then cache and return the result
-		return mod.supported = mw.usability.testBrowser( mod.browsers );
+		// Check if we have any compatiblity information on-hand for the current browser
+		if ( !( $.browser.name in mod.browsers[$( 'body' ).is( '.rtl' ) ? 'rtl' : 'ltr'] ) ) {
+			// Assume good faith :) 
+			return mod.supported = true;
+		}
+		// Check over each browser condition to determine if we are running in a compatible client
+		var browser = mod.browsers[$( 'body' ).is( '.rtl' ) ? 'rtl' : 'ltr'][$.browser.name];
+		if ( typeof browser != 'object' ) {
+			return mod.supported = false;
+		}
+		for ( var condition in browser ) {
+			var op = browser[condition][0];
+			var val = browser[condition][1];
+			if ( val === false ) {
+				return mod.supported = false;
+			} else if ( typeof val == 'string' ) {
+				if ( !( eval( '$.browser.version' + op + '"' + val + '"' ) ) ) {
+					return mod.supported = false;
+				}
+			} else if ( typeof val == 'number' ) {
+				if ( !( eval( '$.browser.versionNumber' + op + val ) ) ) {
+					return mod.supported = false;
+				}
+			}
+		}
+		// Return and also cache the return value - this will be checked somewhat often
+		return mod.supported = true;
 	},
 	/**
 	 * Checks if a module has a specific requirement
