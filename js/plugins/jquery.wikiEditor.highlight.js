@@ -37,7 +37,7 @@
 	 * @param config Configuration object to create module from
 	 */
 	'create': function( context, config ) {
-		context.modules.highlight.hash = '';
+		context.modules.highlight.markersStr = '';
 	},
 	/**
 	 * Scans text division for tokens
@@ -45,44 +45,38 @@
 	 * @param division
 	 */
 	'scan': function( context, division ) {
-		var tokens = [];
-		var indices = [];
-		// Get plain text version of editor contents
+		// Remove all existing tokens
+		var tokenArray = context.modules.highlight.tokenArray = [];
+		// Scan text for new tokens
 		var text = context.fn.getContents();
-		// Look for expressions in each module currently activated for this context
+		// Perform a scan for each module which provides any expressions to scan for
+		// FIXME: This traverses the entire string once for every regex. Investigate
+		// whether |-concatenating regexes then traversing once is faster.
 		for ( var module in context.modules ) {
-			// Verify that the module exists and has an expression to be scanned with
 			if ( module in $.wikiEditor.modules && 'exp' in $.wikiEditor.modules[module] ) {
-				// Perform scan for each expression provided
 				for ( var exp in $.wikiEditor.modules[module].exp ) {
 					// Prepare configuration
 					var regex = $.wikiEditor.modules[module].exp[exp].regex;
 					var label = $.wikiEditor.modules[module].exp[exp].label;
-					var bias = $.wikiEditor.modules[module].exp[exp].bias;
-					// Scan for tokens
+					var markAfter = $.wikiEditor.modules[module].exp[exp].markAfter || false;
+					// Search for tokens
 					var offset = 0, left, right, match;
 					while ( ( match = text.substr( offset ).match( regex ) ) != null ) {
-						// Evaluate left and right positions
 						right = ( left = offset + match.index ) + match[0].length;
-						// Store token, indexing by left position, storing a biased offset
-						tokens[left] = {
-							'offset': bias * match[0].length,
+						tokenArray[tokenArray.length] = {
+							'offset': markAfter ? right : left,
 							'label': label,
+							'tokenStart': left,
 							'match': match
 						};
-						indices[indices.length] = left;
 						// Move to the right of this match
 						offset = right;
 					}
 				}
 			}
 		}
-		// Reset tokens
-		context.modules.highlight.tokens = [];
-		// Sort by index
-		for ( index in indices ) {
-			context.modules.highlight.tokens[index] = tokens[index];
-		}
+		// Sort by start
+		tokenArray.sort( function( a, b ) { return a.tokenStart - b.tokenStart; } );
 		// Let the world know, a scan just happened!
 		context.fn.trigger( 'scan' );
 	},
@@ -114,15 +108,15 @@
 		
 		// Serialize the markers array to a string and compare it with the one stored in the previous run - if they're
 		// equal, there's no markers to change
-		var hash = '';
+		var markersStr = '';
 		for ( var i = 0; i < markers.length; i++ ) {
-			hash += markers[i].start + ',' + markers[i].end + ',' + markers[i].type + ',';
+			markersStr += markers[i].start + ',' + markers[i].end + ',' + markers[i].type + ',';
 		}
-		if ( context.modules.highlight.hash == hash ) {
+		if ( context.modules.highlight.markersStr == markersStr ) {
 			// No change, bail out
 			return;
 		}
-		context.modules.highlight.hash = hash;
+		context.modules.highlight.markersStr = markersStr;
 		
 		// Traverse the iframe DOM, inserting markers where they're needed - store visited markers here so we know which
 		// markers should be removed
