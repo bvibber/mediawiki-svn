@@ -5,7 +5,7 @@
  *
  *  You can turn off the redirect by setting the cookie "stopMobileRedirect=true"
  */
-if ( /(Android|iPhone|iPod|webOS|NetFront|Opera Mini|SEMC-Browser|PlayStation Portable|Nintendo Wii)/
+if ( /(Android|iPhone|iPod|webOS|NetFront|Opera Mini|SEMC-Browser|PlayStation Portable|Nintendo Wii|BlackBerry)/
 	.test( navigator.userAgent ) )
 {
 	(function () {
