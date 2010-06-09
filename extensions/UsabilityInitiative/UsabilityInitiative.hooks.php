@@ -72,10 +72,10 @@ class UsabilityInitiativeHooks {
 				array( 'src' => 'js/plugins/jquery.cookie.js', 'version' => 4 ),
 				array( 'src' => 'js/plugins/jquery.delayedBind.js', 'version' => 1 ),
 				array( 'src' => 'js/plugins/jquery.suggestions.js', 'version' => 18 ),
-				array( 'src' => 'js/plugins/jquery.expandableField.js', 'version' => 15 ),
+				array( 'src' => 'js/plugins/jquery.expandableField.js', 'version' => 16 ),
 				array( 'src' => 'js/plugins/jquery.suggestions.js', 'version' => 21 ),
 				array( 'src' => 'js/plugins/jquery.textSelection.js', 'version' => 34 ),
-				array( 'src' => 'js/plugins/jquery.wikiEditor.js', 'version' => 191 ),
+				array( 'src' => 'js/plugins/jquery.wikiEditor.js', 'version' => 192 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.highlight.js', 'version' => 53 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.toolbar.js', 'version' => 66 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.dialogs.js', 'version' => 25 ),
@@ -86,13 +86,13 @@ class UsabilityInitiativeHooks {
 				array( 'src' => 'js/plugins/jquery.wikiEditor.publish.js', 'version' => 5 ),
 				
 				// thirdparty javascript libraries we use
-				array( 'src' => 'js/thirdparty/contentCollector.js', 'version' => 1 ),
+				array( 'src' => 'js/thirdparty/contentCollector.js', 'version' => 2 ),
 			),
 			'combined' => array(
-				array( 'src' => 'js/plugins.combined.js', 'version' => 419 ),
+				array( 'src' => 'js/plugins.combined.js', 'version' => 420 ),
 			),
 			'minified' => array(
-				array( 'src' => 'js/plugins.combined.min.js', 'version' => 419 ),
+				array( 'src' => 'js/plugins.combined.min.js', 'version' => 420 ),
 			),
 		),
 	);
