@@ -112,10 +112,10 @@ class CategoryMultisortChineseHooks {
 	    $result = '';
 	    foreach ( $this->onCategoryMultisortSortkeys_splitString( $str ) as $ch ) {
 	        # One UTF-8 character can have 4 bytes max.
-	        $c = str_pad( $ch, 4);
+	        $c = str_pad( $ch, 4 );
 	        $chcp = utf8ToCodepoint( $ch );
 	        # One Mandarin entry can have 7 bytes max.
-	        $md = str_pad( array_key_exists( $chcp, $data->mandarin ) ? $data->mandarin[$chcp] : '', 7);
+	        $md = str_pad( array_key_exists( $chcp, $data->mandarin ) ? $data->mandarin[$chcp] : '', 7 );
 	        $result .= $md . $c;
 	    }
 	    return $result;
@@ -125,10 +125,10 @@ class CategoryMultisortChineseHooks {
 	    $result = '';
 	    foreach ( $this->onCategoryMultisortSortkeys_splitString( $str ) as $ch ) {
 	        # One UTF-8 character can have 4 bytes max.
-	        $c = str_pad( $ch, 4);
+	        $c = str_pad( $ch, 4 );
 	        $chcp = utf8ToCodepoint( $ch );
-	        # One stroke entry always has 3 bytes. 
-	        $s = $this->onCategoryMultisortSortkeys_getStroke( $data, $chcp );
+	        # One stroke entry always has 3 bytes, or blank if unavailable.
+	        $s = str_pad( $this->onCategoryMultisortSortkeys_getStroke( $data, $chcp ), 3 );
 	        $result .= $s . $c;
 	    }
 	    return $result;
@@ -138,10 +138,10 @@ class CategoryMultisortChineseHooks {
 	    $result = '';
 	    foreach ( $this->onCategoryMultisortSortkeys_splitString( $str ) as $ch ) {
 	        # One UTF-8 character can have 4 bytes max.
-	        $c = str_pad( $ch, 4);
+	        $c = str_pad( $ch, 4 );
 	        $chcp = utf8ToCodepoint( $ch );
-	        # One radical-stroke entry always has 3 (radical) + 3 (stroke) = 6 bytes. 
-	        $r = $this->onCategoryMultisortSortkeys_getRadical( $data, $chcp );
+	        # One radical-stroke entry always has 3 (radical) + 3 (stroke) = 6 bytes, or blank if unavailable.
+	        $r = str_pad( $this->onCategoryMultisortSortkeys_getRadical( $data, $chcp ), 6 );
 	        $result .= $r . $c;
 	    }
 	    return $result;
