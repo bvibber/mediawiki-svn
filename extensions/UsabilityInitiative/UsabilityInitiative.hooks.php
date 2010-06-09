@@ -108,7 +108,7 @@ class UsabilityInitiativeHooks {
 	 * Adds scripts
 	 */
 	public static function addResources( $out ) {
-		global $wgExtensionAssetsPath, $wgJsMimeType;
+		global $wgExtensionAssetsPath;
 		global $wgUsabilityInitiativeResourceMode;
 		global $wgEnableJS2system, $wgEditToolbarRunTests;
 		global $wgStyleVersion;
