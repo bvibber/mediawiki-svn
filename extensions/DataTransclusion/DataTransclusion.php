@@ -9,7 +9,7 @@
  * @licence GNU General Public Licence 2.0 or later
  */
 
-if ( !defined( 'MEDIAWIKI' ) ) {
+if( !defined( 'MEDIAWIKI' ) ) {
 	echo( "This file is an extension to the MediaWiki software and cannot be used standalone.\n" );
 	die( 1 );
 }
@@ -22,26 +22,26 @@ $wgExtensionCredits['other'][] = array(
 	'descriptionmsg' => 'datatransclusion-desc',
 );
 
-$dir = dirname( __FILE__ ) . '/';
+$dir = dirname(__FILE__) . '/';
 $wgExtensionMessagesFiles['DataTransclusion'] = $dir . 'DataTransclusion.i18n.php';
 $wgExtensionMessagesFiles['DataTransclusionMagic'] = $dir . 'DataTransclusion.i18n.magic.php';
 
-$wgAutoloadClasses['DataTransclusionRenderer'] = $dir . 'DataTransclusionRenderer.php';
-$wgAutoloadClasses['DataTransclusionHandler'] = $dir . 'DataTransclusionHandler.php';
-$wgAutoloadClasses['DataTransclusionSource'] = $dir . 'DataTransclusionSource.php';
-$wgAutoloadClasses['CachingDataTransclusionSource'] = $dir . 'DataTransclusionSource.php';
-$wgAutoloadClasses['FakeDataTransclusionSource'] = $dir . 'DataTransclusionSource.php';
-$wgAutoloadClasses['DBDataTransclusionSource'] = $dir . 'DBDataTransclusionSource.php';
-$wgAutoloadClasses['WebDataTransclusionSource'] = $dir . 'WebDataTransclusionSource.php';
+$wgAutoloadClasses['DataTransclusionRenderer'] = $dir. 'DataTransclusionRenderer.php';
+$wgAutoloadClasses['DataTransclusionHandler'] = $dir. 'DataTransclusionHandler.php';
+$wgAutoloadClasses['DataTransclusionSource'] = $dir. 'DataTransclusionSource.php';
+$wgAutoloadClasses['CachingDataTransclusionSource'] = $dir. 'DataTransclusionSource.php';
+$wgAutoloadClasses['FakeDataTransclusionSource'] = $dir. 'DataTransclusionSource.php';
+$wgAutoloadClasses['DBDataTransclusionSource'] = $dir. 'DBDataTransclusionSource.php';
+$wgAutoloadClasses['WebDataTransclusionSource'] = $dir. 'WebDataTransclusionSource.php';
 
 $wgHooks['ParserFirstCallInit'][] = 'efDataTransclusionSetHooks';
 
-// TODO: Special Page for displaying all configured data sources
+//TODO: Special Page for displaying all configured data sources
 
 $wgDataTransclusionSources = array();
 
 function efDataTransclusionSetHooks( $parser ) {
 	$parser->setHook( 'record' , 'DataTransclusionHandler::handleRecordTag' );
-	$parser->setFunctionHook( 'record' , 'DataTransclusionHandler::handleRecordFunction' );
+	$parser->setFunctionHook( 'record' , 'DataTransclusionHandler::handleRecordFunction' ); 
 	return true;
 }

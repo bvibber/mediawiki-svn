@@ -15,6 +15,3 @@ $magicWords['en'] = array(
 	'record' => array( 0, 'record' ),
 );
 
-$magicWords['ar'] = array(
-	'record'   => array( '0', 'تسجيل', 'record' ),
-);
