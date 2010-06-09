@@ -5,7 +5,7 @@
  * @file
  * @ingroup Extensions
  */
-
+Prefswitch-main
 $messages = array();
 
 /** English
@@ -101,7 +101,7 @@ The Wikimedia Foundation's User Experience Team has been working with volunteers
 * '''Wikipedia logo:''' We have updated our logo. Read more at the [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d Wikimedia blog].
 
 ===Feedback?===
-We would love to hear from you. Please visit our [[$1|feedback page]] or, if you are interested in our ongoing efforts to improve the software, visit our [http://usability.wkimedia.org usability wiki] for more information.",
+We would love to hear from you. Please visit our [[$1|feedback page]] or, if you are interested in our ongoing efforts to improve the software, visit our [http://usability.wikimedia.org usability wiki] for more information.",
 	'prefswitch-main-anon' => "===Take me back===
 [$1 Click here to turn off the new features]. You will be asked to login or create an account first.",
 	'prefswitch-main-on' => "===Take me back!===
