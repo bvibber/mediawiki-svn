@@ -113,6 +113,6 @@ class CategoryMultisortViewer extends CategoryViewer {
 			$sortkey = strval( intval( $sortkey ) );
 		}
 		
-		return $wgContLang->convert( $sortkey );
+		return $wgContLang->convert( trim( $sortkey ) );
 	}
 }
