@@ -5182,7 +5182,6 @@ $.fn.autoEllipsis = function( options ) {
 	options = $.extend( {
 		'position': 'center',
 		'tooltip': false,
-		'selector': 'span',
 		'restoreText': false,
 		'hasSpan': false
 	}, options );
@@ -5199,7 +5198,7 @@ $.fn.autoEllipsis = function( options ) {
 		var w = $this.width();
 		var $text;
 		if ( options.hasSpan ) {
-			$text = $this.children( options.selector );
+			$text = $this.children( 'span' );
 		} else {
 			$text = $( '<span />' ).css( 'whiteSpace', 'nowrap' );
 			$this.empty().append( $text );
@@ -5926,8 +5925,6 @@ $.fn.expandableField = function() {
  *		Type: Number, Range: 1 - infinity, Default: 3
  * positionFromLeft: Whether to position the suggestion box with the left attribute or the right
  *		Type: Boolean, Default: true
- *  highlightInput: Highlights the matched text in the suggestions
- *		Type: Boolean, Default: true
  */
 ( function( $ ) {
 
@@ -6036,7 +6033,6 @@ $.suggestions = {
 						var expWidth = -1;
 						var $autoEllipseMe = $( [] );
 						for ( var i = 0; i < context.config.suggestions.length; i++ ) {
-							var text = context.config.suggestions[i];
 							var $result = $( '<div />' )
 								.addClass( 'suggestions-result' )
 								.attr( 'rel', i )
@@ -6050,27 +6046,17 @@ $.suggestions = {
 							
 							// Allow custom rendering
 							if ( typeof context.config.result.render == 'function' ) {
-								context.config.result.render.call( $result, text );
+								context.config.result.render.call( $result, context.config.suggestions[i] );
 							} else {
 								// Add <span> with text
-								if( context.config.highlightInput ) {
-									var matchedText = text.substr( 0, context.data.prevText.length );
-									text = text.substr( context.data.prevText.length, text.length );
-									$result.append( $( '<div />' )
-											.css( 'whiteSpace', 'nowrap' )
-											.text( text )
-											.prepend( $( '<strong />' ).text( matchedText ) )
-										);
-								} else {
-									$result.append( $( '<div />' )
-											.css( 'whiteSpace', 'nowrap' )
-											.text( text )
-										);
-								}
+								$result.append( $( '<span />' )
+										.css( 'whiteSpace', 'nowrap' )
+										.text( context.config.suggestions[i] )
+								);
 								
 								// Widen results box if needed
 								// New width is only calculated here, applied later
-								var $span = $result.children( 'div' );
+								var $span = $result.children( 'span' );
 								if ( $span.outerWidth() > $result.width() && $span.outerWidth() > expWidth ) {
 									expWidth = $span.outerWidth();
 								}
@@ -6083,7 +6069,7 @@ $.suggestions = {
 							context.data.$container.width( Math.min( expWidth, maxWidth ) );
 						}
 						// autoEllipse the results. Has to be done after changing the width
-						$autoEllipseMe.autoEllipsis( { hasSpan: true, tooltip: true, selector: 'div' } );
+						$autoEllipseMe.autoEllipsis( { hasSpan: true, tooltip: true } );
 					}
 				}
 				break;
@@ -6098,7 +6084,6 @@ $.suggestions = {
 				break;
 			case 'submitOnClick':
 			case 'positionFromLeft':
-			case 'highlightInput':
 				context.config[property] = value ? true : false;
 				break;
 		}
@@ -6250,8 +6235,7 @@ $.fn.suggestions = function() {
 					'delay': 120,
 					'submitOnClick': false,
 					'maxExpandFactor': 3,
-					'positionFromLeft': true,
-					'highlightInput': true
+					'positionFromLeft': true
 				}
 			};
 		}
