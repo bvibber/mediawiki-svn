@@ -144,11 +144,11 @@ $j(document).ready( function() {
 		$j( '#p-lang' ).addClass( 'persistent' );
 	}
 	// Always show the first portal
-	$j( '#panel > div.portal:first' ).addClass( 'first persistent' );
+	$j( '#mw-panel > div.portal:first' ).addClass( 'first persistent' );
 	// Apply a class to the entire panel to activate styles
-	$j( '#panel' ).addClass( 'collapsible-nav' );
+	$j( '#mw-panel' ).addClass( 'collapsible-nav' );
 	// Use cookie data to restore preferences of what to show and hide
-	$j( '#panel > div.portal:not(.persistent)' )
+	$j( '#mw-panel > div.portal:not(.persistent)' )
 		.each( function( i ) {
 			var id = $j(this).attr( 'id' );
 			var state = $j.cookie( 'vector-nav-' + id );
@@ -180,7 +180,7 @@ $j(document).ready( function() {
 			.find( 'div.body' )
 			.slideToggle( 'fast' );
 	}
-	var $headings = $j( '#panel > div.portal:not(.persistent) > h5' );
+	var $headings = $j( '#mw-panel > div.portal:not(.persistent) > h5' );
 	/** Copy-pasted from jquery.wikiEditor.dialogs - :( */
 	// Find the highest tabindex in use
 	var maxTI = 0;
