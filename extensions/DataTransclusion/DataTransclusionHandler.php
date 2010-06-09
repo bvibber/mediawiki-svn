@@ -58,15 +58,17 @@ class DataTransclusionHandler {
     }
 
     static function errorMessage( $key, $asHTML ) {
-	    $params = func_get_args();
-	    array_shift( $params ); // $key
-	    array_shift( $params ); // $asHTML
+		$params = func_get_args();
+		array_shift( $params ); // $key
+		array_shift( $params ); // $asHTML
 
-	    if ( $asHTML ) $mode = 'parseinline'; 
-	    else $mode = 'parsemag';
+		if ( $asHTML ) $mode = 'parseinline'; 
+		else $mode = 'parsemag';
 
-	    $m = wfMsgExt( $key, $mode, $params );
-	    return "<span class=\"error\">$m</span>";
+		$m = wfMsgExt( $key, $mode, $params );
+
+		//NOTE: using the key as a css class is done mainely for testing/debugging, but could be useful for scripting and styling too.
+		return "<span class=\"error $key\">$m</span>"; 
     }
 
     /**
@@ -80,7 +82,7 @@ class DataTransclusionHandler {
     * Fetches a records and renders it, according to the given array of parameters.
     * Common implementation for parser tag and parser function.
     */
-    static function handleRecordTransclusion( $key, $argv, $parser, $asHTML ) {
+    static function handleRecordTransclusion( $key, $argv, $parser, $asHTML, $templateText = null ) {
             //find out which data source to use...
 	    if ( empty( $argv['source'] ) ) {
 		if ( empty( $argv[1] ) ) return DataTransclusionHandler::errorMessage( 'datatransclusion-missing-source', $asHTML ); //TESTME
@@ -124,7 +126,7 @@ class DataTransclusionHandler {
 	    //FIXME: log the template we used into the parser output, like regular template use 
 	    //       (including templates used by the template, etc)
 
-	    $handler = new DataTransclusionHandler( $parser, $source, $t );
+	    $handler = new DataTransclusionHandler( $parser, $source, $t, $templateText );
 
 	    $record = $handler->normalizeRecord( $record );
 	    $text = $handler->render( $record );
@@ -233,11 +235,13 @@ class DataTransclusionHandler {
 	    '!^;!m' => '&#59;', 
 	    '![\r\n]!' => ' ', 
 	    '!^ !m' => '&#32;', 
-            '!^-!m' => '&#45;',
-            '!^=!m' => '&#61;',
+	    '!^-!m' => '&#45;', 
+	    '!^=!m' => '&#61;', 
     );
 
     static function sanitizeValue( $v ) {
+	    //TODO: would be nicer to use <nowiki> - or better, insert substitution chunks directly into the parser state. would still need html escpaing though
+
 	    $find = array_keys( self::$sanitizerSubstitution );
 	    $subst = array_values( self::$sanitizerSubstitution );
 

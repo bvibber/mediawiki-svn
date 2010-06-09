@@ -81,7 +81,7 @@ class WebDataTransclusionSource extends DataTransclusionSource {
     return $rec;
   }
 
-  protected function getRecordURL( $field, $value ) {
+  public function getRecordURL( $field, $value ) {
       $u = $this->url;
 
       if ( strpos( $u, '?' ) === false ) $u .= '?';
@@ -94,14 +94,14 @@ class WebDataTransclusionSource extends DataTransclusionSource {
       return $u;
   }
 
-  protected function loadRecordData( $field, $value ) {
+  public function loadRecordData( $field, $value ) {
       $u = $this->getRecordURL( $field, $value );
 
       $raw = Http::get( $u, $this->timeout, $this->httpOptions );
       return $raw;
   }
 
-  protected function decodeData( $raw, $format = 'php' ) {
+  public function decodeData( $raw, $format = 'php' ) {
       if ( $format == 'json' ) return FormatJson::decode( $raw, true ); //TESTME
       if ( $format == 'wddx' ) return wddx_unserialize( $raw ); //TESTME
       if ( $format == 'php' ) return unserialize( $raw ); //TESTME
@@ -109,15 +109,15 @@ class WebDataTransclusionSource extends DataTransclusionSource {
       return false;
   }
 
-  protected function extractError( $data ) {
+  public function extractError( $data ) {
       return $this->extractField( $data, $this->errorPath );
   }
 
-  protected function extractRecord( $data ) {
+  public function extractRecord( $data ) {
       return $this->extractField( $data, $this->dataPath );
   }
 
-  protected function extractField( $data, $path ) {
+  public function extractField( $data, $path ) {
       if ( $path == null ) return $data;
       if ( is_string( $path ) ) return @$data[ $path ];
 

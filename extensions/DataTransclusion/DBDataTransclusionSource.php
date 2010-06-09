@@ -68,9 +68,8 @@ class DBDataTransclusionSource extends DataTransclusionSource {
     else return (string)$value;
   }
 
-  public function fetchRecord( $field, $value ) {
-    $db = wfGetDB( DB_SLAVE );
-
+  public function getQuery( $field, $value, $db = null ) {
+    if ( !$db ) $db = wfGetDB( DB_SLAVE );
     if ( !preg_match( '/\w+[\w\d]+/', $field ) ) return false; // redundant, but make extra sure we don't get anythign evil here //TESTME
 
     $value = $this->convertKey( $field, $value ); //TESTME
@@ -84,6 +83,14 @@ class DBDataTransclusionSource extends DataTransclusionSource {
     else $sql = $this->query . " WHERE " . $where;
 
     if ( $this->querySuffix ) $sql = $sql . ' ' . $this->querySuffix;
+
+    return $sql;
+  }
+
+  public function fetchRecord( $field, $value ) {
+    $db = wfGetDB( DB_SLAVE );
+
+    $sql = $this->getQuery( $field, $value, $db );
 
     $rs = $db->query( $sql, "DBDataTransclusionSource(" . $this->getName() . ")::fetchRecord" );
     if ( !$rs ) return false;

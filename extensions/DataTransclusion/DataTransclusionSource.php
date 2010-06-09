@@ -59,7 +59,7 @@ class DataTransclusionSource {
     if ( $s === null || $s === false ) return $s;
     if ( !is_string( $s ) ) return $s;
     
-    $list = preg_split( '!\s*[,;|]\s*!', $s );
+    $list = preg_split( '!\s*[,;|/]\s*!', $s );
     return $list;
   }
 
@@ -71,7 +71,11 @@ class DataTransclusionSource {
     $this->name = $spec[ 'name' ];
 
     $this->keyFields = self::splitList( $spec[ 'keyFields' ] );
-    $this->fieldNames = self::splitList( $spec[ 'fieldNames' ] );
+
+    if ( isset( $spec[ 'fieldNames' ] ) )
+	$this->fieldNames = self::splitList( $spec[ 'fieldNames' ] );
+    else 
+	$this->fieldNames = $this->keyFields;
 
     if ( !empty( $spec[ 'defaultKey' ] ) ) $this->defaultKey = $spec[ 'defaultKey' ];
     else $this->defaultKey = $this->keyFields[ 0 ];
