@@ -31,6 +31,9 @@ mw.Smil.prototype = {
 	// Stores the mw.SmilBody object
 	body : null,
 	
+	// Stores the smil document for this object ( for relative image paths ) 
+	smilUrl: null,
+	
 	
 	/** 
 	* Constructor
@@ -47,6 +50,7 @@ mw.Smil.prototype = {
 	*/
 	loadFromUrl: function( url , callback ) {
 		var _this = this;
+		this.smilUrl = url; 
 		mw.log( 'Smil: loadFromUrl : ' + url );
 		// Set the loading flag to true: 
 		this.loadingSmil = true;		
@@ -133,6 +137,15 @@ mw.Smil.prototype = {
 			this.duration = this.getBody().getDuration();
 		}
 		return this.duration;		
+	}, 
+	
+	/**
+	* Check if a supplied asset path is relative if and return absolute path   
+	*/ 
+	getAssetPath: function( assetPath ){
+		if( this.smilUrl ){
+			// get the smilUrl path
+		}
 	}
 }
 /**

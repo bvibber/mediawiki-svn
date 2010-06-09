@@ -189,7 +189,7 @@ mw.SmilLayout.prototype = {
 		// XXX get context of smil document for relative or absolute paths: 
 		return $j('<img />')
 				.attr( {
-					'src' : 'panzoom/' + $j( smilElement ).attr( 'src' )
+					'src' : this.smil.getAssetPath( $j( smilElement ).attr( 'src' ) )
 				} )
 				.css( {
 					'width': '100%',
@@ -198,7 +198,8 @@ mw.SmilLayout.prototype = {
 	},
 	
 	/**
-	 *  Parse pan attribute zoom strings 
+	 *  Parse pan zoom attribute string 
+	 * @param panZoomString
 	 */
 	parsePanZoom: function( panZoomString ){
 		var pz = panZoomString.split(',');

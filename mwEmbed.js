@@ -2287,6 +2287,7 @@ if( typeof preMwEmbedConfig == 'undefined') {
 		if( ! $j( targetObject ).data( 'events' ) ||
 				! $j( targetObject ).data( 'events' )[ triggerName ] ) {
 			callback();
+			return ;
 		}		
 		var callbackCount = $j( targetObject ).data( 'events' )[ triggerName ].length;			
 		if( !callbackCount ){
