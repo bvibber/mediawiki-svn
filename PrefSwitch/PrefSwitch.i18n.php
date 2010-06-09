@@ -103,11 +103,11 @@ The Wikimedia Foundation's User Experience Team has been working with volunteers
 ===Feedback?===
 We would love to hear from you. Please visit our [[$1|feedback page]] or, if you are interested in our ongoing efforts to improve the software, visit our [http://usability.wkimedia.org usability wiki] for more information.",
 	'prefswitch-main-anon' => "===Take me back===
-<span class=\"plainlinks\">[$1 Click here to turn off the new features]</span>. You will be asked to login or create an account first.",
+[$1 Click here to turn off the new features]. You will be asked to login or create an account first.",
 	'prefswitch-main-on' => "===Take me back!===
-<span class=\"plainlinks\">[$2 Click here to turn off the new features]</span>.",
+[$2 Click here to turn off the new features].",
 	'prefswitch-main-off' => "===Try them out!===
-<span class=\"plainlinks\">[$1 Click here to enable the new features]</span>.",
+[$1 Click here to enable the new features].",
 	'prefswitch-survey-intro-feedback' => 'We would love to hear from you.
 Please fill out the optional survey below before clicking "[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]".',
 	'prefswitch-survey-intro-off' => 'Thanks for trying out our new features.
@@ -2216,7 +2216,7 @@ Nu is het bewerken van pagina's eenvoudiger en intuïtiever.
 
 === Terugkoppeling? ===
 Wij horen graag van u.
-Bezoek onze <span class=\"plainlinks\">[[$1|pagina voor terugkoppeling]], of ga naar de [http://usability.wkimedia.org bruikbaarheidswiki] voor meer informatie als u geïnteresseerd bent in onze toekomstige plannen.</span>",
+Bezoek onze [[$1|pagina voor terugkoppeling]], of ga naar de [http://usability.wkimedia.org bruikbaarheidswiki] voor meer informatie als u geïnteresseerd bent in onze toekomstige plannen.",
 	'prefswitch-main-anon' => '===Terug===
 <span class="plainlinks">[$1 U kunt de nieuwe functionaliteit uitschakelen]</span>. U wordt dan gevraagd om aan te melden of te registreren.',
 	'prefswitch-main-on' => '=== Nee, bedankt! ===

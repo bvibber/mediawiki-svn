@@ -110,6 +110,7 @@ class SpecialPrefSwitch extends SpecialPage {
 		UsabilityInitiativeHooks::initialize();
 		UsabilityInitiativeHooks::addScript( 'PrefSwitch/PrefSwitch.js', $wgPrefSwitchStyleVersion );
 		UsabilityInitiativeHooks::addStyle( 'PrefSwitch/PrefSwitch.css', $wgPrefSwitchStyleVersion );
+		$wgOut->addHtml( '<div class="plainlinks">' );
 		// Handle various modes
 		if ( $wgRequest->getCheck( 'mode' ) && $wgUser->isLoggedIn() ) {
 			switch ( $wgRequest->getVal( 'mode' ) ) {
@@ -192,6 +193,7 @@ class SpecialPrefSwitch extends SpecialPage {
 					break;
 			}
 		}
+		$wgOut->addHtml( '</div>' );
 	}
 	
 	/* Private Functions */
