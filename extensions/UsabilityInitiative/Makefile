@@ -57,15 +57,31 @@ VECTOR_MODULES := \
 	Vector/Modules/FooterCleanup/FooterCleanup.js\
 	Vector/Modules/SimpleSearch/SimpleSearch.js
 
-all: \
+USABILITYINITIATIVE_HOOKS := \
 	css/combined.css\
 	css/combined.min.css\
+	$(CSS)\
 	js/plugins.combined.js\
 	js/plugins.combined.min.js\
+	$(PLUGINS)
+
+WIKIEDITOR_HOOKS := \
+	$(WIKIEDITOR_MODULES)\
 	WikiEditor/WikiEditor.combined.js\
-	WikiEditor/WikiEditor.combined.min.js\
+	WikiEditor/WikiEditor.combined.min.js	
+
+VECTOR_HOOKS := \
+	$(VECTOR_MODULES)\
 	Vector/Vector.combined.js\
 	Vector/Vector.combined.min.js
+	
+all: \
+	$(USABILITYINITIATIVE_HOOKS)\
+	$(WIKIEDITOR_HOOKS)\
+	UsabilityInitiative.hooks.php\
+	WikiEditor/WikiEditor.hooks.php\
+	Vector/Vector.hooks.php\
+	
 
 # JavaScript Combination
 
@@ -107,6 +123,15 @@ css/combined.min.css : css/combined.css
 
 jsmin:
 	type -P jsmin &>/dev/null || ( wget http://www.crockford.com/javascript/jsmin.c; gcc jsmin.c -o jsmin )
+
+# Simple incrementer of versions
+
+UsabilityInitiative.hooks.php: $(USABILITYINITIATIVE_HOOKS)
+	for file in $?; do basefile=$${file}; sed -i "s/\(.*'src' => '$${basefile//\//\\/}', 'version' => \)\([0-9 +]*\)\(.*\)/\\1 \\2+ 1 \\3/" $@; done
+WikiEditor/WikiEditor.hooks.php: $(WIKIEDITOR_HOOKS)
+	for file in $?; do basefile="$${file#WikiEditor/}"; sed -i "s/\(.*'src' => '$${basefile//\//\\/}', 'version' => \)\([0-9 +]*\)\(.*\)/\\1 \\2+ 1 \\3/" $@; done
+Vector/Vector.hooks.php: $(VECTOR_HOOKS)
+	for file in $?; do basefile=$${file#Vector/}; sed -i "s/\(.*'src' => '$${basefile//\//\\/}', 'version' => \)\([0-9 +]*\)\(.*\)/\\1 \\2+ 1 \\3/" $@; done
 
 # Actions
 
