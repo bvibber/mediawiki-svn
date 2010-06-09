@@ -6651,7 +6651,12 @@ setSelection: function( options ) {
 			if ( newLines) length = length - newLines.length;
 			selection.moveStart( 'character', options.start );
 			selection.moveEnd( 'character', -length + options.end );
-			selection.select();
+			
+			// This line can cause an error under certain circumstances (textarea empty, no selection)
+			// Silence that error
+			try {
+				selection.select();
+			} catch( e ) { }
 		}
 	});
 },
