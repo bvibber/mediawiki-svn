@@ -53,7 +53,7 @@ class UsabilityInitiativeHooks {
 		'base_sets' => array(
 			'raw' => array(
 				// Common UsabilityInitiative funtions
-				array( 'src' => 'js/usability.js', 'version' => 1 ),
+				array( 'src' => 'js/usability.js', 'version' => 2 ),
 
 				// These scripts can be pulled from core once the js2 is merged
 				array( 'src' => 'js/js2stopgap/ui.core.js', 'version' => 1 ),
@@ -75,10 +75,10 @@ class UsabilityInitiativeHooks {
 				array( 'src' => 'js/plugins/jquery.expandableField.js', 'version' => 16 ),
 				array( 'src' => 'js/plugins/jquery.suggestions.js', 'version' => 21 ),
 				array( 'src' => 'js/plugins/jquery.textSelection.js', 'version' => 35 ),
-				array( 'src' => 'js/plugins/jquery.wikiEditor.js', 'version' => 192 ),
+				array( 'src' => 'js/plugins/jquery.wikiEditor.js', 'version' => 193 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.highlight.js', 'version' => 53 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.toolbar.js', 'version' => 66 ),
-				array( 'src' => 'js/plugins/jquery.wikiEditor.dialogs.js', 'version' => 25 ),
+				array( 'src' => 'js/plugins/jquery.wikiEditor.dialogs.js', 'version' => 26 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.toc.js', 'version' => 98 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.preview.js', 'version' => 11 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.templateEditor.js', 'version' => 77 ),
@@ -89,10 +89,10 @@ class UsabilityInitiativeHooks {
 				array( 'src' => 'js/thirdparty/contentCollector.js', 'version' => 2 ),
 			),
 			'combined' => array(
-				array( 'src' => 'js/plugins.combined.js', 'version' => 421 ),
+				array( 'src' => 'js/plugins.combined.js', 'version' => 422 ),
 			),
 			'minified' => array(
-				array( 'src' => 'js/plugins.combined.min.js', 'version' => 421 ),
+				array( 'src' => 'js/plugins.combined.min.js', 'version' => 422 ),
 			),
 		),
 	);
