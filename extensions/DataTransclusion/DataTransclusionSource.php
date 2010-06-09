@@ -9,7 +9,7 @@
  * @licence GNU General Public Licence 2.0 or later
  */
 
-if( !defined( 'MEDIAWIKI' ) ) {
+if ( !defined( 'MEDIAWIKI' ) ) {
 	echo( "This file is an extension to the MediaWiki software and cannot be used standalone.\n" );
 	die( 1 );
 }
@@ -55,73 +55,73 @@ if( !defined( 'MEDIAWIKI' ) ) {
 * Lists may be given as arrays or strings with items separated by [,;|].
 */
 class DataTransclusionSource {
-  static function splitList( $s ) {
-    if ( $s === null || $s === false ) return $s;
-    if ( !is_string( $s ) ) return $s;
-    
-    $list = preg_split( '!\s*[,;|/]\s*!', $s );
-    return $list;
-  }
-
-  /**
-  * Initializes the DataTransclusionSource from the given parameter array.
-  * @param $spec associative array of options. See class-level documentation for details.
-  */
-  function __construct( $spec ) {
-    $this->name = $spec[ 'name' ];
-
-    $this->keyFields = self::splitList( $spec[ 'keyFields' ] );
-
-    if ( isset( $spec[ 'fieldNames' ] ) )
-	$this->fieldNames = self::splitList( $spec[ 'fieldNames' ] );
-    else 
-	$this->fieldNames = $this->keyFields;
-
-    if ( !empty( $spec[ 'defaultKey' ] ) ) $this->defaultKey = $spec[ 'defaultKey' ];
-    else $this->defaultKey = $this->keyFields[ 0 ];
-
-    if ( !empty( $spec[ 'cacheDuration' ] ) ) $this->cacheDuration = (int)$spec[ 'cacheDuration' ];
-    else $this->cacheDuration = null;
-
-    $this->sourceInfo = array();
-
-    if ( !empty( $spec[ 'sourceInfo' ] ) ) {
-	foreach ( $spec[ 'sourceInfo' ] as $k => $v ) {
-		$this->sourceInfo[ $k ] = $v;
+	static function splitList( $s ) {
+		if ( $s === null || $s === false ) return $s;
+		if ( !is_string( $s ) ) return $s;
+		
+		$list = preg_split( '!\s*[,;|/]\s*!', $s );
+		return $list;
 	}
-    }
 
-    $this->sourceInfo[ 'name' ] = $this->name; //force this one
-    $this->sourceInfo[ 'defaultKey' ] = $this->name; //force this one
-  }
+	/**
+	* Initializes the DataTransclusionSource from the given parameter array.
+	* @param $spec associative array of options. See class-level documentation for details.
+	*/
+	function __construct( $spec ) {
+		$this->name = $spec[ 'name' ];
 
-  public function getName() {
-    return $this->name;
-  }
+		$this->keyFields = self::splitList( $spec[ 'keyFields' ] );
 
-  public function getDefaultKey() {
-    return $this->defaultKey;
-  }
+		if ( isset( $spec[ 'fieldNames' ] ) )
+			$this->fieldNames = self::splitList( $spec[ 'fieldNames' ] );
+		else
+			$this->fieldNames = $this->keyFields;
 
-  public function getSourceInfo() {
-    return $this->sourceInfo;
-  }
+		if ( !empty( $spec[ 'defaultKey' ] ) ) $this->defaultKey = $spec[ 'defaultKey' ];
+		else $this->defaultKey = $this->keyFields[ 0 ];
 
-  public function getKeyFields() {
-    return $this->keyFields;
-  }
+		if ( !empty( $spec[ 'cacheDuration' ] ) ) $this->cacheDuration = (int)$spec[ 'cacheDuration' ];
+		else $this->cacheDuration = null;
 
-  public function getFieldNames() {
-    return $this->fieldNames;
-  }
+		$this->sourceInfo = array();
 
-  public function getCacheDuration() {
-    return $this->cacheDuration;
-  }
+		if ( !empty( $spec[ 'sourceInfo' ] ) ) {
+			foreach ( $spec[ 'sourceInfo' ] as $k => $v ) {
+				$this->sourceInfo[ $k ] = $v;
+			}
+		}
 
-  public function fetchRecord( $key, $value ) {
-    throw new MWException( "override fetchRecord()" );
-  }
+		$this->sourceInfo[ 'name' ] = $this->name; // force this one
+		$this->sourceInfo[ 'defaultKey' ] = $this->name; // force this one
+	}
+
+	public function getName() {
+		return $this->name;
+	}
+
+	public function getDefaultKey() {
+		return $this->defaultKey;
+	}
+
+	public function getSourceInfo() {
+	  return $this->sourceInfo;
+	}
+
+	public function getKeyFields() {
+		return $this->keyFields;
+	}
+
+	public function getFieldNames() {
+		return $this->fieldNames;
+	}
+
+	public function getCacheDuration() {
+		return $this->cacheDuration;
+	}
+
+	public function fetchRecord( $key, $value ) {
+		throw new MWException( "override fetchRecord()" );
+	}
 }
 
 /**
@@ -130,57 +130,57 @@ class DataTransclusionSource {
 */
 class CachingDataTransclusionSource extends DataTransclusionSource {
 
-  /**
-  * Initializes the CachingDataTransclusionSource
-  *
-  * @param $source a DataTransclusionSource instance for fetching data records.
-  * @param $cache an ObjectCache instance
-  * @param $duration number of seconds for which records may be cached
-  */
-  function __construct( $source, $cache, $duration ) {
-    $this->source = $source;
-    $this->cache = $cache;
-    $this->duration = $duration;
-  }
+	/**
+	* Initializes the CachingDataTransclusionSource
+	*
+	* @param $source a DataTransclusionSource instance for fetching data records.
+	* @param $cache an ObjectCache instance
+	* @param $duration number of seconds for which records may be cached
+	*/
+	function __construct( $source, $cache, $duration ) {
+		$this->source = $source;
+		$this->cache = $cache;
+		$this->duration = $duration;
+	}
 
-  public function getName() {
-    return $this->source->getName();
-  }
+	public function getName() {
+		return $this->source->getName();
+	}
 
-  public function getDefaultTemplate() {
-    return $this->source->getDefaultTemplate();
-  }
+	public function getDefaultTemplate() {
+		return $this->source->getDefaultTemplate();
+	}
 
-  public function getSourceInfo() {
-    return $this->source->getSourceInfo();
-  }
+	public function getSourceInfo() {
+		return $this->source->getSourceInfo();
+	}
 
-  public function getKeyFields() {
-    return $this->source->getKeyFields();
-  }
+	public function getKeyFields() {
+		return $this->source->getKeyFields();
+	}
 
-  public function getFieldNames() {
-    return $this->source->getFieldNames();
-  }
+	public function getFieldNames() {
+		return $this->source->getFieldNames();
+	}
 
-  public function getCacheDuration() {
-    return $this->source->getCacheDuration();
-  }
+	public function getCacheDuration() {
+		return $this->source->getCacheDuration();
+	}
 
-  public function fetchRecord( $key, $value ) {
-    global $wgDBname, $wgUser;
+	public function fetchRecord( $key, $value ) {
+		global $wgDBname, $wgUser;
 
-    $cacheKey = "$wgDBname:DataTransclusion(" . $this->getName() . ":$key=$value)";
-    
-    $rec = $this->cache->get( $cacheKey );
+		$cacheKey = "$wgDBname:DataTransclusion(" . $this->getName() . ":$key=$value)";
+		
+		$rec = $this->cache->get( $cacheKey );
 
-    if ( !$rec ) { 
-	$rec = $this->source->fetchRecord( $key, $value );
-	if ( $rec ) $this->cache->set( $cacheKey, $rec, $this->getCacheDuration() ) ; //XXX: also cache negatives??
-    }
+		if ( !$rec ) {
+			$rec = $this->source->fetchRecord( $key, $value );
+			if ( $rec ) $this->cache->set( $cacheKey, $rec, $this->getCacheDuration() ) ; // XXX: also cache negatives??
+		}
 
-    return $rec;
-  }
+		return $rec;
+	}
 }
 
 /**
@@ -189,39 +189,39 @@ class CachingDataTransclusionSource extends DataTransclusionSource {
 */
 class FakeDataTransclusionSource extends DataTransclusionSource {
 
-  /**
-  * Initializes the CachingDataTransclusionSource
-  *
-  * @param $spec an associative array of options. See class-level 
-  *		documentation of DataTransclusionSource for details.
-  *
-  * @param $data an array containing a list of records. Records from
-  *		this list can be accessed via fetchRecord() using the key fields specified 
-  *		by $spec['keyFields']. If $data is not given, $spec['data'] must contain the data array.
-  */
-  function __construct( $spec, $data = null ) {
-	DataTransclusionSource::__construct( $spec );
+	/**
+	* Initializes the CachingDataTransclusionSource
+	*
+	* @param $spec an associative array of options. See class-level 
+	*		documentation of DataTransclusionSource for details.
+	*
+	* @param $data an array containing a list of records. Records from
+	*		this list can be accessed via fetchRecord() using the key fields specified 
+	*		by $spec['keyFields']. If $data is not given, $spec['data'] must contain the data array.
+	*/
+	function __construct( $spec, $data = null ) {
+		DataTransclusionSource::__construct( $spec );
 
-	if ( $data === null ) $data = $spec[ 'data' ];
+		if ( $data === null ) $data = $spec[ 'data' ];
 
-	$this->lookup = array();
+		$this->lookup = array();
 
-	foreach ( $data as $rec ) {
-		$this->putRecord( $rec );
+		foreach ( $data as $rec ) {
+			$this->putRecord( $rec );
+		}
 	}
-  }
 
-  public function putRecord( $record ) {
-	$fields = $this->getKeyFields();
-	foreach ( $fields as $f ) {
-		$k = $record[ $f ];
-		
-		if ( !isset( $this->lookup[ $f ] ) ) $this->lookup[ $f ] = array();
-		$this->lookup[ $f ][ $k ] = $record;
+	public function putRecord( $record ) {
+		$fields = $this->getKeyFields();
+		foreach ( $fields as $f ) {
+			$k = $record[ $f ];
+			
+			if ( !isset( $this->lookup[ $f ] ) ) $this->lookup[ $f ] = array();
+			$this->lookup[ $f ][ $k ] = $record;
+		}
 	}
-  }
 
-  public function fetchRecord( $key, $value ) {
-	return @$this->lookup[ $key ][ $value ];
-  }
+	public function fetchRecord( $key, $value ) {
+		return @$this->lookup[ $key ][ $value ];
+	}
 }

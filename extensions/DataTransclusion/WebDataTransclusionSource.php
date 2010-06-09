@@ -9,7 +9,7 @@
  * @licence GNU General Public Licence 2.0 or later
  */
 
-if( !defined( 'MEDIAWIKI' ) ) {
+if ( !defined( 'MEDIAWIKI' ) ) {
 	echo( "This file is an extension to the MediaWiki software and cannot be used standalone.\n" );
 	die( 1 );
 }
@@ -50,92 +50,92 @@ if( !defined( 'MEDIAWIKI' ) ) {
 */
 class WebDataTransclusionSource extends DataTransclusionSource {
 
-  function __construct( $spec ) {
-    DataTransclusionSource::__construct( $spec );
+	function __construct( $spec ) {
+		DataTransclusionSource::__construct( $spec );
 
-    $this->url = $spec[ 'url' ];
-    $this->dataFormat = @$spec[ 'dataFormat' ];
-    $this->dataPath = DataTransclusionSource::splitList( @$spec[ 'dataPath' ] );
-    $this->errorPath = DataTransclusionSource::splitList( @$spec[ 'errorPath' ] );
-    $this->httpOptions = @$spec[ 'httpOptions' ];
-    $this->timeout = @$spec[ 'timeout' ];
+		$this->url = $spec[ 'url' ];
+		$this->dataFormat = @$spec[ 'dataFormat' ];
+		$this->dataPath = DataTransclusionSource::splitList( @$spec[ 'dataPath' ] );
+		$this->errorPath = DataTransclusionSource::splitList( @$spec[ 'errorPath' ] );
+		$this->httpOptions = @$spec[ 'httpOptions' ];
+		$this->timeout = @$spec[ 'timeout' ];
 
-    if ( !$this->dataFormat ) $this->dataFormat = 'php';
-    if ( !$this->timeout ) $this->timeout = &$this->httpOptions[ 'timeout' ];
-    if ( !$this->timeout ) $this->timeout = 5;
-  }
+		if ( !$this->dataFormat ) $this->dataFormat = 'php';
+		if ( !$this->timeout ) $this->timeout = &$this->httpOptions[ 'timeout' ];
+		if ( !$this->timeout ) $this->timeout = 5;
+	}
 
-  public function fetchRecord( $field, $value ) {
-    $raw = $this->loadRecordData( $field, $value ); //TESTME
-    if ( !$raw ) return false; //TODO: log error?
+	public function fetchRecord( $field, $value ) {
+		$raw = $this->loadRecordData( $field, $value ); // TESTME
+		if ( !$raw ) return false; // TODO: log error?
 
-    $data = $this->decodeData( $raw, $this->dataFormat ); //TESTME
-    if ( !$data ) return false; //TODO: log error?
+		$data = $this->decodeData( $raw, $this->dataFormat ); // TESTME
+		if ( !$data ) return false; // TODO: log error?
 
-    $err = $this->extractError( $data ); //TESTME
-    if ( $err ) return false; //TODO: log error?
-    
-    $rec = $this->extractRecord( $data ); //TESTME
-    if ( !$rec ) return false; //TODO: log error?
+		$err = $this->extractError( $data ); // TESTME
+		if ( $err ) return false; // TODO: log error?
 
-    return $rec;
-  }
+		$rec = $this->extractRecord( $data ); // TESTME
+		if ( !$rec ) return false; // TODO: log error?
 
-  public function getRecordURL( $field, $value ) {
-      $u = $this->url;
+		return $rec;
+	}
 
-      if ( strpos( $u, '?' ) === false ) $u .= '?';
-      else $u .= '&';
+	public function getRecordURL( $field, $value ) {
+		$u = $this->url;
 
-      $u .= $field;
-      $u .= '=';
-      $u .= urlencode( $value );
+		if ( strpos( $u, '?' ) === false ) $u .= '?';
+		else $u .= '&';
 
-      return $u;
-  }
+		$u .= $field;
+		$u .= '=';
+		$u .= urlencode( $value );
 
-  public function loadRecordData( $field, $value ) {
-      $u = $this->getRecordURL( $field, $value );
+		return $u;
+	}
 
-      $raw = Http::get( $u, $this->timeout, $this->httpOptions );
-      return $raw;
-  }
+	public function loadRecordData( $field, $value ) {
+		$u = $this->getRecordURL( $field, $value );
 
-  public function decodeData( $raw, $format = 'php' ) {
-      if ( $format == 'json' ) return FormatJson::decode( $raw, true ); //TESTME
-      if ( $format == 'wddx' ) return wddx_unserialize( $raw ); //TESTME
-      if ( $format == 'php' ) return unserialize( $raw ); //TESTME
+		$raw = Http::get( $u, $this->timeout, $this->httpOptions );
+		return $raw;
+	}
 
-      return false;
-  }
+	public function decodeData( $raw, $format = 'php' ) {
+		if ( $format == 'json' ) return FormatJson::decode( $raw, true ); // TESTME
+		if ( $format == 'wddx' ) return wddx_unserialize( $raw ); // TESTME
+		if ( $format == 'php' ) return unserialize( $raw ); // TESTME
 
-  public function extractError( $data ) {
-      return $this->extractField( $data, $this->errorPath );
-  }
+		return false;
+	}
 
-  public function extractRecord( $data ) {
-      return $this->extractField( $data, $this->dataPath );
-  }
+	public function extractError( $data ) {
+		return $this->extractField( $data, $this->errorPath );
+	}
 
-  public function extractField( $data, $path ) {
-      if ( $path == null ) return $data;
-      if ( is_string( $path ) ) return @$data[ $path ];
+	public function extractRecord( $data ) {
+		return $this->extractField( $data, $this->dataPath );
+	}
 
-      foreach ( $path as $p ) {
-	  if ( is_object( $data ) ) $data = wfObjectToArray( $data );
+	public function extractField( $data, $path ) {
+		if ( $path == null ) return $data;
+		if ( is_string( $path ) ) return @$data[ $path ];
 
-	  // meta-key: index in the list of array-keys. 
-	  // e.g. use @0 to grab the first value from an assoc array.
-	  if ( is_string( $p ) && preg_match( '/^@(\d+)$/', $p, $m ) ) { 
-	      $i = (int)$m[1];
-	      $k = array_keys( $data );
-	      $p = $k[ $i ];
-	  }
+		foreach ( $path as $p ) {
+			if ( is_object( $data ) ) $data = wfObjectToArray( $data );
 
-	  if ( !isset( $data[ $p ] ) ) return false;
-	  $data = $data[ $p ];
-      }
+			// meta-key: index in the list of array-keys. 
+			// e.g. use @0 to grab the first value from an assoc array.
+			if ( is_string( $p ) && preg_match( '/^@(\d+)$/', $p, $m ) ) {
+				$i = (int)$m[1];
+				$k = array_keys( $data );
+				$p = $k[ $i ];
+			}
 
-      return $data;
-  }
+			if ( !isset( $data[ $p ] ) ) return false;
+			$data = $data[ $p ];
+		}
+
+		return $data;
+	}
 }
