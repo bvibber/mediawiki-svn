@@ -233,6 +233,8 @@ class DataTransclusionHandler {
 	    '!^;!m' => '&#59;', 
 	    '![\r\n]!' => ' ', 
 	    '!^ !m' => '&#32;', 
+            '!^-!m' => '&#45;',
+            '!^=!m' => '&#61;',
     );
 
     static function sanitizeValue( $v ) {
