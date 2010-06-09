@@ -102,8 +102,8 @@ $j(document).ready( function() {
 			} );
 		}
 		// Shortcuts to the two lists
-		$primary = $j( '#p-lang ul.primary' );
-		$secondary = $j( '#p-lang ul.secondary' );
+		var $primary = $j( '#p-lang ul.primary' );
+		var $secondary = $j( '#p-lang ul.secondary' );
 		// Adjust the limit based on the threshold
 		if ( $secondary.children().length < limit + threshold ) {
 			limit += threshold;
@@ -111,7 +111,7 @@ $j(document).ready( function() {
 		// Move up to 5 of the links into the primary list, based on the priorities set forth in the languages list
 		var count = 0;
 		for ( var i = 0; i < languages.length; i++ ) {
-			$link = $secondary.find( '.interwiki-' + languages[i] );
+			var $link = $secondary.find( '.interwiki-' + languages[i] );
 			if ( $link.length ) {
 				if ( count++ < limit ) {
 					$link.appendTo( $primary );
