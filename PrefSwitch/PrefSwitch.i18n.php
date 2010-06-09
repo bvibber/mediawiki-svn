@@ -73,14 +73,14 @@ Return to <span class="plainlinks">[$1 $2]</span>.',
 {| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
 | [[Image:VectorNavigation-en.png|401px|]]
 |-
-| A screenshot of Wikipedia's new navigation interface <small>[[File:VectorNavigation-en.png|(enlarge)]]</small>
+| A screenshot of Wikipedia's new navigation interface <small>[[Media:VectorNavigation-en.png|(enlarge)]]</small>
 |}
 |-
 | align=\"center\" |
 {| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
 | [[Image:VectorEditorBasic-en.png|401px|]]
 |-
-| A screenshot of the basic page editing interface <small>[[File:VectorEditorBasic-en.png|(enlarge)]]</small>
+| A screenshot of the basic page editing interface <small>[[Media:VectorEditorBasic-en.png|(enlarge)]]</small>
 |}
 |-
 | align=\"center\" |
