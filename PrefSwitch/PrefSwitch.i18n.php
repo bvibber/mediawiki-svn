@@ -5,7 +5,6 @@
  * @file
  * @ingroup Extensions
  */
-Prefswitch-main
 $messages = array();
 
 /** English
