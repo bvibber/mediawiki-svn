@@ -39,9 +39,8 @@
 	margin: 0;
 	width: 100%;
 }
-.suggestions-result div {
+.suggestions-result span {
 	line-height: 1.5em;
-	display: inline;
 	padding: 0.25em 0.25em;
 }
 .suggestions-result-current {

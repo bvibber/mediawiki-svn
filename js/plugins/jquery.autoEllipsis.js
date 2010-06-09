@@ -10,7 +10,6 @@ $.fn.autoEllipsis = function( options ) {
 	options = $.extend( {
 		'position': 'center',
 		'tooltip': false,
-		'selector': 'span',
 		'restoreText': false,
 		'hasSpan': false
 	}, options );
@@ -27,7 +26,7 @@ $.fn.autoEllipsis = function( options ) {
 		var w = $this.width();
 		var $text;
 		if ( options.hasSpan ) {
-			$text = $this.children( options.selector );
+			$text = $this.children( 'span' );
 		} else {
 			$text = $( '<span />' ).css( 'whiteSpace', 'nowrap' );
 			$this.empty().append( $text );
