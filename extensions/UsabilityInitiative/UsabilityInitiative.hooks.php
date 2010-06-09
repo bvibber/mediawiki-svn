@@ -167,13 +167,9 @@ class UsabilityInitiativeHooks {
 		}
 		// Add javascript to document
 		if ( count( self::$messages ) > 0 ) {
-			$out->addScript(
-				Xml::tags(
-					'script',
-					array( 'type' => $wgJsMimeType ),
-					'mw.usability.addMessages({' . implode( ',', self::$messages ) . '});'
-				)
-			);
+			$out->addScript( Html::inlineScript(
+				'mw.usability.addMessages({' . implode( ',', self::$messages ) . '});'
+			) );
 		}
 		// Loops over each style
 		foreach ( self::$styles as $style ) {
