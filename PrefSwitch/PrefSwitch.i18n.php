@@ -105,9 +105,9 @@ We would love to hear from you. Please visit our [[$1|feedback page]] or, if you
 	'prefswitch-main-anon' => "===Take me back===
 <span class=\"plainlinks\">[$1 Click here to turn off the new features]</span>. You will be asked to login or create an account first.",
 	'prefswitch-main-on' => "===Take me back!===
-If you would like to turn off the new features, please <span class=\"plainlinks\">[$2 click here]</span>.",
+<span class=\"plainlinks\">[$2 Click here to turn off the new features]</span>.",
 	'prefswitch-main-off' => "===Try them out!===
-If you would like to turn on the new features, please <span class=\"plainlinks\">[$1 click here]</span>.",
+<span class=\"plainlinks\">[$1 Click here to enable the new features]</span>.",
 	'prefswitch-survey-intro-feedback' => 'We would love to hear from you.
 Please fill out the optional survey below before clicking "[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]".',
 	'prefswitch-survey-intro-off' => 'Thanks for trying out our new features.
