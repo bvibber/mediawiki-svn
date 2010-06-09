@@ -5,21 +5,16 @@
 CSS := \
 	css/suggestions.css\
 	css/vector.collapsibleNav.css\
-	css/vector.expandableSearch.css\
 	css/wikiEditor.css\
 	css/wikiEditor.dialogs.css\
-	css/wikiEditor.toc.css\
 	css/wikiEditor.toolbar.css\
-	css/wikiEditor.preview.css
 
 PLUGINS := \
 	js/usability.js\
 	js/js2stopgap/ui.core.js\
-	js/js2stopgap/ui.datepicker.js\
 	js/js2stopgap/ui.dialog.js\
 	js/js2stopgap/ui.draggable.js\
 	js/js2stopgap/ui.resizable.js\
-	js/js2stopgap/ui.tabs.js\
 	js/plugins/jquery.async.js\
 	js/plugins/jquery.autoEllipsis.js\
 	js/plugins/jquery.browser.js\
@@ -27,34 +22,19 @@ PLUGINS := \
 	js/plugins/jquery.color.js\
 	js/plugins/jquery.cookie.js\
 	js/plugins/jquery.delayedBind.js\
-	js/plugins/jquery.expandableField.js\
 	js/plugins/jquery.suggestions.js\
 	js/plugins/jquery.textSelection.js\
 	js/plugins/jquery.wikiEditor.js\
 	js/plugins/jquery.wikiEditor.dialogs.js\
-	js/plugins/jquery.wikiEditor.highlight.js\
-	js/plugins/jquery.wikiEditor.preview.js\
-	js/plugins/jquery.wikiEditor.publish.js\
-	js/plugins/jquery.wikiEditor.templateEditor.js\
-	js/plugins/jquery.wikiEditor.toc.js\
-	js/plugins/jquery.wikiEditor.toolbar.js\
-	js/thirdparty/contentCollector.js
+	js/plugins/jquery.wikiEditor.toolbar.js
 
 WIKIEDITOR_MODULES := \
-	WikiEditor/Modules/Highlight/Highlight.js\
-	WikiEditor/Modules/Preview/Preview.js\
-	WikiEditor/Modules/Publish/Publish.js\
-	WikiEditor/Modules/Toc/Toc.js\
-	WikiEditor/Modules/Toolbar/Toolbar.js\
-	WikiEditor/Modules/TemplateEditor/TemplateEditor.js\
-	WikiEditor/Modules/AddMediaWizard/AddMediaWizard.js
+	WikiEditor/Modules/Toolbar/Toolbar.js
 
 VECTOR_MODULES := \
 	Vector/Modules/CollapsibleNav/CollapsibleNav.js\
 	Vector/Modules/CollapsibleTabs/CollapsibleTabs.js\
 	Vector/Modules/EditWarning/EditWarning.js\
-	Vector/Modules/ExpandableSearch/ExpandableSearch.js\
-	Vector/Modules/FooterCleanup/FooterCleanup.js\
 	Vector/Modules/SimpleSearch/SimpleSearch.js
 
 all: \
