@@ -190,14 +190,7 @@ fn: {
 	 * @param $elements Elements to set tabindexes on. If they already have tabindexes, this function can behave a bit weird
 	 */
 	setTabindexes: function( $elements ) {
-		// Find the highest tabindex in use
-		var maxTI = 0;
-		$j( '[tabindex]' ).each( function() {
-			var ti = parseInt( $j(this).attr( 'tabindex' ) );
-			if ( ti > maxTI )
-				maxTI = ti;
-		});
-		var tabIndex = maxTI + 1;
+		var tabIndex = mw.usability.getMaxTabIndex() + 1;
 		$elements.each( function() {
 			$j(this).attr( 'tabindex', tabIndex++ );
 		} );
