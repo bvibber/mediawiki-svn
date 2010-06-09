@@ -225,10 +225,9 @@ class PagedTiffHandler extends ImageHandler {
 	}
 
 	/**
-	 * doTransform was changed for multipage and lossy support.
-	 * self::TRANSFORM_LATER is ignored. Instead, the function checks whether a
-	 * thumbnail with the requested file type and resolution exists. It will be
-	 * created if necessary.
+	 * Checks whether a thumbnail with the requested file type and resolution exists, 
+	 * creates it if necessary, unless self::TRANSFORM_LATER is set in $flags.
+	 * Supports extra parameters for multipage files and thumbnail type (lossless vs. lossy)
 	 */
 	function doTransform( $image, $dstPath, $dstUrl, $params, $flags = 0 ) {
 		global $wgImageMagickConvertCommand, $wgTiffMaxEmbedFileResolution, $wgTiffUseVips, $wgTiffVipsCommand;
@@ -254,6 +253,10 @@ class PagedTiffHandler extends ImageHandler {
 		$extension = $this->getThumbExtension( $image, $page, $params['lossy'] );
 		$dstPath .= $extension;
 		$dstUrl .= $extension;
+
+		if ( $flags & self::TRANSFORM_LATER ) { //pretend the thumbnail exists, let it be created by a 404-handler
+			return new ThumbnailImage( $image, $dstUrl, $width, $height, $dstPath, $page );
+		}
 
 		$meta = unserialize( $metadata );
 
