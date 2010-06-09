@@ -38,10 +38,8 @@
 	color: WindowText;
 	margin: 0;
 	width: 100%;
-}
-.suggestions-result span {
 	line-height: 1.5em;
-	padding: 0.25em 0.25em;
+	padding: 0.01em 0.25em;
 }
 .suggestions-result-current {
 	background-color: #4C59A6;
@@ -64,6 +62,9 @@
 .suggestions-result-current .special-query {
 	color: white;
 	color: HighlightText;
+}
+.autoellipsis-matched {
+	font-weight: bold;
 }/* Prototype code to show collapsing left nav options */
 #mw-panel.collapsible-nav div.portal {
 	background-image:url(../images/vector/collapsibleNav/portal-break.png?1);
@@ -134,7 +135,6 @@ body.rtl #mw-panel.collapsible-nav div.persistent div.body {
 }
 .expandableField {
 	display: block;
-	float: left;
 }
 #simpleSearch { 
 	overflow: auto;
