@@ -121,6 +121,19 @@ function wfTasksAddActionText( &$actions ) { # Checked for HTML and MySQL insert
 }
 # END logging functions
 
+/**
+ * Text adding function
+ */
+function wfTasksAddCache() { # Checked for HTML and MySQL insertion attacks
+	global $wgTasksAddCache, $wgDefaultUserOptions;
+
+	if( $wgTasksAddCache ) {
+		return;
+	}
+
+	$wgTasksAddCache = true;
+}
+
 #___________________________________________________________________
 # Hook functions
 
