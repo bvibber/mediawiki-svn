@@ -52,6 +52,13 @@ $messages['bs'] = array(
 	'newsextension-desc' => 'Pokazuje prilagođene nedavne izmjene na wiki stranicama ili kao RSS ili atom',
 );
 
+/** Chechen (Нохчийн)
+ * @author Sasan700
+ */
+$messages['ce'] = array(
+	'newsextension-desc' => 'Гойту нисбина могlам керла нисдарш вики-агlонашах йа аса RSS йа Atom',
+);
+
 /** German (Deutsch)
  * @author Melancholie
  */

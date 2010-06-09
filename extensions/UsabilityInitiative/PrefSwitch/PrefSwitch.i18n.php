@@ -709,7 +709,7 @@ Zurück zu <span class="plainlinks">[$1 $2]</span>.',
 |}
 |}
 
-Das User Experience Team der Wikimedia Foundation hat zusammen mit Freiwilligen aus der Gemenschaft daran gearbeitet, die Sachen für dich einfacher zu machen. Wir freuen uns, einige Verbesserungen zu präsentieren, unter anderem ein neues Aussehen und vereinfachte Bearbeitungsfunktionen. Diese Veränderungen sind dazu da, neuen Benutzern einen einfacheren Start zu ermöglichen und sind basiert auf unseren [http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study über das gesamte letzte Jahr durchgeführten Benutzbarkeits-Tests]. Die Benutzbarkeit unserer Projekte zu erhöhen ist eine Priorität der Wikimedia Foundation, welche auch in Zukunft weitere Updates präsentieren wird. Für weitere Informationen, siehe den [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia Wikimedia-Blog-Eintrag].
+Das User Experience Team der Wikimedia Foundation hat zusammen mit Freiwilligen aus der Gemeinschaft daran gearbeitet, die Sachen für dich einfacher zu machen. Wir freuen uns, einige Verbesserungen zu präsentieren, unter anderem ein neues Aussehen und vereinfachte Bearbeitungsfunktionen. Diese Veränderungen sind dazu da, neuen Benutzern einen einfacheren Start zu ermöglichen und basieren auf unsere [http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study über das gesamte letzte Jahr durchgeführte Benutzbarkeits-Tests]. Die Benutzbarkeit unserer Projekte zu erhöhen ist eine Priorität der Wikimedia Foundation, welche auch in Zukunft weitere Updates präsentieren wird. Für weitere Informationen, siehe den [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia Wikimedia-Blog-Eintrag].
 
 === Was sich verändert hat ===
 * '''Navigation:''' Wir haben die Navigation zum Lesen und zur Bearbeitung der Seiten verbessert. Die Reiter am Kopf jeder Seite zeigen klarer, ob du eine Seite oder eine Diskussionsseite liest und ob du eine Seite liest oder bearbeitest.
@@ -717,10 +717,10 @@ Das User Experience Team der Wikimedia Foundation hat zusammen mit Freiwilligen 
 * '''Link-Assistent:''' Ein einfach zu bedienender Dialog ermöglicht das Hinzufügen von Links sowohl zu anderen Wiki-Seiten als auch zu externen Seiten.
 * '''Suche:''' Wir haben die Suchvorschläge verbessert, damit du schneller zu der von dir gesuchten Seite kommst.
 * '''Weiteres:''' Ein Tabellen-Assistent ermöglicht das einfache Erstellen von Tabellen und ein Suchen-und-Ersetzen-Dialog vereinfacht die Seitenbearbeitung.
-* '''Wikipedia-Puzzle-Globus''': wir haben den Puzzle-Globus erneuert, mehr Informationen im [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ Wikimedia-Blog.]
+* '''Wikipedia-Puzzle-Globus''': Wir haben den Puzzle-Globus erneuert, mehr Informationen im [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ Wikimedia-Blog.]
 
 ===Feedback?===
-Wir würden gerne von dir hören. Bitte benutze unsere [[\$1|Feedback-Seite]] oder, falls du an unseren momentanen Arbeit zur Verbesserung der Software interessiert bist, besuche das [http://usability.wikimedia.org Usability-Wiki] für weitere Informationen.",
+Wir würden gerne von dir hören. Bitte benutze unsere [[\$1|Feedback-Seite]] oder, falls du an unserer momentanen Arbeit zur Verbesserung der Software interessiert bist, besuche das [http://usability.wikimedia.org Usability-Wiki] für weitere Informationen.",
 	'prefswitch-main-anon' => '===Zurück===
 Sofern du die neuen Funktionen deaktivieren möchtest, dann [$1 klicke hier]. Du wirst dann gebeten dich anzumelden oder zunächst ein neues Benutzerkonto zu erstellen.',
 	'prefswitch-main-on' => '=== Bring mich zurück! ===
@@ -1154,10 +1154,8 @@ Palaa sivulle <span class="plainlinks">[$1 $2]</span>.',
 * '''Wikipedia-palapelimaapallo''': Olemme päivittäneet palapelimaapalloa. Lue lisää [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ Wikimedian blogista].",
 	'prefswitch-main-anon' => '=== Palaa takaisin ===
 Jos haluat poistaa käytöstä uudet ominaisuudet – [$1 napsauta tästä]. Sinua pyydetään ensin kirjautumaan sisään tai luomaan tunnus.',
-	'prefswitch-main-on' => '=== Palautetta? ===
-Otamme mielellämme palautetta vastaan. Käy [$1 palautesivulla].
-=== Palaa takaisin ===
-Jos haluat poistaa käytöstä uudet ominaisuudet – [$2 napsauta tästä].',
+	'prefswitch-main-on' => '=== Palaa takaisin ===
+[$2 Napsauta tästä, jos haluat poistaa käytöstä uudet ominaisuudet].',
 	'prefswitch-main-off' => '=== Kokeile ominaisuuksia ===
 Jos haluat ottaa uudet ominaisuudet käyttöön – [$1 napsauta tästä].',
 	'prefswitch-survey-intro-feedback' => 'Otamme mielellämme palautetta vastaan.
@@ -1207,18 +1205,41 @@ Veuillez choisir tout ce qui convient.',
 	'prefswitch-success-feedback' => 'Vos commentaires ont été envoyés.',
 	'prefswitch-return' => '<hr style="clear:both">
 Revenir à <span class="plainlinks">[$1 $2]</span>.',
-	'prefswitch-main' => "Nous avons travaillé dur pour rendre les choses plus faciles pour nos utilisateurs. Nous sommes heureux de partager quelques améliorations, notamment un nouveau look et la simplification des fonctions d'édition. Améliorer la convivialité de nos projets est une priorité de la Fondation Wikimedia et nous continuerons à le faire dans le futur. Pour plus de détails, lisez le post du [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/ blog de Wikimedia] consacré à ces améliorations.
+	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
+| align=\"center\" |
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
+| [[Image:VectorNavigation-en.png|401px|]]
+|-
+| Capture d’écran de la nouvelle interface de navigation de Wikipédia <small>[[Media:VectorNavigation-en.png|(agrandir)]]</small>
+|}
+|-
+| align=\"center\" |
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
+| [[Image:VectorEditorBasic-en.png|401px|]]
+|-
+| Capture d’écran de l’interface simple de modification de page <small>[[Media:VectorEditorBasic-en.png|(agrandir)]]</small>
+|}
+|-
+| align=\"center\" |
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
+|[[Image:UsabilityDialogs-fr.png|401px|]]
+|-
+| Capture d’écran de la nouvelle boîte de dialogue pour insérer des liens
+|}
+|}
+L’équipe Expérience utilisateur de la Fondation Wikimedia (''User Experience Team'') a travaillé en collaboration avec des volontaires de la communauté pour vous rendre les choses plus simples. Nous sommes heureux de nous partageons avec vous ces améliorations, notamment une nouvelle apparence et une simplification des fonctions de modification. Ces changements sont effectués pour que les nouveaux contributeurs puissent débuter plus facilement, et ils sont basés sur notre [http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study tests utilisateurs menés sur l’année passée]. Améliorer l’utilisabilité de nos projets est une priorité de la Fondation Wikimédia, et nous vous ferons part de nos futures avancées. Pour plus de détails, veuillez consulter le [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia billet de blog Wikimédia]. 
 
-[[File:UsabilityNavigation.png|right|link=|Capture d'écran de la nouvelle navigation]]
-[[File:UsabilityToolbar.png|right|link=|Capture d'écran de la barre d'outils d'édition améliorée]]
-[[File:UsabilityDialogs.png|right|link=|Capture d'écran du contenu des boîtes de dialogue de nouvelle génération]]
-=== Voici ce que nous avons changé ===
-* '''Navigation :''' nous avons amélioré la navigation pour la lecture et la modification des pages. Maintenant, les onglets en haut de chaque page définissent plus clairement si vous voyez la page ou la page de discussion, et si vous lisez ou modifiez une page.
-* '''Améliorations de la barre d'outils d'édition :''' nous avons réorganisé la barre d'outils d'édition pour la rendre plus facile à utiliser. Maintenant, la mise en page est plus simple et plus intuitive.
-* '''Assistant de liens :''' un outil simple pour vous permettre d'ajouter des liens vers d'autres pages de Wikipédia ainsi que des liens vers des sites externes.
+=== Les nouveautés ===
+
+* '''Navigation :''' nous avons amélioré la navigation pour la lecture et la modification des pages. Maintenant, les onglets en haut de chaque page définissent plus clairement si vous voyez la page ou la page de discussion, et si vous consultez ou modifiez une page.
+* '''Améliorations de la barre d’outils de modification :''' nous avons réorganisé la barre d’outils de modification pour la rendre plus facile à utiliser. Maintenant, la mise en page est plus simple et plus intuitive.
+* '''Assistant de liens :''' un outil simple pour vous permettre d’ajouter des liens vers d’autres pages de Wikipédia ainsi que des liens vers des sites externes.
 * '''Amélioration de la recherche :''' nous avons amélioré les suggestions de recherche pour vous aider à trouver la page que vous recherchez plus rapidement.
-* '''Autres nouvelles fonctionnalités :''' nous avons également introduit un assistant de tableaux pour créer des tableaux plus facilement et une fonctionnalité de remplacement pour simplifier la modification de page.
-* '''Globe en puzzle de Wikipédia''': nous avons mis à jour le globe en puzzle, lisez-en plus sur le [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ blog de Wikimedia].",
+* '''Autres fonctionnalités nouvelles :''' nous avons également introduit un assistant de tableaux pour créer des tableaux plus facilement et une fonctionnalité de remplacement pour simplifier la modification de page.
+* '''Logo Wikipédia''': nous avons mis à jour notre logo. Pour en savoir plus, consultez le [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ blog de Wikimedia].
+
+=== Retours d’expérience ===
+Nous aimerions beaucoup avoir des retours de votre part. Veuillez vous rendre sur la [[\$1|page de retours d’expérience]] ou bien, si vous êtes intéressés par nos efforts continus pour améliorer le logiciel, visitez notre [http://usability.wikimedia.org wiki utilisabilité] pour plus d’informations.",
 	'prefswitch-main-anon' => '===Take Me Back===
 Si vous souhaitez désactiver les nouvelles fonctionnalités, [$1 cliquez ici].  Il vous sera demandé de vous connecter ou de vous créer un compte.',
 	'prefswitch-main-on' => '=== Sortez-moi de là ! ===
@@ -1963,10 +1984,8 @@ Zréck op <span class="plainlinks">[$1 $2]</span>.',
 	'prefswitch-main-anon' => "=== Zréck ===
 Wann Dir déi nei Fonctiounen ausschalte wëllt, 
 [$1 klickt hei]. Dir gitt gefrot fir Iech d'éischt anzeloggen oder e Benotzerkont opzemaachen.",
-	'prefswitch-main-on' => '===Är Reaktioun?===
-Mir wiere frou vun Iech ze héieren. Gitt w.e.g. op eis <span  class="plainlinks">[$1 Är Reaktioun Säit].
-===Bréngt mech zréck!===
-Wann Dir déi nei Fonctiounen ausschalte wëllt, da <span  class="plainlinks">[$2 klickt w.e.g. hei].',
+	'prefswitch-main-on' => '===Bréngt mech zréck!===
+[$2 klickt w.e.g. hei fir déi nei Fonctiounen auszeschalten].',
 	'prefswitch-main-off' => '===Probéiert se aus!===
 Wann Dir déi nei Fonctiounen ausprobéiere wëllt, da <span  class="plainlinks">[$1 klickt w.e.g. hei].',
 	'prefswitch-survey-intro-feedback' => 'Mir wiere frou vun Iech ze héieren.

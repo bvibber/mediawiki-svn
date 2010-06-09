@@ -29,11 +29,14 @@ $messages['qqq'] = array(
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
+ * @author Wizardist
  */
 $messages['be-tarask'] = array(
 	'interwikiintegration' => "Аб'яднаньне інтэрвікі",
 	'interwikiintegration-desc' => "Усеагульнае аб'яднаньне інтэрвікі",
 	'populateinterwikiintegrationtable' => "Запоўніць табліцу аб'яднаньня інтэрвікі",
+	'interwikiintegration-setuptext' => 'Табліцы вікі $1 настроеныя.
+Упэўніцеся, што табліцы астатніх вікі-сайтаў таксама настроеныя.',
 	'right-integration' => "запаўненьне табліцы аб'яднаньня інтэрвікі",
 );
 
@@ -42,9 +45,9 @@ $messages['be-tarask'] = array(
  */
 $messages['de'] = array(
 	'interwikiintegration' => 'Interwiki-Integration',
-	'interwikiintegration-desc' => 'Ermöglichte eine umfassende Integration von Interwikilinks',
+	'interwikiintegration-desc' => 'Ermöglicht eine umfassende Integration von Interwikilinks',
 	'populateinterwikiintegrationtable' => 'Interwikilink-Tabelle befüllen',
-	'interwikiintegration-setuptext' => '$1 Tabellen wurden konfiguriert.
+	'interwikiintegration-setuptext' => 'Tabelle für $1 wurde konfiguriert.
 Stelle sicher, dass du die Tabellen deiner anderen Wikis ebenso konfigurierst.',
 	'right-integration' => 'Befüllen der Interwikilink-Tabelle',
 );
