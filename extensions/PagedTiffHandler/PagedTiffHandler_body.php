@@ -156,7 +156,13 @@ class PagedTiffHandler extends ImageHandler {
 		if ( !isset( $params['width'] ) ) {
 			return false;
 		}
-		$lossy = isset( $params['lossy'] ) && $params['lossy'] ? 'lossy' : 'lossless';
+
+		if ( !isset( $params['lossy'] ) || in_array( $params['lossy'], array( 1, '1', 'true', 'lossy' ) ) ) {
+			$lossy = 'lossy';
+		} else {
+			$lossy = 'lossless';
+		}
+
 		return "{$lossy}-page{$page}-{$params['width']}px";
 	}
 

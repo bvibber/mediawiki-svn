@@ -97,7 +97,7 @@ class PagedTiffHandlerTest extends PHPUnit_Framework_TestCase {
 		$this->handler->normaliseParams($this->image, $params );
 		$this->assertEquals($params['height'], 75);
 		// makeParamString
-		$this->assertEquals($this->handler->makeParamString(array('width'=>'100', 'page'=>'4')), "lossless-page4-100px");
+		$this->assertEquals($this->handler->makeParamString(array('width'=>'100', 'page'=>'4', 'lossy'=>'lossless')), "lossless-page4-100px");
 	
 		// ---- File upload checks and Thumbnail transformation
 		// check
