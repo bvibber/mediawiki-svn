@@ -40,11 +40,11 @@ $j(document).ready( function() {
 	// Fallback to old version
 	var version = 1;
 	// Allow new version override
-	if ( wgCollapsibleNavForceNewVersion == true ) {
+	if ( wgCollapsibleNavForceNewVersion ) {
 		version = 2;
 	} else {
 		// Make bucket testing optional
-		if ( wgCollapsibleNavBucketTest == true ) {
+		if ( wgCollapsibleNavBucketTest ) {
 			// This is be determined randomly, and then stored in a cookie
 			version = $j.cookie( 'vector-nav-pref-version' );
 			// If the cookie didn't exist, or the value is out of range, generate a new one and save it
@@ -153,7 +153,7 @@ $j(document).ready( function() {
 	}
 	
 	/* General Portal Modification */
-	debugger;
+	
 	// Always show the first portal
 	$j( '#mw-panel > div.portal:first' ).addClass( 'first persistent' );
 	// Apply a class to the entire panel to activate styles
