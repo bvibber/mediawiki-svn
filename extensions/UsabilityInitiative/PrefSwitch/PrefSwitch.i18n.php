@@ -119,6 +119,7 @@ To help us improve them, please fill out the optional survey below before clicki
  * @author Hamilton Abreu
  * @author Lloffiwr
  * @author McDutchie
+ * @author Siebrand
  * @author Umherirrender
  */
 $messages['qqq'] = array(
@@ -140,7 +141,7 @@ It is not in used at the referred page, as of 16 May 2010.
 	'prefswitch-survey-answer-whyoff-didntwork' => '{{MediaWiki:Prefswitch-survey-answer-whyoff-hard/qqq}}',
 	'prefswitch-survey-answer-whyoff-notpredictable' => '{{MediaWiki:Prefswitch-survey-answer-whyoff-hard/qqq}}',
 	'prefswitch-survey-answer-whyoff-other' => '{{Identical|Other reason}}',
-	'prefswitch-feedbackpage' => 'The name of the user experience feedback page on this wiki. Should only be translated for ja, es, de, fr, it, ru, pl, pt, nl for now.',
+	'prefswitch-feedbackpage' => '{{doc-imporant|The name of the user experience feedback page on this wiki. Should only be translated for ja, es, de, fr, it, ru, pl, pt, nl for now. Do not translate "Project:"}}',
 );
 
 /** Afrikaans (Afrikaans)
@@ -724,7 +725,7 @@ Wenn du die neuen Features einschalten möchtest, [$1 klick hier].',
 Bitte fülle die freiwillige Umfrage aus, bevor du auf „[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]“ klickst.',
 	'prefswitch-survey-intro-off' => 'Danke für das Ausprobieren unserer neuen Features.
 Damit wir besser werden können, fülle bitte die freiwillige Umfrage aus, bevor du auf „[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]“ klickst.',
-	'prefswitch-feedbackpage' => 'Wikipedia:Usability-Initiative/Feedback',
+	'prefswitch-feedbackpage' => 'Project:Usability-Initiative/Feedback',
 );
 
 /** German (formal address) (Deutsch (Sie-Form))
@@ -852,7 +853,7 @@ Jolic coš nowe funkcije zašaltowaś, [$1 klikni pšosym how].',
 Pšosym wupołni slědujuce opcionalne napšašowanje, nježli až kliknjoš na "[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]".',
 	'prefswitch-survey-intro-off' => 'Źěkujomy se, až sy wopytał naše nowe funkcije.
 Aby nam pomogał, je pólěpšyś, wupołni pšosym slědujuce opcionalne napšašowanje, nježli až kliknjoš na "[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]".',
-	'prefswitch-feedbackpage' => 'Wikipedija:Komentary wó iniciatiwje wužywajobnosći',
+	'prefswitch-feedbackpage' => 'Project:Komentary wó iniciatiwje wužywajobnosći',
 );
 
 /** Greek (Ελληνικά)
@@ -1063,7 +1064,7 @@ Si deseas activar las nuevas características, por favor haz [$1 click aquí].',
 Por favor llene la encuesta opcional de abajo presionando "[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]".',
 	'prefswitch-survey-intro-off' => 'Gracias por probar nuestras nuevas características.
 Para ayudarnos a mejorarlas, por favor llene la encuesta de abajo presionando "[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]".',
-	'prefswitch-feedbackpage' => 'Wikipedia:Feedback de experiencia de usuario',
+	'prefswitch-feedbackpage' => 'Project:Feedback de experiencia de usuario',
 );
 
 /** Estonian (Eesti)
@@ -1283,7 +1284,7 @@ Si vous souhaitez activer les nouvelles  fonctionnalités, veuillez [$1 cliquer 
 Si vous le désirez, vous pouvez remplir le sondage ci-dessous avant de cliquer sur « [[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]] ».',
 	'prefswitch-survey-intro-off' => "Merci d'avoir essayé nos nouvelles fonctionnalités.
 Pour nous aider à les améliorer, vous pouvez remplir le sondage optionnel ci-dessous avant de cliquer sur « [[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]] ».",
-	'prefswitch-feedbackpage' => "Wikipédia:Retours d'expérience sur l'utilisabilité",
+	'prefswitch-feedbackpage' => "Project:Retours d'expérience sur l'utilisabilité",
 );
 
 /** Franco-Provençal (Arpetan)
@@ -1469,7 +1470,7 @@ Wänn Du di neje Funktione witt yyschalte, [$1 druck do].',
 Bitte fill di frejwillig Umfrog uus, voreb Du uf „[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]“ drucksch.',
 	'prefswitch-survey-intro-off' => 'Dankschen fir s Uusprobiere vu unsre neje Funktione.
 Ass mir no besser chenne wäre, fill bitte di frejwillig Umfrog uus, voreb Du uf „[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]“ drucksch.',
-	'prefswitch-feedbackpage' => 'Wikipedia:Benutzerfrejndligkeits-Initiative/Ruckmäldig',
+	'prefswitch-feedbackpage' => 'Project:Benutzerfrejndligkeits-Initiative/Ruckmäldig',
 );
 
 /** Hebrew (עברית)
@@ -1598,7 +1599,7 @@ Jeli chceš nowe funkcije zapinyć,  [$1 klikń prošu tu].',
 Prošu wupjelń slědowace opcionelne poszudźenje, prjedy hač kliknješ na "[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]".',
 	'prefswitch-survey-intro-off' => 'Dźakujemy so za wupruwowanje našich nowych funkcijow.
 Zo by nam pomhał, je polěpšić, wupjelń prošu slědowace opcionelne posudźenje, prjedy hač kliknješ na "[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]".',
-	'prefswitch-feedbackpage' => '↓  Wikipedija:Iniciatiwa wužiwajomnosće - komentary',
+	'prefswitch-feedbackpage' => 'Project:Iniciatiwa wužiwajomnosće - komentary',
 );
 
 /** Hungarian (Magyar)
@@ -1829,7 +1830,7 @@ Se vuoi attivare le nuove funzioni, [$1 clicca qui].',
 Per favore, compila il seguente sondaggio facoltativo prima di cliccare "[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]".',
 	'prefswitch-survey-intro-off' => 'Grazie per aver provato le nostre nuove funzioni.
 Per aiutarci a migliorarle, per favore riempi il seguente questionario facoltativo prima di fare clic su "[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]".',
-	'prefswitch-feedbackpage' => 'Progetto:Coordinamento/Usabilità',
+	'prefswitch-feedbackpage' => 'Project:Coordinamento/Usabilità',
 );
 
 /** Japanese (日本語)
@@ -1894,7 +1895,7 @@ $messages['ja'] = array(
 「[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]」をクリックする前に、下記の調査に任意でご協力ください。',
 	'prefswitch-survey-intro-off' => '新機能をお試しいただきありがとうございます。
 更なる改善のために、「[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]」をクリックする前に下記の調査に任意でご協力ください。',
-	'prefswitch-feedbackpage' => 'WP:WUI/F',
+	'prefswitch-feedbackpage' => 'Project:WUI/F',
 );
 
 /** Georgian (ქართული)
@@ -2158,7 +2159,7 @@ $messages['mk'] = array(
 Пополнете ја анкетата подолу со тоа што ќе кликнете на „[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]“. (незадолжително)',
 	'prefswitch-survey-intro-off' => 'Ви благодариме што ги испробавте новите функции.
 За да ни помогнете да ги подобриме, пополнете ја анкетата подолу со тоа што ќе кликнете на „[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]“. (незадолжително)',
-	'prefswitch-feedbackpage' => 'Википедија:Мислења за новиот изглед',
+	'prefswitch-feedbackpage' => 'Project:Мислења за новиот изглед',
 );
 
 /** Malayalam (മലയാളം)
@@ -2245,7 +2246,7 @@ $messages['ml'] = array(
 ദയവായി താഴെ കൊടുത്തിരിക്കുന്ന ഐച്ഛിക സർവേ പൂരിപ്പിച്ചതിനു ശേഷം "[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]" ഞെക്കുക.',
 	'prefswitch-survey-intro-off' => 'പുതിയ സവിശേഷതകൾ പരീക്ഷിച്ചതിനു നന്ദി.
 അവ മെച്ചപ്പെടുത്തുവാൻ ഞങ്ങളെ സഹായിക്കുന്നതിനായി, ദയവായി താഴെ നൽകിയിരിക്കുന്ന ഐച്ഛിക സർവേ പൂരിപ്പിച്ച ശേഷം "[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]" ഞെക്കുക.',
-	'prefswitch-feedbackpage' => 'വിക്കിപീഡിയ:ഉപയോക്തൃ അനുഭവ അഭിപ്രായങ്ങൾ',
+	'prefswitch-feedbackpage' => 'Project:ഉപയോക്തൃ അനുഭവ അഭിപ്രായങ്ങൾ',
 );
 
 /** Maltese (Malti)
@@ -2397,7 +2398,7 @@ Bezoek onze <span class=\"plainlinks\">[[\$1|pagina voor terugkoppeling]], of ga
 Vul alstublieft de optionele vragenlijst hieronder in voordat u klikt op "[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]".',
 	'prefswitch-survey-intro-off' => 'Bedankt voor het uitproberen van de nieuwe mogelijkheden.
 Vul alstublieft de onderstaande vragenlijst in om ons te helpen ze verder te verbeteren voordat u klikt op "[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]".',
-	'prefswitch-feedbackpage' => 'Wikipedia:Feedback voor het User Experience Team',
+	'prefswitch-feedbackpage' => 'Project:Feedback voor het User Experience Team',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
@@ -2539,7 +2540,7 @@ Jeśli chcesz przetestować nowe funkcjonalności po prostu [$1 kliknij tutaj].'
 Będziemy wdzięczni za wypełnienie poniższej ankiety zanim klikniesz „[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]”.',
 	'prefswitch-survey-intro-off' => 'Dziękujemy za wypróbowanie nowych funkcjonalności.
 Jeśli chcesz nam pomóc je udoskonalić, przed kliknięciem „[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]” wypełnij poniższą ankietę.',
-	'prefswitch-feedbackpage' => 'Wikipedia:Użyteczność – księga skarg, zażaleń i pomysłów',
+	'prefswitch-feedbackpage' => 'Project:Użyteczność – księga skarg, zażaleń i pomysłów',
 );
 
 /** Piedmontese (Piemontèis)
@@ -2697,7 +2698,7 @@ Gostariamos de conhecer a sua opinião. Visite a nossa [[\$1|página de comentá
 Preencha o questionário opcional abaixo, antes de clicar "[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]", por favor.',
 	'prefswitch-survey-intro-off' => 'Obrigado por ter experimentado as funcionalidades novas.
 Para ajudar-nos a melhorá-las preencha, por favor, o questionário opcional abaixo, antes de clicar "[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]".',
-	'prefswitch-feedbackpage' => 'Wikipedia:Comentário sobre a experiência de utilização',
+	'prefswitch-feedbackpage' => 'Project:Comentário sobre a experiência de utilização',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
@@ -2782,7 +2783,7 @@ Gostaríamos de conhecer a sua opinião. Visite a nossa [[\$1|página de coment�
 Preencha o questionário opcional abaixo, antes de clicar "[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]", por favor.',
 	'prefswitch-survey-intro-off' => 'Obrigado por ter experimentado as funcionalidades novas.
 Para ajudar-nos a melhorá-las preencha, por favor, o questionário opcional abaixo, antes de clicar "[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]".',
-	'prefswitch-feedbackpage' => 'Wikipedia:Comentário sobre a experiência de utilização',
+	'prefswitch-feedbackpage' => 'Project:Comentário sobre a experiência de utilização',
 );
 
 /** Russian (Русский)
@@ -2868,7 +2869,7 @@ $messages['ru'] = array(
 Пожалуйста, ответьте на несколько необязательных вопросов ниже, прежде чем нажмёте «[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]».',
 	'prefswitch-survey-intro-off' => 'Спасибо, что опробовали новые возможности.
 Чтобы помочь нам улучшить их, пожалуйста, ответьте на несколько необязательных вопросов, прежде чем нажмёте «[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]».',
-	'prefswitch-feedbackpage' => 'Википедия:Отзывы о новом оформлении',
+	'prefswitch-feedbackpage' => 'Project:Отзывы о новом оформлении',
 );
 
 /** Sardinian (Sardu)
@@ -3218,7 +3219,7 @@ Kung nais mong buhayin ang mga bagong kasangkapang-katangian, mangyaring [$1 pin
 Mangyaring sulatan ang maaaring hindi saguting pangangalap na nasa ibaba bago pindutin ang "[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]".',
 	'prefswitch-survey-intro-off' => 'Salamat sa pagsubok ng bago naming mga kasangkapang-katangian.
 Upang makatulong sa pagpapainam ng mga ito, mangyaring sulatan ang maaaring walang pangangalap na nasa ibaba bago pindutin ang "[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]".',
-	'prefswitch-feedbackpage' => 'Wikipedia: Tugon sa karanasan ng tagagamit',
+	'prefswitch-feedbackpage' => 'Project: Tugon sa karanasan ng tagagamit',
 );
 
 /** Turkish (Türkçe)
@@ -3387,10 +3388,10 @@ $messages['zh-hans'] = array(
 	'prefswitch-desc' => '允许用户设定参数设定',
 	'prefswitch-survey-true' => '是',
 	'prefswitch-survey-false' => '否',
-	'prefswitch-survey-submit-off' => '关闭新功能',
-	'prefswitch-survey-cancel-off' => '如果您想继续使用新功能，您可以返回$1。',
-	'prefswitch-survey-submit-feedback' => '发送反馈',
-	'prefswitch-survey-cancel-feedback' => '如果您不想提供反馈，您可以返回$1。',
+	'prefswitch-survey-submit-off' => '关闭新特色',
+	'prefswitch-survey-cancel-off' => '如果您想继续使用新特色，您可以返回$1。',
+	'prefswitch-survey-submit-feedback' => '发送意见',
+	'prefswitch-survey-cancel-feedback' => '如果你不想提供意见，你可以回到$1继续。',
 	'prefswitch-survey-question-like' => '你喜欢什么新特点？',
 	'prefswitch-survey-question-dislike' => '你不喜欢什么特点？',
 	'prefswitch-survey-question-whyoff' => '你为什么关闭新的功能？请选择所有适用的选择。',
@@ -3483,6 +3484,6 @@ $messages['zh-hant'] = array(
 如果你想打開新的功能，請[$1 點擊這裡]。',
 	'prefswitch-survey-intro-feedback' => "我們將非常樂意聽取您的意見。請填寫下面的'''可選'''的調查，然後點擊[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]\"。",
 	'prefswitch-survey-intro-off' => '感謝您試用我們的新功能。為了幫助我們改進，請填寫下面的可選的調查，然後點擊"[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]"。',
-	'prefswitch-feedbackpage' => 'Wikipedia:Vector用戶反饋',
+	'prefswitch-feedbackpage' => 'Project:Vector用戶反饋',
 );
 
