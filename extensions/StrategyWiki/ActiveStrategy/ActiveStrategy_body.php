@@ -131,8 +131,18 @@ class ActiveStrategy {
 			$tables[] = 'revision';
 			$joinConds['revision'] =
 				array( 'left join',
-					array( 'rev_page=page_id', "rev_timestamp > $cutoff" ) );
-			$fields[] = 'count(distinct rev_id) as value';
+					array( 'rev_page=page_id',
+						"rev_timestamp > $cutoff",
+						"rev_page IS NOT NULL" ) );
+			$fields[] = 'count(distinct rev_id) + count(distinct thread_id) as value';
+			
+			// Include LQT posts
+			$tables[] = 'thread';
+			$joinConds['thread'] =
+				array( 'left join',
+					array( 'thread.thread_article_title=page.page_title',
+						"thread.thread_modified > $cutoff" )
+				);
 		} elseif ( $sortField == 'ranking' ) {
 			$tables[] = 'pagelinks';
 			$joinConds['pagelinks'] = array( 'left join',
