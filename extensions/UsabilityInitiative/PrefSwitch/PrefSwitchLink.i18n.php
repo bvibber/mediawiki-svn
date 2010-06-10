@@ -303,6 +303,9 @@ $messages['ia'] = array(
  */
 $messages['id'] = array(
 	'prefswitch-link-anon' => 'Fitur baru',
+	'tooltip-pt-prefswitch-link-anon' => 'Pelajari tentang fitur baru',
+	'prefswitch-link-on' => 'Bawa saya kembali',
+	'tooltip-pt-prefswitch-link-on' => 'Nonaktifkan fitur baru',
 	'prefswitch-link-off' => 'Fitur baru',
 	'tooltip-pt-prefswitch-link-off' => 'Coba fitur baru',
 );
@@ -590,6 +593,16 @@ $messages['yi'] = array(
 	'tooltip-pt-prefswitch-link-on' => 'אַנולירן נײַע אייגנקייטן',
 	'prefswitch-link-off' => 'נײַע אייגנשאַפֿטן',
 	'tooltip-pt-prefswitch-link-off' => 'פרובירן נײַע אייגנקייטן',
+);
+
+/** Simplified Chinese (‪中文(简体)‬) */
+$messages['zh-hans'] = array(
+	'prefswitch-link-anon' => '新功能',
+	'tooltip-pt-prefswitch-link-anon' => '了解更多关于新功能',
+	'prefswitch-link-on' => '回到旧版',
+	'tooltip-pt-prefswitch-link-on' => '禁用新功能',
+	'prefswitch-link-off' => '新功能',
+	'tooltip-pt-prefswitch-link-off' => '尝试新功能',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
