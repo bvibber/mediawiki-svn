@@ -127,7 +127,10 @@ class WebDataTransclusionSource extends DataTransclusionSource {
 
 	public function loadRecordData( $field, $value ) {
 		$u = $this->getRecordURL( $field, $value );
+		return $this->loadRecordDataFromURL( $u );
+	}
 
+	public function loadRecordDataFromURL( $u ) {
 		if ( preg_match( '!^https?://!', $u ) ) {
 			$raw = Http::get( $u, $this->timeout, $this->httpOptions );
 		} else {
@@ -143,7 +146,11 @@ class WebDataTransclusionSource extends DataTransclusionSource {
 		return $raw;
 	}
 
-	public function decodeData( $raw, $format = 'php' ) {
+	public function decodeData( $raw, $format = null ) {
+		if ( $format === null ) {
+			$format = $this->dataFormat;
+		}
+
 		if ( $format == 'json' || $format == 'js' ) {
 			return FormatJson::decode( $raw, true ); 
 		}
