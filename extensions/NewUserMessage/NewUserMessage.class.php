@@ -65,10 +65,6 @@ class NewUserMessage {
 			return '';
 		} elseif ( !$text->exists() ) {
 			return '';
-
-			if ( $template->getNamespace() == NS_TEMPLATE ) {
-				$text = $template->getText();
-			}
 		}
 
 		return $text->getText();

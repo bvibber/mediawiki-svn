@@ -15,7 +15,6 @@ $messages = array();
 $messages['en'] = array(
 	'newusermessage-desc' => "Adds a message to newly created user's talk pages",
 	'newuseredit-summary' => 'Adding [[{{int:newusermessage-template}}|welcome message]] to new user\'s talk page',
-	'newusermessage-template' => 'Template:Welcome', # The title of the message template
 	'newusermessage-template-subject' => 'Template:Welcome-subject', # Always substituted. Used if LiquidThreads is enabled in the User_talk namespace. Do not translate or duplicate this message to other languages
 	'newusermessage-template-body' => 'Template:Welcome-body', # Used if LiquidThreads is enabled in the User_talk namespace. Do not translate or duplicate this message to other languages
 	'newusermessage-editor' => 'New user message', # The username used for the edit
