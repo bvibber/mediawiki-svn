@@ -2569,6 +2569,13 @@ $messages['sr-ec'] = array(
 	'extdist-want-more' => 'Преузми другу екстензију',
 );
 
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'extdist-submit-extension' => 'Produži',
+	'extdist-submit-version' => 'Produži',
+	'extdist-want-more' => 'Preuzmi drugu ekstenziju',
+);
+
 /** Swedish (Svenska)
  * @author Boivie
  * @author M.M.S.

@@ -973,6 +973,7 @@ $messages['sr-el'] = array(
 	'am-email' => 'imejl',
 	'am-active' => 'aktivan',
 	'am-updated' => 'Baše izmene su uspešno snimljene',
+	'nss-save-changes' => 'Snimi promene',
 	'nss-create-account-header' => 'Napravi novi nalog',
 	'nss-create-account' => 'Napravi nalog',
 	'nss-no-mail' => 'Ne šalji imejl',

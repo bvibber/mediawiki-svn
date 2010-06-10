@@ -276,6 +276,11 @@ $messages['sr-ec'] = array(
 	'wlfeed-desc' => 'Класе за побољшане фидове',
 );
 
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'wlfeed-desc' => 'Klase za poboljšane fidove',
+);
+
 /** Swedish (Svenska)
  * @author Boivie
  */

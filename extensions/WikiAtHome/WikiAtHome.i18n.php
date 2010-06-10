@@ -1644,8 +1644,12 @@ $messages['sr-el'] = array(
 	'wah-long-multiplexed' => '(multipleksovani audio/video fajl, $1, trajanje $2, $4×$5 piksela, $3 ukupno)',
 	'wah-long-general' => '(medija-fajl, trajanje $2, $3)',
 	'wah-long-error' => '(ffmpeg nije mogao da pročita ovaj fajl: $1)',
+	'wah-transcode-working' => 'Ovaj video se trenutno obrađuje. Pokušajte opet kasnije',
 	'wah-javascript-off' => 'Morate omogućiti JavaScript, da biste učestvovali u Wiki@Home',
 	'wah-loading' => 'učitavanje Wiki@Home interfejsa ...',
+	'wah-menu-pref' => 'Postavke',
+	'wah-uploading' => 'Slanje fajla <i>$1</i> je kompletirano',
+	'wah-uploadfail' => 'Slanje fajla neuspelo',
 );
 
 /** Swedish (Svenska)

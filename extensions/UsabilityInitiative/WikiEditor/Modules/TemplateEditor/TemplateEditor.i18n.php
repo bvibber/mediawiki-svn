@@ -353,6 +353,8 @@ $messages['ia'] = array(
  */
 $messages['id'] = array(
 	'wikieditor-template-editor-preference' => 'Aktifkan penyuntingan berbasis form dari templat wiki',
+	'wikieditor-template-editor-dialog-title' => 'Sunting templat',
+	'wikieditor-template-editor-dialog-submit' => 'Perbarui',
 	'wikieditor-template-editor-dialog-cancel' => 'Batalkan',
 );
 
@@ -619,6 +621,13 @@ $messages['sr-ec'] = array(
 	'wikieditor-template-editor-dialog-title' => 'Измени шаблон',
 	'wikieditor-template-editor-dialog-submit' => 'Ажурирај',
 	'wikieditor-template-editor-dialog-cancel' => 'Поништи',
+);
+
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'wikieditor-template-editor-dialog-title' => 'Izmeni šablon',
+	'wikieditor-template-editor-dialog-submit' => 'Ažuriraj',
+	'wikieditor-template-editor-dialog-cancel' => 'Poništi',
 );
 
 /** Swedish (Svenska)

@@ -709,6 +709,18 @@ $messages['sr-ec'] = array(
 	'securepasswords-word' => 'не може да буде реч',
 );
 
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'securepasswords-valid' => 'Vaša lozinka je neispravna ili prekratka.
+Ona mora:',
+	'securepasswords-minlength' => 'biti dugačka najmanje $1 {{PLURAL:$1|znak|znakova}}.',
+	'securepasswords-uppercase' => 'sadržati najmanje 1 veliko slovo',
+	'securepasswords-digit' => 'sadržati najmanje 1 cifru',
+	'securepasswords-special' => 'sadržati najmanje 1 specijalni znak (specijalni znaci su: $1)',
+	'securepasswords-username' => 'da se razlikuje od korisničkog imena',
+	'securepasswords-word' => 'ne može da bude reč',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

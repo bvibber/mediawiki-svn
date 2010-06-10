@@ -163,7 +163,7 @@ $messages['an'] = array(
 	'changeauthor-pagename-or-revid' => "Nombre d'a pachina u ID d'a versión:",
 	'changeauthor-pagenameform-go' => 'Ir-ie',
 	'changeauthor-comment' => 'Comentario:',
-	'changeauthor-changeauthors-multi' => 'Cambiar autor(s)',
+	'changeauthor-changeauthors-multi' => "Cambiar d'{{PLURAL:$1|autor|autors}}",
 	'changeauthor-explanation-multi' => "Con iste formulario puede cambiar os autors d'a edición. Nomás ha de cambiar uno u más nombres d'usuarios en lista que s'amuestra contino, adhibir-ie un comentario (opcional) y punchar en o botón de 'Cambiar autor(s)'",
 	'changeauthor-changeauthors-single' => 'Cambiar autor',
 	'changeauthor-explanation-single' => "Con iste formulario puede cambiar l'autor una edición. Nomás ha de cambiar o nombre d'usuario que s'amuestra contino, adhibir-ie un comentario (opcional) y punchar en o botón 'Cambiar autor'.",
@@ -172,7 +172,7 @@ $messages['an'] = array(
 	'changeauthor-revview' => 'Edición #$1 de $2',
 	'changeauthor-nosuchtitle' => 'No bi ha garra pachina tetulata "$1".',
 	'changeauthor-weirderror' => 'Ha escaicito una error a saber que estrania. Por favor, torne a fer a demanda. Si ista error contina amaneixendo, talment a base de datos sía estricallata.',
-	'changeauthor-invalidform' => 'Por favor, faiga servir o formulario furnito en Special:ChangeAuthor millor que no atro presonalizato.',
+	'changeauthor-invalidform' => 'Por favor, faiga servir o formulario furnito en a [[Special:ChangeAuthor|pachina especial]] millor que no atro presonalizato.',
 	'changeauthor-success' => "A suya demanda s'ha procesato correutament.",
 	'changeauthor-logentry' => "S'ha cambiato l'autor d'a edición $2 de $1 de $3 a $4",
 	'changeauthor-logpagename' => "Rechistro de cambeos d'autor",
@@ -2397,6 +2397,7 @@ $messages['zh-hans'] = array(
 	'changeauthor-success' => '处理完成',
 	'changeauthor-logentry' => '更改[[$1]]修订版本$2的作者从 $3 到 $4',
 	'changeauthor-logpagename' => '作者更改日志',
+	'right-changeauthor' => '更换特定修订版本作者',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

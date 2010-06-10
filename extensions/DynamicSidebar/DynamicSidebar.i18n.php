@@ -210,6 +210,13 @@ $messages['pt'] = array(
 	'dynamicsidebar-desc' => 'Cria barras laterais dinâmicas baseadas nas páginas, grupos e categorias dos utilizadores',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Giro720
+ */
+$messages['pt-br'] = array(
+	'dynamicsidebar-desc' => 'Cria barras laterais dinâmicas baseadas nas páginas, grupos e categorias dos utilizadores',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */
@@ -229,6 +236,11 @@ $messages['ru'] = array(
  */
 $messages['sr-ec'] = array(
 	'dynamicsidebar-desc' => 'Омогућава динамичке сајдбарове чији се садржај базира на корисничким странама, групама и категоријама',
+);
+
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'dynamicsidebar-desc' => 'Omogućava dinamičke sajdbarove čiji se sadržaj bazira na korisničkim stranama, grupama i kategorijama',
 );
 
 /** Sundanese (Basa Sunda)

@@ -602,6 +602,12 @@ $messages['sr-ec'] = array(
 	'pageby-anon' => '<i>анонимно</i>',
 );
 
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'pageby-contributors' => 'Doprinosi:',
+	'pageby-anon' => '<i>anonimno</i>',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

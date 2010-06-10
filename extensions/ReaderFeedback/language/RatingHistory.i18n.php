@@ -2343,6 +2343,7 @@ $messages['zh-hans'] = array(
 	'ratinghistory-year' => '去年',
 	'ratinghistory-3years' => '过去3年',
 	'ratinghistory-ave' => '平均： $1',
+	'ratinghistory-chart' => '读者评分随着时间的推移',
 	'ratinghistory-purge' => '清除缓存',
 	'ratinghistory-table' => '读者评论总览',
 	'ratinghistory-users' => '给出评价的用户',

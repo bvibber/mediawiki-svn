@@ -711,6 +711,11 @@ $messages['sr-ec'] = array(
 	'wikieditor-preview-loading' => 'Учитавање...',
 );
 
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'wikieditor-preview-loading' => 'Učitavanje...',
+);
+
 /** Swedish (Svenska)
  * @author Boivie
  */

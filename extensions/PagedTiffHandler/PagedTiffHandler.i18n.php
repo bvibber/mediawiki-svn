@@ -520,6 +520,20 @@ $messages['sr-ec'] = array(
 	'tiff_bad_file' => 'Послати фајл садржи грешке.',
 );
 
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'tiff_no_metadata' => 'Ne mogu se preuzeti metapodaci iz TIFF-a',
+	'tiff_page_error' => 'Broj strane nije u opsegu',
+	'tiff_too_many_embed_files' => 'Slika sadrži previše umetnutih fajlova.',
+	'tiff_file_too_large' => 'Poslati fajl je prevelik i odbačen je.',
+	'tiff_out_of_service' => 'Poslati fajl nije mogao biti obraćen. ImageMagick nije dostupan.',
+	'tiff_too_much_meta' => 'Metapodaci koriste previše prostora.',
+	'tiff_error_cached' => 'Ovaj fajl može biti renderovan samo nakon keširanja.',
+	'tiff_size_error' => 'Prijavljena veličina fajla ne odgovara njegovoj stvarnoj veličini.',
+	'tiff_script_detected' => 'Poslati fajl sadrži skripte.',
+	'tiff_bad_file' => 'Poslati fajl sadrži greške.',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

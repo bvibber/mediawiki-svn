@@ -110,6 +110,13 @@ $messages['ia'] = array(
 	'embedvideo-illegal-width' => 'EmbedVideo recipeva le parametro de latitude invalide "$1".',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'embedvideo-desc' => "Setzt eng Parser-Fonctioun fir d'Abanne vu Videoe vu populäre Quellen derbäi",
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

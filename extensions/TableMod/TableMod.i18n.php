@@ -489,6 +489,13 @@ $messages['sr-ec'] = array(
 	'tablemod-error-invalidaction' => 'Недозовољена акција.',
 );
 
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'tablemod-msg-remove' => 'Obriši',
+	'tablemod-error-invalidsort' => 'Pogrešni parametri sortiranja.',
+	'tablemod-error-invalidaction' => 'Nedozovoljena akcija.',
+);
+
 /** Swedish (Svenska)
  * @author Dafer45
  * @author Per

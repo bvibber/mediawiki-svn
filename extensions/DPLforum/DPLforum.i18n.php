@@ -760,6 +760,7 @@ $messages['sr-ec'] = array(
  */
 $messages['sr-el'] = array(
 	'dplforum-by' => 'od $1',
+	'dplforum-never' => 'Nikad',
 );
 
 /** Seeltersk (Seeltersk)

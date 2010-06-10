@@ -410,6 +410,12 @@ $messages['tr'] = array(
 	'delaydef-error-redef' => 'Hata: $1 için yeniden tanımlama denemesi.',
 );
 
+/** Simplified Chinese (‪中文(简体)‬) */
+$messages['zh-hans'] = array(
+	'delaydef-error-no-name' => '错误：没有指定name参数。',
+	'delaydef-error-redef' => '错误：试图重新定义为$1。',
+);
+
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Horacewai2
  */

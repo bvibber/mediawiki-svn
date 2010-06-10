@@ -658,6 +658,15 @@ $messages['sr-ec'] = array(
  */
 $messages['sr-el'] = array(
 	'editsubpages-desc' => 'Omogućava administratorima da odblokiraju stranicu i sve podstranice te stranice za anonimno uređivanje pomoću [[MediaWiki:Unlockedpages]]',
+	'unlockedpages' => ' #<!-- leave this line alone --><pre>
+# Postavi stranice koje želite da otključate ispod koristeći
+# * Naziv stranice
+# Otključane stranice moraju da počinju sa zrnom da bi se računalo,
+# sve ostalo se smatra kao komentar
+# Nazivi stranica mogu biti [[veze]] i osetljivi su na velika i mala slova
+# Takođe, stranice za razgovor biće automatski otključane sa stranicom
+# Vidite http://www.mediawiki.org/wiki/Extension:EditSubpages za više informacija
+ #</pre><!-- leave this line alone -->',
 );
 
 /** Swedish (Svenska)

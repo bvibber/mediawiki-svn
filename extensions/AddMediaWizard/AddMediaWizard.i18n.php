@@ -254,6 +254,11 @@ $messages['sr-ec'] = array(
 	'addmediawizard-desc' => 'Додај медија водич, развијен у партнерству с Калтуром и Викимедија Задужбином',
 );
 
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'addmediawizard-desc' => 'Dodaj medija vodič, razvijen u partnerstvu s Kalturom i Vikimedija Zadužbinom',
+);
+
 /** Swedish (Svenska)
  * @author Dafer45
  */

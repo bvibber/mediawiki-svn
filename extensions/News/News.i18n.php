@@ -350,6 +350,11 @@ $messages['sr-ec'] = array(
 	'newsextension-desc' => 'Приказује подесиве скорашње измене, или их приказује као RSS или атом фид',
 );
 
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'newsextension-desc' => 'Prikazuje podesive skorašnje izmene, ili ih prikazuje kao RSS ili atom fid',
+);
+
 /** Sundanese (Basa Sunda)
  * @author Kandar
  */

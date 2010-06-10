@@ -743,6 +743,7 @@ $messages['yue'] = array(
 /** Simplified Chinese (‪中文(简体)‬) */
 $messages['zh-hans'] = array(
 	'contributionseditcount' => '这个用户拥有 $1 次编辑。',
+	'contributionseditcount-desc' => '在[[Special:Contributions|特殊页面]]中显示用户的编辑统计',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

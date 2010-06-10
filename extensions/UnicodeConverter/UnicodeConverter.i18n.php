@@ -713,6 +713,7 @@ $messages['sr-ec'] = array(
  */
 $messages['sr-el'] = array(
 	'unicodeconverter' => 'Junikod konverter',
+	'unicodeconverter-desc' => 'Jednostavan primer modula specijalne streane. [[Special:UnicodeConverter|Dati string u UTF-8]] može da konvertuje u HTML entitete pogodne za neku ISO 8859-1 veb-stranu',
 	'unicodeconverter-ok' => 'OK',
 	'unicodeconverter-oldtext' => 'Originalni tekst:',
 	'unicodeconverter-newtext' => 'Konvertovan tekst:',

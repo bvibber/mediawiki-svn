@@ -62,9 +62,11 @@ $messages['br'] = array(
 
 /** Catalan (Català)
  * @author Paucabot
+ * @author Vriullop
  */
 $messages['ca'] = array(
 	'vector-collapsiblenav-preference' => "Activa l'opció de reduir el menú de navegació esquerre",
+	'vector-collapsiblenav-more' => 'Més llengües',
 );
 
 /** Czech (Česky)
@@ -188,9 +190,11 @@ $messages['hsb'] = array(
 
 /** Hungarian (Magyar)
  * @author Glanthor Reviol
+ * @author Tgr
  */
 $messages['hu'] = array(
 	'vector-collapsiblenav-preference' => 'Összecsukható bal oldali navigációs menü engedélyezése',
+	'vector-collapsiblenav-more' => 'Más nyelveken',
 );
 
 /** Interlingua (Interlingua)
@@ -203,16 +207,20 @@ $messages['ia'] = array(
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author Kenrick95
  */
 $messages['id'] = array(
 	'vector-collapsiblenav-preference' => 'Aktifkan fungsi menu navigasi kiri yang dapat ditutup',
+	'vector-collapsiblenav-more' => 'Lebih banyak bahasa',
 );
 
 /** Italian (Italiano)
+ * @author Beta16
  * @author Una giornata uggiosa '94
  */
 $messages['it'] = array(
 	'vector-collapsiblenav-preference' => 'Abilita menù di navigazione nascondibile a sinistra',
+	'vector-collapsiblenav-more' => 'Più lingue',
 );
 
 /** Japanese (日本語)
@@ -365,9 +373,11 @@ $messages['tr'] = array(
 
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
+ * @author Vinhtantran
  */
 $messages['vi'] = array(
 	'vector-collapsiblenav-preference' => 'Bật trình đơn chuyển hướng gấp lại được ở bên phải',
+	'vector-collapsiblenav-more' => 'Thêm ngôn ngữ khác',
 );
 
 /** Yiddish (ייִדיש)
@@ -377,10 +387,20 @@ $messages['yi'] = array(
 	'vector-collapsiblenav-preference' => 'אַקטיווירן צונויפֿלייגבאַרן מעניו לינקס',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Liangent
+ */
+$messages['zh-hans'] = array(
+	'vector-collapsiblenav-preference' => '启用可折叠左侧导航菜单',
+	'vector-collapsiblenav-more' => '更多语言',
+);
+
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Horacewai2
+ * @author Liangent
  */
 $messages['zh-hant'] = array(
 	'vector-collapsiblenav-preference' => '啟用可折疊左側導航菜單',
+	'vector-collapsiblenav-more' => '更多語言',
 );
 

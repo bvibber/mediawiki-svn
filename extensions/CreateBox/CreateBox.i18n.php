@@ -871,7 +871,13 @@ $messages['yi'] = array(
  * @author Gzdavidwong
  */
 $messages['zh-hans'] = array(
+	'createbox-desc' => '于Wiki中包含创建页面的输入框',
 	'createbox-create' => '建立',
+	'createbox-exists' => "抱歉，'''{{FULLPAGENAME}}'''已经存在于{{SITENAME}}。
+
+你不能创建本页，但你可以[{{fullurl:{{FULLPAGENAME}}|action=edit}} 编辑本页]、[{{fullurl:{{FULLPAGENAME}}}} 阅读本页]或在下方输入另一个名字继续创建页面：
+
+<createbox>break=no</createbox>",
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

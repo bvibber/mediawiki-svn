@@ -531,6 +531,11 @@ $messages['sr-ec'] = array(
 	'purewikideletion-blanknologin' => 'Нисте улоговани',
 );
 
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'purewikideletion-blanknologin' => 'Niste ulogovani',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

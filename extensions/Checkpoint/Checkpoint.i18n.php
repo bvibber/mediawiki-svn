@@ -259,10 +259,14 @@ $messages['pt'] = array(
 );
 
 /** Brazilian Portuguese (Português do Brasil)
+ * @author Giro720
  * @author Luckas Blade
  */
 $messages['pt-br'] = array(
 	'checkpoint' => 'Salvar e continuar editando',
+	'checkpoint-desc' => 'Permite gravar uma edição e continuar a editar',
+	'checkpoint-tooltip' => 'Gravar seu progresso e seguir editando a página',
+	'checkpoint-notice' => '([[{{ns:project}}:Checkpoint|gravação do estado presente]])',
 );
 
 /** Russian (Русский)
@@ -283,6 +287,14 @@ $messages['sr-ec'] = array(
 	'checkpoint-desc' => 'Омогућава Вам да сачувате измене и наставите уређивање',
 	'checkpoint-tooltip' => 'Сачувајте свој напредак и наставите уређивање стране',
 	'checkpoint-notice' => '([[{{ns:project}}:Checkpoint|прелаз чувања]])',
+);
+
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'checkpoint' => 'Sačuvaj i nastavi uređivanje',
+	'checkpoint-desc' => 'Omogućava Vam da sačuvate izmene i nastavite uređivanje',
+	'checkpoint-tooltip' => 'Sačuvajte svoj napredak i nastavite uređivanje strane',
+	'checkpoint-notice' => '([[{{ns:project}}:Checkpoint|prelaz čuvanja]])',
 );
 
 /** Swedish (Svenska)

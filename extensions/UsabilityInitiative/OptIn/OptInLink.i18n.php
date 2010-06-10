@@ -98,6 +98,14 @@ $messages['as'] = array(
 	'optin-try' => 'বেটা চেষ্টা কৰক',
 );
 
+/** Samogitian (Žemaitėška)
+ * @author Hugo.arg
+ */
+$messages['bat-smg'] = array(
+	'optin-leave' => 'Palėktė Beta',
+	'optin-feedback' => 'Atsėlėipėmā aple beta versėjė',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
@@ -164,11 +172,15 @@ $messages['bs'] = array(
 /** Catalan (Català)
  * @author Paucabot
  * @author SMP
+ * @author Vriullop
  */
 $messages['ca'] = array(
 	'optin-try' => 'Provau Beta',
+	'tooltip-pt-optin-try' => 'Proveu les noves característiques',
 	'optin-leave' => 'Sortiu de Beta',
+	'tooltip-pt-optin-leave' => 'Desactiva les noves característiques',
 	'optin-feedback' => 'Donau la vostra opinió',
+	'tooltip-pt-optin-feedback' => 'Comenteu les vostres experiències amb les noves característiques',
 );
 
 /** Czech (Česky)
@@ -831,11 +843,12 @@ $messages['pt'] = array(
 	'optin-leave' => 'Sair do Beta',
 	'tooltip-pt-optin-leave' => 'Desligue as novas funcionalidades',
 	'optin-feedback' => 'Enviar comentários',
-	'tooltip-pt-optin-feedback' => 'Deixe um comentário com a sua opinião sobre as novas funcionalidades',
+	'tooltip-pt-optin-feedback' => 'Deixe um comentário com a sua opinião sobre as funcionalidades novas',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Everton137
+ * @author Giro720
  * @author Hamilton Abreu
  * @author Heldergeovane
  */
@@ -845,7 +858,7 @@ $messages['pt-br'] = array(
 	'optin-leave' => 'Sair do Beta',
 	'tooltip-pt-optin-leave' => 'Desativar novas características',
 	'optin-feedback' => 'Enviar comentários',
-	'tooltip-pt-optin-feedback' => 'Dê sua opinião acerca de sua experiência com as novidades',
+	'tooltip-pt-optin-feedback' => 'Deixe um comentário com a sua opinião sobre as funcionalidades novas',
 );
 
 /** Quechua (Runa Simi)

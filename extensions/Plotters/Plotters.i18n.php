@@ -775,6 +775,13 @@ $messages['sr-ec'] = array(
 	'plotters-no-data' => 'Нису достављени никакви подаци.',
 );
 
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'plotters' => 'Ploteri',
+	'plotters-title' => 'Ploteri',
+	'plotters-no-data' => 'Nisu dostavljeni nikakvi podaci.',
+);
+
 /** Swedish (Svenska)
  * @author Per
  */

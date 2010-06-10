@@ -8888,6 +8888,8 @@ $messages['sr-ec'] = array(
  * @author Michaello
  */
 $messages['sr-el'] = array(
+	'mv_error_stream_missing' => '<span class="error">Greška: Ne postoji video-fajl pridružen ovom strimu.</span><br />
+Molimo Vas da prijavite ovo [[{{MediaWiki:Grouppage-sysop}}|administratoru sajta]].',
 	'mv_stream_added' => 'Dodali ste strim $1',
 	'mv_move_delete_msg' => 'premešteno u $1',
 	'mv_add_stream_submit' => 'Dodaj strim',
@@ -8900,6 +8902,7 @@ $messages['sr-el'] = array(
 	'mv_save_changes' => 'Snimi izmene',
 	'mv_file_with_same_desc' => 'Greška: strim fajl sa istim ključem opisa <i>$1</i> je već prisutan',
 	'mv_removed_file_stream' => 'Obrisan strim fajl: $1',
+	'mv_user_cant_edit' => 'Morali biste se [$1 ulogovati] zarad izmene $2',
 	'mv_add_stream_file' => 'Dodaj strim fajl',
 	'mv_file_list' => 'Strim fajlovi',
 	'mv_label_stream_name' => 'Naziv strima',
@@ -8932,6 +8935,8 @@ $messages['sr-el'] = array(
 	'mv_close_clip' => 'Zatvori klip',
 	'mv_improve_transcript' => 'Poboljšaj transkript',
 	'mv_click_to_edit' => 'klikni za izmenu',
+	'mv_data_page_title' => '$1 za $2 od $3',
+	'mv_time_separator' => '$1 do $2',
 	'mvBadMVDtitle' => 'nedostu je tip, strim, ili validan format vremena',
 	'mvMVDFormat' => 'MVD naslov bi trebao da bude u fromatu: mvd:type:stream_name/start_time/end_time',
 	'mv_play' => 'Pusti',
@@ -8979,6 +8984,7 @@ $messages['sr-el'] = array(
 	'mv_date_range' => 'opseg podataka',
 	'mv_date_last_week' => 'Poslednja sedmica',
 	'mv_category_results' => 'Rezultati kategorije',
+	'mv_intrest_group_results' => 'Interesne grupe',
 	'mv_most_relevant' => 'Najrelevantniji',
 	'mv_most_recent' => 'Najskoriji',
 	'mv_most_viewed' => 'Najpregledaniji',
@@ -9025,6 +9031,8 @@ $messages['sr-el'] = array(
 	'mv_tool_missing' => 'zahtevani alat ne postoji',
 	'mv_prev_speech' => 'Prethodni govor: $1',
 	'mv_next_speech' => 'Sledeći govor: $1',
+	'mv_prev_bill' => 'Prethodni račun: $1',
+	'mv_next_bill' => 'Sledeći račun: $1',
 	'mv_prev_cat' => 'Prethodna kategorija: $1',
 	'mv_next_cat' => 'Sledeća kategorija: $1',
 	'mv_search_stream' => 'Pretraži strim',

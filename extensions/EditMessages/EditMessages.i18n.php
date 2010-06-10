@@ -1323,6 +1323,8 @@ $messages['sr-ec'] = array(
  * @author Michaello
  */
 $messages['sr-el'] = array(
+	'editmessages' => 'Izmena poruka',
+	'editmsg-target' => 'Ciljana poruka:',
 	'editmsg-search' => 'Pretraga',
 );
 

@@ -903,6 +903,15 @@ $messages['sr-ec'] = array(
 	'profiling-data-average' => 'Време (средње)',
 );
 
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'profiling-ok' => 'OK',
+	'profiling-data-process' => 'Obradi',
+	'profiling-data-count' => 'Broj',
+	'profiling-data-time' => 'Vreme (ukupno)',
+	'profiling-data-average' => 'Vreme (srednje)',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

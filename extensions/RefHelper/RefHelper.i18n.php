@@ -952,6 +952,19 @@ $messages['sr-ec'] = array(
 	'refhelper-toolbox_link_create' => 'Направи референцу',
 );
 
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'refhelper-label_authorsurname' => 'Prezime:',
+	'refhelper-title' => 'Naslov:',
+	'refhelper-journal' => 'Žurnal:',
+	'refhelper-pages' => 'Strane:',
+	'refhelper-year' => 'Godina:',
+	'refhelper-category' => 'Kategorija $1:',
+	'refhelper-create' => 'Napravi',
+	'refhelper-search' => 'Pretraži',
+	'refhelper-toolbox_link_create' => 'Napravi referencu',
+);
+
 /** Swedish (Svenska)
  * @author Dafer45
  * @author Per

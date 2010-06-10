@@ -332,6 +332,11 @@ $messages['sr-ec'] = array(
 	'mwreleases-desc' => 'Додаје [[Mediawiki:Mwreleases-list|списак]] подржаних издања, доступних кроз API',
 );
 
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'mwreleases-desc' => 'Dodaje [[Mediawiki:Mwreleases-list|spisak]] podržanih izdanja, dostupnih kroz API',
+);
+
 /** Sundanese (Basa Sunda)
  * @author Kandar
  */

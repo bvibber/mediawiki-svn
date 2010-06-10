@@ -856,6 +856,16 @@ $messages['sr-ec'] = array(
 	'framedvideo_error_height_too_big' => 'Задата вредност за параметар "height" је превелика.',
 );
 
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'framedvideo_errors' => 'Došlo je do nekoliko grešaka!',
+	'framedvideo_error' => 'Došlo je do greške!',
+	'framedvideo_error_height_required' => 'Video tipu "$1" je potreban parametar "height".',
+	'framedvideo_error_height_required_not_only_width' => 'Video tipu "$1" je potreban i "height" parametar, ne samo "width" parametar.',
+	'framedvideo_error_width_too_big' => 'Zadata vrednost za parametar "width" je prevelika.',
+	'framedvideo_error_height_too_big' => 'Zadata vrednost za parametar "height" je prevelika.',
+);
+
 /** Swedish (Svenska)
  * @author Najami
  */

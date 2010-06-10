@@ -724,6 +724,12 @@ $messages['sr-ec'] = array(
 	'cooperationstatistics-tablevalue' => 'Број уредника',
 );
 
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'cooperationstatistics-tablearticle' => 'Broj strana',
+	'cooperationstatistics-tablevalue' => 'Broj urednika',
+);
+
 /** Swedish (Svenska)
  * @author Per
  * @author Sertion

@@ -1313,6 +1313,30 @@ $messages['sr-ec'] = array(
 	'masseditregex-tooltip-execute' => 'Примени ове промене на сваку страну',
 );
 
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'masseditregex-pagelisttxt' => 'Strane za izmenu (ne koristite prefiks za imenski prostor):',
+	'masseditregex-matchtxt' => 'Traži:',
+	'masseditregex-replacetxt' => 'Zameni sa:',
+	'masseditregex-executebtn' => 'Izvrši',
+	'masseditregex-err-nopages' => 'Morate navesti najmanje jednu stranu za izmenu.',
+	'masseditregex-before' => 'Pre',
+	'masseditregex-after' => 'Posle',
+	'masseditregex-num-changes' => '$1: $2 {{PLURAL:$1|izmena|izmene|izmena}}',
+	'masseditregex-page-not-exists' => '$1 ne postoji',
+	'masseditregex-num-articles-changed' => '$1 {{PLURAL:$1|strana|strane|strana}} izmenjeno',
+	'masseditregex-view-full-summary' => 'Vidi potpun opis izmene',
+	'masseditregex-hint-headmatch' => 'Nađi',
+	'masseditregex-hint-headreplace' => 'Zameni',
+	'masseditregex-hint-headeffect' => 'Efekat',
+	'masseditregex-listtype-intro' => 'Ovo je spisak od:',
+	'masseditregex-listtype-pagenames' => 'Imena strana (izmeni ove strane)',
+	'masseditregex-exprnomatch' => 'Izraz "$1" se ne nalazi ni na jednoj strani.',
+	'masseditregex-badregex' => 'Neispravan regex:',
+	'masseditregex-editfailed' => 'Izmena nije snimljena:',
+	'masseditregex-tooltip-execute' => 'Primeni ove promene na svaku stranu',
+);
+
 /** Swedish (Svenska)
  * @author Dafer45
  * @author Per

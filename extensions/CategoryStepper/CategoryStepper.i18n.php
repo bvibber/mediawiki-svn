@@ -567,6 +567,7 @@ $messages['sr-ec'] = array(
  * @author Michaello
  */
 $messages['sr-el'] = array(
+	'categorystepper-desc' => 'Prikazuje kutijicu koja omogućava azbučnu navigaciju unapred i unazad kroz jednu ili više kategorija u kojima se strana nalazi',
 	'categorystepper-end' => '(Kraj kategorije)',
 	'categorystepper-start' => '(Početak kategorije)',
 );

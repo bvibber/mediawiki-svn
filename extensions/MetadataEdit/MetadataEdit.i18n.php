@@ -1083,6 +1083,7 @@ $messages['sr-ec'] = array(
 
 /** Serbian Latin ekavian (Srpski (latinica)) */
 $messages['sr-el'] = array(
+	'metadataedit-desc' => 'Ubacuje kategorije, jezičke veze i odobrene šablone u odvojenu kutijicu za vreme izmene strana',
 	'metadata_help' => 'Metapodaci:',
 );
 

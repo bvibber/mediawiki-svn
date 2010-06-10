@@ -1294,6 +1294,14 @@ $messages['sr-ec'] = array(
 	'invitations-inviteform-submit' => 'Позови',
 );
 
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'invite-logpage' => 'Isotrija pozivnica',
+	'invitations-inviteform-title' => 'Pozovi korisnika da koristi $1',
+	'invitations-inviteform-username' => 'Korisnik koji se poziva',
+	'invitations-inviteform-submit' => 'Pozovi',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

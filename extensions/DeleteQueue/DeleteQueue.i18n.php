@@ -5646,6 +5646,24 @@ $messages['sr-ec'] = array(
  * @author Michaello
  */
 $messages['sr-el'] = array(
+	'deletequeue-generic-reasons' => '* Generički razlozi
+** Vandalizam
+** Spam
+** Održavanje
+** Nije za projekat',
+	'deletequeue-nom-alreadyqueued' => 'Ova strana se već nalazi u redu za brisanje.',
+	'deletequeue-speedy-title' => 'Označi "$1" za brzo brisanje',
+	'deletequeue-delnom-reason' => 'Razlog za predlog:',
+	'deletequeue-delnom-otherreason' => 'Drugi razlog',
+	'deletequeue-delnom-extra' => 'Dodatne informacije:',
+	'deletequeue-delnom-submit' => 'Pošalji predlog',
+	'deletequeue-log-nominate' => "[[$1]] je predložen za brisanje u redu '$2'.",
+	'deletequeue-log-rmspeedy' => 'brzo brisanje [[$1]] je odbijeno.',
+	'deletequeue-log-dequeue' => "obrisao [[$1]] iz reda za brisanje '$2'.",
+	'right-speedy-nominate' => 'Predlaganje strana za brzo brisanje',
+	'right-prod-nominate' => 'Predložite brisanje strane',
+	'right-deletediscuss-nominate' => 'Započni rasprave o brisanju',
+	'right-deletediscuss-review' => 'Zatvori rasprave o brisnju',
 	'deletequeue-queue-speedy' => 'Brzo brisanje',
 	'deletequeue-queue-prod' => 'Predloženo brisanje',
 	'deletequeue-queue-deletediscuss' => 'Diskusija o brisanju',
@@ -5665,7 +5683,9 @@ Diskusija se vodi na [[$5]], i završiće se na ''$2''.",
 	'deletequeue-review-requeue' => 'Prenesi ovu stranu na sledeći red:',
 	'deletequeue-review-dequeue' => 'Ne poduzimaj nikakvu akciju, i skloni stranu iz reda za brisanje.',
 	'deletequeue-review-reason' => 'Komentari:',
+	'deletequeue-review-newreason' => 'Novi razlog:',
 	'deletequeue-review-newextra' => 'Dodatne informacije:',
+	'deletequeue-review-submit' => 'Snimi pregled',
 	'deletequeue-review-original' => 'Razlog nominacije',
 	'deletequeue-review-badaction' => 'Izabrali ste akciju koja ne stoji na raspolaganju',
 	'deletequeue-review-actiondenied' => 'Izabrali ste akciju koja je onemogućena nad ovom stranom',

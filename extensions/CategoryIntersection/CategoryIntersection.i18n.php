@@ -669,6 +669,7 @@ $messages['sr-el'] = array(
 	'categoryintersection-desc' => 'Održava tabelu sa heš vrednostima za [[Special:CategoryIntersection|preseke kategorija]] unutar strane',
 	'categoryintersection-doit' => 'Daj spisak strana u svim ovim kategorijama',
 	'categoryintersection-maxcategories' => 'Maksimalan dozvoljen broj kategorija u preseku je $1.',
+	'categoryintersection-mincategories' => 'Morate da uključite najmanje dve kategorije.',
 	'categoryintersection-results' => 'Pretraga je vratila $1 {{PLURAL:$1|rezultat|rezultata}}.',
 );
 

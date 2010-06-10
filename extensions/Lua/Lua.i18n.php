@@ -656,6 +656,14 @@ $messages['sr-ec'] = array(
 	'lua_overflow_time' => 'Достигнуто максимално време извршења',
 );
 
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'lua_error_internal' => 'Interna greška',
+	'lua_overflow_recursion' => 'Dostignut limit za rekurziju',
+	'lua_overflow_loc' => 'Dostignut maksimalni broj linija koda',
+	'lua_overflow_time' => 'Dostignuto maksimalno vreme izvršenja',
+);
+
 /** Swedish (Svenska)
  * @author Fluff
  */

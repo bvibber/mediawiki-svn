@@ -2238,6 +2238,7 @@ $messages['sr-el'] = array(
 	'badimages-log-add' => 'dodata [[$1]] u spisak loših slika',
 	'badimages-log-remove' => 'uklonjena [[$1]] sa spiska loših slika',
 	'badimages-page' => '{{ns:help}}:Spisak loših slika',
+	'right-badimages' => 'Ažuriranje spiska loših slika',
 );
 
 /** Seeltersk (Seeltersk)

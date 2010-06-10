@@ -1648,6 +1648,7 @@ $messages['tg-cyrl'] = array(
  */
 $messages['tg-latn'] = array(
 	'bookinfo-header' => 'Ittilooti kitob',
+	'bookinformation-desc' => '[[Special:Booksources]]ro bo istifoda az ittilooti jak vebxidmati Internetī gustariş medihad',
 	'bookinfo-result-title' => 'Unvon:',
 	'bookinfo-result-author' => 'Muallif:',
 	'bookinfo-result-publisher' => 'Naşrijot:',

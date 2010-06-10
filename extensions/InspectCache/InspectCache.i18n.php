@@ -928,6 +928,7 @@ $messages['sr-el'] = array(
 	'inspectcache-delete' => 'Obriši',
 	'inspectcache-deleted' => 'Obrisan keš',
 	'inspectcache-list' => 'Spisak',
+	'right-inspectcache' => 'Pregled i brisanje unosa keša',
 );
 
 /** Seeltersk (Seeltersk)

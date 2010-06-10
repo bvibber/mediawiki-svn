@@ -4177,10 +4177,13 @@ $messages['sr-el'] = array(
 	'contribstats-value-under' => 'Ispod $1',
 	'contribstats-value-from' => 'Od $1 - $2',
 	'contribstats-value-over' => 'Preko $1',
+	'contribstats-template' => 'Šablon',
 	'fundraiserstats-date' => 'Datum',
+	'fundraiserstats-day' => 'Dan $1 od $2',
 	'fundraiserstats-total' => 'Ukupno (USD)',
 	'fundraiserstats-avg' => 'Prosečno (USD)',
 	'fundraiserstats-max' => 'Maksimum (USD)',
+	'fundraiserstats-tab-contributions' => 'Broj doprinosa',
 );
 
 /** Swedish (Svenska)

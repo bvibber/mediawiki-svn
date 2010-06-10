@@ -1137,9 +1137,17 @@ $messages['sr-ec'] = array(
  * @author Michaello
  */
 $messages['sr-el'] = array(
+	'asksql' => 'SQL upit',
+	'asksql-desc' => 'Odradi SQL upite preko [[Special:Asksql|posebne stranice]]',
+	'asksqltext' => "Koristite obrazac ispod da napravite direktan upit baze podataka.
+Koristite apostrofe ('kao ovo') da ograničite bukvalne niske.
+Ovo često može dovesti do značajnog opterećenja servera, zato koristite ovu funkciju pažljivo.",
+	'sqlislogged' => 'Upamtite da su svi upiti zabeleženi.',
 	'sqlquery' => 'Unesi upit',
 	'querybtn' => 'Postavi upit',
+	'selectonly' => 'Dozvoljeni su upiti koji se samo mogu čitati.',
 	'querysuccessful' => 'Upit uspešan',
+	'right-asksql' => 'Napravi SQL upite',
 );
 
 /** Seeltersk (Seeltersk)

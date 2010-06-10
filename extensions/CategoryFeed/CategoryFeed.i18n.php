@@ -466,6 +466,12 @@ $messages['vi'] = array(
 Tạo ra một phiên bản nhúng vào trang, đặc biệt hữu ích cho Wikinews.',
 );
 
+/** Simplified Chinese (‪中文(简体)‬) */
+$messages['zh-hans'] = array(
+	'categoryfeed-desc' => '最近更改使用者设定。
+开始页面内的版本，对维基新闻特别有用',
+);
+
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Horacewai2
  */

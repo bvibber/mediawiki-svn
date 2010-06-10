@@ -2179,7 +2179,10 @@ $messages['sr-ec'] = array(
  * @author Michaello
  */
 $messages['sr-el'] = array(
+	'povwatch_invalid_title' => 'Navedeni naslov je neispravan',
+	'povwatch_unknown_subpage' => 'Nepoznata podstrana.',
 	'povwatch_title' => 'Naslov:',
+	'povwatch_added' => 'dodato',
 );
 
 /** Seeltersk (Seeltersk)

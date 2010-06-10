@@ -560,6 +560,21 @@ $messages['sr-ec'] = array(
 	'pf-header-approve' => 'Одобри',
 );
 
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'pf-admin-menu-default' => 'Podrazumevano',
+	'pf-admin-menu-unsortedtemplates' => 'Šabloni još uvek nisu sortirani',
+	'pf-admin-link-view-documentation' => 'Vidi dokumentaciju povezanu sa stranom.',
+	'pf-admin-link-editlink-page' => 'Izmeni stranu',
+	'pf-admin-link-approve' => 'Odobri stranu',
+	'pf-header-documentation' => 'Dokumentacija',
+	'pf-header-in_packages' => 'Paketi',
+	'pf-header-edit' => 'Izmeni vezu',
+	'pf-header-type' => 'Vrsta strane',
+	'pf-header-page_title' => 'Naslov',
+	'pf-header-approve' => 'Odobri',
+);
+
 /** Swedish (Svenska)
  * @author Dafer45
  */

@@ -2425,8 +2425,14 @@ $messages['sr-ec'] = array(
  * @author Michaello
  */
 $messages['sr-el'] = array(
+	'crosswikiblock-expiry' => 'Istek:',
 	'crosswikiblock-reason' => 'Razlog:',
+	'crosswikiblock-submit' => 'Blokiraj ovog korisnika',
 	'crosswikiunblock-reason' => 'Razlog:',
+	'crosswikiblock-noname' => '"$1" nije ispravno korisničko ime.',
+	'crosswikiblock-noreason' => 'Nije naveden razlog.',
+	'crosswikiblock-alreadyblocked' => 'Korisnik $3 je već blokiran.',
+	'crosswikiblock-noblock' => 'Ovaj korisnik nije blokiran.',
 );
 
 /** Seeltersk (Seeltersk)

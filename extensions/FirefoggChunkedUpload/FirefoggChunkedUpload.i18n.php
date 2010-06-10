@@ -201,6 +201,11 @@ $messages['sr-ec'] = array(
 	'firefoggcu-desc' => 'Firefogg-ов протокол отпремања',
 );
 
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'firefoggcu-desc' => 'Firefogg-ov protokol otpremanja',
+);
+
 /** Swedish (Svenska)
  * @author Ainali
  */

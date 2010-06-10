@@ -956,6 +956,16 @@ $messages['sr-ec'] = array(
 	'postcomment_replyto' => 'Одговор на $1',
 );
 
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'postcomment_youareloggedinas' => 'Ulogovani ste kao $1',
+	'postcomment_leavemessagefor' => 'Ostavi poruku za $1',
+	'postcomment_post' => 'Pošalji',
+	'postcomment_on' => 'Na',
+	'postcomment_invalidrequest' => 'Neispravan zahtev.',
+	'postcomment_replyto' => 'Odgovor na $1',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

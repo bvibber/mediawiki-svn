@@ -1397,8 +1397,13 @@ $messages['sr-ec'] = array(
  * @author Michaello
  */
 $messages['sr-el'] = array(
+	'form' => 'Forma',
+	'formnoname' => 'Nema imena forme',
+	'formbadname' => 'Loše ime forme',
+	'formtitlepattern' => 'Dodati novu $1',
 	'formsave' => 'Sačuvaj',
 	'formarticleexists' => 'Strana postoji',
+	'formarticleexiststext' => 'Strana [[$1]] već postoji.',
 );
 
 /** Seeltersk (Seeltersk)

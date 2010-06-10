@@ -1482,6 +1482,7 @@ Došlo je do nepozante greške.',
 	'duplicator-dest-exists' => '[[$1]] već postoji. Molimo Vas da navedete nezauzet ciljani naslov.',
 	'duplicator-toomanyrevisions' => '[[$1]] ima previše ($2) izmena i ne može biti iskopiran.
 Trenutni limit je $3.',
+	'right-duplicate' => 'Duplirane strane',
 );
 
 /** Seeltersk (Seeltersk)
@@ -1828,5 +1829,6 @@ $messages['zh-hant'] = array(
 	'duplicator-dest-invalid' => '請提供一個正確的目標標題。',
 	'duplicator-dest-exists' => '[[$1]]已經存在。請提供一個未存在的目標標題。',
 	'duplicator-toomanyrevisions' => '[[$1]]有太多 （$2次） 修訂，不能夠複製。目前的上限有$3次。',
+	'right-duplicate' => '複製文章',
 );
 

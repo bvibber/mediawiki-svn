@@ -553,6 +553,14 @@ $messages['sr-ec'] = array(
 	'mwe-test-plural' => 'Покренуо/ла сам {{PLURAL:$1|$1 тест|$1 тестова}}',
 );
 
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'mwe-loading_txt' => 'Učitavanje ...',
+	'mwe-ok' => 'OK',
+	'mwe-cancel' => 'Poništi',
+	'mwe-test-plural' => 'Pokrenuo/la sam {{PLURAL:$1|$1 test|$1 testova}}',
+);
+
 /** Swedish (Svenska)
  * @author Dafer45
  * @author GameOn

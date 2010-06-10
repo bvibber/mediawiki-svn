@@ -525,6 +525,18 @@ $messages['sr-ec'] = array(
 	'right-lastlogin' => 'Приказивање последњег пута када се неки корисник улоговао',
 );
 
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'lastuserlogin' => 'Poslednje logovanje korisnika',
+	'lastuserlogin-desc' => 'Prikazuje kada se korisnik zadnji put ulogovao',
+	'lastuserlogin_userid' => 'Korisničko ime',
+	'lastuserlogin_username' => 'Pravo ime',
+	'lastuserlogin_useremail' => 'Korisnikova elektronska pošta',
+	'lastuserlogin_lastlogin' => 'Poslednje logovanje',
+	'lastuserlogin_daysago' => 'Protekli dani',
+	'right-lastlogin' => 'Prikazivanje poslednjeg puta kada se neki korisnik ulogovao',
+);
+
 /** Swedish (Svenska)
  * @author Dafer45
  */
@@ -591,5 +603,17 @@ $messages['zh-hans'] = array(
 	'lastuserlogin_lastlogin' => '最后一次登录',
 	'lastuserlogin_daysago' => '天之前',
 	'right-lastlogin' => '查看用户最后一次登录时间',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬) */
+$messages['zh-hant'] = array(
+	'lastuserlogin' => '最後一次用戶登錄',
+	'lastuserlogin-desc' => '顯示用戶最後一次登錄的時間',
+	'lastuserlogin_userid' => '用戶名',
+	'lastuserlogin_username' => '真實姓名',
+	'lastuserlogin_useremail' => '用戶電子郵件',
+	'lastuserlogin_lastlogin' => '最後一次登錄',
+	'lastuserlogin_daysago' => '天之前',
+	'right-lastlogin' => '查看用戶最後一次登錄時間',
 );
 

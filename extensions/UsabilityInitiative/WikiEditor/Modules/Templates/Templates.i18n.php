@@ -281,6 +281,11 @@ $messages['sr-ec'] = array(
 	'wikieditor-templates-preference' => 'Омогућава размотавање шаблона',
 );
 
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'wikieditor-templates-preference' => 'Omogućava razmotavanje šablona',
+);
+
 /** Swedish (Svenska)
  * @author Ainali
  */
@@ -300,6 +305,11 @@ $messages['tl'] = array(
  */
 $messages['vi'] = array(
 	'wikieditor-templates-preference' => 'Cho phép làm xẹp các bản mẫu',
+);
+
+/** Simplified Chinese (‪中文(简体)‬) */
+$messages['zh-hans'] = array(
+	'wikieditor-templates-preference' => '使模板倒塌',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

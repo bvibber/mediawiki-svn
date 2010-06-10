@@ -958,6 +958,11 @@ $messages['sr-ec'] = array(
 	'security-info-toggle' => 'сигурносна ограничења',
 );
 
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'security-info-toggle' => 'sigurnosna ograničenja',
+);
+
 /** Swedish (Svenska)
  * @author Fluff
  * @author Per

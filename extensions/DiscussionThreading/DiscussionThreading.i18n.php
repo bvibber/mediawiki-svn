@@ -618,6 +618,13 @@ $messages['sr-ec'] = array(
 	'discussionthreading-threadnewsectionhint' => 'Започни нову тему',
 );
 
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'discussionthreading-replysection' => 'odgovori',
+	'discussionthreading-threadnewsection' => 'novo',
+	'discussionthreading-threadnewsectionhint' => 'Započni novu temu',
+);
+
 /** Swedish (Svenska)
  * @author Najami
  */

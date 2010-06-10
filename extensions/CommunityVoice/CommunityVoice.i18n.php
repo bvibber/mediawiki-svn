@@ -813,6 +813,8 @@ $messages['sr-ec'] = array(
  */
 $messages['sr-el'] = array(
 	'communityvoice-ratings-scale-status-sending' => 'Slanje...',
+	'communityvoice-ratings-scale-status-error' => 'Greška pri slanju!',
+	'communityvoice-ratings-scale-status-thanks' => 'Hvala Vam za učešće u glasanju!',
 );
 
 /** Swedish (Svenska)

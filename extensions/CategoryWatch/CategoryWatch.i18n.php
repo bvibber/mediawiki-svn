@@ -788,8 +788,11 @@ $messages['vo'] = array(
  * @author Gzdavidwong
  */
 $messages['zh-hans'] = array(
+	'categorywatch-catmovein' => '$1已经由$2搬到$3。',
+	'categorywatch-catmoveout' => '$1已经移离$2并改到$3',
 	'categorywatch-catadd' => '已把$1新增至分类$2',
 	'categorywatch-catsub' => '已把$1从分类$2移除',
+	'categorywatch-autocat' => '由$1自动监视',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

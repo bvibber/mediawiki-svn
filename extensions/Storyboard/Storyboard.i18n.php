@@ -1596,6 +1596,52 @@ $messages['sr-ec'] = array(
 	'storyboard-deletestory' => 'Обриши',
 );
 
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'storyboard-anerroroccured' => 'Došlo je do greške: $1',
+	'storyboard-unpublished' => 'Povučeno iz objave',
+	'storyboard-published' => 'Objavljeno',
+	'storyboard-hidden' => 'Sakriveno',
+	'storyboard-unpublish' => 'Povuci objavu',
+	'storyboard-publish' => 'Objavi',
+	'storyboard-hide' => 'Sakrij',
+	'storyboard-option-unpublished' => 'neobjavljeno',
+	'storyboard-option-published' => 'objavljeno',
+	'storyboard-option-hidden' => 'sakriveno',
+	'story' => 'Priča',
+	'storyboard-submittedbyon' => 'Poslato od $1, na $2, $3.',
+	'storyboard-viewstories' => 'Vidi priče',
+	'storyboard-authorname' => 'Ime autora',
+	'storyboard-authorlocation' => 'Lokacija autora',
+	'storyboard-authoroccupation' => 'Zanimanje autora',
+	'storyboard-authoremail' => 'Autorova adrese elektronske pošte',
+	'storyboard-storystate' => 'Stanje',
+	'storyboard-language' => 'Jezik',
+	'storyboard-storymetadata' => 'Poslato od $1, na $2, $3.',
+	'storyboard-storymetadatafrom' => 'Poslato od $1 iz $2, na $3, $4.',
+	'storyboard-yourname' => 'Važe ime (potrebno)',
+	'storyboard-location' => 'Vaša lokacija',
+	'storyboard-occupation' => 'Vaše zanimanje',
+	'storyboard-story' => 'Vaša priča',
+	'storyboard-photo' => 'Imate li svoju sliku?
+Zašto je ne biste pokazali?',
+	'storyboard-email' => 'Adresa Vaše elektronske pošte (potrebno)',
+	'storyboard-storytitle' => 'Kratak, deskriptivan naslov (potrebno)',
+	'storyboard-submissioncomplete' => 'Slanje kompletirano',
+	'storyboard-submissionincomplete' => 'Slanje nije uspelo',
+	'storyboard-changetitle' => 'Promenite naslov.',
+	'storyboard-charstomany' => '$1 slova je previše!',
+	'storyboard-morecharsneeded' => '$1 više slova je potrebno',
+	'storyboard-charactersleft' => '$1 slova je preostalo',
+	'storyboard-deleteimage' => 'Obriši sliku',
+	'storyboard-done' => 'Urađeno',
+	'storyboard-working' => 'Obrada u toku...',
+	'storyboard-imagedeleted' => 'Slika obrisana',
+	'storyboard-showimage' => 'Pokaži sliku',
+	'storyboard-hideimage' => 'Sakrij sliku',
+	'storyboard-deletestory' => 'Obriši',
+);
+
 /** Swedish (Svenska)
  * @author Dafer45
  */

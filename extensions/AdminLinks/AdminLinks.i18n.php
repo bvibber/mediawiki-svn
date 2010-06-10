@@ -1229,6 +1229,22 @@ $messages['sr-ec'] = array(
 	'right-adminlinks' => 'Погледајте везу до [[Special:AdminLinks|администраторских везâ]]',
 );
 
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'adminlinks' => 'Administratorske veze',
+	'adminlinks-desc' => 'Dodaje [[Special:AdminLinks|posebne stranice]] koje sadrže korisne veze za administratore',
+	'adminlinks_documentation' => '$1 dokumentacija',
+	'adminlinks_general' => 'Opšte',
+	'adminlinks_editsidebar' => 'Uredi bočnu traku',
+	'adminlinks_editcss' => 'Uredi CSS datoteku',
+	'adminlinks_editmainpagename' => 'Izmeni naziv glavne stranice',
+	'adminlinks_users' => 'Korisnici',
+	'adminlinks_createuser' => 'Napravi korisnika',
+	'adminlinks_browsesearch' => 'Pretraživanje',
+	'adminlinks_importexport' => 'Uvoženje i izvoženje',
+	'right-adminlinks' => 'Pogledajte vezu do [[Special:AdminLinks|administratorskih vezâ]]',
+);
+
 /** Swedish (Svenska)
  * @author Gabbe.g
  */

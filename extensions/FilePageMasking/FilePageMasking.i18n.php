@@ -296,6 +296,11 @@ $messages['sr-ec'] = array(
 	'filepagemasking-desc' => 'Записује „.xxx“ у „_xxx“ у опису веза',
 );
 
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'filepagemasking-desc' => 'Zapisuje „.xxx“ u „_xxx“ u opisu veza',
+);
+
 /** Swedish (Svenska)
  * @author Boivie
  */

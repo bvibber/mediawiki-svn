@@ -995,6 +995,16 @@ $messages['sr-ec'] = array(
 	'fundraiserportal-tourmaline-button' => 'Донирајте сад',
 );
 
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'fundraiserportal-ruby-button' => 'Donirajte sad',
+	'fundraiserportal-rubytext-button' => 'Donirajte sad',
+	'fundraiserportal-rubytext-message' => 'Svaka donacija nam pomaže da održimo Vikipediju dostupnu svima.',
+	'fundraiserportal-rubytext-close' => 'Sakrij ovo od sad pa nadalje',
+	'fundraiserportal-sapphire-button' => 'Donirajte sad',
+	'fundraiserportal-tourmaline-button' => 'Donirajte sad',
+);
+
 /** Swedish (Svenska)
  * @author Fluff
  */

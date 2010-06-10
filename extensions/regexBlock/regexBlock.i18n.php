@@ -180,6 +180,7 @@ $messages['am'] = array(
  */
 $messages['an'] = array(
 	'regexblock-already-blocked' => '$1 ya yera bloqueyato.',
+	'regexblock-form-username' => "Adreza IP u nombre d'usuario:",
 	'regexblock-form-reason' => 'Razón:',
 	'regexblock-view-all' => 'Todas',
 );
@@ -2776,7 +2777,21 @@ $messages['sr-ec'] = array(
  * @author Michaello
  */
 $messages['sr-el'] = array(
+	'regexblock-block-success' => 'Blok uspeo',
+	'regexblock-currently-blocked' => 'Trenutno blokirane adrese:',
+	'regexblock-page-title-1' => 'Blokiraj adrese koristeći regularne izraze',
 	'regexblock-form-reason' => 'Razlog:',
+	'regexblock-form-expiry' => 'Istek:',
+	'regexblock-form-match' => 'Tačno slaganje',
+	'regexblock-form-submit' => 'Blokiraj ovog korisnika',
+	'regexblock-view-all' => 'Sve',
+	'regexblock-view-go' => 'Idi',
+	'regexblock-view-reason' => 'razlog: $1',
+	'regexblock-view-reason-default' => 'generički razlog',
+	'regexblock-view-block-infinite' => 'trajan blok',
+	'regexblock-view-block-by' => 'blokirao:',
+	'regexblock-view-block-unblock' => 'odblokiraj',
+	'regexblock-view-stats' => 'statistike',
 );
 
 /** Sundanese (Basa Sunda)

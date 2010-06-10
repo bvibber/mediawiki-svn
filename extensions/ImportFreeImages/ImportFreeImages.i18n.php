@@ -1123,6 +1123,17 @@ $messages['sr-ec'] = array(
 	'importfreeimages_size_original' => 'Оригинална величина',
 );
 
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'importfreeimages_owner' => 'Autor',
+	'importfreeimages_importthis' => 'uvezi ovo',
+	'importfreeimages_next' => 'Sledeće $1',
+	'importfreeimages_size_small' => 'Mala',
+	'importfreeimages_size_medium' => 'Srednja',
+	'importfreeimages_size_large' => 'Velika',
+	'importfreeimages_size_original' => 'Originalna veličina',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

@@ -1502,6 +1502,7 @@ $messages['sr-ec'] = array(
  * @author Michaello
  */
 $messages['sr-el'] = array(
+	'multipleupload' => 'Pošalji fajlove',
 	'multiupload-desc' => 'Omogući korisnicima da [[Special:MultipleUpload|šalju više fajlova odjednom]]',
 	'multipleupload-ignoreallwarnings' => "Ignoripi '''sva upozorenja''' i snimi fajlove bez obzira na njih.",
 	'multipleupload-saveallfiles' => 'Snimi sve fajlove',

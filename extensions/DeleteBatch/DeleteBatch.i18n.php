@@ -1302,6 +1302,22 @@ $messages['sr-ec'] = array(
 	'deletebatch-file-missing' => 'Није било могуће прочитати задат фајл',
 );
 
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'deletebatch-caption' => 'Spisak strana:',
+	'deletebatch-link-back' => 'Vrati se na specijalnu stranu',
+	'deletebatch-as' => 'Pokreni skript kao:',
+	'deletebatch-or' => '<b>ili</b>',
+	'deletebatch-delete' => 'Obriši',
+	'deletebatch-page' => 'Strane za brisanje:',
+	'deletebatch-processing-from-file' => 'u toku je brisanje strana sa spiska',
+	'deletebatch-processing-from-form' => 'brisanje strana iz forme',
+	'deletebatch-omitting-nonexistant' => 'Sakrivanje nepostojeće strane $1.',
+	'deletebatch-omitting-invalid' => 'Sakrivanje neispravne strane $1.',
+	'deletebatch-file-bad-format' => 'Fajl bi trebalo da bude običan tekst',
+	'deletebatch-file-missing' => 'Nije bilo moguće pročitati zadat fajl',
+);
+
 /** Swedish (Svenska)
  * @author M.M.S.
  * @author Najami

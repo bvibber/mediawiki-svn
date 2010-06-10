@@ -1253,6 +1253,21 @@ $messages['sr-ec'] = array(
 	'refreshspecial-page-result' => '{{PLURAL:$1|добијен|добијено}} $1 {{PLURAL:$1|ред|редова}} у',
 );
 
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'refreshspecial-button' => 'Osveži naznačeno',
+	'refreshspecial-fail' => 'Treba da naznačite makar jednu specijalnu stranu za osvežavanje.',
+	'refreshspecial-refreshing' => 'Osvežavanje specijalnih strana',
+	'refreshspecial-choice' => 'osvežavanje specijalnih strana',
+	'refreshspecial-js-disabled' => '(<i>Ne možete da naznačite sve strane kada je JavaScript onemogućen</i>)',
+	'refreshspecial-select-all-pages' => 'Označi sve strane',
+	'refreshspecial-link-back' => 'Vrati se na specijalnu stranu',
+	'refreshspecial-none-selected' => 'Možda niste označili ni jednu specijalnu stranu. Vraćanje na podrazumevan izbor.',
+	'refreshspecial-db-error' => 'Nije uspelo: Greška u bazi podataka',
+	'refreshspecial-no-page' => 'Nema takve specijalne strane',
+	'refreshspecial-page-result' => '{{PLURAL:$1|dobijen|dobijeno}} $1 {{PLURAL:$1|red|redova}} u',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

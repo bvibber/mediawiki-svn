@@ -1097,6 +1097,13 @@ $messages['sr-ec'] = array(
 	'index-hide-detail' => 'Сакриј списак страна',
 );
 
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'index-search' => 'Pretraga:',
+	'index-submit' => 'Pošalji',
+	'index-hide-detail' => 'Sakrij spisak strana',
+);
+
 /** Swedish (Svenska)
  * @author Rotsee
  */

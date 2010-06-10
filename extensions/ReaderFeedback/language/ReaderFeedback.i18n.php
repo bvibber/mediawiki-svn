@@ -1810,7 +1810,7 @@ $messages['pl'] = array(
 	'readerfeedback-submit' => 'Oznacz',
 	'readerfeedback-main' => 'Tylko strony z treścią mogą być oceniane.',
 	'readerfeedback-success' => "'''Dziękujemy za ocenę strony!''' ([$2 wyniki]) ([$3 uwagi lub pytania]).",
-	'readerfeedback-voted' => "'''Prawdopodobnie już oceniał{{GENDER:|eś|aś|eś (~aś)}} tę stronę''' ([$2 zobacz wyniki]) ([$3 komentarze lub pytania]).",
+	'readerfeedback-voted' => "'''Prawdopodobnie już oceniał{{GENDER:|eś|aś|eś(-aś)}} tę stronę''' ([$2 zobacz wyniki]) ([$3 komentarze lub pytania]).",
 	'readerfeedback-error' => "'''Podczas oceniania strony wystąpił błąd''' ([$2 wyniki]) ([$3 komentarze lub pytania]).",
 	'readerfeedback-submitting' => 'Zapisywanie...',
 	'readerfeedback-finished' => 'Dziękujemy!',
@@ -2158,6 +2158,9 @@ $messages['sr-el'] = array(
 	'readerfeedback-level-4' => 'izuzetno',
 	'readerfeedback-submit' => 'pošalji',
 	'readerfeedback-main' => 'Samo strane sadržaja mogu biti ocenjivane.',
+	'readerfeedback-submitting' => 'Slanje …',
+	'readerfeedback-finished' => 'Hvala Vam!',
+	'readerfeedback-tagfilter' => 'Tag:',
 	'tooltip-ca-ratinghist' => 'Ocene strane od strane čitalaca.',
 );
 
@@ -2551,6 +2554,7 @@ $messages['yi'] = array(
  * @author Gzdavidwong
  */
 $messages['zh-hans'] = array(
+	'readerfeedback-desc' => '页面验证允许读者提供反馈的形式明确评级',
 	'readerfeedback' => '您对这个页面有什么意见？',
 	'readerfeedback-text' => "''请花一点时间来评价下面这个页面。您反馈的意见将帮助我们改进我们的网站。''",
 	'readerfeedback-reliability' => '可靠性',
@@ -2578,6 +2582,7 @@ $messages['zh-hans'] = array(
 	'readerfeedback-tier-poor' => '低',
 	'tooltip-ca-ratinghist' => '读者对本页的评级',
 	'specialpages-group-feedback' => '浏览者意见',
+	'readerfeedback-tt-review' => '提交审查',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

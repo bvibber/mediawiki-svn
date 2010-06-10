@@ -3241,6 +3241,7 @@ $messages['sr-el'] = array(
 	'whitelisttablechangedate' => 'Promeni datum isteka',
 	'whitelisttableremove' => 'Ukloni',
 	'whitelistnewtabledate' => 'Datum isteka:',
+	'whitelistnewtableprocess' => 'Obradi',
 	'whitelistoverview' => '== Pregled izmena za $1 ==',
 	'whitelistoverviewcd' => "* Menjanje datuma na '''$1''' za [[:$2|$2]]",
 	'whitelistoverviewsa' => "* Postavljanje pristupa na '''$1''' za [:$2|$2]]",
@@ -3251,6 +3252,8 @@ $messages['sr-el'] = array(
 $2',
 	'whitelistrequestconf' => 'Zahtev za novim stranama je poslat $1',
 	'whitelistnever' => 'nikad',
+	'group-manager' => 'Menadžeri',
+	'group-manager-member' => 'Menadžer',
 );
 
 /** Seeltersk (Seeltersk)

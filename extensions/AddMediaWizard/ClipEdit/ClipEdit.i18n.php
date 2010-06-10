@@ -1064,6 +1064,38 @@ $messages['sr-ec'] = array(
 	'mwe-clipedit-layout_left' => 'Изглед с леве стране слике',
 );
 
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'mwe-clipedit-crop' => 'Iseci sliku',
+	'mwe-clipedit-apply_crop' => 'Primeni isecanje slike',
+	'mwe-clipedit-reset_crop' => 'Poništi isecanje',
+	'mwe-clipedit-insert_image_page' => 'Ubaci u stranicu',
+	'mwe-clipedit-insert_into_sequence' => 'Ubaci u niz',
+	'mwe-clipedit-preview_insert' => 'Pretpregled umetka',
+	'mwe-clipedit-cancel_image_insert' => 'Poništi umetak',
+	'mwe-clipedit-sc_attributes' => 'Uredi podatke snimka',
+	'mwe-clipedit-sc_inoutpoints' => 'Postavi u-van tačke',
+	'mwe-clipedit-sc_overlays' => 'Preklapanja',
+	'mwe-clipedit-sc_audio' => 'Audio kontrola',
+	'mwe-clipedit-sc_duration' => 'Trajanje',
+	'mwe-clipedit-template_properties' => 'Svojstva šablona',
+	'mwe-clipedit-custom_title' => 'Prilagođeni naslov',
+	'mwe-clipedit-edit_properties' => 'Izmeni svojstva',
+	'mwe-clipedit-other_properties' => 'Ostala svojstva',
+	'mwe-clipedit-resource_page' => 'Izvorna stranica:',
+	'mwe-clipedit-set_in_out_points' => 'Postavi u-van tačke',
+	'mwe-clipedit-start_time' => 'Početno vreme',
+	'mwe-clipedit-end_time' => 'Završno vreme',
+	'mwe-clipedit-preview_inout' => 'Pregledaj u-van tačke',
+	'mwe-clipedit-edit-tools' => 'Uredi alatke',
+	'mwe-clipedit-inline-description' => 'Naslov',
+	'mwe-clipedit-edit-video-tools' => 'Uredi video alatke:',
+	'mwe-clipedit-duration' => 'Trajanje:',
+	'mwe-clipedit-layout' => 'Izgled',
+	'mwe-clipedit-layout_right' => 'Izgled s desne strane slike',
+	'mwe-clipedit-layout_left' => 'Izgled s leve strane slike',
+);
+
 /** Swedish (Svenska)
  * @author Dafer45
  */

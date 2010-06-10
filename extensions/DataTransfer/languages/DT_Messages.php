@@ -1739,6 +1739,11 @@ $messages['sr-el'] = array(
 	'dt_xml_name' => 'Ime',
 	'dt_xml_title' => 'Naslov',
 	'dt_xml_id' => 'ID',
+	'dt_xml_freetext' => 'Slobodan tekst',
+	'importxml' => 'Uvezi XML',
+	'dt_import_editsummary' => '$1 uvoz',
+	'dt_import_importing' => 'Uvoz u toku...',
+	'right-datatransferimport' => 'Uvezi podatke',
 );
 
 /** Seeltersk (Seeltersk)

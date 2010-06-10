@@ -193,6 +193,7 @@ Un tertie parametro "template" es obligatori.',
  */
 $messages['lb'] = array(
 	'datatransclusion-bad-template-name' => 'Schlechten Numm fir eng Schabloun: $1.',
+	'datatransclusion-unknown-template' => '<nowiki>{{</nowiki>[[{{ns:template}}:$1|$1]]<nowiki>}}</nowiki> gëtt et net.',
 );
 
 /** Macedonian (Македонски)

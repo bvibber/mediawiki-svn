@@ -194,6 +194,11 @@ $messages['sr-ec'] = array(
 	'hidens-desc' => 'Сакрива именси простор и наслов када је страна у задатом именском простору или када је парсерова функција <code><nowiki>{{#hidens:}}</nowiki></code> позвана',
 );
 
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'hidens-desc' => 'Sakriva imensi prostor i naslov kada je strana u zadatom imenskom prostoru ili kada je parserova funkcija <code><nowiki>{{#hidens:}}</nowiki></code> pozvana',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

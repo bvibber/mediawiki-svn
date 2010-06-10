@@ -3473,6 +3473,8 @@ $messages['zh-hans'] = array(
 	'ogg-dismiss' => '关闭',
 	'ogg-download' => '下载文件',
 	'ogg-desc-link' => '关于这个文件',
+	'ogg-oggThumb-version' => 'OggHandler需要oggThumb $1或者之后的版本',
+	'ogg-oggThumb-failed' => 'oggThumb未能创建缩略图。',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

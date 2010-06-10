@@ -620,6 +620,12 @@ $messages['sr-ec'] = array(
 	'wikieditor-loading' => 'Учитавање',
 );
 
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'wikieditor-wikitext-tab' => 'Vikitekst',
+	'wikieditor-loading' => 'Učitavanje',
+);
+
 /** Swedish (Svenska)
  * @author Boivie
  * @author Sertion

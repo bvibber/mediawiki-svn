@@ -1617,10 +1617,16 @@ $messages['zh-hans'] = array(
 	'authorprotect-desc' => '允许页面的作者禁止其他用户编辑',
 	'authorprotect-notauthor' => '您并非本页面的原作者',
 	'authorprotect-confirm' => '更改保护级别',
+	'authorprotect-edit' => '禁止除作者以外人士编辑',
+	'authorprotect-move' => '禁止除作者以外人士移动',
 	'authorprotect-expiry' => '终止时间',
 	'authorprotect-reason' => '原因',
+	'authorprotect-intro' => '使用此表格禁止除作者以外人士编辑',
 	'authorprotect-success' => '保护成功！',
 	'authorprotect-failure' => '保护失败',
+	'protect-level-author' => '保护非作家用户编辑',
+	'restriction-level-author' => '作者保护',
+	'right-authorprotect' => '保护自己创作的页面禁止他人编辑',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

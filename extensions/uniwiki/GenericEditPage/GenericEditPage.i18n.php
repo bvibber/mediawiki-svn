@@ -1398,6 +1398,7 @@ $messages['sr-ec'] = array(
  * @author Michaello
  */
 $messages['sr-el'] = array(
+	'gep-desc' => 'Čini da korisnička strana bude lakša za korišćenje',
 	'gep-emailsubject' => '[$1] Sugerisana kategorija: $2',
 	'gep-emailbody' => 'Korisnik "$1" je sugerisao kategoriju "$2" za sajt "$3".',
 	'gep-emailfailure' => 'Žao nam je, Vaša sugestija nije mogla biti procesirana.',

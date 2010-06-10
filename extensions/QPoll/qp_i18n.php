@@ -2018,6 +2018,20 @@ $messages['sr-ec'] = array(
 	'qp_user_polls_link' => 'Учествовао у $1 {{PLURAL:$1|анкети|анкета}}',
 );
 
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'qp_desc' => 'Omogućava pokretanje anketa',
+	'qp_result_NA' => 'Nije odgovoreno',
+	'qp_result_error' => 'Sintaksna greška',
+	'qp_vote_button' => 'Glasaj',
+	'qp_vote_again_button' => 'Promenite svoj glas',
+	'qp_polls_list' => 'Prikaži sve ankete',
+	'qp_users_list' => 'Prikaži sve korisnike',
+	'qp_stats_link' => 'Statistike',
+	'qp_users_link' => 'Korisnici',
+	'qp_user_polls_link' => 'Učestvovao u $1 {{PLURAL:$1|anketi|anketa}}',
+);
+
 /** Swedish (Svenska)
  * @author Ozp
  * @author Per

@@ -720,6 +720,8 @@ $messages['sr-ec'] = array(
  * @author Michaello
  */
 $messages['sr-el'] = array(
+	'searchbox-search' => 'Pretraga',
+	'searchbox-go' => 'Idi',
 	'searchbox-namespaces' => 'Imenski prostori:',
 );
 

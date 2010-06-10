@@ -270,6 +270,12 @@ $messages['sr-ec'] = array(
 	'right-editalluserpages' => 'Измена корисничких страна',
 );
 
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'userpageeditprotection-desc' => 'Ograničava uređivanje korisničkih strana na korisnika i odobrene urednike',
+	'right-editalluserpages' => 'Izmena korisničkih strana',
+);
+
 /** Swedish (Svenska)
  * @author Dafer45
  */
@@ -283,6 +289,12 @@ $messages['sv'] = array(
 $messages['tl'] = array(
 	'userpageeditprotection-desc' => 'Naglilimita ng pagbabago ng mga pahina ng tagagamit para sa tagagamit at pinahihintulutang mga patnugot',
 	'right-editalluserpages' => 'Baguhin ang mga pahina ng tagagamit',
+);
+
+/** Simplified Chinese (‪中文(简体)‬) */
+$messages['zh-hans'] = array(
+	'userpageeditprotection-desc' => '限制用户及获授权者编辑用户页',
+	'right-editalluserpages' => '编辑用户页',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

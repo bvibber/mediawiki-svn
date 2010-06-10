@@ -903,6 +903,21 @@ $3',
 	'latexdoc_get_pdf' => 'Преузми PDF',
 );
 
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'latexdoc_cant_create_dir' => 'Nije mogao da se napravi privremeni direktorijum $1',
+	'latexdoc_cant_write' => 'Nije moglo da se piše u fajl $1',
+	'latexdoc_error' => 'Greška u LaTeX-u:
+
+Komanda: $1
+
+Izlaz: $2
+
+$3',
+	'latexdoc_get_dvi' => 'Preuzmi DVI',
+	'latexdoc_get_pdf' => 'Preuzmi PDF',
+);
+
 /** Swedish (Svenska)
  * @author M.M.S.
  */
