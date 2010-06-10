@@ -1,10 +1,10 @@
 <?php
 /**
- * LogoFunctions
+ * LogoFunction
  *
- * Add Paser hooks about wiki's logo
+ * Add PaserFunctions about wiki's logo
  *
- * @link http://www.mediawiki.org/wiki/Extension:LogoFunctions
+ * @link http://www.mediawiki.org/wiki/Extension:LogoFunction
  *
  * @author Devunt <devunt@devunt.kr>
  * @authorlink http://www.mediawiki.org/wiki/User:Devunt
@@ -15,22 +15,22 @@
 if ( !defined( 'MEDIAWIKI' ) ) die('define error!');
  
 $wgExtensionCredits[ 'parserhook' ][] = array(
-    'name'           => 'LogoFunctions',
+    'name'           => 'LogoFunction',
     'author'         => 'Devunt (Bae June Hyeon)',
-    'url'            => 'http://www.mediawiki.org/wiki/Extension:LogoFunctions',
-    'descriptionmsg'    => 'logofunctions-desc',
+    'url'            => 'http://www.mediawiki.org/wiki/Extension:LogoFunction',
+    'descriptionmsg'    => 'logofunction-desc',
     'version'        => '0.9',
 );
  
-$wgHooks['ParserFirstCallInit'][] = 'efLogoFunctions_Setup';
-$wgHooks['LanguageGetMagic'][]       = 'efLogoFunctions_Magic';
+$wgHooks['ParserFirstCallInit'][] = 'efLogoFunction_Setup';
+$wgHooks['LanguageGetMagic'][]       = 'efLogoFunction_Magic';
  
-function efLogoFunctions_Setup( &$parser ) {
+function efLogoFunction_Setup( &$parser ) {
 	$parser->setFunctionHook( 'setlogo', 'efSetLogo_Render' );
 	return true;
 }
  
-function efLogoFunctions_Magic( &$magicWords, $langCode ) {
+function efLogoFunction_Magic( &$magicWords, $langCode ) {
         $magicWords['setlogo'] = array( 0, 'setlogo' );
         return true;
 }
