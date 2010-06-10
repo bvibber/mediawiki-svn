@@ -320,6 +320,7 @@ Kliknite na jednu od njih da pogledate njene statistike.',
 /** Catalan (Català)
  * @author Paucabot
  * @author SMP
+ * @author Vriullop
  */
 $messages['ca'] = array(
 	'prefstats' => 'Estadístiques de les preferències',
@@ -344,6 +345,8 @@ Cliqueu sobre una d'elles per veure'n les seves estadístiques.",
 	'prefstats-factor-twoweeks' => 'dues setmanes',
 	'prefstats-factor-fourweeks' => 'quatre setmanes',
 	'prefstats-factor-default' => "torna a l'escala per defecte",
+	'prefstats-legend-out' => 'Desactivat',
+	'prefstats-legend-in' => 'Activat',
 );
 
 /** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)

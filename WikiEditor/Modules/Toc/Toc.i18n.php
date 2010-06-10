@@ -590,6 +590,12 @@ $messages['sr-ec'] = array(
 	'wikieditor-toc-hide' => 'Сакриј садржај',
 );
 
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'wikieditor-toc-show' => 'Pokaži sadržaj',
+	'wikieditor-toc-hide' => 'Sakrij sadržaj',
+);
+
 /** Swedish (Svenska)
  * @author Boivie
  */

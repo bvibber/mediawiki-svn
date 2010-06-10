@@ -267,7 +267,7 @@ $messages['he'] = array(
  */
 $messages['hsb'] = array(
 	'prefswitch-link-anon' => 'Nowe funkcije',
-	'tooltip-pt-prefswitch-link-anon' => 'Wjace wo nowych funkcijach zhonić',
+	'tooltip-pt-prefswitch-link-anon' => 'Wjace wo nowych funkcijach',
 	'prefswitch-link-on' => 'Wróćo',
 	'tooltip-pt-prefswitch-link-on' => 'Nowe funkcije znjemóžnić',
 	'prefswitch-link-off' => 'Nowe funkcije',
@@ -316,7 +316,7 @@ $messages['id'] = array(
 $messages['it'] = array(
 	'prefswitch-link-anon' => 'Nuove funzionalità',
 	'tooltip-pt-prefswitch-link-anon' => 'Informazioni sulle nuove funzionalità',
-	'prefswitch-link-on' => 'Riportami indietro',
+	'prefswitch-link-on' => 'riportami indietro',
 	'tooltip-pt-prefswitch-link-on' => 'Disattiva le nuove funzionalità',
 	'prefswitch-link-off' => 'Nuove funzionalità',
 	'tooltip-pt-prefswitch-link-off' => 'Prova le nuove funzioni',

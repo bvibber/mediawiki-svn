@@ -395,6 +395,11 @@ $messages['sr-ec'] = array(
 	'wikieditor-highlight-preference' => 'Истакни текст у току уређивања',
 );
 
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'wikieditor-highlight-preference' => 'Istakni tekst u toku uređivanja',
+);
+
 /** Swedish (Svenska)
  * @author Boivie
  */

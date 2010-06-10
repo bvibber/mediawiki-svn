@@ -436,6 +436,13 @@ $messages['arz'] = array(
 	'optin-survey-answer-changes-other' => 'غير ذلك:',
 );
 
+/** Samogitian (Žemaitėška)
+ * @author Hugo.arg
+ */
+$messages['bat-smg'] = array(
+	'optin-submit-out' => 'Palėktė Beta',
+);
+
 /** Belarusian (Беларуская)
  * @author Yury Tarasievich
  */
@@ -6399,6 +6406,18 @@ $messages['zh-hans'] = array(
 	'optin-survey-answer-changes-predictability' => '改善效率预测。',
 	'optin-survey-answer-changes-custom' => '允许更加有弹性的用户自定义。',
 	'optin-survey-answer-changes-other' => '其他：',
+	'optin-improvements2' => '==有什么改善？ ==
+[[File:UsabilityToolbar.png|left|link=|新编辑工具列]][[File:UsabilityDialogs.png|left|link=|对话内容截图]]
+;增强的工具栏
+增强工具栏上可以更容易地编辑文章。
+新的和改进的图标使每个工具更清楚什么样的行动执行。
+膨胀节减少混乱，同时保持不经常使用的工具只是一个点击即可。
+;对话框在创建链接或表格
+点击工具图标现在打开对话框，帮助您创建链接和表格填写一份简单的表格。
+;其他
+更多我们采取了一些其他的改进，如增强的导航，级联标签，改进的搜索，以及更多。
+==如何参与==
+若要了解更多关于可用性倡议，请访问我们的[http://usability.wikimedia.org/wiki/Wikipedia_Usability_Initiative 网页]。 <div style="clear:both"></div>',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
@@ -6472,13 +6491,15 @@ $messages['zh-hant'] = array(
 	'optin-survey-answer-changes-custom' => '容許更加有彈性的用戶自定。',
 	'optin-survey-answer-changes-other' => '其它：',
 	'optin-improvements2' => '==有什麼改善？ ==
-[[file:UsabilityToolbar.png|left|link=|截圖編輯工具欄上的增強]][[file:UsabilityDialogs.png|left|link=|對話內容截圖]]
+[[File:UsabilityToolbar.png|left|link=|新編輯工具列]][[File:UsabilityDialogs.png|left|link=|對話內容截圖]]
 ;增強的工具欄
 增強工具欄上可以更容易地編輯文章。
 新的和改進的圖標使每個工具更清楚什麼樣的行動執行。
 膨脹節減少混亂，同時保持不經常使用的工具只是一個點擊即可。
-;對話框在創建鏈接或表
-點擊工具圖標現在打開對話框，幫助您創建鏈接和表格填寫一份簡單的表格。以及更多我們採取了一些其他的改進，如增強的導航，級聯標籤，改進的搜索，以及更多。
+;對話框在創建鏈接或表格
+點擊工具圖標現在打開對話框，幫助您創建鏈接和表格填寫一份簡單的表格。
+;其他
+更多我們採取了一些其他的改進，如增強的導航，級聯標籤，改進的搜索，以及更多。
 ==如何參與==
 若要了解更多關於可用性倡議，請訪問我們的[http://usability.wikimedia.org/wiki/Wikipedia_Usability_Initiative 網頁]。 <div style="clear:both"></div>',
 );

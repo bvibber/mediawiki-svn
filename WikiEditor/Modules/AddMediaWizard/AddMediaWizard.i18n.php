@@ -297,6 +297,11 @@ $messages['vi'] = array(
 	'wikieditor-addMediaWizard-preference' => 'Kích hoạt công cụ "Hướng dẫn từng bước để thêm tập tin phương tiện"',
 );
 
+/** Simplified Chinese (‪中文(简体)‬) */
+$messages['zh-hans'] = array(
+	'wikieditor-addMediaWizard-preference' => '启用「添加媒体向导」小工具',
+);
+
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Horacewai2
  */

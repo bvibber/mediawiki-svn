@@ -219,6 +219,14 @@ $messages['ia'] = array(
 	'updatemyprefs-label-message' => 'Automaticamente actualisar mi preferentias con nove configurationes predefinite e utensiles quando illes es disponibile',
 );
 
+/** Indonesian (Bahasa Indonesia)
+ * @author Kenrick95
+ */
+$messages['id'] = array(
+	'prefs-updates' => 'Pembaharuan',
+	'updatemyprefs-label-message' => 'Perbarui preferensi saya secara otomatis dengan setelan baku yang baru dan alat-alatnya jika telah tersedia',
+);
+
 /** Italian (Italiano)
  * @author Beta16
  * @author Una giornata uggiosa '94
@@ -416,6 +424,13 @@ $messages['vi'] = array(
 	'prefs-updates' => 'Các cập nhật',
 	'updatemyprefs-desc' => 'Tùy chỉnh cho phép các thành viên lựa chọn họ có muốn nhận cập nhật giao diện định kỳ nếu có hay không',
 	'updatemyprefs-label-message' => 'Tự động cập nhật các tùy chọn của tôi với những thiết lập và công cụ mặc định mới khi chúng ra mắt',
+);
+
+/** Simplified Chinese (‪中文(简体)‬) */
+$messages['zh-hans'] = array(
+	'prefs-updates' => '更新',
+	'updatemyprefs-desc' => '供用户选择是否要定期更新的用户界面',
+	'updatemyprefs-label-message' => '自动更新我的喜好与新的默认设置和工具如果它们可用',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

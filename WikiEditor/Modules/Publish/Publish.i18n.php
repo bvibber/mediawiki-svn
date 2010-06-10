@@ -233,6 +233,14 @@ $messages['cs'] = array(
 	'wikieditor-publish-dialog-goback' => 'Zpět',
 );
 
+/** Church Slavic (Словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)
+ * @author ОйЛ
+ */
+$messages['cu'] = array(
+	'wikieditor-publish-dialog-minor' => 'ма́лаꙗ мѣ́на',
+	'wikieditor-publish-dialog-watch' => 'си страни́цѧ блюдє́ниѥ',
+);
+
 /** Welsh (Cymraeg)
  * @author Lloffiwr
  */
@@ -1015,6 +1023,15 @@ $messages['sr-ec'] = array(
 	'wikieditor-publish-dialog-goback' => 'Врати се',
 );
 
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'wikieditor-publish-button-publish' => 'Objavi',
+	'wikieditor-publish-button-cancel' => 'Poništi',
+	'wikieditor-publish-dialog-minor' => 'Mala izmena',
+	'wikieditor-publish-dialog-publish' => 'Objavi',
+	'wikieditor-publish-dialog-goback' => 'Vrati se',
+);
+
 /** Swedish (Svenska)
  * @author Boivie
  */
@@ -1175,6 +1192,13 @@ $messages['yi'] = array(
 	'wikieditor-publish-dialog-watch' => 'אויפֿפאַסן אויף דעם בלאַט',
 	'wikieditor-publish-dialog-publish' => 'פֿאַרעפֿנטלעכן',
 	'wikieditor-publish-dialog-goback' => 'צוריקגיין',
+);
+
+/** Cantonese (粵語)
+ * @author Horacewai2
+ */
+$messages['yue'] = array(
+	'wikieditor-publish-dialog-minor' => '小編輯',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

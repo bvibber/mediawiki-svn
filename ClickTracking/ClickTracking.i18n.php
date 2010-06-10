@@ -1667,6 +1667,25 @@ $messages['sr-ec'] = array(
 	'ct-update-table' => 'Ажурирај табелу',
 );
 
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'ct-expert-header' => 'Klikovi "eksperata"',
+	'ct-intermediate-header' => 'Klikovi "naprednih"',
+	'ct-beginner-header' => 'Klikovi "početnika"',
+	'ct-total-header' => 'Ukupno klikova',
+	'ct-start-date' => 'Početni datum (YYYYMMDD)',
+	'ct-end-date' => 'Krajnji datum (YYYYMMDD)',
+	'ct-beginner' => 'Početnik',
+	'ct-intermediate' => 'Napredni',
+	'ct-expert' => 'Ekspert',
+	'ct-date-range' => 'Opseg datuma',
+	'ct-editing' => 'Trenutno menja:',
+	'ct-anon-users' => 'Anonimni korisnici',
+	'ct-user-contribs' => 'Ukupno korisničkih doprinosa',
+	'ct-and' => 'i',
+	'ct-update-table' => 'Ažuriraj tabelu',
+);
+
 /** Swedish (Svenska)
  * @author Boivie
  * @author GameOn
