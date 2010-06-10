@@ -282,8 +282,16 @@ $messages['bs'] = array(
 
 /** Catalan (Català)
  * @author SMP
+ * @author Vriullop
  */
 $messages['ca'] = array(
+	'clicktracking' => "Seguiment de clics de la Iniciativa d'Usabilitat",
+	'clicktracking-desc' => "Seguiment de clics d'esdeveniments que no causen una actualització de pàgina",
+	'ct-title' => "Clics agregats d'usuari",
+	'ct-event-name' => "Nom d'esdeveniment",
+	'ct-expert-header' => "Clics d'«expert»",
+	'ct-intermediate-header' => "Clics d'usuari «mitjà»",
+	'ct-beginner-header' => 'Clics de «novell»',
 	'ct-total-header' => 'Clics totals',
 	'ct-start-date' => "Data d'inici (AAAAMMDD)",
 	'ct-end-date' => 'Data de finalització (AAAAMMDD)',
@@ -1626,6 +1634,7 @@ $messages['sk'] = array(
 $messages['sl'] = array(
 	'clicktracking' => 'Sledenje klikom Iniciative za uporabnost',
 	'clicktracking-desc' => 'Sledenje klikom, namenjeno odkrivanju dogodkov, ki preprečujejo osvežitev strani med urejanjem',
+	'ct-title' => 'Zbrani uporabniški kliki',
 	'ct-event-name' => 'Ime dogodka',
 	'ct-expert-header' => 'Klikov »Strokovnjakov«',
 	'ct-intermediate-header' => 'Klikov »Nadaljevalcev«',
@@ -1634,6 +1643,7 @@ $messages['sl'] = array(
 	'ct-start-date' => 'Začetni datum (YYYYMMDD)',
 	'ct-end-date' => 'Končni datum (YYYYMMDD)',
 	'ct-increment-by' => 'Število dni, ki jih predstavlja vsaka podatkovna točka',
+	'ct-change-graph' => 'Graf sprememb',
 	'ct-beginner' => 'Začetnik',
 	'ct-intermediate' => 'Nadaljevalec',
 	'ct-expert' => 'Strokovnjak',

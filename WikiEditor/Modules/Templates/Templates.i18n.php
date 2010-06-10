@@ -274,6 +274,13 @@ $messages['ru'] = array(
 	'wikieditor-templates-preference' => 'Включить сворачивание шаблонов',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'wikieditor-templates-preference' => 'Omogoči združevanje predlog',
+);
+
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */

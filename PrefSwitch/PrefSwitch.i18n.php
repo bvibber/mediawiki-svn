@@ -715,8 +715,8 @@ Bitte wähle alle zutreffenden Punkte aus.',
 	'prefswitch-title-off' => 'Neue Features abschalten',
 	'prefswitch-title-switched-off' => 'Danke',
 	'prefswitch-title-feedback' => 'Feedback',
-	'prefswitch-success-on' => 'Die neuen Funktionalitäten sind jetzt aktiv. Wir wünschen dir viel Freude bei deren Verwendung. Du kannst sie jederzeit deaktivieren, indem du auf den Link „[[Special:UsabilityInitiativePrefSwitch|Beta verlassen]]“ oben auf der Webseite klickst.',
-	'prefswitch-success-off' => 'Die neuen Funktionalitäten sind jetzt inaktiv. Vielen Dank, dass du sie verwendet hast. Du kannst sie jederzeit aktivieren, indem du auf den Link „[[Special:UsabilityInitiativePrefSwitch|Beta aktivieren]]“ oben auf der Webseite klickst.',
+	'prefswitch-success-on' => 'Die neuen Funktionalitäten sind jetzt aktiv. Wir wünschen dir viel Freude bei deren Verwendung. Du kannst sie jederzeit deaktivieren, indem du auf den Link „[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-on}}]]“ oben auf der Webseite klickst.',
+	'prefswitch-success-off' => 'Die neuen Funktionalitäten sind jetzt inaktiv. Vielen Dank, dass du sie verwendet hast. Du kannst sie jederzeit aktivieren, indem du auf den Link „[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-off}}]]“ oben auf der Webseite klickst.',
 	'prefswitch-success-feedback' => 'Dein Feedback wurde versandt.',
 	'prefswitch-return' => '<hr style="clear:both">
 Zurück zu <span class="plainlinks">[$1 $2]</span>.',
@@ -863,8 +863,8 @@ Pšosym wubjeŕ wšykne, kótarež maju se nałožyś.',
 	'prefswitch-title-off' => 'Nowe funkcije wótšaltowaś',
 	'prefswitch-title-switched-off' => 'Źěkujomy se',
 	'prefswitch-title-feedback' => 'Rezonanca',
-	'prefswitch-success-on' => 'Nowe funkcije su něnto zašaltowane. Naźejamy se, až wjaseliš se nowym funkcijam. Móžoš je kuždy cas pśez kliknjenje na wótkaz "[[Special:UsabilityInitiativePrefSwitch|Slědk]]" górjejce na bpku wušaltowaś.',
-	'prefswitch-success-off' => 'Nowe funkcije su něnto wótšaltowane. Žěkujomy se, až sy nowe funkcije testował. Móžoš je kuždy cas pśez kliknjenje na wótkaz "[[Special:UsabilityInitiativePrefSwitch|Nowe funkcije]]" górjejce na bpku zašaltowaś.',
+	'prefswitch-success-on' => 'Nowe funkcije su něnto zašaltowane. Naźejamy se, až wjaseliš se nowym funkcijam. Móžoš je kuždy cas pśez kliknjenje na wótkaz "[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-on}}]]" górjejce na bpku wušaltowaś.',
+	'prefswitch-success-off' => 'Nowe funkcije su něnto wótšaltowane. Žěkujomy se, až sy nowe funkcije testował. Móžoš je kuždy cas pśez kliknjenje na wótkaz "[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-off}}]]" górjejce na bpku zašaltowaś.',
 	'prefswitch-success-feedback' => 'Twójo měnjenje jo se pósłało.',
 	'prefswitch-return' => '<hr style="clear:both">
 Slědk k <span class="plainlinks">[$1 $2]</span>.',
@@ -1293,8 +1293,8 @@ Veuillez choisir tout ce qui convient.',
 	'prefswitch-title-off' => 'Désactiver les nouvelles fonctionnalités',
 	'prefswitch-title-switched-off' => 'Merci',
 	'prefswitch-title-feedback' => 'Réaction',
-	'prefswitch-success-on' => "Les nouvelles fonctionnalités sont maintenant activées. Nous espérons que vous apprécierez les nouvelles fonctionnalités. Vous pouvez toujours faire marche arrière en cliquant sur le lien « [[Special:UsabilityInitiativePrefSwitch|Sortez-moi d'ici]] » en haut de la page.",
-	'prefswitch-success-off' => "Les nouvelles fonctionnalités sont maintenant désactivées. Merci d'avoir essayé les nouvelles fonctionnalités. Vous pouvez toujours les remettre sur en cliquant sur le lien « [[Special:UsabilityInitiativePrefSwitch|Nouvelles fonctionnalités]] » en haut de la page.",
+	'prefswitch-success-on' => 'Les nouvelles fonctionnalités sont maintenant activées. Nous espérons que vous apprécierez les nouvelles fonctionnalités. Vous pouvez toujours faire marche arrière en cliquant sur le lien « [[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-on}}]] » en haut de la page.',
+	'prefswitch-success-off' => "Les nouvelles fonctionnalités sont maintenant désactivées. Merci d'avoir essayé les nouvelles fonctionnalités. Vous pouvez toujours les remettre sur en cliquant sur le lien « [[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-off}}]] » en haut de la page.",
 	'prefswitch-success-feedback' => 'Vos commentaires ont été envoyés.',
 	'prefswitch-return' => '<hr style="clear:both">
 Revenir à <span class="plainlinks">[$1 $2]</span>.',
@@ -1477,7 +1477,7 @@ Bitte wehl alli Pinkt, wu zuedräffe uus.',
 	'prefswitch-title-off' => 'Neji Funktione abschalte',
 	'prefswitch-title-switched-off' => 'Dankschen',
 	'prefswitch-title-feedback' => 'Ruckmäldig',
-	'prefswitch-success-on' => 'Di neje Funktione sin jetz yygschalte. Mir winsche Dir vil Freid dermit. Du chasch si jederzyt abschalte dur e Klick uf s Gleich „[[Special:UsabilityInitiativePrefSwitch|Beta verloo]]“ obe uf dr Websyte.',
+	'prefswitch-success-on' => 'Di neje Funktione sin jetz yygschalte. Mir winsche Dir vil Freid dermit. Du chasch si jederzyt abschalte dur e Klick uf s Gleich „[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-on}}]]“ obe uf dr Websyte.',
 	'prefswitch-success-off' => 'Di neje Funktione sin jetz abgschalte. Dankschen fir s Uusbrobiere. Du chasch si jederzyt wider aaschalte dur e Klick uf s Gleich „[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-off}}]]“ obe uf dr Websyte.',
 	'prefswitch-success-feedback' => 'Dyy Ruckmäldig isch gschickt wore.',
 	'prefswitch-return' => '<hr style="clear:both">
@@ -1628,8 +1628,8 @@ Prošu wubjer wšě, kotrež maja so nałožić.',
 	'prefswitch-title-off' => 'Nowe funkcije wupinyć',
 	'prefswitch-title-switched-off' => 'Dźakujemy so',
 	'prefswitch-title-feedback' => 'Rezonanca',
-	'prefswitch-success-on' => 'Nowe funkcije su nětko zapinjene. Nadźijamy so, zo wjeseliš so nad nowymi funkcijemi. Móžeš je kóždy čas přez kliknjenje na wotkaz "[[Special:UsabilityInitiativePrefSwitch|Wróćo]]" horjeka na stronje wupinyć.',
-	'prefswitch-success-off' => 'Nowe funkcije su wupinjene. Dźakujemy so, zo sy nowe funkcije testował. Móžeš je kóždy čas přez kliknjenje na wotkaz "[[Special:UsabilityInitiativePrefSwitch|Nowe funkcije]]" horjeka na stronje zapinyć.',
+	'prefswitch-success-on' => 'Nowe funkcije su nětko zapinjene. Nadźijamy so, zo wjeseliš so nad nowymi funkcijemi. Móžeš je kóždy čas přez kliknjenje na wotkaz "[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-on}}]]" horjeka na stronje wupinyć.',
+	'prefswitch-success-off' => 'Nowe funkcije su wupinjene. Dźakujemy so, zo sy nowe funkcije testował. Móžeš je kóždy čas přez kliknjenje na wotkaz "[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-off}}]]" horjeka na stronje zapinyć.',
 	'prefswitch-success-feedback' => 'Twoje měnjenje je so pósłało.',
 	'prefswitch-return' => '<hr style="clear:both">
 Wróćo do <span class="plainlinks">[$1 $2]</span>.',
@@ -1771,22 +1771,44 @@ Per favor selige tote le motivos applicabile.',
 	'prefswitch-success-feedback' => 'Tu opinion ha essite inviate.',
 	'prefswitch-return' => '<hr style="clear:both">
 Retornar a <span class="plainlinks">[$1 $2]</span>.',
-	'prefswitch-main' => "Nos ha laborate durmente pro render le cosas plus facile pro nostre usatores. Nos es enthusiasta de demonstrar alcun meliorationes, como un nove apparentia e functiones de modification simplificate. Meliorar le usabilitate de nostre projectos es un prioritate del Fundation Wikimedia e nos monstrara altere actualisationes in le futuro. Pro ulterior detalios, visita le articulo relevante del [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/ blog de Wikimedia] (in anglese).
+	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
+| align=\"center\" |
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
+| [[Image:VectorNavigation-en.png|401px|]]
+|-
+| Un captura del nove interfacie de navigation de Wikipedia <small>[[Media:VectorNavigation-en.png|(aggrandir)]]</small>
+|}
+|-
+| align=\"center\" |
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
+| [[Image:VectorEditorBasic-en.png|401px|]]
+|-
+| Un captura del interfacie basic pro modificar paginas <small>[[Media:VectorEditorBasic-en.png|(aggrandir)]]</small>
+|}
+|-
+| align=\"center\" |
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
+| [[Image:VectorLinkDialog-en.png|401px|]]
+|-
+| Un captura del nove fenestra de dialogo pro entrar ligamines
+|}
+|}
+Le Equipa del Experientia de Usator del Fundation Wikimedia ha collaborate con voluntarios del communitate pro render le cosas plus facile pro te. Nos es enthusiasta de demonstrar alcun meliorationes, como un nove apparentia e functiones de modification simplificate. Iste cambios ha le scopo facer que le nove contributores pote comenciar plus facilemente, e es basate in nostre [http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study essayos de usabilitate conducite durante le ultime anno]. Meliorar le usabilitate de nostre projectos es un prioritate del Fundation Wikimedia e nos monstrara altere actualisationes in le futuro. Pro ulterior detalios, visita le [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia articulo relevante] del blog de Wikimedia (in anglese).
 
-[[File:UsabilityNavigation.png|right|link=|Captura de schermo del nove systema de navigation]]
-[[File:UsabilityToolbar.png|right|link=|Captura de schermo del instrumentario de modification meliorate]]
-[[File:UsabilityDialogs.png|right|link=|Captura de schermo del nove dialogos pro generar contento]]
 ===Ecce lo que nos ha cambiate===
 * '''Navigation:''' Nos ha meliorate le systema de navigation pro leger e modificar paginas. Ora, le schedas in alto de cata pagina indica plus clarmente si tu vide le articulo o su pagina de discussion, e si tu lege o modifica le pagina.
 * '''Meliorationes del instrumentario de modification:'''  Nos ha reorganisate le barra de instrumentos de modification pro render lo plus facile de usar. Ora, formatar paginas es plus simple e intuitive.
 * '''Assistente pro ligamines:''' Un instrumento simple permitte adder ligamines a altere paginas de Wikipedia e ligamines a sitos externe.
 * '''Meliorationes de recerca:''' Nos ha meliorate le suggestiones de recerca pro portar te plus rapidemente al pagina que tu cerca.
 * '''Altere nove functiones:''' Nos ha etiam introducite un assistente pro facilitar le creation de tabellas, e un function de cercar e reimplaciar pro simplificar le modification de paginas.
-* '''Le globo a puzzle de Wikipedia''': Nos ha actualisate le globo a puzzle. Lege plus in le [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ blog de Wikimedia] (in anglese).",
+* '''Le logotypo de Wikipedia''': Nos ha actualisate le logotypo. Lege plus in le [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ blog de Wikimedia] (in anglese).
+
+===Commentarios?===
+Nos amarea audir de te. Per favor visita nostre [[\$1|pagina pro dar tu opinion]] o, si tu ha interesse in nostre continue effortios pro meliorar le software, visita nostre [http://usability.wikimedia.org wiki de usabilitate] pro plus information.",
 	'prefswitch-main-anon' => '===Porta me retro===
 Si tu vole disactivar le nove functiones, [$1 clicca hic]. Il te essera demandate de primo aperir un session o crear un conto.',
 	'prefswitch-main-on' => '===Porta me retro!===
-Si tu vole disactivar le nove functiones, per favor [$2 clicca hic].',
+[$2 Clicca hic pro disactivar le nove functiones].',
 	'prefswitch-main-off' => '===Proba los!===
 Si tu vole activar le nove functiones, per favor [$1 clicca hic].',
 	'prefswitch-survey-intro-feedback' => 'Nos amarea cognoscer tu opinion.
@@ -2125,8 +2147,8 @@ Wielt w.e.g.alles aus wat zoutrëfft.',
 	'prefswitch-title-off' => 'Déi nei Fonctiounen ausschalten',
 	'prefswitch-title-switched-off' => 'Merci',
 	'prefswitch-title-feedback' => 'Är Reaktioun',
-	'prefswitch-success-on' => 'Déi nei Fonctioune sinn elo ageschalt. Mir hoffen Iech gefalen déi nei Fonctiounen. Dir kënnt se ëmmer ofschalten wann Dir op den "[[Special:UsabilityInitiativePrefSwitch|Bréng mech zréck]]" Link uewen op der Säit klickt.',
-	'prefswitch-success-off' => 'Nei Fonctioune sinn elo ausgeschalt. Merci datt Dir déi nei Fonctiounen ausprobéiert hutt. Dir kënnt se ëmmer nees aschalten wann Dir op de Link "[[Special:UsabilityInitiativePrefSwitch|Nei Fonctiounen]]" uewen op der Säit klickt.',
+	'prefswitch-success-on' => 'Déi nei Fonctioune sinn elo ageschalt. Mir hoffen Iech gefalen déi nei Fonctiounen. Dir kënnt se ëmmer ofschalten wann Dir op den "[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-on}}]]" Link uewen op der Säit klickt.',
+	'prefswitch-success-off' => 'Nei Fonctioune sinn elo ausgeschalt. Merci datt Dir déi nei Fonctiounen ausprobéiert hutt. Dir kënnt se ëmmer nees aschalten wann Dir op de Link "[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-off}}]]" uewen op der Säit klickt.',
 	'prefswitch-success-feedback' => 'Är Reaktioun gouf geschéckt.',
 	'prefswitch-return' => '<hr style="clear:both">
 Zréck op <span class="plainlinks">[$1 $2]</span>.',
@@ -2195,8 +2217,8 @@ $messages['mk'] = array(
 	'prefswitch-title-off' => 'Исклучи нови функции',
 	'prefswitch-title-switched-off' => 'Ви благодариме',
 	'prefswitch-title-feedback' => 'Примедби',
-	'prefswitch-success-on' => 'Новите функции се вклучени. Се надеваме дека ви беше пријатно да ги користите. Секогаш можете повторно да ги исклучите со кликнување на врската „[[Special:UsabilityInitiativePrefSwitch|Врати ме]]“ на врвот од страницата.',
-	'prefswitch-success-off' => 'Новите функции се исклучени. Ви благодариме што ги испробавте. Секогаш можете повторно да ги вклучите со кликнување на врската „[[Special:UsabilityInitiativePrefSwitch|Нови функции]]“ на врвот од страницата.',
+	'prefswitch-success-on' => 'Новите функции се вклучени. Се надеваме дека ви беше пријатно да ги користите. Секогаш можете повторно да ги исклучите со кликнување на врската „[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-on}}]]“ на врвот од страницата.',
+	'prefswitch-success-off' => 'Новите функции се исклучени. Ви благодариме што ги испробавте. Секогаш можете повторно да ги вклучите со кликнување на врската „[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-off}}]]“ на врвот од страницата.',
 	'prefswitch-success-feedback' => 'Вашите примедби се испратени.',
 	'prefswitch-return' => '<hr style="clear:both">
 Назад кон <span class="plainlinks">[$1 $2]</span>.',
@@ -2281,8 +2303,8 @@ $messages['ml'] = array(
 	'prefswitch-title-off' => 'പുതിയ സവിശേഷതകൾ പ്രവർത്തനരഹിതമാക്കുക',
 	'prefswitch-title-switched-off' => 'നന്ദി',
 	'prefswitch-title-feedback' => 'അഭിപ്രായങ്ങൾ',
-	'prefswitch-success-on' => 'പുതിയ സവിശേഷതകൾ ഇപ്പോൾ പ്രവർത്തനസജ്ജമാണ്. പുതിയ സവിശേഷതകൾ താങ്കളാസ്വദിക്കുന്നുണ്ടെന്ന് ഞങ്ങൾ വിശ്വസിക്കുന്നു. താങ്കൾക്കവ പ്രവർത്തനരഹിതമാക്കണമെന്നുണ്ടെങ്കിൽ താളിൽ മുകളിലായുള്ള "[[Special:UsabilityInitiativePrefSwitch|എനിക്കിതു വേണ്ട]]" എന്ന കണ്ണി ഞെക്കുക.',
-	'prefswitch-success-off' => 'പുതിയ സവിശേഷതകൾ ഇപ്പോൾ പ്രവർത്തനരഹിതമാണ്. പുതിയ സവിശേഷതകൾ പരീക്ഷിച്ചതിനു നന്ദി. താങ്കൾക്ക് അവ വീണ്ടും പ്രവർത്തനസജ്ജമാക്കണമെന്നുണ്ടെങ്കിൽ താളിൽ മുകളിലായുള്ള "[[Special:UsabilityInitiativePrefSwitch|പുതിയ സവിശേഷതകൾ]] എന്ന കണ്ണി ഞെക്കുക.',
+	'prefswitch-success-on' => 'പുതിയ സവിശേഷതകൾ ഇപ്പോൾ പ്രവർത്തനസജ്ജമാണ്. പുതിയ സവിശേഷതകൾ താങ്കളാസ്വദിക്കുന്നുണ്ടെന്ന് ഞങ്ങൾ വിശ്വസിക്കുന്നു. താങ്കൾക്കവ പ്രവർത്തനരഹിതമാക്കണമെന്നുണ്ടെങ്കിൽ താളിൽ മുകളിലായുള്ള "[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-on}}]]" എന്ന കണ്ണി ഞെക്കുക.',
+	'prefswitch-success-off' => 'പുതിയ സവിശേഷതകൾ ഇപ്പോൾ പ്രവർത്തനരഹിതമാണ്. പുതിയ സവിശേഷതകൾ പരീക്ഷിച്ചതിനു നന്ദി. താങ്കൾക്ക് അവ വീണ്ടും പ്രവർത്തനസജ്ജമാക്കണമെന്നുണ്ടെങ്കിൽ താളിൽ മുകളിലായുള്ള "[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-off}}]] എന്ന കണ്ണി ഞെക്കുക.',
 	'prefswitch-success-feedback' => 'താങ്കളുടെ അഭിപ്രായങ്ങൾ അയച്ചു.',
 	'prefswitch-return' => '<hr style="clear:both">
 <span class="plainlinks">[$1 $2]</span> എന്ന താളിലേയ്ക്ക് മടങ്ങുക.',
@@ -2366,8 +2388,8 @@ $messages['mt'] = array(
 	'prefswitch-title-off' => 'Itfi l-funzjonijiet l-ġodda',
 	'prefswitch-title-switched-off' => 'Grazzi',
 	'prefswitch-title-feedback' => 'Rispons',
-	'prefswitch-success-on' => "Il-funzjonijiet il-ġodda ġew attivati. Nisperaw li tieħu gost tuża' dawn il-funzjonijiet il-ġodda. Tista' dejjem titfihom lura billi tagħfas fuq \"[[Special:UsabilityInitiativePrefSwitch|Ħudni lura]]\" fin-naħa ta' fuq tal-paġna.",
-	'prefswitch-success-off' => 'Il-funzjonijiet il-ġodda ġew mitfija. Grazzi talli ppruvajt dawn il-funzjonijiet il-ġodda. Tista\' dejjem tattivahom lura billi tagħfas fuq "[[Special:UsabilityInitiativePrefSwitch|Funzjonijiet ġodda]]" fin-naħa ta\' fuq tal-paġna.',
+	'prefswitch-success-on' => "Il-funzjonijiet il-ġodda ġew attivati. Nisperaw li tieħu gost tuża' dawn il-funzjonijiet il-ġodda. Tista' dejjem titfihom lura billi tagħfas fuq \"[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-on}}]]\" fin-naħa ta' fuq tal-paġna.",
+	'prefswitch-success-off' => 'Il-funzjonijiet il-ġodda ġew mitfija. Grazzi talli ppruvajt dawn il-funzjonijiet il-ġodda. Tista\' dejjem tattivahom lura billi tagħfas fuq "[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-off}}]]" fin-naħa ta\' fuq tal-paġna.',
 	'prefswitch-success-feedback' => 'Ir-rispons tiegħek intbagħat.',
 	'prefswitch-return' => '<hr style="clear:both">
 Irritorna lura lejn <span class="plainlinks">[$1 $2]</span>.',
@@ -2429,7 +2451,7 @@ Vink alstublieft alle mogelijkheden die van toepassing zijn aan.',
 	'prefswitch-title-switched-off' => 'Bedankt',
 	'prefswitch-title-feedback' => 'Terugkoppeling',
 	'prefswitch-success-on' => 'De nieuwe mogelijkheden zijn nu ingeschakeld. We hopen dat u er veel plezier aan beleeft. U kunt ze altijd weer uitschakelen door te klikken op de verwijzing "[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-on}}]]" bovenaan de pagina.',
-	'prefswitch-success-off' => 'De nieuwe mogelijkheden zijn nu uitgeschakeld. Dank u wel voor het proberen. U kunt ze altijd weer inschakelen door te klikken op de verwijzing De nieuwe mogelijkheden zijn nu uitgeschakeld. We hopen dat u er veel plezier aan beleeft. U kunt ze altijd weer uitschakelen door te klikken op de verwijzing "[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-on}}]]" bovenaan de pagina.',
+	'prefswitch-success-off' => 'De nieuwe mogelijkheden zijn nu uitgeschakeld. Dank u wel voor het proberen. U kunt ze altijd weer inschakelen door te klikken op de verwijzing De nieuwe mogelijkheden zijn nu uitgeschakeld. We hopen dat u er veel plezier aan beleeft. U kunt ze altijd weer uitschakelen door te klikken op de verwijzing "[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-off}}]]" bovenaan de pagina.',
 	'prefswitch-success-feedback' => 'Uw terugkoppeling is verzonden.',
 	'prefswitch-return' => '<hr style="clear:both">
 Terug naar <span class="plainlinks">[$1 $2]</span>.',
@@ -2527,8 +2549,8 @@ Velg alle som passer.',
 	'prefswitch-title-off' => 'Slå av nye funksjoner',
 	'prefswitch-title-switched-off' => 'Takk',
 	'prefswitch-title-feedback' => 'Tilbakemelding',
-	'prefswitch-success-on' => 'Nye funksjoner er nå slått på. Vi håper du liker å bruke de nye funksjonene. Du kan alltids slå dem av igjen ved å klikke på lenken «[[Special:UsabilityInitiativePrefSwitch|Ta meg tilbake]]» på toppen av siden.',
-	'prefswitch-success-off' => 'Nye funksjoner er nå slått av. Takk for at du prøvde de nye funksjonene. Du kan alltids slå dem på igjen ved å klikke på lenken «[[Special:UsabilityInitiativePrefSwitch|Nye funksjoner]]» på toppen av siden.',
+	'prefswitch-success-on' => 'Nye funksjoner er nå slått på. Vi håper du liker å bruke de nye funksjonene. Du kan alltids slå dem av igjen ved å klikke på lenken «[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-on}}]]» på toppen av siden.',
+	'prefswitch-success-off' => 'Nye funksjoner er nå slått av. Takk for at du prøvde de nye funksjonene. Du kan alltids slå dem på igjen ved å klikke på lenken «[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-off}}]]» på toppen av siden.',
 	'prefswitch-success-feedback' => 'Tilbakemeldingen din er sendt.',
 	'prefswitch-return' => '<hr style="clear:both">
 Tilbake til <span class="plainlinks">[$1 $2]</span>.',
@@ -2905,8 +2927,8 @@ $messages['ru'] = array(
 	'prefswitch-title-off' => 'Выключить новые возможности',
 	'prefswitch-title-switched-off' => 'Спасибо',
 	'prefswitch-title-feedback' => 'Обратная связь',
-	'prefswitch-success-on' => 'Новые возможности включены. Надеемся, вам понравится использовать новые функции. Вы всегда можете отключить их, нажав на ссылку «[[Special:UsabilityInitiativePrefSwitch|Вернуть как было]]» в верхней части страницы.',
-	'prefswitch-success-off' => 'Новые возможности отключены. Спасибо за проверку новых функций. Вы всегда можете включить их обратно, нажав на ссылку «[[Special:UsabilityInitiativePrefSwitch|Новые возможности]]» в верхней части страницы.',
+	'prefswitch-success-on' => 'Новые возможности включены. Надеемся, вам понравится использовать новые функции. Вы всегда можете отключить их, нажав на ссылку «[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-on}}]]» в верхней части страницы.',
+	'prefswitch-success-off' => 'Новые возможности отключены. Спасибо за проверку новых функций. Вы всегда можете включить их обратно, нажав на ссылку «[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-off}}]]» в верхней части страницы.',
 	'prefswitch-success-feedback' => 'Ваш отзыв отправлен.',
 	'prefswitch-return' => '<hr style="clear:both">
 Вернуться к <span class="plainlinks">[$1 $2]</span>.',
@@ -2992,6 +3014,7 @@ $messages['sk'] = array(
  */
 $messages['sl'] = array(
 	'prefswitch' => 'Stikalo nastavitev pobude za uporabnost',
+	'prefswitch-desc' => 'Dovoli uporabnikom preklapljanje med nabori nastavitev',
 	'prefswitch-survey-true' => 'Da',
 	'prefswitch-survey-false' => 'Ne',
 	'prefswitch-survey-submit-off' => 'Izklopi nove funkcije',
@@ -3024,14 +3047,17 @@ Prosimo, izberite vse kar ustreza.',
 	'prefswitch-success-feedback' => 'Vaše povratne informacije so bile poslane.',
 	'prefswitch-return' => '<hr style="clear:both">
 Vrnitev na <span class="plainlinks">[$1 $2]</span>.',
+	'prefswitch-main-anon' => '===Vodi me nazaj===
+[$1 Za izklop novih funkcij kliknite tukaj]. Najprej se boste morali prijaviti ali ustvariti račun.',
 	'prefswitch-main-on' => '===Vodi me nazaj!===
-Če želite izklopiti nove funkcije, prosimo [$2 kliknite tukaj].',
+[$2 Za izklop novih funkcij kliknite tukaj].',
 	'prefswitch-main-off' => '===Preizkusite jih!===
 Če želite vklopiti nove funkcije, prosimo [$1 kliknite tukaj].',
 	'prefswitch-survey-intro-feedback' => 'Radi bi slišali vaše mnenje.
 Prosimo, izpolnite neobvezno anketo spodaj, preden kliknete »[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]«.',
 	'prefswitch-survey-intro-off' => 'Zahvaljujemo se vam za preizkušanje naših novih funkcij.
 Da nam jih pomagate izboljšati, prosimo izpolnite neobvezno anketo spodaj, preden kliknete »[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]«.',
+	'prefswitch-feedbackpage' => 'Project:Povratne informacije o uporabniški izkušnji',
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
@@ -3103,8 +3129,8 @@ Välj alla som stämmer.',
 	'prefswitch-title-off' => 'Stäng av de nya funktionerna',
 	'prefswitch-title-switched-off' => 'Tack',
 	'prefswitch-title-feedback' => 'Feedback',
-	'prefswitch-success-on' => 'Nya funktioner är nu på. Vi hoppas att du gillar att använda de nya funktionerna. Du kan alltid stänga av dem genom att klicka på "[[Special:UsabilityInitiativePrefSwitch|ta mig tillbaka]]" längst upp på sidan.',
-	'prefswitch-success-off' => 'De nya funktionerna är nu avstängda. Tack för att du provade dessa. Du kan alltid sätta på dem igen genom att klicka på "[[Special:UsabilityInitiativePrefSwitch|nya funktioner]]" längst upp på sidan.',
+	'prefswitch-success-on' => 'Nya funktioner är nu på. Vi hoppas att du gillar att använda de nya funktionerna. Du kan alltid stänga av dem genom att klicka på "[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-on}}]]" längst upp på sidan.',
+	'prefswitch-success-off' => 'De nya funktionerna är nu avstängda. Tack för att du provade dessa. Du kan alltid sätta på dem igen genom att klicka på "[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-off}}]]" längst upp på sidan.',
 	'prefswitch-success-feedback' => 'Dina kommentarer har skickats.',
 	'prefswitch-return' => '<hr style="clear:both"> Återgå till <span class="plainlinks">[$1 $2].</span>',
 	'prefswitch-main' => "Vi har arbetat hårt för att göra det lättare för våra användare. Vi är glada över att kunna dela vissa förbättringar, inklusive ett nytt utseende och enklare redigeringsfunktioner. Att förbättra användbarheten för våra projekt är en prioritet för Wikimedia Foundation och vi kommer att göra fler uppdateringar i framtiden. För mer information, besök den relaterade [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/ Wikimedia blogg]-inlägget.
@@ -3173,7 +3199,7 @@ $messages['te'] = array(
 	'prefswitch-title-switched-off' => 'ధన్యవాదాలు',
 	'prefswitch-title-feedback' => 'ప్రతిస్పందన',
 	'prefswitch-success-on' => 'కొత్త సౌలభ్యాలని ఇప్పుడు చేతనం చేసాం. కొత్త సొలభ్యాలని మీరు ఆనందిస్తారని ఆశిస్తున్నాం. పుట పైన ఉండే "[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-on}}]]" అనే లంకె ద్వారా మీరు వాటిని ఎప్పుడైనా నిలిపివేసుకోవచ్చు.',
-	'prefswitch-success-off' => 'కొత్త సౌలభ్యాలని ఇప్పుడు నిలిపివేశాం. కొత్త సొలభ్యాలని ప్రయత్నించినందుకు ధన్యవాదాలు. పుట పైన ఉండే "[[Special:UsabilityInitiativePrefSwitch|కొత్త సౌలభ్యాలు]]" అనే లంకె ద్వారా మీరు వాటిని ఎప్పుడైనా తిరిగి పొందవచ్చు.',
+	'prefswitch-success-off' => 'కొత్త సౌలభ్యాలని ఇప్పుడు నిలిపివేశాం. కొత్త సొలభ్యాలని ప్రయత్నించినందుకు ధన్యవాదాలు. పుట పైన ఉండే "[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-off}}]]" అనే లంకె ద్వారా మీరు వాటిని ఎప్పుడైనా తిరిగి పొందవచ్చు.',
 	'prefswitch-success-feedback' => 'మీ ప్రతిస్పందనని పంపించాం.',
 	'prefswitch-return' => '<hr style="clear:both">
 తిరిగి <span class="plainlinks">[$1 $2]</span>కి.',

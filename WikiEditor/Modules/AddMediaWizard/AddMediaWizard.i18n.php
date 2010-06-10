@@ -269,6 +269,13 @@ $messages['ru'] = array(
 	'wikieditor-addMediaWizard-preference' => 'Включить гаджет «Мастер добавления медиа»',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'wikieditor-addMediaWizard-preference' => 'Omogoči pripomoček »Dodaj predstavnostni čarovnik«',
+);
+
 /** Swedish (Svenska)
  * @author Ainali
  */
