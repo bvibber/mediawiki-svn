@@ -685,14 +685,14 @@ Zurück zu <span class="plainlinks">[$1 $2]</span>.',
 {| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
 | [[Image:VectorNavigation-de.png|401px|]]
 |-
-| Ein Screenshot von Wikipedias neuer Navigationsoberfläche <small>[[Media:VectorNavigation-en.png|(vergrößern)]]</small>
+| Ein Screenshot von Wikipedias neuer Navigationsoberfläche <small>[[Media:VectorNavigation-de.png|(vergrößern)]]</small>
 |}
 |-
 | align=\"center\" |
 {| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
 | [[Image:VectorEditorBasic-de.png|401px|]]
 |-
-| Ein Screenshot der einfachen Bearbeitungsoberfläche <small>[[Media:VectorEditorBasic-en.png|(vergrößern)]]</small>
+| Ein Screenshot der einfachen Bearbeitungsoberfläche <small>[[Media:VectorEditorBasic-de.png|(vergrößern)]]</small>
 |}
 |-
 | align=\"center\" |
@@ -1242,16 +1242,16 @@ Revenir à <span class="plainlinks">[$1 $2]</span>.',
 	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
 | align=\"center\" |
 {| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
-| [[Image:VectorNavigation-en.png|401px|]]
+| [[Image:VectorNavigation-fr.png|401px|]]
 |-
-| Capture d’écran de la nouvelle interface de navigation de Wikipédia <small>[[Media:VectorNavigation-en.png|(agrandir)]]</small>
+| Capture d’écran de la nouvelle interface de navigation de Wikipédia <small>[[Media:VectorNavigation-fr.png|(agrandir)]]</small>
 |}
 |-
 | align=\"center\" |
 {| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
-| [[Image:VectorEditorBasic-en.png|401px|]]
+| [[Image:VectorEditorBasic-fr.png|401px|]]
 |-
-| Capture d’écran de l’interface simple de modification de page <small>[[Media:VectorEditorBasic-en.png|(agrandir)]]</small>
+| Capture d’écran de l’interface simple de modification de page <small>[[Media:VectorEditorBasic-fr.png|(agrandir)]]</small>
 |}
 |-
 | align=\"center\" |
@@ -1875,9 +1875,9 @@ $messages['ja'] = array(
 <span class="plainlinks">[$1 $2]</span>に戻る。',
 	'prefswitch-main' => "私たちは、より使いやすいサイトを利用者の皆さまにお届けするために努力してまいりました。そして新しい外観や使い勝手、わかりやすくなった編集機能などの改善を皆さまと共有できることを大変うれしく思っています。私たちのプロジェクトの使いやすさを改善することは、ウィキメディア財団の優先課題の一つであり、今後も更なるアップデートを実施していく予定です。詳細は、[http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/ Wikimediaブログ]の関連投稿（英語）をご覧ください。
 
-[[File:UsabilityNavigation.png|right|link=|新しいナビゲーションのスクリーンショット]]
-[[File:UsabilityToolbar.png|right|link=|拡張編集ツールバーのスクリーンショット]]
-[[File:UsabilityDialogs.png|right|link=|新しいコンテンツ生成ダイアログのスクリーンショット]]
+[[File:VectorNavigation-ja.png|right|link=|新しいナビゲーションのスクリーンショット]]
+[[File:VectorEditorBasic-ja.png|right|link=|拡張編集ツールバーのスクリーンショット]]
+[[File:VectorLinkDialog-ja.png|right|link=|新しいコンテンツ生成ダイアログのスクリーンショット]]
 ===今回の変更点は以下の通りです===
 * '''ナビゲーション:''' ページの閲覧・編集時のナビゲーションを改善しました。各ページの上部のタブは、閲覧中の画面がページ本体なのかそのトークページ（ノートページ）なのか、あるいは現在閲覧中なのか編集中なのかをよりはっきりと示すようになりました。
 * '''編集ツールバーの改善:''' 編集ツールバーを再編して、より使いやすくしました。ページの整形がより簡単に、かつ直感的に行なえるようになっています。
@@ -2387,7 +2387,7 @@ Nu is het bewerken van pagina's eenvoudiger en intuïtiever.
 
 === Terugkoppeling? ===
 Wij horen graag van u.
-Bezoek onze <span class=\"plainlinks\">[[\$1|pagina voor terugkoppeling]], of ga naar de [http://usability.wikimedia.org bruikbaarheidswiki] voor meer informatie als u geïnteresseerd bent in onze toekomstige plannen.</span>",
+Bezoek onze [[\$1|pagina voor terugkoppeling]], of ga naar de [http://usability.wikimedia.org bruikbaarheidswiki] voor meer informatie als u geïnteresseerd bent in onze toekomstige plannen.",
 	'prefswitch-main-anon' => '===Terug===
 [$1 U kunt de nieuwe functionaliteit uitschakelen]. U wordt dan gevraagd om aan te melden of te registreren.',
 	'prefswitch-main-on' => '=== Nee, bedankt! ===
@@ -2519,9 +2519,9 @@ Należy wybrać wszystkie pasujące odpowiedzi.',
 Powrót do <span class="plainlinks">[$1 $2]</span>.',
 	'prefswitch-main' => "Ciężko pracowaliśmy, aby ułatwić życie naszym użytkownikom. Cieszymy się, że możemy zaprezentować część udoskonaleń, wliczając w to nowy wygląd i nowe, uproszczone funkcjonalności edycyjne. Zwiększanie użyteczności naszych projektów jest priorytetem dla Fundacji Wikimedia – z pewności w przyszłości pojawi się więcej nowych funkcjonalności. Więcej (w języku angielskim) można przeczytać na [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/ blogu Wikimedia].
 
-[[File:UsabilityNavigation.png|right|link=|Nowy układ strony]]
-[[File:UsabilityToolbar.png|right|link=|Nowy pasek narzędziowy]]
-[[File:UsabilityDialogs.png|right|link=|Nowe okienka edycyjne]]
+[[File:VectorNavigation-en.png|right|link=|Nowy układ strony]]
+[[File:VectorEditorBasic-en.png|right|link=|Nowy pasek narzędziowy]]
+[[File:VectorLinkDialog-en.png|right|link=|Nowe okienka edycyjne]]
 
 ===Oto co zmieniliśmy===
 * '''Układ strony''' – Poprawiliśmy układ strony zarówno przy edycji jak i przeglądaniu. Zakładki na górze strony w bardziej czytelny sposób informują o tym czy oglądasz właściwą stronę czy stronę dyskusji oraz czy tylko przeglądasz czy edytujesz daną stronę.
