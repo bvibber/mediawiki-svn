@@ -22,7 +22,9 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  * WebDataTransclusionSource accepts some additional options
  *
  *	 * $spec['url']: base URL for building urls for retrieving individual records.
- *		The key/value pair is appended to the URL as a regular URL
+ *		If the URL contains the placeholder {field} and/or {value}, these
+ *		get replaced by the field name resp. the field value.
+ *		Otherwise, the key/value pair is appended to the URL as a regular URL
  *		parameter (preceeded by ? or &, as appropriate). For more
  *		complex rules for building the url, override getRecordURL(). REQUIRED.
  *	 * $spec['dataFormat']: Serialization format returned from the web service.
@@ -74,7 +76,7 @@ class WebDataTransclusionSource extends DataTransclusionSource {
 	}
 
 	public function fetchRecord( $field, $value ) {
-		$raw = $this->loadRecordData( $field, $value ); // TESTME 
+		$raw = $this->loadRecordData( $field, $value ); 
 		if ( !$raw ) {
 			wfDebugLog( 'DataTransclusion', "failed to fetch data for $field=$value\n" );
 			return false; 
@@ -105,15 +107,20 @@ class WebDataTransclusionSource extends DataTransclusionSource {
 	public function getRecordURL( $field, $value ) {
 		$u = $this->url;
 
-		if ( strpos( $u, '?' ) === false ) {
-			$u .= '?';
+		if ( strpos( $u, '{field}' ) !== false || strpos( $u, '{value}' ) !== false ) {
+			$u = str_replace( '{field}', urlencode( $field ), $u );
+			$u = str_replace( '{value}', urlencode( $value ), $u );
 		} else {
-			$u .= '&';
-		}
+			if ( strpos( $u, '?' ) === false ) {
+				$u .= '?';
+			} else {
+				$u .= '&';
+			}
 
-		$u .= $field;
-		$u .= '=';
-		$u .= urlencode( $value );
+			$u .= urlencode( $field );
+			$u .= '=';
+			$u .= urlencode( $value );
+		}
 
 		return $u;
 	}
@@ -124,7 +131,7 @@ class WebDataTransclusionSource extends DataTransclusionSource {
 		if ( preg_match( '!^https?://!', $u ) ) {
 			$raw = Http::get( $u, $this->timeout, $this->httpOptions );
 		} else {
-			$raw = file_get_contents( $u ); // TESTME
+			$raw = file_get_contents( $u ); 
 		}
 
 		if ( $raw ) {
@@ -137,15 +144,15 @@ class WebDataTransclusionSource extends DataTransclusionSource {
 	}
 
 	public function decodeData( $raw, $format = 'php' ) {
-		if ( $format == 'json' ) {
-			return FormatJson::decode( $raw, true ); // TESTME
+		if ( $format == 'json' || $format == 'js' ) {
+			return FormatJson::decode( $raw, true ); 
 		}
 
 		if ( $format == 'wddx' ) {
-			return wddx_unserialize( $raw ); // TESTME
+			return wddx_unserialize( $raw ); 
 		}
 
-		if ( $format == 'php' ) {
+		if ( $format == 'php' || $format == 'pser' ) {
 			return unserialize( $raw ); 
 		}
 

@@ -340,6 +340,32 @@ class DataTransclusionTest extends PHPUnit_Framework_TestCase {
 
 		$this->assertEquals( $err, 'test error' );
 		$this->assertEquals( $rec['id'], 3 );
+
+		////////////////////////
+		$spec['url'] = 'file://' . dirname( realpath( __FILE__ ) ) . '/test-data-{field}-{value}.pser';
+		$spec['dataFormat'] = 'php';
+		$source = new WebDataTransclusionSource( $spec );
+
+		$rec = $source->fetchRecord( 'name', 'foo' );
+		$this->assertEquals( $rec['id'], 3 );
+
+		////////////////////////
+		$spec['url'] = 'file://' . dirname( realpath( __FILE__ ) ) . '/test-data-{field}-{value}.json';
+		$spec['dataFormat'] = 'json';
+		$source = new WebDataTransclusionSource( $spec );
+
+		$rec = $source->fetchRecord( 'name', 'foo' );
+		$this->assertEquals( $rec['id'], 3 );
+
+		////////////////////////
+		if ( function_exists( 'wddx_unserialize' ) ) {
+			$spec['url'] = 'file://' . dirname( realpath( __FILE__ ) ) . '/test-data-{field}-{value}.wddx';
+			$spec['dataFormat'] = 'wddx';
+			$source = new WebDataTransclusionSource( $spec );
+
+			$rec = $source->fetchRecord( 'name', 'foo' );
+			$this->assertEquals( $rec['id'], 3 );
+		}
 	}
 }
 
