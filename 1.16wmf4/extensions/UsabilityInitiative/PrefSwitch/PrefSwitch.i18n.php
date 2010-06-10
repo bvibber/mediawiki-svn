@@ -1006,7 +1006,7 @@ Por favor seleccione todas las opciones que correspondan.',
 	'prefswitch-success-feedback' => 'Sus comentarios han sido enviados.',
 	'prefswitch-return' => '<hr style="clear:both">
 Volver a <span class="plainlinks">[$1 $2]</span>.',
-	'prefswitch-main' => " {| border=\"0\" align=\"right\" style=\"margin-left:1em\"
+	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
 | align=\"center\" |
 {| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
 | [[Image:VectorNavigation-es.png|401px|]]
@@ -1730,9 +1730,9 @@ Si prega di selezionare tutte le motivazioni pertinenti.',
 Torna a <span class="plainlinks">[$1 $2]</span>.',
 	'prefswitch-main' => "Abbiamo lavorato duramente per rendere le cose più semplici ai nostri utenti. Siamo entusiasti di condividere alcuni miglioramenti, tra cui un nuovo aspetto grafico e delle funzioni di modifica semplificate.  Migliorare l'usabilità dei progetti wiki è una priorità della fondazione Wikimedia, e condivideremo altri aggiornamenti in futuro. Per maggiori dettagli, visita il relativo post del [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/ blog Wikimedia]. 
 
-[[File:VectorNavigation-it.png|right|link=|Screenshot del nuovo sistema di navigazione]]
-[[File:VectorEditorBasic-it.png|right|link=|Screenshot della nuova barra degli strumenti]]
-[[File:VectorLinkDialog-it.png|right|link=|Screenshot delle nuove finestre di dialogo per la generazione del contenuto]]
+[[File:VectorNavigation-it.png|right|thumb|401px|Screenshot del nuovo sistema di navigazione]]
+[[File:VectorEditorBasic-it.png|right|thumb|401px|Screenshot della nuova barra degli strumenti]]
+[[File:VectorLinkDialog-it.png|right|thumb|401px|Screenshot delle nuove finestre di dialogo per la generazione del contenuto]]
 ===Ecco cosa abbiamo cambiato===
 * '''Navigazione''': Abbiamo migliorato il sistema di navigazione per leggere e modificare voci. Adesso, le schede nella parte superiore di ogni voce indicano più chiaramente se stai visualizzando la voce o la pagina di discussione, e se stai leggendo o modificando una voce.
 * '''Miglioramenti alla barra degli strumenti''':  Abbiamo riorganizzato la barra degli strumenti di modifica per renderla più semplice da usare.  Adesso, formattare le voci è più semplice e intuitivo.
@@ -1798,9 +1798,9 @@ $messages['ja'] = array(
 <span class="plainlinks">[$1 $2]</span>に戻る。',
 	'prefswitch-main' => "私たちは、より使いやすいサイトを利用者の皆さまにお届けするために努力してまいりました。そして新しい外観や使い勝手、わかりやすくなった編集機能などの改善を皆さまと共有できることを大変うれしく思っています。私たちのプロジェクトの使いやすさを改善することは、ウィキメディア財団の優先課題の一つであり、今後も更なるアップデートを実施していく予定です。詳細は、[http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/ Wikimediaブログ]の関連投稿（英語）をご覧ください。
 
-[[File:VectorNavigation-ja.png|right|link=|新しいナビゲーションのスクリーンショット]]
-[[File:VectorEditorBasic-ja.png|right|link=|拡張編集ツールバーのスクリーンショット]]
-[[File:VectorLinkDialog-ja.png|right|link=|新しいコンテンツ生成ダイアログのスクリーンショット]]
+[[File:VectorNavigation-ja.png|thumb|401px|right|新しいナビゲーションのスクリーンショット]]
+[[File:VectorEditorBasic-ja.png|thumb|401px|right|拡張編集ツールバーのスクリーンショット]]
+[[File:VectorLinkDialog-ja.png|thumb|401px|right|新しいコンテンツ生成ダイアログのスクリーンショット]]
 ===今回の変更点は以下の通りです===
 * '''ナビゲーション:''' ページの閲覧・編集時のナビゲーションを改善しました。各ページの上部のタブは、閲覧中の画面がページ本体なのかそのトークページ（ノートページ）なのか、あるいは現在閲覧中なのか編集中なのかをよりはっきりと示すようになりました。
 * '''編集ツールバーの改善:''' 編集ツールバーを再編して、より使いやすくしました。ページの整形がより簡単に、かつ直感的に行なえるようになっています。
@@ -2448,9 +2448,9 @@ Należy wybrać wszystkie pasujące odpowiedzi.',
 Powrót do <span class="plainlinks">[$1 $2]</span>.',
 	'prefswitch-main' => "Ciężko pracowaliśmy, aby ułatwić życie naszym użytkownikom. Cieszymy się, że możemy zaprezentować część udoskonaleń, wliczając w to nowy wygląd i nowe, uproszczone funkcjonalności edycyjne. Zwiększanie użyteczności naszych projektów jest priorytetem dla Fundacji Wikimedia – z pewności w przyszłości pojawi się więcej nowych funkcjonalności. Więcej (w języku angielskim) można przeczytać na [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/ blogu Wikimedia].
 
-[[File:VectorNavigation-pl.png|right|link=|Nowy układ strony]]
-[[File:VectorEditorBasic-pl.png|right|link=|Nowy pasek narzędziowy]]
-[[File:VectorLinkDialog-pl.png|right|link=|Nowe okienka edycyjne]]
+[[File:VectorNavigation-pl.png|thumb|401px|right|Nowy układ strony]]
+[[File:VectorEditorBasic-pl.png|thumb|401px|right|Nowy pasek narzędziowy]]
+[[File:VectorLinkDialog-pl.png|thumb|401px|right|Nowe okienka edycyjne]]
 
 ===Oto co zmieniliśmy===
 * '''Układ strony''' – Poprawiliśmy układ strony zarówno przy edycji jak i przeglądaniu. Zakładki na górze strony w bardziej czytelny sposób informują o tym czy oglądasz właściwą stronę czy stronę dyskusji oraz czy tylko przeglądasz czy edytujesz daną stronę.
