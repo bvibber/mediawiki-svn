@@ -5,16 +5,18 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 }
 
 $wgExtensionCredits['other'][] = array(
+	'path' => __FILE__,
 	'name' => 'CategoryMultisort',
 	'author' => 'Liangent',
 	'descriptionmsg' => 'categorymultisort-desc',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:CategoryMultisort',
 );
 
-$wgAutoloadClasses['CategoryMultisortHooks'] = dirname( __FILE__ ) . '/CategoryMultisort.hooks.php';
-$wgAutoloadClasses['CategoryMultisortViewer'] = dirname( __FILE__ ) . '/CategoryMultisort.class.php';
+$dir = dirname(__FILE__) . '/';
+$wgAutoloadClasses['CategoryMultisortHooks'] = $dir . 'CategoryMultisort.hooks.php';
+$wgAutoloadClasses['CategoryMultisortViewer'] = $dir . 'CategoryMultisort.class.php';
 
-$wgExtensionMessagesFiles['CategoryMultisort'] = dirname( __FILE__ ) . '/CategoryMultisort.i18n.php';
+$wgExtensionMessagesFiles['CategoryMultisort'] = $dir . 'CategoryMultisort.i18n.php';
 
 $wgCategoryMultisortHooks = new CategoryMultisortHooks();
 
