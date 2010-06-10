@@ -25,18 +25,16 @@ error_reporting( E_ALL );
 
 class DataTransclusionTest extends PHPUnit_Framework_TestCase {
 
-	function setUp()
-	{
+	function setUp() {
 		global $wgTitle;
 
 		$wgTitle = Title::newFromText( "Test" );
 	}
 	
-	function runTest()
-	{
-		$this->testNormalizeRecord();
+	function runTest() {
 		$this->testErrorMessage();
 		$this->testSanitizeValue();
+		$this->testNormalizeRecord();
 		$this->testBuildAssociativeArguments();
 		$this->testGetDataSource();
 		$this->testCachedFetchRecord();

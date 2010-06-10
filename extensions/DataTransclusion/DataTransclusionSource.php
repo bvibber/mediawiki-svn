@@ -15,73 +15,86 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 }
 
 /**
-* Baseclass representing a source of data transclusion. All logic for addressing, fetching, decoding and filtering
-* data is encapsulated by a subclass of DataTransclusionSource. Instances of DataTransclusionSource are instantiated
-* by DataTransclusionHandler, and initialized by passing an associative array of options to the constructor. This array
-* is taken from the $wgDataTransclusionSources configuration variable.
-*
-* Below is a list of options for the $spec array, as handled by the DataTransclusionSource
-* base class (sublcasses may handle additional options):
-*
-*	* $spec['name']: the source's name, used to specify it in wiki text. 
-*		Set automatically by DataTransclusionHandler. REQUIRED.
-*	* $spec['keyFields']: list of fields that can be used as the key
-*		for fetching a record. REQUIRED.
-*	* $spec['fieldNames']: names of all fields present in each record.
-*		Fields not listed here will not be available on the wiki,
-*		even if they are returned by the data source. REQUIRED.
-*	* $spec['defaultKey']: default key to select records. If not specified,
-*		the first entry in $spec['keyFields'] is used.
-*	* $spec['cacheDuration']: the number of seconds a result from this source
-*		may be cached for. If not set, results are assumed to be cacheable
-*		indefinitely. This setting determines the expiry time of the parser
-*		cache entry for pages that show data from this source. If $spec['cache'],
-*		i.e. if this DataTransclusionSource is wrapped by an instance of 
-*		CachingDataTransclusionSource, $spec['cacheDuration'] also determines
-*		the expiry time of ObjectCache entries for records from this source.
-*	* $spec['sourceInfo']: associative array of information about the data source 
-*		that should be made available on the wiki. This information will be 
-*		present in the record arrays, with they keys prefixed by "source.". 
-*		This is intended to allow information about source, license, etc to be
-*		shown on the wiki. Note that DataTransclusionSource implementations may
-*		provide extra information in the source info on their own: This base
-*		class forces $spec['sourceInfo']['name'] = $spec['name'] and  
-*		$spec['sourceInfo']['defaultKey'] = $spec['defaultKey'].
-*
-* Options used by DataTransclusionHandler but ignored by DataTransclusionSource:
-*	* $spec['class']: see documentation if $wgDataTransclusionSources in DataTransclusion.
-*	* $spec['cache']: see documentation if $wgDataTransclusionSources in DataTransclusion.
-*
-* Lists may be given as arrays or strings with items separated by [,;|].
-*/
+ * Baseclass representing a source of data transclusion. All logic for addressing, fetching, decoding and filtering
+ * data is encapsulated by a subclass of DataTransclusionSource. Instances of DataTransclusionSource are instantiated
+ * by DataTransclusionHandler, and initialized by passing an associative array of options to the constructor. This array
+ * is taken from the $wgDataTransclusionSources configuration variable.
+ *
+ * Below is a list of options for the $spec array, as handled by the DataTransclusionSource
+ * base class (sublcasses may handle additional options):
+ *
+ *	 * $spec['name']: the source's name, used to specify it in wiki text.
+ *		Set automatically by DataTransclusionHandler. REQUIRED.
+ *	 * $spec['keyFields']: list of fields that can be used as the key
+ *		for fetching a record. REQUIRED.
+ *	 * $spec['fieldNames']: names of all fields present in each record.
+ *		Fields not listed here will not be available on the wiki,
+ *		even if they are returned by the data source. REQUIRED.
+ *	 * $spec['defaultKey']: default key to select records. If not specified,
+ *		the first entry in $spec['keyFields'] is used.
+ *	 * $spec['cacheDuration']: the number of seconds a result from this source
+ *		may be cached for. If not set, results are assumed to be cacheable
+ *		indefinitely. This setting determines the expiry time of the parser
+ *		cache entry for pages that show data from this source. If $spec['cache'],
+ *		i.e. if this DataTransclusionSource is wrapped by an instance of
+ *		CachingDataTransclusionSource, $spec['cacheDuration'] also determines
+ *		the expiry time of ObjectCache entries for records from this source.
+ *	 * $spec['sourceInfo']: associative array of information about the data source
+ *		that should be made available on the wiki. This information will be
+ *		present in the record arrays, with they keys prefixed by "source.".
+ *		This is intended to allow information about source, license, etc to be
+ *		shown on the wiki. Note that DataTransclusionSource implementations may
+ *		provide extra information in the source info on their own: This base
+ *		class forces $spec['sourceInfo']['name'] = $spec['name'] and
+ *		$spec['sourceInfo']['defaultKey'] = $spec['defaultKey'].
+ *
+ * Options used by DataTransclusionHandler but ignored by DataTransclusionSource:
+ *	 * $spec['class']: see documentation if $wgDataTransclusionSources in DataTransclusion.
+ *	 * $spec['cache']: see documentation if $wgDataTransclusionSources in DataTransclusion.
+ *
+ * Lists may be given as arrays or strings with items separated by [,;|].
+ */
 class DataTransclusionSource {
 	static function splitList( $s ) {
-		if ( $s === null || $s === false ) return $s;
-		if ( !is_string( $s ) ) return $s;
-		
+		if ( $s === null || $s === false ) {
+			return $s;
+		}
+
+		if ( !is_string( $s ) ) {
+			return $s;
+		}
+
 		$list = preg_split( '!\s*[,;|/]\s*!', $s );
+
 		return $list;
 	}
 
 	/**
-	* Initializes the DataTransclusionSource from the given parameter array.
-	* @param $spec associative array of options. See class-level documentation for details.
-	*/
+	 * Initializes the DataTransclusionSource from the given parameter array.
+	 * @param $spec associative array of options. See class-level documentation for details.
+	 */
 	function __construct( $spec ) {
 		$this->name = $spec[ 'name' ];
 
 		$this->keyFields = self::splitList( $spec[ 'keyFields' ] );
 
-		if ( isset( $spec[ 'fieldNames' ] ) )
+		if ( isset( $spec[ 'fieldNames' ] ) ) {
 			$this->fieldNames = self::splitList( $spec[ 'fieldNames' ] );
-		else
+		} else {
 			$this->fieldNames = $this->keyFields;
+		}
 
-		if ( !empty( $spec[ 'defaultKey' ] ) ) $this->defaultKey = $spec[ 'defaultKey' ];
-		else $this->defaultKey = $this->keyFields[ 0 ];
+		if ( !empty( $spec[ 'defaultKey' ] ) ) {
+			$this->defaultKey = $spec[ 'defaultKey' ];
+		} else {
+			$this->defaultKey = $this->keyFields[ 0 ];
+		}
 
-		if ( !empty( $spec[ 'cacheDuration' ] ) ) $this->cacheDuration = (int)$spec[ 'cacheDuration' ];
-		else $this->cacheDuration = null;
+		if ( !empty( $spec[ 'cacheDuration' ] ) ) {
+			$this->cacheDuration = (int)$spec[ 'cacheDuration' ];
+		} else {
+			$this->cacheDuration = null;
+		}
 
 		$this->sourceInfo = array();
 
@@ -104,7 +117,7 @@ class DataTransclusionSource {
 	}
 
 	public function getSourceInfo() {
-	  return $this->sourceInfo;
+		return $this->sourceInfo;
 	}
 
 	public function getKeyFields() {
@@ -125,18 +138,18 @@ class DataTransclusionSource {
 }
 
 /**
-* Implementation of DataTransclusionSource that wraps another DataTransclusionSource and applies caching in an
-* ObjectCache. All methods delegate to the underlieing data source, fetchRecord adds logic for caching.
-*/
+ * Implementation of DataTransclusionSource that wraps another DataTransclusionSource and applies caching in an
+ * ObjectCache. All methods delegate to the underlieing data source, fetchRecord adds logic for caching.
+ */
 class CachingDataTransclusionSource extends DataTransclusionSource {
 
 	/**
-	* Initializes the CachingDataTransclusionSource
-	*
-	* @param $source a DataTransclusionSource instance for fetching data records.
-	* @param $cache an ObjectCache instance
-	* @param $duration number of seconds for which records may be cached
-	*/
+	 * Initializes the CachingDataTransclusionSource
+	 *
+	 * @param $source a DataTransclusionSource instance for fetching data records.
+	 * @param $cache an ObjectCache instance
+	 * @param $duration number of seconds for which records may be cached
+	 */
 	function __construct( $source, $cache, $duration ) {
 		$this->source = $source;
 		$this->cache = $cache;
@@ -176,7 +189,9 @@ class CachingDataTransclusionSource extends DataTransclusionSource {
 
 		if ( !$rec ) {
 			$rec = $this->source->fetchRecord( $key, $value );
-			if ( $rec ) $this->cache->set( $cacheKey, $rec, $this->getCacheDuration() ) ; // XXX: also cache negatives??
+			if ( $rec ) {
+				$this->cache->set( $cacheKey, $rec, $this->getCacheDuration() ) ; // XXX: also cache negatives??
+			}
 		}
 
 		return $rec;
@@ -184,25 +199,27 @@ class CachingDataTransclusionSource extends DataTransclusionSource {
 }
 
 /**
-* Implementations of DataTransclusionSource which simply fetches data from an array. This is
-* intended mainly for testing and debugging.
-*/
+ * Implementations of DataTransclusionSource which simply fetches data from an array. This is
+ * intended mainly for testing and debugging.
+ */
 class FakeDataTransclusionSource extends DataTransclusionSource {
 
 	/**
-	* Initializes the CachingDataTransclusionSource
-	*
-	* @param $spec an associative array of options. See class-level 
-	*		documentation of DataTransclusionSource for details.
-	*
-	* @param $data an array containing a list of records. Records from
-	*		this list can be accessed via fetchRecord() using the key fields specified 
-	*		by $spec['keyFields']. If $data is not given, $spec['data'] must contain the data array.
-	*/
+	 * Initializes the CachingDataTransclusionSource
+	 *
+	 * @param $spec an associative array of options. See class-level
+	 *		documentation of DataTransclusionSource for details.
+	 *
+	 * @param $data an array containing a list of records. Records from
+	 *		this list can be accessed via fetchRecord() using the key fields specified
+	 *		by $spec['keyFields']. If $data is not given, $spec['data'] must contain the data array.
+	 */
 	function __construct( $spec, $data = null ) {
 		DataTransclusionSource::__construct( $spec );
 
-		if ( $data === null ) $data = $spec[ 'data' ];
+		if ( $data === null ) {
+			$data = $spec[ 'data' ];
+		}
 
 		$this->lookup = array();
 
@@ -215,8 +232,10 @@ class FakeDataTransclusionSource extends DataTransclusionSource {
 		$fields = $this->getKeyFields();
 		foreach ( $fields as $f ) {
 			$k = $record[ $f ];
-			
-			if ( !isset( $this->lookup[ $f ] ) ) $this->lookup[ $f ] = array();
+			if ( !isset( $this->lookup[ $f ] ) ) {
+				$this->lookup[ $f ] = array();
+			}
+
 			$this->lookup[ $f ][ $k ] = $record;
 		}
 	}

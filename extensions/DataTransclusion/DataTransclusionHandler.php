@@ -23,8 +23,7 @@ class DataTransclusionHandler {
 			if ( preg_match( '/^\s*(\S.*?)\s*=\s*(.*?)\s*$/', $p, $m ) ) {
 				$k = $m[1];
 				$v = preg_replace( '/^"\s*(.*?)\s*"$/', '$1', $m[2] ); // strip any quotes enclosing the value
-			}
-			else {
+			} else {
 				$v = trim( $p );
 				$k = $i;
 				$i += 1;
@@ -62,8 +61,11 @@ class DataTransclusionHandler {
 		array_shift( $params ); // $key
 		array_shift( $params ); // $asHTML
 
-		if ( $asHTML ) $mode = 'parseinline';
-		else $mode = 'parsemag';
+		if ( $asHTML ) {
+			$mode = 'parseinline';
+		} else {
+			$mode = 'parsemag';
+		}
 
 		$m = wfMsgExt( $key, $mode, $params );
 
@@ -85,32 +87,49 @@ class DataTransclusionHandler {
 	static function handleRecordTransclusion( $key, $argv, $parser, $asHTML, $templateText = null ) {
 		// find out which data source to use...
 		if ( empty( $argv['source'] ) ) {
-			if ( empty( $argv[1] ) ) return DataTransclusionHandler::errorMessage( 'datatransclusion-missing-source', $asHTML ); // TESTME
-			else $sourceName = $argv[1];
+			if ( empty( $argv[1] ) ) {
+				return DataTransclusionHandler::errorMessage( 'datatransclusion-missing-source', $asHTML ); // TESTME
+			} else {
+				$sourceName = $argv[1];
+			}
 		} else {
 			$sourceName = $argv['source'];
 		}
 
 		$source = DataTransclusionHandler::getDataSource( $sourceName );
-		if ( empty( $source ) ) return DataTransclusionHandler::errorMessage( 'datatransclusion-unknown-source', $asHTML, $sourceName ); // TESTME
+		if ( empty( $source ) ) {
+			return DataTransclusionHandler::errorMessage( 'datatransclusion-unknown-source', $asHTML, $sourceName ); // TESTME
+		}
 
 		// find out how to find the desired record
-		if ( empty( $argv['by'] ) ) $by = $source->getDefaultKey();
-		else $by = $argv['by'];
+		if ( empty( $argv['by'] ) ) {
+			$by = $source->getDefaultKey();
+		} else {
+			$by = $argv['by'];
+		}
 
 		$keyFields = $source->getKeyFields();
-		if ( ! in_array( $by, $keyFields ) ) return DataTransclusionHandler::errorMessage( 'datatransclusion-bad-argument-by', $asHTML, $sourceName, $by, join( ', ', $keyFields ) ); // TESTME
+		if ( ! in_array( $by, $keyFields ) ) {
+			return DataTransclusionHandler::errorMessage( 'datatransclusion-bad-argument-by', $asHTML, $sourceName, $by, join( ', ', $keyFields ) ); // TESTME
+		}
 
-		if ( !empty( $argv['key'] ) ) $key = $argv['key'];
-		else if ( $key === null || $key === false ) {
-			if ( empty( $argv[2] ) ) return DataTransclusionHandler::errorMessage( 'datatransclusion-missing-argument-key', $asHTML ); // TESTME
-			else $key = $argv[2];
+		if ( !empty( $argv['key'] ) ) {
+			$key = $argv['key'];
+		} else if ( $key === null || $key === false ) {
+			if ( empty( $argv[2] ) ) {
+				return DataTransclusionHandler::errorMessage( 'datatransclusion-missing-argument-key', $asHTML ); // TESTME
+			} else {
+				$key = $argv[2];
+			}
 		}
 
 		// find out how to render the record
 		if ( empty( $argv['template'] ) ) {
-			if ( empty( $argv[3] ) ) return DataTransclusionHandler::errorMessage( 'datatransclusion-missing-argument-template', $asHTML ); // TESTME
-			else $template = $argv[3];
+			if ( empty( $argv[3] ) ) {
+				return DataTransclusionHandler::errorMessage( 'datatransclusion-missing-argument-template', $asHTML ); // TESTME
+			} else {
+				$template = $argv[3];
+			}
 		} else {
 			$template = $argv['template'];
 		}
@@ -121,7 +140,9 @@ class DataTransclusionHandler {
 
 		// render the record into wiki text
 		$t = Title::newFromText( $template, NS_TEMPLATE );
-		if ( empty( $t ) ) return DataTransclusionHandler::errorMessage( 'datatransclusion-bad-template-name', $asHTML, $template ); // TESTME
+		if ( empty( $t ) ) {
+			return DataTransclusionHandler::errorMessage( 'datatransclusion-bad-template-name', $asHTML, $template ); // TESTME
+		}
 
 		// FIXME: log the template we used into the parser output, like regular template use 
 		//       (including templates used by the template, etc)
@@ -131,7 +152,9 @@ class DataTransclusionHandler {
 		$record = $handler->normalizeRecord( $record );
 		$text = $handler->render( $record );
 
-		if ( $text === false ) return DataTransclusionHandler::errorMessage( 'datatransclusion-unknown-template', $asHTML, $template ); // TESTME
+		if ( $text === false ) {
+			return DataTransclusionHandler::errorMessage( 'datatransclusion-unknown-template', $asHTML, $template ); // TESTME
+		}
 
 		// set parser output expiry
 		$expire = $source->getCacheDuration();
@@ -181,15 +204,17 @@ class DataTransclusionHandler {
 
 		// dumb and slow, but works
 		if ( $this->templateText ) {
-			if ( is_string( $this->templateText ) )
+			if ( is_string( $this->templateText ) ) {
 				$text = $this->templateText;
-			else 
+			} else {
 				$text = $this->templateText->getContent();
+			}
 		} else {
 			$article = new Article( $this->template );
 
-			if ( !$article->exists() ) 
+			if ( !$article->exists() ) {
 				return false; // TESTME
+			}
 
 			$text = $article->getContent();
 		}
@@ -205,8 +230,11 @@ class DataTransclusionHandler {
 		// keep record fields, add missing values
 		$fields = $this->source->getFieldNames();
 		foreach ( $fields as $f ) {
-			if ( isset( $record[ $f ] ) ) $v = $record[ $f ];
-			else $v = '';
+			if ( isset( $record[ $f ] ) ) {
+				$v = $record[ $f ];
+			} else {
+				$v = '';
+			}
 
 			$rec[ $f ] = $this->sanitizeValue( $v ); // TESTME
 		}
@@ -215,7 +243,10 @@ class DataTransclusionHandler {
 		// provide license info, etc
 		$info = $this->source->getSourceInfo(); // TESTME
 		foreach ( $info as $f => $v ) {
-			if ( is_array( $v ) || is_object( $v ) || is_resource( $v ) ) continue;
+			if ( is_array( $v ) || is_object( $v ) || is_resource( $v ) ) {
+				continue;
+			}
+
 			$rec[ "source.$f" ] = $this->sanitizeValue( $v );
 		}
 
@@ -255,7 +286,9 @@ class DataTransclusionHandler {
 
 	static function getDataSource( $name ) {
 		global $wgDataTransclusionSources;
-		if ( empty( $wgDataTransclusionSources[ $name ] ) ) return false;
+		if ( empty( $wgDataTransclusionSources[ $name ] ) ) {
+			return false;
+		}
 
 		$source = $wgDataTransclusionSources[ $name ];
 
@@ -263,11 +296,15 @@ class DataTransclusionHandler {
 			$spec = $source;
 			$spec[ 'name' ] = $name;
 
-			if ( !isset( $spec[ 'class' ] ) ) throw new MWException( "\$wgDataTransclusionSources['$name'] must specifying a class name in the 'class' field." );
+			if ( !isset( $spec[ 'class' ] ) ) {
+				throw new MWException( "\$wgDataTransclusionSources['$name'] must specifying a class name in the 'class' field." );
+			}
 
 			$c = $spec[ 'class' ];
 			$obj = new $c( $spec ); // pass spec array as constructor argument
-			if ( !$obj ) throw new MWException( "failed to instantiate \$wgDataTransclusionSources['$name'] as new $c." );
+			if ( !$obj ) {
+				throw new MWException( "failed to instantiate \$wgDataTransclusionSources['$name'] as new $c." );
+			}
 
 			$source = $obj;
 
@@ -284,7 +321,9 @@ class DataTransclusionHandler {
 		}
 
 		if ( !is_object( $source ) ) {
-			if ( !isset( $source[ 'class' ] ) ) throw new MWException( "\$wgDataTransclusionSources['$name'] must be an array or an object." );
+			if ( !isset( $source[ 'class' ] ) ) {
+				throw new MWException( "\$wgDataTransclusionSources['$name'] must be an array or an object." );
+			}
 		}
 		
 		return $source;
