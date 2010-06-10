@@ -14,6 +14,7 @@ class ActiveStrategy {
 				array(
 					'page_namespace' => 0,
 					"page_title LIKE 'Task_force/%'",
+					"page_title NOT LIKE 'Task_force/%/%'",
 				), __METHOD__ );
 		
 		return $res;
@@ -206,9 +207,12 @@ class ActiveStrategy {
 		}
 		
 		$article = new Article( Title::newFromText( $taskForce ) );
-		$content = $article->getContent();
+
+		$dbr = wfGetDB( DB_SLAVE );
 		
-		$count = self::parseMemberList( $content );
+		$count = $dbr->selectField( 'pagelinks', 'count(*)',
+				array( 'pl_from' => $article->getId(),
+					'pl_namespace' => NS_USER ), __METHOD__ );
 		
 		$wgMemc->set( $key, $count, 86400 );
 		
