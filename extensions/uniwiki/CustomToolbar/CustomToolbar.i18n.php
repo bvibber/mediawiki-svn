@@ -2540,7 +2540,7 @@ Prosím, skontrolujte blokovanie vyskakovacích okien vo vašom prehliadači.',
  * @author Dbc334
  */
 $wgCustomToolbarMessages['sl'] = array(
-	'ct-desc' => 'Dodaj razširljivo orodno vrstico',
+	'ct-desc' => 'Doda razširljivo orodno vrstico',
 	'ct_bold_sample' => 'Krepko besedilo',
 	'ct_bold_tip_ins' => 'Vstavi krepko besedilo',
 	'ct_bold_tip_wrap' => 'Naredi to besedilo krepko',
@@ -2572,9 +2572,12 @@ $wgCustomToolbarMessages['sl'] = array(
 	'ct_horizontal_caption' => 'Vodoravna črta',
 	'ct_upload' => 'Nalaganje $1',
 	'ct_select' => 'Izberite $1 za nalaganje:',
+	'ct_caption' => 'Dodaj naslov (izbirno):',
+	'ct_link' => 'Dodaj ime povezave (izbirno):',
 	'ct_submit' => 'Pojdi!',
 	'ct_close' => 'Zapri okno',
 	'ct_success' => 'Nalaganje datoteke je bilo uspešno!',
+	'ct_popupblocked' => 'Odpiranje pojavnega okna za nalaganje je bilo preprečeno. Prosimo, preverite vaš preprečevalec pojavnih oken.',
 	'ct_user_user' => 'Uporabnik',
 	'ct_user_tip' => 'Vstavi povezavo na uporabniško stran',
 	'ct_user_caption' => 'Povezava uporabnika',

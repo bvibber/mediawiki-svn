@@ -1108,8 +1108,12 @@ $messages['sl'] = array(
 	'chemicalsource-desc' => 'Doda etiketo <nowiki><chemform></nowiki> za prikaz kemijskih formul',
 	'chemicalsources-desc' => '[[Special:ChemicalSources|Posebna stran]] za kemijske vire',
 	'chemFunctions_ListPage' => 'Kemijski viri',
+	'chemFunctions_DataList' => 'Spodaj se nahaja seznam povezav do strani, ki vam lahko podajo informacije o iskani kemijski spojini.<br /><br />
+* <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Spojina $MIXCASNameFormula na NIST</a><br />
+* <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS na Univerzi v Oxfordu (Združeno kraljestvo) (ni iskalno)</a><br />',
 	'chemFunctions_CAS' => 'Število CAS',
 	'chemFunctions_ATCCode' => 'Oznaka ATC',
+	'chemFunctions_ECNumber' => 'številka EC',
 	'chemFunctions_Formula' => 'Formula',
 	'chemFunctions_Name' => 'Ime po IUPAC',
 	'chemFunctions_ChemFormInputError' => 'Chemform: Napaka pri vnosu!',

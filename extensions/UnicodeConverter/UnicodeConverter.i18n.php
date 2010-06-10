@@ -145,9 +145,11 @@ $messages['bs'] = array(
 
 /** Catalan (Català)
  * @author Solde
+ * @author Vriullop
  */
 $messages['ca'] = array(
 	'unicodeconverter' => 'Conversor unicode',
+	'unicodeconverter-desc' => "Exemple simple s'un mòdul de pàgina especial. [[Special:UnicodeConverter|Donada una cadena de caràcters en UTF-8]] la converteix en entitats HTML adequades per a una pàgina web en ISO 8859-1.",
 	'unicodeconverter-ok' => 'OK',
 	'unicodeconverter-oldtext' => 'Text original:',
 	'unicodeconverter-newtext' => 'Text convertit:',

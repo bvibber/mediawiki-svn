@@ -538,6 +538,7 @@ $messages['sk'] = array(
  * @author Dbc334
  */
 $messages['sl'] = array(
+	'formatchanges-desc' => 'Preoblikuje [[Special:RecentChanges|zadnje spremembe]]',
 	'formatchanges-anonymous' => 'Brezimnež',
 	'formatchanges-createdby' => '$1 – ustvaril $2 ($3)',
 	'formatchanges-editedby' => '$1 – uredil $2 ($3)',

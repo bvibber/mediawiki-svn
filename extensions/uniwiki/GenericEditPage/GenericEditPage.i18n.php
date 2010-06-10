@@ -1357,6 +1357,7 @@ Pomocou nástrojov v paneli s ponukou ich môžete pridať.',
  * @author Dbc334
  */
 $messages['sl'] = array(
+	'gep-emailsubject' => '[$1] Predlog kategorije: $2',
 	'gep-emailsuccess' => 'Hvala za predlaganje kategorije: $1.',
 	'gep-categories' => 'Kategorije',
 	'gep-addcategory' => 'Dodaj kategorijo',
@@ -1367,6 +1368,9 @@ $messages['sl'] = array(
 	'gep-sectionnotdisabled' => 'Tega razdelka ni mogoče onemogočiti',
 	'gep-addsection' => 'Dodaj razdelek',
 	'gep-addsectionbutton' => 'Dodaj',
+	'gep-classicmode' => 'Klasični način',
+	'gep-genericmode' => 'Generični način',
+	'gep-nocategories' => 'Prosimo, pred shranjevanjem izberite vsaj eno kategorijo',
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
