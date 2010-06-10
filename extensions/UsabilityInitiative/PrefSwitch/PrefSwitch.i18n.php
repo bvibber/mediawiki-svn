@@ -111,7 +111,7 @@ We would love to hear from you. Please visit our [[$1|feedback page]] or, if you
 Please fill out the optional survey below before clicking "[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]".',
 	'prefswitch-survey-intro-off' => 'Thanks for trying out our new features.
 To help us improve them, please fill out the optional survey below before clicking "[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]".',
-	'prefswitch-feedbackpage' => 'Wikipedia:User experience feedback',
+	'prefswitch-feedbackpage' => 'Project:User experience feedback',
 );
 
 /** Message documentation (Message documentation)
