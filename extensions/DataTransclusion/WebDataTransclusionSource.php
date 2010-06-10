@@ -38,6 +38,10 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  *		a "meta-key" of the form @@N, where N is an integer. A meta-key refers to the
  *		Nth entry in an associative array: @1 would be "bar" in array( 'x' => "foo", 'y' => "bar" ).
  *		For more complex retrieval of the record, override extractRecord(). REQUIRED.
+ *	 * $spec['valuePath']: "path" to the actual field values inside the record associated
+ *		with each field. Optional, should only be specified if field values are returned
+ *		as complex records instead of simple values. For more complex processing, override
+ *		the method sanitizeRecord().
  *	 * $spec['errorPath']: "path" to error messages in the structure returned from the
  *		HTTP request. The path is evaluated as deswcribed for $spec['dataPath']. If an
  *		entry is found at the given position in the response structure, the request
@@ -58,6 +62,7 @@ class WebDataTransclusionSource extends DataTransclusionSource {
 		$this->url = $spec[ 'url' ];
 		$this->dataFormat = @$spec[ 'dataFormat' ];
 		$this->dataPath = DataTransclusionSource::splitList( @$spec[ 'dataPath' ] );
+		$this->valuePath = DataTransclusionSource::splitList( @$spec[ 'valuePath' ] );
 		$this->errorPath = DataTransclusionSource::splitList( @$spec[ 'errorPath' ] );
 		$this->httpOptions = @$spec[ 'httpOptions' ];
 		$this->timeout = @$spec[ 'timeout' ];
@@ -171,7 +176,31 @@ class WebDataTransclusionSource extends DataTransclusionSource {
 	}
 
 	public function extractRecord( $data ) {
-		return $this->extractField( $data, $this->dataPath );
+		$rec = $this->extractField( $data, $this->dataPath );
+
+		$rec = $this->sanitizeRecord( $rec );
+		return $rec;
+	}
+
+	public function sanitizeRecord( $rec ) {
+		if ( $this->valuePath !== null && $this->valuePath !== false ) {
+			$r = array();
+
+			foreach ( $rec as $k => $v ) {
+				if ( is_array( $v ) || is_object( $v ) ) {
+					$w = $this->extractField( $v, $this->valuePath );
+					//XXX: how to hanlde $w === false failures here?
+				} else {
+					$w = $v; //XXX: ugly default. fail instead??
+				}
+
+				$r[ $k ] = $w; 
+			}
+
+			return $r;
+		} else {
+			return $rec;
+		}
 	}
 
 	public function extractField( $data, $path ) {

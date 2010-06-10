@@ -322,6 +322,7 @@ class DataTransclusionTest extends PHPUnit_Framework_TestCase {
 			'url' => 'http://acme.com/',
 			'dataFormat' => 'php',
 			'dataPath' => 'response/content/@0',
+			'valuePath' => 'value',
 			'errorPath' => 'response/error',
 		);
 
@@ -330,7 +331,12 @@ class DataTransclusionTest extends PHPUnit_Framework_TestCase {
 		$u = $source->getRecordURL( 'name', 'foo&bar' );
 		$this->assertEquals( $u, 'http://acme.com/?name=foo%26bar' );
 
-		$rec = array( "name" => "foo", "id" => 3, "info" => 'test X' );
+		$rec = array( 
+			"name" => array( 'type' => 'string', 'value' => "foo" ), 
+			"id" => array( 'type' => 'int', 'value' => 3 ),  
+			"info" => array( 'type' => 'string', 'value' => "test X" ), 
+		);
+
 		$data = array( 'response' => array(
 			'error' => 'test error',
 			'content' => array(
