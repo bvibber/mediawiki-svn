@@ -379,7 +379,7 @@ class CategoryMultisortHooks {
 			$html = Html::element( 'label', array(
 				'for' => 'categorymultisort-select',
 			), wfMsgExt( 'categorymultisort-sortkey', 'parseinline' ) ) . $html;
-			$html .= Html::rawElement('noscript', array(),
+			$html .= Html::rawElement( 'noscript', array(),
 				Html::input( '', wfMsgNoTrans( 'categorymultisort-go' ), 'submit' , array(
 				'id' => 'categorymultisort-select-go',
 			) ) );
