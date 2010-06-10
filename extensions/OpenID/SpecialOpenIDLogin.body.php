@@ -373,7 +373,11 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 					$force[] = $option;
 				}
 			}
+
 			$this->updateUser( $user, $sreg, $ax );
+
+			$wgUser = $user;
+
 		} else {
 			$name = $this->getUserName( $openid, $sreg, $ax, $choice, $nameValue );
 
