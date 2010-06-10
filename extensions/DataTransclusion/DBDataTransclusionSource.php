@@ -116,15 +116,24 @@ class DBDataTransclusionSource extends DataTransclusionSource {
 		$db = wfGetDB( DB_SLAVE );
 
 		$sql = $this->getQuery( $field, $value, $db );
+		wfDebugLog( 'DataTransclusion', "sql query for $field=$value: $sql\n" );
 
 		$rs = $db->query( $sql, "DBDataTransclusionSource(" . $this->getName() . ")::fetchRecord" );
+
 		if ( !$rs ) {
+			wfDebugLog( 'DataTransclusion', "sql query failed for $field=$value\n" );
 			return false;
 		}
 
 		$rec = $db->fetchRow( $rs );
+		if ( !$rec ) {
+			wfDebugLog( 'DataTransclusion', "no record found matching $field=$value\n" );
+			return false;
+		}
 
 		$db->freeResult( $rs );
+
+		wfDebugLog( 'DataTransclusion', "loaded record for $field=$value from database\n" );
 		return $rec;
 	}
 }

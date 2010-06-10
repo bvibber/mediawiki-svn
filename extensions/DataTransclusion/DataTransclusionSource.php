@@ -76,6 +76,8 @@ class DataTransclusionSource {
 	function __construct( $spec ) {
 		$this->name = $spec[ 'name' ];
 
+		wfDebugLog( 'DataTransclusion', "constructing " . get_class( $this ) . " \"{$this->name}\"\n" );
+
 		$this->keyFields = self::splitList( $spec[ 'keyFields' ] );
 
 		if ( isset( $spec[ 'fieldNames' ] ) ) {
@@ -132,7 +134,7 @@ class DataTransclusionSource {
 		return $this->cacheDuration;
 	}
 
-	public function fetchRecord( $key, $value ) {
+	public function fetchRecord( $field, $value ) {
 		throw new MWException( "override fetchRecord()" );
 	}
 }
@@ -180,20 +182,27 @@ class CachingDataTransclusionSource extends DataTransclusionSource {
 		return $this->source->getCacheDuration();
 	}
 
-	public function fetchRecord( $key, $value ) {
+	public function fetchRecord( $field, $value ) {
 		global $wgDBname, $wgUser;
-
-		$cacheKey = "$wgDBname:DataTransclusion(" . $this->getName() . ":$key=$value)";
+		
+		$cacheKey = "$wgDBname:DataTransclusion(" . $this->getName() . ":$field=$value)";
 		
 		$rec = $this->cache->get( $cacheKey );
-
+		
 		if ( !$rec ) {
-			$rec = $this->source->fetchRecord( $key, $value );
-			if ( $rec ) {
-				$this->cache->set( $cacheKey, $rec, $this->getCacheDuration() ) ; // XXX: also cache negatives??
+			wfDebugLog( 'DataTransclusion', "fetching fresh record for $field=$value\n" );
+			$rec = $this->source->fetchRecord( $field, $value );
+			
+			if ( $rec ) { // XXX: also cache negatives??
+				$duration = $this->getCacheDuration();
+				
+				wfDebugLog( 'DataTransclusion', "caching record for $field=$value for $duration sec\n" );
+				$this->cache->set( $cacheKey, $rec, $duration ) ; 
 			}
+		} else {
+			wfDebugLog( 'DataTransclusion', "using cached record for $field=$value\n" );
 		}
-
+		
 		return $rec;
 	}
 }
@@ -240,7 +249,7 @@ class FakeDataTransclusionSource extends DataTransclusionSource {
 		}
 	}
 
-	public function fetchRecord( $key, $value ) {
-		return @$this->lookup[ $key ][ $value ];
+	public function fetchRecord( $field, $value ) {
+		return @$this->lookup[ $field ][ $value ];
 	}
 }

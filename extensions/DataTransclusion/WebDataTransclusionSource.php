@@ -76,24 +76,29 @@ class WebDataTransclusionSource extends DataTransclusionSource {
 	public function fetchRecord( $field, $value ) {
 		$raw = $this->loadRecordData( $field, $value ); // TESTME 
 		if ( !$raw ) {
-			return false; // TODO: log error?
+			wfDebugLog( 'DataTransclusion', "failed to fetch data for $field=$value\n" );
+			return false; 
 		}
 
 		$data = $this->decodeData( $raw, $this->dataFormat ); 
 		if ( !$data ) {
-			return false; // TODO: log error?
+			wfDebugLog( 'DataTransclusion', "failed to decode data for $field=$value as {$this->dataFormat}\n" );
+			return false; 
 		}
 
 		$err = $this->extractError( $data ); 
 		if ( $err ) {
-			return false; // TODO: log error?
+			wfDebugLog( 'DataTransclusion', "error message when fetching $field=$value: $err\n" );
+			return false; 
 		}
 
 		$rec = $this->extractRecord( $data ); 
 		if ( !$rec ) {
-			return false; // TODO: log error?
+			wfDebugLog( 'DataTransclusion', "no record found in data for $field=$value\n" );
+			return false; 
 		}
 
+		wfDebugLog( 'DataTransclusion', "loaded record for $field=$value from URL\n" );
 		return $rec;
 	}
 
@@ -116,7 +121,18 @@ class WebDataTransclusionSource extends DataTransclusionSource {
 	public function loadRecordData( $field, $value ) {
 		$u = $this->getRecordURL( $field, $value );
 
-		$raw = Http::get( $u, $this->timeout, $this->httpOptions );
+		if ( preg_match( '!^https?://!', $u ) ) {
+			$raw = Http::get( $u, $this->timeout, $this->httpOptions );
+		} else {
+			$raw = file_get_contents( $u ); // TESTME
+		}
+
+		if ( $raw ) {
+			wfDebugLog( 'DataTransclusion', "loaded " . strlen( $raw ) . " bytes of data from $u\n" );
+		} else {
+			wfDebugLog( 'DataTransclusion', "failed to load data from $u\n" );
+		}
+
 		return $raw;
 	}
 

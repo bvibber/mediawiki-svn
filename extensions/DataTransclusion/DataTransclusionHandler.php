@@ -88,6 +88,7 @@ class DataTransclusionHandler {
 		// find out which data source to use...
 		if ( empty( $argv['source'] ) ) {
 			if ( empty( $argv[1] ) ) {
+				wfDebugLog( 'DataTransclusion', "no source specified\n" );
 				return DataTransclusionHandler::errorMessage( 'datatransclusion-missing-source', $asHTML ); 
 			} else {
 				$sourceName = $argv[1];
@@ -98,6 +99,7 @@ class DataTransclusionHandler {
 
 		$source = DataTransclusionHandler::getDataSource( $sourceName );
 		if ( empty( $source ) ) {
+			wfDebugLog( 'DataTransclusion', "unknown data-source: $sourceName\n" );
 			return DataTransclusionHandler::errorMessage( 'datatransclusion-unknown-source', $asHTML, $sourceName ); 
 		}
 
@@ -110,6 +112,7 @@ class DataTransclusionHandler {
 
 		$keyFields = $source->getKeyFields();
 		if ( ! in_array( $by, $keyFields ) ) {
+			wfDebugLog( 'DataTransclusion', "bad 'by' argument: $by (not a known key field)\n" );
 			return DataTransclusionHandler::errorMessage( 'datatransclusion-bad-argument-by', $asHTML, $sourceName, $by, join( ', ', $keyFields ) ); 
 		}
 
@@ -117,6 +120,7 @@ class DataTransclusionHandler {
 			$key = $argv['key'];
 		} else if ( $key === null || $key === false ) {
 			if ( empty( $argv[2] ) ) {
+				wfDebugLog( 'DataTransclusion', "missing 'key' argument\n" );
 				return DataTransclusionHandler::errorMessage( 'datatransclusion-missing-argument-key', $asHTML ); 
 			} else {
 				$key = $argv[2];
@@ -126,6 +130,7 @@ class DataTransclusionHandler {
 		// find out how to render the record
 		if ( empty( $argv['template'] ) ) {
 			if ( empty( $argv[3] ) ) {
+				wfDebugLog( 'DataTransclusion', "missing 'template' argument\n" );
 				return DataTransclusionHandler::errorMessage( 'datatransclusion-missing-argument-template', $asHTML ); 
 			} else {
 				$template = $argv[3];
@@ -136,11 +141,15 @@ class DataTransclusionHandler {
 
 		// load the record
 		$record = $source->fetchRecord( $by, $key );
-		if ( empty( $record ) ) return DataTransclusionHandler::errorMessage( 'datatransclusion-record-not-found', $asHTML, $sourceName, $by, $key ); 
+		if ( empty( $record ) ) {
+			wfDebugLog( 'DataTransclusion', "no record found matching $by=$key in $sourceName\n" );
+			return DataTransclusionHandler::errorMessage( 'datatransclusion-record-not-found', $asHTML, $sourceName, $by, $key ); 
+		}
 
 		// render the record into wiki text
 		$t = Title::newFromText( $template, NS_TEMPLATE );
 		if ( empty( $t ) ) {
+			wfDebugLog( 'DataTransclusion', "illegal template name: $template\n" );
 			return DataTransclusionHandler::errorMessage( 'datatransclusion-bad-template-name', $asHTML, $template ); 
 		}
 
@@ -153,6 +162,7 @@ class DataTransclusionHandler {
 		$text = $handler->render( $record );
 
 		if ( $text === false ) {
+			wfDebugLog( 'DataTransclusion', "template not found: $template\n" );
 			return DataTransclusionHandler::errorMessage( 'datatransclusion-unknown-template', $asHTML, $template ); 
 		}
 
@@ -306,6 +316,7 @@ class DataTransclusionHandler {
 				throw new MWException( "failed to instantiate \$wgDataTransclusionSources['$name'] as new $c." );
 			}
 
+			wfDebugLog( 'DataTransclusion', "created instance of $c as data-source \"$name\"\n" );
 			$source = $obj;
 
 			if ( isset( $spec[ 'cache' ] ) ) { // check if a cache should be used
@@ -315,15 +326,15 @@ class DataTransclusionHandler {
 				}
 
 				$source = new CachingDataTransclusionSource( $obj, $c, @$spec['cache-duration'] ); // apply caching wrapper
+
+				wfDebugLog( 'DataTransclusion', "wrapped data-source \"$name\" in an instance of CachingDataTransclusionSource\n" );
 			}
 
 			$wgDataTransclusionSources[ $name ] = $source; // replace spec array by actual object, for later re-use
 		}
 
 		if ( !is_object( $source ) ) {
-			if ( !isset( $source[ 'class' ] ) ) {
-				throw new MWException( "\$wgDataTransclusionSources['$name'] must be an array or an object." );
-			}
+			throw new MWException( "\$wgDataTransclusionSources['$name'] must be an array or an object." );
 		}
 		
 		return $source;
