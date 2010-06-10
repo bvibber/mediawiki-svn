@@ -393,8 +393,6 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 			return;
 		}
 
-		$wgUser = $user;
-
 		$this->clearValues();
 
 		$this->displaySuccessLogin( $openid );
@@ -462,7 +460,7 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 				if ($wgOpenIDUseEmailAsNickname) {
 					$name = $this->getNameFromEmail( $openid, $sreg, $ax );
 					if ( !empty($name) && $this->userNameOk( $name ) ) {
-						$wgUser = $this->createUser( $openid, $sreg, $ax, $name );
+						$user = $this->createUser( $openid, $sreg, $ax, $name );
 						$this->displaySuccessLogin( $openid );
 						return;
 					}
@@ -588,7 +586,7 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 	}
 
 	function createUser( $openid, $sreg, $ax, $name ) {
-		global $wgAuth;
+		global $wgUser, $wgAuth;
 
 		$user = User::newFromName( $name );
 
@@ -598,13 +596,15 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 		}
 
 		$user->addToDatabase();
-		$user->addNewUserLogEntry();
 
 		if ( !$user->getId() ) {
 			wfDebug( "OpenID: Error adding new user.\n" );
 		} else {
 			$wgAuth->initUser( $user );
 			$wgAuth->updateUser( $user );
+
+			$wgUser = $user;
+			$user->addNewUserLogEntry();
 
 			# Update site stats
 			$ssUpdate = new SiteStatsUpdate( 0, 0, 0, 0, 1 );
