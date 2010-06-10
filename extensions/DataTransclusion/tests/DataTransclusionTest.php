@@ -1,4 +1,9 @@
 <?php
+if ( isset( $GET_ ) ) {
+	echo( "This file cannot be run from the web.\n" );
+	die( 1 );
+}
+
 if ( getenv( 'MW_INSTALL_PATH' ) ) {
 	$IP = getenv( 'MW_INSTALL_PATH' );
 } else {
@@ -9,11 +14,6 @@ if ( getenv( 'MW_INSTALL_PATH' ) ) {
 	else if ( file_exists( "$dir/../../phase3/LocalSettings.php" ) ) $IP = "$dir/../../phase3";
 	else if ( file_exists( "$dir/../../../phase3/LocalSettings.php" ) ) $IP = "$dir/../../../phase3";
 	else $IP = $dir;
-}
-
-if ( isset( $GET_ ) ) {
-	echo( "This file cannot be run from the web.\n" );
-	die( 1 );
 }
 
 require_once( "$IP/maintenance/commandLine.inc" );

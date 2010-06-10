@@ -1,4 +1,8 @@
 <?php
+if ( isset( $GET_ ) ) {
+	echo( "This file cannot be run from the web.\n" );
+	die( 1 );
+}
 
 $dir = dirname( __FILE__ );
 
