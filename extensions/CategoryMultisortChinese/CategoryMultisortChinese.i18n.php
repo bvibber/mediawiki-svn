@@ -1,13 +1,16 @@
 <?php
-
-if ( !defined( 'MEDIAWIKI' ) ) {
-	die();
-}
+/**
+ * Internationalisation for Category Multisort Chinese
+ *
+ * @file
+ * @ingroup Extensions
+ */
 
 $messages = array();
 
+/** English */
 $messages['en'] = array(
-	'categorymultisortchinese-desc' => 'An extension based on [http://www.mediawiki.org/wiki/Extension:CategoryMultisort CategoryMultisort] providing sortkeys specific to Chinese.',
+	'categorymultisortchinese-desc' => 'Allowing categories to be viewed with different sortkeys specific to Chinese',
 	'categorymultisort-sortkey-name-mandarin' => 'Mandarin',
 	'categorymultisort-sortkey-name-stroke' => 'Stroke',
 	'categorymultisort-sortkey-name-stroke-s' => 'Stroke: Simplified',
@@ -16,3 +19,4 @@ $messages['en'] = array(
 	'categorymultisort-sortkey-name-radical-s' => 'Radical: Simplified',
 	'categorymultisort-sortkey-name-radical-t' => 'Radical: Traditional',
 );
+

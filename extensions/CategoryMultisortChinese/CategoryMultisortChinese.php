@@ -5,16 +5,18 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 }
 
 $wgExtensionCredits['other'][] = array(
+	'path' => __FILE__,
 	'name' => 'CategoryMultisortChinese',
 	'author' => 'Liangent',
 	'descriptionmsg' => 'categorymultisortchinese-desc',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:CategoryMultisortChinese',
 );
 
-$wgAutoloadClasses['CategoryMultisortChineseHooks'] = dirname( __FILE__ ) . '/CategoryMultisortChinese.hooks.php';
-$wgAutoloadClasses['CategoryMultisortChineseData'] = dirname( __FILE__ ) . '/CategoryMultisortChinese.data.php';
+$dir = dirname(__FILE__) . '/';
+$wgAutoloadClasses['CategoryMultisortChineseHooks'] = $dir . 'CategoryMultisortChinese.hooks.php';
+$wgAutoloadClasses['CategoryMultisortChineseData'] = $dir . 'CategoryMultisortChinese.data.php';
 
-$wgExtensionMessagesFiles['CategoryMultisortChinese'] = dirname( __FILE__ ) . '/CategoryMultisortChinese.i18n.php';
+$wgExtensionMessagesFiles['CategoryMultisortChinese'] = $dir . 'CategoryMultisortChinese.i18n.php';
 
 $wgExtensionFunctions[] = 'efCategoryMultisortChineseInit';
 
