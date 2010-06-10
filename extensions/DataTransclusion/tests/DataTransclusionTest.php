@@ -309,6 +309,10 @@ class DataTransclusionTest extends PHPUnit_Framework_TestCase {
 
 		$sql = $source->getQuery( 'id', '3' );
 		$this->assertTrue( preg_match( '/WHERE \( *id *= *3 *\)/', $sql ) === 1 );
+
+		// check blocking of evil field names
+		$sql = $source->getQuery( 'name = 0; select * from x;', 'foo' );
+		$this->assertEquals( $sql, false );
 	}
 
 	function testWebDataTransclusionSource() {

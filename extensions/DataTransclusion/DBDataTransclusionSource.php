@@ -84,7 +84,7 @@ class DBDataTransclusionSource extends DataTransclusionSource {
 			$db = wfGetDB( DB_SLAVE );
 		}
 
-		if ( !preg_match( '/\w+[\w\d]+/', $field ) ) {
+		if ( !preg_match( '/^\w+[\w\d]+$/', $field ) ) {
 			return false; // redundant, but make extra sure we don't get anythign evil here //TESTME
 		}
 
