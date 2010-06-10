@@ -88,7 +88,7 @@ class DataTransclusionHandler {
 		// find out which data source to use...
 		if ( empty( $argv['source'] ) ) {
 			if ( empty( $argv[1] ) ) {
-				return DataTransclusionHandler::errorMessage( 'datatransclusion-missing-source', $asHTML ); // TESTME
+				return DataTransclusionHandler::errorMessage( 'datatransclusion-missing-source', $asHTML ); 
 			} else {
 				$sourceName = $argv[1];
 			}
@@ -98,7 +98,7 @@ class DataTransclusionHandler {
 
 		$source = DataTransclusionHandler::getDataSource( $sourceName );
 		if ( empty( $source ) ) {
-			return DataTransclusionHandler::errorMessage( 'datatransclusion-unknown-source', $asHTML, $sourceName ); // TESTME
+			return DataTransclusionHandler::errorMessage( 'datatransclusion-unknown-source', $asHTML, $sourceName ); 
 		}
 
 		// find out how to find the desired record
@@ -110,14 +110,14 @@ class DataTransclusionHandler {
 
 		$keyFields = $source->getKeyFields();
 		if ( ! in_array( $by, $keyFields ) ) {
-			return DataTransclusionHandler::errorMessage( 'datatransclusion-bad-argument-by', $asHTML, $sourceName, $by, join( ', ', $keyFields ) ); // TESTME
+			return DataTransclusionHandler::errorMessage( 'datatransclusion-bad-argument-by', $asHTML, $sourceName, $by, join( ', ', $keyFields ) ); 
 		}
 
 		if ( !empty( $argv['key'] ) ) {
 			$key = $argv['key'];
 		} else if ( $key === null || $key === false ) {
 			if ( empty( $argv[2] ) ) {
-				return DataTransclusionHandler::errorMessage( 'datatransclusion-missing-argument-key', $asHTML ); // TESTME
+				return DataTransclusionHandler::errorMessage( 'datatransclusion-missing-argument-key', $asHTML ); 
 			} else {
 				$key = $argv[2];
 			}
@@ -126,7 +126,7 @@ class DataTransclusionHandler {
 		// find out how to render the record
 		if ( empty( $argv['template'] ) ) {
 			if ( empty( $argv[3] ) ) {
-				return DataTransclusionHandler::errorMessage( 'datatransclusion-missing-argument-template', $asHTML ); // TESTME
+				return DataTransclusionHandler::errorMessage( 'datatransclusion-missing-argument-template', $asHTML ); 
 			} else {
 				$template = $argv[3];
 			}
@@ -136,12 +136,12 @@ class DataTransclusionHandler {
 
 		// load the record
 		$record = $source->fetchRecord( $by, $key );
-		if ( empty( $record ) ) return DataTransclusionHandler::errorMessage( 'datatransclusion-record-not-found', $asHTML, $sourceName, $by, $key ); // TESTME
+		if ( empty( $record ) ) return DataTransclusionHandler::errorMessage( 'datatransclusion-record-not-found', $asHTML, $sourceName, $by, $key ); 
 
 		// render the record into wiki text
 		$t = Title::newFromText( $template, NS_TEMPLATE );
 		if ( empty( $t ) ) {
-			return DataTransclusionHandler::errorMessage( 'datatransclusion-bad-template-name', $asHTML, $template ); // TESTME
+			return DataTransclusionHandler::errorMessage( 'datatransclusion-bad-template-name', $asHTML, $template ); 
 		}
 
 		// FIXME: log the template we used into the parser output, like regular template use 
@@ -153,20 +153,20 @@ class DataTransclusionHandler {
 		$text = $handler->render( $record );
 
 		if ( $text === false ) {
-			return DataTransclusionHandler::errorMessage( 'datatransclusion-unknown-template', $asHTML, $template ); // TESTME
+			return DataTransclusionHandler::errorMessage( 'datatransclusion-unknown-template', $asHTML, $template ); 
 		}
 
 		// set parser output expiry
 		$expire = $source->getCacheDuration();
 		if ( $expire !== false && $expire !== null ) {
-			$parser->getOutput()->updateCacheExpiry( $expire ); // NOTE: this works only since r67185 //TESTME
+			$parser->getOutput()->updateCacheExpiry( $expire ); // NOTE: this works only since r67185 //TESTME (how?)
 		}
 
 		if ( $asHTML && $parser ) { // render into HTML if desired
 			$html = $parser->recursiveTagParse( $text );
-			return $html; // TESTME
+			return $html; 
 		} else {
-			return $text; // TESTME
+			return $text; 
 		}
 	}
 
@@ -213,7 +213,7 @@ class DataTransclusionHandler {
 			$article = new Article( $this->template );
 
 			if ( !$article->exists() ) {
-				return false; // TESTME
+				return false; 
 			}
 
 			$text = $article->getContent();
@@ -236,12 +236,12 @@ class DataTransclusionHandler {
 				$v = '';
 			}
 
-			$rec[ $f ] = $this->sanitizeValue( $v ); // TESTME
+			$rec[ $f ] = $this->sanitizeValue( $v ); 
 		}
 
 		// add source meta info, so we can render links back to the source, 
 		// provide license info, etc
-		$info = $this->source->getSourceInfo(); // TESTME
+		$info = $this->source->getSourceInfo(); 
 		foreach ( $info as $f => $v ) {
 			if ( is_array( $v ) || is_object( $v ) || is_resource( $v ) ) {
 				continue;

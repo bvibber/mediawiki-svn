@@ -88,10 +88,10 @@ class DBDataTransclusionSource extends DataTransclusionSource {
 			return false; // redundant, but make extra sure we don't get anythign evil here //TESTME
 		}
 
-		$value = $this->convertKey( $field, $value ); // TESTME
+		$value = $this->convertKey( $field, $value ); 
 
 		if ( is_string( $value ) ) {
-			$v = $db->addQuotes( $value ); // TESTME
+			$v = $db->addQuotes( $value ); 
 		} else {
 			$v = $value;
 		}
