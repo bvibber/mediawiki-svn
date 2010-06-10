@@ -153,7 +153,7 @@ class DataTransclusionHandler {
 			return DataTransclusionHandler::errorMessage( 'datatransclusion-bad-template-name', $asHTML, $template ); 
 		}
 
-		// FIXME: log the template we used into the parser output, like regular template use 
+		// TODO: log the template we used into the parser output, like regular template use 
 		//       (including templates used by the template, etc)
 
 		$handler = new DataTransclusionHandler( $parser, $source, $t, $templateText );
@@ -188,48 +188,44 @@ class DataTransclusionHandler {
 	}
 
 	function render( $record ) {
-		// XXX: use cached & preparsed template. $template doesn't have the right type, it seems
-		/*
-		list( $text, $this->template ) = $this->parser->getTemplateDom( $this->template );
-		$frame = $this->parser->getPreprocessor()->newCustomFrame( $record );
-		$text = $frame->expand( $template );
-		*/
-
-		// XXX: trying another way. but $piece['parts'] needs to be a PPNode. how to do that?
-		/*
-		$frame = $this->parser->getPreprocessor()->newCustomFrame( $record );
-
-		$piece = array();
-
-		if ( $this->template->getNamespace() == NS_TEMPLATE ) $n = "";
-		else $n = $this->template->getNsText() . ":";
-
-		$piece ['title'] = $n . $this->template->getText();
-		$piece['parts'] = $record;
-		$piece['lineStart'] = false; //XXX: ugly. can't know here whether the brace was at the start of a line
-
-		$ret = $this->parser->braceSubstitution( $piece, $frame );
-		$text = $ret[ 'text' ];
-		*/
-
-		// dumb and slow, but works
-		if ( $this->templateText ) {
+		if ( $this->templateText ) { // explicit template content set. Used for testing and debugging.
 			if ( is_string( $this->templateText ) ) {
 				$text = $this->templateText;
 			} else {
 				$text = $this->templateText->getContent();
 			}
-		} else {
-			$article = new Article( $this->template );
 
-			if ( !$article->exists() ) {
-				return false; 
-			}
-
-			$text = $article->getContent();
+			$text = $this->parser->replaceVariables( $text, $record, true );
+			return $text;
 		}
 
+		/*
+		// NOTE: using replaceVariables is streight forward, but inefficient.
+		$article = new Article( $this->template );
+
+		if ( !$article->exists() ) {
+			return false; 
+		}
+
+		$text = $article->getContent();
 		$text = $this->parser->replaceVariables( $text, $record, true );
+		*/
+
+		// NOTE: braceSubstitution caches pre-parsed templates. Much nicer. 
+		// TODO: but how to check if the template exists? calling $article->exists() every time is slow.
+		//	 once we test for that agin, re-enable the test case for the datatransclusion-unknown-template failure mode
+		$frame = $this->parser->getPreprocessor()->newFrame( );
+
+		if ( $this->template->getNamespace() == NS_TEMPLATE ) $n = "";
+		else $n = $this->template->getNsText() . ":";
+
+		$piece = array();
+		$piece ['title'] = $n . $this->template->getText();
+		$piece['parts'] = $this->parser->getPreprocessor()->newPartNodeArray( $record ); // works since MW r67821
+		$piece['lineStart'] = false; //XXX: ugly. can't know here whether the brace was at the start of a line
+
+		$ret = $this->parser->braceSubstitution( $piece, $frame );
+		$text = $ret[ 'text' ];
 
 		return $text;
 	}
@@ -285,8 +281,8 @@ class DataTransclusionHandler {
 	);
 
 	static function sanitizeValue( $v ) {
-		// TODO: would be nicer to use <nowiki> - or better, insert substitution chunks directly into the parser state. would still need html escpaing though
-
+		// XXX: would be nicer to use <nowiki> - or better, insert substitution chunks directly into the parser state. would still need html escpaing though
+		// XXX: could use wfEscapeWikiText() - but it doesn't cover everything, it seems
 		$find = array_keys( self::$sanitizerSubstitution );
 		$subst = array_values( self::$sanitizerSubstitution );
 
