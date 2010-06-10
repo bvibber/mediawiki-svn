@@ -687,21 +687,21 @@ Zurück zu <span class="plainlinks">[$1 $2]</span>.',
 	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
 | align=\"center\" |
 {| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
-| [[Image:VectorNavigation-en.png|401px|]]
+| [[Image:VectorNavigation-de.png|401px|]]
 |-
 | Ein Screenshot von Wikipedias neuer Navigationsoberfläche <small>[[Media:VectorNavigation-en.png|(vergrößern)]]</small>
 |}
 |-
 | align=\"center\" |
 {| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
-| [[Image:VectorEditorBasic-en.png|401px|]]
+| [[Image:VectorEditorBasic-de.png|401px|]]
 |-
 | Ein Screenshot der einfachen Bearbeitungsoberfläche <small>[[Media:VectorEditorBasic-en.png|(vergrößern)]]</small>
 |}
 |-
 | align=\"center\" |
 {| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
-| [[Image:VectorLinkDialog-en.png|401px|]]
+| [[Image:VectorLinkDialog-de.png|401px|]]
 |-
 | Ein Screenshot der neuen Dialoge zum Einfügen von Links
 |}
@@ -1009,21 +1009,21 @@ Volver a <span class="plainlinks">[$1 $2]</span>.',
 	'prefswitch-main' => " {| border=\"0\" align=\"right\" style=\"margin-left:1em\"
 | align=\"center\" |
 {| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
-| [[Image:VectorNavigation-en.png|401px|]]
+| [[Image:VectorNavigation-es.png|401px|]]
 |-
-| Un pantallazo de la nueva interfaz de navegación de Wikipedia <small>[[Media:VectorNavigation-en.png|(enlarge)]]</small>
+| Un pantallazo de la nueva interfaz de navegación de Wikipedia <small>[[Media:VectorNavigation-es.png|(ampliar)]]</small>
 |}
 |-
 | align=\"center\" |
 {| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
-| [[Image:VectorEditorBasic-en.png|401px|]]
+| [[Image:VectorEditorBasic-es.png|401px|]]
 |-
-| Un pantallazo de la interfaz de edición de página básica<small>[[Media:VectorEditorBasic-en.png|(enlarge)]]</small>
+| Un pantallazo de la interfaz de edición de página básica<small>[[Media:VectorEditorBasic-es.png|(ampliar)]]</small>
 |}
 |-
 | align=\"center\" |
 {| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
-| [[Image:VectorLinkDialog-en.png|401px|]]
+| [[Image:VectorLinkDialog-es.png|401px|]]
 |-
 | Un pantallazo del nuevo cuadro de diálogo para ingresar enlaces
 |}
@@ -1206,16 +1206,16 @@ Revenir à <span class="plainlinks">[$1 $2]</span>.',
 	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
 | align=\"center\" |
 {| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
-| [[Image:VectorNavigation-en.png|401px|]]
+| [[Image:VectorNavigation-fr.png|401px|]]
 |-
-| Capture d’écran de la nouvelle interface de navigation de Wikipédia <small>[[Media:VectorNavigation-en.png|(agrandir)]]</small>
+| Capture d’écran de la nouvelle interface de navigation de Wikipédia <small>[[Media:VectorNavigation-fr.png|(agrandir)]]</small>
 |}
 |-
 | align=\"center\" |
 {| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
-| [[Image:VectorEditorBasic-en.png|401px|]]
+| [[Image:VectorEditorBasic-fr.png|401px|]]
 |-
-| Capture d’écran de l’interface simple de modification de page <small>[[Media:VectorEditorBasic-en.png|(agrandir)]]</small>
+| Capture d’écran de l’interface simple de modification de page <small>[[Media:VectorEditorBasic-fr.png|(agrandir)]]</small>
 |}
 |-
 | align=\"center\" |
@@ -1730,21 +1730,22 @@ Si prega di selezionare tutte le motivazioni pertinenti.',
 Torna a <span class="plainlinks">[$1 $2]</span>.',
 	'prefswitch-main' => "Abbiamo lavorato duramente per rendere le cose più semplici ai nostri utenti. Siamo entusiasti di condividere alcuni miglioramenti, tra cui un nuovo aspetto grafico e delle funzioni di modifica semplificate.  Migliorare l'usabilità dei progetti wiki è una priorità della fondazione Wikimedia, e condivideremo altri aggiornamenti in futuro. Per maggiori dettagli, visita il relativo post del [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/ blog Wikimedia]. 
 
-[[File:UsabilityNavigation.png|right|link=|Screenshot del nuovo sistema di navigazione]]
-[[File:UsabilityToolbar.png|right|link=|Screenshot della nuova barra degli strumenti]]
-[[File:UsabilityDialogs.png|right|link=|Screenshot delle nuove finestre di dialogo per la generazione del contenuto]]
+[[File:VectorNavigation-it.png|right|link=|Screenshot del nuovo sistema di navigazione]]
+[[File:VectorEditorBasic-it.png|right|link=|Screenshot della nuova barra degli strumenti]]
+[[File:VectorLinkDialog-it.png|right|link=|Screenshot delle nuove finestre di dialogo per la generazione del contenuto]]
 ===Ecco cosa abbiamo cambiato===
 * '''Navigazione''': Abbiamo migliorato il sistema di navigazione per leggere e modificare voci. Adesso, le schede nella parte superiore di ogni voce indicano più chiaramente se stai visualizzando la voce o la pagina di discussione, e se stai leggendo o modificando una voce.
 * '''Miglioramenti alla barra degli strumenti''':  Abbiamo riorganizzato la barra degli strumenti di modifica per renderla più semplice da usare.  Adesso, formattare le voci è più semplice e intuitivo.
 * '''Procedura guidata per i link''':  Uno strumento semplice da utilizzare ti permette di aggiungere link ad altre pagine di Wikipedia e link a siti esterni.
 * '''Miglioramenti alla ricerca''': Abbiamo migliorato i suggerimenti della ricerca per portarti più velocemente alla pagina che stai cercando.
 * '''Altre nuove funzioni''':  Abbiamo introdotto anche una procedura guidata per le tabelle per rendere la loro creazione più semplice e una funzione \"trova e sostituisci\" per semplificare la modifica delle pagine.
-* '''Globo-puzzle di Wikipedia''': Abbiamo aggiornato il globo-puzzle. Leggi altre informazioni sul [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ blog Wikimedia].",
+* '''Globo-puzzle di Wikipedia''': Abbiamo aggiornato il globo-puzzle. Leggi altre informazioni sul [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ blog Wikimedia].
+
+===Feedback?===
+Ci piacerebbe ascoltare il tuo parere.  Per favore visita la nostra [[$1|pagina di feedback]].",
 	'prefswitch-main-anon' => '===Riportami indietro===
 Se vorresti disattivare le nuove funzionalità, [$1 clicca qui]. Ti sarà chiesto di entrare o di creare un account.',
-	'prefswitch-main-on' => '===Feedback?===
-Ci piacerebbe ascoltare il tuo parere.  Per favore visita la nostra [$1 pagina di feedback].
-===Riportami indietro!===
+	'prefswitch-main-on' => '===Riportami indietro!===
 Se vuoi disattivare le nuove funzioni, [$2 clicca qui].',
 	'prefswitch-main-off' => '===Provale!===
 Se vuoi attivare le nuove funzioni, [$1 clicca qui].',
@@ -1797,21 +1798,22 @@ $messages['ja'] = array(
 <span class="plainlinks">[$1 $2]</span>に戻る。',
 	'prefswitch-main' => "私たちは、より使いやすいサイトを利用者の皆さまにお届けするために努力してまいりました。そして新しい外観や使い勝手、わかりやすくなった編集機能などの改善を皆さまと共有できることを大変うれしく思っています。私たちのプロジェクトの使いやすさを改善することは、ウィキメディア財団の優先課題の一つであり、今後も更なるアップデートを実施していく予定です。詳細は、[http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/ Wikimediaブログ]の関連投稿（英語）をご覧ください。
 
-[[File:UsabilityNavigation.png|right|link=|新しいナビゲーションのスクリーンショット]]
-[[File:UsabilityToolbar.png|right|link=|拡張編集ツールバーのスクリーンショット]]
-[[File:UsabilityDialogs.png|right|link=|新しいコンテンツ生成ダイアログのスクリーンショット]]
+[[File:VectorNavigation-ja.png|right|link=|新しいナビゲーションのスクリーンショット]]
+[[File:VectorEditorBasic-ja.png|right|link=|拡張編集ツールバーのスクリーンショット]]
+[[File:VectorLinkDialog-ja.png|right|link=|新しいコンテンツ生成ダイアログのスクリーンショット]]
 ===今回の変更点は以下の通りです===
 * '''ナビゲーション:''' ページの閲覧・編集時のナビゲーションを改善しました。各ページの上部のタブは、閲覧中の画面がページ本体なのかそのトークページ（ノートページ）なのか、あるいは現在閲覧中なのか編集中なのかをよりはっきりと示すようになりました。
 * '''編集ツールバーの改善:''' 編集ツールバーを再編して、より使いやすくしました。ページの整形がより簡単に、かつ直感的に行なえるようになっています。
 * '''リンクウィザード:''' ウィキペディア内の他のページや外部サイトへのリンクを追加できる、使いやすいツールを備えました。
 * '''検索機能の改善:''' 検索結果の候補予想の提示を改善し、お探しのページにより素早くたどり着けるようにしました。
 * '''その他の新機能:''' その他にも、ページ編集を簡潔化するために、表の作成を簡単にする表ウィザード、検索・置換機能を追加しました。
-* '''ウィキペディアのパズル地球儀''': パズル地球儀が更新されました。詳細は[http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ Wikimedia blog]（英語）をご覧ください。",
+* '''ウィキペディアのパズル地球儀''': パズル地球儀が更新されました。詳細は[http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ Wikimedia blog]（英語）をご覧ください。
+
+===フィードバック===
+ご意見をぜひお寄せください。私たちの[[$1|フィードバック専用ページ]]をぜひご覧ください。",
 	'prefswitch-main-anon' => '===以前の状態に戻す===
 新機能の数々を停止したい場合、[$1 こちらをクリック]してください。まずログインするかアカウントを作るか尋ねられます。',
-	'prefswitch-main-on' => '===フィードバック===
-ご意見をぜひお寄せください。私たちの[$1 フィードバック専用ページ]をぜひご覧ください。
-===もとに戻す===
+	'prefswitch-main-on' => '===もとに戻す===
 新機能を停止したい場合は、[$2 ここをクリック]してください。',
 	'prefswitch-main-off' => '===お試しください！===
 新機能を有効にしたい場合は、[$1 ここをクリック]してください。',
@@ -2446,9 +2448,9 @@ Należy wybrać wszystkie pasujące odpowiedzi.',
 Powrót do <span class="plainlinks">[$1 $2]</span>.',
 	'prefswitch-main' => "Ciężko pracowaliśmy, aby ułatwić życie naszym użytkownikom. Cieszymy się, że możemy zaprezentować część udoskonaleń, wliczając w to nowy wygląd i nowe, uproszczone funkcjonalności edycyjne. Zwiększanie użyteczności naszych projektów jest priorytetem dla Fundacji Wikimedia – z pewności w przyszłości pojawi się więcej nowych funkcjonalności. Więcej (w języku angielskim) można przeczytać na [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/ blogu Wikimedia].
 
-[[File:UsabilityNavigation.png|right|link=|Nowy układ strony]]
-[[File:UsabilityToolbar.png|right|link=|Nowy pasek narzędziowy]]
-[[File:UsabilityDialogs.png|right|link=|Nowe okienka edycyjne]]
+[[File:VectorNavigation-pl.png|right|link=|Nowy układ strony]]
+[[File:VectorEditorBasic-pl.png|right|link=|Nowy pasek narzędziowy]]
+[[File:VectorLinkDialog-pl.png|right|link=|Nowe okienka edycyjne]]
 
 ===Oto co zmieniliśmy===
 * '''Układ strony''' – Poprawiliśmy układ strony zarówno przy edycji jak i przeglądaniu. Zakładki na górze strony w bardziej czytelny sposób informują o tym czy oglądasz właściwą stronę czy stronę dyskusji oraz czy tylko przeglądasz czy edytujesz daną stronę.
@@ -2456,12 +2458,13 @@ Powrót do <span class="plainlinks">[$1 $2]</span>.',
 * '''Kreator linków''' – Łatwe w użyciu narzędzie pozwala na tworzenie linków zarówno do stron wiki, jak i zewnętrznych serwisów.
 * '''Udoskonalenia wyszukiwania''' – Dzięki nowym, udoskonalonym podpowiedziom szybko znajdziesz to czego szukasz.
 * '''Inne nowe funkcjonalności''' – Nowy kreator tworzenia tabel oraz okno wyszukiwania i zamiany ułatwia edycję stron.
-* '''Wikipedyczny globus z puzzli''' – Zaktualizowaliśmy globus z puzzli będący logo Wikipedii. Więcej informacji (w języku angielskim) znajdziesz na [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ blogu Wikimedia].",
+* '''Wikipedyczny globus z puzzli''' – Zaktualizowaliśmy globus z puzzli będący logo Wikipedii. Więcej informacji (w języku angielskim) znajdziesz na [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ blogu Wikimedia].
+
+===Opinia?===
+Chcielibyśmy poznać Twoją opinię. Odwiedź [[$1|stronę przesyłania opinii]].",
 	'prefswitch-main-anon' => '=== Chcę wrócić ===
 [$1 Kliknij tutaj], jeśli chcesz wyłączyć nowe funkcjonalności. Przed powrotem do starego wyglądu interfejsu musisz utworzyć konto lub zalogować się.',
-	'prefswitch-main-on' => '===Opinia?===
-Chcielibyśmy poznać Twoją opinię. Odwiedź [$1 stronę przesyłania opinii].
-===Chcę to wyłączyć!===
+	'prefswitch-main-on' => '===Chcę to wyłączyć!===
 Jeśli chcesz wyłączyć nowe funkcjonalności po prostu [$2 kliknij tutaj].',
 	'prefswitch-main-off' => '===Wypróbuj!===
 Jeśli chcesz przetestować nowe funkcjonalności po prostu [$1 kliknij tutaj].',
@@ -2588,21 +2591,22 @@ Voltar para <span class="plainlinks">[$1 $2]</span>.',
 	'prefswitch-main' => "Temos trabalhado arduamente para facilitar a utilização do nosso software. É com prazer que agora partilhamos alguns melhoramentos, incluindo uma nova aparência e a simplificação das funcionalidades de edição. Melhorar a usabilidade dos nossos projectos é uma prioridade para a Wikimedia Foundation e mais alterações serão comunicadas no futuro. Para mais detalhes, visite esta [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/ publicação no blogue Wikimedia].
 
 
-[[File:UsabilityNavigation.png|right|link=|Imagem da nova navegação]]
-[[File:UsabilityToolbar.png|right|link=|Imagem da barra melhorada das ferramentas de edição]]
-[[File:UsabilityDialogs.png|right|link=|Imagem dos diálogos de geração de novos conteúdos]]
+[[File:VectorNavigation-en.png|right|link=|Imagem da nova navegação]]
+[[File:VectorEditorBasic-en.png|right|link=|Imagem da barra melhorada das ferramentas de edição]]
+[[File:VectorLinkDialog-en.png|right|link=|Imagem dos diálogos de geração de novos conteúdos]]
 ===O que foi melhorado===
 * '''Navegação:''' A navegação na leitura e edição de páginas foi melhorada. Agora, os separadores no topo da página definem mais claramente se está a visionar a página em si ou a respectiva página de discussão, e se está a lê-la ou a editá-la.
 * '''Barra das ferramentas de edição:''' A barra foi reorganizada para ser mais fácil de usar. Agora, formatar páginas é simples e mais intuitivo.
 * '''Assistente para links:''' Uma ferramenta de fácil utilização permite-lhe criar tanto links para outras páginas da Wikipédia como links para outros sites externos.
 * '''Melhoramentos da pesquisa:''' Melhorámos as sugestões da pesquisa para levá-lo mais rapidamente à página que procura.
 * '''Outras funcionalidades novas:''' Também introduzimos um assistente para facilitar a criação de tabelas, e a funcionalidade de procura e substituição para simplificar a edição de páginas.
-* '''Globo puzzle da Wikipédia:''' Actualizámos o globo em forma de puzzle. Leia mais sobre a actualização no [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ blogue Wikimedia].",
+* '''Globo puzzle da Wikipédia:''' Actualizámos o globo em forma de puzzle. Leia mais sobre a actualização no [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ blogue Wikimedia].
+
+===Opinião?===
+Gostariamos de saber a sua opinião. Visite a nossa [[$1|página de comentários]], por favor.",
 	'prefswitch-main-anon' => '===Voltar atrás===
 Se pretende desactivar as funcionalidades novas, [$1 clique aqui]. Será pedido que se autentique ou crie uma conta.',
-	'prefswitch-main-on' => '===Opinião?===
-Gostariamos de saber a sua opinião. Visite a nossa [$1 página de comentários], por favor.
-===Voltar atrás!===
+	'prefswitch-main-on' => '===Voltar atrás!===
 Se quiser desligar as funcionalidades novas [$2 clique aqui], por favor.',
 	'prefswitch-main-off' => '===Experimente-as!===
 Se quiser activar as funcionalidades novas [$1 clique aqui], por favor.',
@@ -2653,21 +2657,22 @@ Selecione todas as opções que se aplicam, por favor.',
 Voltar para <span class="plainlinks">[$1 $2]</span>.',
 	'prefswitch-main' => "Temos trabalhado arduamente para facilitar a utilização do nosso software. É com prazer que agora partilhamos alguns melhoramentos, incluindo uma nova aparência e a simplificação das funcionalidades de edição. Melhorar a usabilidade dos nossos projetos é uma prioridade para a Wikimedia Foundation e mais alterações serão comunicadas no futuro. Para mais detalhes, visite esta [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/ publicação no blogue Wikimedia].
 
-[[File:UsabilityNavigation.png|right|link=|Imagem da nova navegação]]
-[[File:UsabilityToolbar.png|right|link=|Imagem da barra melhorada das ferramentas de edição]]
-[[File:UsabilityDialogs.png|right|link=|Imagem dos diálogos de geração de novos conteúdos]]
+[[File:VectorNavigation-en.png|right|link=|Imagem da nova navegação]]
+[[File:VectorEditorBasic-en.png|right|link=|Imagem da barra melhorada das ferramentas de edição]]
+[[File:VectorLinkDialog-en.png|right|link=|Imagem dos diálogos de geração de novos conteúdos]]
 ===O que foi melhorado===
 * '''Navegação:''' A navegação para leitura e edição de páginas foi melhorada. Agora, os separadores no topo da página definem mais claramente caso se esteja visualizando uma página ou a página de discussão, e se você está lendo-a ou editando-a.
 * '''Barra das ferramentas de edição:''' A barra foi reorganizada para ser mais fácil de usar. Agora, formatar páginas é mais simples e mais intuitivo.
 * '''Assistente para links:''' Uma ferramenta de fácil utilização permite-lhe criar tanto links para outras páginas da Wikipédia como links para outros sites externos.
 * '''Melhoramentos da pesquisa:''' Melhoramos as sugestões da pesquisa para levá-lo mais rapidamente à página que procura.
 * '''Outras funcionalidades novas:''' Também introduzimos um assistente para facilitar a criação de tabelas, e a funcionalidade de procura e substituição para simplificar a edição de páginas.
-* '''Globo quebra-cabeça da Wikipédia:''' Atualizamos o globo em forma de quebra-cabeça. Leia mais sobre a atualização no [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ blogue Wikimedia].",
+* '''Globo quebra-cabeça da Wikipédia:''' Atualizamos o globo em forma de quebra-cabeça. Leia mais sobre a atualização no [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ blogue Wikimedia].
+
+===Opinião?===
+Gostaríamos de saber a sua opinião. Visite a nossa [[$1|página de comentários]], por favor.",
 	'prefswitch-main-anon' => '===Voltar atrás===
 Se pretende desativar as funcionalidades novas, [$1 clique aqui]. Será pedido que se autentique ou crie uma conta.',
-	'prefswitch-main-on' => '===Opinião?===
-Gostaríamos de saber a sua opinião. Visite a nossa [$1 página de comentários], por favor.
-===Voltar atrás!===
+	'prefswitch-main-on' => '===Voltar atrás!===
 Se quiser desligar as funcionalidades novas [$2 clique aqui], por favor.',
 	'prefswitch-main-off' => '===Experimente-as!===
 Se você quiser ativar as funcionalidades novas [$1 clique aqui], por favor.',
@@ -2719,21 +2724,21 @@ $messages['ru'] = array(
 	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
 | align=\"center\" |
 {| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
-| [[Image:VectorNavigation-en.png|401px|]]
+| [[Image:VectorNavigation-ru.png|401px|]]
 |-
-| Вид нового интерфейса навигации Википедии <small>[[Media:VectorNavigation-en.png|(увеличить)]]</small>
+| Вид нового интерфейса навигации Википедии <small>[[Media:VectorNavigation-ru.png|(увеличить)]]</small>
 |}
 |-
 | align=\"center\" |
 {| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
-| [[Image:VectorEditorBasic-en.png|401px|]]
+| [[Image:VectorEditorBasic-ru.png|401px|]]
 |-
-| Вид основного интерфейса редактирования страниц <small>[[Media:VectorEditorBasic-en.png|(увеличить)]]</small>
+| Вид основного интерфейса редактирования страниц <small>[[Media:VectorEditorBasic-ru.png|(увеличить)]]</small>
 |}
 |-
 | align=\"center\" |
 {| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
-| [[Image:VectorLinkDialog-en.png|401px|]]
+| [[Image:VectorLinkDialog-ru.png|401px|]]
 |-
 | Вид нового диалога создания ссылок
 |}
@@ -2749,7 +2754,7 @@ $messages['ru'] = array(
 * '''Логотип Википедии.''' Мы обновили вид шарика-пазла, подробнее см. [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ блог Викимедии].
 
 === Обратная связь ===
-Мы хотели бы услышать ваши отзывы. Пожалуйста, посетите нашу <span class=\"plainlinks\">[\$1 страницу обратной связи]</span>. Если вам интересны наши дальнейшие усилия по улучшению программного обеспечения, посетите [http://usability.wikimedia.org вики юзабилити-проекта].",
+Мы хотели бы услышать ваши отзывы. Пожалуйста, посетите нашу [[\$1|страницу обратной связи]]. Если вам интересны наши дальнейшие усилия по улучшению программного обеспечения, посетите [http://usability.wikimedia.org вики юзабилити-проекта].",
 	'prefswitch-main-anon' => '=== Вернуть как было ===
 Если вы хотите отключить новые возможности, [$1 нажмите здесь]. Вам будет предложено сначала представиться или зарегистрировать учётную запись.',
 	'prefswitch-main-on' => '=== Верните всё обратно! ===
