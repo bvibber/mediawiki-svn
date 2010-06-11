@@ -17,7 +17,7 @@ if ( /(Android|iPhone|iPod|webOS|NetFront|Opera Mini|SEMC-Browser|PlayStation Po
 			var mainPage = wgMainPageTitle.replace(/ /g, '_');
 			var url = 'http://' + wgContentLanguage + ".m.wikipedia.org/";
 			if (wgPageName != mainPage) {
-				url += "wiki/" + encodeURIComponent(wgPageName).replace('%2F','/').replace('%3A',':');
+				url += "wiki/" + encodeURI(wgPageName);
 			}
 			return url;
 		}
