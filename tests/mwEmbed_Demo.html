@@ -2,10 +2,40 @@
 <html>
 <head>
 	<title>mWEmbed Tutorial</title>
-  <link href='http://fonts.googleapis.com/css?family=Molengo' rel='stylesheet' type='text/css'>
+
+  <link type="text/css" rel="stylesheet" href="jslib/syntax/prettify.css" /> 
+  <link rel="stylesheet" type="text/css" media="screen" href="jslib/menu/css/superfish.css" /> 
+  <link rel="stylesheet" type="text/css" media="screen" href="jslib/menu/css/superfish-vertical.css" /> 
 	<link rel="stylesheet" href="style.css" type="text/css" media="screen" />
-  <!-- <script type="text/javascript" src="http://html5.kaltura.org/js" > </script> -->
-  <script type="text/javascript" src="../mwEmbed.js?debug=true"></script>
+
+  <script type="text/javascript" src="jslib/jquery.js"></script> 
+  <script type="text/javascript" src="jslib/syntax/prettify.js"></script> 
+  <script type="text/javascript" src="jslib/menu/hoverIntent.js"></script> 
+  <script type="text/javascript" src="jslib/menu/superfish.js"></script> 
+  <script type="text/javascript" src="jslib/menu/jquery-ui-1.7.2.core.min.js"></script> 
+  <script type="text/javascript" src="jslib/menu/jquery.scrollfollow.js"></script> 
+
+  <script type="text/javascript" src="http://html5.kaltura.org/js" > </script>
+  <!-- <script type="text/javascript" src="../mwEmbed.js?debug=true"></script> -->
+
+  <script type="text/javascript"> 
+    $(function () {
+      $(".prettyprintready").each(function () {
+        var code = $(this).html().replace(/</g,'&lt;').replace(/>/g,'&gt;');
+        var div = $('<div class="code"><code class="prettyprint">'+code+'</code></div>');
+        $(this).html(div);
+      });
+      prettyPrint();
+    
+      $("ul.sf-menu").superfish({
+        delay:1000,
+        animation:{opacity:'show', height:'show'},
+        speed:'fast'
+      });
+  
+      $('.sideBox').scrollFollow();
+    });
+  </script>
 </head>
 <body>
 
@@ -15,17 +45,16 @@
 
   <div id="content">
 
-    <div id="mwEmbed_video">
+    <div id="demo_player">
 
-     <video id="video" style="width:544px;height:304px;" 
- 		poster="http://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Elephants_Dream.ogg/seek%3D13-Elephants_Dream.ogg.jpg"
- 		duration="10:53" 
- 		linkback="http://www.elephantsdream.org/" > 		
-	<source type="video/ogg" src="http://upload.wikimedia.org/wikipedia/commons/b/bd/Elephants_Dream.ogg" ></source>
-	<source type="video/h264" src="http://www.archive.org/download/ElephantsDream/ed_1024_512kb.mp4"></source>
+      <video id="video" style="width:544px;height:304px;" 
+ 		    poster="http://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Elephants_Dream.ogg/seek%3D13-Elephants_Dream.ogg.jpg"
+ 		    duration="10:53" 
+ 		    linkback="http://www.elephantsdream.org/" > 		
+	      <source type="video/ogg" src="http://ia311040.us.archive.org/3/items/ElephantsDream/ed_1024.ogv" >
+	      <source type="video/h264" src="http://ia311040.us.archive.org/3/items/ElephantsDream/ed_hd_512kb.mp4" >
 	
-	
-	<!--  Subtitles -->
+		<!--  Subtitles -->
 	
       <track kind="subtitles" id="video_af" srclang="af" 
              src="media/elephants_dream/elephant.afrikaans.srt"></track>
@@ -136,15 +165,49 @@
     <!-- Chapters -->
       <track kind="chapters" id="chapters" srclang="en" label="Chapters"
              src="media/elephants_dream/chapters.srt"></track>		 			 
-		 	
-	</video>
- 
+	 	
+	    </video>
 
-    </div><!-- END mwEmbed_video -->
+    </div><!-- END demo_player -->
 
-    <div id="instructions">
+    <div class="sideBox">
+      <ul class="sf-menu sf-horizontal"> 
+        <li><a href="#flashvars">FlashVars</a> 
+          <ul> 
+            <li><a href="#kalturaservices">Connecting to the Kaltura Services</a></li> 
+            <li><a href="#mediaentry">Kaltura MediaEntry</a></li> 
+            <li><a href="#layoutfunctionality">Player Layout and Functionality</a></li> 
+          </ul> 
+        </li> 
+        <li><a href="#jsapi">JavaScript API</a> 
+          <ul> 
+            <li><a href="#jscallbackready">jsCallbackReady</a></li> 
+            <li><a href="#addlistener">addJsListener</a></li> 
+            <li><a href="#removelistener">removeJsListener</a></li> 
+          </ul> 
+        </li> 
+        <li><a href="#expressions">Expressions</a> 
+          <ul> 
+            <li><a href="#expressiontypes">Expression types</a></li> 
+            <li><a href="#itemrendereresscope">itemRenderers scope</a></li> 
+            <li><a href="#globalfunctions">Global helper functions in expressions</a></li> 
+          </ul> 
+        </li> 
+      </ul> 
+
+    <div id="demo_control_panel" style="display:none;">
+      <p>Demo Controls</p>
+    </div><!-- END demo_control_panel -->
+
+    <div id="help" style="display:none;">
       <p>Instructions will go here</p>
-    </div><!-- END instructions -->
+    </div><!-- END help -->
+
+    <div id="documentation">
+      <p>Docs go here</p>
+    </div><!-- END documentation -->
+    </div><!-- end sideBox -->
+
   </div><!-- END content -->
 </div><!-- END container -->
 
