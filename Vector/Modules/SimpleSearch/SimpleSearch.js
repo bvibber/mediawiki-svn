@@ -43,10 +43,11 @@ $j(document).ready( function() {
 				.css({
 					'display': 'none',
 					'position' : 'absolute',
-					'bottom': 0,
-					'padding': '0.25em',
 					'color': '#999999',
-					'cursor': 'text'
+					'cursor': 'text',
+					'margin': '0 4px',
+					'top': '6px',
+					'line-height': '13px'
 				})
 				.css( ( $j( 'body' ).is( '.rtl' ) ? 'right' : 'left' ), 0 )
 				.click( function() {

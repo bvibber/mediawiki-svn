@@ -17,13 +17,13 @@ class VectorHooks {
 			array( 'src' => 'Modules/ExpandableSearch/ExpandableSearch.js', 'version' => 4 ),
 			array( 'src' => 'Modules/EditWarning/EditWarning.js', 'version' => 8 ),
 			array( 'src' => 'Modules/FooterCleanup/FooterCleanup.js', 'version' => 5 ),
-			array( 'src' => 'Modules/SimpleSearch/SimpleSearch.js', 'version' => 16 ),
+			array( 'src' => 'Modules/SimpleSearch/SimpleSearch.js', 'version' => 17 ),
 		),
 		'combined' => array(
-			array( 'src' => 'Vector.combined.js', 'version' => 50 ),
+			array( 'src' => 'Vector.combined.js', 'version' => 51 ),
 		),
 		'minified' => array(
-			array( 'src' => 'Vector.combined.min.js', 'version' => 50 ),
+			array( 'src' => 'Vector.combined.min.js', 'version' => 51 ),
 		),
 	);
 	static $modules = array(
