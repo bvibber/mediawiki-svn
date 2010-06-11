@@ -45,6 +45,9 @@ class CategoryMultisortChineseHooks {
 		$this->onCategoryMultisortSortkeys_setDefaultSortkey( $categoryMultisorts, 'mandarin',
 			$this->onCategoryMultisortSortkeys_buildMandarinSortkey( $data, $text )
 		);
+		$this->onCategoryMultisortSortkeys_setDefaultSortkey( $categoryMultisorts, 'cantonese',
+			$this->onCategoryMultisortSortkeys_buildCantoneseSortkey( $data, $text )
+		);
 		$this->onCategoryMultisortSortkeys_setDefaultSortkey( $categoryMultisorts, 'stroke',
 			$this->onCategoryMultisortSortkeys_buildStrokeSortkey( $data, $text )
 		);
@@ -116,6 +119,19 @@ class CategoryMultisortChineseHooks {
 	        $chcp = utf8ToCodepoint( $ch );
 	        # One Mandarin entry can have 7 bytes max.
 	        $md = str_pad( array_key_exists( $chcp, $data->mandarin ) ? $data->mandarin[$chcp] : '', 7 );
+	        $result .= $md . $c;
+	    }
+	    return $result;
+	}
+	
+	function onCategoryMultisortSortkeys_buildCantoneseSortkey( $data, $str ) {
+	    $result = '';
+	    foreach ( $this->onCategoryMultisortSortkeys_splitString( $str ) as $ch ) {
+	        # One UTF-8 character can have 4 bytes max.
+	        $c = str_pad( $ch, 4 );
+	        $chcp = utf8ToCodepoint( $ch );
+	        # One Cantonese entry can have 7 bytes max ([a-z]{1,6}[1-6]).
+	        $md = str_pad( array_key_exists( $chcp, $data->cantonese ) ? $data->cantonese[$chcp] : '', 7 );
 	        $result .= $md . $c;
 	    }
 	    return $result;

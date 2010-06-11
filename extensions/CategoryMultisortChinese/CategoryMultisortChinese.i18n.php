@@ -12,6 +12,7 @@ $messages = array();
 $messages['en'] = array(
 	'categorymultisortchinese-desc' => 'Allowing categories to be viewed with different sortkeys specific to Chinese scripts',
 	'categorymultisort-sortkey-name-mandarin' => 'Mandarin',
+	'categorymultisort-sortkey-name-cantonese' => 'Cantonese',
 	'categorymultisort-sortkey-name-stroke' => 'Stroke',
 	'categorymultisort-sortkey-name-stroke-s' => 'Stroke: Simplified',
 	'categorymultisort-sortkey-name-stroke-t' => 'Stroke: Traditional',

@@ -39,5 +39,6 @@ function efCategoryMultisortChineseInit() {
 new CategoryMultisortChineseHooks();
 
 $wgCategoryMultisortSortkeySettings['mandarin'] = array();
+$wgCategoryMultisortSortkeySettings['cantonese'] = array();
 $wgCategoryMultisortSortkeySettings['stroke'] = array( 'first' => 3, 'type' => 'int' );
 $wgCategoryMultisortSortkeySettings['radical'] = array();
