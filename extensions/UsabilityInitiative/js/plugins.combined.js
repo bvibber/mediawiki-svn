@@ -11776,7 +11776,7 @@ fn: {
 							$sections
 							.css( 'display', 'block' )
 							.animate( { 'height': $section.outerHeight() }, $section.outerHeight() * 2, function() {
-								$this.css( 'overflow', 'visible' ).css( 'height', 'auto' );
+								$( this ).css( 'overflow', 'visible' ).css( 'height', 'auto' );
 								context.fn.trigger( 'resize' );
 							} );
 						}
