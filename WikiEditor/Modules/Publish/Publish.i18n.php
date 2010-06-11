@@ -883,6 +883,7 @@ $messages['pt'] = array(
 /** Brazilian Portuguese (Português do Brasil)
  * @author 555
  * @author Everton137
+ * @author Giro720
  * @author Hamilton Abreu
  * @author Lijealso
  * @author Luckas Blade
@@ -891,7 +892,7 @@ $messages['pt-br'] = array(
 	'wikieditor-publish-preference' => 'Ativar publicação passo-a-passo',
 	'wikieditor-publish-button-publish' => 'Publicar',
 	'wikieditor-publish-button-cancel' => 'Cancelar',
-	'wikieditor-publish-dialog-title' => 'Publicar em {{SITENAME}}',
+	'wikieditor-publish-dialog-title' => 'Publicar na {{SITENAME}}',
 	'wikieditor-publish-dialog-summary' => 'Sumário de edição (breve descrição das suas alterações):',
 	'wikieditor-publish-dialog-minor' => 'Edição menor',
 	'wikieditor-publish-dialog-watch' => 'Vigiar esta página',

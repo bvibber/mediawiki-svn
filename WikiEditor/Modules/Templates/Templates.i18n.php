@@ -264,7 +264,7 @@ $messages['pt'] = array(
  * @author Giro720
  */
 $messages['pt-br'] = array(
-	'wikieditor-templates-preference' => 'Possibilitar a recolha e expansão de predefinições',
+	'wikieditor-templates-preference' => 'Habilitar predefinições colapsáveis',
 );
 
 /** Russian (Русский)

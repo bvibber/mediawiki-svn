@@ -310,6 +310,16 @@ $messages['id'] = array(
 	'tooltip-pt-prefswitch-link-off' => 'Coba fitur baru',
 );
 
+/** Ido (Ido)
+ * @author Malafaya
+ */
+$messages['io'] = array(
+	'prefswitch-link-anon' => 'Nova funcioni',
+	'tooltip-pt-prefswitch-link-anon' => 'Lernez pri nova funcioni',
+	'prefswitch-link-off' => 'Nova funcioni',
+	'tooltip-pt-prefswitch-link-off' => 'Probez nova funcioni',
+);
+
 /** Italian (Italiano)
  * @author Una giornata uggiosa '94
  */

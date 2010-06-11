@@ -99,10 +99,11 @@ $messages['el'] = array(
 );
 
 /** Esperanto (Esperanto)
+ * @author ArnoLagrange
  * @author Yekrats
  */
 $messages['eo'] = array(
-	'vector-collapsiblenav-preference' => 'Ŝalti kaŝablan dekstran navigan menuon',
+	'vector-collapsiblenav-preference' => 'Ŝalti kaŝeblan dekstran navigan menuon',
 );
 
 /** Spanish (Español)
@@ -212,6 +213,13 @@ $messages['ia'] = array(
 $messages['id'] = array(
 	'vector-collapsiblenav-preference' => 'Aktifkan fungsi menu navigasi kiri yang dapat ditutup',
 	'vector-collapsiblenav-more' => 'Lebih banyak bahasa',
+);
+
+/** Ido (Ido)
+ * @author Malafaya
+ */
+$messages['io'] = array(
+	'vector-collapsiblenav-more' => 'Plusa lingui',
 );
 
 /** Italian (Italiano)
@@ -385,6 +393,7 @@ $messages['vi'] = array(
  */
 $messages['yi'] = array(
 	'vector-collapsiblenav-preference' => 'אַקטיווירן צונויפֿלייגבאַרן מעניו לינקס',
+	'vector-collapsiblenav-more' => 'נאך שפראַכן',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

@@ -351,6 +351,14 @@ $messages['id'] = array(
 	'vector-simplesearch-containing' => 'isian ...',
 );
 
+/** Ido (Ido)
+ * @author Malafaya
+ */
+$messages['io'] = array(
+	'vector-simplesearch-search' => 'Serchez',
+	'vector-simplesearch-containing' => 'quan kontenas...',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  * @author Gianfranco
