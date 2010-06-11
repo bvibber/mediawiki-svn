@@ -24,6 +24,21 @@ require_once 'PHPUnit/Framework.php';
 error_reporting( E_ALL );
 
 class DataTransclusionTest extends PHPUnit_Framework_TestCase {
+	protected static $templates = array(
+		'Test' => array(
+			'text' => "'''{{{id}}}'''|{{{name}}}|{{{info}}}",
+		)
+	);
+
+	static function getTemplate( $title, $parser ) {
+		$name = $title->getText();
+
+		if ( $title->getNamespace() == NS_TEMPLATE && isset( DataTransclusionTest::$templates[ $name ] ) ) {
+			return DataTransclusionTest::$templates[ $name ];
+		} else {
+			return Parser::statelessFetchTemplate( $title, $parser );
+		}
+	}
 
 	function setUp() {
 		global $wgTitle;
@@ -40,6 +55,8 @@ class DataTransclusionTest extends PHPUnit_Framework_TestCase {
 		$this->testCachedFetchRecord();
 		$this->testRender();
 		$this->testHandleRecordTransclusion();
+		$this->testHandleRecordFunction();
+		$this->testHandleRecordTag();
 		$this->testDBDataTransclusionSource();
 		$this->testWebDataTransclusionSource();
 	}
@@ -202,6 +219,7 @@ class DataTransclusionTest extends PHPUnit_Framework_TestCase {
 		$this->assertTrue( preg_match( '/class="error datatransclusion-unknown-template"/', $s ) === 1 );
 		*/
 
+		////////////////////////////////////////////////////////
 		# success: render record
 		$res = DataTransclusionHandler::handleRecordTransclusion( "3", array( 'source' => 'FOO', 'template' => 'Test' ), $wgParser, false, "'''{{{id}}}'''|{{{name}}}|{{{info}}}" );
 		$this->assertEquals( $res, '\'\'\'3\'\'\'|foo|test&X' );
@@ -213,6 +231,56 @@ class DataTransclusionTest extends PHPUnit_Framework_TestCase {
 		# success: render record (as HTML)
 		$res = DataTransclusionHandler::handleRecordTransclusion( "3", array( 'source' => 'FOO', 'template' => 'Test' ), $wgParser, true, "'''{{{id}}}'''|{{{name}}}|{{{info}}}" );
 		$this->assertEquals( $res, '<b>3</b>|foo|test&X' ); // FIXME: & should have been escaped to &amp; here, no? why not?
+	}
+
+	function testHandleRecordFunction() {
+		global $wgDataTransclusionSources;
+
+		$data[] = array( "name" => "foo", "id" => "3", "info" => 'test&X' );
+		$spec = array(
+			'class' => 'FakeDataTransclusionSource',
+			'data' => $data,
+			'keyFields' => 'name,id',
+			'fieldNames' => 'id,name,info',
+			'defaultKey' => 'id'
+		);
+		
+		$wgDataTransclusionSources[ 'FOO' ] = $spec;
+
+		global $wgParser;
+		$title = Title::newFromText( "Dummy" );
+		$options = new ParserOptions();
+		$options->setTemplateCallback( 'DataTransclusionTest::getTemplate' );
+
+		$text = 'xx {{#record:FOO|3|Test}} xx';
+		$wgParser->parse( $text, $title, $options );
+		$html = $wgParser->getOutput()->getText();
+		$this->assertEquals( $html, "<p>xx <b>3</b>|foo|test&amp;X xx\n</p>" ); // XXX: should be more leient wrt whitespace
+	}
+
+	function testHandleRecordTag() {
+		global $wgDataTransclusionSources;
+
+		$data[] = array( "name" => "foo", "id" => "3", "info" => 'test&X' );
+		$spec = array(
+			'class' => 'FakeDataTransclusionSource',
+			'data' => $data,
+			'keyFields' => 'name,id',
+			'fieldNames' => 'id,name,info',
+			'defaultKey' => 'id'
+		);
+		
+		$wgDataTransclusionSources[ 'FOO' ] = $spec;
+
+		global $wgParser;
+		$title = Title::newFromText( "Dummy" );
+		$options = new ParserOptions();
+		$options->setTemplateCallback( 'DataTransclusionTest::getTemplate' );
+
+		$text = 'xx <record source=FOO template="Test">3</record> xx';
+		$wgParser->parse( $text, $title, $options );
+		$html = $wgParser->getOutput()->getText();
+		$this->assertEquals( $html, "<p>xx <b>3</b>|foo|test&amp;X xx\n</p>" ); // XXX: should be more leient wrt whitespace
 	}
 
 	function testNormalizeRecord() {

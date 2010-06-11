@@ -77,7 +77,7 @@ class DataTransclusionHandler {
 	* Entry point for the <record> tag parser hook. Delegates to handleRecordTransclusion.
 	*/
 	static function handleRecordTag( $key, $argv, $parser ) {
-		DataTransclusionHandler::handleRecordTransclusion( $key, $argv, $parser, true );
+		return DataTransclusionHandler::handleRecordTransclusion( $key, $argv, $parser, true );
 	}
 
 	/**
