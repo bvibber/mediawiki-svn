@@ -2831,6 +2831,7 @@ $messages['sk'] = array(
  * @author Dbc334
  */
 $messages['sl'] = array(
+	'ogg-desc' => 'Upravljavec datotek Ogg Theora in Vorbis, s predvajalnikom JavaScript',
 	'ogg-short-audio' => 'Zvočna datoteka Ogg $1, $2',
 	'ogg-short-video' => 'Videodatoteka Ogg $1, $2',
 	'ogg-short-general' => 'Predstavnostna datoteka Ogg $1, $2',
@@ -2851,6 +2852,8 @@ $messages['sl'] = array(
 	'ogg-dismiss' => 'Zapri',
 	'ogg-download' => 'Prenesi datoteko',
 	'ogg-desc-link' => 'O datoteki',
+	'ogg-oggThumb-version' => 'OggHandler potrebuje oggThumb različice $1 ali novejše.',
+	'ogg-oggThumb-failed' => 'oggThumb ni uspel ustvariti predogledne sličice.',
 );
 
 /** Albanian (Shqip)

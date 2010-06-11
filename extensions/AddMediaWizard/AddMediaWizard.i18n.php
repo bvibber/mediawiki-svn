@@ -142,6 +142,13 @@ $messages['ig'] = array(
 	'addmediawizard-desc' => 'Tinyé ogboma nka, nke há rürü na ihe mkpara ndi Kaltura na Wikimedia Foundation',
 );
 
+/** Italian (Italiano)
+ * @author HalphaZ
+ */
+$messages['it'] = array(
+	'addmediawizard-desc' => 'Aggiunta guidata di media, sviluppato in partnership da Kaltura e Wikimedia Foundation',
+);
+
 /** Japanese (日本語)
  * @author Fryed-peach
  */

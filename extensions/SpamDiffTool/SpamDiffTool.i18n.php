@@ -1277,11 +1277,13 @@ Carregue <a href='$1'>aqui</a> para voltar.",
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
+ * @author Giro720
  */
 $messages['pt-br'] = array(
 	'spamdifftool' => 'Gerenciar a lista negra de spam',
 	'spamdifftool-desc' => 'Fornece uma forma básica de adicionar novas entradas à lista negra de spam a partir de páginas de diferenças',
 	'spamdifftool_cantedit' => 'As nossas desculpas - você não tem permissão para editar a lista negra de spam.',
+	'spamdifftool-no-title' => "'''Erro:''' não foi especificado nenhum título de página.",
 	'spamdifftool_notext' => "Não há qualquer texto para adicionar à lista negra de spam.
 Clique <a href='$1'>aqui</a> para continuar.",
 	'spamdifftool_confirm' => "Confirme que pretende adicionar estas entradas à lista negra de spam.

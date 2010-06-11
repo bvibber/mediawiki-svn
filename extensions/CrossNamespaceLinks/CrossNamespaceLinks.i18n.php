@@ -464,6 +464,7 @@ $messages['id'] = array(
  * @author Malafaya
  */
 $messages['io'] = array(
+	'crossnamespacelinks' => 'Ligili inter nomari',
 	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|ligilo|ligili}} vers $3',
 );
 

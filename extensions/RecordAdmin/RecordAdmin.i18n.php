@@ -1797,6 +1797,7 @@ $messages['pt'] = array(
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
+ * @author Giro720
  * @author Luckas Blade
  */
 $messages['pt-br'] = array(
@@ -1841,6 +1842,7 @@ $messages['pt-br'] = array(
 	'right-recordadmin' => 'Encontrar e editar páginas de registros',
 	'recordadmin-export-csv' => 'CSV',
 	'recordadmin-export-pdf' => 'PDF',
+	'recordadmin-notset' => 'Não {{PLURAL:$1|existe|existem}} "$1"',
 );
 
 /** Romanian (Română)

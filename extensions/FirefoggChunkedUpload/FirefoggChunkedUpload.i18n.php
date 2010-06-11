@@ -187,6 +187,13 @@ $messages['pt'] = array(
 	'firefoggcu-desc' => 'Protocolo de Chunked Uploading do Firefogg',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Giro720
+ */
+$messages['pt-br'] = array(
+	'firefoggcu-desc' => 'Protocolo de Chunked Uploading do Firefogg',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

@@ -295,12 +295,18 @@ $messages['ca'] = array(
 	'ct-total-header' => 'Clics totals',
 	'ct-start-date' => "Data d'inici (AAAAMMDD)",
 	'ct-end-date' => 'Data de finalització (AAAAMMDD)',
+	'ct-increment-by' => 'Nombre de dies que cada punt representa',
+	'ct-change-graph' => 'Canvia el gràfic',
 	'ct-beginner' => 'Principiant',
 	'ct-intermediate' => 'Intermedi',
 	'ct-expert' => 'Expert',
+	'ct-date-range' => 'interval de dates',
+	'ct-editing' => 'Actualment editant:',
 	'ct-anon-users' => 'Usuaris anònims',
 	'ct-user-contribs' => "Total de contribucions de l'usuari",
+	'ct-user-span' => "Contribucions de l'usuari en l'interval de temps",
 	'ct-and' => 'i',
+	'ct-update-table' => 'Actualitza taula',
 );
 
 /** Czech (Česky)
@@ -902,6 +908,9 @@ $messages['ig'] = array(
  * @author Malafaya
  */
 $messages['io'] = array(
+	'ct-beginner' => 'Novico',
+	'ct-expert' => 'Experto',
+	'ct-anon-users' => 'Anonima uzanti',
 	'ct-and' => 'e(d)',
 );
 
@@ -1938,6 +1947,7 @@ $messages['vo'] = array(
  * @author פוילישער
  */
 $messages['yi'] = array(
+	'ct-beginner' => 'אָנהייבער',
 	'ct-anon-users' => 'אַנאנימע באַניצער',
 	'ct-and' => 'און',
 );

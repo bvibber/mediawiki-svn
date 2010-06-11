@@ -84,6 +84,19 @@ $messages['fr'] = array(
 	'embedvideo-illegal-width' => 'EmbedVideo a reçu le paramètre de largeur invalide « $1 ».',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'embedvideo-desc' => 'Engade unha función analítica para incorporar vídeos desde fontes populares',
+	'embedvideo-missing-params' => 'Falta un parámetro necesario para EmbedVideo.',
+	'embedvideo-bad-params' => 'EmbedVideo recibiu un parámetro incorrecto.',
+	'embedvideo-unparsable-param-string' => 'EmbedVideo recibiu o parámetro non analizable "<code>$1</code>".',
+	'embedvideo-unrecognized-service' => 'EmbedVideo non recoñece o servizo de vídeo "<code>$1</code>".',
+	'embedvideo-bad-id' => 'EmbedVideo recibiu un id incorrecto, "$1", para o servizo "$2".',
+	'embedvideo-illegal-width' => 'EmbedVideo recibiu o parámetro de largo incorrecto "$1".',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

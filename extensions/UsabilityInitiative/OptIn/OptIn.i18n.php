@@ -919,6 +919,14 @@ Hem introduït una sèrie d'altres millores com la navegació, les pestanyes en 
 Per saber més sobre la Iniciativa d'Usabilitat, si us plau, visitau el nostre [http://usability.wikimedia.org/wiki/Wikipedia_Usability_Initiative web].<div style=\"clear:both\"></div>",
 );
 
+/** Chechen (Нохчийн)
+ * @author Sasan700
+ */
+$messages['ce'] = array(
+	'optin-accept-long' => 'Хьажа жим гlоле-тайпанара муха ю',
+	'optin-accept-long-anon' => 'Дlавазлой хьажа муха ю жим гlоле-тайпанар юкъардакъанга',
+);
+
 /** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
  * @author Marmzok
  */

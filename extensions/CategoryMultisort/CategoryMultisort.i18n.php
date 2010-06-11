@@ -18,6 +18,56 @@ $messages['en'] = array(
 	'prefs-category' => 'Category',
 );
 
+/** Message documentation (Message documentation)
+ * @author EugeneZelenko
+ */
+$messages['qqq'] = array(
+	'categorymultisort-defaultsortkey-name' => '{{Identical|Default}}',
+	'categorymultisort-go' => '{{Identical|Go}}',
+	'prefs-category' => '{{Identical|Category}}',
+);
+
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'categorymultisort-defaultsortkey-name' => 'Standaard',
+);
+
+/** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
+ * @author EugeneZelenko
+ * @author Jim-by
+ */
+$messages['be-tarask'] = array(
+	'categorymultisort-desc' => 'Дазваляе праглядаць катэгорыі з рознымі ключамі сартаваньня',
+	'categorymultisort-defaultsortkey-name' => 'Па змоўчваньні',
+	'categorymultisort-sortkey' => 'Ключ сартаваньня:',
+	'categorymultisort-go' => 'Перайсьці',
+	'categorymultisort-default-sortkey' => 'Ключ сартаваньня па змоўчваньні:',
+	'prefs-category' => 'Катэгорыя',
+);
+
+/** Breton (Brezhoneg)
+ * @author Y-M D
+ */
+$messages['br'] = array(
+	'categorymultisort-defaultsortkey-name' => 'Dre ziouer',
+	'categorymultisort-go' => 'Mont',
+	'prefs-category' => 'Rummad',
+);
+
+/** German (Deutsch)
+ * @author Kghbln
+ */
+$messages['de'] = array(
+	'categorymultisort-desc' => 'Ermöglicht es, Kategorien nach unterschiedlichen Sortierkriterien anzuzeigen',
+	'categorymultisort-defaultsortkey-name' => 'Standard',
+	'categorymultisort-sortkey' => 'Sortierkriterium:',
+	'categorymultisort-go' => 'Ausführen',
+	'categorymultisort-default-sortkey' => 'Standardsortierkriterium:',
+	'prefs-category' => 'Kategorie',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
@@ -31,11 +81,15 @@ $messages['dsb'] = array(
 );
 
 /** Spanish (Español)
+ * @author Bola
  * @author Crazymadlover
  */
 $messages['es'] = array(
+	'categorymultisort-desc' => 'Permitir mostrar las categorías con diferentes atajos',
 	'categorymultisort-defaultsortkey-name' => 'Por defecto',
+	'categorymultisort-sortkey' => 'Atajo:',
 	'categorymultisort-go' => 'Ir',
+	'categorymultisort-default-sortkey' => 'Atajo predefinido:',
 	'prefs-category' => 'Categoría',
 );
 
@@ -51,6 +105,18 @@ $messages['fr'] = array(
 	'prefs-category' => 'Catégorie',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'categorymultisort-desc' => 'Permite que se poidan ollar as categorías mediante claves de ordenación diferentes',
+	'categorymultisort-defaultsortkey-name' => 'Por defecto',
+	'categorymultisort-sortkey' => 'Clave de ordenación:',
+	'categorymultisort-go' => 'Ir',
+	'categorymultisort-default-sortkey' => 'Clave de ordenación por defecto:',
+	'prefs-category' => 'Categoría',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -63,6 +129,30 @@ $messages['hsb'] = array(
 	'prefs-category' => 'Kategorija',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'categorymultisort-desc' => 'Permitte le presentation de categorias con differente claves de ordination',
+	'categorymultisort-defaultsortkey-name' => 'Predefinition',
+	'categorymultisort-sortkey' => 'Clave de ordination:',
+	'categorymultisort-go' => 'Ir',
+	'categorymultisort-default-sortkey' => 'Clave de ordination predefinite:',
+	'prefs-category' => 'Categoria',
+);
+
+/** Macedonian (Македонски)
+ * @author Bjankuloski06
+ */
+$messages['mk'] = array(
+	'categorymultisort-desc' => 'Овозможува категориите да се прегледуваат по различни клучеви на подредување',
+	'categorymultisort-defaultsortkey-name' => 'По основно',
+	'categorymultisort-sortkey' => 'Подреден клуч:',
+	'categorymultisort-go' => 'Оди',
+	'categorymultisort-default-sortkey' => 'Основен подреден клуч:',
+	'prefs-category' => 'Категорија',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -73,6 +163,31 @@ $messages['nl'] = array(
 	'categorymultisort-go' => 'OK',
 	'categorymultisort-default-sortkey' => 'Standaard sorteerwijze:',
 	'prefs-category' => 'Categorie',
+);
+
+/** Portuguese (Português)
+ * @author Giro720
+ * @author Hamilton Abreu
+ */
+$messages['pt'] = array(
+	'categorymultisort-desc' => 'Permitir que as categorias sejam visionadas com diferentes chaves de ordenação',
+	'categorymultisort-defaultsortkey-name' => 'Por omissão',
+	'categorymultisort-sortkey' => 'Chave de ordenação:',
+	'categorymultisort-go' => 'Prosseguir',
+	'categorymultisort-default-sortkey' => 'Chave de ordenação, por omissão:',
+	'prefs-category' => 'Categoria',
+);
+
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Giro720
+ */
+$messages['pt-br'] = array(
+	'categorymultisort-desc' => 'Permitir que as categorias sejam vistas com diferentes chaves de ordenação',
+	'categorymultisort-defaultsortkey-name' => 'Padrão',
+	'categorymultisort-sortkey' => 'Chave de ordenação:',
+	'categorymultisort-go' => 'Ir',
+	'categorymultisort-default-sortkey' => 'Chave de ordenação padrão:',
+	'prefs-category' => 'Categoria',
 );
 
 /** Russian (Русский)

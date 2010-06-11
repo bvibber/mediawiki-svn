@@ -776,5 +776,7 @@ $messages['vi'] = array(
  */
 $messages['yi'] = array(
 	'interwikilist' => 'אינטערוויקי ליסטע',
+	'interwikilist-linkname' => 'אינטערוויקי לינק',
+	'interwikilist-prefix' => 'אינטערוויקי פּרעפֿיקס:',
 );
 

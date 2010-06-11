@@ -28,6 +28,13 @@ $messages['be-tarask'] = array(
 	'wikimediamobile-desc' => 'Сэрвісныя функцыі MediaWiki для праекту Wikimedia-mobile ( http://github.com/hcatlin/wikimedia-mobile )',
 );
 
+/** Chechen (Нохчийн)
+ * @author Sasan700
+ */
+$messages['ce'] = array(
+	'wikimediamobile-desc' => 'Гlодарца йолу хийцамашца MediaWiki оцу лерагlирсан кхоллам Викимедийа, хlокху чохь ю http://github.com/hcatlin/wikimedia-mobile',
+);
+
 /** German (Deutsch)
  * @author Kebap
  */
@@ -40,6 +47,13 @@ $messages['de'] = array(
  */
 $messages['dsb'] = array(
 	'wikimediamobile-desc' => 'MediaWiki pódpěra funkcije za projekt Wikimedia Mobile, kótaryž jo na at http://github.com/hcatlin/wikimedia-mobile',
+);
+
+/** Esperanto (Esperanto)
+ * @author Michawiki
+ */
+$messages['eo'] = array(
+	'wikimediamobile-desc' => 'Subtenaj funkcioj de MediaWiki por la projekto Wikimedia-Mobile gastigata ĉe http://github.com/hcatlin/wikimedia-mobile',
 );
 
 /** Spanish (Español)

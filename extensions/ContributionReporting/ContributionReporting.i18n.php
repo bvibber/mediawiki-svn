@@ -2363,9 +2363,11 @@ $messages['id'] = array(
 $messages['io'] = array(
 	'contrib-hist-name' => 'Nomo',
 	'contrib-hist-date' => 'Tempo e dato',
+	'contrib-hist-amount' => 'Sumo',
 	'contrib-hist-anonymous' => 'Anonima',
 	'contribstats-day' => 'Dio',
 	'contribstats-month' => 'Monato',
+	'contribstats-avg' => 'Mez-valoro (USD)',
 	'contribstats-total-ytd' => 'Sumo (YTD)',
 	'contribstats-value-exactly' => 'Exakte $1',
 	'contribstats-value-under' => 'Min kam $1',
@@ -3769,6 +3771,7 @@ $messages['pt'] = array(
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
+ * @author Giro720
  * @author Hamilton Abreu
  * @author Luckas Blade
  */
@@ -3807,15 +3810,22 @@ $messages['pt-br'] = array(
 	'contribstats-value-from' => 'Entre $1 - $2',
 	'contribstats-value-over' => 'Mais de $1',
 	'contributiontrackingstatistics' => 'Estatísticas do monitoramento de contribuições',
-	'contribstats-day-totals' => 'Total de hoje',
+	'contribstats-day-totals' => 'Total do dia',
 	'contribstats-week' => 'Semana',
 	'contribstats-weekly-totals' => '{{PLURAL:$1|Total para esta semana|Totais semanais para as últimas $1 semanas}}',
 	'contribstats-payment-type' => 'Tipo de pagamento',
+	'contribstats-banner' => 'Banner',
+	'contribstats-payment-type-hits' => "Visitas (''hits'') por tipo de pagamento",
 	'contribstats-clicks' => 'Cliques',
 	'contribstats-donations' => 'Doações',
 	'contribstats-conversion' => 'Taxa de conversão (%)',
 	'contribstats-template' => 'Predefinição',
 	'contribstats-nodata' => 'Não foram providenciados dados',
+	'contribstats-landingpage' => 'Página inicial',
+	'contribstats-donatepage' => 'Página de donativos',
+	'contribstats-average' => 'Média',
+	'contribstats-imperfect-data' => 'Estes dados não são perfeitos, já seguimento de doadores sem o uso de seguimento de sessão tem suas limitações.',
+	'contribstats-paypal-donations' => 'Doações por PayPal',
 	'contribstats-credit-card' => 'Cartão de crédito',
 	'fundraiserstatistics' => 'Estatísticas da angariação de fundos',
 	'fundraiserstats-date' => 'Data',

@@ -304,6 +304,13 @@ $messages['id'] = array(
 	'externalpages-no-page' => 'Halaman tak diberikan',
 );
 
+/** Ido (Ido)
+ * @author Malafaya
+ */
+$messages['io'] = array(
+	'externalpages' => 'Extera Pagini',
+);
+
 /** Italian (Italiano)
  * @author Aushulz
  * @author Beta16

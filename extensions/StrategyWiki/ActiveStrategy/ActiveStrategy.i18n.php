@@ -147,6 +147,13 @@ $messages['ia'] = array(
 	'nedits' => '$1 {{PLURAL:$1|modification|modificationes}}',
 );
 
+/** Ido (Ido)
+ * @author Malafaya
+ */
+$messages['io'] = array(
+	'nedits' => '$1 {{PLURAL:$1|redakto|redakti}}',
+);
+
 /** Japanese (日本語)
  * @author Aotake
  * @author Fryed-peach

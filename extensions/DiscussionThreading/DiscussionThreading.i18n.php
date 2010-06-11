@@ -279,7 +279,7 @@ $messages['ga'] = array(
  */
 $messages['gl'] = array(
 	'discussionthreading-desc' => 'Engadir o encadeamento ás páxinas de conversa',
-	'discussionthreading-replysection' => 'respostar',
+	'discussionthreading-replysection' => 'responder',
 	'discussionthreading-replysectionhint' => 'Respostar esta publicación',
 	'discussionthreading-threadnewsection' => 'novo',
 	'discussionthreading-threadnewsectionhint' => 'Comezar un novo fío de conversa',

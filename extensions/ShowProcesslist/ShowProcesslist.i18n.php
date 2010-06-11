@@ -837,12 +837,13 @@ $messages['pt'] = array(
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
+ * @author Giro720
  */
 $messages['pt-br'] = array(
 	'showprocesslist' => 'Mostrar Lista de Processos',
 	'showprocesslist-desc' => 'Apresenta o resultado de [[Special:ShowProcesslist|SHOW FULL PROCESSLIST]]',
 	'showprocesslist-id' => 'Id',
-	'showprocesslist-user' => 'Utilizador',
+	'showprocesslist-user' => 'Usuário',
 	'showprocesslist-host' => 'Servidor',
 	'showprocesslist-db' => 'Base de dados',
 	'showprocesslist-command' => 'Comando',

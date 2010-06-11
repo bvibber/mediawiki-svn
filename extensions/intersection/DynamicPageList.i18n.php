@@ -658,13 +658,14 @@ $messages['pms'] = array(
 
 /** Portuguese (Português)
  * @author 555
+ * @author Hamilton Abreu
  * @author Malafaya
  */
 $messages['pt'] = array(
 	'intersection-desc' => 'constrói uma lista pontuada dos itens mais recentes presentes numa categoria, ou uma união de várias categorias',
 	'intersection_toomanycats' => 'Error: Categorias em excesso!',
 	'intersection_noresults' => 'Error: Sem resultados!',
-	'intersection_noincludecats' => 'Error: É necessário incluir no mínimo uma categoria ou especificar um espaço nominal!',
+	'intersection_noincludecats' => 'Erro: É necessário incluir no mínimo uma categoria ou especificar um espaço nominal!',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

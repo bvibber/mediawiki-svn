@@ -1793,6 +1793,7 @@ $messages['yi'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Liangent
+ * @author Yfdyh000
  */
 $messages['zh-hans'] = array(
 	'wah-short-audio' => '$1声音文件，$2',
@@ -1806,6 +1807,7 @@ $messages['zh-hans'] = array(
 	'wah-transcode-fail' => '这个文件转码失败',
 	'wah-javascript-off' => '你必须启用JavaScript以参与Wiki@Home',
 	'wah-loading' => '正在载入Wiki@Home界面……',
+	'wah-menu-pref' => '参数设置',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

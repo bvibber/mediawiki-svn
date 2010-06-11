@@ -2171,6 +2171,7 @@ Dunon atosi medä vokon programadili tefik se el MediaWiki it.',
  */
 $messages['yi'] = array(
 	'expandtemplates' => 'פרואוו מוסטערן',
+	'expand_templates_input' => 'אײַנגעבן טעקסט',
 	'expand_templates_output' => 'רעזולטאט',
 	'expand_templates_ok' => 'אויספֿירן',
 	'expand_templates_preview' => 'פֿאראויסשטעלונג',

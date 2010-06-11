@@ -6603,3 +6603,34 @@ $messages['yi'] = array(
 	'wikilog-edit-lc' => 'רעדאַקטירן',
 );
 
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Yfdyh000
+ */
+$messages['zh-hans'] = array(
+	'wikilog-new-item-go' => '创建',
+	'wikilog-title' => '标题',
+	'wikilog-actions' => '操作',
+	'wikilog-invalid-date' => '无效的日期：$1。',
+	'wikilog-invalid-tag' => '无效的标签：$1。',
+	'wikilog-invalid-file' => '无效的文件：$1。',
+	'wikilog-file-not-found' => '不存在的文件：$1。',
+	'wikilog-not-an-image' => '文件不是一个图像：$1。',
+	'wikilog-comment-is-empty' => '发表的评论是空白的。',
+	'wikilog-form-category' => '分类：',
+	'wikilog-form-name' => '名称：',
+	'wikilog-form-author' => '作者：',
+	'wikilog-form-tag' => '标签：',
+	'wikilog-form-date' => '日期：',
+	'wikilog-form-status' => '状态：',
+	'wikilog-form-preview' => '预览：',
+	'wikilog-submit' => '提交',
+	'wikilog-preview' => '预览',
+	'wikilog-edit-lc' => '编辑',
+	'wikilog-reply-lc' => '回复',
+	'wikilog-delete-lc' => '删除',
+	'wikilog-approve-lc' => '批准',
+	'wikilog-reject-lc' => '拒绝',
+	'wikilog-page-lc' => '页面',
+	'wikilog-history-lc' => '历史',
+);
+

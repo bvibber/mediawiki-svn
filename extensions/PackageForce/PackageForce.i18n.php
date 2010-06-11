@@ -47,6 +47,13 @@ $messages['qqq'] = array(
 	'pf-header-page_title' => '{{Identical|Title}}',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'pf-admin-menu-default' => 'Standaard',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by

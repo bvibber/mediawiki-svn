@@ -576,12 +576,14 @@ $messages['pt'] = array(
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
+ * @author Giro720
  */
 $messages['pt-br'] = array(
 	'categoryintersection' => 'Intersecção de categorias',
 	'categoryintersection-desc' => "Mantém uma tabela com valores 'hash' para [[Special:CategoryIntersection|intersecções de categorias]] numa página",
 	'categoryintersection-doit' => 'Listar páginas em todas estas categorias',
 	'categoryintersection-maxcategories' => 'O limite máximo de categorias que se interseccionam é $1.',
+	'categoryintersection-mincategories' => 'Você precisa incluir pelo menos duas categorias.',
 	'categoryintersection-results' => 'A pesquisa retornou $1 {{PLURAL:$1|resultado|resultados}}.',
 );
 

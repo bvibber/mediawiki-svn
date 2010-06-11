@@ -2170,7 +2170,7 @@ $wgCustomToolbarMessages['ps'] = array(
  */
 $wgCustomToolbarMessages['pt'] = array(
 	'ct-desc' => 'Adiciona uma barra de ferramentas extensível',
-	'ct_bold_sample' => 'Texto negrito',
+	'ct_bold_sample' => 'Texto a negrito',
 	'ct_bold_tip_ins' => 'Inserir texto a negrito',
 	'ct_bold_tip_wrap' => 'Tornar este texto negrito',
 	'ct_bold_caption' => 'Negrito',
@@ -2215,6 +2215,7 @@ $wgCustomToolbarMessages['pt'] = array(
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
+ * @author Giro720
  * @author Luckas Blade
  */
 $wgCustomToolbarMessages['pt-br'] = array(
@@ -2224,7 +2225,7 @@ $wgCustomToolbarMessages['pt-br'] = array(
 	'ct_bold_tip_wrap' => 'Colocar este texto em negrito',
 	'ct_bold_caption' => 'Negrito',
 	'ct_italic_sample' => 'Texto em itálico',
-	'ct_italic_tip_ins' => 'Digitar texto em itálico',
+	'ct_italic_tip_ins' => 'Inserir texto em itálico',
 	'ct_italic_tip_wrap' => 'Colocar este texto em itálico',
 	'ct_italic_caption' => 'Itálico',
 	'ct_internal_sample' => 'Título do link',
@@ -2233,11 +2234,11 @@ $wgCustomToolbarMessages['pt-br'] = array(
 	'ct_internal_caption' => 'Link Interno',
 	'ct_external_tip_ins' => 'Incluir um link externo',
 	'ct_external_tip_wrap' => 'Transformar este texto em link externo',
-	'ct_external_caption' => 'Ligação externa',
+	'ct_external_caption' => 'Link externo',
 	'ct_image_tip' => 'Carregar uma imagem',
-	'ct_image_caption' => 'Adicionar uma Imagem',
+	'ct_image_caption' => 'Adicionar uma imagem',
 	'ct_attachment_tip' => 'Incluir um anexo',
-	'ct_attachment_caption' => 'Adicionar um Anexo',
+	'ct_attachment_caption' => 'Adicionar um anexo',
 	'ct_math_sample' => 'Incluir fórmula LaTeX aqui',
 	'ct_math_tip_ins' => 'Incluir fórmula matemática (LaTeX)',
 	'ct_math_tip_wrap' => 'Transformar este texto em fórmula matemática (LaTeX)',
@@ -2247,19 +2248,19 @@ $wgCustomToolbarMessages['pt-br'] = array(
 	'ct_nowiki_tip_wrap' => 'Ignorar a formatação wiki neste texto',
 	'ct_nowiki_caption' => 'Sem wiki',
 	'ct_horizontal_tip' => 'Incluir uma linha horizontal (use com moderação)',
-	'ct_horizontal_caption' => 'Linha Horizontal',
+	'ct_horizontal_caption' => 'Linha horizontal',
 	'ct_upload' => 'Carregar $1',
 	'ct_select' => 'Selecionar $1 para carregar:',
 	'ct_caption' => 'Adicionar legenda (opcional):',
 	'ct_link' => 'Adicionar nome de ligação (opcional):',
-	'ct_submit' => 'Salvar',
+	'ct_submit' => 'Ir!',
 	'ct_close' => 'Fechar a janela',
 	'ct_success' => 'O arquivo foi carregado com sucesso!',
 	'ct_popupblocked' => 'O pop-up para carregar o arquivo foi bloqueado. Verifique o seu bloqueador de pop-ups.',
-	'ct_user_user' => 'Utilizador',
+	'ct_user_user' => 'Usuário',
 	'ct_user_tip' => 'Inserir uma ligação para uma página de utilizador',
-	'ct_user_caption' => 'Ligação do utilizador',
-	'ct_user_sample' => 'Nome de utilizador',
+	'ct_user_caption' => 'Ligação de usuário',
+	'ct_user_sample' => 'Nome de usuário',
 );
 
 /** Romanian (Română)

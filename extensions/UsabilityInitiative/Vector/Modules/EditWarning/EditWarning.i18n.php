@@ -542,12 +542,13 @@ Se estiver autenticado, pode desactivar este aviso na secção "{{int:prefs-edit
 );
 
 /** Brazilian Portuguese (Português do Brasil)
+ * @author Giro720
  * @author Heldergeovane
  */
 $messages['pt-br'] = array(
 	'vector-editwarning-warning' => 'Abandonar esta página pode fazer com que você perca todas as alterações que fez.
 Se você estiver autenticado, você pode desabilitar este aviso na seção "{{int:prefs-editing}}" de suas preferências.',
-	'vector-editwarning-preference' => 'Me avisar quando eu deixar uma janela de edição sem ter salvo as alterações',
+	'vector-editwarning-preference' => 'Avisar-me quando eu deixar uma janela de edição sem ter salvo as alterações',
 );
 
 /** Romanian (Română)

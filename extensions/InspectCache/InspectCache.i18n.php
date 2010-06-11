@@ -828,6 +828,7 @@ $messages['pt'] = array(
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
+ * @author Giro720
  */
 $messages['pt-br'] = array(
 	'inspectcache' => 'Inspecionar cache',
@@ -839,6 +840,7 @@ $messages['pt-br'] = array(
 	'inspectcache-delete' => 'Apagar',
 	'inspectcache-deleted' => 'Cache Apagada',
 	'inspectcache-list' => 'Listar',
+	'right-inspectcache' => 'Ver e apagar entradas de cache',
 );
 
 /** Tarifit (Tarifit)

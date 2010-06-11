@@ -180,6 +180,13 @@ $messages['pt'] = array(
 	'hidens-desc' => 'Esconde o espaço nominal do cabeçalho e título quando uma página está num espaço nominal específico ou quando é chamada a função <code><nowiki>{{#hidens:}}</nowiki></code> do analisador sintáctico',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Giro720
+ */
+$messages['pt-br'] = array(
+	'hidens-desc' => 'Esconde o espaço nominal do cabeçalho e título quando uma página está num espaço nominal específico ou quando é chamada a função <code><nowiki>{{#hidens:}}</nowiki></code> do analisador sintático',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

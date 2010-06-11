@@ -10619,7 +10619,7 @@ Por favor, verifique o endereço ''web''.",
 	'ow_Link' => 'Ligação',
 	'ow_LinkAttribute' => 'Propriedade',
 	'ow_LinkAttributeValues' => 'Ligações',
-	'ow_User' => 'Utilizador',
+	'ow_User' => 'Usuário',
 	'ow_Property' => 'Propriedade',
 	'ow_Value' => 'Valor',
 	'ow_added' => 'Adicionado',
@@ -14060,6 +14060,7 @@ $messages['zh-cn'] = array(
  * @author Liangent
  * @author PhiLiP
  * @author Wmr89502270
+ * @author Yfdyh000
  */
 $messages['zh-hans'] = array(
 	'wikidata-desc' => '为各种类型的内容添加类wiki数据库',
@@ -14222,13 +14223,19 @@ $messages['zh-hans'] = array(
 	'copy' => 'Wikidata：复制',
 	'ow_copy_no_action_specified' => '请指定一个动作',
 	'ow_copy_help' => '帮助还没有实现。',
+	'ow_class_attr_type_xlate' => '可翻译的文本',
+	'ow_class_attr_type_plain' => '纯文本',
 	'ow_class_attr_type_link' => '连结',
+	'ow_class_attr_type_option' => '选项列表',
+	'ow_needs_xlation_source_lang' => '源语言：',
+	'ow_needs_xlation_dest_lang' => '目标语言：',
 	'ow_show' => '显示',
 	'ow_upload' => '上传',
 	'ow_create' => '创建',
 	'ow_suggest_previous' => '上一个',
 	'ow_suggest_next' => '下一个',
 	'ow_suggest_clear' => '清除',
+	'right-addlanguage' => '添加和更改语言设置',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

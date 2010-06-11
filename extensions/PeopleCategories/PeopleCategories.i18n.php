@@ -188,6 +188,13 @@ $messages['pt'] = array(
 	'peoplecategories-desc' => 'Altera os nomes de página de "Nome Sobrenome" para "Sobrenome, Nome" nas páginas de categoria especificadas',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Giro720
+ */
+$messages['pt-br'] = array(
+	'peoplecategories-desc' => 'Altera os nomes de página de "Nome Sobrenome" para "Sobrenome, Nome" nas páginas de categoria especificadas',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

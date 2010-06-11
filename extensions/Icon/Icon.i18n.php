@@ -395,7 +395,7 @@ $messages['lt'] = array(
  */
 $messages['mk'] = array(
 	'icon-badimage' => 'Лоша слика',
-	'icon-badwidth' => 'Лоша широчина',
+	'icon-badwidth' => 'Лоша ширина',
 	'icon-desc' => 'Дозволува употреба на слики како икони и врски-икони',
 );
 

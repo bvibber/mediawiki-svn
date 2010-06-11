@@ -538,7 +538,11 @@ $messages['id'] = array(
  */
 $messages['io'] = array(
 	'optin-try' => 'Probez Beta',
+	'tooltip-pt-optin-try' => 'Probez nova funcioni',
 	'optin-leave' => 'Livez Beta',
+	'tooltip-pt-optin-leave' => 'Supresez nova funcioni',
+	'optin-feedback' => 'Komenti pri Beta',
+	'tooltip-pt-optin-feedback' => 'Komentez pri vua experienco kun la nova funcioni',
 );
 
 /** Icelandic (Íslenska)

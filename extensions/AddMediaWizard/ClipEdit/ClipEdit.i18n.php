@@ -948,8 +948,12 @@ $messages['pt'] = array(
 	'mwe-clipedit-layout_left' => 'Imagem posicionada à esquerda',
 );
 
-/** Brazilian Portuguese (Português do Brasil) */
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Giro720
+ */
 $messages['pt-br'] = array(
+	'mwe-clipedit-crop' => 'Recortar imagem',
+	'mwe-clipedit-apply_crop' => 'Aplicar corte à imagem',
 	'mwe-clipedit-preview_insert' => 'Prever inserção',
 	'mwe-clipedit-sc_duration' => 'Duração',
 	'mwe-clipedit-other_properties' => 'Outras propriedades',

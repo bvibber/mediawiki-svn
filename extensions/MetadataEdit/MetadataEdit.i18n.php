@@ -929,8 +929,10 @@ $messages['pt'] = array(
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author 555
+ * @author Giro720
  */
 $messages['pt-br'] = array(
+	'metadataedit-desc' => 'Colocar as categorias, links de línguas e predefinições permitidas numa caixa de texto separada durante a edição de páginas.',
 	'metadata_help' => 'Metadados:',
 );
 
@@ -1283,8 +1285,10 @@ $messages['xal'] = array(
 
 /** Yiddish (ייִדיש)
  * @author Joystick
+ * @author פוילישער
  */
 $messages['yi'] = array(
+	'metadataedit-desc' => 'שטעלן קאַטעגאָריעס, שפּראַך לינקען און ערלויבטע מוסטערן אין אַ באַזונדער טעקסט קעסטל בשעת רעדאַקטירן בלעטער',
 	'metadata_help' => 'מעטאַ־דאַטן:',
 );
 

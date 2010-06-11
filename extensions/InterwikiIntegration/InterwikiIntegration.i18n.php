@@ -77,6 +77,30 @@ Assurez-vous de configurer aussi les tables sur vos autres wikis.',
 	'right-integration' => 'Remplir le tableau d’intégration des interwikis',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'interwikiintegration' => 'Integración do interwiki',
+	'interwikiintegration-desc' => 'Integración completa do interwiki',
+	'populateinterwikiintegrationtable' => 'Encher a táboa de integración do interwiki',
+	'interwikiintegration-setuptext' => 'Configuráronse as táboas de $1.
+Asegúrese de configurar tamén as táboas nos seus outros wikis.',
+	'right-integration' => 'Encher a táboa de integración do interwiki',
+);
+
+/** Upper Sorbian (Hornjoserbsce)
+ * @author Michawiki
+ */
+$messages['hsb'] = array(
+	'interwikiintegration' => 'Integracija interwiki',
+	'interwikiintegration-desc' => 'Wobšěrna integracija interwiki',
+	'populateinterwikiintegrationtable' => 'Tabelu integracije interwiki pjelnić',
+	'interwikiintegration-setuptext' => 'Tabele za $1 buchu skonfigurowane.
+Konfiguruj tabele tež na swojich druhich wikijach.',
+	'right-integration' => 'Tabelu integracije interwiki pjelnić',
+);
+
 /** Interlingua (Interlingua)
  * @author McDutchie
  */

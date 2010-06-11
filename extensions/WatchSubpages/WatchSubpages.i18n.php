@@ -741,6 +741,7 @@ Quando marca ou desmarca várias páginas, se premir a tecla "Shift" pode selecc
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
+ * @author Giro720
  */
 $messages['pt-br'] = array(
 	'watchsubpages' => 'Vigiar subpáginas',
@@ -748,10 +749,10 @@ $messages['pt-br'] = array(
 	'watchsubpages-addtitles' => 'Adicionar páginas',
 	'watchsubpages-addtitlestowatchlist' => 'Adicionar páginas à lista de páginas vigiadas',
 	'watchsubpages-desc' => 'Rapidamente [[Special:WatchSubpages|adicione todas as subpáginas]] de uma página à sua lista de páginas vigiadas',
-	'watchsubpages-form' => 'Selecione as páginas a adicionar à sua lista de páginas vigiadas abaixo.
-Para adicionar uma página, marque a caixa junto a esta, e clique em "Adicionar páginas".
+	'watchsubpages-form' => 'Selecione as páginas para adicionar à sua lista de páginas vigiadas abaixo.
+Para adicionar uma página, marque a caixa junto a esta, e clique "{{int:watchsubpages-addtitles}}".
 
-Ao marcar ou desmarcar múltiplas páginas, pressionando a tecla "Shift" você pode selecionar caixas de marcação consecutivas, clicando em cada extremo do intervalo a selecionar.',
+Quando marca ou desmarca várias páginas, se premir a tecla "Shift" pode selecionar caixas de marcação consecutivas, clicando em cada extremo do intervalo a selecionar.',
 );
 
 /** Romanian (Română)

@@ -817,7 +817,7 @@ Berkas-berkas yang tidak layak akan segera dihapuskan, lihat [[{{MediaWiki:Multi
  * @author Malafaya
  */
 $messages['io'] = array(
-	'multipleupload' => 'Adkargar arkivi',
+	'multipleupload' => 'Adkargar plura arkivi',
 	'multipleupload-saveallfiles' => 'Registragar omna arkivi',
 );
 

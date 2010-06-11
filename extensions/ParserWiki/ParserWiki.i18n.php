@@ -190,6 +190,13 @@ $messages['pt'] = array(
 	'parserwiki-desc' => 'Permite definir uma gramática numa wiki e depois usá-la para inserir informação nessa mesma wiki',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Giro720
+ */
+$messages['pt-br'] = array(
+	'parserwiki-desc' => 'Permite definir uma gramática numa wiki e depois usá-la para inserir informação nessa mesma wiki',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

@@ -148,6 +148,26 @@ Le troisième argument ou « modèle » est obligatoire.',
 	'datatransclusion-unknown-template' => '<nowiki>{{</nowiki>[[{{ns:template}}:$1|$1]]<nowiki>}}</nowiki> n’existe pas.',
 );
 
+/** Galician (Galego)
+ * @author Toliño
+ */
+$messages['gl'] = array(
+	'datatransclusion-desc' => 'Importación e procesamento de rexistros de datos de fontes externas',
+	'datatransclusion-missing-source' => 'Non se especificou ningunha fonte de datos.
+Necesítase o primeiro argumento.',
+	'datatransclusion-unknown-source' => 'A fonte de datos que se especificou é incorrecta.
+Descoñécese o que é "$1".',
+	'datatransclusion-bad-argument-by' => 'A clave de campo que se especificou é incorrecta.
+"$2" non é unha clave de campo na fonte de datos "$1"; exemplos de claves válidas: $3.',
+	'datatransclusion-missing-argument-key' => 'Non se especificou ningún valor para a chave.
+Necesítase o segundo argumento ou "clave".',
+	'datatransclusion-missing-argument-template' => 'Non se especificou ningún modelo.
+Necesítase o terceiro argumento ou "modelo".',
+	'datatransclusion-record-not-found' => 'Non se atopou ningún rexistro que coincidise $2 = $3 na fonte de datos "$1".',
+	'datatransclusion-bad-template-name' => 'O nome do modelo é incorrecto: $1.',
+	'datatransclusion-unknown-template' => '<nowiki>{{</nowiki>[[{{ns:template}}:$1|$1]]<nowiki>}}</nowiki> non existe.',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

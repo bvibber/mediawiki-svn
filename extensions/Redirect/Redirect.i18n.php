@@ -361,3 +361,10 @@ $messages['vi'] = array(
 	'redirect-desc' => 'Cho phép cấu hình các trang đổi hướng dễ dàng khi [[MediaWiki:Redirect-addnewaccount|tạo tài khoản]] và [[MediaWiki:Redirect-userlogoutcomplete|đăng xuất]]',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'redirect-desc' => 'ערלויבט גרינגע קאנפֿיגוראַציע פֿון ווײַטערפֿירונגען בײַ [[MediaWiki:Redirect-addnewaccount|קאנטע שאַפֿן]] און [[MediaWiki:Redirect-userlogoutcomplete|אַרויסלאגירן]]',
+);
+
