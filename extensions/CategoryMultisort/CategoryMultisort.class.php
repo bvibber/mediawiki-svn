@@ -106,13 +106,15 @@ class CategoryMultisortViewer extends CategoryViewer {
 			}
 		}
 		
+		$sortkey = trim( $sortkey );
+		
 		$type = array_key_exists( 'type', $this->sortkeySettings )
 			? $this->sortkeySettings['type'] : '';
 		
-		if ( $type == 'int' ) {
+		if ( $type == 'int' && $sortkey != '' ) {
 			$sortkey = strval( intval( $sortkey ) );
 		}
 		
-		return $wgContLang->convert( trim( $sortkey ) );
+		return $wgContLang->convert( $sortkey );
 	}
 }
