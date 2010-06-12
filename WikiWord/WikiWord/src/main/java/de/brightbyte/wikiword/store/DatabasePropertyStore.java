@@ -1,23 +1,20 @@
 package de.brightbyte.wikiword.store;
 
+import static de.brightbyte.db.DatabaseUtil.asString;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import de.brightbyte.data.MultiMap;
 import de.brightbyte.data.ValueSetMultiMap;
-import de.brightbyte.data.cursor.DataSet;
 import de.brightbyte.db.DatabaseDataSet;
 import de.brightbyte.db.DatabaseUtil;
 import de.brightbyte.db.EntityTable;
-import de.brightbyte.db.QueryDataSet;
 import de.brightbyte.db.RelationTable;
-import de.brightbyte.db.TemporaryTableDataSet;
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.ConceptType;
 import de.brightbyte.wikiword.TweakSet;
@@ -88,7 +85,7 @@ public class DatabasePropertyStore<T extends WikiWordConcept>
 				sql += " WHERE concept = "+concept;
 				if ( properties != null ) sql += " AND property IN " + database.encodeSet(properties) + " ";
 
-				return readConceptProperties("getConceptProperties", sql, "concept", null, null, null, "property", "normal_weight"); //FIXME: name, card, relevance
+				return readConceptProperties("getConceptProperties", sql, "concept", null, null, null, "property", "value"); //FIXME: name, card, relevance
 			} catch (SQLException e) {
 				throw new PersistenceException(e);
 			}
@@ -106,7 +103,7 @@ public class DatabasePropertyStore<T extends WikiWordConcept>
 				sql += " WHERE concept IN "+database.encodeSet(concepts);
 				if ( properties != null ) sql += " AND property IN " + database.encodeSet(properties) + " ";
 
-				return readConceptsProperties("getConceptsProperties", sql, "concept", null, null, null, "property", "normal_weight"); //FIXME: name, card, relevance
+				return readConceptsProperties("getConceptsProperties", sql, "concept", null, null, null, "property", "value"); //FIXME: name, card, relevance
 			} catch (SQLException e) {
 				throw new PersistenceException(e);
 			}
@@ -149,8 +146,10 @@ public class DatabasePropertyStore<T extends WikiWordConcept>
 				Map<Integer, ConceptProperties<T>> propertys = new HashMap<Integer, ConceptProperties<T>>();
 				
 				try {
-					while (!rs.isAfterLast()) {
+					while (!rs.isAfterLast()) { // JDBC sais isAfterLast() returns false for empty sets. WTF??
 						ConceptProperties<T> f = readConceptProperties(rs, conceptField, nameField, cardinalityField, relevanceField, keyField, valueField);
+						if ( f == null ) break; //result set was empty.
+						
 						propertys.put(f.getId(), f);
 					}
 					
@@ -167,7 +166,8 @@ public class DatabasePropertyStore<T extends WikiWordConcept>
 				String conceptField, String nameField, String cardinalityField, String relevanceField,   
 				String keyField, String valueField) throws PersistenceException {
 			try {
-				rs.next(); //TODO: return what iof this fails??
+				if ( !rs.next() ) return  null;
+				
 				int id = DatabaseUtil.asInt(rs.getObject(conceptField));
 				String n = nameField == null ? null : DatabaseUtil.asString(rs.getObject(nameField));
 				int c = cardinalityField == null ? 1 : DatabaseUtil.asInt(rs.getObject(cardinalityField));
@@ -190,7 +190,7 @@ public class DatabasePropertyStore<T extends WikiWordConcept>
 			int count = 0;
 			
 			while (rs.next()) {
-				String p = rs.getString(propertyField);
+				String p = asString(rs.getObject(propertyField));
 				
 				if (conceptField!=null) {
 					Object c = rs.getObject(conceptField);
@@ -203,104 +203,14 @@ public class DatabasePropertyStore<T extends WikiWordConcept>
 				
 				count++;
 				
-				String n = rs.getString(valueField);
+				String n = asString(rs.getObject(valueField));
 				v.put(p,  n);
 			}
 			
 			return v;
 		}
 
-		public DataSet<ConceptProperties<T>> getNeighbourhoodProperties(final int concept) throws PersistenceException {
-			/*
-			String sql = "SELECT C.id as concept, C.name as name, X.property as property, X.normal_weight as value ";
-			sql += " FROM " + propertyTable.getSQLName() + " as X force key (PRIMARY) ";
-			sql += " JOIN "+propertyTable.getSQLName()+" as N force key (PRIMARY) ON N.property = X.concept ";
-			sql += " JOIN "+propertyTable.getSQLName()+" as F force key (property) ON F.property = N.concept ";
-			sql += " JOIN "+conceptTable.getSQLName()+" as C force key (PRIMARY) ON C.id = X.concept ";
-			sql += " WHERE F.concept = "+concept;
-			sql += " ORDER BY X.concept";
-			
-			return new QueryDataSet<WikiWordConceptProperties>(database, getConceptPropertiesFactory(), "getNeighbourhoodProperties", sql, false);
-			*/
-			return new TemporaryTableDataSet<ConceptProperties<T>>(database, getConceptPropertiesFactory()) {
-			
-				@Override
-				public Cursor<ConceptProperties<T>> cursor() throws PersistenceException {
-					try {
-						String n = database.createTemporaryTable("id integer not null, name varchar(255) default null, primary key (id)");
-						String sql = "INSERT IGNORE INTO "+n+" (id) ";
-						sql += " SELECT N.property as id ";
-						sql += " FROM "+propertyTable.getSQLName()+" AS F ";
-						sql += " JOIN "+propertyTable.getSQLName()+" AS N ON F.property = N.concept ";
-						sql += " WHERE F.concept = "+concept;
-						
-						database.executeUpdate("getNeighbourhoodProperties#neighbours", sql);
-						
-						sql = "UPDATE "+n+" as N ";
-						sql+= " JOIN "+conceptTable.getSQLName()+" AS C ON C.id = N.id ";
-						sql+= " SET N.name = C.name ";
-							
-						database.executeUpdate("getNeighbourhoodProperties#names", sql);
-
-						sql = "SELECT N.id as concept, N.name as name, X.property as property, X.normal_weight as value ";
-						sql+= " FROM "+n+" AS N ";
-						sql+= " JOIN "+propertyTable.getSQLName()+" as X ON X.concept = N.id ";
-							
-						ResultSet rs = database.executeQuery("getNeighbourhoodProperties#propertys", sql);
-						return new TemporaryTableDataSet.Cursor<ConceptProperties<T>>(rs, factory, database, new String[] { n }, database.getLogOutput() );
-					} catch (SQLException e) {
-						throw new PersistenceException(e);
-					}
-				}
-			};
-		}
-
 		private DatabaseDataSet.Factory<ConceptProperties<T>> getConceptPropertiesFactory() {
 			return conceptPropertiesFactory;
 		}
-
-		public DataSet<? extends T> getNeighbours(int concept) throws PersistenceException {
-			String sql = "SELECT DISTINCT C.id as cId, C.name as cName ";
-			sql += " FROM " + conceptTable.getSQLName() + " as C ";
-			sql += " JOIN "+propertyTable.getSQLName()+" as N ON N.property = C.id ";
-			sql += " JOIN "+propertyTable.getSQLName()+" as F ON F.property = N.concept ";
-			sql += " WHERE F.concept = "+concept+" ";
-			
-			return new QueryDataSet<T>(database, conceptStore.getRowConceptFactory(), "getNeighbours", sql, false);
-		}
-
-		public List<Integer> getNeighbourList(int concept) throws PersistenceException {
-			String sql = "SELECT DISTINCT N.property as concept ";
-			sql += " FROM "+propertyTable.getSQLName()+" as N ";
-			sql += " JOIN "+propertyTable.getSQLName()+" as F ON F.property = N.concept ";
-			sql += " WHERE F.concept = "+concept;
-			
-			return readIdList("getNeighbourList", sql, "concept");
-		}
-		
-		protected  List<Integer> readIdList(String name, String sql, String valueField) throws PersistenceException {
-			try {
-				ResultSet rs = database.executeQuery(name, sql);
-				try {
-					return readIdList(rs, valueField, new ArrayList<Integer>());
-				} finally {
-					rs.close();
-				}
-			} catch (SQLException e) {
-				throw new PersistenceException(e);
-			}
-		}
-
-		protected  List<Integer> readIdList(ResultSet rs, String valueField, List<Integer> v) throws SQLException {
-			if (v==null) v = new ArrayList<Integer>();
-			
-			while (rs.next()) {
-				Number n = (Number)rs.getObject(valueField);
-				
-				v.add(n instanceof Integer ? (Integer)n : n.intValue());
-			}
-			
-			return v;
-		}
-		
 }

@@ -3,6 +3,7 @@ package de.brightbyte.wikiword.store;
 import de.brightbyte.data.cursor.DataSet;
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.ConceptType;
+import de.brightbyte.wikiword.model.LocalConcept;
 import de.brightbyte.wikiword.model.WikiWordConcept;
 
 
@@ -81,6 +82,8 @@ public interface WikiWordConceptStore<T extends WikiWordConcept> extends WikiWor
 	//public ConceptInfoStore<T> getConceptInfoStore() throws PersistenceException;
 	public FeatureStore<T, Integer> getFeatureStore() throws PersistenceException;
 	public ProximityStore<T, Integer> getProximityStore() throws PersistenceException;
+
+	public PropertyStore<T> getPropertyStore() throws PersistenceException;
 
 	public T getConcept(int id, ConceptQuerySpec spec) throws PersistenceException;
 	

@@ -12,25 +12,26 @@ import de.brightbyte.db.ReferenceField;
 import de.brightbyte.db.RelationTable;
 import de.brightbyte.wikiword.ConceptType;
 import de.brightbyte.wikiword.Corpus;
+import de.brightbyte.wikiword.DatasetIdentifier;
 import de.brightbyte.wikiword.TweakSet;
 
 public class PropertyStoreSchema extends WikiWordStoreSchema {
 	
 	protected RelationTable propertyTable;
-	protected Corpus corpus;
+	protected DatasetIdentifier dataset;
 
-	public PropertyStoreSchema(Corpus corpus, Connection connection, TweakSet tweaks, boolean useFlushQueue) throws SQLException {
-		super(corpus, connection, tweaks, useFlushQueue );
-		init(corpus, tweaks);
+	public PropertyStoreSchema(DatasetIdentifier dataset, Connection connection, TweakSet tweaks, boolean useFlushQueue) throws SQLException {
+		super(dataset, connection, tweaks, useFlushQueue );
+		init(dataset, tweaks);
 	}
 
-	public PropertyStoreSchema(Corpus corpus, DataSource connectionInfo, TweakSet tweaks, boolean useFlushQueue) throws SQLException {
-		super(corpus, connectionInfo, tweaks, useFlushQueue);
-		init(corpus, tweaks);
+	public PropertyStoreSchema(DatasetIdentifier dataset, DataSource connectionInfo, TweakSet tweaks, boolean useFlushQueue) throws SQLException {
+		super(dataset, connectionInfo, tweaks, useFlushQueue);
+		init(dataset, tweaks);
 	}
 	
-	private void init(Corpus corpus, TweakSet tweaks) {
-		this.corpus = corpus;
+	private void init(DatasetIdentifier dataset, TweakSet tweaks) {
+		this.dataset = dataset;
 		
 		propertyTable = new RelationTable(this, "property", getDefaultTableAttributes());
 		propertyTable.addField( new ReferenceField(this, "resource", "INT", null, false, KeyType.INDEX, "resource", "id", null ) );
@@ -45,7 +46,9 @@ public class PropertyStoreSchema extends WikiWordStoreSchema {
 	
 	@Override
 	public ConceptType getConceptType(int type) {
-		return corpus.getConceptTypes().getType(type);
+		//TODO: concept types should be defined and accessible for globla datasets!
+		if (dataset instanceof Corpus) return ((Corpus)dataset).getConceptTypes().getType(type);
+		else throw new UnsupportedOperationException("can't get concept type from global dataset!"); 
 	}
 	
 	@Override
@@ -56,8 +59,8 @@ public class PropertyStoreSchema extends WikiWordStoreSchema {
 		checkReferencePairConsistency(propertyTable, "concept", "concept_name");   
 	}
 	
-	public Corpus getCorpus() {
-		return corpus;
+	public DatasetIdentifier getDataset() {
+		return dataset;
 	}
 
 	@Override

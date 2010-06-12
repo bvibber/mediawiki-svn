@@ -23,6 +23,7 @@ import de.brightbyte.wikiword.Corpus;
 import de.brightbyte.wikiword.TweakSet;
 import de.brightbyte.wikiword.model.WikiWordConcept;
 import de.brightbyte.wikiword.schema.ConceptInfoStoreSchema;
+import de.brightbyte.wikiword.schema.PropertyStoreSchema;
 import de.brightbyte.wikiword.schema.ProximityStoreSchema;
 import de.brightbyte.wikiword.schema.StatisticsStoreSchema;
 import de.brightbyte.wikiword.schema.WikiWordConceptStoreSchema;
@@ -259,10 +260,17 @@ public abstract class DatabaseWikiWordConceptStore<T extends WikiWordConcept>
 		return new CalculatedProximityStore<T>(store, getConceptFactory());
 	}
 	
+	protected PropertyStore<T> newPropertyStore() throws SQLException, PersistenceException {
+		PropertyStoreSchema schema = new PropertyStoreSchema(getDatasetIdentifier(), getDatabaseAccess().getConnection(), tweaks, false); 
+		
+		return new DatabasePropertyStore<T>(this, schema, tweaks);
+	}
+	
 	private DatabaseStatisticsStore statsStore;
 	private DatabaseConceptInfoStore<T> infoStore;
 
 	private ProximityStore<T, Integer> proximityStore;
+	private PropertyStore<T> propertyStore;
 	
 	public DatabaseConceptInfoStore<T> getConceptInfoStore() throws PersistenceException {
 		try { 
@@ -290,6 +298,15 @@ public abstract class DatabaseWikiWordConceptStore<T extends WikiWordConcept>
 		try { 
 			if (proximityStore==null) proximityStore = newProximityStore();
 			return proximityStore;
+		} catch (SQLException e) {
+			throw new PersistenceException(e);
+		} 
+	}	
+	
+	public PropertyStore<T> getPropertyStore() throws PersistenceException {
+		try { 
+			if (propertyStore==null) propertyStore = newPropertyStore();
+			return propertyStore;
 		} catch (SQLException e) {
 			throw new PersistenceException(e);
 		} 
