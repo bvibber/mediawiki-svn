@@ -12,7 +12,7 @@ $messages = array();
  * @author Roan Kattouw
  */
 $messages['en'] = array(
-	'vector-collapsiblenav-preference' => 'Enable collapsible left navigation menu',
+	'vector-collapsiblenav-preference' => 'Enable collapsing of items in the navigation menu in Vector skin',
 	'vector-collapsiblenav-more' => 'More languages',
 );
 
