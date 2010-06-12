@@ -407,7 +407,7 @@ class FCKeditorSkin {
 		return call_user_func_array( array( $this->skin, $m ), $a );
 	}
 
-	function __construct( &$skin ) {
+	function __construct( $skin ) {
 		$this->skin = $skin;
 	}
 }

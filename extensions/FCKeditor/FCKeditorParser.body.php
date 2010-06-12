@@ -421,7 +421,7 @@ class FCKeditorParser extends FCKeditorParserWrapper {
 		return $text;
 	}
 
-	function internalParse( $text, $isMain = true ) {
+	function internalParse( $text, $isMain = true, $frame = false ) {
 		$this->fck_internal_parse_text =& $text;
 
 		// these three tags should remain unchanged
