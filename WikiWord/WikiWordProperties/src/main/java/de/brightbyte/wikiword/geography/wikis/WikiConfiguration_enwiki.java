@@ -144,10 +144,10 @@ public class WikiConfiguration_enwiki extends WikiConfiguration {
 
 		//XXX: coord may appear nested. check if it works.
 		propertyExtractors.add( new TemplateParameterExtractor(new PatternNameMatcher("(.*\\.coords?::)?[Cc]oord", 0, true),
-				new Positional8CoordinatePropertySpec( "position"),
-				new Positional6CoordinatePropertySpec( "position"),
-				new Positional4CoordinatePropertySpec( "position"),
-				new Positional2CoordinatePropertySpec( "position")
+				new Positional8CoordinatePropertySpec( "coordinates"),
+				new Positional6CoordinatePropertySpec( "coordinates"),
+				new Positional4CoordinatePropertySpec( "coordinates"),
+				new Positional2CoordinatePropertySpec( "coordinates")
 		) );
 		
 		propertyExtractors.add( new TemplateParameterExtractor(new PatternNameMatcher("(Infobox_.*|.*box)", 0, true),
