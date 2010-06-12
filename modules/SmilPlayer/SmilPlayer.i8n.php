@@ -1,6 +1,6 @@
 <?php
 /**
- * Internationalisation for EmbedPlayer
+ * Internationalisation for SmilPlayer
  *
  * @file
  * @ingroup Extensions

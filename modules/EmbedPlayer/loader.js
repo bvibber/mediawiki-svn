@@ -116,7 +116,7 @@
 
 	/**
 	* Add a DOM ready check for player tags 
-	
+	*
 	* We use mw.addDOMReadyHook instead of mw.ready so that
 	* player interfaces are ready once mw.ready is called. 
 	*/
@@ -148,7 +148,7 @@
 					$j('<div />')
 					.loadingSpinner()
 					.attr('id', 'loadingSpinner_' + $j( element ).attr('id') )
-					.addClass('playerLoadingSpinner')
+					.addClass( 'playerLoadingSpinner' )
 					.css({
 						'width' : 32,
 						'height' : 32,
@@ -212,7 +212,7 @@
 		// Do short detection, to avoid extra player library request in ~most~ cases. 
 		//( If browser is firefox include native, if browser is IE include java ) 
 		if( $j.browser.msie ) {
-			dependencyRequest[0].push( 'mw.EmbedPlayeJava' )		
+			dependencyRequest[0].push( 'mw.EmbedPlayerJava' )		
 		}
 				
 		// Safari gets slower load since we have to detect ogg support 
