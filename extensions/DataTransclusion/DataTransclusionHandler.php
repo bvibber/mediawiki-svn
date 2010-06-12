@@ -153,9 +153,6 @@ class DataTransclusionHandler {
 			return DataTransclusionHandler::errorMessage( 'datatransclusion-bad-template-name', $asHTML, $template ); 
 		}
 
-		// TODO: log the template we used into the parser output, like regular template use 
-		//       (including templates used by the template, etc)
-
 		$handler = new DataTransclusionHandler( $parser, $source, $t, $templateText );
 
 		$record = $handler->normalizeRecord( $record );
@@ -188,7 +185,8 @@ class DataTransclusionHandler {
 	}
 
 	function render( $record ) {
-		if ( $this->templateText ) { // explicit template content set. Used for testing and debugging.
+		if ( $this->templateText ) { 
+			// explicit template content set. Used for testing and debugging.
 			if ( is_string( $this->templateText ) ) {
 				$text = $this->templateText;
 			} else {
@@ -209,6 +207,7 @@ class DataTransclusionHandler {
 
 		$text = $article->getContent();
 		$text = $this->parser->replaceVariables( $text, $record, true );
+		//NOTE: would need extra work to record template inclusion to be recorded in the ParserOutput and consequently in the database.
 		*/
 
 		// NOTE: braceSubstitution caches pre-parsed templates. Much nicer. 
@@ -225,6 +224,8 @@ class DataTransclusionHandler {
 		$piece['lineStart'] = false; //XXX: ugly. can't know here whether the brace was at the start of a line
 
 		$ret = $this->parser->braceSubstitution( $piece, $frame );
+		//NOTE: braceSubstitution() causes the template inclusion to be recorded in the ParserOutput and consequently in the database.
+
 		$text = $ret[ 'text' ];
 
 		return $text;

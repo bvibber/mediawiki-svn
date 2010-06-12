@@ -25,16 +25,21 @@ error_reporting( E_ALL );
 
 class DataTransclusionTest extends PHPUnit_Framework_TestCase {
 	protected static $templates = array(
-		'Test' => array(
-			'text' => "'''{{{id}}}'''|{{{name}}}|{{{info}}}",
-		)
+		'Test' => "'''{{{id}}}'''|{{{name}}}|{{{info}}}",
 	);
 
 	static function getTemplate( $title, $parser ) {
 		$name = $title->getText();
 
 		if ( $title->getNamespace() == NS_TEMPLATE && isset( DataTransclusionTest::$templates[ $name ] ) ) {
-			return DataTransclusionTest::$templates[ $name ];
+			$text = DataTransclusionTest::$templates[ $name ];
+
+			$entry = array(
+				'text' => $text,
+				'deps' => array( array( 'title' => $title, 'page_id' => 0, 'rev_id' => 0 ) ),
+			);
+
+			return $entry;
 		} else {
 			return Parser::statelessFetchTemplate( $title, $parser );
 		}
@@ -254,8 +259,12 @@ class DataTransclusionTest extends PHPUnit_Framework_TestCase {
 
 		$text = 'xx {{#record:FOO|3|Test}} xx';
 		$wgParser->parse( $text, $title, $options );
-		$html = $wgParser->getOutput()->getText();
-		$this->assertEquals( $html, "<p>xx <b>3</b>|foo|test&amp;X xx\n</p>" ); // XXX: should be more leient wrt whitespace
+
+		$html = $wgParser->getOutput()->getText();      
+		$this->assertEquals( $html, "<p>xx <b>3</b>|foo|test&amp;X xx\n</p>" ); // XXX: should be more lenient wrt whitespace
+
+		$templates = $wgParser->getOutput()->getTemplates();
+		$this->assertTrue( isset( $templates[ NS_TEMPLATE ]['Test'] ) ); 
 	}
 
 	function testHandleRecordTag() {
@@ -279,8 +288,12 @@ class DataTransclusionTest extends PHPUnit_Framework_TestCase {
 
 		$text = 'xx <record source=FOO template="Test">3</record> xx';
 		$wgParser->parse( $text, $title, $options );
-		$html = $wgParser->getOutput()->getText();
-		$this->assertEquals( $html, "<p>xx <b>3</b>|foo|test&amp;X xx\n</p>" ); // XXX: should be more leient wrt whitespace
+
+		$html = $wgParser->getOutput()->getText();      
+		$this->assertEquals( $html, "<p>xx <b>3</b>|foo|test&amp;X xx\n</p>" ); // XXX: should be more lenient wrt whitespace
+
+		$templates = $wgParser->getOutput()->getTemplates();
+		$this->assertTrue( isset( $templates[ NS_TEMPLATE ]['Test'] ) ); 
 	}
 
 	function testNormalizeRecord() {
