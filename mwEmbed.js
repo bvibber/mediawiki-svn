@@ -808,16 +808,21 @@ if( typeof preMwEmbedConfig == 'undefined') {
 	* @param {String} title Context title of the content to be parsed
 	* @param {Function} callback Function called with api parser output 
 	*/
-	mw.parseWikiText = function( wikitext, title, callback ) {		
-		mw.getJSON( mw.getLocalApiUrl(), 
-			{
-				'action': 'parse',
-				'title' : title,
-				'text': wikitext
-			}, function( data ) {
-				callback( data.parse.text['*'] );
-			}
-		);
+	mw.parseWikiText = function( wikitext, title, callback ) {
+		// make sure we have json to decode the resposne	
+		mw.load('JSON', function(){			
+			$j.post( mw.getLocalApiUrl(), 
+				{
+					'action': 'parse',
+					'format': 'json',
+					'title' : title,
+					'text': wikitext				
+				}, function( data ) {
+					var pageData = JSON.parse( data );
+					callback( pageData.parse.text['*'] );
+				}
+			);
+		});
 	}
 	
 	/**
