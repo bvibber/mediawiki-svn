@@ -91,8 +91,7 @@ class VectorHooks {
 	 * Adds the modules to the edit form
 	 */
 	 public static function addModules() {
-		global $wgUser, $wgJsMimeType, $wgOut;
-		global $wgVectorModules, $wgUsabilityInitiativeResourceMode;
+		global $wgUser, $wgVectorModules, $wgUsabilityInitiativeResourceMode;
 		
 		// Don't load Vector modules for non-Vector skins
 		// They won't work but will throw unused JS in the client's face
