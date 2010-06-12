@@ -36,6 +36,11 @@
   
       $("#docbox").resizable();
       $("#docbox").draggable();
+      $("#js-console").resizable();
+      $("#js-console").draggable();
+
+
+
     });
   </script>
 </head>
@@ -179,15 +184,17 @@
         </iframe>
       </div>
 
-      <div id="demo_control_panel" style="display:none;">
-        <p>Demo Controls</p>
-      </div><!-- END demo_control_panel -->
+    </div><!-- end sideBox -->
+
+    <div id="js-console" class="ui-widget-content">
+    <h3 class="ui-widget-header">mwEmbed Controls</h3>
+        <p>Textboxes and buttons for interacting with the demonstration player.</p>
+    </div>
 
       <div id="help" style="display:none;">
         <p>Instructions will go here</p>
       </div><!-- END help -->
 
-    </div><!-- end sideBox -->
 
   </div><!-- END content -->
 </div><!-- END container -->
