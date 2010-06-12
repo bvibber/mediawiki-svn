@@ -754,12 +754,14 @@ Clicca <a href='$1'>hic</a> pro retornar.",
 );
 
 /** Indonesian (Bahasa Indonesia)
+ * @author Irwangatot
  * @author Rex
  */
 $messages['id'] = array(
 	'spamdifftool' => 'Pemeliharaan daftar hitam spam',
 	'spamdifftool-desc' => 'Menyediakan fungsi dasar untuk menambahkan entri baru ke daftar hitam spam langsung dari halaman perbedaan antar revisi',
 	'spamdifftool_cantedit' => 'Maaf - Anda tidak memiliki hak akses untuk menyunting daftar hitam spam.',
+	'spamdifftool-no-title' => "'''Kesalahan:''' tidak ada judul halaman yang ditetapkan.",
 	'spamdifftool_notext' => "Tidak ada teks yang dapat ditambahkan ke daftar hitam spam.
 Klik <a href='$1'>di sini</a> untuk melanjutkan.",
 	'spamdifftool_confirm' => "Konfirmasi untuk meyakinkan bahwa Anda ingin menambahkan entri ini ke daftar hitam spam.

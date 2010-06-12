@@ -38,6 +38,17 @@ $messages['be-tarask'] = array(
 	'categorymultisort-sortkey-name-radical-t' => 'Радыкальны: Традыцыйны',
 );
 
+/** Breton (Brezhoneg)
+ * @author Y-M D
+ */
+$messages['br'] = array(
+	'categorymultisort-sortkey-name-mandarin' => 'Mandarineg',
+	'categorymultisort-sortkey-name-cantonese' => 'Kantoneg',
+	'categorymultisort-sortkey-name-stroke' => 'Neuz',
+	'categorymultisort-sortkey-name-stroke-s' => 'Neuz : eeunaet',
+	'categorymultisort-sortkey-name-stroke-t' => 'Neuz : hengounel',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
@@ -47,7 +58,7 @@ $messages['de'] = array(
 	'categorymultisort-sortkey-name-cantonese' => 'Kantonesisch',
 	'categorymultisort-sortkey-name-stroke' => 'Strich',
 	'categorymultisort-sortkey-name-stroke-s' => 'Strich: Kurzzeichen',
-	'categorymultisort-sortkey-name-stroke-t' => 'Strich:Langzeichen',
+	'categorymultisort-sortkey-name-stroke-t' => 'Strich: Langzeichen',
 	'categorymultisort-sortkey-name-radical' => 'Radikal',
 	'categorymultisort-sortkey-name-radical-s' => 'Radikal: Kurzzeichen',
 	'categorymultisort-sortkey-name-radical-t' => 'Radikal: Langzeichen',
@@ -177,10 +188,12 @@ $messages['nl'] = array(
 
 /** Portuguese (Português)
  * @author Giro720
+ * @author Hamilton Abreu
  */
 $messages['pt'] = array(
-	'categorymultisortchinese-desc' => 'Permitir que as categorias sejam visualizadas com diferentes chaves de ordenação específicas para caligrafias chinesas',
+	'categorymultisortchinese-desc' => 'Permitir que as categorias sejam visionadas com diferentes chaves de ordenação específicas para caligrafias chinesas',
 	'categorymultisort-sortkey-name-mandarin' => 'Mandarim',
+	'categorymultisort-sortkey-name-cantonese' => 'Cantonês',
 	'categorymultisort-sortkey-name-stroke' => 'Traço',
 	'categorymultisort-sortkey-name-stroke-s' => 'Traço: Simplificado',
 	'categorymultisort-sortkey-name-stroke-t' => 'Traço: Tradicional',
@@ -217,5 +230,15 @@ $messages['ru'] = array(
 	'categorymultisort-sortkey-name-radical' => 'по радикалам',
 	'categorymultisort-sortkey-name-radical-s' => 'по радикалам: упрощённый',
 	'categorymultisort-sortkey-name-radical-t' => 'по радикалам: традиционный',
+);
+
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Yfdyh000
+ */
+$messages['zh-hans'] = array(
+	'categorymultisort-sortkey-name-mandarin' => '普通话',
+	'categorymultisort-sortkey-name-cantonese' => '粤语',
+	'categorymultisort-sortkey-name-stroke-s' => '中文（简体）',
+	'categorymultisort-sortkey-name-stroke-t' => '中文（繁体）',
 );
 

@@ -731,7 +731,7 @@ $messages['sv'] = array(
  */
 $messages['sw'] = array(
 	'wikieditor-preview-preference' => 'Kuona hakikisho ya mabadiliko na ukurasa ulivyo sasa kwa pamoja.',
-	'wikieditor-preview-tab' => 'Hakikisho',
+	'wikieditor-preview-tab' => 'Hakiki',
 	'wikieditor-preview-changes-tab' => 'Mabadiliko',
 	'wikieditor-preview-loading' => 'Inapakiwa...',
 );

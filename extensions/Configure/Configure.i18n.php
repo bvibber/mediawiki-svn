@@ -4748,7 +4748,7 @@ $messages['id'] = array(
 	'configure-ext-ext-dependencies' => "'''Perhatian:''' ekstensi ini membutuhkan {{PLURAL:$2|ekstensi|ekstensi}} berikut untuk dapat diaktifkan: $1.",
 	'configure-ext-ext-dependency-err' => "'''Kesalahan:''' ekstensi $1 membutuhkan ekstensi $2 untuk dapat diaktifkan.",
 	'configure-ext-doc' => 'Lihat dokumentasi daring',
-	'configure-ext-schemachange' => "'''Perhatian:''' ekstensi ini membutuhkan pemutahiran basis data untuk bekerja dengan baik!",
+	'configure-ext-schemachange' => "'''Perhatian:''' ekstensi ini membutuhkan [http://www.mediawiki.org/wiki/Manual:Update.php pemutahiran basis data] untuk bekerja dengan baik!",
 	'configure-ext-settings' => 'Pengaturan',
 	'configure-ext-settings-dep-errors' => 'Ekstensi tidak dapat diaktifkan karena nilai {{PLURAL:$1|pengaturan|pengaturan}} berikut tidak dapat diterima:',
 	'configure-ext-settings-dep-error' => '$1: membutuhkan nilai: $2, nilai sekarang: $3',
@@ -9878,9 +9878,48 @@ $messages['udm'] = array(
 
 /** ئۇيغۇرچە (ئۇيغۇرچە)
  * @author Alfredie
+ * @author Sahran
  */
 $messages['ug-arab'] = array(
+	'configure' => 'ۋىكى سەپلىمىسى',
+	'configure-desc-group' => 'گۇرۇپپا',
+	'configure-desc-key' => 'كۇنۇپكا',
+	'configure-desc-ns' => 'ئات بوشلۇقى',
+	'configure-desc-val' => 'قىممىتى',
+	'configure-edit-core' => 'MediaWiki',
+	'configure-edit-ext' => 'كېڭەيتىلمە',
+	'configure-viewconfig-default-diff' => 'كۆڭۈلدىكى تەڭشەك ئۆزگىرىشى',
+	'configure-ext-doc' => 'توردىكى پۈتۈكنى كۆرسەت',
+	'configure-ext-settings' => 'تەڭشەك',
+	'configure-error' => 'بۇ سەپلىمىنى ساقلىيالمىدى',
+	'configure-js-add' => 'يېڭى تۈردىن بىرنى قوش',
+	'configure-js-group-exists' => 'خاتالىق: گۇرۇپپا مەۋجۇد',
+	'configure-js-prompt-group' => 'يېڭى گۇرۇپپا ئاتىنى كىرگۈزۈڭ:',
+	'configure-js-remove' => 'ئۆچۈر',
+	'configure-js-remove-row' => 'بۇ تۈرنى ئۆچۈر',
+	'configure-js-get-image-url' => 'ھۆججەت ئاتىنى URL غا ئايلاندۇر',
+	'configure-js-biglist-shown' => 'تەڭشەك تەپسىلاتىنى يوشۇرغىلى بولىدۇ',
+	'configure-js-biglist-hidden' => 'تەڭشەك تەپسىلاتى يوشۇرۇن',
+	'configure-js-biglist-show' => '[تەپسىلاتنى كۆرسەت]',
+	'configure-js-biglist-hide' => '[تەپسىلاتىنى يوشۇر]',
+	'configure-js-summary-none' => 'تەڭشەك يوق',
+	'configure-js-search-legend' => 'تەڭشەك ئىزدە',
+	'configure-js-search-prompt' => 'سۈرۈشتۈرۈش:',
+	'configure-section-features' => 'ئىقتىدار',
+	'configure-section-general' => 'ئادەتتىكى تەڭشەك',
+	'configure-section-pages' => 'بەتلەر',
+	'configure-section-paths' => 'يوللار',
+	'configure-section-db' => 'ساندان',
+	'configure-section-load-balancing' => 'تەڭپۇڭلۇق يۈكلە',
+	'configure-section-mysql' => 'MySQL گە خاس',
+	'configure-section-postgres' => 'PostgreSQL گە خاس',
+	'configure-section-sqlite' => 'SQLite غا خاس',
 	'configure-section-email' => 'ئېلخەت',
+	'configure-section-enotif' => 'ئېلخەت ئۇقتۇرۇشى',
+	'configure-section-localization' => 'يەرلىكلەشتۈرۈش',
+	'configure-section-timezone' => 'ۋاقىت رايونى',
+	'configure-section-zh-conversion' => 'خەنچە ئايلاندۇرۇش',
+	'configure-section-debug' => 'سازلاش',
 );
 
 /** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))

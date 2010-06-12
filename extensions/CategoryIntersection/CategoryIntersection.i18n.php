@@ -363,12 +363,14 @@ $messages['is'] = array(
 
 /** Italian (Italiano)
  * @author BrokenArrow
+ * @author HalphaZ
  */
 $messages['it'] = array(
 	'categoryintersection' => 'Intersezione tra categorie',
 	'categoryintersection-desc' => "Gestisce una tabella con i valori di hash per le [[Special:CategoryIntersection|intersezioni tra categorie]] nell'ambito di una pagina",
 	'categoryintersection-doit' => 'Elenca le pagine che appartengono a tutte le categorie indicate',
 	'categoryintersection-maxcategories' => 'Non è possibile indicare più di $1 categorie da interesecare.',
+	'categoryintersection-mincategories' => 'È necessario includere almeno due categorie.',
 	'categoryintersection-results' => 'La ricerca ha restituito {{PLURAL:$1|un risultato|$1 risultati}}.',
 );
 

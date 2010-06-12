@@ -597,6 +597,13 @@ $messages['sk'] = array(
 	'multiboilerplate-special-define-in-interface' => 'Šablóny sú definované v [[MediaWiki:Multiboilerplate]].',
 );
 
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'multiboilerplate-submit' => 'Учитај',
+);
+
 /** Swedish (Svenska)
  * @author M.M.S.
  */

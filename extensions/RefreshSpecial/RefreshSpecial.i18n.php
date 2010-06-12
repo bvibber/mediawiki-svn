@@ -1250,6 +1250,8 @@ $messages['sr-ec'] = array(
 	'refreshspecial-none-selected' => 'Можда нисте означили ни једну специјалну страну. Враћање на подразумеван избор.',
 	'refreshspecial-db-error' => 'Није успело: Грешка у бази података',
 	'refreshspecial-no-page' => 'Нема такве специјалне стране',
+	'refreshspecial-reconnected' => 'Реконектован.',
+	'refreshspecial-reconnecting' => 'Конекција није успела, реконекција за 10 секунди...',
 	'refreshspecial-page-result' => '{{PLURAL:$1|добијен|добијено}} $1 {{PLURAL:$1|ред|редова}} у',
 );
 

@@ -741,9 +741,18 @@ Untuk mengelola undangan untuk setiap fitur, klik pada namanya.',
 	'invitations-invite-success' => 'Anda berhasil mengundang $1 untuk menggunakan fitur ini!',
 );
 
-/** Italian (Italiano) */
+/** Italian (Italiano)
+ * @author HalphaZ
+ */
 $messages['it'] = array(
+	'invite-logpage' => 'Registro inviti',
+	'invite-logpagetext' => "Questo è un registro degli utenti che si invitano l'un l'altro per utilizzare varie funzionalità software.",
+	'invite-logentry' => 'invitato $1 a usare la funzione <i>$2</i>.',
+	'invitations-inviteform-username' => 'Utente da invitare',
 	'invitations-inviteform-submit' => 'Invita',
+	'invitations-error-baduser' => "L'utente specificato non sembra esistere.",
+	'invitations-error-alreadyinvited' => "L'utente specificato ha già accesso a questa funzione!",
+	'invitations-invite-success' => 'Hai invitato $1 con successo per utilizzare questa funzione!',
 );
 
 /** Japanese (日本語)

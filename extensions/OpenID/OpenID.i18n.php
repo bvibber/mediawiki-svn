@@ -2529,6 +2529,7 @@ Il esserea impossibile aperir un session sin OpenID.',
 /** Indonesian (Bahasa Indonesia)
  * @author -iNu-
  * @author Bennylin
+ * @author Irwangatot
  * @author IvanLanin
  * @author Kenrick95
  * @author Rex
@@ -2566,9 +2567,10 @@ Pesan kesalahan: "$1"',
 	'openidemail' => 'Alamat surel',
 	'openidlanguage' => 'Bahasa',
 	'openidtimezone' => 'Zona waktu',
-	'openidchooselegend' => 'Nama pengguna pilihan',
+	'openidchooselegend' => 'Pilihan nama pengguna',
 	'openidchooseinstructions' => 'Semua pengguna memerlukan sebuah nama panggilan;
 Anda dapat memilih dari salah satu opsi berikut.',
+	'openidchoosenick' => 'Nama panggilan anda ($1)',
 	'openidchoosefull' => 'Nama lengkap Anda ($1)',
 	'openidchooseurl' => 'Sebuah nama diambil dari OpenID Anda ($1)',
 	'openidchooseauto' => 'Nama yang dibuat secara otomatis ($1)',
@@ -2605,6 +2607,8 @@ Ada banyak [http://openid.net/get penyedia OpenID], dan Anda mungkin telah memil
 Anda tidak akan dapat masuk log lagi dengan OpenID ini.',
 	'openiddelete-button' => 'Konfirmasi',
 	'openiddeleteerrornopassword' => 'Anda tidak dapat menghapus semua OpenID Anda karena akun Anda tidak diberi kata sandi.
+Anda tidak akan dapat masuk log tanpa OpenID.',
+	'openiddeleteerroropenidonly' => 'Anda tidak dapat menghapus semua OpenIDs Anda karena Anda hanya diijinkan masuk log dengan OpenID. 
 Anda tidak akan dapat masuk log tanpa OpenID.',
 	'openiddelete-sucess' => 'OpenID telah dihapus dari akun Anda.',
 	'openiddelete-error' => 'Terjadi kesalahan saat berusaha menghapus OpenID dari akun Anda.',
@@ -4752,6 +4756,7 @@ $messages['sr-ec'] = array(
 	'openidclientonlytext' => 'Ви не можете да користите налоге са овог Викија као OpenID-ове на другим сајтовима.',
 	'openidloginlabel' => 'OpenID URL',
 	'openidupdateuserinfo' => 'Актуализуј моје личне податке:',
+	'openiddelete-button' => 'Потврди',
 	'openid-prefstext' => '[http://openid.net/ OpenID] подешавања',
 	'openid-pref-hide' => 'Сакријте свој OpenID URL са корисничке стране, ако се са њим логујете.',
 	'openid-pref-update-userinfo-on-login' => 'Актуализуј следеће информације OpenID идентитета сваки пут кад се улогујем:',
@@ -5808,6 +5813,7 @@ $messages['zh-hant'] = array(
 	'openiddelete' => '刪除OpenID',
 	'openiddelete-text' => '當你按下"{{int:openiddelete-button}}"按鈕，你會將OpenID $1從你的戶口中移除。你以後都不可以再使用這個OpenID登入。',
 	'openiddelete-button' => '確認',
+	'openiddelete-error' => '在移除你的OpenID的時候出現了一個錯誤。',
 	'openid-prefstext' => '[http://openid.net/ OpenID]參數設置',
 	'openid-pref-hide' => '如果使用OpenID登陸，您可以在您的用戶頁隱藏您的OpenID。',
 	'openid-urls-desc' => '和你的帳號關聯的OpenID：',

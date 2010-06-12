@@ -952,6 +952,7 @@ $messages['sr-ec'] = array(
 	'postcomment_leavemessagefor' => 'Остави поруку за $1',
 	'postcomment_post' => 'Пошаљи',
 	'postcomment_on' => 'На',
+	'postcomment_said' => '{{GENDER:|рекао|рекла|рекао}}',
 	'postcomment_invalidrequest' => 'Неисправан захтев.',
 	'postcomment_replyto' => 'Одговор на $1',
 );

@@ -514,6 +514,18 @@ $messages['ru'] = array(
 	'tooltip-pt-prefswitch-link-off' => 'Опробуйте новые возможности',
 );
 
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'prefswitch-link-anon' => 'Саҥа туруоруулар',
+	'tooltip-pt-prefswitch-link-anon' => 'Саҥа туруоруулар тустарынан бил',
+	'prefswitch-link-on' => 'Уруккутун төннөр',
+	'tooltip-pt-prefswitch-link-on' => 'Саҥа туруоруулары араар',
+	'prefswitch-link-off' => 'Саҥа туруоруулар',
+	'tooltip-pt-prefswitch-link-off' => 'Саҥа туруоруулары тургутан көр',
+);
+
 /** Sinhala (සිංහල)
  * @author බිඟුවා
  */

@@ -896,6 +896,7 @@ $messages['sk'] = array(
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
+	'profiling-process' => 'Обради стринг:',
 	'profiling-ok' => 'ОК',
 	'profiling-data-process' => 'Обради',
 	'profiling-data-count' => 'Број',

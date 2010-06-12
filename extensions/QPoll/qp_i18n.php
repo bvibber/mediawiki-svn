@@ -2013,6 +2013,7 @@ $messages['sr-ec'] = array(
 	'qp_vote_again_button' => 'Промените свој глас',
 	'qp_polls_list' => 'Прикажи све анкете',
 	'qp_users_list' => 'Прикажи све кориснике',
+	'qp_votes_count' => '$1 {{PLURAL:$1|глас|гласа|гласа|гласа|гласова}}',
 	'qp_stats_link' => 'Статистике',
 	'qp_users_link' => 'Корисници',
 	'qp_user_polls_link' => 'Учествовао у $1 {{PLURAL:$1|анкети|анкета}}',

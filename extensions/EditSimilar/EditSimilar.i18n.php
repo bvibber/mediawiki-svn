@@ -607,6 +607,13 @@ Pozrite sa na {{PLURAL:$2|túto súvisiacu stránku|tieto súvisiace stránky}}:
 	'tog-edit-similar' => 'Zapnúť návrhy podobných stránok',
 );
 
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'editsimilar-link-disable' => 'постави подешавања',
+);
+
 /** Swedish (Svenska)
  * @author M.M.S.
  * @author Skalman

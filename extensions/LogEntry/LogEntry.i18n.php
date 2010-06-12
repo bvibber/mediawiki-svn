@@ -519,6 +519,13 @@ $messages['sq'] = array(
 	'logentry-invalidpage' => 'Faqe jovalide',
 );
 
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'logentry-append' => 'Додај',
+);
+
 /** Swedish (Svenska)
  * @author Fluff
  * @author Najami

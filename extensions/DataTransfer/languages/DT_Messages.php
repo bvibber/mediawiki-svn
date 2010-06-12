@@ -1720,6 +1720,7 @@ $messages['sr-ec'] = array(
 	'importxml' => 'Увези XML',
 	'dt_import_editsummary' => '$1 увоз',
 	'dt_import_importing' => 'Увоз у току...',
+	'importcsv' => 'Увези CSV',
 	'right-datatransferimport' => 'Увези податке',
 );
 

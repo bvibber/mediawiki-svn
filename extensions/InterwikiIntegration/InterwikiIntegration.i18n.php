@@ -113,6 +113,13 @@ Assecura te de configurar le tabellas in tu altere wikis tamben.',
 	'right-integration' => 'Plenar le tabella de integration interwiki',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'interwikiintegration' => 'Interwiki-Integratioun',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

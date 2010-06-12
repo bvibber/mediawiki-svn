@@ -141,6 +141,18 @@ $messages['ia'] = array(
 	'prefs-category' => 'Categoria',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'categorymultisort-desc' => 'Erméiglecht et Kategorien no verschiddenen Zortéiercritèren ze weisen',
+	'categorymultisort-defaultsortkey-name' => 'Standard',
+	'categorymultisort-sortkey' => 'Zortéiercritère:',
+	'categorymultisort-go' => 'Lass',
+	'categorymultisort-default-sortkey' => 'STandard-Zortéiercritère:',
+	'prefs-category' => 'Kategorie',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

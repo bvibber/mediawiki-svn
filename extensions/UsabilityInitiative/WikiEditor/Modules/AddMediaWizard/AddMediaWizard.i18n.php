@@ -269,6 +269,13 @@ $messages['ru'] = array(
 	'wikieditor-addMediaWizard-preference' => 'Включить гаджет «Мастер добавления медиа»',
 );
 
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'wikieditor-addMediaWizard-preference' => '«Медиа биэлэри эбэр маастар» гаджеты холбоо',
+);
+
 /** Slovenian (Slovenščina)
  * @author Dbc334
  */

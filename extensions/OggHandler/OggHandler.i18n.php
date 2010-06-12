@@ -1543,6 +1543,7 @@ $messages['is'] = array(
  * @author .anaconda
  * @author BrokenArrow
  * @author Darth Kule
+ * @author HalphaZ
  */
 $messages['it'] = array(
 	'ogg-desc' => 'Gestore per i file Ogg Theora e Vorbis, con programma di riproduzione in JavaScript',
@@ -1571,6 +1572,8 @@ $messages['it'] = array(
 	'ogg-dismiss' => 'Chiudi',
 	'ogg-download' => 'Scarica il file',
 	'ogg-desc-link' => 'Informazioni su questo file',
+	'ogg-oggThumb-version' => 'OggHandler richiede la versione $1 o superiore di oggThumb.',
+	'ogg-oggThumb-failed' => 'oggThumb non è riuscito a creare la miniatura.',
 );
 
 /** Japanese (日本語)

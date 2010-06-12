@@ -69,6 +69,14 @@ $2 не зьяўляецца ключавым полем ў крыніцы зь�
 	'datatransclusion-unknown-template' => '<nowiki>{{</nowiki>[[{{ns:template}}:$1|$1]]<nowiki>}}</nowiki> не існуе.',
 );
 
+/** Breton (Brezhoneg)
+ * @author Y-M D
+ */
+$messages['br'] = array(
+	'datatransclusion-bad-template-name' => 'Anv patrom direizh : $1.',
+	'datatransclusion-unknown-template' => "N'eus ket eus <nowiki>{{</nowiki>[[{{ns:template}}:$1|$1]]<nowiki>}}</nowiki>.",
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */

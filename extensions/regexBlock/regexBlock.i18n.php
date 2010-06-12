@@ -2759,6 +2759,7 @@ $messages['sr-ec'] = array(
 	'regexblock-block-success' => 'Блок успео',
 	'regexblock-currently-blocked' => 'Тренутно блокиране адресе:',
 	'regexblock-page-title-1' => 'Блокирај адресе користећи регуларне изразе',
+	'regexblock-form-username' => 'IP адреса или корисничко име:',
 	'regexblock-form-reason' => 'Разлог:',
 	'regexblock-form-expiry' => 'Истек:',
 	'regexblock-form-match' => 'Тачно слагање',
@@ -2771,6 +2772,7 @@ $messages['sr-ec'] = array(
 	'regexblock-view-block-by' => 'блокирао:',
 	'regexblock-view-block-unblock' => 'одблокирај',
 	'regexblock-view-stats' => 'статистике',
+	'regexblock-view-time' => 'у $1',
 );
 
 /** Serbian Latin ekavian (Srpski (latinica))

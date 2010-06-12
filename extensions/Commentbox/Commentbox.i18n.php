@@ -826,6 +826,13 @@ Chcete túto stránku okomentovať? Napíšte to sem alebo <span class="plainlin
 	'commentbox-error-empty-comment' => 'Prázdne komentáre nie sú povolené!',
 );
 
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'commentbox-name' => 'Име:',
+);
+
 /** Swedish (Svenska)
  * @author Per
  * @author Sertion

@@ -470,6 +470,7 @@ Ketika menandai beberapa halaman sekaligus, dengan menekan tombol "Shift" Anda d
 
 /** Italian (Italiano)
  * @author Darth Kule
+ * @author HalphaZ
  */
 $messages['it'] = array(
 	'watchsubpages' => 'Segui sottopagine',
@@ -477,10 +478,10 @@ $messages['it'] = array(
 	'watchsubpages-addtitles' => 'Aggiungi pagine',
 	'watchsubpages-addtitlestowatchlist' => 'Aggiungi pagine agli Osservati Speciali',
 	'watchsubpages-desc' => '[[Special:WatchSubpages|Aggiunge rapidamente tutte le sottopagine]] di una pagina agli Osservati Speciali',
-	'watchsubpages-form' => 'Selezionare le pagine da aggiungere ai propri osservati speciali di seguito.
-Per aggiungere una pagina, selezionare la casella accanto a essa e fare clic su "Aggiungi pagine".
+	'watchsubpages-form' => 'Selezionare le pagine di seguito da aggiungere ai propri osservati speciali.
+Per aggiungere una pagina, selezionare la casella accanto a essa e fare clic su "{{int:watchsubpages-addtitles}}".
 
-Quando si selezionano o deselezionano più pagine, tenendo premuto il tasto shift si possono selezionare caselle consecutive cliccando gli estremi dell\'intervallo da selezionare.',
+Quando si selezionano o deselezionano più pagine, tenere premuto il tasto shift permette di selezionare caselle consecutive cliccando gli estremi dell\'intervallo da selezionare.',
 );
 
 /** Japanese (日本語)

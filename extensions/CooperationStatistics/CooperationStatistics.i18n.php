@@ -722,6 +722,10 @@ Pozri aj [[Special:MostRevisors|'''stránky s najväčším počtom kontrolórov
 $messages['sr-ec'] = array(
 	'cooperationstatistics-tablearticle' => 'Број страна',
 	'cooperationstatistics-tablevalue' => 'Број уредника',
+	'cooperationstatistics-articles' => '$1 {{PLURAL:$1|страна|стране|стране|стране|страна}}',
+	'cooperationstatistics-nbusers' => '{{PLURAL:$2|има}} $1 {{PLURAL:$1|уредника}}',
+	'cooperationstatistics-nblessusers' => '{{PLURAL:$2|има}} $1 {{PLURAL:$1|уредника|или мање уредника}}',
+	'cooperationstatistics-nbmoreusers' => '{{PLURAL:$2|има}} $1 или више уредника',
 );
 
 /** Serbian Latin ekavian (Srpski (latinica)) */

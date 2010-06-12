@@ -956,6 +956,9 @@ $messages['sk'] = array(
  */
 $messages['sr-ec'] = array(
 	'security-info-toggle' => 'сигурносна ограничења',
+	'security-manygroups' => 'групе $1 и $2',
+	'security-type-category' => 'категорија',
+	'security-type-namespace' => 'именски простор',
 );
 
 /** Serbian Latin ekavian (Srpski (latinica)) */

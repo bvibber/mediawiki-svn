@@ -1775,10 +1775,44 @@ Jelöld be az összes indokodat.',
 	'prefswitch-success-feedback' => 'A visszajelzésed el lett küldve.',
 	'prefswitch-return' => '<hr style="clear:both">
 Vissza a(z) <span class="plainlinks">[$1 $2]</span> lapra.',
+	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
+| align=\"center\" |
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
+| [[Image:VectorNavigation-hu.png|401px|]]
+|-
+| A Wikipédia új navigációs felületének képe <small>[[Media:VectorNavigation-hu.png|(nagyítás)]]</small>
+|}
+|-
+| align=\"center\" |
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
+| [[Image:VectorEditorBasic-hu.png|401px|]]
+|-
+| Az alap szerkesztőfelület képe <small>[[Media:VectorEditorBasic-hu.png|(nagyítás)]]</small>
+|}
+|-
+| align=\"center\" |ám
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
+| [[Image:VectorLinkDialog-hu.png|401px|]]
+|-
+| A hivatkozások megadására szolgáló új párbeszédablak képe
+|}
+|}
+A Wikimédia Alapítány felhasználói élményért felelős csapata és az őket segítő önkéntesek azon dolgoztak, hogy könnyebbé tegyék számodra a wiki használatát. Örömünkre szolgál, hogy bemutathatjuk e munka néhány eredményt, köztük egy új kinézetet és egyszerűsített szerkesztőfelületet. A változások célja az új szerkesztők bekapcsolódásának megkönnyítése, [http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study a tavalyi használhatósági tesztelés] tanulságai alapján. Weboldalaink könnyű használhatósága fontos cél a Wikimédia Alapítványnak, ezért a jövőben további változatásokra számíthatsz. Részletesebben [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia a kapcsolódó blogposztban] olvashatsz.
+
+=== Here's what we have changed ===
+* '''Navigation:''' We have improved the navigation for reading and editing pages. Now, the tabs at the top of each page more clearly define whether you are viewing the page or discussion page, and whether you are reading or editing a page.
+* '''Editing toolbar improvements:''' We have reorganized the editing toolbar to make it easier to use. Now, formatting pages is simpler and more intuitive.
+* '''Link wizard:''' An easy-to-use tool allows you to add links to other wiki pages as well as links to external sites.
+* '''Search improvements:''' We have improved search suggestions to get you to the page you are looking for more quickly.
+* '''Other new features:''' We have also introduced a table wizard to make creating tables easier and a find and replace feature to simplify page editing.
+* '''Wikipedia logo:''' We have updated our logo. Read more at the [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d Wikimedia blog].
+
+===Feedback?===
+We would love to hear from you. Please visit our [[\$1|feedback page]] or, if you are interested in our ongoing efforts to improve the software, visit our [http://usability.wikimedia.org usability wiki] for more information.",
 	'prefswitch-main-anon' => '===Vissza a régit===
 [$1 Kattints ide az új funkciók kikapcsolásához]. Ehhez be kell jelentkezned, vagy regisztrálnod kell.',
 	'prefswitch-main-on' => '===Vissza a régit===
-[$1 Kattints ide az új funkciók kikapcsolásához].',
+[$2 Kattints ide az új funkciók kikapcsolásához].',
 	'prefswitch-main-off' => '=== Próbáld ki! ===
 
 Ha szeretnéd bekapcsolni az új funkciókat, [$1 kattints ide].',
@@ -2120,6 +2154,7 @@ $messages['ka'] = array(
 თუ გსურთ გამორთოთ ბეტა, [$1 დააჭირეთ აქ]. შემდეგ კი გაიარეთ ავტორიზაცია ან შექმენით ანგარიში.',
 	'prefswitch-main-off' => '=== მოსინჯეთ! === 
 თუ გსურთ, რომ ჩართათ ახალი ფუნქციები, [$ 1 დააწკაპეთ აქ].',
+	'prefswitch-feedbackpage' => 'ვიკიპედია:ბეტა/ახალი შესაძლებლობები/გამოხმაურებები',
 );
 
 /** Korean (한국어)
@@ -2183,6 +2218,18 @@ $messages['ko'] = array(
 "[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]"을 누르기 전에 아래의 설문 조사에 답해주세요.',
 	'prefswitch-survey-intro-off' => '새 기능을 사용해 주셔서 감사합니다.
 기능을 향상시키는 것을 돕기 위해 "[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]"를 누르기 전에 아래 설문 조사에 답해 주세요.',
+);
+
+/** Karachay-Balkar (Къарачай-Малкъар)
+ * @author Iltever
+ */
+$messages['krc'] = array(
+	'prefswitch-desc' => 'Къошулуучулагъа джарашдырыуланы тюрлендирирге къояды',
+	'prefswitch-survey-true' => 'Хоу',
+	'prefswitch-survey-false' => 'Огъай',
+	'prefswitch-survey-submit-off' => 'Джангы амалланы джукълат',
+	'prefswitch-survey-cancel-off' => 'Мындан ары да джангы амалланы хайырланыргъа излей эсегиз, къайтыргъа боллукъсуз: $1.',
+	'prefswitch-survey-submit-feedback' => 'Оюмугъузну ийигиз',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -2695,11 +2742,29 @@ Należy wybrać wszystkie pasujące odpowiedzi.',
 	'prefswitch-success-feedback' => 'Twoja opinia została przesłana.',
 	'prefswitch-return' => '<hr style="clear:both">
 Powrót do <span class="plainlinks">[$1 $2]</span>.',
-	'prefswitch-main' => "Ciężko pracowaliśmy, aby ułatwić życie naszym użytkownikom. Cieszymy się, że możemy zaprezentować część udoskonaleń, wliczając w to nowy wygląd i nowe, uproszczone funkcjonalności edycyjne. Zwiększanie użyteczności naszych projektów jest priorytetem dla Fundacji Wikimedia – z pewności w przyszłości pojawi się więcej nowych funkcjonalności. Więcej (w języku angielskim) można przeczytać na [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/ blogu Wikimedia].
-
-[[File:VectorNavigation-en.png|right|link=|Nowy układ strony]]
-[[File:VectorEditorBasic-en.png|right|link=|Nowy pasek narzędziowy]]
-[[File:VectorLinkDialog-en.png|right|link=|Nowe okienka edycyjne]]
+	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
+| align=\"center\" |
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
+| [[Image:VectorNavigation-en.png|401px|]]
+|-
+| Widok ekranu nowego interfejsu nawigacyjnego Wikipedii <small>[[Media:VectorNavigation-en.png|(enlarge)]]</small>
+|}
+|-
+| align=\"center\" |
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
+| [[Image:VectorEditorBasic-en.png|401px|]]
+|-
+| Podstawowy interfejs edycji stron <small>[[Media:VectorEditorBasic-en.png|(enlarge)]]</small>
+|}
+|-
+| align=\"center\" |
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
+| [[Image:VectorLinkDialog-en.png|401px|]]
+|-
+| Nowe okienko dialogowe do wprowadzania linków
+|}
+|}
+Zespół Fundacji Wikimedia zbierania doświadczeń użytkowników współpracuje z wolontariuszami ze społeczności aby ułatwić Ci korzystanie. Cieszymy się, że możemy zaprezentować część udoskonaleń, wliczając w to nowy wygląd i nowe, uproszczone funkcjonalności edycyjne. Wprowadzone zmiany mają ułatwić rozpoczęcie pracy nowym użytkownikom i są oparte na [http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study doświadczenia zebranych na przestrzeni ostatniego roku]. Zwiększanie użyteczności naszych projektów jest priorytetem dla Fundacji Wikimedia – z pewności w przyszłości przygotujemy więcej nowych funkcjonalności. Więcej (w języku angielskim) można przeczytać na [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/ blogu Wikimedia].
 
 ===Oto co zmieniliśmy===
 * '''Układ strony''' – Poprawiliśmy układ strony zarówno przy edycji jak i przeglądaniu. Zakładki na górze strony w bardziej czytelny sposób informują o tym czy oglądasz właściwą stronę czy stronę dyskusji oraz czy tylko przeglądasz czy edytujesz daną stronę.
@@ -2711,7 +2776,7 @@ Powrót do <span class="plainlinks">[$1 $2]</span>.',
 	'prefswitch-main-anon' => '=== Chcę wrócić ===
 [$1 Kliknij tutaj], jeśli chcesz wyłączyć nowe funkcjonalności. Przed powrotem do starego wyglądu interfejsu musisz utworzyć konto lub zalogować się.',
 	'prefswitch-main-on' => '===Chcę to wyłączyć!===
-Jeśli chcesz wyłączyć nowe funkcjonalności po prostu [$2 kliknij tutaj].',
+[$2 Kliknij tutaj aby wyłączyć nowe funkcjonalności].',
 	'prefswitch-main-off' => '===Wypróbuj!===
 Jeśli chcesz przetestować nowe funkcjonalności po prostu [$1 kliknij tutaj].',
 	'prefswitch-survey-intro-feedback' => 'Chcielibyśmy poznać Twoją opinię.
@@ -2790,6 +2855,9 @@ Për giutene a amelioreje, për piasì ch\'a ampinissa ël sondagi opsional sì-
 $messages['ps'] = array(
 	'prefswitch-survey-true' => 'هو',
 	'prefswitch-survey-false' => 'نه',
+	'prefswitch-survey-answer-whyoff-other' => 'بل سبب:',
+	'prefswitch-survey-question-browser' => 'تاسې کوم کتنمل کاروۍ؟',
+	'prefswitch-survey-answer-browser-other' => 'بل کتنمل:',
 	'prefswitch-title-switched-off' => 'مننه',
 );
 
@@ -3050,6 +3118,91 @@ $messages['ru'] = array(
 	'prefswitch-feedbackpage' => 'Project:Отзывы о новом оформлении',
 );
 
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'prefswitch' => 'Юзабилити инициативатын туруорууларын уларытыы',
+	'prefswitch-desc' => 'Туруоруулары талары хааччыйар',
+	'prefswitch-survey-true' => 'Сөп',
+	'prefswitch-survey-false' => 'Суох',
+	'prefswitch-survey-submit-off' => 'Саҥа туруоруулары араар',
+	'prefswitch-survey-cancel-off' => 'Саҥа туруоруулары салгыы туттуоххун баҕардаххына манна $1 төннүөххүн сөп.',
+	'prefswitch-survey-submit-feedback' => 'Сыанабылы ыытарга',
+	'prefswitch-survey-cancel-feedback' => 'Сыанабыл биэриэххин баҕарбат буоллаххына, манна $1 төннүөххүн сөп.',
+	'prefswitch-survey-question-like' => 'Саҥа туруорууларга тугу сөбүлээтиҥ?',
+	'prefswitch-survey-question-dislike' => 'Саҥа туруорууларга тугу сөбүлээбэтиҥ?',
+	'prefswitch-survey-question-whyoff' => 'Тоҕо саҥа туруоруулары араарыаххын баҕараҕын?
+Бука диэн сөп түбэһэр хоруйу тал.',
+	'prefswitch-survey-answer-whyoff-hard' => 'Туттарга наһаа ыарахан.',
+	'prefswitch-survey-answer-whyoff-didntwork' => 'Сөпкө үлэлээбэт.',
+	'prefswitch-survey-answer-whyoff-notpredictable' => 'Күүтүллүбүтүн курдук үлэлээбэт.',
+	'prefswitch-survey-answer-whyoff-didntlike-look' => 'Көстүүтүн сөбүлээбэтим.',
+	'prefswitch-survey-answer-whyoff-didntlike-layout' => 'Саҥа кыбытыктары уонна верстканы соччо сөбүлээбэтим.',
+	'prefswitch-survey-answer-whyoff-didntlike-toolbar' => 'Эрэдээксийэлиир хаптаһын саҥа барылын сөбүлээбэтим.',
+	'prefswitch-survey-answer-whyoff-other' => 'Атын төрүөт:',
+	'prefswitch-survey-question-browser' => 'Ханнык брааузеры туһанаҕыный?',
+	'prefswitch-survey-answer-browser-other' => 'Атын брааузер:',
+	'prefswitch-survey-question-os' => 'Ханнык операционнай систиэмэни туһанаҕын?',
+	'prefswitch-survey-answer-os-other' => 'Атын ОС:',
+	'prefswitch-survey-question-res' => 'Эн мониторуҥ разрешениета төһөнүй?',
+	'prefswitch-title-on' => 'Саҥа туруоруулар',
+	'prefswitch-title-switched-on' => 'Астын!',
+	'prefswitch-title-off' => 'Саҥа туруоруулары араар',
+	'prefswitch-title-switched-off' => 'Махтал',
+	'prefswitch-title-feedback' => 'Айааччылардыын алтыһыы',
+	'prefswitch-success-on' => 'Саҥа туруоруулар холбоннулар. Саҥа кыахтары туһанаргын сөбүлүөҥ дии саныыбыт. Сирэй үөһээ өттүгэр баар бу сигэни баттаан хаһан баҕарар араарыаххын сөп:  «[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-on}}]]».',
+	'prefswitch-success-off' => 'Саҥа туруоруулар араҕыстылар. Тургутан көрбүккэр махтал. Хаһан баҕарар сирэй үөһээ өттүгэр баар бу сигэни баттаан төттөрү холбуоххун сөп: «[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-off}}]]».',
+	'prefswitch-success-feedback' => 'Сыанабылыҥ ыытылынна.',
+	'prefswitch-return' => '<hr style="clear:both">
+Төннөргө <span class="plainlinks">[$1 $2]</span>.',
+	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
+| align=\"center\" |
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
+| [[Image:VectorNavigation-ru.png|401px|]]
+|-
+| Бикипиэдьийэ навигациятын саҥа интерфейса <small>[[Media:VectorNavigation-ru.png|(увеличить)]]</small>
+|}
+|-
+| align=\"center\" |
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
+| [[Image:VectorEditorBasic-ru.png|401px|]]
+|-
+| Сирэйдэри эрэдээксийэлээһин саҥа сүрүн интерфейса <small>[[Media:VectorEditorBasic-ru.png|(улаатыннар)]]</small>
+|}
+|-
+| align=\"center\" |
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
+| [[Image:VectorLinkDialog-ru.png|401px|]]
+|-
+| Сигэлэри оҥорооһун саҥа барыла
+|}
+|}
+«Викимедиа Фондатыгар» саайты туһаныыны анаалыстыыр бөлөх үлэлиир. Кини саайт волонтердарын кытта Бикипиэдьийэҕэ уонна атын биики-бырайыактарга үлэлээһини тупсара сатыыр.  Биһиги сорох тупсарыылары, ол иһигэр саҥа интерфейсы уонна эрэдээксийэлээһини судургутутууну үөрүүнү кытта көрдөрөбүт. Бу уларытыылар саҥа кыттааччылар үлэлэрин судургу гынарга аналлаахтар, уонна [http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study былырыын ыытыллыбыт тургутууга] өйөнөллөр. Биһиги саайтарбыт өссө табыгастаах буолалларыгар «Викимедиа Фондата» улахан суолтаны биэрэр, онон өссө да тупсара туруохпут. Сиһилии манна  [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/ Викимедия блогуттан] билиэххитин сөп.
+
+=== Туох уларыйбыта === 
+* '''Навигация.''' Навигацияны тупсардыбыт, онон ааҕарга уонна уларытарга өссө ордук буолла. Билигин хас биирдии сирэй үөһээ өттүнээҕи кыбытыктара тугу гына олороргун ордук чопчу көрдөрөр буоллулар: сирэйи эбэтэр кини ырытыытын көрөргүн, сирэйи ааҕа эбэтэр көннөрө олороргун.
+* '''Эрдээксийэ хаптаһына (панель).''' Туттарга судургу гынан биэрдибит. Билигин сирэйдэри формааттааһын ордук судургу уонна өйдөнүмтүө буолла. 
+* '''Сигэнии маастара.''' Судургу үнүстүрүмүөн сигэлэри атын биики-сирэйдэргэ да, атын саайтарга да, туруорары хааччыйаллар.
+* '''Көрдөөһүн.''' Көрдөөһүн полсказкаларын тупсардыбыт, онон наадыйар сирэйгин түргэнник булуоҥ. 
+* '''Атын саҥа кыахтар.''' Табылыыссалары оҥорор маастар олортубут. Эбии эрдээксийэни тупсарар көрдөөһүн уонна уларытыы үнүстүрүмүөнүн олортубут. 
+* '''Логотип.''' Шарик-пазл саҥа барылын олортубут, сиһилии манна көр: [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ «Викимедиа Фондатын» блога].
+
+=== Айааччылардыын алтыһыы ===
+Эн санааҕын истиэхпитин баҕарабыт. Бука диэн, биһиги [[\$1|онно аналлаах сирэйбитигэр]] киирэ сырыт эрэ. Өскө салгыы тугу гыныахпытын баҕарарбытын билиэххин баҕарар буоллаххына, манна [http://usability.wikimedia.org биики юзабилити-бырайыагар] киирэ сырыт.",
+	'prefswitch-main-anon' => '=== Уруккутугар төннөрүү ===
+Саҥа интерфейсы араарыаххын баҕарар буоллаххына, [$1 маны баттаа]. Оччоҕо ааккын этэргин эбэтэр бэлиэтэнэргин көрдөһүөхтэрэ.',
+	'prefswitch-main-on' => '=== Барытын төннөрүҥ! ===
+Саҥа интерфейсы араарарга, бука диэн,  [$2 маны баттаа].',
+	'prefswitch-main-off' => '=== Тургутан көр! ===
+Саҥа интерфейсы холбуурга, бука диэн,  [$1 маны баттаа].',
+	'prefswitch-survey-intro-feedback' => 'Эн санааҕын билиэхпитин баҕарабыт.
+Бука диэн, манна баар аҕыйах булгуччута суох ыйытыыларга хоруйдаа эрэ, онтон маны баттаар «[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]».',
+	'prefswitch-survey-intro-off' => 'Саҥа интерфейсы тургутан көрбүккэр махтал.
+Тупсарарга көмөлөһүөххүн баҕарар буоллаххына, аҕыйах булгуччута суох ыйытыыларга хоруйдаа, онтон маны баттаар: «[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]».',
+	'prefswitch-feedbackpage' => 'Project:Саҥа интерфейс туһунан дьон санаата',
+);
+
 /** Sardinian (Sardu)
  * @author Andria
  */
@@ -3235,7 +3388,14 @@ För att hjälpa oss förbättra dem, var vänlig och fyll i den frivilliga unde
 $messages['sw'] = array(
 	'prefswitch-survey-true' => 'Ndiyo',
 	'prefswitch-survey-false' => 'Siyo',
+	'prefswitch-survey-submit-off' => 'Kuzima zana mpya',
+	'prefswitch-survey-submit-feedback' => 'Tuma mrejeresho',
+	'prefswitch-title-off' => 'Zima zana mpya',
 	'prefswitch-title-switched-off' => 'Asante',
+	'prefswitch-title-feedback' => 'Mrejeresho',
+	'prefswitch-success-feedback' => 'Mrejeresho wako ulitumwa',
+	'prefswitch-return' => '<hr style="clear:both">
+Urudi <span class="plainlinks">[$1 $2]</span>.',
 );
 
 /** Telugu (తెలుగు)
@@ -3465,6 +3625,24 @@ Yeni özellikleri açmak için lütfen [$1 buraya tıklayın].',
 Lütfen "[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]" bağlantısına tıklamadan önce aşağıdaki isteğe bağlı anketimizi doldurun.',
 	'prefswitch-survey-intro-off' => 'Yeni özellikleri denediğiniz için teşekkürler.
 Bunları geliştirmemize yardımcı olmak için, lütfen "[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]" bağlantısına tıklamadan önce aşağıdaki isteğe bağlı anketimizi doldurun.',
+);
+
+/** Tatar (Cyrillic) (Татарча/Tatarça (Cyrillic))
+ * @author Рашат Якупов
+ */
+$messages['tt-cyrl'] = array(
+	'prefswitch' => 'Юзабилити инициативасы көйләүләрен күчерү',
+	'prefswitch-desc' => 'Кулланучыларга көйләүләр наборларын күчерергә мөмкинлек бирә',
+	'prefswitch-survey-true' => 'Әйе',
+	'prefswitch-survey-false' => 'Юк',
+	'prefswitch-survey-submit-off' => 'Яңа мөмкинчелекләрне сүндерергә',
+	'prefswitch-survey-cancel-off' => 'Сез алга таба да яңа мөмкинчелекләрне кулланырга теләсәгез, Сез $1 кайта аласыз.',
+	'prefswitch-survey-submit-feedback' => 'Фикерләрегезне җибәрү',
+	'prefswitch-survey-cancel-feedback' => 'Сез прототиа турында фикерләрегезне җибәрә алмасагыз, $1 кайта аласыз.',
+	'prefswitch-survey-question-like' => 'Сезгә яңа мөмкинчелекләрдә нәрсә ошады?',
+	'prefswitch-survey-question-dislike' => 'Сезгә яңа мөмкинчелекләрдә нәрсә ошамады?',
+	'prefswitch-survey-question-whyoff' => 'Сез яңа мөмкинчелекләрне нишләп сүндерәсез?
+Зинһар, бөтен уңайлы вариантларны сайлагыз.',
 );
 
 /** Ukrainian (Українська)

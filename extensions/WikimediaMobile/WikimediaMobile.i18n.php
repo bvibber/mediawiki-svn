@@ -134,6 +134,13 @@ $messages['pms'] = array(
 	'wikimediamobile-desc' => 'Funsion ëd sostegn për MediaWiki për ël proget Wikimedia-mobile ospità su http://github.com/hcatlin/wikimedia-mobile',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'wikimediamobile-desc' => 'ويکيمېډيا د ويکيمېډيا د موبايل پروژې د چارو چې په http://github.com/hcatlin/wikimedia-mobile باندې کوربه دی ملاتړ کوي',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  */

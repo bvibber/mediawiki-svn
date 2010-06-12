@@ -1317,6 +1317,7 @@ $messages['sr-ec'] = array(
 	'editmessages' => 'Измена порука',
 	'editmsg-target' => 'Циљана порука:',
 	'editmsg-search' => 'Претрага',
+	'editmsg-new-search' => 'Нова претрага',
 );
 
 /** Serbian Latin ekavian (Srpski (latinica))

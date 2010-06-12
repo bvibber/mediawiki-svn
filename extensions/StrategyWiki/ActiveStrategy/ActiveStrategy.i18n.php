@@ -130,11 +130,13 @@ $messages['hsb'] = array(
 
 /** Hungarian (Magyar)
  * @author Glanthor Reviol
+ * @author Tgr
  */
 $messages['hu'] = array(
 	'activestrategy' => 'Aktív munkacsoportok',
 	'active-strategy-desc' => 'Megjeleníti az egyes munkacsoport lapokon végzett szerkesztések számát',
 	'active-strategy-intro' => 'Szerkesztések száma a munkacsoport lapokon az elmúlt $1 napban.',
+	'nedits' => '{{PLURAL:$1|egy|$1}} szerkesztés',
 );
 
 /** Interlingua (Interlingua)
