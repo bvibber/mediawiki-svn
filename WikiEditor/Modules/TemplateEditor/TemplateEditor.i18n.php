@@ -584,6 +584,9 @@ $messages['ru'] = array(
  */
 $messages['sah'] = array(
 	'wikieditor-template-editor-preference' => 'Халыыптары форма көмөтүнэн уларытары холбоо',
+	'wikieditor-template-editor-dialog-title' => 'Халыыбы уларытыы',
+	'wikieditor-template-editor-dialog-submit' => 'Саҥардан биэр',
+	'wikieditor-template-editor-dialog-cancel' => 'Тохтот',
 );
 
 /** Sinhala (සිංහල)

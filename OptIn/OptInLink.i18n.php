@@ -33,6 +33,13 @@ $messages['qqq'] = array(
 	'optin-leave' => 'Caption for the link left of the user tools with which people can opt out',
 );
 
+/** Abkhazian (Аҧсуа)
+ * @author Temuri rajavi
+ */
+$messages['ab'] = array(
+	'optin-try' => 'Бета-версиа аҧышәара',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */

@@ -149,6 +149,13 @@ Possible answer to Usability feedback questions {{msg|Optin-survey-question-used
 	'optin-survey-answer-changes-other' => '{{Identical|Other}}',
 );
 
+/** Abkhazian (Аҧсуа)
+ * @author Temuri rajavi
+ */
+$messages['ab'] = array(
+	'optin-accept-long' => 'Бета-версиа аҧышәара',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */

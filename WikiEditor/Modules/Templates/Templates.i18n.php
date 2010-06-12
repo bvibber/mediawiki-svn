@@ -274,6 +274,13 @@ $messages['ru'] = array(
 	'wikieditor-templates-preference' => 'Включить сворачивание шаблонов',
 );
 
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'wikieditor-templates-preference' => 'Халыыптары сабыыны холбоо',
+);
+
 /** Slovenian (Slovenščina)
  * @author Dbc334
  */

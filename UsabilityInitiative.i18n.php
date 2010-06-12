@@ -612,6 +612,8 @@ $messages['ru'] = array(
 $messages['sah'] = array(
 	'usabilityinitiative' => 'Табыгас Ситиһиитэ',
 	'usabilityinitiative-desc' => 'Табыгас Ситиһиитин иһинэн эбиллибит MediaWiki движогун саҥа кыахтара; үлэ судургу уонна табыгастаах буоларыгар аналлаахтар.',
+	'prefs-beta' => 'Бета-туруоруулар',
+	'prefs-labs' => 'Тургутуллар туруоруулар',
 );
 
 /** Sinhala (සිංහල)

@@ -976,13 +976,20 @@ $messages['ja'] = array(
  * @author BRUTE
  * @author ITshnik
  * @author Temuri rajavi
+ * @author გიორგიმელა
  */
 $messages['ka'] = array(
+	'clicktracking' => 'Usability ინიციატივის ფარგლებში დაწკაპუნებებზე თვალის დევნება',
+	'clicktracking-desc' => 'იმ დაწყაპუნებებზე თვალყურის დევნება, რომლებიც არ იწვევენ გვერდის განახლებას',
+	'ct-title' => 'მომხმარებლის აგრეგირებული  დაწკაპუნების',
 	'ct-event-name' => 'მოვლენის სახელი',
 	'ct-expert-header' => '"ექსპერტის" დაჭერა',
+	'ct-intermediate-header' => '"შუალედური" დაწკაპუნებები',
 	'ct-beginner-header' => '"დამწყებთა" მოქმედებები',
+	'ct-total-header' => 'სულ დაწკაპუნებით',
 	'ct-start-date' => 'დაწყების თარიღი (წწწწთთდდ)',
 	'ct-end-date' => 'დამთავრების თარიღი (წწწწთთდდ)',
+	'ct-increment-by' => 'დღეების რაოდენობა თითოეული მონაცემების წერტილი წარმოადგენს',
 	'ct-change-graph' => 'გრაფიკის შეცვლა',
 	'ct-beginner' => 'დამწყები',
 	'ct-intermediate' => 'შუალედური',
