@@ -38,7 +38,7 @@ public abstract class StreamProcessorApp<I, O, S extends WikiWordConceptStoreBas
 	
 	protected File getOutputFile(int paramIndex) {
 		if (outputFile==null) {
-			if (args.getParameterCount()>=paramIndex) {
+			if (args.getParameterCount()>paramIndex) {
 				String f = args.getParameter(paramIndex);
 				if (!f.equals("-")) outputFile = new File(f);
 			}
@@ -48,7 +48,7 @@ public abstract class StreamProcessorApp<I, O, S extends WikiWordConceptStoreBas
 
 	protected String getInputPath(int paramIndex) {
 		if (inputPath==null) {
-			if (args.getParameterCount()>=paramIndex) {
+			if (args.getParameterCount()>paramIndex) {
 				inputPath = args.getParameter(paramIndex);
 			}
 		}
