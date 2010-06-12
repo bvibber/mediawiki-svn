@@ -27,6 +27,20 @@ public class ConceptProperties<C extends WikiWordConcept> {
 		return properties;
 	}
 
+	public Collection<String> getProperty(String name) {
+		return getProperties().get(name);
+	}
+
+	public boolean hasProperty(String name) {
+		Collection<String> vv = getProperties().get(name);
+		return vv!=null && !vv.isEmpty();
+	}
+
+	public boolean hasProperty(String name, String value) {
+		Collection<String> vv = getProperties().get(name);
+		return vv!=null && vv.contains(value);
+	}
+
 	public WikiWordConcept getConcept() {
 		return concept;
 	}
