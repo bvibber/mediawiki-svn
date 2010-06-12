@@ -10,7 +10,6 @@ import java.util.Set;
 
 import de.brightbyte.io.Output;
 import de.brightbyte.util.PersistenceException;
-import de.brightbyte.wikiword.disambig.MeaningCache.Manager;
 import de.brightbyte.wikiword.model.PhraseNode;
 import de.brightbyte.wikiword.model.TermListNode;
 import de.brightbyte.wikiword.model.TermReference;
@@ -58,23 +57,21 @@ public abstract class AbstractDisambiguator<T extends TermReference, C extends W
 		}
 	}
 
-	private MeaningCache.Manager<C> meaningCacheManager;
+	private MeaningFetcher<C> meaningFetcher;
 	
 	private Output trace;
 
 	private Map<String, C> meaningOverrides;
 	
-	public AbstractDisambiguator(MeaningFetcher<? extends C> meaningFetcher, int cacheDepth) {
-		this(new MeaningCache.Manager<C>(meaningFetcher, cacheDepth)); 
+	public AbstractDisambiguator(MeaningFetcher<C> meaningFetcher, int cacheCapacity) {
+		if (meaningFetcher==null) throw new NullPointerException();
+		
+		if (cacheCapacity>0) meaningFetcher = new CachingMeaningFetcher<C>(meaningFetcher, cacheCapacity);
+		this.meaningFetcher = meaningFetcher;
 	}
 	
-	public AbstractDisambiguator(MeaningCache.Manager<C> meaningCacheManager) {
-		if (meaningCacheManager==null) throw new NullPointerException();
-		this.meaningCacheManager = meaningCacheManager;
-	}
-	
-	public MeaningCache.Manager<C> getMeaningCacheManager() {
-		return meaningCacheManager;
+	public MeaningFetcher<C> getMeaningFetcher() {
+		return meaningFetcher;
 	}
 
 	public void setMeaningOverrides(Map<String, C> overrideMap) {
@@ -169,8 +166,7 @@ public abstract class AbstractDisambiguator<T extends TermReference, C extends W
 			}
 		}
 		
-		MeaningCache<C> mcache = meaningCacheManager.newCache();
-		Map<X, List<? extends C>> meanings = mcache.getMeanings(todo);
+		Map<X, List<? extends C>> meanings = meaningFetcher.getMeanings(todo);
 		
 		if (meaningOverrides!=null && todo.size()!=terms.size()) {
 			for (X t: terms) {

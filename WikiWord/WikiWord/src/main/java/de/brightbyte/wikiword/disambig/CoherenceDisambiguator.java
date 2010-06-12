@@ -66,7 +66,7 @@ public class CoherenceDisambiguator extends AbstractDisambiguator<TermReference,
 	//protected double popularityBias = 0.2; //FIXME: magic number. should "somehow" match popularityNormalizer and similarityNormalizer
 	//protected double weightBias = 0.5; //FIXME: magic number. should "somehow" match popularityNormalizer 
 	
-	protected FeatureCache.Manager<LocalConcept, Integer> featureCacheManager;
+	protected FeatureFetcher<LocalConcept, Integer> featureFetcher;
 
 	protected Similarity<LabeledVector<Integer>> similarityMeasure;
 	protected Measure<WikiWordConcept> popularityMeasure;
@@ -90,32 +90,28 @@ public class CoherenceDisambiguator extends AbstractDisambiguator<TermReference,
 	protected Functor2.Double weightCombiner = ProductCombiner.instance;
 	protected Functor.Double weightBooster = SquareBooster.instance; 
 	
-	public CoherenceDisambiguator(MeaningFetcher<LocalConcept> meaningFetcher, FeatureFetcher<LocalConcept, Integer> featureFetcher, int cacheDepth) {
-		this(meaningFetcher, featureFetcher, cacheDepth, null, null);  
+	public CoherenceDisambiguator(MeaningFetcher<LocalConcept> meaningFetcher, FeatureFetcher<LocalConcept, Integer> featureFetcher, int cacheCapacity) {
+		this(meaningFetcher, featureFetcher, cacheCapacity, null, null);  
 	}
 	
-	public CoherenceDisambiguator(MeaningFetcher<LocalConcept> meaningFetcher, FeatureFetcher<LocalConcept, Integer> featureFetcher, int cacheDepth, Measure<WikiWordConcept> popularityMeasure, Similarity<LabeledVector<Integer>> sim) {
-		this( new MeaningCache.Manager<LocalConcept>(meaningFetcher, cacheDepth),
-				new FeatureCache.Manager<LocalConcept, Integer>(featureFetcher, cacheDepth),
-				popularityMeasure, sim );
-	}
-	
-	public CoherenceDisambiguator(MeaningCache.Manager<LocalConcept> meaningCacheManager, FeatureCache.Manager<LocalConcept, Integer> featureCacheManager, Measure<WikiWordConcept> popularityMeasure, Similarity<LabeledVector<Integer>> sim) {
-		super(meaningCacheManager);
+	public CoherenceDisambiguator(MeaningFetcher<LocalConcept> meaningFetcher, FeatureFetcher<LocalConcept, Integer> featureFetcher, int cacheCapacity, Measure<WikiWordConcept> popularityMeasure, Similarity<LabeledVector<Integer>> sim) {
+		super(meaningFetcher, cacheCapacity);
 		
 		if (popularityMeasure==null) popularityMeasure = WikiWordConcept.theCardinality;
-		if (sim==null) sim = featureCacheManager.getFeaturesAreNormalized() ? ScalarVectorSimilarity.<Integer>getInstance() : CosineVectorSimilarity.<Integer>getInstance(); //if pre-normalized, use scalar to calc cosin
-		if (featureCacheManager==null) throw new NullPointerException();
+		if (sim==null) sim = featureFetcher.getFeaturesAreNormalized() ? ScalarVectorSimilarity.<Integer>getInstance() : CosineVectorSimilarity.<Integer>getInstance(); //if pre-normalized, use scalar to calc cosin
+		if (featureFetcher==null) throw new NullPointerException();
 		
-		this.featureCacheManager = featureCacheManager; 
-		this.popularityDisambiguator = new PopularityDisambiguator(meaningCacheManager, popularityMeasure);
+		if (cacheCapacity>0) featureFetcher = new CachingFeatureFetcher<LocalConcept, Integer>(featureFetcher, cacheCapacity);
+		
+		this.featureFetcher = featureFetcher; 
+		this.popularityDisambiguator = new PopularityDisambiguator(getMeaningFetcher(), 0, popularityMeasure);
 		
 		this.setPopularityMeasure(popularityMeasure);
 		this.setSimilarityMeasure(sim);
 	}
 	
-	public FeatureCache.Manager<LocalConcept, Integer> getFeatureCacheManager() {
-		return featureCacheManager;
+	public FeatureFetcher<LocalConcept, Integer> getFeatureFetcher() {
+		return featureFetcher;
 	}
 
 	
@@ -172,7 +168,7 @@ public class CoherenceDisambiguator extends AbstractDisambiguator<TermReference,
 	}
 
 	public void setFeatureFetcher(FeatureFetcher<LocalConcept, Integer> featureFetcher) {
-		this.featureCacheManager = new FeatureCache.Manager<LocalConcept, Integer>(featureFetcher, 10); //FIXME: depth
+		this.featureFetcher = featureFetcher;
 	}
 
 	public Similarity<LabeledVector<Integer>> getSimilarityMeasure() {
@@ -210,8 +206,6 @@ public class CoherenceDisambiguator extends AbstractDisambiguator<TermReference,
 	}
 
 	protected FeatureFetcher<LocalConcept, Integer> getFeatureCache(Map<? extends TermReference, List<? extends LocalConcept>> meanings, Collection<? extends LocalConcept> context) throws PersistenceException {
-		FeatureFetcher<LocalConcept, Integer> features = featureCacheManager.newCache();
-		
 		//NOTE: pre-fetch all features in one go
 		List<LocalConcept> concepts = new ArrayList<LocalConcept>(meanings.size()*10);
 		for (List<? extends LocalConcept> m: meanings.values()) {
@@ -219,9 +213,9 @@ public class CoherenceDisambiguator extends AbstractDisambiguator<TermReference,
 		}
 		
 		if (context!=null) concepts.addAll(context);
-		features.getFeatures(concepts);
+		featureFetcher.getFeatures(concepts);
 		
-		return features;
+		return featureFetcher;
 	}
 	
 	/* (non-Javadoc)

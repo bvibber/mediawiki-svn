@@ -10,7 +10,6 @@ import java.util.Map;
 import de.brightbyte.data.LabeledMatrix;
 import de.brightbyte.data.LabeledVector;
 import de.brightbyte.data.MapLabeledMatrix;
-import de.brightbyte.data.MapLabeledVector;
 import de.brightbyte.data.measure.Measure;
 import de.brightbyte.data.measure.Similarity;
 import de.brightbyte.util.PersistenceException;
@@ -25,18 +24,12 @@ public class SlidingCoherenceDisambiguator extends CoherenceDisambiguator {
 	protected int window;
 	protected int initialWindow; 
 	
-	public SlidingCoherenceDisambiguator(MeaningFetcher<LocalConcept> meaningFetcher, FeatureFetcher<LocalConcept, Integer> featureFetcher, int cacheDepth) {
-		this(meaningFetcher, featureFetcher, cacheDepth, null, null, 5, 5);
+	public SlidingCoherenceDisambiguator(MeaningFetcher<LocalConcept> meaningFetcher, FeatureFetcher<LocalConcept, Integer> featureFetcher, int cacheCapacity) {
+		this(meaningFetcher, featureFetcher, cacheCapacity, null, null, 5, 5);
 	}
 	
-	public SlidingCoherenceDisambiguator(MeaningFetcher<LocalConcept> meaningFetcher, FeatureFetcher<LocalConcept, Integer> featureFetcher, int cacheDepth, Measure<WikiWordConcept> popularityMeasure, Similarity<LabeledVector<Integer>> sim, int window, int initialWindow) {
-		this(new MeaningCache.Manager<LocalConcept>(meaningFetcher, cacheDepth),
-				new FeatureCache.Manager<LocalConcept, Integer>(featureFetcher, cacheDepth),
-				popularityMeasure, sim, window, initialWindow);
-	}
-	
-	public SlidingCoherenceDisambiguator(MeaningCache.Manager<LocalConcept> meaningCacheManager, FeatureCache.Manager<LocalConcept, Integer> featureCacheManager, Measure<WikiWordConcept> popularityMeasure, Similarity<LabeledVector<Integer>> sim, int window, int initialWindow) {
-		super(meaningCacheManager, featureCacheManager, popularityMeasure, sim);
+	public SlidingCoherenceDisambiguator(MeaningFetcher<LocalConcept> meaningFetcher, FeatureFetcher<LocalConcept, Integer> featureFetcher, int cacheCapacity, Measure<WikiWordConcept> popularityMeasure, Similarity<LabeledVector<Integer>> sim, int window, int initialWindow) {
+		super(meaningFetcher, featureFetcher, cacheCapacity, popularityMeasure, sim);
 		
  		this.window = window;
  		this.initialWindow = initialWindow;
