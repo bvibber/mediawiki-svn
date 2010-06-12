@@ -13,8 +13,9 @@
   <script type="text/javascript" src="jslib/menu/hoverIntent.js"></script> 
   <script type="text/javascript" src="jslib/menu/superfish.js"></script> 
   <script type="text/javascript" src="jslib/menu/jquery-ui-1.7.2.core.min.js"></script> 
-  <script type="text/javascript" src="jslib/menu/jquery.scrollfollow.js"></script> 
 
+  <script type="text/javascript" src="../libraries/jquery/jquery.ui/ui/ui.resizable.js"></script> 
+  <script type="text/javascript" src="../libraries/jquery/jquery.ui/ui/ui.draggable.js"></script> 
   <script type="text/javascript" src="http://html5.kaltura.org/js" > </script>
   <!-- <script type="text/javascript" src="../mwEmbed.js?debug=true"></script> -->
 
@@ -33,7 +34,8 @@
         speed:'fast'
       });
   
-      $('.sideBox').scrollFollow();
+      $("#docbox").resizable();
+      $("#docbox").draggable();
     });
   </script>
 </head>
@@ -170,47 +172,59 @@
 
     </div><!-- END demo_player -->
 
-    <div class="sideBox">
-      <ul class="sf-menu sf-horizontal"> 
-        <li><a href="#flashvars">FlashVars</a> 
-          <ul> 
-            <li><a href="#kalturaservices">Connecting to the Kaltura Services</a></li> 
-            <li><a href="#mediaentry">Kaltura MediaEntry</a></li> 
-            <li><a href="#layoutfunctionality">Player Layout and Functionality</a></li> 
-          </ul> 
-        </li> 
-        <li><a href="#jsapi">JavaScript API</a> 
-          <ul> 
-            <li><a href="#jscallbackready">jsCallbackReady</a></li> 
-            <li><a href="#addlistener">addJsListener</a></li> 
-            <li><a href="#removelistener">removeJsListener</a></li> 
-          </ul> 
-        </li> 
-        <li><a href="#expressions">Expressions</a> 
-          <ul> 
-            <li><a href="#expressiontypes">Expression types</a></li> 
-            <li><a href="#itemrendereresscope">itemRenderers scope</a></li> 
-            <li><a href="#globalfunctions">Global helper functions in expressions</a></li> 
-          </ul> 
-        </li> 
-      </ul> 
+    <div id="docbox" class="ui-widget-content">
+    <h3 class="ui-widget-header">mwEmbed Documentation</h3>
+     <div id="jsdocs">
+        <iframe src="../docs/index.html" width="90%" height="80%">
+        </iframe>
+      </div>
 
-    <div id="demo_control_panel" style="display:none;">
-      <p>Demo Controls</p>
-    </div><!-- END demo_control_panel -->
+      <div id="demo_control_panel" style="display:none;">
+        <p>Demo Controls</p>
+      </div><!-- END demo_control_panel -->
 
-    <div id="help" style="display:none;">
-      <p>Instructions will go here</p>
-    </div><!-- END help -->
+      <div id="help" style="display:none;">
+        <p>Instructions will go here</p>
+      </div><!-- END help -->
 
-    <div id="documentation">
-      <p>Docs go here</p>
-    </div><!-- END documentation -->
     </div><!-- end sideBox -->
 
   </div><!-- END content -->
 </div><!-- END container -->
 
+
+
+
+
 </body>
 </html>
 
+
+
+
+<!--      <div id="menu">
+        <ul class="sf-menu sf-horizontal"> 
+          <li><a href="#flashvars">FlashVars</a> 
+            <ul> 
+              <li><a href="#kalturaservices">Connecting to the Kaltura Services</a></li> 
+              <li><a href="#mediaentry">Kaltura MediaEntry</a></li> 
+              <li><a href="#layoutfunctionality">Player Layout and Functionality</a></li> 
+            </ul> 
+          </li> 
+          <li><a href="#jsapi">JavaScript API</a> 
+            <ul> 
+              <li><a href="#jscallbackready">jsCallbackReady</a></li> 
+              <li><a href="#addlistener">addJsListener</a></li> 
+              <li><a href="#removelistener">removeJsListener</a></li> 
+            </ul> 
+          </li> 
+          <li><a href="#expressions">Expressions</a> 
+            <ul> 
+              <li><a href="#expressiontypes">Expression types</a></li> 
+              <li><a href="#itemrendereresscope">itemRenderers scope</a></li> 
+              <li><a href="#globalfunctions">Global helper functions in expressions</a></li> 
+            </ul> 
+          </li> 
+        </ul>
+    </div> END menu -->
+ 

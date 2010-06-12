@@ -56,9 +56,11 @@ a img { margin:5px; }
 
 .footer-conts { width:480px; margin: auto auto;  }
 
-.sideBox { background-color:#FFFFFF; 
+#docbox { background-color:#FFFFFF; 
 color: black;
-  border:1px solid #eee; left:10px; position:absolute; top:10px; margin:0 0 10px 10px; padding:15px; }
+  width: 720px;
+  z-index:100;
+  right:10px; position:absolute; top:10px; margin:0; }
 
 dfn { border-bottom:1px dotted green; color:green; cursor:default; font-style:normal; }
 
