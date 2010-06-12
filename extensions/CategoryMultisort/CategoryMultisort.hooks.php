@@ -355,7 +355,7 @@ class CategoryMultisortHooks {
 	}
 	
 	function onCategoryPageView_buildSortkeySelectForm( $current = '' ) {
-		global $wgCategoryMultisortSortkeySettings, $wgArticle, $wgScript;
+		global $wgCategoryMultisortSortkeySettings, $wgArticle, $wgScript, $wgContLang;
 		
 		$html = '';
 		
@@ -388,7 +388,7 @@ class CategoryMultisortHooks {
 				'action' => $wgScript,
 				'method' => 'get',
 				'id' => 'categorymultisort-select-form',
-				'style' => 'float: right;',
+				'style' => "float: {$wgContLang->alignEnd()};",
 			), $html );
 		}
 		
