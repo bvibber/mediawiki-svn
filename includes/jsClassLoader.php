@@ -264,6 +264,11 @@ class jsClassLoader {
 		$jClassSet = FormatJson::decode( '{' . $jsvar[1] . '}', true );
 		// Check for null json decode:
 		if( $jClassSet == NULL ){
+			$moduleName = ( self::$classParentModuleName [ $className ] )
+				? self::$classParentModuleName [ $className ]
+				: ' loader set in extension ';
+
+			throw new MWException( "Error could not decode javascript class list for module:" . $moduleName ." \n" );
 			return false;
 		}
 
