@@ -121,11 +121,10 @@ class CodeRevisionView extends CodeView {
 		}
 
 		if ( $this->mReplyTarget ) {
-			global $wgJsMimeType;
 			$id = intval( $this->mReplyTarget );
-			$html .= "<script type=\"$wgJsMimeType\">addOnloadHook(function(){" .
-				"document.getElementById('wpReplyTo$id').focus();" .
-				"});</script>\n";
+			$html .= Html::inlineScript(
+				"addOnloadHook(function(){document.getElementById('wpReplyTo$id').focus();});"
+			) . "\n";
 		}
 
 		if ( $this->canPostComments() ) {
