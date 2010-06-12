@@ -387,8 +387,7 @@ class WikiEditorHooks {
 	 * Adds the modules to the edit form
 	 */
 	 public static function addModules( &$toolbar ) {
-		global $wgOut, $wgUser, $wgJsMimeType;
-		global $wgWikiEditorModules, $wgUsabilityInitiativeResourceMode;
+		global $wgUser, $wgWikiEditorModules, $wgUsabilityInitiativeResourceMode;
 		
 		// Modules
 		$preferences = array();
