@@ -304,23 +304,39 @@ public class CoherenceDisambiguator extends AbstractDisambiguator<TermReference,
 		CoherenceDisambiguation<X, LocalConcept>  best = null;
 		double bestScore = 0;
 		
+		if ( interpretations.size() == 0 ) return null;
+		else if ( interpretations.size() == 1 ) {
+			Disambiguator.Interpretation<X, LocalConcept> interp = interpretations.iterator().next();
+			CoherenceDisambiguation<X, LocalConcept> r = getScore(interp, context, similarities, features);
+
+			trace("only one interpretation available: "+r);
+			return r;
+		}
+		
 		trace("finding best of "+interpretations.size()+" interpretations.");
 		
 		for (Disambiguator.Interpretation<X, LocalConcept> interp: interpretations) {
 			CoherenceDisambiguation<X, LocalConcept> r = getScore(interp, context, similarities, features);
 			
-			if (r.getScore() >= minScore) {
 				if ( best == null || r.getScore() > bestScore) {
 					best = r;
 					bestScore = r.getScore();
+					
+					trace("  - best so far (score "+bestScore+"): "+best);
 				}
-			}
 		}
 		
-		if (best==null) {
-			Disambiguation<X, LocalConcept> r = popularityDisambiguator.disambiguate(root, meanings, context);
-			return getScore(r.getInterpretation(), context, similarities, features); 
+		if (best==null || bestScore<minScore) {
+			trace("best score is not good enough ("+bestScore+"<"+minScore+"), using popularity disambiguator.");
+			
+			Disambiguation<X, LocalConcept> p = popularityDisambiguator.disambiguate(root, meanings, context);
+			CoherenceDisambiguation<X, LocalConcept> r = getScore(p.getInterpretation(), context, similarities, features);
+			
+			trace("best of "+interpretations.size()+" interpretations by popularity: "+r);
+			return r;
 		}
+		
+		trace("best of "+interpretations.size()+" interpretations (score "+bestScore+"): "+best);
 		
 		//XXX: if result is tight (less than 50% distance), use more popularity score??
 		return best;
@@ -457,7 +473,7 @@ public class CoherenceDisambiguator extends AbstractDisambiguator<TermReference,
 								d = similarityMeasure.similarity(fa.getFeatureVector(), fb.getFeatureVector());
 						}
 						
-						//System.out.format("  sim(%s, %s) = %07.5f", a, b, d); System.out.println();
+						trace( String.format("      + sim(%s, %s) = %07.5f", a, b, d) );
 						similarities.set(a, b, d);
 					}
 				}
