@@ -67,7 +67,7 @@ class ActiveStrategy {
 		}
 		
 		if ( $type == 'members' ) {
-			$pageLink .= ' ('.wfMsgExt( 'nmembers', 'parseinline', $number ).')';
+			$pageLink .= ' ('.wfMsg( 'nmembers', $number ).')';
 		}
 		
 		$pageLink .= " <!-- $number -->";
