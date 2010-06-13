@@ -21,9 +21,11 @@ $wgHooks['SkinTemplateTabs'][]  = 'wfCommentPagesSkinTemplateTabs';
  */
 $wgCommentPagesNS = 100;
 
-function wfCommentPagesSkinTemplateTabs ( &$skin, &$content_actions )
+$wgCommentPagesContentNamespace = NS_MAIN;
+
+function wfCommentPagesSkinTemplateTabs ( $skin, &$content_actions )
 {
-	global $wgContLang, $wgCommentPagesNS;
+	global $wgContLang, $wgCommentPagesNS, $wgCommentPagesContentNamespace;
 
 	wfLoadExtensionMessages( 'CommentPages' );
 
@@ -33,20 +35,21 @@ function wfCommentPagesSkinTemplateTabs ( &$skin, &$content_actions )
 	$page = '';
 	$query = '';
 
-	if ($namespace == NS_MAIN || $namespace == NS_TALK) {
-		$comments = Title::newFromText($wgContLang->getNSText($wgCommentPagesNS).':'.$pagename);
+	if ($namespace == $wgCommentPagesContentNamespace ||
+			$namespace == $wgCommentPagesContentNamespace + 1 ) {
+		$comments = Title::makeTitleSafe( $wgCommentPagesNS, $pagename);
 		$newcontent_actions = array();
 
 		if (!$comments->exists()) {
 			$class = 'new';
-			$query = 'action=edit';
+			$query = array( 'action' => 'edit' );
 
 			if (wfMsg('commenttab-preload') != '') {
-				$query .= '&preload='.wfMsg('commenttab-preload');
+				$query['preload'] = wfMsg('commenttab-preload');
 			}
 
 			if (wfMsg('commenttab-editintro') != '') {
-				$query .= '&editintro='.wfMsg('commenttab-editintro');
+				$query['editintro'] = wfMsg('commenttab-editintro');
 			}
 		} else {
 			$class = '';
@@ -66,7 +69,7 @@ function wfCommentPagesSkinTemplateTabs ( &$skin, &$content_actions )
 
 		$content_actions = $newcontent_actions;
 	} elseif ($skin->mTitle->getNamespace() == $wgCommentPagesNS) {
-		$main = Title::newFromText($pagename);
+		$main = Title::makeTitleSafe( $wgCommentPagesContentNamespace, $pagename);
 		$talk = $main->getTalkPage();
 		$newcontent_actions = array();
 
@@ -80,7 +83,7 @@ function wfCommentPagesSkinTemplateTabs ( &$skin, &$content_actions )
 
 		$newcontent_actions['article'] = array(
 			'class' => $class,
-			'text'  => wfMsg( 'nstab-main' ),
+			'text'  => wfMsg( $main->getNamespaceKey() ),
 			'href'  => $main->getFullURL($query),
 		);
 
