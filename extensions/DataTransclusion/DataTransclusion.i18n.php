@@ -23,9 +23,10 @@ $messages['en'] = array(
 	'datatransclusion-missing-source'            => 'No data source specified.
 First argument is required.',
 	'datatransclusion-unknown-source'            => 'Bad data source specified.
-$1 is not known.',
+"$1" is not known.',
 	'datatransclusion-bad-argument-by'           => 'Bad key field specified.
-$2 is not a key field in data source $1, valid keys are: $3.',
+"$2" is not a key field in data source "$1".
+{{PLURAL:$4|Valid key|Valid keys are}}: $3.',
 	'datatransclusion-missing-argument-key'      => 'No key value specified.
 Second or "key" argument is required.',
 	'datatransclusion-missing-argument-template' => 'No template specified.

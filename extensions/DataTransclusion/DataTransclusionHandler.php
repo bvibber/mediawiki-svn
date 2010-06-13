@@ -112,8 +112,10 @@ class DataTransclusionHandler {
 
 		$keyFields = $source->getKeyFields();
 		if ( ! in_array( $by, $keyFields ) ) {
+			global $wgContLang;
 			wfDebugLog( 'DataTransclusion', "bad 'by' argument: $by (not a known key field)\n" );
-			return DataTransclusionHandler::errorMessage( 'datatransclusion-bad-argument-by', $asHTML, $sourceName, $by, join( ', ', $keyFields ) ); 
+			return DataTransclusionHandler::errorMessage( 'datatransclusion-bad-argument-by', $asHTML, $sourceName, $by, 
+				$wgContLang->commaList( $keyFields ), count( $keyFields ) ); 
 		}
 
 		if ( !empty( $argv['key'] ) ) {
