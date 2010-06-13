@@ -9,5 +9,6 @@
 $messages = array();
 
 $messages['en'] = array(
-	'ajaxtest-desc'             => '[[Special:AjaxTest|AjaxTest]] extension',
+	'ajaxtest' => 'Ajax Test',
+	'ajaxtest-desc' => '[[Special:AjaxTest|AjaxTest]] extension',
 );
