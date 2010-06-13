@@ -176,6 +176,7 @@ public class WikiConfiguration_enwiki extends WikiConfiguration {
 				new DefaultTemplateParameterPropertySpec("population_density_km2", "population-density-km2").setStripMarkup(true),
 				new DefaultTemplateParameterPropertySpec("population_density_sq_mi", "population-density-mi2").setStripMarkup(true),
 
+				new CoordinatePropertySpec( "coordinates", "latitude", null, null, null, "longitude", null, null, null),
 				new CoordinatePropertySpec( "coordinates", "latd", "latm", "lats", "latNS", "longd", "longm", "longs", "longEW"),
 				new CoordinatePropertySpec( "coordinates", "lat_d", "lat_m", "lat_s", "lat_NS", "long_d", "long_m", "long_s", "long_EW"),
 				new CoordinatePropertySpec( "coordinates", "lat_deg", "lat_min", "lat_sec", "lat_NS", "lon_deg", "lon_min", "lon_sec", "lon_EW"),
