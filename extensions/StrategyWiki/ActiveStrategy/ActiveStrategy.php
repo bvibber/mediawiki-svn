@@ -33,4 +33,5 @@ $wgActiveStrategyColors = array(
 		1 => 'FF0',
 		5 => 'AEA',
 	),
+	'members' => array(),
 );

@@ -44,6 +44,7 @@ class ActiveStrategy {
 		$pageLink = $skin->linkKnown( $title, $text );
 		$colors = null;
 		$color = null;
+		$style = '';
 		
 		if ( isset( $wgActiveStrategyColors[$type] ) ) {
 			$colors = $wgActiveStrategyColors[$type];
@@ -61,11 +62,23 @@ class ActiveStrategy {
 			}
 		}
 		
-		$style = 'padding-left: 3px; border-left: 1em solid #'.$color;
+		if ($color) {
+			$style = 'padding-left: 3px; border-left: 1em solid #'.$color;
+		}
+		
+		if ( $type == 'members' ) {
+			$pageLink .= ' ('.wfMsgExt( 'nmembers', 'parseinline', $number ).')';
+		}
 		
 		$pageLink .= " <!-- $number -->";
 		
-		$item = Xml::tags( 'li', array( 'style' => $style ), $pageLink );
+		if ($style) {
+			$item = Xml::tags( 'span', array( 'style' => $style ), $pageLink );
+		} else {
+			$item = $pageLink;
+		}
+		
+		$item .= "<br/>";
 		
 		return $item;
 	}
@@ -171,12 +184,13 @@ class ActiveStrategy {
 			$number = $row->value;
 			$taskForce = $categoryToTaskForce[$row->cl_to];
 			
-			$html .= self::formatResult( $sk, $taskForce, $number, $sortField );
+			if ( $number > 0 ) {
+				$html .= self::formatResult( $sk, $taskForce, $number, $sortField );
+			}
 		}
 		
-		$html = Xml::tags( 'ul', null, $html );
-		$html .= "<!-- " . $db->selectSQLText( $tables, $fields, $conds, __METHOD__,
-							$options, $joinConds ) . '-->';
+		$html = Xml::tags( 'div', array( 'class' => 'mw-activestrategy-output' ),
+				$html );
 		
 		return $html;
 	}
@@ -198,10 +212,13 @@ class ActiveStrategy {
 		$memberCount = array_reverse( $memberCount );
 		
 		foreach( $memberCount as $name => $count ) {
-			$output .= self::formatResult( $sk, $name, $count, 'members' );
+			if ( $count > 0 ) {
+				$output .= self::formatResult( $sk, $name, $count, 'members' );
+			}
 		}
 		
-		$output = Xml::tags( 'ul', null, $output );
+		$output = Xml::tags( 'div', array( 'class' => 'mw-activestrategy-output' ),
+				$output );
 		
 		return $output;
 	}
