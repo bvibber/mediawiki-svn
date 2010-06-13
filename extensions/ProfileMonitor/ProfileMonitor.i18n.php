@@ -906,6 +906,7 @@ $messages['sr-ec'] = array(
 
 /** Serbian Latin ekavian (Srpski (latinica)) */
 $messages['sr-el'] = array(
+	'profiling-process' => 'Obradi string:',
 	'profiling-ok' => 'OK',
 	'profiling-data-process' => 'Obradi',
 	'profiling-data-count' => 'Broj',

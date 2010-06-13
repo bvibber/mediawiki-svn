@@ -142,15 +142,27 @@ It is not in used at the referred page, as of 16 May 2010.
 	'prefswitch-survey-answer-whyoff-didntwork' => '{{MediaWiki:Prefswitch-survey-answer-whyoff-hard/qqq}}',
 	'prefswitch-survey-answer-whyoff-notpredictable' => '{{MediaWiki:Prefswitch-survey-answer-whyoff-hard/qqq}}',
 	'prefswitch-survey-answer-whyoff-other' => '{{Identical|Other reason}}',
+	'prefswitch-main' => 'The three default screenshots are in English and kept on Wikimedia Commons. If you want them to be in your language you will either need to create them yourself, and upload them onto Wikimedia Commons, or ask for help to make these from colleagues on your home wiki.',
 	'prefswitch-feedbackpage' => '{{doc-important|The name of the user experience feedback page on this wiki. Should only be translated for ja, es, de, fr, it, ru, pl, pt, nl for now. Do not translate "Project:"}}',
 );
 
 /** Afrikaans (Afrikaans)
+ * @author Deadelf
  * @author Naudefj
  */
 $messages['af'] = array(
 	'prefswitch-survey-true' => 'Ja',
 	'prefswitch-survey-false' => 'Nee',
+	'prefswitch-survey-submit-off' => 'Skakel nuwe funksies af',
+	'prefswitch-survey-cancel-off' => 'Indien u wil aanhou om die nuwe funksies te gebruik, kan u terugkeer na $1.',
+	'prefswitch-survey-submit-feedback' => 'Stuur terugvoer',
+	'prefswitch-survey-question-like' => 'Waarvan het u gehou betreffende die nuwe funksies?',
+	'prefswitch-survey-question-dislike' => 'Waarvan het u nie gehou nie betreffende die nuwe funksies?',
+	'prefswitch-survey-question-whyoff' => 'Om watse rede is u besig om die nuwe funksies af te skakel?
+Kies asseblief alles wat van toepassing is.',
+	'prefswitch-survey-answer-whyoff-hard' => 'Die nuwe funksies was te moeilik om te gebruik.',
+	'prefswitch-survey-answer-whyoff-didntwork' => 'Die nuwe funksies het nie korrek gewerk nie.',
+	'prefswitch-survey-answer-whyoff-notpredictable' => 'Die nuwe funksies het nie gewerk soos verwag was nie.',
 	'prefswitch-survey-answer-whyoff-other' => 'Ander rede:',
 );
 
@@ -307,18 +319,40 @@ $messages['be-tarask'] = array(
 	'prefswitch-success-feedback' => 'Ваш водгук дасланы.',
 	'prefswitch-return' => '<hr style="clear:both">
 Вярнуцца да <span class="plainlinks">[$1 $2]</span>.',
-	'prefswitch-main' => "Мы вельмі стараемся, каб спрасьціць працу нашых удзельнікаў. Мы ўвялі некаторыя паляпшэньні, уключаючы новы зьнешні выгляд і спрошчаныя магчымасьці рэдагаваньня. Паляпшэньне зручнасьці і прастаты выкарыстаньня нашымі праектамі зьяўляецца галоўнай мэтай Фундацыі «Вікімэдыя» і мы працягнем над гэтым працаваць. Падрабязнасьці можна паглядзець у [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/ блёге фундацыі «Вікімэдыя»].
+	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
+| align=\"center\" |
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
+| [[File:VectorNavigation-en.png|401px|]]
+|-
+| Новы навігацыйны інтэрфэйс Вікіпэдыі <small>[[Media:VectorNavigation-en.png|(павялічыць)]]</small>
+|}
+|-
+| align=\"center\" |
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
+| [[File:VectorEditorBasic-en.png|401px|]]
+|-
+| Выгляд новай старонкі рэдагаваньня <small>[[Media:VectorEditorBasic-en.png|(павялічыць)]]</small>
+|}
+|-
+| align=\"center\" |
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
+| [[File:VectorLinkDialog-en.png|401px|]]
+|-
+| Здымак акна для даданьня спасылак
+|}
+|}
+Каманда аналізу Фундацыі «Вікімэдыя» шмат працавала з валянтэрамі ад супольнасьці, каб палегчыць вашу працу зь Вікіпэдыяй і іншымі праектамі. Мы вельмі рады паказаць вам некаторыя ўдасканаленьні, у тым ліку новае афармленьне і спрашчэньне працэсу рэдагаваньня. На гэтыя зьмены, зробленыя на аснове [http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study usability вынікаў тэставаньня новых функцыяў за апошні год], ускладзенае палягчэньне працы для новых удзельнікаў. Паляпшэньне зручнасьці карыстаньня нашымі праектамі зьяўляецца прыярытэтам для Фундацыі, таму мы яшчэ падзелімся абнаўленьнямі ў будучыні. Каб даведацца болей, наведайце [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia запіс у блогу Вікімэдыі], датычны справы.
 
-[[File:UsabilityNavigation.png|right|link=|Выява новай навігацыі]]
-[[File:UsabilityToolbar.png|right|link=|Выява палепшанай панэлі рэдагаваньня]]
-[[File:UsabilityDialogs.png|right|link=|Выява новых дыялёгаў стварэньня]]
-===Што мы зьмянілі===
-* '''Навігацыя:''' Мы палепшылі навігацыю для чытаньня і рэдагаваньня старонак. Цяпер закладкі ў верхняй частцы кожнай старонкі дазваляюць дакладней зразумець ці Вы праглядаеце артыкул ці старонку абмеркаваньня, а таксама ці Вы чытаеце ці рэдагуеце старонку.
-* '''Паляпшэньні панэлі рэдагаваньня:''' Мы перапрацавалі панэль рэдагаваньня для таго, каб зрабіць яе болей простай у выкарыстаньні.  Цяпер фарматаваньне старонак болей лёгкае і болей інтуітыўнае.
-* '''Майстар стварэньня спасылак:''' Лёгкі ў выкарыстаньні інструмэнт дазваляе Вам дадаваць спасылкі на іншыя старонкі {{GRAMMAR:'''родны|{{SITENAME}}}} таксама як і на вонкавыя сайты.
+=== Што мы зьмянілі ===
+* '''Навігацыя:''' Мы палепшылі навігацыю для чытаньня і рэдагаваньня старонак. Цяпер закладкі ў верхняй частцы кожнай старонкі дазваляюць дакладней зразумець, ці Вы праглядаеце артыкул ці старонку абмеркаваньня, а таксама, ці Вы чытаеце ці рэдагуеце старонку.
+* '''Паляпшэньні панэлі рэдагаваньня:''' Мы перапрацавалі панэль рэдагаваньня для таго, каб зрабіць яе болей простай у выкарыстаньні. Цяпер фарматаваньне старонак болей лёгкае і болей інтуітыўнае.
+* '''Майстар стварэньня спасылак:''' Лёгкі ў выкарыстаньні інструмэнт дазваляе Вам дадаваць спасылкі на іншыя старонкі {{GRAMMAR:'''родны|{{SITENAME}}}} так сама, як і на вонкавыя сайты.
 * '''Паляпшэньні пошуку:''' Мы палепшылі пошукавыя падказкі, каб хутчэй паказаць неабходную Вам старонку.
 * '''Іншыя магчымасьці:''' Мы таксама ўвялі майстар стварэньня табліцаў для палягчэньня стварэньня табліцаў і магчымасьць пошуку і замены для палягчэньня рэдагаваньня старонак.
-* '''Лягатып Вікіпэдыі''': Мы зьмянілі лягатып. Падрабязнасьці глядзіце ў [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ блогу фундацыі «Вікімэдыя»].",
+* '''Лягатып Вікіпэдыі''': Мы зьмянілі лягатып. Падрабязнасьці глядзіце ў [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ блогу Фундацыі «Вікімэдыя»].
+
+=== Зваротная сувязь ===
+Мы жадаем пачуць ад Вас водгук. Калі ласка, пакіньце свой водгук на [[\$1|старонцы зваротнай сувязі]]. Калі вы зацікаўленыя ў далейшым удасканаленьні праграмнага забесьпячэньня і карыстаньня, наведайце сайт [http://usability.wikimedia.org Ініцыятывы па паляпшэньню зручнасьці карыстаньня].",
 	'prefswitch-main-anon' => '===Вярнуцца===
 Калі Вы жадаеце выключыць новыя магчымасьці, [$1 націсьніце тут]. Вас папросяць спачатку увайсьці ў сыстэму альбо стварыць новы рахунак.',
 	'prefswitch-main-on' => '===Вярніце ўсё назад!===
@@ -856,6 +890,15 @@ Bitte füllen Sie die freiwillige Umfrage aus, bevor Sie auf „[[#prefswitch-su
 Damit wir besser werden können, füllen Sie bitte die freiwillige Umfrage aus, bevor Sie auf „[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]“ klicken.',
 );
 
+/** Zazaki (Zazaki)
+ * @author Xoser
+ */
+$messages['diq'] = array(
+	'prefswitch-survey-true' => 'Heya',
+	'prefswitch-survey-false' => 'Nê',
+	'prefswitch-survey-submit-feedback' => 'Feedback bıde',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
@@ -1004,6 +1047,7 @@ $messages['el'] = array(
 
 /** Esperanto (Esperanto)
  * @author ArnoLagrange
+ * @author Crt
  * @author Yekrats
  */
 $messages['eo'] = array(
@@ -1089,7 +1133,7 @@ Se vi volus ŝalti la novajn funkciojn, bonvolu [$1 klaki ĉi tie].',
 Bonvolu plenumi la jenan malnepran enketon antaŭ klakante "[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]".',
 	'prefswitch-survey-intro-off' => 'Dankon pro provante niajn novajn funkciojn.
 Helpi nin por plibonigi ilin, bonvolu plenumi la jenan malnepran enketon antaŭ klakante "[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]".',
-	'prefswitch-feedbackpage' => 'Projekto:Sciigoj pri uzantospertoj',
+	'prefswitch-feedbackpage' => 'Project:Sciigoj pri uzantospertoj',
 );
 
 /** Spanish (Español)
@@ -1310,6 +1354,7 @@ Otamme mielellämme palautetta vastaan. Käy [[\$1|palautesivulla]], tai jos ole
 Täytä alla oleva valinnainen kysely ennen kuin napsautat ”[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]”.',
 	'prefswitch-survey-intro-off' => 'Kiitos, kun kokeilit uusia ominaisuuksia.
 Auttaaksesi parantamaan niitä – täytä alla oleva valinnainen kysely ennen kuin napsautat ”[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]”.',
+	'prefswitch-feedbackpage' => 'Project:Käyttäjäkokemuspalaute',
 );
 
 /** French (Français)
@@ -2110,6 +2155,13 @@ $messages['ja'] = array(
 	'prefswitch-feedbackpage' => 'Project:WUI/F',
 );
 
+/** Lojban (Lojban)
+ * @author (vinny)
+ */
+$messages['jbo'] = array(
+	'prefswitch-survey-true' => "Go'i",
+);
+
 /** Georgian (ქართული)
  * @author BRUTE
  * @author ITshnik
@@ -2270,16 +2322,40 @@ Wielt w.e.g.alles aus wat zoutrëfft.',
 	'prefswitch-success-feedback' => 'Är Reaktioun gouf geschéckt.',
 	'prefswitch-return' => '<hr style="clear:both">
 Zréck op <span class="plainlinks">[$1 $2]</span>.',
-	'prefswitch-main' => "Mir hu vill geschafft fir et méi einfach fir eis Benotzer ze maachen. Mir si frou fir e puer Verbesserungen ëmzesetzen besonnesch e neie ''look and feel'' a vereinfacht Ännerungsfonctiounen. Verbessere vun der Benotzerfrëndlechkeet vun eise Projete ass eng Prioritéit vun der Wikimedia Foundation a mir wäerte weider Verbesserungen an der Zukunft ëmsetzen. Fir méi Informatiounen, kuckt dëse [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/ Wikimedia blog].
+	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
+| align=\"center\" |
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
+| [[Image:VectorNavigation-en.png|401px|]]
+|-
+| E Screenshot vum neie navigatiounsinterface vu Wikipedia<small>[[Media:VectorNavigation-en.png|(enlarge)]]</small>
+|}
+|-
+| align=\"center\" |
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
+| [[Image:VectorEditorBasic-en.png|401px|]]
+|-
+| E Screenshot vun der Ännerungsfënster an hirer Basisversioun<small>[[Media:VectorEditorBasic-en.png|(enlarge)]]</small>
+|}
+|-
+| align=\"center\" |
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
+| [[Image:VectorLinkDialog-en.png|401px|]]
+|-
+| E Screenshot vun der neier Dialogkëscht fir Linken anzeginn
+|}
+|}
+D'Equipe vun der Bnotzererfahrung vun der Wikimedia Foundation huet mat Fräiwëllege vun der Communautéit zesummegeschafft fir et fir Iech méi einfach ze maachen. Mir si frou fir e puer Verbesserunge bekannt ze maachen, inklusiv vun engem neie ''look and feel'' a vereinfachten Ännerungsfonctiounen. Dës Ännerungen si geduecht fir et neie Mataarbechter méi einfach ze maachen fir unzekommen a si baséieren op eisem [http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study Benotzerfrëndlechkeets-Test dee mir d'lescht Joer gemaach hunn]. D'Verbessere vun der Benotzerfrëndlechkeet ass eng vun de Prioritéite vun der Wikimedia Foundation a mir wäerte weider Aktualisatiounen demnächst bekannt ginn. Fir méi Informatiounen, gitt op de Wikimedia [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia Blog].
 
-[[File:UsabilityNavigation.png|right|link=|Screenshot vun der neier Navigatioun]][[File:UsabilityToolbar.png|right|link=|Screenshot vun der erweiderter Ännerungstoolbar]][[File:UsabilityDialogs.png|right|link=|Screenshot vun den neien Dialogen beim generéieren vun Inhalter]]
 ===Hei ass dat wat geännert huet===
 * '''Navigatioun:''' Mir hunn d'Navigatioun fir Säiten ze liesen an z'änneren verbessert. D'Ongleten uewen op all Säit definéiere méi kloer ob een eng Säit oder eng Diskussiounssäit kuckt an ob een eng Säit kuckt oder ännert.
 * '''Verbesserunge vun der Ännerungstoolbar:''' Mir hunn d'Ännerungstoolbar reorganiséiert fir se méi einfach kënnen ze benotzen. Elo ass d'Formatéiere vu Säiten méi einfach a méi intuitiv.
 * '''Linkwizard:''' En Tool den einfach ze benotzen ass fir Linken op aner Wikipedia-Säiten a Linken op aner Siten dobäizesetzen.
 * '''Verbesserunge bei der Sich:''' Mir hunn d'Virschléi bei der Sich verbessert fir datt Dir déi Säit no där Dir sicht méi séier fannt.
 * '''Aner nei Fonctiounen:''' Mir hunn och en Assistent fir Tabellen agefouert deen et méi einfach mécht fir Tabellen unzeleën an eng Sich- an Ersetzungs-Fonctioun fir d'Ännere vu Säiten ze vereinfachen.
-* '''Wikipedia Puzzle Globus''': Mir hunn de Puzzle-Globus aktualiséiert, liest méi doriwwer am [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ Wikimedia Blog.]",
+* '''Wikipedia Logo''': Mir hunn de Wikipedia-Logo aktualiséiert, liest méi doriwwer am [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ Wikimedia Blog.]
+
+===Feedback?===
+Mir wiere frou fir vun Iech ze héieren. Kommt w.e.g. op eis [[\$1|Feedback-Säit]] oder, wann dir un de weideren Efforte vun eis fir d'Software ze verbesseren, besicht eis [http://usability.wikimedia.org Benotzerfrëndlechkeets-Wiki] fir weider Informatiounen.",
 	'prefswitch-main-anon' => "=== Zréck ===
 Wann Dir déi nei Fonctiounen ausschalte wëllt, 
 [$1 klickt hei]. Dir gitt gefrot fir Iech d'éischt anzeloggen oder e Benotzerkont opzemaachen.",
@@ -2390,10 +2466,11 @@ $messages['mk'] = array(
 /** Malayalam (മലയാളം)
  * @author Junaidpv
  * @author Praveenp
+ * @author Shijualex
  */
 $messages['ml'] = array(
 	'prefswitch' => 'യൂസബിലിറ്റി ഇനിഷ്യേറ്റീവ് ക്രമീകരണങ്ങൾ മാറുക',
-	'prefswitch-desc' => 'ക്രമീകരണങ്ങൾ കൂട്ടത്തോടെ മാറാൻ ഉപയോക്താക്കളെ അനുവദിക്കുന്നു.',
+	'prefswitch-desc' => 'ക്രമീകരണങ്ങൾ കൂട്ടത്തോടെ മാറ്റാൻ ഉപയോക്താക്കളെ അനുവദിക്കുന്നു.',
 	'prefswitch-survey-true' => 'അതെ',
 	'prefswitch-survey-false' => 'വേണ്ട',
 	'prefswitch-survey-submit-off' => 'പുതിയ സവിശേഷതകൾ പ്രവർത്തനരഹിതമാക്കുക',
@@ -2461,8 +2538,8 @@ $messages['ml'] = array(
 
 ===അഭിപ്രായങ്ങൾ?===
 താങ്കളിൽ നിന്നവ കേൾക്കാൻ ഞങ്ങൾക്കതിയായ ആഗ്രഹമുണ്ട്. ദയവായി ഞങ്ങളുടെ [[\$1|അഭിപ്രായങ്ങൾക്കുള്ള താൾ]] കാണുക അല്ലെങ്കിൽ,  സോഫ്റ്റ്‌‌വേറിലുള്ള പുതിയ മെച്ചപ്പെടുത്തലുകളെ കുറിച്ചറിയാൻ [http://usability.wikimedia.org ഉപയോഗ്യത വിക്കി] സന്ദർശിക്കുക.",
-	'prefswitch-main-anon' => '===എനിക്കിതു വേണ്ട===
-പുതിയ സവിശേഷതകൾ താങ്കൾ ഒഴിവാക്കാൻ ആഗ്രഹിക്കുന്നുവെങ്കിൽ, [$1 ഇവിടെ ഞെക്കുക]. ഇതിനായി ആദ്യം ലോഗിൻ ചെയ്യുകയോ അംഗത്വമെടുക്കുകയോ ചെയ്യേണ്ടതാണ്.',
+	'prefswitch-main-anon' => '===എനിക്കിതു്‌ വേണ്ട===
+പുതിയ സവിശേഷതകൾ ഒഴിവാക്കാൻ താങ്കൾ ആഗ്രഹിക്കുന്നുവെങ്കിൽ, [$1 ഇവിടെ ഞെക്കി] ആദ്യം ലോഗിൻ ചെയ്യുകയോ അംഗത്വമെടുക്കുകയോ ചെയ്യേണ്ടതാണ്.',
 	'prefswitch-main-on' => '===എനിക്കിതു്‌ വേണ്ട!===
 [$2 ഇവിടെ ഞെക്കി പുതിയ സവിശേഷതകൾ പ്രവർത്തനരഹിതമാക്കുക].',
 	'prefswitch-main-off' => '===അവ പരീക്ഷിച്ചു നോക്കൂ!===
@@ -3767,6 +3844,94 @@ $messages['yi'] = array(
 צוריק צו <span class="plainlinks">[$1 $2]</span>.',
 	'prefswitch-survey-intro-off' => 'א דאַנק פֿאַרן אויספרובירן אונזערע נײַע אייגנקייטן.
 בכדי צו העלפֿן אונז פֿאַרבעסערן זיי, זײַט אזוי גוט אויספֿילן דעם אפציאנאַלן אומפֿרעג אונטער איידער איר קליקט "[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]".',
+);
+
+/** Cantonese (粵語)
+ * @author Horacewai2
+ */
+$messages['yue'] = array(
+	'prefswitch' => '可用性參數選項',
+	'prefswitch-desc' => '俾用戶去選擇參數',
+	'prefswitch-survey-true' => '係',
+	'prefswitch-survey-false' => '唔係',
+	'prefswitch-survey-submit-off' => '關閉新特色',
+	'prefswitch-survey-cancel-off' => '如果你繼續去用新特色，你可以返去$1。',
+	'prefswitch-survey-submit-feedback' => '傳送意見',
+	'prefswitch-survey-cancel-feedback' => '如果你唔想提供意見，可以去番$1。',
+	'prefswitch-survey-question-like' => '你喜歡新特色啲咩？',
+	'prefswitch-survey-question-dislike' => '你唔鍾意啲咩新特色？',
+	'prefswitch-survey-question-whyoff' => '你點解要關閉新特色？
+選擇所有你嘅選項。',
+	'prefswitch-survey-answer-whyoff-hard' => '新特色好難用。',
+	'prefswitch-survey-answer-whyoff-didntwork' => '新特色唔能夠正常去做野。',
+	'prefswitch-survey-answer-whyoff-notpredictable' => '新功能無我預期好。',
+	'prefswitch-survey-answer-whyoff-didntlike-look' => '唔鐘意新功能個樣。',
+	'prefswitch-survey-answer-whyoff-didntlike-layout' => '我唔鍾意個新標籤同埋排版。',
+	'prefswitch-survey-answer-whyoff-didntlike-toolbar' => '我唔鍾意條新工具列。',
+	'prefswitch-survey-answer-whyoff-other' => '其它原因：',
+	'prefswitch-survey-question-browser' => '你用咩瀏覽器？',
+	'prefswitch-survey-answer-browser-other' => '其它瀏覽器：',
+	'prefswitch-survey-question-os' => '你用邊套操作系統？',
+	'prefswitch-survey-answer-os-other' => '其它操作系統：',
+	'prefswitch-survey-question-res' => '你個螢光幕嘅解像度有幾大？',
+	'prefswitch-title-on' => '新特色',
+	'prefswitch-title-switched-on' => '享受使用新特色！',
+	'prefswitch-title-off' => '關閉新特色',
+	'prefswitch-title-switched-off' => '多謝',
+	'prefswitch-title-feedback' => '意見',
+	'prefswitch-success-on' => '而家新特色已經啟用左，我地希望你享受使用呢D新特色。你可以按"[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-on}}]]"用舊版。',
+	'prefswitch-success-off' => '而家新特色已經關閉左，多謝你試用。你可以按"[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-off}}]]"用新版。',
+	'prefswitch-success-feedback' => '你嘅意見，發送左。',
+	'prefswitch-return' => '<hr style="clear:both">
+番去<span class="plainlinks">[$1 $2]</span>.',
+	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
+| align=\"center\" |
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
+| [[Image:VectorNavigation-en.png|401px|]]
+|-
+| 維基百科新嘅導航界面嘅截圖 <small>[[Media:VectorNavigation-en.png|(放大)]]</small>
+|}
+|-
+| align=\"center\" |
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
+| [[Image:VectorEditorBasic-en.png|401px|]]
+|-
+| 基本編輯界面嘅截圖 <small>[[Media:VectorEditorBasic-en.png|(放大)]]</small>
+|}
+|-
+| align=\"center\" |
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
+| [[Image:VectorLinkDialog-en.png|401px|]]
+|-
+| 插入鏈接對話框嘅截圖
+|}
+|}
+
+維基媒體基金會嘅可用性小組同社群嘅志願者一齊係列努力令你更方便去用。我地好高興能夠分享一D改進，包括一個全新嘅外觀同簡化嘅編輯功能。呢D變化都係為左俾新嘅參與者更容易進行貢獻，同時我們[http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study 係過去一年裡進行了大量嘅可用性測試]。提高我們項目嘅可用性是維基媒體基金會嘅重要目標，我們將係未來分享更多嘅更新。想知多D，請訪問相關嘅維基媒體[http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia 博客上的帖子]。
+
+=== 下面是我們嘅改變 ===
+
+* '''導航'''：我們已經改善左閱讀同編輯網頁時嘅導航。而家，每一頁頂部上嘅標籤更明確去界定你係正在查看頁面定係討論頁，同埋你係閱讀緊或改緊一個頁面。
+* '''編輯工具欄上嘅改善'''：我們已經重組左編輯工具欄，以便於更容易用。現在，格式化網頁更簡單，更直觀。
+* '''鏈接嚮導'''：一個易於使用嘅工具可以讓你添加鏈接到其他維基頁面以及鏈接到外部網站。
+* '''搜索的改進'''：我們改進了搜索建議，讓你尋找網頁更迅速。
+* '''其他的新功能'''：我們也推出了表格嚮導，使創建表格更容易，同時尋找同替換功能來簡化頁面嘅編輯。
+* '''維基百科logo'''：我們已經更新了我地個logo。詳情見[http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d Wikimedia blog]。
+
+===意見?===
+
+我們希望收到你們的意見，請造訪我們嘅[[\$1|意見反饋頁面]]，或者如果你對我們嘅軟件改善有興趣，可到[http://usability.wikimedia.org usability wiki]了解詳情。",
+	'prefswitch-main-anon' => '===用舊版===
+[$1 去舊版按此]。你會需要先登入或者開戶口。',
+	'prefswitch-main-on' => '===用舊版===
+[$2 關閉新版本]',
+	'prefswitch-main-off' => '===用新版!===
+[$1 用新版]',
+	'prefswitch-survey-intro-feedback' => '我地希望收到你嘅意見。
+請係按"[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]"之前做一個可選嘅問卷調查。',
+	'prefswitch-survey-intro-off' => '多謝試用新特色。
+為左幫助我地，我地希望你按"[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]"之前做一個可選嘅問卷調查。',
+	'prefswitch-feedbackpage' => 'Project:用戶意見',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

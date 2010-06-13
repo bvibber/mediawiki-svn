@@ -105,6 +105,13 @@ $messages['id'] = array(
 	'wikimediamobile-desc' => 'MediaWiki mendukung  fungsi untuk proyek host Wikimedia-mobile di http://github.com/hcatlin/wikimedia-mobile',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'wikimediamobile-desc' => 'MediaWiki ënnerstetzt Fonctioune fir de Wikimedia-Mobile Projet deen Dir op http://github.com/hcatlin/wikimedia-mobile fannt',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */

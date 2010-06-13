@@ -811,10 +811,12 @@ $messages['yi'] = array(
 );
 
 /** Cantonese (粵語)
+ * @author Horacewai2
  * @author Shinjiman
  */
 $messages['yue'] = array(
 	'vector-simplesearch-search' => '搵嘢',
+	'vector-simplesearch-containing' => '名單傳送緊...',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

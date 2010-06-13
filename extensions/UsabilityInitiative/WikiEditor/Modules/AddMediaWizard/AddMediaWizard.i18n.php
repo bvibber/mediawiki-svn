@@ -311,6 +311,13 @@ $messages['vi'] = array(
 	'wikieditor-addMediaWizard-preference' => 'Kích hoạt công cụ "Hướng dẫn từng bước để thêm tập tin phương tiện"',
 );
 
+/** Cantonese (粵語)
+ * @author Horacewai2
+ */
+$messages['yue'] = array(
+	'wikieditor-addMediaWizard-preference' => '啟用"新增媒體精靈"架生',
+);
+
 /** Simplified Chinese (‪中文(简体)‬) */
 $messages['zh-hans'] = array(
 	'wikieditor-addMediaWizard-preference' => '启用「添加媒体向导」小工具',

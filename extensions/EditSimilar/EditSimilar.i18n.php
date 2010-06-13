@@ -614,6 +614,11 @@ $messages['sr-ec'] = array(
 	'editsimilar-link-disable' => 'постави подешавања',
 );
 
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'editsimilar-link-disable' => 'postavi podešavanja',
+);
+
 /** Swedish (Svenska)
  * @author M.M.S.
  * @author Skalman

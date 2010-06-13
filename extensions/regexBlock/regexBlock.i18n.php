@@ -2782,6 +2782,7 @@ $messages['sr-el'] = array(
 	'regexblock-block-success' => 'Blok uspeo',
 	'regexblock-currently-blocked' => 'Trenutno blokirane adrese:',
 	'regexblock-page-title-1' => 'Blokiraj adrese koristeći regularne izraze',
+	'regexblock-form-username' => 'IP adresa ili korisničko ime:',
 	'regexblock-form-reason' => 'Razlog:',
 	'regexblock-form-expiry' => 'Istek:',
 	'regexblock-form-match' => 'Tačno slaganje',
@@ -2794,6 +2795,7 @@ $messages['sr-el'] = array(
 	'regexblock-view-block-by' => 'blokirao:',
 	'regexblock-view-block-unblock' => 'odblokiraj',
 	'regexblock-view-stats' => 'statistike',
+	'regexblock-view-time' => 'u $1',
 );
 
 /** Sundanese (Basa Sunda)

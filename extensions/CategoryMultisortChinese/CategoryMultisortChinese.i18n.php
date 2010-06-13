@@ -156,6 +156,18 @@ $messages['ia'] = array(
 	'categorymultisort-sortkey-name-radical-t' => 'Radical: Traditional',
 );
 
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'categorymultisort-sortkey-name-stroke' => 'Strich',
+	'categorymultisort-sortkey-name-stroke-s' => 'Strich: Vereinfacht',
+	'categorymultisort-sortkey-name-stroke-t' => 'Strich: Traditionell',
+	'categorymultisort-sortkey-name-radical' => 'Radikal',
+	'categorymultisort-sortkey-name-radical-s' => 'Radikal: Vereinfacht',
+	'categorymultisort-sortkey-name-radical-t' => 'Radikal: Traditionell',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
@@ -240,5 +252,13 @@ $messages['zh-hans'] = array(
 	'categorymultisort-sortkey-name-cantonese' => '粤语',
 	'categorymultisort-sortkey-name-stroke-s' => '中文（简体）',
 	'categorymultisort-sortkey-name-stroke-t' => '中文（繁体）',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬) */
+$messages['zh-hant'] = array(
+	'categorymultisort-sortkey-name-mandarin' => '普通話',
+	'categorymultisort-sortkey-name-cantonese' => '粵語',
+	'categorymultisort-sortkey-name-stroke-s' => '中文（簡體）',
+	'categorymultisort-sortkey-name-stroke-t' => '中文（繁體）',
 );
 

@@ -189,9 +189,13 @@ $messages['de'] = array(
 
 /** Zazaki (Zazaki)
  * @author Mirzali
+ * @author Xoser
  */
 $messages['diq'] = array(
 	'wikieditor-template-editor-preference' => 'Vurnayışê form-bıngeyınê şablonanê wikiy feal ke',
+	'wikieditor-template-editor-dialog-title' => 'Template bivurne',
+	'wikieditor-template-editor-dialog-submit' => 'Rocaniye',
+	'wikieditor-template-editor-dialog-cancel' => 'Bıtexelne',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -711,6 +715,16 @@ $messages['yi'] = array(
 	'wikieditor-template-editor-dialog-title' => 'רעדאַקטירן מוסטער',
 	'wikieditor-template-editor-dialog-submit' => 'דערהײַנטיקן',
 	'wikieditor-template-editor-dialog-cancel' => 'אַנולירן',
+);
+
+/** Cantonese (粵語)
+ * @author Horacewai2
+ */
+$messages['yue'] = array(
+	'wikieditor-template-editor-preference' => '啟用模板form-based編輯功能',
+	'wikieditor-template-editor-dialog-title' => '改模板',
+	'wikieditor-template-editor-dialog-submit' => '更新',
+	'wikieditor-template-editor-dialog-cancel' => '取消',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

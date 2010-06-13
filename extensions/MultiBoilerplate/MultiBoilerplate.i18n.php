@@ -604,6 +604,11 @@ $messages['sr-ec'] = array(
 	'multiboilerplate-submit' => 'Учитај',
 );
 
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'multiboilerplate-submit' => 'Učitaj',
+);
+
 /** Swedish (Svenska)
  * @author M.M.S.
  */

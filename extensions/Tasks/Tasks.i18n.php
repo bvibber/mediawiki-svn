@@ -119,6 +119,13 @@ Don't change '|' character.",
 	'tasks_status_closed' => '{{Identical|Closed}}',
 );
 
+/** Abkhazian (Аҧсуа)
+ * @author Temuri rajavi
+ */
+$messages['ab'] = array(
+	'tasks_search_form_title' => 'Аҧшаара',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */

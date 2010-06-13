@@ -963,6 +963,7 @@ $messages['sr-el'] = array(
 	'postcomment_leavemessagefor' => 'Ostavi poruku za $1',
 	'postcomment_post' => 'Pošalji',
 	'postcomment_on' => 'Na',
+	'postcomment_said' => '{{GENDER:|rekao|rekla|rekao}}',
 	'postcomment_invalidrequest' => 'Neispravan zahtev.',
 	'postcomment_replyto' => 'Odgovor na $1',
 );

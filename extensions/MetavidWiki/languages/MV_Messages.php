@@ -402,6 +402,13 @@ $messages['niu'] = array(
 	'mv_history' => 'Liu onoono atu ki tua',
 );
 
+/** Abkhazian (Аҧсуа)
+ * @author Temuri rajavi
+ */
+$messages['ab'] = array(
+	'mv_tool_search' => 'Аҧшаара',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
  * @author Naudefj

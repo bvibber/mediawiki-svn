@@ -354,6 +354,13 @@ $messages['niu'] = array(
 	'configure-section-search' => 'Kumi',
 );
 
+/** Abkhazian (Аҧсуа)
+ * @author Temuri rajavi
+ */
+$messages['ab'] = array(
+	'configure-section-search' => 'Аҧшаара',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
  * @author Naudefj

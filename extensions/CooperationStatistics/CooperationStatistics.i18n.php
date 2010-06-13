@@ -732,6 +732,10 @@ $messages['sr-ec'] = array(
 $messages['sr-el'] = array(
 	'cooperationstatistics-tablearticle' => 'Broj strana',
 	'cooperationstatistics-tablevalue' => 'Broj urednika',
+	'cooperationstatistics-articles' => '$1 {{PLURAL:$1|strana|strane|strane|strane|strana}}',
+	'cooperationstatistics-nbusers' => '{{PLURAL:$2|ima}} $1 {{PLURAL:$1|urednika}}',
+	'cooperationstatistics-nblessusers' => '{{PLURAL:$2|ima}} $1 {{PLURAL:$1|urednika|ili manje urednika}}',
+	'cooperationstatistics-nbmoreusers' => '{{PLURAL:$2|ima}} $1 ili više urednika',
 );
 
 /** Swedish (Svenska)

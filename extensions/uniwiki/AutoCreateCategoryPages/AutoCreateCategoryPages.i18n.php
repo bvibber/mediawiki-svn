@@ -641,3 +641,8 @@ $messages['zh-hans'] = array(
 	'autocreatecategorypages-createdby' => '自动创建由 自动创建分类页面 扩展。',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬) */
+$messages['zh-hant'] = array(
+	'autocreatecategorypages-createdby' => '自動創建由 自動創建分類頁面 擴展。',
+);
+

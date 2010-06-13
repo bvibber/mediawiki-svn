@@ -696,6 +696,15 @@ $messages['yi'] = array(
 	'wikieditor-toc-hide' => 'באַהאַלטן אינהאַלט',
 );
 
+/** Cantonese (粵語)
+ * @author Horacewai2
+ */
+$messages['yue'] = array(
+	'wikieditor-toc-preference' => '啟用內客嘅導航表格',
+	'wikieditor-toc-show' => '顯示內容',
+	'wikieditor-toc-hide' => '收埋內容',
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Bencmq
  * @author PhiLiP

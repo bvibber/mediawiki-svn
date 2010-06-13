@@ -183,6 +183,7 @@ $messages['diq'] = array(
 	'wikieditor' => 'Interfaceye wikitext ke raver siyayo',
 	'wikieditor-desc' => 'Yew pedê nuştişiyê girdi u moduleyanê binan dano',
 	'wikieditor-wikitext-tab' => 'Wikimeqale',
+	'wikieditor-loading' => 'Bar keno',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -725,6 +726,16 @@ $messages['yi'] = array(
 	'wikieditor-desc' => 'פֿאַרברייטבאַרער וויקיטעקס רעדאַקטירונג אויבערפֿלאך מיט א סך מאדולן וואָס פֿאַרזארגן נײַע פֿונקציאנען',
 	'wikieditor-wikitext-tab' => 'וויקיטעקסט',
 	'wikieditor-loading' => 'לאָדנדיק',
+);
+
+/** Cantonese (粵語)
+ * @author Horacewai2
+ */
+$messages['yue'] = array(
+	'wikieditor' => '進階維基文字編輯介面',
+	'wikieditor-desc' => '提供一個可收埋嘅維基文字編輯介面同埋好多其他特色',
+	'wikieditor-wikitext-tab' => '維基文字',
+	'wikieditor-loading' => '開啟緊',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

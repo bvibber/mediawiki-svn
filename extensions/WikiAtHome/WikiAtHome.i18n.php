@@ -1826,5 +1826,6 @@ $messages['zh-hant'] = array(
 	'wah-transcode-fail' => '這個文件轉碼失敗',
 	'wah-javascript-off' => '你必須啟用JavaScript以參與Wiki@Home',
 	'wah-loading' => '正在載入Wiki@Home介面...',
+	'wah-menu-pref' => '參數設置',
 );
 

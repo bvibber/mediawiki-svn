@@ -421,6 +421,13 @@ $messages['vi'] = array(
 	'tab0-desc' => 'Thêm tab "0", liên kết đến trang sửa đổi tại đề mục đầu tiên của trang',
 );
 
+/** Cantonese (粵語)
+ * @author Horacewai2
+ */
+$messages['yue'] = array(
+	'tab0-desc' => '新增"0"標籤去編輯第一段',
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Liangent
  */

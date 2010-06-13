@@ -36,17 +36,29 @@ Third or "template" argument is required.',
 	'datatransclusion-unknown-template'          => '<nowiki>{{</nowiki>[[{{ns:template}}:$1|$1]]<nowiki>}}</nowiki> does not exist.',
 );
 
-/** Message documentation (Message documentation) */
+/** Message documentation (Message documentation)
+ * @author Siebrand
+ */
 $messages['qqq'] = array(
-	'datatransclusion-desc' => 'Shown in [[Special:Version]] as a short description of this extension. Do not translate links.',
-	'datatransclusion-missing-source' => 'issued if no data source was specified.',
-	'datatransclusion-unknown-source' => 'issued if an unknown data source was specified. $1 is the name of the data source.',
-	'datatransclusion-bad-argument-by' => 'issued if a bad value was specified for the "by" argument, that is, an unknown key field was selected. $1 is the name of the data source, $2 is the value of the by argument, $3 is a list of all valid keys for this data source.',
-	'datatransclusion-missing-argument-key' => 'issued if no "key" or second positional argument was given provided. A key value is always required.',
-	'datatransclusion-missing-argument-template' => 'issued if no "template" or third positional argument was given provided. A target template is always required.',
-	'datatransclusion-record-not-found' => 'issued if the record specified using the "by" and "key" arguments was nout found in the data source. $1 is the name of the data source, $2 is the key filed used, and $3 is the key value to select by.',
-	'datatransclusion-bad-template-name' => 'issued if the template name specified is not valid. $1 is the given template name.',
-	'datatransclusion-unknown-template' => 'issued if the template specified does not exist. $1 is the given template name.',
+	'datatransclusion-desc' => '{{desc}}',
+	'datatransclusion-missing-source' => 'Issued if no data source was specified.',
+	'datatransclusion-unknown-source' => 'Issued if an unknown data source was specified. Parameters:
+* $1 is the name of the data source.',
+	'datatransclusion-bad-argument-by' => 'Issued if a bad value was specified for the "by" argument, that is, an unknown key field was selected. Parameters:
+* $1 is the name of the data source
+* $2 is the value of the by argument
+* $3 is a list of all valid keys for this data source
+* $4 is the number of valid keys for this data source.',
+	'datatransclusion-missing-argument-key' => 'Issued if no "key" or second positional argument was given provided. A key value is always required.',
+	'datatransclusion-missing-argument-template' => 'Issued if no "template" or third positional argument was given provided. A target template is always required.',
+	'datatransclusion-record-not-found' => 'issued if the record specified using the "by" and "key" arguments was nout found in the data source.  Parameters:
+* $1 is the name of the data source
+* $2 is the key filed used
+* $3 is the key value to select by.',
+	'datatransclusion-bad-template-name' => 'Issued if the template name specified is not valid. Parameters:
+* $1 is the given template name.',
+	'datatransclusion-unknown-template' => 'Issued if the template specified does not exist. Parameters:
+* $1 is the given template name.',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
@@ -91,7 +103,7 @@ $1 ist nicht bekannt.',
 $2 ist kein Schlüsselfeld in der Datenquelle $1. Gültige Schlüssel sind: $3.',
 	'datatransclusion-missing-argument-key' => 'Es wurde kein Schlüssel-Wert angegeben.
 Ein zweites oder ein Schlüssel-Argument ist erforderlich.',
-	'datatransclusion-missing-argument-template' => 'Es wurde keine Vorlage Angegeben.
+	'datatransclusion-missing-argument-template' => 'Es wurde keine Vorlage angegeben.
 Ein drittes oder ein Vorlagen-Argument ist erforderlich.',
 	'datatransclusion-record-not-found' => 'Es wurde kein passender Datensatz $2 = $3 in der Datenquelle $1 gefunden.',
 	'datatransclusion-bad-template-name' => 'Mangelhafter Vorlagenname: $1.',
@@ -127,7 +139,8 @@ Primer argumento es obligatorio.',
 	'datatransclusion-unknown-source' => 'Fuente de datos mal especificado.
 $1 es desconocido.',
 	'datatransclusion-bad-argument-by' => 'Campo clave mal especificado.
-$2 no es un campo clave en la fuente de datos $1, claves válidas son: $3.',
+"$2" no es un campo clave en la fuente de datos "$1".
+{{PLURAL:$4|Clave válida|Claves válidas son}}: $3.',
 	'datatransclusion-missing-argument-key' => 'Ningún valor clave especificado.
 Argumento segundo o "clave" es obligatorio.',
 	'datatransclusion-missing-argument-template' => 'Ninguna plantilla especificada.
@@ -251,7 +264,7 @@ Het eerste argument is verplicht.',
 $1 is niet bekend.',
 	'datatransclusion-bad-argument-by' => 'Ongeldig sleutelveld aangegeven.
 $2 is geen sleutelveld in gegevensbron $1.
-Geldige sleutels zijn: $3.',
+Geldige {{PLUARAL:$4|sleutel is|sleutels zijn}}: $3.',
 	'datatransclusion-missing-argument-key' => 'Er is geen sleutelwaarde aangegeven.
 Een tweede argument of "sleutel" is verplicht.',
 	'datatransclusion-missing-argument-template' => 'Geen sjabloon aangegeven.

@@ -743,11 +743,14 @@ $messages['yi'] = array(
 );
 
 /** Cantonese (粵語)
+ * @author Horacewai2
  * @author Shinjiman
  */
 $messages['yue'] = array(
 	'usabilityinitiative' => '可用性倡議',
 	'usabilityinitiative-desc' => '由維基百科可用性小組加強MediaWiki嘅可用性',
+	'prefs-beta' => '試緊嘅特色',
+	'prefs-labs' => '實驗性嘅特色',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

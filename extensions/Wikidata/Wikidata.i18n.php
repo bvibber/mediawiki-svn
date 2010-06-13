@@ -7827,7 +7827,7 @@ Kuckt w.e.g. [[{{MediaWiki:Ow editing policy url}}|eis Ännerungsrichtlinnen]].'
 	'transaction' => 'Wikidata: Logbuch vun den Transaktiounen',
 	'ow_transaction_from_transaction' => 'Vun Transaktioun:',
 	'ow_transaction_count' => 'Zuel:',
-	'ow_transaction_user' => 'Bentzernumm:',
+	'ow_transaction_user' => 'Benotzernumm:',
 	'ow_transaction_show_rollback' => 'Zrécksetz-Kontrolle weisen:',
 	'ow_transaction_rollback_button' => 'Zrécksetzen',
 	'ow_transaction_rollback_header' => 'Zrécksetzen',
@@ -11044,6 +11044,7 @@ Pe piacere verifiche l'indirizze web.",
  * @author Ferrer
  * @author Kaganer
  * @author Osd
+ * @author Temuri rajavi
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
@@ -11068,7 +11069,7 @@ $messages['ru'] = array(
 	'importlangnames_added' => 'Добавлены название языков для «$1».',
 	'importlangnames_not_found' => '<strong>Не найдено языковых записей для «$1»!</strong>',
 	'datasearch' => 'Викиданные: Поиск данных',
-	'datasearch_language' => 'Язык:',
+	'datasearch_language' => 'Абызшәа:',
 	'datasearch_found_word' => 'Найденное слово',
 	'datasearch_meaning' => 'Значение',
 	'datasearch_ext_identifier' => 'Внешний идентификатор',
@@ -14404,13 +14405,19 @@ $messages['zh-hant'] = array(
 	'copy' => 'Wikidata：複製',
 	'ow_copy_no_action_specified' => '請指定一個動作',
 	'ow_copy_help' => '幫助還沒有實現。',
+	'ow_class_attr_type_xlate' => '可翻譯的文本',
+	'ow_class_attr_type_plain' => '純文本',
 	'ow_class_attr_type_link' => '連結',
+	'ow_class_attr_type_option' => '選項列表',
+	'ow_needs_xlation_source_lang' => '源語言：',
+	'ow_needs_xlation_dest_lang' => '目標語言：',
 	'ow_show' => '顯示',
 	'ow_upload' => '上載',
 	'ow_create' => '創建',
 	'ow_suggest_previous' => '上一個',
 	'ow_suggest_next' => '下一個',
 	'ow_suggest_clear' => '清除',
+	'right-addlanguage' => '添加和更改語言設置',
 );
 
 /** Chinese (Hong Kong) (‪中文(香港)‬) */

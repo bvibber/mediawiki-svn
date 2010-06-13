@@ -526,6 +526,11 @@ $messages['sr-ec'] = array(
 	'logentry-append' => 'Додај',
 );
 
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'logentry-append' => 'Dodaj',
+);
+
 /** Swedish (Svenska)
  * @author Fluff
  * @author Najami

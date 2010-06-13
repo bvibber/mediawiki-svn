@@ -833,6 +833,11 @@ $messages['sr-ec'] = array(
 	'commentbox-name' => 'Име:',
 );
 
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'commentbox-name' => 'Ime:',
+);
+
 /** Swedish (Svenska)
  * @author Per
  * @author Sertion

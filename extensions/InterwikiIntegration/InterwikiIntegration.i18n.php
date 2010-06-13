@@ -118,6 +118,11 @@ Assecura te de configurar le tabellas in tu altere wikis tamben.',
  */
 $messages['lb'] = array(
 	'interwikiintegration' => 'Interwiki-Integratioun',
+	'interwikiintegration-desc' => 'Komplett Integratioun vun den Interwikien',
+	'populateinterwikiintegrationtable' => 'Interwiki-Integratiouns-Tabell ausfëllen',
+	'interwikiintegration-setuptext' => "D'Tabelle fir $1 si configuréiert.
+Vergewëssert Iech datt d'Tabelle fir är aner Wikien och configuréiert sinn.",
+	'right-integration' => 'Interwiki-Integratiouns-Tabell ausfëllen',
 );
 
 /** Macedonian (Македонски)

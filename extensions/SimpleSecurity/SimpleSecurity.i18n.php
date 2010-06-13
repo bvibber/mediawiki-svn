@@ -964,6 +964,9 @@ $messages['sr-ec'] = array(
 /** Serbian Latin ekavian (Srpski (latinica)) */
 $messages['sr-el'] = array(
 	'security-info-toggle' => 'sigurnosna ograničenja',
+	'security-manygroups' => 'grupe $1 i $2',
+	'security-type-category' => 'kategorija',
+	'security-type-namespace' => 'imenski prostor',
 );
 
 /** Swedish (Svenska)

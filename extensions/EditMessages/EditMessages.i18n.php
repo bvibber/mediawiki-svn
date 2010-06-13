@@ -50,6 +50,13 @@ $messages['niu'] = array(
 	'editmsg-search' => 'Kumi',
 );
 
+/** Abkhazian (Аҧсуа)
+ * @author Temuri rajavi
+ */
+$messages['ab'] = array(
+	'editmsg-search' => 'Аҧшаара',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
  */
@@ -1327,6 +1334,7 @@ $messages['sr-el'] = array(
 	'editmessages' => 'Izmena poruka',
 	'editmsg-target' => 'Ciljana poruka:',
 	'editmsg-search' => 'Pretraga',
+	'editmsg-new-search' => 'Nova pretraga',
 );
 
 /** Sundanese (Basa Sunda)

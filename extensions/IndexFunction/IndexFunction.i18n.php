@@ -57,6 +57,13 @@ $messages['qqq'] = array(
 	'index-search-explain' => 'If your language permits, you can replace <code>submit</code> with <code>{<nowiki />{int:index-submit}}</code> for the button label.',
 );
 
+/** Abkhazian (Аҧсуа)
+ * @author Temuri rajavi
+ */
+$messages['ab'] = array(
+	'index-search' => 'Аҧшаара:',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */

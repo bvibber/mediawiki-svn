@@ -1256,6 +1256,7 @@ $messages['id'] = array(
 	'readerfeedback-tier-poor' => 'Jelek',
 	'tooltip-ca-ratinghist' => 'Penilaian pembaca atas halaman ini:',
 	'specialpages-group-feedback' => 'Opini pembaca',
+	'readerfeedback-tt-review' => 'Kirim tinjauan',
 );
 
 /** Ido (Ido)
@@ -1910,15 +1911,40 @@ $messages['pt'] = array(
 );
 
 /** Brazilian Portuguese (Português do Brasil)
+ * @author Giro720
  * @author Hamilton Abreu
  * @author Luckas Blade
  */
 $messages['pt-br'] = array(
+	'readerfeedback-desc' => 'A validação de páginas permite que os leitores as avaliem, atribuindo-lhes avaliações categóricas',
 	'readerfeedback' => 'O que você acha desta página?',
 	'readerfeedback-text' => "''Por gentileza, dedique um momento para avaliar esta página. Sua opinião é importante e nos ajuda a melhorar o website.''",
+	'readerfeedback-reliability' => 'Confiabilidade',
+	'readerfeedback-completeness' => 'Completeza',
+	'readerfeedback-npov' => 'Neutralidade',
+	'readerfeedback-presentation' => 'Apresentação',
+	'readerfeedback-overall' => 'Em geral',
+	'readerfeedback-level-none' => '(incerto)',
+	'readerfeedback-level-0' => 'Péssima',
+	'readerfeedback-level-1' => 'Baixa',
+	'readerfeedback-level-2' => 'Razoável',
+	'readerfeedback-level-3' => 'Alta',
 	'readerfeedback-level-4' => 'Excelente',
 	'readerfeedback-submit' => 'Enviar',
+	'readerfeedback-main' => 'Só páginas de conteúdo podem ser avaliadas.',
+	'readerfeedback-success' => "'''Obrigado por avaliar esta página!''' ([$2 ver resultados]) ([$3 comentários ou dúvidas?]).",
+	'readerfeedback-voted' => "'''Aparentemente você já avaliou esta página''' ([$2 ver resultados]) ([$3 comentários ou dúvidas?]).",
+	'readerfeedback-error' => "'''Ocorreu um erro ao avaliar esta página''' ([$2 ver resultados]) ([$3 comentários ou dúvidas?])",
+	'readerfeedback-submitting' => 'Enviando...',
 	'readerfeedback-finished' => 'Obrigado!',
+	'readerfeedback-tagfilter' => 'Etiqueta:',
+	'readerfeedback-tierfilter' => 'Avaliação:',
+	'readerfeedback-tier-high' => 'Elevada',
+	'readerfeedback-tier-medium' => 'Moderada',
+	'readerfeedback-tier-poor' => 'Péssima',
+	'tooltip-ca-ratinghist' => 'Opinião dos leitores sobre esta página',
+	'specialpages-group-feedback' => 'Opinião dos leitores',
+	'readerfeedback-tt-review' => 'Enviar revisão',
 );
 
 /** Romanian (Română)

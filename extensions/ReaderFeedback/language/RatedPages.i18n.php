@@ -577,11 +577,15 @@ $messages['pt'] = array(
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
+ * @author Giro720
  */
 $messages['pt-br'] = array(
+	'ratedpages' => 'Páginas avaliadas por leitores',
+	'ratedpages-leg' => 'Procurar páginas com um número significativo de avaliações',
 	'ratedpages-list' => 'Segue-se uma lista de páginas ordenada de acordo com a avaliação dos leitores.',
 	'ratedpages-none' => 'Não há páginas nesta listagem',
 	'ratedpages-graphs' => 'dados de avaliações',
+	'ratedpages-count' => '$1 {{PLURAL:$1|revisão|revisões}}',
 );
 
 /** Romanian (Română)

@@ -1744,6 +1744,7 @@ $messages['sr-el'] = array(
 	'importxml' => 'Uvezi XML',
 	'dt_import_editsummary' => '$1 uvoz',
 	'dt_import_importing' => 'Uvoz u toku...',
+	'importcsv' => 'Uvezi CSV',
 	'right-datatransferimport' => 'Uvezi podatke',
 );
 

@@ -2028,6 +2028,7 @@ $messages['sr-el'] = array(
 	'qp_vote_again_button' => 'Promenite svoj glas',
 	'qp_polls_list' => 'Prikaži sve ankete',
 	'qp_users_list' => 'Prikaži sve korisnike',
+	'qp_votes_count' => '$1 {{PLURAL:$1|glas|glasa|glasa|glasa|glasova}}',
 	'qp_stats_link' => 'Statistike',
 	'qp_users_link' => 'Korisnici',
 	'qp_user_polls_link' => 'Učestvovao u $1 {{PLURAL:$1|anketi|anketa}}',
