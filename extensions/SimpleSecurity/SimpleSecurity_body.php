@@ -6,7 +6,7 @@ class SimpleSecurity {
 
 	var $guid  = '';
 	var $cache = array();
-	var $info  = array( 'LS' => array(), 'PR' => array(), 'CR', array() );
+	var $info  = array( 'LS' => array(), 'PR' => array(), 'CR' => array() );
 
 	function __construct() {
 		global $wgParser, $wgHooks, $wgLogTypes, $wgLogNames, $wgLogHeaders, $wgLogActions, $wgMessageCache,
