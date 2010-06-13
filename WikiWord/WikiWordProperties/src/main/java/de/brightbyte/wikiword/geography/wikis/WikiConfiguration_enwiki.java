@@ -180,7 +180,12 @@ public class WikiConfiguration_enwiki extends WikiConfiguration {
 				new CoordinatePropertySpec( "coordinates", "latd", "latm", "lats", "latNS", "longd", "longm", "longs", "longEW"),
 				new CoordinatePropertySpec( "coordinates", "lat_d", "lat_m", "lat_s", "lat_NS", "long_d", "long_m", "long_s", "long_EW"),
 				new CoordinatePropertySpec( "coordinates", "lat_deg", "lat_min", "lat_sec", "lat_NS", "lon_deg", "lon_min", "lon_sec", "lon_EW"),
-				new CoordinatePropertySpec( "coordinates", "lat_deg", "lat_min", "lat_sec", "lat_NS", "long_deg", "long_min", "long_sec", "long_EW")
+				new CoordinatePropertySpec( "coordinates", "lat_deg", "lat_min", "lat_sec", "lat_NS", "long_deg", "long_min", "long_sec", "long_EW"),
+				new CoordinatePropertySpec( "coordinates", "capital_lat_d", "capital_lat_m", "capital_lat_s", "capital_lat_NS", "capital_long_d", "capital_long_m", "capital_long_s", "capital_long_EW"),
+				new CoordinatePropertySpec( "coordinates", "highest_lat_d", "highest_lat_m", "highest_lat_s", "highest_lat_NS", "highest_long_d", "highest_long_m", "highest_long_s", "highest_long_EW"),
+				new CoordinatePropertySpec( "coordinates", "lowest_lat_d", "lowest_lat_m", "lowest_lat_s", "lowest_lat_NS", "lowest_long_d", "lowest_long_m", "lowest_long_s", "lowest_long_EW"),
+				new CoordinatePropertySpec( "coordinates", "source_lat_d", "source_lat_m", "source_lat_s", "source_lat_NS", "source_long_d", "source_long_m", "source_long_s", "source_long_EW"),
+				new CoordinatePropertySpec( "coordinates", "mouth_lat_d", "mouth_lat_m", "mouth_lat_s", "mouth_lat_NS", "mouth_long_d", "mouth_long_m", "mouth_long_s", "mouth_long_EW")
 		) );
 		
 		conceptTypeSensors.add( new HasPropertySensor<ConceptType>(ConceptType.PLACE, "area") );
