@@ -4,7 +4,7 @@ class ActiveStrategy {
 	static function getTaskForces() {
 		$dbr = wfGetDB( DB_SLAVE );
 		
-		$res = $dbr->select( "page",
+		$res = $dbr->select( array( "page", 'categorylinks' ),
 				array(
 					'page_id',
 					'page_namespace',
@@ -15,7 +15,17 @@ class ActiveStrategy {
 					'page_namespace' => 0,
 					"page_title LIKE 'Task_force/%'",
 					"page_title NOT LIKE 'Task_force/%/%'",
-				), __METHOD__ );
+				),
+				__METHOD__,
+				array(),
+				array(
+					'categorylinks' => array( 'RIGHT JOIN',
+						array(
+							'cl_from=page_id',
+							'cl_to' => 'Task_force',
+						),
+					),
+				) );
 		
 		return $res;
 	}
