@@ -140,7 +140,7 @@ Vector/Vector.hooks.php: $(VECTOR_HOOKS)
 # For each group of summing numbers inside the target file, use bc to calculate the sum and replace with sed.
 %.hooks.php: $(WIKIEDITOR_HOOKS)
 	for file in $?; do basefile="$${file#$(shell echo $* | sed "s/\([^\/]*\/\).*/\\1/")}"; sed -i -e "s/\(.*'src' => '$${basefile//\//\\/}', 'version' => \)\([0-9+]*\)\(.*\)/\\1\\2+1\\3/" $@; \
-											for i in $$(grep --only-matching -P " ([0-9]+(\+[0-9]))+ " $@); do sed -i -e "s/ $$i / $$(bc <<< $$i) /" $@; done; done 
+											for i in $$(grep --only-matching -P " ([0-9]+(\+[0-9]))+ " $@); do sed -i -e "s/ $$i / $$(($$i)) /" $@; done; done 
 
 # Actions
 
