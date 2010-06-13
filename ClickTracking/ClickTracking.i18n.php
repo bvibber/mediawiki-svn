@@ -1960,11 +1960,32 @@ $messages['yi'] = array(
 );
 
 /** Cantonese (粵語)
+ * @author Horacewai2
  * @author Shinjiman
  */
 $messages['yue'] = array(
 	'clicktracking' => '可用性倡議撳追蹤',
 	'clicktracking-desc' => '撳追蹤，響唔使重載版嘅情況之下追蹤撳',
+	'ct-title' => '聚集用戶點擊',
+	'ct-event-name' => '活動名',
+	'ct-expert-header' => '"指定"按鈕',
+	'ct-intermediate-header' => '中間按鈕',
+	'ct-beginner-header' => '開始者按鈕',
+	'ct-total-header' => '總計',
+	'ct-start-date' => '開始日期 (YYYYMMDD)',
+	'ct-end-date' => '結束日期 (YYYYMMDD)',
+	'ct-increment-by' => '提供數據嘅日數',
+	'ct-change-graph' => '更改圖像',
+	'ct-beginner' => '開始',
+	'ct-intermediate' => '中段',
+	'ct-expert' => '尾段',
+	'ct-date-range' => '日期範圍',
+	'ct-editing' => '而家編輯緊:',
+	'ct-anon-users' => '匿名用戶',
+	'ct-user-contribs' => '總計用戶貢獻',
+	'ct-user-span' => '係時段內嘅用戶貢獻',
+	'ct-and' => '同',
+	'ct-update-table' => '更新表格',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

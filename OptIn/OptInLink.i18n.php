@@ -1204,12 +1204,16 @@ $messages['yi'] = array(
 );
 
 /** Cantonese (粵語)
+ * @author Horacewai2
  * @author Shinjiman
  */
 $messages['yue'] = array(
 	'optin-try' => '試吓測試版',
+	'tooltip-pt-optin-try' => '試下新特色',
 	'optin-leave' => '離開測試版',
+	'tooltip-pt-optin-leave' => '關閉新特色',
 	'optin-feedback' => '測試版反饋',
+	'tooltip-pt-optin-feedback' => '提供關於新特色，你嘅意見係咩',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

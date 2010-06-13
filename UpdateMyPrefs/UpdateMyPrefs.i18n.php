@@ -109,6 +109,13 @@ $messages['de'] = array(
 	'updatemyprefs-label-message' => 'Automatisches aktualisieren meiner Einstellungen mit neuen Standardwerten und Funktionen, sobald sie verfügbar sind',
 );
 
+/** Zazaki (Zazaki)
+ * @author Xoser
+ */
+$messages['diq'] = array(
+	'prefs-updates' => 'Rocaniyani',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
@@ -433,6 +440,15 @@ $messages['vi'] = array(
 	'prefs-updates' => 'Các cập nhật',
 	'updatemyprefs-desc' => 'Tùy chỉnh cho phép các thành viên lựa chọn họ có muốn nhận cập nhật giao diện định kỳ nếu có hay không',
 	'updatemyprefs-label-message' => 'Tự động cập nhật các tùy chọn của tôi với những thiết lập và công cụ mặc định mới khi chúng ra mắt',
+);
+
+/** Cantonese (粵語)
+ * @author Horacewai2
+ */
+$messages['yue'] = array(
+	'prefs-updates' => '更新',
+	'updatemyprefs-desc' => '給用戶一個選項，決定是否更新用戶介面 (如有)',
+	'updatemyprefs-label-message' => '自動更新我嘅參數如果新嘅預設設定同工具提供左',
 );
 
 /** Simplified Chinese (‪中文(简体)‬) */

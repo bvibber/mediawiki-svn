@@ -321,6 +321,13 @@ $messages['vi'] = array(
 	'wikieditor-templates-preference' => 'Cho phép làm xẹp các bản mẫu',
 );
 
+/** Cantonese (粵語)
+ * @author Horacewai2
+ */
+$messages['yue'] = array(
+	'wikieditor-templates-preference' => '啟用可隱藏模板',
+);
+
 /** Simplified Chinese (‪中文(简体)‬) */
 $messages['zh-hans'] = array(
 	'wikieditor-templates-preference' => '使模板倒塌',

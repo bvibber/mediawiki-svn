@@ -510,6 +510,14 @@ $messages['yi'] = array(
 	'vector-desc' => 'פֿאַרבעסערט דעם באניצער אויבערפֿלאַך פֿאַר דער וועקטאר ווײַזונג.',
 );
 
+/** Cantonese (粵語)
+ * @author Horacewai2
+ */
+$messages['yue'] = array(
+	'vector' => 'UI改進 (Vector)',
+	'vector-desc' => '改進vector面板嘅介面。',
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Bencmq
  */

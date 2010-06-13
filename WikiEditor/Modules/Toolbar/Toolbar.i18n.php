@@ -367,6 +367,7 @@ $messages['ab'] = array(
 	'wikieditor-toolbar-section-help' => 'Ацхыраара',
 	'wikieditor-toolbar-help-page-file' => 'Афаилқәа',
 	'wikieditor-toolbar-help-page-discussion' => 'Ахцәажәара',
+	'wikieditor-toolbar-help-content-signature-result' => "<a href='#' title='Special:MyPage'> Иалахә ахьʒ</a> (<a href='#' title='Special:MyTalk'> ахцәажәара </a>)",
 );
 
 /** Afrikaans (Afrikaans)
@@ -3466,7 +3467,7 @@ $messages['diq'] = array(
 	'wikieditor-toolbar-tool-link-title' => 'gıre bıerz',
 	'wikieditor-toolbar-tool-link-int' => 'yew pelê wiki re',
 	'wikieditor-toolbar-tool-link-int-target' => 'sernameyê peli',
-	'wikieditor-toolbar-tool-link-int-target-tooltip' => 'Sernamey pele bınuse',
+	'wikieditor-toolbar-tool-link-int-target-tooltip' => 'Sernamey ya zi URL',
 	'wikieditor-toolbar-tool-link-int-text' => 'metnê gıreyi',
 	'wikieditor-toolbar-tool-link-int-text-tooltip' => 'Nuştewo ke gani bımocniyo ey bınuse',
 	'wikieditor-toolbar-tool-link-ext' => 'yew keyepelê teberi re',
@@ -3488,6 +3489,7 @@ $messages['diq'] = array(
 	'wikieditor-toolbar-tool-file-example' => 'misal.jpg',
 	'wikieditor-toolbar-tool-reference' => 'çıme',
 	'wikieditor-toolbar-tool-reference-example' => 'metnê notê bınini tiya kerê',
+	'wikieditor-toolbar-tool-reference-cancel' => 'Bıtexelne',
 	'wikieditor-toolbar-tool-signature' => 'tamğayê imza ve zamani',
 	'wikieditor-toolbar-section-advanced' => 'Raver',
 	'wikieditor-toolbar-tool-heading' => 'sername',
@@ -7701,6 +7703,7 @@ $messages['io'] = array(
  * @author Melos
  * @author Nemo bis
  * @author Una giornata uggiosa '94
+ * @author Vituzzu
  */
 $messages['it'] = array(
 	'wikieditor-toolbar' => 'Barra degli strumenti di modifica',
@@ -7763,7 +7766,7 @@ $messages['it'] = array(
 	'wikieditor-toolbar-tool-indent' => 'Indentazione',
 	'wikieditor-toolbar-tool-indent-example' => "Linea d'indentazione",
 	'wikieditor-toolbar-tool-nowiki' => 'Ignora formattazione wiki',
-	'wikieditor-toolbar-tool-nowiki-example' => 'Inserisci il testo da non formattare qui',
+	'wikieditor-toolbar-tool-nowiki-example' => 'Inserisci il testo da non formattare',
 	'wikieditor-toolbar-tool-redirect' => "Rinvia a un'altra pagina",
 	'wikieditor-toolbar-tool-redirect-example' => 'Nome della pagina di destinazione',
 	'wikieditor-toolbar-tool-big' => 'Grande',
@@ -12649,10 +12652,12 @@ $messages['roa-tara'] = array(
 );
 
 /** Russian (Русский)
+ * @author Claymore
  * @author Ferrer
  * @author Lockal
  * @author Prima klasy4na
  * @author Putnik
+ * @author Temuri rajavi
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
@@ -12837,11 +12842,11 @@ $messages['ru'] = array(
 	'wikieditor-toolbar-help-content-file-description' => 'Встроенный файл',
 	'wikieditor-toolbar-help-content-file-syntax' => '[[{{ns:file}}:Example.png|thumb|Пояснительный текст]]',
 	'wikieditor-toolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='
-Сопроводительная надпись' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Enlarge' class='internal' href='#'><img height='11' width='15' alt='' src='$1/common/images/magnify-clip.png'/></a></div>
-Сопроводительная надпись</div></div>",
+Пояснительный текст' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Увеличить' class='internal' href='#'><img height='11' width='15' alt='' src='$1/common/images/magnify-clip.png'/></a></div>
+Пояснительный текст</div></div>",
 	'wikieditor-toolbar-help-content-reference-description' => 'Примечание',
 	'wikieditor-toolbar-help-content-reference-syntax' => 'Текст страницы.&lt;ref name="test"&gt;[http://www.example.org Текст ссылки], дополнительный текст.&lt;/ref&gt;',
-	'wikieditor-toolbar-help-content-reference-result' => "Текст страницы<sup><a href='#'>[1]</a></sup>.",
+	'wikieditor-toolbar-help-content-reference-result' => "Текст страницы.<sup><a href='#'>[1]</a></sup>",
 	'wikieditor-toolbar-help-content-rereference-description' => 'Дополнительное использование той же ссылки',
 	'wikieditor-toolbar-help-content-rereference-result' => "Текст страницы<sup><a href='#'>[1]</a></sup>.",
 	'wikieditor-toolbar-help-content-showreferences-description' => 'Показывать примечания',
@@ -16378,9 +16383,21 @@ $messages['yue'] = array(
 	'wikieditor-toolbar-tool-link-int-target-status-exists' => '頁面存在',
 	'wikieditor-toolbar-tool-link-int-target-status-notexists' => '頁唔存在',
 	'wikieditor-toolbar-tool-link-int-target-status-invalid' => '唔正確嘅標題',
+	'wikieditor-toolbar-tool-link-int-target-status-external' => '外部連結',
+	'wikieditor-toolbar-tool-link-int-target-status-loading' => '檢查果版係唔係到...',
+	'wikieditor-toolbar-tool-link-int-invalid' => '你打嘅標題係錯嘅',
+	'wikieditor-toolbar-tool-link-lookslikeinternal' => '條URL應該係連去其他Wiki頁面嘅，你打唔打算做一個內部連結？',
+	'wikieditor-toolbar-tool-link-lookslikeinternal-int' => '內部連結',
+	'wikieditor-toolbar-tool-link-lookslikeinternal-ext' => '外部連結',
+	'wikieditor-toolbar-tool-link-empty' => '你係連去邊個格到唔記得打野。',
 	'wikieditor-toolbar-tool-file' => '結合標題',
+	'wikieditor-toolbar-tool-file-example' => 'Example.jpg',
 	'wikieditor-toolbar-tool-reference' => '參考',
 	'wikieditor-toolbar-tool-reference-example' => '響呢度插入底文字',
+	'wikieditor-toolbar-tool-reference-cancel' => '取消',
+	'wikieditor-toolbar-tool-reference-title' => '插入註解',
+	'wikieditor-toolbar-tool-reference-insert' => '插入',
+	'wikieditor-toolbar-tool-reference-text' => '參考文字',
 	'wikieditor-toolbar-tool-signature' => '簽名加時間印',
 	'wikieditor-toolbar-section-advanced' => '進階',
 	'wikieditor-toolbar-tool-heading' => '標題',
@@ -16395,6 +16412,12 @@ $messages['yue'] = array(
 	'wikieditor-toolbar-tool-ulist-example' => '點列一覽項目',
 	'wikieditor-toolbar-tool-olist' => '數字一覽',
 	'wikieditor-toolbar-tool-olist-example' => '數字一覽項目',
+	'wikieditor-toolbar-tool-indent' => '首行縮排',
+	'wikieditor-toolbar-tool-indent-example' => '首行縮排嘅行',
+	'wikieditor-toolbar-tool-nowiki' => '唔理 wiki 格式',
+	'wikieditor-toolbar-tool-nowiki-example' => '喺呢度插入非格式文字',
+	'wikieditor-toolbar-tool-redirect' => '重定向',
+	'wikieditor-toolbar-tool-redirect-example' => '目標頁面名',
 	'wikieditor-toolbar-tool-big' => '大',
 	'wikieditor-toolbar-tool-big-example' => '大字',
 	'wikieditor-toolbar-tool-small' => '細',
@@ -16433,9 +16456,13 @@ $messages['yue'] = array(
 | 行 2, 格 1
 | 行 2, 格 2
 | 行 2, 格 3',
+	'wikieditor-toolbar-tool-table-example-header' => '標題',
 	'wikieditor-toolbar-tool-table-title' => '插入表格',
 	'wikieditor-toolbar-tool-table-dimensions-rows' => '列',
 	'wikieditor-toolbar-tool-table-dimensions-columns' => '行',
+	'wikieditor-toolbar-tool-table-dimensions-header' => '新增標題行',
+	'wikieditor-toolbar-tool-table-wikitable' => '連埋外框同格式',
+	'wikieditor-toolbar-tool-table-sortable' => '整一個可以排序嘅表格',
 	'wikieditor-toolbar-tool-table-example' => '-
 ! 表頭 1
 ! 表頭 2
@@ -16449,13 +16476,39 @@ $messages['yue'] = array(
 | 行 2, 格 2
 | 行 2, 格 3',
 	'wikieditor-toolbar-tool-table-preview' => '預覽',
+	'wikieditor-toolbar-tool-table-insert' => '插入',
+	'wikieditor-toolbar-tool-table-cancel' => '取消',
+	'wikieditor-toolbar-tool-table-toomany' => '插入一個多個$1格嘅表格用呢個信息框係唔可能嘅',
+	'wikieditor-toolbar-tool-table-invalidnumber' => '你係行或者列輸入左一個唔正確嘅數字',
+	'wikieditor-toolbar-tool-table-zero' => '你唔可以插入一個有0行或者列嘅表格',
+	'wikieditor-toolbar-tool-replace' => '搜索同重新放位',
+	'wikieditor-toolbar-tool-replace-title' => '搜索同重新放位',
+	'wikieditor-toolbar-tool-replace-search' => '搵:',
+	'wikieditor-toolbar-tool-replace-replace' => '放D咩？放:',
+	'wikieditor-toolbar-tool-replace-case' => '合乎案件',
+	'wikieditor-toolbar-tool-replace-regex' => '搜索文字做一個基本運算',
+	'wikieditor-toolbar-tool-replace-button-findnext' => '下一個',
+	'wikieditor-toolbar-tool-replace-button-replacenext' => '取代下一個',
+	'wikieditor-toolbar-tool-replace-button-replaceall' => '取代全部',
+	'wikieditor-toolbar-tool-replace-close' => '取消',
+	'wikieditor-toolbar-tool-replace-nomatch' => '你嘅搜尋唔配合任何野。',
+	'wikieditor-toolbar-tool-replace-success' => '已取代$1個。',
+	'wikieditor-toolbar-tool-replace-emptysearch' => '你無打要搵啲咩。',
+	'wikieditor-toolbar-tool-replace-invalidregex' => '你打入嘅運算係錯嘅：$1',
 	'wikieditor-toolbar-section-characters' => '特別字元',
 	'wikieditor-toolbar-characters-page-latin' => '拉丁文',
+	'wikieditor-toolbar-characters-page-latinextended' => 'Latin擴展左',
+	'wikieditor-toolbar-characters-page-ipa' => 'IPA',
 	'wikieditor-toolbar-characters-page-symbols' => '符號',
 	'wikieditor-toolbar-characters-page-greek' => '希臘文',
 	'wikieditor-toolbar-characters-page-cyrillic' => '西里爾文',
 	'wikieditor-toolbar-characters-page-arabic' => '阿拉伯文',
 	'wikieditor-toolbar-characters-page-hebrew' => '希伯來文',
+	'wikieditor-toolbar-characters-page-bangla' => 'Bangla
+Bangla',
+	'wikieditor-toolbar-characters-page-telugu' => 'Telugu',
+	'wikieditor-toolbar-characters-page-sinhala' => 'Sinhala',
+	'wikieditor-toolbar-characters-page-gujarati' => 'Gujarati',
 	'wikieditor-toolbar-section-help' => '幫手',
 	'wikieditor-toolbar-help-heading-description' => '描述',
 	'wikieditor-toolbar-help-heading-syntax' => '你輸入啲乜',
@@ -16585,7 +16638,7 @@ $messages['zh-hans'] = array(
 	'wikieditor-toolbar-tool-heading-4' => '4级',
 	'wikieditor-toolbar-tool-heading-5' => '5级',
 	'wikieditor-toolbar-tool-heading-example' => '标题文本',
-	'wikieditor-toolbar-group-format' => '列表',
+	'wikieditor-toolbar-group-format' => '格式',
 	'wikieditor-toolbar-tool-ulist' => '无序列表',
 	'wikieditor-toolbar-tool-ulist-example' => '无序列表项',
 	'wikieditor-toolbar-tool-olist' => '有序列表',

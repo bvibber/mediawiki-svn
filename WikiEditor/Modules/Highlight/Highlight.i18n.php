@@ -442,6 +442,13 @@ $messages['vi'] = array(
 	'wikieditor-highlight-preference' => 'Tô màu cú pháp khi sửa đổi',
 );
 
+/** Cantonese (粵語)
+ * @author Horacewai2
+ */
+$messages['yue'] = array(
+	'wikieditor-highlight-preference' => '編輯緊嘅時候啟用語法高亮功能',
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Bencmq
  */

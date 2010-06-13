@@ -827,6 +827,16 @@ $messages['yi'] = array(
 	'wikieditor-preview-loading' => 'לאָדט…',
 );
 
+/** Cantonese (粵語)
+ * @author Horacewai2
+ */
+$messages['yue'] = array(
+	'wikieditor-preview-preference' => '用side-by-side預覽功能',
+	'wikieditor-preview-tab' => '預覽',
+	'wikieditor-preview-changes-tab' => '改動',
+	'wikieditor-preview-loading' => '載入緊…',
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Bencmq
  * @author PhiLiP

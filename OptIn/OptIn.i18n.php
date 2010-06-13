@@ -6285,6 +6285,7 @@ $messages['yi'] = array(
 );
 
 /** Cantonese (粵語)
+ * @author Horacewai2
  * @author Shinjiman
  */
 $messages['yue'] = array(
@@ -6351,6 +6352,18 @@ $messages['yue'] = array(
 	'optin-survey-answer-changes-predictability' => '改善效率預測。',
 	'optin-survey-answer-changes-custom' => '容許更加有彈性嘅用戶自定。',
 	'optin-survey-answer-changes-other' => '其它：',
+	'optin-improvements2' => '==有咩改善？ ==
+[[File:UsabilityToolbar.png|left|link=|新編輯工具列]][[File:UsabilityDialogs.png|left|link=|對話內容截圖]]
+;增強嘅工具欄
+增強工具欄上可以更容易去編輯文章。
+新嘅同改進嘅圖標令每個工具更清楚做緊咩。
+膨脹節減少混亂，同時保持不經常使用嘅工具只係一個點擊就可以。
+;對話框 (創建鏈接或表格)
+點擊工具圖標打開對話框，幫助您創建鏈接同表格，只需填寫一份簡單嘅表格。
+;其他
+例如增強嘅導航，級聯標籤，改進嘅搜索，同埋更多。
+==點參與==
+如果要了解更多關於可用性倡議，請訪問我們嘅[http://usability.wikimedia.org/wiki/Wikipedia_Usability_Initiative 網頁]。 <div style="clear:both"></div>',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

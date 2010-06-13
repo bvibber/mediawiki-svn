@@ -1199,7 +1199,15 @@ $messages['yi'] = array(
  * @author Horacewai2
  */
 $messages['yue'] = array(
+	'wikieditor-publish-preference' => '啟用一步還一步嘅發佈功能',
+	'wikieditor-publish-button-publish' => '發佈',
+	'wikieditor-publish-button-cancel' => '取消',
+	'wikieditor-publish-dialog-title' => '發佈去{{SITENAME}}',
+	'wikieditor-publish-dialog-summary' => '摘要 (簡單講下你改左咩)',
 	'wikieditor-publish-dialog-minor' => '小編輯',
+	'wikieditor-publish-dialog-watch' => '睇實呢一頁',
+	'wikieditor-publish-dialog-publish' => '發佈',
+	'wikieditor-publish-dialog-goback' => '番去',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
