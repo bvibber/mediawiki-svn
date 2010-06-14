@@ -153,6 +153,13 @@ $messages['es'] = array(
 	'updatemyprefs-label-message' => 'Automáticamente actualizar mis preferencias con las nuevas configuraciones por defecto y herramientas ni bien estén disponibles',
 );
 
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'prefs-updates' => 'Eguneratzeak',
+);
+
 /** Finnish (Suomi)
  * @author Crt
  * @author Str4nd
