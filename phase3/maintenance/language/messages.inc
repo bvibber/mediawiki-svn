@@ -2698,6 +2698,7 @@ $wgMessageStructure = array(
 		'exif-gpsareainformation',
 		'exif-gpsdatestamp',
 		'exif-gpsdifferential',
+		'exif-jpegfilecomment',
 	),
 	'exif-values' => array(
 		'exif-make-value',

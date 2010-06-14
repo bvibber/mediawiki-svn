@@ -558,7 +558,7 @@ $wgTrustedMediaFormats = array(
  * Each entry in the array maps a MIME type to a class name
  */
 $wgMediaHandlers = array(
-	'image/jpeg' => 'BitmapHandler',
+	'image/jpeg' => 'JpegHandler',
 	'image/png' => 'BitmapHandler',
 	'image/gif' => 'GIFHandler',
 	'image/tiff' => 'TiffHandler',

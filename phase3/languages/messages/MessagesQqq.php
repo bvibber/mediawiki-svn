@@ -3196,6 +3196,7 @@ See also Wikipedia on [http://en.wikipedia.org/wiki/Digital_zoom digital zoom].'
 See also Wikipedia on [http://en.wikipedia.org/wiki/Focal_length#In_photography focal length].',
 'exif-gpslatitude'                 => '{{Identical|Latitude}}',
 'exif-gpslongitude'                => '{{Identical|Longitude}}',
+'exif-jpegfilecomment'             => 'This is not a true exif tag, but the contents of the JPEG COM segment. This often contains a file source, but can potentially contain any comment about the file',
 
 # EXIF attributes
 'exif-compression-6' => '{{optional}}',

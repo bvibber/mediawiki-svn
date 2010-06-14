@@ -448,6 +448,8 @@ $wgAutoloadLocalClasses = array(
 	'ImageHandler' => 'includes/media/Generic.php',
 	'MediaHandler' => 'includes/media/Generic.php',
 	'SvgHandler' => 'includes/media/SVG.php',
+	'BitmapMetadataHandler' => 'includes/media/BitmapMetadataHandler.php',
+	'JpegHandler' => 'includes/media/Jpeg.php',
 
 	# includes/normal
 	'UtfNormal' => 'includes/normal/UtfNormal.php',

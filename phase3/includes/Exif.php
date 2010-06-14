@@ -605,7 +605,7 @@ class Exif {
  */
 class FormatExif {
 	/**
-	 * The Exif data to format
+	 * The Exif data to format. Note, this now also formats non-exif data
 	 *
 	 * @var array
 	 * @private
@@ -1051,6 +1051,11 @@ class FormatExif {
 			case 'Copyright':
 				$tags[$tag] = htmlspecialchars( $val );
 				break;
+			//Here begins the non-exif data
+			case 'JPEGFileComment':
+				$tags[$tag] = htmlspecialchars( $val );
+				break;
+				
 			default:
 				$tags[$tag] = $this->formatNum( $val );
 				break;
