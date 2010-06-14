@@ -26,13 +26,13 @@ function efCategoryMultisortChineseInit() {
 	wfLoadExtensionMessages( 'CategoryMultisortChinese' );
 	
 	if ( in_array( 'zh-hans', $wgContLang->getVariants() ) ) {
-		$wgCategoryMultisortSortkeySettings['stroke-s'] = $wgCategoryMultisortSortkeySettings['stroke'];
-		$wgCategoryMultisortSortkeySettings['radical-s'] = $wgCategoryMultisortSortkeySettings['radical'];
+		$wgCategoryMultisortSortkeySettings['stroke-simplified'] = $wgCategoryMultisortSortkeySettings['stroke'];
+		$wgCategoryMultisortSortkeySettings['radical-simplified'] = $wgCategoryMultisortSortkeySettings['radical'];
 	}
 	
 	if ( in_array( 'zh-hant', $wgContLang->getVariants() ) ) {
-		$wgCategoryMultisortSortkeySettings['stroke-t'] = $wgCategoryMultisortSortkeySettings['stroke'];
-		$wgCategoryMultisortSortkeySettings['radical-t'] = $wgCategoryMultisortSortkeySettings['radical'];
+		$wgCategoryMultisortSortkeySettings['stroke-traditional'] = $wgCategoryMultisortSortkeySettings['stroke'];
+		$wgCategoryMultisortSortkeySettings['radical-traditional'] = $wgCategoryMultisortSortkeySettings['radical'];
 	}
 }
 

@@ -62,19 +62,19 @@ class CategoryMultisortChineseHooks {
 		$conv = $wgContLang->autoConvertToAllVariants( $text );
 		
 		if ( array_key_exists( 'zh-hans', $conv ) ) {
-			$this->onCategoryMultisortSortkeys_setDefaultSortkey( $categoryMultisorts, 'stroke-s',
+			$this->onCategoryMultisortSortkeys_setDefaultSortkey( $categoryMultisorts, 'stroke-simplified',
 				$this->onCategoryMultisortSortkeys_buildStrokeSortkey( $data, $conv['zh-hans'] )
 			);
-			$this->onCategoryMultisortSortkeys_setDefaultSortkey( $categoryMultisorts, 'radical-s',
+			$this->onCategoryMultisortSortkeys_setDefaultSortkey( $categoryMultisorts, 'radical-simplified',
 				$this->onCategoryMultisortSortkeys_buildRadicalSortkey( $data, $conv['zh-hans'] )
 			);
 		}
 		
 		if ( array_key_exists( 'zh-hant', $conv ) ) {
-			$this->onCategoryMultisortSortkeys_setDefaultSortkey( $categoryMultisorts, 'stroke-t',
+			$this->onCategoryMultisortSortkeys_setDefaultSortkey( $categoryMultisorts, 'stroke-traditional',
 				$this->onCategoryMultisortSortkeys_buildStrokeSortkey( $data, $conv['zh-hant'] )
 			);
-			$this->onCategoryMultisortSortkeys_setDefaultSortkey( $categoryMultisorts, 'radical-t',
+			$this->onCategoryMultisortSortkeys_setDefaultSortkey( $categoryMultisorts, 'radical-traditional',
 				$this->onCategoryMultisortSortkeys_buildRadicalSortkey( $data, $conv['zh-hant'] )
 			);
 		}
