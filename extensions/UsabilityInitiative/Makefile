@@ -152,8 +152,8 @@ Vector/Vector.hooks.php: $(VECTOR_HOOKS)
 # For each group of summing numbers inside the target file, use shell arithmetic expansion to calculate the sum.
 # Replace all numbers at once with sed. The replacements are preceded have a leading ; an empty expression about which sed doesn't care.
 %.hooks.php: $(WIKIEDITOR_HOOKS)
-	for file in $?; do basefile="$${file#$(shell echo $* | sed "s/\([^\/]*\/\).*/\\1/")}"; sed -e "s/\(.*'src' => '$${basefile//\//\\/}', 'version' => \)\([0-9+]*\)\(.*\)/\\1\\2+1\\3/" $@ > $@.counter; done; \
-											RE=""; for i in $$(grep --only-matching -P " ([0-9]+(\+[0-9])+) " $@.counter); do RE="$$RE;s/ $$i / $$(($$i)) /"; done; sed -e "$$RE" $@.counter > $@ && rm $@.counter
+	for file in $?; do basefile="$${file#$(shell echo $* | sed "s/\([^\/]*\/\).*/\\1/")}"; sed -e "s/\(.*'src' => '$${basefile//\//\\/}', 'version' => \)\([0-9+]*\)\(.*\)/\\1\\2+1\\3/" $@ > $@.counter && cat $@.counter > $@; done; \
+											RE=""; for i in $$(sed -n 's/.* \([0-9][0-9]*+[0-9+]*\) .*/\1/p' $@.counter); do RE="$$RE;s/ $$i / $$(($$i)) /"; done; sed -e "$$RE" $@.counter > $@ && rm $@.counter
 
 # Actions
 
