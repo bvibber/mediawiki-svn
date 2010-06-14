@@ -25,7 +25,7 @@ error_reporting( E_ALL );
 
 class DataTransclusionTest extends PHPUnit_Framework_TestCase {
 	protected static $templates = array(
-		'Test' => "'''{{{id}}}'''|{{{name}}}|{{{info}}}|[{{{url}}} link]|[{{{evil}}} click me]",
+		'Test' => "{{{source-name}}}:'''{{{id}}}'''|{{{name}}}|{{{extra}}}|{{{info}}}|[{{{url}}} link]|[{{{evil}}} click me]",
 	);
 
 	static function getTemplate( $title, $parser ) {
@@ -186,35 +186,31 @@ class DataTransclusionTest extends PHPUnit_Framework_TestCase {
 		$wgDataTransclusionSources[ 'FOO' ] = $spec;
 
 		# failure mode: no source given
-		$s = DataTransclusionHandler::handleRecordTransclusion( "3", array( 'foo' => 'bar' ), $wgParser, false );
+		$s = DataTransclusionHandler::handleRecordTransclusion( "Dummy", array( 'foo' => 'bar', 'id' => 3 ), $wgParser, false );
 		$this->assertTrue( preg_match( '/class="error datatransclusion-missing-source"/', $s ) === 1 );
 
 		# failure mode: bad source given
-		$s = DataTransclusionHandler::handleRecordTransclusion( "3", array( 'source' => '*** nonsense ***', 'template' => 'Dummy' ), $wgParser, false );
+		$s = DataTransclusionHandler::handleRecordTransclusion( "Dummy", array( 'source' => '*** nonsense ***', 'id' => 3 ), $wgParser, false );
 		$this->assertTrue( preg_match( '/class="error datatransclusion-unknown-source"/', $s ) === 1 );
 
 		# failure mode: bad source given (alternative)
-		$s = DataTransclusionHandler::handleRecordTransclusion( "3", array( 1 => '*** nonsense ***', 'template' => 'Dummy' ), $wgParser, false );
+		$s = DataTransclusionHandler::handleRecordTransclusion( "Dummy", array( 1 => '*** nonsense ***', 'id' => 3 ), $wgParser, false );
 		$this->assertTrue( preg_match( '/class="error datatransclusion-unknown-source"/', $s ) === 1 );
 
-		# failure mode: illegal value for by= (must be a key field)
-		$s = DataTransclusionHandler::handleRecordTransclusion( "3", array( 'source' => 'FOO', 'by' => 'info', 'template' => 'Dummy' ), $wgParser, false );
-		$this->assertTrue( preg_match( '/class="error datatransclusion-bad-argument-by"/', $s ) === 1 );
-
 		# failure mode: no key value specified
-		$s = DataTransclusionHandler::handleRecordTransclusion( null, array( 'source' => 'FOO', 'template' => 'Dummy' ), $wgParser, false );
-		$this->assertTrue( preg_match( '/class="error datatransclusion-missing-argument-key"/', $s ) === 1 );
+		$s = DataTransclusionHandler::handleRecordTransclusion( "Dummy", array( 'source' => 'FOO' ), $wgParser, false );
+		$this->assertTrue( preg_match( '/class="error datatransclusion-missing-key"/', $s ) === 1 );
 
 		# failure mode: no template specified
-		$s = DataTransclusionHandler::handleRecordTransclusion( "3", array( 'source' => 'FOO' ), $wgParser, false );
+		$s = DataTransclusionHandler::handleRecordTransclusion( null, array( 'source' => 'FOO', 'id' => 3 ), $wgParser, false );
 		$this->assertTrue( preg_match( '/class="error datatransclusion-missing-argument-template"/', $s ) === 1 );
 
 		# failure mode: illegal template specified
-		$s = DataTransclusionHandler::handleRecordTransclusion( "3", array( 'source' => 'FOO', 'template' => '#' ), $wgParser, false );
+		$s = DataTransclusionHandler::handleRecordTransclusion( "##", array( 'source' => 'FOO', 'id' => 3 ), $wgParser, false );
 		$this->assertTrue( preg_match( '/class="error datatransclusion-bad-template-name"/', $s ) === 1 );
 
 		# failure mode: record can't be found for that key
-		$s = DataTransclusionHandler::handleRecordTransclusion( "xxxxxxxxxx", array( 'source' => 'FOO', 'template' => 'Dummy' ), $wgParser, false );
+		$s = DataTransclusionHandler::handleRecordTransclusion( "Dummy", array( 'source' => 'FOO', 'id' => 'xxxxxxxxxx' ), $wgParser, false );
 		$this->assertTrue( preg_match( '/class="error datatransclusion-record-not-found"/', $s ) === 1 );
 
 		/*
@@ -226,15 +222,15 @@ class DataTransclusionTest extends PHPUnit_Framework_TestCase {
 
 		////////////////////////////////////////////////////////
 		# success: render record
-		$res = DataTransclusionHandler::handleRecordTransclusion( "3", array( 'source' => 'FOO', 'template' => 'Test' ), $wgParser, false, "'''{{{id}}}'''|{{{name}}}|{{{info}}}" );
+		$res = DataTransclusionHandler::handleRecordTransclusion( "Test", array( 'source' => 'FOO', 'id' => 3 ), $wgParser, false, "'''{{{id}}}'''|{{{name}}}|{{{info}}}" );
 		$this->assertEquals( $res, '\'\'\'3\'\'\'|foo|test&X' );
 		
 		# success: render record (find by name)
-		$res = DataTransclusionHandler::handleRecordTransclusion( "foo", array( 'source' => 'FOO', 'template' => 'Test', 'by' => 'name' ), $wgParser, false, "'''{{{id}}}'''|{{{name}}}|{{{info}}}" );
+		$res = DataTransclusionHandler::handleRecordTransclusion( "Test", array( 'source' => 'FOO', 'name' => 'foo'), $wgParser, false, "'''{{{id}}}'''|{{{name}}}|{{{info}}}" );
 		$this->assertEquals( $res, '\'\'\'3\'\'\'|foo|test&X' );
 		
 		# success: render record (as HTML)
-		$res = DataTransclusionHandler::handleRecordTransclusion( "3", array( 'source' => 'FOO', 'template' => 'Test' ), $wgParser, true, "'''{{{id}}}'''|{{{name}}}|{{{info}}}" );
+		$res = DataTransclusionHandler::handleRecordTransclusion( "Test", array( 'source' => 'FOO', 'id' => 3 ), $wgParser, true, "'''{{{id}}}'''|{{{name}}}|{{{info}}}" );
 		$this->assertEquals( $res, '<b>3</b>|foo|test&X' ); // FIXME: & should have been escaped to &amp; here, no? why not?
 	}
 
@@ -247,7 +243,7 @@ class DataTransclusionTest extends PHPUnit_Framework_TestCase {
 			'data' => $data,
 			'keyFields' => 'name,id',
 			'fieldNames' => 'id,name,info,url,evil',
-			'defaultKey' => 'id'
+			'defaultKey' => 'id',
 		);
 		
 		$wgDataTransclusionSources[ 'FOO' ] = $spec;
@@ -257,12 +253,11 @@ class DataTransclusionTest extends PHPUnit_Framework_TestCase {
 		$options = new ParserOptions();
 		$options->setTemplateCallback( 'DataTransclusionTest::getTemplate' );
 
-		$text = 'xx {{#record:FOO|3|Test}} xx';
+		$text = 'xx {{#record:Test|FOO|id=3|extra=Hallo}} xx';
 		$wgParser->parse( $text, $title, $options );
 
 		$html = $wgParser->getOutput()->getText();   
-		$this->assertEquals( $html, '<p>xx <b>3</b>|foo|&lt;test&gt;&amp;&#91;&#91;X&#93;&#93;|<a href="http://test.org/" class="external text" rel="nofollow">link</a>|[javascript:alert("evil") click me] xx'."\n".'</p>' ); // XXX: should be more lenient wrt whitespace
-
+		$this->assertEquals( $html, '<p>xx FOO:<b>3</b>|foo|Hallo|&lt;test&gt;&amp;&#91;&#91;X&#93;&#93;|<a href="http://test.org/" class="external text" rel="nofollow">link</a>|[javascript:alert("evil") click me] xx'."\n".'</p>' ); // XXX: should be more lenient wrt whitespace
 		$templates = $wgParser->getOutput()->getTemplates();
 		$this->assertTrue( isset( $templates[ NS_TEMPLATE ]['Test'] ) ); 
 	}
@@ -286,11 +281,11 @@ class DataTransclusionTest extends PHPUnit_Framework_TestCase {
 		$options = new ParserOptions();
 		$options->setTemplateCallback( 'DataTransclusionTest::getTemplate' );
 
-		$text = 'xx <record source=FOO template="Test">3</record> xx';
+		$text = 'xx <record source="FOO" id=3 extra="Hallo">Test</record> xx';
 		$wgParser->parse( $text, $title, $options );
 
 		$html = $wgParser->getOutput()->getText();      
-		$this->assertEquals( $html, '<p>xx <b>3</b>|foo|&lt;test&gt;&amp;&#91;&#91;X&#93;&#93;|<a href="http://test.org/" class="external text" rel="nofollow">link</a>|[javascript:alert("evil") click me] xx'."\n".'</p>' ); // XXX: should be more lenient wrt whitespace
+		$this->assertEquals( $html, '<p>xx FOO:<b>3</b>|foo|Hallo|&lt;test&gt;&amp;&#91;&#91;X&#93;&#93;|<a href="http://test.org/" class="external text" rel="nofollow">link</a>|[javascript:alert("evil") click me] xx'."\n".'</p>' ); // XXX: should be more lenient wrt whitespace
 		$templates = $wgParser->getOutput()->getTemplates();
 		$this->assertTrue( isset( $templates[ NS_TEMPLATE ]['Test'] ) ); 
 	}
@@ -309,11 +304,13 @@ class DataTransclusionTest extends PHPUnit_Framework_TestCase {
 
 		$handler = new DataTransclusionHandler( $wgParser, $source, null );
 
-		$rec = $handler->normalizeRecord( $rec );
+		$args = array( "name" => "cruft", "more" => "stuff" );
+		$rec = $handler->normalizeRecord( $rec, $args );
 
-		$this->assertEquals( $rec['source.name'], 'FOO' );
-		$this->assertEquals( $rec['source.quux'], 'xyzzy' );
-		$this->assertEquals( $rec['source.x'], 43 );
+		$this->assertEquals( $rec['source-name'], 'FOO' );
+		$this->assertEquals( $rec['quux'], 'xyzzy' );
+		$this->assertEquals( $rec['x'], 43 );
+		$this->assertEquals( $rec['more'], 'stuff' );
 		$this->assertEquals( $rec['name'], 'foo' );
 		$this->assertEquals( $rec['id'], '3' );
 		$this->assertEquals( $rec['info'], '&#123;&#123;test&#125;&#125;=&#91;&#91;x&#93;&#93; 1&2 ' );
@@ -402,7 +399,8 @@ class DataTransclusionTest extends PHPUnit_Framework_TestCase {
 		$spec = array(
 			'name' => 'FOO',
 			'keyFields' => 'id,name',
-			'url' => 'http://acme.com/',
+			'optionNames' => 'x,y',
+			'url' => 'http://acme.com/{name}',
 			'dataFormat' => 'php',
 			'dataPath' => 'response/content/@0',
 			'valuePath' => 'value',
@@ -412,7 +410,13 @@ class DataTransclusionTest extends PHPUnit_Framework_TestCase {
 		$source = new WebDataTransclusionSource( $spec );
 
 		$u = $source->getRecordURL( 'name', 'foo&bar' );
-		$this->assertEquals( $u, 'http://acme.com/?name=foo%26bar' );
+		$this->assertEquals( $u, 'http://acme.com/foo%26bar' );
+
+		$u = $source->getRecordURL( 'id', '23' );
+		$this->assertEquals( $u, 'http://acme.com/?id=23' );
+
+		$u = $source->getRecordURL( 'name', 'foo&bar', array( 'x' => '42', 'y' => 57 ) );
+		$this->assertEquals( $u, 'http://acme.com/foo%26bar?x=42&y=57' );
 
 		$rec = array( 
 			"name" => array( 'type' => 'string', 'value' => "foo" ), 
@@ -435,7 +439,7 @@ class DataTransclusionTest extends PHPUnit_Framework_TestCase {
 		$this->assertEquals( $rec['id'], 3 );
 
 		////////////////////////
-		$spec['url'] = 'file://' . dirname( realpath( __FILE__ ) ) . '/test-data-{field}-{value}.pser';
+		$spec['url'] = 'file://' . dirname( realpath( __FILE__ ) ) . '/test-data-name-{name}.pser';
 		$spec['dataFormat'] = 'php';
 		$source = new WebDataTransclusionSource( $spec );
 
@@ -443,7 +447,7 @@ class DataTransclusionTest extends PHPUnit_Framework_TestCase {
 		$this->assertEquals( $rec['id'], 3 );
 
 		////////////////////////
-		$spec['url'] = 'file://' . dirname( realpath( __FILE__ ) ) . '/test-data-{field}-{value}.json';
+		$spec['url'] = 'file://' . dirname( realpath( __FILE__ ) ) . '/test-data-name-{name}.json';
 		$spec['dataFormat'] = 'json';
 		$source = new WebDataTransclusionSource( $spec );
 
@@ -452,7 +456,7 @@ class DataTransclusionTest extends PHPUnit_Framework_TestCase {
 
 		////////////////////////
 		if ( function_exists( 'wddx_unserialize' ) ) {
-			$spec['url'] = 'file://' . dirname( realpath( __FILE__ ) ) . '/test-data-{field}-{value}.wddx';
+			$spec['url'] = 'file://' . dirname( realpath( __FILE__ ) ) . '/test-data-name-{name}.wddx';
 			$spec['dataFormat'] = 'wddx';
 			$source = new WebDataTransclusionSource( $spec );
 

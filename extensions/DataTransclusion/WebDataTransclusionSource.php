@@ -22,10 +22,10 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  * WebDataTransclusionSource accepts some additional options
  *
  *	 * $spec['url']: base URL for building urls for retrieving individual records.
- *		If the URL contains the placeholder {field} and/or {value}, these
- *		get replaced by the field name resp. the field value.
- *		Otherwise, the key/value pair is appended to the URL as a regular URL
- *		parameter (preceeded by ? or &, as appropriate). For more
+ *		If the URL contains placeholders of the form {xxx}, these get replaced 
+ *		by the respective key or option values.
+ *		Otherwise, the key/value pair and options get appended to the URL as a 
+ *		regular URL parameter (preceeded by ? or &, as appropriate). For more
  *		complex rules for building the url, override getRecordURL(). REQUIRED.
  *	 * $spec['dataFormat']: Serialization format returned from the web service.
  *		Supported values are 'php' for PHP serialization format, 'json'
@@ -80,8 +80,8 @@ class WebDataTransclusionSource extends DataTransclusionSource {
 		}
 	}
 
-	public function fetchRecord( $field, $value ) {
-		$raw = $this->loadRecordData( $field, $value ); 
+	public function fetchRecord( $field, $value, $options = null ) {
+		$raw = $this->loadRecordData( $field, $value, $options ); 
 		if ( !$raw ) {
 			wfDebugLog( 'DataTransclusion', "failed to fetch data for $field=$value\n" );
 			return false; 
@@ -109,29 +109,42 @@ class WebDataTransclusionSource extends DataTransclusionSource {
 		return $rec;
 	}
 
-	public function getRecordURL( $field, $value ) {
+	public function getRecordURL( $field, $value, $options = null ) {
 		$u = $this->url;
 
-		if ( strpos( $u, '{field}' ) !== false || strpos( $u, '{value}' ) !== false ) {
-			$u = str_replace( '{field}', urlencode( $field ), $u );
-			$u = str_replace( '{value}', urlencode( $value ), $u );
-		} else {
+		$args = array( $field => $value );
+
+		if ( $options ) {
+			$args = array_merge( $options, $args );
+		} 
+
+		foreach ( $args as $k => $v ) {
+			$u = str_replace( '{'.$k.'}', urlencode( $v ), $u, $n );
+
+			if ( $n ) { //was found and replaced
+				unset( $args[ $k ] );
+			}
+		}
+
+		$u = preg_replace( '/\{.*?\}/', '', $u ); //strip remaining placeholders
+
+		foreach ( $args as $k => $v ) {
 			if ( strpos( $u, '?' ) === false ) {
 				$u .= '?';
 			} else {
 				$u .= '&';
 			}
 
-			$u .= urlencode( $field );
+			$u .= urlencode( $k );
 			$u .= '=';
-			$u .= urlencode( $value );
+			$u .= urlencode( $v );
 		}
 
 		return $u;
 	}
 
-	public function loadRecordData( $field, $value ) {
-		$u = $this->getRecordURL( $field, $value );
+	public function loadRecordData( $field, $value, $options ) {
+		$u = $this->getRecordURL( $field, $value, $options );
 		return $this->loadRecordDataFromURL( $u );
 	}
 

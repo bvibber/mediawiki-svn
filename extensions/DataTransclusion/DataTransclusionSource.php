@@ -27,11 +27,11 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  *		Set automatically by DataTransclusionHandler. REQUIRED.
  *	 * $spec['keyFields']: list of fields that can be used as the key
  *		for fetching a record. REQUIRED.
+ *	 * $spec['optionNames']: names of option that can be specified in addition
+ *		to a key, to refine the output. Optional.
  *	 * $spec['fieldNames']: names of all fields present in each record.
  *		Fields not listed here will not be available on the wiki,
  *		even if they are returned by the data source. REQUIRED.
- *	 * $spec['defaultKey']: default key to select records. If not specified,
- *		the first entry in $spec['keyFields'] is used.
  *	 * $spec['cacheDuration']: the number of seconds a result from this source
  *		may be cached for. If not set, results are assumed to be cacheable
  *		indefinitely. This setting determines the expiry time of the parser
@@ -41,12 +41,11 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  *		the expiry time of ObjectCache entries for records from this source.
  *	 * $spec['sourceInfo']: associative array of information about the data source
  *		that should be made available on the wiki. This information will be
- *		present in the record arrays, with they keys prefixed by "source.".
+ *		present in the record arrays as passed to the template.
  *		This is intended to allow information about source, license, etc to be
  *		shown on the wiki. Note that DataTransclusionSource implementations may
  *		provide extra information in the source info on their own: This base
- *		class forces $spec['sourceInfo']['name'] = $spec['name'] and
- *		$spec['sourceInfo']['defaultKey'] = $spec['defaultKey'].
+ *		class forces $spec['sourceInfo']['source-name'] = $spec['name'].
  *
  * Options used by DataTransclusionHandler but ignored by DataTransclusionSource:
  *	 * $spec['class']: see documentation if $wgDataTransclusionSources in DataTransclusion.
@@ -79,17 +78,12 @@ class DataTransclusionSource {
 		wfDebugLog( 'DataTransclusion', "constructing " . get_class( $this ) . " \"{$this->name}\"\n" );
 
 		$this->keyFields = self::splitList( $spec[ 'keyFields' ] );
+		$this->optionNames = self::splitList( @$spec[ 'optionNames' ] );
 
 		if ( isset( $spec[ 'fieldNames' ] ) ) {
 			$this->fieldNames = self::splitList( $spec[ 'fieldNames' ] );
 		} else {
 			$this->fieldNames = $this->keyFields;
-		}
-
-		if ( !empty( $spec[ 'defaultKey' ] ) ) {
-			$this->defaultKey = $spec[ 'defaultKey' ];
-		} else {
-			$this->defaultKey = $this->keyFields[ 0 ];
 		}
 
 		if ( !empty( $spec[ 'cacheDuration' ] ) ) {
@@ -106,16 +100,11 @@ class DataTransclusionSource {
 			}
 		}
 
-		$this->sourceInfo[ 'name' ] = $this->name; // force this one
-		$this->sourceInfo[ 'defaultKey' ] = $this->name; // force this one
+		$this->sourceInfo[ 'source-name' ] = $this->name; // force this one
 	}
 
 	public function getName() {
 		return $this->name;
-	}
-
-	public function getDefaultKey() {
-		return $this->defaultKey;
 	}
 
 	public function getSourceInfo() {
@@ -126,6 +115,10 @@ class DataTransclusionSource {
 		return $this->keyFields;
 	}
 
+	public function getOptionNames() {
+		return $this->optionNames;
+	}
+
 	public function getFieldNames() {
 		return $this->fieldNames;
 	}
@@ -134,7 +127,7 @@ class DataTransclusionSource {
 		return $this->cacheDuration;
 	}
 
-	public function fetchRecord( $field, $value ) {
+	public function fetchRecord( $field, $value, $options = null ) {
 		throw new MWException( "override fetchRecord()" );
 	}
 }
@@ -162,16 +155,16 @@ class CachingDataTransclusionSource extends DataTransclusionSource {
 		return $this->source->getName();
 	}
 
-	public function getDefaultTemplate() {
-		return $this->source->getDefaultTemplate();
-	}
-
 	public function getSourceInfo() {
 		return $this->source->getSourceInfo();
 	}
 
 	public function getKeyFields() {
 		return $this->source->getKeyFields();
+	}
+
+	public function getOptionNames() {
+		return $this->source->getOptionNames();
 	}
 
 	public function getFieldNames() {
@@ -182,16 +175,21 @@ class CachingDataTransclusionSource extends DataTransclusionSource {
 		return $this->source->getCacheDuration();
 	}
 
-	public function fetchRecord( $field, $value ) {
+	public function fetchRecord( $field, $value, $options = null ) {
 		global $wgDBname, $wgUser;
 		
-		$cacheKey = "$wgDBname:DataTransclusion(" . $this->getName() . ":$field=$value)";
+		$k = "$field=$value";
+		if ( $options ) {
+			$k .= "&" . sha1( var_export( $options, false ) );
+		}
+
+		$cacheKey = "$wgDBname:DataTransclusion(" . $this->getName() . ":$k)";
 		
 		$rec = $this->cache->get( $cacheKey );
 		
 		if ( !$rec ) {
 			wfDebugLog( 'DataTransclusion', "fetching fresh record for $field=$value\n" );
-			$rec = $this->source->fetchRecord( $field, $value );
+			$rec = $this->source->fetchRecord( $field, $value, $options );
 			
 			if ( $rec ) { // XXX: also cache negatives??
 				$duration = $this->getCacheDuration();
@@ -249,7 +247,7 @@ class FakeDataTransclusionSource extends DataTransclusionSource {
 		}
 	}
 
-	public function fetchRecord( $field, $value ) {
+	public function fetchRecord( $field, $value, $options = null ) {
 		return @$this->lookup[ $field ][ $value ];
 	}
 }

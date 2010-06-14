@@ -35,7 +35,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  *	 * $spec['keyFields']: like for DataTransclusionSource, this is list of fields
  *		that can be used as the key for fetching a record. However, it's not required
  *		for DBDataTransclusionSource: if not provided, array_keys( $spec['keyTypes'] )
- *		will be used. REQUIRED.
+ *		will be used. 
  *
  * For more information on options supported by DataTransclusionSource, see the class-level
  * documentation there.
@@ -112,7 +112,7 @@ class DBDataTransclusionSource extends DataTransclusionSource {
 		return $sql;
 	}
 
-	public function fetchRecord( $field, $value ) {
+	public function fetchRecord( $field, $value, $options = null ) {
 		$db = wfGetDB( DB_SLAVE );
 
 		$sql = $this->getQuery( $field, $value, $db );

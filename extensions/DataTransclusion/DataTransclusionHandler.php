@@ -14,6 +14,12 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 1 );
 }
 
+/** DataTransclusionHandler implements handlers for a parser tag and a parser function,
+* both called record, for fetching a data record from some external source. They are used
+* as follows: <record source="SourceName" key="value">SomeTemplate</record> where
+* "key" may be any field name defined of a key field for that data source. Similarly:
+* {{#record:SomeTemplate|SourceName|key=value}}.
+*/
 class DataTransclusionHandler {
 	static function buildAssociativeArguments ( $params ) {
 		// build associative arguments from flat parameter list
@@ -48,11 +54,15 @@ class DataTransclusionHandler {
 			return ''; // no category specified, return nothing
 		}
 
+		//first parameter is the template name
+		$template = array_shift( $params );
+
 		// build associative arguments from flat parameter list
 		$argv = DataTransclusionHandler::buildAssociativeArguments( $params );
+		$argv[ 0 ] = $template;
 
 		// FIXME: error messages contining special blocks like <nowiki> don't get re-substitutet correctly.
-		$text = DataTransclusionHandler::handleRecordTransclusion( null, $argv, $parser, false );
+		$text = DataTransclusionHandler::handleRecordTransclusion( $template, $argv, $parser, false );
 		return array( $text, 'noparse' => false, 'isHTML' => false );
 	}
 
@@ -76,15 +86,15 @@ class DataTransclusionHandler {
 	/**
 	* Entry point for the <record> tag parser hook. Delegates to handleRecordTransclusion.
 	*/
-	static function handleRecordTag( $key, $argv, $parser ) {
-		return DataTransclusionHandler::handleRecordTransclusion( $key, $argv, $parser, true );
+	static function handleRecordTag( $text, $argv, $parser ) {
+		return DataTransclusionHandler::handleRecordTransclusion( $text, $argv, $parser, true );
 	}
 
 	/**
 	* Fetches a records and renders it, according to the given array of parameters.
 	* Common implementation for parser tag and parser function.
 	*/
-	static function handleRecordTransclusion( $key, $argv, $parser, $asHTML, $templateText = null ) {
+	static function handleRecordTransclusion( $template, $argv, $parser, $asHTML, $templateText = null ) {
 		// find out which data source to use...
 		if ( empty( $argv['source'] ) ) {
 			if ( empty( $argv[1] ) ) {
@@ -99,50 +109,54 @@ class DataTransclusionHandler {
 
 		$source = DataTransclusionHandler::getDataSource( $sourceName );
 		if ( empty( $source ) ) {
-			wfDebugLog( 'DataTransclusion', "unknown data-source: $sourceName\n" );
+			wfDebugLog( 'DataTransclusion', "unknown source: $sourceName\n" );
 			return DataTransclusionHandler::errorMessage( 'datatransclusion-unknown-source', $asHTML, $sourceName ); 
 		}
 
-		// find out how to find the desired record
-		if ( empty( $argv['by'] ) ) {
-			$by = $source->getDefaultKey();
-		} else {
-			$by = $argv['by'];
-		}
-
-		$keyFields = $source->getKeyFields();
-		if ( ! in_array( $by, $keyFields ) ) {
-			global $wgContLang;
-			wfDebugLog( 'DataTransclusion', "bad 'by' argument: $by (not a known key field)\n" );
-			return DataTransclusionHandler::errorMessage( 'datatransclusion-bad-argument-by', $asHTML, $sourceName, $by, 
-				$wgContLang->commaList( $keyFields ), count( $keyFields ) ); 
-		}
-
-		if ( !empty( $argv['key'] ) ) {
-			$key = $argv['key'];
-		} else if ( $key === null || $key === false ) {
-			if ( empty( $argv[2] ) ) {
-				wfDebugLog( 'DataTransclusion', "missing 'key' argument\n" );
-				return DataTransclusionHandler::errorMessage( 'datatransclusion-missing-argument-key', $asHTML ); 
-			} else {
-				$key = $argv[2];
-			}
-		}
-
 		// find out how to render the record
-		if ( empty( $argv['template'] ) ) {
-			if ( empty( $argv[3] ) ) {
+		if ( !empty( $argv['template'] ) ) {
+			$template = $argv['template'];
+		} else if ( $template === null || $template === false ) {
+			if ( empty( $argv[0] ) ) {
 				wfDebugLog( 'DataTransclusion', "missing 'template' argument\n" );
 				return DataTransclusionHandler::errorMessage( 'datatransclusion-missing-argument-template', $asHTML ); 
 			} else {
-				$template = $argv[3];
+				$template = $argv[0];
 			}
-		} else {
-			$template = $argv['template'];
+		} 
+
+		// find key
+		$by = false;
+		$key = false;
+		$keyFields = $source->getKeyFields();
+		foreach ( $keyFields as $k ) {
+			if ( isset( $argv[ $k ] ) ) {
+				$by = $k;
+				$key = $argv[ $k ];
+				break; //XXX: could keep running and complain about multiple keys
+			}
+		}
+
+		if ( !$by ) {
+			global $wgContLang;
+			wfDebugLog( 'DataTransclusion', "no key specified\n" );
+			return DataTransclusionHandler::errorMessage( 'datatransclusion-missing-key', $asHTML, $sourceName, 
+				$wgContLang->commaList( $keyFields ), count( $keyFields ) ); 
+		}
+
+		// collect options
+		$options = array();
+		$optionNames = $source->getOptionNames();
+		if ( $optionNames ) {
+			foreach ( $optionNames as $n ) {
+				if ( isset( $argv[ $n ] ) ) {
+					$options[ $n ] = $argv[ $n ];
+				}
+			}
 		}
 
 		// load the record
-		$record = $source->fetchRecord( $by, $key );
+		$record = $source->fetchRecord( $by, $key, $options );
 		if ( empty( $record ) ) {
 			wfDebugLog( 'DataTransclusion', "no record found matching $by=$key in $sourceName\n" );
 			return DataTransclusionHandler::errorMessage( 'datatransclusion-record-not-found', $asHTML, $sourceName, $by, $key ); 
@@ -157,7 +171,7 @@ class DataTransclusionHandler {
 
 		$handler = new DataTransclusionHandler( $parser, $source, $t, $templateText );
 
-		$record = $handler->normalizeRecord( $record );
+		$record = $handler->normalizeRecord( $record, $argv );
 		$text = $handler->render( $record );
 
 		if ( $text === false ) {
@@ -233,20 +247,8 @@ class DataTransclusionHandler {
 		return $text;
 	}
 
-	function normalizeRecord( $record ) {
+	function normalizeRecord( $record, $args ) {
 		$rec = array();
-
-		// keep record fields, add missing values
-		$fields = $this->source->getFieldNames();
-		foreach ( $fields as $f ) {
-			if ( isset( $record[ $f ] ) ) {
-				$v = $record[ $f ];
-			} else {
-				$v = '';
-			}
-
-			$rec[ $f ] = $this->sanitizeValue( $v ); 
-		}
 
 		// add source meta info, so we can render links back to the source, 
 		// provide license info, etc
@@ -256,7 +258,30 @@ class DataTransclusionHandler {
 				continue;
 			}
 
-			$rec[ "source.$f" ] = $this->sanitizeValue( $v );
+			$rec[ $f ] = $this->sanitizeValue( $v );
+		}
+
+		if ( $args ) {
+			// add arguments
+			foreach ( $args as $f => $v ) {
+				if ( is_array( $v ) || is_object( $v ) || is_resource( $v ) ) {
+					continue;
+				}
+
+				$rec[ $f ] = $this->sanitizeValue( $v );
+			}
+		}
+
+		// copy record fields, add missing values
+		$fields = $this->source->getFieldNames();
+		foreach ( $fields as $f ) {
+			if ( isset( $record[ $f ] ) ) {
+				$v = $record[ $f ];
+			} else {
+				$v = '';
+			}
+
+			$rec[ $f ] = $this->sanitizeValue( $v ); 
 		}
 
 		return $rec;
@@ -315,7 +340,7 @@ class DataTransclusionHandler {
 				throw new MWException( "failed to instantiate \$wgDataTransclusionSources['$name'] as new $c." );
 			}
 
-			wfDebugLog( 'DataTransclusion', "created instance of $c as data-source \"$name\"\n" );
+			wfDebugLog( 'DataTransclusion', "created instance of $c as source \"$name\"\n" );
 			$source = $obj;
 
 			if ( isset( $spec[ 'cache' ] ) ) { // check if a cache should be used
@@ -326,7 +351,7 @@ class DataTransclusionHandler {
 
 				$source = new CachingDataTransclusionSource( $obj, $c, @$spec['cache-duration'] ); // apply caching wrapper
 
-				wfDebugLog( 'DataTransclusion', "wrapped data-source \"$name\" in an instance of CachingDataTransclusionSource\n" );
+				wfDebugLog( 'DataTransclusion', "wrapped source \"$name\" in an instance of CachingDataTransclusionSource\n" );
 			}
 
 			$wgDataTransclusionSources[ $name ] = $source; // replace spec array by actual object, for later re-use
