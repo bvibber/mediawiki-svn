@@ -809,27 +809,31 @@ if( typeof preMwEmbedConfig == 'undefined') {
 	* @param {Function} callback Function called with api parser output 
 	*/
 	mw.parseWikiText = function( wikitext, title, callback ) {	
-		$j.ajax({
-			type: 'POST',
-			url: mw.getLocalApiUrl(),
-			// Give the wiki 60 seconds to parse the wiki-text
-			timeout : 60000,
-			data: {
-				'action': 'parse',
-				'format': 'json',
-				'title' : title,
-				'text': wikitext				
-			},
-			dataType: 'json',
-			success: function( data ) {
-				// xxx should handle other failures				 
-				callback( data.parse.text['*'] );
-			},
-			error: function( XMLHttpRequest, textStatus, errorThrown ){
-				// xxx should better handle failures		
-				mw.log( "Error: mw.parseWikiText:" + textStatus );
-				callback(  "Error: failed to parse wikitext " ); 
-			}			 
+		mw.log("mw.parseWikiText text length: " + wikitext.length + ' title context: ' + title );
+		mw.load( 'JSON', function(){
+			$j.ajax({
+				type: 'POST',
+				url: mw.getLocalApiUrl(),
+				// Give the wiki 60 seconds to parse the wiki-text
+				timeout : 60000,
+				data: {
+					'action': 'parse',
+					'format': 'json',
+					'title' : title,
+					'text': wikitext				
+				},
+				dataType: 'text',
+				success: function( data ) {
+					var jsonData = JSON.parse( data ) ;
+					// xxx should handle other failures				 
+					callback( jsonData.parse.text['*'] );
+				},
+				error: function( XMLHttpRequest, textStatus, errorThrown ){
+					// xxx should better handle failures		
+					mw.log( "Error: mw.parseWikiText:" + textStatus );
+					callback(  "Error: failed to parse wikitext " ); 
+				}			 
+			});
 		});
 	}
 	
