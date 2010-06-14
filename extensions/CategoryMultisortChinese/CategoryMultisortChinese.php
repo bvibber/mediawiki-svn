@@ -39,6 +39,10 @@ function efCategoryMultisortChineseInit() {
 new CategoryMultisortChineseHooks();
 
 $wgCategoryMultisortSortkeySettings['mandarin-pinyin'] = array();
+$wgCategoryMultisortSortkeySettings['mandarin-bopomofo'] = array();
+$wgCategoryMultisortSortkeySettings['mandarin-wadegiles'] = array();
+$wgCategoryMultisortSortkeySettings['mandarin-mps2'] = array();
+$wgCategoryMultisortSortkeySettings['mandarin-tongyong'] = array();
 $wgCategoryMultisortSortkeySettings['cantonese-jyutping'] = array();
 $wgCategoryMultisortSortkeySettings['stroke'] = array( 'first' => 3, 'type' => 'int' );
 $wgCategoryMultisortSortkeySettings['radical'] = array();

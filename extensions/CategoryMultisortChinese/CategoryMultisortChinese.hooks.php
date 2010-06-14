@@ -42,9 +42,13 @@ class CategoryMultisortChineseHooks {
 		$title = $parser->getTitle();
 		$text = $title->getText();
 		
-		$this->onCategoryMultisortSortkeys_setDefaultSortkey( $categoryMultisorts, 'mandarin-pinyin',
-			$this->onCategoryMultisortSortkeys_buildMandarinPinyinSortkey( $data, $text )
-		);
+		$md = $this->onCategoryMultisortSortkeys_buildMandarinSortkeys( $data, $text );
+		
+		foreach ( $md as $mdname => $mdvalue ) {
+		    $this->onCategoryMultisortSortkeys_setDefaultSortkey(
+			    $categoryMultisorts, "mandarin-$mdname", $mdvalue
+		    );
+		}
 		$this->onCategoryMultisortSortkeys_setDefaultSortkey( $categoryMultisorts, 'cantonese-jyutping',
 			$this->onCategoryMultisortSortkeys_buildCantoneseJyutpingSortkey( $data, $text )
 		);
@@ -111,17 +115,31 @@ class CategoryMultisortChineseHooks {
 		return $result;
 	}
 	
-	function onCategoryMultisortSortkeys_buildMandarinPinyinSortkey( $data, $str ) {
-		$result = '';
+	function onCategoryMultisortSortkeys_buildMandarinSortkeys( $data, $str ) {
+		$results = array(
+		    'pinyin' => '', 'bopomofo' => '', 'wadegiles' => '', 'mps2' => '', 'tongyong' => ''
+		);
 		foreach ( $this->onCategoryMultisortSortkeys_splitString( $str ) as $ch ) {
 			# One UTF-8 character can have 4 bytes max.
 			$c = str_pad( $ch, 4 );
 			$chcp = utf8ToCodepoint( $ch );
 			# One Mandarin pinyin entry can have 7 bytes max.
-			$mdp = str_pad( array_key_exists( $chcp, $data->mandarin ) ? $data->mandarin[$chcp] : '', 7 );
-			$result .= $mdp . $c;
+			$mdpx = array_key_exists( $chcp, $data->mandarin ) ? $data->mandarin[$chcp] : '';
+			$mdp = str_pad( $mdpx, 7 );
+			$mdo = array_key_exists( $mdpx, $data->systems ) ? $data->systems[$mdpx] : array('', '', '', '');
+			list( $mdb, $mdw, $md2, $mdt ) = $mdo;
+			# Other max lengths
+			$mdb = str_pad( $mdb, 10 );
+			$mdw = str_pad( $mdw, 8 );
+			$md2 = str_pad( $md2, 7 );
+			$mdt = str_pad( $mdt, 7 );
+			$results['pinyin'] .= $mdp . $c;
+			$results['bopomofo'] .= $mdb . $c;
+			$results['wadegiles'] .= $mdw . $c;
+			$results['mps2'] .= $md2 . $c;
+			$results['tongyong'] .= $mdt . $c;
 		}
-		return $result;
+		return $results;
 	}
 	
 	function onCategoryMultisortSortkeys_buildCantoneseJyutpingSortkey( $data, $str ) {
