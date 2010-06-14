@@ -45,6 +45,7 @@ $.wikiEditor = {
 			// jQuery minimums
 			'safari': [['>=', 3]],
 			'chrome': [['>=', 3]],
+			'netscape': [['>=', 9]],
 			'blackberry': false,
 			'ipod': false,
 			'iphone': false
@@ -60,6 +61,7 @@ $.wikiEditor = {
 			// jQuery minimums
 			'safari': [['>=', 3]],
 			'chrome': [['>=', 3]],
+			'netscape': [['>=', 9]],
 			'blackberry': false,
 			'ipod': false,
 			'iphone': false

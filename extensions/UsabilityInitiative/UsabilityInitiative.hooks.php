@@ -53,16 +53,8 @@ class UsabilityInitiativeHooks {
 		'base_sets' => array(
 			'raw' => array(
 				// Common UsabilityInitiative funtions
-				array( 'src' => 'js/usability.js', 'version' => 2 ),
-
-				// These scripts can be pulled from core once the js2 is merged
-				array( 'src' => 'js/js2stopgap/ui.core.js', 'version' => 1 ),
-				array( 'src' => 'js/js2stopgap/ui.datepicker.js', 'version' => 1 ),
-				array( 'src' => 'js/js2stopgap/ui.dialog.js', 'version' => 1 ),
-				array( 'src' => 'js/js2stopgap/ui.draggable.js', 'version' => 1 ),
-				array( 'src' => 'js/js2stopgap/ui.resizable.js', 'version' => 1 ),
-				array( 'src' => 'js/js2stopgap/ui.tabs.js', 'version' => 1 ),
-
+				array( 'src' => 'js/usability.js', 'version' => 3 ),
+				
 				// Core functionality of extension scripts
 				array( 'src' => 'js/plugins/jquery.async.js', 'version' => 3 ),
 				array( 'src' => 'js/plugins/jquery.autoEllipsis.js', 'version' => 12 ),
@@ -74,7 +66,7 @@ class UsabilityInitiativeHooks {
 				array( 'src' => 'js/plugins/jquery.expandableField.js', 'version' => 17 ),
 				array( 'src' => 'js/plugins/jquery.suggestions.js', 'version' => 22 ),
 				array( 'src' => 'js/plugins/jquery.textSelection.js', 'version' => 36 ),
-				array( 'src' => 'js/plugins/jquery.wikiEditor.js', 'version' => 193 ),
+				array( 'src' => 'js/plugins/jquery.wikiEditor.js', 'version' => 194 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.highlight.js', 'version' => 53 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.toolbar.js', 'version' => 68 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.dialogs.js', 'version' => 26 ),
@@ -88,10 +80,10 @@ class UsabilityInitiativeHooks {
 				array( 'src' => 'js/thirdparty/contentCollector.js', 'version' => 2 ),
 			),
 			'combined' => array(
-				array( 'src' => 'js/plugins.combined.js', 'version' => 426 ),
+				array( 'src' => 'js/plugins.combined.js', 'version' => 428 ),
 			),
 			'minified' => array(
-				array( 'src' => 'js/plugins.combined.min.js', 'version' => 427 ),
+				array( 'src' => 'js/plugins.combined.min.js', 'version' => 429 ),
 			),
 		),
 	);
