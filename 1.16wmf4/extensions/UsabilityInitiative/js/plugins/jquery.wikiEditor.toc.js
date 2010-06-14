@@ -63,6 +63,7 @@ evt: {
 				var context = event.data.context;
 				$.wikiEditor.modules.toc.fn.unhighlight( context );
 			});
+		$.wikiEditor.modules.toc.fn.improveUI();
 		$.wikiEditor.modules.toc.evt.resize( context );
 	},
 	resize: function( context, event ) {
@@ -640,18 +641,19 @@ fn: {
 				{ 'position': 'right', 'tooltip': true, 'restoreText': true }
 			);
 		}
+	},
+	improveUI: function() {
+		/*
+		 * Extending resizable to allow west resizing without altering the left position attribute
+		 */
+		$.ui.plugin.add( "resizable", "preventPositionLeftChange", {
+			resize: function( event, ui ) {
+				$( this ).data( "resizable" ).position.left = 0;
+			}
+		} );
 	}
 }
 
 };
 
-/*
- * Extending resizable to allow west resizing without altering the left position attribute
- */
-$.ui.plugin.add( "resizable", "preventPositionLeftChange", {
-	resize: function( event, ui ) {
-		$( this ).data( "resizable" ).position.left = 0;
-	}
-} );
- 
 } ) ( jQuery );

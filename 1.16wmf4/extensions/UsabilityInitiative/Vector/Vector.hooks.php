@@ -20,10 +20,10 @@ class VectorHooks {
 			array( 'src' => 'Modules/SimpleSearch/SimpleSearch.js', 'version' => 15 ),
 		),
 		'combined' => array(
-			array( 'src' => 'Vector.combined.js', 'version' => 47 ),
+			array( 'src' => 'Vector.combined.js', 'version' => 52 ),
 		),
 		'minified' => array(
-			array( 'src' => 'Vector.combined.min.js', 'version' => 47 ),
+			array( 'src' => 'Vector.combined.min.js', 'version' => 52 ),
 		),
 	);
 	static $modules = array(

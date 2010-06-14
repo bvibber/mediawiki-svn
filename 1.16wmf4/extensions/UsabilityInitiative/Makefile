@@ -9,12 +9,14 @@ CSS := \
 	css/wikiEditor.dialogs.css\
 	css/wikiEditor.toolbar.css\
 
-PLUGINS := \
-	js/usability.js\
+JUI := \
 	js/js2stopgap/ui.core.js\
 	js/js2stopgap/ui.dialog.js\
 	js/js2stopgap/ui.draggable.js\
-	js/js2stopgap/ui.resizable.js\
+	js/js2stopgap/ui.resizable.js
+
+PLUGINS := \
+	js/usability.js\
 	js/plugins/jquery.async.js\
 	js/plugins/jquery.autoEllipsis.js\
 	js/plugins/jquery.browser.js\
@@ -42,12 +44,22 @@ all: \
 	css/combined.min.css\
 	js/plugins.combined.js\
 	js/plugins.combined.min.js\
+	$(PLUGINS)\
+	js/js2stopgap/jui.combined.js\
+	js/js2stopgap/jui.combined.min.js\
+	$(JUI)
+
+WIKIEDITOR_HOOKS := \
+	$(WIKIEDITOR_MODULES)\
 	WikiEditor/WikiEditor.combined.js\
 	WikiEditor/WikiEditor.combined.min.js\
 	Vector/Vector.combined.js\
 	Vector/Vector.combined.min.js
 
 # JavaScript Combination
+
+js/js2stopgap/jui.combined.js: $(JUI)
+	cat $(JUI) > js/js2stopgap/jui.combined.js
 
 js/plugins.combined.js: $(PLUGINS)
 	cat $(PLUGINS) > js/plugins.combined.js
@@ -59,6 +71,10 @@ Vector/Vector.combined.js: $(VECTOR_MODULES)
 	cat $(VECTOR_MODULES) > Vector/Vector.combined.js
 
 # JavaScript Minification
+
+js/js2stopgap/jui.combined.min.js: js/js2stopgap/jui.combined.js jsmin
+	if [ -e ./jsmin ]; then ./jsmin < js/js2stopgap/jui.combined.js > js/js2stopgap/jui.combined.min.js;\
+	else jsmin < js/js2stopgap/jui.combined.js > js/js2stopgap/jui.combined.min.js; fi
 
 js/plugins.combined.min.js : js/plugins.combined.js jsmin 
 	if [ -e ./jsmin ]; then ./jsmin < js/plugins.combined.js > js/plugins.combined.min.js;\
