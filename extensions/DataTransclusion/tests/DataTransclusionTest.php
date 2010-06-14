@@ -25,7 +25,7 @@ error_reporting( E_ALL );
 
 class DataTransclusionTest extends PHPUnit_Framework_TestCase {
 	protected static $templates = array(
-		'Test' => "'''{{{id}}}'''|{{{name}}}|{{{info}}}",
+		'Test' => "'''{{{id}}}'''|{{{name}}}|{{{info}}}|[{{{url}}} link]|[{{{evil}}} click me]",
 	);
 
 	static function getTemplate( $title, $parser ) {
@@ -241,12 +241,12 @@ class DataTransclusionTest extends PHPUnit_Framework_TestCase {
 	function testHandleRecordFunction() {
 		global $wgDataTransclusionSources;
 
-		$data[] = array( "name" => "foo", "id" => "3", "info" => 'test&X' );
+		$data[] = array( "name" => "foo", "id" => "3", "info" => '<test>&[[X]]', "url" => 'http://test.org/', "evil" => 'javascript:alert("evil")' );
 		$spec = array(
 			'class' => 'FakeDataTransclusionSource',
 			'data' => $data,
 			'keyFields' => 'name,id',
-			'fieldNames' => 'id,name,info',
+			'fieldNames' => 'id,name,info,url,evil',
 			'defaultKey' => 'id'
 		);
 		
@@ -260,8 +260,8 @@ class DataTransclusionTest extends PHPUnit_Framework_TestCase {
 		$text = 'xx {{#record:FOO|3|Test}} xx';
 		$wgParser->parse( $text, $title, $options );
 
-		$html = $wgParser->getOutput()->getText();      
-		$this->assertEquals( $html, "<p>xx <b>3</b>|foo|test&amp;X xx\n</p>" ); // XXX: should be more lenient wrt whitespace
+		$html = $wgParser->getOutput()->getText();   
+		$this->assertEquals( $html, '<p>xx <b>3</b>|foo|&lt;test&gt;&amp;&#91;&#91;X&#93;&#93;|<a href="http://test.org/" class="external text" rel="nofollow">link</a>|[javascript:alert("evil") click me] xx'."\n".'</p>' ); // XXX: should be more lenient wrt whitespace
 
 		$templates = $wgParser->getOutput()->getTemplates();
 		$this->assertTrue( isset( $templates[ NS_TEMPLATE ]['Test'] ) ); 
@@ -270,12 +270,12 @@ class DataTransclusionTest extends PHPUnit_Framework_TestCase {
 	function testHandleRecordTag() {
 		global $wgDataTransclusionSources;
 
-		$data[] = array( "name" => "foo", "id" => "3", "info" => 'test&X' );
+		$data[] = array( "name" => "foo", "id" => "3", "info" => '<test>&[[X]]', "url" => 'http://test.org/', "evil" => 'javascript:alert("evil")' );
 		$spec = array(
 			'class' => 'FakeDataTransclusionSource',
 			'data' => $data,
 			'keyFields' => 'name,id',
-			'fieldNames' => 'id,name,info',
+			'fieldNames' => 'id,name,info,url,evil',
 			'defaultKey' => 'id'
 		);
 		
@@ -290,8 +290,7 @@ class DataTransclusionTest extends PHPUnit_Framework_TestCase {
 		$wgParser->parse( $text, $title, $options );
 
 		$html = $wgParser->getOutput()->getText();      
-		$this->assertEquals( $html, "<p>xx <b>3</b>|foo|test&amp;X xx\n</p>" ); // XXX: should be more lenient wrt whitespace
-
+		$this->assertEquals( $html, '<p>xx <b>3</b>|foo|&lt;test&gt;&amp;&#91;&#91;X&#93;&#93;|<a href="http://test.org/" class="external text" rel="nofollow">link</a>|[javascript:alert("evil") click me] xx'."\n".'</p>' ); // XXX: should be more lenient wrt whitespace
 		$templates = $wgParser->getOutput()->getTemplates();
 		$this->assertTrue( isset( $templates[ NS_TEMPLATE ]['Test'] ) ); 
 	}
