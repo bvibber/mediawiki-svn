@@ -149,10 +149,11 @@ Vector/Vector.hooks.php: $(VECTOR_HOOKS)
 #  Use sed to replace the line for that file with '+1' appended to the version.
 #  Note that $${basefile//\//\\/} expands in the shell to $basefile with all slashes escaped.
 # End for
-# For each group of summing numbers inside the target file, use bc to calculate the sum and replace with sed.
+# For each group of summing numbers inside the target file, use shell arithmetic expansion to calculate the sum.
+# Replace all numbers at once with sed. The replacements are preceded have a leading ; an empty expression about which sed doesn't care.
 %.hooks.php: $(WIKIEDITOR_HOOKS)
-	for file in $?; do basefile="$${file#$(shell echo $* | sed "s/\([^\/]*\/\).*/\\1/")}"; sed -i -e "s/\(.*'src' => '$${basefile//\//\\/}', 'version' => \)\([0-9+]*\)\(.*\)/\\1\\2+1\\3/" $@; \
-											for i in $$(grep --only-matching -P " ([0-9]+(\+[0-9]))+ " $@); do sed -i -e "s/ $$i / $$(($$i)) /" $@; done; done 
+	for file in $?; do basefile="$${file#$(shell echo $* | sed "s/\([^\/]*\/\).*/\\1/")}"; sed -e "s/\(.*'src' => '$${basefile//\//\\/}', 'version' => \)\([0-9+]*\)\(.*\)/\\1\\2+1\\3/" $@ > $@.counter; done; \
+											RE=""; for i in $$(grep --only-matching -P " ([0-9]+(\+[0-9])+) " $@.counter); do RE="$$RE;s/ $$i / $$(($$i)) /"; done; sed -e "$$RE" $@.counter > $@ && rm $@.counter
 
 # Actions
 
