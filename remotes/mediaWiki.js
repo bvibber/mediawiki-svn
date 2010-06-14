@@ -4,7 +4,7 @@
  */
 var urlparts = getRemoteEmbedPath();
 var mwEmbedHostPath = urlparts[0];
-var mwRemoteVersion = 'r132';
+var mwRemoteVersion = 'r133';
 var mwUseScriptLoader = true;
 
 // Log the mwRemote version makes it easy to debug cache issues
@@ -85,6 +85,8 @@ function doPageSpecificRewrite() {
 	if ( wgAction == 'edit' || wgAction == 'submit' ) {
 		loadMwEmbed( [ 
 			'mw.RemoteSearchDriver',
+			'mw.ClipEdit',
+		 	'mw.style.ClipEdit',
 			'$j.fn.textSelection', 
 			'$j.ui', 
 			'$j.ui.sortable' 
@@ -230,8 +232,7 @@ function mwSetPageToLoading(){
 function mwLoadPlayer( callback ){
 
 	// The jsPlayerRequest includes both javascript and style sheets for the embedPlayer 
-	var jsPlayerRequest = [	 
-		'mw.style.mwCommon',	                       
+	var jsPlayerRequest = [	                    
 		'mw.EmbedPlayer', 
 		'mw.style.EmbedPlayer',
 		'$j.ui', 
@@ -521,7 +522,7 @@ function loadMwEmbed( classSet, callback ) {
 			}	
 			// Add Core mwEmbed lib ( if not already defined )
 			if( typeof MW_EMBED_VERSION == 'undefined' ){ 
-				rurl += coma + 'mwEmbed';
+				rurl += coma + 'mwEmbed,mw.style.mwCommon';
 				coma = ',';
 			}
 								
