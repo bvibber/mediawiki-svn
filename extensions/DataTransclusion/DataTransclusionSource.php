@@ -54,7 +54,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  * Lists may be given as arrays or strings with items separated by [,;|].
  */
 class DataTransclusionSource {
-	static function splitList( $s ) {
+	static function splitList( $s, $chars = ',;|' ) {
 		if ( $s === null || $s === false ) {
 			return $s;
 		}
@@ -63,7 +63,7 @@ class DataTransclusionSource {
 			return $s;
 		}
 
-		$list = preg_split( '!\s*[,;|/]\s*!', $s );
+		$list = preg_split( '!\s*[' . $chars . ']\s*!', $s );
 
 		return $list;
 	}

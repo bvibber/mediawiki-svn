@@ -403,7 +403,7 @@ class DataTransclusionTest extends PHPUnit_Framework_TestCase {
 			'url' => 'http://acme.com/{name}',
 			'dataFormat' => 'php',
 			'dataPath' => 'response/content/@0',
-			'valuePath' => 'value',
+			'fieldPathes' => array( 'id' => 'id/value', 'name' => 'name/value', 'info' => 'info/value',  ),
 			'errorPath' => 'response/error',
 		);
 
@@ -420,7 +420,7 @@ class DataTransclusionTest extends PHPUnit_Framework_TestCase {
 
 		$rec = array( 
 			"name" => array( 'type' => 'string', 'value' => "foo" ), 
-			"id" => array( 'type' => 'int', 'value' => 3 ),  
+			"id" => 3,  
 			"info" => array( 'type' => 'string', 'value' => "test X" ), 
 		);
 
@@ -437,6 +437,9 @@ class DataTransclusionTest extends PHPUnit_Framework_TestCase {
 
 		$this->assertEquals( $err, 'test error' );
 		$this->assertEquals( $rec['id'], 3 );
+
+		//TODO: test extractField, with fancy snytax!
+		//TODO: test flattenRecord
 
 		////////////////////////
 		$spec['url'] = 'file://' . dirname( realpath( __FILE__ ) ) . '/test-data-name-{name}.pser';
