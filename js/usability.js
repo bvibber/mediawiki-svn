@@ -12,10 +12,23 @@ mw.usability = {
 	'messages': {}
 }
 /**
- * This may eventually load something instead of just calling the callback.
+ * Load jQuery UI if requested, otherwise just execute the callback immediately.
+ * This is a dirty hack used to work around a bug in older versions of Netscape,
+ * which crash when trying to parse jQuery UI
  */
 mw.usability.load = function( deps, callback ) {
-	callback();
+	// If $j.ui is in deps, load jQuery UI
+	var needJUI = false;
+	for ( var i = 0; i < deps.length && !needJUI; i++ ) {
+		if ( deps[i] == '$j.ui' ) {
+			needJUI = true;
+		}
+	}
+	if ( needJUI && typeof $j.ui == 'undefined' ) {
+		$j.getScript( wgScriptPath + '/extensions/UsabilityInitiative/js/js2stopgap/jui.combined.min.js', callback );
+	} else {
+		callback();
+	}
 };
 /**
  * Add messages to a local message table
