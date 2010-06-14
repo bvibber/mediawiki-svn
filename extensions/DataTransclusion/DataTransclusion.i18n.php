@@ -39,6 +39,7 @@ First or "template" argument is required.', #FUZZ!
 );
 
 /** Message documentation (Message documentation)
+ * @author McDutchie
  * @author Siebrand
  */
 $messages['qqq'] = array(
@@ -48,8 +49,7 @@ $messages['qqq'] = array(
 * $1 is the name of the data source.',
 	'datatransclusion-missing-key' => 'Issued if no argument matches an entry in the list of key field. Parameters:
 * $1 is the name of the data source
-* $2 is a list of all valid keys for this data source
-* $3 is the number of valid keys for this data source.',
+* $2 is a list of all valid keys for this data source',
 	'datatransclusion-bad-argument-by' => 'Issued if a bad value was specified for the "by" argument, that is, an unknown key field was selected. Parameters:
 * $1 is the name of the data source
 * $2 is the value of the by argument
@@ -211,15 +211,18 @@ Necesítase o primeiro argumento ou "modelo".',
 $messages['hsb'] = array(
 	'datatransclusion-desc' => 'Importowanje a předstajenje datowych sadźbow z eksternych datowych žórłow',
 	'datatransclusion-missing-source' => 'Žane datowe žórło podate.
-Prěni argument je trěbny.',
+Druhi abo "žórłowy" argument je trěbny.',
 	'datatransclusion-unknown-source' => 'Wopačne datowe žórło podate.
 $1 je njeznaty.',
+	'datatransclusion-missing-key' => 'Žadyn kluč podaty.
+$2 su płaćiwe kluče w datowym žórle $1.',
 	'datatransclusion-bad-argument-by' => 'Wopačne klučowe polo podate.
-$2 njeje klučowe polo w datowym žórle $1, płaćiwe kluče su: $3',
+$2 njeje klučowe polo w datowym žórle "$1".
+{{PLURAL:$4|Płaćiwy kluč je|Płaćiwej klučej stej|Płaćiwe kluče su|Płaćiwe kluče su}}: $3',
 	'datatransclusion-missing-argument-key' => 'Žana klučowa hódnota podata.
 Druhi abo "klučowy" argument je trěbny.',
 	'datatransclusion-missing-argument-template' => 'Žana předłoha podata.
-Třeći abo "předłohowy" argument je trěbny.',
+Prěni abo "předłohowy" argument je trěbny.',
 	'datatransclusion-record-not-found' => 'W datowym žórle $1 njeje so žana datowa sadźba namakała, kotraž $2=$3 wotpowěduje.',
 	'datatransclusion-bad-template-name' => 'Wopačne mjeno předłohi: $1.',
 	'datatransclusion-unknown-template' => '<nowiki>{{</nowiki>[[{{ns:template}}:$1|$1]]<nowiki>}}</nowiki> njeeksistuje.',
@@ -235,7 +238,7 @@ Un secunde parametro "source" es obligatori.',
 	'datatransclusion-unknown-source' => 'Un fonte de datos invalide ha essite specificate.
 $1 non es cognoscite.',
 	'datatransclusion-missing-key' => 'Nulle clave specificate.
-$2 es le {{PLURAL:$3|clave|claves}} valide in le fonte de datos $1.',
+$2 es le claves valide in le fonte de datos $1.',
 	'datatransclusion-bad-argument-by' => 'Un campo de clave invalide ha essite specificate.
 "$2" non es un campo de clave in le fonte de datos "$1".
 Le {{PLURAL:$4|clave|claves}} valide es: $3.',
@@ -283,16 +286,18 @@ $2 се важечки клучеви во податотечниот извор
 $messages['nl'] = array(
 	'datatransclusion-desc' => 'Importeren en renderen van gegevens uit externe bronnen',
 	'datatransclusion-missing-source' => 'Er is geen gegevensbron aangegeven.
-Het eerste argument is verplicht.',
+Een tweede of "bron"-argument is vereist.',
 	'datatransclusion-unknown-source' => 'Er is een ongeldige gegevensbron aangegeven.
 $1 is niet bekend.',
+	'datatransclusion-missing-key' => 'Geen sleutel aangegeven.
+$2 zijn geldige sleutels in gegevensbron $1.',
 	'datatransclusion-bad-argument-by' => 'Ongeldig sleutelveld aangegeven.
 "$2" is geen sleutelveld in gegevensbron "$1".
 Geldige {{PLURAL:$4|sleutel is|sleutels zijn}}: $3.',
 	'datatransclusion-missing-argument-key' => 'Er is geen sleutelwaarde aangegeven.
 Een tweede argument of "sleutel" is verplicht.',
 	'datatransclusion-missing-argument-template' => 'Geen sjabloon aangegeven.
-Een derde argument of "template" is verplicht.',
+Een eerste argument of "template"-argument is verplicht.',
 	'datatransclusion-record-not-found' => 'Er is geen overeenkomstig gegeven $2 = $3 gevonden in de gegevensbron $1.',
 	'datatransclusion-bad-template-name' => 'Ongeldige sjabloonnaam: $1.',
 	'datatransclusion-unknown-template' => '<nowiki>{{</nowiki>[[{{ns:template}}:$1|$1]]<nowiki>}}</nowiki>  bestaat niet.',

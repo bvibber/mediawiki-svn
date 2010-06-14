@@ -139,6 +139,12 @@ $messages['gl'] = array(
  */
 $messages['hsb'] = array(
 	'categorymultisortchinese-desc' => 'Dowola, kategorije z rozdźělnymi sortěrowanskimi klučemi specielnje za chinske pisma zwobraznić',
+	'categorymultisort-sortkey-name-mandarin-pinyin' => 'Mandarinšćina: Pinyin',
+	'categorymultisort-sortkey-name-mandarin-bopomofo' => 'Mandarinšćina: Bopomofo',
+	'categorymultisort-sortkey-name-mandarin-wadegiles' => 'Mandarinšćina: Wade-Giles',
+	'categorymultisort-sortkey-name-mandarin-mps2' => 'Mandarinšćina: MPS II',
+	'categorymultisort-sortkey-name-mandarin-tongyong' => 'Mandarinšćina: Tongyong',
+	'categorymultisort-sortkey-name-cantonese-jyutping' => 'Kantonšćina: Jyutping',
 	'categorymultisort-sortkey-name-stroke' => 'Smužka',
 	'categorymultisort-sortkey-name-stroke-simplified' => 'Smužka: Zjednorjene',
 	'categorymultisort-sortkey-name-stroke-traditional' => 'Smužka: Tradicionelne',
@@ -202,6 +208,12 @@ $messages['mk'] = array(
  */
 $messages['nl'] = array(
 	'categorymultisortchinese-desc' => 'Maakt het mogelijk categorieën te bekijken met verschillende sorteerwijzen specifiek voor Chinese schriften',
+	'categorymultisort-sortkey-name-mandarin-pinyin' => 'Mandarijn: Pinyin',
+	'categorymultisort-sortkey-name-mandarin-bopomofo' => 'Mandarijn: Bopomofo',
+	'categorymultisort-sortkey-name-mandarin-wadegiles' => 'Mandarijn: Wade-Giles',
+	'categorymultisort-sortkey-name-mandarin-mps2' => 'Mandarijn: MPS II',
+	'categorymultisort-sortkey-name-mandarin-tongyong' => 'Mandarijn: Tongyong',
+	'categorymultisort-sortkey-name-cantonese-jyutping' => 'Kantonees: Jyutping',
 	'categorymultisort-sortkey-name-stroke' => 'Streep',
 	'categorymultisort-sortkey-name-stroke-simplified' => 'Streep: Vereenvoudigd',
 	'categorymultisort-sortkey-name-stroke-traditional' => 'Streep: Traditioneel',
