@@ -1,6 +1,6 @@
 <?php
 /**
- * DataTransclusion Source base class
+ * DataTransclusion Source implementation
  *
  * @file
  * @ingroup Extensions

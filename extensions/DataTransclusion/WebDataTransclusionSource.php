@@ -1,6 +1,6 @@
 <?php
 /**
- * DataTransclusion Source base class
+ * DataTransclusion Source implementation
  *
  * @file
  * @ingroup Extensions
@@ -252,49 +252,25 @@ class WebDataTransclusionSource extends DataTransclusionSource {
 
 		$p = array_shift( $path );
 
-		if ( strpos( $p, '|' ) ) { //alternatives
-			$alternatives = explode( '|', $p );
-			foreach ( $alternatives as $a ) {
-				$ap = array_merge( array( $a ), $path );
-				$v = $this->extractField( $data, $ap );
+		if ( is_string( $p ) && preg_match( '/^(@)?(\d+)$/', $p, $m ) ) { //numberic index
+			$i = (int)$m[2];
 
-				if ( $v !== null && $v !== false ) {
-					return $v;
-				}
+			if ( $m[1] ) { //meta-index
+				$k = array_keys( $data );
+				$p = $k[ $i ];
 			}
-		} else if ( is_string( $p ) && preg_match( '/^\(([^\w\d])\)$/', $p, $m ) ) { //concat all
-			$s = "";
-			foreach ( $data as $d ) {
-				$v = $this->extractField( $d, $path );
+		} 
 
-				if ( $v !== null && $v !== false ) {
-					if ( $s != "" ) $s .= $m[1];
-					$s .= $v;
-				}
-			}
+		if ( !isset( $data[ $p ] ) ) {
+			return false;
+		}
 
-			return $s;
+		$next = $data[ $p ];
+
+		if ( $next && $path ) {
+			return $this->extractField( $next, $path );
 		} else {
-			if ( is_string( $p ) && preg_match( '/^(@)?(\d+)$/', $p, $m ) ) { //numberic index
-				$i = (int)$m[2];
-
-				if ( $m[1] ) { //meta-index
-					$k = array_keys( $data );
-					$p = $k[ $i ];
-				}
-			} 
-
-			if ( !isset( $data[ $p ] ) ) {
-				return false;
-			}
-
-			$next = $data[ $p ];
-
-			if ( $next && $path ) {
-				return $this->extractField( $next, $path );
-			} else {
-				return $next;
-			}
+			return $next;
 		}
 
 		//TODO: named components. separator??
