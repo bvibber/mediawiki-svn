@@ -11,8 +11,8 @@ $messages = array();
 /** English */
 $messages['en'] = array(
 	'categorymultisortchinese-desc' => 'Allowing categories to be viewed with different sortkeys specific to Chinese scripts',
-	'categorymultisort-sortkey-name-mandarin' => 'Mandarin',
-	'categorymultisort-sortkey-name-cantonese' => 'Cantonese',
+	'categorymultisort-sortkey-name-mandarin-pinyin' => 'Mandarin: Pinyin',
+	'categorymultisort-sortkey-name-cantonese-jyutping' => 'Cantonese: Jyutping',
 	'categorymultisort-sortkey-name-stroke' => 'Stroke',
 	'categorymultisort-sortkey-name-stroke-s' => 'Stroke: Simplified',
 	'categorymultisort-sortkey-name-stroke-t' => 'Stroke: Traditional',
@@ -28,8 +28,6 @@ $messages['en'] = array(
  */
 $messages['be-tarask'] = array(
 	'categorymultisortchinese-desc' => 'Дазваляе праглядаць катэгорыі з рознымі ключамі сартаваньня для розных варыянтаў кітайскай мовы',
-	'categorymultisort-sortkey-name-mandarin' => 'Мандарынскі',
-	'categorymultisort-sortkey-name-cantonese' => 'кантонская',
 	'categorymultisort-sortkey-name-stroke' => 'Рыса',
 	'categorymultisort-sortkey-name-stroke-s' => 'Рыса: Спрошчаная',
 	'categorymultisort-sortkey-name-stroke-t' => 'Рыса: Традыцыйная',
@@ -42,8 +40,6 @@ $messages['be-tarask'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
-	'categorymultisort-sortkey-name-mandarin' => 'Mandarineg',
-	'categorymultisort-sortkey-name-cantonese' => 'Kantoneg',
 	'categorymultisort-sortkey-name-stroke' => 'Neuz',
 	'categorymultisort-sortkey-name-stroke-s' => 'Neuz : eeunaet',
 	'categorymultisort-sortkey-name-stroke-t' => 'Neuz : hengounel',
@@ -54,8 +50,6 @@ $messages['br'] = array(
  */
 $messages['de'] = array(
 	'categorymultisortchinese-desc' => 'Ermöglicht es, Kategorien nach unterschiedlichen Sortierkriterien anzuzeigen, die speziell auf die chinesische Sprache zutreffen',
-	'categorymultisort-sortkey-name-mandarin' => 'Mandarin',
-	'categorymultisort-sortkey-name-cantonese' => 'Kantonesisch',
 	'categorymultisort-sortkey-name-stroke' => 'Strich',
 	'categorymultisort-sortkey-name-stroke-s' => 'Strich: Kurzzeichen',
 	'categorymultisort-sortkey-name-stroke-t' => 'Strich: Langzeichen',
@@ -69,8 +63,6 @@ $messages['de'] = array(
  */
 $messages['dsb'] = array(
 	'categorymultisortchinese-desc' => 'Dowólujo, kategorije z rozdźělnymi sortěrowańskimi klucami specielnje za chinske pisma zwobrazniś',
-	'categorymultisort-sortkey-name-mandarin' => 'Mandarinšćina',
-	'categorymultisort-sortkey-name-cantonese' => 'Kantonešćina',
 	'categorymultisort-sortkey-name-stroke' => 'Smuga',
 	'categorymultisort-sortkey-name-stroke-s' => 'Smuga: Zjadnorjene',
 	'categorymultisort-sortkey-name-stroke-t' => 'Smuga: Tradicionelne',
@@ -85,8 +77,6 @@ $messages['dsb'] = array(
  */
 $messages['es'] = array(
 	'categorymultisortchinese-desc' => 'Permitir mostrar las categorías con diferentes atajos específicos para scripts chinos.',
-	'categorymultisort-sortkey-name-mandarin' => 'Mandarín',
-	'categorymultisort-sortkey-name-cantonese' => 'Cantonés',
 	'categorymultisort-sortkey-name-stroke' => 'Trazo',
 	'categorymultisort-sortkey-name-stroke-s' => 'Trazo: Simplificado',
 	'categorymultisort-sortkey-name-stroke-t' => 'Trazo: Tradicional',
@@ -101,8 +91,6 @@ $messages['es'] = array(
  */
 $messages['fr'] = array(
 	'categorymultisortchinese-desc' => 'Permet aux catégories d’être affichées avec différentes clés de tri spécifiques aux écritures chinoises',
-	'categorymultisort-sortkey-name-mandarin' => 'Mandarin',
-	'categorymultisort-sortkey-name-cantonese' => 'Cantonais',
 	'categorymultisort-sortkey-name-stroke' => 'Trait',
 	'categorymultisort-sortkey-name-stroke-s' => 'Trait : simplifié',
 	'categorymultisort-sortkey-name-stroke-t' => 'Trait : traditionnel',
@@ -116,8 +104,6 @@ $messages['fr'] = array(
  */
 $messages['gl'] = array(
 	'categorymultisortchinese-desc' => 'Permite que se poidan ollar as categorías mediante diferentes claves de ordenación específicas para escrituras en chinés',
-	'categorymultisort-sortkey-name-mandarin' => 'Mandarín',
-	'categorymultisort-sortkey-name-cantonese' => 'Cantonés',
 	'categorymultisort-sortkey-name-stroke' => 'Trazo',
 	'categorymultisort-sortkey-name-stroke-s' => 'Trazo: simplificado',
 	'categorymultisort-sortkey-name-stroke-t' => 'Trazo: tradicional',
@@ -131,8 +117,6 @@ $messages['gl'] = array(
  */
 $messages['hsb'] = array(
 	'categorymultisortchinese-desc' => 'Dowola, kategorije z rozdźělnymi sortěrowanskimi klučemi specielnje za chinske pisma zwobraznić',
-	'categorymultisort-sortkey-name-mandarin' => 'Mandarinšćina',
-	'categorymultisort-sortkey-name-cantonese' => 'Kantonešćina',
 	'categorymultisort-sortkey-name-stroke' => 'Smužka',
 	'categorymultisort-sortkey-name-stroke-s' => 'Smužka: Zjednorjene',
 	'categorymultisort-sortkey-name-stroke-t' => 'Smužka: Tradicionelne',
@@ -146,8 +130,6 @@ $messages['hsb'] = array(
  */
 $messages['ia'] = array(
 	'categorymultisortchinese-desc' => 'Permitte le presentation de categorias con differente claves de ordination specific a scripturas chinese',
-	'categorymultisort-sortkey-name-mandarin' => 'Mandarin',
-	'categorymultisort-sortkey-name-cantonese' => 'Cantonese',
 	'categorymultisort-sortkey-name-stroke' => 'Tracto',
 	'categorymultisort-sortkey-name-stroke-s' => 'Tracto: Simplificate',
 	'categorymultisort-sortkey-name-stroke-t' => 'Tracto: Traditional',
@@ -173,8 +155,6 @@ $messages['lb'] = array(
  */
 $messages['mk'] = array(
 	'categorymultisortchinese-desc' => 'Овозможува категориите да се прегледуваат по различни подредни клучеви согласно кинеските писма',
-	'categorymultisort-sortkey-name-mandarin' => 'мандарински',
-	'categorymultisort-sortkey-name-cantonese' => 'кантонски',
 	'categorymultisort-sortkey-name-stroke' => 'Потег',
 	'categorymultisort-sortkey-name-stroke-s' => 'Потег: Упростено',
 	'categorymultisort-sortkey-name-stroke-t' => 'Потег: Традиционално',
@@ -188,8 +168,6 @@ $messages['mk'] = array(
  */
 $messages['nl'] = array(
 	'categorymultisortchinese-desc' => 'Maakt het mogelijk categorieën te bekijken met verschillende sorteerwijzen specifiek voor Chinese schriften',
-	'categorymultisort-sortkey-name-mandarin' => 'Mandarijn',
-	'categorymultisort-sortkey-name-cantonese' => 'Kantonees',
 	'categorymultisort-sortkey-name-stroke' => 'Streep',
 	'categorymultisort-sortkey-name-stroke-s' => 'Streep: Vereenvoudigd',
 	'categorymultisort-sortkey-name-stroke-t' => 'Streep: Traditioneel',
@@ -204,8 +182,6 @@ $messages['nl'] = array(
  */
 $messages['pt'] = array(
 	'categorymultisortchinese-desc' => 'Permitir que as categorias sejam visionadas com diferentes chaves de ordenação específicas para caligrafias chinesas',
-	'categorymultisort-sortkey-name-mandarin' => 'Mandarim',
-	'categorymultisort-sortkey-name-cantonese' => 'Cantonês',
 	'categorymultisort-sortkey-name-stroke' => 'Traço',
 	'categorymultisort-sortkey-name-stroke-s' => 'Traço: Simplificado',
 	'categorymultisort-sortkey-name-stroke-t' => 'Traço: Tradicional',
@@ -219,8 +195,6 @@ $messages['pt'] = array(
  */
 $messages['pt-br'] = array(
 	'categorymultisortchinese-desc' => 'Permitir que as categorias sejam visualizadas com diferentes chaves de ordenação específicas para caligrafias chinesas',
-	'categorymultisort-sortkey-name-mandarin' => 'Mandarim',
-	'categorymultisort-sortkey-name-cantonese' => 'Cantonês',
 	'categorymultisort-sortkey-name-stroke' => 'Traço',
 	'categorymultisort-sortkey-name-stroke-s' => 'Traço: Simplificado',
 	'categorymultisort-sortkey-name-stroke-t' => 'Traço: Tradicional',
@@ -234,8 +208,6 @@ $messages['pt-br'] = array(
  */
 $messages['ru'] = array(
 	'categorymultisortchinese-desc' => 'Позволяет просматривать категории с использованием различных ключей сортировки для китайских письменностей',
-	'categorymultisort-sortkey-name-mandarin' => 'севернокитайский',
-	'categorymultisort-sortkey-name-cantonese' => 'кантонский',
 	'categorymultisort-sortkey-name-stroke' => 'по штрихам',
 	'categorymultisort-sortkey-name-stroke-s' => 'по штрихам: упрощённый',
 	'categorymultisort-sortkey-name-stroke-t' => 'по штрихам: традиционный',
@@ -248,16 +220,12 @@ $messages['ru'] = array(
  * @author Yfdyh000
  */
 $messages['zh-hans'] = array(
-	'categorymultisort-sortkey-name-mandarin' => '普通话',
-	'categorymultisort-sortkey-name-cantonese' => '粤语',
 	'categorymultisort-sortkey-name-stroke-s' => '中文（简体）',
 	'categorymultisort-sortkey-name-stroke-t' => '中文（繁体）',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬) */
 $messages['zh-hant'] = array(
-	'categorymultisort-sortkey-name-mandarin' => '普通話',
-	'categorymultisort-sortkey-name-cantonese' => '粵語',
 	'categorymultisort-sortkey-name-stroke-s' => '中文（簡體）',
 	'categorymultisort-sortkey-name-stroke-t' => '中文（繁體）',
 );

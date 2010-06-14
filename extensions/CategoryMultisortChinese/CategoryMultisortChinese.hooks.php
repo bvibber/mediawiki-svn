@@ -42,11 +42,11 @@ class CategoryMultisortChineseHooks {
 		$title = $parser->getTitle();
 		$text = $title->getText();
 		
-		$this->onCategoryMultisortSortkeys_setDefaultSortkey( $categoryMultisorts, 'mandarin',
-			$this->onCategoryMultisortSortkeys_buildMandarinSortkey( $data, $text )
+		$this->onCategoryMultisortSortkeys_setDefaultSortkey( $categoryMultisorts, 'mandarin-pinyin',
+			$this->onCategoryMultisortSortkeys_buildMandarinPinyinSortkey( $data, $text )
 		);
-		$this->onCategoryMultisortSortkeys_setDefaultSortkey( $categoryMultisorts, 'cantonese',
-			$this->onCategoryMultisortSortkeys_buildCantoneseSortkey( $data, $text )
+		$this->onCategoryMultisortSortkeys_setDefaultSortkey( $categoryMultisorts, 'cantonese-jyutping',
+			$this->onCategoryMultisortSortkeys_buildCantoneseJyutpingSortkey( $data, $text )
 		);
 		$this->onCategoryMultisortSortkeys_setDefaultSortkey( $categoryMultisorts, 'stroke',
 			$this->onCategoryMultisortSortkeys_buildStrokeSortkey( $data, $text )
@@ -111,7 +111,7 @@ class CategoryMultisortChineseHooks {
 		return $result;
 	}
 	
-	function onCategoryMultisortSortkeys_buildMandarinSortkey( $data, $str ) {
+	function onCategoryMultisortSortkeys_buildMandarinPinyinSortkey( $data, $str ) {
 		$result = '';
 		foreach ( $this->onCategoryMultisortSortkeys_splitString( $str ) as $ch ) {
 			# One UTF-8 character can have 4 bytes max.
@@ -124,7 +124,7 @@ class CategoryMultisortChineseHooks {
 		return $result;
 	}
 	
-	function onCategoryMultisortSortkeys_buildCantoneseSortkey( $data, $str ) {
+	function onCategoryMultisortSortkeys_buildCantoneseJyutpingSortkey( $data, $str ) {
 		$result = '';
 		foreach ( $this->onCategoryMultisortSortkeys_splitString( $str ) as $ch ) {
 			# One UTF-8 character can have 4 bytes max.
