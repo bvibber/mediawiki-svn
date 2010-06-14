@@ -542,7 +542,8 @@ fn: {
 				'action' : {
 					'type' : 'replace',
 					'options' : {
-						'peri' : character
+						'peri' : character,
+						'selectPeri': false
 					}
 				}
 			};
@@ -552,7 +553,8 @@ fn: {
 				'action' : {
 					'type' : 'replace',
 					'options' : {
-						'peri' : character[1]
+						'peri' : character[1],
+						'selectPeri': false
 					}
 				}
 			};

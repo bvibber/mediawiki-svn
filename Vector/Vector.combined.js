@@ -5,9 +5,9 @@ $j(document).ready( function() {
 	if ( !wgVectorEnabledModules.collapsiblenav ) {
 		return true;
 	}
-	
+
 	/* Browser Support */
-	
+
 	var map = {
 		// Left-to-right languages
 		'ltr': {
@@ -34,9 +34,9 @@ $j(document).ready( function() {
 	if ( !mw.usability.testBrowser( map ) ) {
 		return true;
 	}
-	
+
 	/* Bucket Testing */
-	
+
 	// Fallback to old version
 	var version = 1;
 	// Allow new version override
@@ -55,9 +55,9 @@ $j(document).ready( function() {
 			}
 		}
 	}
-	
+
 	/* Special Language Portal Handling */
-	
+
 	// Language portal splitting feature (if it's turned on)
 	if ( version == 2 ) {
 		// How many links to show in the primary languages portal
@@ -151,9 +151,9 @@ $j(document).ready( function() {
 		// Always show the primary interwiki language portal
 		$j( '#p-lang' ).addClass( 'persistent' );
 	}
-	
+
 	/* General Portal Modification */
-	
+
 	// Always show the first portal
 	$j( '#mw-panel > div.portal:first' ).addClass( 'first persistent' );
 	// Apply a class to the entire panel to activate styles
@@ -191,9 +191,9 @@ $j(document).ready( function() {
 			.find( 'div.body' )
 			.slideToggle( 'fast' );
 	}
-	
+
 	/* Tab Indexing */
-	
+
 	var $headings = $j( '#mw-panel > div.portal:not(.persistent) > h5' );
 	// Get the highest tab index
 	var tabIndex = mw.usability.getMaxTabIndex() + 1;
