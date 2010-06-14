@@ -168,22 +168,6 @@ class Html {
 			if ( $element == 'textarea' && isset( $attribs['maxlength'] ) ) {
 				unset( $attribs['maxlength'] );
 			}
-			# Here we're blacklisting some HTML5-only attributes...
-			$html5attribs = array(
-				'autocomplete',
-				'autofocus',
-				'max',
-				'min',
-				'multiple',
-				'pattern',
-				'placeholder',
-				'required',
-				'step',
-				'spellcheck',
-			);
-			foreach ( $html5attribs as $badAttr ) {
-				unset( $attribs[$badAttr] );
-			}
 		}
 
 		return "<$element" . self::expandAttributes(
@@ -328,6 +312,32 @@ class Html {
 			# Not technically required in HTML5, but required in XHTML 1.0,
 			# and we'd like consistency and better compression anyway.
 			$key = strtolower( $key );
+
+			# Bug 23769: Blacklist all form validation attributes for now.  Current
+			# (June 2010) WebKit has no UI, so the form just refuses to submit
+			# without telling the user why, which is much worse than failing
+			# server-side validation.  Opera is the only other implementation at
+			# this time, and has ugly UI, so just kill the feature entirely until
+			# we have at least one good implementation.
+			if ( in_array( $key, array( 'max', 'min', 'pattern', 'required', 'step' ) ) ) {
+				continue;
+			}
+
+			# Here we're blacklisting some HTML5-only attributes...
+			if ( !$wgHtml5 && in_array( $key, array(
+					'autocomplete',
+					'autofocus',
+					'max',
+					'min',
+					'multiple',
+					'pattern',
+					'placeholder',
+					'required',
+					'step',
+					'spellcheck',
+			) ) ) {
+				continue;
+			}
 
 			# See the "Attributes" section in the HTML syntax part of HTML5,
 			# 9.1.2.3 as of 2009-08-10.  Most attributes can have quotation
