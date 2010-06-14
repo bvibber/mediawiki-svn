@@ -816,6 +816,13 @@ $messages['vo'] = array(
 	'block_title_error' => 'Pidö! Tiäd pada at no dalon padakipön.',
 );
 
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'block_title_error_page_title' => 'פֿאַרשפאַרטער בלאַטנאָמען',
+);
+
 /** Cantonese (粵語)
  * @author Shinjiman
  */

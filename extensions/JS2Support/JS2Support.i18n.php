@@ -105,6 +105,8 @@ $messages['gl'] = array(
  */
 $messages['gsw'] = array(
 	'js2support-desc' => 'JS2-Unterstitzig dur e Erwyterig',
+	'js2support-debug-preference' => 'Gruppierig un Reduktion vu Skript deaktiviere',
+	'prefs-script-debug' => 'Script-Debugging',
 );
 
 /** Upper Sorbian (Hornjoserbsce)
@@ -199,9 +201,11 @@ $messages['pl'] = array(
 
 /** Piedmontese (Piemontèis)
  * @author Borichèt
+ * @author Dragonòt
  */
 $messages['pms'] = array(
 	'js2support-desc' => "Manten ëd JS2 com n'estension",
+	'prefs-script-debug' => 'Debug djë script',
 );
 
 /** Portuguese (Português)

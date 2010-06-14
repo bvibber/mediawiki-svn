@@ -1059,6 +1059,7 @@ $messages['tr'] = array(
  * @author Ahonc
  * @author NickK
  * @author Prima klasy4na
+ * @author Тест
  */
 $messages['uk'] = array(
 	'inspectcache' => 'Перегляд кешу',
@@ -1070,6 +1071,7 @@ $messages['uk'] = array(
 	'inspectcache-delete' => 'Вилучити',
 	'inspectcache-deleted' => 'Вилучений кеш',
 	'inspectcache-list' => 'Список',
+	'right-inspectcache' => 'Перегляд та видалення записів кеша',
 );
 
 /** Veps (Vepsan kel')

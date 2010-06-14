@@ -59,7 +59,7 @@ $messages['bn'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
-	'vector-collapsiblenav-preference' => 'Aotren al lañser merdeiñ pak-dispak a-gleiz',
+	'vector-collapsiblenav-preference' => 'Aotren al lañser merdeiñ pak-dispak a-gleiz gant an neuz Vector',
 	'vector-collapsiblenav-more' => "Muioc'h a yezhoù",
 );
 
@@ -134,7 +134,8 @@ $messages['et'] = array(
  * @author An13sa
  */
 $messages['eu'] = array(
-	'vector-collapsiblenav-preference' => 'Ezkerreko nabigazio menua irekigarri bihurtzen du',
+	'vector-collapsiblenav-preference' => 'Vector skin-ean ezkerreko nabigazio menua irekigarri bihurtzen du',
+	'vector-collapsiblenav-more' => 'Hizkuntza gehiago',
 );
 
 /** Persian (فارسی)
@@ -174,15 +175,16 @@ $messages['gl'] = array(
  * @author Als-Holder
  */
 $messages['gsw'] = array(
-	'vector-collapsiblenav-preference' => 'Yyklappbar Navgationsmenü yyschalte',
+	'vector-collapsiblenav-preference' => 'Yyklappbar Navgationsmenü yyschalte bi dr Verwändig vu Vector',
 	'vector-collapsiblenav-more' => 'Meh Sproche',
 );
 
 /** Hebrew (עברית)
  * @author Amire80
+ * @author Rotemliss
  */
 $messages['he'] = array(
-	'vector-collapsiblenav-preference' => 'הפעלת קיפול תפריט ניווט ימני בממשק וקטור',
+	'vector-collapsiblenav-preference' => 'הפעלת קיפול פריטים בתפריט הניווט בעיצוב וקטור',
 );
 
 /** Croatian (Hrvatski)
@@ -238,7 +240,7 @@ $messages['io'] = array(
  * @author Una giornata uggiosa '94
  */
 $messages['it'] = array(
-	'vector-collapsiblenav-preference' => 'Abilita menù di navigazione nascondibile a sinistra',
+	'vector-collapsiblenav-preference' => 'Abilita menù di navigazione nascondibile per la skin Vector',
 	'vector-collapsiblenav-more' => 'Più lingue',
 );
 

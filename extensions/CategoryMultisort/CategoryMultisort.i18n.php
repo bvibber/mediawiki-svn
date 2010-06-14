@@ -117,6 +117,18 @@ $messages['gl'] = array(
 	'prefs-category' => 'Categoría',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'categorymultisort-desc' => 'Macht s megli, Kategorie no unterschidlige Sortierkriterie aazzeige',
+	'categorymultisort-defaultsortkey-name' => 'Standard',
+	'categorymultisort-sortkey' => 'Sortierkriterium:',
+	'categorymultisort-go' => 'Uusfiere',
+	'categorymultisort-default-sortkey' => 'Standardsortierkriterium:',
+	'prefs-category' => 'Kategorii',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

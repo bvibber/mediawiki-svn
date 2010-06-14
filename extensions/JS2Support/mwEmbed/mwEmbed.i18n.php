@@ -276,6 +276,10 @@ $messages['gsw'] = array(
 	'mwe-load-drag-item' => 'Am Lade vu mitgschleipfte Poschte',
 	'mwe-ok' => 'OK',
 	'mwe-cancel' => 'Abbräche',
+	'mwe-enable-gadget' => 'D Beta-Version vum  Multimedia-Heälferli (mwEmbed) fir alli Syte aktiviere',
+	'mwe-enable-gadget-done' => 'Beta-Version vum Multimedia-Hälferli isch aktiviert wore',
+	'mwe-must-login-gadget' => 'Go s Hälferli aktiviere chenne, muesch di <a target="_new" href="$1">aamälde</a>',
+	'mwe-test-plural' => '{{PLURAL:$1|$1 Tescht|$1 Tescht}} uusgfiert',
 );
 
 /** Hebrew (עברית)

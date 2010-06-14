@@ -752,7 +752,7 @@ $messages['pl'] = array(
 	'contrib-tracking-error' => 'Błąd',
 	'contrib-tracking-error-text' => 'Niewłaściwy format danych wejściowych',
 	'contrib-tracking-submitting' => 'Przesyłanie danych do systemu płatności...',
-	'contrib-tracking-continue' => 'Jeśli nie {{GENDER:|zostałeś przeniesiony|zostałaś przeniesiona|zostałeś (~aś) przeniesiony (~a)}} automatycznie, kliknij przycisk by dokończyć wpłacanie darowizny za pomocą systemu PayPal.',
+	'contrib-tracking-continue' => 'Jeśli nie {{GENDER:|zostałeś przeniesiony|zostałaś przeniesiona|przeniesiono Cię}} automatycznie, kliknij przycisk aby dokończyć wpłacanie darowizny za pomocą systemu PayPal.',
 	'contrib-tracking-button' => 'Kontynuuj',
 );
 

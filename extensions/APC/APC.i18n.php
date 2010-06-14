@@ -198,6 +198,14 @@ $messages['niu'] = array(
 	'viewapc-ls-submit' => 'Fano!',
 );
 
+/** Abkhazian (Аҧсуа)
+ * @author Temuri rajavi
+ */
+$messages['ab'] = array(
+	'viewapc-ls-header-modified' => 'Аҵыхәтәатәи аҽеиҭакра',
+	'viewapc-ls-sort-modified' => 'Аҵыхәтәатәи аҽеиҭакра',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
  * @author Naudefj

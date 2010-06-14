@@ -278,9 +278,30 @@ Voyez le $2 pour un journal des blanchissements récents.',
  * @author Toliño
  */
 $messages['gl'] = array(
+	'purewikideletion' => 'Borrado wiki',
 	'randomexcludeblank' => 'Páxina ao chou (excluíndo as baleiras)',
 	'populateblankedpagestable' => 'Encher a táboa de páxinas baleiradas',
 	'purewikideletion-desc' => 'Entre outras cousas, provoca que as páxinas baleiras se convertan en ligazóns vermellas',
+	'purewikideletion-pref-watchblank' => 'Engadir á miña lista de vixilancia aquelas páxinas que baleire',
+	'purewikideletion-pref-watchunblank' => 'Engadir á miña lista de vixilancia aquelas páxinas cuxo baleirado reverta',
+	'purewikideletion-blanked' => "[[User:$1|$1]] ([[User talk:$1|conversa]]) ([[Special:Contributions/$1|contribucións]]) baleirou unha versión vella desta páxina o $5 ás $6.
+
+A razón que deu para o borrado foi: ''<nowiki>$3</nowiki>''.
+
+Pode [{{fullurl:{{FULLPAGENAMEE}}|action=history}} ollar o historial da páxina], [{{fullurl:{{FULLPAGENAMEE}}|oldid=$4&action=edit}} editar a última versión] ou escribir unha nova páxina no espazo en branco que hai embaixo.",
+	'blank-log' => 'baleirado',
+	'blank-log-name' => 'Rexistro de baleirados',
+	'blank-log-header' => 'A continuación está a lista cos baleirados de páxinas, así como as reversións de baleirados de páxinas.',
+	'blank-log-entry-blank' => 'baleirou "$1"',
+	'blank-log-entry-unblank' => 'reverteu o baleirado de "$1"',
+	'blank-log-link' => '[[{{#Special:Log}}/blank|rexistro de baleirados]]',
+	'purewikideletion-blanknologin' => 'Non accedeu ao sistema',
+	'purewikideletion-blanknologintext' => 'Debe ser un usuario rexistrado e [[Special:UserLogin|acceder ao sistema]] para baleirar unha páxina.',
+	'purewikideletion-unblanknologintext' => 'Debe ser un usuario rexistrado e [[Special:UserLogin|acceder ao sistema]] para reverter o baleirado dunha páxina.',
+	'purewikideletion-blankedtext' => 'Baleirouse a páxina "[[$1]]".
+No $2 pode ver unha lista cos baleirados máis recentes.',
+	'purewikideletion-population-done' => 'Encheuse a táboa blanked_page.',
+	'right-purewikideletion' => '[[Special:PopulateBlankedPagesTable|Encher]] a táboa de páxinas baleiradas',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

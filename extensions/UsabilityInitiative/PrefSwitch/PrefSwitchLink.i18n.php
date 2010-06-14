@@ -201,6 +201,18 @@ $messages['et'] = array(
 	'tooltip-pt-prefswitch-link-off' => 'Proovi uusi funktsioone',
 );
 
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'prefswitch-link-anon' => 'Ezaugarri berriak',
+	'tooltip-pt-prefswitch-link-anon' => 'Ezaugarri berriei buruz ikasi',
+	'prefswitch-link-on' => 'Atzera eraman',
+	'tooltip-pt-prefswitch-link-on' => 'Ezaugarri berriak ezgaitu',
+	'prefswitch-link-off' => 'Ezaugarri berriak',
+	'tooltip-pt-prefswitch-link-off' => 'Ezaugarri berriak frogatu',
+);
+
 /** Finnish (Suomi)
  * @author Crt
  */
@@ -592,6 +604,17 @@ $messages['tr'] = array(
 	'tooltip-pt-prefswitch-link-on' => 'Yeni özellikleri devre dışı bırak',
 	'prefswitch-link-off' => 'Yeni özellikler',
 	'tooltip-pt-prefswitch-link-off' => 'Yeni özellikleri dene',
+);
+
+/** Ukrainian (Українська)
+ * @author Тест
+ */
+$messages['uk'] = array(
+	'prefswitch-link-anon' => 'Нові можливості',
+	'tooltip-pt-prefswitch-link-anon' => 'Дізнайтеся про нові можливості',
+	'tooltip-pt-prefswitch-link-on' => 'Вимкнути нові можливості',
+	'prefswitch-link-off' => 'Нові можливості',
+	'tooltip-pt-prefswitch-link-off' => 'Спробуйте нові можливості',
 );
 
 /** Vietnamese (Tiếng Việt)

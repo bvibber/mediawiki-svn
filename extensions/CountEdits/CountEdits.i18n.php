@@ -797,6 +797,23 @@ $messages['km'] = array(
 	'countedits-nocontribs' => 'មិនមានការរួមចំណែកនៅក្នុងវិគីនេះទេ។',
 );
 
+/** Korean (한국어)
+ * @author Gapo
+ */
+$messages['ko'] = array(
+	'countedits' => '편집 횟수',
+	'countedits-desc' => '사용자의 편집 횟수를 측정하고 가장 활동적인 상위 10명의 목록을 보여주는 [[Special:CountEdits|특수 문서]]',
+	'countedits-warning' => "'''주의''' 숫자는 절대적 판단 기준이 아닙니다.
+편집 횟수만으로 사용자를 평가하지 마세요.",
+	'countedits-username' => '계정 이름:',
+	'countedits-ok' => '확인',
+	'countedits-nosuchuser' => '$1이라는 이름을 가진 사용자는 없습니다.',
+	'countedits-resultheader' => '$1에 대한 결과',
+	'countedits-resulttext' => '$1는 현재까지 2 번의 {{PLURAL:$2|편집|편집}}을 했습니다',
+	'countedits-mostactive' => '가장 활동적인 기여자',
+	'countedits-nocontribs' => '이 위키에 대한 기여가 없습니다.',
+);
+
 /** Kinaray-a (Kinaray-a)
  * @author Jose77
  */

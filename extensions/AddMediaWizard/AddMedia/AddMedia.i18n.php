@@ -3715,14 +3715,22 @@ $messages['kn'] = array(
 );
 
 /** Korean (한국어)
+ * @author Gapo
  * @author Kwj2772
  */
 $messages['ko'] = array(
+	'mwe-cancel-confim' => '정말 취소 하시겠습니까?',
 	'mwe-successfulupload' => '파일 올리기 성공',
+	'mwe-uploaderror' => '파일 올리기 오류',
 	'mwe-unknown-error' => '알 수 없는 오류:',
+	'mwe-fileexists-thumb' => '이미 존재하는 파일',
+	'fogg-copyright-title' => '저작권',
 	'rsd-media-filter-title' => '미디어',
+	'rsd-media-filter-videos' => '동영상',
+	'rsd-media-filter-images' => '사진',
 	'mwe-upload' => '파일 올리기',
 	'mwe-destfilename' => '파일의 새 이름:',
+	'mwe-error_not_loggedin' => '로그인 되어있지 않거나 파일 올리기 권한이 없습니다',
 	'mwe-ignore-any-warnings' => '모든 경고를 무시하기',
 	'mwe-add_media_wizard' => '미디어 추가 마법사',
 	'mwe-upload_tab' => '파일 올리기',
@@ -3979,7 +3987,9 @@ $messages['lb'] = array(
 	'mwe-upload-a-file' => 'En neie Fichier eroplueden',
 	'mwe-upload-a-file-to' => 'En neie Fichier op $1 eroplueden',
 	'mwe-watch_this_page' => 'Dës Säit iwwerwaachen',
+	'mwe-return-search-results' => "Zréck op d'Resultater vun der Sich",
 	'mwe-do-more-modification' => 'Méi Ännerunge maachen',
+	'mwe-local-upload-policy-link' => "lokal Richtlinne fir d'Eroplueden",
 	'mwe-ftype-svg' => 'SVG Vektor-Fichier',
 	'mwe-ftype-jpg' => 'JPEG Bild-Fichier',
 	'mwe-ftype-png' => 'PNG Bild-Fichier',
@@ -3994,6 +4004,7 @@ $messages['lb'] = array(
 	'fogg-select_url' => 'URL eraussichen',
 	'fogg-check_for_firefogg' => 'Sichen no Firefogg ...',
 	'fogg-installed' => 'Firefogg ass installéiert,',
+	'fogg-not-installed' => 'Firefogg ass net installéiert oder net ageschalt.',
 	'fogg-for_improved_uploads' => 'Fir verbessert Eroplueden:',
 	'fogg-please-install' => '$1. Méi $2',
 	'fogg-please-install-install-linktext' => 'Firefogg installéieren',

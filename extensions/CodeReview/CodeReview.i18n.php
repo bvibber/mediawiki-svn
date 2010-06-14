@@ -6680,6 +6680,7 @@ $messages['no'] = array(
 	'code-author-link' => 'lenke?',
 	'code-author-unlink' => 'fjern lenke?',
 	'code-author-unlinksuccess' => 'Forfatter $1 er ikke lenger lenket',
+	'code-author-badtoken' => 'Sesjonsfeil når handlingen ble forsøkt utført.',
 	'code-browsing-path' => "Blar igjennom revisjoner i '''$1'''",
 	'code-field-id' => 'Revisjon',
 	'code-field-author' => 'Forfatter',

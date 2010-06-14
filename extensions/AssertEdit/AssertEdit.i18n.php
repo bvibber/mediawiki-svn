@@ -626,6 +626,7 @@ $messages['pt-br'] = array(
  */
 $messages['qu'] = array(
 	'assert_edit_title' => 'Mañasqaqa manam atinchu',
+	'assertedit-desc' => "Llamk'apuna mañasqakunata rurana antachakunapaq yapan",
 	'assert_edit_message' => 'Nisqa mañasqaqa ($1) manam atinchu.',
 );
 

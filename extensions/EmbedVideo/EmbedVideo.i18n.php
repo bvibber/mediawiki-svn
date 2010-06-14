@@ -169,6 +169,19 @@ $messages['pt'] = array(
 	'embedvideo-illegal-width' => 'O EmbedVideo recebeu o parâmetro de largura incorrecto "$1".',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Giro720
+ */
+$messages['pt-br'] = array(
+	'embedvideo-desc' => 'Adiciona uma função ao analisador sintático para incorporar vídeos de fontes populares',
+	'embedvideo-missing-params' => 'O EmbedVideo não recebeu um parâmetro obrigatório.',
+	'embedvideo-bad-params' => 'O EmbedVideo recebeu um parâmetro incorreto.',
+	'embedvideo-unparsable-param-string' => 'O EmbedVideo recebeu o parâmetro de texto "<code>$1</code>" que não é analisável.',
+	'embedvideo-unrecognized-service' => 'O EmbedVideo não reconhece o serviço de vídeo "<code>$1</code>".',
+	'embedvideo-bad-id' => 'O EmbedVideo recebeu a identificação incorreta "$1" para o serviço "$2".',
+	'embedvideo-illegal-width' => 'O EmbedVideo recebeu o parâmetro de largura incorreto "$1".',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

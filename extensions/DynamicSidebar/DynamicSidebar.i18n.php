@@ -278,6 +278,13 @@ $messages['tr'] = array(
 	'dynamicsidebar-desc' => 'Kullanıcı sayfaları, gruplar ve kategorilere dayanarak dinamik kenar çubukları sağlar',
 );
 
+/** Ukrainian (Українська)
+ * @author Тест
+ */
+$messages['uk'] = array(
+	'dynamicsidebar-desc' => 'Додає динамічні бічні панелі на основі особистих сторінок користувачів, груп і категорій',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Vinhtantran
  */

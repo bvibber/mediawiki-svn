@@ -11041,6 +11041,7 @@ Pe piacere verifiche l'indirizze web.",
 
 /** Russian (Русский)
  * @author Aleksandrit
+ * @author Eleferen
  * @author Ferrer
  * @author Kaganer
  * @author Osd
@@ -11069,7 +11070,7 @@ $messages['ru'] = array(
 	'importlangnames_added' => 'Добавлены название языков для «$1».',
 	'importlangnames_not_found' => '<strong>Не найдено языковых записей для «$1»!</strong>',
 	'datasearch' => 'Викиданные: Поиск данных',
-	'datasearch_language' => 'Абызшәа:',
+	'datasearch_language' => 'Язык:',
 	'datasearch_found_word' => 'Найденное слово',
 	'datasearch_meaning' => 'Значение',
 	'datasearch_ext_identifier' => 'Внешний идентификатор',

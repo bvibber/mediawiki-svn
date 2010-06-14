@@ -437,7 +437,9 @@ $messages['gl'] = array(
 	'mwe-clipedit-layout_left' => 'Disposición da imaxe do lado esquerdo',
 );
 
-/** Swiss German (Alemannisch) */
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
 $messages['gsw'] = array(
 	'mwe-clipedit-crop' => 'Bild zueschnyde',
 	'mwe-clipedit-apply_crop' => 'Bild zueschnyde',
@@ -446,6 +448,7 @@ $messages['gsw'] = array(
 	'mwe-clipedit-insert_into_sequence' => 'In dr Abschnitt yyfiege',
 	'mwe-clipedit-preview_insert' => 'Vorschau vu dr Yyfiegig',
 	'mwe-clipedit-cancel_image_insert' => 'S Yyfiege ruckgängig mache',
+	'mwe-clipedit-sc_attributes' => 'Videoclip-Detail bearbeite',
 	'mwe-clipedit-sc_inoutpoints' => 'Aa-Uus-Pinkt setze',
 	'mwe-clipedit-sc_overlays' => 'Overlays',
 	'mwe-clipedit-sc_audio' => 'Audioyystellige',
@@ -463,6 +466,9 @@ $messages['gsw'] = array(
 	'mwe-clipedit-inline-description' => 'Bschryybig',
 	'mwe-clipedit-edit-video-tools' => 'Video-Bearbeitigswärchzyyg:',
 	'mwe-clipedit-duration' => 'Duur:',
+	'mwe-clipedit-layout' => 'Uusrichtig',
+	'mwe-clipedit-layout_right' => 'Bild uf dr rächte Syte',
+	'mwe-clipedit-layout_left' => 'Bild uf dr linke Syte',
 );
 
 /** Hebrew (עברית) */
