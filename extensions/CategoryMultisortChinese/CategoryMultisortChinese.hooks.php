@@ -118,8 +118,8 @@ class CategoryMultisortChineseHooks {
 			$c = str_pad( $ch, 4 );
 			$chcp = utf8ToCodepoint( $ch );
 			# One Mandarin entry can have 7 bytes max.
-			$md = str_pad( array_key_exists( $chcp, $data->mandarin ) ? $data->mandarin[$chcp] : '', 7 );
-			$result .= $md . $c;
+			$mdp = str_pad( array_key_exists( $chcp, $data->mandarin ) ? $data->mandarin[$chcp] : '', 7 );
+			$result .= $mdp . $c;
 		}
 		return $result;
 	}
@@ -131,8 +131,8 @@ class CategoryMultisortChineseHooks {
 			$c = str_pad( $ch, 4 );
 			$chcp = utf8ToCodepoint( $ch );
 			# One Cantonese entry can have 7 bytes max ([a-z]{1,6}[1-6]).
-			$md = str_pad( array_key_exists( $chcp, $data->cantonese ) ? $data->cantonese[$chcp] : '', 7 );
-			$result .= $md . $c;
+			$ctj = str_pad( array_key_exists( $chcp, $data->cantonese ) ? $data->cantonese[$chcp] : '', 7 );
+			$result .= $ctj . $c;
 		}
 		return $result;
 	}
