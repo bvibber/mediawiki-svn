@@ -10,8 +10,8 @@ $messages = array();
 
 $messages['en'] = array(
 	'stablepages'               => 'Pages using edit approval',
-	'stablepages-text'          => 'Below is a list of pages that are restricted so that only certain users can make edits that don\'t require review.
-Such edits are not accepted until an authorized user reviews them.',
+	'stablepages-text'          => 'Below is a list of pages to which only certain users can make edits that do not require review.
+Edits made by other users are not displayed to readers by default until an authorized user reviews them.',
 	'stablepages-none'          => 'There are no pages in this list.',
 	'stablepages-config'        => 'Configuration',
 );
@@ -20,10 +20,12 @@ Such edits are not accepted until an authorized user reviews them.',
  * @author EugeneZelenko
  * @author Jon Harald Søby
  * @author Purodha
+ * @author Umherirrender
  */
 $messages['qqq'] = array(
 	'stablepages' => '{{Flagged Revs}}',
-	'stablepages-text' => '{{Flagged Revs}}',
+	'stablepages-text' => '{{Flagged Revs}}
+This text is shown on [http://flaggedrevs.labs.wikimedia.org/wiki/Special:StablePages Special:StablePages].',
 	'stablepages-none' => '{{Flagged Revs}}
 {{Identical|There are no pages in this list}}',
 	'stablepages-config' => '{{Flagged Revs}}
@@ -55,10 +57,10 @@ $messages['aln'] = array(
  * @author Juanpabl
  */
 $messages['an'] = array(
-	'stablepages' => 'Pachinas estables',
-	'stablepages-text' => "En o cobaixo s'amuestran as pachinas que s'han confeguratas manualment t'amostrar a bersión estable como o conteniu d'a pachina por defeuto ta os bisualizadors.",
+	'stablepages' => "Pachinas que emplegan l'aprobación d'as modificacions",
+	'stablepages-text' => "En o cobaixo s'amuestra una lista de pachinas que s'han restrichito ta que nomás bells usuarios puedan fer-ie edicions que no requieran revisions. Ditas edicions no s'acceptan dica que un usuario autorizado las revisa.",
 	'stablepages-none' => 'No bi ha garra pachina en ista lista',
-	'stablepages-config' => 'Confegurazión',
+	'stablepages-config' => 'Confeguración',
 );
 
 /** Arabic (العربية)
@@ -167,17 +169,18 @@ $messages['cs'] = array(
  */
 $messages['de'] = array(
 	'stablepages' => 'Seiten die nur mit Bearbeitungsfreigabe bearbeitet werden können',
-	'stablepages-text' => 'Es folgt eine Liste von Seiten, auf denen nur bestimmte Benutzer Bearbeitungen durchführen können, die nicht überprüft werden müssen.
-Derartige Bearbeitungen werden nicht angenommen bis ein entsprechend berechtigter Benutzer sie überprüft.',
+	'stablepages-text' => 'Es folgt eine Liste von Seiten, die Einschränkungen haben, so das bestimmte Benutzer Bearbeitungen vornehmen können, die keine Überprüfung benötigen.
+Somit werden einige Bearbeitungen nicht angezeigt, bis ein entsprechend berechtigter Benutzer sie überprüft hat.',
 	'stablepages-none' => 'Diese Liste enthält keine Seiten.',
 	'stablepages-config' => 'Konfiguration',
 );
 
 /** Zazaki (Zazaki)
  * @author Aspar
+ * @author Xoser
  */
 $messages['diq'] = array(
-	'stablepages' => 'pelê istiqrar biyayeyi',
+	'stablepages' => 'Pelanê ke vurnayise testiqi ser hewitiyeno',
 	'stablepages-text' => 'Aşağıdaki liste, ziyaretçilere geçerli sayfa içeriği olarak kararlı sürümü gösterecek şekilde elle yapılandırılmış sayfaların listesidir.',
 	'stablepages-none' => 'na liste de pel çino',
 	'stablepages-config' => 'vıraştış',
@@ -188,7 +191,7 @@ $messages['diq'] = array(
  */
 $messages['dsb'] = array(
 	'stablepages' => 'Boki, kótarež wužywaju pśizwólenje změnow',
-	'stablepages-text' => 'Slědujo lisćina bokow, kótarež su wobgranicowane, tak až wěste wužywarje mógu změny cyniś, kótarež njepominaju se pśeglědanje. Take změny se njeakceptěruju, až awtorizěrowany wužywaŕ je njepśeglědujo.',
+	'stablepages-text' => 'Slědujo lisćina bokow, kótarež su wobgranicowane, tak až wěste wužywarje mógu změny cyniś, kótarež njepominaju se pśeglědanje. Take změny se cytarjam njepokazuju, až awtorizěrowany wužywaŕ je njepśeglědujo.',
 	'stablepages-none' => 'Toś ta lisćina njewopśimujo boki',
 	'stablepages-config' => 'Konfiguracija',
 );
@@ -216,6 +219,7 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author Bola
  * @author Crazymadlover
  * @author Dferg
  * @author McDutchie
@@ -223,7 +227,8 @@ $messages['eo'] = array(
  */
 $messages['es'] = array(
 	'stablepages' => 'Páginas usando aprobación para la edición',
-	'stablepages-text' => 'Debajo se muestra una lista de páginas que están restringidas de modo que sólo determinados usuarios pueden realizar ediciones que no necesitan revisión posterior. Dichas ediciones no son aceptadas hasta que un usuario revisor autorizado las revise.',
+	'stablepages-text' => 'Debajo está una lista de páginas los cuales solo ciertos usuarios pueden hacer ediciones que no requieren revisión.
+Las ediciones hechas por otros usuarios no son mostradas a los lectores por defecto hasta que un usuario autorizado los revise.',
 	'stablepages-none' => 'No hay páginas en esta lista',
 	'stablepages-config' => 'Configuración',
 );
@@ -267,7 +272,8 @@ $messages['fi'] = array(
  */
 $messages['fr'] = array(
 	'stablepages' => 'Pages utilisant la validation des modifications',
-	'stablepages-text' => "Ci-dessous figure une liste de pages qui sont restreintes dont certains utilisateurs peuvent seuls éditer sans qu'une relecture soit nécessaire. Aussi, les modifications ne sont pas acceptées tant qu'un utilisateur habilité les aient relues.",
+	'stablepages-text' => "Ci-dessous figure une liste de pages qui sont restreintes tel que seul certains utilisateurs peuvent la modifier sans qu'une relecture soit nécessaire.
+Aussi, les modifications faites par les autres utilisateurs ne sont pas affichées par défaut aux lecteurs tant qu'un utilisateur habilité les aient relues.",
 	'stablepages-none' => 'Il n’y a aucune page dans cette liste.',
 	'stablepages-config' => 'Configuration',
 );
@@ -287,7 +293,8 @@ $messages['frp'] = array(
  */
 $messages['gl'] = array(
 	'stablepages' => 'Páxinas que usan a aprobación de edicións',
-	'stablepages-text' => 'A continuación está a lista das páxinas restrinxidas de xeito que só certos usuarios poidan realizar edicións que non necesiten revisión. Tales edicións non se aceptan ata que un usuario autorizado as revise.',
+	'stablepages-text' => 'A continuación está a lista coas páxinas restrinxidas de xeito que só certos usuarios poidan realizar edicións que non necesiten revisión.
+As edicións feitas por outros usuarios non se mostran aos lectores por defecto ata que un usuario autorizado as revise.',
 	'stablepages-none' => 'Non hai páxinas nesta lista',
 	'stablepages-config' => 'Configuración',
 );
@@ -350,7 +357,7 @@ $messages['hr'] = array(
  */
 $messages['hsb'] = array(
 	'stablepages' => 'Strony, kotrež schwalenje změnow wužiwaja',
-	'stablepages-text' => 'Deleka je lisćina stronow, kotrež su wobmjezowane, tak zo jenož wěsći wužiwarjo móža změny činić, kotrež sej přepruwowanje njewužaduja. Tajke změny so njeakceptuja, doniž awtorizowany wužiwar je njepřepruwuje.',
+	'stablepages-text' => 'Deleka je lisćina stronow, kotrež jenož wěsći wužiwarjo móža změny přewjesć, kotrež sej přepruwowanje njewužaduja. Změny druhich wužiwarjow so po standardźe druhim čitarjam njepokazaja, doniž awtorizowany wužiwar je njepřepruwuje.',
 	'stablepages-none' => 'W tutej lisćinje strony njejsu.',
 	'stablepages-config' => 'Konfiguracija',
 );
@@ -372,7 +379,7 @@ $messages['hu'] = array(
  */
 $messages['ia'] = array(
 	'stablepages' => 'Paginas subjecte al approbation de modificationes',
-	'stablepages-text' => 'Hic infra es un lista de paginas que es restringite de sorta que solmente certe usatores pote facer modificationes que non require revision. Tal modificationes non es acceptate usque un usator autorisate los habera revidite.',
+	'stablepages-text' => 'Hic infra es un lista de paginas al quales solmente certe usatores pote facer modificationes que non require revision. Modificationes facite per altere usatores non es initialmente monstrate al lectores usque un usator autorisate los habera revidite.',
 	'stablepages-none' => 'Il non ha paginas in iste lista',
 	'stablepages-config' => 'Configuration',
 );
@@ -458,7 +465,7 @@ $messages['ksh'] = array(
 $messages['lb'] = array(
 	'stablepages' => 'Säiten déi Zoustëmmung vun den Ännerunge benotzen',
 	'stablepages-text' => 'Hei ass eng Lëscht vu Säiten déi esou gespaart sinn datt nëmme gewësse Benotzer Ännerunge maache kënnen déi net brauche nogekuckt ze ginn.
-Esou Ännerungen ginn net akzeptéiert bis en autoriséierte Benotzer se nogekuckt huet.',
+Ännerunge vun anere Benotzer ginn de Lieser net gewise bis en autoriséierte Benotzer se nogekuckt huet.',
 	'stablepages-none' => 'Dës Lëscht ass eidel',
 	'stablepages-config' => 'Konfiguratioun',
 );
@@ -470,7 +477,7 @@ Esou Ännerungen ginn net akzeptéiert bis en autoriséierte Benotzer se nogekuc
 $messages['mk'] = array(
 	'stablepages' => 'Страници што користат оодобрување на уредувања',
 	'stablepages-text' => 'Подолу е наведен список на страници што само извесни уредници можат да ги уредуваат без да треба да бидат прегледани. 
-Таквите уредувања не се прифаќаат сè додека не ги провери овластен корисник.',
+Уредувањата на други корисници по основно нема да бидат видливи за читателите сè додека не ги провери овластен корисник.',
 	'stablepages-none' => 'Нема страници на овој список.',
 	'stablepages-config' => 'Конфигурација',
 );
@@ -523,8 +530,8 @@ Dawn il-modifiki ma jiġux aċċettati sakemm utent awtorizzat jirrevedihom.",
  */
 $messages['nl'] = array(
 	'stablepages' => "Pagina's onderhevig aan goedkeuring van bewerkingen",
-	'stablepages-text' => "Hier worden pagina's weergegeven waarvoor is beperkt wie kan kan bewerken zonder dat controle noodzakelijk is.
-Dergelijke bewerkingen worden niet gepubliceerd voordat daartoe gerechtigde gebruikers ze gecontroleerd hebben.",
+	'stablepages-text' => "Hier worden pagina's weergegeven waar alleen bepaalde gebruikers kunnen bewerken zonder dat controle nodig is.
+Bewerkingen door andere gebruikers worden niet weergegeven totdat daartoe gerechtigde gebruikers ze gecontroleerd hebben.",
 	'stablepages-none' => "Er zijn geen pagina's die aan de criteria voldoen",
 	'stablepages-config' => 'Instellingen',
 );
@@ -592,17 +599,20 @@ $messages['pms'] = array(
  */
 $messages['pt'] = array(
 	'stablepages' => 'Páginas sujeitas à aprovação de edições',
-	'stablepages-text' => 'Segue-se uma lista de páginas restringidas, cujas edições só são aceites após revisão por um utilizador autorizado. Só certos utilizadores podem editá-las sem estar sujeitos a revisão.',
+	'stablepages-text' => 'Segue-se uma lista de páginas restringidas de forma a que que só certos utilizadores podem fazer edições que não necessitam de revisão.
+Edições de outros utilizadores não são apresentadas aos leitores até que um utilizador autorizado as tenha revisto.',
 	'stablepages-none' => 'Não há páginas nesta lista.',
 	'stablepages-config' => 'Configuração',
 );
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
+ * @author Giro720
  */
 $messages['pt-br'] = array(
-	'stablepages' => 'Páginas estáveis',
-	'stablepages-text' => 'Segue-se uma lista das páginas que foram manualmente configuradas para exibirem a edição estável como conteúdo padrão a quem as acessar.',
+	'stablepages' => 'Páginas sujeitas à aprovação de edições',
+	'stablepages-text' => 'Segue-se uma lista de páginas restringidas de forma a que que só certos usuários podem fazer edições que não necessitam de revisão.
+Edições de outros utilizadores não são apresentadas aos leitores até que um usuário autorizado as tenha revisadas.',
 	'stablepages-none' => 'Não há páginas nesta lista',
 	'stablepages-config' => 'Configuração',
 );
@@ -630,12 +640,13 @@ $messages['roa-tara'] = array(
 
 /** Russian (Русский)
  * @author Claymore
+ * @author G0rn
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'stablepages' => 'Страницы, использующие подтверждение правок',
-	'stablepages-text' => 'Ниже показан список страниц с наложенным ограничением, только определённые участники могут делать правки, не требующие проверки.
-Правки этих статей не будут приняты, пока не будут проверены уполномоченными участниками.',
+	'stablepages-text' => 'Ниже показан список страниц на которых только определённые участники могут делать правки, не требующие проверки.
+Сделанные другими участниками правки этих статей по умолчанию не будут показаны читателям, пока не будут проверены уполномоченными участниками.',
 	'stablepages-none' => 'В данном списке отсутствуют страницы',
 	'stablepages-config' => 'настройка',
 );
@@ -689,8 +700,9 @@ $messages['sr-ec'] = array(
  * @author Michaello
  */
 $messages['sr-el'] = array(
-	'stablepages' => 'Stabilne strane',
-	'stablepages-text' => 'Ispod se nalazi spisak strana ručno podešenih za prikaz stabilne verzije kao podrazumevane strane za čitače sadržaja.',
+	'stablepages' => 'Stranice koje koriste potvrdu izmena',
+	'stablepages-text' => 'Ispod se nalazi spisak strana koje su ograničene tako da samo određeni korisnici mogu da ih urede.
+Takve izmene nisu prihvaćene dok ih ovlašćeni korisnik ne pregleda.',
 	'stablepages-none' => 'Ne postoje strane u spisku.',
 	'stablepages-config' => 'Podešavanje',
 );
@@ -701,7 +713,8 @@ $messages['sr-el'] = array(
  */
 $messages['sv'] = array(
 	'stablepages' => 'Sidor som använder redigeringsgodkännande',
-	'stablepages-text' => 'Nedan är en lista över sidor som begränsas så att endast vissa användare kan göra ändringar som inte kräver översyn. Sådana ändringar accepteras inte förrän en behörig användare granskar dem.',
+	'stablepages-text' => 'Nedan är en lista över sidor som begränsas så att endast vissa användare kan göra redigeringar som inte kräver granskning.
+Sådana ändringar visas inte för läsarna förrän en behörig användare granskar dem.',
 	'stablepages-none' => 'Det finns inga sidor i denna lista',
 	'stablepages-config' => 'Konfigurering',
 );
@@ -758,10 +771,11 @@ $messages['tr'] = array(
 /** Ukrainian (Українська)
  * @author Ahonc
  * @author Prima klasy4na
+ * @author Тест
  */
 $messages['uk'] = array(
 	'stablepages' => 'Сторінки, що використовують затвердження редагувань',
-	'stablepages-text' => 'Нижче показано список сторінок з накладеними обмеженнями, тільки певні користувачі можуть їх редагувати без необхідності подальшого рецензування. Інші редагування не будуть опубліковані, поки уповноважений користувач не перевірить їх.',
+	'stablepages-text' => 'Нижче наведено список сторінок, на які тільки певні користувачі можуть вносити зміни, що не потребують рецензування. Зміни, внесені іншими користувачами, за умовчанням не відображаються читачам, поки уповноважений користувач не перевірить їх.',
 	'stablepages-none' => 'У цьому списку немає сторінок.',
 	'stablepages-config' => 'Налаштування',
 );
@@ -812,8 +826,9 @@ $messages['yue'] = array(
  * @author Shinjiman
  */
 $messages['zh-hans'] = array(
-	'stablepages' => '稳定页面',
-	'stablepages-text' => '以下的页面列示出一些页面是手动地设置去显示稳定版作为观看者做预设页面版内容。',
+	'stablepages' => '页面已经通过审核',
+	'stablepages-text' => '以下的页面列示出一些页面是手动地设定去显示稳定版作为观看者做预设页面版内容，
+只有指定用户的编辑才不需要通过审核。',
 	'stablepages-none' => '没有页面在这个列表中',
 	'stablepages-config' => '设置',
 );
@@ -825,7 +840,8 @@ $messages['zh-hans'] = array(
  */
 $messages['zh-hant'] = array(
 	'stablepages' => '頁面已經通過審核',
-	'stablepages-text' => '以下的頁面列示出一些頁面是手動地設定去顯示穩定版作為觀看者做預設頁面版內容，只有指定用戶的編輯才不需要通過審核。',
+	'stablepages-text' => '以下的頁面列示出一些頁面是手動地設定去顯示穩定版作為觀看者做預設頁面版內容，
+只有指定用戶的編輯才不需要通過審核。',
 	'stablepages-none' => '沒有頁面在這個清單中',
 	'stablepages-config' => '設定',
 );

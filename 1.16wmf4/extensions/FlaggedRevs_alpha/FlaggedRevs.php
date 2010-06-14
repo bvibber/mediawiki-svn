@@ -162,8 +162,6 @@ $wgFlaggedRevsStylePath = '$wgScriptPath/extensions/FlaggedRevs/client';
 $wgGroupPermissions['editor']['review']          = true;
 $wgGroupPermissions['editor']['autoreview']      = true;
 $wgGroupPermissions['editor']['autoconfirmed']   = true;
-$wgGroupPermissions['editor']['patrol']          = true;
-$wgGroupPermissions['editor']['autopatrol']      = true;
 $wgGroupPermissions['editor']['unreviewedpages'] = true;
 
 # Defines extra rights for advanced reviewer class
@@ -172,8 +170,6 @@ $wgGroupPermissions['reviewer']['validate']        = true;
 $wgGroupPermissions['reviewer']['review']          = true;
 $wgGroupPermissions['reviewer']['autoreview']      = true;
 $wgGroupPermissions['reviewer']['autoconfirmed']   = true;
-$wgGroupPermissions['reviewer']['patrol']          = true;
-$wgGroupPermissions['reviewer']['autopatrol']      = true;
 $wgGroupPermissions['reviewer']['unreviewedpages'] = true;
 
 # Sysops have their edits autoreviewed
@@ -403,7 +399,8 @@ $wgAutoloadClasses['ApiReview'] = $dir . 'api/ApiReview.php';
 $wgAPIModules['review'] = 'ApiReview';
 # Stability config module for API
 $wgAutoloadClasses['ApiStabilize'] = $dir . 'api/ApiStabilize.php';
-$wgAPIModules['stabilize'] = 'ApiStabilize';
+$wgAutoloadClasses['ApiStabilizeGeneral'] = $dir . 'api/ApiStabilize.php';
+$wgAutoloadClasses['ApiStabilizeProtect'] = $dir . 'api/ApiStabilize.php';
 
 # New user preferences
 $wgDefaultUserOptions['flaggedrevssimpleui'] = (int)$wgSimpleFlaggedRevsUI;
@@ -580,8 +577,11 @@ function efLoadFlaggedRevs() {
 }
 
 function efSetFlaggedRevsConditionalAPIModules() {
-	global $wgAPIListModules;
-	if ( !FlaggedRevs::stableOnlyIfConfigured() ) {
+	global $wgAPIModules, $wgAPIListModules;
+	if ( FlaggedRevs::stableOnlyIfConfigured() ) {
+		$wgAPIModules['stabilize'] = 'ApiStabilizeProtect';
+	} else {
+		$wgAPIModules['stabilize'] = 'ApiStabilizeGeneral';
 		$wgAPIListModules['reviewedpages'] = 'ApiQueryReviewedpages';
 		$wgAPIListModules['unreviewedpages'] = 'ApiQueryUnreviewedpages';
 	}

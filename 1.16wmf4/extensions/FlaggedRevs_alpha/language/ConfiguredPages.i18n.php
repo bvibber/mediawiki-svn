@@ -20,7 +20,7 @@ Some settings might change which version is displayed to readers or further rest
 	'configuredpages-prec-quality'  => 'latest quality',
 	'configuredpages-prec-pristine' => 'latest pristine',
 	'configuredpages-def-draft'     => 'latest version',
-	'configuredpages-def-stable'    => 'accepted version',
+	'configuredpages-def-stable'    => 'stable version',
 );
 
 /** Message documentation (Message documentation)
@@ -76,6 +76,13 @@ $messages['be-tarask'] = array(
 	'configuredpages-prec-pristine' => 'апошняя першапачатковая',
 	'configuredpages-def-draft' => 'апошняя вэрсія',
 	'configuredpages-def-stable' => 'апублікаваная вэрсія',
+);
+
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'configuredpages-def-draft' => 'সাম্প্রতিকতম সংস্করণ',
 );
 
 /** Breton (Brezhoneg)
@@ -575,11 +582,22 @@ Alguns parâmetros podem alterar a versão que é apresentada aos utilizadores, 
 	'configuredpages-def-stable' => 'versão publicada',
 );
 
-/** Brazilian Portuguese (Português do Brasil) */
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Giro720
+ */
 $messages['pt-br'] = array(
+	'configuredpages' => 'Páginas com configuração de revisão',
+	'configuredpages-text' => 'Segue-se uma lista de páginas configuradas com parâmetros de aprovação diferentes do padrão do site.
+
+Alguns parâmetros podem alterar a versão que é apresentada aos usuários, ou aumentar a restrição de quem pode fazer edições que não requerem revisão.',
+	'configuredpages-none' => 'Não existem páginas nesta lista.',
+	'configuredpages-config' => 'Configuração',
+	'configuredpages-precedence' => 'Precedência:',
 	'configuredpages-prec-none' => 'sem precedência',
 	'configuredpages-prec-quality' => 'precedência de qualidade',
 	'configuredpages-prec-pristine' => 'precedência intocada',
+	'configuredpages-def-draft' => 'última versão',
+	'configuredpages-def-stable' => 'versão publicada',
 );
 
 /** Romanian (Română) */
@@ -642,6 +660,11 @@ $messages['sk'] = array(
  */
 $messages['sr-ec'] = array(
 	'configuredpages-config' => 'Поставке',
+);
+
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'configuredpages-config' => 'Postavke',
 );
 
 /** Swedish (Svenska)
@@ -766,9 +789,18 @@ $messages['vi'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬) */
 $messages['zh-hans'] = array(
+	'configuredpages' => '页面已有复审设定',
+	'configuredpages-text' => '下面是已有和站点预设设定不同的审核设定。
+
+部份设定的更改是向读者展示的。',
+	'configuredpages-none' => '没有页面在这个清单中',
+	'configuredpages-config' => '设定',
+	'configuredpages-precedence' => '优先级：',
 	'configuredpages-prec-none' => '没有优先级',
 	'configuredpages-prec-quality' => '质量优先级',
 	'configuredpages-prec-pristine' => '原始优先级',
+	'configuredpages-def-draft' => '最新版本',
+	'configuredpages-def-stable' => '已出版的内容',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

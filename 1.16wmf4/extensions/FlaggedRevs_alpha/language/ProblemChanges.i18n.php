@@ -73,6 +73,13 @@ $messages['bg'] = array(
 	'problemchanges-category' => 'Категория:',
 );
 
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'problemchanges-category' => 'বিষয়শ্রেণী:',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  * @author Y-M D
@@ -131,7 +138,7 @@ $messages['de'] = array(
  * @author Xoser
  */
 $messages['diq'] = array(
-	'problemchanges' => 'Vuranayîşanê etiket biyo înan kontrol bike',
+	'problemchanges' => 'Vuranayîşanê etiket biyo vindeno',
 	'problemchanges-legend' => 'Pelanê ke be vurnayışi etiket biyê u seba çımraviyarnayışi pawenê lista ke',
 	'problemchanges-none' => 'Ser ena kriteri de pelan çini yo',
 	'problemchanges-category' => 'Kategorî:',
@@ -509,10 +516,11 @@ $messages['pt'] = array(
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
+ * @author Giro720
  */
 $messages['pt-br'] = array(
-	'problemchanges' => 'Analisar modificações etiquetadas',
-	'problemchanges-legend' => 'Lista páginas analisadas que possuem edições que não foram verificadas',
+	'problemchanges' => 'Alterações pendentes que foram assinaladas',
+	'problemchanges-legend' => 'Listar páginas com edições assinaladas aguardando revisão',
 	'problemchanges-none' => 'Atualmente não existem páginas que satisfaçam estes critérios',
 	'problemchanges-category' => 'Categoria:',
 );
@@ -593,6 +601,14 @@ $messages['sr-ec'] = array(
 	'problemchanges-legend' => 'Прелистај странице на чекању с означеним изменама за преглед',
 	'problemchanges-none' => 'Тренутно нема страница које испуњавају овај критеријум',
 	'problemchanges-category' => 'Категорија:',
+);
+
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'problemchanges' => 'Označene izmene na čekanju',
+	'problemchanges-legend' => 'Prelistaj stranice na čekanju s označenim izmenama za pregled',
+	'problemchanges-none' => 'Trenutno nema stranica koje ispunjavaju ovaj kriterijum',
+	'problemchanges-category' => 'Kategorija:',
 );
 
 /** Sundanese (Basa Sunda)
@@ -700,6 +716,8 @@ $messages['vi'] = array(
  * @author Jimmy xu wrk
  */
 $messages['zh-hans'] = array(
+	'problemchanges' => '标记审核',
+	'problemchanges-legend' => '列出页面正等待审核',
 	'problemchanges-none' => '目前没有页面符合这些条件',
 	'problemchanges-category' => '分类:',
 );
