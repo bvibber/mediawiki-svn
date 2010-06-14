@@ -2810,7 +2810,7 @@ mw.RemoteSearchDriver.prototype = {
 			$j( _this.target_container ).dialog( 'option', 'title', 
 				gM( 'mwe-preview_insert_resource', resource.title ) );
 
-			// Update buttons preview:
+			// Update buttons
 			$j( buttonPaneSelector )
 				.html(
 					$j.btnHtml( gM( 'rsd_do_insert' ), 'preview_do_insert', 'check' ) + ' ' )
@@ -2828,8 +2828,10 @@ mw.RemoteSearchDriver.prototype = {
 				.text( gM('mwe-do-more-modification' ) )
 				.click( function() {
 					$j( '#rsd_preview_display' ).remove();
+					
 					// Restore title:
 					$j( _this.target_container ).dialog( 'option', 'title', origTitle );
+					
 					// Restore buttons (from the clipEdit object::)
 					_this.clipEdit.updateInsertControlActions();
 					return false;
@@ -2841,15 +2843,16 @@ mw.RemoteSearchDriver.prototype = {
 			var pos = $j( _this.target_textbox ).textSelection( 'getCaretPosition' );			
 			var editWikiText = $j( _this.target_textbox ).val();
 			var wikiText = editWikiText.substr(0, pos) + embed_code + editWikiText.substr( pos );
+			
 			mw.parseWikiText( 
 				wikiText,
 				_this.target_title,
-				function( phtml ) {
-					$j( '#rsd_preview_display' ).html( phtml );
+				function( previewHtml ) {
+					$j( '#rsd_preview_display' ).html( previewHtml );
 					if( mw.documentHasPlayerTags() ) {
 						mw.load( 'EmbedPlayer', function() {							
 							// Update the display of video tag items (if any) 
-							$j( mw.getConfig( 'rewritePlayerTags' ) ).embedPlayer();
+							$j.embedPlayers();
 						});
 					}
 				}

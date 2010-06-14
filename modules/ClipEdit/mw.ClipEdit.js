@@ -700,7 +700,7 @@ mw.ClipEdit.prototype = {
 		} else if ( this.getMediaType() == 'video' ) {
 			this.applyVideoStartEnd();
 		}
-		// copy over the desc text to the resource object
+		// copy over the description text to the resource object
 		_this.resource['inlineDesc'] = $j( '#mv_inline_img_desc' ).val();
 	},
 	
@@ -960,7 +960,7 @@ mw.ClipEdit.prototype = {
 	/**
 	* Do the crop Interface
 	*/
-	doCropInterface:function() {
+	doCropInterface: function() {
 		var _this = this;
 		$j( '.mw_crop_msg' ).hide();
 		$j( '.mw_crop_msg_load' ).show();		
