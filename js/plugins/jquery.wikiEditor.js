@@ -144,7 +144,7 @@ $.wikiEditor = {
 		}
 	},
 	/**
-	 * Provieds a way to extract a property of an object in a certain language, falling back on the property keyed as
+	 * Provides a way to extract a property of an object in a certain language, falling back on the property keyed as
 	 * 'default'. If such key doesn't exist, the object itself is considered the actual value, which should ideally
 	 * be the case so that you may use a string or object of any number of strings keyed by language with a default.
 	 * 
@@ -155,7 +155,7 @@ $.wikiEditor = {
 		return object[lang || wgUserLanguage] || object['default'] || object;
 	},
 	/**
-	 * Provieds a way to extract the path of an icon in a certain language, automatically appending a version number for
+	 * Provides a way to extract the path of an icon in a certain language, automatically appending a version number for
 	 * caching purposes and prepending an image path when icon paths are relative.
 	 * 
 	 * @param icon Icon object from e.g. toolbar config
@@ -170,6 +170,24 @@ $.wikiEditor = {
 			src = path + src;
 		}
 		return src + '?' + wgWikiEditorIconVersion;
+	},
+	/**
+	 * Get the sprite offset for a language if available, icon for a language if available, or the default offset or icon,
+	 * in that order of preference.
+	 * @param icon Icon object, see autoIcon()
+	 * @param offset Offset object
+	 * @param path Icon path, see autoIcon()
+	 * @param lang Language code, defaults to wgUserLanguage
+	 */
+	'autoIconOrOffset': function( icon, offset, path, lang ) {
+		lang = lang || wgUserLanguage;
+		if ( typeof offset == 'object' && lang in offset ) {
+			return offset[lang];
+		} else if ( typeof icon == 'object' && lang in icon ) {
+			return $.wikiEditor.autoIcon( icon, undefined, lang );
+		} else {
+			return $.wikiEditor.autoLang( offset, lang );
+		}
 	}
 };
 
