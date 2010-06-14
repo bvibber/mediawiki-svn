@@ -27,6 +27,7 @@ $j(document).ready( function() {
 						offset: {
 							'default': [2, -574],
 							'en': [2, -142],
+							'cs': [2, -142],
 							'de': [2, -214],
 							'fr': [2, -286],
 							'es': [2, -358],
@@ -40,6 +41,7 @@ $j(document).ready( function() {
 						icon: {
 							'default': 'format-bold.png',
 							'en': 'format-bold-B.png',
+							'cs': 'format-bold-B.png',
 							'de': 'format-bold-F.png',
 							'fr': 'format-bold-G.png',
 							'es': 'format-bold-N.png',
@@ -48,7 +50,8 @@ $j(document).ready( function() {
 							'nl': 'format-bold-V.png',
 							'pt': 'format-bold-N.png',
 							'pt-br': 'format-bold-N.png',
-							'pl': 'format-bold-B.png'
+							'pl': 'format-bold-B.png',
+							'ru': 'format-bold-Ж.png'
 						},
 						action: {
 							type: 'encapsulate',
@@ -68,6 +71,7 @@ $j(document).ready( function() {
 						offset: {
 							'default': [2, -718],
 							'en': [2, -862],
+							'cs': [2, -862],
 							'de': [2, -934],
 							'fr': [2, -862],
 							'es': [2, -790],
@@ -76,11 +80,13 @@ $j(document).ready( function() {
 							'nl': [2, -790],
 							'pt': [2, -862],
 							'pt-br': [2, -862],
-							'pl': [2, -862]
+							'pl': [2, -862],
+							'ru': [2, -934]
 						},
 						icon: {
 							'default': 'format-italic.png',
 							'en': 'format-italic-I.png',
+							'cs': 'format-italic-I.png',
 							'de': 'format-italic-K.png',
 							'fr': 'format-italic-I.png',
 							'es': 'format-italic-C.png',
@@ -89,7 +95,8 @@ $j(document).ready( function() {
 							'nl': 'format-italic-C.png',
 							'pt': 'format-italic-I.png',
 							'pt-br': 'format-italic-I.png',
-							'pl': 'format-italic-I.png'
+							'pl': 'format-italic-I.png',
+							'ru': 'format-italic-K.png'
 						},
 						action: {
 							type: 'encapsulate',

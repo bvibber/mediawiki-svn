@@ -316,19 +316,24 @@ fn: {
 		switch ( tool.type ) {
 			case 'button':
 				var src = $.wikiEditor.autoIcon( tool.icon, $.wikiEditor.imgPath + 'toolbar/' );
-				var $button;
+				var $button = null;
 				if ( 'offset' in tool ) {
-					var offset = $.wikiEditor.autoLang( tool.offset );
-					$button = $( '<span />' )
-						.attr( {
-							'alt' : label,
-							'title' : label,
-							'rel' : id,
-							'class' : 'wikiEditor-toolbar-spritedButton'
-						} )
-						.text( label )
-						.css( 'backgroundPosition', offset[0] + 'px ' + offset[1] + 'px' );
-				} else {
+					var offsetOrIcon = $.wikiEditor.autoIconOrOffset( tool.icon, tool.offset,
+						$.wikiEditor.imgPath + 'toolbar/'
+					);
+					if ( typeof offsetOrIcon == 'object' ) {
+						$button = $( '<span />' )
+							.attr( {
+								'alt' : label,
+								'title' : label,
+								'rel' : id,
+								'class' : 'wikiEditor-toolbar-spritedButton'
+							} )
+							.text( label )
+							.css( 'backgroundPosition', offsetOrIcon[0] + 'px ' + offsetOrIcon[1] + 'px' );
+					}
+				}
+				if ( !$button ) {
 					$button = $( '<img />' )
 						.attr( {
 							'src' : src,

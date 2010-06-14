@@ -13,6 +13,8 @@ mw.usability = {
 }
 /**
  * Load jQuery UI if requested, otherwise just execute the callback immediately.
+ * This is a dirty hack used to work around a bug in older versions of Netscape,
+ * which crash when trying to parse jQuery UI
  */
 mw.usability.load = function( deps, callback ) {
 	// If $j.ui is in deps, load jQuery UI
@@ -22,7 +24,7 @@ mw.usability.load = function( deps, callback ) {
 			needJUI = true;
 		}
 	}
-	if ( needJUI ) {
+	if ( needJUI && typeof $j.ui == 'undefined' ) {
 		$j.getScript( wgScriptPath + '/extensions/UsabilityInitiative/js/js2stopgap/jui.combined.min.js', callback );
 	} else {
 		callback();
@@ -1931,6 +1933,7 @@ $.wikiEditor = {
 			// jQuery minimums
 			'safari': [['>=', 3]],
 			'chrome': [['>=', 3]],
+			'netscape': [['>=', 9]],
 			'blackberry': false,
 			'ipod': false,
 			'iphone': false
@@ -1946,6 +1949,7 @@ $.wikiEditor = {
 			// jQuery minimums
 			'safari': [['>=', 3]],
 			'chrome': [['>=', 3]],
+			'netscape': [['>=', 9]],
 			'blackberry': false,
 			'ipod': false,
 			'iphone': false
@@ -2028,7 +2032,7 @@ $.wikiEditor = {
 		}
 	},
 	/**
-	 * Provieds a way to extract a property of an object in a certain language, falling back on the property keyed as
+	 * Provides a way to extract a property of an object in a certain language, falling back on the property keyed as
 	 * 'default'. If such key doesn't exist, the object itself is considered the actual value, which should ideally
 	 * be the case so that you may use a string or object of any number of strings keyed by language with a default.
 	 * 
@@ -2039,7 +2043,7 @@ $.wikiEditor = {
 		return object[lang || wgUserLanguage] || object['default'] || object;
 	},
 	/**
-	 * Provieds a way to extract the path of an icon in a certain language, automatically appending a version number for
+	 * Provides a way to extract the path of an icon in a certain language, automatically appending a version number for
 	 * caching purposes and prepending an image path when icon paths are relative.
 	 * 
 	 * @param icon Icon object from e.g. toolbar config
@@ -2054,6 +2058,24 @@ $.wikiEditor = {
 			src = path + src;
 		}
 		return src + '?' + wgWikiEditorIconVersion;
+	},
+	/**
+	 * Get the sprite offset for a language if available, icon for a language if available, or the default offset or icon,
+	 * in that order of preference.
+	 * @param icon Icon object, see autoIcon()
+	 * @param offset Offset object
+	 * @param path Icon path, see autoIcon()
+	 * @param lang Language code, defaults to wgUserLanguage
+	 */
+	'autoIconOrOffset': function( icon, offset, path, lang ) {
+		lang = lang || wgUserLanguage;
+		if ( typeof offset == 'object' && lang in offset ) {
+			return offset[lang];
+		} else if ( typeof icon == 'object' && lang in icon ) {
+			return $.wikiEditor.autoIcon( icon, undefined, lang );
+		} else {
+			return $.wikiEditor.autoLang( offset, lang );
+		}
 	}
 };
 
@@ -3778,21 +3800,23 @@ api: {
 		$.wikiEditor.modules.dialogs.fn.create( context, data )
 	},
 	openDialog: function( context, module ) {
-		if ( module in $.wikiEditor.modules.dialogs.modules ) {
-			var mod = $.wikiEditor.modules.dialogs.modules[module];
-			var $dialog = $( '#' + mod.id );
-			if ( $dialog.length == 0 ) {
-				$.wikiEditor.modules.dialogs.fn.reallyCreate( context, mod );
-				$dialog = $( '#' + mod.id );
+		mw.usability.load( [ '$j.ui', '$j.ui.dialog', '$j.ui.draggable', '$j.ui.resizable' ], function() {
+			if ( module in $.wikiEditor.modules.dialogs.modules ) {
+				var mod = $.wikiEditor.modules.dialogs.modules[module];
+				var $dialog = $( '#' + mod.id );
+				if ( $dialog.length == 0 ) {
+					$.wikiEditor.modules.dialogs.fn.reallyCreate( context, mod );
+					$dialog = $( '#' + mod.id );
+				}
+				
+				// Workaround for bug in jQuery UI: close button in top right retains focus
+				$dialog.closest( '.ui-dialog' )
+					.find( '.ui-dialog-titlebar-close' )
+					.removeClass( 'ui-state-focus' );
+				
+				$dialog.dialog( 'open' );
 			}
-			
-			// Workaround for bug in jQuery UI: close button in top right retains focus
-			$dialog.closest( '.ui-dialog' )
-				.find( '.ui-dialog-titlebar-close' )
-				.removeClass( 'ui-state-focus' );
-			
-			$dialog.dialog( 'open' );
-		}
+		} );
 	},
 	closeDialog: function( context, module ) {
 		if ( module in $.wikiEditor.modules.dialogs.modules ) {
@@ -3840,46 +3864,44 @@ fn: {
 	 * @param {Object} module Dialog module object
 	 */
 	reallyCreate: function( context, module ) {
-		mw.usability.load( [ '$j.ui', '$j.ui.dialog', '$j.ui.draggable', '$j.ui.resizable' ], function() {
-			var configuration = module.dialog;
-			// Add some stuff to configuration
-			configuration.bgiframe = true;
-			configuration.autoOpen = false;
-			configuration.modal = true;
-			configuration.title = $.wikiEditor.autoMsg( module, 'title' );
-			// Transform messages in keys
-			// Stupid JS won't let us do stuff like
-			// foo = { mw.usability.getMsg( 'bar' ): baz }
-			configuration.newButtons = {};
-			for ( msg in configuration.buttons )
-				configuration.newButtons[mw.usability.getMsg( msg )] = configuration.buttons[msg];
-			configuration.buttons = configuration.newButtons;
-			// Create the dialog <div>
-			var dialogDiv = $( '<div />' )
-				.attr( 'id', module.id )
-				.html( module.html )
-				.data( 'context', context )
-				.appendTo( $( 'body' ) )
-				.each( module.init )
-				.dialog( configuration );
-			// Set tabindexes on buttons added by .dialog()
-			$.wikiEditor.modules.dialogs.fn.setTabindexes( dialogDiv.closest( '.ui-dialog' )
-				.find( 'button' ).not( '[tabindex]' ) );
-			if ( !( 'resizeme' in module ) || module.resizeme ) {
-				dialogDiv
-					.bind( 'dialogopen', $.wikiEditor.modules.dialogs.fn.resize )
-					.find( '.ui-tabs' ).bind( 'tabsshow', function() {
-						$(this).closest( '.ui-dialog-content' ).each(
-							$.wikiEditor.modules.dialogs.fn.resize );
-					});
-			}
-			dialogDiv.bind( 'dialogclose', function() {
-				context.fn.restoreSelection();
-			} );
-			
-			// Let the outside world know we set up this dialog
-			context.$textarea.trigger( 'wikiEditor-dialogs-loaded-' + mod );
+		var configuration = module.dialog;
+		// Add some stuff to configuration
+		configuration.bgiframe = true;
+		configuration.autoOpen = false;
+		configuration.modal = true;
+		configuration.title = $.wikiEditor.autoMsg( module, 'title' );
+		// Transform messages in keys
+		// Stupid JS won't let us do stuff like
+		// foo = { mw.usability.getMsg( 'bar' ): baz }
+		configuration.newButtons = {};
+		for ( msg in configuration.buttons )
+			configuration.newButtons[mw.usability.getMsg( msg )] = configuration.buttons[msg];
+		configuration.buttons = configuration.newButtons;
+		// Create the dialog <div>
+		var dialogDiv = $( '<div />' )
+			.attr( 'id', module.id )
+			.html( module.html )
+			.data( 'context', context )
+			.appendTo( $( 'body' ) )
+			.each( module.init )
+			.dialog( configuration );
+		// Set tabindexes on buttons added by .dialog()
+		$.wikiEditor.modules.dialogs.fn.setTabindexes( dialogDiv.closest( '.ui-dialog' )
+			.find( 'button' ).not( '[tabindex]' ) );
+		if ( !( 'resizeme' in module ) || module.resizeme ) {
+			dialogDiv
+				.bind( 'dialogopen', $.wikiEditor.modules.dialogs.fn.resize )
+				.find( '.ui-tabs' ).bind( 'tabsshow', function() {
+					$(this).closest( '.ui-dialog-content' ).each(
+						$.wikiEditor.modules.dialogs.fn.resize );
+				});
+		}
+		dialogDiv.bind( 'dialogclose', function() {
+			context.fn.restoreSelection();
 		} );
+		
+		// Let the outside world know we set up this dialog
+		context.$textarea.trigger( 'wikiEditor-dialogs-loaded-' + mod );
 	},
 	/**
 	 * Resize a dialog so its contents fit
@@ -5546,6 +5568,7 @@ evt: {
 				var context = event.data.context;
 				$.wikiEditor.modules.toc.fn.unhighlight( context );
 			});
+		$.wikiEditor.modules.toc.fn.improveUI();
 		$.wikiEditor.modules.toc.evt.resize( context );
 	},
 	resize: function( context, event ) {
@@ -6123,20 +6146,21 @@ fn: {
 				{ 'position': 'right', 'tooltip': true, 'restoreText': true }
 			);
 		}
+	},
+	improveUI: function() {
+		/*
+		 * Extending resizable to allow west resizing without altering the left position attribute
+		 */
+		$.ui.plugin.add( "resizable", "preventPositionLeftChange", {
+			resize: function( event, ui ) {
+				$( this ).data( "resizable" ).position.left = 0;
+			}
+		} );
 	}
 }
 
 };
 
-/*
- * Extending resizable to allow west resizing without altering the left position attribute
- */
-$.ui.plugin.add( "resizable", "preventPositionLeftChange", {
-	resize: function( event, ui ) {
-		$( this ).data( "resizable" ).position.left = 0;
-	}
-} );
- 
 } ) ( jQuery );
 /**
  * Toolbar module for wikiEditor
@@ -6456,19 +6480,24 @@ fn: {
 		switch ( tool.type ) {
 			case 'button':
 				var src = $.wikiEditor.autoIcon( tool.icon, $.wikiEditor.imgPath + 'toolbar/' );
-				var $button;
+				var $button = null;
 				if ( 'offset' in tool ) {
-					var offset = $.wikiEditor.autoLang( tool.offset );
-					$button = $( '<span />' )
-						.attr( {
-							'alt' : label,
-							'title' : label,
-							'rel' : id,
-							'class' : 'wikiEditor-toolbar-spritedButton'
-						} )
-						.text( label )
-						.css( 'backgroundPosition', offset[0] + 'px ' + offset[1] + 'px' );
-				} else {
+					var offsetOrIcon = $.wikiEditor.autoIconOrOffset( tool.icon, tool.offset,
+						$.wikiEditor.imgPath + 'toolbar/'
+					);
+					if ( typeof offsetOrIcon == 'object' ) {
+						$button = $( '<span />' )
+							.attr( {
+								'alt' : label,
+								'title' : label,
+								'rel' : id,
+								'class' : 'wikiEditor-toolbar-spritedButton'
+							} )
+							.text( label )
+							.css( 'backgroundPosition', offsetOrIcon[0] + 'px ' + offsetOrIcon[1] + 'px' );
+					}
+				}
+				if ( !$button ) {
 					$button = $( '<img />' )
 						.attr( {
 							'src' : src,
