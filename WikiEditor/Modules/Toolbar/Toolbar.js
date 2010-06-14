@@ -51,7 +51,7 @@ $j(document).ready( function() {
 							'pt': 'format-bold-N.png',
 							'pt-br': 'format-bold-N.png',
 							'pl': 'format-bold-B.png',
-							'ru': 'format-bold-Ж.png'
+							'ru': 'format-bold-ru.png'
 						},
 						action: {
 							type: 'encapsulate',
