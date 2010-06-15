@@ -7,11 +7,11 @@
  
  // This is still experimental
 class TiffReader {
-	protected $time		 = NULL;
-	protected $file		 = NULL;
-	protected $file_handle  = NULL;
-	protected $order		= NULL;
-	protected $the_answer   = NULL;
+	protected $time		 = null;
+	protected $file		 = null;
+	protected $file_handle  = null;
+	protected $order		= null;
+	protected $the_answer   = null;
 	protected $embed_files  = 0;
 	protected $ifd_offsets  = array();
 	protected $real_eof	 = 0;
@@ -19,9 +19,9 @@ class TiffReader {
 
 	protected $unknown_fields = false;
 
-	protected $hex   = NULL;
-	protected $short = NULL;
-	protected $long  = NULL;
+	protected $hex   = null;
+	protected $short = null;
+	protected $long  = null;
 
 	public function __construct( $file ) {
 		$this->time = microtime( true );
@@ -34,8 +34,7 @@ class TiffReader {
 			$this->hex   = 'h*';
 			$this->short = 'v*';
 			$this->long  = 'V*';
-		}
-		else {
+		} else {
 			$this->hex   = 'H*';
 			$this->short = 'n*';
 			$this->long  = 'N*';
@@ -53,13 +52,14 @@ class TiffReader {
 		if ( $size > $this->real_eof ) {
 			fseek( $this->file_handle, 0, SEEK_SET );
 			$chunk = fread( $this->file_handle, $this->real_eof );
-		}
-		else {
+		} else {
 			fseek( $this->file_handle, ( $this->real_eof - $size ), SEEK_SET );
 			$chunk = fread( $this->file_handle, $size );
 		}
 		# check for HTML doctype
-		if ( preg_match( '/<!DOCTYPE *X?HTML/', $chunk ) ) return true;
+		if ( preg_match( '/<!DOCTYPE *X?HTML/', $chunk ) ) {
+			return true;
+		}
 
 		$tags = array( '<a href',
 			'<body',
@@ -76,13 +76,19 @@ class TiffReader {
 			}
 		}
 		# look for script-types
-		if ( preg_match( '!type\s*=\s*[\'"]?\s*(?:\w*/)?(?:ecma|java)!sim', $chunk ) ) return true;
+		if ( preg_match( '!type\s*=\s*[\'"]?\s*(?:\w*/)?(?:ecma|java)!sim', $chunk ) ) {
+			return true;
+		}
 
-		# look for html-style script-urls
-		if ( preg_match( '!(?:href|src|data)\s*=\s*[\'"]?\s*(?:ecma|java)script:!sim', $chunk ) ) return true;
+		# look for HTML-style script-urls
+		if ( preg_match( '!(?:href|src|data)\s*=\s*[\'"]?\s*(?:ecma|java)script:!sim', $chunk ) ) {
+			return true;
+		}
 
-		# look for css-style script-urls
-		if ( preg_match( '!url\s*\(\s*[\'"]?\s*(?:ecma|java)script:!sim', $chunk ) ) return true;
+		# look for CSS-style script-urls
+		if ( preg_match( '!url\s*\(\s*[\'"]?\s*(?:ecma|java)script:!sim', $chunk ) ) {
+			return true;
+		}
 	}
 
 	public function checkSize() {
@@ -132,7 +138,9 @@ class TiffReader {
 			// run through all entries of this ifd an read them out
 			for ( $i = 0; $i < $entries; $i++ ) {
 				$tmp = $this->readIFDEntry();
-				if ( !$tmp ) { return false;  }
+				if ( !$tmp ) {
+					return false;
+				}
 				$this->ifd_offsets[$this->embed_files]['data'][$tmp['tag']] = $tmp;
 			}
 
@@ -152,28 +160,25 @@ class TiffReader {
 		
 		if ( $debug ) {
 			echo "<h2>TiffReader-Debug:</h2>\n";
-			echo "<b>File: </b>" . $this->file . "<br />\n";
+			echo '<b>File: </b>' . $this->file . "<br />\n";
 			if ( $this->order ) {
 				echo "<b>Byte-Order: </b>little Endian<br />\n";
-			}
-			else {
+			} else {
 				echo "<b>Byte-Order: </b>big Endian<br />\n";
 			}
-			echo "<b>Valid Tiff: </b>";
+			echo '<b>Valid Tiff: </b>';
 			if ( $this->the_answer[1] == 42 ) {
 				echo "yes<br />\n";
-			}
-			else {
+			} else {
 				echo "no<br />\n";
 			}
-			echo "<b>Physicaly Size: </b>" . $this->real_eof . " bytes<br />\n";
-			echo "<b>Calculated Size: </b>" . $this->highest_addr . " bytes<br />\n";
-			echo "<b>Difference in Size: </b>" . ( $this->real_eof - $this->highest_addr ) . " bytes<br />\n";
-			echo "<b>Unknown Fields: </b>";
+			echo '<b>Physicaly Size: </b>' . $this->real_eof . " bytes<br />\n";
+			echo '<b>Calculated Size: </b>' . $this->highest_addr . " bytes<br />\n";
+			echo '<b>Difference in Size: </b>' . ( $this->real_eof - $this->highest_addr ) . " bytes<br />\n";
+			echo '<b>Unknown Fields: </b>';
 			if ( $this->unknown_fields ) {
 				echo "yes<br />\n";
-			}
-			else {
+			} else {
 				echo "no<br />\n";
 			}
 			echo "<b>Embed Files: </b>" . $this->embed_files . "<br />\n";
@@ -187,14 +192,16 @@ class TiffReader {
 		$count = unpack( $this->long, fread( $this->file_handle, 4 ) );
 		$value = unpack( $this->long, fread( $this->file_handle, 4 ) );
 		if ( !is_array( $tag ) || !is_array( $type ) || !is_array( $count ) || !is_array( $value ) ||
-		   !isset( $tag[1] ) || !isset( $type[1] ) || !isset( $count[1] ) || !isset( $value[1] ) ) {
+			!isset( $tag[1] ) || !isset( $type[1] ) || !isset( $count[1] ) || !isset( $value[1] ) ) {
 			$this->the_answer = 0;
 			return false;
 		}
-		return array( 'tag'   => $tag[1],
-		'type'  => $type[1],
-		'count' => $count[1],
-		'value' => $value[1] );
+		return array(
+			'tag'   => $tag[1],
+			'type'  => $type[1],
+			'count' => $count[1],
+			'value' => $value[1]
+		);
 	}
 
 	protected function calculateDataRange() {
@@ -258,8 +265,7 @@ class TiffReader {
 					for ( $i = 0; $i < $ifd['data'][273]['count']; $i++ ) {
 						$stripes[] = unpack( $this->short, fread( $this->file_handle, 2 ) );
 					}
-				}
-				else {
+				} else {
 					for ( $i = 0; $i < $ifd['data'][273]['count']; $i++ ) {
 						$stripes[] = unpack( $this->long, fread( $this->file_handle, 4 ) );
 					}
@@ -273,8 +279,7 @@ class TiffReader {
 					for ( $i = 0; $i < $ifd['data'][279]['count']; $i++ ) {
 						$stripebytes[] = unpack( $this->short, fread( $this->file_handle, 2 ) );
 					}
-				}
-				else {
+				} else {
 					for ( $i = 0; $i < $ifd['data'][279]['count']; $i++ ) {
 						$stripebytes[] = unpack( $this->long, fread( $this->file_handle, 4 ) );
 					}
@@ -304,8 +309,7 @@ class TiffReader {
 					for ( $i = 0; $i < $ifd['data'][325]['count']; $i++ ) {
 						$tilebytes[] = unpack( $this->short, fread( $this->file_handle, 2 ) );
 					}
-				}
-				else {
+				} else {
 					for ( $i = 0; $i < $ifd['data'][325]['count']; $i++ ) {
 						$tilebytes[] = unpack( $this->long, fread( $this->file_handle, 4 ) );
 					}

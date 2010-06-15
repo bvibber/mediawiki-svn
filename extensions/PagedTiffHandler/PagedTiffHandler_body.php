@@ -1,6 +1,6 @@
 <?php
- /**
- * Copyright (C) Wikimedia Deutschland, 2009
+/**
+ * Copyright © Wikimedia Deutschland, 2009
  * Authors Hallo Welt! Medienwerkstatt GmbH
  * Authors Sebastian Ulbricht, Daniel Lynge, Marc Reymann, Markus Glaser
  *
@@ -18,7 +18,6 @@
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
- *
  */
 
 class PagedTiffHandler extends ImageHandler {
@@ -35,10 +34,18 @@ class PagedTiffHandler extends ImageHandler {
 		return true;
 	}
 
-	function isEnabled() { return true; }
-	function mustRender( $img ) { return true; }
+	function isEnabled() {
+		return true;
+	}
+
+	function mustRender( $img ) {
+		return true;
+	}
+
 	function isMultiPage( $img ) {
-		if ( !$img ) return true;
+		if ( !$img ) {
+			return true;
+		}
 		$meta = unserialize( $img->metadata );
 		return $meta['page_amount'] > 1;
 	}
@@ -136,8 +143,7 @@ class PagedTiffHandler extends ImageHandler {
 		if ( in_array( $name, array( 'width', 'height', 'page', 'lossy' ) ) ) {
 			if ( $name == 'lossy' ) {
 				return in_array( $value, array( 1, 0, '1', '0', 'true', 'false', 'lossy', 'lossless' ) );
-			}
-			else if ( $value <= 0 || $value > 65535 ) { // ImageMagick hits an overflow for values over 65536
+			} elseif ( $value <= 0 || $value > 65535 ) { // ImageMagick hits an overflow for values over 65536
 				return false;
 			} else {
 				return true;
@@ -184,7 +190,7 @@ class PagedTiffHandler extends ImageHandler {
 	 */
 	function getScriptParams( $params ) { # # wtf?? ^DK
 		// FIXME: This function is unused, seems to be useless,
-	// and could be replaced with an array_intersect() call
+		// and could be replaced with an array_intersect() call
 		return array(
 			'width' => $params['width'],
 			'page' => $params['page'],
@@ -289,15 +295,14 @@ class PagedTiffHandler extends ImageHandler {
 			$cmd .= ' im_resize_linear "' . wfEscapeShellArg( $srcPath ) . ':' . ( $page - 1 ) . '" ';
 			$cmd .= wfEscapeShellArg( $dstPath );
 			$cmd .= " {$width} {$height} 2>&1";
-		}
-		else {
+		} else {
 			$cmd = wfEscapeShellArg( $wgImageMagickConvertCommand );
 			$cmd .= " " . wfEscapeShellArg( $srcPath ) . "[" . ( $page - 1 ) . "]";
 			$cmd .= " -depth 8 -resize {$width} ";
 			$cmd .= wfEscapeShellArg( $dstPath );
 		}
 
-		wfRunHooks( "PagedTiffHandlerRenderCommand", array( &$cmd, $srcPath, $dstPath, $page, $width, $height ) );
+		wfRunHooks( 'PagedTiffHandlerRenderCommand', array( &$cmd, $srcPath, $dstPath, $page, $width, $height ) );
 
 		wfProfileIn( 'PagedTiffHandler' );
 		wfDebug( __METHOD__ . ": $cmd\n" );
@@ -326,16 +331,13 @@ class PagedTiffHandler extends ImageHandler {
 			$data = $this->getMetaArray( $image );
 			if ( ( strtolower( $data['page_data'][$page]['alpha'] ) == 'true' ) ) {
 				return '.png';
-			}
-			else {
+			} else {
 				return '.jpg';
 			}
-		}
-		else {
+		} else {
 			if ( in_array( $lossy, array( 1, '1', 'true', 'lossy' ) ) ) {
 				return '.jpg';
-			}
-			else {
+			} else {
 				return '.png';
 			}
 		}
@@ -346,12 +348,14 @@ class PagedTiffHandler extends ImageHandler {
 	 */
 	function pageCount( $image ) {
 		$data = $this->getMetaArray( $image );
-		if ( !$data ) return false;
+		if ( !$data ) {
+			return false;
+		}
 		return intval( $data['page_amount'] );
 	}
 
 	/**
-	 * Returns a new Error-Message.
+	 * Returns a new error message.
 	 */
 	protected function doThumbError( $width, $height, $msg ) {
 		wfLoadExtensionMessages( 'PagedTiffHandler' );
@@ -362,8 +366,8 @@ class PagedTiffHandler extends ImageHandler {
 	/**
 	 * Get handler-specific metadata which will be saved in the img_metadata field.
 	 *
-	 * @param Image $image The image object, or false if there isn't one
-	 * @param string $fileName The filename
+	 * @param $image Image: the image object, or false if there isn't one
+	 * @param $path String: path to the image?
 	 * @return string
 	 */
 	function getMetadata( $image, $path ) {
@@ -375,7 +379,7 @@ class PagedTiffHandler extends ImageHandler {
 	 */
 	function getLongDesc( $image ) {
 		global $wgLang, $wgRequest;
-		$page = $wgRequest->getText('page', 1);
+		$page = $wgRequest->getText( 'page', 1 );
 		if ( !isset( $page ) || $page < 1 ) {
 			$page = 1;
 		}
@@ -385,12 +389,15 @@ class PagedTiffHandler extends ImageHandler {
 		$metadata = $this->getMetaArray( $image );
 		if ( $metadata ) {
 			wfLoadExtensionMessages( 'PagedTiffHandler' );
-			return wfMsgExt( 'tiff-file-info-size', 'parseinline',
-			$wgLang->formatNum( $metadata['page_data'][$page]['width'] ),
-			$wgLang->formatNum( $metadata['page_data'][$page]['height'] ),
-			$wgLang->formatSize( $image->getSize() ),
-			$image->getMimeType(),
-			$page );
+			return wfMsgExt(
+				'tiff-file-info-size',
+				'parseinline',
+				$wgLang->formatNum( $metadata['page_data'][$page]['width'] ),
+				$wgLang->formatNum( $metadata['page_data'][$page]['height'] ),
+				$wgLang->formatSize( $image->getSize() ),
+				$image->getMimeType(),
+				$page
+			);
 		}
 		return true;
 	}
@@ -507,29 +514,31 @@ class PagedTiffHandler extends ImageHandler {
 
 	/**
 	 * Returns a PagedTiffImage or creates a new one if it doesn't exist.
-	 * @param Image $image The image object, or false if there isn't one
-	 * @param string $fileName The filename
+	 * @param $image Image: The image object, or false if there isn't one
+	 * @param $path String: path to the image?
 	 */
 	static function getTiffImage( $image, $path ) {
 		// If no Image object is passed, a TiffImage is created based on $path .
-	// If there is an Image object, we check whether there's already a TiffImage instance in there;
-	// if not, a new instance is created and stored in the Image object
-		if ( !$image )
+		// If there is an Image object, we check whether there's already a TiffImage instance in there;
+		// if not, a new instance is created and stored in the Image object
+		if ( !$image ) {
 			$tiffimg = new PagedTiffImage( $path );
-		elseif ( !isset( $image->tiffImage ) )
+		} elseif ( !isset( $image->tiffImage ) ) {
 			$tiffimg = $image->tiffImage = new PagedTiffImage( $path );
-		else
+		} else {
 			$tiffimg = $image->tiffImage;
+		}
 
 		return $tiffimg;
 	}
 
 	/**
-	 * Returns an Array with the Image-Metadata.
+	 * Returns an Array with the Image metadata.
 	 */
 	function getMetaArray( $image ) {
-		if ( isset( $image->tiffMetaArray ) )
+		if ( isset( $image->tiffMetaArray ) ) {
 			return $image->tiffMetaArray;
+		}
 
 		$metadata = $image->getMetadata();
 
@@ -554,7 +563,10 @@ class PagedTiffHandler extends ImageHandler {
 	 * Returns false if unknown or if the document is not multi-page.
 	 */
 	function getPageDimensions( $image, $page ) {
-		if ( !$page ) { $page = 1; } // makeImageLink2 (Linker.php) sets $page to false if no page parameter in wiki code is set
+		// makeImageLink2 (Linker.php) sets $page to false if no page parameter in wiki code is set
+		if ( !$page ) {
+			$page = 1;
+		}
 		if ( $page > $this->pageCount( $image ) ) {
 			$page = $this->pageCount( $image );
 		}
