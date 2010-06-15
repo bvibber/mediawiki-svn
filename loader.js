@@ -135,7 +135,7 @@ mw.addClassFilePaths( {
 	"mw.Language"			: "languages/mw.Language.js",
 	"mw.Parser"				: "languages/mw.Parser.js",
 
-	"JSON" : "libraries/json/json2.js",
+	"JSON" 					: "libraries/json/json2.js",
 
 	"$j.replaceText.js"		: "libraries/jquery/plugins/jquery.replaceText.js",
 	
