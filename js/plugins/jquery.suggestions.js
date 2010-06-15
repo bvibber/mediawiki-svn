@@ -278,7 +278,7 @@ $.suggestions = {
 			// Arrow down
 			case 40:
 				if ( wasVisible ) {
-					$.suggestions.highlight( context, 'next', true );
+					$.suggestions.highlight( context, 'next', false );
 				} else {
 					$.suggestions.update( context, false );
 				}
@@ -287,7 +287,7 @@ $.suggestions = {
 			// Arrow up
 			case 38:
 				if ( wasVisible ) {
-					$.suggestions.highlight( context, 'prev', true );
+					$.suggestions.highlight( context, 'prev', false );
 				}
 				preventDefault = wasVisible;
 				break;
