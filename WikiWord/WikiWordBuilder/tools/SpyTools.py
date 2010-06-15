@@ -18,10 +18,10 @@ def escape(text):
 
     if hi == 0:
 	if lo<32 or lo>127:
-	  s += '\\u00%0x' % lo
+	  s += '\\u00%02x' % lo
 	else: 
 	  s += ch;
     else:
-	s += '\\u%0x%0x' % (hi, lo)
+	s += '\\u%02x%02x' % (hi, lo)
 
   return s;
