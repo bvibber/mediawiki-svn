@@ -215,7 +215,10 @@ $.suggestions = {
 	 */
 	highlight: function( context, result, updateTextbox ) {
 		var selected = context.data.$container.find( '.suggestions-result-current' );
-		if ( !result.get || selected.get( 0 ) != result.get( 0 ) ) {
+		if ( result.get && selected.get( 0 ) == result.get( 0 ) ) { 
+			// if the currently selected item is equal to the result, exit please
+			return true; 
+		} else if ( !result.get || selected.get( 0 ) != result.get( 0 ) ) {
 			if ( result == 'prev' ) {
 				if( selected.is( '.suggestions-special' ) ) {
 					result = context.data.$container.find( '.suggestions-result:last' )
