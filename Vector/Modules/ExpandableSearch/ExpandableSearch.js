@@ -5,6 +5,32 @@ $j( document ).ready( function() {
 	if( !wgVectorEnabledModules.expandablesearch || skin != 'vector' ) {
 		return true;
 	}
+	
+	/* Browser Support */
+
+	var map = {
+		// Left-to-right languages
+		'ltr': {
+			// Collapsible Nav is broken in Opera < 9.6 and Konqueror < 4
+			'msie': [['>=', 8]],
+			'blackberry': false,
+			'ipod': false,
+			'iphone': false,
+			'ps3': false
+		},
+		// Right-to-left languages
+		'rtl': {
+			'msie': [['>=', 8]],
+			'blackberry': false,
+			'ipod': false,
+			'iphone': false,
+			'ps3': false
+		}
+	};
+	if ( !mw.usability.testBrowser( map ) ) {
+		return true;
+	}
+	
 	$j( '#searchInput' )
 		.expandableField( { 
 			'beforeExpand': function( context ) {
