@@ -64,7 +64,7 @@ class UsabilityInitiativeHooks {
 				array( 'src' => 'js/plugins/jquery.cookie.js', 'version' => 4 ),
 				array( 'src' => 'js/plugins/jquery.delayedBind.js', 'version' => 1 ),
 				array( 'src' => 'js/plugins/jquery.expandableField.js', 'version' => 17 ),
-				array( 'src' => 'js/plugins/jquery.suggestions.js', 'version' => 22 ),
+				array( 'src' => 'js/plugins/jquery.suggestions.js', 'version' => 23 ),
 				array( 'src' => 'js/plugins/jquery.textSelection.js', 'version' => 36 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.js', 'version' => 195 ),
 				array( 'src' => 'js/plugins/jquery.wikiEditor.highlight.js', 'version' => 53 ),
@@ -80,10 +80,10 @@ class UsabilityInitiativeHooks {
 				array( 'src' => 'js/thirdparty/contentCollector.js', 'version' => 2 ),
 			),
 			'combined' => array(
-				array( 'src' => 'js/plugins.combined.js', 'version' => 429 ),
+				array( 'src' => 'js/plugins.combined.js', 'version' => 430 ),
 			),
 			'minified' => array(
-				array( 'src' => 'js/plugins.combined.min.js', 'version' => 430 ),
+				array( 'src' => 'js/plugins.combined.min.js', 'version' => 431 ),
 			),
 		),
 	);
