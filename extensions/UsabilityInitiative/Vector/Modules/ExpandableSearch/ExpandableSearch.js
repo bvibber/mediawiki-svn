@@ -69,5 +69,5 @@ $j( document ).ready( function() {
 		} )
 		.css( 'float', $j( 'body' ).is( '.rtl' ) ? 'right' : 'left' )
 		.siblings( 'button' )
-		.css( 'float', $j( 'body' ).is( '.rtl' ) ? 'left' : 'right' );
+		.css( 'float', $j( 'body' ).is( '.rtl' ) ? 'right' : 'left' );
 });

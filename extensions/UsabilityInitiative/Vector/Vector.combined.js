@@ -411,7 +411,7 @@ $j( document ).ready( function() {
 		} )
 		.css( 'float', $j( 'body' ).is( '.rtl' ) ? 'right' : 'left' )
 		.siblings( 'button' )
-		.css( 'float', $j( 'body' ).is( '.rtl' ) ? 'left' : 'right' );
+		.css( 'float', $j( 'body' ).is( '.rtl' ) ? 'right' : 'left' );
 });
 /* Prototype code to demonstrate proposed edit page footer cleanups */
 /* First draft and will be changing greatly */

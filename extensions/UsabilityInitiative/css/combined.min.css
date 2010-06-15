@@ -138,7 +138,9 @@ display:block;
 overflow:auto;
 }
 div#simpleSearch button#searchButton{
-margin:3px 0 0 0;
+margin:5px 5px 0 0;
+height:13px;
+width:12px;
 }
 form#editform{
 margin:0;
