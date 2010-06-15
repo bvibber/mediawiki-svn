@@ -1968,6 +1968,7 @@ $messages['fi'] = array(
 	'mwe-unknown-error' => 'Tuntematon virhe:',
 	'mwe-return-to-form' => 'Palaa lomakkeeseen',
 	'mwe-upload-misc-error' => 'Tuntematon tallennusvirhe',
+	'mwe-thumbnail-more' => 'Suurenna',
 	'fogg-save_local_file' => 'Tallenna Ogg',
 	'fogg-audioQuality-title' => 'Äänenlaatu',
 	'fogg-novideo-title' => 'Ei videota',
@@ -2000,7 +2001,9 @@ $messages['fi'] = array(
 	'fogg-select_url' => 'Valitse URL',
 	'fogg-installed' => 'Firefogg on asennettu.',
 	'fogg-for_improved_uploads' => 'Parannettua tallentamista varten:',
+	'fogg-please-install-install-linktext' => 'Asenna Firefogg',
 	'fogg-use_latest_firefox' => 'Asenna ensin $1. <i>Tule sen jälkeen uudelleen tälle sivulle ja asenna <b>Firefogg</b>-laajennus.</i>',
+	'fogg-latest-firefox' => 'uusin Firefox',
 	'fogg-preview' => 'Videon esikatselu',
 	'fogg-hidepreview' => 'Piilota esikatselu',
 );

@@ -233,6 +233,14 @@ $messages['pt'] = array(
 	'nll-lastseparator' => '&#32;e&#32;',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Giro720
+ */
+$messages['pt-br'] = array(
+	'nll-desc' => 'Formatação simples de listas em línguas naturais',
+	'nll-lastseparator' => '&#32;e&#32;',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

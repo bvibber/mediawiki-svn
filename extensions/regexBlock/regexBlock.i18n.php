@@ -1859,7 +1859,7 @@ $messages['mk'] = array(
 Ова треба да се употребува само за спречување на вандализам, и во согласност со правилата.
 ''Оваа страница ви овозможува да блокирате дури и непостоечки корисници, и да блокирате корисници со имиња слични на зададените, т.е. „Test“ ќе биде блокиран заедно со „Test 2“ и тн.
 Можете и да блокирате полни IP-адреси, што значи дека ниеден корисник најавен со таа IP-адреса нема да може да уредува страници.
-Белешка: делумните IP-адреси ќе се сметаат за кориснички имиња при одлучувањето дали да се даде блок.
+Напомена: делумните IP-адреси ќе се сметаат за кориснички имиња при одлучувањето дали да се даде блок.
 Ако нема назначено причина, тогаш ќе се користи основно зададената општа причина.''",
 	'regexblock-page-title-1' => 'Блокирање на адреси со помош на регуларни изрази',
 	'regexblock-reason-ip' => 'На оваа IP-адреса ѝ е оневозможено уредување поради вандализам или други пореметувачки дејства направени од вас или или некој што ја користи истата IP-адреса.
@@ -2514,6 +2514,7 @@ Por favor, crie um nome de utilizador alternativo ou [[$1|avise-nos]] sobre o pr
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
+ * @author Giro720
  */
 $messages['pt-br'] = array(
 	'regexblock' => 'Bloqueio por expressões regulares',
@@ -2546,6 +2547,7 @@ Por favor, crie um nome de utilizador alternativo ou [[$1|contate-nos]] sobre o 
 	'regexblock-form-submit-empty' => 'Forneça um nome de utilizador ou um endereço IP para bloquear.',
 	'regexblock-form-submit-regex' => 'Expressão regular inválida.',
 	'regexblock-form-submit-expiry' => 'Por favor, seleccione um período de expiração.',
+	'regexblock-link' => 'bloqueio com expressão regular',
 	'regexblock-match-stats-record' => "$1 bloqueou '$2' em '$3' em '$4', proveniente do endereço '$5'",
 	'regexblock-nodata-found' => 'Nenhum dado encontrado',
 	'regexblock-stats-title' => 'Estatísticas de bloqueio de expressões regulares',

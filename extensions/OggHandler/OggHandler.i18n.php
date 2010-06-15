@@ -2579,6 +2579,7 @@ Por favor, faça o <a href=\"http://www.mediawiki.org/wiki/Extension:OggHandler/
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
+ * @author Giro720
  */
 $messages['pt-br'] = array(
 	'ogg-desc' => 'Manipulador para arquivos Ogg Theora e Vorbis, com reprodutor JavaScript',
@@ -2607,6 +2608,8 @@ $messages['pt-br'] = array(
 	'ogg-dismiss' => 'Fechar',
 	'ogg-download' => 'Descarregar arquivo',
 	'ogg-desc-link' => 'Sobre este arquivo',
+	'ogg-oggThumb-version' => 'O oggHandler requer o oggThumb versão $1 ou posterior.',
+	'ogg-oggThumb-failed' => 'O oggThumb não conseguiu criar a miniatura.',
 );
 
 /** Quechua (Runa Simi)

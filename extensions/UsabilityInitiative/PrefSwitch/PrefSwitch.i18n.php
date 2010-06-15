@@ -2099,7 +2099,7 @@ Si prega di selezionare tutte le motivazioni pertinenti.',
 	'prefswitch-survey-question-os' => 'Quale sistema operativo usi?',
 	'prefswitch-survey-answer-os-other' => 'Altro sistema operativo:',
 	'prefswitch-survey-question-res' => 'Qual è la risoluzione del tuo schermo?',
-	'prefswitch-title-on' => 'nuove funzionalità',
+	'prefswitch-title-on' => 'Nuove funzionalità',
 	'prefswitch-title-switched-on' => 'Buon divertimento!',
 	'prefswitch-title-off' => 'Disattiva le nuove funzioni',
 	'prefswitch-title-switched-off' => 'Grazie',
@@ -2158,6 +2158,7 @@ Per aiutarci a migliorarle, per favore riempi il seguente questionario facoltati
 /** Japanese (日本語)
  * @author Aotake
  * @author Fryed-peach
+ * @author Iwai.masaharu
  * @author 青子守歌
  */
 $messages['ja'] = array(
@@ -2210,7 +2211,7 @@ $messages['ja'] = array(
 	'prefswitch-main-anon' => '===以前の状態に戻す===
 新機能の数々を停止したい場合、[$1 こちらをクリック]してください。まずログインするかアカウントを作るか尋ねられます。',
 	'prefswitch-main-on' => '===もとに戻す===
-新機能を停止したい場合は、[$2 ここをクリック]してください。',
+[$2 新機能を停止したい場合は、ここをクリックしてください]。',
 	'prefswitch-main-off' => '===お試しください！===
 新機能を有効にしたい場合は、[$1 ここをクリック]してください。',
 	'prefswitch-survey-intro-feedback' => 'ご意見をぜひお聞かせください。
@@ -2899,8 +2900,8 @@ $messages['pl'] = array(
 	'prefswitch-survey-cancel-off' => 'Jeśli chcesz nadal korzystać z nowych funkcjonalności, możesz powrócić do $1.',
 	'prefswitch-survey-submit-feedback' => 'Wyślij opinię',
 	'prefswitch-survey-cancel-feedback' => 'Jeśli nie chcesz przesłać swojej opinii, możesz powrócić do $1.',
-	'prefswitch-survey-question-like' => 'Co Ci się podoba w najnowszych zmianach?',
-	'prefswitch-survey-question-dislike' => 'Co Ci się nie podoba w najnowszych zmianach?',
+	'prefswitch-survey-question-like' => 'Co Ci się podoba w nowych funkcjonalnościach?',
+	'prefswitch-survey-question-dislike' => 'Co Ci się nie podoba w nowych funkcjonalnościach?',
 	'prefswitch-survey-question-whyoff' => 'Dlaczego rezygnujesz z korzystania z nowych funkcjonalności?
 Należy wybrać wszystkie pasujące odpowiedzi.',
 	'prefswitch-survey-answer-whyoff-hard' => 'Korzystanie było zbyt trudne.',

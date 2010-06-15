@@ -429,6 +429,7 @@ $messages['pt'] = array(
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
+ * @author Giro720
  */
 $messages['pt-br'] = array(
 	'transliterator-desc' => 'Provê uma função de análise configurável para transliteração',
@@ -436,6 +437,7 @@ $messages['pt-br'] = array(
 	'transliterator-error-syntax' => 'Sintaxe inválida <code>$1</code> em [[MediaWiki:$2]]',
 	'transliterator-error-rulecount' => 'Mais de $1 {{PLURAL:$1|regra|regras}} em [[MediaWiki:$2]]',
 	'transliterator-error-rulesize' => 'Regra <code>$1</code> tem mais que $3 {{PLURAL:$3|caracter|caracteres}} à esquerda em [[MediaWiki:$2]]',
+	'transliterator-error-prefix' => '[[MediaWiki:$2]] tem de ter pelo menos $1 {{PLURAL:$1|carácter|caracteres}}.',
 );
 
 /** Russian (Русский)

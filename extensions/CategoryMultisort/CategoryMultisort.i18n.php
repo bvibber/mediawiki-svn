@@ -153,6 +153,14 @@ $messages['ia'] = array(
 	'prefs-category' => 'Categoria',
 );
 
+/** Japanese (日本語)
+ * @author Iwai.masaharu
+ */
+$messages['ja'] = array(
+	'categorymultisort-sortkey' => 'ソートキー:',
+	'prefs-category' => 'カテゴリ',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */

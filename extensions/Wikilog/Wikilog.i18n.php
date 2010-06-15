@@ -6251,7 +6251,16 @@ $messages['tl'] = array(
 	'wikilog-log-cmt-rejdel' => 'Tinanggihang puna sa wiki-tala mula sa [[Special:Contributions/$1|$1]]',
 	'wikilog-tab' => 'Wiki-tala',
 	'wikilog-tab-title' => 'Mga galaw sa wiki-tala',
+	'wikilog-missing-wikilog' => 'Ito ang pahinang [[{{int:wikilog-help}}|wikilog]] para sa [[{{FULLPAGENAME}}]].
+
+Hindi pa umiiral ang wikilog na ito.
+Upang makapaglathala ng mga artikulo at paganahin ang iba pang mga kasangkapang-katangian, kailangang likhain muna ito.
+
+* <span class="plainlinks">[{{fullurl:{{FULLPAGENAME}}|action=edit}} Likhain ang wikilog na ito].</span>',
 	'wikilog-information' => 'Kabatiran sa wiki-tala',
+	'wikilog-post-count-published' => 'Mayroong {{PLURAL:$1|isang nalathalang artikulo|mga $1 nalathalang mga artikulo}} sa wikilog na ito',
+	'wikilog-post-count-drafts' => 'Mayroong {{PLURAL:$1|isang hindi pa nalalathalang (balangkas) artikulo|mga $1 hindi pa nalalathalang (balangkas) mga artikulo}}',
+	'wikilog-post-count-all' => 'Sa kabuuan mayroong {{PLURAL:$1|isang artikulo|mga $1 artikulo}}.',
 	'wikilog-new-item' => 'Lumikha ng bagong artikulo ng wiki-tala',
 	'wikilog-new-item-go' => 'Likhain',
 	'wikilog-item-name' => 'Pangalan ng artikulo:',
@@ -6285,6 +6294,8 @@ $messages['tl'] = array(
 	'wikilog-author-signature' => '[[{{ns:User}}:$1|$1]] ([[{{ns:User_talk}}:$1|usapan]])',
 	'wikilog-edit-fieldset-legend' => 'Mga pagpipilian sa wiki-tala:',
 	'wikilog-edit-signpub' => 'Lagdaan at ilathala ang artikulong ito',
+	'wikilog-edit-signpub-tooltip' => 'Nagdurulot sa artikulong ito na malagdaan at malathala sa kanyang wikilog kapag nasagip.
+Huwag tsekan ang kahong ito upang mapanatili ang artikulo bilang isang balangkas.',
 	'wikilog-comment-permalink' => '$1 noong $2',
 	'wikilog-comment-note-item' => 'ipinaskil sa $1',
 	'wikilog-comment-note-edited' => 'huling nabago noong $1 noong $2',

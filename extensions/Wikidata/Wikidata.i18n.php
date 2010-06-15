@@ -6542,6 +6542,7 @@ $messages['is'] = array(
 /** Italian (Italiano)
  * @author Aushulz
  * @author Darth Kule
+ * @author HalphaZ
  * @author Melos
  * @author Nemo bis
  */
@@ -6564,6 +6565,8 @@ $messages['it'] = array(
 	'datasearch_meaning' => 'Significato',
 	'datasearch_search_text' => 'Cerca testo:',
 	'importtsv' => 'Wikidata: Importa TSV',
+	'ow_importtsv_title1' => 'Importa TSV',
+	'ow_importtsv_title2' => 'Importa definizioni e traduzioni',
 	'ow_importtsv_import_failed' => 'Importazione fallita',
 	'ow_importtsv_file' => 'File TSV:',
 	'ow_importtsv_test_run' => 'Esegui test:',
@@ -10504,6 +10507,9 @@ Selecione uma coleção a exportar. Na caixa de texto das línguas, introduza um
 	'ow_exporttsv_not_allowed' => 'Você não tem permissões para fazer uma exportação para TSV.',
 	'ow_exporttsv_export_failed' => 'A exportação falhou',
 	'addcollection' => 'Wikidata: Adicionar coleção',
+	'ow_searchnoresult' => "<p>Você pode:<br />
+* '''Criar a expressão \"[[Expression:\$1]]\"''' (e adicionar uma definição)<br />
+* '''Criar a página \"[[:\$1]]\"''' (uma página wiki normal)</p>",
 	'ow_save' => 'Salvar',
 	'ow_history' => 'Histórico',
 	'ow_datasets' => 'Seleção de conjunto de dados',

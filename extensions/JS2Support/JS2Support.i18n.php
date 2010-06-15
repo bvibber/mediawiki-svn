@@ -205,6 +205,7 @@ $messages['pl'] = array(
  */
 $messages['pms'] = array(
 	'js2support-desc' => "Manten ëd JS2 com n'estension",
+	'js2support-debug-preference' => '↓ Disabìlita ragrupament e minimisassion dë script',
 	'prefs-script-debug' => 'Debug djë script',
 );
 
@@ -222,6 +223,8 @@ $messages['pt'] = array(
  */
 $messages['pt-br'] = array(
 	'js2support-desc' => 'Suporte JS2 na forma de extensão',
+	'js2support-debug-preference' => 'Desativar o agrupamento e minificação de scripts',
+	'prefs-script-debug' => 'Depuração de scripts',
 );
 
 /** Russian (Русский)

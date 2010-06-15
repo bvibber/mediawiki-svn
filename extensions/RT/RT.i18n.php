@@ -621,6 +621,7 @@ Tentou: '''$1'''",
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
+ * @author Giro720
  */
 $messages['pt-br'] = array(
 	'rt-desc' => 'Interface para o RT (Request Tracker)',
@@ -632,6 +633,8 @@ Você tentou: '''$1'''",
 Você tentou: '''$1'''",
 	'rt-badstatus' => "Parâmetro status (s) inválido: é necessário que seja um campo padrão (veja a documentação).
 Você tentou: '''$1'''",
+	'rt-badcfield' => "Argumento inválido para o campo personalizado: tem de ser uma palavra simples (consulte a documentação).
+Tentou: '''$1'''",
 	'rt-badqueue' => "Parâmetro queue (q) inválido: é preciso que seja uma palavra simples.
 Você tentou: '''$1'''",
 	'rt-badowner' => "Parâmetro owner (o) inválido: é necessário que seja um nome de utilizador válido.

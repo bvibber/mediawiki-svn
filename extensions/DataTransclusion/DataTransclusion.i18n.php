@@ -69,20 +69,24 @@ $messages['qqq'] = array(
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
+ * @author Jim-by
  * @author Wizardist
  */
 $messages['be-tarask'] = array(
 	'datatransclusion-desc' => 'Імпарт і паказ зьвестак з вонкавых крыніц',
 	'datatransclusion-missing-source' => 'Крыніца зьвестак не пазначаная.
-Першы парамэтар — абавязковы.',
+Другі ці «крынічны» парамэтар — абавязковы.',
 	'datatransclusion-unknown-source' => 'Няслушная крыніца зьвестак.
 $1 — невядомая.',
+	'datatransclusion-missing-key' => 'Ключ не пазначаны.
+Слушнымі ключамі ў крыніцы зьвестак $1 зьяўляюцца $2.',
 	'datatransclusion-bad-argument-by' => 'Пазначана няслушнае ключавое поле.
-$2 не зьяўляецца ключавым полем ў крыніцы зьвестак $1, слушныя ключы: $3.',
+«$2» не зьяўляецца ключавым полем ў крыніцы зьвестак «$1».
+{{PLURAL:$4|Слушным ключом зьяўляецца|Слушнымі ключамі зьяўляюцца}}: $3.',
 	'datatransclusion-missing-argument-key' => 'Ключавое значэньне не пазначана.
 Неабходны другі ці «ключавы» аргумэнт.',
 	'datatransclusion-missing-argument-template' => 'Шаблён не пазначаны. 
-Неабходны трэці ці «шаблённы» аргумэнт.',
+Неабходны першы ці «шаблённы» аргумэнт.',
 	'datatransclusion-record-not-found' => 'Ня знойдзеныя супадаючыя запісы $2 = $3 ў крыніцы зьвестак $1.',
 	'datatransclusion-bad-template-name' => 'Няслушная назва шаблёну: $1.',
 	'datatransclusion-unknown-template' => '<nowiki>{{</nowiki>[[{{ns:template}}:$1|$1]]<nowiki>}}</nowiki> не існуе.',
@@ -122,14 +126,18 @@ Ein drittes oder ein Vorlagen-Argument ist erforderlich.',
 $messages['dsb'] = array(
 	'datatransclusion-desc' => 'Importowanje a pśedstajenje datowych sajźbow z eksternych datowych žrědłow',
 	'datatransclusion-missing-source' => 'Žedne datowe žrědło pódane.
-Prědny argument jo trěbny.',
+Drugi abo "žrědłowy" argument jo trěbny.',
 	'datatransclusion-unknown-source' => 'Wopacne datowe žrědło pódane.
 $1 jo njeznaty.',
-	'datatransclusion-bad-argument-by' => '$2 njejo klucowe pólo w datowem žrědle $1, płaśiwe kluce su: $3.',
+	'datatransclusion-missing-key' => 'Žeden kluc pódany.
+$2 su płaśiwe kluce w datowem žrědle $1.',
+	'datatransclusion-bad-argument-by' => 'Wopacne pólo pódane.
+"$2" njejo klucowe pólo w datowem žrědle "$1".
+{{PLURAL:$4|Płaíswy kluc jo|Płaśiwej kluca stej|Płaśiwe kluce su|Płaśiwe kluce su}}: $3.',
 	'datatransclusion-missing-argument-key' => 'Žedna datowa gódnota pódana.
 Drugi abo "klucowy" argument je trěbny.',
 	'datatransclusion-missing-argument-template' => 'Žedna pśedłoga pódana.
-Tśeśi abo "pśedłogowy" argument jo trěbny.',
+Prědny abo "pśedłogowy" argument jo trěbny.',
 	'datatransclusion-record-not-found' => 'W datowem žrědle $1 njejo se žedna sajźba namakała, kótaraž $2=$3 wótpowědujo.',
 	'datatransclusion-bad-template-name' => 'Wopacne mě pśedłogi: $1.',
 	'datatransclusion-unknown-template' => '<nowiki>{{</nowiki>[[{{ns:template}}:$1|$1]]<nowiki>}}</nowiki> njeeksistěrujo.',
@@ -309,16 +317,18 @@ Een eerste argument of "template"-argument is verplicht.',
 $messages['pt'] = array(
 	'datatransclusion-desc' => 'Importação e apresentação de registos de dados vindos de fontes externas',
 	'datatransclusion-missing-source' => 'Não foi especificada a fonte dos dados.
-O primeiro argumento é obrigatório.',
+O segundo argumento, ou argumento "fonte", é obrigatório.',
 	'datatransclusion-unknown-source' => 'A fonte de dados especificada é incorrecta.
 $1 não é conhecido.',
+	'datatransclusion-missing-key' => 'Não foi especificada uma chave.
+$2 são chaves válidas na fonte de dados $1.',
 	'datatransclusion-bad-argument-by' => 'Foi especificado um campo chave incorrecto.
 "$2" não é um campo chave na fonte de dados "$1".
 {{PLURAL:$4|O único campo chave válido é|Os campos chave válidos são}}: $3.',
 	'datatransclusion-missing-argument-key' => 'Não foi especificado um campo chave.
 O segundo argumento, ou argumento "chave", é obrigatório.',
 	'datatransclusion-missing-argument-template' => 'Não foi especificada uma predefinição.
-O terceiro argumento, ou argumento "predefinição", é obrigatório.',
+O primeiro argumento, ou argumento "predefinição", é obrigatório.',
 	'datatransclusion-record-not-found' => 'Não foi encontrado nenhum registo $2 = $3 na fonte de dados $1.',
 	'datatransclusion-bad-template-name' => 'Nome da predefinição incorrecto: $1.',
 	'datatransclusion-unknown-template' => '<nowiki>{{</nowiki>[[{{ns:template}}:$1|$1]]<nowiki>}}</nowiki> não existe.',
@@ -331,16 +341,18 @@ O terceiro argumento, ou argumento "predefinição", é obrigatório.',
 $messages['ru'] = array(
 	'datatransclusion-desc' => 'Импорт и обработка данных из внешних источников данных',
 	'datatransclusion-missing-source' => 'Не указан источник данных.
-Первый аргумент является обязательным.',
+Первый аргумент (аргумент источника) является обязательным.',
 	'datatransclusion-unknown-source' => 'Указан неправильный источник данных.
 $1 — неизвестен.',
+	'datatransclusion-missing-key' => 'Не задан ключ.
+Допустимыми ключами источника данных $1 являются $2.',
 	'datatransclusion-bad-argument-by' => 'Указано неправильное ключевое поле.
 $2 не является ключевым полем в источнике данных $1.  
 {{PLURAL:$4|Действительный ключ|Действительными ключами являются}}: $3.',
 	'datatransclusion-missing-argument-key' => 'Не указано значение ключа.
 Второй или «ключевой» аргумент является обязательным.',
 	'datatransclusion-missing-argument-template' => 'Не указан шаблон.
-Третий или «шаблонный» аргумент является обязательным.',
+Третий («шаблонный») аргумент является обязательным.',
 	'datatransclusion-record-not-found' => 'В источнике данных $1 не найдено записи, соответствующей $2 = $3',
 	'datatransclusion-bad-template-name' => 'Неправильное название шаблона: $1.',
 	'datatransclusion-unknown-template' => '<nowiki>{{</nowiki>[[{{ns:template}}:$1|$1]]<nowiki>}}</nowiki>  не существуе.',

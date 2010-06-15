@@ -1250,6 +1250,7 @@ O seu sistema de notificação amigável da %s',
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
+ * @author Giro720
  */
 $messages['pt-br'] = array(
 	'tasklist' => 'Lista de Tarefas',
@@ -1268,6 +1269,7 @@ Para uma lista de projetos válidos, ver [[MediaWiki:TodoTasksValidProjects]].",
 	'tasklistchooseproj' => 'Selecione Projeto:',
 	'tasklistprojdisp' => 'Mostrar',
 	'tasklistbyname' => '== Lista de tarefas de %s ==',
+	'tasklistnowguseprojects' => 'Definiu $wgUseProjects como "falso" e não pode usar esta página.',
 	'tasklistnoprojects' => "Erro: Aparentemente você ativou '''\$wgUseProjects''', mas não criou [[MediaWiki:TodoTasksValidProjects]]. Veja as [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 Instruções de Instalação] para mais detalhes.",
 	'tasklistemailbody' => ',
 

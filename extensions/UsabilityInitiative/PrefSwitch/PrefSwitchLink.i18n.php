@@ -336,11 +336,11 @@ $messages['io'] = array(
  * @author Una giornata uggiosa '94
  */
 $messages['it'] = array(
-	'prefswitch-link-anon' => 'Nuove funzionalità',
+	'prefswitch-link-anon' => 'nuove funzionalità',
 	'tooltip-pt-prefswitch-link-anon' => 'Informazioni sulle nuove funzionalità',
 	'prefswitch-link-on' => 'riportami indietro',
 	'tooltip-pt-prefswitch-link-on' => 'Disattiva le nuove funzionalità',
-	'prefswitch-link-off' => 'Nuove funzionalità',
+	'prefswitch-link-off' => 'nuove funzionalità',
 	'tooltip-pt-prefswitch-link-off' => 'Prova le nuove funzioni',
 );
 
@@ -470,9 +470,9 @@ $messages['oc'] = array(
  */
 $messages['pl'] = array(
 	'prefswitch-link-anon' => 'Nowe funkcjonalności',
-	'tooltip-pt-prefswitch-link-anon' => 'Dowiedz się więcej o nowych funkcjach',
-	'prefswitch-link-on' => 'Chcę wrócić',
-	'tooltip-pt-prefswitch-link-on' => 'Wyłączenie nowych funkcjonalności',
+	'tooltip-pt-prefswitch-link-anon' => 'Więcej informacji o nowych funkcjonalnościach',
+	'prefswitch-link-on' => 'Stary wygląd',
+	'tooltip-pt-prefswitch-link-on' => 'Wyłącz nowe funkcjonalności',
 	'prefswitch-link-off' => 'Nowe funkcjonalności',
 	'tooltip-pt-prefswitch-link-off' => 'Wypróbuj nowe funkcjonalności',
 );

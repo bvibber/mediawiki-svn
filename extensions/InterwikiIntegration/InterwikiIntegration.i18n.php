@@ -149,6 +149,18 @@ Zorg dat u de tabellen voor uw andere wikis ook juist instelt.',
 	'right-integration' => 'De tabel voor interwikiintegratie vullen',
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'interwikiintegration' => 'Integracja interwiki',
+	'interwikiintegration-desc' => 'Kompleksowa integracja interwiki',
+	'populateinterwikiintegrationtable' => 'Wypełnienie tablicy integracji interwiki',
+	'interwikiintegration-setuptext' => 'Tablice dla $1 zostały skonfigurowane.
+Pamiętaj aby skonfigurować tablice również na innych wiki.',
+	'right-integration' => 'Wypełnianie tablicy integracji interwiki',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  */

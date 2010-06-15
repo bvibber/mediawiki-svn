@@ -487,9 +487,13 @@ $messages['pt'] = array(
 );
 
 /** Brazilian Portuguese (Português do Brasil)
+ * @author Giro720
  * @author Luckas Blade
  */
 $messages['pt-br'] = array(
+	'lastuserlogin' => 'Última autenticação',
+	'lastuserlogin-desc' => 'Mostra a última vez que um usuário se autenticou',
+	'lastuserlogin_userid' => 'Nome de usuário',
 	'lastuserlogin_username' => 'Nome real',
 	'lastuserlogin_useremail' => 'Email do usuário',
 	'lastuserlogin_lastlogin' => 'Último login',

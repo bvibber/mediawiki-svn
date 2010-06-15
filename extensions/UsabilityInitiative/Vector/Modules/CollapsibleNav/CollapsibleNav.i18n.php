@@ -77,7 +77,7 @@ $messages['ca'] = array(
  * @author Mormegil
  */
 $messages['cs'] = array(
-	'vector-collapsiblenav-preference' => 'Povolit levé skládací menu',
+	'vector-collapsiblenav-preference' => 'Povolit sbalování položek v navigačním menu ve vzhledu Vektor',
 	'vector-collapsiblenav-more' => 'Další jazyky',
 );
 
@@ -94,7 +94,7 @@ $messages['de'] = array(
  * @author Michawiki
  */
 $messages['dsb'] = array(
-	'vector-collapsiblenav-preference' => 'Fałdujobny lěwy nawgiaciski meni zmóžniś',
+	'vector-collapsiblenav-preference' => 'Fałdujobny lěwy nawgiaciski meni w sukni Vector zmóžniś',
 	'vector-collapsiblenav-more' => 'Dalšne rěcy',
 );
 
@@ -246,9 +246,11 @@ $messages['it'] = array(
 
 /** Japanese (日本語)
  * @author Aotake
+ * @author 青子守歌
  */
 $messages['ja'] = array(
-	'vector-collapsiblenav-preference' => '左寄りの折り畳めるナビゲーションメニューを使用する',
+	'vector-collapsiblenav-preference' => 'ベクター外装のナビゲーションで、項目の折り畳みを有効化する',
+	'vector-collapsiblenav-more' => '他の言語',
 );
 
 /** Georgian (ქართული)
@@ -331,7 +333,7 @@ $messages['oc'] = array(
  * @author Sp5uhe
  */
 $messages['pl'] = array(
-	'vector-collapsiblenav-preference' => 'Włącz po lewej rozwijalne menu nawigacyjne',
+	'vector-collapsiblenav-preference' => 'Włącz po lewej rozwijalne menu nawigacyjne w skórce Wektor',
 	'vector-collapsiblenav-more' => 'Inne języki',
 );
 
@@ -340,7 +342,8 @@ $messages['pl'] = array(
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'vector-collapsiblenav-preference' => 'Abìlita la banda ëd navigassion a snistra stërmàbil',
+	'vector-collapsiblenav-preference' => "↓ Abìlita a stërmé j'element ant ël menu ëd navigassion ant ël livel Vector",
+	'vector-collapsiblenav-more' => '↓ Pi lenghe',
 );
 
 /** Portuguese (Português)
@@ -399,7 +402,7 @@ $messages['sv'] = array(
  * @author AnakngAraw
  */
 $messages['tl'] = array(
-	'vector-collapsiblenav-preference' => 'Paganahin ang natitiklop na pangkaliwang menu na panlibot',
+	'vector-collapsiblenav-preference' => 'Paganahin ang pagkanatitiklop ng mga bagay na nasa loob ng talaang panglibot sa loob ng pabalat na Vector',
 	'vector-collapsiblenav-more' => 'Iba pang mga wika',
 );
 
@@ -415,7 +418,7 @@ $messages['tr'] = array(
  * @author Vinhtantran
  */
 $messages['vi'] = array(
-	'vector-collapsiblenav-preference' => 'Bật trình đơn chuyển hướng gấp lại được ở bên phải',
+	'vector-collapsiblenav-preference' => 'Bật trình đơn chuyển hướng gấp lại được ở bên phải trong bề ngoài Vectơ',
 	'vector-collapsiblenav-more' => 'Thêm ngôn ngữ khác',
 );
 
