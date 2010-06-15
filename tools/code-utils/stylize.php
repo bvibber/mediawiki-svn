@@ -29,6 +29,8 @@ if ( count( $argv ) ) {
 }
 
 function stylize_recursively( $dir ) {
+	$dir = trim( $dir, "\/" );
+
 	foreach ( glob( "$dir/*" ) as $dirOrFile ) {
 		if ( is_dir( $dirOrFile ) ) { // It's a directory, so call this function again.
 			stylize_recursively( $dirOrFile );
