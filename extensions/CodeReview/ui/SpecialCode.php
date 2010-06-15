@@ -7,7 +7,7 @@ class SpecialCode extends SpecialPage {
 	}
 
 	function execute( $subpage ) {
-		global $wgOut, $wgRequest, $wgUser, $wgScriptPath, $wgCodeReviewStyleVersion;
+		global $wgOut, $wgRequest, $wgUser, $wgExtensionAssetsPath, $wgCodeReviewStyleVersion;
 
 		wfLoadExtensionMessages( 'CodeReview' );
 
@@ -17,7 +17,7 @@ class SpecialCode extends SpecialPage {
 		}
 
 		$this->setHeaders();
-		$wgOut->addStyle( "$wgScriptPath/extensions/CodeReview/codereview.css?$wgCodeReviewStyleVersion" );
+		$wgOut->addStyle( "$wgExtensionAssetsPath/CodeReview/codereview.css?$wgCodeReviewStyleVersion" );
 		# Remove stray slashes
 		$subpage = preg_replace( '/\/$/', '', $subpage );
 		if ( $subpage == '' ) {
