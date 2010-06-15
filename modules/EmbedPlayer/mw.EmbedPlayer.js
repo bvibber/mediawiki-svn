@@ -1503,7 +1503,7 @@ mw.EmbedPlayer.prototype = {
 		
 		// Scope the end of check for player sources so it can be called in a callback  
 		var finishCheckPlayerSources = function(){
-			// Run embedPlayer sources hook			
+			// Run embedPlayer sources hook		
 			mw.runTriggersCallback( _this, 'checkPlayerSourcesEvent', function(){							
 				_this.checkForTimedText();
 			})			
@@ -1855,8 +1855,8 @@ mw.EmbedPlayer.prototype = {
 	* issues a loading request
 	*/
 	doEmbedPlayer: function() {
-		mw.log( 'f:doEmbedPlayer::' + this.selectedPlayer.id );
-		mw.log( 'thum disp:' + this.thumbnail_disp );
+		mw.log( 'EmbedPlayer :: doEmbedPlayer::' + this.selectedPlayer.id );
+		//mw.log( 'thum disp:' + this.thumbnail_disp );
 		var _this = this;
 		
 		var doEmbedPlayerLocal = function(){

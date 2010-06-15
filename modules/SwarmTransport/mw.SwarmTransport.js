@@ -1,7 +1,7 @@
-
 /**
- * Add the msg text: 
+ * Add the messages text: 
  */
+ 
 mw.includeAllModuleMessages();
 
 /** 
@@ -11,16 +11,16 @@ mw.SwarmTransport = {
 	
 	addPlayerHooks: function(){	
 		var _this = this; 
-		// Bind some hooks to every player:  		
+		// Bind some hooks to every player:
 		$j( mw ).bind( 'newEmbedPlayerEvent', function( event, swapedPlayerId ) {
 			// Setup local reference to embedPlayer interface
 			var embedPlayer = $j( '#' + swapedPlayerId ).get(0);
 											
 			// Setup the "embedCode" binding to swap in an updated url
-			$j( embedPlayer ).bind( 'checkPlayerSourcesEvent', function( event, callback ) {				
+			
+			$j( embedPlayer ).bind( 'checkPlayerSourcesEvent', function( event, callback ) {		
 				// Confirm SwarmTransport add-on is available ( defines swarmTransport var )  
-				if( typeof window['swarmTransport'] != 'undefined' ){
-					
+				if( typeof window['swarmTransport'] != 'undefined' ){					
 					// Add the swarm source
 					mw.log(" SwarmTransport :: checkPlayerSourcesEvent " + swapedPlayerId);
 					_this.addSwarmSource( embedPlayer, callback );
@@ -35,7 +35,8 @@ mw.SwarmTransport = {
 			$j( embedPlayer ).bind( 'addControlBindingsEvent', function(){				
 				if( mw.getConfig( 'SwarmTransport.recommend' ) &&  
 					typeof window['swarmTransport'] == 'undefined' &&
-					$j.browser.mozilla ) {
+					$j.browser.mozilla ) 
+				{
 					embedPlayer.controlBuilder.doWarningBindinng( 
 						'recommendSwarmTransport',
 						_this.getRecomendSwarmMessage()						
@@ -69,13 +70,13 @@ mw.SwarmTransport = {
 			mw.log("Warning: addSwarmSource: could not find video/ogg source to generate torrent from");
 			callback();
 			return ;
-		}
-		
+		}		
 		// Setup the torrent request:
 		var torrentLookupRequest = {
 			'url' : mw.absoluteUrl( source.getSrc() )
-		}		
-		mw.log( 'lookup torrent url: ' + mw.getConfig( 'SwarmTransport.torrentLookupUrl' ) );
+		}
+		
+		mw.log( 'SwarmTransport:: lookup torrent url: ' + mw.getConfig( 'SwarmTransport.torrentLookupUrl' ) );
 		// Setup function to run in context based on callback result
 		$j.getJSON( 
 			mw.getConfig( 'SwarmTransport.torrentLookupUrl' ) + '?jsonp=?', 
@@ -97,7 +98,7 @@ mw.SwarmTransport = {
 						'default' : true // Mark as default source
 					} )
 					.get( 0 )
-				);
+				);				
 				callback();
 			}
 		);		

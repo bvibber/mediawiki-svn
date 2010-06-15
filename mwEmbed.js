@@ -329,7 +329,7 @@ if( typeof preMwEmbedConfig == 'undefined') {
 			if( this.moduleLoaders[ loadRequest ] && 
 				typeof ( this.moduleLoaders[ loadRequest ] ) == 'function' 
 			) {
-				mw.log("mw.load: loadModule:" + loadRequest );
+				//mw.log("mw.load: loadModule:" + loadRequest );
 				// Run the module with the parent callback 
 				this.moduleLoaders[ loadRequest ]( callback );	
 				return ;
@@ -337,7 +337,7 @@ if( typeof preMwEmbedConfig == 'undefined') {
 			
 			// Check for javascript class 
 			if( this.getClassPath( loadRequest ) ) {		
-				mw.log('mw.load: loadClass: ' + loadRequest );
+				//mw.log('mw.load: loadClass: ' + loadRequest );
 				this.loadClass( loadRequest, callback );																	
 				return ;
 			}
@@ -372,7 +372,7 @@ if( typeof preMwEmbedConfig == 'undefined') {
 				// Get the grouped loadStates variable 
 				loadStates = this.getGroupLoadState( loadSet );
 				if( mw.isEmpty( loadStates ) ) {
-					mw.log( 'loadMany:all classes already loaded');
+					//mw.log( 'loadMany:all classes already loaded');
 					callback();
 					return ;
 				}						
@@ -393,11 +393,11 @@ if( typeof preMwEmbedConfig == 'undefined') {
 			}	
 			
 			// We are infact loading many:
-			mw.log("mw.load: LoadMany:: " + loadSet );
+			//mw.log("mw.load: LoadMany:: " + loadSet );
 						
 			// Issue the load request check check loadStates to see if we are "done"
 			for( var loadName in loadStates ) {				
-				mw.log("loadMany: load: " + loadName ); 					
+				//mw.log("loadMany: load: " + loadName ); 					
 				this.load( loadName, function ( loadName ) {										
 					loadStates[ loadName ] = 1;
 					
@@ -539,7 +539,7 @@ if( typeof preMwEmbedConfig == 'undefined') {
 			
 			// Make sure the class is not already defined:
 			if ( mw.isset( className ) ) {
-				mw.log( 'Class ( ' + className + ' ) already defined ' );
+				//mw.log( 'Class ( ' + className + ' ) already defined ' );
 				callback( className );
 				return ; 									
 			}
@@ -1286,7 +1286,7 @@ if( typeof preMwEmbedConfig == 'undefined') {
 	* @param {String} string String to output to console
 	*/
 	mw.log = function( string ) {
-	
+
 		// Add any prepend debug strings if necessary 		
 		if ( mw.getConfig( 'pre-append-log' ) ){
 			string = mw.getConfig( 'pre-append-log' ) + string;		
@@ -2265,19 +2265,24 @@ if( typeof preMwEmbedConfig == 'undefined') {
 	 * 
 	 */
 	mw.runTriggersCallback = function( targetObject, triggerName, callback ){
+		mw.log( ' runTriggersCallback:: ' + triggerName  );
 		// If events are not present directly run callback 
 		if( ! $j( targetObject ).data( 'events' ) ||
 				! $j( targetObject ).data( 'events' )[ triggerName ] ) {
+			mw.log( ' trigger name not found: ' + triggerName  );
 			callback();
 			return ;
 		}		
-		var callbackCount = $j( targetObject ).data( 'events' )[ triggerName ].length;			
-		if( !callbackCount ){
+		var callbackSet = $j( targetObject ).data( 'events' )[ triggerName ];
+		if( !callbackSet || callbackSet.length === 0  ){
+			mw.log( ' No events run the callback directly: ' + triggerName  );
 			// No events run the callback directly
 			callback();
 			return ;
 		}
-	
+		// Set the callbackCount
+		var callbackCount = ( callbackSet.length )? callbackSet.length : 1;
+		
 		mw.log(" runTriggersCallback:: " + callbackCount );
 		var callInx = 0;
 		$j( targetObject ).trigger( 'checkPlayerSourcesEvent', function() {
