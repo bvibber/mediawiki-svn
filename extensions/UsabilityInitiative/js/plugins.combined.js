@@ -1123,7 +1123,7 @@ $.suggestions = {
 								.addClass( 'suggestions-result' )
 								.attr( 'rel', i )
 								.data( 'text', context.config.suggestions[i] )
-								.mouseover( function( e ) {
+								.mousemove( function( e ) {
 									$.suggestions.highlight(
 										context, $(this).closest( '.suggestions-results div' ), false
 									);
@@ -1423,7 +1423,7 @@ $.fn.suggestions = function() {
 							}
 							context.data.$textbox.focus();
 						} )
-						.mouseover( function( e ) {
+						.mousemove( function( e ) {
 							$.suggestions.highlight(
 								context, $( e.target ).closest( '.suggestions-special' ), false
 							);
