@@ -50,65 +50,65 @@
 	color: HighlightText;
 }
 /* Prototype code to show collapsing left nav options */
-#panel.collapsible-nav div.portal {
+#mw-panel.collapsible-nav div.portal {
 	background-image:url(../images/vector/collapsibleNav/portal-break.png);
 	background-position:left top;
 	background-repeat:no-repeat;
 	padding: 0.25em 0 !important;
 	margin: -11px 9px 10px 11px;
 }
-body.rtl #panel.collapsible-nav div.portal {
+body.rtl #mw-panel.collapsible-nav div.portal {
 	background-position: right top;
 	margin: -11px 11px 10px 9px;
 }
-#panel.collapsible-nav div.portal h5 {
+#mw-panel.collapsible-nav div.portal h5 {
 	color: #4D4D4D;
 	font-weight: normal;
 	background: url(../images/vector/collapsibleNav/arrow-down.png) 0 50% no-repeat;
 	padding: 4px  0 3px 1.5em;
 	margin-bottom: 0px;
 }
-body.rtl #panel.collapsible-nav div.portal h5 {
+body.rtl #mw-panel.collapsible-nav div.portal h5 {
 	background: url(../images/vector/collapsibleNav/arrow-down.png) 100% 50% no-repeat;
 	padding: 4px  1.5em 3px 0;
 }
-#panel.collapsible-nav div.collapsed h5 {
+#mw-panel.collapsible-nav div.collapsed h5 {
 	color: #0645AD;
 	background: url(../images/vector/collapsibleNav/arrow-right.png) 0 50% no-repeat;
 	margin-bottom: 0px;
 }
-body.rtl #panel.collapsible-nav div.collapsed h5 {
+body.rtl #mw-panel.collapsible-nav div.collapsed h5 {
 	background: url(../images/vector/collapsibleNav/arrow-left.png) 100% 50% no-repeat;
 }
-#panel.collapsible-nav div h5:hover {
+#mw-panel.collapsible-nav div h5:hover {
 	cursor: pointer;
 	text-decoration: none;
 }
-#panel.collapsible-nav div.collapsed h5:hover {
+#mw-panel.collapsible-nav div.collapsed h5:hover {
 	text-decoration: underline;
 }
-#panel.collapsible-nav div.portal div.body {
+#mw-panel.collapsible-nav div.portal div.body {
 	padding-top: 0px;
 	display: none;
 }
-#panel.collapsible-nav div.portal div.body ul li {
+#mw-panel.collapsible-nav div.portal div.body ul li {
 	padding: 0.25em 0;
 }
-#panel.collapsible-nav div.portal div.body {
+#mw-panel.collapsible-nav div.portal div.body {
 	background: none !important;
 }
-#panel.collapsible-nav #p-navigation {
+#mw-panel.collapsible-nav #p-navigation {
 	background-image: none;
 	margin-top: 0px;
 }
-#panel.collapsible-nav #p-navigation div.body {
+#mw-panel.collapsible-nav #p-navigation div.body {
 	margin-left: 0.5em;
 }
-body.rtl #panel.collapsible-nav #p-navigation div.body {
+body.rtl #mw-panel.collapsible-nav #p-navigation div.body {
 	margin-left: 0;
 	margin-right: 0.5em;
 }
-#panel.collapsible-nav #p-navigation h5 {
+#mw-panel.collapsible-nav #p-navigation h5 {
 	display: none;
 }
 /* wikiEditor plugin */

@@ -5,14 +5,14 @@ $j(document).ready( function() {
 	if( !wgVectorEnabledModules.collapsiblenav ) {
 		return true;
 	}
-	$j( '#panel' ).addClass( 'collapsible-nav' );
+	$j( '#mw-panel' ).addClass( 'collapsible-nav' );
 	// Always show the first portal
-	$j( '#panel > div.portal:first' )
+	$j( '#mw-panel > div.portal:first' )
 		.addClass( 'expanded' )
 		.find( 'div.body' )
 		.show();
 	// Remember which portals to hide and show
-	$j( '#panel > div.portal:not(:first)' )
+	$j( '#mw-panel > div.portal:not(:first)' )
 		.each( function() {
 			if ( $j.cookie( 'vector-nav-' + $j(this).attr( 'id' ) ) == 'true' ) {
 				$j(this)
@@ -24,7 +24,7 @@ $j(document).ready( function() {
 			}
 		} );
 	// Toggle the selected menu's class and expand or collapse the menu
-	$j( '#panel > div.portal > h5' ).click( function() {
+	$j( '#mw-panel > div.portal > h5' ).click( function() {
 		$j.cookie( 'vector-nav-' + $j(this).parent().attr( 'id' ), $j(this).parent().is( '.collapsed' ) );
 		$j(this)
 			.parent()
