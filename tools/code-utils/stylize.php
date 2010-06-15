@@ -43,23 +43,24 @@ function stylize_recursively( $dir ) {
 
 function stylize_file( $filename, $backup = true ) {
 	echo "Stylizing file $filename\n";
+	
+	$s = ( $filename == '-' )
+		? file_get_contents( '/dev/stdin' )
+		: file_get_contents( $filename );
+	
+	if ( $s === false ) {
+		return;
+	}
+	
+	$stylizer = new Stylizer( $s );
+	$s = $stylizer->stylize();
+	
 	if ( $filename == '-' ) {
-		$s = file_get_contents( '/dev/stdin' );
-		if ( $s === false ) {
-			return;
-		}
-		$stylizer = new Stylizer( $s );
-		$s = $stylizer->stylize();
 		echo $s;
 	} else {
-		$s = file_get_contents( $filename );
-		if ( $s === false ) {
-			return;
-		}
-		$stylizer = new Stylizer( $s );
-		$s = $stylizer->stylize();
-		if ( $backup )
+		if ( $backup ) {
 			rename( $filename, "$filename~" );
+		}
 		file_put_contents( $filename, $s );
 	}
 }
@@ -151,7 +152,6 @@ class Stylizer {
 
 	var $endl = "
 ";
-
 
 	function __construct( $s ) {
 		$s = str_replace( "\r\n", "\n", $s );
@@ -299,5 +299,4 @@ class Stylizer {
 		// Fix whitespace at the line end
 		return preg_replace( '!^([\t ]+)(\n.*)$!s', '\2', $s, 1 );
 	}
-
 }
