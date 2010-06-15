@@ -23,7 +23,7 @@ class VectorHooks {
 			array( 'src' => 'Vector.combined.js', 'version' => 52 ),
 		),
 		'minified' => array(
-			array( 'src' => 'Vector.combined.min.js', 'version' => 52 ),
+			array( 'src' => 'Vector.combined.min.js', 'version' => 53 ),
 		),
 	);
 	static $modules = array(
