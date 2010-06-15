@@ -50,6 +50,10 @@ class CategoryMultisortHooks {
 			'CategoryDefaultMultisort',
 			array( $this, 'parserCategoryDefaultMultisort' )
 		);
+		$parser->setFunctionHook(
+			'CategoryUseMultisort',
+			array( $this, 'parserCategoryUseMultisort' )
+		);
 		if ( $this->integrate ) {
 			$this->coreCategoryLinkHook = $parser->setLinkHook(
 				NS_CATEGORY, array( $this, 'parserCategoryLink' )
@@ -64,6 +68,7 @@ class CategoryMultisortHooks {
 	function onLanguageGetMagic( &$magicWords, $langCode ) {
 		$magicWords['CategoryMultisort'] = array( 0, 'CategoryMultisort' );
 		$magicWords['CategoryDefaultMultisort'] = array( 0, 'CategoryDefaultMultisort' );
+		$magicWords['CategoryUseMultisort'] = array( 0, 'CategoryUseMultisort' );
 		return true;
 	}
 	
@@ -322,6 +327,12 @@ class CategoryMultisortHooks {
 		return '';
 	}
 	
+	function parserCategoryUseMultisort( $parser, $use ) {
+		$parser->getOutput()->mCategoryUseMultisort = trim( $use );
+		
+		return '';
+	}
+	
 	function onCategoryPageView( $categoryArticle ) {
 		global $wgRequest, $wgOut, $wgUser, $wgCategoryMultisortSortkeySettings;
 		
@@ -332,8 +343,23 @@ class CategoryMultisortHooks {
 		if ( $title->getNamespace() != NS_CATEGORY ) {
 			return true;
 		} else {
+			# If a sortkey is designated to be used, don't do more check
 			if ( is_null( $skn = $wgRequest->getVal( 'sortkey' ) ) ) {
-				$skn = $wgUser->getOption( 'categorymultisort-sortkey' );
+				# Check whether a sortkey is set for this category
+				
+				$parsetOutput = $categoryArticle->getParserOutput();
+				
+				# If a corresponding property exists, and
+				# (1) such property is a blank string
+				# or (2) such property is allowed by $wgCategoryMultisortSortkeySettings
+				# then use it. Otherwise, use user preference.
+				if ( !( isset( $parsetOutput->mCategoryUseMultisort )
+					&& ( !( $skn = $parsetOutput->mCategoryUseMultisort )
+						|| array_key_exists( $skn, $wgCategoryMultisortSortkeySettings )
+					)
+				) ) {
+					$skn = $wgUser->getOption( 'categorymultisort-sortkey' );
+				}
 			}
 			
 			$wgOut->addHTML( $this->onCategoryPageView_buildSortkeySelectForm( $skn ) );
