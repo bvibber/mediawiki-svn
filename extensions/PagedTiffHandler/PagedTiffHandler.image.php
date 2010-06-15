@@ -29,25 +29,25 @@
 class PagedTiffImage {
 	protected $_meta = null;
 	protected $mFilename;
-	
+
 	function __construct( $filename ) {
 		$this->mFilename = $filename;
 	}
-	
+
 	/**
 	 * Called by MimeMagick functions.
 	 */
 	public function isValid() {
 		return count( $this->retrieveMetaData() );
 	}
-	
+
 	/**
 	 * Returns an array that corresponds to the native PHP function getimagesize().
 	 */
 	public function getImageSize() {
 		$data = $this->retrieveMetaData();
 		$size = $this->getPageSize( $data, 1 );
-	
+
 		if ( $size ) {
 			$width = $size['width'];
 			$height = $size['height'];
@@ -56,7 +56,7 @@ class PagedTiffImage {
 		}
 		return false;
 	}
-	
+
 	/**
 	 * Returns an array with width and height of the tiff page.
 	 */
@@ -69,7 +69,7 @@ class PagedTiffImage {
 		}
 		return false;
 	}
-	
+
 	/**
 	 * Reads metadata of the tiff file via shell command and returns an associative array.
 	 * layout:
@@ -81,17 +81,17 @@ class PagedTiffImage {
 	 */
 	public function retrieveMetaData() {
 		global $wgImageMagickIdentifyCommand, $wgTiffExivCommand, $wgTiffUseExiv, $wgMemc, $wgTiffErrorCacheTTL;
-	
+
 		$imgKey = wfMemcKey( 'PagedTiffHandler-ThumbnailGeneration', $this->mFilename );
 		$isCached = $wgMemc->get( $imgKey );
 		if ( $isCached ) {
 			return - 1;
 		}
 		$wgMemc->add( $imgKey, 1, $wgTiffErrorCacheTTL );
-	
+
 		if ( $this->_meta === null ) {
 			if ( $wgImageMagickIdentifyCommand ) {
-	
+
 				wfProfileIn( 'PagedTiffImage::retrieveMetaData' );
 				/**
 				 * ImageMagick is used in order to get the basic metadata of embedded files.
@@ -100,7 +100,7 @@ class PagedTiffImage {
 				$cmd = wfEscapeShellArg( $wgImageMagickIdentifyCommand ) .
 					' -format "[BEGIN]page=%p\nalpha=%A\nalpha2=%r\nheight=%h\nwidth=%w\ndepth=%z[END]" ' .
 					wfEscapeShellArg( $this->mFilename ) . ' 2>&1';
-				
+
 				wfProfileIn( 'identify' );
 				wfDebug( __METHOD__ . ": $cmd\n" );
 				$dump = wfShellExec( $cmd, $retval );
@@ -110,23 +110,23 @@ class PagedTiffImage {
 				}
 				$this->_meta = $this->convertDumpToArray( $dump );
 				$this->_meta['exif'] = array();
-				
+
 				if ( $wgTiffUseExiv ) {
 					$cmd = wfEscapeShellArg( $wgTiffExivCommand ) .
 						' -u -psix -Pnt ' . // read EXIF, XMP, IPTC as name-tag => interpreted data -ignore unknown fields
 						// exiv2-doc @link http://www.exiv2.org/sample.html
 						# # the linux version of exiv2 has a bug an this command doesn't work on it. ^SU
 						wfEscapeShellArg( $this->mFilename );
-	
+
 					wfRunHooks( 'PagedTiffHandlerExivCommand', array( &$cmd, $this->mFilename ) );
-	
+
 					wfProfileIn( 'exiv2' );
 					wfDebug( __METHOD__ . ": $cmd\n" );
 					$dump = wfShellExec( $cmd, $retval );
 					wfProfileOut( 'exiv2' );
 					$result = array();
 					preg_match_all( '/(\w+)\s+(.+)/', $dump, $result, PREG_SET_ORDER );
-	
+
 					foreach ( $result as $data ) {
 						$this->_meta['exif'][$data[1]] = $data[2];
 					}
@@ -134,7 +134,7 @@ class PagedTiffImage {
 					$cmd = wfEscapeShellArg( $wgImageMagickIdentifyCommand ) .
 						' -verbose ' .
 						wfEscapeShellArg( $this->mFilename ) . "[0]";
-	
+
 					wfProfileIn( 'identify -verbose' );
 					wfDebug( __METHOD__ . ": $cmd\n" );
 					$dump = wfShellExec( $cmd, $retval );
@@ -149,7 +149,7 @@ class PagedTiffImage {
 		unset( $this->_meta['exif']['Base filename'] );
 		return $this->_meta;
 	}
-	
+
 	/**
 	 * helper function of retrieveMetaData().
 	 * parses shell return from identify-command into an array.
@@ -192,7 +192,7 @@ class PagedTiffImage {
 			$entry['pixels'] = $entry['height'] * $entry['width'];
 			$data['page_data'][$entry['page']] = $entry;
 		}
-	
+
 		$dump = preg_replace( '/\[BEGIN\](.+?)\[END\]/si', '', $dump );
 		if ( strlen( $dump ) ) {
 			$errors = explode( "\n", $dump );
@@ -222,7 +222,7 @@ class PagedTiffImage {
 		}
 		return $data;
 	}
-	
+
 	/**
 	 * helper function of retrieveMetaData().
 	 * parses shell return from identify-verbose-command into an array.

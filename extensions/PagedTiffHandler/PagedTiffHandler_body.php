@@ -237,7 +237,7 @@ class PagedTiffHandler extends ImageHandler {
 	}
 
 	/**
-	 * Checks whether a thumbnail with the requested file type and resolution exists, 
+	 * Checks whether a thumbnail with the requested file type and resolution exists,
 	 * creates it if necessary, unless self::TRANSFORM_LATER is set in $flags.
 	 * Supports extra parameters for multipage files and thumbnail type (lossless vs. lossy)
 	 */

@@ -2,7 +2,7 @@
 /**
  * Copyright © Wikimedia Deutschland, 2009
  * Authors Hallo Welt! Medienwerkstatt GmbH
- * Authors Sebastian Ulbricht, Daniel Lynge, Marc Reymann, Markus Glaser 
+ * Authors Sebastian Ulbricht, Daniel Lynge, Marc Reymann, Markus Glaser
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by

@@ -4,7 +4,7 @@
  *
  * @author Sebastian Ulbricht <sebastian.ulbricht@gmx.de>
  */
- 
+
  // This is still experimental
 class TiffReader {
 	protected $time		 = null;
@@ -157,7 +157,7 @@ class TiffReader {
 			$this->embed_files++;
 		}
 		$this->calculateDataRange();
-		
+
 		if ( $debug ) {
 			echo "<h2>TiffReader-Debug:</h2>\n";
 			echo '<b>File: </b>' . $this->file . "<br />\n";
