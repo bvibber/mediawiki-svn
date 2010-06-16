@@ -19,7 +19,7 @@ import de.brightbyte.wikiword.model.PhraseOccuranceSet;
 public class PlainTextAnalyzerTest extends PlainTextAnalyzerTestBase {
 	
 	public PlainTextAnalyzerTest() {
-		super("test");
+		super("en");
 	}
 
 	//TODO: tests for all sensors (and manglers) !
@@ -174,7 +174,7 @@ public class PlainTextAnalyzerTest extends PlainTextAnalyzerTestBase {
 	public void setUp() throws URISyntaxException, IOException {
 		LanguageConfiguration config = new LanguageConfiguration();
 		
-		corpus = new Corpus("TEST", "en", "en", "en", "en", "en", "en", null);
+		//corpus = new Corpus("TEST", "en", "en", "en", "en", "en", "en", null);
 		testAnalyzer = new TestPlainTextAnalyzer(corpus);
 		testAnalyzer.configure(config, tweaks);
 		testAnalyzer.initialize();
