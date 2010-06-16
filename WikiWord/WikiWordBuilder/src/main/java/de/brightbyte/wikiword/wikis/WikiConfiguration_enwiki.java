@@ -92,13 +92,13 @@ public class WikiConfiguration_enwiki extends WikiConfiguration {
 		
 		stripClutterManglers.add( new RegularExpressionMangler(
 			templatePattern(
-				"fact|Unreferenced(section)?|wrong[-\\w]*|cite[-\\w]*|" +
+				"fact|flag|Unreferenced(section)?|wrong[- \\w]*|cite[- \\w]*|" +
 				"Portal|Stub[-\\w]*|commons|Cong(Bio2?|Links)|" +
 				"Tnavbar|Navbox([ _]generic)?|redirect|pp-.*?|" +
 				"ambox|wikify|pov|cleanup|globalize|split|current|issue|merge|" +
 				"reflist|precision[-\\w\\d]+|nowrap[ _]begin|" +
 				"Audio|\\w+[ _]icon|lang-\\w+|Flagicon|Flag|Flagcountry|" +
-				"Main|" +
+				"Main|ref|note|MSW3[_ ]\\w+|AUT|NLD" +
 				"redirect" //maybe keep that? but we need this for the :'' stripping
 			, 0, true), ""));
 
@@ -110,14 +110,33 @@ public class WikiConfiguration_enwiki extends WikiConfiguration {
 				templatePattern("th|1?st|2?nd|3?rd|LORD|GOD", 0, false), "$1"));
 
 		stripClutterManglers.add( new RegularExpressionMangler(
+				templatePattern("resize|smaller", 1, false), "$2"));
+
+		stripClutterManglers.add( new RegularExpressionMangler(
+				templatePattern("resize|color|background_color", 2, true), "$3"));
+
+		stripClutterManglers.add( new RegularExpressionMangler(
+				templatePattern("chem", 0, true), "$2$3$4$5$6$7$8$9"));
+
+		stripClutterManglers.add( new RegularExpressionMangler(
+				templatePattern("city-state|city-region", 2, true), "$1, $2"));
+
+		stripClutterManglers.add( new RegularExpressionMangler(
 				templatePattern("nowrap(?:links)?|main|" +
 					"en|de|it|fr|ArabDIN|ISOtranslit|polytonic|" +
 					"IPA|IAST|Unicode|music|PIE|runic|semxlit|" +
 					"ssub|sub|sup|smallsup|small|scinote|" +
 					"smallcaps|allcaps|nocaps|" +
-					"nihongo|Ivrit|Hebrew"
+					"nihongo|Ivrit|Hebrew|my|formatnum|" +
+					"tz|bday|EnglishDistrictPopulation|aut"
 				, 1, true), "$2"));
 		
+		stripClutterManglers.add( new RegularExpressionMangler(
+				templatePattern("km[ _]to[ _]mi", 1, true), "$1km"));
+
+		stripClutterManglers.add( new RegularExpressionMangler(
+				templatePattern("mi[ _]to[ _]km", 1, true), "$1mi"));
+
 		stripClutterManglers.add( new RegularExpressionMangler(
 				templatePattern("audio|fontcolor", 2, true), "$3") );
 		
@@ -132,13 +151,14 @@ public class WikiConfiguration_enwiki extends WikiConfiguration {
 		
 		//FIXME: handle {{sc}}, as in {{sc|B|ioy| C|asares}}
 		
-		stripClutterManglers.add( new RegularExpressionMangler(templatePattern("convert", 2, true), "$2 $3"));
-		stripClutterManglers.add( new RegularExpressionMangler(templatePattern("exp", 2, true), "$2^$3"));
-		stripClutterManglers.add( new RegularExpressionMangler(templatePattern("frac", 2, true), "$2/$3"));
-		stripClutterManglers.add( new RegularExpressionMangler(templatePattern("mp", 2, true), "$2_$3"));
-		stripClutterManglers.add( new RegularExpressionMangler(templatePattern("lang|transl", 2, true), "$2"));
-		stripClutterManglers.add( new RegularExpressionMangler(templatePattern("e|esp", 2, true), "x10^$2"));
-		stripClutterManglers.add( new RegularExpressionMangler(templatePattern("Auto[ _](.+?)", 2, true), "$1 $2"));
+		stripClutterManglers.add( new RegularExpressionMangler(templatePattern("[Cc]onvert", 2, true), "$2 $3"));
+		stripClutterManglers.add( new RegularExpressionMangler(templatePattern("[Ee]xp", 2, true), "$2^$3"));
+		stripClutterManglers.add( new RegularExpressionMangler(templatePattern("[Ff]rac", 2, true), "$2/$3"));
+		stripClutterManglers.add( new RegularExpressionMangler(templatePattern("[Mm]p", 2, true), "$2_$3"));
+		stripClutterManglers.add( new RegularExpressionMangler(templatePattern("rtl-lang|lang|transl", 2, false), "$3"));
+		stripClutterManglers.add( new RegularExpressionMangler(templatePattern("transl", 3, false), "$4"));
+		stripClutterManglers.add( new RegularExpressionMangler(templatePattern("e|[Ee]sp", 1, true), "x10^$2"));
+		stripClutterManglers.add( new RegularExpressionMangler(templatePattern("[Aa]uto[ _](.+?)", 2, true), "$1 $2"));
 		
 		//cruft regarding english/welsh census templates
 		stripClutterManglers.add( new RegularExpressionMangler("rank\\s*=\\s*\\[\\[List[ _]of[ _][-\\w\\d\\s]+?\\|\\s*Ranked\\s+\\{\\{[-\\w\\d\\s]+?counties\\s*\\|\\s*\\w+=[-\\w\\d\\s]+\\}\\}\\]\\]", "", 0));

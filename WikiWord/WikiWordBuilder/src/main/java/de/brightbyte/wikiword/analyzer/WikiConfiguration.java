@@ -587,15 +587,22 @@ public class WikiConfiguration {
 	
 	public static String templatePatternString(String name, int params, boolean more, boolean stripNamedParams) {
 		String s = "\\{\\{\\s*";
-		s+= "("+name+")\\s*";
+		s+= "#?("+name+")\\s*";
 		
 		if (stripNamedParams) s+= "(?:\\s*\\|[^|={}]*=[^|{}]*\\s*)*";
 		
 		for (int i=0; i<params; i++){
-			s+= "\\|([^|={}]*)\\s*";
+			if (i>0) s+= "\\|";
+			else s+= "[:|]";
+			
+			s+= "([^|={}]*)\\s*";
 		}
 		
-		if (more) s+= "(\\s*\\|.*?)?";
+		if (more) {
+			if (params==0) s+= "(\\s*[|:].*?)?";
+			else s+= "(\\s*\\|.*?)?";
+		}
+		
 		s+= "\\s*\\}\\}";
 
 		return s;
