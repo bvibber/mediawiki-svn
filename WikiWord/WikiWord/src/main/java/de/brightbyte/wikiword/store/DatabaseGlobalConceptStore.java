@@ -46,6 +46,7 @@ public class DatabaseGlobalConceptStore extends DatabaseWikiWordConceptStore<Glo
 	protected RelationTable originTable;
 	protected RelationTable relationTable;	 
 	protected RelationTable mergeTable;
+	protected RelationTable meaningTable;
 
 	//protected TweakSet tweaks;
 	
@@ -98,6 +99,7 @@ public class DatabaseGlobalConceptStore extends DatabaseWikiWordConceptStore<Glo
 		originTable = (RelationTable)database.getTable("origin");
 		relationTable = (RelationTable)database.getTable("relation");
 		mergeTable = (RelationTable)database.getTable("merge");
+		meaningTable = (RelationTable)database.getTable("meaning");
 	}
 	
 	@Override
@@ -114,13 +116,24 @@ public class DatabaseGlobalConceptStore extends DatabaseWikiWordConceptStore<Glo
 	}
 
 	protected String meaningsSQL(String lang, String term) throws PersistenceException {
-		DatabaseLocalConceptStore db = getLocalConceptStore(lang);
+		/*
+		 DatabaseLocalConceptStore db = getLocalConceptStore(lang);
 		
 		String sql = " JOIN "+originTable.getSQLName()+" as L ON C.id = L.global_concept AND L.lang = " +database.quoteString(lang) + " " +
 				" JOIN "+db.meaningTable.getSQLName()+" as M ON M.concept = L.local_concept " +
 				" WHERE M.term_text = "+database.quoteString(term)+" " +
 				" ORDER BY freq DESC";
 
+		return sql;
+		*/
+		
+		String sql = " JOIN "+meaningTable.getSQLName()+" as M on C.id = M.concept " +
+								" WHERE M.term_text = "+database.quoteString(term)+" ";
+		
+		if ( lang != null ) sql += " AND M.lang = "+database.quoteString(lang)+" ";
+		
+		sql +=	" ORDER BY freq DESC";
+		
 		return sql;
 	}
 
@@ -214,6 +227,10 @@ public class DatabaseGlobalConceptStore extends DatabaseWikiWordConceptStore<Glo
 	
 	public DataSet<GlobalConcept> getMeanings(String lang, String term, ConceptQuerySpec spec) throws PersistenceException {
 		return ((DatabaseGlobalConceptInfoStore)getConceptInfoStore()).getMeanings(lang, term, spec);
+	}
+
+	public DataSet<GlobalConcept> getMeanings(String term, ConceptQuerySpec spec) throws PersistenceException {
+		return ((DatabaseGlobalConceptInfoStore)getConceptInfoStore()).getMeanings(term, spec);
 	}
 
 	public List<LocalConcept> getLocalConcepts(int id, ConceptQuerySpec spec) throws PersistenceException {
@@ -356,6 +373,13 @@ public class DatabaseGlobalConceptStore extends DatabaseWikiWordConceptStore<Glo
 			throws PersistenceException {
 		
 			String sql = conceptSelect(spec, "M.freq") + meaningsSQL(lang, term);
+			return new QueryDataSet<GlobalConcept>(database, new ConceptFactory(spec), "getMeanings", sql, false);
+		}
+		
+		public DataSet<GlobalConcept> getMeanings(String term, ConceptQuerySpec spec)
+			throws PersistenceException {
+		
+			String sql = conceptSelect(spec, "M.freq") + meaningsSQL(null, term);
 			return new QueryDataSet<GlobalConcept>(database, new ConceptFactory(spec), "getMeanings", sql, false);
 		}
 	}
