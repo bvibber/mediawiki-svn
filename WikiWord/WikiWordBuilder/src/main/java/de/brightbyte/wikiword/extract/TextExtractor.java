@@ -1,6 +1,5 @@
 package de.brightbyte.wikiword.extract;
 
-import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -9,6 +8,7 @@ import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.Namespace;
 import de.brightbyte.wikiword.NamespaceSet;
 import de.brightbyte.wikiword.ResourceType;
+import de.brightbyte.wikiword.RevisionInfo;
 import de.brightbyte.wikiword.TweakSet;
 import de.brightbyte.wikiword.analyzer.WikiPage;
 import de.brightbyte.wikiword.analyzer.WikiTextAnalyzer;
@@ -70,7 +70,7 @@ public class TextExtractor extends AbstractExtractor<TextOutput> {
 	}	
 	
 	@Override
-	public int importPage(WikiPage analyzerPage, Date timestamp) throws PersistenceException {
+	public int importPage(WikiPage analyzerPage, RevisionInfo revision) throws PersistenceException {
 
 		ResourceType ptype = analyzerPage.getResourceType();
 		String name = analyzerPage.getName().toString();

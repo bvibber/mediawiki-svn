@@ -638,14 +638,14 @@ public class DebugLocalConceptStoreBuilder implements LocalConceptStoreBuilder {
 		return conceptCounter;
 	}
 	
-	public int storeResource(String name, ResourceType ptype, Date time)  {
+	public int storeResource(int pageId, int revId, String name, ResourceType ptype, Date time)  {
 		resourceCounter++;
-		log("+ storeResource: id = "+resourceCounter+", name = "+name+", type = "+ptype+", timestamp = "+time);
+		log("+ storeResource: page_id = "+pageId+", revision_id = "+revId+", id = "+resourceCounter+", name = "+name+", type = "+ptype+", timestamp = "+time);
 		return resourceCounter;
 	}
 
-	public int storeResourceAbout(String name, ResourceType ptype, Date time, int conceptId, String conceptName)  {
-		int resourceId = storeResource(name, ptype, time);
+	public int storeResourceAbout(int pageId, int revId, String name, ResourceType ptype, Date time, int conceptId, String conceptName)  {
+		int resourceId = storeResource(pageId, revId, name, ptype, time);
 		storeAbout(resourceId, name, conceptId, conceptName);
 		return resourceId;
 	}

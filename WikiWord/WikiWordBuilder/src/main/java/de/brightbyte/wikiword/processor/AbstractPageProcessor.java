@@ -17,6 +17,7 @@ import de.brightbyte.util.PersistenceException;
 import de.brightbyte.util.SystemUtils;
 import de.brightbyte.wikiword.NamespaceSet;
 import de.brightbyte.wikiword.ResourceType;
+import de.brightbyte.wikiword.RevisionInfo;
 import de.brightbyte.wikiword.TweakSet;
 import de.brightbyte.wikiword.analyzer.AnalyzerUtils;
 import de.brightbyte.wikiword.analyzer.WikiPage;
@@ -125,10 +126,13 @@ public abstract class AbstractPageProcessor implements WikiWordPageProcessor {
 	}
 	*/
 	
-	public void handlePage(int id, int namespace, String title, String text, Date timestamp) throws IOException, PersistenceException {
+	public void handlePage(RevisionInfo revision, String text) throws IOException, PersistenceException {
+		int id = revision.getPageId();
+		String title = revision.getPageTitle();
+		
 		if (stoplist!=null) {
 			if (stoplist.set(id, true)) {
-				out.warn("WARNING: ignored dupe: #"+id+" "+namespace+":"+title);
+				out.warn("WARNING: ignored dupe: #"+revision.getPageId()+" "+revision.getPageTitle());
 				return;
 			}
 		}
@@ -158,7 +162,7 @@ public abstract class AbstractPageProcessor implements WikiWordPageProcessor {
 					bulkTracker.step(text.length());
 					memoryTracker.step();
 					
-					int rcId = importPage(namespace, title, text, timestamp);
+					int rcId = importPage(revision, text);
 					if (rcId>0) lastRcId = rcId;
 	
 					progressTicks++;
@@ -214,20 +218,20 @@ public abstract class AbstractPageProcessor implements WikiWordPageProcessor {
 		return true;
 	}	
 	
-	protected final int importPage(int namespace, String title, String text, Date timestamp) throws PersistenceException {
-		    WikiPage page = analyzer.makePage(namespace, title, text, forceTitleCase);
+	protected final int importPage(RevisionInfo revision, String text) throws PersistenceException {
+		    WikiPage page = analyzer.makePage(revision.getNamespace(), revision.getPageTitle(), text, forceTitleCase);
 
 		    //TODO: check if page is stored. if up to date, skip. if older, update. if missing, create. optionally force update.
 		    
 			if (!isRelevant(page)) {
-				out.trace("ignored page "+title+" in namespace "+namespace); 
+				out.trace("ignored page "+revision.getPageTitle()+" in namespace "+revision.getNamespace()); 
 				return -1;
 			}
 		    
-			return importPage(page, timestamp); 
+			return importPage(page, revision); 
 	}
 
-	protected abstract int importPage(WikiPage page, Date timestamp) throws PersistenceException;
+	protected abstract int importPage(WikiPage page, RevisionInfo revision) throws PersistenceException;
 	
 	public int getProgressInterval() {
 		return progressInterval;

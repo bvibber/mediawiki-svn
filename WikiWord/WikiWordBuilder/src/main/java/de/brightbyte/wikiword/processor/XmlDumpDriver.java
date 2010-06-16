@@ -19,8 +19,10 @@ import de.brightbyte.io.LeveledOutput;
 import de.brightbyte.job.BlockingJobQueue;
 import de.brightbyte.util.ErrorHandler;
 import de.brightbyte.util.PersistenceException;
+import de.brightbyte.wikiword.Corpus;
 import de.brightbyte.wikiword.Namespace;
 import de.brightbyte.wikiword.NamespaceSet;
+import de.brightbyte.wikiword.RevisionInfo;
 import de.brightbyte.wikiword.TweakSet;
 import de.brightbyte.wikiword.builder.InputFileHelper;
 
@@ -31,6 +33,7 @@ import de.brightbyte.wikiword.builder.InputFileHelper;
 public class XmlDumpDriver implements DataSourceDriver {
 		
 	protected URL dump;
+	protected Corpus corpus;
 	protected InputStream in;
 	protected TweakSet tweaks;
 	protected LeveledOutput log;
@@ -195,7 +198,8 @@ public class XmlDumpDriver implements DataSourceDriver {
 		}
 		
 		protected void importPage(Page page, Revision revision) throws IOException, PersistenceException {
-			importer.handlePage(page.Id, page.Title.Namespace, page.Title.Text, revision.Text, revision.Timestamp.getTime());
+			RevisionInfo r = new RevisionInfo(corpus, page.Id, revision.Id, revision.Timestamp.getTime(), page.Title.Text, page.Title.Namespace);
+			importer.handlePage(r, revision.Text);
 		}
 		
 		protected void handleImportError(String message, Throwable e) {
@@ -205,22 +209,22 @@ public class XmlDumpDriver implements DataSourceDriver {
 		}
 	}
 	
-	public XmlDumpDriver(URL dump, InputFileHelper inputHelper, LeveledOutput log, ErrorHandler<XmlDumpDriver, Throwable, RuntimeException> errorHandler, TweakSet tweaks) {
+	public XmlDumpDriver(Corpus corpus, URL dump, InputFileHelper inputHelper, LeveledOutput log, ErrorHandler<XmlDumpDriver, Throwable, RuntimeException> errorHandler, TweakSet tweaks) {
 		if (dump==null) throw new NullPointerException();
 		this.dump= dump;
-		init(inputHelper, log, errorHandler, tweaks);
+		init(corpus, inputHelper, log, errorHandler, tweaks);
 	}
 	
-	public XmlDumpDriver(InputStream in, LeveledOutput log, ErrorHandler<XmlDumpDriver, Throwable, RuntimeException> errorHandler, TweakSet tweaks) {
+	public XmlDumpDriver(Corpus corpus, InputStream in, LeveledOutput log, ErrorHandler<XmlDumpDriver, Throwable, RuntimeException> errorHandler, TweakSet tweaks) {
 		if (in==null) throw new NullPointerException();
 		this.in= in;
-		init(null, log, errorHandler, tweaks);
+		init(corpus, null, log, errorHandler, tweaks);
 	}
 	
 	private int importQueueCapacity = 0;
 	private InputFileHelper inputHelper;
 	
-	private void init(InputFileHelper inputHelper, LeveledOutput log, ErrorHandler<XmlDumpDriver, Throwable, RuntimeException> errorHandler, TweakSet tweaks) {
+	private void init(Corpus corpus, InputFileHelper inputHelper, LeveledOutput log, ErrorHandler<XmlDumpDriver, Throwable, RuntimeException> errorHandler, TweakSet tweaks) {
 		if (log==null) throw new NullPointerException();
 		if (tweaks==null) throw new NullPointerException();
 		if (inputHelper==null && in==null) throw new NullPointerException();
@@ -229,6 +233,7 @@ public class XmlDumpDriver implements DataSourceDriver {
 		this.log = log;
 		this.inputHelper = inputHelper;
 		this.errorHandler = errorHandler;
+		this.corpus = corpus;
 		
 		importQueueCapacity = tweaks.getTweak("dumpdriver.pageImportQueue", 8);
 	}

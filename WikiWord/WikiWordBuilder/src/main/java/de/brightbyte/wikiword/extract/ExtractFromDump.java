@@ -66,7 +66,7 @@ public abstract class ExtractFromDump<S extends DataOutput> extends ExtractorApp
 		processor.setLogOutput(getLogOutput());
 		processor.configure(args);
 		
-		DataSourceDriver driver = new XmlDumpDriver(dumpFile, inputHelper, getLogOutput(), new FatalBackgroundErrorHandler<XmlDumpDriver, Throwable, RuntimeException>(), tweaks);
+		DataSourceDriver driver = new XmlDumpDriver(getCorpus(), dumpFile, inputHelper, getLogOutput(), new FatalBackgroundErrorHandler<XmlDumpDriver, Throwable, RuntimeException>(), tweaks);
 		
 		processor.reset();
 		processor.prepare();

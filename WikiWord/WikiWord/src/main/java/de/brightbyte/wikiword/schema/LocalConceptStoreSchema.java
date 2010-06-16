@@ -65,6 +65,8 @@ public class LocalConceptStoreSchema extends WikiWordConceptStoreSchema {
 		
 		resourceTable = new EntityTable(this, "resource", getDefaultTableAttributes());
 		resourceTable.addField( new DatabaseField(this, "id", "INT", "AUTO_INCREMENT", true, KeyType.PRIMARY ) );
+		resourceTable.addField( new DatabaseField(this, "page_id", "INT", null, false, KeyType.UNIQUE ) );
+		resourceTable.addField( new DatabaseField(this, "revision_id", "INT", null, false, KeyType.UNIQUE ) );
 		//resourceTable.addField( new ReferenceField(this, "corpus", "INT", null, true, null, "corpus", "id", null ) );
 		resourceTable.addField( new DatabaseField(this, "name", getTextType(255), null, true, KeyType.UNIQUE ) );
 		resourceTable.addField( new DatabaseField(this, "type", "INT", null, true, KeyType.INDEX ) ); //TODO: enum

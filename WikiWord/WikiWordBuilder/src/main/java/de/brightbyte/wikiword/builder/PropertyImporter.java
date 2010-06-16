@@ -1,6 +1,5 @@
 package de.brightbyte.wikiword.builder;
 
-import java.util.Date;
 import java.util.Map;
 import java.util.Set;
 
@@ -9,9 +8,10 @@ import de.brightbyte.data.MultiMap;
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.ConceptType;
 import de.brightbyte.wikiword.ResourceType;
+import de.brightbyte.wikiword.RevisionInfo;
 import de.brightbyte.wikiword.TweakSet;
-import de.brightbyte.wikiword.analyzer.WikiTextAnalyzer;
 import de.brightbyte.wikiword.analyzer.WikiPage;
+import de.brightbyte.wikiword.analyzer.WikiTextAnalyzer;
 import de.brightbyte.wikiword.store.builder.ConceptBasedStoreBuilder;
 import de.brightbyte.wikiword.store.builder.IncrementalStoreBuilder;
 import de.brightbyte.wikiword.store.builder.LocalConceptStoreBuilder;
@@ -44,7 +44,7 @@ public class PropertyImporter extends ConceptImporter {
 	*/
 	
 	@Override
-	public int importPage(WikiPage analyzerPage, Date timestamp) throws PersistenceException {
+	public int importPage(WikiPage analyzerPage, RevisionInfo revision) throws PersistenceException {
 		String name = analyzerPage.getConceptName();
 		String rcName = analyzerPage.getResourceName();
 		
@@ -55,7 +55,7 @@ public class PropertyImporter extends ConceptImporter {
 		ConceptType ctype = analyzerPage.getConceptType();
 		
 		if (buildConcepts) {
-			rcId = storeResource(rcName, rcType, timestamp);	
+			rcId = storeResource(revision.getPageId(), revision.getRevisionId(), rcName, rcType, revision.getRevisionTimestamp());	
 			
 			if (rcType == ResourceType.REDIRECT) {
 				storeAlias(analyzerPage, rcId);

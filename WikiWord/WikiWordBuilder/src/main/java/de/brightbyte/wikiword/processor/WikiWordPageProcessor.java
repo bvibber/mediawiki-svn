@@ -7,6 +7,7 @@ import de.brightbyte.application.Arguments;
 import de.brightbyte.io.Output;
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.NamespaceSet;
+import de.brightbyte.wikiword.RevisionInfo;
 
 /**
  * A WikiWordImporter receives data from a ImportDriver; it will generally analyze the data, 
@@ -44,15 +45,12 @@ public interface WikiWordPageProcessor {
 	 * do somethign meaningful with the data it is given, usually to analyze it and then store the result
 	 * somewhere.
 	 * 
-	 * @param id unique page id
-	 * @param namespace the page's namespace id
-	 * @param title the page's title, unique within the namespace
+	 * @param revision revision info
 	 * @param text the page's full wiki-text
-	 * @param time the timestamp of the page's last modification
 	 * @throws IOException 
 	 * @throws PersistenceException
 	 */
-	public void handlePage(int id, int namespace, String title, String text, Date time) throws IOException, PersistenceException;
+	public void handlePage(RevisionInfo revision, String text) throws IOException, PersistenceException;
 
 	/**
 	 * called to prepare for a new improt run, after reset, but before initialize.

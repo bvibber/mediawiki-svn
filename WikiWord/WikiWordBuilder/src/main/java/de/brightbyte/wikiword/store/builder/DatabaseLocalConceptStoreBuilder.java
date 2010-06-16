@@ -5,16 +5,12 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
-import java.util.Map;
 import java.util.Random;
 
 import javax.sql.DataSource;
 
-import sun.security.action.GetLongAction;
-
 import de.brightbyte.application.Agenda;
 import de.brightbyte.data.ChunkyBitSet;
-import de.brightbyte.data.Functor;
 import de.brightbyte.data.KeyValueStore;
 import de.brightbyte.data.Pair;
 import de.brightbyte.data.PersistentIdManager;
@@ -332,8 +328,8 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 	/**
 	 * @see de.brightbyte.wikiword.store.builder.LocalConceptStoreBuilder#storeResourceAbout(java.lang.String, de.brightbyte.wikiword.ResourceType, java.util.Date, int conceptId, String conceptName)
 	 */
-	public int storeResourceAbout(String name, ResourceType ptype, Date time, int conceptId, String conceptName) throws PersistenceException {
-		int rcId = storeResource(name, ptype, time);
+	public int storeResourceAbout(int pageId, int revId, String name, ResourceType ptype, Date time, int conceptId, String conceptName) throws PersistenceException {
+		int rcId = storeResource(pageId, revId, name, ptype, time);
 		storeAbout(rcId, name, conceptId, conceptName);
 		return rcId;
 	}
@@ -341,9 +337,12 @@ public class DatabaseLocalConceptStoreBuilder extends DatabaseWikiWordConceptSto
 	/**
 	 * @see de.brightbyte.wikiword.store.builder.LocalConceptStoreBuilder#storeResource(java.lang.String, de.brightbyte.wikiword.ResourceType, java.util.Date)
 	 */
-	public int storeResource(String name, ResourceType ptype, Date time) throws PersistenceException {
+	public int storeResource(int pageId, int revId, String name, ResourceType ptype, Date time) throws PersistenceException {
 		try {
 			name = checkName(resourceInserter.getLastId()+1, name, "resource name ({0})", resourceInserter.getLastId()+1);
+			
+			if (pageId>0) resourceInserter.updateInt("page_id", pageId );
+			if (revId>0) resourceInserter.updateInt("revision_id", revId );
 			
 			resourceInserter.updateString("name", name );
 			resourceInserter.updateInt("type", ptype.getCode());

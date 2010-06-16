@@ -22,10 +22,10 @@ public interface LocalConceptStoreBuilder extends WikiWordConceptStoreBuilder<Lo
 	public abstract void storeDefinition(int rcId, int conceptId, String definition)
 			throws PersistenceException;
 
-	public abstract int storeResource(String name, ResourceType ptype,
+	public abstract int storeResource(int pageId, int revId, String name, ResourceType ptype,
 			Date time) throws PersistenceException;
 
-	public abstract int storeResourceAbout(String name, ResourceType ptype,
+	public abstract int storeResourceAbout(int pageId, int revId, String name, ResourceType ptype,
 			Date time, int concept, String conceptName) throws PersistenceException;
 
 	public abstract int storeConcept(int rcId, String name, ConceptType ctype)

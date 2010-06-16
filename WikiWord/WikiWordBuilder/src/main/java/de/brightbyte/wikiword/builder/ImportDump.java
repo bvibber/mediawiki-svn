@@ -107,7 +107,7 @@ public abstract class ImportDump<S extends WikiWordConceptStoreBuilder<? extends
 		
 		///////////////////////// main import run ////////////////////////////////////
 		if (agenda.beginTask("ImportDump.run", "analysis")) {
-			DataSourceDriver driver = new XmlDumpDriver(getDumpFileURL(), inputHelper, getLogOutput(), new FatalBackgroundErrorHandler<XmlDumpDriver, Throwable, RuntimeException>(), tweaks);
+			DataSourceDriver driver = new XmlDumpDriver(getCorpus(), getDumpFileURL(), inputHelper, getLogOutput(), new FatalBackgroundErrorHandler<XmlDumpDriver, Throwable, RuntimeException>(), tweaks);
 			
 			importer.reset();
 

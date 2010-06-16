@@ -13,6 +13,7 @@ import de.brightbyte.wikiword.ConceptType;
 import de.brightbyte.wikiword.ExtractionRule;
 import de.brightbyte.wikiword.Namespace;
 import de.brightbyte.wikiword.ResourceType;
+import de.brightbyte.wikiword.RevisionInfo;
 import de.brightbyte.wikiword.TweakSet;
 import de.brightbyte.wikiword.analyzer.WikiPage;
 import de.brightbyte.wikiword.analyzer.WikiTextAnalyzer;
@@ -250,7 +251,7 @@ public class ConceptImporter extends AbstractImporter {
 	}
 	
 	@Override
-	public int importPage(WikiPage analyzerPage, Date timestamp) throws PersistenceException {
+	public int importPage(WikiPage analyzerPage, RevisionInfo revision) throws PersistenceException {
 		ResourceType rcType = analyzerPage.getResourceType();
 		String name = analyzerPage.getConceptName();
 		String rcName = analyzerPage.getResourceName();
@@ -259,7 +260,7 @@ public class ConceptImporter extends AbstractImporter {
 		//String title = analyzerPage.getTitle().toString();
 		
 		//TODO: check if page is stored. if up to date, skip. if older, update. if missing, create. optionally force update.
-		int rcId = storeResource(rcName, rcType, timestamp);
+		int rcId = storeResource(revision.getPageId(), revision.getRevisionId(), rcName, rcType, revision.getRevisionTimestamp());
 				
 		if (storeRawText) {  
 			textStore.storeRawText(rcId, rcName, text);
@@ -599,9 +600,9 @@ public class ConceptImporter extends AbstractImporter {
 		store.storeReference(rcId, term, targetId, targetName, rule);
 	}
 
-	protected int storeResource(String name, ResourceType ptype, Date time) throws PersistenceException {
+	protected int storeResource(int pageId, int revId, String name, ResourceType ptype, Date time) throws PersistenceException {
 		//NOTE: trust name. no need to check
-		return store.storeResource(name, ptype, time);
+		return store.storeResource(pageId, revId, name, ptype, time);
 	}
 
 	protected void storeSection(int rcId, String name, String page) throws PersistenceException {
