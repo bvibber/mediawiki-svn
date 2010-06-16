@@ -2,7 +2,8 @@
 /**
  * Internationalisation file for YouTubeAuthSub extension.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $messages = array();
@@ -153,7 +154,7 @@ $messages['am'] = array(
  * @author Juanpabl
  */
 $messages['an'] = array(
-	'youtubeauthsub_submit' => 'Nimbiar',
+	'youtubeauthsub_submit' => 'Ninviar',
 );
 
 /** Old English (Ænglisc)
@@ -394,13 +395,19 @@ $messages['bn'] = array(
 	'youtubeauthsub_category' => 'বিষয়শ্রেণী',
 	'youtubeauthsub_submit' => 'জমা দিন',
 	'youtubeauthsub_clickhere' => 'ইউটিউবে লগইন করার জন্য এখানে ক্লিক করুন',
+	'youtubeauthsub_authsubinstructions' => 'কোন ভিডিও আপলোড করার জন্য, অবশ্যই প্রথমে ইউটিউবে প্রবেশ করা প্রয়োজন।',
 	'youtubeauthsub_uploadhere' => 'এখান থেকে আপনার ভিডিও আপলোড করুন:',
 	'youtubeauthsub_uploadbutton' => 'আপলোড',
 	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
 
 [http://www.youtube.com/watch?v=$1 এই ভিডিও দেখাও]',
+	'youtubeauthsub_summary' => 'ইউটিউব ভিডিও আপলোড',
+	'youtubeauthsub_uploading' => 'আপনার ভিডিওটি আপলোড করা হচ্ছে।
+অনুগ্রহ করে অপেক্ষা করুন।',
+	'youtubeauthsub_viewpage' => 'বিকল্প পন্থায়, আপনি [[$1|আপনার ভিডিও দেখতে পারেন]]।',
 	'youtubeauthsub_jserror_nokeywords' => 'অনুগ্রহ করে এক বা একাধিক মূলশব্দ টাইপ করুন',
 	'youtubeauthsub_jserror_notitle' => 'অনুগ্রহ করে ভিডিও এর শিরোনাম দিন।',
+	'youtubeauthsub_jserror_nodesc' => 'অনুগ্রহ করে ভিডিও এর বর্ণনা দিন।',
 );
 
 /** Breton (Brezhoneg)
@@ -966,7 +973,7 @@ Izan pazientzia, arren.',
 $messages['fa'] = array(
 	'youtubeauthsub' => 'بارگذاری ویدیوی یوتوب',
 	'youtubeauthsub_title' => 'عنوان',
-	'youtubeauthsub_description' => 'توضیحات',
+	'youtubeauthsub_description' => 'توضیح',
 	'youtubeauthsub_password' => 'گذرواژهٔ یوتیوب',
 	'youtubeauthsub_username' => 'نام کاربری یوتیوب',
 	'youtubeauthsub_keywords' => 'کلیدواژه‌ها',
@@ -1971,7 +1978,7 @@ $messages['mk'] = array(
 
 За да го вгнездите вашиот видео запис на некоја вики страница, внесете го следниов код:
 <code>{{&#35;ev:youtube|$1}}</code>",
-	'youtubeauthsub_authsubinstructions' => 'За подигнување на видео запис, потребно е најпрво да се логирате на YouTube.',
+	'youtubeauthsub_authsubinstructions' => 'За подигање на видеоснимка потребно е најпрвин да се најавите на YouTube.',
 	'youtubeauthsub_uploadhere' => 'Подигнување на видео записот од овде:',
 	'youtubeauthsub_uploadbutton' => 'Подигнување',
 	'youtubeauthsub_code' => '{{#ev:youtube|$1}}.
@@ -3330,7 +3337,7 @@ $messages['tl'] = array(
 	'youtubeauthsub_username' => 'Pangalan ng tagagamit sa YouTube',
 	'youtubeauthsub_keywords' => "Mga susing-salita o salitang-naglalarawan (''keyword'')",
 	'youtubeauthsub_category' => 'Kaurian',
-	'youtubeauthsub_submit' => 'Ipasa/ipadala',
+	'youtubeauthsub_submit' => 'Ipasa',
 	'youtubeauthsub_clickhere' => 'Pindutin rito para makalagda sa YouTube',
 	'youtubeauthsub_tokenerror' => 'May kamalian sa paglikha ng sagisag ng pagbibigay ng pahintulot, subuking sariwain.',
 	'youtubeauthsub_success' => "Maligayang bati!

@@ -3,7 +3,8 @@
 /**
  * Installation script for the DidYouMean extension
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  * @author Andrew Dunbar <hippytrail@gmail.com>
  * @copyright © 2007 Andrew Dunbar
  * @licence Copyright holder allows use of the code for any purpose

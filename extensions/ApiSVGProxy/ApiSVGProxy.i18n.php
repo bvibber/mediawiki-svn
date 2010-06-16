@@ -2,8 +2,9 @@
 /**
  * Internationalisation file for extension ApiSVGProxy.
  *
- * @addtogroup Extensions
-*/
+ * @file
+ * @ingroup Extensions
+ */
 
 $messages = array();
 
@@ -12,6 +13,13 @@ $messages = array();
  */
 $messages['en'] = array(
 	'apisvgproxy-desc'      => 'Proxies SVG files from a (possibly remote) file repository to the local domain',
+);
+
+/** Message documentation (Message documentation)
+ * @author Umherirrender
+ */
+$messages['qqq'] = array(
+	'apisvgproxy-desc' => '{{desc}}',
 );
 
 /** Arabic (العربية)
@@ -239,6 +247,11 @@ $messages['sr-ec'] = array(
 	'apisvgproxy-desc' => 'Посредници SVG датотека из (вероватно даљинске) датотеке на дељеном складишту у локалном домену',
 );
 
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'apisvgproxy-desc' => 'Posrednici SVG datoteka iz (verovatno daljinske) datoteke na deljenom skladištu u lokalnom domenu',
+);
+
 /** Sundanese (Basa Sunda)
  * @author Kandar
  */
@@ -272,6 +285,11 @@ $messages['tl'] = array(
  */
 $messages['tr'] = array(
 	'apisvgproxy-desc' => 'Bir dosya deposundan (muhtemelen uzaktaki) yerel alana SVG dosyaları vekil eder',
+);
+
+/** Simplified Chinese (‪中文(简体)‬) */
+$messages['zh-hans'] = array(
+	'apisvgproxy-desc' => '代理从 SVG文件（可能是远程）文件存放到本地域名',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

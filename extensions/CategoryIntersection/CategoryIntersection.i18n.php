@@ -2,8 +2,9 @@
 /**
  * Internationalisation file for the extension Category Intersection
  *
+ * @file
  * @author Magnus Manske
- * @addtogroup Extensions
+ * @ingroup Extensions
  */
 
 $messages = array();
@@ -334,12 +335,14 @@ $messages['ia'] = array(
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author Irwangatot
  */
 $messages['id'] = array(
 	'categoryintersection' => 'Persimpangan kategori',
 	'categoryintersection-desc' => 'Membuat suatu tabel dengan nilai "hash" untuk [[Special:CategoryIntersection|persimpangan kategori]] di dalam suatu halaman',
 	'categoryintersection-doit' => 'Daftarkan semua halaman di kategori-kategori ini',
 	'categoryintersection-maxcategories' => 'Angka maksimal yang diijinkan untuk persimpangan kategori adalah $1.',
+	'categoryintersection-mincategories' => 'Anda harus memasukkan setidaknya dua kategori.',
 	'categoryintersection-results' => 'Pencarian Anda menghasilkan $1 {{PLURAL:$1|hasil|hasil}}.',
 );
 
@@ -360,12 +363,14 @@ $messages['is'] = array(
 
 /** Italian (Italiano)
  * @author BrokenArrow
+ * @author HalphaZ
  */
 $messages['it'] = array(
 	'categoryintersection' => 'Intersezione tra categorie',
 	'categoryintersection-desc' => "Gestisce una tabella con i valori di hash per le [[Special:CategoryIntersection|intersezioni tra categorie]] nell'ambito di una pagina",
 	'categoryintersection-doit' => 'Elenca le pagine che appartengono a tutte le categorie indicate',
 	'categoryintersection-maxcategories' => 'Non è possibile indicare più di $1 categorie da interesecare.',
+	'categoryintersection-mincategories' => 'È necessario includere almeno due categorie.',
 	'categoryintersection-results' => 'La ricerca ha restituito {{PLURAL:$1|un risultato|$1 risultati}}.',
 );
 
@@ -451,7 +456,7 @@ $messages['lo'] = array(
 $messages['mk'] = array(
 	'categoryintersection' => 'Пресек на категории',
 	'categoryintersection-desc' => 'Одржување на табела со тарабни вредности за [[Special:CategoryIntersection|пресек на категории]] во страница',
-	'categoryintersection-doit' => 'Листа на страници во сите овие категории',
+	'categoryintersection-doit' => 'Список на страници во сите овие категории',
 	'categoryintersection-maxcategories' => 'Максимално дозволен број на категории чиј пресек се бара е $1.',
 	'categoryintersection-mincategories' => 'Треба да вклучите барем две категории.',
 	'categoryintersection-results' => 'Пребарувањето врати $1 {{PLURAL:$1|резултат|резултати}}.',
@@ -573,12 +578,14 @@ $messages['pt'] = array(
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
+ * @author Giro720
  */
 $messages['pt-br'] = array(
 	'categoryintersection' => 'Intersecção de categorias',
 	'categoryintersection-desc' => "Mantém uma tabela com valores 'hash' para [[Special:CategoryIntersection|intersecções de categorias]] numa página",
 	'categoryintersection-doit' => 'Listar páginas em todas estas categorias',
 	'categoryintersection-maxcategories' => 'O limite máximo de categorias que se interseccionam é $1.',
+	'categoryintersection-mincategories' => 'Você precisa incluir pelo menos duas categorias.',
 	'categoryintersection-results' => 'A pesquisa retornou $1 {{PLURAL:$1|resultado|resultados}}.',
 );
 
@@ -646,13 +653,15 @@ $messages['sk'] = array(
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Charmed94
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'categoryintersection' => 'Пресек категорија',
 	'categoryintersection-desc' => 'Одржава табелу са хеш вредностима за [[Special:CategoryIntersection|пресеке категорија]] унутар стране',
-	'categoryintersection-doit' => 'Дај списак страна у свим овим категоријама',
+	'categoryintersection-doit' => 'Сврстава стране у свим овим категоријама',
 	'categoryintersection-maxcategories' => 'Максималан дозвољен број категорија у пресеку је $1.',
+	'categoryintersection-mincategories' => 'Морате да укључите најмање две категорије.',
 	'categoryintersection-results' => 'Претрага је вратила $1 {{PLURAL:$1|резултат|резултата}}.',
 );
 
@@ -664,6 +673,7 @@ $messages['sr-el'] = array(
 	'categoryintersection-desc' => 'Održava tabelu sa heš vrednostima za [[Special:CategoryIntersection|preseke kategorija]] unutar strane',
 	'categoryintersection-doit' => 'Daj spisak strana u svim ovim kategorijama',
 	'categoryintersection-maxcategories' => 'Maksimalan dozvoljen broj kategorija u preseku je $1.',
+	'categoryintersection-mincategories' => 'Morate da uključite najmanje dve kategorije.',
 	'categoryintersection-results' => 'Pretraga je vratila $1 {{PLURAL:$1|rezultat|rezultata}}.',
 );
 
@@ -688,6 +698,7 @@ $messages['su'] = array(
 );
 
 /** Swedish (Svenska)
+ * @author Ainali
  * @author Lejonel
  * @author M.M.S.
  */
@@ -696,6 +707,7 @@ $messages['sv'] = array(
 	'categoryintersection-desc' => 'Hanterar en tabell med hashvärden för de [[Special:CategoryIntersection|kategorisnitt]] som en sida är medlem i.',
 	'categoryintersection-doit' => 'Visa sidor som tillhör alla dessa kategorier',
 	'categoryintersection-maxcategories' => 'Det största antal kategorier som kan sökas i är $1.',
+	'categoryintersection-mincategories' => 'Du måste ange minst två kategorier.',
 	'categoryintersection-results' => 'Sökningen gav $1 {{PLURAL:$1|resultat|resultat}}.',
 );
 

@@ -1,7 +1,9 @@
 <?php
 /**
  * Internationalisation file for the NewestPages extension
- * @addtogroup Extensions
+ *
+ * @file
+ * @ingroup Extensions
  * @author Rob Church <robchur@gmail.com>
  * @copyright © 2006 Rob Church
  * @licence GNU General Public Licence 2.0
@@ -571,6 +573,7 @@ $messages['hsb'] = array(
 
 /** Hungarian (Magyar)
  * @author Dani
+ * @author Enbéká
  * @author Glanthor Reviol
  */
 $messages['hu'] = array(

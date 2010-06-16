@@ -22,7 +22,8 @@
  * Add a predefined header message to the Sandbox of your wiki. As
  * defined by $wgSandboxName.
  *
- * @package MediaWiki
+ * @file
+ * @ingroup Extensions
  */
 
 $wgHooks['ParserBeforeStrip'][] = 'addSandboxMessage';

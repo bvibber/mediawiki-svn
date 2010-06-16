@@ -2,7 +2,7 @@
 /**
  * Job for updating translation pages.
  *
- * @addtogroup Extensions
+ * @ingroup Extensions
  *
  * @author Niklas Laxström
  * @copyright Copyright © 2008-2009, Niklas Laxström
@@ -12,7 +12,6 @@
 class RenderJob extends Job {
 	public static function newJob( Title $target ) {
 		global $wgTranslateFuzzyBotName;
-		wfLoadExtensionMessages( 'PageTranslation' );
 
 		$job = new self( $target );
 		$job->setUser( $wgTranslateFuzzyBotName );
@@ -58,6 +57,7 @@ class RenderJob extends Job {
 
 		// User hack
 		global $wgUser;
+
 		$oldUser = $wgUser;
 		$wgUser = $user;
 

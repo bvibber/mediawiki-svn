@@ -2,8 +2,9 @@
 /**
  * Internationalisation file for extension ContributionScores.
  *
- * @addtogroup Extensions
-*/
+ * @file
+ * @ingroup Extensions
+ */
 
 $messages = array();
 
@@ -264,6 +265,13 @@ Bàsicament, mesura el nombre de pàgines diferents editades, amb consideració 
 	'contributionscores-username' => "Nom d'usuari",
 	'contributionscores-invalidusername' => "Nom d'usuari no vàlid",
 	'contributionscores-invalidmetric' => 'Mètrica invàlida',
+);
+
+/** Chechen (Нохчийн)
+ * @author Sasan700
+ */
+$messages['ce'] = array(
+	'contributionscores-allrevisions' => 'Массо нисдарш',
 );
 
 /** Czech (Česky)

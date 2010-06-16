@@ -183,6 +183,13 @@ $messages['ja'] = array(
 	'autoincrement-desc' => '自動インクリメント変数 <nowiki>{{AUTOINCREMENT}}</nowiki> を追加する変数フック',
 );
 
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'autoincrement-desc' => '자동으로 증가하는 변수 <nowiki>{{AUTOINCREMENT}}</nowiki>를 추가하는 변수 훅',
+);
+
 /** Colognian (Ripoarisch)
  * @author Purodha
  */
@@ -295,6 +302,13 @@ $messages['sk'] = array(
 	'autoincrement-desc' => 'Premenlivý prípojný bod, ktorý pridáva automaticky sa zvyšujúcu premennú <nowiki>{{AUTOINCREMENT}}</nowiki>',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'autoincrement-desc' => 'Spremenljiva priponka, ki doda samodejno naraščajočo spremenljivko <nowiki>{{AUTOINCREMENT}}</nowiki>',
+);
+
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */
@@ -349,6 +363,11 @@ $messages['uk'] = array(
  */
 $messages['vi'] = array(
 	'autoincrement-desc' => 'Một hook biến sẽ thêm một biến tự động tăng tiến <nowiki>{{AUTOINCREMENT}}</nowiki>',
+);
+
+/** Simplified Chinese (‪中文(简体)‬) */
+$messages['zh-hans'] = array(
+	'autoincrement-desc' => '堵加<nowiki>{{AUTOINCREMENT}}</nowiki>变量。',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

@@ -2,8 +2,9 @@
 /**
  * Internationalisation file for extension ParserFunctions.
  *
- * @addtogroup Extensions
-*/
+ * @file
+ * @ingroup Extensions
+ */
 
 $messages = array();
 
@@ -81,23 +82,23 @@ $messages['aln'] = array(
  * @author Juanpabl
  */
 $messages['an'] = array(
-	'pfunc_desc' => 'Amillorar o parseyador con funzions lochicas',
+	'pfunc_desc' => 'Amillorar o parseyador con funcions lochicas',
 	'pfunc_time_error' => 'Error: tiempo incorreuto',
 	'pfunc_time_too_long' => 'Error: masiadas cridas #time',
-	'pfunc_rel2abs_invalid_depth' => 'Error: Fondura incorreuta en o camín: "$1" (ha prebato d\'azeder ta un nodo por denzima d\'o nodo radiz)',
-	'pfunc_expr_stack_exhausted' => "Error d'espresión: Pila acotolada",
-	'pfunc_expr_unexpected_number' => "Error d'espresión: numbero no asperato",
-	'pfunc_expr_preg_match_failure' => "Error d'espresión: fallo de preg_match no asperato",
-	'pfunc_expr_unrecognised_word' => 'Error d\'espresión: palabra "$1" no reconoixita',
-	'pfunc_expr_unexpected_operator' => "Error d'espresión: operador $1 no asperato",
-	'pfunc_expr_missing_operand' => "Error d'espresión: á $1 li falta un operando",
-	'pfunc_expr_unexpected_closing_bracket' => "Error d'espresión: zarradura d'o gafet no asperata",
-	'pfunc_expr_unrecognised_punctuation' => 'Error d\'espresión: caráuter de puntuazión "$1" no reconoixito',
-	'pfunc_expr_unclosed_bracket' => "Error d'espresión: gafet sin zarrar",
-	'pfunc_expr_division_by_zero' => 'Dibisión por zero',
+	'pfunc_rel2abs_invalid_depth' => 'Error: Fondura incorreuta en o camín: "$1" (ha prebato d\'acceder ta un nodo por dencima d\'o nodo radiz)',
+	'pfunc_expr_stack_exhausted' => "Error d'expresión: Pila acotolada",
+	'pfunc_expr_unexpected_number' => "Error d'expresión: numero no asperato",
+	'pfunc_expr_preg_match_failure' => "Error d'expresión: fallo de preg_match no asperato",
+	'pfunc_expr_unrecognised_word' => 'Error d\'expresión: parola "$1" no reconoixita',
+	'pfunc_expr_unexpected_operator' => "Error d'expresión: operador $1 no asperato",
+	'pfunc_expr_missing_operand' => "Error d'expresión: a $1 li falta un operando",
+	'pfunc_expr_unexpected_closing_bracket' => "Error d'expresión: zarradura d'o gafet no asperata",
+	'pfunc_expr_unrecognised_punctuation' => 'Error d\'expresión: carácter de puntuación "$1" no reconoixito',
+	'pfunc_expr_unclosed_bracket' => "Error d'expresión: gafet sin zarrar",
+	'pfunc_expr_division_by_zero' => 'División por zero',
 	'pfunc_expr_invalid_argument' => 'Argumento no conforme ta $1: < -1 u > 1',
 	'pfunc_expr_invalid_argument_ln' => 'Argumento no conforme ta ln: <=0',
-	'pfunc_expr_unknown_error' => "Error d'espresión: error esconoixito ($1)",
+	'pfunc_expr_unknown_error' => "Error d'expresión: error esconoixito ($1)",
 	'pfunc_expr_not_a_number' => 'En $1: o resultau no ye un numero',
 );
 
@@ -361,6 +362,14 @@ $messages['ca'] = array(
 	'pfunc_expr_unknown_error' => "Error de l'expressió: Desconegut ($1)",
 	'pfunc_expr_not_a_number' => 'A $1: el resultat no és un nombre',
 	'pfunc_string_too_long' => 'Error: La cadena és $1 caràcters massa llarga',
+);
+
+/** Chechen (Нохчийн)
+ * @author Sasan700
+ */
+$messages['ce'] = array(
+	'pfunc_expr_stack_exhausted' => 'Яздарехь гlалат ду: хьаладуьззина татол',
+	'pfunc_expr_unrecognised_word' => 'Яздарехь гlалат ду: дойзуш доцу дош «$1»',
 );
 
 /** Czech (Česky)
@@ -1222,7 +1231,7 @@ $messages['mk'] = array(
 	'pfunc_desc' => 'Проширување на можностите на парсерот со логички функции',
 	'pfunc_time_error' => 'Грешка: погрешен фомат за време',
 	'pfunc_time_too_long' => 'Грешка: премногу #time повикувања',
-	'pfunc_rel2abs_invalid_depth' => 'Грешка: Невалидна длабочина во патеката: "$1" (обид за пристап до чвор над root чворот)',
+	'pfunc_rel2abs_invalid_depth' => 'Грешка: Неважечка длабочина во патеката: „$1“ (обид за пристап до јазол над коренот)',
 	'pfunc_expr_stack_exhausted' => 'Грешка во изразот: Стекот е преполн',
 	'pfunc_expr_unexpected_number' => 'Грешка во изразот: Неочекуван број',
 	'pfunc_expr_preg_match_failure' => 'Грешка во изразот: Неочекувана preg_match грешка',
@@ -1652,6 +1661,7 @@ $messages['roa-tara'] = array(
 );
 
 /** Russian (Русский)
+ * @author G0rn
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
@@ -1835,6 +1845,7 @@ $messages['sr-el'] = array(
 	'pfunc_expr_invalid_argument_ln' => 'Loš argument: ln <= 0',
 	'pfunc_expr_unknown_error' => 'Greška u izrazu: Nepoznata greška ($1)',
 	'pfunc_expr_not_a_number' => 'Rezultat u $1 nije broj.',
+	'pfunc_string_too_long' => 'Greška: reč prekoračuje $1  slova, što je postavljeno ograničenje',
 );
 
 /** Seeltersk (Seeltersk)

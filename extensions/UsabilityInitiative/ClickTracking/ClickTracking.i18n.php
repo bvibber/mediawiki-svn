@@ -282,17 +282,31 @@ $messages['bs'] = array(
 
 /** Catalan (Català)
  * @author SMP
+ * @author Vriullop
  */
 $messages['ca'] = array(
+	'clicktracking' => "Seguiment de clics de la Iniciativa d'Usabilitat",
+	'clicktracking-desc' => "Seguiment de clics d'esdeveniments que no causen una actualització de pàgina",
+	'ct-title' => "Clics agregats d'usuari",
+	'ct-event-name' => "Nom d'esdeveniment",
+	'ct-expert-header' => "Clics d'«expert»",
+	'ct-intermediate-header' => "Clics d'usuari «mitjà»",
+	'ct-beginner-header' => 'Clics de «novell»',
 	'ct-total-header' => 'Clics totals',
 	'ct-start-date' => "Data d'inici (AAAAMMDD)",
 	'ct-end-date' => 'Data de finalització (AAAAMMDD)',
+	'ct-increment-by' => 'Nombre de dies que cada punt representa',
+	'ct-change-graph' => 'Canvia el gràfic',
 	'ct-beginner' => 'Principiant',
 	'ct-intermediate' => 'Intermedi',
 	'ct-expert' => 'Expert',
+	'ct-date-range' => 'interval de dates',
+	'ct-editing' => 'Actualment editant:',
 	'ct-anon-users' => 'Usuaris anònims',
 	'ct-user-contribs' => "Total de contribucions de l'usuari",
+	'ct-user-span' => "Contribucions de l'usuari en l'interval de temps",
 	'ct-and' => 'i',
+	'ct-update-table' => 'Actualitza taula',
 );
 
 /** Czech (Česky)
@@ -894,6 +908,9 @@ $messages['ig'] = array(
  * @author Malafaya
  */
 $messages['io'] = array(
+	'ct-beginner' => 'Novico',
+	'ct-expert' => 'Experto',
+	'ct-anon-users' => 'Anonima uzanti',
 	'ct-and' => 'e(d)',
 );
 
@@ -931,7 +948,7 @@ $messages['it'] = array(
  * @author 青子守歌
  */
 $messages['ja'] = array(
-	'clicktracking' => 'Usability Initiative クリック追跡',
+	'clicktracking' => '使用性改善のクリック追跡',
 	'clicktracking-desc' => 'クリック追跡：ページの再描画を引き起こさないイベントを追跡記録する機能',
 	'ct-title' => '利用者クリック集計',
 	'ct-event-name' => 'イベント名',
@@ -957,13 +974,22 @@ $messages['ja'] = array(
 
 /** Georgian (ქართული)
  * @author BRUTE
+ * @author ITshnik
  * @author Temuri rajavi
+ * @author გიორგიმელა
  */
 $messages['ka'] = array(
+	'clicktracking' => 'Usability ინიციატივის ფარგლებში დაწკაპუნებებზე თვალის დევნება',
+	'clicktracking-desc' => 'იმ დაწყაპუნებებზე თვალყურის დევნება, რომლებიც არ იწვევენ გვერდის განახლებას',
+	'ct-title' => 'მომხმარებლის აგრეგირებული  დაწკაპუნების',
 	'ct-event-name' => 'მოვლენის სახელი',
 	'ct-expert-header' => '"ექსპერტის" დაჭერა',
+	'ct-intermediate-header' => '"შუალედური" დაწკაპუნებები',
+	'ct-beginner-header' => '"დამწყებთა" მოქმედებები',
+	'ct-total-header' => 'სულ დაწკაპუნებით',
 	'ct-start-date' => 'დაწყების თარიღი (წწწწთთდდ)',
 	'ct-end-date' => 'დამთავრების თარიღი (წწწწთთდდ)',
+	'ct-increment-by' => 'დღეების რაოდენობა თითოეული მონაცემების წერტილი წარმოადგენს',
 	'ct-change-graph' => 'გრაფიკის შეცვლა',
 	'ct-beginner' => 'დამწყები',
 	'ct-intermediate' => 'შუალედური',
@@ -1562,6 +1588,13 @@ $messages['sah'] = array(
 	'ct-update-table' => 'Таабылы саҥардыы',
 );
 
+/** Sardinian (Sardu)
+ * @author Andria
+ */
+$messages['sc'] = array(
+	'ct-and' => 'e',
+);
+
 /** Sinhala (සිංහල)
  * @author චතුනි අලහප්පෙරුම
  */
@@ -1617,8 +1650,66 @@ $messages['sk'] = array(
 $messages['sl'] = array(
 	'clicktracking' => 'Sledenje klikom Iniciative za uporabnost',
 	'clicktracking-desc' => 'Sledenje klikom, namenjeno odkrivanju dogodkov, ki preprečujejo osvežitev strani med urejanjem',
+	'ct-title' => 'Zbrani uporabniški kliki',
+	'ct-event-name' => 'Ime dogodka',
+	'ct-expert-header' => 'Klikov »Strokovnjakov«',
+	'ct-intermediate-header' => 'Klikov »Nadaljevalcev«',
+	'ct-beginner-header' => 'Klikov »Začetnikov«',
+	'ct-total-header' => 'Skupno klikov',
+	'ct-start-date' => 'Začetni datum (YYYYMMDD)',
+	'ct-end-date' => 'Končni datum (YYYYMMDD)',
+	'ct-increment-by' => 'Število dni, ki jih predstavlja vsaka podatkovna točka',
+	'ct-change-graph' => 'Graf sprememb',
+	'ct-beginner' => 'Začetnik',
+	'ct-intermediate' => 'Nadaljevalec',
+	'ct-expert' => 'Strokovnjak',
+	'ct-date-range' => 'Časovno obdobje',
+	'ct-editing' => 'Trenutno urejanje:',
 	'ct-anon-users' => 'Brezimni uporabniki',
+	'ct-user-contribs' => 'Skupno število uporabniških prispevkov',
+	'ct-user-span' => 'Uporabniški prispevki v časovnem razponu',
 	'ct-and' => 'in',
+	'ct-update-table' => 'Posodobi tabelo',
+);
+
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'ct-expert-header' => 'Кликови "експерата"',
+	'ct-intermediate-header' => 'Кликови "напредних"',
+	'ct-beginner-header' => 'Кликови "почетника"',
+	'ct-total-header' => 'Укупно кликова',
+	'ct-start-date' => 'Почетни датум (YYYYMMDD)',
+	'ct-end-date' => 'Крајњи датум (YYYYMMDD)',
+	'ct-beginner' => 'Почетник',
+	'ct-intermediate' => 'Напредни',
+	'ct-expert' => 'Експерт',
+	'ct-date-range' => 'Опсег датума',
+	'ct-editing' => 'Тренутно мења:',
+	'ct-anon-users' => 'Анонимни корисници',
+	'ct-user-contribs' => 'Укупно корисничких доприноса',
+	'ct-and' => 'и',
+	'ct-update-table' => 'Ажурирај табелу',
+);
+
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'ct-expert-header' => 'Klikovi "eksperata"',
+	'ct-intermediate-header' => 'Klikovi "naprednih"',
+	'ct-beginner-header' => 'Klikovi "početnika"',
+	'ct-total-header' => 'Ukupno klikova',
+	'ct-start-date' => 'Početni datum (YYYYMMDD)',
+	'ct-end-date' => 'Krajnji datum (YYYYMMDD)',
+	'ct-beginner' => 'Početnik',
+	'ct-intermediate' => 'Napredni',
+	'ct-expert' => 'Ekspert',
+	'ct-date-range' => 'Opseg datuma',
+	'ct-editing' => 'Trenutno menja:',
+	'ct-anon-users' => 'Anonimni korisnici',
+	'ct-user-contribs' => 'Ukupno korisničkih doprinosa',
+	'ct-and' => 'i',
+	'ct-update-table' => 'Ažuriraj tabelu',
 );
 
 /** Swedish (Svenska)
@@ -1863,16 +1954,38 @@ $messages['vo'] = array(
  * @author פוילישער
  */
 $messages['yi'] = array(
+	'ct-beginner' => 'אָנהייבער',
 	'ct-anon-users' => 'אַנאנימע באַניצער',
 	'ct-and' => 'און',
 );
 
 /** Cantonese (粵語)
+ * @author Horacewai2
  * @author Shinjiman
  */
 $messages['yue'] = array(
 	'clicktracking' => '可用性倡議撳追蹤',
 	'clicktracking-desc' => '撳追蹤，響唔使重載版嘅情況之下追蹤撳',
+	'ct-title' => '聚集用戶點擊',
+	'ct-event-name' => '活動名',
+	'ct-expert-header' => '"指定"按鈕',
+	'ct-intermediate-header' => '中間按鈕',
+	'ct-beginner-header' => '開始者按鈕',
+	'ct-total-header' => '總計',
+	'ct-start-date' => '開始日期 (YYYYMMDD)',
+	'ct-end-date' => '結束日期 (YYYYMMDD)',
+	'ct-increment-by' => '提供數據嘅日數',
+	'ct-change-graph' => '更改圖像',
+	'ct-beginner' => '開始',
+	'ct-intermediate' => '中段',
+	'ct-expert' => '尾段',
+	'ct-date-range' => '日期範圍',
+	'ct-editing' => '而家編輯緊:',
+	'ct-anon-users' => '匿名用戶',
+	'ct-user-contribs' => '總計用戶貢獻',
+	'ct-user-span' => '係時段內嘅用戶貢獻',
+	'ct-and' => '同',
+	'ct-update-table' => '更新表格',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

@@ -2,7 +2,8 @@
 /**
  * Internationalisation file for the extension Contributors.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  * @author Rob Church <robchur@gmail.com>
  */
 
@@ -946,7 +947,7 @@ $messages['mk'] = array(
 	'contributors' => 'Уредници',
 	'contributors-desc' => 'Дава краток преглед на главните уредници на една страница',
 	'contributors-toolbox' => 'Главни уредници',
-	'contributors-legend' => 'Покажи листа на главните уредници на една страница',
+	'contributors-legend' => 'Прикажувај список на главните уредници на една страница',
 	'contributors-target' => 'Наслов:',
 	'contributors-submit' => 'Прикажи',
 	'contributors-subtitle' => 'Главни уредници на $1',

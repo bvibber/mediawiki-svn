@@ -2,8 +2,9 @@
 /**
  * Internationalisation file for extension CrosswikiBlock.
  *
- * @addtogroup Extensions
-*/
+ * @file
+ * @ingroup Extensions
+ */
 
 $messages = array();
 
@@ -450,6 +451,12 @@ $messages['ca'] = array(
 	'crosswikiblock-nouser' => 'No s\'ha trobat l\'usuari "$3".',
 	'crosswikiblock-noreason' => "No s'ha especificat cap motiu.",
 	'crosswikiblock-alreadyblocked' => "L'usuari $3 ja està blocat.",
+);
+
+/** Chechen (Нохчийн) */
+$messages['ce'] = array(
+	'crosswikiblock-reason' => 'Бахьан:',
+	'crosswikiunblock-reason' => 'Бахьан:',
 );
 
 /** Czech (Česky)
@@ -1670,7 +1677,7 @@ $messages['mk'] = array(
 * [[Special:CrosswikiBlock|Образецот за блокирање]]
 * [[$2]]",
 	'crosswikiblock-nousername' => 'Нема наведено корисничко име',
-	'crosswikiblock-local' => 'Локалните блокирања не се поддржани преку овој интерфејс. Користете [[Special:BlockIP|{{int:blockip}}]]',
+	'crosswikiblock-local' => 'Локалните блокирања не се поддржани преку овој посредник. Користете [[Special:BlockIP|{{int:blockip}}]]',
 	'crosswikiblock-dbnotfound' => 'Базата на податоци $1 не постои',
 	'crosswikiblock-noname' => '„$1“ не е важечко корисничко име.',
 	'crosswikiblock-nouser' => 'Корисникот „$3“ не е пронајден.',
@@ -1684,7 +1691,7 @@ $messages['mk'] = array(
 Назад кон:
 * [[Special:CrosswikiBlock|Образецот за блокирање]]
 * [[$4]]",
-	'crosswikiunblock-local' => 'Локалните одблокирања не се поддржани преку овој интерфејс. Користете [[Special:IPBlockList|{{int:ipblocklist}}]]',
+	'crosswikiunblock-local' => 'Локалните одблокирања не се поддржани преку овој посредник. Користете [[Special:IPBlockList|{{int:ipblocklist}}]]',
 	'right-crosswikiblock' => 'Блокирање и одблокирање на корисници на други викија',
 );
 
@@ -2140,6 +2147,7 @@ Artorna a:
 $messages['ps'] = array(
 	'crosswikiblock-expiry' => 'د پای نېټه:',
 	'crosswikiblock-reason' => 'سبب:',
+	'crosswikiblock-submit' => 'پدې کارن بنديز لګول',
 	'crosswikiunblock-reason' => 'سبب:',
 );
 
@@ -2400,18 +2408,35 @@ Vrátiť sa na:
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Sasa Stefanovic
+ * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
+	'crosswikiblock-expiry' => 'Истек:',
 	'crosswikiblock-reason' => 'Разлог:',
+	'crosswikiblock-submit' => 'Блокирај овог корисника',
 	'crosswikiunblock-reason' => 'Разлог:',
+	'crosswikiblock-nousername' => 'Није дато корисничко име',
+	'crosswikiblock-dbnotfound' => 'База података $1 не постоји',
+	'crosswikiblock-noname' => '"$1" није исправно корисничко име.',
+	'crosswikiblock-noreason' => 'Није наведен разлог.',
+	'crosswikiblock-alreadyblocked' => 'Корисник $3 је већ блокиран.',
+	'crosswikiblock-noblock' => 'Овај корисник није блокиран.',
 );
 
 /** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(
+	'crosswikiblock-expiry' => 'Istek:',
 	'crosswikiblock-reason' => 'Razlog:',
+	'crosswikiblock-submit' => 'Blokiraj ovog korisnika',
 	'crosswikiunblock-reason' => 'Razlog:',
+	'crosswikiblock-nousername' => 'Nije dato korisničko ime',
+	'crosswikiblock-dbnotfound' => 'Baza podataka $1 ne postoji',
+	'crosswikiblock-noname' => '"$1" nije ispravno korisničko ime.',
+	'crosswikiblock-noreason' => 'Nije naveden razlog.',
+	'crosswikiblock-alreadyblocked' => 'Korisnik $3 je već blokiran.',
+	'crosswikiblock-noblock' => 'Ovaj korisnik nije blokiran.',
 );
 
 /** Seeltersk (Seeltersk)

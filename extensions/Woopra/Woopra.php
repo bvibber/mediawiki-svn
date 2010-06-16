@@ -3,7 +3,8 @@
 /**
  * Used to add Woopra Live Stat Tracking to your MediaWiki Instllation
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  * @author Shane
  * @copyright © 2008-2009 FrakMedia! Productions, http://www.frakmedia.net/main/woopra
  * @license GNU General Public Licence 2.0 or later

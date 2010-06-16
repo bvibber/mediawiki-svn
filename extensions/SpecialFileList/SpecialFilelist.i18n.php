@@ -2,7 +2,8 @@
 /**
  * Internationalisation file for extension SpecialFileList.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
 */
 
 $messages = array();
@@ -546,9 +547,9 @@ $messages['mdf'] = array(
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
-	'filelist' => 'Листа на податотеки',
+	'filelist' => 'Список на податотеки',
 	'filelist-desc' => '[[Special:Filelist|Специјална страница]] за наведување на подигнати податотеки',
-	'filelist-show-list' => 'Прикажи листа',
+	'filelist-show-list' => 'Прикажи список',
 	'filelist-show-gallery' => 'Прикажи галерија',
 	'filelist-image-desc' => 'опис',
 );

@@ -2,7 +2,8 @@
 /**
  * Internationalisation file for extension SelectCategory.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  * @author Leon Weber <leon.weber@leonweber.de> & Manuel Schneider <manuel.schneider@wikimedia.ch>
  * @copyright © 2006 by Leon Weber & Manuel Schneider
  * @licence GNU General Public Licence 2.0 or later

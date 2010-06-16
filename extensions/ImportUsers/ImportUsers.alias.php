@@ -2,7 +2,8 @@
 /**
  * Aliases for Special:ImportUsers
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $aliases = array();

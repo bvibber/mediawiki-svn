@@ -402,6 +402,13 @@ $messages['niu'] = array(
 	'mv_history' => 'Liu onoono atu ki tua',
 );
 
+/** Abkhazian (Аҧсуа)
+ * @author Temuri rajavi
+ */
+$messages['ab'] = array(
+	'mv_tool_search' => 'Аҧшаара',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
  * @author Naudefj
@@ -536,6 +543,7 @@ $messages['am'] = array(
  */
 $messages['an'] = array(
 	'mv_edit' => 'Editar',
+	'mv_history' => 'Historial',
 	'mv_search_date_range' => 'Rango de calendatas',
 	'mv_date_range' => 'Rango de calendatas',
 );
@@ -2853,7 +2861,7 @@ $messages['fi'] = array(
 	'mv_watch_clip' => 'Katso leike',
 	'mv_close_clip' => 'Sulje leike',
 	'mv_category_matches' => 'Luokkien vastaavuudet',
-	'mv_click_to_edit' => 'Klikkaa muokataksesi',
+	'mv_click_to_edit' => 'napsauta muokataksesi',
 	'mvd_default_mismatch' => 'Virhe asetustiedostossa',
 	'mv_time_separator' => '$1 – $2',
 	'video_feed_cat' => 'Videosyöte luokkaan kohdistuen:',
@@ -6090,7 +6098,7 @@ $messages['mk'] = array(
 	'mv_path_type_url_anx' => 'полна URL-адреса на медијата',
 	'mv_path_type_wiki_title' => 'вики-наслов на медија',
 	'mv_path_type_url_file' => 'полна URL-адреса на медијата, користејќи локално пребарување',
-	'mv_path_type_mp4_stream' => 'Сервер за MP4 емитување',
+	'mv_path_type_mp4_stream' => 'Опслужувач за MP4 емитување',
 	'mv_path_type_label' => 'тип на патека',
 	'mv_base_offset_label' => 'основен надоместок',
 	'mv_duration_label' => 'Времетраење',
@@ -6101,7 +6109,7 @@ $messages['mk'] = array(
 	'mv_updated_stream_files' => 'Ажуриран записникот на податотеки на емитувања',
 	'mv_removed_file_stream' => 'Отстранета емитувачка податотека: $1',
 	'mv_missing_stream_text' => 'Побараното емитување <b>$1</b> е недостапно.<br />
-Проверете ја <a href="$2">Листата на емитувања</a>,<br />
+Проверете го <a href="$2">списокот на емитувања</a>,<br />
 или <a href="$3">Додајте го тоа емитување</a>.',
 	'mv_user_cant_edit' => 'Треба да се [$1 најавите] за да уредувате, $2',
 	'mv_add_stream_file' => 'Додај емитувачка податотека',
@@ -6120,7 +6128,7 @@ $messages['mk'] = array(
 	'mv_remove_reason' => 'Причина за бришење:',
 	'mv_stream_delete_warrning' => "'''Со отстранувањето на ова емитување, отстранувате и $1 {{PLURAL:$1|дел|дела}} од поврзаните метаподатоци'''<br />",
 	'mv_label_stream_type' => 'Тип на емитување',
-	'mv_metavid_file' => 'Постоечка податотека на серверот',
+	'mv_metavid_file' => 'Постоечка податотека на опслужувачот',
 	'mv_metavid_live' => 'Постави емитување во живо',
 	'mv_upload_file' => 'Подигни податотека',
 	'mv_external_file' => 'Надворешна податотека',
@@ -6160,8 +6168,8 @@ $messages['mk'] = array(
 $mvMVDTypeDefaultDisp треба да биде подмножество на $mvMVDTypeAllAvailable',
 	'mv_data_page_title' => '$1 за $2 од $3',
 	'mv_time_separator' => '$1 до $2',
-	'mv_list_streams' => 'MetaVid листа на емитувања',
-	'mv_list_streams_page' => 'MetaVid листа на емитувања',
+	'mv_list_streams' => 'MetaVid список на емитувања',
+	'mv_list_streams_page' => 'MetaVid список на емитувања',
 	'mv_list_streams_docu' => 'Постојат следниве потоци:',
 	'mv_list_streams_none' => 'Не постојат потоци',
 	'mvvideofeed' => 'MetaVid извоз на видео-канал',
@@ -6187,7 +6195,7 @@ $mvMVDTypeDefaultDisp треба да биде подмножество на $mv
 	'mv_adjust_title' => 'Прилагоди време на почеток и крај',
 	'mv_adjust_preview' => 'Прегледај прилагодено',
 	'mv_adjust_preview_stop' => 'Запри преглед',
-	'mv_adjust_default_reason' => 'прилагодување на MetaVid интерфејсот',
+	'mv_adjust_default_reason' => 'прилагодување на посредникот на MetaVid',
 	'mv_adjust_old_title_missing' => 'Страницата која сакате да ја преименувате ($1) не постои',
 	'mv_adjust_ok_move' => 'Успешно, прилагодување на...',
 	'mv_start_desc' => 'Почетно време',
@@ -6241,7 +6249,7 @@ $mvMVDTypeDefaultDisp треба да биде подмножество на $mv
 	'mv_advaced_search' => 'Напредно пребарување на медии',
 	'mv_expand_play' => 'Прошири и пушти на исто место',
 	'mv_play_inline' => 'Пуштај вметнато',
-	'mv_view_in_stream_interface' => 'Погледај во емитувачки интерфејс',
+	'mv_view_in_stream_interface' => 'Погледај во посредникот за емитувања',
 	'mv_view_wiki_page' => 'Погледај вики-страница',
 	'mv_error_mvd_not_found' => 'Грешка. Mvd не е пронајден',
 	'mv_edit_sequence' => 'Уредување на низата: $1',
@@ -7794,6 +7802,7 @@ $messages['ps'] = array(
 	'mv_end_desc' => 'د پای وخت',
 	'mv_viewnext' => 'کتل ($1)',
 	'mediasearch' => 'د رسنيو لټون',
+	'mv_video_search' => 'ويډيو پلټل',
 	'mv_search_match' => 'متن پلټل',
 	'mv_search_categories' => 'وېشنيزې',
 	'mv_search_category' => 'وېشنيزه',
@@ -8730,7 +8739,7 @@ Alebo môžete <a href="$3">Pridať stream</a>.',
  */
 $messages['sr-ec'] = array(
 	'mv_error_stream_missing' => '<span class="error">Грешка: Не постоји видео-фајл придружен овом стриму.</span><br />
-Молимо Вас да пријавите ово администратору сајта.',
+Молимо Вас да пријавите ово [[{{MediaWiki:Grouppage-sysop}}|администратору сајта]].',
 	'mv_stream_added' => 'Додали сте стрим $1',
 	'mv_move_delete_msg' => 'премештено у $1',
 	'mv_add_stream_submit' => 'Додај стрим',
@@ -8743,7 +8752,7 @@ $messages['sr-ec'] = array(
 	'mv_save_changes' => 'Сними измене',
 	'mv_file_with_same_desc' => 'Грешка: стрим фајл са истим кључем описа <i>$1</i> је већ присутан',
 	'mv_removed_file_stream' => 'Обрисан стрим фајл: $1',
-	'mv_user_cant_edit' => 'Мораћете бити [$1 Log in] да бисте правили измене, $2',
+	'mv_user_cant_edit' => 'Морали бисте се [$1 улоговати] зарад измене $2',
 	'mv_add_stream_file' => 'Додај стрим фајл',
 	'mv_file_list' => 'Стрим фајлови',
 	'mv_label_stream_name' => 'Назив стрима',
@@ -8776,6 +8785,8 @@ $messages['sr-ec'] = array(
 	'mv_close_clip' => 'Затвори клип',
 	'mv_improve_transcript' => 'Побољшај транскрипт',
 	'mv_click_to_edit' => 'кликни за измену',
+	'mv_data_page_title' => '$1 за $2 од $3',
+	'mv_time_separator' => '$1 до $2',
 	'mvBadMVDtitle' => 'недосту је тип, стрим, или валидан формат времена',
 	'mvMVDFormat' => 'MVD наслов би требао да буде у фромату: mvd:type:stream_name/start_time/end_time',
 	'mv_play' => 'Пусти',
@@ -8823,6 +8834,7 @@ $messages['sr-ec'] = array(
 	'mv_date_range' => 'опсег података',
 	'mv_date_last_week' => 'Последња седмица',
 	'mv_category_results' => 'Резултати категорије',
+	'mv_intrest_group_results' => 'Интересне групе',
 	'mv_most_relevant' => 'Најрелевантнији',
 	'mv_most_recent' => 'Најскорији',
 	'mv_most_viewed' => 'Најпрегледанији',
@@ -8869,6 +8881,8 @@ $messages['sr-ec'] = array(
 	'mv_tool_missing' => 'захтевани алат не постоји',
 	'mv_prev_speech' => 'Претходни говор: $1',
 	'mv_next_speech' => 'Следећи говор: $1',
+	'mv_prev_bill' => 'Претходни рачун: $1',
+	'mv_next_bill' => 'Следећи рачун: $1',
 	'mv_prev_cat' => 'Претходна категорија: $1',
 	'mv_next_cat' => 'Следећа категорија: $1',
 	'mv_search_stream' => 'Претражи стрим',
@@ -8881,6 +8895,8 @@ $messages['sr-ec'] = array(
  * @author Michaello
  */
 $messages['sr-el'] = array(
+	'mv_error_stream_missing' => '<span class="error">Greška: Ne postoji video-fajl pridružen ovom strimu.</span><br />
+Molimo Vas da prijavite ovo [[{{MediaWiki:Grouppage-sysop}}|administratoru sajta]].',
 	'mv_stream_added' => 'Dodali ste strim $1',
 	'mv_move_delete_msg' => 'premešteno u $1',
 	'mv_add_stream_submit' => 'Dodaj strim',
@@ -8893,6 +8909,7 @@ $messages['sr-el'] = array(
 	'mv_save_changes' => 'Snimi izmene',
 	'mv_file_with_same_desc' => 'Greška: strim fajl sa istim ključem opisa <i>$1</i> je već prisutan',
 	'mv_removed_file_stream' => 'Obrisan strim fajl: $1',
+	'mv_user_cant_edit' => 'Morali biste se [$1 ulogovati] zarad izmene $2',
 	'mv_add_stream_file' => 'Dodaj strim fajl',
 	'mv_file_list' => 'Strim fajlovi',
 	'mv_label_stream_name' => 'Naziv strima',
@@ -8925,6 +8942,8 @@ $messages['sr-el'] = array(
 	'mv_close_clip' => 'Zatvori klip',
 	'mv_improve_transcript' => 'Poboljšaj transkript',
 	'mv_click_to_edit' => 'klikni za izmenu',
+	'mv_data_page_title' => '$1 za $2 od $3',
+	'mv_time_separator' => '$1 do $2',
 	'mvBadMVDtitle' => 'nedostu je tip, strim, ili validan format vremena',
 	'mvMVDFormat' => 'MVD naslov bi trebao da bude u fromatu: mvd:type:stream_name/start_time/end_time',
 	'mv_play' => 'Pusti',
@@ -8972,6 +8991,7 @@ $messages['sr-el'] = array(
 	'mv_date_range' => 'opseg podataka',
 	'mv_date_last_week' => 'Poslednja sedmica',
 	'mv_category_results' => 'Rezultati kategorije',
+	'mv_intrest_group_results' => 'Interesne grupe',
 	'mv_most_relevant' => 'Najrelevantniji',
 	'mv_most_recent' => 'Najskoriji',
 	'mv_most_viewed' => 'Najpregledaniji',
@@ -9018,6 +9038,8 @@ $messages['sr-el'] = array(
 	'mv_tool_missing' => 'zahtevani alat ne postoji',
 	'mv_prev_speech' => 'Prethodni govor: $1',
 	'mv_next_speech' => 'Sledeći govor: $1',
+	'mv_prev_bill' => 'Prethodni račun: $1',
+	'mv_next_bill' => 'Sledeći račun: $1',
 	'mv_prev_cat' => 'Prethodna kategorija: $1',
 	'mv_next_cat' => 'Sledeća kategorija: $1',
 	'mv_search_stream' => 'Pretraži strim',
@@ -9547,6 +9569,7 @@ $messages['tk'] = array(
  * @author AnakngAraw
  */
 $messages['tl'] = array(
+	'mv-desc' => '[http://metavid.org/wiki/MetaVidWiki_Software Paghahanap ng Patnugot ng Metadata ng Bidyo at Midya]',
 	'metavid' => "Pahina ng ''Metavid''",
 	'mv_missing_stream' => 'Nawawalang daloy: $1',
 	'specialpages-group-mv_group' => 'Natatanging mga pahina ng MetaVidWiki',
@@ -9556,8 +9579,8 @@ $messages['tl'] = array(
 	'mv_flash_low_quality' => 'Mapapadaloy sa web - Mabilisan/madaliang palabas',
 	'mv_archive_org_mp4' => 'Daloy na H.264 na napalibutan ng MP4 ng Archive.org',
 	'mv_archive_org_link' => 'Kumakawing sa mga orihinal na mpeg2 ng Archive.org',
-	'mv_error_stream_missing' => "<span class=\"error\">Kamalian: Walang talaksan para sa palabas (''video'') na kaugnay ng daloy na ito.</span><br />
-Pakiulat lamang ito sa tagapangasiwa ng sityo.",
+	'mv_error_stream_missing' => '<span class="error">Kamalian: Walang talaksan para sa palabas na kaugnay ng daloy na ito.</span><br />
+Pakiulat lamang ito sa [[{{MediaWiki:Grouppage-sysop}}|tagapangasiwa ng sityo]].',
 	'mv_stream_added' => 'Idinagdag mo ang daloy na $1',
 	'mv_stream_meta' => 'Pahina ng daloy',
 	'mv_add_stream' => 'Dagdag daloy ng Metavid',
@@ -9565,8 +9588,8 @@ Pakiulat lamang ito sa tagapangasiwa ng sityo.",
 	'mvexportsearch' => 'Pagluluwas na pang-Metavid',
 	'mvexportsequence' => 'Pagkakasunud-sunod ng pag-aangkat na pang-Metavid',
 	'mvexportstream' => 'Daloy ng pag-aangkat na pang-Metavid',
-	'mv_move_delete_msg' => "inilipat ang ''mvd'' patungo sa $1",
-	'mv_add_stream_page' => 'Daloy ng dagdag na Mv',
+	'mv_move_delete_msg' => 'inilipat sa $1',
+	'mv_add_stream_page' => 'Dagdag na daloy ng MetaVid',
 	'mv_edit_strea_docu' => '<p><b>Tagapangasiwa</b> ng daloy ng pagbabago<br />para sa pagtanaw/pagbabago ng pangkaraniwang tagagamit, tingnan ang pahinang $1',
 	'mv_add_stream_docu' => '<p>Magdagdag ng isang bagong daloy na may kahanayang nasa ibaba.</p>
 <p>Nagbibigay ng mas maraming kabatiran sa <a href="$1">pahina ng tulong para sa dagdag na daloy</a>.</p>',
@@ -9580,7 +9603,7 @@ Pakiulat lamang ito sa tagapangasiwa ng sityo.",
 	'mv_path_type_label' => 'uri ng daan',
 	'mv_base_offset_label' => 'batayang pambalanse',
 	'mv_duration_label' => 'Tagal ng panahon',
-	'mv_file_desc_label' => 'mensahe ng paglalarawan ng daloy',
+	'mv_file_desc_label' => 'mensaheng naglalarawan ng daloy',
 	'mv_delete_stream_file' => 'burahin ang sanggunian ng talaksan ng daloy',
 	'mv_save_changes' => 'Sagipin ang mga pagbabago',
 	'mv_file_with_same_desc' => 'Kamalian: mayroon nang talaksan ng daloy ng may katulad na susi ng paglalarawang <i>$1</i>',
@@ -9589,7 +9612,7 @@ Pakiulat lamang ito sa tagapangasiwa ng sityo.",
 	'mv_missing_stream_text' => 'Hindi makukuha ang hiniling mong <b>$1</b> na daloy.<br />
 Maaaring gustuhin mong suriin ang <a href="$2">Talaan ng daloy</a><br />
 O maaaring ibigin mong <a href="$3">Magdagdag ng daloy</a>.',
-	'mv_user_cant_edit' => 'Maaaring kailangan mong [$1 Log in] upang makapagbago, $2',
+	'mv_user_cant_edit' => 'Maaaring kailangan mong [$1 lumagda] upang makapagbago, $2',
 	'mv_add_stream_file' => 'Idagdag ang talaksan ng daloy',
 	'mv_media_path' => 'daanan ng midya',
 	'mv_file_list' => 'Mga talaksan ng daloy',
@@ -9604,7 +9627,7 @@ O maaaring ibigin mong <a href="$3">Magdagdag ng daloy</a>.',
 	'mv_error_stream_insert' => 'nabigo sa pagsisingit ng daloy',
 	'mv_redirect_and_delete_reason' => 'tinanggal ang pahinang panturo',
 	'mv_remove_reason' => 'Dahilan ng pagbubura:',
-	'mv_stream_delete_warrning' => '<b>Ang pagtatanggal ng daloy na ito ay magtatanggal din ng $1 mga piraso ng kaugnay (asosyatibong) panlikod na dato (metada)</b><br />',
+	'mv_stream_delete_warrning' => "'''Ang pagtatanggal ng daloy na ito ay magtatanggal din ng $1 {{PLURAL:$1|piraso|mga piraso}} ng kaugnay na panlikod na dato'''<br />",
 	'mv_label_stream_type' => 'Uri ng daloy',
 	'mv_metavid_file' => 'Umiiral na talaksan sa ibabaw ng serbidor',
 	'mv_metavid_live' => 'Ihanda ang buhay na daloy',
@@ -9647,7 +9670,7 @@ Ang $mvMVDTypeDefaultDisp ay dapat na isang kabahaging pangkat ng $mvMVDTypeAllA
 	'mv_data_page_title' => '$1 para sa $2 mula sa $3',
 	'mv_time_separator' => '$1 hanggang $2',
 	'mv_list_streams' => 'Mga daloy ng talaan ng metavid',
-	'mv_list_streams_page' => 'Mga daloy ng talaan ng mv',
+	'mv_list_streams_page' => 'Mga daloy ng talaan ng MetaVid',
 	'mv_list_streams_docu' => 'Umiiral ang sumusunod na mga daloy:',
 	'mv_list_streams_none' => 'Walang umiiral na mga daloy',
 	'mvvideofeed' => 'Luwas ng pakain/pasubong palabas na Metavid',
@@ -9655,7 +9678,7 @@ Ang $mvMVDTypeDefaultDisp ay dapat na isang kabahaging pangkat ng $mvMVDTypeAllA
 	'video_feed_cat' => "Pakain/pasubong palabas (''video'') para sa kauriang:",
 	'mv_cat_search_note' => 'Paunawa: Itinatala lamang ng mga kaurian ang mga kauriang may matataas na kaantasan.
 Para sa lahat ng panlikod na dato (metadato) na nasa sakop ng mga kaurian, hanapin ang $1',
-	'mv-category-media-count' => '$1 mga tapyas/segmento ng midya sa loob ng kaurian',
+	'mv-category-media-count' => '$1 {{PLURAL:$1|segmento|mga segmento}} ng midya sa loob ng kategorya',
 	'mv_mvd_linkback' => 'Bahagi ng daloy na $1 <br />
 Tumalon patungo sa tanawan ng daloy na: $2',
 	'mvBadMVDtitle' => 'kulang ng uri, kulang ng daloy, o hindi tanggap na anyo ng oras',
@@ -9666,7 +9689,7 @@ Tumalon patungo sa tanawan ng daloy na: $2',
 	'mv_history_title' => "Kasaysayan ng pagtutuwid ng pagbabago at palabas (''video'')",
 	'mv_edit_title' => 'Baguhin ang teksto',
 	'mv_edit_adjust_title' => 'Baguhin ang pagkakatuwid ng teksto at palabas',
-	'mv_remove' => 'Tanggalin',
+	'mv_remove' => 'tanggalin',
 	'mv_remove_title' => 'tanggalin ang tapyas/segmentong ito ng panlikod na dato/metadato',
 	'mv_adjust' => 'iakma',
 	'mv_adjust_submit' => 'Sagipin ang pag-aakma',
@@ -9754,9 +9777,13 @@ Tumalon patungo sa tanawan ng daloy na: $2',
 	'mv_sequence_edit_visual_editor' => 'Lumipat sa Pampatnugot ng Natatanaw',
 	'mv_other_options' => 'Iba pang mga mapagpipilian',
 	'mv_contextmenu_opt' => 'Paganahin ang mga Talaan ng Pilian ng Diwa/Konteksto',
+	'mv_days' => '$1 {{PLURAL:$1|araw|mga araw}}',
 	'mv_hours' => '$1 {{PLURAL:$1|oras|mga oras}}',
+	'mv_hours_singular' => '1 oras',
 	'mv_minutes' => '$1 {{PLURAL:$1|minuto|mga minuto}}',
+	'mv_minutes_singular' => '1 minuto',
 	'mv_seconds' => '$1 {{PLURAL:$1|segundo|mga segundo}}',
+	'mv_seconds_singular' => '1 segundo',
 	'mv_stream_length' => 'Kabuoang Haba ng Palabas:',
 	'mv_sequence_timeline' => 'Pana-panahon ng pagkakasunud-sunod:',
 	'mv_edit_sequence_desc_help' => 'Paglalarawan ng pagkakasunud-sunod',
@@ -9766,6 +9793,8 @@ Tumalon patungo sa tanawan ng daloy na: $2',
 	'mv_stream_resource_export' => 'Luwas ng mga kinakailangan ng daloy',
 	'mv_export_cmml' => 'Iluwas ang CMML',
 	'mv_navigate_stream' => 'Maglibot sa daloy',
+	'mv_stream_overview' => 'Pang-ibabaw na Tanaw ng Daloy',
+	'mv_edit_time' => 'Oras ng Pagpatnugot',
 	'mv_embed_options' => 'Ibaon ang mga mapagpipilian',
 	'mv_overlay' => 'Mga panghawak/pangkontrol ng pang-ibabaw na suson/patong',
 	'mv_stream_tool_heading' => 'Mga kagamitan ng daloy',
@@ -9784,6 +9813,9 @@ Tumalon patungo sa tanawan ng daloy na: $2',
 	'mv_mang_layers' => 'Pamahalaan ang mga sapin',
 	'mv_mang_layers_title' => 'Pamahalaan ang itinakdang pagpapakita ng patong/sapin para sa pangkasalukuyang daloy',
 	'mv_protect_source_material' => 'Ipinagsanggalang sa mga pamamatnugot ang orihinal na pinagmulang materyal',
+	'right-mv_delete_mvd' => 'Burahin ang metadata ng MetaVid',
+	'action-mv_delete_mvd' => 'burahin ang segmentong ito ng metadata ng MetaVid',
+	'right-mv_edit_stream' => 'Baguhin ang mga talaksan ng daloy',
 );
 
 /** Turkish (Türkçe)

@@ -21,7 +21,8 @@
  */
 
 /**
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  * @author Juliano F. Ravasi < dev juliano info >
  */
 
@@ -440,7 +441,7 @@ class WikilogArchivesPager
 			$value = isset( $row->$field ) ? $row->$field : null;
 			$formatted = strval( $this->formatValue( $field, $value ) );
 			if ( $formatted == '' ) {
-				$formatted = '&nbsp;';
+				$formatted = '&#160;';
 			}
 			$class = 'TablePager_col_' . htmlspecialchars( $field );
 			$columns[] = "<td class=\"$class\">$formatted</td>";

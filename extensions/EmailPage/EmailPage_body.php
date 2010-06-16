@@ -29,7 +29,7 @@ class SpecialEmailPage extends SpecialPage {
 		global $wgOut, $wgUser, $wgRequest, $wgParser, $wgEmailPageContactsCat, $wgGroupPermissions, $wgSitename,
 			$wgRecordAdminCategory, $wgEmailPageCss, $wgEmailPageAllowAllUsers;
 
-		$db = wfGetDB(DB_SLAVE);		
+		$db = wfGetDB( DB_SLAVE );
 		$param = str_replace( '_', ' ', $param );
 		wfLoadExtensionMessages( 'EmailPage' );
 		$this->setHeaders();
@@ -55,7 +55,7 @@ class SpecialEmailPage extends SpecialPage {
 		if ( isset( $_REQUEST['ea-send'] ) ) return $this->send();
 
 		# Render form
-		$special = Title::makeTitle( NS_SPECIAL, 'EmailPage' );
+		$special = SpecialPage::getTitleFor( 'EmailPage' );
 		$wgOut->addHTML( Xml::element( 'form', array(
 			'class'  => 'EmailPage',
 			'action' => $special->getLocalURL( 'action=submit' ),
@@ -70,7 +70,7 @@ class SpecialEmailPage extends SpecialPage {
 			$res = $db->select(
 				'categorylinks',
 				'cl_from',
-				'cl_to = '.$db->addQuotes( $wgEmailPageContactsCat ),
+				'cl_to = ' . $db->addQuotes( $wgEmailPageContactsCat ),
 				__METHOD__,
 				array( 'ORDER BY' => 'cl_sortkey' )
 			);
@@ -148,9 +148,9 @@ class SpecialEmailPage extends SpecialPage {
 		$wgOut->addHTML( "</fieldset>" );
 
 		# Submit buttons & hidden values
-		$wgOut->addHTML(Xml::element( 'input', array( 'type' => 'submit', 'name' => 'ea-send', 'value' => wfMsg( 'ea-send' ) ) ) . '&nbsp;' );
-		$wgOut->addHTML(Xml::element( 'input', array( 'type' => 'submit', 'name' => 'ea-show', 'value' => wfMsg( 'ea-show' ) ) ) );
-		$wgOut->addHTML(Xml::element( 'input', array( 'type' => 'hidden', 'name' => 'ea-title', 'value' => $this->title ) ) );
+		$wgOut->addHTML( Xml::element( 'input', array( 'type' => 'submit', 'name' => 'ea-send', 'value' => wfMsg( 'ea-send' ) ) ) . '&#160;' );
+		$wgOut->addHTML( Xml::element( 'input', array( 'type' => 'submit', 'name' => 'ea-show', 'value' => wfMsg( 'ea-show' ) ) ) );
+		$wgOut->addHTML( Xml::element( 'input', array( 'type' => 'hidden', 'name' => 'ea-title', 'value' => $this->title ) ) );
 
 		$wgOut->addHTML( "</form>" );
 
@@ -182,7 +182,7 @@ class SpecialEmailPage extends SpecialPage {
 			$res = $db->select(
 				'categorylinks',
 				'cl_from',
-				'cl_to = '.$db->addQuotes( $this->cat ),
+				'cl_to = ' . $db->addQuotes( $this->cat ),
 				__METHOD__,
 				array( 'ORDER BY' => 'cl_sortkey' )
 			);
@@ -213,12 +213,12 @@ class SpecialEmailPage extends SpecialPage {
 		if ( $this->textonly == '' ) {
 
 			# Parse the wikitext using absolute URL's for local page links
-			$tmp           = array($wgArticlePath, $wgScriptPath, $wgScript);
-			$wgArticlePath = $wgServer.$wgArticlePath;
-			$wgScriptPath  = $wgServer.$wgScriptPath;
-			$wgScript      = $wgServer.$wgScript;
-			$message       = $wgParser->parse($message, $title, $opt, true, true)->getText();
-			list($wgArticlePath,$wgScriptPath,$wgScript) = $tmp;
+			$tmp           = array( $wgArticlePath, $wgScriptPath, $wgScript );
+			$wgArticlePath = $wgServer . $wgArticlePath;
+			$wgScriptPath  = $wgServer . $wgScriptPath;
+			$wgScript      = $wgServer . $wgScript;
+			$message       = $wgParser->parse( $message, $title, $opt, true, true )->getText();
+			list( $wgArticlePath, $wgScriptPath, $wgScript ) = $tmp;
 
 			# Get CSS content if any
 			if ( $this->css ) {

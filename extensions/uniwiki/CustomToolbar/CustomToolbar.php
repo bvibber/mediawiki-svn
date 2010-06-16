@@ -189,7 +189,7 @@ class CustomToolbarUploadForm extends UploadForm {
 		$upload_button = wfMsgHtml( 'uploadbtn' );
 		$cancel_button = wfMsg('cancel');
 
-		$titleObj = Title::makeTitle( NS_SPECIAL, 'CustomToolbarUpload' );
+		$titleObj = SpecialPage::getTitleFor( 'CustomToolbarUpload' );
 		$action = $titleObj->escapeLocalURL();
 
 		$encDestFile = htmlspecialchars( $this->mDestFile );
@@ -318,7 +318,7 @@ class CustomToolbarUploadForm extends UploadForm {
         	$file_link = '[[' . 'Media:' . $file->mDestName . '|' . $file->mCaption . ']]';
 		}
 
-		$titleObj = Title::makeTitle( NS_SPECIAL, 'CustomToolbarUpload' );
+		$titleObj = SpecialPage::getTitleFor( 'CustomToolbarUpload' );
 		//insert the wiki markup in the appropriate section
 		//or the classic-mode textarea if we are in classic-mode
 		if($file->mDestWarningAck != 'wpTextbox1'){

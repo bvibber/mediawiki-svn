@@ -2,8 +2,9 @@
 /**
  * Internationalisation file for extension Scan Set.
  *
- * @addtogroup Extensions
-*/
+ * @file
+ * @ingroup Extensions
+ */
 
 $messages = array();
 
@@ -62,16 +63,16 @@ $messages['am'] = array(
  * @author Juanpabl
  */
 $messages['an'] = array(
-	'scanset-desc' => "Beyer as imachens dichitalizatas dende os sets CD/DVD d'Andreas Grosz.",
-	'scanset_no_name' => 'Error: Ha d\'espezificar un nombre de scan set, e.g. &lt;scanset name="EB1911" /&gt;.',
+	'scanset-desc' => "Veyer as imachens dichitalizatas dende os sets CD/DVD d'Andreas Grosz.",
+	'scanset_no_name' => 'Error: Ha d\'especificar un nombre de scan set, e.g. &lt;scanset name="EB1911" /&gt;.',
 	'scanset_invalid_name' => 'Error: Scan set no conforme u no present.',
-	'scanset_unrecognised_index_format' => "Error: Formato d'endize esconoxito",
-	'scanset_opendir_error' => 'Error: Error, no se puede obrir o direutorio $1',
-	'scanset_no_files' => 'Error: No bi ha garra archibo en o direutorio espezificato.',
-	'scanset_no_volumes' => "Error: No s'han trobato direutorios de bolúmens",
-	'scanset_missing_index_file' => "Error: No s'ha trobato l'archibo d'endize $1",
-	'scanset_index_file_error' => "Error: Error en o formato de l'archibo endize en a linia $1",
-	'scanset_invalid_volume' => 'Error: Bolumen no conforme',
+	'scanset_unrecognised_index_format' => "Error: Formato d'endice esconoixito",
+	'scanset_opendir_error' => 'Error: No se puet ubrir o directorio $1',
+	'scanset_no_files' => 'Error: No bi ha garra fichero en o directorio especificato.',
+	'scanset_no_volumes' => "Error: No s'ha trobato directorios de volúmens",
+	'scanset_missing_index_file' => "Error: No s'ha trobato l'fichero d'endice $1",
+	'scanset_index_file_error' => "Error: Error en o formato de l'fichero endice en a linia $1",
+	'scanset_invalid_volume' => 'Error: Volumen invalido',
 	'scanset_next' => 'Siguient &gt;',
 	'scanset_prev' => '&lt; anterior',
 );

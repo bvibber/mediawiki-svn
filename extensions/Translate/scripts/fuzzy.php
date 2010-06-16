@@ -2,7 +2,8 @@
 /**
  * Command line script to mark translations fuzzy (similar to gettext fuzzy).
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  *
  * @author Niklas Laxström
  * @copyright Copyright © 2007-2009, Niklas Laxström
@@ -31,7 +32,9 @@ EOT
 	exit( 1 );
 }
 
-if ( isset( $options['help'] ) ) showUsage();
+if ( isset( $options['help'] ) ) {
+	showUsage();
+}
 
 $bot = new FuzzyBot( $args );
 
@@ -40,9 +43,17 @@ if ( isset( $options['skiplanguages'] ) ) {
 	$_skipLanguages = array_map( 'trim', explode( ',', $options['skiplanguages'] ) );
 	$bot->skipLanguages = $_skipLanguages;
 }
-if ( isset( $options['norc'] ) ) $cs->norc = true;
-if ( isset( $options['comment'] ) ) $bot->comment = $options['comment'];
-if ( isset( $options['really'] ) ) $bot->dryrun = false;
+if ( isset( $options['norc'] ) ) {
+	$cs->norc = true;
+}
+
+if ( isset( $options['comment'] ) ) {
+	$bot->comment = $options['comment'];
+}
+
+if ( isset( $options['really'] ) ) {
+	$bot->dryrun = false;
+}
 
 $bot->execute();
 
@@ -75,7 +86,7 @@ class FuzzyBot {
 		$count = count( $msgs );
 		STDOUT( "Found $count pages to update." );
 
-		foreach ( $msgs as  $phpIsStupid ) {
+		foreach ( $msgs as $phpIsStupid ) {
 			list( $title, $text ) = $phpIsStupid;
 			$this->updateMessage( $title, TRANSLATE_FUZZY . $text, $this->dryrun, $this->comment );
 			unset( $phpIsStupid );
@@ -127,6 +138,7 @@ class FuzzyBot {
 
 	public function getImportUser() {
 		static $user = null;
+
 		if ( $user === null ) {
 			global $wgTranslateFuzzyBotName;
 			$user = User::newFromName( $wgTranslateFuzzyBotName );
@@ -142,6 +154,7 @@ class FuzzyBot {
 
 	private function updateMessage( $title, $text, $dryrun, $comment = null ) {
 		global $wgTranslateDocumentationLanguageCode, $wgUser;
+
 		$oldUser = $wgUser;
 		$wgUser = $this->getImportUser();
 

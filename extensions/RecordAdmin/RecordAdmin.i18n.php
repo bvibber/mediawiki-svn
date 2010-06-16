@@ -110,6 +110,7 @@ $messages['af'] = array(
  * @author Juanpabl
  */
 $messages['an'] = array(
+	'recordadmin-submit' => 'Ninviar',
 	'recordadmin-buttoncreate' => 'Creyar',
 	'recordadmin-buttonsave' => 'Alzar',
 	'recordadmin-actions' => 'Accions',
@@ -547,6 +548,7 @@ $messages['el'] = array(
 );
 
 /** Esperanto (Esperanto)
+ * @author Airon90
  * @author Michawiki
  * @author Yekrats
  */
@@ -557,7 +559,7 @@ $messages['eo'] = array(
 	'recordadmin-create' => 'Trovi aŭ krei rikordojn "$1"',
 	'recordadmin-alreadyexist' => 'Bedaŭrinde, "$1" jam ekzistas!',
 	'recordadmin-createsuccess' => '$1 kreita',
-	'recordadmin-badtitle' => 'Fuŝa titolo!',
+	'recordadmin-badtitle' => 'Fuŝa titolo',
 	'recordadmin-invert' => 'Inversigi selekton',
 	'recordadmin-buttonsearch' => 'Serĉi',
 	'recordadmin-buttoncreate' => 'Krei',
@@ -1031,7 +1033,7 @@ $messages['ia'] = array(
 	'recordadmin' => 'Gestion de datos',
 	'recordadmin-desc' => 'Un [[Special:RecordAdmin|pagina special]] pro cercar e modificar le paginas de datos con un formulario',
 	'recordadmin-categoryempty' => 'Al momento il non ha typos de registro. Per favor categorisa le patronos de registro in [[:$1|$1]].',
-	'recordadmin-select' => 'Selige le typo de datos a gerer',
+	'recordadmin-select' => 'Selige',
 	'recordadmin-createtype' => 'Entra le nomine de un nove typo de registro a crear',
 	'recordadmin-recordtype' => 'typo de registro',
 	'recordadmin-newsearch' => 'Nove recerca $1',
@@ -1320,6 +1322,8 @@ $messages['lb'] = array(
 	'recordadmin-modified' => 'Geännert',
 	'recordadmin-actions' => 'Aktiounen',
 	'recordadmin-needscontent' => 'Inhalt derbäisetzen ...',
+	'recordadmin-typeinfo' => '$1 Opnamen',
+	'recordadmin-notset' => 'Keng "$1"',
 );
 
 /** Limburgish (Limburgs)
@@ -1738,6 +1742,7 @@ $messages['ps'] = array(
 	'recordadmin-created' => 'جوړ شوي',
 	'recordadmin-modified' => 'بدلېدلي',
 	'recordadmin-actions' => 'کړنې',
+	'recordadmin-editwithform' => 'ځانتياوې',
 );
 
 /** Portuguese (Português)
@@ -1792,6 +1797,7 @@ $messages['pt'] = array(
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
+ * @author Giro720
  * @author Luckas Blade
  */
 $messages['pt-br'] = array(
@@ -1836,6 +1842,7 @@ $messages['pt-br'] = array(
 	'right-recordadmin' => 'Encontrar e editar páginas de registros',
 	'recordadmin-export-csv' => 'CSV',
 	'recordadmin-export-pdf' => 'PDF',
+	'recordadmin-notset' => 'Não {{PLURAL:$1|existe|existem}} "$1"',
 );
 
 /** Romanian (Română)
@@ -1978,7 +1985,17 @@ $messages['sr-ec'] = array(
 	'recordadmin-select' => 'Изабери',
 	'recordadmin-submit' => 'Пошаљи',
 	'recordadmin-alreadyexist' => 'Жао нам је, „$1“ већ постоји!',
+	'recordadmin-badtitle' => 'Лош наслов!',
+	'recordadmin-buttoncreate' => 'Направи',
+	'recordadmin-buttonreset' => 'Ресетуј',
 	'recordadmin-buttonsave' => 'Сними',
+	'recordadmin-viewlink' => 'види',
+	'recordadmin-editlink' => 'измени',
+	'recordadmin-created' => 'Направљено',
+	'recordadmin-modified' => 'Измењено',
+	'recordadmin-actions' => 'Акције',
+	'recordadmin-needscontent' => 'Додај садржај...',
+	'recordadmin-editwithform' => 'Особине',
 );
 
 /** Serbian Latin ekavian (Srpski (latinica))
@@ -1988,7 +2005,17 @@ $messages['sr-el'] = array(
 	'recordadmin-select' => 'Izaberi',
 	'recordadmin-submit' => 'Pošalji',
 	'recordadmin-alreadyexist' => 'Žao nam je, „$1“ već postoji!',
+	'recordadmin-badtitle' => 'Loš naslov!',
+	'recordadmin-buttoncreate' => 'Napravi',
+	'recordadmin-buttonreset' => 'Resetuj',
 	'recordadmin-buttonsave' => 'Snimi',
+	'recordadmin-viewlink' => 'vidi',
+	'recordadmin-editlink' => 'izmeni',
+	'recordadmin-created' => 'Napravljeno',
+	'recordadmin-modified' => 'Izmenjeno',
+	'recordadmin-actions' => 'Akcije',
+	'recordadmin-needscontent' => 'Dodaj sadržaj...',
+	'recordadmin-editwithform' => 'Osobine',
 );
 
 /** Seeltersk (Seeltersk)
@@ -2109,7 +2136,7 @@ $messages['tl'] = array(
 	'recordadmin-recordtype' => 'uri ng talaan',
 	'recordadmin-newsearch' => 'Bagong paghahanap ng $1',
 	'recordadmin-newrecord' => 'Pumili ng iba pang uri ng tala/rekord',
-	'recordadmin-submit' => 'Ipasa/ipadala',
+	'recordadmin-submit' => 'Ipasa',
 	'recordadmin-create' => 'Hanapin o likhain ang "$1" mga talaan',
 	'recordadmin-alreadyexist' => 'Paumanhin, umiiral na ang "$1"!',
 	'recordadmin-createsuccess' => '$1 nalikha na',

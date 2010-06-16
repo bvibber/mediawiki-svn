@@ -12,8 +12,8 @@
  * Version 4.2 started Aug 2008 - fattened up a bit again - $wgPageRestrictions and security info added in again
  * Version 4.3 started Mar 2009 - bug fixes and split out to separate class and i18n files
  *
- * @package MediaWiki
- * @subpackage Extensions
+ * @file
+ * @ingroup Extensions
  * @author Aran Dunkley [http://www.organicdesign.co.nz/nad User:Nad]
  * @copyright © 2007 Aran Dunkley
  * @license GNU General Public Licence 2.0 or later
@@ -22,7 +22,7 @@
 if ( !defined( 'MEDIAWIKI' ) )                     die( 'Not an entry point.' );
 if ( version_compare( $wgVersion, '1.12.0' ) < 0 ) die( 'Sorry, this extension requires at least MediaWiki version 1.12.0' );
 
-define( 'SIMPLESECURITY_VERSION', '4.4.0, 2010-02-13' );
+define( 'SIMPLESECURITY_VERSION', '4.4.1, 2010-06-12' );
 
 # Load the SimpleSecurity class and messages
 $dir = dirname( __FILE__ ) . '/';

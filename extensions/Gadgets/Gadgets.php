@@ -5,8 +5,8 @@
  *
  * For more info see http://mediawiki.org/wiki/Extension:Gadgets
  *
- * @package MediaWiki
- * @subpackage Extensions
+ * @file
+ * @ingroup Extensions
  * @author Daniel Kinzler, brightbyte.de
  * @copyright © 2007 Daniel Kinzler
  * @license GNU General Public Licence 2.0 or later
@@ -36,7 +36,7 @@ $wgAutoloadClasses['SpecialGadgets'] = $dir . 'SpecialGadgets.php';
 $wgSpecialPages['Gadgets'] = 'SpecialGadgets';
 $wgSpecialPageGroups['Gadgets'] = 'wiki';
 
-function wfGadgetsArticleSaveComplete( &$article, &$user, $text ) {
+function wfGadgetsArticleSaveComplete( $article, $user, $text ) {
 	//update cache if MediaWiki:Gadgets-definition was edited
 	$title = $article->mTitle;
 	if( $title->getNamespace() == NS_MEDIAWIKI && $title->getText() == 'Gadgets-definition' ) {
@@ -136,7 +136,7 @@ function wfGadgetsGetPreferences( $user, &$preferences ) {
 	$preferences['gadgets-intro'] =
 		array(
 			'type' => 'info',
-			'label' => '&nbsp;',
+			'label' => '&#160;',
 			'default' => Xml::tags( 'tr', array(),
 				Xml::tags( 'td', array( 'colspan' => 2 ),
 					wfMsgExt( 'gadgets-prefstext', 'parse' ) ) ),
@@ -150,14 +150,14 @@ function wfGadgetsGetPreferences( $user, &$preferences ) {
 			'type' => 'multiselect',
 			'options' => $options,
 			'section' => 'gadgets',
-			'label' => '&nbsp;',
+			'label' => '&#160;',
 			'prefix' => 'gadget-',
 		);
 		
 	return true;
 }
 
-function wfGadgetsBeforePageDisplay( &$out ) {
+function wfGadgetsBeforePageDisplay( $out ) {
 	global $wgUser;
 	if ( !$wgUser->isLoggedIn() ) return true;
 
@@ -188,7 +188,7 @@ function wfGadgetsBeforePageDisplay( &$out ) {
 	return true;
 }
 
-function wfApplyGadgetCode( $code, &$out, &$done ) {
+function wfApplyGadgetCode( $code, $out, &$done ) {
 	global $wgJsMimeType;
 
 	//FIXME: stuff added via $out->addScript appears below usercss and userjs in the head tag.
@@ -202,12 +202,12 @@ function wfApplyGadgetCode( $code, &$out, &$done ) {
 		if ( !$t ) continue;
 
 		if ( preg_match( '/\.js/', $codePage ) ) {
-			$u = $t->getLocalURL( 'action=raw&ctype=' . $wgJsMimeType );
+			$u = $t->getLocalURL( 'action=raw&ctype=' . $wgJsMimeType . '&' . $t->getLatestRevID() );
 			//switched to addScriptFile call to support scriptLoader
 			$out->addScriptFile( $u );
 		}
 		else if ( preg_match( '/\.css/', $codePage ) ) {
-			$u = $t->getLocalURL( 'action=raw&ctype=text/css' );
+			$u = $t->getLocalURL( 'action=raw&ctype=text/css&' . $t->getLatestRevID() );
 			$out->addScript( Html::linkedStyle( $u ) );
 		}
 	}

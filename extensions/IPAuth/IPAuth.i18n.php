@@ -217,7 +217,7 @@ $messages['lb'] = array(
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
-	'ipauth-desc' => 'Автоматско најавување од фиксни IP адреси',
+	'ipauth-desc' => 'Автоматско најавување од фиксни IP-адреси',
 );
 
 /** Dutch (Nederlands)

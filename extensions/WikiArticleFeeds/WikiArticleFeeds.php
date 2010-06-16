@@ -205,7 +205,11 @@ function wfWikiArticleFeedsParserSetup() {
 
 # Attach Hooks
 $wgHooks['OutputPageBeforeHTML'][] = 'wfAddWikiFeedHeaders';
-$wgHooks['MonoBookTemplateToolboxEnd'][] = 'wfWikiArticleFeedsToolboxLinks';
+if ( version_compare( $wgVersion, '1.13', '>=' ) ) {
+	$wgHooks['SkinTemplateToolboxEnd'][] = 'wfWikiArticleFeedsToolboxLinks'; // introduced in 1.13
+} else {
+	$wgHooks['MonoBookTemplateToolboxEnd'][] = 'wfWikiArticleFeedsToolboxLinks';
+}
 $wgHooks['UnknownAction'][] = 'wfWikiArticleFeedsAction';
 $wgHooks['ArticlePurge'][] = 'wfPurgeFeedsOnArticlePurge';
 
@@ -262,7 +266,7 @@ function wfAddWikiFeedHeaders( $out, $text ) {
 
 /**
  * Adds the Wiki feed links to the bottom of the toolbox in Monobook or like-minded skins.
- * Usage: $wgHooks['MonoBookTemplateToolboxEnd'][] = 'wfWikiArticleFeedsToolboxLinks';
+ * Usage: $wgHooks['SkinTemplateToolboxEnd'][] = 'wfWikiArticleFeedsToolboxLinks';
  * @param QuickTemplate $template Instance of MonoBookTemplate or other QuickTemplate
  */
 function wfWikiArticleFeedsToolboxLinks( $template ) {
@@ -287,7 +291,7 @@ function wfWikiArticleFeedsToolboxLinks( $template ) {
 				$result .=
 				'<span id="feed-' . htmlspecialchars( $feed ) . '">' .
 				'<a href="http://feeds.feedburner.com/' . urlencode( $feedBurnerName ) . '?format=xml">' .
-				htmlspecialchars( $name ) . '</a>&nbsp;</span>';
+				htmlspecialchars( $name ) . '</a>&#160;</span>';
 			}
 			$burned = true;
 		}
@@ -303,7 +307,7 @@ function wfWikiArticleFeedsToolboxLinks( $template ) {
 			$result .=
 			'<span id="feed-' . htmlspecialchars( $feed ) . '">' .
 			'<a href="' . htmlspecialchars( $baseUrl . $feed ) . '">' .
-			htmlspecialchars( $name ) . '</a>&nbsp;</span>';
+			htmlspecialchars( $name ) . '</a>&#160;</span>';
 		}
 	}
 

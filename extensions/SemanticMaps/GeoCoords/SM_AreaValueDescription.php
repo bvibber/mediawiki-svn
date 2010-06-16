@@ -30,42 +30,25 @@ class SMAreaValueDescription extends SMWValueDescription {
 	public function __construct( SMGeoCoordsValue $dataValue, $comparator, $radius ) {
 		parent::__construct( $dataValue, $comparator );	
 
-		// Parse the radius to the actual value and the optional unit.
-		$radius = preg_replace('/\s\s+/', ' ', $radius);
-		$parts = explode( ' ', $radius );
-		$radius = (float)array_shift( $parts );
-		
-		// If there is a unit, find it's ratio and apply it to the radius value.
-		if ( count( $parts ) > 0 ) {
-			$unit = strtolower( implode( ' ', $parts ) );
-			
-			$ratio = array(
-				'km' => 1000,
-				'kilometers' => 1000,
-				'kilometres' => 1000,
-				'mi' => 1609.344,
-				'mile' => 1609.344,
-				'miles' => 1609.344,
-				'nm' => 1852,
-				'nautical mile' => 1852,
-				'nautical miles' => 1852,
-			);
-			
-			if ( array_key_exists( $unit, $ratio ) ) {
-				$radius = $radius * $ratio[$unit];
-			}
-		}
-		
-		// If the MapsGeoFunctions class is not loaded, we can not create the bounding box,
-		// so don't add any conditions.
+		// Only if the MapsGeoFunctions class is  loaded, we can create the bounding box.
 		if ( self::geoFunctionsAreAvailable() ) {
-			$this->mBounds = self::getBoundingBox(
-				$dataValue->getCoordinateSet(),
-				$radius
-			);
+			$this->calculateBounds( $dataValue, $radius );
 		}
 	}
 
+	/**
+	 * Sets the mBounds fields to an array returned by SMAreaValueDescription::getBoundingBox.
+	 * 
+	 * @param SMGeoCoordsValue $dataValue
+	 * @param string $radius
+	 */
+	protected function calculateBounds( SMGeoCoordsValue $dataValue, $radius ) {
+		$this->mBounds = self::getBoundingBox(
+			$dataValue->getCoordinateSet(),
+			MapsDistanceParser::parseDistance( $radius )
+		);		
+	}
+	
 	/**
 	 * @see SMWDescription:getQueryString
 	 * 
@@ -102,35 +85,6 @@ class SMAreaValueDescription extends SMWValueDescription {
     public function getBounds() {
     	return $this->mBounds;
     }    
-    
-	/**
-	 * Returns the lat and lon limits of a bounding box around a circle defined by the provided parameters.
-	 * 
-	 * @param array $centerCoordinates Array containing non-directional float coordinates with lat and lon keys. 
-	 * @param float $circleRadius The radidus of the circle to create a bounding box for, in km.
-	 * 
-	 * @return An associative array containing the limits with keys north, east, south and west.
-	 */
-	private static function getBoundingBox( array $centerCoordinates, $circleRadius ) {
-		$north = MapsGeoFunctions::findDestination( $centerCoordinates, 0, $circleRadius );
-		$east = MapsGeoFunctions::findDestination( $centerCoordinates, 90, $circleRadius );
-		$south = MapsGeoFunctions::findDestination( $centerCoordinates, 180, $circleRadius );
-		$west = MapsGeoFunctions::findDestination( $centerCoordinates, 270, $circleRadius );
-
-		return array(
-			'north' => $north['lat'],
-			'east' => $east['lon'],
-			'south' => $south['lat'],
-			'west' => $west['lon'],
-		);
-	}
-	
-	/**
-	 * Returns a boolean indicating if MapsGeoFunctions is available. 
-	 */
-	private static function geoFunctionsAreAvailable() {
-		return class_exists( 'MapsGeoFunctions' );
-	}
 	
 	/**
 	 * @see SMWDescription::getSQLCondition
@@ -181,5 +135,34 @@ class SMAreaValueDescription extends SMWValueDescription {
 		}
 		
 		return implode( " $joinCond ", $conditions );
+	}
+
+	/**
+	 * Returns the lat and lon limits of a bounding box around a circle defined by the provided parameters.
+	 * 
+	 * @param array $centerCoordinates Array containing non-directional float coordinates with lat and lon keys. 
+	 * @param float $circleRadius The radidus of the circle to create a bounding box for, in m.
+	 * 
+	 * @return An associative array containing the limits with keys north, east, south and west.
+	 */
+	protected static function getBoundingBox( array $centerCoordinates, $circleRadius ) {
+		$north = MapsGeoFunctions::findDestination( $centerCoordinates, 0, $circleRadius );
+		$east = MapsGeoFunctions::findDestination( $centerCoordinates, 90, $circleRadius );
+		$south = MapsGeoFunctions::findDestination( $centerCoordinates, 180, $circleRadius );
+		$west = MapsGeoFunctions::findDestination( $centerCoordinates, 270, $circleRadius );
+
+		return array(
+			'north' => $north['lat'],
+			'east' => $east['lon'],
+			'south' => $south['lat'],
+			'west' => $west['lon'],
+		);
+	}
+	
+	/**
+	 * Returns a boolean indicating if MapsGeoFunctions is available. 
+	 */
+	protected static function geoFunctionsAreAvailable() {
+		return class_exists( 'MapsGeoFunctions' );
 	}	
 }

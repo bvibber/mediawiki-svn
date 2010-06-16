@@ -2,7 +2,8 @@
 /**
  * Aliases for Special:Contact
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $aliases = array();

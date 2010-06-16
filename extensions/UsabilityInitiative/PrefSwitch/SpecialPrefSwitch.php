@@ -110,6 +110,7 @@ class SpecialPrefSwitch extends SpecialPage {
 		UsabilityInitiativeHooks::initialize();
 		UsabilityInitiativeHooks::addScript( 'PrefSwitch/PrefSwitch.js', $wgPrefSwitchStyleVersion );
 		UsabilityInitiativeHooks::addStyle( 'PrefSwitch/PrefSwitch.css', $wgPrefSwitchStyleVersion );
+		$wgOut->addHtml( '<div class="plainlinks">' );
 		// Handle various modes
 		if ( $wgRequest->getCheck( 'mode' ) && $wgUser->isLoggedIn() ) {
 			switch ( $wgRequest->getVal( 'mode' ) ) {
@@ -192,6 +193,7 @@ class SpecialPrefSwitch extends SpecialPage {
 					break;
 			}
 		}
+		$wgOut->addHtml( '</div>' );
 	}
 	
 	/* Private Functions */
@@ -231,8 +233,8 @@ class SpecialPrefSwitch extends SpecialPage {
 			$html .= Xml::closeElement( 'form' );
 			$wgOut->addHtml( $html );
 		} else {
-			$wgOut->addWikiMsg(
-				'prefswitch-main', array( 'parse' )
+			$wgOut->addWikiMsgArray(
+				'prefswitch-main', wfMsg( 'prefswitch-feedbackpage' ), array( 'parse' )
 			);
 			$state = self::userState( $wgUser );
 			switch ( $state ) {

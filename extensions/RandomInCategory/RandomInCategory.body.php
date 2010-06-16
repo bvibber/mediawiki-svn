@@ -3,7 +3,7 @@
 /**
  * Special page to direct the user to a random page in specified category
  *
- * @addtogroup SpecialPage
+ * @ingroup SpecialPage
  */
 class RandomPageInCategory extends SpecialPage {
 	private $category = null;

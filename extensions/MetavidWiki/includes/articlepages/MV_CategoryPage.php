@@ -117,7 +117,7 @@ class MvCategoryViewer extends CategoryViewer {
 		$sk = $wgUser->getSkin();
 		$s = ( $this->show_mv_links ) ? $this->getRssLinks():'';
 		if ( $this->showGallery && ! $this->gallery->isEmpty() ) {
-			$title = Title::MakeTitle( NS_SPECIAL, 'MediaSearch' );
+			$title = SpecialPage::getTitleFor( 'MediaSearch' );
 			$query = 'f[0][t]=' . urlencode( 'category' ) . '&f[0][v]=' . $wgTitle->getDBkey();
 			// don't output the cat link for now: 
 			// $search_link = $sk->makeKnownLinkObj($title,wfMsg('mv_search_category').":".$wgTitle->getText(), $query);			

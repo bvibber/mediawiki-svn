@@ -55,8 +55,8 @@ final class MapsGeocoder {
 	 * 
 	 * @return boolean
 	 */
-	public static function isLocation( $coordsOrAddress ) {
-		return self::attemptToGeocode( $coordsOrAddress ) !== false;
+	public static function isLocation( $coordsOrAddress, $geoService = '', $mappingService = false ) {
+		return self::attemptToGeocode( $coordsOrAddress, $geoService, $mappingService ) !== false;
 	}
 	
 	/**
@@ -94,10 +94,10 @@ final class MapsGeocoder {
 		if ( $egMapsEnableGeoCache && array_key_exists( $address, MapsGeocoder::$mGeocoderCache ) ) {
 			return self::$mGeocoderCache[$address];
 		}
-		
-		$service = self::getValidGeoService( $service, $mappingService );
 
-		// Call the geocode function in the spesific geocoder class.
+		$service = self::getValidGeoService( $service, $mappingService );
+		
+		// Call the geocode function in the specific geocoder class.
 		$coordinates = call_user_func( array( $egMapsGeoServices[$service], 'geocode' ), $address );
 		
 		// If there address could not be geocoded, and contains comma's, try again without the comma's.

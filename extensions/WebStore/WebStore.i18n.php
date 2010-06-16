@@ -2,7 +2,8 @@
 /**
  * Internationalisation file for extension WebStore.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $messages = array();
@@ -378,9 +379,12 @@ $1',
 );
 
 /** Bengali (বাংলা)
+ * @author Bellayet
  * @author Zaheen
  */
 $messages['bn'] = array(
+	'webstore_no_file' => 'কোন ফাইল আপলোড করা হয়নি।',
+	'webstore_404' => 'ফাইল পাওয়া যায়নি।',
 	'webstore_php_warning' => 'পিএইচপি সতর্কীকরণ: $1',
 	'webstore_metadata_not_found' => 'ফাইল খুঁজে পাওয়া যায়নি: $1',
 	'webstore_postfile_not_found' => 'পোস্ট করার জন্য ফাইল খুঁজে পাওয়া যায়নি।',
@@ -1729,11 +1733,11 @@ $messages['mk'] = array(
 	'webstore_postfile_not_found' => 'Нема пронајдено податотека за испраќање.',
 	'webstore_scaler_empty_response' => 'Размерувачот даде празен одговор со код 200.
 Ова може да се должи на PHP фатална грешка во размерувачот.',
-	'webstore_invalid_response' => 'Неважечки одговор од серверот:
+	'webstore_invalid_response' => 'Неважечки одговор од опслужувачот:
 
 $1',
-	'webstore_no_response' => 'Нема одговор од серверот',
-	'webstore_backend_error' => 'Грешка од складишниот сервер:
+	'webstore_no_response' => 'Нема одговор од опслужувачот',
+	'webstore_backend_error' => 'Грешка од складишниот опслужувач:
 
 $1',
 	'webstore_php_error' => 'Се јавија следните PHP грешки:',

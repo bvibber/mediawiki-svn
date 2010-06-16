@@ -2,6 +2,7 @@
 /**
  * Internationalization file for UserWelcome extension.
  *
+ * @file
  * @ingroup Extensions
  */
 
@@ -41,6 +42,13 @@ $messages['qqq'] = array(
 	'mp-welcome-upload' => '{{Identical|Upload}}',
 	'mp-welcome-edit' => '{{Identical|Edit}}',
 	'mp-request-new-message' => '{{Identical|New messages}}',
+);
+
+/** Moroccan Spoken Arabic (Maġribi)
+ * @author Enzoreg
+ */
+$messages['ary'] = array(
+	'mp-request-new-message' => 'méṣaj jdid',
 );
 
 /** Afrikaans (Afrikaans)
@@ -1037,6 +1045,7 @@ $messages['pms'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'mp-welcome-upload' => 'پورته کول',
 	'mp-welcome-edit' => 'سمون',
 	'mp-welcome-logged-in' => '$1 سلامونه',
 	'mp-requests-title' => 'غوښتنې',

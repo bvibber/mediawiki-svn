@@ -320,6 +320,7 @@ Kliknite na jednu od njih da pogledate njene statistike.',
 /** Catalan (Català)
  * @author Paucabot
  * @author SMP
+ * @author Vriullop
  */
 $messages['ca'] = array(
 	'prefstats' => 'Estadístiques de les preferències',
@@ -344,6 +345,8 @@ Cliqueu sobre una d'elles per veure'n les seves estadístiques.",
 	'prefstats-factor-twoweeks' => 'dues setmanes',
 	'prefstats-factor-fourweeks' => 'quatre setmanes',
 	'prefstats-factor-default' => "torna a l'escala per defecte",
+	'prefstats-legend-out' => 'Desactivat',
+	'prefstats-legend-in' => 'Activat',
 );
 
 /** Sorani (Arabic script) (‫کوردی (عەرەبی)‬)
@@ -1250,6 +1253,8 @@ $messages['ka'] = array(
 	'prefstats-factor-week' => 'კვირა',
 	'prefstats-factor-twoweeks' => 'ორი კვირა',
 	'prefstats-factor-fourweeks' => 'ოთხი კვირა',
+	'prefstats-legend-out' => 'გამორიცხვის პრინციპით',
+	'prefstats-legend-in' => 'დაშვების პრინციპით',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -1995,6 +2000,19 @@ $messages['sah'] = array(
 	'prefstats-legend-in' => 'Холбонорго',
 );
 
+/** Sardinian (Sardu)
+ * @author Andria
+ */
+$messages['sc'] = array(
+	'prefstats-xaxis' => 'Durada (oras)',
+	'prefstats-factor-hour' => 'ora',
+	'prefstats-factor-sixhours' => 'ses oras',
+	'prefstats-factor-day' => 'die',
+	'prefstats-factor-week' => 'chida',
+	'prefstats-factor-twoweeks' => 'duas chidas',
+	'prefstats-factor-fourweeks' => 'bator chidas',
+);
+
 /** Sicilian (Sicilianu)
  * @author Melos
  */
@@ -2236,6 +2254,37 @@ Ileri tutmalary yzarlamak üçin konfigurirläň: $wgPrefStatsTrackPrefs',
 	'prefstats-factor-default' => 'gaýybana masştaba gaýdyp bar',
 	'prefstats-legend-out' => 'Çykan',
 	'prefstats-legend-in' => 'Goşulan',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'prefstats' => 'Estadistika ng nais',
+	'prefstats-desc' => 'Subaybayan ang estadistika tungkol sa ilang mga tagagamit ang mayroong partikular na pinaaandar na mga nais',
+	'prefstats-title' => 'Estadistika ng nais',
+	'prefstats-list-intro' => 'Sa kasalukuyan, sinusubaybayan ang sumusunod na mga nais.
+Pindutin ang isa upang matingnan ang estadistikang tungkol dito.',
+	'prefstats-noprefs' => 'Kasalukuyang walang sinusubaybayang mga nais.
+Iayos ang $wgPrefStatsTrackPrefs upang subaybayan ang mga nais.',
+	'prefstats-counters' => ' $1 {{PLURAL:$1|tagagamit|mga tagagamit}} ang nagpapagana ng ganitong nais magmula noong pasiglahin ang estadistika ng nais
+** $2 {{PLURAL:$2|tagagamit pa rin|mga tagagamit pa rin}} nagpapagana nito
+** $3 {{PLURAL:$3|tagagamit|mga tagagamit}} ang hindi na nagpagana nito mula noon',
+	'prefstats-counters-expensive' => '$1 {{PLURAL:$1|tagagamit|mga tagagamit}} ang nagpapagana ng ganitong nais magmula noong pasiglahin ang estadistika ng nais
+** $2 {{PLURAL:$2|tagagamit pa rin|mga tagagamit pa rin}} nagpapagana nito
+** $3 {{PLURAL:$3|tagagamit|mga tagagamit}} ang hindi na nagpagana nito mula noon
+* Sa kabuoan, {{PLURAL:$4|tagagamit ang|mga tagagamit ang}}  nagtakda ng ganitong nais',
+	'prefstats-xaxis' => 'Pamamarati (mga oras)',
+	'prefstats-factors' => 'Pagtingin bawat: $1',
+	'prefstats-factor-hour' => 'oras',
+	'prefstats-factor-sixhours' => 'anim na oras',
+	'prefstats-factor-day' => 'araw',
+	'prefstats-factor-week' => 'linggo',
+	'prefstats-factor-twoweeks' => 'dalawang linggo',
+	'prefstats-factor-fourweeks' => 'apat na linggo',
+	'prefstats-factor-default' => 'bumalik sa likas na nakatakdang tumbasan',
+	'prefstats-legend-out' => 'Hindi sumali',
+	'prefstats-legend-in' => 'Sumali',
 );
 
 /** Turkish (Türkçe)

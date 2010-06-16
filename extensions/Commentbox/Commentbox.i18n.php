@@ -2,7 +2,8 @@
 /**
  * Internationalisation file for extension Commentbox.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $messages = array();
@@ -216,7 +217,7 @@ $messages['el'] = array(
 	'commentbox-intro' => '== Προσθέστε ένα σχόλιο ... == Έχετε ένα σχόλιο για τη σελίδα? Προσθέστε το εδώ ή στο <span class="plainlinks">[((fullurl: ((FULLPAGENAME)) | action = edit)) επεξεργαστείτε τη σελίδα άμεσα].</span>',
 	'commentbox-savebutton' => 'Αποθήκευση σχολίου',
 	'commentbox-name' => 'Όνομα:',
-	'commentbox-name-explanation' => '<small>(Συμβουλή: Εάν [[Special:UserLogin|συνδεθείτε]], δε χρειάζεται να συμπληρώσετε το όνομά σας εδώ πληκρολογώντας)</small>',
+	'commentbox-name-explanation' => '<small>(Συμβουλή: Εάν [[Special:UserLogin|συνδεθείτε]], δε χρειάζεται να συμπληρώσετε το όνομά σας εδώ πληκτρολογώντας)</small>',
 	'commentbox-log' => 'Νέα σχόλια',
 	'commentbox-first-comment-heading' => '== Σχόλια ==',
 	'commentbox-regex' => '/\\n==\\s*Σχόλια\\s*==\\s*\\n/i',
@@ -505,6 +506,25 @@ $messages['ja'] = array(
  */
 $messages['kn'] = array(
 	'commentbox-name' => 'ಹೆಸರು:',
+);
+
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'commentbox-desc' => '특정 문서에 의견 상자를 추가',
+	'commentbox-intro' => '== 의견 남기기... ==
+이 문서에 의견이 있으신가요? 여기 의견을 남기시거나 <span class="plainlinks">[{{fullurl:{{FULLPAGENAME}}|action=edit}} 문서를 직접 편집]</span>하십시오.',
+	'commentbox-savebutton' => '의견 저장하기',
+	'commentbox-name' => '이름:',
+	'commentbox-name-explanation' => '<small>(팁: [[Special:UserLogin|로그인]]하면 이름을 직접 적지 않아도 됩니다.)</small>',
+	'commentbox-log' => '새 의견',
+	'commentbox-first-comment-heading' => '== 의견 ==',
+	'commentbox-regex' => '/\\n==\\s*의견\\s*==\\s*\\n/i',
+	'commentbox-errorpage-title' => '의견을 남기는 도중 오류 발생',
+	'commentbox-error-page-nonexistent' => '이 문서가 존재하지 않습니다!',
+	'commentbox-error-namespace' => '이 이름공간에는 의견을 남길 수 없습니다!',
+	'commentbox-error-empty-comment' => '내용 없이 의견을 남길 수 없습니다!',
 );
 
 /** Colognian (Ripoarisch)
@@ -804,6 +824,18 @@ Chcete túto stránku okomentovať? Napíšte to sem alebo <span class="plainlin
 	'commentbox-error-page-nonexistent' => 'Táto stránka neexistuje!',
 	'commentbox-error-namespace' => 'Komentáre nie sú v tomto mennom priestore povolené!',
 	'commentbox-error-empty-comment' => 'Prázdne komentáre nie sú povolené!',
+);
+
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'commentbox-name' => 'Име:',
+);
+
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'commentbox-name' => 'Ime:',
 );
 
 /** Swedish (Svenska)

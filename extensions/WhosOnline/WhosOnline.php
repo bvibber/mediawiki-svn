@@ -2,6 +2,8 @@
 /**
  * WhosOnline extension - creates a list of logged-in users & anons currently online
  * The list can be viewed at Special:WhosOnline
+ *
+ * @file
  * @ingroup Extensions
  *
  * @author Maciej Brencz <macbre(at)-spam-wikia.com> - minor fixes and improvements

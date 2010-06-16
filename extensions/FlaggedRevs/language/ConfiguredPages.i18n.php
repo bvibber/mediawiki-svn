@@ -2,7 +2,8 @@
 /**
  * Internationalisation file for FlaggedRevs extension, section ConfiguredPages
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $messages = array();
@@ -19,7 +20,7 @@ Some settings might change which version is displayed to readers or further rest
 	'configuredpages-prec-quality'  => 'latest quality',
 	'configuredpages-prec-pristine' => 'latest pristine',
 	'configuredpages-def-draft'     => 'latest version',
-	'configuredpages-def-stable'    => 'accepted version',
+	'configuredpages-def-stable'    => 'stable version',
 );
 
 /** Message documentation (Message documentation)
@@ -35,16 +36,24 @@ $messages['qqq'] = array(
 
 /** Afrikaans (Afrikaans) */
 $messages['af'] = array(
+	'configuredpages-none' => 'Daar is geen bladsye in hierdie lys nie.',
+	'configuredpages-config' => 'Voorkeure',
+	'configuredpages-precedence' => 'Volgorde:',
 	'configuredpages-prec-none' => 'laaste gekontroleerde',
 	'configuredpages-prec-quality' => 'laaste kwaliteitsweergawe',
 	'configuredpages-prec-pristine' => 'laaste ongerepte weergawe',
+	'configuredpages-def-draft' => 'nuutste weergawe',
 );
 
-/** Arabic (العربية) */
+/** Arabic (العربية)
+ * @author Mohamed Ouda
+ */
 $messages['ar'] = array(
 	'configuredpages-prec-none' => 'لا سابقة',
 	'configuredpages-prec-quality' => 'سابقة جودة',
 	'configuredpages-prec-pristine' => 'سابقة فائقة',
+	'configuredpages-def-draft' => 'أحدث نسخة',
+	'configuredpages-def-stable' => 'نسخة مستقرة',
 );
 
 /** Egyptian Spoken Arabic (مصرى) */
@@ -71,6 +80,13 @@ $messages['be-tarask'] = array(
 	'configuredpages-prec-pristine' => 'апошняя першапачатковая',
 	'configuredpages-def-draft' => 'апошняя вэрсія',
 	'configuredpages-def-stable' => 'апублікаваная вэрсія',
+);
+
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'configuredpages-def-draft' => 'সাম্প্রতিকতম সংস্করণ',
 );
 
 /** Breton (Brezhoneg)
@@ -161,10 +177,11 @@ Někotare nastajenja by mógli se změniś, kótara wersija zwobraznja se cytarj
 
 /** Greek (Ελληνικά)
  * @author Crazymadlover
+ * @author Omnipaedista
  */
 $messages['el'] = array(
 	'configuredpages-config' => 'Διαμόρφωση',
-	'configuredpages-precedence' => 'Προνομίων:',
+	'configuredpages-precedence' => 'Προτεραιότητα:',
 	'configuredpages-prec-none' => 'χωρίς προτεραιότητα',
 	'configuredpages-prec-quality' => 'προτεραιότητα ποιότητας',
 	'configuredpages-prec-pristine' => 'προτεραιότητα μη αλλοίωσης',
@@ -407,6 +424,7 @@ $messages['ja'] = array(
 $messages['ka'] = array(
 	'configuredpages-config' => 'კონფიგურაცია',
 	'configuredpages-precedence' => 'პრიორიტეტი:',
+	'configuredpages-prec-none' => 'უკანასკნელად შემოწმებული',
 	'configuredpages-def-draft' => 'უკანასკნელი ვერსია',
 	'configuredpages-def-stable' => 'გამოქვეყნებული ვერსია',
 );
@@ -459,10 +477,10 @@ Verschidden Astellungen kënne beaflosse wat fir eng Versioun de Lieser gewise g
  */
 $messages['mk'] = array(
 	'configuredpages' => 'Страници со прилагодувања за преглед',
-	'configuredpages-text' => 'Подолу е наведена листа на страници што се прилагодени со поинакви поставки за одобрување од основните на веб-страницата.
+	'configuredpages-text' => 'Подолу е наведен списокот на страници што се прилагодени со поинакви поставки за одобрување од основните на веб-страницата.
 
 Некои поставки може да ја променат верзијата што ќе им се прикажува на корисниците, или уште повеќе да ограничи кој сè може да врши уредувања без да треба тие да се прегледуваат.',
-	'configuredpages-none' => 'Нема страници на оваа листа.',
+	'configuredpages-none' => 'Нема страници на овој список.',
 	'configuredpages-config' => 'Прилагодување',
 	'configuredpages-precedence' => 'Предност:',
 	'configuredpages-prec-none' => 'последна проверена',
@@ -607,11 +625,22 @@ Alguns parâmetros podem alterar a versão que é apresentada aos utilizadores, 
 	'configuredpages-def-stable' => 'versão publicada',
 );
 
-/** Brazilian Portuguese (Português do Brasil) */
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Giro720
+ */
 $messages['pt-br'] = array(
+	'configuredpages' => 'Páginas com configuração de revisão',
+	'configuredpages-text' => 'Segue-se uma lista de páginas configuradas com parâmetros de aprovação diferentes do padrão do site.
+
+Alguns parâmetros podem alterar a versão que é apresentada aos usuários, ou aumentar a restrição de quem pode fazer edições que não requerem revisão.',
+	'configuredpages-none' => 'Não existem páginas nesta lista.',
+	'configuredpages-config' => 'Configuração',
+	'configuredpages-precedence' => 'Precedência:',
 	'configuredpages-prec-none' => 'sem precedência',
 	'configuredpages-prec-quality' => 'precedência de qualidade',
 	'configuredpages-prec-pristine' => 'precedência intocada',
+	'configuredpages-def-draft' => 'última versão',
+	'configuredpages-def-stable' => 'versão publicada',
 );
 
 /** Romanian (Română) */
@@ -669,18 +698,45 @@ $messages['sk'] = array(
 	'configuredpages-prec-pristine' => 'čistá precedencia',
 );
 
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'configuredpages-config' => 'Поставке',
+);
+
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'configuredpages-config' => 'Postavke',
+);
+
 /** Swedish (Svenska)
  * @author Ainali
+ * @author Boivie
  * @author Dafer45
  */
 $messages['sv'] = array(
+	'configuredpages' => 'Sidor med granskningsinställningar',
+	'configuredpages-text' => 'Nedan är en lista över sidor konfigurerade för att ha olika godkännandeinställningar än platsens standard.
+
+Vissa inställningar kan ändra vilken version som visas för läsarna eller ytterligare begränsa vem som kan göra ändringar som inte kräver granskning.',
 	'configuredpages-none' => 'Det finns inga sidor i den här listan.',
 	'configuredpages-config' => 'Konfiguration',
+	'configuredpages-precedence' => 'Rangordning:',
 	'configuredpages-prec-none' => 'ingen rangordning',
 	'configuredpages-prec-quality' => 'kvalitetsordning',
 	'configuredpages-prec-pristine' => 'företräde för orörda',
 	'configuredpages-def-draft' => 'senaste versionen',
 	'configuredpages-def-stable' => 'Publicerad version',
+);
+
+/** Tamil (தமிழ்)
+ * @author Mahir78
+ */
+$messages['ta'] = array(
+	'configuredpages-prec-quality' => 'தற்போதையத் தரம்',
+	'configuredpages-def-draft' => 'தற்போதைய பதிப்பு',
+	'configuredpages-def-stable' => 'ஏற்றுக்கொள்ளப்பட்ட பதிப்பு',
 );
 
 /** Telugu (తెలుగు)
@@ -785,9 +841,18 @@ $messages['vi'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬) */
 $messages['zh-hans'] = array(
+	'configuredpages' => '页面已有复审设定',
+	'configuredpages-text' => '下面是已有和站点预设设定不同的审核设定。
+
+部份设定的更改是向读者展示的。',
+	'configuredpages-none' => '没有页面在这个清单中',
+	'configuredpages-config' => '设定',
+	'configuredpages-precedence' => '优先级：',
 	'configuredpages-prec-none' => '没有优先级',
 	'configuredpages-prec-quality' => '质量优先级',
 	'configuredpages-prec-pristine' => '原始优先级',
+	'configuredpages-def-draft' => '最新版本',
+	'configuredpages-def-stable' => '已出版的内容',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

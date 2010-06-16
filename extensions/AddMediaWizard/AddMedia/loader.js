@@ -1,4 +1,4 @@
-/*
+/**
 * Loader for libAddMedia module:
 */
 // Scope everything in "mw"  ( keeps the global namespace clean ) 
@@ -18,10 +18,10 @@
 		"mw.UploadInterface"	: "mw.UploadInterface.js",
 		"mw.Firefogg"			: "mw.Firefogg.js",
 		"mw.FirefoggGUI"		: "mw.FirefoggGUI.js",
-		"mw.FirefoggRender"		: "modules/libSequencer/mw.FirefoggRender.js",
+		
 		"mw.RemoteSearchDriver"	: "mw.RemoteSearchDriver.js",		
 
-    "mw.style.AddMedia" : "css/mw.style.AddMedia.css",
+		"mw.style.AddMedia" : "css/mw.style.AddMedia.css",
 		
 		"baseRemoteSearch"		: "searchLibs/baseRemoteSearch.js",
 		"mediaWikiSearch"		: "searchLibs/mediaWikiSearch.js",
@@ -67,7 +67,7 @@
 				'$j.ui.tabs',
 				'$j.ui.sortable',
 
-        'mw.style.AddMedia'
+				'mw.style.AddMedia'
 			]
 		];
 		mw.load( request , function() {

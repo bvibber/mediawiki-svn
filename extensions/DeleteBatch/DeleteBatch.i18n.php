@@ -264,6 +264,13 @@ El fitxer indicat només pot contenir el títol de la pàgina i el motiu per a e
 	'right-deletebatch' => 'Lot de pàgines a esborrar',
 );
 
+/** Chechen (Нохчийн)
+ * @author Sasan700
+ */
+$messages['ce'] = array(
+	'deletebatch-delete' => 'Дlадайá',
+);
+
 /** German (Deutsch)
  * @author Als-Holder
  * @author ChrisiPK
@@ -900,15 +907,15 @@ $messages['mk'] = array(
 Можете да го користите за едно бришење, или пак за бришење на страници наведени во податотека.
 Одберете го корисникот кој ќе се прикаже во дневникот на бришења.
 Подигнатите податотеки треба да содржат име на страницата и незадолжителна причина, одвоени со знакот „|“ во секој ред.',
-	'deletebatch-caption' => 'Листа на страници:',
+	'deletebatch-caption' => 'Список на страници:',
 	'deletebatch-title' => 'Избриши збир',
 	'deletebatch-link-back' => 'Назад кон специјалната страница',
 	'deletebatch-as' => 'Пушти ја скриптата како:',
-	'deletebatch-both-modes' => 'Изберете една назначена страница, или дадена листа страници.',
+	'deletebatch-both-modes' => 'Изберете една назначена страница, или даден список на страници.',
 	'deletebatch-or' => '<b>или</b>',
 	'deletebatch-delete' => 'Избриши',
 	'deletebatch-page' => 'Страници за бришење:',
-	'deletebatch-processing-from-file' => 'бришење страници од листа од податотека',
+	'deletebatch-processing-from-file' => 'бришење страници од список од податотека',
 	'deletebatch-processing-from-form' => 'бришење страници од образец',
 	'deletebatch-omitting-nonexistant' => 'За испуштање на непостоечката страница $1.',
 	'deletebatch-omitting-invalid' => 'За испуштање на неважечката страница $1.',
@@ -916,7 +923,7 @@ $messages['mk'] = array(
 	'deletebatch-file-missing' => 'Не можам да ја прочитам дадената податотека',
 	'deletebatch-select-script' => 'Скрипта за бришење на страници',
 	'deletebatch-select-yourself' => 'Вие',
-	'deletebatch-no-page' => 'Назначете барем една страница за бришење или изберете податотека која содржи листа на страници.',
+	'deletebatch-no-page' => 'Назначете барем една страница за бришење или изберете податотека која содржи список на страници.',
 	'right-deletebatch' => 'Збирно бришење страници',
 );
 
@@ -1129,7 +1136,9 @@ J'archivi carià a dovrìo conten-e ël nòm dla pàgina e na rason opsional, se
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'deletebatch-or' => '<b>يا</b>',
 	'deletebatch-delete' => 'ړنګول',
+	'deletebatch-select-yourself' => 'تاسې',
 );
 
 /** Portuguese (Português)
@@ -1273,6 +1282,40 @@ Nahraný súbor by mal na každom riadku obsahovať názov stránky a nepovinne 
 	'deletebatch-select-yourself' => 'vy',
 	'deletebatch-no-page' => 'Prosím, zadajte aspoň jednu stránku, ktorá sa má zmazať ALEBO súbor obsahujúci zoznam stránok.',
 	'right-deletebatch' => 'Dávkové mazanie stránok',
+);
+
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'deletebatch-caption' => 'Списак страна:',
+	'deletebatch-link-back' => 'Врати се на специјалну страну',
+	'deletebatch-as' => 'Покрени скрипт као:',
+	'deletebatch-or' => '<b>или</b>',
+	'deletebatch-delete' => 'Обриши',
+	'deletebatch-page' => 'Стране за брисање:',
+	'deletebatch-processing-from-file' => 'у току је брисање страна са списка',
+	'deletebatch-processing-from-form' => 'брисање страна из форме',
+	'deletebatch-omitting-nonexistant' => 'Сакривање непостојеће стране $1.',
+	'deletebatch-omitting-invalid' => 'Сакривање неисправне стране $1.',
+	'deletebatch-file-bad-format' => 'Фајл би требало да буде обичан текст',
+	'deletebatch-file-missing' => 'Није било могуће прочитати задат фајл',
+);
+
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'deletebatch-caption' => 'Spisak strana:',
+	'deletebatch-link-back' => 'Vrati se na specijalnu stranu',
+	'deletebatch-as' => 'Pokreni skript kao:',
+	'deletebatch-or' => '<b>ili</b>',
+	'deletebatch-delete' => 'Obriši',
+	'deletebatch-page' => 'Strane za brisanje:',
+	'deletebatch-processing-from-file' => 'u toku je brisanje strana sa spiska',
+	'deletebatch-processing-from-form' => 'brisanje strana iz forme',
+	'deletebatch-omitting-nonexistant' => 'Sakrivanje nepostojeće strane $1.',
+	'deletebatch-omitting-invalid' => 'Sakrivanje neispravne strane $1.',
+	'deletebatch-file-bad-format' => 'Fajl bi trebalo da bude običan tekst',
+	'deletebatch-file-missing' => 'Nije bilo moguće pročitati zadat fajl',
 );
 
 /** Swedish (Svenska)

@@ -842,6 +842,13 @@ $messages['pms'] = array(
 	'fundraiserportal-tourmaline-close' => 'Stërma sòn-sì da adess an peui',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'fundraiserportal-plain-button' => 'د ويکيمېډيا ملاتړ وکړی',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  * @author Lijealso
@@ -974,6 +981,28 @@ $messages['sl'] = array(
 	'fundraiserportal-tourmaline-button' => 'Prispevajte zdaj',
 	'fundraiserportal-tourmaline-message' => 'Vsak prispevek nam pomaga ohranjati Wikipedijo brezplačno za vsakogar.',
 	'fundraiserportal-tourmaline-close' => 'Skrij od zdaj naprej',
+);
+
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'fundraiserportal-ruby-button' => 'Донирајте сад',
+	'fundraiserportal-rubytext-button' => 'Донирајте сад',
+	'fundraiserportal-rubytext-message' => 'Свака донација нам помаже да одржимо Википедију доступну свима.',
+	'fundraiserportal-rubytext-close' => 'Сакриј ово од сад па надаље',
+	'fundraiserportal-sapphire-button' => 'Донирајте сад',
+	'fundraiserportal-tourmaline-button' => 'Донирајте сад',
+);
+
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'fundraiserportal-ruby-button' => 'Donirajte sad',
+	'fundraiserportal-rubytext-button' => 'Donirajte sad',
+	'fundraiserportal-rubytext-message' => 'Svaka donacija nam pomaže da održimo Vikipediju dostupnu svima.',
+	'fundraiserportal-rubytext-close' => 'Sakrij ovo od sad pa nadalje',
+	'fundraiserportal-sapphire-button' => 'Donirajte sad',
+	'fundraiserportal-tourmaline-button' => 'Donirajte sad',
 );
 
 /** Swedish (Svenska)

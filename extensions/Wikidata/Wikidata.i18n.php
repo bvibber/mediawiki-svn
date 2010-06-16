@@ -2,7 +2,8 @@
 /**
  * Internationalisation file for Language Manager extension.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $messages = array();
@@ -726,9 +727,17 @@ $messages['am'] = array(
  * @author Juanpabl
  */
 $messages['an'] = array(
+	'langman_langname' => "Nombre d'a luenga:",
+	'langman_addlang' => 'Adhibir idioma',
 	'datasearch' => 'Wikidata: Mirar datos',
+	'datasearch_language' => 'Idioma:',
+	'ow_exporttsv_languages' => 'Idiomas:',
 	'ow_save' => 'Alzar',
+	'ow_history' => 'Historial',
+	'ow_transaction_rollback_button' => 'Revertir',
+	'ow_transaction_rollback_header' => 'Revertir',
 	'ow_dm_OK' => "D'alcuerdo",
+	'ow_Language' => 'Idioma',
 	'ow_create' => 'Creyar',
 );
 
@@ -1741,13 +1750,38 @@ $messages['bn'] = array(
 	'ow_transaction_restore' => 'পুনঃস্থাপন',
 	'ow_transaction_remove' => 'অপসারণ',
 	'ow_transaction_object' => 'অবজেক্ট',
-	'ow_transaction_summary' => 'শারাংশ',
+	'ow_transaction_summary' => 'সারাংশ',
 	'ow_dm_OK' => 'ঠিক আছে',
+	'ow_Definition' => 'সংজ্ঞা',
+	'ow_Language' => 'ভাষা',
+	'ow_Relations' => 'সম্পর্ক',
+	'ow_Remove' => 'অপসারণ',
+	'ow_Spelling' => 'বানান',
+	'ow_Synonyms' => 'প্রতিশব্দ',
+	'ow_SynonymsAndTranslations' => 'প্রতিশব্দ এবং অনুবাদ',
+	'ow_Source' => 'উৎস',
+	'ow_SourceIdentifier' => 'উৎস নির্দেশক',
+	'ow_Text' => 'লেখা',
+	'ow_Time' => 'সময়',
+	'ow_TranslatedText' => 'অনুদিত লেখা',
+	'ow_TranslatedTextAttributeValue' => 'লেখা',
+	'ow_TranslatedTextAttributeValues' => 'অনুবাদযোগ্য লেখা',
+	'ow_Link' => 'লিংক',
+	'ow_LinkAttributeValues' => 'লিংক',
+	'ow_User' => 'ব্যবহারকারী',
+	'ow_Value' => 'মান',
+	'ow_added' => 'সংযোজিত',
+	'ow_removed' => 'অপসারিত',
+	'ow_class_attr_type_link' => 'লিংক',
+	'ow_needs_xlation_source_lang' => 'উৎস ভাষা:',
+	'ow_needs_xlation_dest_lang' => 'গন্তব্য ভাষা:',
 	'ow_show' => 'দেখাও',
 	'ow_upload' => 'আপলোড',
 	'ow_create' => 'তৈরি করো',
 	'ow_suggest_previous' => 'পূর্ববর্তী',
 	'ow_suggest_next' => 'পরবর্তী',
+	'ow_suggest_clear' => 'পরিস্কার',
+	'ow_nstab_edit_copy' => 'অনুলিপি সম্পাদনা',
 );
 
 /** Breton (Brezhoneg)
@@ -6508,6 +6542,7 @@ $messages['is'] = array(
 /** Italian (Italiano)
  * @author Aushulz
  * @author Darth Kule
+ * @author HalphaZ
  * @author Melos
  * @author Nemo bis
  */
@@ -6530,6 +6565,8 @@ $messages['it'] = array(
 	'datasearch_meaning' => 'Significato',
 	'datasearch_search_text' => 'Cerca testo:',
 	'importtsv' => 'Wikidata: Importa TSV',
+	'ow_importtsv_title1' => 'Importa TSV',
+	'ow_importtsv_title2' => 'Importa definizioni e traduzioni',
 	'ow_importtsv_import_failed' => 'Importazione fallita',
 	'ow_importtsv_file' => 'File TSV:',
 	'ow_importtsv_test_run' => 'Esegui test:',
@@ -7793,7 +7830,7 @@ Kuckt w.e.g. [[{{MediaWiki:Ow editing policy url}}|eis Ännerungsrichtlinnen]].'
 	'transaction' => 'Wikidata: Logbuch vun den Transaktiounen',
 	'ow_transaction_from_transaction' => 'Vun Transaktioun:',
 	'ow_transaction_count' => 'Zuel:',
-	'ow_transaction_user' => 'Bentzernumm:',
+	'ow_transaction_user' => 'Benotzernumm:',
 	'ow_transaction_show_rollback' => 'Zrécksetz-Kontrolle weisen:',
 	'ow_transaction_rollback_button' => 'Zrécksetzen',
 	'ow_transaction_rollback_header' => 'Zrécksetzen',
@@ -7920,6 +7957,7 @@ Vläicht koumt Dir direkt op dës Säit: Normalerweis braucht Dir net hei ze sin
 	'ow_needs_xlation_source_lang' => 'Quellsprooch:',
 	'ow_needs_xlation_dest_lang' => 'Zilsprooch:',
 	'ow_needs_xlation_no_dest_lang' => 'Gitt w.e.g. eng Zilsprooch un.',
+	'ow_statistics' => 'Wikidata: Statistiken',
 	'ow_show' => 'Weisen',
 	'ow_upload' => 'Eroplueden',
 	'ow_create' => 'Uleeën',
@@ -7983,6 +8021,13 @@ $messages['li'] = array(
  */
 $messages['lt'] = array(
 	'datasearch' => 'Wikidata: Duomenų paieška',
+);
+
+/** Latvian (Latviešu)
+ * @author GreenZeb
+ */
+$messages['lv'] = array(
+	'ow_none_selected' => 'Neviena licence nav izvēlēta',
 );
 
 /** Lazuri (Lazuri)
@@ -8146,7 +8191,7 @@ $messages['mk'] = array(
 	'exporttsv' => 'Википодатоци: Извези TSV',
 	'ow_exporttsv_title' => 'Извеси збирка во TSV',
 	'ow_exporttsv_header' => '<p>Извезување на збирка во табеларно-одделен текстуален формат кој може да се увезува во OpenOffice.org, Excel и други програми за табели.<br />
-Одберете збирка за извоз. Во полето за јазици внесете листа на ISO 639-3 јазични кодови, одделени со запирка. Започнете со јазиците од кои сакате да преведувате (одберете колку што сакате) и завршете со јазиците на кои ќе работите превод. Потоа кликнете на „Создај“ за да ја создадете податотеката.</p>',
+Одберете збирка за извоз. Во полето за јазици внесете список на ISO 639-3 јазични кодови, одделени со запирка. Започнете со јазиците од кои сакате да преведувате (одберете колку што сакате) и завршете со јазиците на кои ќе работите превод. Потоа кликнете на „Создај“ за да ја создадете податотеката.</p>',
 	'ow_exporttsv_languages' => 'Јазици:',
 	'ow_exporttsv_not_allowed' => 'Немате дозвола да вршите TSV извоз.',
 	'ow_exporttsv_export_failed' => 'Извозот не успеа',
@@ -8162,7 +8207,7 @@ $messages['mk'] = array(
 Погледајте ги [[{{MediaWiki:Ow editing policy url}}|нашите правила за уредување]].',
 	'ow_uipref_datasets' => 'Основен поглед:',
 	'ow_uiprefs' => 'Викидата',
-	'ow_none_selected' => 'Ништо не е селектирано',
+	'ow_none_selected' => 'Ништо не е одбрано',
 	'transaction' => 'Википодатоци: Дневник на трансакции',
 	'ow_transaction_from_transaction' => 'Од трансакцијата:',
 	'ow_transaction_count' => 'Број:',
@@ -8186,7 +8231,7 @@ $messages['mk'] = array(
 	'ow_conceptmapping_help' => '<p>можни дејства: <ul>
 <li>&action=insert&<data_context_prefix>=<defined_id>&... вметни пресликување</li>
 <li>&action=get&concept=<concept_id> прочитај соодветство</li>
-<li>&action=list_sets наведи листа на можни префикси за контекст на податоци и местата кадешто тие упатуваат.</li>
+<li>&action=list_sets наведи список на можни префикси за контекст на податоци и местата кадешто тие упатуваат.</li>
 <li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> за едно определено значење во концепт, наведи ги сите останати</li>
 <li>&action=help Прикажи корисни помошни информации.</li>
 </ul></p>',
@@ -8238,9 +8283,9 @@ $messages['mk'] = array(
 	'ow_Multiple_meanings' => 'Значења на „$1“',
 	'ow_NewExactMeaning' => 'Ново точно значење',
 	'ow_OptionAttribute' => 'Својство',
-	'ow_OptionAttributeHeader' => 'Атрибут за опции',
-	'ow_OptionAttributeOption' => 'Опција',
-	'ow_OptionAttributeOptions' => 'Опции',
+	'ow_OptionAttributeHeader' => 'Нагодителен атрибут',
+	'ow_OptionAttributeOption' => 'Елемент',
+	'ow_OptionAttributeOptions' => 'Нагодувања',
 	'ow_OptionAttributeValues' => 'Изборни вредности',
 	'ow_OtherDefinedMeaning' => 'Друго дефинирано значење',
 	'ow_PopupAnnotation' => 'Забелешка',
@@ -8280,9 +8325,9 @@ $messages['mk'] = array(
 	'ow_copy_no_action_specified' => 'Назначете дејство',
 	'ow_copy_help' => 'Помошта сè уште не е имплементирана.',
 	'ow_please_proved_dmid' => 'Се чини дека на ова што го внесовте му недостасува "?dmid=<ID>" (dmid=ID на определеното значење)<br />
-Контактирајте сервер-администратор.',
+Контактирајте опслужувач-администратор.',
 	'ow_please_proved_dc1' => 'Се чини дека на она што го внесовте му недостасува "?dc1=<something>" (dc1=контекст на збирот податоци 1, ОД КАДЕ да се копира збирот податоци)<br />
-Контактирајте сервер-администратор.',
+Контактирајте опслужувач-администратор.',
 	'ow_please_proved_dc2' => 'Се чини дека на она што го внесовте му недостасува "?dc2=<something>" (dc2=контекст на збирот податоци 2, КАДЕ да се копира збирот податоци)<br />
 Контактирајте го север-администраторот.',
 	'ow_copy_successful' => '<h2>Копирањето е успешно</h2>
@@ -8302,7 +8347,7 @@ $messages['mk'] = array(
 	'ow_class_attr_type_xlate' => 'Преводлив текст',
 	'ow_class_attr_type_plain' => 'Прост текст',
 	'ow_class_attr_type_link' => 'Врска',
-	'ow_class_attr_type_option' => 'Листа на опции',
+	'ow_class_attr_type_option' => 'Список на избори',
 	'needstranslation' => 'Википодатоци: Изрази што треба да се преведат',
 	'ow_needs_xlation_title' => 'Изрази што треба да се преведат',
 	'ow_needs_xlation_source_lang' => 'Изворен јазик:',
@@ -9818,6 +9863,7 @@ Wybierz kolekcję do wyeksportowania. W polu tekstowym „Języki” wpisz rozdz
 	'ow_needs_xlation_source_lang' => 'Język źródłowy',
 	'ow_needs_xlation_dest_lang' => 'Język docelowy',
 	'ow_needs_xlation_no_dest_lang' => 'Proszę określić język docelowy.',
+	'ow_statistics' => 'Wikidata: Statystyki',
 	'ow_show' => 'Pokaż',
 	'ow_upload' => 'Prześlij',
 	'ow_create' => 'Utwórz',
@@ -10133,6 +10179,7 @@ $messages['ps'] = array(
 	'ow_TranslatedText' => 'ژباړل شوی متن',
 	'ow_TranslatedTextAttributeValue' => 'متن',
 	'ow_TranslatedTextAttributeValues' => 'د ژباړلو وړ متن',
+	'ow_Link' => 'تړنه',
 	'ow_LinkAttribute' => 'ځانتيا',
 	'ow_LinkAttributeValues' => 'تړنې',
 	'ow_User' => 'کارن',
@@ -10142,7 +10189,12 @@ $messages['ps'] = array(
 	'ow_Permission_denied' => '<h2>د اجازې غوښتنه مو رد شوه</h2>',
 	'ow_copy_no_action_specified' => 'لطفاً يوه کړنه ځانګړې کړی',
 	'ow_copy_help' => 'Help is not implemented yet.',
+	'ow_class_attr_type_link' => 'تړنه',
+	'ow_show' => 'ښکاره کول',
+	'ow_upload' => 'پورته کول',
 	'ow_create' => 'جوړول',
+	'ow_suggest_previous' => 'پخوانی',
+	'ow_suggest_next' => 'راتلونکي',
 );
 
 /** Portuguese (Português)
@@ -10387,6 +10439,7 @@ Não foi feita nenhuma operação de cópia.',
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
+ * @author Giro720
  * @author Heldergeovane
  * @author Jorge Morais
  */
@@ -10419,7 +10472,7 @@ $messages['pt-br'] = array(
 	'datasearch_search_text' => 'Texto a pesquisar:',
 	'datasearch_within_words' => 'Dentre as palavras:',
 	'datasearch_within_ext_ids' => 'Dentre identificadores externos:',
-	'datasearch_showing_only' => 'Mostrando apenas um máximo de $1 {{PLURAL:$1|resultado|resultados}}.',
+	'datasearch_showing_only' => 'Mostrando apenas um máximo de $1 {{PLURAL:$1|resultado|resultados}} (de um total de $2).',
 	'datasearch_match_ext_ids' => 'Identificadores externos correspondendo a <i>$1</i>',
 	'datasearch_match_words' => 'Palavras correspondendo a <i>$1</i> e significados associados',
 	'datasearch_match_words_lang' => 'Palavras em <i>$1</i> correspondendo a <i>$2</i> e significados associados',
@@ -10454,6 +10507,9 @@ Selecione uma coleção a exportar. Na caixa de texto das línguas, introduza um
 	'ow_exporttsv_not_allowed' => 'Você não tem permissões para fazer uma exportação para TSV.',
 	'ow_exporttsv_export_failed' => 'A exportação falhou',
 	'addcollection' => 'Wikidata: Adicionar coleção',
+	'ow_searchnoresult' => "<p>Você pode:<br />
+* '''Criar a expressão \"[[Expression:\$1]]\"''' (e adicionar uma definição)<br />
+* '''Criar a página \"[[:\$1]]\"''' (uma página wiki normal)</p>",
 	'ow_save' => 'Salvar',
 	'ow_history' => 'Histórico',
 	'ow_datasets' => 'Seleção de conjunto de dados',
@@ -10536,7 +10592,7 @@ Por favor, verifique o endereço ''web''.",
 	'ow_Language' => 'Idioma',
 	'ow_LevelAnnotation' => 'Anotação',
 	'ow_LinkAttributeHeader' => 'Atributo da ligação',
-	'ow_Multiple_meanings' => 'Múltiplos significados:',
+	'ow_Multiple_meanings' => 'Definições de "$1"',
 	'ow_NewExactMeaning' => 'Novo significado exato',
 	'ow_OptionAttribute' => 'Propriedade',
 	'ow_OptionAttributeHeader' => 'Atributo da opção',
@@ -10569,7 +10625,7 @@ Por favor, verifique o endereço ''web''.",
 	'ow_Link' => 'Ligação',
 	'ow_LinkAttribute' => 'Propriedade',
 	'ow_LinkAttributeValues' => 'Ligações',
-	'ow_User' => 'Utilizador',
+	'ow_User' => 'Usuário',
 	'ow_Property' => 'Propriedade',
 	'ow_Value' => 'Valor',
 	'ow_added' => 'Adicionado',
@@ -10609,6 +10665,7 @@ Por favor, contate o operador ou administrador do servidor.',
 	'ow_needs_xlation_source_lang' => 'Língua de origem:',
 	'ow_needs_xlation_dest_lang' => 'Língua de destino:',
 	'ow_needs_xlation_no_dest_lang' => 'Por favor, especifique uma língua de destino.',
+	'ow_statistics' => 'Wikidata: Estatísticas',
 	'ow_show' => 'Mostrar',
 	'ow_upload' => 'Carregar',
 	'ow_create' => 'Criar',
@@ -10990,9 +11047,11 @@ Pe piacere verifiche l'indirizze web.",
 
 /** Russian (Русский)
  * @author Aleksandrit
+ * @author Eleferen
  * @author Ferrer
  * @author Kaganer
  * @author Osd
+ * @author Temuri rajavi
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
@@ -11866,9 +11925,13 @@ $messages['sr-ec'] = array(
 	'datasearch_match_ext_ids' => 'Спољашњи идентификатори, који одговарају <i>$1</i>',
 	'datasearch_match_words' => 'Речи које одговарају <i>$1</i> и придруженим значењима',
 	'datasearch_match_words_lang' => 'Речи из <i>$1</i>, које одговарају <i>$2</i> и придруженим значењима',
+	'ow_importtsv_title1' => 'Увези TSV',
 	'ow_importtsv_importing' => 'Увожење TSV података',
 	'ow_importtsv_import_failed' => 'Увоз није прошао',
 	'ow_importtsv_file' => 'TSV Фајл:',
+	'ow_importtsv_nothing_added' => 'Ништа није додато.',
+	'ow_importtsv_nothing_added_test' => 'Ништа није додато (урадили сте тест покретање).',
+	'ow_importtsv_results' => '{{PLURAL:$1|Додата једна дефиниција|Додато $1 дефиниција}} и $2 {{PLURAL:$2|превод|превода}}.',
 	'ow_exporttsv_languages' => 'Језици:',
 	'ow_exporttsv_export_failed' => 'Извоз неуспешан',
 	'ow_save' => 'Сачувај',
@@ -11934,7 +11997,7 @@ $messages['sr-ec'] = array(
 	'ow_GotoSource' => 'Иди на извор',
 	'ow_Language' => 'Језик',
 	'ow_LevelAnnotation' => 'Коментар',
-	'ow_Multiple_meanings' => 'Више значења:',
+	'ow_Multiple_meanings' => 'Дефиниције за "$1"',
 	'ow_NewExactMeaning' => 'Ново тачно значење',
 	'ow_OptionAttribute' => 'Особина',
 	'ow_OptionAttributeOption' => 'Опција',
@@ -12033,9 +12096,13 @@ $messages['sr-el'] = array(
 	'datasearch_match_ext_ids' => 'Spoljašnji identifikatori, koji odgovaraju <i>$1</i>',
 	'datasearch_match_words' => 'Reči koje odgovaraju <i>$1</i> i pridruženim značenjima',
 	'datasearch_match_words_lang' => 'Reči iz <i>$1</i>, koje odgovaraju <i>$2</i> i pridruženim značenjima',
+	'ow_importtsv_title1' => 'Uvezi TSV',
 	'ow_importtsv_importing' => 'Uvoženje TSV podataka',
 	'ow_importtsv_import_failed' => 'Uvoz nije prošao',
 	'ow_importtsv_file' => 'TSV Fajl:',
+	'ow_importtsv_nothing_added' => 'Ništa nije dodato.',
+	'ow_importtsv_nothing_added_test' => 'Ništa nije dodato (uradili ste test pokretanje).',
+	'ow_importtsv_results' => '{{PLURAL:$1|Dodata jedna definicija|Dodato $1 definicija}} i $2 {{PLURAL:$2|prevod|prevoda}}.',
 	'ow_exporttsv_languages' => 'Jezici:',
 	'ow_exporttsv_export_failed' => 'Izvoz neuspešan',
 	'ow_save' => 'Sačuvaj',
@@ -12101,7 +12168,7 @@ $messages['sr-el'] = array(
 	'ow_GotoSource' => 'Idi na izvor',
 	'ow_Language' => 'Jezik',
 	'ow_LevelAnnotation' => 'Komentar',
-	'ow_Multiple_meanings' => 'Više značenja:',
+	'ow_Multiple_meanings' => 'Definicije za "$1"',
 	'ow_NewExactMeaning' => 'Novo tačno značenje',
 	'ow_OptionAttribute' => 'Osobina',
 	'ow_OptionAttributeOption' => 'Opcija',
@@ -12821,7 +12888,7 @@ $messages['te'] = array(
 	'ow_GotoSource' => 'మూలానికి వెళ్ళు',
 	'ow_Language' => 'భాష',
 	'ow_LevelAnnotation' => 'వివరణ',
-	'ow_Multiple_meanings' => '"$1" యొక్క అర్ధములు',
+	'ow_Multiple_meanings' => '"$1" యొక్క అర్థాలు',
 	'ow_NewExactMeaning' => 'కొత్త ఖచ్చిత అర్థం',
 	'ow_OptionAttribute' => 'లక్షణం',
 	'ow_OptionAttributeOption' => 'ఎంపిక',
@@ -14001,6 +14068,7 @@ $messages['zh-cn'] = array(
  * @author Liangent
  * @author PhiLiP
  * @author Wmr89502270
+ * @author Yfdyh000
  */
 $messages['zh-hans'] = array(
 	'wikidata-desc' => '为各种类型的内容添加类wiki数据库',
@@ -14163,13 +14231,19 @@ $messages['zh-hans'] = array(
 	'copy' => 'Wikidata：复制',
 	'ow_copy_no_action_specified' => '请指定一个动作',
 	'ow_copy_help' => '帮助还没有实现。',
+	'ow_class_attr_type_xlate' => '可翻译的文本',
+	'ow_class_attr_type_plain' => '纯文本',
 	'ow_class_attr_type_link' => '连结',
+	'ow_class_attr_type_option' => '选项列表',
+	'ow_needs_xlation_source_lang' => '源语言：',
+	'ow_needs_xlation_dest_lang' => '目标语言：',
 	'ow_show' => '显示',
 	'ow_upload' => '上传',
 	'ow_create' => '创建',
 	'ow_suggest_previous' => '上一个',
 	'ow_suggest_next' => '下一个',
 	'ow_suggest_clear' => '清除',
+	'right-addlanguage' => '添加和更改语言设置',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
@@ -14338,13 +14412,19 @@ $messages['zh-hant'] = array(
 	'copy' => 'Wikidata：複製',
 	'ow_copy_no_action_specified' => '請指定一個動作',
 	'ow_copy_help' => '幫助還沒有實現。',
+	'ow_class_attr_type_xlate' => '可翻譯的文本',
+	'ow_class_attr_type_plain' => '純文本',
 	'ow_class_attr_type_link' => '連結',
+	'ow_class_attr_type_option' => '選項列表',
+	'ow_needs_xlation_source_lang' => '源語言：',
+	'ow_needs_xlation_dest_lang' => '目標語言：',
 	'ow_show' => '顯示',
 	'ow_upload' => '上載',
 	'ow_create' => '創建',
 	'ow_suggest_previous' => '上一個',
 	'ow_suggest_next' => '下一個',
 	'ow_suggest_clear' => '清除',
+	'right-addlanguage' => '添加和更改語言設置',
 );
 
 /** Chinese (Hong Kong) (‪中文(香港)‬) */

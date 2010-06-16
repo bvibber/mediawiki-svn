@@ -2,7 +2,8 @@
 /**
  * Internationalisation file for FlaggedRevs extension, section RatingHistory
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $messages = array();
@@ -1189,6 +1190,7 @@ $messages['jv'] = array(
 
 /** Georgian (ქართული)
  * @author BRUTE
+ * @author ITshnik
  * @author გიორგიმელა
  */
 $messages['ka'] = array(
@@ -1204,8 +1206,12 @@ $messages['ka'] = array(
 	'ratinghistory-chart' => 'ყველა დროის მკითხველთა შეფასებები',
 	'ratinghistory-purge' => 'ქეშის გაწმენდა',
 	'ratinghistory-table' => 'მკითხველთა აზრების შეფასება',
+	'ratinghistory-users' => 'მომხმარებლები, რომელთაც შეაფასეს',
 	'ratinghistory-svg' => 'იხილეთ როგორც SVG',
+	'ratinghistory-table-rating' => 'შეფასება:',
 	'ratinghistory-table-votes' => 'ხმები',
+	'ratinghistory-graph-scale' => "'''მიმოხილვები დღეების მიხედვით''' <font color=\"red\">''(red)''</font> ნაჩვენებია ''1:\$1'' სკალაზე.",
+	'right-feedback' => 'გამოიყენეთ უკუკავშირის ფორმა გვერდის შესაფასებლად.',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -1618,7 +1624,7 @@ $messages['pl'] = array(
 	'ratinghistory-table-rating' => 'Ocena',
 	'ratinghistory-table-votes' => 'Głosy',
 	'ratinghistory-none' => 'W tej chwil brak liczby ocen czytelników wystarczającej, by móc stworzyć wykresy.',
-	'ratinghistory-ratings' => "'''Legenda:''' '''(1)''' - źle; '''(2)''' - słabo; '''(3)''' - średnio; '''(4)''' - dobrze; '''(5)''' - wspaniale;",
+	'ratinghistory-ratings' => "'''Legenda:''' '''(1)''' – źle; '''(2)''' – słabo; '''(3)''' – średnio; '''(4)''' – dobrze; '''(5)''' – wspaniale;",
 	'ratinghistory-legend' => "'''Liczba ocen w ciągu doby''' <font color=\"red\">''(czerwony)''</font>, '''dobowa średnia''' <font color=\"blue\">''(niebieski)''</font> i '''średnia ocena bieżąca''' <font color=\"green\">''(zielony)''</font> zostały przedstawione względem daty na poniższym wykresie.
 '''Średnia ocena bieżąca''' to średnia dobowych ocen w tym czasie za każdy dzień.
 Skala ocen: 
@@ -1674,6 +1680,7 @@ $messages['ps'] = array(
 	'ratinghistory-year' => 'تېر کال',
 	'ratinghistory-3years' => 'تېر ۳ کالونه',
 	'ratinghistory-svg' => 'د SVG په توګه کتل',
+	'ratinghistory-table-votes' => 'رايې',
 );
 
 /** Portuguese (Português)
@@ -2010,6 +2017,37 @@ Betygsskalan är enligt följande:
 	'right-feedback' => 'Använd feedback-formuläret för att betygsätta en sida',
 );
 
+/** Tamil (தமிழ்)
+ * @author Mahir78
+ */
+$messages['ta'] = array(
+	'ratinghistory' => 'பக்க படிநிலை வரலாறு',
+	'ratinghistory-leg' => '[[:$1|$1]] க்கான படிநிலை வரலாற்றுத் தகவல்',
+	'ratinghistory-tab' => 'படிநிலை',
+	'ratinghistory-link' => 'பக்க படிநிலை',
+	'ratinghistory-thanks' => "''<font color=\"darkred\">சிறிது அவகாசம் எடுத்து இந்தப் பக்கத்தை மீளாய்வு செய்தமைக்கு நன்றி!</font>''",
+	'ratinghistory-period' => 'நேர காலம்:',
+	'ratinghistory-month' => 'கடந்த மாதம்',
+	'ratinghistory-3months' => 'கடந்த 3 மாதங்கள்',
+	'ratinghistory-year' => 'சென்ற வருடம்',
+	'ratinghistory-3years' => 'கடந்த 3 ஆண்டுகள்',
+	'ratinghistory-ave' => 'சராசரி: $1',
+	'ratinghistory-chart' => 'கால ஓட்டத்தில் வாசகர் அளவீடு',
+	'ratinghistory-users' => 'அளவீடு செய்த பயனர்கள்',
+	'ratinghistory-graph' => '"$3" உடைய $2 ($1 {{PLURAL:$1|review|reviews}})',
+	'ratinghistory-svg' => 'SVGயாக பார்க்க',
+	'ratinghistory-table-rating' => 'அளவீடு',
+	'ratinghistory-table-votes' => 'ஓட்டெடுப்புகள்',
+	'ratinghistory-ratings' => "'''கதை:''' '''(1)''' - மிக மோசம்; '''(2)''' - மோசம்; '''(3)''' - பரவாயில்லை; '''(4)''' - நன்றாகவுள்ளது; '''(5)''' - பிரமாதம்;",
+	'ratinghistory-legend' => "↓ The '''daily number of reviews''' <font color=\"red\">''(red)''</font>, '''daily average rating''' <font color=\"blue\">''(blue)''</font>,
+and '''running average rating''' <font color=\"green\">''(green)''</font> are graphed below, by date.
+The '''running average rating''' is simply the average of all the daily ratings ''within'' this time frame for each day.
+The ratings are as follows:
+
+'''(1)''' - மிக மோசம்; '''(2)''' - மோசம்; '''(3)''' - பரவாயில்லை; '''(4)''' - நன்றாகவுள்ளது; '''(5)''' - பிரமாதம்;",
+	'right-feedback' => 'பக்கத்தின் தரம் பற்றிய கருத்தை தெரிவிக்க பின்னூட்டப் படிவத்தை பயன்படுத்தவும்',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */
@@ -2305,6 +2343,7 @@ $messages['zh-hans'] = array(
 	'ratinghistory-year' => '去年',
 	'ratinghistory-3years' => '过去3年',
 	'ratinghistory-ave' => '平均： $1',
+	'ratinghistory-chart' => '读者评分随着时间的推移',
 	'ratinghistory-purge' => '清除缓存',
 	'ratinghistory-table' => '读者评论总览',
 	'ratinghistory-users' => '给出评价的用户',

@@ -3,8 +3,9 @@
 /**
  * Internationalisation file for extension Icon.
  *
- * @addtogroup Extensions
-*/
+ * @file
+ * @ingroup Extensions
+ */
 
 require_once( dirname(__FILE__) . '/Icon.i18n.magic.php' );
 
@@ -394,7 +395,7 @@ $messages['lt'] = array(
  */
 $messages['mk'] = array(
 	'icon-badimage' => 'Лоша слика',
-	'icon-badwidth' => 'Лоша широчина',
+	'icon-badwidth' => 'Лоша ширина',
 	'icon-desc' => 'Дозволува употреба на слики како икони и врски-икони',
 );
 
@@ -546,6 +547,14 @@ $messages['ru'] = array(
 	'icon-badimage' => 'Ошибочное изображение',
 	'icon-badwidth' => 'Ошибочная ширина',
 	'icon-desc' => 'Позволяет использовать изображения как значки и ссылки',
+);
+
+/** Sinhala (සිංහල)
+ * @author බිඟුවා
+ */
+$messages['si'] = array(
+	'icon-badimage' => 'නුසුදුසු ඡායාරූපයක්',
+	'icon-badwidth' => 'නුසුදුසු පළල',
 );
 
 /** Slovak (Slovenčina)

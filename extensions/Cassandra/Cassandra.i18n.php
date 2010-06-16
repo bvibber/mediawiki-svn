@@ -11,6 +11,13 @@ $messages['en'] = array(
 	'cassandra-desc' => 'Store revision text in [http://cassandra.apache.org/ Apache Cassandra] database',
 );
 
+/** Message documentation (Message documentation)
+ * @author Umherirrender
+ */
+$messages['qqq'] = array(
+	'cassandra-desc' => '{{desc}}',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author Jim-by
  */
@@ -67,6 +74,13 @@ $messages['gl'] = array(
 	'cassandra-desc' => 'Almacena a revisión do texto na base de datos de [http://cassandra.apache.org/ Apache Cassandra]',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'cassandra-desc' => 'Versionstext in dr [http://cassandra.apache.org/ Apache Cassandra]-Datebank spychere',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -102,6 +116,13 @@ $messages['ja'] = array(
 	'cassandra-desc' => '[http://cassandra.apache.org/ Apache Cassandra]データベースの版テキストを格納する',
 );
 
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'cassandra-desc' => '[http://cassandra.apache.org/ Apache Cassandra] 데이터베이스에 편집 내용을 저장',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -128,6 +149,13 @@ $messages['nl'] = array(
  */
 $messages['no'] = array(
 	'cassandra-desc' => 'Lagre revisjonstekst i databasen [http://cassandra.apache.org/ Apache Cassandra]',
+);
+
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'cassandra-desc' => 'Zapisuje treść wersji w bazie danych [http://cassandra.apache.org/ Apache Cassandra]',
 );
 
 /** Piedmontese (Piemontèis)
@@ -172,6 +200,18 @@ $messages['sr-ec'] = array(
 	'cassandra-desc' => 'Смешта ревизију текста у [http://cassandra.apache.org Апаш Касандра] базу података',
 );
 
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'cassandra-desc' => 'Smešta reviziju teksta u [http://cassandra.apache.org Apaš Kasandra] bazu podataka',
+);
+
+/** Swedish (Svenska)
+ * @author Ainali
+ */
+$messages['sv'] = array(
+	'cassandra-desc' => 'Lagra versionstext i  [http://cassandra.apache.org/ Apache Cassandra] databas',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */
@@ -184,5 +224,12 @@ $messages['tl'] = array(
  */
 $messages['tr'] = array(
 	'cassandra-desc' => 'Revizyon metnini [http://cassandra.apache.org/ Apache Cassandra] veritabanında sakla',
+);
+
+/** Ukrainian (Українська)
+ * @author AS
+ */
+$messages['uk'] = array(
+	'cassandra-desc' => 'Зберігати текст версії в базі даних [http://cassandra.apache.org/ Apache Cassandra]',
 );
 

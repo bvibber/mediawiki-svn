@@ -228,9 +228,9 @@ class FlaggedRevsXML {
 					"</td><td class='fr-value$levelmarker' valign='middle'>" .
 					$encValueText . "</td></tr>\n";
             } else {
-				$tag .= "&nbsp;<span class='fr-marker-$levelmarker'><strong>" .
+				$tag .= "&#160;<span class='fr-marker-$levelmarker'><strong>" .
 					wfMsgHtml( "revreview-$quality" ) .
-					"</strong>: <span class='fr-text-value'>$encValueText&nbsp;</span>&nbsp;" .
+					"</strong>: <span class='fr-text-value'>$encValueText&#160;</span>&#160;" .
 					"</span>\n";
 			}
 		}
@@ -345,11 +345,12 @@ class FlaggedRevsXML {
 	 * @returns string
 	 */
 	public static function diffToggle() {
-		$toggle = '<a id="mw-fr-difftoggle" class="fr-toggle-text" style="display:none;"' .
+		$toggle = '<a class="fr-toggle-text" "' .
 			' onclick="FlaggedRevs.toggleDiff()" title="' .
 			wfMsgHtml( 'revreview-diff-toggle-title' ) . '" >' .
 			wfMsgHtml( 'revreview-diff-toggle-show' ) . '</a>';
-		return wfMsgHtml( 'parentheses', $toggle );
+		return '<span id="mw-fr-difftoggle" style="display:none;">' .
+			wfMsgHtml( 'parentheses', $toggle ) . '</span>';
 	}
 
 	/**
@@ -357,11 +358,12 @@ class FlaggedRevsXML {
 	 * @returns string
 	 */
 	public static function logToggle() {
-		$toggle = '<a id="mw-fr-logtoggle" class="fr-toggle-text" style="display:none;"' .
+		$toggle = '<a class="fr-toggle-text" ' .
 			' onclick="FlaggedRevs.toggleLog()" title="' .
 			wfMsgHtml( 'revreview-log-toggle-title' ) . '" >' .
 			wfMsgHtml( 'revreview-log-toggle-show' ) . '</a>';
-		return wfMsgHtml( 'parentheses', $toggle );
+		return '<span id="mw-fr-logtoggle" style="display:none;">' .
+			wfMsgHtml( 'parentheses', $toggle ) . '</span>';
 	}
 
 	/**
@@ -369,11 +371,12 @@ class FlaggedRevsXML {
 	 * @returns string
 	 */
 	public static function logDetailsToggle() {
-		$toggle = '<a id="mw-fr-logtoggle" class="fr-toggle-text" style="display:none;"' .
+		$toggle = '<a class="fr-toggle-text" ' .
 			' onclick="FlaggedRevs.toggleLogDetails()" title="' .
 			wfMsgHtml( 'revreview-log-details-title' ) . '" >' .
 			wfMsgHtml( 'revreview-log-details-show' ) . '</a>';
-		return wfMsgHtml( 'parentheses', $toggle );
+		return '<span id="mw-fr-logtoggle" style="display:none;">' .
+			wfMsgHtml( 'parentheses', $toggle ) . '</span>';
 	}
 
 	/*
@@ -384,7 +387,7 @@ class FlaggedRevsXML {
 		$encPath = htmlspecialchars( FlaggedRevs::styleUrlPath() . '/img' );
 		$encTitle = wfMsgHtml( 'revreview-draft-title' );
 		return "<img class=\"flaggedrevs-icon\" src=\"$encPath/1.png\"" .
-			" width=\"16px\" alt=\"$encTitle\" title=\"$encTitle\" />";
+			" alt=\"$encTitle\" title=\"$encTitle\" />";
 	}
 	
 	/*
@@ -399,7 +402,7 @@ class FlaggedRevsXML {
 			? wfMsgHtml( 'revreview-quality-title' )
 			: wfMsgHtml( 'revreview-basic-title' );
 		return "<img class=\"flaggedrevs-icon\" src=\"$encPath/$file\"" .
-			" width=\"16px\" alt=\"$encTitle\" title=\"$encTitle\" />";
+			" alt=\"$encTitle\" title=\"$encTitle\" />";
 	}
 
 	/*
@@ -411,12 +414,12 @@ class FlaggedRevsXML {
 		$encPath = htmlspecialchars( FlaggedRevs::styleUrlPath() . '/img' );
 		if ( $flaggedArticle->isPageLocked() ) {
 			$encTitle = wfMsgHtml( 'revreview-locked-title' );
-			return "<img class=\"flaggedrevs-icon\" src=\"$encPath/lock-closed.png\"" .
-				" width=\"16px\" alt=\"$encTitle\" title=\"$encTitle\" />";
+			return "<img class=\"flaggedrevs-icon\" src=\"$encPath/doc-magnify.png\"" .
+				" alt=\"$encTitle\" title=\"$encTitle\" />";
 		} elseif ( $flaggedArticle->isPageUnlocked() ) {
 			$encTitle = wfMsgHtml( 'revreview-unlocked-title' );
-			return "<img class=\"flaggedrevs-icon\" src=\"$encPath/lock-open.png\"" .
-				" width=\"16px\" alt=\"$encTitle\" title=\"$encTitle\" />";
+			return "<img class=\"flaggedrevs-icon\" src=\"$encPath/doc-check.png\"" .
+				" alt=\"$encTitle\" title=\"$encTitle\" />";
 		}
 	}
 
@@ -448,7 +451,7 @@ class FlaggedRevsXML {
 		$logHtml = '';
 		$params = array(
 			'lim'   => 1,
-			'flags' => LogEventsList::NO_EXTRA_USER_LINKS
+			#'flags' => LogEventsList::NO_EXTRA_USER_LINKS // hold off for wmf
 		);
 		LogEventsList::showLogExtract( $logHtml, 'stable',
 			$article->getTitle()->getPrefixedText(), '', $params );

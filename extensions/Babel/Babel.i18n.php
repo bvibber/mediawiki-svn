@@ -1,8 +1,10 @@
 <?php
+
 /**
  * Internationalisation file for Babel extension.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $messages = array();
@@ -222,21 +224,21 @@ $messages['aln'] = array(
  * @author Juanpabl
  */
 $messages['an'] = array(
-	'babel' => "Informazión d'usuario de Babel",
-	'babel-desc' => "Adibe a funzión <code>#babel</code> de parseyo ta premitir a chenerazión automatica d'una colunna de caixas d'usuario de babel, con a posibilidat d'encluyir-ie plantillas personalizatas",
+	'babel' => "Información d'usuario de Babel",
+	'babel-desc' => "Adibe a función <code>#babel</code> de parseyo ta premitir a cheneración automatica d'una colunna de caixas d'usuario de babel, con a posibilidat d'encluyir-ie plantillas personalizatas",
 	'babel-url' => 'Project:Babel',
 	'babel-0' => 'Iste usuario [[$1|no]] conoixe brenca o [[$2|$3]] (u lo entiende malament).',
 	'babel-1' => 'Iste usuario conoixe o [[$2|$3]] con un libel [[$1|basico]].',
 	'babel-2' => 'Iste usuario conoixe o [[$2|$3]] con un libel [[$1|meyo]].',
 	'babel-3' => 'Iste usuario conoixe o [[$2|$3]] con un libel [[$1|abanzato]].',
-	'babel-4' => 'Iste conoixe o [[$2|$3]] con un libel [[$1|cuasi natibo]].',
+	'babel-4' => 'Iste conoixe o [[$2|$3]] con un libel [[$1|quasi nativo]].',
 	'babel-5' => 'Iste usuario conoixe o [[$2|$3]] con un libel [[$1|profesional]].',
-	'babel-N' => "Iste usuario conoixe o [[$2|$3]] con o libel d'un fablador [[$1|natibo]].",
+	'babel-N' => "Iste usuario conoixe o [[$2|$3]] con o libel d'un fablador [[$1|nativo]].",
 	'babel-0-n' => "Iste usuario [[$1|no]] conoixe brenca l'[[$2|aragonés]] (u lo entiende malament)",
 	'babel-1-n' => "Iste usuario conoixe l'[[$2|aragonés]] con un libel [[$1|basico]].",
 	'babel-2-n' => "Iste usuario conoixe l'[[$2|aragonés]] con un libel [[$1|meyo]].",
 	'babel-3-n' => "Iste usuario conoixe l'[[$2|aragonés]] con un libel [[$1|abanzato]].",
-	'babel-4-n' => "Iste usuario conoixe l'[[$2|aragonés]] con un libel [[$1|cuasi natibo]].",
+	'babel-4-n' => "Iste usuario conoixe l'[[$2|aragonés]] con un libel [[$1|quasi nativo]].",
 	'babel-5-n' => "Iste usuario conoixe l'[[$2|aragonés]] con un libel [[$1|profesional]].",
 	'babel-N-n' => "Iste usuario conoixe l'[[$2|aragonés]] con o libel d'un fablador [[$1|patrimonial]].",
 );
@@ -735,15 +737,17 @@ $messages['ca'] = array(
 
 /** Chechen (Нохчийн)
  * @author Purodha
+ * @author Sasan700
  */
 $messages['ce'] = array(
-	'babel-0-n' => 'ХIокхо юзеро [[$2|Нохчйин мотт]] [[$1|хууш бац]].',
-	'babel-1-n' => 'ХIокхо юзеро [[$1|кІеззиг]] бийц хаъ [[$2|Нохчийн мотт]].',
-	'babel-2-n' => 'ХIокхо юзеро [[$1|къамелахь]] бийц хаъ [[$2|Нохчийн мотт]].',
-	'babel-3-n' => 'ХIокхо юзеро [[$1|дика]] бийц хаъ [[$2|Нохчийн мотт]].',
-	'babel-4-n' => 'ХIокхо юзеро [[$2|Нохчийн мотт]] ше [[$1|ненан]] мотт санна бийц.',
-	'babel-5-n' => 'ХIокхо юзеро [[$1|профессионан]] бийц хаъ [[$2|Нохчийн мотт]].',
-	'babel-N-n' => 'ХІокхо юзеро [[$1|шейр]] бийц хаъ [[$2|Нохчийн]] мотт.',
+	'babel-url' => 'Project:Къадингир',
+	'babel-0-n' => 'Хlокху декъашхочуна [[$2|Нохчйин мотт]] [[$1|хууш бац]].',
+	'babel-1-n' => 'Хlокху декъашхочо [[$1|кlеззиг]] буьйцу хьан [[$2|Нохчийн мотт]].',
+	'babel-2-n' => 'Хlокху декъашхочо [[$1|къамеляхь]] буьйцу хьан [[$2|Нохчийн мотт]].',
+	'babel-3-n' => 'Хlокху декъашхочо [[$1|дика]] буьйцу хьан [[$2|Нохчийн мотт]].',
+	'babel-4-n' => 'Хlокху декъашхочо [[$2|Нохчийн мотт]] ше [[$1|нена]] мотт санна буьйцу.',
+	'babel-5-n' => 'Хlокху декъашхочо [[$1|чlогlа дика]] буьйцу хьан [[$2|Нохчийн мотт]].',
+	'babel-N-n' => 'Хlокху декъашхочо [[$1|шейра]] буьйцу шай [[$2|Нохчийн]] мотт.',
 );
 
 /** Sorani (Soranî / کوردی)
@@ -3948,10 +3952,18 @@ $messages['te'] = array(
  * @author MF-Warburg
  */
 $messages['tet'] = array(
+	'babel-0' => "Uza-na'in ne'e [[$1|la]] ko'alia [[$2|$3]] nein musan ida la hatene lian [[$2|$3]] (ka komprende uitoan de'it).",
 	'babel-1' => "Uza-na'in ne'e bele kontribui ho nivel [[$1|báziku]] iha lian [[$2|$3]].",
 	'babel-2' => "Uza-na'in ne'e bele kontribui ho nivel [[$1|maizumenus]] iha lian [[$2|$3]].",
 	'babel-3' => "Uza-na'in ne'e bele kontribui ho nivel [[$1|aas]] iha lian [[$2|$3]].",
+	'babel-4' => "Uza-na'in ne'e nia nivel [[$1|atu hanesan makdalen nativu]] iha lian [[$2|$3]].",
 	'babel-N' => "Uza-na'in ne'e iha [[$2|$3]] nu'udar [[$1|lian inan]].",
+	'babel-0-n' => "Uza-na'in ne'e [[$1|la]] ko'alia [[$2|tetun]] nein musan ida la hatene lian [[$2|tetun]] (ka komprende uitoan de'it).",
+	'babel-1-n' => "Uza-na'in ne'e bele kontribui ho nivel [[$1|báziku]] iha lian [[$2|tetun]].",
+	'babel-2-n' => "Uza-na'in ne'e bele kontribui ho nivel [[$1|maizumenus]] iha lian [[$2|tetun]].",
+	'babel-3-n' => "Uza-na'in ne'e bele kontribui ho nivel [[$1|aas]] iha lian [[$2|tetun]].",
+	'babel-4-n' => "Uza-na'in ne'e nia nivel [[$1|atu hanesan makdalen nativu]] iha lian [[$2|tetun]].",
+	'babel-N-n' => "Uza-na'in ne'e iha [[$2|tetun]] nu'udar [[$1|lian inan]].",
 );
 
 /** Tajik (Cyrillic) (Тоҷикӣ (Cyrillic))

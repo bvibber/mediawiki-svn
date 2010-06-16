@@ -18,8 +18,7 @@ $wgAPIModules['smwwritable'] = 'SMWWritableAPI';
 /**
  * Web-based API for writing and changing metadata in SMW
  * 
- * @ingroup SMWWriter
- * @addtogroup API
+ * @ingroup SMWWriter API
  * @author denny
  */
 class SMWWriterAPI extends ApiBase {
@@ -174,8 +173,7 @@ class SMWWriterAPI extends ApiBase {
 /**
  * Web-based API for accessing the updateable part of metadata of a page.
  * 
- * @ingroup SMWWriter
- * @addtogroup API
+ * @ingroup SMWWriter API
  * @author denny
  */
 class SMWWritableAPI extends ApiBase {

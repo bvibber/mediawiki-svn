@@ -494,6 +494,7 @@ $messages['sk'] = array(
  * @author Dbc334
  */
 $messages['sl'] = array(
+	'catboxattop-desc' => 'Doda polje s kategorijami v zgornji desni rob strani',
 	'catboxattop-categories' => 'Kategorije',
 );
 

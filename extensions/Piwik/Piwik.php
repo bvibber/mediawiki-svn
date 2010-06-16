@@ -2,7 +2,8 @@
 /**
  * Inserts Piwik script into MediaWiki pages for tracking and adds some stats
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  * @author Isb1009 <isb1009 at gmail dot com>
  * @copyright © 2008-2010 Isb1009
  * @licence GNU General Public Licence 2.0

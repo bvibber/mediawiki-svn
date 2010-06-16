@@ -16,9 +16,9 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 final class SMGoogleMapsQP extends SMMapPrinter {
 	
-	public $serviceName = MapsGoogleMaps::SERVICE_NAME;
-	
-	protected $spesificParameters;
+	protected function getServiceName() {
+		return 'googlemaps2';
+	}
 	
 	/**
 	 * @see SMMapPrinter::setQueryPrinterSettings()
@@ -30,7 +30,7 @@ final class SMGoogleMapsQP extends SMMapPrinter {
 
 		$this->defaultZoom = $egMapsGoogleMapsZoom;
 		
-		$this->spesificParameters = array(
+		$this->specificParameters = array(
 			'overlays' => array(
 				'type' => array( 'string', 'list' ),
 				'criteria' => array(
@@ -45,12 +45,7 @@ final class SMGoogleMapsQP extends SMMapPrinter {
 	 * @see SMMapPrinter::doMapServiceLoad()
 	 */
 	protected function doMapServiceLoad() {
-		global $wgParser, $egGoogleMapsOnThisPage;
-
-		if ( empty( $egGoogleMapsOnThisPage ) ) {
-			$egGoogleMapsOnThisPage = 0;
-			MapsGoogleMaps::addGMapDependencies( $wgParser );
-		}
+		global $egGoogleMapsOnThisPage;
 		
 		$egGoogleMapsOnThisPage++;
 		
@@ -58,15 +53,15 @@ final class SMGoogleMapsQP extends SMMapPrinter {
 	}
 	
 	/**
-	 * @see SMMapPrinter::getQueryResult()
+	 * @see SMMapPrinter::addSpecificMapHTML()
 	 */
-	protected function addSpecificMapHTML( Parser $parser ) {
-		MapsGoogleMaps::addOverlayOutput( $this->output, $parser, $this->mapName, $this->overlays, $this->controls );
+	protected function addSpecificMapHTML() {
+		$this->mService->addOverlayOutput( $this->output, $this->mapName, $this->overlays, $this->controls );
 		
 		// TODO: refactor up like done in maps with display point
 		$markerItems = array();
 		
-		foreach ( $this->m_locations as $location ) {
+		foreach ( $this->mLocations as $location ) {
 			list( $lat, $lon, $title, $label, $icon ) = $location;
 			$markerItems[] = "getGMarkerData($lat, $lon, '$title', '$label', '$icon')";
 		}
@@ -83,8 +78,7 @@ final class SMGoogleMapsQP extends SMMapPrinter {
 			wfMsg( 'maps-loading-map' )
 		);
 		
-		$parser->getOutput()->addHeadItem(
-			Html::inlineScript( <<<EOT
+		$this->mService->addDependency( Html::inlineScript( <<<EOT
 addOnloadHook(
 	function() {
 		initializeGoogleMap('$this->mapName', 
@@ -103,11 +97,10 @@ addOnloadHook(
 );
 EOT
 		) );
-
 	}
 	
 	/**
-	 * Returns type info, descriptions and allowed values for this QP's parameters after adding the spesific ones to the list.
+	 * Returns type info, descriptions and allowed values for this QP's parameters after adding the specific ones to the list.
 	 */
     public function getParameters() {
         $params = parent::getParameters();

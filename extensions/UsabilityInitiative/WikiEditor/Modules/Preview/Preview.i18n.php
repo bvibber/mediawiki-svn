@@ -144,6 +144,15 @@ $messages['ca'] = array(
 	'wikieditor-preview-loading' => 'Carregant ...',
 );
 
+/** Chechen (Нохчийн)
+ * @author Sasan700
+ */
+$messages['ce'] = array(
+	'wikieditor-preview-tab' => 'Хьалха муха ю хьажа',
+	'wikieditor-preview-changes-tab' => 'Хийцамаш',
+	'wikieditor-preview-loading' => 'Чуйолуш…',
+);
+
 /** Czech (Česky)
  * @author Mormegil
  */
@@ -275,6 +284,7 @@ $messages['fa'] = array(
 	'wikieditor-preview-preference' => 'فعال‌سازی پیش‌نمایش کنار یک دیگر',
 	'wikieditor-preview-tab' => 'پیش‌نمایش',
 	'wikieditor-preview-changes-tab' => 'تغییرها',
+	'wikieditor-preview-loading' => 'در حال بارگذاری...',
 );
 
 /** Finnish (Suomi)
@@ -694,6 +704,18 @@ $messages['sl'] = array(
 	'wikieditor-preview-loading' => 'Nalaganje ...',
 );
 
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'wikieditor-preview-loading' => 'Учитавање...',
+);
+
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'wikieditor-preview-loading' => 'Učitavanje...',
+);
+
 /** Swedish (Svenska)
  * @author Boivie
  */
@@ -709,7 +731,7 @@ $messages['sv'] = array(
  */
 $messages['sw'] = array(
 	'wikieditor-preview-preference' => 'Kuona hakikisho ya mabadiliko na ukurasa ulivyo sasa kwa pamoja.',
-	'wikieditor-preview-tab' => 'Hakikisho',
+	'wikieditor-preview-tab' => 'Hakiki',
 	'wikieditor-preview-changes-tab' => 'Mabadiliko',
 	'wikieditor-preview-loading' => 'Inapakiwa...',
 );
@@ -803,6 +825,16 @@ $messages['yi'] = array(
 	'wikieditor-preview-tab' => 'פֿאראויסשטעלונג',
 	'wikieditor-preview-changes-tab' => 'ענדערונגען',
 	'wikieditor-preview-loading' => 'לאָדט…',
+);
+
+/** Cantonese (粵語)
+ * @author Horacewai2
+ */
+$messages['yue'] = array(
+	'wikieditor-preview-preference' => '用side-by-side預覽功能',
+	'wikieditor-preview-tab' => '預覽',
+	'wikieditor-preview-changes-tab' => '改動',
+	'wikieditor-preview-loading' => '載入緊…',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

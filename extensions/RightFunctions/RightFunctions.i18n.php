@@ -1,8 +1,10 @@
 <?php
 /**
  * Internationalisation file for the RightFunctions extension
- * @addtogroup Extensions
-*/
+ *
+ * @file
+ * @ingroup Extensions
+ */
 
 $messages = array();
 

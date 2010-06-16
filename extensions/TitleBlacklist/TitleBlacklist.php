@@ -5,8 +5,8 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 //@{
 /**
- * @package MediaWiki
- * @subpackage Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $wgExtensionCredits['other'][] = array(
@@ -46,6 +46,7 @@ $wgGroupPermissions['sysop']['tboverride'] = true;
 $wgHooks['getUserPermissionsErrorsExpensive'][] = 'TitleBlacklistHooks::userCan';
 $wgHooks['AbortMove'][] = 'TitleBlacklistHooks::abortMove';
 $wgHooks['AbortNewAccount'][] = 'TitleBlacklistHooks::abortNewAccount';
+$wgHooks['CentralAuthAutoCreate'][] = 'TitleBlacklistHooks::centralAuthAutoCreate';
 $wgHooks['EditFilter'][] = 'TitleBlacklistHooks::validateBlacklist';
 $wgHooks['ArticleSaveComplete'][] = 'TitleBlacklistHooks::clearBlacklist';
 

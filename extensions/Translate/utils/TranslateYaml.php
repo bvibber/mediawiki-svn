@@ -1,8 +1,53 @@
 <?php
+
+/**
+ * This class is a wrapper class to provide interface to parse
+ * and generate YAML files with syck or spyc backend.
+ */
 class TranslateYaml {
+	public static function parseGroupFile( $filename ) {
+		$data = file_get_contents( $filename );
+		$documents = preg_split( "/^---$/m", $data, -1, PREG_SPLIT_NO_EMPTY );
+		$groups = array();
+		$template = false;
+		foreach ( $documents as $document ) {
+			$document = self::loadString( $document );
+			if ( isset( $document['TEMPLATE'] ) ) {
+				$template = $document['TEMPLATE'];
+			} else {
+				if ( !isset($document['BASIC']['id']) ) {
+					trigger_error( "No path ./BASIC/id (group id not defined) in yaml document located in $filename" );
+					continue;
+				}
+				$groups[$document['BASIC']['id']] = $document;
+			}
+		}
+
+		foreach ( $groups as $i => $group ) {
+			$groups[$i] = self::mergeTemplate( $template, $group );
+		}
+
+		return $groups;
+	}
+
+	/**
+	 * Merges a document template (base) to actual definition (specific)
+	 */
+	public static function mergeTemplate( $base, $specific ) {
+		foreach ( $specific as $key => $value ) {
+			if ( is_array( $value ) && isset( $base[$key] ) && is_array( $base[$key] ) ) {
+				$base[$key] = self::mergeTemplate( $base[$key], $value );
+			} else {
+				$base[$key] = $value;
+			}
+		}
+		return $base;
+	}
+
 
 	public static function loadString( $text ) {
 		global $wgTranslateYamlLibrary;
+
 		switch ( $wgTranslateYamlLibrary ) {
 			case 'spyc':
 				require_once( dirname( __FILE__ ) . '/../spyc/spyc.php' );
@@ -16,11 +61,13 @@ class TranslateYaml {
 
 	public static function load( $file ) {
 		$text = file_get_contents( $file );
+
 		return self::loadString( $text );
 	}
 
 	public static function dump( $text ) {
 		global $wgTranslateYamlLibrary;
+
 		switch ( $wgTranslateYamlLibrary ) {
 			case 'spyc':
 				require_once( dirname( __FILE__ ) . '/../spyc/spyc.php' );
@@ -47,7 +94,9 @@ class TranslateYaml {
 		       'print $fh serialize($yaml);' .
 		       'close($fh);' .
 			   "' 2>&1";
-		$out = wfShellExec( $cmd, &$ret );
+
+		$out = wfShellExec( $cmd, $ret );
+
 		if ( $ret != 0 ) {
 			wfDebugDieBacktrace( "The command '$cmd' died in execution with exit code '$ret': $out" );
 		}
@@ -57,7 +106,7 @@ class TranslateYaml {
 
 		unlink( $tf );
 		unlink( "$tf.serialized" );
-		
+
 		return $php_data;
 	}
 
@@ -90,7 +139,7 @@ class TranslateYaml {
 			       '}' .
 			   '}' .
 			   "' 2>&1";
-		$out = wfShellExec( $cmd, &$ret );
+		$out = wfShellExec( $cmd, $ret );
 		if ( $ret != 0 ) {
 			wfDebugDieBacktrace( "The command '$cmd' died in execution with exit code '$ret': $out" );
 		}
@@ -99,10 +148,8 @@ class TranslateYaml {
 
 		unlink( $tf );
 		unlink( "$tf.yaml" );
-		
+
 		return $yaml;
 	}
 }
 
-// BC
-class TranslateSpyc extends TranslateYaml { }

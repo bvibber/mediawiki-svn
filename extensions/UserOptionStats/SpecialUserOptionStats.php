@@ -3,7 +3,8 @@
 /**
  * Special page for generating pie charts of user options
  *
- * @addtogroup SpecialPages
+ * @file
+ * @ingroup SpecialPages
  *
  * @author Niklas Laxström
  * @copyright Copyright © 2009, Niklas Laxström

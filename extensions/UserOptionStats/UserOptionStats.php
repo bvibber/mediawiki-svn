@@ -16,7 +16,8 @@ if ( !defined( 'MEDIAWIKI' ) ) die();
  * - height 'Height of the image' 200..1000
  * - shading 'Shading of the pie' 0..1000
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  *
  * @author Niklas Laxström
  * @copyright Copyright © 2009, Niklas Laxström

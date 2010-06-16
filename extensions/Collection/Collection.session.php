@@ -23,6 +23,7 @@
 
 class CollectionSession {
 	static function hasSession() {
+		if ( !session_id() ) return false;
 		return isset( $_SESSION['wsCollection'] );
 	}
 
@@ -107,13 +108,25 @@ class CollectionSession {
 	}
 
 	static function purge() {
+		if ( !self::hasSession() ) {
+			return false;
+		}
 		$coll = $_SESSION['wsCollection'];
 		$newitems = array();
 		if ( isset( $coll['items'] ) ) {
+			$batch = new LinkBatch;
+			$lc = LinkCache::singleton();
 			foreach ( $coll['items'] as $index => $item ) {
 				if ( $item['type'] == 'article' ) {
 					$t = Title::newFromText( $item['title'] );
-					if ( $t->exists() ) {
+					$batch->addObj( $t );
+				}
+			}
+			$batch->execute();
+			foreach ( $coll['items'] as $index => $item ) {
+				if ( $item['type'] == 'article' ) {
+					$t = Title::newFromText( $item['title'] );
+					if ( !$lc->isBadLink( $t->getPrefixedDbKey() ) ) {
 						$newitems[] = $item;
 					}
 				} else {
@@ -123,11 +136,11 @@ class CollectionSession {
 		}
 		$coll['items'] = $newitems;
 		$_SESSION['wsCollection'] = $coll;
+		return true;
 	}
 
 	static function getCollection() {
-		self::purge();
-		return $_SESSION['wsCollection'];
+		return self::purge() ? $_SESSION['wsCollection'] : array();
 	}
 
 	static function setCollection( $collection ) {

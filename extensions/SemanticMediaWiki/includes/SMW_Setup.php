@@ -7,7 +7,7 @@
 
 require_once( 'SMW_GlobalFunctions.php' );
 
-define( 'SMW_VERSION', '1.5.0.b-SVN' );
+define( 'SMW_VERSION', '1.5.2 alpha-1' );
 
 /**
  * Function to switch on Semantic MediaWiki. This function must be called in
@@ -148,6 +148,7 @@ function enableSemantics( $namespace = null, $complete = false ) {
 	$wgSpecialPages['SemanticStatistics']           = array( 'SMWSpecialSemanticStatistics' );
 	$wgSpecialPageGroups['SemanticStatistics']      = 'wiki'; // Similar to Special:Statistics
 
+	$wgAutoloadClasses['SMWOWLExport']       		= $smwgIP . 'includes/export/SMW_OWLExport.php';
 	$wgAutoloadClasses['SMWSpecialOWLExport']       = $smwgIP . 'specials/Export/SMW_SpecialOWLExport.php';
 	$wgSpecialPages['ExportRDF']                    = array( 'SMWSpecialOWLExport' );
 	$wgSpecialPageGroups['ExportRDF']               = 'smw_group';
@@ -206,7 +207,7 @@ function smwfSetupExtension() {
 	$wgHooks['ParserFirstCallInit'][] = 'SMWParserExtensions::registerParserFunctions';
 
 	if ( $smwgToolboxBrowseLink ) {
-		if ( version_compare( $wgVersion, '1.13', '>' ) ) {
+		if ( version_compare( $wgVersion, '1.13', '>=' ) ) {
 			$wgHooks['SkinTemplateToolboxEnd'][] = 'smwfShowBrowseLink'; // introduced only in 1.13
 		} else {
 			$wgHooks['MonoBookTemplateToolboxEnd'][] = 'smwfShowBrowseLink';
@@ -223,9 +224,9 @@ function smwfSetupExtension() {
 	///// credits (see "Special:Version") /////
 	$wgExtensionCredits['parserhook'][] = array(
 		'path' => __FILE__,
-		'name' => 'Semantic&nbsp;MediaWiki',
+		'name' => 'Semantic&#160;MediaWiki',
 		'version' => SMW_VERSION,
-		'author' => "Klaus&nbsp;Lassleben, [http://korrekt.org Markus&nbsp;Kr&ouml;tzsch], [http://simia.net Denny&nbsp;Vrandecic], S&nbsp;Page, and others. Maintained by [http://www.aifb.kit.edu/web/Wissensmanagement/en AIFB Karlsruhe].",
+		'author' => "Klaus&#160;Lassleben, [http://korrekt.org Markus&#160;Krötzsch], [http://simia.net Denny&#160;Vrandecic], S&#160;Page, and [http://www.ohloh.net/p/smw/contributors others]. Maintained by [http://www.aifb.kit.edu/web/Wissensmanagement/en AIFB Karlsruhe].",
 		'url' => 'http://semantic-mediawiki.org',
 		'descriptionmsg' => 'smw-desc'
 	);

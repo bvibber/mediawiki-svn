@@ -2,6 +2,7 @@
 /**
  * Internationalisation file for Who's Online extension.
  *
+ * @file
  * @ingroup Extensions
  */
 
@@ -72,7 +73,7 @@ $messages['avk'] = array(
 	'whosonline-desc' => 'Nedira va [[Special:WhosOnline|vexala]] dem dogluyayan favesik yo isu yoltiskik',
 );
 
-/** Azerbaijani (Azərbaycan)
+/** Azerbaijani (Azərbaycanca)
  * @author Wertuose
  */
 $messages['az'] = array(
@@ -136,6 +137,14 @@ $messages['bs'] = array(
 $messages['ca'] = array(
 	'whosonline' => 'Qui està conectat',
 	'whosonline-desc' => "Mostra [[Special:WhosOnline|una llista]] d'usuaris identificats i anònims que hi ha en línia en aquest moment",
+);
+
+/** Chechen (Нохчийн)
+ * @author Sasan700
+ */
+$messages['ce'] = array(
+	'whosonline' => 'Хlинц кху чохь',
+	'whosonline-desc' => 'Гойту [[Special:WhosOnline|муьлха декъашхо хlинц кху чохь ву]]',
 );
 
 /** Czech (Česky)
@@ -367,7 +376,7 @@ $messages['lt'] = array(
  */
 $messages['mk'] = array(
 	'whosonline' => 'Кој е на линија',
-	'whosonline-desc' => 'Прикажува [[Special:WhosOnline|листа]] на најавени и анонимни корисници кои се моментално на линија',
+	'whosonline-desc' => 'Прикажува [[Special:WhosOnline|список]] на најавени и анонимни корисници кои се моментално на линија',
 );
 
 /** Malayalam (മലയാളം)

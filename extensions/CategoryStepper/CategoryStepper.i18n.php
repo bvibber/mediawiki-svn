@@ -2,7 +2,8 @@
 /**
  * Internationalisation file for CategoryStepper extension.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $messages = array();
@@ -384,10 +385,11 @@ $messages['lo'] = array(
 );
 
 /** Macedonian (Македонски)
+ * @author Bjankuloski06
  * @author Brest
  */
 $messages['mk'] = array(
-	'categorystepper-desc' => 'Прикажува навигациска кутија за навигација низ азбучна листа на категории на страница',
+	'categorystepper-desc' => 'Прикажува навигациона кутија за навигација низ азбучен список на категории на страница',
 	'categorystepper-end' => '(Крај на категорија)',
 	'categorystepper-start' => '(Почеток на категорија)',
 );
@@ -553,8 +555,10 @@ $messages['sk'] = array(
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Sasa Stefanovic
+ * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
+	'categorystepper-desc' => 'Приказује кутијицу која омогућава азбучну навигацију унапред и уназад кроз једну или више категорија у којима се страна налази',
 	'categorystepper-end' => '(Крај категорије)',
 	'categorystepper-start' => '(Почетак категорије)',
 );
@@ -563,6 +567,7 @@ $messages['sr-ec'] = array(
  * @author Michaello
  */
 $messages['sr-el'] = array(
+	'categorystepper-desc' => 'Prikazuje kutijicu koja omogućava azbučnu navigaciju unapred i unazad kroz jednu ili više kategorija u kojima se strana nalazi',
 	'categorystepper-end' => '(Kraj kategorije)',
 	'categorystepper-start' => '(Početak kategorije)',
 );

@@ -12,18 +12,18 @@ class VectorHooks {
 	
 	static $scripts = array(
 		'raw' => array(
-			array( 'src' => 'Modules/CollapsibleNav/CollapsibleNav.js', 'version' => 12 ),
+			array( 'src' => 'Modules/CollapsibleNav/CollapsibleNav.js', 'version' => 25 ),
 			array( 'src' => 'Modules/CollapsibleTabs/CollapsibleTabs.js', 'version' => 8 ),
-			array( 'src' => 'Modules/ExpandableSearch/ExpandableSearch.js', 'version' => 2 ),
+			array( 'src' => 'Modules/ExpandableSearch/ExpandableSearch.js', 'version' => 5 ),
 			array( 'src' => 'Modules/EditWarning/EditWarning.js', 'version' => 8 ),
 			array( 'src' => 'Modules/FooterCleanup/FooterCleanup.js', 'version' => 5 ),
-			array( 'src' => 'Modules/SimpleSearch/SimpleSearch.js', 'version' => 11 ),
+			array( 'src' => 'Modules/SimpleSearch/SimpleSearch.js', 'version' => 17 ),
 		),
 		'combined' => array(
-			array( 'src' => 'Vector.combined.js', 'version' => 31 ),
+			array( 'src' => 'Vector.combined.js', 'version' => 54 ),
 		),
 		'minified' => array(
-			array( 'src' => 'Vector.combined.min.js', 'version' => 31 ),
+			array( 'src' => 'Vector.combined.min.js', 'version' => 55 ),
 		),
 	);
 	static $modules = array(
@@ -38,6 +38,13 @@ class VectorHooks {
 						'section' => 'rendering/advancedrendering',
 					),
 				),
+			),
+			'messages' => array(
+				'vector-collapsiblenav-more',
+			),
+			'variables' => array(
+				'wgCollapsibleNavBucketTest',
+				'wgCollapsibleNavForceNewVersion',
 			),
 		),
 		'collapsibletabs' => array(
@@ -84,8 +91,7 @@ class VectorHooks {
 	 * Adds the modules to the edit form
 	 */
 	 public static function addModules() {
-		global $wgUser, $wgJsMimeType, $wgOut;
-		global $wgVectorModules, $wgUsabilityInitiativeResourceMode;
+		global $wgUser, $wgVectorModules, $wgUsabilityInitiativeResourceMode;
 		
 		// Don't load Vector modules for non-Vector skins
 		// They won't work but will throw unused JS in the client's face

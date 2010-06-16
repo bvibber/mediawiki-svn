@@ -2,7 +2,8 @@
 /**
  * Internationalisation file for MWSearch extension.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $messages = array();

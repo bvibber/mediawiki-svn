@@ -137,7 +137,7 @@ function mvAddToolBoxLinks(){
 	if( $wgTitle->getNamespace() == MV_NS_STREAM){
 		//make sure the Messages are loaded
 		//add export cmml link:
-		$sTitle = Title::makeTitle( NS_SPECIAL, 'MvExportStream' );
+		$sTitle = SpecialPage::getTitleFor( 'MvExportStream' );
 		$sk = $wgUser->getSkin();
 		$link = $sk->makeKnownLinkObj( $sTitle,wfMsg('mv_stream_resource_export'),
 				'feed_format=roe&stream_name=' . htmlspecialchars( $wgArticle->mvTitle->getStreamName() ) . '&t=' . htmlspecialchars($wgArticle->mvTitle->getTimeRequest() ),

@@ -114,6 +114,13 @@ $messages['aln'] = array(
 	'amazonplus-less' => 'më pak',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'amazonplus-cp-none' => 'Garra',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK

@@ -8,7 +8,7 @@ $messages = array();
 
 $messages['en'] = array(
 	'widgets-desc' => 'Allows wiki administrators to add free-form widgets to the wiki by editing pages within the {{ns:widget}} namespace.
-Originally developed for [http://www.ardorado.com Ardorado.com]',
+Community-contributed widgets can be found on [http://www.mediawikiwidgets.org/Main_Page MediaWikiWidgets.org]',
 	'widgets-error' => 'Error in [[{{ns:widget}}:$1|widget $1]]',
 	'group-widgeteditor' => 'Widget editors',
 	'group-widgeteditor-member' => 'Widget editor',
@@ -59,7 +59,8 @@ $messages['ar'] = array(
  * @author Jim-by
  */
 $messages['be-tarask'] = array(
-	'widgets-desc' => 'Дазваляе адміністратарам {{GRAMMAR:родны|{{SITENAME}}}} дадаваць вольныя формы ў вікі праз рэдагаваньне старонак у прасторы назваў {{ns:widget}}. Арыгінальная распрацоўка для [http://www.ardorado.com Ardorado.com]',
+	'widgets-desc' => 'Дазваляе адміністратарам {{GRAMMAR:родны|{{SITENAME}}}} дадаваць віджэты вольных формаў у {{GRAMMAR:вінавальны|{{SITENAME}}}} праз рэдагаваньне старонак у прасторы назваў {{ns:widget}}. 
+Віджэты, якія падтрымліваюцца супольнасьцю, можна знайсьці на [http://www.mediawikiwidgets.org/Main_Page MediaWikiWidgets.org]',
 	'widgets-error' => 'Памылка ў [[{{ns:widget}}:$1|віджэце $1]]',
 	'group-widgeteditor' => 'Рэдактар віджэтаў',
 	'group-widgeteditor-member' => 'Рэдактар віджэта',
@@ -125,7 +126,7 @@ Původně vyvinuto pro [http://www.ardorado.com Ardorado.com]',
  */
 $messages['de'] = array(
 	'widgets-desc' => 'Ermöglicht Wiki-Administratoren das Hinzufügen von Freiformat-Widgets durch das Bearbeiten von Seiten im {{ns:widget}}-Namensraum.
-Ursprünglich für [http://www.ardorado.com Ardorado.com] entwickelt',
+Von der Gemeinschaft erstellte Widgets können unter [http://www.mediawikiwidgets.org/Main_Page MediaWikiWidgets.org] gefunden werden.',
 	'widgets-error' => 'Fehler im [[{{ns:widget}}:$1|Widget $1]]',
 	'group-widgeteditor' => 'Widget-Bearbeiter',
 	'group-widgeteditor-member' => 'Widget-Bearbeiter',
@@ -138,7 +139,7 @@ Ursprünglich für [http://www.ardorado.com Ardorado.com] entwickelt',
  */
 $messages['dsb'] = array(
 	'widgets-desc' => 'Dowólujo wikijowym administratoram wikijeju pśez wobźěłowanje w mjenjowem rumje {{ns:widget}} swójske miniprogramy pśidaś.
-Spócetnje wuwity za [http://www.ardorado.com Ardorado.com]',
+Miniprogramy, kótarež su se napórali wót zromaźeństwa, móžoš na  [http://www.mediawikiwidgets.org/Main_Page MediaWikiWidgets.org] namakaś.',
 	'widgets-error' => 'Zmólka w [[{{ns:widget}}:$1|miniprogramje $1]]',
 	'group-widgeteditor' => 'Wobźěłowarje miniprogramow',
 	'group-widgeteditor-member' => 'Wobźěłowaŕ miniprogramow',
@@ -164,11 +165,12 @@ $messages['el'] = array(
 /** Spanish (Español)
  * @author Antur
  * @author Crazymadlover
+ * @author Diego Grez
  * @author Peter17
  */
 $messages['es'] = array(
 	'widgets-desc' => 'Permite a los administradores agregar widgets a la wiki editando páginas dentro del espacio de nombres {{ns:widget}}.
-Desarrollado originalmente para [http://www.ardorado.com Ardorado.com]',
+Widgets desarrollados comunitariamente pueden ser encontrados en [http://www.mediawikiwidgets.org/Main_Page MediaWikiWidgets.org]',
 	'widgets-error' => 'Error en [[{{ns:widget}}:$1|widget $1]]',
 	'group-widgeteditor' => 'Editores de widget',
 	'group-widgeteditor-member' => 'Editor de widget',
@@ -192,10 +194,11 @@ Alun perin kehitetty [http://www.ardorado.com Ardorado.com]-sivustoa varten.',
 
 /** French (Français)
  * @author IAlex
+ * @author Jean-Frédéric
  * @author Urhixidur
  */
 $messages['fr'] = array(
-	'widgets-desc' => "Permet aux administrateurs du wiki d'ajouter des ''widgets'' (gadgets logiciels) au wiki en modifiant des pages dans l’espace de noms {{ns:widget}}. Développé à la base pour [http://www.ardorado.com Ardorado.com]",
+	'widgets-desc' => "Permet aux administrateurs du wiki d'ajouter des ''widgets'' (gadgets logiciels) au wiki en modifiant des pages dans l’espace de noms {{ns:widget}}. Les ''widgets'' proposés par la communauté sont disponibles sur [http://www.mediawikiwidgets.org/Main_Page MediaWikiWidgets.org]",
 	'widgets-error' => 'Erreur dans le [[{{ns:widget}}:$1|widget $1]]',
 	'group-widgeteditor' => 'Modificateurs de widgets',
 	'group-widgeteditor-member' => 'modificateur de widgets',
@@ -207,8 +210,8 @@ $messages['fr'] = array(
  * @author Toliño
  */
 $messages['gl'] = array(
-	'widgets-desc' => 'Permite aos administradores do wiki engadir widgets cando se editan as páxinas do espazo de nomes "{{ns:widget}}".
-Desenvolvido orixinalmente para [http://www.ardorado.com Ardorado.com]',
+	'widgets-desc' => 'Permite aos administradores do wiki engadir widgets ao editar páxinas no espazo de nomes "{{ns:widget}}".
+Pódense atopar os widgets desenvolvidos para a comunidade en [http://www.mediawikiwidgets.org/Main_Page MediaWikiWidgets.org]',
 	'widgets-error' => 'Erro no [[{{ns:widget}}:$1|widget "$1"]]',
 	'group-widgeteditor' => 'Editores de widgets',
 	'group-widgeteditor-member' => 'Editor de widgets',
@@ -247,8 +250,8 @@ $messages['he'] = array(
  * @author Michawiki
  */
 $messages['hsb'] = array(
-	'widgets-desc' => 'Dowola wikijowym administratoram wikijej přez wobdźěłowanje stronow znutřka mjenjoweho ruma {{ns:widget}} swójske miniprogramy přidać.
-Prěnjotnje za [http://www.ardorado.com Ardorado.com] wuwity.',
+	'widgets-desc' => '↓ Dowola wikijowym administratoram wikijej přez wobdźěłowanje stronow znutřka mjenjoweho ruma {{ns:widget}} swójske miniprogramy přidać.
+Wot zhromadźenstwa wutowrjene miniprogramy móžeš na [http://www.mediawikiwidgets.org/Main_Page MediaWikiWidgets.org] namakać.',
 	'widgets-error' => 'Zmylk w [[{{ns:widget}}:$1|miniprogramje $1]]',
 	'group-widgeteditor' => 'Wobdźěłowarjo miniprogramow',
 	'group-widgeteditor-member' => 'Wobdźěłowar miniprogramow',
@@ -273,7 +276,7 @@ $messages['hu'] = array(
  */
 $messages['ia'] = array(
 	'widgets-desc' => 'Permitte al administratores del wiki inserer widgets qualcunque in le wiki, per modificar paginas intra le spatio de nomines {{ns:widget}}.
-Originalmente disveloppate pro [http://www.ardorado.com Ardorado.com]',
+Le widgets contribuite per le communitate se trova a [http://www.mediawikiwidgets.org/Main_Page MediaWikiWidgets.org]',
 	'widgets-error' => 'Error in [[{{ns:widget}}:$1|widget $1]]',
 	'group-widgeteditor' => 'Modificatores de widgets',
 	'group-widgeteditor-member' => 'Modificator de widgets',
@@ -283,6 +286,7 @@ Originalmente disveloppate pro [http://www.ardorado.com Ardorado.com]',
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author Irwangatot
  */
 $messages['id'] = array(
 	'widgets-desc' => 'Mengijinkan admin wiki untuk menambahkan widget ke wiki dengan menyunting halaman di ruang nama {{ns:widget}}.
@@ -292,7 +296,7 @@ Mulanya dibuat untuk [http://www.ardorado.com Ardorado.com]',
 	'group-widgeteditor' => 'Penyunting widget',
 	'group-widgeteditor-member' => 'Penyunting widget',
 	'grouppage-widgeteditor' => 'Project:Penyunting widget',
-	'right-editwidgets' => 'Sunting halaman di ruang nama "{{ns:widget}}"',
+	'right-editwidgets' => 'Buat dan Sunting halaman [http://www.mediawiki.org/wiki/Extension:Widgets widgets]  di <tt>{{ns:widget}}</tt> ruang nama',
 );
 
 /** Italian (Italiano)
@@ -311,10 +315,12 @@ Sviluppato inizialmente per [http://www.ardorado.com Ardorado.com]',
 
 /** Japanese (日本語)
  * @author Fryed-peach
+ * @author Iwai.masaharu
  * @author 青子守歌
  */
 $messages['ja'] = array(
-	'widgets-desc' => '管理者が「{{ns:widget}}」名前空間内のページを編集し、ウィキに自由な形式のウィジェットを追加できるようにする。元々は [http://www.ardorado.com Ardorado.com] のために開発されました',
+	'widgets-desc' => '管理者が「{{ns:widget}}」名前空間内のページを編集し、ウィキに自由な形式のウィジェットを追加できるようにする。
+コミュニティから提供されているウィジェットは [http://www.mediawikiwidgets.org/Main_Page MediaWikiWidgets.org] にあります。',
 	'widgets-error' => '[[{{ns:widget}}:$1|ウィジェット $1]]にエラー',
 	'group-widgeteditor' => 'ウィジェット編集者',
 	'group-widgeteditor-member' => 'ウィジェット編集者',
@@ -350,20 +356,21 @@ $messages['lb'] = array(
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
-	'widgets-desc' => 'Им овозможува на вики-администраторите да додаваат интерфејс-елементи со слободна форма на викито со уредување на страниците во рамките на именскиот простор {{ns:widget}}.
-Првобитно развиено за потребите на [http://www.ardorado.com Ardorado.com]',
-	'widgets-error' => 'Грешка во [[{{ns:widget}}:$1|интерфејс-елементот $1]]',
-	'group-widgeteditor' => 'Уредници на елементи од интерфејсот',
-	'group-widgeteditor-member' => 'Уредник на интерфејс-елементи (widgets)',
-	'grouppage-widgeteditor' => 'Project:Уредници на интерфејс-елементи (widgets)',
-	'right-editwidgets' => 'Создавање и уредување на [http://www.mediawiki.org/wiki/Extension:Widgets интерфејс-елементи] во именскиот простор <tt>{{ns:widget}}</tt>',
+	'widgets-desc' => 'Им овозможува на администраторите да додаваат посреднички елементи со уредување на страници во именскиот простор {{ns:widget}}.
+Елементи изработени од учесници од заедницата можете да најдете на  [http://www.mediawikiwidgets.org/Main_Page MediaWikiWidgets.org]',
+	'widgets-error' => 'Грешка во [[{{ns:widget}}:$1|посредничкиот елемент $1]]',
+	'group-widgeteditor' => 'Уредници на посреднички елементи',
+	'group-widgeteditor-member' => 'Уредник на посреднички елементи',
+	'grouppage-widgeteditor' => 'Project:Уредници на посреднички елементи',
+	'right-editwidgets' => 'Создавање и уредување на [http://www.mediawiki.org/wiki/Extension:Widgets направи] во именскиот простор <tt>{{ns:widget}}</tt>',
 );
 
 /** Dutch (Nederlands)
  * @author Siebrand
  */
 $messages['nl'] = array(
-	'widgets-desc' => "Stelt wikibeheerders in staat naar eigen inzicht widgets aan de wiki toe te voegen door het bewerken van pagina's in de naamruimte {{ns:widget}}. Oorspronkelijk ontwikkeld voor [http://www.ardorado.com Ardorado.com]",
+	'widgets-desc' => "Stelt wikibeheerders in staat naar eigen inzicht widgets aan de wiki toe te voegen door het bewerken van pagina's in de naamruimte {{ns:widget}}.
+Door de gemeenschap ontwikkelde widgets zijn te vinden op [http://www.mediawikiwidgets.org/Main_Page MediaWikiWidgets.org]",
 	'widgets-error' => 'Fout in [[{{ns:widget}}:$1|widget $1]]',
 	'group-widgeteditor' => 'Widgetbewerkers',
 	'group-widgeteditor-member' => 'Widgetbewerker',
@@ -409,7 +416,7 @@ $messages['oc'] = array(
  */
 $messages['pl'] = array(
 	'widgets-desc' => 'Pozwala administratorom wiki na dodawanie widżetów w dowolnej formie do wiki poprzez edycję stron w przestrzeni nazw {{ns:widget}}.
-Pierwotnie stworzone dla [http://www.ardorado.com Ardorado.com]',
+Widżety stworzone przez społeczność można odnaleźć na stronie [http://www.mediawikiwidgets.org/Main_Page MediaWikiWidgets.org]',
 	'widgets-error' => 'Błąd w [[{{ns:widget}}:$1|widżecie $1]]',
 	'group-widgeteditor' => 'Edytorzy widżetów',
 	'group-widgeteditor-member' => 'Edytor widżetów',
@@ -418,11 +425,12 @@ Pierwotnie stworzone dla [http://www.ardorado.com Ardorado.com]',
 );
 
 /** Piedmontese (Piemontèis)
+ * @author Borichèt
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'widgets-desc' => "A përmëtt a j'aministrador dla wiki ëd gionté ëd widget a forma lìbera a la wiki an modificand ëd le pàgine ant lë spassi nominal {{ns:widget}}.
-An prinsipi dësvilupà për [http://www.ardorado.com Ardorado.com]",
+	'widgets-desc' => "A përmët a j'aministrator dla wiki ëd gionté ëd widget a forma lìbera a la wiki an modificand dle pàgine ant lë spassi nominal {{ns:widget}}.
+Dij widget creà da la comunità a peulo esse trovà su [http://www.mediawikiwidgets.org/Main_Page MediaWikiWidgets.org]",
 	'widgets-error' => 'Eror an [[{{ns:widget}}:$1|widget $1]]',
 	'group-widgeteditor' => 'Editor ëd widget',
 	'group-widgeteditor-member' => 'Editor ëd widget',
@@ -435,7 +443,7 @@ An prinsipi dësvilupà për [http://www.ardorado.com Ardorado.com]",
  */
 $messages['pt'] = array(
 	'widgets-desc' => "Permite que os administradores da wiki adicionem ''widgets free-form'' à wiki, editando páginas no espaço nominal {{ns:widget}}.
-Desenvolvido originalmente para [http://www.ardorado.com Ardorado.com]",
+Widgets fornecidos pela comunidade podem ser encontrados na [http://www.mediawikiwidgets.org/Main_Page MediaWikiWidgets.org]",
 	'widgets-error' => "Erro no [[{{ns:widget}}:$1|''widget'' $1]]",
 	'group-widgeteditor' => "Editores de ''widgets''",
 	'group-widgeteditor-member' => "Editor de ''widgets''",
@@ -465,10 +473,11 @@ $messages['roa-tara'] = array(
 );
 
 /** Russian (Русский)
+ * @author G0rn
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
-	'widgets-desc' => 'Позволяет администраторам вики добавлять различные виджеты, посредством редактирования страниц пространства имён {{ns:widget}}. Изначально разработано для [http://www.ardorado.com Ardorado.com]',
+	'widgets-desc' => 'Позволяет администраторам вики добавлять различные виджеты, посредством редактирования страниц пространства имён {{ns:widget}}. Поддерживаемые сообществом виджеты можно найти на [http://www.mediawikiwidgets.org/Main_Page MediaWikiWidgets.org].',
 	'widgets-error' => 'Ошибка в [[{{ns:widget}}:$1|виджете $1]]',
 	'group-widgeteditor' => 'Редакторы виджетов',
 	'group-widgeteditor-member' => 'Редактор виджетов',
@@ -510,8 +519,8 @@ $messages['te'] = array(
  * @author AnakngAraw
  */
 $messages['tl'] = array(
-	'widgets-desc' => 'Nagpapahintulot sa mga tagapangasiwa ng wiki na makapagdagdag ng mga widyet na may malayang anyo sa wiki sa pamamagitan ng pagbago ng mga pahinang nasa loob ng puwang pampangalang {{ns:widget}}.
-Orihinal na pinaunlad para sa [http://www.ardorado.com Ardorado.com]',
+	'widgets-desc' => 'Nagpapahintulot sa mga tagapangasiwa ng wiki na makapagdagdag ng may malayang anyong mga widyet sa wiki sa pamamagitan ng pagbago sa mga pahinang nasa loob ng puwang pampangalan na {{ns:widget}}.
+Ang mga widyet na inambag ng pamayan ay matatagpuan sa [http://www.mediawikiwidgets.org/Main_Page MediaWikiWidgets.org]',
 	'widgets-error' => 'Kamalian sa loob ng [[{{ns:widget}}:$1|widyet na $1]]',
 	'group-widgeteditor' => 'Mga patnugot ng widyet',
 	'group-widgeteditor-member' => 'Patnugot ng widyet',

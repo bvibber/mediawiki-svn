@@ -2,7 +2,8 @@
 /**
  * Internationalisation file for extension Wikilog.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $messages = array();
@@ -266,6 +267,18 @@ $messages['ru'] = array(
  */
 $messages['si'] = array(
 	'wlfeed-desc' => 'වර්ධිත සංග්‍රහ ප්‍රවේණි පංති',
+);
+
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'wlfeed-desc' => 'Класе за побољшане фидове',
+);
+
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'wlfeed-desc' => 'Klase za poboljšane fidove',
 );
 
 /** Swedish (Svenska)

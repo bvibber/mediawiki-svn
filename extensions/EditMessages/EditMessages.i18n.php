@@ -2,7 +2,8 @@
 /**
  * Internationalisation file for extension EditMessages.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $messages = array();
@@ -47,6 +48,13 @@ $messages['krl'] = array(
  */
 $messages['niu'] = array(
 	'editmsg-search' => 'Kumi',
+);
+
+/** Abkhazian (Аҧсуа)
+ * @author Temuri rajavi
+ */
+$messages['ab'] = array(
+	'editmsg-search' => 'Аҧшаара',
 );
 
 /** Afrikaans (Afrikaans)
@@ -891,6 +899,13 @@ $messages['lt'] = array(
 	'editmsg-search' => 'Ieškoti',
 );
 
+/** Latvian (Latviešu)
+ * @author GreenZeb
+ */
+$messages['lv'] = array(
+	'editmsg-search' => 'Meklēt',
+);
+
 /** Eastern Mari (Олык Марий)
  * @author Сай
  */
@@ -1140,8 +1155,8 @@ $messages['pl'] = array(
 	'editmsg-get-patch' => 'Wygeneruj poprawkę',
 	'editmsg-new-search' => 'Nowe wyszukiwanie',
 	'editmsg-warning-parse1' => '* Nazwa komunikatu nie pasuje do wyrażenia regularnego: $1',
-	'editmsg-warning-parse2' => '* Oczekiwano znaku cudzysłowu po strzałce — $1',
-	'editmsg-warning-parse3' => '* Nie odnaleziono znaku końca ciągu znaków — $1',
+	'editmsg-warning-parse2' => '* Oczekiwano znaku cudzysłowu po strzałce – $1',
+	'editmsg-warning-parse3' => '* Nie odnaleziono znaku końca ciągu znaków – $1',
 	'editmsg-warning-file' => '* Wystąpiły błędy odczytu {{PLURAL:$2|pliku dla języka|plików dla języków:}} $1',
 	'editmsg-warning-mismatch' => '* Tekst oryginalny nie ma oczekiwanej wartości dla {{PLURAL:$2|języka|następujących języków:}} $1',
 	'editmsg-apply-patch' => 'Zastosuj poprawkę',
@@ -1176,6 +1191,7 @@ $messages['pms'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'editmessages' => 'پيغام سمول',
 	'editmsg-search' => 'پلټل',
 	'editmsg-new-search' => 'نوې پلټنه',
 );
@@ -1302,16 +1318,23 @@ $messages['sk'] = array(
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Sasa Stefanovic
+ * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
+	'editmessages' => 'Измена порука',
+	'editmsg-target' => 'Циљана порука:',
 	'editmsg-search' => 'Претрага',
+	'editmsg-new-search' => 'Нова претрага',
 );
 
 /** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(
+	'editmessages' => 'Izmena poruka',
+	'editmsg-target' => 'Ciljana poruka:',
 	'editmsg-search' => 'Pretraga',
+	'editmsg-new-search' => 'Nova pretraga',
 );
 
 /** Sundanese (Basa Sunda)

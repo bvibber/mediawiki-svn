@@ -2,7 +2,8 @@
 /**
  * Special:Gadgets, provides a preview of MediaWiki:Gadgets.
  *
- * @addtogroup SpecialPage
+ * @file
+ * @ingroup SpecialPage
  * @author Daniel Kinzler, brightbyte.de
  * @copyright © 2007 Daniel Kinzler
  * @license GNU General Public License 2.0 or later
@@ -59,7 +60,7 @@ class SpecialGadgets extends SpecialPage {
 					$lnkTarget = $t
 						? $skin->link( $t, wfMsgHTML( 'edit' ), array(), array( 'action' => 'edit' ) ) 
 						: htmlspecialchars( $section );
-					$lnk =  "&nbsp; &nbsp; [$lnkTarget]";
+					$lnk =  "&#160; &#160; [$lnkTarget]";
 				} else {
 					$lnk = '';
 				}
@@ -78,7 +79,7 @@ class SpecialGadgets extends SpecialPage {
 
 				if ( $editInterfaceAllowed ) {
 					$lnkTarget = $skin->link( $t, wfMsgHTML( 'edit' ), array(), array( 'action' => 'edit' ) );
-					$lnk =  "&nbsp; &nbsp; [$lnkTarget]";
+					$lnk =  "&#160; &#160; [$lnkTarget]";
 				} else {
 					$lnk = '';
 				}

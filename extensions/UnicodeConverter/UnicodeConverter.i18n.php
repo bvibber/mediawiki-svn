@@ -3,7 +3,8 @@
  * Internationalisation file for extension UnicodeConvertor.
  * Created by Bertrand GRONDIN
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $messages = array();
@@ -144,9 +145,11 @@ $messages['bs'] = array(
 
 /** Catalan (Català)
  * @author Solde
+ * @author Vriullop
  */
 $messages['ca'] = array(
 	'unicodeconverter' => 'Conversor unicode',
+	'unicodeconverter-desc' => "Exemple simple s'un mòdul de pàgina especial. [[Special:UnicodeConverter|Donada una cadena de caràcters en UTF-8]] la converteix en entitats HTML adequades per a una pàgina web en ISO 8859-1.",
 	'unicodeconverter-ok' => 'OK',
 	'unicodeconverter-oldtext' => 'Text original:',
 	'unicodeconverter-newtext' => 'Text convertit:',
@@ -701,6 +704,7 @@ $messages['sk'] = array(
  */
 $messages['sr-ec'] = array(
 	'unicodeconverter' => 'Јуникод конвертер',
+	'unicodeconverter-desc' => 'Једноставан пример модула специјалне стреане. [[Special:UnicodeConverter|Дати стринг у UTF-8]] може да конвертује у HTML ентитете погодне за неку ISO 8859-1 веб-страну',
 	'unicodeconverter-ok' => 'ОК',
 	'unicodeconverter-oldtext' => 'Оригинални текст:',
 	'unicodeconverter-newtext' => 'Конвертован текст:',
@@ -711,6 +715,7 @@ $messages['sr-ec'] = array(
  */
 $messages['sr-el'] = array(
 	'unicodeconverter' => 'Junikod konverter',
+	'unicodeconverter-desc' => 'Jednostavan primer modula specijalne streane. [[Special:UnicodeConverter|Dati string u UTF-8]] može da konvertuje u HTML entitete pogodne za neku ISO 8859-1 veb-stranu',
 	'unicodeconverter-ok' => 'OK',
 	'unicodeconverter-oldtext' => 'Originalni tekst:',
 	'unicodeconverter-newtext' => 'Konvertovan tekst:',

@@ -2,8 +2,8 @@
 /**
  * News renderer for News extension.
  *
- * @package MediaWiki
- * @subpackage Extensions
+ * @file
+ * @ingroup Extensions
  * @author Daniel Kinzler, brightbyte.de
  * @copyright © 2007 Daniel Kinzler
  * @licence GNU General Public Licence 2.0 or later
@@ -54,7 +54,7 @@ class NewsRenderer {
 	var $pubtrigger; //word to use in summaries to trigger publication
 	var $permalinks; //wether to force permalinks in feeds, even in publication mode
 
-	static function newFromArticle( &$article, &$parser ) {
+	static function newFromArticle( $article, $parser ) {
 		$title = $article->getTitle();
 		$article->getContent(); 
 		$text = $article->mContent;
@@ -78,7 +78,7 @@ class NewsRenderer {
 		return null;
 	}
 
-	function __construct( $title, $templatetext, $argv, &$parser ) {
+	function __construct( $title, $templatetext, $argv, $parser ) {
 		global $wgContLang, $wgUser;
 
 		$this->title = $title;
@@ -611,7 +611,7 @@ class NewsRenderer {
 		return $url;
 	}
 
-	static function renderFeedLink( $text, $argv, &$parser ) {
+	static function renderFeedLink( $text, $argv, $parser ) {
 		$t = @$argv['feed'];
 		if ($t) $t = NewsRenderer::replaceVariables( $parser, $t );
 
@@ -661,8 +661,8 @@ class NewsRenderer {
 		if ($iconurl) {
 			$ic = '<img border="0" src="'.htmlspecialchars($iconurl).'" alt="'.htmlspecialchars($ttl).'" title="'.htmlspecialchars($ttl).'"/>';
 			if ($s === '') $s = $ic;
-			else if ($iconright) $s = "$s&nbsp;$ic";
-			else $s = "$ic&nbsp;$s";
+			else if ($iconright) $s = "$s&#160;$ic";
+			else $s = "$ic&#160;$s";
 		}
 
 		$html = '<a href="'.htmlspecialchars($url).'" title="'.htmlspecialchars($ttl).'">'.$s.'</a>';

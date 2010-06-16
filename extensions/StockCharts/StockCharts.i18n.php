@@ -2,8 +2,9 @@
 /**
  * Internationalisation file for StockCharts extension.
  *
- * @addtogroup Extensions
-*/
+ * @file
+ * @ingroup Extensions
+ */
 
 $messages = array();
 

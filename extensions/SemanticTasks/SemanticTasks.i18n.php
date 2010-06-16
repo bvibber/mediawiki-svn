@@ -1,8 +1,10 @@
 <?php
-/**Internationalization messages file for SemanticTasks extension
-  *
-  * @addtogroup Extensions
-*/
+/**
+ * Internationalization messages file for SemanticTasks extension
+ *
+ * @file
+ * @ingroup Extensions
+ */
 
 $messages = array();
 
@@ -575,7 +577,7 @@ $3",
  * @author Sp5uhe
  */
 $messages['pl'] = array(
-	'semantictasks-desc' => 'Powiadomienie e-mailem o przypisaniu lub aktualizacji zadań',
+	'semantictasks-desc' => 'Powiadomienie e‐mailem o przypisaniu lub aktualizacji zadań',
 	'semantictasks-newtask' => 'Nowe zadanie:',
 	'semantictasks-taskupdated' => 'Zadanie zaktualizowane:',
 	'semantictasks-assignedtoyou-msg2' => 'Przydzielono Ci zadanie „$1”',
@@ -715,6 +717,10 @@ $3',
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
+	'semantictasks-newtask' => 'Нови задатак:',
+	'semantictasks-taskassigned' => 'Задатак додељен:',
+	'semantictasks-taskupdated' => 'Задатак ажуриран:',
+	'semantictasks-taskclosed' => 'Задатак затворен:',
 	'semantictasks-text-message' => 'Овде је опис задатка:',
 	'semantictasks-diff-message' => 'Овде су разлике:',
 );
@@ -723,6 +729,10 @@ $messages['sr-ec'] = array(
  * @author Michaello
  */
 $messages['sr-el'] = array(
+	'semantictasks-newtask' => 'Novi zadatak:',
+	'semantictasks-taskassigned' => 'Zadatak dodeljen:',
+	'semantictasks-taskupdated' => 'Zadatak ažuriran:',
+	'semantictasks-taskclosed' => 'Zadatak zatvoren:',
 	'semantictasks-text-message' => 'Ovde je opis zadatka:',
 	'semantictasks-diff-message' => 'Ovde su razlike:',
 );

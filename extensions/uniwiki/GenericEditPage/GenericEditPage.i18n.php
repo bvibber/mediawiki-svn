@@ -205,6 +205,17 @@ $messages['bg'] = array(
 	'gep-categorypage' => 'MediaWiki:Editpagetags',
 );
 
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'gep-categories' => 'বিষয়শ্রেণী',
+	'gep-addcategory' => 'বিষয়শ্রেণী যোগ',
+	'gep-addcategorybutton' => 'যোগ',
+	'gep-suggestcategorybutton' => 'জমা দাও',
+	'gep-sections' => 'অনুচ্ছেদ',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */
@@ -1342,10 +1353,31 @@ Pomocou nástrojov v paneli s ponukou ich môžete pridať.',
 	'gep-categorypage' => 'MediaWiki:Editpagetags',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'gep-emailsubject' => '[$1] Predlog kategorije: $2',
+	'gep-emailsuccess' => 'Hvala za predlaganje kategorije: $1.',
+	'gep-categories' => 'Kategorije',
+	'gep-addcategory' => 'Dodaj kategorijo',
+	'gep-addcategorybutton' => 'Dodaj',
+	'gep-suggestcategory' => 'Predlagaj kategorijo',
+	'gep-suggestcategorybutton' => 'Potrdi',
+	'gep-sections' => 'Razdelki',
+	'gep-sectionnotdisabled' => 'Tega razdelka ni mogoče onemogočiti',
+	'gep-addsection' => 'Dodaj razdelek',
+	'gep-addsectionbutton' => 'Dodaj',
+	'gep-classicmode' => 'Klasični način',
+	'gep-genericmode' => 'Generični način',
+	'gep-nocategories' => 'Prosimo, pred shranjevanjem izberite vsaj eno kategorijo',
+);
+
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
+	'gep-desc' => 'Чини да корисничка страна буде лакша за коришћење',
 	'gep-emailsubject' => '[$1] Сугерисана категорија: $2',
 	'gep-emailbody' => 'Корисник "$1" је сугерисао категорију "$2" за сајт "$3".',
 	'gep-emailfailure' => 'Жао нам је, Ваша сугестија није могла бити процесирана.',
@@ -1370,6 +1402,7 @@ $messages['sr-ec'] = array(
  * @author Michaello
  */
 $messages['sr-el'] = array(
+	'gep-desc' => 'Čini da korisnička strana bude lakša za korišćenje',
 	'gep-emailsubject' => '[$1] Sugerisana kategorija: $2',
 	'gep-emailbody' => 'Korisnik "$1" je sugerisao kategoriju "$2" za sajt "$3".',
 	'gep-emailfailure' => 'Žao nam je, Vaša sugestija nije mogla biti procesirana.',

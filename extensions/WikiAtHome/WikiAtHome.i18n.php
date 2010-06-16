@@ -2,8 +2,9 @@
 /**
  * Internationalisation file for extension Wiki At Home.
  *
- * @addtogroup Extensions
-*/
+ * @file
+ * @ingroup Extensions
+ */
 
 require_once( dirname(__FILE__) . '/WikiAtHome.i18n.magic.php' );
 
@@ -311,6 +312,19 @@ $messages['bg'] = array(
 	'wah-doneuploading' => 'Качването на файла завърши. Благодарим ви за приноса.',
 	'wah-needs-firefogg' => 'За да участвате в Wiki@Home, необходимо е да инсталирате <a href="http://firefogg.org">Firefogg.</a>',
 	'wah-api-error' => 'Възникна грешка в приложно-програмния интерфейс. Моля, опитайте пак по-късно.',
+);
+
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'wah-menu-jobs' => 'চাকুরী',
+	'wah-menu-pref' => 'আমার পছন্দ',
+	'wah-lookingforjob' => 'চাকুরী অনুসন্ধান...',
+	'wah-downloading' => 'ফাইল ডাউনলোড <i>$1%</i> সম্পন্ন',
+	'wah-encoding' => 'ফাইল এনকোড <i>$1%</i> সম্পন্ন',
+	'wah-uploading' => 'ফাইল আপলোড <i>$1%</i> সম্পন্ন',
+	'wah-uploadfail' => 'আপলোড ব্যর্থ',
 );
 
 /** Breton (Brezhoneg)
@@ -1136,7 +1150,7 @@ $messages['lzz'] = array(
  */
 $messages['mk'] = array(
 	'wah-desc' => 'Овозможува дистрибуирање на задачи за видео транскодирање на клиенти со помош на firefogg',
-	'wah-user-desc' => 'Wiki@Home им овозможува на членовите на заедницата да донираат одвишок процесорски циклуси како помош во операции кои бараат доста ресурси',
+	'wah-user-desc' => 'Wiki@Home им овозможува на членовите на заедницата да донираат одвишок обработувачка (CPU) моќ како помош во операции кои бараат доста ресурси',
 	'wah-short-audio' => '$1 аудиоснимка, $2',
 	'wah-short-video' => '$1 видеоснимка, $2',
 	'wah-short-general' => '$1 снимка, $2',
@@ -1149,7 +1163,7 @@ $messages['mk'] = array(
 	'wah-transcode-helpout' => 'Можете да помогнете со транскодирање на оваа видеоснимка ако ја посетите страницата [[Special:WikiAtHome|Wiki@Home]]',
 	'wah-transcode-fail' => 'Оваа податотека не успеа да се транскодира.',
 	'wah-javascript-off' => 'Мора да имате овозможено JavaScript за да учествувате во Wiki@Home',
-	'wah-loading' => 'се вчитува интерфејсот на Wiki@Home ...',
+	'wah-loading' => 'се вчитува посредникот на Wiki@Home ...',
 	'wah-menu-jobs' => 'Задачи',
 	'wah-menu-stats' => 'Статистики',
 	'wah-menu-pref' => 'Прилагодувања',
@@ -1332,6 +1346,24 @@ $messages['pl'] = array(
 	'wah-transcode-fail' => 'Nie udało się przekodować tego pliku.',
 	'wah-javascript-off' => 'Musisz mieć włączony JavaScript, aby brać udział w Wiki@Home',
 	'wah-loading' => 'ładowanie interfejsu Wiki@Home ...',
+	'wah-menu-jobs' => 'Zadania',
+	'wah-menu-stats' => 'Statystyki',
+	'wah-menu-pref' => 'Preferencje',
+	'wah-lookingforjob' => 'Szukam zadania...',
+	'wah-start-on-visit' => 'Uruchom Wiki@Home za każdym razem gdy odwiedzam tę witrynę.',
+	'wah-jobs-while-away' => 'Uruchamiaj zadania gdy nie korzystam z przeglądarki przez 20 minut.',
+	'wah-nojobfound' => 'Nie znaleziono zadań. Ponowienie próby za $1.',
+	'wah-notoken-login' => 'Czy jesteś zalogowany? Jeśli nie, zrób to najpierw.',
+	'wah-apioff' => 'Wiki@Home wydaje się być wyłączona. Skontaktuj się z administratorem.',
+	'wah-doing-job' => 'Zadanie <i>$1</i> – <i>$2</i>',
+	'wah-downloading' => 'Pobierano <i>$1&nbsp;%</i> pliku.',
+	'wah-encoding' => 'Zakodowano <i>$1&nbsp;%</i> pliku',
+	'wah-encoding-fail' => 'Kodowanie nie powiodło się. Odśwież stronę lub spróbuj ponownie później.',
+	'wah-uploading' => 'Przesłano <i>$1&nbsp;%</i> pliku',
+	'wah-uploadfail' => 'Przesyłanie nie powiodło się',
+	'wah-doneuploading' => 'Przesyłanie zakończone. Dziękujemy za pomoc.',
+	'wah-needs-firefogg' => 'Uczestnictwo w Wiki@Home wymaga zainstalowania <a href="http://firefogg.org">Firefogg</a>.',
+	'wah-api-error' => 'Wystąpił błąd API. Spróbuj ponownie później.',
 );
 
 /** Piedmontese (Piemontèis)
@@ -1416,6 +1448,7 @@ $messages['pt'] = array(
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
+ * @author Giro720
  * @author Heldergeovane
  * @author Luckas Blade
  */
@@ -1435,7 +1468,11 @@ $messages['pt-br'] = array(
 	'wah-transcode-fail' => 'Falha na transcodificação do arquivo',
 	'wah-javascript-off' => 'Você precisa ter habilitado JavaScript para participar de Wiki@Home',
 	'wah-loading' => 'carregando interface Wiki@Home ...',
+	'wah-menu-jobs' => 'Tarefas',
+	'wah-menu-stats' => 'Estatísticas',
 	'wah-menu-pref' => 'Preferências',
+	'wah-lookingforjob' => 'Procurando uma tarefa ...',
+	'wah-start-on-visit' => 'Iniciar o Wiki@Home sempre que eu visitar este site.',
 );
 
 /** Romanian (Română)
@@ -1583,13 +1620,16 @@ $messages['sr-ec'] = array(
 	'wah-short-video' => '$1 видео-фајл, $2',
 	'wah-short-general' => '$1 медија-фајл, $2',
 	'wah-long-audio' => '($1 звучни фајл, трајање $2, $3)',
-	'wah-long-video' => '($1 видео-фајл, трајање $2, $3×$5 пиксела, $3)',
+	'wah-long-video' => '($1 видео-фајл, трајање $2, $4×$5 пиксела, $3)',
 	'wah-long-multiplexed' => '(мултиплексовани аудио/видео фајл, $1, трајање $2, $4×$5 пиксела, $3 укупно)',
 	'wah-long-general' => '(медија-фајл, трајање $2, $3)',
 	'wah-long-error' => '(ffmpeg није могао да прочита овај фајл: $1)',
-	'wah-transcode-working' => 'Овај видео се тренутно обрађује, и готово је $1% посла',
+	'wah-transcode-working' => 'Овај видео се тренутно обрађује. Покушајте опет касније',
 	'wah-javascript-off' => 'Морате омогућити JavaScript, да бисте учествовали у Wiki@Home',
 	'wah-loading' => 'учитавање Wiki@Home интерфејса ...',
+	'wah-menu-pref' => 'Поставке',
+	'wah-uploading' => 'Слање фајла <i>$1</i> је комплетирано',
+	'wah-uploadfail' => 'Слање фајла неуспело',
 );
 
 /** Serbian Latin ekavian (Srpski (latinica))
@@ -1604,8 +1644,12 @@ $messages['sr-el'] = array(
 	'wah-long-multiplexed' => '(multipleksovani audio/video fajl, $1, trajanje $2, $4×$5 piksela, $3 ukupno)',
 	'wah-long-general' => '(medija-fajl, trajanje $2, $3)',
 	'wah-long-error' => '(ffmpeg nije mogao da pročita ovaj fajl: $1)',
+	'wah-transcode-working' => 'Ovaj video se trenutno obrađuje. Pokušajte opet kasnije',
 	'wah-javascript-off' => 'Morate omogućiti JavaScript, da biste učestvovali u Wiki@Home',
 	'wah-loading' => 'učitavanje Wiki@Home interfejsa ...',
+	'wah-menu-pref' => 'Postavke',
+	'wah-uploading' => 'Slanje fajla <i>$1</i> je kompletirano',
+	'wah-uploadfail' => 'Slanje fajla neuspelo',
 );
 
 /** Swedish (Svenska)
@@ -1680,6 +1724,45 @@ $messages['tk'] = array(
 	'wah-menu-pref' => 'Ileri tutmalar',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'wah-desc' => 'Nagpapagana ng pagpapamahagi ng mga pagtatranskodigo ng mga trabahong pangbidyo papunta sa mga kliyente sa pamamagitan ng Firefogg',
+	'wah-user-desc' => 'Nagbibigay-daan ang Wiki@Home na makapag-ambag ang mga kasapi ng pamayanan ng nakatabing mga ikot ng cpu upang makatulong sa masusing mga operasyon na pangpinagmulan',
+	'wah-short-audio' => '$1 na talaksan ng tunog, $2',
+	'wah-short-video' => '$1 talaksa ng bidyo, $2',
+	'wah-short-general' => '$1 talaksan ng midya, $2',
+	'wah-long-audio' => '($1 talaksan ng tunog, haba $2, $3)',
+	'wah-long-video' => '($1 talaksan ng bidyo, haba $2, $4×$5 mga piksel, $3)',
+	'wah-long-multiplexed' => '(audiong multipleks/talaksan ng bidyo, $1, haba $2, $4×$5 mga piksel, $3 ang kabuoan)',
+	'wah-long-general' => '(talaksan ng midya, haba $2, $3)',
+	'wah-long-error' => '(hindi mabasa ng ffmpeg ang talaksang ito: $1)',
+	'wah-transcode-working' => 'Isinasagawa na ang bidyong ito, sumubok na lang ulit mamaya',
+	'wah-transcode-helpout' => 'Makakatulong ka sa paglilipat ng kodigo ng bidyong ito sa pamamagitan ng pagdalaw sa [[Special:WikiAtHome|Wiki@Home]].',
+	'wah-transcode-fail' => 'Nabigong maglipat ng kodigo ang talaksang ito.',
+	'wah-javascript-off' => 'Kailangang mayroon kang JavaScript upang makalahok sa Wiki@Home',
+	'wah-loading' => 'ikinakarga ang inter-mukha ng Wiki@Home ...',
+	'wah-menu-jobs' => 'Mga gawain',
+	'wah-menu-stats' => 'Estadistika',
+	'wah-menu-pref' => 'Mga nais',
+	'wah-lookingforjob' => 'Naghahanap ng isang gawain ...',
+	'wah-start-on-visit' => 'Simulan ang Wiki@Home anumang oras na dadalawin ko ang sityong ito.',
+	'wah-jobs-while-away' => 'Patakbuhin lamang ang mga gawain kapag lumayo ako mula sa pambasa-basa ko na may tagal na 20 mga minuto.',
+	'wah-nojobfound' => 'Walang natagpuang gawain.  Susubukan uli sa loob ng $1.',
+	'wah-notoken-login' => 'Nakalagda ka ba? Kung hindi, lumagda ka muna.',
+	'wah-apioff' => 'Tila lumilitaw na hindi buhay ang Wiki@Home API.  Mangyaring makipag-ugnayan sa tagapangasiwa ng wiki.',
+	'wah-doing-job' => 'Gawain: <i>$1</i> sa: <i>$2</i>',
+	'wah-downloading' => 'Kumpleto na ang pagkakarga ng talaksang <i>$1%</i>',
+	'wah-encoding' => 'Kumpleto na ang pagkokodigo ng talaksang <i>$1%</i>',
+	'wah-encoding-fail' => 'Nabigo ang pagkokodigo.  Mangyaring muling ikarga ang pahinang ito o subukan ulit mamaya.',
+	'wah-uploading' => 'Nakumpleto na ang pagkakarga ng talaksang <i>$1</i>',
+	'wah-uploadfail' => 'Nabigo ang paitaas na pagkarga',
+	'wah-doneuploading' => 'Kumpleto na ang paitaas na pagkarga.  Salamat sa iyong ambag.',
+	'wah-needs-firefogg' => 'Upang makalahok sa Wiki@Home kailangang mong ilagay ang <a href="http://firefogg.org">Firefogg</a>.',
+	'wah-api-error' => 'Nagkaroon ng kamalian sa API.  Subukan ulit mamaya.',
+);
+
 /** Turkish (Türkçe)
  * @author Vito Genovese
  */
@@ -1710,6 +1793,7 @@ $messages['yi'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Liangent
+ * @author Yfdyh000
  */
 $messages['zh-hans'] = array(
 	'wah-short-audio' => '$1声音文件，$2',
@@ -1723,6 +1807,7 @@ $messages['zh-hans'] = array(
 	'wah-transcode-fail' => '这个文件转码失败',
 	'wah-javascript-off' => '你必须启用JavaScript以参与Wiki@Home',
 	'wah-loading' => '正在载入Wiki@Home界面……',
+	'wah-menu-pref' => '参数设置',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)
@@ -1741,5 +1826,6 @@ $messages['zh-hant'] = array(
 	'wah-transcode-fail' => '這個文件轉碼失敗',
 	'wah-javascript-off' => '你必須啟用JavaScript以參與Wiki@Home',
 	'wah-loading' => '正在載入Wiki@Home介面...',
+	'wah-menu-pref' => '參數設置',
 );
 

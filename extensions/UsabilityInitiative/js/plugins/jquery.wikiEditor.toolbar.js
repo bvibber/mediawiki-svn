@@ -251,17 +251,19 @@ fn: {
 					'peri' : $.wikiEditor.autoMsg( action.options, 'peri' ),
 					'post' : $.wikiEditor.autoMsg( action.options, 'post' )
 				};
+				var replace = action.type == 'replace';
 				if ( 'regex' in action.options && 'regexReplace' in action.options ) {
 					var selection = context.$textarea.textSelection( 'getSelection' );
 					if ( selection != '' && selection.match( action.options.regex ) ) {
 						parts.peri = selection.replace( action.options.regex,
 							action.options.regexReplace );
 						parts.pre = parts.post = '';
+						replace = true;
 					}
 				}
 				context.$textarea.textSelection(
 					'encapsulateSelection',
-					$.extend( {}, action.options, parts, { 'replace': action.type == 'replace' } )
+					$.extend( {}, action.options, parts, { 'replace': replace } )
 				);
 				if ( typeof context.$iframe !== 'undefined' ) {
 					context.$iframe[0].contentWindow.focus();
@@ -314,19 +316,24 @@ fn: {
 		switch ( tool.type ) {
 			case 'button':
 				var src = $.wikiEditor.autoIcon( tool.icon, $.wikiEditor.imgPath + 'toolbar/' );
-				var $button;
+				var $button = null;
 				if ( 'offset' in tool ) {
-					var offset = $.wikiEditor.autoLang( tool.offset );
-					$button = $( '<span />' )
-						.attr( {
-							'alt' : label,
-							'title' : label,
-							'rel' : id,
-							'class' : 'wikiEditor-toolbar-spritedButton'
-						} )
-						.text( label )
-						.css( 'backgroundPosition', offset[0] + 'px ' + offset[1] + 'px' );
-				} else {
+					var offsetOrIcon = $.wikiEditor.autoIconOrOffset( tool.icon, tool.offset,
+						$.wikiEditor.imgPath + 'toolbar/'
+					);
+					if ( typeof offsetOrIcon == 'object' ) {
+						$button = $( '<span />' )
+							.attr( {
+								'alt' : label,
+								'title' : label,
+								'rel' : id,
+								'class' : 'wikiEditor-toolbar-spritedButton'
+							} )
+							.text( label )
+							.css( 'backgroundPosition', offsetOrIcon[0] + 'px ' + offsetOrIcon[1] + 'px' );
+					}
+				}
+				if ( !$button ) {
 					$button = $( '<img />' )
 						.attr( {
 							'src' : src,
@@ -446,7 +453,8 @@ fn: {
 				var section = $(this).parent().parent().attr( 'rel' );
 				$.cookie(
 					'wikiEditor-' + $(this).data( 'context' ).instance + '-booklet-' + section + '-page',
-					$(this).attr( 'rel' )
+					$(this).attr( 'rel' ),
+					{ expires: 30, path: '/' }
 				);
 				// Click tracking
 				if($.trackAction != undefined){
@@ -537,9 +545,10 @@ fn: {
 			character = {
 				'label' : character,
 				'action' : {
-					'type' : 'encapsulate',
+					'type' : 'replace',
 					'options' : {
-						'pre' : character
+						'peri' : character,
+						'selectPeri': false
 					}
 				}
 			};
@@ -547,9 +556,10 @@ fn: {
 			character = {
 				'label' : character[0],
 				'action' : {
-					'type' : 'encapsulate',
+					'type' : 'replace',
 					'options' : {
-						'pre' : character[1]
+						'peri' : character[1],
+						'selectPeri': false
 					}
 				}
 			};
@@ -561,6 +571,10 @@ fn: {
 	},
 	buildTab : function( context, id, section ) {
 		var selected = $.cookie( 'wikiEditor-' + context.instance + '-toolbar-section' );
+		// Re-save cookie
+		if ( selected != null ) {
+			$.cookie( 'wikiEditor-' + context.instance + '-toolbar-section', selected, { expires: 30, path: '/' } );
+		}
 		return $( '<span />' )
 			.attr( { 'class' : 'tab tab-' + id, 'rel' : id } )
 			.append(
@@ -592,7 +606,7 @@ fn: {
 							$sections
 							.css( 'display', 'block' )
 							.animate( { 'height': $section.outerHeight() }, $section.outerHeight() * 2, function() {
-								$this.css( 'overflow', 'visible' ).css( 'height', 'auto' );
+								$( this ).css( 'overflow', 'visible' ).css( 'height', 'auto' );
 								context.fn.trigger( 'resize' );
 							} );
 						}
@@ -627,7 +641,8 @@ fn: {
 						// Save the currently visible section
 						$.cookie(
 							'wikiEditor-' + $(this).data( 'context' ).instance + '-toolbar-section',
-							show ? $section.attr( 'rel' ) : null
+							show ? $section.attr( 'rel' ) : null,
+							{ expires: 30, path: '/' }
 						);
 						e.preventDefault();
 						return false;
@@ -691,10 +706,14 @@ fn: {
 	updateBookletSelection : function( context, id, $pages, $index ) {
 		var cookie = 'wikiEditor-' + context.instance + '-booklet-' + id + '-page';
 		var selected = $.cookie( cookie );
+		// Re-save cookie
+		if ( selected != null ) {
+			$.cookie( cookie, selected, { expires: 30, path: '/' } );
+		}
 		var $selectedIndex = $index.find( '*[rel=' + selected + ']' );
 		if ( $selectedIndex.size() == 0 ) {
 			selected = $index.children().eq( 0 ).attr( 'rel' );
-			$.cookie( cookie, selected );
+			$.cookie( cookie, selected, { expires: 30, path: '/' } );
 		}
 		$pages.children().hide();
 		$pages.find( '*[rel=' + selected + ']' ).show();

@@ -1139,7 +1139,7 @@ Wilse doorgaon?',
  */
 $messages['mk'] = array(
 	'drafts' => 'Работни верзии',
-	'drafts-desc' => 'Додава можност за зачувување на [[Special:Drafts|работни верзии]] на страниците на серверот',
+	'drafts-desc' => 'Додава можност за зачувување на [[Special:Drafts|работни верзии]] на страниците на опслужувачот',
 	'drafts-view' => 'ПрегледНаРаботнаВерзија',
 	'drafts-view-summary' => 'Оваа специјална страница ги наведува сите постоечки работни верзии.
 Неискористените работни верзии ќе бидат автоматски исфрлени по {{PLURAL:$1|$1 ден|$1 дена}}.',
@@ -1416,6 +1416,7 @@ It veus-to continué?',
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'drafts' => 'ګارلیکونه',
 	'drafts-view-article' => 'مخ',
 );
 
@@ -1589,6 +1590,61 @@ Nepoužité návrhy sa po {{PLURAL:$1|$1 dni|$1 dňoch}} automaticky zahodia.',
  */
 $messages['sl'] = array(
 	'drafts' => 'Osnutki',
+	'drafts-desc' => 'Doda zmožnost shranjevanja različic [[Special:Drafts|osnutkov]] strani na strežniku',
+	'drafts-view' => 'Ogled osnutka',
+	'drafts-view-summary' => 'Ta posebna stran prikazuje seznam vseh obstoječih osnutkov.
+Neuporabljeni osnutki bodo samodejno zavrženi po $1 {{PLURAL:$1|dnevu|dneh}}.',
+	'drafts-view-article' => 'Stran',
+	'drafts-view-existing' => 'Obstoječi osnutki',
+	'drafts-view-saved' => 'Shranjeno',
+	'drafts-view-discard' => 'Zavrzi',
+	'drafts-view-nonesaved' => 'Trenutno nimate shranjenih nobenih osnutkov.',
+	'drafts-view-notice' => 'Imate $1 za to stran.',
+	'drafts-view-notice-link' => '$1 {{PLURAL:$1|osnutek|osnutka|osnutke|osnutkov}}',
+	'drafts-view-warn' => 'Z odhodom iz te strani boste izgubili vse neshranjene spremembe na tej strani.
+Ali želite nadaljevati?',
+	'drafts-save' => 'Shrani kot osnutek',
+	'drafts-save-save' => 'Shrani osnutek',
+	'drafts-save-saved' => 'Shranjeno',
+	'drafts-save-saving' => 'Shranjevanje',
+	'drafts-save-error' => 'Napaka pri shranjevanju osnutka',
+	'tooltip-drafts-save' => 'Shrani kot osnutek',
+);
+
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'drafts' => 'Нацрти',
+	'drafts-view-article' => 'Страна',
+	'drafts-view-existing' => 'Постојећи нацрти',
+	'drafts-view-saved' => 'Снимљено',
+	'drafts-view-discard' => 'Одбаци',
+	'drafts-view-nonesaved' => 'Тренутно немате снимљених нацрта.',
+	'drafts-view-notice' => 'Имате $1 за ову страну.',
+	'drafts-save' => 'Сними ово као нацрт',
+	'drafts-save-save' => 'Сними нацрт',
+	'drafts-save-saved' => 'Снимљено',
+	'drafts-save-saving' => 'Снимање у току',
+	'drafts-save-error' => 'Грешка приликом снимања нацрта',
+	'tooltip-drafts-save' => 'Сними као нацрт',
+);
+
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'drafts' => 'Nacrti',
+	'drafts-view-article' => 'Strana',
+	'drafts-view-existing' => 'Postojeći nacrti',
+	'drafts-view-saved' => 'Snimljeno',
+	'drafts-view-discard' => 'Odbaci',
+	'drafts-view-nonesaved' => 'Trenutno nemate snimljenih nacrta.',
+	'drafts-view-notice' => 'Imate $1 za ovu stranu.',
+	'drafts-save' => 'Snimi ovo kao nacrt',
+	'drafts-save-save' => 'Snimi nacrt',
+	'drafts-save-saved' => 'Snimljeno',
+	'drafts-save-saving' => 'Snimanje u toku',
+	'drafts-save-error' => 'Greška prilikom snimanja nacrta',
+	'tooltip-drafts-save' => 'Snimi kao nacrt',
 );
 
 /** Swedish (Svenska)
@@ -1824,6 +1880,7 @@ $messages['zh-hans'] = array(
 	'drafts-view-saved' => '已保存',
 	'drafts-view-discard' => '舍弃',
 	'drafts-view-nonesaved' => '您还没有任何已保存的草稿。',
+	'drafts-view-notice' => '您有$1供此页。',
 	'drafts-save' => '把此页面以草稿形式保存',
 	'drafts-save-save' => '保存草稿',
 	'drafts-save-saved' => '已保存',
@@ -1834,6 +1891,7 @@ $messages['zh-hans'] = array(
 
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Gzdavidwong
+ * @author Horacewai2
  * @author Liangent
  * @author Wrightbus
  */
@@ -1845,6 +1903,7 @@ $messages['zh-hant'] = array(
 	'drafts-view-saved' => '已儲存',
 	'drafts-view-discard' => '捨棄',
 	'drafts-view-nonesaved' => '您還沒有任何已保存的草稿。',
+	'drafts-view-notice' => '您有$1供此頁。',
 	'drafts-save' => '把此頁面以草稿形式儲存',
 	'drafts-save-save' => '儲存草稿',
 	'drafts-save-saved' => '已儲存',

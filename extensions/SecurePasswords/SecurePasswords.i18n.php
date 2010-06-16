@@ -695,6 +695,32 @@ $messages['sk'] = array(
 	'securepasswords-word' => 'nesmie to byť slovo zo slovníka',
 );
 
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'securepasswords-valid' => 'Ваша лозинка је неисправна или прекратка.
+Она мора:',
+	'securepasswords-minlength' => 'бити дугачка најмање $1 {{PLURAL:$1|знак|знакова}}.',
+	'securepasswords-uppercase' => 'садржати најмање 1 велико слово',
+	'securepasswords-digit' => 'садржати најмање 1 цифру',
+	'securepasswords-special' => 'садржати најмање 1 специјални знак (специјални знаци су: $1)',
+	'securepasswords-username' => 'да се разликује од корисничког имена',
+	'securepasswords-word' => 'не може да буде реч',
+);
+
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'securepasswords-valid' => 'Vaša lozinka je neispravna ili prekratka.
+Ona mora:',
+	'securepasswords-minlength' => 'biti dugačka najmanje $1 {{PLURAL:$1|znak|znakova}}.',
+	'securepasswords-uppercase' => 'sadržati najmanje 1 veliko slovo',
+	'securepasswords-digit' => 'sadržati najmanje 1 cifru',
+	'securepasswords-special' => 'sadržati najmanje 1 specijalni znak (specijalni znaci su: $1)',
+	'securepasswords-username' => 'da se razlikuje od korisničkog imena',
+	'securepasswords-word' => 'ne može da bude reč',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

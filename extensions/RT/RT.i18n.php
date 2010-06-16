@@ -2,6 +2,7 @@
 /**
  * Internationalisation file for the RT extension.
  *
+ * @file
  * @ingroup Extensions
  */
 
@@ -464,7 +465,7 @@ $messages['lb'] = array(
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
-	'rt-desc' => 'Збогатен интерфејс за RT (Request Tracker, „Следење на барања“)',
+	'rt-desc' => 'Збогатен посредник за RT (Request Tracker, „Следење на барања“)',
 	'rt-inactive' => 'Проширувањето RT не е активно',
 	'rt-badquery' => 'Проширувањето RT наиде на грешка при комуницирањето со RT базата на податоци',
 	'rt-badlimit' => "Неважечки LIMIT (l) аргумент: мора да биде број.
@@ -620,6 +621,7 @@ Tentou: '''$1'''",
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
+ * @author Giro720
  */
 $messages['pt-br'] = array(
 	'rt-desc' => 'Interface para o RT (Request Tracker)',
@@ -631,6 +633,8 @@ Você tentou: '''$1'''",
 Você tentou: '''$1'''",
 	'rt-badstatus' => "Parâmetro status (s) inválido: é necessário que seja um campo padrão (veja a documentação).
 Você tentou: '''$1'''",
+	'rt-badcfield' => "Argumento inválido para o campo personalizado: tem de ser uma palavra simples (consulte a documentação).
+Tentou: '''$1'''",
 	'rt-badqueue' => "Parâmetro queue (q) inválido: é preciso que seja uma palavra simples.
 Você tentou: '''$1'''",
 	'rt-badowner' => "Parâmetro owner (o) inválido: é necessário que seja um nome de utilizador válido.
@@ -751,7 +755,9 @@ Bạn đã gọi: '''$1'''",
 Bạn đã gọi: '''$1'''",
 	'rt-badstatus' => "Thông số status (s) sai: phải là một trường chuẩn (xem tài liệu đi kèm).
 Bạn đã gọi: '''$1'''",
-	'rt-badqueue' => "Thông số queue (q) sai: phải là từ đơn giản.
+	'rt-badcfield' => "Thông số trường tùy biến sai: phải là một từ đơn giản (xem tài liệu đi kèm).
+Bạn đã gọi: '''$1'''",
+	'rt-badqueue' => "Thông số hàng đợi (q) sai: phải là từ đơn giản.
 Bạn đã gọi: '''$1'''",
 	'rt-badowner' => "Thông số owner (o) sai: phải là một tên người dùng đã có.
 Bạn đã gọi: '''$1'''",

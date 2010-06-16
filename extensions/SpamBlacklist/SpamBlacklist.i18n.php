@@ -2,7 +2,8 @@
 /**
  * Internationalisation file for extension SpamBlacklist.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $messages = array();
@@ -45,28 +46,27 @@ $messages['qqq'] = array(
  * @author Juanpabl
  */
 $messages['an'] = array(
-	'spam-blacklist' => "
- # As URLs esternas que concuerden con ista lista serán bloqueyatas cuan s'encluyan en una pachina.
- # Ista lista afeuta sólo ta ista wiki; mire-se tamién a lista negra global.
- # Más decumentazión en http://www.mediawiki.org/wiki/Extension:SpamBlacklist
+	'spam-blacklist' => " # As URLs externas que concuerden con ista lista serán bloqueyatas quan s'encluyan en una pachina.
+ # Ista lista afecta sólo ta ista wiki; mire-se tamién a lista negra global.
+ # Más decumentación en http://www.mediawiki.org/wiki/Extension:SpamBlacklist
  #<!-- leave this line exactly as it is --> <pre>
 #
-# A sintaxis ye asinas:
-#  * Tot o que bi ha dende un caráuter \"#\" dica a fin d'a linia ye un comentario
-#  * As linias no buedas son fragmentos d'espresions regulars que sólo concordarán con hosts aintro d'as URLs
+# A sintaxi ye asinas:
+#  * Tot o que bi ha dende un carácter \"#\" dica a fin d'a linia ye un comentario
+#  * As linias no buedas son fragmentos d'expresions regulars que sólo concordarán con hosts adintro d'as URLs
 
  #</pre> <!-- leave this line exactly as it is -->",
 	'spam-whitelist' => " #<!-- leave this line exactly as it is --> <pre>
-# As URLs esternas que concuerden con ista lista *no* serán bloqueyatas
+# As URLs externas que concuerden con ista lista *no* serán bloqueyatas
 # mesmo si han estato bloqueyatas por dentradas d'a lista negra.
 #
-#  A sintaxis ye asinas:
-#  * Tot o que bi ha dende o caráuter \"#\" dica a fin d'a linia ye un comentario
-#  * As linias no buedas ye un fragmento d'espresión regular que sólo concordarán con hosts aintro d'as URLs
+#  A sintaxi ye asinas:
+#  * Tot o que bi ha dende o carácter \"#\" dica a fin d'a linia ye un comentario
+#  * As linias no buedas ye un fragmento d'expresión regular que sólo concordarán con hosts adintro d'as URLs
 
  #</pre> <!-- leave this line exactly as it is -->",
-	'spam-invalid-lines' => "{{PLURAL:$1|A linia siguient ye una|As linias siguients son}} {{PLURAL:$1|espresión regular|espresions regulars}} y {{PLURAL:$1|ha|han}} d'estar correchitas antes d'alzar a pachina:",
-	'spam-blacklist-desc' => 'Ferramienta anti-spam basata en espresions regulars (regex): [[MediaWiki:Spam-blacklist]] y [[MediaWiki:Spam-whitelist]]',
+	'spam-invalid-lines' => "{{PLURAL:$1|A linia siguient ye una|As linias siguients son}} {{PLURAL:$1|expresión regular|expresions regulars}} y {{PLURAL:$1|ha|han}} d'estar correchitas antes d'alzar a pachina:",
+	'spam-blacklist-desc' => 'Ferramienta anti-spam basata en expresions regulars (regex): [[MediaWiki:Spam-blacklist]] y [[MediaWiki:Spam-whitelist]]',
 );
 
 /** Arabic (العربية)
@@ -359,6 +359,7 @@ $messages['cy'] = array(
 );
 
 /** German (Deutsch)
+ * @author Kghbln
  * @author Raimond Spekking
  * @author Umherirrender
  */
@@ -383,7 +384,7 @@ $messages['de'] = array(
 
  #</pre> <!-- Diese Zeile darf nicht verändert werden! -->',
 	'spam-invalid-lines' => 'Die {{PLURAL:$1|folgende Zeile|folgenden Zeilen}} in der Spam-Blacklist {{PLURAL:$1|ist ein ungültiger regulärer Ausdruck|sind ungültige reguläre Ausdrücke}}. Sie {{PLURAL:$1|muss|müssen}} vor dem Speichern der Seite korrigiert werden:',
-	'spam-blacklist-desc' => 'Regex-basiertes Anti-Spam-Werkzeug: [[MediaWiki:Spam-blacklist]] und [[MediaWiki:Spam-whitelist]]',
+	'spam-blacklist-desc' => 'Ergänzt ein Regex-basiertes Anti-Spam-Werkzeug: [[MediaWiki:Spam-blacklist]] und [[MediaWiki:Spam-whitelist]]',
 );
 
 /** Zazaki (Zazaki)
@@ -1171,8 +1172,8 @@ $messages['li'] = array(
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
-	'spam-blacklist' => '# Надворешните URL адреси кои одговараат на наведеното на оваа листа ќе бидат блокирани кога ќе се постават на страница.
-  # Оваа листа важи само за ова вики; погледајте ја и глобалната црна листа.
+	'spam-blacklist' => '# Надворешните URL адреси кои одговараат на наведеното на овој список ќе бидат блокирани кога ќе се постават на страница.
+  # Овој список важи само за ова вики; погледајте ја и глобалниот црн список.
   # За документација, видете http://www.mediawiki.org/wiki/Extension:SpamBlacklist
   #<!-- leave this line exactly as it is --> <pre>
 #
@@ -1182,15 +1183,15 @@ $messages['mk'] = array(
 
   #</pre> <!-- leave this line exactly as it is -->',
 	'spam-whitelist' => '  #<!-- leave this line exactly as it is --> <pre>
-# Надворешните URL адреси одговараат на листата *нема* да бидат блокирани дури и во случај да
-# се блокирани од ставки на црната листа.
+# Надворешните URL адреси одговараат на списокот *нема* да бидат блокирани дури и во случај да
+# се блокирани од ставки на црниот список.
 #
 # Синтаксата е следнава:
 #  * Сè од знакот „#“ до крајот на редот е коментар
 #  * Секој ред кој не е празен е фрагмент од регуларен израз кој се совпаѓа само со домаќини во URL адреси
 
   #</pre> <!-- leave this line exactly as it is -->',
-	'spam-invalid-lines' => 'Следнава {{PLURAL:$1|ред во црната листа на спам е|редови во црната листа на спам се}} {{PLURAL:$1|погршен регуларен израз|погрешни регуларни изрази}} и {{PLURAL:$1|треба да се поправи|треба да се поправат}} пред да се зачува страницата:',
+	'spam-invalid-lines' => '{{PLURAL:$1|Следниов ред во црниот список на спам е|Следниве редови во црниот список на спам се}} {{PLURAL:$1|погрешен регуларен израз|погрешни регуларни изрази}} и {{PLURAL:$1|треба да се поправи|треба да се поправат}} пред да се зачува страницата:',
 	'spam-blacklist-desc' => 'Анти-спам алатка на база на регуларни изрази: [[MediaWiki:Spam-blacklist]] и [[MediaWiki:Spam-whitelist]]',
 );
 
@@ -1433,7 +1434,7 @@ $messages['pl'] = array(
 
  #</pre> <!-- zostaw tę linię dokładnie tak, jak jest -->',
 	'spam-invalid-lines' => '{{PLURAL:$1|Następująca linia jest niepoprawnym wyrażeniem regularnym i musi być poprawiona przed zapisaniem strony:|Następujące linie są niepoprawnymi wyrażeniami regularnymi i muszą być poprawione przed zapisaniem strony:}}',
-	'spam-blacklist-desc' => 'Narzędzie antyspamowe oparte o wyrażenia regularne: [[MediaWiki:Spam-blacklist|spam-lista zabronionych]] oraz [[MediaWiki:Spam-whitelist|spam-lista dozwolonych]]',
+	'spam-blacklist-desc' => 'Narzędzie antyspamowe oparte o wyrażenia regularne: [[MediaWiki:Spam-blacklist|spam – lista zabronionych]] oraz [[MediaWiki:Spam-whitelist|spam – lista dozwolonych]]',
 );
 
 /** Piedmontese (Piemontèis)

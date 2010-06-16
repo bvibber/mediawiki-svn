@@ -2,8 +2,9 @@
 /**
  * Internationalisation file for extension EmailPage.
  *
- * @addtogroup Extensions
-*/
+ * @file
+ * @ingroup Extensions
+ */
 
 $messages = array();
 
@@ -126,7 +127,7 @@ $messages['de'] = array(
 	'ea-nopage' => "Bitte gebe eine Seite zum Versenden an, bspw. \"[[Special:EmailPage/{{MediaWiki:Mainpage-url}}]]\".",
 	'ea-norecipients' => "Es sind keine E-Mail-Adressen zum Versenden vorhanden!",
 	'ea-listrecipients' => '=== {{PLURAL:$1|Empfänger|$1 Empfänger}} ===',
-	'ea-error'=> "'''Fehler beim Versenden von Seite [[$1]]:''' ''$2''",
+	'ea-error' => "'''Fehler beim Versenden von Seite [[$1]]:''' ''$2''",
 	'ea-denied' => 'E-Mail-Versand wurde aufgrund fehlender Berechtigung unterbunden.',
 	'ea-sent' => "Seite [[$1]] wurde erfolgreich von [[User:$3|$3]] an '''$2''' {{PLURAL:$2|Empfänger|Empfänger}} versandt.",
 	'ea-selectrecipients' => 'Empfänger auswählen',
@@ -154,7 +155,7 @@ $messages['de-formal'] = array(
 	'ea-nopage' => "Bitte geben Sie eine Seite zum Versenden an, bspw. \"[[Special:EmailPage/{{MediaWiki:Mainpage-url}}]]\".",
 	'ea-norecipients' => "Es sind keine E-Mail-Adressen zum Versenden vorhanden!",
 	'ea-listrecipients' => '=== {{PLURAL:$1|Empfänger|$1 Empfänger}} ===',
-	'ea-error'=> "'''Fehler beim Versenden von Seite [[$1]]:''' ''$2''",
+	'ea-error' => "'''Fehler beim Versenden von Seite [[$1]]:''' ''$2''",
 	'ea-denied' => 'E-Mail-Versand wurde aufgrund fehlender Berechtigung unterbunden.',
 	'ea-sent' => "Seite [[$1]] wurde erfolgreich von [[User:$3|$3]] an '''$2''' {{PLURAL:$2|Empfänger|Empfänger}} versandt.",
 	'ea-selectrecipients' => 'Empfänger auswählen',

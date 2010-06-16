@@ -4,7 +4,8 @@ if ( !defined( 'MEDIAWIKI' ) ) die();
  * Parser functions for MediaWiki providing information
  * about various media files
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  * @author Rob Church <robchur@gmail.com>
  * @version 1.2
  */
@@ -12,7 +13,7 @@ if ( !defined( 'MEDIAWIKI' ) ) die();
 $wgExtensionCredits['parserhook'][] = array(
 	'path' => __FILE__,
 	'name' => 'MediaFunctions',
-	'version' => '1.2',
+	'version' => '1.2.1',
 	'author' => 'Rob Church',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:MediaFunctions',
 	'descriptionmsg' => 'mediafunctions-desc',
@@ -35,4 +36,5 @@ function efMediaFunctionsSetup( &$parser ) {
 	$parser->setFunctionHook( 'mediadimensions', array( 'MediaFunctions', 'mediadimensions' ) );
 	$parser->setFunctionHook( 'mediaexif', array( 'MediaFunctions', 'mediaexif' ) );
 	$parser->setFunctionHook( 'mediapages', array( 'MediaFunctions', 'mediapages' ) );
+	return true;
 }

@@ -50,6 +50,21 @@ final class ValidatorManager {
 		
 		return !$this->validator->hasFatalError();
 	}
+	
+	public function manageParsedParameters( array $parameters, array $parameterInfo ) {
+		global $egValidatorErrorLevel;
+		
+		$this->validator = new Validator();
+		
+		$this->validator->setParameters( $parameters, $parameterInfo );
+		$this->validator->validateAndFormatParameters();
+		
+		if ( $this->validator->hasErrors() && $egValidatorErrorLevel < Validator_ERRORS_STRICT ) {
+			$this->validator->correctInvalidParams();
+		}
+		
+		return !$this->validator->hasFatalError();		
+	}
 
 	/**
 	 * Returns an array with the valid parameters.
@@ -69,6 +84,12 @@ final class ValidatorManager {
 	 */
 	public function getErrorList() {
 		global $wgLang, $egValidatorErrorLevel;
+		
+		// This function has been deprecated in 1.16, but needed for earlier versions.
+		// It's present in 1.16 as a stub, but lets check if it exists in case it gets removed at some point.
+		if ( function_exists( 'wfLoadExtensionMessages' ) ) {
+			wfLoadExtensionMessages( 'Validator' );
+		}
 		
 		if ( $egValidatorErrorLevel >= Validator_ERRORS_SHOW && $this->validator->hasErrors() ) {
 			$rawErrors = $this->validator->getErrors();
@@ -108,14 +129,14 @@ final class ValidatorManager {
 							$msg = wfMsgExt( 'validator_list_error_invalid_argument', array( 'parsemag' ), $error['name'] );
 							break;
 					}
-					
+
 					if ( array_key_exists( 'invalid-items', $error ) ) {
 						$omitted = array();
 						foreach ( $error['invalid-items'] as $item ) $omitted[] = Sanitizer::escapeId( $item );
 						$msg .= ' ' . wfMsgExt( 'validator_list_omitted', array( 'parsemag' ),
 							$wgLang->listToText( $omitted ), count( $omitted ) );
 					}
-					
+
 					$errors[] = $msg;
 				}
 				else {

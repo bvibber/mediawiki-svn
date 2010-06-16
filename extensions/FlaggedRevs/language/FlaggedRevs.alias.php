@@ -2,7 +2,8 @@
 /**
  * Aliases for special pages for extension FlaggedRevs
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $aliases = array();
@@ -13,7 +14,7 @@ $aliases = array();
 $aliases['en'] = array(
 	'OldReviewedPages' => array( 'OldReviewedPages' ),
 	'ProblemChanges' => array( 'ProblemChanges' ),
-	'QualityOversight' => array( 'QualityOversight' ),
+	'QualityOversight' => array( 'AdvancedReviewLog', 'QualityOversight' ),
 	'ReviewedPages' => array( 'ReviewedPages' ),
 	'RevisionReview' => array( 'RevisionReview' ),
 	'Stabilization' => array( 'Stabilization', 'Stabilisation' ),
@@ -35,17 +36,17 @@ $aliases['an'] = array(
 
 /** Arabic (العربية) */
 $aliases['ar'] = array(
-	'OldReviewedPages' => array( 'صفحات_مراجعة_قديمة' ),
-	'ProblemChanges' => array( 'تغييرات_المشاكل' ),
-	'QualityOversight' => array( 'نظر_الجودة' ),
-	'ReviewedPages' => array( 'صفحات_مراجعة' ),
-	'RevisionReview' => array( 'مراجعة_نسخة' ),
-	'Stabilization' => array( 'استقرار' ),
-	'StablePages' => array( 'صفحات_مستقرة' ),
-	'ConfiguredPages' => array( 'صفحات_مضبوطة' ),
-	'ReviewedVersions' => array( 'نسخ_مراجعة', 'نسخ_مستقرة' ),
-	'UnreviewedPages' => array( 'صفحات_غير_مراجعة' ),
-	'ValidationStatistics' => array( 'إحصاءات_التحقق' ),
+	'OldReviewedPages'       => array( 'صفحات_مراجعة_قديمة' ),
+	'ProblemChanges'         => array( 'تغييرات_المشاكل' ),
+	'QualityOversight'       => array( 'سجل_المراجعة_المتقدم', 'نظر_الجودة' ),
+	'ReviewedPages'          => array( 'صفحات_مراجعة' ),
+	'RevisionReview'         => array( 'مراجعة_نسخة' ),
+	'Stabilization'          => array( 'استقرار' ),
+	'StablePages'            => array( 'صفحات_مستقرة' ),
+	'ConfiguredPages'        => array( 'صفحات_مضبوطة' ),
+	'ReviewedVersions'       => array( 'نسخ_مراجعة', 'نسخ_مستقرة' ),
+	'UnreviewedPages'        => array( 'صفحات_غير_مراجعة' ),
+	'ValidationStatistics'   => array( 'إحصاءات_التحقق' ),
 );
 
 /** Egyptian Spoken Arabic (مصرى) */

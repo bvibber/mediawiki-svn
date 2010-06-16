@@ -2,7 +2,8 @@
 /**
  * Aliases for Special:EmailPage
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $aliases = array();

@@ -35,7 +35,7 @@ $wgSpecialPages['MultipleUpload'] = 'MultipleUpload';
 $wgSpecialPageGroups['MultipleUpload'] = 'media';
 
 // Hooked functions
-$wgHooks['MonoBookTemplateToolboxEnd'][]  = 'wfMultiUploadToolbox';
+$wgHooks['SkinTemplateToolboxEnd'][]  = 'wfMultiUploadToolbox';
 $wgHooks['SkinTemplateBuildNavUrlsNav_urlsAfterPermalink'][] = 'wfSpecialMultiUploadNav';
 
 // Add the link to Special:MultipleUpload to all SkinTemplate-based skins for users with the 'upload' user right
@@ -51,7 +51,7 @@ function wfSpecialMultiUploadNav( &$skintemplate, &$nav_urls, &$oldid, &$revid )
 	return true;
 }
 
-// Add the link to Special:MultipleUpload to the Monobook skin
+// Add the link to Special:MultipleUpload to SkinTemplate based skins
 function wfMultiUploadToolbox( &$monobook ) {
 	wfLoadExtensionMessages( 'MultiUpload' );
 	if ( isset( $monobook->data['nav_urls']['multiupload'] ) )  {

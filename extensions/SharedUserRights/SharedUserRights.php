@@ -2,6 +2,7 @@
 /**
 * SharedUserRights -- adds a special page to manage rights in a shared database
 *
+* @file
 * @ingroup Extensions
 *
 * @author Łukasz 'TOR' Garczewski <tor@wikia-inc.com>

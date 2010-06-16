@@ -2,8 +2,9 @@
 /**
  * Internationalisation file for extension Eval.
  *
- * @addtogroup Extensions
-*/
+ * @file
+ * @ingroup Extensions
+ */
 
 $messages = array();
 
@@ -411,7 +412,7 @@ $messages['lb'] = array(
  */
 $messages['mk'] = array(
 	'eval' => 'Пресметка',
-	'eval-desc' => 'Додава [[Special:Eval|интерфејс]] на функцијата <code>eval()</code>',
+	'eval-desc' => 'Додава [[Special:Eval|посредник]] на функцијата <code>eval()</code>',
 	'eval_submit' => 'Пресметај',
 	'eval_escape' => 'Екранизирај ги излезните податоци',
 	'eval_out' => 'Излезни податоци',
@@ -591,6 +592,16 @@ $messages['sr-ec'] = array(
 	'eval_escape' => 'Излаз из одредишта',
 	'eval_out' => 'Одредиште',
 	'eval_code' => 'Кôд',
+);
+
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'eval' => 'Eval',
+	'eval-desc' => 'Dodaje [[Special:Eval|sučelje]] na <code>eval()</code> funkciju',
+	'eval_submit' => 'Proceniti',
+	'eval_escape' => 'Izlaz iz odredišta',
+	'eval_out' => 'Odredište',
+	'eval_code' => 'Kôd',
 );
 
 /** Seeltersk (Seeltersk)

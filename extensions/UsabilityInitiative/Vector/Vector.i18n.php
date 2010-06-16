@@ -123,10 +123,11 @@ $messages['cy'] = array(
 
 /** German (Deutsch)
  * @author Metalhead64
+ * @author Tischbeinahe
  */
 $messages['de'] = array(
-	'vector' => 'Benutzeroberflächenverbesserungen für den Vektor-Skin',
-	'vector-desc' => 'Verbesserungen an den Benutzeroberflächenelementen des Vektor-Skins',
+	'vector' => 'Verbesserungen für die Vektor-Benutzeroberfläche',
+	'vector-desc' => 'Verbesserungen an der Vektor-Benutzeroberfläche',
 );
 
 /** Zazaki (Zazaki)
@@ -173,9 +174,10 @@ $messages['es'] = array(
 
 /** Persian (فارسی)
  * @author Ebraminio
+ * @author Huji
  */
 $messages['fa'] = array(
-	'vector' => 'بهبودهای رابط کاربر برای پوستهٔ وکتور',
+	'vector' => 'بهبودهای رابط کاربر برای پوستهٔ برداری',
 );
 
 /** Finnish (Suomi)
@@ -311,8 +313,8 @@ $messages['lb'] = array(
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
-	'vector' => 'Подобрувања на интерфејсот на Vector',
-	'vector-desc' => 'Ги подобрува елементите на корисничкиот интерфејс на изгледот „Vector“.',
+	'vector' => 'Подобрувања на посредникот за изгледот „Векторски“',
+	'vector-desc' => 'Ги подобрува елементите на корисничкиот посредник на изгледот „Векторски“.',
 );
 
 /** Malayalam (മലയാളം)
@@ -498,6 +500,22 @@ $messages['vec'] = array(
 $messages['vi'] = array(
 	'vector' => 'Giao diện tích hợp với Vectơ',
 	'vector-desc' => 'Hoàn thiện các phần giao diện để tích hợp với hình dạng Vectơ.',
+);
+
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'vector' => 'באַניצער־אויבערפֿלאַך פֿאַרבעסערונגען פֿאַר וועקטאר',
+	'vector-desc' => 'פֿאַרבעסערט דעם באניצער אויבערפֿלאַך פֿאַר דער וועקטאר ווײַזונג.',
+);
+
+/** Cantonese (粵語)
+ * @author Horacewai2
+ */
+$messages['yue'] = array(
+	'vector' => 'UI改進 (Vector)',
+	'vector-desc' => '改進vector面板嘅介面。',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

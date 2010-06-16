@@ -143,6 +143,13 @@ $messages['et'] = array(
 	'wikieditor-highlight-preference' => 'Tõsta süntaks redigeerimise ajal esile',
 );
 
+/** Persian (فارسی)
+ * @author Huji
+ */
+$messages['fa'] = array(
+	'wikieditor-highlight-preference' => 'فعال کردن برجسته‌نمایی نحوی در زمان ویرایش',
+);
+
 /** Finnish (Suomi)
  * @author ZeiP
  */
@@ -381,6 +388,18 @@ $messages['sl'] = array(
 	'wikieditor-highlight-preference' => 'Omogoči označevanje skladnje med urejanjem',
 );
 
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Charmed94
+ */
+$messages['sr-ec'] = array(
+	'wikieditor-highlight-preference' => 'Истакни текст у току уређивања',
+);
+
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'wikieditor-highlight-preference' => 'Istakni tekst u toku uređivanja',
+);
+
 /** Swedish (Svenska)
  * @author Boivie
  */
@@ -421,6 +440,13 @@ $messages['vec'] = array(
  */
 $messages['vi'] = array(
 	'wikieditor-highlight-preference' => 'Tô màu cú pháp khi sửa đổi',
+);
+
+/** Cantonese (粵語)
+ * @author Horacewai2
+ */
+$messages['yue'] = array(
+	'wikieditor-highlight-preference' => '編輯緊嘅時候啟用語法高亮功能',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

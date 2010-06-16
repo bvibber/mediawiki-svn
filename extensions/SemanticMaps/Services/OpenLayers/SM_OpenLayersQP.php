@@ -15,11 +15,12 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 final class SMOpenLayersQP extends SMMapPrinter {
 
-	public $serviceName = MapsOpenLayers::SERVICE_NAME;
+	protected function getServiceName() {
+		return 'openlayers';
+	}	
 	
 	/**
 	 * @see SMMapPrinter::setQueryPrinterSettings()
-	 *
 	 */
 	protected function setQueryPrinterSettings() {
 		global $egMapsOpenLayersZoom, $egMapsOpenLayersPrefix;
@@ -30,12 +31,10 @@ final class SMOpenLayersQP extends SMMapPrinter {
 
 	/**
 	 * @see SMMapPrinter::doMapServiceLoad()
-	 *
 	 */
 	protected function doMapServiceLoad() {
-		global $wgParser, $egOpenLayersOnThisPage;
+		global $egOpenLayersOnThisPage;
 		
-		MapsOpenLayers::addOLDependencies( $wgParser);
 		$egOpenLayersOnThisPage++;
 		
 		$this->elementNr = $egOpenLayersOnThisPage;
@@ -43,13 +42,12 @@ final class SMOpenLayersQP extends SMMapPrinter {
 	
 	/**
 	 * @see SMMapPrinter::addSpecificMapHTML()
-	 *
 	 */
-	protected function addSpecificMapHTML( Parser $parser ) {
+	protected function addSpecificMapHTML() {
 		// TODO: refactor up like done in maps with display point
 		$markerItems = array();
 		
-		foreach ( $this->m_locations as $location ) {
+		foreach ( $this->mLocations as $location ) {
 			// Create a string containing the marker JS .
 			list( $lat, $lon, $title, $label, $icon ) = $location;
 
@@ -69,8 +67,7 @@ final class SMOpenLayersQP extends SMMapPrinter {
 		
 		$layerItems = MapsOpenLayers::createLayersStringAndLoadDependencies( $this->output, $this->layers );
 		
-		$parser->getOutput()->addHeadItem(
-			Html::inlineScript( <<<EOT
+		$this->mService->addDependency( Html::inlineScript( <<<EOT
 addOnloadHook(
 	function() {
 		initOpenLayer(
@@ -89,7 +86,7 @@ EOT
 	}
 
 	/**
-	 * Returns type info, descriptions and allowed values for this QP's parameters after adding the spesific ones to the list.
+	 * Returns type info, descriptions and allowed values for this QP's parameters after adding the specific ones to the list.
 	 */
     public function getParameters() {
         $params = parent::getParameters();

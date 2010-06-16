@@ -1,6 +1,7 @@
 <?php
 /**
- * @addtogroup Maintenance
+ * @file
+ * @ingroup Maintenance
  * @author Roan Kattouw
  */
 

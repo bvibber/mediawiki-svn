@@ -7,7 +7,8 @@
  * Installation: copy this file and ChemFunctions.i18n.php into the extensions directory
  *   and add "require_once( "$IP/extensions/ChemFunctions.php" );" to localsettings.php (using the correct path)
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  *
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
  */
@@ -83,7 +84,7 @@ function RenderChemForm( $input, $argv ) {
 	}
 
 	if ( $link ) {
-		$title = Title::makeTitleSafe( NS_SPECIAL, 'Chemicalsources' );
+		$title = SpecialPage::getTitleFor( 'Chemicalsources' );
 		$output = "<a href=\"" . $title->getFullUrl() . "?Formula=" . $searchfor .  "\">" . $showthis . "</a>";
 	} elseif ( $wikilink ) {
 		$title = Title::makeTitleSafe( NS_MAIN, $searchfor );

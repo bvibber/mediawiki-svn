@@ -339,6 +339,11 @@ $messages['ca'] = array(
 	'right-closewikis' => 'Tanca wikis',
 );
 
+/** Chechen (Нохчийн) */
+$messages['ce'] = array(
+	'closewikis-page-reopen-reason' => 'Бахьан:',
+);
+
 /** Czech (Česky)
  * @author Danny B.
  * @author Li-sung
@@ -1178,8 +1183,8 @@ $messages['mk'] = array(
 	'closewikis-page-err-nowiki' => 'Назначено е неважечко вики',
 	'closewikis-page-err-closed' => 'Викито е веќе затворено',
 	'closewikis-page-err-opened' => 'Викито не е затворено',
-	'closewikis-list' => 'Листа на затворени викија',
-	'closewikis-list-intro' => 'Оваа листа ги наведува викијата затворени од стјуарди.',
+	'closewikis-list' => 'Список на затворени викија',
+	'closewikis-list-intro' => 'Овој список ги наведува викијата затворени од стјуарди.',
 	'closewikis-list-header-wiki' => 'Вики',
 	'closewikis-list-header-by' => 'Затворил',
 	'closewikis-list-header-timestamp' => 'Затворено на',

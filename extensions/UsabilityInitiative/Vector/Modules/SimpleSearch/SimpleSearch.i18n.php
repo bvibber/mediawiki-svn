@@ -165,8 +165,8 @@ $messages['de'] = array(
  * @author Xoser
  */
 $messages['diq'] = array(
-	'vector-simplesearch-search' => 'cıgêr',
-	'vector-simplesearch-containing' => 'tede esto...',
+	'vector-simplesearch-search' => 'Çekuye binuse',
+	'vector-simplesearch-containing' => 'înan tede estê...',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -230,7 +230,7 @@ $messages['eu'] = array(
  */
 $messages['fa'] = array(
 	'vector-simplesearch-search' => 'جستجو',
-	'vector-simplesearch-containing' => 'حاوی...',
+	'vector-simplesearch-containing' => 'صفحه‌های دربردارنده...',
 );
 
 /** Finnish (Suomi)
@@ -351,6 +351,14 @@ $messages['id'] = array(
 	'vector-simplesearch-containing' => 'isian ...',
 );
 
+/** Ido (Ido)
+ * @author Malafaya
+ */
+$messages['io'] = array(
+	'vector-simplesearch-search' => 'Serchez',
+	'vector-simplesearch-containing' => 'quan kontenas...',
+);
+
 /** Italian (Italiano)
  * @author Darth Kule
  * @author Gianfranco
@@ -436,6 +444,14 @@ $messages['li'] = array(
  */
 $messages['lt'] = array(
 	'vector-simplesearch-search' => 'Ieškoti',
+);
+
+/** Latvian (Latviešu)
+ * @author GreenZeb
+ */
+$messages['lv'] = array(
+	'vector-simplesearch-search' => 'Meklēt',
+	'vector-simplesearch-containing' => 'Meklējamā frāze:',
 );
 
 /** Macedonian (Македонски)
@@ -616,6 +632,13 @@ $messages['sah'] = array(
 	'vector-simplesearch-containing' => 'иһинээҕи...',
 );
 
+/** Sardinian (Sardu)
+ * @author Andria
+ */
+$messages['sc'] = array(
+	'vector-simplesearch-search' => 'Chirca',
+);
+
 /** Sicilian (Sicilianu)
  * @author Melos
  */
@@ -788,10 +811,12 @@ $messages['yi'] = array(
 );
 
 /** Cantonese (粵語)
+ * @author Horacewai2
  * @author Shinjiman
  */
 $messages['yue'] = array(
 	'vector-simplesearch-search' => '搵嘢',
+	'vector-simplesearch-containing' => '名單傳送緊...',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

@@ -3,7 +3,8 @@
 /**
  * Class file for the RandomImage extension
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  * @author Rob Church <robchur@gmail.com>
  */
 class RandomImage {

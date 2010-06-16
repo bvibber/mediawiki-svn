@@ -5,7 +5,8 @@
  * as specified via a MediaWiki: namespace page or the $wgCategoryStepper
  * configuration variable.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  *
  * @link http://www.mediawiki.org/wiki/Extension:CategoryStepper
  *

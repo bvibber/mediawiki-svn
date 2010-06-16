@@ -46,11 +46,11 @@ class CodeReleaseNotes extends CodeView {
 			"<fieldset><legend>" . wfMsgHtml( 'code-release-legend' ) . "</legend>" .
 				Xml::hidden( 'title', $special->getPrefixedDBKey() ) . '<b>' .
 				Xml::inputlabel( wfMsg( "code-release-startrev" ), 'startrev', 'startrev', 10, $this->mStartRev ) .
-				'</b>&nbsp;' .
+				'</b>&#160;' .
 				Xml::inputlabel( wfMsg( "code-release-endrev" ), 'endrev', 'endrev', 10, $this->mEndRev ) .
-				'&nbsp;' .
+				'&#160;' .
 				Xml::inputlabel( wfMsg( "code-pathsearch-path" ), 'path', 'path', 45, $this->mPath ) .
-				'&nbsp;' .
+				'&#160;' .
 				Xml::submitButton( wfMsg( 'allpagessubmit' ) ) . "\n" .
 			"</fieldset>" . Xml::closeElement( 'form' )
 		);

@@ -8,7 +8,7 @@
  * Special page that generates a list of users
  * that have been disasbled via PasswordReset
  *
- * @addtogroup Extensions
+ * @ingroup Extensions
  * @author Tim Laqua <t.laqua@gmail.com>
  */
 

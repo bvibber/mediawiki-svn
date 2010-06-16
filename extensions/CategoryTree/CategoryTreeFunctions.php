@@ -3,7 +3,8 @@
  * Core functions for the CategoryTree extension, an AJAX based gadget
  * to display the category structure of a wiki
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  * @author Daniel Kinzler, brightbyte.de
  * @copyright © 2006-2007 Daniel Kinzler
  * @license GNU General Public Licence 2.0 or later
@@ -159,7 +160,7 @@ class CategoryTree {
 	 * Set the script tags in an OutputPage object
 	 * @param OutputPage $outputPage
 	 */
-	static function setHeaders( &$outputPage ) {
+	static function setHeaders( $outputPage ) {
 		global $wgJsMimeType, $wgScriptPath, $wgContLang;
 		global $wgCategoryTreeHijackPageCategories, $wgCategoryTreeExtPath, $wgCategoryTreeVersion;
 
@@ -409,7 +410,7 @@ class CategoryTree {
 	* Returns a string with an HTML representation of the children of the given category.
 	* $title must be a Title object
 	*/
-	function renderChildren( &$title, $depth = 1 ) {
+	function renderChildren( $title, $depth = 1 ) {
 		global $wgCategoryTreeMaxChildren, $wgCategoryTreeUseCategoryTable;
 
 		if ( $title->getNamespace() != NS_CATEGORY ) {
@@ -530,7 +531,7 @@ class CategoryTree {
 	* Returns a string with an HTML representation of the parents of the given category.
 	* $title must be a Title object
 	*/
-	function renderParents( &$title ) {
+	function renderParents( $title ) {
 		global $wgCategoryTreeMaxChildren;
 
 		$dbr = wfGetDB( DB_SLAVE );
@@ -552,7 +553,7 @@ class CategoryTree {
 
 		$res = $dbr->query( $sql, __METHOD__ );
 
-		$special = Title::makeTitle( NS_SPECIAL, 'CategoryTree' );
+		$special = SpecialPage::getTitleFor( 'CategoryTree' );
 
 		$s = '';
 
@@ -603,6 +604,7 @@ class CategoryTree {
 	* $info must be an associative array, containing at least a Title object under the 'title' key.
 	*/
 	function renderNodeInfo( $title, $cat, $children = 0, $loadchildren = false ) {
+		global $wgCategoryTreeMaxScanRows;
 		static $uniq = 0;
 
 		$mode = $this->getOption( 'mode' );
@@ -675,19 +677,23 @@ class CategoryTree {
 
 		$attr = array( 'class' => 'CategoryTreeBullet' );
 
+		# Get counts, with conversion to integer so === works
+		$pageCount = $cat ? intval( $cat->getPageCount() ) : 0;
+		$subcatCount = $cat ? intval( $cat->getSubcatCount() ) : 0;
+		$fileCount = $cat ? intval( $cat->getFileCount() ) : 0;
+
 		if ( $ns == NS_CATEGORY ) {
+
 			if ( $cat ) {
 				if ( $mode == CT_MODE_CATEGORIES ) {
-					$count = $cat->getSubcatCount();
+					$count = $subcatCount;
 				} else if ( $mode == CT_MODE_PAGES ) {
-					$count = $cat->getPageCount() - $cat->getFileCount();
+					$count = $pageCount - $fileCount;
 				} else {
-					$count = $cat->getPageCount();
+					$count = $pageCount;
 				}
-				# Fix conversion to string for ===
-				$count = intval( $count );
 			}
-			if ( $count === 0 ) {
+			if ( $count === 0 || $pageCount > $wgCategoryTreeMaxScanRows ) {
 				$bullet = wfMsgNoTrans( 'categorytree-empty-bullet' ) . ' ';
 				$attr['class'] = 'CategoryTreeEmptyBullet';
 			} else {
@@ -721,15 +727,15 @@ class CategoryTree {
 		} else {
 			$bullet = wfMsgNoTrans( 'categorytree-page-bullet' );
 		}
-		$s .= Xml::tags( 'span', $attr, $bullet );
+		$s .= Xml::tags( 'span', $attr, $bullet ) . ' ';
 
 		$s .= Xml::openElement( 'a', array( 'class' => $labelClass, 'href' => $wikiLink ) ) . $label . Xml::closeElement( 'a' );
 
 		if ( $count !== false && $this->getOption( 'showcount' ) ) {
-			$pages = $cat->getPageCount() - $cat->getSubcatCount() - $cat->getFileCount();
+			$pages = $pageCount - $subcatCount - $fileCount;
 
 			$attr = array(
-				'title' => wfMsgExt( 'categorytree-member-counts', 'parsemag', $cat->getSubcatCount(), $pages , $cat->getFileCount(), $cat->getPageCount(), $count )
+				'title' => wfMsgExt( 'categorytree-member-counts', 'parsemag', $subcatCount, $pages , $fileCount, $pageCount, $count )
 			);
 
 			$s .= ' ';
@@ -737,10 +743,10 @@ class CategoryTree {
 			$s .= Xml::tags( 'span', $attr,
 				wfMsgExt( 'categorytree-member-num',
 					array( 'parsemag', 'escapenoentities' ),
-					$cat->getSubcatCount(),
+					$subcatCount,
 					$pages,
-					$cat->getFileCount(),
-					$cat->getPageCount(),
+					$fileCount,
+					$pageCount,
 					$wgLang->formatNum( $count ) ) );
 		}
 

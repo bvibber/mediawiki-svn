@@ -3,7 +3,8 @@ if ( !defined( 'MEDIAWIKI' ) ) die();
 /**
  * Helper functions to locate when memory is consumed
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  *
  * @author Niklas Laxström
  * @copyright Copyright © 2008, Niklas Laxström
@@ -12,8 +13,10 @@ if ( !defined( 'MEDIAWIKI' ) ) die();
 
 $wgMemUse = array();
 $wgMemStack = 0;
+
 function wfMemIn( $a ) {
 	global $wgLang, $wgMemUse, $wgMemStack;
+
 	$mem = memory_get_usage();
 	$memR = memory_get_usage();
 
@@ -29,6 +32,7 @@ function wfMemIn( $a ) {
 
 function wfMemOut( $a ) {
 	global $wgLang, $wgMemUse, $wgMemStack;
+
 	$mem = memory_get_usage();
 	$memR = memory_get_usage();
 

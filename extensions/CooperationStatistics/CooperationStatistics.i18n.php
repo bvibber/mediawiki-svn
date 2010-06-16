@@ -2,8 +2,9 @@
 /**
  * Internationalisation file for extension cooperationstatistics.
  *
- * @addtogroup Extensions
-*/
+ * @file
+ * @ingroup Extensions
+ */
 
 $messages = array();
 
@@ -713,6 +714,28 @@ Pozri aj [[Special:MostRevisors|'''stránky s najväčším počtom kontrolórov
 	'cooperationstatistics-nblessusers' => '{{PLURAL:$2|má|majú}} $1 {{PLURAL:$1|redaktora|alebo menej redaktorov}}',
 	'cooperationstatistics-nbmoreusers' => '{{PLURAL:$2|má|majú}} $1 alebo viac redaktorov.',
 	'cooperationstatistics-legendmore' => 'alebo viac redaktorov.',
+);
+
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'cooperationstatistics-tablearticle' => 'Број страна',
+	'cooperationstatistics-tablevalue' => 'Број уредника',
+	'cooperationstatistics-articles' => '$1 {{PLURAL:$1|страна|стране|стране|стране|страна}}',
+	'cooperationstatistics-nbusers' => '{{PLURAL:$2|има}} $1 {{PLURAL:$1|уредника}}',
+	'cooperationstatistics-nblessusers' => '{{PLURAL:$2|има}} $1 {{PLURAL:$1|уредника|или мање уредника}}',
+	'cooperationstatistics-nbmoreusers' => '{{PLURAL:$2|има}} $1 или више уредника',
+);
+
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'cooperationstatistics-tablearticle' => 'Broj strana',
+	'cooperationstatistics-tablevalue' => 'Broj urednika',
+	'cooperationstatistics-articles' => '$1 {{PLURAL:$1|strana|strane|strane|strane|strana}}',
+	'cooperationstatistics-nbusers' => '{{PLURAL:$2|ima}} $1 {{PLURAL:$1|urednika}}',
+	'cooperationstatistics-nblessusers' => '{{PLURAL:$2|ima}} $1 {{PLURAL:$1|urednika|ili manje urednika}}',
+	'cooperationstatistics-nbmoreusers' => '{{PLURAL:$2|ima}} $1 ili više urednika',
 );
 
 /** Swedish (Svenska)

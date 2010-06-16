@@ -2,8 +2,9 @@
 /**
  * Internationalisation file for AssertEdit extension.
  *
- * @addtogroup Extensions
-*/
+ * @file
+ * @ingroup Extensions
+ */
 
 $messages = array();
 
@@ -11,6 +12,13 @@ $messages['en'] = array(
 	'assert_edit_title'   => 'Assert failed',
 	'assertedit-desc'    => 'Adds edit assertions for use by bots',
 	'assert_edit_message' => 'The specified assertion ($1) failed.',
+);
+
+/** Message documentation (Message documentation)
+ * @author Umherirrender
+ */
+$messages['qqq'] = array(
+	'assertedit-desc' => '{{desc}}',
 );
 
 /** Afrikaans (Afrikaans)
@@ -26,9 +34,9 @@ $messages['af'] = array(
  * @author Juanpabl
  */
 $messages['an'] = array(
-	'assert_edit_title' => "L'aserzión ha fallato",
-	'assertedit-desc' => "Adibe aserzions d'edizión emplegatas por os bots",
-	'assert_edit_message' => "L'aserzión espezificata ($1) ha fallato.",
+	'assert_edit_title' => "L'aserción ha fallato",
+	'assertedit-desc' => "Adibe asercions d'edición emplegatas por os bots",
+	'assert_edit_message' => "L'aserción especificata ($1) ha fallato.",
 );
 
 /** Arabic (العربية)
@@ -129,6 +137,15 @@ $messages['cs'] = array(
 	'assert_edit_title' => 'Předpoklad selhal',
 	'assertedit-desc' => 'Přidává předpoklady pro úpravy, které využijí boti',
 	'assert_edit_message' => 'Uvedený předpoklad ($1) selhal.',
+);
+
+/** Welsh (Cymraeg)
+ * @author (vinny)
+ */
+$messages['cy'] = array(
+	'assert_edit_title' => 'Bendant yn methu',
+	'assertedit-desc' => 'Adds golygu honiadau ar gyfer defnydd gan bots',
+	'assert_edit_message' => "Mae'r honiad penodol ($1) wedi methu.",
 );
 
 /** Danish (Dansk)
@@ -609,6 +626,7 @@ $messages['pt-br'] = array(
  */
 $messages['qu'] = array(
 	'assert_edit_title' => 'Mañasqaqa manam atinchu',
+	'assertedit-desc' => "Llamk'apuna mañasqakunata rurana antachakunapaq yapan",
 	'assert_edit_message' => 'Nisqa mañasqaqa ($1) manam atinchu.',
 );
 

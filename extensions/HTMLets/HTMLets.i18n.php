@@ -2,7 +2,8 @@
 /**
  * Internationalisation file for HTMLets extension.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $messages = array();
@@ -299,6 +300,18 @@ $messages['ru'] = array(
  */
 $messages['sk'] = array(
 	'htmlets-desc' => 'Umožňuje vkladať kúsky HTML kódu zo súborov pomocou značky <code>&lt;htmlet&gt;</code>',
+);
+
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'htmlets-desc' => 'Омогућава убацивање HTML делова из фајлова, коришћењем <code>&lt;htmlet&gt;</code> тага',
+);
+
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'htmlets-desc' => 'Omogućava ubacivanje HTML delova iz fajlova, korišćenjem <code>&lt;htmlet&gt;</code> taga',
 );
 
 /** Seeltersk (Seeltersk)

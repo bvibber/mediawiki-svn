@@ -1,6 +1,7 @@
 <?php
 /**
- * @addtogroup Maintenance
+ * @file
+ * @ingroup Maintenance
  */
 
 define( 'REPORTING_INTERVAL', 10 );

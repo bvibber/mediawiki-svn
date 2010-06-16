@@ -181,7 +181,7 @@ class PrefSwitchSurveyFieldRadios extends PrefSwitchSurveyFieldSelect {
 				"prefswitch-survey-{$question}-other",
 				$answer === 'other'
 			) .
-			'&nbsp;' .
+			'&#160;' .
 			Xml::input(
 				"prefswitch-survey-{$question}-other-radio",
 				false,
@@ -220,7 +220,7 @@ class PrefSwitchSurveyFieldChecks implements PrefSwitchSurveyField {
 				in_array( 'other', $answers, true ),
 				array( 'value' => 'other' )
 			) .
-			'&nbsp;' .
+			'&#160;' .
 			Xml::input(
 				"prefswitch-survey-{$question}-other",
 				false,

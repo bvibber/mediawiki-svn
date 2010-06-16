@@ -3,8 +3,8 @@ if ( !defined( 'MEDIAWIKI' ) ) die();
 /**
  * An extension to allow access to APC status with MediaWiki rights
  *
- * @addtogroup Extensions
- *
+ * @file
+ * @ingroup Extensions
  * @author Niklas Laxström
  * @copyright Copyright © 2008, Niklas Laxström
  */

@@ -8,7 +8,7 @@
  * Special page that allows sysops to reset local MW user's
  * passwords
  *
- * @addtogroup Extensions
+ * @ingroup Extensions
  * @author Tim Laqua <t.laqua@gmail.com>
  */
 class PasswordReset extends SpecialPage {

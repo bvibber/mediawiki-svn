@@ -2,8 +2,9 @@
 /**
  * Internationalisation file for extension RefHelper.
  *
- * @addtogroup Extensions
-*/
+ * @file
+ * @ingroup Extensions
+ */
 
 $messages = array();
 
@@ -42,8 +43,10 @@ You can [[Special:RefHelper|add the reference manually]] or [[Special:RefSearch|
 
 /** Message documentation (Message documentation)
  * @author EugeneZelenko
+ * @author Umherirrender
  */
 $messages['qqq'] = array(
+	'refhelper-desc' => '{{desc}}',
 	'refhelper-title' => '{{Identical|Title}}',
 	'refhelper-pages' => '{{Identical|Pages}}',
 	'refhelper-year' => '{{Identical|Year}}',
@@ -629,6 +632,14 @@ $messages['kn'] = array(
 	'refhelper-search' => 'ಹುಡುಕು',
 );
 
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'refhelper' => '참고 자료 도우미',
+	'refsearch' => '참고 자료 찾기',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -834,6 +845,7 @@ A peul [[Special:RefHelper|gionté l'arferiment a man]] o [[Special:RefSearch|s�
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'refhelper-label_authorsurname' => 'تخلص:',
 	'refhelper-title' => 'سرليک:',
 	'refhelper-pages' => 'مخونه:',
 	'refhelper-year' => 'کال:',
@@ -925,6 +937,34 @@ $messages['ru'] = array(
 Вы можете [[Special:RefHelper|добавить сноску вручную]] или [[Special:RefSearch|произвести поиск ссылок]].',
 );
 
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'refhelper-label_authorsurname' => 'Презиме:',
+	'refhelper-title' => 'Наслов:',
+	'refhelper-journal' => 'Журнал:',
+	'refhelper-pages' => 'Стране:',
+	'refhelper-year' => 'Година:',
+	'refhelper-category' => 'Категорија $1:',
+	'refhelper-create' => 'Направи',
+	'refhelper-search' => 'Претражи',
+	'refhelper-toolbox_link_create' => 'Направи референцу',
+);
+
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'refhelper-label_authorsurname' => 'Prezime:',
+	'refhelper-title' => 'Naslov:',
+	'refhelper-journal' => 'Žurnal:',
+	'refhelper-pages' => 'Strane:',
+	'refhelper-year' => 'Godina:',
+	'refhelper-category' => 'Kategorija $1:',
+	'refhelper-create' => 'Napravi',
+	'refhelper-search' => 'Pretraži',
+	'refhelper-toolbox_link_create' => 'Napravi referencu',
+);
+
 /** Swedish (Svenska)
  * @author Dafer45
  * @author Per
@@ -953,5 +993,41 @@ $messages['te'] = array(
 	'refhelper-pages' => 'పేజీలు:',
 	'refhelper-year' => 'సంవత్సరం:',
 	'refhelper-search' => 'వెతుకు',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'refhelper' => 'Pantulong sa sanggunian',
+	'refsearch' => 'Paghanap ng sanggunian',
+	'refhelper-desc' => 'Tumutulong sa paglikha ng mga pahina para sa mga sanggunian',
+	'refhelper-refsearch' => 'Paghanap ng sanggunian',
+	'refhelper-refcreate_legend' => 'Lumikha ng bagong sanggunian',
+	'refhelper-refsearch_legend' => 'Maghanap sa PubMed para sa mga sanggunian',
+	'refhelper-refcreate_another' => 'Lumikha ng ibang sanggunian',
+	'refhelper-refcreate_autocomment' => 'Kusang paglikha ng pahina.',
+	'refhelper-refcreate_success' => 'Hindi umiiral ang pahinang [[$1]] at nalikha na.',
+	'refhelper-refcreate_failure' => 'Umiiral na ang pahinang [[$1]]!',
+	'refhelper-label_workspace' => 'Puwang na gawaan (lugar ng pagkopya at pagdikit):',
+	'refhelper-label_authorforename' => 'Unang pangalan ng may-akdang si $1:',
+	'refhelper-label_authorsurname' => 'Apelyido:',
+	'refhelper-title' => 'Pamagat:',
+	'refhelper-journal' => 'Diyaryo:',
+	'refhelper-volume' => 'Tomo:',
+	'refhelper-pages' => 'Mga pahina:',
+	'refhelper-year' => 'Taon:',
+	'refhelper-refname' => 'Pangalan ng sanggunian:',
+	'refhelper-category' => 'Kategoryang $1:',
+	'refhelper-create' => 'Likhain',
+	'refhelper-search' => 'Hanapin',
+	'refhelper-toolbox_link_create' => 'Likhain ang sanggunian',
+	'refhelper-toolbox_link_search' => 'Lumikha ng sanggunian mula sa paghahanap',
+	'refhelper-newarticle_nocitation' => 'Kasalukuyang walang ganitong pagbanggit na may ganitong pangalan.',
+	'refhelper-newarticle_suggestions' => 'Kung may isang tumutugmang sipi mula sa ibaba, maaari mong likhain ang pahinang ito sa pamamagitan ng pagpindot sa nauukol na pindutang "Likhain". 
+
+<h2>Mga mungkahi</h2>',
+	'refhelper-newarticle_nosuggestions' => 'Sa kamalasan, Hindi ako nagawang makapagmungkahi ng anumang mga sanggunian.
+Maaari mong [[Special:RefHelper|kinakamay na idagdag ang sanggunian]] o [[Special:RefSearch|maghanap ng pagbanggit na idaragdag]].',
 );
 

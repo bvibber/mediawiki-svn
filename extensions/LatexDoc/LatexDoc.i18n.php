@@ -2,8 +2,9 @@
 /**
  * Internationalisation file for extension LatexDoc.
  *
- * @addtogroup Extensions
-*/
+ * @file
+ * @ingroup Extensions
+ */
 
 $messages = array();
 
@@ -883,6 +884,38 @@ $3',
 	'latexdoc_get_dvi' => 'Stiahnuť DVI',
 	'latexdoc_get_pdf' => 'Stiahnuť PDF',
 	'latexdoc-desc' => 'Latex Doc.',
+);
+
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'latexdoc_cant_create_dir' => 'Није могао да се направи привремени директоријум $1',
+	'latexdoc_cant_write' => 'Није могло да се пише у фајл $1',
+	'latexdoc_error' => 'Грешка у LaTeX-у:
+
+Команда: $1
+
+Излаз: $2
+
+$3',
+	'latexdoc_get_dvi' => 'Преузми DVI',
+	'latexdoc_get_pdf' => 'Преузми PDF',
+);
+
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'latexdoc_cant_create_dir' => 'Nije mogao da se napravi privremeni direktorijum $1',
+	'latexdoc_cant_write' => 'Nije moglo da se piše u fajl $1',
+	'latexdoc_error' => 'Greška u LaTeX-u:
+
+Komanda: $1
+
+Izlaz: $2
+
+$3',
+	'latexdoc_get_dvi' => 'Preuzmi DVI',
+	'latexdoc_get_pdf' => 'Preuzmi PDF',
 );
 
 /** Swedish (Svenska)

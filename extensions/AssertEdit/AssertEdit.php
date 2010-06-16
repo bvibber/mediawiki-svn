@@ -6,8 +6,8 @@ if ( ! defined( 'MEDIAWIKI' ) )
  * A bot interface extension that adds edit assertions, to help bots ensure
  * they stay logged in, and are working with the right wiki.
  *
- * @package MediaWiki
- * @subpackage Extensions
+ * @file
+ * @ingroup Extensions
  *
  * @link http://www.mediawiki.org/wiki/Extension:Assert_Edit
  *

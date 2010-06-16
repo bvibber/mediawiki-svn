@@ -157,6 +157,13 @@ $messages['ja'] = array(
 	'svgzoom-desc' => 'SVG ファイルの表示にパンとズームの機能を加える',
 );
 
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'svgzoom-desc' => '미디어위키에 SVG 파일을 볼 때 이동 및 확대 기능을 추가',
+);
+
 /** Colognian (Ripoarisch)
  * @author Purodha
  */

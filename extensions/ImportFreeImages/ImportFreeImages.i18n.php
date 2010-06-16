@@ -988,6 +988,9 @@ $messages['ps'] = array(
 	'importfreeimages_next' => 'راتلونکي $1',
 	'importfreeimages_size_thumbnail' => 'بټنوک',
 	'importfreeimages_size_small' => 'وړوکی',
+	'importfreeimages_size_medium' => 'منځوی',
+	'importfreeimages_size_large' => 'لوی',
+	'importfreeimages_size_original' => 'آرنی',
 );
 
 /** Portuguese (Português)
@@ -1108,14 +1111,27 @@ $messages['sk'] = array(
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Verlor
+ * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'importfreeimages_owner' => 'Аутор',
+	'importfreeimages_importthis' => 'увези ово',
 	'importfreeimages_next' => 'Следеће $1',
 	'importfreeimages_size_small' => 'Мала',
 	'importfreeimages_size_medium' => 'Средња',
 	'importfreeimages_size_large' => 'Велика',
 	'importfreeimages_size_original' => 'Оригинална величина',
+);
+
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'importfreeimages_owner' => 'Autor',
+	'importfreeimages_importthis' => 'uvezi ovo',
+	'importfreeimages_next' => 'Sledeće $1',
+	'importfreeimages_size_small' => 'Mala',
+	'importfreeimages_size_medium' => 'Srednja',
+	'importfreeimages_size_large' => 'Velika',
+	'importfreeimages_size_original' => 'Originalna veličina',
 );
 
 /** Seeltersk (Seeltersk)

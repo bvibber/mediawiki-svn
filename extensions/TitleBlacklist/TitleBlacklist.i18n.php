@@ -2,8 +2,9 @@
 /**
  * Internationalisation file for extension TitleBlacklist.
  *
- * @addtogroup Extensions
-*/
+ * @file
+ * @ingroup Extensions
+ */
 
 $messages = array();
 
@@ -40,17 +41,20 @@ $messages['qqq'] = array(
  * @author Juanpabl
  */
 $messages['an'] = array(
-	'titleblacklist-desc' => "Premite a os almenistradors de bedar a creyazión de pachinas y cuentas d'usuario con aduya d'una [[MediaWiki:Titleblacklist|lista negra]] y una [[MediaWiki:Titlewhitelist|lista blanca]]",
-	'titleblacklist' => '# Ista ya una lista negra de títols. Os títols que concuerden con una d\'istas espresions regulars no se pueden creyar.
-# Use "#" ta fer comentarios.',
-	'titlewhitelist' => '# Ista ya una lista blanca de títols. Use "#" ta fer comentarios.',
-	'titleblacklist-forbidden-edit' => 'O títol "$2" ye biedato y no se puede creyar. Concuerda con a siguient dentrada d\'a lista negra: <code>$1</code>',
-	'titleblacklist-forbidden-move' => '"$2" no se puede tresladar ta "$3", porque o títol "$3" ye biedato y no se puede creyar. Concuerda con a siguient dentrada d\'a lista negra: <code>$1</code>',
-	'titleblacklist-forbidden-upload' => 'O nombre de fichero "$2" ye biedato y no se puede creyar. Concuerda con a siguient dentrada d\'a lista negra: <code>$1</code>',
-	'titleblacklist-forbidden-new-account' => 'O nombre d\'usuario "$2" ye bedato y no se puede creyar. 
+	'titleblacklist-desc' => "Premite a os almenistradors de vedar a creyación de pachinas y cuentas d'usuario con aduya d'una [[MediaWiki:Titleblacklist|lista negra]] y una [[MediaWiki:Titlewhitelist|lista blanca]]",
+	'titleblacklist' => '# Ista ya una lista negra de títols. Os títols que concuerden con una d\'istas expresions regulars no se pueden creyar.
+# Use "#" ta fer comentarios.
+# Por defecto, no fa diferencia entre mayusclas y minusclas',
+	'titlewhitelist' => '# Ista ye una lista blanca de títols. Faiga servir "#" ta escribir comentarios.
+# Por defecto, no diferencia entre mayusclas y minusclas',
+	'titleblacklist-forbidden-edit' => 'O títol "$2" ye vedato y no se puede creyar. 
+Concuerda con a siguient dentrada d\'a lista negra: <code>$1</code>',
+	'titleblacklist-forbidden-move' => '"$2" no se puede tresladar ta "$3", porque o títol "$3" ye vedato y no se puede creyar. Concuerda con a siguient dentrada d\'a lista negra: <code>$1</code>',
+	'titleblacklist-forbidden-upload' => 'O nombre de fichero "$2" ye vedato y no se puede creyar. Concuerda con a siguient dentrada d\'a lista negra: <code>$1</code>',
+	'titleblacklist-forbidden-new-account' => 'O nombre d\'usuario "$2" ye vedato y no se puede creyar. 
 Concuerda con a dentrada <code>$1</code> d\'a lista negra.',
-	'titleblacklist-invalid' => "{{PLURAL:$1|A siguient linia|As siguients linias}} d'a lista negra de títols {{PLURAL:$1|ye|son}} no son conformes; por fabor corricha-{{PLURAL:$1|la|las}} antes d'alzar:",
-	'right-tboverride' => 'Inorar a lista negra de títols',
+	'titleblacklist-invalid' => "{{PLURAL:$1|A siguient linia|As siguients linias}} d'a lista negra de títols {{PLURAL:$1|ye|son}} no son conformes; por favor corricha-{{PLURAL:$1|la|las}} antes d'alzar:",
+	'right-tboverride' => 'Ignorar a lista negra de títols',
 );
 
 /** Arabic (العربية)
@@ -1037,23 +1041,23 @@ prašome {{PLURAL:$1|ją|jas}} pataisyti prieš išsaugant:',
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
-	'titleblacklist-desc' => 'Им овозможува на администраторите да забранат создавање на страници и кориснички сметки со помош на [[MediaWiki:Titleblacklist|црна листа]] и [[MediaWiki:Titlewhitelist|бела листа]]',
-	'titleblacklist' => '# Ова е црна листа на наслови. Насловите и корисниците кои се совпаѓаат со регуларните изрази на листата не можат да се создадат.
+	'titleblacklist-desc' => 'Им овозможува на администраторите да забранат создавање на страници и кориснички сметки со помош на [[MediaWiki:Titleblacklist|црн список]] и [[MediaWiki:Titlewhitelist|бел список]]',
+	'titleblacklist' => '# Ова е црн список на наслови. Насловите и корисниците кои се совпаѓаат со регуларните изрази на списокот не можат да се создадат.
 # За коментари користете го знакот „#“.
 # Ова разликува мали и големи букви по основно',
-	'titlewhitelist' => '# Ова е бела листа на наслови. За коментари користете го знакот „#“.  
+	'titlewhitelist' => '# Ова е бел список на наслови. За коментари користете го знакот „#“.  
 # Ова разликува мали и големи букви по основно',
-	'titleblacklist-forbidden-edit' => 'Насловот "$2" е забранет за создавање.
-Се совпаѓа со следната ставка на црната листа: <code>$1</code>',
-	'titleblacklist-forbidden-move' => '"$2" не може да се премести на "$3", бидејќи насловот "$3" е забранет за создавање.
-Се совпаѓа со следнава ставка на црната листа: <code>$1</code>',
-	'titleblacklist-forbidden-upload' => 'Податотеката по име "$2" е забранета за создавање.
-Се совпаѓа со следнава ставка на црната листа: <code>$1</code>',
-	'titleblacklist-forbidden-new-account' => 'Корисничкото име "$2" е забрането за создавање.
-Се совпаѓа со следнава ставка на црната листа: <code>$1</code>',
-	'titleblacklist-invalid' => '{{PLURAL:$1|Следниов ред|Следниве редови}} во црнната листа на наслови {{PLURAL:$1|е|се}} неважечки;
+	'titleblacklist-forbidden-edit' => 'Насловот „$2“ е забранет за создавање.
+Се совпаѓа со следната ставка на црниот список: <code>$1</code>',
+	'titleblacklist-forbidden-move' => '„$2“ не може да се премести на „$3“, бидејќи насловот „$3“ е забранет за создавање.
+Се совпаѓа со следнава ставка на црниот список: <code>$1</code>',
+	'titleblacklist-forbidden-upload' => 'Податотеката по име „$2“ е забранета за создавање.
+Се совпаѓа со следнава ставка на црниот список: <code>$1</code>',
+	'titleblacklist-forbidden-new-account' => 'Корисничкото име „$2“ е забрането за создавање.
+Се совпаѓа со следнава ставка на црниот список: <code>$1</code>',
+	'titleblacklist-invalid' => '{{PLURAL:$1|Следниов ред|Следниве редови}} во црниот список на наслови {{PLURAL:$1|е|се}} неважечки;
 поправете {{PLURAL:$1|го|ги}} пред да зачувате:',
-	'right-tboverride' => 'Игнорирање на црната листа на наслови',
+	'right-tboverride' => 'Занемарување на црниот список на наслови',
 );
 
 /** Malayalam (മലയാളം)
@@ -1164,7 +1168,7 @@ $messages['nl'] = array(
 	'titleblacklist-forbidden-upload' => 'Het bestand "$2" kan niet toegevoegd worden. Deze bestandsnaam voldoet aan de volgende beperking op de zwarte lijst: <code>$1</code>',
 	'titleblacklist-forbidden-new-account' => 'De gebruikersnaam "$2" kan niet aangemaakt worden omdat het voldoet aan de volgende beperking op de zwarte lijst: <code>$1</code>',
 	'titleblacklist-invalid' => 'De volgende {{PLURAL:$1|regel|regels}} in de zwarte lijst voor paginanamen {{PLURAL:$1|is|zijn}} ongeldig. Verbeter die {{PLURAL:$1|regel|regels}} alstublieft voordat u de lijst opslaat:',
-	'right-tboverride' => 'De zwarte lijst voor paginanamen negeren',
+	'right-tboverride' => 'De zwarte lijst voor paginanamen omzeilen',
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
@@ -1419,12 +1423,15 @@ Zodpovedá nasledovnej položke čiernej listiny: <code>$1</code>',
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Millosh
  * @author Sasa Stefanovic
+ * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
 	'titleblacklist-desc' => 'Допушта забрану стварања страна с одређеним насловима: [[MediaWiki:Titleblacklist|црна листа]] и [[MediaWiki:Titlewhitelist|бела листа]].',
 	'titleblacklist' => '# Ово је наслов црног списка. Наслови који садрже регуларни израз из овог списка не могу бити направљени.
-# Користи "#" за коментаре.',
-	'titlewhitelist' => '# Ово је бели списак наслова. Користи "#" за коментаре.',
+# Користи "#" за коментаре.
+# Подразумевано је неосетљив на величину слова',
+	'titlewhitelist' => '# Ово је бели списак наслова. Користи "#" за коментаре.
+# Подразумевано је неосетљив на величину слова',
 	'right-tboverride' => 'Преписује црни списак наслова.',
 );
 
@@ -1433,6 +1440,11 @@ $messages['sr-ec'] = array(
  */
 $messages['sr-el'] = array(
 	'titleblacklist-desc' => 'Dopušta zabranu stvaranja strana s određenim naslovima: [[MediaWiki:Titleblacklist|crna lista]] i [[MediaWiki:Titlewhitelist|bela lista]].',
+	'titleblacklist' => '# Ovo je naslov crnog spiska. Naslovi koji sadrže regularni izraz iz ovog spiska ne mogu biti napravljeni.
+# Koristi "#" za komentare.
+# Podrazumevano je neosetljiv na veličinu slova',
+	'titlewhitelist' => '# Ovo je beli spisak naslova. Koristi "#" za komentare.
+# Podrazumevano je neosetljiv na veličinu slova',
 	'right-tboverride' => 'Prepisuje crni spisak naslova.',
 );
 

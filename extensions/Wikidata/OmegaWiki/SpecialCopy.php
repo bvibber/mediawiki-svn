@@ -7,7 +7,9 @@ if ( !defined( 'MEDIAWIKI' ) ) die();
  * User Interface temporarily retained (but currently flawed)
  * Web API will be implemented
  * Minimal documentation is available by calling with &action=help, as a parameter
- * @addtogroup Extensions
+ *
+ * @file
+ * @ingroup Extensions
  *
  * @author Erik Moeller <Eloquence@gmail.com>	(Possibly some remaining code)
  * @author Kim Bruning <kim@bruning.xs4all.nl>

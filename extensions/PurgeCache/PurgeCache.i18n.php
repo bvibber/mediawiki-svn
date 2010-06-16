@@ -2,9 +2,10 @@
 /**
  * Internationalisation file for extension PurgeCache.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  * @author Bertrand GRONDIN
-*/
+ */
 
 $messages = array();
 

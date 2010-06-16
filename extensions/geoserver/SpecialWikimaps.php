@@ -3,7 +3,8 @@ if (!defined('MEDIAWIKI')) die();
 /**
  * A Special Page extension to show full screen maps
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  *
  * @author Jens Frank <jeluf@gmx.de>
  * @copyright Copyright © 2007, Jens Frank

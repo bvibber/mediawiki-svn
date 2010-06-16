@@ -367,7 +367,7 @@ Et stinn all d\'Säiten aus der Kategorie "$1" drop genee wéi all Ënnerkategor
 $messages['mk'] = array(
 	'autocreatecategorypages-desc' => 'Со зачувувањето, автомарски создавај ги страниците кои недостасуваат во категоријата',
 	'autocreatecategorypages-stub' => 'Ова е категориска страница.
-Ги наведува сите страници во категоријата „$1“ како и сите подкатегории на категоријата „$1“, ако постојат.',
+Ги наведува сите страници во категоријата „$1“ како и сите поткатегории на категоријата „$1“, ако постојат.',
 	'autocreatecategorypages-createdby' => 'Автоматски создадено од проширувањето AutoCreateCategoryPages.',
 	'autocreatecategorypages-editor' => 'Автоматски создавач на категории',
 );
@@ -632,5 +632,17 @@ $messages['vo'] = array(
 Lisedon padis valik in klad: „$1“, äsi donakladis valik klada: „$1“ if dabinons.',
 	'autocreatecategorypages-createdby' => 'Pejafon itjäfidiko fa veitükumam: AutoCreateCategoryPages',
 	'autocreatecategorypages-editor' => 'Kladijafan itjäfidik',
+);
+
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Yfdyh000
+ */
+$messages['zh-hans'] = array(
+	'autocreatecategorypages-createdby' => '自动创建由 自动创建分类页面 扩展。',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬) */
+$messages['zh-hant'] = array(
+	'autocreatecategorypages-createdby' => '自動創建由 自動創建分類頁面 擴展。',
 );
 

@@ -323,7 +323,8 @@ class RevisionReviewForm
 	private function approveRevision( $rev ) {
 		global $wgUser, $wgMemc, $wgParser, $wgEnableParserCache;
 		wfProfileIn( __METHOD__ );
-		
+
+		$dbw = wfGetDB( DB_MASTER );		
 		$article = new Article( $this->page );
 
 		$quality = 0;
@@ -386,12 +387,15 @@ class RevisionReviewForm
 			if ( $timestamp > $lastImgTime )
 				$lastImgTime = $timestamp;
 
-			$imgset[] = array(
-				'fi_rev_id' 		=> $rev->getId(),
-				'fi_name' 			=> $img_title->getDBkey(),
-				'fi_img_timestamp'  => $timestamp,
-				'fi_img_sha1' 		=> $key
+			$fileIncludeData = array(
+				'fi_rev_id'			=> $rev->getId(),
+				'fi_name'			=> $img_title->getDBkey(),
+				'fi_img_sha1'		=> $key,
+				// b/c: NULL becomes '' for old fi_img_timestamp def (non-strict)
+				'fi_img_timestamp' 	=> $timestamp ? $dbw->timestamp( $timestamp ) : null
 			);
+			$imgset[] = $fileIncludeData;
+
 			if ( !isset( $imgParams[$img_title->getDBkey()] ) ) {
 				$imgParams[$img_title->getDBkey()] = array();
 			}
@@ -445,19 +449,14 @@ class RevisionReviewForm
 		
 		# Is this a duplicate review?
 		if ( $oldfrev && $flaggedOutput ) {
-			$synced = true;
-			if ( $stableOutput->fr_newestImageTime != $flaggedOutput->fr_newestImageTime )
-				$synced = false;
-			elseif ( $stableOutput->fr_newestTemplateID != $flaggedOutput->fr_newestTemplateID )
-				$synced = false;
-			elseif ( $oldfrev->getTags() != $flags )
-				$synced = false;
-			elseif ( $oldfrev->getFileSha1() != @$fileData['sha1'] )
-				$synced = false;
-			elseif ( $oldfrev->getComment() != $this->notes )
-				$synced = false;
-			elseif ( $oldfrev->getQuality() != $quality )
-				$synced = false;
+			$fileSha1 = $fileData ?
+				$fileData['sha1'] : null; // stable upload version for file pages
+			$synced = (
+				$oldfrev->getTags() == $flags && // tags => quality
+				$oldfrev->getFileSha1() == $fileSha1 &&
+				$oldfrev->getComment() == $this->notes &&
+				FlaggedRevs::includesAreSynced( $stableOutput, $flaggedOutput )
+			);
 			# Don't review if the same
 			if ( $synced ) {
 				wfProfileOut( __METHOD__ );
@@ -465,7 +464,6 @@ class RevisionReviewForm
 			}
 		}
 
-		$dbw = wfGetDB( DB_MASTER );
 		# Our review entry
  		$flaggedRevision = new FlaggedRevision( array(
 			'fr_rev_id'        => $rev->getId(),
@@ -498,8 +496,10 @@ class RevisionReviewForm
 			|| !isset( $poutput->fr_newestTemplateID )
 			|| !isset( $poutput->fr_newestImageTime ) )
 		{
+			$source = $article->getContent();
 			$options = FlaggedRevs::makeParserOptions();
-			$poutput = $wgParser->parse( $article->getContent(), $article->mTitle, $options );
+			$poutput = $wgParser->parse( $source, $article->getTitle(), $options,
+				/*$lineStart*/true, /*$clearState*/true, $article->getLatest() );
 		}
 		# Prepare for a link tracking update
 		$u = new LinksUpdate( $this->page, $poutput );
@@ -619,7 +619,9 @@ class RevisionReviewForm
 		return $p;
 	}
 
-	public static function updateRecentChanges( $title, $revId, $rcId = false, $patrol = true ) {
+	public static function updateRecentChanges(
+		Title $title, $revId, $rcId = false, $patrol = true
+	) {
 		wfProfileIn( __METHOD__ );
 		$revId = intval( $revId );
 		$dbw = wfGetDB( DB_MASTER );
@@ -657,7 +659,7 @@ class RevisionReviewForm
 	 * @return mixed (string/false)
 	 */
 	public static function buildQuickReview(
-		$article, $rev, $templateIDs, $imageSHA1Keys, $stableDiff = false
+		FlaggedArticle $article, $rev, $templateIDs, $imageSHA1Keys, $stableDiff = false
 	) {
 		global $wgUser, $wgRequest;
 		# The revision must be valid and public
@@ -667,7 +669,7 @@ class RevisionReviewForm
 		$id = $rev->getId();
 		$skin = $wgUser->getSkin();
 		# Do we need to get inclusion IDs from parser output?
-		$getPOut = ( $templateIDs && $imageSHA1Keys );
+		$getPOut = !( $templateIDs && $imageSHA1Keys );
 
 		# See if the version being displayed is flagged...
 		$frev = FlaggedRevision::newFromTitle( $article->getTitle(), $id );
@@ -686,13 +688,21 @@ class RevisionReviewForm
 			}
 			$reviewNotes = $srev->getComment();
 			# Re-review button is need for template/file only review case
-			$allowRereview = ( $srev->getRevId() == $id )
-				&& !FlaggedRevs::stableVersionIsSynced( $srev, $article );
+			$allowRereview = ( $srev->getRevId() == $id && !$article->stableVersionIsSynced() );
 		} else {
 			$flags = $oldFlags;
 			// Get existing notes to pre-fill field
 			$reviewNotes = $frev ? $frev->getComment() : "";
 			$allowRereview = false; // re-review button
+		}
+
+		# Disable form for unprivileged users
+		$disabled = array();
+		if ( !$article->getTitle()->quickUserCan( 'review' ) ||
+			!$article->getTitle()->quickUserCan( 'edit' ) ||
+			!FlaggedRevs::userCanSetFlags( $flags ) )
+		{
+			$disabled = array( 'disabled' => 'disabled' );
 		}
 
 		# Begin form...
@@ -714,30 +724,25 @@ class RevisionReviewForm
 			$form .= wfMsgExt( 'revreview-text', array( 'parse' ) );
 		}
 
-		# Disable form for unprivileged users
-		$uneditable = !$article->getTitle()->quickUserCan( 'edit' );
-		$disabled = !FlaggedRevs::userCanSetFlags( $flags ) || $uneditable;
 		if ( $disabled ) {
 			$form .= Xml::openElement( 'div', array( 'class' => 'fr-rating-controls-disabled',
 				'id' => 'fr-rating-controls-disabled' ) );
-			$toggle = array( 'disabled' => "disabled" );
 		} else {
 			$form .= Xml::openElement( 'div', array( 'class' => 'fr-rating-controls',
 				'id' => 'fr-rating-controls' ) );
-			$toggle = array();
 		}
 
 		# Add main checkboxes/selects
 		$form .= Xml::openElement( 'span', array( 'id' => 'mw-fr-ratingselects' ) );
-		$form .= self::ratingInputs( $flags, $disabled, (bool)$frev );
+		$form .= self::ratingInputs( $flags, (bool)$disabled, (bool)$frev );
 		$form .= Xml::closeElement( 'span' );
 		# Add review notes input
 		if ( FlaggedRevs::allowComments() && $wgUser->isAllowed( 'validate' ) ) {
 			$form .= "<div id='mw-fr-notebox'>\n";
 			$form .= "<p>" . wfMsgHtml( 'revreview-notes' ) . "</p>\n";
-			$form .= Xml::openElement( 'textarea',
-				array( 'name' => 'wpNotes', 'id' => 'wpNotes',
-					'class' => 'fr-notes-box', 'rows' => '2', 'cols' => '80' ) ) .
+			$params = array( 'name' => 'wpNotes', 'id' => 'wpNotes',
+				'class' => 'fr-notes-box', 'rows' => '2', 'cols' => '80' ) + $disabled;
+			$form .= Xml::openElement( 'textarea', $params ) .
 				htmlspecialchars( $reviewNotes ) .
 				Xml::closeElement( 'textarea' ) . "\n";
 			$form .= "</div>\n";
@@ -777,10 +782,10 @@ class RevisionReviewForm
 				$form .= "<br />"; // Don't put too much on one line
 			$form .= "<span id='mw-fr-commentbox' style='clear:both'>" .
 				Xml::inputLabel( wfMsg( 'revreview-log' ), 'wpReason', 'wpReason', 35, '',
-					array( 'class' => 'fr-comment-box' ) ) . "&nbsp;&nbsp;&nbsp;</span>";
+					array( 'class' => 'fr-comment-box' ) ) . "&#160;&#160;&#160;</span>";
 		}
 		# Add the submit buttons
-		$form .= self::submitButtons( $frev, (bool)$toggle, $allowRereview );
+		$form .= self::submitButtons( $frev, (bool)$disabled, $allowRereview );
 		# Show stability log if there is anything interesting...
 		if ( $article->isPageLocked() ) {
 			$form .= ' ' . FlaggedRevsXML::logToggle( 'revreview-log-toggle-show' );
@@ -895,7 +900,7 @@ class RevisionReviewForm
 		}
 		# Wrap visible controls in a span
 		$form = Xml::openElement( 'span', array( 'class' => 'fr-rating-options' ) ) . "\n";
-		$form .= implode( '&nbsp;&nbsp;&nbsp;', $items );
+		$form .= implode( '&#160;&#160;&#160;', $items );
 		$form .= Xml::closeElement( 'span' ) . "\n";
 		return $form;
 	}

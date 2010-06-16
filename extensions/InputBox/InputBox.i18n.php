@@ -3,7 +3,8 @@
 /**
  * Messages file for the InputBox extension
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 /**
@@ -70,7 +71,7 @@ $messages['an'] = array(
 	'inputbox-desc' => 'Premite a enclusión de formularios HTML predefinitos',
 	'inputbox-error-no-type' => 'No ha endicato o tipo de caixa de dentrada que cal creyar.',
 	'inputbox-error-bad-type' => 'No se reconoixe o tipo de caixa de dentrada "$1".
-Por fabor, espezifique "create", "comment", "search" u "fulltext".',
+Por favor, especifique "create", "comment", "search" u "fulltext".',
 	'tryexact' => 'Mirar títol esauto',
 	'searchfulltext' => 'Mirar por testo completo',
 	'createarticle' => 'Creyar pachina',
@@ -131,7 +132,7 @@ $messages['ast'] = array(
 	'createarticle' => 'Crear páxina',
 );
 
-/** Azerbaijani (Azərbaycan) */
+/** Azerbaijani (Azərbaycanca) */
 $messages['az'] = array(
 	'createarticle' => 'Məqalə yarat',
 );

@@ -2,8 +2,9 @@
 /**
  * Internationalisation file for NSFileRepo extension.
  *
- * @addtogroup Extensions
-*/
+ * @file
+ * @ingroup Extensions
+ */
 
 $messages = array();
 
@@ -76,6 +77,13 @@ $messages['el'] = array(
  */
 $messages['es'] = array(
 	'nsfilerepo-desc' => 'Proveer características basadas en espacio de nombre a archivos cargados',
+);
+
+/** Finnish (Suomi)
+ * @author Crt
+ */
+$messages['fi'] = array(
+	'nsfilerepo-desc' => 'Tarjoaa nimiavaruuden, joka perustuu lähetetyn tiedoston ominaisuuksiin.',
 );
 
 /** French (Français)

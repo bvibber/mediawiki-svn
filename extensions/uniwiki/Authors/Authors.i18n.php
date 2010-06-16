@@ -368,10 +368,11 @@ $messages['lfn'] = array(
 );
 
 /** Macedonian (Македонски)
+ * @author Bjankuloski06
  * @author Brest
  */
 $messages['mk'] = array(
-	'authors-desc' => 'Додава листа на уредувачи на страници',
+	'authors-desc' => 'Додава список на уредници на страници',
 	'authors_authors' => 'Автори',
 	'authors_anonymous' => 'Анонимни',
 );
@@ -554,6 +555,7 @@ $messages['sk'] = array(
  * @author Dbc334
  */
 $messages['sl'] = array(
+	'authors-desc' => 'Strani pripne seznam sodelavcev',
 	'authors_authors' => 'Avtorji',
 	'authors_anonymous' => 'Brezimnež',
 );

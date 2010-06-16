@@ -1,7 +1,9 @@
 <?php
 /**
  * ReplaceSet
- * @package ReplaceSet
+ *
+ * @file
+ * @ingroup Extensions
  * @author Daniel Friesen (http://mediawiki.org/wiki/User:Dantman) <mediawiki@danielfriesen.name>
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
  *
@@ -117,6 +119,18 @@ $messages['es'] = array(
 	'replaceset-error-regexbadmodifier' => "El modificador de expresión regular '$1' es inválido.",
 );
 
+/** Finnish (Suomi)
+ * @author Centerlink
+ * @author Crt
+ * @author Str4nd
+ */
+$messages['fi'] = array(
+	'replaceset-desc' => 'Lisää <nowiki>{{#replaceset}}</nowiki>-jäsenninfunktion, jota käytetään tekstiosioiden korvaamiseen muotoillulla datalla.',
+	'replaceset-error-calllimit' => 'ReplaceSet-funktion kutsuraja on saavutettu.',
+	'replaceset-error-regexnoend' => 'Säännöllisestä lausekkeesta ”$1” puuttuu loppurajoitin ”$2”',
+	'replaceset-error-regexbadmodifier' => 'Säännöllisen lausekkeen määre ”$1” ei ole kelvollinen.',
+);
+
 /** French (Français)
  * @author PieRRoMaN
  * @author Urhixidur
@@ -184,7 +198,7 @@ $messages['hu'] = array(
  * @author McDutchie
  */
 $messages['ia'] = array(
-	'replaceset-desc' => 'Adde un function de analysator syntactic <nowiki>{{#replaceset}}</nowiki> pro reimplaciar sectiones de texto per datos formatate',
+	'replaceset-desc' => 'Adde un function del analysator syntactic <nowiki>{{#replaceset}}</nowiki> pro reimplaciar sectiones de texto per datos formatate',
 	'replaceset-error-calllimit' => 'Le limite de appellos al function ReplaceSet ha essite attingite.',
 	'replaceset-error-regexnoend' => 'Al patrono del expression regular "$1" manca le delimitator final \'$2\'',
 	'replaceset-error-regexbadmodifier' => "Le modificator de expression regular '$1' non es valide.",

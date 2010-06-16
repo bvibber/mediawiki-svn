@@ -15,8 +15,10 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Jon Harald Søby
+ * @author Umherirrender
  */
 $messages['qqq'] = array(
+	'metadataedit-desc' => '{{desc}}',
 	'metadata_help' => '{{Identical|Metadata}}',
 );
 
@@ -88,7 +90,7 @@ $messages['avk'] = array(
 	'metadata_help' => 'Metadata:',
 );
 
-/** Azerbaijani (Azərbaycan)
+/** Azerbaijani (Azərbaycanca)
  * @author Wertuose
  */
 $messages['az'] = array(
@@ -331,8 +333,11 @@ $messages['fa'] = array(
 	'metadata_help' => 'متاداده:',
 );
 
-/** Finnish (Suomi) */
+/** Finnish (Suomi)
+ * @author Crt
+ */
 $messages['fi'] = array(
+	'metadataedit-desc' => 'Laittaa luokat, kielilinkit ja sallitut mallineet erilliseen tekstikenttään, kun sivuja muokataan.',
 	'metadata_help' => 'Sisältökuvaukset:',
 );
 
@@ -924,8 +929,10 @@ $messages['pt'] = array(
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author 555
+ * @author Giro720
  */
 $messages['pt-br'] = array(
+	'metadataedit-desc' => 'Colocar as categorias, links de línguas e predefinições permitidas numa caixa de texto separada durante a edição de páginas.',
 	'metadata_help' => 'Metadados:',
 );
 
@@ -1068,13 +1075,17 @@ $messages['sq'] = array(
 	'metadata_help' => 'Metadata:',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица)) */
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
 $messages['sr-ec'] = array(
+	'metadataedit-desc' => 'Убацује категорије, језичке везе и одобрене шаблоне у одвојену кутијицу за време измене страна',
 	'metadata_help' => 'Метаподаци:',
 );
 
 /** Serbian Latin ekavian (Srpski (latinica)) */
 $messages['sr-el'] = array(
+	'metadataedit-desc' => 'Ubacuje kategorije, jezičke veze i odobrene šablone u odvojenu kutijicu za vreme izmene strana',
 	'metadata_help' => 'Metapodaci:',
 );
 
@@ -1274,8 +1285,10 @@ $messages['xal'] = array(
 
 /** Yiddish (ייִדיש)
  * @author Joystick
+ * @author פוילישער
  */
 $messages['yi'] = array(
+	'metadataedit-desc' => 'שטעלן קאַטעגאָריעס, שפּראַך לינקען און ערלויבטע מוסטערן אין אַ באַזונדער טעקסט קעסטל בשעת רעדאַקטירן בלעטער',
 	'metadata_help' => 'מעטאַ־דאַטן:',
 );
 

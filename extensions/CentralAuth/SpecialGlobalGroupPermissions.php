@@ -14,7 +14,8 @@
  * Special page to allow managing global groups
  * Prototype for a similar system in core.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 if ( !defined( 'MEDIAWIKI' ) ) {
@@ -165,7 +166,7 @@ class SpecialGlobalGroupPermissions extends SpecialPage {
 		}
 
 		$editlink = wfMsgExt( "centralauth-editgroup-editsets", array( "parseinline" ) );
-		return $select->getHTML() . "&nbsp;{$editlink}";
+		return $select->getHTML() . "&#160;{$editlink}";
 	}
 
 	function buildCheckboxes( $group ) {
@@ -195,7 +196,7 @@ class SpecialGlobalGroupPermissions extends SpecialPage {
 			$label = Xml::tags( 'label', array( 'for' => "wpRightAssigned-$right" ),
 					$desc );
 
-			$checkboxes[] = "<li>$checkbox&nbsp;$label</li>";
+			$checkboxes[] = "<li>$checkbox&#160;$label</li>";
 		}
 
 		$count = count( $checkboxes );

@@ -15,7 +15,7 @@ class ClickTrackingHooks {
 
 	/* 3 tables for click tracking */
 	public static function schema() {
-		global $wgExtNewTables, $wgExtNewIndexes;
+		global $wgExtNewTables, $wgExtNewIndexes, $wgExtNewFields;
 
 		$wgExtNewTables[] = array(
 			'click_tracking',
@@ -30,6 +30,11 @@ class ClickTrackingHooks {
 		$wgExtNewIndexes[] = array(
 			'click_tracking', 'click_tracking_action_time',
 			dirname( __FILE__ ) . '/patch-action_time.sql'
+		);
+		
+		$wgExtNewFields[] = array(
+			'click_tracking', 'additional_info',
+			dirname( __FILE__ ) . '/patch-additional_info.sql'
 		);
 
 		return true;
@@ -163,7 +168,7 @@ class ClickTrackingHooks {
 	 * @return true if the event was stored in the DB
 	 */
 	public static function trackEvent( $session_id, $is_logged_in, $namespace, $event_id, $contribs = 0,
-						$contribs_in_timespan1 = 0, $contribs_in_timespan2 = 0, $contribs_in_timespan3 = 0 ) {
+						$contribs_in_timespan1 = 0, $contribs_in_timespan2 = 0, $contribs_in_timespan3 = 0, $additional= null ) {
 		$dbw = wfGetDB( DB_MASTER );
 
 		$dbw->begin();
@@ -178,7 +183,8 @@ class ClickTrackingHooks {
 			'user_contribs_span2' => ( $is_logged_in ? (int) $contribs_in_timespan2 : null ),
 			'user_contribs_span3' => ( $is_logged_in ? (int) $contribs_in_timespan3 : null ),
 			'namespace' => (int) $namespace,
-			'event_id' => (int) $event_id
+			'event_id' => (int) $event_id,
+			'additional_info' =>  ( isset($additional)  ? (string) $additional : null )
 		);
 
 		$db_status = $dbw->insert( 'click_tracking', $data, __METHOD__ );

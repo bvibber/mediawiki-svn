@@ -113,6 +113,13 @@ $messages['cs'] = array(
 	'yui-desc' => 'Sada nástrojů napsaných v JavaScriptu.',
 );
 
+/** Welsh (Cymraeg)
+ * @author (vinny)
+ */
+$messages['cy'] = array(
+	'yui-desc' => 'Mae set o cyfleustodau a rheolaethau, a ysgrifennwyd yn JavaScript',
+);
+
 /** Danish (Dansk)
  * @author Masz
  */
@@ -622,6 +629,13 @@ $messages['vep'] = array(
  */
 $messages['vi'] = array(
 	'yui-desc' => 'Tập hợp các dụng cụ và trình điều khiển được viết bằng JavaScript',
+);
+
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'yui-desc' => 'א זאַמלונג ווערגצייג און קאנטראלעס, געשריבן אין JavaScript',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

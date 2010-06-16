@@ -3,8 +3,8 @@
 /**
  * Extracts and indexes search terms from recognised upload formats
  *
- * @package MediaWiki
- * @subpackage Extensions
+ * @file
+ * @ingroup Extensions
  * @author Rob Church <robchur@gmail.com>
  */
 class FileSearchIndexer {

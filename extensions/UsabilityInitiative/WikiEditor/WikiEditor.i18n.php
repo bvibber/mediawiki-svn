@@ -134,6 +134,14 @@ $messages['ca'] = array(
 	'wikieditor-loading' => 'Carregant',
 );
 
+/** Chechen (Нохчийн)
+ * @author Sasan700
+ */
+$messages['ce'] = array(
+	'wikieditor-wikitext-tab' => 'Викийоза',
+	'wikieditor-loading' => 'Чуйолуш',
+);
+
 /** Czech (Česky)
  * @author Mormegil
  */
@@ -175,6 +183,7 @@ $messages['diq'] = array(
 	'wikieditor' => 'Interfaceye wikitext ke raver siyayo',
 	'wikieditor-desc' => 'Yew pedê nuştişiyê girdi u moduleyanê binan dano',
 	'wikieditor-wikitext-tab' => 'Wikimeqale',
+	'wikieditor-loading' => 'Bar keno',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -239,10 +248,13 @@ $messages['eu'] = array(
 
 /** Persian (فارسی)
  * @author Ebraminio
+ * @author Huji
  */
 $messages['fa'] = array(
 	'wikieditor' => 'رابط ویرایش پیشرفته ویکی‌متن',
-	'wikieditor-loading' => 'بارگیری',
+	'wikieditor-desc' => 'یک رابط ویرایش پیشرفته ویکی‌متن و چندین پودمان دارای قابلیت فراهم می‌کند',
+	'wikieditor-wikitext-tab' => 'ویکی‌متن',
+	'wikieditor-loading' => 'در حال بارگیری',
 );
 
 /** Finnish (Suomi)
@@ -423,8 +435,8 @@ $messages['lt'] = array(
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
-	'wikieditor' => 'Интерфејс за напредно уредување со викитекст',
-	'wikieditor-desc' => 'Дава проширлив интерфејс за уредување со викитекст и многу модули за разни други алатки',
+	'wikieditor' => 'Посредник за напредно уредување со викитекст',
+	'wikieditor-desc' => 'Дава проширлив посредник за уредување со викитекст и многу модули за разни други алатки',
 	'wikieditor-wikitext-tab' => 'ВикиТекст',
 	'wikieditor-loading' => 'Вчитувам',
 );
@@ -569,6 +581,7 @@ $messages['sah'] = array(
 	'wikieditor' => 'Биики тиэкиһи эрэдээксийэлиир кэҥэтиллибит интерфейс',
 	'wikieditor-desc' => 'Биики тиэкис кэҥэтиллэр интерфейсын уонна модуллар көмөлөрүнэн атын кыахтары хааччыйар',
 	'wikieditor-wikitext-tab' => 'Биики тиэкис',
+	'wikieditor-loading' => 'Хачайдааһын',
 );
 
 /** Sinhala (සිංහල)
@@ -599,6 +612,20 @@ $messages['sl'] = array(
 	'wikieditor-desc' => 'Nudi razširjen vmesnik za urejanje wikibesedila in mnogo modulov z dodatnimi funkcijami',
 	'wikieditor-wikitext-tab' => 'Wikibesedilo',
 	'wikieditor-loading' => 'Nalaganje',
+);
+
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'wikieditor-wikitext-tab' => 'Викитекст',
+	'wikieditor-loading' => 'Учитавање',
+);
+
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'wikieditor-wikitext-tab' => 'Vikitekst',
+	'wikieditor-loading' => 'Učitavanje',
 );
 
 /** Swedish (Svenska)
@@ -699,6 +726,16 @@ $messages['yi'] = array(
 	'wikieditor-desc' => 'פֿאַרברייטבאַרער וויקיטעקס רעדאַקטירונג אויבערפֿלאך מיט א סך מאדולן וואָס פֿאַרזארגן נײַע פֿונקציאנען',
 	'wikieditor-wikitext-tab' => 'וויקיטעקסט',
 	'wikieditor-loading' => 'לאָדנדיק',
+);
+
+/** Cantonese (粵語)
+ * @author Horacewai2
+ */
+$messages['yue'] = array(
+	'wikieditor' => '進階維基文字編輯介面',
+	'wikieditor-desc' => '提供一個可收埋嘅維基文字編輯介面同埋好多其他特色',
+	'wikieditor-wikitext-tab' => '維基文字',
+	'wikieditor-loading' => '開啟緊',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

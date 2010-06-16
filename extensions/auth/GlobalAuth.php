@@ -1,6 +1,7 @@
 <?php
 /**
- * @package Extensions
+ * @file
+ * @ingroup Extensions
  */
 # Copyright (C) 2004 Brion Vibber <brion@pobox.com>
 # Copyright (C) 2005 Jens Frank <jf@mormo.org>
@@ -29,7 +30,7 @@
  *   settings in LocalSettings.php
  *    **TODO**
  *
- * @package Extensions
+ * @ingroup Extensions
  */
 class GlobalAuth {
 	var $tablename, $thiswiki;

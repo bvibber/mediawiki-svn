@@ -2,7 +2,8 @@
 /**
  * Internationalisation file for extension LdapAuthentication.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $messages = array();
@@ -148,6 +149,13 @@ $messages['id'] = array(
 	'ldapauthentication-desc' => 'Pengaya otentikasi LDAP dengan dukungan untuk berbagai metode otentikasi LDAP',
 );
 
+/** Italian (Italiano)
+ * @author HalphaZ
+ */
+$messages['it'] = array(
+	'ldapauthentication-desc' => 'Plugin di autenticazione LDAP con supporto a diversi metodi di autenticazione LDAP',
+);
+
 /** Japanese (日本語)
  * @author Aotake
  */
@@ -219,6 +227,13 @@ $messages['pt'] = array(
 	'ldapauthentication-desc' => "''Plugin'' de autenticação LDAP, com suporte para vários métodos de autenticação",
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Giro720
+ */
+$messages['pt-br'] = array(
+	'ldapauthentication-desc' => "''Plugin'' de autenticação LDAP, com suporte para vários métodos de autenticação",
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */
@@ -238,6 +253,18 @@ $messages['ru'] = array(
  */
 $messages['sk'] = array(
 	'ldapauthentication-desc' => 'Zásuvný modul na autentifikáciu prostredníctvom LDAP s podporou viacerých metód LDAP',
+);
+
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'ldapauthentication-desc' => 'Плагин за LDAP ауторизацију, са подршком за више метода LDAP ауторизације',
+);
+
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'ldapauthentication-desc' => 'Plagin za LDAP autorizaciju, sa podrškom za više metoda LDAP autorizacije',
 );
 
 /** Swedish (Svenska)

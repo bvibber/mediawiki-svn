@@ -5,6 +5,7 @@
  * WhatIsMyIP extension for MediaWiki
  * shows user's IP address
  *
+ * @file
  * @author Łukasz Galezewski <lukasz@wikia.com>
  * @date 2008-01-22
  * @copyright Copyright © 2008 Łukasz Galezewski, Wikia Inc.

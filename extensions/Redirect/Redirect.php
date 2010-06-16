@@ -11,7 +11,8 @@ if ( !defined( 'MEDIAWIKI' ) ) die();
  * http://www.mediawiki.org/wiki/Extension:RedirectOnAccountCreation (Public Domain)
  * http://www.mediawiki.org/wiki/Extension:RedirectAfterLogout (Public Domain)
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  *
  * @author Marcel Minke
  * @author Siebrand Mazeland

@@ -2,8 +2,9 @@
 /**
  * Extension to provide discussion threading similar to a listserv archive
  *
+ * @file
  * @author Jack D. Pond <jack.pond@psitex.com>
- * @addtogroup Extensions
+ * @ingroup Extensions
  * @copyright  2007 Jack D. pond
  * @url http://www.mediawiki.org/wiki/Manual:Extensions
  * @licence GNU General Public Licence 2.0 or later

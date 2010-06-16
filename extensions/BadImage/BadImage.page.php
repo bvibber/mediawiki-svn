@@ -2,7 +2,7 @@
 /**
  * Class provides a special page to manage the bad image list
  *
- * @addtogroup Extensions
+ * @ingroup Extensions
  * @author Rob Church <robchur@gmail.com>
  * @copyright © 2006 Rob Church
  * @licence Copyright holder allows use of the code for any purpose
@@ -45,7 +45,7 @@ class BadImageManipulator extends SpecialPage {
 	}
 
 	function showAdd( &$output, &$user ) {
-		$self = Title::makeTitle( NS_SPECIAL, 'Badimages' );
+		$self = SpecialPage::getTitleFor( 'Badimages' );
 		$form  = Xml::openElement( 'form', array( 'method' => 'post', 'action' => $self->getLocalUrl() ) );
 		$form .= Xml::hidden( 'action', 'add' ) . Xml::hidden( 'wpToken', $user->editToken() );
 		$form .= '<table><tr><td align="right">' . wfMsgHtml( 'badimages-name' ) . '</td>';
@@ -77,7 +77,7 @@ class BadImageManipulator extends SpecialPage {
 	}
 
 	function showRemove( &$output, $name, &$user ) {
-		$self = Title::makeTitle( NS_SPECIAL, 'Badimages' );
+		$self = SpecialPage::getTitleFor( 'Badimages' );
 		$skin =& $user->getSkin();
 		$title = Title::makeTitleSafe( NS_IMAGE, $name );
 		$link = $skin->makeKnownLinkObj( $title, htmlspecialchars( $title->getText() ) );
@@ -157,7 +157,7 @@ class BadImageManipulator extends SpecialPage {
 		$title = Title::makeTitleSafe( NS_IMAGE, $result->bil_name );
 		$ilink = $skin->makeLinkObj( $title, htmlspecialchars( $title->getText() ) );
 		if ( $priv ) {
-			$self = Title::makeTitle( NS_SPECIAL, 'Badimages' );
+			$self = SpecialPage::getTitleFor( 'Badimages' );
 			$ilink .= ' ' . $skin->makeKnownLinkObj( $self, wfMsgHtml( 'badimages-remove' ), 'action=remove&image=' . $title->getPartialUrl() );
 		}
 		$ulink = $skin->userLink( $result->bil_user, $result->user_name ) . $skin->userToolLinks( $result->bil_user, $result->user_name );

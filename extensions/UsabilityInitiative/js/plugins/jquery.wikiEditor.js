@@ -45,6 +45,7 @@ $.wikiEditor = {
 			// jQuery minimums
 			'safari': [['>=', 3]],
 			'chrome': [['>=', 3]],
+			'netscape': [['>=', 9]],
 			'blackberry': false,
 			'ipod': false,
 			'iphone': false
@@ -60,6 +61,7 @@ $.wikiEditor = {
 			// jQuery minimums
 			'safari': [['>=', 3]],
 			'chrome': [['>=', 3]],
+			'netscape': [['>=', 9]],
 			'blackberry': false,
 			'ipod': false,
 			'iphone': false
@@ -90,33 +92,8 @@ $.wikiEditor = {
 			// Cache hit
 			return mod.supported;
 		}
-		// Check if we have any compatiblity information on-hand for the current browser
-		if ( !( $.browser.name in mod.browsers[$( 'body' ).is( '.rtl' ) ? 'rtl' : 'ltr'] ) ) {
-			// Assume good faith :) 
-			return mod.supported = true;
-		}
-		// Check over each browser condition to determine if we are running in a compatible client
-		var browser = mod.browsers[$( 'body' ).is( '.rtl' ) ? 'rtl' : 'ltr'][$.browser.name];
-		if ( typeof browser != 'object' ) {
-			return mod.supported = false;
-		}
-		for ( var condition in browser ) {
-			var op = browser[condition][0];
-			var val = browser[condition][1];
-			if ( val === false ) {
-				return mod.supported = false;
-			} else if ( typeof val == 'string' ) {
-				if ( !( eval( '$.browser.version' + op + '"' + val + '"' ) ) ) {
-					return mod.supported = false;
-				}
-			} else if ( typeof val == 'number' ) {
-				if ( !( eval( '$.browser.versionNumber' + op + val ) ) ) {
-					return mod.supported = false;
-				}
-			}
-		}
-		// Return and also cache the return value - this will be checked somewhat often
-		return mod.supported = true;
+		// Run a browser support test and then cache and return the result
+		return mod.supported = mw.usability.testBrowser( mod.browsers );
 	},
 	/**
 	 * Checks if a module has a specific requirement
@@ -167,7 +144,7 @@ $.wikiEditor = {
 		}
 	},
 	/**
-	 * Provieds a way to extract a property of an object in a certain language, falling back on the property keyed as
+	 * Provides a way to extract a property of an object in a certain language, falling back on the property keyed as
 	 * 'default'. If such key doesn't exist, the object itself is considered the actual value, which should ideally
 	 * be the case so that you may use a string or object of any number of strings keyed by language with a default.
 	 * 
@@ -178,7 +155,7 @@ $.wikiEditor = {
 		return object[lang || wgUserLanguage] || object['default'] || object;
 	},
 	/**
-	 * Provieds a way to extract the path of an icon in a certain language, automatically appending a version number for
+	 * Provides a way to extract the path of an icon in a certain language, automatically appending a version number for
 	 * caching purposes and prepending an image path when icon paths are relative.
 	 * 
 	 * @param icon Icon object from e.g. toolbar config
@@ -193,6 +170,24 @@ $.wikiEditor = {
 			src = path + src;
 		}
 		return src + '?' + wgWikiEditorIconVersion;
+	},
+	/**
+	 * Get the sprite offset for a language if available, icon for a language if available, or the default offset or icon,
+	 * in that order of preference.
+	 * @param icon Icon object, see autoIcon()
+	 * @param offset Offset object
+	 * @param path Icon path, see autoIcon()
+	 * @param lang Language code, defaults to wgUserLanguage
+	 */
+	'autoIconOrOffset': function( icon, offset, path, lang ) {
+		lang = lang || wgUserLanguage;
+		if ( typeof offset == 'object' && lang in offset ) {
+			return offset[lang];
+		} else if ( typeof icon == 'object' && lang in icon ) {
+			return $.wikiEditor.autoIcon( icon, undefined, lang );
+		} else {
+			return $.wikiEditor.autoLang( offset, lang );
+		}
 	}
 };
 
@@ -418,116 +413,125 @@ if ( !context || typeof context == 'undefined' ) {
 		'paste': function( event ) {
 			// Save the cursor position to restore it after all this voodoo
 			var cursorPos = context.fn.getCaretPosition();
-			if ( !context.$content.text() ) {
-				context.$content.empty();
-			}
+			var offset = 0;
 			var oldLength = context.fn.getContents().length;
 			
+			//give everything the wikiEditor class so that we can easily pick out things without that class as pasted 
 			context.$content.find( '*' ).addClass( 'wikiEditor' );
 			if ( $.layout.name !== 'webkit' ) {
 				context.$content.addClass( 'pasting' );
 			}
 			setTimeout( function() {
+				
 				// Kill stuff we know we don't want
 				context.$content.find( 'script,style,img,input,select,textarea,hr,button,link,meta' ).remove();
-				// This is just downright strange - but if we do this on nodes with text nodes, it fixes allot of
-				// space collapsing issues at element boundries
-				context.$content.find( '*' ).each( function() {
-					if ( $(this).children().length == 0 && this.childNodes.length > 0 ) {
-						$(this).text( $(this).text() );
-					}
-				} );
-				// MS Word + webkit
-				context.$content.find( 'p:not(.wikiEditor) p:not(.wikiEditor)' )
-					.each( function(){
-						var outerParent = $(this).parent();
-						outerParent.replaceWith( outerParent.childNodes );
-					} );
-
-				// Unwrap the span found in webkit copies (Apple Richtext)
-				if ( ! $.browser.msie ) {
-					context.$content.find( 'span.Apple-style-span' ).each( function() {
-						$(this).replaceWith( this.childNodes );
-					} );
-				}
 				
+				//anything without wikiEditor class was pasted.
 				var $selection = context.$content.find( ':not(.wikiEditor)' );
-				var newElementHTML = '' ;
-				var $markElement = null;
-				while ( $selection.length && $selection.length > 0 ) {
-					var $currentElement = $selection.eq( 0 );
+				var nodeToDelete = [];
+				var firstDirtyNode;
+				if  ( $selection.length == 0 ) {
+					firstDirtyNode = context.fn.getOffset( cursorPos[0] ).node;
+				} else {
+					firstDirtyNode = $selection.eq( 0 )[0];
+				}
+				while ( firstDirtyNode != null ) {
+					//go up till we find the top pasted node
+					while ( firstDirtyNode.parentNode.nodeName != 'BODY' 
+						 && ! $( firstDirtyNode.parentNode ).hasClass( 'wikiEditor' ) 
+						) {
+						firstDirtyNode = firstDirtyNode.parentNode;
+					}
+					
+					//go back till we find the first pasted node
+					while ( firstDirtyNode.previousSibling != null
+							&& ! $( firstDirtyNode.previousSibling ).hasClass( 'wikiEditor' )
+						) {
 						
-					//go up till we find the first pasted element
-					while ( !$currentElement.parent().is( 'body' ) && !$currentElement.parent().is( '.wikiEditor' ) ) {
-						$currentElement = $currentElement.parent();
-					}
-					//go to the previous element till we find the first pasted element
-					while ( $currentElement[0] != null && 
-							$currentElement[0].previousSibling != null && 
-							!$( $currentElement[0].previousSibling ).hasClass( 'wikiEditor' ) ) {
-						$currentElement = $( $currentElement[0].previousSibling );
+						if ( $( firstDirtyNode.previousSibling ).hasClass( '#comment' ) ) {
+							$( firstDirtyNode ).remove();
+						} else {
+							firstDirtyNode = firstDirtyNode.previousSibling;
+						}
 					}
 					
-					// we're going to collect and sanitize all the pasted content and then insert it at $markElement 
-					var currentHTML = '';
-					if ( $currentElement[0].nodeName == '#text' ) { 
-						//if it is a text node then just append it
-						currentHTML = $currentElement[0].nodeValue;
-					} else {
-						currentHTML = $currentElement.html();
-						// First remove all new lines
-						currentHTML = currentHTML.replace( /\r?\n/g, '');
-						//replace all forms of <p> tags with a \n. All other tags get removed.
-						currentHTML = currentHTML.replace(/(<[\s]*p[^>]*>)|(<[\s]*\/p[^>]*>)|(<[\s]*p[^\/>]*\/>)/gi, '\n');
-						// Replace all forms of html tags that should end up in their own <p>
-						currentHTML = currentHTML.replace(/(<[\s]*p[^>]*>)|(<[\s]*\/p[^>]*>)|(<[\s]*p[^\/>]*\/>)|(<[\s]*h[\d][^>]*>)|(<[\s]*h[\d][^\/>]*\/>)/gi, '\n');
-						currentHTML = currentHTML.replace(/(<[^>]*>)|(<[^\>]*\>)/gi, '');
-						currentHTML += '\n';
+					var $lastDirtyNode = $( firstDirtyNode );
+					var cc = makeContentCollector( $.browser, null );
+					while ( firstDirtyNode != null && ! $( firstDirtyNode ).hasClass( 'wikiEditor' ) ) {
+						cc.collectContent(firstDirtyNode);
+						
+						cc.notifyNextNode(firstDirtyNode.nextSibling);
+						pastedContent = cc.getLines();
+						if ((pastedContent.length <= 1 || pastedContent[pastedContent.length - 1] !== "")
+								&& firstDirtyNode.nextSibling) {
+							nodeToDelete.push( firstDirtyNode );
+							firstDirtyNode = firstDirtyNode.nextSibling;
+							cc.collectContent(firstDirtyNode);
+							cc.notifyNextNode(firstDirtyNode.nextSibling);
+						}
+						nodeToDelete.push( firstDirtyNode );
+						firstDirtyNode = firstDirtyNode.nextSibling;
 					}
-					newElementHTML += currentHTML;
+					var ccData = cc.finish();
+					var pastedContent = ccData.lines;
+					if ( pastedContent.length == 0 && firstDirtyNode ) {
+						offset += $( firstDirtyNode ).text().length;
+					}
 					
-					if ( $markElement == null ) {
-						$markElement = $( '<div></div>' ).addClass( 'wikiEditor' ).insertAfter( $currentElement );
-                    }
-					$currentElement.remove();
+					if ( nodeToDelete.length > 0 ) {
+						$lastDirtyNode = $( nodeToDelete[nodeToDelete.length - 1] );
+					}
+					
+					var testVal = '';
+					testVal = $( nodeToDelete[0] ).text();
+					
+					var pastedPretty = '';
+					for ( var i = 0; i < pastedContent.length; i++ ) {
+						//escape html
+						pastedPretty = pastedContent[i].replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\r?\n/g, '\\n');
+						//replace leading white spaces with &nbsp;
+						match = pastedContent[i].match(/^[\s]+[^\s]/);
+						if ( match != null && match.length > 0  ) {
+							index = match[0].length;
+							leadingSpace = match[0].replace(/[\s]/g, '&nbsp;');
+							pastedPretty = leadingSpace + pastedPretty.substring(index, pastedPretty.length);
+						}
+						
+						$newElement = $( '<p class="wikiEditor" ></p>' );
+						if ( pastedPretty ) {
+							$newElement.html( '<span class = "wikiEditor">' + pastedPretty + '</span>' );
+						} else {
+							$newElement.html( '<br class="wikiEditor">' );
+						}
+						$newElement.insertAfter( $lastDirtyNode );
+						offset += pastedPretty.length;
+						$lastDirtyNode = $newElement;
+					}
+					
+					while ( nodeToDelete.length > 0 ) {
+						$( nodeToDelete.pop() ).remove();
+					}
+					
+					//find the next node that may not be the next sibling (in IE)
 					$selection = context.$content.find( ':not(.wikiEditor)' );
-				}
-				
-				//now put a <p> around each line of pasted content
-				var pieces = newElementHTML.split( '\n' );
-				var $newElement;
-				for ( var i = 0; i < pieces.length; i++ ) {
-					$newElement = $( '<p></p>' );
-					if ( pieces[i] ) {
-						$newElement.text( pieces[i] );
+					if  ( $selection.length == 0 ) {
+						firstDirtyNode = null;
 					} else {
-						$newElement.html( '<br>' );
+						firstDirtyNode = $selection.eq( 0 )[0];
 					}
-					
-					$newElement.insertAfter( $markElement );
-					if (i == 0 ) {
-						$markElement.remove();
-					}
-					$markElement = $newElement;
 				}
-
-
+				
 				context.$content.find( '.wikiEditor' ).removeClass( 'wikiEditor' );
-				if ( $.layout.name !== 'webkit' ) {
-					context.$content.removeClass( 'pasting' );
-				}
 				
+				//context.$content.find( '*' ).addClass( 'wikiEditor' );
 				
-				// Restore cursor position
-				context.fn.purgeOffsets();
-				var newLength = context.fn.getContents().length;
-				var restoreTo = cursorPos[0] + newLength - oldLength;
-				if ( restoreTo > newLength ) {
-					restoreTo = newLength;
-				}
+				//now place the cursor at the end of pasted content
+				var restoreTo = cursorPos[1] + offset;
+				
 				context.fn.setSelection( { start: restoreTo, end: restoreTo } );
-			}, 0 );
-			return true;
+
+		}, 0 );
+		return true;
 		},
 		'ready': function( event ) {
 			// Initialize our history queue

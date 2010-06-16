@@ -3,8 +3,9 @@
  * Internationalisation file for extension intersection.
  * Old version of DynamicPageList extension used for Wikinews projects
  *
- * @addtogroup Extensions
-*/
+ * @file
+ * @ingroup Extensions
+ */
 
 $messages= array();
 
@@ -28,16 +29,17 @@ $messages['qqq'] = array(
 $messages['af'] = array(
 	'intersection_toomanycats' => 'Fout: Te veel kategorieë!',
 	'intersection_noresults' => 'Fout: Geen resultate!',
+	'intersection_noincludecats' => "Fout: U moet ten minste een kategorie insluit, of spesifiseer 'n naamspasie!",
 );
 
 /** Aragonese (Aragonés)
  * @author Juanpabl
  */
 $messages['an'] = array(
-	'intersection-desc' => "Preduz una lista d'os elementos más rezients que bi ha en una categoría u a unión de barios categorías",
+	'intersection-desc' => "Quita una lista d'os elementos más recients que bi ha en una categoría u a unión de quantas categorías",
 	'intersection_toomanycats' => 'Error: Masiadas categorías!',
 	'intersection_noresults' => 'Error: No bi ha garra resultau!',
-	'intersection_noincludecats' => "Error: Ha d'encluyir á lo menos una categoría u endicar un espazio de nombres!",
+	'intersection_noincludecats' => "Error: Ha d'encluyir a lo menos una categoría u endicar un espacio de nombres!",
 );
 
 /** Arabic (العربية)
@@ -539,7 +541,7 @@ $messages['mg'] = array(
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
-	'intersection-desc' => 'Дава листа со потточки на најскорешните содржини во една категорија, или пак вкрстување на неколку категории.',
+	'intersection-desc' => 'Дава список со потточки на најскорешните содржини во една категорија, или пак вкрстување на неколку категории.',
 	'intersection_toomanycats' => 'Грешка: Премногу категории!',
 	'intersection_noresults' => 'Грешка: Нема резултати!',
 	'intersection_noincludecats' => 'Грешка: Мора да вклучите барем една категорија, или пак да назначите именски простор!',
@@ -656,13 +658,14 @@ $messages['pms'] = array(
 
 /** Portuguese (Português)
  * @author 555
+ * @author Hamilton Abreu
  * @author Malafaya
  */
 $messages['pt'] = array(
 	'intersection-desc' => 'constrói uma lista pontuada dos itens mais recentes presentes numa categoria, ou uma união de várias categorias',
 	'intersection_toomanycats' => 'Error: Categorias em excesso!',
 	'intersection_noresults' => 'Error: Sem resultados!',
-	'intersection_noincludecats' => 'Error: É necessário incluir no mínimo uma categoria ou especificar um espaço nominal!',
+	'intersection_noincludecats' => 'Erro: É necessário incluir no mínimo uma categoria ou especificar um espaço nominal!',
 );
 
 /** Brazilian Portuguese (Português do Brasil)

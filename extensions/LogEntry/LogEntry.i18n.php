@@ -36,6 +36,8 @@ Do not translate or change tag names, or link anchors.',
  */
 $messages['af'] = array(
 	'logentry-append' => 'Byvoeg',
+	'logentry-invalidpage' => 'Ongeldige bladsy',
+	'logentry-invalidtoken' => 'Ongeldige token',
 );
 
 /** Arabic (العربية)
@@ -515,6 +517,18 @@ $messages['sk'] = array(
  */
 $messages['sq'] = array(
 	'logentry-invalidpage' => 'Faqe jovalide',
+);
+
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'logentry-append' => 'Додај',
+);
+
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'logentry-append' => 'Dodaj',
 );
 
 /** Swedish (Svenska)

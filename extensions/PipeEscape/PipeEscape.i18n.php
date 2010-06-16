@@ -2,7 +2,8 @@
 /**
  * Internationalisation file for extension PipeEscape.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -302,6 +303,18 @@ $messages['ru'] = array(
  */
 $messages['sk'] = array(
 	'pipeescape-desc' => 'Funkciu syntaktického analyzátora <code>#!</code> použijete vtedy, keď chcete, aby bol znak rúry iba znakom rúry',
+);
+
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'pipeescape-desc' => "Парсерска функција <code>#!</code> за случајеве када пајп-карактер ('|') треба да буде само то.",
+);
+
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'pipeescape-desc' => "Parserska funkcija <code>#!</code> za slučajeve kada pajp-karakter ('|') treba da bude samo to.",
 );
 
 /** Swedish (Svenska)

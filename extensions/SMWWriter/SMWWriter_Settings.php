@@ -22,7 +22,7 @@ $wgExtensionCredits['other'][]= array(
 	'path' => __FILE__,
 	'name' => 'SMWWriter',
 	'version' => SMWWRITER_VERSION,
-	'author' => array( '[http://simia.net Denny&nbsp;Vrandecic]' ),
+	'author' => array( '[http://simia.net Denny&#160;Vrandecic]' ),
 	'url' => 'http://semantic-mediawiki.org/wiki/Semantic_MediaWiki_Writer',
 	'description' => 'API for editing metadata in Semantic MediaWiki'
 );

@@ -2,13 +2,21 @@
 /**
  * Internationalisation file for extension ParserWiki.
  *
- * @addtogroup Extensions
-*/
+ * @file
+ * @ingroup Extensions
+ */
 
 $messages = array();
 
 $messages['en'] = array(
 	'parserwiki-desc' => ' Allows to define a grammar in a wiki then use that grammar to input information to the same wiki',
+);
+
+/** Message documentation (Message documentation)
+ * @author Umherirrender
+ */
+$messages['qqq'] = array(
+	'parserwiki-desc' => '{{desc}}',
 );
 
 /** Gheg Albanian (Gegë)
@@ -51,6 +59,14 @@ $messages['dsb'] = array(
  */
 $messages['es'] = array(
 	'parserwiki-desc' => 'Permite definir una gramática en un wiki luego usar esa gramática para ingresar información a dicha wiki',
+);
+
+/** Finnish (Suomi)
+ * @author Crt
+ * @author Str4nd
+ */
+$messages['fi'] = array(
+	'parserwiki-desc' => 'Mahdollistaa kieliopin määrittelyn wikissä ja käyttää määritettyä kielioppia saman wikin tiedonsyöttöön.',
 );
 
 /** French (Français)
@@ -171,6 +187,13 @@ $messages['pms'] = array(
  * @author Hamilton Abreu
  */
 $messages['pt'] = array(
+	'parserwiki-desc' => 'Permite definir uma gramática numa wiki e depois usá-la para inserir informação nessa mesma wiki',
+);
+
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Giro720
+ */
+$messages['pt-br'] = array(
 	'parserwiki-desc' => 'Permite definir uma gramática numa wiki e depois usá-la para inserir informação nessa mesma wiki',
 );
 

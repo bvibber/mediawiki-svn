@@ -121,11 +121,10 @@ class CodeRevisionView extends CodeView {
 		}
 
 		if ( $this->mReplyTarget ) {
-			global $wgJsMimeType;
 			$id = intval( $this->mReplyTarget );
-			$html .= "<script type=\"$wgJsMimeType\">addOnloadHook(function(){" .
-				"document.getElementById('wpReplyTo$id').focus();" .
-				"});</script>\n";
+			$html .= Html::inlineScript(
+				"addOnloadHook(function(){document.getElementById('wpReplyTo$id').focus();});"
+			) . "\n";
 		}
 
 		if ( $this->canPostComments() ) {
@@ -153,7 +152,7 @@ class CodeRevisionView extends CodeView {
 
 		if ( $prev ) {
 			$prevTarget = SpecialPage::getTitleFor( 'Code', "$repo/$prev" );
-			$links[] = '&lt;&nbsp;' . $this->mSkin->link( $prevTarget, $this->mRev->getIdString( $prev ),
+			$links[] = '&lt;&#160;' . $this->mSkin->link( $prevTarget, $this->mRev->getIdString( $prev ),
 				array(), array( 'path' => $this->mPath ) );
 		}
 
@@ -169,7 +168,7 @@ class CodeRevisionView extends CodeView {
 		if ( $next ) {
 			$nextTarget = SpecialPage::getTitleFor( 'Code', "$repo/$next" );
 			$links[] = $this->mSkin->link( $nextTarget, $this->mRev->getIdString( $next ),
-				array(), array( 'path' => $this->mPath ) ) . '&nbsp;&gt;';
+				array(), array( 'path' => $this->mPath ) ) . '&#160;&gt;';
 		}
 
 		return $wgLang->pipeList( $links );
@@ -239,7 +238,7 @@ class CodeRevisionView extends CodeView {
 				array_map(
 					array( $this, 'formatTag' ),
 					$tags )
-			) . '&nbsp;';
+			) . '&#160;';
 		}
 		if ( $wgUser->isAllowed( 'codereview-add-tag' ) ) {
 			$list .= $this->addTagForm( $this->mAddTags, $this->mRemoveTags );
@@ -293,7 +292,7 @@ class CodeRevisionView extends CodeView {
 	static function addTagForm( $addTags, $removeTags ) {
 		return '<div><table><tr><td>' .
 			Xml::inputLabel( wfMsg( 'code-rev-tag-add' ), 'wpTag', 'wpTag', 20,
-				self::listTags( $addTags ) ) . '</td><td>&nbsp;</td><td>' .
+				self::listTags( $addTags ) ) . '</td><td>&#160;</td><td>' .
 			Xml::inputLabel( wfMsg( 'code-rev-tag-remove' ), 'wpRemoveTag', 'wpRemoveTag', 20,
 				self::listTags( $removeTags ) ) . '</td></tr></table></div>';
 	}
@@ -438,10 +437,10 @@ class CodeRevisionView extends CodeView {
 	}
 
 	protected function stubDiffLoader() {
-		global $wgOut, $wgScriptPath, $wgCodeReviewStyleVersion;
+		global $wgOut, $wgExtensionAssetsPath, $wgCodeReviewStyleVersion;
 		$encRepo = Xml::encodeJsVar( $this->mRepo->getName() );
 		$encRev = Xml::encodeJsVar( $this->mRev->getId() );
-		$wgOut->addScriptFile( "$wgScriptPath/extensions/CodeReview/codereview.js?$wgCodeReviewStyleVersion" );
+		$wgOut->addScriptFile( "$wgExtensionAssetsPath/CodeReview/codereview.js?$wgCodeReviewStyleVersion" );
 		$wgOut->addInlineScript(
 			"addOnloadHook(
 				function() {
@@ -501,10 +500,10 @@ class CodeRevisionView extends CodeView {
 		global $wgLang;
 		$revId = $change->rev->getIdString();
 		$line = $wgLang->timeanddate( $change->timestamp, true );
-		$line .= '&nbsp;' . $this->mSkin->userLink( $change->user, $change->userText );
+		$line .= '&#160;' . $this->mSkin->userLink( $change->user, $change->userText );
 		$line .= $this->mSkin->userToolLinks( $change->user, $change->userText );
 		// Uses messages 'code-change-status', 'code-change-tags'
-		$line .= '&nbsp;' . wfMsgExt( "code-change-{$change->attrib}", 'parseinline', $revId );
+		$line .= '&#160;' . wfMsgExt( "code-change-{$change->attrib}", 'parseinline', $revId );
 		$line .= " <i>[";
 		// Items that were changed or set...
 		if ( $change->removed ) {
@@ -512,11 +511,11 @@ class CodeRevisionView extends CodeView {
 			// Status changes...
 			if ( $change->attrib == 'status' ) {
 				$line .= wfMsgHtml( 'code-status-' . $change->removed );
-				$line .= $change->added ? "&nbsp;" : ""; // spacing
+				$line .= $change->added ? "&#160;" : ""; // spacing
 			// Tag changes
 			} else if ( $change->attrib == 'tags' ) {
 				$line .= htmlspecialchars( $change->removed );
-				$line .= $change->added ? "&nbsp;" : ""; // spacing
+				$line .= $change->added ? "&#160;" : ""; // spacing
 			}
 		}
 		// Items that were changed to something else...
@@ -590,7 +589,7 @@ class CodeRevisionView extends CodeView {
 			wfMsgHtml( 'code-rev-comment-by',
 				$this->mSkin->userLink( $comment->user, $comment->userText ) .
 				$this->mSkin->userToolLinks( $comment->user, $comment->userText ) ) .
-			' &nbsp; ' .
+			' &#160; ' .
 			$wgLang->timeanddate( $comment->timestamp, true ) .
 			' ' .
 			$this->commentReplyLink( $comment->id ) .

@@ -26,8 +26,10 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author Siebrand
+ * @author Umherirrender
  */
 $messages['qqq'] = array(
+	'lastuserlogin-desc' => '{{desc}}',
 	'lastuserlogin_daysago' => 'This message is used as a column header in a table.',
 	'right-lastlogin' => '{{doc-right}}',
 );
@@ -117,6 +119,20 @@ $messages['ca'] = array(
 	'lastuserlogin_lastlogin' => 'Darrera sessió',
 	'lastuserlogin_daysago' => 'Dies passats',
 	'right-lastlogin' => 'Veure la darrera vegada que un usuari va iniciar sessió',
+);
+
+/** Chechen (Нохчийн)
+ * @author Sasan700
+ */
+$messages['ce'] = array(
+	'lastuserlogin' => 'Хьалхо чубаьхкина декъашхой',
+	'lastuserlogin-desc' => 'Декъашхо тlаьххьара маца чуваьлла хан гойту',
+	'lastuserlogin_userid' => 'Лелочуьнан цlе',
+	'lastuserlogin_username' => 'Хьан бакъ цlе',
+	'lastuserlogin_useremail' => 'Хааман зlе',
+	'lastuserlogin_lastlogin' => 'Хьалхо чувалар',
+	'lastuserlogin_daysago' => 'Де хьалха',
+	'right-lastlogin' => 'декъашхо тlаьххьара маца чуваьлла хан гойту',
 );
 
 /** German (Deutsch)
@@ -300,10 +316,18 @@ $messages['id'] = array(
 	'right-lastlogin' => 'Lihat terakhir kali pengguna masuklog',
 );
 
-/** Italian (Italiano) */
+/** Italian (Italiano)
+ * @author HalphaZ
+ */
 $messages['it'] = array(
+	'lastuserlogin' => 'Ultimo login utente',
+	'lastuserlogin-desc' => "Visualizza l'ultima volta che un utente si è collegato",
 	'lastuserlogin_userid' => 'Nome utente',
 	'lastuserlogin_username' => 'Nome vero',
+	'lastuserlogin_useremail' => 'E-mail utente',
+	'lastuserlogin_lastlogin' => 'Ultimo login',
+	'lastuserlogin_daysago' => 'Giorni fa',
+	'right-lastlogin' => "Visualizza l'ultima volta che un utente si è collegato",
 );
 
 /** Japanese (日本語)
@@ -417,7 +441,7 @@ $messages['pl'] = array(
 	'lastuserlogin-desc' => 'Wyświetla datę i czas ostatniego zalogowania się przez użytkownika',
 	'lastuserlogin_userid' => 'Login',
 	'lastuserlogin_username' => 'Prawdziwa nazwa',
-	'lastuserlogin_useremail' => 'Adres e-mail',
+	'lastuserlogin_useremail' => 'Adres e‐mail',
 	'lastuserlogin_lastlogin' => 'Ostatnie zalogowanie',
 	'lastuserlogin_daysago' => 'dni temu',
 	'right-lastlogin' => 'Podgląd daty i czasu ostatniego zalogowania się użytkownika',
@@ -438,6 +462,15 @@ $messages['pms'] = array(
 	'right-lastlogin' => "Vëdde l'ùltima vira che n'utent a l'é intrà ant ël sistema",
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'lastuserlogin_userid' => 'کارن-نوم',
+	'lastuserlogin_username' => 'اصلي نوم',
+	'lastuserlogin_useremail' => 'د کارن برېښليک',
+);
+
 /** Portuguese (Português)
  * @author Giro720
  * @author Hamilton Abreu
@@ -454,9 +487,13 @@ $messages['pt'] = array(
 );
 
 /** Brazilian Portuguese (Português do Brasil)
+ * @author Giro720
  * @author Luckas Blade
  */
 $messages['pt-br'] = array(
+	'lastuserlogin' => 'Última autenticação',
+	'lastuserlogin-desc' => 'Mostra a última vez que um usuário se autenticou',
+	'lastuserlogin_userid' => 'Nome de usuário',
 	'lastuserlogin_username' => 'Nome real',
 	'lastuserlogin_useremail' => 'Email do usuário',
 	'lastuserlogin_lastlogin' => 'Último login',
@@ -476,6 +513,32 @@ $messages['ru'] = array(
 	'lastuserlogin_lastlogin' => 'Недавнее посещение',
 	'lastuserlogin_daysago' => 'Дней назад',
 	'right-lastlogin' => 'просмотр времени последнего входа участника',
+);
+
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'lastuserlogin' => 'Последње логовање корисника',
+	'lastuserlogin-desc' => 'Приказује када се корисник задњи пут улоговао',
+	'lastuserlogin_userid' => 'Корисничко име',
+	'lastuserlogin_username' => 'Право име',
+	'lastuserlogin_useremail' => 'Корисникова електронска пошта',
+	'lastuserlogin_lastlogin' => 'Последње логовање',
+	'lastuserlogin_daysago' => 'Протекли дани',
+	'right-lastlogin' => 'Приказивање последњег пута када се неки корисник улоговао',
+);
+
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'lastuserlogin' => 'Poslednje logovanje korisnika',
+	'lastuserlogin-desc' => 'Prikazuje kada se korisnik zadnji put ulogovao',
+	'lastuserlogin_userid' => 'Korisničko ime',
+	'lastuserlogin_username' => 'Pravo ime',
+	'lastuserlogin_useremail' => 'Korisnikova elektronska pošta',
+	'lastuserlogin_lastlogin' => 'Poslednje logovanje',
+	'lastuserlogin_daysago' => 'Protekli dani',
+	'right-lastlogin' => 'Prikazivanje poslednjeg puta kada se neki korisnik ulogovao',
 );
 
 /** Swedish (Svenska)
@@ -544,5 +607,17 @@ $messages['zh-hans'] = array(
 	'lastuserlogin_lastlogin' => '最后一次登录',
 	'lastuserlogin_daysago' => '天之前',
 	'right-lastlogin' => '查看用户最后一次登录时间',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬) */
+$messages['zh-hant'] = array(
+	'lastuserlogin' => '最後一次用戶登錄',
+	'lastuserlogin-desc' => '顯示用戶最後一次登錄的時間',
+	'lastuserlogin_userid' => '用戶名',
+	'lastuserlogin_username' => '真實姓名',
+	'lastuserlogin_useremail' => '用戶電子郵件',
+	'lastuserlogin_lastlogin' => '最後一次登錄',
+	'lastuserlogin_daysago' => '天之前',
+	'right-lastlogin' => '查看用戶最後一次登錄時間',
 );
 

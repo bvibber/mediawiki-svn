@@ -1,5 +1,4 @@
 <?php
-if ( !defined( 'MEDIAWIKI' ) ) die();
 /**
  * Multiple language wiki file format handler.
  *
@@ -55,8 +54,9 @@ class WikiExtensionFormatReader extends WikiFormatReader {
 			}
 		}
 
-		if ( $unknown )
+		if ( $unknown ) {
 			$sections[] = implode( "\n", $unknown );
+		}
 
 		return array( $header, $sections );
 	}
@@ -65,18 +65,19 @@ class WikiExtensionFormatReader extends WikiFormatReader {
 		if ( $this->filename === false ) {
 			return array();
 		}
+
 		$ { $this->variableName } = array();
 		require( $this->filename );
 		$messages = $ { $this->variableName } ;
 		foreach ( $messages as $code => $value ) {
 			$messages[$code] = $mangler->mangle( $value );
 		}
+
 		return $messages;
 	}
 }
 
 class WikiExtensionFormatWriter extends WikiFormatWriter {
-
 	// Inherit
 	protected $authors;
 
@@ -117,6 +118,7 @@ class WikiExtensionFormatWriter extends WikiFormatWriter {
 		rewind( $handle );
 		$data = stream_get_contents( $handle );
 		fclose( $handle );
+
 		return $data;
 	}
 
@@ -129,7 +131,10 @@ class WikiExtensionFormatWriter extends WikiFormatWriter {
 
 		$__languages = Language::getLanguageNames( false );
 		foreach ( array_keys( $__languages ) as $code ) {
-			if ( $code === 'en' || $code === 'qqq' ) continue;
+			if ( $code === 'en' || $code === 'qqq' ) {
+				continue;
+			}
+
 			$this->exportSection( $handle, $code, $languages );
 		}
 	}
@@ -137,7 +142,6 @@ class WikiExtensionFormatWriter extends WikiFormatWriter {
 	protected function exportSection( $handle, $code, array $languages ) {
 		// Never export en, just copy it verbatim
 		if ( in_array( $code, $languages ) && $code !== 'en' ) {
-
 			// Parse authors only if we regenerate section
 			if ( isset( $this->sections[$code] ) ) {
 				$authors = $this->parseAuthorsFromString( $this->sections[$code] );
@@ -154,11 +158,13 @@ class WikiExtensionFormatWriter extends WikiFormatWriter {
 	protected function writeSection( $handle, $code ) {
 		$messages = $this->getMessagesForExport( $this->group, $code );
 		$messages = $this->makeExportArray( $messages );
+
 		if ( count( $messages ) ) {
 			list( $name, $native ) = $this->getLanguageNames( $code );
 			$authors = $this->formatAuthors( ' * @author ', $code );
-			if ( !empty( $authors ) )
+			if ( !empty( $authors ) ) {
 				$authors = "\n$authors";
+			}
 
 			fwrite( $handle, "/** $name ($native)$authors */\n" );
 			fwrite( $handle, "\${$this->variableName}['$code'] = array(\n" );
@@ -169,6 +175,7 @@ class WikiExtensionFormatWriter extends WikiFormatWriter {
 
 	public function parseAuthorsFromString( $string ) {
 		$count = preg_match_all( '/@author (.*)/', $string, $m );
+
 		return $m[1];
 	}
 

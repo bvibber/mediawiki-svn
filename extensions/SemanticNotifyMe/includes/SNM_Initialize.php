@@ -151,7 +151,7 @@ function smwgNMSetupExtension() {
 
 	// Register Credits
 	$wgExtensionCredits['parserhook'][] = array(
-	'name' => 'Semantic&nbsp;NotifyMe&nbsp;Extension', 'version' => SMW_NM_VERSION,
+	'name' => 'Semantic&#160;NotifyMe&#160;Extension', 'version' => SMW_NM_VERSION,
 			'author' => "Ning Hu, Justin Zhang, [http://smwforum.ontoprise.com/smwforum/index.php/Jesse_Wang Jesse Wang], sponsored by [http://projecthalo.com Project Halo], [http://www.vulcan.com Vulcan Inc.]",
 			'url' => 'http://wiking.vulcan.com/dev',
 			'description' => 'Notify wiki user with specified queries.' );

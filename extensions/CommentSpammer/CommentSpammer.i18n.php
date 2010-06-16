@@ -2,7 +2,8 @@
 /**
  * Internationalisation file for extension CommentSpammer
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $messages = array();
@@ -425,7 +426,7 @@ $messages['lb'] = array(
 $messages['mk'] = array(
 	'commentspammer-save-blocked' => 'Вашата IP-адреса е осомничена како спамер на коментари, и затоа оваа страница не беше зачувана.
 [[Special:UserLogin|Најавете се или создајте сметка]] за да го избегнете ова.',
-	'commentspammer-desc' => 'Одбива уредувања од осомничени спамери на коментари кои се на DNS црната листа',
+	'commentspammer-desc' => 'Одбива уредувања од осомничени спамери на коментари кои се на DNS-црниот список',
 	'commentspammer-log-msg' => 'уредување од [[Special:Contributions/$1|$1]] на [[:$2]].',
 	'commentspammer-log-msg-info' => 'Последен пат спамирано пред $1 {{PLURAL:$1|ден|дена}}, нивото на загрозеност е $2, а кодот на прекршокот е $3.
 [http://www.projecthoneypot.org/search_ip.php?ip=$4 Погледајте детали], или [[Special:Blockip/$4|блокирајте]].',

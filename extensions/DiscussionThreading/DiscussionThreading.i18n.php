@@ -2,8 +2,9 @@
 /**
  * Internationalisation file for DiscussionThreading extension.
  *
- * @addtogroup Extensions
-*/
+ * @file
+ * @ingroup Extensions
+ */
 
 $messages = array();
 
@@ -278,7 +279,7 @@ $messages['ga'] = array(
  */
 $messages['gl'] = array(
 	'discussionthreading-desc' => 'Engadir o encadeamento ás páxinas de conversa',
-	'discussionthreading-replysection' => 'respostar',
+	'discussionthreading-replysection' => 'responder',
 	'discussionthreading-replysectionhint' => 'Respostar esta publicación',
 	'discussionthreading-threadnewsection' => 'novo',
 	'discussionthreading-threadnewsectionhint' => 'Comezar un novo fío de conversa',
@@ -606,6 +607,22 @@ $messages['sk'] = array(
 	'discussionthreading-replysectionhint' => 'Odpovedať na tento príspevok',
 	'discussionthreading-threadnewsection' => 'nové',
 	'discussionthreading-threadnewsectionhint' => 'Začať nové vlákno',
+);
+
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'discussionthreading-replysection' => 'одговори',
+	'discussionthreading-threadnewsection' => 'ново',
+	'discussionthreading-threadnewsectionhint' => 'Започни нову тему',
+);
+
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'discussionthreading-replysection' => 'odgovori',
+	'discussionthreading-threadnewsection' => 'novo',
+	'discussionthreading-threadnewsectionhint' => 'Započni novu temu',
 );
 
 /** Swedish (Svenska)

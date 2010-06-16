@@ -238,7 +238,7 @@
 		$tr = $wgRequest->getVal( 'time_range' );
 		// @@todo pull in metadata layer selector (populated by current selection set)
 		// makeKnownLinkObj( $nt, $text = '', $query = '', $trail = '', $prefix = '' , $aprops = '', $style = '' ) 
-		$sTitle = Title::makeTitle( NS_SPECIAL, 'MvExportStream' );
+		$sTitle = SpecialPage::getTitleFor( 'MvExportStream' );
 		$out .= $sk->makeKnownLinkObj( $sTitle , wfMsg( 'mv_export_cmml' ), 'feed_format=cmml&stream_name=' . $stream_title . '&t=' . $tr );
 		$out .= ' for ' . $mvTitle->getTitleDesc();
 		return $out;

@@ -1,7 +1,10 @@
 <?php
-/** Internationalization message file for News Extension.
-  * @addtogroup extension
-**/
+/**
+ * Internationalization message file for News Extension.
+ *
+ * @file
+ * @ingroup Extensions
+ */
 
 $messages = array();
 
@@ -47,6 +50,13 @@ $messages['br'] = array(
  */
 $messages['bs'] = array(
 	'newsextension-desc' => 'Pokazuje prilagođene nedavne izmjene na wiki stranicama ili kao RSS ili atom',
+);
+
+/** Chechen (Нохчийн)
+ * @author Sasan700
+ */
+$messages['ce'] = array(
+	'newsextension-desc' => 'Гойту нисбина могlам керла нисдарш вики-агlонашах йа аса RSS йа Atom',
 );
 
 /** German (Deutsch)
@@ -331,6 +341,18 @@ $messages['ru'] = array(
  */
 $messages['sk'] = array(
 	'newsextension-desc' => 'Zobrazuje prispôsobené Posledné úpravy na wiki stránkach alebo ako kanál RSS alebo Atom',
+);
+
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'newsextension-desc' => 'Приказује подесиве скорашње измене, или их приказује као RSS или атом фид',
+);
+
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'newsextension-desc' => 'Prikazuje podesive skorašnje izmene, ili ih prikazuje kao RSS ili atom fid',
 );
 
 /** Sundanese (Basa Sunda)

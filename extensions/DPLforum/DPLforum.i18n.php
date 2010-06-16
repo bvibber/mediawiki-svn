@@ -88,7 +88,7 @@ $messages['arz'] = array(
 	'dplforum-toomany' => 'منتدى DPL: تصنيفات كثيرة جدا!',
 );
 
-/** Azerbaijani (Azərbaycan)
+/** Azerbaijani (Azərbaycanca)
  * @author Sortilegus
  */
 $messages['az'] = array(
@@ -637,7 +637,7 @@ $messages['pdc'] = array(
 $messages['pl'] = array(
 	'dplforum-desc' => 'Forum oparte na DPL',
 	'dplforum-by' => 'przez $1',
-	'dplforum-edited' => '- ostatnia edycja',
+	'dplforum-edited' => '– ostatnia edycja',
 	'dplforum-never' => 'Nigdy',
 	'dplforum-toofew' => 'Forum DPL: Zbyt mało kategorii!',
 	'dplforum-toomany' => 'Forum DPL: Zbyt wiele kategorii!',
@@ -760,6 +760,7 @@ $messages['sr-ec'] = array(
  */
 $messages['sr-el'] = array(
 	'dplforum-by' => 'od $1',
+	'dplforum-never' => 'Nikad',
 );
 
 /** Seeltersk (Seeltersk)

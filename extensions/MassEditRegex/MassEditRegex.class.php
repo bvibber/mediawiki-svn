@@ -5,7 +5,8 @@ if ( ! defined( 'MEDIAWIKI' ) )
  * Allow users in the Bot group to edit many articles in one go by applying
  * regular expressions to a list of pages.
  *
- * @addtogroup SpecialPage
+ * @file
+ * @ingroup SpecialPage
  *
  * @link http://www.mediawiki.org/wiki/Extension:MassEditRegex Documentation
  *

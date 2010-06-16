@@ -2,8 +2,8 @@
 /**
  * Internationalisation file for the extension PageBy
  *
- * @package MediaWiki
- * @subpackage Extensions
+ * @file
+ * @ingroup Extensions
  * @author Daniel Kinzler, brightbyte.de
  * @copyright © 2007 Daniel Kinzler
  * @licence GNU General Public Licence 2.0 or later
@@ -592,6 +592,20 @@ $messages['sk'] = array(
 	'pageby-last' => 'Naposledy <a href="$3">zmenil</a> $1, $2',
 	'pageby-contributors' => 'Prispievatelia:',
 	'pageby-anon' => '<i>anonymní</i>',
+);
+
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'pageby-contributors' => 'Доприноси:',
+	'pageby-anon' => '<i>анонимно</i>',
+);
+
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'pageby-contributors' => 'Doprinosi:',
+	'pageby-anon' => '<i>anonimno</i>',
 );
 
 /** Seeltersk (Seeltersk)

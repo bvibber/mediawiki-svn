@@ -76,26 +76,31 @@ $j(document).ready( function() {
 						offset: {
 							'default': [2, -574],
 							'en': [2, -142],
+							'cs': [2, -142],
 							'de': [2, -214],
 							'fr': [2, -286],
 							'es': [2, -358],
+							'he': [2, -142],
 							'it': [2, -286],
 							'nl': [2, -502],
 							'pt': [2, -358],
 							'pt-br': [2, -358],
-							'pl': [2, -430]
+							'pl': [2, -142]
 						},
 						icon: {
 							'default': 'format-bold.png',
 							'en': 'format-bold-B.png',
+							'cs': 'format-bold-B.png',
 							'de': 'format-bold-F.png',
 							'fr': 'format-bold-G.png',
 							'es': 'format-bold-N.png',
+							'he': 'format-bold-B.png',
 							'it': 'format-bold-G.png',
 							'nl': 'format-bold-V.png',
 							'pt': 'format-bold-N.png',
 							'pt-br': 'format-bold-N.png',
-							'pl': 'format-bold-P.png'
+							'pl': 'format-bold-B.png',
+							'ru': 'format-bold-ru.png'
 						},
 						action: {
 							type: 'encapsulate',
@@ -115,26 +120,32 @@ $j(document).ready( function() {
 						offset: {
 							'default': [2, -718],
 							'en': [2, -862],
+							'cs': [2, -862],
 							'de': [2, -934],
 							'fr': [2, -862],
 							'es': [2, -790],
+							'he': [2, -862],
 							'it': [2, -790],
 							'nl': [2, -790],
 							'pt': [2, -862],
 							'pt-br': [2, -862],
-							'pl': [2, -934]
+							'pl': [2, -862],
+							'ru': [2, -934]
 						},
 						icon: {
 							'default': 'format-italic.png',
 							'en': 'format-italic-I.png',
+							'cs': 'format-italic-I.png',
 							'de': 'format-italic-K.png',
 							'fr': 'format-italic-I.png',
 							'es': 'format-italic-C.png',
+							'he': 'format-italic-I.png',
 							'it': 'format-italic-C.png',
 							'nl': 'format-italic-C.png',
 							'pt': 'format-italic-I.png',
 							'pt-br': 'format-italic-I.png',
-							'pl': 'format-italic-K.png'
+							'pl': 'format-italic-I.png',
+							'ru': 'format-italic-K.png'
 						},
 						action: {
 							type: 'encapsulate',
@@ -262,12 +273,12 @@ $j(document).ready( function() {
 							'heading-2' : {
 								labelMsg: 'wikieditor-toolbar-tool-heading-2',
 								action: {
-									type: 'replace',
+									type: 'encapsulate',
 									options: {
-										pre: '==',
+										pre: '== ',
 										periMsg: 'wikieditor-toolbar-tool-heading-example',
-										post: '==',
-										regex: /^(\s*)(={0,6})(.*?)\2(\s*)$/,
+										post: ' ==',
+										regex: /^(\s*)(={1,6})(.*?)\2(\s*)$/,
 										regexReplace: "\$1==\$3==\$4",
 										ownline: true
 									}
@@ -276,12 +287,12 @@ $j(document).ready( function() {
 							'heading-3' : {
 								labelMsg: 'wikieditor-toolbar-tool-heading-3',
 								action: {
-									type: 'replace',
+									type: 'encapsulate',
 									options: {
-										pre: '===',
+										pre: '=== ',
 										periMsg: 'wikieditor-toolbar-tool-heading-example',
-										post: '===',
-										regex: /^(\s*)(={0,6})(.*?)\2(\s*)$/,
+										post: ' ===',
+										regex: /^(\s*)(={1,6})(.*?)\2(\s*)$/,
 										regexReplace: "\$1===\$3===\$4",
 										ownline: true
 									}
@@ -290,12 +301,12 @@ $j(document).ready( function() {
 							'heading-4' : {
 								labelMsg: 'wikieditor-toolbar-tool-heading-4',
 								action: {
-									type: 'replace',
+									type: 'encapsulate',
 									options: {
-										pre: '====',
+										pre: '==== ',
 										periMsg: 'wikieditor-toolbar-tool-heading-example',
-										post: '====',
-										regex: /^(\s*)(={0,6})(.*?)\2(\s*)$/,
+										post: ' ====',
+										regex: /^(\s*)(={1,6})(.*?)\2(\s*)$/,
 										regexReplace: "\$1====\$3====\$4",
 										ownline: true
 									}
@@ -304,12 +315,12 @@ $j(document).ready( function() {
 							'heading-5' : {
 								labelMsg: 'wikieditor-toolbar-tool-heading-5',
 								action: {
-									type: 'replace',
+									type: 'encapsulate',
 									options: {
-										pre: '=====',
+										pre: '===== ',
 										periMsg: 'wikieditor-toolbar-tool-heading-example',
-										post: '=====',
-										regex: /^(\s*)(={0,6})(.*?)\2(\s*)$/,
+										post: ' =====',
+										regex: /^(\s*)(={1,6})(.*?)\2(\s*)$/,
 										regexReplace: "\$1=====\$3=====\$4",
 										ownline: true
 									}
@@ -1464,8 +1475,19 @@ $j(document).ready( function() {
 						// Preserve whitespace when replacing
 						$j( '#wikieditor-toolbar-link-dialog' ).data( 'whitespace', [ matches[1], matches[5] ] );
 					} else {
-						target = text = selection;
+						// Trim any leading and trailing whitespace from the selection,
+						// but preserve it when replacing
+						target = text = $j.trim( selection );
+						if ( target.length < selection.length ) {
+							$j( '#wikieditor-toolbar-link-dialog' ).data( 'whitespace', [
+								selection.substr( 0, selection.indexOf( target.charAt( 0 ) ) ),
+								selection.substr(
+									selection.lastIndexOf( target.charAt( target.length - 1 ) ) + 1
+								) ]
+							);
+						}
 					}
+					
 					// Change the value by calling val() doesn't trigger the change event, so let's do that ourselves
 					if ( typeof text != 'undefined' )
 						$j( '#wikieditor-toolbar-link-int-text' ).val( text ).change();

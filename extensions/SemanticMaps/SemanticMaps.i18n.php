@@ -14,10 +14,10 @@ $messages = array();
 /** English
  * @author Jeroen De Dauw
  */
-
 $messages['en'] = array(
 	// General
 	'semanticmaps_name' => 'Semantic Maps',
+	// TODO: update demo link to the new wiki, once it has 0.6.x running.
 	'semanticmaps_desc' => "Provides the ability to view and edit coordinate data stored through the Semantic MediaWiki extension ([http://wiki.bn2vs.com/wiki/Semantic_Maps demo]).
 Available map services: $1",
 	'semanticmaps-unrecognizeddistance' => 'The value $1 is not a valid distance.',
@@ -512,9 +512,11 @@ Layanan peta yang tersedia: $1',
 /** Italian (Italiano)
  * @author Civvì
  * @author Darth Kule
+ * @author HalphaZ
  */
 $messages['it'] = array(
 	'semanticmaps_desc' => "Offre la possibilità di visualizzare e modificare le coordinate memorizzate attraverso l'estensione Semantic MediaWiki ([http://wiki.bn2vs.com/wiki/Semantic_Maps demo]). Servizi di mappe disponibili: $1",
+	'semanticmaps-unrecognizeddistance' => 'Il valore $1 non è una distanza valida.',
 	'semanticmaps_lookupcoordinates' => 'Cerca coordinate',
 	'semanticmaps_enteraddresshere' => 'Inserisci indirizzo qui',
 	'semanticmaps_notfound' => 'non trovato',
@@ -632,6 +634,7 @@ $messages['mk'] = array(
 $messages['nl'] = array(
 	'semanticmaps_desc' => 'Biedt de mogelijkheid om locatiegegevens die zijn opgeslagen met behulp van de uitbreiding Semantic MediaWiki te bekijken en aan te passen ([http://wiki.bn2vs.com/wiki/Semantic_Maps demo]).
 Beschikbare kaartdiensten: $1',
+	'semanticmaps-unrecognizeddistance' => 'De waarde "$1" is geen geldige afstand.',
 	'semanticmaps_lookupcoordinates' => 'Coördinaten opzoeken',
 	'semanticmaps_enteraddresshere' => 'Voer hier het adres in',
 	'semanticmaps_notfound' => 'niet gevonden',
@@ -692,6 +695,7 @@ $messages['oc'] = array(
 );
 
 /** Polish (Polski)
+ * @author Deejay1
  * @author Derbeth
  * @author Leinad
  * @author Odder
@@ -700,11 +704,13 @@ $messages['oc'] = array(
 $messages['pl'] = array(
 	'semanticmaps_desc' => 'Daje możliwość przeglądania oraz edytowania współrzędnych zapisanych przez rozszerzenie Semantic MediaWiki ([http://wiki.bn2vs.com/wiki/Semantic_Maps demo]).
 Dostępne serwisy mapowe: $1',
+	'semanticmaps-unrecognizeddistance' => 'Wartość $1 nie jest poprawną odległością.',
 	'semanticmaps_lookupcoordinates' => 'Wyszukaj współrzędne',
 	'semanticmaps_enteraddresshere' => 'Podaj adres',
 	'semanticmaps_notfound' => 'nie odnaleziono',
 	'semanticmaps_paramdesc_height' => 'Wysokość mapy w pikselach (domyślnie $1)',
 	'semanticmaps_paramdesc_width' => 'Szerokość mapy w pikselach (domyślnie $1)',
+	'semanticmaps_paramdesc_layers' => 'Warstwy dostępne na mapie',
 );
 
 /** Piedmontese (Piemontèis)
@@ -747,6 +753,7 @@ $messages['ps'] = array(
 $messages['pt'] = array(
 	'semanticmaps_desc' => 'Permite ver e editar dados de coordenadas, armazenados através da extensão MediaWiki Semântico ([http://wiki.bn2vs.com/wiki/Semantic_Maps demonstração]).
 Serviços de cartografia disponíveis: $1',
+	'semanticmaps-unrecognizeddistance' => 'O valor $1 não é uma distância válida.',
 	'semanticmaps_lookupcoordinates' => 'Pesquisar coordenadas',
 	'semanticmaps_enteraddresshere' => 'Introduza um endereço aqui',
 	'semanticmaps_notfound' => 'não encontrado',
@@ -848,16 +855,26 @@ Dostupné mapové služby: $1',
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
+	'semanticmaps-unrecognizeddistance' => 'Вредност $1 није исправно растојање.',
 	'semanticmaps_enteraddresshere' => 'Унеси адресу овде',
 	'semanticmaps_notfound' => 'није нађено',
+	'semanticmaps_paramdesc_height' => 'Висина мапе у пикселима (подразумевано је $1)',
+	'semanticmaps_paramdesc_width' => 'Ширина мапе у пикселима (подразумевано је $1)',
+	'semanticmaps_paramdesc_zoom' => 'Ниво увећања мапе',
+	'semanticmaps_paramdesc_centre' => 'Координате центра мапе',
 );
 
 /** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(
+	'semanticmaps-unrecognizeddistance' => 'Vrednost $1 nije ispravno rastojanje.',
 	'semanticmaps_enteraddresshere' => 'Unesi adresu ovde',
 	'semanticmaps_notfound' => 'nije nađeno',
+	'semanticmaps_paramdesc_height' => 'Visina mape u pikselima (podrazumevano je $1)',
+	'semanticmaps_paramdesc_width' => 'Širina mape u pikselima (podrazumevano je $1)',
+	'semanticmaps_paramdesc_zoom' => 'Nivo uvećanja mape',
+	'semanticmaps_paramdesc_centre' => 'Koordinate centra mape',
 );
 
 /** Swedish (Svenska)
@@ -891,8 +908,24 @@ $messages['te'] = array(
  * @author AnakngAraw
  */
 $messages['tl'] = array(
+	'semanticmaps_desc' => 'Nagbibigay ng kakayahang makita at baguhin ang dato ng tugmaang nakatabi sa pamamagitan ng dugtong na Semantikong MediaWiki ([http://wiki.bn2vs.com/wiki/Semantic_Maps pagpapakita]).
+Makukuhang mga palingkurang pangmapa: $1',
+	'semanticmaps-unrecognizeddistance' => 'Hindi isang tanggap na layo ang halagang $1.',
 	'semanticmaps_lookupcoordinates' => "Hanapin ang mga tugmaang-pampook (''coordinate'')",
 	'semanticmaps_enteraddresshere' => 'Ipasok ang adres dito',
+	'semanticmaps_notfound' => 'hindi natagpuan',
+	'semanticmaps_paramdesc_format' => 'Ang palingkurang pangpagmamapa na ginamit sa paglikha ng mapa',
+	'semanticmaps_paramdesc_geoservice' => 'Ang paglingkurang pang-geokodigo na ginagamit upang maging mga tugmaang-pampook ang mga direksyon',
+	'semanticmaps_paramdesc_height' => 'Ang taas ng mapa, sa piksels ($1 ang likas na nakatakda)',
+	'semanticmaps_paramdesc_width' => 'Ang lapad ng mapa, sa piksels ($1 ang likas na nakatakda)',
+	'semanticmaps_paramdesc_zoom' => 'Ang antas ng paglapit-tutok ng mapa',
+	'semanticmaps_paramdesc_centre' => 'Ang mga tugmaang-pampook ng gitna ng mga mapa',
+	'semanticmaps_paramdesc_controls' => 'Ang mga pangtaban ng tagagamit na inilagay sa ibabaw ng mapa',
+	'semanticmaps_paramdesc_types' => 'Ang mga uri ng mapang makukuha na nasa ibabaw ng mapa',
+	'semanticmaps_paramdesc_type' => 'Ang likas na nakatakdang uri ng mapa na para sa mapa',
+	'semanticmaps_paramdesc_overlays' => 'Ang makukuhang mga patong na nasa ibabaw ng mapa',
+	'semanticmaps_paramdesc_autozoom' => 'Kapag pinagana ang pagtutok-lapit at paglayo sa pamamagitan ng pang-ikid ng maws',
+	'semanticmaps_paramdesc_layers' => 'Ang makukuhang mga patong na nasa ibabaw ng mapa',
 );
 
 /** Turkish (Türkçe)

@@ -119,6 +119,13 @@ Don't change '|' character.",
 	'tasks_status_closed' => '{{Identical|Closed}}',
 );
 
+/** Abkhazian (Аҧсуа)
+ * @author Temuri rajavi
+ */
+$messages['ab'] = array(
+	'tasks_search_form_title' => 'Аҧшаара',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Naudefj
  */
@@ -165,6 +172,7 @@ $messages['am'] = array(
  * @author Juanpabl
  */
 $messages['an'] = array(
+	'tasks_noone' => 'dengún',
 	'tasks_delete' => 'Borrar',
 	'tasks_table_header_page' => 'Pachina',
 );
@@ -2349,7 +2357,7 @@ $messages['mk'] = array(
 	'tasks_discussion_page_link' => 'Разговор за задачата',
 	'tasks_closedby' => 'Затворена од $1',
 	'tasks_assigned_myself_log' => 'Самододелување на задачата „$1“',
-	'tasks_discussion_page_for' => 'Ова е задача за страницата „$1“. Листата на сите задачи за таа страница е $2.',
+	'tasks_discussion_page_for' => 'Ова е задача за страницата „$1“. Списокот на сите задачи за таа страница е $2.',
 	'tasks_sidebar_title' => 'Отворени задачи',
 	'tasks_here' => 'тука',
 	'tasks_returnto' => 'Сега ќе бидете пренасочени. Ако за неколку секунди не се најдете на друга страница, кликнете на $1.',
@@ -3681,7 +3689,7 @@ $messages['tl'] = array(
 	'tasks_tab' => 'Mga gawain',
 	'tasks_title' => 'Mga gawain para kay "$1"',
 	'tasks_form_new' => 'Lumikha ng bagong gawain',
-	'tasks_form_comment' => 'Puna/kumento',
+	'tasks_form_comment' => 'Puna/Kumento',
 	'tasks_error1' => 'Hindi nalikha ang gawain: mayroon nang ganyang isang gawain!',
 	'tasks_ok1' => 'Nalikha na ang isang bagong gawain!',
 	'tasks_create_header' => 'Lumikha ng isang bagong gawain',

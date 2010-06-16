@@ -2,7 +2,8 @@
 /**
  * Internationalisation file for extension Todo.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  * @author Bertrand GRONDIN
  */
 
@@ -257,6 +258,8 @@ $messages['bn'] = array(
 	'todo' => 'করণীয় তালিকা',
 	'todo-tab' => 'করণীয়',
 	'todo-new-queue' => 'নতুন',
+	'todo-list-change' => 'পরিবর্তন',
+	'todo-list-cancel' => 'বাতিল',
 	'todo-form-details' => 'বিস্তারিত:',
 );
 
@@ -1108,6 +1111,13 @@ $messages['km'] = array(
 	'todo-form-details' => 'លំអិត ៖',
 );
 
+/** Kannada (ಕನ್ನಡ)
+ * @author Nayvik
+ */
+$messages['kn'] = array(
+	'todo-new-queue' => 'ಹೊಸ',
+);
+
 /** Kinaray-a (Kinaray-a)
  * @author Jose77
  */
@@ -1196,12 +1206,12 @@ $messages['mhr'] = array(
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
-	'todo' => 'Листа на задачи',
-	'todo-desc' => 'Експериментален додаток за лична [[Special:Todo|листа на задачи]]',
+	'todo' => 'Список на задачи',
+	'todo-desc' => 'Експериментален додаток за личен [[Special:Todo|список на задачи]]',
 	'todo-tab' => 'задачи',
 	'todo-new-queue' => 'нова',
-	'todo-mail-subject' => 'Завршена задача на листата на задачи на $1',
-	'todo-mail-body' => 'Побаравте потврда по е-пошта за завршувањето на задача која сте ја поставиле на листата на задачи на $1.
+	'todo-mail-subject' => 'Завршена задача на списокот на задачи на $1',
+	'todo-mail-body' => 'Побаравте потврда по е-пошта за завршувањето на задача која сте ја поставиле на списокот на задачи на $1.
 
 Задача: $2
 Поставено: $3
@@ -1217,7 +1227,7 @@ $4',
 	'todo-invalid-owner' => 'Погрешен сопственик за оваа задача',
 	'todo-add-queue' => 'Додај редица...',
 	'todo-move-queue' => 'Премести во редот на чекање...',
-	'todo-list-for' => 'Листа на задачи за $1',
+	'todo-list-for' => 'Список на задачи за $1',
 	'todo-list-change' => 'Смени',
 	'todo-list-cancel' => 'Откажи',
 	'todo-new-item' => 'Нова задача',
@@ -1225,8 +1235,8 @@ $4',
 	'todo-form-details' => 'Детали:',
 	'todo-form-email' => 'За да добивате известување по е-пошта кога некоја задача е затворена, внесете ја вашата адреса:',
 	'todo-form-submit' => 'Постави барање',
-	'right-todo' => 'Имање на листа на задачи',
-	'right-todosubmit' => 'Ограничување на правото на листата на задачи на еден корисник',
+	'right-todo' => 'Имање на список на задачи',
+	'right-todosubmit' => 'Ограничување на правото на списокот на задачи на еден корисник',
 );
 
 /** Malayalam (മലയാളം)
@@ -1710,6 +1720,14 @@ $4',
 	'todo-form-submit' => 'Отправить запрос',
 	'right-todo' => 'возможность вести перечень задач',
 	'right-todosubmit' => 'ограничивать права участников на ведение перечня задач',
+);
+
+/** Sinhala (සිංහල)
+ * @author බිඟුවා
+ */
+$messages['si'] = array(
+	'todo-list-change' => 'වෙනස් කිරීම්',
+	'todo-list-cancel' => 'අත් හරින්න',
 );
 
 /** Slovak (Slovenčina)

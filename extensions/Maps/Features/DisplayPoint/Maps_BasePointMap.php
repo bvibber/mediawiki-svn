@@ -15,7 +15,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 /**
  * Abstract class MapsBasePointMap provides the scafolding for classes handling display_point(s)
- * calls for a spesific mapping service. It inherits from MapsMapFeature and therefore forces
+ * calls for a specific mapping service. It inherits from MapsMapFeature and therefore forces
  * inheriting classes to implement sereveral methods.
  *
  * @ingroup Maps
@@ -24,17 +24,21 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  */
 abstract class MapsBasePointMap implements iMapParserFunction {
 	
-	public $serviceName;
+	public $mService;
 	
 	protected $centreLat, $centreLon;
 
 	protected $output = '';
 
-	protected $spesificParameters = false;
+	private $specificParameters = false;
 	protected $featureParameters = false;
 	
 	private $markerData = array();
 	protected $markerString;
+	
+	public function __construct( MapsMappingService $service ) {
+		$this->mService = $service;
+	}
 	
 	/**
 	 * Sets the map properties as class fields.
@@ -54,11 +58,28 @@ abstract class MapsBasePointMap implements iMapParserFunction {
 	}
 	
 	/**
+	 * Returns the specific parameters by first checking if they have been initialized yet,
+	 * doing to work if this is not the case, and then returning them.
+	 * 
 	 * @return array
 	 */
-	public function getSpecificParameterInfo() {
-		return array();
+	public final function getSpecificParameterInfo() {
+		if ( $this->specificParameters === false ) {
+			$this->specificParameters = array();
+			$this->initSpecificParamInfo( $this->specificParameters );
+		}
+		
+		return $this->specificParameters;
 	}
+	
+	/**
+	 * Initializes the specific parameters.
+	 * 
+	 * Override this method to set parameters specific to a feature service comibination in
+	 * the inheriting class.
+	 */
+	protected function initSpecificParamInfo( array &$parameters ) {
+	}	
 	
 	/**
 	 * @return array
@@ -95,9 +116,9 @@ abstract class MapsBasePointMap implements iMapParserFunction {
 				'type' => array( 'string', 'list', ';' ),
 				'aliases' => array( 'coords', 'location', 'locations', 'address', 'addresses' ),
 				'criteria' => array(
-					'are_locations' => array()
+					'are_locations' => array( '~' )
 				),
-				'output-type' => 'coordinateSets',
+				'output-type' => array( 'geoPoints', '~' ),
 			),
 		);
 	}
@@ -142,24 +163,23 @@ abstract class MapsBasePointMap implements iMapParserFunction {
 		$this->title = Xml::escapeJsString( $this->parser->recursiveTagParse( $this->title ) );
 		$this->label = Xml::escapeJsString( $this->parser->recursiveTagParse( $this->label ) );
 		
-		foreach ( $this->coordinates as $coordinates ) {
-			$args = explode( '~', $coordinates );
-			
-			$markerData = MapsCoordinateParser::parseCoordinates( $args[0] );
+		// Each $args is an array containg the coordinate set as first element, possibly followed by meta data. 
+		foreach ( $this->coordinates as $args ) {
+			$markerData = MapsCoordinateParser::parseCoordinates( array_shift( $args ) );
 			
 			if ( !$markerData ) continue;
 			
-			if ( count( $args ) > 1 ) {
+			if ( count( $args ) > 0 ) {
 				// Parse and add the point specific title if it's present.
-				$markerData['title'] = $this->parser->recursiveTagParse( $args[1] );
+				$markerData['title'] = $this->parser->recursiveTagParse( $args[0] );
 				
-				if ( count( $args ) > 2 ) {
+				if ( count( $args ) > 1 ) {
 					// Parse and add the point specific label if it's present.
-					$markerData['label'] = $this->parser->recursiveTagParse( $args[2] );
+					$markerData['label'] = $this->parser->recursiveTagParse( $args[1] );
 					
-					if ( count( $args ) > 3 ) {
+					if ( count( $args ) > 2 ) {
 						// Add the point specific icon if it's present.
-						$markerData['icon'] = $args[3];
+						$markerData['icon'] = $args[2];
 					}
 				}
 			}
@@ -194,10 +214,12 @@ abstract class MapsBasePointMap implements iMapParserFunction {
 			$markerData['lat'] = Xml::escapeJsString( $markerData['lat'] );
 			$markerData['icon'] = Xml::escapeJsString( $markerData['icon'] );
 			
-			$markerItems[] = str_replace(	array( 'lon', 'lat', 'title', 'label', 'icon' ),
-											array( $markerData['lon'], $markerData['lat'], $title, $label, $markerData['icon'] ),
-											$this->markerStringFormat
-											);
+			// TODO: Replace this by by some json_encode stuff.
+			$markerItems[] = str_replace(
+				array( 'lon', 'lat', 'title', 'label', 'icon' ),
+				array( $markerData['lon'], $markerData['lat'], $title, $label, $markerData['icon'] ),
+				$this->markerStringFormat
+			);
 		}
 		
 		$this->markerString = implode( ',', $markerItems );
@@ -210,7 +232,7 @@ abstract class MapsBasePointMap implements iMapParserFunction {
 	private function setCentre() {
 		if ( empty( $this->centre ) ) {
 			if ( count( $this->markerData ) == 1 ) {
-				// If centre is not set and there is exactelly one marker, use it's coordinates.
+				// If centre is not set and there is exactly one marker, use its coordinates.
 				$this->centreLat = Xml::escapeJsString( $this->markerData[0]['lat'] );
 				$this->centreLon = Xml::escapeJsString( $this->markerData[0]['lon'] );
 			}
@@ -226,7 +248,7 @@ abstract class MapsBasePointMap implements iMapParserFunction {
 			}
 		}
 		else { // If a centre value is set, geocode when needed and use it.
-			$this->centre = MapsGeocoder::attemptToGeocode( $this->centre, $this->geoservice, $this->serviceName );
+			$this->centre = MapsGeocoder::attemptToGeocode( $this->centre, $this->geoservice, $this->mService->getName() );
 			
 			// If the centre is not false, it will be a valid coordinate, which can be used to set the latitude and longitutde.
 			if ( $this->centre ) {

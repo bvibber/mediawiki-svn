@@ -2,7 +2,8 @@
 /**
  * Internationalisation file for FlaggedRevs extension, section QualityOversight
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $messages = array();
@@ -26,9 +27,9 @@ $messages['qqq'] = array(
  * @author Juanpabl
  */
 $messages['an'] = array(
-	'qualityoversight' => 'Superbisión de calidat',
-	'qualityoversight-list' => "Ista pachina amuestra as zagueras aprebazions y depreziazions d'as rebisions.",
-	'qualityoversight-legend' => "Mirar en os rechistros d'as zagueras rebisions",
+	'qualityoversight' => 'Rechistro de versions avanzato',
+	'qualityoversight-list' => "Ista pachina amuestra as zagueras aprebacions y depreciacions d'as revisions.",
+	'qualityoversight-legend' => "Mirar en os rechistros d'as zagueras revisions",
 );
 
 /** Arabic (العربية)
@@ -128,7 +129,7 @@ $messages['de'] = array(
  * @author Xoser
  */
 $messages['diq'] = array(
-	'qualityoversight' => 'Oversightê kaliteyî',
+	'qualityoversight' => 'Loge kontrele kaliteyî',
 	'qualityoversight-list' => 'Ena pel de revizyonan u testiqanê penî ser yew liste esto.',
 	'qualityoversight-legend' => 'Loganê kontrol penî de bigêre',
 );
@@ -458,9 +459,10 @@ $messages['pt'] = array(
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
+ * @author Giro720
  */
 $messages['pt-br'] = array(
-	'qualityoversight' => 'Observatório da qualidade',
+	'qualityoversight' => 'Registro avançado de revisões',
 	'qualityoversight-list' => 'Esta página lista aprovações e depreciações recentes de edições confiáveis.',
 	'qualityoversight-legend' => 'Pesquisar nos registros de análises recentes',
 );
@@ -523,7 +525,7 @@ $messages['sr-ec'] = array(
  * @author Michaello
  */
 $messages['sr-el'] = array(
-	'qualityoversight' => 'Nadgledanje kvaliteta',
+	'qualityoversight' => 'Napredni pregled izveštaja',
 	'qualityoversight-list' => 'Na ovoj strani se nalazi spisak skoro odobrenih i potisnutih verzija.',
 	'qualityoversight-legend' => 'Pretraga loga skorih pregleda.',
 );
@@ -622,7 +624,7 @@ $messages['yue'] = array(
  * @author Shinjiman
  */
 $messages['zh-hans'] = array(
-	'qualityoversight' => '品质管理',
+	'qualityoversight' => '品质管理日志',
 	'qualityoversight-list' => '这个页面列示出最近核准修订以及最近品质修订之折旧。',
 	'qualityoversight-legend' => '搜索最近审核记录',
 );

@@ -198,6 +198,7 @@ $messages['eo'] = array(
 );
 
 /** Spanish (Español)
+ * @author AlimanRuna
  * @author Crazymadlover
  * @author Peter17
  */
@@ -228,9 +229,12 @@ $messages['eu'] = array(
 
 /** Persian (فارسی)
  * @author Ebraminio
+ * @author Huji
  */
 $messages['fa'] = array(
-	'wikieditor-toc-preference' => 'فعال‌سازی فهرست قابل پیمایش',
+	'wikieditor-toc-preference' => 'فعال‌سازی فهرست مطالب قابل پیمایش',
+	'wikieditor-toc-show' => 'نمایش محتوا',
+	'wikieditor-toc-hide' => 'نهفتن محتوا',
 );
 
 /** Finnish (Suomi)
@@ -578,6 +582,20 @@ $messages['sl'] = array(
 	'wikieditor-toc-hide' => 'Skrij vsebino',
 );
 
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'wikieditor-toc-show' => 'Покажи садржај',
+	'wikieditor-toc-hide' => 'Сакриј садржај',
+);
+
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'wikieditor-toc-show' => 'Pokaži sadržaj',
+	'wikieditor-toc-hide' => 'Sakrij sadržaj',
+);
+
 /** Swedish (Svenska)
  * @author Boivie
  */
@@ -676,6 +694,15 @@ $messages['vi'] = array(
 $messages['yi'] = array(
 	'wikieditor-toc-show' => 'ווײַזן אינהאַלט',
 	'wikieditor-toc-hide' => 'באַהאַלטן אינהאַלט',
+);
+
+/** Cantonese (粵語)
+ * @author Horacewai2
+ */
+$messages['yue'] = array(
+	'wikieditor-toc-preference' => '啟用內客嘅導航表格',
+	'wikieditor-toc-show' => '顯示內容',
+	'wikieditor-toc-hide' => '收埋內容',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

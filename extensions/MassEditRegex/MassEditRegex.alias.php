@@ -2,7 +2,8 @@
 /**
  * Aliases for special pages
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $aliases = array();

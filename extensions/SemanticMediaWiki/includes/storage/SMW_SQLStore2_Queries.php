@@ -313,7 +313,7 @@ class SMWSQLStore2QueryEngine {
 			$auxtables .= "<li>Temporary table $table";
 
 			foreach ( $log as $q ) {
-				$auxtables .= "<br />&nbsp;&nbsp;<tt>$q</tt>";
+				$auxtables .= "<br />&#160;&#160;<tt>$q</tt>";
 			}
 
 			$auxtables .= '</li>';
@@ -752,17 +752,22 @@ class SMWSQLStore2QueryEngine {
 
 					if ( $customSQL ) {
 						$where = $customSQL;
-					}
-					else {
+					} else {
+						$value = $keys[$valueIndex];
+
 						switch ( $description->getComparator() ) {
 							case SMW_CMP_EQ: $comparator = '='; break;
 							case SMW_CMP_LEQ: $comparator = '<='; break;
 							case SMW_CMP_GEQ: $comparator = '>='; break;
 							case SMW_CMP_NEQ: $comparator = '!='; break;
+							case SMW_CMP_LIKE: case SMW_CMP_NLKE:
+								$comparator = ' LIKE ';
+								if ( $description->getComparator() == SMW_CMP_NLKE ) $comparator = " NOT{$comparator}";
+								$value =  str_replace( array( '%', '_', '*', '?' ), array( '\%', '\_', '%', '_' ), $value );
 						}
 
 						if ( $comparator ) {
-							$where = "$query->alias.{$fieldName}{$comparator}" . $this->m_dbs->addQuotes( $keys[$valueIndex] );
+							$where = "$query->alias.{$fieldName}{$comparator}" . $this->m_dbs->addQuotes( $value );
 						}
 					}
 				}
@@ -1091,7 +1096,7 @@ class SMWSQLStore2QueryEngine {
 			$qobj = $this->m_queries[$rootid];
 
 			foreach ( $this->m_sortkeys as $propkey => $order ) {
-				if ( ( 'RANDOM' != $order ) && array_key_exists( $propkey, $qobj->sortfields ) ) { // Field was successfully added.
+				if ( ( $order != 'RANDOM' ) && array_key_exists( $propkey, $qobj->sortfields ) ) { // Field was successfully added.
 					$result['ORDER BY'] = ( array_key_exists( 'ORDER BY', $result ) ? $result['ORDER BY'] . ', ' : '' ) . $qobj->sortfields[$propkey] . " $order ";
 				} elseif ( ( $order == 'RANDOM' ) && $smwgQRandSortingSupport ) {
 					$result['ORDER BY'] = ( array_key_exists( 'ORDER BY', $result ) ? $result['ORDER BY'] . ', ' : '' ) . ' RAND() ';

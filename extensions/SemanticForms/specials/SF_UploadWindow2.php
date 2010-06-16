@@ -6,7 +6,7 @@
  * a few changes to remove skin CSS and HTML, and to populate the relevant
  * field in the form with the name of the uploaded form.
  *
- * @addtogroup SpecialPage
+ * @ingroup SpecialPage
  *
  * @author Yaron Koren
  */
@@ -634,7 +634,7 @@ END;
 			// if there isn't an exact match...
 			$file = wfLocalFile( $filename );
 		}
-		$s = '&nbsp;';
+		$s = '&#160;';
 		if ( $file ) {
 			$exists = UploadBase::getExistsWarning( $file );
 			$warning = self::getExistsWarning( $exists );
@@ -949,12 +949,13 @@ class SFUploadForm extends HTMLForm {
 	// body created by the form, plus the necessary Javascript files,
 	// and turning them into an HTML page
 	global $wgOut, $wgUser, $wgTitle, $wgJsMimeType,
-	$wgStylePath, $wgStyleVersion,
+	$wgLanguageCode, $wgStylePath, $wgStyleVersion,
 	$wgXhtmlDefaultNamespace, $wgXhtmlNamespaces, $wgContLang;
+
 	$wgOut->disable();
 	$sk = $wgUser->getSkin();
 	$sk->initPage( $wgOut ); // need to call this to set skin name correctly
-	$wgTitle = Title::makeTitleSafe( NS_SPECIAL, 'Upload' );
+	$wgTitle = SpecialPage::getTitleFor( 'Upload' );
 	$skin_user_js = $sk->generateUserJs();
 
 	$user_js = <<<END

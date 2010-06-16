@@ -17,9 +17,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 final class SMGoogleMapsFormInput extends SMFormInput {
 
-	public $serviceName = MapsGoogleMaps::SERVICE_NAME;
-	
-	protected $spesificParameters = array();
+	protected $specificParameters = array();
 	
 	/**
 	 * @see MapsMapFeature::setMapSettings()
@@ -43,7 +41,7 @@ final class SMGoogleMapsFormInput extends SMFormInput {
 		global $wgOut;
 		global $smgScriptPath, $smgGoogleFormsOnThisPage, $smgStyleVersion, $egMapsJsExt;
 
-		MapsGoogleMaps::addGMapDependencies( $wgOut );
+		$this->mService->addDependencies( $wgOut );
 		
 		if ( empty( $smgGoogleFormsOnThisPage ) ) {
 			$smgGoogleFormsOnThisPage = 0;
@@ -117,7 +115,7 @@ EOT
 	protected function manageGeocoding() {
 		global $egGoogleMapsKey, $wgParser;
 		$this->enableGeocoding = $egGoogleMapsKey != '';
-		if ( $this->enableGeocoding ) MapsGoogleMaps::addGMapDependencies( $wgParser );
+		if ( $this->enableGeocoding ) $this->mService->addDependencies( $wgParser );
 	}
 	
 }

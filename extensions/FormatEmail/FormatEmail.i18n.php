@@ -2,7 +2,8 @@
 /**
  * Internationalisation file for extension FormatEmail.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
 */
 
 $messages = array();

@@ -16,7 +16,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 }
 
 /**
- * Abstract class that provides the common functionallity for all map query printers.
+ * Abstract class that provides the common functionality for all map query printers.
  *
  * @ingroup SemanticMaps
  *
@@ -29,23 +29,25 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 abstract class SMMapPrinter extends SMWResultPrinter {
 
 	/**
-	 * Sets the map service specific element name
+	 * Sets the map service specific element name.
 	 */
 	protected abstract function setQueryPrinterSettings();
 	
 	/**
-	 * Map service spesific map count and loading of dependencies
+	 * Map service specific map count and loading of dependencies.
 	 */
 	protected abstract function doMapServiceLoad();
 	
+	protected abstract function getServiceName();
+	
 	/**
-	 * Gets the query result
+	 * Gets the query result.
 	 */
-	protected abstract function addSpecificMapHTML( Parser $parser );
+	protected abstract function addSpecificMapHTML();
 	
-	public $serviceName;
+	protected $mService;
 	
-	protected $m_locations = array();
+	protected $mLocations = array();
 	
 	protected $defaultZoom;
 	
@@ -53,12 +55,22 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 	protected $centreLon;
 	
 	protected $output = '';
-	protected $errorList;
+	protected $mErrorList;
 	
-	protected $mapFeature;
+	protected $mMapFeature;
 	
 	protected $featureParameters = array();
-	protected $spesificParameters = array();
+	protected $specificParameters = array();
+	
+	public function __construct( $format, $inline, /* MapsMappingService */ $service = null ) {
+		// TODO: this is a hack since I can't find a way to pass along the service object here when the QP is created in SMW.
+		if ( $service == null ) {
+			global $egMapsServices;
+			$service = $egMapsServices[$this->getServiceName()];
+		}
+		
+		$this->mService = $service;
+	}
 	
 	/**
 	 * Builds up and returns the HTML for the map, with the queried coordinate data on it.
@@ -77,24 +89,27 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 			$this->formatResultData( $res, $outputmode );
 			
 			// Only create a map when there is at least one result.
-			if ( count( $this->m_locations ) > 0 || $this->forceshow ) {
+			if ( count( $this->mLocations ) > 0 || $this->forceshow ) {
 				$this->doMapServiceLoad();
-		
+				
 				$this->setMapName();
 				
 				$this->setZoom();
 				
 				$this->setCentre();
 				
-				global $wgParser;
-				$this->addSpecificMapHTML( $wgParser );
+				$this->addSpecificMapHTML();
+				
+				$dependencies = $this->mService->getDependencyHtml();
+				$hash = md5( $dependencies );
+				SMWOutputs::requireHeadItem( $hash, $dependencies );
 			}
 			else {
 				// TODO: add warning when level high enough and append to error list?
 			}
 		}
 
-		return array( $this->output . $this->errorList, 'noparse' => true, 'isHTML' => true );
+		return array( $this->output . $this->mErrorList, 'noparse' => true, 'isHTML' => true );
 	}
 	
 	/**
@@ -110,23 +125,23 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 		/*
 		 * Assembliy of the allowed parameters and their information. 
 		 * The main parameters (the ones that are shared by everything) are overidden
-		 * by the feature parameters (the ones spesific to a feature). The result is then
-		 * again overidden by the service parameters (the ones spesific to the service),
-		 * and finally by the spesific parameters (the ones spesific to a service-feature combination).
+		 * by the feature parameters (the ones specific to a feature). The result is then
+		 * again overidden by the service parameters (the ones specific to the service),
+		 * and finally by the specific parameters (the ones specific to a service-feature combination).
 		 */
 		$parameterInfo = array_merge_recursive( MapsMapper::getCommonParameters(), $this->featureParameters );
-		$parameterInfo = array_merge_recursive( $parameterInfo, $egMapsServices[$this->serviceName]['parameters'] );
-		$parameterInfo = array_merge_recursive( $parameterInfo, $this->spesificParameters );
+		$parameterInfo = array_merge_recursive( $parameterInfo, $this->mService->getParameterInfo() );
+		$parameterInfo = array_merge_recursive( $parameterInfo, $this->specificParameters );
 		
 		$manager = new ValidatorManager();
 		
-		$showMap = $manager->manageParameters( $mapProperties, $parameterInfo );
+		$showMap = $manager->manageParsedParameters( $mapProperties, $parameterInfo );
 		
 		if ( $showMap ) {
-			$this->setMapProperties( $manager->getParameters( false ), __CLASS__ );
+			$this->setMapProperties( $manager->getParameters( false ) );
 		}
 		
-		$this->errorList  = $manager->getErrorList();
+		$this->mErrorList = $manager->getErrorList();
 		
 		return $showMap;
 	}
@@ -135,11 +150,10 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 	 * Sets the map properties as class fields.
 	 * 
 	 * @param array $mapProperties
-	 * @param string $className
 	 */
-	private function setMapProperties( array $mapProperties, $className ) {
+	private function setMapProperties( array $mapProperties ) {
 		foreach ( $mapProperties as $paramName => $paramValue ) {
-			if ( ! property_exists( $className, $paramName ) ) {
+			if ( !property_exists( __CLASS__, $paramName ) ) {
 				$this-> { $paramName } = $paramValue;
 			}
 			else {
@@ -149,8 +163,9 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 	}
 	
 	public final function getResult( $results, $params, $outputmode ) {
-		// Skip checks, results with 0 entries are normal
+		// Skip checks, results with 0 entries are normal.
 		$this->readParameters( $params, $outputmode );
+		
 		return $this->getResultText( $results, SMW_OUTPUT_HTML );
 	}
 	
@@ -165,10 +180,11 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 	 * and add the location data, title, label and icon to the m_locations array.
 	 *
 	 * @param unknown_type $outputmode
-	 * @param unknown_type $row The record you want to add data from
+	 * @param array $row The record you want to add data from
 	 */
-	private function addResultRow( $outputmode, $row ) {
-		global $wgUser;
+	private function addResultRow( $outputmode, array $row ) {
+		global $wgUser, $smgUseSpatialExtensions;
+		
 		$skin = $wgUser->getSkin();
 		
 		$title = '';
@@ -180,11 +196,11 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 		$coords = array();
 		$label = array();
 		
-		// Loop throught all fields of the record
+		// Loop throught all fields of the record.
 		foreach ( $row as $i => $field ) {
 			$pr = $field->getPrintRequest();
 			
-			// Loop throught all the parts of the field value
+			// Loop throught all the parts of the field value.
 			while ( ( $object = $field->getNextObject() ) !== false ) {
 				if ( $object->getTypeID() == '_wpg' && $i == 0 ) {
 					if ( $this->showtitle ) $title = $object->getLongText( $outputmode, $skin );
@@ -212,22 +228,28 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 		
 		foreach ( $coords as $coord ) {
 			if ( count( $coord ) >= 2 ) {
-				$lat = $coord[0];
-				$lon = $coord[1];
+				if ( $smgUseSpatialExtensions ) {
+					// TODO
+				}
+				else {
+					list( $lat, $lon ) = $coord; 
+				}
 				
 				if ( $lat != '' && $lon != '' ) {
 					$icon = $this->getLocationIcon( $row );
 
 					if ( $this->template ) {
 						global $wgParser;
+						
 						$segments = array_merge(
 							array( $this->template, 'title=' . $titleForTemplate, 'latitude=' . $lat, 'longitude=' . $lon ),
 							$label
 						);
+						
 						$text = preg_replace( '/\n+/m', '<br />', $wgParser->recursiveTagParse( '{{' . implode( '|', $segments ) . '}}' ) );
 					}
 
-					$this->m_locations[] = array(
+					$this->mLocations[] = array(
 						Xml::escapeJsString( $lat ),
 						Xml::escapeJsString( $lon ),
 						Xml::escapeJsString( $title ),
@@ -240,12 +262,13 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 	}
 
 	/**
-	 * Get the icon for a row
+	 * Get the icon for a row.
 	 *
-	 * @param unknown_type $row
-	 * @return unknown
+	 * @param array $row
+	 * 
+	 * @return string
 	 */
-	private function getLocationIcon( $row ) {
+	private function getLocationIcon( array $row ) {
 		$icon = '';
 		$legend_labels = array();
 		
@@ -268,8 +291,8 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 					}
 				}
 			}
-		// Icon can be set even for regular, non-compound queries If it is, though, we have to translate the name into a URL here	
-		} elseif ( strlen( $this->icon ) > 0 ) {
+		} // Icon can be set even for regular, non-compound queries If it is, though, we have to translate the name into a URL here
+		elseif ( $this->icon != '' ) {
 			$icon_image_page = new ImagePage( Title::newFromText( $this->icon ) );
 			$icon = $icon_image_page->getDisplayedFile()->getURL();
 		}
@@ -279,11 +302,10 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 	
 	/**
 	 * Sets the zoom level to the provided value, or when not set, to the default.
-	 *
 	 */
 	private function setZoom() {
 		if ( strlen( $this->zoom ) < 1 ) {
-			if ( count( $this->m_locations ) > 1 ) {
+			if ( count( $this->mLocations ) > 1 ) {
 		        $this->zoom = 'null';
 		    }
 		    else {
@@ -295,7 +317,6 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 	/**
 	 * Sets the $centre_lat and $centre_lon fields.
 	 * Note: this needs to be done AFTRE the maker coordinates are set.
-	 *
 	 */
 	private function setCentre() {
 		// If a centre value is set, use it.
@@ -306,19 +327,20 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 			$this->centreLat = $centre['lat'];
 			$this->centreLon = $centre['lon'];
 		}
-		elseif ( count( $this->m_locations ) > 1 ) {
+		elseif ( count( $this->mLocations ) > 1 ) {
 			// If centre is not set, and there are multiple points, set the values to null, to be auto determined by the JS of the mapping API.			
 			$this->centreLat = 'null';
 			$this->centreLon = 'null';
 		}
-		elseif ( count( $this->m_locations ) == 1 ) {
+		elseif ( count( $this->mLocations ) == 1 ) {
 			// If centre is not set and there is exactelly one marker, use it's coordinates.			
-			$this->centreLat = Xml::escapeJsString( $this->m_locations[0][0] );
-			$this->centreLon = Xml::escapeJsString( $this->m_locations[0][1] );
+			$this->centreLat = Xml::escapeJsString( $this->mLocations[0][0] );
+			$this->centreLon = Xml::escapeJsString( $this->mLocations[0][1] );
 		}
 		else {
 			// If centre is not set and there are no results, centre on the default coordinates.
 			global $egMapsMapLat, $egMapsMapLon;
+			
 			$this->centreLat = $egMapsMapLat;
 			$this->centreLon = $egMapsMapLon;
 		}
@@ -326,14 +348,13 @@ abstract class SMMapPrinter extends SMWResultPrinter {
 	
 	/**
 	 * Sets the $mapName field, using the $elementNamePrefix and $elementNr.
-	 *
 	 */
 	protected function setMapName() {
 		$this->mapName = $this->elementNamePrefix . '_' . $this->elementNr;
 	}
 	
 	public final function getName() {
-		return wfMsg( 'maps_' . $this->serviceName );
+		return wfMsg( 'maps_' . $this->mService->getName() );
 	}
 	
     public function getParameters() {

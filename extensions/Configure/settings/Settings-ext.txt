@@ -150,7 +150,7 @@ CategoryTests
 url = http://www.mediawiki.org/wiki/Extension:CategoryTests
 
 CategoryTree
-settings[] = wgCategoryTreeMaxChildren: int, wgCategoryTreeMaxChildren: int,
+settings[] = wgCategoryTreeMaxChildren: int, wgCategoryTreeMaxScanRows: int,
 settings[] = wgCategoryTreeAllowTag: bool, wgCategoryTreeDisableCache: bool
 settings[] = wgCategoryTreeDynamicTag: bool, wgCategoryTreeHTTPCache: bool
 settings[] = wgCategoryTreeForceHeaders: bool, wgCategoryTreeSidebarRoot: text
@@ -269,10 +269,11 @@ settings[] = wgCommunityCollectionNamespace: int, wgCollectionMaxArticles: int
 settings[] = wgCollectionLicenseName: text, wgCollectionLicenseURL: text
 settings[] = wgCollectionPortletForLoggedInUsersOnly: bool, wgCollectionPortletFormats: array
 settings[] = wgCollectionFormats: array, wgCollectionContentTypeToFilename: array
-settings[] = wgCollectionMaxSuggestions: int, wgCollectionSuggestCheapWeightThreshhold: int
-settings[] = wgCollectionSuggestThreshhold: int
+settings[] = wgCollectionFormatToServeURL: array, wgCollectionMaxSuggestions: int
+settings[] = wgCollectionSuggestCheapWeightThreshhold: int, wgCollectionSuggestThreshhold: int
 array[] = wgCollectionArticleNamespaces: ns-simple, wgCollectionFormats: assoc
-array[] = wgCollectionContentTypeToFilename: assoc, wgCollectionPortletFormats: simple
+array[] = wgCollectionContentTypeToFilename: assoc, wgCollectionFormatToServeURL: assoc
+array[] = wgCollectionPortletFormats: simple
 empty[] = wgCollectionMWServeCert: null, wgCollectionLicenseName: null
 empty[] = wgCollectionLicenseURL: null
 url = http://www.mediawiki.org/wiki/Extension:Collection
@@ -743,7 +744,6 @@ settings[] = smwgRSSEnabled: bool
 settings[] = smwgRSSWithPages: bool
 settings[] = smwgAllowRecursiveExport: bool
 settings[] = smwgExportBacklinks: bool
-settings[] = smwgOWLFullExport: bool
 settings[] = smwgNamespace: text
 settings[] = smwgMaxNonExpNumber: int
 settings[] = smwgEnableUpdateJobs: bool

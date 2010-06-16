@@ -87,7 +87,7 @@ function getSuggest( $name, $query, $parameters = array(), $value = 0, $label = 
 		$dc = wdGetDataSetContext();
 	}
 	if ( $label == "" )
-		$label = '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
+		$label = '&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;';
 	
 	$result =
 		'<span class="suggest">' .
@@ -139,7 +139,7 @@ function getSuggest( $name, $query, $parameters = array(), $value = 0, $label = 
 
 function getStaticSuggest( $name, $suggestions, $idColumns = 1, $value = 0, $label = '', $displayLabelColumns = array( 0 ) ) {
 	if ( $label == "" )
-		$label = '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
+		$label = '&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;';
 
 	$result =
 		'<span class="suggest">' .

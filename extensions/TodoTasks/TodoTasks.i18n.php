@@ -180,6 +180,19 @@ $messages['bg'] = array(
 	'tasklistnoprojects' => "Грешка: Изглежда сте включили '''\$wgUseProjects''', но не сте създали [[MediaWiki:TodoTasksValidProjects]]. За повече информация, прегледайте [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 инструкциите за инсталация].",
 );
 
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'tasklist' => 'কর্মতালিকা',
+	'tasklistunknownproject' => 'অজানা প্রকল্প',
+	'tasklistincorrectuser' => 'ভুল ব্যবহারকারী নাম',
+	'tasklistemail' => 'সুপ্রিয় %s',
+	'tasklistmytasks' => 'আমার কর্ম',
+	'tasklistchooseproj' => 'প্রকল্প নির্বাচন:',
+	'tasklistprojdisp' => 'প্রদর্শন',
+);
+
 /** Breton (Brezhoneg)
  * @author Fohanno
  * @author Fulup
@@ -930,29 +943,29 @@ Fir är komplett Aufgabelëscht ze gesinn, gitt w.e.g. op %s.
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
-	'tasklist' => 'Листа на задачи',
+	'tasklist' => 'Список на задачи',
 	'tasklist-parser-desc' => 'Додава парерска функција <nowiki>{{#todo:}}</nowiki> за доделување на задачи',
 	'tasklist-special-desc' => 'Додава специјална страница за прегледување на [[Special:TaskList|доделени задачи]]',
-	'tasklistbyproject' => 'Листа на задачи по проект',
+	'tasklistbyproject' => 'Список на задачи по проект',
 	'tasklistunknownproject' => 'Непознат проект',
 	'tasklistunspecuser' => 'Неназначен корисник',
 	'tasklistincorrectuser' => 'Погрешно корисничко име',
 	'tasklistemail' => 'Почитуван(a) %s',
-	'tasklistemailsubject' => '[%s] Промена на листа на задачи',
+	'tasklistemailsubject' => '[%s] Промена на список на задачи',
 	'tasklistmytasks' => 'Мои задачи',
 	'tasklistbyprojectbad' => "Проектот '''%s''' не е важечки проект.
-За листа на важечки проекти, погледајте [[MediaWiki:TodoTasksValidProjects]].",
+За список на важечки проекти, погледајте [[MediaWiki:TodoTasksValidProjects]].",
 	'tasklistbyprojname' => "Доделени задачи за '''%s'''",
 	'tasklistchooseproj' => 'Изберете проект:',
 	'tasklistprojdisp' => 'Прикажи',
-	'tasklistbyname' => '== Листа на задачи за %s ==',
+	'tasklistbyname' => '== Список на задачи за %s ==',
 	'tasklistnowguseprojects' => 'Го имате наместено $wgUseProjects на „false“ и затоа не можете да ја користите оваа страница.',
 	'tasklistnoprojects' => "Грешка: Изгледа сте овозможиле '''\$wgUseProjects''', но не сте создале [[MediaWiki:TodoTasksValidProjects]]. Видете [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 Напатствија за инсталирање] за повеќе детали.",
-	'tasklistemailbody' => 'Некој ви доделилнова Задача на %s.
+	'tasklistemailbody' => 'Некој ви доделил нова Задача на %s.
 
-За да ја видите вашата полна Листа на задачи, одете на %s.
+За да ја видите вашиот полн Список на задачи, одете на %s.
 
-Вашиот %s систем известување',
+Вашиот систем известување на %s',
 );
 
 /** Malayalam (മലയാളം)
@@ -1237,6 +1250,7 @@ O seu sistema de notificação amigável da %s',
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
+ * @author Giro720
  */
 $messages['pt-br'] = array(
 	'tasklist' => 'Lista de Tarefas',
@@ -1255,6 +1269,7 @@ Para uma lista de projetos válidos, ver [[MediaWiki:TodoTasksValidProjects]].",
 	'tasklistchooseproj' => 'Selecione Projeto:',
 	'tasklistprojdisp' => 'Mostrar',
 	'tasklistbyname' => '== Lista de tarefas de %s ==',
+	'tasklistnowguseprojects' => 'Definiu $wgUseProjects como "falso" e não pode usar esta página.',
 	'tasklistnoprojects' => "Erro: Aparentemente você ativou '''\$wgUseProjects''', mas não criou [[MediaWiki:TodoTasksValidProjects]]. Veja as [http://www.mediawiki.org/wiki/Extension:Todo_Tasks#Step_8 Instruções de Instalação] para mais detalhes.",
 	'tasklistemailbody' => ',
 

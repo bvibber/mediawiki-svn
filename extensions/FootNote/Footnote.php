@@ -1,32 +1,33 @@
 <?php
-# Copyright (C) 2005 Anders Wegge Jakobsen <awegge@gmail.com>
-# http://www.mediawiki.org/
-# 
-# This program is free software; you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation; either version 2 of the License, or 
-# (at your option) any later version.
-# 
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-# GNU General Public License for more details.
-# 
-# You should have received a copy of the GNU General Public License along
-# with this program; if not, write to the Free Software Foundation, Inc.,
-# 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
-# http://www.gnu.org/copyleft/gpl.html
 
 /**
- 
-* Extension to add footnotes to the wiki pages. 
-*
-* Use with:
-*
-* <footnote>This text is placed at the end of the page.</footnote>
-*
-* @author Anders Wegge Jakobsen <awegge@gmail.com>
-* @addtogroup Extensions
+ * Copyright (C) 2005 Anders Wegge Jakobsen <awegge@gmail.com>
+ * http://www.mediawiki.org/
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or 
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License along
+ * with this program; if not, write to the Free Software Foundation, Inc.,
+ * 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+ * http://www.gnu.org/copyleft/gpl.html
+ *
+ * Extension to add footnotes to the wiki pages. 
+ *
+ * Use with:
+ *
+ * <footnote>This text is placed at the end of the page.</footnote>
+ *
+ * @file
+ * @author Anders Wegge Jakobsen <awegge@gmail.com>
+ * @ingroup Extensions
  */
 
 if( !defined( 'MEDIAWIKI' ) ) {
@@ -57,7 +58,7 @@ function insert_endnotes( &$parser, &$text ) {
 	$ret = "" ;
 	foreach( $footnoteNotes AS $num => $entry ) {
 		$x = " <a name='footnote{$num}'></a>\n";
-		$x = $x . "<li>$entry <a href='#footnoteback{$num}'>&uarr;</a></li>\n" ;
+		$x = $x . "<li>$entry <a href='#footnoteback{$num}'>↑</a></li>\n" ;
 		$ret .= $x ;
 	}
 	$ret = "<hr /><ol>" . $ret . "</ol>" ;

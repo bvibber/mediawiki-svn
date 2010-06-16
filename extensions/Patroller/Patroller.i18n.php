@@ -2,7 +2,8 @@
 /**
  * Internationalisation file for extension Patroller.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  * @author Rob Church <robchur@gmail.com>
  * @copyright © 2006 Rob Church
  * @license GNU General Public Licence 2.0
@@ -113,7 +114,9 @@ $messages['am'] = array(
  * @author Juanpabl
  */
 $messages['an'] = array(
+	'patrol-revert' => 'Revertir',
 	'patrol-revert-reason' => 'Razón:',
+	'patrol-reverting' => 'Revertindo: $1',
 );
 
 /** Old English (Ænglisc)
@@ -257,6 +260,8 @@ $messages['bn'] = array(
 	'patrol-endorse' => 'সত্যায়িত',
 	'patrol-revert-reason' => 'কারণ:',
 	'patrol-skipped-ok' => 'সম্পাদনা উপেক্ষা করুন।',
+	'group-patroller' => 'পর্যবেক্ষক',
+	'group-patroller-member' => 'পর্যবেক্ষক',
 );
 
 /** Breton (Brezhoneg)
@@ -324,6 +329,11 @@ $messages['bs'] = array(
  */
 $messages['ca'] = array(
 	'patrol-revert-reason' => 'Motiu:',
+);
+
+/** Chechen (Нохчийн) */
+$messages['ce'] = array(
+	'patrol-revert-reason' => 'Бахьан:',
 );
 
 /** Czech (Česky)
@@ -548,6 +558,14 @@ $messages['eu'] = array(
 	'group-patroller-member' => 'patruilaria',
 	'grouppage-patroller' => '{{ns:project}}:Patruilaria',
 	'right-patroller' => 'Orriak patruilatu',
+);
+
+/** Persian (فارسی)
+ * @author Ebraminio
+ */
+$messages['fa'] = array(
+	'group-patroller' => 'گشت‌زنان',
+	'group-patroller-member' => 'گشت‌زن',
 );
 
 /** Finnish (Suomi)
@@ -778,9 +796,12 @@ $messages['hr'] = array(
 	'patrol' => 'Patrolirane promjene',
 	'patrol-revert' => 'Ukloni',
 	'patrol-revert-reason' => 'Razlog:',
+	'patrol-stopped' => 'Vi ste odabrali ne provjeravati drugo uređivanje. $1',
+	'patrol-resume' => 'Kliknite ovdje za nastavak.',
 	'group-patroller' => 'Patroleri',
-	'group-patroller-member' => 'Patroler',
+	'group-patroller-member' => 'patroler',
 	'grouppage-patroller' => '{{ns:project}}:Patroler',
+	'right-patroller' => 'Patroliranje stranica',
 );
 
 /** Upper Sorbian (Hornjoserbsce)

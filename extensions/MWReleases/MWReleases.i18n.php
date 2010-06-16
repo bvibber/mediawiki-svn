@@ -231,7 +231,7 @@ $messages['lb'] = array(
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
-	'mwreleases-desc' => 'Додава [[Mediawiki:Mwreleases-list|листа]] на поддржани верзии, достапни преку API',
+	'mwreleases-desc' => 'Додава [[Mediawiki:Mwreleases-list|список]] на поддржани верзии, достапни преку API',
 );
 
 /** Malayalam (മലയാളം)
@@ -323,6 +323,18 @@ $messages['sah'] = array(
  */
 $messages['sk'] = array(
 	'mwreleases-desc' => 'Pridáva [[Mediawiki:Mwreleases-list|zoznam]] podporovaných vydaní prístupných prostredníctvom API',
+);
+
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'mwreleases-desc' => 'Додаје [[Mediawiki:Mwreleases-list|списак]] подржаних издања, доступних кроз API',
+);
+
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'mwreleases-desc' => 'Dodaje [[Mediawiki:Mwreleases-list|spisak]] podržanih izdanja, dostupnih kroz API',
 );
 
 /** Sundanese (Basa Sunda)

@@ -354,6 +354,13 @@ $messages['niu'] = array(
 	'configure-section-search' => 'Kumi',
 );
 
+/** Abkhazian (Аҧсуа)
+ * @author Temuri rajavi
+ */
+$messages['ab'] = array(
+	'configure-section-search' => 'Аҧшаара',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
  * @author Naudefj
@@ -385,16 +392,25 @@ $messages['af'] = array(
 	'configure-section-extension' => 'Uitbreidings',
 	'configure-section-search' => 'Soek',
 	'configure-section-copyright' => 'Kopiereg',
+	'configure-section-output' => 'Afvoer',
 	'configure-select-wiki-view-desc' => 'Kies die wiki waarvoor u die weergawes van die instellings wil sien.',
+	'configure-select-wiki-view-all' => "Alle wiki's",
+	'configure-select-wiki-view-specific' => 'Spesifieke wiki:',
 	'configure-select-wiki-submit' => 'Kies',
 	'configure-view' => 'Wys',
+	'configure-view-default' => 'Verstekinstellings',
 	'configure-throttle-action-edit' => 'Wysig',
 	'configure-throttle-action-move' => 'Skuif',
 	'configure-throttle-action-rollback' => 'Terugrol',
+	'configure-throttle-action-emailuser' => 'Stuur E-pos',
 	'configure-throttle-group' => 'Tipe',
+	'configure-throttle-limit' => 'Limiet',
 	'configure-condition-operator-or' => 'Of',
 	'configure-condition-operator-and' => 'En',
+	'configure-condition-name' => 'Voorwaarde',
+	'configure-condition-requirement' => 'Vereiste',
 	'configure-condition-name-3' => 'E-posadres is bevestig',
+	'configure-condition-name-4' => 'In groepe',
 	'configure-condition-description-3' => 'E-posadres is bevestig',
 );
 
@@ -474,6 +490,7 @@ $messages['an'] = array(
 	'configure-section-namespaces' => 'Espacios de nombres',
 	'configure-section-images' => 'Ficheros',
 	'configure-throttle-action-edit' => 'Editar',
+	'configure-throttle-action-rollback' => 'Revertir',
 );
 
 /** Arabic (العربية)
@@ -1571,6 +1588,11 @@ $messages['ca'] = array(
 	'configure-throttle-action-edit' => 'Modifica',
 );
 
+/** Chechen (Нохчийн) */
+$messages['ce'] = array(
+	'configure-form-reason' => 'Бахьан:',
+);
+
 /** Chamorro (Chamoru)
  * @author Jatrobat
  */
@@ -2607,6 +2629,7 @@ $messages['eo'] = array(
  * @author Locos epraix
  * @author Pertile
  * @author Sanbec
+ * @author Translationista
  */
 $messages['es'] = array(
 	'configure' => 'Configurar la wiki',
@@ -2621,7 +2644,7 @@ $messages['es'] = array(
 	'configure-ext-ext-dependencies' => "'''Advertencia:''' esta extensión requiere las siguientes {{PLURAL:$2|extensión|extensiones}} a ser activadas: $1.",
 	'configure-ext-ext-dependency-err' => "'''Error:''' la extensión $1 requiere la extensión $2 para ser activada.",
 	'configure-ext-doc' => 'Ver documentación online',
-	'configure-ext-schemachange' => "'''Advertencia:''' ¡esta extensión requiere una actualización en la base de datos para trabajar correctamente!",
+	'configure-ext-schemachange' => "'''Advertencia:''' ¡esta extensión requiere una [http://www.mediawiki.org/wiki/Manual:Update.php actualización de base de datos] para funcionar correctamente!",
 	'configure-ext-settings' => 'Configuraciones',
 	'configure-ext-settings-dep-errors' => 'Esta extensión no puede ser habilitada porque las siguientes {{PLURAL:$1|configuración tiene|configuraciones tienen}} un valor inaceptable:',
 	'configure-ext-settings-dep-error' => '$1: valor requerido: $2, valor actual: $3',
@@ -3566,7 +3589,7 @@ $messages['gsw'] = array(
 	'configure-ext-ext-dependencies' => "'''Warnig:''' die Erwyterig bruucht die {{PLURAL:$2|Erwyterig|Erwyterige}} zum aktiviert wäre: $1.",
 	'configure-ext-ext-dependency-err' => "'''Fähler:''' d $1-Erwyterig bruucht d $2-Erwyterig zum aktiviert wäre.",
 	'configure-ext-doc' => 'Lueg d Online-Dokumäntation',
-	'configure-ext-schemachange' => "'''Warnig:''' die Erwyterig bruucht e Datebankupdate zum korräkt z funktioniere!",
+	'configure-ext-schemachange' => "'''Warnig:''' die Erwyterig bruucht e [http://www.mediawiki.org/wiki/Manual:Update.php Datebankupdate] zum korräkt z funktioniere!",
 	'configure-ext-settings' => 'Yystellige',
 	'configure-ext-settings-dep-errors' => 'Die Erwaterig cha nit megli gmacht wäre, wel die {{PLURAL:$1|Yystellig e falsche Wärt het|Yystellige e falsche Wärt hän}}:',
 	'configure-ext-settings-dep-error' => '$1: Wärt wu s sott haa: $2, Wärt wu s het: $3',
@@ -4536,7 +4559,7 @@ $messages['ia'] = array(
 	'configure-ext-ext-dependencies' => "'''Attention:''' iste extension require que le sequente {{PLURAL:$2|extension|extensiones}} sia activate: $1.",
 	'configure-ext-ext-dependency-err' => "'''Error:''' le extension $1 require que le extension $2 sia activate.",
 	'configure-ext-doc' => 'Vider documentation in linea',
-	'configure-ext-schemachange' => "'''Attention:''' iste extension require un actualisation del base de datos pro functionar correctemente!",
+	'configure-ext-schemachange' => "'''Attention:''' iste extension require un [http://www.mediawiki.org/wiki/Manual:Update.php actualisation del base de datos] pro functionar correctemente!",
 	'configure-ext-settings' => 'Configurationes',
 	'configure-ext-settings-dep-errors' => 'Iste extension non pote esser activate proque le sequente {{PLURAL:$1|configuration ha un valor|configurationes ha valores}} non acceptabile:',
 	'configure-ext-settings-dep-error' => '$1: valor requirite: $2, valor actual: $3',
@@ -4732,7 +4755,7 @@ $messages['id'] = array(
 	'configure-ext-ext-dependencies' => "'''Perhatian:''' ekstensi ini membutuhkan {{PLURAL:$2|ekstensi|ekstensi}} berikut untuk dapat diaktifkan: $1.",
 	'configure-ext-ext-dependency-err' => "'''Kesalahan:''' ekstensi $1 membutuhkan ekstensi $2 untuk dapat diaktifkan.",
 	'configure-ext-doc' => 'Lihat dokumentasi daring',
-	'configure-ext-schemachange' => "'''Perhatian:''' ekstensi ini membutuhkan pemutahiran basis data untuk bekerja dengan baik!",
+	'configure-ext-schemachange' => "'''Perhatian:''' ekstensi ini membutuhkan [http://www.mediawiki.org/wiki/Manual:Update.php pemutahiran basis data] untuk bekerja dengan baik!",
 	'configure-ext-settings' => 'Pengaturan',
 	'configure-ext-settings-dep-errors' => 'Ekstensi tidak dapat diaktifkan karena nilai {{PLURAL:$1|pengaturan|pengaturan}} berikut tidak dapat diterima:',
 	'configure-ext-settings-dep-error' => '$1: membutuhkan nilai: $2, nilai sekarang: $3',
@@ -6201,6 +6224,13 @@ $messages['lt'] = array(
 	'configure-section-misc' => 'Įvairūs nustatymai',
 );
 
+/** Latvian (Latviešu)
+ * @author GreenZeb
+ */
+$messages['lv'] = array(
+	'configure-section-search' => 'Meklēt',
+);
+
 /** Eastern Mari (Олык Марий)
  * @author Сай
  */
@@ -6216,7 +6246,7 @@ $messages['mhr'] = array(
  */
 $messages['mk'] = array(
 	'configure' => 'Нагодување на викито',
-	'configure-desc' => 'Авторизирани корисници можат да вршат [[Special:Configure|нагодување]] на викито преку веб интерфејс',
+	'configure-desc' => 'Авторизирани корисници можат да вршат [[Special:Configure|нагодување]] на викито преку посредник на мрежна страница',
 	'configure-desc-group' => 'Група',
 	'configure-desc-key' => 'Клуч',
 	'configure-desc-ns' => 'Именски простор',
@@ -6266,7 +6296,7 @@ $messages['mk'] = array(
 	'configure-no-setup' => 'Потребно е експлицитно да го повикате <code>efConfigureSetup()</code> во вашата LocalSettings.php податотека за да може да се користи овој додаток.',
 	'configure-no-transwiki' => 'Немате дозвола за промена на нагодувањата на други викија.',
 	'configure-old' => 'Стари верзии',
-	'configure-old-versions' => 'Листа на стари верзии на конфигурацијата:',
+	'configure-old-versions' => 'Список на стари верзии на нагодувањата:',
 	'configure-old-not-available' => 'Старата верзија на нагодувањата која ја баравте, $1, не постои',
 	'configure-old-changes' => 'промени',
 	'configure-old-summary' => '$1 од $2 $4 $3',
@@ -6344,7 +6374,7 @@ $messages['mk'] = array(
 	'configure-setting-not-available' => 'Ова нагодување не е достапно за оваа верзија на МедијаВики',
 	'configure-transwiki-not-in-range' => 'Бараното вики, $1, не спаѓа под {{PLURAL:$3|дозволената вредност|дозволените вредности}}: $2.',
 	'configure-view' => 'Поглед',
-	'configure-view-all-versions' => 'Целосна листа на верзии',
+	'configure-view-all-versions' => 'Целосен список на верзии',
 	'configure-view-default' => 'Основни нагодувања',
 	'configure-view-not-allowed' => 'Немате дозвола да ги видите овие нагодувања',
 	'configure-viewconfig-line' => '$1 $2 од $3 $5: $4',
@@ -6367,7 +6397,7 @@ $messages['mk'] = array(
 	'configure-throttle-group-anon' => 'Сите анонимни корисници',
 	'configure-throttle-group-user' => 'За корисничка сметка',
 	'configure-throttle-group-newbie' => 'За нова корисничка сметка',
-	'configure-throttle-group-ip' => 'За IP-адреса',
+	'configure-throttle-group-ip' => 'По IP-адреса',
 	'configure-throttle-group-subnet' => 'За подмрежа од класа C',
 	'configure-throttle-count' => 'Дозволени дејства:',
 	'configure-throttle-period' => 'Период на враќање по основно (секунди):',
@@ -6386,8 +6416,8 @@ $messages['mk'] = array(
 	'configure-condition-name-2' => 'Минимум старост',
 	'configure-condition-name-3' => 'Потврдена е-пошта',
 	'configure-condition-name-4' => 'Во групи',
-	'configure-condition-name-5' => 'Корисничка IP адреса',
-	'configure-condition-name-6' => 'Корисничка IP адреса во CIDR опсег',
+	'configure-condition-name-5' => 'Корисничка IP-адреса',
+	'configure-condition-name-6' => 'Корисничка IP-адреса во CIDR опсег',
 	'configure-condition-name-7' => 'Минимална старост од првото уредување',
 	'configure-autopromote-noconds' => 'Нема предуслови',
 	'configure-condition-description-1' => 'Минимален број на уредувања: $1',
@@ -6403,7 +6433,7 @@ $messages['mk'] = array(
 	'configure-boolop-description-not' => 'Условите не мора да се вистинити',
 	'configure-farmer-settings' => '[[Special:Configure|Конфигурирање на ова вики]].',
 	'configure-farmer-extensions' => '[[Special:Extensions|Конфигурирање на додатоците за ова вики]].',
-	'configure-farmer-extensions-list' => '[[Special:Extensions|Листа на додатоци достапни за ова вики]].',
+	'configure-farmer-extensions-list' => '[[Special:Extensions|Список на додатоци достапни за ова вики]].',
 );
 
 /** Malayalam (മലയാളം)
@@ -7478,7 +7508,7 @@ $messages['pl'] = array(
 	'configure-ext-ext-dependencies' => "'''Uwaga –''' to rozszerzenie wymaga aktywacji {{PLURAL:$2|rozszerzenia|następujących rozszerzeń:}} $1.",
 	'configure-ext-ext-dependency-err' => "'''Błąd –''' rozszerzenie $1 wymaga aktywnego rozszerzenia $2.",
 	'configure-ext-doc' => 'Zobacz dokumentację techniczną online',
-	'configure-ext-schemachange' => "'''Ostrzeżenie:''' Prawidłowa praca rozszerzenia wymaga aktualizacji bazy danych!",
+	'configure-ext-schemachange' => "'''Uwaga''' – to rozszerzenie do poprawnego działa wymaga [http://www.mediawiki.org/wiki/Manual:Update.php aktualizacji bazy danych]!",
 	'configure-ext-settings' => 'Ustawienia',
 	'configure-ext-settings-dep-errors' => 'Nie można włączyć tego rozszerzenia, ponieważ {{PLURAL:$1|następujące ustawienie ma|następujące ustawienia mają}} niedopuszczalne wartości:',
 	'configure-ext-settings-dep-error' => '$1: wymagana wartość: $2, obecna wartość: $3',
@@ -7847,8 +7877,11 @@ Për piasì, ch'a lo crea o ch'a lo cambia për dovré st'estension-sì.",
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'configure-desc-group' => 'ډله',
 	'configure-desc-ns' => 'نوم-تشيال',
 	'configure-desc-val' => 'ارزښت',
+	'configure-edit-core' => 'مېډياويکي',
+	'configure-form-reason' => 'سبب:',
 	'configure-js-remove' => 'ړنګول',
 	'configure-no-transwiki' => 'تاسو ته په نورو ويکي ګانو کې د سمبالښت د بدلولو اجازه نشته',
 	'configure-section-pages' => 'مخونه',
@@ -8729,7 +8762,7 @@ $messages['sr-ec'] = array(
 	'configure-ext-settings-dep-error' => '$1: захтевана вредност: $2, тренутна вредност: $3',
 	'configure-ext-use-extension' => 'Користи ову екстензију',
 	'configure-ext-use' => 'Користи',
-	'configure-form-reason' => 'Разлог за промену:',
+	'configure-form-reason' => 'Разлог:',
 	'configure-summary' => 'Ова посебна страница вам омогућава да конфигуришете овај вики. Погледајте [http://www.mediawiki.org/wiki/Manual:Configuration_settings Конфигурациона подешавања] за више података',
 	'configure-btn-save' => 'Сними подешавања',
 	'configure-edit-old' => "'''Упозорење:''' мењате <strong>стару</strong> верзију подешавања (од $1)",
@@ -8896,7 +8929,7 @@ $messages['sr-el'] = array(
 	'configure-ext-settings-dep-error' => '$1: zahtevana vrednost: $2, trenutna vrednost: $3',
 	'configure-ext-use-extension' => 'Koristi ovu ekstenziju',
 	'configure-ext-use' => 'Koristi',
-	'configure-form-reason' => 'Razlog za promenu:',
+	'configure-form-reason' => 'Razlog:',
 	'configure-summary' => 'Ova posebna stranica vam omogućava da konfigurišete ovaj viki. Pogledajte [http://www.mediawiki.org/wiki/Manual:Configuration_settings Konfiguraciona podešavanja] za više podataka',
 	'configure-btn-save' => 'Snimi podešavanja',
 	'configure-edit-old' => "'''Upozorenje:''' menjate <strong>staru</strong> verziju podešavanja (od $1)",
@@ -9171,6 +9204,7 @@ $messages['su'] = array(
 );
 
 /** Swedish (Svenska)
+ * @author Ainali
  * @author Boivie
  * @author Fluff
  * @author Gabbe.g
@@ -9193,7 +9227,7 @@ $messages['sv'] = array(
 	'configure-ext-ext-dependencies' => "'''Varning:''' det här tillägget kräver att följande {{PLURAL:$2|tillägg|tillägg}} är aktiverade: $1.",
 	'configure-ext-ext-dependency-err' => "'''Fel:''' tillägget $1 kräver att tillägg $2 är aktiverat.",
 	'configure-ext-doc' => 'Se online-dokumentation',
-	'configure-ext-schemachange' => "'''Varning:''' det här progamtillägget kräver en uppdatering av databasen för att fungera korrekt!",
+	'configure-ext-schemachange' => "'''Varning:''' det här progamtillägget kräver en [http://www.mediawiki.org/wiki/Manual:Update.php uppdatering av databasen] för att fungera korrekt!",
 	'configure-ext-settings' => 'Inställningar',
 	'configure-ext-settings-dep-errors' => 'Det här tillägget kan inte aktiveras på grund av att följande {{PLURAL:$1|inställning|inställningar}} har ett felaktigt värde:',
 	'configure-ext-settings-dep-error' => '$1: begärt värde: $2, nuvarande värde: $3',
@@ -9851,9 +9885,48 @@ $messages['udm'] = array(
 
 /** ئۇيغۇرچە (ئۇيغۇرچە)
  * @author Alfredie
+ * @author Sahran
  */
 $messages['ug-arab'] = array(
+	'configure' => 'ۋىكى سەپلىمىسى',
+	'configure-desc-group' => 'گۇرۇپپا',
+	'configure-desc-key' => 'كۇنۇپكا',
+	'configure-desc-ns' => 'ئات بوشلۇقى',
+	'configure-desc-val' => 'قىممىتى',
+	'configure-edit-core' => 'MediaWiki',
+	'configure-edit-ext' => 'كېڭەيتىلمە',
+	'configure-viewconfig-default-diff' => 'كۆڭۈلدىكى تەڭشەك ئۆزگىرىشى',
+	'configure-ext-doc' => 'توردىكى پۈتۈكنى كۆرسەت',
+	'configure-ext-settings' => 'تەڭشەك',
+	'configure-error' => 'بۇ سەپلىمىنى ساقلىيالمىدى',
+	'configure-js-add' => 'يېڭى تۈردىن بىرنى قوش',
+	'configure-js-group-exists' => 'خاتالىق: گۇرۇپپا مەۋجۇد',
+	'configure-js-prompt-group' => 'يېڭى گۇرۇپپا ئاتىنى كىرگۈزۈڭ:',
+	'configure-js-remove' => 'ئۆچۈر',
+	'configure-js-remove-row' => 'بۇ تۈرنى ئۆچۈر',
+	'configure-js-get-image-url' => 'ھۆججەت ئاتىنى URL غا ئايلاندۇر',
+	'configure-js-biglist-shown' => 'تەڭشەك تەپسىلاتىنى يوشۇرغىلى بولىدۇ',
+	'configure-js-biglist-hidden' => 'تەڭشەك تەپسىلاتى يوشۇرۇن',
+	'configure-js-biglist-show' => '[تەپسىلاتنى كۆرسەت]',
+	'configure-js-biglist-hide' => '[تەپسىلاتىنى يوشۇر]',
+	'configure-js-summary-none' => 'تەڭشەك يوق',
+	'configure-js-search-legend' => 'تەڭشەك ئىزدە',
+	'configure-js-search-prompt' => 'سۈرۈشتۈرۈش:',
+	'configure-section-features' => 'ئىقتىدار',
+	'configure-section-general' => 'ئادەتتىكى تەڭشەك',
+	'configure-section-pages' => 'بەتلەر',
+	'configure-section-paths' => 'يوللار',
+	'configure-section-db' => 'ساندان',
+	'configure-section-load-balancing' => 'تەڭپۇڭلۇق يۈكلە',
+	'configure-section-mysql' => 'MySQL گە خاس',
+	'configure-section-postgres' => 'PostgreSQL گە خاس',
+	'configure-section-sqlite' => 'SQLite غا خاس',
 	'configure-section-email' => 'ئېلخەت',
+	'configure-section-enotif' => 'ئېلخەت ئۇقتۇرۇشى',
+	'configure-section-localization' => 'يەرلىكلەشتۈرۈش',
+	'configure-section-timezone' => 'ۋاقىت رايونى',
+	'configure-section-zh-conversion' => 'خەنچە ئايلاندۇرۇش',
+	'configure-section-debug' => 'سازلاش',
 );
 
 /** Uighur (Latin) (Uyghurche‎ / ئۇيغۇرچە (Latin))
@@ -9868,6 +9941,7 @@ $messages['ug-latn'] = array(
  * @author Ahonc
  * @author NickK
  * @author Prima klasy4na
+ * @author Тест
  */
 $messages['uk'] = array(
 	'configure' => 'Конфігурувати вікі',
@@ -9882,7 +9956,7 @@ $messages['uk'] = array(
 	'configure-ext-ext-dependencies' => "'''Увага:''' це розширення вимагає активації {{PLURAL:$2|такого розширення|таких розширень}}: $1.",
 	'configure-ext-ext-dependency-err' => "'''Помилка:''' розширення $1 вимагає активації розширення $2.",
 	'configure-ext-doc' => 'Див. документацію в мережі',
-	'configure-ext-schemachange' => "'''Увага:''' це розширення вимагає оновлення бази даних для коректної роботи!",
+	'configure-ext-schemachange' => "'''Увага:''' це розширення вимагає [http://www.mediawiki.org/wiki/Manual:Update.php оновлення бази даних] для коректної роботи!",
 	'configure-ext-settings' => 'Налаштування',
 	'configure-ext-use-extension' => 'Використовувати це розширення',
 	'configure-ext-use' => 'Використовувати',
@@ -9993,11 +10067,13 @@ $messages['vi'] = array(
 	'configure-edit-core' => 'MediaWiki',
 	'configure-edit-ext' => 'Phần mở rộng',
 	'configure-ext-doc' => 'Xem tài liệu trực tuyến',
-	'configure-ext-schemachange' => "'''Cảnh báo:''' có thể cần cập nhật cơ sở dữ liệu để cho phần mở rộng này hoạt động tốt!",
+	'configure-ext-schemachange' => "'''Cảnh báo:''' Cơ sở dữ liệu cần được [http://www.mediawiki.org/wiki/Manual:Update.php?uselang=vi cập nhật] để cho phần mở rộng hoạt động tốt!",
 	'configure-ext-settings' => 'Tùy chọn',
+	'configure-ext-settings-dep-error' => '$1: cần giá trị “$2”; hiện có giá trị “$3”',
 	'configure-ext-use-extension' => 'Sử dụng phần mở rộng này',
 	'configure-ext-use' => 'Sử dụng',
-	'configure-form-reason' => 'Lý do thay đổi:',
+	'configure-form-reason' => 'Lý do:',
+	'configure-arrayinput-oneperline' => "''(mỗi dòng một khoản)''",
 	'configure-summary' => 'Trang đặc biệt này cho phép bạn cấu hình wiki, mời xem [http://www.mediawiki.org/wiki/Manual:Configuration_settings Các thiết lập cấu hình] để có thêm thông tin.',
 	'configure-btn-save' => 'Lưu thiết lập',
 	'configure-directory-not-writable' => 'Thư mục được dùng để lưu trữ thiết lập, <tt>$1</tt>, không cho phép ghi.
@@ -10009,6 +10085,8 @@ Xin hãy chỉnh nó để cho phép PHP ghi vào mới dùng phần mở rộng
 	'configure-js-prompt-group' => 'Gõ vào tên nhóm mới:',
 	'configure-js-remove' => 'Xóa',
 	'configure-js-remove-row' => 'Xóa mục này',
+	'configure-js-biglist-show' => '[hiện chi tiết]',
+	'configure-js-biglist-hide' => '[ẩn chi tiết]',
 	'configure-no-diff' => 'Các phiên bản được chọn không khác với nhau.',
 	'configure-no-directory' => 'Thư mục dùng để lưu cấu hình, <tt>$1</tt>, không tồn tại.
 Xin hãy khởi tạo hoặc thay đổi nó để dùng được phần mở rộng này.',
@@ -10041,6 +10119,7 @@ Xin hãy khởi tạo hoặc thay đổi nó để dùng được phần mở r�
 	'configure-section-namespaces' => 'Không gian tên',
 	'configure-section-stats' => 'Thống kê trang',
 	'configure-section-skin' => 'Hình dạng',
+	'configure-section-vector' => 'Bề ngoài Vectơ',
 	'configure-section-category' => 'Thể loại',
 	'configure-section-cache' => 'Bộ đệm',
 	'configure-section-pcache' => 'Bộ đệm cú pháp',
@@ -10098,6 +10177,13 @@ Xin hãy khởi tạo hoặc thay đổi nó để dùng được phần mở r�
 	'configure-throttle-none' => 'Vô hạn',
 	'configure-condition-operator-or' => 'Hoặc',
 	'configure-condition-operator-and' => 'Và',
+	'configure-condition-name-4' => 'Thuộc nhóm',
+	'configure-condition-name-5' => 'Địa chỉ IP của người dùng',
+	'configure-condition-description-3' => 'Địa chỉ thư điện tử được xác nhận',
+	'configure-condition-description-5' => 'Địa chỉ IP của người dùng là $1',
+	'configure-farmer-settings' => '[[Special:Configure|Thiết lập wiki này]].',
+	'configure-farmer-extensions' => '[[Special:Extensions|Thiết lập các phần mở rộng trên wiki này]].',
+	'configure-farmer-extensions-list' => '[[Special:Extensions|Liệt kê các phần mở rộng có sẵn cho wiki này]].',
 );
 
 /** Volapük (Volapük)

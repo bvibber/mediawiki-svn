@@ -2,7 +2,8 @@
 /**
  * Internationalisation file for MassEditRegex extension
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $messages = array();
@@ -286,6 +287,7 @@ $messages['br'] = array(
 	'masseditregex-hint-remove' => 'Tennañ kuit un tamm destenn eus holl bajennoù ar roll',
 	'masseditregex-listtype-intro' => 'Setu ur roll :',
 	'masseditregex-listtype-pagenames' => 'Anv ar bajennoù (kemmañ ar bajennoù-se)',
+	'masseditregex-listtype-categories' => "Anv ar rummadoù (kemmañ pep pajenn a zo er rummadoù-se ; graet 'vez van eus diuzadenn an esaouenn anv)",
 	'masseditregex-listtype-backlinks' => 'Pajennoù liammet (kemmañ ar pajennoù enno ul liamm davet houmañ)',
 	'masseditregex-namespace-intro' => 'Emañ an holl bajennoù-mañ en esaouenn anv :',
 	'masseditregex-exprnomatch' => 'N\'eo bet kavet ar jedad "$1" e pajenn ebet.',
@@ -971,10 +973,10 @@ $messages['mk'] = array(
 	'masseditregex-hint-headreplace' => 'Замена',
 	'masseditregex-hint-headeffect' => 'Резултат',
 	'masseditregex-hint-toappend' => 'Приложете некој текст на крајот на страницата - одлично за додавање страници во категории',
-	'masseditregex-hint-remove' => 'Отстранување на извесен текст од сите страници на листата',
+	'masseditregex-hint-remove' => 'Отстранување на извесен текст од сите страници на списокот',
 	'masseditregex-hint-removecat' => 'Отстранете ги сите категории од една страница (обратете внимание на исклучувањето на квадратните загради од викикодот.)
 Вредностите за заменување не треба да се исклучуваат.',
-	'masseditregex-listtype-intro' => 'Ова е листа на:',
+	'masseditregex-listtype-intro' => 'Ова е список на:',
 	'masseditregex-listtype-pagenames' => 'Имиња на страниците (уредете ги тие страници)',
 	'masseditregex-listtype-pagename-prefixes' => 'Префикси на имиња на страници (уредете ги страниците чие име започнува со овој текст)',
 	'masseditregex-listtype-categories' => 'Имиња на категориите (уредете ја секоја страница во тие категории; изборот на именски простори се занемарува)',
@@ -1169,6 +1171,13 @@ Ij valor ëd rimpiassadura a dovrìo nen esse trucà.",
 	'masseditregex-tooltip-execute' => 'Fà sti cangiament-sì a minca pàgina',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'masseditregex-matchtxt' => 'پلټنه د:',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  */
@@ -1278,6 +1287,56 @@ $messages['ru'] = array(
 	'masseditregex-tooltip-execute' => 'Применить эти изменения для каждой страницы',
 );
 
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'masseditregex-pagelisttxt' => 'Стране за измену (не користите префикс за именски простор):',
+	'masseditregex-matchtxt' => 'Тражи:',
+	'masseditregex-replacetxt' => 'Замени са:',
+	'masseditregex-executebtn' => 'Изврши',
+	'masseditregex-err-nopages' => 'Морате навести најмање једну страну за измену.',
+	'masseditregex-before' => 'Пре',
+	'masseditregex-after' => 'После',
+	'masseditregex-num-changes' => '$1: $2 {{PLURAL:$1|измена|измене|измена}}',
+	'masseditregex-page-not-exists' => '$1 не постоји',
+	'masseditregex-num-articles-changed' => '$1 {{PLURAL:$1|страна|стране|страна}} измењено',
+	'masseditregex-view-full-summary' => 'Види потпун опис измене',
+	'masseditregex-hint-headmatch' => 'Нађи',
+	'masseditregex-hint-headreplace' => 'Замени',
+	'masseditregex-hint-headeffect' => 'Ефекат',
+	'masseditregex-listtype-intro' => 'Ово је списак од:',
+	'masseditregex-listtype-pagenames' => 'Имена страна (измени ове стране)',
+	'masseditregex-exprnomatch' => 'Израз "$1" се не налази ни на једној страни.',
+	'masseditregex-badregex' => 'Неисправан regex:',
+	'masseditregex-editfailed' => 'Измена није снимљена:',
+	'masseditregex-tooltip-execute' => 'Примени ове промене на сваку страну',
+);
+
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'masseditregex-pagelisttxt' => 'Strane za izmenu (ne koristite prefiks za imenski prostor):',
+	'masseditregex-matchtxt' => 'Traži:',
+	'masseditregex-replacetxt' => 'Zameni sa:',
+	'masseditregex-executebtn' => 'Izvrši',
+	'masseditregex-err-nopages' => 'Morate navesti najmanje jednu stranu za izmenu.',
+	'masseditregex-before' => 'Pre',
+	'masseditregex-after' => 'Posle',
+	'masseditregex-num-changes' => '$1: $2 {{PLURAL:$1|izmena|izmene|izmena}}',
+	'masseditregex-page-not-exists' => '$1 ne postoji',
+	'masseditregex-num-articles-changed' => '$1 {{PLURAL:$1|strana|strane|strana}} izmenjeno',
+	'masseditregex-view-full-summary' => 'Vidi potpun opis izmene',
+	'masseditregex-hint-headmatch' => 'Nađi',
+	'masseditregex-hint-headreplace' => 'Zameni',
+	'masseditregex-hint-headeffect' => 'Efekat',
+	'masseditregex-listtype-intro' => 'Ovo je spisak od:',
+	'masseditregex-listtype-pagenames' => 'Imena strana (izmeni ove strane)',
+	'masseditregex-exprnomatch' => 'Izraz "$1" se ne nalazi ni na jednoj strani.',
+	'masseditregex-badregex' => 'Neispravan regex:',
+	'masseditregex-editfailed' => 'Izmena nije snimljena:',
+	'masseditregex-tooltip-execute' => 'Primeni ove promene na svaku stranu',
+);
+
 /** Swedish (Svenska)
  * @author Dafer45
  * @author Per
@@ -1313,6 +1372,14 @@ $messages['te'] = array(
 	'masseditregex-num-changes' => '$1: $2 {{PLURAL:$2|మార్పు|మార్పులు}}',
 	'masseditregex-page-not-exists' => '$1 లేనే లేదు',
 	'masseditregex-num-articles-changed' => '$1 {{PLURAL:$1|పేజీని|పేజీలను}} మార్చారు',
+);
+
+/** Tagalog (Tagalog) */
+$messages['tl'] = array(
+	'masseditregex-matchtxt' => 'Hanapin ang:',
+	'masseditregex-replacetxt' => 'Palitan ng:',
+	'masseditregex-executebtn' => 'Isakatuparan',
+	'masseditregex-hint-headreplace' => 'Palitan',
 );
 
 /** Turkish (Türkçe)

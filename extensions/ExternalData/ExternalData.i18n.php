@@ -493,7 +493,7 @@ $messages['mk'] = array(
 	'externaldata-ldap-unable-to-connect' => 'Не можам да се поврзам со  $1',
 	'externaldata-json-decode-not-supported' => 'Грешка: json_decode() не е поддржан во оваа верзија на PHP',
 	'externaldata-xml-error' => 'XML грешка: $1 во ред $2',
-	'externaldata-db-incomplete-information' => 'Грешка: Нецелосни информации за овој серверски ид. бр.',
+	'externaldata-db-incomplete-information' => 'Грешка: Нецелосни информации за овој опслужувачки ид. бр.',
 	'externaldata-db-could-not-get-url' => 'Не можев да ја добијам URL адресата по $1 {{PLURAL:$1|обид|обиди}}.',
 	'externaldata-db-unknown-type' => 'Грешка: Непознат тип на база на податоци.',
 	'externaldata-db-could-not-connect' => 'Грешка: Не можев да се поврзам со базата на податоци.',
@@ -729,10 +729,20 @@ $messages['sr-ec'] = array(
  */
 $messages['sr-el'] = array(
 	'getdata' => 'Preuzmi podatke',
-	'externaldata-desc' => 'Omogućava preuzimanje podataka u CSV, JSON i XML formatima, kako preko spoljašnjih veza, tako i sa lokalnih viki-strana',
+	'externaldata-desc' => 'Omogućava preuzimanje podataka iz spoljašnjih adresa, bazi podataka i drugih izvora',
+	'externaldata-ldap-unable-to-connect' => 'Povezivanje na $1 nije uspelo',
+	'externaldata-json-decode-not-supported' => 'Greška: json_decode() nije podržan u ovom izdanju PHP-a',
+	'externaldata-xml-error' => 'XML greška: $1 po liniji $2',
+	'externaldata-db-incomplete-information' => 'Greška: Nepotpuni podaci za ovaj ID servera.',
+	'externaldata-db-could-not-get-url' => 'Preuzimanje adrese posle $1 {{PLURAL:$1|try|pokušaja}} nije uspelo.',
+	'externaldata-db-unknown-type' => 'Greška: Nepoznata vrsta baze podataka.',
+	'externaldata-db-could-not-connect' => 'Greška: Povezivanje s bazom podataka nije uspelo.',
+	'externaldata-db-no-return-values' => 'Greška: Povratne vrednosti nisu određene.',
+	'externaldata-db-invalid-query' => 'Neispravan upit.',
 );
 
 /** Swedish (Svenska)
+ * @author Ainali
  * @author Najami
  * @author Per
  */
@@ -740,6 +750,7 @@ $messages['sv'] = array(
 	'getdata' => 'Hämta data',
 	'externaldata-desc' => 'Tillåter att hämta data i formaten CSV, JSON och XML från både externa URL:er och lokala wikisidor',
 	'externaldata-ldap-unable-to-connect' => 'Kunde inte koppla till $1',
+	'externaldata-json-decode-not-supported' => 'Fel: json_decode() stöds inte i denna version av PHP',
 	'externaldata-xml-error' => 'XML-fel: $1 på rad $2',
 	'externaldata-db-incomplete-information' => 'Fel: Informationen för server-ID inte komplett.',
 	'externaldata-db-could-not-get-url' => 'Kunde inte hämta URL på $1 {{PLURAL:$1|försök|försök}}.',
@@ -794,11 +805,13 @@ $messages['vep'] = array(
 );
 
 /** Vietnamese (Tiếng Việt)
+ * @author Minh Nguyen
  * @author Vinhtantran
  */
 $messages['vi'] = array(
 	'getdata' => 'Lấy dữ liệu',
-	'externaldata-desc' => 'Cho phép truy xuất dữ liệu theo định dạng CSV, JSON và XML từ cả URL bên ngoài lẫn các trang wiki bên trong',
+	'externaldata-desc' => 'Cho phép truy xuất dữ liệu từ các địa chỉ URL bên ngoài, cơ sở dữ liệu, và nguồn khác',
+	'externaldata-xml-error' => 'Lỗi XML ở dòng $2: $1',
 );
 
 /** Yiddish (ייִדיש)

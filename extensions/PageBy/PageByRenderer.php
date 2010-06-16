@@ -2,8 +2,8 @@
 /**
  * PageBy renderer for PageBy extension.
  *
- * @package MediaWiki
- * @subpackage Extensions
+ * @file
+ * @ingroup Extensions
  * @author Daniel Kinzler, brightbyte.de
  * @copyright © 2007 Daniel Kinzler
  * @licence GNU General Public Licence 2.0 or later
@@ -27,7 +27,7 @@ class PageByRenderer {
 	var $showfirst;
 	var $showcomments;
 
-	function __construct( $page, $argv, &$parser ) {
+	function __construct( $page, $argv, $parser ) {
 		global $wgTitle;
 
 		$this->parser = $parser;

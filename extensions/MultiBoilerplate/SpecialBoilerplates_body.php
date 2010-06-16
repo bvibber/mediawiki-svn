@@ -4,7 +4,8 @@
  * This add-on use three new messages.
  * For more info see http://mediawiki.org/wiki/Extension:Multiboilerplate
  *
- * @subpackage Extensions
+ * @file
+ * @ingroup Extensions
  * @author Al Maghi
  */
 

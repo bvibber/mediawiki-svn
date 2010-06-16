@@ -2,7 +2,8 @@
 /**
  * Internationalisation file for extension WhoIsWatching.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $messages = array();
@@ -508,7 +509,7 @@ $messages['lt'] = array(
  */
 $messages['mk'] = array(
 	'whoiswatching' => 'Кој набљудува вики страница',
-	'whoiswatching-desc' => 'Дава листа на корисници кои набљудуваат некоја вики страница',
+	'whoiswatching-desc' => 'Дава список на корисници што набљудуваат некоја вики-страница',
 	'specialwhoiswatchingthepage' => 'Кој набљудува %s',
 	'specialwhoiswatchingusage' => 'Оваа специјална страница не може да се користи самостојно.
 За дефинирање на влезна точка кон оваа специјална страница, Ве молиме користете се со оваа страница [[MediaWiki:Number_of_watching_users_pageview|тука]].',

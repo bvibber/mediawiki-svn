@@ -3,7 +3,8 @@ if (!defined('MEDIAWIKI')) die();
 /**
  * A Special Page to replace Special:Imagelist and Special:Newimages
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  *
  * @author Magnus Manske <magnus.manske@web.de>
  * @copyright Copyright © 2006, Magnus Manske
@@ -284,7 +285,7 @@ function wfSpecialFilelist () {
 		 * Returns the form for keyword matching
 		*/
 		function matchform ( &$params ) {
-			$titleObj = Title::makeTitle( NS_SPECIAL, 'Filelist' );
+			$titleObj = SpecialPage::getTitleFor( 'Filelist' );
 			$action = $titleObj->escapeLocalURL();
 			$sub = wfMsg( 'ilsubmit' );
 			$p2 = $this->convertURLparams ( $params ) ;
@@ -303,7 +304,7 @@ function wfSpecialFilelist () {
 		*/
 		function limits ( &$params ) {
 			global $wgLang ;
-			$titleObj = Title::makeTitle( NS_SPECIAL, 'Filelist' );
+			$titleObj = SpecialPage::getTitleFor( 'Filelist' );
 			$ret = array () ;
 
 			if ( $params['gallery'] ) {
@@ -331,7 +332,7 @@ function wfSpecialFilelist () {
 		function options ( &$params ) {
 			global $wgLang;
 
-			$titleObj = Title::makeTitle( NS_SPECIAL, 'Filelist' );
+			$titleObj = SpecialPage::getTitleFor( 'Filelist' );
 			$ret = array () ;
 
 			$p2 = $this->convertURLparams ( $params ) ;
@@ -353,7 +354,7 @@ function wfSpecialFilelist () {
 		function prevnext ( &$params ) {
 			global $wgLang ;
 			$out = "" ;
-			$titleObj = Title::makeTitle( NS_SPECIAL, 'Filelist' );
+			$titleObj = SpecialPage::getTitleFor( 'Filelist' );
 
 			$prevLink = wfMsg( 'prevn', $wgLang->formatNum( $params['limit'] ) );
 			if( $params['therearebefore'] ) {

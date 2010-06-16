@@ -10,7 +10,7 @@ BASIC:
 FILES:
   class: PhpVariablesFFS
   sourcePattern: %GROUPROOT%/lang/strings_%CODE%.txt
-  targetPattern: strings_%CODE%.txt
+  targetPattern: mantisbt/plugins/MantisGraph/lang/strings_%CODE%.txt
   codeMap:
     af:      afrikaans
     am:      amharic
@@ -78,3 +78,4 @@ TAGS:
     - s_phpmailer_language
     - s_word_separator
     - s_directionality
+    - s_label

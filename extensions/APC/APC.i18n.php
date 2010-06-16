@@ -198,6 +198,14 @@ $messages['niu'] = array(
 	'viewapc-ls-submit' => 'Fano!',
 );
 
+/** Abkhazian (Аҧсуа)
+ * @author Temuri rajavi
+ */
+$messages['ab'] = array(
+	'viewapc-ls-header-modified' => 'Аҵыхәтәатәи аҽеиҭакра',
+	'viewapc-ls-sort-modified' => 'Аҵыхәтәатәи аҽеиҭакра',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
  * @author Naudefj
@@ -983,6 +991,17 @@ $messages['ca'] = array(
 	'viewapc-ls-limit-none' => 'Tot',
 	'viewapc-ls-nodata' => "''No hi ha dades coincidents''",
 	'viewapc-version-info' => 'Informació de la versió',
+);
+
+/** Chechen (Нохчийн)
+ * @author Sasan700
+ */
+$messages['ce'] = array(
+	'viewapc-uptime' => 'Белха хан',
+	'viewapc-cached-files-d' => '$1 {{PLURAL:$1|хlум|хlума|хlумнаш}} ($2)',
+	'viewapc-display-filename' => 'Хlуман цlе',
+	'viewapc-ls-options' => 'Литтар: $1 Листар: $2$3$4 Лахар: $5 $6',
+	'viewapc-ls-delete' => '[Дlадайá]',
 );
 
 /** Czech (Česky)
@@ -3678,9 +3697,9 @@ $messages['mk'] = array(
 	'viewapc-info-general' => 'Општи информации',
 	'viewapc-apc-version' => 'APC верзија',
 	'viewapc-php-version' => 'PHP верзија',
-	'viewapc-shared-memory' => 'Заедничка меморија',
+	'viewapc-shared-memory' => 'Заедничко памтење',
 	'viewapc-shared-memory-details' => '{{PLURAL:$1|1 сегмент од $2|$1 сегменти, секој по $2}}.<br />
-($3 меморија, $4 заклучување)',
+($3 памтење, $4 заклучување)',
 	'viewapc-start-time' => 'Време на почеток',
 	'viewapc-uptime' => 'Време на работа',
 	'viewapc-upload-support' => 'Поддршка за подигање податотеки',
@@ -3698,15 +3717,15 @@ $messages['mk'] = array(
 	'viewapc-rps' => '$1 барања во секунда',
 	'viewapc-info-runtime' => 'Информации за работењето',
 	'viewapc-info-memory' => 'Дијаграми за статусот на домаќинот',
-	'viewapc-memory-usage-detailed' => 'Искористеност на меморијата<br />
+	'viewapc-memory-usage-detailed' => 'Искористеност на памтењето<br />
 (засеците означуваат фрагменти)',
-	'viewapc-memory-usage' => 'Искористување на меморија',
+	'viewapc-memory-usage' => 'Искористеност на памтењето',
 	'viewapc-cache-efficiency' => 'Погодоци и промашувања',
 	'viewapc-memory-free' => 'Слободно: $1 ($2)',
 	'viewapc-memory-used' => 'Искористено: $1 ($2)',
 	'viewapc-memory-hits' => 'Погодоци: $1 ($2)',
 	'viewapc-memory-miss' => 'Промашувања: $1 ($2)',
-	'viewapc-memoryfragmentation' => 'Подробно за искористеноста на меморијата и фрагментацијата',
+	'viewapc-memoryfragmentation' => 'Подробно за искористеноста на памтењето и фрагментацијата',
 	'viewapc-fragmentation-info' => 'Фрагментација: $1 ($2 од $3 во $4 {{PLURAL:$4|фрагмент|фрагменти}})',
 	'viewapc-fragmentation-none' => 'Фрагментација: нема фрагментација',
 	'viewapc-display-attribute' => 'Атрибут',

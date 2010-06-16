@@ -3,7 +3,8 @@
  * Setup and Hooks for the CategoryTree extension, an AJAX based gadget
  * to display the category structure of a wiki
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  * @author Daniel Kinzler, brightbyte.de
  * @copyright © 2006-2008 Daniel Kinzler and others
  * @license GNU General Public Licence 2.0 or later
@@ -36,6 +37,7 @@ define( 'CT_HIDEPREFIX_AUTO', 30 );
  * Options:
  *
  * $wgCategoryTreeMaxChildren - maximum number of children shown in a tree node. Default is 200
+ * $wgCategoryTreeMaxScanRows - maximum number of rows the DBMS may scan while showing a tree node.
  * $wgCategoryTreeAllowTag - enable <categorytree> tag. Default is true.
  * $wgCategoryTreeDynamicTag - loads the first level of the tree in a <categorytag> dynamically.
  *                             This way, the cache does not need to be disabled. Default is false.
@@ -51,6 +53,7 @@ define( 'CT_HIDEPREFIX_AUTO', 30 );
  */
 
 $wgCategoryTreeMaxChildren = 200;
+$wgCategoryTreeMaxScanRows = 10000;
 $wgCategoryTreeAllowTag = true;
 $wgCategoryTreeDisableCache = true;
 $wgCategoryTreeDynamicTag = false;
@@ -196,7 +199,7 @@ function efCategoryTree() {
 	}
 }
 
-function efCategoryTreeSetHooks( &$parser ) {
+function efCategoryTreeSetHooks( $parser ) {
 	$parser->setHook( 'categorytree' , 'efCategoryTreeParserHook' );
 	$parser->setFunctionHook( 'categorytree' , 'efCategoryTreeParserFunction' );
 	return true;
@@ -260,9 +263,9 @@ function efCategoryTreeCapDepth( $mode, $depth ) {
  * Entry point for the {{#categorytree}} tag parser function.
  * This is a wrapper around efCategoryTreeParserHook
  */
-function efCategoryTreeParserFunction( &$parser ) {
+function efCategoryTreeParserFunction( $parser ) {
 	$params = func_get_args();
-	array_shift( $params ); // first is &$parser, strip it
+	array_shift( $params ); // first is $parser, strip it
 
 	// first user-supplied parameter must be category name
 	if ( !$params ) {
@@ -294,7 +297,7 @@ function efCategoryTreeParserFunction( &$parser ) {
  * Hook implementation for injecting a category tree into the sidebar.
  * Registered automatically if $wgCategoryTreeSidebarRoot is set to a category name.
  */
-function efCategoryTreeSkinTemplateOutputPageBeforeExec( &$skin, &$tpl ) {
+function efCategoryTreeSkinTemplateOutputPageBeforeExec( $skin, $tpl ) {
 	global $wgCategoryTreeSidebarRoot, $wgCategoryTreeSidebarOptions;
 
 	$html = efCategoryTreeParserHook( $wgCategoryTreeSidebarRoot, $wgCategoryTreeSidebarOptions );
@@ -338,7 +341,7 @@ function efCategoryTreeParserHook( $cat, $argv, $parser = null, $allowMissing = 
 * Hook callback that injects messages and things into the <head> tag
 * Does nothing if $parserOutput->mCategoryTreeTag is not set
 */
-function efCategoryTreeParserOutput( &$outputPage, $parserOutput )  {
+function efCategoryTreeParserOutput( $outputPage, $parserOutput )  {
 	if ( !empty( $parserOutput->mCategoryTreeTag ) ) {
 		CategoryTree::setHeaders( $outputPage );
 	}
@@ -348,7 +351,7 @@ function efCategoryTreeParserOutput( &$outputPage, $parserOutput )  {
 /**
  * ArticleFromTitle hook, override category page handling
  */
-function efCategoryTreeArticleFromTitle( &$title, &$article ) {
+function efCategoryTreeArticleFromTitle( $title, &$article ) {
 	if ( $title->getNamespace() == NS_CATEGORY ) {
 		$article = new CategoryTreeCategoryPage( $title );
 	}
@@ -358,7 +361,7 @@ function efCategoryTreeArticleFromTitle( &$title, &$article ) {
 /**
  * OutputPageMakeCategoryLinks hook, override category links
  */
-function efCategoryTreeOutputPageMakeCategoryLinks( &$out, &$categories, &$links ) {
+function efCategoryTreeOutputPageMakeCategoryLinks( $out, &$categories, &$links ) {
 	global $wgContLang, $wgCategoryTreePageCategoryOptions;
 
 	$ct = new CategoryTree( $wgCategoryTreePageCategoryOptions );
@@ -370,7 +373,7 @@ function efCategoryTreeOutputPageMakeCategoryLinks( &$out, &$categories, &$links
 	return false;
 }
 
-function efCategoryTreeSkinJoinCategoryLinks( &$skin, &$links, &$result ) {
+function efCategoryTreeSkinJoinCategoryLinks( $skin, &$links, &$result ) {
 	$embed = '<div class="CategoryTreePretendInlineMSIE CategoryTreeCategoryBarItem">';
 	$pop = '</div>';
 	$sep = ' ';

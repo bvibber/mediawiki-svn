@@ -6,7 +6,8 @@
  * more informations.
  * Require MediaWiki 1.16 alpha r52503 or higher to work.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  * @author Alexandre Emsenhuber
  * @license GPLv2 of greater
  */

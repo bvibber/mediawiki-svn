@@ -2,8 +2,9 @@
 /**
  * Internationalisation file for extension MiniDonation.
  *
- * @addtogroup Extensions
-*/
+ * @file
+ * @ingroup Extensions
+ */
 
 $messages = array();
 
@@ -23,7 +24,7 @@ $messages['qqq'] = array(
  * @author Juanpabl
  */
 $messages['an'] = array(
-	'donationform-submit' => 'Donar fendo serbir Paypal',
+	'donationform-submit' => 'Donar fendo servir Paypal',
 );
 
 /** Arabic (العربية)

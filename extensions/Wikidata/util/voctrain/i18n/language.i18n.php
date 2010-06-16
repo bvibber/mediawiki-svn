@@ -164,6 +164,7 @@ $messages['en'] = array(
  * @author Aotake
  * @author Bennylin
  * @author Darth Kule
+ * @author EugeneZelenko
  * @author Fryed-peach
  * @author Malafaya
  */
@@ -181,19 +182,20 @@ $messages['qqq'] = array(
 	'voctrain_bye' => 'Test message',
 	'voctrain_Set_up_your_exercise' => 'setup: Page title',
 	'voctrain_Number_of_questions' => 'setup: subheading',
-	'voctrain_Languages' => 'Languages',
+	'voctrain_Languages' => '{{Identical|Language}}',
 	'voctrain_Please_specify_the_languages_you_want_to_test_in' => "Setup:text the in refers to '...in iso-693-3 format'",
 	'voctrain_eg_eng_for_English_deu_for_Deutch_German_' => 'Setup:text',
 	'voctrain_Depending_on_your_test_set_some_combinations_might_work_better_than_others_' => 'setup:text',
 	'voctrain_Questions' => 'Questions',
-	'voctrain_Answers' => 'Answers',
+	'voctrain_Answers' => '{{Identical|Answer}}',
 	'voctrain_start_exercise' => 'button:start exercise',
 	'voctrain_collection' => 'a wikidata collection
 
 {{Identical|Collection}}',
 	'voctrain_ISO_639_3_format' => 'ISO-639-3 format',
 	'voctrain_There_are_questions_remaining_questions_remaining_out_of_a_total_of_questions_total_' => "exercise: status at top of page (don't translate %questions_remaining and %questions_total)",
-	'voctrain_Definition' => 'exercise: subheading',
+	'voctrain_Definition' => 'exercise: subheading
+{{Identical|Definition}}',
 	'voctrain_Dictionary_definition_to_help_you' => 'exercise: text',
 	'voctrain_Word' => 'exercise: subheading',
 	'voctrain_Please_type_your_answer_here' => 'exercise: text',
@@ -205,7 +207,7 @@ $messages['qqq'] = array(
 	'voctrain_list_answers' => 'exercise: button',
 	'voctrain_Question' => 'Question',
 	'voctrain_The_word_to_translate' => 'The word to translate',
-	'voctrain_Answer' => 'Answer',
+	'voctrain_Answer' => '{{Identical|Answer}}',
 	'voctrain_one_of' => 'one of',
 	'voctrain_list_of_questions_and_answers' => 'list: heading',
 	'voctrain_Answer_s_' => 'list: table header',
@@ -217,13 +219,16 @@ $messages['qqq'] = array(
 	'voctrain_Start_a_new_exercise' => 'end exercise: Start a new exercise',
 	'voctrain_User_name' => 'login: User name
 {{Identical|Username}}',
-	'voctrain_Password' => 'login: Password',
+	'voctrain_Password' => 'login: Password
+{{Identical|Password}}',
 	'voctrain_Login' => 'login: button',
 	'voctrain_Create_new_user' => 'login: button',
 	'voctrain_Switch_language' => 'login: button',
 	'voctrain_Language' => 'login: label',
-	'voctrain_Log_in' => 'login: header',
+	'voctrain_Log_in' => 'login: header
+{{Identical|Log in}}',
 	'voctrain_Omegawiki_vocabulary_trainer' => 'login: header',
+	'voctrain_Definitions' => '{{Identical|Definition}}',
 	'voctrain_other' => "Selectable item to be chosen when the desired number of questions is not in the list
 i.e.:
 
@@ -246,6 +251,21 @@ $messages['rtm'] = array(
 	'voctrain_User_name' => 'Asa',
 	'voctrain_Login' => 'Surum',
 	'voctrain_Log_in' => 'Surum',
+);
+
+/** Test (site admin only) (Test (site admin only)) */
+$messages['test'] = array(
+	'voctrain_try_again_' => 'try again? %blah%',
+	'voctrain_Action_unknown' => 'Action unknown %fail',
+	'voctrain_I_don_t_know_what_to_do_with_action_' => "I don't know what to do with '% action'.",
+	'voctrain_User_added' => 'User added %_fail',
+	'voctrain_Hello_username_welcome_to_the_omega_language_trainer' => 'Hello, %user_name, welcome to the omega language trainer',
+	'voctrain_continue' => '%continue%',
+	'voctrain_hello_place' => 'hello there %placer',
+	'voctrain_bye' => '%goodbye',
+	'voctrain_Answers' => '(Answers',
+	'voctrain_start_exercise' => '{start',
+	'voctrain_collection' => 'col[lection',
 );
 
 /** Afrikaans (Afrikaans)
@@ -468,7 +488,7 @@ $messages['arz'] = array(
 	'voctrain_other' => 'آخر',
 );
 
-/** Azerbaijani (Azərbaycan)
+/** Azerbaijani (Azərbaycanca)
  * @author Sortilegus
  */
 $messages['az'] = array(
@@ -1266,14 +1286,14 @@ $messages['eu'] = array(
  */
 $messages['fi'] = array(
 	'voctrain_Hello_World' => 'Terve WIKI!',
-	'voctrain_Permission_Denied' => 'Ei kirjautumisoikeutta',
+	'voctrain_Permission_Denied' => 'Käyttö estetty',
 	'voctrain_try_again_' => 'yritä uudelleen?',
 	'voctrain_Action_unknown' => 'Tuntematon toiminto',
 	'voctrain_I_don_t_know_what_to_do_with_action_' => "En tiedä kuinka tehdä '%action'.",
 	'voctrain_User_added' => 'Käyttäjä lisätty',
 	'voctrain_Hello_username_welcome_to_the_omega_language_trainer' => 'Hei, %username, tervetuloa Omegaan harjoittelemaan sanoja.',
 	'voctrain_continue' => 'jatka',
-	'voctrain_hello_place' => 'Heippa %place',
+	'voctrain_hello_place' => 'Hei %place',
 	'voctrain_bye' => 'Näkemiin',
 	'voctrain_Set_up_your_exercise' => 'Valmistele harjoitus',
 	'voctrain_Number_of_questions' => 'Kysymysten määrä',
@@ -1304,7 +1324,7 @@ $messages['fi'] = array(
 	'voctrain_list_of_questions_and_answers' => 'Kysymys- ja vastausluettelo',
 	'voctrain_Answer_s_' => 'Vastaukset',
 	'voctrain_logout' => 'Kirjaudu ulos',
-	'voctrain_Powered_by' => 'Toiminnan takaa',
+	'voctrain_Powered_by' => 'Palvelun mahdollistaa',
 	'voctrain_Exercise_complete' => 'Harjoitus valmis',
 	'voctrain_Exercise_terminated' => 'Harjoitus keskeytetty',
 	'voctrain_Start_a_new_exercise' => 'Aloita uusi harjoitus',
@@ -1318,7 +1338,7 @@ $messages['fi'] = array(
 	'voctrain_Omegawiki_vocabulary_trainer' => 'Omegawiki-sanastonharjoitteluohjelma',
 	'voctrain_Definitions' => 'Määritelmät',
 	'voctrain_Could_not_create_new_user' => 'Uutta käyttäjää ei voitu luoda',
-	'voctrain_Type_a_username_and_optional_password_or_try_a_different_username_' => 'Kirjoita käyttäjätunnus ja mahdollinen salasana, tai kokeile toista käyttäjäntunnusta',
+	'voctrain_Type_a_username_and_optional_password_or_try_a_different_username_' => 'Kirjoita käyttäjätunnus ja mahdollinen salasana, tai kokeile toista käyttäjätunnusta',
 	'voctrain_Vocview' => 'Sanastoselain',
 	'voctrain_Dictionary_definitions' => 'dictionary_definitions',
 	'voctrain_Translation' => 'Käännös',
@@ -2190,7 +2210,7 @@ $messages['kri'] = array(
 	'voctrain_logout' => 'kohmoh na di sait',
 );
 
-/** Ripoarisch (Ripoarisch)
+/** Colognian (Ripoarisch)
  * @author Purodha
  */
 $messages['ksh'] = array(
@@ -2261,7 +2281,7 @@ $messages['ksh'] = array(
 	'voctrain_other' => 'en ander Zahl',
 );
 
-/** Cornish (Kernowek)
+/** Cornish (Kernewek)
  * @author Kernoweger
  * @author Kw-Moon
  */
@@ -2311,6 +2331,7 @@ $messages['lb'] = array(
 	'voctrain_collection' => 'Sammlung',
 	'voctrain_ISO_639_3_format' => 'ISO-639-3 Format',
 	'voctrain_Definition' => 'Definitioun',
+	'voctrain_Dictionary_definition_to_help_you' => 'Dictionnaires-Definitioune fir Iech ze hëllefen',
 	'voctrain_Word' => 'Wuert',
 	'voctrain_Please_type_your_answer_here' => 'Gitt är Äntwert w.e.g. hei an',
 	'voctrain_submit_answer' => 'Äntwert fortschécken',
@@ -2334,6 +2355,7 @@ $messages['lb'] = array(
 	'voctrain_Language' => 'Sprooch',
 	'voctrain_Definitions' => 'Definitiounen',
 	'voctrain_Could_not_create_new_user' => 'Neie Benotzer konnt net ugeluecht ginn',
+	'voctrain_Type_a_username_and_optional_password_or_try_a_different_username_' => 'Tippt e Benotzernumm an e fakultatiivt Passwuert an, (oder versicht et mat engem anere Benotzernumm)',
 	'voctrain_Translation' => 'Iwwersetzung',
 	'voctrain_unhide_definition' => 'Definitioun nees weisen',
 	'voctrain_unhide_words' => 'Wieder nees weisen',
@@ -2473,7 +2495,7 @@ $messages['mk'] = array(
 	'voctrain_The_word_to_translate' => 'Збор за преведување',
 	'voctrain_Answer' => 'Одговор',
 	'voctrain_one_of' => 'еден од',
-	'voctrain_list_of_questions_and_answers' => 'листа на прашања и одговори',
+	'voctrain_list_of_questions_and_answers' => 'список на прашања и одговори',
 	'voctrain_Answer_s_' => 'Одговор(и)',
 	'voctrain_logout' => 'одјавување',
 	'voctrain_Powered_by' => 'Благодарение на',
@@ -3402,6 +3424,16 @@ $messages['ro'] = array(
 	'voctrain_Language' => 'Limbă',
 	'voctrain_Log_in' => 'Autentificare',
 	'voctrain_Definitions' => 'Definiții',
+);
+
+/** Tarandíne (Tarandíne)
+ * @author Joetaras
+ */
+$messages['roa-tara'] = array(
+	'voctrain_Hello_World' => "CIA' UICCHI!",
+	'voctrain_try_again_' => "vuè cu prueve n'otra vote?",
+	'voctrain_ISO_639_3_format' => 'formete ISO-639-3',
+	'voctrain_skip' => 'zumbe',
 );
 
 /** Russian (Русский)

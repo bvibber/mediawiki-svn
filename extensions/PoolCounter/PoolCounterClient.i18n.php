@@ -2,7 +2,8 @@
 /**
  * Internationalisation file for extension PoolCounterClient.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $messages = array();
@@ -230,10 +231,10 @@ $messages['lb'] = array(
  */
 $messages['mk'] = array(
 	'poolcounter-desc' => 'МедијаВики клиент за  демонот на фондовскиот шалтер poolcounter.py',
-	'poolcounter-connection-error' => 'Грешка при поврзувањето со серверот на фондовскиот шалтер:  $1',
-	'poolcounter-read-error' => 'Грешка први читањето од серверот на фондовскиот шалтер',
-	'poolcounter-write-error' => 'Грешка при запишувањето во серверот на фондовскиот шалтер',
-	'poolcounter-remote-error' => 'Грешка во серверот на фондовскиот шалтер: $1',
+	'poolcounter-connection-error' => 'Грешка при поврзувањето со опслужувачот на фондовскиот шалтер:  $1',
+	'poolcounter-read-error' => 'Грешка први читањето од опслужувачот на фондовскиот шалтер',
+	'poolcounter-write-error' => 'Грешка при запишувањето во опслужувачот на фондовскиот шалтер',
+	'poolcounter-remote-error' => 'Грешка во опслужувачот на фондовскиот шалтер: $1',
 );
 
 /** Dutch (Nederlands)

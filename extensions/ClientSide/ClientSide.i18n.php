@@ -2,8 +2,9 @@
 /**
  * Internationalisation file for ClientSide extension.
  *
- * @addtogroup Extensions
-*/
+ * @file
+ * @ingroup Extensions
+ */
 
 $messages = array();
 
@@ -193,6 +194,13 @@ $messages['ia'] = array(
  */
 $messages['id'] = array(
 	'clientside-desc' => 'Menyediakan fungsi untuk membuat kode seperti HTML, CSS dan JavaScript',
+);
+
+/** Italian (Italiano)
+ * @author HalphaZ
+ */
+$messages['it'] = array(
+	'clientside-desc' => 'Fornisce funzioni per la generazione di codice in formati lato client come HTML, CSS e JavaScript',
 );
 
 /** Japanese (日本語)

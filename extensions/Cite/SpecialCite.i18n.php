@@ -2,7 +2,8 @@
 /**
  * Internationalisation file for Cite special page extension.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
 */
 
 $messages = array();
@@ -82,11 +83,11 @@ $messages['am'] = array(
  * @author Juanpabl
  */
 $messages['an'] = array(
-	'cite_article_desc' => 'Adibe un binclo y una pachina espezial de [[Special:Cite|zita]]',
-	'cite_article_link' => 'Zitar ista pachina',
-	'cite' => 'Zitar',
+	'cite_article_desc' => 'Adibe un vinclo y una pachina especial de [[Special:Cite|cita]]',
+	'cite_article_link' => 'Citar ista pachina',
+	'cite' => 'Citar',
 	'cite_page' => 'Pachina:',
-	'cite_submit' => 'Zitar',
+	'cite_submit' => 'Citar',
 );
 
 /** Arabic (العربية)
@@ -352,7 +353,7 @@ $messages['da'] = array(
 
 /** German (Deutsch) */
 $messages['de'] = array(
-	'cite_article_desc' => 'Ergänzt die [[Special:Cite|Zitierhilfe]]-Spezialseite und einen Link im Kasten Werkzeuge',
+	'cite_article_desc' => '[[Special:Cite|Zitierhilfe]]-Spezialseite und einen Link im Kasten Werkzeuge',
 	'cite_article_link' => 'Seite zitieren',
 	'tooltip-cite-article' => 'Hinweis, wie diese Seite zitiert werden kann',
 	'cite' => 'Zitierhilfe',
@@ -1110,9 +1111,12 @@ $messages['ms'] = array(
  * @author Giangian15
  */
 $messages['mt'] = array(
-	'cite' => 'Iċċita',
+	'cite_article_desc' => 'Iżżid paġna speċjali għaċ-[[Special:Cite|ċitazzjonijiet]] u ħolqa mal-istrumenti',
+	'cite_article_link' => 'Iċċita din il-paġna',
+	'tooltip-cite-article' => 'Informazzjoni fuq kif tiċċita din il-paġna',
+	'cite' => 'Ċitazzjoni',
 	'cite_page' => 'Paġna:',
-	'cite_submit' => 'Iċċita',
+	'cite_submit' => 'Oħloq ċitazzjoni',
 );
 
 /** Mirandese (Mirandés)

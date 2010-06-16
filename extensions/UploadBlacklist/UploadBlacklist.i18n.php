@@ -2,7 +2,8 @@
 /**
  * Internationalisation file for the User Merge and Delete Extension.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $messages = array();
@@ -268,7 +269,7 @@ $messages['lb'] = array(
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
-	'uploadblacklist-desc' => 'Додава функција за црна листа на подигања',
+	'uploadblacklist-desc' => 'Додава функција за црн список на подигања',
 );
 
 /** Malayalam (മലയാളം)
@@ -381,6 +382,18 @@ $messages['sk'] = array(
  */
 $messages['sl'] = array(
 	'uploadblacklist-desc' => 'Doda funkcionalnost črne liste nalaganj',
+);
+
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'uploadblacklist-desc' => 'Додаје функционалност црне листе за слање фајлова',
+);
+
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'uploadblacklist-desc' => 'Dodaje funkcionalnost crne liste za slanje fajlova',
 );
 
 /** Swedish (Svenska)

@@ -12,6 +12,29 @@ $j(document).ready( function() {
 	if( !wgVectorEnabledModules.simplesearch || skin != 'vector' ) {
 		return true;
 	}
+	var mod = {
+		'browsers': {
+			// Left-to-right languages
+			'ltr': {
+				// SimpleSearch is broken in Opera < 9.6
+				'opera': [['>=', 9.6]],
+				'blackberry': false,
+				'ipod': false,
+				'iphone': false
+			},
+			// Right-to-left languages
+			'rtl': {
+				'opera': [['>=', 9.6]],
+				'blackberry': false,
+				'ipod': false,
+				'iphone': false
+			}
+		}
+	};
+	if ( !$j.wikiEditor.isSupported( mod ) ) {
+		return true;
+	}
+	
 	// Add form submission handler
 	$j( 'div#simpleSearch > input#searchInput' )
 		.each( function() {
@@ -20,10 +43,11 @@ $j(document).ready( function() {
 				.css({
 					'display': 'none',
 					'position' : 'absolute',
-					'bottom': 0,
-					'padding': '0.25em',
 					'color': '#999999',
-					'cursor': 'text'
+					'cursor': 'text',
+					'margin': '0 4px',
+					'top': '6px',
+					'line-height': '13px'
 				})
 				.css( ( $j( 'body' ).is( '.rtl' ) ? 'right' : 'left' ), 0 )
 				.click( function() {
@@ -34,6 +58,11 @@ $j(document).ready( function() {
 				$j(this).parent().find( 'label' ).fadeIn( 100 );
 			}
 		})
+		.bind( 'keypress', function() {
+			// just in case the text field was focus before our handler was bound to it
+			if ( $j(this).parent().find( 'label:visible' ).size() > 0 )
+				$j(this).parent().find( 'label' ).fadeOut( 100 );
+		})
 		.focus( function() {
 			$j(this).parent().find( 'label' ).fadeOut( 100 );
 		})
@@ -42,6 +71,13 @@ $j(document).ready( function() {
 				$j(this).parent().find( 'label' ).fadeIn( 100 );
 			}
 		});
+		// listen for dragend events in order to clear the label from the search field if
+		// text is dragged into it. Only works for mozilla
+		$j( document ).bind( 'dragend', function( event ) {
+			if ( $j( 'div#simpleSearch > label:visible' ).size() > 0 
+				&& $j( 'div#simpleSearch > input#searchInput' ).val().length > 0 )
+					$j( 'div#simpleSearch > label' ).fadeOut( 100 );
+		} );
 	$j( '#searchInput, #searchInput2, #powerSearchText, #searchText' ).suggestions( {
 		fetch: function( query ) {
 			var $this = $j(this);
@@ -75,8 +111,12 @@ $j(document).ready( function() {
 			}
 		},
 		delay: 120,
-		positionFromLeft: $j( 'body' ).is( '.rtl' )
-	} );
+		positionFromLeft: $j( 'body' ).is( '.rtl' ),
+		highlightInput: true
+	} )
+		.bind( 'paste cut click', function() {
+			$j( this ).trigger( 'keypress' );
+		} );
 	$j( '#searchInput' ).suggestions( {
 		result: {
 			select: function( $textbox ) {
@@ -111,5 +151,8 @@ $j(document).ready( function() {
 			}
 		},
 		$region: $j( '#simpleSearch' )
-	} );
+	} )
+		.bind( 'paste cut click', function() {
+			$j( this ).trigger( 'keypress' );
+		} );
 });

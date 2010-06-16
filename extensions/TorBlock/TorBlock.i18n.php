@@ -2,7 +2,8 @@
 /**
  * Internationalisation file for extension TorBlock.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $messages = array();
@@ -46,8 +47,8 @@ $messages['af'] = array(
 $messages['an'] = array(
 	'torblock-desc' => 'Premite que os nodos de salida tor sían bloqueyatos ta editar una wiki',
 	'torblock-blocked' => "A suya adreza IP, <tt>$1</tt>, s'ha identificato automaticament como un nodo de salida tor.
-Ye bedato d'editar con tor ta pribar abusos.",
-	'right-torunblocked' => "Pribar os bloqueyos automaticos d'os nodos tor",
+Ye vedato d'editar con tor ta privar abusos.",
+	'right-torunblocked' => "Privar os bloqueyos automaticos d'os nodos tor",
 );
 
 /** Arabic (العربية)
@@ -600,9 +601,9 @@ Redagavimas per tor yra užblokuotas, kad nebūtų piktnaudžiaujama.',
  */
 $messages['mk'] = array(
 	'torblock-desc' => 'Овозможува блокирање на излезни Tor јазли за да не можат да го уредуваат некое вики',
-	'torblock-blocked' => 'Вашата IP адреса, <tt>$1</tt>, беше автоматски препознаена како излезен Tor јазол.
-Уредувањето преку Tor е забрането, со цел да се спречи злоупотреба.',
-	'torblock-isexitnode' => 'IP адресата $1 е блокирана како излезен Tor јазол.',
+	'torblock-blocked' => 'Вашата IP-адреса, <tt>$1</tt>, беше автоматски препознаена како излезен Tor јазол.
+Уредувањето преку Tor е забрането со цел да се спречи злоупотреба.',
+	'torblock-isexitnode' => 'IP-адресата $1 е блокирана како излезен Tor јазол.',
 	'right-torunblocked' => 'Заобиколување на автоматски блокови на излезни Tor јазли',
 	'tag-tor-description' => 'Ако е поставена оваа ознака, тоа значи дека било направено уредување со Tor излезен јазол.',
 	'tag-tor' => 'Направено преку Tor',

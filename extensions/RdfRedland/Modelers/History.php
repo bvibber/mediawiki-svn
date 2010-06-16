@@ -19,8 +19,7 @@
  *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA *
  * @author Evan Prodromou <evan@wikitravel.org>
  * @author Mark Jaroski <mark@geekhive.net>
- * @package MediaWiki
- * @subpackage Extensions
+ * @ingroup Extensions
  */
 
 class MwRdf_History_Modeler extends MwRdf_Modeler {

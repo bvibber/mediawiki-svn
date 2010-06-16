@@ -2,6 +2,7 @@
 /**
  * Internationalization file for SystemGifts extension.
  *
+ * @file
  * @ingroup Extensions
  */
 
@@ -1736,7 +1737,7 @@ $messages['mk'] = array(
 	'systemgiftmanager' => 'Раководител со системски подароци',
 	'ga-addnew' => '+ Додај нов подарок',
 	'ga-back-edit-gift' => 'Назад кон уредувањето на овој подарок',
-	'ga-back-gift-list' => 'Назад кон листата на подароци',
+	'ga-back-gift-list' => 'Назад кон списокот на подароци',
 	'ga-back-link' => '<a href="$1">< Назад кон профилот на $2</a>',
 	'ga-choosefile' => 'Одберете податотека:',
 	'ga-count' => '$1 има $2 {{PLURAL:$2|награда|награди}}.',
@@ -1769,7 +1770,7 @@ $messages['mk'] = array(
 	'ga-threshold' => 'праг',
 	'ga-title' => 'Наградите на $1',
 	'ga-uploadsuccess' => 'Подигањето е успешно',
-	'ga-viewlist' => 'Види листа на подароци',
+	'ga-viewlist' => 'Прикажи список на подароци',
 	'system_gift_received_subject' => 'Ја добивте наградата $1 на {{SITENAME}}!',
 	'system_gift_received_body' => 'Здраво $1.
 
@@ -2145,7 +2146,7 @@ zespół {{GRAMMAR:D.lp|{{SITENAME}}}}
 Nie chcesz otrzymywać wiadomości?
 
 Kliknij $5
-i zmień ustawienia, aby wyłączyć powiadomienia e-mail.',
+i zmień ustawienia, aby wyłączyć powiadomienia e‐mail.',
 	'right-awardsmanage' => 'Tworzenie nowych oraz edytowanie istniejących nagród',
 );
 
@@ -2862,6 +2863,13 @@ $messages['vi'] = array(
 	'ga-small' => 'Nhỏ',
 	'ga-title' => 'Huy chương của $1',
 	'ga-uploadsuccess' => 'Đã tải lên thành công',
+);
+
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'ga-choosefile' => 'קלויבט טעקע:',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

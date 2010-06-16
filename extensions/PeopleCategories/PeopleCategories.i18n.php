@@ -61,6 +61,14 @@ $messages['es'] = array(
 	'peoplecategories-desc' => 'Los cambios mostraron nombres de páginas de "Nombre Apellido" a "Apellido, Nombre" en las páginas de categoría especificadas',
 );
 
+/** Finnish (Suomi)
+ * @author Crt
+ * @author Str4nd
+ */
+$messages['fi'] = array(
+	'peoplecategories-desc' => 'Vaihtaa näytetyt sivunimet ”Etunimi Sukunimi” -muodosta ”Sukunimi, Etunimi” -muotoon määritellyillä luokkasivuilla.',
+);
+
 /** French (Français)
  * @author Peter17
  */
@@ -177,6 +185,13 @@ $messages['pms'] = array(
  * @author Hamilton Abreu
  */
 $messages['pt'] = array(
+	'peoplecategories-desc' => 'Altera os nomes de página de "Nome Sobrenome" para "Sobrenome, Nome" nas páginas de categoria especificadas',
+);
+
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Giro720
+ */
+$messages['pt-br'] = array(
 	'peoplecategories-desc' => 'Altera os nomes de página de "Nome Sobrenome" para "Sobrenome, Nome" nas páginas de categoria especificadas',
 );
 

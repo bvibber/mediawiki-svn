@@ -2,7 +2,8 @@
 /**
  * AjaxTest extension
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  * @author Daniel Kinzler <duesentrieb@brightbyte.de>
  * @copyright © 2006 Daniel Kinzler
  * @license GNU General Public Licence 2.0 or later
@@ -37,6 +38,7 @@ $wgSpecialPages['AjaxTest'] = 'AjaxTestPage';
 $dir = dirname( __FILE__ ) . '/';
 $wgExtensionMessagesFiles['AjaxTest'] = $dir . 'AjaxTest.i18n.php';
 $wgExtensionAliasesFiles['AjaxTest'] = $dir . 'AjaxTest.alias.php';
+$wgAutoloadClasses['AjaxTestPage'] = $dir . 'AjaxTestPage.php';
 
 /**
  * register Ajax function

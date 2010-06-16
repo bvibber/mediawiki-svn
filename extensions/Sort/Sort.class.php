@@ -3,7 +3,8 @@
 /**
  * Parser hook extension adds a <sort> tag to wiki markup
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  * @author Rob Church <robchur@gmail.com>
  * @copyright © 2006-2007 Rob Church
  * @licence GNU General Public Licence 2.0

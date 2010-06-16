@@ -34,7 +34,7 @@ function efConfigureAjax( $setting, $group ) {
 		$row = ConfigurationPage::buildGroupSettingRow( $setting, $type, User::getAllRights(), true, $group, array() );
 
 		// Firefox seems to not like that :(
-		return str_replace( '&nbsp;', ' ', $row );
+		return str_replace( '&#160;', ' ', $row );
 	case 'promotion-conds':
 		if ( isset( $GLOBALS[$setting] ) && isset( $GLOBALS[$setting][$group] ) )
 			return '<err#>';

@@ -2,8 +2,9 @@
 /**
  * Internationalisation file for FlvHandler extension.
  *
- * @addtogroup Extensions
-*/
+ * @file
+ * @ingroup Extensions
+ */
 
 $messages = array();
 
@@ -172,6 +173,14 @@ $messages['ia'] = array(
 $messages['id'] = array(
 	'flvhandler_desc' => 'Mengijinkan berkas Video Flash (.flv) untuk ditambahkan sebagai berkas standar (mis. <nowiki>[[</nowiki>{{ns:file}}:Movie.flv<nowiki>]]</nowiki>)',
 	'flv-long-desc' => '(video Flash, $1 × $2 piksel, ukuran berkas: $3)',
+);
+
+/** Italian (Italiano)
+ * @author HalphaZ
+ */
+$messages['it'] = array(
+	'flvhandler_desc' => "Permetti l'aggiunta di file Flash Video (.flv) come file normali (es. <nowiki>[[</nowiki>{{ns:file}}:Video.flv<nowiki>]]</nowiki>)",
+	'flv-long-desc' => '(Video Flash, $1 × $2 pixels, dimensione file: $3)',
 );
 
 /** Japanese (日本語)

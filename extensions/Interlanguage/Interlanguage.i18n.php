@@ -2,7 +2,8 @@
 /**
  * Internationalisation file for Interlanguage extension.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 require_once( dirname(__FILE__) . '/Interlanguage.i18n.magic.php' );
@@ -308,6 +309,18 @@ $messages['sah'] = array(
  */
 $messages['sk'] = array(
 	'interlanguage-desc' => 'Získa medzijazykové odkazy z inej wiki',
+);
+
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'interlanguage-desc' => 'Преузима међувики са другог пројекта',
+);
+
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'interlanguage-desc' => 'Preuzima međuviki sa drugog projekta',
 );
 
 /** Sundanese (Basa Sunda)

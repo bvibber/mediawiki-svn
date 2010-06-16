@@ -67,6 +67,7 @@ class TPParse {
 			}
 
 		}
+
 		return $sections;
 	}
 
@@ -115,14 +116,16 @@ class TPParse {
 		return $text;
 	}
 
-	public function getTranslationPageText( MessageCollection $collection ) {
+	public function getTranslationPageText( /*MessageCollection*/ $collection ) {
 		$text = $this->template; // The source
 
 		// For finding the messages
 		$prefix = $this->title->getPrefixedDBKey() . '/';
 
-		$collection->filter( 'hastranslation', false );
-		$collection->loadTranslations();
+		if ( $collection instanceOf MessageCollection ) {
+			$collection->filter( 'hastranslation', false );
+			$collection->loadTranslations();
+		}
 
 		foreach ( $this->sections as $ph => $s ) {
 			$sectiontext = null;
@@ -156,7 +159,7 @@ class TPParse {
 
 		// Remove translation markup
 		$cb = array( __CLASS__, 'replaceTagCb' );
-		$text = preg_replace_callback( '~(<translate>\n?)(.*?)(\n?</translate>)~s', $cb, $text );
+		$text = preg_replace_callback( '~(<translate>)(.*)(</translate>)~sU', $cb, $text );
 		$text = TranslatablePage::unArmourNowiki( $nph, $text );
 
 		return $text;
@@ -171,6 +174,6 @@ class TPParse {
 	}
 
 	protected static function replaceTagCb( $matches ) {
-		return $matches[2];
+		return preg_replace( '~^\n|\n\z~', '', $matches[2] );
 	}
 }

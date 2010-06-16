@@ -101,7 +101,6 @@ $wgAutoloadClasses['OpenLayersMessageGroup'] = $dir . 'groups/OpenLayers.php';
 $wgAutoloadClasses['WikiblameMessageGroup'] = $dir . 'groups/Wikiblame.php';
 $wgAutoloadClasses['MediaWikiMessageChecker'] = $dir . 'groups/MediaWiki/Checker.php';
 
-
 # complex messages
 $wgAutoloadClasses['ComplexMessages'] = $dir . 'groups/ComplexMessages.php';
 $wgAutoloadClasses['SpecialPageAliasesCM'] = $dir . 'groups/ComplexMessages.php';
@@ -117,7 +116,6 @@ $wgAutoloadClasses['TPSection'] = $dir . 'tag/TPSection.php';
 $wgAutoloadClasses['SpecialPageTranslation'] = $dir . 'tag/SpecialPageTranslation.php';
 $wgAutoloadClasses['RenderJob'] = $dir . 'tag/RenderJob.php';
 
-$wgAutoloadClasses['TranslateSpyc'] = $dir . 'utils/TranslateYaml.php';
 $wgAutoloadClasses['TranslateYaml'] = $dir . 'utils/TranslateYaml.php';
 $wgAutoloadClasses['SpecialManageGroups'] = $dir . 'SpecialManageGroups.php';
 

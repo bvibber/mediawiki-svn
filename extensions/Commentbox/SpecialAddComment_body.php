@@ -2,7 +2,8 @@
 /**
  * Specialpage for the Commentbox extension.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 if ( !defined( 'MEDIAWIKI' ) ) die();

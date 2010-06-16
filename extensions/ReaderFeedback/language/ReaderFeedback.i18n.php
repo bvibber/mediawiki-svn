@@ -2,9 +2,10 @@
 /**
  * Internationalisation file for extension ReaderFeedback (group ReaderFeedback).
  *
+ * @file
  * @comment NOTE: SOME LINKS HAVE '[' and ']' around them. These are NOT typos.
  * @comment PLEASE DO NOT RANDOMLY REMOVE THEM FOR THE THIRD TIME, kthx. -aaron
- * @addtogroup Extensions
+ * @ingroup Extensions
  */
 
 $messages = array();
@@ -124,6 +125,13 @@ U terugvoer is waardevol en help ons om ons webwerf te verbeter.''",
 	'readerfeedback-tier-poor' => 'Laag',
 	'tooltip-ca-ratinghist' => 'Lesers se graderings van hierdie bladsy',
 	'specialpages-group-feedback' => 'Mening van die leser',
+);
+
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'readerfeedback-submit' => 'Ninviar',
 );
 
 /** Arabic (العربية)
@@ -307,13 +315,24 @@ $messages['bg'] = array(
  * @author Bellayet
  */
 $messages['bn'] = array(
+	'readerfeedback' => 'এই পাতা সম্পর্কে আপনি কি ভাবছেন?',
+	'readerfeedback-reliability' => 'নির্ভরযোগ্যতা',
+	'readerfeedback-completeness' => 'সম্পূর্ণতা',
+	'readerfeedback-npov' => 'নিরপেক্ষতা',
+	'readerfeedback-presentation' => 'উপস্থাপনা',
+	'readerfeedback-overall' => 'সার্বিকভাবে',
 	'readerfeedback-level-0' => 'খারাপ',
 	'readerfeedback-level-1' => 'ভাল নয়',
 	'readerfeedback-level-2' => 'মোটামোটি',
 	'readerfeedback-level-3' => 'ভাল',
 	'readerfeedback-level-4' => 'খুবই ভাল',
 	'readerfeedback-submit' => 'জমা',
+	'readerfeedback-submitting' => 'জমা হচ্ছে …',
 	'readerfeedback-finished' => 'ধন্যবাদ!',
+	'readerfeedback-tagfilter' => 'ট্যাগ:',
+	'readerfeedback-tier-high' => 'ভাল',
+	'readerfeedback-tier-medium' => 'মোটামোটি',
+	'readerfeedback-tier-poor' => 'খারাপ',
 	'specialpages-group-feedback' => 'দর্শকের মতামত',
 );
 
@@ -1237,6 +1256,7 @@ $messages['id'] = array(
 	'readerfeedback-tier-poor' => 'Jelek',
 	'tooltip-ca-ratinghist' => 'Penilaian pembaca atas halaman ini:',
 	'specialpages-group-feedback' => 'Opini pembaca',
+	'readerfeedback-tt-review' => 'Kirim tinjauan',
 );
 
 /** Ido (Ido)
@@ -1328,6 +1348,7 @@ $messages['ja'] = array(
 
 /** Georgian (ქართული)
  * @author BRUTE
+ * @author ITshnik
  * @author გიორგიმელა
  */
 $messages['ka'] = array(
@@ -1338,10 +1359,13 @@ $messages['ka'] = array(
 	'readerfeedback-presentation' => 'პრეზენტაცია',
 	'readerfeedback-overall' => 'ზოგადი შეფასება',
 	'readerfeedback-level-none' => '(არაა არჩეული)',
+	'readerfeedback-level-0' => 'დაბალი',
 	'readerfeedback-level-1' => 'დაბალი',
 	'readerfeedback-level-3' => 'მაღალი',
 	'readerfeedback-level-4' => 'ჩინებულია',
 	'readerfeedback-submit' => 'გაგზავნა',
+	'readerfeedback-success' => "'''გმადლობთ ამ გვერდის მიმოხილვისთვის!''' ([$2 შედეგების ჩვენება]) ([$3 კომენტარები ან შეკითხვები]).",
+	'readerfeedback-submitting' => 'ინახება …',
 	'readerfeedback-finished' => 'გმადლობთ!',
 	'readerfeedback-tagfilter' => 'მინიშნება:',
 	'readerfeedback-tierfilter' => 'შეფასება:',
@@ -1764,6 +1788,7 @@ $messages['oc'] = array(
  * @author Leinad
  * @author Maikking
  * @author McMonster
+ * @author Nux
  * @author Pimke
  * @author Sp5uhe
  * @author ToSter
@@ -1786,7 +1811,7 @@ $messages['pl'] = array(
 	'readerfeedback-submit' => 'Oznacz',
 	'readerfeedback-main' => 'Tylko strony z treścią mogą być oceniane.',
 	'readerfeedback-success' => "'''Dziękujemy za ocenę strony!''' ([$2 wyniki]) ([$3 uwagi lub pytania]).",
-	'readerfeedback-voted' => "'''Tę stronę prawdopodobnie już {{GENDER:|oceniałeś|oceniałaś}}''' ([$2 wyniki]) ([$3 komentarze lub pytania]).",
+	'readerfeedback-voted' => "'''Prawdopodobnie już oceniał{{GENDER:|eś|aś|eś(‐aś)}} tę stronę''' ([$2 zobacz wyniki]) ([$3 komentarze lub pytania]).",
 	'readerfeedback-error' => "'''Podczas oceniania strony wystąpił błąd''' ([$2 wyniki]) ([$3 komentarze lub pytania]).",
 	'readerfeedback-submitting' => 'Zapisywanie...',
 	'readerfeedback-finished' => 'Dziękujemy!',
@@ -1886,15 +1911,40 @@ $messages['pt'] = array(
 );
 
 /** Brazilian Portuguese (Português do Brasil)
+ * @author Giro720
  * @author Hamilton Abreu
  * @author Luckas Blade
  */
 $messages['pt-br'] = array(
+	'readerfeedback-desc' => 'A validação de páginas permite que os leitores as avaliem, atribuindo-lhes avaliações categóricas',
 	'readerfeedback' => 'O que você acha desta página?',
 	'readerfeedback-text' => "''Por gentileza, dedique um momento para avaliar esta página. Sua opinião é importante e nos ajuda a melhorar o website.''",
+	'readerfeedback-reliability' => 'Confiabilidade',
+	'readerfeedback-completeness' => 'Completeza',
+	'readerfeedback-npov' => 'Neutralidade',
+	'readerfeedback-presentation' => 'Apresentação',
+	'readerfeedback-overall' => 'Em geral',
+	'readerfeedback-level-none' => '(incerto)',
+	'readerfeedback-level-0' => 'Péssima',
+	'readerfeedback-level-1' => 'Baixa',
+	'readerfeedback-level-2' => 'Razoável',
+	'readerfeedback-level-3' => 'Alta',
 	'readerfeedback-level-4' => 'Excelente',
 	'readerfeedback-submit' => 'Enviar',
+	'readerfeedback-main' => 'Só páginas de conteúdo podem ser avaliadas.',
+	'readerfeedback-success' => "'''Obrigado por avaliar esta página!''' ([$2 ver resultados]) ([$3 comentários ou dúvidas?]).",
+	'readerfeedback-voted' => "'''Aparentemente você já avaliou esta página''' ([$2 ver resultados]) ([$3 comentários ou dúvidas?]).",
+	'readerfeedback-error' => "'''Ocorreu um erro ao avaliar esta página''' ([$2 ver resultados]) ([$3 comentários ou dúvidas?])",
+	'readerfeedback-submitting' => 'Enviando...',
 	'readerfeedback-finished' => 'Obrigado!',
+	'readerfeedback-tagfilter' => 'Etiqueta:',
+	'readerfeedback-tierfilter' => 'Avaliação:',
+	'readerfeedback-tier-high' => 'Elevada',
+	'readerfeedback-tier-medium' => 'Moderada',
+	'readerfeedback-tier-poor' => 'Péssima',
+	'tooltip-ca-ratinghist' => 'Opinião dos leitores sobre esta página',
+	'specialpages-group-feedback' => 'Opinião dos leitores',
+	'readerfeedback-tt-review' => 'Enviar revisão',
 );
 
 /** Romanian (Română)
@@ -2110,6 +2160,9 @@ $messages['sr-ec'] = array(
 	'readerfeedback-level-4' => 'изузетно',
 	'readerfeedback-submit' => 'пошаљи',
 	'readerfeedback-main' => 'Само стране садржаја могу бити оцењиване.',
+	'readerfeedback-submitting' => 'Слање …',
+	'readerfeedback-finished' => 'Хвала Вам!',
+	'readerfeedback-tagfilter' => 'Таг:',
 	'tooltip-ca-ratinghist' => 'Оцене стране од стране читалаца.',
 );
 
@@ -2131,6 +2184,9 @@ $messages['sr-el'] = array(
 	'readerfeedback-level-4' => 'izuzetno',
 	'readerfeedback-submit' => 'pošalji',
 	'readerfeedback-main' => 'Samo strane sadržaja mogu biti ocenjivane.',
+	'readerfeedback-submitting' => 'Slanje …',
+	'readerfeedback-finished' => 'Hvala Vam!',
+	'readerfeedback-tagfilter' => 'Tag:',
 	'tooltip-ca-ratinghist' => 'Ocene strane od strane čitalaca.',
 );
 
@@ -2172,6 +2228,37 @@ $messages['sv'] = array(
 	'tooltip-ca-ratinghist' => 'Användarbetyg för den här sidan',
 	'specialpages-group-feedback' => 'Läsaråsikt',
 	'readerfeedback-tt-review' => 'Skicka recension',
+);
+
+/** Tamil (தமிழ்)
+ * @author Mahir78
+ */
+$messages['ta'] = array(
+	'readerfeedback' => 'இந்தப் பக்கம் பற்றி நீங்கள் என்ன நினைக்கிறீர்கள்?',
+	'readerfeedback-text' => "''தயவு செய்து சிறிது அவகாசம் எடுத்து இந்தப் பக்கத்தின் கீழ் அளவீடு செய்யுங்கள். உங்களது கருத்துக்கள் மிக முக்கியமானதும் மற்றும் எங்களது இணையதளத்தின் வளர்ச்சிக்கும் உதவும்.''",
+	'readerfeedback-reliability' => 'நன்பகமானது',
+	'readerfeedback-completeness' => 'முடிவடைந்தது',
+	'readerfeedback-npov' => 'நடுநிலையானது',
+	'readerfeedback-overall' => 'ஒட்டுமொத்தமாக',
+	'readerfeedback-level-none' => '(நிச்சயமற்ற)',
+	'readerfeedback-level-0' => 'தரமற்றது',
+	'readerfeedback-level-1' => 'மோசம்',
+	'readerfeedback-level-2' => 'பரவாயில்லை',
+	'readerfeedback-level-3' => 'நன்றாகவுள்ளது',
+	'readerfeedback-level-4' => 'பிரமாதம்',
+	'readerfeedback-submit' => 'சமர்ப்பி',
+	'readerfeedback-success' => "'''இந்தப் பக்கத்தை மீளாய்வு செயதமைக்கு நன்றி!''' ([$2 முடிவுகளை காண்க]) ([$3 பின்னூட்டங்கள் அல்லது கேள்விகள்?]).",
+	'readerfeedback-voted' => "'''It appears that you already rated this page''' ([$2 முடிவுகளை காண்க]) ([$3 பின்னூட்டங்கள் அல்லது கேள்விகள்?]).",
+	'readerfeedback-submitting' => 'சமர்பிக்கப்படுகிறது ...',
+	'readerfeedback-finished' => 'நன்றி!',
+	'readerfeedback-tagfilter' => 'குறிச்சொல்:',
+	'readerfeedback-tierfilter' => 'படிநிலை:',
+	'readerfeedback-tier-high' => 'நன்றாகவுள்ளது',
+	'readerfeedback-tier-medium' => 'மிதமான',
+	'readerfeedback-tier-poor' => 'தரமற்ற',
+	'tooltip-ca-ratinghist' => 'இந்தப் பக்கத்திற்கான பயனர் படிநிலைகள்',
+	'specialpages-group-feedback' => 'பார்வையாளர்கள் கருத்துகள்',
+	'readerfeedback-tt-review' => 'மீளாய்வை சமர்ப்பி',
 );
 
 /** Telugu (తెలుగు)
@@ -2493,6 +2580,7 @@ $messages['yi'] = array(
  * @author Gzdavidwong
  */
 $messages['zh-hans'] = array(
+	'readerfeedback-desc' => '页面验证允许读者提供反馈的形式明确评级',
 	'readerfeedback' => '您对这个页面有什么意见？',
 	'readerfeedback-text' => "''请花一点时间来评价下面这个页面。您反馈的意见将帮助我们改进我们的网站。''",
 	'readerfeedback-reliability' => '可靠性',
@@ -2520,6 +2608,7 @@ $messages['zh-hans'] = array(
 	'readerfeedback-tier-poor' => '低',
 	'tooltip-ca-ratinghist' => '读者对本页的评级',
 	'specialpages-group-feedback' => '浏览者意见',
+	'readerfeedback-tt-review' => '提交审查',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

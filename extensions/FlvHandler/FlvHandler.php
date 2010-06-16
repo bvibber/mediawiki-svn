@@ -6,7 +6,8 @@ if ( ! defined( 'MEDIAWIKI' ) )
 /**
  * An image handler which adds support for Flash video (.flv) files.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  *
  * @link http://www.mediawiki.org/wiki/Extension:FlvHandler Documentation
  *
@@ -14,8 +15,8 @@ if ( ! defined( 'MEDIAWIKI' ) )
  * @copyright Copyright © 2009 Adam Nielsen
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
  */
-							 
-// Extension credits that will show up on Special:Version    
+
+// Extension credits that will show up on Special:Version
 $wgExtensionCredits['media'][] = array(
 	'path'         => __FILE__,
 	'name'         => 'FLV Image Handler',

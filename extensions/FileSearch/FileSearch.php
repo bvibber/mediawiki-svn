@@ -4,8 +4,8 @@
  * Extension allows MediaWiki to index recognised uploaded files
  * for more intelligent searching
  *
- * @package MediaWiki
- * @subpackage Extensions
+ * @file
+ * @ingroup Extensions
  * @author Rob Church <robchur@gmail.com>
  */
  

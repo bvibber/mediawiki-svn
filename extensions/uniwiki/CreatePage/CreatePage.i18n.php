@@ -60,6 +60,13 @@ $messages['aln'] = array(
 	'createpage-badtitle' => '"$1" nuk mund të përdoret si një titull në faqe',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'createpage_submitbutton' => 'Ninviar',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK
@@ -135,6 +142,13 @@ $messages['bg'] = array(
 	'createpage_editexisting' => 'Да. Искам да допринеса за съществуващата страница.',
 );
 
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'createpage' => 'পাতা তৈরি কর',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */
@@ -147,7 +161,7 @@ $messages['br'] = array(
 	'createpage_titleexists' => "Ur bajenn dezhi an hevelep anv [[$1]] zo c'hoazh.
 Ha fellout a ra deoc'h degas kemmoù war ar bajenn-se ?",
 	'createpage_tryagain' => "Ket - C'hoant am eus da grouiñ ur bajenn nevez ganti un anv disheñvel",
-	'createpage_editexisting' => "Ya, 'vat. C'hoant am eus kemer perzh er bajenn-se.",
+	'createpage_editexisting' => "Ya, 'vat. C'hoant am eus da gemer perzh er bajenn-se.",
 	'createpage-badtitle' => 'N\'haller ket ober gant "$1" da ditl ur bajenn',
 );
 
@@ -934,7 +948,16 @@ $messages['sk'] = array(
  * @author Dbc334
  */
 $messages['sl'] = array(
+	'createpage' => 'Ustvari stran',
+	'createpage-desc' => 'Doda [[Special:CreatePage|posebno stran]] za ustvarjanje novih strani',
 	'createpage_submitbutton' => 'Potrdi',
+	'createpage_instructions' => 'Vnesite naslov strani, ki jo želite ustvariti:',
+	'createpage_entertitle' => 'Prosimo, vnesite naslov vaše strani.',
+	'createpage_titleexists' => 'Stran z naslovom [[$1]] že obstaja.
+Želite urediti obstoječo stran?',
+	'createpage_tryagain' => 'Ne. Želim ustvariti novo stran z različnim naslovom.',
+	'createpage_editexisting' => 'Da. Želim prispevati k obstoječi strani.',
+	'createpage-badtitle' => '»$1« ni mogoče uporabiti kot naslov strani',
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))

@@ -2,8 +2,9 @@
 /**
  * Internationalisation file for extension PovWatch.
  *
- * @addtogroup Extensions
-*/
+ * @file
+ * @ingroup Extensions
+ */
 
 $messages = array();
 
@@ -1445,24 +1446,24 @@ $messages['lt'] = array(
  */
 $messages['mk'] = array(
 	'povwatch' => 'PovWatch',
-	'povwatch_desc' => 'Додаток за [[Special:PovWatch|вметнување на страници во листите на набљудувања]] на други корисници',
+	'povwatch_desc' => 'Додаток за [[Special:PovWatch|вметнување на страници во списоците на набљудувања]] на други корисници',
 	'povwatch_no_session' => 'Грешка: Не можев да го испратам образецот заради губење на сесиски податоци.',
-	'povwatch_not_allowed_push' => 'Не сте администратор на PovWatch, и затоа не можете да вметнувате страници во листи на набљудувања.',
+	'povwatch_not_allowed_push' => 'Не сте администратор на НгтНадзор, и затоа не можете да вметнувате страници во списоци на набљудувања.',
 	'povwatch_already_subscribed' => 'Веќе сте запишани на PovWatch',
 	'povwatch_subscribed' => 'Сега сте запишани на PovWatch',
 	'povwatch_not_subscribed' => 'Не сте запишани на PovWatch, така што не можете да се отпишете.',
 	'povwatch_unsubscribed' => 'Сега сте отпишани од PovWatch',
 	'povwatch_invalid_title' => 'Назначениот наслов е неважечки',
-	'povwatch_pushed' => '[[$1]] е успешно вметната во  $2 кориснички {{PLURAL:$2|листа на набљудувања|листи на набљудувања}}',
-	'povwatch_intro' => 'PovWatch е служба која овозможува дискретно вметнување на спорни страници во листите на набљудувања на запишани администратори.
+	'povwatch_pushed' => '[[$1]] е успешно вметната во  $2 кориснички {{PLURAL:$2|список на набљудувања|списоци на набљудувања}}',
+	'povwatch_intro' => 'НгтНадзор (PovWatch) е служба која овозможува дискретно вметнување на спорни страници во списоците на набљудувања на запишани администратори.
 
 Можете да го погледате дневникот на скорешни вметнувања, на страницата [[Special:PovWatch/log]].',
-	'povwatch_subscriber_list' => 'Има [[Special:PovWatch/subscribers|листа на запишани корисници]].',
-	'povwatch_subscriber_list_intro' => '<strong>Листа на запишани корисници</strong>',
-	'povwatch_not_allowed_subscribers' => 'Не ви е дозволено да ја прегледувате листата на запишани корисници на PovWatch.',
+	'povwatch_subscriber_list' => 'Има [[Special:PovWatch/subscribers|список на запишани корисници]].',
+	'povwatch_subscriber_list_intro' => '<strong>Список на запишани корисници</strong>',
+	'povwatch_not_allowed_subscribers' => 'Не ви е дозволено да го прегледувате списокот на запишани корисници на НгтНадзор.',
 	'povwatch_unknown_subpage' => 'Непозната потстраница.',
 	'povwatch_push' => 'Вметни',
-	'povwatch_push_intro' => 'Користете го образецот подолу за вметнување на страници во листите на набљудувања на запишани корисници.
+	'povwatch_push_intro' => 'Користете го образецот подолу за вметнување на страници во списоците на набљудувања на запишани корисници.
 Бидете внимателни при внесувањето на насловот: можат да се додаваат дури и непостоечки наслови, и не постои начин да се отстрани насловот откако веќе ќе се вметне.',
 	'povwatch_title' => 'Наслов:',
 	'povwatch_comment' => 'Коментар за дневникот:',
@@ -1473,12 +1474,12 @@ $messages['mk'] = array(
 	'povwatch_unsubscribe' => 'Отпиши се',
 	'povwatch_subscribe_intro' => 'Не сте запишани на PovWatch.
 Кликнете на копчето подолу за да се запишете.',
-	'povwatch_subscribe' => 'Запиши се',
+	'povwatch_subscribe' => 'Претплати се',
 	'povwatch_added' => 'додадено',
-	'right-povwatch_admin' => 'Администрирање со кориснички права за додавање страници во листите на набљудувања на други корисници',
-	'right-povwatch_user' => 'Додавање страници во листите на набљудувања на други корисници',
+	'right-povwatch_admin' => 'Управување со кориснички права за додавање на страници во списоците на набљудувања на други корисници',
+	'right-povwatch_user' => 'Додавање страници во списоците на набљудувања на други корисници',
 	'action-povwatch_admin' => 'раководите со кориснички права за PovWatch',
-	'action-povwatch_user' => 'ја додадете оваа страница на листата на набљудувања на друг корисник',
+	'action-povwatch_user' => 'ја додадете оваа страница на списокот на набљудувања на друг корисник',
 );
 
 /** Malayalam (മലയാളം)
@@ -1917,8 +1918,10 @@ Sgnaca ël boton sota për iscrivte.',
  */
 $messages['ps'] = array(
 	'povwatch_invalid_title' => 'ستاسې ځانګړی شوی سرليک سم نه وو',
+	'povwatch_push' => 'ټېلوهل',
 	'povwatch_title' => 'سرليک:',
 	'povwatch_subscribe' => 'ونډه جوړول',
+	'povwatch_added' => 'ورګډ شو',
 );
 
 /** Portuguese (Português)
@@ -2163,16 +2166,23 @@ Záznam posledných zoznamov sledovaných stránok sa nachádza na [[Special:Pov
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Sasa Stefanovic
+ * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
+	'povwatch_invalid_title' => 'Наведени наслов је неисправан',
+	'povwatch_unknown_subpage' => 'Непозната подстрана.',
 	'povwatch_title' => 'Наслов:',
+	'povwatch_added' => 'додато',
 );
 
 /** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(
+	'povwatch_invalid_title' => 'Navedeni naslov je neispravan',
+	'povwatch_unknown_subpage' => 'Nepoznata podstrana.',
 	'povwatch_title' => 'Naslov:',
+	'povwatch_added' => 'dodato',
 );
 
 /** Seeltersk (Seeltersk)

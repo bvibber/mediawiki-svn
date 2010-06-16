@@ -85,6 +85,7 @@ $messages['af'] = array(
 	'imagetagging-article' => 'Bladsy:',
 	'imagetagging-imghistory' => 'Geskiedenis',
 	'imagetagging-images' => 'beelde',
+	'imagetagging-tag-button' => 'Etiket',
 	'imagetagging-tagcancel-button' => 'Kanselleer',
 );
 
@@ -135,6 +136,7 @@ $messages['am'] = array(
  */
 $messages['an'] = array(
 	'imagetagging-article' => 'Pachina:',
+	'imagetagging-imghistory' => 'Historial',
 	'imagetagging-tagcancel-button' => 'Cancelar',
 );
 
@@ -1605,6 +1607,7 @@ Për piasì speta che l'assion an cors a sia completa.",
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'imagetagging-article' => 'مخ:',
 	'imagetagging-imghistory' => 'پېښليک',
 	'imagetagging-images' => 'انځورونه',
 );

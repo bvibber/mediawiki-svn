@@ -7,7 +7,8 @@
  * Also adds a new tag <nopreload> which is used to mark sections which
  * shouldn't be preloaded, ever; has no effect on the rendering of pages
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  * @author Rob Church <robchur@gmail.com>
  */
  

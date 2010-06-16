@@ -2,8 +2,9 @@
 /**
  * Internationalisation file for extension CommentPages.
  *
- * @addtogroup Extensions
-*/
+ * @file
+ * @ingroup Extensions
+ */
 
 $messages = array();
 
@@ -53,7 +54,7 @@ $messages['avk'] = array(
 	'nstab-comments' => 'Sebuks',
 );
 
-/** Azerbaijani (Azərbaycan)
+/** Azerbaijani (Azərbaycanca)
  * @author Sortilegus
  */
 $messages['az'] = array(

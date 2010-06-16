@@ -112,6 +112,14 @@ $messages['bg'] = array(
 	'communityvoice-ratings-scale-stats' => '$1 / 5 ($2 {{PLURAL:$2|глас|гласа}})',
 );
 
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'communityvoice-ratings-scale-status-sending' => 'পাঠাচ্ছে...',
+	'communityvoice-ratings-scale-status-thanks' => 'ভোট দেওয়ার জন্য ধন্যবাদ!',
+);
+
 /** Breton (Brezhoneg)
  * @author Fohanno
  * @author Fulup
@@ -796,6 +804,8 @@ $messages['sk'] = array(
  */
 $messages['sr-ec'] = array(
 	'communityvoice-ratings-scale-status-sending' => 'Слање...',
+	'communityvoice-ratings-scale-status-error' => 'Грешка при слању!',
+	'communityvoice-ratings-scale-status-thanks' => 'Хвала Вам за учешће у гласању!',
 );
 
 /** Serbian Latin ekavian (Srpski (latinica))
@@ -803,6 +813,8 @@ $messages['sr-ec'] = array(
  */
 $messages['sr-el'] = array(
 	'communityvoice-ratings-scale-status-sending' => 'Slanje...',
+	'communityvoice-ratings-scale-status-error' => 'Greška pri slanju!',
+	'communityvoice-ratings-scale-status-thanks' => 'Hvala Vam za učešće u glasanju!',
 );
 
 /** Swedish (Svenska)

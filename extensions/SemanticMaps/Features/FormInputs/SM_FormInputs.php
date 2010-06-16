@@ -24,34 +24,35 @@ final class SMFormInputs {
 	public static function initialize() {
 		global $smgDir, $wgAutoloadClasses, $egMapsServices, $sfgFormPrinter;
 
-		// This feature can only be enbled when Semantic Forms is loaded.
-		if ( isset( $sfgFormPrinter ) ) {
-			$hasFormInputs = false;
+		// This code should not get called when SF is not loaded, but let's have this
+		// check to not run into problems when people mess up the settings.
+		if ( !defined( 'SF_VERSION' ) ) return true;
+		
+		$wgAutoloadClasses['SMFormInput'] = dirname( __FILE__ ) . '/SM_FormInput.php';
+		
+		$hasFormInputs = false;
+		
+		self::initializeParams();
+		
+		foreach ( $egMapsServices as $service ) {
+			// Check if the service has a form input.
+			$FIClass = $service->getFeature( 'fi' );
 			
-			$wgAutoloadClasses['SMFormInput'] = dirname( __FILE__ ) . '/SM_FormInput.php';
+			// If the service has no FI, skipt it and continue with the next one.
+			if ( $FIClass === false ) continue;
 			
-			self::initializeParams();
-			
-			foreach ( $egMapsServices as $serviceName => $serviceData ) {
-				// Check if the service has a form input
-				$hasFI = array_key_exists( 'fi', $serviceData['features'] );
-				
-				// If the service has no FI, skipt it and continue with the next one.
-				if ( !$hasFI ) continue;
-				
-				// At least one form input will be enabled when this point is reached.
-				$hasFormInputs = true;
+			// At least one form input will be enabled when this point is reached.
+			$hasFormInputs = true;
 
-				// Add the result form input type for the service name.
-				self::initFormHook( $serviceName, $serviceName );
-				
-				// Loop through the service alliases, and add them as form input types.
-				foreach ( $serviceData['aliases'] as $alias ) self::initFormHook( $alias, $serviceName );
-			}
+			// Add the result form input type for the service name.
+			self::initFormHook( $service->getName(), $service->getName() );
 			
-			// Add the 'map' form input type if there are mapping services that have FI's loaded.
-			if ( $hasFormInputs ) self::initFormHook( 'map' );
+			// Loop through the service alliases, and add them as form input types.
+			foreach ( $service->getAliases() as $alias ) self::initFormHook( $alias, $service->getName() );
 		}
+		
+		// Add the 'map' form input type if there are mapping services that have FI's loaded.
+		if ( $hasFormInputs ) self::initFormHook( 'map' );
 		
 		return true;
 	}
@@ -120,15 +121,17 @@ function smfSelectFormInputHTML( $coordinates, $input_name, $is_mandatory, $is_d
     
 	// Get the service name from the field_args, and set it to null if it doesn't exist.
     if ( array_key_exists( 'service_name', $field_args ) ) {
-        $service_name = $field_args['service_name'];
+        $serviceName = $field_args['service_name'];
     }
     else {
-        $service_name = null;
+        $serviceName = null;
     }
     
     // Ensure the service is valid and create a new instance of the handling form input class.
-    $service_name = MapsMapper::getValidService( $service_name, 'fi' );
-    $formInput = new $egMapsServices[$service_name]['features']['fi']();
+    $serviceName = MapsMapper::getValidService( $serviceName, 'fi' );
+    $FIClass = $egMapsServices[$serviceName]->getFeature( 'fi' );
+    
+    $formInput = new $FIClass( $egMapsServices[$serviceName] );
     
     // Get and return the form input HTML from the hook corresponding with the provided service.
     return $formInput->formInputHTML( $coordinates, $input_name, $is_mandatory, $is_disabled, $field_args );

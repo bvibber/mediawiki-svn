@@ -3,7 +3,8 @@
 /**
  * Extension allows customising the site logo via the MediaWiki namespace
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  * @author Rob Church <robchur@gmail.com>
  */
  

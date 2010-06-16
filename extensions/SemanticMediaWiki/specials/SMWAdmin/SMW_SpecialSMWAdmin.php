@@ -14,15 +14,14 @@
 /**
  * @author Markus Krötzsch
  *
- * This special page for MediaWiki provides an administrative interface 
- * that allows to execute certain functions related to the maintainance 
+ * This special page for MediaWiki provides an administrative interface
+ * that allows to execute certain functions related to the maintainance
  * of the semantic database. It is restricted to users with siteadmin status.
  *
  * @ingroup SMWSpecialPage
  * @ingroup SpecialPage
  */
 class SMWAdmin extends SpecialPage {
-
 	/**
 	 * Constructor
 	 */
@@ -32,13 +31,13 @@ class SMWAdmin extends SpecialPage {
 	}
 
 	public function execute( $par ) {
-		global $wgOut, $wgRequest, $wgServer, $wgScript, $wgUser, $smwgAdminRefreshStore;
-	
+		global $wgOut, $wgRequest, $wgServer, $wgArticlePath, $wgScript, $wgUser, $smwgAdminRefreshStore;
+
 		if ( !$this->userCanExecute( $wgUser ) ) {
 			// If the user is not authorized, show an error.
 			$this->displayRestrictionError();
 			return;
-		}		
+		}
 
 		$this->setHeaders();
 
@@ -67,7 +66,7 @@ class SMWAdmin extends SpecialPage {
 				if ( $result === true ) {
 					print '<p><b>' . wfMsg( 'smw_smwadmin_setupsuccess' ) . "</b></p>\n";
 				}
-				$returntitle = Title::makeTitle( NS_SPECIAL, 'SMWAdmin' );
+				$returntitle = SpecialPage::getTitleFor( 'SMWAdmin' );
 				print '<p> ' . wfMsg( 'smw_smwadmin_return', '<a href="' . htmlspecialchars( $returntitle->getFullURL() ) . '">Special:SMWAdmin</a>' ) . "</p>\n";
 				print '</body></html>';
 				ob_flush();
@@ -78,7 +77,7 @@ class SMWAdmin extends SpecialPage {
 			$sure = $wgRequest->getText( 'rfsure' );
 			if ( $sure == 'yes' ) {
 				if ( $refreshjob === null ) { // careful, there might be race conditions here
-					$title = Title::makeTitle( NS_SPECIAL, 'SMWAdmin' );
+					$title = SpecialPage::getTitleFor( 'SMWAdmin' );
 					$newjob = new SMWRefreshJob( $title, array( 'spos' => 1, 'prog' => 0, 'rc' => 2 ) );
 					$newjob->insert();
 					$wgOut->addHTML( '<p>' . wfMsg( 'smw_smwadmin_updatestarted' ) . '</p>' );
@@ -114,7 +113,7 @@ class SMWAdmin extends SpecialPage {
 			$prog = $refreshjob->getProgress();
 			$html .= '<p>' . wfMsg( 'smw_smwadmin_datarefreshprogress' ) . "</p>\n" .
 			'<p><div style="float: left; background: #DDDDDD; border: 1px solid grey; width: 300px; "><div style="background: #AAF; width: ' .
-				round( $prog * 300 ) . 'px; height: 20px; "> </div></div> &nbsp;' . round( $prog * 100, 4 ) . '%</p><br /><br />';
+				round( $prog * 300 ) . 'px; height: 20px; "> </div></div> &#160;' . round( $prog * 100, 4 ) . '%</p><br /><br />';
 			if ( $smwgAdminRefreshStore ) {
 				$html .=
 				'<form name="refreshwiki" action="" method="POST">' .
@@ -136,7 +135,7 @@ class SMWAdmin extends SpecialPage {
 				'<p>' . wfMsg( 'smw_smwadmin_announcedocu' ) . "</p>\n" .
 				'<p>' . wfMsg( 'smw_smwadmin_announcebutton' ) . "</p>\n" .
 				 '<form name="announcewiki" action="http://semantic-mediawiki.org/wiki/Special:SMWRegistry" method="GET">' .
-				 '<input type="hidden" name="url" value="' . SMWExporter::expandURI( '&wikiurl;' ) . '" />' .
+				 '<input type="hidden" name="url" value="' . $wgServer . str_replace( '$1', '', $wgArticlePath ) . '" />' .
 				 '<input type="hidden" name="return" value="Special:SMWAdmin" />' .
 				 '<input type="submit" value="Announce wiki"/></form>' . "\n";
 

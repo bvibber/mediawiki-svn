@@ -2,7 +2,8 @@
 /* The BreadCrumbs extension, an extension for providing an breadcrumbs
  * navigation to users.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  * @author Manuel Schneider <manuel.schneider@wikimedia.ch>
  * @copyright © 2007 by Manuel Schneider
  * @licence GNU General Public Licence 2.0 or later

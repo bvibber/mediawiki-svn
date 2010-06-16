@@ -38,11 +38,20 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author EugeneZelenko
+ * @author Umherirrender
  */
 $messages['qqq'] = array(
+	'pf-desc' => '{{desc}}',
 	'pf-admin-menu-default' => '{{Identical|Default}}',
 	'pf-header-documentation' => '{{Identical|Documentation}}',
 	'pf-header-page_title' => '{{Identical|Title}}',
+);
+
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'pf-admin-menu-default' => 'Standaard',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
@@ -168,10 +177,25 @@ $messages['es'] = array(
 	'pf-header-approve' => 'Aprobar',
 );
 
-/** Finnish (Suomi) */
+/** Finnish (Suomi)
+ * @author Centerlink
+ * @author Crt
+ * @author Str4nd
+ */
 $messages['fi'] = array(
+	'packageforce' => 'PackageForce',
+	'packageforceadmin' => 'Hallintointisivu PackageForce-laajennukselle',
+	'pf-desc' => '[[Special:PackageForce|Lataa paketit]], jotka sisältävät hyödyllisiä mallineita ja muuta.',
+	'pf-only-admins-allowed' => 'Tämä sivu on vain käyttäjille, joilla on ”packageforce-admin”-oikeudet.',
 	'pf-admin-menu-default' => 'Oletus',
+	'pf-admin-menu-unsortedtemplates' => 'Mallineita ei ole vielä lajiteltu',
+	'pf-admin-link-view-documentation' => 'Katso sivuun liittyviä dokumentteja.',
+	'pf-admin-link-editlink-page' => 'Muokkaa sivua',
+	'pf-admin-link-approve' => 'Hyväksy sivu',
 	'pf-header-documentation' => 'Dokumentaatio',
+	'pf-header-in_packages' => 'Paketit',
+	'pf-header-edit' => 'Muokkaa linkkiä',
+	'pf-header-type' => 'Sivun tyyppi',
 	'pf-header-page_title' => 'Otsikko',
 	'pf-header-approve' => 'Hyväksy',
 );
@@ -462,6 +486,15 @@ $messages['pms'] = array(
 	'pf-header-approve' => 'Apreuva',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'pf-admin-menu-default' => 'تلواليز',
+	'pf-admin-link-editlink-page' => 'مخ سمول',
+	'pf-header-page_title' => 'سرليک',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  */
@@ -515,6 +548,38 @@ $messages['ru'] = array(
 	'pf-header-type' => 'Тип страницы',
 	'pf-header-page_title' => 'Название',
 	'pf-header-approve' => 'Утверждение',
+);
+
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'pf-admin-menu-default' => 'Подразумевано',
+	'pf-admin-menu-unsortedtemplates' => 'Шаблони још увек нису сортирани',
+	'pf-admin-link-view-documentation' => 'Види документацију повезану са страном.',
+	'pf-admin-link-editlink-page' => 'Измени страну',
+	'pf-admin-link-approve' => 'Одобри страну',
+	'pf-header-documentation' => 'Документација',
+	'pf-header-in_packages' => 'Пакети',
+	'pf-header-edit' => 'Измени везу',
+	'pf-header-type' => 'Врста стране',
+	'pf-header-page_title' => 'Наслов',
+	'pf-header-approve' => 'Одобри',
+);
+
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'pf-admin-menu-default' => 'Podrazumevano',
+	'pf-admin-menu-unsortedtemplates' => 'Šabloni još uvek nisu sortirani',
+	'pf-admin-link-view-documentation' => 'Vidi dokumentaciju povezanu sa stranom.',
+	'pf-admin-link-editlink-page' => 'Izmeni stranu',
+	'pf-admin-link-approve' => 'Odobri stranu',
+	'pf-header-documentation' => 'Dokumentacija',
+	'pf-header-in_packages' => 'Paketi',
+	'pf-header-edit' => 'Izmeni vezu',
+	'pf-header-type' => 'Vrsta strane',
+	'pf-header-page_title' => 'Naslov',
+	'pf-header-approve' => 'Odobri',
 );
 
 /** Swedish (Svenska)

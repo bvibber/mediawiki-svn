@@ -2,8 +2,9 @@
 /**
  * Internationalisation file for SiteMatrix extension.
  *
- * @addtogroup Extensions
-*/
+ * @file
+ * @ingroup Extensions
+ */
 
 $messages = array();
 
@@ -79,15 +80,15 @@ $messages['am'] = array(
  */
 $messages['an'] = array(
 	'sitematrix' => 'Lista de wikis de Wikimedia',
-	'sitematrix-summary' => 'Ista pachina espezial amuestra a lista de wikis de Wikimedia.',
+	'sitematrix-summary' => 'Ista pachina especial amuestra a lista de wikis de Wikimedia.',
 	'sitematrix-desc' => 'Amuestra una [[Special:SiteMatrix|lista de wikis de Wikimedia]]',
-	'sitematrix-language' => 'Luenga',
-	'sitematrix-project' => "Nombre d'o procheuto, binclo entre procheutos y binclo interwiki",
+	'sitematrix-language' => 'Idioma',
+	'sitematrix-project' => "Nombre d'o procheuto, vinclo entre procheutos y vinclo interwiki",
 	'sitematrix-others' => 'Atros procheutos de Wikimedia',
 	'sitematrix-total' => "'''Total: $1'''",
 	'sitematrix-sitetotal' => 'Total',
-	'sitematrix-private' => 'pribau',
-	'sitematrix-fishbowl' => 'edizión restrinchita',
+	'sitematrix-private' => 'privau',
+	'sitematrix-fishbowl' => 'edición restrinchita',
 );
 
 /** Old English (Ænglisc) */
@@ -1146,9 +1147,9 @@ $messages['lv'] = array(
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
-	'sitematrix' => 'Листа на вики-проектите на Викимедија',
-	'sitematrix-summary' => 'Оваа специјална страница е листа на сите вики-проекти на Викимедија.',
-	'sitematrix-desc' => 'Прикажува [[Special:SiteMatrix|листа на вики-проектите на Викимедија]]',
+	'sitematrix' => 'Список на вики-проектите на Викимедија',
+	'sitematrix-summary' => 'Оваа специјална страница е список на сите вики-проекти на Викимедија.',
+	'sitematrix-desc' => 'Прикажува [[Special:SiteMatrix|список на вики-проектите на Викимедија]]',
 	'sitematrix-language' => 'Јазик',
 	'sitematrix-project' => 'Име на проектот, меѓупроектна врска и инервики',
 	'sitematrix-others' => 'Други проекти на Викимедија',
@@ -1523,6 +1524,13 @@ $messages['sah'] = array(
 	'sitematrix-sitetotal' => 'Барыта',
 	'sitematrix-private' => 'приватнай/чааһынай',
 	'sitematrix-fishbowl' => 'көннөрүү хааччахтаммыт',
+);
+
+/** Sardinian (Sardu)
+ * @author Andria
+ */
+$messages['sc'] = array(
+	'sitematrix-language' => 'Limba',
 );
 
 /** Sinhala (සිංහල)

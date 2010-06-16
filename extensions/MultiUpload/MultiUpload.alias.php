@@ -2,7 +2,8 @@
 /**
  * Aliases for Special:MultipleUpload
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $aliases = array();

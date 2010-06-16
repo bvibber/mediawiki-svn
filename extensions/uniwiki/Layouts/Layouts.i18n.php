@@ -126,6 +126,14 @@ $messages['bg'] = array(
 	'layouts-layoutcategorypage' => 'MediaWiki:Editpagetags',
 );
 
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'layouts_title' => 'পাতা তৈরি কর',
+	'layouts_unknown' => 'অজানা',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */
@@ -670,9 +678,10 @@ $messages['pdc'] = array(
 
 /** Polish (Polski)
  * @author Leinad
+ * @author Sp5uhe
  */
 $messages['pl'] = array(
-	'layouts-desc' => 'Wypełnianie nowo utworzonych stron edytowalnym układem strony, tak aby wspierać jednolitą strukturę stron',
+	'layouts-desc' => 'Wypełnianie nowo utworzonych stron edytowalnym wzorem układu strony, w celu ujednolicania struktury stron',
 	'layouts_title' => 'Utwórz stronę',
 	'layouts_chooselayout' => 'Wybierz układ strony dla $1:',
 	'layouts_nolayout' => 'Brak układu strony',
@@ -802,6 +811,16 @@ $messages['sk'] = array(
 	'layouts_unknown' => 'Neznáme',
 	'layouts_tagline' => "Túto stránku vytvorilo rozloženie '''$1'''.",
 	'layouts-layoutcategorypage' => 'MediaWiki:Editpagetags',
+);
+
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'layouts_title' => 'Ustvari stran',
+	'layouts_continue' => 'Nadaljuj',
+	'layouts_choosecategory' => 'Izberite kategorijo za $1:',
+	'layouts_unknown' => 'Neznano',
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))

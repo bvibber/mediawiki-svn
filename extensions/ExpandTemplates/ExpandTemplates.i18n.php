@@ -2,8 +2,9 @@
 /**
  * Internationalisation file for ExpandTemplates extension.
  *
- * @addtogroup Extensions
-*/
+ * @file
+ * @ingroup Extensions
+ */
 
 $messages = array();
 
@@ -77,8 +78,8 @@ $messages['am'] = array(
  */
 $messages['an'] = array(
 	'expandtemplates' => 'Espandir plantillas',
-	'expandtemplates-desc' => '[[Special:ExpandTemplates|Estendilla as plantillas, funzions de parseyo y bariables]] ta amostrar o wikitesto estendillato y prebeyer a pachina',
-	'expand_templates_intro' => 'Ista pachina espezial prene bel testo y espande recursibament todas as plantillas que bi ha en el. Tamién espande as funzions parser como <nowiki>{{</nowiki>#if:...}}, y as bariables como <nowiki>{{</nowiki>CURRENTDAY}}&mdash; en cheneral tot o que sía entre dobles claus.
+	'expandtemplates-desc' => '[[Special:ExpandTemplates|Estendilla as plantillas, funcions de parseyo y variables]] ta amostrar o wikitesto estendillato y preveyer a pachina',
+	'expand_templates_intro' => 'Ista pachina especial prene bel testo y espande recursivament todas as plantillas que bi ha en el. Tamién espande as funcions parser como <nowiki>{{</nowiki>#if:...}}, y as variables como <nowiki>{{</nowiki>CURRENTDAY}}&mdash; en cheneral tot o que sía entre dobles claus.
 Isto lo fa clamando ta o parser correspondient dende o propio MediaWiki.',
 	'expand_templates_title' => 'Títol ta contestualizar ({{PAGENAME}} etz.):',
 	'expand_templates_input' => 'Testo ta espandir:',
@@ -87,7 +88,7 @@ Isto lo fa clamando ta o parser correspondient dende o propio MediaWiki.',
 	'expand_templates_ok' => 'Confirmar',
 	'expand_templates_remove_comments' => 'Sacar comentarios',
 	'expand_templates_generate_xml' => "Amostrar l'árbol de parseyo XML",
-	'expand_templates_preview' => 'Prebeyer',
+	'expand_templates_preview' => 'Preveyer',
 );
 
 /** Arabic (العربية)
@@ -337,9 +338,14 @@ Ho fa cridant el nivell sintàctic pertinent del mateix MediaWiki.",
 	'expand_templates_preview' => 'Previsualitza',
 );
 
-/** Chechen (Нохчийн) */
+/** Chechen (Нохчийн)
+ * @author Sasan700
+ */
 $messages['ce'] = array(
+	'expandtemplates' => 'Хьадаста куцкепаш',
+	'expand_templates_output' => 'Хилам',
 	'expand_templates_remove_comments' => 'Комментариш дIаяккха',
+	'expand_templates_preview' => 'Хьалха муха ю хьажа',
 );
 
 /** Corsican (Corsu) */
@@ -584,10 +590,10 @@ $messages['fa'] = array(
 	'expand_templates_intro' => 'این صفحهٔ ویژه متنی را دریافت کرده و تمام الگوهای به‌کاررفته در آن را به طور بازگشتی بسط می‌دهد. همچنین تابع‌های تجزیه چون <nowiki>{{</nowiki>#if:...}} و متغیرهایی چون  <nowiki>{{</nowiki>CURRENTDAY}} را هم بسط می‌دهد — در واقع تقریباً هرچه را که داخل دوآکولاد باشد. این کار با صدازدن مرحلهٔ تجزیهٔ مربوط در خود مدیاویکی صورت می‌گیرد.',
 	'expand_templates_title' => 'عنوان موضوع، برای {{PAGENAME}} و غیره:',
 	'expand_templates_input' => 'متن ورودی:',
-	'expand_templates_output' => 'نتیجه:',
+	'expand_templates_output' => 'نتیجه',
 	'expand_templates_xml_output' => 'خروجی XML',
 	'expand_templates_ok' => 'تایید',
-	'expand_templates_remove_comments' => 'حذف توضیحات',
+	'expand_templates_remove_comments' => 'حذف ملاحظات',
 	'expand_templates_generate_xml' => 'نمایش درخت تجزیهٔ XML',
 	'expand_templates_preview' => 'پیش‌نمایش',
 );
@@ -1025,6 +1031,7 @@ Perkara iki dilakokaké caranémawa nyeluk tahapan parser sing rélévan saka Me
  * @author BRUTE
  */
 $messages['ka'] = array(
+	'expandtemplates' => 'გაშლილი თარგები',
 	'expand_templates_title' => 'კონტექსტის სათაური, {{PAGENAME}}-სთვის და ა.შ.:',
 	'expand_templates_input' => 'შესაყვანი ტექსტი:',
 	'expand_templates_output' => 'შედეგი',
@@ -2164,6 +2171,7 @@ Dunon atosi medä vokon programadili tefik se el MediaWiki it.',
  */
 $messages['yi'] = array(
 	'expandtemplates' => 'פרואוו מוסטערן',
+	'expand_templates_input' => 'אײַנגעבן טעקסט',
 	'expand_templates_output' => 'רעזולטאט',
 	'expand_templates_ok' => 'אויספֿירן',
 	'expand_templates_preview' => 'פֿאראויסשטעלונג',

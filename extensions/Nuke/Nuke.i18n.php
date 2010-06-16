@@ -1,7 +1,9 @@
 <?php
 /**
  * Internationalisation file for the Nuke extension
- * @addtogroup Extensions
+ *
+ * @file
+ * @ingroup Extensions
  * @author Brion Vibber
  */
 
@@ -58,15 +60,15 @@ $messages['af'] = array(
  * @author Juanpabl
  */
 $messages['an'] = array(
-	'nuke' => 'Borrato masibo',
-	'nuke-desc' => 'Da á os almenistradors a capazidat de fer [[Special:Nuke|borratos masibos]] de pachinas',
-	'nuke-nopages' => 'No bi ha garra pachina nueba feita por [[Special:Contributions/$1|$1]] entre os zaguers cambeos.',
+	'nuke' => 'Borrato masivo',
+	'nuke-desc' => 'Da a os almenistradors a capacidat de fer [[Special:Nuke|borratos masivos]] de pachinas',
+	'nuke-nopages' => 'No bi ha garra pachina nueva feita por [[Special:Contributions/$1|$1]] entre os zaguers cambeos.',
 	'nuke-list' => 'A siguients pachinas fuoron creyatas por [[Special:Contributions/$1|$1]]; escriba un comentario y punche o botón ta borrar-los.',
-	'nuke-defaultreason' => "Borrato masibo d'as pachinas adibitas por $1",
-	'nuke-tools' => "Ista ferramienta fa posible de fer borratos masibos de pachinas adibitas en zaguerías por un usuario u adreza IP datos. Escriba o nombre d'usuario u l'adreza IP ta obtener una lista de pachinas ta borrar:",
+	'nuke-defaultreason' => "Borrato masivo d'as pachinas adhibitas por $1",
+	'nuke-tools' => "Ista ferramienta fa posible de fer borratos masivos de pachinas adhibitas en zaguerías por un usuario u adreza IP datos. Escriba o nombre d'usuario u l'adreza IP ta obtener una lista de pachinas ta borrar:",
 	'nuke-submit-user' => 'Ir-ie',
 	'nuke-submit-delete' => 'Borrar as trigatas',
-	'right-nuke' => 'Borrar pachinas masibament',
+	'right-nuke' => 'Borrar pachinas masivament',
 );
 
 /** Arabic (العربية)
@@ -259,6 +261,13 @@ Introduïu el nom d'usuari o la IP per obtenir una llista de pàgines per esborr
 	'right-nuke' => 'Esborrat massiu de pàgines',
 );
 
+/** Chechen (Нохчийн)
+ * @author Sasan700
+ */
+$messages['ce'] = array(
+	'nuke-submit-delete' => 'Дlадайá хаьржнарш',
+);
+
 /** Chamorro (Chamoru)
  * @author Jatrobat
  */
@@ -320,12 +329,14 @@ Gib die IP-Adresse oder den Benutzernamen ein, um eine Liste der zu löschenden 
 );
 
 /** German (formal address) (Deutsch (Sie-Form))
+ * @author Kghbln
  * @author Raimond Spekking
  */
 $messages['de-formal'] = array(
-	'nuke-list' => 'Die folgenden Seiten wurden von [[Special:Contributions/$1|$1]] erzeugt;
-geben Sie einen Kommentar ein und drücken Sie auf den Löschknopf.',
-	'nuke-tools' => 'Dieses Werkzeug ermöglicht die Massenlöschung von Seiten, die von einer IP-Adresse oder einem Benutzer angelegt wurden. Geben Sie die IP-Adresse/den Benutzernamen ein, um eine Liste zu erhalten:',
+	'nuke-list' => 'Die folgenden Seiten wurden von [[Special:Contributions/$1|$1]] angelegt.
+Geben Sie einen Kommentar ein und drücken Sie auf den Knopf zum Löschen der Seiten.',
+	'nuke-tools' => 'Diese Arbeitshilfe ermöglicht die Massenlöschung von Seiten, die von einer IP-Adresse oder einem Benutzer angelegt wurden.
+Geben Sie die IP-Adresse oder den Benutzernamen ein, um eine Liste der zu löschenden Seiten zu erhalten.',
 );
 
 /** Zazaki (Zazaki)
@@ -679,13 +690,13 @@ $messages['hu'] = array(
  */
 $messages['ia'] = array(
 	'nuke' => 'Deletion in massa',
-	'nuke-desc' => 'Da le capabilitate al administratores de [[Special:Nuke|deler paginas in massa]]',
+	'nuke-desc' => 'Da le possibilitate al administratores de [[Special:Nuke|deler paginas in massa]]',
 	'nuke-nopages' => 'Nulle nove paginas per [[Special:Contributions/$1|$1]] trovate in le modificationes recente.',
 	'nuke-list' => 'Le sequente paginas esseva recentemente create per [[Special:Contributions/$1|$1]];
 entra un commento e clicca le button pro deler los.',
 	'nuke-defaultreason' => 'Deletion in massa de paginas addite per $1',
 	'nuke-tools' => 'Iste instrumento permitte le deletion in massa de paginas recentemente addite per un usator o IP specific.
-Entra le nomine de usator o adresse IP pro obtener un lista de paginas a deler:',
+Entra le nomine de usator o adresse IP pro obtener un lista de paginas a deler.',
 	'nuke-submit-user' => 'Ir',
 	'nuke-submit-delete' => 'Deler seligites',
 	'right-nuke' => 'Deler paginas in massa',
@@ -797,6 +808,7 @@ Lebokna jeneng panganggo utawa alamat IP kanggo olèh daftar kaca-kaca sing bisa
  */
 $messages['ka'] = array(
 	'nuke' => 'მასობრივი წაშლა',
+	'nuke-desc' => 'ადმინისტრატორებს აძლევს გვერდების [[Special:Nuke|მასობრივად წაშლის]] საშუალებას',
 	'nuke-nopages' => 'ბოლო ცვლილებებში არ არის ახალი გვერდები [[Special:Contributions/$1|$1]]-ის მიერ.',
 	'nuke-list' => 'ეს გვერდები შეიქმნა [[Special:Contributions/$1|$1]]-ის მიერ;
 შეიყვანეთ კომენტარი და დააჭირეთ ღილაკს მათ წასაშლელად.',
@@ -963,8 +975,8 @@ $messages['mk'] = array(
 	'nuke-list' => 'Следниве страници биле неодамна создадени од [[Special:Contributions/$1|$1]];
 вметнете коментар и притиснете на копчето за да ги избришете',
 	'nuke-defaultreason' => 'Групно отстранување на страници додадени од $1',
-	'nuke-tools' => 'Оваа алатка овозможува групни бришења на страници неодамна додадени од извесен корисник или IP адреса.
-Внесете го корисничкото име или IP адреса за да ја добиете листата на страниците за бришење.',
+	'nuke-tools' => 'Оваа алатка овозможува групни бришења на страници неодамна додадени од извесен корисник или IP-адреса.
+Внесете го корисничкото име или IP-адреса за да го добиете списокот на страници за бришење.',
 	'nuke-submit-user' => 'Изврши',
 	'nuke-submit-delete' => 'Избриши ги избраните',
 	'right-nuke' => 'Групно бришење на страници',
@@ -1022,9 +1034,15 @@ $messages['ms'] = array(
  */
 $messages['mt'] = array(
 	'nuke' => 'Tħassir tal-massa',
+	'nuke-desc' => "Jagħti lill-amministraturi l-għodda li [[Special:Nuke|jħassru bil-massa]] numru ta' paġni.",
+	'nuke-nopages' => 'Ma nstabu l-ebda paġni ġodda maħluqa minn [[Special:Contributions/$1|$1]] fost it-tibdil riċenti.',
+	'nuke-list' => 'Il-paġni segwenti ġew riċentament maħluqa minn [[Special:Contributions/$1|$1]];
+daħħal kumment u agħfas il-buttuna sabiex tħassarhom.',
+	'nuke-defaultreason' => "Tħassir ta' massa ta' paġni miżjuda minn $1",
 	'nuke-tools' => "Din l-għodda tippermetti t-tħassir ta' massa ta' paġni li ġew miżjuda riċentament minn utent partikulari jew IP.
 Daħħal l-isem tal-utent jew l-IP biex tikseb lista ta' paġni li jridu jitħassru.",
 	'nuke-submit-user' => 'Mur',
+	'nuke-submit-delete' => 'Ħassar dawk magħżula',
 	'right-nuke' => 'Ħassar paġni bil-massa',
 );
 
@@ -1079,8 +1097,8 @@ $messages['nl'] = array(
 	'nuke-nopages' => "Geen nieuwe pagina's van [[Special:Contributions/$1|$1]] in de recente wijzigingen.",
 	'nuke-list' => "De onderstaande pagina's zijn recentelijk aangemaakt door [[Special:Contributions/$1|$1]]; voer een reden in en klik op de knop om ze te verwijderen.",
 	'nuke-defaultreason' => "Massaal verwijderen van pagina's van $1",
-	'nuke-tools' => "Dit hulpmiddel maakt het mogelijk massaal pagina's te verwijderen die recentelijk zijn aangemaakt door een gebruiker of IP-adres.
-Voer de gebruikernaam of het IP-adres in voor een lijst van te verwijderen pagina's.",
+	'nuke-tools' => "Dit hulpmiddel maakt het mogelijk pagina's die recentelijk zijn aangemaakt door een gebruiker of IP-adres massaal te verwijderen.
+Voer de gebruikersnaam of het IP-adres in voor een lijst van te verwijderen pagina's.",
 	'nuke-submit-user' => 'OK',
 	'nuke-submit-delete' => 'Geselecteerde verwijderen',
 	'right-nuke' => "Massaal pagina's verwijderen",
@@ -1234,6 +1252,7 @@ $messages['pt-br'] = array(
  */
 $messages['qu'] = array(
 	'nuke' => 'Tawqa qulluy',
+	'nuke-desc' => "Kamachiqkunata [[Special:Nuke|p'anqa tawqa qulluywan]] atichin",
 	'nuke-nopages' => "Manam kanchu [[Special:Contributions/$1|$1]]-pa musuqta kamarisqan p'anqakuna ñaqha hukchasqakunapi.",
 	'nuke-list' => "Kay qatiq p'anqakunataqa [[Special:Contributions/$1|$1]] ruraqmi kamarirqun; imarayku nispa butunta ñit'iy tawqalla qullunapaq.",
 	'nuke-defaultreason' => "$1-pa rurasqan p'anqakunata tawqalla qulluy",
@@ -1652,6 +1671,7 @@ $messages['yue'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Gaoxuewei
+ * @author Liangent
  * @author Shinjiman
  */
 $messages['zh-hans'] = array(
@@ -1663,7 +1683,7 @@ $messages['zh-hans'] = array(
 	'nuke-defaultreason' => '大量删除由$1所创建的页面',
 	'nuke-tools' => '这个工具允许根据提供的用户名称或IP大量删除它们最新添加的页面。
 请输入用户名或IP，以得到页面列表并作删除。',
-	'nuke-submit-user' => 'Go',
+	'nuke-submit-user' => '执行',
 	'nuke-submit-delete' => '删除已选择的',
 	'right-nuke' => '大量删除页面',
 );

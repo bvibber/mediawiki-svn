@@ -2,7 +2,8 @@
 /**
  * Internationalisation file for extension DeleteQueue.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $messages = array();
@@ -289,6 +290,7 @@ $messages['am'] = array(
  */
 $messages['an'] = array(
 	'deletequeue-delnom-otherreason' => 'Atra razón',
+	'deletequeue-vote-submit' => 'Ninviar',
 	'deletequeue-list-header-page' => 'Pachina',
 	'deletequeue-case-page' => 'Pachina:',
 	'deletequeue-case-reason' => 'Razón:',
@@ -1011,6 +1013,11 @@ $messages['ca'] = array(
 	'deletequeue-list-queue' => 'Cua:',
 	'deletequeue-list-status' => 'Estat:',
 	'deletequeue-case-reason' => 'Motiu:',
+);
+
+/** Chechen (Нохчийн) */
+$messages['ce'] = array(
+	'deletequeue-case-reason' => 'Бахьан:',
 );
 
 /** Danish (Dansk)
@@ -3831,7 +3838,7 @@ $messages['mk'] = array(
 	'deletequeue-speedy-text' => "Овој образец служи за означување на страницата „'''$1'''“ за брзо бришење.
 
 Барањето ќе го разгледа администратор и, ако има добра основа, ќе ја избрише страницата.
-Мора да одберете причина за бришење од расклопната листа подолу, и да додадете други релевантни информации.",
+Мора да одберете причина за бришење од паѓачкиот список подолу, и да додадете други релевантни информации.",
 	'deletequeue-prod-title' => 'Предложи бришење на „$1“',
 	'deletequeue-prod-text' => "Овој образец служи за предлагање на „'''$1'''“ за бришење.
 
@@ -3891,7 +3898,7 @@ $messages['mk'] = array(
 	'deletequeue-reviewdeletediscuss-title' => 'Прегледување на разговорот за бришење на „$1“',
 	'deletequeue-reviewdeletediscuss-text' => "Овој образец служи за прегледување на разговорот за бришење на „'''$1'''“.
 
-На располагање ви е [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} листа] на одобренија и приговори, а самиот разговор ќе го најдете на [[$2]].
+На располагање ви е [{{fullurl:{{FULLPAGENAME}}|action=delviewvotes}} список] на одобренија и приговори, а самиот разговор ќе го најдете на [[$2]].
 Имајте на ум дека одлука што ќе ја донесете треба да биде во согласност со консензусот во разговорот.",
 	'deletequeue-review-success' => 'Успешно го прегледавте бришењето на оваа страница',
 	'deletequeue-review-success-title' => 'Прегледот е завршен',
@@ -3940,7 +3947,7 @@ You may [{{fullurl:$1|action=delvote}} endorse or object] to deletion, or [{{ful
 	'deletequeue-list-expired' => 'Прикажи само предложени што треба да се затвораат.',
 	'deletequeue-list-search' => 'Пребарување',
 	'deletequeue-list-anyqueue' => '(било кој)',
-	'deletequeue-list-votes' => 'Листа на гласови',
+	'deletequeue-list-votes' => 'Список на гласови',
 	'deletequeue-list-votecount' => '$1 {{PLURAL:$1|одобрение|одобренија}}, $2 {{PLURAL:$2|приговор|приговори}}',
 	'deletequeue-list-header-page' => 'Страница',
 	'deletequeue-list-header-queue' => 'Редица',
@@ -4849,11 +4856,15 @@ A peul [{{fullurl:{{FULLPAGENAME}}|action=delvote}} registré sò apogg, o obies
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'deletequeue-delnom-otherreason' => 'بل سبب',
+	'deletequeue-review-newreason' => 'نوی سبب:',
 	'deletequeue-vote-submit' => 'سپارل',
 	'deletequeue-list-status' => 'دريځ:',
 	'deletequeue-list-header-expiry' => 'د پای نېټه',
+	'deletequeue-list-header-reason' => 'د ړنګولو سبب',
 	'deletequeue-case-page' => 'مخ:',
 	'deletequeue-case-reason' => 'سبب:',
+	'deletequeue-case-expiry' => 'د پای نېټه:',
 );
 
 /** Portuguese (Português)
@@ -5536,6 +5547,24 @@ Môžete [{{fullurl:{{FULLPAGENAME}}|action=delvote}} pridať] svoju vlastnú po
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
+	'deletequeue-generic-reasons' => '* Генерички разлози
+** Вандализам
+** Спам
+** Одржавање
+** Није за пројекат',
+	'deletequeue-nom-alreadyqueued' => 'Ова страна се већ налази у реду за брисање.',
+	'deletequeue-speedy-title' => 'Означи "$1" за брзо брисање',
+	'deletequeue-delnom-reason' => 'Разлог за предлог:',
+	'deletequeue-delnom-otherreason' => 'Други разлог',
+	'deletequeue-delnom-extra' => 'Додатне информације:',
+	'deletequeue-delnom-submit' => 'Пошаљи предлог',
+	'deletequeue-log-nominate' => "[[$1]] је предложен за брисање у реду '$2'.",
+	'deletequeue-log-rmspeedy' => 'брзо брисање [[$1]] је одбијено.',
+	'deletequeue-log-dequeue' => "обрисао [[$1]] из реда за брисање '$2'.",
+	'right-speedy-nominate' => 'Предлагање страна за брзо брисање',
+	'right-prod-nominate' => 'Предложите брисање стране',
+	'right-deletediscuss-nominate' => 'Започни расправе о брисању',
+	'right-deletediscuss-review' => 'Затвори расправе о брисњу',
 	'deletequeue-queue-speedy' => 'Брзо брисање',
 	'deletequeue-queue-prod' => 'Предложено брисање',
 	'deletequeue-queue-deletediscuss' => 'Дискусија о брисању',
@@ -5555,7 +5584,9 @@ $messages['sr-ec'] = array(
 	'deletequeue-review-requeue' => 'Пренеси ову страну на следећи ред:',
 	'deletequeue-review-dequeue' => 'Не подузимај никакву акцију, и склони страну из реда за брисање.',
 	'deletequeue-review-reason' => 'Коментари:',
+	'deletequeue-review-newreason' => 'Нови разлог:',
 	'deletequeue-review-newextra' => 'Додатне информације:',
+	'deletequeue-review-submit' => 'Сними преглед',
 	'deletequeue-review-original' => 'Разлог номинације',
 	'deletequeue-review-badaction' => 'Изабрали сте акцију која не стоји на располагању',
 	'deletequeue-review-actiondenied' => 'Изабрали сте акцију која је онемогућена над овом страном',
@@ -5615,6 +5646,24 @@ $messages['sr-ec'] = array(
  * @author Michaello
  */
 $messages['sr-el'] = array(
+	'deletequeue-generic-reasons' => '* Generički razlozi
+** Vandalizam
+** Spam
+** Održavanje
+** Nije za projekat',
+	'deletequeue-nom-alreadyqueued' => 'Ova strana se već nalazi u redu za brisanje.',
+	'deletequeue-speedy-title' => 'Označi "$1" za brzo brisanje',
+	'deletequeue-delnom-reason' => 'Razlog za predlog:',
+	'deletequeue-delnom-otherreason' => 'Drugi razlog',
+	'deletequeue-delnom-extra' => 'Dodatne informacije:',
+	'deletequeue-delnom-submit' => 'Pošalji predlog',
+	'deletequeue-log-nominate' => "[[$1]] je predložen za brisanje u redu '$2'.",
+	'deletequeue-log-rmspeedy' => 'brzo brisanje [[$1]] je odbijeno.',
+	'deletequeue-log-dequeue' => "obrisao [[$1]] iz reda za brisanje '$2'.",
+	'right-speedy-nominate' => 'Predlaganje strana za brzo brisanje',
+	'right-prod-nominate' => 'Predložite brisanje strane',
+	'right-deletediscuss-nominate' => 'Započni rasprave o brisanju',
+	'right-deletediscuss-review' => 'Zatvori rasprave o brisnju',
 	'deletequeue-queue-speedy' => 'Brzo brisanje',
 	'deletequeue-queue-prod' => 'Predloženo brisanje',
 	'deletequeue-queue-deletediscuss' => 'Diskusija o brisanju',
@@ -5634,7 +5683,9 @@ Diskusija se vodi na [[$5]], i završiće se na ''$2''.",
 	'deletequeue-review-requeue' => 'Prenesi ovu stranu na sledeći red:',
 	'deletequeue-review-dequeue' => 'Ne poduzimaj nikakvu akciju, i skloni stranu iz reda za brisanje.',
 	'deletequeue-review-reason' => 'Komentari:',
+	'deletequeue-review-newreason' => 'Novi razlog:',
 	'deletequeue-review-newextra' => 'Dodatne informacije:',
+	'deletequeue-review-submit' => 'Snimi pregled',
 	'deletequeue-review-original' => 'Razlog nominacije',
 	'deletequeue-review-badaction' => 'Izabrali ste akciju koja ne stoji na raspolaganju',
 	'deletequeue-review-actiondenied' => 'Izabrali ste akciju koja je onemogućena nad ovom stranom',

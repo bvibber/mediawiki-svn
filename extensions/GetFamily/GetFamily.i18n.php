@@ -248,6 +248,13 @@ $messages['ja'] = array(
 	'right-getfamily' => 'pywikipediabot 用のファミリーファイルを作成する',
 );
 
+/** Georgian (ქართული)
+ * @author ITshnik
+ */
+$messages['ka'] = array(
+	'getfamily-interwikierror' => 'შეცდომა: არასწორი საერთაშორისო ბმულების კომბინაცია, დაუკავშირდით თქვენს ლოკალურ ადმინს.',
+);
+
 /** Khmer (ភាសាខ្មែរ)
  * @author វ័ណថារិទ្ធ
  */

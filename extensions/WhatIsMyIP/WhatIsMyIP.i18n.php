@@ -79,7 +79,7 @@ $messages['arz'] = array(
 	'right-whatismyip' => 'رؤية [[Special:WhatIsMyIP|عنوان الأيبى الشخصي]]',
 );
 
-/** Azerbaijani (Azərbaycan)
+/** Azerbaijani (Azərbaycanca)
  * @author Wertuose
  */
 $messages['az'] = array(
@@ -118,6 +118,14 @@ $messages['bg'] = array(
 	'whatismyip' => 'Какво ми е IP',
 	'whatismyip-desc' => 'Показва текущия [[Special:WhatIsMyIP|IP адрес]] на потребителя',
 	'whatismyip-out' => 'Текущ IP адрес:',
+);
+
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'whatismyip' => 'আমার IP কি',
+	'whatismyip-out' => 'আপনার IP অ্যাড্রেস:',
 );
 
 /** Breton (Brezhoneg)
@@ -517,10 +525,10 @@ $messages['mg'] = array(
  * @author Brest
  */
 $messages['mk'] = array(
-	'whatismyip' => 'Која е мојата IP адреса',
-	'whatismyip-desc' => 'Ја прикажува моменталната [[Special:WhatIsMyIP|IP адреса]] на корисникот',
-	'whatismyip-out' => 'Ваша IP адреса:',
-	'right-whatismyip' => 'Погледајте ја [[Special:WhatIsMyIP|вашата IP адреса]]',
+	'whatismyip' => 'Која е мојата IP-адреса',
+	'whatismyip-desc' => 'Ја прикажува моменталната [[Special:WhatIsMyIP|IP-адреса]] на корисникот',
+	'whatismyip-out' => 'Вашата IP-адреса:',
+	'right-whatismyip' => 'Погледајте ја [[Special:WhatIsMyIP|вашата IP-адреса]]',
 );
 
 /** Malayalam (മലയാളം)

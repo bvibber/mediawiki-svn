@@ -210,13 +210,15 @@ $messages['es'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Centerlink
  * @author Jack Phoenix <jack@countervandalism.net>
+ * @author Str4nd
  */
 $messages['fi'] = array(
 	'useractivity' => 'Ystävien aktiivisuus',
 	'useractivity-award' => '$1 sai palkinnon',
 	'useractivity-all' => 'Katso kaikki',
-	'useractivity-edit' => '$1 {{PLURAL:$2|muokkasi|muokkasivat}} {{PLURAL:$4|sivua|seuraavia sivuja:}} $3',
+	'useractivity-edit' => '$1 muokkasi {{PLURAL:$4|sivua|sivuja:}} $3',
 	'useractivity-foe' => '$1 {{PLURAL:$2|on nyt vihollinen|ovat nyt vihollisia}} {{PLURAL:$3|käyttäjälle|käyttäjille}} $3',
 	'useractivity-friend' => '$1 {{PLURAL:$2|on nyt ystävä|ovat nyt ystäviä}} {{PLURAL:$3|käyttäjälle|käyttäjille}} $3',
 	'useractivity-gift' => '$1 sai lahjan käyttäjältä $2',
@@ -581,6 +583,40 @@ $messages['ru'] = array(
 	'useractivity-user_message' => '$1 отправил {{PLURAL:$4|сообщение|сообщения}} $3',
 );
 
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'useractivity' => 'Активност пријатеља',
+	'useractivity-award' => '$1 је примио/ла награду',
+	'useractivity-all' => 'Види све',
+	'useractivity-foe' => '$1 {{PLURAL:$2|је сада непријатељ са}} $3',
+	'useractivity-friend' => '$1 {{PLURAL:$2|је сада пријатељ са}} $3',
+	'useractivity-gift' => '$1 је примио/ла поклон од $2',
+	'useractivity-group-edit' => '{{PLURAL:$1|једна|$1}} измена',
+	'useractivity-group-comment' => '{{PLURAL:$1|један коментар|$1 коментара}}',
+	'useractivity-group-user_message' => '{{PLURAL:$1|једна|$1}} порука',
+	'useractivity-group-friend' => '{{PLURAL:$1|један пријатељ|$1 пријатеља}}',
+	'useractivity-siteactivity' => 'Активност сајта',
+	'useractivity-title' => 'Активност пријатеља',
+);
+
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'useractivity' => 'Aktivnost prijatelja',
+	'useractivity-award' => '$1 je primio/la nagradu',
+	'useractivity-all' => 'Vidi sve',
+	'useractivity-foe' => '$1 je sada neprijatelj sa $3',
+	'useractivity-friend' => '$1 je sada prijatelj sa $3',
+	'useractivity-gift' => '$1 je primio/la poklon od $2',
+	'useractivity-group-edit' => '{{PLURAL:$1|jedna|$1}} izmena',
+	'useractivity-group-comment' => '{{PLURAL:$1|jedan komentar|$1 komentara}}',
+	'useractivity-group-user_message' => '{{PLURAL:$1|jedna|$1}} poruka',
+	'useractivity-group-friend' => '{{PLURAL:$1|jedan prijatelj|$1 prijatelja}}',
+	'useractivity-siteactivity' => 'Aktivnost sajta',
+	'useractivity-title' => 'Aktivnost prijatelja',
+);
+
 /** Swedish (Svenska)
  * @author Per
  */
@@ -669,5 +705,23 @@ $messages['zh-hans'] = array(
 	'useractivity-siteactivity' => '站点动态',
 	'useractivity-title' => '好友动态',
 	'useractivity-user_message' => '$1向$3{{PLURAL:$4|发送了1条信息|发送了信息}}',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬) */
+$messages['zh-hant'] = array(
+	'useractivity' => '好友動態',
+	'useractivity-award' => '$1獲得了一個獎勵',
+	'useractivity-all' => '查看全部',
+	'useractivity-edit' => '$1{{PLURAL:$4|編輯了頁面|編輯了如下頁面：}}$3',
+	'useractivity-foe' => '$1{{PLURAL:$2|現在與|現在與}}$3成為仇敵',
+	'useractivity-friend' => '$1{{PLURAL:$2|現在與|現在與}}$3成為好友',
+	'useractivity-gift' => '$1收到了一份來自$2的禮物',
+	'useractivity-group-edit' => '{{PLURAL:$1|1次編輯|$1次編輯}}',
+	'useractivity-group-comment' => '{{PLURAL:$1|1個評論|$1個評論}}',
+	'useractivity-group-user_message' => '{{PLURAL:$1|1條留言|$1條留言}}',
+	'useractivity-group-friend' => '{{PLURAL:$1|1位好友|$1位好友}}',
+	'useractivity-siteactivity' => '站點動態',
+	'useractivity-title' => '好友動態',
+	'useractivity-user_message' => '$1向$3{{PLURAL:$4|發送了1條信息|發送了信息}}',
 );
 

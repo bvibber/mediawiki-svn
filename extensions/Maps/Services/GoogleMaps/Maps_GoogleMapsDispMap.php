@@ -22,16 +22,15 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  */
 final class MapsGoogleMapsDispMap extends MapsBaseMap {
 	
-	public $serviceName = MapsGoogleMaps::SERVICE_NAME;
-	
 	protected function getDefaultZoom() {
 		global $egMapsGoogleMapsZoom;
 		return $egMapsGoogleMapsZoom;
 	}
 	
-	public function getSpecificParameterInfo() {
+	protected function initSpecificParamInfo( array &$parameters ) {
 		global $egMapsGMapOverlays;
-		$this->spesificParameters = array(
+		
+		$parameters = array(
 			'overlays' => array(
 				'type' => array( 'string', 'list' ),
 				'criteria' => array(
@@ -40,7 +39,6 @@ final class MapsGoogleMapsDispMap extends MapsBaseMap {
 				'default' => $egMapsGMapOverlays,
 			),
 		);
-		return $this->spesificParameters;
 	}
 	
 	/**
@@ -49,7 +47,7 @@ final class MapsGoogleMapsDispMap extends MapsBaseMap {
 	public function doMapServiceLoad() {
 		global $egGoogleMapsOnThisPage;
 		
-		MapsGoogleMaps::addGMapDependencies( $this->parser );
+		$this->mService->addDependencies( $this->parser );
 		$egGoogleMapsOnThisPage++;
 		
 		$this->elementNr = $egGoogleMapsOnThisPage;
@@ -63,7 +61,7 @@ final class MapsGoogleMapsDispMap extends MapsBaseMap {
 		
 		$mapName = $egMapsGoogleMapsPrefix . '_' . $egGoogleMapsOnThisPage;
 		
-		MapsGoogleMaps::addOverlayOutput( $this->output, $this->parser, $mapName, $this->overlays, $this->controls );
+		$this->mService->addOverlayOutput( $this->output, $mapName, $this->overlays, $this->controls );
 		
 		$this->output .= Html::element(
 			'div',
@@ -93,8 +91,6 @@ addOnloadHook(
 );
 EOT
 		) );
-		
 	}
 	
 }
-

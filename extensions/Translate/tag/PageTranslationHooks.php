@@ -8,14 +8,12 @@ class PageTranslationHooks {
 		$title = $parser->getTitle();
 
 		if ( strpos( $text, '<translate>' ) !== false ) {
-			$nowiki = array();
-			$text = TranslatablePage::armourNowiki( $nowiki, $text );
-			$cb = array( __CLASS__, 'replaceTagCb' );
-			# Remove the tags nicely, trying to not leave excess whitespace lying around
-			$text = preg_replace_callback( '~(<translate>)\s*(.*?)(</translate>)~s', $cb, $text );
-			# Replace variable markers
-			$text = preg_replace_callback( '~(<tvar[^<>]+>)(.*)(</>)~s', $cb, $text );
-			$text = TranslatablePage::unArmourNowiki( $nowiki, $text );
+			try {
+				$parse = TranslatablePage::newFromText( $parser->getTitle(), $text )->getParse();
+				$text = $parse->getTranslationPageText( null );
+			} catch ( TPException $e ) {
+				// Show ugly preview without processed <translate> tags
+			}
 		}
 
 		// For translation pages, parse plural, grammar etc with correct language
@@ -34,6 +32,7 @@ class PageTranslationHooks {
 	// Only called form hook
 	public static function injectCss( $outputpage, $text ) {
 		TranslateUtils::injectCSS();
+
 		return true;
 	}
 
@@ -222,26 +221,22 @@ class PageTranslationHooks {
 				'width' => '9',
 				'height' => '9',
 			) );
-			$label = "$name $percent";
 
 			// Add links to other languages
 			$suffix = ( $code === 'en' ) ? '' : "/$code";
 			$_title = Title::makeTitle( $title->getNamespace(), $title->getDBkey() . $suffix );
 
-			// For some reason self-links are not done automatically
-			if ( $code === $wgLang->getCode() ) {
-				$label = Html::rawElement( 'b', null, $label );
-			}
-
 			if ( $parser->getTitle()->getText() === $_title->getText() ) {
-				$languages[] = "$label";
+				$languages[] = Html::rawElement( 'b', null, "*$name* $percent" );
+			} elseif ( $code === $wgLang->getCode() ) {
+				$languages[] = $sk->linkKnown( $_title, Html::rawElement( 'b', null, "$name $percent" ) );
 			} else {
-				$languages[] = $sk->linkKnown( $_title, $label );
+				$languages[] = $sk->linkKnown( $_title, "$name $percent" );
 			}
 		}
 
 		$legend = wfMsg( 'tpt-languages-legend' );
-		$languages = implode( '&nbsp;• ', $languages );
+		$languages = implode( ' •&#160;', $languages );
 
 		return <<<FOO
 <div class="mw-pt-languages">
@@ -257,7 +252,7 @@ FOO;
 	}
 
 	// To display nice error for editpage
-	public static function tpSyntaxCheckForEditPage( $editpage, $text, $section, &$error, $summary ) {
+	public static function tpSyntaxCheckForEditPage( $editpage, $text, &$error, $summary ) {
 		if ( strpos( $text, '<translate>' ) === false ) {
 			return true;
 		}
@@ -324,6 +319,7 @@ FOO;
 				// No group means that the page is currently not
 				// registered to any page translation message groups
 				$result = array( 'tpt-unknown-page' );
+
 				return false;
 			}
 
@@ -344,6 +340,13 @@ FOO;
 					$page->getTitle()->getPrefixedText(),
 					$page->getTranslationUrl( $code )
 				);
+
+				return false;
+			}
+		} elseif ( $action === 'move' || $action === 'delete' ) {
+			$page = TranslatablePage::newFromTitle( $title );
+			if ( $page->getMarkedTag() ) {
+				$result = array( 'tpt-move-impossible' );
 				return false;
 			}
 		}
@@ -439,6 +442,7 @@ FOO;
 		) . Html::element( 'hr' );
 
 		global $wgOut;
+
 		$wgOut->addHTML( $legend );
 	}
 
@@ -469,6 +473,7 @@ FOO;
 			$wrap = '<div style="font-size: x-small; text-align: center" class="mw-translate-fuzzy">$1</div>';
 			$wgOut->wrapWikiMsg( $wrap, array( 'tpt-translation-intro-fuzzy' ) );
 		}
+
 		$wgOut->addHTML( '<hr />' );
 	}
 
@@ -480,7 +485,8 @@ FOO;
 	}
 
 	public static function exportToolbox( $skin ) {
-		$title = $skin->skin->mTitle;
+		global $wgOut;
+		$title = $wgOut->getTitle();
 
 		// Check if this is a source page or a translation page
 		$page = TranslatablePage::newFromTitle( $title );
@@ -508,4 +514,31 @@ FOO;
 
 		return true;
 	}
+
+	public static function preventCategorization( $updater ) {
+		global $wgTranslateDocumentationLanguageCode;
+		$title = $updater->getTitle();
+		list( , $code ) = TranslateUtils::figureMessage( $title );
+		if ( $title->getNamespace() == NS_TRANSLATIONS && $code !== $wgTranslateDocumentationLanguageCode ) {
+			$updater->mCategories = array();
+		}
+		return true;
+	}
+
+	public static function formatLogEntry( $type, $action, $title, $forContent, $params ) {
+		global $wgLang, $wgContLang;
+
+		$language = $forContent ? $wgContLang : $wgLang;
+		$opts = array( 'parseinline', 'language' => $language );
+		$_ = unserialize( $params[0] );
+		$user =  $_['user'];
+
+		if ( $action === 'mark' ) {
+			$revision =  $_['revision'];
+			return wfMsgExt( 'pt-log-mark', $opts, $title->getPrefixedText(), $user, $revision );
+		} elseif( $action === 'unmark' ) {
+			return wfMsgExt( 'pt-log-unmark', $opts, $title->getPrefixedText(), $user );
+		}
+	}
+
 }

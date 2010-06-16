@@ -1,30 +1,29 @@
 <?php
- /**
-  * Copyright (C) Wikimedia Deutschland, 2009
-  * Authors Hallo Welt! Medienwerkstatt GmbH
-  * Authors Sebastian Ulbricht, Daniel Lynge, Marc Reymann, Markus Glaser
-  *
-  * This program is free software; you can redistribute it and/or modify
-  * it under the terms of the GNU General Public License as published by
-  * the Free Software Foundation; either version 2 of the License, or
-  * (at your option) any later version.
-  *
-  * This program is distributed in the hope that it will be useful,
-  * but WITHOUT ANY WARRANTY; without even the implied warranty of
-  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-  * GNU General Public License for more details.
-  *
-  * You should have received a copy of the GNU General Public License along
-  * with this program; if not, write to the Free Software Foundation, Inc.,
-  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
-  * http://www.gnu.org/copyleft/gpl.html
-  *
-  */
+/**
+ * Copyright © Wikimedia Deutschland, 2009
+ * Authors Hallo Welt! Medienwerkstatt GmbH
+ * Authors Sebastian Ulbricht, Daniel Lynge, Marc Reymann, Markus Glaser
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License along
+ * with this program; if not, write to the Free Software Foundation, Inc.,
+ * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+ * http://www.gnu.org/copyleft/gpl.html
+ */
 
 # Not a valid entry point, skip unless MEDIAWIKI is defined
-if (!defined('MEDIAWIKI')) {
-	echo "PagedTiffHandler extension";
-	exit(1);
+if ( !defined( 'MEDIAWIKI' ) ) {
+	echo 'PagedTiffHandler extension';
+	exit( 1 );
 }
 
 /* Add to LocalSettings.php
@@ -35,6 +34,7 @@ $wgImageMagickConvertCommand = "C:\Program Files\ImageMagick-6.5.6-Q8\convert";
 $wgImageMagickIdentifyCommand = "C:\Program Files\ImageMagick-6.5.6-Q8\identify";
 $wgTiffExivCommand = "C:\Program Files\Exiv2\exiv2";
 $wgMaxUploadSize = 1073741824;
+$wgShowEXIF = true;
 */
 
 $wgExtensionCredits['media'][] = array(
@@ -72,7 +72,7 @@ $wgTiffIdentifyBypassMessages = array(
 // Use PHP-TiffReader
 // This is still experimental
 $wgTiffUseTiffReader = false;
-$wgTiffReaderPath = dirname(__FILE__);
+$wgTiffReaderPath = dirname( __FILE__ );
 $wgTiffReaderCheckEofForJS = 4; // check the last 4MB for JS
 
 // Path to identify
@@ -97,7 +97,7 @@ $wgTiffErrorCacheTTL = 84600;
 $wgFileExtensions[] = 'tiff';
 $wgFileExtensions[] = 'tif';
 
-$dir = dirname(__FILE__) . '/';
+$dir = dirname( __FILE__ ) . '/';
 $wgExtensionMessagesFiles['PagedTiffHandler'] = $dir . 'PagedTiffHandler.i18n.php';
 $wgAutoloadClasses['PagedTiffImage'] = $dir . 'PagedTiffHandler.image.php';
 $wgAutoloadClasses['PagedTiffHandler'] = $dir . 'PagedTiffHandler_body.php';
@@ -105,5 +105,5 @@ $wgAutoloadClasses['TiffReader'] = $dir . 'TiffReader.php';
 $wgMediaHandlers['image/tiff'] = 'PagedTiffHandler';
 $wgHooks['UploadVerification'][] = 'PagedTiffHandler::check';
 $wgHooks['LanguageGetMagic'][] = 'PagedTiffHandler::addTiffLossyMagicWordLang';
-$wgHooks['PagedTiffHandlerRenderCommand'][] = 'PagedTiffHandler::renderCommand';
-$wgHooks['PagedTiffHandlerExivCommand'][] = 'PagedTiffImage::exivCommand';
+//$wgHooks['PagedTiffHandlerRenderCommand'][] = 'PagedTiffHandler::renderCommand';
+//$wgHooks['PagedTiffHandlerExivCommand'][] = 'PagedTiffImage::exivCommand';

@@ -4,7 +4,7 @@ if ( !defined( 'MEDIAWIKI' ) ) die();
  * This exension provides a parser function that aids in choosing the correct
  * particle that is attached to the words.
  *
- * @addtogroup Extensions
+ * @ingroup Extensions
  * @file
  *
  * @author Niklas Laxström

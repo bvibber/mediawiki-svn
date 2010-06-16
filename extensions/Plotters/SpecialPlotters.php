@@ -2,7 +2,8 @@
 /**
  * Special:Plotters, provides a preview of MediaWiki:Plotters. Based on the Gadgets extension.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  * @author Ryan Lane, rlane32+mwext@gmail.com
  * @copyright © 2009 Ryan Lane
  * @license GNU General Public Licence 2.0 or later
@@ -56,7 +57,7 @@ class SpecialPlotters extends SpecialPage {
 					$wgOut->addHTML( '</ul>' );
 					$listOpen = false;
 				}
-				$wgOut->addHTML( "\n<h2>$ttext &nbsp; &nbsp; [$lnk]</h2>\n" );
+				$wgOut->addHTML( "\n<h2>$ttext &#160; &#160; [$lnk]</h2>\n" );
 			}
 
 			foreach ( $entries as $pname => $code ) {
@@ -71,7 +72,7 @@ class SpecialPlotters extends SpecialPage {
 					$wgOut->addHTML( '<ul>' );
 				}
 				$wgOut->addHTML( "<li>" );
-				$wgOut->addHTML( "$ttext &nbsp; &nbsp; [$lnk]<br />" );
+				$wgOut->addHTML( "$ttext &#160; &#160; [$lnk]<br />" );
 
 				$wgOut->addHTML( wfMsgHTML( "plotters-uses" ) . ": " );
 

@@ -3,7 +3,8 @@
 /**
  * Messages file for the TemplateInfo extension
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 /**
@@ -250,6 +251,14 @@ $messages['no'] = array(
 $messages['oc'] = array(
 	'templateinfo-desc' => 'Supòrta los modèls en definissent lor estructura de donadas via de balisas XML',
 	'templateinfo-header' => 'La definicion XML per aqueste modèl es :',
+);
+
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'templateinfo-desc' => 'Obsługa definiowania struktury szablonów z wykorzystaniem znaczników XML',
+	'templateinfo-header' => 'Definicja XML dla tego szablonu:',
 );
 
 /** Piedmontese (Piemontèis)

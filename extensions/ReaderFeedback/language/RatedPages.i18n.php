@@ -399,6 +399,7 @@ $messages['ja'] = array(
 $messages['ka'] = array(
 	'ratedpages' => 'მკითხველების შეფასებული გვერდები',
 	'ratedpages-none' => 'ამ სიაში გვერდები არ არის',
+	'ratedpages-graphs' => 'მონაცემების შეფასება',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -452,8 +453,8 @@ $messages['lb'] = array(
 $messages['mk'] = array(
 	'ratedpages' => 'Страници оценети од читатели',
 	'ratedpages-leg' => 'Пронајди страници со значителен број на оценки',
-	'ratedpages-list' => 'Еве листа од страници сортирани по дадена оцена од корисниците',
-	'ratedpages-none' => 'Нема страници на оваа листа',
+	'ratedpages-list' => 'Еве список од страници подредени по дадена оцена од корисниците',
+	'ratedpages-none' => 'Нема страници на овој список',
 	'ratedpages-graphs' => 'податоци за оценувањето',
 	'ratedpages-count' => '$1 {{PLURAL:$1|оцена|оцени}}',
 );
@@ -576,11 +577,15 @@ $messages['pt'] = array(
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
+ * @author Giro720
  */
 $messages['pt-br'] = array(
+	'ratedpages' => 'Páginas avaliadas por leitores',
+	'ratedpages-leg' => 'Procurar páginas com um número significativo de avaliações',
 	'ratedpages-list' => 'Segue-se uma lista de páginas ordenada de acordo com a avaliação dos leitores.',
 	'ratedpages-none' => 'Não há páginas nesta listagem',
 	'ratedpages-graphs' => 'dados de avaliações',
+	'ratedpages-count' => '$1 {{PLURAL:$1|revisão|revisões}}',
 );
 
 /** Romanian (Română)
@@ -672,6 +677,16 @@ $messages['sv'] = array(
 	'ratedpages-none' => 'Det finns inga sidor i denna lista',
 	'ratedpages-graphs' => 'betygsdata',
 	'ratedpages-count' => '$1 {{PLURAL:$1|granskning|granskningar}}',
+);
+
+/** Tamil (தமிழ்)
+ * @author Mahir78
+ */
+$messages['ta'] = array(
+	'ratedpages' => 'வாசகர் மதிப்பீடு செய்த பக்கங்கள்',
+	'ratedpages-none' => 'இந்த பட்டியலில் ஒரு பக்கமும் இல்லை',
+	'ratedpages-graphs' => 'அளவீடு தரவு',
+	'ratedpages-count' => '$1 {{PLURAL:$1|review|மீளாய்வு}}',
 );
 
 /** Telugu (తెలుగు)

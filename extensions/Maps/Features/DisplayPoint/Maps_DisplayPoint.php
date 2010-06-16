@@ -54,6 +54,7 @@ final class MapsDisplayPoint {
 	public static $parameters = array();
 	
 	public static function initialize() {
+		Validator::addOutputFormat( 'geoPoints', array( __CLASS__, 'formatGeoPoints' ) );
 	}
 	
 	/**
@@ -66,6 +67,33 @@ final class MapsDisplayPoint {
 	public static function displayPointRender( &$parser ) {
 		$args = func_get_args();
 		return MapsParserFunctions::getMapHtml( $parser, $args, 'display_point' );
+	}
+	
+	/**
+	 * Formats a set of points that can have meta data provided.
+	 * 
+	 * @param string $locations
+	 * @param string $name The name of the parameter.
+	 * @param array $parameters Array containing data about the so far handled parameters.
+	 */		
+	public static function formatGeoPoints( &$locations, $name, array $parameters, $metaDataSeparator = false ) {
+		$locations = (array)$locations;
+		foreach ( $locations as &$location ) {
+			self::formatGeoPoint( $location, $name, $parameters, $metaDataSeparator );
+		}
+	}
+	
+	public static function formatGeoPoint( &$location, $name, array $parameters, $metaDataSeparator = false ) {
+		if ( $metaDataSeparator !== false ) {
+			$segments = explode( $metaDataSeparator, $location );
+		}
+		else {
+			$segments = array( $location );
+		}
+		
+		MapsMapper::formatLocation( $segments[0], $name, $parameters );
+		
+		$location = $segments;
 	}
 	
 }

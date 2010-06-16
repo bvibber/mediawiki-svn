@@ -200,7 +200,13 @@ $messages['af'] = array(
 	'maintenance-password' => 'Wagwoord',
 	'maintenance-reason' => 'Rede',
 	'maintenance-confirm' => 'Bevestig',
+	'maintenance-invalidname' => 'Ongeldige gebruikersnaam!',
+	'maintenance-invalidtitle' => 'Ongeldige bladsynaam: "$1"!',
 	'maintenance-deleted' => 'Geskrap',
+	'maintenance-stats-edits' => 'Aantal wysigings: $1',
+	'maintenance-stats-pages' => 'Aantal bladsye: $1',
+	'maintenance-stats-users' => 'Aantal gebruikers: $1',
+	'maintenance-stats-images' => 'Aantal lêers: $1',
 	'maintenance-memc-total' => 'totaal:',
 	'maintenance-memc-invalid' => 'ongeldig:',
 	'maintenance-memc-absent' => 'afwesig:',
@@ -764,6 +770,11 @@ $messages['ca'] = array(
 	'maintenance-stats-edits' => "Nombre d'edicions: $1",
 	'maintenance-stats-pages' => 'Nombre de pàgines: $1',
 	'maintenance-stats-users' => "Nombre d'usuaris: $1",
+);
+
+/** Chechen (Нохчийн) */
+$messages['ce'] = array(
+	'maintenance-reason' => 'Бахьан',
 );
 
 /** Church Slavic (Словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)
@@ -2795,7 +2806,7 @@ $messages['mhr'] = array(
  */
 $messages['mk'] = array(
 	'maintenance' => 'Пушти скрипти за одржување',
-	'maintenance-desc' => '[[Special:Maintenance|Вики-интерфејс]] за разни скрипти за одржување',
+	'maintenance-desc' => '[[Special:Maintenance|Вики-посредник]] за разни скрипти за одржување',
 	'right-maintenance' => 'Пуштање на скрипти за одржување преку [[Special:Maintenance]]',
 	'maintenance-backlink' => 'Назад кон изборот на скрипта',
 	'maintenance-header' => 'Одберете скрипта подолу за извршување.
@@ -2810,7 +2821,7 @@ $messages['mk'] = array(
 	'maintenance-moveBatch-desc' => 'Групно преместување на страници',
 	'maintenance-reassignEdits-desc' => 'Презадај уредувања од еден корисник на друг',
 	'maintenance-runJobs-desc' => 'Пушти ги задачите во редицата на задачи',
-	'maintenance-showJobs-desc' => 'Прикажи листа на задачи во редот на чекање',
+	'maintenance-showJobs-desc' => 'Прикажи список на задачи во редот на чекање',
 	'maintenance-sql-desc' => 'Изврши SQL-барање',
 	'maintenance-stats-desc' => 'Прикажи Memcached статистики',
 	'maintenance-changePassword' => 'Овој образец служи за менување на лозинка на корисник',

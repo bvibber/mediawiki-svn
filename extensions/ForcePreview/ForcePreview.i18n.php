@@ -1,8 +1,10 @@
 <?php
 /**
  * Internationalisation file for the ForcePreview extension
- * @addtogroup Extensions
-*/
+ *
+ * @file
+ * @ingroup Extensions
+ */
 
 $messages = array();
 

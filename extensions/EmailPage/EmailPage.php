@@ -4,8 +4,8 @@
  *
  * See http://www.mediawiki.org/wiki/Extension:EmailPage for installation and usage details
  *
- * @package MediaWiki
- * @subpackage Extensions
+ * @file
+ * @ingroup Extensions
  * @author Aran Dunkley [http://www.organicdesign.co.nz/nad User:Nad]
  * @copyright © 2007 Aran Dunkley
  * @licence GNU General Public Licence 2.0 or later
@@ -47,13 +47,13 @@ $wgExtensionCredits['specialpage'][] = array(
 if ( isset( $_REQUEST['ea-send'] ) ) require_once( $wgPhpMailerClass );
 
 # Add toolbox and action links
-if ( $wgEmailPageToolboxLink ) $wgHooks['MonoBookTemplateToolboxEnd'][] = 'wfEmailPageToolboxLink';
+if ( $wgEmailPageToolboxLink ) $wgHooks['SkinTemplateToolboxEnd'][] = 'wfEmailPageToolboxLink';
 if ( $wgEmailPageActionLink )  $wgHooks['SkinTemplateTabs'][] = 'wfEmailPageActionLink';
 
 function wfEmailPageToolboxLink() {
 	global $wgTitle, $wgUser, $wgEmailPageGroup;
-	if ( is_object( $wgTitle ) && ( empty($wgEmailPageGroup) || in_array( $wgEmailPageGroup, $wgUser->getEffectiveGroups() ) ) ) {
-		$url = Title::makeTitle( NS_SPECIAL, 'EmailPage' )->getLocalURL( 'ea-title='.$wgTitle->getPrefixedText() );
+	if ( is_object( $wgTitle ) && ( empty( $wgEmailPageGroup ) || in_array( $wgEmailPageGroup, $wgUser->getEffectiveGroups() ) ) ) {
+		$url = htmlspecialchars( SpecialPage::getTitleFor( 'EmailPage' )->getLocalURL( array( 'ea-title' => $wgTitle->getPrefixedText() ) ) );
 		echo( "<li><a href=\"$url\">" . wfMsg( 'emailpage' ) . "</a></li>" );
 	}
 	return true;
@@ -62,7 +62,7 @@ function wfEmailPageToolboxLink() {
 function wfEmailPageActionLink( $skin, &$actions ) {
 	global $wgTitle, $wgUser, $wgEmailPageGroup;
 	if ( is_object( $wgTitle ) && ( empty( $wgEmailPageGroup ) || in_array( $wgEmailPageGroup, $wgUser->getEffectiveGroups() ) ) ) {
-		$url = Title::makeTitle( NS_SPECIAL, 'EmailPage' )->getLocalURL('ea-title='.$wgTitle->getPrefixedText() );
+		$url = SpecialPage::getTitleFor( 'EmailPage' )->getLocalURL( array( 'ea-title' => $wgTitle->getPrefixedText() ) );
 		$actions['email'] = array( 'text' => wfMsg( 'email' ), 'class' => false, 'href' => $url );
 	}
 	return true;

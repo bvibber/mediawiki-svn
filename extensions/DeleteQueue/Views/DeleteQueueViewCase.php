@@ -126,7 +126,7 @@ class DeleteQueueViewCase extends DeleteQueueView {
 		// Display
 		foreach ( $votesByUser as $user => $votes ) {
 			$id = User::idFromName( $user );
-			$user = $sk->userLink( $id, $user ) . '&nbsp;' .
+			$user = $sk->userLink( $id, $user ) . '&#160;' .
 				$sk->userToolLinks( $id, $user );
 
 			$userVotes = array();

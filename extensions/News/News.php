@@ -2,8 +2,8 @@
 /**
  * News extension - shows recent changes on a wiki page.
  *
- * @package MediaWiki
- * @subpackage Extensions
+ * @file
+ * @ingroup Extensions
  * @author Daniel Kinzler, brightbyte.de
  * @copyright © 2007 Daniel Kinzler
  * @licence GNU General Public Licence 2.0 or later
@@ -46,7 +46,7 @@ function wfNewsExtension() {
     wfLoadExtensionMessages( 'NewsExtension' );
 }
 
-function wfNewsTag( $templatetext, $argv, &$parser ) {
+function wfNewsTag( $templatetext, $argv, $parser ) {
     global $wgTitle;
 
     $parser->disableCache(); //TODO: use smart cache & purge...?
@@ -55,7 +55,7 @@ function wfNewsTag( $templatetext, $argv, &$parser ) {
     return $renderer->renderNews();
 }
 
-function wfNewsFeedTag( $templatetext, $argv, &$parser ) {
+function wfNewsFeedTag( $templatetext, $argv, $parser ) {
     global $wgTitle, $wgOut;
 
     $parser->disableCache(); //TODO: use smart cache & purge...?
@@ -76,7 +76,7 @@ function wfNewsFeedLinkTag( $linktext, $argv, $parser ) {
     return NewsRenderer::renderFeedLink($linktext, $argv, $parser);
 }
 
-function wfNewsArticleFromTitle( &$title, &$article ) {
+function wfNewsArticleFromTitle( $title, &$article ) {
     global $wgRequest, $wgFeedClasses, $wgUser, $wgOut;
     $fname = 'extension/News: wfNewsArticleFromTitle';
 
@@ -109,7 +109,7 @@ function wfNewsArticleFromTitle( &$title, &$article ) {
     return false;
 }
 
-function wfNewsSkinTemplateOutputPageBeforeExec( &$skin, &$tpl ) {
+function wfNewsSkinTemplateOutputPageBeforeExec( $skin, $tpl ) {
     $feeds = $tpl->data['feeds'];
     if (!$feeds) return true;
 

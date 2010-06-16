@@ -2,7 +2,8 @@
 /**
  * Internationalisation file for FlaggedRevs extension, section ReviewedVersions
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $messages = array();
@@ -62,12 +63,12 @@ $messages['aln'] = array(
  * @author Juanpabl
  */
 $messages['an'] = array(
-	'reviewedversions' => 'Amostrar bersions estables',
-	'reviewedversions-leg1' => "Amostrar a lista de bersions rebisatas d'una pachina",
+	'reviewedversions' => 'versions revisatas',
+	'reviewedversions-leg1' => "Amostrar a lista de versions revisatas d'una pachina",
 	'reviewedversions-page' => "Nombre d'a pachina:",
-	'reviewedversions-none' => '"[[:$1]]" no tiene bersions rebisatas.',
-	'reviewedversions-list' => "A siguient ye una lista de bersions de [[:$1]] que s'han rebisato:",
-	'reviewedversions-review' => 'Rebisata por $2 o <i>$1</i>',
+	'reviewedversions-none' => '"[[:$1]]" no tiene versions revisatas.',
+	'reviewedversions-list' => "A siguient ye una lista de versions de [[:$1]] que s'han revisato:",
+	'reviewedversions-review' => 'Revisata por $2 o <i>$1</i>',
 );
 
 /** Arabic (العربية)
@@ -244,9 +245,10 @@ $messages['de'] = array(
 
 /** Zazaki (Zazaki)
  * @author Aspar
+ * @author Xoser
  */
 $messages['diq'] = array(
-	'reviewedversions' => 'versiyonan ramocın',
+	'reviewedversions' => 'Versiyonan ke kontrol biye',
 	'reviewedversions-leg1' => 'qey yew peli revizyonê kontrol biyayeyan liste bıker',
 	'reviewedversions-page' => 'nameyê peli:',
 	'reviewedversions-none' => '"[[:$1]]" wayirê revizyonê konrol biyayeyan niyo.',
@@ -684,10 +686,10 @@ $messages['mhr'] = array(
  */
 $messages['mk'] = array(
 	'reviewedversions' => 'Проверени верзии',
-	'reviewedversions-leg1' => 'Листа на прегледани ревизии за страница',
+	'reviewedversions-leg1' => 'Список на прегледани ревизии за страница',
 	'reviewedversions-page' => 'Наслов на страница:',
 	'reviewedversions-none' => '"[[:$1]]" нема прегледани ревизии.',
-	'reviewedversions-list' => 'Ова е листа на {{PLURAL:$2|единствената ревизија|ревизиите}} на [[:$1]] {{PLURAL:$2|која е прегледана|кои се прегледани}}:',
+	'reviewedversions-list' => 'Ова е список на {{PLURAL:$2|единствената ревизија|ревизиите}} на [[:$1]] {{PLURAL:$2|која е прегледана|кои се прегледани}}:',
 	'reviewedversions-review' => 'Прегледано на <i>$1</i> од страна на $2',
 );
 
@@ -867,9 +869,10 @@ $messages['pt'] = array(
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
+ * @author Giro720
  */
 $messages['pt-br'] = array(
-	'reviewedversions' => 'Ver edições estáveis',
+	'reviewedversions' => 'Versões revisadas',
 	'reviewedversions-leg1' => 'Listar as edições analisadas de uma página',
 	'reviewedversions-page' => 'Título da página:',
 	'reviewedversions-none' => '[[:$1]] não possui edições analisadas.',
@@ -964,24 +967,25 @@ $messages['sl'] = array(
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Charmed94
  * @author Millosh
  * @author Sasa Stefanovic
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
-	'reviewedversions' => 'Погледај стабилне верзије',
-	'reviewedversions-leg1' => 'Списак прегледаних верзија за страну.',
-	'reviewedversions-page' => 'Име странице:',
-	'reviewedversions-none' => '"[[:$1]]" нема прегледаних верзија.',
+	'reviewedversions' => 'Прегледана издања',
+	'reviewedversions-leg1' => 'Списак прегледаних ревизија за страну',
+	'reviewedversions-page' => 'Назив странице:',
+	'reviewedversions-none' => '"[[:$1]]" нема прегледаних ревизија.',
 	'reviewedversions-list' => 'Следи списак {{PLURAL:$2|једине ревизије|ревизија}} из [[:$1]], {{PLURAL:$2|која је прегледана|које су прегледане}}:',
-	'reviewedversions-review' => 'Прегледано на <i>$1</i> од стране сарадника $2.',
+	'reviewedversions-review' => 'Прегледано на <i>$1</i> од стране $2',
 );
 
 /** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(
-	'reviewedversions' => 'Pogledaj stabilne verzije',
+	'reviewedversions' => 'Pregledana izdanja',
 	'reviewedversions-leg1' => 'Spisak pregledanih verzija za stranu.',
 	'reviewedversions-page' => 'Ime stranice:',
 	'reviewedversions-none' => '"[[:$1]]" nema pregledanih verzija.',
@@ -1204,7 +1208,7 @@ $messages['yue'] = array(
  * @author Liangent
  */
 $messages['zh-hans'] = array(
-	'reviewedversions' => '稳定版',
+	'reviewedversions' => '稳定版本',
 	'reviewedversions-leg1' => '列示一版已复审的修订',
 	'reviewedversions-page' => '页面名',
 	'reviewedversions-none' => '[[:$1]]没有已复审过的修订。',

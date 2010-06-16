@@ -14,8 +14,10 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 final class SMYahooMapsQP extends SMMapPrinter {
 
-	public $serviceName = MapsYahooMaps::SERVICE_NAME;
-	
+	protected function getServiceName() {
+		return 'yahoomaps';
+	}	
+
 	/**
 	 * @see SMMapPrinter::setQueryPrinterSettings()
 	 */
@@ -31,9 +33,8 @@ final class SMYahooMapsQP extends SMMapPrinter {
 	 * @see SMMapPrinter::doMapServiceLoad()
 	 */
 	protected function doMapServiceLoad() {
-		global $egYahooMapsOnThisPage, $wgParser;
+		global $egYahooMapsOnThisPage;
 		
-		MapsYahooMaps::addYMapDependencies( $wgParser );
 		$egYahooMapsOnThisPage++;
 		
 		$this->elementNr = $egYahooMapsOnThisPage;
@@ -42,11 +43,11 @@ final class SMYahooMapsQP extends SMMapPrinter {
 	/**
 	 * @see SMMapPrinter::addSpecificMapHTML()
 	 */
-	protected function addSpecificMapHTML( Parser $parser ) {
+	protected function addSpecificMapHTML() {
 		// TODO: refactor up like done in maps with display point
 		$markerItems = array();
 		
-		foreach ( $this->m_locations as $location ) {
+		foreach ( $this->mLocations as $location ) {
 			// Create a string containing the marker JS.
 			list( $lat, $lon, $title, $label, $icon ) = $location;
 			
@@ -64,8 +65,7 @@ final class SMYahooMapsQP extends SMMapPrinter {
 			wfMsg( 'maps-loading-map' )
 		);
 		
-		$parser->getOutput()->addHeadItem(
-			Html::inlineScript( <<<EOT
+		$this->mService->addDependency( Html::inlineScript( <<<EOT
 addOnloadHook(
 	function() {
 		initializeYahooMap(
@@ -86,7 +86,7 @@ EOT
 	}
 
 	/**
-	 * Returns type info, descriptions and allowed values for this QP's parameters after adding the spesific ones to the list.
+	 * Returns type info, descriptions and allowed values for this QP's parameters after adding the specific ones to the list.
 	 */
     public function getParameters() {
         $params = parent::getParameters();

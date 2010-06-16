@@ -419,7 +419,6 @@ class AllWikimediaExtensionsGroup extends AllMediawikiExtensionsGroup {
 		'ext-oai',
 		'ext-ogghandler',
 		'ext-opensearchxml',
-		'ext-oversight',
 		'ext-parserfunctions',
 		'ext-pdfhandler',
 		'ext-poem',
@@ -641,6 +640,7 @@ class AllTranslateExtensionsGroup extends AllMediawikiExtensionsGroup {
 
 	protected $translateprofileextensions = array(
 		'ext-translate-core',
+		'ext-translate-firststeps',
 		'ext-translate-pagetranslation',
 	);
 

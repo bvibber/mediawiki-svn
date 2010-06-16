@@ -211,6 +211,13 @@ $messages['ca'] = array(
 	'wikieditor-publish-dialog-goback' => 'Torna',
 );
 
+/** Chechen (Нохчийн)
+ * @author Sasan700
+ */
+$messages['ce'] = array(
+	'wikieditor-publish-button-cancel' => 'Цаоьшу',
+);
+
 /** Czech (Česky)
  * @author Mormegil
  */
@@ -224,6 +231,14 @@ $messages['cs'] = array(
 	'wikieditor-publish-dialog-watch' => 'Sledovat tuto stránku',
 	'wikieditor-publish-dialog-publish' => 'Publikovat',
 	'wikieditor-publish-dialog-goback' => 'Zpět',
+);
+
+/** Church Slavic (Словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)
+ * @author ОйЛ
+ */
+$messages['cu'] = array(
+	'wikieditor-publish-dialog-minor' => 'ма́лаꙗ мѣ́на',
+	'wikieditor-publish-dialog-watch' => 'си страни́цѧ блюдє́ниѥ',
 );
 
 /** Welsh (Cymraeg)
@@ -385,11 +400,17 @@ $messages['eu'] = array(
 
 /** Persian (فارسی)
  * @author Ebraminio
+ * @author Huji
  */
 $messages['fa'] = array(
+	'wikieditor-publish-preference' => 'فعال‌سازی انتشار قدم به قدم',
 	'wikieditor-publish-button-publish' => 'انتشار',
-	'wikieditor-publish-button-cancel' => 'انصراف',
+	'wikieditor-publish-button-cancel' => 'لغو',
+	'wikieditor-publish-dialog-title' => 'انتشار در {{SITENAME}}',
+	'wikieditor-publish-dialog-summary' => 'خلاصه ویرایش (توضیح مختصر در مورد تغییری که دادید):',
 	'wikieditor-publish-dialog-minor' => 'ویرایش جزئی',
+	'wikieditor-publish-dialog-watch' => 'پی‌گیری این صفحه',
+	'wikieditor-publish-dialog-publish' => 'انتشار',
 	'wikieditor-publish-dialog-goback' => 'بازگشت به عقب',
 );
 
@@ -535,6 +556,7 @@ $messages['hu'] = array(
 );
 
 /** Armenian (Հայերեն)
+ * @author Chaojoker
  * @author Xelgen
  */
 $messages['hy'] = array(
@@ -545,7 +567,7 @@ $messages['hy'] = array(
 	'wikieditor-publish-dialog-minor' => 'Չնչին խմբագրում',
 	'wikieditor-publish-dialog-watch' => 'Հսկել այս էջը',
 	'wikieditor-publish-dialog-publish' => 'Հրատարակել',
-	'wikieditor-publish-dialog-goback' => 'Ետ գնալ',
+	'wikieditor-publish-dialog-goback' => 'Հետ գնալ',
 );
 
 /** Interlingua (Interlingua)
@@ -861,6 +883,7 @@ $messages['pt'] = array(
 /** Brazilian Portuguese (Português do Brasil)
  * @author 555
  * @author Everton137
+ * @author Giro720
  * @author Hamilton Abreu
  * @author Lijealso
  * @author Luckas Blade
@@ -869,7 +892,7 @@ $messages['pt-br'] = array(
 	'wikieditor-publish-preference' => 'Ativar publicação passo-a-passo',
 	'wikieditor-publish-button-publish' => 'Publicar',
 	'wikieditor-publish-button-cancel' => 'Cancelar',
-	'wikieditor-publish-dialog-title' => 'Publicar em {{SITENAME}}',
+	'wikieditor-publish-dialog-title' => 'Publicar na {{SITENAME}}',
 	'wikieditor-publish-dialog-summary' => 'Sumário de edição (breve descrição das suas alterações):',
 	'wikieditor-publish-dialog-minor' => 'Edição menor',
 	'wikieditor-publish-dialog-watch' => 'Vigiar esta página',
@@ -937,6 +960,14 @@ $messages['sah'] = array(
 	'wikieditor-publish-dialog-goback' => 'Төнүн',
 );
 
+/** Sardinian (Sardu)
+ * @author Andria
+ */
+$messages['sc'] = array(
+	'wikieditor-publish-dialog-minor' => 'Acontzu minore',
+	'wikieditor-publish-dialog-watch' => 'Pone custa pàgina in sa watchlist mea',
+);
+
 /** Sinhala (සිංහල)
  * @author Calcey
  */
@@ -980,6 +1011,26 @@ $messages['sl'] = array(
 	'wikieditor-publish-dialog-watch' => 'Opazuj stran',
 	'wikieditor-publish-dialog-publish' => 'Objavi',
 	'wikieditor-publish-dialog-goback' => 'Pojdi nazaj',
+);
+
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'wikieditor-publish-button-publish' => 'Објави',
+	'wikieditor-publish-button-cancel' => 'Поништи',
+	'wikieditor-publish-dialog-minor' => 'Мала измена',
+	'wikieditor-publish-dialog-publish' => 'Објави',
+	'wikieditor-publish-dialog-goback' => 'Врати се',
+);
+
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'wikieditor-publish-button-publish' => 'Objavi',
+	'wikieditor-publish-button-cancel' => 'Poništi',
+	'wikieditor-publish-dialog-minor' => 'Mala izmena',
+	'wikieditor-publish-dialog-publish' => 'Objavi',
+	'wikieditor-publish-dialog-goback' => 'Vrati se',
 );
 
 /** Swedish (Svenska)
@@ -1142,6 +1193,21 @@ $messages['yi'] = array(
 	'wikieditor-publish-dialog-watch' => 'אויפֿפאַסן אויף דעם בלאַט',
 	'wikieditor-publish-dialog-publish' => 'פֿאַרעפֿנטלעכן',
 	'wikieditor-publish-dialog-goback' => 'צוריקגיין',
+);
+
+/** Cantonese (粵語)
+ * @author Horacewai2
+ */
+$messages['yue'] = array(
+	'wikieditor-publish-preference' => '啟用一步還一步嘅發佈功能',
+	'wikieditor-publish-button-publish' => '發佈',
+	'wikieditor-publish-button-cancel' => '取消',
+	'wikieditor-publish-dialog-title' => '發佈去{{SITENAME}}',
+	'wikieditor-publish-dialog-summary' => '摘要 (簡單講下你改左咩)',
+	'wikieditor-publish-dialog-minor' => '小編輯',
+	'wikieditor-publish-dialog-watch' => '睇實呢一頁',
+	'wikieditor-publish-dialog-publish' => '發佈',
+	'wikieditor-publish-dialog-goback' => '番去',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

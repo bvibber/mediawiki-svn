@@ -2,8 +2,8 @@
 /**
  * Add a <splist /> tag which produces a linked list of all subpages of the current page
  *
- * @package MediaWiki
- * @subpackage Extensions
+ * @file
+ * @ingroup Extensions
  * @author James McCormack (email: user "qedoc" at hotmail); preceding version Martin Schallnahs <myself@schaelle.de>, original Rob Church <robchur@gmail.com>
  * @copyright © 2008 James McCormack, preceding version Martin Schallnahs, original Rob Church
  * @licence GNU General Public Licence 2.0 or later
@@ -139,7 +139,7 @@ class SubpageList3 {
 	 * Can be:
 	 *  - unordered: UL list as output
 	 *  - ordered: OL list as output
-	 *  - bar: uses &middot; as a delimiter producing a horizontal bar menu
+	 *  - bar: uses · as a delimiter producing a horizontal bar menu
 	 * @var string mode of output
 	 * @private
 	 * @default unordered
@@ -283,7 +283,7 @@ class SubpageList3 {
 			switch( strtolower( $options['liststyle'] ) ) {
 				case 'ordered': $this->mode = 'ordered'; $this->token = '#'; break;
 				case 'unordered': $this->mode = 'unordered'; $this->token = '*'; break;
-				case 'bar': $this->mode = 'bar'; $this->token = '&nbsp;&middot; '; break;
+				case 'bar': $this->mode = 'bar'; $this->token = '&#160;· '; break;
 				default: $this->error( wfMsg('spl3_debug','liststyle') );
 			}
 		}
@@ -437,7 +437,7 @@ class SubpageList3 {
 	 * @param string $token the token symbol:
 	 *  - * for ul,
 	 *  - # for ol
-	 *  - &middot; for horizontal lists
+	 *  - · for horizontal lists
 	 * @return string the whole list
 	 * @see SubPageList::makeListItem
 	 */

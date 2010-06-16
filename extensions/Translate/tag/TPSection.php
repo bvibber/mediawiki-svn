@@ -6,6 +6,7 @@
  * @copyright Copyright © 2009 Niklas Laxström
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
  */
+
 class TPSection {
 	public $id, $name, $text, $type;
 
@@ -21,8 +22,8 @@ class TPSection {
 	public function getMarkedText() {
 		$id = isset( $this->name ) ? $this->name : $this->id;
 		$header = "<!--T:{$id}-->";
-		$re     = '~^(=+.*?=+\s*?)\n~';
-		$rep    = "\\1 $header\n";
+		$re     = '~^(=+.*?=+\s*?$)~m';
+		$rep    = "\\1 $header";
 		$count  = 0;
 
 		$text = preg_replace( $re, $rep, $this->text, 1, $count );

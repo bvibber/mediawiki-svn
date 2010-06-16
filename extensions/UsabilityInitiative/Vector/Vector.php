@@ -30,6 +30,11 @@ $wgVectorModules = array(
 
 /* Setup */
 
+// Enable bucket testing for new version of collapsible nav
+$wgCollapsibleNavBucketTest = false;
+// Force the new version
+$wgCollapsibleNavForceNewVersion = false;
+
 // Credits
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,

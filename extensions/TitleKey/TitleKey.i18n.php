@@ -2,7 +2,8 @@
 /**
  * Internationalisation file for extension TitleKey.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $messages = array();
@@ -25,7 +26,7 @@ $messages['qqq'] = array(
  * @author Juanpabl
  */
 $messages['an'] = array(
-	'titlekey-desc' => 'Socherenzias con prefixos en a busca por títols',
+	'titlekey-desc' => 'Socherencias con prefixos en a busca por títols',
 );
 
 /** Arabic (العربية)
@@ -78,6 +79,13 @@ $messages['bs'] = array(
 	'titlekey-desc' => 'Pozadinski proces pri traženju po naslovima',
 );
 
+/** Chechen (Нохчийн)
+ * @author Sasan700
+ */
+$messages['ce'] = array(
+	'titlekey-desc' => 'Лохуш цlера дуьххьара элпца дош хьагойтуш болу гlирс',
+);
+
 /** Czech (Česky)
  * @author Mormegil
  */
@@ -86,10 +94,11 @@ $messages['cs'] = array(
 );
 
 /** German (Deutsch)
+ * @author Kghbln
  * @author Raimond Spekking
  */
 $messages['de'] = array(
-	'titlekey-desc' => 'Hintergrundprozess für die Titelsuche',
+	'titlekey-desc' => 'Stellt einen Hintergrundprozess für die Titelsuche bereit',
 );
 
 /** Zazaki (Zazaki)

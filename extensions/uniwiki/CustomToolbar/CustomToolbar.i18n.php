@@ -385,6 +385,32 @@ $wgCustomToolbarMessages['bg'] = array(
 	'ct_user_sample' => 'Потребителско име',
 );
 
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$wgCustomToolbarMessages['bn'] = array(
+	'ct_bold_sample' => 'গাঢ় লেখা',
+	'ct_bold_tip_ins' => 'গাঢ় লেখা যোগ',
+	'ct_bold_tip_wrap' => 'এই লেখাকে গাঢ় কর',
+	'ct_bold_caption' => 'গাঢ়',
+	'ct_italic_sample' => 'ইটালিক লেখা',
+	'ct_italic_tip_ins' => 'ইটালিক লেখা যোগ',
+	'ct_italic_tip_wrap' => 'এই লেখাকে ইটালিক কর',
+	'ct_italic_caption' => 'ইটালিক',
+	'ct_internal_caption' => 'আন্তঃসংযোগ',
+	'ct_external_caption' => 'বহিঃসংযোগ',
+	'ct_image_caption' => 'ছবি যোগ কর',
+	'ct_attachment_caption' => 'সংযুক্তি যোগ',
+	'ct_math_caption' => 'সূত্র',
+	'ct_nowiki_caption' => 'উইকি নয়',
+	'ct_horizontal_caption' => 'অনুভূমিক রেখা',
+	'ct_upload' => 'আপলোড $1',
+	'ct_submit' => 'চলো!',
+	'ct_close' => 'উইন্ডো বন্ধ',
+	'ct_user_user' => 'ব্যবহারকারী',
+	'ct_user_sample' => 'ব্যবহারকারী নাম',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  */
@@ -2144,7 +2170,7 @@ $wgCustomToolbarMessages['ps'] = array(
  */
 $wgCustomToolbarMessages['pt'] = array(
 	'ct-desc' => 'Adiciona uma barra de ferramentas extensível',
-	'ct_bold_sample' => 'Texto negrito',
+	'ct_bold_sample' => 'Texto a negrito',
 	'ct_bold_tip_ins' => 'Inserir texto a negrito',
 	'ct_bold_tip_wrap' => 'Tornar este texto negrito',
 	'ct_bold_caption' => 'Negrito',
@@ -2189,6 +2215,7 @@ $wgCustomToolbarMessages['pt'] = array(
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
+ * @author Giro720
  * @author Luckas Blade
  */
 $wgCustomToolbarMessages['pt-br'] = array(
@@ -2198,7 +2225,7 @@ $wgCustomToolbarMessages['pt-br'] = array(
 	'ct_bold_tip_wrap' => 'Colocar este texto em negrito',
 	'ct_bold_caption' => 'Negrito',
 	'ct_italic_sample' => 'Texto em itálico',
-	'ct_italic_tip_ins' => 'Digitar texto em itálico',
+	'ct_italic_tip_ins' => 'Inserir texto em itálico',
 	'ct_italic_tip_wrap' => 'Colocar este texto em itálico',
 	'ct_italic_caption' => 'Itálico',
 	'ct_internal_sample' => 'Título do link',
@@ -2207,11 +2234,11 @@ $wgCustomToolbarMessages['pt-br'] = array(
 	'ct_internal_caption' => 'Link Interno',
 	'ct_external_tip_ins' => 'Incluir um link externo',
 	'ct_external_tip_wrap' => 'Transformar este texto em link externo',
-	'ct_external_caption' => 'Ligação externa',
+	'ct_external_caption' => 'Link externo',
 	'ct_image_tip' => 'Carregar uma imagem',
-	'ct_image_caption' => 'Adicionar uma Imagem',
+	'ct_image_caption' => 'Adicionar uma imagem',
 	'ct_attachment_tip' => 'Incluir um anexo',
-	'ct_attachment_caption' => 'Adicionar um Anexo',
+	'ct_attachment_caption' => 'Adicionar um anexo',
 	'ct_math_sample' => 'Incluir fórmula LaTeX aqui',
 	'ct_math_tip_ins' => 'Incluir fórmula matemática (LaTeX)',
 	'ct_math_tip_wrap' => 'Transformar este texto em fórmula matemática (LaTeX)',
@@ -2221,19 +2248,19 @@ $wgCustomToolbarMessages['pt-br'] = array(
 	'ct_nowiki_tip_wrap' => 'Ignorar a formatação wiki neste texto',
 	'ct_nowiki_caption' => 'Sem wiki',
 	'ct_horizontal_tip' => 'Incluir uma linha horizontal (use com moderação)',
-	'ct_horizontal_caption' => 'Linha Horizontal',
+	'ct_horizontal_caption' => 'Linha horizontal',
 	'ct_upload' => 'Carregar $1',
 	'ct_select' => 'Selecionar $1 para carregar:',
 	'ct_caption' => 'Adicionar legenda (opcional):',
 	'ct_link' => 'Adicionar nome de ligação (opcional):',
-	'ct_submit' => 'Salvar',
+	'ct_submit' => 'Ir!',
 	'ct_close' => 'Fechar a janela',
 	'ct_success' => 'O arquivo foi carregado com sucesso!',
 	'ct_popupblocked' => 'O pop-up para carregar o arquivo foi bloqueado. Verifique o seu bloqueador de pop-ups.',
-	'ct_user_user' => 'Utilizador',
+	'ct_user_user' => 'Usuário',
 	'ct_user_tip' => 'Inserir uma ligação para uma página de utilizador',
-	'ct_user_caption' => 'Ligação do utilizador',
-	'ct_user_sample' => 'Nome de utilizador',
+	'ct_user_caption' => 'Ligação de usuário',
+	'ct_user_sample' => 'Nome de usuário',
 );
 
 /** Romanian (Română)
@@ -2514,17 +2541,47 @@ Prosím, skontrolujte blokovanie vyskakovacích okien vo vašom prehliadači.',
  * @author Dbc334
  */
 $wgCustomToolbarMessages['sl'] = array(
+	'ct-desc' => 'Doda razširljivo orodno vrstico',
+	'ct_bold_sample' => 'Krepko besedilo',
+	'ct_bold_tip_ins' => 'Vstavi krepko besedilo',
+	'ct_bold_tip_wrap' => 'Naredi to besedilo krepko',
+	'ct_bold_caption' => 'Krepko',
+	'ct_italic_sample' => 'Ležeče besedilo',
+	'ct_italic_tip_ins' => 'Vstavi ležeče besedilo',
+	'ct_italic_tip_wrap' => 'Naredi to besedilo ležeče',
+	'ct_italic_caption' => 'Ležeče',
+	'ct_internal_sample' => 'ImeStrani',
+	'ct_internal_tip_ins' => 'Vstavi notranjo povezavo',
+	'ct_internal_tip_wrap' => 'Naredi to besedilo notranjo povezavo',
+	'ct_internal_caption' => 'Notranja povezava',
+	'ct_external_tip_ins' => 'Vstavi zunanjo povezavo',
 	'ct_external_tip_wrap' => 'Naredi to besedilo zunanjo povezavo',
 	'ct_external_caption' => 'Zunanja povezava',
 	'ct_image_tip' => 'Vstavi sliko',
 	'ct_image_caption' => 'Dodaj sliko',
 	'ct_attachment_tip' => 'Vstavi priponko',
 	'ct_attachment_caption' => 'Dodaj priponko',
+	'ct_math_sample' => 'Tukaj vstavite izraz LaTeX',
+	'ct_math_tip_ins' => 'Vstavi matematični izraz (LaTeX)',
+	'ct_math_tip_wrap' => 'Naredi to besedilo matematični izraz (LaTeX)',
 	'ct_math_caption' => 'Formula',
+	'ct_nowiki_sample' => 'Tukaj vstavite neoblikovano besedilo',
+	'ct_nowiki_tip_ins' => 'Prezri wikioblikovanje',
+	'ct_nowiki_tip_wrap' => 'Prezri wikioblikovanje tega besedila',
+	'ct_nowiki_caption' => 'Brez wikioblikovanja',
+	'ct_horizontal_tip' => 'Vstavi vodoravno črto (uporabljajte zmerno)',
 	'ct_horizontal_caption' => 'Vodoravna črta',
+	'ct_upload' => 'Nalaganje $1',
+	'ct_select' => 'Izberite $1 za nalaganje:',
+	'ct_caption' => 'Dodaj naslov (izbirno):',
+	'ct_link' => 'Dodaj ime povezave (izbirno):',
 	'ct_submit' => 'Pojdi!',
 	'ct_close' => 'Zapri okno',
+	'ct_success' => 'Nalaganje datoteke je bilo uspešno!',
+	'ct_popupblocked' => 'Odpiranje pojavnega okna za nalaganje je bilo preprečeno. Prosimo, preverite vaš preprečevalec pojavnih oken.',
 	'ct_user_user' => 'Uporabnik',
+	'ct_user_tip' => 'Vstavi povezavo na uporabniško stran',
+	'ct_user_caption' => 'Povezava uporabnika',
 	'ct_user_sample' => 'Uporabniško ime',
 );
 

@@ -2,8 +2,8 @@
 /**
  * Book information driver for ISBNdb.com
  *
- * @package MediaWiki
- * @subpackage Extensions
+ * @file
+ * @ingroup Extensions
  * @author Rob Church <robchur@gmail.com>
  */
 

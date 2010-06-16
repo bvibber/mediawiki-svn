@@ -85,6 +85,20 @@ $messages['es'] = array(
 	'wikieditor-addMediaWizard-preference' => 'Habilitar gadget "Agregar asistente de medios"',
 );
 
+/** Persian (فارسی)
+ * @author Huji
+ */
+$messages['fa'] = array(
+	'wikieditor-addMediaWizard-preference' => 'فعال کردن ابزارک «افزودن مدیا»',
+);
+
+/** Finnish (Suomi)
+ * @author Str4nd
+ */
+$messages['fi'] = array(
+	'wikieditor-addMediaWizard-preference' => 'Ota ”Lisää media ohjatusti” -pienoisohjelma käyttöön',
+);
+
 /** French (Français)
  * @author Peter17
  */
@@ -241,11 +255,32 @@ $messages['pt'] = array(
 	'wikieditor-addMediaWizard-preference' => 'Activar o gadget "Assistente de Adição de Multimédia"',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Giro720
+ */
+$messages['pt-br'] = array(
+	'wikieditor-addMediaWizard-preference' => 'Ativar o gadget "Assistente de Adição de Multimídia"',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'wikieditor-addMediaWizard-preference' => 'Включить гаджет «Мастер добавления медиа»',
+);
+
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'wikieditor-addMediaWizard-preference' => '«Медиа биэлэри эбэр маастар» гаджеты холбоо',
+);
+
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'wikieditor-addMediaWizard-preference' => 'Omogoči pripomoček »Dodaj predstavnostni čarovnik«',
 );
 
 /** Swedish (Svenska)
@@ -274,6 +309,18 @@ $messages['tr'] = array(
  */
 $messages['vi'] = array(
 	'wikieditor-addMediaWizard-preference' => 'Kích hoạt công cụ "Hướng dẫn từng bước để thêm tập tin phương tiện"',
+);
+
+/** Cantonese (粵語)
+ * @author Horacewai2
+ */
+$messages['yue'] = array(
+	'wikieditor-addMediaWizard-preference' => '啟用"新增媒體精靈"架生',
+);
+
+/** Simplified Chinese (‪中文(简体)‬) */
+$messages['zh-hans'] = array(
+	'wikieditor-addMediaWizard-preference' => '启用「添加媒体向导」小工具',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

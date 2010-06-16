@@ -68,7 +68,7 @@ $messages['be-tarask'] = array(
 $messages['bg'] = array(
 	'vector-editwarning-warning' => 'Ако излезете от тази страница, може да загубите всички незапазени промени, които сте направили. 
 Ако сте влезли в системата, можете да изключите това предупреждение през меню "{{int:prefs-editing}}" във вашите лични настройки.',
-	'vector-editwarning-preference' => 'Предупреди ме, ако понеча да изляза от страница в режим на редактиране без да запазя промените',
+	'vector-editwarning-preference' => 'Предупреждаване при опит за напускане на страница, отворена в режим на редактиране, без да са запазени промените',
 );
 
 /** Bengali (বাংলা)
@@ -144,6 +144,7 @@ Denne advarsel kan slås fra under {{int:prefs-editing}} i dine indstillinger.',
 );
 
 /** German (Deutsch)
+ * @author Church of emacs
  * @author MF-Warburg
  * @author Metalhead64
  * @author Sebastian Wallroth
@@ -152,7 +153,7 @@ Denne advarsel kan slås fra under {{int:prefs-editing}} i dine indstillinger.',
 $messages['de'] = array(
 	'vector-editwarning-warning' => 'Das Verlassen dieser Seite kann dazu führen, dass deine Änderungen verloren gehen.
 Wenn du angemeldet bist, kannst du das Anzeigen dieser Warnung im „{{int:prefs-editing}}“-Bereich deiner Einstellungen abschalten.',
-	'vector-editwarning-preference' => 'Warnen, wenn eine zur Bearbeitung geöffnete Seite verlassen wird, die nicht gesicherte Änderungen enthält',
+	'vector-editwarning-preference' => 'Warnen, wenn eine zur Bearbeitung geöffnete Seite verlassen wird, die nicht gespeicherte Änderungen enthält',
 );
 
 /** German (formal address) (Deutsch (Sie-Form))
@@ -236,9 +237,10 @@ Saioa hasi baduzu, mezu hau kendu dezakezu zure hobespenen orrialdeko "{{int:pre
 
 /** Persian (فارسی)
  * @author Ebraminio
+ * @author Huji
  */
 $messages['fa'] = array(
-	'vector-editwarning-preference' => 'زمان خروج از صفحه در صورت داشتن ویرایش‌های‌ ذخیره‌نشده به من هشدار بده',
+	'vector-editwarning-preference' => 'زمان خروج از صفحهٔ ویرایش در صورت داشتن ویرایش‌های‌ ذخیره‌نشده به من هشدار بده',
 );
 
 /** Finnish (Suomi)
@@ -540,12 +542,13 @@ Se estiver autenticado, pode desactivar este aviso na secção "{{int:prefs-edit
 );
 
 /** Brazilian Portuguese (Português do Brasil)
+ * @author Giro720
  * @author Heldergeovane
  */
 $messages['pt-br'] = array(
 	'vector-editwarning-warning' => 'Abandonar esta página pode fazer com que você perca todas as alterações que fez.
 Se você estiver autenticado, você pode desabilitar este aviso na seção "{{int:prefs-editing}}" de suas preferências.',
-	'vector-editwarning-preference' => 'Me avisar quando eu deixar uma janela de edição sem ter salvo as alterações',
+	'vector-editwarning-preference' => 'Avisar-me quando eu deixar uma janela de edição sem ter salvo as alterações',
 );
 
 /** Romanian (Română)

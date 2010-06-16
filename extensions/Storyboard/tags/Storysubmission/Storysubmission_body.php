@@ -192,7 +192,7 @@ EOT
 		
 		// TODO: add upload functionality
 
-		$formBody .= '<tr><td colspan="2"><input type="checkbox" id="storyboard-agreement" />&nbsp;' .
+		$formBody .= '<tr><td colspan="2"><input type="checkbox" id="storyboard-agreement" />&#160;' .
 			$parser->recursiveTagParse( htmlspecialchars( wfMsg( 'storyboard-agreement' ) ) ) .
 			'</td></tr>';
 			

@@ -3,7 +3,8 @@
  * Internationalisation file for extension TidyTab.
  * Created by Bertrand GRONDIN
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $messages = array();

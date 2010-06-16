@@ -83,6 +83,8 @@ $messages['be-tarask'] = array(
 $messages['bg'] = array(
 	'usabilityinitiative' => 'Инициатива по ползваемост',
 	'usabilityinitiative-desc' => 'Софтуерни възможности, разработени от Инициативата за ползваемост на Уикипедия с цел за подобряване ползваемостта на МедияУики',
+	'prefs-beta' => 'Функционалности на Бета',
+	'prefs-labs' => 'Функционалности на Labs',
 );
 
 /** Bengali (বাংলা)
@@ -121,7 +123,7 @@ $messages['bs'] = array(
  * @author Vriullop
  */
 $messages['ca'] = array(
-	'usabilityinitiative' => "''Usability Initiative''",
+	'usabilityinitiative' => "Iniciativa d'usabilitat",
 	'usabilityinitiative-desc' => "Funcions desenvolupades per la ''Wikipedia Usability Initiative'' per millorar la usabilitat del Mediawiki",
 	'prefs-beta' => 'Característiques beta',
 	'prefs-labs' => 'Característiques de laboratori',
@@ -245,6 +247,7 @@ $messages['eu'] = array(
  * @author Ebraminio
  */
 $messages['fa'] = array(
+	'usabilityinitiative' => 'گام مقدماتی قابلیت استفاده',
 	'prefs-beta' => 'امکانات بتا',
 	'prefs-labs' => 'امکانات آزمایشگاهی',
 );
@@ -256,6 +259,7 @@ $messages['fa'] = array(
 $messages['fi'] = array(
 	'usabilityinitiative' => 'Käytettävyyshanke',
 	'usabilityinitiative-desc' => 'Wikipedian käytettävyyshankkeen kehittämät MediaWikin helppokäyttöisyyttä parantavat ominaisuudet.',
+	'prefs-beta' => 'Beta-ominaisuudet',
 	'prefs-labs' => 'Kokeelliset ominaisuudet',
 );
 
@@ -382,8 +386,8 @@ $messages['it'] = array(
  * @author 青子守歌
  */
 $messages['ja'] = array(
-	'usabilityinitiative' => 'ユーザビリティ・イニシアティブ',
-	'usabilityinitiative-desc' => 'ウィキペディア・ユーザビリティ・イニシアティブによって MediaWiki の使いやすさを向上させるために開発された各種機能',
+	'usabilityinitiative' => '使用性改善',
+	'usabilityinitiative-desc' => 'Wikipedia Usability Initiativeによって MediaWiki の使いやすさを向上させるために開発された各種機能',
 	'prefs-beta' => 'ベータ版機能',
 	'prefs-labs' => 'ラボの機能',
 );
@@ -608,14 +612,18 @@ $messages['ru'] = array(
 $messages['sah'] = array(
 	'usabilityinitiative' => 'Табыгас Ситиһиитэ',
 	'usabilityinitiative-desc' => 'Табыгас Ситиһиитин иһинэн эбиллибит MediaWiki движогун саҥа кыахтара; үлэ судургу уонна табыгастаах буоларыгар аналлаахтар.',
+	'prefs-beta' => 'Бета-туруоруулар',
+	'prefs-labs' => 'Тургутуллар туруоруулар',
 );
 
 /** Sinhala (සිංහල)
  * @author Calcey
+ * @author බිඟුවා
  */
 $messages['si'] = array(
 	'usabilityinitiative' => 'පරිශීලන හැකියා මුල් පිරුම',
 	'usabilityinitiative-desc' => 'මීඩියාවිකියෙහි පරිශීලන හැකියාව වර්ධනය කිරීමට විකිපීඩියා පරිශීලන හැකියා මුල් පිරීම මඟින් සංවර්ධනය කළ විශේෂාංග',
+	'prefs-beta' => 'බීටා අනුවාදයේ ලක්ෂණ',
 );
 
 /** Slovak (Slovenčina)
@@ -735,11 +743,14 @@ $messages['yi'] = array(
 );
 
 /** Cantonese (粵語)
+ * @author Horacewai2
  * @author Shinjiman
  */
 $messages['yue'] = array(
 	'usabilityinitiative' => '可用性倡議',
 	'usabilityinitiative-desc' => '由維基百科可用性小組加強MediaWiki嘅可用性',
+	'prefs-beta' => '試緊嘅特色',
+	'prefs-labs' => '實驗性嘅特色',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

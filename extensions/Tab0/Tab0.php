@@ -1,6 +1,7 @@
 <?php
 /**
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $wgExtensionCredits['other'][] = array(

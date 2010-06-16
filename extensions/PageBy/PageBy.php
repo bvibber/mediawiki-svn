@@ -2,8 +2,8 @@
 /**
  * PageBy extension - shows recent changes on a wiki page.
  *
- * @package MediaWiki
- * @subpackage Extensions
+ * @file
+ * @ingroup Extensions
  * @author Daniel Kinzler, brightbyte.de
  * @copyright © 2007 Daniel Kinzler
  * @licence GNU General Public Licence 2.0 or later
@@ -33,7 +33,7 @@ function wfPageByExtension() {
     $wgParser->setHook( "pageby", "newsxRenderPageBy" );
 }
 
-function newsxRenderPageBy( $page, $argv, &$parser ) {
+function newsxRenderPageBy( $page, $argv, $parser ) {
     $renderer = new PageByRenderer($page, $argv, $parser);
     return $renderer->renderPageBy();
 }

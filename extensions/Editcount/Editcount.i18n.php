@@ -2,7 +2,8 @@
 /**
  * Internationalisation file for extension CountEdits.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  * @author Bertrand GRONDIN <bertrand.grondinr@tiscali.fr>
  */
 
@@ -46,7 +47,7 @@ $messages['af'] = array(
  * @author Juanpabl
  */
 $messages['an'] = array(
-	'editcount_submit' => 'Nimbiar',
+	'editcount_submit' => 'Ninviar',
 );
 
 /** Old English (Ænglisc)

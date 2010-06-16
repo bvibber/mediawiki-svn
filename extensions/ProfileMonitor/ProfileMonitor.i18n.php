@@ -2,9 +2,10 @@
 /**
  * Internationalisation file for extension ProfileMonitor.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  * @author Rob Church <rob.church@mintrasystems.com>
-*/
+ */
 
 $messages = array();
 
@@ -127,7 +128,13 @@ $messages['bg'] = array(
  * @author Bellayet
  */
 $messages['bn'] = array(
+	'profiling' => 'প্রোফাইল ডাটা',
 	'profiling-ok' => 'ঠিক আছে',
+	'profiling-data' => '`$1` এর জন্য প্রোফাইল ডাটা',
+	'profiling-data-process' => 'প্রসেস',
+	'profiling-data-count' => 'গণনা',
+	'profiling-data-time' => 'সময় (সমস্ত)',
+	'profiling-data-average' => 'সময় (গড়)',
 );
 
 /** Breton (Brezhoneg)
@@ -883,6 +890,28 @@ $messages['sk'] = array(
 	'profiling-data-time' => 'Čas (všetky)',
 	'profiling-data-average' => 'Čas (priemer)',
 	'profiling-no-data' => 'Neboli nájdené vyhovujúce údaje.',
+);
+
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'profiling-process' => 'Обради стринг:',
+	'profiling-ok' => 'ОК',
+	'profiling-data-process' => 'Обради',
+	'profiling-data-count' => 'Број',
+	'profiling-data-time' => 'Време (укупно)',
+	'profiling-data-average' => 'Време (средње)',
+);
+
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'profiling-process' => 'Obradi string:',
+	'profiling-ok' => 'OK',
+	'profiling-data-process' => 'Obradi',
+	'profiling-data-count' => 'Broj',
+	'profiling-data-time' => 'Vreme (ukupno)',
+	'profiling-data-average' => 'Vreme (srednje)',
 );
 
 /** Seeltersk (Seeltersk)

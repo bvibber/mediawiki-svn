@@ -198,7 +198,7 @@ mw.UploadForm = { };
 					$j( '#wpUploadBtn' )
 					.attr( 'disabled', null )
 					.parent()
-					.find( '.loading_spinner' )
+					.find( '.loadingSpinner' )
 					.remove();				
 				},
 				
@@ -281,7 +281,7 @@ mw.UploadForm = { };
 					$j( '#wpUploadBtn' )
 					.attr( 'disabled', null )
 					.parent()
-					.find( '.loading_spinner' )
+					.find( '.loadingSpinner' )
 					.remove();				
 				},
 				// Timeout callback

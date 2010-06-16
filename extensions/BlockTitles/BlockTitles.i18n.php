@@ -2,7 +2,8 @@
 /**
  * Internationalisation file for extension BlockTitles.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $messages = array();
@@ -813,6 +814,13 @@ $messages['vo'] = array(
 	'block_title_error_page_title' => 'Tiäd pebloköl',
 	'blocktitles-desc' => 'Gevon mögi ad neletön dakipi u jafi padas labü tiäds semik',
 	'block_title_error' => 'Pidö! Tiäd pada at no dalon padakipön.',
+);
+
+/** Yiddish (ייִדיש)
+ * @author פוילישער
+ */
+$messages['yi'] = array(
+	'block_title_error_page_title' => 'פֿאַרשפאַרטער בלאַטנאָמען',
 );
 
 /** Cantonese (粵語)

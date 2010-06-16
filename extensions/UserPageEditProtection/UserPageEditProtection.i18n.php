@@ -3,8 +3,9 @@
 /**
  * Internationalisation file for the UserPageEditProtection extension
  *
+ * @file
  * @author Lisa Ridley
- * @addtogroup Extensions
+ * @ingroup Extensions
  */
 
 $messages = array();
@@ -15,6 +16,14 @@ $messages = array();
 $messages['en'] = array(
 	'userpageeditprotection-desc' => 'Restricts editing on user pages to user and allowed editors',
 	'right-editalluserpages' => 'Edit user pages',
+);
+
+/** Message documentation (Message documentation)
+ * @author Umherirrender
+ */
+$messages['qqq'] = array(
+	'userpageeditprotection-desc' => '{{desc}}',
+	'right-editalluserpages' => '{{doc-right|editalluserpages}}',
 );
 
 /** Afrikaans (Afrikaans)
@@ -139,10 +148,11 @@ $messages['ia'] = array(
 );
 
 /** Indonesian (Bahasa Indonesia)
+ * @author Irwangatot
  * @author Kenrick95
  */
 $messages['id'] = array(
-	'userpageeditprotection-desc' => 'Batasi penyuntingan pada halaman pengguna bagi pengguna dan penyunting yang diizinkan',
+	'userpageeditprotection-desc' => 'Batasan penyuntingan pada halaman pengguna bagi pengguna dan penyunting',
 	'right-editalluserpages' => 'Sunting halaman pengguna',
 );
 
@@ -161,6 +171,14 @@ $messages['it'] = array(
 $messages['ja'] = array(
 	'userpageeditprotection-desc' => '利用者ページの編集を利用者本人と許可された編集者だけに制限する',
 	'right-editalluserpages' => '利用者ページを編集',
+);
+
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'userpageeditprotection-desc' => '해당 사용자와 허가된 사용자만이 사용자 문서를 편집할 수 있도록 제한',
+	'right-editalluserpages' => '모든 사용자 문서를 편집',
 );
 
 /** Luxembourgish (Lëtzebuergesch)
@@ -244,6 +262,20 @@ $messages['ru'] = array(
 	'right-editalluserpages' => 'изменение страниц участников',
 );
 
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'userpageeditprotection-desc' => 'Ограничава уређивање корисничких страна на корисника и одобрене уреднике',
+	'right-editalluserpages' => 'Измена корисничких страна',
+);
+
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'userpageeditprotection-desc' => 'Ograničava uređivanje korisničkih strana na korisnika i odobrene urednike',
+	'right-editalluserpages' => 'Izmena korisničkih strana',
+);
+
 /** Swedish (Svenska)
  * @author Dafer45
  */
@@ -257,6 +289,12 @@ $messages['sv'] = array(
 $messages['tl'] = array(
 	'userpageeditprotection-desc' => 'Naglilimita ng pagbabago ng mga pahina ng tagagamit para sa tagagamit at pinahihintulutang mga patnugot',
 	'right-editalluserpages' => 'Baguhin ang mga pahina ng tagagamit',
+);
+
+/** Simplified Chinese (‪中文(简体)‬) */
+$messages['zh-hans'] = array(
+	'userpageeditprotection-desc' => '限制用户及获授权者编辑用户页',
+	'right-editalluserpages' => '编辑用户页',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

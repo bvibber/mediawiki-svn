@@ -357,8 +357,8 @@ $messages['mk'] = array(
 	'linkopenid-prefstext-pre' => 'Доколку имате OpenID од надворешен услужител, можете да го назначите овде.
 Ова ви овозможува да ја користите и вашата корисничка страница како OpenID.',
 	'linkopenid-prefstext-openid' => 'Вашиот OpenID:',
-	'linkopenid-prefstext-v1url' => 'URL адресата на серверот за OpenID Верзија 1.1:',
-	'linkopenid-prefstext-v2url' => 'URL адресата на серверот за OpenID Верзија 2:',
+	'linkopenid-prefstext-v1url' => 'URL-адресата на опслужувачот за OpenID Верзија 1.1:',
+	'linkopenid-prefstext-v2url' => 'URL-адресата на опслужувачот за OpenID Верзија 2:',
 );
 
 /** Dutch (Nederlands)

@@ -15,7 +15,8 @@ EOT;
  * Adds two special pages, Special:SignDocument and Special:CreateSignDocument, which
  * enable the creation of signable documents. See the README for more information.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  *
  * @author Daniel Cannon (AmiDaniel)
  * @copyright Copyright © 2007, Daniel Cannon

@@ -2,8 +2,9 @@
 /**
  * Internationalization file for the Semantic Forms extension
  *
- * @addtogroup Extensions
-*/
+ * @file
+ * @ingroup Extensions
+ */
 
 // FIXME: Can be enabled when new style magic words are used (introduced in r52503)
 // require_once( dirname( __FILE__ ) . '/SF_Magic.php' );
@@ -266,11 +267,11 @@ $messages['am'] = array(
  * @author Juanpabl
  */
 $messages['an'] = array(
-	'sf_createproperty_propname' => 'Nombre:',
+	'sf_createproperty_propname' => "Nombre d'a propiedat:",
 	'templates' => 'Plantillas',
 	'sf_createtemplate_deletefield' => 'Borrar',
 	'sf_createform_template' => 'Plantilla:',
-	'sf_createcategory_name' => 'Nombre:',
+	'sf_createcategory_name' => "Nombre d'a categoría:",
 	'sf_formedit_createtitle' => 'Creyar $1: $2',
 	'sf_bad_date_error' => "ha d'estar una calendata conforme",
 );
@@ -818,6 +819,7 @@ $messages['br'] = array(
 	'sf_createtemplate_aggregationlabel' => 'Titl evit al listenn :',
 	'sf_createtemplate_outputformat' => 'Furmad moned er-maez :',
 	'sf_createtemplate_standardformat' => 'Standard',
+	'sf_createtemplate_infoboxformat' => 'Infobox dehou',
 	'sf_createtemplate_addfield' => 'Ouzhpennañ ur vaezienn',
 	'sf_createtemplate_deletefield' => 'Diverkañ',
 	'sf_createtemplate_addtemplatebeforesave' => "Ret eo deoc'h ouzhpennañ ur patrom da nebeutañ d'ar furmskrid-mañ a-raok gallout e enrollañ.",
@@ -871,6 +873,7 @@ Dleet e vefe d'an URL bezañ evel « Special:RunQuery/&lt;anv ar furmskrid&gt; �
 	'sf_runquery_additionalquery' => 'Reked ouzhpenn',
 	'sf_formerrors_header' => 'Fazioù zo er furmskrid; gw. amañ dindan',
 	'sf_blank_error' => "ne c'hall ket bezañ goullo",
+	'sf_bad_url_error' => 'a rank kaout ur furmad URL reizh, o kregiñ gant "http"',
 	'sf_bad_email_error' => "a rank kaout ur furmad chomlec'h postel reizh",
 	'sf_bad_number_error' => 'a rank bezañ un niver reizh',
 	'sf_bad_integer_error' => 'a rank bezañ un niver anterin reizh',
@@ -879,6 +882,7 @@ Dleet e vefe d'an URL bezañ evel « Special:RunQuery/&lt;anv ar furmskrid&gt; �
 	'sf_deletionlog' => 'Marilh an dilamadennoù',
 	'sf_property_isproperty' => 'Ar perzh-mañ zo eus ar seurt $1.',
 	'sf_property_linkstoform' => 'Liammañ a ra ouzh ar pajennoù a implij ar furmskrid $1.',
+	'sf_property_allowedvals' => 'An talvoudenn{{PLURAL:$1||où}} aotreet evit ar perzh-se a zo :',
 	'sf_template_docu' => 'Hemañ eo ar patrom « $1 ».
 Dleet e vefe bezañ galvet er furmad-mañ :',
 	'sf_template_docufooter' => 'Aozañ ar bajenn evit gwelet testenn ar patrom.',
@@ -3901,7 +3905,7 @@ $messages['mk'] = array(
 	'specialpages-group-sf_group' => 'Семантички обрасци',
 	'createproperty' => 'Создај својство',
 	'sf_createproperty_linktoform' => 'Ова својство ќе дава врски до страници што го користат образецот:',
-	'sf_createproperty_allowedvalsinput' => 'Ако сакате ова својство да може да има само извесни вредности, внесете ја листата на дозволени вредности, одделени со запирки (ако некоја вредност содржи запирка, тогаш заменете ја запирката со „\\,“):',
+	'sf_createproperty_allowedvalsinput' => 'Ако сакате ова својство да може да има само извесни вредности, внесете го списокот на дозволени вредности, одделени со запирки (ако некоја вредност содржи запирка, тогаш заменете ја запирката со „\\,“):',
 	'sf_createproperty_propname' => 'Име на својството:',
 	'sf_createproperty_proptype' => 'Тип:',
 	'templates' => 'Шаблони',
@@ -3915,10 +3919,10 @@ $messages['mk'] = array(
 	'sf_createtemplate_fieldname' => 'Име на полето:',
 	'sf_createtemplate_displaylabel' => 'Наслов за прика:',
 	'sf_createtemplate_semanticproperty' => 'Семантичко својство:',
-	'sf_createtemplate_fieldislist' => 'Ова поле може да содржи листа на вредности, одделени со запирки',
+	'sf_createtemplate_fieldislist' => 'Ова поле може да содржи список на вредности, одделени со запирки',
 	'sf_createtemplate_aggregation' => 'Насобирање',
 	'sf_createtemplate_aggregationdesc' => 'За да ги наведете сите страници што имаат извесно својство кое покажува кон таа страница на било која страница што го користи овој шаблон, назначете го соодветното својство подолу:',
-	'sf_createtemplate_aggregationlabel' => 'Наслов за листата:',
+	'sf_createtemplate_aggregationlabel' => 'Наслов за списокот:',
 	'sf_createtemplate_outputformat' => 'Формат на изводот:',
 	'sf_createtemplate_standardformat' => 'Стандарден',
 	'sf_createtemplate_infoboxformat' => 'Инфокутија на десно',
@@ -3935,7 +3939,7 @@ $messages['mk'] = array(
 	'sf_createform_allowmultiple' => 'Овозможи повеќе (или нула) јавувања на овој шаблон во создадената страница',
 	'sf_createform_field' => 'Поле:',
 	'sf_createform_fieldprop' => 'Ова поле го дефинира својството $1, од типот $2.',
-	'sf_createform_fieldproplist' => 'Ова поле дефинира листа на елементите што го имаат својството $1, од типот $2.',
+	'sf_createform_fieldproplist' => 'Ова поле определува список на елементите што го имаат својството $1, од типот $2.',
 	'sf_createform_fieldpropunknowntype' => 'Ова поле го определува својството $1, од неназначен тип.',
 	'sf_createform_inputtype' => 'Вносен тип:',
 	'sf_createform_inputtypedefault' => '(по основно)',
@@ -3952,11 +3956,11 @@ $messages['mk'] = array(
 	'createcategory' => 'Создај категорија',
 	'sf_createcategory_name' => 'Име на категоријата:',
 	'sf_createcategory_defaultform' => 'Основен образец:',
-	'sf_createcategory_makesubcategory' => 'Направи ова да биде подкатегорија на друга категорија (изборно):',
+	'sf_createcategory_makesubcategory' => 'Направи ова да биде поткатегорија на друга категорија (незадолжително):',
 	'createclass' => 'Создај класа',
 	'sf_createclass_docu' => 'Тука внесете ги сите податоци за да ги создадете својствата, шаблонот, образецот и категориајта за една класа. За повеќе можности за нагодување, употребете ја страницата $1.',
 	'sf_createclass_allowedvalues' => 'Дозволени вредности',
-	'sf_createclass_listofvalues' => 'Листа на вредности',
+	'sf_createclass_listofvalues' => 'Список на вредности',
 	'sf_createclass_leavefieldblank' => 'Ако името на полето е исто како името на својството, тогаш оставете го празно.',
 	'sf_createclass_missingvalues' => 'Не се пополнети сите потребни полиња.',
 	'sf_createclass_success' => 'Ќе бидат создадени својства, шаблон, образец и категорија.',
@@ -4998,12 +5002,15 @@ $messages['ps'] = array(
 	'createcategory' => 'يوه وېشنيزه جوړول',
 	'sf_createcategory_name' => 'د وېشنيزې نوم:',
 	'formstart' => 'د فورمې سره يوځای يو مخ ګډول',
+	'sf_formstart_createoredit' => 'جوړول يا سمول',
+	'sf_formedit_createtitle' => '$1 جوړول: $2',
 	'sf_formedit_remove' => 'غورځول',
 	'sf_formedit_addanother' => 'يو بل ورګډول',
 	'sf_formedit_none' => 'هېڅ',
 	'sf_bad_email_error' => 'بايد چې برېښليک پته يوه سمه بڼه ولري',
 	'sf_bad_number_error' => 'بايد چې يوه سمه شمېره وي',
 	'sf_bad_date_error' => 'بايد چې يوه سمه نېټه وي',
+	'sf_deletionlog' => 'د ړنګولو يادښت',
 	'sf_form_freetextlabel' => 'خپلواکه متن',
 	'sf_category_desc' => 'همدا د $1 وېشنيزه ده.',
 );
@@ -5622,6 +5629,7 @@ $messages['sr-ec'] = array(
 	'sf_createform_template' => 'Шаблон:',
 	'sf_createform_field' => 'Поље:',
 	'sf_createform_fieldprop' => 'Ово поље дефинише особину $1, типа $2.',
+	'sf_createform_inputtype' => 'Врста уноса:',
 	'sf_createform_inputtypedefault' => '(подразумевано)',
 	'sf_createform_formlabel' => 'Из лабеле:',
 	'sf_createform_hidden' => 'Сакривено',
@@ -5636,6 +5644,11 @@ $messages['sr-ec'] = array(
 	'sf_createcategory_defaultform' => 'Подразумевана форма:',
 	'createclass' => 'Направи класу',
 	'sf_createclass_allowedvalues' => 'Дозвољене вредности',
+	'sf_createclass_listofvalues' => 'Списак вредности',
+	'formstart' => 'Почетак форме',
+	'sf_formstart_createoredit' => 'Направи или измени',
+	'formedit' => 'Измени формом',
+	'sf_formedit_createtitle' => 'Направи $1: $2',
 	'sf_editsource' => 'Измени сорс',
 	'sf_formedit_edittitle' => 'Измени $1: $2',
 	'sf_formedit_remove' => 'Уклони',
@@ -5643,6 +5656,9 @@ $messages['sr-ec'] = array(
 	'sf_bad_number_error' => 'мора бити исправан број',
 	'sf_bad_integer_error' => 'мора бити исправан цели број',
 	'sf_bad_date_error' => 'мора бити исправан датум',
+	'uploadwindow' => 'Прозор за слање',
+	'sf_deletionlog' => 'Историја брисања',
+	'sf_form_freetextlabel' => 'Слободан текст',
 );
 
 /** Serbian Latin ekavian (Srpski (latinica))
@@ -5679,6 +5695,7 @@ $messages['sr-el'] = array(
 	'sf_createform_template' => 'Šablon:',
 	'sf_createform_field' => 'Polje:',
 	'sf_createform_fieldprop' => 'Ovo polje definiše osobinu $1, tipa $2.',
+	'sf_createform_inputtype' => 'Vrsta unosa:',
 	'sf_createform_inputtypedefault' => '(podrazumevano)',
 	'sf_createform_formlabel' => 'Iz labele:',
 	'sf_createform_hidden' => 'Sakriveno',
@@ -5693,6 +5710,11 @@ $messages['sr-el'] = array(
 	'sf_createcategory_defaultform' => 'Podrazumevana forma:',
 	'createclass' => 'Napravi klasu',
 	'sf_createclass_allowedvalues' => 'Dozvoljene vrednosti',
+	'sf_createclass_listofvalues' => 'Spisak vrednosti',
+	'formstart' => 'Početak forme',
+	'sf_formstart_createoredit' => 'Napravi ili izmeni',
+	'formedit' => 'Izmeni formom',
+	'sf_formedit_createtitle' => 'Napravi $1: $2',
 	'sf_editsource' => 'Izmeni sors',
 	'sf_formedit_edittitle' => 'Izmeni $1: $2',
 	'sf_formedit_remove' => 'Ukloni',
@@ -5700,6 +5722,9 @@ $messages['sr-el'] = array(
 	'sf_bad_number_error' => 'mora biti ispravan broj',
 	'sf_bad_integer_error' => 'mora biti ispravan celi broj',
 	'sf_bad_date_error' => 'mora biti ispravan datum',
+	'uploadwindow' => 'Prozor za slanje',
+	'sf_deletionlog' => 'Istorija brisanja',
+	'sf_form_freetextlabel' => 'Slobodan tekst',
 );
 
 /** Seeltersk (Seeltersk)
@@ -6382,12 +6407,13 @@ $messages['vi'] = array(
 	'sf_formstart_badform' => 'Lỗi: không có trang mẫu nào tìm thấy tại $1',
 	'sf_formstart_docu' => 'Nhập vào tên trang ở đây, để có thể sửa đổi với mẫu ‘$1’. Nếu trang này đã tồn tại, bạn sẽ được chuyển đến mẫu để sửa đổi trang đó. Nếu không, bạn sẽ được chuyển đến mẫu để thêm trang.',
 	'sf_formstart_noform_docu' => 'Nhập tên trang vào đây, và chọn mẫu để sửa đổi với nó. Nếu trang này đã tồn tại, bạn sẽ được chuyển tới mẫu sửa đổi trang. Nếu không, bạn sẽ được chuyển đến mẫu để thêm trang.',
-	'sf_formstart_createoredit' => 'Thêm hay sửa đổi:',
+	'sf_formstart_createoredit' => 'Tạo hay sửa đổi',
 	'formedit' => 'Sửa bằng mẫu này',
-	'sf_formedit_createtitle' => 'Thêm $1: $2',
-	'sf_formedit_badurl' => "Đây là trang để thêm dữ liệu. Bạn phải xác định cả tên mẫu và trang đích ở dạng URL; có sẽ có dạng là 'Special:FormEdit?form=&lt;form name&gt;&target=&lt;target page&gt;' hoặc 'Special:FormEdit/&lt;form name&gt;/&lt;target page&gt;'.",
+	'sf_formedit_createtitle' => 'Tạo $1: $2',
+	'sf_formedit_badurl' => 'Đây là trang để sửa đổi bằng biểu mẫu. Bạn phải xác định cả tên biểu mẫu và trang đích trong địa chỉ URL; nó sẽ có dạng là “{{ns:Special}}:FormEdit?form=&lt;form name&gt;&target=&lt;target page&gt;” hoặc “{{ns:Special}}:FormEdit/&lt;form name&gt;/&lt;target page&gt;”.',
 	'sf_formedit_altforms' => 'Thay vào đó bạn có thể thêm trang này vào một trong những mẫu sau:',
 	'sf_formedit_altformsonly' => 'Xin chọn một trong những mẫu dưới đây để thêm vào trang này:',
+	'sf_formcreate' => 'Tạo bằng biểu mẫu',
 	'sf_viewform' => 'Xem mẫu',
 	'sf_editsource' => 'Sửa đổi mã nguồn',
 	'sf_formedit_edittitle' => 'Sửa đổi $1: $2',
@@ -6404,12 +6430,13 @@ $messages['vi'] = array(
 	'sf_bad_integer_error' => 'phải là số nguyên đúng',
 	'sf_bad_date_error' => 'phải là ngày đúng',
 	'uploadwindow' => 'Cửa sổ tải',
+	'sf_deletionlog' => 'Nhật trình xóa',
 	'sf_property_isproperty' => 'Đây là tính chất thuộc kiểu $1.',
 	'sf_property_linkstoform' => 'Nó liên kết đến các trang sử dụng mẫu $1.',
 	'sf_property_allowedvals' => '{{PLURAL:$1|Giá trị|Các giá trị}} cho phép của thuộc tính này là:',
 	'sf_template_docu' => 'Đây là bản mẫu “$1”. Nó nên được gọi theo định dạng sau:',
 	'sf_template_docufooter' => 'Sửa trang để xem văn bản bản mẫu.',
-	'sf_form_docu' => 'Đây là mẫu ‘$1’. Để thêm trang bằng mẫu này, nhập vào tên trang ở dưới; nếu một trang với tên này đã tồn tại, bạn sẽ được chuyển đến mẫu để sửa trang đó.',
+	'sf_form_docu' => 'Đây là biểu mẫu “$1”. Để tạo trang bằng biểu mẫu này, nhập vào tên trang ở dưới. Nếu một trang với tên này đã tồn tại, bạn sẽ được chuyển đến biểu mẫu để sửa trang đó.',
 	'sf_form_freetextlabel' => 'Văn bản tự do',
 	'sf_category_hasdefaultform' => 'Thể loại này sử dụng mẫu $1.',
 	'sf_category_desc' => 'Đây là thể loại $1.',

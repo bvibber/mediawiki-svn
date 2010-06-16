@@ -3,7 +3,8 @@
 /**
  * Internationalisation file for MultiBoilerplate extension.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $messages = array();
@@ -594,6 +595,18 @@ $messages['sk'] = array(
 	'multiboilerplate-special-pagetext' => 'Tieto šablóny možno vopred načítať pri vytvorení stránky. (<span class=plainlinks>[{{fullurl:Táto stránka neexistuje|action=edit}} demo]</span>)',
 	'multiboilerplate-special-define-in-localsettings' => 'Šablóny sú definované v LocalSettings.',
 	'multiboilerplate-special-define-in-interface' => 'Šablóny sú definované v [[MediaWiki:Multiboilerplate]].',
+);
+
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'multiboilerplate-submit' => 'Учитај',
+);
+
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'multiboilerplate-submit' => 'Učitaj',
 );
 
 /** Swedish (Svenska)

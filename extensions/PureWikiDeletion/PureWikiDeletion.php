@@ -32,7 +32,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'url' => 'http://www.mediawiki.org/wiki/Extension:PureWikiDeletion',
 	'description' => 'Implements pure wiki deletion',
 	'descriptionmsg' => 'purewikideletion-desc',
-	'version' => '1.0.3',
+	'version' => '1.0.5',
 );
  
 $dir = dirname( __FILE__ ) . '/';
@@ -62,6 +62,9 @@ $wgHooks['OutputPageParserOutput'][] = 'PureWikiDeletionHooks::PureWikiDeletionO
 
 $wgDefaultUserOptions['watchblank'] = 0;
 $wgDefaultUserOptions['watchunblank'] = 0;
+$wgPureWikiDeletionLoginRequiredToBlank = false;
+$wgPureWikiDeletionLoginRequiredToUnblank = false;
+$wgPureWikiDeletionBlankLinkStyle="color: red";
 
 $wgLogTypes[] 			= 'blank';
 $wgLogNames['blank']		= 'blank-log-name';
@@ -70,10 +73,10 @@ $wgLogActions['blank/blank'] 	= 'blank-log-entry-blank';
 $wgLogActions['blank/unblank']  = 'blank-log-entry-unblank';
 
 $wgSpecialPages['RandomExcludeBlank'] = 'RandomExcludeBlank';
-$wgSpecialPages['AllPagesExcludeBlank'] = 'AllPagesExcludeBlank';
+#$wgSpecialPages['AllPagesExcludeBlank'] = 'AllPagesExcludeBlank';
 $wgSpecialPages['PopulateBlankedPagesTable'] = 'PopulateBlankedPagesTable';
 $wgSpecialPageGroups['RandomExcludeBlank'] = 'redirects';
-$wgSpecialPageGroups['AllPagesExcludeBlank'] = 'pages';
+#$wgSpecialPageGroups['AllPagesExcludeBlank'] = 'pages';
 $wgSpecialPageGroups['PopulateBlankedPagesTable'] = 'wiki';
 
 # User right to execute Special:PopulateBlankedPagesTable
@@ -94,6 +97,10 @@ function wfUnblankLogActionText( $type, $action, $title = null, $skin = null, $p
 	return $rv;
 }
 
+/**
+* Do not allow an anonymous user to blank or unblank a page unless this wiki
+* allows it
+*/ 
 function PureWikiDeletionSaveHook( &$article, &$user, &$text, &$summary,
        $minor, $watch, $sectionanchor, &$flags ) {
        global $wgOut, $wgPureWikiDeletionLoginRequiredToBlank, $wgPureWikiDeletionLoginRequiredToUnblank;
@@ -124,6 +131,9 @@ function PureWikiDeletionSaveHook( &$article, &$user, &$text, &$summary,
 	return true;
 }
 
+/**
+* Checkboxes in preferences for watching pages a user blanks or unblanks
+*/ 
 function PureWikiDeletionGetPreferences( $user, &$preferences ) {
 	$prefs = array(
 			'watchblank' => array(
@@ -142,6 +152,10 @@ function PureWikiDeletionGetPreferences( $user, &$preferences ) {
 	return true;
 }
 
+/**
+* Stop an anonymous user from even wasting his time trying to unblank a page if
+* this wiki does not allow him to do so
+*/ 
 function PureWikiDeletionAlternateEditHook ( $editPage ) {
 	global $wgUser, $wgOut, $wgPureWikiDeletionLoginRequiredToUnblank;
 	if ( $wgUser->isLoggedIn() || !$wgPureWikiDeletionLoginRequiredToUnblank ) {

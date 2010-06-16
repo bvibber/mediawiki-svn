@@ -692,7 +692,7 @@ $messages['dsb'] = array(
 	'coll-add_category_tooltip' => 'Wšě wikiboki w toś tej kategoriji twójim knigłam pśidaś',
 	'coll-add_this_page' => 'Toś ten bok twójim knigłam pśidaś',
 	'coll-add_page_tooltip' => 'Aktualny wikibok twójim knigłam pśidaś',
-	'coll-bookscategory' => 'Knigły',
+	'coll-bookscategory' => '{{SITENAME}}:Knigły',
 	'coll-clear_collection' => 'Knigły wuprozniś',
 	'coll-clear_collection_confirm' => 'Coš napšawdu swóje knigły dopołnje wuprozniś?',
 	'coll-clear_collection_tooltip' => 'Wše wikiboki z twójich aktualnych knigłow wótpóraś',
@@ -1262,7 +1262,7 @@ $messages['hsb'] = array(
 	'coll-add_category_tooltip' => 'Wšě wikistrony w tutej kategoriji twojej knize přidać',
 	'coll-add_this_page' => 'Tutu stronu twojej knize přidać',
 	'coll-add_page_tooltip' => 'Aktualnu wikijowu stronu twojej knize přidać',
-	'coll-bookscategory' => 'Knihi',
+	'coll-bookscategory' => '{{SITENAME}}:Knihi',
 	'coll-clear_collection' => 'Knihu wuprózdnić',
 	'coll-clear_collection_confirm' => 'Chceš woprawdźe swoju knihu dospołnje wuprózdnić?',
 	'coll-clear_collection_tooltip' => 'Wšě wikistrony z twojeje aktualneje knihi wotstronić',
@@ -1295,8 +1295,8 @@ $messages['hu'] = array(
 	'coll-book_creator' => 'Könyvkészítő',
 	'coll-download_as' => 'Letöltés mint $1',
 	'coll-download_as_tooltip' => 'A wikilap $1 formátumú változatának letöltése',
-	'coll-disable' => 'letiltás',
-	'coll-book_creator_disable' => 'Könyvkészítő letiltása',
+	'coll-disable' => 'kikapcsolás',
+	'coll-book_creator_disable' => 'Könyvkészítő kikapcsolása',
 	'coll-book_creator_disable_tooltip' => 'Könyvkészítő használatának befejezése',
 	'coll-add_linked_article' => 'Hivatkozott wiki lap hozzáadása a könyvedhez',
 	'coll-remove_linked_article' => 'Hivatkozott wiki lap eltávolítása a könyvedből',
@@ -1304,7 +1304,7 @@ $messages['hu'] = array(
 	'coll-add_category_tooltip' => 'Ezen kategória összes lapjának hozzáadása a könyvhöz',
 	'coll-add_this_page' => 'Lap hozzáadása a könyvedhez',
 	'coll-add_page_tooltip' => 'A jelenlegi lap hozzáadása a könyvhöz',
-	'coll-bookscategory' => 'Könyvek',
+	'coll-bookscategory' => 'Wikipédia-könyvek',
 	'coll-clear_collection' => 'Könyv kiürítése',
 	'coll-clear_collection_confirm' => 'Valóban törölni szeretnéd a könyved?',
 	'coll-clear_collection_tooltip' => 'Az összes lap eltávolítása a kiválasztott könyvből',
@@ -1570,25 +1570,37 @@ $messages['jv'] = array(
 $messages['ka'] = array(
 	'coll-print_export' => 'დაბეჭდვა/ექსპორტი',
 	'coll-create_a_book' => 'წიგნის შექმნა',
+	'coll-create_a_book_tooltip' => 'წიგნის ან სტატიების კოლექციის შექმნა',
+	'coll-book_creator' => 'წიგნის ოსტატი',
+	'coll-download_as' => 'იწერს როგორც $1',
 	'coll-download_as_tooltip' => 'ამ ვიკი-გვერდის $1 ვერსიის ჩაწერა',
 	'coll-disable' => 'გათიშვა',
-	'coll-add_category' => 'კატეგორიის დამატება',
+	'coll-book_creator_disable' => 'გათიშეთ წიგნის ოსტატი',
+	'coll-book_creator_disable_tooltip' => 'წიგნის ოსტატის გამოყენების შეჩერება',
+	'coll-add_linked_article' => 'ჩაამატეთ შესაბამისი ვიკიგვერდი თქვენ წიგნში',
+	'coll-remove_linked_article' => 'წაშალეთ შესაბამისი ვიკიგვერდი თქვენი წიგნიდან',
+	'coll-add_category' => 'კატეგორიის ჩამატება თქვენ წიგნში',
 	'coll-add_category_tooltip' => 'ამ კატეგორიის ყველა ვიკი გვერდის ჩამატება წიგნში',
+	'coll-add_this_page' => 'დაამატეთ ეს გვერდი თქვენს წიგნში',
 	'coll-add_page_tooltip' => 'შესაბამისი ვიკი გვერდის წიგნში ჩამატება',
 	'coll-bookscategory' => 'წიგნები',
 	'coll-clear_collection' => 'წიგნის გასუფთავება',
 	'coll-clear_collection_confirm' => 'დარწმუნებული ხართ, რომ გსურთ თქვენი წიგნის სრული დასუფთავება?',
 	'coll-clear_collection_tooltip' => 'მოცემული წიგნიდან ყველა ვიკი-გვერდის წაშლა.',
 	'coll-help' => 'დახმარება',
+	'coll-help_tooltip' => 'აჩვენეთ დახმარება წიგნის შექმნასთან დაკავშირებით',
 	'coll-helppage' => 'Help:წიგნები',
 	'coll-load_collection' => 'წიგნის ატვირთვა',
+	'coll-load_collection_tooltip' => 'გადმოტვირთეთ ეს წიგნი როგორც თქვენი მოქმედი წიგნი',
 	'coll-n_pages' => '$1 გვერდი',
 	'coll-printable_version_pdf' => 'PDF ვერსია',
 	'coll-remove_this_page' => 'თქვენი წიგნიდან ამ გვერდის წაშლა',
 	'coll-remove_page_tooltip' => 'თქვენი წიგნიდან ამჟამინდელი ვიკი-გვერდის წაშლა',
 	'coll-show_collection' => 'წიგნის ჩვენება',
+	'coll-show_collection_tooltip' => 'დააჭირეთ წიგნის რედაქტირებსთვის/ატვირთვისთვის/გამოწერისთვის',
 	'coll-not_addable' => 'ეს გვერდი არ ემატება',
 	'coll-make_suggestions' => 'შეთავაზებული გვერდები',
+	'coll-make_suggestions_tooltip' => 'აჩვენეთ მოსაზრებები, რომლებიც დაფუძნებულია თქვენ წიგნში არსებულ გვერდებზე.',
 	'coll-suggest_empty' => 'ცარიელი',
 );
 
@@ -2314,6 +2326,7 @@ $messages['pt'] = array(
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
+ * @author Giro720
  * @author Heldergeovane
  * @author Jorge Morais
  * @author Luckas Blade
@@ -2328,6 +2341,8 @@ $messages['pt-br'] = array(
 	'coll-disable' => 'desabilitar',
 	'coll-book_creator_disable' => 'Desabilitar o criador de livros',
 	'coll-book_creator_disable_tooltip' => 'Parar de usar o criador de livros',
+	'coll-add_linked_article' => 'Adicionar ao livro a página wiki ligada',
+	'coll-remove_linked_article' => 'Remover do livro a página wiki ligada',
 	'coll-add_category' => 'Adicionar esta categoria ao seu livro',
 	'coll-add_category_tooltip' => 'Adicionar todas as páginas wiki nesta categoria ao seu livro',
 	'coll-add_this_page' => 'Adicionar esta página ao seu livro',
@@ -2577,16 +2592,20 @@ $messages['sl'] = array(
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
+	'coll-print_export' => 'Штампај/извези',
 	'coll-create_a_book' => 'Направи књигу',
+	'coll-create_a_book_tooltip' => 'Направи књигу или колекцију чланака',
 	'coll-download_as' => 'Преузми као $1',
-	'coll-add_category' => 'Додај категорију',
+	'coll-disable' => 'онемогући',
+	'coll-add_category' => 'Додај ову категорију у своју књигу',
 	'coll-add_category_tooltip' => 'Додаје све вики странице у овој категорији у вашу књигу',
 	'coll-add_page_tooltip' => 'Додаје тренутну вики страницу вашој књизи',
 	'coll-bookscategory' => 'Књиге',
 	'coll-clear_collection' => 'Очисти књигу',
 	'coll-clear_collection_confirm' => 'Да ли заиста желите да потпуно очистите своју књигу?',
 	'coll-clear_collection_tooltip' => 'Уклања све вики странице из ваше тренутне књиге',
-	'coll-helppage' => 'Help:Књиге',
+	'coll-help' => 'Помоћ',
+	'coll-helppage' => 'Помоћ:Књиге',
 	'coll-load_collection' => 'Учитај књигу',
 	'coll-load_collection_tooltip' => 'Учитава ову књигу као вашу тренутну књигу',
 	'coll-n_pages' => '{{PLURAL:$1|једна страна|$1 стране|$1 страна}}',
@@ -2594,22 +2613,27 @@ $messages['sr-ec'] = array(
 	'coll-remove_page_tooltip' => 'Уклања тренутну вики страницу из ваше књиге',
 	'coll-show_collection' => 'Прикажи књигу',
 	'coll-show_collection_tooltip' => 'Кликните за измену, преузимање или наручивање своје књиге',
+	'coll-suggest_empty' => 'празно',
 );
 
 /** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(
+	'coll-print_export' => 'Štampaj/izvezi',
 	'coll-create_a_book' => 'Napravi knjigu',
+	'coll-create_a_book_tooltip' => 'Napravi knjigu ili kolekciju članaka',
 	'coll-download_as' => 'Preuzmi kao $1',
-	'coll-add_category' => 'Dodaj kategoriju',
+	'coll-disable' => 'onemogući',
+	'coll-add_category' => 'Dodaj ovu kategoriju u svoju knjigu',
 	'coll-add_category_tooltip' => 'Dodaje sve viki stranice u ovoj kategoriji u vašu knjigu',
 	'coll-add_page_tooltip' => 'Dodaje trenutnu viki stranicu vašoj knjizi',
 	'coll-bookscategory' => 'Knjige',
 	'coll-clear_collection' => 'Očisti knjigu',
 	'coll-clear_collection_confirm' => 'Da li zaista želite da potpuno očistite svoju knjigu?',
 	'coll-clear_collection_tooltip' => 'Uklanja sve viki stranice iz vaše trenutne knjige',
-	'coll-helppage' => 'Help:Knjige',
+	'coll-help' => 'Pomoć',
+	'coll-helppage' => 'Pomoć:Knjige',
 	'coll-load_collection' => 'Učitaj knjigu',
 	'coll-load_collection_tooltip' => 'Učitava ovu knjigu kao vašu trenutnu knjigu',
 	'coll-n_pages' => '{{PLURAL:$1|jedna strana|$1 strane|$1 strana}}',
@@ -2617,6 +2641,7 @@ $messages['sr-el'] = array(
 	'coll-remove_page_tooltip' => 'Uklanja trenutnu viki stranicu iz vaše knjige',
 	'coll-show_collection' => 'Prikaži knjigu',
 	'coll-show_collection_tooltip' => 'Kliknite za izmenu, preuzimanje ili naručivanje svoje knjige',
+	'coll-suggest_empty' => 'prazno',
 );
 
 /** Seeltersk (Seeltersk)
@@ -2751,18 +2776,45 @@ $messages['tg-latn'] = array(
 
 /** Thai (ไทย)
  * @author Ans
+ * @author Harley Hartwell
  * @author Manop
+ * @author Octahedron80
  */
 $messages['th'] = array(
+	'coll-print_export' => 'พิมพ์/ส่งออก',
 	'coll-create_a_book' => 'สร้างหนังสือ',
+	'coll-create_a_book_tooltip' => 'สร้างหนังสือหรือรวบรวมหน้า',
+	'coll-book_creator' => 'ตัวสร้างหนังสือ',
 	'coll-download_as' => 'ดาวน์โหลดในชื่อ $1',
-	'coll-add_category' => 'เพิ่มหมวดหมู่',
+	'coll-download_as_tooltip' => 'ดาวน์โหลดรูปแบบ $1 ของหน้าวิกินี้',
+	'coll-disable' => 'ปิดการใช้งาน',
+	'coll-book_creator_disable' => 'ยกเลิกการใช้ตัวสร้างหนังสือ',
+	'coll-book_creator_disable_tooltip' => 'เลิกใช้ตัวสร้างหนังสือ',
+	'coll-add_linked_article' => 'เพิ่มหน้าวิกิเชื่อมโยงในหนังสือของคุณ',
+	'coll-remove_linked_article' => 'นำหน้าวิกิเชื่อมโยงออกจากหนังสือของคุณ',
+	'coll-add_category' => 'เพิ่มหมวดหมู่นี้เข้าสู่หนังสือ',
+	'coll-add_category_tooltip' => 'เพิ่มหน้าวิกิทั้งหมดในหมวดหมู่นี้ในหนังสือของคุณ',
+	'coll-add_this_page' => 'เพิ่มหน้านี้ในหนังสือของคุณ',
+	'coll-add_page_tooltip' => 'เพิ่มหน้าวิกิปัจจุบันในหนังสือของคุณ',
 	'coll-bookscategory' => 'หนังสือ',
+	'coll-clear_collection' => 'เคลียร์หนังสือ',
+	'coll-clear_collection_confirm' => 'คุณแน่ใจหรือไม่ที่จะลบหนังสือของคุณ ?',
+	'coll-clear_collection_tooltip' => 'นำหน้าวิกิทั้งหมดออกจากหนังสือปัจจุบันของคุณ',
+	'coll-help' => 'ช่วยเหลือ',
+	'coll-help_tooltip' => 'แสดงคำแนะนำเกี่ยวกับการสร้างหนังสือ',
 	'coll-helppage' => 'Help:หนังสือ',
 	'coll-load_collection' => 'โหลดหนังสือ',
+	'coll-load_collection_tooltip' => 'โหลดหนังสือนี้เป็นหนังสือปัจจุบันของคุณ',
 	'coll-n_pages' => '$1 หน้า',
 	'coll-printable_version_pdf' => 'รุ่น PDF',
+	'coll-remove_this_page' => 'นำหน้านี้ออกจากหนังสือของคุณ',
+	'coll-remove_page_tooltip' => 'นำหน้าวิกิปัจจุบันออกจากหนังสือของคุณ',
 	'coll-show_collection' => 'แสดงหนังสือ',
+	'coll-show_collection_tooltip' => 'คลิกเพื่อแก้ไข ดาวน์โหลด หรือสั่งซื้อหนังสือของคุณ',
+	'coll-not_addable' => 'ไม่สามารถเพิ่มหน้านี้ลงหนังสือได้',
+	'coll-make_suggestions' => 'หน้าแนะนำ',
+	'coll-make_suggestions_tooltip' => 'แสดงคำแนะนำตามหน้าที่อยู่ในหนังสือของคุณ',
+	'coll-suggest_empty' => 'ไม่มีคำแนะนำ',
 );
 
 /** Turkmen (Türkmençe)
@@ -3139,9 +3191,12 @@ $messages['zh-hant'] = array(
 	'coll-print_export' => '列印/匯出',
 	'coll-create_a_book' => '建立圖書',
 	'coll-create_a_book_tooltip' => '建立圖書或頁面集合',
+	'coll-book_creator' => '圖書創建器',
 	'coll-download_as' => '下載為 $1',
 	'coll-download_as_tooltip' => '下載這個wiki頁面的$1版本',
 	'coll-disable' => '禁用',
+	'coll-book_creator_disable' => '禁用圖書創建器',
+	'coll-book_creator_disable_tooltip' => '停止使用圖書創建器',
 	'coll-add_category' => '將此分類增加到圖書',
 	'coll-add_category_tooltip' => '將這個分類中的所有維基頁面加入您的圖書中',
 	'coll-add_this_page' => '將此頁面增加到圖書',
@@ -3161,6 +3216,9 @@ $messages['zh-hant'] = array(
 	'coll-remove_page_tooltip' => '將目前維基頁面從您的圖書中移除',
 	'coll-show_collection' => '顯示圖書',
 	'coll-show_collection_tooltip' => '點擊此處編輯、下載或訂購圖書',
+	'coll-not_addable' => '無法加載此頁',
+	'coll-make_suggestions' => '建議頁面',
+	'coll-make_suggestions_tooltip' => '根據您圖書中的頁面顯示建議',
 	'coll-suggest_empty' => '空',
 );
 

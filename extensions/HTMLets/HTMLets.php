@@ -7,8 +7,8 @@
  * configured using <tt>$wgHTMLetsDirectory</tt>; it defaults to $IP/htmlets, i.e. the
  * directory <tt>htmlets</tt> in the installation root of MediaWiki. 
  *
- * @package MediaWiki
- * @subpackage Extensions
+ * @file
+ * @ingroup Extensions
  * @author Daniel Kinzler, brightbyte.de
  * @copyright © 2007 Daniel Kinzler
  * @license GNU General Public Licence 2.0 or later
@@ -59,7 +59,7 @@ function wfHTMLetsExtension() {
 }
 
 # The callback function for converting the input text to HTML output
-function wfRenderHTMLet( $name, $argv, &$parser ) {
+function wfRenderHTMLet( $name, $argv, $parser ) {
     global $wgHTMLetsDirectory, $wgHTMLetsHack, $IP;
 
     if (@$argv['nocache']) $parser->disableCache();
@@ -114,7 +114,7 @@ function wfRenderHTMLet( $name, $argv, &$parser ) {
     return $output;
 }
 
-function wfRenderHTMLetHackPostProcess( &$parser, &$text ) {
+function wfRenderHTMLetHackPostProcess( $parser, &$text ) {
    $text = preg_replace(
         '/<!-- @HTMLetsHACK@ ([0-9a-zA-Z\\+\\/]+=*) @HTMLetsHACK@ -->/esm',
         'base64_decode("$1")',

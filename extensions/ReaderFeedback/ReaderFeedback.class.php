@@ -236,7 +236,7 @@ class ReaderFeedback {
 			} else {
 				$ave = '-'; // DIV by zero
 			}
-			$html .= '<td align="center"><b>'.wfMsgHtml("readerfeedback-$tag").'</b>&nbsp;&nbsp;'.
+			$html .= '<td align="center"><b>'.wfMsgHtml("readerfeedback-$tag").'</b>&#160;&#160;'.
 				'<sup>('.wfMsgHtml('ratinghistory-ave',$wgLang->formatNum($ave)).')</sup></td>';
 		}
 		$html .= '</tr><tr>';

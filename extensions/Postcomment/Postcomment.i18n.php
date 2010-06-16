@@ -2,7 +2,8 @@
 /**
  * Internationalisation file for extension Post Comment.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $messages = array();
@@ -769,8 +770,8 @@ $messages['pdc'] = array(
 $messages['pl'] = array(
 	'postcomment-desc' => 'Pozwól użytkownikom wpisywać komentarze bezpośrednio do stron dyskusji.',
 	'postcomment_discussionprotected' => 'Ta strona dyskusji została zabezpieczona. Nie można już dodawać wpisów.',
-	'postcomment_notloggedin' => 'Nie jesteś zalogowany/-a.',
-	'postcomment_youareloggedinas' => 'Jesteś zalogowany/-a jako $1',
+	'postcomment_notloggedin' => 'Nie jesteś zalogowany (~a).',
+	'postcomment_youareloggedinas' => 'Jesteś {{GENDER:|zalogowany|zalogowana|zalogowany(‐a)}} jako $1',
 	'postcomment_addcommentdiscussionpage' => 'Dodaj komentarz na tej stronie dyskusji',
 	'postcomment_leavemessagefor' => 'Zostaw wiadomość dla $1',
 	'postcomment_post' => 'Wyślij',
@@ -941,6 +942,30 @@ $messages['sk'] = array(
 $messages['sli'] = array(
 	'postcomment_post' => 'Senda',
 	'postcomment_on' => 'Oam',
+);
+
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'postcomment_youareloggedinas' => 'Улоговани сте као $1',
+	'postcomment_leavemessagefor' => 'Остави поруку за $1',
+	'postcomment_post' => 'Пошаљи',
+	'postcomment_on' => 'На',
+	'postcomment_said' => '{{GENDER:|рекао|рекла|рекао}}',
+	'postcomment_invalidrequest' => 'Неисправан захтев.',
+	'postcomment_replyto' => 'Одговор на $1',
+);
+
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'postcomment_youareloggedinas' => 'Ulogovani ste kao $1',
+	'postcomment_leavemessagefor' => 'Ostavi poruku za $1',
+	'postcomment_post' => 'Pošalji',
+	'postcomment_on' => 'Na',
+	'postcomment_said' => '{{GENDER:|rekao|rekla|rekao}}',
+	'postcomment_invalidrequest' => 'Neispravan zahtev.',
+	'postcomment_replyto' => 'Odgovor na $1',
 );
 
 /** Seeltersk (Seeltersk)

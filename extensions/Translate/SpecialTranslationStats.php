@@ -1,8 +1,6 @@
 <?php
-if ( !defined( 'MEDIAWIKI' ) ) die();
 
 class SpecialTranslationStats extends SpecialPage {
-
 	public function __construct() {
 		parent::__construct( 'TranslationStats' );
 		$this->includable( true );
@@ -41,7 +39,7 @@ class SpecialTranslationStats extends SpecialPage {
 		if ( $opts['scale'] === 'hours' ) $opts->validateIntBounds( 'days', 1, 4 );
 
 		foreach ( array( 'group', 'language' ) as $t ) {
-			$values = array_map( 'trim', explode( ',', strtolower( $opts[$t] ) ) );
+			$values = array_map( 'trim', explode( ',', $opts[$t] ) );
 			$values = array_splice( $values, 0, 4 );
 			$opts[$t] = implode( ',', $values );
 		}
@@ -69,15 +67,15 @@ class SpecialTranslationStats extends SpecialPage {
 
 	protected function form( $opts ) {
 		global $wgOut, $wgScript;
-		wfLoadExtensionMessages( 'Translate' );
+
 		$this->setHeaders();
 		$wgOut->addWikiMsg( 'translate-statsf-intro' );
 
 		$wgOut->addHTML(
 			Xml::fieldset( wfMsg( 'translate-statsf-options' ) ) .
-			Xml::openElement( 'form', array( 'action' => $wgScript ) ) .
-			Xml::hidden( 'title', $this->getTitle()->getPrefixedText() ) .
-			Xml::hidden( 'preview', 1 ) .
+			Html::openElement( 'form', array( 'action' => $wgScript ) ) .
+			Html::hidden( 'title', $this->getTitle()->getPrefixedText() ) .
+			Html::hidden( 'preview', 1 ) .
 			'<table>'
 		);
 
@@ -117,13 +115,13 @@ class SpecialTranslationStats extends SpecialPage {
 		$titleText = $this->getTitle()->getPrefixedText();
 
 		$wgOut->addHTML(
-			'<hr />' .
-			Xml::element( 'pre', null, "{{{$titleText}{$spiParams}}}" )
+			Html::element( 'hr' ) .
+			Html::element( 'pre', null, "{{{$titleText}{$spiParams}}}" )
 		);
 
 		$wgOut->addHTML(
-			'<hr />' .
-			Xml::tags( 'div', array( 'style' => 'margin: 1em auto; text-align: center;' ), $this->image( $opts ) )
+			Html::element( 'hr' ) .
+			Html::rawElement( 'div', array( 'style' => 'margin: 1em auto; text-align: center;' ), $this->image( $opts ) )
 		);
 	}
 
@@ -157,7 +155,7 @@ class SpecialTranslationStats extends SpecialPage {
 			$options[] = $radio . ' ' . $this->eLabel( $id );
 		}
 
-		$s .= Xml::tags( 'span', array( 'id' => $name ), implode( ' ', $options ) );
+		$s .= implode( ' ', $options );
 
 		$s .= '</td></tr>' . "\n";
 		return $s;
@@ -313,7 +311,6 @@ class SpecialTranslationStats extends SpecialPage {
 	}
 
 	public function draw( FormOptions $opts ) {
-		wfLoadExtensionMessages( 'Translate' );
 		global $wgTranslatePHPlotFont, $wgLang;
 
 		$width = $opts->getValue( 'width' );
@@ -395,7 +392,7 @@ class TranslatePerLanguageStats {
 		$filters['group'] = trim( $this->opts['group'] ) !== '';
 
 		foreach ( $groups as $group ) {
-			
+
 			foreach ( $codes as $code ) {
 				if ( $code !== '' ) $key = "$group ($code)";
 				else $key = $group;
@@ -445,7 +442,7 @@ class TranslatePerLanguageStats {
 		if ( !max( $this->filters ) ) return 0;
 		if ( strpos( $row->rc_title, '/' ) === false ) return - 1;
 
-		list( $key, $code ) = explode( '/', $wgContLang->lcfirst( $row->rc_title ), 2 );
+		list( $key, $code ) = TranslateUtils::figureMessage( $row->rc_title );
 		$indexKey = '';
 
 		if ( $this->filters['group'] ) {

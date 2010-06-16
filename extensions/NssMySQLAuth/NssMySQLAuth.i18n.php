@@ -820,6 +820,7 @@ $messages['pms'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'am-username' => 'کارن-نوم',
 	'am-email' => 'برېښليک',
 	'nss-save-changes' => 'بدلونونه خوندي کول',
 );
@@ -955,6 +956,7 @@ $messages['sr-ec'] = array(
 	'am-email' => 'имејл',
 	'am-active' => 'активан',
 	'am-updated' => 'Баше измене су успешно снимљене',
+	'nss-save-changes' => 'Сними промене',
 	'nss-create-account-header' => 'Направи нови налог',
 	'nss-create-account' => 'Направи налог',
 	'nss-no-mail' => 'Не шаљи имејл',
@@ -971,6 +973,7 @@ $messages['sr-el'] = array(
 	'am-email' => 'imejl',
 	'am-active' => 'aktivan',
 	'am-updated' => 'Baše izmene su uspešno snimljene',
+	'nss-save-changes' => 'Snimi promene',
 	'nss-create-account-header' => 'Napravi novi nalog',
 	'nss-create-account' => 'Napravi nalog',
 	'nss-no-mail' => 'Ne šalji imejl',
@@ -1029,7 +1032,7 @@ $messages['tl'] = array(
 	'accountmanager' => 'Tagapamahala ng kuwenta',
 	'am-username' => 'pangalan ng tagagamit',
 	'am-email' => 'e-liham',
-	'am-active' => 'masigla (aktibo)',
+	'am-active' => 'masigla',
 	'am-updated' => 'Matagumpay na nasagip ang iyong mga pagbabago',
 	'nss-desc' => "Isang pampasak (''plug-in'') na makapagpapatunay laban sa isang kalipunan ng datong libnss-mysql.  Naglalaman ng isang [[Special:AccountManager|tagapamahala ng kuwenta]]",
 	'nss-rights' => 'mga karapatan',

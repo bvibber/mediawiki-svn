@@ -2,7 +2,8 @@
 /**
  * Aliases for Special:CrossNamespaceLinks
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $aliases = array();

@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Special page handler function for Special:HideRevision
  */
@@ -60,7 +59,7 @@ class HideRevisionForm extends SpecialPage {
 	 */
 	function showEmpty() {
 		global $wgOut, $wgUser;
-		$special = Title::makeTitle( NS_SPECIAL, 'HideRevision' );
+		$special = SpecialPage::getTitleFor( 'HideRevision' );
 
 		$wgOut->addHTML(
 			Xml::openElement( 'form', array(
@@ -83,7 +82,7 @@ class HideRevisionForm extends SpecialPage {
 	 */
 	function showForm() {
 		global $wgOut, $wgUser;
-		$special = Title::makeTitle( NS_SPECIAL, 'HideRevision' );
+		$special = SpecialPage::getTitleFor( 'HideRevision' );
 
 		$wgOut->addWikiText( wfMsg( 'hiderevision-text' ) );
 		$wgOut->addHTML(

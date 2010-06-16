@@ -2,8 +2,9 @@
 /**
  * Internationalisation file for extension OpenSearchXml.
  *
- * @addtogroup Extensions
-*/
+ * @file
+ * @ingroup Extensions
+ */
 
 $messages = array();
 
@@ -287,7 +288,7 @@ $messages['li'] = array(
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
-	'opensearchxml-desc' => '[http://www.opensearch.org OpenSearch] XML интерфејсот овозможува извадоци од текст',
+	'opensearchxml-desc' => '[http://www.opensearch.org OpenSearch] XML-посредникот овозможува извадоци од текст',
 );
 
 /** Malayalam (മലയാളം)

@@ -1,14 +1,7 @@
 <?php
 
 /**
- * This groupe contains all Google Maps related files of the Maps extension.
- * 
- * @defgroup MapsGoogleMaps Google Maps
- * @ingroup Maps
- */
-
-/**
- * This file holds the general information for the Google Maps service
+ * File holding the MapsGoogleMaps class.
  *
  * @file Maps_GoogleMaps.php
  * @ingroup MapsGoogleMaps
@@ -20,51 +13,33 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-$wgAutoloadClasses['MapsGoogleMaps'] = dirname( __FILE__ ) . '/Maps_GoogleMaps.php';
-
-$wgHooks['MappingServiceLoad'][] = 'MapsGoogleMaps::initialize';
-
-$wgAutoloadClasses['MapsGoogleMapsDispMap'] = dirname( __FILE__ ) . '/Maps_GoogleMapsDispMap.php';
-$wgAutoloadClasses['MapsGoogleMapsDispPoint'] = dirname( __FILE__ ) . '/Maps_GoogleMapsDispPoint.php';
-
-$egMapsServices[MapsGoogleMaps::SERVICE_NAME] = array(
-	'aliases' => array( 'googlemaps', 'google', 'googlemap', 'gmap', 'gmaps' ),
-	'features' => array(
-		'display_point' => 'MapsGoogleMapsDispPoint',
-		'display_map' => 'MapsGoogleMapsDispMap',
-	)
-);
-
 /**
- * Class for Google Maps initialization.
+ * TODO
  * 
  * @ingroup MapsGoogleMaps
  * 
  * @author Jeroen De Dauw
  */
-class MapsGoogleMaps {
+class MapsGoogleMaps extends MapsMappingService {
 	
-	const SERVICE_NAME = 'googlemaps2';
+	function __construct() {
+		parent::__construct(
+			'googlemaps2',
+			array( 'googlemaps', 'google', 'googlemap', 'gmap', 'gmaps' )
+		);
+	}
 	
-	public static function initialize() {
-		global $wgAutoloadClasses, $egMapsServices;
-		
-		self::initializeParams();
+	protected function initParameterInfo( array &$parameters ) {
+		global $egMapsServices, $egMapsGoogleMapsType, $egMapsGoogleMapsTypes, $egMapsGoogleAutozoom, $egMapsGMapControls;
 		
 		Validator::addOutputFormat( 'gmaptype', array( __CLASS__, 'setGMapType' ) );
 		Validator::addOutputFormat( 'gmaptypes', array( __CLASS__, 'setGMapTypes' ) );
 		
-		Validator::addValidationFunction( 'is_google_overlay', array( __CLASS__, 'isGOverlay' ) );
-		
-		return true;
-	}
-	
-	private static function initializeParams() {
-		global $egMapsServices, $egMapsGoogleMapsType, $egMapsGoogleMapsTypes, $egMapsGoogleAutozoom, $egMapsGMapControls;
+		Validator::addValidationFunction( 'is_google_overlay', array( __CLASS__, 'isGOverlay' ) );		
 		
 		$allowedTypes = self::getTypeNames();
 		
-		$egMapsServices[self::SERVICE_NAME]['parameters'] = array(
+		$parameters = array(
 			'controls' => array(
 				'type' => array( 'string', 'list' ),
 				'criteria' => array(
@@ -99,11 +74,11 @@ class MapsGoogleMaps {
 			),
 		);
 		
-		$egMapsServices[self::SERVICE_NAME]['parameters']['zoom']['criteria']['in_range'] = array( 0, 20 );
+		$parameters['zoom']['criteria']['in_range'] = array( 0, 20 );
 	}
 
 	// http://code.google.com/apis/maps/documentation/reference.html#GMapType.G_NORMAL_MAP
-	private static $mapTypes = array(
+	protected static $mapTypes = array(
 		'normal' => 'G_NORMAL_MAP',
 		'satellite' => 'G_SATELLITE_MAP',
 		'hybrid' => 'G_HYBRID_MAP',
@@ -118,7 +93,7 @@ class MapsGoogleMaps {
 		'mars-infrared' => 'G_MARS_INFRARED_MAP'
 	);
 
-	private static $overlayData = array(
+	protected static $overlayData = array(
 		'photos' => '0',
 		'videos' => '1',
 		'wikipedia' => '2',
@@ -196,36 +171,21 @@ class MapsGoogleMaps {
 	}
 	
 	/**
-	 * Loads the Google Maps API and required JS files.
-	 *
-	 * @param mixed $parserOrOut
+	 * @see MapsMappingService::getDependencies
+	 * 
+	 * @return array
 	 */
-	public static function addGMapDependencies( &$parserOrOut ) {
-		global $wgJsMimeType, $wgLang;
-		global $egGoogleMapsKey, $egGoogleMapsOnThisPage, $egMapsStyleVersion, $egMapsJsExt, $egMapsScriptPath;
+	protected function getDependencies() {
+		global $wgLang;
+		global $egGoogleMapsKey, $egMapsStyleVersion, $egMapsJsExt, $egMapsScriptPath;
 		
-		if ( empty( $egGoogleMapsOnThisPage ) ) {
-			$egGoogleMapsOnThisPage = 0;
-
-			MapsGoogleMaps::validateGoogleMapsKey();
-
-			$langCode = self::getMappedLanguageCode( $wgLang->getCode() );
-			
-			if ( $parserOrOut instanceof Parser ) {
-				$parser = $parserOrOut;
-				
-				$parser->getOutput()->addHeadItem( 
-					Html::linkedScript( "http://maps.google.com/maps?file=api&v=2&key=$egGoogleMapsKey&hl=$langCode" ) .	
-					Html::linkedScript( "$egMapsScriptPath/Services/GoogleMaps/GoogleMapFunctions{$egMapsJsExt}?$egMapsStyleVersion" ) .						
-					Html::inlineScript( 'window.unload = GUnload;' )
-				);				
-			}
-			else if ( $parserOrOut instanceof OutputPage ) {
-				$out = $parserOrOut;
-				MapsMapper::addScriptFile( $out, "http://maps.google.com/maps?file=api&v=2&key=$egGoogleMapsKey&hl=$langCode" );
-				$out->addScriptFile( "$egMapsScriptPath/Services/GoogleMaps/GoogleMapFunctions{$egMapsJsExt}?$egMapsStyleVersion" );
-			}
-		}
+		$langCode = self::getMappedLanguageCode( $wgLang->getCode() ); 
+		
+		return array(
+			Html::linkedScript( "http://maps.google.com/maps?file=api&v=2&key=$egGoogleMapsKey&hl=$langCode" ),
+			Html::linkedScript( "$egMapsScriptPath/Services/GoogleMaps/GoogleMapFunctions{$egMapsJsExt}?$egMapsStyleVersion" ),
+			Html::inlineScript( 'window.unload = GUnload;' )
+		);
 	}
 	
 	/**
@@ -235,7 +195,7 @@ class MapsGoogleMaps {
 	 * 
 	 * @return string The mapped code
 	 */
-	private static function getMappedLanguageCode( $code ) {
+	protected static function getMappedLanguageCode( $code ) {
 		$mappings = array(
 	         'en_gb' => 'en',// v2 does not support en_gb - use english :(
 	         'he' => 'iw',   // iw is googlish for hebrew
@@ -266,14 +226,13 @@ class MapsGoogleMaps {
 	 * Adds the needed output for the overlays control.
 	 * 
 	 * @param string $output
-	 * @param Parser $parser
 	 * @param string $mapName
 	 * @param string $overlays
 	 * @param string $controls
 	 * 
 	 * FIXME: layer onload function kills maps for some reason
 	 */
-	public static function addOverlayOutput( &$output, Parser &$parser, $mapName, $overlays, $controls ) {
+	public function addOverlayOutput( &$output, $mapName, $overlays, $controls ) {
 		global $egMapsGMapOverlays, $egMapsGoogleOverlLoaded, $wgJsMimeType;
 		
 		// Check to see if there is an overlays control.
@@ -295,12 +254,6 @@ class MapsGoogleMaps {
 		
 		// If there are no overlays or there is no control to hold them, don't bother the rest.
 		if ( !$hasOverlayControl || count( $overlays ) < 1 ) return;
-		
-		// If the overlays JS and CSS has not yet loaded, do it.
-		if ( empty( $egMapsGoogleOverlLoaded ) ) {
-			$egMapsGoogleOverlLoaded = true;
-			self::addOverlayCss( $parser );
-		}
 		
 		// Add the inputs for the overlays.
 		$addedOverlays = array();
@@ -350,20 +303,23 @@ class MapsGoogleMaps {
 			) .
 			'</form>'
 		);
-		
-		$parser->getOutput()->addHeadItem(
-			Html::inlineScript( 'var timer_' . htmlspecialchars( $mapName ) . ';' . implode( "\n", $onloadFunctions ) )
-		);
+			
+		// If the overlays JS and CSS has not yet loaded, do it.
+		if ( empty( $egMapsGoogleOverlLoaded ) ) {
+			$egMapsGoogleOverlLoaded = true;
+			
+			$this->addDependency(
+				$this->getOverlayCss()
+				. Html::inlineScript( 'var timer_' . htmlspecialchars( $mapName ) . ';' . implode( "\n", $onloadFunctions ) )
+			);
+		}		
 	}
 	
 	/**
-	 * Add CSS for the overlays. 
-	 * 
-	 * @param Parser $parser
+	 * Returns CSS for the overlays. 
 	 */
-	private static function addOverlayCss( Parser &$parser ) {
-		$parser->getOutput()->addHeadItem(
-			Html::inlineStyle( <<<EOT
+	protected function getOverlayCss() {
+		return Html::inlineStyle( <<<EOT
 .inner-more {
 	text-align:center;
 	font-size:12px;
@@ -402,9 +358,7 @@ class MapsGoogleMaps {
 	border-width:2px;
 }
 EOT
-			)
 		);
 	}
 	
-}
-									
+}								

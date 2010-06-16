@@ -9,43 +9,43 @@ $messages = array();
 
 $messages['en'] = array(
 	'centralnotice' => 'Central notice admin',
-	'noticetemplate' => 'Central notice template',
+	'noticetemplate' => 'Central notice banner',
 	'centralnotice-desc' => 'Adds a central sitenotice',
 	'centralnotice-summary' => 'This module allows you to edit your currently setup central notices.
 It can also be used to add or remove old notices.',
-	'centralnotice-query' => 'Modify current notices',
-	'centralnotice-notice-name' => 'Notice name',
+	'centralnotice-query' => 'Modify current campaigns',
+	'centralnotice-notice-name' => 'Campaign name',
 	'centralnotice-end-date' => 'End date',
 	'centralnotice-enabled' => 'Enabled',
 	'centralnotice-modify' => 'Submit',
 	'centralnotice-preview' => 'Preview',
-	'centralnotice-add-new' => 'Add a new central notice',
+	'centralnotice-add-new' => 'Add a new campaign',
 	'centralnotice-remove' => 'Remove',
 	'centralnotice-translate-heading' => 'Translation for $1',
-	'centralnotice-manage' => 'Manage central notice',
+	'centralnotice-manage' => 'Manage campaigns',
 	'centralnotice-add' => 'Add',
-	'centralnotice-add-notice' => 'Add a notice',
-	'centralnotice-add-template' => 'Add a template',
-	'centralnotice-show-notices' => 'Show notices',
-	'centralnotice-list-templates' => 'List templates',
+	'centralnotice-add-notice' => 'Add a campaign',
+	'centralnotice-add-template' => 'Add a banner',
+	'centralnotice-show-notices' => 'Show campaigns',
+	'centralnotice-list-templates' => 'List banners',
 	'centralnotice-translations' => 'Translations',
 	'centralnotice-translate-to' => 'Translate to',
 	'centralnotice-translate' => 'Translate',
 	'centralnotice-english' => 'English',
-	'centralnotice-template-name' => 'Template name',
-	'centralnotice-templates' => 'Templates',
+	'centralnotice-template-name' => 'Banner name',
+	'centralnotice-templates' => 'Banners',
 	'centralnotice-weight' => 'Weight',
 	'centralnotice-locked' => 'Locked',
-	'centralnotice-notices' => 'Notices',
-	'centralnotice-notice-exists' => 'Notice already exists.
+	'centralnotice-notices' => 'Campaigns',
+	'centralnotice-notice-exists' => 'Campaign already exists.
 Not adding',
-	'centralnotice-template-exists' => 'Template already exists.
+	'centralnotice-template-exists' => 'Banner already exists.
 Not adding',
-	'centralnotice-notice-doesnt-exist' => 'Notice does not exist.
+	'centralnotice-notice-doesnt-exist' => 'Campaign does not exist.
 Nothing to remove',
-	'centralnotice-template-still-bound' => 'Template is still bound to a notice.
+	'centralnotice-template-still-bound' => 'Banner is still bound to a campaign.
 Not removing.',
-	'centralnotice-template-body' => 'Template body:',
+	'centralnotice-template-body' => 'Banner body:',
 	'centralnotice-day' => 'Day',
 	'centralnotice-year' => 'Year',
 	'centralnotice-month' => 'Month',
@@ -55,21 +55,21 @@ Not removing.',
 	'centralnotice-project-name' => 'Project name',
 	'centralnotice-start-date' => 'Start date',
 	'centralnotice-start-time' => 'Start time (UTC)',
-	'centralnotice-assigned-templates' => 'Assigned templates',
-	'centralnotice-no-templates' => 'No templates found.
+	'centralnotice-assigned-templates' => 'Assigned banners',
+	'centralnotice-no-templates' => 'No banners found.
 Add some!',
-	'centralnotice-no-templates-assigned' => 'No templates assigned to notice.
+	'centralnotice-no-templates-assigned' => 'No banners assigned to campaign.
 Add some!',
-	'centralnotice-available-templates' => 'Available templates',
-	'centralnotice-template-already-exists' => 'Template is already tied to campaign.
+	'centralnotice-available-templates' => 'Available banners',
+	'centralnotice-template-already-exists' => 'Banner is already tied to campaign.
 Not adding',
-	'centralnotice-preview-template' => 'Preview template',
+	'centralnotice-preview-template' => 'Preview banner',
 	'centralnotice-start-hour' => 'Start time',
 	'centralnotice-change-lang' => 'Change translation language',
 	'centralnotice-weights' => 'Weights',
-	'centralnotice-notice-is-locked' => 'Notice is locked.
+	'centralnotice-notice-is-locked' => 'Campaign is locked.
 Not removing',
-	'centralnotice-overlap' => 'Notice overlaps within the time of another notice.
+	'centralnotice-overlap' => 'Campaign overlaps within the time of another campaign.
 Not adding',
 	'centralnotice-invalid-date-range' => 'Invalid date range.
 Not updating',
@@ -77,16 +77,17 @@ Not updating',
 Not adding',
 	'centralnotice-confirm-delete' => 'Are you sure you want to delete this item?
 This action will be unrecoverable.',
-	'centralnotice-no-notices-exist' => 'No notices exist.
+	'centralnotice-no-notices-exist' => 'No campaigns exist.
 Add one below.',
-	'centralnotice-no-templates-translate' => 'There are not any templates to edit translations for',
+	'centralnotice-no-templates-translate' => 'There are not any banners to edit translations for',
 	'centralnotice-number-uses' => 'Uses',
-	'centralnotice-edit-template' => 'Edit template',
+	'centralnotice-edit-template' => 'Edit banner',
+	'centralnotice-edit-template-summary' => 'To create a localizable message, enclose a hyphenated string in three curly brackets, e.g. {{{jimbo-quote}}}.',
 	'centralnotice-message' => 'Message',
 	'centralnotice-message-not-set' => 'Message not set',
 	'centralnotice-clone' => 'Clone',
-	'centralnotice-clone-notice' => 'Create a copy of the template',
-	'centralnotice-preview-all-template-translations' => 'Preview all available translations of template',
+	'centralnotice-clone-notice' => 'Create a copy of the banner',
+	'centralnotice-preview-all-template-translations' => 'Preview all available translations of banner',
 
 	'right-centralnotice-admin' => 'Manage central notices',
 	'right-centralnotice-translate' => 'Translate central notices',
@@ -118,14 +119,14 @@ $messages['qqq'] = array(
 	'centralnotice-translate-heading' => 'Fieldset label. $1 is a name of a template.',
 	'centralnotice-add' => '{{Identical|Add}}',
 	'centralnotice-translate' => '{{Identical|Translate}}',
-	'centralnotice-notice-exists' => 'Errore message displayed in Special:CentralNotice when trying to add a notice with the same name of another notice',
-	'centralnotice-template-exists' => 'Errore message displayed in Special:NoticeTemplate when trying to add a template with the same name of another template',
+	'centralnotice-notice-exists' => 'Error message displayed in Special:CentralNotice when trying to add a notice with the same name of another notice',
+	'centralnotice-template-exists' => 'Error message displayed in Special:NoticeTemplate when trying to add a template with the same name of another template',
 	'centralnotice-start-date' => 'Used in Special:CentralNotice.
 
 {{Identical|Start date}}',
 	'centralnotice-start-time' => 'Used in Special:CentralNotice',
 	'centralnotice-available-templates' => 'Used in Special:NoticeTemplate',
-	'centralnotice-notice-is-locked' => 'Errore message displayed in Special:CentralNotice when trying to delete a locked notice',
+	'centralnotice-notice-is-locked' => 'Error message displayed in Special:CentralNotice when trying to delete a locked notice',
 	'centralnotice-invalid-date-range' => '{{Identical|Date}}',
 	'centralnotice-no-notices-exist' => 'Used in Special:CentralNotice when there are no notices',
 	'centralnotice-number-uses' => 'Column header in table with sitenotice campaign information.
@@ -280,6 +281,7 @@ $messages['am'] = array(
 $messages['an'] = array(
 	'centralnotice-desc' => 'Adibe una "sitenotice" zentral',
 	'centralnotice-end-date' => 'Calendata final',
+	'centralnotice-modify' => 'Ninviar',
 	'centralnotice-start-date' => 'Calendata de prenzipio',
 	'centralnotice-invalid-date-range' => "Rango de datos no conforme.
 No s'está adautando.",
@@ -527,6 +529,7 @@ $messages['bcc'] = array(
  * @author EugeneZelenko
  * @author Jim-by
  * @author Red Winged Duck
+ * @author Wizardist
  */
 $messages['be-tarask'] = array(
 	'centralnotice' => 'Кіраваньне цэнтралізаванымі паведамленьнямі',
@@ -603,6 +606,7 @@ $messages['be-tarask'] = array(
 	'centralnotice-no-templates-translate' => 'Няма шаблёнаў для рэдагаваньня перакладаў для',
 	'centralnotice-number-uses' => 'Выкарыстоўвае',
 	'centralnotice-edit-template' => 'Рэдагаваць шаблён',
+	'centralnotice-edit-template-summary' => 'Каб стварыць лякалізуемае паведамленьне, атачыце дэфісны радок у тры фігурныя дужкі, напрыклад, {{{цытата-джымба}}}.',
 	'centralnotice-message' => 'Паведамленьне',
 	'centralnotice-message-not-set' => 'Паведамленьне не ўсталяванае',
 	'centralnotice-clone' => 'Копія',
@@ -1109,6 +1113,7 @@ Níže můžete vytvořit nové.',
 	'centralnotice-no-templates-translate' => 'Nejsou žádné šablony, které by šlo přeložit',
 	'centralnotice-number-uses' => 'Použití',
 	'centralnotice-edit-template' => 'Upravit šablonu',
+	'centralnotice-edit-template-summary' => 'Lokalizovatelnou zprávu vytvoříte uzavřením identifikátoru se spojovníky do složených závorek, např. {{{citát-jimbo}}}.',
 	'centralnotice-message' => 'Zpráva',
 	'centralnotice-message-not-set' => 'Zpráva nebyla nastavena',
 	'centralnotice-clone' => 'Naklonovat',
@@ -1212,6 +1217,7 @@ $messages['da'] = array(
  * @author Metalhead64
  * @author Purodha
  * @author Raimond Spekking
+ * @author The Evil IP address
  * @author Umherirrender
  */
 $messages['de'] = array(
@@ -1288,6 +1294,7 @@ Füge eine hinzu.',
 	'centralnotice-no-templates-translate' => 'Es gibt keine Vorlagen, für die Übersetzungen zu bearbeiten wären',
 	'centralnotice-number-uses' => 'Nutzungen',
 	'centralnotice-edit-template' => 'Vorlage bearbeiten',
+	'centralnotice-edit-template-summary' => 'Um eine lokalisierbare Nachricht zu erstellen, füge einen String mit Bindestrich in drei geschweiften Klammern ein, z.B. {{{jimbo-zitat}}}.',
 	'centralnotice-message' => 'Nachricht',
 	'centralnotice-message-not-set' => 'Nachricht nicht gesetzt',
 	'centralnotice-clone' => 'Klon erstellen',
@@ -1476,6 +1483,7 @@ Pśidaj jadnu.',
 	'centralnotice-no-templates-translate' => 'Njejsu pśedłogi, za kótarež deje se pśełožki wobźěłaś',
 	'centralnotice-number-uses' => 'Wužyśa',
 	'centralnotice-edit-template' => 'Pśedłogu wobźěłaś',
+	'centralnotice-edit-template-summary' => 'Aby lokalizěrujobnu powěźeńku napórał, wobdaj znamuškowy rěd z wězawku z wuzgibnjonymi spinkami, na pś. {{{citat-jimbo}}}.',
 	'centralnotice-message' => 'Powěźeńka',
 	'centralnotice-message-not-set' => 'Powěźeńka njestajona',
 	'centralnotice-clone' => 'Klonowaś',
@@ -1681,6 +1689,7 @@ Afiŝu noticon suben',
 );
 
 /** Spanish (Español)
+ * @author Crazymadlover
  * @author Imre
  * @author Locos epraix
  * @author McDutchie
@@ -1763,6 +1772,7 @@ Añade uno debajo',
 	'centralnotice-no-templates-translate' => 'No hay plantillas de las que editar traducciones',
 	'centralnotice-number-uses' => 'Usos',
 	'centralnotice-edit-template' => 'Editar plantilla',
+	'centralnotice-edit-template-summary' => 'Para crear un mensaje localizable, encierre una cadena con guión dentro de tres llaves, por ejemplo {{{jimbo-quote}}}.',
 	'centralnotice-message' => 'Mensaje',
 	'centralnotice-message-not-set' => 'No se ha establecido un mensaje',
 	'centralnotice-clone' => 'Clonar',
@@ -1930,7 +1940,7 @@ $messages['fa'] = array(
 	'centralnotice-end-date' => 'تاریخ پایان',
 	'centralnotice-enabled' => 'فعال',
 	'centralnotice-modify' => 'ارسال',
-	'centralnotice-preview' => 'نمایش',
+	'centralnotice-preview' => 'پیش‌نمایش',
 	'centralnotice-add-new' => 'افزودن یک اعلان متمرکز جدید',
 	'centralnotice-remove' => 'حذف',
 	'centralnotice-translate-heading' => 'ترجمه از $1',
@@ -1968,7 +1978,7 @@ $messages['fa'] = array(
 	'centralnotice-start-date' => 'تاریخ آغاز',
 	'centralnotice-start-time' => 'زمان آغاز',
 	'centralnotice-assigned-templates' => 'الگوهای متصل شده',
-	'centralnotice-no-templates' => 'در این سیستم هیچ الگویی نیست.
+	'centralnotice-no-templates' => 'هیچ الگویی پیدا نشد.
 چندتا بسازید.',
 	'centralnotice-no-templates-assigned' => 'الگویی به این اعلان متصل نیست.
 اضافه کنید!',
@@ -2102,6 +2112,7 @@ Lisää alapuolella sellainen',
  * @author Crochet.david
  * @author Grondin
  * @author IAlex
+ * @author Jean-Frédéric
  * @author McDutchie
  * @author Meithal
  * @author PieRRoMaN
@@ -2184,6 +2195,7 @@ Ajoutez-en ci-dessous.',
 	'centralnotice-no-templates-translate' => 'Il n’y a aucun modèle à traduire',
 	'centralnotice-number-uses' => 'Utilisations',
 	'centralnotice-edit-template' => 'Modifier le modèle',
+	'centralnotice-edit-template-summary' => 'Pour créer un message localisable, entourez une chaîne à trait d’union de trois accolades, par exemple {{{jimbo-quote}}}.',
 	'centralnotice-message' => 'Message',
 	'centralnotice-message-not-set' => 'Message non renseigné',
 	'centralnotice-clone' => 'Dupliquer',
@@ -2369,6 +2381,7 @@ Engada algún embaixo',
 	'centralnotice-no-templates-translate' => 'Non hai modelos que traducir',
 	'centralnotice-number-uses' => 'Usos',
 	'centralnotice-edit-template' => 'Editar o modelo',
+	'centralnotice-edit-template-summary' => 'Para crear unha mensaxe que se poida traducir, coloque a cadea entre tres corchetes; por exemplo, {{{jimbo-quote}}}.',
 	'centralnotice-message' => 'Mensaxe',
 	'centralnotice-message-not-set' => 'Mensaxe sen fixar',
 	'centralnotice-clone' => 'Clonar',
@@ -2483,6 +2496,7 @@ Fieg eini zue.',
 	'centralnotice-no-templates-translate' => 'S git kei Vorlage, wu Ibersetzige derfir z bearbeite wäre',
 	'centralnotice-number-uses' => 'Nutzige',
 	'centralnotice-edit-template' => 'Vorlag bearbeite',
+	'centralnotice-edit-template-summary' => 'Go ne lokalisierbari Nochricht aalege, lueg ass es e Bindestrich het in drej gschwerifte Chlammere, z. B. {{{jimbo-quote}}}.',
 	'centralnotice-message' => 'Nochricht',
 	'centralnotice-message-not-set' => 'Nochricht nit gsetzt',
 	'centralnotice-clone' => 'Klon aalege',
@@ -2761,6 +2775,7 @@ Přidaj někajku',
 	'centralnotice-no-templates-translate' => 'Njejsu předłohi, za kotrež dyrbjeli so přełožki wobdźěłać',
 	'centralnotice-number-uses' => 'Wužića',
 	'centralnotice-edit-template' => 'Předłohu wobdźěłać',
+	'centralnotice-edit-template-summary' => '↓ Zo by lokalizujomnu stronu wutowrił, wobdaj znamješkowy rjećazk z wjazawku z třomi zhibowanymi spinkami. na př. {{{citat-jimbo}}}.',
 	'centralnotice-message' => 'Powěsć',
 	'centralnotice-message-not-set' => 'Powěsć njepostajena',
 	'centralnotice-clone' => 'Klonować',
@@ -2941,6 +2956,7 @@ Adde un infra',
 	'centralnotice-no-templates-translate' => 'Non existe alcun patrono a traducer',
 	'centralnotice-number-uses' => 'Usos',
 	'centralnotice-edit-template' => 'Modificar patrono',
+	'centralnotice-edit-template-summary' => 'Pro crear un message localisabile, include un texto con tracto de union in tres accolladas, p.ex. {{{jimbo-quote}}}.',
 	'centralnotice-message' => 'Message',
 	'centralnotice-message-not-set' => 'Message non definite',
 	'centralnotice-clone' => 'Clonar',
@@ -3067,6 +3083,7 @@ $messages['io'] = array(
 	'centralnotice-month' => 'Monato',
 	'centralnotice-hours' => 'Horo',
 	'centralnotice-min' => 'Minuto',
+	'centralnotice-number-uses' => 'Uzadi',
 );
 
 /** Icelandic (Íslenska)
@@ -3359,6 +3376,7 @@ $messages['ka'] = array(
 	'centralnotice-templates' => 'თარგები',
 	'centralnotice-weight' => 'სიგანე',
 	'centralnotice-locked' => 'დაბლოკილი',
+	'centralnotice-notices' => 'შეტყობინებები',
 	'centralnotice-notice-exists' => 'შენიშვნა უკვე არსებობს.
 არ დაამატოთ',
 	'centralnotice-template-exists' => 'თარგი უკვე არსებობს. არ დაამატოთ',
@@ -3980,6 +3998,7 @@ $messages['mk'] = array(
 	'centralnotice-no-templates-translate' => 'Нема шаблони за кои можете да уредите преведувања',
 	'centralnotice-number-uses' => 'Користи',
 	'centralnotice-edit-template' => 'Уреди шаблон',
+	'centralnotice-edit-template-summary' => 'За да создадете порака што ќе може да се локализира, напишете низа со цртичка и ставете ја во три кадрави загради, на пр. {{{цитат-џимбо}}}.',
 	'centralnotice-message' => 'Порака',
 	'centralnotice-message-not-set' => 'Порката не е поставена',
 	'centralnotice-clone' => 'Клонирај',
@@ -4071,6 +4090,7 @@ $messages['ml'] = array(
 	'centralnotice-no-templates-translate' => 'ഇതിന്റെ തർജ്ജമകൾ തിരുത്താനായി ഒരു ഫലകവും ഇപ്പോഴില്ല',
 	'centralnotice-number-uses' => 'ഉപയോഗങ്ങൾ',
 	'centralnotice-edit-template' => 'ഫലകം തിരുത്തുക',
+	'centralnotice-edit-template-summary' => 'പ്രാദേശീകരിക്കാവുന്ന സന്ദേശം സൃഷ്ടിക്കാൻ, മൂന്ന് വളയൻ കോഷ്ഠകങ്ങൾക്കുള്ളിൽ ഹൈഫൻ ഉപയോഗിച്ച് ചേർത്ത പദങ്ങൾ നൽകുക, ഉദാ: {{{jimbo-quote}}}.',
 	'centralnotice-message' => 'സന്ദേശം',
 	'centralnotice-message-not-set' => 'സന്ദേശം നിശ്ചിതപ്പെടുത്തിയില്ല.',
 	'centralnotice-clone' => 'സമപ്പകർപ്പ്',
@@ -4313,7 +4333,7 @@ De module kan ook gebruikt worden om sitenotices toe te voegen of oude te verwij
 	'centralnotice-end-date' => 'Einddatum',
 	'centralnotice-enabled' => 'Actief',
 	'centralnotice-modify' => 'Opslaan',
-	'centralnotice-preview' => 'Bekijken',
+	'centralnotice-preview' => 'Voorvertoning',
 	'centralnotice-add-new' => 'Nieuwe centrale sitenotice toevoegen',
 	'centralnotice-remove' => 'Verwijderen',
 	'centralnotice-translate-heading' => 'Vertaling voor $1',
@@ -4376,6 +4396,7 @@ U kunt er hieronder een toevoegen',
 	'centralnotice-no-templates-translate' => 'Er zijn geen sjablonen waarvoor vertalingen gemaakt kunnen worden',
 	'centralnotice-number-uses' => 'Keren gebruikt',
 	'centralnotice-edit-template' => 'Sjabloon bewerken',
+	'centralnotice-edit-template-summary' => 'Sluit een stuk tekst in met drie accolades, bijvoorbeeld {{{jimo-quote}}}, om de tekst vertaalbaar te maken.',
 	'centralnotice-message' => 'Bericht',
 	'centralnotice-message-not-set' => 'Het bericht is niet ingesteld',
 	'centralnotice-clone' => 'Kopiëren',
@@ -4752,6 +4773,7 @@ Dodaj nowy poniżej.',
 	'centralnotice-no-templates-translate' => 'Nie ma żadnych szablonów do zmiany tłumaczeń dla',
 	'centralnotice-number-uses' => 'Zastosowania',
 	'centralnotice-edit-template' => 'Edycja szablonu',
+	'centralnotice-edit-template-summary' => 'Lokalizowalny komunikat należy tworzyć poprzez zapisanie ciągu znaków rozdzielanych znakiem odejmowania w trzech nawiasach klamrowych, np {{{cytat-jimbo}}}.',
 	'centralnotice-message' => 'Wiadomość',
 	'centralnotice-message-not-set' => 'Wiadomość nie jest ustawiona',
 	'centralnotice-clone' => 'Kopia',
@@ -4843,6 +4865,7 @@ Ch'a na gionta un-a sì-sota.",
 	'centralnotice-no-templates-translate' => 'A-i é gnun ëstamp dont modifiché la tradussion',
 	'centralnotice-number-uses' => 'Usagi',
 	'centralnotice-edit-template' => 'Modìfica stamp',
+	'centralnotice-edit-template-summary' => 'Për creé un mëssagi localisàbil, sara na stringa con tratin ant tre paréntesi grafe, p.e. {{{jimbo-quote}}}.',
 	'centralnotice-message' => 'Mëssagi',
 	'centralnotice-message-not-set' => 'Mëssagi pa ampostà',
 	'centralnotice-clone' => 'Clon-a',
@@ -4972,6 +4995,7 @@ Adicione um abaixo',
 	'centralnotice-no-templates-translate' => 'Não há quaisquer modelos para os quais seja possível editar traduções',
 	'centralnotice-number-uses' => 'Utilizações',
 	'centralnotice-edit-template' => 'Editar modelo',
+	'centralnotice-edit-template-summary' => 'Para criar uma mensagem localizável, coloque entre três chavetas um texto que contenha um hífen; por exemplo, {{{citar-jimbo}}}.',
 	'centralnotice-message' => 'Mensagem',
 	'centralnotice-message-not-set' => 'Mensagem não estabelecida',
 	'centralnotice-clone' => 'Clonar',
@@ -4986,6 +5010,7 @@ Adicione um abaixo',
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
+ * @author Giro720
  * @author Heldergeovane
  */
 $messages['pt-br'] = array(
@@ -5063,6 +5088,7 @@ Adicione um abaixo',
 	'centralnotice-no-templates-translate' => 'Não há quaisquer modelos para os quais seja possível editar traduções',
 	'centralnotice-number-uses' => 'Utilizações',
 	'centralnotice-edit-template' => 'Editar modelo',
+	'centralnotice-edit-template-summary' => 'Para criar uma mensagem localizável, coloque entre três chaves um texto que contenha um hífen; por exemplo, {{{texto-citado}}}.',
 	'centralnotice-message' => 'Mensagem',
 	'centralnotice-message-not-set' => 'Mensagem não estabelecida',
 	'centralnotice-clone' => 'Clonar',
@@ -5132,6 +5158,8 @@ Yapay!',
 	'centralnotice-no-templates-assigned' => 'Manam kanchu willayman haypusqa plantillakuna.
 Yapay!',
 	'centralnotice-available-templates' => 'Aypanalla plantillakuna',
+	'centralnotice-template-already-exists' => 'Unanchaqa huk kampañamanmi watasqaña.
+Mana yapaspa',
 	'centralnotice-preview-template' => 'Plantillata ñawpaqta qhawallay',
 	'centralnotice-start-hour' => 'Qallarisqanpa pachan',
 	'centralnotice-change-lang' => "T'ikrana rimayta hukchay",
@@ -5151,6 +5179,7 @@ Kay qatiqpi hukta yapay',
 	'centralnotice-no-templates-translate' => "Manam kanchu plantillakuna, imapaqchus t'ikrasqa llamk'apunalla kanman",
 	'centralnotice-number-uses' => "Llamk'achin",
 	'centralnotice-edit-template' => "Plantillata llamk'apuy",
+	'centralnotice-edit-template-summary' => "Maypichanalla willayta kamarinaykipaqqa, aspiyuq qillqallata kimsa chhurku wichq'achiqpi wichq'ay, ahinataq {{{jimbo-quote}}}.",
 	'centralnotice-message' => 'Willay',
 	'centralnotice-message-not-set' => 'Manam kanchu churasqa willay',
 	'centralnotice-clone' => 'Iskayllachay',
@@ -5231,6 +5260,7 @@ $messages['roa-tara'] = array(
 /** Russian (Русский)
  * @author Aleksandrit
  * @author Ferrer
+ * @author G0rn
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
@@ -5308,6 +5338,7 @@ $messages['ru'] = array(
 	'centralnotice-no-templates-translate' => 'Нет ни одного шаблона для правки перевода',
 	'centralnotice-number-uses' => 'Используются',
 	'centralnotice-edit-template' => 'Править шаблон',
+	'centralnotice-edit-template-summary' => 'Чтобы создать локализуемое сообщение, заключите дефисную строку в три фигурные скобки, например {{{цитата-джимбо}}}.',
 	'centralnotice-message' => 'Сообщение',
 	'centralnotice-message-not-set' => 'Сообщение не установлено',
 	'centralnotice-clone' => 'Клонирование',
@@ -5900,6 +5931,7 @@ Lägg till ett nedan',
 	'centralnotice-no-templates-translate' => 'Det finns inga mallar att redigera översättningar för',
 	'centralnotice-number-uses' => 'Användningar',
 	'centralnotice-edit-template' => 'Redigera mall',
+	'centralnotice-edit-template-summary' => 'För att skapa ett meddelande som kan lokalanpassas, inkludera en bindestrecks-sträng inom tre klammerparenteser, t.ex. {{{jimbo-quote}}}.',
 	'centralnotice-message' => 'Budskap',
 	'centralnotice-message-not-set' => 'Budskap inte satt',
 	'centralnotice-clone' => 'Klon',
@@ -6363,7 +6395,7 @@ Maaari rin itong gamitin upang makapagdagdag o magtanggal ng mga lumang pahayag.
 	'centralnotice-notice-name' => 'Pangalan ng pabatid',
 	'centralnotice-end-date' => 'Pangwakas na petsa',
 	'centralnotice-enabled' => 'Paganahin',
-	'centralnotice-modify' => 'Ipasa/ipadala',
+	'centralnotice-modify' => 'Ipasa',
 	'centralnotice-preview' => 'Paunang tingin',
 	'centralnotice-add-new' => 'Magdagdag ng isang bagong pangunahing pabatid',
 	'centralnotice-remove' => 'Tanggalin',
@@ -6428,6 +6460,7 @@ Magdagdag ng isa sa ibaba',
 	'centralnotice-no-templates-translate' => 'Walang mga suleras na mapagsasagawaan ng mga pagbabagong pangsalinwika',
 	'centralnotice-number-uses' => 'Mga mapaggagamitan',
 	'centralnotice-edit-template' => 'Baguhin ang suleras',
+	'centralnotice-edit-template-summary' => 'Upang makalikha ng isang maisakakatubong mensahe, maglakip ng isang ginitlingang bagting sa loob ng tatlong kulot na mga braket, halimbawa na ang {{{jimbo-sipi}}}.',
 	'centralnotice-message' => 'Mensahe',
 	'centralnotice-message-not-set' => 'Hindi nakatakda ang mensahe',
 	'centralnotice-clone' => 'Kopyang kahawig na kahawig ng pinaggayahan',
@@ -6885,9 +6918,11 @@ $messages['yo'] = array(
 );
 
 /** Cantonese (粵語)
+ * @author Horacewai2
  * @author Shinjiman
  */
 $messages['yue'] = array(
+	'centralnotice' => '統一通告管理',
 	'centralnotice-desc' => '加入一個中央公告欄',
 );
 

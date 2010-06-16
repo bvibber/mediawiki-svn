@@ -2,7 +2,8 @@
 /**
  * Internationalisation file for Asksql extension
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  * @author Bertrand Grondin <bertrand.grondin@tiscali.fr>
  */
 
@@ -806,7 +807,7 @@ $messages['mk'] = array(
 	'asksql-desc' => 'Поставувајте SQL барања преку [[Special:Asksql|специјална страница]]',
 	'asksqltext' => "Користете го образецот подолу за да поставувате директни барања до базата на податоци.
 Користете единечни наводници ('вака') за разграничување на низите. симболи.
-Овие барања честопати значително го преоптоваруваат серверот, и затоа бидете умерени со бројот и честотата на барањата.",
+Овие барања честопати значително го преоптоваруваат опслужувачот, и затоа бидете умерени со бројот и честотата на барањата.",
 	'sqlislogged' => 'Имајте на ум дека сите барања се заведуваат во дневник.',
 	'sqlquery' => 'Внесете го барањето',
 	'querybtn' => 'Поднеси барање',
@@ -1136,9 +1137,17 @@ $messages['sr-ec'] = array(
  * @author Michaello
  */
 $messages['sr-el'] = array(
+	'asksql' => 'SQL upit',
+	'asksql-desc' => 'Odradi SQL upite preko [[Special:Asksql|posebne stranice]]',
+	'asksqltext' => "Koristite obrazac ispod da napravite direktan upit baze podataka.
+Koristite apostrofe ('kao ovo') da ograničite bukvalne niske.
+Ovo često može dovesti do značajnog opterećenja servera, zato koristite ovu funkciju pažljivo.",
+	'sqlislogged' => 'Upamtite da su svi upiti zabeleženi.',
 	'sqlquery' => 'Unesi upit',
 	'querybtn' => 'Postavi upit',
+	'selectonly' => 'Dozvoljeni su upiti koji se samo mogu čitati.',
 	'querysuccessful' => 'Upit uspešan',
+	'right-asksql' => 'Napravi SQL upite',
 );
 
 /** Seeltersk (Seeltersk)

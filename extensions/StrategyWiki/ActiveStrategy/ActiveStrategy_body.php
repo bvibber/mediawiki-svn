@@ -1,78 +1,226 @@
 <?php
 
 class ActiveStrategy {
-	static function getSQL() {
-		global $wgActiveStrategyPeriod;
-
+	static function getTaskForces() {
 		$dbr = wfGetDB( DB_SLAVE );
-		$revisionTable = $dbr->tableName( 'revision' );
-		$pageTable = $dbr->tableName( 'page' );
-		$start = time() - $wgActiveStrategyPeriod;
-		$encPeriodStart = $dbr->addQuotes( $dbr->timestamp( $start ) );
-
-		$sql = <<<SQL
-			SELECT 
-				page_namespace AS namespace,
-				substring_index(page_title, '/', 2) AS title,
-				COUNT(*) AS edits
-			FROM $revisionTable
-			JOIN $pageTable ON page_id = rev_page
-			WHERE 
-				page_namespace = 0 AND 
-				page_title LIKE 'Task_force/%' AND
-				rev_timestamp > $encPeriodStart
-			GROUP BY page_namespace, title
-SQL;
-		$sql = strtr( $sql, "\r\n\t", '   ' );
-		return $sql;
+		
+		$res = $dbr->select( array( "page", 'categorylinks' ),
+				array(
+					'page_id',
+					'page_namespace',
+					'page_title',
+					"substring_index(page_title, '/', 2) AS tf_name"
+				),
+				array(
+					'page_namespace' => 0,
+					"page_title LIKE 'Task_force/%'",
+					"page_title NOT LIKE 'Task_force/%/%'",
+				),
+				__METHOD__,
+				array(),
+				array(
+					'categorylinks' => array( 'RIGHT JOIN',
+						array(
+							'cl_from=page_id',
+							'cl_to' => 'Task_force',
+						),
+					),
+				) );
+		
+		return $res;
 	}
 
-	static function formatResult( $skin, $result ) {
-		global $wgContLang, $wgLang;
+	static function formatResult( $skin, $taskForce, $number, $type ) {
+		global $wgContLang, $wgLang, $wgActiveStrategyColors;
 
-		$title = Title::makeTitle( $result->namespace, $result->title );
-		$text = $wgContLang->convert( $title->getPrefixedText() );
-		$pageLink = $skin->linkKnown( $title, $text );
-		$members = self::getMemberCount( $title->getPrefixedText() );
-		$details = array();
-
-		$numberLink = $skin->linkKnown(
-			$title,
-			wfMsgExt( 'nrevisions', array( 'parsemag', 'escape' ),
-				$wgLang->formatNum( $result->edits ) ),
-			array(),
-			array( 'action' => 'history' )
-		);
-		
-		$details = array( $numberLink );
-		
-		if ($members >= 0) {
-			$details[] = wfMsgExt( 'nmembers', array( 'parsemag', 'escape' ),
-					$wgLang->formatNum( $members ) );
+		if ( ! $taskForce ) {
+			// Fail.
+			return;
 		}
-				
-		$details = $wgLang->commaList( $details );
+
+		$title = Title::newFromText( $taskForce );
+		$text = $wgContLang->convert( $title->getPrefixedText() );
+		$text = self::getTaskForceName( $text );
+		$pageLink = $skin->linkKnown( $title, $text );
+		$colors = null;
+		$color = null;
+		$style = '';
 		
-		return wfSpecialList( $pageLink, $details );
+		if ( isset( $wgActiveStrategyColors[$type] ) ) {
+			$colors = $wgActiveStrategyColors[$type];
+		} else {
+			$colors = $wgActiveStrategyColors['default'];
+		}
+		
+		ksort($colors);
+		
+		foreach( $colors as $threshold => $curColor ) {
+			if ( $number >= $threshold ) {
+				$color = $curColor;
+			} else {
+				break;
+			}
+		}
+		
+		if ($color) {
+			$style = 'padding-left: 3px; border-left: 1em solid #'.$color;
+		}
+		
+		if ( $type == 'members' ) {
+			$pageLink .= ' ('.wfMsg( 'nmembers', $number ).')';
+		}
+		
+		$pageLink .= " <!-- $number -->";
+		
+		if ($style) {
+			$item = Xml::tags( 'span', array( 'style' => $style ), $pageLink );
+		} else {
+			$item = $pageLink;
+		}
+		
+		$item .= "<br/>";
+		
+		return $item;
 	}
 	
-	static function getOutput() {
-		global $wgUser;
+	static function getTaskForceName( $text ) {
+		$text = substr( $text, strpos($text, '/') + 1 );
+		
+		if ( strpos( $text, '/' ) ) {
+			$text = substr( $text, 0, strpos( $text, '/' ) );
+		}
+		
+		return $text;
+	}
+	
+	static function getOutput( $args ) {
+		global $wgUser, $wgActiveStrategyPeriod;
 		
 		$html = '';
-		$sql = self::getSQL();
 		$db = wfGetDB( DB_MASTER );
 		$sk = $wgUser->getSkin();
 		
-		$result = $db->query( $sql, __METHOD__ );
+		$sortField = 'members';
 		
-		foreach( $result as $row ) {
-			$html .= Xml::tags( 'li', null, self::formatResult( $sk, $row ) );
+		if ( isset($args['sort']) ) {
+			$sortField = $args['sort'];
 		}
 		
-		$html = Xml::tags( 'ul', null, $html );
+		$taskForces = self::getTaskForces();
+		$categories = array();
+		
+		// Sorting by number of members doesn't require any 
+		if ($sortField == 'members' ) {
+			return self::handleSortByMembers( $taskForces );
+		}
+		
+		foreach( $taskForces as $row ) {
+			$text = self::getTaskForceName( $row->tf_name );
+			$tempTitle = Title::makeTitleSafe( NS_CATEGORY, $text );
+			$categories[$row->tf_name] = $tempTitle->getDBkey();
+		}
+		
+		$tables = array( 'page', 'categorylinks' );
+		$fields = array( 'categorylinks.cl_to' );
+		$conds = array( 'categorylinks.cl_to' => $categories );
+		$options = array( 'GROUP BY' => 'categorylinks.cl_to', 'ORDER BY' => 'value DESC' );
+		$joinConds = array( 'categorylinks' =>
+				array( 'left join', 'categorylinks.cl_from=page.page_id' ) );
+		
+		// Extra categories to consider
+		$tables[] = 'categorylinks as tfcategory';
+		$tables[] = 'categorylinks as finishedcategory';
+		
+		$joinConds['categorylinks as tfcategory'] =
+			array( 'left join',
+				array(
+					'tfcategory.cl_from=page.page_id',
+					'tfcategory.cl_to' => 'Task_force'
+				),
+			);
+		$joinConds['categorylinks as finishedcategory'] = 
+			array( 'left join',
+				array(
+					'finishedcategory.cl_from=page.page_id',
+					'finishedcategory.cl_to' => 'Task_force_finished'
+				),
+			);
+			
+		$conds[] = 'tfcategory.cl_from IS NOT NULL';
+		$conds[] = 'finishedcategory.cl_from IS NULL';
+		
+		if ( $sortField == 'edits' ) {
+			$cutoff = $db->timestamp( time() - $wgActiveStrategyPeriod );
+			$cutoff = $db->addQuotes( $cutoff );
+			$tables[] = 'revision';
+			$joinConds['revision'] =
+				array( 'left join',
+					array( 'rev_page=page_id',
+						"rev_timestamp > $cutoff",
+						"rev_page IS NOT NULL" ) );
+			$fields[] = 'count(distinct rev_id) + count(distinct thread_id) as value';
+			
+			// Include LQT posts
+			$tables[] = 'thread';
+			$joinConds['thread'] =
+				array( 'left join',
+					array( 'thread.thread_article_title=page.page_title',
+						"thread.thread_modified > $cutoff" )
+				);
+		} elseif ( $sortField == 'ranking' ) {
+			$tables[] = 'pagelinks';
+			$joinConds['pagelinks'] = array( 'left join',
+				array( 'pl_namespace=page_namespace', 'pl_title=page_title' ) );
+			$fields[] = 'count(distinct pl_from) as value';
+		}
+		
+		$result = $db->select( $tables, $fields, $conds,
+					__METHOD__, $options, $joinConds );
+					
+					
+		$categoryToTaskForce = array_flip( $categories );
+		
+		foreach( $result as $row ) {
+			$number = $row->value;
+			$taskForce = $categoryToTaskForce[$row->cl_to];
+			
+			if ( $number > 0 ) {
+				$html .= self::formatResult( $sk, $taskForce, $number, $sortField );
+			}
+		}
+		
+		$html = Xml::tags( 'div', array( 'class' => 'mw-activestrategy-output' ),
+				$html );
 		
 		return $html;
+	}
+	
+	static function handleSortByMembers( $taskForces ) {
+		global $wgUser;
+		
+		$memberCount = array();
+		$output = '';
+		$sk = $wgUser->getSkin();
+		
+		foreach( $taskForces as $row ) {
+			$title = Title::makeTitle( $row->page_namespace, $row->page_title );
+			$memberCount[$row->tf_name] =
+				self::getMemberCount( $title->getPrefixedText() );
+		}
+		
+		asort( $memberCount );
+		$memberCount = array_reverse( $memberCount );
+		
+		foreach( $memberCount as $name => $count ) {
+			if ( $count > 0 ) {
+				$output .= self::formatResult( $sk, $name, $count, 'members' );
+			}
+		}
+		
+		$output = Xml::tags( 'div', array( 'class' => 'mw-activestrategy-output' ),
+				$output );
+		
+		return $output;
 	}
 	
 	static function getMemberCount( $taskForce ) {
@@ -86,9 +234,12 @@ SQL;
 		}
 		
 		$article = new Article( Title::newFromText( $taskForce ) );
-		$content = $article->getContent();
+
+		$dbr = wfGetDB( DB_SLAVE );
 		
-		$count = self::parseMemberList( $content );
+		$count = $dbr->selectField( 'pagelinks', 'count(*)',
+				array( 'pl_from' => $article->getId(),
+					'pl_namespace' => NS_USER ), __METHOD__ );
 		
 		$wgMemc->set( $key, $count, 86400 );
 		

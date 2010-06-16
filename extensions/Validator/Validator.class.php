@@ -22,6 +22,8 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  *
  * TODO: break on fatal errors, such as missing required parameters that are dependencies 
  * TODO: correct invalid parameters in the main loop, as to have correct dependency handling
+ * TODO: settings of defaults should happen as a default behaviour that can be overiden by the output format,
+ * 		 as it is not wished for all output formats in every case, and now a hacky approach is required there.
  */
 final class Validator {
 
@@ -135,16 +137,15 @@ final class Validator {
 	private $mErrors = array();
 
 	/**
-	 * Determines the names and values of all parameters. Also takes care of
-	 * default parameters and aliases, by determining the main parameter name.
+	 * Determines the names and values of all parameters. Also takes care of default parameters. 
+	 * After that the resulting parameter list is passed to Validator::setParameters
 	 * 
 	 * @param array $rawParams
 	 * @param array $parameterInfo
 	 * @param array $defaultParams
+	 * @param boolean $toLower Indicates if the parameter values should be put to lower case. Defaults to true.
 	 */
-	public function parseAndSetParams( array $rawParams, array $parameterInfo, array $defaultParams = array() ) {
-		$this->mParameterInfo = $parameterInfo;
-		
+	public function parseAndSetParams( array $rawParams, array $parameterInfo, array $defaultParams = array(), $toLower = true ) {
 		$parameters = array();
 
 		$nr = 0;
@@ -156,39 +157,83 @@ final class Validator {
 			if ( is_string( $arg ) ) {
 				$parts = explode( '=', $arg, 2 );
 				
+				// If there is only one part, no parameter name is provided, so try default parameter assignment.
 				if ( count( $parts ) == 1 ) {
+					// Default parameter assignment is only possible when there are default parameters!
 					if ( count( $defaultParams ) > 0 ) {
 						$defaultParam = array_shift( $defaultParams );
-						$parameters[$defaultParam] = array(
-							'original-value' => trim( $parts[0] ),
+						$parameters[strtolower( $defaultParam )] = array(
+							'original-value' => trim( $toLower ? strtolower( $parts[0] ) : $parts[0] ),
 							'default' => $defaultNr,
 							'position' => $nr
 						);
 						$defaultNr++;
 					}
+					else {
+						// It might be nice to have some sort of warning or error here, as the value is simply ignored.
+					}
 				} else {
-					$parameters[$parts[0]] = array(
-						'original-value' => trim( $parts[1] ),
+					$paramName = strtolower( $parts[0] );
+					
+					$parameters[$paramName] = array(
+						'original-value' => trim( $toLower ? strtolower( $parts[1] ) : $parts[1] ),
 						'default' => false,
 						'position' => $nr
 					);
+					
+					// Let's not be evil, and remove the used parameter name from the default parameter list.
+					// This code is basically a remove array element by value algorithm.
+					$newDefaults = array();
+					
+					foreach( $defaultParams as $defaultParam ) {
+						if ( $defaultParam != $paramName ) $newDefaults[] = $defaultParam;
+					}
+					
+					$defaultParams = $newDefaults;
 				}
 			}
 			$nr++;
-		}
+		}	
 
+		$this->setParameters( $parameters, $parameterInfo, false );
+	}
+	
+	/**
+	 * Loops through a list of provided parameters, resolves aliasing and stores errors
+	 * for unknown parameters and optionally for parameter overriding.
+	 * 
+	 * @param array $parameters Parameter name as key, parameter value as value
+	 * @param array $parameterInfo Main parameter name as key, parameter meta data as valu
+	 * @param boolean $toLower Indicates if the parameter values should be put to lower case. Defaults to true.
+	 */
+	public function setParameters( array $parameters, array $parameterInfo, $toLower = true ) {
+		$this->mParameterInfo = $parameterInfo;
+		
 		// Loop through all the user provided parameters, and destinguise between those that are allowed and those that are not.
 		foreach ( $parameters as $paramName => $paramData ) {
+			$paramName = strtolower( $paramName );
+			
 			// Attempt to get the main parameter name (takes care of aliases).
 			$mainName = self::getMainParamName( $paramName );
-			
+
 			// If the parameter is found in the list of allowed ones, add it to the $mParameters array.
 			if ( $mainName ) {
 				// Check for parameter overriding. In most cases, this has already largely been taken care off, 
 				// in the form of later parameters overriding earlier ones. This is not true for different aliases though.
 				if ( !array_key_exists( $mainName, $this->mParameters ) || self::$acceptOverriding ) {
-					$paramData['original-name'] = $paramName;
-					$this->mParameters[$mainName] = $paramData;
+					// If the valueis an array, this means it has been procesed in parseAndSetParams already.
+					// If it is not, setParameters was called directly with an array of string parameter values.
+					if ( is_array( $paramData ) && array_key_exists( 'original-value', $paramData ) ) {
+						$paramData['original-name'] = $paramName;
+						if ( $toLower ) $paramData['original-value'] = strtolower( $paramData['original-value'] );
+						$this->mParameters[$mainName] = $paramData;							
+					}
+					else {
+						$this->mParameters[$mainName] = array(
+							'original-value' => $toLower && is_string( $paramData ) ? strtolower( $paramData ) : $paramData,
+							'original-name' => $paramName,
+						);						
+					}
 				}
 				else {
 					$this->errors[] = array( 'type' => 'override', 'name' => $mainName );
@@ -197,7 +242,7 @@ final class Validator {
 			else { // If the parameter is not found in the list of allowed ones, add an item to the $this->mErrors array.
 				if ( self::$storeUnknownParameters ) $this->mUnknownParams[] = $paramName;
 				$this->mErrors[] = array( 'type' => 'unknown', 'name' => $paramName );
-			}
+			}		
 		}
 	}
 	

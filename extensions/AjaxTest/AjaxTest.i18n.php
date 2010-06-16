@@ -2,11 +2,13 @@
 /**
  * Internationalisation file for extension AjaxTest.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $messages = array();
 
 $messages['en'] = array(
-	'ajaxtest-desc'             => '[[Special:AjaxTest|AjaxTest]] extension',
+	'ajaxtest' => 'Ajax Test',
+	'ajaxtest-desc' => '[[Special:AjaxTest|AjaxTest]] extension',
 );

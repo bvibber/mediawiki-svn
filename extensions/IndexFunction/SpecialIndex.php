@@ -18,10 +18,10 @@ class SpecialIndexPager extends AlphabeticPager {
 			$title = Title::makeTitle( $row->ns, $row->title );
 			$ret = Xml::openElement( 'tr' );
 			$link = $sk->link( $title, null, array(), array(), array( 'known', 'noclasses' ) );
-			$blankarr = $this->arrow( '' ) . '&nbsp;';
+			$blankarr = $this->arrow( '' ) . '&#160;';
 			$ret .= Xml::tags( 'td', null, $blankarr );
 			$ret .= Xml::tags( 'td', null, $link );
-			$ret .= Xml::tags( 'td', null, '&nbsp;' );
+			$ret .= Xml::tags( 'td', null, '&#160;' );
 			$ret .= Xml::closeElement( 'tr' );
 			return $ret;
 		} else {
@@ -330,7 +330,7 @@ class SpecialIndex extends SpecialPage {
 					$search = preg_quote( $title->getPrefixedText(), '/' );
 					$line = preg_replace( "/$search/i", $link, $text, 1 );
 				} else {
-					$line = $link . '&nbsp;&ndash&nbsp;' . $text;
+					$line = $link . '&#160;&ndash&#160;' . $text;
 				}
 			} else {
 				$line = $link;
@@ -338,7 +338,7 @@ class SpecialIndex extends SpecialPage {
 			$line = Xml::tags( 'li', array(), $line );
 		} elseif ( $wgSpecialIndexContext == 'categories' ) {
 			if ( $cats ) {
-				$line = $link . '&nbsp;&ndash&nbsp;' . implode( ', ', $cats );
+				$line = $link . '&#160;&ndash&#160;' . implode( ', ', $cats );
 				$line = Xml::tags( 'li', array(), $line );
 			} else {
 				$line = Xml::tags( 'li', array(), $link );

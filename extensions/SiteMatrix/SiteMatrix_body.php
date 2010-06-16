@@ -267,7 +267,7 @@ class SiteMatrixPage extends SpecialPage {
 				Xml::element( 'th', array( 'colspan' => count( $matrix->getSites() ) ), wfMsg( 'sitematrix-project' ) ) .
 			"</tr>
 			<tr>
-				<th>&nbsp;</th>";
+				<th>&#160;</th>";
 				foreach ( $matrix->getNames() as $id => $name ) {
 					$url = $matrix->getSiteUrl( $id );
 					$s .= Xml::tags( 'th', null, "<a href=\"{$url}\">{$name}</a>" );
@@ -337,7 +337,7 @@ class SiteMatrixPage extends SpecialPage {
 
 /**
  * Query module to get site matrix
- * @addtogroup API
+ * @ingroup API
  */
 class ApiQuerySiteMatrix extends ApiQueryBase {
 

@@ -265,6 +265,18 @@ $messages['sk'] = array(
 	'minify-desc' => 'Zmenší výstup CSS a JavaScript z action=raw',
 );
 
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'minify-desc' => 'Избацује CSS и JavaScript излаз из action=raw',
+);
+
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'minify-desc' => 'Izbacuje CSS i JavaScript izlaz iz action=raw',
+);
+
 /** Swedish (Svenska)
  * @author Skalman
  */

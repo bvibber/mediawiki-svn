@@ -2,7 +2,8 @@
 /**
  * Internationalisation file for FlaggedRevs extension, section UnreviewedPages
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $messages = array();
@@ -86,14 +87,14 @@ $messages['am'] = array(
  * @author Juanpabl
  */
 $messages['an'] = array(
-	'unreviewedpages' => 'Pachinas no rebisatas',
-	'unreviewed-legend' => 'Lista de pachinas de conteniu no rebisatas',
+	'unreviewedpages' => 'Pachinas no revisatas',
+	'unreviewed-legend' => 'Lista de pachinas de conteniu no revisatas',
 	'unreviewed-category' => 'Categoría:',
-	'unreviewed-diff' => 'rebisar',
+	'unreviewed-diff' => 'revisar',
 	'unreviewed-unwatched' => '(no cosirata)',
-	'unreviewed-watched' => '($1 {{PLURAL:$1|usuario|usuarios}} cosirando)',
-	'unreviewed-list' => "Ista pachina amuestra os articlos que no s'han rebisato.",
-	'unreviewed-none' => 'No bi ha autualment garra pachina que cumpla ixos criterios',
+	'unreviewed-watched' => '($1 {{PLURAL:$1|usuario|usuarios}} activos cosirando)',
+	'unreviewed-list' => "Ista pachina amuestra os articlos que no s'han revisato dica o livel especificato.",
+	'unreviewed-none' => 'No bi ha actualment garra pachina que cumpla ixos criterios',
 );
 
 /** Arabic (العربية)
@@ -987,7 +988,7 @@ $messages['lzh'] = array(
  */
 $messages['mk'] = array(
 	'unreviewedpages' => 'Непрегледани страници',
-	'unreviewed-legend' => 'Листа на непрегледани статии',
+	'unreviewed-legend' => 'Список на непрегледани статии',
 	'unreviewed-category' => 'Категорија:',
 	'unreviewed-diff' => 'преглед',
 	'unreviewed-unwatched' => '(ненабљудувана)',
@@ -1407,9 +1408,12 @@ $messages['sr-ec'] = array(
 	'unreviewed-diff' => 'преглед',
 	'unreviewed-unwatched' => '(ненадзирано)',
 	'unreviewed-watched' => '($1 {{PLURAL:$1|активан корисник надгледа|акхивних корисника надгледају}})',
-	'unreviewed-list' => 'Ово је списак страна које још нису прегледане.',
+	'unreviewed-list' => 'Ово је списак страна садржаја које још нису прегледане до наведеног нивоа.',
 	'unreviewed-none' => 'Не постоји ниједна страна која се поклапа са овим критеријима.',
 	'unreviewed-viewing' => '(под прегледом)',
+	'unreviewed-hours' => '($1 {{PLURAL:$1|сат|сати}})',
+	'unreviewed-days' => '($1 {{PLURAL:$1|дан|дана}})',
+	'unreviewed-recent' => '(мање од сата)',
 );
 
 /** Serbian Latin ekavian (Srpski (latinica))
@@ -1422,9 +1426,12 @@ $messages['sr-el'] = array(
 	'unreviewed-diff' => 'pregled',
 	'unreviewed-unwatched' => '(nenadzirano)',
 	'unreviewed-watched' => '($1 {{PLURAL:$1|aktivan korisnik nadgleda|akhivnih korisnika nadgledaju}})',
-	'unreviewed-list' => 'Ovo je spisak strana koje još nisu pregledane.',
+	'unreviewed-list' => 'Ovo je spisak strana sadržaja koje još nisu pregledane do navedenog nivoa.',
 	'unreviewed-none' => 'Ne postoji nijedna strana koja se poklapa sa ovim kriterijima.',
 	'unreviewed-viewing' => '(pod pregledom)',
+	'unreviewed-hours' => '($1 {{PLURAL:$1|sat|sati}})',
+	'unreviewed-days' => '($1 {{PLURAL:$1|dan|dana}})',
+	'unreviewed-recent' => '(manje od sata)',
 );
 
 /** Seeltersk (Seeltersk)
@@ -1468,6 +1475,21 @@ $messages['sv'] = array(
 	'unreviewed-hours' => '($1 {{PLURAL:$1|timme|timmar}})',
 	'unreviewed-days' => '($1 {{PLURAL:$1|dag|dagar}})',
 	'unreviewed-recent' => '(mindre än en timme)',
+);
+
+/** Tamil (தமிழ்)
+ * @author Kanags
+ */
+$messages['ta'] = array(
+	'unreviewedpages' => 'பார்வையிடப்படாத பக்கங்கள்',
+	'unreviewed-legend' => 'மீள்பார்வையிடப்படாத பகுதிகளைக் கொண்ட பக்கங்கள்',
+	'unreviewed-category' => 'பகுப்பு:',
+	'unreviewed-diff' => 'முன்தோற்றம்',
+	'unreviewed-watched' => '($1 {{PLURAL:$1|பயனர்|பயனர்கள்}} பார்வையிடுகிறார்கள்)',
+	'unreviewed-viewing' => '(மீள் பார்வைக்காக)',
+	'unreviewed-hours' => '($1 {{PLURAL:$1|மணித்தியாலம்|மணித்தியாலங்கள்}})',
+	'unreviewed-days' => '($1 {{PLURAL:$1|நாள்|நாட்கள்}})',
+	'unreviewed-recent' => '(1 மணித்தியாலத்துக்குள்)',
 );
 
 /** Telugu (తెలుగు)

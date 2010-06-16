@@ -322,6 +322,7 @@ class SubversionProxy extends SubversionAdaptor {
 	function getDiff( $path, $rev1, $rev2 ) {
 		return $this->_proxy( array(
 			'action' => 'diff',
+			'base' => $this->mRepo,
 			'path' => $path,
 			'rev1' => $rev1,
 			'rev2' => $rev2 ) );
@@ -330,6 +331,7 @@ class SubversionProxy extends SubversionAdaptor {
 	function getLog( $path, $startRev = null, $endRev = null ) {
 		return $this->_proxy( array(
 			'action' => 'log',
+			'base' => $this->mRepo,
 			'path' => $path,
 			'start' => $startRev,
 			'end' => $endRev ) );
@@ -338,6 +340,7 @@ class SubversionProxy extends SubversionAdaptor {
 	function getDirList( $path, $rev = null ) {
 		return $this->_proxy( array(
 			'action' => 'list',
+			'base' => $this->mRepo,
 			'path' => $path,
 			'rev' => $rev ) );
 	}

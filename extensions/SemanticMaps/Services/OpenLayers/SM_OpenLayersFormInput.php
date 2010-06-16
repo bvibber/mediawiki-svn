@@ -15,9 +15,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 final class SMOpenLayersFormInput extends SMFormInput {
 	
-	public $serviceName = MapsOpenLayers::SERVICE_NAME;
-	
-	protected $spesificParameters = array();
+	protected $specificParameters = array();
 	
 	/**
 	 * @see MapsMapFeature::setMapSettings()
@@ -36,10 +34,10 @@ final class SMOpenLayersFormInput extends SMFormInput {
 	 * @see MapsMapFeature::addFormDependencies()
 	 */
 	protected function addFormDependencies() {
-		global $wgOut, $wgParser;
+		global $wgOut;
 		global $smgScriptPath, $smgOLFormsOnThisPage, $smgStyleVersion, $egMapsJsExt;
 		
-		MapsOpenLayers::addOLDependencies( $wgParser );
+		$this->mService->addDependencies( $wgOut );
 		
 		if ( empty( $smgOLFormsOnThisPage ) ) {
 			$smgOLFormsOnThisPage = 0;

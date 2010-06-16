@@ -2,7 +2,8 @@
 /**
  * Internationalisation file for SemanticCompoundQueries extension.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 // FIXME: Can be enabled when new style magic words are used (introduced in r52503)
@@ -143,7 +144,7 @@ $messages['hu'] = array(
  * @author McDutchie
  */
 $messages['ia'] = array(
-	'semanticcompoundqueries-desc' => 'Un function syntactic que presenta plure consultas semantic al mesme tempore',
+	'semanticcompoundqueries-desc' => 'Un function analysator que presenta plure consultas semantic al mesme tempore',
 );
 
 /** Indonesian (Bahasa Indonesia)

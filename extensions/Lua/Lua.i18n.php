@@ -3,8 +3,7 @@
  * Lua parser extensions for MediaWiki - Internationalization
  *
  * @author Fran Rogers
- * @package MediaWiki
- * @addtogroup Extensions
+ * @ingroup Extensions
  * @license See 'COPYING'
  * @file
  */
@@ -645,6 +644,24 @@ $messages['sk'] = array(
 	'lua_overflow_recursion' => 'Bol dosiahnutý limit rekurzie',
 	'lua_overflow_loc' => 'Bol dosiahnutý limit počtu riadkov kódu',
 	'lua_overflow_time' => 'Bol dosiahnutý limit času behu',
+);
+
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'lua_error_internal' => 'Интерна грешка',
+	'lua_overflow_recursion' => 'Достигнут лимит за рекурзију',
+	'lua_overflow_loc' => 'Достигнут максимални број линија кода',
+	'lua_overflow_time' => 'Достигнуто максимално време извршења',
+);
+
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'lua_error_internal' => 'Interna greška',
+	'lua_overflow_recursion' => 'Dostignut limit za rekurziju',
+	'lua_overflow_loc' => 'Dostignut maksimalni broj linija koda',
+	'lua_overflow_time' => 'Dostignuto maksimalno vreme izvršenja',
 );
 
 /** Swedish (Svenska)

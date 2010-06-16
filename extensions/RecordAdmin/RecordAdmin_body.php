@@ -17,6 +17,7 @@ class SpecialRecordAdmin extends SpecialPage {
 	var $guid      = '';
 	var $quid      = '';
 	var $filter    = array();
+	var $request   = array();
 	var $acturl    = '';
 	var $done      = false;
 
@@ -75,7 +76,7 @@ class SpecialRecordAdmin extends SpecialPage {
 				if ( $wgRecordAdminEditWithForm ) {
 					$wgHooks['SkinTemplateTabs'][] = $this;
 					$qs = "wpType={$this->type}&wpRecord=" . urlencode( $title->getPrefixedText() );
-					$this->acturl = Title::makeTitle( NS_SPECIAL, 'RecordAdmin' )->getLocalURL( $qs );
+					$this->acturl = SpecialPage::getTitleFor( 'RecordAdmin' )->getLocalURL( $qs );
 				}
 			}
 		}
@@ -124,7 +125,7 @@ class SpecialRecordAdmin extends SpecialPage {
 		$newtype  = $wgRequest->getText( 'wpNewType' );
 		$invert   = $wgRequest->getText( 'wpInvert' );
 		$record   = $this->record = $wgRequest->getText( 'wpRecord' );
-		$title    = $this->title = Title::makeTitle( NS_SPECIAL, 'RecordAdmin' );
+		$title    = $this->title = SpecialPage::getTitleFor( 'RecordAdmin' );
 		$action   = $title->getLocalURL( 'action=submit' );
 		$wpTitle  = trim( $wgRequest->getText( 'wpTitle' ) );
 		$this->template = Title::makeTitle( NS_TEMPLATE, $type );
@@ -134,7 +135,7 @@ class SpecialRecordAdmin extends SpecialPage {
 		}
 		$wgOut->addHTML(
 			'<div class="recordadmin-menubar"><a href="' . $title->getLocalURL() . "/$type\">" . wfMsg( 'recordadmin-newsearch', $type ) . '</a>'
-			. '&nbsp;'
+			. '&#160;'
 			. '<a href="' . $title->getLocalURL() . '">' . wfMsg( 'recordadmin-newrecord' ) . '</a></div>'."\n"
 		);
 
@@ -170,7 +171,7 @@ class SpecialRecordAdmin extends SpecialPage {
 
 			# Render type select list
 			if ( $options ) $wgOut->addHTML(
-				"<select name='wpType'>$options</select>&nbsp;"
+				"<select name='wpType'>$options</select>&#160;"
 				. Xml::element( 'input', array( 'type' => 'submit', 'value' => wfMsg( 'recordadmin-submit' ) ) )
 			);
 			else {
@@ -182,7 +183,7 @@ class SpecialRecordAdmin extends SpecialPage {
 			# Render type create
 			$wgOut->addWikiText( "<br />\n==" . wfMsg( 'recordadmin-createtype' ) . "==\n" );
 			$wgOut->addHTML( Xml::element( 'input', array( 'name' => 'wpNewType', 'type' => 'text' ) )
-				. '&nbsp;'
+				. '&#160;'
 				. Xml::element( 'input', array( 'type' => 'submit', 'value' => wfMsg( 'recordadmin-buttoncreate' ) ) )
 				. '</form>'
 			);
@@ -237,8 +238,8 @@ class SpecialRecordAdmin extends SpecialPage {
 			$wgOut->addWikiText( "==" . wfMsg( 'recordadmin-create', $type ) . "==\n" );
 			$wgOut->addHTML(
 				'<table class="recordadmin-create">'
-				. '<tr><td class="recordadmin-create-id"><b>' . wfMsg( 'recordadmin-recordid' ) . '</b>&nbsp;' . Xml::element( 'input', array( 'id' => 'ra-title', 'name' => 'wpTitle', 'size' => 30, 'value' => $wpTitle ) )
-				. '&nbsp;&nbsp;&nbsp;' . Xml::element( 'input', array( 'name' => 'wpInvert', 'type' => 'checkbox' ) ) . ' ' . wfMsg( 'recordadmin-invert' )
+				. '<tr><td class="recordadmin-create-id"><b>' . wfMsg( 'recordadmin-recordid' ) . '</b>&#160;' . Xml::element( 'input', array( 'id' => 'ra-title', 'name' => 'wpTitle', 'size' => 30, 'value' => $wpTitle ) )
+				. '&#160;&#160;&#160;' . Xml::element( 'input', array( 'name' => 'wpInvert', 'type' => 'checkbox' ) ) . ' ' . wfMsg( 'recordadmin-invert' )
 				. '</td></tr>'
 				. '<tr><td>' . $this->form . '</td></tr>'
 				. '<tr><td>' . Xml::element( 'input', array( 'type' => 'hidden', 'id' => 'ra-type', 'name' => 'wpType', 'value' => $type ) ) . '</td></tr>'
@@ -302,16 +303,16 @@ class SpecialRecordAdmin extends SpecialPage {
 					$wgOut->addHTML( Xml::element( 'input', array( 'type' => 'hidden', 'name' => 'wpType', 'id' => 'ra-type', 'value' => $type ) ) );
 					$wgOut->addHTML( Xml::element( 'input', array( 'type' => 'hidden', 'name' => 'wpRecord', 'id' => 'ra-record', 'value' => $record ) ) );
 					$wgOut->addHTML( '<br /><hr /><br />'
-						. "<span id='wpSummaryLabel'><label for='wpSummary'>Summary:</label></span>&nbsp;"
+						. "<span id='wpSummaryLabel'><label for='wpSummary'>Summary:</label></span>&#160;"
 						. Xml::element( 'input', array( 'type' => 'text', 'name' => 'wpSummary', 'id' => 'wpSummary', 'maxlength' => '200', 'size' => '60' ) )
 						. "<br />\n"
 						. Xml::element( 'input', array( 'type' => 'checkbox', 'name' => 'wpMinoredit', 'value' => '1', 'id' => 'wpMinoredit', 'accesskey' => 'i' ) )
-						. "&nbsp;<label for='wpMinoredit' title='Mark this as a minor edit [i]' accesskey='i'>This is a minor edit</label>&nbsp;"
+						. "&#160;<label for='wpMinoredit' title='Mark this as a minor edit [i]' accesskey='i'>This is a minor edit</label>&#160;"
 						. Xml::element( 'input', array( 'type' => 'checkbox', 'name' => 'wpWatchthis', 'value' => '1', 'id' => 'wpWatchthis', 'accesskey' => 'w' ) )
-						. "&nbsp;<label for='wpWatchthis' title='Add this page to your watchlist [w]' accesskey='w'>Watch this page</label>\n"
+						. "&#160;<label for='wpWatchthis' title='Add this page to your watchlist [w]' accesskey='w'>Watch this page</label>\n"
 						. "<br />\n"
 						. ( ( !$wgSecurityProtectRecords || $this->template->userCan( 'edit' ) )
-							? Xml::element( 'input', array( 'type' => 'submit', 'value' => wfMsg( 'recordadmin-buttonsave' ) ) ) . '&nbsp;'
+							? Xml::element( 'input', array( 'type' => 'submit', 'value' => wfMsg( 'recordadmin-buttonsave' ) ) ) . '&#160;'
 							: '' )
 						. Xml::element( 'input', array( 'type' => 'reset', 'value' => wfMsg( 'recordadmin-buttonreset' ) ) ) . '</form>'
 					);
@@ -336,11 +337,8 @@ class SpecialRecordAdmin extends SpecialPage {
 		# If the page is already rendered, don't run this query
 		if ( $this->done ) return array();
 
-		# Generate a unique id for this set of parameters
-		$this->quid = md5( var_export( array( $type, $posted ), true ) );
-		
-		# If an export has been requested but not for this query-id, then bail with empty set
-		if ( ( $export = $wgRequest->getText( 'quid' ) ) && $export != $this->quid ) return array();
+		# Remember all the args required to reproduce this result (for building export URL's)
+		$this->request = array_merge( $posted, $_GET, $_POST );
 
 		# Loop through all records of this type adding only those that match the regex fields
 		$records = array();
@@ -457,14 +455,24 @@ class SpecialRecordAdmin extends SpecialPage {
 	 * Render a set of records returned by getRecords() as an HTML table
 	 */
 	function renderRecords( $records, $cols = false, $sortable = true, $template = false, $name = 'wpSelect', $export = true, $groupby = false ) {
-		global $wgParser, $wgTitle, $wgRequest;
+		global $wgOut, $wgParser, $wgTitle, $wgRequest;
 		if ( count( $records ) < 1 ) return wfMsg( 'recordadmin-nomatch' );
 		if ( $groupby ) $groupby = self::split( $groupby, ',' );
 
-		$special  = Title::makeTitle( NS_SPECIAL, 'RecordAdmin' );
+		$special  = SpecialPage::getTitleFor( 'RecordAdmin' );
 		$type     = $this->type;
 		$sortable = $sortable ? ' sortable' : '';
 		$br       = $sortable ? '<br />' : '';
+		$format   = $wgRequest->getText( 'export' );
+
+		# If exporting as pdf, ensure the parser renders full URL's
+		if ( $format == 'pdf' ) {
+			global $wgServer, $wgScript, $wgArticlePath, $wgScriptPath, $wgUploadPath;
+			$wgArticlePath = $wgServer . $wgArticlePath;
+			$wgScriptPath  = $wgServer . $wgScriptPath;
+			$wgUploadPath  = $wgServer . $wgUploadPath;
+			$wgScript      = $wgServer . $wgScript;
+		}
 
 		# Table header (col0-3 class atts are for backward compatibility, only use named from now on)
 		$table = "<table class='recordadmin$sortable $type-record'>\n<tr>";
@@ -556,7 +564,7 @@ class SpecialRecordAdmin extends SpecialPage {
 					);
 					foreach ( $cols as $col ) {
 						if ( !isset( $row[$col] ) ) {
-							$v = isset( $r[$col] ) ? $wgParser->parse( $r[$col], $wgTitle, $wgParser->mOptions, true, false )->getText() : '&nbsp;';
+							$v = isset( $r[$col] ) ? $wgParser->parse( $r[$col], $wgTitle, $wgParser->mOptions, true, false )->getText() : '&#160;';
 							$class = 'col' . preg_replace( '|\W|', '-', $col );
 							$row[$col] = "<td class='$class'>$v</td>";
 						}
@@ -569,39 +577,40 @@ class SpecialRecordAdmin extends SpecialPage {
 		$table .= "</table>\n";
 
 		# If export requested convert the table to csv and disable output etc
-		if ( $quid = $wgRequest->getText( 'quid' ) ) {
-			global $wgOut;
+		if ( $format ) {
 			$wgOut->disable();
+			$filename = $wgTitle->getText();
 
 			# PDF export
-			if ( $wgRequest->getText( 'format' ) == 'pdf' ) {
+			if ( $format == 'pdf' ) {
 				global $wgUploadDirectory;
 				$file = "$wgUploadDirectory/" . uniqid( 'recordadmin' );
 				$table = str_replace( '<table', '<table border', $table );
 				file_put_contents( $file, $table );
 				header("Content-Type: application/pdf");
-				header( "Content-Disposition: attachment; filename=\"$quid.pdf\"" );
+				header( "Content-Disposition: attachment; filename=\"$filename.pdf\"" );
 				putenv( "HTMLDOC_NOCGI=1" );
-				$options = "--left 1cm --right 1cm --top 1cm --bottom 1cm --header ... --footer ... --bodyfont Arial --fontsize 8";
+				$options = "--left 1cm --right 1cm --top 1cm --bottom 1cm --header ... --footer ... --linkcolor 3333cc --bodyfont Arial --fontsize 8";
 				passthru( "htmldoc -t pdf --format pdf14 $options --webpage $file" );
 				@unlink( $file );
 			}
 
 			# CSV export
 			else {
-				header("Content-Type: text/html");
-				header("Content-Disposition: attachment; filename=\"$quid.csv\"");
+				header("Content-Type: text/plain");
+				header("Content-Disposition: attachment; filename=\"$filename.csv\"");
 				preg_match_all( "|<td.*?>\s*(.*?)\s*</td>|s", $table, $data );
 				$cols = $cols ? $cols : array_keys( $th );
-				$csv = join( "\t", $cols );
+				$csv = join( ',', $cols );
 				foreach ( $data[1] as $i => $cell ) {
 					if ( $i % count( $cols ) == 0 ) {
 						$csv .= "\n";
-						$sep = "";
-					} else $sep = "\t";
-					$cell = strip_tags( $cell );
-					$cell = preg_replace( "/[\\r\\n]+/m", "\\n", $cell );
-					$csv .= "$sep$cell";
+						$sep = '';
+					} else $sep = ',';
+					$cell = str_replace( '&'.'nbsp;', ' ', $cell );
+					$cell = trim( strip_tags( html_entity_decode( $cell ) ) );
+					$cell = str_replace( '"', '""', $cell );
+					$csv .= "$sep\"$cell\"";
 				}
 				print $csv;
 			}
@@ -611,14 +620,15 @@ class SpecialRecordAdmin extends SpecialPage {
 		# Otherwise add export links
 		elseif ( $export ) {
 			$export = $export === true ? array( 'pdf', 'csv' ) : self::split( strtolower( $export ), ',' );
-			$qs = "wpType=$type&wpFind=1&quid={$this->quid}";
-			foreach ( $this->filter as $k => $v ) $qs .= "&ra_$k=" . urlencode( $v );
+			$qs = "wpType=$type&wpFind=1";
+			foreach ( $this->request as $k => $v ) $qs .= "&$k=$v";
 			$url = $wgTitle->getLocalURL( $qs );
+			$table .= "\n<a class=\"recordadmin-export-url\" href=\"$url\">URL</a>";
 			if ( in_array( 'csv', $export ) ) {
-				$table .= "\n<a class=\"recordadmin-export-csv\" href=\"$url\">" . wfMsg( 'recordadmin-export-csv' ) . "</a>";
+				$table .= "\n<a class=\"recordadmin-export-csv\" href=\"$url&export=csv\">" . wfMsg( 'recordadmin-export-csv' ) . "</a>";
 			}
 			if ( in_array( 'pdf', $export ) ) {
-				$table .= "\n<a class=\"recordadmin-export-pdf\" href=\"$url&format=pdf\">" . wfMsg( 'recordadmin-export-pdf' ) . "</a>";
+				$table .= "\n<a class=\"recordadmin-export-pdf\" href=\"$url&export=pdf\">" . wfMsg( 'recordadmin-export-pdf' ) . "</a>";
 			}
 		}
 

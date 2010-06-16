@@ -18,8 +18,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 /**
  * A file for the WhiteList extension
  *
- * @package MediaWiki
- * @subpackage Extensions
+ * @file
+ * @ingroup Extensions
  *
  * @author Paul Grinberg <gri6507@yahoo.com>
  * @author Mike Sullivan <ms-mediawiki@umich.edu>
@@ -245,6 +245,7 @@ $messages['am'] = array(
  */
 $messages['an'] = array(
 	'whitelisttablemodifyall' => 'Tot',
+	'whitelisttablemodifynone' => 'Garra',
 	'whitelisttableedit' => 'Editar',
 	'whitelisttablenewdate' => 'Nueba calendata:',
 	'whitelisttablechangedate' => 'Cambiar a calendata de zircunduzión',
@@ -508,6 +509,15 @@ $2',
  */
 $messages['bn'] = array(
 	'mywhitelistpages' => 'আমার পাতাসমূহ',
+	'whitelisttablemodify' => 'পরিবর্তন',
+	'whitelisttablemodifyall' => 'সমস্ত',
+	'whitelisttablemodifynone' => 'কিছু নয়',
+	'whitelisttablepage' => 'উইকি পাতা',
+	'whitelisttableremove' => 'অপসারণ',
+	'whitelistnewtableprocess' => 'প্রসেস',
+	'whitelistnever' => 'কখনো নয়',
+	'group-manager' => 'ব্যাবস্থাপক',
+	'group-manager-member' => 'ব্যাবস্থাপক',
 );
 
 /** Breton (Brezhoneg)
@@ -2197,8 +2207,8 @@ $messages['mhr'] = array(
  */
 $messages['mk'] = array(
 	'whitelistedit-desc' => 'Менување на дозволите за пристап на ограничени корисници',
-	'whitelistedit' => 'Уредник на пристап на белата листа',
-	'whitelist' => 'Страници на белата листа',
+	'whitelistedit' => 'Уредник на пристап на белиот список',
+	'whitelist' => 'Страници на белиот список',
 	'mywhitelistpages' => 'Мои страници',
 	'whitelistfor' => '<center>Моментални информации за <b>$1</b></center>',
 	'whitelisttablemodify' => 'Измени',
@@ -2216,13 +2226,13 @@ $messages['mk'] = array(
 	'whitelisttablesetedit' => 'Постави за уредување',
 	'whitelisttablesetview' => 'Постави за преглед',
 	'whitelisttableremove' => 'Отстрани',
-	'whitelistnewpagesfor' => "Додај нови страници во белата листа<b>$1's</b><br />
-Користете  * или % како џокер",
+	'whitelistnewpagesfor' => "Додај нови страници во белиот список<b>$1's</b><br />
+Користете * или % како џокер",
 	'whitelistnewtabledate' => 'Истекува:',
 	'whitelistnewtableedit' => 'Постави за уредување',
 	'whitelistnewtableview' => 'Постави за преглед',
 	'whitelistnowhitelistedusers' => 'Нема корисници во групата „{{MediaWiki:Group-restricted}}“.
-Пред да можете да додавате страници кон белата листа на корисникот ќе морате да [[Special:UserRights|додадете корисници во групата]].',
+Пред да можете да додавате страници кон белиот список на корисникот ќе морате да [[Special:UserRights|додадете корисници во групата]].',
 	'whitelistnewtableprocess' => 'Процес',
 	'whitelistnewtablereview' => 'Проверка',
 	'whitelistselectrestricted' => '== Одберете корисничко име ==',
@@ -2232,7 +2242,7 @@ $messages['mk'] = array(
 	'whitelistoverviewcd' => "* Промена на датум на '''$1''' за [[:$2|$2]]",
 	'whitelistoverviewsa' => "* Додели пристап на '''$1''' за [[:$2|$2]]",
 	'whitelistoverviewrm' => '* Одземи пристап на [[:$1|$1]]',
-	'whitelistoverviewna' => "* Го додавам корисникот [[:$1|$1]] на белста листа со пристап '''$2''' и датум на истекување '''$3'''",
+	'whitelistoverviewna' => "* Го додавам корисникот [[:$1|$1]] на белиот список со пристап '''$2''' и датум на истекување '''$3'''",
 	'whitelistrequest' => 'Побарај пристап до повеќе страници',
 	'whitelistrequestmsg' => '$1 побара пристап до {{PLURAL:$3|следнава страница|следниве страници}}:
 
@@ -2242,10 +2252,10 @@ $2',
 Оваа страница важи само за ограничени корисници",
 	'whitelistnever' => 'никогаш',
 	'whitelistnummatches' => '- {{PLURAL:$1|едно совпаѓање|$1 совпаѓања}}',
-	'right-editwhitelist' => 'Менување на белата листа за постоечки корисници',
-	'right-restricttowhitelist' => 'Уредување и прегледување страници само на белата листа',
-	'action-editwhitelist' => 'менување на белата листа за постоечки корисници',
-	'action-restricttowhitelist' => 'уредувај и прегледувај само страници на белата листа',
+	'right-editwhitelist' => 'Менување на белиот список за постоечки корисници',
+	'right-restricttowhitelist' => 'Уредување и прегледување страници само на белиот список',
+	'action-editwhitelist' => 'менување на белиот список за постоечки корисници',
+	'action-restricttowhitelist' => 'уредувај и прегледувај само страници на белиот список',
 	'group-restricted' => 'Ограничени корисници',
 	'group-restricted-member' => 'Ограничен корисник',
 	'group-manager' => 'Раководители',
@@ -3198,9 +3208,10 @@ $messages['sr-ec'] = array(
 	'whitelisttablechangedate' => 'Промени датум истека',
 	'whitelisttableremove' => 'Уклони',
 	'whitelistnewtabledate' => 'Датум истека:',
+	'whitelistnewtableprocess' => 'Обради',
 	'whitelistoverview' => '== Преглед измена за $1 ==',
 	'whitelistoverviewcd' => "* Мењање датума на '''$1''' за [[:$2|$2]]",
-	'whitelistoverviewsa' => "* Постављање приступа на '''$1''' за [:$2|$2]]",
+	'whitelistoverviewsa' => "* Постављање приступа на '''$1''' за [[:$2|$2]]",
 	'whitelistoverviewrm' => '* Уклањање приступа за [[:$1|$1]]',
 	'whitelistrequest' => 'Захтевање приступа за више страна',
 	'whitelistrequestmsg' => '$1 је захтевао приступ {{PLURAL:$3|следећој страни|следећим странама}}:
@@ -3208,6 +3219,8 @@ $messages['sr-ec'] = array(
 $2',
 	'whitelistrequestconf' => 'Захтев за новим странама је послат $1',
 	'whitelistnever' => 'никад',
+	'group-manager' => 'Менаџери',
+	'group-manager-member' => 'Менаџер',
 );
 
 /** Serbian Latin ekavian (Srpski (latinica))
@@ -3228,6 +3241,7 @@ $messages['sr-el'] = array(
 	'whitelisttablechangedate' => 'Promeni datum isteka',
 	'whitelisttableremove' => 'Ukloni',
 	'whitelistnewtabledate' => 'Datum isteka:',
+	'whitelistnewtableprocess' => 'Obradi',
 	'whitelistoverview' => '== Pregled izmena za $1 ==',
 	'whitelistoverviewcd' => "* Menjanje datuma na '''$1''' za [[:$2|$2]]",
 	'whitelistoverviewsa' => "* Postavljanje pristupa na '''$1''' za [:$2|$2]]",
@@ -3238,6 +3252,8 @@ $messages['sr-el'] = array(
 $2',
 	'whitelistrequestconf' => 'Zahtev za novim stranama je poslat $1',
 	'whitelistnever' => 'nikad',
+	'group-manager' => 'Menadžeri',
+	'group-manager-member' => 'Menadžer',
 );
 
 /** Seeltersk (Seeltersk)

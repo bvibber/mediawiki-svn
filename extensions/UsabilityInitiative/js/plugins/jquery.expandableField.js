@@ -74,6 +74,8 @@ $.fn.expandableField = function() {
 					'afterCondense': function( context ) {},
 					// callback function for after expand
 					'afterExpand': function( context ) {},
+					// Whether the field should expand to the left or the right -- defaults to left
+					'expandToLeft': true
 				}
 			};
 		}

@@ -2,7 +2,8 @@
 /**
  * Internationalisation file for extension Invitations
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $messages = array();
@@ -740,9 +741,18 @@ Untuk mengelola undangan untuk setiap fitur, klik pada namanya.',
 	'invitations-invite-success' => 'Anda berhasil mengundang $1 untuk menggunakan fitur ini!',
 );
 
-/** Italian (Italiano) */
+/** Italian (Italiano)
+ * @author HalphaZ
+ */
 $messages['it'] = array(
+	'invite-logpage' => 'Registro inviti',
+	'invite-logpagetext' => "Questo è un registro degli utenti che si invitano l'un l'altro per utilizzare varie funzionalità software.",
+	'invite-logentry' => 'invitato $1 a usare la funzione <i>$2</i>.',
+	'invitations-inviteform-username' => 'Utente da invitare',
 	'invitations-inviteform-submit' => 'Invita',
+	'invitations-error-baduser' => "L'utente specificato non sembra esistere.",
+	'invitations-error-alreadyinvited' => "L'utente specificato ha già accesso a questa funzione!",
+	'invitations-invite-success' => 'Hai invitato $1 con successo per utilizzare questa funzione!',
 );
 
 /** Japanese (日本語)
@@ -1281,6 +1291,24 @@ $messages['sk'] = array(
 	'invitations-error-baduser' => 'Zdá sa, že používateľ, ktorého ste uviedli neexistuje.',
 	'invitations-error-alreadyinvited' => 'Používateľ, ktorého ste uviedli, už má prístup k tejto možnosti.',
 	'invitations-invite-success' => 'Úspešne ste pozvali používateľa $1 využívať túto možnosť!',
+);
+
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'invite-logpage' => 'Исотрија позивница',
+	'invitations-inviteform-title' => 'Позови корисника да користи $1',
+	'invitations-inviteform-username' => 'Корисник који се позива',
+	'invitations-inviteform-submit' => 'Позови',
+);
+
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'invite-logpage' => 'Isotrija pozivnica',
+	'invitations-inviteform-title' => 'Pozovi korisnika da koristi $1',
+	'invitations-inviteform-username' => 'Korisnik koji se poziva',
+	'invitations-inviteform-submit' => 'Pozovi',
 );
 
 /** Seeltersk (Seeltersk)

@@ -2,7 +2,8 @@
 /**
  * MediaWiki Internationalisation file for ChemFunctions.php and SpecialChemicalsources.php.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  *
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
  */
@@ -39,12 +40,14 @@ $messages['en'] = array(
  * @author Jon Harald Søby
  * @author Purodha
  * @author Siebrand
+ * @author Umherirrender
  */
 $messages['qqq'] = array(
 	'chemicalsources' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.
 
 {{Identical|Chemical sources}}',
 	'chemicalsource-desc' => 'Short description of the Chemicalsource extension, shown in [[Special:Version]]. Do not translate or change links.',
+	'chemicalsources-desc' => '{{desc}}',
 	'chemFunctions_ListPage' => '{{Identical|Chemical sources}}',
 );
 
@@ -102,7 +105,7 @@ $messages['arz'] = array(
 	'chemFunctions_ChemFormInputError' => 'Chemform: خطأ إدخال!',
 );
 
-/** Azerbaijani (Azərbaycan)
+/** Azerbaijani (Azərbaycanca)
  * @author Sortilegus
  */
 $messages['az'] = array(
@@ -141,6 +144,7 @@ $messages['bg'] = array(
 );
 
 /** Bengali (বাংলা)
+ * @author Bellayet
  * @author Zaheen
  */
 $messages['bn'] = array(
@@ -153,7 +157,7 @@ $messages['bn'] = array(
 	'chemFunctions_CAS' => 'CAS সংখ্যা',
 	'chemFunctions_ATCCode' => 'ATCকোড',
 	'chemFunctions_ECNumber' => 'ECNumber',
-	'chemFunctions_Formula' => 'সংকেত',
+	'chemFunctions_Formula' => 'সূত্র',
 	'chemFunctions_Name' => 'IUPAC নাম',
 	'chemFunctions_ChemFormInputError' => 'রাসায়নিক ফর্ম: ইনপুট ত্রুটি!',
 );
@@ -570,10 +574,12 @@ $messages['ia'] = array(
 
 /** Indonesian (Bahasa Indonesia)
  * @author Bennylin
+ * @author Irwangatot
  */
 $messages['id'] = array(
 	'chemicalsources' => 'Rujukan kimia',
 	'chemicalsource-desc' => 'Menambahkan tag <nowiki><chemform></nowiki>, untuk formula kimia',
+	'chemicalsources-desc' => '[[Special:ChemicalSources|Halaman istimewa]] untuk sumber kimia',
 	'chemFunctions_ListPage' => 'Rujukan kimia',
 	'chemFunctions_DataList' => 'Berikut adalah daftar pranala ke situs yang mungkin menyediakan informasi mengenai zat kimia yang Anda cari.<br /><br />
 * <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&Units=SI">Senyawa $MIXCASNameFormula di NIST</a><br />
@@ -740,7 +746,7 @@ $messages['mk'] = array(
 	'chemicalsource-desc' => 'Ја додава ознаката <nowiki><chemform></nowiki>, за хемиски формули',
 	'chemicalsources-desc' => '[[Special:ChemicalSources|Специјална страница]] за хемиски извори',
 	'chemFunctions_ListPage' => 'Хемиски извори',
-	'chemFunctions_DataList' => 'Еве листа на врски кон страници кои може да ви дадат информации за хемиската материја која ја барате.<br /><br />
+	'chemFunctions_DataList' => 'Еве список на врски кон страници кои може да ви дадат информации за хемиската материја која ја барате.<br /><br />
 * <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Сложена $MIXCASNameFormula на НИСТ</a><br />
 * <a href="http://ptcl.chem.ox.ac.uk/MSDS/">МСДС на Оксфордскиот универзитет (нема пребарување)</a><br />',
 	'chemFunctions_CAS' => 'CAS број',
@@ -913,6 +919,7 @@ $messages['pcd'] = array(
 $messages['pl'] = array(
 	'chemicalsources' => 'Źródła informacji z zakresu Chemii',
 	'chemicalsource-desc' => 'Dodaje znacznik <nowiki><chemform></nowiki> służący do wstawiania wzorów chemicznych',
+	'chemicalsources-desc' => '[[Special:ChemicalSources|Strona specjalna]] źródeł informacji chemicznych',
 	'chemFunctions_ListPage' => 'Źródła informacji z zakresu Chemii',
 	'chemFunctions_DataList' => 'Poniżej znajduje się lista linków do witryn, które mogą udostępniać informacje o substancji chemicznej, o której informacji szukasz.<br /><br />
 * <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Związek chemiczny $MIXCASNameFormula w NIST</a><br />
@@ -1101,8 +1108,12 @@ $messages['sl'] = array(
 	'chemicalsource-desc' => 'Doda etiketo <nowiki><chemform></nowiki> za prikaz kemijskih formul',
 	'chemicalsources-desc' => '[[Special:ChemicalSources|Posebna stran]] za kemijske vire',
 	'chemFunctions_ListPage' => 'Kemijski viri',
+	'chemFunctions_DataList' => 'Spodaj se nahaja seznam povezav do strani, ki vam lahko podajo informacije o iskani kemijski spojini.<br /><br />
+* <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Spojina $MIXCASNameFormula na NIST</a><br />
+* <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS na Univerzi v Oxfordu (Združeno kraljestvo) (ni iskalno)</a><br />',
 	'chemFunctions_CAS' => 'Število CAS',
 	'chemFunctions_ATCCode' => 'Oznaka ATC',
+	'chemFunctions_ECNumber' => 'številka EC',
 	'chemFunctions_Formula' => 'Formula',
 	'chemFunctions_Name' => 'Ime po IUPAC',
 	'chemFunctions_ChemFormInputError' => 'Chemform: Napaka pri vnosu!',
@@ -1271,11 +1282,13 @@ $messages['tr'] = array(
 );
 
 /** Ukrainian (Українська)
+ * @author AS
  * @author Ahonc
  */
 $messages['uk'] = array(
 	'chemicalsources' => 'Джерела з хімії',
 	'chemicalsource-desc' => 'Додає тег <nowiki><chemform></nowiki> для хімічних формул',
+	'chemicalsources-desc' => '[[Special:ChemicalSources|Спеціальна сторінка]] для хімічних джерел',
 	'chemFunctions_ListPage' => 'Джерела з хімії',
 	'chemFunctions_DataList' => 'Нижче наведено список посилань на сайти, які можуть містити інформацію про хімічну речовину, яка вас цікавить.<br /><br />
 * <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Сполука $MIXCASNameFormula на сайті NIST</a><br />

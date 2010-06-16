@@ -21,7 +21,8 @@
  */
 
 /**
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  * @author Juliano F. Ravasi < dev juliano info >
  */
 
@@ -300,7 +301,7 @@ class WikilogHooks
 					Xml::check( 'wlSignpub', $checked, array(
 						'id' => 'wl-signpub',
 						'tabindex' => 1, // after text, before summary
-					) ) . '&nbsp;' .
+					) ) . '&#160;' .
 					Xml::element( 'label', array(
 						'for' => 'wl-signpub',
 						'title' => $tooltip,

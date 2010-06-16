@@ -99,19 +99,19 @@ $messages['af'] = array(
  * @author Juanpabl
  */
 $messages['an'] = array(
-	'quiz_desc' => 'Premite a creyazión de quizes',
-	'quiz_addedPoints' => '{{PLURAL:$1|Punto|Puntos}} por cada respuesta enzertata',
-	'quiz_cutoffPoints' => 'Puntos sacatos por cada respuesta entibocata:',
-	'quiz_ignoreCoef' => "Innorar os puntos d'as preguntas",
+	'quiz_desc' => 'Premite a creyación de quizzes',
+	'quiz_addedPoints' => '{{PLURAL:$1|Punto|Puntos}} por cada respuesta encertata',
+	'quiz_cutoffPoints' => 'Puntos sacatos por cada respuesta entivocata:',
+	'quiz_ignoreCoef' => "Ignorar os puntos d'as preguntas",
 	'quiz_shuffle' => 'Desordenar as preguntas',
-	'quiz_colorRight' => 'Enzertatas',
-	'quiz_colorWrong' => 'Entibocatas',
+	'quiz_colorRight' => 'Encertatas',
+	'quiz_colorWrong' => 'Entivocatas',
 	'quiz_colorNA' => 'No responditas',
-	'quiz_colorError' => 'Error de sintacsis',
+	'quiz_colorError' => 'Error de sintaxi',
 	'quiz_correction' => 'Correchir',
-	'quiz_score' => 'A suya puntuazión ye $1 / $2',
+	'quiz_score' => 'A suya puntuación ye $1 / $2',
 	'quiz_points' => '$1 | {{PLURAL:$2|1 punto|$2 puntos}}',
-	'quiz_reset' => 'Prenzipiar',
+	'quiz_reset' => 'Prencipiar',
 );
 
 /** Arabic (العربية)
@@ -936,10 +936,12 @@ $messages['jv'] = array(
 
 /** Georgian (ქართული)
  * @author BRUTE
+ * @author ITshnik
  * @author Malafaya
  * @author გიორგიმელა
  */
 $messages['ka'] = array(
+	'quiz_cutoffPoints' => '(($1 ქულა)) ერთი არასწორი პასუხისთვის',
 	'quiz_colorRight' => 'სწორი',
 	'quiz_colorWrong' => 'არასწორი',
 	'quiz_colorNA' => 'პასუხი არ არის',
@@ -1406,6 +1408,7 @@ $messages['pt-br'] = array(
  * @author AlimanRuna
  */
 $messages['qu'] = array(
+	'quiz_desc' => 'Watuchi pukllay kamariyta saqillan',
 	'quiz_addedPoints' => 'Allin kutichisqapaq {{PLURAL:$1|iñu|iñukuna}} yapasqa',
 	'quiz_cutoffPoints' => 'Panta kutichisqapaq {{PLURAL:$1|iñu|iñukuna}} qichusqa',
 	'quiz_ignoreCoef' => 'Sapa tapuypaq iñukunata qhawarpariy',

@@ -1,10 +1,9 @@
 <?php
-if ( !defined( 'MEDIAWIKI' ) ) die();
-
 /**
  * Special page to import po files exported using Translate extension.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  *
  * @author Niklas Laxström
  * @copyright Copyright © 2009, Niklas Laxström
@@ -102,10 +101,10 @@ class SpecialImportTranslations extends SpecialPage {
 	 * Constructs and outputs file input form with supported methods.
 	 */
 	protected function outputForm() {
-		global $wgScriptPath;
-		// jQuery
-		$this->out->addScriptFile( "$wgScriptPath/extensions/Translate/js/js2stopgap.js" );
-		$this->out->addScriptFile( "$wgScriptPath/extensions/Translate/js/import.js" );
+		global $wgOut;
+
+		$wgOut->includeJQuery();
+		$this->out->addScriptFile( TranslateUtils::assetPath( 'js/import.js' ) );
 
 		// Ugly but necessary form building ahead, ohoy
 		$this->out->addHTML(

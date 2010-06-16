@@ -377,6 +377,8 @@ $messages['aln'] = array(
 $messages['an'] = array(
 	'securepoll-strike-cancel' => 'Cancelar',
 	'securepoll-header-action' => 'Acción',
+	'securepoll-header-start-date' => 'Calendata de prencipio',
+	'securepoll-header-end-date' => 'Calendata de fin',
 );
 
 /** Arabic (العربية)
@@ -1301,6 +1303,12 @@ Podeu triar entre comptar els resultats presents a la base de dades, o de compta
 	'securepoll-dump-corrupt' => 'El fitxer bolcat es troba danyat i no pot ser processat.',
 	'securepoll-tally-upload-error' => 'Error al contar el fitxer bolcat: $1',
 	'securepoll-ranks' => 'Classificació final',
+);
+
+/** Chechen (Нохчийн) */
+$messages['ce'] = array(
+	'securepoll-strike-reason' => 'Бахьан:',
+	'securepoll-header-reason' => 'Бахьан',
 );
 
 /** Czech (Česky)
@@ -2697,6 +2705,7 @@ Errorea:
 );
 
 /** Persian (فارسی)
+ * @author Huji
  * @author Mardetanha
  * @author Meisam
  */
@@ -2719,7 +2728,7 @@ $messages['fa'] = array(
 	'securepoll-header-voter-type' => 'نوع کاربر',
 	'securepoll-header-reason' => 'دلیل',
 	'securepoll-header-admin' => 'مدیر',
-	'securepoll-submit-translate' => 'به‌روزآوری',
+	'securepoll-submit-translate' => 'به روز رسانی',
 	'securepoll-language-label' => 'انتخاب زبان:',
 	'securepoll-submit-select-lang' => 'ترجمه',
 	'securepoll-header-title' => 'نام',
@@ -4348,6 +4357,8 @@ $messages['io'] = array(
 	'securepoll-desc' => 'Extensilo por elekti e voti',
 	'securepoll-header-voter-name' => 'Nomo',
 	'securepoll-strike-reason' => 'Motivo:',
+	'securepoll-header-reason' => 'Motivo',
+	'securepoll-language-label' => 'Selektez linguo:',
 	'securepoll-subpage-list' => 'Listo',
 );
 
@@ -4654,10 +4665,12 @@ Yèn perlu panjenengan bisa nyimpen resi pangiriman ing ngisor iki minangka bukt
 /** Georgian (ქართული)
  * @author BRUTE
  * @author David1010
+ * @author ITshnik
  * @author გიორგიმელა
  */
 $messages['ka'] = array(
 	'securepoll' => 'უსაფრთხო კეჭისყრა',
+	'securepoll-need-admin' => 'თქვენ უნდა იყოთ საარჩევნო ადმინისტრატორი, რომ შეასრულოთ ეს ქმედება.',
 	'securepoll-too-few-params' => 'არ არის საკმარისი ქვეკატეგორიების პარამეტრები (არასწორი ბმული).',
 	'securepoll-invalid-election' => '"$1" არ წარმოადგენს არჩევნებისათვის დასაშვებ იდენტიფიკატორს.',
 	'securepoll-welcome' => '<strong>კეთილი იყოს თქვენი მობრძანება $1!</strong>',
@@ -4665,6 +4678,9 @@ $messages['ka'] = array(
 დაიწყება $3-ის $2-ზე.',
 	'securepoll-finished' => 'ეს არჩევნები დასრულებულია, თქვენ აღარ შეგიძლიათ ხმის მიცემა.',
 	'securepoll-not-qualified' => 'თქვენ არ შეგიძლიათ ამ არჩევნებში ხმის მიცემა: $1',
+	'securepoll-change-disallowed' => 'თქვენ უკვე გავქვთ ხმა მიცემული ამ არჩევნებში. 
+ვწუხვართ, მაგრამ თქვენ ვეღარ მისცემთ ხმას მეორედ.',
+	'securepoll-change-allowed' => '<strong>შენიშვნა: თქვენ უკვე გაქვთ მიცემული ხმა ამ არჩევნებში.</strong> თქვენ შეგიძლიათ შეცვალოთ თქვენი არჩევანი ქვემოთ მოცემული ფორმის შევსებით. გაითვალისწინეთ, რომ თუ თქვენ ასე მოიქცევით, თქვენი პირვანდელი არჩევანი გაუქმდება.',
 	'securepoll-submit' => 'ხმის მიცემა',
 	'securepoll-thanks' => 'გმადლობთ, თქვენი ხმა მიღებულია.',
 	'securepoll-return' => 'დაბრუნება $1–ზე',
@@ -4677,6 +4693,7 @@ $messages['ka'] = array(
 	'securepoll-jump' => 'ხმის მიცემის სერვერზე გადასვლა',
 	'securepoll-bad-ballot-submission' => 'თქვენი ხმა ძალადაკარგულია: $1',
 	'securepoll-unanswered-questions' => 'თქვენ უნდა უპასუხოთ ყველა შეკითხვას.',
+	'securepoll-invalid-score' => 'ანგარიში უნდა იყოს რიცხვი $ 1 -სა და $ 2 -ს შორის.',
 	'securepoll-unanswered-options' => 'თქვენ უნდა გასცეთ პასუხი ყოველ კითხვაზე.',
 	'securepoll-remote-auth-error' => 'შეცდომა ანგარიშზე ინფორმაციის მიღებისას სერვერიდან.',
 	'securepoll-api-invalid-params' => 'არასწორი პარამეტრები.',
@@ -5420,14 +5437,14 @@ $messages['mk'] = array(
 	'securepoll-invalid-election' => '„$1“ не претставува важечки идентификационен број.',
 	'securepoll-welcome' => '<strong>Добредојдовте $1!</strong>',
 	'securepoll-not-started' => 'Изборите сè уште не се започнати.
-Предвидено е да започнат на $2 во $3.',
+Предвидено е да започнат на $2 во $3 ч.',
 	'securepoll-finished' => 'Изборите завршија, повеќе не можете да гласате.',
 	'securepoll-not-qualified' => 'Не сте квалификувани да гласате на овие избори: $1',
 	'securepoll-change-disallowed' => 'Веќе имате гласано на овие избори.
 Жалиме, но не ви е дозволено да гласате повторно.',
-	'securepoll-change-allowed' => '<strong>Белешка: На овие избори сте гласале претходно.</strong>
-Можете да гопромените вашиот глас со тоа што ќе го пополните долунаведениот образец.
-Имајте в предвид дека ако го сторите тоа, вашиот првичен глас ќе биде поништен.',
+	'securepoll-change-allowed' => '<strong>Напомена: На овие избори сте гласале претходно.</strong>
+Можете да го промените вашиот глас со тоа што ќе го пополните долунаведениот образец.
+Имајте предвид дека ако го сторите тоа, вашиот првичен глас ќе биде поништен.',
 	'securepoll-submit' => 'Поднеси глас',
 	'securepoll-gpg-receipt' => 'Ви благодариме што гласавте.
 
@@ -5453,25 +5470,25 @@ $1',
 	'securepoll-gpg-parse-error' => 'Грешка при толкувањето на излезните информации за GPG.',
 	'securepoll-no-decryption-key' => 'Не е конфигуриран описниот клуч.
 Не можам да дешифрирам.',
-	'securepoll-jump' => 'Оди на гласачкиот сервер',
+	'securepoll-jump' => 'Оди на опслужувачот за гласање',
 	'securepoll-bad-ballot-submission' => 'Вашиот глас е неважечки: $1',
 	'securepoll-unanswered-questions' => 'Морате да одговорите на сите прашања.',
 	'securepoll-invalid-rank' => 'Погрешен ранг. Кандидадите морате да ги рангирате со бројка помеѓу 1 и 999.',
-	'securepoll-unranked-options' => 'Некои опции не беа рангирани.
-Морате на сите опции да им доделите ранг помеѓу 1 и 999.',
+	'securepoll-unranked-options' => 'Некои избори не беа рангирани.
+На сите избори мора да им доделите ранг помеѓу 1 и 999.',
 	'securepoll-invalid-score' => 'Оцената мора да биде број од $1 до $2.',
 	'securepoll-unanswered-options' => 'Мора да дадете одговор на секое прашање.',
-	'securepoll-remote-auth-error' => 'Грешка при преземање на информациите за вашата сметка од серверот.',
-	'securepoll-remote-parse-error' => 'Грешка при толкувањето на одговорот при барањето на дозвола за пристап на серверот.',
+	'securepoll-remote-auth-error' => 'Грешка при преземање на информациите за вашата сметка од опслужувачот.',
+	'securepoll-remote-parse-error' => 'Грешка при толкувањето на одговорот при барањето на дозвола за пристап од опслужувачот.',
 	'securepoll-api-invalid-params' => 'Неважечки параметри.',
 	'securepoll-api-no-user' => 'Не бепе пронајден корисник со зададениот идентификационен број.',
 	'securepoll-api-token-mismatch' => 'Не се совпаѓаат безбедносните кодови, не можам да ве најавам.',
 	'securepoll-not-logged-in' => 'Морате да сте најавени за да гласате',
 	'securepoll-too-few-edits' => 'Жалиме, но не можете да гласате. Треба да имате барем $1 {{PLURAL:$1|уредување|уредувања}} за да можете да гласате, а вие имате $2.',
 	'securepoll-blocked' => 'Жалиме, но немате право да гласате ако сте моментално блокирани од уредување.',
-	'securepoll-bot' => 'Жалиме, но сметките со бот-знаменце не се дозволени на изборите.',
+	'securepoll-bot' => 'Жалиме, но сметките со ботовско знаменце не се дозволени на изборите.',
 	'securepoll-not-in-group' => 'На овие избори можат да гласаат само припадници на групата „$1“.',
-	'securepoll-not-in-list' => 'Жалиме, но вие не сте на предодредената листа на корисници овластени да гласаат на овие избори.',
+	'securepoll-not-in-list' => 'Жалиме, но вие не сте на предодредениот список на корисници овластени да гласаат на овие избори.',
 	'securepoll-list-title' => 'Наведи гласови: $1',
 	'securepoll-header-timestamp' => 'Време',
 	'securepoll-header-voter-name' => 'Име',
@@ -5501,20 +5518,20 @@ $1',
 	'securepoll-dump-not-finished' => 'Шифрираната гласачка евиденција е достапна дури откога ќе завршат изборите ($1 во $2)',
 	'securepoll-dump-no-urandom' => 'Не можам да отворам /dev/urandom.  
 За да се одржи приватноста на гласачот, шифрираната гласачка евиденција станува достапна за јавноста само кога податоците од евиденцијата ќе можат да се мешаат со помош на безбедна низа на случајни броеви.',
-	'securepoll-urandom-not-supported' => 'Овој сервер не поддржува криптографско создавање на случајни броеви.
+	'securepoll-urandom-not-supported' => 'Овој опслужувач не поддржува криптографско создавање на случајни броеви.
 За да се одржи приватноста на гласачите, шифрираните избирачки податоци стануваат достапни за јавноста само кога ќе можат да се мешаат со безбедна низа случајни броеви.',
 	'securepoll-translate-title' => 'Преведи: $1',
 	'securepoll-invalid-language' => 'Неважечки јазичен код „$1“',
 	'securepoll-submit-translate' => 'Ажурирање',
 	'securepoll-language-label' => 'Избери јазик:',
 	'securepoll-submit-select-lang' => 'Преведување',
-	'securepoll-entry-text' => 'Подолу е наведена листата на гласањата.',
+	'securepoll-entry-text' => 'Подолу е наведен списокот на гласања.',
 	'securepoll-header-title' => 'Име',
 	'securepoll-header-start-date' => 'Почетен датум',
 	'securepoll-header-end-date' => 'Завршен датум',
 	'securepoll-subpage-vote' => 'Глас',
 	'securepoll-subpage-translate' => 'Преведи',
-	'securepoll-subpage-list' => 'Листа',
+	'securepoll-subpage-list' => 'Список',
 	'securepoll-subpage-dump' => 'Отпаднати гласови',
 	'securepoll-subpage-tally' => 'Преброј',
 	'securepoll-tally-title' => 'Пребројување: $1',
@@ -7916,7 +7933,7 @@ $messages['sl'] = array(
 $messages['sr-ec'] = array(
 	'securepoll-desc' => 'Екстензија за изборе и анкете',
 	'securepoll-invalid-page' => 'Немогућа подстрана „<nowiki>$1</nowiki>“',
-	'securepoll-need-admin' => 'Морате бити администратор да бисте извели ову акцију.',
+	'securepoll-need-admin' => 'Морате бити изборни администратор да бисте извели ову акцију.',
 	'securepoll-too-few-params' => 'Недовољно параметара подстране (неисправна веза).',
 	'securepoll-invalid-election' => '„$1“ није валидан ID за изборе.',
 	'securepoll-welcome' => '<strong>Добро дошли, $1!</strong>',
@@ -7977,7 +7994,7 @@ $messages['sr-ec'] = array(
 $messages['sr-el'] = array(
 	'securepoll-desc' => 'Ekstenzija za izbore i ankete',
 	'securepoll-invalid-page' => 'Nemoguća podstrana „<nowiki>$1</nowiki>“',
-	'securepoll-need-admin' => 'Morate biti administrator da biste izveli ovu akciju.',
+	'securepoll-need-admin' => 'Morate biti izborni administrator da biste izveli ovu akciju.',
 	'securepoll-too-few-params' => 'Nedovoljno parametara podstrane (neispravna veza).',
 	'securepoll-invalid-election' => '„$1“ nije validan ID za izbore.',
 	'securepoll-welcome' => '<strong>Dobro došli, $1!</strong>',
@@ -9230,13 +9247,14 @@ $messages['yi'] = array(
 );
 
 /** Cantonese (粵語)
+ * @author Horacewai2
  * @author Shinjiman
  */
 $messages['yue'] = array(
 	'securepoll' => '安全投票',
 	'securepoll-desc' => '選舉同調查嘅擴展',
 	'securepoll-invalid-page' => '無效嘅細頁 "<nowiki>$1</nowiki>"',
-	'securepoll-need-admin' => '你需要係一位管理員去做呢個動作。',
+	'securepoll-need-admin' => '你需要係投票一位管理員去做呢個動作。',
 	'securepoll-too-few-params' => '唔夠細頁參數（無效連結）。',
 	'securepoll-invalid-election' => '"$1"唔係一個有效嘅選舉ID。',
 	'securepoll-welcome' => '<strong>歡迎$1！</strong>',

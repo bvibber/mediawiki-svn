@@ -972,7 +972,7 @@ $messages['mk'] = array(
 	'imstatus_live_get_code' => 'вашиот id на веб-страницата на Live Messenger website : <strong>ова не е вашата е-пошта</strong>, ќе треба да го создадете во
 <a href="$1">вашите прилагодувања на Live Messenger</a>.
 Во тој id треба да има букви и бројки од „$2“ до „$3“.',
-	'imstatus_skype_nbstyle' => 'Белешка: Ако одберете стил кој е истовремено и дејство, вашиот избор на дејство ќе биде заменет со дејството соодветно на одбраниот стил.',
+	'imstatus_skype_nbstyle' => 'Напомена: Ако одберете стил кој е истовремено и дејство, вашиот избор на дејство ќе биде заменет со дејството соодветно на одбраниот стил.',
 	'imstatus_xfire_size' => 'големина на копчето, од $1 (најголемо) до $2 (најмало).',
 	'imstatus_yahoo_style' => 'стил на копчето, од $1 (најмало) до $2 (најголемо), $3 и $4 се за говорна пошта.',
 );
@@ -1199,6 +1199,14 @@ L\'identificativ ch\'it deve dé a son ij nùmer e le litre an tra "$2" e "$3".'
 	'imstatus_skype_nbstyle' => "Nòta: S'it serne në stil che a l'é ëdcò n'assion, toa assion sërnùa a sarà coatà da l'assion ch'a corispond a tò stil sërnù.",
 	'imstatus_xfire_size' => 'la dimension dël boton, da $1 (ël pi gròss) a $2 (ël pi cit).',
 	'imstatus_yahoo_style' => 'lë stil dël boton, da $1 (ël pi cit) a $2 (ël pi gròss), $3 e $4 a son për mëssagi vocaj.',
+);
+
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'imstatus_example' => 'بېلګه',
+	'imstatus_or' => 'يا',
 );
 
 /** Portuguese (Português)

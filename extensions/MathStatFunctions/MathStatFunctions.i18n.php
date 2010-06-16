@@ -2,8 +2,9 @@
 /**
  * Internationalisation file for extension MathStatFunctions.
  *
- * @addtogroup Extensions
-*/
+ * @file
+ * @ingroup Extensions
+ */
 
 require_once( dirname( __FILE__ ) . '/MathStatFunctions.i18n.magic.php' );
 

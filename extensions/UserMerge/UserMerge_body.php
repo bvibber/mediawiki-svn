@@ -9,7 +9,7 @@
  * user to another user - also supports deleting users following
  * merge.
  *
- * @addtogroup Extensions
+ * @ingroup Extensions
  * @author Tim Laqua <t.laqua@gmail.com>
  */
 class UserMerge extends SpecialPage {
@@ -131,14 +131,14 @@ class UserMerge extends SpecialPage {
 				"</td>
 			</tr>
 			<tr>
-				<td>&nbsp;" .
+				<td>&#160;" .
 				"</td>
 				<td class='mw-input'>" .
 					Xml::checkLabel( wfMsg( 'usermerge-deleteolduser' ), 'deleteuser', 'deleteuser', $deleteUserCheck, array( 'tabindex' => '3' ) ) .
 				"</td>
 			</tr>
 			<tr>
-				<td>&nbsp;
+				<td>&#160;
 				</td>
 				<td class='mw-submit'>" .
 					Xml::submitButton( wfMsg( 'usermerge-submit' ), array( 'tabindex' => '4' ) ) .

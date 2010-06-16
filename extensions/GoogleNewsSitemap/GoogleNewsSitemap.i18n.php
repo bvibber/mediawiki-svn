@@ -3,14 +3,15 @@
  * Internationalisation file for extension special page GoogleNewsSitemap
  * New version of DynamicPageList extension for use by Wikinews projects
  *
- * @addtogroup Extensions
- **/
+ * @file
+ * @ingroup Extensions
+ */
 
 $messages= array();
 
 /** English
  * @author Amgine
- **/
+ */
 
 $messages['en'] = array(
     'gnsm'                  => 'Google News Sitemap',
@@ -20,6 +21,13 @@ $messages['en'] = array(
     'gnsm_toofewcats'       => 'Error: Too few categories!',
     'gnsm_noresults'        => 'Error: No results!',
     'gnsm_noincludecats'    => 'Error: You need to include at least one category, or specify a namespace!',
+);
+
+/** Message documentation (Message documentation)
+ * @author Umherirrender
+ */
+$messages['qqq'] = array(
+	'gnsm-desc' => '{{desc}}',
 );
 
 /** Afrikaans (Afrikaans)
@@ -407,6 +415,22 @@ $messages['ru'] = array(
 	'gnsm_noincludecats' => 'Ошибка. Вы должны включить по меньшей мере одну категорию, или указать пространство имён!',
 );
 
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'gnsm_toomanycats' => 'Грешка: Превише категорија!',
+	'gnsm_toofewcats' => 'Грешка: Премало категорија!',
+	'gnsm_noresults' => 'Грешка: Нема резултата!',
+);
+
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'gnsm_toomanycats' => 'Greška: Previše kategorija!',
+	'gnsm_toofewcats' => 'Greška: Premalo kategorija!',
+	'gnsm_noresults' => 'Greška: Nema rezultata!',
+);
+
 /** Swedish (Svenska)
  * @author Per
  */
@@ -471,5 +495,15 @@ $messages['zh-hans'] = array(
 	'gnsm_toofewcats' => '错误：分类过少！',
 	'gnsm_noresults' => '错误：没有结果！',
 	'gnsm_noincludecats' => '错误：您需要包含至少一个分类，或者指定一个名称空间！',
+);
+
+/** Traditional Chinese (‪中文(繁體)‬) */
+$messages['zh-hant'] = array(
+	'gnsm' => 'Google 資訊站點地圖',
+	'gnsm-desc' => '輸出一個Google 資訊站點地圖的Atom/RSS文件',
+	'gnsm_toomanycats' => '錯誤：分類過多！',
+	'gnsm_toofewcats' => '錯誤：分類過少！',
+	'gnsm_noresults' => '錯誤：沒有結果！',
+	'gnsm_noincludecats' => '錯誤：您需要包含至少一個分類，或者指定一個名稱空間！',
 );
 

@@ -19,7 +19,15 @@ class ApiClickTracking extends ApiBase {
 		$this->validateParams( $params );
 		$eventid_to_lookup = $params['eventid'];
 		$session_id = $params['token'];
-
+		
+		$additional = null;
+		
+		if( isset($params['additional'])  && strlen($params['additional']) > 0){
+			$additional = $params['additional'];
+			
+		}
+		
+		
 		// Event ID lookup table
 		// FIXME: API should already have urldecode()d
 		$event_id = ClickTrackingHooks::getEventIDFromName( urldecode( $eventid_to_lookup ) );
@@ -43,17 +51,29 @@ class ApiClickTracking extends ApiBase {
 			( $is_logged_in ? $wgUser->getEditCount() : 0 ), // total edit count or 0 if anonymous
 			$granularity1, // contributions made in granularity 1 time frame
 			$granularity2, // contributions made in granularity 2 time frame
-			$granularity3  // contributions made in granularity 3 time frame
+			$granularity3,  // contributions made in granularity 3 time frame
+			$additional
 		);
 		
 		// For links that go off the page, redirect the user
 		// FIXME: The API should have a proper infrastructure for this
 		if ( !is_null( $params['redirectto'] ) ) {
-			global $wgOut;
-			$wgOut->enable();
-			$wgOut->redirect( $params['redirectto'] );
-			$wgOut->output();
+			// Validate the redirectto parameter
+			// Must be a local URL, may not be protocol-relative
+			$href = $params['redirectto'];
+			if ( strlen( $href ) > 0 && $href{0} == '/' && ( strlen( $href ) == 1 || $href{1} != '/' ) ) {
+				global $wgOut;
+				$wgOut->redirect( $params['redirectto'] );
+				$wgOut->output();
+				
+				// Prevent any further output
+				$wgOut->disable();
+				$this->getMain()->getPrinter()->disable();
+			} else {
+				$this->dieUsage( 'The URL to redirect to must be domain-relative, i.e. start with a /', 'badurl' );
+			}
 		}
+		$this->getMain()->setCacheMaxAge( 0 );
 	}
 
 	/**
@@ -73,7 +93,8 @@ class ApiClickTracking extends ApiBase {
 		return array(
 			'eventid' => 'string of eventID',
 			'token'  => 'unique edit ID for this edit session',
-			'redirectto' => 'URL to redirect to (only used for links that go off the page)'
+			'redirectto' => 'URL to redirect to (only used for links that go off the page)',
+			'additional' => 'additional info for the event, like state information'
 		);
 	}
 
@@ -94,7 +115,8 @@ class ApiClickTracking extends ApiBase {
 		return array(
 			'eventid' => null,
 			'token' => null,
-			'redirectto' => null
+			'redirectto' => null,
+			'additional' => null
 		);
 	}
 

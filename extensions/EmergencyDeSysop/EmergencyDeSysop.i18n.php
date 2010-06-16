@@ -52,6 +52,14 @@ $messages['af'] = array(
 	'emergencydesysop-nogroups' => 'Geen',
 );
 
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'emergencydesysop-submit' => 'Ninviar',
+	'emergencydesysop-nogroups' => 'Garra',
+);
+
 /** Arabic (العربية)
  * @author Meno25
  * @author Ouda
@@ -1028,9 +1036,15 @@ $messages['yi'] = array(
  * @author Gzdavidwong
  */
 $messages['zh-hans'] = array(
+	'emergencydesysop' => '紧急移除管理员权限',
 	'emergencydesysop-desc' => '允许管理员牺牲他们的特权，免除另一名管理员的权限。',
+	'emergencydesysop-otheradmin' => '其他管理员去移除权限',
 	'emergencydesysop-reason' => '移除理由',
+	'emergencydesysop-submit' => '递交',
+	'emergencydesysop-incomplete' => '请填写所有输入框之后再试一次。',
 	'emergencydesysop-notasysop' => '目标用户不在管理员群组中。',
+	'emergencydesysop-nogroups' => '无',
+	'emergencydesysop-done' => '动作已完成，你和[[$1]]已被移除管理员权限。',
 	'emergencydesysop-invalidtarget' => '目标用户不存在。',
 	'emergencydesysop-blocked' => '您在封禁期内不能访问此页',
 	'emergencydesysop-noright' => '您没有足够权限访问本页',

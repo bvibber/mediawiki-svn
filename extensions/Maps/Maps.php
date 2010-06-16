@@ -33,7 +33,7 @@ if ( ! defined( 'Validator_VERSION' ) ) {
 	echo '<b>Warning:</b> You need to have <a href="http://www.mediawiki.org/wiki/Extension:Validator">Validator</a> installed in order to use <a href="http://www.mediawiki.org/wiki/Extension:Maps">Maps</a>.';
 }
 else {
-	define( 'Maps_VERSION', '0.6 rc3' );
+	define( 'Maps_VERSION', '0.6.3 a5' );
 
 	// The different coordinate notations.
 	define( 'Maps_COORDS_FLOAT', 'float' );
@@ -60,7 +60,7 @@ else {
 	$egMapsServices = array();
 
 	// Include the settings file.
-	require_once( $egMapsDir . 'Maps_Settings.php' );
+	require_once $egMapsDir . 'Maps_Settings.php';
 
 	$wgExtensionMessagesFiles['Maps'] = $egMapsDir . 'Maps.i18n.php';
 
@@ -82,22 +82,28 @@ function efMapsSetup() {
 	global $egMapsDefaultService, $egMapsAvailableServices, $egMapsServices, $egMapsDefaultGeoService, $egMapsScriptPath;
 	global $egMapsDir, $egMapsAvailableFeatures, $egMapsUseMinJs, $egMapsJsExt, $egMapsStyleVersion;
 
-	// Autoload the general classes.
-	$wgAutoloadClasses['MapsCoordinateParser'] 		= $egMapsDir . 'Maps_CoordinateParser.php';
-	$wgAutoloadClasses['MapsMapper'] 				= $egMapsDir . 'Maps_Mapper.php';
-
+	// Autoload the includes/ classes.
+	$wgAutoloadClasses['MapsMapper'] 				= $egMapsDir . 'Includes/Maps_Mapper.php';
+	$wgAutoloadClasses['MapsCoordinateParser'] 		= $egMapsDir . 'Includes/Maps_CoordinateParser.php';
+	$wgAutoloadClasses['MapsDistanceParser'] 		= $egMapsDir . 'Includes/Maps_DistanceParser.php';
+	
 	// This function has been deprecated in 1.16, but needed for earlier versions.
 	// It's present in 1.16 as a stub, but lets check if it exists in case it gets removed at some point.
 	if ( function_exists( 'wfLoadExtensionMessages' ) ) {
 		wfLoadExtensionMessages( 'Maps' );
 	}
 
+	// Load the service/ classes and interfaces.
+	require_once $egMapsDir . 'Services/Maps_iMappingService.php';
+	$wgAutoloadClasses['MapsMappingService'] = $egMapsDir . 'Services/Maps_MappingService.php';
+	
+	wfRunHooks( 'MappingServiceLoad' );	
+	
 	wfRunHooks( 'MappingFeatureLoad' );
-	wfRunHooks( 'MappingServiceLoad' );
 
 	// Remove all hooked in services that should not be available.
 	foreach ( $egMapsServices as $service => $data ) {
-		if ( ! in_array( $service, $egMapsAvailableServices ) ) unset( $egMapsServices[$service] );
+		if ( !in_array( $service, $egMapsAvailableServices ) ) unset( $egMapsServices[$service] );
 	}
 	$egMapsAvailableServices = array_keys( $egMapsServices );
 

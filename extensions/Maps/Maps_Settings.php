@@ -38,11 +38,13 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 		# Geocoding support, required for the geocoding parser functions and smart geocoding support in all other parser functions.
 		include_once $egMapsDir . 'Geocoders/Maps_Geocoders.php';
 		# Geocoding parser functions: #geocode, #geocodelat, #geocodelon.
-		include_once $egMapsDir . 'ParserFunctions/Geocode/Maps_GeocodeFunctions.php';
+		include_once $egMapsDir . 'ParserFunctions/Maps_GeocodeFunctions.php';
 		# Required for #coordinates.
-		include_once $egMapsDir . 'ParserFunctions/Coordinates/Maps_Coordinates.php';
+		include_once $egMapsDir . 'ParserFunctions/Maps_Coordinates.php';
+		# Required for #distance.
+		include_once $egMapsDir . 'ParserFunctions/Maps_Distance.php';		
 		# Geographic parser functions: #geodistance, #finddestination
-		include_once $egMapsDir . 'ParserFunctions/GeoFunctions/Maps_GeoFunctions.php';
+		include_once $egMapsDir . 'ParserFunctions/Maps_GeoFunctions.php';
 
 		
 		
@@ -53,13 +55,16 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	# Commenting or removing a mapping service will make Maps completely ignore it, and so improve performance.
 	
 	# Google Maps API v2
-	include_once $egMapsDir . 'Services/GoogleMaps/Maps_GoogleMaps.php';
+	include_once $egMapsDir . 'Services/GoogleMaps/GoogleMaps.php';
+	
 	# Google Maps API v3
-	include_once $egMapsDir . 'Services/GoogleMaps3/Maps_GoogleMaps3.php';
+	include_once $egMapsDir . 'Services/GoogleMaps3/GoogleMaps3.php';
+	
 	# OpenLayers API
-	include_once $egMapsDir . 'Services/OpenLayers/Maps_OpenLayers.php';
+	include_once $egMapsDir . 'Services/OpenLayers/OpenLayers.php';
+	
 	# Yahoo! Maps API
-	include_once $egMapsDir . 'Services/YahooMaps/Maps_YahooMaps.php';
+	include_once $egMapsDir . 'Services/YahooMaps/YahooMaps.php';
 
 	# Array of String. Array containing all the mapping services that will be made available to the user.
 	# Currently Maps provides the following services: googlemaps, yahoomaps, openlayers.
@@ -142,6 +147,32 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 
 
+# Distance configuration
+	
+	# Array. A list of units (keys) and how many meters they represent (value).
+	$egMapsDistanceUnits = array(
+		'm' => 1,
+		'meter' => 1,
+		'meters' => 1,
+		'km' => 1000,
+		'kilometers' => 1000,
+		'kilometres' => 1000,
+		'mi' => 1609.344,
+		'mile' => 1609.344,
+		'miles' => 1609.344,
+		'nm' => 1852,
+		'nautical mile' => 1852,
+		'nautical miles' => 1852,
+	);
+	
+	# String. The default unit for distances.
+	$egMapsDistanceUnit = 'km';
+	
+	# Integer. The default limit of fractal digits in a distance.
+	$egMapsDistanceDecimals = 2;	
+	
+	
+	
 # General map configuration
 
 	# Integer or string. The default width and height of a map. These values will
@@ -356,7 +387,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 			'yahoo' => "<style type='text/css'> #controls {width: 512px;}</style><script src='http://api.maps.yahoo.com/ajaxymap?v=3.0&appid=euzuro-openlayers'></script>",
 			'bing' => "<script type='$wgJsMimeType' src='http://dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=6.1'></script>",
 			'ol-wms' => "<script type='$wgJsMimeType' src='http://clients.multimap.com/API/maps/1.1/metacarta_04'></script>",
-			'osm' => "<script type='$wgJsMimeType' src='$egMapsScriptPath/OpenLayers/OSM/OpenStreetMap.js?$egMapsStyleVersion'></script>",
+			'osm' => "<script type='$wgJsMimeType' src='$egMapsScriptPath/Services/OpenLayers/OSM/OpenStreetMap.js?$egMapsStyleVersion'></script>",
 		);
 	
 	

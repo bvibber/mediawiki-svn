@@ -18,8 +18,9 @@
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
+ * @file
  * @author Evan Prodromou <evan@prodromou.name>
- * @addtogroup Extensions
+ * @ingroup Extensions
  */
 
 if ( !defined( 'MEDIAWIKI' ) )
@@ -157,7 +158,7 @@ class SpecialOpenIDServer extends SpecialOpenID {
 	# for some requests
 
 	function Url() {
-		$nt = Title::makeTitleSafe( NS_SPECIAL, 'OpenIDServer' );
+		$nt = SpecialPage::getTitleFor( 'OpenIDServer' );
 		if ( isset( $nt ) ) {
 			return $nt->getFullURL();
 		} else {
@@ -171,9 +172,11 @@ class SpecialOpenIDServer extends SpecialOpenID {
 		global $wgOpenIDServerStorePath,
 		  $wgOpenIDServerStoreType;
 
-		$store = $this->getOpenIDStore( $wgOpenIDServerStoreType,
-									   'server',
-									   array( 'path' => $wgOpenIDServerStorePath ) );
+		$store = $this->getOpenIDStore(
+			$wgOpenIDServerStoreType,
+			'server',
+			array( 'path' => $wgOpenIDServerStorePath )
+		);
 
 		return new Auth_OpenID_Server( $store, $this->serverUrl() );
 	}

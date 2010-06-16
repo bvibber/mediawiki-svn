@@ -607,6 +607,18 @@ Pozrite sa na {{PLURAL:$2|túto súvisiacu stránku|tieto súvisiace stránky}}:
 	'tog-edit-similar' => 'Zapnúť návrhy podobných stránok',
 );
 
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'editsimilar-link-disable' => 'постави подешавања',
+);
+
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'editsimilar-link-disable' => 'postavi podešavanja',
+);
+
 /** Swedish (Svenska)
  * @author M.M.S.
  * @author Skalman
@@ -673,6 +685,16 @@ Bạn cũng có thể giúp đỡ {{PLURAL:$2|trang|những trang}} sau: $1.',
 	'editsimilar-thankyou' => 'Cảm ơn về sự đóng góp của $1!',
 	'editsimilar-link-disable' => 'tùy chọn',
 	'tog-edit-similar' => 'Kích hoạt đề nghị về trang tương tự',
+);
+
+/** Simplified Chinese (‪中文(简体)‬) */
+$messages['zh-hans'] = array(
+	'editsimilar-desc' => '当用户保存页面后鼓励用户编辑一个类似的页面。',
+	'editsimilar-thanks' => '多谢你的贡献。建议你编辑以下$2个相关页面：$1',
+	'editsimilar-thanks-notsimilar' => '多谢你的贡献，不防继续考虑编辑这$2个页面：$1',
+	'editsimilar-thankyou' => '$1，多谢你的贡献。',
+	'editsimilar-link-disable' => '设置参数',
+	'tog-edit-similar' => '启用类似页面编辑建议',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

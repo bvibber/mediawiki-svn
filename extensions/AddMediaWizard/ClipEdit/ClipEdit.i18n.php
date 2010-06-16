@@ -55,7 +55,9 @@ $messages['af'] = array(
 	'mwe-clipedit-other_properties' => 'Ander eienskappe',
 	'mwe-clipedit-start_time' => 'Begintyd',
 	'mwe-clipedit-end_time' => 'Eindtyd',
+	'mwe-clipedit-inline-description' => 'Byskrif',
 	'mwe-clipedit-duration' => 'Duur:',
+	'mwe-clipedit-layout' => 'Uitleg',
 );
 
 /** Arabic (العربية) */
@@ -435,7 +437,9 @@ $messages['gl'] = array(
 	'mwe-clipedit-layout_left' => 'Disposición da imaxe do lado esquerdo',
 );
 
-/** Swiss German (Alemannisch) */
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
 $messages['gsw'] = array(
 	'mwe-clipedit-crop' => 'Bild zueschnyde',
 	'mwe-clipedit-apply_crop' => 'Bild zueschnyde',
@@ -444,6 +448,7 @@ $messages['gsw'] = array(
 	'mwe-clipedit-insert_into_sequence' => 'In dr Abschnitt yyfiege',
 	'mwe-clipedit-preview_insert' => 'Vorschau vu dr Yyfiegig',
 	'mwe-clipedit-cancel_image_insert' => 'S Yyfiege ruckgängig mache',
+	'mwe-clipedit-sc_attributes' => 'Videoclip-Detail bearbeite',
 	'mwe-clipedit-sc_inoutpoints' => 'Aa-Uus-Pinkt setze',
 	'mwe-clipedit-sc_overlays' => 'Overlays',
 	'mwe-clipedit-sc_audio' => 'Audioyystellige',
@@ -461,6 +466,9 @@ $messages['gsw'] = array(
 	'mwe-clipedit-inline-description' => 'Bschryybig',
 	'mwe-clipedit-edit-video-tools' => 'Video-Bearbeitigswärchzyyg:',
 	'mwe-clipedit-duration' => 'Duur:',
+	'mwe-clipedit-layout' => 'Uusrichtig',
+	'mwe-clipedit-layout_right' => 'Bild uf dr rächte Syte',
+	'mwe-clipedit-layout_left' => 'Bild uf dr linke Syte',
 );
 
 /** Hebrew (עברית) */
@@ -718,16 +726,20 @@ $messages['lb'] = array(
 	'mwe-clipedit-insert_into_sequence' => "An d'Sequenz drasetzen",
 	'mwe-clipedit-preview_insert' => 'Drasetze kucken ouni ze späicheren',
 	'mwe-clipedit-cancel_image_insert' => 'Drasetzen ofbriechen',
+	'mwe-clipedit-sc_attributes' => 'Detailer vum Videclip änneren',
+	'mwe-clipedit-sc_inoutpoints' => 'Eran-Eraus Punkte festleeën',
 	'mwe-clipedit-sc_audio' => 'Audiosteierung',
 	'mwe-clipedit-sc_duration' => 'Dauer',
 	'mwe-clipedit-template_properties' => 'Eegeschafte vun der Schabloun',
 	'mwe-clipedit-custom_title' => 'Personaliséierten Titel',
 	'mwe-clipedit-edit_properties' => 'Eegeschaften änneren',
 	'mwe-clipedit-other_properties' => 'Aner Eegeschaften',
+	'mwe-clipedit-set_in_out_points' => 'Eran-Eraus Punkte festleeën',
 	'mwe-clipedit-start_time' => 'Ufankszäit',
 	'mwe-clipedit-end_time' => 'Schlusszäit',
 	'mwe-clipedit-edit-tools' => "Handwierksgeschir fir z'änneren",
 	'mwe-clipedit-inline-description' => 'Beschreiwung',
+	'mwe-clipedit-edit-video-tools' => 'Video-Tools änneren:',
 	'mwe-clipedit-duration' => 'Dauer:',
 	'mwe-clipedit-layout' => 'Layout',
 );
@@ -898,6 +910,16 @@ $messages['pl'] = array(
 	'mwe-clipedit-duration' => 'Czas trwania',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'mwe-clipedit-sc_duration' => 'موده',
+	'mwe-clipedit-start_time' => 'د پيل وخت',
+	'mwe-clipedit-end_time' => 'د پای وخت',
+	'mwe-clipedit-duration' => 'موده:',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  */
@@ -932,8 +954,12 @@ $messages['pt'] = array(
 	'mwe-clipedit-layout_left' => 'Imagem posicionada à esquerda',
 );
 
-/** Brazilian Portuguese (Português do Brasil) */
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Giro720
+ */
 $messages['pt-br'] = array(
+	'mwe-clipedit-crop' => 'Recortar imagem',
+	'mwe-clipedit-apply_crop' => 'Aplicar corte à imagem',
 	'mwe-clipedit-preview_insert' => 'Prever inserção',
 	'mwe-clipedit-sc_duration' => 'Duração',
 	'mwe-clipedit-other_properties' => 'Outras propriedades',
@@ -1048,6 +1074,38 @@ $messages['sr-ec'] = array(
 	'mwe-clipedit-layout_left' => 'Изглед с леве стране слике',
 );
 
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'mwe-clipedit-crop' => 'Iseci sliku',
+	'mwe-clipedit-apply_crop' => 'Primeni isecanje slike',
+	'mwe-clipedit-reset_crop' => 'Poništi isecanje',
+	'mwe-clipedit-insert_image_page' => 'Ubaci u stranicu',
+	'mwe-clipedit-insert_into_sequence' => 'Ubaci u niz',
+	'mwe-clipedit-preview_insert' => 'Pretpregled umetka',
+	'mwe-clipedit-cancel_image_insert' => 'Poništi umetak',
+	'mwe-clipedit-sc_attributes' => 'Uredi podatke snimka',
+	'mwe-clipedit-sc_inoutpoints' => 'Postavi u-van tačke',
+	'mwe-clipedit-sc_overlays' => 'Preklapanja',
+	'mwe-clipedit-sc_audio' => 'Audio kontrola',
+	'mwe-clipedit-sc_duration' => 'Trajanje',
+	'mwe-clipedit-template_properties' => 'Svojstva šablona',
+	'mwe-clipedit-custom_title' => 'Prilagođeni naslov',
+	'mwe-clipedit-edit_properties' => 'Izmeni svojstva',
+	'mwe-clipedit-other_properties' => 'Ostala svojstva',
+	'mwe-clipedit-resource_page' => 'Izvorna stranica:',
+	'mwe-clipedit-set_in_out_points' => 'Postavi u-van tačke',
+	'mwe-clipedit-start_time' => 'Početno vreme',
+	'mwe-clipedit-end_time' => 'Završno vreme',
+	'mwe-clipedit-preview_inout' => 'Pregledaj u-van tačke',
+	'mwe-clipedit-edit-tools' => 'Uredi alatke',
+	'mwe-clipedit-inline-description' => 'Naslov',
+	'mwe-clipedit-edit-video-tools' => 'Uredi video alatke:',
+	'mwe-clipedit-duration' => 'Trajanje:',
+	'mwe-clipedit-layout' => 'Izgled',
+	'mwe-clipedit-layout_right' => 'Izgled s desne strane slike',
+	'mwe-clipedit-layout_left' => 'Izgled s leve strane slike',
+);
+
 /** Swedish (Svenska)
  * @author Dafer45
  */
@@ -1071,6 +1129,40 @@ $messages['te'] = array(
 	'mwe-clipedit-start_time' => 'ప్రారంభ సమయం',
 	'mwe-clipedit-end_time' => 'ముగింపు సమయం',
 	'mwe-clipedit-duration' => 'నిడివి:',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'mwe-clipedit-crop' => 'Umani sa larawan',
+	'mwe-clipedit-apply_crop' => 'Gamitin ang inani sa larawan',
+	'mwe-clipedit-reset_crop' => 'Itakdang muli ang pag-ani',
+	'mwe-clipedit-insert_image_page' => 'Isingit sa pahina',
+	'mwe-clipedit-insert_into_sequence' => 'Isingit sa pagkakasunod-sunod',
+	'mwe-clipedit-preview_insert' => 'Paunang tingnan ang isiningit',
+	'mwe-clipedit-cancel_image_insert' => 'Huwag ituloy ang pagsisingit',
+	'mwe-clipedit-sc_attributes' => 'Gupitin ang detalye ng pagbabago',
+	'mwe-clipedit-sc_inoutpoints' => 'Itakda ang mga puntos ng pasok-labas',
+	'mwe-clipedit-sc_overlays' => 'Mga patong',
+	'mwe-clipedit-sc_audio' => 'Pangtaban ng naririnig',
+	'mwe-clipedit-sc_duration' => 'Tagal ng panahon',
+	'mwe-clipedit-template_properties' => 'Mga pag-aari ng suleras',
+	'mwe-clipedit-custom_title' => 'Pasadyang pamagat',
+	'mwe-clipedit-edit_properties' => 'Mga pag-aaring pambago',
+	'mwe-clipedit-other_properties' => 'Iba pang mga pag-aari',
+	'mwe-clipedit-resource_page' => 'Pinagmumulang pahina:',
+	'mwe-clipedit-set_in_out_points' => 'Itakda ang mga puntos ng pasok-labas',
+	'mwe-clipedit-start_time' => 'Oras ng pagsisimula',
+	'mwe-clipedit-end_time' => 'Oras ng wakas',
+	'mwe-clipedit-preview_inout' => 'Paunang tingnan ang puntos ng pasok-labas',
+	'mwe-clipedit-edit-tools' => 'Mga kasangkapang pambago',
+	'mwe-clipedit-inline-description' => 'Paliwanag',
+	'mwe-clipedit-edit-video-tools' => 'Baguhin ang mga kasangkapang pangbidyo:',
+	'mwe-clipedit-duration' => 'Katagalan:',
+	'mwe-clipedit-layout' => 'Kaayusan',
+	'mwe-clipedit-layout_right' => 'Pakanang ayos ng larawan',
+	'mwe-clipedit-layout_left' => 'Pakaliwang ayos ng larawan',
 );
 
 /** Turkish (Türkçe) */

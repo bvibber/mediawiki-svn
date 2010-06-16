@@ -29,7 +29,7 @@ $wgGPManagerSort['edit'][] = 'forcepreviewexempt';
 
 function efForcePreview( &$editpage, &$buttons ) {
 	global $wgUser;
-	if( !$wgUser->isAllowed( 'forcepreviewexempt' ) && !$editpage->preview && empty($editpage->save) ) {
+	if( !$wgUser->isAllowed( 'forcepreviewexempt' ) && !$editpage->preview && empty( $editpage->save ) ) {
 		wfLoadExtensionMessages( 'ForcePreview' );
 		$buttons['save'] = str_replace( '/>', 'disabled="disabled" />', $buttons['save'] );
 		$buttons['save'] = preg_replace(  '/value="' . wfMsg('savearticle') . '"/i', 'value="' . wfMsg('forcepreview') . '"', $buttons['save'] );

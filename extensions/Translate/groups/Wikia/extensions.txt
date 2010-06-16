@@ -1,4 +1,11 @@
+Achievements II
+file = AchievementsII/i18n/AchievementsII.i18n.php
+
 Action Panel
+
+Combo Ajax Login
+file = AjaxLogin/ComboAjaxLogin.i18n.php
+descmsg = comboajaxlogin-desc
 
 Ajax Poll
 
@@ -78,6 +85,9 @@ Edit Research
 #Flickr Import
 #var = wgFlickrImportMessages
 
+Follow
+aliasfile = Follow/Follow.alias.php
+
 Force Subject For New Section
 
 #Added 2010-04-23 -- tor
@@ -109,11 +119,7 @@ file = LookupContribs/SpecialLookupContribs.i18n.php
 
 Mag Cloud
 
-# Conflicting keys with Wikia Blogs extension
-# Key 8:blog-avatar-preferences-title already belongs to wikia-blogs, conflict with wikia-masthead
-# Key 8:removeavatar already belongs to ext-socialprofile-userprofile, conflict with wikia-masthead
-#Masthead
-#file = Masthead/Masthead.i18n.php
+Masthead
 
 Most Popular Articles
 file = MostPopularArticles/SpecialMostPopularArticles.i18n.php

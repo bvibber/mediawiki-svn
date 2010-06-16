@@ -4,7 +4,8 @@ if (!defined('MEDIAWIKI')) die();
  * Special page to retrieve profiling information about a particular
  * profiling task; acts as a convenient access point for casual queries
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  * @author Rob Church <robchur@gmail.com>
  */
 

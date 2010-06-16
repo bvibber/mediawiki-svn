@@ -55,7 +55,7 @@ class ExtRegexFunctions {
 	var $modifiers = array('i', 'm', 's', 'x', 'A', 'D', 'S', 'U', 'X', 'J', 'u', 'e');
 	var $options = array('i', 'm', 's', 'x', 'U', 'X', 'J');
 	
-	function rmatch ( &$parser, $string = '', &$pattern = '', &$return = '', $notfound = '', $offset = 0 ) {
+	function rmatch ( &$parser, $string = '', $pattern = '', $return = '', $notfound = '', $offset = 0 ) {
 		global $wgRegexFunctionsPerPage, $wgRegexFunctionsAllowModifiers, $wgRegexFunctionsDisable;
 		if(in_array('rmatch', $wgRegexFunctionsDisable))
 			return;
@@ -78,7 +78,7 @@ class ExtRegexFunctions {
 		return $return;
 	}
 
-	function rsplit ( &$parser, $string = '', &$pattern = '', $piece = 0 ) {
+	function rsplit ( &$parser, $string = '', $pattern = '', $piece = 0 ) {
 		global $wgRegexFunctionsPerPage, $wgRegexFunctionsAllowModifiers, $wgRegexFunctionsLimit, $wgRegexFunctionsDisable;
 		if(in_array('rsplit', $wgRegexFunctionsDisable))
 			return;
@@ -99,7 +99,7 @@ class ExtRegexFunctions {
 		return $res[$p];
 	}
 
-	function rreplace ( &$parser, $string = '', &$pattern = '', &$replace = '' ) {
+	function rreplace ( &$parser, $string = '', $pattern = '', &$replace = '' ) {
 		global $wgRegexFunctionsPerPage, $wgRegexFunctionsAllowModifiers, $wgRegexFunctionsAllowE, $wgRegexFunctionsLimit, $wgRegexFunctionsDisable;
 		if(in_array('rreplace', $wgRegexFunctionsDisable))
 			return;

@@ -2,7 +2,8 @@
 /**
  * Internationalisation file for the bad image list extension
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  * @author Rob Church <robchur@gmail.com>
  * @copyright © 2006 Rob Church
  * @licence Copyright holder allows use of the code for any purpose
@@ -422,6 +423,11 @@ $messages['ca'] = array(
 	'badimages-log-remove' => "s'ha eliminat [[$1]] de la llista d'imatges defectuoses",
 	'badimages-page' => "{{ns:help}}:Llista d'imatges defectuoses",
 	'right-badimages' => "Actualitza la llista d'imatges defectuoses",
+);
+
+/** Chechen (Нохчийн) */
+$messages['ce'] = array(
+	'badimages-reason' => 'Бахьан:',
 );
 
 /** Czech (Česky)
@@ -1495,27 +1501,27 @@ $messages['mhr'] = array(
  * @author Brest
  */
 $messages['mk'] = array(
-	'badimages' => 'Листа на лоши слики',
+	'badimages' => 'Список на лоши слики',
 	'badimage-desc' => 'Проширување на можностите на МедијаВики при работењето со списокот на лоши слики',
 	'badimages-add-btn' => 'Додај',
-	'badimages-added' => '$1 беше додадена во листата',
-	'badimages-count' => "Има {{PLURAL:$1| | }} '''$1''' {{PLURAL:$1|слика|слики}} во листата на лоши слики.",
+	'badimages-added' => '$1 беше додадена во списокот',
+	'badimages-count' => "Има {{PLURAL:$1| | }} '''$1''' {{PLURAL:$1|слика|слики}} во списокот на лоши слики.",
 	'badimages-name' => 'Име:',
 	'badimages-not-added' => 'Сликата не може да се додаде.',
 	'badimages-not-removed' => 'Сликате не може да се избрише.',
 	'badimages-reason' => 'Причина:',
 	'badimages-remove' => '(бриши)',
 	'badimages-remove-btn' => 'Бриши',
-	'badimages-remove-confirm' => 'Потврдете ја намерата за бришење на $1 од листата:',
-	'badimages-removed' => '$1 беше избришана од листата.',
+	'badimages-remove-confirm' => 'Потврдете ја намерата за бришење на $1 од списокот:',
+	'badimages-removed' => '$1 беше избришана од списокот.',
 	'badimages-subheading' => 'Моментални ставки',
-	'badimages-unprivileged' => '(Немате доволно привилегии за промена на листата)',
-	'badimages-log-name' => 'Лоша листа на слики',
-	'badimages-log-header' => 'Ова е дневник на промени во [[{{MediaWiki:Badimages-page}}|листата на лоши слики]].',
-	'badimages-log-add' => 'додадено [[$1]] во листата на лоши слики',
-	'badimages-log-remove' => 'избришано [[$1]] од листата на лоши слики',
-	'badimages-page' => '{{ns:help}}:Листа на лоши слики',
-	'right-badimages' => 'Обновете ја листата на лоши слики',
+	'badimages-unprivileged' => '(Немате доволно привилегии за менување на списокот)',
+	'badimages-log-name' => 'Список на лоши слики',
+	'badimages-log-header' => 'Ова е дневник на промени во [[{{MediaWiki:Badimages-page}}|списокот на лоши слики]].',
+	'badimages-log-add' => 'додадена [[$1]] во списокот на лоши слики',
+	'badimages-log-remove' => 'избришано [[$1]] од списокот на лоши слики',
+	'badimages-page' => '{{ns:help}}:Список на лоши слики',
+	'right-badimages' => 'Обнови го списокот на лоши слики',
 );
 
 /** Malayalam (മലയാളം)
@@ -1582,6 +1588,7 @@ $messages['ms'] = array(
 );
 
 /** Maltese (Malti)
+ * @author Chrisportelli
  * @author Giangian15
  */
 $messages['mt'] = array(
@@ -1601,6 +1608,11 @@ $messages['mt'] = array(
 	'badimages-subheading' => 'Affarijiet kurrenti',
 	'badimages-unprivileged' => "(M'għandhekx biżżejjed permessi sabiex tbiddel il-lista)",
 	'badimages-log-name' => "Lista ta' stampi ħżiena",
+	'badimages-log-header' => "Dawn huwa reġistru ta' tibdil fil-[{{MediaWiki:Badimages-page}}|lista ta' stampi ħżiena]].",
+	'badimages-log-add' => "żied [[$1]] mal-lista ta' stampi ħżiena",
+	'badimages-log-remove' => "neħħa [[$1]] mil-lista ta' stampi ħżiena",
+	'badimages-page' => "{{ns:help}}:Lista ta' stampi ħżiena",
+	'right-badimages' => "Aġġorna l-lista ta' stampi ħżiena",
 );
 
 /** Erzya (Эрзянь)
@@ -2128,8 +2140,11 @@ $messages['sk'] = array(
  * @author Dbc334
  */
 $messages['sl'] = array(
+	'badimages' => 'Seznam škodljivih slik',
+	'badimage-desc' => 'Razširi zmožnosti seznama škodljivih slik v MediaWiki',
 	'badimages-add-btn' => 'Dodaj',
 	'badimages-added' => '$1 je bila dodana na seznam.',
+	'badimages-count' => "Na seznamu škodljivih slik {{PLURAL:$1|je|sta|so|je}} '''$1''' {{PLURAL:$1|slika|sliki|slike|slik}}.",
 	'badimages-name' => 'Ime:',
 	'badimages-not-added' => 'Slike ni bilo mogoče dodati.',
 	'badimages-not-removed' => 'Slike ni bilo mogoče odstraniti.',
@@ -2140,6 +2155,12 @@ $messages['sl'] = array(
 	'badimages-removed' => '$1 je bila odstranjena iz seznama.',
 	'badimages-subheading' => 'Trenutni predmeti',
 	'badimages-unprivileged' => '(Nimate ustreznih dovoljenj za spreminjanje seznama)',
+	'badimages-log-name' => 'Seznam škodljivih slik',
+	'badimages-log-header' => 'To je dnevnik sprememb [[{{MediaWiki:Badimages-page}}|seznama škodljivih slik]].',
+	'badimages-log-add' => 'dodal(-a) [[$1]] na seznam škodljivih slik',
+	'badimages-log-remove' => 'odstranil(-a) [[$1]] iz seznama škodljivih slik',
+	'badimages-page' => '{{ns:help}}:Seznam škodljivih slik',
+	'right-badimages' => 'Posodabljanje seznama škodljivih slik',
 );
 
 /** Serbian (Српски / Srpski) */
@@ -2190,6 +2211,7 @@ $messages['sr-ec'] = array(
 	'badimages-log-add' => 'додата [[$1]] у списак лоших слика',
 	'badimages-log-remove' => 'уклоњена [[$1]] са списка лоших слика',
 	'badimages-page' => '{{ns:help}}:Списак лоших слика',
+	'right-badimages' => 'Ажурирање списка лоших слика',
 );
 
 /** Serbian Latin ekavian (Srpski (latinica))
@@ -2216,6 +2238,7 @@ $messages['sr-el'] = array(
 	'badimages-log-add' => 'dodata [[$1]] u spisak loših slika',
 	'badimages-log-remove' => 'uklonjena [[$1]] sa spiska loših slika',
 	'badimages-page' => '{{ns:help}}:Spisak loših slika',
+	'right-badimages' => 'Ažuriranje spiska loših slika',
 );
 
 /** Seeltersk (Seeltersk)

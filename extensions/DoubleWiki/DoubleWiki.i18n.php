@@ -2,7 +2,8 @@
 /**
  * Internationalisation file for DoubleWiki extension.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $messages = array();
@@ -36,7 +37,7 @@ $messages['aln'] = array(
  * @author Juanpabl
  */
 $messages['an'] = array(
-	'doublewiki-desc' => "Amuestra una pachina y a suya traduzión de atra wiki en dos columnas d'a mesma pachina",
+	'doublewiki-desc' => "Amuestra una pachina y a suya traducción de atra wiki en dos columnas d'a mesma pachina",
 );
 
 /** Arabic (العربية)

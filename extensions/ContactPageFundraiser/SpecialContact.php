@@ -3,7 +3,8 @@
  * Speclial:Contact, a contact form for visitors.
  * Based on SpecialEmailUser.php
  *
- * @addtogroup SpecialPage
+ * @file
+ * @ingroup SpecialPage
  * @author Daniel Kinzler, brightbyte.de
  * @copyright © 2007 Daniel Kinzler
  * @licence GNU General Public Licence 2.0 or later
@@ -37,7 +38,7 @@ class SpecialContact extends SpecialPage {
 	function execute( $par ) {
 		global $wgUser, $wgOut, $wgRequest, $wgEnableEmail, $wgContactUser;
 
-		wfLoadExtensionMessages( 'ContactPage' );
+		wfLoadExtensionMessages( 'ContactPageFundraiser' );
 		$fname = "SpecialContact::execute";
 
 	 	if ( $wgRequest->wasPosted() ) {
@@ -121,7 +122,7 @@ class SpecialContact extends SpecialPage {
 
 /**
  * @todo document
- * @addtogroup SpecialPage
+ * @ingroup SpecialPage
  */
 class EmailContactForm {
 

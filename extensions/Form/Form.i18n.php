@@ -937,7 +937,7 @@ $messages['mhr'] = array(
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
-	'form-desc' => '[[Special:Form|Интерфејс]] за започнување нови страници',
+	'form-desc' => '[[Special:Form|Посредник]] за започнување на нови страници',
 	'form' => 'Образец',
 	'formnoname' => 'Нема име на образецот',
 	'formnonametext' => 'Мора да наведете име на образецот, како да речеме „Special:Form/ИмеНаОбразец“',
@@ -1381,18 +1381,29 @@ $messages['so'] = array(
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Sasa Stefanovic
+ * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
+	'form' => 'Форма',
+	'formnoname' => 'Нема имена форме',
+	'formbadname' => 'Лоше име форме',
+	'formtitlepattern' => 'Додати нову $1',
 	'formsave' => 'Сачувај',
 	'formarticleexists' => 'Страна постоји',
+	'formarticleexiststext' => 'Страна [[$1]] већ постоји.',
 );
 
 /** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(
+	'form' => 'Forma',
+	'formnoname' => 'Nema imena forme',
+	'formbadname' => 'Loše ime forme',
+	'formtitlepattern' => 'Dodati novu $1',
 	'formsave' => 'Sačuvaj',
 	'formarticleexists' => 'Strana postoji',
+	'formarticleexiststext' => 'Strana [[$1]] već postoji.',
 );
 
 /** Seeltersk (Seeltersk)

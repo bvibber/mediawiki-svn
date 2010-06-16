@@ -2,8 +2,9 @@
 /**
  * Internationalisation file for extension Purge.
  *
- * @addtogroup Extensions
-*/
+ * @file
+ * @ingroup Extensions
+ */
 
 $messages = array();
 
@@ -494,6 +495,7 @@ $messages['vi'] = array(
  */
 $messages['zh-hans'] = array(
 	'purge' => '清除',
+	'purge-desc' => '新增一个清空快取的按钮到所有页面',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

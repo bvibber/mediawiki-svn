@@ -1,7 +1,9 @@
 <?php
 /**
  * Internationalisation file for the MassBlank extension
- * @addtogroup Extensions
+ *
+ * @file
+ * @ingroup Extensions
  * @author Tisane
  */
 
@@ -35,6 +37,13 @@ $messages['qqq'] = array(
 	'right-massblank' => '{{doc-right}}',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'massblank-blankcomment' => 'Rede:',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
@@ -49,6 +58,7 @@ $messages['be-tarask'] = array(
 	'massblank-defaultreason' => 'Масавае ачышчэньне старонак, дададзеных $1',
 	'massblank-tools' => 'Гэты інструмэнт дазваляе рабіць масавыя ачышчэньні старонак, дададзеных пэўным удзельнікам альбо з IP-адрасу. Увядзіце імя ўдзельніка альбо IP-адрас для таго, каб атрымаць сьпіс старонак для ачысткі.',
 	'massblank-submit-user' => 'Выканаць',
+	'massblank-submit-blank' => 'Ачысьціць выбраныя',
 	'massblank-blankcomment' => 'Прычына:',
 	'right-massblank' => 'масавая ачыстка старонак',
 );
@@ -57,10 +67,23 @@ $messages['be-tarask'] = array(
  * @author Y-M D
  */
 $messages['br'] = array(
+	'massblank' => 'Gwenner a-vras',
 	'massblank-desc' => "Reiñ a ra an tu d'ar verourien da [[Special:MassBlank|stankañ pajennoù a-vras]]",
 	'massblank-nopages' => "Pajenn nevez ebet bet krouet gant [[Special:Contributions/$1|$1]] er c'hemmoù diwezhañ.",
+	'massblank-list' => "Nevez zo eo bet krouet ar pajennoù da-heul gant [[Special:Contributions/$1|$1]];
+merkañ un tamm notenn ha klikañ war ar bouton d'o gwennañ.",
+	'massblank-defaultreason' => 'Gwennañ a-vras ar pajennoù bet ouzhpennet gant $1',
+	'massblank-tools' => "Talvezout a ra an ostilh-mañ da wennañ a-vras pajennoù bet ouzhpennet nevez zo gant un implijer enrollet pe gant ur chomlec'h IP. 
+Merkañ ar c'homlec'h IP pe anv an implijer a-benn kaout roll ar pajennoù da wennañ :",
 	'massblank-submit-user' => 'Mont',
+	'massblank-submit-blank' => "N'eo bet diuzet tra ebet",
 	'massblank-blankcomment' => 'Abeg ar stankañ :',
+	'right-massblank' => 'Gwennañ pajennoù a-vras',
+);
+
+/** Chechen (Нохчийн) */
+$messages['ce'] = array(
+	'massblank-blankcomment' => 'Бахьан:',
 );
 
 /** German (Deutsch)
@@ -81,17 +104,56 @@ Gib die IP-Adresse oder den Benutzernamen ein, um eine Liste der zu leerenden Se
 	'right-massblank' => 'Massenleerung von Seiten',
 );
 
+/** German (formal address) (Deutsch (Sie-Form))
+ * @author Kghbln
+ */
+$messages['de-formal'] = array(
+	'massblank-list' => 'Die folgenden Seiten wurden von [[Special:Contributions/$1|$1]] erzeugt.
+Geben Sie einen Kommentar ein und drücken Sie auf den Knopf zum Leeren der Seiten.',
+	'massblank-tools' => 'Diese Arbeitshilfe ermöglicht die Massenleerung von Seiten, die von einer IP-Adresse oder einem Benutzer angelegt wurden.
+Geben Sie die IP-Adresse oder den Benutzernamen ein, um eine Liste der zu leerenden Seiten zu erhalten.',
+);
+
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'massblank' => 'Masowe wuproznjenje',
+	'massblank-desc' => 'Dajo administratoram móžnosć [[Special:MassBlank|masowego wuproznjenja]] bokow',
+	'massblank-nopages' => 'Žedne nowe boki wót [[Special:Contributions/$1|$1]] w aktualnych změnach.',
+	'massblank-list' => 'Slědujuce boki su se rowno wót [[Special:Contributions/$1|$1]] napórali;
+zapódaj komentar a klikni na tłocašk, aby je wótpórał.',
+	'massblank-defaultreason' => 'Masowe wuproznjenje bokow, kótarež $1 jo pśidał',
+	'massblank-tools' => 'Toś ten rěd zmóžnja masowe wuproznjenja bokow, kótarež wěsty wužywaŕ abo IP jo rowno pśidał. Zapódaj wužywarske mě abo IP-adresu, aby dostał lisćinu bokow, kótarež maju se wuprozniś.',
+	'massblank-submit-user' => 'W pórědku',
+	'massblank-submit-blank' => 'Wubrane boki wuprozniś',
+	'massblank-blankcomment' => 'Pśicyna:',
+	'right-massblank' => 'Masowe wuproznjenje bokow',
+);
+
 /** Spanish (Español)
  * @author Crazymadlover
+ * @author Translationista
  */
 $messages['es'] = array(
+	'massblank' => 'Vaciar en masa',
+	'massblank-desc' => 'Proporciona a los administradores la capacidad de [[Special:MassBlank|vaciar en masa]] páginas',
+	'massblank-nopages' => 'No hay páginas nuevas hechas por [[Special:Contributions/$1|$1]] en cambios recientes.',
+	'massblank-list' => 'Las siguientes páginas han sido creadas recientemente por [[Special:Contributions/$1|$1]];
+añade un comentario y haz clic sobre el botón para vaciarlas.',
+	'massblank-defaultreason' => 'Vaciado en masa de páginas añadidas por $1',
+	'massblank-tools' => 'Esta herramienta permite el vaciado de páginas añadidas recientemente por un usuario o dirección IP dados.
+Introduce el nombre de usuario o la dirección de IP para obtener un listado de las páginas a vaciar.',
 	'massblank-submit-user' => 'Ir',
+	'massblank-submit-blank' => 'Vaciar la selección',
 	'massblank-blankcomment' => 'Razón para dejar en blanco:',
+	'right-massblank' => 'Vaciar páginas en masa',
 );
 
 /** French (Français)
  * @author IAlex
  * @author Litlok
+ * @author McDutchie
  */
 $messages['fr'] = array(
 	'massblank' => 'Blanchissement en masse',
@@ -103,7 +165,7 @@ entrez un commentaire puis cliquez sur le bouton pour les blanchir.',
 	'massblank-tools' => "Cet outil permet de blanchir en masse des pages ajoutées récemment par un utilisateur ou adresse IP donné.
 Entrez le nom d'utilisateur ou l'adresse IP pour obtenir une liste de pages à blanchir.",
 	'massblank-submit-user' => 'Aller',
-	'massblank-submit-blank' => "Rien n'a été sélectionné",
+	'massblank-submit-blank' => 'Blanchir les pages sélectionnées',
 	'massblank-blankcomment' => 'Raison du blanchissage :',
 	'right-massblank' => 'Blanchir en masse des pages',
 );
@@ -143,6 +205,57 @@ Zapodaj wužiwarske mjeno abo IP-adresu, zo by lisćinu stronow dóstak, kotrež
 	'right-massblank' => 'Masowe wuprózdnjenje stronow',
 );
 
+/** Interlingua (Interlingua)
+ * @author McDutchie
+ */
+$messages['ia'] = array(
+	'massblank' => 'Vacuation in massa',
+	'massblank-desc' => 'Da le possibilitate al administratores de [[Special:MassBlank|vacuar paginas in massa]]',
+	'massblank-nopages' => 'Nulle nove paginas per [[Special:Contributions/$1|$1]] trovate in le modificationes recente.',
+	'massblank-list' => 'Le sequente paginas esseva recentemente create per [[Special:Contributions/$1|$1]];
+entra un commento e clicca le button pro vacuar los.',
+	'massblank-defaultreason' => 'Vacuation in massa de paginas addite per $1',
+	'massblank-tools' => 'Iste instrumento permitte le vacuation in massa de paginas recentemente addite per un usator o IP specific.
+Entra le nomine de usator o adresse IP pro obtener un lista de paginas a vacuar.',
+	'massblank-submit-user' => 'Ir',
+	'massblank-submit-blank' => 'Vacuar le paginas seligite',
+	'massblank-blankcomment' => 'Motivo:',
+	'right-massblank' => 'Vacuar paginas in massa',
+);
+
+/** Japanese (日本語)
+ * @author Fryed-peach
+ */
+$messages['ja'] = array(
+	'massblank' => '一括白紙化',
+	'massblank-desc' => '管理者が複数のページを[[Special:MassBlank|一括して白紙化]]できるようにする',
+	'massblank-nopages' => '最近の更新に[[Special:Contributions/$1|$1]]による新規ページはありません。',
+	'massblank-list' => '以下のページが[[Special:Contributions/$1|$1]]によって最近作成されました。コメントを入力し、ボタンを押して白紙化を行います。',
+	'massblank-defaultreason' => '$1が追加したページの一括白紙化',
+	'massblank-tools' => 'このツールを使うと、指定された利用者や IP アドレスにより最近追加されたページの、一括白紙化を行うことができるようになります。白紙化するページの一覧を得るには利用者名か IP アドレスを入力してください。',
+	'massblank-submit-user' => '実行',
+	'massblank-submit-blank' => '選択したページを白紙化',
+	'massblank-blankcomment' => '理由:',
+	'right-massblank' => 'ページの一括白紙化',
+);
+
+/** Luxembourgish (Lëtzebuergesch)
+ * @author Robby
+ */
+$messages['lb'] = array(
+	'massblank' => 'Vill Säiten eidelmaachen',
+	'massblank-desc' => "Gëtt Administrateuren d'Méiglechkeet fir [[Special:MassBlank|vill Säite mateneen eidelzemaachen]]",
+	'massblank-nopages' => 'Keng nei Säite vum [[Special:Contributions/$1|$1]] an de rezenten Ännerungen.',
+	'massblank-list' => 'Dës Säite goufe viru kuerzem vum [[Special:Contributions/$1|$1]] nei ugeluecht; gitt w.e.g. eng Bemierkung an, an dréckt op de Knäppche vir se eidelzemaachen.',
+	'massblank-defaultreason' => 'Massen-Eidelmaache vu Säiten déi vum $1 ugefaang goufen',
+	'massblank-tools' => "Dësen Tool erlaabt vill Säite mateneen eidelzemaachen déi vun engem Benotzer oder vun enger IP-Adresse ugeluecht goufen.
+Gitt w.e.g. d'IP-Adress respektiv de Benotzernumm u fir eng Lescht vu Säiten ze kréien fir eidelzemaachen:",
+	'massblank-submit-user' => 'Lass',
+	'massblank-submit-blank' => 'Erausgesichte Säiten eidelmaachen',
+	'massblank-blankcomment' => 'Grond:',
+	'right-massblank' => 'Vill Säite mateneen eidelmaachen',
+);
+
 /** Macedonian (Македонски)
  * @author Bjankuloski06
  */
@@ -165,8 +278,18 @@ $messages['mk'] = array(
  * @author Siebrand
  */
 $messages['nl'] = array(
+	'massblank' => 'Massaal leegmaken',
+	'massblank-desc' => "Geeft beheerders de mogelijkheid om pagina's [[Special:MassBlank|massaal leeg te maken]]",
+	'massblank-nopages' => "Er staan geen nieuwe pagina's door [[Special:Contributions/$1|$1]] in de recente wijzigingen.",
+	'massblank-list' => "De volgende pagina's zijn recentelijk aangemaakt door [[Special:Contributions/$1|$1]].
+Voer een reden in en klik op de knop om ze leeg te maken.",
+	'massblank-defaultreason' => "Pagina's toegevoegd door $1 massaal leeggemaakt",
+	'massblank-tools' => "Dit hulpmiddel maakt het mogelijk pagina's die recentelijk zijn aangemaakt door een gebruiker of IP-adres massaal leeg te maken.
+Voer de gebruikersnaam of het IP-adres in voor een lijst van leeg te maken pagina's.",
 	'massblank-submit-user' => 'OK',
+	'massblank-submit-blank' => "Geselecteerde pagina's leegmaken",
 	'massblank-blankcomment' => 'Reden:',
+	'right-massblank' => "Pagina's massaal leegmaken",
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -175,6 +298,14 @@ $messages['nl'] = array(
 $messages['no'] = array(
 	'massblank-nopages' => 'Ingen nye sider av [[Special:Contributions/$1|$1]] i siste endringer.',
 	'massblank-blankcomment' => 'Årsak:',
+);
+
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'massblank-submit-user' => 'ورځه',
+	'massblank-blankcomment' => 'سبب:',
 );
 
 /** Portuguese (Português)
@@ -212,6 +343,20 @@ $messages['ru'] = array(
 	'massblank-submit-blank' => 'Очистка выбрана',
 	'massblank-blankcomment' => 'Причина очистки:',
 	'right-massblank' => 'массовая очистка страниц',
+);
+
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'massblank-submit-user' => 'Иди',
+	'massblank-blankcomment' => 'Разлог:',
+);
+
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'massblank-submit-user' => 'Idi',
+	'massblank-blankcomment' => 'Razlog:',
 );
 
 /** Tagalog (Tagalog)

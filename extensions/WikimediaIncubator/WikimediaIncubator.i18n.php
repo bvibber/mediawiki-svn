@@ -71,7 +71,7 @@ $messages['ady-cyrl'] = array(
  * @author Enzoreg
  */
 $messages['ary'] = array(
-	'wminc-desc' => "L-Wiki dyal 't-tést le Wikimédya Incubator",
+	'wminc-desc' => 'L-Wiki dyal t-tést le Wikimédya Incubator',
 	'wminc-viewuserlang' => "Ha hiya loġaṫ l-mosṫeĥdim o l-Wiki dyal 't-tést dyalo",
 	'wminc-viewuserlang-user' => 'Smiyṫ l-mosṫeĥdim :',
 	'wminc-viewuserlang-go' => 'Sir',
@@ -819,13 +819,14 @@ $messages['ig'] = array(
 
 /** Italian (Italiano)
  * @author Darth Kule
+ * @author HalphaZ
  * @author Melos
  */
 $messages['it'] = array(
 	'wminc-viewuserlang-user' => 'Nome utente:',
 	'wminc-viewuserlang-go' => 'Vai',
 	'wminc-prefinfo-project' => "Seleziona il progetto Wikimedia (l'opzione Incubator è per gli utentu che fanno del lavoro generale)",
-	'right-viewuserlang' => 'Visualizza [[Special:ViewUserLang|il linguaggio utente e prova la wiki]]',
+	'right-viewuserlang' => 'Visualizza [[Special:ViewUserLang|il linguaggio utente e prova il wiki]]',
 );
 
 /** Japanese (日本語)
@@ -1015,7 +1016,7 @@ $messages['mk'] = array(
 	'wminc-viewuserlang-go' => 'Оди',
 	'wminc-testwiki' => 'Тест-вики:',
 	'wminc-testwiki-none' => 'Ништо/Сè',
-	'wminc-prefinfo-language' => 'Јазикот на вашиот интерфејс - назависно од вашето тест-вики',
+	'wminc-prefinfo-language' => 'Јазикот на вашиот посредник - назависно од вашето тест-вики',
 	'wminc-prefinfo-code' => 'Јазичниот ISO 639 код',
 	'wminc-prefinfo-project' => 'Изберете го проектот (можноста за Инкубатор е за корисници кои работат општи задачи)',
 	'wminc-prefinfo-error' => 'Избравте проект на кој му треба јазичен код.',
@@ -1600,6 +1601,28 @@ $messages['tk'] = array(
 	'wminc-testwiki' => 'Test wiki:',
 );
 
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'wminc-desc' => 'Sistemang pangsubok ng wiki para sa Pisaan ng Wikimedia',
+	'wminc-viewuserlang' => 'Hanapin ang wika ng tagagamit ang wiking sinusubok',
+	'wminc-viewuserlang-user' => 'Pangalan ng tagagamit:',
+	'wminc-viewuserlang-go' => 'Gawin',
+	'wminc-testwiki' => 'Wiking sinusubok:',
+	'wminc-testwiki-none' => 'Wala/Lahat',
+	'wminc-prefinfo-language' => 'Ang wika ng pangtawid-mukha mo - malaya mula sa iyong wiking sinusubok',
+	'wminc-prefinfo-code' => 'Ang kodigo ng wika ng ISO 639',
+	'wminc-prefinfo-project' => 'Piliin ang proyekto ng Wikimedia (Ang mapipiling pisaan ay para sa mga tagagamit na gumagawa ng pangkalahatang gawain)',
+	'wminc-prefinfo-error' => 'Nakapili ka ng isang proyektong nangangailangan ng isang kodigong pangwika.',
+	'wminc-warning-unprefixed' => "'''Babala:''' Walang unlapi ang pahinang binabago mo!",
+	'wminc-warning-suggest' => 'Makakalikha ka ng isang pahina sa [[$1]].',
+	'wminc-warning-suggest-move' => 'Maaari mong [((fullurl: Special: MovePage /$3 | wpNewTitle=$2)) ilipat ang pahinang ito sa $1].',
+	'right-viewuserlang' => 'Tingnan ang [[Special:ViewUserLang|wika ng tagagamit at wiking sinusubukan]]',
+	'randombytest' => 'Alinmang pahina ayon sa wiking sinusubukan',
+	'randombytest-nopages' => 'Walang mga pahina sa loob ng iyong wiking sinusubok, sa loob ng puwang ng pangalan: $1.',
+);
+
 /** Turkish (Türkçe)
  * @author Joseph
  * @author Karduelis
@@ -1743,6 +1766,7 @@ $messages['zh-hans'] = array(
 	'wminc-warning-suggest-move' => '您可以[{{fullurl:Special:MovePage/$3|wpNewTitle=$2}} 移动这个页面到$1]。',
 	'right-viewuserlang' => '查看[[Special:ViewUserLang|用户语言和测试维基]]',
 	'randombytest' => '测试维基上的随机页面',
+	'randombytest-nopages' => '在你的测试网页的$1名字空间中，没有页面。',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

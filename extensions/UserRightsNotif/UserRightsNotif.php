@@ -3,7 +3,8 @@
 /**
  * Provide email notification of user rights changes
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  *
  * @author Rob Church <robchur@gmail.com>
  * @copyright © 2006 Rob Church

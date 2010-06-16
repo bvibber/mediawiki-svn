@@ -289,7 +289,7 @@ $messages['da'] = array(
  */
 $messages['de'] = array(
 	'adminlinks' => 'Links für Administratoren',
-	'adminlinks-desc' => 'Ergänzt eine [[Special:AdminLinks|Spezialseite]] mit hilfreichen Links für Administratoren',
+	'adminlinks-desc' => '[[Special:AdminLinks|Spezialseite]] mit hilfreichen Links für Administratoren',
 	'adminlinks_documentation' => 'Dokumentation von „$1“',
 	'adminlinks_general' => 'Allgemein',
 	'adminlinks_editsidebar' => 'Sidebar bearbeiten',
@@ -1165,6 +1165,16 @@ $messages['shi'] = array(
 	'right-adminlinks' => 'Ẓr izdayn s [[Special:AdminLinks|Izdayn nu umsfttu]]',
 );
 
+/** Sinhala (සිංහල)
+ * @author බිඟුවා
+ */
+$messages['si'] = array(
+	'adminlinks' => 'පරිපාලක සබැඳුම්',
+	'adminlinks_general' => 'සාමාන්‍ය',
+	'adminlinks_users' => 'පරිශීලකයෝ',
+	'adminlinks_createuser' => 'පරිශීලකයෙක් තනන්න',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */
@@ -1217,6 +1227,22 @@ $messages['sr-ec'] = array(
 	'adminlinks_browsesearch' => 'Претраживање',
 	'adminlinks_importexport' => 'Увожење и извожење',
 	'right-adminlinks' => 'Погледајте везу до [[Special:AdminLinks|администраторских везâ]]',
+);
+
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'adminlinks' => 'Administratorske veze',
+	'adminlinks-desc' => 'Dodaje [[Special:AdminLinks|posebne stranice]] koje sadrže korisne veze za administratore',
+	'adminlinks_documentation' => '$1 dokumentacija',
+	'adminlinks_general' => 'Opšte',
+	'adminlinks_editsidebar' => 'Uredi bočnu traku',
+	'adminlinks_editcss' => 'Uredi CSS datoteku',
+	'adminlinks_editmainpagename' => 'Izmeni naziv glavne stranice',
+	'adminlinks_users' => 'Korisnici',
+	'adminlinks_createuser' => 'Napravi korisnika',
+	'adminlinks_browsesearch' => 'Pretraživanje',
+	'adminlinks_importexport' => 'Uvoženje i izvoženje',
+	'right-adminlinks' => 'Pogledajte vezu do [[Special:AdminLinks|administratorskih vezâ]]',
 );
 
 /** Swedish (Svenska)

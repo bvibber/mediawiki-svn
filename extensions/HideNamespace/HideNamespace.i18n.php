@@ -3,8 +3,8 @@
 /**
  * Internationalisation for extension HideNamespace.
  *
- * @package MediaWiki
- * @subpackage Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $messages = array();
@@ -113,7 +113,7 @@ $messages['hu'] = array(
  * @author McDutchie
  */
 $messages['ia'] = array(
-	'hidens-desc' => 'Absconde le spatio de nomines in le capite e titulo si un pagina es in un spatio de nomines specificate o si le function syntactic <code><nowiki>{{#hidens:}}</nowiki></code> es appellate',
+	'hidens-desc' => 'Absconde le spatio de nomines in le capite e titulo si un pagina es in un spatio de nomines specificate o si le function analysator <code><nowiki>{{#hidens:}}</nowiki></code> es appellate',
 );
 
 /** Indonesian (Bahasa Indonesia)
@@ -158,6 +158,13 @@ $messages['no'] = array(
 	'hidens-desc' => 'Skjuler navnerom i overskriften og tittelen når en side er i et spesifisert navnerom eller når tolkefunksjonen <code><nowiki>{{#hidens:}}</nowiki></code> kalles',
 );
 
+/** Polish (Polski)
+ * @author Sp5uhe
+ */
+$messages['pl'] = array(
+	'hidens-desc' => 'Ukrywa przestrzeń nazw w nagłówku oraz tytule gdy strona jest w wybranej przestrzeni nazw lub gdy zostanie wywołania funkcja parsera <code><nowiki>{{#hidens:}}</nowiki></code>.',
+);
+
 /** Piedmontese (Piemontèis)
  * @author Borichèt
  * @author Dragonòt
@@ -173,11 +180,30 @@ $messages['pt'] = array(
 	'hidens-desc' => 'Esconde o espaço nominal do cabeçalho e título quando uma página está num espaço nominal específico ou quando é chamada a função <code><nowiki>{{#hidens:}}</nowiki></code> do analisador sintáctico',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Giro720
+ */
+$messages['pt-br'] = array(
+	'hidens-desc' => 'Esconde o espaço nominal do cabeçalho e título quando uma página está num espaço nominal específico ou quando é chamada a função <code><nowiki>{{#hidens:}}</nowiki></code> do analisador sintático',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'hidens-desc' => 'Скрывает пространство имён в заголовке и названии, если страница относится к определённому пространству имён, или содержит вызов функции парсера <code><nowiki>{{#hidens:}}</nowiki></code>',
+);
+
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'hidens-desc' => 'Сакрива именси простор и наслов када је страна у задатом именском простору или када је парсерова функција <code><nowiki>{{#hidens:}}</nowiki></code> позвана',
+);
+
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'hidens-desc' => 'Sakriva imensi prostor i naslov kada je strana u zadatom imenskom prostoru ili kada je parserova funkcija <code><nowiki>{{#hidens:}}</nowiki></code> pozvana',
 );
 
 /** Tagalog (Tagalog)

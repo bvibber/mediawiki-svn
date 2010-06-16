@@ -2,7 +2,8 @@
 /**
  * Aliases for Special:MassBlank
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $aliases = array();
@@ -14,3 +15,7 @@ $aliases['en'] = array(
 	'MassBlank' => array( 'MassBlank' ),
 );
 
+/** Arabic (العربية) */
+$aliases['ar'] = array(
+	'MassBlank'   => array( 'إفراغ_كمي' ),
+);

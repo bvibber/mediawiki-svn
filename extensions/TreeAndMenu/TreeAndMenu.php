@@ -5,8 +5,8 @@
  * See http://www.mediawiki.org/wiki/Extension:TreeAndMenu for installation and usage details
  * See http://www.organicdesign.co.nz/Extension_talk:TreeAndMenu.php for development notes and disucssion
  * 
- * @package MediaWiki
- * @subpackage Extensions
+ * @file
+ * @ingroup Extensions
  * @author Aran Dunkley [http://www.organicdesign.co.nz/nad User:Nad]
  * @copyright © 2007 Aran Dunkley
  * @licence GNU General Public Licence 2.0 or later
@@ -226,9 +226,9 @@ class TreeAndMenu {
 						foreach ( array_keys( $opennodes ) as $i ) $opennodesjs .= "$objid.o($i);";
 						foreach ( $args as $arg => $pos )
 							if ( ( $pos == 'top' || $pos == 'bottom' || $pos == 'root' ) && ( $arg == 'open' || $arg == 'close' ) )
-								$$pos .= "<a href=\"javascript: $objid.{$arg}All();\">&nbsp;{$arg} all</a>&nbsp;";
-						if ( $top ) $top = "<p>&nbsp;$top</p>";				
-						if ( $bottom ) $bottom = "<p>&nbsp;$bottom</p>";
+								$$pos .= "<a href=\"javascript: $objid.{$arg}All();\">&#160;{$arg} all</a>&#160;";
+						if ( $top ) $top = "<p>&#160;$top</p>";				
+						if ( $bottom ) $bottom = "<p>&#160;$bottom</p>";
 						$html = "$top<div class='$class' id='$id'>
 								<script type=\"$wgJsMimeType\">/*<![CDATA[*/
 									// TreeAndMenu{$this->version}

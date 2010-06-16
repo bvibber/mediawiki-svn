@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Abstract class that provides the common functionallity for all map form inputs
+ * Abstract class that provides the common functionality for all map form inputs
  *
  * @file SM_FormInput.php
  * @ingroup SemanticMaps
@@ -25,6 +25,8 @@ abstract class SMFormInput {
 	 */
 	protected abstract function addFormDependencies();
 	
+	protected $mService;
+	
 	/**
 	 * @var string
 	 */	
@@ -43,6 +45,10 @@ abstract class SMFormInput {
 	
 	private $coordinates;
 	
+	public function __construct( MapsMappingService $service ) {
+		$this->mService = $service;
+	}	
+	
 	/**
 	 * Validates and corrects the provided map properties, and the sets them as class fields.
 	 * 
@@ -56,17 +62,17 @@ abstract class SMFormInput {
 		/*
 		 * Assembliy of the allowed parameters and their information. 
 		 * The main parameters (the ones that are shared by everything) are overidden
-		 * by the feature parameters (the ones spesific to a feature). The result is then
-		 * again overidden by the service parameters (the ones spesific to the service),
-		 * and finally by the spesific parameters (the ones spesific to a service-feature combination).
+		 * by the feature parameters (the ones specific to a feature). The result is then
+		 * again overidden by the service parameters (the ones specific to the service),
+		 * and finally by the specific parameters (the ones specific to a service-feature combination).
 		 */
 		$parameterInfo = array_merge_recursive( MapsMapper::getCommonParameters(), SMFormInputs::$parameters );
-		$parameterInfo = array_merge_recursive( $parameterInfo, $egMapsServices[$this->serviceName]['parameters'] );
-		$parameterInfo = array_merge_recursive( $parameterInfo, $this->spesificParameters );
+		$parameterInfo = array_merge_recursive( $parameterInfo, $this->mService->getParameterInfo() );
+		$parameterInfo = array_merge_recursive( $parameterInfo, $this->specificParameters );
 		
 		$manager = new ValidatorManager();
-		
-		$showMap = $manager->manageParameters( $mapProperties, $parameterInfo );
+
+		$showMap = $manager->manageParsedParameters( $mapProperties, $parameterInfo );
 		
 		if ( $showMap ) {
 			$parameters = $manager->getParameters( false );
@@ -167,7 +173,7 @@ abstract class SMFormInput {
 			$n = Xml::escapeJsString( wfMsgForContent( 'maps-abb-north' ) );
 			$e = Xml::escapeJsString( wfMsgForContent( 'maps-abb-east' ) );
 			$s = Xml::escapeJsString( wfMsgForContent( 'maps-abb-south' ) );
-			$w = Xml::escapeJsString( wfMsgForContent( 'maps-abb-south' ) );
+			$w = Xml::escapeJsString( wfMsgForContent( 'maps-abb-west' ) );
 			$deg = Xml::escapeJsString( Maps_GEO_DEG );
 			
 			$wgOut->addInlineScript(
@@ -258,8 +264,6 @@ EOT
 	 * Returns html for an html input field with a default value that will automatically dissapear when
 	 * the user clicks in it, and reappers when the focus on the field is lost and it's still empty.
 	 *
-	 * @author Jeroen De Dauw
-	 *
 	 * @param string $id
 	 * @param string $value
 	 * @param string $args
@@ -270,4 +274,3 @@ EOT
 		return '<input id="' . $id . '" ' . $args . ' value="' . $value . '" onfocus="if (this.value==\'' . $value . '\') {this.value=\'\';}" onblur="if (this.value==\'\') {this.value=\'' . $value . '\';}" />';
 	}
 }
-

@@ -2,8 +2,9 @@
 /**
  * Internationalisation file for SkinPerPage extension.
  *
- * @addtogroup Extensions
-*/
+ * @file
+ * @ingroup Extensions
+ */
 
 $messages = array();
 
@@ -29,7 +30,7 @@ $messages['aln'] = array(
  * @author Juanpabl
  */
 $messages['an'] = array(
-	'skinperpage-desc' => 'Adibe a etiqueta <code>&lt;skin&gt;</code> ta emplegar diferents aparenzias por pachina',
+	'skinperpage-desc' => 'Adibe a etiqueta <code>&lt;skin&gt;</code> ta emplegar diferents apariencias por pachina',
 );
 
 /** Arabic (العربية)

@@ -1420,6 +1420,7 @@ Dapatkan ekstensi lain',
  * @author Darth Kule
  * @author McDutchie
  * @author Melos
+ * @author Nemo bis
  */
 $messages['it'] = array(
 	'extensiondistributor' => 'Scarica estensione MediaWiki',
@@ -1436,7 +1437,7 @@ $messages['it'] = array(
 
 Seleziona la tua versione di MediaWiki.
 
-Molte estensioni funzionano su più versioni di MediaWiki, quindi se la tua versione di MediaWiki non è qui o hai bisogno delle ultime funzioni dell'estensione, prova a usare la versione corrente.",
+Molte estensioni funzionano su più versioni di MediaWiki, quindi se la tua versione di MediaWiki non è qui o hai bisogno delle ultime funzioni dell'estensione, prova a usare l'ultima versione.",
 	'extdist-no-versions' => "L'estensione selezionata ($1) non è disponibile in alcuna versione!",
 	'extdist-submit-version' => 'Continua',
 	'extdist-no-remote' => 'Impossibile contattare il client subversion remoto.',
@@ -2557,6 +2558,22 @@ Po rozbalení súborov budete musieť rozšírenie zaregistrovať v LocalSetting
 
 Ak máte otázky týkajúce sa tohto systému distribúcie rozšírení, navštívte [[Extension talk:ExtensionDistributor]].",
 	'extdist-want-more' => 'Stiahnuť iné rozšírenie',
+);
+
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'extdist-submit-extension' => 'Продужи',
+	'extdist-submit-version' => 'Продужи',
+	'extdist-want-more' => 'Преузми другу екстензију',
+);
+
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'extdist-submit-extension' => 'Produži',
+	'extdist-submit-version' => 'Produži',
+	'extdist-want-more' => 'Preuzmi drugu ekstenziju',
 );
 
 /** Swedish (Svenska)

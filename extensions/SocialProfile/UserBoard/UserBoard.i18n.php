@@ -2912,6 +2912,7 @@ a zmeňte svoje nastavenia na vypnutie upozornení emailom.',
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
+	'messagesenttitle' => 'Поруке послате',
 	'boardblaststep1' => 'Први корак - Напишите Вашу поруку',
 	'boardblastprivatenote' => 'Све поруке ће бити послате као приватне поруке',
 	'boardblaststep2' => 'Корак 2 - Назначите коме желите да пожаљете поруку',
@@ -2922,6 +2923,7 @@ $messages['sr-ec'] = array(
 	'boardlinkselectfoes' => 'Означи непријатеље',
 	'boardlinkunselectfoes' => 'Скини ознаке са непријатеља',
 	'boardnofriends' => 'Немате пријатеља којима бисте послали поруку!',
+	'userboard_delete' => 'Брисање',
 	'userboard_backprofile' => 'Повратак на профил од $1',
 	'userboard_backyourprofile' => 'Повратак на Ваш профил',
 	'userboard_sendmessage' => 'Пошаљи поруку кориснику $1',
@@ -2934,12 +2936,17 @@ $messages['sr-ec'] = array(
 	'userboard_nomessages' => 'Нема порука.',
 	'userboard_sendbutton' => 'пошаљи',
 	'userboard_loggedout' => 'Морате бити <a href="$1">улоговани</a> да бисте слали поруке другим корисницима.',
+	'userboard-time-days' => '{{PLURAL:$1|један дан|$1 дана}}',
+	'userboard-time-hours' => '{{PLURAL:$1|један сат|$1 сата|$1 сата|$1 сата|$1 сати}}',
+	'userboard-time-minutes' => '{{PLURAL:$1|једна минута|$1 минуте|$1 минуте|$1 минуте|$1 минута}}',
+	'userboard-time-seconds' => '{{PLURAL:$1|једна секунда|$1 секунде|$1 секунде|$1 секунде|$1 секунди}}',
 );
 
 /** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(
+	'messagesenttitle' => 'Poruke poslate',
 	'boardblaststep1' => 'Prvi korak - Napišite Vašu poruku',
 	'boardblastprivatenote' => 'Sve poruke će biti poslate kao privatne poruke',
 	'boardblaststep2' => 'Korak 2 - Naznačite kome želite da požaljete poruku',
@@ -2950,6 +2957,7 @@ $messages['sr-el'] = array(
 	'boardlinkselectfoes' => 'Označi neprijatelje',
 	'boardlinkunselectfoes' => 'Skini oznake sa neprijatelja',
 	'boardnofriends' => 'Nemate prijatelja kojima biste poslali poruku!',
+	'userboard_delete' => 'Brisanje',
 	'userboard_backprofile' => 'Povratak na profil od $1',
 	'userboard_backyourprofile' => 'Povratak na Vaš profil',
 	'userboard_sendmessage' => 'Pošalji poruku korisniku $1',
@@ -2962,6 +2970,10 @@ $messages['sr-el'] = array(
 	'userboard_nomessages' => 'Nema poruka.',
 	'userboard_sendbutton' => 'pošalji',
 	'userboard_loggedout' => 'Morate biti <a href="$1">ulogovani</a> da biste slali poruke drugim korisnicima.',
+	'userboard-time-days' => '{{PLURAL:$1|jedan dan|$1 dana}}',
+	'userboard-time-hours' => '{{PLURAL:$1|jedan sat|$1 sata|$1 sata|$1 sata|$1 sati}}',
+	'userboard-time-minutes' => '{{PLURAL:$1|jedna minuta|$1 minute|$1 minute|$1 minute|$1 minuta}}',
+	'userboard-time-seconds' => '{{PLURAL:$1|jedna sekunda|$1 sekunde|$1 sekunde|$1 sekunde|$1 sekundi}}',
 );
 
 /** Swedish (Svenska)
@@ -3221,12 +3233,12 @@ dapat na <a href="index.php?title=Special:UserLogin">nakalagda ka muna</a>.',
 	'userboard_myboard' => 'Pisara ko',
 	'userboard_posted_ago' => 'itinala/pinaskil noong $1 na ang nakalilipas',
 	'userboard_private' => 'pansarili (pribado)',
-	'userboard_public' => 'pangmadla (publiko)',
+	'userboard_public' => 'pangmadla',
 	'userboard_messagetype' => 'Uri ng mensahe',
 	'userboard_nextpage' => 'susunod',
 	'userboard_prevpage' => 'sinundan',
 	'userboard_nomessages' => 'Walang mga mensahe.',
-	'userboard_sendbutton' => 'Ipadala',
+	'userboard_sendbutton' => 'ipadala',
 	'userboard_loggedout' => 'Dapat na <a href="$1">nakalagda</a>  ka muna upang makapagtala/makapagpaskil ng mga mensahe sa iba pang mga tagagamit.',
 	'userboard_showingmessages' => 'Nagpapakita ng {{PLURAL:$4|mensaheng $3|mga mensaheng $2-$3}} ng {{PLURAL:$1|$1 mensahe|$1 mga mensahe}}',
 	'right-userboard-delete' => 'Burahin ang mga mensahe sa pisara ng iba',

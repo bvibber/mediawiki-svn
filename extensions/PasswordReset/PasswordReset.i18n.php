@@ -110,7 +110,7 @@ $messages['aln'] = array(
  * @author Juanpabl
  */
 $messages['an'] = array(
-	'passwordreset-submit' => 'Restablir a palabra de paso',
+	'passwordreset-submit' => 'Restablir a parola de paso',
 );
 
 /** Arabic (العربية)
@@ -173,7 +173,7 @@ $messages['arz'] = array(
 	'right-passwordreset' => 'إعادة ضبط كلمة سر مستخدم([[Special:PasswordReset|صفحة خاصة]])',
 );
 
-/** Azerbaijani (Azərbaycan)
+/** Azerbaijani (Azərbaycanca)
  * @author Wertuose
  */
 $messages['az'] = array(
@@ -1039,7 +1039,7 @@ $messages['mk'] = array(
 	'passwordreset-disablesuccess' => 'Корисничката сметка е оневозможена за корисничкиот ид. бр.: $1',
 	'passwordreset-accountdisabled' => 'Сметката е оневозможена',
 	'disabledusers' => 'Оневозможени корисници',
-	'disabledusers-summary' => 'Ова е листа на корисници кои се оневозможени со PasswordReset.',
+	'disabledusers-summary' => 'Ова е список на корисници кои се оневозможени со PasswordReset.',
 	'right-passwordreset' => 'Менување на лозинка на корисник ([[Special:PasswordReset|специјална страница]])',
 );
 

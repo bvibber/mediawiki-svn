@@ -28,8 +28,10 @@ $messages['en'] = array(
 /** Message documentation (Message documentation)
  * @author Bennylin
  * @author Darth Kule
+ * @author Umherirrender
  */
 $messages['qqq'] = array(
+	'contributiontracking-desc' => '{{desc}}',
 	'contrib-tracking-error' => '{{Identical|Error}}',
 	'contrib-tracking-button' => '{{Identical|Continue}}',
 );
@@ -46,12 +48,12 @@ $messages['af'] = array(
  * @author Juanpabl
  */
 $messages['an'] = array(
-	'contributiontracking-desc' => "Seguimiento de contrebuzions d'a replegad de fondos de Wikimedia",
-	'contributiontracking' => 'Seguimiento de contrebuzions',
+	'contributiontracking-desc' => "Seguimiento de contrebucions d'a replegad de fondos de Wikimedia",
+	'contributiontracking' => 'Seguimiento de contrebucions',
 	'contrib-tracking-error' => 'Error',
 	'contrib-tracking-error-text' => 'Error en o formulario',
-	'contrib-tracking-submitting' => 'Nimbiando ta o prozesador de pagos...',
-	'contrib-tracking-continue' => 'Si ye endrezato automaticament, faiga click en o botón ta rematar a suya donazión en PayPal.',
+	'contrib-tracking-submitting' => 'Ninviando ta o procesador de pagos...',
+	'contrib-tracking-continue' => 'Si ye endrezato automaticament, faiga click en o botón ta rematar a suya donación en PayPal.',
 	'contrib-tracking-button' => 'Continar',
 );
 
@@ -750,7 +752,7 @@ $messages['pl'] = array(
 	'contrib-tracking-error' => 'Błąd',
 	'contrib-tracking-error-text' => 'Niewłaściwy format danych wejściowych',
 	'contrib-tracking-submitting' => 'Przesyłanie danych do systemu płatności...',
-	'contrib-tracking-continue' => 'Jeśli nie zostałeś/-aś przeniesiony/-a automatycznie, kliknij przycisk by dokończyć wpłacanie darowizny za pomocą systemu PayPal.',
+	'contrib-tracking-continue' => 'Jeśli nie {{GENDER:|zostałeś przeniesiony|zostałaś przeniesiona|przeniesiono Cię}} automatycznie, kliknij przycisk aby dokończyć wpłacanie darowizny za pomocą systemu PayPal.',
 	'contrib-tracking-button' => 'Kontynuuj',
 );
 
@@ -765,6 +767,13 @@ $messages['pms'] = array(
 	'contrib-tracking-submitting' => 'Spedission al motor ëd pagament ...',
 	'contrib-tracking-continue' => "S'it ses pa rediressionà automaticament, sgnaca ël boton për completé toa donassion a PayPal.",
 	'contrib-tracking-button' => 'Continua',
+);
+
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'contrib-tracking-error' => 'تېروتنه',
 );
 
 /** Portuguese (Português)

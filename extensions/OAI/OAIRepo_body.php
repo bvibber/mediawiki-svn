@@ -539,7 +539,7 @@ class OAIRepo {
 	}
 
 	function baseUrl() {
-		$title =& Title::makeTitle( NS_SPECIAL, 'OAIRepository' );
+		$title =& SpecialPage::getTitleFor( 'OAIRepository' );
 		return $title->getFullUrl();
 	}
 

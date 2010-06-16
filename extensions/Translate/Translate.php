@@ -3,7 +3,8 @@ if ( !defined( 'MEDIAWIKI' ) ) die();
 /**
  * An extension to ease the translation of Mediawiki and other projects.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  *
  * @author Niklas Laxström
  * @author Siebrand Mazeland
@@ -12,7 +13,7 @@ if ( !defined( 'MEDIAWIKI' ) ) die();
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
  */
 
-define( 'TRANSLATE_VERSION', '2010-05-24' );
+define( 'TRANSLATE_VERSION', '2010-06-12' );
 
 $wgExtensionCredits['specialpage'][] = array(
 	'path'           => __FILE__,
@@ -57,6 +58,7 @@ $wgHooks['AlternateEdit'][] = 'TranslateEditAddons::intro';
 $wgHooks['EditPageBeforeEditButtons'][] = 'TranslateEditAddons::buttonHack';
 $wgHooks['EditPage::showEditForm:fields'][] = 'TranslateEditAddons::keepFields';
 $wgHooks['SkinTemplateTabs'][] = 'TranslateEditAddons::tabs';
+#$wgHooks['ArticleAfterFetchContent'][] = 'TranslateEditAddons::customDisplay';
 
 # Custom preferences
 $wgDefaultUserOptions['translate'] = 0;
@@ -73,7 +75,6 @@ $wgHooks['SkinTemplateToolboxEnd'][] = 'TranslateToolbox::toolboxAllTranslations
 
 # Translation memory updates
 $wgHooks['ArticleSaveComplete'][] = 'TranslationMemoryUpdater::update';
-
 
 $wgEnablePageTranslation = false;
 $wgPageTranslationNamespace = 1198;
@@ -146,8 +147,8 @@ $wgTranslateMessageNamespaces = array( NS_MEDIAWIKI );
 
 /** AC = Available classes */
 $wgTranslateAC = array(
-'core'                      => 'CoreMessageGroup',
-'core-0-mostused'           => 'CoreMostUsedMessageGroup',
+	'core'            => 'CoreMessageGroup',
+	'core-0-mostused' => 'CoreMostUsedMessageGroup',
 );
 
 /**
@@ -166,7 +167,8 @@ $wgTranslateGroupStructure = array(
 	'/^wikia/' => array( 'wikia' ),
 	'/^out-mantis/' => array( 'mantis' ),
 	'/^out-okawix/' => array( 'okawix' ),
-	'/^page\|/' => array( 'page' ),
+	'/^out-shapado/' => array( 'shapado' ),
+//	'/^page\|/' => array( 'page' ),
 );
 
 $wgTranslateAddMWExtensionGroups = false;
@@ -210,13 +212,8 @@ $wgTranslatePHPlotFont = '/usr/share/fonts/truetype/ttf-dejavu/DejaVuSans.ttf';
  *
  * You should be able to do this with:
  *   for module in 'YAML::Syck' 'PHP::Serialization' 'File::Slurp'; do cpanp -i $module; done
-**/
-$wgTranslateYamlLibrary = 'spyc';
-
-/**
- * Google API key if any. Currently only used for Google translation API.
  */
-$wgGoogleApiKey = false;
+$wgTranslateYamlLibrary = 'spyc';
 
 function efTranslateInit() {
 	global $wgTranslatePHPlot, $wgAutoloadClasses, $wgHooks;
@@ -238,11 +235,17 @@ function efTranslateInit() {
 
 	global $wgEnablePageTranslation;
 	if ( $wgEnablePageTranslation ) {
-
 		// Special page + the right to use it
 		global $wgSpecialPages, $wgAvailableRights;
 		$wgSpecialPages['PageTranslation'] = 'SpecialPageTranslation';
 		$wgAvailableRights[] = 'pagetranslation';
+
+		global $wgLogNames, $wgLogActionsHandlers, $wgLogTypes, $wgLogHeaders;
+		$wgLogTypes[] = 'pagetranslation';
+		$wgLogHeaders['pagetranslation'] = 'pt-log-header';
+		$wgLogNames['pagetranslation'] = 'pt-log-name';
+		$wgLogActionsHandlers['pagetranslation/mark'] = 'PageTranslationHooks::formatLogEntry';
+		$wgLogActionsHandlers['pagetranslation/unmark'] = 'PageTranslationHooks::formatLogEntry';
 
 		// Namespaces
 		global $wgPageTranslationNamespace, $wgExtraNamespaces;
@@ -278,8 +281,7 @@ function efTranslateInit() {
 
 		// Check syntax for <translate>
 		$wgHooks['ArticleSave'][] = 'PageTranslationHooks::tpSyntaxCheck';
-		$wgHooks['EditFilter'][] = 'PageTranslationHooks::tpSyntaxCheckForEditPage';
-
+		$wgHooks['EditFilterMerged'][] = 'PageTranslationHooks::tpSyntaxCheckForEditPage';
 
 		// Add transtag to page props for discovery
 		$wgHooks['ArticleSaveComplete'][] = 'PageTranslationHooks::addTranstag';
@@ -292,6 +294,8 @@ function efTranslateInit() {
 		$wgHooks['ParserTestTables'][] = 'PageTranslationHooks::parserTestTables';
 
 		$wgHooks['SkinTemplateToolboxEnd'][] = 'PageTranslationHooks::exportToolbox';
+
+		$wgHooks['LinksUpdate'][] = 'PageTranslationHooks::preventCategorization';
 	}
 }
 
@@ -334,15 +338,17 @@ function efTranslateCheckPT() {
 
 function efTranslateCheckWarn( $msg, &$sitenotice ) {
 	global $wgOut;
-	wfLoadExtensionMessages( 'PageTranslation' );
+
 	$sitenotice = wfMsg( $msg );
 	$wgOut->enableClientCache( false );
+
 	return true;
 }
 
 function efTranslateInitTags( $parser ) {
 	// For nice language list in-page
 	$parser->setHook( 'languages', array( 'PageTranslationHooks', 'languages' ) );
+
 	return true;
 }
 
@@ -352,18 +358,42 @@ if ( !defined( 'TRANSLATE_CLI' ) ) {
 }
 
 /**
- * Enable tmserver translation memory from translatetoolkit.
- * Example configuration: 
- * $wgTranslateTM = array(
+ * Define various web services that provide translation suggestions.
+ * Example for tmserver translation memory from translatetoolkit.
+ * $wgTranslateTranslationServices['local'] = array(
  *   'server' => 'http://127.0.0.1',
  *   'port' => 54321,
- *   'timeout' => 4,
+ *   'timeout-sync' => 3,
+ *   'timeout-async' => 6,
  *   'database' => '/path/to/database.sqlite',
+ *   'type' => 'tmserver',
  * );
+ *
+ * For Google and Apertium, you should get an API key.
+ * @see http://wiki.apertium.org/wiki/Apertium_web_service
+ * @see http://code.google.com/apis/ajaxsearch/key.html
+ *
+ * The translation services are provided with the following information:
+ * - server ip address
+ * - versions of MediaWiki and Translate extension
+ * - clients ip address encrypted with $wgProxyKey
+ * - source text to translate
+ * - private API key if provided
  */
-$wgTranslateTM = false;
-
-/**
- * Set to the url of Apertium Machine Translation service to activate.
- */
-$wgTranslateApertium = false;
+$wgTranslateTranslationServices = array();
+$wgTranslateTranslationServices['Google'] = array(
+	'url' => 'http://ajax.googleapis.com/ajax/services/language/translate',
+	'key' => null,
+	'timeout-sync' => 3,
+	'timeout-async' => 6,
+	'type' => 'google',
+);
+$wgTranslateTranslationServices['Apertium'] = array(
+	'url' => 'http://api.apertium.org/json/translate',
+	'pairs' => 'http://api.apertium.org/json/listPairs',
+	'key' => null,
+	'timeout-sync' => 2,
+	'timeout-async' => 6,
+	'type' => 'apertium',
+	'codemap' => array( 'no' => 'nb' ),
+);

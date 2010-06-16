@@ -399,3 +399,10 @@ $messages['vo'] = array(
 	'psinotocnum-desc' => 'Vöd magivik nulik: „<nowiki>_NOTOCNUM_</nowiki>“',
 );
 
+/** Traditional Chinese (‪中文(繁體)‬)
+ * @author Horacewai2
+ */
+$messages['zh-hant'] = array(
+	'psinotocnum-desc' => '新的魔術字"<nowiki>__NOTOCNUM__</nowiki>"',
+);
+

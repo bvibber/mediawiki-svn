@@ -3,7 +3,8 @@
 /**
  * Special page class for the Contributors extension
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  * @author Rob Church <robchur@gmail.com>
  */
  
@@ -214,7 +215,7 @@ class SpecialContributors extends IncludableSpecialPage {
 		$form .= '<td><label for="target">' . wfMsgHtml( 'contributors-target' ) . '</label></td>';
 		$form .= '<td>' . Xml::input( 'target', 40, $target, array( 'id' => 'target' ) ) . '</td>';
 		$form .= '</tr><tr>';
-		$form .= '<td>&nbsp;</td>';
+		$form .= '<td>&#160;</td>';
 		$form .= '<td>' . Xml::submitButton( wfMsg( 'contributors-submit' ) ) . '</td>';
 		$form .= '</tr></table>';
 		$form .= '</fieldset>';

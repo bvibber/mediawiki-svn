@@ -20,9 +20,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  */
 class MapsOpenLayersDispPoint extends MapsBasePointMap {
 	
-	public $serviceName = MapsOpenLayers::SERVICE_NAME;
-	
-	protected $markerStringFormat = 'getOLMarkerData(lon, lat, \'title\', \'label\', "icon")';
+	protected $markerStringFormat = 'getOLMarkerData(lon, lat, "title", "label", "icon")';
 
 	protected function getDefaultZoom() {
 		global $egMapsOpenLayersZoom;
@@ -35,7 +33,7 @@ class MapsOpenLayersDispPoint extends MapsBasePointMap {
 	public function doMapServiceLoad() {
 		global $egOpenLayersOnThisPage;
 		
-		MapsOpenLayers::addOLDependencies( $this->parser );
+		$this->mService->addDependencies( $this->parser );
 		$egOpenLayersOnThisPage++;
 		
 		$this->elementNr = $egOpenLayersOnThisPage;

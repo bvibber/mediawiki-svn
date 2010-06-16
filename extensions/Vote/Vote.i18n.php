@@ -237,6 +237,7 @@ $messages['bg'] = array(
 );
 
 /** Bengali (বাংলা)
+ * @author Bellayet
  * @author Zaheen
  */
 $messages['bn'] = array(
@@ -257,6 +258,8 @@ $messages['bn'] = array(
 	'vote-results-none' => 'এ পর্যন্ত কোন ভোট পড়েনি।',
 	'vote-login' => 'ভোট দিতে হলে আপনাকে অবশ্যই [$1 লগ ইন] করতে হবে।',
 	'vote-invalid-choice' => 'আপনাকে অবশ্যই প্রদত্ত পছন্দগুলি থেকে যেকোন একটি নির্বাচন করতে হবে।',
+	'right-vote' => 'ভোট',
+	'right-voteadmin' => 'ভোটের ফলাফল দেখুন',
 );
 
 /** Breton (Brezhoneg)
@@ -591,7 +594,9 @@ $messages['ext'] = array(
 	'vote-results-count' => 'Cuenta',
 );
 
-/** Persian (فارسی) */
+/** Persian (فارسی)
+ * @author Huji
+ */
 $messages['fa'] = array(
 	'vote' => 'رای‌گیری',
 	'vote-current' => "رای فعلی شما '''$1''' است.",
@@ -604,7 +609,7 @@ $messages['fa'] = array(
 	'vote-results-choice' => 'انتخاب',
 	'vote-results-count' => 'شمارش',
 	'vote-results-none' => 'در حال حاضر هیچ رایی ثبت نشده است.',
-	'vote-login' => 'برای رای دادن باید [$1 به سیستم وارد شوید].',
+	'vote-login' => 'برای رای دادن باید [$1 به سامانه وارد شوید].',
 	'vote-invalid-choice' => 'شما باید یکی از گزینه‌های موجود را انتخاب کنید.',
 );
 

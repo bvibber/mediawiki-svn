@@ -2,13 +2,14 @@
 /**
  * Class which offers functionality for statistics reporting.
  *
- * @addtogroup Extensions
+ * @ingroup Extensions
  *
  * @author Niklas Laxström
  * @author Siebrand Mazeland
  * @copyright Copyright © 2010, Niklas Laxström, Siebrand Mazeland
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
  */
+
 class TranslationStats {
 	/**
 	 * Returns translated percentage for message group in given

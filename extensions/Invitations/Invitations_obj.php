@@ -11,12 +11,6 @@
 #MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 #GNU General Public License for more details.
 
-/**
- * Class to abstract management of invitations.
- *
- * @addtogroup Extensions
- */
-
 define('INVITE_RESULT_OK', 0); // No problem
 define('INVITE_RESULT_ALREADY_INVITED', 1); // The user has already been invited
 define('INVITE_RESULT_NOT_ALLOWED', 2); // The inviter has not been invited
@@ -24,6 +18,11 @@ define('INVITE_RESULT_NONE_LEFT', 3); // The inviter has no invites left.
 define('INVITE_RESULT_NO_SUCH_FEATURE', 4); // The feature has not been defined.
 define('INVITE_RESULT_NONE_YET', 5); // The inviter has no invites yet.
 
+/**
+ * Class to abstract management of invitations.
+ *
+ * @ingroup Extensions
+ */
 class Invitations {
 
 	/**

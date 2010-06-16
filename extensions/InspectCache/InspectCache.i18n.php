@@ -2,8 +2,9 @@
 /**
  * Internationalisation file for extension InspectCache.
  *
- * @addtogroup Extensions
-*/
+ * @file
+ * @ingroup Extensions
+ */
 
 $messages = array();
 
@@ -25,12 +26,14 @@ $messages['en'] = array(
  * @author Jon Harald Søby
  * @author Purodha
  * @author Siebrand
+ * @author Umherirrender
  */
 $messages['qqq'] = array(
 	'inspectcache-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
 	'inspectcache-delete' => '{{Identical|Delete}}',
 	'inspectcache-list' => 'Text on button to have the keys listing shown.
 {{Identical|List}}',
+	'right-inspectcache' => '{{doc-right|inspectcache}}',
 );
 
 /** Niuean (ko e vagahau Niuē)
@@ -637,7 +640,7 @@ $messages['mk'] = array(
 	'inspectcache-get' => 'Дај',
 	'inspectcache-delete' => 'Избриши',
 	'inspectcache-deleted' => 'Избришан кеш',
-	'inspectcache-list' => 'Листа',
+	'inspectcache-list' => 'Список',
 	'right-inspectcache' => 'Преглед и бришење на записи во кешот',
 );
 
@@ -800,6 +803,7 @@ $messages['pms'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'inspectcache-get' => 'ترلاسه کول',
 	'inspectcache-delete' => 'ړنګول',
 	'inspectcache-list' => 'لړليک',
 );
@@ -824,6 +828,7 @@ $messages['pt'] = array(
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
+ * @author Giro720
  */
 $messages['pt-br'] = array(
 	'inspectcache' => 'Inspecionar cache',
@@ -835,6 +840,7 @@ $messages['pt-br'] = array(
 	'inspectcache-delete' => 'Apagar',
 	'inspectcache-deleted' => 'Cache Apagada',
 	'inspectcache-list' => 'Listar',
+	'right-inspectcache' => 'Ver e apagar entradas de cache',
 );
 
 /** Tarifit (Tarifit)
@@ -908,6 +914,7 @@ $messages['sr-ec'] = array(
 	'inspectcache-delete' => 'Обриши',
 	'inspectcache-deleted' => 'Обрисан кеш',
 	'inspectcache-list' => 'Списак',
+	'right-inspectcache' => 'Преглед и брисање уноса кеша',
 );
 
 /** Serbian Latin ekavian (Srpski (latinica))
@@ -923,6 +930,7 @@ $messages['sr-el'] = array(
 	'inspectcache-delete' => 'Obriši',
 	'inspectcache-deleted' => 'Obrisan keš',
 	'inspectcache-list' => 'Spisak',
+	'right-inspectcache' => 'Pregled i brisanje unosa keša',
 );
 
 /** Seeltersk (Seeltersk)
@@ -1051,6 +1059,7 @@ $messages['tr'] = array(
  * @author Ahonc
  * @author NickK
  * @author Prima klasy4na
+ * @author Тест
  */
 $messages['uk'] = array(
 	'inspectcache' => 'Перегляд кешу',
@@ -1062,6 +1071,7 @@ $messages['uk'] = array(
 	'inspectcache-delete' => 'Вилучити',
 	'inspectcache-deleted' => 'Вилучений кеш',
 	'inspectcache-list' => 'Список',
+	'right-inspectcache' => 'Перегляд та видалення записів кеша',
 );
 
 /** Veps (Vepsan kel')

@@ -135,7 +135,15 @@ $messages['be-tarask'] = array(
 	'mwe-timedtext-language-no-subtitles-for-clip' => 'Субтытры $1 для кліпу ня знойдзеныя: $2',
 );
 
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'mwe-timedtext-stage-translate' => 'অনুবাদ',
+);
+
 /** Breton (Brezhoneg)
+ * @author Fulup
  * @author Y-M D
  */
 $messages['br'] = array(
@@ -152,8 +160,12 @@ $messages['br'] = array(
 	'mwe-timedtext-upload-text-desc-help' => 'An etrefas kargañ restroù testenn a aotre ar restroù .srt',
 	'mwe-timedtext-upload-text-desc-help-browse' => "Furchit en ho urzhiataer lec'hel evit kavout ar restr .srt hoc'h eus c'hoant da gargañ",
 	'mwe-timedtext-upload-text-desc-help-select' => 'Dibabit yezh ar restr',
+	'mwe-timedtext-upload-text-desc-help-review' => 'Gwiriañ / Kemmañ danvez ar skrid ha pouezañ war enporzhiañ evit ouzhpennañ an destenn.',
 	'mwe-timedtext-upload-text-preview' => 'Gwiriekaat an destenn',
+	'mwe-timedtext-upload-text-success' => 'Enporzhiet eo bet an destenn sinkronelaet ervat.',
 	'mwe-timedtext-upload-text-done' => 'Graet eo ar gargadenn',
+	'mwe-timedtext-upload-text-fail-desc' => "C'hwitet eo bet an enporzhiañ",
+	'mwe-timedtext-upload-text-fail-title' => "Enporzhiadenn c'hwitet",
 	'mwe-timedtext-upload-text-another' => 'Kargañ unan all',
 	'mwe-timedtext-upload-text-done-uploading' => 'Kargadenn graet',
 	'mwe-timedtext-back-btn' => 'Distreiñ',
@@ -173,6 +185,7 @@ $messages['br'] = array(
 	'mwe-timedtext-textcat-tik' => 'Barenn titouroù',
 	'mwe-timedtext-textcat-ar' => 'Rannvroioù oberiant',
 	'mwe-timedtext-textcat-nb' => 'Notennadur',
+	'mwe-timedtext-textcat-meta' => 'Metaroadennoù sinkronelaet',
 	'mwe-timedtext-textcat-trx' => 'Treuzskrivañ',
 	'mwe-timedtext-textcat-lrc' => 'Komzoù',
 	'mwe-timedtext-textcat-lin' => 'Balizennoù yezhel',
@@ -232,10 +245,20 @@ $messages['de'] = array(
 	'mwe-timedtext-language-no-subtitles-for-clip' => 'Kein $1 Untertitel für den Videoclip gefunden: $2',
 );
 
+/** German (formal address) (Deutsch (Sie-Form))
+ * @author Kghbln
+ */
+$messages['de-formal'] = array(
+	'mwe-timedtext-upload-text-desc-help-browse' => 'Durchsuchen Sie Ihren lokalen Computer nach der SRT-Datei, die Sie hochladen möchten',
+	'mwe-timedtext-upload-text-desc-help-select' => 'Wählen Sie die Sprache der Datei',
+	'mwe-timedtext-upload-text-desc-help-review' => 'Sehen Sie den Text durch und bearbeiten Sie ihn gegebenenfalls, bevor Sie ihn mit einem Klick auf Hochladen hinzufügen',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
 $messages['dsb'] = array(
+	'mwe-timedtext-editor' => 'Editor za synchronizěrowany tekst',
 	'mwe-timedtext-stage-transcribe' => 'Pśepisaś',
 	'mwe-timedtext-stage-sync' => 'Synchronizěrowaś',
 	'mwe-timedtext-stage-translate' => 'Pśełožyś',
@@ -259,6 +282,7 @@ $messages['dsb'] = array(
 	'mwe-timedtext-back-btn' => 'Slědk',
 	'mwe-timedtext-choose-text' => 'Tekst wubraś',
 	'mwe-timedtext-add-timed-text' => 'Snychronizěrowany tekst pśidaś',
+	'mwe-timedtext-loading-text-edit' => 'Editor za synchronizěrowany tekst se startujo',
 	'mwe-timedtext-search' => 'Klip pytaś',
 	'mwe-timedtext-layout' => 'Wusměrjenje',
 	'mwe-timedtext-layout-ontop' => 'Nad wideo',
@@ -267,9 +291,16 @@ $messages['dsb'] = array(
 	'mwe-timedtext-loading-text' => 'Tekst se zacytujo...',
 	'mwe-timedtext-textcat-cc' => 'Wopisanja',
 	'mwe-timedtext-textcat-sub' => 'Pódtitele',
+	'mwe-timedtext-textcat-tad' => 'Awdiowopisanje',
 	'mwe-timedtext-textcat-ktv' => 'Karaoke',
+	'mwe-timedtext-textcat-tik' => 'Běžecy tekst',
 	'mwe-timedtext-textcat-ar' => 'Aktiwne regiony',
+	'mwe-timedtext-textcat-nb' => 'Anotacija',
 	'mwe-timedtext-textcat-meta' => 'Synchronizěrowane metadaty',
+	'mwe-timedtext-textcat-trx' => 'Pśepisaś',
+	'mwe-timedtext-textcat-lrc' => 'Spiwny tekst',
+	'mwe-timedtext-textcat-lin' => 'Rěcywědne wopisanje',
+	'mwe-timedtext-textcat-cue' => 'Zastupne dypki',
 	'mwe-timedtext-language-subtitles-for-clip' => '$1 {{PLURAL:$1|pódtitel|pódtitela|pódtitele|oódtitelow}} za klip: $2',
 	'mwe-timedtext-language-no-subtitles-for-clip' => 'Žedne pódtitele $1 su se za klip namakali: $2',
 );
@@ -429,6 +460,16 @@ $messages['gl'] = array(
 	'mwe-timedtext-language-no-subtitles-for-clip' => 'Non se atoparon os subtítulos en $1 para o vídeo: $2',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'mwe-timedtext-editor' => 'Timed Text-Editor',
+	'mwe-timedtext-stage-transcribe' => 'Abschrift mache',
+	'mwe-timedtext-stage-sync' => 'Synchronisiere',
+	'mwe-timedtext-stage-translate' => 'Ibersetze',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */
@@ -475,7 +516,7 @@ $messages['hsb'] = array(
 	'mwe-timedtext-textcat-trx' => 'Přepis',
 	'mwe-timedtext-textcat-lrc' => 'Spěwowy tekst',
 	'mwe-timedtext-textcat-lin' => 'Rěčespytne wopisanje',
-	'mwe-timedtext-textcat-cue' => 'Wuwabjace dypki',
+	'mwe-timedtext-textcat-cue' => 'Zastupne dypki',
 	'mwe-timedtext-language-subtitles-for-clip' => '$1 {{PLURAL:$1|podtitul|podtitulej|podtitule|podtitulow}} za klip: $2',
 	'mwe-timedtext-language-no-subtitles-for-clip' => 'Žane podtitule $1 za klip namakane: $2',
 );
@@ -574,15 +615,17 @@ $messages['ja'] = array(
 	'mwe-timedtext-upload-text-desc-help' => 'アップロードするテキストファイルのインターフェースは .srt ファイルを受け付けます',
 	'mwe-timedtext-upload-text-desc-help-browse' => 'ローカルのコンピューターの上からアップロードする .srt ファイルを探す',
 	'mwe-timedtext-upload-text-desc-help-select' => 'ファイルの言語を選択',
-	'mwe-timedtext-upload-text-desc-help-review' => 'テキストの内容を確認・編集してからアップロードを推してテキストを追加してください',
+	'mwe-timedtext-upload-text-desc-help-review' => 'テキストの内容を確認・編集してからアップロードを押してテキストを追加してください',
 	'mwe-timedtext-upload-text-preview' => 'テキストを確認',
 	'mwe-timedtext-upload-text-done' => 'アップロード完了',
 	'mwe-timedtext-upload-text-fail-desc' => 'アップロードが失敗しました',
 	'mwe-timedtext-upload-text-fail-title' => 'アップロードに失敗',
+	'mwe-timedtext-upload-text-done-uploading' => 'アップロード完了',
 	'mwe-timedtext-back-btn' => '戻る',
 	'mwe-timedtext-choose-text' => 'テキストを選択',
 	'mwe-timedtext-layout-ontop' => '動画の冒頭',
 	'mwe-timedtext-layout-below' => '以下の動画',
+	'mwe-timedtext-layout-off' => '字幕を隠す',
 	'mwe-timedtext-loading-text' => 'テキストを読み込み中・・・',
 	'mwe-timedtext-textcat-sub' => '字幕',
 	'mwe-timedtext-textcat-tad' => '音声の説明',
@@ -637,7 +680,7 @@ $messages['mk'] = array(
 	'mwe-timedtext-upload-text' => 'Подигни податотека со текст',
 	'mwe-timedtext-uploading-text' => 'Подигање на податотека со текст',
 	'mwe-timedtext-upload-text-desc-title' => 'Подигни податотека со текст',
-	'mwe-timedtext-upload-text-desc-help' => 'Интерфејсот за подигање текстуални податотеки прифаќа .srt податотеки',
+	'mwe-timedtext-upload-text-desc-help' => 'Посредникот за подигање текстуални податотеки прифаќа .srt податотеки',
 	'mwe-timedtext-upload-text-desc-help-browse' => 'Одберете ја од вашиот компјутер .srt податотеката што сакате да ја подигнете',
 	'mwe-timedtext-upload-text-desc-help-select' => 'Одберете го јазикот на податотеката',
 	'mwe-timedtext-upload-text-desc-help-review' => 'Проверете / исправете го текстот и потоа притиснете на „Подигни“ за да го додадете текстот',
@@ -725,12 +768,42 @@ $messages['nl'] = array(
 	'mwe-timedtext-language-no-subtitles-for-clip' => 'Er zijn geen $1ondertitels gevonden voor clip: $2',
 );
 
+/** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
+ * @author Nghtwlkr
+ */
+$messages['no'] = array(
+	'mwe-timedtext-stage-sync' => 'Synkroniser',
+	'mwe-timedtext-stage-translate' => 'Oversett',
+	'mwe-timedtext-upload-text' => 'Last opp tekstfil',
+	'mwe-timedtext-uploading-text' => 'Laster opp tekstfil',
+	'mwe-timedtext-upload-text-desc-title' => 'Last opp en tekstfil',
+	'mwe-timedtext-upload-text-desc-help-select' => 'Velg filens språk',
+	'mwe-timedtext-back-btn' => 'Tilbake',
+	'mwe-timedtext-choose-text' => 'Velg tekst',
+	'mwe-timedtext-layout-ontop' => 'Over video',
+	'mwe-timedtext-layout-below' => 'Under video',
+	'mwe-timedtext-layout-off' => 'Gjem undertekster',
+	'mwe-timedtext-loading-text' => 'Laster tekst ...',
+	'mwe-timedtext-textcat-sub' => 'Undertekster',
+	'mwe-timedtext-textcat-ktv' => 'Karaoke',
+	'mwe-timedtext-textcat-lrc' => 'Tekster',
+	'mwe-timedtext-language-subtitles-for-clip' => '$1 undertekster for klipp: $2',
+	'mwe-timedtext-language-no-subtitles-for-clip' => 'Ingen $1-undertekster ble funnet for klipp: $2',
+);
+
 /** Deitsch (Deitsch)
  * @author Xqt
  */
 $messages['pdc'] = array(
 	'mwe-timedtext-stage-translate' => 'Iwwersetze',
 	'mwe-timedtext-back-btn' => 'Zerrick',
+);
+
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'mwe-timedtext-stage-translate' => 'ژباړل',
 );
 
 /** Portuguese (Português)

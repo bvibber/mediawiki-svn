@@ -4,7 +4,8 @@
  * MiniPreview displays, next to an image, small previews
  * of other images in the same categories or displayed on the same pages
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  * @author Magnus Manske
  * @copyright © 2007 Magnus Manske
  * @licence GNU General Public Licence 2.0 or later
@@ -127,7 +128,7 @@ function efMiniPreviewShow ( &$imagePage, &$output )  {
 	} else {
 		$last_type = $previews[0]->from_category;
 		foreach ( $previews AS $p ) {
-			if ( $last_type != $p->from_category ) $html .= "<div class='MiniPreviewSeparator'>&nbsp;</div>" ; # Visually separate categories from galleries
+			if ( $last_type != $p->from_category ) $html .= "<div class='MiniPreviewSeparator'>&#160;</div>" ; # Visually separate categories from galleries
 			$last_type = $p->from_category;
 			$nsid = $p->from_category ? 14 : $wgMiniPreviewGalleryNamespace ;
 			$ns = MWNamespace::getCanonicalName ( $nsid ) . ':' ;

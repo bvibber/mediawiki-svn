@@ -9,7 +9,8 @@
  * implementation, it will not be add to the following skins:
  * cologneblue, standard, nostalgia
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  * @author Siebrand Mazeland
  * @license MIT
  */

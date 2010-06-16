@@ -2,8 +2,9 @@
 /**
  * Internationalization file for the Data Transfer extension
  *
- * @addtogroup Extensions
-*/
+ * @file
+ * @ingroup Extensions
+ */
 
 $messages = array();
 
@@ -1715,6 +1716,12 @@ $messages['sr-ec'] = array(
 	'dt_xml_name' => 'Име',
 	'dt_xml_title' => 'Наслов',
 	'dt_xml_id' => 'ID',
+	'dt_xml_freetext' => 'Слободан текст',
+	'importxml' => 'Увези XML',
+	'dt_import_editsummary' => '$1 увоз',
+	'dt_import_importing' => 'Увоз у току...',
+	'importcsv' => 'Увези CSV',
+	'right-datatransferimport' => 'Увези податке',
 );
 
 /** Serbian Latin ekavian (Srpski (latinica))
@@ -1733,6 +1740,12 @@ $messages['sr-el'] = array(
 	'dt_xml_name' => 'Ime',
 	'dt_xml_title' => 'Naslov',
 	'dt_xml_id' => 'ID',
+	'dt_xml_freetext' => 'Slobodan tekst',
+	'importxml' => 'Uvezi XML',
+	'dt_import_editsummary' => '$1 uvoz',
+	'dt_import_importing' => 'Uvoz u toku...',
+	'importcsv' => 'Uvezi CSV',
+	'right-datatransferimport' => 'Uvezi podatke',
 );
 
 /** Seeltersk (Seeltersk)

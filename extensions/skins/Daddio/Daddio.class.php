@@ -15,7 +15,7 @@ require_once( "$IP/skins/Modern.php" );
 /**
  * Inherit main code from SkinTemplate, set the CSS and template filter.
  * @todo document
- * @addtogroup Skins
+ * @ingroup Skins
  */
 class SkinDaddio extends SkinTemplate {
 	function initPage( OutputPage $out ) {
@@ -41,7 +41,7 @@ class SkinDaddio extends SkinTemplate {
 
 /**
  * @todo document
- * @addtogroup Skins
+ * @ingroup Skins
  */
 class DaddioTemplate extends ModernTemplate {
 	/**

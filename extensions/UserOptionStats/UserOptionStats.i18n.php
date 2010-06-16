@@ -2,6 +2,8 @@
 /**
  * Translations of UserOptionStats extension.
  *
+ * @file
+ * @ingroup Extensions
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
  */
 
@@ -113,6 +115,14 @@ $messages['be-tarask'] = array(
  */
 $messages['bg'] = array(
 	'uos-warn' => 'PHPlot не е инсталиран!',
+);
+
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'uos-unknown' => '*পূর্বনির্ধারিত',
+	'uos-other' => '*অন্য',
 );
 
 /** Breton (Brezhoneg)

@@ -31,13 +31,23 @@ $messages['en'] = array(
 
 /** Message documentation (Message documentation)
  * @author EugeneZelenko
+ * @author Umherirrender
  */
 $messages['qqq'] = array(
+	'sphinxsearch-desc' => '{{desc}}',
 	'sphinxPreviousPage' => '{{Identical|Previous}}',
 	'sphinxNextPage' => '{{Identical|Next}}',
 	'sphinxSearchButton' => '{{Identical|Search}}',
 	'sphinxLoading' => '{{Identical|Loading}}',
 	'sphinxSearchWarning' => '{{Identical|Warning}}',
+);
+
+/** Afrikaans (Afrikaans)
+ * @author Naudefj
+ */
+$messages['af'] = array(
+	'sphinxPreviousPage' => 'Vorige',
+	'sphinxNextPage' => 'Volgende',
 );
 
 /** Gheg Albanian (Gegë)
@@ -67,6 +77,13 @@ $messages['aln'] = array(
 	'sphinxSearchFailed' => 'Query dështoi: $1',
 	'sphinxSearchWarning' => 'Warning: $1',
 	'sphinxPspellError' => 'Nuk mund të kërkoj vazhdimin pspell.',
+);
+
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'sphinxSearchWarning' => 'Pare cuenta: $1',
 );
 
 /** Arabic (العربية)
@@ -124,6 +141,7 @@ $messages['bg'] = array(
 );
 
 /** Breton (Brezhoneg)
+ * @author Fulup
  * @author Y-M D
  */
 $messages['br'] = array(
@@ -135,16 +153,21 @@ $messages['br'] = array(
 	'sphinxResultPage' => "Pajenn an disoc'hoù :",
 	'sphinxPreviousPage' => 'Kent',
 	'sphinxNextPage' => "War-lerc'h",
+	'sphinxSearchPreamble' => 'Diskwel $1—$2 diwar $3 {{PLURAL:$3|kenglot|kenglot}} evit ar goulenn "<nowiki>$4</nowiki>" sevenet dindan $5 eilenn gant ar stadegoù-mañ :',
 	'sphinxSearchStats' => '"$1" bet kavet $2 gwech e $3 teul{{PLURAL:$3||}}',
+	'sphinxSearchStatsInfo' => "''Gallout a ra bezañ teulioù masklet gant dibarzhioù klask en talvoudoù a-us.''",
 	'sphinxSearchButton' => 'Klask',
+	'sphinxSearchEpilogue' => '$1 eilenn a oa amzer ouzhpenn an diaz roadennoù.',
 	'sphinxSearchDidYouMean' => "N'hoc'h eus ket soñjet kentoc'h e :",
 	'sphinxMatchAny' => 'kavout forzh peseurt ger',
 	'sphinxMatchAll' => 'kavout an holl gerioù',
 	'sphinxMatchTitles' => 'klask en titloù hepken',
 	'sphinxLoading' => 'O kargañ...',
 	'sphinxPowered' => 'Savet diwar $1',
+	'sphinxClientFailed' => 'Dibosupl instantiñ an arval Sphinx',
 	'sphinxSearchFailed' => "C'hwitet en deus ar reked : $1",
 	'sphinxSearchWarning' => 'Diwallit : $1',
+	'sphinxPspellError' => 'Dibosupl lañsañ astenn pspell.',
 );
 
 /** German (Deutsch)
@@ -704,6 +727,26 @@ $messages['ru'] = array(
 	'sphinxPspellError' => 'Невозможно вызвать расширение pspell.',
 );
 
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'sphinxPreviousPage' => 'Претходно',
+	'sphinxNextPage' => 'Следеће',
+	'sphinxSearchDidYouMean' => 'Да ли сте мислили:',
+	'sphinxLoading' => 'Учитава се...',
+	'sphinxSearchWarning' => 'Упозорење: $1',
+);
+
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'sphinxPreviousPage' => 'Prethodno',
+	'sphinxNextPage' => 'Sledeće',
+	'sphinxSearchDidYouMean' => 'Da li ste mislili:',
+	'sphinxLoading' => 'Učitava se...',
+	'sphinxSearchWarning' => 'Upozorenje: $1',
+);
+
 /** Swedish (Svenska)
  * @author Dafer45
  */
@@ -716,5 +759,34 @@ $messages['sv'] = array(
 	'sphinxNextPage' => 'Nästa',
 	'sphinxLoading' => 'Laddar ...',
 	'sphinxSearchWarning' => 'Varning: $1',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'sphinxsearch' => 'Maghanap sa wiki na ginagamit ang Sphinx',
+	'sphinxsearch-desc' => 'Pinapalitan ang makinang panghanap sa MediaWiki ng [http://www.sphinxsearch.com/ Sphinx]',
+	'sphinxSearchInNamespaces' => 'Maghanap sa mga puwang ng pangalan:',
+	'sphinxSearchInCategories' => 'Maghanap sa mga kategorya:',
+	'sphinxExcludeCategories' => 'Hindi isasamang mga kategorya',
+	'sphinxResultPage' => 'Pahina ng resulta:',
+	'sphinxPreviousPage' => 'Nakaraan',
+	'sphinxNextPage' => 'Susunod',
+	'sphinxSearchPreamble' => 'Ipinapakita ang $1—$2 ng $3 na {{PLURAL:$3|katugma|mga katugma}} para sa tanong na "<nowiki>$4</nowiki>" na nakuha sa loob ng $5 segundo na may ganitong estadistika:',
+	'sphinxSearchStats' => '* Natagpuan ang "$1" na may $2 {{PLURAL:$2|ulit|mga ulit}} sa loob ng $3 na {{PLURAL:$3|kasulatan|mga kasulatan}}',
+	'sphinxSearchStatsInfo' => "''Ang nasa itaas na mga bilang ay maaaring nagsama ng mga kasulatang hindi nakatala dahil sa mga pinagpilian ng paghahanap.''",
+	'sphinxSearchButton' => 'Maghanap',
+	'sphinxSearchEpilogue' => 'Ang karagdagang oras sa kalipunan ng dato ay $1 segundo.',
+	'sphinxSearchDidYouMean' => 'Ibig mo bang sabihin:',
+	'sphinxMatchAny' => 'itugma sa anumang salita',
+	'sphinxMatchAll' => 'itugma sa lahat ng mga salita',
+	'sphinxMatchTitles' => 'itugma lang sa mga pamagat',
+	'sphinxLoading' => 'Ikinakarga...',
+	'sphinxPowered' => 'Pinapaandar ng $1',
+	'sphinxClientFailed' => 'Hindi masangdali ang kliyente ng Sphinx.',
+	'sphinxSearchFailed' => 'Nabigo ang tanong: $1',
+	'sphinxSearchWarning' => 'Babala: $1',
+	'sphinxPspellError' => 'Hindi masamo ang dugtong na pspell.',
 );
 

@@ -17,6 +17,7 @@ $messages = array();
 $messages['en'] = array(
 	// General
 	'maps_name' => 'Maps',
+	// TODO: update demo link to the new wiki, once it has 0.6.x running.
 	'maps_desc' => "Provides the ability to display coordinate data in maps, and geocode addresses ([http://wiki.bn2vs.com/wiki/Maps demo]).
 Available mapping services: $1",
 	'maps_map' => 'Map',
@@ -40,6 +41,9 @@ $1',
 	'maps_unrecognized_coords_for' => 'The following {{PLURAL:$2|coordinate was|coordinates were}} not recognized and {{PLURAL:$2|has|have}} been omitted from the map:
 $1',
 	'maps_map_cannot_be_displayed' => 'The map cannot be displayed.',
+
+	// Distance
+	'maps_invalid_distance' => 'The value $1 is not a valid distance.',
 
 	// Geocoding
 	'maps-geocoder-not-available' => 'The geocoding feature of Maps is not available. Your location can not be geocoded.',
@@ -185,6 +189,7 @@ $messages['arz'] = array(
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
+ * @author Wizardist
  */
 $messages['be-tarask'] = array(
 	'maps_desc' => 'Забясьпечвае магчымасьць адлюстраваньня каардынатных зьвестак на мапах і геаграфічнага кадаваньня адрасоў ([http://wiki.bn2vs.com/wiki/Maps дэманстрацыя]). Даступныя геаграфічныя сэрвісы: $1',
@@ -206,6 +211,7 @@ $1',
 	'maps_unrecognized_coords_for' => '{{PLURAL:$2|Наступная каардыната не была апазнаная|Наступныя каардынаты не былі апазнаныя}} і {{PLURAL:$2|яна не паказаная|яны не паказаныя}}:
 $1',
 	'maps_map_cannot_be_displayed' => 'Мапа ня можа быць паказаная.',
+	'maps_invalid_distance' => 'Значэньне $1 — няслушная адлегласьць.',
 	'maps-geocoder-not-available' => 'Магчымасьць геаграфічнага кадаваньня для мапаў недаступная. Вашае месцазнаходжаньне ня можа быць геаграфічна закадаванае.',
 	'maps_click_to_activate' => 'Націсьніце для актывацыі мапы',
 	'maps_centred_on' => 'Цэнтар мапы — $1, $2.',
@@ -317,6 +323,14 @@ $messages['ca'] = array(
 	'maps_webcams' => 'Cámeres web',
 );
 
+/** Chechen (Нохчийн)
+ * @author Sasan700
+ */
+$messages['ce'] = array(
+	'maps_photos' => 'Сурт',
+	'maps_wikipedia' => 'Википедийа',
+);
+
 /** Czech (Česky)
  * @author Mormegil
  */
@@ -334,6 +348,7 @@ $messages['cs'] = array(
  * @author DaSch
  * @author Imre
  * @author Kghbln
+ * @author The Evil IP address
  */
 $messages['de'] = array(
 	'maps_desc' => 'Ermöglicht es, Koordinaten auf Karten anzuzeigen und Adressen zu geokodieren ([http://wiki.bn2vs.com/wiki/Maps Demonstration]).
@@ -355,6 +370,7 @@ $1',
 	'maps_unrecognized_coords_for' => 'Die {{PLURAL:$2|folgende Koordinate wurde|folgenden Koordinaten wurden}} nicht erkannt und {{PLURAL:$2|wurde|wurden}} auf der Karte nicht berücksichtigt:
 $1',
 	'maps_map_cannot_be_displayed' => 'Diese Karte kann nicht angezeigt werden.',
+	'maps_invalid_distance' => 'Der Wert $1 ist keine gültige Distanz.',
 	'maps-geocoder-not-available' => 'Die Funktion Geokodierung von Karten ist nicht verfügbar. Dein Standort kann nicht geokodiert werden.',
 	'maps_click_to_activate' => 'Klicken, um die Karte zu aktivieren.',
 	'maps_centred_on' => 'Karte ist auf $1, $2 zentriert.',
@@ -426,14 +442,30 @@ $messages['en-gb'] = array(
 	'maps_desc' => 'Provides the ability to display coordinate data in maps, and geocode addresses ([http://wiki.bn2vs.com/wiki/Maps demo]).
 Available mapping services: $1',
 	'maps_map' => 'Map',
+	'maps-loading-map' => 'Loading map...',
+	'maps-abb-north' => 'N',
+	'maps-abb-east' => 'E',
+	'maps-abb-south' => 'S',
+	'maps-abb-west' => 'W',
+	'maps-latitude' => 'Latitude:',
+	'maps-longitude' => 'Longitude:',
+	'maps-invalid-coordinates' => 'The value $1 was not recognised as a valid set of coordinates.',
 	'maps_coordinates_missing' => 'No coordinates provided for the map.',
 	'maps_geocoding_failed' => 'The following {{PLURAL:$2|address|addresses}} could not be geocoded: $1.',
 	'maps_geocoding_failed_for' => 'The following {{PLURAL:$2|address|addresses}} could not be geocoded and {{PLURAL:$2|has|have}} been omitted from the map:
 $1',
-	'maps_unrecognized_coords' => 'The following coordinates were not recognised: $1.',
+	'maps_unrecognized_coords' => 'The following {{PLURAL:$2|coordinate was|coordinates were}} not recognised: $1.',
 	'maps_unrecognized_coords_for' => 'The following {{PLURAL:$2|coordinate was|coordinates were}} not recognised and {{PLURAL:$2|has|have}} been omitted from the map:
 $1',
+	'maps_map_cannot_be_displayed' => 'The map cannot be displayed.',
+	'maps-geocoder-not-available' => 'The geocoding feature of Maps is not available. Your location can not be geocoded.',
+	'maps_click_to_activate' => 'Click to activate map',
 	'maps_centred_on' => 'Map centred on $1, $2.',
+	'maps_overlays' => 'Overlays',
+	'maps_photos' => 'Photos',
+	'maps_videos' => 'Videos',
+	'maps_wikipedia' => 'Wikipedia',
+	'maps_webcams' => 'Webcams',
 );
 
 /** Esperanto (Esperanto)
@@ -455,6 +487,7 @@ $messages['eo'] = array(
 /** Spanish (Español)
  * @author Crazymadlover
  * @author Dferg
+ * @author Diego Grez
  * @author Imre
  * @author Locos epraix
  * @author Pertile
@@ -479,6 +512,7 @@ No se puede mostrar el mapa.',
 	'maps_unrecognized_coords' => '{{PLURAL:$2|La siguiente coordenada no fue reconocida|Las siguientes coordenadas no fueron reconocidas}}: $1.',
 	'maps_unrecognized_coords_for' => '{{PLURAL:$2|La coordenada siguiente no es reconocida|Las coordenadas siguientes no son reconocidas}} y PLURAL:$2|{{han sido omitidas|han sido omitidas}} del mapa :$1',
 	'maps_map_cannot_be_displayed' => 'No se puede mostrar el mapa.',
+	'maps_invalid_distance' => 'El valor $1 no es una distancia válida.',
 	'maps-geocoder-not-available' => 'La funcionalidad de geocodificación de Maps no está disponible. Su ubicación no puede ser geocodificada.',
 	'maps_click_to_activate' => 'Haz clic para activar el mapa',
 	'maps_centred_on' => 'Mapa centrado en $1, $2.',
@@ -579,6 +613,7 @@ Le plan ne peut pas être affiché.",
 	'maps_unrecognized_coords_for' => "{{PLURAL:$2|La coordonnée suivante n'a pas été reconnue|Les coordonnées suivantes n'ont pas été reconnues}} et {{PLURAL:$2|a été omise|ont été omises}} sur la carte :
 $1",
 	'maps_map_cannot_be_displayed' => 'La carte ne peut pas être affichée.',
+	'maps_invalid_distance' => 'La valeur $1 n’est pas une distance valide.',
 	'maps-geocoder-not-available' => "La fonctionnalité géocodage des cartes n'est pas disponible. Votre emplacement ne peut être géocodé.",
 	'maps_click_to_activate' => 'Cliquer pour activer la carte',
 	'maps_centred_on' => 'Carte centrée sur $1, $2.',
@@ -637,6 +672,7 @@ O mapa non se pode mostrar.',
 	'maps_unrecognized_coords_for' => 'Non se {{PLURAL:$2|recoñeceu a seguinte coordenada|recoñeceron as seguintes coordenadas}} e {{PLURAL:$2|foi omitida|foron omitidas}} do mapa:
 $1',
 	'maps_map_cannot_be_displayed' => 'O mapa non se pode mostrar.',
+	'maps_invalid_distance' => 'O valor $1 non é unha distancia válida.',
 	'maps-geocoder-not-available' => 'A funcionalidade de xeocodificación de mapas non está dispoñible; non se pode xeocodificar a súa situación.',
 	'maps_click_to_activate' => 'Prema para activar o mapa',
 	'maps_centred_on' => 'Mapa centrado en $1, $2.',
@@ -678,6 +714,7 @@ $messages['gsw'] = array(
 	'maps_unrecognized_coords_for' => '{{PLURAL:$2|Die Koordinate isch nit erkannt wore un isch|Die Koordinate sin nit erkannt wore un sin}} wäge däm uusegnuu wore us dr Charte:
 $1',
 	'maps_map_cannot_be_displayed' => 'D Charte cha nit aazeigt wäre.',
+	'maps_invalid_distance' => 'Dr Wärt $1 isch kei giltige Abstand.',
 	'maps-geocoder-not-available' => 'S Geokodierigs-Feature vu däre Charte isch nit verfiegbar, Dyy Ort cha nit geokodiert wäre.',
 	'maps_click_to_activate' => 'Klick go d Charte aktiviere',
 	'maps_centred_on' => 'Charte zäntriert uf $1, $2.',
@@ -761,6 +798,7 @@ K dispoziciji stejace kartowe słužby: $1',
 	'maps_unrecognized_coords' => '{{PLURAL:$2|Slědowaca koordinata njebu spóznana|Slědowacej koordinaće njebuštej spóznanej|Slědowace koordinaty njebuchu spóznane|Slědowace koordinaty njebuchu spóznane}}: $1.',
 	'maps_unrecognized_coords_for' => '{{PLURAL:$2|Slědowaca koordinata njebu spóznana|Slědowacej koordinaće njebuštej spóznanej|Slědowace koordinaty njebuchu spóznane|Slědowace koordinaty njebuchu spóznane}} a {{PLURAL:$2|bu na karće wuwostajena|buštej na karće wuwostajenej|buchu na karće wuwostajene|buchu na karće wuwostajene}}: $1',
 	'maps_map_cannot_be_displayed' => 'Karta njeda so zwobraznić.',
+	'maps_invalid_distance' => 'Hódnota $1 płaćiwa distanca njeje.',
 	'maps-geocoder-not-available' => 'Funkcija geokodowanja Kartow k dispoziciji njesteji, twoje městno njehodźi so geokodować.',
 	'maps_click_to_activate' => 'Klikń, zo by kartu aktiwizował',
 	'maps_centred_on' => 'Karta na $1, $2 centrowana.',
@@ -836,6 +874,7 @@ $1',
 	'maps_unrecognized_coords_for' => 'Le sequente {{PLURAL:$2|coordinata|coordinatas}} non esseva recognoscite e ha essite omittite del carta:
 $1',
 	'maps_map_cannot_be_displayed' => 'Le carta on pote esser monstrate.',
+	'maps_invalid_distance' => 'Le valor $1 non es un distantia valide.',
 	'maps-geocoder-not-available' => 'Le function de geocodification de Maps non es disponibile; tu loco non pote esser geocodificate.',
 	'maps_click_to_activate' => 'Clicca pro activar le carta',
 	'maps_centred_on' => 'Carta centrate super $1, $2.',
@@ -890,6 +929,7 @@ $messages['ig'] = array(
 
 /** Italian (Italiano)
  * @author Civvì
+ * @author HalphaZ
  */
 $messages['it'] = array(
 	'maps_desc' => "Fornisce la possibilità di visualizzare i dati di coordinate su mappe e la geocodifica di indirizzi ([http://wiki.bn2vs.com/wiki/Demo dell'estensione Maps]).
@@ -909,6 +949,7 @@ Servizi di cartografia disponibili: $1",
 	'maps_unrecognized_coords' => '{{PLURAL:$2|La seguente coordinata|Le seguenti coordinate}} non sono state riconosciute: $1.',
 	'maps_unrecognized_coords_for' => '{{PLURAL:$2|La seguente coordinata|Le seguenti coordinate}} {{PLURAL:$2|non è stata riconosciuta ed è stata omessa|non sono state riconosciute e sono state omesse}} dalla mappa: $1.',
 	'maps_map_cannot_be_displayed' => 'La mappa non può essere visualizzata.',
+	'maps_invalid_distance' => 'Il valore $1 non è una distanza valida.',
 	'maps-geocoder-not-available' => "La funzionalità di geocodifica dell'estensione Maps non è disponibile. La tua posizione non può essere geocodificata.",
 	'maps_click_to_activate' => 'Clicca per attivare la mappa.',
 	'maps_centred_on' => 'Mappa centrata su $1, $2.',
@@ -1103,6 +1144,7 @@ $1',
 	'maps_unrecognized_coords_for' => '{{PLURAL:$2|Следнава координата не беше препознаена|Следниве координати не беа препознаени}} и {{PLURAL:$2|беше изоставена|беа изоставени}} од картата:
 $1',
 	'maps_map_cannot_be_displayed' => 'Картата не може да се прикаже.',
+	'maps_invalid_distance' => 'Вредноста $1 не претставува важечко растојание.',
 	'maps-geocoder-not-available' => 'Функцијата за геокодирање на Карти е недостапна. Вашата локација не може да се геокодира.',
 	'maps_click_to_activate' => 'Кликнете за активирање на картата',
 	'maps_centred_on' => 'Средиште на картата во $1, $2.',
@@ -1174,6 +1216,7 @@ $1',
 	'maps_unrecognized_coords_for' => 'De volgende {{PLURAL:$2|coördinaat is niet herkend en is|coördinaten zijn niet herkend en zijn}} weggelaten uit de kaart:
 $1.',
 	'maps_map_cannot_be_displayed' => 'De kaart kan niet weergegeven worden.',
+	'maps_invalid_distance' => 'De waarde $1 is geen geldige afstand.',
 	'maps-geocoder-not-available' => 'Geocoderen via Maps is niet beschikbaar. Het geocoderen van uw locatie is niet mogelijk.',
 	'maps_googlemaps2' => 'Google Maps v2',
 	'maps_yahoomaps' => 'Yahoo! Maps',
@@ -1334,6 +1377,7 @@ La mapa a peul pa esse visualisà.",
 	'maps_unrecognized_coords_for' => "{{PLURAL:$2|La coordinatà sota a l'é pa stàita arconossùa|Le coordinà sota a son pa stàite arconossùe}}  e a {{PLURAL:$2|l'é stàita|a son stàite}} pa butà ant la carta: 
 $1",
 	'maps_map_cannot_be_displayed' => 'La carta a peul pa esse mostrà.',
+	'maps_invalid_distance' => "Ël valor $1 a l'é pa na distansa bon-a.",
 	'maps-geocoder-not-available' => "La possibilità ëd geocodìfica dle carte a l'é pa disponìbil. Soa locassion a peul pa esse geocodificà.",
 	'maps_click_to_activate' => 'Sgnaca për ativé la carta',
 	'maps_centred_on' => 'Carta sentrà su $1, $2.',
@@ -1380,6 +1424,7 @@ $1.',
 	'maps_unrecognized_coords_for' => '{{PLURAL:$2|A seguinte coordenada não foi reconhecida e foi omitida|As seguintes coordenadas não foram reconhecidas e foram omitidas}} do mapa:
 $1',
 	'maps_map_cannot_be_displayed' => 'Não é possível apresentar o mapa.',
+	'maps_invalid_distance' => 'O valor $1 não é uma distância válida.',
 	'maps-geocoder-not-available' => 'A funcionalidade de georeferenciação do Mapas está indisponível; a sua localização não pode ser georeferenciada.',
 	'maps_click_to_activate' => 'Clique para activar o mapa',
 	'maps_centred_on' => 'Mapa centrado nas coordenadas $1, $2.',
@@ -1471,6 +1516,7 @@ $1',
 	'maps_unrecognized_coords_for' => 'Следующие координаты не были опознаны, {{PLURAL:$2|они|они}} не показаны на карте:
 $1',
 	'maps_map_cannot_be_displayed' => 'Карта не может быть показана.',
+	'maps_invalid_distance' => 'Значение $1 не является допустимым расстоянием.',
 	'maps-geocoder-not-available' => 'Функция геокодирования карт недоступна, ваше местоположение не может быть геокодировано.',
 	'maps_click_to_activate' => 'Нажмите для активации карты',
 	'maps_centred_on' => 'Центр карты — $1, $2.',
@@ -1499,24 +1545,36 @@ Dostupné mapovacie služby: $1',
 	'maps_geocoding_failed_for' => 'Nebolo možné určiť súradnice {{PLURAL:$2|nasledovnej adresy|nasledovných adries}} a {{PLURAL:$2|bola vynechaná|boli vynechané}} z mapy: $1.',
 );
 
-/** Serbian Cyrillic ekavian (Српски (ћирилица)) */
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
 $messages['sr-ec'] = array(
+	'maps_map' => 'Мапа',
+	'maps-loading-map' => 'Учитавање мапе...',
 	'maps-abb-north' => 'С',
 	'maps-abb-east' => 'И',
 	'maps-abb-south' => 'Ј',
 	'maps-abb-west' => 'З',
 	'maps-latitude' => 'Географска ширина:',
 	'maps-longitude' => 'Географска дужина:',
+	'maps_photos' => 'Фотографије',
+	'maps_videos' => 'Видео снимци',
+	'maps_webcams' => 'Веб-камере',
 );
 
 /** Serbian Latin ekavian (Srpski (latinica)) */
 $messages['sr-el'] = array(
+	'maps_map' => 'Mapa',
+	'maps-loading-map' => 'Učitavanje mape...',
 	'maps-abb-north' => 'S',
 	'maps-abb-east' => 'I',
 	'maps-abb-south' => 'J',
 	'maps-abb-west' => 'Z',
 	'maps-latitude' => 'Geografska širina:',
 	'maps-longitude' => 'Geografska dužina:',
+	'maps_photos' => 'Fotografije',
+	'maps_videos' => 'Video snimci',
+	'maps_webcams' => 'Veb-kamere',
 );
 
 /** Swedish (Svenska)
@@ -1597,6 +1655,7 @@ $1',
 	'maps_unrecognized_coords_for' => 'Hindi nakilala ang sumusunod na {{PLURAL:$2|tugmaang pampook|mga tugmaang pampook}} at {{PLURAL:$2|inalis|mga inalis}} na mula sa mapa:
 $1',
 	'maps_map_cannot_be_displayed' => 'Hindi maipapakita ang mapa.',
+	'maps_invalid_distance' => 'Hindi isang tanggap na layo ang halagang $1.',
 	'maps-geocoder-not-available' => 'Wala ang katangiang-kasangkapang pang-geokodigo ng Mga Mapa.  Hindi mageokodigo ang lokasyon mo.',
 	'maps_click_to_activate' => 'Pindutin upang mabuhay ang mapa',
 	'maps_centred_on' => 'Nakagitna ang mapa sa $1, $2.',

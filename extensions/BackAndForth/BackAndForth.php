@@ -3,7 +3,8 @@
  * Extension adds "next" and "previous" alphabetic paging links to
  * the top of articles
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  * @author Rob Church <robchur@gmail.com>
  */
 

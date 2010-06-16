@@ -1,5 +1,4 @@
 <?php
-
 /**
  * This class together with some javascript implements the ajax translation
  * page.
@@ -8,9 +7,11 @@
  * @copyright Copyright © 2009 Niklas Laxström
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
  */
+
 class TranslationEditPage {
 	// Instance of an Title object
 	protected $title;
+	protected $suggestions = 'sync';
 
 	/**
 	 * Constructor.
@@ -22,8 +23,14 @@ class TranslationEditPage {
 
 	public static function newFromRequest( WebRequest $request ) {
 		$title = Title::newFromText( $request->getText( 'page' ) );
-		if ( !$title ) return null;
-		return new self( $title );
+
+		if ( !$title ) {
+			return null;
+		}
+
+		$obj = new self( $title );
+		$obj->suggestions = $request->getText( 'suggestions' );
+		return $obj;
 	}
 
 
@@ -35,15 +42,20 @@ class TranslationEditPage {
 	 * disabled all other output.
 	 */
 	public function execute() {
+		global $wgOut, $wgServer, $wgScriptPath;
+
+		$wgOut->disable();
+
 		$data = $this->getEditInfo();
 		$helpers = new TranslationHelpers( $this->getTitle() );
 
-		// jQuery borks on something, probably to :, thus, don't use special chars
-		$id = Sanitizer::escapeId( sha1( $this->getTitle()->getPrefixedText() ) );
+		$id = "tm-target-{$helpers->dialogID()}";
 		$helpers->setTextareaId( $id );
 
-		global $wgServer, $wgScriptPath, $wgOut;
-		$wgOut->disable();
+		if ( $this->suggestions === 'only' ) {
+			echo $helpers->getBoxes( $this->suggestions );
+			return;
+		}
 
 		$translation = $helpers->getTranslation();
 		$short = strpos( $translation, "\n" ) === false && strlen( $translation ) < 200;
@@ -57,8 +69,11 @@ class TranslationEditPage {
 
 		$hidden = array();
 		$hidden[] = Xml::hidden( 'title', $this->getTitle()->getPrefixedDbKey() );
-		if ( isset( $data['revisions'][0]['timestamp'] ) )
+
+		if ( isset( $data['revisions'][0]['timestamp'] ) ) {
 			$hidden[] = Xml::hidden( 'basetimestamp', $data['revisions'][0]['timestamp'] );
+		}
+
 		$hidden[] = Xml::hidden( 'starttimestamp', $data['starttimestamp'] );
 		$hidden[] = Xml::hidden( 'token', $data['edittoken'] );
 		$hidden[] = Xml::hidden( 'format', 'json' );
@@ -68,8 +83,16 @@ class TranslationEditPage {
 		$save = Xml::submitButton( wfMsg( 'savearticle' ), array( 'style' => 'font-weight:bold' ) );
 		$saveAndNext = Xml::submitButton( wfMsg( 'translate-js-next' ), array( 'class' => 'mw-translate-next' ) );
 		$skip = Html::element( 'input', array( 'class' => 'mw-translate-skip', 'type' => 'button', 'value' => wfMsg( 'translate-js-skip' ) ) );
+
 		if ( $this->getTitle()->exists() ) {
-			$history = Html::element( 'input', array( 'class' => 'mw-translate-history', 'type' => 'button', 'value' => wfMsg( 'translate-js-history' ) ) );
+			$history = Html::element(
+				'input',
+				array(
+					'class' => 'mw-translate-history',
+					'type' => 'button',
+					'value' => wfMsg( 'translate-js-history' )
+				)
+			);
 		} else {
 			$history = '';
 		}
@@ -82,11 +105,11 @@ class TranslationEditPage {
 
 		$form = Html::rawElement( 'form', $formParams,
 			implode( "\n", $hidden ) . "\n" .
-			$helpers->getBoxes() . "\n" .
+			$helpers->getBoxes( $this->suggestions ) . "\n" .
 			"$textarea\n$summary$save$saveAndNext$skip$history"
 		);
 
-		echo $form;
+		echo Html::rawElement( 'div', array( 'class' => 'mw-ajax-dialog' ), $form );
 	}
 
 	/**
@@ -108,18 +131,28 @@ class TranslationEditPage {
 		$data = $api->getResultData();
 		$data = $data['query']['pages'];
 		$data = array_shift( $data );
+
 		return $data;
 	}
 
 	public static function jsEdit( Title $title, $group = "" ) {
 		global $wgUser;
 
-		if ( !$wgUser->isAllowed( 'translate' ) ) return array();
-		if ( !$wgUser->getOption( 'translate-jsedit' ) ) return array();
+		if ( !$wgUser->isAllowed( 'translate' ) ) {
+			return array();
+		}
 
-		$jsTitle = Xml::escapeJsString( $title->getPrefixedDbKey() );
+		if ( !$wgUser->getOption( 'translate-jsedit' ) ) {
+			return array();
+		}
+
+		$dbKey = $title->getPrefixedDbKey();
+		$jsTitle = Xml::escapeJsString( $dbKey );
 		$jsGroup = Xml::escapeJsString( $group );
-		return array( 'onclick' => "return trlOpenJsEdit( \"$jsTitle\", \"$jsGroup\" );" );
-	}
 
+		return array(
+			'onclick' => "return trlOpenJsEdit( \"$jsTitle\", \"$jsGroup\" );",
+			'title' => wfMsg( 'translate-edit-title', $dbKey )
+		);
+	}
 }

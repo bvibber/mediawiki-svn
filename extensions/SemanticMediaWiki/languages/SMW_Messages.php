@@ -2156,7 +2156,7 @@ Sie können den Fortschritt des Updates auf dieser Spezialseite verfolgen.',
 	'smw_smwadmin_updatenotstopped' => 'Um laufende Prozesse zu stoppen, müssen Sie das Kontrollkästchen aktivieren, um so anzugeben, dass Sie sich wirklich sicher sind.',
 	'smw_smwadmin_docu' => 'Diese Spezialseite unterstützt Sie während der Installation und dem Upgrade von <a href="http://semantic-mediawiki.org/wiki/Semantic_MediaWiki_–_Startseite">Semantic MediaWiki</a>.
 Denken Sie daran, wichtige Daten vor der Ausführung systemadministrativer Funktionen zu sichern.',
-	'smw_smwadmin_announce' => 'Ihr Wiki bekanntgeben',
+	'smw_smwadmin_announce' => 'Ihr Wiki bekannt geben',
 	'smw_smwadmin_announcebutton' => 'Drücken Sie die folgende Schaltfläche, um die URL Ihres Wikis für diesem Dienst hinzuzufügen.
 Dieser Dienst wird keine Wikis aufnehmen, die nicht öffentlich zugänglich sind. Zudem wird er nur öffentlich zugängliche Informationen speichern.',
 	'smw_smwadmin_supportdocu' => 'Verschiedene Hinweise helfen Ihnen vielleicht im Fall eines Problems:',
@@ -6190,7 +6190,7 @@ $messages['mk'] = array(
 	'smw_printername_debug' => 'Поправање грешки во барања (за експерти)',
 	'smw_printername_embedded' => 'Вметни содржина од страница',
 	'smw_printername_json' => 'JSON извоз',
-	'smw_printername_list' => 'Листа',
+	'smw_printername_list' => 'Список',
 	'smw_printername_ol' => 'Набројување',
 	'smw_printername_ul' => 'Список',
 	'smw_printername_rss' => 'RSS извоз',
@@ -6215,7 +6215,7 @@ $messages['mk'] = array(
 	'smw_iq_disabled' => 'На ова вики се оневозможени семантички барања.',
 	'smw_iq_moreresults' => '… понатамошни резултати',
 	'smw_iq_nojs' => 'За да го видите овој елемент користете прелистувач со поддршка за JavaScript.',
-	'smw_iq_altresults' => 'Прелистај ја листата на резултати.',
+	'smw_iq_altresults' => 'Прелистај го списокот на резултати.',
 	'smw_unknown_importns' => 'Функциите за увоз се недостапни за именскиот простор „$1“.',
 	'smw_nonright_importtype' => '$1 може да се користи само за страници со именски простор „$2“.',
 	'smw_wrong_importtype' => '$1 не може да се користи за страници во именскиот простор „$2“.',
@@ -6227,7 +6227,7 @@ $messages['mk'] = array(
 	'smw_manytypes' => 'За својството е определен повеќе од еден тип.',
 	'smw_emptystring' => 'Не се прифаќаат празни низи.',
 	'smw_maxstring' => 'Низната претстава $1 е предолга.',
-	'smw_notinenum' => '„$1“ не е на листата на можни вредности ($2) за ова својство.',
+	'smw_notinenum' => '„$1“ не е на списокот на можни вредности ($2) за ова својство.',
 	'smw_noboolean' => '„$1“ не претставува Булова вредност (точно/неточно).',
 	'smw_true_words' => 'вистина,да,в,д,true,t,yes,y',
 	'smw_false_words' => 'лага,л,невистина,н,не,false,f,no,n',
@@ -6254,7 +6254,7 @@ $messages['mk'] = array(
 	'smw_noqueryfeature' => 'Некои функции од барањето не се поддржани на ова вики, и затоа е испуштен дел од барањето ($1).',
 	'smw_noconjunctions' => 'Сврзници во барања не се поддржани во ова вики, и затоа е испуштен дел од барањето ($1).',
 	'smw_nodisjunctions' => 'Во ова вики не се поддржани дисјункции во барањата, и затоа еден дел од барањето е отфрлен ($1).',
-	'smw_querytoolarge' => 'Следниве услови на барањето не можеа да бидат земени во предвид заради ограничувањата на големината или длабочината на барањата во ова вики: $1',
+	'smw_querytoolarge' => 'Следниве услови на барањето не можеа да бидат земени предвид заради ограничувањата на големината или длабочината на барањата во ова вики: $1',
 	'smw_devel_warning' => 'Оваа функција е моментално во развој, и може да не биде наполно функционална.
 Направете резервна копија на податоците пред да ја користите.',
 	'smw_notemplategiven' => 'Наведете вредност за параметарот „template“ за да може да работи овој формат на барање.',
@@ -6290,14 +6290,14 @@ $messages['mk'] = array(
 	'tooltip-purge' => 'Кликнете тука за да ги обновите сите барања и шаблони на оваа страница',
 	'smw_purge' => 'Превчитај',
 	'types' => 'Типови',
-	'smw_types_docu' => 'Ова е листа на сите типови на податоци кои можат да се назначуваат на својства.
+	'smw_types_docu' => 'Ова е список на сите типови на податоци кои можат да се назначуваат на својства.
 Секој тип на податок има своја страница кадешто може да се наведат дополнителни информации.',
 	'smw_typeunits' => 'Мерни единици од типот „$1“: $2',
 	'semanticstatistics' => 'Семантички статистики',
 	'smw_semstats_text' => "Ова вики содржи '''$1''' {{PLURAL:$1|својствена вредност|својствени вредности}} од вкупно '''$2''' [[Special:Properties|{{PLURAL:$2|својство|различни својства}}]].
 '''$3''' {{PLURAL:$3|својство има|својства имаат}} своја страница, а предвидениот тип на податоци е назначен за '''$4''' од нив.
 Некои од постоечките својства може да се [[Special:UnusedProperties|неискористени]].
-Својствата кои сè уште немаат страница се наведени на [[Special:WantedProperties|листата на потребни својства]].",
+Својствата кои сè уште немаат страница се наведени на [[Special:WantedProperties|списокот на потребни својства]].",
 	'uriresolver' => 'URI претворач',
 	'smw_uri_doc' => 'URI претварачот ја имплементира <a href="http://www.w3.org/2001/tag/issues.html#httpRange-14">W3C пронаоѓање на ознаки на httpRange-14</a>.
 Тој има за задача да внимава луѓето да не се претворат во веб-страници.',
@@ -6322,8 +6322,8 @@ $messages['mk'] = array(
 	'searchbyproperty' => 'Пребарај по својство',
 	'smw_sbv_docu' => 'Пребарување на сите страници кои имаат дадено својство и вредност.',
 	'smw_sbv_novalue' => 'Внесете важечка вредност за својството, или пак погледнете ги сите вредности на својството „$1“.',
-	'smw_sbv_displayresult' => 'Листа на сите страници кои го содржат својството „$1“ со вредност „$2“',
-	'smw_sbv_displayresultfuzzy' => 'Листа на сите страници кои имаат својство „$1“ со вредност „$2“.
+	'smw_sbv_displayresult' => 'Список на сите страници што го содржат својството „$1“ со вредност „$2“',
+	'smw_sbv_displayresultfuzzy' => 'Список на сите страници кои имаат својство „$1“ со вредност „$2“.
 Бидејќи има само неколку резултати, прикажани се и приближни вредности.',
 	'smw_sbv_property' => 'Својство:',
 	'smw_sbv_value' => 'Вредност:',
@@ -6371,15 +6371,15 @@ $messages['mk'] = array(
 	'smw_smwadmin_dbbutton' => 'Започни или поднови табели',
 	'smw_smwadmin_announce' => 'Објавете го вашето вики',
 	'smw_smwadmin_announcedocu' => 'Semantic MediaWiki има веб-служба за соопштување на нови семантички вики-страници.
-Ова се користи за одржување на листа на јавни веб-страници кои го користат Semantic MediaWiki, главно со цел да му се помогне на <a href="http://semantic-mediawiki.org/wiki/SMW_Project">проектот Semantic MediaWiki</a> да добие претстава за типичните употреби на Semantic MediaWiki.
+Ова се користи за одржување на список на јавни веб-места кои го користат Semantic MediaWiki, главно со цел да му се помогне на <a href="http://semantic-mediawiki.org/wiki/SMW_Project">проектот Semantic MediaWiki</a> да добие претстава за типичните употреби на Semantic MediaWiki.
 Погледајте ја веб-страницата на Semantic MediaWiki за <a href="http://semantic-mediawiki.org/wiki/Registry">повеќе информации за оваа служба</a>.',
 	'smw_smwadmin_announcebutton' => 'Притиснете го следново копче за да ја испратите URL-адресата на вашето вики во таа служба.
 Службата нема да регистрира викија што не се јавно достапни, и ќе складира само достапни информации.',
 	'smw_smwadmin_datarefresh' => 'Поправка и поднова на податоци',
 	'smw_smwadmin_datarefreshdocu' => 'Постои можност за враќање на сите Semantic MediaWiki податоци врз основа на тековните содржини на викито.
-Ова е корисно за поправка на расипани податоци или за обнова на податоците ако внатрешниот формат се има променето како резултат на некаква надградба на софтверот.
+Ова е корисно за поправка на расипани податоци или за обнова на податоците ако внатрешниот формат се има променето како резултат на некаква надградба на програмската опрема.
 Подновувањето се врши страница по страница, и ќе треба да помине некое време за да профункционира.
-Подолу е прикажано дали има поднова во тек, и тоа ви овозможува да започнувате или запирате подновувања (освен ако таа можност не е исклучена од администраторот на веб-страницата).',
+Подолу е прикажано дали има поднова во тек, и тоа ви овозможува да започнувате или запирате подновувања (освен ако таа можност не е исклучена од администраторот на мрежното место).',
 	'smw_smwadmin_datarefreshprogress' => '<strong>Веќе е во тек една поднова.</strong>
 Нормално е подновата да биде бавна, бидејќи податоците се обновуваат во мали делчиња секојпат кога корисникот ќе отиде на викито.
 За да ја убрзате подновата, можете да ја повикате скриптата за одржување на MediaWiki <tt>runJobs.php</tt> (користете ја можноста <tt>--maxjobs 1000</tt> за да го ограничите бројот на поднови во една партија).
@@ -7543,7 +7543,7 @@ $messages['pl'] = array(
 	'smw_kiloseparator' => '.',
 	'smw_notitle' => '„$1” nie może być użyte jako nazwa strony.',
 	'smw_wrong_namespace' => 'Dozwolone są tutaj tylko strony z przestrzeni nazw „$1”.',
-	'smw_unknowntype' => '„$1” jako typ atrybutu nie jest wspierany.',
+	'smw_unknowntype' => '„$1” jako typ atrybutu nie jest obsługiwany.',
 	'smw_manytypes' => 'Zdefiniowano więcej niż jeden typ dla atrybutu.',
 	'smw_emptystring' => 'Puste łańcuchy znakowe są niedozwolone.',
 	'smw_maxstring' => 'Reprezentacja znakowa $1 jest zbyt długa.',
@@ -7552,10 +7552,10 @@ $messages['pl'] = array(
 	'smw_true_words' => 'prawda,t,yes,y,tak,true',
 	'smw_false_words' => 'fałsz,f,no,n,nie,false',
 	'smw_nofloat' => '„$1” nie jest liczbą.',
-	'smw_infinite' => 'Liczby tak duże jak „$1” nie są wspierane.',
+	'smw_infinite' => 'Liczby tak duże jak „$1” nie są obsługiwane.',
 	'smw_infinite_unit' => 'Konwersja do jednostki „$1” zwróciła liczbę, która jest zbyt duża.',
-	'smw_unsupportedprefix' => 'Przedrostki dla liczb (“$1”) nie są obecnie wspierane.',
-	'smw_unsupportedunit' => 'Konwersja dla jednostki „$1” nie jest wspierana.',
+	'smw_unsupportedprefix' => 'Przedrostki dla liczb („$1“) nie są obecnie obsługiwane.',
+	'smw_unsupportedunit' => 'Konwersja dla jednostki „$1” nie jest obsługiwana.',
 	'smw_nodatetime' => 'Data „$1” nie została zrozumiana.',
 	'smw_toomanyclosing' => 'W zapytaniu jest zbyt wiele wystąpień „$1”.',
 	'smw_noclosingbrackets' => 'W zapytaniu któryś z podwójnych nawiasów „<nowiki>[[</nowiki>” nie został zamknięty nawiasem „]]”.',
@@ -7931,6 +7931,7 @@ $messages['ps'] = array(
 	'smw_ask_ascorder' => 'ختند',
 	'smw_ask_defaultformat' => 'تلواليز',
 	'smw_sbv_value' => 'ارزښت:',
+	'smw_sbv_submit' => 'پايلې موندل',
 	'browse' => 'ويکي سپړل',
 	'smw_browselink' => 'د سپړلو ځانتياوې',
 	'smw_browse_go' => 'ورځه',
@@ -7939,6 +7940,7 @@ $messages['ps'] = array(
 	'smw_result_next' => 'راتلونکي',
 	'smw_result_results' => 'پايلې',
 	'smw_result_noresults' => 'اوبښۍ، هېڅ کومه پايله نشته.',
+	'smw_smwadmin_return' => '$1 ته ورګرځېدل',
 	'smw_smwadmin_datarefreshstopconfirm' => 'هو، زه ډاډه يم.',
 );
 
@@ -8182,6 +8184,7 @@ Progresso estimado da actualização em curso:",
 );
 
 /** Brazilian Portuguese (Português do Brasil)
+ * @author 555
  * @author Eduardo.mps
  * @author GKnedo
  * @author Hamilton Abreu
@@ -8189,7 +8192,6 @@ Progresso estimado da actualização em curso:",
  * @author Luckas Blade
  * @author Rafael Vargas
  * @author Waldir
- * @author 555
  */
 $messages['pt-br'] = array(
 	'smw-desc' => "Fazendo sua wiki mais acessível - para máquinas ''e'' humanos ([http://semantic-mediawiki.org/wiki/Help:User_manual documentação ''online''])",
@@ -8953,6 +8955,7 @@ $messages['sr-ec'] = array(
 	'smw_baduri' => 'URI-ји облика "$1", нису прихватљиви.',
 	'smw_csv_link' => 'CSV',
 	'smw_printername_auto' => 'Аутоматски',
+	'smw_printername_count' => 'Изброј резултате',
 	'smw_printername_csv' => 'CSV извоз',
 	'smw_printername_debug' => 'Упит за пречишћавање (само за експерте)',
 	'smw_printername_embedded' => 'Угнезди садржај странице',
@@ -9185,6 +9188,7 @@ Ako problem ne nestane za neko vreme, zatražite od administratora sajta da uči
 	'smw_rss_link' => 'RSS',
 	'smw_csv_link' => 'CSV',
 	'smw_printername_auto' => 'Automatski',
+	'smw_printername_count' => 'Izbroj rezultate',
 	'smw_printername_csv' => 'CSV izvoz',
 	'smw_printername_debug' => 'Upit za prečišćavanje (samo za eksperte)',
 	'smw_printername_embedded' => 'Ugnezdi sadržaj stranice',
@@ -9836,6 +9840,7 @@ Pinag-iingatan nitong huwag maging mga sityo ng web (websayt) ang mga tao.',
 	'smw_ask_printhead' => 'Karagdagang mga datong ipapakita',
 	'smw_ask_format_as' => 'Iayos bilang:',
 	'smw_ask_defaultformat' => 'likas na katakdaan',
+	'smw_ask_otheroptions' => 'Iba pang mga mapagpipilian',
 	'smw_ask_show_embed' => 'Ipakita ang kodigong pambaon',
 	'smw_ask_hide_embed' => 'Ibaong nakakubli ang kodigo',
 	'smw_ask_embed_instr' => 'Upang maibaon ang katanungang ito sa loob ng guhit papasok sa isang pahina ng wiki, gamitin ang kodigong nasa ibaba.',

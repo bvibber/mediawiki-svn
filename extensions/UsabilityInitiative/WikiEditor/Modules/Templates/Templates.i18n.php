@@ -92,6 +92,20 @@ $messages['es'] = array(
 	'wikieditor-templates-preference' => 'Habilitar colapso de plantilla',
 );
 
+/** Persian (فارسی)
+ * @author Huji
+ */
+$messages['fa'] = array(
+	'wikieditor-templates-preference' => 'فعال‌سازی نهفتن الگوها',
+);
+
+/** Finnish (Suomi)
+ * @author Str4nd
+ */
+$messages['fi'] = array(
+	'wikieditor-templates-preference' => 'Ota mallineiden piilotus käyttöön',
+);
+
 /** French (Français)
  * @author Peter17
  */
@@ -246,11 +260,44 @@ $messages['pt'] = array(
 	'wikieditor-templates-preference' => 'Possibilitar a recolha e expansão de predefinições',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Giro720
+ */
+$messages['pt-br'] = array(
+	'wikieditor-templates-preference' => 'Habilitar predefinições colapsáveis',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */
 $messages['ru'] = array(
 	'wikieditor-templates-preference' => 'Включить сворачивание шаблонов',
+);
+
+/** Yakut (Саха тыла)
+ * @author HalanTul
+ */
+$messages['sah'] = array(
+	'wikieditor-templates-preference' => 'Халыыптары сабыыны холбоо',
+);
+
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'wikieditor-templates-preference' => 'Omogoči združevanje predlog',
+);
+
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'wikieditor-templates-preference' => 'Омогућава размотавање шаблона',
+);
+
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'wikieditor-templates-preference' => 'Omogućava razmotavanje šablona',
 );
 
 /** Swedish (Svenska)
@@ -272,6 +319,18 @@ $messages['tl'] = array(
  */
 $messages['vi'] = array(
 	'wikieditor-templates-preference' => 'Cho phép làm xẹp các bản mẫu',
+);
+
+/** Cantonese (粵語)
+ * @author Horacewai2
+ */
+$messages['yue'] = array(
+	'wikieditor-templates-preference' => '啟用可隱藏模板',
+);
+
+/** Simplified Chinese (‪中文(简体)‬) */
+$messages['zh-hans'] = array(
+	'wikieditor-templates-preference' => '使模板倒塌',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

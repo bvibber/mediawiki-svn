@@ -711,6 +711,8 @@ $messages['sk'] = array(
  * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
+	'searchbox-search' => 'Претрага',
+	'searchbox-go' => 'Иди',
 	'searchbox-namespaces' => 'Именски простори:',
 );
 
@@ -718,6 +720,8 @@ $messages['sr-ec'] = array(
  * @author Michaello
  */
 $messages['sr-el'] = array(
+	'searchbox-search' => 'Pretraga',
+	'searchbox-go' => 'Idi',
 	'searchbox-namespaces' => 'Imenski prostori:',
 );
 
@@ -739,6 +743,15 @@ $messages['sv'] = array(
 	'searchbox-search' => 'Sök',
 	'searchbox-go' => 'Gå',
 	'searchbox-namespaces' => 'Namnrymder:',
+);
+
+/** Tamil (தமிழ்)
+ * @author Mahir78
+ */
+$messages['ta'] = array(
+	'searchbox-search' => 'தேடுக',
+	'searchbox-go' => 'செல்க',
+	'searchbox-namespaces' => 'பெயர்வெளி:',
 );
 
 /** Telugu (తెలుగు)

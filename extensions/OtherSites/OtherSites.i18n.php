@@ -2,8 +2,9 @@
 /**
  * Internationalisation file for extension OtherSites.
  *
- * @addtogroup Extensions
-*/
+ * @file
+ * @ingroup Extensions
+ */
 
 $messages = array();
 
@@ -156,10 +157,12 @@ $messages['fa'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Crt
  * @author Vililikku
  */
 $messages['fi'] = array(
 	'othersites' => 'Muut sivustot',
+	'othersites-desc' => 'Siirtää ne interwiki-linkit, jotka eivät ole kielilinkkejä, omaan portaalisovelmaan.',
 );
 
 /** French (Français)

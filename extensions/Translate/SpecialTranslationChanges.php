@@ -1,20 +1,18 @@
 <?php
-if ( !defined( 'MEDIAWIKI' ) ) die();
-
 /**
  * Implementation of Special:TranslationChanges special page.
  */
+
 class SpecialTranslationChanges extends SpecialPage {
 	const MSG = 'translationchanges-';
 
 	function __construct() {
-		SpecialPage::SpecialPage( 'TranslationChanges' );
+		parent::__construct( 'TranslationChanges' );
 	}
 
 	/** Access point for this special page */
 	public function execute( $parameters ) {
 		global $wgOut, $wgScriptPath, $wgJsMimeType, $wgStyleVersion, $wgRequest;
-		wfLoadExtensionMessages( 'Translate' );
 
 		$wgOut->addScript(
 			Xml::openElement( 'script', array( 'type' => $wgJsMimeType, 'src' =>

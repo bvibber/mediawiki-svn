@@ -304,6 +304,13 @@ $messages['id'] = array(
 	'externalpages-no-page' => 'Halaman tak diberikan',
 );
 
+/** Ido (Ido)
+ * @author Malafaya
+ */
+$messages['io'] = array(
+	'externalpages' => 'Extera Pagini',
+);
+
 /** Italian (Italiano)
  * @author Aushulz
  * @author Beta16
@@ -514,6 +521,14 @@ $messages['sr-ec'] = array(
 	'externalpages-no-page' => 'Страница није одређена.',
 );
 
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'externalpages' => 'Spoljašnje stranice',
+	'externalpages-desc' => 'Preuzima i prikazuje stranice iz daljinskih WMF sajtova',
+	'externalpages-bad-page' => 'Određena je loša stranica',
+	'externalpages-no-page' => 'Stranica nije određena.',
+);
+
 /** Swedish (Svenska)
  * @author Boivie
  * @author Per
@@ -593,6 +608,12 @@ $messages['vi'] = array(
 	'externalpages-desc' => 'Lấy và hiển thị nội dung của các trang khác trực thuộc Quỹ Wikimedia',
 	'externalpages-bad-page' => 'Đã định rõ trang không hợp lệ',
 	'externalpages-no-page' => 'Chưa định rõ trang',
+);
+
+/** Simplified Chinese (‪中文(简体)‬) */
+$messages['zh-hans'] = array(
+	'externalpages' => '外部网页',
+	'externalpages-desc' => '检索和显示来自WMF的网站页面',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

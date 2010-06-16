@@ -951,6 +951,24 @@ $messages['sk'] = array(
 	'security-restricttogroup' => 'Prístup k obsahu obmedzenému len pre členov skupiny „$1“',
 );
 
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'security-info-toggle' => 'сигурносна ограничења',
+	'security-manygroups' => 'групе $1 и $2',
+	'security-type-category' => 'категорија',
+	'security-type-namespace' => 'именски простор',
+);
+
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'security-info-toggle' => 'sigurnosna ograničenja',
+	'security-manygroups' => 'grupe $1 i $2',
+	'security-type-category' => 'kategorija',
+	'security-type-namespace' => 'imenski prostor',
+);
+
 /** Swedish (Svenska)
  * @author Fluff
  * @author Per

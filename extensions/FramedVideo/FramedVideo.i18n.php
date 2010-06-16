@@ -528,6 +528,17 @@ $messages['km'] = array(
 	'framedvideo_helppage' => 'Help: វិដេអូ',
 );
 
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'framedvideo_errors' => '여러 가지 오류가 발생했습니다!',
+	'framedvideo_error' => '오류가 발생했습니다!',
+	'framedvideo_error_unknown_type' => '비디어 서비스 ID("$1")를 알 수 없습니다: "type" 변수를 확인하십시오.',
+	'framedvideo_error_no_id_given' => '"id" 변수가 없습니다.',
+	'framedvideo_error_height_required' => '"$1" 비디오 종류에는 "height" 변수가 필요합니다.',
+);
+
 /** Colognian (Ripoarisch)
  * @author Purodha
  */
@@ -831,6 +842,28 @@ $messages['sk'] = array(
 	'framedvideo_error_see_help' => '[[{{MediaWiki:Framedvideo_helppage}}|Viac o syntaxi]].',
 	'framedvideo_error_height_and_width_required' => 'Video typu „$1“ vyžaduje parametre „height“ a „width2“ alebo „width“.',
 	'framedvideo-desc' => 'Umožňuje vkladanie videa z rozličných webstránok pomocou značky <code>&lt;video&gt;</code>',
+);
+
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'framedvideo_errors' => 'Дошло је до неколико грешака!',
+	'framedvideo_error' => 'Дошло је до грешке!',
+	'framedvideo_error_height_required' => 'Видео типу "$1" је потребан параметар "height".',
+	'framedvideo_error_height_required_not_only_width' => 'Видео типу "$1" је потребан и "height" параметар, не само "width" параметар.',
+	'framedvideo_error_width_too_big' => 'Задата вредност за параметар "width" је превелика.',
+	'framedvideo_error_height_too_big' => 'Задата вредност за параметар "height" је превелика.',
+);
+
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'framedvideo_errors' => 'Došlo je do nekoliko grešaka!',
+	'framedvideo_error' => 'Došlo je do greške!',
+	'framedvideo_error_height_required' => 'Video tipu "$1" je potreban parametar "height".',
+	'framedvideo_error_height_required_not_only_width' => 'Video tipu "$1" je potreban i "height" parametar, ne samo "width" parametar.',
+	'framedvideo_error_width_too_big' => 'Zadata vrednost za parametar "width" je prevelika.',
+	'framedvideo_error_height_too_big' => 'Zadata vrednost za parametar "height" je prevelika.',
 );
 
 /** Swedish (Svenska)

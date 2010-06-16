@@ -2,7 +2,8 @@
 /**
  * Internationalisation file for the extension ErrorHandler.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $messages = array();
@@ -64,6 +65,15 @@ $messages['qqq'] = array(
  */
 $messages['af'] = array(
 	'errorhandler-errors' => 'Foute:',
+	'errorhandler-error-warning' => 'Waarskuwing',
+	'errorhandler-error-notice' => 'Kennisgewing',
+);
+
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'errorhandler-error-warning' => 'Aviso',
 );
 
 /** Arabic (العربية)
@@ -820,7 +830,7 @@ $messages['mk'] = array(
 	'errorhandler-error-fatal' => 'Фатална грешка',
 	'errorhandler-error-warning' => 'Предупредување',
 	'errorhandler-error-parse' => 'Грешка во парсерот',
-	'errorhandler-error-notice' => 'Белешка',
+	'errorhandler-error-notice' => 'Напомена',
 	'errorhandler-error-deprecated' => 'Забрането',
 	'errorhandler-error-core-error' => 'Јадрена грешка',
 	'errorhandler-error-core-warning' => 'Јадрено предупредување',
@@ -828,7 +838,7 @@ $messages['mk'] = array(
 	'errorhandler-error-compile-warning' => 'Предупредување од компилацијата',
 	'errorhandler-error-user-error' => 'Корисничка грешка',
 	'errorhandler-error-user-warning' => 'Корисничко предупредување',
-	'errorhandler-error-user-notice' => 'Корисничка белешка',
+	'errorhandler-error-user-notice' => 'Известување на корисник',
 	'errorhandler-error-user-deprecated' => 'Корисникот е забранет',
 	'errorhandler-error-strict' => 'Строги стандарди',
 	'errorhandler-error-recoverable' => 'Фатална грешка во Catchable',

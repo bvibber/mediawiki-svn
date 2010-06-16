@@ -47,13 +47,13 @@ function PoemExtension( $in, $param=array(), $parser=null, $frame=false ) {
 		$tag = $parser->insertStripItem( "<br />", $parser->mStripState );
 		$text = preg_replace(
 			array( "/^\n/", "/\n$/D", "/\n/", "/^( +)/me" ),
-			array( "", "", "$tag\n", "str_replace(' ','&nbsp;','\\1')" ),
+			array( "", "", "$tag\n", "str_replace(' ','&#160;','\\1')" ),
 			$in );
 			$text = $parser->recursiveTagParse( $text, $frame );
 	} else {
 		$text = preg_replace(
 			array( "/^\n/", "/\n$/D", "/\n/", "/^( +)/me" ),
-			array( "", "", "<br />\n", "str_replace(' ','&nbsp;','\\1')" ),
+			array( "", "", "<br />\n", "str_replace(' ','&#160;','\\1')" ),
 			$in );
 		$ret = $parser->parse(
 			$text,

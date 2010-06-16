@@ -2,7 +2,8 @@
 /**
  * Internationalisation file for extension SimpleAntiSpam.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $messages = array();
@@ -47,7 +48,7 @@ $messages['aln'] = array(
  * @author Juanpabl
  */
 $messages['an'] = array(
-	'simpleantispam' => 'Ista edizión suya ha autibato o mecanismo anti-spam',
+	'simpleantispam' => 'Ista edición suya ha activato o mecanismo anti-spam',
 	'simpleantispam-label' => "Preba anti-spam.
 '''NO''' replene esto!",
 	'simpleantispam-desc' => 'Adibe una preba de spam/bot ta os formularios',
@@ -424,6 +425,13 @@ $messages['jv'] = array(
 	'simpleantispam-label' => "Pamariksan anti-spam.
 '''Aja''' diisèkaké!",
 	'simpleantispam-desc' => 'Tambahaké pamriksan spam/bot prasaja menyang formulir',
+);
+
+/** Georgian (ქართული)
+ * @author BRUTE
+ */
+$messages['ka'] = array(
+	'simpleantispam' => 'თქვენმა რედაქტირებამ ჩართო ანტი-სპამის მექანიზმი',
 );
 
 /** Korean (한국어)

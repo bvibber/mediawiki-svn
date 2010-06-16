@@ -80,7 +80,7 @@ encapsulateSelection: function( options ) {
 				selText = selText.replace( /\r?\n/g, "\r\n" );
 				options.post = options.post.replace( /\r?\n/g, "\r\n" );
 			}
-			if ( isSample ) {
+			if ( isSample && options.selectPeri ) {
 				this.selectionStart = startPos + options.pre.length;
 				this.selectionEnd = startPos + options.pre.length + selText.length;
 			} else {
@@ -91,7 +91,9 @@ encapsulateSelection: function( options ) {
 		} else if ( document.selection && document.selection.createRange ) {
 			// IE
 			$(this).focus();
-			context.fn.restoreStuffForIE();
+			if ( context ) {
+				context.fn.restoreStuffForIE();
+			}
 			var selText = $(this).textSelection( 'getSelection' );
 			var scrollTop = this.scrollTop;
 			var range = document.selection.createRange();
@@ -112,7 +114,7 @@ encapsulateSelection: function( options ) {
 			}
 			checkSelectedText();
 			range.text = options.pre + selText + options.post;
-			if ( isSample && range.moveStart ) {
+			if ( isSample && options.selectPeri && range.moveStart ) {
 				range.moveStart( 'character', - options.post.length - selText.length );
 				range.moveEnd( 'character', - options.post.length );
 			}
@@ -239,7 +241,12 @@ setSelection: function( options ) {
 			if ( newLines) length = length - newLines.length;
 			selection.moveStart( 'character', options.start );
 			selection.moveEnd( 'character', -length + options.end );
-			selection.select();
+			
+			// This line can cause an error under certain circumstances (textarea empty, no selection)
+			// Silence that error
+			try {
+				selection.select();
+			} catch( e ) { }
 		}
 	});
 },
@@ -349,7 +356,8 @@ scrollToCaretPosition: function( options ) {
 				'peri': '', // Text to insert between pre and post and select afterwards
 				'post': '', // Text to insert after the cursor/selection
 				'ownline': false, // Put the inserted text on a line of its own
-				'replace': false // If there is a selection, replace it with peri instead of leaving it alone
+				'replace': false, // If there is a selection, replace it with peri instead of leaving it alone
+				'selectPeri': true // Select the peri text if it was inserted (but not if there was a selection and replace==false)
 			}, options );
 			break;
 		case 'getCaretPosition':

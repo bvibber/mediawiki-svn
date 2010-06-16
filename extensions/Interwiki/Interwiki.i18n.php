@@ -185,6 +185,7 @@ Betekenis van die inligting en kolomme:",
 	'interwiki_local_0_intro' => 'word nie verwerk nie. Meestal geblokkeer deur \'n  "bladsy nie gevind"-fout.',
 	'interwiki_local_1_intro' => 'aanstuur na die doel-URL verskaf in die definisies van die interwiki-skakels (hierdie word hanteer as verwysings in lokale bladsye)',
 	'interwiki_trans' => 'Transkludeer',
+	'interwiki-trans-label' => 'Transkludeer:',
 	'interwiki_trans_intro' => 'Indien die wikiteks-sintaks <code>{<nowiki />{voorvoegsel:<i>bladsynaam</i>}}</code> gebruik word, dan:',
 	'interwiki_trans_1_intro' => "laat transklusie van ander wiki's toe as interwiki-transklusies wel in hierdie wiki toegelaat word.",
 	'interwiki_trans_0_intro' => "nie toegelaat nie, soek eerder na 'n bladsy in die sjabloonnaamruimte.",
@@ -490,10 +491,12 @@ $messages['br'] = array(
 	'interwiki' => 'Gwelet hag aozañ ar roadennoù interwiki',
 	'interwiki-title-norights' => 'Gwelet ar roadennoù interwiki',
 	'interwiki-desc' => 'Ouzhpennañ a ra ur [[Special:Interwiki|bajenn dibar]] evit gwelet ha kemmañ an daolenn etrewiki',
+	'interwiki_intro' => 'Hemañ zo un alberz eus an daolenn etrewiki. Setu talvoudegezh ar roadennoù zo er bannoù :',
 	'interwiki_prefix' => 'Rakger',
 	'interwiki-prefix-label' => 'Rakger :',
 	'interwiki_local' => 'Treuzkas',
 	'interwiki-local-label' => 'Treuzkas :',
+	'interwiki_local_0_intro' => 'nac\'het, stanket alies gant "pajenn nann-kavet",',
 	'interwiki_trans' => 'Ebarzhiñ',
 	'interwiki-trans-label' => 'Treuzkludañ :',
 	'interwiki_1' => 'ya',
@@ -593,6 +596,14 @@ $messages['ca'] = array(
 	'interwiki_edit' => 'Modifica',
 	'interwiki_reasonfield' => 'Raó:',
 	'interwiki_delquestion' => "S'està eliminant «$1»",
+);
+
+/** Chechen (Нохчийн)
+ * @author Sasan700
+ */
+$messages['ce'] = array(
+	'interwiki_edit' => 'Нисйé',
+	'interwiki_addbutton' => 'Тlетоха',
 );
 
 /** Czech (Česky)
@@ -700,6 +711,7 @@ $messages['da'] = array(
 /** German (Deutsch)
  * @author Als-Holder
  * @author Church of emacs
+ * @author Kghbln
  * @author MF-Warburg
  * @author Metalhead64
  * @author Purodha
@@ -709,7 +721,7 @@ $messages['da'] = array(
 $messages['de'] = array(
 	'interwiki' => 'Interwiki-Daten betrachten und bearbeiten',
 	'interwiki-title-norights' => 'Interwiki-Daten betrachten',
-	'interwiki-desc' => '[[Special:Interwiki|Spezialseite]] zur Pflege der Interwiki-Tabelle',
+	'interwiki-desc' => 'Ergänzt eine [[Special:Interwiki|Spezialseite]] zur Pflege der Interwiki-Tabelle',
 	'interwiki_intro' => 'Dies ist ein Überblick des Inhalts der Interwiki-Tabelle.
 Die Daten in den einzelnen Spalten haben die folgende Bedeutung:',
 	'interwiki_prefix' => 'Präfix',
@@ -1915,7 +1927,7 @@ Mbok-menawa iki ora ana.',
  * @author Malafaya
  */
 $messages['ka'] = array(
-	'interwiki_reasonfield' => 'მიზეზი',
+	'interwiki_reasonfield' => 'მიზეზი:',
 );
 
 /** Khmer (ភាសាខ្មែរ)
@@ -2908,6 +2920,7 @@ Lembre-se que este não pode conter espaços ( ), dois-pontos (:), conjunções 
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
+ * @author Giro720
  * @author Luckas Blade
  */
 $messages['pt-br'] = array(
@@ -2995,6 +3008,7 @@ $messages['roa-tara'] = array(
 
 /** Russian (Русский)
  * @author Ferrer
+ * @author Grigol
  * @author Illusion
  * @author Innv
  * @author Lockal
@@ -3003,7 +3017,7 @@ $messages['roa-tara'] = array(
 $messages['ru'] = array(
 	'interwiki' => 'Просмотр и изменение настроек интервики',
 	'interwiki-title-norights' => 'Просмотреть данные об интервики',
-	'interwiki-desc' => 'Добавляет [[Special:Interwiki|служебную страницу]] для просмотра и редактирования таблицы префиксов интервики.',
+	'interwiki-desc' => 'Добавляет [[Special:Interwiki|служебную страницу]] для просмотра и редактирования таблицы приставок интервики.',
 	'interwiki_intro' => 'Это обзор таблицы интервики. Значения данных в колонках:',
 	'interwiki_prefix' => 'Приставка',
 	'interwiki-prefix-label' => 'Приставка:',
@@ -3041,9 +3055,9 @@ $messages['ru'] = array(
 	'interwiki_editerror' => 'Приставка «$1» не может быть изменена в интервики-таблице. Возможно, она не существует.',
 	'interwiki-badprefix' => 'Указанная интервики-приставка «$1» содержит недопустимые символы',
 	'interwiki_logpagename' => 'Журнал изменений таблицы интервики',
-	'interwiki_log_added' => 'Приставка «$2» ($3) (trans: $4) (local: $5) добавлена в таблицу интервики',
+	'interwiki_log_added' => 'добавил приставку «$2» ($3) (меж.: $4) (лок.: $5) в таблицу интервики',
 	'interwiki_log_edited' => 'изменил приставку «$2»: ($3) (меж.: $4) (лок.: $5) в интервики-таблице',
-	'interwiki_log_deleted' => 'Приставка «$2» удалена из таблицы интервики',
+	'interwiki_log_deleted' => 'удалил приставку «$2» из таблицы интервики',
 	'interwiki_logpagetext' => 'Это журнал изменений [[Special:Interwiki|таблицы интервики]].',
 	'right-interwiki' => 'правка интервики',
 	'action-interwiki' => 'изменение записи интервики',
@@ -3212,7 +3226,7 @@ $messages['sr-ec'] = array(
 	'interwiki_0' => 'не',
 	'interwiki_error' => 'Грешка: табела међувикија је празна, или нешто друго није у реду.',
 	'interwiki_edit' => 'Измени',
-	'interwiki_reasonfield' => 'Разлог',
+	'interwiki_reasonfield' => 'Разлог:',
 	'interwiki_delquestion' => 'Бришем „$1”',
 	'interwiki_deleting' => 'Ви бришете префикс "$1".',
 	'interwiki_deleted' => 'Префикс "$1" је успешно обрисан из табеле међувикија.',
@@ -3233,7 +3247,7 @@ $messages['sr-ec'] = array(
 	'interwiki-badprefix' => 'Задати међувики префикс "$1" садржи недозвољене знакове',
 	'interwiki_logpagename' => 'Историја табеле међувикија',
 	'interwiki_log_added' => 'додат префикс "$2" ($3) (транс: $4) (локално: $5) табели међувикија',
-	'interwiki_log_edited' => 'измењен је префикс "$2" : ($3) (транс: $4) (локално: %5) у табели међувикија',
+	'interwiki_log_edited' => 'измењен је префикс "$2" : ($3) (транс: $4) (локално: $5) у табели међувикија',
 	'interwiki_log_deleted' => 'префикс "$2" је избрисан из табеле међувикија',
 	'interwiki_logpagetext' => 'Ово је историја измена [[Special:Interwiki|табеле међувикија]].',
 	'right-interwiki' => 'Измени међувики',
@@ -3257,7 +3271,7 @@ $messages['sr-el'] = array(
 	'interwiki_0' => 'ne',
 	'interwiki_error' => 'Greška: tabela međuvikija je prazna, ili nešto drugo nije u redu.',
 	'interwiki_edit' => 'Izmeni',
-	'interwiki_reasonfield' => 'Razlog',
+	'interwiki_reasonfield' => 'Razlog:',
 	'interwiki_delquestion' => 'Brišem „$1”',
 	'interwiki_deleting' => 'Vi brišete prefiks "$1".',
 	'interwiki_deleted' => 'Prefiks "$1" je uspešno obrisan iz tabele međuvikija.',
@@ -3718,6 +3732,10 @@ Ba no dabinon.',
  * @author פוילישער
  */
 $messages['yi'] = array(
+	'interwiki_prefix' => 'פרעפֿיקס',
+	'interwiki-prefix-label' => 'פרעפֿיקס:',
+	'interwiki_1' => 'יא',
+	'interwiki_0' => 'ניין',
 	'interwiki_edit' => 'רעדאַקטירן',
 	'interwiki_addbutton' => 'צולייגן',
 );
@@ -3774,6 +3792,7 @@ $messages['zh-hans'] = array(
 	'interwiki_intro' => '这是跨维基链接表的概览。列中的数据的含义：',
 	'interwiki_prefix' => '前缀',
 	'interwiki-prefix-label' => '前缀:',
+	'interwiki_prefix_intro' => '跨网站的前缀，用于<code>[ [prefix: <i>pagename</i> ]]</code> <nowiki /> <code>[ [prefix: <i>pagename</i> ]]</code>。',
 	'interwiki_local' => '转发',
 	'interwiki-local-label' => '转发:',
 	'interwiki_trans' => '包含',
@@ -3801,9 +3820,11 @@ $messages['zh-hans'] = array(
 	'interwiki_editerror' => '前缀 "$1" 不能在跨维基连结表中修改。
 可能它并不存在。',
 	'interwiki-badprefix' => '所指定的跨维基前缀 "$1" 含有无效的字母',
+	'interwiki_logpagename' => '跨维基连结修改日志',
 	'interwiki_log_added' => '加入了连结前缀 "$2" （$3） （含: $4） （本: $5） 到跨维基连结表中',
 	'interwiki_log_edited' => '在跨维基连结表中修改了连结前缀 "$2" : （$3） （含: $4） （本: $5）',
 	'interwiki_log_deleted' => '在跨维基连结表中已删除 "$2"',
+	'interwiki_logpagetext' => '这是一个[[Special:Interwiki|跨维基连结]]修改的日志。',
 	'right-interwiki' => '修改跨维基资料',
 	'action-interwiki' => '修正这个跨语言链接',
 );
@@ -3855,5 +3876,6 @@ $messages['zh-hant'] = array(
 	'interwiki_log_deleted' => '在跨維基連結表中已刪除 "$2"',
 	'interwiki_logpagetext' => '這是一個[[Special:Interwiki|跨維基連結]]修改的日誌。',
 	'right-interwiki' => '修改跨維基資料',
+	'action-interwiki' => '修正這個跨語言鏈接',
 );
 

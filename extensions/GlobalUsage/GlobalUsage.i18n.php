@@ -2,7 +2,8 @@
 /**
  * Internationalisation file for extension GlobalUsage.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $messages = array();
@@ -843,13 +844,29 @@ $messages['lfn'] = array(
 	'globalusage-ok' => 'Xerca',
 );
 
+/** Limburgish (Limburgs)
+ * @author Pahles
+ */
+$messages['li'] = array(
+	'globalusage' => 'Globaal besjtandjsgebroek',
+);
+
 /** Lithuanian (Lietuvių)
+ * @author GreenZeb
  * @author Homo
  * @author Tomasdd
  */
 $messages['lt'] = array(
 	'globalusage' => 'Visuotinis failo naudojimas',
 	'globalusage-ok' => 'Ieškoti',
+	'globalusage-no-results' => '[[:$1]] nenaudojama kituose Wiki projektuose.',
+);
+
+/** Latvian (Latviešu)
+ * @author GreenZeb
+ */
+$messages['lv'] = array(
+	'globalusage-ok' => 'Meklēt',
 );
 
 /** Eastern Mari (Олык Марий)

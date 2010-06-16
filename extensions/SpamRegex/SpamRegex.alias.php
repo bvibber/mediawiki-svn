@@ -2,6 +2,7 @@
 /**
  * Alias file for SpamRegex extension.
  *
+ * @file
  * @ingroup Extensions
  */
 

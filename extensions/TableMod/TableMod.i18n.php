@@ -19,8 +19,10 @@ $messages['en'] = array(
 /** Message documentation (Message documentation)
  * @author Fryed-peach
  * @author Hamilton Abreu
+ * @author Umherirrender
  */
 $messages['qqq'] = array(
+	'tablemod-desc' => '{{desc}}',
 	'tablemod-msg-remove' => '{{Identical|Remove}}',
 	'tablemod-error-headcount' => '[http://www.mediawiki.org/wiki/User_talk:Freakolowsky#TableMod_message May be translated] as "This tag only supports sorting on tables that have headers on every column."',
 	'tablemod-error-missingid' => "{{doc-important|''ident'' is a name of an attribute of tag. Don't translate it!}}",
@@ -476,6 +478,22 @@ $messages['sl'] = array(
 	'tablemod-error-invalidsort' => 'Neveljavni parametri sortiranja.',
 	'tablemod-error-invalidaction' => 'Neveljavna akcija.',
 	'tablemod-error-missingid' => 'Mankajoč ident atribut v znački.',
+);
+
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'tablemod-msg-remove' => 'Обриши',
+	'tablemod-error-invalidsort' => 'Погрешни параметри сортирања.',
+	'tablemod-error-invalidaction' => 'Недозовољена акција.',
+);
+
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'tablemod-msg-remove' => 'Obriši',
+	'tablemod-error-invalidsort' => 'Pogrešni parametri sortiranja.',
+	'tablemod-error-invalidaction' => 'Nedozovoljena akcija.',
 );
 
 /** Swedish (Svenska)

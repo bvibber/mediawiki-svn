@@ -12,6 +12,13 @@ $messages['en'] = array(
 	'firefoggcu-desc' => "Firefogg's Chunked Uploading protocol",
 );
 
+/** Message documentation (Message documentation)
+ * @author Umherirrender
+ */
+$messages['qqq'] = array(
+	'firefoggcu-desc' => '{{desc}}',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author Wizardist
  */
@@ -180,6 +187,13 @@ $messages['pt'] = array(
 	'firefoggcu-desc' => 'Protocolo de Chunked Uploading do Firefogg',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Giro720
+ */
+$messages['pt-br'] = array(
+	'firefoggcu-desc' => 'Protocolo de Chunked Uploading do Firefogg',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */
@@ -192,6 +206,18 @@ $messages['ru'] = array(
  */
 $messages['sr-ec'] = array(
 	'firefoggcu-desc' => 'Firefogg-ов протокол отпремања',
+);
+
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'firefoggcu-desc' => 'Firefogg-ov protokol otpremanja',
+);
+
+/** Swedish (Svenska)
+ * @author Ainali
+ */
+$messages['sv'] = array(
+	'firefoggcu-desc' => 'Firefoggs segmenterade uppladdningskontroll',
 );
 
 /** Telugu (తెలుగు)

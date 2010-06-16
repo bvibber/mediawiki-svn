@@ -94,6 +94,10 @@ Category Feed
 Category Intersection
 aliasfile = CategoryIntersection/CategoryIntersection.alias.php
 
+Category Multisort
+
+Category Multisort Chinese
+
 Category On Upload
 optional = categoryonupload-none
 
@@ -278,6 +282,10 @@ Crowd Authentication
 
 CSS
 
+Data Transclusion
+magicfile = DataTransclusion/DataTransclusion.i18n.magic.php
+ignored = datatransclusion-test-wikitext, datatransclusion-test-evil-html, datatransclusion-test-nowiki
+
 Data Transfer
 file = DataTransfer/languages/DT_Messages.php
 aliasfile = DataTransfer/languages/DT_Aliases.php
@@ -346,10 +354,9 @@ Edit Similar
 
 Edit Subpages
 
-Edit User
-aliasfile = EditUser/EditUser.alias.php
-
 Email Address Image
+
+Embed Video
 
 Emergency DeSysop
 aliasfile = EmergencyDeSysop/EmergencyDeSysop.alias.php
@@ -466,6 +473,9 @@ ignored = framedvideo_default_width, framedvideo_force_default_size, framedvideo
 ignored = framedvideo_max_height, framedvideo_allow_full_screen, framedvideo_force_allow_full_screen, framedvideo_force_frames
 ignored = framedvideo_force_position
 
+Front Back Matter Forced Wikilinks
+descmsg = frontbackforced-desc
+
 Fundraiser Portal
 
 Gadgets
@@ -506,11 +516,6 @@ ignored = gnsm_categorymap
 aliasfile = GoogleNewsSitemap/GoogleNewsSitemap.alias.php
 
 Go To Category
-
-Group Permissions Manager
-aliasfile = GroupPermissionsManager/GroupPermissionsManager.alias.php
-descmsg = grouppermissions-desc
-optional = grouppermissions-display
 
 Groups Sidebar
 
@@ -565,6 +570,9 @@ Interwiki
 aliasfile = Interwiki/Interwiki.alias.php
 optional = interwiki_defaulturl, interwiki_url, interwiki-url-label
 ignored = interwiki_logentry, interwiki_defaulturl
+
+Interwiki Integration
+aliasfile = InterwikiIntegration/InterwikiIntegration.alias.php
 
 Interwiki List
 aliasfile = InterwikiList/InterwikiList.alias.php
@@ -720,7 +728,7 @@ News Channel
 aliasfile = NewsChannel/NewsChannel.alias.php
 
 New User Message
-ignored = newusermessage-template, newusermessage-editor, newusermessage-substitute
+ignored = newusermessage-editor, newusermessage-substitute
 ignored = newusermessage-template-subject, newusermessage-template-body
 
 New User Notification
@@ -760,11 +768,6 @@ optional = prefs-openid, openid-urls-url
 Open Search Xml
 
 Other Sites
-
-Oversight
-file = Oversight/HideRevision.i18n.php
-aliasfile = Oversight/HideRevision.alias.php
-descmsg = hiderevision-desc
 
 Package Force
 descmsg = pf-desc
@@ -1011,11 +1014,11 @@ aliasfile = SiteMatrix/SiteMatrix.alias.php
 
 Skin Per Page
 
-# OBSOLETE: use Maps
-#Slippy Map
-#ignored = slippymap_license, slippymap_osmlink
-#descmsg = slippymap_desc
-#optional = slippymap_tagname, slippymap_extname
+# NOT OBSOLETE: Maps does not support OSM in trunk
+Slippy Map
+ignored = slippymap_license, slippymap_osmlink
+descmsg = slippymap_desc
+optional = slippymap_tagname, slippymap_extname
 
 Smooth Gallery
 magicfile = SmoothGallery/SmoothGallery.i18n.magic.php
@@ -1167,6 +1170,10 @@ file = Translate/Translate.i18n.php
 aliasfile = Translate/Translate.alias.php
 optional = translate-page-paging-links, translate-languagestats-groups, supportedlanguages-portallink, supportedlanguages-portallink-nocldr
 
+Translate - First Steps
+id = ext-translate-firststeps
+file = Translate/FirstSteps.i18n.php
+descmsg = firststeps-desc
 
 Translate - Page Translation
 id = ext-translate-pagetranslation
@@ -1467,6 +1474,8 @@ optional = grouppage-Global_rollback, grouppage-Ombudsmen, grouppage-coder
 optional = grouppage-Staff, shared-repo-name-shared
 optional = grouppage-Global_sysops
 prefix = wmf- | sidebar, grouppage-Staff, group-Staff, group-Staff-member
+
+Wikimedia Mobile
 
 Wikimedia License Texts
 file = WikimediaMessages/WikimediaLicenseTexts.i18n.php

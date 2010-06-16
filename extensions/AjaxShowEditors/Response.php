@@ -15,9 +15,8 @@ $wgAjaxExportList[] = 'wfAjaxShowEditors';
  */
 function wfAjaxShowEditors( $articleId, $username ) {
 	global $wgOut;
-	$articleId = intval( $articleId );
 
-	wfLoadExtensionMessages( 'AjaxShowEditors' );
+	$articleId = intval( $articleId );
 
 	// Validate request
 	$title = Title::newFromID( $articleId );

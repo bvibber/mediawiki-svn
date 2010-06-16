@@ -2,7 +2,8 @@
 /**
  * Internationalisation file for TrustedXFF extension.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $messages = array();
@@ -283,7 +284,7 @@ $messages['lt'] = array(
  * @author Brest
  */
 $messages['mk'] = array(
-	'trustedxff-desc' => 'Ракување со листа на прокси адреси од доверба ([http://meta.wikimedia.org/wiki/XFF_project проект XFF])',
+	'trustedxff-desc' => 'Ракување со список на застапнички (proxy) адреси од доверба ([http://meta.wikimedia.org/wiki/XFF_project проект XFF])',
 );
 
 /** Malayalam (മലയാളം)
@@ -477,10 +478,11 @@ $messages['yue'] = array(
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
+ * @author Liangent
  * @author Shinjiman
  */
 $messages['zh-hans'] = array(
-	'trustedxff-desc' => '处理一个可信的Proxy地址一览 （[http://meta.wikimedia.org/wiki/XFF_project XFF project]）',
+	'trustedxff-desc' => '处理一个可信的Proxy地址列表（[http://meta.wikimedia.org/wiki/XFF_project XFF project]）',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

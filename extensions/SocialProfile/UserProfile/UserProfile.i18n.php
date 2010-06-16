@@ -459,6 +459,7 @@ $messages['qqq'] = array(
 	'user-send-board-blast' => 'See [[mw:Extension:SocialProfile#Board_Blast]].',
 	'user-personal-info-title' => '{{Identical|Personal information}}',
 	'user-personal-info-real-name' => '{{Identical|Real name}}',
+	'user-personal-info-location' => '{{Identical|Location}}',
 	'user-personal-info-hometown' => '{{Identical|Hometown}}',
 	'user-personal-info-birthday' => '{{Identical|Birthday}}',
 	'user-personal-info-occupation' => '{{Identical|Occupation}}',
@@ -474,6 +475,7 @@ $messages['qqq'] = array(
 	'user-profile-section-preferences' => '{{Identical|Preferences}}',
 	'user-profile-personal-name' => '{{Identical|Name}}',
 	'user-profile-personal-email' => '{{Identical|E-mail}}',
+	'user-profile-personal-location' => '{{Identical|Location}}',
 	'user-profile-personal-city' => '{{Identical|City}}',
 	'user-profile-personal-country' => '{{Identical|Country}}',
 	'user-profile-personal-hometown' => '{{Identical|Hometown}}',
@@ -524,6 +526,13 @@ $messages['akz'] = array(
 	'user-profile-section-preferences' => 'Nàasi istimáppìilaana',
 );
 
+/** Abkhazian (Аҧсуа)
+ * @author Temuri rajavi
+ */
+$messages['ab'] = array(
+	'user-watchlist' => 'Ашклаҧшра асна',
+);
+
 /** Afrikaans (Afrikaans)
  * @author Arnobarnard
  * @author Naudefj
@@ -543,6 +552,7 @@ $messages['af'] = array(
 	'custom-info-title' => 'Vrye inligting',
 	'user-personal-info-title' => 'Persoonlike inligting',
 	'user-personal-info-real-name' => 'Regte naam',
+	'user-personal-info-location' => 'Ligging',
 	'user-personal-info-hometown' => 'Woonplek',
 	'user-personal-info-birthday' => 'Verjaarsdag',
 	'user-personal-info-occupation' => 'Beroep',
@@ -3364,10 +3374,12 @@ Pursa <a href="$1">aquina</a> p\'abril la tu cuenta, u <a href="$2">aquina</a> p
 );
 
 /** Finnish (Suomi)
+ * @author Centerlink
  * @author Cimon Avaro
  * @author Crt
  * @author Jack Phoenix
  * @author Jack Phoenix <jack@countervandalism.net>
+ * @author Nike
  * @author Str4nd
  */
 $messages['fi'] = array(
@@ -3395,6 +3407,10 @@ $messages['fi'] = array(
 	'user-stats-votes' => '{{PLURAL:$1|Ääni|Ääniä}}',
 	'user-stats-comments' => '{{PLURAL:$1|Kommentti|Kommentteja}}',
 	'user-stats-recruits' => '{{PLURAL:$1|Rekrytoitu|Rekrytoituja}}',
+	'user-stats-poll-votes' => 'Äänestyksen {{PLURAL:$1|ääni|äänet}}',
+	'user-stats-picture-game-votes' => 'Kuvapelissä {{PLURAL:$1|ääni|ääntä}}',
+	'user-stats-quiz-points' => 'Visailussa {{PLURAL:$1|piste|pistettä}}',
+	'user-stats-pick-points' => 'Poimi ne {{PLURAL:$1|piste|pisteet}}',
 	'other-info-title' => 'Muut tiedot',
 	'user-friends-title' => 'Ystävät',
 	'user-foes-title' => 'Viholliset',
@@ -3949,7 +3965,7 @@ $messages['gl'] = array(
 	'user-profile-picture-log' => 'avatar',
 	'user-profile-picture-log-entry' => 'cargou un novo avatar',
 	'user-profile-picture-log-delete-entry' => 'borrou o avatar de $1',
-	'right-avatarremove' => 'Eliminar os avatares do usuario',
+	'right-avatarremove' => 'Eliminar os avatares dun usuario',
 );
 
 /** Ancient Greek (Ἀρχαία ἑλληνικὴ)
@@ -7559,7 +7575,7 @@ Kliknij <a href="$1">tutaj</a> aby się zalogować lub <a href="$2">tutaj</a> je
 	'user-profile-preferences-emails-friendfoe' => 'Gdy inny użytkownik stanie się Twoim przyjacielem lub wrogiem',
 	'user-profile-preferences-emails-gift' => 'Gdy otrzymasz prezent',
 	'user-profile-preferences-emails-level' => 'Przy awansie na wyższy poziom',
-	'user-profile-preferences-emails-weekly' => 'Przesyłaj cotygodniowe aktualizacje e-mail',
+	'user-profile-preferences-emails-weekly' => 'Przesyłaj cotygodniowe aktualizacje e‐mail',
 	'user-profile-update-button' => 'Uaktualnij',
 	'user-profile-tidbits-title' => 'Ciekawostki',
 	'user-profile-tidbits-favmoment' => 'Ulubione wydarzenie sportowe',
@@ -9022,12 +9038,14 @@ $messages['sr-ec'] = array(
 	'viewsystemgifts' => 'Погледајте награде',
 	'avatarupload-removeavatar' => 'Обришите аватар',
 	'avatarupload-currentavatar' => 'Тренутни аватар од $1',
+	'avatarupload-removeanother' => 'Обриши други',
 	'profilelogpage' => 'Историја мењања профила',
 	'profilelogpagetext' => 'Ово је историја мењања профила',
 	'avatarlogpage' => 'Историја слања аватара',
 	'avatarlogpagetext' => 'Ово је историја слања корисничких аватара',
 	'user-profile-picture-log' => 'аватар',
 	'user-profile-picture-log-entry' => 'послао нови аватар',
+	'user-profile-picture-log-delete-entry' => 'обрисан аватар од $1',
 	'right-avatarremove' => 'Брисање корисничких аватара',
 );
 
@@ -9174,12 +9192,14 @@ Kliknite <a href="$1">ovde</a> da se ulogujete ili kliknite <a href="$2">here</a
 	'viewsystemgifts' => 'Pogledajte nagrade',
 	'avatarupload-removeavatar' => 'Obrišite avatar',
 	'avatarupload-currentavatar' => 'Trenutni avatar od $1',
+	'avatarupload-removeanother' => 'Obriši drugi',
 	'profilelogpage' => 'Istorija menjanja profila',
 	'profilelogpagetext' => 'Ovo je istorija menjanja profila',
 	'avatarlogpage' => 'Istorija slanja avatara',
 	'avatarlogpagetext' => 'Ovo je istorija slanja korisničkih avatara',
 	'user-profile-picture-log' => 'avatar',
 	'user-profile-picture-log-entry' => 'poslao novi avatar',
+	'user-profile-picture-log-delete-entry' => 'obrisan avatar od $1',
 	'right-avatarremove' => 'Brisanje korisničkih avatara',
 );
 

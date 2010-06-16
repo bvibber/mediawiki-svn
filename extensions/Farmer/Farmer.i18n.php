@@ -2,7 +2,8 @@
 /**
  * Internationalisation file for Farmer extension.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $messages = array();
@@ -378,7 +379,7 @@ $messages['an'] = array(
 	'farmer-confirmsetting-name' => 'Nombre',
 	'farmer-confirmsetting-reason' => 'Razón',
 	'farmer-button-confirm' => 'Confirmar',
-	'farmer-button-submit' => 'Nimbiar',
+	'farmer-button-submit' => 'Ninviar',
 	'farmer-createwiki-reason' => 'Razón',
 	'farmer-delete-form-submit' => 'Borrar',
 	'farmer-yes' => 'Sí',
@@ -1087,6 +1088,12 @@ $messages['ca'] = array(
 	'farmer-yes' => 'Sí',
 	'farmer-no' => 'No',
 	'farmer-extensions-register-name' => 'Nom',
+);
+
+/** Chechen (Нохчийн) */
+$messages['ce'] = array(
+	'farmer-confirmsetting-reason' => 'Бахьан',
+	'farmer-createwiki-reason' => 'Бахьан',
 );
 
 /** Chamorro (Chamoru)
@@ -3874,15 +3881,15 @@ $messages['mk'] = array(
 Сега можете да го [[Special:Farmer|прилагодите викито]].',
 	'farmer-about' => 'За Фармер',
 	'farmer-about-text' => 'МедијаВики Фармер ви овозможува да раководите со фарма на МедијаВики викија.',
-	'farmer-list-wiki' => 'Листа на викија',
-	'farmer-list-wiki-text' => '[[$1|Листа]] на сите викија на {{SITENAME}}',
+	'farmer-list-wiki' => 'Список на викија',
+	'farmer-list-wiki-text' => '[[$1|Список]] на сите викија на {{SITENAME}}',
 	'farmer-createwiki' => 'Создај вики',
 	'farmer-createwiki-text' => '[[$1|Создајте]] ново вики!',
 	'farmer-administration' => 'Администрирање на фармата',
 	'farmer-administration-extension' => 'Раководење со додатоци',
 	'farmer-administration-extension-text' => '[[$1|Раководете]] со инсталираните додатоци.',
-	'farmer-admimistration-listupdate' => 'Ажурирање на листата на фарми',
-	'farmer-admimistration-listupdate-text' => '[[$1|Ажурирајте]] ја листата на викија на {{SITENAME}}',
+	'farmer-admimistration-listupdate' => 'Подновување на списокот на фарми',
+	'farmer-admimistration-listupdate-text' => '[[$1|Подновете]] го списокот на викија на {{SITENAME}}',
 	'farmer-administration-delete' => 'Избриши вики',
 	'farmer-administration-delete-text' => '[[$1|ИЗбришете]] вики од фармата',
 	'farmer-administer-thiswiki' => 'Администрирање на ова вики',
@@ -3921,13 +3928,13 @@ $messages['mk'] = array(
 Ова ќе биде и именски простор на проектот, како и интервики префикс.',
 	'farmer-createwiki-form-text4' => '; Опис: Опис на викито.
 Ова е текстуален опис на викито.
-Ова ќе се прикаже во листата на викија.',
+Ова ќе се прикаже во списокот на викија.',
 	'farmer-createwiki-user' => 'Корисничко име',
 	'farmer-createwiki-name' => 'Име на викито',
 	'farmer-createwiki-title' => 'Наслов на викито',
 	'farmer-createwiki-description' => 'Опис',
 	'farmer-createwiki-reason' => 'Причина',
-	'farmer-updatedlist' => 'Ажурирана листа',
+	'farmer-updatedlist' => 'Подновен список',
 	'farmer-notaccessible' => 'Недостапно',
 	'farmer-notaccessible-test' => 'Оваа можност е достапна само на матичното вики на фармата',
 	'farmer-permissiondenied' => 'Дозволата е одбиена',
@@ -3938,10 +3945,10 @@ $messages['mk'] = array(
 	'farmer-delete-confirm-wiki' => "Вики за бришење: '''$1'''.",
 	'farmer-delete-reason' => 'Причина за бришењето:',
 	'farmer-delete-title' => 'Избриши вики',
-	'farmer-delete-text' => 'Од листата подолу одберете го викито кое сакате да го избришете',
+	'farmer-delete-text' => 'Од списокот подолу одберете го викито што сакате да го избришете',
 	'farmer-delete-form' => 'Одберете вики',
 	'farmer-delete-form-submit' => 'Избриши',
-	'farmer-listofwikis' => 'Листа на викија',
+	'farmer-listofwikis' => 'Список на викија',
 	'farmer-mainpage' => 'Главна страница',
 	'farmer-basic-title' => 'Основни параметри',
 	'farmer-basic-title1' => 'Наслов',
@@ -5764,7 +5771,7 @@ $messages['sr-ec'] = array(
 	'farmer-permissiondenied' => 'Права приступа одбијена',
 	'farmer-permissiondenied-text' => 'Немате потребна права да бисте из фарме избрисали овај Вики',
 	'farmer-permissiondenied-text1' => 'Немате права приступа овој страни',
-	'farmer-deleting' => 'Брисање $1',
+	'farmer-deleting' => 'Вики "$1" је обрисан',
 	'farmer-delete-confirm' => 'Потврђујем да желим да обришем овај Вики',
 	'farmer-delete-confirm-wiki' => "Вики који ће бити обрисан: '''$1'''.",
 	'farmer-delete-reason' => 'Разлог брисања:',
@@ -5806,6 +5813,8 @@ $messages['sr-ec'] = array(
 	'farmer-extensions-register-text4' => 'Тренутне путање за укључивање су:',
 	'farmer-extensions-register-name' => 'Име',
 	'farmer-extensions-register-includefile' => 'Укључи фајл',
+	'farmer-log-create' => 'направљен вики "$2"',
+	'farmer-log-delete' => 'обрисан вики "$2"',
 );
 
 /** Serbian Latin ekavian (Srpski (latinica))
@@ -5870,6 +5879,7 @@ Ovo će biti prikazano u spisku Vikija.',
 	'farmer-permissiondenied' => 'Prava pristupa odbijena',
 	'farmer-permissiondenied-text' => 'Nemate potrebna prava da biste iz farme izbrisali ovaj Viki',
 	'farmer-permissiondenied-text1' => 'Nemate prava pristupa ovoj strani',
+	'farmer-deleting' => 'Viki "$1" je obrisan',
 	'farmer-delete-confirm' => 'Potvrđujem da želim da obrišem ovaj Viki',
 	'farmer-delete-confirm-wiki' => "Viki koji će biti obrisan: '''$1'''.",
 	'farmer-delete-reason' => 'Razlog brisanja:',
@@ -5911,6 +5921,8 @@ Kad ekstenziju jedanput registrujete, svi Vikiji će moći da je koriste.',
 	'farmer-extensions-register-text4' => 'Trenutne putanje za uključivanje su:',
 	'farmer-extensions-register-name' => 'Ime',
 	'farmer-extensions-register-includefile' => 'Uključi fajl',
+	'farmer-log-create' => 'napravljen viki "$2"',
+	'farmer-log-delete' => 'obrisan viki "$2"',
 );
 
 /** Swati (SiSwati)

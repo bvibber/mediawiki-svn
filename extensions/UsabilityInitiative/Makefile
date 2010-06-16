@@ -1,6 +1,7 @@
 #
 # Handy makefile to combine and minify css and javascript files
 #
+SHELL := /bin/bash
 
 CSS := \
 	css/suggestions.css\
@@ -12,14 +13,16 @@ CSS := \
 	css/wikiEditor.toolbar.css\
 	css/wikiEditor.preview.css
 
-PLUGINS := \
-	js/usability.js\
+JUI := \
 	js/js2stopgap/ui.core.js\
 	js/js2stopgap/ui.datepicker.js\
 	js/js2stopgap/ui.dialog.js\
 	js/js2stopgap/ui.draggable.js\
 	js/js2stopgap/ui.resizable.js\
-	js/js2stopgap/ui.tabs.js\
+	js/js2stopgap/ui.tabs.js
+
+PLUGINS := \
+	js/usability.js\
 	js/plugins/jquery.async.js\
 	js/plugins/jquery.autoEllipsis.js\
 	js/plugins/jquery.browser.js\
@@ -37,7 +40,8 @@ PLUGINS := \
 	js/plugins/jquery.wikiEditor.publish.js\
 	js/plugins/jquery.wikiEditor.templateEditor.js\
 	js/plugins/jquery.wikiEditor.toc.js\
-	js/plugins/jquery.wikiEditor.toolbar.js
+	js/plugins/jquery.wikiEditor.toolbar.js\
+	js/thirdparty/contentCollector.js
 
 WIKIEDITOR_MODULES := \
 	WikiEditor/Modules/Highlight/Highlight.js\
@@ -56,17 +60,39 @@ VECTOR_MODULES := \
 	Vector/Modules/FooterCleanup/FooterCleanup.js\
 	Vector/Modules/SimpleSearch/SimpleSearch.js
 
-all: \
+USABILITYINITIATIVE_HOOKS := \
 	css/combined.css\
 	css/combined.min.css\
+	$(CSS)\
 	js/plugins.combined.js\
 	js/plugins.combined.min.js\
+	$(PLUGINS)\
+	js/js2stopgap/jui.combined.js\
+	js/js2stopgap/jui.combined.min.js\
+	$(JUI)
+
+WIKIEDITOR_HOOKS := \
+	$(WIKIEDITOR_MODULES)\
 	WikiEditor/WikiEditor.combined.js\
-	WikiEditor/WikiEditor.combined.min.js\
+	WikiEditor/WikiEditor.combined.min.js	
+
+VECTOR_HOOKS := \
+	$(VECTOR_MODULES)\
 	Vector/Vector.combined.js\
 	Vector/Vector.combined.min.js
+	
+all: \
+	$(USABILITYINITIATIVE_HOOKS)\
+	$(WIKIEDITOR_HOOKS)\
+	UsabilityInitiative.hooks.php\
+	WikiEditor/WikiEditor.hooks.php\
+	Vector/Vector.hooks.php\
+	
 
 # JavaScript Combination
+
+js/js2stopgap/jui.combined.js: $(JUI)
+	cat $(JUI) > js/js2stopgap/jui.combined.js
 
 js/plugins.combined.js: $(PLUGINS)
 	cat $(PLUGINS) > js/plugins.combined.js
@@ -78,6 +104,10 @@ Vector/Vector.combined.js: $(VECTOR_MODULES)
 	cat $(VECTOR_MODULES) > Vector/Vector.combined.js
 
 # JavaScript Minification
+
+js/js2stopgap/jui.combined.min.js: js/js2stopgap/jui.combined.js jsmin
+	if [ -e ./jsmin ]; then ./jsmin < js/js2stopgap/jui.combined.js > js/js2stopgap/jui.combined.min.js;\
+	else jsmin < js/js2stopgap/jui.combined.js > js/js2stopgap/jui.combined.min.js; fi
 
 js/plugins.combined.min.js : js/plugins.combined.js jsmin 
 	if [ -e ./jsmin ]; then ./jsmin < js/plugins.combined.js > js/plugins.combined.min.js;\
@@ -106,6 +136,24 @@ css/combined.min.css : css/combined.css
 
 jsmin:
 	type -P jsmin &>/dev/null || ( wget http://www.crockford.com/javascript/jsmin.c; gcc jsmin.c -o jsmin )
+
+# Simple incrementer of versions
+
+UsabilityInitiative.hooks.php: $(USABILITYINITIATIVE_HOOKS)
+WikiEditor/WikiEditor.hooks.php: $(WIKIEDITOR_HOOKS)
+Vector/Vector.hooks.php: $(VECTOR_HOOKS)
+
+# - Metarule for the above three files -
+# For each modified file (make $?):
+#  Set $basefile to the path relative to the file being modified (ie. strip the folder).
+#  Use sed to replace the line for that file with '+1' appended to the version.
+#  Note that $${basefile//\//\\/} expands in the shell to $basefile with all slashes escaped.
+# End for
+# For each group of summing numbers inside the target file, use shell arithmetic expansion to calculate the sum.
+# Replace all numbers at once with sed. The replacements are preceded have a leading ; an empty expression about which sed doesn't care.
+%.hooks.php: $(WIKIEDITOR_HOOKS)
+	for file in $?; do basefile="$${file#$(shell echo $* | sed "s/\([^\/]*\/\).*/\\1/")}"; sed -e "s/\(.*'src' => '$${basefile//\//\\/}', 'version' => \)\([0-9+]*\)\(.*\)/\\1\\2+1\\3/" $@ > $@.counter && cat $@.counter > $@; done; \
+											RE=""; for i in $$(sed -n 's/.* \([0-9][0-9]*+[0-9+]*\) .*/\1/p' $@.counter); do RE="$$RE;s/ $$i / $$(($$i)) /"; done; sed -e "$$RE" $@.counter > $@ && rm $@.counter
 
 # Actions
 

@@ -1,0 +1,10 @@
+# Read-only repository setup
+cd %GROUPROOT%
+git clone git://gitorious.org/shapado/shapado.git shapado
+
+# Configuration
+Add the following line to LocalSettings.php to include all Shapado groups:
+$wgTranslateGroupFiles[] = "$IP/extensions/Translate/groups/Shapado/Shapado.yml";
+
+# Commits
+To do.

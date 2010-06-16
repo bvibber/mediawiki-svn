@@ -467,10 +467,10 @@ class AmazonPlus {
 		switch( $this->locale ) {
 			case 'us': $sign = '&#36;'; break;
 			case 'ca': $sign = '&#36;'; break;
-			case 'de': $sign = '&euro;'; break;
-			case 'fr': $sign = '&euro;'; break;
-			case 'jp': $sign = '&yen;'; break;
-			case 'gb': $sign = '&pound;'; break;
+			case 'de': $sign = '€'; break;
+			case 'fr': $sign = '€'; break;
+			case 'jp': $sign = '¥'; break;
+			case 'gb': $sign = '£'; break;
 		}
 		return wfMsg( 'amazonplus-currency', array( $begin . $wgAmazonPlusDecimal . $end, $code, $sign, $app ) );
 	}

@@ -2,7 +2,8 @@
 /**
  * Internationalisation file for extension Plotters. Based on the Gadgets extension.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  * @author Ryan Lane, rlane32+mwext@gmail.com
  * @copyright © 2009 Ryan Lane
  * @license GNU General Public Licence 2.0 or later
@@ -188,13 +189,18 @@ Bitte definiere eine Tabellenklasse, die maximal 255 Zeichen aufweist.',
 
 /** German (formal address) (Deutsch (Sie-Form))
  * @author Imre
+ * @author Kghbln
  * @author Umherirrender
  */
 $messages['de-formal'] = array(
-	'plotters-excessively-long-scriptname' => 'Der Skriptname ist zu lang.
-Bitte legen Sie ein Skript fest, dessen Titel 255 Zeichen nicht übersteigt.',
+	'plotters-excessively-long-scriptname' => 'Der Name des Skripts ist zu lang.
+Bitte legen Sie ein Skript fest, dessen Name maximal 255 Zeichen aufweist.',
 	'plotters-excessively-long-preprocessorname' => 'Der Name des Präprozessors ist zu lang.
-Bitte legen Sie einen Präprozessor fest, dessen Name 255 Zeichen nicht übersteigt.',
+Bitte definieren Sie einen Präprozessor, dessen Name maximal 255 Zeichen aufweist.',
+	'plotters-excessively-long-name' => 'Der Name des Entwurfs ist zu lang.
+Bitte definieren Sie einen Entwurf, dessen Name maximal 255 Zeichen aufweist.',
+	'plotters-excessively-long-tableclass' => 'Die Tabellenklasse ist zu lang.
+Bitte definieren Sie eine Tabellenklasse, die maximal 255 Zeichen aufweist.',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -506,7 +512,7 @@ $messages['mk'] = array(
 	'plotters-desc' => 'Им овозможува на корисниците да користат свој прилагоден JavaScript во jsplot ознаки',
 	'plotters' => 'Плотери',
 	'plotters-title' => 'Плотери',
-	'plotters-pagetext' => 'Подолу е наведена листа на специјални плотери кои корисниците можат да ги користат во нивните jsplot ознаки, според определеното во [[MediaWiki:Plotters-definition]].
+	'plotters-pagetext' => 'Подолу е наведен список на специјални плотери кои корисниците можат да ги користат во нивните jsplot ознаки, според определеното во [[MediaWiki:Plotters-definition]].
 Овој преглед овозможува лесен пристап кон страниците со системски пораки кои го определуваат описот и кодот на секоја порака.',
 	'plotters-uses' => 'Употреби',
 	'plotters-missing-script' => 'Нема определено скрипта.',
@@ -758,6 +764,22 @@ Tento prehľad poskytuje jednoduchý prístup k stránkam systémových správ, 
 	'plotters-no-data' => 'Neboli poskytnuté žiadne údaje.',
 	'plotters-invalid-renderer' => 'Bol vybraný neplatný vykresľovač.',
 	'plotters-errors' => '<b>{{PLURAL:$1|Chyba|Chyby}} plotrov:</b>',
+);
+
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'plotters' => 'Плотери',
+	'plotters-title' => 'Плотери',
+	'plotters-no-data' => 'Нису достављени никакви подаци.',
+);
+
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'plotters' => 'Ploteri',
+	'plotters-title' => 'Ploteri',
+	'plotters-no-data' => 'Nisu dostavljeni nikakvi podaci.',
 );
 
 /** Swedish (Svenska)

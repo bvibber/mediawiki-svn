@@ -139,10 +139,10 @@ class SFParserFunctions {
 		foreach ( $params as $i => $param ) {
 			$elements = explode( '=', $param, 2 );
 			$param_name = null;
-			$value = $param;
+			$value = trim( $param );
 			if ( count( $elements ) > 1 ) {
-				$param_name = $elements[0];
-				$value = $elements[1];
+				$param_name = trim( $elements[0] );
+				$value = trim( $elements[1] );
 			}
 			if ( $param_name == 'form' )
 				$inFormName = $value;
@@ -212,10 +212,10 @@ class SFParserFunctions {
 		foreach ( $params as $i => $param ) {
 			$elements = explode( '=', $param, 2 );
 			$param_name = null;
-			$value = $param;
+			$value = trim( $param );
 			if ( count( $elements ) > 1 ) {
-				$param_name = $elements[0];
-				$value = $elements[1];
+				$param_name = trim( $elements[0] );
+				$value = trim( $elements[1] );
 			}
 			if ( $param_name == 'form' )
 				$inFormName = $value;
@@ -351,7 +351,7 @@ END;
 		foreach ( $values_array as $cur_value ) {
 			$cur_value = trim( $cur_value );
 			// ignore a value if it's null
-			if ( '' != $cur_value ) {
+			if ( $cur_value != '' ) {
 				// remove whitespaces
 				$results[] = str_replace( $var, $cur_value, $formula );
 			}
@@ -399,14 +399,16 @@ END;
 		$values_array = explode( $parser->mStripState->unstripNoWiki( $delimiter ), $value );
 		$results = array();
 		$template = trim( $template );
+		
 		foreach ( $values_array as $cur_value ) {
 			$cur_value = trim( $cur_value );
 			// ignore a value if it's null
-			if ( '' != $cur_value ) {
+			if ( $cur_value != '' ) {
 				// remove whitespaces
 				$results[] = '{{' . $template . '|' . $cur_value . '}}';
 			}
 		}
+		
 		return array( implode( $new_delimiter, $results ), 'noparse' => false, 'isHTML' => false );
 	}
 

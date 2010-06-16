@@ -2,7 +2,8 @@
 /**
  * Aliases for Special:InterwikiList
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $aliases = array();

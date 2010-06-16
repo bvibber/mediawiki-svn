@@ -16,6 +16,7 @@ class MessageChecker {
 			$file = dirname( __FILE__ ) . '/check-blacklist.php';
 			$list = ResourceLoader::loadVariableFromPHPFile( $file, 'checkBlacklist' );
 			$keys = array( 'group', 'check', 'subcheck', 'code', 'message' );
+
 			foreach ( $list as $key => $pattern ) {
 				foreach ( $keys as $checkKey ) {
 					if ( !isset( $pattern[$checkKey] ) ) {
@@ -78,13 +79,19 @@ class MessageChecker {
 	public function checkMessage( TMessage $message, $code ) {
 		$warningsArray = array();
 		$messages = array( $message );
+
 		foreach ( $this->checks as $check ) {
 			call_user_func_array( $check, array( $messages, $code, &$warningsArray ) );
 		}
+
 		$warningsArray = $this->filterWarnings( $warningsArray );
-		if ( !count( $warningsArray ) ) return array();
+		if ( !count( $warningsArray ) ) {
+			return array();
+		}
+
 		$warnings = $warningsArray[$message->key()];
 		$warnings = $this->fixMessageParams( $warnings );
+
 		return $warnings;
 	}
 
@@ -97,7 +104,9 @@ class MessageChecker {
 		$messages = array( $message );
 		foreach ( $this->checks as $check ) {
 			call_user_func_array( $check, array( $messages, $code, &$warningsArray ) );
-			if ( count( $warningsArray ) ) return true;
+			if ( count( $warningsArray ) ) {
+				return true;
+			}
 		}
 
 		return false;
@@ -115,11 +124,12 @@ class MessageChecker {
 			foreach ( $warnings as $wkey => $warning ) {
 				$check = array_shift( $warning );
 				foreach ( self::$globalBlacklist as $pattern ) {
-					if ( !$this->match( $pattern['group'], $groupId ) ) continue;
-					if ( !$this->match( $pattern['check'], $check[0] ) ) continue;
+					if ( !$this->match( $pattern['group'], $groupId ) )     continue;
+					if ( !$this->match( $pattern['check'], $check[0] ) )    continue;
 					if ( !$this->match( $pattern['subcheck'], $check[1] ) ) continue;
-					if ( !$this->match( $pattern['message'], $check[2] ) ) continue;
-					if ( !$this->match( $pattern['code'], $check[3] ) ) continue;
+					if ( !$this->match( $pattern['message'], $check[2] ) )  continue;
+					if ( !$this->match( $pattern['code'], $check[3] ) )     continue;
+
 					unset( $warningsArray[$mkey][$wkey] );
 				}
 			}
@@ -147,9 +157,11 @@ class MessageChecker {
 	 */
 	protected function fixMessageParams( $warnings ) {
 		global $wgLang;
+
 		foreach ( $warnings as $wkey => $warning ) {
 			array_shift( $warning );
 			$message = array( array_shift( $warning ) );
+
 			foreach ( $warning as $param ) {
 				if ( !is_array( $param ) ) {
 					$message[] = $param;
@@ -166,6 +178,7 @@ class MessageChecker {
 			}
 			$warnings[$wkey] = $message;
 		}
+
 		return $warnings;
 	}
 
@@ -174,11 +187,13 @@ class MessageChecker {
 	 */
 	protected static function compareArrays( $defs, $trans ) {
 		$missing = array();
+
 		foreach ( $defs as $defVar ) {
 			if ( !in_array( $defVar, $trans ) ) {
 				$missing[] = $defVar;
 			}
 		}
+
 		return $missing;
 	}
 
@@ -202,6 +217,7 @@ class MessageChecker {
 			# Check for missing variables in the translation
 			$subcheck = 'missing';
 			$params = self::compareArrays( $defVars[0], $transVars[0] );
+
 			if ( count( $params ) ) {
 				$warnings[$key][] = array(
 					array( 'printf', $subcheck, $key, $code ),
@@ -214,6 +230,7 @@ class MessageChecker {
 			# Check for unknown variables in the translation
 			$subcheck = 'unknown';
 			$params = self::compareArrays( $transVars[0], $defVars[0] );
+
 			if ( count( $params ) ) {
 				$warnings[$key][] = array(
 					array( 'printf', $subcheck, $key, $code ),
@@ -253,9 +270,17 @@ class MessageChecker {
 			}
 
 			$balance = array();
-			if ( $counts['['] !== $counts[']'] ) $balance[] = '[]: ' . ( $counts['['] - $counts[']'] );
-			if ( $counts['{'] !== $counts['}'] ) $balance[] = '{}: ' . ( $counts['{'] - $counts['}'] );
-			if ( $counts['('] !== $counts[')'] ) $balance[] = '(): ' . ( $counts['('] - $counts[')'] );
+			if ( $counts['['] !== $counts[']'] ) {
+				$balance[] = '[]: ' . ( $counts['['] - $counts[']'] );
+			}
+
+			if ( $counts['{'] !== $counts['}'] ) {
+				$balance[] = '{}: ' . ( $counts['{'] - $counts['}'] );
+			}
+
+			if ( $counts['('] !== $counts[')'] ) {
+				$balance[] = '(): ' . ( $counts['('] - $counts[')'] );
+			}
 
 			if ( count( $balance ) ) {
 				$warnings[$key][] = array(

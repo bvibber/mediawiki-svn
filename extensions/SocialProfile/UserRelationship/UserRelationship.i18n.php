@@ -1018,13 +1018,24 @@ $2 ви премахна от списъка си с неприятели в {{S
  * @author Bellayet
  */
 $messages['bn'] = array(
+	'viewrelationships' => 'সম্পর্ক দেখাও',
+	'viewrelationshiprequests' => 'সম্পর্কের অনুরোধ দেখাও',
 	'ur-main-page' => 'প্রধান পাতা',
 	'ur-your-profile' => 'আপনার বৃত্তান্ত',
+	'ur-add-friend' => 'বন্ধু হিসেবে যোগ করুন',
+	'ur-add-foe' => 'শত্রু হিসেবে যোগ করুন',
+	'ur-remove-relationship-friend' => 'বন্ধুকে ত্যাগ করুন',
+	'ur-remove-relationship-foe' => 'শত্রুকে ত্যাগ করুন',
+	'ur-give-gift' => 'উপহার দিন',
 	'ur-previous' => 'পূর্ববর্তী',
 	'ur-next' => 'পরবর্তী',
 	'ur-remove' => 'অপসারণ',
 	'ur-cancel' => 'বাতিল',
 	'ur-login' => 'প্রবেশ',
+	'ur-add-button-foe' => 'শত্রু হিসেবে যোগ করুন',
+	'ur-add-button-friend' => 'বন্ধু হিসেবে যোগ করুন',
+	'ur-accept' => 'গ্রহণ',
+	'ur-reject' => 'প্রত্যাখান',
 );
 
 /** Breton (Brezhoneg)
@@ -4638,14 +4649,14 @@ $messages['mk'] = array(
 	'ur-give-gift' => 'Подари подарок',
 	'ur-previous' => 'претходни',
 	'ur-next' => 'следни',
-	'ur-remove-relationship-title-foe' => 'Дали сакате да го отстраните $1 од листата на непријатели?',
-	'ur-remove-relationship-title-confirm-foe' => 'Го отстранивте $1 од листата на непријатели',
-	'ur-remove-relationship-title-friend' => 'Дали сакате да го отстраните $1 од листата на пријатели?',
-	'ur-remove-relationship-title-confirm-friend' => 'Го отстранивте $1 од листата на пријатели',
-	'ur-remove-relationship-message-foe' => 'Побаравте отстранување на $1 од листата на ваши непријатели; притиснете на „$2“ за да потврдите.',
-	'ur-remove-relationship-message-confirm-foe' => 'Успешно го отстранивте $1 од листата на непријатели.',
-	'ur-remove-relationship-message-friend' => 'Побаравте отстранување на $1 од листата на ваши пријатели; притиснете на „$2“ за да потврдите.',
-	'ur-remove-relationship-message-confirm-friend' => 'Успешно го отстранивте $1 од листата на пријатели.',
+	'ur-remove-relationship-title-foe' => 'Дали сакате да го отстраните $1 од списокот на непријатели?',
+	'ur-remove-relationship-title-confirm-foe' => 'Го отстранивте $1 од списокот на непријатели',
+	'ur-remove-relationship-title-friend' => 'Дали сакате да го отстраните $1 од списокот на пријатели?',
+	'ur-remove-relationship-title-confirm-friend' => 'Го отстранивте $1 од списокот на пријатели',
+	'ur-remove-relationship-message-foe' => 'Побаравте отстранување на $1 од списокот на ваши непријатели; притиснете на „$2“ за да потврдите.',
+	'ur-remove-relationship-message-confirm-foe' => 'Успешно го отстранивте $1 од списокот на непријатели.',
+	'ur-remove-relationship-message-friend' => 'Побаравте отстранување на $1 од списокот на ваши пријатели; притиснете на „$2“ за да потврдите.',
+	'ur-remove-relationship-message-confirm-friend' => 'Успешно го отстранивте $1 од списокот на пријатели.',
 	'ur-remove-error-message-no-relationship' => 'Немате воспоставено однос со $1.',
 	'ur-remove-error-message-remove-yourself' => 'Не можете да се отстраните себеси',
 	'ur-remove-error-message-pending-foe-request' => 'Имате барање за непријателство со $1 во исчекување.',
@@ -4692,12 +4703,12 @@ $messages['mk'] = array(
 	'ur-requests-added-message-friend' => 'Го додадовте $1 како пријател.',
 	'ur-requests-reject-message-friend' => 'Одбивте да бидете пријатели со $1.',
 	'ur-requests-reject-message-foe' => 'Одбивте да бидете непријатели со $1.',
-	'ur-title-foe' => 'Листа на непријатели на $1',
-	'ur-title-friend' => 'Листа на пријатели на $1',
+	'ur-title-foe' => 'Список на непријатели на $1',
+	'ur-title-friend' => 'Список на пријатели на $1',
 	'friend_request_subject' => '$1 ве додаде како пријател на {{SITENAME}}!',
 	'friend_request_body' => 'Здраво $1.
 
-$2 во додаде во својата листа на пријатели на {{SITENAME}}. Сакаме да потврдиме дека вие двајца сте навистина пријатели.
+$2 во додаде во својот список на пријатели на {{SITENAME}}. Сакаме да потврдиме дека вие двајца сте навистина пријатели.
 
 Кликнете на врската за да го потврдите пријателството:
 $3
@@ -4713,7 +4724,7 @@ $3
 	'foe_request_subject' => 'Ова е војна! $1 ве додаде во непријатели на {{SITENAME}}!',
 	'foe_request_body' => 'Здраво $1.
 
-$2 штотуку ве додаде во својата листа на непријатели на {{SITENAME}}. Сакаме да ни потврдите дека навистина сте смртни непријатели, или барем дека сте скарани.
+$2 штотуку ве додаде во својот список на непријатели на {{SITENAME}}. Сакаме да ни потврдите дека навистина сте смртни непријатели, или барем дека сте скарани.
 
 Кликнете на врската за да го потврдите непријателството.
 
@@ -4757,10 +4768,10 @@ $2 прифати да ви биде непријател на {{SITENAME}}!
 
 Кликнете на $4
 и во нагодувањата оневозможете добивање на известувања по е-пошта.',
-	'friend_removed_subject' => 'Ах, не! $1 ве отстрани од листата на пријатели на {{SITENAME}}!',
+	'friend_removed_subject' => 'Ах, не! $1 ве отстрани од списокот на пријатели на {{SITENAME}}!',
 	'friend_removed_body' => 'Здраво $1.
 
-$2 ве отстрани од листата на пријатели на {{SITENAME}}!
+$2 ве отстрани од списокот на пријатели на {{SITENAME}}!
 
 Благодариме
 
@@ -4773,7 +4784,7 @@ $2 ве отстрани од листата на пријатели на {{SITE
 	'foe_removed_subject' => 'Ура! $1 ве отстрани од непријатели на {{SITENAME}}!',
 	'foe_removed_body' => 'Здраво $1.
 
-$2 ве отстрани од листата на непријатели на {{SITENAME}}!
+$2 ве отстрани од списокот на непријатели на {{SITENAME}}!
 
 Можеби вие сте на пат да станете пријатели?
 
@@ -5761,9 +5772,9 @@ Poprosimy $1 o potwierdzenie nawiązania znajomości.',
 	'ur-add-sent-title-foe' => 'Wysłano informację, że chcesz być wrogiem dla $1!',
 	'ur-add-sent-title-friend' => 'Wysłano informację, że chcesz być znajomym dla $1!',
 	'ur-add-sent-message-foe' => 'Prośba o ustalenie statusu wroga została wysłana do $1.
-Jeśli $1 ją potwierdzi, otrzymasz powiadomienie e-mail',
+Jeśli $1 ją potwierdzi, otrzymasz powiadomienie e‐mail',
 	'ur-add-sent-message-friend' => 'Prośba o ustalenie statusu znajomego została wysłana do $1.
-Jeśli $1 ją potwierdzi, otrzymasz powiadomienie e-mail',
+Jeśli $1 ją potwierdzi, otrzymasz powiadomienie e‐mail',
 	'ur-add-error-message-no-user' => 'Użytkownik, którego próbujesz dodać, nie istnieje.',
 	'ur-add-error-message-blocked' => 'Jesteś zablokowany i nie możesz dodawać nowych znajomych i wrogów.',
 	'ur-add-error-message-yourself' => 'Nie możesz dodać samego siebie jako przyjaciela lub wroga.',
@@ -5804,7 +5815,7 @@ Dziękujemy
 Nie chcesz już od nas maili?
 
 Kliknij $4
-i zmień swoje ustawienia, wyłączając powiadomienia e-mail.',
+i zmień swoje ustawienia, wyłączając powiadomienia e‐mail.',
 	'foe_request_subject' => 'Wojna! $1 dodał Cię do wrogów na {{GRAMMAR:MS.lp|{{sitename}}}}!',
 	'foe_request_body' => 'Witaj $1.
 
@@ -5821,7 +5832,7 @@ Dziękujemy
 Nie chcesz już od nas maili?
 
 Kliknij $4
-i zmień swoje ustawienia, wyłączając powiadomienia e-mail.',
+i zmień swoje ustawienia, wyłączając powiadomienia e‐mail.',
 	'friend_accept_subject' => '$1 zaakceptował Twoją prośbę o nawiązanie znajomości na {{GRAMMAR:MS.lp|{{SITENAME}}}}!',
 	'friend_accept_body' => 'Witaj $1.
 
@@ -5836,7 +5847,7 @@ Dziękujemy,
 Nie chcesz otrzymywać od nas maili?
 
 Kliknij $4
-i zmień ustawienia, wyłączając powiadomienia e-mail.',
+i zmień ustawienia, wyłączając powiadomienia e‐mail.',
 	'foe_accept_subject' => '$1 zaakceptował Twoją prośbę o status wroga na {{GRAMMAR:MS.lp|{{SITENAME}}}}!',
 	'foe_accept_body' => 'Witaj $1.
 
@@ -5851,7 +5862,7 @@ Dziękujemy
 Nie chcesz otrzymywać od nas maili?
 
 Kliknij $4
-i zmień ustawienia, wyłączając powiadomienia e-mail.',
+i zmień ustawienia, wyłączając powiadomienia e‐mail.',
 	'friend_removed_subject' => 'Och nie! $1 usunął Cię z listy przyjaciół na {{GRAMMAR:MS.lp|{{SITENAME}}}}!',
 	'friend_removed_body' => 'Witaj $1.
 
@@ -5864,7 +5875,7 @@ Dziękujemy
 Nie chcesz otrzymywać od nas maili?
 
 Kliknij $4
-i zmień ustawienia, wyłączając powiadomienia e-mail.',
+i zmień ustawienia, wyłączając powiadomienia e‐mail.',
 	'foe_removed_subject' => 'Hej! $1 usunął Cię z listy wrogów na {{GRAMMAR:MS.lp|{{SITENAME}}}}!',
 	'foe_removed_body' => 'Witaj $1.
 
@@ -5879,7 +5890,7 @@ Dziękujemy
 Nie chcesz otrzymywać od nas maili?
 
 Kliknij $4
-i zmień ustawienia, wyłączając powiadomienia e-mail.',
+i zmień ustawienia, wyłączając powiadomienia e‐mail.',
 );
 
 /** Piedmontese (Piemontèis)
@@ -6879,6 +6890,21 @@ Nechcete viac od nás dostávať email?
 
 Kliknite na $4
 a vypnite upozornenia emailov vo svojich nastaveniach.',
+);
+
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'ur-error-page-title' => 'Upsala!',
+	'ur-main-page' => 'Glavna stran',
+	'ur-your-profile' => 'Vaš profil',
+	'ur-give-gift' => 'Podari darilo',
+	'ur-previous' => 'prejšnji',
+	'ur-next' => 'naslednji',
+	'ur-remove' => 'Odstrani',
+	'ur-cancel' => 'Prekliči',
+	'ur-login' => 'Prijava',
 );
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))

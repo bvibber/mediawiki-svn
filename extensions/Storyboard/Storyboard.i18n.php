@@ -105,8 +105,11 @@ You can [$2 read published stories].',
 /** Message documentation (Message documentation)
  * @author EugeneZelenko
  * @author Hamilton Abreu
+ * @author Umherirrender
  */
 $messages['qqq'] = array(
+	'storyboard-desc' => '{{desc}}',
+	'right-storyreview' => '{{doc-right|storyreview}}',
 	'storyboard-hidden' => '{{Identical|Hidden}}',
 	'storyboard-publish' => '{{Identical|Publish}}',
 	'storyboard-hide' => '{{Identical|Hide}}',
@@ -146,6 +149,13 @@ $messages['aln'] = array(
 	'storyboard-hideimage' => 'image Hide',
 	'storyboard-deletestory' => 'Heq',
 	'storyboard-storydeletionconfirm' => 'A jeni i sigurt se doni te fshini përgjithmonë këtë histori?',
+);
+
+/** Aragonese (Aragonés)
+ * @author Juanpabl
+ */
+$messages['an'] = array(
+	'storyboard-language' => 'Idioma',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
@@ -269,6 +279,7 @@ $messages['br'] = array(
 Perak chom hep rannañ anezhi ?",
 	'storyboard-email' => "Ho chomlec'h postel (ret)",
 	'storyboard-storytitle' => 'Un titl, berr hag evit deskrivañ (ret)',
+	'storyboard-agreement' => 'Degemer a ran embann hag implij an istor-mañ dindan an aotre-implijout [http://creativecommons.org/licenses/by-sa/3.0/ Deroadenn Creative Commons/Share-Alike License].',
 	'storyboard-charsleft' => '($1 arouezenn{{PLURAL:$1||}} a chom{{PLURAL:$1||}})',
 	'storyboard-cannotbelonger' => '<b>$1</b> arouezenn{{PLURAL:$1||}} e re en deus ho istor !',
 	'storyboard-charsneeded' => "(ezhomm 'zo $1 arouezenn ouzhpenn{{PLURAL:$1||}})",
@@ -282,6 +293,7 @@ Perak chom hep rannañ anezhi ?",
 	'storyboard-charstomany' => '$1 arouezenn e re !',
 	'storyboard-morecharsneeded' => "Ezhomm 'zo $1 arouezenn c'hoazh",
 	'storyboard-charactersleft' => 'Chom a ra $1 arouezenn',
+	'storyboard-emailtitle' => 'Kinnig an istor graet mat',
 	'storyreview' => 'Barnadenn an istor',
 	'storyboard-deleteimage' => 'Dilemel ar skeudenn',
 	'storyboard-done' => 'Graet',
@@ -368,6 +380,7 @@ Du kannst bereits veröffentlichte Botschaften [$1 hier] lesen.',
 
 /** German (formal address) (Deutsch (Sie-Form))
  * @author Kghbln
+ * @author Umherirrender
  */
 $messages['de-formal'] = array(
 	'storyboard-nosuchstory' => 'Die Botschaft, die Sie aufrufen wollten, existiert nicht. Vielleicht wurde sie gelöscht.',
@@ -375,16 +388,22 @@ $messages['de-formal'] = array(
 	'storyboard-nostorytitle' => 'Sie müssen den Titel oder die Kennung der Botschaft angeben, die Sie lesen möchten.',
 	'storyboard-cantedit' => 'Sie haben nicht die Berechtigung Botschaften zu bearbeiten.',
 	'storyboard-canedit' => 'Sie können diese Botschaft [$1 bearbeiten] und veröffentlichen.',
-	'storyboard-yourname' => 'Ihre Name',
+	'storyboard-yourname' => 'Ihr Name (erforderlich)',
 	'storyboard-location' => 'Ihr Standort',
 	'storyboard-occupation' => 'Ihr Beruf',
 	'storyboard-story' => 'Ihre Botschaft',
 	'storyboard-photo' => 'Gibt es ein Foto von Ihnen? Was spricht dagegen es zu veröffentlichen?',
-	'storyboard-email' => 'Ihre E-Mail-Adresse:',
-	'storyboard-cannotbelonger' => "Ihre Botschaft ist '''$1''' {{PLURAL:$1|Anschlag|Anschläge}} zu lang!",
+	'storyboard-email' => 'Ihre E-Mail-Adresse (erforderlich)',
+	'storyboard-cannotbelonger' => "Ihre Botschaft ist '''$1''' {{PLURAL:$1|Zeichen|Zeichen}} zu lang!",
 	'storyboard-needtoagree' => 'Sie müssen der Veröffentlichung Ihrer Botschaft zustimmen, um sie einreichen zu können.',
+	'storyboard-alreadyexistschange' => '„{0}“ ist bereits vergeben. Bitte wählen Sie einen anderen Titel.',
+	'storyboard-changetitle' => 'Ändern Sie den Titel',
 	'storyboard-createdsuccessfully' => 'Vielen Dank, dass Sie uns Ihre Botschaft mitgeteilt haben! Wir werden sie in Kürze überprüfen.
 Sie können bereits veröffentlichte Botschaften [$1 hier] lesen.',
+	'storyboard-emailtitle' => 'Die Einreichung Ihrer Botschaft war erfolgreich.',
+	'storyboard-emailbody' => 'Ihre Botschaft mit dem Titel „$1“ wurde erfolgreich übermittelt. Wir werden sie in Kürze überprüfen. Einstweilen können Sie [$2 hier] bereits veröffentlichte Botschaften lesen.',
+	'storyboard-imagedeletionconfirm' => 'Sind Sie sicher, dass Sie das Bild zu dieser Botschaft dauerhaft löschen möchten?',
+	'storyboard-storydeletionconfirm' => 'Sind Sie sicher, dass Sie diese Botschaft dauerhaft löschen möchten?',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -1029,6 +1048,7 @@ $messages['ja'] = array(
 	'storyboard-notsubmitted' => '認証に失敗したため、ストーリーは保存されませんでした。',
 	'storyboard-charstomany' => '$1 文字が多すぎます！',
 	'storyboard-morecharsneeded' => '$1 文字がさらに必要です',
+	'storyboard-charactersleft' => '残り$1文字',
 	'storyboard-createdsuccessfully' => 'ストーリーを私たちと共有してくださってありがとうございます！すぐに評価を行なう予定です。[$1 公開されているストーリーを読む]ことができます。',
 	'storyreview' => 'ストーリーの評価',
 	'storyboard-deleteimage' => '画像を削除',
@@ -1069,6 +1089,8 @@ Et ka sinn datt se ewechgeholl gouf.",
 	'storyboard-cantedit' => 'Dir däerft Anekdote net änneren.',
 	'storyboard-canedit' => 'Dir kënnt dës Anekdot [$1 änneren] a verëffentlechen.',
 	'storyboard-authorname' => 'Numm vum Auteur',
+	'storyboard-authorlocation' => 'Plaz vum Auteur',
+	'storyboard-authoroccupation' => 'Beruff vum Auteur',
 	'storyboard-authoremail' => 'E-Mailadress vum Auteur',
 	'storyboard-thestory' => "D'Anekdot",
 	'storyboard-storystate' => 'Staat',
@@ -1081,16 +1103,21 @@ Et ka sinn datt se ewechgeholl gouf.",
 Firwat se net hei weisen?',
 	'storyboard-email' => 'Är E-Mailadress (obligatoresch)',
 	'storyboard-storytitle' => 'E kuerzen Titel de beschreift wourëms et geet (obligatoresch)',
+	'storyboard-agreement' => "Ech si mat der Publikatioun vun dëser Anekdot ënnert de BEdingunge vun der [http://creativecommons.org/licenses/by-sa/3.0/ Creative Commons Attribution/Share-Alike Lizenz] d'accord.",
 	'storyboard-charsleft' => '($1{{PLURAL:$1|Buschtaf|Buschtawen}} iwwreg)',
 	'storyboard-cannotbelonger' => 'Är Anekdot huet <b>$1</b> {{PLURAL:$1|Zeechen|Zeechen}} ze vill!',
 	'storyboard-needtoagree' => "Dir musst d'accord sinn datt Är Anekdot verëffentlecht gëtt fir se ze schécken.",
+	'storyboard-submissionincomplete' => "D'Eraschécken huet net fonctionnéiert",
 	'storyboard-alreadyexists' => '"$1" gëtt et schonn.',
+	'storyboard-alreadyexistschange' => '"{0}" gëtt scho benotzt, sicht w.e.g. en aneren Titel.',
 	'storyboard-changetitle' => 'Den Titel änneren.',
+	'storyboard-notsubmitted' => "D'Authentifickatioun huet net fonctionnéiert, D'Anekdot gouf net gespäichert.",
 	'storyboard-charstomany' => '$1 Buschtawen ze vill!',
 	'storyboard-charactersleft' => '$1 Buschtawen iwwreg',
 	'storyboard-createdsuccessfully' => 'Merci datt dir Är Anekdot mat eis deelt!
 Mir kucken se demnächst no.
 Dir kënnt [$1 publizéiert Anekdote liesen].',
+	'storyboard-emailtitle' => 'Anekdot ass elo ofgespäichert',
 	'storyreview' => 'Anekdot nokucken',
 	'storyboard-deleteimage' => 'Bild läschen',
 	'storyboard-done' => 'Fäerdeg',
@@ -1108,7 +1135,7 @@ Dir kënnt [$1 publizéiert Anekdote liesen].',
  */
 $messages['mk'] = array(
 	'storyboard-name' => 'Раскажувачница',
-	'storyboard-desc' => 'Дава [[Special:Story|страница за дарителите]], кадешто тие можат [[Special:StorySubmission|да објават]] своја приказна, како и [[Special:StoryReview|интерфејс за модерирање на приказните]]',
+	'storyboard-desc' => 'Дава [[Special:Story|страница за дарителите]], кадешто можат [[Special:StorySubmission|да објават]] своја приказна, како и [[Special:StoryReview|посредник за модерација на приказните]]',
 	'right-storyreview' => 'Прегледување, уредување, објавување и сокривање на приказни',
 	'storyboard-anerroroccured' => 'Се појави гешка: $1',
 	'storyboard-unpublished' => 'Необјавено',
@@ -1359,6 +1386,19 @@ $messages['pms'] = array(
 	'storyboard-publish' => 'Publiché',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'storyboard-hidden' => 'پټ',
+	'storyboard-publish' => 'خپرول',
+	'storyboard-hide' => 'پټول',
+	'storyboard-option-hidden' => 'پټ',
+	'storyboard-storystate' => 'ايالت',
+	'storyboard-language' => 'ژبه',
+	'storyboard-done' => 'ترسره شو',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  */
@@ -1511,6 +1551,100 @@ $messages['ru'] = array(
 	'storyboard-storydeletionconfirm' => 'Вы уверены, что хотите удалить эту историю?',
 );
 
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'storyboard-anerroroccured' => 'Дошло је до грешке: $1',
+	'storyboard-unpublished' => 'Повучено из објаве',
+	'storyboard-published' => 'Објављено',
+	'storyboard-hidden' => 'Сакривено',
+	'storyboard-unpublish' => 'Повуци објаву',
+	'storyboard-publish' => 'Објави',
+	'storyboard-hide' => 'Сакриј',
+	'storyboard-option-unpublished' => 'необјављено',
+	'storyboard-option-published' => 'објављено',
+	'storyboard-option-hidden' => 'сакривено',
+	'story' => 'Прича',
+	'storyboard-submittedbyon' => 'Послато од $1, на $2, $3.',
+	'storyboard-viewstories' => 'Види приче',
+	'storyboard-authorname' => 'Име аутора',
+	'storyboard-authorlocation' => 'Локација аутора',
+	'storyboard-authoroccupation' => 'Занимање аутора',
+	'storyboard-authoremail' => 'Ауторова адресе електронске поште',
+	'storyboard-storystate' => 'Стање',
+	'storyboard-language' => 'Језик',
+	'storyboard-storymetadata' => 'Послато од $1, на $2, $3.',
+	'storyboard-storymetadatafrom' => 'Послато од $1 из $2, на $3, $4.',
+	'storyboard-yourname' => 'Важе име (потребно)',
+	'storyboard-location' => 'Ваша локација',
+	'storyboard-occupation' => 'Ваше занимање',
+	'storyboard-story' => 'Ваша прича',
+	'storyboard-photo' => 'Имате ли своју слику?
+Зашто је не бисте показали?',
+	'storyboard-email' => 'Адреса Ваше електронске поште (потребно)',
+	'storyboard-storytitle' => 'Кратак, дескриптиван наслов (потребно)',
+	'storyboard-submissioncomplete' => 'Слање комплетирано',
+	'storyboard-submissionincomplete' => 'Слање није успело',
+	'storyboard-changetitle' => 'Промените наслов.',
+	'storyboard-charstomany' => '$1 слова је превише!',
+	'storyboard-morecharsneeded' => '$1 више слова је потребно',
+	'storyboard-charactersleft' => '$1 слова је преостало',
+	'storyboard-deleteimage' => 'Обриши слику',
+	'storyboard-done' => 'Урађено',
+	'storyboard-working' => 'Обрада у току...',
+	'storyboard-imagedeleted' => 'Слика обрисана',
+	'storyboard-showimage' => 'Покажи слику',
+	'storyboard-hideimage' => 'Сакриј слику',
+	'storyboard-deletestory' => 'Обриши',
+);
+
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'storyboard-anerroroccured' => 'Došlo je do greške: $1',
+	'storyboard-unpublished' => 'Povučeno iz objave',
+	'storyboard-published' => 'Objavljeno',
+	'storyboard-hidden' => 'Sakriveno',
+	'storyboard-unpublish' => 'Povuci objavu',
+	'storyboard-publish' => 'Objavi',
+	'storyboard-hide' => 'Sakrij',
+	'storyboard-option-unpublished' => 'neobjavljeno',
+	'storyboard-option-published' => 'objavljeno',
+	'storyboard-option-hidden' => 'sakriveno',
+	'story' => 'Priča',
+	'storyboard-submittedbyon' => 'Poslato od $1, na $2, $3.',
+	'storyboard-viewstories' => 'Vidi priče',
+	'storyboard-authorname' => 'Ime autora',
+	'storyboard-authorlocation' => 'Lokacija autora',
+	'storyboard-authoroccupation' => 'Zanimanje autora',
+	'storyboard-authoremail' => 'Autorova adrese elektronske pošte',
+	'storyboard-storystate' => 'Stanje',
+	'storyboard-language' => 'Jezik',
+	'storyboard-storymetadata' => 'Poslato od $1, na $2, $3.',
+	'storyboard-storymetadatafrom' => 'Poslato od $1 iz $2, na $3, $4.',
+	'storyboard-yourname' => 'Važe ime (potrebno)',
+	'storyboard-location' => 'Vaša lokacija',
+	'storyboard-occupation' => 'Vaše zanimanje',
+	'storyboard-story' => 'Vaša priča',
+	'storyboard-photo' => 'Imate li svoju sliku?
+Zašto je ne biste pokazali?',
+	'storyboard-email' => 'Adresa Vaše elektronske pošte (potrebno)',
+	'storyboard-storytitle' => 'Kratak, deskriptivan naslov (potrebno)',
+	'storyboard-submissioncomplete' => 'Slanje kompletirano',
+	'storyboard-submissionincomplete' => 'Slanje nije uspelo',
+	'storyboard-changetitle' => 'Promenite naslov.',
+	'storyboard-charstomany' => '$1 slova je previše!',
+	'storyboard-morecharsneeded' => '$1 više slova je potrebno',
+	'storyboard-charactersleft' => '$1 slova je preostalo',
+	'storyboard-deleteimage' => 'Obriši sliku',
+	'storyboard-done' => 'Urađeno',
+	'storyboard-working' => 'Obrada u toku...',
+	'storyboard-imagedeleted' => 'Slika obrisana',
+	'storyboard-showimage' => 'Pokaži sliku',
+	'storyboard-hideimage' => 'Sakrij sliku',
+	'storyboard-deletestory' => 'Obriši',
+);
+
 /** Swedish (Svenska)
  * @author Dafer45
  */
@@ -1551,5 +1685,53 @@ Varför inte dela med dig av det?',
  */
 $messages['te'] = array(
 	'storyboard-publish' => 'ప్రచురించు',
+);
+
+/** Tagalog (Tagalog)
+ * @author AnakngAraw
+ */
+$messages['tl'] = array(
+	'storyboard-name' => 'Talahanayan ng salaysay',
+	'storyboard-desc' => 'Nagbibigay ng isang [[Special:Story|lapagang pahina para sa mga tagapagkaloob]], isang pahina kung saan [[Special:StorySubmission|maipapasa]] ang mga kuwento at isang [[Special:StoryReview|hangganang-mukha ng pagtimpla ng kuwento]]',
+	'right-storyreview' => 'Suriin, baguhin, ilathala, at itago ang mga kuwento',
+	'storyboard-anerroroccured' => 'Naganap ang isang kamalian: $1',
+	'storyboard-unpublished' => 'Hindi pa nalathala',
+	'storyboard-published' => 'Nalathala na',
+	'storyboard-hidden' => 'Nakatago',
+	'storyboard-unpublish' => 'Huwag ilathala',
+	'storyboard-publish' => 'Ilathala',
+	'storyboard-hide' => 'Itago',
+	'storyboard-option-unpublished' => 'hindi pa nalathala',
+	'storyboard-option-published' => 'nalathala na',
+	'storyboard-option-hidden' => 'nakatago',
+	'story' => 'Kuwento',
+	'storyboard-submittedbyon' => 'Ipinasa ni $1 noong $2, $3.',
+	'storyboard-viewstories' => 'Tingnan ang mga kuwento',
+	'storyboard-nosuchstory' => 'Hindi umiirl ang hiniling mong kuwento.
+Maaaring tinanggal ito.',
+	'storyboard-storyunpublished' => 'Hindi pa nalalathala ang hiniling mong kuwento.',
+	'storyboard-nostorytitle' => 'Dapat kang tumukoy ng isang pamagat o ID ng kuwentong nais mong tingnan.',
+	'storyboard-cantedit' => 'Wala kang pahintulot na mamatnugot ng mga kuwento.',
+	'storyboard-canedit' => 'Maaari mong [$1 baguhin] at ilathala ang kuwentong ito.',
+	'storyboard-createdandmodified' => 'Nilikha noong $1, $2 at huling binago noong $3, $4',
+	'storyboard-authorname' => 'Pangalan ng may-akda',
+	'storyboard-authorlocation' => 'Lugar ng may-akda',
+	'storyboard-authoroccupation' => 'Hanapbuhay ng may-akda',
+	'storyboard-authoremail' => 'Tirahan ng e-liham ng may-akda',
+	'storyboard-thestory' => 'Ang kuwento',
+	'storyboard-storystate' => 'Estado',
+	'storyboard-language' => 'Wika',
+	'storyboard-storymetadata' => 'Ipinasa ni $1 noong $2, $3.',
+	'storyboard-storymetadatafrom' => 'Ipinasa ni $1 mula sa $2 noong $3, $4.',
+	'storyboard-yourname' => 'Pangalan mo (kailangan)',
+	'storyboard-location' => 'Lokasyon mo',
+	'storyboard-occupation' => 'Hanapbuhay mo',
+	'storyboard-story' => 'Ang kuwento mo',
+	'storyboard-photo' => 'May larawan ka ng sarili mo?
+Bakit hindi mo ito ibahagi?',
+	'storyboard-email' => 'Tirahan mo ng e-liham (kailangan)',
+	'storyboard-storytitle' => 'Isang maikli, mapaglarawang pamagat (kailangan)',
+	'storyboard-done' => 'Nagawa na',
+	'storyboard-deletestory' => 'Tanggalin',
 );
 

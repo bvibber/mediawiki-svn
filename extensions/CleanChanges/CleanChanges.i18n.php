@@ -2,8 +2,9 @@
 /**
  * Internationalisation file for CleanChanges extension.
  *
- * @addtogroup Extensions
-*/
+ * @file
+ * @ingroup Extensions
+ */
 
 $messages = array();
 
@@ -169,6 +170,13 @@ $messages['ca'] = array(
 	'cleanchanges-language' => 'Idioma:',
 	'cleanchanges-language-na' => 'Tot',
 	'cleanchanges-users' => 'Usuaris (Separador: |):',
+);
+
+/** Chechen (Нохчийн)
+ * @author Sasan700
+ */
+$messages['ce'] = array(
+	'cleanchanges-language-na' => 'Массо',
 );
 
 /** Czech (Česky)

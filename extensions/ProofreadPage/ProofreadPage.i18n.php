@@ -2,8 +2,9 @@
 /**
  * Internationalisation file for extension ProofreadPage
  *
- * @addtogroup Extensions
-*/
+ * @file
+ * @ingroup Extensions
+ */
 
 $messages = array();
 
@@ -93,6 +94,7 @@ $messages['qqq'] = array(
 	'proofreadpage_image' => '{{Identical|Image}}',
 	'proofreadpage_index' => '{{Identical|Index}}',
 	'proofreadpage_indexdupe' => 'Meaning: "This is a duplicate link"',
+	'proofreadpage_nologin' => '{{Identical|Not logged in}}',
 	'proofreadpage_notallowed' => '"Making a change is not allowed" would be the verbose way to paraphrase the message.',
 	'proofreadpage_nextpage' => '{{Identical|Next page}}',
 	'proofreadpage_prevpage' => '{{Identical|Previous page}}',
@@ -174,26 +176,26 @@ $messages['am'] = array(
 $messages['an'] = array(
 	'proofreadpage_desc' => 'Premite contimparar de trazas simples o testo con o escaneyo orichinal',
 	'proofreadpage_namespace' => 'Pachina',
-	'proofreadpage_index_namespace' => 'Endize',
+	'proofreadpage_index_namespace' => 'Endice',
 	'proofreadpage_image' => 'Imachen',
-	'proofreadpage_index' => 'Endize',
+	'proofreadpage_index' => 'Endice',
 	'proofreadpage_nextpage' => 'Pachina siguient',
 	'proofreadpage_prevpage' => 'Pachina anterior',
-	'proofreadpage_header' => 'Cabezera (noinclude):',
+	'proofreadpage_header' => 'Cabecera (noinclude):',
 	'proofreadpage_body' => "Cuerpo d'a pachina (to be transcluded):",
 	'proofreadpage_footer' => 'Piet de pachina (noinclude):',
-	'proofreadpage_toggleheaders' => "cambiar a bisibilidat d'as sezions noinclude",
+	'proofreadpage_toggleheaders' => "cambiar a bisibilidat d'as seccions noinclude",
 	'proofreadpage_quality1_category' => 'Pachina no correchita',
 	'proofreadpage_quality2_category' => 'Pachina problematica',
 	'proofreadpage_quality3_category' => 'Pachina correchita',
-	'proofreadpage_quality4_category' => 'Pachina balidata',
+	'proofreadpage_quality4_category' => 'Validata',
 	'proofreadpage_index_listofpages' => 'Lista de pachinas',
-	'proofreadpage_image_message' => "Binclo t'a pachina d'endize",
+	'proofreadpage_image_message' => "Vinclo t'a pachina d'endice",
 	'proofreadpage_page_status' => "Estau d'a pachina",
-	'proofreadpage_js_attributes' => 'Autor Títol Año Editorial',
+	'proofreadpage_js_attributes' => 'Autor Títol Anyo Editorial',
 	'proofreadpage_index_attributes' => 'Autor
 Títol
-Año|Año de publicazión
+Anyo|Anyo de publicación
 Editorial
 Fuent
 Imachen|Imachen de portalada
@@ -2352,11 +2354,13 @@ Cathetan||10',
 
 /** Georgian (ქართული)
  * @author BRUTE
+ * @author ITshnik
  * @author Malafaya
  * @author Sopho
  * @author გიორგიმელა
  */
 $messages['ka'] = array(
+	'indexpages' => 'მთავარი გვერდების სია',
 	'proofreadpage_namespace' => 'გვერდი',
 	'proofreadpage_index_namespace' => 'ინდექსი',
 	'proofreadpage_image' => 'სურათი',
@@ -2365,10 +2369,12 @@ $messages['ka'] = array(
 	'proofreadpage_nosuch_index' => 'შეცდომა: ასეთი ინდექსი არ არის ნაპოვნი',
 	'proofreadpage_nosuch_file' => 'შეცდომა:ასეთი ფაილი არ არის ნაპოვნი',
 	'proofreadpage_badpage' => 'არასწორი ფორმატი',
+	'proofreadpage_badpagetext' => 'ფორმატი გვერდისა, რომლის შენახვაც თქვენ ცადეთ, არასწორია.',
 	'proofreadpage_indexdupe' => 'დუბლიკატი ბმული',
 	'proofreadpage_nologin' => 'შესვლა არ მომხდარა',
 	'proofreadpage_notallowed' => 'ცვლილებები არაა დაშვებული',
 	'proofreadpage_interval_too_large' => 'შეცდომა: ინტერვალი ძალიან დიდია',
+	'proofreadpage_invalid_interval' => 'შეცდომა: არასწორი ინტერვალი',
 	'proofreadpage_nextpage' => 'შემდეგი გვერდი',
 	'proofreadpage_prevpage' => 'წინა გვერდი',
 	'proofreadpage_quality0_category' => 'ტექსტის გარეშე',
@@ -2766,7 +2772,7 @@ $messages['mhr'] = array(
  * @author Brest
  */
 $messages['mk'] = array(
-	'indexpages' => 'Листа на индексни страници',
+	'indexpages' => 'Список на индексни страници',
 	'proofreadpage_desc' => 'Овозможува едноставна споредба на текстот со скенираниот оригинал',
 	'proofreadpage_namespace' => 'Страница',
 	'proofreadpage_index_namespace' => 'Индекс',
@@ -2802,7 +2808,7 @@ $messages['mk'] = array(
 	'proofreadpage_quality2_message' => 'Се јави проблем при прегледувањето на оваа страница',
 	'proofreadpage_quality3_message' => 'Оваа страница е прегледана',
 	'proofreadpage_quality4_message' => 'Оваа страница е потврдена',
-	'proofreadpage_index_listofpages' => 'Листа на страници',
+	'proofreadpage_index_listofpages' => 'Список на страници',
 	'proofreadpage_image_message' => 'Врска до индекс страницата',
 	'proofreadpage_page_status' => 'Статус на страница',
 	'proofreadpage_js_attributes' => 'Автор Наслов Година Издавач',
@@ -3420,6 +3426,7 @@ $messages['ps'] = array(
 انځور|د پښتۍ انځور
 مخونه||20
 تبصرې||10',
+	'proofreadpage_source' => 'سرچينه',
 );
 
 /** Portuguese (Português)
@@ -3782,11 +3789,14 @@ $messages['sah'] = array(
 );
 
 /** Sardinian (Sardu)
+ * @author Andria
  * @author Marzedu
  */
 $messages['sc'] = array(
 	'proofreadpage_namespace' => 'Pàgina',
+	'proofreadpage_image' => 'Immàgine',
 	'proofreadpage_index_listofpages' => 'Lista de is pàginas',
+	'proofreadpage_pages' => '{{PLURAL:$1|pàgina|pàginas}}',
 );
 
 /** Slovak (Slovenčina)
@@ -3867,6 +3877,8 @@ $messages['sr-ec'] = array(
 	'proofreadpage_index_namespace' => 'индекс',
 	'proofreadpage_image' => 'слика',
 	'proofreadpage_index' => 'индекс',
+	'proofreadpage_badpage' => 'Погрешан Формат',
+	'proofreadpage_notallowed' => 'Промена није дозвољена',
 	'proofreadpage_nextpage' => 'Следећа страна',
 	'proofreadpage_prevpage' => 'Претходна страна',
 	'proofreadpage_header' => 'Заглавље (без укључивања):',
@@ -3901,6 +3913,8 @@ $messages['sr-el'] = array(
 	'proofreadpage_index_namespace' => 'Indeks',
 	'proofreadpage_image' => 'Slika',
 	'proofreadpage_index' => 'Indeks',
+	'proofreadpage_badpage' => 'Pogrešan Format',
+	'proofreadpage_notallowed' => 'Promena nije dozvoljena',
 	'proofreadpage_nextpage' => 'Sledeća strana',
 	'proofreadpage_prevpage' => 'Prethodna strana',
 	'proofreadpage_header' => 'Zaglavlje (bez uključivanja):',
@@ -4287,21 +4301,42 @@ Bellikler||10',
  * @author AnakngAraw
  */
 $messages['tl'] = array(
+	'indexpages' => 'Talaan ng mga pahina ng talatuntunan',
 	'proofreadpage_desc' => 'Pahintulutan ang madaling paghahambing ng teksto sa orihinal na kuha (iskan) ng larawan',
 	'proofreadpage_namespace' => 'Pahina',
 	'proofreadpage_index_namespace' => 'Indeks',
 	'proofreadpage_image' => 'Larawan',
 	'proofreadpage_index' => 'Indeks',
+	'proofreadpage_index_expected' => 'Kamalian: inaasahan ang talatuntunan',
+	'proofreadpage_nosuch_index' => 'Kamalian: walang ganyang talatuntunan',
+	'proofreadpage_nosuch_file' => 'Kamalian: walang ganyang talaksan',
+	'proofreadpage_badpage' => 'Maling Anyo',
+	'proofreadpage_badpagetext' => 'Mali ang anyo ng pahinang sinubok mong sagipin.',
+	'proofreadpage_indexdupe' => 'Katulad na kawing',
+	'proofreadpage_indexdupetext' => 'Hindi maaaring itala ang mga pahina nang higit sa isa sa ibabaw ng pahina ng talatuntunan.',
+	'proofreadpage_nologin' => 'Hindi nakalagda',
+	'proofreadpage_nologintext' => 'Dapat kang [[Special:UserLogin|nakalagda]] upang mabago ang katayuan ng pagwawasto ng mga pahina.',
+	'proofreadpage_notallowed' => 'Hindi pinapayagan ang pagbabago',
+	'proofreadpage_notallowedtext' => 'Hindi ka pinahihintulutang magbago ng katayuan ng pagwawasto ng pahinang ito.',
+	'proofreadpage_number_expected' => 'Kamalian: inaasahan ang halagang maka-bilang',
+	'proofreadpage_interval_too_large' => 'Kamalian: napakalaki ng agwat',
+	'proofreadpage_invalid_interval' => 'Kamalian: hindi tanggap na agwat',
 	'proofreadpage_nextpage' => 'Susunod na pahina',
 	'proofreadpage_prevpage' => 'Sinundang pahina',
 	'proofreadpage_header' => 'Paulo (huwagisama):',
 	'proofreadpage_body' => 'Katawan ng pahina (ililipat-sama):',
 	'proofreadpage_footer' => 'Talababa (huwagisama):',
 	'proofreadpage_toggleheaders' => 'pindutin-palitan huwagibilang mga seksyon antas ng pagkanatatanaw',
+	'proofreadpage_quality0_category' => 'Walang teksto',
 	'proofreadpage_quality1_category' => 'Hindi pa nababasa, napaghahambing, at naiwawasto ang mga mali',
 	'proofreadpage_quality2_category' => 'May suliranin',
 	'proofreadpage_quality3_category' => 'Basahin, paghambingin, at magwasto ng kamalian',
 	'proofreadpage_quality4_category' => 'Napatotohanan na',
+	'proofreadpage_quality0_message' => 'Hindi kailangang basahin at iwasto ang pahinang ito',
+	'proofreadpage_quality1_message' => 'Hindi pa nababasa at naiwawasto ang pahinang ito',
+	'proofreadpage_quality2_message' => 'Nagkaroon ng isang sularin habang iwinawasto ang pahinang ito',
+	'proofreadpage_quality3_message' => 'Nabasa at naiwasto na ang pahinang ito',
+	'proofreadpage_quality4_message' => 'Napatunayan na ang pahinang ito',
 	'proofreadpage_index_listofpages' => 'Talaan ng mga pahina',
 	'proofreadpage_image_message' => 'Kawing patungo sa pahina ng pagpapaksa (indeks)',
 	'proofreadpage_page_status' => 'Kalagayan ng pahina',
@@ -4314,6 +4349,10 @@ Pinagmulan
 Larawan|Pabalat na larawan
 Mga pahina||20
 Mga puna||10',
+	'proofreadpage_pages' => '{{PLURAL:$1|pahina|mga pahina}}',
+	'proofreadpage_specialpage_legend' => 'Maghanap sa mga pahina ng talatuntunan',
+	'proofreadpage_source' => 'Pinagmulan',
+	'proofreadpage_source_message' => 'Edisyong nasiyasat na ginamit upang maitatag ang tekstong ito',
 );
 
 /** Turkish (Türkçe)
@@ -4738,6 +4777,7 @@ $messages['zh-hans'] = array(
 	'proofreadpage_pages' => '{{PLURAL:$1|页|页}}',
 	'proofreadpage_specialpage_legend' => '搜索索引页',
 	'proofreadpage_source' => '来源',
+	'proofreadpage_source_message' => '扫描版用来建立这个文本',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

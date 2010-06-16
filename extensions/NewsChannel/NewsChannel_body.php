@@ -372,7 +372,7 @@ class NewsChannel extends SpecialPage
 		global $wgNewsChannelCategory, $wgNewsChannelExcludeCategory, $wgNewsChannelDefaultItems;
 
 		$wgOut->setPagetitle( wfMsgHtml( 'newschannel' ) );
-		$titleObj = Title::makeTitle( NS_SPECIAL, 'NewsChannel' );
+		$titleObj = SpecialPage::getTitleFor( 'NewsChannel' );
 		$msgPrefixedTitle = htmlspecialchars( $titleObj->getPrefixedText() );
 		$msgFormat = wfMsgHtml( 'newschannel_format' );
 		$msgLimit = wfMsgHtml( 'newschannel_limit' );

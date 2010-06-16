@@ -2,7 +2,8 @@
 /**
  * Internationalisation file for extension NewUserMessage.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $messages = array();
@@ -14,7 +15,6 @@ $messages = array();
 $messages['en'] = array(
 	'newusermessage-desc' => "Adds a message to newly created user's talk pages",
 	'newuseredit-summary' => 'Adding [[{{int:newusermessage-template}}|welcome message]] to new user\'s talk page',
-	'newusermessage-template' => 'Template:Welcome', # The title of the message template
 	'newusermessage-template-subject' => 'Template:Welcome-subject', # Always substituted. Used if LiquidThreads is enabled in the User_talk namespace. Do not translate or duplicate this message to other languages
 	'newusermessage-template-body' => 'Template:Welcome-body', # Used if LiquidThreads is enabled in the User_talk namespace. Do not translate or duplicate this message to other languages
 	'newusermessage-editor' => 'New user message', # The username used for the edit
@@ -28,8 +28,8 @@ $messages['en'] = array(
 $messages['qqq'] = array(
 	'newusermessage-desc' => 'Short description of this extension, shown on [[Special:Version]]. Do not translate or change links.',
 	'newuseredit-summary' => 'The edit summary used when placing a new user message.',
-	'newusermessage-subject' => 'Used if LiquidThreads is enabled in the User_talk namespace. Do not translate or duplicate this message to other languages.',
-	'newusermessage-body' => 'Used if LiquidThreads is enabled in the User_talk namespace. Do not translate or duplicate this message to other languages.',
+	'newusermessage-template-subject' => 'Used if LiquidThreads is enabled in the User_talk namespace. Do not translate or duplicate this message to other languages.',
+	'newusermessage-template-body' => 'Used if LiquidThreads is enabled in the User_talk namespace. Do not translate or duplicate this message to other languages.',
 	'newusermessage-editor' => 'The username used for the edit',
 	'newusermessage-substitute' => 'If this message is not empty, the new user message templates will be substituted. Do not translate or duplicate this message to other languages.',
 );
@@ -368,6 +368,14 @@ $messages['ja'] = array(
 $messages['jv'] = array(
 	'newusermessage-desc' => 'Nambahaké pesen ing kaca wicara panganggo anyar',
 	'newuseredit-summary' => 'Nambahaké [[{{int:newusermessage-template}}|pesen sugeng rawuh]] ing kaca wicara panganggo anyar',
+);
+
+/** Georgian (ქართული)
+ * @author BRUTE
+ */
+$messages['ka'] = array(
+	'newusermessage-desc' => 'ამატებს შეტყობინებას ახალ-დარეგისტრირებული მომხმარებლის განხილვის გვერდზე',
+	'newuseredit-summary' => 'დაემატა [[{{int:newusermessage-template}}|მისალმების შეტყობინება]] ახალი მომხმარებლის განხილვის გვერდზე',
 );
 
 /** Khmer (ភាសាខ្មែរ)

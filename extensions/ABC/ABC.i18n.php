@@ -435,8 +435,10 @@ $messages['kiu'] = array(
 
 /** Khmer (ភាសាខ្មែរ)
  * @author Lovekhmer
+ * @author គីមស៊្រុន
  */
 $messages['km'] = array(
+	'abc-desc' => 'បន្ថែមសញ្ញាសំគាល់ <code>&lt;abc&gt;</code>  លើតន្ត្រីប្រភេទ ABC',
 	'abcdownload' => 'ទាញយក៖',
 );
 
@@ -760,6 +762,15 @@ $messages['sc'] = array(
 $messages['shi'] = array(
 	'abc-desc' => 'Gen <code>&lt;abc&gt;</code> bac atskrt azawan ABC',
 	'abcdownload' => 'Srbu',
+);
+
+/** Sinhala (සිංහල)
+ * @author චතුනි අලහප්පෙරුම
+ * @author බිඟුවා
+ */
+$messages['si'] = array(
+	'abc-desc' => 'ABC සංගීතය ආතෘතිකරණය තකා <code>&lt;abc&gt;</code> ටැගය එක් කෙරේ',
+	'abcdownload' => 'භාගත කිරීම',
 );
 
 /** Slovak (Slovenčina)

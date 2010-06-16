@@ -3,7 +3,8 @@ if (!defined('MEDIAWIKI')) die();
 /**
  * Class file for the GoogleAdSense extension
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  * @author Siebrand Mazeland
  * @license MIT
  */

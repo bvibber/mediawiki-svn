@@ -1006,6 +1006,13 @@ $messages['sah'] = array(
 Браузер аадырыһын устуруокатыгар эбэтэр биики тиэкискэ туттуллуон сөп.',
 );
 
+/** Sinhala (සිංහල)
+ * @author බිඟුවා
+ */
+$messages['si'] = array(
+	'call' => 'ඇමතුම',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  * @author Rudko
@@ -1041,6 +1048,16 @@ $messages['sr-ec'] = array(
 	'call-save' => "Одредишна датотека овог позива би била сачувана на страницу под називом ''$1''.",
 	'call-save-success' => 'Следећи текст је сачуван у страници <big>[[$1]]</big>.',
 	'call-save-failed' => 'Следећи текст није сачуван на страници <big>[[$1]]</big> јер та страница већ постоји.',
+);
+
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'call' => 'Poziv',
+	'call-desc' => 'Napravite hipervezu ka šablonu (ili na običnu viki stranicu) s parametrima u prolazu.
+Može se koristiti na komandnoj liniji pregledača ili u viki tekstu',
+	'call-save' => "Odredišna datoteka ovog poziva bi bila sačuvana na stranicu pod nazivom ''$1''.",
+	'call-save-success' => 'Sledeći tekst je sačuvan u stranici <big>[[$1]]</big>.',
+	'call-save-failed' => 'Sledeći tekst nije sačuvan na stranici <big>[[$1]]</big> jer ta stranica već postoji.',
 );
 
 /** Seeltersk (Seeltersk)
@@ -1237,6 +1254,7 @@ $messages['vo'] = array(
  */
 $messages['zh-hans'] = array(
 	'call' => '呼叫',
+	'call-desc' => '创建一个超链接到模板（或一般页面）的参数传递。可用于在浏览器的命令行或在维基文本中使用。',
 	'call-save' => '本呼叫的输出将保存至名为“$1”的页面内。',
 	'call-save-success' => '以下文字经已保存至页面<big>[[$1]]</big>。',
 	'call-save-failed' => '由于页面已存在，以下文字并未保存至页面<big>[[$1]]</big>。',

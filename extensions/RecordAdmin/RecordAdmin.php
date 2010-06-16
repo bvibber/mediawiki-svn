@@ -3,15 +3,15 @@ if ( !defined( 'MEDIAWIKI' ) ) die( 'Not an entry point.' );
 /**
  * Extension:RecordAdmin - MediaWiki extension
  *
- * @package MediaWiki
- * @subpackage Extensions
+ * @file
+ * @ingroup Extensions
  * @author Aran Dunkley [http://www.organicdesign.co.nz/nad User:Nad]
  * @author Bertrand GRONDIN
  * @author Siebrand Mazeland
  * @licence GNU General Public Licence 2.0 or later
  */
 
-define( 'RECORDADMIN_VERSION', '0.11.12, 2010-05-18' );
+define( 'RECORDADMIN_VERSION', '0.12.0, 2010-06-06' );
 
 $wgRecordAdminUseNamespaces = false;     # Whether record articles should be in a namespace of the same name as their type
 $wgRecordAdminCategory      = 'Records'; # Category containing record types

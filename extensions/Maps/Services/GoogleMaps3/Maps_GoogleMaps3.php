@@ -1,14 +1,7 @@
 <?php
 
 /**
- * This groupe contains all Google Maps v3 related files of the Maps extension.
- * 
- * @defgroup MapsGoogleMaps3 Google Maps v3
- * @ingroup Maps
- */
-
-/**
- * This file holds the general information for the Google Maps v3 service.
+ * File holding the MapsGoogleMaps3 class.
  *
  * @file Maps_GoogleMaps3.php
  * @ingroup MapsGoogleMaps3
@@ -20,47 +13,31 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 'Not an entry point.' );
 }
 
-$wgAutoloadClasses['MapsGoogleMaps3'] = dirname( __FILE__ ) . '/Maps_GoogleMaps3.php';
-
-$wgHooks['MappingServiceLoad'][] = 'MapsGoogleMaps3::initialize';
-
-$wgAutoloadClasses['MapsGoogleMaps3DispMap'] = dirname( __FILE__ ) . '/Maps_GoogleMaps3DispMap.php';
-
-$egMapsServices[MapsGoogleMaps3::SERVICE_NAME] = array(
-	'aliases' => array( 'google3', 'googlemap3', 'gmap3', 'gmaps3' ),
-	'features' => array(
-		'display_map' => 'MapsGoogleMaps3DispMap',
-	)
-);
-
 /**
- * Class for Google Maps v3 initialization.
+ * TODO
  * 
  * @ingroup MapsGoogleMaps3
  * 
  * @author Jeroen De Dauw
  */
-class MapsGoogleMaps3 {
+class MapsGoogleMaps3 extends MapsMappingService {
 	
-	const SERVICE_NAME = 'googlemaps3';
-	
-	public static function initialize() {
-		global $wgAutoloadClasses, $egMapsServices;
-
-		self::initializeParams();
-		
-		Validator::addOutputFormat( 'gmap3type', array( __CLASS__, 'setGMapType' ) );
-		Validator::addOutputFormat( 'gmap3types', array( __CLASS__, 'setGMapTypes' ) );
-		
-		return true;
+	function __construct() {
+		parent::__construct(
+			'googlemaps3',
+			array( 'google3', 'googlemap3', 'gmap3', 'gmaps3' )
+		);
 	}
 	
-	private static function initializeParams() {
+	protected function initParameterInfo( array &$parameters ) {
 		global $egMapsServices, $egMapsGMaps3Type, $egMapsGMaps3Types;
+		
+		Validator::addOutputFormat( 'gmap3type', array( __CLASS__, 'setGMapType' ) );
+		Validator::addOutputFormat( 'gmap3types', array( __CLASS__, 'setGMapTypes' ) );		
 		
 		$allowedTypes = self::getTypeNames();
 		
-		$egMapsServices[self::SERVICE_NAME]['parameters'] = array(
+		$parameters = array(
 			'type' => array(
 				'aliases' => array( 'map-type', 'map type' ),
 				'criteria' => array(
@@ -83,7 +60,7 @@ class MapsGoogleMaps3 {
 		);
 	}
 	
-	private static $mapTypes = array(
+	protected static $mapTypes = array(
 		'normal' => 'ROADMAP',
 		'roadmap' => 'ROADMAP',
 		'satellite' => 'SATELLITE',
@@ -126,33 +103,20 @@ class MapsGoogleMaps3 {
 	}
 	
 	/**
-	 * Loads the Google Maps API v3 and required JS files.
-	 *
-	 * @param mixed $parserOrOut
+	 * @see MapsMappingService::getDependencies
+	 * 
+	 * @return array
 	 */
-	public static function addGMap3Dependencies( &$parserOrOut ) {
-		global $wgJsMimeType, $wgLang;
-		global $egGMaps3OnThisPage, $egMapsStyleVersion, $egMapsJsExt, $egMapsScriptPath;
+	protected function getDependencies() {
+		global $wgLang;
+		global $egMapsStyleVersion, $egMapsJsExt, $egMapsScriptPath;
 
-		if ( empty( $egGMaps3OnThisPage ) ) {
-			$egGMaps3OnThisPage = 0;
-
-			$languageCode = self::getMappedLanguageCode( $wgLang->getCode() );
-			
-			if ( $parserOrOut instanceof Parser ) {
-				$parser = $parserOrOut;
-				
-				$parser->getOutput()->addHeadItem( 
-					Html::linkedScript( "http://maps.google.com/maps/api/js?sensor=false&language=$languageCode" ) .
-					Html::linkedScript( "$egMapsScriptPath/Services/GoogleMaps3/GoogleMap3Functions{$egMapsJsExt}?$egMapsStyleVersion" )				
-				);				
-			}
-			else if ( $parserOrOut instanceof OutputPage ) {
-				$out = $parserOrOut;
-				MapsMapper::addScriptFile( $out, "http://maps.google.com/maps/api/js?sensor=false&language=$languageCode" );
-				$out->addScriptFile( "$egMapsScriptPath/Services/GoogleMaps3/GoogleMap3Functions{$egMapsJsExt}?$egMapsStyleVersion" );
-			}
-		}
+		$languageCode = self::getMappedLanguageCode( $wgLang->getCode() );
+		
+		return array(
+			Html::linkedScript( "http://maps.google.com/maps/api/js?sensor=false&language=$languageCode" ),
+			Html::linkedScript( "$egMapsScriptPath/Services/GoogleMaps3/GoogleMap3Functions{$egMapsJsExt}?$egMapsStyleVersion" ),
+		);			
 	}
 	
 	/**
@@ -162,7 +126,7 @@ class MapsGoogleMaps3 {
 	 * 
 	 * @return string The mapped code
 	 */
-	private static function getMappedLanguageCode( $code ) {
+	protected static function getMappedLanguageCode( $code ) {
 		$mappings = array(
 	         'en_gb' => 'en-gb',// v3 supports en_gb - but wants us to call it en-gb
 	         'he' => 'iw',      // iw is googlish for hebrew
@@ -176,5 +140,4 @@ class MapsGoogleMaps3 {
 		return $code;
 	}
 	
-}
-									
+}								

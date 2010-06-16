@@ -2,7 +2,8 @@
 /**
  * Internationalisation file for extension CrowdAuthentication.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $messages = array();

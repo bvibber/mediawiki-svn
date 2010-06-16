@@ -1,7 +1,10 @@
 <?php
-/** Internationalisation extension message for ToolTip
-  * @addtogroup  extension
-**/
+/**
+ * Internationalisation extension message for ToolTip
+ *
+ * @file
+ * @ingroup Extensions
+ */
 
 $messages = array();
 
@@ -77,6 +80,13 @@ $messages['bs'] = array(
  */
 $messages['ca'] = array(
 	'tooltip-desc' => 'Afegeix les etiquetes de sintaxi <code>&lt;tooltip&gt;</code> i <code>{{#tooltip:}}</code>',
+);
+
+/** Chechen (Нохчийн)
+ * @author Sasan700
+ */
+$messages['ce'] = array(
+	'tooltip-desc' => 'Тlетуху óзориг <code>&lt;tooltip&gt;</code> а <code>{{#tooltip:}}</code>',
 );
 
 /** Czech (Česky)

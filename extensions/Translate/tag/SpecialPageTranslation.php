@@ -38,42 +38,53 @@ class SpecialPageTranslation extends SpecialPage {
 		// Check permissions
 		if ( !$this->user->isAllowed( 'pagetranslation' ) ) {
 			$wgOut->permissionRequired( 'pagetranslation' );
+
 			return;
 		}
 
 		// Check permissions
-		if ( !$this->user->matchEditToken( $wgRequest->getText( 'token' ) ) ) {
+		if ( $wgRequest->wasPosted() && !$this->user->matchEditToken( $wgRequest->getText( 'token' ) ) ) {
 			$wgOut->permissionRequired( 'pagetranslation' );
+
 			return;
 		}
 
 		// We are processing some specific page
 		if ( !$title->exists() ) {
 			$wgOut->addWikiMsg( 'tpt-nosuchpage', $title->getPrefixedText() );
+
 			return;
 		}
 
 		if ( $revision === -1 ) {
 			$page = TranslatablePage::newFromTitle( $title );
 			$page->removeTags();
+			$page->getTitle()-invalidateCache();
+			global $wgUser;
+			$logger = new LogPage( 'pagetranslation' );
+			$params = array( 'user' => $wgUser->getName() );
+			$logger->addEntry( 'unmark', $page->getTitle(), null, array( serialize( $params ) ) );
 			$wgOut->addWikiMsg( 'tpt-unmarked', $title->getPrefixedText() );
+
 			return;
 		}
 
 		if ( $revision === 0 ) {
 			// Get the latest revision
-			$revision = $title->getLatestRevID();
+			$revision = intval($title->getLatestRevID());
 		}
 
 		$page = TranslatablePage::newFromRevision( $title, $revision );
 		if ( !$page instanceof TranslatablePage ) {
 			$wgOut->addWikiMsg( 'tpt-notsuitable', $title->getPrefixedText(), $revision );
+
 			return;
 		}
 
-		if ( $revision !== $title->getLatestRevID() ) {
+		if ( $revision !== intval($title->getLatestRevID()) ) {
 			// We do want to notify the reviewer if the underlying page changes during review
 			$wgOut->addWikiMsg( 'tpt-oldrevision', $title->getPrefixedText(), $revision );
+
 			return;
 		}
 
@@ -81,6 +92,7 @@ class SpecialPageTranslation extends SpecialPage {
 		if ( $lastrev !== false && $lastrev === $revision ) {
 			$wgOut->addWikiMsg( 'tpt-already-marked' );
 			$this->listPages();
+
 			return;
 		}
 
@@ -155,19 +167,18 @@ class SpecialPageTranslation extends SpecialPage {
 		// Pages where mark <= tag
 		$items = array();
 		foreach ( $pages as $index => $page ) {
-			if ( !isset( $page['tp:mark'] ) ) {
+			if ( !isset( $page['tp:mark'] ) || !isset( $page['tp:tag'] ) ) {
 				continue;
 			}
 
-			if ( !isset( $page['tp:tag'] ) ) {
-				continue;
-			}
-
-			if ( $page['tp:mark'] > $page['tp:tag'] ) {
+			if ( $page['tp:tag'] !== $page['title']->getLatestRevID() ) {
 				continue;
 			}
 
 			$link = $this->user->getSkin()->link( $page['title'] );
+			if ( $page['tp:mark'] !== $page['tp:tag'] ) {
+				$link = "<b>$link</b>";
+			}
 			$acts = $this->actionLinks( $page['title'], $page['tp:mark'], 'old' );
 			$items[] = "<li>$link ($acts) </li>";
 			unset( $pages[$index] );
@@ -182,16 +193,19 @@ class SpecialPageTranslation extends SpecialPage {
 		// Pages which are never marked
 		$items = array();
 		foreach ( $pages as $index => $page ) {
-			if ( isset( $page['tp:mark'] ) ) {
+			if ( isset( $page['tp:mark'] ) || !isset( $page['tp:tag'] ) ) {
 				continue;
 			}
 
-			if ( !isset( $page['tp:tag'] ) ) {
+			/* Ignore pages which have had <translate> at some point, but which
+			 * have never been marked. */
+			if ( $page['title']->getLatestRevID() !== $page['tp:tag'] ) {
+				unset( $pages[$index] );
 				continue;
 			}
 
 			$link = $this->user->getSkin()->link( $page['title'] );
-			$acts = $this->actionLinks( $page['title'], $page['tp:tag'], 'old' );
+			$acts = $this->actionLinks( $page['title'], $page['tp:tag'], 'new' );
 			$items[] = "<li>$link ($acts) </li>";
 
 			unset( $pages[$index] );
@@ -282,6 +296,7 @@ class SpecialPageTranslation extends SpecialPage {
 		}
 
 		global $wgLang;
+
 		return $wgLang->semicolonList( $actions );
 	}
 
@@ -347,7 +362,7 @@ class SpecialPageTranslation extends SpecialPage {
 
 		foreach ( $sections as $s ) {
 			if ( $s->type === 'new' ) {
-				$input = Xml::input( 'tpt-sect-' . $s->id, 10, $s->name );
+				$input = Xml::input( 'tpt-sect-' . $s->id, 15, $s->name );
 				$name = wfMsgHtml( 'tpt-section-new', $input );
 			} else {
 				$name = wfMsgHtml( 'tpt-section', htmlspecialchars( $s->name ) );
@@ -359,6 +374,9 @@ class SpecialPageTranslation extends SpecialPage {
 				$text = $diff->getDiff( wfMsgHtml( 'tpt-diff-old' ), wfMsgHtml( 'tpt-diff-new' ) );
 				$diff->showDiffStyle();
 				$diff->setReducedLineNumbers();
+
+				$id = "tpt-sect-{$s->id}-action-nofuzzy";
+				$text = Xml::checkLabel( wfMsg( 'tpt-action-nofuzzy' ), $id, $id, false ) . $text;
 			} else {
 				$text = TranslateUtils::convertWhiteSpaceToHTML( $s->getText() );
 			}
@@ -412,6 +430,8 @@ class SpecialPageTranslation extends SpecialPage {
 	 * - Invalidates caches
 	 */
 	public function markForTranslation( TranslatablePage $page, Array $sections ) {
+		global $wgRequest;
+
 		// Add the section markers to the source page
 		$article = new Article( $page->getTitle() );
 		$status = $article->doEdit(
@@ -442,16 +462,23 @@ class SpecialPageTranslation extends SpecialPage {
 		$inserts = array();
 		$changed = array();
 
+		$pageId = $page->getTitle()->getArticleId();
 		foreach ( $sections as $s ) {
-			if ( $s->type === 'changed' ) $changed[] = $s->name;
+			if ( $s->type === 'changed' ) {
+				// Allow silent changes to avoid fuzzying unnecessary.
+				if ( !$wgRequest->getCheck( "tpt-sect-{$s->id}-action-nofuzzy" ) ) {
+					$changed[] = $s->name;
+				}
+			}
+
 			$inserts[] = array(
-				'trs_page' => $page->getTitle()->getArticleId(),
+				'trs_page' => $pageId,
 				'trs_key' => $s->name,
 				'trs_text' => $s->getText(),
 			);
 		}
 
-		// Don't add stuff is no changes, use the plain null instead for prettiness
+		// Don't add stuff if no changes, use the plain null instead for prettiness
 		if ( !count( $changed ) ) {
 			$changed = null;
 		}
@@ -460,11 +487,20 @@ class SpecialPageTranslation extends SpecialPage {
 		$dbw->delete( 'translate_sections', array( 'trs_page' => $page->getTitle()->getArticleId() ), __METHOD__ );
 		$ok = $dbw->insert( 'translate_sections', $inserts, __METHOD__ );
 
-		// Store changed sections in the database for easy access.
-		// Used when determinen the up-to-datedness for section translations.
+		// Stores the names of changed sections in the database. Not currently used for anything.
 		$page->addMarkedTag( $newrevision, $changed );
 		$this->addFuzzyTags( $page, $changed );
 
+		global $wgUser;
+		$logger = new LogPage( 'pagetranslation' );
+		$params = array(
+			'user' => $wgUser->getName(),
+			'revision' => $newrevision,
+			'changed' => count( $changed ),
+		);
+		$logger->addEntry( 'mark', $page->getTitle(), null, array( serialize( $params ) ) );
+
+		$page->getTitle()-invalidateCache();
 		$this->setupRenderJobs( $page );
 
 		// Re-generate caches

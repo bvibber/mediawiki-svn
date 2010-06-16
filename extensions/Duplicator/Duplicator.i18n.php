@@ -2,7 +2,8 @@
 /**
  * Internationalisation file for extension Duplicator.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  * @author Rob Church <robchur@gmail.com>
  */
 
@@ -431,7 +432,7 @@ Estus utila por disigo de artikoloj, ktp.',
 $messages['es'] = array(
 	'duplicator' => 'Duplicar una página',
 	'duplicator-desc' => 'Crear [[Special:Duplicate|copias independientes de página]] con historiales completos de ediciones',
-	'duplicator-toolbox' => 'Duplicar ésta página',
+	'duplicator-toolbox' => 'Duplicar esta página',
 	'duplicator-header' => 'Esta página permite el duplicado completo de una página, creando copias independientes de todos los historiales. Esto es útil para bifurcación de páginas, etc.',
 	'duplicator-options' => 'Opciones',
 	'duplicator-source' => 'Fuente:',
@@ -1451,6 +1452,7 @@ $messages['sr-ec'] = array(
 	'duplicator-dest-exists' => '[[$1]] већ постоји. Молимо Вас да наведете незаузет циљани наслов.',
 	'duplicator-toomanyrevisions' => '[[$1]] има превише ($2) измена и не може бити ископиран.
 Тренутни лимит је $3.',
+	'right-duplicate' => 'Дуплиране стране',
 );
 
 /** Serbian Latin ekavian (Srpski (latinica))
@@ -1480,6 +1482,7 @@ Došlo je do nepozante greške.',
 	'duplicator-dest-exists' => '[[$1]] već postoji. Molimo Vas da navedete nezauzet ciljani naslov.',
 	'duplicator-toomanyrevisions' => '[[$1]] ima previše ($2) izmena i ne može biti iskopiran.
 Trenutni limit je $3.',
+	'right-duplicate' => 'Duplirane strane',
 );
 
 /** Seeltersk (Seeltersk)
@@ -1826,5 +1829,6 @@ $messages['zh-hant'] = array(
 	'duplicator-dest-invalid' => '請提供一個正確的目標標題。',
 	'duplicator-dest-exists' => '[[$1]]已經存在。請提供一個未存在的目標標題。',
 	'duplicator-toomanyrevisions' => '[[$1]]有太多 （$2次） 修訂，不能夠複製。目前的上限有$3次。',
+	'right-duplicate' => '複製文章',
 );
 

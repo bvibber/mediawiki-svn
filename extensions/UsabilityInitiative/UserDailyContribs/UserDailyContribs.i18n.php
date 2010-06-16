@@ -418,6 +418,13 @@ $messages['vi'] = array(
 	'userdailycontribs-desc' => 'Đóng góp hàng ngày của thành viên dành cho bộ mở rộng theo dõi nhấn chuột',
 );
 
+/** Cantonese (粵語)
+ * @author Horacewai2
+ */
+$messages['yue'] = array(
+	'userdailycontribs-desc' => '一個用戶每日貢獻嘅擴展',
+);
+
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Shizhao
  */

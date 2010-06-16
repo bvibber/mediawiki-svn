@@ -104,7 +104,7 @@ class RatingHistory extends UnlistedSpecialPage
 	* @param int $selected, selected level
 	*/
 	protected function getPeriodMenu( $selected=null ) {
-		$s = "<label for='period'>" . wfMsgHtml('ratinghistory-period') . "</label>&nbsp;";
+		$s = "<label for='period'>" . wfMsgHtml('ratinghistory-period') . "</label>&#160;";
 		$s .= Xml::openElement( 'select', array('name' => 'period', 'id' => 'period') );
 		$s .= Xml::option( wfMsg( "ratinghistory-month" ), 31, $selected===31 );
 		$s .= Xml::option( wfMsg( "ratinghistory-3months" ), 93, $selected===93 );

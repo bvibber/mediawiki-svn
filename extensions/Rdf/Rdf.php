@@ -144,7 +144,7 @@ if (defined('MEDIAWIKI')) {
 				$nt->getNamespace() != NS_SPECIAL)
 			{
 				if ($action == 'view') {
-					$rdft = Title::makeTitle(NS_SPECIAL, "Rdf");
+					$rdft = SpecialPage::getTitleFor( 'Rdf' );
 					$target = $nt->getPrefixedDBkey();
 					$linkdata = array('title' => 'RDF Metadata',
 									  'type' => 'application/rdf+xml',
@@ -370,7 +370,7 @@ if (defined('MEDIAWIKI')) {
 			$wgOut->addHTML("<option value=${outputname}>" . wfMsg('rdf-output-' . $outputname) . "</option>");
 		}
 		$wgOut->addHTML("</select></td></tr>" .
-						"<tr><td>&nbsp;</td>" .
+						"<tr><td>&#160;</td>" .
 						"<td><input type='submit' /></td></tr></table></form>");
 	}
 

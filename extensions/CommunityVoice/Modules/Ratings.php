@@ -219,7 +219,7 @@ abstract class CommunityVoiceRatings {
 								array(
 									'stats' => $stats,
 									'status' => array(
-										'ready' => '&nbsp;',
+										'ready' => '&#160;',
 										'sending' => CommunityVoice::getMessage(
 											'ratings', 'scale-status-sending'
 										),

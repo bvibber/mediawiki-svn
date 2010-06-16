@@ -2,7 +2,8 @@
 /**
  * Internationalisation file for extension ShowProcesslist.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $messages = array();
@@ -615,7 +616,7 @@ $messages['mhr'] = array(
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
-	'showprocesslist' => 'Прикажи листа на процеси',
+	'showprocesslist' => 'Прикажи список на процеси',
 	'showprocesslist-desc' => 'Прикажи го изводот од наредбата „[[Special:ShowProcesslist|SHOW FULL PROCESSLIST]]“',
 	'showprocesslist-id' => 'Id',
 	'showprocesslist-user' => 'Корисник',
@@ -836,12 +837,13 @@ $messages['pt'] = array(
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
+ * @author Giro720
  */
 $messages['pt-br'] = array(
 	'showprocesslist' => 'Mostrar Lista de Processos',
 	'showprocesslist-desc' => 'Apresenta o resultado de [[Special:ShowProcesslist|SHOW FULL PROCESSLIST]]',
 	'showprocesslist-id' => 'Id',
-	'showprocesslist-user' => 'Utilizador',
+	'showprocesslist-user' => 'Usuário',
 	'showprocesslist-host' => 'Servidor',
 	'showprocesslist-db' => 'Base de dados',
 	'showprocesslist-command' => 'Comando',

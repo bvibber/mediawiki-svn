@@ -2,8 +2,9 @@
 /**
  * Internationalisation file for extension Blahtex.
  *
- * @addtogroup Extensions
-*/
+ * @file
+ * @ingroup Extensions
+ */
 
 $messages = array();
 
@@ -1938,9 +1939,12 @@ $messages['km'] = array(
 
 /** Korean (한국어)
  * @author Klutzy
+ * @author Kwj2772
  * @author Yknok29
  */
 $messages['ko'] = array(
+	'math_noblahtex' => 'blahtex를 실행할 수 없습니다. blahtex는 $1에 있어야 합니다.',
+	'blahtext-desc' => '&lt;math&gt; 태그에서 MathML을 출력',
 	'math_CannotCreateTexFile' => 'tex 파일을 생성할 수 없습니다',
 	'math_CannotWriteTexFile' => 'tex 파일에 내용을 쓸 수 없습니다',
 );
@@ -2482,7 +2486,7 @@ $messages['pl'] = array(
 	'math_CannotChangeDirectory' => 'Nie można zmienić katalogu roboczego',
 	'math_CannotCreateTexFile' => 'Nie udało się stworzyć pliku tex',
 	'math_CannotRunDvipng' => 'Nie można uruchomić dvipng',
-	'math_CannotRunLatex' => 'Nie można uruchomić LaTeX-a',
+	'math_CannotRunLatex' => 'Nie można uruchomić LaTeX‐a',
 	'math_CannotWritePngDirectory' => 'Nie można zapisać do wyjściowego katalogu PNG',
 	'math_CannotWriteTexFile' => 'Nie można pisać do pliku tex',
 	'math_CasesRowTooBig' => 'W każdym wierszu bloku „cases” mogą być jedynie dwa wpisy',
@@ -2502,7 +2506,7 @@ Podobnym poleceniem jest „$2”.',
 	'math_IllegalRedefinition' => 'Polecenie „$1” jest już zdefiniowane; nie możesz go przedefiniować',
 	'math_InvalidColour' => 'Kolor „$1” jest niepoprawny',
 	'math_InvalidUtf8Input' => 'Ciąg danych wejściowych nie był zgodny z UTF-8',
-	'math_LatexFontNotSpecified' => 'Nie określono czcionki LaTeX-a dla „$1”',
+	'math_LatexFontNotSpecified' => 'Nie określono czcionki LaTeX‐a dla „$1”',
 	'math_LatexPackageUnavailable' => 'Nie udało się wygenerować pliku w formacie PNG, ponieważ pakiet „$1” LaTeX nie jest dostępny',
 	'math_MismatchedBeginAndEnd' => 'Polecenia „$1” i „$2” nie pasują',
 	'math_MisplacedLimits' => 'Polecenie „$1” może wystąpić tylko po operatorze matematycznym.

@@ -2,8 +2,9 @@
 /**
  * Internationalisation file for CrossNamespaceLinks extension.
  *
- * @addtogroup Extensions
-*/
+ * @file
+ * @ingroup Extensions
+ */
 
 $messages = array();
 
@@ -38,10 +39,10 @@ $messages['af'] = array(
  * @author Juanpabl
  */
 $messages['an'] = array(
-	'crossnamespacelinks' => 'Binclos entre espazios de nombres diferents',
-	'crossnamespacelinks-desc' => "[[Special:CrossNamespaceLinks|Listas de binclos entre espazios de nombres]] que no abrían d'esistir en {{SITENAME}}",
-	'crossnamespacelinks-summary' => "Ista pachina amuestra una lista de binclos dende pachinas d'o espazio de nombre prenzipal ta pachinas en atros espazios de nombres (sacaus os espazios de nombres {{ns:special}}, {{ns:talk}}, {{ns:project}} y {{ns:template}}) que no son aconsellables.",
-	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|binclo|binclos}} ta $3',
+	'crossnamespacelinks' => 'Vinclos entre espacios de nombres diferents',
+	'crossnamespacelinks-desc' => "[[Special:CrossNamespaceLinks|Listas de vinclos entre espacios de nombres]] que no habrían d'existir en {{SITENAME}}",
+	'crossnamespacelinks-summary' => "Ista pachina amuestra una lista de vinclos dende pachinas d'o espacio de nombre prencipal ta pachinas en atros espacios de nombres (sacaus os espacios de nombres {{ns:special}}, {{ns:talk}}, {{ns:project}} y {{ns:template}}) que no son aconsellables.",
+	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|vinclo|vinclos}} ta $3',
 );
 
 /** Arabic (العربية)
@@ -463,6 +464,7 @@ $messages['id'] = array(
  * @author Malafaya
  */
 $messages['io'] = array(
+	'crossnamespacelinks' => 'Ligili inter nomari',
 	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|ligilo|ligili}} vers $3',
 );
 
@@ -673,7 +675,7 @@ $messages['lv'] = array(
 $messages['mk'] = array(
 	'crossnamespacelinks' => 'Врски преку различни именски простори',
 	'crossnamespacelinks-desc' => '[[Special:CrossNamespaceLinks|Наведува врски преку различни именски простори]] кои не би требало да постојат на {{SITENAME}}',
-	'crossnamespacelinks-summary' => 'Оваа страница дава листа на врски од страница во главниот именски простор кон страница во други именски простори (освен за именски простори од типот {{ns:special}}, {{ns:talk}}, {{ns:project}} и {{ns:template}}), кои не се препорачува да се користат.',
+	'crossnamespacelinks-summary' => 'Оваа страница дава список на врски од страница во главниот именски простор кон страница во други именски простори (освен за именски простори од типот {{ns:special}}, {{ns:talk}}, {{ns:project}} и {{ns:template}}), кои не се препорачува да се користат.',
 	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|врска|врски}} кон $3',
 );
 
@@ -853,6 +855,7 @@ $messages['pt-br'] = array(
  */
 $messages['qu'] = array(
 	'crossnamespacelinks' => "Suti k'itipura t'inkikuna",
+	'crossnamespacelinks-desc' => "{{SITENAME}}pi mana munakusqa [[Special:CrossNamespaceLinks|suti k'itipura t'inkikunata rikuchin]]",
 	'crossnamespacelinks-summary' => "Kay p'anqapiqa rikunki uma suti k'iti p'anqamanta huk suti k'itikunapi p'anqakunaman t'inkimuqkunata (manataq kay suti k'itikunapi: {{ns:special}}, {{ns:talk}}, {{ns:project}}, {{ns:template}}). Kay t'inkikunataqa manam yuyaychaykikuchu.",
 	'crossnamespacelinkstext' => "$1: $2 {{PLURAL:$2|t'inki|t'inkikuna}} $3-man",
 );

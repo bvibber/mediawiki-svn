@@ -18,8 +18,9 @@
  *  along with this program; if not, write to the Free Software
  *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
+ * @file
  * @author Evan Prodromou <evan@prodromou.name>
- * @addtogroup Extensions
+ * @ingroup Extensions
  */
 
 if ( !defined( 'MEDIAWIKI' ) )
@@ -312,7 +313,7 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 				Xml::radio( 'wpNameChoice', 'manual', !$def, array( 'id' => 'wpNameChoiceManual' ) )
 			) .
 			Xml::tags( 'td', array( 'class' => 'mw-input' ),
-				Xml::label( wfMsg( 'openidchoosemanual' ), 'wpNameChoiceManual' ) . '&nbsp;' .
+				Xml::label( wfMsg( 'openidchoosemanual' ), 'wpNameChoiceManual' ) . '&#160;' .
 				Xml::input( 'wpNameValue', 16, false, array( 'id' => 'wpNameValue' ) )
 			) .
 			Xml::closeElement( 'tr' ) . "\n" .
@@ -372,7 +373,11 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 					$force[] = $option;
 				}
 			}
+
 			$this->updateUser( $user, $sreg, $ax );
+
+			$wgUser = $user;
+
 		} else {
 			$name = $this->getUserName( $openid, $sreg, $ax, $choice, $nameValue );
 
@@ -391,8 +396,6 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 			$wgOut->showErrorPage( 'openiderror', 'openiderrortext' );
 			return;
 		}
-
-		$wgUser = $user;
 
 		$this->clearValues();
 
@@ -461,7 +464,7 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 				if ($wgOpenIDUseEmailAsNickname) {
 					$name = $this->getNameFromEmail( $openid, $sreg, $ax );
 					if ( !empty($name) && $this->userNameOk( $name ) ) {
-						$wgUser = $this->createUser( $openid, $sreg, $ax, $name );
+						$user = $this->createUser( $openid, $sreg, $ax, $name );
 						$this->displaySuccessLogin( $openid );
 						return;
 					}
@@ -587,7 +590,7 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 	}
 
 	function createUser( $openid, $sreg, $ax, $name ) {
-		global $wgAuth;
+		global $wgUser, $wgAuth;
 
 		$user = User::newFromName( $name );
 
@@ -597,13 +600,15 @@ class SpecialOpenIDLogin extends SpecialOpenID {
 		}
 
 		$user->addToDatabase();
-		$user->addNewUserLogEntry();
 
 		if ( !$user->getId() ) {
 			wfDebug( "OpenID: Error adding new user.\n" );
 		} else {
 			$wgAuth->initUser( $user );
 			$wgAuth->updateUser( $user );
+
+			$wgUser = $user;
+			$user->addNewUserLogEntry();
 
 			# Update site stats
 			$ssUpdate = new SiteStatsUpdate( 0, 0, 0, 0, 1 );

@@ -2,7 +2,7 @@
 
 /**
  * Initialization file for the Semantic Maps extension.
- * Extension documentation: http://www.mediawiki.org/wiki/Extension:Semantic_Maps
+ * Extension documentation: http://mapping.referata.com/wiki/Semantic_Maps
  *
  * @file SemanticMaps.php
  * @ingroup SemanticMaps
@@ -35,7 +35,7 @@ if ( ! defined( 'SMW_VERSION' ) ) {
 
 // Only initialize the extension when all dependencies are present.
 if ( defined( 'Maps_VERSION' ) && defined( 'SMW_VERSION' ) ) {
-	define( 'SM_VERSION', '0.6 rc3' );
+	define( 'SM_VERSION', '0.6.3 a5' );
 
 	$smgScriptPath 	= ( isset( $wgExtensionAssetsPath ) && $wgExtensionAssetsPath ? $wgExtensionAssetsPath : $wgScriptPath . '/extensions' ) . '/SemanticMaps';
 	$smgDir 		= dirname( __FILE__ ) . '/';
@@ -86,7 +86,7 @@ function smfSetup() {
 		'url' => 'http://www.mediawiki.org/wiki/Extension:Semantic_Maps',
 		'description' => wfMsgExt( 'semanticmaps_desc', 'parsemag', $services_list ),
 	);
-	
+
 	return true;
 }
 
@@ -106,4 +106,3 @@ function smfAddToAdminLinks( &$admin_links_tree ) {
 
     return true;
 }
-

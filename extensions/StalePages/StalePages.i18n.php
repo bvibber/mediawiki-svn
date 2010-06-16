@@ -2,8 +2,9 @@
 /**
  * Internationalisation file for extension StalePages.
  *
- * @addtogroup Extensions
-*/
+ * @file
+ * @ingroup Extensions
+ */
 
 $messages = array();
 
@@ -313,8 +314,8 @@ $messages['lb'] = array(
  */
 $messages['mk'] = array(
 	'stalepages' => 'Бајати страници',
-	'stalepages-desc' => 'Создава [[Special:Stalepages|листа на страници]] кои не биле уредувани во последно време',
-	'stalepages-summary' => 'Ова е листа на страници кои не се уредувани веќе $1 {{PLURAL:$1|ден|дена}}.',
+	'stalepages-desc' => 'Создава [[Special:Stalepages|список на страници]] кои не биле уредувани во последно време',
+	'stalepages-summary' => 'Ова е список на страници кои не се уредувани веќе $1 {{PLURAL:$1|ден|дена}}.',
 );
 
 /** Malayalam (മലയാളം)

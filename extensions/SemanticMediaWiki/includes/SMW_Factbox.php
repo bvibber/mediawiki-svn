@@ -55,7 +55,7 @@ class SMWFactbox {
 				if ( !$property->isShown() ) { // showing this is not desired, hide
 					continue;
 				} elseif ( $property->isUserDefined() ) { // user defined property
-					$property->setCaption( preg_replace( '/[ ]/u', '&nbsp;', $property->getWikiValue(), 2 ) );
+					$property->setCaption( preg_replace( '/[ ]/u', '&#160;', $property->getWikiValue(), 2 ) );
 					/// NOTE: the preg_replace is a slight hack to ensure that the left column does not get too narrow
 					$text .= '<tr><td class="smwpropname">' . $property->getLongWikiText( true ) . '</td><td class="smwprops">';
 				} elseif ( $property->isVisible() ) { // predefined property
@@ -107,8 +107,8 @@ class SMWFactbox {
 		if ( $showfactbox == SMW_FACTBOX_HIDDEN ) { // use shortcut
 			return '';
 		}
-		// deal with complete dataset only if needed:
-		if ( !isset( $parseroutput->mSMWData ) || $parseroutput->mSMWData->stubobject ) {
+		// Deal with complete dataset only if needed:
+		if ( !isset( $parseroutput->mSMWData ) || $parseroutput->mSMWData->stubObject ) {
 			$semdata = smwfGetStore()->getSemanticData( $title );
 		} else {
 			$semdata = $parseroutput->mSMWData;

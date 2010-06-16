@@ -1,11 +1,6 @@
 <?php
-if( !defined( 'MEDIAWIKI' ) ) {
-	echo( "This file is an extension to the MediaWiki software and cannot be used standalone.\n" );
-	exit( 1 );
-}
 
 class SpecialImportUsers extends SpecialPage {
-
 	function SpecialImportUsers() {
 		SpecialPage::SpecialPage('ImportUsers' , 'import_users' );
 	}
@@ -34,7 +29,7 @@ class SpecialImportUsers extends SpecialPage {
 	function MakeForm() {
 		global $wgLang;
 
-		$titleObj = Title::makeTitle( NS_SPECIAL, 'ImportUsers' );
+		$titleObj = SpecialPage::getTitleFor( 'ImportUsers' );
 		$action = $titleObj->escapeLocalURL();
 		$fileFormat = $wgLang->commaList( array(
 			wfMsg( 'importusers-login-name' ),

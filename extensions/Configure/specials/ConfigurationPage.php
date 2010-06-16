@@ -456,9 +456,9 @@ abstract class ConfigurationPage extends SpecialPage {
 			foreach( $wgConfigureWikis as $wiki ) {
 				$selector->addOption( $wiki );
 			}
-			$form .= $selector->getHTML() . '&nbsp;';
+			$form .= $selector->getHTML() . '&#160;';
 		} else {
-			$form .= Xml::input( 'wiki', false, $this->mWiki ) . '&nbsp;';
+			$form .= Xml::input( 'wiki', false, $this->mWiki ) . '&#160;';
 		}
 		$form .= Xml::submitButton( wfMsg( 'configure-select-wiki-submit' ) );
 		$form .= '</form></fieldset>';
@@ -943,7 +943,7 @@ abstract class ConfigurationPage extends SpecialPage {
 			return wfMsgExt( 'configure-image-url-explanation', 'parseinline' ) . '<br />' .
 				Xml::input( "wp$conf", 45, (string)$default,
 					array( 'class' => 'image-selector', 'id' => 'image-url-textbox-'.$conf )
-				) . '&nbsp;' .
+				) . '&#160;' .
 				Xml::element( 'img', array( 'id' => 'image-url-preview-'.$conf, 'src' => $default ) );
 		}
 		if ( $type == 'bool' ) {
@@ -1415,7 +1415,7 @@ abstract class ConfigurationPage extends SpecialPage {
 				$desc = User::getRightDescription( $right ) . " (" .Xml::element( 'tt', array( 'class' => 'configure-right-id' ), $right ) . ")";
 			else
 				$desc = User::getGroupName( $right );
-			$row .= '<li>' . Xml::check( $id, $checked, $attr + array( 'id' => $id ) ) . '&nbsp;' . Xml::tags( 'label', array( 'for' => $id ), $desc ) . "</li>\n";
+			$row .= '<li>' . Xml::check( $id, $checked, $attr + array( 'id' => $id ) ) . '&#160;' . Xml::tags( 'label', array( 'for' => $id ), $desc ) . "</li>\n";
 		}
 		$row .= '</ul></div>';
 		return $row;

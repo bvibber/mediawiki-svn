@@ -112,6 +112,14 @@ $messages['el'] = array(
 	'css-desc' => 'Μία λεξιαναλυτική συνάρτηση που επιτρέπει σε CSS-stylesheets να συμπεριληφθούν σε συγκεκριμένες σελίδες',
 );
 
+/** Esperanto (Esperanto)
+ * @author Airon90
+ * @author ArnoLagrange
+ */
+$messages['eo'] = array(
+	'css-desc' => 'Sintaksa analizilo kiu ebligas enmeti CSS-stilfoliojn en specifajn paĝojn',
+);
+
 /** Spanish (Español)
  * @author Sanbec
  */

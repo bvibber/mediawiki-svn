@@ -2,7 +2,8 @@
 /**
  * Aliases for Special:Plotters. Based on the Gadgets extension.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $aliases = array();

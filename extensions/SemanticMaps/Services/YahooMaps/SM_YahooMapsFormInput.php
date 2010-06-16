@@ -15,9 +15,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 final class SMYahooMapsFormInput extends SMFormInput {
 	
-	public $serviceName = MapsYahooMaps::SERVICE_NAME;
-	
-	protected $spesificParameters = array();
+	protected $specificParameters = array();
 	
 	/**
 	 * @see MapsMapFeature::setMapSettings()
@@ -37,10 +35,10 @@ final class SMYahooMapsFormInput extends SMFormInput {
 	 * @see MapsMapFeature::addFormDependencies()
 	 */
 	protected function addFormDependencies() {
-		global $wgOut, $wgParser;
+		global $wgOut;
 		global $smgScriptPath, $smgYahooFormsOnThisPage, $smgStyleVersion, $egMapsJsExt;
 		
-		MapsYahooMaps::addYMapDependencies( $wgParser );
+		$this->mService->addDependencies( $wgOut );
 		
 		if ( empty( $smgYahooFormsOnThisPage ) ) {
 			$smgYahooFormsOnThisPage = 0;
@@ -104,13 +102,11 @@ EOT
 	
 	/**
 	 * @see SMFormInput::manageGeocoding()
-	 *
 	 */
 	protected function manageGeocoding() {
 		global $egYahooMapsKey;
 		$this->enableGeocoding = strlen( trim( $egYahooMapsKey ) ) > 0;
-		if ( $this->enableGeocoding ) MapsYahooMaps::addYMapDependencies( $this->output );
+		if ( $this->enableGeocoding ) $this->mService->addDependencies( $this->output );
 	}
 
-	
 }

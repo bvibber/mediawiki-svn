@@ -30,6 +30,8 @@ function wfCategoryTests( $parser ) {
 	$parser->setFunctionHook( 'ifcategory', array( &$wgExtCategoryTests, 'ifcategory' ) );
 	$parser->setFunctionHook( 'ifnocategories', array( &$wgExtCategoryTests, 'ifnocategories' ) );
 	$parser->setFunctionHook( 'switchcategory', array( &$wgExtCategoryTests, 'switchcategory' ) );
+	
+	return true;
 }
 
 class ExtCategoryTests {

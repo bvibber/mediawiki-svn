@@ -235,6 +235,18 @@ $messages['ru'] = array(
 	'groupssidebar-desc' => 'Это расширение позволяет администраторам сайта включать элементы боковой панели для определённых групп участников',
 );
 
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'groupssidebar-desc' => 'Ова екстензија омогућава администраторима сајта да укључе сајдбар елементе за одређене корисничке групе',
+);
+
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'groupssidebar-desc' => 'Ova ekstenzija omogućava administratorima sajta da uključe sajdbar elemente za određene korisničke grupe',
+);
+
 /** Swedish (Svenska)
  * @author Boivie
  */

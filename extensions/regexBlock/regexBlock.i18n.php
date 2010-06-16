@@ -180,6 +180,7 @@ $messages['am'] = array(
  */
 $messages['an'] = array(
 	'regexblock-already-blocked' => '$1 ya yera bloqueyato.',
+	'regexblock-form-username' => "Adreza IP u nombre d'usuario:",
 	'regexblock-form-reason' => 'Razón:',
 	'regexblock-view-all' => 'Todas',
 );
@@ -535,6 +536,11 @@ $messages['ca'] = array(
 	'regexblock-already-blocked' => '$1 ja està blocat.',
 	'regexblock-form-reason' => 'Motiu:',
 	'regexblock-view-go' => 'Vés-hi',
+);
+
+/** Chechen (Нохчийн) */
+$messages['ce'] = array(
+	'regexblock-form-reason' => 'Бахьан:',
 );
 
 /** Chamorro (Chamoru)
@@ -1853,7 +1859,7 @@ $messages['mk'] = array(
 Ова треба да се употребува само за спречување на вандализам, и во согласност со правилата.
 ''Оваа страница ви овозможува да блокирате дури и непостоечки корисници, и да блокирате корисници со имиња слични на зададените, т.е. „Test“ ќе биде блокиран заедно со „Test 2“ и тн.
 Можете и да блокирате полни IP-адреси, што значи дека ниеден корисник најавен со таа IP-адреса нема да може да уредува страници.
-Белешка: делумните IP-адреси ќе се сметаат за кориснички имиња при одлучувањето дали да се даде блок.
+Напомена: делумните IP-адреси ќе се сметаат за кориснички имиња при одлучувањето дали да се даде блок.
 Ако нема назначено причина, тогаш ќе се користи основно зададената општа причина.''",
 	'regexblock-page-title-1' => 'Блокирање на адреси со помош на регуларни изрази',
 	'regexblock-reason-ip' => 'На оваа IP-адреса ѝ е оневозможено уредување поради вандализам или други пореметувачки дејства направени од вас или или некој што ја користи истата IP-адреса.
@@ -1892,7 +1898,7 @@ $messages['mk'] = array(
 	'regexblock-view-block-by' => 'блокиран од:',
 	'regexblock-view-block-unblock' => 'одблокирај',
 	'regexblock-view-stats' => 'статистики',
-	'regexblock-view-empty' => 'Листата на блокирани имиња и адреси е празна.',
+	'regexblock-view-empty' => 'Списокот на блокирани имиња и адреси е празен.',
 	'regexblock-view-time' => 'на $1',
 	'right-regexblock' => 'Блокирање на корисници од уредување на сите викија на вики-фармата',
 );
@@ -2441,6 +2447,7 @@ $messages['ps'] = array(
 	'regexblock-view-all' => 'ټول',
 	'regexblock-view-go' => 'ورځه',
 	'regexblock-view-reason' => 'سبب: $1',
+	'regexblock-view-block-unblock' => 'بنديز لرې کول',
 );
 
 /** Portuguese (Português)
@@ -2507,6 +2514,7 @@ Por favor, crie um nome de utilizador alternativo ou [[$1|avise-nos]] sobre o pr
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
+ * @author Giro720
  */
 $messages['pt-br'] = array(
 	'regexblock' => 'Bloqueio por expressões regulares',
@@ -2539,6 +2547,7 @@ Por favor, crie um nome de utilizador alternativo ou [[$1|contate-nos]] sobre o 
 	'regexblock-form-submit-empty' => 'Forneça um nome de utilizador ou um endereço IP para bloquear.',
 	'regexblock-form-submit-regex' => 'Expressão regular inválida.',
 	'regexblock-form-submit-expiry' => 'Por favor, seleccione um período de expiração.',
+	'regexblock-link' => 'bloqueio com expressão regular',
 	'regexblock-match-stats-record' => "$1 bloqueou '$2' em '$3' em '$4', proveniente do endereço '$5'",
 	'regexblock-nodata-found' => 'Nenhum dado encontrado',
 	'regexblock-stats-title' => 'Estatísticas de bloqueio de expressões regulares',
@@ -2746,16 +2755,49 @@ $messages['sk'] = array(
 
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Sasa Stefanovic
+ * @author Михајло Анђелковић
  */
 $messages['sr-ec'] = array(
+	'regexblock-block-success' => 'Блок успео',
+	'regexblock-currently-blocked' => 'Тренутно блокиране адресе:',
+	'regexblock-page-title-1' => 'Блокирај адресе користећи регуларне изразе',
+	'regexblock-form-username' => 'IP адреса или корисничко име:',
 	'regexblock-form-reason' => 'Разлог:',
+	'regexblock-form-expiry' => 'Истек:',
+	'regexblock-form-match' => 'Тачно слагање',
+	'regexblock-form-submit' => 'Блокирај овог корисника',
+	'regexblock-view-all' => 'Све',
+	'regexblock-view-go' => 'Иди',
+	'regexblock-view-reason' => 'разлог: $1',
+	'regexblock-view-reason-default' => 'генерички разлог',
+	'regexblock-view-block-infinite' => 'трајан блок',
+	'regexblock-view-block-by' => 'блокирао:',
+	'regexblock-view-block-unblock' => 'одблокирај',
+	'regexblock-view-stats' => 'статистике',
+	'regexblock-view-time' => 'у $1',
 );
 
 /** Serbian Latin ekavian (Srpski (latinica))
  * @author Michaello
  */
 $messages['sr-el'] = array(
+	'regexblock-block-success' => 'Blok uspeo',
+	'regexblock-currently-blocked' => 'Trenutno blokirane adrese:',
+	'regexblock-page-title-1' => 'Blokiraj adrese koristeći regularne izraze',
+	'regexblock-form-username' => 'IP adresa ili korisničko ime:',
 	'regexblock-form-reason' => 'Razlog:',
+	'regexblock-form-expiry' => 'Istek:',
+	'regexblock-form-match' => 'Tačno slaganje',
+	'regexblock-form-submit' => 'Blokiraj ovog korisnika',
+	'regexblock-view-all' => 'Sve',
+	'regexblock-view-go' => 'Idi',
+	'regexblock-view-reason' => 'razlog: $1',
+	'regexblock-view-reason-default' => 'generički razlog',
+	'regexblock-view-block-infinite' => 'trajan blok',
+	'regexblock-view-block-by' => 'blokirao:',
+	'regexblock-view-block-unblock' => 'odblokiraj',
+	'regexblock-view-stats' => 'statistike',
+	'regexblock-view-time' => 'u $1',
 );
 
 /** Sundanese (Basa Sunda)

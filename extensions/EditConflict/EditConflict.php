@@ -356,7 +356,7 @@ class EditConflict {
 				}
 				$dest_title_str = $user_title_dbkey . '/' . $source_title_str;
 				$dest_title = Title::newFromDBkey( $dest_title_str );
-				$result .= '<span id="EditConflict_' . $row->ns_user_rev_id . '">(' . $skin->makeKnownLinkObj( $dest_title, 'rev. ' . $row->ns_user_rev_id . '', 'oldid=' . $row->ns_user_rev_id ) . '&nbsp;<span class="closelink" title="' . wfMsg( 'ec_close_warning' ) . '" onclick="EditConflict.clearRevId(' . $row->ns_user_rev_id . ');">&#8251;</span>' . ')</span> ';
+				$result .= '<span id="EditConflict_' . $row->ns_user_rev_id . '">(' . $skin->makeKnownLinkObj( $dest_title, 'rev. ' . $row->ns_user_rev_id . '', 'oldid=' . $row->ns_user_rev_id ) . '&#160;<span class="closelink" title="' . wfMsg( 'ec_close_warning' ) . '" onclick="EditConflict.clearRevId(' . $row->ns_user_rev_id . ');">&#8251;</span>' . ')</span> ';
 			}
 			$result .= '</li>';
 		}

@@ -4,8 +4,8 @@
  * Extension HideNamespace - Hides namespace in the header and title when a page is in specified namespace
  * or when the {{#hidens:}} parser function is called.
  *
- * @package MediaWiki
- * @subpackage Extensions
+ * @file
+ * @ingroup Extensions
  * @author Matěj Grabovský (mgrabovsky.github.com)
  * @copyright © 2010, Matěj Grabovský
  * @license GNU General Public Licence 2.0 or later

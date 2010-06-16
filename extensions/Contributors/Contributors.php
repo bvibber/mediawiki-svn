@@ -3,7 +3,8 @@
 /**
  * Special page that lists the ten most prominent contributors to an article
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  * @author Rob Church <robchur@gmail.com>
  */
 
@@ -48,7 +49,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 		$wgHooks['ArticleSaveComplete'][] = 'efContributorsInvalidateCache';
 		# Good god, this is ludicrous!
 		$wgHooks['SkinTemplateBuildNavUrlsNav_urlsAfterPermalink'][] = 'efContributorsNavigation';
-		$wgHooks['MonoBookTemplateToolboxEnd'][] = 'efContributorsToolbox';
+		$wgHooks['SkinTemplateToolboxEnd'][] = 'efContributorsToolbox';
 	}
 
 	/**

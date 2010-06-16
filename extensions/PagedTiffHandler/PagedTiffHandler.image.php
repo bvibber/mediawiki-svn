@@ -1,10 +1,9 @@
 <?php
- /**
-  *
-  * Copyright (C) Wikimedia Deutschland, 2009
-  * Authors Hallo Welt! Medienwerkstatt GmbH
-  * Authors Sebastian Ulbricht, Daniel Lynge, Marc Reymann, Markus Glaser
-  *
+/**
+ * Copyright © Wikimedia Deutschland, 2009
+ * Authors Hallo Welt! Medienwerkstatt GmbH
+ * Authors Sebastian Ulbricht, Daniel Lynge, Marc Reymann, Markus Glaser
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
@@ -19,44 +18,36 @@
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
- *
  */
 
 /**
- * inspired by djvuimage from brion vibber
+ * inspired by djvuimage from Brion Vibber
  * modified and written by xarax
  * adapted to tiff by Hallo Welt! - Medienwerkstatt GmbH
  */
 
 class PagedTiffImage {
-	protected $_meta = NULL;
+	protected $_meta = null;
 	protected $mFilename;
-	
+
 	function __construct( $filename ) {
 		$this->mFilename = $filename;
 	}
-	
+
 	/**
-	* Customize the exiv shell command.
-	*/
-	static function exivCommand( &$cmd, $filename ) {
-		return true;
-	}
-	
-	/**
-	* Called by MimeMagick functions.
-	*/
+	 * Called by MimeMagick functions.
+	 */
 	public function isValid() {
 		return count( $this->retrieveMetaData() );
 	}
-	
+
 	/**
-	* Returns an array that corresponds to the native PHP function getimagesize().
-	*/
+	 * Returns an array that corresponds to the native PHP function getimagesize().
+	 */
 	public function getImageSize() {
 		$data = $this->retrieveMetaData();
 		$size = $this->getPageSize( $data, 1 );
-	
+
 		if ( $size ) {
 			$width = $size['width'];
 			$height = $size['height'];
@@ -65,49 +56,51 @@ class PagedTiffImage {
 		}
 		return false;
 	}
-	
+
 	/**
-	* Returns an array with width and height of the tiff page.
-	*/
+	 * Returns an array with width and height of the tiff page.
+	 */
 	public static function getPageSize( $data, $page ) {
 		if ( isset( $data['page_data'][$page] ) ) {
-			return array( 'width'  => $data['page_data'][$page]['width'],
-			'height' => $data['page_data'][$page]['height'] );
+			return array(
+				'width'  => $data['page_data'][$page]['width'],
+				'height' => $data['page_data'][$page]['height']
+			);
 		}
 		return false;
 	}
-	
+
 	/**
-	* Reads metadata of the tiff file via shell command and returns an associative array.
-	* layout:
-	* meta['page_amount'] = amount of pages
-	* meta['page_data'] = metadata per page
-	* meta['exif']  = Exif, XMP and IPTC
-	* meta['errors'] = identify-errors
-	* meta['warnings'] = identify-warnings
-	*/
+	 * Reads metadata of the tiff file via shell command and returns an associative array.
+	 * layout:
+	 * meta['page_amount'] = amount of pages
+	 * meta['page_data'] = metadata per page
+	 * meta['exif']  = Exif, XMP and IPTC
+	 * meta['errors'] = identify-errors
+	 * meta['warnings'] = identify-warnings
+	 */
 	public function retrieveMetaData() {
 		global $wgImageMagickIdentifyCommand, $wgTiffExivCommand, $wgTiffUseExiv, $wgMemc, $wgTiffErrorCacheTTL;
-	
+
 		$imgKey = wfMemcKey( 'PagedTiffHandler-ThumbnailGeneration', $this->mFilename );
 		$isCached = $wgMemc->get( $imgKey );
 		if ( $isCached ) {
 			return - 1;
 		}
 		$wgMemc->add( $imgKey, 1, $wgTiffErrorCacheTTL );
-	
-		if ( $this->_meta === NULL ) {
+
+		if ( $this->_meta === null ) {
 			if ( $wgImageMagickIdentifyCommand ) {
-	
+
 				wfProfileIn( 'PagedTiffImage::retrieveMetaData' );
 				/**
-				* ImageMagick is used in order to get the basic metadata of embedded files.
-				* This is not reliable in exiv2m since it is not possible to name a set of required fields.
-				*/
+				 * ImageMagick is used in order to get the basic metadata of embedded files.
+				 * This is not reliable in exiv2m since it is not possible to name a set of required fields.
+				 */
 				$cmd = wfEscapeShellArg( $wgImageMagickIdentifyCommand ) .
 					' -format "[BEGIN]page=%p\nalpha=%A\nalpha2=%r\nheight=%h\nwidth=%w\ndepth=%z[END]" ' .
 					wfEscapeShellArg( $this->mFilename ) . ' 2>&1';
-				
+
 				wfProfileIn( 'identify' );
 				wfDebug( __METHOD__ . ": $cmd\n" );
 				$dump = wfShellExec( $cmd, $retval );
@@ -117,32 +110,31 @@ class PagedTiffImage {
 				}
 				$this->_meta = $this->convertDumpToArray( $dump );
 				$this->_meta['exif'] = array();
-				
+
 				if ( $wgTiffUseExiv ) {
 					$cmd = wfEscapeShellArg( $wgTiffExivCommand ) .
 						' -u -psix -Pnt ' . // read EXIF, XMP, IPTC as name-tag => interpreted data -ignore unknown fields
 						// exiv2-doc @link http://www.exiv2.org/sample.html
-						# # In der Linux-Version von exiv2 gibt es einen Bug, sodass diese Parameter dort nicht funktionieren. ^SU
+						# # the linux version of exiv2 has a bug an this command doesn't work on it. ^SU
 						wfEscapeShellArg( $this->mFilename );
-	
-					wfRunHooks( "PagedTiffHandlerExivCommand", array( &$cmd, $this->mFilename ) );
-	
+
+					wfRunHooks( 'PagedTiffHandlerExivCommand', array( &$cmd, $this->mFilename ) );
+
 					wfProfileIn( 'exiv2' );
 					wfDebug( __METHOD__ . ": $cmd\n" );
 					$dump = wfShellExec( $cmd, $retval );
 					wfProfileOut( 'exiv2' );
 					$result = array();
 					preg_match_all( '/(\w+)\s+(.+)/', $dump, $result, PREG_SET_ORDER );
-	
+
 					foreach ( $result as $data ) {
 						$this->_meta['exif'][$data[1]] = $data[2];
 					}
-				}
-				else {
+				} else {
 					$cmd = wfEscapeShellArg( $wgImageMagickIdentifyCommand ) .
 						' -verbose ' .
 						wfEscapeShellArg( $this->mFilename ) . "[0]";
-	
+
 					wfProfileIn( 'identify -verbose' );
 					wfDebug( __METHOD__ . ": $cmd\n" );
 					$dump = wfShellExec( $cmd, $retval );
@@ -157,15 +149,17 @@ class PagedTiffImage {
 		unset( $this->_meta['exif']['Base filename'] );
 		return $this->_meta;
 	}
-	
+
 	/**
-	* helper function of retrieveMetaData().
-	* parses shell return from identify-command into an array.
-	*/
+	 * helper function of retrieveMetaData().
+	 * parses shell return from identify-command into an array.
+	 */
 	protected function convertDumpToArray( $dump ) {
 		global $wgTiffIdentifyRejectMessages, $wgTiffIdentifyBypassMessages;
-		if ( strval( $dump ) == '' ) return false;
-		$infos = NULL;
+		if ( strval( $dump ) == '' ) {
+			return false;
+		}
+		$infos = null;
 		preg_match_all( '/\[BEGIN\](.+?)\[END\]/si', $dump, $infos, PREG_SET_ORDER );
 		$data = array();
 		$data['page_amount'] = count( $infos );
@@ -198,7 +192,7 @@ class PagedTiffImage {
 			$entry['pixels'] = $entry['height'] * $entry['width'];
 			$data['page_data'][$entry['page']] = $entry;
 		}
-	
+
 		$dump = preg_replace( '/\[BEGIN\](.+?)\[END\]/si', '', $dump );
 		if ( strlen( $dump ) ) {
 			$errors = explode( "\n", $dump );
@@ -212,7 +206,7 @@ class PagedTiffImage {
 					}
 				}
 				if ( !$knownError ) {
-					# # BypassMessages werden nicht gespeichert ^SU
+					# # drop BypassMessages ^SU
 					foreach ( $wgTiffIdentifyBypassMessages as $msg ) {
 						if ( preg_match( $msg, trim( $error ) ) ) {
 							// $data['warnings'][] = $error;
@@ -228,29 +222,27 @@ class PagedTiffImage {
 		}
 		return $data;
 	}
-	
+
 	/**
-	* helper function of retrieveMetaData().
-	* parses shell return from identify-verbose-command into an array.
-	*/
+	 * helper function of retrieveMetaData().
+	 * parses shell return from identify-verbose-command into an array.
+	 */
 	protected function parseVerbose( $dump ) {
 		$data = array();
 		$dump = explode( "\n", $dump );
 		$lastwhite = 0;
-		$lastkey   = false;
+		$lastkey = false;
 		foreach ( $dump as $line ) {
 			if ( preg_match( '/^(\s*?)(\w([\w\s]+?)?):(.*?)$/sim', $line, $res ) ) {
 				if ( $lastwhite == 0 || strlen( $res[1] ) == $lastwhite ) {
 					if ( strlen( trim( $res[4] ) ) ) {
 						$data[trim( $res[2] )] = trim( $res[4] );
-					}
-					else {
+					} else {
 						$data[trim( $res[2] )] = "  Data:\n";
 					}
 					$lastkey = trim( $res[2] );
 					$lastwhite = strlen( $res[1] );
-				}
-				else {
+				} else {
 					$data[$lastkey] .= $line . "\n";
 				}
 			}

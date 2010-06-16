@@ -2,8 +2,9 @@
 /**
  * Internationalisation file for extension UsageStatistics.
  *
- * @addtogroup Extensions
-*/
+ * @file
+ * @ingroup Extensions
+ */
 
 $messages = array();
 
@@ -151,9 +152,9 @@ $messages['am'] = array(
  */
 $messages['an'] = array(
 	'usagestatisticsnamespace' => 'Espacio de nombres:',
-	'usagestatisticsstart' => 'Calendata de prenzipio',
-	'usagestatisticsend' => 'Calendata final',
-	'usagestatisticsnoend' => 'Por fabor, escriba una calendata final',
+	'usagestatisticsstart' => 'Calendata de prencipio',
+	'usagestatisticsend' => 'Calendata de fin',
+	'usagestatisticsnoend' => 'Por favor, escriba una calendata final',
 	'usagestatisticsbadstartend' => '<b>As calendatas de <i>inicio</i> y/u <i>fin</i> no son conformes!</b>',
 );
 
@@ -328,6 +329,7 @@ $messages['bg'] = array(
 );
 
 /** Bengali (বাংলা)
+ * @author Bellayet
  * @author Zaheen
  */
 $messages['bn'] = array(
@@ -335,10 +337,11 @@ $messages['bn'] = array(
 	'usagestatistics' => 'ব্যবহার পরিসংখ্যান',
 	'usagestatistics-desc' => 'একজন নির্দিষ্ট ব্যবহারকারী এবং সামগ্রিক উইকি ব্যবহার পরিসংখ্যান দেখানো হোক',
 	'usagestatisticsfor' => '<h2>ব্যবহারকারী [[User:$1|$1]]-এর জন্য ব্যবহার পরিসংখ্যান</h2>',
-	'usagestatisticsinterval' => 'ব্যবধান',
+	'usagestatisticsinterval' => 'ব্যবধান:',
+	'usagestatisticsnamespace' => 'নামস্থান:',
 	'usagestatisticstype' => 'ধরন',
-	'usagestatisticsstart' => 'শুরুর তারিখ',
-	'usagestatisticsend' => 'শেষের তারিখ',
+	'usagestatisticsstart' => 'শুরুর তারিখ:',
+	'usagestatisticsend' => 'শেষের তারিখ:',
 	'usagestatisticssubmit' => 'পরিসংখ্যান সৃষ্টি করা হোক',
 	'usagestatisticsnostart' => 'অনুগ্রহ করে একটি শুরুর তারিখ দিন',
 	'usagestatisticsnoend' => 'অনুগ্রহ করে একটি শেষের তারিখ দিন',
@@ -1448,7 +1451,7 @@ $messages['mk'] = array(
 	'usagestatisticsnamespace' => 'Именски простор:',
 	'usagestatisticsexcluderedirects' => 'Без пренасочувања',
 	'usagestatistics-namespace' => 'Ова се статистики за именскиот простор [[Special:Allpages/$1|$2]].',
-	'usagestatistics-noredirects' => '[[Special:ListRedirects|Пренасочувањата]] не се земаат во предвид.',
+	'usagestatistics-noredirects' => '[[Special:ListRedirects|Пренасочувањата]] не се земаат предвид.',
 	'usagestatisticstype' => 'Тип',
 	'usagestatisticsstart' => 'Почетен датум:',
 	'usagestatisticsend' => 'Краен датум:',
@@ -2065,6 +2068,8 @@ $messages['sr-ec'] = array(
 	'usagestatisticsfor' => '<h2>Статистике коришћења за [[User:$1|$1]]</h2>',
 	'usagestatisticsforallusers' => '<h2>Статистике коришћења за све кориснике</h2>',
 	'usagestatisticsinterval' => 'Интервал:',
+	'usagestatisticsnamespace' => 'Именски простор:',
+	'usagestatisticsexcluderedirects' => 'Избаци преусмерења',
 	'usagestatisticstype' => 'Тип',
 	'usagestatisticsstart' => 'Почетни датум:',
 	'usagestatisticsend' => 'Завршни датум:',
@@ -2095,6 +2100,8 @@ $messages['sr-el'] = array(
 	'usagestatisticsfor' => '<h2>Statistike korišćenja za [[User:$1|$1]]</h2>',
 	'usagestatisticsforallusers' => '<h2>Statistike korišćenja za sve korisnike</h2>',
 	'usagestatisticsinterval' => 'Interval:',
+	'usagestatisticsnamespace' => 'Imenski prostor:',
+	'usagestatisticsexcluderedirects' => 'Izbaci preusmerenja',
 	'usagestatisticstype' => 'Tip',
 	'usagestatisticsstart' => 'Početni datum:',
 	'usagestatisticsend' => 'Završni datum:',

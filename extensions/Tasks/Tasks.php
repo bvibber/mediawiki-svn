@@ -86,7 +86,7 @@ $wgHooks['UnknownAction'][] = 'wfTasksExtensionAction';
 $wgHooks['ArticleInsertComplete'][] = 'wfTasksExtensionArticleSaveComplete';
 $wgHooks['ArticleDeleteComplete'][] = 'wfTasksExtensionArticleDeleteComplete';
 $wgHooks['SpecialMovepageAfterMove'][] = 'wfTasksExtensionAfterMove';
-$wgHooks['MonoBookTemplateToolboxEnd'][] = 'wfTasksExtensionAfterToolbox';
+$wgHooks['SkinTemplateToolboxEnd'][] = 'wfTasksExtensionAfterToolbox';
 $wgHooks['ArticleViewHeader'][] = 'wfTaskExtensionHeaderHook';
 $wgHooks['EditPage::showEditForm:initial'][] = 'wfTaskExtensionEditFormInitialHook';
 $wgHooks['ParserTestTables'][] = 'wfTasksTestTables';
@@ -120,6 +120,19 @@ function wfTasksAddActionText( &$actions ) { # Checked for HTML and MySQL insert
 	return true;
 }
 # END logging functions
+
+/**
+ * Text adding function
+ */
+function wfTasksAddCache() { # Checked for HTML and MySQL insertion attacks
+	global $wgTasksAddCache, $wgDefaultUserOptions;
+
+	if( $wgTasksAddCache ) {
+		return;
+	}
+
+	$wgTasksAddCache = true;
+}
 
 #___________________________________________________________________
 # Hook functions
@@ -753,7 +766,7 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 			$help_title = Title::makeTitleSafe( NS_HELP, wfMsgForContent('tasks_help_page') );
 			$help_title->mFragment = $encType ;
 			$ext1 = $sk->makeLinkObj( $help_title , wfMsgForContent('tasks_help_page_link') );
-			$more_title = Title::makeTitleSafe( NS_SPECIAL, 'Tasks'); # This special page
+			$more_title = SpecialPage::getTitleFor( 'Tasks' ); # This special page
 			$ext2 = $sk->makeLinkObj( $more_title , wfMsgForContent('tasks_more_like_it') , 'task_type='.$task->task_type );
 			$out .= wfMsgForContent ( 'tasks_help_separator' , $ext1 , $ext2 ) ;
 			
@@ -1379,7 +1392,7 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
 						$data->num = 0;
 					}
 
-					$specialTasks = Title::makeTitle( NS_SPECIAL, 'Tasks' );
+					$specialTasks = SpecialPage::getTitleFor( 'Tasks' );
 					$link = $skin->makeLinkObj( $specialTasks,
 						wfMsgHTML( 'tasks_link_your_assignments' ), 'mode=myassignments' );
 					$out .= '<p>';

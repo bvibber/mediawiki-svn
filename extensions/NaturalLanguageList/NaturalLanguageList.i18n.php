@@ -2,7 +2,8 @@
 /**
  * Internationalisation file for extension NaturalLanguageList.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $messages = array();
@@ -17,8 +18,10 @@ $messages['en'] = array (
 
 /** Message documentation (Message documentation)
  * @author Raimond Spekking
+ * @author Umherirrender
  */
 $messages['qqq'] = array(
+	'nll-desc' => '{{desc}}',
 	'nll-separator' => '{{Optional}}<br/>Please include any necessary spacing: <code>,&amp;#32;</code>',
 	'nll-lastseparator' => '{{Identical/And}}<br/>Please include any necessary spacing: <code>&amp;#32;and&amp;#32;</code>',
 );
@@ -85,9 +88,12 @@ $messages['et'] = array(
 );
 
 /** Finnish (Suomi)
+ * @author Centerlink
  * @author Nike
+ * @author Str4nd
  */
 $messages['fi'] = array(
+	'nll-desc' => 'Helpot muotoiluluettelot luonnollisilla kielillä.',
 	'nll-lastseparator' => ' ja&#32;',
 );
 
@@ -168,7 +174,7 @@ $messages['lb'] = array(
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
-	'nll-desc' => 'Лесно форматирање на листи напишани во природен јазик',
+	'nll-desc' => 'Лесно форматирање на списоци во природни јазици',
 	'nll-lastseparator' => '&#32;и&#32;',
 );
 
@@ -223,6 +229,14 @@ $messages['pms'] = array(
  * @author Hamilton Abreu
  */
 $messages['pt'] = array(
+	'nll-desc' => 'Formatação simples de listas em línguas naturais',
+	'nll-lastseparator' => '&#32;e&#32;',
+);
+
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Giro720
+ */
+$messages['pt-br'] = array(
 	'nll-desc' => 'Formatação simples de listas em línguas naturais',
 	'nll-lastseparator' => '&#32;e&#32;',
 );

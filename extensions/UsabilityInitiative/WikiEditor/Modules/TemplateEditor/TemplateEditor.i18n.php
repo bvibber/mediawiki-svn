@@ -129,6 +129,16 @@ $messages['ca'] = array(
 	'wikieditor-template-editor-dialog-cancel' => 'Anuŀla',
 );
 
+/** Chechen (Нохчийн)
+ * @author Sasan700
+ */
+$messages['ce'] = array(
+	'wikieditor-template-editor-preference' => 'Лата é куцкепа рéдаккхар барамаши гlонца',
+	'wikieditor-template-editor-dialog-title' => 'Куцкеп хийцам',
+	'wikieditor-template-editor-dialog-submit' => 'Карлаяккха',
+	'wikieditor-template-editor-dialog-cancel' => 'Цаоьшу',
+);
+
 /** Czech (Česky)
  * @author Kuvaly
  * @author Mormegil
@@ -179,9 +189,13 @@ $messages['de'] = array(
 
 /** Zazaki (Zazaki)
  * @author Mirzali
+ * @author Xoser
  */
 $messages['diq'] = array(
 	'wikieditor-template-editor-preference' => 'Vurnayışê form-bıngeyınê şablonanê wikiy feal ke',
+	'wikieditor-template-editor-dialog-title' => 'Template bivurne',
+	'wikieditor-template-editor-dialog-submit' => 'Rocaniye',
+	'wikieditor-template-editor-dialog-cancel' => 'Bıtexelne',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -234,6 +248,17 @@ $messages['eu'] = array(
 	'wikieditor-template-editor-dialog-title' => 'Txantiloia aldatu',
 	'wikieditor-template-editor-dialog-submit' => 'Eguneratu',
 	'wikieditor-template-editor-dialog-cancel' => 'Utzi',
+);
+
+/** Persian (فارسی)
+ * @author Ebraminio
+ * @author Huji
+ */
+$messages['fa'] = array(
+	'wikieditor-template-editor-preference' => 'فعال‌سازی ویرایش مبتنی بر فرم الگوهای ویکی',
+	'wikieditor-template-editor-dialog-title' => 'ویرایش الگو',
+	'wikieditor-template-editor-dialog-submit' => 'به روز رسانی',
+	'wikieditor-template-editor-dialog-cancel' => 'لغو',
 );
 
 /** Finnish (Suomi)
@@ -332,6 +357,8 @@ $messages['ia'] = array(
  */
 $messages['id'] = array(
 	'wikieditor-template-editor-preference' => 'Aktifkan penyuntingan berbasis form dari templat wiki',
+	'wikieditor-template-editor-dialog-title' => 'Sunting templat',
+	'wikieditor-template-editor-dialog-submit' => 'Perbarui',
 	'wikieditor-template-editor-dialog-cancel' => 'Batalkan',
 );
 
@@ -500,6 +527,13 @@ $messages['pms'] = array(
 	'wikieditor-template-editor-dialog-cancel' => 'Scancela',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'wikieditor-template-editor-dialog-submit' => 'اوسمهالول',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  */
@@ -554,13 +588,20 @@ $messages['ru'] = array(
  */
 $messages['sah'] = array(
 	'wikieditor-template-editor-preference' => 'Халыыптары форма көмөтүнэн уларытары холбоо',
+	'wikieditor-template-editor-dialog-title' => 'Халыыбы уларытыы',
+	'wikieditor-template-editor-dialog-submit' => 'Саҥардан биэр',
+	'wikieditor-template-editor-dialog-cancel' => 'Тохтот',
 );
 
 /** Sinhala (සිංහල)
  * @author Calcey
+ * @author බිඟුවා
  */
 $messages['si'] = array(
 	'wikieditor-template-editor-preference' => 'විකි අච්චුවල පෝරම-මූලික සංස්කරණය සක්‍රීය කරන්න',
+	'wikieditor-template-editor-dialog-title' => 'සැකිල්ල සංස්කරණය කරන්න',
+	'wikieditor-template-editor-dialog-submit' => 'යාවත්කාලීන කළ',
+	'wikieditor-template-editor-dialog-cancel' => 'අත් හරින්න',
 );
 
 /** Slovak (Slovenčina)
@@ -578,6 +619,22 @@ $messages['sl'] = array(
 	'wikieditor-template-editor-dialog-title' => 'Uredi predlogo',
 	'wikieditor-template-editor-dialog-submit' => 'Posodobi',
 	'wikieditor-template-editor-dialog-cancel' => 'Prekliči',
+);
+
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'wikieditor-template-editor-dialog-title' => 'Измени шаблон',
+	'wikieditor-template-editor-dialog-submit' => 'Ажурирај',
+	'wikieditor-template-editor-dialog-cancel' => 'Поништи',
+);
+
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'wikieditor-template-editor-dialog-title' => 'Izmeni šablon',
+	'wikieditor-template-editor-dialog-submit' => 'Ažuriraj',
+	'wikieditor-template-editor-dialog-cancel' => 'Poništi',
 );
 
 /** Swedish (Svenska)
@@ -658,6 +715,16 @@ $messages['yi'] = array(
 	'wikieditor-template-editor-dialog-title' => 'רעדאַקטירן מוסטער',
 	'wikieditor-template-editor-dialog-submit' => 'דערהײַנטיקן',
 	'wikieditor-template-editor-dialog-cancel' => 'אַנולירן',
+);
+
+/** Cantonese (粵語)
+ * @author Horacewai2
+ */
+$messages['yue'] = array(
+	'wikieditor-template-editor-preference' => '啟用模板form-based編輯功能',
+	'wikieditor-template-editor-dialog-title' => '改模板',
+	'wikieditor-template-editor-dialog-submit' => '更新',
+	'wikieditor-template-editor-dialog-cancel' => '取消',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

@@ -2,7 +2,8 @@
 /**
  * Internationalisation file for extension Tab0.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $messages = array();
@@ -65,6 +66,13 @@ $messages['bs'] = array(
  */
 $messages['ca'] = array(
 	'tab0-desc' => "Afegeix una pestanya '0' que enllaça a la pàgina d'edició de la primera secció de la pàgina",
+);
+
+/** Chechen (Нохчийн)
+ * @author Sasan700
+ */
+$messages['ce'] = array(
+	'tab0-desc' => 'Тlетуху юкъадиллар «0», хьост йеш оцу рéдоккхучу агlон дуьххьаралера агlона дакъан',
 );
 
 /** Czech (Česky)
@@ -411,6 +419,13 @@ $messages['vec'] = array(
  */
 $messages['vi'] = array(
 	'tab0-desc' => 'Thêm tab "0", liên kết đến trang sửa đổi tại đề mục đầu tiên của trang',
+);
+
+/** Cantonese (粵語)
+ * @author Horacewai2
+ */
+$messages['yue'] = array(
+	'tab0-desc' => '新增"0"標籤去編輯第一段',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

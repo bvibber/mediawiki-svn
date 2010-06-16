@@ -899,7 +899,7 @@ $messages['mk'] = array(
 	'refreshspecial-none-selected' => 'Немате одбрано ниедна специјална страница. Враќам на основно зададениот избор.',
 	'refreshspecial-db-error' => 'Неуспешно: Грешка во базата на податоци',
 	'refreshspecial-no-page' => 'Нема таква специјална страница',
-	'refreshspecial-slave-lagged' => 'Зависниот сервер заостанува. Чекам...',
+	'refreshspecial-slave-lagged' => 'Зависниот опслужувач заостанува. Чекам...',
 	'refreshspecial-reconnected' => 'Преповрзано.',
 	'refreshspecial-reconnecting' => 'Поврзувањето не успеа. Се преповрзувам за 10 секунди...',
 	'refreshspecial-page-result' => '{{PLURAL:$1|$Внесен е 1 ред|Внесени се $1 реда}} во',
@@ -1234,6 +1234,42 @@ Upozornenie: na väčších wiki môže obnovenie chvíľu trvať.',
 	'refreshspecial-page-result' => '{{PLURAL:$1|zadaný $1 riadok|zadané $1 riadky|zadaných $1 riadkov}}',
 	'refreshspecial-total-display' => '{{PLURAL:$1|Obnovená $1 stránka|Obnovené $1 stránky|Obnovených $1 stránok}}, čo činí $2 {{PLURAL:$2|riadok|riadky|riadkov}} za čas $3 (celkový čas behu skriptu je $4)',
 	'right-refreshspecial' => 'Obnoviť špeciálne stránky',
+);
+
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'refreshspecial-button' => 'Освежи назначено',
+	'refreshspecial-fail' => 'Треба да назначите макар једну специјалну страну за освежавање.',
+	'refreshspecial-refreshing' => 'Освежавање специјалних страна',
+	'refreshspecial-choice' => 'освежавање специјалних страна',
+	'refreshspecial-js-disabled' => '(<i>Не можете да назначите све стране када је JavaScript онемогућен</i>)',
+	'refreshspecial-select-all-pages' => 'Означи све стране',
+	'refreshspecial-link-back' => 'Врати се на специјалну страну',
+	'refreshspecial-none-selected' => 'Можда нисте означили ни једну специјалну страну. Враћање на подразумеван избор.',
+	'refreshspecial-db-error' => 'Није успело: Грешка у бази података',
+	'refreshspecial-no-page' => 'Нема такве специјалне стране',
+	'refreshspecial-reconnected' => 'Реконектован.',
+	'refreshspecial-reconnecting' => 'Конекција није успела, реконекција за 10 секунди...',
+	'refreshspecial-page-result' => '{{PLURAL:$1|добијен|добијено}} $1 {{PLURAL:$1|ред|редова}} у',
+);
+
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'refreshspecial-button' => 'Osveži naznačeno',
+	'refreshspecial-fail' => 'Treba da naznačite makar jednu specijalnu stranu za osvežavanje.',
+	'refreshspecial-refreshing' => 'Osvežavanje specijalnih strana',
+	'refreshspecial-choice' => 'osvežavanje specijalnih strana',
+	'refreshspecial-js-disabled' => '(<i>Ne možete da naznačite sve strane kada je JavaScript onemogućen</i>)',
+	'refreshspecial-select-all-pages' => 'Označi sve strane',
+	'refreshspecial-link-back' => 'Vrati se na specijalnu stranu',
+	'refreshspecial-none-selected' => 'Možda niste označili ni jednu specijalnu stranu. Vraćanje na podrazumevan izbor.',
+	'refreshspecial-db-error' => 'Nije uspelo: Greška u bazi podataka',
+	'refreshspecial-no-page' => 'Nema takve specijalne strane',
+	'refreshspecial-reconnected' => 'Rekonektovan.',
+	'refreshspecial-reconnecting' => 'Konekcija nije uspela, rekonekcija za 10 sekundi...',
+	'refreshspecial-page-result' => '{{PLURAL:$1|dobijen|dobijeno}} $1 {{PLURAL:$1|red|redova}} u',
 );
 
 /** Seeltersk (Seeltersk)

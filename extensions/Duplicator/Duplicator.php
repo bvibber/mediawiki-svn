@@ -4,7 +4,8 @@ if (!defined('MEDIAWIKI')) die();
  * Special page which creates independent copies of articles, retaining
  * separate histories
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  * @author Rob Church <robchur@gmail.com>
  */
 
@@ -41,7 +42,7 @@ $wgDuplicatorRevisionLimit = 250;
 function efDuplicator() {
 	global $wgHooks;
 	$wgHooks['SkinTemplateBuildNavUrlsNav_urlsAfterPermalink'][] = 'efDuplicatorNavigation';
-	$wgHooks['MonoBookTemplateToolboxEnd'][] = 'efDuplicatorToolbox';
+	$wgHooks['SkinTemplateToolboxEnd'][] = 'efDuplicatorToolbox';
 }
 
 /**

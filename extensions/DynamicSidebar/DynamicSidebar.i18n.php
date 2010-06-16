@@ -12,6 +12,13 @@ $messages['en'] = array(
 	'dynamicsidebar-desc' => 'Provides dynamic sidebars based on user pages, groups, and categories',
 );
 
+/** Message documentation (Message documentation)
+ * @author Umherirrender
+ */
+$messages['qqq'] = array(
+	'dynamicsidebar-desc' => '{{desc}}',
+);
+
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author Wizardist
  */
@@ -203,6 +210,13 @@ $messages['pt'] = array(
 	'dynamicsidebar-desc' => 'Cria barras laterais dinâmicas baseadas nas páginas, grupos e categorias dos utilizadores',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Giro720
+ */
+$messages['pt-br'] = array(
+	'dynamicsidebar-desc' => 'Cria barras laterais dinâmicas baseadas nas páginas, grupos e categorias dos utilizadores',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */
@@ -215,6 +229,18 @@ $messages['roa-tara'] = array(
  */
 $messages['ru'] = array(
 	'dynamicsidebar-desc' => 'Обеспечивает динамические боковые панели на основе личных страниц участников, групп и категорий',
+);
+
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'dynamicsidebar-desc' => 'Омогућава динамичке сајдбарове чији се садржај базира на корисничким странама, групама и категоријама',
+);
+
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'dynamicsidebar-desc' => 'Omogućava dinamičke sajdbarove čiji se sadržaj bazira na korisničkim stranama, grupama i kategorijama',
 );
 
 /** Sundanese (Basa Sunda)
@@ -250,6 +276,13 @@ $messages['tl'] = array(
  */
 $messages['tr'] = array(
 	'dynamicsidebar-desc' => 'Kullanıcı sayfaları, gruplar ve kategorilere dayanarak dinamik kenar çubukları sağlar',
+);
+
+/** Ukrainian (Українська)
+ * @author Тест
+ */
+$messages['uk'] = array(
+	'dynamicsidebar-desc' => 'Додає динамічні бічні панелі на основі особистих сторінок користувачів, груп і категорій',
 );
 
 /** Vietnamese (Tiếng Việt)

@@ -2,7 +2,8 @@
 /**
  * Internationalisation file for Checkpoint extension.
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $messages = array();
@@ -12,6 +13,13 @@ $messages['en'] = array(
 	'checkpoint-desc'    => 'Allows one to save an edit and continue editing',
 	'checkpoint-tooltip' => 'Save your progress and continue editing the page',
 	'checkpoint-notice'  => '([[{{ns:project}}:Checkpoint|checkpoint save]])',
+);
+
+/** Message documentation (Message documentation)
+ * @author Umherirrender
+ */
+$messages['qqq'] = array(
+	'checkpoint-desc' => '{{desc}}',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
@@ -50,6 +58,13 @@ $messages['de'] = array(
 	'checkpoint-desc' => 'Ermöglicht das Speichern einer Bearbeitung mit anschließender automatischer Rückkehr zum Bearbeitungsfenster',
 	'checkpoint-tooltip' => 'Speichere den aktuellen Bearbeitungsstand und fahre sogleich mit der Bearbeitung fort',
 	'checkpoint-notice' => '([[{{ns:project}}:Checkpoint|Zwischenspeicherung]])',
+);
+
+/** German (formal address) (Deutsch (Sie-Form))
+ * @author Kghbln
+ */
+$messages['de-formal'] = array(
+	'checkpoint-tooltip' => 'Speichern Sie den aktuellen Bearbeitungsstand und fahren Sie sogleich mit der Bearbeitung fort',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -152,6 +167,16 @@ $messages['ja'] = array(
 	'checkpoint-notice' => '([[{{ns:project}}:Checkpoint|チェックポイントの保存]])',
 );
 
+/** Korean (한국어)
+ * @author Kwj2772
+ */
+$messages['ko'] = array(
+	'checkpoint' => '저장하고 편집을 계속하기',
+	'checkpoint-desc' => '편집을 저장함과 동시에 계속하여 편집할 수 있도록 함',
+	'checkpoint-tooltip' => '지금까지 편집한 내용을 저장하고 편집을 계속합니다.',
+	'checkpoint-notice' => '([[{{ns:project}}:중간 저장]])',
+);
+
 /** Luxembourgish (Lëtzebuergesch)
  * @author Robby
  */
@@ -234,10 +259,14 @@ $messages['pt'] = array(
 );
 
 /** Brazilian Portuguese (Português do Brasil)
+ * @author Giro720
  * @author Luckas Blade
  */
 $messages['pt-br'] = array(
 	'checkpoint' => 'Salvar e continuar editando',
+	'checkpoint-desc' => 'Permite gravar uma edição e continuar a editar',
+	'checkpoint-tooltip' => 'Gravar seu progresso e seguir editando a página',
+	'checkpoint-notice' => '([[{{ns:project}}:Checkpoint|gravação do estado presente]])',
 );
 
 /** Russian (Русский)
@@ -248,6 +277,24 @@ $messages['ru'] = array(
 	'checkpoint-desc' => 'Позволяет сохранить изменения и продолжить редактирование',
 	'checkpoint-tooltip' => 'Сохраните вашу работу и продолжите редактирование страницы',
 	'checkpoint-notice' => '([[{{ns:project}}:Checkpoint|сохранение контрольной точки]])',
+);
+
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Charmed94
+ */
+$messages['sr-ec'] = array(
+	'checkpoint' => 'Сачувај и настави уређивање',
+	'checkpoint-desc' => 'Омогућава Вам да сачувате измене и наставите уређивање',
+	'checkpoint-tooltip' => 'Сачувајте свој напредак и наставите уређивање стране',
+	'checkpoint-notice' => '([[{{ns:project}}:Checkpoint|прелаз чувања]])',
+);
+
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'checkpoint' => 'Sačuvaj i nastavi uređivanje',
+	'checkpoint-desc' => 'Omogućava Vam da sačuvate izmene i nastavite uređivanje',
+	'checkpoint-tooltip' => 'Sačuvajte svoj napredak i nastavite uređivanje strane',
+	'checkpoint-notice' => '([[{{ns:project}}:Checkpoint|prelaz čuvanja]])',
 );
 
 /** Swedish (Svenska)

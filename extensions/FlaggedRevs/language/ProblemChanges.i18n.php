@@ -2,7 +2,8 @@
 /**
  * Internationalisation file for FlaggedRevs extension, section ProblemChanges
  *
- * @addtogroup Extensions
+ * @file
+ * @ingroup Extensions
  */
 
 $messages = array();
@@ -72,6 +73,13 @@ $messages['bg'] = array(
 	'problemchanges-category' => 'Категория:',
 );
 
+/** Bengali (বাংলা)
+ * @author Bellayet
+ */
+$messages['bn'] = array(
+	'problemchanges-category' => 'বিষয়শ্রেণী:',
+);
+
 /** Breton (Brezhoneg)
  * @author Fulup
  * @author Y-M D
@@ -130,7 +138,7 @@ $messages['de'] = array(
  * @author Xoser
  */
 $messages['diq'] = array(
-	'problemchanges' => 'Vuranayîşanê etiket biyo înan kontrol bike',
+	'problemchanges' => 'Vuranayîşanê etiket biyo vindeno',
 	'problemchanges-legend' => 'Pelanê ke be vurnayışi etiket biyê u seba çımraviyarnayışi pawenê lista ke',
 	'problemchanges-none' => 'Ser ena kriteri de pelan çini yo',
 	'problemchanges-category' => 'Kategorî:',
@@ -403,7 +411,7 @@ $messages['lb'] = array(
  */
 $messages['mk'] = array(
 	'problemchanges' => 'Означени промени во исчекување',
-	'problemchanges-legend' => 'Листа на страници со означени уредувања во исчекување на оценка',
+	'problemchanges-legend' => 'Список на страници со означени уредувања во исчекување на проверка',
 	'problemchanges-none' => 'Моментално нема страници кои ги задоволуваат овие критериуми',
 	'problemchanges-category' => 'Категорија:',
 );
@@ -508,10 +516,11 @@ $messages['pt'] = array(
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Eduardo.mps
+ * @author Giro720
  */
 $messages['pt-br'] = array(
-	'problemchanges' => 'Analisar modificações etiquetadas',
-	'problemchanges-legend' => 'Lista páginas analisadas que possuem edições que não foram verificadas',
+	'problemchanges' => 'Alterações pendentes que foram assinaladas',
+	'problemchanges-legend' => 'Listar páginas com edições assinaladas aguardando revisão',
 	'problemchanges-none' => 'Atualmente não existem páginas que satisfaçam estes critérios',
 	'problemchanges-category' => 'Categoria:',
 );
@@ -594,6 +603,14 @@ $messages['sr-ec'] = array(
 	'problemchanges-category' => 'Категорија:',
 );
 
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'problemchanges' => 'Označene izmene na čekanju',
+	'problemchanges-legend' => 'Prelistaj stranice na čekanju s označenim izmenama za pregled',
+	'problemchanges-none' => 'Trenutno nema stranica koje ispunjavaju ovaj kriterijum',
+	'problemchanges-category' => 'Kategorija:',
+);
+
 /** Sundanese (Basa Sunda)
  * @author Irwangatot
  */
@@ -604,11 +621,12 @@ $messages['su'] = array(
 );
 
 /** Swedish (Svenska)
+ * @author Boivie
  * @author Per
  * @author Rotsee
  */
 $messages['sv'] = array(
-	'problemchanges' => 'Granska märkta ändringar',
+	'problemchanges' => 'Taggade väntande ändringar',
 	'problemchanges-legend' => 'Visa sidor med märkta ändringar som skall granskas',
 	'problemchanges-none' => 'Det finns just nu inga sidor som matchar dessa kriterier',
 	'problemchanges-category' => 'Kategori:',
@@ -698,6 +716,8 @@ $messages['vi'] = array(
  * @author Jimmy xu wrk
  */
 $messages['zh-hans'] = array(
+	'problemchanges' => '标记审核',
+	'problemchanges-legend' => '列出页面正等待审核',
 	'problemchanges-none' => '目前没有页面符合这些条件',
 	'problemchanges-category' => '分类:',
 );

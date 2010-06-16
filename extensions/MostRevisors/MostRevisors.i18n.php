@@ -2,8 +2,9 @@
 /**
  * Internationalisation file for extension mostrevisors.
  *
- * @addtogroup Extensions
-*/
+ * @file
+ * @ingroup Extensions
+ */
 
 $messages = array();
 
@@ -549,7 +550,7 @@ $messages['lg'] = array(
  */
 $messages['mk'] = array(
 	'mostrevisors' => 'Страници со највеќе уредници',
-	'mostrevisors-desc' => 'Листа на [[Special:MostRevisors|страници со највеќе уредници]]',
+	'mostrevisors-desc' => 'Список на [[Special:MostRevisors|страници со највеќе уредници]]',
 	'mostrevisors-header' => "'''На оваа страница {{PLURAL:$1|е наведена страница|се наведени $1 страници}} со највеќе уредници.'''",
 	'mostrevisors-limitlinks' => 'Прикажи $1 страници',
 	'mostrevisors-namespace' => 'Именски простор:',
@@ -770,6 +771,20 @@ $messages['sk'] = array(
 	'mostrevisors-hideredir' => 'Skryť presmerovacie stránky',
 	'mostrevisors-users' => '- $1 {{PLURAL:$1|používateľ|používatelia|používateľov}}',
 	'mostrevisors-viewcontributors' => 'Zobraziť hlavných prispievateľov',
+);
+
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'mostrevisors-namespace' => 'Именски простор:',
+	'mostrevisors-submit' => 'Иди',
+);
+
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'mostrevisors-namespace' => 'Imenski prostor:',
+	'mostrevisors-submit' => 'Idi',
 );
 
 /** Swedish (Svenska)

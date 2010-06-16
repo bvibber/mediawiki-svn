@@ -135,6 +135,19 @@ $messages['bs'] = array(
 	'newschannel_submit_button' => 'Napravi fid',
 );
 
+/** Chechen (Нохчийн)
+ * @author Sasan700
+ */
+$messages['ce'] = array(
+	'newschannel' => 'Хааман зlе',
+	'newschannel-desc' => 'Кхуллу хааман аса башхонца [[Special:NewsChannel|белха агlо санна]]',
+	'newschannel_format' => 'Хааман барам:',
+	'newschannel_limit' => 'Тlаьхьара хааман дукхалла:',
+	'newschannel_include_category' => 'Кхин тlе кадегар:',
+	'newschannel_exclude_category' => 'Юкъараяккха кадегар:',
+	'newschannel_submit_button' => 'Араяккха',
+);
+
 /** Czech (Česky)
  * @author Matěj Grabovský
  */
@@ -548,6 +561,7 @@ $messages['pms'] = array(
  */
 $messages['ps'] = array(
 	'newschannel' => 'خبري کانال',
+	'newschannel_format' => 'بڼه:',
 	'newschannel_limit' => 'بريد:',
 	'newschannel_include_category' => 'اضافه وېشنيزه:',
 );

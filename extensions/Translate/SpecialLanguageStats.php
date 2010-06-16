@@ -1,6 +1,4 @@
 <?php
-if ( !defined( 'MEDIAWIKI' ) ) die();
-
 /**
  * Implements a special page which givens translation statistics for a given
  * set of message groups. Message group names can be entered (pipe separated)
@@ -32,7 +30,11 @@ class SpecialLanguageStats extends IncludableSpecialPage {
 		if ( !$this->including() ) {
 			$code = $wgRequest->getVal( 'code', $par );
 			$suppressComplete = $wgRequest->getVal( 'suppresscomplete', $par );
-			$wgOut->addHTML( $this->languageForm( $code, $suppressComplete ) );
+			$wgOut->addHTML( $this->buildLanguageForm( $code, $suppressComplete ) );
+/*
+			$form = $this->buildLanguageForm( $code, $suppressComplete );
+			$form->show();
+*/
 		} else {
 			$paramArray = explode( '/', $par, 2 );
 			$code = $paramArray[0];
@@ -44,7 +46,7 @@ class SpecialLanguageStats extends IncludableSpecialPage {
 		if ( array_key_exists( $code, Language::getLanguageNames() ) ) {
 			$out .= $this->getGroupStats( $code, $suppressComplete );
 		} else if ( $code ) {
-			$wgOut->addWikiMsg( 'translate-page-no-such-language' );
+			$wgOut->wrapWikiMsg( "<div class='error'>$1</div>", 'translate-page-no-such-language' );
 		}
 
 		$wgOut->addHTML( $out );
@@ -56,9 +58,28 @@ class SpecialLanguageStats extends IncludableSpecialPage {
 	* @param bool $suppressComplete If completely translated groups should be suppressed
 	* @return string HTML
 	*/
-	function languageForm( $code = '', $suppressComplete = false ) {
+	function buildLanguageForm( $code = '', $suppressComplete = false ) {
 		global $wgScript;
 		$t = $this->getTitle();
+
+/*
+		$formFields = array(
+			'code' => array(
+				'type' => 'text',
+				'label-message' => 'translate-language-code-field-name',
+				'size' => '30'
+			),
+			'suppresscomplete' => array(
+				'type' => 'toggle',
+				'label-message' => 'translate-suppress-complete',
+			),
+		);
+
+		$form = new HTMLForm( $formFields );
+		$form->setTitle( SpecialPage::getTitleFor( 'LanguageStats' ) );
+
+		return $form;
+*/
 
 		$out  = Xml::openElement( 'div', array( 'class' => 'languagecode' ) );
 		$out .= Xml::openElement( 'form', array( 'method' => 'get', 'action' => $wgScript ) );

@@ -18,8 +18,9 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
+ * @file
  * @author Evan Prodromou <evan@prodromou.name>
- * @addtogroup Extensions
+ * @ingroup Extensions
  */
 
 $messages = array();
@@ -298,6 +299,7 @@ $messages['am'] = array(
  * @author Juanpabl
  */
 $messages['an'] = array(
+	'openidlanguage' => 'Idioma',
 	'openid-urls-action' => 'Acción',
 	'openid-urls-delete' => 'Borrar',
 );
@@ -976,6 +978,13 @@ Nebudete se již moci tímto OpenID přihlasít.',
  */
 $messages['cu'] = array(
 	'openidlanguage' => 'ѩꙁꙑ́къ',
+);
+
+/** Welsh (Cymraeg)
+ * @author (vinny)
+ */
+$messages['cy'] = array(
+	'openidoptional' => 'Dewisol',
 );
 
 /** Danish (Dansk)
@@ -2520,6 +2529,7 @@ Il esserea impossibile aperir un session sin OpenID.',
 /** Indonesian (Bahasa Indonesia)
  * @author -iNu-
  * @author Bennylin
+ * @author Irwangatot
  * @author IvanLanin
  * @author Kenrick95
  * @author Rex
@@ -2557,9 +2567,10 @@ Pesan kesalahan: "$1"',
 	'openidemail' => 'Alamat surel',
 	'openidlanguage' => 'Bahasa',
 	'openidtimezone' => 'Zona waktu',
-	'openidchooselegend' => 'Nama pengguna pilihan',
+	'openidchooselegend' => 'Pilihan nama pengguna',
 	'openidchooseinstructions' => 'Semua pengguna memerlukan sebuah nama panggilan;
 Anda dapat memilih dari salah satu opsi berikut.',
+	'openidchoosenick' => 'Nama panggilan anda ($1)',
 	'openidchoosefull' => 'Nama lengkap Anda ($1)',
 	'openidchooseurl' => 'Sebuah nama diambil dari OpenID Anda ($1)',
 	'openidchooseauto' => 'Nama yang dibuat secara otomatis ($1)',
@@ -2596,6 +2607,8 @@ Ada banyak [http://openid.net/get penyedia OpenID], dan Anda mungkin telah memil
 Anda tidak akan dapat masuk log lagi dengan OpenID ini.',
 	'openiddelete-button' => 'Konfirmasi',
 	'openiddeleteerrornopassword' => 'Anda tidak dapat menghapus semua OpenID Anda karena akun Anda tidak diberi kata sandi.
+Anda tidak akan dapat masuk log tanpa OpenID.',
+	'openiddeleteerroropenidonly' => 'Anda tidak dapat menghapus semua OpenIDs Anda karena Anda hanya diijinkan masuk log dengan OpenID. 
 Anda tidak akan dapat masuk log tanpa OpenID.',
 	'openiddelete-sucess' => 'OpenID telah dihapus dari akun Anda.',
 	'openiddelete-error' => 'Terjadi kesalahan saat berusaha menghapus OpenID dari akun Anda.',
@@ -2890,7 +2903,7 @@ $messages['km'] = array(
 អ្នកអាចជ្រើសរើសពីក្នុងជម្រើសខាងក្រោម។',
 	'openidchoosefull' => 'ឈ្មោះពេញ​របស់អ្នក ($1)',
 	'openidchoosemanual' => 'ឈ្មោះនៃជម្រើសរបស់អ្នក:',
-	'openidchooseexisting' => 'គណនីមាននៅក្នុងវិគីនេះ:',
+	'openidchooseexisting' => 'គណនីដែលមានរួចហើយនៅក្នុងវិគីនេះ',
 	'openidchoosepassword' => 'ពាក្យសំងាត់៖',
 	'openidconvertsuccess' => 'បានបម្លែងទៅ OpenID ដោយជោគជ័យ',
 	'openidconvertyourstext' => 'វាជាOpenIDរបស់អ្នករួចហើយ។',
@@ -3239,7 +3252,7 @@ $messages['mhr'] = array(
 $messages['mk'] = array(
 	'openid-desc' => 'Најавувајте се на викито со [http://openid.net/ OpenID], и најавувајте се со други OpenID-поддржни страници со вики-корисничка сметка',
 	'openidlogin' => 'Најавување со OpenID',
-	'openidserver' => 'OpenID сервер',
+	'openidserver' => 'OpenID опслужувач',
 	'openidxrds' => 'Yadis податотека',
 	'openidconvert' => 'OpenID претворач',
 	'openiderror' => 'Грешка при потврдувањето',
@@ -3248,7 +3261,7 @@ $messages['mk'] = array(
 	'openidconfigerrortext' => 'Складишната конфигурација на OpenID за ова вики е погрешна.
 Консултирајте се со [[Special:ListUsers/sysop|администратор]].',
 	'openidpermission' => 'Грешка при дозволување на OpenID',
-	'openidpermissiontext' => 'На внесениот OpenID не му е дозволено најавување на овој сервер.',
+	'openidpermissiontext' => 'На внесениот OpenID не му е дозволено најавување на овој опслужувач.',
 	'openidcancel' => 'Потврдувањето е откажано',
 	'openidcanceltext' => 'Потврдувањето на URL адресата на OpenID беше откажана.',
 	'openidfailure' => ' Потврдувањето не успеа',
@@ -4722,13 +4735,17 @@ $messages['sr-ec'] = array(
 	'openidfullname' => 'Пуно име',
 	'openidemail' => 'Е-пошта',
 	'openidlanguage' => 'Језик',
+	'openidtimezone' => 'Временска зона',
+	'openidchooselegend' => 'Избор корисничког имена',
 	'openidchooseinstructions' => 'Сваки корисник треба да има надимак;
 Можете да изаберете једну од опција испод.',
+	'openidchoosenick' => 'Ваш надимак ($1)',
 	'openidchoosefull' => 'Важе пуно име ($1)',
 	'openidchooseurl' => 'Име преузето од вашег OpenID ($1)',
 	'openidchooseauto' => 'Аутоматски генерисано корисничко име ($1)',
 	'openidchoosemanual' => 'Изаберите корисничко име:',
-	'openidchooseexisting' => 'Постојећи налог на овој Вики:',
+	'openidchooseexisting' => 'Постојећи налог на овој Вики',
+	'openidchooseusername' => 'Корисничко име:',
 	'openidchoosepassword' => 'лозинка:',
 	'openidconvertsuccess' => 'Конверзија ка OpenID је успешна',
 	'openidconvertsuccesstext' => 'Успешно сте прменили свој OpenID на $1.',
@@ -4738,10 +4755,13 @@ $messages['sr-ec'] = array(
 	'openidbadusername' => 'Задато неисправно корисничко име.',
 	'openidclientonlytext' => 'Ви не можете да користите налоге са овог Викија као OpenID-ове на другим сајтовима.',
 	'openidloginlabel' => 'OpenID URL',
-	'openidupdateuserinfo' => 'Актуализуј моје личне податке',
+	'openidupdateuserinfo' => 'Актуализуј моје личне податке:',
+	'openiddelete-button' => 'Потврди',
 	'openid-prefstext' => '[http://openid.net/ OpenID] подешавања',
 	'openid-pref-hide' => 'Сакријте свој OpenID URL са корисничке стране, ако се са њим логујете.',
-	'openid-pref-update-userinfo-on-login' => 'Актуализуј моје информације са OpenID личност сваки пут кад се улогујем',
+	'openid-pref-update-userinfo-on-login' => 'Актуализуј следеће информације OpenID идентитета сваки пут кад се улогујем:',
+	'openid-urls-action' => 'Акција',
+	'openid-urls-delete' => 'Обриши',
 );
 
 /** Serbian Latin ekavian (Srpski (latinica))
@@ -4768,13 +4788,17 @@ $messages['sr-el'] = array(
 	'openidfullname' => 'Puno ime',
 	'openidemail' => 'E-pošta',
 	'openidlanguage' => 'Jezik',
+	'openidtimezone' => 'Vremenska zona',
+	'openidchooselegend' => 'Izbor korisničkog imena',
 	'openidchooseinstructions' => 'Svaki korisnik treba da ima nadimak;
 Možete da izaberete jednu od opcija ispod.',
+	'openidchoosenick' => 'Vaš nadimak ($1)',
 	'openidchoosefull' => 'Vaše puno ime ($1)',
 	'openidchooseurl' => 'Ime preuzeto od vašeg OpenID ($1)',
 	'openidchooseauto' => 'Automatski generisano korisničko ime ($1)',
 	'openidchoosemanual' => 'Izaberite korisničko ime:',
-	'openidchooseexisting' => 'Postojeći nalog na ovoj Viki:',
+	'openidchooseexisting' => 'Postojeći nalog na ovoj Viki',
+	'openidchooseusername' => 'Korisničko ime:',
 	'openidchoosepassword' => 'lozinka:',
 	'openidconvertsuccess' => 'Konverzija ka OpenID je uspešna',
 	'openidconvertsuccesstext' => 'Uspešno ste prmenili svoj OpenID na $1.',
@@ -4784,9 +4808,13 @@ Možete da izaberete jednu od opcija ispod.',
 	'openidbadusername' => 'Zadato neispravno korisničko ime.',
 	'openidclientonlytext' => 'Vi ne možete da koristite naloge sa ovog Vikija kao OpenID-ove na drugim sajtovima.',
 	'openidloginlabel' => 'OpenID URL',
-	'openidupdateuserinfo' => 'Aktualizuj moje lične podatke',
+	'openidupdateuserinfo' => 'Aktualizuj moje lične podatke:',
+	'openiddelete-button' => 'Potvrdi',
 	'openid-prefstext' => '[<a href="http://openid.net/">http://openid.net/</a> OpenID] podešavanja',
 	'openid-pref-hide' => 'Sakrijte svoj OpenID URL sa korisničke strane, ako se sa njim logujete.',
+	'openid-pref-update-userinfo-on-login' => 'Aktualizuj sledeće informacije OpenID identiteta svaki put kad se ulogujem:',
+	'openid-urls-action' => 'Akcija',
+	'openid-urls-delete' => 'Obriši',
 );
 
 /** Seeltersk (Seeltersk)
@@ -5156,7 +5184,7 @@ makakapili ka mula sa mga pagpipiliang nasa ibaba.',
 	'openidchoosemanual' => 'Isang pangalang ikaw ang pumili:',
 	'openidchooseexisting' => 'Isang umiiral na akawnt sa wiking ito:',
 	'openidchooseusername' => 'Pangalan ng tagagamit:',
-	'openidchoosepassword' => 'hudyat:',
+	'openidchoosepassword' => 'Hudyat:',
 	'openidconvertinstructions' => 'Nagpapahintulot ang pormularyong ito upang mabago mo ang iyong akawnt na pangtagagamit upang magamit ang isang URL ng OpenID o makapagdagdag ng maraming pang mga URL na pang-OpenID.',
 	'openidconvertoraddmoreids' => 'Gawing OpenID o magdagdag ng iba pang URL na pang-OpenID',
 	'openidconvertsuccess' => 'Matagumpay na napalitan (nabago) upang maging OpenID',
@@ -5674,13 +5702,16 @@ $messages['zh-hans'] = array(
 	'openidemail' => '电子邮件地址',
 	'openidlanguage' => '语言',
 	'openidtimezone' => '时区',
+	'openidchooselegend' => '用户名选择',
 	'openidchooseinstructions' => '所有的用户都需要提供昵称；
 您可以从下面任选一个。',
+	'openidchoosenick' => '你的暱称 ($1)',
 	'openidchoosefull' => '您的全名（$1）',
 	'openidchooseurl' => '从您的OpenID获取的名称（$1）',
 	'openidchooseauto' => '自动生成的名称（$1）',
 	'openidchoosemanual' => '您选择的名称：',
 	'openidchooseexisting' => '本维基已经存在的帐户：',
+	'openidchooseusername' => '用户名：',
 	'openidchoosepassword' => '密码：',
 	'openidconvertinstructions' => '本表单可以将您的用户账号修改为OpenID地址。',
 	'openidconvertoraddmoreids' => '转换到OpenID或添加另一个OpenID URL',
@@ -5699,7 +5730,9 @@ $messages['zh-hans'] = array(
 	'openidloginlabel' => 'OpenID地址',
 	'openidupdateuserinfo' => '更新我的个人信息',
 	'openiddelete' => '删除OpenID',
+	'openiddelete-text' => '当你按下"{{int:openiddelete-button}}"按钮，你会将OpenID $1从你的户口中移除。你以后都不可以再使用这个OpenID登入。',
 	'openiddelete-button' => '确认',
+	'openiddelete-error' => '在移除你的OpenID的时候出现了一个错误。',
 	'openid-prefstext' => '[http://openid.net/ OpenID]参数设置',
 	'openid-pref-hide' => '如果使用OpenID登陆，您可以在您的用户页隐藏您的OpenID。',
 	'openid-urls-desc' => '和你的帐号关联的OpenID：',
@@ -5782,6 +5815,7 @@ $messages['zh-hant'] = array(
 	'openiddelete' => '刪除OpenID',
 	'openiddelete-text' => '當你按下"{{int:openiddelete-button}}"按鈕，你會將OpenID $1從你的戶口中移除。你以後都不可以再使用這個OpenID登入。',
 	'openiddelete-button' => '確認',
+	'openiddelete-error' => '在移除你的OpenID的時候出現了一個錯誤。',
 	'openid-prefstext' => '[http://openid.net/ OpenID]參數設置',
 	'openid-pref-hide' => '如果使用OpenID登陸，您可以在您的用戶頁隱藏您的OpenID。',
 	'openid-urls-desc' => '和你的帳號關聯的OpenID：',

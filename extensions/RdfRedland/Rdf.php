@@ -17,11 +17,12 @@ if (!defined('MEDIAWIKI')) die();
  *
  *  You should have received a copy of the GNU General Public License
  *  along with this program; if not, write to the Free Software
- *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA *
+ *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ *
+ * @file
  * @author Evan Prodromou <evan@wikitravel.org>
  * @author Mark Jaroski <mark@geekhive.net>
- * @package MediaWiki
- * @subpackage Extensions
+ * @ingroup Extensions
  */
 
 dl('redland.so');
@@ -144,7 +145,7 @@ class MwRdf {
 			$wgOut->addHTML("<option value='${outputname}'>" . wfMsg('rdf-output-' . $outputname) . "</option>");
 		}
 		$wgOut->addHTML("</select></td></tr>" .
-			"<tr><td>&nbsp;</td>" .
+			"<tr><td>&#160;</td>" .
 			"<td><input type='submit' /></td></tr></table></form>");
 	}
 
