@@ -5,7 +5,6 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import de.brightbyte.wikiword.disambig.Term;
 
@@ -21,16 +20,19 @@ public class SpellingAlternator {
 		this.weightFactor = weightFactor;
 	}
 
-	public Collection<Term> getAlternatives(String term) {
-		if (manglers.isEmpty()) return Collections.singleton(new Term(term));
+	public Collection<Term> getAlternatives(String term, Collection<Term> into) {
+		if (manglers.isEmpty() && into==null) {
+			return Collections.singleton(new Term(term));
+		}
 		
-		Set<Term>  alternatives = new HashSet<Term>();
+		if (into==null) into = new HashSet<Term>();
+		into.add(new Term(term));
 		
-		collectAlternatives(term, 0, 1, alternatives);
-		return alternatives;
+		if (!manglers.isEmpty()) collectAlternatives(term, 0, 1, into);
+		return into;
 	}
 	
-	private void collectAlternatives(String term, int index, double weight, Set<Term>  alternatives) {
+	private void collectAlternatives(String term, int index, double weight, Collection<Term>  alternatives) {
 		if (index>=manglers.size()) return;
 		if (!alternatives.add(new Term(term, weight))) return;
 
@@ -44,14 +46,14 @@ public class SpellingAlternator {
 		collectAlternatives(term, index+1, weight, alternatives); //primitive recursion
 	}
 	
-	public List<Collection<Term>> getAlternatives(List<String> terms) {
-		List<Collection<Term>> alternatives = new ArrayList<Collection<Term>>(terms.size());
+	public List<Collection<Term>> getAlternatives(List<String> terms, List<Collection<Term>> into) {
+		if (into == null) into = new ArrayList<Collection<Term>>(terms.size());
 		
 		for (String t: terms) {
-			Collection<Term> alt = getAlternatives(t);
-			alternatives.add(alt);
+			Collection<Term> alt = getAlternatives(t, null);
+			into.add(alt);
 		}
 		
-		return alternatives;
+		return into;
 	}
 }
