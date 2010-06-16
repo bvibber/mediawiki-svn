@@ -5154,6 +5154,8 @@ O comentário só aparecerá após ser revisto por um moderador.',
  * @author Luckas Blade
  */
 $messages['pt-br'] = array(
+	'wikilog-desc' => "Adiciona funcionalidades de ''blog'', criando um híbrido ''wiki-blog''",
+	'wikilog-auto' => 'Wikilog Auto',
 	'wikilog-specialwikilog' => 'Wikilog',
 	'wikilog-log-pagename' => 'Registro de ações wikilog',
 	'wikilog-log-pagetext' => 'Abaixo está uma lista das ações wikilog.',

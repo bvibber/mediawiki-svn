@@ -285,6 +285,9 @@ Honek edizio orrialde honetatik kanpo eramango zaitu eta orain arte idatzitakoa 
 	'ajaxLogin2' => 'Ziur al zaude?
 Orrialde honetan egindako aldaketak gal ditzakezu orrialde honetatik orain alde eginez gero.',
 	'ajaxlogin-create' => 'Kontua sortu',
+	'al-nosuchuser' => 'Ez dago "$1" izena duen lankiderik. 
+ Lankide izenak zehatza izan behar du. 
+ Egiaztatu ondo idatzi duzun.',
 );
 
 /** Finnish (Suomi)

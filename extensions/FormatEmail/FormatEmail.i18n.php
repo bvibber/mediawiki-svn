@@ -208,9 +208,11 @@ $2',
 );
 
 /** Basque (Euskara)
+ * @author An13sa
  * @author Kobazulo
  */
 $messages['eu'] = array(
+	'email-desc' => 'Aukera ematen du, lankide e-postei goiburu/oin pertsonalizatuak erabiltzaileko',
 	'email_footer' => '----------------------------------------------------------------------------
 E-posta hau $1 erabiltzaileak bidali dizu {{SITENAME}} e-posta sistemaren bidez.
 

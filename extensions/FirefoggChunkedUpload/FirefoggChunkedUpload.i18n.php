@@ -68,6 +68,13 @@ $messages['es'] = array(
 	'firefoggcu-desc' => 'Protocolo de carga por trozos de Firefogg',
 );
 
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'firefoggcu-desc' => 'Firefoggen Chunked igoera protokoloa',
+);
+
 /** French (Français)
  * @author Peter17
  */

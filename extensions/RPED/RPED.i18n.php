@@ -210,6 +210,14 @@ $messages['pt'] = array(
 	'rped-wikipedia-url' => 'http://pt.wikipedia.org/wiki/$1',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Giro720
+ */
+$messages['pt-br'] = array(
+	'rped' => 'Detecção da existência de páginas remotas',
+	'rped-desc' => 'Liga um link à Wikipédia, se a página de destino não existir na wiki local mas existir na Wikipédia',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

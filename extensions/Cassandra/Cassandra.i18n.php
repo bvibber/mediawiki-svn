@@ -53,6 +53,13 @@ $messages['es'] = array(
 	'cassandra-desc' => 'Almacenar el text ode revisión en la base de datos [http://cassandra.apache.org/ Apache Cassandra]',
 );
 
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'cassandra-desc' => 'Denda berrikuspena [http://cassandra.apache.org/ Apache Cassandra] testu datu-basean',
+);
+
 /** Finnish (Suomi)
  * @author Str4nd
  */

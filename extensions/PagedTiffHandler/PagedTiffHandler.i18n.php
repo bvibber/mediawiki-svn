@@ -459,11 +459,26 @@ $messages['pt'] = array(
 
 /** Brazilian Portuguese (Português do Brasil)
  * @author Luckas Blade
+ * @author 555
  */
 $messages['pt-br'] = array(
-	'tiff_file_too_large' => 'O arquivo carregado é muito grande e foi recusado.',
-	'tiff_out_of_service' => 'O arquivo carregado não pôde ser processado. ImageMagick não está disponível.',
-	'tiff_bad_file' => 'O arquivo carregado contém erros.',
+	'tiff-desc' => 'Permite visualizar arquivos TIFF como imagens',
+	'tiff_no_metadata' => 'Não foi possível obter os metadados do TIFF',
+	'tiff_page_error' => 'Número de página fora do intervalo',
+	'tiff_too_many_embed_files' => 'A imagem possui arquivos embutidos demais.',
+	'tiff_sourcefile_too_large' => 'A resolução do arquivo original é muito grande.
+Não serão geradas miniaturas.',
+	'tiff_targetfile_too_large' => 'A resolução do arquivo de destino é muito grande.
+Não serão geradas miniaturas.',
+	'tiff_file_too_large' => 'O arquivo enviado foi recusado por ser muito grande.',
+	'tiff_out_of_service' => 'O arquivo enviado não pôde ser processado.
+ImageMagick não está disponível.',
+	'tiff_too_much_meta' => 'Os metadados ocupam muito espaço.',
+	'tiff_error_cached' => 'Este arquivo só poderá ser renderizado no próximo intervalo de cache.',
+	'tiff_size_error' => 'O tamanho reportado do arquivo não confere com o tamanho real.',
+	'tiff_script_detected' => 'O arquivo enviado contém scripts.',
+	'tiff_bad_file' => 'O arquivo enviado contém erros.',
+	'tiff-file-info-size' => '(página $5, $1 × $2 pixeis, tamanho do arquivo: $3, tipo MIME: $4)',
 );
 
 /** Russian (Русский)

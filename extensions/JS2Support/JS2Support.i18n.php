@@ -66,10 +66,11 @@ $messages['dsb'] = array(
 /** Spanish (Español)
  * @author Crazymadlover
  * @author Diego Grez
+ * @author Drini
  */
 $messages['es'] = array(
 	'js2support-desc' => 'Soporte JS2 como una extensión',
-	'js2support-debug-preference' => 'Desactivar minificación y agrupado de scripts',
+	'js2support-debug-preference' => 'Desactivar minimización y agrupado de scripts',
 	'prefs-script-debug' => 'Depuración de script',
 );
 
