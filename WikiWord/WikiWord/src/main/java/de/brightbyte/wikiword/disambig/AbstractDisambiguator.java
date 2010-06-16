@@ -3,10 +3,8 @@ package de.brightbyte.wikiword.disambig;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import de.brightbyte.io.Output;
 import de.brightbyte.util.PersistenceException;
@@ -16,46 +14,6 @@ import de.brightbyte.wikiword.model.TermReference;
 import de.brightbyte.wikiword.model.WikiWordConcept;
 
 public abstract class AbstractDisambiguator<T extends TermReference, C extends WikiWordConcept> implements Disambiguator<T, C> {
-
-	public interface NodeListener<T extends TermReference> {
-		public void onNode(PhraseNode<? extends T> node, List<? extends T> seqence, boolean terminal);
-	}
-
-	public static class SequenceSetBuilder <T extends TermReference> implements NodeListener<T> {
-		protected List<List<T>> seqencees;
-		
-		public SequenceSetBuilder() {
-			seqencees = new ArrayList<List<T>>();
-		}
-		
-		public void onNode(PhraseNode<? extends T> node, List<? extends T> seqence, boolean terminal) {
-			if (terminal) { 
-				List<T> p = new ArrayList<T>(seqence);  //clone
-				seqencees.add(p);
-			}
-		}
-		
-		public List<List<T>> getSequences() {
-			return seqencees;
-		}
-	}
-
-	public static class TermSetBuilder <T extends TermReference> implements NodeListener<T> {
-		protected Set<T> terms;
-		
-		public TermSetBuilder() {
-			terms = new HashSet<T>();
-		}
-		
-		public void onNode(PhraseNode<? extends T> node, List<? extends T> seqence, boolean terminal) {
-			T t = node.getTermReference();
-			if (t.getTerm().length()>0) terms.add(t);
-		}
-		
-		public Collection<T> getTerms() {
-			return terms;
-		}
-	}
 
 	private MeaningFetcher<C> meaningFetcher;
 	
@@ -77,18 +35,6 @@ public abstract class AbstractDisambiguator<T extends TermReference, C extends W
 	public void setMeaningOverrides(Map<String, C> overrideMap) {
 		this.meaningOverrides = overrideMap;
 	}	
-	
-	protected <X extends T>Collection<X> getTerms(PhraseNode<X> root, int depth) {
-		TermSetBuilder<X> builder = new TermSetBuilder<X>();
-		walk(root, null, builder, depth);
-		return builder.getTerms();
-	}
-	
-	protected <X extends T>Collection<List<X>> getSequences(PhraseNode<X> root, int depth) {
-		SequenceSetBuilder<X> builder = new SequenceSetBuilder<X>();
-		walk(root, null, builder, depth);
-		return builder.getSequences();
-	}
 	
 	protected <X extends T>PhraseNode<X> getLastNode(PhraseNode<X> root, List<X> sequence) {
 		PhraseNode<X> n = findLastNode(root, sequence);
@@ -126,30 +72,18 @@ public abstract class AbstractDisambiguator<T extends TermReference, C extends W
 		return root;
 	}
 	
-	protected <X extends T>void walk(PhraseNode<X> root, List<X> seqence, NodeListener<? super X> nodeListener, int depth) {
-		if (depth<1) return;
-		if (seqence == null) seqence = new ArrayList<X>();
-		
-		X t = root.getTermReference();
-		if (t.getTerm().length()>0) seqence.add(t); //push
-		else if (depth<Integer.MAX_VALUE) depth += 1; //XXX: ugly hack for blank root nodes.
-		
-		boolean terminal = (depth<=1);
-			
-		Collection<? extends PhraseNode<X>> successors = terminal ? null : root.getSuccessors();
-		if (successors==null || successors.isEmpty()) terminal = true;
-		
-		if (nodeListener!=null) 
-			nodeListener.onNode(root, seqence, terminal);
-		
-		if (!terminal) {
-			for (PhraseNode<X> n: successors) {
-				walk(n, seqence, nodeListener, depth-1);
-			}
-		}
-		
-		if (t.getTerm().length()>0) seqence.remove(t); //pop
+	protected <X extends T>Collection<X> getTerms(PhraseNode<X> root, int depth) {
+		PhraseNode.TermSetBuilder<X> builder = new PhraseNode.TermSetBuilder<X>();
+		builder.walk(root, 0, null, depth, Double.MAX_VALUE);
+		return builder.getTerms();
 	}
+	
+	protected <X extends T>Collection<List<X>> getSequences(PhraseNode<X> root, int depth) {
+		PhraseNode.SequenceSetBuilder<X> builder = new PhraseNode.SequenceSetBuilder<X>();
+		builder.walk(root, 0, null, depth, Double.MAX_VALUE);
+		return builder.getSequences();
+	}
+	
 	
 	protected <X extends T>Map<X, List<? extends C>> getMeanings(PhraseNode<X> root) throws PersistenceException {
 		Collection<X> terms = getTerms(root, Integer.MAX_VALUE);

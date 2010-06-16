@@ -13,8 +13,8 @@ import java.util.regex.Matcher;
 
 import de.brightbyte.application.Arguments;
 import de.brightbyte.audit.DebugUtil;
-import de.brightbyte.data.MapLookup;
 import de.brightbyte.data.Lookup;
+import de.brightbyte.data.MapLookup;
 import de.brightbyte.data.filter.Filter;
 import de.brightbyte.data.filter.FixedSetFilter;
 import de.brightbyte.io.ConsoleIO;
@@ -31,6 +31,7 @@ public class PlainTextAnalyzer extends AbstractAnalyzer implements PhraseExtract
 	private Matcher sentenceTailGlueMatcher;
 	private Matcher sentenceFollowGlueMatcher;
 	private Matcher wordMatcher;
+	private Matcher wordPartMatcher;
 
 	protected Filter<String> stopwordFilter;
 	protected Matcher phraseBreakeMatcher;
@@ -94,6 +95,7 @@ public class PlainTextAnalyzer extends AbstractAnalyzer implements PhraseExtract
 		sentenceTailGlueMatcher = config.sentenceTailGluePattern.matcher("");
 		sentenceFollowGlueMatcher = config.sentenceFollowGluePattern.matcher("");
 		wordMatcher = config.wordPattern.matcher("");
+		wordPartMatcher = config.wordPartPattern.matcher("");
 		
 		phraseBreakeMatcher = config.phraseBreakerPattern.matcher("");
 		stopwordFilter = new FixedSetFilter<String>(config.stopwords);
@@ -191,6 +193,7 @@ public class PlainTextAnalyzer extends AbstractAnalyzer implements PhraseExtract
 		return corpus;
 	}
 	
+	/*
 	public PhraseOccuranceSet extractPhrases(CharSequence text, int maxWeight) {
 		ArrayList<PhraseOccurance> phrases = new ArrayList<PhraseOccurance>();
 		
@@ -231,11 +234,119 @@ public class PlainTextAnalyzer extends AbstractAnalyzer implements PhraseExtract
 			
 			if (stopwordFilter.matches(w)) weight = 0;
 			buildPhrasesAggregator.update(wordMatcher.start(), w, weight, into);
+			
+			//after adding the word, now register word parts 
+			int j = 0;
+			wordPartMatcher.reset(w);
+			while (wordPartMatcher.find()) {
+				if (wordPartMatcher.start() == 0  && wordPartMatcher.end() == w.length()) {
+					break; //full word matched as a single part. no need to register parts.
+				}
+				
+				if (j != wordPartMatcher.start()) {
+					CharSequence glue =  w.subSequence(j, wordPartMatcher.start());
+					buildPhrasesAggregator.update(i, glue, -1, into);
+				}
+				
+				j = wordPartMatcher.end();
+				weight = 1;
+				String p;
+				
+				if (wordPartMatcher.groupCount()>0) p = wordPartMatcher.group(1);
+				else p = wordPartMatcher.group(0);
+				
+				if (stopwordFilter.matches(p)) weight = 0;
+				buildPhrasesAggregator.update(i+wordPartMatcher.start(), p, weight, into);
+			}
+
+			if (j>0 && j < w.length()) {
+				CharSequence glue =  text.subSequence(j, w.length());
+				buildPhrasesAggregator.update(j, glue, -1, into);
+			}
 		}
 
 		if (i < text.length()) {
 			CharSequence space =  text.subSequence(i, text.length());
-			buildPhrasesAggregator.update(i, space, 0, into);
+			buildPhrasesAggregator.update(i, space, -1, into);
+		}
+	} */
+	
+	public PhraseOccuranceSet extractPhrases(CharSequence text, int maxWeight) {
+		PhraseOccuranceSet phrases = new PhraseOccuranceSet(text.toString(), new ArrayList<PhraseOccurance>());
+		
+		text = applyManglers(config.sentenceManglers, text);
+		
+		ParsePosition pos = new ParsePosition(0);
+		while (pos.getIndex() < text.length()) {
+			int ofs = pos.getIndex();
+			CharSequence s = extractNextSentence(text, pos, false);
+			if (s==null || s.length()==0) break;
+			
+			buildPhrases(s, ofs, phrases, maxWeight);
+			if (phrases.isEmpty()) continue;
+			
+			phrases.buildAggregatePhrases(ofs, 0, maxWeight, phraseBreakeMatcher);
+		}
+
+		if (phrases.isEmpty()) return phrases; 
+		
+		phrases.prune(1);
+		return phrases;
+	}
+
+	private void buildPhrases(CharSequence text, int offset, PhraseOccuranceSet into, int maxWeight) {
+		int i = 0;
+		wordMatcher.reset(text); 
+		while (wordMatcher.find()) {
+			if (i != wordMatcher.start()) {
+				CharSequence space =  text.subSequence(i, wordMatcher.start());
+				into.add( new PhraseOccurance(space.toString(), -1, offset+i, space.length()) );
+			}
+			
+			i = wordMatcher.end();
+			String w;
+			int weight = 1;
+			
+			if (wordMatcher.groupCount()>0) w = wordMatcher.group(1);
+			else w = wordMatcher.group(0);
+			
+			if (stopwordFilter.matches(w)) weight = 0;
+			into.add( new PhraseOccurance(w, weight, offset+wordMatcher.start(), w.length()) );
+			
+			//after adding the word, now register word parts 
+			int j = 0;
+			int b = wordMatcher.start();
+			wordPartMatcher.reset(w);
+			while (wordPartMatcher.find()) {
+				if (wordPartMatcher.start() == 0  && wordPartMatcher.end() == w.length()) {
+					break; //full word matched as a single part. no need to register parts.
+				}
+				
+				if (j != wordPartMatcher.start()) {
+					CharSequence glue =  w.subSequence(j, wordPartMatcher.start());
+					into.add( new PhraseOccurance(glue.toString(), -1, offset+b+j, glue.length()) );
+				}
+				
+				j = wordPartMatcher.end();
+				weight = 1;
+				String p;
+				
+				if (wordPartMatcher.groupCount()>0) p = wordPartMatcher.group(1);
+				else p = wordPartMatcher.group(0);
+				
+				if (stopwordFilter.matches(p)) weight = 0;
+				into.add( new PhraseOccurance(p, weight, offset+b+wordPartMatcher.start(), p.length()) );
+			}
+
+			if (j>0 && j < w.length()) {
+				CharSequence glue =  text.subSequence(j, w.length());
+				into.add( new PhraseOccurance(glue.toString(), -1, offset+b+j, glue.length()) );
+			}
+		}
+
+		if (i < text.length()) {
+			CharSequence space =  text.subSequence(i, text.length());
+			into.add( new PhraseOccurance(space.toString(), -1, offset+i, space.length()) );
 		}
 	}
 	

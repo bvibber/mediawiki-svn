@@ -60,9 +60,17 @@ public class LanguageConfiguration {
 
 	/**
 	 * A pattern matching individual words, for splitting a string into words. This is usually
-	 * set to match any sequence of letters but not numbers, whitespace or punctuation.
+	 * set to match any sequence of letters but not numbers, whitespace or punctuation, except
+	 * those that may accurs as part of a word, such as an apostrophy or hyphen.
 	 */
 	public Pattern wordPattern;
+
+	/**
+	 * A pattern matching individual words parts, for splitting a words into components. This is usually
+	 * set to match any sequence of letters but not numbers, whitespace or punctuation, nor
+	 * those that may accurs as part of a word, such as an apostrophy or hyphen. 
+	 */
+	public Pattern wordPartPattern;
 
 	protected String languageName;
 
@@ -98,7 +106,8 @@ public class LanguageConfiguration {
 	}
 	
 	public void defaults() throws IOException {
-		if (this.wordPattern==null) this.wordPattern = Pattern.compile("[\\p{L}'']+(?:[\\p{Pc}\\p{Pd}][\\p{L}'']+)*|\\p{Nd}+(?:.\\p{Nd}+)?"); 
+		if (this.wordPattern==null) this.wordPattern = Pattern.compile("[\\p{L}']+(?:[\\p{Pc}\\p{Pd}][\\p{L}']+)*|\\p{Nd}+(?:.\\p{Nd}+)?"); 
+		if (this.wordPartPattern==null) this.wordPartPattern = Pattern.compile("[\\p{L}]+|\\p{Nd}+"); 
 
 		this.sentenceManglers.add( new RegularExpressionMangler("\\s+\\(.*?\\)", "", 0) ); //strip parentacized blocks 
 		this.sentenceManglers.add( new RegularExpressionMangler("^([^\\p{L}]*(\\r\\n|\\r|\\n))+[^\\p{L}0-9]*\\s*", "", 0) ); //strip leading cruft (lines without any characters)
@@ -110,7 +119,7 @@ public class LanguageConfiguration {
 		List<String> stop = AuxilliaryWikiProperties.loadList("Stopwords", languageName);
 		if (stop!=null) this.stopwords.addAll(stop);
 		
-		this.phraseBreakerPattern = Pattern.compile("[,;:]\\s|\"");
+		this.phraseBreakerPattern = Pattern.compile("[,;:\".!?]\\s*");
 		this.parentacies = new ArrayList<Pair<String, String>>();
 		this.parentacies.add( new Pair<String, String>("(", ")") );
 		this.parentacies.add( new Pair<String, String>("[", "]") );
@@ -126,6 +135,7 @@ public class LanguageConfiguration {
 		if (with.sentenceManglers!=null) sentenceManglers.addAll(with.sentenceManglers);
 
 		if (with.wordPattern!=null) wordPattern = with.wordPattern;
+		if (with.wordPartPattern!=null) wordPartPattern = with.wordPartPattern;
 		if (with.phraseBreakerPattern!=null) phraseBreakerPattern = with.phraseBreakerPattern;
 		
 		if (with.stopwords!=null) stopwords.addAll(with.stopwords);

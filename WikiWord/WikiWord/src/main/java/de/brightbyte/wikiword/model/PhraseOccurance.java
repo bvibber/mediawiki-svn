@@ -13,10 +13,6 @@ public class PhraseOccurance implements Serializable, Comparable<PhraseOccurance
 		
 		public PhraseOccurance(String phrase, int weight, int offset, int length) {
 			if (length < 0) throw new IllegalArgumentException("bad length: "+length);
-			if (length > phrase.length()) throw new IllegalArgumentException("length larger than base string");
-			//if (length == phrase.length() && offset > 0) throw new IllegalArgumentException("region outside than base string");
-			if (length < phrase.length() && offset+length > phrase.length()) throw new IllegalArgumentException("region outside than base string");
-			if (length < phrase.length()) phrase = phrase.substring(offset, offset+length);
 			
 			this.phrase = phrase;
 			this.weight = weight;
@@ -49,7 +45,7 @@ public class PhraseOccurance implements Serializable, Comparable<PhraseOccurance
 		}
 		
 		public String toString() {
-			return "\"" + getPhrase() + "\" @[" + getOffset() + ":" + getEndOffset() + "]";
+			return "\"" + getPhrase() + "\" @[" + getOffset() + ":" + getEndOffset() + "]#"+weight;
 		}
 
 		@Override

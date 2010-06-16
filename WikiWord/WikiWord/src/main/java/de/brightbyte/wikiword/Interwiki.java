@@ -78,7 +78,9 @@ public class Interwiki {
 			
 			return interwikis;
 		} catch (IOException e) {
-			throw new RuntimeException("failed to load interwiki map from "+n);
+			throw new RuntimeException("failed to load interwiki map from "+n, e);
+		} catch (IllegalArgumentException e) { //NOTE: malformed \\u-encoding triggers this. wtf? why not a *real* exception?... 
+			throw new RuntimeException("failed to load interwiki map from "+n, e);
 		}
 		
 	}
