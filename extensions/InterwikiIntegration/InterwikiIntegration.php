@@ -17,7 +17,6 @@
  
 /* Alert the user that this is not a valid entry point to MediaWiki if they try to access the
 special pages file directly.*/
- 
 if ( !defined( 'MEDIAWIKI' ) ) {
 	echo <<<EOT
 		To install the InterwikiIntegration extension, put the following line in LocalSettings.php:
@@ -25,19 +24,21 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 EOT;
 	exit( 1 );
 }
- 
 $wgExtensionCredits['other'][] = array(
 	'path' => __FILE__,
 	'name' => 'Interwiki Integration',
 	'author' => 'Tisane',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:InterwikiIntegration',
 	'descriptionmsg' => 'interwikiintegration-desc',
-	'version' => '1.0.3',
+	'version' => '1.0.4',
 );
- 
 $dir = dirname( __FILE__ ) . '/';
 $wgAutoloadClasses['InterwikiIntegrationHooks'] = $dir . 'InterwikiIntegration.hooks.php';
 $wgAutoloadClasses['PopulateInterwikiIntegrationTable'] = "$dir/SpecialInterwikiIntegration.php";
+$wgAutoloadClasses['PopulateInterwikiWatchlistTable'] = "$dir/SpecialInterwikiIntegration.php";
+$wgAutoloadClasses['PopulateInterwikiRecentChangesTable'] = "$dir/SpecialInterwikiIntegration.php";
+#$wgAutoloadClasses['InterwikiWatchlist'] = "$dir/SpecialInterwikiWatchlist.php";
+#$wgAutoloadClasses['InterwikiRecentChanges'] = "$dir/SpecialInterwikiRecentChanges.php";
 $wgExtensionMessagesFiles['InterwikiIntegration'] = $dir . 'InterwikiIntegration.i18n.php';
 $wgExtensionAliasesFiles['InterwikiIntegration'] = $dir . 'InterwikiIntegration.alias.php';
 $wgHooks['LoadExtensionSchemaUpdates'][] = 'InterwikiIntegrationHooks::InterwikiIntegrationCreateTable';
@@ -49,12 +50,22 @@ $wgHooks['ArticleUndelete'][] = 'InterwikiIntegrationHooks::InterwikiIntegration
 $wgHooks['TitleMoveComplete'][] = 'InterwikiIntegrationHooks::InterwikiIntegrationTitleMoveComplete';
 $wgHooks['PureWikiDeletionArticleBlankComplete'][] = 'InterwikiIntegrationHooks::InterwikiIntegrationArticleBlankComplete';
 $wgHooks['PureWikiDeletionArticleUnblankComplete'][] = 'InterwikiIntegrationHooks::InterwikiIntegrationArticleUnblankComplete';
-
-$wgSpecialPages['PopulateInterwikiIntegrationTable'] = 'PopulateInterwikiIntegrationTable'; 
+$wgHooks['ArticleEditUpdatesDeleteFromRecentchanges'][] = 'InterwikiIntegrationHooks::InterwikiIntegrationArticleEditUpdatesDeleteFromRecentchanges';
+$wgHooks['RecentChange_save'][] = 'InterwikiIntegrationHooks::InterwikiIntegrationRecentChange_save';
+$wgHooks['WatchArticleComplete'][] = 'InterwikiIntegrationHooks::InterwikiIntegrationWatchArticleComplete';
+$wgHooks['UnwatchArticleComplete'][] = 'InterwikiIntegrationHooks::InterwikiIntegrationUnwatchArticleComplete';
+$wgSpecialPages['PopulateInterwikiIntegrationTable'] = 'PopulateInterwikiIntegrationTable';
+$wgSpecialPages['PopulateInterwikiWatchlistTable'] = 'PopulateInterwikiWatchlistTable';
+$wgSpecialPages['PopulateInterwikiRecentChangesTable'] = 'PopulateInterwikiRecentChangesTable';
+#$wgSpecialPages['InterwikiWatchlist'] = 'InterwikiWatchlist';
+#$wgSpecialPages['InterwikiRecentChanges'] = 'InterwikiRecentChanges';
+$wgSpecialPageGroups['InterwikiWatchlist'] = 'changes';
+$wgSpecialPageGroups['InterwikiRecentChanges'] = 'changes';
 $wgSharedTables[] = 'integration_prefix';
 $wgSharedTables[] = 'integration_namespace';
 $wgSharedTables[] = 'integration_iwlinks';
+$wgSharedTables[] = 'integration_watchlist';
+$wgSharedTables[] = 'integration_recentchanges';
 $wgInterwikiIntegrationBrokenLinkStyle = "color: red";
-
 $wgAvailableRights[] = 'integration';
 $wgGroupPermissions['bureaucrat']['integration']    = true;

@@ -1,8 +1,7 @@
 <?php
  
 class InterwikiIntegrationHooks {
-	
-	/*
+	/**
 	 * Creates necessary tables
 	 */
 	public static function InterwikiIntegrationCreateTable() {
@@ -19,10 +18,18 @@ class InterwikiIntegrationHooks {
 			'integration_iwlinks',
 			dirname( __FILE__ ) . '/interwikiintegration-iwlinks.sql'
 		);
+		$wgExtNewTables[] = array(
+			'integration_watchlist',
+			dirname( __FILE__ ) . '/interwikiintegration-watchlist.sql'
+		);
+		$wgExtNewTables[] = array(
+			'integration_recentchanges',
+			dirname( __FILE__ ) . '/interwikiintegration-recentchanges.sql'
+		);
 		return true;
 	}
 	
-	/*
+	/**
 	 * Update the integration_iwlinks table when interwiki links are added or
 	 * removed from articles.
 	 */
@@ -111,7 +118,7 @@ class InterwikiIntegrationHooks {
 		return true;
 	}
 	
-	/*
+	/**
 	 * When a page is created, purge caches of pages that link to it interwiki
 	 */
 	public static function InterwikiIntegrationArticleInsertComplete ( &$article, &$user, $text, $summary, $minoredit, 
@@ -120,7 +127,7 @@ class InterwikiIntegrationHooks {
 		return true;
 	}
 	
-	/*
+	/**
 	 * When a page is deleted, purge caches of pages that link to it interwiki
 	 */
 	public static function InterwikiIntegrationArticleDeleteComplete( &$article, &$user, $reason, $id ) {
@@ -133,7 +140,7 @@ class InterwikiIntegrationHooks {
 		return true;
 	}
 	
-	/*
+	/**
 	 * When a page is undeleted, purge caches of pages that link to it interwiki
 	 */
 	public static function InterwikiIntegrationArticleUndelete ( $title, $create ) {
@@ -143,7 +150,7 @@ class InterwikiIntegrationHooks {
 		return true;
 	}
 
-	/*
+	/**
 	 * When a page is moved, purge caches of pages that link to the new page interwiki
 	 */
 	public static function InterwikiIntegrationTitleMoveComplete ( &$title, &$newtitle, &$user, $oldid, $newid ) {
@@ -151,7 +158,7 @@ class InterwikiIntegrationHooks {
 		return true;
 	}
 	
-	/*
+	/**
 	 * When a page is blanked, purge caches of pages that link to the new page interwiki.
 	 * This is called by a PureWikiDeletion hook.
 	 */
@@ -160,7 +167,7 @@ class InterwikiIntegrationHooks {
 		return true;
 	}
 	
-	/*
+	/**
 	 * When a page is unblanked, purge caches of pages that link to the new page interwiki.
 	 * This is called by a PureWikiDeletion hook.
 	 */
@@ -169,6 +176,10 @@ class InterwikiIntegrationHooks {
 		return true;
 	}
 	
+	/**
+	 * Purges squids and invalidates caches of pages that link to $title
+	 * interwiki.
+	 */
 	public static function PurgeReferringPages ( $title ) {
 		global $wgDBname, $wgInterwikiIntegrationPrefix;
 		
@@ -190,8 +201,7 @@ class InterwikiIntegrationHooks {
 				array (
 					'integration_iwl_prefix'   => $thisPrefix,
 					'integration_iwl_title'    => $titleName
-				),
-				__METHOD__
+				)
 			);
 				if ( $result ) {
 					$referringPage = $result->integration_iwl_from;
@@ -213,7 +223,7 @@ class InterwikiIntegrationHooks {
 		return true;
 	}
 	
-	/*
+	/**
 	 * Determines whether an interwiki link to a wiki on the same wiki
 	 * farm is broken or not; if so, it will be colored red and link to the
 	 * edit page on the target wiki
@@ -221,10 +231,8 @@ class InterwikiIntegrationHooks {
 	public static function InterwikiIntegrationLink( $skin, $target, &$text,
 		&$customAttribs, &$query, &$options, &$ret ) {
 		global $wgInterwikiIntegrationBrokenLinkStyle, $wgPureWikiDeletionInEffect;
-		
 		if ( $target->isExternal() ) {
 			$dbr = wfGetDB( DB_SLAVE );
-			
 			$interwikiPrefix = $target->getInterwiki ();
 			$interwikiPrefix{0} = strtolower($interwikiPrefix{0});
 			$result = $dbr->selectRow(
@@ -232,15 +240,11 @@ class InterwikiIntegrationHooks {
 				'integration_dbname',
 				array( "integration_prefix" => $interwikiPrefix )
 			);
-			
 			if ( !$result ) {
 				return true;
 			}
-			
 			$targetDb = $result->integration_dbname;
-			
 			$dbrTarget = wfGetDB( DB_SLAVE, array(), $targetDb );
-			
 			$title = $target->getDBkey ();
 			$colonPos = strpos ( $title, ':' );
 			$namespaceIndex = '';
@@ -310,5 +314,95 @@ class InterwikiIntegrationHooks {
 		}
 		return true;
 	}
+	
+	/**
+	 * Flush old entries from the `integration_recentchanges` table; we do this on
+	 * random requests so as to avoid an increase in writes for no good reason
+	 */
+	public static function InterwikiIntegrationArticleEditUpdatesDeleteFromRecentchanges( &$article ) {
+		if ( 0 == mt_rand( 0, 99 ) ) {
+			global $wgRCMaxAge;
+			$dbw = wfGetDB( DB_MASTER );
+			$cutoff = $dbw->timestamp( time() - $wgRCMaxAge );
+			$recentchanges = $dbw->tableName( 'integration_recentchanges' );
+			$sql = "DELETE FROM $recentchanges WHERE integration_rc_timestamp < '{$cutoff}'";
+			$dbw->query( $sql );
+		}
+		return true;
+	}
+	
+	/**
+	 * Save recent changes to integration_recentchanges
+	 */
+	public static function InterwikiIntegrationRecentChange_save( $recentChange ) {
+		$dbw = wfGetDB( DB_MASTER );
+		global $wgDBname;
+		foreach ( $recentChange->mAttribs as $key => $value ) {
+			$newKey = "integration_" . $key;
+			$iRecentChange[$newKey] = $value;
+		}
+		$iRecentChange['integration_rc_db'] = $wgDBname;
+		$dbw->insert( 'integration_recentchanges', $iRecentChange );
+		return true;
+	}
+	
+	/**
+	 * Add newly watched articles to integration_watchlist
+	 */
+	public static function InterwikiIntegrationWatchArticleComplete( &$user, &$article ) {
+		$title = $article->getTitle();
+		if ( $title->isTalkPage () ) {
+			$subjectNamespace = $title->getSubjectPage()->getNamespace();
+			$talkNamespace = $title->getNamespace();
+		} else {
+			$subjectNamespace = $title->getNamespace();
+			$talkNamespace = $title->getTalkPage()->getNamespace();
+		}
+		$DBkey = $title->getDBkey();
+		$dbw = wfGetDB( DB_MASTER );
+		$dbw->insert( 'integration_watchlist',
+		  array(
+			'integration_wl_user' => $user->id,
+			'integration_wl_namespace' => $subjectNamespace,
+			'integration_wl_title' => $DBkey,
+			'integration_wl_notificationtimestamp' => null
+		  ) );
+		$dbw->insert( 'integration_watchlist',
+		  array(
+			'integration_wl_user' => $this->id,
+			'integration_wl_namespace' => $talkNamespace,
+			'integration_wl_title' => $DBkey,
+			'integration_wl_notificationtimestamp' => null
+		  ) );
+		return true;
+	}
+	
+	/**
+	 * Remove newly unwatched articles from integration_watchlist
+	 */
+	public static function InterwikiIntegrationUnwatchArticleComplete ( &$user, &$article ) {
+		$title = $article->getTitle();
+		if ( $title->isTalkPage () ) {
+			$subjectNamespace = $title->getSubjectPage()->getNamespace();
+			$talkNamespace = $title->getNamespace();
+		} else {
+			$subjectNamespace = $title->getNamespace();
+			$talkNamespace = $title->getTalkPage()->getNamespace();
+		}
+		$DBkey = $title->getDBkey();
+		$dbw = wfGetDB( DB_MASTER );
+		$dbw->delete( 'integration_watchlist',
+		  array(
+			'integration_wl_user' => $user->id,
+			'integration_wl_namespace' => $subjectNamespace,
+			'integration_wl_title' => $DBkey
+		  ) );
+		$dbw->insert( 'integration_watchlist',
+		  array(
+			'integration_wl_user' => $this->id,
+			'integration_wl_namespace' => $talkNamespace,
+			'integration_wl_title' => $DBkey
+		  ) );
+		return true;
+	}
 }
-

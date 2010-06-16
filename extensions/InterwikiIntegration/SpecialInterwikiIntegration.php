@@ -1,7 +1,11 @@
 <?php
+/*
+ * A special page that populates the Integration tables, specifically
+ * integration_prefix and integration_namespace
+ */
 class PopulateInterwikiIntegrationTable extends SpecialPage {
 	function __construct() {
-		parent::__construct( 'PopulateInterwikiIntegrationTable','integration' );
+		parent::__construct( 'PopulateInterwikiIntegrationTable', 'integration' );
 		wfLoadExtensionMessages( 'InterwikiIntegration' );
 	}
  
@@ -17,12 +21,9 @@ class PopulateInterwikiIntegrationTable extends SpecialPage {
 		}
 		$dbr = wfGetDB( DB_SLAVE );
 		$dbw = wfGetDB( DB_MASTER );
-		
 		$localDBname = $dbr -> getProperty ( 'mDBname' );
-		
 		$dbw->delete ( 'integration_prefix', '*' );
 		if ( isset ( $wgInterwikiIntegrationPrefix ) ) {
-			
 			foreach ( $wgInterwikiIntegrationPrefix as $thisPrefix => $thisDatabase ) {
 				$thisPWD = 0;
 				if ( isset ( $wgInterwikiIntegrationPWD[$thisDatabase])
@@ -34,12 +35,10 @@ class PopulateInterwikiIntegrationTable extends SpecialPage {
 					'integration_prefix' => $thisPrefix,
 					'integration_pwd'    => $thisPWD
 				);
-				$dbw->insert ( 'integration_prefix', $newDatabaseRow );
-				
+				$dbw->insert ( 'integration_prefix', $newDatabaseRow );				
 				foreach ( $wgLocalDatabases as $thisDB ) {
 					$foreignDbr = wfGetDB ( DB_SLAVE, array(), $thisDB );
 					$foreignDbw = wfGetDB ( DB_MASTER, array(), $thisDB );
-				
 					if ( $thisDB != $localDBname && $thisDatabase == $localDBname ) {
 						$foreignResult = $foreignDbr->selectRow(
 							'interwiki',
@@ -62,14 +61,11 @@ class PopulateInterwikiIntegrationTable extends SpecialPage {
 				}
 			}
 		}
-		
 		$myCache = new LocalisationCache ( $wgLocalisationCacheConf );
-		
 		$namespaceNames = $myCache->getItem ( $wgLanguageCode,'namespaceNames' );
 		$namespaceNames[NS_PROJECT] = $wgMetaNamespace;
 		$namespaceNames[NS_PROJECT_TALK] = $wgMetaNamespace."_talk";
 		$dbw->delete ( 'integration_namespace', array( 'integration_dbname' => $localDBname ) );
-		
 		foreach ( $namespaceNames as $key => $thisName ) {
 			$newNamespaceRow = array ( 'integration_dbname' => $localDBname,
 				'integration_namespace_index' => $key,
@@ -101,6 +97,82 @@ class PopulateInterwikiIntegrationTable extends SpecialPage {
 		$dbw->insert ( 'integration_namespace', $newNamespaceRow);
 		$wgOut->setPagetitle( wfMsg( 'actioncomplete' ) );
 		$wgOut->addWikiMsg( 'interwikiintegration-setuptext', $wgSitename );
+		return;
+	}
+}
+
+/**
+ * A special page that populates the Interwiki watchlist table.
+ */
+class PopulateInterwikiWatchlistTable extends SpecialPage {
+	function __construct() {
+		parent::__construct( 'PopulateInterwikiWatchlistTable', 'integration' );
+		wfLoadExtensionMessages( 'InterwikiIntegration' );
+	}
+	
+	function execute( $par ) {
+		global $wgInterwikiIntegrationPrefix, $wgOut;
+		$dbr = wfGetDB( DB_SLAVE );
+		$dbw = wfGetDB( DB_MASTER );
+		$dbw->delete ( 'integration_watchlist', '*' );
+		$dbList = array_unique ( $wgInterwikiIntegrationPrefix );
+		foreach ( $dbList as $thisDb ) {
+			$thisDbr = wfGetDB( DB_SLAVE, array(), $thisDb );
+			$watchlistRes = $thisDbr->select(
+				'watchlist',
+				'*'
+			);
+			if( $watchlistRes->numRows() > 0 ) {
+				while( $row = $watchlistRes->fetchObject() ) {
+					foreach ( $row as $key => $value ) {
+						$newKey = "integration_" . $key;
+						$iWatchlist[$newKey] = $value;
+					}
+					$iWatchlist['integration_wl_db'] = $thisDb;
+					$dbw->insert( 'integration_watchlist', $iWatchlist );
+				}
+			}
+		}
+		$wgOut->setPagetitle( wfMsg( 'actioncomplete' ) );
+		$wgOut->addWikiMsg( 'interwikiwatchlist-setuptext' );
+		return;
+	}
+}
+
+/**
+ * A special page that populates the interwiki recent changes table.
+ */
+class PopulateInterwikiRecentChangesTable extends SpecialPage {
+	function __construct() {
+		parent::__construct( 'PopulateInterwikiRecentChangesTable', 'integration' );
+		wfLoadExtensionMessages( 'InterwikiIntegration' );
+	}
+	
+	function execute( $par ) {
+		global $wgInterwikiIntegrationPrefix, $wgOut;
+		$dbr = wfGetDB( DB_SLAVE );
+		$dbw = wfGetDB( DB_MASTER );
+		$dbw->delete ( 'integration_recentchanges', '*' );
+		$dbList = array_unique ( $wgInterwikiIntegrationPrefix );
+		foreach ( $dbList as $thisDb ) {
+			$thisDbr = wfGetDB( DB_SLAVE, array(), $thisDb );
+			$recentchangesRes = $thisDbr->select(
+				'recentchanges',
+				'*'
+			);
+			if( $recentchangesRes->numRows() > 0 ) {
+				while( $row = $recentchangesRes->fetchObject() ) {
+					foreach ( $row as $key => $value ) {
+						$newKey = "integration_" . $key;
+						$iRecentChange[$newKey] = $value;
+					}
+					$iRecentChange['integration_rc_db'] = $thisDb;
+					$dbw->insert( 'integration_recentchanges', $iRecentChange );
+				}
+			}
+		}
+		$wgOut->setPagetitle( wfMsg( 'actioncomplete' ) );
+		$wgOut->addWikiMsg( 'interwikirecentchanges-setuptext' );
 		return;
 	}
 }
