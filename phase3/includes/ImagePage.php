@@ -61,12 +61,21 @@ class ImagePage extends Article {
 
 	public function view() {
 		global $wgOut, $wgShowEXIF, $wgRequest, $wgUser;
+
+		$diff = $wgRequest->getVal( 'diff' );
+		$diffOnly = $wgRequest->getBool( 'diffonly', $wgUser->getOption( 'diffonly' ) );
+
+		if ( $this->mTitle->getNamespace() != NS_FILE || ( isset( $diff ) && $diffOnly ) ) {
+			return Article::view();
+		}
+			
 		$this->loadFile();
 
 		if ( $this->mTitle->getNamespace() == NS_FILE && $this->img->getRedirected() ) {
-			if ( $this->mTitle->getDBkey() == $this->img->getName() ) {
+			if ( $this->mTitle->getDBkey() == $this->img->getName() || isset( $diff ) ) {
 				// mTitle is the same as the redirect target so ask Article
 				// to perform the redirect for us.
+				$wgRequest->setVal( 'diffonly', 'true' );
 				return Article::view();
 			} else {
 				// mTitle is not the same as the redirect target so it is 
@@ -79,12 +88,6 @@ class ImagePage extends Article {
 			}
 		}
 
-		$diff = $wgRequest->getVal( 'diff' );
-		$diffOnly = $wgRequest->getBool( 'diffonly', $wgUser->getOption( 'diffonly' ) );
-
-		if ( $this->mTitle->getNamespace() != NS_FILE || ( isset( $diff ) && $diffOnly ) )
-			return Article::view();
-			
 		$this->showRedirectedFromHeader();
 
 		if ( $wgShowEXIF && $this->displayImg->exists() ) {
@@ -848,7 +851,7 @@ class ImageHistoryList {
 	}
 
 	public function imageHistoryLine( $iscur, $file ) {
-		global $wgUser, $wgLang, $wgContLang, $wgTitle;
+		global $wgUser, $wgLang, $wgContLang;
 
 		$timestamp = wfTimestamp( TS_MW, $file->getTimestamp() );
 		$img = $iscur ? $file->getName() : $file->getArchiveName();
@@ -886,7 +889,7 @@ class ImageHistoryList {
 					list( $ts, $name ) = explode( '!', $img, 2 );
 					$query = array(
 						'type'   => 'oldimage',
-						'target' => $wgTitle->getPrefixedText(),
+						'target' => $this->title->getPrefixedText(),
 						'ids'    => $ts,
 					);
 					$del = $this->skin->revDeleteLink( $query,
@@ -936,7 +939,7 @@ class ImageHistoryList {
 				$wgLang->timeAndDate( $timestamp, true ),
 				array(),
 				array(
-					'target' => $wgTitle->getPrefixedText(),
+					'target' => $this->title->getPrefixedText(),
 					'file' => $img,
 					'token' => $wgUser->editToken( $img )
 				),

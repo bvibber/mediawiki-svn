@@ -1116,6 +1116,8 @@ $1",
 'logdelete-failure'           => "'''De zichbaorheid van de logboekregel kon neet in-esteld wonnen:'''
 $1",
 'revdel-restore'              => 'Zichbaorheid wiezigen',
+'revdel-restore-deleted'      => 'vort-edaone versies',
+'revdel-restore-visible'      => 'zichbaore versies',
 'pagehist'                    => 'Paginageschiedenisse',
 'deletedhist'                 => 'Geschiedenisse dee vort-ehaold is',
 'revdelete-content'           => 'inhoud',
@@ -1477,7 +1479,6 @@ Je kunnen oek aandere luui in staot stellen um per netpos kontak mit joe op te n
 'right-siteadmin'             => 'De databanke blokkeren en weer vriegeven',
 'right-reset-passwords'       => 'Wachwoorden van aandere gebrukers opniej instellen',
 'right-override-export-depth' => "Pagina's uutvoeren, oek de pagina's waor naor verwezen wonnen, tot een diepte van 5",
-'right-versiondetail'         => 'Uut-ebreide versieinfermasie van de pregrammetuur laoten zien',
 'right-sendemail'             => 'Berich versturen naor aandere gebrukers',
 
 # User rights log
@@ -1685,6 +1686,11 @@ Bekiek 't vortdologboek veurda-j veurdan gaon.",
 Bedenk eers of 't inderdaod de bedoeling is dat dit bestaand toe-evoeg wönnen.
 't Logboek mit alle vort-edaone infermasie ku-j hier vienen:",
 'filename-bad-prefix'         => "De naam van 't bestaand da-j toevoegen, begint mit '''\"\$1\"''', dit is een neet-beschrievende naam dee meestentieds autematisch deur een digitale camera egeven wonnen. Kies een dudelijke naam veur 't bestaand.",
+'upload-successful-msg'       => "'t Bestaand da-j toe-evoeg hemmen, is hier beschikbaor: $1",
+'upload-failure-subj'         => "Prebleem bie 't toevoegen van 't bestaand",
+'upload-failure-msg'          => "Der was een prebleem bie 't toevoegen van 't bestaand:
+
+$1",
 
 'upload-proto-error'        => 'Verkeerd protecol',
 'upload-proto-error-text'   => 'Um op disse meniere bestanen toe te voegen mutten webadressen beginnen mit <code>http://</code> of <code>ftp://</code>.',
@@ -1790,7 +1796,7 @@ De [[Special:WhatLinksHere/$2|hele lieste]] is oek beschikbaor.',
 'filerevert'                => '$1 weerummedreien',
 'filerevert-legend'         => 'Bestaand weerummezetten',
 'filerevert-intro'          => "Je bin '''[[Media:$1|$1]]''' an 't weerummedreien tot de [$4 versie van $2, $3]",
-'filerevert-comment'        => 'Opmarkingen:',
+'filerevert-comment'        => 'Reden:',
 'filerevert-defaultcomment' => 'Weerummedreid tot de versie van $1, $2',
 'filerevert-submit'         => 'Weerummedreien',
 'filerevert-success'        => '<span class="plainlinks">\'\'\'[[Media:$1|$1]]\'\'\' is weerummedreid naor de [$4 versie op $2, $3]</span>.',
@@ -2079,6 +2085,10 @@ De ontvanger kan dus drek beantwoorden.",
 'emailsenttext'        => 'Berich is verzunnen.',
 'emailuserfooter'      => 'Dit berich is verstuurd deur $1 an $2 deur de functie "Een berich sturen" van {{SITENAME}} te gebruken.',
 
+# User Messenger
+'usermessage-summary' => 'Systeemteksen achter-eleuten',
+'usermessage-editor'  => 'Systeemtekse',
+
 # Watchlist
 'watchlist'            => 'Volglieste',
 'mywatchlist'          => 'Mien volglieste',
@@ -2145,6 +2155,9 @@ Groeten van \'t {{SITENAME}}-waorschuwingssysteem.
 Je kunnen de instellingen van joew volglieste wiezigen op:
 {{fullurl:Special:Watchlist/edit}}
 
+Je kunnen de pagina van joew volglieste ofhaolen deur op de volgende verwiezing te klikken:
+$UNWATCHURL
+
 Opmarkingen en veerdere hulpe:
 {{fullurl:{{MediaWiki:Helppage}}}}',
 
@@ -2197,7 +2210,9 @@ De leste bewarking op disse pagina is edaon deur [[User:$3|$3]] ([[User talk:$3|
 'revertpage'        => 'Wiezigingen deur [[Special:Contributions/$2|$2]] hersteld tot de versie nao de leste wieziging deur $1',
 'revertpage-nouser' => 'Wiezigingen deur (gebrukersnaam vort-edaon) weerummedreid naor de leste versie deur [[User:$1|$1]]',
 'rollback-success'  => 'Wiezigingen van $1; weerummedreid naor de leste versie van $2.',
-'sessionfailure'    => 'Der is een prebleem mit joew anmeldsessie. De actie is stop-ezet uut veurzörg tegen een beveiligingsrisico (dat besteet uut \'t meugelijke "kraken" van disse sessie). Gao weerumme naor de veurige pagina, laoj disse pagina opniej en prebeer \'t nog es.',
+
+# Edit tokens
+'sessionfailure' => 'Der is een prebleem mit joew anmeldsessie. De actie is stop-ezet uut veurzörg tegen een beveiligingsrisico (dat besteet uut \'t meugelijke "kraken" van disse sessie). Gao weerumme naor de veurige pagina, laoj disse pagina opniej en prebeer \'t nog es.',
 
 # Protect
 'protectlogpage'              => 'Beveiligingslogboek',
@@ -2284,7 +2299,7 @@ In dat geval mu-j de leste versie as zichbaor instellen.",
 'undeleteviewlink'             => 'bekieken',
 'undeletereset'                => 'Herstel',
 'undeleteinvert'               => 'Selectie ummekeren',
-'undeletecomment'              => 'Opmarking:',
+'undeletecomment'              => 'Reden:',
 'undeletedarticle'             => '"$1" is weerummeplaos',
 'undeletedrevisions'           => '$1 {{PLURAL:$1|versie|versies}} weerummeplaos',
 'undeletedrevisions-files'     => '{{PLURAL:$1|1 versie|$1 versies}} en {{PLURAL:$2|1 bestaand|$2 bestanen}} bin weerummeplaos',
@@ -2638,6 +2653,7 @@ Alle transwiki-invoerhaandelingen wönnen op-esleugen in 't [[Special:Log/import
 'importstart'                => "Pagina's an 't invoeren...",
 'import-revision-count'      => '$1 {{PLURAL:$1|versie|versies}}',
 'importnopages'              => "Der bin gien pagina's um in te voeren.",
+'imported-log-entries'       => '$1 {{PLURAL:$1|logboekregel|logboekregels}} in-evoerd.',
 'importfailed'               => 'Invoeren is mislok: $1',
 'importunknownsource'        => 'Onbekend invoerbrontype',
 'importcantopen'             => "Kon 't invoerbestaand neet los doon",
@@ -3263,17 +3279,17 @@ Kiek de pagina op de normale meniere nao.',
 'watchlistedit-noitems'        => 'Joew volglieste is leeg.',
 'watchlistedit-normal-title'   => 'Volglieste bewarken',
 'watchlistedit-normal-legend'  => "Disse pagina's van mien volglieste ofhaolen.",
-'watchlistedit-normal-explain' => "Pagina's dee op joew volglieste staon zie-j hieronder.
-Um een pagina van joew volglieste of te haolen mu-j 't vakjen dernaos anklikken, en klik dan op 'Pagina's derof haolen'.
-Je kunnen oek [[Special:Watchlist/raw|de roewe lieste bewarken]].",
+'watchlistedit-normal-explain' => 'Pagina\'s dee op joew volglieste staon, zie-j hieronder.
+Um een pagina van joew volglieste of te haolen mu-j \'t vakjen dernaos anklikken, en klik dan op "{{int:Watchlistedit-normal-submit}}".
+Je kunnen oek [[Special:Watchlist/raw|de roewe lieste bewarken]].',
 'watchlistedit-normal-submit'  => "Pagina's derof haolen",
 'watchlistedit-normal-done'    => "Der {{PLURAL:$1|is 1 pagina|bin $1 pagina's}} vort-edaon uut joew volglieste:",
 'watchlistedit-raw-title'      => 'Roewe volglieste bewarken',
 'watchlistedit-raw-legend'     => 'Roewe volglieste bewarken',
-'watchlistedit-raw-explain'    => "Hieronder staon pagina’s op joew volglieste. Je kunnen de lieste bewarken deur pagina’s deruut vort te haolen en derbie te te doon. 
+'watchlistedit-raw-explain'    => "Pagina's dee op joew volglieste staon, zie-j hieronder. Je kunnen de lieste bewarken deur pagina's deruut vort te haolen en derbie te te zetten. 
 Eén pagina per regel.
-A-j ree bin, klik dan op ‘Volglieste biewarken’.
-Je kunnen oek [[Special:Watchlist/edit|'t standard bewarkingsscharm gebruken]].",
+A-j klaor bin, klik dan op \"{{int:Watchlistedit-raw-submit}}\".
+Je kunnen oek [[Special:Watchlist/edit|'t standardbewarkingsscharm gebruken]].",
 'watchlistedit-raw-titles'     => 'Titels:',
 'watchlistedit-raw-submit'     => 'Volglieste biewarken',
 'watchlistedit-raw-done'       => 'Joew volglieste is bie-ewörken.',

@@ -16,6 +16,7 @@
  * @author Nguyễn Thanh Quang
  * @author Thaisk
  * @author Tmct
+ * @author Trần Nguyễn Minh Huy
  * @author Trần Thế Trung
  * @author Tttrung
  * @author Vietbio
@@ -273,7 +274,7 @@ $messages = array(
 'tog-editsection'             => 'Cho phép sửa đổi đề mục qua liên kết [sửa]',
 'tog-editsectiononrightclick' => 'Cho phép sửa đổi đề mục bằng cách bấm chuột phải trên tên đề mục (JavaScript)',
 'tog-showtoc'                 => 'Hiển thị mục lục (cho trang có trên 3 đề mục)',
-'tog-rememberpassword'        => 'Nhớ thông tin đăng nhập của tôi trên máy tính này',
+'tog-rememberpassword'        => 'Nhớ thông tin đăng nhập của tôi trên máy tính này (cho đến $1 ngày)',
 'tog-watchcreations'          => 'Tự động theo dõi trang tôi viết mới',
 'tog-watchdefault'            => 'Tự động theo dõi trang tôi sửa',
 'tog-watchmoves'              => 'Tự động theo dõi trang tôi di chuyển',
@@ -666,7 +667,7 @@ Tài khoản của bạn đã mở.
 'yourname'                   => 'Tên người dùng:',
 'yourpassword'               => 'Mật khẩu:',
 'yourpasswordagain'          => 'Gõ lại mật khẩu',
-'remembermypassword'         => 'Nhớ thông tin đăng nhập của tôi trên máy tính này',
+'remembermypassword'         => 'Nhớ thông tin đăng nhập của tôi trên máy tính này (cho đến $1 ngày)',
 'yourdomainname'             => 'Tên miền của bạn:',
 'externaldberror'            => 'Có lỗi khi xác nhận cơ sở dữ liệu bên ngoài hoặc bạn không được phép cập nhật tài khoản bên ngoài.',
 'login'                      => 'Đăng nhập',
@@ -854,8 +855,8 @@ hoặc <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE
 'userpage-userdoesnotexist-view'   => 'Tài khoản “$1” chưa được đăng ký.',
 'blocked-notice-logextract'        => 'Người dùng này hiện đang bị cấm sửa đổi. Nhật trình cấm gần nhất được ghi ở dưới để tiện theo dõi:',
 'clearyourcache'                   => "'''Ghi chú&nbsp;– Sau khi lưu trang, có thể bạn sẽ phải xóa bộ nhớ đệm của trình duyệt để xem các thay đổi.''' '''Mozilla / Firefox / Safari:''' giữ phím ''Shift'' trong khi nhấn ''Reload'' (''Tải lại''), hoặc nhấn tổ hợp ''Ctrl-F5'' hay ''Ctrl-R'' (<span title=\"Command\">⌘</span>''R'' trên Macintosh); '''Konqueror:''' nhấn nút ''Reload'' hoặc nhấn ''F5''; '''Opera:''' xóa bộ nhớ đệm trong ''Tools → Preferences''; '''Internet Explorer:''' giữ phím ''Ctrl'' trong khi nhấn ''Refresh'', hoặc nhấn tổ hợp ''Ctrl-F5''.",
-'usercssyoucanpreview'             => "'''Mẹo:''' Sử dụng nút “Xem thử” để kiểm thử trang CSS của bạn trước khi lưu trang.",
-'userjsyoucanpreview'              => "'''Mẹo:''' Sử dụng nút “Xem thử” để kiểm thử trang JS của bạn trước khi lưu trang.",
+'usercssyoucanpreview'             => "'''Mẹo:''' Sử dụng nút “{{int:showpreview}}” để kiểm thử bản CSS của bạn trước khi lưu trang.",
+'userjsyoucanpreview'              => "'''Mẹo:''' Sử dụng nút “{{int:showpreview}}” để kiểm thử bản JS của bạn trước khi lưu trang.",
 'usercsspreview'                   => "'''Hãy nhớ rằng bạn chỉ đang xem thử trang CSS cá nhân của bạn.
 Nó chưa được lưu!'''",
 'userjspreview'                    => "'''Nhớ rằng bạn chỉ đang kiểm thử/xem thử trang JavaScript, nó chưa được lưu!'''",
@@ -877,7 +878,7 @@ Nếu vẫn không thành công, bạn hãy thử [[Special:UserLogout|đăng xu
 sửa đổi. Việc hủy bỏ này nhằm tránh nội dung trang bị hỏng.
 Điều này thường xảy ra khi bạn sử dụng một dịch vụ proxy vô danh trên web có vấn đề.'''",
 'editing'                          => 'Sửa đổi $1',
-'editingsection'                   => 'Sửa đổi $1',
+'editingsection'                   => 'Sửa đổi $1 (đề mục)',
 'editingcomment'                   => 'Sửa đổi $1 (đề mục mới)',
 'editconflict'                     => 'Sửa đổi mâu thuẫn: $1',
 'explainconflict'                  => "Trang này có đã được lưu bởi người khác sau khi bạn bắt đầu sửa.
@@ -1073,6 +1074,8 @@ $1",
 'logdelete-failure'           => "'''Không thể thiết lập khả năng hiện thị của nhật trình:'''
 $1",
 'revdel-restore'              => 'Thay đổi mức khả kiến',
+'revdel-restore-deleted'      => 'các phiên bản xóa',
+'revdel-restore-visible'      => 'các phiên bản được hiện',
 'pagehist'                    => 'Lịch sử trang',
 'deletedhist'                 => 'Lịch sử đã xóa',
 'revdelete-content'           => 'nội dung',
@@ -1107,6 +1110,24 @@ Xin hãy kiểm tra nhật trình.',
 'suppressionlog'     => 'Nhật trình ẩn giấu',
 'suppressionlogtext' => 'Dưới đây là danh sách các tác vụ xóa và cấm liên quan đến nội dung mà các quản lý không nhìn thấy. 
 Xem [[Special:IPBlockList|danh sách các IP bị cấm]] để xem danh sách các tác vụ cấm chỉ và cấm thông thường hiện nay.',
+
+# Revision move
+'moverevlogentry'              => 'di chuyển {{PLURAL:$3|phiên bản|$3 phiên bản}} từ $1 đến $2',
+'revisionmove'                 => 'Di chuyển phiên bản từ “$1”',
+'revmove-explain'              => 'Các phiên bản sau sẽ được di chuyển từ $1 đến trang mục tiêu được chọn. Nếu trang mục tiêu tồn tại, các phiên bản này sẽ được hợp nhất vào lịch sử của trang mục từ; không thì trang mục tiêu sẽ được tạo ra.',
+'revmove-legend'               => 'Đặt trang mục tiêu và tóm lược',
+'revmove-submit'               => 'Di chuyển các phiên bản đến trang lựa chọn',
+'revisionmoveselectedversions' => 'Di chuyển các phiên bản được chọn',
+'revmove-reasonfield'          => 'Lý do:',
+'revmove-titlefield'           => 'Trang mục tiêu:',
+'revmove-badparam-title'       => 'Tham số hỏng',
+'revmove-badparam'             => '<span class="error">Yêu cầu của bạn không đủ tham số hoặc có tham số không hợp lệ. Xin hãy bấm “Lùi” và thử lại.</span>',
+'revmove-norevisions-title'    => 'Phiên bản mục tiêu không hợp lệ',
+'revmove-norevisions'          => '<span class="error">Chưa chọn ít nhất một phiên bản mục tiêu để thực hiện tác vụ này, hoặc phiên bản được chọn không tồn tại.</span>',
+'revmove-nullmove-title'       => 'Tựa trang sai',
+'revmove-nullmove'             => '<span class="error">Không thể di chuyển phiên bản từ một trang đến cùng trang. Xin hãy bấm “Lùi” và đổi “$1” thành tên trang khác.</span>',
+'revmove-success-existing'     => '{{PLURAL:$1|Một phiên bản|$1 phiên bản}} [[$2]] đã được di chuyển đến trang tồn tại [[$3]].',
+'revmove-success-created'      => '{{PLURAL:$1|Một phiên bản|$1 phiên bản}} [[$2]] đã được di chuyển đên trang mới [[$3]].',
 
 # History merging
 'mergehistory'                     => 'Trộn lịch sử trang',
@@ -1357,7 +1378,7 @@ Bạn cũng có thể lựa chọn cho phép người khác liên lạc với b�
 'group-user'          => 'Thành viên thông thường',
 'group-autoconfirmed' => 'Thành viên tự xác nhận',
 'group-bot'           => 'Robot',
-'group-sysop'         => 'Quản lý',
+'group-sysop'         => 'Bảo quản viên',
 'group-bureaucrat'    => 'Hành chính viên',
 'group-suppress'      => 'Giám sát viên',
 'group-all'           => '(tất cả)',
@@ -1365,7 +1386,7 @@ Bạn cũng có thể lựa chọn cho phép người khác liên lạc với b�
 'group-user-member'          => 'Thành viên',
 'group-autoconfirmed-member' => 'Thành viên tự động xác nhận',
 'group-bot-member'           => 'Robot',
-'group-sysop-member'         => 'Quản lý',
+'group-sysop-member'         => 'bảo quản viên',
 'group-bureaucrat-member'    => 'Hành chính viên',
 'group-suppress-member'      => 'Giám sát viên',
 
@@ -1436,8 +1457,8 @@ Bạn cũng có thể lựa chọn cho phép người khác liên lạc với b�
 'right-siteadmin'             => 'Khóa và mở khóa cơ sở dữ liệu',
 'right-reset-passwords'       => 'Tái tạo mật khẩu của thành viên khác',
 'right-override-export-depth' => 'Xuất trang kèm theo các trang được liên kết đến với độ sâu tối đa là 5',
-'right-versiondetail'         => 'Hiện thông tin phiên bản phần mềm mở rộng',
 'right-sendemail'             => 'Gửi thư điện tử cho thành viên khác',
+'right-revisionmove'          => 'Di chuyển phiên bản',
 
 # User rights log
 'rightslog'      => 'Nhật trình cấp quyền thành viên',
@@ -1480,6 +1501,7 @@ Bạn cũng có thể lựa chọn cho phép người khác liên lạc với b�
 'action-userrights'           => 'sửa đổi mọi quyền người dùng',
 'action-userrights-interwiki' => 'sửa đổi quyền của người dùng tại wiki khác',
 'action-siteadmin'            => 'khóa hoặc mở khóa cơ sở dữ liệu',
+'action-revisionmove'         => 'di chuyển phiên bản',
 
 # Recent changes
 'nchanges'                          => '$1 {{PLURAL:$1|thay đổi|thay đổi}}',
@@ -2003,7 +2025,7 @@ Xem thêm [[Special:WantedCategories|thể loại cần thiết]].',
 'newuserlogpage'              => 'Nhật trình mở tài khoản',
 'newuserlogpagetext'          => 'Đây là danh sách những tài khoản thành viên mở lên gần đây.',
 'newuserlog-byemail'          => 'gửi mật khẩu qua thư điện tử',
-'newuserlog-create-entry'     => 'Tài khoản mới',
+'newuserlog-create-entry'     => 'đã mở tài khoản mới',
 'newuserlog-create2-entry'    => 'đã tạo tài khoản mới với tên $1',
 'newuserlog-autocreate-entry' => 'Tài khoản được tạo tự động',
 
@@ -2181,7 +2203,10 @@ Sửa đổi cuối cùng tại trang do [[User:$3|$3]] ([[User talk:$3|thảo l
 'revertpage-nouser' => 'Lùi sửa đổi của (tên người dùng đã xóa) quay lại phiên bản cuối của [[User:$1|$1]]',
 'rollback-success'  => 'Đã hủy sửa đổi của $1;
 quay về phiên bản cuối của $2.',
-'sessionfailure'    => 'Dường như có trục trặc với phiên đăng nhập của bạn; thao tác này đã bị hủy để tránh việc cướp quyền đăng nhập. Xin hãy nhấn nút “Back”, tải lại trang đó, rồi thử lại.',
+
+# Edit tokens
+'sessionfailure-title' => 'Phiên thất bại',
+'sessionfailure'       => 'Dường như có trục trặc với phiên đăng nhập của bạn; thao tác này đã bị hủy để tránh việc cướp quyền đăng nhập. Xin hãy nhấn nút “Back”, tải lại trang đó, rồi thử lại.',
 
 # Protect
 'protectlogpage'              => 'Nhật trình khóa',

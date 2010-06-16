@@ -303,7 +303,7 @@ $messages = array(
 'tog-editsection'             => 'Possibilitar a edição de secções com links [editar]',
 'tog-editsectiononrightclick' => 'Possibilitar a edição de secções por clique com o botão direito no título da secção (JavaScript)',
 'tog-showtoc'                 => 'Mostrar índice (para páginas com mais de três secções)',
-'tog-rememberpassword'        => 'Recordar a minha palavra-chave entre sessões',
+'tog-rememberpassword'        => 'Recordar os meus dados neste computador (no máximo, por $1 {{PLURAL:$1|dia|dias}})',
 'tog-watchcreations'          => 'Adicionar as páginas que eu criar às minhas páginas vigiadas',
 'tog-watchdefault'            => 'Adicionar as páginas que eu editar às minhas páginas vigiadas',
 'tog-watchmoves'              => 'Adicionar as páginas que eu mover às minhas páginas vigiadas',
@@ -700,7 +700,7 @@ Não se esqueça de personalizar as suas [[Special:Preferences|preferências na 
 'yourname'                   => 'Nome de utilizador:',
 'yourpassword'               => 'Palavra-chave:',
 'yourpasswordagain'          => 'Repita a palavra-chave:',
-'remembermypassword'         => 'Recordar a minha palavra-chave entre sessões',
+'remembermypassword'         => 'Recordar os meus dados neste computador (no máximo, por $1 {{PLURAL:$1|dia|dias}})',
 'yourdomainname'             => 'O seu domínio:',
 'externaldberror'            => 'Ocorreu um erro externo à base de dados durante a autenticação ou não lhe é permitido actualizar a sua conta externa.',
 'login'                      => 'Autenticação',
@@ -914,7 +914,7 @@ Para referência, o último registo de bloqueio é apresentado abaixo:',
 '''Konqueror:''': clique no botão ''Recarregar'' ou pressione ''F5'';
 '''Opera:''' limpe a ''cache'' em ''Ferramentas → Preferências'' (''Tools → Preferences'');
 '''Internet Explorer:''' pressione ''Ctrl'' enquanto clica em ''Recarregar'' ou pressione ''Ctrl-F5''.",
-'usercssyoucanpreview'             => "'''Dica:''' Use o botão \"{{int:showpreview}}\" para testar o novo CSS antes de gravar.",
+'usercssyoucanpreview'             => "'''Dica:''' Use o botão \"{{int:showpreview}}\" para testar o seu novo CSS antes de gravar.",
 'userjsyoucanpreview'              => "'''Dica:''' Use o botão \"{{int:showpreview}}\" para testar o seu novo JavaScript antes de gravar.",
 'usercsspreview'                   => "'''Lembre-se de que está apenas a antever o seu CSS particular.
 Este ainda não foi gravado!'''",
@@ -1181,6 +1181,24 @@ Verifique os registos, por favor.',
 'suppressionlog'     => 'Registo de supressões',
 'suppressionlogtext' => 'Abaixo está uma lista das remoções e bloqueios envolvendo conteúdo ocultado por administradores.
 Veja a [[Special:IPBlockList|lista de bloqueios]] para uma lista de banimentos e bloqueios em efeito neste momento.',
+
+# Revision move
+'moverevlogentry'              => 'moveu {{PLURAL:$3|uma revisão|$3 revisões}} de $1 para $2',
+'revisionmove'                 => 'Mover revisões de "$1"',
+'revmove-explain'              => 'As seguintes revisões serão movidas de $1 para a página de destino especificada. Se a página de destino não existir, será criada. Se existir, estas revisões serão fundidas no histórico de revisões da página.',
+'revmove-legend'               => 'Definir a página de destino e o resumo',
+'revmove-submit'               => 'Mover as revisões para a página seleccionada',
+'revisionmoveselectedversions' => 'Mover as revisões seleccionadas',
+'revmove-reasonfield'          => 'Motivo:',
+'revmove-titlefield'           => 'Página de destino:',
+'revmove-badparam-title'       => 'Parâmetros incorrectos',
+'revmove-badparam'             => '<span class="error">O seu pedido contém parâmetros ilegais ou insuficientes. Clique "voltar" e tente novamente.</span>',
+'revmove-norevisions-title'    => 'A revisão especificada é inválida',
+'revmove-norevisions'          => '<span class="error">Não especificou uma ou mais revisões sobre as quais deve ser executada esta operação, ou a revisão que especificou não existe.</span>',
+'revmove-nullmove-title'       => 'Título incorrecto',
+'revmove-nullmove'             => '<span class="error">As páginas de origem e destino são idênticas. Clique "voltar" e introduza um nome de página diferente de "$1".</span>',
+'revmove-success-existing'     => '{{PLURAL:$1|Uma revisão de [[$2]] foi movida|$1 revisões de [[$2]] foram movidas}} para a página existente [[$3]].',
+'revmove-success-created'      => '{{PLURAL:$1|Uma revisão de [[$2]] foi movida|$1 revisões de [[$2]] foram movidas}} para a página recém-criada [[$3]].',
 
 # History merging
 'mergehistory'                     => 'Fundir histórico de páginas',
@@ -1515,8 +1533,8 @@ Também permite que outros entrem em contacto consigo através da sua página de
 'right-siteadmin'             => 'Bloquear e desbloquear a base de dados',
 'right-reset-passwords'       => 'Repor a palavra-chave de outros utilizadores',
 'right-override-export-depth' => 'Exportar páginas incluindo páginas ligadas até uma profundidade de 5',
-'right-versiondetail'         => 'Mostrar informações completas da versão de software',
 'right-sendemail'             => 'Enviar correio electrónico a outros utilizadores',
+'right-revisionmove'          => 'Mover revisões',
 
 # User rights log
 'rightslog'      => 'Registo de privilégios de utilizador',
@@ -1559,6 +1577,7 @@ Também permite que outros entrem em contacto consigo através da sua página de
 'action-userrights'           => 'editar os privilégios de utilizadores',
 'action-userrights-interwiki' => 'editar privilégios de utilizadores de outras wikis',
 'action-siteadmin'            => 'bloquear ou desbloquear a base de dados',
+'action-revisionmove'         => 'mover revisões',
 
 # Recent changes
 'nchanges'                          => '$1 {{PLURAL:$1|alteração|alterações}}',
@@ -1926,7 +1945,7 @@ A descrição na [$2 página de descrição] é mostrada abaixo.',
 'statistics-views-peredit'     => 'Visionamentos por edição',
 'statistics-users'             => '[[Special:ListUsers|Utilizadores]] registados',
 'statistics-users-active'      => 'Utilizadores activos',
-'statistics-users-active-desc' => 'Utilizadores que efectuaram uma ação {{PLURAL:$1|no último dia|nos últimos $1 dias}}',
+'statistics-users-active-desc' => 'Utilizadores que efectuaram uma operação {{PLURAL:$1|no último dia|nos últimos $1 dias}}',
 'statistics-mostpopular'       => 'Páginas mais vistas',
 
 'disambiguations'      => 'Desambiguações',
@@ -2271,7 +2290,10 @@ A última edição foi de [[User:$3|$3]] ([[User talk:$3|discussão]]{{int:pipe-
 'revertpage'        => 'Foram revertidas as edições de [[Special:Contributions/$2|$2]] ([[User talk:$2|disc]]) para a última versão por [[User:$1|$1]]',
 'revertpage-nouser' => 'Revertidas as edições de (nome de utilizador removido) para a última revisão por [[User:$1|$1]]',
 'rollback-success'  => 'Foram revertidas as edições de $1, com o conteúdo passando a estar como na última edição de $2.',
-'sessionfailure'    => 'Foram detectados problemas com a sua sessão;
+
+# Edit tokens
+'sessionfailure-title' => 'Erro de sessão',
+'sessionfailure'       => 'Foram detectados problemas com a sua sessão;
 esta operação foi cancelada como medida de protecção contra a intercepção de sessões.
 Clique o botão "Voltar" e recarregue a página de onde veio, depois tente novamente.',
 
@@ -2283,7 +2305,7 @@ Consulte a [[Special:ProtectedPages|lista de páginas protegidas]] para ver as p
 'modifiedarticleprotection'   => 'alterou o nível de protecção para "[[$1]]"',
 'unprotectedarticle'          => 'desprotegeu "[[$1]]"',
 'movedarticleprotection'      => 'moveu as configurações de protecção de "[[$2]]" para "[[$1]]"',
-'protect-title'               => 'Protegendo "$1"',
+'protect-title'               => 'Alterar o nível de protecção de "$1"',
 'prot_1movedto2'              => 'moveu [[$1]] para [[$2]]',
 'protect-legend'              => 'Confirmar protecção',
 'protectcomment'              => 'Motivo:',
@@ -2856,13 +2878,13 @@ Permite colocar uma justificação no resumo da edição.',
 
 # Attribution
 'anonymous'        => '{{PLURAL:$1|Utilizador anónimo|Utilizadores anónimos}} da {{SITENAME}}',
-'siteuser'         => '{{GENDER:$2|um utilizador|uma utilizadora|um utilizador}} da {{SITENAME}}: $1',
+'siteuser'         => '{{GENDER:$2|um utilizador|uma utilizadora|um utilizador}} da {{SITENAME}} ($1)',
 'anonuser'         => 'utilizador anónimo $1 da {{SITENAME}}',
 'lastmodifiedatby' => 'Esta página foi modificada pela última vez às $2 de $1 por $3.',
 'othercontribs'    => 'Baseado no trabalho de $1.',
 'others'           => 'outros',
-'siteusers'        => '{{PLURAL:$2|um utilizador|$2 utilizadores}} da {{SITENAME}}: $1',
-'anonusers'        => '{{PLURAL:$2|utilizador anónimo|utilizadores anónimos}} da {{SITENAME}}: $1',
+'siteusers'        => '{{PLURAL:$2|um utilizador|$2 utilizadores}} da {{SITENAME}} ($1)',
+'anonusers'        => '{{PLURAL:$2|utilizador anónimo|utilizadores anónimos}} da {{SITENAME}} ($1)',
 'creditspage'      => 'Créditos da página',
 'nocredits'        => 'Não há informação disponível sobre os créditos desta página.',
 
@@ -3372,7 +3394,7 @@ Confirme que deseja realmente recriar esta página, por favor.",
 # Auto-summaries
 'autosumm-blank'   => 'Limpou toda a página',
 'autosumm-replace' => "Página substituída por '$1'",
-'autoredircomment' => 'Redireccionando para [[$1]]',
+'autoredircomment' => 'Redireccionamento para [[$1]]',
 'autosumm-new'     => "Criou nova página com '$1'",
 
 # Live preview

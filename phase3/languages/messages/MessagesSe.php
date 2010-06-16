@@ -9,6 +9,8 @@
  *
  * @author Skuolfi
  * @author Teak
+ * @author The Evil IP address
+ * @author Trondtr
  * @author לערי ריינהארט
  */
 
@@ -39,7 +41,7 @@ $messages = array(
 'tog-enotifminoredits'        => 'Sádde dieđu e-poasttain maid unna rievdadusain',
 'tog-enotifrevealaddr'        => 'Čájet e-poastačujuhusain almmuhusain, maid sádden earáide',
 'tog-shownumberswatching'     => 'Čájet galle geavaheaddji čuvvot siiddu',
-'tog-fancysig'                => 'Oktageardán vuolláidčálus liŋkahaga',
+'tog-fancysig'                => 'Oktageardán vuolláidčálus liŋkka haga',
 'tog-forceeditsummary'        => 'Fuomašuhte, jus čoahkkáigeassu ii leat čállojuvvon',
 'tog-watchlisthideown'        => 'Čiega iežas rievdadusaid',
 'tog-watchlisthidebots'       => 'Čiega bohtaid rievdadusaid',
@@ -89,11 +91,11 @@ $messages = array(
 'october-gen'   => 'golggotmánu',
 'november-gen'  => 'skábmamánu',
 'december-gen'  => 'juovlamánu',
-'jan'           => 'ođđajagimánnu',
-'feb'           => 'guovvamánnu',
-'mar'           => 'njukčamánnu',
-'apr'           => 'cuoŋománnu',
-'may'           => 'miessemánnu',
+'jan'           => 'ođđj',
+'feb'           => 'guov',
+'mar'           => 'njuk',
+'apr'           => 'cuoŋ',
+'may'           => 'mies',
 'jun'           => 'geassemánnu',
 'jul'           => 'suoidnemánnu',
 'aug'           => 'borgemánnu',
@@ -130,6 +132,9 @@ $messages = array(
 'qbmyoptions'    => 'Ásahusat',
 'qbspecialpages' => 'Doaibmasiiddut',
 
+# Vector skin
+'vector-namespace-image' => 'Fiila',
+
 'errorpagetitle'    => 'Feaila',
 'returnto'          => 'Máhcat siidui $1.',
 'tagline'           => '{{SITENAME}}',
@@ -160,7 +165,7 @@ $messages = array(
 'talkpagelinktext'  => 'ságastallan',
 'specialpage'       => 'Doaibmasiidu',
 'personaltools'     => 'Persovnnalaš gaskaoamit',
-'postcomment'       => 'Kommeanta siiddu lohpii',
+'postcomment'       => 'Ođđa sekšuvdna',
 'articlepage'       => 'Čájet fástasiiddu',
 'talk'              => 'Ságastallan',
 'views'             => 'Oaidnámusat',
@@ -840,7 +845,7 @@ $1 {{int:pipe-separator}} $2',
 'addedwatch'           => 'Lasihuvvon čuovvunlistui',
 'addedwatchtext'       => "Siidu '''<nowiki>$1</nowiki>''' lea lasihuvvon [[Special:Watchlist|čuovvunlisttui]]. Boahtevuođas siiddu ja siiddu ságastallansiiddu rievdadusat almmuhuvvo dáppe. Siidu lea '''buidon''' [[Special:RecentChanges|varas rievdadusat -listtus]], vai fuomašat dan álkit. Jus hálidat heaiti čuovvumis dan siiddu, deaddil liŋkka ''heaite čuovvumis'' siiddu ravddas.",
 'removedwatch'         => 'Sihkojuvvon čuovvunlisttus',
-'removedwatchtext'     => "Siidu '''<nowiki>$1</nowiki>''' lea sihkojuvvon du čuovvunlisttus.",
+'removedwatchtext'     => "Siidu '''[[:$1]]''' lea sihkojuvvon du čuovvunlisttus.",
 'watch'                => 'Čuovo',
 'watchthispage'        => 'Čuovo dán siiddu',
 'unwatch'              => 'Heaite čuovvumis',
@@ -1040,7 +1045,7 @@ Siiddus $2 lea listu maŋimus sihkomiin.',
 'pagemovedsub'            => 'Sirdin lihkosmuvai',
 'movedto'                 => 'Sirdojuvvun ođđa bájilčállagin',
 'movetalk'                => 'Sirdde maid ságastallansiiddu.',
-'1movedto2'               => 'sirddii siiddu ”$1” ođđa namain ”$2”',
+'1movedto2'               => 'sirddii siiddu ”[[$1]]” ođđa namain ”[[$2]]”',
 'movelogpage'             => 'Sirdinlogga',
 'movelogpagetext'         => 'Dát lea logga sirdojuvvon siidduin.',
 'movereason'              => 'Sivva',

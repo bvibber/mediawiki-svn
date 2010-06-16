@@ -1296,7 +1296,6 @@ Gainera beste lankideek zurekin kontakta dezakete zure lankide edo lankide_eztab
 'right-siteadmin'             => 'Databasea blokeatu eta desblokeatu',
 'right-reset-passwords'       => 'Bese erabiltzaile batzuen pasahitzak berritu',
 'right-override-export-depth' => '5eko sakonerararteko loturiko orrialdeak barne esportatu',
-'right-versiondetail'         => 'Software bertsio zabalduaren informazioa erakutsi',
 'right-sendemail'             => 'Beste erabiltzaileei e-posta bidali',
 
 # User rights log
@@ -1991,7 +1990,9 @@ beste norbaitek editatu du edo jada desegin du.
 'editcomment'      => "Aldaketaren laburpena: \"''\$1''\".",
 'revertpage'       => '$2ren aldaketak ezabatu dira, $1ren azken bertsiora itzuliz.',
 'rollback-success' => '$1(r)en aldaketak desegin dira, $2(r)en azken bertsiora itzuliz.',
-'sessionfailure'   => 'Badirudi saioarekin arazoren bat dagoela; bandalismoak saihesteko ekintza hau ezeztatu egin da. Mesedez, nabigatzaileko "atzera" botoian klik egin, hona ekarri zaituen orrialde hori berriz kargatu, eta saiatu berriz.',
+
+# Edit tokens
+'sessionfailure' => 'Badirudi saioarekin arazoren bat dagoela; bandalismoak saihesteko ekintza hau ezeztatu egin da. Mesedez, nabigatzaileko "atzera" botoian klik egin, hona ekarri zaituen orrialde hori berriz kargatu, eta saiatu berriz.',
 
 # Protect
 'protectlogpage'              => 'Babes erregistroa',

@@ -829,7 +829,7 @@ li#pt-login {
 	background-color: white;
 }
 #p-cactions .new a {
-	color: #CC2200;
+	color: #ba0000;
 }
 #p-cactions li a:hover {
 	z-index: 3;
@@ -1091,8 +1091,8 @@ div#userloginForm .captcha {
 
 /* more IE fixes */
 /* float/negative margin brokenness */
-* html #footer {margin-top: 0;}
-* html #column-content {
+* html div#footer {margin-top: 0;}
+* html div#column-content {
 	display: inline;
 	margin-bottom: 0;
 }
@@ -1100,15 +1100,15 @@ div#userloginForm .captcha {
 #pagehistory li.selected { position: relative; }
 
 /* Mac IE 5.0 fix; floated content turns invisible */
-* > html #column-content {
+* > html div#column-content {
 	float: none;
 }
-* > html #column-one {
+* > html div#column-one {
 	position: absolute;
 	left: 0;
 	top: 0;
 }
-* > html #footer {
+* > html div#footer {
 	margin-left: 13.2em;
 }
 .redirectText {
@@ -1132,16 +1132,6 @@ div.patrollink {
 span.updatedmarker {
 	color: black;
 	background-color: #0f0;
-}
-
-.previewnote {
-	color: #c00;
-	margin-bottom: 1em;
-}
-
-.previewnote p {
-	text-indent: 3em;
-	margin: 0.8em 0;
 }
 
 .editExternally {

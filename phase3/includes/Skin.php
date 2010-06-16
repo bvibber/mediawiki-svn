@@ -432,7 +432,7 @@ class Skin extends Linker {
 
 		// if on upload page output the extension list & js_upload
 		if( SpecialPage::resolveAlias( $wgTitle->getDBkey() ) == 'Upload' ) {
-			global $wgFileExtensions, $wgAjaxUploadInterface;
+			global $wgFileExtensions;
 			$vars['wgFileExtensions'] = $wgFileExtensions;
 		}
 
@@ -557,7 +557,9 @@ class Skin extends Linker {
 			$underline = $undopt ? 'underline' : 'none';
 			$s .= "a { text-decoration: $underline; }\n";
 		}
-		if( !$wgUser->getOption( 'highlightbroken' ) ) {
+		if( $wgUser->getOption( 'highlightbroken' ) ) {
+			$s .= "a.new, #quickbar a.new { color: #CC2200; }\n";
+		} else {
 			$s .= <<<CSS
 a.new, #quickbar a.new,
 a.stub, #quickbar a.stub {
@@ -875,7 +877,7 @@ CSS;
 	}
 
 	function getQuickbarCompensator( $rows = 1 ) {
-		return "<td width='152' rowspan='{$rows}'>&nbsp;</td>";
+		return "<td width='152' rowspan='{$rows}'>&#160;</td>";
 	}
 
 	/**
@@ -1275,7 +1277,7 @@ CSS;
 		  . '<input type="submit" name="go" value="' . wfMsg( 'searcharticle' ) . '" />';
 
 		if( $wgUseTwoButtonsSearchForm ) {
-			$s .= '&nbsp;<input type="submit" name="fulltext" value="' . wfMsg( 'searchbutton' ) . "\" />\n";
+			$s .= '&#160;<input type="submit" name="fulltext" value="' . wfMsg( 'searchbutton' ) . "\" />\n";
 		} else {
 			$s .= ' <a href="' . $this->escapeSearchLink() . '" rel="search">' . wfMsg( 'powersearch-legend' ) . "</a>\n";
 		}
@@ -1892,12 +1894,13 @@ CSS;
 			$nt = Title::newFromText( $l );
 			$url = $nt->escapeFullURL();
 			$text = $wgContLang->getLanguageName( $nt->getInterwiki() );
+			$title = htmlspecialchars( $nt->getText() );
 
 			if ( $text == '' ) {
 				$text = $l;
 			}
 			$style = $this->getExternalLinkAttributes();
-			$s .= "<a href=\"{$url}\"{$style}>{$text}</a>";
+			$s .= "<a href=\"{$url}\" title=\"{$title}\"{$style}>{$text}</a>";
 		}
 		if( $wgContLang->isRTL() ) {
 			$s .= '</span>';

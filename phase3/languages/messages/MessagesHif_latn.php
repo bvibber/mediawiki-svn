@@ -1215,7 +1215,6 @@ Aap duusra log ke aap se aapan user_talk panna se aap ke contact kar le de sakta
 'right-siteadmin'             => 'Database ke band karo aur kholo',
 'right-reset-passwords'       => 'Duusra sadasya ke password ke badlo',
 'right-override-export-depth' => 'Panna aur jurra panna, 5 ke gahirrai talak, ke export karo',
-'right-versiondetail'         => 'Program ke baare me aur jaankari dekhao',
 'right-sendemail'             => 'Duusra sadasya ke lage e-mail bhejo',
 
 # User rights log
@@ -1931,7 +1930,9 @@ Ii panna ke pichla badla [[User:$3|$3]] ([[User talk:$3|Talk]]{{int:pipe-separat
 'revertpage-nouser' => '(sadasya ke namm ke hatae dewa gais hae) se karaa gais badlao ke  [[User:$1|$1]] ke badlao ke rakam kar dewa gais hae.',
 'rollback-success'  => '$1 ke badlao ke pahile jaise kar dewa gais hai;
 badal ke $2 ke aakhri version kar dewa gais hai.',
-'sessionfailure'    => 'Aap ke login session me kuch karrbarr hai.
+
+# Edit tokens
+'sessionfailure' => 'Aap ke login session me kuch karrbarr hai.
 iske cancel kar dewa gais hai jisse ki koi iisession ke hijack nai kar.
 Meharbani kar ke  "back" ke press kar ke jon pana se aap aae rahaa ke fir se load karo, tab fir kosis karo.',
 

@@ -1252,7 +1252,6 @@ Tu puè pure scacchià de lassà otre condatte ausanne l'utende tue o le pàggen
 'right-siteadmin'             => "Blocche e sblocche 'u database",
 'right-reset-passwords'       => "Azzere l'otre password de l'utinde",
 'right-override-export-depth' => "L'esportazione de pàggene inglude pàggene collegate 'mbonde a 'na profonnetà de 5",
-'right-versiondetail'         => "Fà vedè le 'mbormaziune d'a versione estese d'u software",
 'right-sendemail'             => "Manne 'a mail a otre utinde",
 
 # User rights log
@@ -1981,7 +1980,9 @@ L'urteme cangiamende d'a pàgene ere de [[User:$3|$3]] ([[User talk:$3|'Ngazzami
 'revertpage-nouser' => "Le cangiaminde annullate ba (nome utende luate) a l'urtema revisione da [[User:$1|$1]]",
 'rollback-success'  => "Cangiaminde annullate da $1;
 turnate rete a l'urtema versione da $2.",
-'sessionfailure'    => "Pare ca stonne probbleme cu 'a sessiona toje de collegamende;
+
+# Edit tokens
+'sessionfailure' => "Pare ca stonne probbleme cu 'a sessiona toje de collegamende;
 st'azione ha state scangellate pe precauzione condre a le 'ngasinaminde d'a sessione.
 Pe piacere cazze \"rete\" e recareche 'a pàgene da addò tu è venute e pruève 'n'otra vote.",
 

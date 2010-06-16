@@ -38,14 +38,14 @@ div#content {
 	color: black;
 }
 /* Head */
-#page-base {
+#mw-page-base {
 	height: 5em;
 	background-color: white;
 	background-image: url(images/page-fade.png?1);
 	background-position: bottom right;
 	background-repeat: repeat-x;
 }
-#head-base {
+#mw-head-base {
 	margin-top: -5em;
 	margin-right: 10em;
 	height: 5em;
@@ -53,13 +53,13 @@ div#content {
 	background-position: bottom right;
 	background-repeat: repeat-x;
 }
-div#head {
+div#mw-head {
 	position: absolute;
 	top: 0;
 	left: 0;
 	width: 100%;
 }
-div#head h5 {
+div#mw-head h5 {
 	margin: 0;
 	padding: 0;
 }
@@ -71,7 +71,7 @@ div#head h5 {
 	#p-personal {
 		position: absolute;
 		top: 0;
-		margin-right: 10em;
+		padding-right: 10em;
 		left: 0.75em;
 	}
 	#p-personal h5 {
@@ -87,10 +87,12 @@ div#head h5 {
 		line-height: 1.125em;
 		float: left;
 	}
+	/* This one flips! */
 	#p-personal li {
 		margin-right: 0.75em;
 		margin-top: 0.5em;
 		font-size: 0.75em;
+		white-space: nowrap;
 	}
 	/* Navigation Containers */
 	#left-navigation {
@@ -111,6 +113,7 @@ div#head h5 {
 	/* @noflip */
 	div.vectorTabs {
 		float: left;
+		height: 2.5em;
 	}
 	div.vectorTabs {
 		background-image: url(images/tab-break.png?1);
@@ -214,20 +217,20 @@ div#head h5 {
 	}
 	/* OVERRIDDEN BY COMPLIANT BROWSERS */
 	/* @noflip */
-	div#head div.vectorMenu h5 {
+	div#mw-head div.vectorMenu h5 {
 		float: left;
 		background-image: url(images/tab-break.png?1);
 		background-repeat: no-repeat;
 	}
 	/* IGNORED BY IE6 */
-	div#head div.vectorMenu > h5 {
+	div#mw-head div.vectorMenu > h5 {
 		background-image: none;
 	}
-	div#head div.vectorMenu h5 {
+	div#mw-head div.vectorMenu h5 {
 		background-position: bottom right;
 		margin-right: -1px;
 	}
-	div#head div.vectorMenu h4 {
+	div#mw-head div.vectorMenu h4 {
 		display: inline-block;
 		float: right;
 		font-size: 0.8em;
@@ -346,7 +349,7 @@ div#head h5 {
 		margin-top: 0.4em;
 	}
 	div#simpleSearch {
-		margin-top: 0.5em;
+		margin-top: 0.65em;
 		position: relative;
 		border: solid 1px #AAAAAA;
 		background-color: white;
@@ -355,15 +358,23 @@ div#head h5 {
 		background-repeat: repeat-x;
 	}
 	div#simpleSearch label {
-		font-size: 0.8em;
+		/*
+		 * DON'T PANIC! Browsers that won't scale this properly are the same browsers that have JS issues that prevent
+		 * this from ever being shown anyways.
+		*/
+		font-size: 13px;
 		top: 0.25em;
 	}
 	div#simpleSearch input#searchInput {
 		margin: 0;
 		border-width: 0;
-		padding: 0.25em;
-		line-height: 1em;
-		font-size: 0.8em;
+		padding: 3px;
+		vertical-align: top;
+		/*
+		 * DON'T PANIC! Browsers that won't scale this properly are the same browsers that have JS issues that prevent
+		 * this from ever being shown anyways.
+		*/
+		font-size: 13px;
 		width: 14em;
 		background-color: transparent;
 	}
@@ -372,7 +383,7 @@ div#head h5 {
 		margin: 0;
 		padding: 0;
 		width: 1.75em;
-		height: 1.5em;
+		height: 16px;
 		border: none;
 		cursor: pointer;
 		background-color: transparent;
@@ -385,17 +396,17 @@ div#head h5 {
 		height: 100%;
 	}
 /* Panel */
-div#panel {
+div#mw-panel {
 	position: absolute;
 	top: 160px;
 	padding-top: 1em;
 	width: 10em;
 	right: 0;
 }
-	div#panel div.portal {
+	div#mw-panel div.portal {
 		padding-bottom: 1.5em;
 	}
-	div#panel div.portal h5 {
+	div#mw-panel div.portal h5 {
 		font-weight: normal;
 		color: #444444;
 		padding: 0.25em;
@@ -405,7 +416,7 @@ div#panel {
 		border: none;
 		font-size: 0.75em;
 	}
-	div#panel div.portal div.body {
+	div#mw-panel div.portal div.body {
 		margin: 0;
 		padding-top: 0.5em;
 		margin-right: 1.25em;
@@ -413,14 +424,14 @@ div#panel {
 		background-repeat: no-repeat;
 		background-position: top right;
 	}
-	div#panel div.portal div.body ul {
+	div#mw-panel div.portal div.body ul {
 		list-style: none;
 		list-style-image: none;
 		list-style-type: none;
 		padding: 0;
 		margin: 0;
 	}
-	div#panel div.portal div.body ul li {
+	div#mw-panel div.portal div.body ul li {
 		line-height: 1.125em;
 		padding: 0;
 		padding-bottom: 0.5em;
@@ -428,10 +439,10 @@ div#panel {
 		overflow: hidden;
 		font-size: 0.75em;
 	}
-	div#panel div.portal div.body ul li a {
+	div#mw-panel div.portal div.body ul li a {
 		color: #0645ad;
 	}
-	div#panel div.portal div.body ul li a:visited {
+	div#mw-panel div.portal div.body ul li a:visited {
 		color: #0b0080;
 	}
 /* Footer */
@@ -639,7 +650,7 @@ a.stub {
 	color: #772233;
 }
 a.new, #p-personal a.new {
-	color: #CC2200;
+	color: #ba0000;
 }
 a.new:visited, #p-personal a.new:visited {
 	color: #a55858;
@@ -922,18 +933,15 @@ img.thumbborder {
 	padding: .5em 1em;
 	vertical-align: middle;
 }
-/* Site Notice */
+/* Site Notice (includes notices from CentralNotice extension) */
 #siteNotice {
 	text-align: center;
 	font-size: 0.8em;
 	margin: 0;
 }
-	#siteNotice div,
-	#siteNotice p {
-		margin: 0;
-		padding: 0;
-		margin-bottom: 0.9em;
-	}
+#localNotice {
+	margin-bottom: 0.9em;
+}
 /* Categories */
 .catlinks {
 	border: 1px solid #aaa;

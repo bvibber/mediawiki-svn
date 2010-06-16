@@ -23,12 +23,39 @@ class Preprocessor_Hash implements Preprocessor {
 		return new PPCustomFrame_Hash( $this, $args );
 	}
 
+	function newPartNodeArray( $values ) {
+		$list = array();
+
+		foreach ( $values as $k => $val ) {
+			$partNode = new PPNode_Hash_Tree( 'part' );
+			$nameNode = new PPNode_Hash_Tree( 'name' );
+
+			if ( is_int( $k ) ) {
+				$nameNode->addChild( new PPNode_Hash_Attr( 'index', $k ) );
+				$partNode->addChild( $nameNode );
+			} else {
+				$nameNode->addChild( new PPNode_Hash_Text( $k ) );
+				$partNode->addChild( $nameNode );
+				$partNode->addChild( new PPNode_Hash_Text( '=' ) );
+			}
+
+			$valueNode = new PPNode_Hash_Tree( 'value' );
+			$valueNode->addChild( new PPNode_Hash_Text( $val ) );
+			$partNode->addChild( $valueNode );
+
+			$list[] = $partNode;
+		}
+
+		$node = new PPNode_Hash_Array( $list );
+		return $node;
+	}
+
 	/**
 	 * Preprocess some wikitext and return the document tree.
 	 * This is the ghost of Parser::replace_variables().
 	 *
-	 * @param string $text The text to parse
-	 * @param integer flags Bitwise combination of:
+	 * @param $text String: the text to parse
+	 * @param $flags Integer: bitwise combination of:
 	 *          Parser::PTD_FOR_INCLUSION    Handle <noinclude>/<includeonly> as if the text is being
 	 *                                     included. Default is to assume a direct page view.
 	 *
@@ -804,7 +831,7 @@ class PPFrame_Hash implements PPFrame {
 
 	/**
 	 * Construct a new preprocessor frame.
-	 * @param Preprocessor $preprocessor The parent preprocessor
+	 * @param $preprocessor Preprocessor: the parent preprocessor
 	 */
 	function __construct( $preprocessor ) {
 		$this->preprocessor = $preprocessor;

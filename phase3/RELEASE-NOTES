@@ -76,7 +76,14 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * (bug 23580) Add two new events to LivePreview so that scripts can be
   notified about the beginning and finishing of LivePreview actions.
 * (bug 21278) Now the sidebar allows inclusion of wiki markup.
- 
+* (bug 23733) Add IDs to messages used on CSS/JS pages
+* (bug 21312) RevisionMove allows moving individual revisions of a page to 
+  another page. Introducing 'revisionmove' user right; disabled by default;
+  experimental feature.
+* Show validity period of the login cookie in Special:UserLogin and
+  Special:Preferences
+* Interlanguage links display the page title in their tooltip.
+
 === Bug fixes in 1.17 ===
 * (bug 17560) Half-broken deletion moved image files to deletion archive
   without updating database.
@@ -181,6 +188,16 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * (bug 22967) Make edit summary length cut-off behave correctly for 
   multibyte characters.
 * (bug 8689) Long numeric lines no longer  kill the parser.
+* (bug 23740) Article::doRedirect() now use $extraQuery parameter correctly if
+  the $noRedir parameter is set to true
+* (bug 23688) Correct mime types for Office 2007 OpenXML documents.
+* (bug 23787) Corrected $wgDefaultSkin's comment in DefaultSettings.php
+* (bug 23797) Xml::input() now allows '0' for the value parameter
+* (bug 23747) Make sure that on History pages, the RevDel button is not
+  accidently activated when hitting enter.
+* (bug 23845) Special:ListFiles now uses correct file names without underscores
+* Ask for permanent login in Special:Preferences only if $wgCookieExpiration > 0
+* (bug 16356) Repair dumpInterwiki.inc to use proper normalization.
 
 === API changes in 1.17 ===
 * (bug 22738) Allow filtering by action type on query=logevent.
@@ -199,6 +216,12 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
   using token and username.
 * (bug 23524) Api Modules as followup to bug 14473 (Add iwlinks table to 
   track inline interwiki link usage.
+* Add pltitles and tltemplates to prop=links and prop=templates respectively,
+  similar to prop=categories's clcategorie
+* (bug 23834) Invalid "thumbwidth" and "thumbheight" in "imageinfo" query when
+  thumbnailing larger than original image
+* (bug 23835) Need "thumbmime" result in "imageinfo" query
+* (bug 23851) Repair diff for file redirect pages
 
 === Languages updated in 1.17 ===
 

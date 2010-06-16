@@ -1415,7 +1415,6 @@ Du kan òg velje å la andre brukarar kontakte deg på e-post via brukarsida di 
 'right-siteadmin'             => 'Låse og låse opp databasen',
 'right-reset-passwords'       => 'Nullstilla passorda til andre brukarar',
 'right-override-export-depth' => 'Eksporter sider inkludert lenkte sider til ei djupn på 5',
-'right-versiondetail'         => 'Syn utvida informasjon om versjonen av programvara',
 'right-sendemail'             => 'Senda e-post til andre brukarar',
 
 # User rights log
@@ -2113,7 +2112,9 @@ Den siste endringa vart gjort av [[User:$3|$3]] ([[User talk:$3|brukardiskusjon]
 'revertpage'        => 'Attenderulla endring gjort av [[Special:Contributions/$2|$2]] til tidlegare versjon endra av [[User:$1|$1]]',
 'revertpage-nouser' => 'Tilbakestilte endringar av (brukarnamn fjerna) til den siste versjonen av [[User:$1|$1]]',
 'rollback-success'  => 'Rulla attende endringane av $1, tilbake til siste versjon av $2.',
-'sessionfailure'    => 'Det ser ut til å vera eit problem med innloggingsøkta di. Handlinga er vorten avbroten for å vera føre var mot kidnapping av økta. Bruk attendeknappen i nettlesaren din og prøv om att.',
+
+# Edit tokens
+'sessionfailure' => 'Det ser ut til å vera eit problem med innloggingsøkta di. Handlinga er vorten avbroten for å vera føre var mot kidnapping av økta. Bruk attendeknappen i nettlesaren din og prøv om att.',
 
 # Protect
 'protectlogpage'              => 'Vernelogg',
@@ -2445,7 +2446,7 @@ I desse falla lyt du flytte eller flette saman sida manuelt.",
 'movesubpagetext'              => 'Denne sida har {{PLURAL:$1|éi underside som vert synt|$1 undersider som vert synte}} nedanfor.',
 'movenosubpage'                => 'Denne sida har ingen undersider.',
 'movereason'                   => 'Årsak:',
-'revertmove'                   => 'attende',
+'revertmove'                   => 'flytt attende',
 'delete_and_move'              => 'Slett og flytt',
 'delete_and_move_text'         => '== Sletting påkrevd ==
 

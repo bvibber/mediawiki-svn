@@ -803,7 +803,7 @@ Anda mungkin telah berhasil mengganti kata sandi Anda atau telah meminta kata sa
 'headline_tip'    => 'Subbagian tingkat 1',
 'math_sample'     => 'Masukkan rumus di sini',
 'math_tip'        => 'Rumus matematika (LaTeX)',
-'nowiki_sample'   => 'Teks ini tidak akan diformat',
+'nowiki_sample'   => 'Masukkan teks yang tidak akan diformat di sini',
 'nowiki_tip'      => 'Abaikan pemformatan wiki',
 'image_sample'    => 'Contoh.jpg',
 'image_tip'       => 'Cantumkan berkas',
@@ -893,8 +893,8 @@ Hanya pengguna terdaftar yang telah masuk log yang dapat membuat artikel. Jika A
 'blocked-notice-logextract'        => 'Pengguna ini sedang diblokir.
 Entri log pemblokiran terakhir tersedia di bawah ini sebagai rujukan.',
 'clearyourcache'                   => "'''Catatan:''' Setelah menyimpan preferensi, Anda perlu membersihkan <em>cache</em> penjelajah web Anda untuk melihat perubahan. '''Mozilla / Firefox / Safari:''' tekan ''Ctrl-Shift-R'' (''Cmd-Shift-R'' pada Apple Mac); '''IE:''' tekan ''Ctrl-F5''; '''Konqueror:''': tekan ''F5''; '''Opera''' bersihkan <em>cache</em> melalui menu ''Tools→Preferences''.",
-'usercssyoucanpreview'             => "'''Tips:''' Gunakan tombol 'Lihat pratayang' untuk menguji CSS baru Anda sebelum menyimpannya.",
-'userjsyoucanpreview'              => "'''Tips:''' Gunakan tombol 'Lihat pratayang' untuk menguji JS baru Anda sebelum menyimpannya.",
+'usercssyoucanpreview'             => "'''Tips:''' Gunakan tombol \"{{int:showpreview}}\" untuk menguji CSS baru Anda sebelum menyimpannya.",
+'userjsyoucanpreview'              => "'''Tips:''' Gunakan tombol \"{{int:showpreview}}\" untuk menguji JS baru Anda sebelum menyimpannya.",
 'usercsspreview'                   => "'''Ingatlah bahwa Anda sedang menampilkan pratayang dari CSS Anda.
 Pratayang ini belum disimpan!'''",
 'userjspreview'                    => "'''Ingatlah bahwa yang Anda lihat hanyalah pratayang JavaScript Anda, dan bahwa pratayang tersebut belum disimpan!'''",
@@ -1104,6 +1104,8 @@ $1",
 'logdelete-failure'           => "'''Aturan penyembunyian tidak dapat diterapkan:'''
 $1",
 'revdel-restore'              => 'Ubah tampilan',
+'revdel-restore-deleted'      => 'Suntingan yang telah dihapus',
+'revdel-restore-visible'      => 'tampilan revisi',
 'pagehist'                    => 'Sejarah halaman',
 'deletedhist'                 => 'Sejarah yang dihapus',
 'revdelete-content'           => 'konten',
@@ -1138,6 +1140,24 @@ Silakan periksa catatan log.',
 'suppressionlog'     => 'Log penyembunyian',
 'suppressionlogtext' => 'Berikut adalah daftar penghapusan dan pemblokiran, termasuk konten yang disembunyikan dari para opsis.
 Lihat [[Special:IPBlockList|daftar IP yang diblokir]] untuk daftar terkininya.',
+
+# Revision move
+'moverevlogentry'              => '{{PLURAL:$3|satu revisi |$3 revisi}} pindah dari $1 ke $2',
+'revisionmove'                 => 'Revisi pindah dari "$1"',
+'revmove-explain'              => 'Revisi berikut akan dipindahkan dari $1 ke halaman tujuan yang ditetapkane. Jika tujuan tidak ada, akan dibuatkan. Sebaliknya, revisi ini akan di gabungkan dalam sejarah halaman.',
+'revmove-legend'               => 'Tetapkan halaman tujuan dan ringkasan',
+'revmove-submit'               => 'Pindahkan revisi ke halaman yang dipilih',
+'revisionmoveselectedversions' => 'Pindahkan revisi yang dipilih',
+'revmove-reasonfield'          => 'Alasan:',
+'revmove-titlefield'           => 'Halaman tujuan:',
+'revmove-badparam-title'       => 'Parameter Buruk',
+'revmove-badparam'             => '<span class="kesalahan">Permintaan Anda mengandung parameter yang tidak sah atau kurang. Silahkan tekan "kembali" dan coba lagi.</span>',
+'revmove-norevisions-title'    => 'Revisi target tak sah',
+'revmove-norevisions'          => '<span class="kesalahan">Anda belum menetapkan satu atau lebih revisi tujuan untuk menjalankan fungsi atau revisi yang diberikan tidak ada.</span>',
+'revmove-nullmove-title'       => 'Judul tidak sah',
+'revmove-nullmove'             => '<span class="kesalahan">Halaman sumber dan tujuan sama. Silahkan tekan "kembali" dan masukan nama halaman yang berbeda dari "$1".</span>',
+'revmove-success-existing'     => '{{PLURAL:$1|satu revisi dari [[$2]] telah|$1 revisi dari [[$2]] telah}} dipindahkan ke halaman yang ada [[$3]].',
+'revmove-success-created'      => '{{PLURAL:$1|satu revisi dari [[$2]] telah|$1 revisi dari [[$2]] telah}} dipindahkan ke halaman baru yang dibuat [[$3]].',
 
 # History merging
 'mergehistory'                     => 'Gabung sejarah halaman',
@@ -1467,8 +1487,8 @@ Anda juga dapat memilih untuk memungkinkan orang lain menghubungi Anda melalui h
 'right-siteadmin'             => 'Mengunci dan membuka kunci basis data',
 'right-reset-passwords'       => 'Mereset kata sandi pengguna lain',
 'right-override-export-depth' => 'Ekspor halaman termasuk halaman-halaman terkait hingga kedalaman 5',
-'right-versiondetail'         => 'Melihat informasi versi piranti lunak yang lebih lengkap',
 'right-sendemail'             => 'Mengirim surel ke pengguna lain',
+'right-revisionmove'          => 'Pindah revisi',
 
 # User rights log
 'rightslog'      => 'Log perubahan hak akses',
@@ -1511,6 +1531,7 @@ Anda juga dapat memilih untuk memungkinkan orang lain menghubungi Anda melalui h
 'action-userrights'           => 'menyunting semua hak pengguna',
 'action-userrights-interwiki' => 'menyunting hak akses dari pengguna di wiki lain',
 'action-siteadmin'            => 'mengunci atau membuka kunci basis data',
+'action-revisionmove'         => 'pindah revisi',
 
 # Recent changes
 'nchanges'                          => '$1 {{PLURAL:$1|perubahan|perubahan}}',
@@ -1773,7 +1794,7 @@ Silakan lihat [$2 halaman deskripsi berkas] untuk informasi lebih lanjut.',
 'sharedupload-desc-here'    => 'Berkas ini berasal dari $1 dan mungkin digunakan oleh proyek-proyek lain.
 Deskripsi dari [$2 halaman deskripsinya] ditunjukkan di bawah ini.',
 'filepage-nofile'           => 'Tidak ada berkas dengan nama ini.',
-'filepage-nofile-link'      => 'Tidak ada berkas dengan nama ini, tapi Anda dapat [$1 memuatnya].',
+'filepage-nofile-link'      => 'Tidak ada berkas dengan nama ini, tetapi Anda dapat [$1 mengunggahnya].',
 'uploadnewversion-linktext' => 'Muatkan versi yang lebih baru dari berkas ini',
 'shared-repo-from'          => 'dari $1',
 'shared-repo'               => 'suatu repositori bersama',
@@ -1782,7 +1803,7 @@ Deskripsi dari [$2 halaman deskripsinya] ditunjukkan di bawah ini.',
 'filerevert'                => 'Kembalikan $1',
 'filerevert-legend'         => 'Kembalikan berkas',
 'filerevert-intro'          => "Anda mengembalikan '''[[Media:$1|$1]]''' ke versi [$4 pada $3, $2].",
-'filerevert-comment'        => 'Komentar:',
+'filerevert-comment'        => 'Alasan:',
 'filerevert-defaultcomment' => 'Dikembalikan ke versi pada $2, $1',
 'filerevert-submit'         => 'Kembalikan',
 'filerevert-success'        => "'''[[Media:$1|$1]]''' telah dikembalikan ke versi [$4 pada $3, $2]",
@@ -2189,7 +2210,10 @@ Suntingan terakhir dilakukan oleh [[User:$3|$3]] ([[User talk:$3|bicara]]{{int:p
 'revertpage'        => '←Suntingan [[Special:Contributions/$2|$2]] ([[User talk:$2|bicara]]) dikembalikan ke versi terakhir oleh [[User:$1|$1]]',
 'revertpage-nouser' => 'Pengembalian suntingan oleh (pengguna dihapus) ke suntingan terakhir oleh [[User:$1|$1]]',
 'rollback-success'  => 'Pengembalian suntingan oleh $1; dikembalikan ke versi terakhir oleh $2.',
-'sessionfailure'    => 'Sepertinya ada masalah dengan sesi log Anda; log Anda telah dibatalkan untuk mencegah pembajakan. Silakan tekan tombol "kembali" dan muat kembali halaman sebelum Anda masuk, lalu coba lagi.',
+
+# Edit tokens
+'sessionfailure-title' => 'Kegagalan sesi',
+'sessionfailure'       => 'Sepertinya ada masalah dengan sesi log Anda; log Anda telah dibatalkan untuk mencegah pembajakan. Silakan tekan tombol "kembali" dan muat kembali halaman sebelum Anda masuk, lalu coba lagi.',
 
 # Protect
 'protectlogpage'              => 'Log perlindungan',
@@ -2273,7 +2297,7 @@ Jika sebuah halaman baru dengan nama yang sama telah dibuat sejak penghapusan, r
 'undeleteviewlink'             => 'lihat',
 'undeletereset'                => 'Reset',
 'undeleteinvert'               => 'Balikkan pilihan',
-'undeletecomment'              => 'Komentar:',
+'undeletecomment'              => 'Alasan:',
 'undeletedarticle'             => '"$1" telah dikembalikan',
 'undeletedrevisions'           => '$1 {{PLURAL:$1|revisi|revisi}} telah dikembalikan',
 'undeletedrevisions-files'     => '$1 {{PLURAL:$1|revisi|revisi}} and $2 berkas dikembalikan',
@@ -3277,14 +3301,17 @@ Coba dengan pratayang normal.',
 'watchlistedit-noitems'        => 'Daftar pantauan Anda kosong.',
 'watchlistedit-normal-title'   => 'Sunting daftar pantauan',
 'watchlistedit-normal-legend'  => 'Hapus judul dari daftar pantauan',
-'watchlistedit-normal-explain' => 'Judul-judul pada daftar pantauan Anda ditampilkan di bawah ini.
-Untuk menghapus suatu judul, berikan tanda cek pada kotak di sampingnya, dan klik Hapus Judul.
+'watchlistedit-normal-explain' => 'Judul pada daftar pantauan Anda ditampilkan di bawah ini.
+Untuk menghapus judul, berikan tanda cek pada kotak di sampingnya, dan klik "{{int:Watchlistedit-normal-submit}}".
 Anda juga dapat [[Special:Watchlist/raw|menyunting daftar mentahnya]].',
 'watchlistedit-normal-submit'  => 'Hapus judul',
 'watchlistedit-normal-done'    => '{{PLURAL:$1|satu|$1}} judul telah dihapus dari daftar pantauan Anda:',
 'watchlistedit-raw-title'      => 'Sunting daftar pantauan mentah',
 'watchlistedit-raw-legend'     => 'Sunting daftar pantauan mentah',
-'watchlistedit-raw-explain'    => 'Judul-judul pada daftar pantauan Anda ditampilkan di bawah ini, dan dapat diubah dengan menambahkan atau menghapus daftar; satu judul pada setiap barisnya. Jika telah selesai, klik Perbarui daftar pantauan. Anda juga dapat [[Special:Watchlist/edit|menggunakan editor standar Anda]].',
+'watchlistedit-raw-explain'    => 'Judul pada daftar pantauan Anda ditampilkan di bawah ini, dan dapat disunting dengan menambahkan atau menghapusnya dari daftar;
+satu judul pada setiap barisnya.
+Setelah selesai, klik "{{int:Watchlistedit-raw-submit}}".
+Anda juga dapat [[Special:Watchlist/edit|menggunakan penyunting standar Anda]].',
 'watchlistedit-raw-titles'     => 'Judul:',
 'watchlistedit-raw-submit'     => 'Perbarui daftar pantauan',
 'watchlistedit-raw-done'       => 'Daftar pantauan Anda telah diperbarui.',

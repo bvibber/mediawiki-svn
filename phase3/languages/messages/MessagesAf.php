@@ -800,8 +800,8 @@ of [{{fullurl:{{FULLPAGENAME}}|action=edit}} hierdie bladsy wysig]</span>.',
 'blocked-notice-logextract'        => 'Hierdie gebruiker is tans geblokkeer.
 Die laaste inskrywing in die blokkeerlogboek word hieronder vertoon:',
 'clearyourcache'                   => "'''Let wel''': Na die voorkeure gestoor is, moet u blaaier se kasgeheue verfris word om die veranderinge te sien: '''Mozilla:''' klik ''Reload'' (of ''Ctrl-R''), '''IE / Opera:''' ''Ctrl-F5'', '''Safari:''' ''Cmd-R'', '''Konqueror''' ''Ctrl-R''.",
-'usercssyoucanpreview'             => "'''Wenk:''' Gebruik die \"Wys voorskou\"-knoppie om u nuwe CSS te toets voor u stoor.",
-'userjsyoucanpreview'              => "'''Wenk:''' Gebruik die \"Wys voorskou\"-knoppie om u nuwe JS te toets voor u stoor.",
+'usercssyoucanpreview'             => "'''Wenk:''' Gebruik die \"{{int:showpreview}}\"-knoppie om u nuwe CSS te toets voor u dit stoor.",
+'userjsyoucanpreview'              => "'''Wenk:''' Gebruik die \"{{int:showpreview}}\"-knoppie om u nuwe JS te toets voor u dit stoor.",
 'usercsspreview'                   => "'''Onthou hierdie is slegs 'n voorskou van u persoonlike CSS.'''
 '''Dit is nog nie gestoor nie!'''",
 'userjspreview'                    => "'''Onthou hierdie is slegs 'n toets/voorskou van u gebruiker-JavaScript, dit is nog nie gestoor nie.'''",
@@ -1058,6 +1058,24 @@ Kontroleer asseblief die logboeke.",
 'suppressionlog'     => 'Verbergingslogboek',
 'suppressionlogtext' => 'Die onderstaande lys bevat verwyderings en blokkades wat vir administrateurs verborge is.
 Kyk na die [[Special:IPBlockList|IP-blokkeerlys]] om die huidige blokkades te sien.',
+
+# Revision move
+'moverevlogentry'              => '{{PLURAL:$3|een wysiging|$3 wysigings}} van $1 na $2 verskuif',
+'revisionmove'                 => 'Skuif weergawes van "$1"',
+'revmove-explain'              => 'Die volgende wysigings sal vanaf $1 na die aangewese teikenbladsy geskuif word. As die teiken nie bestaan nie, word dit geskep. Andersins, sal hierdie wysigings met die bladsygeskiedenis versmelt word.',
+'revmove-legend'               => 'Stel teiken-bladsy en opsomming',
+'revmove-submit'               => 'Skuif weergawes na geselekteerde bladsy',
+'revisionmoveselectedversions' => 'Skuif geselekteerde weergawes',
+'revmove-reasonfield'          => 'Rede:',
+'revmove-titlefield'           => 'Na bladsy:',
+'revmove-badparam-title'       => 'Slegte parameters',
+'revmove-badparam'             => '<span class="error">U versoek bevat onwettige of onvoldoende parameters. Kliek op "terug" en probeer weer.</span>',
+'revmove-norevisions-title'    => 'Ongeldige teiken-weergawe',
+'revmove-norevisions'          => '<span class="error">U het nie een of meer teiken-weergawes gespesifiseer om die funksie te kan uitvoer nie; of die gespesifiseerde weergawe bestaan nie.</span>',
+'revmove-nullmove-title'       => 'Ongeldige titel',
+'revmove-nullmove'             => '<span class="error">Die bron- en teiken-bladsye is identies. Kliek op "terug" en verskaf \'n bladsynaam (nie "$1" nie).</span>',
+'revmove-success-existing'     => '{{PLURAL:$1|Een weergawe van [[$2]] is|$1 weergawes van [[$2]] is}} na die bestaande bladsy [[$3]] geskuif.',
+'revmove-success-created'      => '{{PLURAL:$1|Een weergawe van [[$2]] is|$1 weergawes van [[$2]] is}} na die nuutgeskepte bladsy [[$3]] verskuif.',
 
 # History merging
 'mergehistory'                     => 'Geskiedenis van bladsy samesmeltings',
@@ -1390,8 +1408,8 @@ U kan ook besluit om e-pos te ontvang as ander gebruikers u gebruikers- of bespr
 'right-siteadmin'             => 'Sluit en ontsluit die datbasis',
 'right-reset-passwords'       => 'Herstel ander gebruikers se wagwoorde',
 'right-override-export-depth' => "Eksporteer bladsye insluitend geskakelde bladsye tot 'n diepte van 5",
-'right-versiondetail'         => 'Wys omvattende sagteware weergawe inligting',
 'right-sendemail'             => 'Stuur e-pos aan ander gebruikers',
+'right-revisionmove'          => 'Skuif wysigings',
 
 # User rights log
 'rightslog'      => 'Gebruikersregtelogboek',
@@ -1434,6 +1452,7 @@ U kan ook besluit om e-pos te ontvang as ander gebruikers u gebruikers- of bespr
 'action-userrights'           => 'Wysig alle gebruikersregte',
 'action-userrights-interwiki' => 'wysig gebruikersregte van gebruikers op ander wikis',
 'action-siteadmin'            => 'sluit of ontsluit die databasis',
+'action-revisionmove'         => 'skuif wysigings',
 
 # Recent changes
 'nchanges'                          => '$1 {{PLURAL:$1|wysiging|wysigings}}',
@@ -1730,7 +1749,7 @@ Die beskrywing op die [$2 lêer se inligtingsblad] word hieronder weergegee.',
 'filerevert'                => 'Maak $1 ongedaan',
 'filerevert-legend'         => 'Maak lêer ongedaan',
 'filerevert-intro'          => "U is besig om die lêer '''[[Media:$1|$1]]''' terug te rol tot die [$4 weergawe op $2, $3]",
-'filerevert-comment'        => 'Opmerking:',
+'filerevert-comment'        => 'Rede:',
 'filerevert-defaultcomment' => 'Teruggerol na die weergawe van $1, $2',
 'filerevert-submit'         => 'Rol terug',
 'filerevert-success'        => "'''[[Media:$1|$1]]''' is teruggerol na die [$4 weergawe op $2, $3].",
@@ -2143,7 +2162,10 @@ Die mees onlangse wysiging is gemaak deur [[User:$3|$3]] ([[User talk:$3|besprek
 'revertpage'        => 'Wysigings deur [[Special:Contributions/$2|$2]] teruggerol na laaste weergawe deur $1',
 'revertpage-nouser' => 'Rol wysigings deur (gebruikersnaam verwyder) terug na die laaste weergawe deur [[User:$1|$1]]',
 'rollback-success'  => 'Wysigings deur $1 teruggerol; terugverander na laaste weergawe deur $2.',
-'sessionfailure'    => "Dit lyk of daar 'n probleem met u sessie is.
+
+# Edit tokens
+'sessionfailure-title' => 'Sessie het gefaal',
+'sessionfailure'       => "Dit lyk of daar 'n probleem met u sessie is.
 Hierdie aksie is gekanselleer omdat dit 'n veiligheidsrisiko is (moontlike kaping van u sessie).
 Gaan een bladsy terug, herlaai die bladsy en probeer dan weer.",
 
@@ -2236,7 +2258,7 @@ U mag moontlik 'n foutiewe skakel hê, of die weergawe is reeds herstel of uit d
 'undeleteviewlink'             => 'bekyk',
 'undeletereset'                => 'Herinstel',
 'undeleteinvert'               => 'Omgekeerde seleksie',
-'undeletecomment'              => 'Opmerking:',
+'undeletecomment'              => 'Rede:',
 'undeletedarticle'             => 'het "$1" herstel',
 'undeletedrevisions'           => '{{PLURAL:$1|1 weergawe|$1 weergawes}} herstel',
 'undeletedrevisions-files'     => '{{PLURAL:$1|1 weergawe|$1 weergawes}} en {{PLURAL:$2|1 lêer|$2 lêers}} herstel',
@@ -2280,7 +2302,7 @@ $1',
 'sp-contributions-newbies'             => 'Wys slegs bydraes van nuwe gebruikers',
 'sp-contributions-newbies-sub'         => 'Vir nuwe gebruikers',
 'sp-contributions-newbies-title'       => 'Bydraes van nuwe gebruikers',
-'sp-contributions-blocklog'            => 'Blokkeer-logboek',
+'sp-contributions-blocklog'            => 'blokkeer-logboek',
 'sp-contributions-deleted'             => 'geskrapte gebruikersbydraes',
 'sp-contributions-logs'                => 'logboeke',
 'sp-contributions-talk'                => 'bespreking',

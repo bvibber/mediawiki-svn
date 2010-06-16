@@ -9,6 +9,7 @@
  *
  * @author Purodha
  * @author Slomox
+ * @author The Evil IP address
  * @author Urhixidur
  * @author לערי ריינהארט
  */
@@ -1797,7 +1798,7 @@ Mehr Informatschonen över enkelte Rechten staht ünner [[{{MediaWiki:Listgroupr
 'addedwatchtext'       => 'De Siet „<nowiki>$1</nowiki>“ is to diene [[Special:Watchlist|Oppasslist]] toföögt worrn.
 Ännern, de in Tokumst an disse Siet un an de tohörige Diskuschoonssiet maakt warrt, sünd dor op oplist un de Siet is op de [[Special:RecentChanges|List vun de letzten Ännern]] fett markt. Wenn du de Siet nich mehr op diene Oppasslist hebben willst, klick op „Nich mehr oppassen“.',
 'removedwatch'         => 'De Siet is nich mehr op de Oppasslist',
-'removedwatchtext'     => 'De Siet „<nowiki>$1</nowiki>“ is nich mehr op de Oppasslist.',
+'removedwatchtext'     => 'De Siet „[[:$1]]“ is nich mehr op de Oppasslist.',
 'watch'                => 'Oppassen',
 'watchthispage'        => 'Op disse Siet oppassen',
 'unwatch'              => 'nich mehr oppassen',
@@ -1895,7 +1896,9 @@ De letzte Ännern is vun [[User:$3|$3]] ([[User talk:$3|Diskuschoon]]{{int:pipe-
 'editcomment'      => "De Ännerkommentar weer: „''$1''“.",
 'revertpage'       => 'Ännern vun [[Special:Contributions/$2|$2]] ([[User talk:$2|Diskuschoon]]) rut un de Version vun [[User:$1]] wedderhaalt',
 'rollback-success' => 'Ännern vun $1 trüchsett op letzte Version vun $2.',
-'sessionfailure'   => 'Dor weer en Problem mit diene Brukersitzung.
+
+# Edit tokens
+'sessionfailure' => 'Dor weer en Problem mit diene Brukersitzung.
 Disse Akschoon is nu ut Sekerheitsgrünn afbraken, dat de Ännern nich verkehrt en annern Bruker toornt warrt.
 Gah een Sied trüch un versöök dat noch wedder.',
 

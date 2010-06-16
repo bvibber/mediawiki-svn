@@ -824,7 +824,7 @@ class Title {
 		}
 
 		// internal links should point to same variant as current page (only anonymous users)
-		if ( $variant == false && $wgContLang->hasVariants() && !$wgUser->isLoggedIn() ) {
+		if ( !$variant && $wgContLang->hasVariants() && !$wgUser->isLoggedIn() ) {
 			$pref = $wgContLang->getPreferredVariant( false );
 			if ( $pref != $wgContLang->getCode() )
 				$variant = $pref;
@@ -843,7 +843,7 @@ class Title {
 			$dbkey = wfUrlencode( $this->getPrefixedDBkey() );
 			if ( $query == '' ) {
 				if ( $variant != false && $wgContLang->hasVariants() ) {
-					if ( $wgVariantArticlePath == false ) {
+					if ( !$wgVariantArticlePath ) {
 						$variantArticlePath =  "$wgScript?title=$1&variant=$2"; // default
 					} else {
 						$variantArticlePath = $wgVariantArticlePath;
@@ -1474,7 +1474,7 @@ class Title {
 				$scBlockExpiryOptions = wfMsg( 'ipboptions' );
 
 				foreach ( explode( ',', $scBlockExpiryOptions ) as $option ) {
-					if ( strpos( $option, ':' ) == false )
+					if ( !strpos( $option, ':' ) )
 						continue;
 
 					list ( $show, $value ) = explode( ":", $option );
@@ -2326,15 +2326,18 @@ class Title {
 	 * What is the page_latest field for this page?
 	 *
 	 * @param $flags \type{\int} a bit field; may be GAID_FOR_UPDATE to select for update
-	 * @return \type{\int} or false if the page doesn't exist
+	 * @return \type{\int} or 0 if the page doesn't exist
 	 */
 	public function getLatestRevID( $flags = 0 ) {
 		if ( $this->mLatestID !== false )
 			return $this->mLatestID;
+		# Calling getArticleID() loads the field from cache as needed
+		if ( !$this->getArticleID( $flags ) ) {
+			return $this->mLatestID = 0;
+		}
+		$linkCache = LinkCache::singleton();
+		$this->mLatestID = intval( $linkCache->getGoodLinkFieldObj( $this, 'revision' ) );
 
-		$db = ( $flags & GAID_FOR_UPDATE ) ? wfGetDB( DB_MASTER ) : wfGetDB( DB_SLAVE );
-		$this->mLatestID = (int)$db->selectField(
-			'page', 'page_latest', $this->pageCond(), __METHOD__ );
 		return $this->mLatestID;
 	}
 
@@ -2715,7 +2718,7 @@ class Title {
 		}
 
 		$res = $db->select( array( 'page', $table ),
-			array( 'page_namespace', 'page_title', 'page_id', 'page_len', 'page_is_redirect' ),
+			array( 'page_namespace', 'page_title', 'page_id', 'page_len', 'page_is_redirect', 'page_latest' ),
 			array(
 				"{$prefix}_from=page_id",
 				"{$prefix}_namespace" => $this->getNamespace(),
@@ -2727,7 +2730,7 @@ class Title {
 		if ( $db->numRows( $res ) ) {
 			foreach ( $res as $row ) {
 				if ( $titleObj = Title::makeTitle( $row->page_namespace, $row->page_title ) ) {
-					$linkCache->addGoodLinkObj( $row->page_id, $titleObj, $row->page_len, $row->page_is_redirect );
+					$linkCache->addGoodLinkObj( $row->page_id, $titleObj, $row->page_len, $row->page_is_redirect, $row->page_latest );
 					$retVal[] = $titleObj;
 				}
 			}

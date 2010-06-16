@@ -314,7 +314,7 @@ $messages = array(
 'tog-editsection'             => 'セクション編集用リンクを有効にする',
 'tog-editsectiononrightclick' => 'セクション見出しの右クリックでセクション編集を行えるようにする (JavaScriptが必要)',
 'tog-showtoc'                 => '目次を表示する (4つ以上の見出しがあるページ)',
-'tog-rememberpassword'        => 'このコンピューターにログイン情報を保存する',
+'tog-rememberpassword'        => 'このコンピューターにログイン情報を保存する (最長 $1{{PLURAL:$1|日|日間}})',
 'tog-watchcreations'          => '自分が作成したページをウォッチリストに追加する',
 'tog-watchdefault'            => '自分が編集したページをウォッチリストに追加する',
 'tog-watchmoves'              => '自分が移動したページをウォッチリストに追加する',
@@ -701,7 +701,7 @@ $2',
 'yourname'                   => '利用者名:',
 'yourpassword'               => 'パスワード:',
 'yourpasswordagain'          => 'パスワード再入力:',
-'remembermypassword'         => 'このコンピューターにログイン情報を保存する',
+'remembermypassword'         => 'このコンピューターにログイン情報を保存する (最長 $1 {{PLURAL:$1|日間|日間}})',
 'yourdomainname'             => 'あなたのドメイン:',
 'externaldberror'            => '外部の認証データベースでエラーが発生したか、または外部アカウント情報の更新が許可されていません。',
 'login'                      => 'ログイン',
@@ -875,8 +875,8 @@ $1 または他の[[{{MediaWiki:Grouppage-sysop}}|管理者]]にこの件につ�
 * '''IE:''' [Ctrl] を押しながら [更新] をクリック、または [Ctrl]-[F5]
 * '''Konqueror:''' [再読み込み] をクリック、または [F5]
 * '''Opera:''' 「ツール」→「設定」からキャッシュをクリア。",
-'usercssyoucanpreview'             => "'''助言:''' 「{{int:showpreview}}」ボタンを使うと保存前に新しいスタイルシートやスクリプトをテストできます。",
-'userjsyoucanpreview'              => "'''助言:''' 「{{int:showpreview}}」ボタンを使うと保存前に新しいスタイルシートやスクリプトをテストできます。",
+'usercssyoucanpreview'             => "''ヒント:''' 「{{int:showpreview}}」ボタンを使うと保存前に新しいスタイルシートをテストできます。",
+'userjsyoucanpreview'              => "'''ヒント:''' 「{{int:showpreview}}」ボタンを使うと保存前に新しいスクリプトをテストできます。",
 'usercsspreview'                   => "'''カスタムCSSをプレビューしています。まだ保存されていないので注意してください。'''",
 'userjspreview'                    => "'''カスタム JavaScript を試験・プレビューしています。まだ保存されていないので注意してください。'''",
 'userinvalidcssjstitle'            => "'''警告:''' 「$1」というスキンはありません。.css と .js ページを編集する際にはサブページ名を小文字にすることを忘れないでください。例えば {{ns:user}}:Hoge/Monobook.css ではなく {{ns:user}}:Hoge/monobook.css となります。",
@@ -1091,6 +1091,24 @@ $1",
 'suppressionlog'     => '秘匿記録',
 'suppressionlogtext' => '以下は管理者から秘匿された内容を含む削除およびブロック記録です。
 現在操作できるブロックについては[[Special:IPBlockList|投稿ブロック中の利用者やIPアドレス]]を参照してください。',
+
+# Revision move
+'moverevlogentry'              => '{{PLURAL:$3|$3版}}を$1から$2へ移動しました',
+'revisionmove'                 => '「$1」から版を移動',
+'revmove-explain'              => '以下の版が、$1から指定されたページへ移動されます。これらの版は指定先のページの履歴に統合指定されますが、指定先のページが存在しない場合は、ページは新規作成されます。',
+'revmove-legend'               => 'ページの指定と要約',
+'revmove-submit'               => '選択されたページに版を移動',
+'revisionmoveselectedversions' => '選択された版を移動',
+'revmove-reasonfield'          => '理由：',
+'revmove-titlefield'           => '対象ページ：',
+'revmove-badparam-title'       => '不正な引数',
+'revmove-badparam'             => '<span class="error">不正あるいは不十分な引数が指定されました。ページを戻りもう一度やり直してください。</span>',
+'revmove-norevisions-title'    => '無効な指定版',
+'revmove-norevisions'          => '<span class="error">指定した版が存在しないか、この機能を利用するために1つ以上の版を指定していません。</span>',
+'revmove-nullmove-title'       => '不正なタイトル',
+'revmove-nullmove'             => '移動元と移動先のページが同一のものです。ページを戻り、「$1」とは違うページを入力してください。',
+'revmove-success-existing'     => '{{PLURAL:$1|$1版が、[[$2]]から}}既存のページ[[$3]]へ移動されました。',
+'revmove-success-created'      => '{{PLURAL:$1|$1版が、[[$2]]から}}新規作成されたページ[[$3]]へ移動されました。',
 
 # History merging
 'mergehistory'                     => 'ページ履歴の統合',
@@ -1413,8 +1431,8 @@ $1",
 'right-siteadmin'             => 'データベースのロックおよびロック解除',
 'right-reset-passwords'       => '他の利用者のパスワードを再設定する',
 'right-override-export-depth' => 'リンク先ページを5階層まで含めて書き出す',
-'right-versiondetail'         => 'ソフトウェアの詳細なバージョン情報を表示する',
 'right-sendemail'             => '他の利用者へ電子メールを送る',
+'right-revisionmove'          => '版の移動',
 
 # User rights log
 'rightslog'      => '利用者権限変更記録',
@@ -1457,6 +1475,7 @@ $1",
 'action-userrights'           => '全利用者権限の変更',
 'action-userrights-interwiki' => '他のウィキ上の利用者の利用者権限変更',
 'action-siteadmin'            => 'データベースのロックもしくはロック解除',
+'action-revisionmove'         => '版の移動',
 
 # Recent changes
 'nchanges'                          => '$1{{PLURAL:$1| 回}}の更新',
@@ -2117,7 +2136,10 @@ $UNWATCHURL
 'revertpage'        => '[[Special:Contributions/$2|$2]] ([[User talk:$2|トーク]]) による編集を [[User:$1|$1]] による直前の版へ差し戻し',
 'revertpage-nouser' => '(利用者名削除) による編集を [[User:$1|$1]] による版へ差し戻し',
 'rollback-success'  => '$1 による編集を取り消して $2 による最後の版へ差し戻しました。',
-'sessionfailure'    => 'ログイン・セッションに問題が発生しました。セッションハイジャックを防ぐために操作は取り消されました。ブラウザの「戻る」を押して直前のページを再度読み込んだ後に、もう一度操作を行ってください。',
+
+# Edit tokens
+'sessionfailure-title' => 'セッションの失敗',
+'sessionfailure'       => 'ログイン・セッションに問題が発生しました。セッションハイジャックを防ぐために操作は取り消されました。ブラウザの「戻る」を押して直前のページを再度読み込んだ後に、もう一度操作を行ってください。',
 
 # Protect
 'protectlogpage'              => '保護記録',

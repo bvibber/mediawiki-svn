@@ -11,6 +11,7 @@
  * @author Bangin
  * @author Erdal Ronahi
  * @author Liangent
+ * @author The Evil IP address
  */
 
 $namespaceNames = array(
@@ -1082,7 +1083,7 @@ Li rûpela [[Special:RecentChanges|Guherandinên dawî]] jî ji bo hasan dîtina
 
 <p>Her dem tu bixwazî ew rûpel li nav lîsteya te ya şopandinê derbikî, li ser wê rûpelê, klîk bike \"êdî neşopîne\".</p>",
 'removedwatch'         => 'Ji lîsteya şopandinê hate jêbirin',
-'removedwatchtext'     => 'Rûpela "<nowiki>$1</nowiki>" ji lîsteya te ya şopandinê hate jêbirin.',
+'removedwatchtext'     => 'Rûpela "[[:$1]]" ji lîsteya te ya şopandinê hate jêbirin.',
 'watch'                => 'Bişopîne',
 'watchthispage'        => 'Vê rûpelê bişopîne',
 'unwatch'              => 'Êdî neşopîne',
@@ -1380,8 +1381,8 @@ da bikarî navê wê rûpelê biguherînî.',
 'movepage-page-exists'      => 'Rûpela $1 berê heye û ew nikane otomatîk were jêbirin.',
 'movepage-page-moved'       => 'Rûpela $1 çû cihê $2.',
 'movepage-page-unmoved'     => 'Rûpela $1 nikanî çûba ciha $2.',
-'1movedto2'                 => '$1 çû cihê $2',
-'1movedto2_redir'           => '$1 çû cihê $2 ser redirect',
+'1movedto2'                 => '[[$1]] çû cihê [[$2]]',
+'1movedto2_redir'           => '[[$1]] çû cihê [[$2]] ser redirect',
 'movelogpage'               => 'Reşahîya nav guherandin',
 'movelogpagetext'           => 'Li jêr lîsteyek ji rûpelan ku navê wan hatiye guherandin heye.',
 'movereason'                => 'Sedem',

@@ -148,8 +148,8 @@ class HistoryPage {
 			) .
 			Xml::hidden( 'title', $this->title->getPrefixedDBKey() ) . "\n" .
 			Xml::hidden( 'action', 'history' ) . "\n" .
-			Xml::dateMenu( $year, $month ) . '&nbsp;' .
-			( $tagSelector ? ( implode( '&nbsp;', $tagSelector ) . '&nbsp;' ) : '' ) .
+			Xml::dateMenu( $year, $month ) . '&#160;' .
+			( $tagSelector ? ( implode( '&#160;', $tagSelector ) . '&#160;' ) : '' ) .
 			$checkDeleted .
 			Xml::submitButton( wfMsg( 'allpagessubmit' ) ) . "\n" .
 			'</fieldset></form>'
@@ -375,16 +375,20 @@ class HistoryPager extends ReverseChronologicalPager {
 		$this->oldIdChecked = 0;
 
 		$wgOut->wrapWikiMsg( "<div class='mw-history-legend'>\n$1\n</div>", 'histlegend' );
-		$s = Xml::openElement( 'form', array( 'action' => $wgScript,
+		$s = Html::openElement( 'form', array( 'action' => $wgScript,
 			'id' => 'mw-history-compare' ) ) . "\n";
-		$s .= Xml::hidden( 'title', $this->title->getPrefixedDbKey() ) . "\n";
-		$s .= Xml::hidden( 'action', 'historysubmit' ) . "\n";
+		$s .= Html::hidden( 'title', $this->title->getPrefixedDbKey() ) . "\n";
+		$s .= Html::hidden( 'action', 'historysubmit' ) . "\n";
 
 		$this->buttons = '<div>';
+		$this->buttons .= $this->submitButton( wfMsg( 'compareselectedversions'),
+			array( 'class' => 'historysubmit' )
+				+ $wgUser->getSkin()->tooltipAndAccessKeyAttribs( 'compareselectedversions' )
+		) . "\n";
 		if( $wgUser->isAllowed('deleterevision') ) {
 			$float = $wgContLang->alignEnd();
 			# Note bug #20966, <button> is non-standard in IE<8
-			$this->buttons .= Xml::element( 'button',
+			$this->buttons .= Html::element( 'button',
 				array(
 					'type' => 'submit',
 					'name' => 'revisiondelete',
@@ -395,13 +399,20 @@ class HistoryPager extends ReverseChronologicalPager {
 				wfMsg( 'showhideselectedversions' )
 			) . "\n";
 		}
-		$this->buttons .= $this->submitButton( wfMsg( 'compareselectedversions'),
-			array(
-				'class'     => 'historysubmit',
-				'accesskey' => wfMsg( 'accesskey-compareselectedversions' ),
-				'title'     => wfMsg( 'tooltip-compareselectedversions' ),
-			)
-		) . "\n";
+		if( $wgUser->isAllowed( 'revisionmove' ) ) {
+			$float = $wgContLang->alignEnd();
+			# Note bug #20966, <button> is non-standard in IE<8
+			$this->buttons .= Html::element( 'button',
+				array(
+					'type' => 'submit',
+					'name' => 'revisionmove',
+					'value' => '1',
+					'style' => "float: $float;",
+					'class' => 'mw-history-revisionmove-button',
+				),
+				wfMsg( 'revisionmoveselectedversions' )
+			) . "\n";
+		}
 		$this->buttons .= '</div>';
 		$s .= $this->buttons . '<ul id="pagehistory">' . "\n";
 		return $s;
@@ -486,10 +497,11 @@ class HistoryPager extends ReverseChronologicalPager {
 		$classes = array();
 
 		$del = '';
-		// User can delete revisions...
-		if( $wgUser->isAllowed( 'deleterevision' ) ) {
+		// Show checkboxes for each revision
+		if( $wgUser->isAllowed( 'deleterevision' ) || $wgUser->isAllowed( 'revisionmove' ) ) {
 			// If revision was hidden from sysops, disable the checkbox
-			if( !$rev->userCan( Revision::DELETED_RESTRICTED ) ) {
+			// However, if the user has revisionmove rights, we cannot disable the checkbox
+			if( !$rev->userCan( Revision::DELETED_RESTRICTED ) && !$wgUser->isAllowed( 'revisionmove' ) ) {
 				$del = Xml::check( 'deleterevisions', false, array( 'disabled' => 'disabled' ) );
 			// Otherwise, enable the checkbox...
 			} else {

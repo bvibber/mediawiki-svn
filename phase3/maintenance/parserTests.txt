@@ -402,7 +402,7 @@ Regression with preformatted in <center>
 !! input
 <pre width="8" style="border-width: expression(alert(document.cookie))">Narrow screen goodies</pre>
 !! result
-<pre width="8">Narrow screen goodies</pre>
+<pre width="8" style="/* insecure input */">Narrow screen goodies</pre>
 
 !! end
 
@@ -414,7 +414,7 @@ Simple definition
 !! input
 ; name : Definition
 !! result
-<dl><dt> name&nbsp;</dt><dd> Definition
+<dl><dt> name&#160;</dt><dd> Definition
 </dd></dl>
 
 !! end
@@ -444,7 +444,7 @@ Definition list with URL link
 !! input
 ; http://example.com/ : definition
 !! result
-<dl><dt> <a href="http://example.com/" class="external free" rel="nofollow">http://example.com/</a>&nbsp;</dt><dd> definition
+<dl><dt> <a href="http://example.com/" class="external free" rel="nofollow">http://example.com/</a>&#160;</dt><dd> definition
 </dd></dl>
 
 !! end
@@ -495,7 +495,7 @@ Definition lists: colon in external link text
 !! input
 ; [http://www.wikipedia2.org/ Wikipedia : The Next Generation]: OK, I made that up
 !! result
-<dl><dt> <a href="http://www.wikipedia2.org/" class="external text" rel="nofollow">Wikipedia&nbsp;: The Next Generation</a></dt><dd> OK, I made that up
+<dl><dt> <a href="http://www.wikipedia2.org/" class="external text" rel="nofollow">Wikipedia&#160;: The Next Generation</a></dt><dd> OK, I made that up
 </dd></dl>
 
 !! end
@@ -516,7 +516,7 @@ Definition lists: self-closed tag
 !! input
 ;one<br/>two : two-line fun
 !! result
-<dl><dt>one<br />two&nbsp;</dt><dd> two-line fun
+<dl><dt>one<br />two&#160;</dt><dd> two-line fun
 </dd></dl>
 
 !! end
@@ -4269,7 +4269,7 @@ Bug 2304: HTML attribute safety (dangerous style template; 2309)
 !! input
 <div style="{{dangerous style attribute}}"></div>
 !! result
-<div></div>
+<div style="/* insecure input */"></div>
 
 !! end
 
@@ -4287,7 +4287,7 @@ Bug 2304: HTML attribute safety (unsafe parameter; 2309)
 !! input
 {{div style|width: expression(alert(document.cookie))}}
 !! result
-<div>Magic div</div>
+<div style="/* insecure input */">Magic div</div>
 
 !! end
 
@@ -4396,7 +4396,7 @@ Bug 3244: HTML attribute safety (extension; unsafe)
 !! input
 <div style="<nowiki>border-left:expression(alert(document.cookie))</nowiki>"></div>
 !! result
-<div></div>
+<div style="/* insecure input */"></div>
 
 !! end
 
@@ -4416,7 +4416,7 @@ MSIE CSS safety test: spurious slash
 !! input
 <div style="background-image:u\rl(javascript:alert('boo'))">evil</div>
 !! result
-<div>evil</div>
+<div style="/* insecure input */">evil</div>
 
 !! end
 
@@ -4425,7 +4425,7 @@ MSIE CSS safety test: hex code
 !! input
 <div style="background-image:u\72l(javascript:alert('boo'))">evil</div>
 !! result
-<div>evil</div>
+<div style="/* insecure input */">evil</div>
 
 !! end
 
@@ -4471,7 +4471,7 @@ Table attribute safety
 !! result
 <table>
 <tr>
-<th> status
+<th style="/* insecure input */"> status
 </th></tr></table>
 
 !! end
@@ -4481,7 +4481,7 @@ CSS line continuation 1
 !! input
 <div style="background-image: u\&#10;rl(test.jpg);"></div>
 !! result
-<div></div>
+<div style="/* insecure input */"></div>
 
 !! end
 
@@ -4490,7 +4490,7 @@ CSS line continuation 2
 !! input
 <div style="background-image: u\&#13;rl(test.jpg); "></div>
 !! result
-<div></div>
+<div style="/* insecure input */"></div>
 
 !! end
 
@@ -4863,7 +4863,7 @@ Punctuation: nbsp before exclamation
 !! input
 C'est grave !
 !! result
-<p>C'est grave&nbsp;!
+<p>C'est grave&#160;!
 </p>
 !! end
 
@@ -6744,8 +6744,8 @@ Definition list code coverage
 ; title : def
 ;title: def
 !! result
-<dl><dt> title  &nbsp;</dt><dd> def
-</dd><dt> title&nbsp;</dt><dd> def
+<dl><dt> title  &#160;</dt><dd> def
+</dd><dt> title&#160;</dt><dd> def
 </dd><dt>title</dt><dd> def
 </dd></dl>
 
@@ -7940,6 +7940,24 @@ preload
 !! result
 * <!-- Hello --> ''{{world}}'' {{subst:How are you}}{{ {{{|safesubst:}}} #if:1|2|3}}
 !! end
+
+!! test
+Play a bit with r67090 and bug 3158 
+!! options
+disabled
+!! input
+<div style="width:50% !important">&nbsp;</div>
+<div style="width:50%&nbsp;!important">&nbsp;</div>
+<div style="width:50%&#160;!important">&nbsp;</div>
+<div style="border : solid;">&nbsp;</div>
+!! result
+<div style="width:50% !important">&nbsp;</div>
+<div style="width:50% !important">&nbsp;</div>
+<div style="width:50% !important">&nbsp;</div>
+<div style="border&#160;: solid;">&nbsp;</div>
+
+!! end
+
 
 TODO:
 more images

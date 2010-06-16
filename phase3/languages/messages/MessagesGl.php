@@ -825,8 +825,8 @@ Velaquí está a última entrada do rexistro de bloqueos, por se quere consultal
 '''Konqueror:''' faga clic en ''Recargar'' ou prema en ''F5'';
 '''Opera:''' limpe a súa memoria caché en ''Ferramentas → Preferencias'';
 '''Internet Explorer:''' prema ''Ctrl'' ao tempo que fai clic en ''Refrescar'', ou prema ''Ctrl-F5''.",
-'usercssyoucanpreview'             => "'''Nota:''' use o botón \"Mostrar a vista previa\" para verificar o novo CSS antes de gardalo.",
-'userjsyoucanpreview'              => "'''Nota:''' use o botón \"Mostrar a vista previa\" para verificar o novo JS antes de gardalo.",
+'usercssyoucanpreview'             => "'''Nota:''' use o botón \"{{int:showpreview}}\" para verificar o novo CSS antes de gardalo.",
+'userjsyoucanpreview'              => "'''Nota:''' use o botón \"{{int:showpreview}}\" para verificar o novo JS antes de gardalo.",
 'usercsspreview'                   => "'''Lembre que só está vendo a vista previa do seu CSS de usuario.'''
 '''Este aínda non foi gardado!'''",
 'userjspreview'                    => "'''Lembre que só está probando/previsualizando o seu JavaScript de usuario.'''
@@ -1052,20 +1052,20 @@ $1",
 'logdelete-success'           => "'''Configurouse sen problemas a visibilidade do rexistro.'''",
 'logdelete-failure'           => "'''A visibilidade do rexistro non pode ser fixada:'''
 $1",
-'revdel-restore'              => 'Cambiar a visibilidade',
+'revdel-restore'              => 'cambiar a visibilidade',
 'revdel-restore-deleted'      => 'revisións borradas',
 'revdel-restore-visible'      => 'revisións visibles',
 'pagehist'                    => 'Historial da páxina',
 'deletedhist'                 => 'Historial de borrado',
-'revdelete-content'           => 'contido',
-'revdelete-summary'           => 'resumo de edición',
-'revdelete-uname'             => 'nome de usuario',
-'revdelete-restricted'        => 'aplicadas as restricións aos administradores',
-'revdelete-unrestricted'      => 'eliminadas as restricións aos administradores',
-'revdelete-hid'               => 'agochar $1',
-'revdelete-unhid'             => 'amosar $1',
-'revdelete-log-message'       => '$1 para $2 {{PLURAL:$2|revisión|revisións}}',
-'logdelete-log-message'       => '$1 para $2 {{PLURAL:$2|evento|eventos}}',
+'revdelete-content'           => 'o contido',
+'revdelete-summary'           => 'o resumo de edición',
+'revdelete-uname'             => 'o nome de usuario',
+'revdelete-restricted'        => 'aplicou as restricións aos administradores',
+'revdelete-unrestricted'      => 'eliminou as restricións aos administradores',
+'revdelete-hid'               => 'agochou $1',
+'revdelete-unhid'             => 'descubriu $1',
+'revdelete-log-message'       => '$1 {{PLURAL:$2|dunha revisión|de $2 revisións}}',
+'logdelete-log-message'       => '$1 {{PLURAL:$2|dun evento|de $2 eventos}}',
 'revdelete-hide-current'      => 'Produciuse un erro ao agochar o elemento con data de $1 ás $2: esta é a revisión actual.
 Non pode ser agochado.',
 'revdelete-show-no-access'    => 'Produciuse un erro ao mostrar o elemento con data de $1 ás $2: este elemento marcouse como "restrinxido".
@@ -1089,6 +1089,24 @@ Por favor, comprobe o rexistros.',
 'suppressionlog'     => 'Rexistro de supresións',
 'suppressionlogtext' => 'Embaixo amósase unha lista coas eliminacións e cos bloqueos recentes, que inclúen contido oculto dos administradores.
 Vexa a [[Special:IPBlockList|lista de enderezos IP bloqueados]] para comprobar as prohibicións e os bloqueos vixentes.',
+
+# Revision move
+'moverevlogentry'              => 'moveu {{PLURAL:$3|unha revisión|$3 revisións}} de $1 a $2',
+'revisionmove'                 => 'Mover as revisións de "$1"',
+'revmove-explain'              => 'As seguintes revisións moveranse de "$1" á páxina de destino especificada. Se a páxina de destino non existe, esta será creada. En caso de existir, estas revisións fusionaranse co historial de revisións desa páxina.',
+'revmove-legend'               => 'Establecer a páxina de destino e o resumo',
+'revmove-submit'               => 'Mover as revisións á páxina seleccionada',
+'revisionmoveselectedversions' => 'Mover as revisións seleccionadas',
+'revmove-reasonfield'          => 'Motivo:',
+'revmove-titlefield'           => 'Páxina de destino:',
+'revmove-badparam-title'       => 'Parámetros incorrectos',
+'revmove-badparam'             => '<span class="error">A súa solicitude contén parámetros insuficientes ou ilegais. Volva atrás e inténteo de novo.</span>',
+'revmove-norevisions-title'    => 'A revisión especificada é incorrecta',
+'revmove-norevisions'          => '<span class="error">Non especificou unha ou máis revisións sobre as que levar a cabo esta operación; ou poida tamén que a revisión especificada non exista.</span>',
+'revmove-nullmove-title'       => 'Título incorrecto',
+'revmove-nullmove'             => '<span class="error">As páxinas de orixe e destino son idénticas. Volva atrás e introduza un nome de páxina diferente de "$1".</span>',
+'revmove-success-existing'     => '{{PLURAL:$1|Moveuse unha revisión de "[[$2]]"|Movéronse $1 revisións de "[[$2]]"}} á páxina "[[$3]]".',
+'revmove-success-created'      => '{{PLURAL:$1|Moveuse unha revisión de "[[$2]]"|Movéronse $1 revisións de "[[$2]]"}} á nova páxina "[[$3]]", creada hai uns intres.',
 
 # History merging
 'mergehistory'                     => 'Fusionar historiais das páxinas',
@@ -1178,7 +1196,7 @@ Asegúrese de que esta modificación da páxina mantén a continuidade históric
 'searchall'                        => 'todo',
 'showingresults'                   => "Amósanse {{PLURAL:$1|'''1''' resultado|'''$1''' resultados}} comezando polo número '''$2'''.",
 'showingresultsnum'                => "Embaixo {{PLURAL:$3|amósase '''1''' resultado|amósanse '''$3''' resultados}}, comezando polo número '''$2'''.",
-'showingresultsheader'             => "{{PLURAL:\$5|Resultado '''\$1''' de '''\$3'''|Resultados do '''\$1''' ao '''\$2''' de '''\$3'''}} para \"'''\$4'''\"",
+'showingresultsheader'             => "{{PLURAL:\$5|Resultado '''\$1''' de '''\$3'''|Resultados do '''\$1''' ao '''\$2''', dun total de '''\$3'''}} para \"'''\$4'''\"",
 'nonefound'                        => "'''Nota:''' só algúns espazos de nomes son procurados por omisión.
 Probe a fixar a súa petición con ''all:'' para procurar en todo o contido (incluíndo páxinas de conversa, modelos, etc.) ou use como prefixo o espazo de nomes desexado.",
 'search-nonefound'                 => 'Non se atopou ningún resultado que coincidise coa procura.',
@@ -1345,12 +1363,12 @@ Tamén pode deixar que outras persoas se poñan en contacto con vostede desde a 
 'group-suppress'      => 'Supervisores',
 'group-all'           => '(todos)',
 
-'group-user-member'          => 'Usuario',
-'group-autoconfirmed-member' => 'Usuario autoconfirmado',
-'group-bot-member'           => 'Bot',
-'group-sysop-member'         => 'Administrador',
-'group-bureaucrat-member'    => 'Burócrata',
-'group-suppress-member'      => 'Supervisor',
+'group-user-member'          => 'usuario',
+'group-autoconfirmed-member' => 'usuario autoconfirmado',
+'group-bot-member'           => 'bot',
+'group-sysop-member'         => 'administrador',
+'group-bureaucrat-member'    => 'burócrata',
+'group-suppress-member'      => 'supervisor',
 
 'grouppage-user'          => '{{ns:project}}:Usuarios',
 'grouppage-autoconfirmed' => '{{ns:project}}:Usuarios autoconfirmados',
@@ -1419,8 +1437,8 @@ Tamén pode deixar que outras persoas se poñan en contacto con vostede desde a 
 'right-siteadmin'             => 'Fechar e abrir a base de datos',
 'right-reset-passwords'       => 'Restablecer os contrasinais doutros usuarios',
 'right-override-export-depth' => 'Exportar páxinas incluíndo as páxinas ligadas ata unha profundidade de 5',
-'right-versiondetail'         => 'Mostrar a información ampliada da versión do software',
 'right-sendemail'             => 'Enviar correos electrónicos a outros usuarios',
+'right-revisionmove'          => 'Mover revisións',
 
 # User rights log
 'rightslog'      => 'Rexistro de dereitos de usuario',
@@ -1463,6 +1481,7 @@ Tamén pode deixar que outras persoas se poñan en contacto con vostede desde a 
 'action-userrights'           => 'editar todos os permisos de usuario',
 'action-userrights-interwiki' => 'editar os permisos de usuario dos usuarios doutros wikis',
 'action-siteadmin'            => 'bloquear ou desbloquear a base de datos',
+'action-revisionmove'         => 'mover revisións',
 
 # Recent changes
 'nchanges'                          => '$1 {{PLURAL:$1|cambio|cambios}}',
@@ -1775,7 +1794,7 @@ A descrición da [$2 páxina de descrición do ficheiro] móstrase a continuaci�
 'filedelete-intro-old'        => 'Vai eliminar a versión de "\'\'\'[[Media:$1|$1]]\'\'\'" do [$4 $2, ás $3].',
 'filedelete-comment'          => 'Comentario:',
 'filedelete-submit'           => 'Eliminar',
-'filedelete-success'          => "Eliminouse '''$1'''.",
+'filedelete-success'          => "Borrouse o ficheiro \"'''\$1'''\".",
 'filedelete-success-old'      => 'Eliminouse a versión de "\'\'\'[[Media:$1|$1]]\'\'\'" do $2 ás $3.',
 'filedelete-nofile'           => "\"'''\$1'''\" non existe.",
 'filedelete-nofile-old'       => "Non existe unha versión arquivada de \"'''\$1'''\" cos atributos especificados.",
@@ -2130,7 +2149,7 @@ Axuda:
 'confirm'                => 'Confirmar',
 'excontent'              => 'o contido era: "$1"',
 'excontentauthor'        => 'o contido era: "$1" (e o único editor foi "[[Special:Contributions/$2|$2]]")',
-'exbeforeblank'          => 'o contido antes do baleiramento era: "$1"',
+'exbeforeblank'          => 'o contido antes do baleirado era: "$1"',
 'exblank'                => 'a páxina estaba baleira',
 'delete-confirm'         => 'Borrar "$1"',
 'delete-legend'          => 'Borrar',
@@ -2139,8 +2158,8 @@ Axuda:
 Por favor, confirme que é realmente a súa intención, que comprende as consecuencias e que está obrando de acordo coas regras [[{{MediaWiki:Policy-url}}|da política e normas]].',
 'actioncomplete'         => 'A acción foi completada',
 'actionfailed'           => 'Fallou a acción',
-'deletedtext'            => 'A páxina "<nowiki>$1</nowiki>" foi borrada.
-No $2 pode ver unha lista dos borrados máis recentes.',
+'deletedtext'            => 'Borrouse a páxina "<nowiki>$1</nowiki>".
+No $2 pode ver unha lista cos borrados máis recentes.',
 'deletedarticle'         => 'borrou "[[$1]]"',
 'suppressedarticle'      => 'suprimiu "[[$1]]"',
 'dellogpage'             => 'Rexistro de borrados',
@@ -2175,7 +2194,10 @@ A última edición fíxoa [[User:$3|$3]] ([[User talk:$3|conversa]]{{int:pipe-se
 'revertpage-nouser' => 'Desfixéronse as edicións de (nome eliminado); cambiado á última versión feita por [[User:$1|$1]]',
 'rollback-success'  => 'Desfixéronse as edicións de $1;
 volveuse á última edición, feita por $2.',
-'sessionfailure'    => 'Parece que hai un problema co rexistro da súa sesión;
+
+# Edit tokens
+'sessionfailure-title' => 'Erro de sesión',
+'sessionfailure'       => 'Parece que hai un problema co rexistro da súa sesión;
 esta acción cancelouse como precaución fronte ao secuestro de sesións.
 Prema no botón "atrás", volva cargar a páxina da que proviña e inténteo de novo.',
 

@@ -176,7 +176,7 @@ $messages = array(
 'mypage'        => 'Mona poslapis',
 'mytalk'        => 'Mona aptarėms',
 'anontalk'      => 'Šėta IP aptarėms',
-'navigation'    => 'Navigacėjė',
+'navigation'    => 'Naršīms',
 'and'           => '&#32;ėr',
 
 # Cologne Blue skin
@@ -189,6 +189,33 @@ $messages = array(
 'qbspecialpages' => 'Specēlė̅jė poslapē',
 'faq'            => 'DOK',
 'faqpage'        => 'Project:DOK',
+
+# Vector skin
+'vector-action-addsection'   => 'Pridietė tema',
+'vector-action-delete'       => 'Trintė',
+'vector-action-move'         => 'Parvadintė',
+'vector-action-protect'      => 'Ožrakintė',
+'vector-action-undelete'     => 'Atkortė',
+'vector-action-unprotect'    => 'Atrakintė',
+'vector-namespace-category'  => 'Kateguorėjė',
+'vector-namespace-help'      => 'Pagelbas poslapis',
+'vector-namespace-image'     => 'Fails',
+'vector-namespace-main'      => 'Poslapis',
+'vector-namespace-media'     => 'Abruozdielė poslapis',
+'vector-namespace-mediawiki' => 'Pranešims',
+'vector-namespace-project'   => 'Pruojekta poslapis',
+'vector-namespace-special'   => 'Specēlos poslapis',
+'vector-namespace-talk'      => 'Aptarėms',
+'vector-namespace-template'  => 'Šabluons',
+'vector-namespace-user'      => 'Nauduotuojė poslapis',
+'vector-view-create'         => 'Sokortė',
+'vector-view-edit'           => 'Taisītė',
+'vector-view-history'        => 'Veizietė istuorėjė',
+'vector-view-view'           => 'Skaitītė',
+'vector-view-viewsource'     => 'Veizietė kuoda',
+'actions'                    => 'Vēksmā',
+'namespaces'                 => 'Vardū srėtīs',
+'variants'                   => 'Variantā',
 
 'errorpagetitle'    => 'Klaida',
 'returnto'          => 'Grīžtė i $1.',
@@ -214,8 +241,8 @@ $messages = array(
 'protect'           => 'Ožrakintė',
 'protect_change'    => 'pakeistė',
 'protectthispage'   => 'Ožrakintė šėta poslapi',
-'unprotect'         => 'Atrakėntė',
-'unprotectthispage' => 'Atrakėntė šėta poslapi',
+'unprotect'         => 'Atrakintė',
+'unprotectthispage' => 'Atrakintė šėta poslapi',
 'newpage'           => 'Naus poslapis',
 'talkpage'          => 'Aptartė šėta poslapi',
 'talkpagelinktext'  => 'Aptarėms',
@@ -1280,7 +1307,9 @@ Galėnis keitėms dėrbts nauduotuojė [[User:$3|$3]] ([[User talk:$3|Aptarėms]
 'editcomment'      => "Redagavėma kuomentars bova: „''$1''“.",
 'revertpage'       => 'Atmests [[Special:Contributions/$2|$2]] ([[User talk:$2|Aptarėms]]) pakeitėms; sogrōžėnta nauduotuojė [[User:$1|$1]] versėjė',
 'rollback-success' => 'Atmestė $1 keitėmā; grōžėnta i paskotėne $2 versėje.',
-'sessionfailure'   => 'Atruod kū īr biedū so Tamstas prėsėjongėma sesėjė; šėts veiksmos bova atšaukts kāp atsargoma prėimonė priš sesėjės vuogėma.
+
+# Edit tokens
+'sessionfailure' => 'Atruod kū īr biedū so Tamstas prėsėjongėma sesėjė; šėts veiksmos bova atšaukts kāp atsargoma prėimonė priš sesėjės vuogėma.
 Prašoum paspaustė „atgal“ ėr parkrautė poslapi ėš katruo atiejot, ė pamieginkėt vielē.',
 
 # Protect
@@ -1601,7 +1630,7 @@ Paskėrties straipsnis „[[:$1]]“ jau īr. A nuorėt ana ėštrintė, kū gal
 'tooltip-ca-addsection'           => 'Pradietė nauja skīriu',
 'tooltip-ca-viewsource'           => 'Poslapis īr ožrakints. Galėt parveizėt torini.',
 'tooltip-ca-history'              => 'Unkstesnės poslapė versėjės.',
-'tooltip-ca-protect'              => 'Ožrakėntė šėta poslapi',
+'tooltip-ca-protect'              => 'Ožrakintė šėta poslapi',
 'tooltip-ca-delete'               => 'Trėntė ta poslapi',
 'tooltip-ca-move'                 => 'Parvadėntė poslapi',
 'tooltip-ca-watch'                => 'Pridietė poslapi i keravuojamu sāraša',

@@ -905,6 +905,8 @@ class EditPage {
 
 			$isComment = ( $this->section == 'new' );
 
+			# FIXME: paste contents from Article::insertNewArticle here and 
+			# actually handle errors it may return
 			$this->mArticle->insertNewArticle( $this->textbox1, $this->summary,
 				$this->minoredit, $this->watchthis, false, $isComment, $bot );
 
@@ -1051,14 +1053,20 @@ class EditPage {
 			return self::AS_MAX_ARTICLE_SIZE_EXCEEDED;
 		}
 
-		# update the article here
-		if ( $this->mArticle->updateArticle( $text, $this->summary, $this->minoredit,
-			$this->watchthis, $bot, $sectionanchor ) )
+		// Update the article here
+		$flags = EDIT_UPDATE | EDIT_DEFER_UPDATES | EDIT_AUTOSUMMARY |
+			( $this->minoredit ? EDIT_MINOR : 0 ) |
+			( $bot ? EDIT_FORCE_BOT : 0 );
+		$status = $this->mArticle->doEdit( $text, $this->summary, $flags, 
+			false, null, $this->watchthis, false, $sectionanchor, true );
+		
+		if ( $status->isOK() )
 		{
 			wfProfileOut( __METHOD__ );
 			return self::AS_SUCCESS_UPDATE;
 		} else {
 			$this->isConflict = true;
+			$result = $status->getErrorsArray();
 		}
 		wfProfileOut( __METHOD__ );
 		return self::AS_END;
@@ -1411,13 +1419,13 @@ HTML
 			if ( $this->isCssJsSubpage ) {
 				# Check the skin exists
 				if ( !$this->isValidCssJsSubpage ) {
-					$wgOut->addWikiMsg( 'userinvalidcssjstitle', $wgTitle->getSkinFromCssJsSubpage() );
+					$wgOut->wrapWikiMsg( "<div class='error' id='mw-userinvalidcssjstitle'>\n$1\n</div>", array( 'userinvalidcssjstitle', $wgTitle->getSkinFromCssJsSubpage() ) );
 				}
 				if ( $this->formtype !== 'preview' ) {
 					if ( $this->isCssSubpage )
-						$wgOut->addWikiMsg( 'usercssyoucanpreview' );
+						$wgOut->wrapWikiMsg( "<div id='mw-usercssyoucanpreview'>\n$1\n</div>", array( 'usercssyoucanpreview' ) );
 					if ( $this->isJsSubpage )
-						$wgOut->addWikiMsg( 'userjsyoucanpreview' );
+						$wgOut->wrapWikiMsg( "<div id='mw-userjsyoucanpreview'>\n$1\n</div>", array( 'userjsyoucanpreview' ) );
 				}
 			}
 		}
@@ -1866,9 +1874,9 @@ INPUTS
 
 		if ( $this->isCssJsSubpage ) {
 			if (preg_match( "/\\.css$/", $this->mTitle->getText() ) ) {
-				$previewtext = wfMsg( 'usercsspreview' );
+				$previewtext = "<div id='mw-usercsspreview'>\n" . wfMsg( 'usercsspreview' ) . "\n</div>";
 			} else if (preg_match( "/\\.js$/", $this->mTitle->getText() ) ) {
-				$previewtext = wfMsg( 'userjspreview' );
+				$previewtext = "<div id='mw-userjspreview'>\n" . wfMsg( 'userjspreview' ) . "\n</div>";
 			}
 			$parserOptions->setTidy( true );
 			$parserOutput = $wgParser->parse( $previewtext, $this->mTitle, $parserOptions );
@@ -2280,7 +2288,7 @@ INPUTS
 			);
 			$checkboxes['minor'] =
 				Xml::check( 'wpMinoredit', $checked['minor'], $attribs ) .
-				"&nbsp;<label for='wpMinoredit'" . $skin->tooltip( 'minoredit', 'withaccess' ) . ">{$minorLabel}</label>";
+				"&#160;<label for='wpMinoredit'" . $skin->tooltip( 'minoredit', 'withaccess' ) . ">{$minorLabel}</label>";
 		}
 
 		$watchLabel = wfMsgExt( 'watchthis', array( 'parseinline' ) );
@@ -2293,7 +2301,7 @@ INPUTS
 			);
 			$checkboxes['watch'] =
 				Xml::check( 'wpWatchthis', $checked['watch'], $attribs ) .
-				"&nbsp;<label for='wpWatchthis'" . $skin->tooltip( 'watch', 'withaccess' ) . ">{$watchLabel}</label>";
+				"&#160;<label for='wpWatchthis'" . $skin->tooltip( 'watch', 'withaccess' ) . ">{$watchLabel}</label>";
 		}
 		wfRunHooks( 'EditPageBeforeEditChecks', array( &$this, &$checkboxes, &$tabindex ) );
 		return $checkboxes;
@@ -2628,7 +2636,7 @@ INPUTS
 	}
 
 	function getBaseRevision() {
-		if ( $this->mBaseRevision == false ) {
+		if ( !$this->mBaseRevision ) {
 			$db = wfGetDB( DB_MASTER );
 			$baseRevision = Revision::loadFromTimestamp(
 				$db, $this->mTitle, $this->edittime );

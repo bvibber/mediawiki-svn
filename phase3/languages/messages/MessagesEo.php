@@ -309,7 +309,7 @@ $messages = array(
 'tog-ccmeonemails'            => 'Sendi al mi kopiojn de retpoŝtaĵoj, kiujn mi sendis al aliaj uzuloj.',
 'tog-diffonly'                => 'Ne montri paĝan enhavon sub la ŝanĝoj',
 'tog-showhiddencats'          => 'Montri kaŝitajn kategoriojn',
-'tog-norollbackdiff'          => 'Mankigi ŝanĝojn post farante malfaron',
+'tog-norollbackdiff'          => 'Preterlasi ŝanĝoelmontron post malfaro',
 
 'underline-always'  => 'Ĉiam',
 'underline-never'   => 'Neniam',
@@ -876,8 +876,8 @@ aŭ <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}
 'blocked-notice-logextract'        => 'Ĉi tiu uzanto estas ĉi-momente forbarita.
 La lasta protokolero estas jene montrata por via referenco:',
 'clearyourcache'                   => "'''Notu:''' Post konservado vi forviŝu la kaŝmemoron de via foliumilo por vidi la ŝanĝojn : '''Mozilo:''' alklaku ''Reŝarĝi'' (aŭ ''Stir-Shift-R''), '''IE / Opera:''' ''Stir-F5'', '''Safari:''' ''Cmd-R'', '''Konqueror''' ''Stir-R''.",
-'usercssyoucanpreview'             => "'''Konsileto:''' Uzu la \"Antaŭrigardan\" butonon por provi vian novan css/js antaŭ konservi.",
-'userjsyoucanpreview'              => "'''Konsileto:''' Uzu la \"Antaŭrigardan\" butonon por provi vian novan css/js antaŭ konservi.",
+'usercssyoucanpreview'             => "'''Konsileto:''' Uzu la butonon \"Antaŭrigardi\" por provi vian novan CSS-kodon antaŭ konservado.",
+'userjsyoucanpreview'              => "'''Konsileto:''' Uzu la butonon \"Antaŭrigard\" por provi vian novan JS-kodon antaŭ konservado.",
 'usercsspreview'                   => "'''Notu ke vi nur antaŭvidas vian uzanto-CSS.
 Ĝi ne jam estis konservita!'''",
 'userjspreview'                    => "'''Memoru ke vi nun nur provas kaj antaŭrigardas vian uzantan javaskripton, ĝi ne estas jam konservita'''",
@@ -1059,7 +1059,7 @@ Kiel administranto, vi povas rigardi ĉi tiun diferencon, eble estas detaloj en 
 'rev-delundel'                => 'montri/kaŝi',
 'rev-showdeleted'             => 'montri',
 'revisiondelete'              => 'Forigi/malforigi versiojn',
-'revdelete-nooldid-title'     => 'Malvalida cela revizio',
+'revdelete-nooldid-title'     => 'Nevalida cela revizio',
 'revdelete-nooldid-text'      => 'Vi ne specifis celan version aŭ versiojn fari ĉi tiun 
 funkcion, la specifita versio ne ekzistas, aŭ vi estas provanta kaŝi la nunan version.',
 'revdelete-nologtype-title'   => 'Neniu protokol-tipo estis donita',
@@ -1100,6 +1100,8 @@ $1",
 'logdelete-failure'           => "'''Protokola videbleco ne estis akordebla:'''
 $1",
 'revdel-restore'              => 'Ŝanĝi videblecon',
+'revdel-restore-deleted'      => 'forigitaj revizioj',
+'revdel-restore-visible'      => 'videblaj revizioj',
 'pagehist'                    => 'Paĝa historio',
 'deletedhist'                 => 'Forigita historio',
 'revdelete-content'           => 'enhavo',
@@ -1134,6 +1136,17 @@ Bonvolu kontroli la protokolojn.',
 'suppressionlog'     => 'Protokolo pri subigado',
 'suppressionlogtext' => 'Jen listo de forigoj kaj forbaroj pri enhavo kaŝita per administrantoj. 
 Rigardu la [[Special:IPBlockList|IP-forbarliston]] por la listo de nune operaciaj forbaroj kaj forigoj.',
+
+# Revision move
+'revmove-legend'            => 'Aldoni celan paĝon kaj resumon',
+'revmove-reasonfield'       => 'Kialo:',
+'revmove-titlefield'        => 'Cela paĝo:',
+'revmove-badparam-title'    => 'Malbonaj parametroj',
+'revmove-badparam'          => '<span class="error">Via peto enhavas kontraŭleĝajn aŭ nesufiĉajn parametrojn. Bonvolu premi "malantaŭen" kaj provi denove.</span>',
+'revmove-norevisions-title' => 'Nevalida cela revizio',
+'revmove-norevisions'       => '<span class="error">Vi ne specifis unu aŭ pliajn reviziojn por apliki ĉi tiun funkcion aŭ la specifita revizio ne ekzistas.</span>',
+'revmove-nullmove-title'    => 'Fuŝa titolo',
+'revmove-nullmove'          => '<span class="error">Origina kaj cela paĝoj samas. Bonvolu malantaŭeniri kaj tajpi paĝon malsaman de "$1".</span>',
 
 # History merging
 'mergehistory'                     => 'Kunfandigi historiojn de paĝoj',
@@ -1463,8 +1476,8 @@ Vi povas ankaŭ elekti permesigi aliaj uzantoj kontakti vin per via uzanto-paĝo
 'right-siteadmin'             => 'Ŝlosi kaj malŝlosi la datumbazon',
 'right-reset-passwords'       => 'Reŝanĝi pasvortojn de aliaj uzantoj',
 'right-override-export-depth' => 'Eksporti paĝojn inkluzivante ligitajn paĝojn ĝis profundeco de 5',
-'right-versiondetail'         => 'Montri la informon pri la etendita programara versio',
 'right-sendemail'             => 'Sendi retpoŝton al aliaj uzantoj',
+'right-revisionmove'          => 'Movi reviziojn',
 
 # User rights log
 'rightslog'      => 'Protokolo de uzanto-rajtoj',
@@ -1507,6 +1520,7 @@ Vi povas ankaŭ elekti permesigi aliaj uzantoj kontakti vin per via uzanto-paĝo
 'action-userrights'           => 'redakti ĉiujn rajtojn de uzantoj',
 'action-userrights-interwiki' => 'redakti uzulrajtojn de uzantoj en aliaj vikioj',
 'action-siteadmin'            => 'ŝlosi aŭ malŝlosi la datumbazon',
+'action-revisionmove'         => 'movi reviziojn',
 
 # Recent changes
 'nchanges'                          => '$1 {{PLURAL:$1|ŝanĝo|ŝanĝoj}}',
@@ -1601,11 +1615,16 @@ Por inkluzivi la dosieron en paĝon, skribu ligilon laŭ la formoj
 'filetype-unwanted-type'      => "'''\".\$1\"''' estas nevolata dosiero-tipo. {{PLURAL:\$3|Preferata dosiero-tipo|Prefereataj dosiero-tipoj}} estas \$2.",
 'filetype-banned-type'        => "'''\".\$1\"''' ne estas permesita dosiero-tipo. {{PLURAL:\$3|Permesita dosiero-tipo|Permesitaj dosiero-tipoj}} estas \$2.",
 'filetype-missing'            => 'Ĉi tiu dosiero ne inkluzivas finaĵon de dosiernomo (kiel ".jpg").',
-'empty-file'                  => 'La dosiero kiun vi sendis estis malplena.',
+'empty-file'                  => 'La dosiero kiun vi alŝutis estis malplena.',
+'file-too-large'              => 'La dosiero kiun vi alŝutis estis tro granda.',
 'filename-tooshort'           => 'La dosiera nomo estas tro mallonga.',
 'filetype-banned'             => 'Ĉi tiu tipo de dosiero estas malpermesita.',
+'verification-error'          => 'Ĉi tiu dosiero ne pasis dosieran konfirmon.',
 'illegal-filename'            => 'La dosiernomo ne estas permesata.',
+'overwrite'                   => 'Anstataŭigo de ekzistanta dosiero ne permesitas.',
 'unknown-error'               => 'Malkonata eraro okazis.',
+'tmp-create-error'            => 'Ne povis krei intertempan dosieron.',
+'tmp-write-error'             => 'Eraro dum skribado de portempa dosiero.',
 'large-file'                  => 'Estas rekomendite, ke dosieroj ne superas grandon de $1 bitokoj; 
 tiu ĉi tiu dosiero pezas $2 bitokojn.',
 'largefileserver'             => 'Ĉi tiu dosiero estas pli granda ol permesas la servilaj preferoj.',
@@ -1660,6 +1679,7 @@ Se vi ankoraŭ volas alŝuti vian dosieron, bonvolu retroigi kaj uzi novan nomon
 Vi konsideru ĉu taŭgas alŝuti ĉi tiu dosiero.
 jen la protokolo pri forigado por ĉi tiu dosiero por via oportuneco:",
 'filename-bad-prefix'         => "La nomo de la dosiero kiun vi alŝutas komencas kun '''\"\$1\"''', kiu estas nepriskriba nomo ofte aŭtomate donata de ciferecaj fotiloj. Bonvolu elekti pli priskriban nomon por via bildo.",
+'upload-successful-msg'       => 'Via alŝutdosiero estas disponebla ĉi tie: $1',
 'upload-failure-subj'         => 'Alŝuta problemo',
 
 'upload-proto-error'        => 'Malvalida protokolo',
@@ -1770,7 +1790,7 @@ Jen la priskribo en ties [$2 dosier-priskriba paĝo].',
 'filerevert'                => 'Restarigi $1',
 'filerevert-legend'         => 'Restarigi dosieron',
 'filerevert-intro'          => "Vi restarigas '''[[Media:$1|$1]]''' al la [$4 versio de $3, $2].",
-'filerevert-comment'        => 'Komento:',
+'filerevert-comment'        => 'Kialo:',
 'filerevert-defaultcomment' => 'Restarigita al versio ekde $2, $1',
 'filerevert-submit'         => 'Restarigi',
 'filerevert-success'        => "'''[[Media:$1|$1]]''' estis restarigita al [$4 versio ekde $3, $2].",
@@ -2058,7 +2078,8 @@ La retadreso kiun vi enigis en [[Special:Preferences|viaj preferoj]] aperos kiel
 'emailuserfooter'      => 'Ĉi tiun retpoŝton sendis $1 al $2 per funkcio "Email user" ĉe {{SITENAME}}.',
 
 # User Messenger
-'usermessage-editor' => 'Mesaĝanto de sistemo',
+'usermessage-summary' => 'Lasanta sisteman mesaĝon.',
+'usermessage-editor'  => 'Mesaĝanto de sistemo',
 
 # Watchlist
 'watchlist'            => 'Atentaro',
@@ -2176,7 +2197,9 @@ La lasta redaktinto estis [[User:$3|$3]] ([[User talk:$3|diskuto]]{{int:pipe-sep
 'revertpage'        => 'Malfaris redaktojn de [[Special:Contributions/$2|$2]] ([[User talk:$2|diskuto]]) al la lasta versio de [[User:$1|$1]]',
 'revertpage-nouser' => 'Restarigita redaktoj de (salutnomo forigita) al lasta revizio de [[User:$1|$1]]',
 'rollback-success'  => 'Restaris redaktojn de $1; ŝanĝis al lasta versio de $2.',
-'sessionfailure'    => 'Ŝajnas ke estas problemo kun via ensalutado;
+
+# Edit tokens
+'sessionfailure' => 'Ŝajnas ke estas problemo kun via ensalutado;
 Ĉi ago estis nuligita por malhelpi fiensalutadon.
 Bonvolu alklalki la reirbutonon kaj reŝarĝi la paĝon el kiu vi venas, kaj provu denove.',
 
@@ -2267,7 +2290,7 @@ Vi verŝajne havas malbonan ligilon, aŭ la revizio eble estis restarigita aŭ f
 'undeleteviewlink'             => 'vidi',
 'undeletereset'                => 'Restarigi',
 'undeleteinvert'               => 'Inversigi selektaĵon',
-'undeletecomment'              => 'Komento:',
+'undeletecomment'              => 'Kialo:',
 'undeletedarticle'             => 'restarigis "$1"',
 'undeletedrevisions'           => '{{PLURAL:$1|1 versio restarigita|$1 versioj restarigitaj}}',
 'undeletedrevisions-files'     => '{{PLURAL:$1|1 versio|$1 versioj}} kaj {{PLURAL:$2|1 dosiero|$2 dosieroj}} restarigitaj',
@@ -3256,15 +3279,15 @@ Bonvolu konfirmi ke vi ja volas rekrei la paĝon.",
 'watchlistedit-noitems'        => 'Via atentaro enhavas neniujn titolojn.',
 'watchlistedit-normal-title'   => 'Redakti atentaron',
 'watchlistedit-normal-legend'  => 'Forigi titolojn de atentaro',
-'watchlistedit-normal-explain' => 'Titoloj de via atentaro estas montrata sube.
-Forigi titolon, marku la skatoleto apude de ĝi, kaj klaku Forigu Titolojn.
+'watchlistedit-normal-explain' => 'Jen titoloj de via atentaro.
+Forigi titolon, marku la skatoleto apude de ĝi, kaj klaku "{{int:Watchlistedit-normal-submit}}".
 Vi ankaŭ povas [[Special:Watchlist/raw|redakti la krudan liston]].',
 'watchlistedit-normal-submit'  => 'Forigi Titolojn',
 'watchlistedit-normal-done'    => '{{PLURAL:$1|1 titolo estis forigita|$1 titoloj estis forigitaj}} de via atentaro:',
 'watchlistedit-raw-title'      => 'Redakti krudan atentaron',
 'watchlistedit-raw-legend'     => 'Redakti krudan atentaron',
-'watchlistedit-raw-explain'    => 'Titoloj en via atentaro estas montrata sube, kaj povas esti redaktita de aldono aŭ forigo de la listo: unu titolo por linio. Kiam finite, klaku Ĝisdatigu Atentaron.
-Vi povas ankaŭ [[Special:Watchlist/edit|uzu la norman redaktilon]].',
+'watchlistedit-raw-explain'    => 'Jen titoloj en via atentaro, kiuj povas esti redaktata de aldono aŭ forigo de la listo: po unu titolo por linio. Kiam finite, klaku "{{int:Watchlistedit-raw-submit}}".
+Vi povas ankaŭ [[Special:Watchlist/edit|redakti norme]].',
 'watchlistedit-raw-titles'     => 'Titoloj:',
 'watchlistedit-raw-submit'     => 'Ĝisdatigi atentaron',
 'watchlistedit-raw-done'       => 'Via atentaro estas ĝisdatigita.',

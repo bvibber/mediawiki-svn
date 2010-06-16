@@ -152,8 +152,8 @@ class SpecialPage {
 		'Statistics'                => 'SpecialStatistics',
 		'Allmessages'               => 'SpecialAllmessages',
 		'Version'                   => 'SpecialVersion',
-		'Lockdb'                    => array( 'SpecialPage', 'Lockdb', 'siteadmin' ),
-		'Unlockdb'                  => array( 'SpecialPage', 'Unlockdb', 'siteadmin' ),
+		'Lockdb'                    => 'SpecialLockdb',
+		'Unlockdb'                  => 'SpecialUnlockdb',
 
 		# Redirecting special pages
 		'LinkSearch'                => array( 'LinkSearchPage' ),
@@ -171,7 +171,7 @@ class SpecialPage {
 		# Page tools
 		'Export'                    => 'SpecialExport',
 		'Import'                    => 'SpecialImport',
-		'Undelete'                  => array( 'SpecialPage', 'Undelete', 'deletedhistory' ),
+		'Undelete'                  => 'UndeleteForm',
 		'Whatlinkshere'             => 'SpecialWhatlinkshere',
 		'MergeHistory'              => 'SpecialMergeHistory',
 
@@ -189,6 +189,7 @@ class SpecialPage {
 		'Mypage'                    => array( 'SpecialMypage' ),
 		'Mytalk'                    => array( 'SpecialMytalk' ),
 		'Revisiondelete'            => 'SpecialRevisionDelete',
+		'RevisionMove'              => 'SpecialRevisionMove',
 		'Specialpages'              => array( 'UnlistedSpecialPage', 'Specialpages' ),
 		'Userlogout'                => array( 'UnlistedSpecialPage', 'Userlogout' ),
 	);
@@ -697,7 +698,7 @@ Perhaps no page aliases are defined for it?" );
 		$this->mRestriction = $restriction;
 		$this->mListed = $listed;
 		$this->mIncludable = $includable;
-		if ( $function == false ) {
+		if ( !$function ) {
 			$this->mFunction = 'wfSpecial'.$name;
 		} else {
 			$this->mFunction = $function;

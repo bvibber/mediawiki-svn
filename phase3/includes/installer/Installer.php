@@ -350,16 +350,6 @@ abstract class Installer {
 			$this->setVar( $name, $value );
 		}
 	}
-
-	/**
-	 * Returns true if dl() can be used
-	 */
-	function haveDl() {
-		return function_exists( 'dl' )
-			&& is_callable( 'dl' )
-			&& wfIniGetBool( 'enable_dl' )
-			&& !wfIniGetBool( 'safe_mode' );
-	}
 	
 	/** Check if we're installing the latest version */
 	function envLatestVersion() {
@@ -393,7 +383,6 @@ abstract class Installer {
 	/** Environment check for DB types */
 	function envCheckDB() {
 		$compiledDBs = array();
-		$haveDl = $this->haveDl();
 		$goodNames = array();
 		$allNames = array();
 		foreach ( $this->dbTypes as $name ) {
@@ -788,7 +777,7 @@ abstract class Installer {
 		try {
 			$out = $wgParser->parse( $text, $this->parserTitle, $this->parserOptions, $lineStart );
 			$html = $out->getText();
-		} catch ( InstallerDBAccessError $e ) {
+		} catch ( DBAccessError $e ) {
 			$html = '<!--DB access attempted during parse-->  ' . htmlspecialchars( $text );
 			if ( !empty( $this->debug ) ) {
 				$html .= "<!--\n" . $e->getTraceAsString() . "\n-->";
@@ -900,9 +889,9 @@ abstract class Installer {
 			} catch( PasswordError $pwe ) {
 				return Status::newFatal( 'config-admin-error-password', $name, $pwe->getMessage() );
 			}
-			$user->saveSettings();
 			$user->addGroup( 'sysop' );
 			$user->addGroup( 'bureaucrat' );
+			$user->saveSettings();
 		}
 		return Status::newGood();
 	}

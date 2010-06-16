@@ -1312,7 +1312,6 @@ In più te pol anca farte contatar da altri tramite la to pagina personale o la 
 'right-siteadmin'             => 'Bloca e desbloca el database',
 'right-reset-passwords'       => 'Reinposta la password de altri utenti',
 'right-override-export-depth' => 'Esporta le pàxene, includendo le pàxene ligàe fin a na profondità de 5',
-'right-versiondetail'         => 'Fà védar le informassion conplete su la version del software',
 'right-sendemail'             => 'Mandarghe e-mail a cheialtri utenti',
 
 # User rights log
@@ -2010,7 +2009,9 @@ L'ultima modefega l'è stà fata da [[User:$3|$3]] ([[User talk:$3|discussion]]{
 'revertpage'        => 'Anułàe łe modifeghe de [[Special:Contributions/$2|$2]] ([[User talk:$2|discussion]]), riportà a ła version de prima de [[User:$1|$1]]',
 'revertpage-nouser' => 'Anulà le modìfeghe de (nome utente cavà), riportà a la version precedente de [[User:$1|$1]]',
 'rollback-success'  => 'Anulà le modifiche de $1; riportà a la version precedente de $2.',
-'sessionfailure'    => "Se gà verificà un problema ne la session che identifica l'acesso; el sistema, par precauzion, no'l gà mìa eseguìo el comando che te ghè dato. Torna a la pagina precedente col boton 'Indrìo' del to browser, ricarica la pagina e ripróa da novo.",
+
+# Edit tokens
+'sessionfailure' => "Se gà verificà un problema ne la session che identifica l'acesso; el sistema, par precauzion, no'l gà mìa eseguìo el comando che te ghè dato. Torna a la pagina precedente col boton 'Indrìo' del to browser, ricarica la pagina e ripróa da novo.",
 
 # Protect
 'protectlogpage'              => 'Registro de protezión',

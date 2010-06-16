@@ -302,7 +302,7 @@ $messages = array(
 'tog-editsection'             => 'Habilitar edição de seção via links [editar]',
 'tog-editsectiononrightclick' => 'Habilitar edição de seção por clique com o botão direito no título da seção (JavaScript)',
 'tog-showtoc'                 => 'Mostrar Tabela de Conteúdos (para páginas com mais de três cabeçalhos)',
-'tog-rememberpassword'        => 'Lembrar senha entre sessões',
+'tog-rememberpassword'        => 'Lembrar o meu login neste computador (por no máximo $1 {{PLURAL:$1|dia|dias}})',
 'tog-watchcreations'          => 'Adicionar páginas criadas por mim à minha lista de páginas vigiadas',
 'tog-watchdefault'            => 'Adicionar páginas editadas por mim à minha lista de páginas vigiadas',
 'tog-watchmoves'              => 'Adicionar páginas movidas por mim à minha lista de páginas vigiadas',
@@ -699,7 +699,7 @@ Não se esqueça de personalizar as suas [[Special:Preferences|preferências na 
 'yourname'                   => 'Nome de usuário:',
 'yourpassword'               => 'Senha:',
 'yourpasswordagain'          => 'Redigite sua senha',
-'remembermypassword'         => 'Lembrar da minha senha em outras sessões.',
+'remembermypassword'         => 'Lembrar o meu login neste computador (por no máximo $1 {{PLURAL:$1|dia|dias}})',
 'yourdomainname'             => 'Seu domínio:',
 'externaldberror'            => 'Ocorreu ou um erro no banco de dados durante a autenticação ou não lhe é permitido atualizar a sua conta externa.',
 'login'                      => 'Autenticar-se',
@@ -798,8 +798,8 @@ Você pode já ter alterado com sucesso a sua senha, ou solicitado uma nova senh
 'italic_sample'   => 'Texto em itálico',
 'italic_tip'      => 'Texto em itálico',
 'link_sample'     => 'Título do link',
-'link_tip'        => 'Ligação interna',
-'extlink_sample'  => 'http://www.example.com ligação externa',
+'link_tip'        => 'Link interno',
+'extlink_sample'  => 'http://www.example.com título do link',
 'extlink_tip'     => 'Link externo (lembre-se do prefixo http://)',
 'headline_sample' => 'Texto do cabeçalho',
 'headline_tip'    => 'Seção de nível 2',
@@ -900,8 +900,8 @@ O registro de bloqueio mais recente é fornecido abaixo, para referência:',
 '''Konqueror:''' clique no botão ''Recarregar'' ou pressione ''F5'';
 '''Opera:''' limpe a ''cache'' em ''Ferramentas → Preferências'' (''Tools → Preferences'');
 '''Internet Explorer:''' pressione ''Ctrl'' enquanto clica em ''Recarregar'' ou pressione ''Ctrl-F5'';",
-'usercssyoucanpreview'             => "'''Dica:''' Utilize o botão \"Mostrar previsão\" para testar seu novo CSS antes de salvar.",
-'userjsyoucanpreview'              => "'''Dica:''' Utilize o botão \"Mostrar previsão\" para testar seu novo JS antes de salvar.",
+'usercssyoucanpreview'             => "'''Dica:''' Utilize o botão \"{{int:showpreview}}\" para testar seu novo CSS antes de salvar.",
+'userjsyoucanpreview'              => "'''Dica:''' Utilize o botão \"{{int:showpreview}}\" para testar seu novo JavaScript antes de salvar.",
 'usercsspreview'                   => "'''Lembre-se que está apenas prevendo o seu CSS particular.'''
 '''Ele ainda não foi salvo!'''",
 'userjspreview'                    => "'''Lembre-se que está apenas testando/prevendo o seu JavaScript particular e que ele ainda não foi salvo!'''",
@@ -1122,6 +1122,8 @@ $1",
 'logdelete-failure'           => "'''A visibilidade do registro não pôde ser estabelecida:'''
 $1",
 'revdel-restore'              => 'Alterar visibilidade',
+'revdel-restore-deleted'      => 'revisões eliminadas',
+'revdel-restore-visible'      => 'revisões visíveis',
 'pagehist'                    => 'Histórico da página',
 'deletedhist'                 => 'Histórico de eliminações',
 'revdelete-content'           => 'conteúdo',
@@ -1157,6 +1159,24 @@ Por favor, verifique os registos.',
 'suppressionlog'     => 'Registro de supressões',
 'suppressionlogtext' => 'Abaixo está uma lista das remoções e bloqueios envolvendo conteúdo ocultado por administradores.
 Veja a [[Special:IPBlockList|lista de bloqueios]] para uma lista de banimentos e bloqueios em efeito neste momento.',
+
+# Revision move
+'moverevlogentry'              => 'moveu {{PLURAL:$3|uma revisão|$3 revisões}} de $1 para $2',
+'revisionmove'                 => 'Mover revisões de "$1"',
+'revmove-explain'              => 'As seguintes revisões serão movidas de $1 para a página de destino especificada. Se a página de destino não existir, será criada. Se existir, estas revisões serão fundidas no histórico de revisões da página.',
+'revmove-legend'               => 'Definir a página de destino e o resumo',
+'revmove-submit'               => 'Mover as revisões para a página selecionada',
+'revisionmoveselectedversions' => 'Mover as revisões selecionadas',
+'revmove-reasonfield'          => 'Motivo:',
+'revmove-titlefield'           => 'Página de destino:',
+'revmove-badparam-title'       => 'Parâmetros incorretos',
+'revmove-badparam'             => '<span class="error">O seu pedido contém parâmetros ilegais ou insuficientes. Clique "voltar" e tente novamente.</span>',
+'revmove-norevisions-title'    => 'A revisão especificada é inválida',
+'revmove-norevisions'          => '<span class="error">Você não especificou uma ou mais revisões sobre as quais deve ser executada esta operação, ou a revisão que especificou não existe.</span>',
+'revmove-nullmove-title'       => 'Título incorreto',
+'revmove-nullmove'             => '<span class="error">As páginas de origem e destino são idênticas. Clique "voltar" e introduza um nome de página diferente de "$1".</span>',
+'revmove-success-existing'     => '{{PLURAL:$1|Uma revisão de [[$2]] foi movida|$1 revisões de [[$2]] foram movidas}} para a página existente [[$3]].',
+'revmove-success-created'      => '{{PLURAL:$1|Uma revisão de [[$2]] foi movida|$1 revisões de [[$2]] foram movidas}} para a página recém-criada [[$3]].',
 
 # History merging
 'mergehistory'                     => 'Fundir histórico de páginas',
@@ -1277,7 +1297,7 @@ Note que os índices do conteúdo da {{SITENAME}} destes sites podem estar desat
 'prefsnologintext'              => 'É necessário estar <span class="plainlinks">[{{fullurl:{{#Special:UserLogin}}|returnto=$1}} autenticado]</span> para definir as suas preferências.',
 'changepassword'                => 'Alterar senha',
 'prefs-skin'                    => 'Tema',
-'skin-preview'                  => 'Pré-visualizar',
+'skin-preview'                  => 'Previsão',
 'prefs-math'                    => 'Matemática',
 'datedefault'                   => 'Sem preferência',
 'prefs-datetime'                => 'Data e hora',
@@ -1483,9 +1503,9 @@ Ela deve ter menos de $1 {{PLURAL:$1|caractere|caracteres}}.',
 'right-userrights-interwiki'  => 'Editar direitos de usuário de usuários outros sites wiki',
 'right-siteadmin'             => 'Bloquear e desbloquear o banco de dados',
 'right-reset-passwords'       => 'Redefinir a senha de outros usuários',
-'right-override-export-depth' => 'Export páginas incluindo páginas ligadas até uma profundidade de 5 ligações',
-'right-versiondetail'         => "Mostrar informação ampliada sobre a versão do ''software''.",
+'right-override-export-depth' => 'Exportar páginas incluindo páginas ligadas até uma profundidade de 5',
 'right-sendemail'             => 'Enviar email a outros usuários',
+'right-revisionmove'          => 'Mover revisões',
 
 # User rights log
 'rightslog'      => 'Registro de privilégios de usuário',
@@ -1528,6 +1548,7 @@ Ela deve ter menos de $1 {{PLURAL:$1|caractere|caracteres}}.',
 'action-userrights'           => 'editar todos os privilégios de usuário',
 'action-userrights-interwiki' => 'editar privilégios de usuários de outras wikis',
 'action-siteadmin'            => 'bloquear ou desbloquear o banco de dados',
+'action-revisionmove'         => 'mover revisões',
 
 # Recent changes
 'nchanges'                          => '$1 {{PLURAL:$1|alteração|alterações}}',
@@ -1574,7 +1595,7 @@ Ela deve ter menos de $1 {{PLURAL:$1|caractere|caracteres}}.',
 'recentchangeslinked-toolbox'  => 'Alterações relacionadas',
 'recentchangeslinked-title'    => 'Alterações relacionadas com "$1"',
 'recentchangeslinked-noresult' => 'Não ocorreram alterações em páginas relacionadas no intervalo de tempo fornecido.',
-'recentchangeslinked-summary'  => "Esta página especial lista as alterações mais recentes de páginas que possuam uma ligação a outra (ou de membros de uma categoria especificada).
+'recentchangeslinked-summary'  => "Esta página especial lista as alterações mais recentes de páginas que possuam um link a outra (ou de membros de uma categoria especificada).
 Páginas que estejam em [[Special:Watchlist|sua lista de páginas vigiadas]] são exibidas em '''negrito'''.",
 'recentchangeslinked-page'     => 'Nome da página:',
 'recentchangeslinked-to'       => 'Mostrar alterações a páginas relacionadas com a página fornecida',
@@ -1792,13 +1813,13 @@ Um clique sobre um cabeçalho de coluna altera a ordenação.',
 'filehist-filesize'         => 'Tamanho do arquivo',
 'filehist-comment'          => 'Comentário',
 'filehist-missing'          => 'Arquivo faltando',
-'imagelinks'                => 'Ligações de arquivos',
-'linkstoimage'              => '{{PLURAL:$1|A seguinte página aponta|As seguintes $1 páginas apontam}} para este arquivo:',
-'linkstoimage-more'         => 'Mais de $1 {{PLURAL:$1|página tem alguma ligação|páginas têm alguma ligação}} para este arquivo.
-A lista a seguir mostra apenas {{PLURAL:$1|a primeira ligação de página|as primeiras $1 ligações de página}} para este arquivo.
+'imagelinks'                => 'Links para este arquivo',
+'linkstoimage'              => '{{PLURAL:$1|A página|As $1 páginas}} a seguir tem link para este arquivo:',
+'linkstoimage-more'         => 'Mais de $1 {{PLURAL:$1|página|páginas}} tem algum link para este arquivo.
+A lista a seguir mostra apenas {{PLURAL:$1|o primeiro link|os $1 primeiros links}} para este arquivo.
 Uma [[Special:WhatLinksHere/$2|listagem completa]] está disponível.',
 'nolinkstoimage'            => 'Nenhuma página aponta para este arquivo.',
-'morelinkstoimage'          => 'Ver [[Special:WhatLinksHere/$1|mais ligações]] para este arquivo.',
+'morelinkstoimage'          => 'Ver [[Special:WhatLinksHere/$1|mais links]] para este arquivo.',
 'redirectstofile'           => '{{PLURAL:$1|O seguinte arquivo redireciona|Os seguintes arquivos redirecionam}} para este arquivo:',
 'duplicatesoffile'          => '{{PLURAL:$1|O seguinte arquivo é duplicado|Os seguintes arquivos são duplicados}} deste arquivo ([[Special:FileDuplicateSearch/$2|mais detalhes]]):',
 'sharedupload'              => 'Este arquivo é do $1 e pode ser usado por outros projetos.',
@@ -1816,7 +1837,7 @@ A descrição na sua [$2 página de descrição de arquivo] é exibida abaixo.',
 'filerevert'                => 'Reverter $1',
 'filerevert-legend'         => 'Reverter arquivo',
 'filerevert-intro'          => '<span class="plainlinks">Você está revertendo \'\'\'[[Media:$1|$1]]\'\'\' para a [$4 versão de $2 - $3].</span>',
-'filerevert-comment'        => 'Comentário:',
+'filerevert-comment'        => 'Motivo:',
 'filerevert-defaultcomment' => 'Revertido para a versão de $1 - $2',
 'filerevert-submit'         => 'Reverter',
 'filerevert-success'        => '<span class="plainlinks">\'\'\'[[Media:$1|$1]]\'\'\' foi revertida para a [$4 versão de $2 - $3].</span>',
@@ -2226,7 +2247,10 @@ A última edição da página foi feita por [[User:$3|$3]] ([[User talk:$3|discu
 'revertpage'        => 'Foram revertidas as edições de [[Special:Contributions/$2|$2]] ([[User talk:$2|disc]]) para a última versão por [[User:$1|$1]]',
 'revertpage-nouser' => 'Revertidas as edições de (nome de usuário removido) para a última revisão por [[User:$1|$1]]',
 'rollback-success'  => 'Foram revertidas as edições de $1, com o conteúdo passando a estar como na última edição de $2.',
-'sessionfailure'    => 'Foram detetados problemas com a sua sessão;
+
+# Edit tokens
+'sessionfailure-title' => 'Erro de sessão',
+'sessionfailure'       => 'Foram detetados problemas com a sua sessão;
 Esta ação foi cancelada como medida de proteção contra a intercepção de sessões.
 Experimente usar o botão "Voltar" e atualizar a página de onde veio e tente novamente.',
 
@@ -2316,7 +2340,7 @@ Em tais casos, deverá desselecionar ou reverter a ocultação da versão apagad
 'undeleteviewlink'             => 'visualizar',
 'undeletereset'                => 'Limpar',
 'undeleteinvert'               => 'Inverter seleção',
-'undeletecomment'              => 'Comentário:',
+'undeletecomment'              => 'Motivo:',
 'undeletedarticle'             => 'restaurou "[[$1]]"',
 'undeletedrevisions'           => '$1 {{PLURAL:$1|edição restaurada|edições restauradas}}',
 'undeletedrevisions-files'     => '$1 {{PLURAL:$2|edição restaurada|edições restauradas}} e $2 {{PLURAL:$2|arquivo restaurado|arquivos restaurados}}',
@@ -2785,15 +2809,15 @@ Todas as acções de importação transwiki são registradas no [[Special:Log/im
 
 # Attribution
 'anonymous'        => '{{PLURAL:$1|Usuário anônimo|Usuários anônimos}} da {{SITENAME}}',
-'siteuser'         => '{{SITENAME}} usuário $1',
-'anonuser'         => '$1 usuários anonimos da {{SITENAME}}',
+'siteuser'         => '{{GENDER:$2|um utilizador|uma utilizadora|um utilizador}} da {{SITENAME}} ($1)',
+'anonuser'         => 'usuário anônimo $1 da {{SITENAME}}',
 'lastmodifiedatby' => 'Esta página foi modificada pela última vez às $2 de $1 por $3.',
 'othercontribs'    => 'Baseado no trabalho de $1.',
 'others'           => 'outros',
-'siteusers'        => '{{PLURAL:$2|um usuário|$2 usuários}} da {{SITENAME}}: $1',
-'anonusers'        => '$1 {{PLURAL:$2|usuário|usuários}} anonimos da {{SITENAME}}',
+'siteusers'        => '{{PLURAL:$2|um usuário|$2 usuários}} da {{SITENAME}} ($1)',
+'anonusers'        => '{{PLURAL:$2|usuário anônimo|usuários anônimos}} da {{SITENAME}} ($1)',
 'creditspage'      => 'Créditos da página',
-'nocredits'        => 'Não há informação disponível sobre os créditos desta página.',
+'nocredits'        => 'Não há informações disponíveis sobre os créditos desta página.',
 
 # Spam protection
 'spamprotectiontitle' => 'Filtro de proteção contra spam',
@@ -2801,7 +2825,7 @@ Todas as acções de importação transwiki são registradas no [[Special:Log/im
 Tal bloqueio foi provavelmente causado por uma ligação para um ''website'' externo que conste na lista negra.",
 'spamprotectionmatch' => 'O seguinte texto ativou o filtro de spam: $1',
 'spambot_username'    => 'MediaWiki limpeza de spam',
-'spam_reverting'      => 'Revertendo para a última versão não contendo hiperligações para $1',
+'spam_reverting'      => 'Revertendo para a última versão que não contém links para $1',
 'spam_blanking'       => 'Todas revisões contendo hiperligações para $1, limpando',
 
 # Info page

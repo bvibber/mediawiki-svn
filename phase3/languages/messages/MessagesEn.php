@@ -456,6 +456,7 @@ $specialPageAliases = array(
 	'DeletedContributions'      => array( 'DeletedContributions' ),
 	'Tags'                      => array( 'Tags' ),
 	'Activeusers'               => array( 'ActiveUsers' ),
+	'RevisionMove'              => array( 'RevisionMove' ),
 );
 
 /**
@@ -628,7 +629,7 @@ XHTML id names.
 'tog-editsection'             => 'Enable section editing via [edit] links',
 'tog-editsectiononrightclick' => 'Enable section editing by right clicking on section titles (requires JavaScript)',
 'tog-showtoc'                 => 'Show table of contents (for pages with more than 3 headings)',
-'tog-rememberpassword'        => 'Remember my login on this computer',
+'tog-rememberpassword'        => 'Remember my login on this computer (for a maximum of $1 {{PLURAL:$1|day|days}})',
 'tog-watchcreations'          => 'Add pages I create to my watchlist',
 'tog-watchdefault'            => 'Add pages I edit to my watchlist',
 'tog-watchmoves'              => 'Add pages I move to my watchlist',
@@ -1042,7 +1043,7 @@ Do not forget to change your [[Special:Preferences|{{SITENAME}} preferences]].',
 'yourname'                   => 'Username:',
 'yourpassword'               => 'Password:',
 'yourpasswordagain'          => 'Retype password:',
-'remembermypassword'         => 'Remember my login on this computer',
+'remembermypassword'         => 'Remember my login on this computer (for a maximum of $1 {{PLURAL:$1|day|days}})',
 'yourdomainname'             => 'Your domain:',
 'externaldberror'            => 'There was either an authentication database error or you are not allowed to update your external account.',
 'login'                      => 'Log in',
@@ -1276,8 +1277,8 @@ The latest block log entry is provided below for reference:',
 '''Konqueror: '''click ''Reload'' or press ''F5'';
 '''Opera:''' clear the cache in ''Tools → Preferences'';
 '''Internet Explorer:''' hold ''Ctrl'' while clicking ''Refresh,'' or press ''Ctrl-F5''.",
-'usercssyoucanpreview'             => "'''Tip:''' Use the 'Show preview' button to test your new CSS before saving.",
-'userjsyoucanpreview'              => "'''Tip:''' Use the 'Show preview' button to test your new JS before saving.",
+'usercssyoucanpreview'             => "'''Tip:''' Use the \"{{int:showpreview}}\" button to test your new CSS before saving.",
+'userjsyoucanpreview'              => "'''Tip:''' Use the \"{{int:showpreview}}\" button to test your new JavaScript before saving.",
 'usercsspreview'                   => "'''Remember that you are only previewing your user CSS.'''
 '''It has not yet been saved!'''",
 'userjspreview'                    => "'''Remember that you are only testing/previewing your user JavaScript.'''
@@ -1499,7 +1500,7 @@ Other administrators on {{SITENAME}} will still be able to access the hidden con
 'revdelete-hide-comment'      => 'Hide edit comment',
 'revdelete-hide-user'         => "Hide editor's username/IP address",
 'revdelete-hide-restricted'   => 'Suppress data from administrators as well as others',
-'revdelete-radio-same'        => "(don't change)",
+'revdelete-radio-same'        => '(do not change)',
 'revdelete-radio-set'         => 'Yes',
 'revdelete-radio-unset'       => 'No',
 'revdelete-suppress'          => 'Suppress data from administrators as well as others',
@@ -1552,6 +1553,25 @@ Please check the logs.',
 'suppressionlog'     => 'Suppression log',
 'suppressionlogtext' => 'Below is a list of deletions and blocks involving content hidden from administrators.
 See the [[Special:IPBlockList|IP block list]] for the list of currently operational bans and blocks.',
+
+# Revision move
+'moverevlogentry'              => 'moved {{PLURAL:$3|one revision|$3 revisions}} from $1 to $2',
+'revisionmove'                 => 'Move revisions from "$1"',
+'revisionmove-backlink'        => '← $1', # only translate this message to other languages if you have to change it
+'revmove-explain'              => 'The following revisions will be moved from $1 to the specified target page. If the target does not exist, it is created. Otherwise, these revisions will be merged into the page history.',
+'revmove-legend'               => 'Set target page and summary',
+'revmove-submit'               => 'Move revisions to selected page',
+'revisionmoveselectedversions' => 'Move selected revisions',
+'revmove-reasonfield'          => 'Reason:',
+'revmove-titlefield'           => 'Target page:',
+'revmove-badparam-title'       => 'Bad parameters',
+'revmove-badparam'             => '<span class="error">Your request contains illegal or insufficient parameters. Please hit "back" and try again.</span>',
+'revmove-norevisions-title'    => 'Invalid target revision',
+'revmove-norevisions'          => '<span class="error">You have not specified one or more target revisions to perform this function or the specified revision does not exist.</span>',
+'revmove-nullmove-title'       => 'Bad title',
+'revmove-nullmove'             => '<span class="error">Source and target page are identical. Please hit "back" and enter a page name different to "$1".</span>',
+'revmove-success-existing'     => '{{PLURAL:$1|One revision from [[$2]] has|$1 revisions from [[$2]] have}} been moved to the existing page [[$3]].',
+'revmove-success-created'      => '{{PLURAL:$1|One revision from [[$2]] has|$1 revisions from [[$2]] have}} been moved to the newly created page [[$3]].',
 
 # History merging
 'mergehistory'                     => 'Merge page histories',
@@ -1757,8 +1777,8 @@ Here's a randomly-generated value you can use: $1",
 'default'                       => 'default',
 'prefs-files'                   => 'Files',
 'prefs-custom-css'              => 'Custom CSS',
-'prefs-custom-js'               => 'Custom JS',
-'prefs-common-css-js'           => 'Shared CSS/JS for all skins:',
+'prefs-custom-js'               => 'Custom JavaScript',
+'prefs-common-css-js'           => 'Shared CSS/JavaScript for all skins:',
 'prefs-reset-intro'             => 'You can use this page to reset your preferences to the site defaults.
 This cannot be undone.',
 'prefs-emailconfirm-label'      => 'E-mail confirmation:',
@@ -1893,9 +1913,9 @@ You can also choose to let others contact you through your user or talk page wit
 'right-protect'               => 'Change protection levels and edit protected pages',
 'right-editprotected'         => 'Edit protected pages (without cascading protection)',
 'right-editinterface'         => 'Edit the user interface',
-'right-editusercssjs'         => "Edit other users' CSS and JS files",
+'right-editusercssjs'         => "Edit other users' CSS and JavaScript files",
 'right-editusercss'           => "Edit other users' CSS files",
-'right-edituserjs'            => "Edit other users' JS files",
+'right-edituserjs'            => "Edit other users' JavaScript files",
 'right-rollback'              => 'Quickly rollback the edits of the last user who edited a particular page',
 'right-markbotedits'          => 'Mark rolled-back edits as bot edits',
 'right-noratelimit'           => 'Not be affected by rate limits',
@@ -1912,8 +1932,8 @@ You can also choose to let others contact you through your user or talk page wit
 'right-siteadmin'             => 'Lock and unlock the database',
 'right-reset-passwords'       => "Reset other users' passwords",
 'right-override-export-depth' => 'Export pages including linked pages up to a depth of 5',
-'right-versiondetail'         => 'Show the extended software version information',
 'right-sendemail'             => 'Send e-mail to other users',
+'right-revisionmove'          => 'Move revisions',
 
 # User rights log
 'rightslog'      => 'User rights log',
@@ -1956,6 +1976,7 @@ You can also choose to let others contact you through your user or talk page wit
 'action-userrights'           => 'edit all user rights',
 'action-userrights-interwiki' => 'edit user rights of users on other wikis',
 'action-siteadmin'            => 'lock or unlock the database',
+'action-revisionmove'         => 'move revisions',
 
 # Recent changes
 'nchanges'                          => '$1 {{PLURAL:$1|change|changes}}',
@@ -2612,7 +2633,7 @@ The e-mail address you entered in [[Special:Preferences|your user preferences]] 
 # User Messenger
 'usermessage-summary'  => 'Leaving system message.',
 'usermessage-editor'   => 'System messenger',
-'usermessage-template' => 'Template:UserMessage', # only translate this message to other languages if you have to change it
+'usermessage-template' => 'MediaWiki:UserMessage', # only translate this message to other languages if you have to change it
 
 # Watchlist
 'watchlist'            => 'My watchlist',
@@ -2740,7 +2761,10 @@ The last edit to the page was by [[User:$3|$3]] ([[User talk:$3|talk]]{{int:pipe
 'revertpage-nouser' => 'Reverted edits by (username removed) to last revision by [[User:$1|$1]]',
 'rollback-success'  => 'Reverted edits by $1;
 changed back to last revision by $2.',
-'sessionfailure'    => 'There seems to be a problem with your login session;
+
+# Edit tokens
+'sessionfailure-title' => 'Session failure',
+'sessionfailure'       => 'There seems to be a problem with your login session;
 this action has been canceled as a precaution against session hijacking.
 Please hit "back" and reload the page you came from, then try again.',
 
@@ -3311,6 +3335,10 @@ Please try again.',
 'accesskey-upload'                  => 's', # do not translate or duplicate this message to other languages
 'accesskey-preferences-save'        => 's', # do not translate or duplicate this message to other languages
 'accesskey-summary'                 => 'b', # do not translate or duplicate this message to other languages
+'accesskey-userrights-set'          => 's', # do not translate or duplicate this message to other languages
+'accesskey-blockip-block'           => 's', # do not translate or duplicate this message to other languages
+'accesskey-export'                  => 's', # do not translate or duplicate this message to other languages
+'accesskey-import'                  => 's', # do not translate or duplicate this message to other languages
 
 # Tooltip help for the actions
 'tooltip-pt-userpage'             => 'Your user page',
@@ -4022,6 +4050,7 @@ Please confirm that you really want to recreate this page.",
 'table_pager_first'        => 'First page',
 'table_pager_last'         => 'Last page',
 'table_pager_limit'        => 'Show $1 items per page',
+'table_pager_limit_label'  => 'Items per page:',
 'table_pager_limit_submit' => 'Go',
 'table_pager_empty'        => 'No results',
 

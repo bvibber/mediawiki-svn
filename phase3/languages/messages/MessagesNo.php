@@ -828,8 +828,8 @@ Du kan [[Special:Search/{{PAGENAME}}|søke etter sidens tittel]] i andre sider, 
 'blocked-notice-logextract'        => 'Denne brukeren er for tiden blokkert.
 Siste blokkeringsloggelement kan sees nedenfor.',
 'clearyourcache'                   => "'''Merk:''' Etter lagring vil det kanskje være nødvendig at nettleseren sletter mellomlageret sitt for at endringene skal tre i kraft. '''Mozilla og Firefox:''' trykk ''Ctrl-Shift-R'', '''Internet Explorer:''' ''Ctrl-F5'', '''Safari:''' ''Cmd-Shift-R'' i engelskspråklig versjon, ''Cmd-Alt-E'' i norskspråklig versjon, '''Konqueror og Opera:''' ''F5''.",
-'usercssyoucanpreview'             => "'''Tips:''' Bruk «Forhåndsvisning»-knappen for å teste din nye CSS før du lagrer.",
-'userjsyoucanpreview'              => "'''Tips:''' Bruk «Forhåndsvisning»-knappen for å teste din nye JS før du lagrer.",
+'usercssyoucanpreview'             => "'''Tips:''' Bruk '{{int:showpreview}}'-knappen for å teste din nye CSS før du lagrer.",
+'userjsyoucanpreview'              => "'''Tips:''' Bruk '{{int:showpreview}}'-knappen for å teste ditt nye JS før du lagrer.",
 'usercsspreview'                   => "'''Husk at dette bare er en forhåndsvisning av din bruker-CSS og at den ikke er lagret!'''",
 'userjspreview'                    => "'''Husk at dette bare er en test eller forhåndsvisning av ditt bruker-JavaScript, og det ikke er lagret!'''",
 'userinvalidcssjstitle'            => "'''Advarsel:''' Det finnes ikke noe utseende ved navn «$1». Husk at .css- og .js-sider bruker titler i små bokstaver, for eksempel {{ns:user}}:Eksempel/monobook.css, ikke {{ns:user}}:Eksempel/Monobook.css",
@@ -1076,6 +1076,24 @@ Vennligst sjekk loggen.',
 'suppressionlog'     => 'Sidefjerningslogg',
 'suppressionlogtext' => 'Nedenfor er en liste over sider og blokkeringer med innhold skjult fra administratorer.
 Se [[Special:IPBlockList|blokkeringslisten]] for oversikten over nåværende blokkeringer.',
+
+# Revision move
+'moverevlogentry'              => 'flyttet {{PLURAL:$3|én revisjon|$3 revisjoner}} fra $1 til $2',
+'revisionmove'                 => 'Flytt revisjoner fra «$1»',
+'revmove-explain'              => 'Følgende revisjoner vil flyttes fra $1 til den gitte målsiden. Om målsiden ikke eksisterer vil den bli opprettet. Hvis den finnes vil disse revisjonene flettes med målsidens historikk.',
+'revmove-legend'               => 'Sett målside og sammendrag',
+'revmove-submit'               => 'Flytt revisjoner til valgte side',
+'revisionmoveselectedversions' => 'Flytt valgte revisjoner',
+'revmove-reasonfield'          => 'Årsak:',
+'revmove-titlefield'           => 'Målside:',
+'revmove-badparam-title'       => 'Ugyldige parametere',
+'revmove-badparam'             => '<span class="error">Forespørselen din har ugyldige eller utilstrekkelige parametere. Trykk «tilbake» og prøv igjen.</span>',
+'revmove-norevisions-title'    => 'Ugyldig målrevisjon',
+'revmove-norevisions'          => '<span class="error">Du har ikke oppgitt noen målrevisjon(er) å utføre denne funksjonen på, ellers finnes ikke den gitte revisjonen.</span>',
+'revmove-nullmove-title'       => 'Ugyldig tittel',
+'revmove-nullmove'             => '<span class="error">Kilde- og målside er identiske. Trykk «tilbake» og skriv inn et annet sidenavn enn «$1».</span>',
+'revmove-success-existing'     => '{{PLURAL:$1|Én revisjon|$1 revisjoner}} fra [[$2]] ble flyttet til den eksisterende siden [[$3]].',
+'revmove-success-created'      => '{{PLURAL:$1|Én revisjon|$1 revisjoner}} fra [[$2]] ble flyttet til den nyopprettede siden [[$3]].',
 
 # History merging
 'mergehistory'                     => 'Flett sidehistorikker',
@@ -1404,8 +1422,8 @@ Du kan også la velge å la andre brukere kontakte deg via brukersiden din uten 
 'right-siteadmin'             => 'Låse og låse opp databasen',
 'right-reset-passwords'       => 'Nullstille andre brukeres passord',
 'right-override-export-depth' => 'Eksporter sider inkludert lenkede sider til en dypde på 5',
-'right-versiondetail'         => 'Vis utvidet informasjon om programvareversjon',
 'right-sendemail'             => 'Send e-post til andre brukere',
+'right-revisionmove'          => 'Flytte revisjoner',
 
 # User rights log
 'rightslog'      => 'Brukerrettighetslogg',
@@ -1448,6 +1466,7 @@ Du kan også la velge å la andre brukere kontakte deg via brukersiden din uten 
 'action-userrights'           => 'redigere alle brukerrettigheter',
 'action-userrights-interwiki' => 'endre brukerrettigheter for brukere på andre wikier',
 'action-siteadmin'            => 'låse eller låse opp databasen',
+'action-revisionmove'         => 'flytte revisjoner',
 
 # Recent changes
 'nchanges'                          => '$1 {{PLURAL:$1|endring|endringer}}',
@@ -2055,7 +2074,7 @@ Fremtidige endringer til denne siden og den tilhørende diskusjonssiden blir lis
 'watching'   => 'Overvåker…',
 'unwatching' => 'Fjerner fra overvåkningsliste…',
 
-'enotif_mailer'                => '{{SITENAME}} påminnelsessystem',
+'enotif_mailer'                => '{{SITENAME}}s påminnelsessystem',
 'enotif_reset'                 => 'Merk alle sider som besøkt',
 'enotif_newpagetext'           => 'Dette er en ny side.',
 'enotif_impersonal_salutation' => '{{SITENAME}}-bruker',
@@ -2139,7 +2158,10 @@ Den siste redigeringen ble foretatt av [[User:$3|$3]] ([[User talk:$3|diskusjon]
 'revertpage'        => 'Tilbakestilte endring av [[Special:Contributions/$2|$2]] ([[User talk:$2|diskusjon]]) til siste versjon av [[User:$1|$1]]',
 'revertpage-nouser' => 'Tilbakestilte endringer av (fjernet brukernavn) til siste versjon av [[User:$1|$1]]',
 'rollback-success'  => 'Tilbakestilte endringer av $1; endret til siste versjon av $2.',
-'sessionfailure'    => "Det ser ut til å være et problem med innloggingen din, og den ble avbrutt av sikkerhetshensyn. Trykk ''Tilbake'' i nettleseren din, oppdater siden og prøv igjen.",
+
+# Edit tokens
+'sessionfailure-title' => 'Sesjonsfeil',
+'sessionfailure'       => "Det ser ut til å være et problem med innloggingen din, og den ble avbrutt av sikkerhetshensyn. Trykk ''Tilbake'' i nettleseren din, oppdater siden og prøv igjen.",
 
 # Protect
 'protectlogpage'              => 'Beskyttelseslogg',

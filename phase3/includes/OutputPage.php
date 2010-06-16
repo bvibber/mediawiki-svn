@@ -183,15 +183,18 @@ class OutputPage {
 	 *
 	 * @param $file String: filename in skins/common or complete on-server path
 	 *              (/foo/bar.js)
+	 * @param $version String: style version of the file. Defaults to $wgStyleVersion
 	 */
-	public function addScriptFile( $file ) {
+	public function addScriptFile( $file, $version = null ) {
 		global $wgStylePath, $wgStyleVersion;
 		if( substr( $file, 0, 1 ) == '/' || preg_match( '#^[a-z]*://#i', $file ) ) {
 			$path = $file;
 		} else {
 			$path = "{$wgStylePath}/common/{$file}";
 		}
-		$this->addScript( Html::linkedScript( wfAppendQuery( $path, $wgStyleVersion ) ) );
+		if ( is_null( $version ) )
+			$version = $wgStyleVersion;
+		$this->addScript( Html::linkedScript( wfAppendQuery( $path, $version ) ) );
 	}
 
 	/**
@@ -765,7 +768,7 @@ class OutputPage {
 		$pageTable = $dbr->tableName( 'page' );
 		$where = $lb->constructSet( 'page', $dbr );
 		$propsTable = $dbr->tableName( 'page_props' );
-		$sql = "SELECT page_id, page_namespace, page_title, page_len, page_is_redirect, pp_value
+		$sql = "SELECT page_id, page_namespace, page_title, page_len, page_is_redirect, page_latest, pp_value
 			FROM $pageTable LEFT JOIN $propsTable ON pp_propname='hiddencat' AND pp_page=page_id WHERE $where";
 		$res = $dbr->query( $sql, __METHOD__ );
 
@@ -1050,7 +1053,7 @@ class OutputPage {
 			$popts, true, true, $this->mRevisionId
 		);
 		$popts->setTidy( false );
-		if ( $cache && $article && $parserOutput->getCacheTime() != -1 ) {
+		if ( $cache && $article && !$parserOutput->isCacheable() ) {
 			$parserCache = ParserCache::singleton();
 			$parserCache->save( $parserOutput, $article, $popts );
 		}
@@ -1078,7 +1081,7 @@ class OutputPage {
 		$this->mHideNewSectionLink = $parserOutput->getHideNewSection();
 
 		$this->mParseWarnings = $parserOutput->getWarnings();
-		if ( $parserOutput->getCacheTime() == -1 ) {
+		if ( !$parserOutput->isCacheable() ) {
 			$this->enableClientCache( false );
 		}
 		$this->mNoGallery = $parserOutput->getNoGallery();
@@ -2230,9 +2233,9 @@ class OutputPage {
 						NS_USER,
 						$userpage->getDBkey() . '/' . $name . '.js'
 					);
-					if ( $scriptpage && $scriptpage->exists() ) {
+					if ( $scriptpage && $scriptpage->exists() && ( $scriptpage->getLength() > 0 ) ) {
 						$userjs = $scriptpage->getLocalURL( 'action=raw&ctype=' . $wgJsMimeType );
-						$this->addScriptFile( $userjs );
+						$this->addScriptFile( $userjs, $scriptpage->getLatestRevID() );
 					}
 				}
 			}

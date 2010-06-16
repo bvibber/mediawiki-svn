@@ -1041,6 +1041,12 @@ Prašome patikrinti sąrašus.',
 'suppressionlogtext' => 'Žemiau yra trynimų ir blokavimų sąrašas, įtraukiant turinį, paslėptą nuo administratorių.
 Žiūrėkite [[Special:IPBlockList|IP blokavimų sąrašą]], kad rastumėte dabar veikiančius draudimus ir blokavimus.',
 
+# Revision move
+'revisionmove'                 => 'Daugiau versijų iš „$1“',
+'revmove-submit'               => 'Perkelti versijas į pasirinktą puslapį',
+'revisionmoveselectedversions' => 'Perkelti pasirinktas versijas',
+'revmove-reasonfield'          => 'Priežastis:',
+
 # History merging
 'mergehistory'                     => 'Sujungti puslapių istorijas',
 'mergehistory-header'              => "Šis puslapis leidžia jus prijungti vieno pirminio puslapio istorijos versijas į naujesnį puslapį. Įsitikinkite, kad šis pakeitimas palaikys istorinį puslapio tęstinumą.
@@ -1370,8 +1376,8 @@ teisės",
 'right-siteadmin'             => 'Atrakinti ir užrakinti duomenų bazę',
 'right-reset-passwords'       => 'Atstatyti kitų naudotojų slaptažodžius',
 'right-override-export-depth' => 'Eksportuoti puslapius įtraukiant susietus puslapius iki 5 lygio gylio',
-'right-versiondetail'         => 'Rodyti išplėstinę programinės įrangos versijos informaciją',
 'right-sendemail'             => 'Siųsti el. laišką kitiems naudotojams',
+'right-revisionmove'          => 'Perkelti versijas',
 
 # User rights log
 'rightslog'      => 'Naudotojų teisių istorija',
@@ -1414,6 +1420,7 @@ teisės",
 'action-userrights'           => 'keisti visų naudotojų teises',
 'action-userrights-interwiki' => 'keisti naudotojų teises kitose wiki svetainėse',
 'action-siteadmin'            => 'užrakinti ar atrakinti duomenų bazę',
+'action-revisionmove'         => 'perkelti versijas',
 
 # Recent changes
 'nchanges'                          => '$1 {{PLURAL:$1|pakeitimas|pakeitimai|pakeitimų}}',
@@ -1572,7 +1579,7 @@ Patikrinkite ''file_uploads'' nustatą.",
 Jūs turėtumėte nuspręsti, ar verta toliau įkeldinėti šį failą.
 Šio failo šalinimų istorija yra pateikta dėl patogumo:",
 'filename-bad-prefix'         => "Jūsų įkeliamas failas prasideda su '''„$1“''', bet tai yra neapibūdinantis pavadinimas, dažniausiai priskirtas skaitmeninių kamerų. Prašome suteikti labiau apibūdinantį pavadinimą savo failui.",
-'upload-successful-msg'       => 'Jūsų įkėlimą galima rasti čia: $ 1',
+'upload-successful-msg'       => 'Jūsų įkėlimą galima rasti čia: $1',
 'upload-failure-subj'         => 'Įkėlimo problema',
 'upload-failure-msg'          => 'Įvyko įkėlimo problema:
 
@@ -1685,7 +1692,7 @@ Informacija iš [$2 failo aprašymo puslapio] yra pateikiama žemiau.',
 'filerevert'                => 'Sugrąžinti $1',
 'filerevert-legend'         => 'Failo sugrąžinimas',
 'filerevert-intro'          => '<span class="plainlinks">Jūs grąžinate \'\'\'[[Media:$1|$1]]\'\'\' į versiją $4 ($2, $3).</span>',
-'filerevert-comment'        => 'Komentaras:',
+'filerevert-comment'        => 'Priežastis:',
 'filerevert-defaultcomment' => 'Grąžinta į $1, $2 versiją',
 'filerevert-submit'         => 'Grąžinti',
 'filerevert-success'        => '<span class="plainlinks">\'\'\'[[Media:$1|$1]]\'\'\' buvo sugrąžintas į versiją $4 ($2, $3).</span>',
@@ -2095,7 +2102,9 @@ Paskutimas keitimas darytas naudotojo [[User:$3|$3]] ([[User talk:$3|Aptarimas]]
 'revertpage-nouser' => 'Atmesti (naudotojo vardas pašalintas) pakeitimai, grąžinta prieš tai buvusi [[User:$1|$1]] versija',
 'rollback-success'  => 'Atmesti $1 pakeitimai;
 grąžinta prieš tai buvusi $2 versija.',
-'sessionfailure'    => 'Atrodo yra problemų su jūsų prisijungimo sesija; šis veiksmas buvo atšauktas kaip atsargumo priemonė prieš sesijos vogimą.
+
+# Edit tokens
+'sessionfailure' => 'Atrodo yra problemų su jūsų prisijungimo sesija; šis veiksmas buvo atšauktas kaip atsargumo priemonė prieš sesijos vogimą.
 Prašome paspausti „atgal“ ir perkraukite puslapį iš kurio atėjote, ir pamėginkite vėl.',
 
 # Protect
@@ -2185,7 +2194,7 @@ Tokiais atvejais, jums reikia atžymėti arba atslėpti naujausią ištrintą ve
 'undeleteviewlink'             => 'žiūrėti',
 'undeletereset'                => 'Iš naujo',
 'undeleteinvert'               => 'Žymėti priešingai',
-'undeletecomment'              => 'Komentaras:',
+'undeletecomment'              => 'Priežastis:',
 'undeletedarticle'             => 'atkurta „[[$1]]“',
 'undeletedrevisions'           => '{{PLURAL:$1|atkurta $1 versija|atkurtos $1 versijos|atkurta $1 versijų}}',
 'undeletedrevisions-files'     => '{{PLURAL:$1|atkurta $1 versija|atkurtos $1 versijos|atkurta $1 versijų}} ir $2 {{PLURAL:$2|failas|failai|failų}}',

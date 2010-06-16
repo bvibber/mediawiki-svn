@@ -1202,7 +1202,6 @@ Jo kinne ek oaren de mûglikheid jaan kontakt mei jo op te nimmen troch in ferwi
 'right-siteadmin'             => 'De database blokkearje en wer frij jaan',
 'right-reset-passwords'       => "Wachtwurden fan oare meidoggers op 'e nij ynstelle",
 'right-override-export-depth' => 'Alle siden oant en mei in keppelingsdjipte fan fiif fuortskriuwe',
-'right-versiondetail'         => 'Utwreide ferzjeynformaasje sjenlitte',
 
 # User rights log
 'rightslog'      => 'Rjochten-loch',
@@ -1759,7 +1758,7 @@ De ûntfanger kin dus daliks nei jo reagearje.',
 
 At jo letter in side net mear folgje wolle, dan brûke jo op dy side de keppeling \"Ferjit dizze side.\" Jo [[Special:Watchlist|folchlist]] hat ek in keppeling \"Jo folchlist bewurkje,\" foar at jo mear as ien side \"ferjitte\" wolle.",
 'removedwatch'       => 'Net mear folgje',
-'removedwatchtext'   => 'De side "<nowiki>$1</nowiki>" stiet net mear op jo folchlist.',
+'removedwatchtext'   => 'De side "[[:$1]]" stiet net mear op jo folchlist.',
 'watch'              => 'Folgje',
 'watchthispage'      => 'Folgje dizze side',
 'unwatch'            => 'Ferjit',

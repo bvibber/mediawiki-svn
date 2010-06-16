@@ -217,12 +217,18 @@ class Preferences {
 				'section' => 'personal/info',
 			);
 		}
-
-		$defaultPreferences['rememberpassword'] = array(
-			'type' => 'toggle',
-			'label-message' => 'tog-rememberpassword',
-			'section' => 'personal/info',
-		);
+		global $wgCookieExpiration;
+		if ( $wgCookieExpiration > 0 ) {
+			$defaultPreferences['rememberpassword'] = array(
+				'type' => 'toggle',
+				'label' => wfMsgExt(
+					'tog-rememberpassword',
+					array( 'parsemag' ),
+					$wgLang->formatNum( ceil( $wgCookieExpiration / ( 3600 * 24 ) ) )
+					),
+				'section' => 'personal/info',
+			);
+		}
 
 		// Language
 		global $wgContLanguageCode;
@@ -436,7 +442,7 @@ class Preferences {
 		$defaultPreferences['skin'] = array(
 			'type' => 'radio',
 			'options' => self::generateSkinOptions( $user ),
-			'label' => '&nbsp;',
+			'label' => '&#160;',
 			'section' => 'rendering/skin',
 		);
 
@@ -488,7 +494,7 @@ class Preferences {
 			$defaultPreferences['math'] = array(
 				'type' => 'radio',
 				'options' => array_flip( array_map( 'wfMsgHtml', $wgLang->getMathNames() ) ),
-				'label' => '&nbsp;',
+				'label' => '&#160;',
 				'section' => 'rendering/math',
 			);
 		}
@@ -519,7 +525,7 @@ class Preferences {
 			$defaultPreferences['date'] = array(
 				'type' => 'radio',
 				'options' => $dateOptions,
-				'label' => '&nbsp;',
+				'label' => '&#160;',
 				'section' => 'datetime/dateformat',
 			);
 		}

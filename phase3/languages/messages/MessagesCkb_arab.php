@@ -51,20 +51,25 @@ $namespaceNames = array(
 	NS_USER_TALK        => 'لێدوانی_بەکارھێنەر',
 	NS_PROJECT_TALK     => 'لێدوانی_$1',
 	NS_FILE             => 'پەڕگە',
-	NS_FILE_TALK        => 'لێدوانی_پەڕگە',
-	NS_MEDIAWIKI_TALK   => 'لێدوانی_میدیاویکی',
+	NS_FILE_TALK        => 'وتووێژی_پەڕگە',
+	NS_MEDIAWIKI_TALK   => 'وتووێژی_میدیاویکی',
 	NS_TEMPLATE         => 'داڕێژە',
-	NS_TEMPLATE_TALK    => 'لێدوانی_داڕێژە',
+	NS_TEMPLATE_TALK    => 'وتووێژی_داڕێژە',
 	NS_HELP             => 'یارمەتی',
-	NS_HELP_TALK        => 'لێدوانی_یارمەتی',
+	NS_HELP_TALK        => 'وتووێژی_یارمەتی',
 	NS_CATEGORY         => 'پۆل',
-	NS_CATEGORY_TALK    => 'لێدوانی_پۆل',
+	NS_CATEGORY_TALK    => 'وتووێژی_پۆل',
 );
 
 $namespaceAliases = array(
 	'قسەی_بەکارھێنەر' => NS_USER_TALK,
+	'لێدوانی_پەڕگە' => NS_FILE_TALK,
+	'لێدوانی_میدیاویکی' => NS_MEDIAWIKI_TALK,
 	'قاڵب' => NS_TEMPLATE,
 	'لێدوانی_قاڵب' => NS_TEMPLATE_TALK,
+	'لێدوانی_داڕێژە' => NS_TEMPLATE_TALK,
+	'لێدوانی_یارمەتی' => NS_HELP_TALK,
+	'لێدوانی_پۆل' => NS_CATEGORY_TALK,
 );
 
 $specialPageAliases = array(
@@ -833,8 +838,8 @@ $3 هۆکاری "$2" خستوەتەڕوو',
 'currentrev-asof'        => 'بینینەوی ھەنووکە تا $1',
 'revisionasof'           => 'وەک بینینەوەی $1',
 'revision-info'          => 'پێداچوونەوی $1 لە لایەن $2',
-'previousrevision'       => '←پیاچوونەوەی کۆنتر',
-'nextrevision'           => 'پیاچوونەوەی نوێتر→',
+'previousrevision'       => '→پیاچوونەوەی کۆنتر',
+'nextrevision'           => 'پیاچوونەوەی نوێتر←',
 'currentrevisionlink'    => 'پیاچوونەوەی ئێستا',
 'cur'                    => 'ئێستا',
 'next'                   => 'پاش',
@@ -1277,7 +1282,6 @@ $1",
 'right-siteadmin'             => 'داخستن و کردنەوەی بنکەدراو',
 'right-reset-passwords'       => 'ڕیکخستنەوەی تێپەڕوشەی بەکارهێنەرانی دیکە',
 'right-override-export-depth' => 'هەناردنی لاپەڕەکان کە لاپەڕەکانی بەستەر پێ‌دراو تا قووڵایی 5 لەخۆ بگرێت',
-'right-versiondetail'         => 'نیشان‌دانی زانیاریەکانی وەشانی بڵاوەی نەرم‌ئامێر',
 
 # User rights log
 'rightslog'      => 'لۆگی مافەکانی بەکارهێنەر',
@@ -1955,7 +1959,9 @@ $NEWPAGE
 'revertpage'       => 'گەڕاندنەوەی دەستکارییەکان لەلایەن [[Special:Contributions/$2|$2]] ([[User talk:$2|لێدوان]]) بۆ دوایین دەستکاریی [[User:$1|$1]]',
 'rollback-success' => 'دەستکارییەکانی $1 وەرگێرایەوە؛<br />
 گۆڕدرا بۆ دوایین دەستکاریی $2.',
-'sessionfailure'   => 'لەوەدەچی بەشی چوونەژوورەوەت تووشی کێشە بووبێت.
+
+# Edit tokens
+'sessionfailure' => 'لەوەدەچی بەشی چوونەژوورەوەت تووشی کێشە بووبێت.
 ئەم کردەوە بۆ بەرگری لە ئاڵۆزی و مەترسی دزینی دراوەکان هەڵوەشێندراوە.
 تکایە دوکمەی "back" لێدە و ئەو لاپەڕەی لێیەوە هاتوویتە ئێرە، نوێ بکەوە، ئینجا دیسان تاقی‌بکەوە.',
 

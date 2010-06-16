@@ -861,6 +861,10 @@ rocaneyan kontrol bıkere.',
 'suppressionlog'     => 'qeydê pinani kerdışi',
 'suppressionlogtext' => 'qey listeya qedexan bıewne: [[Special:IPBlockList|IP listeya vergırewteyan]]',
 
+# Revision move
+'revmove-reasonfield'    => 'Sebeb:',
+'revmove-nullmove-title' => 'Sernameo xırabın',
+
 # History merging
 'mergehistory'                     => 'vere cûye pelan bıhewelın',
 'mergehistory-header'              => 'No pel, reviyonê yew peli eşkeno yewna pelo newe de piyawano.
@@ -1185,7 +1189,6 @@ Eka tu wazene ke nameyo raşt xo bide, ma nameyo raşt ti iştirakanê ti de moc
 'right-siteadmin'             => 'Database kilit bike u a bike',
 'right-reset-passwords'       => 'Parolayê karberanê binî reset bike',
 'right-override-export-depth' => 'Peleyanê ke tede linkanê 5 ra zafyer estê ay export bike',
-'right-versiondetail'         => 'Enformasyonê versiyonê software yê detayî bimocne',
 'right-sendemail'             => 'Karberanê binî ra e-mail bişirav',
 
 # User rights log
@@ -1868,7 +1871,9 @@ oyo ke vurnayişo peyin kerdo: [[User:$3|$3]] ([[User talk:$3|Talk]]{{int:pipe-s
 'revertpage-nouser' => '(nameyê karberi veteyo) no keso ke vuriyayiş kerdo vuriyayişê no kesi hetê no [[User:$1|$1]] kesi ra tepiya anciyayo',
 'rollback-success'  => 'vurnayişê no kesi $1 tepiya geriyayo u hetê no
 $2 kesi ra cıwa ver o ke revizyon biyo no revizyon tepiya anciyayo.',
-'sessionfailure'    => 'cıkewtışê hesabê şıma de yew problem aseno;
+
+# Edit tokens
+'sessionfailure' => 'cıkewtışê hesabê şıma de yew problem aseno;
 no kar semedê dızdiyê hesabi ibtal biyo.
 kerem kerê "tepiya" şiyerê u pel o ke şıma tera ameyî u o pel newe ra bar kerê , newe ra tesel/cereb kerê.',
 

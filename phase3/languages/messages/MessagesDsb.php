@@ -167,7 +167,7 @@ $messages = array(
 'tog-editsection'             => 'Wobźěłanje wótstawkow pśez wótkaze [wobźěłaś] zmóžniś',
 'tog-editsectiononrightclick' => 'Wobźěłanje wótstawkow pśez kliknjenje z pšaweju tastu myški zmóžniś (JavaScript)',
 'tog-showtoc'                 => 'Wopśimjeśe pokazaś, jolic ma bok wěcej nježli 3 nadpisma',
-'tog-rememberpassword'        => 'Se stawnje na toś tom computerje pśizjawiś',
+'tog-rememberpassword'        => 'Na toś tom licadle pśizjawjony wóstaś (za maksimalnje $1 {{PLURAL:$1|źeń|dnja|dny|dnjow}})',
 'tog-watchcreations'          => 'Boki, kótarež załožyjom, awtomatiski wobglědowaś',
 'tog-watchdefault'            => 'Boki, kótarež změnijom, awtomatiski wobglědowaś',
 'tog-watchmoves'              => 'Boki, kótarež som pśesunuł, awtomatiski wobglědowaś',
@@ -557,12 +557,12 @@ Twójo konto jo se załožyło. Njezabydni změniś swóje [[Special:Preferences
 'yourname'                   => 'mě wužywarja',
 'yourpassword'               => 'šćitne gronidło:',
 'yourpasswordagain'          => 'Šćitne gronidło hyšći raz zapódaś:',
-'remembermypassword'         => 'Šćitne gronidło na toś tom computerje składowaś',
+'remembermypassword'         => 'Na toś tom licadle pśizjawjony wóstaś (za maksimalnje $1 {{PLURAL:$1|źeń|dnja|dny|dnjow}})',
 'yourdomainname'             => 'Twója domejna',
 'externaldberror'            => 'Abo jo wustupiła eksterna zmólka awtentifikacije datoweje banki, abo njesmějoš swójo eksterne wužywarske konto aktualizěrowaś.',
 'login'                      => 'Pśizjawiś se',
 'nav-login-createaccount'    => 'Pśizjawiś se/Konto załožyś',
-'loginprompt'                => 'Za pśizjawjenje do boka {{SITENAME}} muse se cookije dopušćiś.',
+'loginprompt'                => 'Za pśizjawjenje do boka {{SITENAME}} muse cookije dowólone byś.',
 'userlogin'                  => 'Pśizjawiś se/Konto załožyś',
 'userloginnocreate'          => 'Pśizjawiś',
 'logout'                     => 'wótzjawiś se',
@@ -742,8 +742,8 @@ abo <span class="plainlinks">[{{fullurl:{{#Special:Log}}|page={{FULLPAGENAMEE}}}
 Nejnowšy zapisk blokěrowańskego protokola pódawa se dołojce ako referenca:',
 'clearyourcache'                   => "'''Pokazka: Jo móžno, až dejš wuprozniś cache wobglědowaka, aby změny wiźeł.'''
 '''Mozilla/Firefox/Safari:''' Źarź ''Umsch'' tłocony, mjaztym až kliknjoš ''Znowego'' abo tłoc pak ''Strg-F5'' pak ''Strg-R'' (''Command-R'' na Makintošu); '''Konqueror: '''Klikni ''' na ''Aktualisieren'' abo tłoc ''F5;'' '''Opera:''' wuprozni cache w ''Extras -> Eisntellungen;'' '''Internet Explorer:''' źarź ''Strg'' tłocony, mjaztym až kliknjoš na ''Aktualisieren'' abo tłoc ''Strg-F5.''",
-'usercssyoucanpreview'             => "'''Pokazka:''' Wužywaj tłocydło \"Pśeglěd\", aby swój nowy css/js testował, nježli až jen składujoš.",
-'userjsyoucanpreview'              => "'''Pokazka:''' Wužywaj tłocydło \"Pśeglěd\", aby swój nowy css/js testował, nježli až jen składujoš.",
+'usercssyoucanpreview'             => "'''Pokazka:''' Wužywaj tłocašk '{{int:showpreview}}', aby swój nowy css testował, nježli až jen składujoš.",
+'userjsyoucanpreview'              => "'''Pokazka:''' Wužywaj tłocašk \"{{int:showpreview}}\", aby swój nowy JavaScript testował, nježli až jen składujoš.",
 'usercsspreview'                   => "'''Źiwaj na to, až wobglědujoš se jano pśeglěd swójogo wužywarskego CSS. Njejo se hyšći składował!'''",
 'userjspreview'                    => "== Pśeglěd Wašogo wužywarskego JavaScripta ==
 '''Glědaj:''' Pó składowanju musyš swójomu browseroju kazaś, aby nowu wersiju pokazał: '''Mozilla/Firefox:''' ''Strg-Shift-R'', '''Internet Explorer:''' ''Strg-F5'', '''Opera:''' ''F5'', '''Safari:''' ''Cmd-Shift-R'', '''Konqueror:''' ''F5''.",
@@ -988,6 +988,24 @@ Pšosym pśeglědaj protokole.',
 # Suppression log
 'suppressionlog'     => 'Protokol pódłocowanjow',
 'suppressionlogtext' => 'To jo lisćina wulašowanjow a blokěrowanjow, kótaraž ma wopśimjeśe, kótarež jo za administratorow schowane. Glědaj  [[Special:IPBlockList|lisćinu blokěrowanjow IP]] za lisćinu aktualnych wugnanjow a blokěrowanjow.',
+
+# Revision move
+'moverevlogentry'              => 'jo {{PLURAL:$3|jadnu wersiju|$3 wersiji|$3 wersije|$3 wersijow}} wót $1 do $2 pśesunuł',
+'revisionmove'                 => 'Wersije wót "$1" pśesunuś',
+'revmove-explain'              => 'Slědujuce wersije budu se wót $1 do pódanego boka pśesuwaś. Jolic cel njeeksistěrujo, buźo se napóraś. Howac budu se toś te wersije do historije boki zjadnośowaś.',
+'revmove-legend'               => 'Celowy bok a zespominanje nastajiś',
+'revmove-submit'               => 'Wersije k wubranemu bokoju pśesunuś',
+'revisionmoveselectedversions' => 'Wubrane wersije pśesunuś',
+'revmove-reasonfield'          => 'Pśicyna:',
+'revmove-titlefield'           => 'Celowy bok:',
+'revmove-badparam-title'       => 'Wopacne parametry',
+'revmove-badparam'             => '<span class="error">Twójo napšašowanje wopśimujo njedowólone abo njedosegajuce parametry. Pšosym klikni na "slědk" a wopytaj hyšći raz.</span>',
+'revmove-norevisions-title'    => 'Njepłaśiwa celowa wersija',
+'revmove-norevisions'          => '<span class="error">Njejsy jadnu celowu wersiju abo wěcej celowych wersijow pódał, aby toś tu funkciju wuwjadł abo pódana wersija njeeksistěrujo.</span>',
+'revmove-nullmove-title'       => 'Njepłaśiwy titel',
+'revmove-nullmove'             => '<span class="error">Žrědłowy a celowy bok stej identeskejl. Pšosym klikni na "slědk" a zapódaj druge mě boka  ako "$1".</span>',
+'revmove-success-existing'     => '{{PLURAL:$1|Jadna wersija jo se wót [[$2]]|$1 wersiji stej se wót [[$2]]|$1 wersije su se wót [[$2]]|$1 wersijow jo se wót [[$2]]}} k eksistěrujucemu bokoju  [[$3]] {{PLURAL:$1|pśesunuła|pśesunułej|pśesunuli|pśesunuło}}.',
+'revmove-success-created'      => '{{PLURAL:$1|Jadna wersija jo se wót [[$2]]|$1 wersiji stej se wót [[$2]]|$1 wersije su se wót [[$2]]|$1 wersijow jo se wót [[$2]]}} k rowno napóranemu bokoju  [[$3]] {{PLURAL:$1|pśesunuła|pśesunułej|pśesunuli|pśesunuło}}.',
 
 # History merging
 'mergehistory'                     => 'Zwězaś stawizny bokow',
@@ -1313,8 +1331,8 @@ Móžoš toś ten bok wužywaś, aby slědk stajił swóje nastajenja na standar
 'right-siteadmin'             => 'Datowu banku zastajiś a zastajenje wótpóraś',
 'right-reset-passwords'       => 'Gronidła drugich wužywarjow slědk stajiś',
 'right-override-export-depth' => 'Boki inkluziwnje wótkazanych bokow až do dłyma 5 eksportěrowaś',
-'right-versiondetail'         => 'Nadrobne informacije wó wersiji softwary pokazaś',
 'right-sendemail'             => 'Drugim wužywarjam e-mail pósłaś',
+'right-revisionmove'          => 'Wersije pśesunuś',
 
 # User rights log
 'rightslog'      => 'Protokol wužywarskich pšawow',
@@ -1357,6 +1375,7 @@ Móžoš toś ten bok wužywaś, aby slědk stajił swóje nastajenja na standar
 'action-userrights'           => 'wše wužywarske pšawa wobźěłaś',
 'action-userrights-interwiki' => 'wužywarske pšawa wužywarjow w drugich wikijach wobźěłaś',
 'action-siteadmin'            => 'datowu banku zastajiś abo wótworiś',
+'action-revisionmove'         => 'wersije pśesunuś',
 
 # Recent changes
 'nchanges'                          => '$1 {{PLURAL:$1|změna|změnje|změny}}',
@@ -1639,7 +1658,7 @@ Slědujuca lisćina pokazujo jano {{PLURAL:$1|prědny wótkaz|prědnej $1 wótka
 'filerevert'                => 'Slědk wześ $1',
 'filerevert-legend'         => 'Dataju nawrośiś',
 'filerevert-intro'          => "Nawrośijoš dataju '''[[Media:$1|$1]]''' na [$4 wersiju wót $2, $3 góź.].",
-'filerevert-comment'        => 'Komentar:',
+'filerevert-comment'        => 'Pśicyna:',
 'filerevert-defaultcomment' => 'Nawrośona na wersiju wót $1, $2 góź.',
 'filerevert-submit'         => 'Slědk wześ',
 'filerevert-success'        => "'''[[Media:$1|$1]]''' jo se nawrośiło na [$4 wersiju wót $2, $3 góź.].",
@@ -2042,7 +2061,10 @@ Slědnu změnu k bokoju jo pśewjadł [[User:$3|$3]] ([[User talk:$3|diskusija]]
 'revertpage'        => 'Změny wužywarja [[Special:Contributions/$2|$2]] ([[User talk:$2|Diskusija]]) su se wótwrośili a slědna wersija wužywarja [[User:$1|$1]] jo se wótnowiła.',
 'revertpage-nouser' => 'Jo změny wót (wužywarske mě wótpórane) na slědnu wersiju wót [[User:$1|$1]] slědk stajił',
 'rollback-success'  => 'Změny wót $1 su se slědk wzeli a slědna wersija wót $2 jo zasej se nawrośiła.',
-'sessionfailure'    => 'Problem z twójim wužywarskim pósejźenim jo se wujawił.
+
+# Edit tokens
+'sessionfailure-title' => 'Pósejźeńska zmólka',
+'sessionfailure'       => 'Problem z twójim wužywarskim pósejźenim jo se wujawił.
 Wěstoty dla jo akcija se pśetergnuła, aby se zadorało wopacnemu pśirědowanjoju twójeje změny drugemu wužywarjeju.
 Pšosym nawroś se na bok, wót kótaregož sy pśišeł a wopytaj hyšći raz.',
 
@@ -2129,7 +2151,7 @@ W takich padach dejš nejnowše wulašowane wersije markěroanje abo schowanje w
 'undeleteviewlink'             => 'woglědaś se',
 'undeletereset'                => 'Slědk wześ',
 'undeleteinvert'               => 'Wuběrk pśewobrośiś',
-'undeletecomment'              => 'Wobtwarźenje:',
+'undeletecomment'              => 'Pśicyna:',
 'undeletedarticle'             => 'bok „[[$1]]“ nawrośony',
 'undeletedrevisions'           => '{{PLURAL:$1|1 wersija jo se nawrośiła|$1 wersiji stej se nawrośiłej|$1 wersije su se nawrośili}}.',
 'undeletedrevisions-files'     => '{{PLURAL:$1|1 wersija|$1 wersiji|$1 wersije}} a {{PLURAL:$2|1 dataja|$2 dataji|$2 dataje}} {{PLURAL:$2|jo se nawrośiła|stej se nawrośiłej|su se nawrośili}}.',

@@ -207,7 +207,11 @@ class WebInstaller extends Installer {
 	function startSession() {
 		$sessPath = $this->getSessionSavePath();
 		if( $sessPath != '' ) {
-			if( !is_dir( $sessPath ) || !is_writeable( $sessPath ) ) {
+			if( strval( ini_get( 'open_basedir' ) ) != '' ) {
+				// we need to skip the following check when open_basedir is on.
+				// The session path probably *wont* be writable by the current
+				// user, and telling them to change it is bad. Bug 23021.
+			} elseif( !is_dir( $sessPath ) || !is_writeable( $sessPath ) ) {
 				$this->showError( 'config-session-path-bad', $sessPath );
 				return false;
 			}
@@ -550,7 +554,7 @@ class WebInstaller extends Installer {
 	 */
 	function label( $msg, $forId, $contents ) {
 		if ( strval( $msg ) == '' ) {
-			$labelText = '&nbsp;';
+			$labelText = '&#160;';
 		} else {
 			$labelText = wfMsgHtml( $msg );
 		}
@@ -717,7 +721,7 @@ class WebInstaller extends Installer {
 			$s .=
 				'<li>' .
 				Xml::radio( $params['controlName'], $value, $checked, $itemAttribs ) .
-				'&nbsp;' .
+				'&#160;' .
 				Xml::tags( 'label', array( 'for' => $id ), $this->parse(
 					wfMsgNoTrans( $params['itemLabelPrefix'] . strtolower( $value ) )
 				) ) .
@@ -1492,7 +1496,7 @@ class WebInstaller_Options extends WebInstallerPage {
 		return
 			'<p>'.
 			Xml::element( 'img', array( 'src' => $this->getVar( 'wgRightsIcon' ) ) ) .
-			'&nbsp;&nbsp;' .
+			'&#160;&#160;' .
 			htmlspecialchars( $this->getVar( 'wgRightsText' ) ) .
 			"</p>\n" .
 			"<p style=\"text-align: center\">" .
@@ -1659,6 +1663,8 @@ abstract class WebInstaller_Document extends WebInstallerPage {
 	}
 
 	protected function formatTextFile( $text ) {
+		$text = str_replace( array( '<', '{{', '[[' ),
+			array( '&lt;', '&#123;&#123;', '&#91;&#91;' ), $text );
 		// replace numbering with [1], [2], etc with MW-style numbering
 		$text = preg_replace( "/\r?\n(\r?\n)?\\[\\d+\\]/m", "\\1#", $text );
 		// join word-wrapped lines into one
@@ -1725,6 +1731,6 @@ class WebInstaller_Copying extends WebInstaller_Document {
 	}
 
 	private static function replaceLeadingSpaces( $matches ) {
-		return "\n" . str_repeat( '&nbsp;', strlen( $matches[0] ) );
+		return "\n" . str_repeat( '&#160;', strlen( $matches[0] ) );
 	}
 }

@@ -351,7 +351,7 @@ $messages = array(
 'tog-editsection'             => 'Activer les modifications de sections grâce aux liens « [modifier] »',
 'tog-editsectiononrightclick' => 'Un clic droit sur un titre de section permet de modifier celle-ci (nécessite JavaScript)',
 'tog-showtoc'                 => 'Afficher la table des matières (pour les pages ayant plus de 3 sections)',
-'tog-rememberpassword'        => 'Se souvenir de mon identification sur cet ordinateur',
+'tog-rememberpassword'        => 'Se souvenir de mon identification sur cet ordinateur (au maximum $1 {{PLURAL:$1|jour|jours}})',
 'tog-watchcreations'          => 'Ajouter les pages que je crée à ma liste de suivi',
 'tog-watchdefault'            => 'Ajouter les pages que je modifie à ma liste de suivi',
 'tog-watchmoves'              => 'Ajouter les pages que je renomme à ma liste de suivi',
@@ -360,7 +360,7 @@ $messages = array(
 'tog-previewontop'            => 'Montrer la prévisualisation au-dessus de la zone de modification',
 'tog-previewonfirst'          => 'Montrer la prévisualisation lors de la première modification',
 'tog-nocache'                 => 'Désactiver le cache des pages',
-'tog-enotifwatchlistpages'    => 'M’avertir par courriel lorsqu’une page de ma liste de suivi est modifiée',
+'tog-enotifwatchlistpages'    => 'M’avertir par courrier électronique lorsqu’une page de ma liste de suivi est modifiée',
 'tog-enotifusertalkpages'     => 'M’avertir par courriel si ma page de discussion est modifiée',
 'tog-enotifminoredits'        => 'M’avertir par courriel même en cas de modifications mineures des pages',
 'tog-enotifrevealaddr'        => 'Afficher mon adresse électronique dans les courriels d’avertissement',
@@ -735,10 +735,10 @@ Le motif avancé est « ''$2'' ».",
 'virus-unknownscanner' => 'antivirus inconnu :',
 
 # Login and logout pages
-'logouttext'                 => "'''Vous êtes à présent déconnecté{{GENDER:||e|(e)}}.'''
+'logouttext'                 => "'''Vous êtes à présent déconnecté(e).'''
 
 Vous pouvez continuer à utiliser {{SITENAME}} de façon anonyme, [[Special:UserLogin|vous reconnecter]] sous le même nom ou un autre.
-Notez que certaines pages peuvent être encore affichées comme si vous étiez toujours connecté{{GENDER:||e|(e)}}, jusqu’à ce que vous effaciez le cache de votre navigateur.",
+Notez que certaines pages peuvent être encore affichées comme si vous étiez toujours connecté(e), jusqu’à ce que vous effaciez le cache de votre navigateur.",
 'welcomecreation'            => '== Bienvenue, $1 ! ==
 
 Votre compte a été créé.
@@ -746,7 +746,7 @@ N’oubliez pas de personnaliser vos [[Special:Preferences|préférences sur {{S
 'yourname'                   => 'Nom d’utilisateur :',
 'yourpassword'               => 'Mot de passe :',
 'yourpasswordagain'          => 'Confirmez le mot de passe :',
-'remembermypassword'         => 'Me reconnecter automatiquement à la prochaine visite (témoin ("cookie"))',
+'remembermypassword'         => 'Se souvenir de mon identification sur cet ordinateur (au maximum $1 {{PLURAL:$1|jour|jours}})',
 'yourdomainname'             => 'Votre domaine',
 'externaldberror'            => 'Une erreur s’est produite avec la base de données d’authentification externe, ou bien vous n’êtes pas autorisé{{GENDER:||e|(e)}} à mettre à jour votre compte externe.',
 'login'                      => 'Connexion',
@@ -772,7 +772,7 @@ Veuillez en choisir un autre.',
 'nocookieslogin'             => "{{SITENAME}} utilise des témoins (''cookies'') pour la connexion mais vous les avez désactivés. Veuillez les activer et vous reconnecter.",
 'noname'                     => 'Vous n’avez pas saisi un nom d’utilisateur valide.',
 'loginsuccesstitle'          => 'Connexion réussie',
-'loginsuccess'               => 'Vous êtes maintenant connecté{{GENDER:||e|(e)}} à {{SITENAME}} en tant que « $1 ».',
+'loginsuccess'               => 'Vous êtes maintenant connecté{{GENDER:$1||e|(e)}} à {{SITENAME}} en tant que « $1 ».',
 'nosuchuser'                 => 'L’utilisateur « $1 » n’existe pas.
 Les noms d’utilisateurs sont sensibles à la casse.
 Vérifiez l’orthographe, ou [[Special:UserLogin/signup|créez un nouveau compte]].',
@@ -947,7 +947,7 @@ La dernière entrée du registre des blocages est indiquée ci-dessous à titre 
 '''Mozilla / Firefox / Konqueror / Safari :''' maintenez la touche ''Majuscule'' (''Shift'') en cliquant sur le bouton ''Actualiser'' (''Reload'') ou pressez ''Maj-Ctrl-R'' (''Maj-Cmd-R'' sur Apple Mac) ;
 '''Internet Explorer / Opera :''' maintenez la touche ''Ctrl'' en cliquant sur le bouton ''Actualiser'' ou pressez ''Ctrl-F5''.",
 'usercssyoucanpreview'             => "'''Astuce :''' utilisez le bouton « {{int:showpreview}} » pour tester votre nouvelle feuille CSS avant de l’enregistrer.",
-'userjsyoucanpreview'              => "'''Astuce :''' utilisez le bouton « {{int:showpreview}} » pour tester votre nouvelle feuille JS avant de l’enregistrer.",
+'userjsyoucanpreview'              => "'''Astuce :''' utilisez le bouton « {{int:showpreview}} » pour tester votre nouvelle feuille JavaScript avant de l’enregistrer.",
 'usercsspreview'                   => "'''Rappelez-vous que vous n’êtes qu’en train de prévisualiser votre propre feuille CSS.'''
 '''Elle n’a pas encore été enregistrée !'''",
 'userjspreview'                    => "'''Rappelez-vous que vous êtes en train de visualiser ou de tester votre code JavaScript et qu’il n’a pas encore été enregistré !'''",
@@ -1195,6 +1195,24 @@ Vérifiez les journaux.',
 'suppressionlog'     => 'Journal des suppressions',
 'suppressionlogtext' => 'Voici la liste des suppressions et des blocages qui portent sur du contenu caché aux administrateurs.
 Voir la [[Special:IPBlockList|liste des adresses IP et utilisateurs bloqués]] pour la liste des bannissements et des blocages actuellement opérationnels.',
+
+# Revision move
+'moverevlogentry'              => 'a déplacé {{PLURAL:$3|une révision|$3 révisions}} de $1 à $2',
+'revisionmove'                 => 'Déplacer des révisions depuis « $1 »',
+'revmove-explain'              => "Les révisions suivantes seront déplacés de $1 vers la page cible spécifiée. Si la cible n'existe pas, elle sera créée, sinon ces révisions seront fusionnées avec l'historique de la page.",
+'revmove-legend'               => 'Entrez la page cible et la raison',
+'revmove-submit'               => 'Déplacer les révisions vers la page sélectionnée',
+'revisionmoveselectedversions' => 'Déplacer les révisions sélectionnées',
+'revmove-reasonfield'          => 'Motif :',
+'revmove-titlefield'           => 'Page cible :',
+'revmove-badparam-title'       => 'Mauvais paramètres',
+'revmove-badparam'             => '<span class="error">Votre requête contient des paramètres insuffisants ou illégaux. Veuillez cliquer sur « précédent » et essayez à nouveau.</span>',
+'revmove-norevisions-title'    => 'Révision cible invalide',
+'revmove-norevisions'          => '<span class="error">Vous n\'avez pas spécifié un ou plusieurs révisions cibles pour effectuer cette fonctionnalité ou la révision spécifiée n\'existe pas.</span>',
+'revmove-nullmove-title'       => 'Mauvais titre',
+'revmove-nullmove'             => '<span class="error">Les pages source et cible sont identiques. Veuillez cliquer sur « précédent » et entrez un nom de page différent de « $1 ».</span>',
+'revmove-success-existing'     => '{{PLURAL:$1|Une révision de [[$2]] a été déplacée|$1 révisions de [[$2]] ont été déplacées}} vers la page existante [[$3]].',
+'revmove-success-created'      => '{{PLURAL:$1|Une révision de [[$2]] a été déplacée|$1 révisions de [[$2]] ont été déplacées}} vers la page [[$3]] nouvellement créée.',
 
 # History merging
 'mergehistory'                     => 'Fusionner les historiques des pages',
@@ -1504,9 +1522,9 @@ Vous pouvez également décider de laisser les autres vous contacter via votre p
 'right-protect'               => 'Modifier le niveau de protection des pages et modifier les pages protégées',
 'right-editprotected'         => 'Modifier les pages protégées (sans protection en cascade)',
 'right-editinterface'         => 'Modifier l’interface utilisateur',
-'right-editusercssjs'         => 'Modifier les fichiers CSS et JS d’autres utilisateurs',
+'right-editusercssjs'         => 'Modifier les fichiers CSS et JavaScript d’autres utilisateurs',
 'right-editusercss'           => 'Modifier les fichiers CSS d’autres utilisateurs',
-'right-edituserjs'            => 'Modifier les fichiers JS d’autres utilisateurs',
+'right-edituserjs'            => 'Modifier les fichiers JavaScript d’autres utilisateurs',
 'right-rollback'              => 'Révoquer rapidement les modifications du dernier contributeur d’une page particulière',
 'right-markbotedits'          => 'Marquer des modifications révoquées comme ayant été faites par un robot.',
 'right-noratelimit'           => 'Ne pas être affecté par les limites de taux',
@@ -1523,8 +1541,8 @@ Vous pouvez également décider de laisser les autres vous contacter via votre p
 'right-siteadmin'             => 'Verrouiller ou déverrouiller la base de données',
 'right-reset-passwords'       => 'Changer le mot de passe d’autres utilisateurs',
 'right-override-export-depth' => 'Exporter les pages en incluant les pages liées jusqu’à une profondeur de 5 niveaux',
-'right-versiondetail'         => 'Voir les informations étendues sur les versions des logiciels',
 'right-sendemail'             => 'Envoyer un courriel aux autres utilisateurs',
+'right-revisionmove'          => 'Déplacer des révisions',
 
 # User rights log
 'rightslog'      => 'Journal des modifications de droits d’utilisateurs',
@@ -1567,6 +1585,7 @@ Vous pouvez également décider de laisser les autres vous contacter via votre p
 'action-userrights'           => 'modifier tous les droits d’utilisateur',
 'action-userrights-interwiki' => 'modifier les droits des utilisateurs sur d’autres wikis',
 'action-siteadmin'            => 'verrouiller ou déverrouiller la base de données',
+'action-revisionmove'         => 'déplacer des révisions',
 
 # Recent changes
 'nchanges'                          => '$1 modification{{PLURAL:$1||s}}',
@@ -2270,7 +2289,10 @@ La dernière modification de la page a été effectuée par [[User:$3|$3]] ([[Us
 'revertpage-nouser' => 'Révocation des modifications par (nom d’utilisateur supprimé) à la dernière version par [[User:$1|$1]]',
 'rollback-success'  => 'Révocation des modifications effectuées par $1 ;
 rétablissement de la dernière version par $2.',
-'sessionfailure'    => 'Votre session de connexion semble avoir des problèmes ;
+
+# Edit tokens
+'sessionfailure-title' => 'Erreur de session',
+'sessionfailure'       => 'Votre session de connexion semble avoir des problèmes ;
 cette action a été annulée en prévention d’un piratage de session.
 Veuillez cliquer sur « Précédent », rechargez la page d’où vous venez, puis réessayez.',
 
