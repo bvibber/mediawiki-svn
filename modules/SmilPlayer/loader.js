@@ -8,6 +8,7 @@ mw.addClassFilePaths( {
 	"mw.Smil" : "mw.Smil.js",
 	"mw.SmilLayout" : "mw.SmilLayout.js",
 	"mw.SmilBody" : "mw.SmilBody.js",
+	"mw.SmilBuffer" : "mw.SmilBuffer.js",
 	
 	"mw.EmbedPlayerSmil" : "mw.EmbedPlayerSmil.js"
 } );
@@ -20,6 +21,7 @@ $j( mw ).bind( 'LoaderEmbedPlayerUpdateRequest', function( event, playerElement,
 		"mw.Smil",
 		"mw.SmilLayout",
 		"mw.SmilBody",
+		"mw.SmilBuffer",
 		"mw.EmbedPlayerSmil"
 	]; 
 		

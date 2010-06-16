@@ -78,7 +78,7 @@ mw.SwarmTransport = {
 		
 		mw.log( 'SwarmTransport:: lookup torrent url: ' + mw.getConfig( 'SwarmTransport.torrentLookupUrl' ) );
 		// Setup function to run in context based on callback result
-		$j.getJSON( 
+		$j.getJSON(
 			mw.getConfig( 'SwarmTransport.torrentLookupUrl' ) + '?jsonp=?', 
 			torrentLookupRequest, 
 			function( data ){

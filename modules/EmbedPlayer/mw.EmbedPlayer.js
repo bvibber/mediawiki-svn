@@ -1707,7 +1707,8 @@ mw.EmbedPlayer.prototype = {
 		
 		// Load the selected player		
 		this.selectedPlayer.load( function() {
-			mw.log( _this.selectedPlayer.library + " player loaded for " + _this.id );
+			mw.log( 'EmbedPlayer:: ' + _this.selectedPlayer.library + " player loaded for " + _this.id );
+			
 			// Get embed library player Interface
 			var playerInterface = mw[ 'EmbedPlayer' + _this.selectedPlayer.library  ];			
 			
@@ -1716,13 +1717,15 @@ mw.EmbedPlayer.prototype = {
 					_this['parent_' + method] = _this[method];
 				}
 				_this[ method ] = playerInterface[method];
-			}											
+			}				
+										
 			// Update feature support 
 			_this.updateFeatureSupport();
 			
 			_this.getDuration();
+			
 			_this.showPlayer();
-			// Call the global player mannager to inform this video interface is 100% ready: 
+			// Call the global player manager to inform this video interface is ready: 
 			mw.playerManager.playerReady( _this );
 			
 			// Run the callback if provided
@@ -1977,7 +1980,7 @@ mw.EmbedPlayer.prototype = {
 	* Show the player
 	*/
 	showPlayer : function () {	
-		mw.log( 'Show player: ' + this.id );	
+		mw.log( 'EmbedPlayer:: Show player: ' + this.id );	
 		var _this = this;
 		// Set-up the local controlBuilder instance: 
 		this.controlBuilder = new mw.PlayerControlBuilder( this );		
