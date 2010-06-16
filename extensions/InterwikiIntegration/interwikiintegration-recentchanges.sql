@@ -1,7 +1,7 @@
 BEGIN;
 
 --
--- Primarily a summary table for Special:Recentchanges,
+-- Primarily a summary table for Special:InterwikiRecentchanges,
 -- this table contains some additional info on edits from
 -- the last few days, see Article::editUpdates()
 --
