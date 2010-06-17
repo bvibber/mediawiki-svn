@@ -17,13 +17,13 @@ class VectorHooks {
 			array( 'src' => 'Modules/ExpandableSearch/ExpandableSearch.js', 'version' => 5 ),
 			array( 'src' => 'Modules/EditWarning/EditWarning.js', 'version' => 8 ),
 			array( 'src' => 'Modules/FooterCleanup/FooterCleanup.js', 'version' => 5 ),
-			array( 'src' => 'Modules/SimpleSearch/SimpleSearch.js', 'version' => 17 ),
+			array( 'src' => 'Modules/SimpleSearch/SimpleSearch.js', 'version' => 18 ),
 		),
 		'combined' => array(
-			array( 'src' => 'Vector.combined.js', 'version' => 54 ),
+			array( 'src' => 'Vector.combined.js', 'version' => 55 ),
 		),
 		'minified' => array(
-			array( 'src' => 'Vector.combined.min.js', 'version' => 55 ),
+			array( 'src' => 'Vector.combined.min.js', 'version' => 56 ),
 		),
 	);
 	static $modules = array(
@@ -71,7 +71,20 @@ class VectorHooks {
 		'footercleanup' => array(
 		),
 		'simplesearch' => array(
-			'i18n' => 'WikiEditorToc',
+			'preferences' => array(
+				'enable' => array(
+					'key' => 'vector-simplesearch',
+					'ui' => array(
+						'type' => 'toggle',
+						'label-message' => 'vector-simplesearch-preference',
+						'section' => 'searchoptions/display'
+					),
+				),
+				'disablesuggest' => array(
+					'key' => 'disablesuggest',
+				),
+			),
+			'i18n' => 'VectorSimpleSearch',
 			'messages' => array(
 				'vector-simplesearch-search',
 				'vector-simplesearch-containing',
@@ -167,7 +180,7 @@ class VectorHooks {
 					isset( self::$modules[$module]['preferences'] ) ) {
 				wfLoadExtensionMessages( self::$modules[$module]['i18n'] );
 				foreach ( self::$modules[$module]['preferences'] as $key => $preference ) {
-					if ( $key == 'enable' && !$enable['user'] ) {
+					if ( ( $key == 'enable' && !$enable['user'] ) || !isset( $preference['ui'] ) ) {
 						continue;
 					}
 					
