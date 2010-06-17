@@ -1,14 +1,18 @@
 package de.brightbyte.wikiword.geography.wikis;
 
 import java.util.Set;
+import java.util.regex.Pattern;
 
 import de.brightbyte.wikiword.ConceptType;
 import de.brightbyte.wikiword.analyzer.AnalyzerUtils;
 import de.brightbyte.wikiword.analyzer.WikiConfiguration;
 import de.brightbyte.wikiword.analyzer.WikiPage;
+import de.brightbyte.wikiword.analyzer.extractor.SensoricPropertyExtractor;
 import de.brightbyte.wikiword.analyzer.extractor.TemplateParameterExtractor;
 import de.brightbyte.wikiword.analyzer.matcher.PatternNameMatcher;
+import de.brightbyte.wikiword.analyzer.sensor.HasCategoryLikeSensor;
 import de.brightbyte.wikiword.analyzer.sensor.HasPropertySensor;
+import de.brightbyte.wikiword.analyzer.sensor.HasTemplateLikeSensor;
 import de.brightbyte.wikiword.analyzer.template.DefaultTemplateParameterPropertySpec;
 import de.brightbyte.wikiword.analyzer.template.TemplateData;
 import de.brightbyte.wikiword.analyzer.template.TemplateParameterPropertySpec;
@@ -150,8 +154,11 @@ public class WikiConfiguration_enwiki extends WikiConfiguration {
 				new Positional2CoordinatePropertySpec( "coordinates")
 		) );
 		
+		propertyExtractors.add( new TemplateParameterExtractor(new PatternNameMatcher("(Geobox|Infobox_(.*_)?([Ss]ettlement|[Cc]ountry|[Ss]tate|[Ll]ocation|[Cc]ounty|[Ll]ake)|.*_constituency_infobox)", 0, true),
+				new DefaultTemplateParameterPropertySpec("name", "place-name").setStripMarkup(true)
+		) );
+		
 		propertyExtractors.add( new TemplateParameterExtractor(new PatternNameMatcher("(Infobox_.*|.*box)", 0, true),
-				new DefaultTemplateParameterPropertySpec("name", "place-name").setStripMarkup(true),
 				new DefaultTemplateParameterPropertySpec("native_name", "place-name").setStripMarkup(true),
 				new DefaultTemplateParameterPropertySpec("common_name", "place-name").setStripMarkup(true),
 				new DefaultTemplateParameterPropertySpec("conventional_long_name", "place-name").setStripMarkup(true),
@@ -186,6 +193,11 @@ public class WikiConfiguration_enwiki extends WikiConfiguration {
 				new CoordinatePropertySpec( "coordinates", "lowest_lat_d", "lowest_lat_m", "lowest_lat_s", "lowest_lat_NS", "lowest_long_d", "lowest_long_m", "lowest_long_s", "lowest_long_EW"),
 				new CoordinatePropertySpec( "coordinates", "source_lat_d", "source_lat_m", "source_lat_s", "source_lat_NS", "source_long_d", "source_long_m", "source_long_s", "source_long_EW"),
 				new CoordinatePropertySpec( "coordinates", "mouth_lat_d", "mouth_lat_m", "mouth_lat_s", "mouth_lat_NS", "mouth_long_d", "mouth_long_m", "mouth_long_s", "mouth_long_EW")
+		) );
+		
+		propertyExtractors.add( new SensoricPropertyExtractor("is-a", 
+				new HasCategoryLikeSensor<String>("historic-place", "^(Former|Medival|Historic(al)?)_(countries|emirates|sites|regions|places|kingdoms|cities|territories|states|empires).*|.*_disestablishments$",Pattern.CASE_INSENSITIVE),
+				new HasTemplateLikeSensor<String>("historic-place", "Infobox_([Ff]ormer|[Mm]edival|[Hh]istoric(al)?)_(country|emirate|site|region|place|kingdom|city|territory|state|empire|subdivision)", Pattern.CASE_INSENSITIVE, true)
 		) );
 		
 		conceptTypeSensors.add( new HasPropertySensor<ConceptType>(ConceptType.PLACE, "area") );
