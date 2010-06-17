@@ -2,7 +2,7 @@
 * Loader for smilPlayer
 */
 
-mw.addClassFilePaths( {
+mw.addResourcePaths( {
 	"mw.SmilHooks" : "mw.SmilHooks.js",
 	
 	"mw.Smil" : "mw.Smil.js",

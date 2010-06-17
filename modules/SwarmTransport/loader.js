@@ -7,7 +7,7 @@
 */
 ( function( mw ) {
 	
-	mw.addClassFilePaths( {
+	mw.addResourcePaths( {
 		"mw.SwarmTransport" : "mw.SwarmTransport.js" 
 	});
 

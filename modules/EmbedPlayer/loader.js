@@ -68,7 +68,7 @@
 	} );
 
 	// Add class file paths 
-	mw.addClassFilePaths( {
+	mw.addResourcePaths( {
 		"mw.EmbedPlayer"	: "mw.EmbedPlayer.js",
 		
 		"mw.EmbedPlayerKplayer"	: "mw.EmbedPlayerKplayer.js",

@@ -56,7 +56,7 @@ if( typeof preMwEmbedConfig == 'undefined') {
 	// Local scope configuration var:
 	if( !mwConfig ){
 		var mwConfig = { };
-	}	
+	}
 	
 	// Local scope mwUserConfig var. Stores user configuration 
 	var mwUserConfig = { };
@@ -277,7 +277,7 @@ if( typeof preMwEmbedConfig == 'undefined') {
 		* 		code needed to check config and load the module dependencies
 		*
 		*	{String} Name of a class to loaded. 
-		* 		Classes are added via addClassFilePaths function
+		* 		Classes are added via addResourcePaths function
 		*		Using defined class names avoids loading the same class
 		*		twice by first checking if the "class variable" is defined
 		*	
@@ -635,7 +635,7 @@ if( typeof preMwEmbedConfig == 'undefined') {
 		*  classSet must be strict JSON to allow the 
 		*  php scriptLoader to parse the file paths.  
 	 	*/
-	 	addClassFilePaths: function( classSet ) {
+	 	addResourcePaths: function( classSet ) {
 	 		var prefix = ( mw.getConfig( 'loaderContext' ) )?
 	 			mw.getConfig( 'loaderContext' ): '';
 	 		
@@ -737,8 +737,8 @@ if( typeof preMwEmbedConfig == 'undefined') {
 	/**
 	* Add Class File Paths entry point:  
 	*/
-	mw.addClassFilePaths = function ( classSet ) {	
-		return mw.loader.addClassFilePaths( classSet );
+	mw.addResourcePaths = function ( classSet ) {	
+		return mw.loader.addResourcePaths( classSet );
 	}
 	
 	mw.addClassStyleDependency = function ( classSet ) {
@@ -1521,8 +1521,8 @@ if( typeof preMwEmbedConfig == 'undefined') {
 				'href' : url
 			} )
 		);
-		// Precently no easy way to check css "onLoad" attribute 
-		// In genneral sheets are loaded via script-loader. 
+		// No easy way to check css "onLoad" attribute 
+		// In production sheets are loaded via script-loader and fire the onDone function call.  
 		if( callback ) {
 			callback();
 		}
@@ -1575,14 +1575,14 @@ if( typeof preMwEmbedConfig == 'undefined') {
 		}
 		
 		// Check for scriptLoader include of mwEmbed: 
-		if ( src.indexOf( 'mwScriptLoader.php' ) !== -1 ) {
+		if ( src.indexOf( 'mwResourceLoader.php' ) !== -1 ) {
 			// Script loader is in the root of MediaWiki, Include the default mwEmbed extension path:
-			mwpath =  src.substr( 0, src.indexOf( 'mwScriptLoader.php' ) ) + mw.getConfig( 'mediaWikiEmbedPath' );						
+			mwpath =  src.substr( 0, src.indexOf( 'mwResourceLoader.php' ) ) + mw.getConfig( 'mediaWikiEmbedPath' );						
 		}
 		
-		// Script-loader has jsScriptLoader name when local:
-		if( src.indexOf( 'jsScriptLoader.php' ) !== -1 ) {
-			mwpath = src.substr( 0, src.indexOf( 'jsScriptLoader.php' ) );			
+		// Script-loader has ResourceLoader name when local:
+		if( src.indexOf( 'ResourceLoader.php' ) !== -1 ) {
+			mwpath = src.substr( 0, src.indexOf( 'ResourceLoader.php' ) );			
 		}	
 		
 		// For static packages mwEmbed packages start with: "mwEmbed-"
@@ -1610,8 +1610,8 @@ if( typeof preMwEmbedConfig == 'undefined') {
 	*/
 	mw.getScriptLoaderPath = function( ) {		
 		var src = mw.getMwEmbedSrc();
-		if ( src.indexOf( 'mwScriptLoader.php' ) !== -1  ||
-			src.indexOf( 'jsScriptLoader.php' ) !== -1 )
+		if ( src.indexOf( 'mwResourceLoader.php' ) !== -1  ||
+			src.indexOf( 'ResourceLoader.php' ) !== -1 )
 		{
 			// Return just the script part of the url
 			return src.split('?')[0];						
@@ -1718,7 +1718,7 @@ if( typeof preMwEmbedConfig == 'undefined') {
 					( src.indexOf( 'mwEmbed.js' ) !== -1 &&  src.indexOf( 'MediaWiki:Gadget') == -1 )
 				 	|| // Check for script-loader				 	
 				 	( 
-				 		( src.indexOf( 'mwScriptLoader.php' ) !== -1 || src.indexOf( 'jsScriptLoader.php' ) !== -1 )
+				 		( src.indexOf( 'mwResourceLoader.php' ) !== -1 || src.indexOf( 'ResourceLoader.php' ) !== -1 )
 						&& 
 						src.indexOf( 'mwEmbed' ) !== -1 
 					)
