@@ -175,8 +175,9 @@ public class WikiConfiguration_enwiki extends WikiConfiguration {
 		conceptTypeSensors.add( new HasCategoryLikeSensor<ConceptType>(ConceptType.PERSON, "^(Male|Female|People)_|_(people|men|women|births|deaths)$", 0));
 		conceptTypeSensors.add( new HasTemplateLikeSensor<ConceptType>(ConceptType.PERSON, "^(Persondata|Lifetime|BD|BIRTH-DEATH-SORT|Infobox.*_(person|[aA]rtist|creator|writer|musician|biography|clergy|scientist))$", 0));
 		
-		conceptTypeSensors.add( new HasCategorySensor<ConceptType>(ConceptType.NAME, "Given_names"));
-		conceptTypeSensors.add( new HasCategorySensor<ConceptType>(ConceptType.NAME, "Surnames"));
+		conceptTypeSensors.add( new HasCategoryLikeSensor<ConceptType>(ConceptType.NAME, "(^G|_g)iven_names$", 0));
+		conceptTypeSensors.add( new HasCategoryLikeSensor<ConceptType>(ConceptType.NAME, "(^S|_s)urnames$", 0));
+		conceptTypeSensors.add( new HasTemplateLikeSensor<ConceptType>(ConceptType.NAME, "Infobox_.*_name$", 0));
 		conceptTypeSensors.add( new TitleSensor<ConceptType>(ConceptType.NAME, ".*\\(name\\)", 0));
 
 		conceptTypeSensors.add( new HasCategorySensor<ConceptType>(ConceptType.TIME, "Centuries"));
