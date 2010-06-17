@@ -31,7 +31,7 @@ public class CachingFeatureFetcher<C extends WikiWordConcept, K> implements Feat
 		ConceptFeatures<C, K> f = cache.get(c.getId());
 		if (f!=null) return f;
 		
-		f = fetcher.getFeatures(c);
+		f = (ConceptFeatures<C, K>)fetcher.getFeatures(c); 
 		cache.put(c.getId(), f);
 		
 		return f;

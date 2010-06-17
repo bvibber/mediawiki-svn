@@ -7,7 +7,6 @@ import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.Corpus;
 import de.brightbyte.wikiword.model.GlobalConcept;
 import de.brightbyte.wikiword.model.LocalConcept;
-import de.brightbyte.wikiword.store.WikiWordConceptStore.ConceptQuerySpec;
 
 
 /**
@@ -15,10 +14,7 @@ import de.brightbyte.wikiword.store.WikiWordConceptStore.ConceptQuerySpec;
  */
 public interface GlobalConceptStore extends WikiWordConceptStore<GlobalConcept> {
 
-	//TODO: relevance limit? order?
 	public DataSet<GlobalConcept> getMeanings(String lang, String term, ConceptQuerySpec spec) throws PersistenceException;
-
-	public DataSet<GlobalConcept> getMeanings(String term, ConceptQuerySpec spec) throws PersistenceException;
 	
 	//public abstract ResultSet queryTermRefersTo() throws PersistenceException;
 	

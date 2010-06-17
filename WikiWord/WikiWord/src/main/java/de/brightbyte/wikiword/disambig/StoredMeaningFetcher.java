@@ -8,40 +8,40 @@ import java.util.Map;
 import de.brightbyte.data.cursor.DataSet;
 import de.brightbyte.io.Output;
 import de.brightbyte.util.PersistenceException;
-import de.brightbyte.wikiword.model.LocalConcept;
+import de.brightbyte.wikiword.model.WikiWordConcept;
 import de.brightbyte.wikiword.model.TermReference;
-import de.brightbyte.wikiword.store.LocalConceptStore;
+import de.brightbyte.wikiword.store.WikiWordConceptStore;
 import de.brightbyte.wikiword.store.WikiWordConceptStore.ConceptQuerySpec;
 
-public class StoredMeaningFetcher implements MeaningFetcher<LocalConcept> {
-	protected LocalConceptStore  store; 
+public class StoredMeaningFetcher implements MeaningFetcher<WikiWordConcept> {
+	protected WikiWordConceptStore  store; 
 	protected ConceptQuerySpec spec;
 	protected Output trace;
 	
-	public StoredMeaningFetcher(LocalConceptStore  store) {
+	public StoredMeaningFetcher(WikiWordConceptStore  store) {
 		this(store, null);
 	}
 	
-	public StoredMeaningFetcher(LocalConceptStore  store, ConceptQuerySpec type) {
+	public StoredMeaningFetcher(WikiWordConceptStore  store, ConceptQuerySpec type) {
 		if (store==null) throw new NullPointerException();
 		
 		this.store = store;
 		this.spec = type;
 	}
 
-	public List<LocalConcept> getMeanings(String term) throws PersistenceException {
-		DataSet<LocalConcept> m = store.getMeanings(term, spec); //FIXME: filter/cut-off rules, sort order! //XXX: relevance value?
-		List<LocalConcept> meanigns = m.load();
+	public List<WikiWordConcept> getMeanings(String term) throws PersistenceException {
+		DataSet<WikiWordConcept> m = store.getMeanings(term, spec); //FIXME: filter/cut-off rules, sort order! //XXX: relevance value?
+		List<WikiWordConcept> meanigns = m.load();
 		
 		trace("fetched "+meanigns.size()+" meanings for \""+term+"\""); 
 		return meanigns;
 	}
 
-	public <X extends TermReference> Map<X, List<? extends LocalConcept>> getMeanings(Collection<X> terms) throws PersistenceException {
-		Map<X, List<? extends LocalConcept>> meanings = new HashMap<X, List<? extends LocalConcept>>();
+	public <X extends TermReference> Map<X, List<WikiWordConcept>> getMeanings(Collection<X> terms) throws PersistenceException {
+		Map<X, List<WikiWordConcept>> meanings = new HashMap<X, List<WikiWordConcept>>();
 		
 	   for (X t: terms) {
-		   List<LocalConcept> m = getMeanings(t.getTerm());
+		   List<WikiWordConcept> m = getMeanings(t.getTerm());
 		   if (m!=null && m.size()>0) meanings.put(t, m);
 	   }
 	   

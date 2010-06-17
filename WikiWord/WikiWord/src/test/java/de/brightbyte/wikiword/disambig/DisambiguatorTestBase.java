@@ -28,10 +28,11 @@ import de.brightbyte.wikiword.model.LocalConcept;
 import de.brightbyte.wikiword.model.PhraseOccurance;
 import de.brightbyte.wikiword.model.PhraseOccuranceSet;
 import de.brightbyte.wikiword.model.TermReference;
+import de.brightbyte.wikiword.model.WikiWordConcept;
 
 public class DisambiguatorTestBase extends TestCase {
 
-	protected Map<String, List<? extends LocalConcept>> meanings = new HashMap<String, List<? extends LocalConcept>>();
+	protected Map<String, List<LocalConcept>> meanings = new HashMap<String, List<LocalConcept>>();
 	protected Map<Integer, ConceptFeatures<LocalConcept, Integer>> features = new HashMap<Integer, ConceptFeatures<LocalConcept, Integer>>();
 	protected Map<Integer, LocalConcept> conceptsById = new HashMap<Integer, LocalConcept>();
 	protected Map<String, LocalConcept> conceptsByName = new HashMap<String, LocalConcept>();
@@ -48,7 +49,7 @@ public class DisambiguatorTestBase extends TestCase {
 		return new GroupingCursor<List<String>, String>(c, new ListAbstractor.Accessor<String>(groupBy));
 	}
 	
-	protected static void readMeanings(Corpus corpus, InputStream in, Map<String, List<? extends LocalConcept>> meanings) throws IOException, PersistenceException {
+	protected static void readMeanings(Corpus corpus, InputStream in, Map<String, List<LocalConcept>> meanings) throws IOException, PersistenceException {
 		DataCursor<List<List<String>>> cursor = openGroupedTableCursor(in, "UTF-8", 0, true);
 		
 		List<List<String>> group;
@@ -112,19 +113,19 @@ public class DisambiguatorTestBase extends TestCase {
 	
 	protected MeaningFetcher<LocalConcept> meaningFetcher = new MeaningFetcher<LocalConcept>() {
 	
-		public <X extends TermReference> Map<X, List<? extends LocalConcept>> getMeanings(
+		public <X extends TermReference> Map<X, List<LocalConcept>> getMeanings(
 				Collection<X> terms) throws PersistenceException {
-			Map<X, List<? extends LocalConcept>> m = new HashMap<X, List<? extends LocalConcept>>();
+			Map<X, List<LocalConcept>> m = new HashMap<X, List<LocalConcept>>();
 			
 			for (X t: terms) {
-				List<? extends LocalConcept> n = getMeanings(t.getTerm());
+				List<LocalConcept> n = getMeanings(t.getTerm());
 				if (n!=null) m.put(t, n);
 			}
 			
 			return m;
 		}
 	
-		public List<? extends LocalConcept> getMeanings(String term)
+		public List<LocalConcept> getMeanings(String term)
 				throws PersistenceException {
 			return meanings.get(term);
 		}
@@ -194,11 +195,11 @@ public class DisambiguatorTestBase extends TestCase {
 		return c;
 	}
 
-	protected <X extends TermReference>Map<X, List<? extends LocalConcept>> getMeanings(Collection<List<X>> sequences) throws PersistenceException {
-		Map<X, List<? extends LocalConcept>> m = new HashMap<X, List<? extends LocalConcept>>();
+	protected <X extends TermReference>Map<X, List<LocalConcept>> getMeanings(Collection<List<X>> sequences) throws PersistenceException {
+		Map<X, List<LocalConcept>> m = new HashMap<X, List<LocalConcept>>();
 		
 		for (List<X> seq: sequences) {
-			Map<X, List<? extends LocalConcept>> meanings = meaningFetcher.getMeanings(seq);
+			Map<X, List<LocalConcept>> meanings = meaningFetcher.getMeanings(seq);
 			m.putAll(meanings);
 		}
 		

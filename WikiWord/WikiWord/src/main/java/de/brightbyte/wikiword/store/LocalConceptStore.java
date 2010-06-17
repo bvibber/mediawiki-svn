@@ -12,8 +12,6 @@ import de.brightbyte.wikiword.model.TermReference;
  */
 public interface LocalConceptStore extends WikiWordConceptStore<LocalConcept>, WikiWordLocalStore {
 	
-	public abstract DataSet<LocalConcept> getMeanings(String term, ConceptQuerySpec spec) throws PersistenceException;
-	
 	public int getNumberOfTerms() throws PersistenceException;
 
 	public abstract DataSet<TermMeaning> getAllTerms() throws PersistenceException;

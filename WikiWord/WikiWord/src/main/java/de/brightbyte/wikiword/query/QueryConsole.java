@@ -480,7 +480,7 @@ public class QueryConsole extends ConsoleApp<WikiWordConceptStore> {
 	}		
 	
 	public void listMeaningsLocal(String term, ConsoleOutput out) throws PersistenceException {
-		DataSet<LocalConcept> meanings = getLocalConceptStore().getMeanings(term, resolvedConceptSpec);
+		DataSet<? extends WikiWordConcept> meanings = getLocalConceptStore().getMeanings(term, resolvedConceptSpec);
 		out.writeConcepts(meanings);
 	}		
 

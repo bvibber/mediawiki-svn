@@ -11,7 +11,7 @@ import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.ConceptType;
 import de.brightbyte.wikiword.DatasetIdentifier;
 
-public abstract class WikiWordConcept {
+public class WikiWordConcept {
 	public static class ByName implements Comparator<WikiWordConcept> {
 		protected Collator collator;
 		

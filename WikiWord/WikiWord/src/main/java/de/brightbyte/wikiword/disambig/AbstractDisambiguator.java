@@ -15,20 +15,20 @@ import de.brightbyte.wikiword.model.WikiWordConcept;
 
 public abstract class AbstractDisambiguator<T extends TermReference, C extends WikiWordConcept> implements Disambiguator<T, C> {
 
-	private MeaningFetcher<C> meaningFetcher;
+	private MeaningFetcher<? extends C> meaningFetcher;
 	
 	private Output trace;
 
 	private Map<String, C> meaningOverrides;
 	
-	public AbstractDisambiguator(MeaningFetcher<C> meaningFetcher, int cacheCapacity) {
+	public AbstractDisambiguator(MeaningFetcher<? extends C> meaningFetcher, int cacheCapacity) {
 		if (meaningFetcher==null) throw new NullPointerException();
 		
 		if (cacheCapacity>0) meaningFetcher = new CachingMeaningFetcher<C>(meaningFetcher, cacheCapacity);
 		this.meaningFetcher = meaningFetcher;
 	}
 	
-	public MeaningFetcher<C> getMeaningFetcher() {
+	public MeaningFetcher<? extends C> getMeaningFetcher() {
 		return meaningFetcher;
 	}
 
@@ -100,7 +100,7 @@ public abstract class AbstractDisambiguator<T extends TermReference, C extends W
 			}
 		}
 		
-		Map<X, List<? extends C>> meanings = meaningFetcher.getMeanings(todo);
+		Map<X, List<? extends C>> meanings = (Map<X, List<? extends C>>)(Object)meaningFetcher.getMeanings(todo); //FIXME: got confused by generics :(
 		
 		if (meaningOverrides!=null && todo.size()!=terms.size()) {
 			for (X t: terms) {

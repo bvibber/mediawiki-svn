@@ -10,36 +10,35 @@ import de.brightbyte.data.Functor;
 import de.brightbyte.data.Functor2;
 import de.brightbyte.data.measure.Measure;
 import de.brightbyte.data.measure.Measure.Comparator;
-import de.brightbyte.wikiword.model.LocalConcept;
 import de.brightbyte.wikiword.model.PhraseNode;
 import de.brightbyte.wikiword.model.TermReference;
 import de.brightbyte.wikiword.model.WikiWordConcept;
 
-public class PopularityDisambiguator extends AbstractDisambiguator<TermReference, LocalConcept> {
+public class PopularityDisambiguator<T extends TermReference, C extends WikiWordConcept> extends AbstractDisambiguator<T, C> {
 	
-	protected Measure<WikiWordConcept> popularityMeasure;
-	protected Comparator<LocalConcept> popularityComparator;
+	protected Measure<? super C> popularityMeasure;
+	protected Comparator<? super C> popularityComparator;
 	
 	protected Functor.Double weightBooster = SquareBooster.instance; 
 	protected Functor2.Double weigthCombiner = new ProductCombiner(); //NOTE: pop and weight are not in the same scale.
 	
-	public PopularityDisambiguator(MeaningFetcher<LocalConcept> meaningFetcher, int cacheCapacity) {
+	public PopularityDisambiguator(MeaningFetcher<C> meaningFetcher, int cacheCapacity) {
 		this(meaningFetcher, cacheCapacity, WikiWordConcept.theCardinality);
 	}
 	
-	public PopularityDisambiguator(MeaningFetcher<LocalConcept> meaningFetcher, int cacheCapacity, Measure<WikiWordConcept> popularityMeasure) {
+	public PopularityDisambiguator(MeaningFetcher<C> meaningFetcher, int cacheCapacity, Measure<? super C> popularityMeasure) {
 		super(meaningFetcher, cacheCapacity);
 		
 		this.setPopularityMeasure(popularityMeasure);
 	}
 
-	public Measure<WikiWordConcept> getPopularityMeasure() {
+	public Measure<? super C> getPopularityMeasure() {
 		return popularityMeasure;
 	}
 
-	public void setPopularityMeasure(Measure<WikiWordConcept> popularityMeasure) {
+	public void setPopularityMeasure(Measure<? super C> popularityMeasure) {
 		this.popularityMeasure = popularityMeasure;
-		this.popularityComparator = new Measure.Comparator<LocalConcept>(popularityMeasure, true);
+		this.popularityComparator = new Measure.Comparator<C>(popularityMeasure, true);
 	}
 
 	public void setWeightCombiner(Functor2.Double weightCombiner) {
@@ -62,16 +61,16 @@ public class PopularityDisambiguator extends AbstractDisambiguator<TermReference
 		this.weigthCombiner = weigthCombiner;
 	}
 
-	public <X extends TermReference>Disambiguation<X, LocalConcept> disambiguate(PhraseNode<X> root, Map<X, List<? extends LocalConcept>> meanings, Collection<? extends LocalConcept> context) {
+	public <X extends T>Disambiguation<X, C> disambiguate(PhraseNode<X> root, Map<X, List<? extends C>> meanings, Collection<? extends C> context) {
 		Collection<List<X>> sequences = getSequences(root, Integer.MAX_VALUE);
 		return disambiguate(sequences, root, meanings, context);
 	}
 	
-	public <X extends TermReference>Disambiguation<X, LocalConcept> disambiguate(Collection<List<X>> sequences, PhraseNode<X> root, Map<X, List<? extends LocalConcept>> meanings, Collection<? extends LocalConcept> context) {
-		Disambiguation<X, LocalConcept> best = null;
+	public <X extends T>Disambiguation<X, C> disambiguate(Collection<List<X>> sequences, PhraseNode<X> root, Map<X, List<? extends C>> meanings, Collection<? extends C> context) {
+		Disambiguation<X, C> best = null;
 		
 		for (List<X> sequence: sequences) {
-			Disambiguation<X, LocalConcept> r = disambiguate(sequence, meanings, context);
+			Disambiguation<X, C> r = disambiguate(sequence, meanings, context);
 			trace(r.toString());
 			if (best == null || best.getScore() < r.getScore()) {
 				best = r;
@@ -82,20 +81,20 @@ public class PopularityDisambiguator extends AbstractDisambiguator<TermReference
 		return best;
 	}
 	
-	public <X extends TermReference>Disambiguation<X, LocalConcept> disambiguate(List<X> sequence, Map<X, List<? extends LocalConcept>> meanings, Collection<? extends LocalConcept> context) {
-		if (sequence.isEmpty() || meanings.isEmpty()) return new Disambiguator.Disambiguation<X, LocalConcept>(Collections.<X, LocalConcept>emptyMap(), Collections.<X>emptyList(), 0.0, "no terms or meanings");
+	public <X extends T>Disambiguation<X, C> disambiguate(List<X> sequence, Map<X, List<? extends C>> meanings, Collection<? extends C> context) {
+		if (sequence.isEmpty() || meanings.isEmpty()) return new Disambiguator.Disambiguation<X, C>(Collections.<X, C>emptyMap(), Collections.<X>emptyList(), 0.0, "no terms or meanings");
 
-		Map<X, LocalConcept> disambig = new HashMap<X, LocalConcept>();
+		Map<X, C> disambig = new HashMap<X, C>();
 		double score = 0;
 		int totalPop = 0;
 		
 		for (X t: sequence) {
-			List<? extends LocalConcept> m = meanings.get(t);
+			List<? extends C> m = meanings.get(t);
 			if (m==null || m.size()==0) continue;
 			
 			if (m.size()>1) Collections.sort(m, popularityComparator);
 			
-			LocalConcept c = m.get(0);
+			C c = m.get(0);
 			disambig.put(t, c);
 
 			double pop = popularityMeasure.measure(c);
@@ -108,7 +107,7 @@ public class PopularityDisambiguator extends AbstractDisambiguator<TermReference
 
 		if (disambig.size()>0) score = score / sequence.size(); //NOTE: treat unknown terms as having pop = 0
 		
-		Disambiguation<X, LocalConcept> r = new Disambiguation<X, LocalConcept>(disambig, sequence, score, "score="+score+"; pop="+totalPop);
+		Disambiguation<X, C> r = new Disambiguation<X, C>(disambig, sequence, score, "score="+score+"; pop="+totalPop);
 		return r;
 	}
 

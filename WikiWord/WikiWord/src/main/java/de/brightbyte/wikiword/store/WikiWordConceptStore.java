@@ -3,13 +3,14 @@ package de.brightbyte.wikiword.store;
 import de.brightbyte.data.cursor.DataSet;
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.ConceptType;
-import de.brightbyte.wikiword.model.LocalConcept;
 import de.brightbyte.wikiword.model.WikiWordConcept;
 
 
 public interface WikiWordConceptStore<T extends WikiWordConcept> extends WikiWordConceptStoreBase {
 	
 	public static class ConceptQuerySpec {
+		//TODO: relevance limit, order, proper name types & preferred language
+		
 		private boolean includeRelations;
 		private boolean includeStatistics;
 		private boolean includeResource;
@@ -76,6 +77,8 @@ public interface WikiWordConceptStore<T extends WikiWordConcept> extends WikiWor
 
 	public DataSet<? extends T> getAllConcepts(ConceptQuerySpec spec) throws PersistenceException;
 	
+	public abstract DataSet<? extends WikiWordConcept> getMeanings(String term, ConceptQuerySpec spec) throws PersistenceException;
+		
 	public ConceptType getConceptType(int type) throws PersistenceException;
 	
 	public StatisticsStore getStatisticsStore() throws PersistenceException;

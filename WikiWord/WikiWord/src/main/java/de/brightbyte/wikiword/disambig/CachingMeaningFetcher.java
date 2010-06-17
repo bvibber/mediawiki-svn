@@ -15,18 +15,18 @@ import de.brightbyte.wikiword.model.WikiWordConcept;
 public class CachingMeaningFetcher<C extends WikiWordConcept>  implements MeaningFetcher<C> {
 
 	protected MeaningFetcher<? extends C> fetcher;
-	protected MRUHashMap<String, List<? extends C>> cache;
+	protected MRUHashMap<String, List<C>> cache;
 	
 	public CachingMeaningFetcher(MeaningFetcher<? extends C> fetcher, int capacity) {
 		this.fetcher = fetcher;
-		this.cache = new MRUHashMap<String, List<? extends C>>(capacity);
+		this.cache = new MRUHashMap<String, List<C>>(capacity);
 	}
 
-	public List<? extends C> getMeanings(String term) throws PersistenceException {
-		List<? extends C> meanings = cache.get(term); 
+	public List<C> getMeanings(String term) throws PersistenceException {
+		List<C> meanings = cache.get(term); 
 		
 		if (meanings==null) {
-			meanings = fetcher.getMeanings(term);
+			meanings = (List<C>)fetcher.getMeanings(term); //XXX: ugly cast :(
 			cache.put(term, meanings);
 		}
 		
@@ -34,12 +34,12 @@ public class CachingMeaningFetcher<C extends WikiWordConcept>  implements Meanin
 	}
 
 
-	public <X extends TermReference> Map<X, List<? extends C>> getMeanings(Collection<X> terms) throws PersistenceException {
-		Map<X, List<? extends C>> meanings= new HashMap<X, List<? extends C>>();
+	public <X extends TermReference> Map<X, List<C>> getMeanings(Collection<X> terms) throws PersistenceException {
+		Map<X, List<C>> meanings= new HashMap<X, List<C>>();
 		List<X> todo = new ArrayList<X>(terms.size());
 		
 		for (X t: terms) {
-				 List<? extends C> m = cache.get(t.getTerm());
+				 List<C> m = cache.get(t.getTerm());
 				if (m!=null) {
 					meanings.put(t, m);
 					cache.put(t.getTerm(), m);
@@ -50,11 +50,11 @@ public class CachingMeaningFetcher<C extends WikiWordConcept>  implements Meanin
 		}
 		
 		if (!todo.isEmpty()) {
-			Map<X, List<? extends C>> parentMeanings = (Map<X, List<? extends C>>)(Object)fetcher.getMeanings(todo); //XXX: ugly cast, generics are a pain
+			Map<X, List<C>> parentMeanings = (Map<X, List<C>>)(Object)fetcher.getMeanings(todo); //XXX: ugly cast, generics are a pain
 			meanings.putAll(parentMeanings);
 			
 			for (X t: todo) {
-					List<? extends C> m = parentMeanings.get(t);
+					List<C> m = parentMeanings.get(t);
 					if (m==null) m = Collections.emptyList();
 					cache.put(t.getTerm(), m);
 			}
