@@ -739,7 +739,7 @@ class SpecialRecordAdmin extends SpecialPage {
 		}
 
 		# Parse any brace structures
-		global $wgUser, $wgParser;
+		global $wgTitle, $wgUser, $wgParser;
 		$options = ParserOptions::newFromUser( $wgUser );
 		$max = 25;
 		do {
@@ -749,7 +749,7 @@ class SpecialRecordAdmin extends SpecialPage {
 			}
 			if ( $braces ) {
 				$part = substr( $this->form, $braces['OFFSET'], $braces['LENGTH'] );
-				$html = $wgParser->parse( $part, $this->title, $options, true, true )->getText();
+				$html = $wgParser->parse( $part, $wgTitle, $options, true, true )->getText();
 				$this->form = substr_replace( $this->form, $html, $braces['OFFSET'], $braces['LENGTH'] );
 			}
 		} while ( --$max > 0 && $braces );
