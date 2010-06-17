@@ -116,10 +116,11 @@ $messages['eo'] = array(
 /** Spanish (Español)
  * @author Crazymadlover
  * @author Diego Grez
+ * @author Drini
  * @author Manuelt15
  */
 $messages['es'] = array(
-	'vector-collapsiblenav-preference' => 'Activar el menú de navegación izquierda plegable en la máscara Vector',
+	'vector-collapsiblenav-preference' => 'Activar el menú de navegación izquierda plegable en la piel Vector',
 	'vector-collapsiblenav-more' => 'Más idiomas',
 );
 
@@ -266,7 +267,8 @@ $messages['ka'] = array(
  * @author Kwj2772
  */
 $messages['ko'] = array(
-	'vector-collapsiblenav-preference' => '왼쪽 사이드바 메뉴 접기를 활성화하기',
+	'vector-collapsiblenav-preference' => '왼쪽 사이드바 메뉴 접기',
+	'vector-collapsiblenav-more' => '기타 언어',
 );
 
 /** Luxembourgish (Lëtzebuergesch)

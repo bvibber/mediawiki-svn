@@ -71,6 +71,13 @@ $messages['es'] = array(
 	'addmediawizard-desc' => 'Asistente para agregar multimedia, desarrollado en colaboración por Kaltura y la Fundación Wikimedia',
 );
 
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'addmediawizard-desc' => 'Gehitu media magoa, Kaltura eta Wikipedia Fundazioak lankidetzan garatua',
+);
+
 /** Finnish (Suomi)
  * @author Str4nd
  */

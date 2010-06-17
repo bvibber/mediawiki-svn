@@ -106,16 +106,19 @@ $messages['br'] = array(
 $messages['de'] = array(
 	'datatransclusion-desc' => 'Ermöglicht den Import und die Darstellung von Datensätzen aus externen Datenquellen',
 	'datatransclusion-missing-source' => 'Es wurde keine Datenquelle angegeben.
-Das erste Argument ist erforderlich.',
+Ein zweites oder ein „Quell“-Argument ist erforderlich.',
 	'datatransclusion-unknown-source' => 'Es wurde eine mangelhafte Datenquelle angegeben.
-$1 ist nicht bekannt.',
+„$1“ ist nicht bekannt.',
+	'datatransclusion-missing-key' => 'Es wurde kein Schlüssel angegeben.
+„$2“ sind gültige Schlüssel in Datenquelle „$1“.',
 	'datatransclusion-bad-argument-by' => 'Es wurde ein mangelhaftes Schlüsselfeld angegeben.
-$2 ist kein Schlüsselfeld in der Datenquelle $1. Gültige Schlüssel sind: $3.',
-	'datatransclusion-missing-argument-key' => 'Es wurde kein Schlüssel-Wert angegeben.
-Ein zweites oder ein Schlüssel-Argument ist erforderlich.',
+„$2“ ist kein Schlüsselfeld in der Datenquelle „$1“.
+{{PLURAL:$4|Ein gültiger Schlüssel ist|Gültige Schlüssel sind}}: $3.',
+	'datatransclusion-missing-argument-key' => 'Es wurde kein Schlüsselwert angegeben.
+Ein zweites oder ein „Schlüssel“-Argument ist erforderlich.',
 	'datatransclusion-missing-argument-template' => 'Es wurde keine Vorlage angegeben.
-Ein drittes oder ein Vorlagen-Argument ist erforderlich.',
-	'datatransclusion-record-not-found' => 'Es wurde kein passender Datensatz $2 = $3 in der Datenquelle $1 gefunden.',
+Das erste oder ein „Vorlagen“-Argument ist erforderlich.',
+	'datatransclusion-record-not-found' => 'Es wurde kein passender Datensatz $2 = $3 in der Datenquelle „$1“ gefunden.',
 	'datatransclusion-bad-template-name' => 'Mangelhafter Vorlagenname: $1.',
 	'datatransclusion-unknown-template' => '<nowiki>{{</nowiki>[[{{ns:template}}:$1|$1]]<nowiki>}}</nowiki> existiert nicht.',
 );

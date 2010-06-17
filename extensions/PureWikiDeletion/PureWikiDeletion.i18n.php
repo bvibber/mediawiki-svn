@@ -214,6 +214,7 @@ Glědaj $2 za dataowa sajźbu nejnowšych wuproznjenjow.',
 /** Spanish (Español)
  * @author Crazymadlover
  * @author Diego Grez
+ * @author Drini
  * @author Translationista
  */
 $messages['es'] = array(
@@ -239,8 +240,8 @@ Puedes [{{fullurl:{{FULLPAGENAMEE}}|action=history}} ver el historial de la pág
 	'purewikideletion-unblanknologintext' => 'Debes ser un usuario registrado e [[Special:UserLogin|iniciar sesión]] para revertir un blanqueado de página.',
 	'purewikideletion-blankedtext' => '[[$1]] ha sido dejada en blanco.
 Ver $2 para un registro de blanqueado de páginas reciente.',
-	'purewikideletion-population-done' => 'Hecho! Tabla blanked_page populada.',
-	'right-purewikideletion' => '[[Special:PopulateBlankedPagesTable|Popular]] la tabla de páginas blanqueadas',
+	'purewikideletion-population-done' => 'Se completó el llenado de la tabla blanked_page',
+	'right-purewikideletion' => '[[Special:PopulateBlankedPagesTable|Llenar]] la tabla de páginas blanqueadas',
 );
 
 /** French (Français)

@@ -60,11 +60,12 @@ $messages['dsb'] = array(
 
 /** Spanish (Español)
  * @author Diego Grez
+ * @author Manuelt15
  */
 $messages['es'] = array(
 	'embedvideo-desc' => 'Añade una función parser para incrustar videos de fuentes populares',
 	'embedvideo-missing-params' => 'Falta un parámetro requerido para EmbedVideo.',
-	'embedvideo-bad-params' => 'EmbedVideo recivió un parámetro incorrecto.',
+	'embedvideo-bad-params' => 'EmbedVideo recibió un parámetro incorrecto.',
 	'embedvideo-unparsable-param-string' => 'EmbedVideo recibió la cadena de parámetros irreconocible "<code>$1</code>".',
 	'embedvideo-unrecognized-service' => 'EmbedVideo no reconoce el servicio de vídeo "<code>$1</code>".',
 	'embedvideo-bad-id' => 'EmbedVideo recibió una id incorrecta "$1" para el servicio "$2".',

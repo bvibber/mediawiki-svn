@@ -58,9 +58,10 @@ $messages['eo'] = array(
 
 /** Spanish (Español)
  * @author Diego Grez
+ * @author Manuelt15
  */
 $messages['es'] = array(
-	'wikimediamobile-desc' => 'Funciones de apoyo de MediaWiki para el proyecto Wikimedia-Mobile son hospedadas en http://github.com/hcatlin/wikimedia-mobile',
+	'wikimediamobile-desc' => 'Funciones de apoyo de MediaWiki para el proyecto Wikimedia-mobile hospedado en http://github.com/hcatlin/wikimedia-mobile',
 );
 
 /** French (Français)

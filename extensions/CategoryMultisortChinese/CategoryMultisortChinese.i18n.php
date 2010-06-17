@@ -54,6 +54,12 @@ $messages['br'] = array(
  */
 $messages['de'] = array(
 	'categorymultisortchinese-desc' => 'Ermöglicht es, Kategorien nach unterschiedlichen Sortierkriterien anzuzeigen, die speziell auf die chinesische Sprache zutreffen',
+	'categorymultisort-sortkey-name-mandarin-pinyin' => 'Mandarin: Pinyin',
+	'categorymultisort-sortkey-name-mandarin-bopomofo' => 'Mandarin: Zhuyin',
+	'categorymultisort-sortkey-name-mandarin-wadegiles' => 'Mandarin: Wade-Giles',
+	'categorymultisort-sortkey-name-mandarin-mps2' => 'Mandarin: MPS II',
+	'categorymultisort-sortkey-name-mandarin-tongyong' => 'Mandarin: Tongyong Pinyin',
+	'categorymultisort-sortkey-name-cantonese-jyutping' => 'Kantonesisch: Jyutping',
 	'categorymultisort-sortkey-name-stroke' => 'Strich',
 	'categorymultisort-sortkey-name-stroke-simplified' => 'Strich: Kurzzeichen',
 	'categorymultisort-sortkey-name-stroke-traditional' => 'Strich: Langzeichen',

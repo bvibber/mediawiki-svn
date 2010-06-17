@@ -932,27 +932,26 @@ class FlaggedArticleView {
 		if ( !$wgUser->isAllowed( 'review' ) ) {
 			return true;
 		}
-		$links = array();
-		$category = $this->article->getTitle()->getText();
-		# Add link to list of unreviewed pages in this category
 		if ( !FlaggedRevs::stableOnlyIfConfigured() ) {
+			$links = array();
+			$category = $this->article->getTitle()->getText();
+			# Add link to list of unreviewed pages in this category
 			$links[] = $wgUser->getSkin()->makeKnownLinkObj(
 				SpecialPage::getTitleFor( 'UnreviewedPages' ),
 				wfMsgHtml( 'unreviewedpages' ),
 				'category=' . urlencode( $category )
 			);
+			# Add link to list of pages in this category with pending edits
+			$links[] = $wgUser->getSkin()->makeKnownLinkObj(
+				SpecialPage::getTitleFor( 'OldReviewedPages' ),
+				wfMsgHtml( 'oldreviewedpages' ),
+				'category=' . urlencode( $category )
+			);
+			$quickLinks = implode( ' / ', $links );
+			$wgOut->appendSubtitle(
+				"<span id='mw-fr-category-oldreviewed'>$quickLinks</span>"
+			);
 		}
-		# Add link to list of pages in this category with pending edits
-		$links[] = $wgUser->getSkin()->makeKnownLinkObj(
-			SpecialPage::getTitleFor( 'OldReviewedPages' ),
-			wfMsgHtml( 'oldreviewedpages' ),
-			'category=' . urlencode( $category )
-		);
-		$quickLinks = implode( ' / ', $links );
-
-		$wgOut->appendSubtitle(
-			"<span id='mw-fr-category-oldreviewed'>$quickLinks</span>"
-		);
 		return true;
 	}
 
@@ -1408,7 +1407,7 @@ class FlaggedArticleView {
 		global $wgUser;
 		$skin = $wgUser->getSkin();
 		$diffLinks = array();
-		$changes = $frev->findPendingFileChanges();
+		$changes = $frev->findPendingFileChanges( 'noForeign' );
 		foreach ( $changes as $tuple ) {
 			list( $title, $revIdStable ) = $tuple;
 			// @TODO: change when MW has file diffs

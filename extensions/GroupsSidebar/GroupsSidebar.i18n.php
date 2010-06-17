@@ -74,6 +74,13 @@ $messages['es'] = array(
 	'groupssidebar-desc' => 'Esta extensión posibilita a los administradores del sitio a incluir elementos en la barra lateral para grupos de usuarios específicos',
 );
 
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'groupssidebar-desc' => 'Luzapen honi esker, guneko administratzaileek alboko barrako elementuak gehitu ditzazkete lankide talde zehazt bati',
+);
+
 /** Finnish (Suomi)
  * @author Crt
  */

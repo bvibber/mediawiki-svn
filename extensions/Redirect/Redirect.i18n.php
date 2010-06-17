@@ -368,6 +368,11 @@ $messages['yi'] = array(
 	'redirect-desc' => 'ערלויבט גרינגע קאנפֿיגוראַציע פֿון ווײַטערפֿירונגען בײַ [[MediaWiki:Redirect-addnewaccount|קאנטע שאַפֿן]] און [[MediaWiki:Redirect-userlogoutcomplete|אַרויסלאגירן]]',
 );
 
+/** Simplified Chinese (‪中文(简体)‬) */
+$messages['zh-hans'] = array(
+	'redirect-desc' => '可以在[[MediaWiki:Redirect-addnewaccount|用户创建]]及[[MediaWiki:Redirect-userlogoutcomplete|登出]]中容易设定重定向。',
+);
+
 /** Traditional Chinese (‪中文(繁體)‬)
  * @author Horacewai2
  */
