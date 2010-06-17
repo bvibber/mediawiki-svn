@@ -15,10 +15,13 @@ if ( /(Android|iPhone|iPod|webOS|NetFront|Opera Mini|SEMC-Browser|PlayStation Po
 
 		function getMobileUrl() {
 			var mainPage = wgMainPageTitle.replace(/ /g, '_');
-			var url = 'http://' + wgContentLanguage + ".m.wikipedia.org/";
-			if (wgPageName != mainPage) {
-				url += "wiki/" + encodeURI(wgPageName);
+			var url = wgWikimediaMobileUrl + '/';
+			if (wgPageName == mainPage) {
+				url += '::Home'; // Special case
+			} else {
+				url += encodeURI(wgPageName);
 			}
+			url += '?wasRedirected=true';
 			return url;
 		}
 
