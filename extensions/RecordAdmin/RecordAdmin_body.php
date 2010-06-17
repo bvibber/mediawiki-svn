@@ -760,9 +760,9 @@ class SpecialRecordAdmin extends SpecialPage {
 	 * Used to parse any braces in select lists when populating form
 	 */
 	function parsePart( $part ) {
-		global $wgUser, $wgParser;
+		global $wgTitle, $wgUser, $wgParser;
 		$options = ParserOptions::newFromUser( $wgUser );
-		$html = $wgParser->parse( $part[0], $this->title, $options, true, true )->getText();
+		$html = $wgParser->parse( $part[0], $wgTitle, $options, true, true )->getText();
 		return preg_match( "|(<option.+</option>)|is", $html, $m ) ? $m[1] : '';
 	}
 
