@@ -114,7 +114,7 @@ class BitmapMetadataHandler {
 	private function doApp13 ( $app13 ) {
 		$this->doPSIR( $app13 );
 
-		$iptc = $this->doIPTC( $app13 );
+		$iptc = IPTC::parse( $app13 );
 		$this->addMetadata( $iptc, $this->iptcType );
 	}
 
@@ -211,65 +211,6 @@ class BitmapMetadataHandler {
 			$this->iptcType = 'iptc-bad-hash';
 		}
 
-	}
-	/**
-	* This takes the results of iptcparse() and puts it into a
-	* form that can be handled by mediawiki. Should be called from
-	* doApp13().
-	*
-	* At the moment this is more of an outline, and is definitly
-	* not complete.
-	* @todo Make charset handling work
-	* @todo finish for other iptc values
-	* @see http://www.iptc.org/std/IIM/4.1/specification/IIMV4.1.pdf
-	*
-	* @param String $data app13 block from jpeg containg iptc/iim data
-	* @return Array iptc metadata array
-	*/
-	private function doIPTC( $rawData ) {
-		// TODO: This is nowhere near complete yet.
-		$parsed = iptcparse( $rawData );
-		$data = Array();
-		if (!is_array($parsed)) {
-			return $data;
-		}
-		$c = 'none'; // fixme
-		if ( isset( $parsed['1#090'] ) ) {
-			// fixme: this determines what charset. 
-		}
-
-		foreach ( $parsed as $tag => $val ) {
-			switch( $tag ) {
-				case '2#120': /*IPTC caption*/
-					$data['ImageDescription'] = $this->convIPTC( $val, $c );
-					break;
-				case '2#116': /* copyright */
-					$data['Copyright'] = $this->convIPTC( $val, $c );
-					break;
-				case '2#080': /* byline */
-					$data['Artist'] = $this->convIPTC( $val, $c );
-					break;
-				/* there are many many more that should be done */
-
-			}
-
-		}
-		return $data;
-
-	}
-	/**
-	* Helper function to convert charset for iptc values.
-	* @param $data String: The iptc string
-	* @param $charset String: The charset
-	* @todo use iconv to convert charsets
-	*/
-	private function convIPTC ( $data, $charset ) {
-		global $wgLang;
-		if ( is_array( $data ) ) {
-			// for now. Probably should keep it as an array perhaps
-			$data = $wgLang->commaList( $data );
-		}
-		return $data;
 	}
 
 	/** get exif info using exif class.
