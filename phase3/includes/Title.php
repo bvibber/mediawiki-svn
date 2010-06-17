@@ -513,6 +513,19 @@ class Title {
 
 		return Interwiki::fetch( $this->mInterwiki )->isTranscludable();
 	}
+	
+	/**
+	 * Returns the API URL of the distant wiki 
+	 * which owns the object.
+	 *
+	 * @return \type{\string} the API URL
+	 */
+	public function getTransAPI() {
+		if ( $this->mInterwiki == '' )
+			return false;
+
+		return Interwiki::fetch( $this->mInterwiki )->getAPI();
+	}
 
 	/**
 	 * Escape a text fragment, say from a link, for a URL
