@@ -1,5 +1,7 @@
 package de.brightbyte.wikiword.store;
 
+import java.util.Collection;
+
 import de.brightbyte.data.cursor.DataSet;
 import de.brightbyte.util.PersistenceException;
 import de.brightbyte.wikiword.ConceptType;
@@ -16,7 +18,10 @@ public interface WikiWordConceptStore<T extends WikiWordConcept> extends WikiWor
 		private boolean includeResource;
 		private boolean includeTerms;
 		private boolean includeDefinition;
-		private ConceptType requireType;
+		private Collection<ConceptType> requireTypes;
+		private Collection<ConceptType> languageIndependantTypes;
+		private String language;
+
 		private int limit;
 		
 		public boolean getIncludeRelations() {
@@ -24,14 +29,6 @@ public interface WikiWordConceptStore<T extends WikiWordConcept> extends WikiWor
 		}
 		public void setIncludeRelations(boolean includeRelations) {
 			this.includeRelations = includeRelations;
-		}
-		
-		public ConceptType getRequireType() {
-			return requireType;
-		}
-		
-		public void setRequireType(ConceptType requireType) {
-			this.requireType = requireType;
 		}
 		
 		public boolean getIncludeStatistics() {
@@ -73,6 +70,32 @@ public interface WikiWordConceptStore<T extends WikiWordConcept> extends WikiWor
 		public void setLimit(int limit) {
 			this.limit = limit;
 		}
+		
+		public String getLanguage() {
+			return language;
+		}
+		
+		public void setLanguage(String language) {
+			this.language = language;
+		}
+		
+		public Collection<ConceptType> getLanguageIndependantTypes() {
+			return languageIndependantTypes;
+		}
+		
+		public void setLanguageIndependantTypes(
+				Collection<ConceptType> languageIndependantTypes) {
+			this.languageIndependantTypes = languageIndependantTypes;
+		}
+		
+		public Collection<ConceptType> getRequireTypes() {
+			return requireTypes;
+		}
+		
+		public void setRequireTypes(Collection<ConceptType> requireTypes) {
+			this.requireTypes = requireTypes;
+		}
+		
 	}
 
 	public DataSet<? extends T> getAllConcepts(ConceptQuerySpec spec) throws PersistenceException;

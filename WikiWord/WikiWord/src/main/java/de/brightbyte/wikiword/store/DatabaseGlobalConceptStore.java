@@ -28,6 +28,7 @@ import de.brightbyte.wikiword.model.LocalConcept;
 import de.brightbyte.wikiword.schema.ConceptInfoStoreSchema;
 import de.brightbyte.wikiword.schema.GlobalConceptStoreSchema;
 import de.brightbyte.wikiword.schema.StatisticsStoreSchema;
+import de.brightbyte.wikiword.store.WikiWordConceptStore.ConceptQuerySpec;
 
 /**
  * A GlobalConceptStore implemented based upon a {@link de.brightbyte.db.DatabaseSchema} object,
@@ -115,7 +116,7 @@ public class DatabaseGlobalConceptStore extends DatabaseWikiWordConceptStore<Glo
 		return new GlobalConcept[n];
 	}
 
-	protected String meaningsSQL(String lang, String term) throws PersistenceException {
+	protected String meaningsSQL(String lang, String term, ConceptQuerySpec spec) throws PersistenceException {
 		/*
 		 DatabaseLocalConceptStore db = getLocalConceptStore(lang);
 		
@@ -127,14 +128,36 @@ public class DatabaseGlobalConceptStore extends DatabaseWikiWordConceptStore<Glo
 		return sql;
 		*/
 		
-		String sql = " JOIN "+meaningTable.getSQLName()+" as M on C.id = M.concept " +
-								" WHERE M.term_text = "+database.quoteString(term)+" ";
-		
-		if ( lang != null ) sql += " AND M.lang = "+database.quoteString(lang)+" ";
-		
-		sql +=	" ORDER BY freq DESC";
-		
-		return sql;
+		if ( lang == null && spec!=null && spec.getLanguage()!=null) {
+			lang = spec.getLanguage();
+		}
+			
+		try {
+			String sql = " JOIN "+meaningTable.getSQLName()+" as M on C.id = M.concept " +
+									" WHERE M.term_text = "+database.quoteString(term)+" ";
+			
+			if (spec!=null && spec.getRequireTypes()!=null 
+									&& !spec.getRequireTypes().isEmpty())  { 
+				sql += " AND C.type IN "+getTypeCodeSet(spec.getRequireTypes())+" ";
+			}
+
+			if ( lang != null ) {
+				if ( spec!=null && spec.getLanguageIndependantTypes()!=null 
+									&& !spec.getLanguageIndependantTypes().isEmpty() ) {
+					//some types of concepts (proper nouns) may be language independant
+					sql += " AND ( M.lang = "+database.quoteString(lang)+" OR C.type IN "+getTypeCodeSet(spec.getRequireTypes())+" )";
+				} else {
+					sql += " AND M.lang = "+database.quoteString(lang)+" ";
+				}
+			}
+			
+			sql +=	" ORDER BY freq DESC";
+			
+			if (spec!=null && spec.getLimit()>0) sql += " LIMIT "+spec.getLimit();
+			return sql;
+		} catch (SQLException e) {
+			throw new PersistenceException(e);
+		}
 	}
 
 	/*
@@ -372,14 +395,14 @@ public class DatabaseGlobalConceptStore extends DatabaseWikiWordConceptStore<Glo
 		public DataSet<GlobalConcept> getMeanings(String lang, String term, ConceptQuerySpec spec)
 			throws PersistenceException {
 		
-			String sql = conceptSelect(spec, "M.freq") + meaningsSQL(lang, term);
+			String sql = conceptSelect(spec, "M.freq") + meaningsSQL(lang, term, spec);
 			return new QueryDataSet<GlobalConcept>(database, new ConceptFactory(spec), "getMeanings", sql, false);
 		}
 		
 		public DataSet<GlobalConcept> getMeanings(String term, ConceptQuerySpec spec)
 			throws PersistenceException {
 		
-			String sql = conceptSelect(spec, "M.freq") + meaningsSQL(null, term);
+			String sql = conceptSelect(spec, "M.freq") + meaningsSQL(null, term, spec);
 			return new QueryDataSet<GlobalConcept>(database, new ConceptFactory(spec), "getMeanings", sql, false);
 		}
 	}

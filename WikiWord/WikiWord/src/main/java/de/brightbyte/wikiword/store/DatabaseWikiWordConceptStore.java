@@ -6,6 +6,7 @@ import static de.brightbyte.db.DatabaseUtil.asString;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -88,6 +89,24 @@ public abstract class DatabaseWikiWordConceptStore<T extends WikiWordConcept>
 		langlinkTable = (RelationTable)database.getTable("langlink");
 	}
 	
+	protected String getTypeCodeSet( Collection<ConceptType> types) throws SQLException {
+		if (types==null || types.isEmpty()) return null;
+	
+		StringBuilder s = new StringBuilder();
+		s.append("(");
+		
+		boolean first = true;
+		for (ConceptType v: types) {
+			if (first) first = false;
+			else s.append(", ");
+				
+			s.append( database.encodeValue(v.getCode()) );
+		}
+		
+		s.append(")");
+		return s.toString();
+	}
+
 	protected DatabaseDataSet.Factory<T> getRowConceptFactory() {
 		return rowConceptFactory;
 	}

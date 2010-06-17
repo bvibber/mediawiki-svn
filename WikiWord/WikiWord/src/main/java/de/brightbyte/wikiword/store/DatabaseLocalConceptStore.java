@@ -7,6 +7,7 @@ import static de.brightbyte.db.DatabaseUtil.asString;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Collection;
 import java.util.Map;
 
 import javax.sql.DataSource;
@@ -117,13 +118,26 @@ public class DatabaseLocalConceptStore extends DatabaseWikiWordConceptStore<Loca
 		*/
 	}
 		
-	protected String meaningWhere(String term, ConceptQuerySpec spec) {
-		String sql = " JOIN "+meaningTable.getSQLName()+" as M ON C.id = M.concept ";
-		sql += " WHERE M.term_text = "+database.quoteString(term)+" ";
-		if (spec!=null && spec.getRequireType()!=null) sql += " AND C.type = "+spec.getRequireType().getCode()+" ";
-		sql += " ORDER BY freq DESC";
-		if (spec!=null && spec.getLimit()>0) sql += " LIMIT "+spec.getLimit();
-		return sql;
+	protected String meaningWhere(String term, ConceptQuerySpec spec) throws PersistenceException {
+		if (spec!=null && spec.getLanguage()!=null && !spec.getLanguage().equals(getCorpus().getLanguage())) {
+			throw new IllegalArgumentException("incompatible language requirement: local thesaurus for "+getCorpus().getLanguage()+" can not search for terms in "+spec.getLanguage());
+		}
+		
+		try {
+			String sql = " JOIN "+meaningTable.getSQLName()+" as M ON C.id = M.concept ";
+			sql += " WHERE M.term_text = "+database.quoteString(term)+" ";
+			
+			if (spec!=null && spec.getRequireTypes()!=null && !spec.getRequireTypes().isEmpty())  { 
+				sql += " AND C.type IN "+getTypeCodeSet(spec.getRequireTypes())+" ";
+			}
+			
+			sql += " ORDER BY freq DESC";
+			
+			if (spec!=null && spec.getLimit()>0) sql += " LIMIT "+spec.getLimit();
+			return sql;
+		} catch (SQLException e) {
+			throw new PersistenceException(e);
+		}
 	}
 	
 	@Override
