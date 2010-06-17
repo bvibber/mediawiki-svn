@@ -115,6 +115,7 @@ To help us improve them, please fill out the optional survey below before clicki
 );
 
 /** Message documentation (Message documentation)
+ * @author Deadelf
  * @author EugeneZelenko
  * @author Hamilton Abreu
  * @author Lloffiwr
@@ -143,6 +144,7 @@ It is not in used at the referred page, as of 16 May 2010.
 	'prefswitch-survey-answer-whyoff-notpredictable' => '{{MediaWiki:Prefswitch-survey-answer-whyoff-hard/qqq}}',
 	'prefswitch-survey-answer-whyoff-other' => '{{Identical|Other reason}}',
 	'prefswitch-main' => 'The three default screenshots are in English and kept on Wikimedia Commons. If you want them to be in your language you will either need to create them yourself, and upload them onto Wikimedia Commons, or ask for help to make these from colleagues on your home wiki.',
+	'prefswitch-main-anon' => 'Is used on Special:UsabilityInitiativePrefSwitch at Wikimedia.org.',
 	'prefswitch-feedbackpage' => '{{doc-important|The name of the user experience feedback page on this wiki. Should only be translated for ja, es, de, fr, it, ru, pl, pt, nl for now. Do not translate "Project:"}}',
 );
 
@@ -151,11 +153,13 @@ It is not in used at the referred page, as of 16 May 2010.
  * @author Naudefj
  */
 $messages['af'] = array(
+	'prefswitch-desc' => 'Laat gebruikers toe om voorkeurstelle te kies.',
 	'prefswitch-survey-true' => 'Ja',
 	'prefswitch-survey-false' => 'Nee',
 	'prefswitch-survey-submit-off' => 'Skakel nuwe funksies af',
 	'prefswitch-survey-cancel-off' => 'Indien u wil aanhou om die nuwe funksies te gebruik, kan u terugkeer na $1.',
 	'prefswitch-survey-submit-feedback' => 'Stuur terugvoer',
+	'prefswitch-survey-cancel-feedback' => 'As u nie wil terguvoer gee nie, kan u terugkeer na $1 toe.',
 	'prefswitch-survey-question-like' => 'Waarvan het u gehou betreffende die nuwe funksies?',
 	'prefswitch-survey-question-dislike' => 'Waarvan het u nie gehou nie betreffende die nuwe funksies?',
 	'prefswitch-survey-question-whyoff' => 'Om watse rede is u besig om die nuwe funksies af te skakel?
@@ -163,7 +167,67 @@ Kies asseblief alles wat van toepassing is.',
 	'prefswitch-survey-answer-whyoff-hard' => 'Die nuwe funksies was te moeilik om te gebruik.',
 	'prefswitch-survey-answer-whyoff-didntwork' => 'Die nuwe funksies het nie korrek gewerk nie.',
 	'prefswitch-survey-answer-whyoff-notpredictable' => 'Die nuwe funksies het nie gewerk soos verwag was nie.',
+	'prefswitch-survey-answer-whyoff-didntlike-look' => 'Ek het nie gehou van hoe die nuwe funkies lyk nie.',
+	'prefswitch-survey-answer-whyoff-didntlike-layout' => 'Ek hou nie van die nuwe oortjies en uitleg nie.',
+	'prefswitch-survey-answer-whyoff-didntlike-toolbar' => 'Ek hou nie van die nuwe wysigingsbalk nie.',
 	'prefswitch-survey-answer-whyoff-other' => 'Ander rede:',
+	'prefswitch-survey-question-browser' => 'Watter webblaaier gebruik u?',
+	'prefswitch-survey-answer-browser-other' => 'Ander webblaaier:',
+	'prefswitch-survey-question-os' => 'Watter bedryfstelsel gebruik u?',
+	'prefswitch-survey-answer-os-other' => 'Ander bedryfstelsel:',
+	'prefswitch-survey-question-res' => 'Wat is die resolusie van u skerm?',
+	'prefswitch-title-on' => 'Nuwe funksies',
+	'prefswitch-title-switched-on' => 'Geniet dit!',
+	'prefswitch-title-off' => 'Skakel nuwe funksies af',
+	'prefswitch-title-switched-off' => 'Dankie',
+	'prefswitch-title-feedback' => 'Terugvoer',
+	'prefswitch-success-on' => 'Die nuwe funkies is nou aangeskakel. Ons hoop u geniet dit om die nuwe funksies te gebruik. U kan hulle enige tyd afsit deur op die "[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-on}}]]" skakel bo-aan die bladsy te klik.',
+	'prefswitch-success-off' => 'Nuwe funksies is nou afgeskakel. Dankie dat u die nuwe funksies probeer het. U kan hulle enige tyd weer aanskakel deur op die "[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-off}}]]" skakel bo-aan die bladsy te klik.',
+	'prefswitch-success-feedback' => 'U terugvoer is gestuur.',
+	'prefswitch-return' => '<hr style="clear:both">
+Keer terug na <span class="plainlinks">[$1 $2]</span>.',
+	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
+| align=\"center\" |
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
+| [[Image:VectorNavigation-en.png|401px|]]
+|-
+| 'n Skermkiekie van Wikipedia se nuwe navigasiekoppelvlak <small>[[Media:VectorNavigation-en.png|(vergroot)]]</small>
+|}
+|-
+| align=\"center\" |
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
+| [[Image:VectorEditorBasic-en.png|401px|]]
+|-
+| 'n Skermkiekie van die basiese bladsywysigingskoppevlak <small>[[Media:VectorEditorBasic-en.png|(vergroot)]]</small>
+|}
+|-
+| align=\"center\" |
+{| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
+| [[Image:VectorLinkDialog-en.png|401px|]]
+|-
+| 'n Skermkiekie van die nuwe dialoog vir die invoer van skakels.
+|}
+|}
+Die Wikimedia Foundation se Gebruikerervarings Span (User Experience Team) in samewerking met vrywilligers van die gemeenskap, het gewerk daaraan om dinge makliker te maak. Ons is opgewonde om 'n paar van die verbeteringe te deel met u, insluitende 'n nuwe voorkoms en gevoel, sowel as eenvoudige redegeringsfunksies. Die bedoeling van hierdie veranderinge is om dit makliker te maak vir nuwe gebruikers om aan die gang te kom, en is gebaseer op ons [http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study bruikbaarheidstoetse, uitgevoer deur die loop van die laaste jaar]. Die verbetering van die bruikbaarheid van ons projekte is 'n prioriteit vir Wikimedia Foundation en ons sal in die toekoms meer opgraderings met u deel. Vir meer besonderhede, besoek gerus die verwante Wikimedia [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia webjoernaalinskrywing].
+
+=== Hier is wat ons verander het ===
+* '''Navigasie:''' Ons het die navigase vir die lees en redegering van bladsye verbeter. Nou is die oortjies bo-aan elke bladsy beter gedefiniëer óf u nou besig is om die bladsy of sy besprekingsblad te beskou, óf die bladsy deur lees of te wysig.
+* '''Redigeringsnutsbalk verbeteringe:''' Ons het die redegeringsnutbalk hergeörganiseer, sodat dit makliker is om te gebruik. Dit is nou meer eenvoudig en intuïtief om bladsye se formaat te wysig.
+* '''Skakel assistent:''' 'n Maklik om te gebruik stukkie gereedskap wat jou toelaat om skakels na ander wiki bladsye sowel as skakels na eksterne webwerve by te voeg.
+* '''Soektog verbeteringe:''' Ons het soektogvoorstelle verbeter, sodat jy vinniger by die bladsy kan uitkom waarvoor jy soek.
+* '''Ander nuwe funksies:''' Ons het 'n assistent bygevoeg wat die maak van tabelle makliker maak en 'n vind-en-vervang funksie om die redigering van bladsye te vereenvoudig.
+* '''Wikipedia logo:''' Ons het ons logo opdateer. Lees meer daaroor in die [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d Wikimedia webjoernaal].
+
+===Terugvoer?===
+Ons sal dit waardeer om van jou af te hoor. Besoek asseblief ons [[\$1|terugvoer bladsy]] of, as u belangstel in ons aanhoudende pogings om die sagteware te verbeter, besoek gerus ons [http://usability.wikimedia.org bruikbaarheids-wiki] vir meer inligting.",
+	'prefswitch-main-anon' => "===Neem my terug===
+[$1 Klik hier om die nuwe funkies af te skakel]. U sal gevra word om in te teken of om eerstens 'n nuwe rekening te skep.",
+	'prefswitch-main-on' => '===Vat my terug!===
+[$2 Klik hier om die nuwe funksies af te skakel].',
+	'prefswitch-main-off' => '===Probeer die nuwe funksies!===
+[$1 Klik hier om die nuwe funksies aan te skakel].',
+	'prefswitch-survey-intro-feedback' => 'Ons sal regtig waardeer om van u te hoor.
+Vul asseblief die opsionele vraelys in voordat u "[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]" klik.',
 );
 
 /** Gheg Albanian (Gegë)
@@ -982,6 +1046,15 @@ Pšosym wupołni slědujuce opcionalne napšašowanje, nježli až kliknjoš na 
 	'prefswitch-survey-intro-off' => 'Źěkujomy se, až sy wopytał naše nowe funkcije.
 Aby nam pomogał, je pólěpšyś, wupołni pšosym slědujuce opcionalne napšašowanje, nježli až kliknjoš na "[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]".',
 	'prefswitch-feedbackpage' => 'Project:Komentary wó iniciatiwje wužywajobnosći',
+);
+
+/** Ewe (Eʋegbe)
+ * @author Natsubee
+ */
+$messages['ee'] = array(
+	'prefswitch-survey-true' => 'Yo',
+	'prefswitch-survey-false' => 'Kpao',
+	'prefswitch-title-switched-off' => 'Akpe',
 );
 
 /** Greek (Ελληνικά)
@@ -4071,16 +4144,17 @@ $messages['yue'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Liangent
+ * @author Onecountry
  */
 $messages['zh-hans'] = array(
 	'prefswitch' => '可用性倡议偏好设定',
 	'prefswitch-desc' => '允许用户设定参数设定',
 	'prefswitch-survey-true' => '是',
 	'prefswitch-survey-false' => '否',
-	'prefswitch-survey-submit-off' => '关闭新特色',
-	'prefswitch-survey-cancel-off' => '如果您想继续使用新特色，您可以返回$1。',
-	'prefswitch-survey-submit-feedback' => '发送意见',
-	'prefswitch-survey-cancel-feedback' => '如果你不想提供意见，你可以回到$1继续。',
+	'prefswitch-survey-submit-off' => '关闭新功能',
+	'prefswitch-survey-cancel-off' => '如果您想继续使用新功能，您可以返回$1。',
+	'prefswitch-survey-submit-feedback' => '发送反馈',
+	'prefswitch-survey-cancel-feedback' => '如果你不想提供反馈，你可以回到$1继续。',
 	'prefswitch-survey-question-like' => '你喜欢什么新特点？',
 	'prefswitch-survey-question-dislike' => '你不喜欢什么特点？',
 	'prefswitch-survey-question-whyoff' => '你为什么关闭新的功能？请选择所有适用的选择。',
@@ -4098,7 +4172,7 @@ $messages['zh-hans'] = array(
 	'prefswitch-survey-question-res' => '您的屏幕解像度之大小有多大？',
 	'prefswitch-title-on' => '新功能',
 	'prefswitch-title-switched-on' => '享受！',
-	'prefswitch-title-off' => '关闭新特色',
+	'prefswitch-title-off' => '关闭新功能',
 	'prefswitch-title-switched-off' => '谢谢',
 	'prefswitch-title-feedback' => '反馈',
 	'prefswitch-success-on' => '新功能已经打开了。我们希望你能享受使用这些新功能，你可以关闭这些新功能，只需要按本页页顶的[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-on}}]]便可以了。',

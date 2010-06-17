@@ -909,8 +909,8 @@ $messages['pms'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
-	'onlinestatus-subtitle-offline' => 'دم مهال همدا کارونکی بې ليکه دی',
-	'onlinestatus-subtitle-online' => 'دم مهال همدا کارونکی پر ليکه دی',
+	'onlinestatus-subtitle-offline' => 'دم مهال دا کارن بې ليکه دی',
+	'onlinestatus-subtitle-online' => 'دم مهال دا کارن پر ليکه دی',
 	'onlinestatus-tab' => 'دريځ',
 	'onlinestatus-toggles-desc' => 'ستاسې دريځ:',
 	'onlinestatus-toggles-show' => 'زما په کارن-مخ زما دريځ پرليکه ښکاره کول',

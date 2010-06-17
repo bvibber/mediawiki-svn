@@ -146,6 +146,25 @@ $messages['gl'] = array(
 	'categorymultisort-sortkey-name-radical-traditional' => 'Radical: tradicional',
 );
 
+/** Swiss German (Alemannisch)
+ * @author Als-Holder
+ */
+$messages['gsw'] = array(
+	'categorymultisortchinese-desc' => 'Macht s megli, Kategorie no unterschidlige Sortierkriterie aazzeige, wu speziäll uf di chinesisch Sproch zueträffe',
+	'categorymultisort-sortkey-name-mandarin-pinyin' => 'Mandarin: Pinyin',
+	'categorymultisort-sortkey-name-mandarin-bopomofo' => 'Mandarin: Zhuyin',
+	'categorymultisort-sortkey-name-mandarin-wadegiles' => 'Mandarin: Wade-Giles',
+	'categorymultisort-sortkey-name-mandarin-mps2' => 'Mandarin: MPS II',
+	'categorymultisort-sortkey-name-mandarin-tongyong' => 'Mandarin: Tongyong Pinyin',
+	'categorymultisort-sortkey-name-cantonese-jyutping' => 'Kantonesisch: Jyutping',
+	'categorymultisort-sortkey-name-stroke' => 'Strich',
+	'categorymultisort-sortkey-name-stroke-simplified' => 'Strich: Churzzeiche',
+	'categorymultisort-sortkey-name-stroke-traditional' => 'Strich: Langzeiche',
+	'categorymultisort-sortkey-name-radical' => 'Radikal',
+	'categorymultisort-sortkey-name-radical-simplified' => 'Radikal: Churzzeiche',
+	'categorymultisort-sortkey-name-radical-traditional' => 'Radikal: Langzeiche',
+);
+
 /** Upper Sorbian (Hornjoserbsce)
  * @author Michawiki
  */

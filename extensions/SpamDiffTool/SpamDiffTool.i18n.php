@@ -243,6 +243,7 @@ $messages['bs'] = array(
 	'spamdifftool' => 'Upravljaj s nepoželjnim spiskom spama',
 	'spamdifftool-desc' => 'Omogućuje osnovni način dodavanja novih stavki na zabranjeni spisak spama sa diff stranica',
 	'spamdifftool_cantedit' => 'Žao nam je - nemate dopuštenja za uređivanje nedopuštenog spiska spama.',
+	'spamdifftool-no-title' => "'''Greška:''' nije određen naslov stranice.",
 	'spamdifftool_notext' => "Nema teksta za dodavanje na zabranjeni spisak spama.
 Kliknite <a href='$1'>ovdje</a> za nastavak.",
 	'spamdifftool_confirm' => "Potvrdite da stvarno želite dodati ove stavke na spisak nepoželjnog spama.

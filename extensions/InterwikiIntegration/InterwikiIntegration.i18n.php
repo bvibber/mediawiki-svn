@@ -52,6 +52,18 @@ Stelle sicher, dass du die Tabellen deiner anderen Wikis ebenso konfigurierst.',
 	'right-integration' => 'Befüllen der Interwikilink-Tabelle',
 );
 
+/** Lower Sorbian (Dolnoserbski)
+ * @author Michawiki
+ */
+$messages['dsb'] = array(
+	'interwikiintegration' => 'Integracija interwiki',
+	'interwikiintegration-desc' => 'Wobšyrna integracija interwiki',
+	'populateinterwikiintegrationtable' => 'Tabelu integracije interwiki połniś',
+	'interwikiintegration-setuptext' => 'Tabele za $1 su se skonfigurěrowali-
+Skonfigurěruj tabele teke na swojich drugich wikijach.',
+	'right-integration' => 'Tabelu integracije interwiki połniś',
+);
+
 /** Spanish (Español)
  * @author Crazymadlover
  */

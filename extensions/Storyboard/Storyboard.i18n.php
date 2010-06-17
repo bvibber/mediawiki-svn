@@ -1113,6 +1113,7 @@ Firwat se net hei weisen?',
 	'storyboard-changetitle' => 'Den Titel änneren.',
 	'storyboard-notsubmitted' => "D'Authentifickatioun huet net fonctionnéiert, D'Anekdot gouf net gespäichert.",
 	'storyboard-charstomany' => '$1 Buschtawen ze vill!',
+	'storyboard-morecharsneeded' => '$1 Buchstawe méi, gi gebraucht',
 	'storyboard-charactersleft' => '$1 Buschtawen iwwreg',
 	'storyboard-createdsuccessfully' => 'Merci datt dir Är Anekdot mat eis deelt!
 Mir kucken se demnächst no.

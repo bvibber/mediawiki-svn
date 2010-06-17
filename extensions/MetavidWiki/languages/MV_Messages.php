@@ -6073,9 +6073,9 @@ $messages['mk'] = array(
 	'mv_missing_stream' => 'Недостасува емитување: $1',
 	'specialpages-group-mv_group' => 'MetaVidWiki специјални страници',
 	'mv_warning_wiki' => '<i>Напомена: MetaVid видео-стенограмите [[Help:FAQ#How_accurate_is_the_information.3F|може да содржат неточности]], помогнете ни да изградиме [[Help:Participation#Improving_Archive_Accuracy|поусовршен архив]]</i>',
-	'mv_ogg_low_quality' => 'За веб - Ogg Theora 300 Кбит/сек',
+	'mv_ogg_low_quality' => 'Мрежно емитување - Ogg Theora 300 Kbit / s',
 	'mv_ogg_high_quality' => 'Висококвалитетно - Ogg Theora 900 Кбит/сек',
-	'mv_flash_low_quality' => 'За веб - Флеш видео',
+	'mv_flash_low_quality' => 'Мрежно емитување - Флеш-видео',
 	'mv_archive_org_mp4' => 'Archive.org MP4, содржејќи H.264 емитување',
 	'mv_archive_org_link' => 'Врски до Archive.org MPEG-2 оригинали',
 	'mv_error_stream_missing' => '<span class="error">Грешка: Нема видео-податотека поврзана со ова емитување.</span><br />

@@ -244,6 +244,13 @@ $messages['eu'] = array(
 	'abcdownload' => 'Jaitsi:',
 );
 
+/** Persian (فارسی)
+ * @author Ebraminio
+ */
+$messages['fa'] = array(
+	'abcdownload' => 'بارگیری:',
+);
+
 /** Finnish (Suomi)
  * @author Crt
  * @author Ilaiho

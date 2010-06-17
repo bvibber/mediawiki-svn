@@ -31,6 +31,18 @@ $messages['qqq'] = array(
 	'prefswitch-link-off' => 'A link in the personal tools menu which takes users to a page where they can turn the new features on',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Deadelf
+ */
+$messages['af'] = array(
+	'prefswitch-link-anon' => 'Nuwe funksies',
+	'tooltip-pt-prefswitch-link-anon' => 'Vind meer uit aangaande die nuwe funksies',
+	'prefswitch-link-on' => 'Neem my terug',
+	'tooltip-pt-prefswitch-link-on' => 'Skakel nuwe funksies af',
+	'prefswitch-link-off' => 'Nuwe funksies',
+	'tooltip-pt-prefswitch-link-off' => 'Probeer die nuwe funksies',
+);
+
 /** Gheg Albanian (Gegë)
  * @author Mdupont
  */
@@ -653,10 +665,12 @@ $messages['yue'] = array(
 	'tooltip-pt-prefswitch-link-off' => '試下新特色',
 );
 
-/** Simplified Chinese (‪中文(简体)‬) */
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Onecountry
+ */
 $messages['zh-hans'] = array(
 	'prefswitch-link-anon' => '新功能',
-	'tooltip-pt-prefswitch-link-anon' => '了解更多关于新功能',
+	'tooltip-pt-prefswitch-link-anon' => '了解更多新功能',
 	'prefswitch-link-on' => '回到旧版',
 	'tooltip-pt-prefswitch-link-on' => '禁用新功能',
 	'prefswitch-link-off' => '新功能',

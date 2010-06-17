@@ -458,8 +458,8 @@ $messages['pt'] = array(
 );
 
 /** Brazilian Portuguese (Português do Brasil)
- * @author Luckas Blade
  * @author 555
+ * @author Luckas Blade
  */
 $messages['pt-br'] = array(
 	'tiff-desc' => 'Permite visualizar arquivos TIFF como imagens',

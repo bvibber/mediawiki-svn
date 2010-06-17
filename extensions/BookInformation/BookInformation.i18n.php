@@ -1105,7 +1105,7 @@ $messages['mg'] = array(
  */
 $messages['mk'] = array(
 	'bookinfo-header' => 'Информации за книга',
-	'bookinformation-desc' => 'Додаток на [[Special:Booksources|специјалната страница за книги]] со информации од веб сервис',
+	'bookinformation-desc' => 'Додаток на [[Special:Booksources|специјалната страница за книги]] со информации од мрежна служба',
 	'bookinfo-result-title' => 'Наслов:',
 	'bookinfo-result-author' => 'Автор:',
 	'bookinfo-result-publisher' => 'Издавач:',

@@ -928,8 +928,8 @@ $messages['pms'] = array(
 $messages['ps'] = array(
 	'ajax-se-idling' => '($1 پخوا)',
 	'ajax-se-pagedoesnotexist' => 'دا مخ لا تر اوسه پورې نشته',
-	'ajax-se-userinvalid' => 'ERR: ناسم کارونکی',
-	'ajax-se-usernotfound' => 'ERR: کارونکی و نه موندل شو',
+	'ajax-se-userinvalid' => 'ERR: ناسم کارن',
+	'ajax-se-usernotfound' => 'ERR: کارن و نه موندل شو',
 );
 
 /** Portuguese (Português)

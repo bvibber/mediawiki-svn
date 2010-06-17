@@ -464,7 +464,7 @@ $messages['pms'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
-	'categoryonupload-desc' => 'د دوتنې د پورته کولو پر مهال، يو کارونکی په دې توانوي چې د دوتنې وېشنيزه وټاکي',
+	'categoryonupload-desc' => 'د دوتنې د پورته کولو پر مهال، يو کارن په دې توانوي چې د دوتنې وېشنيزه وټاکي',
 	'categoryonupload-label' => 'وېشنيزه:',
 );
 

@@ -3307,8 +3307,8 @@ $messages['mk'] = array(
 Ако ова не се случи, притиснете на копчето "Continue" (Продолжи).',
 	'openidclientonlytext' => 'Не можете да користите сметки од ова вики како OpenID за друга стрнаица.',
 	'openidloginlabel' => 'OpenID URL адреса',
-	'openidlogininstructions' => '{{SITENAME}} го поддржува [http://openid.net/ OpenID] стандардот за една сметка помеѓу веб-страници.
-OpenID ви овозможува да се најавувате на многу различни веб-страници без да ви треба различна лозинка за секоја поединечно.
+	'openidlogininstructions' => '{{SITENAME}} го поддржува [http://openid.net/ OpenID] стандардот за една сметка помеѓу мрежни места.
+OpenID ви овозможува да се најавувате на многу различни мрежни места без да ви треба различна лозинка за секоја поединечно.
 (Погледаје ја [http://mk.wikipedia.org/wiki/OpenID статијата за OpenID на Википедија] за повеќе информации.)
 
 Доколку веќе имате сметка на  {{SITENAME}}, можете да [[Special:UserLogin|се најавите]] со корисничкото име и лозинката по нормална постапка.
@@ -4140,6 +4140,7 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Giro720
  * @author Hamilton Abreu
  * @author Lijealso
  * @author Malafaya
@@ -4229,7 +4230,7 @@ Sem um OpenID não se poderia autenticar.',
 	'openid-urls-action' => 'Acção',
 	'openid-urls-delete' => 'Apagar',
 	'openid-add-url' => 'Adicionar novo OpenID',
-	'openidsigninorcreateaccount' => 'Entrar ou Criar Nova Conta',
+	'openidsigninorcreateaccount' => 'Entrar ou criar uma conta nova',
 	'openid-provider-label-openid' => 'Introduza a sua URL OpenID',
 	'openid-provider-label-google' => 'Entrar usando a sua conta do Google',
 	'openid-provider-label-yahoo' => 'Entrar usando a sua conta do Yahoo',

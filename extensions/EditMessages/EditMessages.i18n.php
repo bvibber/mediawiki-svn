@@ -917,7 +917,7 @@ $messages['mhr'] = array(
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
-	'editmessages-desc' => '[[Special:EditMessages|Веб-уредување]] на голем број на Messages*.php податотеки',
+	'editmessages-desc' => '[[Special:EditMessages|Уредување]] на голем број на Messages*.php податотеки',
 	'editmessages' => 'Уреди пораки',
 	'editmsg-target' => 'Целна порака:',
 	'editmsg-search' => 'Пребарај',

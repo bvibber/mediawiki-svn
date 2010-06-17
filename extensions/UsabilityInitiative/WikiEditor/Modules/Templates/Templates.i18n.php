@@ -314,6 +314,13 @@ $messages['tl'] = array(
 	'wikieditor-templates-preference' => 'Paganahin ang bumabagsak na suleras',
 );
 
+/** Ukrainian (Українська)
+ * @author Тест
+ */
+$messages['uk'] = array(
+	'wikieditor-templates-preference' => 'Увімкнути згортання шаблонів',
+);
+
 /** Vietnamese (Tiếng Việt)
  * @author Minh Nguyen
  */
@@ -328,9 +335,11 @@ $messages['yue'] = array(
 	'wikieditor-templates-preference' => '啟用可隱藏模板',
 );
 
-/** Simplified Chinese (‪中文(简体)‬) */
+/** Simplified Chinese (‪中文(简体)‬)
+ * @author Onecountry
+ */
 $messages['zh-hans'] = array(
-	'wikieditor-templates-preference' => '使模板倒塌',
+	'wikieditor-templates-preference' => '启用模板收缩',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

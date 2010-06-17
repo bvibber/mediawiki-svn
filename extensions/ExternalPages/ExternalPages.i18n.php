@@ -376,7 +376,7 @@ $messages['lb'] = array(
  */
 $messages['mk'] = array(
 	'externalpages' => 'Надворешни страници',
-	'externalpages-desc' => 'Извлекува и прикажува страници од други WMF веб-страници',
+	'externalpages-desc' => 'Извлекува и прикажува страници од други WMF мрежни места',
 	'externalpages-bad-page' => 'Назначена е неправилна страница',
 	'externalpages-no-page' => 'Нема назначено страница',
 );

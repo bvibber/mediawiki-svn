@@ -206,6 +206,13 @@ $messages['sr-el'] = array(
 	'hidens-desc' => 'Sakriva imensi prostor i naslov kada je strana u zadatom imenskom prostoru ili kada je parserova funkcija <code><nowiki>{{#hidens:}}</nowiki></code> pozvana',
 );
 
+/** Swedish (Svenska)
+ * @author Sertion
+ */
+$messages['sv'] = array(
+	'hidens-desc' => 'Döljer namnrymden från sidrubriken och sidtiteln när en sida är i en specificerad namnrymd eller när <code><nowiki>{{#hidens:}}</nowiki></code>-funktionen används',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */

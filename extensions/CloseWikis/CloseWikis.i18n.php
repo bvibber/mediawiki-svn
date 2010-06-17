@@ -1167,7 +1167,7 @@ $messages['li'] = array(
  * @author Bjankuloski06
  */
 $messages['mk'] = array(
-	'closewikis-desc' => 'Овозможува затворање на вики веб-страници во вики-фарми',
+	'closewikis-desc' => 'Овозможува затворање на вики-мрежни места во вики-фарми',
 	'closewikis-page' => 'Затвори го викито',
 	'closewikis-page-close' => 'Затвори го викито',
 	'closewikis-page-close-wiki' => 'Вики:',

@@ -1207,7 +1207,7 @@ Për vëdde la Lista completa dij tò Travaj va a %s.
 $messages['ps'] = array(
 	'tasklist' => 'د دندو لړليک',
 	'tasklistbyproject' => 'د پروژې له مخې د دندو لړليک',
-	'tasklistunspecuser' => 'ناځانګړی کارونکی',
+	'tasklistunspecuser' => 'ناځانګړی کارن',
 	'tasklistincorrectuser' => 'ناسم کارن-نوم',
 	'tasklistmytasks' => 'زما دندې',
 	'tasklistchooseproj' => 'پروژه ټاکل:',

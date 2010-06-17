@@ -1523,7 +1523,7 @@ $messages['mg'] = array(
  * @author Brest
  */
 $messages['mk'] = array(
-	'pollresults' => 'Резултати од анкетите на оваа веб-страница',
+	'pollresults' => 'Резултати од анкетите на ова мрежно место',
 	'qp_desc' => 'Овозможува создавање на анкети',
 	'qp_desc-sp' => '[[Special:PollResults|Специјална страница]] за преглед на резултати од анкетите',
 	'qp_result_NA' => 'Без одговор',

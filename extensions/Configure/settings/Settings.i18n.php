@@ -11735,7 +11735,7 @@ $messages['mhr'] = array(
  * @author Brest
  */
 $messages['mk'] = array(
-	'configure-setting-wgSitename' => 'Име на веб-страницата',
+	'configure-setting-wgSitename' => 'Име на мрежното место',
 	'configure-setting-wgActionPaths' => 'URL-адреси по дејства',
 	'configure-setting-wgActionPaths-key' => 'Дејство',
 	'configure-setting-wgActionPaths-value' => 'URL шаблон',
@@ -11818,8 +11818,8 @@ $messages['mk'] = array(
 	'configure-setting-wgForceUIMsgAsContentMsg' => 'Пораки од корисничкиот посредник кои ќе се третираат како содржински пораки',
 	'configure-setting-wgInputEncoding' => 'Кодирање на вносниот текст',
 	'configure-setting-wgInterwikiMagic' => 'Прикажувај интервики врски во специјален список',
-	'configure-setting-wgLanguageCode' => 'Јазичен код на веб-страницата',
-	'configure-setting-wgLegacyEncoding' => 'Поранешно кодирање на веб-страницата што треба да биде претворено',
+	'configure-setting-wgLanguageCode' => 'Јазичен код на мрежното место',
+	'configure-setting-wgLegacyEncoding' => 'Поранешно кодирање на мрежното место што треба да биде претворено',
 	'configure-setting-wgLoginLanguageSelector' => 'Прикажувај избор на јазик на обрасците за најва и регистрација',
 	'configure-setting-wgOutputEncoding' => 'Кодирање на изводниот текст',
 	'configure-setting-wgTranslateNumerals' => 'Транслитерирај броеви',
@@ -11848,7 +11848,7 @@ $messages['mk'] = array(
 	'configure-setting-wgNoFollowDomainExceptions' => 'Надворешните врски до овие доменски имиња (или било кои поддомени) нема да го имаат атрибутот rel="nofollow"',
 	'configure-setting-wgPageShowWatchingUsers' => 'Прикажувај кои корисници гледаат некоја страница',
 	'configure-setting-wgRestrictionLevels' => 'Прилагодливи нивоа на ограничување',
-	'configure-setting-wgSiteNotice' => 'Напомена за веб-страницата',
+	'configure-setting-wgSiteNotice' => 'Напомена за мрежното место',
 	'configure-setting-wgSiteSupportPage' => 'Страница со податоци за донирања',
 	'configure-setting-wgStyleVersion' => 'Верзија на MediaWiki CSS/JS податотеките',
 	'configure-setting-wgUniversalEditButton' => 'Овозможи го универзалното копче за уредување',
@@ -11918,7 +11918,7 @@ $messages['mk'] = array(
 	'configure-setting-wgSummarySpamRegex' => 'Регуларен израз на спам-филтерот за описи на уредувања',
 	'configure-setting-wgWhitelistRead' => 'Страници што може да ги гледа анонимен корисник',
 	'configure-setting-wgEmailAuthentication' => 'Барај потврдување на е-поштата за функциите на е-поштата',
-	'configure-setting-wgEmergencyContact' => 'Е-пошта на администраторот на веб-страницата',
+	'configure-setting-wgEmergencyContact' => 'Е-пошта на администраторот на мрежното место',
 	'configure-setting-wgEnableEmail' => 'Овозможи можности за е-пошта',
 	'configure-setting-wgEnableUserEmail' => 'Овозможи е-пошта од еден корисник до друг',
 	'configure-setting-wgNoReplyAddress' => 'Фиктивна адреса што треба да се прифати во текот на испраќањето е-пошта',
@@ -12090,9 +12090,9 @@ $messages['mk'] = array(
 	'configure-setting-wgEnableDublinCoreRdf' => 'Користи RDF метаподатоци',
 	'configure-setting-wgMaxCredits' => 'Максимален број на автори за приказ',
 	'configure-setting-wgRightsIcon' => 'Икона за авторски права',
-	'configure-setting-wgRightsPage' => 'Страница со опис на лиценцата на веб-страната',
-	'configure-setting-wgRightsText' => 'Текст за описот на лиценцата на веб-страната',
-	'configure-setting-wgRightsUrl' => 'URL-адреса со опис на лиценцата на веб-страната',
+	'configure-setting-wgRightsPage' => 'Страница со опис на лиценцата на мрежното место',
+	'configure-setting-wgRightsText' => 'Текст за описот на лиценцата на мрежното место',
+	'configure-setting-wgRightsUrl' => 'URL-адреса со опис на лиценцата на мрежното место',
 	'configure-setting-wgShowCreditsIfMax' => 'Наведувај ги само главните автори, ако има премногу',
 	'configure-setting-wgUseCopyrightUpload' => 'Користи подробни информации за авторски права при подигање',
 	'configure-setting-wgAutoConfirmAge' => 'Старосен праг за автопотврдување',
@@ -12136,7 +12136,7 @@ $messages['mk'] = array(
 	'configure-setting-wgImportSources' => 'Список на интервики префикси за меѓувики (transwiki)',
 	'configure-setting-wgInterwikiCache' => 'Овозможи интервики кеш',
 	'configure-setting-wgInterwikiExpiry' => 'Истекување на интервики кешот',
-	'configure-setting-wgInterwikiFallbackSite' => 'Резервна веб-страница за интервики',
+	'configure-setting-wgInterwikiFallbackSite' => 'Резервно мрежно место за интервики',
 	'configure-setting-wgInterwikiScopes' => 'Делокруг на интервиките',
 	'configure-setting-wgLocalInterwiki' => 'Локален интервики префикс',
 	'configure-setting-wgRedirectSources' => 'Регуларен израз за ограничување на URL-адреси што ќе се прикаже како врски „пренасочено од“',
@@ -12202,7 +12202,7 @@ $messages['mk'] = array(
 	'configure-setting-wgParserCacheType' => 'Тип на парсерски кеш',
 	'configure-setting-wgEnableParserCache' => 'Овозможи парсерски кеш',
 	'configure-setting-wgEnableSidebarCache' => 'Кеширај врски од страничната лента',
-	'configure-setting-wgRenderHashAppend' => 'Дополнителен хешов шум за парсескиот кеш и кешовите клучеви на напомените за веб-страницата',
+	'configure-setting-wgRenderHashAppend' => 'Дополнителен хешов шум за парсескиот кеш и кешовите клучеви на напомените за мрежното место',
 	'configure-setting-wgSidebarCacheExpiry' => 'Истекување на кешот на страничната лента',
 	'configure-setting-wgUseETag' => 'Испрати ETag наслови',
 	'configure-setting-wgAlwaysUseTidy' => 'Секогаш користи Tidy',
@@ -12239,8 +12239,8 @@ $messages['mk'] = array(
 	'configure-setting-wgLocalTZoffset' => 'Поместување на часовната зона',
 	'configure-setting-wgAllowUserCss' => 'Дозволи кориснички страници со табели во каскаден стил (CSS)',
 	'configure-setting-wgAllowUserJs' => 'Овозможи кориснички JavaScript страници',
-	'configure-setting-wgUseSiteCss' => 'Користи ги табелите во каскаден стил (CSS) на веб-страницата',
-	'configure-setting-wgUseSiteJs' => 'Користи ја JavaScript-страницата на веб-страницата',
+	'configure-setting-wgUseSiteCss' => 'Користи ги табелите во каскаден стил (CSS) на мрежното место',
+	'configure-setting-wgUseSiteJs' => 'Користи ја JavaScript-страницата на мрежното место',
 	'configure-setting-wgHandheldStyle' => 'Стил за media="handheld"',
 	'configure-setting-wgHandheldForIPhone' => 'Примени типови на медии „screen“ и „handheld“ за iPhone',
 	'configure-setting-wgJQueryVersion' => 'Верзија на jQuery за користење',
@@ -12251,7 +12251,7 @@ $messages['mk'] = array(
 	'configure-setting-wgAjaxSearch' => 'Овозможи користење на AJAX автопредлози за полето за пребарување',
 	'configure-setting-wgAjaxUploadDestCheck' => 'Овозможи AJAX-проверка за презапишување на податотека, пред подигањето',
 	'configure-setting-wgAjaxWatch' => 'Овозможи набљудување/престанок на набљудување на страници со AJAX',
-	'configure-setting-wgCrossSiteAJAXdomains' => 'Домени кои на МедијаВики API му поставуваат AJAX-барања преку други веб-страници',
+	'configure-setting-wgCrossSiteAJAXdomains' => 'Домени кои на МедијаВики API му поставуваат AJAX-барања преку други мрежни местa',
 	'configure-setting-wgCrossSiteAJAXdomainExceptions' => 'Домени на кои не треба да им биде дозволено да вршат AJAX-барања, дури и ако се совпаѓаат со еден од домените дозволени од $wgCrossSiteAJAXdomains',
 	'configure-setting-wgLivePreview' => 'Овозможи прегледување во живо',
 	'configure-setting-wgJsMimeType' => 'Медиски тип (MIME тип) за користење за JavaScript скрипти',
@@ -12279,7 +12279,7 @@ $messages['mk'] = array(
 	'configure-setting-wgDirectoryMode' => 'Пристапи за нови директориуми',
 	'configure-setting-wgDiff' => 'Патека до алатката GNU diff',
 	'configure-setting-wgDiff3' => 'Патека до алатката GNU diff3',
-	'configure-setting-wgFavicon' => 'URL-адреса на фавиконата на  веб-страницата',
+	'configure-setting-wgFavicon' => 'URL-адреса на favicon на мрежното место',
 	'configure-setting-wgLogo' => 'URL-адреса на логото на мрж. место',
 	'configure-setting-wgMathDirectory' => 'Патека на податочниот систем до директориумот кој содржи LaTeX math слики',
 	'configure-setting-wgMathPath' => 'URL-основа на директориумот кој содржи LaTeX math слики',
@@ -15432,10 +15432,12 @@ $messages['pt'] = array(
 );
 
 /** Brazilian Portuguese (Português do Brasil)
+ * @author Giro720
  * @author Hamilton Abreu
  * @author Luckas Blade
  */
 $messages['pt-br'] = array(
+	'configure-setting-wgActionPaths' => 'URLs por ação',
 	'configure-setting-wgActionPaths-key' => 'Ação',
 	'configure-setting-wgIgnoreImageErrors' => 'Não exibir mensagens de erro para imagens',
 	'configure-setting-wgTranslateNumerals' => 'Transliterar números',

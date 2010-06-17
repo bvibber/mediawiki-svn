@@ -723,12 +723,13 @@ $messages['yue'] = array(
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Bencmq
  * @author Jimmy xu wrk
+ * @author Onecountry
  * @author PhiLiP
  * @author Shinjiman
  */
 $messages['zh-hans'] = array(
-	'vector-editwarning-warning' => '离开这个页面会令您遗失之前的所有更改。若您已经登入，您可在您参数设置的“{{int:prefs-editing}}”节中关闭此警告。',
-	'vector-editwarning-preference' => '当我在更改未保存时离开页面时警告我',
+	'vector-editwarning-warning' => '离开这个页面会令您失去之前的所有更改。若您已经登入，您可在您参数设置的“{{int:prefs-editing}}”节中关闭此警告。',
+	'vector-editwarning-preference' => '如在更改未保存时离开页面，则发出警告',
 );
 
 /** Traditional Chinese (‪中文(繁體)‬)

@@ -379,7 +379,7 @@ $messages['ru'] = array(
  * @author HalanTul
  */
 $messages['sah'] = array(
-	'vector-collapsiblenav-preference' => 'Хаҥас менюга блоктары куччатары (сворачивание) көҥүллүүргэ',
+	'vector-collapsiblenav-preference' => 'Вектор тиэмэ хаҥас менютугар блоктары куччатары (сворачивание) көҥүллүүргэ',
 	'vector-collapsiblenav-more' => 'Өссө тыллар',
 );
 
