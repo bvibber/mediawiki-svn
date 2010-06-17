@@ -707,10 +707,11 @@ $messages['yue'] = array(
 
 /** Simplified Chinese (‪中文(简体)‬)
  * @author Bencmq
+ * @author Onecountry
  * @author PhiLiP
  */
 $messages['zh-hans'] = array(
-	'wikieditor-toc-preference' => '启用可导航目录',
+	'wikieditor-toc-preference' => '启用导航目录',
 	'wikieditor-toc-show' => '显示内容',
 	'wikieditor-toc-hide' => '隐藏内容',
 );
