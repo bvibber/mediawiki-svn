@@ -258,10 +258,10 @@ class RevisionDeleter {
 			}
 			
 			// Pipe links
-			return wfMsg( 'parentheses', $wgLang->pipeList( $revert ) );
+			$revert = wfMsg( 'parentheses', $wgLang->pipeList( $revert ) );
 		}
-		return '';
-	}
+		return $revert;
+	}	
 }
 
 /**

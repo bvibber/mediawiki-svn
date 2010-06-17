@@ -69,10 +69,10 @@ class UpdateSearchIndex extends Maintenance {
 				fwrite( $file, $end );
 				fclose( $file );
 			} else {
-				$this->output( "*** Couldn't write to the $posFile!\n" );
+				$this->output( "*** Couldn't write to the $posFile!" );
 			}
 		} else {
-			$this->output( "*** Couldn't write to the $posFile!\n" );
+			$this->output( "*** Couldn't write to the $posFile!" );
 		}
 	}
 	

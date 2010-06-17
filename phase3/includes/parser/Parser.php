@@ -3056,17 +3056,16 @@ class Parser {
 					$found = true;
 				}
 			} elseif ( $title->isTrans() ) {
-				// TODO: Work by Peter17 in progress
 				# Interwiki transclusion
-				//if ( $this->ot['html'] && !$forceRawInterwiki ) {
-				//	$text = $this->interwikiTransclude( $title, 'render' );
-				//	$isHTML = true;
-				//} else {
+				if ( $this->ot['html'] && !$forceRawInterwiki ) {
+					$text = $this->interwikiTransclude( $title, 'render' );
+					$isHTML = true;
+				} else {
 					$text = $this->interwikiTransclude( $title, 'raw' );
 					# Preprocess it like a template
 					$text = $this->preprocessToDom( $text, self::PTD_FOR_INCLUSION );
 					$isChildObj = true;
-				//}
+				}
 				$found = true;
 			}
 
@@ -3275,88 +3274,23 @@ class Parser {
 			'deps' => $deps );
 	}
 
-
 	/**
 	 * Transclude an interwiki link.
-	 * TODO: separate in interwikiTranscludeFromDB & interwikiTranscludeFromAPI according to the iw type 
 	 */
 	function interwikiTransclude( $title, $action ) {
-		
 		global $wgEnableScaryTranscluding;
 
 		if ( !$wgEnableScaryTranscluding ) {
 			return wfMsg('scarytranscludedisabled');
 		}
 
-		//$url1 = $title->getFullUrl( "action=$action" );
-		$titles = $title->getNsText().':'.$title->getText();
-		$url1 = $title->getTransAPI( )."?action=query&prop=revisions&titles=$titles&rvprop=content&format=json";
+		$url = $title->getFullUrl( "action=$action" );
 
-		if ( strlen( $url1 ) > 255 ) {
+		if ( strlen( $url ) > 255 ) {
 			return wfMsg( 'scarytranscludetoolong' );
 		}
-		
-		$text = $this->fetchTemplateMaybeFromCache( $url1 );
-		
-		$url2 = $title->getTransAPI( )."?action=parse&text={{".$titles."}}&prop=templates&format=json";
-		
-		$get = Http::get( $url2 );
-		$myArray = FormatJson::decode($get, true);
-		
-		if ( ! empty($myArray['parse'])) {
-			$templates = $myArray['parse']['templates'];
-		}
-		
-		
-		for ($i = 0 ; $i < count($templates) ; $i++) {
-			$newTitle = $templates[$i]['*'];
-			
-			$url = $title->getTransAPI( )."?action=query&prop=revisions&titles=$newTitle&rvprop=content&format=json";
-		
-			
-			$listSubTemplates.= $newTitle."\n";
-			$list2.="<h2>".$newTitle."</h2>\n<pre>".$this->fetchTemplateMaybeFromCache( $url )."</pre>";
-
-			
-		}
-
-
-		return "<h2>$titles</h2><pre>$text</pre> Liste des modèles : <pre>".$listSubTemplates.'</pre>' . $list2;
+		return $this->fetchScaryTemplateMaybeFromCache( $url );
 	}
-	
-	
-	function fetchTemplateMaybeFromCache( $url ) {
-		global $wgTranscludeCacheExpiry;
-		$dbr = wfGetDB( DB_SLAVE );
-		$tsCond = $dbr->timestamp( time() - $wgTranscludeCacheExpiry );
-		$obj = $dbr->selectRow( 'transcache', array('tc_time', 'tc_contents' ),
-				array( 'tc_url' => $url, "tc_time >= " . $dbr->addQuotes( $tsCond ) ) );
-		if ( $obj ) {
-			return 'CACHE: '.$obj->tc_contents;
-		}
-	
-		$get = Http::get( $url );
-		
-		$content = FormatJson::decode($get, true);
-			
-		if ( ! empty($content['query']['pages'])) {
-			$page = array_pop($content['query']['pages']);
-			$text = $page['revisions'][0]['*'];
-		} else	{
-			
-			return wfMsg( 'scarytranscludefailed', $url );
-			
-		}
-	
-		$dbw = wfGetDB( DB_MASTER );
-		$dbw->replace( 'transcache', array('tc_url'), array(
-			'tc_url' => $url,
-			'tc_time' => $dbw->timestamp( time() ),
-			'tc_contents' => $text)
-		);
-				
-		return 'GET: '.$text;
-	}	
 
 	function fetchScaryTemplateMaybeFromCache( $url ) {
 		global $wgTranscludeCacheExpiry;

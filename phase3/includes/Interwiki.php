@@ -15,12 +15,11 @@ class Interwiki {
 	protected static $smCache = array();
 	const CACHE_LIMIT = 100; // 0 means unlimited, any other value is max number of entries.
 
-	protected $mPrefix, $mURL, $mAPI, $mLocal, $mTrans;
+	protected $mPrefix, $mURL, $mLocal, $mTrans;
 
-	public function __construct( $prefix = null, $url = '', $api = '', $local = 0, $trans = 0 ) {
+	public function __construct( $prefix = null, $url = '', $local = 0, $trans = 0 ) {
 		$this->mPrefix = $prefix;
 		$this->mURL = $url;
-		$this->mAPI = $api;
 		$this->mLocal = $local;
 		$this->mTrans = $trans;
 	}
@@ -154,7 +153,7 @@ class Interwiki {
 			__METHOD__ ) );
 		$iw = Interwiki::loadFromArray( $row );
 		if ( $iw ) {
-			$mc = array( 'iw_url' => $iw->mURL, 'iw_api' => $iw->mAPI, 'iw_local' => $iw->mLocal, 'iw_trans' => $iw->mTrans );
+			$mc = array( 'iw_url' => $iw->mURL, 'iw_local' => $iw->mLocal, 'iw_trans' => $iw->mTrans );
 			$wgMemc->add( $key, $mc, $wgInterwikiExpiry );
 			return $iw;
 		}
@@ -169,10 +168,9 @@ class Interwiki {
 	 * @return Boolean: whether everything was there
 	 */
 	protected static function loadFromArray( $mc ) {
-		if( isset( $mc['iw_url'] ) && isset( $mc['iw_api'] ) && isset( $mc['iw_local'] ) && isset( $mc['iw_trans'] ) ) {
+		if( isset( $mc['iw_url'] ) && isset( $mc['iw_local'] ) && isset( $mc['iw_trans'] ) ) {
 			$iw = new Interwiki();
 			$iw->mURL = $mc['iw_url'];
-			$iw->mAPI = $mc['iw_api'];
 			$iw->mLocal = $mc['iw_local'];
 			$iw->mTrans = $mc['iw_trans'];
 			return $iw;
@@ -191,17 +189,6 @@ class Interwiki {
 		if( $title != null ) {
 			$url = str_replace( "$1", $title, $url );
 		}
-		return $url;
-	}
-
-	/**
-	 * Get the API URL for this wiki
-	 * 
-	 * @return String: the URL
-	 */
-	public function getAPI( ) {
-		$url = $this->mAPI;
-
 		return $url;
 	}
 

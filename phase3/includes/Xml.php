@@ -280,7 +280,7 @@ class Xml {
 			$attributes['size'] = $size;
 		}
 
-		if( $value !== false ) { // maybe 0
+		if( $value ) {
 			$attributes['value'] = $value;
 		}
 

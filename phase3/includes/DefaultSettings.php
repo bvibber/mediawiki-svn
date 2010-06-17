@@ -1676,7 +1676,7 @@ $wgCacheEpoch = '20030516000000';
  * to ensure that client-side caches do not keep obsolete copies of global
  * styles.
  */
-$wgStyleVersion = '286';
+$wgStyleVersion = '284';
 
 
 # Server-side caching:
@@ -3777,7 +3777,7 @@ $wgEnableScaryTranscluding = false;
 /**
  * Expiry time for interwiki transclusion
  */
-$wgTranscludeCacheExpiry = 10;
+$wgTranscludeCacheExpiry = 3600;
 
 /**
  * Support blog-style "trackbacks" for articles.  See
