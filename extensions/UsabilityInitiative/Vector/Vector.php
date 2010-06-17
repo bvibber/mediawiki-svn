@@ -25,8 +25,10 @@ $wgVectorModules = array(
 	'editwarning' => array( 'global' => false, 'user' => true ),
 	'expandablesearch' => array( 'global' => true, 'user' => true ),
 	'footercleanup' => array( 'global' => false, 'user' => false ),
-	'simplesearch' => array( 'global' => true, 'user' => false ),
+	'simplesearch' => array( 'global' => false, 'user' => true ),
 );
+
+$wgDefaultUserOptions['vector-simplesearch'] = 1;
 
 /* Setup */
 
