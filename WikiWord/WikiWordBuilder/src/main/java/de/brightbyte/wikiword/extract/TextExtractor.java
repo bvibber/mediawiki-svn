@@ -100,7 +100,7 @@ public class TextExtractor extends AbstractExtractor<TextOutput> {
 			String syn = analyzerPage.getFirstParagraph().toString().trim();
 			
 			if (syn!=null && syn.length()>0) {
-					checkSmellsLikeWiki(0, syn, "definition text: "+name+" (id={0})", textId);
+					checkSmellsLikeWiki(0, syn, "synopsis text: "+name+" (id={0})", textId);
 					output.storeSynopsisText(textId, name, ptype, syn);
 			}
 		}

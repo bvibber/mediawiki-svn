@@ -75,6 +75,10 @@ public class WikiTextAnalyzerTest extends WikiTextAnalyzerTestBase {
 			s = stripClutter(text, 1, "TEST", armor);
 			assertEquals("complex image with links in description", "Hello\n\n\nWorld\nTalk:TEST", s.toString());
 			
+  			text = "Hello<ref>some reference here</ref> World";
+			s = stripClutter(text, 1, "TEST", armor);
+			assertEquals("make sure ref tags are not damaged", "Hello<ref>some reference here</ref> World", s.toString());
+			
 			//TODO: comment, nowiki, pre, gallery, magic ...
 			//TODO: nested links in images, also odd like [[Image:Hello.jpg|bla [[ foo]]
 		}
@@ -84,9 +88,45 @@ public class WikiTextAnalyzerTest extends WikiTextAnalyzerTestBase {
 				+"{{test|foo=bar}}\n"
 				+"World";
 			
-			CharSequence s = stripBoxes(text);
-			assertEquals("lone template", "Hello\n\nWorld", s.toString());
+			String expected = "Hello\n\nWorld";
 			
+			CharSequence s = stripBoxes(text);
+			assertEquals("lone template", expected, s.toString());
+			
+			text = "'''Wayne Roberts''' manages the [[Toronto Food Policy Council| Toronto Food Policy Council (TFPC)]], " +
+					"a citizen body of 30 food activists and experts that is widely recognized for its innovative approach to " +
+					"food security.<ref>See, for example, Harriet Friedmann,\"Bringing public institutions and food service " +
+					"companies into the project for a local, sustainable food system in Ontario,\" Agriculture and Human Values, " +
+					"24,3, March, 2007</ref> As a leading member of the [[Municipal government of Toronto|City of Toronto]]'s " +
+					"Environmental Task Force, he helped develop a number of official plans for the city, including the " +
+					"''Environmental Plan'' and ''Food Charter,'' adopted by [[Toronto City Council]] in 2000 and 2001 respectively." +
+					"<ref>Clean, Green and Healthy: A Plan for an Environmentally Sustainable Toronto (City of Toronto, February 2000) " +
+					"[http://www.toronto.ca/council/etfepfin.pdf], Toronto's Food Charter (City of Toronto, February 2000) " +
+					"[http://www.toronto.ca/food_hunger/pdf/food_charter.pdf]</ref> Many ideas and projects of the [[Toronto Food " +
+					"Policy Council|TFPC]] are featured in Roberts' book ''The No-Nonsense Guide to World Food'' (2008)." +
+					"<ref>No-Nonsense Guide to World Food, by Wayne Roberts, New Internationalist Publications, 2008</ref> " +
+					"In April 2009, under Roberts' leadership, the [[Toronto Food Policy Council|TFPC]] received the Bob Hunter " +
+					"Environmental Achievement Award, given to a City of Toronto agency with a record of outstanding leadership, " +
+					"for its efforts to make food an action item on the environmental agenda." +
+					"<ref>http://greengta.ca/positive-news/2009-green-toronto-awards-winners</ref> The [[Toronto Food Policy " +
+					"Council|TFPC]] also won honorary mention for a major award from the [[Community Food Security Coalition]] " +
+					"that honors exceptional work to promote food sovereignty in October, 2009.";
+			
+			expected = "'''Wayne Roberts''' manages the [[Toronto Food Policy Council| Toronto Food Policy Council (TFPC)]], a " +
+					"citizen body of 30 food activists and experts that is widely recognized for its innovative approach to food security. " +
+					"As a leading member of the [[Municipal government of Toronto|City of Toronto]]'s Environmental Task Force, he helped " +
+					"develop a number of official plans for the city, including the ''Environmental Plan'' and ''Food Charter,'' adopted by " +
+					"[[Toronto City Council]] in 2000 and 2001 respectively. Many ideas and projects of the [[Toronto Food Policy Council|TFPC]] " +
+					"are featured in Roberts' book ''The No-Nonsense Guide to World Food'' (2008). In April 2009, under Roberts' leadership, the " +
+					"[[Toronto Food Policy Council|TFPC]] received the Bob Hunter Environmental Achievement Award, given to a City of Toronto " +
+					"agency with a record of outstanding leadership, for its efforts to make food an action item on the environmental agenda. " +
+					"The [[Toronto Food Policy Council|TFPC]] also won honorary mention for a major award from the [[Community Food Security " +
+					"Coalition]] that honors exceptional work to promote food sovereignty in October, 2009.";
+			
+			s = stripBoxes(text);
+			assertEquals("ref tags", expected, s.toString());
+			
+			//TODO: tables, div, center, nesting, complex, broken
 			//TODO: tables, div, center, nesting, complex, broken
 		}
 
@@ -648,7 +688,7 @@ public class WikiTextAnalyzerTest extends WikiTextAnalyzerTestBase {
 	public void setUp() throws URISyntaxException, IOException {		
 		LanguageConfiguration lconfig = new LanguageConfiguration();
 
-		corpus = new Corpus("TEST", "generic", "generic", "generic", "generic", "en", "wikipedia", null);
+		corpus = new Corpus("TEST", "en", "en", "en", "en", "en", "wikipedia", null);
 		PlainTextAnalyzer language = new PlainTextAnalyzer(corpus);
 		language.configure(lconfig, tweaks);
 		language.initialize();

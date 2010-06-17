@@ -585,7 +585,8 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 		 */
 		public CharSequence getPlainText(boolean armored) {
 			if (plain==null) {
-				plain = stripMarkup( getFlatText(true) );
+				CharSequence flatText = getFlatText(true);
+				plain = stripMarkup(  flatText  );
 			}
 			
 			if (armored) return plain;
@@ -597,31 +598,17 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 		 */
 		public CharSequence getFirstParagraph() {
 			if (firstParagraph==null) {
-				firstParagraph = armor.unarmor( extractFirstParagraph( getCleanedText(true) ) );
-				if (firstParagraph==null) firstParagraph = "";
+				//CharSequence text = getCleanedText(true); //XXX: why did we try this??
+				CharSequence text = getFlatText(true);
 				
-				//firstParagraph = unarmor( extractFirstParagraph( getFlatText(true) ), armor );
+				CharSequence p = extractFirstParagraph( text );
 				
-				//firstParagraph = unarmor( extractFirstParagraph( getPlainText(false) ) );
-				
-				/*if (plain != null) {
-					firstParagraph = unarmor( extractFirstParagraph( plain ), armor );
+				if (p==null) {
+					firstParagraph = "";
+				} else {
+					p = stripMarkup(  p );
+					firstParagraph = armor.unarmor( p ); 
 				}
-				else {
-					firstParagraph = unarmor( extractFirstParagraph( getFlatText(true) ), armor );
-				}*/
-				
-				/*
-				if (plain != null) {
-					firstParagraph = unarmor( extractFirstParagraph( plain ), armor );
-				}
-				else if (flat != null) {
-					firstParagraph = unarmor( extractFirstParagraph( flat ), armor );
-				}
-				else {
-					firstParagraph = unarmor( extractFirstParagraph( getCleanedText(true) ), armor );
-				}
-				*/
 			}
 			
 			return firstParagraph;
@@ -633,7 +620,7 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 		public CharSequence getFirstSentence() {
 			if (firstSentence==null) {
 				CharSequence p = getFirstParagraph();
-				firstSentence = language.extractFirstSentence( p ); 
+				firstSentence = language.extractFirstSentence( p );
 			}
 			
 			return firstSentence;
@@ -1217,12 +1204,16 @@ public class WikiTextAnalyzer extends AbstractAnalyzer implements TemplateExtrac
 	}
 
 	protected CharSequence stripBoxes(CharSequence text) {
-		return applyManglers(config.stripBoxesManglers, text);
+		text = applyManglers(config.stripBoxesManglers, text);
+		text = StringUtils.trim(text); //TODO: consolidate multiple blank lines //TODO: strip empty parents ()
+		return text;
 	}
 
 	public CharSequence stripMarkup(CharSequence text) {
 		//NOTE: if one of the mangers is a StripMarkupMangler, we got regress.
-		return applyManglers(config.stripMarkupManglers, text);
+		text  = applyManglers(config.stripMarkupManglers, text);
+		text = StringUtils.trim(text); //TODO: consolidate multiple blank lines //TODO: strip empty parents ()
+		return text;
 	}
 
 	protected ResourceType determineResourceType(WikiPage page) {
