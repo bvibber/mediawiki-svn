@@ -56,10 +56,6 @@ public class DefaultTemplateParameterPropertySpec implements TemplateParameterPr
 		return this;
 	}
 	
-	public DefaultTemplateParameterPropertySpec setCondition(Pattern p, boolean anchored) {
-		return setCondition( new PatternNameMatcher(p, anchored));
-	}
-	
 	public DefaultTemplateParameterPropertySpec setCondition(String p, int flags, boolean anchored) {
 		return setCondition( new PatternNameMatcher(p, flags, anchored));
 	}

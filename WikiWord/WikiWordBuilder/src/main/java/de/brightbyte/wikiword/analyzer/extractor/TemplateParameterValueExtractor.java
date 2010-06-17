@@ -24,10 +24,6 @@ public class TemplateParameterValueExtractor implements ValueExtractor, Template
 		this(new PatternNameMatcher(template, flags, true), parameter);
 	}
 	
-	public TemplateParameterValueExtractor(Pattern template, String parameter) {
-		this(new PatternNameMatcher(template, true), parameter);
-	}
-	
 	public TemplateParameterValueExtractor(NameMatcher template, String parameter) {
 /*			this(new TemplateNameMatcher(template), properties);
 	}

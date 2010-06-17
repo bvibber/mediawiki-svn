@@ -23,10 +23,6 @@ public class TemplateParameterExtractor implements PropertyExtractor, TemplateUs
 		this(new ExactNameMatcher(template), properties);
 	}
 	
-	public TemplateParameterExtractor(Pattern template, TemplateParameterPropertySpec... properties) {
-		this(new PatternNameMatcher(template, true), properties);
-	}
-	
 	public TemplateParameterExtractor(NameMatcher template, TemplateParameterPropertySpec... properties) {
 /*			this(new TemplateNameMatcher(template), properties);
 	}

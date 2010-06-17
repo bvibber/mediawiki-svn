@@ -13,31 +13,32 @@ public class PatternNameMatcher extends AbstractAttributeMatcher<CharSequence> i
 	static final Logger logger = Logger.getLogger(PatternNameMatcher.class); 
 
 	protected Matcher matcher;
-	protected boolean anchored;
+	//protected boolean anchored; //screws up line matches
 
 	public PatternNameMatcher(String p, int flags, boolean anchored) {
-		this(Pattern.compile(p, flags | Pattern.MULTILINE), anchored);
+		this(Pattern.compile(AnalyzerUtils.getRegularExpression(p, flags| Pattern.MULTILINE, anchored), flags | Pattern.MULTILINE));
 	}
 	
-	public PatternNameMatcher(Pattern p, boolean anchored) {
-		this(p.matcher(""), anchored);
+	public PatternNameMatcher(Pattern p) {
+		this(p.matcher(""));
 	}
 	
-	public PatternNameMatcher(Matcher matcher, boolean anchored) {
+	public PatternNameMatcher(Matcher matcher) {
 		if (matcher==null) throw new NullPointerException();
 		this.matcher = matcher;
-		this.anchored = anchored;
+		//this.anchored = anchored;
 		
-		if (anchored) {
+		/*
+		if (anchored) { //screws up line matches
 			String p = matcher.pattern().pattern();
 			if (p.startsWith("^") || p.endsWith("$")) {
 				PatternNameMatcher.logger.warn("Anchored pattern contains anchor mark: "+p);
 			}
-		}
+		}*/
 	}
 
 	public String getRegularExpression() {
-		return AnalyzerUtils.getRegularExpression(matcher.pattern(), anchored);
+		return matcher.pattern().pattern();
 	}
 
 	public boolean matchesLine(String s) {
@@ -48,8 +49,9 @@ public class PatternNameMatcher extends AbstractAttributeMatcher<CharSequence> i
 	public boolean matches(CharSequence s) {
 		matcher.reset(s);
 		
-		if (anchored) return matcher.matches();
-		else return matcher.find();
+		//if (anchored) return matcher.matches(); //screws up multi-line matches
+		//else 
+		return matcher.find();
 	}
 
 	@Override

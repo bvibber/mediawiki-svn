@@ -19,8 +19,8 @@ public class TemplateNameMatcher extends AbstractAttributeMatcher<TemplateData> 
 		this(new PatternNameMatcher(pattern, flags, anchored));
 	}
 	
-	public TemplateNameMatcher(Pattern pattern, boolean anchored) {
-		this(new PatternNameMatcher(pattern, anchored));
+	public TemplateNameMatcher(Pattern pattern) {
+		this(new PatternNameMatcher(pattern));
 	}
 	
 	public TemplateNameMatcher(NameMatcher matcher) {

@@ -57,7 +57,11 @@ public class AnalyzerUtils {
 	public static String getRegularExpression(Pattern pattern, boolean anchored) {
 		int f = pattern.flags();
 		String p = pattern.pattern();
-		
+
+		return getRegularExpression(p, f, anchored);
+	}
+	
+	public static String getRegularExpression(String p, int f, boolean anchored) {
 		if ((f & Pattern.LITERAL) > 0) return "(" + Pattern.quote(p) + ")";
 		
 		StringBuilder s = new StringBuilder();
@@ -69,10 +73,15 @@ public class AnalyzerUtils {
 		if ((f & Pattern.UNICODE_CASE) > 0) s.append('u');
 		if ((f & Pattern.COMMENTS) > 0) s.append('x');
 		
-		if (s.length()>0) s.insert(0, "(?").append(':').append(p).append(')');
-		else s.append(p);
-			
-		if (anchored) s.insert(0, "^").append("$");
+		boolean wrap = s.length()>0;
+		
+		if (wrap) s.insert(0, "(?").append(':');
+
+		if (anchored) s.append("^(?:");
+		s.append(p);
+		if (anchored) s.append(")$");
+
+		if (wrap) s.append(')');
 		
 		return s.toString();
 	}

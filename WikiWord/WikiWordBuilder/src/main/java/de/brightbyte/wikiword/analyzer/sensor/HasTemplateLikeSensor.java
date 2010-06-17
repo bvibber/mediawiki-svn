@@ -21,7 +21,11 @@ public class HasTemplateLikeSensor<V> extends AbstractSensor<V> implements Templ
 	protected TemplateMatcher matcher;
 	
 	public HasTemplateLikeSensor(V value, String pattern, int flags) {
-		this(value, new TemplateNameMatcher(pattern, flags, false));
+		this(value, pattern, flags, false);
+	}
+	
+	public HasTemplateLikeSensor(V value, String pattern, int flags, boolean anchored) {
+		this(value, new TemplateNameMatcher(pattern, flags, anchored));
 	}
 	
 	public HasTemplateLikeSensor(V value, Map<String, NameMatcher> params) {
