@@ -350,6 +350,7 @@ class InterwikiIntegrationHooks {
 	 * Add newly watched articles to integration_watchlist
 	 */
 	public static function InterwikiIntegrationWatchArticleComplete( &$user, &$article ) {
+		global $wgDBname;
 		$title = $article->getTitle();
 		if ( $title->isTalkPage () ) {
 			$subjectNamespace = $title->getSubjectPage()->getNamespace();
@@ -362,17 +363,17 @@ class InterwikiIntegrationHooks {
 		$dbw = wfGetDB( DB_MASTER );
 		$dbw->insert( 'integration_watchlist',
 		  array(
-			'integration_wl_user' => $user->id,
+			'integration_wl_user' => $user->getId(),
+			'integration_wl_db' => $wgDBname,
 			'integration_wl_namespace' => $subjectNamespace,
-			'integration_wl_title' => $DBkey,
-			'integration_wl_notificationtimestamp' => null
+			'integration_wl_title' => $DBkey
 		  ) );
 		$dbw->insert( 'integration_watchlist',
 		  array(
-			'integration_wl_user' => $this->id,
+			'integration_wl_user' => $user->getId(),
+			'integration_wl_db' => $wgDBname,
 			'integration_wl_namespace' => $talkNamespace,
-			'integration_wl_title' => $DBkey,
-			'integration_wl_notificationtimestamp' => null
+			'integration_wl_title' => $DBkey
 		  ) );
 		return true;
 	}
@@ -381,6 +382,7 @@ class InterwikiIntegrationHooks {
 	 * Remove newly unwatched articles from integration_watchlist
 	 */
 	public static function InterwikiIntegrationUnwatchArticleComplete ( &$user, &$article ) {
+		global $wgDBname;
 		$title = $article->getTitle();
 		if ( $title->isTalkPage () ) {
 			$subjectNamespace = $title->getSubjectPage()->getNamespace();
@@ -393,13 +395,15 @@ class InterwikiIntegrationHooks {
 		$dbw = wfGetDB( DB_MASTER );
 		$dbw->delete( 'integration_watchlist',
 		  array(
-			'integration_wl_user' => $user->id,
+			'integration_wl_user' => $user->getId(),
+			'integration_wl_db' => $wgDBname,
 			'integration_wl_namespace' => $subjectNamespace,
 			'integration_wl_title' => $DBkey
 		  ) );
-		$dbw->insert( 'integration_watchlist',
+		$dbw->delete( 'integration_watchlist',
 		  array(
-			'integration_wl_user' => $this->id,
+			'integration_wl_user' => $user->getId(),
+			'integration_wl_db' => $wgDBname,
 			'integration_wl_namespace' => $talkNamespace,
 			'integration_wl_title' => $DBkey
 		  ) );
