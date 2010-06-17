@@ -11,7 +11,7 @@ $wgExtensionCredits['other'][] = array(
 
 $wgHooks['BeforePageDisplay'][] = 'inlineSectionJsCheck';
 
-$wgScriptLoaderNamedPaths[ 'inlineSectionEdit' ] =
+$wgResourceLoaderNamedPaths[ 'inlineSectionEdit' ] =
 	"extensions/UsabilityInitiativeJS2/InlineSectionEdit/InlineSectionEdit.js";
 
 function inlineSectionJsCheck( &$out, &$sk ){

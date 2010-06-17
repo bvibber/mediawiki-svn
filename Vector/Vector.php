@@ -58,10 +58,10 @@ $wgHooks['GetPreferences'][] = 'VectorHooks::addPreferences';
 
 // Register the named paths of javascript and css ( we never "dynamically" load the skin so the named paths can be set
 // in php )
-$wgScriptLoaderNamedPaths['CollapsibleNav'] = 'extensions/UsabilityInitiativeJS2/Vector/Modules/CollapsibleNav/CollapsibleNav.js';
-$wgScriptLoaderNamedPaths['CollapsibleTabs'] = 'extensions/UsabilityInitiativeJS2/Vector/Modules/CollapsibleTabs/CollapsibleTabs.js';
-$wgScriptLoaderNamedPaths['EditWarning'] = 'extensions/UsabilityInitiativeJS2/Vector/Modules/EditWarning/EditWarning.js';
-$wgScriptLoaderNamedPaths['FooterCleanup'] = 'extensions/UsabilityInitiativeJS2/Vector/Modules/FooterCleanup/FooterCleanup.js';
-$wgScriptLoaderNamedPaths['SimpleSearch'] = 'extensions/UsabilityInitiativeJS2/Vector/Modules/SimpleSearch/SimpleSearch.js';
+$wgResourceLoaderNamedPaths['CollapsibleNav'] = 'extensions/UsabilityInitiativeJS2/Vector/Modules/CollapsibleNav/CollapsibleNav.js';
+$wgResourceLoaderNamedPaths['CollapsibleTabs'] = 'extensions/UsabilityInitiativeJS2/Vector/Modules/CollapsibleTabs/CollapsibleTabs.js';
+$wgResourceLoaderNamedPaths['EditWarning'] = 'extensions/UsabilityInitiativeJS2/Vector/Modules/EditWarning/EditWarning.js';
+$wgResourceLoaderNamedPaths['FooterCleanup'] = 'extensions/UsabilityInitiativeJS2/Vector/Modules/FooterCleanup/FooterCleanup.js';
+$wgResourceLoaderNamedPaths['SimpleSearch'] = 'extensions/UsabilityInitiativeJS2/Vector/Modules/SimpleSearch/SimpleSearch.js';
 
 

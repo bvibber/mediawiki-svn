@@ -2,7 +2,7 @@
  * Name all the css and script used in UsabilityInitiative 
  */  
 
-mw.addClassFilePaths( {
+mw.addResourcePaths( {
 	"mw.style.usabilitySugest" : "css/suggestions.css",
 	"mw.style.vectorCollapsibleNav" : "css/vector.collapsibleNav.css",
 	"mw.style.vectorFooterCleanup" : "css/vector.footerCleanup.css",
