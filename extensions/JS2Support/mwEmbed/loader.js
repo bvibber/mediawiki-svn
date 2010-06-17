@@ -118,7 +118,7 @@ mw.setConfig( 'loaderContext', '' );
 /**
  * Core set of mwEmbed classes:
  */
-mw.addClassFilePaths( {
+mw.addResourcePaths( {
 	"mwEmbed"				: "mwEmbed.js",
 	"window.jQuery"			: "libraries/jquery/jquery-1.4.2.js",		
 	

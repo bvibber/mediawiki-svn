@@ -65,7 +65,7 @@ $wgUseMwEmbedLoaderModuleList = false;
 /**
  * The set of script-loader Named Paths, populated via extensions and javascript module loaders
  */
-$wgScriptLoaderNamedPaths = array();
+$wgResourceLoaderNamedPaths = array();
 
 /*
  * $wgEnableScriptLoader; If the script loader should be used to group all javascript requests.

@@ -38,7 +38,7 @@ if( ! isset( $wgEnableJS2system ) ){
 }
 
 // Add the Named path for JS2 AddMediaWizard "activator" for easy addition to EditPageBeforeEditToolbar
-$wgScriptLoaderNamedPaths[ 'AMWEditPage' ] = 'extensions/AddMediaWizard/AddMediaWizardEditPage.js';
+$wgResourceLoaderNamedPaths[ 'AMWEditPage' ] = 'extensions/AddMediaWizard/AddMediaWizardEditPage.js';
 
 // Add the addMediaWizard binding on pages that include the Edit Toolbar:
 $wgHooks['EditPageBeforeEditToolbar'][] = 'AddMediaWizard::addJS';

@@ -1,6 +1,6 @@
 <?php
 /**
- * mwScriptLoader.php
+ * mwResourceLoader.php
  * Script Loading Library for MediaWiki
  *
  * @file
@@ -27,10 +27,10 @@
 // Set a constant so the script-loader knows its not being used in "stand alone mode"
 define( 'SCRIPTLOADER_MEDIAWIKI', true);
 
-require_once( dirname(__FILE__) . '/mwEmbed/jsScriptLoader.php');
-// Do quick cache check via jsScriptLoader
-$myScriptLoader = new jsScriptLoader();
-if( $myScriptLoader->outputFromCache() ){
+require_once( dirname(__FILE__) . '/mwEmbed/ResourceLoader.php');
+// Do quick cache check via ResourceLoader
+$myResourceLoader = new ResourceLoader();
+if( $myResourceLoader->outputFromCache() ){
 	exit();
 }
 
@@ -47,24 +47,24 @@ ob_start();
 require_once( "includes/WebStart.php" ); //60ms
 $webstartwhitespace = ob_end_clean();
 
-wfProfileIn( 'mwScriptLoader.php' );
+wfProfileIn( 'mwResourceLoader.php' );
 
 if( $wgRequest->isPathInfoBad() ){
 	wfHttpError( 403, 'Forbidden',
 		'Invalid file extension found in PATH_INFO. ' .
-		'mwScriptLoader must be accessed through the primary script entry point.' );
+		'mwResourceLoader must be accessed through the primary script entry point.' );
 	return;
 }
 // Verify the script loader is on:
-if ( !$wgEnableScriptLoader && $myScriptLoader->outputFormat != 'messages' ) {
+if ( !$wgEnableResourceLoader && $myResourceLoader->outputFormat != 'messages' ) {
 	echo '/*ScriptLoader is not enabled for this site. To enable add the following line to your LocalSettings.php';
-	echo '<pre><b>$wgEnableScriptLoader=true;</b></pre>*/';
+	echo '<pre><b>$$wgEnableResourceLoader=true;</b></pre>*/';
 	echo 'alert(\'Script loader is disabled\');';
 	wfAbruptExit( 1 );
 }
 
-// Run jsScriptLoader action:
-$myScriptLoader->doScriptLoader();
+// Run ResourceLoader action:
+$myResourceLoader->doResourceLoader();
 
-wfProfileOut( 'mwScriptLoader.php' );
+wfProfileOut( 'mwResourceLoader.php' );
 
