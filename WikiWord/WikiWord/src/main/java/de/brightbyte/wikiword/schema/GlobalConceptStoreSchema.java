@@ -25,6 +25,7 @@ public class GlobalConceptStoreSchema extends WikiWordConceptStoreSchema {
 	protected RelationTable mergeTable;
 	protected RelationTable langprepTable;
 	protected RelationTable meaningTable;
+	protected RelationTable aboutTable;
 
 	private ConceptTypeSet conceptTypes;
 	protected TweakSet tweaks;
@@ -109,8 +110,17 @@ public class GlobalConceptStoreSchema extends WikiWordConceptStoreSchema {
 		meaningTable.addKey( new DatabaseKey(this, KeyType.INDEX, "concept_lang", new String[] {"concept", "lang"}) );
 		addTable(meaningTable);
 		
-		
-		//TODO: reference table (aka link)
+		aboutTable = new RelationTable(this, "about", getDefaultTableAttributes());
+		//aliasTable.addField( new DatabaseField(this, "id", "INT", "AUTO_INCREMENT", false, KeyType.PRIMARY) );
+		aboutTable.addField( new DatabaseField(this, "lang", getTextType(10), null, true, null ) );
+		aboutTable.addField( new ReferenceField(this, "local_resource", "INT", null, true, null, "resource", "id", null ) );
+		aboutTable.addField( new ReferenceField(this, "local_resource_name", getTextType(255), null, true, null, "resource", "name", null ) );
+		aboutTable.addField( new ReferenceField(this, "type", "INT", null, true, KeyType.INDEX, "concept", "id", null ) );
+		aboutTable.addField( new ReferenceField(this, "concept", "INT", null, true, null, "concept", "id", null ) );
+		aboutTable.addKey( new DatabaseKey(this, KeyType.INDEX, "by_concept", new String[] {"concept", "lang"}) );
+		aboutTable.addKey( new DatabaseKey(this, KeyType.INDEX, "by_resource_name", new String[] {"lang", "local_resource_name"}) );
+		aboutTable.addKey( new DatabaseKey(this, KeyType.INDEX, "by_resource_id", new String[] {"lang", "local_resource"}) );
+		addTable(aboutTable);
 		
 		//getLanguages(); //initialize knownlanguages, corpuses and content types#
 	}
@@ -125,7 +135,8 @@ public class GlobalConceptStoreSchema extends WikiWordConceptStoreSchema {
 		checkIdSanity(originTable, "local_concept");
 		checkReferentialIntegrity(originTable, "global_concept", false);   
 		checkReferentialIntegrity(meaningTable, "concept", false);   
-
+		checkReferentialIntegrity(aboutTable, "about", false);   
+		
 		checkReferentialIntegrity(relationTable, "concept1", false);   
 		checkReferentialIntegrity(relationTable, "concept2", false);   
 		

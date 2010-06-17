@@ -54,6 +54,7 @@ public class DatabaseGlobalConceptStoreBuilder extends DatabaseWikiWordConceptSt
 	
 	protected RelationTable originTable;
 	protected RelationTable meaningTable;
+	protected RelationTable aboutTable;
 	
 	protected RelationTable mergeTable;
 	//protected RelationTable langprepTable;
@@ -110,6 +111,9 @@ public class DatabaseGlobalConceptStoreBuilder extends DatabaseWikiWordConceptSt
 		
 		Inserter meaningInserter = configureTable("meaning", 16, 4*1024);
 		meaningTable = (RelationTable)meaningInserter.getTable();
+		
+		Inserter aboutInserter = configureTable("about", 16, 4*1024);
+		aboutTable = (RelationTable)aboutInserter.getTable();
 		
 		mergeInserter = configureTable("merge", 16, 4*1024);
 		mergeTable = (RelationTable)mergeInserter.getTable();
@@ -678,7 +682,19 @@ public class DatabaseGlobalConceptStoreBuilder extends DatabaseWikiWordConceptSt
 		}
 	}
 	
-	public void buildMeaningIndex() throws PersistenceException {
+	public void buildGlobalIndexes() throws PersistenceException {
+		if (beginTask("buildGlobalIndexes", "importAbout")) {
+			importAbout();
+			endTask("buildGlobalIndexes", "importAbout");
+		}
+
+		if (beginTask("buildGlobalIndexes", "buildMeaningIndex")) {
+			buildMeaningIndex();
+			endTask("buildGlobalIndexes", "buildMeaningIndex");
+		}
+	}
+	
+	protected void buildMeaningIndex() throws PersistenceException {
 		Corpus[] cc = getLanguages();
 		
 		for (Corpus c: cc) {
@@ -701,6 +717,34 @@ public class DatabaseGlobalConceptStoreBuilder extends DatabaseWikiWordConceptSt
 			+ " AND O.lang = "+database.quoteString(c.getLanguage());
 		
 		int n = executeChunkedUpdate("importMeanings", "import("+c.getLanguage()+")", sql, null, localMeanings, "M.concept");
+		return n;
+	}
+	
+	public void importAbout() throws PersistenceException {
+		Corpus[] cc = getLanguages();
+		
+		for (Corpus c: cc) {
+			if (beginTask("importAbout", "importAbout#"+c.getLanguage())) {
+				importAbout(c);
+				endTask("importAbout", "importAbout#"+c.getLanguage());
+			}
+		}		
+	}
+
+	private int importAbout(Corpus c) throws PersistenceException {
+		LocalConceptStoreSchema localdb = getLocalConceptDatabase(c);
+		DatabaseTable localAbout = localdb.getTable("about");
+		DatabaseTable localResource = localdb.getTable("resource");
+		DatabaseTable origin = database.getTable("origin");
+		
+		String sql = "INSERT INTO "+aboutTable.getSQLName()+" (concept, lang, local_resource, local_resource_name, type) "
+			+ " SELECT O.global_concept, "+database.quoteString(c.getLanguage())+", R.id, R.name, R.type "
+			+ " FROM "+origin.getSQLName()+" as O " 
+			+ " JOIN "+localAbout.getSQLName()+" as A ON A.concept = O.local_concept "
+			+ " 																			AND O.lang = "+database.quoteString(c.getLanguage()) + " "
+			+ " JOIN "+localResource.getSQLName()+" as R ON R.id = A.resource ";
+		
+		int n = executeChunkedUpdate("importAbout", "import("+c.getLanguage()+")", sql, null, localAbout, "A.concept");
 		return n;
 	}
 
