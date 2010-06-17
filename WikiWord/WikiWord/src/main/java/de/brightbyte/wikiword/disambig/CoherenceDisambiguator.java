@@ -316,8 +316,10 @@ public class CoherenceDisambiguator<T extends TermReference, C extends WikiWordC
 		
 		for (Disambiguator.Interpretation<X, C> interp: interpretations) {
 			CoherenceDisambiguation<X, C> r = getScore(interp, context, similarities, features);
+			double score = r.getScore();
 			
-				if ( best == null || r.getScore() > bestScore) {
+				if ( ( best == null &&  score> 0 && !Double.isNaN(score)) 
+						|| (score > bestScore && !Double.isNaN(score)) ) {
 					best = r;
 					bestScore = r.getScore();
 					
@@ -325,7 +327,7 @@ public class CoherenceDisambiguator<T extends TermReference, C extends WikiWordC
 				}
 		}
 		
-		if (best==null || bestScore<minScore) {
+		if (best==null || bestScore<minScore || Double.isNaN(bestScore)) {
 			trace("best score is not good enough ("+bestScore+"<"+minScore+"), using popularity disambiguator.");
 			
 			Disambiguation<X, C> p = popularityDisambiguator.disambiguate(root, meanings, context);
@@ -525,7 +527,12 @@ public class CoherenceDisambiguator<T extends TermReference, C extends WikiWordC
 		return r;
 	}
 	
-	protected static double doubleSanity(double value, String name, String hint, double minValue, double minTollerance, double maxValue, double maxTollerance) {
+	protected double doubleSanity(double value, String name, String hint, double minValue, double minTollerance, double maxValue, double maxTollerance) {
+		if ( Double.isNaN(value) ) {
+			this.trace("Warning: encountered NaN value for "+name);
+			value = minValue;
+		}
+		
 		if (value<(minValue-minTollerance) || value>(maxValue+maxTollerance)) {
 			String m = "encountered insane "+name+": "+value;
 			if (hint != null) m += "; " + hint;
