@@ -24,8 +24,8 @@ class ActiveStrategy {
 			array(
 				'categorylinks' => array( 'RIGHT JOIN',
 					array(
-						'cl_from=page_id',
-						'cl_to' => 'Task_force',
+						'categorylinks.cl_from=page_id',
+						'categorylinks.cl_to' => 'Task_force',
 					),
 				),
 				'categorylinks as finishedcategory' =>
@@ -128,8 +128,8 @@ class ActiveStrategy {
 			$text = self::getTaskForceName( $row->tf_name );
 			$tempTitle = Title::makeTitleSafe( NS_CATEGORY, $text );
 			$categories[$tempTitle->getDBkey()] = $row->tf_name;
-			$categories[$tempTitle->getDBkey()." task force"] = $row->tf_name;
-			$categories[$tempTitle->getDBkey()." Task Force"] = $row->tf_name;
+			$categories[$tempTitle->getDBkey()."_task_force"] = $row->tf_name;
+			$categories[$tempTitle->getDBkey()."_Task_Force"] = $row->tf_name;
 		}
 		
 		$tables = array( 'page', 'categorylinks' );
