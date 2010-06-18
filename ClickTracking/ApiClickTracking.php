@@ -60,8 +60,9 @@ class ApiClickTracking extends ApiBase {
 		if ( !is_null( $params['redirectto'] ) ) {
 			// Validate the redirectto parameter
 			// Must be a local URL, may not be protocol-relative
+			// This validation rule is the same as the one in ClickTracking.js
 			$href = $params['redirectto'];
-			if ( strlen( $href ) > 0 && $href{0} == '/' && ( strlen( $href ) == 1 || $href{1} != '/' ) ) {
+			if ( strlen( $href ) > 0 && $href[0] == '/' && ( strlen( $href ) == 1 || $href[1] != '/' ) ) {
 				global $wgOut;
 				$wgOut->redirect( $params['redirectto'] );
 				$wgOut->output();
