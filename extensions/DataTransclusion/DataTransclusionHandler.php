@@ -296,7 +296,7 @@ class DataTransclusionHandler {
 		'!\]!' => '&#93;',
 		'!\{!' => '&#123;',
 		'!\}!' => '&#125;',
-		'!\'!' => '&apos;',
+		'!\'!' => '&#39;', //NOTE: &apos; doesn't work, mediawiki escapes it. maybe because it'S not in HTML 4.
 		'!\|!' => '&#124;',
 		'!^\*!m' => '&#42;',
 		'!^#!m' => '&#35;',
