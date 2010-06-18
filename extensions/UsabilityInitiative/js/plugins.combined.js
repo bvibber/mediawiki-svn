@@ -1224,7 +1224,7 @@ $.suggestions = {
 			result.addClass( 'suggestions-result-current' );
 		}
 		if ( updateTextbox ) {
-			if ( result.length == 0 ) {
+			if ( result.length == 0 || result.is( '.suggestions-special' ) ) {
 				$.suggestions.restore( context );
 			} else {
 				context.data.$textbox.val( result.data( 'text' ) );
@@ -1234,7 +1234,6 @@ $.suggestions = {
 			}
 			context.data.$textbox.trigger( 'change' );
 		}
-		$.suggestions.special( context );
 	},
 	/**
 	 * Respond to keypress event
@@ -1247,7 +1246,7 @@ $.suggestions = {
 			// Arrow down
 			case 40:
 				if ( wasVisible ) {
-					$.suggestions.highlight( context, 'next', false );
+					$.suggestions.highlight( context, 'next', true );
 				} else {
 					$.suggestions.update( context, false );
 				}
@@ -1256,7 +1255,7 @@ $.suggestions = {
 			// Arrow up
 			case 38:
 				if ( wasVisible ) {
-					$.suggestions.highlight( context, 'prev', false );
+					$.suggestions.highlight( context, 'prev', true );
 				}
 				preventDefault = wasVisible;
 				break;
