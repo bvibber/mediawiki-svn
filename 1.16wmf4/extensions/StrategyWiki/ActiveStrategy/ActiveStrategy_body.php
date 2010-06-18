@@ -118,6 +118,8 @@ class ActiveStrategy {
 			$text = self::getTaskForceName( $row->tf_name );
 			$tempTitle = Title::makeTitleSafe( NS_CATEGORY, $text );
 			$categories[$row->tf_name] = $tempTitle->getDBkey();
+			$categories[$row->tf_name . " Task Force"] = $tempTitle->getDBkey();
+			$categories[$row->tf_name . " task force"] = $tempTitle->getDBkey();
 		}
 		
 		$tables = array( 'page', 'categorylinks' );
