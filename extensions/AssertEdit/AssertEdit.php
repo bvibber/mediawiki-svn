@@ -77,8 +77,9 @@ function efAssertApiEditHook( $editPage, $textBox, &$result ) {
 
 	if ( $assertName != '' ) {
 		$pass = AssertEdit::callAssert( $assertName, false );
-		if ( !$pass )
+		if ( !$pass ) {
 			$result['assert'] = $assertName;
+		}
 	}
 
 	// check for negative assert
@@ -87,9 +88,10 @@ function efAssertApiEditHook( $editPage, $textBox, &$result ) {
 		if ( $assertName != '' ) {
 			$pass = AssertEdit::callAssert( $assertName, true );
 		}
-		if ( !$pass )
+		if ( !$pass ) {
 			$result['nassert'] = $assertName;
+		}
 	}
 	
-	return $pass == true;
+	return $pass;
 }
