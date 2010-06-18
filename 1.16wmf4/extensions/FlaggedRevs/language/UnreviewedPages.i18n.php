@@ -307,6 +307,7 @@ $messages['da'] = array(
 
 /** German (Deutsch)
  * @author Kghbln
+ * @author Merlissimo
  * @author Raimond Spekking
  * @author Umherirrender
  */
@@ -319,7 +320,7 @@ $messages['de'] = array(
 	'unreviewed-watched' => '(von $1 {{PLURAL:$1|aktivem Benutzer|aktiven Benutzern}} beobachtet)',
 	'unreviewed-list' => 'Diese Spezialseite zeigt Seiten, die bisher noch nicht in der angegebenen Stufe markiert wurden.',
 	'unreviewed-none' => 'Es gibt keine Seiten, die den eingegebenen Kriterien entsprechen.',
-	'unreviewed-viewing' => '(wird überprüft)',
+	'unreviewed-viewing' => '(wird gesichtet)',
 	'unreviewed-hours' => '($1 {{PLURAL:$1|Stunde|Stunden}})',
 	'unreviewed-days' => '($1 {{PLURAL:$1|Tag|Tage}})',
 	'unreviewed-recent' => '(weniger als 1 Stunde)',
@@ -1261,7 +1262,7 @@ $messages['pt-br'] = array(
 	'unreviewed-diff' => 'analisar',
 	'unreviewed-unwatched' => '(não-vigiada)',
 	'unreviewed-watched' => '($1 {{PLURAL:$1|utilizador ativo|utilizadores ativos}} a vigiar)',
-	'unreviewed-list' => 'Esta página lista as páginas de conteúdo que não foram revistas até ao nível escolhido.',
+	'unreviewed-list' => 'Esta página lista as páginas de conteúdo que não foram revisadas até ao nível escolhido.',
 	'unreviewed-none' => 'No momento não há páginas que se enquadrem nestes critérios',
 	'unreviewed-viewing' => '(sob análise)',
 	'unreviewed-hours' => '($1 {{PLURAL:$1|hora|horas}})',
