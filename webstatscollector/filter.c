@@ -151,10 +151,13 @@ bool check_project(struct info *in) {
 
 int main(int ac, char **av) {
 	char line[LINESIZE];
+	int gidlist[] = {65534};
 
-	setuid(65534);
+	chroot("/tmp/");
+	chdir("/");
 	setgid(65534);
-	chroot("/tmp");
+	setgroups(1,gidlist);
+	setuid(65534);
 
 	char *undef,*ip,*url, *size;
 	while(fgets(line,LINESIZE-1,stdin)) {

@@ -1,0 +1,9 @@
+#include <tunables/global>
+/a/webstats/bin/filter {
+  #include <abstractions/base>
+  capability setuid,
+  capability setgid,
+  capability sys_chroot,
+  /a/webstats/bin/filter mixr,
+}
+
