@@ -110,10 +110,10 @@ mw.EmbedPlayerSmil = {
 	/**
 	* Update the thumbnail html
 	*/
-	updateThumbnailHTML: function() {
+	updatePosterHTML: function() {
 		// If we have a "poster" use that;		
 		if(  this.poster ){
-			this.parent_updateThumbnailHTML();
+			this.parent_updatePosterHTML();
 			return ;
 		}
 		// If no thumb could be found use the first frame of smil: 

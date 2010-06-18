@@ -1042,7 +1042,7 @@ if( typeof preMwEmbedConfig == 'undefined') {
 	 * @param {Boolean} fresh A fresh check is issued.	 	
 	 */
 	 // Stub feature apiUserNameCache to avoid multiple calls 
-	 // ( a more general api cache framework should be devloped ) 
+	 // ( a more general api framework should be developed  ) 
 	 var apiUserNameCache = {};
 	 mw.getUserName = function( apiUrl, callback, fresh ){	 		 	
 	 	if( typeof apiUrl == 'function' ){
@@ -1055,7 +1055,8 @@ if( typeof preMwEmbedConfig == 'undefined') {
 	 	if( mw.isLocalDomain( apiUrl ) ){	 		
 	 		if( typeof wgUserName != 'undefined' &&  wgUserName !== null ) {
 	 			callback( wgUserName )
-	 			return ;
+	 			// In case someone called this function without a callback
+	 			return wgUserName;
 	 		}
 	 	}
 	 	if( ! fresh && apiUserNameCache[ apiUrl ]  ) {

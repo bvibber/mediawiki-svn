@@ -280,6 +280,11 @@ mw.setConfig( 'embedPlayerSourceAttributes', [
 			$j( mw ).trigger( 'EmbedPlayerManagerReady' );
 		}
 		
+		// If we have not detected player yet do that: 
+		if( ! mw.EmbedTypes.players ){
+			mw.EmbedTypes.init();
+		}		
+		
 		// Add the embedPlayer ready callback 
 		if( typeof callback == 'function' ){  
 			mw.playerManager.addCallback( callback );
@@ -1962,7 +1967,7 @@ mw.EmbedPlayer.prototype = {
 		this.controlBuilder.closeMenuOverlay();
 		
 		// update the thumbnail html: 
-		this.updateThumbnailHTML();
+		this.updatePosterHTML();
 		
 		this.paused = true;
 		this.thumbnail_disp = true;
@@ -2004,7 +2009,7 @@ mw.EmbedPlayer.prototype = {
 		this.$interface = $j( this ).parent( '.interface_wrap' );				
 		
 		// Update Thumbnail for the "player" 
-		this.updateThumbnailHTML();		
+		this.updatePosterHTML();		
 		
 		// Add controls if enabled:
 		if ( this.controls ) {			
@@ -2155,7 +2160,7 @@ mw.EmbedPlayer.prototype = {
 				}
 			);
 			if ( !this.thumbnail_updating ) {
-				this.updateThumbnail( this.last_thumb_url , false );
+				this.updatePoster( this.last_thumb_url , false );
 				this.last_thumb_url = null;
 			}
 		}
@@ -2177,7 +2182,7 @@ mw.EmbedPlayer.prototype = {
 	* 	true switch happens instantly
 	* 	false / undefined animated cross fade
 	*/
-	updateThumbnail : function( src, quick_switch ) {
+	updatePosterSrc: function( src, quick_switch ) {
 		// make sure we don't go to the same url if we are not already updating: 
 		if ( !this.thumbnail_updating && $j( '#img_thumb_' + this.id ).attr( 'src' ) == src )
 			return false;
@@ -2227,7 +2232,7 @@ mw.EmbedPlayer.prototype = {
 						if ( _this.last_thumb_url ) {
 							var src_url = _this.last_thumb_url;
 							_this.last_thumb_url = null;
-							_this.updateThumbnail( src_url );
+							_this.updatePosterSrc( src_url );
 						}
 				} );
 			}
@@ -2239,8 +2244,8 @@ mw.EmbedPlayer.prototype = {
 	* playing, configuring the player, inline cmml display, HTML linkback,
 	* download, and embed code.
 	*/
-	updateThumbnailHTML: function () {
-		mw.log( 'embedPlayer:updateThumbnailHTML::' + this.id );
+	updatePosterHTML: function () {
+		mw.log( 'embedPlayer:updatePosterHTML::' + this.id );
 		var thumb_html = '';
 		var class_atr = '';
 		var style_atr = '';
@@ -2255,7 +2260,7 @@ mw.EmbedPlayer.prototype = {
 		var posterSrc = ( this.poster ) ? this.poster : 
 						mw.getConfig( 'imagesPath' ) + 'vid_default_thumb.jpg';				
 		
-		// Poster support is not very consistant in browsers
+		// Poster support is not very consistent in browsers
 		// use a jpg poster image:  
 		$j( this ).html(
 			$j( '<img />' )
