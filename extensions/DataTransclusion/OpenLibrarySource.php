@@ -37,6 +37,7 @@ class OpenLibrarySource extends WebDataTransclusionSource {
 	function __construct( $spec ) {
 		if ( !isset( $spec['url'] ) ) {
 			$spec['url'] = 'http://openlibrary.org/api/books?bibkeys=ISBN:{isbn}&details=true';
+			//TODO: custom function to normalize ISBN (trim, strip dashes, correct checksum, etc)
 		}
 
 		if ( !isset( $spec['dataFormat'] ) ) {
