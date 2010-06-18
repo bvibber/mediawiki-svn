@@ -160,6 +160,13 @@ $messages['eu'] = array(
 	'prefs-updates' => 'Eguneratzeak',
 );
 
+/** Persian (فارسی)
+ * @author Ladsgroup
+ */
+$messages['fa'] = array(
+	'prefs-updates' => 'به‌روزرسانی‌ها',
+);
+
 /** Finnish (Suomi)
  * @author Crt
  * @author Str4nd

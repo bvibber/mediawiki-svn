@@ -1270,7 +1270,7 @@ $messages['be-tarask'] = array(
 	'wikieditor-toolbar-tool-link-title' => 'Уставіць спасылку',
 	'wikieditor-toolbar-tool-link-int' => 'На вікі-старонку',
 	'wikieditor-toolbar-tool-link-int-target' => 'Назва старонкі:',
-	'wikieditor-toolbar-tool-link-int-target-tooltip' => 'Назву старонкі альбо URL-адрас',
+	'wikieditor-toolbar-tool-link-int-target-tooltip' => 'Назва старонкі альбо URL-адрас',
 	'wikieditor-toolbar-tool-link-int-text' => 'Тэкст спасылкі:',
 	'wikieditor-toolbar-tool-link-int-text-tooltip' => 'Увядзіце тэкст, які павінен быць паказаны',
 	'wikieditor-toolbar-tool-link-ext' => 'На вонкавую ўэб-старонку',
@@ -1297,7 +1297,7 @@ $messages['be-tarask'] = array(
 	'wikieditor-toolbar-tool-reference-insert' => 'Уставіць',
 	'wikieditor-toolbar-tool-reference-text' => 'Тэкст спасылкі',
 	'wikieditor-toolbar-tool-signature' => 'Подпіс і момант часу',
-	'wikieditor-toolbar-section-advanced' => 'Дадатковыя',
+	'wikieditor-toolbar-section-advanced' => 'Дадаткова',
 	'wikieditor-toolbar-tool-heading' => 'Загаловак',
 	'wikieditor-toolbar-tool-heading-1' => 'Узровень 1',
 	'wikieditor-toolbar-tool-heading-2' => 'Узровень 2',
@@ -1365,7 +1365,7 @@ $messages['be-tarask'] = array(
 	'wikieditor-toolbar-tool-replace-regex' => 'Лічыць радок пошуку рэгулярным выразам',
 	'wikieditor-toolbar-tool-replace-button-findnext' => 'Працягваць пошук',
 	'wikieditor-toolbar-tool-replace-button-replacenext' => 'Працягваць замену',
-	'wikieditor-toolbar-tool-replace-button-replaceall' => 'Замяніць усе',
+	'wikieditor-toolbar-tool-replace-button-replaceall' => 'Замяніць усё',
 	'wikieditor-toolbar-tool-replace-close' => 'Закрыць',
 	'wikieditor-toolbar-tool-replace-nomatch' => 'Па Вашаму запыту нічога ня знойдзена.',
 	'wikieditor-toolbar-tool-replace-success' => 'Колькасьць зробленых заменаў: $1.',
@@ -1373,7 +1373,7 @@ $messages['be-tarask'] = array(
 	'wikieditor-toolbar-tool-replace-invalidregex' => 'Уведзены Вамі рэгулярны выраз зьяўляецца няслушным: $1',
 	'wikieditor-toolbar-section-characters' => 'Спэцыяльныя сымбалі',
 	'wikieditor-toolbar-characters-page-latin' => 'Лацінскія',
-	'wikieditor-toolbar-characters-page-latinextended' => 'Лацінскі пашыраны',
+	'wikieditor-toolbar-characters-page-latinextended' => 'Лацінскія пашыраныя',
 	'wikieditor-toolbar-characters-page-ipa' => 'IPA',
 	'wikieditor-toolbar-characters-page-symbols' => 'Сымбалі',
 	'wikieditor-toolbar-characters-page-greek' => 'Грэцкія',
@@ -1432,7 +1432,7 @@ $messages['be-tarask'] = array(
 	'wikieditor-toolbar-help-content-olist-syntax' => '# Элемэнт сьпісу<br /># Элемэнт сьпісу',
 	'wikieditor-toolbar-help-content-olist-result' => '<ol><li>Элемэнт сьпісу</li><li>Элемэнт сьпісу</li></ol>',
 	'wikieditor-toolbar-help-content-file-description' => 'Укладзены файл',
-	'wikieditor-toolbar-help-content-file-syntax' => '[[{{ns:file}}:Example.png|міні|Тэкст подпісу]]',
+	'wikieditor-toolbar-help-content-file-syntax' => '[[{{ns:file}}:Прыклад.png|thumb|Тэкст подпісу]]',
 	'wikieditor-toolbar-help-content-file-result' => "<div style='width:104px;' class='thumbinner'><a title='Тэкст подпісу' class='image' href='#'><img height='50' width='100' border='0' class='thumbimage' src='extensions/UsabilityInitiative/images/wikiEditor/toolbar/example-image.png' alt=''/></a><div class='thumbcaption'><div class='magnify'><a title='Enlarge' class='internal' href='#'><img height='11' width='15' alt='' src='$1/common/images/magnify-clip.png'/></a></div>Тэкст подпісу</div></div>",
 	'wikieditor-toolbar-help-content-reference-description' => 'Зноска',
 	'wikieditor-toolbar-help-content-reference-syntax' => 'Тэкст старонкі.&lt;ref name="test"&gt;[http://www.example.org Тэкст спасылкі], дадатковы тэкст.&lt;/ref&gt;',
@@ -4976,7 +4976,7 @@ $messages['fa'] = array(
 	'wikieditor-toolbar-tool-replace-button-findnext' => 'یافتن بعدی',
 	'wikieditor-toolbar-tool-replace-button-replacenext' => 'جایگزین کردن بعدی',
 	'wikieditor-toolbar-tool-replace-button-replaceall' => 'جایگزین کردن همه موارد',
-	'wikieditor-toolbar-tool-replace-close' => 'لغو',
+	'wikieditor-toolbar-tool-replace-close' => 'بستن',
 	'wikieditor-toolbar-tool-replace-nomatch' => 'جستجوی شما با هیچ موردی مطابقت نداشت.',
 	'wikieditor-toolbar-tool-replace-success' => '$1 جایگزینی انجام شد.',
 	'wikieditor-toolbar-tool-replace-emptysearch' => 'شما چیزی برای جستجو وارد نکردید.',
@@ -6849,6 +6849,7 @@ $messages['hsb'] = array(
  * @author Bdamokos
  * @author Dani
  * @author Glanthor Reviol
+ * @author Hunyadym
  */
 $messages['hu'] = array(
 	'wikieditor-toolbar' => 'Szerkesztő-eszköztár',
@@ -6964,7 +6965,7 @@ $messages['hu'] = array(
 	'wikieditor-toolbar-tool-replace-button-findnext' => 'Következő keresése',
 	'wikieditor-toolbar-tool-replace-button-replacenext' => 'Következő cseréje',
 	'wikieditor-toolbar-tool-replace-button-replaceall' => 'Összes cseréje',
-	'wikieditor-toolbar-tool-replace-close' => 'Mégse',
+	'wikieditor-toolbar-tool-replace-close' => 'Bezárás',
 	'wikieditor-toolbar-tool-replace-nomatch' => 'Nincs egyetlen találat sem.',
 	'wikieditor-toolbar-tool-replace-success' => '$1 csere történt.',
 	'wikieditor-toolbar-tool-replace-emptysearch' => 'Nem adtad meg, hogy mit akarsz keresni.',
@@ -10551,6 +10552,7 @@ $messages['nds-nl'] = array(
 
 /** Dutch (Nederlands)
  * @author McDutchie
+ * @author Niels
  * @author Siebrand
  */
 $messages['nl'] = array(
@@ -10674,8 +10676,8 @@ Wilt u er een interne verwijzing van maken?',
 	'wikieditor-toolbar-tool-replace-emptysearch' => 'U hebt geen zoekterm opgegeven.',
 	'wikieditor-toolbar-tool-replace-invalidregex' => 'De door u ingegeven reguliere expressie is ongeldig: $1',
 	'wikieditor-toolbar-section-characters' => 'Speciale tekens',
-	'wikieditor-toolbar-characters-page-latin' => 'Latijns',
-	'wikieditor-toolbar-characters-page-latinextended' => 'Latijns uitgebreid',
+	'wikieditor-toolbar-characters-page-latin' => 'Latijn',
+	'wikieditor-toolbar-characters-page-latinextended' => 'Latijn uitgebreid',
 	'wikieditor-toolbar-characters-page-ipa' => 'IPA',
 	'wikieditor-toolbar-characters-page-symbols' => 'Symbolen',
 	'wikieditor-toolbar-characters-page-greek' => 'Grieks',

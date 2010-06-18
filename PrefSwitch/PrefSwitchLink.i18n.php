@@ -225,6 +225,18 @@ $messages['eu'] = array(
 	'tooltip-pt-prefswitch-link-off' => 'Ezaugarri berriak frogatu',
 );
 
+/** Persian (فارسی)
+ * @author Ladsgroup
+ */
+$messages['fa'] = array(
+	'prefswitch-link-anon' => 'ویژگی‌های جدید',
+	'tooltip-pt-prefswitch-link-anon' => 'یادگیری در مورد ویژگی‌های جدید',
+	'prefswitch-link-on' => 'مرا باز گردان',
+	'tooltip-pt-prefswitch-link-on' => 'غیرفعال کردن ویژگی‌های جدید',
+	'prefswitch-link-off' => 'ویژگی‌های جدید',
+	'tooltip-pt-prefswitch-link-off' => 'خروج از امکانات جدید',
+);
+
 /** Finnish (Suomi)
  * @author Crt
  */

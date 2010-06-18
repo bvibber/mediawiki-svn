@@ -741,10 +741,13 @@ Klikatu batean bere estatistikak ikusteko.',
 
 /** Persian (فارسی)
  * @author Ebraminio
+ * @author Ladsgroup
  * @author Mardetanha
  */
 $messages['fa'] = array(
 	'prefstats' => 'آمار ترجیحات',
+	'prefstats-title' => 'آمار ترجیحات',
+	'prefstats-xaxis' => 'مدت زمان (ساعت)',
 	'prefstats-factor-hour' => 'ساعت',
 	'prefstats-factor-sixhours' => 'شش ساعت',
 	'prefstats-factor-day' => 'روز',

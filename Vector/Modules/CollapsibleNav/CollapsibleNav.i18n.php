@@ -141,9 +141,11 @@ $messages['eu'] = array(
 
 /** Persian (فارسی)
  * @author Ebraminio
+ * @author Ladsgroup
  */
 $messages['fa'] = array(
-	'vector-collapsiblenav-preference' => 'فعال‌کردن منوی تاشوی ناوبری  سمت چپ',
+	'vector-collapsiblenav-preference' => 'فعال‌کردن منوی تاشوی ناوبری در پوسته وکتور',
+	'vector-collapsiblenav-more' => 'زبان‌های بیشتر',
 );
 
 /** Finnish (Suomi)
@@ -205,10 +207,11 @@ $messages['hsb'] = array(
 
 /** Hungarian (Magyar)
  * @author Glanthor Reviol
+ * @author Hunyadym
  * @author Tgr
  */
 $messages['hu'] = array(
-	'vector-collapsiblenav-preference' => 'Összecsukható bal oldali navigációs menü engedélyezése',
+	'vector-collapsiblenav-preference' => 'Összecsukható navigációs menü engedélyezése a Vector felületen',
 	'vector-collapsiblenav-more' => 'Más nyelveken',
 );
 
@@ -344,8 +347,8 @@ $messages['pl'] = array(
  * @author Dragonòt
  */
 $messages['pms'] = array(
-	'vector-collapsiblenav-preference' => "↓ Abìlita a stërmé j'element ant ël menu ëd navigassion ant ël livel Vector",
-	'vector-collapsiblenav-more' => '↓ Pi lenghe',
+	'vector-collapsiblenav-preference' => "↓ Abilité a stërmé j'element ant la bara ëd navigassion ant ël livel Vector",
+	'vector-collapsiblenav-more' => "↓ Pì 'd lenghe",
 );
 
 /** Portuguese (Português)
