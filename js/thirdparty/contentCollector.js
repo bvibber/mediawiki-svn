@@ -421,3 +421,5 @@ function makeContentCollector( browser, domInterface ) {
 
 	return cc;
 }
+
+
