@@ -188,7 +188,8 @@ schema = true
 url = http://www.mediawiki.org/wiki/Extension:CentralAuth
 
 CentralNotice
-settings[] = wgNoticeCentralPath: text, wgNoticeLocalPath: text
+settings[] = wgNoticeCentralPath: text, wgNoticeUseLocalNotice: bool
+settings[] = wgNoticeLocalPath: text
 settings[] = wgNoticeLang: text, wgNoticeProject: text, wgNoticeProjects: array
 settings[] = wgNoticeCentralDirectory: text, wgNoticeLocalDirectory: text
 settings[] = wgNoticeInfrastructure: bool, wgCentralNoticeLoader: bool
@@ -285,7 +286,7 @@ array[] = wgCommentboxNamespaces: ns-simple
 url = http://www.mediawiki.org/wiki/Extension:Commentbox
 
 CommentPages
-settings[] = wgCommentPagesNS: int
+settings[] = wgCommentPagesNS: int, wgCommentPagesContentNamespace: int
 url = http://www.mediawiki.org/wiki/Extension:CommentPages
 
 CommentSpammer
@@ -834,19 +835,16 @@ settings[] = wgTranslateMessageNamespaces: array, wgTranslateAC: array
 settings[] = wgTranslateGroupStructure: array, wgTranslateAddMWExtensionGroups: bool
 settings[] = wgTranslateEC: array, wgTranslateCC: array, wgTranslateTasks: array
 settings[] = wgTranslatePHPlot: text, wgTranslatePHPlotFont: text
-settings[] = wgTranslateYamlLibrary: text
-settings[] = wgTranslateGroupRoot: text, wgTranslateGroupFiles: array
-settings[] = wgGoogleApiKey: text, wgTranslateTM: array
-settings[] = wgTranslateApertium: text
+settings[] = wgTranslateYamlLibrary: text,wgTranslateGroupRoot: text
+settings[] = wgTranslateGroupFiles: array, wgTranslateTranslationServices: array
 array[] = wgTranslateStaticTags: assoc
 array[] = wgTranslateLanguageFallbacks: assoc, wgTranslateBlacklist: array
 array[] = wgTranslateMessageNamespaces: ns-simple, wgTranslateAuthorBlacklist: array
 array[] = wgTranslateAC: assoc, wgTranslateGroupStructure: array
 array[] = wgTranslateEC: simple, wgTranslateCC: assoc
 array[] = wgTranslateTasks: assoc, wgTranslateGroupFiles: simple
-array[] = wgTranslateTM: assoc
-empty[] = wgTranslateStaticTags: false, wgTranslateTM: false
-empty[] = wgGoogleApiKey: false, wgTranslateApertium: false
+array[] = wgTranslateTranslationServices: array
+empty[] = wgTranslateStaticTags: false
 url = http://www.mediawiki.org/wiki/Extension:Translate
 
 Uniwiki - Authors
