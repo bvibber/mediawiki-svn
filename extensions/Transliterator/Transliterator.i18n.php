@@ -497,5 +497,6 @@ $messages['vi'] = array(
 	'transliterator-error-syntax' => 'Cú pháp không hợp lệ <code>$1</code> trong [[MediaWiki:$2]]',
 	'transliterator-error-rulecount' => 'Hơn $1 quy tắc trong [[MediaWiki:$2]]',
 	'transliterator-error-rulesize' => 'Quy tắc <code>$1</code> có hơn $3 ký tự vào bên trái trong [[MediaWiki:$2]]',
+	'transliterator-error-prefix' => '[[MediaWiki:$2]] phải có ít nhất $1 ký tự.',
 );
 

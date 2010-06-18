@@ -43,6 +43,13 @@ $messages['br'] = array(
 	'addmediawizard-desc' => 'Ouzhpennañ un ameiler evit ar mediaoù, diorroet e kenlabour gant Kaltura ha Diazezadur Wikimedia',
 );
 
+/** Bosnian (Bosanski)
+ * @author CERminator
+ */
+$messages['bs'] = array(
+	'addmediawizard-desc' => 'Dodavanje čarobnjaka za mediju, razvijenog u saradnji Kaltura i Wikimedia Fondacije',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
@@ -292,6 +299,13 @@ $messages['tl'] = array(
  */
 $messages['tr'] = array(
 	'addmediawizard-desc' => 'Ortam ekleme sihirbazı, Kaltura ve Vikimedya Kuruluşu ortaklığıyla geliştirilmiştir',
+);
+
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'addmediawizard-desc' => 'Thuật sĩ để thêm tập tin, phát triển dưới sự cộng tác của Kaltura và Wikimedia Foundation',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

@@ -14818,6 +14818,7 @@ $messages['ps'] = array(
  * @author Lijealso
  * @author Malafaya
  * @author Waldir
+ * @author 555
  */
 $messages['pt'] = array(
 	'configure-setting-desc' => 'Descrições para parâmetros da configuração do MediaWiki',
@@ -14964,7 +14965,7 @@ $messages['pt'] = array(
 	'configure-setting-wgExportFromNamespaces' => 'Permitir a opção "exportar todas as páginas no espaço nominal" em [[Special:Export]]',
 	'configure-setting-wgExportMaxHistory' => 'Número máximo de revisões para [[Special:Export]]',
 	'configure-setting-wgExportMaxLinkDepth' => 'Valor máximo do parâmetro "pagelink-depth" em [[Special:Export]]',
-	'configure-setting-wgFilterLogTypes' => 'Tipos de eliminações permitidos no registo',
+	'configure-setting-wgFilterLogTypes' => 'Tipos de registos com suporte a ocultamento',
 	'configure-setting-wgImportTargetNamespace' => 'Espaço nominal de destino para importações interwikis',
 	'configure-setting-wgLogActions' => 'Mensagens de formatação de eventos de registo',
 	'configure-setting-wgLogActionsHandlers' => 'Chamadas de formatação de eventos de registo',
@@ -15435,23 +15436,40 @@ $messages['pt'] = array(
  * @author Giro720
  * @author Hamilton Abreu
  * @author Luckas Blade
+ * @author 555
  */
 $messages['pt-br'] = array(
+	'configure-setting-wgSitename' => 'Nome do site',
 	'configure-setting-wgActionPaths' => 'URLs por ação',
 	'configure-setting-wgActionPaths-key' => 'Ação',
+	'configure-setting-wgActionPaths-value' => 'Modelo de URL',
+	'configure-setting-wgAllDBsAreLocalhost' => 'Silenciosamente repassar todas as conexões do banco de dados ao servidor local',
+	'configure-setting-wgDBAvgStatusPoll' => "Intervalo entre consultas ''SHOW STATUS'' em condições de sobrecarga",
+	'configure-setting-wgDBerrorLog' => 'Arquivo de registros do banco de dados',
+	'configure-setting-wgDBname' => 'Nome do banco de dados a utilizar',
+	'configure-setting-wgDBpassword' => 'Senha para $wgDBuser',
+	'configure-setting-wgDBadminpassword' => 'Senha para $wgDBadminuser',
+	'configure-setting-wgDBport' => 'Porta do servidor de banco de dados',
+	'configure-setting-wgDBserver' => 'Nome ou endereço IP do servidor de banco de dados',
+	'configure-setting-wgDBtype' => 'Tipo de banco de dados a ser utilizado',
+	'configure-setting-wgDBuser' => 'Nome de usuário para autenticação no banco de dados',
+	'configure-setting-wgDBadminuser' => 'Nome de usuário administrativo do banco de dados',
+	'configure-setting-wgLocalDatabases' => 'Outros bancos de dados que podem ser administrados a partir deste servidor',
 	'configure-setting-wgIgnoreImageErrors' => 'Não exibir mensagens de erro para imagens',
 	'configure-setting-wgTranslateNumerals' => 'Transliterar números',
 	'configure-setting-wgArticleRobotPolicies-key' => 'Título da página',
 	'configure-setting-wgExtraLanguageNames-key' => 'Código de língua',
 	'configure-setting-wgExtraLanguageNames-value' => 'Nome',
-	'configure-setting-wgPageShowWatchingUsers' => 'Mostrar que usuários estão a vigiar uma página',
-	'configure-setting-wgUniversalEditButton' => 'Ativar o Botão de Edição Universal',
-	'configure-setting-wgAjaxLicensePreview' => 'Usar AJAX para pré-visualizar licenciamento nos carregamentos',
-	'configure-setting-wgEnableUploads' => 'Ativar carregamentos',
-	'configure-setting-wgHashedUploadDirectory' => 'Usar "hash" aplicado a diretorias para carregamentos',
+	'configure-setting-wgPageShowWatchingUsers' => 'Mostrar quais usuários estão vigiando uma página',
+	'configure-setting-wgUniversalEditButton' => 'Habilitar o Botão de Edição Universal',
+	'configure-setting-wgAjaxLicensePreview' => 'Usar AJAX para pré-visualizar o licenciamento dos uploads',
+	'configure-setting-wgEnableUploads' => 'Habilitar uploads',
+	'configure-setting-wgHashedUploadDirectory' => "Usar diretórios com resumo criptográfico ''(hash directories)'' para uploads",
+	'configure-setting-wgLocalFileRepo' => 'Repositório local de arquivos',
 	'configure-setting-wgRemoteUploads' => 'Usar a ligação de carregamento quando os carregamentos estiverem desactivados',
 	'configure-setting-wgStrictFileExtensions' => 'Bloquear qualquer extensão de ficheiro não-preferida',
-	'configure-setting-wgFilterLogTypes' => 'Tipos de log de eliminação permitidos',
+	'configure-setting-wgVersion' => 'Versão do MediaWiki',
+	'configure-setting-wgFilterLogTypes' => 'Tipos de registros com suporte a ocultações',
 	'configure-setting-wgMaxRedirectLinksRetrieved' => 'Número máximo de links para uma página de redirecionamento listada em [[Special:Whatlinkshere/RedirectDestination]]',
 	'configure-setting-wgSpecialPageGroups-key' => 'Grupo',
 	'configure-setting-wgAutopromote-value' => 'Condições',
@@ -15464,7 +15482,7 @@ $messages['pt-br'] = array(
 	'configure-setting-wgPasswordSender' => 'Endereço de email para lembrete de palavra-chave',
 	'configure-setting-wgPasswordReminderResendTime' => 'Tempo mínimo, em horas, que deve decorrer entre lembretes de palavra-chave',
 	'configure-setting-wgDebugComments' => 'Incluir porções da saída de registro em comentário HTML da página.',
-	'configure-setting-wgShowSQLErrors' => 'Mostrar páginas de erros de base de dados',
+	'configure-setting-wgShowSQLErrors' => 'Mostrar páginas de erros do banco de dados',
 	'configure-setting-wgAPIMaxUncachedDiffs' => 'Número máximo de diferenças não-cacheadas que podem ser obtidas num pedido da API',
 	'configure-setting-wgEdititis' => 'Mostrar contagens de edições de usuário em vários locais proeminentes',
 	'configure-setting-wgUseSquid' => 'Ativar Squid',

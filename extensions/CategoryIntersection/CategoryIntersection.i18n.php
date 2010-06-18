@@ -798,6 +798,7 @@ $messages['vi'] = array(
 	'categoryintersection-desc' => 'Sử dụng một bản chứa các giá trị băm dùng cho [[Special:CategoryIntersection|các thể loại giao nhau]] trong một trang',
 	'categoryintersection-doit' => 'Liệt kê các trang trong tất cả các thể loại này',
 	'categoryintersection-maxcategories' => 'Số thể loại giao nhau tối đa cho phép là $1.',
+	'categoryintersection-mincategories' => 'Bạn cần ghi ít nhất là hai thể loại.',
 	'categoryintersection-results' => 'Tìm được $1 {{PLURAL:$1|kết quả|kết quả}}.',
 );
 

@@ -1913,6 +1913,7 @@ Erabilgarritasunerako Ekimenari buruz gehiago jakiteko, bisitatu [http://usabili
  */
 $messages['fa'] = array(
 	'optin' => 'انتخاب‌کردن گام مقدماتی قابلیت استفاده',
+	'optin-desc' => 'به کاربران اجازه بده تا نسخهٔ بتا از آخرین پیشرفت‌های آغازهٔ استفاده‌پذیری را بیازمایند.',
 	'optin-title-optedout' => 'استفاده از بتا',
 	'optin-title-optedin' => 'خروج از بتا',
 	'optin-title-justoptedin' => 'به نسخه بتا خوش‌آمدید',
@@ -1925,14 +1926,32 @@ $messages['fa'] = array(
 	'optin-feedback-back' => 'اگر علاقه‌ای به شرکت در نظرخواهی ندارید، می‌توانید به $1 بازگردید.',
 	'optin-success-in' => 'در حال حاضر شما نسخه بتا را آزمایش می‌کنید.
 شما می‌توانید هر وقت که خواستید با کلیک بر روی «{{int:optin-leave}}» در بالای صفحه، به حالت قبل برگردید.',
+	'optin-leave-cancel' => 'اگر مایل باشید که به استفاده از نسخه بتا ادامه دهید، می‌توانید به $1 باز گردید.',
+	'optin-success-out' => 'شما با موفقیت از نسخه بتا خارج شدید.
+شما می‌توانید در هر زمان دیگر با کلیک کردن بر روی پیوند «{{int:optin-try}}» در بالای صفحه دوباره آن را امتحان کنید.',
+	'optin-success-feedback' => 'از شما به خاطر بازخوردتان متشکریم!',
 	'optin-accept-short' => 'بزن بریم!',
 	'optin-accept-long' => 'خروج از بتا',
+	'optin-accept-long-anon' => 'به سامانه ورود شوید و نسخه بتا را بیازمایید',
 	'optin-deny-short' => 'نه ممنون!',
 	'optin-deny-long' => 'بازگشت به صفحه قبلی',
 	'optin-submit-out' => 'خروج از بتا',
+	'optin-submit-feedback' => 'دادن بازخورد',
 	'optin-survey-yes' => 'بله',
 	'optin-survey-no' => 'نه',
+	'optin-survey-question-likedislike' => 'چه چیزی را در مورد نسخهٔ بتا دوست داشتید؟ چه چیزی را در مورد نسخهٔ بتا دوست نداشتید؟',
+	'optin-survey-question-whyoptout' => 'چرا استفاده از ویژگی‌های جدید را ترک می‌کنید؟(لطفا انتخاب کنید.تاثیر گذار است)',
+	'optin-survey-answer-whyoptout-hard' => 'استفاده از این خیلی سخت است.',
+	'optin-survey-answer-whyoptout-didntwork' => 'به اندازه کافی مفید نیست.',
+	'optin-survey-answer-whyoptout-notpredictable' => 'ویژگی‌ها آن طور که انتظار می‌رفت نیست.',
+	'optin-survey-answer-whyoptout-didntlike-layout' => 'من از طرح‌بندی و زبانه‌های جدید خوشم نمی‌آید.',
+	'optin-survey-answer-whyoptout-didntlike-toolbar' => 'من از نوار ابزار جدید خوشم نمی‌آید.',
 	'optin-survey-answer-whyoptout-other' => 'دلایل دیگر:',
+	'optin-survey-question-browser' => 'از کدام مرورگر استفاده می کنید؟',
+	'optin-survey-answer-browser-other' => 'مرورگر دیگر:',
+	'optin-survey-question-os' => 'از کدام سیستم عامل استفاده می کنید؟',
+	'optin-survey-answer-os-other' => 'سیستم عامل دیگر:',
+	'optin-survey-question-res' => 'وضوح صفحه نمایش شما چقدر است؟',
 	'optin-survey-answer-changes-lookfeel' => 'به روز رسانی ظاهر وب‌گاه.',
 	'optin-survey-answer-changes-other' => 'سایر موارد:',
 	'optin-improvements2' => '== چه چیزهایی بهبود یافته؟ ==
@@ -6223,8 +6242,8 @@ Chúng tôi đã giới thiệu một số các cải tiến khác như cải ti
  * @author Malafaya
  */
 $messages['vo'] = array(
-	'optin-survey-yes' => 'Si',
-	'optin-survey-no' => 'No',
+	'optin-survey-yes' => 'Si!',
+	'optin-survey-no' => 'Nö!',
 	'optin-survey-answer-whyoptout-other' => 'Kod votik:',
 	'optin-survey-answer-changes-other' => 'Votik:',
 );

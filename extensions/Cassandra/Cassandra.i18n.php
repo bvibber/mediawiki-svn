@@ -240,3 +240,10 @@ $messages['uk'] = array(
 	'cassandra-desc' => 'Зберігати текст версії в базі даних [http://cassandra.apache.org/ Apache Cassandra]',
 );
 
+/** Vietnamese (Tiếng Việt)
+ * @author Vinhtantran
+ */
+$messages['vi'] = array(
+	'cassandra-desc' => 'Lưu trữ văn bản phiên bản trong cơ sở dữ liệu [http://cassandra.apache.org/ Apache Cassandra]',
+);
+

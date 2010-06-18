@@ -591,6 +591,25 @@ $messages['eu'] = array(
 	'ct-update-table' => 'Taula eguneratu',
 );
 
+/** Persian (فارسی)
+ * @author Ladsgroup
+ */
+$messages['fa'] = array(
+	'ct-event-name' => 'نام رویداد',
+	'ct-total-header' => 'مجموع کلیک‌ها',
+	'ct-start-date' => 'تاریخ شروع (YYYYMMDD)',
+	'ct-end-date' => 'تاریخ پایان (YYYYMMDD)',
+	'ct-change-graph' => 'نمودار تغییرات',
+	'ct-beginner' => 'مبتدی',
+	'ct-intermediate' => 'متوسط',
+	'ct-expert' => 'پیشرفته',
+	'ct-date-range' => 'بازه زمانی',
+	'ct-anon-users' => 'کاربران گمنام',
+	'ct-user-contribs' => 'مجموع مشارکت‌های کاربر',
+	'ct-and' => 'و',
+	'ct-update-table' => 'جدول بروزرسانی',
+);
+
 /** Finnish (Suomi)
  * @author Cimon Avaro
  * @author Crt

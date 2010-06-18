@@ -10145,6 +10145,7 @@ $messages['ps'] = array(
 	'ow_uiprefs' => 'ويکيډاټا',
 	'ow_none_selected' => 'هېڅ هم نه دی ټاکل شوی',
 	'ow_transaction_user' => 'د کارن نوم:',
+	'ow_transaction_restore' => 'بېرته پرځای کول',
 	'ow_transaction_summary' => 'لنډيز',
 	'ow_conceptmapping_help' => '<p>شونې کړنې: <ul>
 <li>&action=insert&<data_context_prefix>=<defined_id>&...  insert a mapping</li>
@@ -10185,6 +10186,7 @@ $messages['ps'] = array(
 	'ow_User' => 'کارن',
 	'ow_Property' => 'ځانتيا',
 	'ow_Value' => 'ارزښت',
+	'ow_added' => 'ورګډ شو',
 	'ow_meaningsoftitle' => 'د "$1" ماناګانې',
 	'ow_Permission_denied' => '<h2>د اجازې غوښتنه مو رد شوه</h2>',
 	'ow_copy_no_action_specified' => 'لطفاً يوه کړنه ځانګړې کړی',

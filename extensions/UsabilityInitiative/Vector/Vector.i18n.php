@@ -175,9 +175,11 @@ $messages['es'] = array(
 /** Persian (فارسی)
  * @author Ebraminio
  * @author Huji
+ * @author Ladsgroup
  */
 $messages['fa'] = array(
 	'vector' => 'بهبودهای رابط کاربر برای پوستهٔ برداری',
+	'vector-desc' => 'بهبود در عناصر رابط کاربری از طریق پوسته وکتور',
 );
 
 /** Finnish (Suomi)

@@ -1406,6 +1406,13 @@ $messages['pms'] = array(
 	'wah-api-error' => "A-i é staje n'eror con l'API. Për piasì preuva torna pì tard.",
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'wah-short-audio' => '$1 غږيزه دوتنه، $2',
+);
+
 /** Portuguese (Português)
  * @author Hamilton Abreu
  * @author Lijealso

@@ -364,6 +364,7 @@ $messages['eu'] = array(
 
 /** Persian (فارسی)
  * @author Ebraminio
+ * @author Huji
  * @author Ladsgroup
  */
 $messages['fa'] = array(
@@ -372,6 +373,7 @@ $messages['fa'] = array(
 	'optin-leave' => 'خروج از بتا',
 	'tooltip-pt-optin-leave' => 'خاموش کردن امکانات جدید',
 	'optin-feedback' => 'بازخورد نسخه بتا',
+	'tooltip-pt-optin-feedback' => 'دربارهٔ تجربهٔ خود از ویژگی‌های جدید بازخورد دهید',
 );
 
 /** Finnish (Suomi)

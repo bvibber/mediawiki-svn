@@ -1439,7 +1439,7 @@ $messages['bs'] = array(
 	'configure-ext-ext-dependencies' => "'''Upozorenje:''' ovo proširenje zahtijeva da se {{PLURAL:$2|aktivira slijedeće proširenje|aktiviraju slijedeća proširenja}}: $1.",
 	'configure-ext-ext-dependency-err' => "'''Greška:''' proširenje $1 zahtijeva da proširenje $2 bude aktivirano.",
 	'configure-ext-doc' => 'Pogledajte dokumentaciju na internetu',
-	'configure-ext-schemachange' => "'''Upozorenje:''' ovo proširenje zahtjeva ažuriranje baze podataka da bi ispravno radilo!",
+	'configure-ext-schemachange' => "'''Upozorenje:''' ovo proširenje zahtjeva [http://www.mediawiki.org/wiki/Manual:Update.php ažuriranje baze podataka] da bi ispravno radilo!",
 	'configure-ext-settings' => 'Postavke',
 	'configure-ext-settings-dep-errors' => 'Ovo proširenje ne može biti omogućeno jer {{PLURAL:$1|slijedeća postavka ima|slijedeće postavke imaju}} neprihvatljivu vrijednost:',
 	'configure-ext-settings-dep-error' => '$1: zahtijevana vrijednost: $2, trenutna vrijednost: $3',
@@ -1523,6 +1523,7 @@ $messages['bs'] = array(
 	'configure-view' => 'Pogled',
 	'configure-view-all-versions' => 'Potpuni spisak verzija',
 	'configure-view-default' => 'Pretpostavljene postavke',
+	'configure-viewconfig-line' => '$1 $2 od $3 $5: $4',
 	'extensions' => 'Postavke proširenja',
 	'right-configure' => 'Podešavanje wikija',
 	'right-configure-all' => 'Postavljanje svih wiki postavki',
@@ -1553,6 +1554,7 @@ $messages['bs'] = array(
 	'configure-condition-description-1' => 'Najmanji broj uređivanja je $1',
 	'configure-condition-description-3' => 'E-mail potvrđen',
 	'configure-boolop-description-and' => 'Svi uslovi moraju biti ispunjeni',
+	'configure-farmer-settings' => '[[Special:Configure|Podesite ovaj wiki]].',
 );
 
 /** Catalan (Català)
@@ -10204,7 +10206,7 @@ $messages['vo'] = array(
 	'configure-ext-settings' => 'Paramets',
 	'configure-ext-use-extension' => 'Gebön veitükumami at',
 	'configure-ext-use' => 'Gebön',
-	'configure-form-reason' => 'Votükamakod:',
+	'configure-form-reason' => 'Kod:',
 	'configure-customised' => "''Paramet at pelönedükon''",
 	'configure-arrayinput-oneperline' => "'''(bal a lien)'''",
 	'configure-summary' => 'Pad patik at dälon ole ad votükön parametemi vüka at. Logolös [[http://www.mediawiki.org/wiki/Manual:Configuration_settings Parametem]] ad reidön nünis pluik.',

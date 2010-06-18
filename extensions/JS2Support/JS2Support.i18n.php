@@ -206,8 +206,8 @@ $messages['pl'] = array(
  */
 $messages['pms'] = array(
 	'js2support-desc' => "Manten ëd JS2 com n'estension",
-	'js2support-debug-preference' => '↓ Disabìlita ragrupament e minimisassion dë script',
-	'prefs-script-debug' => 'Debug djë script',
+	'js2support-debug-preference' => "↓ Disabilité j'argropament e la miniadurisassion dj'arsorse",
+	'prefs-script-debug' => "Gavé ij bigat da j'arsorse",
 );
 
 /** Portuguese (Português)

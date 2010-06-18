@@ -216,6 +216,7 @@ $messages['pt'] = array(
 $messages['pt-br'] = array(
 	'rped' => 'Detecção da existência de páginas remotas',
 	'rped-desc' => 'Liga um link à Wikipédia, se a página de destino não existir na wiki local mas existir na Wikipédia',
+	'rped-wikipedia-url' => 'http://pt.wikipedia.org/',
 );
 
 /** Russian (Русский)

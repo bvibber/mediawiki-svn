@@ -1344,6 +1344,7 @@ $messages['vep'] = array(
 $messages['vi'] = array(
 	'chemicalsources' => 'Nguồn hóa học',
 	'chemicalsource-desc' => 'Thêm thẻ <nowiki><chemform></nowiki> để viết biểu thức hóa học',
+	'chemicalsources-desc' => '[[Special:ChemicalSources|Trang đặc biệt]] cho các nguồn hóa học',
 	'chemFunctions_ListPage' => 'Nguồn hóa học',
 	'chemFunctions_DataList' => 'Đây là danh sách những website có thể cung cấp thông tin về chất hóa học này:<br /><br />
 * <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&Units=SI">Chất $MIXCASNameFormula tại NIST</a><br />

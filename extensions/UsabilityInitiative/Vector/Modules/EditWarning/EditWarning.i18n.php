@@ -151,8 +151,8 @@ Denne advarsel kan slås fra under {{int:prefs-editing}} i dine indstillinger.',
  * @author Umherirrender
  */
 $messages['de'] = array(
-	'vector-editwarning-warning' => 'Das Verlassen dieser Seite kann dazu führen, dass deine Änderungen verloren gehen.
-Wenn du angemeldet bist, kannst du das Anzeigen dieser Warnung im „{{int:prefs-editing}}“-Bereich deiner Einstellungen abschalten.',
+	'vector-editwarning-warning' => 'Das Verlassen dieser Seite kann dazu führen, dass die Änderungen verloren gehen.
+Als angemeldeter Benutzer kann das Anzeigen dieser Warnung im „{{int:prefs-editing}}“-Bereich der Einstellungen abgeschaltet werden.',
 	'vector-editwarning-preference' => 'Warnen, wenn eine zur Bearbeitung geöffnete Seite verlassen wird, die nicht gespeicherte Änderungen enthält',
 );
 
@@ -238,8 +238,11 @@ Saioa hasi baduzu, mezu hau kendu dezakezu zure hobespenen orrialdeko "{{int:pre
 /** Persian (فارسی)
  * @author Ebraminio
  * @author Huji
+ * @author Ladsgroup
  */
 $messages['fa'] = array(
+	'vector-editwarning-warning' => 'خروج از این صفحه ممکن است باعث از دست رفتن هرچه نوشته‌اید شود.
+اگر شما با نام کاربری وارد شده‌اند .می‌توانید این هشدار را در بخش "{{int:prefs-editing}}" ترجیحاتتان بیابید.',
 	'vector-editwarning-preference' => 'زمان خروج از صفحهٔ ویرایش در صورت داشتن ویرایش‌های‌ ذخیره‌نشده به من هشدار بده',
 );
 
