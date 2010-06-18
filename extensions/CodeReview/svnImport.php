@@ -66,7 +66,7 @@ class SvnImport extends Maintenance {
 			return;
 		}
 
-		$this->output( "Syncing repo $repoName from r$start to HEAD..." );
+		$this->output( "Syncing repo $repoName from r$start to HEAD...\n" );
 
 		if ( !$svn->canConnect() ) {
 			$this->error( "Unable to connect to repository." );
@@ -113,12 +113,12 @@ class SvnImport extends Maintenance {
 			$options = array( 'ORDER BY' => 'cr_id DESC' );
 
 			if ( $cacheSize == "all" ) {
-				$this->output( "Pre-caching all uncached diffs..." );
+				$this->output( "Pre-caching all uncached diffs...\n" );
 			} else {
 				if ( $cacheSize == 1 ) {
-					$this->output( "Pre-caching the latest diff..." );
+					$this->output( "Pre-caching the latest diff...\n" );
 				} else {
-					$this->output( "Pre-caching the latest $cacheSize diffs..." );
+					$this->output( "Pre-caching the latest $cacheSize diffs...\n" );
 				}
 				$options['LIMIT'] = $cacheSize;
 			}
@@ -131,13 +131,13 @@ class SvnImport extends Maintenance {
 			while ( $row = $dbw->fetchObject( $res ) ) {
 				$rev = $repo->getRevision( $row->cr_id );
 				$diff = $repo->getDiff( $row->cr_id ); // trigger caching
-				$this->output( "Diff r{$row->cr_id} done" );
+				$this->output( "Diff r{$row->cr_id} done\n" );
 			}
 		}
 		else {
-			$this->output( "Pre-caching skipped." );
+			$this->output( "Pre-caching skipped.\n" );
 		}
-		$this->output( "Done!" );
+		$this->output( "Done!\n" );
 	}
 }
 
