@@ -4,28 +4,38 @@ class ActiveStrategy {
 	static function getTaskForces() {
 		$dbr = wfGetDB( DB_SLAVE );
 		
-		$res = $dbr->select( array( "page", 'categorylinks' ),
-				array(
-					'page_id',
-					'page_namespace',
-					'page_title',
-					"substring_index(page_title, '/', 2) AS tf_name"
+		$res = $dbr->select(
+			array( "page", 'categorylinks',
+				'categorylinks as finishedcategory' ),
+			array(
+				'page_id',
+				'page_namespace',
+				'page_title',
+				"substring_index(page_title, '/', 2) AS tf_name"
+			),
+			array(
+				'page_namespace' => 0,
+				"page_title LIKE 'Task_force/%'",
+				"page_title NOT LIKE 'Task_force/%/%'",
+				'finishedcategory.cl_from IS NULL',
+			),
+			__METHOD__,
+			array(),
+			array(
+				'categorylinks' => array( 'RIGHT JOIN',
+					array(
+						'cl_from=page_id',
+						'cl_to' => 'Task_force',
+					),
 				),
-				array(
-					'page_namespace' => 0,
-					"page_title LIKE 'Task_force/%'",
-					"page_title NOT LIKE 'Task_force/%/%'",
-				),
-				__METHOD__,
-				array(),
-				array(
-					'categorylinks' => array( 'RIGHT JOIN',
+				'categorylinks as finishedcategory' =>
+					array( 'left join',
 						array(
-							'cl_from=page_id',
-							'cl_to' => 'Task_force',
+							'finishedcategory.cl_from=page.page_id',
+							'finishedcategory.cl_to' => 'Task_force_finished'
 						),
 					),
-				) );
+			) );
 		
 		return $res;
 	}
@@ -128,28 +138,6 @@ class ActiveStrategy {
 		$options = array( 'GROUP BY' => 'categorylinks.cl_to', 'ORDER BY' => 'value DESC' );
 		$joinConds = array( 'categorylinks' =>
 				array( 'left join', 'categorylinks.cl_from=page.page_id' ) );
-		
-		// Extra categories to consider
-		$tables[] = 'categorylinks as tfcategory';
-		$tables[] = 'categorylinks as finishedcategory';
-		
-		$joinConds['categorylinks as tfcategory'] =
-			array( 'left join',
-				array(
-					'tfcategory.cl_from=page.page_id',
-					'tfcategory.cl_to' => 'Task_force'
-				),
-			);
-		$joinConds['categorylinks as finishedcategory'] = 
-			array( 'left join',
-				array(
-					'finishedcategory.cl_from=page.page_id',
-					'finishedcategory.cl_to' => 'Task_force_finished'
-				),
-			);
-			
-		$conds[] = 'tfcategory.cl_from IS NOT NULL';
-		$conds[] = 'finishedcategory.cl_from IS NULL';
 		
 		if ( $sortField == 'edits' ) {
 			$cutoff = $db->timestamp( time() - $wgActiveStrategyPeriod );
