@@ -124,7 +124,7 @@ class ActiveStrategy {
 		
 		$tables = array( 'page', 'categorylinks' );
 		$fields = array( 'categorylinks.cl_to' );
-		$conds = array( 'categorylinks.cl_to' => $categories );
+		$conds = array( 'categorylinks.cl_to' => array_keys($categories) );
 		$options = array( 'GROUP BY' => 'categorylinks.cl_to', 'ORDER BY' => 'value DESC' );
 		$joinConds = array( 'categorylinks' =>
 				array( 'left join', 'categorylinks.cl_from=page.page_id' ) );
