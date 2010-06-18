@@ -1,4 +1,5 @@
 NEW USER EMAIL NOTIFICATION EXTENSION
+(http://www.mediawiki.org/wiki/Extension:New_User_Email_Notification)
 
 	Version 1.5
 	© 2006-2007 Rob Church
@@ -13,8 +14,9 @@ full text and terms of the license.
 	2. Installation requirements
 	3. Installing the extension
 	4. Editing the notification email
-	5. Further configuration
-	6. Feedback
+	5. Configuration
+	6. Advanced Configuration
+	7. Feedback
 	
 == 1. Introduction ==
 
@@ -51,8 +53,11 @@ MediaWiki:Newusernotifbody
 	$2 is replaced with the username of the new user account;
 	$3 is replaced with the wiki site name from $wgSitename;
 	$4 is replaced with the time and date of the account's creation.
+	$5 is replaced with the date of the account's creation.
+	$6 is replaced with the time of the account's creation.
 
-== 5. Further configuration ==
+
+== 5. Configuration ==
 
 The behaviour of the extension can be tweaked using three configuration
 variables. To override the defaults for these, set them in LocalSettings.php
@@ -73,7 +78,76 @@ $wgNewUserNotifTargets
 $wgNewUserNotifEmailTargets
 	Array containing email addresses to which a notification should also be sent
 	Defaults to no additional addresses
+	
+== 6. Advanced Configuration ==
 
-== 6. Feedback ==
+As of version 1.5.2 of this extension, you can customize and add parameters passed to both the subject and body messages in your localsettings.php without modifying the extension code.
 
-All feedback, bug reports, etc. welcome via <robchur@gmail.com>.
+You can do this by adding (or changing) parameter values and/or functions that return the desired parameter values to the parameter definition arrays underneath the call to the extension file.  In both cases you can use references to $this, $user (created user object), $recipient (target), or from globals $wfContLang, $wgSitename.  (For advanced techniques and using other globals, see below).
+
+$wgNewUserNotifSenderSubjParam
+	The list of evaluated parameters passed to the message subject(MediaWiki:Newusernotifsubj).  Default is:
+			'$wgSitename',										// $1 Site Name
+
+$wgNewUserNotifSenderParam
+	The list of evaluated parameters passed to the message body(MediaWiki:Newusernotifbody).  Defaults are:
+			'$recipient',										// $1 Recipient (of notification message)
+			'$user->getname()',									// $2 User Name
+			'$wgSitename',										// $3 Site Name
+			'$wgContLang->timeAndDate( wfTimestampNow() )',		// $4 Time and date stamp
+			'$wgContLang->date( wfTimestampNow() )',			// $5 Date Stamp
+			'$wgContLang->time( wfTimestampNow() )',			// $6 Time Stamp
+
+You can then either edit MediaWiki:Newusernotifbody to make use of the new parameters (e.g. add "\n\nThe request came from $7.") or alternatively if you haven't customised the message you can edit NewUserNotif.i18n.php and make the change there to avoid creating a new wiki page (e.g. if your wiki is in English, change the 'en' array.)
+
+=== 6.1 Upgrading from 1.5.1 ===
+
+If you did not customize the passed parameters, this extension works exactly as before and no action need to be taken.
+
+If you added to or changed the default passed parameters, you will need to correspondingly add to or change the corresponding arrays.  You should be able to take the exact same code and add to or replace it in the arrays.
+
+For example, if you added a 7th parameter (in his case, the email address of the new user), you would just add it (in localsettings.php, below the extension reference) like this:
+
+<source lang="php">
+$wgNewUserNotifSenderParam[] = '$user->getEmail()';				// $7 new user email address
+</source>
+
+The code for the parameter to be passed should be exactly the same (except enclosed in quotes) as it is in your modified wfMsgForContent function call found in private function makeMessage.
+
+=== 6.2 Examples For Adding Additional Parameters ===
+
+Here are some commonly used additional parameter you could add to further customize your notification message subject and body:
+<source lang="php">
+$wgNewUserNotifSenderParam[] = '$user->getEmail()';				// $7 email
+$wgNewUserNotifSenderParam[] = 'rawurlencode($wgSitename)';		// $8 Escaped for email message
+$wgNewUserNotifSenderParam[] = 'wfGetIP()';						// $9 Submitter's IP Address
+</source>
+
+Of course if you wanted to pass these parameter(s) to the subject message, you would add them to the $wgNewUserNotifSenderSubjParam array instead of the $wgNewUserNotifSenderParam array.
+
+=== 6.4 Some Technique/Tricks for Adding Additional Parameters ===
+
+Let's say you wanted to use a global variable or reference other than $this, $user (created user object), $recipient (target), $wfContLang, or $wgSitename.
+
+You could do so by directly referencing a previously assigned global.  Example:
+
+<source lang="php">
+$wgNewUserNotifSenderParam[] = '$GLOBALS["wgUser"]->getEmail()';				// $10 email
+</source>
+
+Note:  This isn't the best example, because it would be easier to use the $user object ('$user->getEmail()'), but it gives you an idea how you could reference the global variable (in this case objec) $wgUser directly.
+
+=== 6.5 Advanced Customization Prior to 1.5.2 ===
+
+If you want to change the parameters passed in a version prior to 1.5.2, you would need to modify the extension code directly in  wfMsgForContent function call found in private function makeMessage of NewUserNotif.class.php.
+
+== 7. Feedback ==
+
+Bugs and enhancement requests should be submitted through bugzilla for the MediaWiki Extensions at:
+
+https://bugzilla.wikimedia.org/enter_bug.cgi?product=MediaWiki%20extensions
+
+For comments and discussion, see:
+
+http://www.mediawiki.org/wiki/Extension_talk:New_User_Email_Notification
+
