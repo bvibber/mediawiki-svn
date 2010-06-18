@@ -14,7 +14,6 @@ $messages = array();
 $messages['en'] = array(
 	'vector-simplesearch-search' => 'Search',
 	'vector-simplesearch-containing' => 'containing...',
-	'vector-simplesearch-preference' => 'Enable enhanced search suggestions (Vector skin only)',
 );
 
 /** Message documentation (Message documentation)
