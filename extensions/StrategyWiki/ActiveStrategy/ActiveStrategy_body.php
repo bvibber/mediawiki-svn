@@ -167,10 +167,20 @@ class ActiveStrategy {
 		$result = $db->select( $tables, $fields, $conds,
 					__METHOD__, $options, $joinConds );
 		
+		$count = array();
+		
 		foreach( $result as $row ) {
 			$number = $row->value;
 			$taskForce = $categories[$row->cl_to];
 			
+			if ( isset( $count[$taskForce] ) ) {
+				$count[$taskForce] += $number;
+			} else if ( $number > 0 ) {
+				$count[$taskForce] = $number;
+			}
+		}
+		
+		foreach( $count as $taskForce => $number ) {
 			if ( $number > 0 ) {
 				$html .= self::formatResult( $sk, $taskForce, $number, $sortField );
 			}
