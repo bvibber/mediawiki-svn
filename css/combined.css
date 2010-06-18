@@ -140,7 +140,7 @@ body.rtl #mw-panel.collapsible-nav div.persistent div.body {
 	overflow: auto;
 }
 div#simpleSearch button#searchButton {
-	margin: 5px 5px 0 0;
+	margin: 5px 5px 0 5px;
 	height: 13px;
 	width: 12px;
 }
