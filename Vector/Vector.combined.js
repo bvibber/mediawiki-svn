@@ -555,8 +555,9 @@ $j(document).ready( function() {
 					'line-height': '13px'
 				})
 				.css( ( $j( 'body' ).is( '.rtl' ) ? 'right' : 'left' ), 0 )
-				.click( function() {
+				.mousedown( function() {
 					$j(this).parent().find( 'input#searchInput' ).focus();
+					return false;
 				})
 				.appendTo( $j(this).parent() );
 			if ( $j(this).val() == '' ) {

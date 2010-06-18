@@ -83,7 +83,7 @@ class UsabilityInitiativeHooks {
 				array( 'src' => 'js/plugins.combined.js', 'version' => 436 ),
 			),
 			'minified' => array(
-				array( 'src' => 'js/plugins.combined.min.js', 'version' => 438 ),
+				array( 'src' => 'js/plugins.combined.min.js', 'version' => 439 ),
 			),
 		),
 	);
