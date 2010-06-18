@@ -308,9 +308,10 @@ $j(document).ready( function() {
 		$j(this).data( 'origtext', $j(this).val() );
 	});
 	// Attach our own handler for onbeforeunload which respects the current one
-	fallbackWindowOnBeforeUnload = window.onbeforeunload;
-	window.onbeforeunload = function() {
+	var fallbackWindowOnBeforeUnload = window.onbeforeunload;
+	var ourWindowOnBeforeUnload = function() {
 		var fallbackResult = undefined;
+		var retval = undefined;
 		// Check if someone already set on onbeforeunload hook
 		if ( fallbackWindowOnBeforeUnload ) {
 			// Get the result of their onbeforeunload hook
@@ -319,19 +320,37 @@ $j(document).ready( function() {
 		// Check if their onbeforeunload hook returned something
 		if ( fallbackResult !== undefined ) {
 			// Exit here, returning their message
-			return fallbackResult;
+			retval = fallbackResult;
+		} else {
+			// Check if the current values of some form elements are the same as
+			// the original values
+			if (
+				wgAction == 'submit' ||
+				$j( '#wpTextbox1' ).data( 'origtext' ) != $j( '#wpTextbox1' ).val() ||
+				$j( '#wpSummary' ).data( 'origtext' ) != $j( '#wpSummary' ).val()
+			) {
+				// Return our message
+				retval = mw.usability.getMsg( 'vector-editwarning-warning' );
+			}
 		}
-		// Check if the current values of some form elements are the same as
-		// the original values
-		if(
-			wgAction == 'submit' ||
-			$j( '#wpTextbox1' ).data( 'origtext' ) != $j( '#wpTextbox1' ).val() ||
-			$j( '#wpSummary' ).data( 'origtext' ) != $j( '#wpSummary' ).val()
-		) {
-			// Return our message
-			return mw.usability.getMsg( 'vector-editwarning-warning' );
+		
+		// Unset the onbeforeunload handler so we don't break page caching in Firefox
+		window.onbeforeunload = null;
+		if ( retval !== undefined ) {
+			return retval;
 		}
+	};
+	var pageShowHandler = function() {
+		// Re-add onbeforeunload handler
+		window.onbeforeunload = ourWindowOnBeforeUnload;
+	};
+	pageShowHandler();
+	if ( window.addEventListener ) {
+		window.addEventListener('pageshow', pageShowHandler, false);
+	} else if ( window.attachEvent ) {
+		window.attachEvent( 'pageshow', pageShowHandler );
 	}
+	
 	// Add form submission handler
 	$j( 'form' ).submit( function() {
 		// Restore whatever previous onbeforeload hook existed
