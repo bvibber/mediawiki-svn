@@ -117,9 +117,9 @@ class ActiveStrategy {
 		foreach( $taskForces as $row ) {
 			$text = self::getTaskForceName( $row->tf_name );
 			$tempTitle = Title::makeTitleSafe( NS_CATEGORY, $text );
-			$categories[$row->tf_name] = $tempTitle->getDBkey();
-			$categories[$row->tf_name . " Task Force"] = $tempTitle->getDBkey();
-			$categories[$row->tf_name . " task force"] = $tempTitle->getDBkey();
+			$categories[$tempTitle->getDBkey()] = $row->tf_name;
+			$categories[$tempTitle->getDBkey()." task force"] = $row->tf_name;
+			$categories[$tempTitle->getDBkey()." Task Force"] = $row->tf_name;
 		}
 		
 		$tables = array( 'page', 'categorylinks' );
@@ -178,13 +178,10 @@ class ActiveStrategy {
 		
 		$result = $db->select( $tables, $fields, $conds,
 					__METHOD__, $options, $joinConds );
-					
-					
-		$categoryToTaskForce = array_flip( $categories );
 		
 		foreach( $result as $row ) {
 			$number = $row->value;
-			$taskForce = $categoryToTaskForce[$row->cl_to];
+			$taskForce = $categories[$row->cl_to];
 			
 			if ( $number > 0 ) {
 				$html .= self::formatResult( $sk, $taskForce, $number, $sortField );
