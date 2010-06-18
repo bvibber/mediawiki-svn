@@ -74,11 +74,6 @@ class VectorHooks {
 			'preferences' => array(
 				'enable' => array(
 					'key' => 'vector-simplesearch',
-					'ui' => array(
-						'type' => 'toggle',
-						'label-message' => 'vector-simplesearch-preference',
-						'section' => 'searchoptions/display'
-					),
 				),
 				'disablesuggest' => array(
 					'key' => 'disablesuggest',
