@@ -732,10 +732,10 @@ $messages['yi'] = array(
  * @author Horacewai2
  */
 $messages['yue'] = array(
-	'wikieditor' => '進階維基文字編輯介面',
-	'wikieditor-desc' => '提供一個可收埋嘅維基文字編輯介面同埋好多其他特色',
+	'wikieditor' => '進階維基文字編輯界面',
+	'wikieditor-desc' => '提供一個可以展開嘅維基文字編輯界面同埋好多其他特色嘅模組',
 	'wikieditor-wikitext-tab' => '維基文字',
-	'wikieditor-loading' => '開啟緊',
+	'wikieditor-loading' => '載入緊',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
@@ -757,9 +757,9 @@ $messages['zh-hans'] = array(
  * @author Liangent
  */
 $messages['zh-hant'] = array(
-	'wikieditor' => '高級維基文本編輯界面',
-	'wikieditor-desc' => '提供可擴充的維基文本編輯界面及功能組件',
-	'wikieditor-wikitext-tab' => '維基文本',
+	'wikieditor' => '高級維基文字編輯界面',
+	'wikieditor-desc' => '提供可擴充的維基文字編輯界面及功能組件',
+	'wikieditor-wikitext-tab' => '維基文字',
 	'wikieditor-loading' => '載入中',
 );
 

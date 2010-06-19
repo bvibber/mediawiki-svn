@@ -422,7 +422,7 @@ $messages['vi'] = array(
  * @author Horacewai2
  */
 $messages['yue'] = array(
-	'userdailycontribs-desc' => '一個用戶每日貢獻嘅擴展',
+	'userdailycontribs-desc' => '用響撳追蹤擴展嘅每日用戶貢獻',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

@@ -516,8 +516,8 @@ $messages['yi'] = array(
  * @author Horacewai2
  */
 $messages['yue'] = array(
-	'vector' => 'UI改進 (Vector)',
-	'vector-desc' => '改進vector面板嘅介面。',
+	'vector' => '對於Vector嘅界面改進',
+	'vector-desc' => '改進Vector畫面嘅界面元素。',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)
