@@ -66,6 +66,7 @@ $messages['ar'] = array(
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
+ * @author Wizardist
  */
 $messages['be-tarask'] = array(
 	'prefswitch-link-anon' => 'Новыя магчымасьці',
@@ -73,7 +74,7 @@ $messages['be-tarask'] = array(
 	'prefswitch-link-on' => 'Вярнуцца',
 	'tooltip-pt-prefswitch-link-on' => 'Выключыць новыя магчымасьці',
 	'prefswitch-link-off' => 'Новыя магчымасьці',
-	'tooltip-pt-prefswitch-link-off' => 'Паспрабуйце нашыя новыя магчымасьці',
+	'tooltip-pt-prefswitch-link-off' => 'Паспрабуйце новыя магчымасьці',
 );
 
 /** Bengali (বাংলা)
@@ -149,6 +150,18 @@ $messages['de'] = array(
 	'tooltip-pt-prefswitch-link-on' => 'Deaktivierung der neuen Funktionen',
 	'prefswitch-link-off' => 'Neue Funktionen',
 	'tooltip-pt-prefswitch-link-off' => 'Neue Features ausprobieren',
+);
+
+/** Zazaki (Zazaki)
+ * @author Xoser
+ */
+$messages['diq'] = array(
+	'prefswitch-link-anon' => 'Xacetano Newe',
+	'tooltip-pt-prefswitch-link-anon' => 'xecatano neweyani ser bimuse',
+	'prefswitch-link-on' => 'Mi peyser bere',
+	'tooltip-pt-prefswitch-link-on' => 'Xacetano newe bikefilne',
+	'prefswitch-link-off' => 'Xacetano Newe',
+	'tooltip-pt-prefswitch-link-off' => 'Xecatano neweyani sixulne',
 );
 
 /** Lower Sorbian (Dolnoserbski)

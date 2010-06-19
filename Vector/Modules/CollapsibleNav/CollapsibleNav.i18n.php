@@ -90,6 +90,14 @@ $messages['de'] = array(
 	'vector-collapsiblenav-more' => 'Weitere Sprachen',
 );
 
+/** Zazaki (Zazaki)
+ * @author Xoser
+ */
+$messages['diq'] = array(
+	'vector-collapsiblenav-preference' => 'Eyarê qic kerdisê ke hecatan menuyê navigasyon ke Vector de inan a bike',
+	'vector-collapsiblenav-more' => 'Ziwananê binan',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
@@ -300,9 +308,11 @@ $messages['ml'] = array(
 
 /** Malay (Bahasa Melayu)
  * @author Aurora
+ * @author Diagramma Della Verita
  */
 $messages['ms'] = array(
-	'vector-collapsiblenav-preference' => 'Aktifkan menu navigasi kiri boleh kuncup',
+	'vector-collapsiblenav-preference' => 'Aktifkan menu navigasi pada laman',
+	'vector-collapsiblenav-more' => 'Bahasa lain',
 );
 
 /** Maltese (Malti)
@@ -368,6 +378,14 @@ $messages['pt-br'] = array(
 	'vector-collapsiblenav-more' => 'Mais idiomas',
 );
 
+/** Quechua (Runa Simi)
+ * @author AlimanRuna
+ */
+$messages['qu'] = array(
+	'vector-collapsiblenav-preference' => "Vector qarap wamp'unanpi qallawa pakana llamk'anata atichiy",
+	'vector-collapsiblenav-more' => 'Aswan rimaykuna',
+);
+
 /** Russian (Русский)
  * @author AlexSm
  * @author G0rn
@@ -390,7 +408,7 @@ $messages['sah'] = array(
  * @author Dbc334
  */
 $messages['sl'] = array(
-	'vector-collapsiblenav-preference' => 'Omogoči zložljiv levi navigacijski meni',
+	'vector-collapsiblenav-preference' => 'Omogoči zlaganje vnosov v navigacijskem meniju v koži Vector',
 	'vector-collapsiblenav-more' => 'Več jezikov',
 );
 

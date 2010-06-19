@@ -522,6 +522,16 @@ $messages['ml'] = array(
 	'wikieditor-preview-loading' => 'ശേഖരിക്കുന്നു...',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Diagramma Della Verita
+ */
+$messages['ms'] = array(
+	'wikieditor-preview-preference' => 'Aktifkan pratonton sisi',
+	'wikieditor-preview-tab' => 'Pratonton',
+	'wikieditor-preview-changes-tab' => 'Perubahan',
+	'wikieditor-preview-loading' => 'Sedang dimuat turun...',
+);
+
 /** Maltese (Malti)
  * @author Chrisportelli
  */
@@ -632,6 +642,16 @@ $messages['pt-br'] = array(
 	'wikieditor-preview-tab' => 'Previsão',
 	'wikieditor-preview-changes-tab' => 'Alterações',
 	'wikieditor-preview-loading' => 'Carregando...',
+);
+
+/** Quechua (Runa Simi)
+ * @author AlimanRuna
+ */
+$messages['qu'] = array(
+	'wikieditor-preview-preference' => 'Chiqa-chiqallan ñawpaq qhawayta atichiy',
+	'wikieditor-preview-tab' => 'Ñawpaqta qhawallay',
+	'wikieditor-preview-changes-tab' => 'Hukchasqakuna',
+	'wikieditor-preview-loading' => 'Chaqnamuspa…',
 );
 
 /** Romanian (Română)

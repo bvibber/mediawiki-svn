@@ -435,6 +435,15 @@ $messages['ml'] = array(
 	'wikieditor-toc-hide' => 'ഉള്ളടക്കം മറയ്ക്കുക',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Diagramma Della Verita
+ */
+$messages['ms'] = array(
+	'wikieditor-toc-preference' => 'Aktifkan navigasi senarai kandungan',
+	'wikieditor-toc-show' => 'Tampilkan kandungan',
+	'wikieditor-toc-hide' => 'Sembunyikan kandungan',
+);
+
 /** Maltese (Malti)
  * @author Chrisportelli
  */

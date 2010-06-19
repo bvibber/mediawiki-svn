@@ -48,10 +48,11 @@ $messages['ar'] = array(
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
+ * @author Wizardist
  */
 $messages['be-tarask'] = array(
 	'prefs-updates' => 'Абнаўленьні',
-	'updatemyprefs-desc' => 'Устаноўкі для ўдзельнікаў, якія дазваляюць вызначыць ці жадаюць яны абнаўляць інтэрфэйс удзельніка, калі зьяўляюцца новыя магчымасьці',
+	'updatemyprefs-desc' => 'Устаноўкі для ўдзельнікаў, якія дазваляюць вызначыць, ці жадаюць яны абнаўляць інтэрфэйс удзельніка, калі зьяўляюцца новыя магчымасьці',
 	'updatemyprefs-label-message' => 'Аўтаматычна абнаўляць мае устаноўкі новымі устаноўкамі па змоўчваньні і інструмэнтамі, калі яны зьяўляюцца',
 );
 
@@ -313,6 +314,13 @@ $messages['ml'] = array(
 	'updatemyprefs-label-message' => 'എന്റെ ക്രമീകരണങ്ങൾ സ്വതവേ തരുന്ന പുതിയ ഉപകരണങ്ങളും സജ്ജീകരണങ്ങളും ലഭ്യമാകുന്ന മുറയ്ക്ക് സ്വയം പുതുക്കുക',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Diagramma Della Verita
+ */
+$messages['ms'] = array(
+	'prefs-updates' => 'Pembaharuan',
+);
+
 /** Maltese (Malti)
  * @author Chrisportelli
  */
@@ -382,6 +390,13 @@ $messages['pt-br'] = array(
 	'prefs-updates' => 'Atualizações',
 	'updatemyprefs-desc' => 'Preferência para os utilizadores especificarem se desejam atualizações periódicas da interface à medida que estas estejam disponíveis',
 	'updatemyprefs-label-message' => 'Atualizar automaticamente as minhas preferências com novas configurações predefinidas e ferramentas, à medida que estas estejam disponíveis',
+);
+
+/** Quechua (Runa Simi)
+ * @author AlimanRuna
+ */
+$messages['qu'] = array(
+	'prefs-updates' => 'Musuqchasqakuna',
 );
 
 /** Russian (Русский)

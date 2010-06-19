@@ -597,6 +597,7 @@ $messages['pt-br'] = array(
  */
 $messages['qu'] = array(
 	'vector-simplesearch-search' => 'Maskay',
+	'vector-simplesearch-containing' => 'kaykunayuq: ...',
 );
 
 /** Romanian (Română)

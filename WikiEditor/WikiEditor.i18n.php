@@ -451,6 +451,16 @@ $messages['ml'] = array(
 	'wikieditor-loading' => 'ശേഖരിക്കുന്നു',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Diagramma Della Verita
+ */
+$messages['ms'] = array(
+	'wikieditor' => 'Wikiteks keutamaan halaman suntingan',
+	'wikieditor-desc' => 'Menyediakan halaman wikitext suntingan dan ciri modul lain',
+	'wikieditor-wikitext-tab' => 'Wikiteks',
+	'wikieditor-loading' => 'Muat turun',
+);
+
 /** Maltese (Malti)
  * @author Chrisportelli
  */
@@ -543,6 +553,14 @@ $messages['pt-br'] = array(
 	'wikieditor-desc' => 'Fornece uma interface extensível de edição de textowiki e vários módulos funcionais',
 	'wikieditor-wikitext-tab' => 'Wikitexto',
 	'wikieditor-loading' => 'Carregando',
+);
+
+/** Quechua (Runa Simi)
+ * @author AlimanRuna
+ */
+$messages['qu'] = array(
+	'wikieditor-wikitext-tab' => 'Wiki qillqa',
+	'wikieditor-loading' => 'Chaqnamuspa',
 );
 
 /** Romanian (Română)

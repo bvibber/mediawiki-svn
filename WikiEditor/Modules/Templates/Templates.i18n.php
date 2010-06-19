@@ -64,6 +64,13 @@ $messages['de'] = array(
 	'wikieditor-templates-preference' => 'Aktivierung des Ein- und Ausblendens von Vorlagen',
 );
 
+/** Zazaki (Zazaki)
+ * @author Xoser
+ */
+$messages['diq'] = array(
+	'wikieditor-templates-preference' => 'Qic kerdisê sabloni a bike',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
@@ -209,6 +216,13 @@ $messages['mk'] = array(
  */
 $messages['ml'] = array(
 	'wikieditor-templates-preference' => 'ഫലകം ചുരുക്കൽ സജ്ജമാക്കുക',
+);
+
+/** Malay (Bahasa Melayu)
+ * @author Diagramma Della Verita
+ */
+$messages['ms'] = array(
+	'wikieditor-templates-preference' => 'Aktifkan templat',
 );
 
 /** Maltese (Malti)
