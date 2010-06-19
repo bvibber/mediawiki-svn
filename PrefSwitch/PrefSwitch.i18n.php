@@ -35,6 +35,7 @@ Please select all that apply.',
 	'prefswitch-survey-answer-browser-ie6' => 'Internet Explorer 6',
 	'prefswitch-survey-answer-browser-ie7' => 'Internet Explorer 7',
 	'prefswitch-survey-answer-browser-ie8' => 'Internet Explorer 8',
+	'prefswitch-survey-answer-browser-ie9' => 'Internet Explorer 9',
 	'prefswitch-survey-answer-browser-ff1' => 'Firefox 1',
 	'prefswitch-survey-answer-browser-ff2' => 'Firefox 2',
 	'prefswitch-survey-answer-browser-ff3' => 'Firefox 3',
@@ -43,8 +44,10 @@ Please select all that apply.',
 	'prefswitch-survey-answer-browser-c2' => 'Google Chrome 2',
 	'prefswitch-survey-answer-browser-c3' => 'Google Chrome 3',
 	'prefswitch-survey-answer-browser-c4' => 'Google Chrome 4',
+	'prefswitch-survey-answer-browser-c5' => 'Google Chrome 5',
 	'prefswitch-survey-answer-browser-s3' => 'Safari 3',
 	'prefswitch-survey-answer-browser-s4' => 'Safari 4',
+	'prefswitch-survey-answer-browser-s5' => 'Safari 5',
 	'prefswitch-survey-answer-browser-o9' => 'Opera 9',
 	'prefswitch-survey-answer-browser-o9.5' => 'Opera 9.5',
 	'prefswitch-survey-answer-browser-o10' => 'Opera 10',
@@ -54,6 +57,7 @@ Please select all that apply.',
 	'prefswitch-survey-answer-os-windowsmobile' => 'Windows Mobile',
 	'prefswitch-survey-answer-os-macos' => 'Mac OS',
 	'prefswitch-survey-answer-os-iphoneos' => 'iPhone OS',
+	'prefswitch-survey-answer-os-ios' => 'iOS',
 	'prefswitch-survey-answer-os-linux' => 'Linux',
 	'prefswitch-survey-answer-os-other' => 'Other operating system:',
 	'prefswitch-survey-question-res' => 'What is the resolution of your screen?',
@@ -4157,18 +4161,18 @@ $messages['yi'] = array(
  * @author Horacewai2
  */
 $messages['yue'] = array(
-	'prefswitch' => '可用性參數選項',
-	'prefswitch-desc' => '俾用戶去選擇參數',
+	'prefswitch' => '可用性倡議喜好轉用',
+	'prefswitch-desc' => '容許用戶去設定喜好',
 	'prefswitch-survey-true' => '係',
 	'prefswitch-survey-false' => '唔係',
-	'prefswitch-survey-submit-off' => '關閉新特色',
+	'prefswitch-survey-submit-off' => '閂新特色',
 	'prefswitch-survey-cancel-off' => '如果你繼續去用新特色，你可以返去$1。',
 	'prefswitch-survey-submit-feedback' => '傳送意見',
-	'prefswitch-survey-cancel-feedback' => '如果你唔想提供意見，可以去番$1。',
+	'prefswitch-survey-cancel-feedback' => '如果你唔想提供意見，你可以返去$1。',
 	'prefswitch-survey-question-like' => '你喜歡新特色啲咩？',
 	'prefswitch-survey-question-dislike' => '你唔鍾意啲咩新特色？',
-	'prefswitch-survey-question-whyoff' => '你點解要關閉新特色？
-選擇所有你嘅選項。',
+	'prefswitch-survey-question-whyoff' => '你點解要閂咗個新特色？
+選擇所有你用到嘅選項。',
 	'prefswitch-survey-answer-whyoff-hard' => '新特色好難用。',
 	'prefswitch-survey-answer-whyoff-didntwork' => '新特色唔能夠正常去做野。',
 	'prefswitch-survey-answer-whyoff-notpredictable' => '新功能無我預期好。',
@@ -4183,14 +4187,14 @@ $messages['yue'] = array(
 	'prefswitch-survey-question-res' => '你個螢光幕嘅解像度有幾大？',
 	'prefswitch-title-on' => '新特色',
 	'prefswitch-title-switched-on' => '享受使用新特色！',
-	'prefswitch-title-off' => '關閉新特色',
+	'prefswitch-title-off' => '閂個新特色',
 	'prefswitch-title-switched-off' => '多謝',
 	'prefswitch-title-feedback' => '意見',
-	'prefswitch-success-on' => '而家新特色已經啟用左，我地希望你享受使用呢D新特色。你可以按"[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-on}}]]"用舊版。',
-	'prefswitch-success-off' => '而家新特色已經關閉左，多謝你試用。你可以按"[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-off}}]]"用新版。',
-	'prefswitch-success-feedback' => '你嘅意見，發送左。',
+	'prefswitch-success-on' => '而家新特色已經啟用咗，我地希望你享受使用呢啲新特色。你可以撳"[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-on}}]]"用舊版。',
+	'prefswitch-success-off' => '而家新特色已經閂咗，多謝你試用。你可以撳"[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-off}}]]"用新版。',
+	'prefswitch-success-feedback' => '你嘅意見已經發送咗。',
 	'prefswitch-return' => '<hr style="clear:both">
-番去<span class="plainlinks">[$1 $2]</span>.',
+番去<span class="plainlinks">[$1 $2]</span>。',
 	'prefswitch-main' => "{| border=\"0\" align=\"right\" style=\"margin-left:1em\"
 | align=\"center\" |
 {| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\" 
@@ -4210,34 +4214,34 @@ $messages['yue'] = array(
 {| border=\"0\" style=\"background:#F3F3F3;border: 1px solid #CCCCCC;padding:10px;\"
 | [[Image:VectorLinkDialog-en.png|401px|]]
 |-
-| 插入鏈接對話框嘅截圖
+| 插入連結對話盒嘅截圖
 |}
 |}
 
-維基媒體基金會嘅可用性小組同社群嘅志願者一齊係列努力令你更方便去用。我地好高興能夠分享一D改進，包括一個全新嘅外觀同簡化嘅編輯功能。呢D變化都係為左俾新嘅參與者更容易進行貢獻，同時我們[http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study 係過去一年裡進行了大量嘅可用性測試]。提高我們項目嘅可用性是維基媒體基金會嘅重要目標，我們將係未來分享更多嘅更新。想知多D，請訪問相關嘅維基媒體[http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia 博客上的帖子]。
+Wikimedia Foundation嘅可用性小組同社群嘅志願者一齊係列努力令你更方便去用。我哋好高興能夠分享一啲嘅改進，包括一個全新嘅外觀同簡化嘅編輯功能。呢啲變化都係為咗俾新嘅參與者更容易進行貢獻，同時我哋[http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study 響過去一年裏面進行咗大量嘅可用性測試]。改進我哋計劃嘅可用性係Wikimedia Foundation嘅重要目標，而我哋將係未來分享更多嘅更新。想知多啲，睇吓相關嘅Wikimedia[http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia Blog貼文]。
 
-=== 下面是我們嘅改變 ===
+=== 我哋有啲乜嘢改咗 ===
 
-* '''導航'''：我們已經改善左閱讀同編輯網頁時嘅導航。而家，每一頁頂部上嘅標籤更明確去界定你係正在查看頁面定係討論頁，同埋你係閱讀緊或改緊一個頁面。
-* '''編輯工具欄上嘅改善'''：我們已經重組左編輯工具欄，以便於更容易用。現在，格式化網頁更簡單，更直觀。
-* '''鏈接嚮導'''：一個易於使用嘅工具可以讓你添加鏈接到其他維基頁面以及鏈接到外部網站。
-* '''搜索的改進'''：我們改進了搜索建議，讓你尋找網頁更迅速。
-* '''其他的新功能'''：我們也推出了表格嚮導，使創建表格更容易，同時尋找同替換功能來簡化頁面嘅編輯。
-* '''維基百科logo'''：我們已經更新了我地個logo。詳情見[http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d Wikimedia blog]。
+* '''導航'''：我哋已經改善咗閱讀同編輯版嗰陣嘅導航。而家，每一版頂部上嘅標籤更加明確噉去界定你係響度閱讀內容版定係討論版，同埋你係響度閱讀緊定係改緊一版。
+* '''編輯工具吧嘅改進'''：我哋已經重組咗編輯工具吧更加容易噉去用。而家，格式化網頁更加簡單同更加直觀。
+* '''連結精靈'''：一個簡易使用嘅工具可以畀你加入連結到其它wiki版以及連出去外面嘅網站。
+* '''搵嘢嘅改進'''：我哋改進咗搜索建議令到你可以更加快噉搵到你要用到嘅版。
+* '''其它嘅新功能'''：我哋亦都推出了表格精靈去更加容易噉開表，同時搵換嘅功能來簡化嗰版嘅編輯。
+* '''維基百科logo'''：我哋已經更新咗我哋個logo。詳情睇[http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d Wikimedia blog]。
 
-===意見?===
+===意見？===
 
-我們希望收到你們的意見，請造訪我們嘅[[\$1|意見反饋頁面]]，或者如果你對我們嘅軟件改善有興趣，可到[http://usability.wikimedia.org usability wiki]了解詳情。",
-	'prefswitch-main-anon' => '===用舊版===
-[$1 去舊版按此]。你會需要先登入或者開戶口。',
-	'prefswitch-main-on' => '===用舊版===
-[$2 關閉新版本]',
-	'prefswitch-main-off' => '===用新版!===
-[$1 用新版]',
-	'prefswitch-survey-intro-feedback' => '我地希望收到你嘅意見。
-請係按"[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]"之前做一個可選嘅問卷調查。',
-	'prefswitch-survey-intro-off' => '多謝試用新特色。
-為左幫助我地，我地希望你按"[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]"之前做一個可選嘅問卷調查。',
+我哋希望收到你的意見，請睇吓我哋嘅[[\$1|意見反饋版]]，或者如果你對我哋嘅軟件改進有興趣嘅話，可以到[http://usability.wikimedia.org usability wiki]了解更多嘅詳情。",
+	'prefswitch-main-anon' => '===帶我返去===
+[$1 撳呢度閂咗啲新功能]。你將會有提示，需要先登入或者開戶口。',
+	'prefswitch-main-on' => '===帶我返去！===
+[$2 撳呢度閂咗啲新功能]。',
+	'prefswitch-main-off' => '===試吓佢哋！===
+[$1 撳呢度開咗啲新功能]。',
+	'prefswitch-survey-intro-feedback' => '我哋希望收到你嘅意見。
+請喺撳"[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]"之前做一個可選嘅問卷調查。',
+	'prefswitch-survey-intro-off' => '多謝試用我哋嘅新特色。
+為咗幫助我地改進佢哋，我哋希望你撳"[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]"之前做一個可選嘅問卷調查。',
 	'prefswitch-feedbackpage' => 'Project:用戶意見',
 );
 

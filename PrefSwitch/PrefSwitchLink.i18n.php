@@ -671,10 +671,10 @@ $messages['yi'] = array(
 $messages['yue'] = array(
 	'prefswitch-link-anon' => '新特色',
 	'tooltip-pt-prefswitch-link-anon' => '知多啲關於新特色',
-	'prefswitch-link-on' => '用舊版',
-	'tooltip-pt-prefswitch-link-on' => '禁用新特色',
+	'prefswitch-link-on' => '帶我返去',
+	'tooltip-pt-prefswitch-link-on' => '停用新特色',
 	'prefswitch-link-off' => '新特色',
-	'tooltip-pt-prefswitch-link-off' => '試下新特色',
+	'tooltip-pt-prefswitch-link-off' => '試吓新特色',
 );
 
 /** Simplified Chinese (‪中文(简体)‬)

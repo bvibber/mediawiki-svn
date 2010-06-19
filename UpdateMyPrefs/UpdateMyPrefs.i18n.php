@@ -461,8 +461,8 @@ $messages['vi'] = array(
  */
 $messages['yue'] = array(
 	'prefs-updates' => '更新',
-	'updatemyprefs-desc' => '給用戶一個選項，決定是否更新用戶介面 (如有)',
-	'updatemyprefs-label-message' => '自動更新我嘅參數如果新嘅預設設定同工具提供左',
+	'updatemyprefs-desc' => '用戶嘅選項去決定有更新嗰陣去唔去更新用戶界面',
+	'updatemyprefs-label-message' => '當佢哋可以用嗰陣自動噉更新我嘅設定到預設設定',
 );
 
 /** Simplified Chinese (‪中文(简体)‬) */
