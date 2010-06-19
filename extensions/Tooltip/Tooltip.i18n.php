@@ -389,6 +389,13 @@ $messages['sk'] = array(
 	'tooltip-desc' => 'Pridáva značky <nowiki><tooltip></nowiki> a <nowiki>{{#tooltip:}}</nowiki>',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'tooltip-desc' => 'Doda etiketi <code>&lt;tooltip&gt;</code> in <code>{{#tooltip:}}</code>',
+);
+
 /** Albanian (Shqip)
  * @author Puntori
  */

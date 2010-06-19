@@ -118,11 +118,12 @@ $messages['arz'] = array(
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
+ * @author Wizardist
  */
 $messages['be-tarask'] = array(
 	'wikieditor-publish-preference' => 'Уключыць паступовую публікацыю',
 	'wikieditor-publish-button-publish' => 'Апублікаваць',
-	'wikieditor-publish-button-cancel' => 'Адмяніць',
+	'wikieditor-publish-button-cancel' => 'Скасаваць',
 	'wikieditor-publish-dialog-title' => 'Апублікаваць у {{GRAMMAR:месны|{{SITENAME}}}}',
 	'wikieditor-publish-dialog-summary' => 'Апісаньне рэдагаваньняў (коратка апішыце зробленыя Вамі зьмены):',
 	'wikieditor-publish-dialog-minor' => 'Дробная праўка',
@@ -750,6 +751,21 @@ $messages['ml'] = array(
 	'wikieditor-publish-dialog-goback' => 'പഴയ താളിലേയ്ക്ക് മടങ്ങുക',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Diagramma Della Verita
+ */
+$messages['ms'] = array(
+	'wikieditor-publish-preference' => 'Aktifkan tutorial penerbitan',
+	'wikieditor-publish-button-publish' => 'Terbit',
+	'wikieditor-publish-button-cancel' => 'Batalkan',
+	'wikieditor-publish-dialog-title' => 'Paparkan pada laman ((sitename))',
+	'wikieditor-publish-dialog-summary' => 'Sunting ringkasan (jelaskan perubahan yang disertakan secara ringkas)',
+	'wikieditor-publish-dialog-minor' => 'Suntingan kecil',
+	'wikieditor-publish-dialog-watch' => 'Pantau laman ini',
+	'wikieditor-publish-dialog-publish' => 'Terbitkan',
+	'wikieditor-publish-dialog-goback' => 'Kembali',
+);
+
 /** Maltese (Malti)
  * @author Chrisportelli
  */
@@ -898,6 +914,20 @@ $messages['pt-br'] = array(
 	'wikieditor-publish-dialog-watch' => 'Vigiar esta página',
 	'wikieditor-publish-dialog-publish' => 'Publicar',
 	'wikieditor-publish-dialog-goback' => 'Voltar',
+);
+
+/** Quechua (Runa Simi)
+ * @author AlimanRuna
+ */
+$messages['qu'] = array(
+	'wikieditor-publish-button-publish' => 'Uyaychay',
+	'wikieditor-publish-button-cancel' => 'Ama niy',
+	'wikieditor-publish-dialog-title' => '{{SITENAME}} nisqapi uyaychay',
+	'wikieditor-publish-dialog-summary' => "Llamk'apuypa pisichaynin (rurasqayki hukchasqakunata pisilla rimakunawan ch'uyanchay):",
+	'wikieditor-publish-dialog-minor' => 'Aslla hukchay',
+	'wikieditor-publish-dialog-watch' => "Kay p'anqata watiqay",
+	'wikieditor-publish-dialog-publish' => 'Uyaychay',
+	'wikieditor-publish-dialog-goback' => 'Kutimuy',
 );
 
 /** Romanian (Română)

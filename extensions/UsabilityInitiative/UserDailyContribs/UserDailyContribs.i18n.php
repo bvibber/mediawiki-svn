@@ -270,6 +270,13 @@ $messages['ml'] = array(
 	'userdailycontribs-desc' => 'ക്ലിക്കുകളിൽ ഉപയോക്താവിന്റെ ദൈനിക സംഭാവനകൾ അനുഗമിക്കാനുള്ള അനുബന്ധം',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Diagramma Della Verita
+ */
+$messages['ms'] = array(
+	'userdailycontribs-desc' => 'Sumbangan pengguna harian untuk pengesanan',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
@@ -318,6 +325,13 @@ $messages['pt'] = array(
  */
 $messages['pt-br'] = array(
 	'userdailycontribs-desc' => 'Contribuições diárias dos usuários para a extensão de monitoração de cliques',
+);
+
+/** Quechua (Runa Simi)
+ * @author AlimanRuna
+ */
+$messages['qu'] = array(
+	'userdailycontribs-desc' => "Ruraqkunap p'unchawnintin llamk'apusqankuna ñit'iy watiqay mast'arinapaq",
 );
 
 /** Romanian (Română)

@@ -936,18 +936,31 @@ $messages['ca'] = array(
  */
 $messages['cs'] = array(
 	'mwe-upload-stats-fileprogress' => '$1 z $2',
+	'mwe-upload-unknown-size' => 'Neznámá velikost',
 	'mwe-cancel-confim' => 'Určitě chcete stornovat?',
 	'mwe-successfulupload' => 'Úspěšně načteno',
+	'mwe-uploaderror' => 'Chyba při načítání',
 	'mwe-uploadwarning' => 'Upozornění k načítání',
 	'mwe-unknown-error' => 'Neznámá chyba:',
 	'mwe-return-to-form' => 'Zpět na formulář',
+	'mwe-file-exists-duplicate' => 'Tento soubor je duplikátem následujícího souboru:',
 	'mwe-fileexists' => 'Soubor s tímto jménem již existuje, prosím podívejte se na <b><tt>$1</tt></b>, pokud nevíte jistě, zda chcete tento soubor nahradit.',
 	'mwe-fileexists-thumb' => 'Existující soubor',
 	'mwe-ignorewarning' => 'Ignorovat varování a přesto soubor načíst',
+	'mwe-file-thumbnail-no' => 'Název souboru začíná <b><tt>$1</tt></b>',
 	'mwe-go-to-resource' => 'Přejít k souboru',
-	'mwe-upload-misc-error' => 'Neznámá chyba',
+	'mwe-upload-misc-error' => 'Neznámá chyba při načítání',
+	'mwe-wgfogg_warning_bad_extension' => 'Zvolili jste soubor nepodporovaného typu (<a href="http://commons.wikimedia.org/wiki/Commons:Firefogg/cs#Podporovan.C3.A9_typy_soubor.C5.AF">více informací</a>).',
+	'mwe-thumbnail-more' => 'Zvětšit',
+	'mwe-license-header' => 'Licence',
 	'mwe-loading-add-media-wiz' => 'Načítá se průvodce pro přidání souboru',
+	'fogg-help-sticky' => 'Nápověda (kliknutím přilepíte)',
+	'mwe-watch-this-file' => 'Sledovat tento soubor',
+	'mwe-ignore-any-warnings' => 'Ignorovat všechna varování',
 	'mwe-upload-in-progress' => 'Soubor se načítá (nezavírejte toto okno)',
+	'mwe-uploaded-status' => 'Načteno',
+	'mwe-uploaded-time-remaining' => 'Zbývající čas: $1',
+	'mwe-upload-done' => 'Váš soubor <i>by měl být</i> dostupný.',
 	'mwe-add_media_wizard' => 'Průvodce pro přidání souboru',
 	'mwe-media_search' => 'Hledání multimédií',
 	'rsd_box_layout' => 'Ikony',
@@ -978,13 +991,19 @@ $messages['cs'] = array(
 	'mwe-ftype-unk' => 'Neznámý formát souboru',
 	'rsd-wiki_commons' => 'Wikimedia Commons, archiv svobodně licencovaného vzdělávacího multimediálního obsahu (obrázky, zvuky, video)',
 	'rsd-this_wiki-title' => 'Tato wiki',
-	'rsd-this_wiki-desc' => 'Místní instalace wiki',
+	'rsd-this_wiki-desc' => 'Místní wiki',
 	'rsd-archive_org-desc' => 'Internet Archive, digitální knihovna kulturních výtvorů',
 	'rsd-flickr-desc' => 'Flickr.com, server pro online sdílení fotografií',
 	'rsd-metavid-desc' => 'Metavid.org, komunitní archiv záznamů jednání amerického Senátu a Sněmovny reprezentantů',
+	'fogg-select_file' => 'Výběr souboru',
+	'fogg-select_new_file' => 'Výběr jiného souboru',
 	'fogg-check_for_firefogg' => 'Ověřuje se Firefogg…',
-	'fogg-installed' => 'Firefogg je nainstalován',
+	'fogg-installed' => 'Firefogg je nainstalován.',
+	'fogg-not-installed' => 'Firefogg není nainstalován nebo povolen.',
 	'fogg-for_improved_uploads' => 'Pro vylepšené načítání:',
+	'fogg-please-install' => '$1. Více $2',
+	'fogg-please-install-install-linktext' => 'Nainstalovat Firefogg',
+	'fogg-please-install-about-linktext' => 'informací o Firefoggu',
 	'fogg-use_latest_firefox' => 'Nejprve si nainstalujte <a href="http://www.mozilla-europe.org/cs/firefox/?from=firefogg">Firefox 3.5</a> (nebo novější). <i>Poté se vraťte na tuto stránku, abyste si mohli nainstalovat rozšíření <b>Firefogg</b>.</i>',
 );
 
@@ -5216,15 +5235,31 @@ $messages['pt'] = array(
 );
 
 /** Brazilian Portuguese (Português do Brasil)
+ * @author 555
+ * @author Giro720
  * @author Hamilton Abreu
  * @author Luckas Blade
- * @author 555
  */
 $messages['pt-br'] = array(
-	'mwe-upload-unknown-size' => 'Tamanho desconhecido',
+	'mwe-upload-stats-fileprogress' => '$1 de $2',
+	'mwe-upload-unknown-size' => 'Tamanho desconhecido
+Tamanho desconhecido',
+	'mwe-cancel-confim' => 'Você tem a certeza que quer cancelar?',
+	'mwe-successfulupload' => 'Carregamento bem sucedido',
+	'mwe-uploaderror' => 'Erro ao fazer upload',
+	'mwe-uploadwarning' => 'Avisos de upload',
 	'mwe-unknown-error' => 'Erro desconhecido:',
+	'mwe-return-to-form' => 'Voltar ao formulário',
+	'mwe-file-exists-duplicate' => 'Este arquivo é uma cópia do seguinte arquivo:',
+	'mwe-license-header' => 'Licenciamento',
+	'mwe-filedesc' => 'Resumo',
+	'mwe-filesource' => 'Fonte:',
+	'mwe-filestatus' => 'Estado dos direitos de autor:',
+	'mwe-loading-add-media-wiz' => 'Carregando o assistente de upload de multimídia',
 	'mwe-select_file' => 'Selecionar arquivo',
 	'mwe-summary' => 'Sumário',
+	'mwe-link-login' => 'entrar',
+	'mwe-watch-this-file' => 'Vigiar este arquivo',
 	'rsd_results_desc' => 'Resultados $1 a $2',
 	'rsd_results_prev' => 'anterior',
 	'mwe-link' => 'link',

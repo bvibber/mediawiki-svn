@@ -14813,12 +14813,12 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author 555
  * @author Crazymadlover
  * @author Hamilton Abreu
  * @author Lijealso
  * @author Malafaya
  * @author Waldir
- * @author 555
  */
 $messages['pt'] = array(
 	'configure-setting-desc' => 'Descrições para parâmetros da configuração do MediaWiki',
@@ -15433,10 +15433,10 @@ $messages['pt'] = array(
 );
 
 /** Brazilian Portuguese (Português do Brasil)
+ * @author 555
  * @author Giro720
  * @author Hamilton Abreu
  * @author Luckas Blade
- * @author 555
  */
 $messages['pt-br'] = array(
 	'configure-setting-wgSitename' => 'Nome do site',

@@ -1882,6 +1882,8 @@ $messages['diq'] = array(
 	'code-status-deferred' => 'defer biyo',
 	'code-pathsearch-legend' => 'Pê raherî zerrê ena repo de vurnayîşan bigêre',
 	'code-pathsearch-path' => 'Raher:',
+	'code-revfilter-cr_status' => 'Statu = $1',
+	'code-revfilter-cr_author' => 'Nustekar = $1',
 	'code-rev-submit' => 'Vuranayîşan qeyd bike',
 	'code-rev-submit-next' => 'Keyd ke & neresolve binî',
 	'code-batch-status' => 'Statuyan bivurne:',

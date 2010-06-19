@@ -59,9 +59,10 @@ $messages['arz'] = array(
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
+ * @author Wizardist
  */
 $messages['be-tarask'] = array(
-	'vector' => 'Паляпшэньні інтэрфэйсу карыстальніка для афармленьня «Вэктар»',
+	'vector' => 'Паляпшэньні інтэрфэйсу для афармленьня «Вэктар»',
 	'vector-desc' => 'Паляпшае элемэнты інтэрфэйсу карыстальніка для афармленьня «Вэктар».',
 );
 
@@ -327,6 +328,14 @@ $messages['ml'] = array(
 	'vector-desc' => 'വെക്റ്റർ ദൃശ്യരൂപത്തിൽ ഉപയോക്തൃ സമ്പർക്കമുഖ ഘടകങ്ങളിലെ മെച്ചപ്പെടുത്തലുകൾ.',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Diagramma Della Verita
+ */
+$messages['ms'] = array(
+	'vector' => 'pembaikian untuk Vector',
+	'vector-desc' => '↓ Meningkatkan tetapan pengguna  pada halaman Vector',
+);
+
 /** Maltese (Malti)
  * @author Chrisportelli
  */
@@ -391,6 +400,14 @@ $messages['pt'] = array(
 $messages['pt-br'] = array(
 	'vector' => 'Melhorias da IU do Vector',
 	'vector-desc' => 'Melhora a interface do usuário do tema Vector',
+);
+
+/** Quechua (Runa Simi)
+ * @author AlimanRuna
+ */
+$messages['qu'] = array(
+	'vector' => 'Ruraqpaq uyapurapi Vector nisqapaq allinchasqakuna',
+	'vector-desc' => 'Ruraqpaq uyapurapi Vector qarap qallawankunata allinchan.',
 );
 
 /** Romanian (Română)

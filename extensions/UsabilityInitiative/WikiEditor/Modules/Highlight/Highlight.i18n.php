@@ -283,6 +283,13 @@ $messages['ml'] = array(
 	'wikieditor-highlight-preference' => 'തിരുത്തുമ്പോൾ വിന്യാസങ്ങൾ പ്രമുഖമാക്കിക്കാട്ടൽ സജ്ജമാക്കുക',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Diagramma Della Verita
+ */
+$messages['ms'] = array(
+	'wikieditor-highlight-preference' => 'Aktifkan syntax mengesan ketika menyunting.',
+);
+
 /** Maltese (Malti)
  * @author Chrisportelli
  */

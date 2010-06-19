@@ -266,6 +266,7 @@ Un prime parametro "template" es obligatori.',
  * @author Robby
  */
 $messages['lb'] = array(
+	'datatransclusion-desc' => 'Import and Duerstellung vun Daten aus externe Quellen',
 	'datatransclusion-bad-template-name' => 'Schlechten Numm fir eng Schabloun: $1.',
 	'datatransclusion-unknown-template' => '<nowiki>{{</nowiki>[[{{ns:template}}:$1|$1]]<nowiki>}}</nowiki> gëtt et net.',
 );

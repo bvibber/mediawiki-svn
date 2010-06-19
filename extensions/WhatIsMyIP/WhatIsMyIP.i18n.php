@@ -706,6 +706,16 @@ $messages['sk'] = array(
 	'right-whatismyip' => 'Zobraziť [[Special:WhatIsMyIP|vlastnú IP adresu]]',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'whatismyip' => 'Kaj je moj IP',
+	'whatismyip-desc' => 'Prikaže uporabnikov trenutni [[Special:WhatIsMyIP|IP-naslov]]',
+	'whatismyip-out' => 'Vaš IP-naslov:',
+	'right-whatismyip' => 'Ogled [[Special:WhatIsMyIP|svojega IP-naslova]]',
+);
+
 /** Lower Silesian (Schläsch)
  * @author Jonny84
  * @author Schläsinger

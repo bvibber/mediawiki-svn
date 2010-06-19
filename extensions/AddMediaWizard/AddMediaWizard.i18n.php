@@ -50,6 +50,13 @@ $messages['bs'] = array(
 	'addmediawizard-desc' => 'Dodavanje čarobnjaka za mediju, razvijenog u saradnji Kaltura i Wikimedia Fondacije',
 );
 
+/** Czech (Česky)
+ * @author Mormegil
+ */
+$messages['cs'] = array(
+	'addmediawizard-desc' => 'Průvodce vložením médií, vyvinutý ve spolupráci nadace Wikimedia se společností Kaltura',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */

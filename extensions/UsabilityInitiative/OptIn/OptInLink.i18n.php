@@ -604,6 +604,7 @@ $messages['ka'] = array(
 	'optin-leave' => 'ბეტადან გასვლა',
 	'tooltip-pt-optin-leave' => 'გამორთეთ ახალი შესაძლებლობები',
 	'optin-feedback' => 'გამოხმაურება',
+	'tooltip-pt-optin-feedback' => 'დაგვიტოვეთ თქვენი მოსზრება ახალ ფუნქციებთან მუშაობის შესახებ.',
 );
 
 /** Khmer (ភាសាខ្មែរ)

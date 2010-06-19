@@ -175,6 +175,8 @@ $messages['de'] = array(
 $messages['diq'] = array(
 	'usabilityinitiative' => 'teşebbusê şuxulnayişi',
 	'usabilityinitiative-desc' => 'Xacetî ke Wikipedia Usability Initiative viraşt, programê MediaWikiyî asan keno',
+	'prefs-beta' => 'Xacetane beta',
+	'prefs-labs' => 'Xacetanê labs',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -465,11 +467,14 @@ $messages['ml'] = array(
 
 /** Malay (Bahasa Melayu)
  * @author Aurora
+ * @author Diagramma Della Verita
  * @author Kurniasan
  */
 $messages['ms'] = array(
 	'usabilityinitiative' => 'Inisiatif Kebolehgunaan',
 	'usabilityinitiative-desc' => 'Tamplian-tampilan yang dibangunkan oleh Inisiatif Kebolehgunaan Wikipedia demi meningkatkan kebolehgunaan MediaWiki',
+	'prefs-beta' => 'Ciri-ciri beta',
+	'prefs-labs' => 'Ciri-ciri makmal',
 );
 
 /** Maltese (Malti)
@@ -575,6 +580,16 @@ $messages['pt-br'] = array(
 	'usabilityinitiative-desc' => 'Funcionalidades desenvolvidas pela Wikipedia Usability Initiative, para melhorar a usabilidade do MediaWiki',
 	'prefs-beta' => 'Características beta',
 	'prefs-labs' => 'Características de laboratório',
+);
+
+/** Quechua (Runa Simi)
+ * @author AlimanRuna
+ */
+$messages['qu'] = array(
+	'usabilityinitiative' => "Allin llamk'achina rurarina",
+	'usabilityinitiative-desc' => "Allin llamk'achina rurarinap kamarisqan llamk'anakuna MediaWikip allin llamk'achinanta atichinapaq",
+	'prefs-beta' => 'Beta nisqap kaqninkuna',
+	'prefs-labs' => 'Laburaturyu nisqap kaqninkuna',
 );
 
 /** Romanian (Română)

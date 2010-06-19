@@ -623,6 +623,17 @@ Tento email vám poslal $1 pomocou emailového systému {{GRAMMAR:genitív|{{SIT
 $2',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'email-desc' => 'Omogoča dodajanje po meri narejene glave/noge v uporabnikovo e-pošto',
+	'email_footer' => '----------------------------------------------------------------------------
+E-pošta vam je bila poslana preko e-poštnega sistema {{GRAMMAR:rodilnik|{{SITENAME}}}} od $1.
+
+$2',
+);
+
 /** Lower Silesian (Schläsch)
  * @author Jonny84
  */

@@ -368,6 +368,13 @@ $messages['sk'] = array(
 	'gnuplot-desc' => 'Pridáva značku <code><nowiki><gnuplot></nowiki></code> pre použitie Gnuplot',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'gnuplot-desc' => 'Doda etiketo <code><nowiki><gnuplot></nowiki></code> za uporabo Gnuplot',
+);
+
 /** Lower Silesian (Schläsch)
  * @author Piotron
  */

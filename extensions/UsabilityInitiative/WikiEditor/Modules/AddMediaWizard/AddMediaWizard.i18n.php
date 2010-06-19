@@ -64,6 +64,13 @@ $messages['de'] = array(
 	'wikieditor-addMediaWizard-preference' => 'Aktiviere den „Medienassistenten“, als Hilfsprogramm zum Einfügen von Mediendateien',
 );
 
+/** Zazaki (Zazaki)
+ * @author Xoser
+ */
+$messages['diq'] = array(
+	'wikieditor-addMediaWizard-preference' => '"Xacetê mediya de kerdiêi" a bike',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
@@ -203,6 +210,13 @@ $messages['mk'] = array(
  */
 $messages['ml'] = array(
 	'wikieditor-addMediaWizard-preference' => '"മീഡിയ ഉൾപ്പെടുത്തൽ സഹായി" ഗാഡ്ജറ്റ് സജ്ജമാക്കുക',
+);
+
+/** Malay (Bahasa Melayu)
+ * @author Diagramma Della Verita
+ */
+$messages['ms'] = array(
+	'wikieditor-addMediaWizard-preference' => 'Aktifkan peralatan "Tambah wizard media"',
 );
 
 /** Maltese (Malti)

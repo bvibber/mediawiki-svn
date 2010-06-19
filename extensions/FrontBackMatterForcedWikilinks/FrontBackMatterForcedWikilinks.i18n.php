@@ -110,6 +110,7 @@ $messages['ia'] = array(
  * @author Robby
  */
 $messages['lb'] = array(
+	'frontbackforced-desc' => "Setzt een Ufank an een Ënn un d'Säiten derbäi an implementéiert forcéiert Wiki-Linken",
 	'frontbackforced-forced' => '_(forcéiert Wikilinken)',
 );
 
@@ -140,6 +141,16 @@ $messages['pt'] = array(
 	'frontbackforced-desc' => 'Acrescenta secções iniciais e finais às páginas e implementa links wiki automáticos',
 	'frontbackforced-front' => '_(secção_inicial)',
 	'frontbackforced-back' => '_(secção_final)',
+	'frontbackforced-forced' => '_(links_wiki_automáticos)',
+);
+
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Giro720
+ */
+$messages['pt-br'] = array(
+	'frontbackforced-desc' => 'Acrescenta seções iniciais e finais às páginas e implementa links wiki automáticos',
+	'frontbackforced-front' => '_(seção_inicial)',
+	'frontbackforced-back' => '_(seção_final)',
 	'frontbackforced-forced' => '_(links_wiki_automáticos)',
 );
 

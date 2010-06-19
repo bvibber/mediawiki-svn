@@ -960,7 +960,13 @@ $messages['pt'] = array(
 $messages['pt-br'] = array(
 	'mwe-clipedit-crop' => 'Recortar imagem',
 	'mwe-clipedit-apply_crop' => 'Aplicar corte à imagem',
+	'mwe-clipedit-reset_crop' => 'Reiniciar corte',
+	'mwe-clipedit-insert_image_page' => 'Inserir na página',
+	'mwe-clipedit-insert_into_sequence' => 'Inserir na sequência',
 	'mwe-clipedit-preview_insert' => 'Prever inserção',
+	'mwe-clipedit-cancel_image_insert' => 'Cancelar a inserção',
+	'mwe-clipedit-sc_attributes' => 'Edição dos detalhes do clipe',
+	'mwe-clipedit-sc_inoutpoints' => 'Estabelecer pontos de entrada e saída',
 	'mwe-clipedit-sc_duration' => 'Duração',
 	'mwe-clipedit-other_properties' => 'Outras propriedades',
 );

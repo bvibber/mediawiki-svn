@@ -194,6 +194,13 @@ $messages['ru'] = array(
 	'hidens-desc' => 'Скрывает пространство имён в заголовке и названии, если страница относится к определённому пространству имён, или содержит вызов функции парсера <code><nowiki>{{#hidens:}}</nowiki></code>',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'hidens-desc' => 'Skrije imenski prostor v glavi in naslovu, ko je stran v določenem imenskem prostoru ali kot je klicana funkcija razčlenjevalnika <code><nowiki>{{#hidens:}}</nowiki></code>',
+);
+
 /** Serbian Cyrillic ekavian (Српски (ћирилица))
  * @author Михајло Анђелковић
  */

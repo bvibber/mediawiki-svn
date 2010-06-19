@@ -1208,6 +1208,13 @@ $messages['mk'] = array(
 	'storyboard-storydeletionconfirm' => 'Дали сте дигурни дека сакате трајно да ја избришете приказнава?',
 );
 
+/** Maltese (Malti)
+ * @author Chrisportelli
+ */
+$messages['mt'] = array(
+	'storyboard-hide' => 'Aħbi',
+);
+
 /** Erzya (Эрзянь)
  * @author Botuzhaleny-sodamo
  */

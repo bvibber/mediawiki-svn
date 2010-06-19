@@ -534,6 +534,7 @@ $messages['ko'] = array(
 
 /** Colognian (Ripoarisch)
  * @author Purodha
+ * @author The Evil IP address
  */
 $messages['ksh'] = array(
 	'watchsubpages' => 'Op Ungersigge oppasse',

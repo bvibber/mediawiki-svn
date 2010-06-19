@@ -242,7 +242,7 @@ Saioa hasi baduzu, mezu hau kendu dezakezu zure hobespenen orrialdeko "{{int:pre
  */
 $messages['fa'] = array(
 	'vector-editwarning-warning' => 'خروج از این صفحه ممکن است باعث از دست رفتن هرچه نوشته‌اید شود.
-اگر شما با نام کاربری وارد شده‌اند .می‌توانید این هشدار را در بخش "{{int:prefs-editing}}" ترجیحاتتان بیابید.',
+اگر شما با نام کاربری وارد شده‌اند. می‌توانید این هشدار را در بخش «{{int:prefs-editing}}» ترجیحاتتان بیابید.',
 	'vector-editwarning-preference' => 'زمان خروج از صفحهٔ ویرایش در صورت داشتن ویرایش‌های‌ ذخیره‌نشده به من هشدار بده',
 );
 
@@ -552,6 +552,15 @@ $messages['pt-br'] = array(
 	'vector-editwarning-warning' => 'Abandonar esta página pode fazer com que você perca todas as alterações que fez.
 Se você estiver autenticado, você pode desabilitar este aviso na seção "{{int:prefs-editing}}" de suas preferências.',
 	'vector-editwarning-preference' => 'Avisar-me quando eu deixar uma janela de edição sem ter salvo as alterações',
+);
+
+/** Quechua (Runa Simi)
+ * @author AlimanRuna
+ */
+$messages['qu'] = array(
+	'vector-editwarning-warning' => 'Kay p\'anqata saqispaykiqa lliw rurarqusqayki hukchasqakunatachá chinkachiykiman.
+Yaykusqa kaspaykiqa, kay yuyampayta hark\'ayta atinki allinkachinaykikunapi "{{int:prefs-editing}}" rakipi.',
+	'vector-editwarning-preference' => "Yuyampaway p'anqata saqiptiy manaraq rurarqusqay hukchasqakunata waqaychaspay.",
 );
 
 /** Romanian (Română)

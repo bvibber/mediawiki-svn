@@ -383,7 +383,7 @@ $messages['be-tarask'] = array(
 	'prefswitch-title-switched-off' => 'Дзякуй',
 	'prefswitch-title-feedback' => 'Зваротная сувязь',
 	'prefswitch-success-on' => 'Новыя магчымасьці уключаныя. Мы спадзяемся, што Вам спадабаецца карыстацца новымі магчымасьцямі. Вы ў любы момант можаце іх адключыць, націснуўшы «[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-on}}]]», якая знаходзіцца ўверсе старонкі.',
-	'prefswitch-success-off' => 'Новыя магчымасьці выключаныя. Дзякуй, за спробу карыстаньня новымі магчымасьцямі. Вы ў любы момант можаце іх уключыць, націснуўшы «[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-off}}]]», якая знаходзіцца ўверсе старонкі.',
+	'prefswitch-success-off' => 'Новыя магчымасьці выключаныя. Дзякуй за выпрабаваньне новых магчымасьцяў. Вы ў любы момант можаце іх уключыць, націснуўшы «[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-off}}]]», якая знаходзіцца ўверсе старонкі.',
 	'prefswitch-success-feedback' => 'Ваш водгук дасланы.',
 	'prefswitch-return' => '<hr style="clear:both">
 Вярнуцца да <span class="plainlinks">[$1 $2]</span>.',
@@ -409,14 +409,14 @@ $messages['be-tarask'] = array(
 | Здымак акна для даданьня спасылак
 |}
 |}
-Каманда аналізу Фундацыі «Вікімэдыя» шмат працавала з валянтэрамі ад супольнасьці, каб палегчыць вашу працу зь Вікіпэдыяй і іншымі праектамі. Мы вельмі рады паказаць вам некаторыя ўдасканаленьні, у тым ліку новае афармленьне і спрашчэньне працэсу рэдагаваньня. На гэтыя зьмены, зробленыя на аснове [http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study usability вынікаў тэставаньня новых функцыяў за апошні год], ускладзенае палягчэньне працы для новых удзельнікаў. Паляпшэньне зручнасьці карыстаньня нашымі праектамі зьяўляецца прыярытэтам для Фундацыі, таму мы яшчэ падзелімся абнаўленьнямі ў будучыні. Каб даведацца болей, наведайце [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia запіс у блогу Вікімэдыі], датычны справы.
+Каманда аналізу Фундацыі «Вікімэдыя» шмат працавала з валянтэрамі ад супольнасьці, каб палегчыць вашу працу зь Вікіпэдыяй і іншымі праектамі. Мы вельмі рады паказаць вам некаторыя ўдасканаленьні, у тым ліку новае афармленьне і спрашчэньне працэсу рэдагаваньня. На гэтыя зьмены, зробленыя на аснове [http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study вынікаў тэставаньня новых функцыяў за апошні год], ускладзенае палягчэньне працы для новых удзельнікаў. Паляпшэньне зручнасьці карыстаньня нашымі праектамі зьяўляецца прыярытэтам для Вікімэдыі, таму мы яшчэ падзелімся абнаўленьнямі ў будучыні. Каб даведацца болей, наведайце адмысловы [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia запіс у блогу Вікімэдыі] на гэтую тэму.
 
 === Што мы зьмянілі ===
-* '''Навігацыя:''' Мы палепшылі навігацыю для чытаньня і рэдагаваньня старонак. Цяпер закладкі ў верхняй частцы кожнай старонкі дазваляюць дакладней зразумець, ці Вы праглядаеце артыкул ці старонку абмеркаваньня, а таксама, ці Вы чытаеце ці рэдагуеце старонку.
-* '''Паляпшэньні панэлі рэдагаваньня:''' Мы перапрацавалі панэль рэдагаваньня для таго, каб зрабіць яе болей простай у выкарыстаньні. Цяпер фарматаваньне старонак болей лёгкае і болей інтуітыўнае.
-* '''Майстар стварэньня спасылак:''' Лёгкі ў выкарыстаньні інструмэнт дазваляе Вам дадаваць спасылкі на іншыя старонкі {{GRAMMAR:'''родны|{{SITENAME}}}} так сама, як і на вонкавыя сайты.
+* '''Навігацыя:''' Мы палепшылі навігацыю для чытаньня і рэдагаваньня старонак. Цяпер закладкі ў верхняй частцы кожнай старонкі дазваляюць дакладней зразумець, што Вы праглядаеце: артыкул ці старонку абмеркаваньня, а таксама, ці Вы чытаеце, ці рэдагуеце старонку.
+* '''Паляпшэньні панэлі рэдагаваньня:''' Мы перапрацавалі панэль рэдагаваньня для таго, каб зрабіць яе болей простай у выкарыстаньні. Цяпер фарматаваньне старонак робіцца болей лёгкі і інтуітыўным шляхам.
+* '''Майстар стварэньня спасылак:''' Лёгкі ў выкарыстаньні інструмэнт дазваляе Вам дадаваць спасылкі на іншыя старонкі так сама, як і на вонкавыя сайты.
 * '''Паляпшэньні пошуку:''' Мы палепшылі пошукавыя падказкі, каб хутчэй паказаць неабходную Вам старонку.
-* '''Іншыя магчымасьці:''' Мы таксама ўвялі майстар стварэньня табліцаў для палягчэньня стварэньня табліцаў і магчымасьць пошуку і замены для палягчэньня рэдагаваньня старонак.
+* '''Іншыя магчымасьці:''' Мы таксама ўвялі майстар стварэньня табліцаў для палягчэньня іх стварэньня і магчымасьць пошуку і замены для палягчэньня рэдагаваньня старонак.
 * '''Лягатып Вікіпэдыі''': Мы зьмянілі лягатып. Падрабязнасьці глядзіце ў [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ блогу Фундацыі «Вікімэдыя»].
 
 === Зваротная сувязь ===
@@ -428,7 +428,7 @@ $messages['be-tarask'] = array(
 	'prefswitch-main-off' => '===Паспрабуйце іх!===
 Калі Вы жадаеце ўключыць новыя магчымасьці, калі ласка, [$1 націсьніце тут].',
 	'prefswitch-survey-intro-feedback' => 'Мы жадаем даведацца пра Вашыя меркаваньні.
-Калі ласка, адкажыце на некалькі пытаньняў ніжэй перад тым як націснуць «[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]».',
+Калі ласка, адкажыце на некалькі пытаньняў ніжэй, перад тым як націснуць «[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]».',
 	'prefswitch-survey-intro-off' => 'Дзякуй за тое, што паспрабавалі новыя магчымасьці.
 Каб дапамагчы нам іх палепшыць, калі ласка, адкажыце на некалькі пытаньняў ніжэй, перад тым як націснуць «[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]».',
 	'prefswitch-feedbackpage' => 'Project:Водгукі ўдзельнікаў',
@@ -966,6 +966,18 @@ $messages['diq'] = array(
 	'prefswitch-survey-true' => 'Heya',
 	'prefswitch-survey-false' => 'Nê',
 	'prefswitch-survey-submit-feedback' => 'Feedback bıde',
+	'prefswitch-survey-answer-whyoff-didntlike-toolbar' => 'Ez toolbare newe hes nikeni.',
+	'prefswitch-survey-question-browser' => 'Kamci navigator ser komputer tu sixulyena?',
+	'prefswitch-survey-answer-browser-other' => 'Navigatore bini:',
+	'prefswitch-survey-question-os' => 'Kamci sisteme oparatifi ser komputer tu sixulyena?',
+	'prefswitch-survey-answer-os-other' => 'Sisteme Opratife bini',
+	'prefswitch-survey-question-res' => 'Monitor tu de resulasyon cita ya?',
+	'prefswitch-title-on' => 'Xacetane Newe',
+	'prefswitch-title-switched-on' => 'Xerli bu!',
+	'prefswitch-title-off' => 'Xacetane newe a bike',
+	'prefswitch-title-switched-off' => 'Berxudar bu',
+	'prefswitch-title-feedback' => 'Fiqir bide',
+	'prefswitch-success-feedback' => 'Fiqire tu şiya.',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -1416,6 +1428,7 @@ Hobetzen laguntzeko, bete aukerako inkesta "[[#prefswitch-survey-submit-off|{{in
 );
 
 /** Persian (فارسی)
+ * @author Ebraminio
  * @author Ladsgroup
  */
 $messages['fa'] = array(
@@ -1430,16 +1443,16 @@ $messages['fa'] = array(
 	'prefswitch-survey-answer-whyoff-didntlike-layout' => 'من از طرح‌بندی و زبانه‌های جدید خوشم نمی‌آید.',
 	'prefswitch-survey-answer-whyoff-didntlike-toolbar' => 'من از نوار ابزار جدید خوشم نمی‌آید.',
 	'prefswitch-survey-answer-whyoff-other' => 'دلیل دیگر:',
-	'prefswitch-survey-question-browser' => 'از کدام مرورگر استفاده می کنید؟',
+	'prefswitch-survey-question-browser' => 'از کدام مرورگر استفاده می‌کنید؟',
 	'prefswitch-survey-answer-browser-other' => 'مرورگر دیگر:',
-	'prefswitch-survey-question-os' => 'از کدام سیستم عامل استفاده می کنید؟',
+	'prefswitch-survey-question-os' => 'از کدام سیستم عامل استفاده می‌کنید؟',
 	'prefswitch-survey-answer-os-other' => 'سیستم عامل دیگر:',
 	'prefswitch-title-on' => 'ویژگی‌های جدید',
 	'prefswitch-title-switched-on' => 'لذت ببرید!',
-	'prefswitch-title-off' => 'غیرفعال کردن ویژگی های جدید',
+	'prefswitch-title-off' => 'غیرفعال کردن ویژگی‌های جدید',
 	'prefswitch-title-switched-off' => 'با تشکر',
 	'prefswitch-title-feedback' => 'بازخورد',
-	'prefswitch-success-on' => 'ویژگی‌های جدید اکنون فعال شده‌است.ما امیدواریم که از استفاده از پوسته جدید لذت ببرید.شما می‌توانید با کلیک بروی "[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-on}}]]" در بالای صفحه این ویژگی را غیرفعال کنید.',
+	'prefswitch-success-on' => 'ویژگی‌های جدید اکنون فعال شده‌است. ما امیدواریم که از استفاده از پوسته جدید لذت ببرید.شما می‌توانید با کلیک بر روی «[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-on}}]]» در بالای صفحه این ویژگی را غیرفعال کنید.',
 	'prefswitch-success-feedback' => 'بازخورد شما ارسال شد.',
 	'prefswitch-return' => '<hr style="clear:both">
 بازگشت به <span class="plainlinks">[$1 $2]</span>.',
@@ -2469,7 +2482,7 @@ $messages['ka'] = array(
 * '''თანამედროვე ლოგო.''' ჩვენ შევიცვალეთ ლოგო - დაწვრილებით იხილეთ [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d~~V ვიკიმედიის ბლოგში]. 
 
  === კავშირი === 
-ჩვენთვის საინტერესოა თქვენი მოსაზრებების მოსმენა. იხილეთ ჩვენთან [[\$ 1 | feedbackკავშირის გვერდი]]. თუ თქვენ გაინტერესებთ ვიკიპედიის გაუმჯობესება, ეწვიეთ [http://usability.wikimedia.org მოხერხებულობის პროექტის ვიკის].",
+ჩვენთვის საინტერესოა თქვენი მოსაზრებების მოსმენა. იხილეთ ჩვენთან [[\$1|კავშირის გვერდი]]. თუ თქვენ გაინტერესებთ ვიკიპედიის გაუმჯობესება, ეწვიეთ [http://usability.wikimedia.org მოხერხებულობის პროექტის ვიკის].",
 	'prefswitch-main-anon' => '===დაბრუნება===
 თუ გსურთ გამორთოთ ბეტა, [$1 დააჭირეთ აქ]. შემდეგ კი გაიარეთ ავტორიზაცია ან შექმენით ანგარიში.',
 	'prefswitch-main-on' => '==დააბრუნეთ როგორც იყო!==
@@ -2478,6 +2491,8 @@ $messages['ka'] = array(
 თუ გსურთ, რომ ჩართათ ახალი ფუნქციები, [$1 აქ დააწკაპუნეთ].',
 	'prefswitch-survey-intro-feedback' => 'ჩვენ გვსურს თქვენი მოსაზრებების წაკითხვა.
 გთხოვთ უპასუხოთ რამდენიმე არასავლდებულო შეკითხვას ქვემოთ, სანამ დააწკაპუნებთ "[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]" ღილაკს.',
+	'prefswitch-survey-intro-off' => 'გმადლობთ ახალი შესაძლებლობების ტესტირებისთვის.
+თუ გსურთ დაგვეხმაროთ მათ გაუმჯობესებაში, გთხოვთ უპასუხოთ რამდენიმე კითხვას სანამ დააჭერთ «[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]».',
 	'prefswitch-feedbackpage' => 'Project:ბეტა/ახალი შესაძლებლობები/გამოხმაურებები',
 );
 

@@ -446,6 +446,13 @@ $messages['sk'] = array(
 	'fixedimage-desc' => 'Pridáva značku <code>&lt;fundraising&gt;</code> ako obrázok',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'fixedimage-desc' => 'Doda etiketo <code>&lt;fundraising&gt;</code> kot sliko',
+);
+
 /** Albanian (Shqip)
  * @author Puntori
  */

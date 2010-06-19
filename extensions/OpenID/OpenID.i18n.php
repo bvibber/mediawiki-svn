@@ -4704,6 +4704,29 @@ Bez OpenID by ste sa nemohli prihlásiť.',
 	'openid-provider-label-other-username' => 'Zadajte svoje prihlasovacie meno na $1',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'openidlogin' => 'Prijavite se z OpenID',
+	'openidserver' => 'Strežnik OpenID',
+	'openidxrds' => 'Datoteka Yadis',
+	'openidusernameprefix' => 'UporabnikOpenID',
+	'openidoptional' => 'Izbirno',
+	'openidrequired' => 'Zahtevano',
+	'openidnickname' => 'Vzdevek',
+	'openidfullname' => 'Polno ime',
+	'openidemail' => 'E-poštni naslov',
+	'openidlanguage' => 'Jezik',
+	'openidchoosenick' => 'Vaš vzdevek ($1)',
+	'openidchoosefull' => 'Vaše polno ime ($1)',
+	'openidchooseusername' => 'Uporabniško ime:',
+	'openidchoosepassword' => 'Geslo:',
+	'openidloginlabel' => 'URL OpenID',
+	'openiddelete' => 'Izbriši OpenID',
+	'openiddelete-button' => 'Potrdi',
+);
+
 /** Lower Silesian (Schläsch)
  * @author Schläsinger
  */

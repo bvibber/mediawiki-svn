@@ -72,12 +72,13 @@ $messages['arz'] = array(
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
+ * @author Wizardist
  */
 $messages['be-tarask'] = array(
 	'wikieditor-template-editor-preference' => 'Дазволіць рэдагаваньне шаблёнаў вікі праз формы',
 	'wikieditor-template-editor-dialog-title' => 'Рэдагаваць шаблён',
 	'wikieditor-template-editor-dialog-submit' => 'Абнавіць',
-	'wikieditor-template-editor-dialog-cancel' => 'Адмяніць',
+	'wikieditor-template-editor-dialog-cancel' => 'Скасаваць',
 );
 
 /** Bulgarian (Български)
@@ -462,6 +463,16 @@ $messages['ml'] = array(
 	'wikieditor-template-editor-dialog-cancel' => 'റദ്ദാക്കുക',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Diagramma Della Verita
+ */
+$messages['ms'] = array(
+	'wikieditor-template-editor-preference' => 'Aktifkan borang penyuntingan wiki templat',
+	'wikieditor-template-editor-dialog-title' => 'Sunting templat',
+	'wikieditor-template-editor-dialog-submit' => 'Mengemas kini',
+	'wikieditor-template-editor-dialog-cancel' => 'Batalkan',
+);
+
 /** Maltese (Malti)
  * @author Chrisportelli
  */
@@ -554,6 +565,14 @@ $messages['pt-br'] = array(
 	'wikieditor-template-editor-dialog-title' => 'Editar predefinição',
 	'wikieditor-template-editor-dialog-submit' => 'Atualizar',
 	'wikieditor-template-editor-dialog-cancel' => 'Cancelar',
+);
+
+/** Quechua (Runa Simi)
+ * @author AlimanRuna
+ */
+$messages['qu'] = array(
+	'wikieditor-template-editor-dialog-submit' => 'Musuqchay',
+	'wikieditor-template-editor-dialog-cancel' => 'Ama niy',
 );
 
 /** Romanian (Română)
