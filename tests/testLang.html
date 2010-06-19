@@ -166,15 +166,16 @@ mw.ready( function(){
 						}
 						//output a spacer:
 						o+='<tr><td colspan="6" height="20"> </td></tr>';			
-					});
+					});			
 					// remove the spiner
-					$j( '.loadingSpinner').remove();
+					debugger;
+					
+					$j('.loadingSpinner').remove();		
 					//put the output into the page: 
 					$j('#table_out').append( o );								
 				});			
 			}
-		}//procc lang key:
-		
+		}//procc lang key:		
 		doProcLangKey( langSet.pop() );
 	}
 });
