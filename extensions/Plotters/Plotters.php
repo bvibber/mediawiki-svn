@@ -60,7 +60,7 @@ $wgPlottersRendererFiles = array( "plotkit" => array( "/mochikit/MochiKit.js", "
 							"/plotkit/Canvas.js", "/plotkit/SweetCanvas.js" )
 				);
 
-function wfPlottersArticleSaveComplete( &$article, &$wgUser, &$text ) {
+function wfPlottersArticleSaveComplete( $article, $wgUser, $text ) {
 	// update cache if MediaWiki:Plotters-definition was edited
 	$title = $article->mTitle;
 	if ( $title->getNamespace() == NS_MEDIAWIKI && $title->getText() == 'Plotters-definition' ) {
@@ -142,7 +142,7 @@ function wfLoadPlottersStructured( $forceNewText = null ) {
 	return $plotters;
 }
 
-function wfApplyPlotterCode( $code, &$out, &$done ) {
+function wfApplyPlotterCode( $code, $out, &$done ) {
 	global $wgSkin, $wgJsMimeType;
 
 	// FIXME: stuff added via $out->addScript appears below usercss and userjs in the head tag.
@@ -173,7 +173,7 @@ function efPlotters() {
 	$wgParser->setFunctionHook( 'plot', 'initPlottersPF' );
 }
 
-function initPlottersPF( &$parser ) {
+function initPlottersPF( $parser ) {
 	$numargs = func_num_args();
 	if ( $numargs < 2 ) {
 		wfLoadExtensionMessages( 'Plotters' );
@@ -225,7 +225,7 @@ function initPlotters( $input, $argv, &$parser ) {
  * Hook callback that injects messages and things into the <head> tag
  * Does nothing if $parserOutput->mPlotterTag is not set
  */
-function PlottersParserOutput( &$outputPage, &$parserOutput )  {
+function PlottersParserOutput( $outputPage, $parserOutput )  {
 	if ( !empty( $parserOutput->mPlottersTag ) ) {
 		// Output required javascript
 		$genericname = "generic";
@@ -257,7 +257,7 @@ function PlottersParserOutput( &$outputPage, &$parserOutput )  {
  * We ignore langCode - parser function names can be translated but
  * we are not using this feature
  */
-function PlottersLanguageGetMagic( &$magicWords, $langCode ) {
+function PlottersLanguageGetMagic( $magicWords, $langCode ) {
 	$magicWords['plot']  = array( 0, 'plot' );
 	return true;
 }
