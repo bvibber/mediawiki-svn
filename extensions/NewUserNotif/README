@@ -98,7 +98,7 @@ $wgNewUserNotifSenderParam
 			'$wgContLang->date( wfTimestampNow() )',			// $5 Date Stamp
 			'$wgContLang->time( wfTimestampNow() )',			// $6 Time Stamp
 
-You can then either edit MediaWiki:Newusernotifbody to make use of the new parameters (e.g. add "\n\nThe request came from $7.") or alternatively if you haven't customised the message you can edit NewUserNotif.i18n.php and make the change there to avoid creating a new wiki page (e.g. if your wiki is in English, change the 'en' array.)
+You can then either edit MediaWiki:Newusernotifbody to make use of the new parameters (e.g. add "\n\nThe request came from $7.").
 
 === 6.1 Upgrading from 1.5.1 ===
 
