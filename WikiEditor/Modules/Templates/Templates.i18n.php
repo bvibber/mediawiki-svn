@@ -24,9 +24,10 @@ $messages['aln'] = array(
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
+ * @author Zedlik
  */
 $messages['be-tarask'] = array(
-	'wikieditor-templates-preference' => 'Уключыць хаваньне шаблёнаў',
+	'wikieditor-templates-preference' => 'Уключыць згортваньне шаблёнаў',
 );
 
 /** Bengali (বাংলা)
