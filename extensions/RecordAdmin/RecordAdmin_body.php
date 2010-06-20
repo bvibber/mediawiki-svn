@@ -46,7 +46,7 @@ class SpecialRecordAdmin extends SpecialPage {
 		if ( is_object( $title ) && $title->isRedirect() ) {
 			$article = new Article( $title );
 			$content = $article->getContent();
-			if ( preg_match( '/\[\[(.+?)\]\]/', $content, $m ) ) $title = Title::newFromText( $m[1] );
+			if ( preg_match( "|\[\[(.+?)\]\]|", $content, $m ) ) $title = Title::newFromText( $m[1] );
 		}
 
 		if ( is_object( $title ) ) {
@@ -131,7 +131,7 @@ class SpecialRecordAdmin extends SpecialPage {
 		$this->template = Title::makeTitle( NS_TEMPLATE, $type );
 
 		if ( $type && $wgRecordAdminUseNamespaces ) {
-			if ( $wpTitle && !ereg( "^$type:.+$", $wpTitle ) ) $wpTitle = "$type:$wpTitle";
+			if ( $wpTitle && !preg_match( "|^$type:.+$|", $wpTitle ) ) $wpTitle = "$type:$wpTitle";
 		}
 		$wgOut->addHTML(
 			'<div class="recordadmin-menubar"><a href="' . $title->getLocalURL() . "/$type\">" . wfMsg( 'recordadmin-newsearch', $type ) . '</a>'
@@ -141,7 +141,7 @@ class SpecialRecordAdmin extends SpecialPage {
 
 		# Get posted form values if any
 		$posted = array();
-		foreach ( $_REQUEST as $k => $v ) if ( preg_match( '|^ra_(\\w+)|', $k, $m ) ) $posted[$m[1]] = is_array( $v ) ? join( "\n", $v ) : $v;
+		foreach ( $_REQUEST as $k => $v ) if ( preg_match( "|^ra_(\\w+)|", $k, $m ) ) $posted[$m[1]] = is_array( $v ) ? join( "\n", $v ) : $v;
 		$this->filter = $posted;
 
 		# Read in and prepare the form for this record type if one has been selected
@@ -343,7 +343,7 @@ class SpecialRecordAdmin extends SpecialPage {
 		# Loop through all records of this type adding only those that match the regex fields
 		$records = array();
 		foreach ( self::getRecordsByType( $type ) as $t ) {
-			if ( empty( $wpTitle ) || eregi( $wpTitle, $t->getPrefixedText() ) ) {
+			if ( empty( $wpTitle ) || preg_match( "|$wpTitle|i", $t->getPrefixedText() ) ) {
 				$a = new Article( $t );
 				$text = $a->getContent();
 				$match = true;
@@ -386,7 +386,7 @@ class SpecialRecordAdmin extends SpecialPage {
 		}
 
 		# Sort the records according to "orderby" parameter
-		if ( $this->desc = eregi( ' +desc *$', $orderby ) ) $orderby = eregi_replace( ' +desc *$', '', $orderby );
+		if ( $this->desc = preg_match( "| +desc *$|", $orderby ) ) $orderby = preg_replace( "| +desc *$|", "", $orderby );
 		$this->orderBy = $orderby;
 		usort( $records, array( $this, 'sortCallback' ) );
 
@@ -429,9 +429,9 @@ class SpecialRecordAdmin extends SpecialPage {
 			break;
 			
 			default:
-				$a = preg_replace( '|(\d\d)[-/](\d\d)[-/](\d\d\d\d)|', '$3/$2/$1', $a ); # hack for dd/mm/yyyy format - best to use yyyy-mm-dd
-				$b = preg_replace( '|(\d\d)[-/](\d\d)[-/](\d\d\d\d)|', '$3/$2/$1', $b );
-				if ( !is_numeric( $b ) && ereg( '[0-9]{4}', $b ) && $tmp = strtotime( $b ) ) {
+				$a = preg_replace( "|(\d\d)[-/](\d\d)[-/](\d\d\d\d)|", "$3/$2/$1", $a ); # hack for dd/mm/yyyy format - best to use yyyy-mm-dd
+				$b = preg_replace( "|(\d\d)[-/](\d\d)[-/](\d\d\d\d)|", "$3/$2/$1", $b );
+				if ( !is_numeric( $b ) && preg_match( "|[0-9]{4}|", $b ) && $tmp = strtotime( $b ) ) {
 					$b = $tmp;
 					$a = strtotime( $a );
 				}
@@ -484,7 +484,7 @@ class SpecialRecordAdmin extends SpecialPage {
 			'modified' => "<th class='col3 col-modified'>" . wfMsg( 'recordadmin-modified' )     . "$br</th>"
 		);
 		foreach ( array_keys( $this->types ) as $col ) {
-			$class = 'col' . preg_replace( '|\W|', '-', $col );
+			$class = 'col' . preg_replace( "|\W|", "-", $col );
 			$th[$col] = "<th class='$class'>$col$br</th>";
 		}
 		$tmp = array();
@@ -565,7 +565,7 @@ class SpecialRecordAdmin extends SpecialPage {
 					foreach ( $cols as $col ) {
 						if ( !isset( $row[$col] ) ) {
 							$v = isset( $r[$col] ) ? $wgParser->parse( $r[$col], $wgTitle, $wgParser->mOptions, true, false )->getText() : '&#160;';
-							$class = 'col' . preg_replace( '|\W|', '-', $col );
+							$class = 'col' . preg_replace( "|\W|", "-", $col );
 							$row[$col] = "<td class='$class'>$v</td>";
 						}
 						$table .= "$row[$col]\n";
@@ -1057,7 +1057,7 @@ class SpecialRecordAdmin extends SpecialPage {
 				elseif ( $k == 'groupby' )  $groupby  = $v;
 				elseif ( $k == 'format' )   $format   = $v;
 				elseif ( $k == 'cols' )     $cols     = self::split( $v, ',' );
-				elseif ( $k == 'sortable' ) $sortable = eregi( '1|yes|true|on', $v );
+				elseif ( $k == 'sortable' ) $sortable = preg_match( '/(1|yes|true|on)/i', $v );
 				elseif ( $k == 'template' ) $template = $v;
 				elseif ( $k == 'count' )    $count    = $v;
 				elseif ( $k == 'export' )   $export   = $v;
