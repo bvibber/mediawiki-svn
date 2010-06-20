@@ -115,6 +115,8 @@ $messages['de'] = array(
  */
 $messages['diq'] = array(
 	'prefs-updates' => 'Rocaniyani',
+	'updatemyprefs-desc' => 'Tercihan ke semed karberan wecinayise rocaniya interfaceyi periyodic ke ci wext est ê',
+	'updatemyprefs-label-message' => 'Tercihane mi pe xacetane u eyarane rocaniye bike ci wext ke est ê',
 );
 
 /** Lower Sorbian (Dolnoserbski)

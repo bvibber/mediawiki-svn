@@ -234,6 +234,15 @@ $messages['ru'] = array(
 	'prefs-category' => 'Категория',
 );
 
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'categorymultisort-defaultsortkey-name' => 'Подразумевано',
+	'categorymultisort-sortkey' => 'Кључ сортирања:',
+	'categorymultisort-go' => 'Иди',
+);
+
 /** Simplified Chinese (‪中文(简体)‬) */
 $messages['zh-hans'] = array(
 	'categorymultisort-desc' => '允许按照不同的排序字查看分类',

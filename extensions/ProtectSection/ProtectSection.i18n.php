@@ -566,6 +566,13 @@ $messages['sk'] = array(
 	'right-protectsection' => 'Zamykať sekcie stránky',
 );
 
+/** Serbian Cyrillic ekavian (Српски (ћирилица))
+ * @author Михајло Анђелковић
+ */
+$messages['sr-ec'] = array(
+	'protectsection_forbidden' => 'Забрањено',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

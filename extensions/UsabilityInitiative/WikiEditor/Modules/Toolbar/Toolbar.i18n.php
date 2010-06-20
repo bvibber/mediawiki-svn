@@ -1251,6 +1251,7 @@ $messages['be'] = array(
  * @author EugeneZelenko
  * @author Jim-by
  * @author Wizardist
+ * @author Zedlik
  */
 $messages['be-tarask'] = array(
 	'wikieditor-toolbar' => 'Панэль інструмэнтаў для рэдагаваньня',
@@ -1277,21 +1278,21 @@ $messages['be-tarask'] = array(
 	'wikieditor-toolbar-tool-link-ext-target' => 'URL-адрас спасылкі:',
 	'wikieditor-toolbar-tool-link-ext-text' => 'Тэкст спасылкі:',
 	'wikieditor-toolbar-tool-link-insert' => 'Уставіць спасылку',
-	'wikieditor-toolbar-tool-link-cancel' => 'Адмяніць',
+	'wikieditor-toolbar-tool-link-cancel' => 'Скасаваць',
 	'wikieditor-toolbar-tool-link-int-target-status-exists' => 'Старонка існуе',
 	'wikieditor-toolbar-tool-link-int-target-status-notexists' => 'Старонка не існуе',
 	'wikieditor-toolbar-tool-link-int-target-status-invalid' => 'Няслушная назва',
 	'wikieditor-toolbar-tool-link-int-target-status-external' => 'Вонкавая спасылка',
 	'wikieditor-toolbar-tool-link-int-target-status-loading' => 'Праверка існаваньня старонкі…',
-	'wikieditor-toolbar-tool-link-int-invalid' => 'Пазначаная назва няслушная.',
-	'wikieditor-toolbar-tool-link-lookslikeinternal' => 'Пададзены URL-адрас верагодна зьяўляецца спасылкай на іншую вікі-старонку. Вы жадаеце зрабіць яе унутранай спасылкай?',
+	'wikieditor-toolbar-tool-link-int-invalid' => 'Пазначаная няслушная назва.',
+	'wikieditor-toolbar-tool-link-lookslikeinternal' => 'Пададзены URL-адрас верагодна зьяўляецца спасылкай на іншую вікі-старонку. Ці жадаеце зрабіць яе унутранай спасылкай?',
 	'wikieditor-toolbar-tool-link-lookslikeinternal-int' => 'Унутраная спасылка',
 	'wikieditor-toolbar-tool-link-lookslikeinternal-ext' => 'Вонкавая спасылка',
 	'wikieditor-toolbar-tool-link-empty' => 'Вы не ўвялі адрас спасылкі.',
 	'wikieditor-toolbar-tool-file' => 'Укладзены файл',
 	'wikieditor-toolbar-tool-file-example' => 'Прыклад.jpg',
 	'wikieditor-toolbar-tool-reference' => 'Зноска',
-	'wikieditor-toolbar-tool-reference-example' => 'Уставіць тут тэкст зноскі',
+	'wikieditor-toolbar-tool-reference-example' => 'Устаўце сюды тэкст зноскі',
 	'wikieditor-toolbar-tool-reference-cancel' => 'Скасаваць',
 	'wikieditor-toolbar-tool-reference-title' => 'Уставіць зноску',
 	'wikieditor-toolbar-tool-reference-insert' => 'Уставіць',
@@ -1324,7 +1325,7 @@ $messages['be-tarask'] = array(
 	'wikieditor-toolbar-tool-superscript-example' => 'Надрадковы тэкст',
 	'wikieditor-toolbar-tool-subscript' => 'Ніжні індэкс',
 	'wikieditor-toolbar-tool-subscript-example' => 'Падрадковы тэкст',
-	'wikieditor-toolbar-group-insert' => 'Устаўка',
+	'wikieditor-toolbar-group-insert' => 'Уставіць',
 	'wikieditor-toolbar-tool-gallery' => 'Галерэя выяваў',
 	'wikieditor-toolbar-tool-gallery-example' => '{{ns:file}}:Прыклад.jpg|Подпіс1
 {{ns:file}}:Прыклад.jpg|Подпіс2',
@@ -1367,13 +1368,13 @@ $messages['be-tarask'] = array(
 	'wikieditor-toolbar-tool-replace-button-replacenext' => 'Працягваць замену',
 	'wikieditor-toolbar-tool-replace-button-replaceall' => 'Замяніць усё',
 	'wikieditor-toolbar-tool-replace-close' => 'Закрыць',
-	'wikieditor-toolbar-tool-replace-nomatch' => 'Па Вашаму запыту нічога ня знойдзена.',
+	'wikieditor-toolbar-tool-replace-nomatch' => 'Па Вашым запыце нічога ня знойдзена.',
 	'wikieditor-toolbar-tool-replace-success' => 'Зроблена заменаў: $1.',
 	'wikieditor-toolbar-tool-replace-emptysearch' => 'Вы не ўвялі нічога для пошуку.',
 	'wikieditor-toolbar-tool-replace-invalidregex' => 'Уведзены Вамі рэгулярны выраз зьяўляецца няслушным: $1',
 	'wikieditor-toolbar-section-characters' => 'Спэцыяльныя сымбалі',
 	'wikieditor-toolbar-characters-page-latin' => 'Лацінскія',
-	'wikieditor-toolbar-characters-page-latinextended' => 'Лацінскія пашыраныя',
+	'wikieditor-toolbar-characters-page-latinextended' => 'Лацінскія дадатковыя',
 	'wikieditor-toolbar-characters-page-ipa' => 'МФА (IPA)',
 	'wikieditor-toolbar-characters-page-symbols' => 'Сымбалі',
 	'wikieditor-toolbar-characters-page-greek' => 'Грэцкія',
@@ -1406,9 +1407,9 @@ $messages['be-tarask'] = array(
 	'wikieditor-toolbar-help-content-bolditalic-result' => '<strong><em>Тлусты курсіўны тэкст</em></strong>',
 	'wikieditor-toolbar-help-content-ilink-description' => 'Унутраная спасылка',
 	'wikieditor-toolbar-help-content-ilink-syntax' => '[[Назва старонкі|Метка спасылкі]]<br />[[Назва старонкі]]',
-	'wikieditor-toolbar-help-content-ilink-result' => "<a href='#'>Метка спасылкі</a><br /><a href='#'>Назва старонкі</a>",
+	'wikieditor-toolbar-help-content-ilink-result' => "<a href='#'>Тэкст спасылкі</a><br /><a href='#'>Назва старонкі</a>",
 	'wikieditor-toolbar-help-content-xlink-description' => 'Вонкавая спасылка',
-	'wikieditor-toolbar-help-content-xlink-syntax' => '[http://www.example.org Метка спасылкі]<br />[http://www.example.org]<br />http://www.example.org',
+	'wikieditor-toolbar-help-content-xlink-syntax' => '[http://www.example.org Тэкст спасылкі]<br />[http://www.example.org]<br />http://www.example.org',
 	'wikieditor-toolbar-help-content-xlink-result' => "<a href='#' class='external'>Метка спасылкі</a><br /><a href='#' class='external autonumber'>[1]</a><br /><a href='#' class='external'>http://www.example.org</a>",
 	'wikieditor-toolbar-help-content-heading1-description' => 'Загаловак 1-га ўзроўню',
 	'wikieditor-toolbar-help-content-heading1-syntax' => '= Тэкст загалоўку =',
@@ -1439,7 +1440,7 @@ $messages['be-tarask'] = array(
 	'wikieditor-toolbar-help-content-reference-result' => "Тэкст старонкі.<sup><a href='#'>[1]</a></sup>",
 	'wikieditor-toolbar-help-content-rereference-description' => 'Паўторнае выкарыстаньне той жа зноскі',
 	'wikieditor-toolbar-help-content-rereference-result' => "Тэкст старонкі.<sup><a href='#'>[1]</a></sup>",
-	'wikieditor-toolbar-help-content-showreferences-description' => 'Паказ зносак',
+	'wikieditor-toolbar-help-content-showreferences-description' => 'Паказваць зноскі',
 	'wikieditor-toolbar-help-content-showreferences-result' => "<ol class='references'><li id='cite_note-test-0'><b><a title='' href='#'>^</a></b> <a rel='nofollow' title='http://www.example.org' class='external text' href='#'>Тэкст спасылкі</a>, дадатковы тэкст.</li></ol>",
 	'wikieditor-toolbar-help-content-signaturetimestamp-description' => 'Подпіс і час',
 	'wikieditor-toolbar-help-content-signaturetimestamp-result' => "<a href='#' title='{{#special:mypage}}'>Імя ўдзельніка</a> (<a href='#' title='{{#special:mytalk}}'>гутаркі</a>) 15:54, 10 чэрвеня 2009 (UTC)",
@@ -2821,6 +2822,7 @@ $messages['csb'] = array(
  * @author ОйЛ
  */
 $messages['cu'] = array(
+	'wikieditor-toolbar-tool-link' => 'съвѧ́ꙁь',
 	'wikieditor-toolbar-tool-redirect' => 'прѣнаправлѥ́ниѥ',
 	'wikieditor-toolbar-characters-page-latin' => 'лати́ньска а́ꙁъбоукꙑ',
 	'wikieditor-toolbar-characters-page-latinextended' => 'лати́ньскꙑ а́ꙁъбоукьвє доложє́ниѥ',
@@ -2830,7 +2832,11 @@ $messages['cu'] = array(
 	'wikieditor-toolbar-characters-page-cyrillic' => 'климє́нтовица / гражда́ньска а́ꙁъбоукꙑ',
 	'wikieditor-toolbar-characters-page-arabic' => 'ара́вьска а́ꙁъбоукꙑ',
 	'wikieditor-toolbar-characters-page-hebrew' => 'єврє́иска а́ꙁъбоукꙑ',
+	'wikieditor-toolbar-characters-page-bangla' => 'бангальска а́ꙁъбоукꙑ',
+	'wikieditor-toolbar-characters-page-telugu' => 'тєлоужьска а́ꙁъбоукꙑ',
 	'wikieditor-toolbar-section-help' => 'по́мощь',
+	'wikieditor-toolbar-help-page-link' => 'съвѧ́ꙁи',
+	'wikieditor-toolbar-help-page-file' => 'дѣла́',
 	'wikieditor-toolbar-help-page-discussion' => 'бєсѣ́да',
 );
 
@@ -10346,7 +10352,7 @@ $messages['mt'] = array(
 	'wikieditor-toolbar-tool-replace-button-findnext' => 'Sib li jmiss',
 	'wikieditor-toolbar-tool-replace-button-replacenext' => 'Biddel li jmiss',
 	'wikieditor-toolbar-tool-replace-button-replaceall' => 'Biddel kollox',
-	'wikieditor-toolbar-tool-replace-close' => 'Annulla',
+	'wikieditor-toolbar-tool-replace-close' => 'Agħlaq',
 	'wikieditor-toolbar-tool-replace-nomatch' => 'It-tfittxija ma tat l-ebda riżultat.',
 	'wikieditor-toolbar-tool-replace-success' => 'Saret/u $1 tibdila/iet.',
 	'wikieditor-toolbar-tool-replace-emptysearch' => 'Ma indikajt xejn xi trid tfittex.',

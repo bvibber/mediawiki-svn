@@ -2330,6 +2330,15 @@ $messages['ru'] = array(
 	'right-crosswikiblock' => 'блокировка и разблокировка участников в других вики',
 );
 
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'crosswikiblock-expiry' => 'Кінчіть:',
+	'crosswikiblock-reason' => 'Причіна:',
+	'crosswikiblock-submit' => 'Заблоковати того хоснователя',
+);
+
 /** Sicilian (Sicilianu)
  * @author Melos
  */

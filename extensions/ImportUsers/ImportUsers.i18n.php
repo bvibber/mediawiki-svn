@@ -1642,6 +1642,19 @@ $messages['ru'] = array(
 	'right-import_users' => 'импортировать сразу несколько участников',
 );
 
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'importusers-log-summary-all' => 'Вшыткы',
+	'importusers-log-summary-added' => 'Придане',
+	'importusers-log-summary-updated' => 'Актуалізоване',
+	'importusers-login-name' => 'Мено приголошіня',
+	'importusers-password' => 'гесло',
+	'importusers-email' => 'електронічна пошта',
+	'importusers-realname' => 'скуточне мено',
+);
+
 /** Tachelhit (Tašlḥiyt)
  * @author Zanatos
  */

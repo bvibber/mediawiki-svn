@@ -3787,6 +3787,7 @@ $messages['lb'] = array(
 	'deletequeue-list-header-page' => 'Säit',
 	'deletequeue-list-header-discusspage' => 'Diskussiounssäit',
 	'deletequeue-list-header-reason' => "Grond fir d'Läschen",
+	'deletequeue-case-details' => 'Basisinformatiounen',
 	'deletequeue-case-page' => 'Säit:',
 	'deletequeue-case-reason' => 'Grond:',
 );

@@ -839,6 +839,14 @@ $messages['ru'] = array(
 	'right-findspam' => 'поиск недавно добавленного спама',
 );
 
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'findspam-ip' => 'IP-адреса:',
+	'findspam-ok' => 'ОК',
+);
+
 /** Sardinian (Sardu)
  * @author Marzedu
  */

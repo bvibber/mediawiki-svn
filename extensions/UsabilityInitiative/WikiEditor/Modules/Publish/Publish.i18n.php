@@ -119,9 +119,10 @@ $messages['arz'] = array(
  * @author EugeneZelenko
  * @author Jim-by
  * @author Wizardist
+ * @author Zedlik
  */
 $messages['be-tarask'] = array(
-	'wikieditor-publish-preference' => 'Уключыць паступовую публікацыю',
+	'wikieditor-publish-preference' => 'Уключыць пакрокавую публікацыю',
 	'wikieditor-publish-button-publish' => 'Апублікаваць',
 	'wikieditor-publish-button-cancel' => 'Скасаваць',
 	'wikieditor-publish-dialog-title' => 'Апублікаваць у {{GRAMMAR:месны|{{SITENAME}}}}',

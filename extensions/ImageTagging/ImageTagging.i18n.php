@@ -1773,6 +1773,15 @@ $messages['ru'] = array(
 	'tag-logpagetext' => 'Это журнал добавления и удаления всех меток изображений.',
 );
 
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'imagetagging-article' => 'Сторінка:',
+	'imagetagging-imghistory' => 'Історія',
+	'imagetagging-images' => 'образкы',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

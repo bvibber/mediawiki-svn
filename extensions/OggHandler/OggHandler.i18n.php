@@ -752,6 +752,8 @@ kerem kerê<a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_do
 	'ogg-dismiss' => 'bıqefeln',
 	'ogg-download' => 'dosya biyar war',
 	'ogg-desc-link' => 'derheqê dosyayi de',
+	'ogg-oggThumb-version' => 'OggHandler rê oggThumb versiyon $1 ya zi newiyer lazim o.',
+	'ogg-oggThumb-failed' => 'oggThumb nieskene thumbnail biviraze.',
 );
 
 /** Lower Sorbian (Dolnoserbski)

@@ -772,6 +772,7 @@ Tento prehľad poskytuje jednoduchý prístup k stránkam systémových správ, 
 $messages['sr-ec'] = array(
 	'plotters' => 'Плотери',
 	'plotters-title' => 'Плотери',
+	'plotters-uses' => 'Коришћење',
 	'plotters-no-data' => 'Нису достављени никакви подаци.',
 );
 

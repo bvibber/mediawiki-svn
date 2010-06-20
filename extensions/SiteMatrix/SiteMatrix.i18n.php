@@ -1412,12 +1412,13 @@ $messages['ps'] = array(
 );
 
 /** Portuguese (Português)
+ * @author Giro720
  * @author Hamilton Abreu
  * @author Malafaya
  * @author לערי ריינהארט
  */
 $messages['pt'] = array(
-	'sitematrix' => 'Lista de sites Wikimedia',
+	'sitematrix' => 'Lista de wikis da Wikimedia',
 	'sitematrix-summary' => 'Esta página especial lista todas as wikis Wikimedia.',
 	'sitematrix-desc' => 'Apresenta uma [[Special:SiteMatrix|lista de wikis Wikimedia]]',
 	'sitematrix-language' => 'Língua',

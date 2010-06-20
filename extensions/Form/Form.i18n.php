@@ -1391,6 +1391,7 @@ $messages['sr-ec'] = array(
 	'formsave' => 'Сачувај',
 	'formarticleexists' => 'Страна постоји',
 	'formarticleexiststext' => 'Страна [[$1]] већ постоји.',
+	'formbadpagename' => 'Лоше име стране',
 );
 
 /** Serbian Latin ekavian (Srpski (latinica))

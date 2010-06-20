@@ -1344,6 +1344,19 @@ $messages['ru'] = array(
 	'imstatus_yahoo_style' => 'стиль кнопки, от $1 (наименьший) до $2 (наибольший), $3 и $4 для голосовой почты.',
 );
 
+/** Rusyn (русиньскый язык)
+ * @author Gazeb
+ */
+$messages['rue'] = array(
+	'imstatus_syntax' => 'Сінтакс',
+	'imstatus_default' => 'Імпліцітне',
+	'imstatus_example' => 'Приклад',
+	'imstatus_possible_val' => 'Можны годноты',
+	'imstatus_max' => 'макс.',
+	'imstatus_min' => 'мін.',
+	'imstatus_or' => 'або',
+);
+
 /** Slovak (Slovenčina)
  * @author Helix84
  */

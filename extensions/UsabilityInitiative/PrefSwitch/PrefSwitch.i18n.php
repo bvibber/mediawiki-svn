@@ -409,7 +409,7 @@ $messages['be-tarask'] = array(
 | Здымак акна для даданьня спасылак
 |}
 |}
-Каманда аналізу Фундацыі «Вікімэдыя» шмат працавала з валянтэрамі ад супольнасьці, каб палегчыць вашу працу зь Вікіпэдыяй і іншымі праектамі. Мы вельмі рады паказаць вам некаторыя ўдасканаленьні, у тым ліку новае афармленьне і спрашчэньне працэсу рэдагаваньня. На гэтыя зьмены, зробленыя на аснове [http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study вынікаў тэставаньня новых функцыяў за апошні год], ускладзенае палягчэньне працы для новых удзельнікаў. Паляпшэньне зручнасьці карыстаньня нашымі праектамі зьяўляецца прыярытэтам для Вікімэдыі, таму мы яшчэ падзелімся абнаўленьнямі ў будучыні. Каб даведацца болей, наведайце адмысловы [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia запіс у блогу Вікімэдыі] на гэтую тэму.
+Каманда аналізу Фундацыі «Вікімэдыя» шмат працавала з валянтэрамі ад супольнасьці, каб палегчыць вашу працу зь Вікіпэдыяй і іншымі праектамі. Мы вельмі рады паказаць вам некаторыя ўдасканаленьні, у тым ліку новае афармленьне і спрашчэньне працэсу рэдагаваньня. На гэтыя зьмены, зробленыя на аснове [http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study вынікаў тэставаньня новых функцыяў за апошні год], ускладзенае палягчэньне працы для новых удзельнікаў. Паляпшэньне зручнасьці карыстаньня нашымі праектамі зьяўляецца прыярытэтам для Фундацыі «Вікімэдыя», таму мы яшчэ падзелімся абнаўленьнямі ў будучыні. Каб даведацца болей, наведайце адмысловы [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia запіс у блогу Фундацыі «Вікімэдыя»] на гэтую тэму.
 
 === Што мы зьмянілі ===
 * '''Навігацыя:''' Мы палепшылі навігацыю для чытаньня і рэдагаваньня старонак. Цяпер закладкі ў верхняй частцы кожнай старонкі дазваляюць дакладней зразумець, што Вы праглядаеце: артыкул ці старонку абмеркаваньня, а таксама, ці Вы чытаеце, ці рэдагуеце старонку.
@@ -963,10 +963,25 @@ Damit wir besser werden können, füllen Sie bitte die freiwillige Umfrage aus, 
  * @author Xoser
  */
 $messages['diq'] = array(
+	'prefswitch' => 'Terchinê insiyative kar kerdisi a bike',
+	'prefswitch-desc' => 'Destur bide karberan ke tercihi a bike',
 	'prefswitch-survey-true' => 'Heya',
 	'prefswitch-survey-false' => 'Nê',
+	'prefswitch-survey-submit-off' => 'Xacetano newe bikefilne',
+	'prefswitch-survey-cancel-off' => 'Eke şıma qayili xacetana newe bışuxulnî tede bımanî, şıma eşkeni agêri no $1 peli.',
 	'prefswitch-survey-submit-feedback' => 'Feedback bıde',
+	'prefswitch-survey-cancel-feedback' => 'Eke şıma qayili niya feedback bide, şıma eşkeni agêri no $1 peli.',
+	'prefswitch-survey-question-like' => 'Ti ci xecatano newe hes kerde?',
+	'prefswitch-survey-question-dislike' => 'Ti ci xecatano newe hes  nikerde?',
+	'prefswitch-survey-question-whyoff' => 'Ti ci ra xecetanê newe qefilneno?
+Ma rica kene hemi biwecine.',
+	'prefswitch-survey-answer-whyoff-hard' => 'Xacetan ser gure kerdis zaf zahmet bi.',
+	'prefswitch-survey-answer-whyoff-didntwork' => 'Xacetan hewl ni hewitiyeno.',
+	'prefswitch-survey-answer-whyoff-notpredictable' => 'Xecatan zaf hewl nihewtiyena.',
+	'prefswitch-survey-answer-whyoff-didntlike-look' => 'Ez esayisê xecatano newe hes nikerde.',
+	'prefswitch-survey-answer-whyoff-didntlike-layout' => 'Mi ra nizam u fesalê aye rınd niyo.',
 	'prefswitch-survey-answer-whyoff-didntlike-toolbar' => 'Ez toolbare newe hes nikeni.',
+	'prefswitch-survey-answer-whyoff-other' => 'Sebebo bin:',
 	'prefswitch-survey-question-browser' => 'Kamci navigator ser komputer tu sixulyena?',
 	'prefswitch-survey-answer-browser-other' => 'Navigatore bini:',
 	'prefswitch-survey-question-os' => 'Kamci sisteme oparatifi ser komputer tu sixulyena?',
@@ -978,6 +993,7 @@ $messages['diq'] = array(
 	'prefswitch-title-switched-off' => 'Berxudar bu',
 	'prefswitch-title-feedback' => 'Fiqir bide',
 	'prefswitch-success-feedback' => 'Fiqire tu şiya.',
+	'prefswitch-feedbackpage' => 'Project:Feedback bidisê karberan',
 );
 
 /** Lower Sorbian (Dolnoserbski)
@@ -4035,6 +4051,56 @@ $messages['tt-cyrl'] = array(
 Зинһар, бөтен уңайлы вариантларны сайлагыз.',
 );
 
+/** ئۇيغۇرچە (ئۇيغۇرچە)
+ * @author Sahran
+ */
+$messages['ug-arab'] = array(
+	'prefswitch' => 'ئىشلىتىلىشچان مايىللىق تەڭشەك ئالماشتۇرۇش',
+	'prefswitch-desc' => 'ئىشلەتكۈچىلەرنىڭ مايىللىق تەڭشىكى تەڭشەشكە يول قويىدۇ',
+	'prefswitch-survey-true' => 'ھەئە',
+	'prefswitch-survey-false' => 'ياق',
+	'prefswitch-survey-submit-off' => 'يېڭى ئىقتىدارنى ياپ',
+	'prefswitch-survey-cancel-off' => 'ئەگەر يېڭى ئىقتىدارنى داۋاملىق ئىشلەتسىڭىز، $1 غا قايتسىڭىز بولىدۇ.',
+	'prefswitch-survey-submit-feedback' => 'قايتۇرما تەكلىپ يوللا',
+	'prefswitch-survey-cancel-feedback' => 'ئەگەر قايتۇرما تەكلىپ  تەمىنلەشنى خالىمىسىڭىز، $1 غا قايتىپ داۋاملاشتۇرۇڭ.',
+	'prefswitch-survey-question-like' => 'سىز قانداق يېڭى ئىقتىدارنى ياقتۇرىسىز؟',
+	'prefswitch-survey-question-dislike' => 'سىز قانداق يېڭى ئىقتىدارنى ياقتۇرمايسىز؟',
+	'prefswitch-survey-question-whyoff' => 'نېمە ئۈچۈن يېڭى ئىقتىدارنى تاقايسىز؟
+ماس كېلىدىغانلىرىنىڭ ھەممىسىنى تاللاڭ.',
+	'prefswitch-survey-answer-whyoff-hard' => 'يېڭى ئىقتىدارنى ئىشلىتىش بەك تەس.',
+	'prefswitch-survey-answer-whyoff-didntwork' => 'يېڭى ئىقتىدار نورمال خىزمەت قىلالمىدى.',
+	'prefswitch-survey-answer-whyoff-notpredictable' => 'يېڭى ئىقتىدار ئويلىغىنىمدەك ياخشى ئەمەس.',
+	'prefswitch-survey-answer-whyoff-didntlike-look' => 'مەن بۇنداق يېڭى ئىقتىداردىكى كۆرۈنۈشنى ياقتۇرمايمەن.',
+	'prefswitch-survey-answer-whyoff-didntlike-layout' => 'يېڭى بەتكۈچ ۋە ئۇسلۇب جايلاشتۇرۇشنى ياقتۇرمايمەن.',
+	'prefswitch-survey-answer-whyoff-didntlike-toolbar' => 'يېڭى قورال بالداقنى ياقتۇرمايمەن.',
+	'prefswitch-survey-answer-whyoff-other' => ':باشقا سەۋەب',
+	'prefswitch-survey-question-browser' => 'قايسى توركۆرگۈنى ئىشلىتىسىز؟',
+	'prefswitch-survey-answer-browser-other' => 'باشقا توركۆرگۈ:',
+	'prefswitch-survey-question-os' => 'قايسى مەشغۇلات سىستېمىسىنى ئىشلىتىسىز؟',
+	'prefswitch-survey-answer-os-other' => 'باشقا مەشغۇلات سىستېمىسى:',
+	'prefswitch-survey-question-res' => 'ئېكران ئېنىقلىقى قانچە؟',
+	'prefswitch-title-on' => 'يېڭى ئىقتىدار',
+	'prefswitch-title-switched-on' => 'ھوزۇرلىنىڭ!',
+	'prefswitch-title-off' => 'يېڭى ئىقتىدارنى ياپ',
+	'prefswitch-title-switched-off' => 'رەھمەت',
+	'prefswitch-title-feedback' => 'قايتما ئىنكاس',
+	'prefswitch-success-on' => 'يېڭى ئىقتىدار ئېچىلدى. بىز سىزنىڭ بۇ يېڭى ئىقتىدارلارنى ئىشلىتىپ ھوزۇرلىنىشىڭىزنى ئۈمىد قىلىمىز، سىز بۇ ئىقتىدارلارنى تاقىيالايسىز، پەقەت مۇشۇ بەتنىڭ ئۈستىدىكى "[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-on}}]]" نى چەكسىڭىزلا بولىدۇ.',
+	'prefswitch-success-off' => 'يېڭى ئىقتىدار تاقالدى. يېڭى ئىقتىدارنى سىنىغانلىقىڭىزغا كۆپ رەھمەت. سىز خالىغان ۋاقىتتا يېڭى ئىقتىدارلارنى ئاچالايسىز، پەقەت مۇشۇ بەتنىڭ ئۈستىدىكى "[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-off}}]]" نى چەكسىڭىزلا بولىدۇ.',
+	'prefswitch-success-feedback' => 'قايتما ئىنكاسىڭىز يوللاندى.',
+	'prefswitch-return' => '<span class="plainlinks">[$1 $2]</span> غا قايت',
+	'prefswitch-main-anon' => ' ===يېڭى ئىقتىدارنى ياپ===
+ئەگەر يېڭى ئىقتىدارنى تاقىماقچى بولسىڭىز، [$1 بۇ جاينى چېكىپ يېڭى ئىقتىدارنى تاقاڭ]. ئاۋال تىزىمغا كىرىشىڭىز ياكى ھېساباتتىن بىرنى قۇرۇشنى سورىشى مۇمكىن.',
+	'prefswitch-main-on' => '===يېڭى ئىقتىدارنى ياپ!===
+[$2 بۇ جاينى چېكىپ كونا نەشرىگە قايتىڭ].',
+	'prefswitch-main-off' => '===يېڭى ئىقتىدارنى سىنا!===
+يېڭى ئىقتىدانرى سىنىماقچى بولسىڭىز[$1 بۇ جاي]نى چېكىڭ.',
+	'prefswitch-survey-intro-feedback' => 'بىز سىزنىڭ پىكرىڭىزنى ئاڭلاشنى بەكمۇ خالايمىز.
+تۆۋەندىكى تاللاشچان تەكشۈرۈشنى تولدۇرۇڭ، ئاندىن "[[#prefswitch-survey-submit-feedback|{{int:Prefswitch-survey-submit-feedback}}]]"نى چېكىڭ.',
+	'prefswitch-survey-intro-off' => 'يېڭى ئىقتىدارنى سىنىغانلىقىڭىزغا كۆپ رەھمەت.
+بىزنىڭ بۇ يېڭى ئىقتىدارنى ياخشىلىشىمىزغا ياردەم بېرىش ئۈچۈن تۆۋەندىكى تاللاشچان تەكشۈرۈشنى تولدۇرۇپ ئاندىن "[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]"نى چېكىڭ.',
+	'prefswitch-feedbackpage' => 'Project:ئىشلەتكۈچى تەجرىبە قايتما ئىنكاسى',
+);
+
 /** Ukrainian (Українська)
  * @author AS
  * @author Тест
@@ -4111,7 +4177,7 @@ Trở về <span class="plainlinks">[$1 $2]</span>.',
 |}
 |}
 
-Nhóm Trải nghiệm Người dùng của Wikimedia Foundation đã làm việc cùng với các tình nguyện viên từ cộng đồng để làm cho bạn cảm thấy mọi thứ trở nên dễ dàng hơn. Chúng tôi cảm thấy háo hức muốn chia sẻ một số cải tiến, bao gồm một giao diện hoàn toàn mới và các tính năng sửa đổi đã được đơn giản hóa. Những thay đổi này dự kiến sẽ giúp những người mới dễ làm quen hơn, và được dựa trên [http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study nghiên cứu về tỉnh khả dụng được thực hiện năm ngoái]. Cải tiến tính khả dụng của các dự án là ưu tiên của Quỹ Wikimedia và chúng tôi sẽ chia sẻ thêm nhiều cập nhật nữa trong tương lai. Đọc thêm chi tiết tại [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia blog của Quỹ Wikimedia].
+Nhóm Trải nghiệm Người dùng của Wikimedia Foundation đã làm việc cùng với các tình nguyện viên từ cộng đồng để làm cho bạn cảm thấy mọi thứ trở nên dễ dàng hơn. Chúng tôi cảm thấy háo hức muốn chia sẻ một số cải tiến, bao gồm một giao diện hoàn toàn mới và các tính năng sửa đổi đã được đơn giản hóa. Những thay đổi này dự kiến sẽ giúp những người mới dễ làm quen hơn, và được dựa trên [http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study nghiên cứu về tính khả dụng được thực hiện năm ngoái]. Cải tiến tính khả dụng của các dự án là ưu tiên của Quỹ Wikimedia và chúng tôi sẽ chia sẻ thêm nhiều cập nhật nữa trong tương lai. Đọc thêm chi tiết tại [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia blog của Quỹ Wikimedia].
 
 ===Dưới đây là những thay đổi===
 * '''Duyệt trang:''' Chúng tôi đã cải tiến việc duyệt các mục khi đọc và sửa trang. Giờ đây, các thẻ nằm ở đầu trang đã ghi một cách rõ ràng là bạn đang xem trang hay trang thảo luận, và bạn đang đọc hay đang sửa một trang.

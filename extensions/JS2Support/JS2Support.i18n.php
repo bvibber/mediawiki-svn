@@ -157,6 +157,8 @@ $messages['ja'] = array(
  */
 $messages['lb'] = array(
 	'js2support-desc' => 'J2S Ënnerstëtzung als Erweiderung',
+	'js2support-debug-preference' => 'Gruppéieren a Verklengerung vu Skripten auschalten',
+	'prefs-script-debug' => 'Debugging vu Skripten',
 );
 
 /** Macedonian (Македонски)

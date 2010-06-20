@@ -56,6 +56,16 @@ $messages['de'] = array(
 	'nedits' => '$1 {{PLURAL:$1|Bearbeitung|Bearbeitungen}}',
 );
 
+/** Zazaki (Zazaki)
+ * @author Xoser
+ */
+$messages['diq'] = array(
+	'activestrategy' => 'Stratejiyê Aktifi',
+	'active-strategy-desc' => 'Mi ra amaranê vurnayisan ser planê strateji bimocne',
+	'active-strategy-intro' => 'Amaranê vurnayisan ke ser pelan {{PLURAL:$1|$1 day|$1 days}} peniyi de.',
+	'nedits' => '$1 {{PLURAL:$1|vurnayîş|vurnayîşî}}',
+);
+
 /** Lower Sorbian (Dolnoserbski)
  * @author Michawiki
  */
