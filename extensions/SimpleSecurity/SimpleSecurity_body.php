@@ -169,7 +169,7 @@ class SimpleSecurity {
 	 * - Allows sysop access
 	 * - clears and populates the info array
 	 */
-	public function onUserGetRights( &$user, &$rights ) {
+	public function onUserGetRights( $user, &$rights ) {
 		global $wgGroupPermissions, $wgOut, $wgTitle, $wgRequest, $wgPageRestrictions;
 
 		# Hack to prevent specialpage operations on unreadable pages
