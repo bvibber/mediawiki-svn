@@ -86,7 +86,7 @@ all: \
 	$(WIKIEDITOR_HOOKS)\
 	UsabilityInitiative.hooks.php\
 	WikiEditor/WikiEditor.hooks.php\
-	Vector/Vector.hooks.php\
+	Vector/Vector.hooks.php
 	
 
 # JavaScript Combination
