@@ -386,7 +386,7 @@ public class CoherenceDisambiguator<T extends TermReference, C extends WikiWordC
 		return interpretations;
 	}
 
-	protected <X extends T>CoherenceDisambiguation<X, C> getScore(Disambiguator.Interpretation<X, C> interp, Collection<? extends C> context, LabeledMatrix<C, C> similarities, FeatureFetcher<C, Integer> features) throws PersistenceException {
+	protected <X extends TermReference>CoherenceDisambiguation<X, C> getScore(Disambiguator.Interpretation<X, C> interp, Collection<? extends C> context, LabeledMatrix<C, C> similarities, FeatureFetcher<C, Integer> features) throws PersistenceException {
 		Map<TermReference, C> concepts;
 		
 		if (context!=null || interp.getMeanings().size()!=interp.getSequence().size()) {
