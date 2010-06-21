@@ -214,9 +214,11 @@ class PagedTiffHandler extends ImageHandler {
 		if ( $params['page'] > $this->pageCount( $image ) ) {
 			$params['page'] = $this->pageCount( $image );
 		}
-		if ( !isset( $params['lossy'] ) ) {
-			$params['lossy'] = null;
-		}
+		if ( !isset( $params['lossy'] ) || $params['lossy'] == null ) {
+			$data = $this->getMetaArray( $image );
+			if ( ( strtolower( $data['page_data'][$params['page']]['alpha'] ) == 'true' ) ) $params['lossy'] = '0';
+			else $params['lossy'] = 1;
+			}
 		$size = PagedTiffImage::getPageSize( $this->getMetaArray( $image ), $params['page'] );
 		$srcWidth = $size['width'];
 		$srcHeight = $size['height'];
