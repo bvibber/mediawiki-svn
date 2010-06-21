@@ -5,6 +5,8 @@
 
 // Cache ellipsed substrings for every string-width combination
 var cache = { };
+// Use a seperate cache when match highlighting is enabled
+var matchTextCache = { };
 
 $.fn.autoEllipsis = function( options ) {
 	options = $.extend( {
@@ -67,8 +69,8 @@ $.fn.autoEllipsis = function( options ) {
 		if ( !( text in cache ) ) {
 			cache[text] = {};
 		}
-		if ( options.matchText && !( options.matchText in cache[text] ) ) {
-			cache[text][options.matchText] = {};
+		if ( options.matchText && !( options.matchText in matchTextCache[text] ) ) {
+			matchTextCache[text][options.matchText] = {};
 		}
 		if ( !options.matchText && w in cache[text] ) {
 			$container.html( cache[text][w] );
@@ -76,8 +78,8 @@ $.fn.autoEllipsis = function( options ) {
 				$container.attr( 'title', text );
 			return;
 		}
-		if( options.matchText && options.matchText in cache[text] && w in cache[text][options.matchText] ) {
-			$container.html( cache[text][options.matchText][w] );
+		if( options.matchText && options.matchText in matchTextCache[text] && w in matchTextCache[text][options.matchText] ) {
+			$container.html( matchTextCache[text][options.matchText][w] );
 			if ( options.tooltip )
 				$container.attr( 'title', text );
 			return;
@@ -131,7 +133,7 @@ $.fn.autoEllipsis = function( options ) {
 			$container.attr( 'title', text );
 		}
 		if ( options.matchText ) {
-			cache[text][options.matchText][w] = $container.html();
+			matchTextCache[text][options.matchText][w] = $container.html();
 		} else {
 			cache[text][w] = $container.html();
 		}
