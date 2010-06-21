@@ -38,13 +38,13 @@ class ResourceLoader {
 	public static $modules = array(
 	);
 	
-	private $mScripts = array();
-	private $mStyles = array();
-	private $mMessages = array();
+	private $scripts = array();
+	private $styles = array();
+	private $loadedModules = array();
 	
-	private $mUseJSMin = true;
-	private $mUseCSSMin = true;
-	private $mUseCSSJanus = true;
+	private $useJSMin = true;
+	private $useCSSMin = true;
+	private $useCSSJanus = true;
 	
 	
 	/**
@@ -53,25 +53,23 @@ class ResourceLoader {
 	 * @param $module string Module name
 	 */
 	public function addModule( $module ) {
-		$this->mScripts[] = self::$modules[$module]['script'];
-		if ( isset( $module['style'] ) ) {
-			$this->mStyles[] = self::$modules[$module]['script'];
-		}
-		if ( isset( $module['messages'] ) ) {
-			$this->mMessages = array_merge( $this->mMessages, self::$modules[$module]['messages'] );
+		$this->loadedModules[] = $module;
+		$this->scripts[] = self::$modules[$module]['script'];
+		if ( isset( self::$modules[$module]['style'] ) ) {
+			$this->styles[] = self::$modules[$module]['script'];
 		}
 	}
 	
 	public function setUseJSMin( $use ) {
-		$this->mUseJSMin = $use;
+		$this->useJSMin = $use;
 	}
 	
 	public function setUseCSSMin( $use ) {
-		$this->mUseCSSMin = $use;
+		$this->useCSSMin = $use;
 	}
 	
 	public function setUseCSSJanus( $use ) {
-		$this->mUseCSSJanus = $use;
+		$this->useCSSJanus = $use;
 	}
 		
 	private function getStyleJS( $styles ) {
@@ -79,10 +77,10 @@ class ResourceLoader {
 		foreach ( $styles as $style ) {
 			// TODO: file_get_contents() errors?
 			$css = file_get_contents( $style );
-			if ( $this->mUseCSSJanus ) {
+			if ( $this->useCSSJanus ) {
 				$css = $this->cssJanus( $css );
 			}
-			if ( $this->mUseCSSMin ) {
+			if ( $this->useCSSMin ) {
 				$css = $this->cssMin( $css );
 			}
 			$escCss = Xml::escapeJsString( $css );
@@ -91,30 +89,26 @@ class ResourceLoader {
 		return $retval;
 	}
 	
-	private function getMessagesJS( $messages ) {
-		$msgs = array();
-		foreach ( $messages as $message ) {
-			$escKey = Xml::escapeJsString( $message );
-			$escValue = Xml::escapeJsString( wfMsg( $message ) );
-			$msgs[] = "'$escKey': '$escValue'";
-		}
-		return "mw.addMessages( {\n" . implode( ",\n", $msgs ) . "\n} );\n";
+	private function getMessagesJS( $modules ) {
+		return "mw.addMessages( {\n" .
+			implode( ",\n", array_map( array( 'MessageBlobStore', 'get' ), $modules ) ) .
+			"\n} );";
 	}
 	
 	public function getOutput() {
-		$this->mScripts = array_unique( $this->mScripts );
-		$this->mStyles = array_unique( $this->mStyles );
-		$this->mMessages = array_unique( $this->mMessages );
+		$this->scripts = array_unique( $this->scripts );
+		$this->styles = array_unique( $this->styles );
+		$this->loadedModules = array_unique( $this->loadedModules );
 		$retval = '';
 		
-		foreach ( $this->mScripts as $script ) {
+		foreach ( $this->scripts as $script ) {
 			// TODO: file_get_contents() errors?
 			$retval .= file_get_contents( $script );
 		}
-		$retval .= $this->getStyleJS( $this->mStyles );
-		$retval .= $this->getMessagesJS( $this->mMessages );
+		$retval .= $this->getStyleJS( $this->styles );
+		$retval .= $this->getMessagesJS( $this->loadedModules );
 		
-		if ( $this->mUseJSMin ) {
+		if ( $this->useJSMin ) {
 			$retval = $this->jsMin( $retval );
 		}
 		return $retval;
@@ -133,5 +127,17 @@ class ResourceLoader {
 	public function cssJanus( $css ) {
 		// TODO: Implement
 		return $css;
+	}
+}
+
+class MessageBlobStore {
+	/**
+	 * Get the message blob for a module
+	 * @param $module string Module name
+	 * @return string An incomplete JSON object (i.e. without the {} ) with messages keys and their values.
+	 */
+	public static function get( $module ) {
+		// TODO: Implement
+		return '';
 	}
 }
