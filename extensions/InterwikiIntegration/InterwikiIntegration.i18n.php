@@ -40,6 +40,18 @@ $messages['be-tarask'] = array(
 	'right-integration' => "запаўненьне табліцы аб'яднаньня інтэрвікі",
 );
 
+/** Breton (Brezhoneg)
+ * @author Y-M D
+ */
+$messages['br'] = array(
+	'interwikiintegration' => 'Enframmadur an etrewikioù',
+	'interwikiintegration-desc' => 'Enframmadur klok an etrewikioù',
+	'populateinterwikiintegrationtable' => 'Leuniañ an taolennoù enframmañ an etrewikioù',
+	'interwikiintegration-setuptext' => '$1 taolenn a zo bet kefluniet.
+Bezit sur kefluniañ ivez an taolennoù war ho wikioù all.',
+	'right-integration' => 'Leuniañ an taolenn enframmañ an etrewikioù',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */

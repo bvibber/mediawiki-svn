@@ -2010,10 +2010,13 @@ $messages['sr-el'] = array(
 	'recordadmin-select' => 'Izaberi',
 	'recordadmin-submit' => 'Pošalji',
 	'recordadmin-alreadyexist' => 'Žao nam je, „$1“ već postoji!',
+	'recordadmin-createsuccess' => '$1 napravljen',
 	'recordadmin-badtitle' => 'Loš naslov!',
 	'recordadmin-buttoncreate' => 'Napravi',
 	'recordadmin-buttonreset' => 'Resetuj',
 	'recordadmin-buttonsave' => 'Snimi',
+	'recordadmin-newcreated' => 'Novi $1 napravljen sa javne forme',
+	'recordadmin-summary-typecreated' => 'Novi $1 napravljen',
 	'recordadmin-viewlink' => 'vidi',
 	'recordadmin-editlink' => 'izmeni',
 	'recordadmin-created' => 'Napravljeno',
@@ -2021,6 +2024,8 @@ $messages['sr-el'] = array(
 	'recordadmin-actions' => 'Akcije',
 	'recordadmin-needscontent' => 'Dodaj sadržaj...',
 	'recordadmin-editwithform' => 'Osobine',
+	'recordadmin-export-csv' => 'CSV',
+	'recordadmin-export-pdf' => 'PDF',
 );
 
 /** Seeltersk (Seeltersk)

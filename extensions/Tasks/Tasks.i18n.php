@@ -2311,6 +2311,7 @@ $messages['lb'] = array(
 	'tasks_status_wontfix' => 'Gëtt net verbessert',
 	'tasks_action_open' => 'Aufgab "$1" opgemaach.',
 	'tasks_action_closed' => 'Aufgab "$1" ass fäerdeg.',
+	'tasks_action_wontfix' => 'D\'Aufgab "$1" gëtt net gemaach.',
 	'tasks_sign_delete' => '<b>Et gouf gefrot fir dëse Säit ze läschen</b>',
 	'tasks_logpage' => 'Lëscht vun den Aufgaben',
 	'tasks_logpagetext' => 'Dëst ass eng Lëscht vun den Ännerunge vun den Aufgaben',

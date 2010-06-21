@@ -1405,6 +1405,7 @@ $messages['sr-el'] = array(
 	'formsave' => 'Sačuvaj',
 	'formarticleexists' => 'Strana postoji',
 	'formarticleexiststext' => 'Strana [[$1]] već postoji.',
+	'formbadpagename' => 'Loše ime strane',
 );
 
 /** Seeltersk (Seeltersk)

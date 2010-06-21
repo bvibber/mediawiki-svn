@@ -204,6 +204,15 @@ $messages['pt'] = array(
 	'ukgeocoding_couldNotGeocode' => 'Não foi possível georeferenciar um ou mais códigos postais, que foram omitidos do mapa.',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Giro720
+ */
+$messages['pt-br'] = array(
+	'ukgeocoding_name' => 'Georeferenciação do Reino Unido para Mapas',
+	'ukgeocoding_desc' => 'Expande os Mapas com a função sintática display_uk_pointer, implementada no Google Maps',
+	'ukgeocoding_couldNotGeocode' => 'Não foi possível georeferenciar um ou mais códigos postais, que foram omitidos do mapa.',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */

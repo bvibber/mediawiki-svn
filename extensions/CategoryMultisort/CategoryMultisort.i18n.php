@@ -243,6 +243,13 @@ $messages['sr-ec'] = array(
 	'categorymultisort-go' => 'Иди',
 );
 
+/** Serbian Latin ekavian (Srpski (latinica)) */
+$messages['sr-el'] = array(
+	'categorymultisort-defaultsortkey-name' => 'Podrazumevano',
+	'categorymultisort-sortkey' => 'Ključ sortiranja:',
+	'categorymultisort-go' => 'Idi',
+);
+
 /** Simplified Chinese (‪中文(简体)‬) */
 $messages['zh-hans'] = array(
 	'categorymultisort-desc' => '允许按照不同的排序字查看分类',

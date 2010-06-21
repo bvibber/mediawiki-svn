@@ -576,6 +576,14 @@ $messages['sk'] = array(
 	'seealso-desc' => 'Lokalizované nadpisy „Pozri aj“ pomocou značky <code><nowiki><seealso></nowiki></code>',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'seealso' => 'Glej tudi',
+	'seealso-desc' => 'Lokalizirani naslovi »See also« z uporabo etikete <code><nowiki><seealso></nowiki></code>',
+);
+
 /** Seeltersk (Seeltersk)
  * @author Pyt
  */

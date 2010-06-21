@@ -179,11 +179,13 @@ $messages['ja'] = array(
 );
 
 /** Georgian (ქართული)
+ * @author BRUTE
  * @author ITshnik
  */
 $messages['ka'] = array(
 	'activestrategy' => 'აქტიური სტრატეგია',
 	'active-strategy-desc' => 'აჩვენებს რედაქტირების რაოდენობას სტრატეგიული დაგეგმვის გვერდებზე',
+	'nedits' => '$1 {{PLURAL:$1|რედაქტირება|რედაქტირება}}',
 );
 
 /** Korean (한국어)
@@ -293,6 +295,13 @@ $messages['ru'] = array(
 	'active-strategy-desc' => 'Показывает число правок на страницах целевых групп',
 	'active-strategy-intro' => 'Количество правок страниц комиссий за {{PLURAL:$1|последний $1 день|последние $1 дня|последние $1 дней}}.',
 	'nedits' => '$1 {{PLURAL:$1|правка|правки|правок}}',
+);
+
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'nedits' => '$1 {{PLURAL:$1|urejanje|urejanji|urejanja|urejanj}}',
 );
 
 /** Swedish (Svenska)

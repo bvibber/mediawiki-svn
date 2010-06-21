@@ -551,6 +551,18 @@ $messages['pt-br'] = array(
 	'tooltip-pt-prefswitch-link-off' => 'Experimente as novas funcionalidades',
 );
 
+/** Quechua (Runa Simi)
+ * @author AlimanRuna
+ */
+$messages['qu'] = array(
+	'prefswitch-link-anon' => 'Musuq kaqninkuna',
+	'tooltip-pt-prefswitch-link-anon' => 'Musuq kaqninkunamanta yachaqay',
+	'prefswitch-link-on' => 'Kutichimuway',
+	'tooltip-pt-prefswitch-link-on' => "Musuq kaqninkunata hark'ay",
+	'prefswitch-link-off' => 'Musuq kaqninkuna',
+	'tooltip-pt-prefswitch-link-off' => 'Musuq kaqninkunata llanchiy',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

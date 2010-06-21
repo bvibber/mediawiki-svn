@@ -1141,6 +1141,7 @@ $messages['sr-ec'] = array(
 
 /** Serbian Latin ekavian (Srpski (latinica)) */
 $messages['sr-el'] = array(
+	'importfreeimages' => 'Uvezi slobodne slike',
 	'importfreeimages_owner' => 'Autor',
 	'importfreeimages_importthis' => 'uvezi ovo',
 	'importfreeimages_next' => 'Sledeće $1',

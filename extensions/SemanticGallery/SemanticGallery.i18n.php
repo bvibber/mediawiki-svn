@@ -66,6 +66,13 @@ $messages['bs'] = array(
 	'semanticgallery-desc' => 'Dodaje format izlaza galerije u SMW pravolinijske upite',
 );
 
+/** Catalan (Català)
+ * @author Toniher
+ */
+$messages['ca'] = array(
+	'semanticgallery-desc' => 'Afegeix un format de sortida galeria a les consultes en línia del SMW.',
+);
+
 /** German (Deutsch)
  * @author Melancholie
  */

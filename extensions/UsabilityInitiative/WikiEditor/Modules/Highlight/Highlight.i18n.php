@@ -346,6 +346,13 @@ $messages['pt-br'] = array(
 	'wikieditor-highlight-preference' => 'Ativa realce de sintaxe durante a edição',
 );
 
+/** Quechua (Runa Simi)
+ * @author AlimanRuna
+ */
+$messages['qu'] = array(
+	'wikieditor-highlight-preference' => "Llamk'apustin sintaksis achkiychayta atichiy",
+);
+
 /** Romanian (Română)
  * @author Firilacroco
  */

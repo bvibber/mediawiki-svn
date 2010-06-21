@@ -1036,6 +1036,7 @@ $messages['ka'] = array(
 	'expand_templates_input' => 'შესაყვანი ტექსტი:',
 	'expand_templates_output' => 'შედეგი',
 	'expand_templates_ok' => 'OK',
+	'expand_templates_remove_comments' => 'კომენტარების წაშლა',
 	'expand_templates_preview' => 'წინა',
 );
 

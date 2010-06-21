@@ -780,6 +780,7 @@ $messages['sr-ec'] = array(
 $messages['sr-el'] = array(
 	'plotters' => 'Ploteri',
 	'plotters-title' => 'Ploteri',
+	'plotters-uses' => 'Korišćenje',
 	'plotters-no-data' => 'Nisu dostavljeni nikakvi podaci.',
 );
 

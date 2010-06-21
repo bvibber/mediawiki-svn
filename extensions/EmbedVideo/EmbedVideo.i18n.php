@@ -32,6 +32,19 @@ $messages['be-tarask'] = array(
 	'embedvideo-illegal-width' => 'EmbedVideo атрымаў няслушны парамэтар для шырыні «$1».',
 );
 
+/** Breton (Brezhoneg)
+ * @author Y-M D
+ */
+$messages['br'] = array(
+	'embedvideo-desc' => "Ouzhpennañ a ra un arc'hwel parser evit ensoc'hañ videoioù eus mammennoù pobl",
+	'embedvideo-missing-params' => 'Mankout a ra un arventenn ret evit EmbedVideo.',
+	'embedvideo-bad-params' => 'EmbedVideo en deus resevet un arventenn fall.',
+	'embedvideo-unparsable-param-string' => 'EmbedVideo en deus resevet un arventenn dilennus "<code>$1</code>".',
+	'embedvideo-unrecognized-service' => 'N\'eo ket anavezet ar servij video "<code>$1</code>" gant EmbedVideo.',
+	'embedvideo-bad-id' => 'EmbedVideo en deus resevet un id direizh "$1" evit ar servij "$2".',
+	'embedvideo-illegal-width' => 'EmbedVideo en deus resevet an arventenn ledander direizh "$1".',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */
@@ -129,6 +142,8 @@ $messages['ia'] = array(
  */
 $messages['lb'] = array(
 	'embedvideo-desc' => "Setzt eng Parser-Fonctioun fir d'Abanne vu Videoe vu populäre Quellen derbäi",
+	'embedvideo-missing-params' => 'Et feelt een obligatoresche Parameter fir EmbedVideo',
+	'embedvideo-bad-params' => 'EmbedVideo huet e falsche Parameter kritt.',
 );
 
 /** Macedonian (Македонски)

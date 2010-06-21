@@ -36,6 +36,15 @@ $messages['be-tarask'] = array(
 	'frontbackforced-forced' => '_(прымусовыя_спасылкі)',
 );
 
+/** Breton (Brezhoneg)
+ * @author Y-M D
+ */
+$messages['br'] = array(
+	'frontbackforced-front' => '_(tennad_deroù)',
+	'frontbackforced-back' => '_(tennad_fin)',
+	'frontbackforced-forced' => '_(wikiliammoù_ret)',
+);
+
 /** German (Deutsch)
  * @author Kghbln
  */

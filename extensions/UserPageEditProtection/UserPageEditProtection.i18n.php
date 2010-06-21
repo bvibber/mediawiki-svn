@@ -246,6 +246,14 @@ $messages['pt'] = array(
 	'right-editalluserpages' => 'Editar páginas de utilizador',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Giro720
+ */
+$messages['pt-br'] = array(
+	'userpageeditprotection-desc' => 'Restringe a edição das páginas de usuário ao próprio usuário e aos editores permitidos',
+	'right-editalluserpages' => 'Editar páginas de usuário',
+);
+
 /** Tarandíne (Tarandíne)
  * @author Joetaras
  */

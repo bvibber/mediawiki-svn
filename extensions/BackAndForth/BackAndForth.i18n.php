@@ -108,6 +108,15 @@ $messages['az'] = array(
 	'backforth-prev' => 'Əvvəlki ($1)',
 );
 
+/** Bashkir (Башҡорт)
+ * @author Comp1089
+ */
+$messages['ba'] = array(
+	'backforth-next' => 'Киләһе ($1)',
+	'backandforth-desc' => 'Һылтанма бите өҫтә алфавит буйынса алдағы һәм киләһе биттәргә һылтанма яһа',
+	'backforth-prev' => 'Алдағы ($1)',
+);
+
 /** Bavarian (Boarisch)
  * @author Man77
  */

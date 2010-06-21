@@ -438,6 +438,13 @@ $messages['sk'] = array(
 	'skinperpage-desc' => 'Pridáva značku <code>&lt;skin&gt;</code>, ktorá umožňuje na jednotlivej stránke použiť odlišnú tému vzhľadu',
 );
 
+/** Slovenian (Slovenščina)
+ * @author Dbc334
+ */
+$messages['sl'] = array(
+	'skinperpage-desc' => 'Doda etiketo <code>&lt;skin&gt;</code> za uporabo različnih kož na straneh',
+);
+
 /** Albanian (Shqip)
  * @author Puntori
  */

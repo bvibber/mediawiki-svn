@@ -845,7 +845,17 @@ $messages['sr-ec'] = array(
 
 /** Serbian Latin ekavian (Srpski (latinica)) */
 $messages['sr-el'] = array(
+	'commentbox-desc' => 'Dodaje kutijice za komentare na izvesne strane',
+	'commentbox-intro' => '== Dodavanje komentara... ==
+Da li želite da komentarišete ovu stranu? Dodajte Vaš komentar ili <span class="plainlinks">[{{fullurl:{{FULLPAGENAME}}|action=edit}} izmenite stranu direktno]</span>.',
+	'commentbox-savebutton' => 'Snimi komentar',
 	'commentbox-name' => 'Ime:',
+	'commentbox-log' => 'Novi komentari',
+	'commentbox-first-comment-heading' => '== Komentari ==',
+	'commentbox-errorpage-title' => 'Greška tokom pravljenja komentara',
+	'commentbox-error-page-nonexistent' => 'Ova strana ne postoji!',
+	'commentbox-error-namespace' => 'Komentari nisu dozvoljeni u ovom imenskom prostoru!',
+	'commentbox-error-empty-comment' => 'Prazni komentari nisu mogući!',
 );
 
 /** Swedish (Svenska)

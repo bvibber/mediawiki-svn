@@ -432,6 +432,8 @@ $messages['jv'] = array(
  */
 $messages['ka'] = array(
 	'simpleantispam' => 'თქვენმა რედაქტირებამ ჩართო ანტი-სპამის მექანიზმი',
+	'simpleantispam-label' => "ანტი-სპამის შემოწმება.
+'''არ''' შეავსოთ ის!",
 );
 
 /** Korean (한국어)
