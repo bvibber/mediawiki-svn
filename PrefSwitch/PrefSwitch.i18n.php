@@ -13,6 +13,8 @@ $messages = array();
 $messages['en'] = array(
 	'prefswitch' => 'Usability Initiative preference switch',
 	'prefswitch-desc' => 'Allow users to switch sets of preferences',
+	'prefswitch-jswarning' => 'Remember that with the skin change, your [[User:$1/$2.js|$2 javascript]] will need to be copied to [[User:$1/vector.js]] or [[User:$1/common.js]] to continue working.',
+	'prefswitch-csswarning' => 'Your [[User:$1/$2.css|custom $2 styles]] will no longer be applied. You can add custom CSS for vector in [[User:$1/vector.css]].',
 	'prefswitch-survey-true' => 'Yes',
 	'prefswitch-survey-false' => 'No',
 	'prefswitch-survey-submit-off' => 'Turn new features off',
@@ -102,8 +104,10 @@ The Wikimedia Foundation's User Experience Team has been working with volunteers
 * '''Search improvements:''' We have improved search suggestions to get you to the page you are looking for more quickly.
 * '''Other new features:''' We have also introduced a table wizard to make creating tables easier and a find and replace feature to simplify page editing.
 * '''Wikipedia logo:''' We have updated our logo. Read more at the [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d Wikimedia blog].
-
-===Feedback?===
+",
+	'prefswitch-main-logged-changes' => "* The '''{{int:watch}} tab''' is now a star.
+* The '''{{int:move}} tab''' is now in the dropdown next to the search bar.",
+	'prefswitch-main-feedback' => "===Feedback?===
 We would love to hear from you. Please visit our [[$1|feedback page]] or, if you are interested in our ongoing efforts to improve the software, visit our [http://usability.wikimedia.org usability wiki] for more information.",
 	'prefswitch-main-anon' => "===Take me back===
 [$1 Click here to turn off the new features]. You will be asked to login or create an account first.",
@@ -130,6 +134,8 @@ To help us improve them, please fill out the optional survey below before clicki
  */
 $messages['qqq'] = array(
 	'prefswitch-desc' => '{{desc}}',
+	'prefswitch-jswarning' => 'Warning about copying the cutom javascript. Only shown if the user has a monobook.js file.',
+	'prefswitch-csswarning' => 'Warning about monobook CSS no longer being applied. Only shown if the user has a monobook.css file.',
 	'prefswitch-survey-true' => 'Used in a form where it is a radio button label from the PrefSwitch questionnaire module to answer Yes or No to a question ([http://commons.wikimedia.org/w/index.php?title=Special:UsabilityInitiativePrefSwitch&mode=feedback example]).
 
 It is not in used at the referred page, as of 16 May 2010.
@@ -149,6 +155,7 @@ It is not in used at the referred page, as of 16 May 2010.
 	'prefswitch-survey-answer-whyoff-other' => '{{Identical|Other reason}}',
 	'prefswitch-main' => 'The three default screenshots are in English and kept on Wikimedia Commons. If you want them to be in your language you will either need to create them yourself, and upload them onto Wikimedia Commons, or ask for help to make these from colleagues on your home wiki.',
 	'prefswitch-main-anon' => 'Is used on Special:UsabilityInitiativePrefSwitch at Wikimedia.org.',
+	'prefswitch-main-feedback' => 'Entry asking for feedback in a local page.',
 	'prefswitch-feedbackpage' => '{{doc-important|The name of the user experience feedback page on this wiki. Should only be translated for ja, es, de, fr, it, ru, pl, pt, nl for now. Do not translate "Project:"}}',
 );
 
@@ -220,9 +227,8 @@ Die Wikimedia Foundation se Gebruikerervarings Span (User Experience Team) in sa
 * '''Skakel assistent:''' 'n Maklik om te gebruik stukkie gereedskap wat jou toelaat om skakels na ander wiki bladsye sowel as skakels na eksterne webwerve by te voeg.
 * '''Soektog verbeteringe:''' Ons het soektogvoorstelle verbeter, sodat jy vinniger by die bladsy kan uitkom waarvoor jy soek.
 * '''Ander nuwe funksies:''' Ons het 'n assistent bygevoeg wat die maak van tabelle makliker maak en 'n vind-en-vervang funksie om die redigering van bladsye te vereenvoudig.
-* '''Wikipedia logo:''' Ons het ons logo opdateer. Lees meer daaroor in die [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d Wikimedia webjoernaal].
-
-===Terugvoer?===
+* '''Wikipedia logo:''' Ons het ons logo opdateer. Lees meer daaroor in die [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d Wikimedia webjoernaal].",
+	'prefswitch-main-feedback' => "===Terugvoer?===
 Ons sal dit waardeer om van jou af te hoor. Besoek asseblief ons [[\$1|terugvoer bladsy]] of, as u belangstel in ons aanhoudende pogings om die sagteware te verbeter, besoek gerus ons [http://usability.wikimedia.org bruikbaarheids-wiki] vir meer inligting.",
 	'prefswitch-main-anon' => "===Neem my terug===
 [$1 Klik hier om die nuwe funkies af te skakel]. U sal gevra word om in te teken of om eerstens 'n nuwe rekening te skep.",
@@ -270,7 +276,10 @@ $messages['aln'] = array(
 	'prefswitch-success-off' => 'Tipare të reja janë kthyer tani off. Faleminderit për përpjekjen tipare të reja. Ju mund gjithmonë të kthehet përsëri në ato duke klikuar mbi "[[Special:UsabilityInitiativePrefSwitch|{{int:prefswitch-link-off}}]]" në krye të faqes.',
 	'prefswitch-success-feedback' => 'Your feedback është dërguar.',
 	'prefswitch-return' => '<hr style="clear:both"> Kthehuni tek <span class="plainlinks">[$1 $2].</span>',
-	'prefswitch-main' => "Ne kemi punuar shumë për të bërë gjërat më të lehtë për përdoruesit tanë. Ne jemi të ngazëllyer për të ndarë disa përmirësime, duke përfshirë një vështrim të ri dhe të ndjehen dhe të thjeshtuar karakteristika redaktimi. Përmirësimi i përdorshmërisë e projekteve tona është një përparësi e Fondacionit Wikimedia dhe ne do të jetë ndarja rejat më shumë në të ardhmen. Për më shumë detaje, vizitoni lidhur [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/ Wikimedia blog] post.[[File:UsabilityNavigation.png|right|link=|Screenshot i navigacion ri]][[File:UsabilityToolbar.png|right|link=|pamjen e zgjeruar toolbar redakto]][[File:UsabilityDialogs.png|right|link=|pamjen e përmbajtjes dialogs brezi i ri]]=== Ja se çfarë ne kemi ndryshuar ==='''Navigation''': Ne kemi përmirësuar navigacion për lexim dhe të redaktoni. Tani, në skedat në krye të secilës faqe më të përcaktojë qartë nëse ju jeni duke shfletuar faqe apo faqe diskutimi, dhe nëse ju jeni duke lexuar ose redaktoni një faqe.*'''Redaktimi përmirësime toolbar''': Ne kemi riorganizuar toolbar editing për të bërë më të lehtë për t'u përdorur. Tani, formatimit faqe është e thjeshtë dhe më i kuptueshëm.",
+	'prefswitch-main' => "Ne kemi punuar shumë për të bërë gjërat më të lehtë për përdoruesit tanë. Ne jemi të ngazëllyer për të ndarë disa përmirësime, duke përfshirë një vështrim të ri dhe të ndjehen dhe të thjeshtuar karakteristika redaktimi. Përmirësimi i përdorshmërisë e projekteve tona është një përparësi e Fondacionit Wikimedia dhe ne do të jetë ndarja rejat më shumë në të ardhmen. Për më shumë detaje, vizitoni lidhur [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/ Wikimedia blog] post.[[File:UsabilityNavigation.png|right|link=|Screenshot i navigacion ri]][[File:UsabilityToolbar.png|right|link=|pamjen e zgjeruar toolbar redakto]][[File:UsabilityDialogs.png|right|link=|pamjen e përmbajtjes dialogs brezi i ri]]
+=== Ja se çfarë ne kemi ndryshuar ===
+* '''Navigation''': Ne kemi përmirësuar navigacion për lexim dhe të redaktoni. Tani, në skedat në krye të secilës faqe më të përcaktojë qartë nëse ju jeni duke shfletuar faqe apo faqe diskutimi, dhe nëse ju jeni duke lexuar ose redaktoni një faqe.
+* '''Redaktimi përmirësime toolbar''': Ne kemi riorganizuar toolbar editing për të bërë më të lehtë për t'u përdorur. Tani, formatimit faqe është e thjeshtë dhe më i kuptueshëm.",
 	'prefswitch-main-anon' => '=== Merrni Me Kthehu ===
 Nëse dëshironi të fikur tipare të reja, [$1 klikoni këtu]. Ju do të pyeteni për të identifikoheni ose krijoni një llogari të parë.',
 	'prefswitch-main-on' => '=== Çoni përsëri! ===
@@ -417,9 +426,8 @@ $messages['be-tarask'] = array(
 * '''Майстар стварэньня спасылак:''' Лёгкі ў выкарыстаньні інструмэнт дазваляе Вам дадаваць спасылкі на іншыя старонкі так сама, як і на вонкавыя сайты.
 * '''Паляпшэньні пошуку:''' Мы палепшылі пошукавыя падказкі, каб хутчэй паказаць неабходную Вам старонку.
 * '''Іншыя магчымасьці:''' Мы таксама ўвялі майстар стварэньня табліцаў для палягчэньня іх стварэньня і магчымасьць пошуку і замены для палягчэньня рэдагаваньня старонак.
-* '''Лягатып Вікіпэдыі''': Мы зьмянілі лягатып. Падрабязнасьці глядзіце ў [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ блогу Фундацыі «Вікімэдыя»].
-
-=== Зваротная сувязь ===
+* '''Лягатып Вікіпэдыі''': Мы зьмянілі лягатып. Падрабязнасьці глядзіце ў [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ блогу Фундацыі «Вікімэдыя»].",
+	'prefswitch-main-feedback' => "=== Зваротная сувязь ===
 Мы жадаем пачуць ад Вас водгук. Калі ласка, пакіньце свой водгук на [[\$1|старонцы зваротнай сувязі]]. Калі вы зацікаўленыя ў далейшым удасканаленьні праграмнага забесьпячэньня і карыстаньня, наведайце сайт [http://usability.wikimedia.org Ініцыятывы па паляпшэньню зручнасьці карыстаньня].",
 	'prefswitch-main-anon' => '===Вярнуцца===
 Калі Вы жадаеце выключыць новыя магчымасьці, [$1 націсьніце тут]. Вас папросяць спачатку увайсьці ў сыстэму альбо стварыць новы рахунак.',
@@ -639,9 +647,8 @@ L'equip d'experiència d'usuari (''User Experience Team'') de la Fundació Wikim
 * '''Assistent per a enllaços''': Una eina fàcil d'utilitzar us permet afegir enllaços a altres pàgines wiki, així com enllaços a llocs externs.
 * '''Millores en la cerca''': Hem millorat els suggeriments de cerca per trobar més ràpidament la pàgina que esteu cercant.
 * '''Altres característiques noves''': També hem introduït un assistent per fer més fàcil la creació de taules i una funció de cerca i reemplaça per simplificar la modificació de pàgines.
-* '''Logotip de la Viquipèdia''': Hem actualitzat el nostre logotip. Vegeu més informació al [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ bloc de Wikimedia].
-
-===Teniu comentaris a fer?===
+* '''Logotip de la Viquipèdia''': Hem actualitzat el nostre logotip. Vegeu més informació al [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ bloc de Wikimedia].",
+	'prefswitch-main-feedback' => "===Teniu comentaris a fer?===
 Ens agradaria saber-los. Podeu visitar la nostra [[\$1|pàgina de comentaris]] o, si esteu interessats en les tasques en marxa per millorar el programari, visiteu el nostre [http://usability.wikimedia.org wiki d'usabilitat] per a més informació.",
 	'prefswitch-main-anon' => '===Tornar enrere===
 Si desitgeu desactivar les noves característiques [$1 cliqueu aquí]. Se us demanarà abans que us registreu o creeu un compte.',
@@ -726,9 +733,8 @@ Tým nadace Wikimedia pro uživatelskou přívětivost pracoval s dobrovolníky 
 * '''Průvodce odkazy:''' Jednoduše použitelný nástroj vám pomůže přidávat odkazy na jiné články wiki, jako i na externí stránky.
 * '''Vylepšení vyhledávání:''' Zlepšili jsme našeptávač u vyhledávání, abyste se rychleji dostali na stránku, kterou hledáte.
 * '''Další nové vlastnosti:''' Také jsme zavedli průvodce tabulkou, aby bylo vytváření tabulek snadnější, a také funkci vyhledávání a nahrazování pro jednodušší editaci stránek.
-* '''Logo Wikipedie:''' Modernizovali jsme naše logo. Více se dozvíte na [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ blogu Wikimedia].
-
-===Komentáře?===
+* '''Logo Wikipedie:''' Modernizovali jsme naše logo. Více se dozvíte na [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ blogu Wikimedia].",
+	'prefswitch-main-feedback' => "===Komentáře?===
 Uvítáme vaše názory. Navštivte naši [[\$1|stránku pro komentáře]] nebo, pokud vás zajímá naše dlouhodobé úsilí o vylepšování softwaru, můžete nalézt více informací na [http://usability.wikimedia.org wiki projektu použitelnosti].",
 	'prefswitch-main-anon' => '===Chci zpátky===
 Pokud chcete, můžete si [$1 vypnout nové funkce]. Nejdříve se budete muset přihlásit nebo zaregistrovat.',
@@ -880,9 +886,8 @@ Das User Experience Team der Wikimedia Foundation hat zusammen mit Freiwilligen 
 * '''Link-Assistent:''' Ein einfach zu bedienender Dialog ermöglicht das Hinzufügen von Links sowohl zu anderen Wiki-Seiten als auch zu externen Seiten.
 * '''Suche:''' Wir haben die Suchvorschläge verbessert, damit du schneller zu der von dir gesuchten Seite kommst.
 * '''Weiteres:''' Ein Tabellen-Assistent ermöglicht das einfache Erstellen von Tabellen und ein Suchen-und-Ersetzen-Dialog vereinfacht die Seitenbearbeitung.
-* '''Wikipedia-Puzzle-Globus''': Wir haben den Puzzle-Globus erneuert, mehr Informationen im [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ Wikimedia-Blog.]
-
-===Feedback?===
+* '''Wikipedia-Puzzle-Globus''': Wir haben den Puzzle-Globus erneuert, mehr Informationen im [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ Wikimedia-Blog.]",
+	'prefswitch-main-feedback' => "===Feedback?===
 Wir würden gerne von dir hören. Bitte benutze unsere [[\$1|Feedback-Seite]] oder, falls du an unserer momentanen Arbeit zur Verbesserung der Software interessiert bist, besuche das [http://usability.wikimedia.org Usability-Wiki] für weitere Informationen.",
 	'prefswitch-main-anon' => '===Zurück===
 Sofern du die neuen Funktionen deaktivieren möchtest, dann [$1 klicke hier]. Du wirst dann gebeten dich anzumelden oder zunächst ein neues Benutzerkonto zu erstellen.',
@@ -945,9 +950,8 @@ Das User Experience Team der Wikimedia Foundation hat zusammen mit Freiwilligen 
 * '''Link-Assistent:''' Ein einfach zu bedienender Dialog ermöglicht das Hinzufügen von Links sowohl zu anderen Wiki-Seiten als auch zu externen Seiten.
 * '''Suche:''' Wir haben die Suchvorschläge verbessert, damit Sie schneller zu der von dir gesuchten Seite kommen.
 * '''Weiteres:''' Ein Tabellen-Assistent ermöglicht das einfache Erstellen von Tabellen und ein Suchen-und-Ersetzen-Dialog vereinfacht die Seitenbearbeitung.
-* '''Wikipedia-Puzzle-Globus''': wir haben den Puzzle-Globus erneuert, mehr Informationen im [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ Wikimedia-Blog.]
-
-===Feedback?===
+* '''Wikipedia-Puzzle-Globus''': wir haben den Puzzle-Globus erneuert, mehr Informationen im [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ Wikimedia-Blog.]",
+	'prefswitch-main-feedback' => "===Feedback?===
 Wir würden gerne von Ihnen hören. Bitte benutzen Sie unsere [[\$1|Feedback-Seite]] oder, falls Sie an unseren momentanen Arbeit zur Verbesserung der Software interessiert sind, besuchen Sie das [http://usability.wikimedia.org Usability-Wiki] für weitere Informationen.",
 	'prefswitch-main-anon' => '===Zurück===
 Sofern Sie die neuen Funktionen deaktivieren möchten, dann [$1 klicken Sie hier]. Sie werden dann gebeten sich anzumelden oder zunächst ein neues Benutzerkonto zu erstellen.',
@@ -1064,9 +1068,8 @@ Team za pólěpšenje wužywajobnosći załožby Wikimedia Foundation źěła z 
 * '''Wótkazowy asistent''': Rěd, kótaryž dajo se lažko wužywaś a śi dowólujo, wótkaze drugim wikibokam ako teke wótkaze eksternym sedłam pśidaś.
 * '''Pytańske pólěpšenja''' Smy pytańske naraźenja pólěpšyli, aby śi wjadli malsnjej k tomu bokoju, kótaryž pytaš.
 * '''Druge nowe funkcije''': Smy teke zawjadli tabelowy asistent, aby wólažcyli napóranje tabelow a funkciju za pytanje a narownanje, aby my zjadnorili wobźěłowanje bokow.
-* '''Logo wikipedije:''' Smy našo logo zaktualizěrowali. Dalšne informacije na [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d blogu Wikimedije].
-
-===Měnjenja?===
+* '''Logo wikipedije:''' Smy našo logo zaktualizěrowali. Dalšne informacije na [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d blogu Wikimedije].",
+	'prefswitch-main-feedback' => "===Měnjenja?===
 My by se wjaselili, wót tebje słyšaś. Pšosym woglědaj se [[\$1|bok měnjenjow]] abo, jolic zajmujoš se za naše běžne napinanja, aby se softwara pólěpšyła,  woglědaj se naš [http://usability.wikimedia.org wiki wužywajobnosći] za dalšne informacije.",
 	'prefswitch-main-anon' => '===Slědk===
 Jolic coš nowe funkcije znjemóžnis, [$1 klikni how].  Pšose śi se pśizjawiś abo nejpjerwjej konto załožyś.',
@@ -1217,17 +1220,14 @@ Reiri al <span class="plainlinks">[$1 $2]</span>.',
 
 Ni penis faciligi aferojn por niaj uzantoj. Ni ĝojas provizi iujn novajn plibonigojn, inkluzivante novan aspekton kaj simpligitan redaktilaron. Ĉi tiuj ŝanĝoj celas igi redaktadon de Vikipedio pli facila por novaj kontribuantoj kaj estas bazitaj sur nia [http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study studo kaj testado de uzebleco] farita lastjare. Plibonigado de la uzebleco estas prioritato de la Vikimedia Fondaĵo kaj ni sendos pluajn ĝisdatigojn estonte. Por pluaj detaloj, bonvolu viziti [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/ rilatan Vikimedia-blogeron].
 
-
-
 ===Jen kion ni ŝanĝis===
 * '''Navigado:''' Ni plibonigis la navigadon por legi kaj redakti paĝojn. Nun la etikedoj ĉe la supro de ĉiu paĝo pli klare difinas ĉu vi vidas la paĝon aŭ la diskuto-paĝon, kaj ĉu vi legas aŭ redaktas la paĝon.
 * '''Redakta ilobreto:''' Ni reorganizis la redaktan ilobreton por simpligi ĝin. Nun, formataj paĝoj estas pli simpla kaj pli intuicia.
 * '''Ligila asistanto:''' Facila ilo por aldoni ligilojn al aliaj paĝoj de Vikipedio kaj ligiloj al eksteraj retejoj.
 * '''Serĉaj plibonigoj:''' Ni plibonigis serĉsugestojn por pli rapide direkti vin al la paĝo kiun vi serĉas.
 * '''Aliaj novaj funkcioj:''' Ni ankaŭ aldonis tabelan asistanton, por faciligi kreadon de tabeloj, kaj funkcio por anstataŭigi tekston en paĝoj.
-* '''Vikipedia puzlo-globo''': Ni ĝisdatigis la puzloglobon. Legu plu ĉe la [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ Vikimedia-blogo].
-
-===Reagoj?===
+* '''Vikipedia puzlo-globo''': Ni ĝisdatigis la puzloglobon. Legu plu ĉe la [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ Vikimedia-blogo].",
+	'prefswitch-main-feedback' => "===Reagoj?===
 Ni ŝatus aŭdi pri vi. Bonvolu viziti nian [[\$1|reagopaĝon]] aŭ se vi interesiĝas pri niaj nunaj penoj por plibonigi la softvaron, vizitu nian [http://usability.wikimedia.org uzeblecovikion] por pliaj informoj.",
 	'prefswitch-main-anon' => '===Revenigu min  al la antaŭa versio===
 [$1 Alklaku ĉi tie por malŝalti la novajn ecojn]. Vi estos antaŭe petata esti ensalutinta aŭ kreinta konton.',
@@ -1315,9 +1315,8 @@ El Equipo de experiencia del usuario de la fundación Wikimedia ha estado trabaj
 * '''Asistente de enlaces:''' una sencilla herramienta permite añadir enlaces ya sea a páginas de Wikipedia o a otros sitios externos.
 * '''Mejoras en la búsqueda:''' hemos mejorado las sugerencias para llegar más rápido a la página que se está buscando.
 * '''Otras nuevas características:''' también hemos introducido un asistente de tablas para hacer más sencilla la creación de tablas y una funcionalidad de buscar y reemplazar que simplifica la edición de páginas.
-* '''Logo de Wikipedia''': Hemos actualizado nuestro logo. Encontrarás más información al respecto en el [http://blog.wikimedia.org/2010/wikipedia-in-3d/ blog de Wikimedia] (en inglés).
-
-===¿Tienes comentarios?===
+* '''Logo de Wikipedia''': Hemos actualizado nuestro logo. Encontrarás más información al respecto en el [http://blog.wikimedia.org/2010/wikipedia-in-3d/ blog de Wikimedia] (en inglés).",
+	'prefswitch-main-feedback' => "===¿Tienes comentarios?===
 Nos encantaría escucharte. Por favor visita nuestra [[\$1|página de comentarios]] o, si estás interesado en nuestros actuales esfuerzos para mejorar el software, visita nuestra [http://usability.wikimedia.org wiki de usabilidad] para mayor información.",
 	'prefswitch-main-anon' => '=== Volver a la versión anterior ===
 Si deseas deshabilitar las nuevas características, haz clic [$1 aquí]. Necesitarás iniciar sesión o crear una cuenta primero.',
@@ -1426,9 +1425,8 @@ Wikimedia Fundazioaren Erabiltzaile Esperientzia Taldea komunitatearen boluntari
 * '''Lotura magoa:''' Erabilera errazeko tresna, barne eta kanpo loturak errazago jartzeko.
 * '''Bilaketa hobekuntzak:''' Bilatzen ari zaren orrialdera azkarrago iristeko bilaketa iradokizunak hobetu ditugu.
 * '''Bestelako ezaugarri berriak:''' Taulak errazago egiteko taula mago bat sartu dugu lana sinplifikatzeko.
-* '''Wikipediako logoa:''' Gure logoa eguneratu dugu. Irakurri gehiago [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d Wikimedia blog ofizialean].
-
-===Feedbacka?===
+* '''Wikipediako logoa:''' Gure logoa eguneratu dugu. Irakurri gehiago [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d Wikimedia blog ofizialean].",
+	'prefswitch-main-feedback' => "===Feedbacka?===
 Atsegin handiz zure erantzuna entzun nahi dugu. Mesedez bisitatu [[\$1|feedback orrialdea]] edo, softwarea hobetzeko gure ekintzetan interesatuta bazaude, bisitatu gure [http://usability.wikimedia.org erabilgarritasun wikia] informazioa gehiagorako.",
 	'prefswitch-main-anon' => '===Atzera joan===
 [$1 Klikatu hemen ezaugarri berriak kentzeko]. Aurretik saioa hastea edo kontu berria sortzea eskatuko zaizu.',
@@ -1502,9 +1500,8 @@ $messages['fa'] = array(
 * '''یک ویزارد برای پیونددهی:''' یک ابزار ساده برای افزودن پیوندها ایجاد شده‌است.
 * '''بهبود موتو جستجو:'''ما ابزار پیشنهاد برای جستجوهای شما را بهبود داده‌ایم.
 * '''امکانات دیگر:''' ما یک ابزار برای افزودن جداول نیز ایجاد کرده‌ایم.
-* '''لوگوی بنیاد:'''ما نماد بنیاد را نیز بروز کرده‌ایم برای اطلاعات بیشتر [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d این صفحه] را بخوانید.
-
-===بازخورد؟===
+* '''لوگوی بنیاد:'''ما نماد بنیاد را نیز بروز کرده‌ایم برای اطلاعات بیشتر [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d این صفحه] را بخوانید.",
+	'prefswitch-main-feedback' => "===بازخورد؟===
 ما خوشحال می‌شویم نظر شما را بشنویم. لطفا در صفحه [[\$1|بازخورد]] نظرتان را بیان کنید یا اگر علاقه‌مندید تا ابزار را بهبود ببخشیدلطفا در وب‌گاه گروه [http://usability.wikimedia.org بهبوددهنده] بیان کنید.",
 );
 
@@ -1577,9 +1574,8 @@ Wikimedia Foundationin käyttäjäkokemusryhmä on työskennellyt yhteisön vapa
 * '''Ohjattu linkkitoiminto:''' Helppokäyttöinen työkalu antaa sinun lisätä linkkejä sekä muille wikisivuille ja ulkoisille sivustoille.
 * '''Hakuparannukset:''' Olemme parantaneet hakuehdotuksia, jotta löytäisit etsimäsi sivun nopeammin.
 * '''Muut uudet toiminnot:''' Olemme myös tuoneet esiin ohjatun taulukonlisäystoiminnon taulukoiden helpompaan lisäämiseen ja etsi ja korvaa -toiminnon yksinkertaisempaan muokkaamiseen.
-* '''Wikipedian logo:''' Olemme päivittäneet logoa. Lue lisää [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d Wikimedian blogista].
-
-=== Palautetta? ===
+* '''Wikipedian logo:''' Olemme päivittäneet logoa. Lue lisää [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d Wikimedian blogista].",
+	'prefswitch-main-feedback' => "=== Palautetta? ===
 Otamme mielellämme palautetta vastaan. Käy [[\$1|palautesivulla]], tai jos olet kiinnostunut jatkuvasta ohjelmistokehityksestämme – vieraile [http://usability.wikimedia.org/ käytettävyyswikissä] saadaksesi lisätietoja.",
 	'prefswitch-main-anon' => '=== Palaa takaisin ===
 [$1 Napsauta tästä, jos haluat poistaa käytöstä uudet ominaisuudet]. Sinua pyydetään ensin kirjautumaan sisään tai luomaan tunnus.',
@@ -1666,9 +1662,8 @@ L’équipe Expérience utilisateur de la Fondation Wikimedia (''User Experience
 * '''Assistant de liens :''' un outil simple pour vous permettre d’ajouter des liens vers d’autres pages de Wikipédia ainsi que des liens vers des sites externes.
 * '''Amélioration de la recherche :''' nous avons amélioré les suggestions de recherche pour vous aider à trouver la page que vous recherchez plus rapidement.
 * '''Autres fonctionnalités nouvelles :''' nous avons également introduit un assistant de tableaux pour créer des tableaux plus facilement et une fonctionnalité de remplacement pour simplifier la modification de page.
-* '''Logo Wikipédia''': nous avons mis à jour notre logo. Pour en savoir plus, consultez le [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ blog de Wikimedia].
-
-=== Retours d’expérience ===
+* '''Logo Wikipédia''': nous avons mis à jour notre logo. Pour en savoir plus, consultez le [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ blog de Wikimedia].",
+	'prefswitch-main-feedback' => "=== Retours d’expérience ===
 Nous aimerions beaucoup avoir des retours de votre part. Veuillez vous rendre sur la [[\$1|page de retours d’expérience]] ou bien, si vous êtes intéressés par nos efforts continus pour améliorer le logiciel, visitez notre [http://usability.wikimedia.org wiki utilisabilité] pour plus d’informations.",
 	'prefswitch-main-anon' => '===Take Me Back===
 Si vous souhaitez désactiver les nouvelles fonctionnalités, [$1 cliquez ici].  Il vous sera demandé de vous connecter ou de vous créer un compte.',
@@ -1765,9 +1760,8 @@ O equipo de experiencia de usuario da Fundación Wikimedia traballou arreo con v
 * '''Asistente para as ligazóns:''' trátase dunha simple ferramenta que permite engadir ligazóns cara a outras páxinas da Wikipedia, así como ligazóns a sitios web externos.
 * '''Melloras nas procuras:''' melloramos as suxestións de busca para que dea coa páxina que está a procurar máis rapidamente.
 * '''Outras novas características:''' tamén introducimos un asistente para as táboas, que fai a creación de táboas máis fácil, e unha característica para atopar e substituír elementos, que simplifica a edición da páxina.
-* '''O logo da Wikipedia:''' tamén actualizamos o noso logo. Máis información no [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d blogue da Wikimedia].
-
-===Opinións?===
+* '''O logo da Wikipedia:''' tamén actualizamos o noso logo. Máis información no [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d blogue da Wikimedia].",
+	'prefswitch-main-feedback' => "===Opinións?===
 Gustaríanos saber o que lle parece. Visite a nosa [[\$1|páxina de comentarios]] ou o noso [http://usability.wikimedia.org wiki de usabilidade] se o que quere é involucrarse na mellora do software.",
 	'prefswitch-main-anon' => '===Volver atrás===
 Se quere desactivar as novas características, [$1 prema aquí]. Pediráselle que primeiro acceda ao sistema ou que cree unha conta.',
@@ -1852,9 +1846,8 @@ D Benutzerfrejndligkeit verbessere het Prioritet bi dr Wikimedia Foundation un m
 * '''Gleichhilf:'''  E eifach Wärchzyyg, wu Dir s megli macht, Gleicher zue andere Wikipediasyte un zue extärne Syte.
 * '''Verbesserige vu dr Suechi:''' Mir hän d Suechvorschleg verbesseret, ass Du schnäller uf die Syte chunnsch, wu Du suechsch.
 * '''Anderi neji Funktione:'''  Mir hän au ne Tabällehilf yygfiert, wu s Aalege vu Tabälle eifacher macht, un e Hilf zum Sueche un Ersetze, wu s Bearbeite vu Syte eifacher macht.
-* '''Wikipedia-Logo''': wir hän unser Logo nej gmacht, meh Informatione im [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ Wikimedia-Blog.]
-
-=== Ruckmäldig? ===
+* '''Wikipedia-Logo''': wir hän unser Logo nej gmacht, meh Informatione im [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ Wikimedia-Blog.]",
+	'prefswitch-main-feedback' => "=== Ruckmäldig? ===
 Mir deeten is freie, vu Dir z here.
 Bitte bsuech unseri [\$1 Ruckmäldigs-Syte].",
 	'prefswitch-main-anon' => '===Zruck===
@@ -2001,9 +1994,8 @@ Team za polěpšenje wužiwajomnosće załožby Wikimedia Foundation dźěła z 
 * '''Wotkazowy asistent:''' Nastroj, kotryž da so lochko wužiwać a ći dowola, wotkazy druhim wikistronam  kaž tež eksternym sydłam přidać.
 * '''Pytanske polěpšenja:''' Smy pytanske namjety polěpšili, zo bychmy će spěšnišo k tej stronje wjedli, kotruž pytaš.
 * '''Druhe nowe funkcije:''' Smy tež tabelowy asistent zawjedli, zo bychmy wutworjenje tabelow wosnadnili a funkciju za pytanje a narunanje, zo bychmy wobdźěłowanje strony zjednorili.
-* '''Logo wikipedije:''' Smy swoje logo zaktualizowali. Dalše informacije wo tym na [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d blogu Wikimedije].
-
-===Měnjenja?===
+* '''Logo wikipedije:''' Smy swoje logo zaktualizowali. Dalše informacije wo tym na [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d blogu Wikimedije].",
+	'prefswitch-main-feedback' => "===Měnjenja?===
 Bychmy so wjeselili wot tebje słyšeć. Prošu wopytaj našu [[\$1|stronu komentarow]] abo, jeli zajimuješ za naše běžne napinanja softwaru polěpšić, wopytaj našu [http://usability.wikimedia.org wiki wužiwajomnosće] za dalše informacije.",
 	'prefswitch-main-anon' => '===Wróćo===
 Jeli chceće nowe funkcije znjemóžnić, [$1 klikńće tu].  Proša was, so přizjewić abo najprjedy konto załožić.',
@@ -2087,10 +2079,7 @@ A Wikimédia Alapítány felhasználói élményért felelős csapata és az ők
 * '''Link wizard:''' An easy-to-use tool allows you to add links to other wiki pages as well as links to external sites.
 * '''Search improvements:''' We have improved search suggestions to get you to the page you are looking for more quickly.
 * '''Other new features:''' We have also introduced a table wizard to make creating tables easier and a find and replace feature to simplify page editing.
-* '''Wikipedia logo:''' We have updated our logo. Read more at the [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d Wikimedia blog].
-
-===Feedback?===
-We would love to hear from you. Please visit our [[\$1|feedback page]] or, if you are interested in our ongoing efforts to improve the software, visit our [http://usability.wikimedia.org usability wiki] for more information.",
+* '''Wikipedia logo:''' We have updated our logo. Read more at the [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d Wikimedia blog].",
 	'prefswitch-main-anon' => '===Vissza a régit===
 [$1 Kattints ide az új funkciók kikapcsolásához]. Ehhez be kell jelentkezned, vagy regisztrálnod kell.',
 	'prefswitch-main-on' => '===Vissza a régit===
@@ -2173,9 +2162,8 @@ Le Equipa del Experientia de Usator del Fundation Wikimedia ha collaborate con v
 * '''Assistente pro ligamines:''' Un instrumento simple permitte adder ligamines a altere paginas de Wikipedia e ligamines a sitos externe.
 * '''Meliorationes de recerca:''' Nos ha meliorate le suggestiones de recerca pro portar te plus rapidemente al pagina que tu cerca.
 * '''Altere nove functiones:''' Nos ha etiam introducite un assistente pro facilitar le creation de tabellas, e un function de cercar e reimplaciar pro simplificar le modification de paginas.
-* '''Le logotypo de Wikipedia''': Nos ha actualisate le logotypo. Lege plus in le [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ blog de Wikimedia] (in anglese).
-
-===Commentarios?===
+* '''Le logotypo de Wikipedia''': Nos ha actualisate le logotypo. Lege plus in le [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ blog de Wikimedia] (in anglese).",
+	'prefswitch-main-feedback' => "===Commentarios?===
 Nos amarea audir de te. Per favor visita nostre [[\$1|pagina pro dar tu opinion]] o, si tu ha interesse in nostre continue effortios pro meliorar le software, visita nostre [http://usability.wikimedia.org wiki de usabilitate] pro plus information.",
 	'prefswitch-main-anon' => '===Porta me retro===
 Si tu vole disactivar le nove functiones, [$1 clicca hic]. Il te essera demandate de primo aperir un session o crear un conto.',
@@ -2310,9 +2298,8 @@ Lo \"User Experience Team\" della Fondazione Wikimedia, insieme ai volontari del
 * '''Procedura guidata per i link''':  Uno strumento semplice da utilizzare ti permette di aggiungere link ad altre pagine di Wikipedia e link a siti esterni.
 * '''Miglioramenti alla ricerca''': Abbiamo migliorato i suggerimenti della ricerca per portarti più velocemente alla pagina che stai cercando.
 * '''Altre nuove funzioni''':  Abbiamo introdotto anche una procedura guidata per le tabelle per rendere la loro creazione più semplice e una funzione \"trova e sostituisci\" per semplificare la modifica delle pagine.
-* '''Globo-puzzle di Wikipedia''': Abbiamo aggiornato il globo-puzzle. Leggi altre informazioni sul [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ blog Wikimedia].
-
-===Commenti?===
+* '''Globo-puzzle di Wikipedia''': Abbiamo aggiornato il globo-puzzle. Leggi altre informazioni sul [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ blog Wikimedia].",
+	'prefswitch-main-feedback' => "===Commenti?===
 Non vediamo l'ora di conoscere la tua opinione. Visita la nostra [[\$1|pagina di feedback]] oppure, se sei interessato nei nostri continui sforzi per migliorare la piattaforma MediaWiki, visita [http://usability.wikimedia.org la wiki del progetto usabilità] per ulteriori informazioni.",
 	'prefswitch-main-anon' => '===Riportami indietro===
 Se vuoi disattivare le nuove funzionalità, [$1 clicca qui]. Ti sarà chiesto di entrare o di creare un account.',
@@ -2398,9 +2385,8 @@ $messages['ja'] = array(
 * '''リンクウィザード:''' ウィキペディア内の他のページや外部サイトへのリンクを追加できる、使いやすいツールを備えました。
 * '''検索機能の改善:''' 検索結果の候補予想の提示を改善し、お探しのページにより素早くたどり着けるようにしました。
 * '''その他の新機能:''' その他にも、ページ編集を簡潔化するために、表の作成を簡単にする表ウィザード、検索・置換機能を追加しました。
-* '''ウィキペディアのロゴ''': ロゴを更新しました。詳細は [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ Wikimedia blog]（英語）をご覧ください。
-
-=== フィードバックは ===
+* '''ウィキペディアのロゴ''': ロゴを更新しました。詳細は [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ Wikimedia blog]（英語）をご覧ください。",
+	'prefswitch-main-feedback' => "=== フィードバックは ===
 私たちにあなたのご意見をぜひお聞かせください。[[\$1|フィードバック用のページ]]を訪れるか、もし私たちがソフトウェアを改善するために現在行っている取り組みに興味がおありならば、[http://usability.wikimedia.org ユーザビリティ・ウィキ]を訪れていただければより詳しい情報が得られます。",
 	'prefswitch-main-anon' => '===以前の状態に戻す===
 新機能の数々を停止したい場合、[$1 こちらをクリック]してください。まずログインするかアカウントを作るか尋ねられます。',
@@ -2488,21 +2474,20 @@ $messages['ka'] = array(
 
 \"ფონდ ვიკიმედიაში\" მუშაობს \"ვიკიპედიის\" გამოყენების ანალიზის ჯგუფი, რომელიც ვიკიპედიის საზოგადოების მოხალისეებთან ერთად ცდილობენ ვიკიპედიაში მუშაობის გაადვილებას. ჩვენ მოხარულნი ვართ გაცნობოთ რამდენიმე ცვლილების შესახებ, მათ შორის ახალი ინტერფეისისა და რედაქტირების გამარტივებული ფუნქციების შესახებ. ეს ცვლილებები შემოტანილია ახალი მომხმარებლებისთვის სამუშაოს გასამარტივებლად, ისინი ეფუძნებიან [http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study წინა წელს ჩატარებულ მოხერხებულობის ტესტირებას]. ჩვენი საიტებისთვის ახალი დიზაინის შექმნა მიიჩნევა პრიორიტეტულად, და ჩვენ გავაგრძელებთ პროექტის გაუმჯობესებას მომავალშიც. დამატებით შეგიძლიათ ნახოთ [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/  ვიკიმედიის ბლოგი].
 
- === ცვლილებები === 
+=== ცვლილებები === 
 
 * '''ნავიგაცია.''' ჩვენ გავაუმჯობესეთ გვერდების კითხვისა და რედაქტირების ნავიგაცია.
 * '''რედაქტირების პანელის გაუმჯობესება.''' ჩვენ შევცვალეთ რედაქტირების პანელის სახე, რისი მეშვეობითაც მისი გამოყენება გამარტივდა.
 * '''ბმულების ოსტატი.''' გამოსაყენებლად მარტივი ხელსაწყოს მეშვეობით გამარტივდა ბმულების ჩასმა როგორც  ვიკი გვერდებზე, ასევე გარე საიტებზე.
 * '''ძიების გაუმჯობესება.''' ჩვენ გავაუმჯობესეთ ძიებისკარნახები, რათა გამარტივდეს საჭირო გვერდის პოვნა.
 * '''დამატებითი ახალი ფუნქციები.''' ჩვენ ასევე გავაკეთეთ ტაბულების ოსტატი, რათა გაგიმარტივოთ ტაბულების შექმნა ვიკიპედიაში. 
-* '''თანამედროვე ლოგო.''' ჩვენ შევიცვალეთ ლოგო - დაწვრილებით იხილეთ [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d~~V ვიკიმედიის ბლოგში]. 
-
- === კავშირი === 
+* '''თანამედროვე ლოგო.''' ჩვენ შევიცვალეთ ლოგო - დაწვრილებით იხილეთ [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d~~V ვიკიმედიის ბლოგში]. ",
+	'prefswitch-main-feedback' => "=== კავშირი === 
 ჩვენთვის საინტერესოა თქვენი მოსაზრებების მოსმენა. იხილეთ ჩვენთან [[\$1|კავშირის გვერდი]]. თუ თქვენ გაინტერესებთ ვიკიპედიის გაუმჯობესება, ეწვიეთ [http://usability.wikimedia.org მოხერხებულობის პროექტის ვიკის].",
 	'prefswitch-main-anon' => '===დაბრუნება===
 თუ გსურთ გამორთოთ ბეტა, [$1 დააჭირეთ აქ]. შემდეგ კი გაიარეთ ავტორიზაცია ან შექმენით ანგარიში.',
 	'prefswitch-main-on' => '==დააბრუნეთ როგორც იყო!==
- [$2 აქ დააჭირეთ ახალი შესაძლებლობების გასათიშად].',
+[$2 აქ დააჭირეთ ახალი შესაძლებლობების გასათიშად].',
 	'prefswitch-main-off' => '=== მოსინჯეთ! === 
 თუ გსურთ, რომ ჩართათ ახალი ფუნქციები, [$1 აქ დააწკაპუნეთ].',
 	'prefswitch-survey-intro-feedback' => 'ჩვენ გვსურს თქვენი მოსაზრებების წაკითხვა.
@@ -2655,9 +2640,8 @@ D'Equipe vun der Bnotzererfahrung vun der Wikimedia Foundation huet mat Fräiwë
 * '''Linkwizard:''' En Tool den einfach ze benotzen ass fir Linken op aner Wikipedia-Säiten a Linken op aner Siten dobäizesetzen.
 * '''Verbesserunge bei der Sich:''' Mir hunn d'Virschléi bei der Sich verbessert fir datt Dir déi Säit no där Dir sicht méi séier fannt.
 * '''Aner nei Fonctiounen:''' Mir hunn och en Assistent fir Tabellen agefouert deen et méi einfach mécht fir Tabellen unzeleën an eng Sich- an Ersetzungs-Fonctioun fir d'Ännere vu Säiten ze vereinfachen.
-* '''Wikipedia Logo''': Mir hunn de Wikipedia-Logo aktualiséiert, liest méi doriwwer am [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ Wikimedia Blog.]
-
-===Feedback?===
+* '''Wikipedia Logo''': Mir hunn de Wikipedia-Logo aktualiséiert, liest méi doriwwer am [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ Wikimedia Blog.]",
+	'prefswitch-main-feedback' => "===Feedback?===
 Mir wiere frou fir vun Iech ze héieren. Kommt w.e.g. op eis [[\$1|Feedback-Säit]] oder, wann dir un de weideren Efforte vun eis fir d'Software ze verbesseren, besicht eis [http://usability.wikimedia.org Benotzerfrëndlechkeets-Wiki] fir weider Informatiounen.",
 	'prefswitch-main-anon' => "=== Zréck ===
 Wann Dir déi nei Fonctiounen ausschalte wëllt, 
@@ -2749,9 +2733,8 @@ $messages['mk'] = array(
 * '''Помошник за врски:'''  Едноставна алатка која овозможува додавање врски до други вики-страници како и до надворешни мрежни места.
 * '''Подобрено пребарување:''' Ги подобривме предлозите при пребарување за што побрзо да ви ја најдеме страницата што ја барате.
 * '''Други нови функции:''' Воведовме и помошник за табели со чија помош табелите се прават полесно, а има и можност за пронаоѓање и заменување, со што се упростува уредувањето на страницата.
-* '''Лого на Википедија:''' Го подновивме и логото. Прочитахте повеќе на [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d блогот на Викимедија].
-
-===Мислења?===
+* '''Лого на Википедија:''' Го подновивме и логото. Прочитахте повеќе на [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d блогот на Викимедија].",
+	'prefswitch-main-feedback' => "===Мислења?===
 Со задоволство би сакале да го чуеме вашето мислење. Посетете ја [[\$1|страницата за мислења]], или пак, ако сте заинтересирани за нашите постојани напори за подобрување на програмот, одете на нашето [http://usability.wikimedia.org вики посветено на употребливоста] и дознајте повеќе.",
 	'prefswitch-main-anon' => '===Врати ме===
 Ако сакате да ги исклучите новите функции, [$1 кликнете тука]. Ќе ви биде побарано најпрвин да се најавите или да создадете сметка.',
@@ -2836,10 +2819,8 @@ $messages['ml'] = array(
 * '''കണ്ണി ചേർക്കൽ:''' ലളിതമായി ഉപയോഗിക്കാവുന്ന ഉപകരണം കൊണ്ട് മറ്റ് വിക്കിപീഡിയ താളുകളിലേയ്ക്കോ പുറത്തുള്ള സൈറ്റുകളിലേയ്ക്കോ കണ്ണികൾ ചേർക്കാൻ താങ്കളെ സഹായിക്കുന്നു.
 * '''തിരച്ചിൽ മെച്ചപ്പെടുത്തലുകൾ:''' താങ്കൾ തിരയുന്ന താളിലേയ്ക്ക് പെട്ടെന്ന് എത്തിച്ചേരാവുന്ന വിധത്തിൽ മെച്ചപ്പെടുത്തിയ തിരച്ചിൽ നിർദ്ദേശങ്ങൾ ഉൾപ്പെടുത്തിയിരിക്കുന്നു.
 * '''മറ്റ് പുതിയ സവിശേഷതകൾ:''' പട്ടികകൾ ചേർക്കാനായി ഒരു സഹായിയും താൾ തിരുത്തൽ ലളിതമാക്കാൻ വാക്കുകളും മറ്റും കണ്ടെത്തി മാറ്റിച്ചേർക്കാനുള്ള സൗകര്യവും ഉൾപ്പെടുത്തിയിരിക്കുന്നു.
-* '''വിക്കിപീഡിയ പസിൽ ഗ്ലോബ്:''' പസിൽ ഗ്ലോബ് പുതുക്കിയിരിക്കുന്നു. കൂടുതൽ [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ വിക്കിമീഡിയ ബ്ലോഗിൽ] വായിക്കുക.
-
-
-===അഭിപ്രായങ്ങൾ?===
+* '''വിക്കിപീഡിയ പസിൽ ഗ്ലോബ്:''' പസിൽ ഗ്ലോബ് പുതുക്കിയിരിക്കുന്നു. കൂടുതൽ [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ വിക്കിമീഡിയ ബ്ലോഗിൽ] വായിക്കുക.",
+	'prefswitch-main-feedback' => "===അഭിപ്രായങ്ങൾ?===
 താങ്കളിൽ നിന്നവ കേൾക്കാൻ ഞങ്ങൾക്കതിയായ ആഗ്രഹമുണ്ട്. ദയവായി ഞങ്ങളുടെ [[\$1|അഭിപ്രായങ്ങൾക്കുള്ള താൾ]] കാണുക അല്ലെങ്കിൽ,  സോഫ്റ്റ്‌‌വേറിലുള്ള പുതിയ മെച്ചപ്പെടുത്തലുകളെ കുറിച്ചറിയാൻ [http://usability.wikimedia.org ഉപയോഗ്യത വിക്കി] സന്ദർശിക്കുക.",
 	'prefswitch-main-anon' => '===എനിക്കിതു്‌ വേണ്ട===
 പുതിയ സവിശേഷതകൾ ഒഴിവാക്കാൻ താങ്കൾ ആഗ്രഹിക്കുന്നുവെങ്കിൽ, [$1 ഇവിടെ ഞെക്കി] ആദ്യം ലോഗിൻ ചെയ്യുകയോ അംഗത്വമെടുക്കുകയോ ചെയ്യേണ്ടതാണ്.',
@@ -2996,9 +2977,8 @@ Nu is het bewerken van pagina's eenvoudiger en intuïtiever.
 * '''Hulp bij verwijzingen:''' een hulpje voor het eenvoudig toevoegen van verwijzingen naar andere wikipagina's en externe websites.
 * '''Verbeteringen in het zoeken:''' we hebben zoeksuggesties verbeterd zodat u de pagina die u zoekt sneller vindt.
 * '''Andere nieuwe mogelijkheden:''' Wij hebben ook een tabelhulpmiddel toegevoegd om het maken van tabellen te vereenvoudigen en een hulpmiddel voor zoeken en vervangen om het bewerken van pagina's te vereenvoudigen.
-* '''Wikipedia logo''': We hebben ons logo vernieuwd. Op de [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ Wikimedia blog] kunt u meer lezen.
-
-=== Terugkoppeling? ===
+* '''Wikipedia logo''': We hebben ons logo vernieuwd. Op de [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ Wikimedia blog] kunt u meer lezen.",
+	'prefswitch-main-feedback' => "=== Terugkoppeling? ===
 Wij horen graag van u.
 Bezoek onze [[\$1|pagina voor terugkoppeling]], of ga naar de [http://usability.wikimedia.org bruikbaarheidswiki] voor meer informatie als u geïnteresseerd bent in onze toekomstige plannen.",
 	'prefswitch-main-anon' => '===Terug===
@@ -3160,9 +3140,8 @@ Zespół Fundacji Wikimedia zbierania doświadczeń użytkowników współpracuj
 * '''Kreator linków''' – Łatwe w użyciu narzędzie pozwala na tworzenie linków zarówno do stron wiki, jak i zewnętrznych serwisów.
 * '''Udoskonalenia wyszukiwania''' – Dzięki nowym, udoskonalonym podpowiedziom szybko znajdziesz to czego szukasz.
 * '''Inne nowe funkcjonalności''' – Nowy kreator tworzenia tabel oraz okno wyszukiwania i zamiany ułatwia edycję stron.
-* '''Logo Wikipedii''' – Zaktualizowaliśmy logo Wikipedii. Więcej informacji (w języku angielskim) znajdziesz na [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ blogu Wikimedia].
-
-===Opinia===
+* '''Logo Wikipedii''' – Zaktualizowaliśmy logo Wikipedii. Więcej informacji (w języku angielskim) znajdziesz na [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ blogu Wikimedia].",
+	'prefswitch-main-feedback' => "===Opinia===
 Bardzo nam zależy na poznaniu Twojej opinii. Odwiedź [[\$1|stronę kontaktu]] lub jeśli jesteś zainteresowany zmianami w oprogramowaniu odwiedź [http://usability.wikimedia.org wiki inicjatywy użyteczności].",
 	'prefswitch-main-anon' => '=== Chcę wrócić ===
 [$1 Kliknij tutaj], jeśli chcesz wyłączyć nowe funkcjonalności. Przed powrotem do starego wyglądu interfejsu musisz utworzyć konto lub zalogować się.',
@@ -3321,9 +3300,8 @@ A Equipa de Experiência de Utilização (User Experience Team) da Wikimedia Fou
 * '''Assistente para links:''' Uma ferramenta de fácil utilização permite-lhe criar tanto links para outras páginas da Wikipédia como links para outros sites externos.
 * '''Melhoramentos da pesquisa:''' Melhorámos as sugestões da pesquisa para levá-lo mais rapidamente à página que procura.
 * '''Outras funcionalidades novas:''' Também introduzimos um assistente para facilitar a criação de tabelas, e uma funcionalidade de procura e substituição para simplificar a edição de páginas.
-* '''Logótipo da Wikipédia:''' Actualizámos o nosso logótipo. Leia mais sobre a actualização no [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d blogue Wikimedia].
-
-===O seu comentário?===
+* '''Logótipo da Wikipédia:''' Actualizámos o nosso logótipo. Leia mais sobre a actualização no [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d blogue Wikimedia].",
+	'prefswitch-main-feedback' => "===O seu comentário?===
 Gostariamos de conhecer a sua opinião. Visite a nossa [[\$1|página de comentários]], por favor. Se tiver interesse em acompanhar os esforços continuados de melhoria do software, visite a nossa [http://usability.wikimedia.org wiki da usabilidade] para mais informação.",
 	'prefswitch-main-anon' => '===Voltar atrás===
 [$1 Clique aqui para desactivar as funcionalidades novas]. Será pedido que se autentique ou crie uma conta.',
@@ -3407,9 +3385,8 @@ A Equipe de Experiência de Utilização (User Experience Team) da Wikimedia Fou
 * '''Assistente para links:''' Uma ferramenta de fácil utilização permite-lhe criar tanto links para outras páginas da Wikipédia como links para outros sites externos.
 * '''Melhoramentos da pesquisa:''' Melhoramos as sugestões da pesquisa para levá-lo mais rapidamente à página que procura.
 * '''Outras funcionalidades novas:''' Também introduzimos um assistente para facilitar a criação de tabelas, e uma funcionalidade de procura e substituição para simplificar a edição de páginas.
-* '''Logotipo da Wikipédia:''' Atualizamos o nosso logotipo. Leia mais sobre a atualização no [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d blogue Wikimedia].
-
-===O seu comentário?===
+* '''Logotipo da Wikipédia:''' Atualizamos o nosso logotipo. Leia mais sobre a atualização no [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d blogue Wikimedia].",
+	'prefswitch-main-feedback' => "===O seu comentário?===
 Gostaríamos de conhecer a sua opinião. Visite a nossa [[\$1|página de comentários]], por favor. Se tiver interesse em acompanhar os esforços continuados de melhoria do software, visite a nossa [http://usability.wikimedia.org wiki da usabilidade] para mais informação.",
 	'prefswitch-main-anon' => '===Voltar atrás===
 [$1 Clique aqui para desativar as funcionalidades novas]. Será pedido que se autentique ou crie uma conta.',
@@ -3504,9 +3481,8 @@ $messages['ru'] = array(
 * '''Мастер ссылок.''' Простой в использовании инструмент позволяет добавлять ссылки, ведущие как на другие вики-страницы, так и на внешние сайты.
 * '''Поиск.''' Мы улучшили поисковые подсказки, чтобы у вас была возможность быстрее найти требуемую страницу.
 * '''Другие новые функции.''' Мы сделали мастер таблиц, позволяющий легко создавать таблицы, а также функцию поиска и замены, упрощающую редактирование.
-* '''Логотип.''' Мы обновили вид шарика-пазла, подробнее см. [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ блог «Фонда Викимедиа»].
-
-=== Обратная связь ===
+* '''Логотип.''' Мы обновили вид шарика-пазла, подробнее см. [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ блог «Фонда Викимедиа»].",
+	'prefswitch-main-feedback' => "=== Обратная связь ===
 Мы хотели бы услышать ваши отзывы. Пожалуйста, посетите нашу [[\$1|страницу обратной связи]]. Если вам интересны наши дальнейшие работы по улучшению программного обеспечения, посетите [http://usability.wikimedia.org вики юзабилити-проекта].",
 	'prefswitch-main-anon' => '=== Вернуть как было ===
 Если вы хотите отключить новые возможности, [$1 нажмите здесь]. Вам будет предложено сначала представиться или зарегистрировать учётную запись.',
@@ -3589,9 +3565,8 @@ $messages['sah'] = array(
 * '''Сигэнии маастара.''' Судургу үнүстүрүмүөн сигэлэри атын биики-сирэйдэргэ да, атын саайтарга да, туруорары хааччыйаллар.
 * '''Көрдөөһүн.''' Көрдөөһүн полсказкаларын тупсардыбыт, онон наадыйар сирэйгин түргэнник булуоҥ. 
 * '''Атын саҥа кыахтар.''' Табылыыссалары оҥорор маастар олортубут. Эбии эрдээксийэни тупсарар көрдөөһүн уонна уларытыы үнүстүрүмүөнүн олортубут. 
-* '''Логотип.''' Шарик-пазл саҥа барылын олортубут, сиһилии манна көр: [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ «Викимедиа Фондатын» блога].
-
-=== Айааччылардыын алтыһыы ===
+* '''Логотип.''' Шарик-пазл саҥа барылын олортубут, сиһилии манна көр: [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ «Викимедиа Фондатын» блога].",
+	'prefswitch-main-feedback' => "=== Айааччылардыын алтыһыы ===
 Эн санааҕын истиэхпитин баҕарабыт. Бука диэн, биһиги [[\$1|онно аналлаах сирэйбитигэр]] киирэ сырыт эрэ. Өскө салгыы тугу гыныахпытын баҕарарбытын билиэххин баҕарар буоллаххына, манна [http://usability.wikimedia.org биики юзабилити-бырайыагар] киирэ сырыт.",
 	'prefswitch-main-anon' => '=== Уруккутугар төннөрүү ===
 Саҥа интерфейсы араарыаххын баҕарар буоллаххына, [$1 маны баттаа]. Оччоҕо ааккын этэргин эбэтэр бэлиэтэнэргин көрдөһүөхтэрэ.',
@@ -3790,9 +3765,8 @@ Wikimedia Foundations användarupplevelseteam har arbetat med volontärer från 
 * '''Länk-guiden''': Ett lättanvänt verktyg låter dig lägga till länkar till andra wiki-sidor samt länkar till externa webbplatser.
 * '''Sökningsförbättringar''': Vi har förbättrat sökförslag att snabbare få dig till den sida du söker.
 * '''Andra nya funktioner''': Vi har också infört en tabellguide för att göra tabellskapande lättare och en sök-och-ersätt-funktion för att förenkla sidredigering.
-* '''Wikipedia pussel-jordglob''': Vi har uppdaterat pusselgloben. Läs mer på [ttp://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ Wikimedia-bloggen].
-
-===Feedback?=== 
+* '''Wikipedia pussel-jordglob''': Vi har uppdaterat pusselgloben. Läs mer på [ttp://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ Wikimedia-bloggen].",
+	'prefswitch-main-feedback' => "===Feedback?=== 
 Vi vill gärna höra dina synpunkter. Besök vår [[\$1|feedbacksida]] eller, om du är intresserad av våra pågående försök att förbättra mjukvaran, besök vår [http://usability.wikimedia.org användbarhetswiki] för mer information.",
 	'prefswitch-main-anon' => '=== Ta Mig Tillbaka ===
 Om du vill stänga av de nya funktionerna, [$1 klicka här]. Du blir ombedd att logga in eller skapa ett konto först.',
@@ -3890,9 +3864,8 @@ $messages['te'] = array(
 * '''లంకెల విజార్డ్:''' ఇతర వికీ పుటలకు మరియు బయటి సైట్లకి లంకెలు చేర్చడానికి తేలికైన పనిముట్టు.
 * '''అన్వేషణ మెరుగులు:''' మీరు వెతుకుతున్న పుటలకి తొందరగా చేరుకునేందుకు గానూ మేం అన్వేషణ సూచనలని మెరుగుపరిచాం.
 * '''ఇతర కొత్త సౌలభ్యాలు:''' పట్టికలని సృష్టించడాన్ని సులభతరం చేయానికి ఒక పట్టికల విజార్డ్ మరియు పుటల దిద్దుబాటుని సరళం చేయడానికి వెతుకు మరియు మార్చు సౌలభ్యాన్ని కూడా ప్రవేశపెట్టాం.
-* '''వికీపీడియా చిహ్నం:''' మా చిహ్నాన్ని తాజాకరించాం. [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d వికీమీడియా బ్లాగు]లో మరింత చదవండి.
-
-===సలహాలూ, సూచనలూ?===
+* '''వికీపీడియా చిహ్నం:''' మా చిహ్నాన్ని తాజాకరించాం. [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d వికీమీడియా బ్లాగు]లో మరింత చదవండి.",
+	'prefswitch-main-feedback' => "===సలహాలూ, సూచనలూ?===
 మీ నుండి వినాలనుకుంటున్నాం. దయచేసి మా [[\$1|ప్రతిస్పందన పుట]]ని సందర్శించండి లేదా, సాఫ్ట్‌వేరుకి మెరుగుపరిచే మా నిరంతర ప్రయత్నాల గురించి మీకు ఆసక్తి ఉంటే, మరింత సమాచారానికై మా [http://usability.wkimedia.org ఉపయోగ్యత వికీ]ని సందర్శించండి.",
 	'prefswitch-main-anon' => '===నన్ను వెనక్కి తీసుకెళ్ళు===
 [$1 కొత్త సౌలభ్యాలను నిలిపివేసుకోడానికి ఇక్కడ నొక్కండి]. మీరు ముందుగా ప్రవేశించాలి లేదా ఖాతాని సృష్టించుకోవాలి.',
@@ -3973,9 +3946,8 @@ Ang Pangkat na Pangkaranasan ng Tagagamit ng Pundasyong Wikimedia ay nakikilahok
 * '''Mahiwagang kawing''':  Isang kasangkapang madaling gamitin na nagpapahintulot sa iyo na magdagdag ng mga kawing sa iba pang mga pahina ng wiki pati na mga kawing sa mga sityong nasa labas.
 * '''Mga pagpapainam sa paghahanap''': Pinainam namin ang mga mungkahi sa paghahanap upang mas mabilis kang makapunta sa pahinang hinahanap mo.
 * '''Iba pang bagong mga kasangkapang-katangian''':  Ipinakilala rin namin ang isang mahiwagang tabla upang maging maginhawa ang paggawa ng mga tabla at kasangkapang-katangiang panghanap at pampalit upang mapapayak ang pagbago sa pahina.
-* '''Logo ng Wikipedia''': Isinapanahon namin ang logo namin. Magbasa pa ng marami sa [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ blog ng Wikimedia].
-
-===Balik-tugon?===
+* '''Logo ng Wikipedia''': Isinapanahon namin ang logo namin. Magbasa pa ng marami sa [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/ blog ng Wikimedia].",
+	'prefswitch-main-feedback' => "===Balik-tugon?===
 Nais naming makarinig mula sa iyo.  Pakidalaw ang aming [[\$1|pahina ng balik-tugon]] o, kung interesado ka sa aming nagaganap na mga gawain sa pagpapaigi ng sopwer, dalawin ang aming [http://usability.wikimedia.org wiki ng pagkanagagamit] para sa mas marami pang kabatiran.",
 	'prefswitch-main-anon' => '===Ibalik ako===
 Kung nais mong patayin ang bagong mga kasangkapang-katangian, [$1 pindutin dito]. Hihilingin sa iyong lumagda ka o lumikha muna ng isang akawnt.',
@@ -4204,9 +4176,8 @@ Nhóm Trải nghiệm Người dùng của Wikimedia Foundation đã làm việc
 * '''Hướng dẫn tạo liên kết:''' Một công cụ rất dễ sử dụng giúp bạn thêm liên kết đến các trang wiki khác cũng như liên kết ra các trang bên ngoài.
 * '''Cải tiến tìm kiếm:''' Chúng tôi đã cải tiến những gợi ý tìm kiếm để giúp bạn tìm được trang mình muốn nhanh chóng hơn.
 * '''Các tính năng mới khác:''' Chúng tôi cũng đã giới thiệu hướng dẫn tạo bảng để giúp tạo bảng dễ dàng hơn, rồi tính năng tìm kiếm và thay thế để đơn giản hóa việc sửa trang.
-* '''Biểu trưng Wikipedia:''' Chúng tôi đã cập nhập biểu trưng của chúng ta. Đọc thêm chi tiết tại [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/  blog của Wikimedia Foundation].
-
-===Phản hồi?===
+* '''Biểu trưng Wikipedia:''' Chúng tôi đã cập nhập biểu trưng của chúng ta. Đọc thêm chi tiết tại [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d/  blog của Wikimedia Foundation].",
+	'prefswitch-main-feedback' => "===Phản hồi?===
 Chúng tôi muốn nghe lời phản hồi từ bạn. Xin mời xem [[\$1|trang phản hồi]] của chúng tôi hoặc, nếu bạn thích thú với những nỗ lực sắp tới để cải tiến phần mềm, xin mời xem [http://usability.wikimedia.org wiki khả dụng] để biết thêm thông tin",
 	'prefswitch-main-anon' => '===Đưa tôi trở lại===
 Bạn có thể [$1 tắt các tính năng mới]. Bạn sẽ cần phải mở tài khoản hay đăng nhập trước tiên.',
@@ -4327,9 +4298,8 @@ Wikimedia Foundation嘅可用性小組同社群嘅志願者一齊係列努力令
 * '''連結精靈'''：一個簡易使用嘅工具可以畀你加入連結到其它wiki版以及連出去外面嘅網站。
 * '''搵嘢嘅改進'''：我哋改進咗搜索建議令到你可以更加快噉搵到你要用到嘅版。
 * '''其它嘅新功能'''：我哋亦都推出了表格精靈去更加容易噉開表，同時搵換嘅功能來簡化嗰版嘅編輯。
-* '''維基百科logo'''：我哋已經更新咗我哋個logo。詳情睇[http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d Wikimedia blog]。
-
-===意見？===
+* '''維基百科logo'''：我哋已經更新咗我哋個logo。詳情睇[http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d Wikimedia blog]。",
+	'prefswitch-main-feedback' => "===意見？===
 
 我哋希望收到你的意見，請睇吓我哋嘅[[\$1|意見反饋版]]，或者如果你對我哋嘅軟件改進有興趣嘅話，可以到[http://usability.wikimedia.org usability wiki]了解更多嘅詳情。",
 	'prefswitch-main-anon' => '===帶我返去===
@@ -4415,9 +4385,8 @@ $messages['zh-hans'] = array(
 * '''链接向导'''：一个易于使用的工具可以让你添加链接到其他维基页面以及链接到外部网站。
 * '''搜索的改进'''：我们改进了搜索建议，让你寻找网页更迅速。
 * '''其他的新功能'''：我们也推出了表格向导，使创建表格更容易，同时寻找和替换功能来简化页面的编辑。
-* '''维基百科logo'''：我们已经更新了我们的logo。详情见[http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d Wikimedia blog]。
-
-===意见?===
+* '''维基百科logo'''：我们已经更新了我们的logo。详情见[http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d Wikimedia blog]。",
+	'prefswitch-main-feedback' => "===意见?===
 
 我们希望收到你们的意见，请造访我们的[[\$1|意见反馈页面]]，或者如果你对我们的软件改善有兴趣，可到[http://usability.wikimedia.org usability wiki]了解详情。",
 	'prefswitch-main-anon' => '=== 取消新功能 ===
@@ -4501,9 +4470,8 @@ $messages['zh-hant'] = array(
 * '''鏈接嚮導'''：一個易於使用的工具可以讓你添加鏈接到其他維基頁面以及鏈接到外部網站。
 * '''搜索的改進'''：我們改進了搜索建議，讓你尋找網頁更迅速。
 * '''其他的新功能'''：我們也推出了表格嚮導，使創建表格更容易，同時尋找和替換功能來簡化頁面的編輯。
-* '''維基百科logo'''：我們已經更新了我們的logo。詳情見[http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d Wikimedia blog]。
-
-===意見?===
+* '''維基百科logo'''：我們已經更新了我們的logo。詳情見[http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d Wikimedia blog]。",
+	'prefswitch-main-feedback' => "===意見?===
 
 我們希望收到你們的意見，請造訪我們的[[\$1|意見反饋頁面]]，或者如果你對我們的軟件改善有興趣，可到[http://usability.wikimedia.org usability wiki]了解詳情。",
 	'prefswitch-main-anon' => '=== 取消新功能 ===
