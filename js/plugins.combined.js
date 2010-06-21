@@ -277,6 +277,9 @@ $.fn.autoEllipsis = function( options ) {
 		if ( !( text in cache ) ) {
 			cache[text] = {};
 		}
+		if ( !( text in matchTextCache ) ) {
+			matchTextCache[text] = {};
+		}
 		if ( options.matchText && !( options.matchText in matchTextCache[text] ) ) {
 			matchTextCache[text][options.matchText] = {};
 		}
