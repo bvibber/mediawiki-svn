@@ -36,6 +36,10 @@ class ResourceLoader {
 	 * 'script' and 'loader' are mandatory.
 	 */
 	public static $modules = array(
+		'wikibits' => array(
+			'script' => 'skins/common/wikibits.js',
+			'loader' => 'skins/common/loader.js',
+		),
 	);
 	
 	private $scripts = array();
@@ -76,6 +80,7 @@ class ResourceLoader {
 		$retval = '';
 		foreach ( $styles as $style ) {
 			// TODO: file_get_contents() errors?
+			// TODO: CACHING!
 			$css = file_get_contents( $style );
 			if ( $this->useCSSJanus ) {
 				$css = $this->cssJanus( $css );
@@ -103,6 +108,7 @@ class ResourceLoader {
 		
 		foreach ( $this->scripts as $script ) {
 			// TODO: file_get_contents() errors?
+			// TODO: CACHING!
 			$retval .= file_get_contents( $script );
 		}
 		$retval .= $this->getStyleJS( $this->styles );
@@ -118,6 +124,7 @@ class ResourceLoader {
 		$retval = '';
 		foreach ( self::$modules as $name => $module ) {
 			// TODO: file_get_contents() errors?
+			// TODO: CACHING!
 			$retval .= file_get_contents( $module['loader'] );
 		}
 		// FIXME: Duplicated; centralize in doJSTransforms() or something?

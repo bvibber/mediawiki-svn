@@ -186,6 +186,7 @@ $wgAutoloadLocalClasses = array(
 	'RegexlikeReplacer' => 'includes/StringUtils.php',
 	'ReplacementArray' => 'includes/StringUtils.php',
 	'Replacer' => 'includes/StringUtils.php',
+	'ResourceLoader' => 'includes/ResourceLoader.php',
 	'ReverseChronologicalPager' => 'includes/Pager.php',
 	'Revision' => 'includes/Revision.php',
 	'RevisionDelete' => 'includes/RevisionDelete.php',
