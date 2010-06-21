@@ -114,6 +114,19 @@ class ResourceLoader {
 		return $retval;
 	}
 	
+	public function getLoaderJS() {
+		$retval = '';
+		foreach ( self::$modules as $name => $module ) {
+			// TODO: file_get_contents() errors?
+			$retval .= file_get_contents( $module['loader'] );
+		}
+		// FIXME: Duplicated; centralize in doJSTransforms() or something?
+		if ( $this->useJSMin ) {
+			$retval = $this->jsMin( $retval );
+		}
+		return $retval;
+	}
+	
 	public function jsMin( $js ) {
 		// TODO: Implement
 		return $js;
