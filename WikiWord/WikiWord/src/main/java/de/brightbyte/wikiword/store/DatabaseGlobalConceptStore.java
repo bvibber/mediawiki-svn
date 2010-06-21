@@ -28,7 +28,6 @@ import de.brightbyte.wikiword.model.LocalConcept;
 import de.brightbyte.wikiword.schema.ConceptInfoStoreSchema;
 import de.brightbyte.wikiword.schema.GlobalConceptStoreSchema;
 import de.brightbyte.wikiword.schema.StatisticsStoreSchema;
-import de.brightbyte.wikiword.store.WikiWordConceptStore.ConceptQuerySpec;
 
 /**
  * A GlobalConceptStore implemented based upon a {@link de.brightbyte.db.DatabaseSchema} object,
@@ -106,6 +105,7 @@ public class DatabaseGlobalConceptStore extends DatabaseWikiWordConceptStore<Glo
 	@Override
 	protected GlobalConcept newConcept(int id, String name, ConceptType type, int card, double relevance) {
 		GlobalConcept concept = new GlobalConcept(getDatasetIdentifier(), id, type);
+		concept.setName(name);
 		concept.setCardinality(card);
 		concept.setRelevance(relevance);
 		return concept;
@@ -145,7 +145,7 @@ public class DatabaseGlobalConceptStore extends DatabaseWikiWordConceptStore<Glo
 				if ( spec!=null && spec.getLanguageIndependantTypes()!=null 
 									&& !spec.getLanguageIndependantTypes().isEmpty() ) {
 					//some types of concepts (proper nouns) may be language independant
-					sql += " AND ( M.lang = "+database.quoteString(lang)+" OR C.type IN "+getTypeCodeSet(spec.getRequireTypes())+" )";
+					sql += " AND ( M.lang = "+database.quoteString(lang)+" OR C.type IN "+getTypeCodeSet(spec.getLanguageIndependantTypes())+" )";
 				} else {
 					sql += " AND M.lang = "+database.quoteString(lang)+" ";
 				}
@@ -158,6 +158,20 @@ public class DatabaseGlobalConceptStore extends DatabaseWikiWordConceptStore<Glo
 		} catch (SQLException e) {
 			throw new PersistenceException(e);
 		}
+	}
+
+	protected String conceptSQL(String lang, String name, ConceptQuerySpec spec) throws PersistenceException {
+		if ( lang == null && spec!=null && spec.getLanguage()!=null) {
+			lang = spec.getLanguage();
+		}
+		
+		if ( lang==null ) throw new IllegalArgumentException("languager must be given, either explicitly or in the QuerySpec");
+			
+		String sql = " JOIN "+originTable.getSQLName()+" as O on C.id = O.global_concept " +
+								" WHERE O.local_concept_name = "+database.quoteString(name)+" " +
+								" AND O.lang = "+database.quoteString(lang)+" ";
+		
+		return sql;
 	}
 
 	/*
@@ -248,6 +262,21 @@ public class DatabaseGlobalConceptStore extends DatabaseWikiWordConceptStore<Glo
 		}
 	}
 	
+	public GlobalConcept getConceptByName(String lang, String name, ConceptQuerySpec spec) throws PersistenceException {
+		String sql = conceptSelect(spec, null, null) + conceptSQL(lang, name, spec);
+		try {
+			ResultSet rs = database.executeQuery("getConceptByName", sql);
+			if (!rs.next()) throw new PersistenceException("no concept found with name '"+name+"' in language '"+lang+"'");
+			
+			GlobalConcept concept = newConcept(rs, spec);
+			
+			rs.close();
+			return concept;
+		} catch (SQLException e) {
+			throw new PersistenceException(e);
+		}
+	}
+
 	public DataSet<GlobalConcept> getMeanings(String lang, String term, ConceptQuerySpec spec) throws PersistenceException {
 		return ((DatabaseGlobalConceptInfoStore)getConceptInfoStore()).getMeanings(lang, term, spec);
 	}
@@ -270,6 +299,9 @@ public class DatabaseGlobalConceptStore extends DatabaseWikiWordConceptStore<Glo
 	}
 
 	/////////////////////////////////////////////////////////////////////////////////////////////
+	protected PropertyStore<GlobalConcept> newPropertyStore() throws SQLException, PersistenceException {
+		throw new UnsupportedOperationException("property stores are not yet supported for a global thesaurus.");
+	}
 	
 	protected class DatabaseGlobalConceptInfoStore extends DatabaseConceptInfoStore<GlobalConcept> {
 		
@@ -329,7 +361,6 @@ public class DatabaseGlobalConceptStore extends DatabaseWikiWordConceptStore<Glo
 				GlobalConcept concept = new GlobalConcept(getDatasetIdentifier(), id, type);
 				concept.setName(name);
 				concept.setLanguages(languages);
-				concept.setType(type);
 				concept.setCardinality(cardinality);
 				concept.setRelevance(relevance);
 				

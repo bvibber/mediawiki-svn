@@ -42,8 +42,11 @@ public class WikiWordConcept {
 	private int cardinality = 1;
 	private double relevance = 1;
 	
-	private ConceptRelations relations;
-	private ConceptFeatures features;
+	private ConceptRelations<? extends WikiWordConcept> relations;
+	private ConceptFeatures<? extends WikiWordConcept, Integer> features;
+	private ConceptResources<? extends WikiWordConcept> resources;
+	private ConceptProperties<? extends WikiWordConcept> properties;
+
 	private TermReference[] terms;
 	
 	public WikiWordConcept(DatasetIdentifier dataset, int id,  ConceptType type) {
@@ -83,21 +86,40 @@ public class WikiWordConcept {
 		this.cardinality = cardinality;
 	}
 
-	public ConceptFeatures getFeatures() {
+	public ConceptFeatures<? extends WikiWordConcept, Integer> getFeatures() {
 		return features;
 	}
 
-	public void setFeatures(ConceptFeatures features) {
+	public void setFeatures(ConceptFeatures<? extends WikiWordConcept, Integer> features) {
 		if (this.features!=null) throw new IllegalStateException("property already initialized");
 		if (features.getConcept()!=null && !this.equals(features.getConcept())) throw new IllegalArgumentException("ConceptFeatures bound to a different concept: "+features.getConcept());
 		this.features = features;
 	}
 
-	public ConceptRelations getRelations() {
+	public ConceptProperties getProperties() {
+		return properties;
+	}
+
+	public void setProperties(ConceptProperties<? extends WikiWordConcept> properties) {
+		if (this.properties!=null) throw new IllegalStateException("property already initialized");
+		if (properties.getConcept()!=null && !this.equals(properties.getConcept())) throw new IllegalArgumentException("ConceptFeatures bound to a different concept: "+features.getConcept());
+		this.properties = properties;
+	}
+
+	public ConceptResources<? extends WikiWordConcept> getResources() {
+		return resources;
+	}
+
+	public void setResources(ConceptResources<? extends WikiWordConcept> resources) {
+		if (this.resources!=null) throw new IllegalStateException("property already initialized");
+		this.resources = resources;
+	}
+	
+	public ConceptRelations<? extends WikiWordConcept> getRelations() {
 		return relations;
 	}
 
-	public void setRelations(ConceptRelations relations) {
+	public void setRelations(ConceptRelations<? extends WikiWordConcept> relations) {
 		if (this.relations!=null) throw new IllegalStateException("property already initialized");
 		this.relations = relations;
 	}

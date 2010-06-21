@@ -15,9 +15,11 @@ public interface WikiWordConceptStore<T extends WikiWordConcept> extends WikiWor
 		
 		private boolean includeRelations;
 		private boolean includeStatistics;
-		private boolean includeResource;
+		private boolean includeResources;
 		private boolean includeTerms;
 		private boolean includeDefinition;
+		private boolean includeFeatures;
+		private boolean includeProperties;
 		private Collection<ConceptType> requireTypes;
 		private Collection<ConceptType> languageIndependantTypes;
 		private String language;
@@ -47,12 +49,12 @@ public interface WikiWordConceptStore<T extends WikiWordConcept> extends WikiWor
 			this.includeDefinition = includeDefinition;
 		}
 		
-		public boolean getIncludeResource() {
-			return includeResource;
+		public boolean getIncludeResources() {
+			return includeResources;
 		}
 		
-		public void setIncludeResource(boolean includeResource) {
-			this.includeResource = includeResource;
+		public void setIncludeResources(boolean includeResources) {
+			this.includeResources = includeResources;
 		}
 		
 		public boolean getIncludeTerms() {
@@ -94,6 +96,22 @@ public interface WikiWordConceptStore<T extends WikiWordConcept> extends WikiWor
 		
 		public void setRequireTypes(Collection<ConceptType> requireTypes) {
 			this.requireTypes = requireTypes;
+		}
+		
+		public boolean getIncludeFeatures() {
+			return includeFeatures;
+		}
+		
+		public void setIncludeFeatures(boolean includeFeatures) {
+			this.includeFeatures = includeFeatures;
+		}
+		
+		public boolean getIncludeProperties() {
+			return includeProperties;
+		}
+		
+		public void setIncludeProperties(boolean includeProperties) {
+			this.includeProperties = includeProperties;
 		}
 		
 	}

@@ -8,6 +8,8 @@ import de.brightbyte.rdf.RdfException;
 import de.brightbyte.rdf.RdfPlatform;
 import de.brightbyte.rdf.vocab.SKOS;
 import de.brightbyte.wikiword.Corpus;
+import de.brightbyte.wikiword.ResourceType;
+import de.brightbyte.wikiword.model.ConceptResources;
 import de.brightbyte.wikiword.model.LocalConcept;
 import de.brightbyte.wikiword.model.TermReference;
 import de.brightbyte.wikiword.model.WikiWordConcept;
@@ -42,8 +44,12 @@ public class LocalConceptSkosProperties<V, R extends V, A> extends AbstractPrope
 
 		if (def!=null) setLiteralProperty(about, skos.definition, def, lang);
 
-		WikiWordResource page = concept.getResource();
-		if (page!=null) setReferenceProperty(about, skos.definition, corpus.getURL().toString(), page.getName());
+		ConceptResources<? extends WikiWordConcept> resources = concept.getResources();
+		for (WikiWordResource page: resources.getResources()) {
+			if (page.getType().equals(ResourceType.ARTICLE)) {
+				setReferenceProperty(about, skos.definition, corpus.getURL().toString(), page.getName());
+			}
+		}
 		
 		//TODO: threshold! or at least, record freq. 
 		TermReference[] tt = concept.getTerms();

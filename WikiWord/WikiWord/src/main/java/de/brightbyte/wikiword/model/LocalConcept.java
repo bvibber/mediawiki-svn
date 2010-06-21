@@ -7,7 +7,6 @@ public class LocalConcept extends WikiWordConcept {
 	
 	protected String definition;
 	protected String language;
-	protected WikiWordResource resource;
 	
 	public LocalConcept(Corpus corpus, int id,  ConceptType type, String name) {
 		super(corpus, id, type);
@@ -25,15 +24,6 @@ public class LocalConcept extends WikiWordConcept {
 	public void setDefinition(String definition) {
 		if (this.definition!=null) throw new IllegalStateException("property already initialized");
 		this.definition = definition;
-	}
-
-	public WikiWordResource getResource() {
-		return resource;
-	}
-
-	public void setResource(WikiWordResource resource) {
-		if (this.resource!=null) throw new IllegalStateException("property already initialized");
-		this.resource = resource;
 	}
 
 	public String getLanguage() {

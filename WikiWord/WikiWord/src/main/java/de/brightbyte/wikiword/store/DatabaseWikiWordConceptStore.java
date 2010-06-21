@@ -148,7 +148,7 @@ public abstract class DatabaseWikiWordConceptStore<T extends WikiWordConcept>
 		
 		if (card!=null) card = ", "+card;
 		
-		String sql = "SELECT C.id as cId, C.name as cName, C.type as cType " +
+		String sql = "SELECT C.id as cId, C.name as cName, C.type as cType, " +
 			" "+card+" as qCard, "+relev+" as qRelev " +
 			" FROM "+conceptTable.getSQLName()+" as C ";
 		

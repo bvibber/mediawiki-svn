@@ -7,8 +7,9 @@ import static de.brightbyte.db.DatabaseUtil.asString;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Collection;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 import javax.sql.DataSource;
 
@@ -25,6 +26,7 @@ import de.brightbyte.wikiword.Corpus;
 import de.brightbyte.wikiword.ResourceType;
 import de.brightbyte.wikiword.TweakSet;
 import de.brightbyte.wikiword.model.ConceptRelations;
+import de.brightbyte.wikiword.model.ConceptResources;
 import de.brightbyte.wikiword.model.LocalConcept;
 import de.brightbyte.wikiword.model.TermMeaning;
 import de.brightbyte.wikiword.model.TermReference;
@@ -297,7 +299,7 @@ public class DatabaseLocalConceptStore extends DatabaseWikiWordConceptStore<Loca
 			
 			fields += ", "+card+" as qFreq, "+relev+" as qConf ";
 			
-			if (spec!=null && spec.getIncludeResource()) {
+			if (spec!=null && spec.getIncludeResources()) { //FIXME: multiple matches!
 				fields += ", R.id as rcId, R.name as rcName, R.type as rcType ";
 				tables += " LEFT JOIN "+aboutTable.getSQLName()+" as A ON A.concept = C.id "+
 								" LEFT JOIN "+resourceTable.getSQLName()+" as R ON R.id = A.resource ";
@@ -360,9 +362,14 @@ public class DatabaseLocalConceptStore extends DatabaseWikiWordConceptStore<Loca
 				concept.setRelations(relations);
 			}
 			
-			if (spec!=null && spec.getIncludeResource()) {
+			if (spec!=null && spec.getIncludeResources()) { //FIXME: multiple resources!
 				WikiWordResource resource = rcId <= 0 ? null : new WikiWordResource(corpus, rcId, rcName, rcType);
-				concept.setResource(resource);
+				
+				Set<WikiWordResource> rcSet = new HashSet<WikiWordResource>();
+				rcSet.add(resource);
+				
+				ConceptResources<LocalConcept> resources = new ConceptResources<LocalConcept>(concept, rcSet); 
+				concept.setResources(resources);
 			}
 			
 			if (spec!=null && spec.getIncludeDefinition()) {

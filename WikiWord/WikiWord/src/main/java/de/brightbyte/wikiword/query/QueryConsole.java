@@ -57,11 +57,11 @@ public class QueryConsole extends ConsoleApp<WikiWordConceptStore> {
 		minimalConceptSpec = new ConceptQuerySpec();
 		resolvedConceptSpec = new ConceptQuerySpec();
 		resolvedConceptSpec.setIncludeDefinition(true);
-		resolvedConceptSpec.setIncludeResource(true);
+		resolvedConceptSpec.setIncludeResources(true);
 		
 		detailedConceptSpec = new ConceptQuerySpec();
 		detailedConceptSpec.setIncludeDefinition(true);
-		detailedConceptSpec.setIncludeResource(true);
+		detailedConceptSpec.setIncludeResources(true);
 		detailedConceptSpec.setIncludeRelations(true);
 	}
 

@@ -28,4 +28,6 @@ public interface GlobalConceptStore extends WikiWordConceptStore<GlobalConcept> 
 	public List<LocalConcept> getLocalConcepts(int id, ConceptQuerySpec spec) throws PersistenceException;
 
 	public Corpus[] getLanguages() throws PersistenceException;
+
+	public GlobalConcept getConceptByName(String language, String name, ConceptQuerySpec spec) throws PersistenceException;
 }
