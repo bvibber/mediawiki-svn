@@ -50,6 +50,12 @@ class ResourceLoader {
 	private $useCSSMin = true;
 	private $useCSSJanus = true;
 	
+	private $lang;
+	
+	public function __construct( $lang ) {
+		$this->lang = $lang;
+	}
+	
 	
 	/**
 	 * Add a module to the output. This includes the module's
@@ -95,9 +101,16 @@ class ResourceLoader {
 	}
 	
 	private function getMessagesJS( $modules ) {
-		return "mw.addMessages( {\n" .
-			implode( ",\n", array_map( array( 'MessageBlobStore', 'get' ), $modules ) ) .
-			"\n} );";
+		$blobs = array();
+		$dbr = wfGetDB( DB_SLAVE );
+		$res = $dbr->select( 'msg_resource', 'msg_blob',
+			array( 'msg_resource' => $modules, 'msg_lang' => $this->lang ),
+			__METHOD__
+		);
+		foreach ( $res as $row ) {
+			$blobs[] = $row->msg_blob;
+		}
+		return "mw.addMessages( {\n" . implode( ",\n", $blobs ) . "\n} );";
 	}
 	
 	public function getOutput() {
@@ -152,12 +165,63 @@ class ResourceLoader {
 
 class MessageBlobStore {
 	/**
-	 * Get the message blob for a module
-	 * @param $module string Module name
-	 * @return string An incomplete JSON object (i.e. without the {} ) with messages keys and their values.
+	 * Get the message blobs for a set of modules
+	 * @param $lang string Language code
+	 * @param $modules array Array of module names
+	 * @return array An array of incomplete JSON objects (i.e. without the {} ) with messages keys and their values.
 	 */
-	public static function get( $module ) {
-		// TODO: Implement
-		return '';
+	public static function get( $lang, $modules ) {
+		// Try getting from the DB first
+		$blobs = self::getFromDB( $lang, $modules );
+		
+		// Generate blobs for any missing modules and store them in the DB
+		$missing = array_diff( $modules, array_keys( $blobs ) );
+		foreach ( $missing as $module ) {
+			$blob = self::generateMessageBlob( $lang, $module );
+			if ( $blob ) {
+				self::set( $lang, $module, $blob );
+				$blobs[$module] = $blob;
+			}
+		}
+		return implode( ",\n", $blobs );
+	}
+	
+	public static function set( $lang, $module, $blob ) {
+		$dbw = wfGetDb( DB_MASTER );
+		// TODO: Timestamp stuff to handle concurrency
+		$dbw->replace( 'msg_resource', array( array( 'mr_lang', 'mr_resource' ) ),
+			array( array(
+				'mr_lang' => $lang,
+				'mr_module' => $module,
+				'mr_blob' => $blob,
+				'mr_timestamp' => wfTimestampNow(),
+			) )
+		);
+	}
+	
+	private static function getFromDB( $lang, $modules ) {
+		$retval = array();
+		$dbr = wfGetDB( DB_SLAVE );
+		$res = $dbr->select( 'msg_resource', array( 'mr_blob', 'mr_resource' ),
+			array( 'mr_resource' => $modules, 'mr_lang' => $this->lang ),
+			__METHOD__
+		);
+		foreach ( $res as $row ) {
+			$retval[$row->mr_resource] = $row->mr_blob;
+		}
+		return $retval;
+	}
+	
+	private static function generateMessageBlob( $lang, $module ) {
+		if ( !isset ( ResourceLoader::$modules[$module]['messages'] ) ) {
+			return false;
+		}
+		$messages = array();
+		foreach ( ResourceLoader::$modules[$module]['messages'] as $key ) {
+			$encKey = Xml::escapeJsString( $key );
+			$encValue = Xml::escapeJsString( wfMsg( $key ) ); // TODO: Use something rawer than wfMsg()?
+			$messages[] = "'$encKey': '$encValue'";
+		}
+		return implode( ",", $messages );
 	}
 }

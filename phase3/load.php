@@ -32,11 +32,10 @@ wfProfileIn( 'loader.php' );
 //
 // See RawPage.php for details; summary is that MSIE can override the
 // Content-Type if it sees a recognized extension on the URL, such as
-// might be appended via PATH_INFO after 'api.php'.
+// might be appended via PATH_INFO after 'load.php'.
 //
-// Some data formats can end up containing unfiltered user-provided data
-// which will end up triggering HTML detection and execution, hence
-// XSS injection and all that entails.
+// Some resources can contain HTML-like strings (e.g. in messages)
+// which will end up triggering HTML detection and execution.
 //
 if ( $wgRequest->isPathInfoBad() ) {
 	wfHttpError( 403, 'Forbidden',
@@ -47,7 +46,7 @@ if ( $wgRequest->isPathInfoBad() ) {
 	// Was taken from api.php so I guess it's maybe OK but it doesn't look good.
 }
 
-$loader = new ResourceLoader();
+$loader = new ResourceLoader( $wgRequest->getVal( 'lang', 'en' ) );
 $moduleParam = $wgRequest->getVal( 'modules' );
 $modules = $moduleParam ? explode( '|', $moduleParam ) : array();
 foreach ( $modules as $module ) {
@@ -55,6 +54,7 @@ foreach ( $modules as $module ) {
 }
 
 // TODO: Cache-Control header
+header( 'Content-Type', 'text/javascript' );
 echo $loader->getOutput();
 
 wfProfileOut( 'loader.php' );
