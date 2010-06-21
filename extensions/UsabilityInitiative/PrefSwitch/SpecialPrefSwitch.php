@@ -199,7 +199,7 @@ class SpecialPrefSwitch extends SpecialPage {
 	/* Private Functions */
 	
 	private function render( $mode = null ) {
-		global $wgUser, $wgOut, $wgPrefSwitchSurveys;
+		global $wgUser, $wgOut, $wgPrefSwitchSurveys, $wgAllowUserCss, $wgAllowUserJs;
 		// Make sure links will retain the origin
 		$query = array(	'from' => $this->origin, 'fromquery' => $this->originQuery );
 		if ( isset( $wgPrefSwitchSurveys[$mode] ) ) {
@@ -236,6 +236,30 @@ class SpecialPrefSwitch extends SpecialPage {
 			$wgOut->addWikiMsgArray(
 				'prefswitch-main', wfMsg( 'prefswitch-feedbackpage' ), array( 'parse' )
 			);
+			if ($wgUser->isLoggedIn()) {
+				$wgOut->addWikiMsgArray(
+					'prefswitch-main-logged-changes', array( 'parse' )
+				);
+				
+				$oldSkin = 'monobook'; // The skin we are migrating from
+
+				if ( $wgAllowUserJs ) {
+					$jsPage = Title::makeTitleSafe( NS_USER, $wgUser->getName() . '/' . $oldSkin . '.js' );
+					if ( $jsPage->exists() ) {
+						$wgOut->addWikiMsg( 'prefswitch-jswarning', $wgUser->getName(), $oldSkin, array( 'parse' ) );
+					}
+				}
+
+				if ( $wgAllowUserCss ) {
+					$cssPage = Title::makeTitleSafe( NS_USER, $wgUser->getName() . '/' . $oldSkin . '.css' );
+					if ( $cssPage->exists() ) {
+						$wgOut->addWikiMsg( 'prefswitch-csswarning', $wgUser->getName(), $oldSkin, array( 'parse' ) );
+					}
+				}				
+			}
+			$wgOut->addWikiMsgArray(
+					'prefswitch-main-feedback', wfMsg( 'prefswitch-feedbackpage' ), array( 'parse' )
+				);
 			$state = self::userState( $wgUser );
 			switch ( $state ) {
 				case 'anon':
