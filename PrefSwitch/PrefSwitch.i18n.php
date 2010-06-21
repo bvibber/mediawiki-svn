@@ -1056,7 +1056,7 @@ Slědk k <span class="plainlinks">[$1 $2]</span>.',
 | Wobrazkowe foto nowego dialogowego kašćika za zapódawanje wótkazow
 |}
 |}
-Źěłamy śežko, aby my wólažcyli wěcy za swójich wužywarjow. My by se wjaselili, se wó pólěpšenjach wuměniś, inkluziwnje nowy naglěd a zjadnorjone wobźěłowańske funkcije. Pólěpšenje wužywajobnosći našych projektow jo priorita załožby Wikimedia foundation a rozdźělijomy wěcej aktualizacijow w pśichoźe. Za dalšne informacije, woglědaj se wótpowědny [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/ Wikimedia blogowy zapisk].
+Team za pólěpšenje wužywajobnosći załožby Wikimedia Foundation źěła z dobrowólnymi zgromaźeństwa, aby wěcy za tebje wólažcył. By my se wjaselili, sw wo pólěpšenjach wuměniś, inkluziwnje nowy naglěd a zjadnorjone wobźěłowańske funkcije. Toś te změny maju nowym sobuskutkajucym start pólažcyś a bazěruju na našom [http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study testowanju wužywajobnosći, kótarež jo se bu cełe lěto pśewjeźone]. Pólěpšenje wužywajobnosći našych projektow jo priorita załožby Wikimedia foundation a rozdźělijomy wěcej aktualizacijow w pśichoźe. Za dalšne informacije, woglědaj se wótpowědny [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/ Wikimedia blogowy zapisk].
 
 ===Tole smy změnili===
 * '''Nawigacija''': Smy pólěpšyli nawigaciju za cytanje a wobźěłowanje bokow. Něnto rejtarki górjejce na boku mógu jasnjej definěrowaś, lěc woglědujoš se nastawk abo diskusijny bok, a lěc cytaš abo wobźěłujoš bok.
@@ -1993,7 +1993,7 @@ Wróćo do <span class="plainlinks">[$1 $2]</span>.',
 | Wobrazowkowe foto noweho dialogoweho kašćika za zapodawanje wotkazow
 |}
 |}
-Dźěłamy ćežko, zo bychmy wěcy za swojich wužiwarjow wosnadnili. Bychmy so wjeselili, so wo polěpšenjach wuměnić, inkluziwnje nowy napohlad a zjednorjene wobdźěłowanske funkcije. Polěpšenje wužiwajomnosće našich projektow je priorita załožby Wikimedia Foundation a rozdźělimy wjace aktualizacijow w přichodźe. Za dalše podrobnosće wopytaj wotpowědny póst na [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/ Wikimedia blogu]
+Team za polěpšenje wužiwajomnosće załožby Wikimedia Foundation dźěła z dobrowólnymi zhromadźenstwa, zo by wěcy za tebje wosnadnił. Bychmy so wjeselili, so wo polěpšenjach wuměnić, inkluziwnje nowy napohlad a zjednorjene wobdźěłowanske funkcije. Tute změny maja nowym sobuskutkowarjam start wosnadnić a bazuja na našim [http://usability.wikimedia.org/wiki/Usability,_Experience,_and_Evaluation_Study testowanju wužiwajomnosće, kotrež bu cyłe lěto přewjedźene]. Polěpšenje wužiwajomnosće našich projektow je priorita załožby Wikimedia Foundation a rozdźělimy wjace aktualizacijow w přichodźe. Za dalše podrobnosće wopytaj wotpowědny póst na [http://blog.wikimedia.org/2010/05/13/a-new-look-for-wikipedia/ Wikimedia blogu]
 
 ===Tole smy změnili===
 * '''Nawigacija:''' Smy nawigaciju za čitanje a wobdźěłowanje stronow polěpšili. Nětko rajtarki horjeka na stronje móžeja jasnišo definować, hač sej nastawk abo diskusijnu stronu wobhladuješ, a hač čitaš abo wobdźěłuješ stronu.
@@ -2001,7 +2001,7 @@ Dźěłamy ćežko, zo bychmy wěcy za swojich wužiwarjow wosnadnili. Bychmy so
 * '''Wotkazowy asistent:''' Nastroj, kotryž da so lochko wužiwać a ći dowola, wotkazy druhim wikistronam  kaž tež eksternym sydłam přidać.
 * '''Pytanske polěpšenja:''' Smy pytanske namjety polěpšili, zo bychmy će spěšnišo k tej stronje wjedli, kotruž pytaš.
 * '''Druhe nowe funkcije:''' Smy tež tabelowy asistent zawjedli, zo bychmy wutworjenje tabelow wosnadnili a funkciju za pytanje a narunanje, zo bychmy wobdźěłowanje strony zjednorili.
-* '''Logo wikipedije logo:''' Smy swoje logo zaktualizowali. Dalše informacije wo tym na [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d blogu Wikimedije].
+* '''Logo wikipedije:''' Smy swoje logo zaktualizowali. Dalše informacije wo tym na [http://blog.wikimedia.org/2010/05/13/wikipedia-in-3d blogu Wikimedije].
 
 ===Měnjenja?===
 Bychmy so wjeselili wot tebje słyšeć. Prošu wopytaj našu [[\$1|stronu komentarow]] abo, jeli zajimuješ za naše běžne napinanja softwaru polěpšić, wopytaj našu [http://usability.wikimedia.org wiki wužiwajomnosće] za dalše informacije.",
@@ -2854,6 +2854,14 @@ $messages['ml'] = array(
 	'prefswitch-feedbackpage' => 'Project:ഉപയോക്തൃ അനുഭവ അഭിപ്രായങ്ങൾ',
 );
 
+/** Malay (Bahasa Melayu)
+ * @author Diagramma Della Verita
+ */
+$messages['ms'] = array(
+	'prefswitch-survey-true' => 'Ya',
+	'prefswitch-survey-false' => 'Tidak',
+);
+
 /** Maltese (Malti)
  * @author Chrisportelli
  */
@@ -3414,6 +3422,17 @@ Preencha o questionário opcional abaixo, antes de clicar "[[#prefswitch-survey-
 	'prefswitch-survey-intro-off' => 'Obrigado por ter experimentado as funcionalidades novas.
 Para ajudar-nos a melhorá-las preencha, por favor, o questionário opcional abaixo, antes de clicar "[[#prefswitch-survey-submit-off|{{int:Prefswitch-survey-submit-off}}]]".',
 	'prefswitch-feedbackpage' => 'Project:Comentário sobre a experiência de utilização',
+);
+
+/** Quechua (Runa Simi)
+ * @author AlimanRuna
+ */
+$messages['qu'] = array(
+	'prefswitch-survey-true' => 'Arí',
+	'prefswitch-survey-false' => 'Ama kachunchu',
+	'prefswitch-title-on' => 'Musuq kaqninkuna',
+	'prefswitch-title-off' => "Musuq kaqninkunata hark'ay",
+	'prefswitch-title-switched-off' => 'Añañayki',
 );
 
 /** Russian (Русский)

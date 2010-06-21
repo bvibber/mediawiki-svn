@@ -571,6 +571,8 @@ $messages['pt-br'] = array(
  * @author AlimanRuna
  */
 $messages['qu'] = array(
+	'wikieditor-template-editor-preference' => "Hunt'ana p'anqawan plantilla llamk'apuyta atichiy",
+	'wikieditor-template-editor-dialog-title' => "Plantillata llamk'apuy",
 	'wikieditor-template-editor-dialog-submit' => 'Musuqchay',
 	'wikieditor-template-editor-dialog-cancel' => 'Ama niy',
 );

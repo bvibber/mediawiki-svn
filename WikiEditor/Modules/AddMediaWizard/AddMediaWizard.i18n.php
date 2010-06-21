@@ -276,6 +276,13 @@ $messages['pt-br'] = array(
 	'wikieditor-addMediaWizard-preference' => 'Ativar o gadget "Assistente de Adição de Multimídia"',
 );
 
+/** Quechua (Runa Simi)
+ * @author AlimanRuna
+ */
+$messages['qu'] = array(
+	'wikieditor-addMediaWizard-preference' => '"Midya layqa yapay" gadget nisqata atichiy',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

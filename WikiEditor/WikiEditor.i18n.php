@@ -559,6 +559,8 @@ $messages['pt-br'] = array(
  * @author AlimanRuna
  */
 $messages['qu'] = array(
+	'wikieditor' => "Ñawparikusqa wiki qillqa llamk'apuna uyapura",
+	'wikieditor-desc' => "Mast'arinalla wiki qillqa llamk'apuna uyapurata achka yanapaykuq llamk'anachakunatapas haywan",
 	'wikieditor-wikitext-tab' => 'Wiki qillqa',
 	'wikieditor-loading' => 'Chaqnamuspa',
 );

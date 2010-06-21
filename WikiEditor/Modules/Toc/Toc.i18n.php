@@ -523,6 +523,7 @@ $messages['pt-br'] = array(
  * @author AlimanRuna
  */
 $messages['qu'] = array(
+	'wikieditor-toc-preference' => "Wamp'unalla samiq wachuchasqata atichiy",
 	'wikieditor-toc-show' => 'Samiqninta rikuchiy',
 	'wikieditor-toc-hide' => 'Samiqninta pakay',
 );

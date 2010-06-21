@@ -399,6 +399,8 @@ $messages['pt-br'] = array(
  */
 $messages['qu'] = array(
 	'prefs-updates' => 'Musuqchasqakuna',
+	'updatemyprefs-desc' => "Ruraqpa akllanan, ruraqpaq uyapura mit'awa musuqchaykuna kachunchu, aypalla kaspanku",
+	'updatemyprefs-label-message' => "Kikinmanta akllanaykunata musuqchay musuq kikinmanta churanakunawan llamk'anachakunawanpas, aypalla kaptinku",
 );
 
 /** Russian (Русский)

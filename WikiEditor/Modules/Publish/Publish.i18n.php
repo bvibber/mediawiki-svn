@@ -921,6 +921,7 @@ $messages['pt-br'] = array(
  * @author AlimanRuna
  */
 $messages['qu'] = array(
+	'wikieditor-publish-preference' => 'Thatki-thatkilla uyaychayta atichiy',
 	'wikieditor-publish-button-publish' => 'Uyaychay',
 	'wikieditor-publish-button-cancel' => 'Ama niy',
 	'wikieditor-publish-dialog-title' => '{{SITENAME}} nisqapi uyaychay',

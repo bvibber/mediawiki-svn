@@ -282,6 +282,13 @@ $messages['pt-br'] = array(
 	'wikieditor-templates-preference' => 'Habilitar predefinições colapsáveis',
 );
 
+/** Quechua (Runa Simi)
+ * @author AlimanRuna
+ */
+$messages['qu'] = array(
+	'wikieditor-templates-preference' => 'Plantilla thuñiyta atichiy',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */
