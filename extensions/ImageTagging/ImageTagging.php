@@ -393,7 +393,6 @@ function wfImageTagPageSetup() {
 
 			wfProfileIn( __METHOD__ );
 
-			global $wgJsMimeType, $wgScriptPath;
 			$wgOut->addScript("<script type=\"{$wgJsMimeType}\" src=\"$wgScriptPath/extensions/ImageTagging/img_tagging.js?$wgStyleVersion\"></script>\n" );
 			$wgOut->addScript("<script type=\"{$wgJsMimeType}\" src=\"$wgScriptPath/extensions/ImageTagging/json.js?$wgStyleVersion\"></script>\n" );
 

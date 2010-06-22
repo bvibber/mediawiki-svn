@@ -96,7 +96,7 @@ function wfLanguageSelectorSetHook() {
 function wfLanguageSelectorExtension() {
 	wfLoadExtensionMessages( 'LanguageSelector' );
 	global $wgLanguageSelectorLanguages, $wgLanguageSelectorDetectLanguage, $wgLanguageSelectorRequestedLanguage, $wgLanguageSelectorLocation, $wgLanguageSelectorShowAll;
-	global $wgUser, $wgLang, $wgRequest, $wgCookiePrefix, $wgCookiePath, $wgOut, $wgJsMimeType, $wgHooks;
+	global $wgUser, $wgLang, $wgRequest, $wgCookiePrefix, $wgCookiePath, $wgHooks;
 
 	$wgHooks['ParserFirstCallInit'][] = 'wfLanguageSelectorSetHook';
 
