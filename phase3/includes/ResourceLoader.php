@@ -119,6 +119,16 @@ class ResourceLoader {
 		$this->loadedModules = array_unique( $this->loadedModules );
 		$retval = '';
 		
+		/*
+		 * Skin::makeGlobalVariablesScript needs to be modified so that we still output the globals for now, but also
+		 * put them into the initial payload like this:
+		 * 
+		 * 		// Sets the inital configuration
+		 * 		mw.config.set( { 'name': 'value', ... } );
+		 * 
+		 * Also, the naming of these variables is horrible and sad, hopefully this can be worked on
+		 */
+		
 		foreach ( $this->scripts as $script ) {
 			// TODO: file_get_contents() errors?
 			// TODO: CACHING!
