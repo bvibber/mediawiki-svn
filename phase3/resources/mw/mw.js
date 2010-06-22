@@ -199,19 +199,15 @@ window.mw = {
 			) {
 				// Allow modules to be implemented without prior registration
 				if ( typeof registry[name] === 'undefined' ) {
-					// Automatically register as loaded, assuming no requirements
-					registry[name] = { 'state': 'loaded' };
-				} else {
-					// If it was already registered, let's make sure we mark it as loaded
-					registry[name].state = 'loaded';
+					registry[name] = {};
 				}
-				// Attach script
+				// Mark module as loaded
+				registry[name].state = 'loaded';
+				// Attach components
 				registry[name].script = script;
-				// Attach style, if any
 				if ( typeof style === 'string' ) {
 					implementations[name].style = style;
 				}
-				// Attach localization, if any
 				if ( typeof localization === 'object' ) {
 					implementations[name].localization = localization;
 				}
