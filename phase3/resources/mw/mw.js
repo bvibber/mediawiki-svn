@@ -6,20 +6,124 @@ window.mw = {
 	
 	/* Public Members */
 	
+	'util': new ( function() {
+		
+		/* Private Members */
+		
+		var that = this;
+		
+		/* Public Functions */
+		
+		/**
+		 * Builds a url string from an object containing any of the following components:
+		 * 
+		 * Component	Example
+		 * scheme		"http"
+		 * server		"www.domain.com"
+		 * path			"path/to/my/file.html"
+		 * query		"this=thåt?" or { 'this': 'thåt?' }
+		 * fragment		"place_on_the_page"
+		 * 
+		 * Results in: "http://www.domain.com/path/to/my/file.html?this=th%E5t#place_on_the_page"
+		 */
+		this.buildUrlString = function( components ) {
+			var url = '';
+			if ( typeof components['scheme'] === 'string' ) {
+				url += components['scheme'] + '://';
+			}
+			if ( typeof components['server'] === 'string' ) {
+				url += components['server'] + '/';
+			}
+			if ( typeof components['path'] === 'string' ) {
+				url += components['path'];
+			}
+			if ( typeof components['query'] === 'string' ) {
+				url += '?' + components['path'];
+			} else if ( typeof components['query'] === 'object' ) {
+				url += '?' + that.buildQueryString( components['path'] );
+			}
+			if ( typeof components['fragment'] === 'string' ) {
+				url += '#' + components['fragment'];
+			}
+			return url;
+		};
+		/**
+		 * Builds a query string from an object with key and values
+		 */
+		this.buildQueryString = function( parameters ) {
+			// RFC 3986 compliant URI component encoder
+			function encode( string ) {  
+				return encodeURIComponent( string )
+					.replace(/!/g, '%21')
+					.replace(/'/g, '%27')
+					.replace(/\(/g, '%28')
+					.replace(/\)/g, '%29')
+					.replace(/\*/g, '%2A');  
+			}
+			var parts = [];
+			for ( p in parameters ) {
+				parts[parts.length] = encode( key ) + '=' + encode( parameters[p] );
+			}
+			return parts.join( '&' );
+		};
+	} )(),
+	/**
+	 * Configuration system
+	 */
+	'config': new ( function() {
+		
+		/* Private Members */
+		
+		var that = this;
+		// List of configuration values
+		var values = {};
+		
+		/* Public Functions */
+		
+		/**
+		 * Sets one or multiple configuration values using a key and a value or an object of keys and values
+		 */
+		this.set = function( keys, value ) {
+			if ( typeof keys === 'object' ) {
+				for ( key in keys ) {
+					values[key] = keys[key];
+				}
+			} else if ( typeof keys === 'string' && typeof value !== 'undefined' ) {
+				values[keys] = value;
+			}
+		};
+		/**
+		 * Gets one or multiple configuration values using a key and an optional fallback or an array of keys
+		 */
+		this.get = function( keys, fallback ) {
+			if ( typeof keys === 'object' ) {
+				var result = {};
+				for ( key in keys ) {
+					result[key] = typeof values[keys] === 'undefined' ? null, values[keys];
+				}
+				return result;
+			} else if ( typeof values[keys] === 'undefined' ) {
+				return typeof fallback !== 'undefined' ? fallback : null;
+			} else {
+				return values[keys];
+			}
+		};
+	} ),
 	/**
 	 * Localization system
 	 */
 	'msg': new ( function() {
 		
 		/* Private Members */
-
+		
 		var that = this;
+		// List of localized messages
 		var messages = {};
 		
 		/* Public Functions */
 		
 		this.set = function( keys, value ) {
-			if ( typeof key === 'object' ) {
+			if ( typeof keys === 'object' ) {
 				for ( key in keys ) {
 					messages[key] = keys[key];
 				}
@@ -109,11 +213,19 @@ window.mw = {
 			}
 			// Handle the batch
 			if ( batch.length ) {
+				// Always order module alphabetically to help reduce cache misses for otherwise identical content
+				batch.sort();
 				// It may be more performant to do this with an Ajax call, but that's limited to same-domain, so we can
 				// either auto-detect (if there really is any benefit) or just use this method, which is safe either way
 				var script = document.createElement( 'script' );
 				script.type = 'text/javascript';
-				script.src = 'load.php?modules=' + batch.join( '|' );
+				// Build and set the request URL
+				var query = mw.config.get( [ 'user', 'skin', 'space', 'view', 'language' ] );
+				query.modules = batch.join( '|' );
+				script.src = mw.util.buildUrlString( {
+					'path': 'load.php',
+					'query': query
+				} );
 				// Good browsers
 				script.onload = work;
 				// Bad browsers (IE 6 & 7)
