@@ -104,7 +104,7 @@ $messages['ar'] = array(
  * @author Meno25
  */
 $messages['arz'] = array(
-	'wikieditor-publish-preference' => 'فعل النشر خطوه بخطوة',
+	'wikieditor-publish-preference' => 'شغل النشر واحده بواحده',
 	'wikieditor-publish-button-publish' => 'انشر',
 	'wikieditor-publish-button-cancel' => 'كانسل',
 	'wikieditor-publish-dialog-title' => 'انشر فى {{SITENAME}}',
@@ -394,6 +394,7 @@ $messages['eu'] = array(
 	'wikieditor-publish-button-publish' => 'Argitaratu',
 	'wikieditor-publish-button-cancel' => 'Ezeztatu',
 	'wikieditor-publish-dialog-title' => '{{SITENAME}}era argitaratu',
+	'wikieditor-publish-dialog-summary' => 'Laburpena (Egindako aldaketak laburki azaldu):',
 	'wikieditor-publish-dialog-minor' => 'Aldaketa txikia',
 	'wikieditor-publish-dialog-watch' => 'Orrialde hau jarraitu',
 	'wikieditor-publish-dialog-publish' => 'Argitaratu',
@@ -798,10 +799,19 @@ $messages['nl'] = array(
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Eirik
  * @author Gunnernett
  */
 $messages['nn'] = array(
+	'wikieditor-publish-preference' => 'Ta i bruk steg for steg-publisering',
+	'wikieditor-publish-button-publish' => 'Publiser',
+	'wikieditor-publish-button-cancel' => 'Avbryt',
+	'wikieditor-publish-dialog-title' => 'Publiser på {{SITENAME}}',
+	'wikieditor-publish-dialog-summary' => 'Endringssamandrag (oppsummering av kva for endringar du har gjort):',
+	'wikieditor-publish-dialog-minor' => 'Småplukk',
 	'wikieditor-publish-dialog-watch' => 'Overvak denne sida',
+	'wikieditor-publish-dialog-publish' => 'Publiser',
+	'wikieditor-publish-dialog-goback' => 'Gå tilbake',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -1111,16 +1121,19 @@ $messages['te'] = array(
 );
 
 /** Thai (ไทย)
+ * @author Octahedron80
  * @author Woraponboonkerd
  */
 $messages['th'] = array(
-	'wikieditor-publish-button-publish' => 'แผยแพร่',
+	'wikieditor-publish-preference' => 'เปิดใช้งานการเผยแพร่ทีละขั้นตอน',
+	'wikieditor-publish-button-publish' => 'เผยแพร่',
 	'wikieditor-publish-button-cancel' => 'ยกเลิก',
 	'wikieditor-publish-dialog-title' => 'เผยแพร่ไปยัง {{SITENAME}}',
 	'wikieditor-publish-dialog-summary' => 'สรุปการแก้ไข (อธิบายย่อๆ ถึงการเปลี่ยนแปลงที่คุณกระทำ):',
 	'wikieditor-publish-dialog-minor' => 'เป็นการแก้ไขเล็กน้อย',
 	'wikieditor-publish-dialog-watch' => 'เฝ้าดูหน้านี้',
-	'wikieditor-publish-dialog-publish' => 'แผยแพร่',
+	'wikieditor-publish-dialog-publish' => 'เผยแพร่',
+	'wikieditor-publish-dialog-goback' => 'กลับไป',
 );
 
 /** Turkmen (Türkmençe)

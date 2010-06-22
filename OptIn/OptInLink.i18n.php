@@ -41,6 +41,7 @@ $messages['ab'] = array(
 );
 
 /** Afrikaans (Afrikaans)
+ * @author Adriaan
  * @author Naudefj
  */
 $messages['af'] = array(
@@ -49,6 +50,7 @@ $messages['af'] = array(
 	'optin-leave' => 'Verlaat Beta',
 	'tooltip-pt-optin-leave' => 'Skakel nuwe funksies af',
 	'optin-feedback' => 'Beta terugvoer',
+	'tooltip-pt-optin-feedback' => 'Gee terugvoer oor u ervaring met die nuwe funksionaliteit',
 );
 
 /** Gheg Albanian (Gegë)
@@ -1047,6 +1049,8 @@ $messages['sw'] = array(
 	'tooltip-pt-optin-try' => 'Jaribu kutumia mtindo na zana mpya',
 	'optin-leave' => 'Ondoka Beta',
 	'tooltip-pt-optin-leave' => 'Uache kutumia mtindo na zana mpya',
+	'optin-feedback' => 'Mrejeresho wa Beta',
+	'tooltip-pt-optin-feedback' => 'Toa maoni yako juu ya zana mpya',
 );
 
 /** Telugu (తెలుగు)
@@ -1065,14 +1069,15 @@ $messages['te'] = array(
 
 /** Thai (ไทย)
  * @author Ans
+ * @author Octahedron80
  */
 $messages['th'] = array(
 	'optin-try' => 'ลองใช้รุ่นทดสอบ',
 	'tooltip-pt-optin-try' => 'ทดลองใช้ฟีเจอร์ใหม่',
 	'optin-leave' => 'ออกจากรุ่นทดสอบ',
-	'tooltip-pt-optin-leave' => 'ปิดฟีเจอร์ใหม่',
-	'optin-feedback' => 'ตอบรับการใช้รุ่นทดสอบ',
-	'tooltip-pt-optin-feedback' => 'แจ้งผลการใช้งานฟีเจอร์ใหม่',
+	'tooltip-pt-optin-leave' => 'ปิดคุณลักษณะใหม่',
+	'optin-feedback' => 'ผลตอบรับการใช้รุ่นทดสอบ',
+	'tooltip-pt-optin-feedback' => 'แจ้งผลตอบรับเกี่ยวกับประสบการณ์ของคุณกับคุณลักษณะใหม่',
 );
 
 /** Turkmen (Türkmençe)

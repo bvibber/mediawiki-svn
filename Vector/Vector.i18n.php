@@ -173,6 +173,14 @@ $messages['es'] = array(
 	'vector-desc' => 'Mejora los elementos de la interfaz de usuario del skin Vector.',
 );
 
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'vector' => 'EI hobekuntzak Vector-entzat',
+	'vector-desc' => 'Vector skin-eko lankidearen interfazeko elementuak hobetzen ditu.',
+);
+
 /** Persian (فارسی)
  * @author Ebraminio
  * @author Huji

@@ -15,6 +15,13 @@ $messages['en'] = array(
 	'wikieditor-highlight-preference' => 'Enable syntax highlighting when editing',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Adriaan
+ */
+$messages['af'] = array(
+	'wikieditor-highlight-preference' => 'Sintaksismerke by wysiging toelaat',
+);
+
 /** Gheg Albanian (Gegë)
  * @author Mdupont
  */
@@ -30,17 +37,19 @@ $messages['ar'] = array(
 );
 
 /** Egyptian Spoken Arabic (مصرى)
+ * @author Dudi
  * @author Meno25
  */
 $messages['arz'] = array(
-	'wikieditor-highlight-preference' => 'مكّن إبراز الصياغه أثناء التعديل',
+	'wikieditor-highlight-preference' => 'Enable syntax highlighting when editing',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
+ * @author Zedlik
  */
 $messages['be-tarask'] = array(
-	'wikieditor-highlight-preference' => 'Уключыць падсьветку сынтаксісу пад час рэдагаваньня',
+	'wikieditor-highlight-preference' => 'Уключыць падсьвечваньне сынтаксісу падчас рэдагаваньня',
 );
 
 /** Bulgarian (Български)
@@ -304,6 +313,13 @@ $messages['nl'] = array(
 	'wikieditor-highlight-preference' => 'Codemarkering inschakelen tijdens het bewerken',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Eirik
+ */
+$messages['nn'] = array(
+	'wikieditor-highlight-preference' => 'Ta i bruk markering av syntaks ved redigering',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Laaknor
  */
@@ -355,9 +371,10 @@ $messages['qu'] = array(
 
 /** Romanian (Română)
  * @author Firilacroco
+ * @author Minisarm
  */
 $messages['ro'] = array(
-	'wikieditor-highlight-preference' => 'Activați evidențierea sintaxei când modificați',
+	'wikieditor-highlight-preference' => 'Activează evidențierea sintaxei la modificare',
 );
 
 /** Tarandíne (Tarandíne)
@@ -419,6 +436,13 @@ $messages['sr-el'] = array(
  */
 $messages['sv'] = array(
 	'wikieditor-highlight-preference' => 'Aktivera markering av syntax vid redigering',
+);
+
+/** Thai (ไทย)
+ * @author Octahedron80
+ */
+$messages['th'] = array(
+	'wikieditor-highlight-preference' => 'เปิดใช้งานการเน้นวากย์สัมพันธ์เมื่อแก้ไข',
 );
 
 /** Tagalog (Tagalog)

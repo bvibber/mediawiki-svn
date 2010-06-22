@@ -28,10 +28,14 @@ $messages['qqq'] = array(
 );
 
 /** Afrikaans (Afrikaans)
+ * @author Adriaan
  * @author Naudefj
  */
 $messages['af'] = array(
 	'wikieditor-template-editor-preference' => 'Aktiveer vorm-gebaseerde wysiging van wikisjablone',
+	'wikieditor-template-editor-dialog-title' => 'Wysig sjabloon',
+	'wikieditor-template-editor-dialog-submit' => 'Bywerk',
+	'wikieditor-template-editor-dialog-cancel' => 'Kanselleer',
 );
 
 /** Gheg Albanian (Gegë)
@@ -63,10 +67,14 @@ $messages['ar'] = array(
 );
 
 /** Egyptian Spoken Arabic (مصرى)
+ * @author Dudi
  * @author Meno25
  */
 $messages['arz'] = array(
-	'wikieditor-template-editor-preference' => 'فعل تعديل قوالب الويكى المعتمد على النماذج',
+	'wikieditor-template-editor-preference' => 'شغّل تعديل قوالب الwiki على اساس الفورمه',
+	'wikieditor-template-editor-dialog-title' => 'تعديل قالب',
+	'wikieditor-template-editor-dialog-submit' => 'تحديث (update)',
+	'wikieditor-template-editor-dialog-cancel' => 'كانسل',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
@@ -159,6 +167,13 @@ $messages['csb'] = array(
 	'wikieditor-template-editor-dialog-cancel' => 'Anulujë',
 );
 
+/** Church Slavic (Словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)
+ * @author ОйЛ
+ */
+$messages['cu'] = array(
+	'wikieditor-template-editor-dialog-title' => 'обраꙁьца исправлѥ́ниѥ',
+);
+
 /** Welsh (Cymraeg)
  * @author Lloffiwr
  */
@@ -240,6 +255,16 @@ $messages['es'] = array(
 	'wikieditor-template-editor-dialog-title' => 'Editar plantilla',
 	'wikieditor-template-editor-dialog-submit' => 'Actualizar',
 	'wikieditor-template-editor-dialog-cancel' => 'Cancelar',
+);
+
+/** Estonian (Eesti)
+ * @author Kyng
+ */
+$messages['et'] = array(
+	'wikieditor-template-editor-preference' => 'Luba vormipõhine viki mallide toimetamine',
+	'wikieditor-template-editor-dialog-title' => 'Muuda malli',
+	'wikieditor-template-editor-dialog-submit' => 'Uuendus',
+	'wikieditor-template-editor-dialog-cancel' => 'Loobu',
 );
 
 /** Basque (Euskara)
@@ -494,6 +519,16 @@ $messages['nl'] = array(
 	'wikieditor-template-editor-dialog-cancel' => 'Annuleren',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Eirik
+ */
+$messages['nn'] = array(
+	'wikieditor-template-editor-preference' => 'Ta i bruk skjemabasert redigering av wikimalar',
+	'wikieditor-template-editor-dialog-title' => 'Endre mal',
+	'wikieditor-template-editor-dialog-submit' => 'Oppdater',
+	'wikieditor-template-editor-dialog-cancel' => 'Avbryt',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Laaknor
  * @author Nghtwlkr
@@ -579,9 +614,13 @@ $messages['qu'] = array(
 
 /** Romanian (Română)
  * @author Firilacroco
+ * @author Minisarm
  */
 $messages['ro'] = array(
 	'wikieditor-template-editor-preference' => 'Activează modificarea formatelor wiki prin formulare',
+	'wikieditor-template-editor-dialog-title' => 'Modificare format',
+	'wikieditor-template-editor-dialog-submit' => 'Actualizare',
+	'wikieditor-template-editor-dialog-cancel' => 'Revocare',
 );
 
 /** Tarandíne (Tarandíne)
@@ -669,6 +708,14 @@ $messages['sv'] = array(
 	'wikieditor-template-editor-dialog-cancel' => 'Avbryt',
 );
 
+/** Swahili (Kiswahili)
+ * @author Lloffiwr
+ */
+$messages['sw'] = array(
+	'wikieditor-template-editor-dialog-submit' => 'Sasisha',
+	'wikieditor-template-editor-dialog-cancel' => 'Batilisha',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */
@@ -677,6 +724,16 @@ $messages['te'] = array(
 	'wikieditor-template-editor-dialog-title' => 'మూసని మార్చు',
 	'wikieditor-template-editor-dialog-submit' => 'తాజాకరించు',
 	'wikieditor-template-editor-dialog-cancel' => 'రద్దుచేయి',
+);
+
+/** Thai (ไทย)
+ * @author Octahedron80
+ */
+$messages['th'] = array(
+	'wikieditor-template-editor-preference' => 'เปิดใช้งานการแก้ไขแบบฟอร์มของแม่แบบวิกิ',
+	'wikieditor-template-editor-dialog-title' => 'แก้ไขแม่แบบ',
+	'wikieditor-template-editor-dialog-submit' => 'อัปเดต',
+	'wikieditor-template-editor-dialog-cancel' => 'ยกเลิก',
 );
 
 /** Tagalog (Tagalog)

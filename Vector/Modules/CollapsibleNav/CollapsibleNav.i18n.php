@@ -16,6 +16,14 @@ $messages['en'] = array(
 	'vector-collapsiblenav-more' => 'More languages',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Adriaan
+ */
+$messages['af'] = array(
+	'vector-collapsiblenav-preference' => 'Inklapbare navigasiespyskaart by die gebruik van Vector toelaat',
+	'vector-collapsiblenav-more' => 'Meer tale',
+);
+
 /** Gheg Albanian (Gegë)
  * @author Mdupont
  */
@@ -28,6 +36,14 @@ $messages['aln'] = array(
  */
 $messages['ar'] = array(
 	'vector-collapsiblenav-preference' => 'مكّن قائمة التصفح القابلة للطي التي على اليسار',
+);
+
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Dudi
+ */
+$messages['arz'] = array(
+	'vector-collapsiblenav-preference' => 'خلّى الليستات بتاعة مينيو الاستكشاف تبان مقفوله فى Vector skin',
+	'vector-collapsiblenav-more' => 'لغات اكتر',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
@@ -68,7 +84,7 @@ $messages['br'] = array(
  * @author Vriullop
  */
 $messages['ca'] = array(
-	'vector-collapsiblenav-preference' => "Activa l'opció de reduir el menú de navegació esquerre",
+	'vector-collapsiblenav-preference' => "Activa l'opció de plegar els menús de navegació en l'aparença Vector",
 	'vector-collapsiblenav-more' => 'Més llengües',
 );
 
@@ -108,9 +124,11 @@ $messages['dsb'] = array(
 
 /** Greek (Ελληνικά)
  * @author Dead3y3
+ * @author Geraki
  */
 $messages['el'] = array(
-	'vector-collapsiblenav-preference' => 'Ενεργοποίηση πτυσσόμενου αριστερού μενού πλοήγησης',
+	'vector-collapsiblenav-preference' => 'Ενεργοποίηση πτυσσόμενων ενοτήτων στο μενού πλοήγησης με το θέμα Vector',
+	'vector-collapsiblenav-more' => 'Περισσότερες γλώσσες',
 );
 
 /** Esperanto (Esperanto)
@@ -193,9 +211,11 @@ $messages['gsw'] = array(
 /** Hebrew (עברית)
  * @author Amire80
  * @author Rotemliss
+ * @author Yonidebest
  */
 $messages['he'] = array(
 	'vector-collapsiblenav-preference' => 'הפעלת קיפול פריטים בתפריט הניווט בעיצוב וקטור',
+	'vector-collapsiblenav-more' => 'דף זה בשפות אחרות',
 );
 
 /** Croatian (Hrvatski)
@@ -319,7 +339,8 @@ $messages['ms'] = array(
  * @author Chrisportelli
  */
 $messages['mt'] = array(
-	'vector-collapsiblenav-preference' => "Ippermetti menu tan-navigazzjoni fuq ix-xellug li jista' jinħeba",
+	'vector-collapsiblenav-preference' => "Ippermetti ''menus'' tan-navigazzjoni li jistew jinħbew fl-aspett grafiku Vector",
+	'vector-collapsiblenav-more' => 'Aktar lingwi',
 );
 
 /** Dutch (Nederlands)
@@ -328,6 +349,13 @@ $messages['mt'] = array(
 $messages['nl'] = array(
 	'vector-collapsiblenav-preference' => 'Inklapbaar navigatiemenu inschakelen bij gebruik van Vector',
 	'vector-collapsiblenav-more' => 'Meer talen',
+);
+
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Gunnernett
+ */
+$messages['nn'] = array(
+	'vector-collapsiblenav-more' => '↓ Fleire språk',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -386,6 +414,14 @@ $messages['qu'] = array(
 	'vector-collapsiblenav-more' => 'Aswan rimaykuna',
 );
 
+/** Romanian (Română)
+ * @author Minisarm
+ */
+$messages['ro'] = array(
+	'vector-collapsiblenav-preference' => 'Activează ascunderea itemilor meniului de navigare în fațeta Vector',
+	'vector-collapsiblenav-more' => 'Mai multe limbi',
+);
+
 /** Russian (Русский)
  * @author AlexSm
  * @author G0rn
@@ -421,6 +457,20 @@ $messages['sv'] = array(
 	'vector-collapsiblenav-more' => 'Fler språk',
 );
 
+/** Swahili (Kiswahili)
+ * @author Lloffiwr
+ */
+$messages['sw'] = array(
+	'vector-collapsiblenav-more' => 'Lugha zingine',
+);
+
+/** Thai (ไทย)
+ * @author Octahedron80
+ */
+$messages['th'] = array(
+	'vector-collapsiblenav-more' => 'ภาษาอื่นๆ',
+);
+
 /** Tagalog (Tagalog)
  * @author AnakngAraw
  */
@@ -431,9 +481,11 @@ $messages['tl'] = array(
 
 /** Turkish (Türkçe)
  * @author Joseph
+ * @author Karduelis
  */
 $messages['tr'] = array(
 	'vector-collapsiblenav-preference' => 'Daraltılabilir sol dolaşım menüsünü etkinleştir',
+	'vector-collapsiblenav-more' => 'Daha fazla dil',
 );
 
 /** Vietnamese (Tiếng Việt)
