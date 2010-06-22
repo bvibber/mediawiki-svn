@@ -5019,10 +5019,21 @@ $messages['pl'] = array(
  * @author Ahmed-Najib-Biabani-Ibrahimkhel
  */
 $messages['ps'] = array(
+	'mwe-filedesc' => 'لنډيز',
 	'mwe-filesource' => 'سرچينه:',
 	'fogg-title-title' => 'سرليک',
 	'fogg-date-title' => 'نېټه',
 	'fogg-location-title' => 'ځای',
+	'mwe-summary' => 'لنډيز',
+	'mwe-link-login' => 'ننوتل',
+	'mwe-link' => 'تړنه',
+	'mwe-loggin-link' => 'لطفاً غونډال ته ننوځۍ',
+	'mwe-watch_this_page' => 'همدا مخ کتل',
+	'rsd-kaltura-title' => 'ټولې سرچينې',
+	'rsd-this_wiki-title' => 'همدا ويکي',
+	'fogg-select_file' => 'دوتنه ټاکل',
+	'fogg-select_new_file' => 'يوه نوې دوتنه ټاکل',
+	'fogg-select_url' => 'يو آر اېل ټاکل',
 );
 
 /** Portuguese (Português)

@@ -17,10 +17,20 @@ If you are logged in, you can disable this warning in the "Editing" section of y
 	'vector-editwarning-preference' => 'Warn me when I leave an edit page with unsaved changes',
 );
 
+/** Message documentation (Message documentation)
+ * @author Raymond
+ */
+$messages['qqq'] = array(
+	'vector-editwarning-warning' => "Do '''not''' use <nowiki>{{int:prefs-editing}}</nowiki> for \"Editing\". It is forbidden in this message, see [[mwr:68405]].",
+);
+
 /** Afrikaans (Afrikaans)
+ * @author Adriaan
  * @author Naudefj
  */
 $messages['af'] = array(
+	'vector-editwarning-warning' => 'As u hierdie bladsy verlaat, verloor u moontlik die wysigings wat u aangebring het.
+Indien u aangemeld is, kan u hierdie waarskuwing in die {{int:prefs-editing}}"-afdeling van u voorkeure afskakel.',
 	'vector-editwarning-preference' => "Waarsku my as ek 'n gewysigde bladsy verlaat alvorens dit gestoor is",
 );
 
@@ -252,7 +262,7 @@ $messages['fa'] = array(
  */
 $messages['fi'] = array(
 	'vector-editwarning-warning' => 'Tältä sivulta poistuminen saattaa aiheuttaa kaikkien tekemiesi muutosten katoamisen.
-Jos olet kirjautuneena sisään, voit poistaa tämän varoituksen käytöstä asetuksissa osiossa ”Muokkaus”.',
+Jos olet kirjautuneena sisään, voit poistaa tämän varoituksen käytöstä asetuksissa ”Muokkaus”-osiossa.',
 	'vector-editwarning-preference' => 'Varoita minua, kun poistun muokkaussivulta tallentamatta muutoksia',
 );
 
@@ -558,18 +568,19 @@ Se você estiver autenticado, você pode desabilitar este aviso na seção "Opç
  * @author AlimanRuna
  */
 $messages['qu'] = array(
-	'vector-editwarning-warning' => 'Kay p\'anqata saqispaykiqa lliw rurarqusqayki hukchasqakunatachá chinkachiykiman.
-Yaykusqa kaspaykiqa, kay yuyampayta hark\'ayta atinki allinkachinaykikunapi "Llamk\'apusqa" rakipi.',
+	'vector-editwarning-warning' => "Kay p'anqata saqispaykiqa lliw rurarqusqayki hukchasqakunatachá chinkachiykiman.
+Yaykusqa kaspaykiqa, kay yuyampayta hark'ayta atinki allinkachinaykikunapi \"Llamk'apusqa\" rakipi.",
 	'vector-editwarning-preference' => "Yuyampaway p'anqata saqiptiy manaraq rurarqusqay hukchasqakunata waqaychaspay.",
 );
 
 /** Romanian (Română)
+ * @author AdiJapan
  * @author Stelistcristi
  */
 $messages['ro'] = array(
 	'vector-editwarning-warning' => 'Părăsind această pagină se poate provoca ca să pierdeți orice schimbare ați făcut dvs.
 Dacă sunteți logat, puteți dezactiva această avertizare în secțiunea „Modificare” a preferințelor dvs.',
-	'vector-editwarning-preference' => 'Avertizează-mă când voi părăsi o pagină de editare cu schimbări nesalvate',
+	'vector-editwarning-preference' => 'Avertizează-mă când părăsesc o pagină fără a salva modificările',
 );
 
 /** Tarandíne (Tarandíne)

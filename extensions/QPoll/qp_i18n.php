@@ -1508,6 +1508,7 @@ $messages['lb'] = array(
 	'qp_error_category_name_empty' => 'Den Numm vun der Kategorie ass eidel',
 	'qp_error_proposal_text_empty' => 'Den Text vum Virschlag ass eidel',
 	'qp_error_too_few_categories' => 'Et musse mindestens zwou Kategorien definéiert sinn',
+	'qp_error_too_few_spans' => 'All Kategoriegrupp muss mindestens aus zwou Ënnerkategorie bestoen',
 	'qp_error_no_answer' => 'Propos ouni Äntwert',
 );
 

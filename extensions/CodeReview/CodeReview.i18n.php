@@ -7309,6 +7309,13 @@ $messages['ps'] = array(
 	'code-rev-submit' => 'بدلونونه خوندي کول',
 	'codereview-batch-submit' => 'سپارل',
 	'codereview-reply-link' => 'ځوابول',
+	'codereview-email-body' => 'د "$1" کارن $3 ته يو نظر ورکړی.
+
+بشپړه پته: $2
+
+تبصره:
+
+$4',
 	'repoadmin-new-button' => 'جوړول',
 	'repoadmin-edit-button' => 'ښه',
 );

@@ -71,6 +71,13 @@ $messages['dsb'] = array(
 	'embedvideo-illegal-width' => 'EmbedVideo jo njedowólony parameter width "$1" pśiwzeł.',
 );
 
+/** Greek (Ελληνικά)
+ * @author Geraki
+ */
+$messages['el'] = array(
+	'embedvideo-desc' => 'Προσθέτει μια συνάρτηση parser για την ενσωμάτωση βίντεο από δημοφιλείς πηγές',
+);
+
 /** Spanish (Español)
  * @author Diego Grez
  * @author Manuelt15

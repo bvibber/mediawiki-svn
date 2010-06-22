@@ -135,6 +135,13 @@ $messages['csb'] = array(
 	'vector-simplesearch-search' => 'Szëkba',
 );
 
+/** Church Slavic (Словѣ́ньскъ / ⰔⰎⰑⰂⰡⰐⰠⰔⰍⰟ)
+ * @author ОйЛ
+ */
+$messages['cu'] = array(
+	'vector-simplesearch-search' => 'иска́ниѥ',
+);
+
 /** Welsh (Cymraeg)
  * @author Lloffiwr
  */
@@ -602,9 +609,10 @@ $messages['qu'] = array(
 
 /** Romanian (Română)
  * @author Firilacroco
+ * @author Minisarm
  */
 $messages['ro'] = array(
-	'vector-simplesearch-search' => 'Căutați',
+	'vector-simplesearch-search' => 'Căutare',
 	'vector-simplesearch-containing' => 'conținând...',
 );
 

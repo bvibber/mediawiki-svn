@@ -60,7 +60,7 @@ $messages['ar'] = array(
  * @author Meno25
  */
 $messages['arz'] = array(
-	'wikieditor-toc-preference' => 'مكّن جدول المحتويات القابل للتصفح',
+	'wikieditor-toc-preference' => 'Enable navigable table of contents',
 	'wikieditor-toc-show' => 'بيّن المحتويات',
 	'wikieditor-toc-hide' => 'خبّى المحتويات',
 );
@@ -68,9 +68,10 @@ $messages['arz'] = array(
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
  * @author EugeneZelenko
  * @author Jim-by
+ * @author Zedlik
  */
 $messages['be-tarask'] = array(
-	'wikieditor-toc-preference' => 'Дазволіць навігацыйныя табліцы зьместу',
+	'wikieditor-toc-preference' => 'Уключыць зьмест з магчымасьцю навігацыі',
 	'wikieditor-toc-show' => 'Паказаць зьмест',
 	'wikieditor-toc-hide' => 'Схаваць зьмест',
 );
@@ -460,6 +461,15 @@ $messages['nl'] = array(
 	'wikieditor-toc-preference' => 'Navigeerbare inhoudsopgave inschakelen',
 	'wikieditor-toc-show' => 'Inhoud weergeven',
 	'wikieditor-toc-hide' => 'Inhoud verbergen',
+);
+
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Eirik
+ */
+$messages['nn'] = array(
+	'wikieditor-toc-preference' => 'Ta i bruk navigerbar innhaldsliste',
+	'wikieditor-toc-show' => 'Vis innhald',
+	'wikieditor-toc-hide' => 'Gøym innhald',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)

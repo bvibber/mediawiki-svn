@@ -29,11 +29,14 @@ $messages['qqq'] = array(
 );
 
 /** Afrikaans (Afrikaans)
+ * @author Adriaan
  * @author Naudefj
  */
 $messages['af'] = array(
 	'usabilityinitiative' => 'Bruikbaarheid-inisiatief',
 	'usabilityinitiative-desc' => 'Funksionaliteit wat deur Wikipedia se Bruikbaarheid-inisiatief ontwikkel is om MediaWiki meer bruikbaarheid te maak',
+	'prefs-beta' => 'Beta-funksies',
+	'prefs-labs' => 'Labs-funksies',
 );
 
 /** Gheg Albanian (Gegë)
@@ -57,11 +60,14 @@ $messages['ar'] = array(
 );
 
 /** Egyptian Spoken Arabic (مصرى)
+ * @author Dudi
  * @author Meno25
  */
 $messages['arz'] = array(
 	'usabilityinitiative' => 'مبادره الاستخدامية',
 	'usabilityinitiative-desc' => 'مزايا طورتها مبادره استخداميه ويكيبيديا (Wikipedia Usability Initiative) لتحسين استخداميه ميدياويكى.',
+	'prefs-beta' => 'خصايص Beta',
+	'prefs-labs' => 'خصايص Labs',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
@@ -243,6 +249,8 @@ $messages['et'] = array(
 $messages['eu'] = array(
 	'usabilityinitiative' => 'Erabilgarritasun Iniziatiba',
 	'usabilityinitiative-desc' => 'Wikipediaren Erabilgarritasun Iniziatibak garatutako ezaugarriak MediaWikiren erabilgarritasuna hobetzeko.',
+	'prefs-beta' => 'Beta ezaugarriak',
+	'prefs-labs' => 'Labs ezaugarriak',
 );
 
 /** Persian (فارسی)
@@ -506,12 +514,15 @@ $messages['nl'] = array(
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Eirik
  * @author Gunnernett
  * @author Harald Khan
  */
 $messages['nn'] = array(
 	'usabilityinitiative' => 'Brukarvenlegheitsinitiativet',
 	'usabilityinitiative-desc' => 'Funksjonar utvikla av Wikipedia-brukarvenlegheitsinitiativet for å betra brukarvenlegheita til MediaWiki',
+	'prefs-beta' => 'Betafunksjonar',
+	'prefs-labs' => 'Testfunksjonar',
 );
 
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
@@ -594,11 +605,14 @@ $messages['qu'] = array(
 
 /** Romanian (Română)
  * @author Firilacroco
+ * @author Minisarm
  * @author Stelistcristi
  */
 $messages['ro'] = array(
 	'usabilityinitiative' => 'Inițiativa de utilizabilitate',
-	'usabilityinitiative-desc' => 'Funcționalități dezvoltate de Wikipedia Usability Initiative pentru a spori gradul de folosire a MediaWiki',
+	'usabilityinitiative-desc' => 'Funcționalități dezvoltate de inițiativa de utilizabilitate a Wikipedia pentru a facilita folosirea softului MediaWiki',
+	'prefs-beta' => 'Opțiuni beta',
+	'prefs-labs' => 'Opțiuni „labs”',
 );
 
 /** Tarandíne (Tarandíne)
@@ -682,6 +696,13 @@ $messages['te'] = array(
 	'usabilityinitiative-desc' => 'వికీపీడియా వాడుక సౌలభ్యాన్ని పెంచేందుకు వీలుగా కొన్ని నూతన ఫీచర్లు',
 	'prefs-beta' => 'బీటా సౌలభ్యాలు',
 	'prefs-labs' => 'ప్రయోగాత్మక సౌలభ్యాలు',
+);
+
+/** Thai (ไทย)
+ * @author Octahedron80
+ */
+$messages['th'] = array(
+	'prefs-beta' => 'คุณลักษณะรุ่นทดสอบ',
 );
 
 /** Turkmen (Türkmençe)

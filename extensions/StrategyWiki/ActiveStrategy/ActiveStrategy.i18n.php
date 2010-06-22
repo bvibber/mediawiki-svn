@@ -287,6 +287,16 @@ $messages['pt'] = array(
 	'nedits' => '$1 {{PLURAL:$1|edição|edições}}',
 );
 
+/** Brazilian Portuguese (Português do Brasil)
+ * @author Giro720
+ */
+$messages['pt-br'] = array(
+	'activestrategy' => 'Grupos de trabalho ativos',
+	'active-strategy-desc' => 'Mostra o número de edições das páginas da equipe de trabalho',
+	'active-strategy-intro' => 'Número de edições às páginas dos grupos de trabalho {{PLURAL:$1|no último dia|nos últimos $1 dias}}.',
+	'nedits' => '$1 {{PLURAL:$1|edição|edições}}',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */

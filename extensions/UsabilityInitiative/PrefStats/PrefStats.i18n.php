@@ -58,6 +58,7 @@ $messages['qqq'] = array(
 );
 
 /** Afrikaans (Afrikaans)
+ * @author Adriaan
  * @author Naudefj
  */
 $messages['af'] = array(
@@ -72,6 +73,7 @@ $messages['af'] = array(
 	'prefstats-factor-twoweeks' => 'twee weke',
 	'prefstats-factor-fourweeks' => 'vier weke',
 	'prefstats-factor-default' => 'terug na die verstek-skaal',
+	'prefstats-legend-in' => 'Aangemeld',
 );
 
 /** Gheg Albanian (Gegë)
@@ -2226,6 +2228,7 @@ $messages['tg-latn'] = array(
 
 /** Thai (ไทย)
  * @author Ans
+ * @author Octahedron80
  */
 $messages['th'] = array(
 	'prefstats-xaxis' => 'ช่วงเวลา (ชั่วโมง)',
@@ -2236,6 +2239,9 @@ $messages['th'] = array(
 	'prefstats-factor-week' => 'สัปดาห์',
 	'prefstats-factor-twoweeks' => 'สองสัปดาห์',
 	'prefstats-factor-fourweeks' => 'สี่สัปดาห์',
+	'prefstats-factor-default' => 'กลับไปมาตราเริ่มต้น',
+	'prefstats-legend-out' => 'เลิกติดตาม',
+	'prefstats-legend-in' => 'ร่วมติดตาม',
 );
 
 /** Turkmen (Türkmençe)

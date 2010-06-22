@@ -74,7 +74,7 @@ $messages['ar'] = array(
  * @author Meno25
  */
 $messages['arz'] = array(
-	'wikieditor-preview-preference' => 'مكّن المعاينه جنبًا لجنب',
+	'wikieditor-preview-preference' => 'شغّل الپروڤه بتاعة الجنب مع جنب',
 	'wikieditor-preview-tab' => 'پروڤه',
 	'wikieditor-preview-changes-tab' => 'تغييرات',
 	'wikieditor-preview-loading' => 'بيلوّد...',
@@ -553,10 +553,12 @@ $messages['nl'] = array(
 );
 
 /** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Eirik
  * @author Gunnernett
  * @author Harald Khan
  */
 $messages['nn'] = array(
+	'wikieditor-preview-preference' => 'Ta i bruk førehandsvising side-om-side',
 	'wikieditor-preview-tab' => 'Førehandsvising',
 	'wikieditor-preview-changes-tab' => 'Endringar',
 	'wikieditor-preview-loading' => 'Lastar…',
@@ -656,9 +658,10 @@ $messages['qu'] = array(
 
 /** Romanian (Română)
  * @author Firilacroco
+ * @author Minisarm
  */
 $messages['ro'] = array(
-	'wikieditor-preview-preference' => 'Activează previzualizarea parte cu parte',
+	'wikieditor-preview-preference' => 'Activează previzualizarea unul-lângă-altul',
 	'wikieditor-preview-tab' => 'Previzualizare',
 	'wikieditor-preview-changes-tab' => 'Modificări',
 	'wikieditor-preview-loading' => 'Încărcare...',
@@ -767,10 +770,12 @@ $messages['te'] = array(
 );
 
 /** Thai (ไทย)
+ * @author Octahedron80
  * @author Woraponboonkerd
  */
 $messages['th'] = array(
-	'wikieditor-preview-preference' => 'เปิดคุณสมบัติดูหน้าแบบสองฝั่ง',
+	'wikieditor-preview-preference' => 'เปิดใช้งานการแสดงตัวอย่างแบบเคียงข้าง',
+	'wikieditor-preview-tab' => 'แสดงตัวอย่าง',
 	'wikieditor-preview-changes-tab' => 'ความเปลี่ยนแปลง',
 	'wikieditor-preview-loading' => 'กำลังโหลด...',
 );

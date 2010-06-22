@@ -197,6 +197,14 @@ $messages['nl'] = array(
 	'prefs-category' => 'Categorie',
 );
 
+/** Pashto (پښتو)
+ * @author Ahmed-Najib-Biabani-Ibrahimkhel
+ */
+$messages['ps'] = array(
+	'categorymultisort-go' => 'ورځه',
+	'prefs-category' => 'وېشنيزه',
+);
+
 /** Portuguese (Português)
  * @author Giro720
  * @author Hamilton Abreu

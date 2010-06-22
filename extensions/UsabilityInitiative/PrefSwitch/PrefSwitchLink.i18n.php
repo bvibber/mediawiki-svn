@@ -482,6 +482,18 @@ $messages['nl'] = array(
 	'tooltip-pt-prefswitch-link-off' => 'Nieuwe mogelijkheden uitproberen',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Eirik
+ */
+$messages['nn'] = array(
+	'prefswitch-link-anon' => 'Nye funksjonar',
+	'tooltip-pt-prefswitch-link-anon' => 'Lær meir om dei nye funksjonane',
+	'prefswitch-link-on' => 'Tilbake til det gamle',
+	'tooltip-pt-prefswitch-link-on' => 'Slå av nye funksjonar',
+	'prefswitch-link-off' => 'Nye funksjonar',
+	'tooltip-pt-prefswitch-link-off' => 'Prøv nye funksjonar',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
@@ -563,6 +575,18 @@ $messages['qu'] = array(
 	'tooltip-pt-prefswitch-link-off' => 'Musuq kaqninkunata llanchiy',
 );
 
+/** Romanian (Română)
+ * @author Minisarm
+ */
+$messages['ro'] = array(
+	'prefswitch-link-anon' => 'Noi funcționalități',
+	'tooltip-pt-prefswitch-link-anon' => 'Aflați mai multe despre noile funcționalități',
+	'prefswitch-link-on' => 'Du-mă înapoi',
+	'tooltip-pt-prefswitch-link-on' => 'Dezactivează noile funcționalități',
+	'prefswitch-link-off' => 'Noi funcționalități',
+	'tooltip-pt-prefswitch-link-off' => 'Încercați noile funcționalități',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */
@@ -621,6 +645,15 @@ $messages['sv'] = array(
 	'tooltip-pt-prefswitch-link-off' => 'Testa nya funktioner',
 );
 
+/** Swahili (Kiswahili)
+ * @author Lloffiwr
+ */
+$messages['sw'] = array(
+	'prefswitch-link-anon' => 'Zana mpya',
+	'prefswitch-link-on' => 'Unirudishe',
+	'prefswitch-link-off' => 'Zana mpya',
+);
+
 /** Telugu (తెలుగు)
  * @author Veeven
  */
@@ -629,6 +662,18 @@ $messages['te'] = array(
 	'tooltip-pt-prefswitch-link-anon' => 'కొత్త విశేషాల గురించి తెలుసుకోండి',
 	'prefswitch-link-off' => 'కొత్త సౌలభ్యాలు',
 	'tooltip-pt-prefswitch-link-off' => 'కొత్త సౌలభ్యాలను ప్రయత్నించండి',
+);
+
+/** Thai (ไทย)
+ * @author Octahedron80
+ */
+$messages['th'] = array(
+	'prefswitch-link-anon' => 'คุณลักษณะใหม่',
+	'tooltip-pt-prefswitch-link-anon' => 'เรียนรู้เกี่ยวกับคุณลักษณะใหม่',
+	'prefswitch-link-on' => 'นำฉันกลับไป',
+	'tooltip-pt-prefswitch-link-on' => 'ปิดใช้งานคุณลักษณะใหม่',
+	'prefswitch-link-off' => 'คุณลักษณะใหม่',
+	'tooltip-pt-prefswitch-link-off' => 'ลองใช้คุณลักษณะใหม่',
 );
 
 /** Tagalog (Tagalog)

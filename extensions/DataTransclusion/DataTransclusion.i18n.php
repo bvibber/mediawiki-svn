@@ -292,6 +292,13 @@ $2 се важечки клучеви во податотечниот извор
 	'datatransclusion-unknown-template' => '<nowiki>{{</nowiki>[[Template:$1|$1]]<nowiki>}}</nowiki> не постои.',
 );
 
+/** Marathi (मराठी)
+ * @author V.narsikar
+ */
+$messages['mr'] = array(
+	'datatransclusion-bad-template-name' => 'चुकीचे साचानाव:$1',
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */

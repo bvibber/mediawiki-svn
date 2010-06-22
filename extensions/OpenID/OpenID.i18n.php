@@ -4339,6 +4339,7 @@ Você não poderia entrar sem um OpenID.',
 /** Romanian (Română)
  * @author Firilacroco
  * @author KlaudiuMihaila
+ * @author Memo18
  * @author Misterr
  */
 $messages['ro'] = array(
@@ -4365,6 +4366,7 @@ Vă rugăm să contactați un [[Special:ListUsers/sysop|administrator]].',
 	'openidtrustinstructions' => 'Verificați dacă doriți să partajați datele cu $1.',
 	'openidallowtrust' => '$1 permite să aibă încredere în acest cont de utilizator',
 	'openidnopolicy' => 'Site-ul nu a specificat politica de confidențialitate.',
+	'openidpolicy' => 'Verificaţi <a target="_new" href="$1">politica de confidenţialitate</a> pentru mai multe informaţii',
 	'openidoptional' => 'Opțional',
 	'openidrequired' => 'Necesar',
 	'openidnickname' => 'Poreclă',
@@ -4372,10 +4374,12 @@ Vă rugăm să contactați un [[Special:ListUsers/sysop|administrator]].',
 	'openidemail' => 'Adresă e-mail',
 	'openidlanguage' => 'Limbă',
 	'openidtimezone' => 'Fus orar',
+	'openidchooselegend' => 'Alegeţi numele de utilizator',
 	'openidchooseinstructions' => 'Toți utilizatorii necesită o poreclă;
 se poate alege una din opțiunile de mai jos.',
 	'openidchoosenick' => 'Porecla dvs. ($1)',
 	'openidchoosefull' => 'Numele întreg ($1)',
+	'openidchooseurl' => 'Un nume ales din OpenID-ul dvs. ($1)',
 	'openidchooseauto' => 'Un nume generat automat ($1)',
 	'openidchoosemanual' => 'Un nume la alegere:',
 	'openidchooseexisting' => 'Există un cont pe aces wiki',

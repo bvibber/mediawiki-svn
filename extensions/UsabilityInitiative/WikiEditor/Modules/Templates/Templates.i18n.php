@@ -15,11 +15,25 @@ $messages['en'] = array(
 	'wikieditor-templates-preference' => 'Enable template collapsing',
 );
 
+/** Afrikaans (Afrikaans)
+ * @author Adriaan
+ */
+$messages['af'] = array(
+	'wikieditor-templates-preference' => 'Inklapbare sjablone toelaat',
+);
+
 /** Gheg Albanian (Gegë)
  * @author Mdupont
  */
 $messages['aln'] = array(
 	'wikieditor-templates-preference' => 'Aktivizo template kolaps',
+);
+
+/** Egyptian Spoken Arabic (مصرى)
+ * @author Dudi
+ */
+$messages['arz'] = array(
+	'wikieditor-templates-preference' => 'خلّى القالب يبان مقفول',
 );
 
 /** Belarusian (Taraškievica orthography) (Беларуская (тарашкевіца))
@@ -98,6 +112,13 @@ $messages['eo'] = array(
  */
 $messages['es'] = array(
 	'wikieditor-templates-preference' => 'Habilitar colapso de plantilla',
+);
+
+/** Basque (Euskara)
+ * @author An13sa
+ */
+$messages['eu'] = array(
+	'wikieditor-templates-preference' => 'Txantiloien ixtea eta irekitzea gaitu',
 );
 
 /** Persian (فارسی)
@@ -240,6 +261,13 @@ $messages['nl'] = array(
 	'wikieditor-templates-preference' => 'Inklapbare sjablonen inschakelen',
 );
 
+/** Norwegian Nynorsk (‪Norsk (nynorsk)‬)
+ * @author Eirik
+ */
+$messages['nn'] = array(
+	'wikieditor-templates-preference' => 'Ta i bruk samanslåing av malar',
+);
+
 /** Norwegian (bokmål)‬ (‪Norsk (bokmål)‬)
  * @author Nghtwlkr
  */
@@ -289,6 +317,13 @@ $messages['qu'] = array(
 	'wikieditor-templates-preference' => 'Plantilla thuñiyta atichiy',
 );
 
+/** Romanian (Română)
+ * @author Minisarm
+ */
+$messages['ro'] = array(
+	'wikieditor-templates-preference' => 'Activează ascunderea formatului',
+);
+
 /** Russian (Русский)
  * @author Александр Сигачёв
  */
@@ -327,6 +362,13 @@ $messages['sr-el'] = array(
  */
 $messages['sv'] = array(
 	'wikieditor-templates-preference' => 'Aktivera ihopfällbara mallar',
+);
+
+/** Thai (ไทย)
+ * @author Octahedron80
+ */
+$messages['th'] = array(
+	'wikieditor-templates-preference' => 'เปิดใช้งานการยุบแม่แบบ',
 );
 
 /** Tagalog (Tagalog)

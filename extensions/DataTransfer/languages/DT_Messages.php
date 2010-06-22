@@ -1261,6 +1261,7 @@ $messages['mn'] = array(
 
 /** Marathi (मराठी)
  * @author Kaustubh
+ * @author V.narsikar
  */
 $messages['mr'] = array(
 	'datatransfer-desc' => 'साचा कॉल मध्ये असणार्‍या डाटाची आयात निर्यात करण्याची परवानगी देतो',
@@ -1276,6 +1277,7 @@ $messages['mr'] = array(
 	'dt_xml_title' => 'शीर्षक',
 	'dt_xml_id' => 'क्रमांक (आयडी)',
 	'dt_xml_freetext' => 'मुक्त मजकूर',
+	'importxml' => 'एक्सएमएल आयात करा',
 );
 
 /** Mirandese (Mirandés)

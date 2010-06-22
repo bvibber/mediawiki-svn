@@ -33,11 +33,14 @@ I guess that 'feature-providing modules' means the same as 'modules providing fe
 );
 
 /** Afrikaans (Afrikaans)
+ * @author Adriaan
  * @author Naudefj
  */
 $messages['af'] = array(
 	'wikieditor' => 'Uitgebreide teksverwerker vir wikiteks',
+	'wikieditor-desc' => "Voorsien 'n uitbreibare wikiteks-verwerker en modules met bykomende funksies",
 	'wikieditor-wikitext-tab' => 'Wikiteks',
+	'wikieditor-loading' => 'Laai tans',
 );
 
 /** Gheg Albanian (Gegë)
@@ -53,9 +56,10 @@ $messages['aln'] = array(
 /** Arabic (العربية)
  * @author Meno25
  * @author OsamaK
+ * @author ترجمان05
  */
 $messages['ar'] = array(
-	'wikieditor' => 'واجعة تعديل نص ويكي متقدمة',
+	'wikieditor' => 'الواجهة المتقدمة لتعديل نص ويكي',
 	'wikieditor-desc' => 'يوفر واجهة تعديل نص ويكي قابلة للتمديد والعديد من الوحدات التي توفر المزايا',
 	'wikieditor-wikitext-tab' => 'نص الويكي',
 	'wikieditor-loading' => 'يُحمّل',
@@ -66,9 +70,9 @@ $messages['ar'] = array(
  * @author Meno25
  */
 $messages['arz'] = array(
-	'wikieditor' => 'واجعه تعديل نص ويكى متقدمة',
-	'wikieditor-desc' => 'يوفر واجهه تعديل نص ويكى قابله للتمديد والعديد من العناصر الموفره للخصائص',
-	'wikieditor-wikitext-tab' => 'نص ويكي',
+	'wikieditor' => 'Interface متقدم بتاع تعديل wikitext',
+	'wikieditor-desc' => 'بيدّى interface بتاع wikitext بينفع يتكبّر و modules كتيره بتنفع تعمل مميزات',
+	'wikieditor-wikitext-tab' => 'Wikitext',
 	'wikieditor-loading' => 'بيلوّد',
 );
 
@@ -242,6 +246,7 @@ $messages['et'] = array(
  * @author An13sa
  */
 $messages['eu'] = array(
+	'wikieditor' => 'Wikitestu edizio-interfaze aurreratua',
 	'wikieditor-wikitext-tab' => 'Wikitestua',
 	'wikieditor-loading' => 'Kargatzen',
 );
@@ -567,11 +572,13 @@ $messages['qu'] = array(
 
 /** Romanian (Română)
  * @author Firilacroco
+ * @author Minisarm
  */
 $messages['ro'] = array(
 	'wikieditor' => 'Interfață de modificare wikitext avansată',
 	'wikieditor-desc' => 'Afișează o interfață de modificare wikitext ce se poate extinde cu multe funcționalități',
 	'wikieditor-wikitext-tab' => 'Wikitext',
+	'wikieditor-loading' => 'Încărcare',
 );
 
 /** Tarandíne (Tarandíne)
@@ -675,6 +682,13 @@ $messages['te'] = array(
 	'wikieditor' => 'ఉన్నత వికీపాఠ్య దిద్దుబాటు ముఖాంతరం',
 	'wikieditor-wikitext-tab' => 'వికీపాఠ్యం',
 	'wikieditor-loading' => 'లోడవుతూంది',
+);
+
+/** Thai (ไทย)
+ * @author Octahedron80
+ */
+$messages['th'] = array(
+	'wikieditor-loading' => 'กำลังโหลด',
 );
 
 /** Turkmen (Türkmençe)

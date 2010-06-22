@@ -277,6 +277,13 @@ $messages['ms'] = array(
 	'userdailycontribs-desc' => 'Sumbangan pengguna harian untuk pengesanan',
 );
 
+/** Maltese (Malti)
+ * @author Chrisportelli
+ */
+$messages['mt'] = array(
+	'userdailycontribs-desc' => "Kontribuzzjonijiet ta' kuljum tal-utenti għall-estensjoni tal-itraċċar tal-klikks",
+);
+
 /** Dutch (Nederlands)
  * @author Siebrand
  */
