@@ -99,7 +99,7 @@ window.mw = {
 			if ( typeof keys === 'object' ) {
 				var result = {};
 				for ( key in keys ) {
-					result[key] = typeof values[keys] === 'undefined' ? null, values[keys];
+					result[key] = typeof values[keys] === 'undefined' ? null : values[keys];
 				}
 				return result;
 			} else if ( typeof values[keys] === 'undefined' ) {
@@ -166,77 +166,20 @@ window.mw = {
 		};
 		// List of callbacks and their dependencies - this gets reduced each time work() is called, if possible
 		var queue = [];
+		// List of modules to wait to load until ready, or right away after ready
+		var batch = [];
+		// True after document ready occurs
+		var ready = false;
+		
+		/* Event Bindings */
+		
+		$( document ).ready( function() {
+			ready = true;
+			that.work();
+		} );
 		
 		/* Private Functions */
 		
-		/**
-		 * Processes the queue, loading and executing when things when ready.
-		 */
-		function work() {
-			var batch = [];
-			var head = document.getElementById( 'head' )[0];
-			for ( q in queue ) {
-				for ( p in queue[q].pending ) {
-					var requirement = queue[q].pending[p];
-					// If it's not in the registry yet, we're certainly not ready to execute
-					if (
-						typeof registry[requirement] !== 'undefined' &&
-						typeof registry[requirement].state !== 'undefined'
-					) {
-						// Take action, or not
-						switch ( registry[requirement].state ) {
-							case 'registered':
-								// Load (add to batch)
-								if ( batch.indexOf( requirement ) == -1 ) {
-									batch[batch.length] = requirement;
-								}
-								break;
-							case 'loading':
-								// Wait (do nothing...)
-								break;
-							case 'loaded':
-								execute( requirement );
-								break;
-							case 'ready':
-								// This doesn't belong in the queue item's pending list
-								delete queue[q].requirements[r];
-								break;
-						}
-						// If all pending requirements have been satisfied, we're ready to execute the callback
-						if ( queue[q].requirements.length == 0 ) {
-							queue[q].callback();
-							// Clean up the queue
-							delete queue[q];
-						}
-					}
-				}
-			}
-			// Handle the batch
-			if ( batch.length ) {
-				// Always order module alphabetically to help reduce cache misses for otherwise identical content
-				batch.sort();
-				// It may be more performant to do this with an Ajax call, but that's limited to same-domain, so we can
-				// either auto-detect (if there really is any benefit) or just use this method, which is safe either way
-				var script = document.createElement( 'script' );
-				script.type = 'text/javascript';
-				// Build and set the request URL
-				var query = mw.config.get( [ 'user', 'skin', 'space', 'view', 'language' ] );
-				query.modules = batch.join( '|' );
-				script.src = mw.util.buildUrlString( {
-					'path': 'load.php',
-					'query': query
-				} );
-				// Good browsers
-				script.onload = work;
-				// Bad browsers (IE 6 & 7)
-				script.onreadystatechange = function() {
-					if ( this.readyState == 'complete' ) {
-						work();
-					}
-				}
-				head.appendChild( script );
-			}
-		}
 		/**
 		 * Narrows a list of requirements down to only those which are still pending (not registered or not ready)
 		 */
@@ -278,6 +221,75 @@ window.mw = {
 		
 		/* Public Functions */
 		
+		/**
+		 * Processes the queue, loading and executing when things when ready.
+		 */
+		this.work = function() {
+			for ( q in queue ) {
+				for ( p in queue[q].pending ) {
+					var requirement = queue[q].pending[p];
+					// If it's not in the registry yet, we're certainly not ready to execute
+					if (
+						typeof registry[requirement] !== 'undefined' &&
+						typeof registry[requirement].state !== 'undefined'
+					) {
+						// Take action, or not
+						switch ( registry[requirement].state ) {
+							case 'registered':
+								// Load (add to batch)
+								if ( batch.indexOf( requirement ) == -1 ) {
+									batch[batch.length] = requirement;
+								}
+								break;
+							case 'loading':
+								// Wait (do nothing...)
+								break;
+							case 'loaded':
+								execute( requirement );
+								break;
+							case 'ready':
+								// This doesn't belong in the queue item's pending list
+								delete queue[q].requirements[r];
+								break;
+						}
+						// If all pending requirements have been satisfied, we're ready to execute the callback
+						if ( queue[q].requirements.length == 0 ) {
+							queue[q].callback();
+							// Clean up the queue
+							delete queue[q];
+						}
+					}
+				}
+			}
+			// Handle the batch only when ready
+			if ( batch.length && ready ) {
+				// It may be more performant to do this with an Ajax call, but that's limited to same-domain, so we can
+				// either auto-detect (if there really is any benefit) or just use this method, which is safe either
+				// way. Also note, we're using "each" here so we only clear the batch if there was a head to add to
+				$( 'head' ).each( function() {
+					// Always order module alphabetically to help reduce cache misses for otherwise identical content
+					batch.sort();
+					// Append script to head
+					$(this).append(
+						$( '<script type="text/javascript"></script>' )
+							.attr( 'src', mw.util.buildUrlString( {
+								'path': 'load.php',
+								'query': $.extend(
+										// Pass configuration values through the URL
+										mw.config.get( [ 'user', 'skin', 'space', 'view', 'language' ] ),
+										// Modules are in the format foo|bar|baz|buz
+										{ 'modules': batch.join( '|' ) }
+									)
+							} ) )
+							.load( function() {
+								that.work();
+							} )
+					);
+					// Clear the batch
+					batch = [];
+				} );
+			}
+		};
 		/**
 		 * Registers a module, letting the system know about it and it's dependencies. loader.js files contain calls
 		 * to this function.
@@ -334,7 +346,7 @@ window.mw = {
 				} else {
 					// Queue it up and work the queue
 					queue[queue.length] = { 'pending': requirements, 'callback': function() { execute( name ); } };
-					work();
+					that.work();
 				}
 				return true;
 			}
@@ -356,7 +368,7 @@ window.mw = {
 			} else {
 				// Queue it up and work the queue
 				queue[queue.length] = { 'pending': requirements, 'callback': callback };
-				work();
+				that.work();
 			}
 		};
 	} )()
