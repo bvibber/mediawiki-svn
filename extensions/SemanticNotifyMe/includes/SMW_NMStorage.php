@@ -21,12 +21,12 @@ require_once $smwgNMIP . '/includes/SMW_NMDBHelper.php';
  */
 class NMStorage {
 
-	//--- Private fields---
+	// --- Private fields---
 
 	private static $mInstance; // NMStorage: the only instance of this singleton
 	private static $mDatabase; // The actual database object
 
-	//--- Constructor ---
+	// --- Constructor ---
 
 	/**
 	 * Constructor.
@@ -34,16 +34,16 @@ class NMStorage {
 	 *
 	 */
 	private function __construct() {
-		if (self::$mDatabase == NULL) {
+		if ( self::$mDatabase == NULL ) {
 			global $smwgBaseStore;
-			switch ($smwgBaseStore) {
-				case (SMW_STORE_TESTING):
-					trigger_error('Testing store not implemented for NotifyMe extension.');
+			switch ( $smwgBaseStore ) {
+				case ( SMW_STORE_TESTING ):
+					trigger_error( 'Testing store not implemented for NotifyMe extension.' );
 					break;
-				case (SMW_STORE_MWDB):
+				case ( SMW_STORE_MWDB ):
 				default:
 					global $smwgNMIP;
-					require_once($smwgNMIP . '/includes/storage/SMW_NMStorageSQL.php');
+					require_once( $smwgNMIP . '/includes/storage/SMW_NMStorageSQL.php' );
 					self::$mDatabase = new NMStorageSQL();
 				break;
 			}
@@ -51,7 +51,7 @@ class NMStorage {
 
 	}
 
-	//--- Public methods ---
+	// --- Public methods ---
 
 	/**
 	 * Returns the single instance of this class.
@@ -60,7 +60,7 @@ class NMStorage {
 	 * 		The single instance of this class.
 	 */
 	public static function getInstance() {
-		if (!isset(self::$mInstance)) {
+		if ( !isset( self::$mInstance ) ) {
 			$c = __CLASS__;
 			self::$mInstance = new $c;
 		}
@@ -81,4 +81,3 @@ class NMStorage {
 
 }
 
-?>

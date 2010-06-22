@@ -7,7 +7,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 }
 
 global $smwgNMIP;
-include_once($smwgNMIP . '/languages/SMW_NMLanguage.php');
+include_once( $smwgNMIP . '/languages/SMW_NMLanguage.php' );
 
 class SMW_NMLanguageEn extends SMW_NMLanguage {
 

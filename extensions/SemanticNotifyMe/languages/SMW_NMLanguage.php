@@ -30,8 +30,8 @@ abstract class SMW_NMLanguage {
 	 * for a datatype. If no type of the given name exists (maybe a
 	 * custom of compound type) then FALSE is returned.
 	 */
-	function findDatatypeMsgID($label) {
-		return array_search($label, $this->smwDatatypeLabels);
+	function findDatatypeMsgID( $label ) {
+		return array_search( $label, $this->smwDatatypeLabels );
 	}
 
 	/**
@@ -43,9 +43,9 @@ abstract class SMW_NMLanguage {
 	 */
 	function registerSpecialProperties() {
 		global $smwgContLang;
-		foreach ($this->smwSpecialProperties as $key => $prop) {
-			list($typeid, $label) = $prop;
-			SMWPropertyValue::registerProperty($key, $typeid, $label, true);
+		foreach ( $this->smwSpecialProperties as $key => $prop ) {
+			list( $typeid, $label ) = $prop;
+			SMWPropertyValue::registerProperty( $key, $typeid, $label, true );
 
 		}
 	}
@@ -56,7 +56,7 @@ abstract class SMW_NMLanguage {
 	 * 			ID of the special property
 	 * @return String Label of the special property
 	 */
-	function getSpecialPropertyLabel($propID) {
+	function getSpecialPropertyLabel( $propID ) {
 		return $this->smwSpecialProperties[$propID];
 	}
 
@@ -76,7 +76,7 @@ abstract class SMW_NMLanguage {
 		return $this->smwSpecialCategories;
 	}
 
-	function getNMDatatype($datatypeID) {
+	function getNMDatatype( $datatypeID ) {
 		return $this->smwNMDatatypes[$datatypeID];
 	}
 
@@ -105,7 +105,7 @@ abstract class SMW_NMLanguage {
 	 * 		Name of the namespace or <null>.
 	 *
 	 */
-	public function getNamespace($namespaceID) {
+	public function getNamespace( $namespaceID ) {
 		return $this->smwNMNamespaces[$namespaceID];
 	}
 

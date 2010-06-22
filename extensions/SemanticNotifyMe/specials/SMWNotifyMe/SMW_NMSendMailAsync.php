@@ -6,8 +6,8 @@
  */
 
 
-//get Parameter
-$wgRequestTime = microtime(true);
+// get Parameter
+$wgRequestTime = microtime( true );
 
 /** */
 # Abort if called from a web server
@@ -17,7 +17,7 @@ if ( isset( $_SERVER ) && array_key_exists( 'REQUEST_METHOD', $_SERVER ) ) {
 }
 
 
-if( version_compare( PHP_VERSION, '5.0.0' ) < 0 ) {
+if ( version_compare( PHP_VERSION, '5.0.0' ) < 0 ) {
 	print "Sorry! This version of MediaWiki requires PHP 5; you are running " .
 	PHP_VERSION . ".\n\n" .
 		"If you are sure you already have PHP 5 installed, it may be " .
@@ -41,29 +41,28 @@ function getUserNMOption( $str ) {
 
 // include commandLine script which provides some basic
 // methodes for maintenance scripts
-$mediaWikiLocation = dirname(__FILE__) . '/../../../..';
+$mediaWikiLocation = dirname( __FILE__ ) . '/../../../..';
 require_once "$mediaWikiLocation/maintenance/commandLine.inc";
 
 global $smwgNMIP;
 require_once $smwgNMIP . '/includes/SMW_NMStorage.php';
 $sStore = NMStorage::getDatabase();
 $msgs = $sStore->getUnmailedNMMessages();
-foreach($msgs as $msg) {
+foreach ( $msgs as $msg ) {
 	// send notifications by mail
-	if($msg['user_id'] == null) continue;
-	$user_info = $sStore->getUserInfo($msg['user_id']);
-	if(($user_info->user_email != '') && getUserNMOption($user_info->user_options)) {
-		$name = (($user_info->user_real_name=='')?$user_info->user_name:$user_info->user_real_name);
+	if ( $msg['user_id'] == null ) continue;
+	$user_info = $sStore->getUserInfo( $msg['user_id'] );
+	if ( ( $user_info->user_email != '' ) && getUserNMOption( $user_info->user_options ) ) {
+		$name = ( ( $user_info->user_real_name == '' ) ? $user_info->user_name:$user_info->user_real_name );
 
 		global $wgOutputEncoding;
-		UserMailer::send( //userMailer(
-			new MailAddress($user_info->user_email, $name),
-			new MailAddress($wgEmergencyContact, 'Admin'),
-			wfMsg('smw_nm_hint_mail_title', $msg['title'], $wgSitename),
-			wfMsg('smw_nm_hint_mail_body_html', $name, $msg['notify']),
-			new MailAddress($wgEmergencyContact, 'Admin'),
+		UserMailer::send( // userMailer(
+			new MailAddress( $user_info->user_email, $name ),
+			new MailAddress( $wgEmergencyContact, 'Admin' ),
+			wfMsg( 'smw_nm_hint_mail_title', $msg['title'], $wgSitename ),
+			wfMsg( 'smw_nm_hint_mail_body_html', $name, $msg['notify'] ),
+			new MailAddress( $wgEmergencyContact, 'Admin' ),
 			'text/html; charset=' . $wgOutputEncoding
 		);
 	}
 }
-?>
