@@ -18,7 +18,6 @@ import de.brightbyte.wikiword.TweakSet;
 public class LocalConceptStoreSchema extends WikiWordConceptStoreSchema {
 	protected EntityTable resourceTable;
 	
-	protected EntityTable definitionTable;
 	protected EntityTable sectionTable;
 
 	protected RelationTable meaningTable;
@@ -60,7 +59,9 @@ public class LocalConceptStoreSchema extends WikiWordConceptStoreSchema {
 		linkTable.addField( new DatabaseField(this, "term_text", getTextType(255), null, true, null) );
 		linkTable.addField( new DatabaseField(this, "rule", "INT", null, true, KeyType.INDEX) );
 		linkTable.addKey( new DatabaseKey(this, KeyType.INDEX, "term_target", new String[] {"term_text", "target"}) );
-		
+				
+		definitionTable.addField( new ReferenceField(this, "resource", "INT", null, true, KeyType.UNIQUE, "resource", "id", null ) );
+		definitionTable.addKey( new DatabaseKey(this, KeyType.PRIMARY, "concept", new String[] {"concept"}) );
 		//--------
 		
 		resourceTable = new EntityTable(this, "resource", getDefaultTableAttributes());
@@ -74,13 +75,6 @@ public class LocalConceptStoreSchema extends WikiWordConceptStoreSchema {
 		
 		resourceTable.setAutomaticField("id");
 		addTable(resourceTable);
-		
-		definitionTable = new EntityTable(this, "definition", getDefaultTableAttributes());
-		definitionTable.addField( new ReferenceField(this, "concept", "INT", null, true, KeyType.PRIMARY, "concept", "id", null ) );
-		definitionTable.addField( new ReferenceField(this, "resource", "INT", null, true, KeyType.UNIQUE, "resource", "id", null ) );
-		definitionTable.addField( new DatabaseField(this, "definition", getTextType(1024*8), null, true, null ) );
-		definitionTable.setAutomaticField(null);
-		addTable(definitionTable);
 
 		sectionTable = new EntityTable(this, "section", getDefaultTableAttributes());
 		sectionTable.addField( new ReferenceField(this, "resource", "INT", null, true, KeyType.INDEX, "resource", "id", null ) );

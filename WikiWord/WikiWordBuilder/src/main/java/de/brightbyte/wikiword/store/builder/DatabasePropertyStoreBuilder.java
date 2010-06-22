@@ -24,7 +24,7 @@ public class DatabasePropertyStoreBuilder extends DatabaseIncrementalStoreBuilde
 
 	public DatabasePropertyStoreBuilder(Corpus corpus, Connection connection, TweakSet tweaks) throws SQLException, PersistenceException {
 		this(new LocalConceptStoreSchema(corpus, connection, tweaks, true), 
-				new PropertyStoreSchema(corpus, connection, tweaks, true), 
+				new PropertyStoreSchema(corpus, connection, false, tweaks, true), 
 				null, tweaks, null);
 	}
 	
@@ -39,7 +39,7 @@ public class DatabasePropertyStoreBuilder extends DatabaseIncrementalStoreBuilde
 		this((LocalConceptStoreSchema)conceptStore.getDatabaseAccess(), 
 				new PropertyStoreSchema(conceptStore.getCorpus(), 
 						conceptStore.getDatabaseAccess().getConnection(), 
-						tweaks, true), 
+						false, tweaks, true), 
 				conceptStore.idManager,
 				tweaks,
 				conceptStore.getAgenda());

@@ -55,8 +55,10 @@ public class ManagementConsole {
 		List<String> params = args.getParameters();
 		
 		DatabaseConnectionInfo dbinfo = new DatabaseConnectionInfo(dbfile);
-		DatasetIdentifier dataset = DatasetIdentifier.forName("dummy", "thingy");
-		TweakSet tweaks = new TweakSet();
+		
+		TweakSet tweaks = new TweakSet(); //TODO: load?...
+		
+		DatasetIdentifier dataset = DatasetIdentifier.forName("dummy", "thingy", tweaks);
 		
 		WikiWordStoreSchema db = new WikiWordStoreSchema(dataset, dbinfo, tweaks, false);
 		db.open();
@@ -200,7 +202,7 @@ public class ManagementConsole {
 
 	public DatabaseWikiWordConceptStore getConceptStore(String name) throws SQLException, PersistenceException {
 		TweakSet tweaks = new TweakSet();
-		DatasetIdentifier dataset = DatasetIdentifier.forName("", name);
+		DatasetIdentifier dataset = DatasetIdentifier.forName("", name, tweaks);
 		DataSource ds = new SingletonDataSource(db.getConnection());
 		
 		DatabaseWikiWordConceptStore store = DatabaseConceptStores.createConceptStore(ds, dataset, tweaks, true, true);

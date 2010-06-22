@@ -84,7 +84,7 @@ public abstract class StoreBackedApp<S extends WikiWordConceptStoreBase> extends
 			dataset = Corpus.forName(c, n, tweaks);
 		}
 		else {
-			dataset = DatasetIdentifier.forName(c, n);
+			dataset = DatasetIdentifier.forName(c, n, tweaks);
 		}
 		
 		return dataset;

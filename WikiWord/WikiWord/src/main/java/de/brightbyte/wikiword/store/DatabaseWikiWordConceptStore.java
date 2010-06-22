@@ -279,12 +279,6 @@ public abstract class DatabaseWikiWordConceptStore<T extends WikiWordConcept>
 		return new CalculatedProximityStore<T>(store, getConceptFactory());
 	}
 	
-	protected PropertyStore<T> newPropertyStore() throws SQLException, PersistenceException {
-		PropertyStoreSchema schema = new PropertyStoreSchema(getDatasetIdentifier(), getDatabaseAccess().getConnection(), tweaks, false); 
-		
-		return new DatabasePropertyStore<T>(this, schema, tweaks);
-	}
-	
 	private DatabaseStatisticsStore statsStore;
 	private DatabaseConceptInfoStore<T> infoStore;
 
@@ -332,6 +326,8 @@ public abstract class DatabaseWikiWordConceptStore<T extends WikiWordConcept>
 	}	
 	
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	protected abstract PropertyStore<T> newPropertyStore() throws SQLException, PersistenceException;
 
 	public abstract class DatabaseStatisticsStore extends DatabaseWikiWordStore implements StatisticsStore<T>  {
 		

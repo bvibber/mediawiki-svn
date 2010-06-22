@@ -20,23 +20,23 @@ public class PropertyStoreSchema extends WikiWordStoreSchema {
 	protected RelationTable propertyTable;
 	protected DatasetIdentifier dataset;
 
-	public PropertyStoreSchema(DatasetIdentifier dataset, Connection connection, TweakSet tweaks, boolean useFlushQueue) throws SQLException {
+	public PropertyStoreSchema(DatasetIdentifier dataset, Connection connection, boolean global, TweakSet tweaks, boolean useFlushQueue) throws SQLException {
 		super(dataset, connection, tweaks, useFlushQueue );
-		init(dataset, tweaks);
+		init(dataset, global, tweaks);
 	}
 
-	public PropertyStoreSchema(DatasetIdentifier dataset, DataSource connectionInfo, TweakSet tweaks, boolean useFlushQueue) throws SQLException {
+	public PropertyStoreSchema(DatasetIdentifier dataset, DataSource connectionInfo, boolean global, TweakSet tweaks, boolean useFlushQueue) throws SQLException {
 		super(dataset, connectionInfo, tweaks, useFlushQueue);
-		init(dataset, tweaks);
+		init(dataset, global, tweaks);
 	}
 	
-	private void init(DatasetIdentifier dataset, TweakSet tweaks) {
+	private void init(DatasetIdentifier dataset, boolean global, TweakSet tweaks) {
 		this.dataset = dataset;
 		
 		propertyTable = new RelationTable(this, "property", getDefaultTableAttributes());
-		propertyTable.addField( new ReferenceField(this, "resource", "INT", null, false, KeyType.INDEX, "resource", "id", null ) );
+		if (!global) propertyTable.addField( new ReferenceField(this, "resource", "INT", null, false, KeyType.INDEX, "resource", "id", null ) );
 		propertyTable.addField( new ReferenceField(this, "concept", "INT", null, false, KeyType.INDEX, "concept", "id", null ) );
-		propertyTable.addField( new ReferenceField(this, "concept_name", getTextType(255), null, true, KeyType.INDEX, "concept", "name", null ) );
+		if (!global) propertyTable.addField( new ReferenceField(this, "concept_name", getTextType(255), null, true, KeyType.INDEX, "concept", "name", null ) );
 		propertyTable.addField( new DatabaseField(this, "property", getTextType(255), null, true, KeyType.INDEX) );
 		propertyTable.addField( new DatabaseField(this, "value", getTextType(255), null, true, null) );
 		propertyTable.addKey( new DatabaseKey(this, KeyType.INDEX, "concept_property", new String[] {"concept_name", "property"}) );

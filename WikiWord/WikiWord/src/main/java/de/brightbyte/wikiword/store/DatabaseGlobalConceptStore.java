@@ -27,6 +27,7 @@ import de.brightbyte.wikiword.model.GlobalConcept;
 import de.brightbyte.wikiword.model.LocalConcept;
 import de.brightbyte.wikiword.schema.ConceptInfoStoreSchema;
 import de.brightbyte.wikiword.schema.GlobalConceptStoreSchema;
+import de.brightbyte.wikiword.schema.PropertyStoreSchema;
 import de.brightbyte.wikiword.schema.StatisticsStoreSchema;
 
 /**
@@ -299,8 +300,11 @@ public class DatabaseGlobalConceptStore extends DatabaseWikiWordConceptStore<Glo
 	}
 
 	/////////////////////////////////////////////////////////////////////////////////////////////
+	@Override
 	protected PropertyStore<GlobalConcept> newPropertyStore() throws SQLException, PersistenceException {
-		throw new UnsupportedOperationException("property stores are not yet supported for a global thesaurus.");
+		PropertyStoreSchema schema = new PropertyStoreSchema(getDatasetIdentifier(), getDatabaseAccess().getConnection(), true, tweaks, false); 
+		
+		return new DatabasePropertyStore<GlobalConcept>(this, schema, tweaks);
 	}
 	
 	protected class DatabaseGlobalConceptInfoStore extends DatabaseConceptInfoStore<GlobalConcept> {

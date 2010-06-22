@@ -1,5 +1,8 @@
 package de.brightbyte.wikiword;
 
+import java.util.Collections;
+import java.util.List;
+
 
 public class DatasetIdentifier {
 
@@ -7,11 +10,17 @@ public class DatasetIdentifier {
 	protected String name;
 	protected String dbPrefix;
 	
-	public DatasetIdentifier(String collection, String name, String dbPrefix) {
+	protected String[] configPackages;	
+	protected ConceptTypeSet conceptTypes;
+	
+	public DatasetIdentifier(String collection, String name, String dbPrefix, String[] configPackages) {
 		super();
 		this.collection = collection;
 		this.name = name;
 		this.dbPrefix = dbPrefix;
+		
+		this.configPackages = configPackages==null ? new String[] {} : configPackages;
+		this.conceptTypes = ConceptType.getConceptTypes(this, configPackages);
 	}
 
 	public String getName() {
@@ -73,11 +82,23 @@ public class DatasetIdentifier {
 		return db;
 	}
 	
-	public static DatasetIdentifier forName(String collection, String name) {
-		return new DatasetIdentifier(collection, name, dbPrefix(collection, name));
+	public static DatasetIdentifier forName(String collection, String name, TweakSet tweaks) {
+		String[] configPackages = getConfigPackages(tweaks);
+
+		return new DatasetIdentifier(collection, name, dbPrefix(collection, name), configPackages);
+	}
+
+	protected static String[] getConfigPackages(TweakSet tweaks) {
+		List<String> pkg = tweaks.getTweak("wikiword.ConfigPackages", Collections.<String>emptyList()); 
+		return pkg.toArray(new String[pkg.size()]);
 	}
 
 	public String getCollection() {
 		return collection;
 	}
+	
+	public ConceptTypeSet getConceptTypes() {
+		return conceptTypes;
+	}
+	
 }

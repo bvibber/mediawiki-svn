@@ -28,12 +28,8 @@ public class Corpus extends DatasetIdentifier {
 	protected NamespaceSet namespaces;
 	protected Map<String, Interwiki> interwikiMap;
 	
-	protected ConceptTypeSet conceptTypes;
-	
-	protected String[] configPackages;
-	
 	public Corpus(String collection, String name, String dbPrefix, String domain, String classSuffix, String language, String family, String[] configPackages) {
-		super(collection, name, dbPrefix);
+		super(collection, name, dbPrefix, configPackages);
 		this.domain = domain;
 		this.dbPrefix = dbPrefix;
 		this.classSuffix = classSuffix;
@@ -41,11 +37,8 @@ public class Corpus extends DatasetIdentifier {
 		this.family = family;
 		this.wikiName = language + "wiki";
 		
-		this.configPackages = configPackages==null ? new String[] {} : configPackages;
-
 		url = WikiWordIdentifiers.corpusURL(domain);
-		
-		this.conceptTypes = ConceptType.getConceptTypes(this, configPackages);
+
 		this.namespaces = Namespace.getNamespaces(this);
 		this.interwikiMap = Interwiki.getInterwikiMap(this);
 	}
@@ -219,10 +212,6 @@ public class Corpus extends DatasetIdentifier {
 	
 	public Map<String, Interwiki> getInterwikiMap() {
 		return interwikiMap;
-	}
-	
-	public ConceptTypeSet getConceptTypes() {
-		return conceptTypes;
 	}
 	
 	@Override

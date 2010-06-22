@@ -34,6 +34,7 @@ import de.brightbyte.wikiword.model.WikiWordResource;
 import de.brightbyte.wikiword.schema.ConceptInfoStoreSchema;
 import de.brightbyte.wikiword.schema.LocalConceptStoreSchema;
 import de.brightbyte.wikiword.schema.LocalStatisticsStoreSchema;
+import de.brightbyte.wikiword.schema.PropertyStoreSchema;
 import de.brightbyte.wikiword.schema.StatisticsStoreSchema;
 
 /**
@@ -426,4 +427,13 @@ public class DatabaseLocalConceptStore extends DatabaseWikiWordConceptStore<Loca
 		StatisticsStoreSchema schema = new LocalStatisticsStoreSchema(getDatasetIdentifier(), getDatabaseAccess().getConnection(), tweaks, false); 
 		return new DatabaseLocalStatisticsStore(schema, tweaks);
 	}
+	
+	@Override
+	protected PropertyStore<LocalConcept> newPropertyStore() throws SQLException, PersistenceException {
+		PropertyStoreSchema schema = new PropertyStoreSchema(getDatasetIdentifier(), getDatabaseAccess().getConnection(), false, tweaks, false); 
+		
+		return new DatabasePropertyStore<LocalConcept>(this, schema, tweaks);
+	}
+	
+	
 }

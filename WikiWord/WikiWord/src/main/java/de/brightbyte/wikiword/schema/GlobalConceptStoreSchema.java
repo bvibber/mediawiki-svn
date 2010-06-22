@@ -66,6 +66,9 @@ public class GlobalConceptStoreSchema extends WikiWordConceptStoreSchema {
 		groupStats.add( new GroupStatsSpec("concept", "language_count", null));
 		
 		relationTable.addField( new DatabaseField(this, "langref", "INT", "DEFAULT 0", true, KeyType.INDEX ) );
+		
+		definitionTable.addField( new DatabaseField(this, "lang", getTextType(10), null, true, null ) );
+		definitionTable.addKey( new DatabaseKey(this, KeyType.PRIMARY, "concept_lang", new String[] {"concept", "lang"}) );
 
 		//meaningTable.addField( new DatabaseField(this, "lang", getTextType(10), null, true, null) );
 		//NOTE: replace key defined by WikiWordConceptStoreSchema!
@@ -230,7 +233,7 @@ public class GlobalConceptStoreSchema extends WikiWordConceptStoreSchema {
 		
 		int i = 0;
 		for (String l: ll) {
-			cc[i++] = DatasetIdentifier.forName(getCollectionName(), l);
+			cc[i++] = DatasetIdentifier.forName(getCollectionName(), l, tweaks);
 		}
 		
 		return cc;

@@ -23,6 +23,8 @@ public class WikiWordConceptStoreSchema extends WikiWordStoreSchema {
 	protected RelationTable relationTable;
 	protected RelationTable langlinkTable;
 	
+	protected EntityTable definitionTable;
+	
 	public WikiWordConceptStoreSchema(DatasetIdentifier dataset, Connection connection, TweakSet tweaks, boolean useFlushQueue) throws SQLException {
 		super(dataset, connection, tweaks, useFlushQueue );
 		init(tweaks);
@@ -76,6 +78,12 @@ public class WikiWordConceptStoreSchema extends WikiWordStoreSchema {
 		relationTable.addField( new DatabaseField(this, "bilink", "INT", "DEFAULT 0", true, KeyType.INDEX ) );
 		relationTable.addKey( new DatabaseKey(this, KeyType.PRIMARY, "one_two", new String[] {"concept1", "concept2"}) );		
 		addTable(relationTable);
+		
+		definitionTable = new EntityTable(this, "definition", getDefaultTableAttributes());
+		definitionTable.addField( new ReferenceField(this, "concept", "INT", null, true, null, "concept", "id", null ) );
+		definitionTable.addField( new DatabaseField(this, "definition", getTextType(1024*8), null, true, null ) );
+		definitionTable.setAutomaticField(null);
+		addTable(definitionTable);
 	}
 	
 	@Override

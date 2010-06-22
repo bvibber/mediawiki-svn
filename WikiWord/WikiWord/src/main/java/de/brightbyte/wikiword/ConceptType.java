@@ -165,7 +165,7 @@ public class ConceptType {
 	 * (i.e. wiki project). The ConceptTypeSet MUST support the canonical ConceptTypes, and 
 	 * MAY support additional ConceptTypes defined for that corpus.
 	 */
-	protected static ConceptTypeSet getConceptTypes(Corpus corpus, String... configPackages) {
+	protected static ConceptTypeSet getConceptTypes(DatasetIdentifier dataset, String... configPackages) {
 		ConceptTypeSet ct = new ConceptTypeSet();
 		
 		//TODO: merge files for language and specific wiki!
@@ -173,12 +173,12 @@ public class ConceptType {
 		ClassLoader loader =  ConceptType.class.getClassLoader();
 		
 		if (canonicalConceptTypes!=null) ct.addAll(canonicalConceptTypes);
-		loadConceptTypes(loader, "de.brightbyte.wikiword", corpus, ct);
-		loadConceptTypes(loader, "de.brightbyte.wikiword.wikis", corpus, ct);
+		loadConceptTypes(loader, "de.brightbyte.wikiword", dataset, ct);
+		loadConceptTypes(loader, "de.brightbyte.wikiword.wikis", dataset, ct);
 
 		if (configPackages!=null) {
 			for (String pkg: configPackages) {
-				loadConceptTypes(loader, pkg, corpus, ct);
+				loadConceptTypes(loader, pkg, dataset, ct);
 			}
 		}
 		
@@ -191,21 +191,21 @@ public class ConceptType {
 		return into;
 	}
 	
-	protected static void loadConceptTypes(ClassLoader loader, String prefix, Corpus corpus, ConceptTypeSet into) {
+	protected static void loadConceptTypes(ClassLoader loader, String prefix, DatasetIdentifier dataset, ConceptTypeSet into) {
 		if (loader==null) loader= ClassLoader.getSystemClassLoader();
 		String p = prefix.replace('.', '/');
 		
 		URL u = loader.getResource(p + "/ConceptTypes.properties");
 		if (u!=null) loadConceptTypes(u, into);
 		
-		if ( corpus != null) {
-			u = loader.getResource(p + "/ConceptTypes_" + corpus.getFamily() + ".properties");
+		if ( dataset != null && dataset instanceof Corpus) { //XXX: per-language types are a BAD IDEA!
+			u = loader.getResource(p + "/ConceptTypes_" + ((Corpus)dataset).getFamily() + ".properties");
 			if (u!=null) loadConceptTypes(u, into);
 	
-			u = loader.getResource(p + "/ConceptTypes_" + corpus.getLanguage() + ".properties");
+			u = loader.getResource(p + "/ConceptTypes_" + ((Corpus)dataset).getLanguage() + ".properties");
 			if (u!=null) loadConceptTypes(u, into);
 	
-			u = loader.getResource(p + "/ConceptTypes_" + corpus.getClassSuffix() + ".properties");
+			u = loader.getResource(p + "/ConceptTypes_" + ((Corpus)dataset).getClassSuffix() + ".properties");
 			if (u!=null) loadConceptTypes(u, into);
 		}
 	}
