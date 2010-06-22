@@ -2,14 +2,14 @@
  * Core MediaWiki JavaScript Library
  */
 
-window.mw = new ( function() {
+window.mw = {
 	
 	/* Public Members */
 	
 	/**
 	 * Localization system
 	 */
-	this.msg = new ( function() {
+	'msg': new ( function() {
 		
 		/* Private Members */
 		
@@ -34,11 +34,11 @@ window.mw = new ( function() {
 				return messages[key];
 			}
 		};
-	} )();
+	} )(),
 	/**
 	 * Loader system
 	 */
-	this.loader = new ( function() {
+	'loader': new ( function() {
 		
 		/* Private Members */
 		
@@ -250,5 +250,5 @@ window.mw = new ( function() {
 				work();
 			}
 		};
-	} )();
-} )();
+	} )()
+};
