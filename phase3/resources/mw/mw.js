@@ -12,7 +12,8 @@ window.mw = {
 	'msg': new ( function() {
 		
 		/* Private Members */
-		
+
+		var that = this;
 		var messages = {};
 		
 		/* Public Functions */
@@ -42,7 +43,7 @@ window.mw = {
 		
 		/* Private Members */
 		
-		var self = this;
+		var that = this;
 		var server = 'load.php';
 		// Mapping of registered modules
 		var registry = {
