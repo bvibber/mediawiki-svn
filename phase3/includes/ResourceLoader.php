@@ -24,6 +24,13 @@
  */
 class ResourceLoader {
 	/**
+	 * List of core scripts to include if the "core" module is specified - it's like a bucket
+	 */
+	private static $coreScripts = array(
+		'jquery' => 'resources/core/jquery-1.4.2.min.js',
+		'mw' => 'resources/core/mw.js',
+	);
+	/**
 	 * List of modules.
 	 * 
 	 * Format:
@@ -36,6 +43,10 @@ class ResourceLoader {
 	 * 'script' and 'loader' are mandatory.
 	 */
 	public static $modules = array(
+		'test' => array(
+			'script' => 'resources/test/test.js',
+			'loader' => 'resources/test/loader.js',
+		),
 		'wikibits' => array(
 			'script' => 'skins/common/wikibits.js',
 			'loader' => 'skins/common/loader.js',
@@ -45,6 +56,7 @@ class ResourceLoader {
 	private $scripts = array();
 	private $styles = array();
 	private $loadedModules = array();
+	private $includeCore = false;
 	
 	private $useJSMin = true;
 	private $useCSSMin = true;
@@ -56,17 +68,22 @@ class ResourceLoader {
 		$this->lang = $lang;
 	}
 	
-	
 	/**
 	 * Add a module to the output. This includes the module's
 	 * JS itself, its style and its messages.
 	 * @param $module string Module name
 	 */
 	public function addModule( $module ) {
-		$this->loadedModules[] = $module;
-		$this->scripts[] = self::$modules[$module]['script'];
-		if ( isset( self::$modules[$module]['style'] ) ) {
-			$this->styles[] = self::$modules[$module]['script'];
+		if ( $module == 'core' ) {
+			$includeCore = true;
+		} else if ( isset( self::$modules[$module] ) ) {
+			$this->loadedModules[] = $module;
+			$this->scripts[$module] = self::$modules[$module]['script'];
+			if ( isset( self::$modules[$module]['style'] ) ) {
+				$this->styles[$module] = self::$modules[$module]['script'];
+			}
+		} else {
+			// We have a problem, they've asked for something we don't have!
 		}
 	}
 	
@@ -101,6 +118,7 @@ class ResourceLoader {
 	}
 	
 	private function getMessagesJS( $modules ) {
+		/*
 		$blobs = array();
 		$dbr = wfGetDB( DB_SLAVE );
 		$res = $dbr->select( 'msg_resource', 'msg_blob',
@@ -111,13 +129,26 @@ class ResourceLoader {
 			$blobs[] = $row->msg_blob;
 		}
 		return "mw.addMessages( {\n" . implode( ",\n", $blobs ) . "\n} );";
+		*/
 	}
 	
+	/*
+	 * TODO: Might think about using an output buffer here, these string concatenations are dealing with many KB of data
+	 */ 
 	public function getOutput() {
+		// Because these are keyed by module, in the case that more than one module asked for the same script only the
+		// first will end up being registered - the client loader can't handle multiple modules per implementation yet,
+		// so this is fine, but causes silent failure it strange abusive cases
 		$this->scripts = array_unique( $this->scripts );
 		$this->styles = array_unique( $this->styles );
 		$this->loadedModules = array_unique( $this->loadedModules );
 		$retval = '';
+		
+		// TODO: file_get_contents() errors?
+		// TODO: CACHING!
+		foreach ( self::$coreScripts as $script ) {
+			$retval .= file_get_contents( $script );
+		}
 		
 		/*
 		 * Skin::makeGlobalVariablesScript needs to be modified so that we still output the globals for now, but also
@@ -129,10 +160,10 @@ class ResourceLoader {
 		 * Also, the naming of these variables is horrible and sad, hopefully this can be worked on
 		 */
 		
-		foreach ( $this->scripts as $script ) {
-			// TODO: file_get_contents() errors?
-			// TODO: CACHING!
-			$retval .= file_get_contents( $script );
+		// TODO: file_get_contents() errors?
+		// TODO: CACHING!
+		foreach ( $this->scripts as $module => $script ) {
+			$retval .= "mw.loader.implement( '{$module}', function() { " . file_get_contents( $script ) . " } );\n";
 		}
 		$retval .= $this->getStyleJS( $this->styles );
 		$retval .= $this->getMessagesJS( $this->loadedModules );
@@ -159,7 +190,7 @@ class ResourceLoader {
 	
 	public function jsMin( $js ) {
 		// TODO: Implement
-		return $js;
+		return JSMin::minify( $js );
 	}
 	
 	public function cssMin( $css ) {
